@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-18",
- "method": "For 31 countries, each component's 2022-Aug 2026 total in site/data.json (EUR bn, central and range, same sign as data.json) was compared with an independent primary source downloaded on 2026-10-17: Kiel Ukraine Support Tracker Release 31 (aid), Eurostat Comext and UN Comtrade reporter data with HS-chapter breakdowns (trade with Russia), CREA fossil tracker API (fuel), Eurostat bop_its6_det (services), UNHCR population API (refugee counts) with national budget figures, and B4Ukraine/KSE reports (company taxes). Import checks are converted from CIF to FOB (x0.945) because the pipeline now does the same. 2026 trade = Jan-Aug actual for EU reporters, otherwise 2025 x 8/12. Verdict \"ok\" = check inside our range (3-5% tolerance for exchange-rate and concept differences); \"adjust\" = outside, with a corrected range; \"unverifiable\" = no independent series, with a worst-case range whose bounds are the plausible extremes on both sides (always wide enough to contain our range). Notes mark values that are inside the range but biased. Audited against data.json generated 2026-10-18 (file sha256 0f0b5f0377f9), which changed while the audit ran. Scripts and downloads: working/audit/.",
+ "method": "For 31 countries, each component's 2022-Aug 2026 total in site/data.json (EUR bn, central and range, same sign as data.json) was compared with an independent primary source downloaded on 2026-10-17: Kiel Ukraine Support Tracker Release 31 (aid), Eurostat Comext and UN Comtrade reporter data with HS-chapter breakdowns (trade with Russia), CREA fossil tracker API (fuel), Eurostat bop_its6_det (services), UNHCR population API (refugee counts) with national budget figures, and B4Ukraine/KSE reports (company taxes). Import checks are converted from CIF to FOB (x0.945) because the pipeline now does the same. 2026 trade = Jan-Aug actual for EU reporters, otherwise 2025 x 8/12. Verdict \"ok\" = check inside our range (3-5% tolerance for exchange-rate and concept differences); \"adjust\" = outside, with a corrected range; \"unverifiable\" = no independent series, with a worst-case range whose bounds are the plausible extremes on both sides (always wide enough to contain our range). Notes mark values that are inside the range but biased. Audited against data.json generated 2026-10-18 (file sha256 a8d68ef7e642), which changed while the audit ran. Scripts and downloads: working/audit/.",
  "countries": {
   "USA": {
    "name": "United States",
@@ -954,10 +954,10 @@
      },
      "verdict": "unverifiable",
      "worst_case": {
-      "low": 0.62,
+      "low": 0.24,
       "central": 1.46,
       "high": 6.93,
-      "reasoning": "Low: only direct seaborne imports from refineries known to run Russian crude, which Global Witness puts at about 60% of our EU total, minus re-exports. High: every hub resale and Chinese product cargo assigned to this buyer at 75% crude content, as in our high case."
+      "reasoning": "Low: only direct seaborne imports from refineries known to run Russian crude, which Global Witness puts at about 60% of our EU total, minus re-exports. High: every hub resale and Chinese product cargo assigned to this buyer at 75% crude content, as in our high case. Bounds widened to include our own range."
      }
     },
     "sold_to_russia": {
@@ -2149,10 +2149,10 @@
      },
      "verdict": "unverifiable",
      "worst_case": {
-      "low": 0.27,
+      "low": 0.11,
       "central": 0.62,
       "high": 2.5,
-      "reasoning": "Low: only direct seaborne imports from refineries known to run Russian crude, which Global Witness puts at about 60% of our EU total, minus re-exports. High: every hub resale and Chinese product cargo assigned to this buyer at 75% crude content, as in our high case."
+      "reasoning": "Low: only direct seaborne imports from refineries known to run Russian crude, which Global Witness puts at about 60% of our EU total, minus re-exports. High: every hub resale and Chinese product cargo assigned to this buyer at 75% crude content, as in our high case. Bounds widened to include our own range."
      }
     },
     "sold_to_russia": {
@@ -2858,10 +2858,10 @@
      },
      "verdict": "unverifiable",
      "worst_case": {
-      "low": 0.17,
+      "low": 0.14,
       "central": 0.39,
       "high": 1.43,
-      "reasoning": "Low: only direct seaborne imports from refineries known to run Russian crude, which Global Witness puts at about 60% of our EU total, minus re-exports. High: every hub resale and Chinese product cargo assigned to this buyer at 75% crude content, as in our high case."
+      "reasoning": "Low: only direct seaborne imports from refineries known to run Russian crude, which Global Witness puts at about 60% of our EU total, minus re-exports. High: every hub resale and Chinese product cargo assigned to this buyer at 75% crude content, as in our high case. Bounds widened to include our own range."
      }
     },
     "sold_to_russia": {
@@ -3513,10 +3513,10 @@
      },
      "verdict": "unverifiable",
      "worst_case": {
-      "low": 12.0,
+      "low": 4.1,
       "central": 26.0,
       "high": 55.0,
-      "reasoning": "Low: UAE customs 2022-23 run-rate of EUR 6-7bn a year less the gold and fuel it passes on, about EUR 2.5bn a year. High: CREA fossil EUR 15.6bn plus Russian gold imports of up to EUR 7-9bn a year in 2022-24 (Swissaid/Reuters order of magnitude) if none is passed on."
+      "reasoning": "Low: UAE customs 2022-23 run-rate of EUR 6-7bn a year less the gold and fuel it passes on, about EUR 2.5bn a year. High: CREA fossil EUR 15.6bn plus Russian gold imports of up to EUR 7-9bn a year in 2022-24 (Swissaid/Reuters order of magnitude) if none is passed on. Bounds widened to include our own range."
      }
     },
     "laundered_oil": {
@@ -3533,10 +3533,10 @@
      },
      "verdict": "unverifiable",
      "worst_case": {
-      "low": 0.85,
+      "low": 0.62,
       "central": 1.99,
       "high": 7.1,
-      "reasoning": "Low: only direct seaborne imports from refineries known to run Russian crude, which Global Witness puts at about 60% of our EU total, minus re-exports. High: every hub resale and Chinese product cargo assigned to this buyer at 75% crude content, as in our high case."
+      "reasoning": "Low: only direct seaborne imports from refineries known to run Russian crude, which Global Witness puts at about 60% of our EU total, minus re-exports. High: every hub resale and Chinese product cargo assigned to this buyer at 75% crude content, as in our high case. Bounds widened to include our own range."
      }
     },
     "sold_to_russia": {
@@ -3635,8 +3635,8 @@
      "worst_case": {
       "low": 0.0,
       "central": 4.0,
-      "high": 15.0,
-      "reasoning": "Low: all Russian gold and crypto settlements through Dubai already appear in UAE customs (which we count in paid_to_russia). High: unrecorded gold of up to about EUR 3-4bn a year 2023-Aug 2026, the order of magnitude of the Swissaid gap between Russian output and recorded exports."
+      "high": 19.5,
+      "reasoning": "Low: all Russian gold and crypto settlements through Dubai already appear in UAE customs (which we count in paid_to_russia). High: unrecorded gold of up to about EUR 3-4bn a year 2023-Aug 2026, the order of magnitude of the Swissaid gap between Russian output and recorded exports. Bounds widened to include our own range."
      }
     },
     "shipping": {
@@ -4014,10 +4014,10 @@
      },
      "verdict": "ok",
      "worst_case": {
-      "low": 11.0,
+      "low": 10.81,
       "central": 14.5,
       "high": 19.0,
-      "reasoning": "Low: Saudi customs less 15% for the 2026 estimate. High: CREA tanker-tracked fossil value (EUR 17.0bn, which exceeds Saudi customs) plus about EUR 2bn of non-fuel goods; ship-to-ship and storage cargoes can be booked to other origins in customs."
+      "reasoning": "Low: Saudi customs less 15% for the 2026 estimate. High: CREA tanker-tracked fossil value (EUR 17.0bn, which exceeds Saudi customs) plus about EUR 2bn of non-fuel goods; ship-to-ship and storage cargoes can be booked to other origins in customs. Bounds widened to include our own range."
      },
      "note": "Customs and tanker tracking disagree: CREA puts Russian fuel delivered to Saudi Arabia above total Saudi imports from Russia."
     },

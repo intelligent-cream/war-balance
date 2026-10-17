@@ -73,3 +73,9 @@ Method choices made in this round:
 - **Gas prices per country** (`gaps/gas_prices.json`): the gas part of each country's price index uses its own realised Russian gas price (Eurostat Comext and Comtrade unit values, contract prices, oil formulas for Turkey and Poland) instead of the Europe-wide index. Hungary paid hub prices (7.6x in 2022), Serbia and Turkey oil-linked (1.8-1.9x), Belarus a fixed dollar price (1.1x). Countries without a researched price keep the Europe-wide index.
 - **Freight counted once**: import values in customs data include freight and insurance (CIF, 3.5-7.5%). That part is paid to shippers and insurers, not to Russia, and is counted for them, so it is taken out of every country's payments to Russia (yearly values and baseline).
 - **Shipping as profit**: shipping income counts only its profit share (freight 20-50%, insurance and finance 10-40%, ship sales as their price premium), not the gross revenue.
+- **Audit corrections** (`gaps/audit.json`, 31 countries checked against independent sources; 167 parts ok, 5 adjusted, 92 unverifiable with worst-case ranges):
+  - Gas booked by customs under other headings (Turkey, Poland, part of Germany) is no longer added a second time; Turkey's payments to Russia drop from EUR 220bn to 184.5bn.
+  - Final-use gas is valued at each country's own Russian gas price; non-transit countries keep the gas their customs record (Greece).
+  - G7 loans repaid from Russia's frozen assets (ERA: US 18.3, EU 18.1, Canada 3.3, UK 2.6, Japan 1.6) are left out of donors' aid: it is Russia's money.
+  - The 2026 EU Ukraine Support Loan is split over the 24 members that guarantee it (not Czechia, Hungary, Slovakia).
+  - Denmark's sales to Russia sit between Danish and Eurostat data; laundered oil bought by EU members is scaled to Global Witness's figure for Russian crude in EU imports (x0.62); Poland's refugee cost follows the government report (about EUR 24bn).

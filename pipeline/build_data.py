@@ -267,12 +267,22 @@ def build() -> dict:
             tot = sum(years) or 1
             years = [round(v + unassigned * v / tot, 4) for v in years]
         loans, era = d.get("loans_face_value") or 0, d.get("era_allocated") or 0
+        if era:
+            # G7 loans repaid from immobilised Russian assets (ERA) are Russia's money, not the donor's: left out.
+            # The US paid its share in December 2024, the others in 2025
+            y0 = YEARS.index(2024 if iso3 == "USA" else 2025)
+            left = era
+            for i in [y0] + [j for j in range(len(YEARS) - 1, 0, -1) if j != y0]:
+                take = min(left, years[i])
+                years[i], left = round(years[i] - take, 4), left - take
+            loans = max(0, loans - era)
         aid = {
             "years": years,
             "cats": {k: round(d.get(f"{k}_allocated") or 0, 3) for k in ("military", "financial", "humanitarian")},
             "loans_face": round(loans, 3) or None,
             # loans repaid from frozen Russian assets (ERA) cost the lender almost nothing
-            "loans_grant_eq": round(max(0, loans - era) * LOAN_GRANT_ELEMENT, 3) if loans else None,
+            "loans_grant_eq": round(loans * LOAN_GRANT_ELEMENT, 3) if loans else None,
+            "era_excluded": round(era, 3) or None,
             "pledged_open": round(d.get("pledged_not_delivered") or 0, 3),
             "cert": d.get("certainty") or "A",
             "src": [kid],
@@ -426,15 +436,31 @@ def build() -> dict:
             # the fossil tracker counts gas where it crosses the border (Slovakia, Austria, Bulgaria...); the gas
             # research gives it where it is used, so the tracker's gas share is swapped for that
             gas = lch({y: v for y, v in tg["gas_from_rus_eur_bn"].items() if int(y) >= YEARS[0]})
+            # valued at the country's own Russian gas price where researched (Europe-wide price otherwise)
+            own = (GAS_PRICES["countries"].get(iso3) or {}).get("pipeline") or {}
+            bcm = tg.get("gas_from_rus_bcm") or {}
+            for i, y in enumerate(YEARS):
+                pr, vol = own.get(str(y)), bcm.get(str(y))
+                if pr and vol and vol.get("central"):
+                    for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
+                        gas[k][i] = round(vol[b] * pr[b] * MWH_PER_BCM / 1e9, 5)
+            cg = customs_gas.get(iso3, {})
+            cyears = [cg.get(str(y), 0.0) for y in YEARS]
+            g25 = gas["years"][4]
+            cyears[5] = cyears[4] * (gas["years"][5] / g25 if g25 else FRAC[5])
+            if "passed_on_shares" not in tg:
+                # not a transit country: gas its customs record as Russian was used there, even if the gas research
+                # found less (Greece)
+                for k in ("years", "years_lo", "years_hi"):
+                    gas[k] = [round(max(g, cv), 5) for g, cv in zip(gas[k], cyears)]
             share = non_gas_share(d.get("fossil_from_russia_by_fuel_mt") or {}, e2["price_index"])
             for k in ("years", "years_lo", "years_hi"):
                 fossil[k] = [round(f * s + g, 5) for f, s, g in zip(fossil[k], share, gas[k])]
             if tr:
                 # customs data record gas where it crosses the border too: that gas is swapped for final-use gas
-                cg = customs_gas.get(iso3, {})
-                cyears = [cg.get(str(y), 0.0) for y in YEARS]
-                g25 = tg["gas_from_rus_eur_bn"]["2025"]["central"]
-                cyears[5] = cyears[4] * (gas["years"][5] / g25 if g25 else FRAC[5])
+                if iso3 in GAS_IN_CUSTOMS:
+                    # customs already hold this gas under another heading (Turkey, Poland; part of it for Germany)
+                    cyears = [max(cv, g * GAS_IN_CUSTOMS[iso3]) for cv, g in zip(cyears, gas["years"])]
                 for k in ("years", "years_lo", "years_hi"):
                     tr[k] = [round(max(0.0, t - cgv) + g, 5) for t, cgv, g in zip(tr[k], cyears, gas[k])]
                 pre = {
@@ -442,6 +468,8 @@ def build() -> dict:
                     for b in ("low", "central", "high")
                 }
                 cpre = sum(cg.get(str(y), 0.0) for y in (2019, 2020, 2021)) / 3
+                if iso3 in GAS_IN_CUSTOMS:
+                    cpre = max(cpre, pre["central"] * GAS_IN_CUSTOMS[iso3])
                 tr["base"] = round(max(0.0, tr["base"] - cpre) + pre["central"], 5)
                 tr["base_range"] = [
                     round(max(0.0, tr["base_range"][0] - cpre) + pre["low"], 5),
@@ -752,6 +780,7 @@ def build() -> dict:
     apply_shipping(countries, src, note)
     apply_reexports(countries, src, note)
     apply_residual(countries, src, note)
+    apply_audit(countries, src)
     # AI guesses, no real data: how far each country's direction is from Russia's and how threatened it feels;
     # shown separately to compare what a country did with what its incentives would predict
     inc = load(GAPS / "incentives.json")
@@ -823,6 +852,13 @@ def import_mix(iso3: str) -> dict:
 
 
 GAS_PRICES = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/gas_prices.json").read_text())
+
+
+# energy content of natural gas: MWh per bcm (gross calorific value)
+MWH_PER_BCM = 10.55e6
+# share of final-use Russian gas that customs already record as imports from Russia under another heading (audit):
+# Turkey and Poland book it under confidential or general fuel codes; Germany part of it
+GAS_IN_CUSTOMS = {"TUR": 1.0, "POL": 1.0, "DEU": 0.07}
 
 
 def gas_index(iso3: str, band: str) -> list[float]:
@@ -976,6 +1012,58 @@ SHIPPING_PROFIT = {"freight": (0.2, 0.35, 0.5), "insurance_finance": (0.1, 0.25,
 # customs values of imports include freight and insurance (CIF): that part is paid to shippers and insurers, not to Russia,
 # and is counted for them (shipping, services); taken out of payments to Russia (low, middle, high share)
 CIF_SHARE = (0.035, 0.055, 0.075)
+
+
+def apply_audit(countries: dict[str, dict], src: Sources) -> None:
+    """Corrections from the audit of 31 major countries against independent sources (research/2026-10/gaps/audit.json)."""
+    au = load(GAPS / "audit.json")["countries"]
+    aid_src = src.add(
+        "audit",
+        "Audit of 31 major countries against Kiel, CREA, Eurostat, national statistics and government reports",
+        None,
+        "2026-10-18",
+        "see research/2026-10/gaps/audit-notes.md",
+    )
+    # the 2026 EU Ukraine Support Loan is guaranteed by 24 members (not Czechia, Hungary, Slovakia): their budget-share
+    # slice goes to the other members in proportion to their EU share
+    moved = 0.0
+    for iso3 in ("CZE", "HUN", "SVK"):
+        a, part = (countries.get(iso3) or {}).get("aid"), (au.get(iso3) or {}).get("parts", {}).get("aid", {})
+        if not a or not part.get("corrected"):
+            continue
+        d = max(0.0, part["ours"]["central"] - part["corrected"]["central"])
+        d = min(d, (a.get("eu_years") or [0] * 6)[5])
+        a["years"][5] = round(a["years"][5] - d, 5)
+        a["eu_years"][5] = round(a["eu_years"][5] - d, 5)
+        a["src"] = a["src"] + [aid_src]
+        moved += d
+    others = {i: c["aid"]["eu_share"] for i, c in countries.items() if i in EU27 and i not in ("CZE", "HUN", "SVK") and (c.get("aid") or {}).get("eu_share")}  # fmt: skip
+    tot = sum(others.values()) or 1
+    for i, sh in others.items():
+        a = countries[i]["aid"]
+        a["years"][5] = round(a["years"][5] + moved * sh / tot, 5)
+        if a.get("eu_years"):
+            a["eu_years"][5] = round(a["eu_years"][5] + moved * sh / tot, 5)
+    # Denmark's sales to Russia: between Danish national data and Eurostat
+    f = (countries.get("DNK") or {}).get("from_rus")
+    if f:
+        for k, m in (("years", 1.34), ("years_lo", 0.98), ("years_hi", 1.9)):
+            f[k] = [v if i == 0 else round(v * m, 5) for i, v in enumerate(f[k])]
+        f["src"] = f.get("src", []) + [aid_src]
+    # laundered oil bought by EU members: about 1.6 times the Russian crude Global Witness finds in EU imports
+    for i in EU27:
+        tr = (countries.get(i) or {}).get("to_rus")
+        if tr and tr.get("laundered"):
+            for k, m in (("laundered", 0.62), ("laundered_lo", 0.5), ("laundered_hi", 0.8)):
+                tr[k] = [round(v * m, 5) for v in tr[k]]
+    # Poland's refugee costs: the government's own report (PLN 90bn for 2022-23 alone)
+    a = (countries.get("POL") or {}).get("aid")
+    if a and a.get("refugee_years"):
+        tot = sum(a["refugee_years"][1:]) or 1
+        a["refugee_years"] = [round(v * 24 / tot, 5) for v in a["refugee_years"]]
+        a["refugee_years_lo"] = [max(lo, v * 19 / 24) for lo, v in zip(a["refugee_years_lo"], a["refugee_years"])]
+        a["refugee_years_hi"] = [max(hi, v) for hi, v in zip(a["refugee_years_hi"], a["refugee_years"])]
+        a["refugee_src"] = (a.get("refugee_src") or []) + [aid_src]
 
 
 def remove_freight(countries: dict[str, dict]) -> None:
