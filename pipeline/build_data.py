@@ -752,6 +752,14 @@ def build() -> dict:
     apply_shipping(countries, src, note)
     apply_reexports(countries, src, note)
     apply_residual(countries, src, note)
+    # AI guesses, no real data: how far each country's direction is from Russia's and how threatened it feels;
+    # shown separately to compare what a country did with what its incentives would predict
+    inc = load(GAPS / "incentives.json")
+    for iso3, d in inc["countries"].items():
+        if iso3 in countries:
+            countries[iso3]["incentive"] = {
+                k: d.get(k) for k in ("direction", "threat", "confidence", "why", "capacity_note")
+            }
     remove_freight(countries)
     price_indices(countries)
     pre_war_trends(countries, src)
