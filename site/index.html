@@ -1,6 +1,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Follow the Money: Ukrainian Aid</title>
+<meta name="description" content="How much each country has shifted money and support toward Ukraine or toward Russia since the full-scale invasion, and what it cost. Every number with a range and a source.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Follow the Money: Ukrainian Aid">
+<meta property="og:description" content="Who shifted money toward Ukraine, and who toward Russia? Every country, as a share of its economy, with sources and ranges.">
+<meta property="og:url" content="https://intelligent-cream.github.io/follow-the-money-ukraine/">
+<meta property="og:image" content="https://intelligent-cream.github.io/follow-the-money-ukraine/share/world.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -876,6 +884,25 @@ function wirePanel() {
   if (cmp) cmp.onchange = () => { if (cmp.value) { state.compare = cmp.value; state.panel = "compare"; renderPanel(); } };
   const back = q("#compare-back");
   if (back) back.onclick = () => { state.panel = "country"; state.compare = null; renderPanel(); };
+  const sh = q("#share-btn");
+  if (sh) sh.onclick = () => shareCountry(DATA[state.selected], sh);
+}
+// each country has its own page with a preview image, so a shared link shows that country's number
+const SITE_URL = "https://intelligent-cream.github.io/follow-the-money-ukraine/";
+async function shareCountry(c, btn) {
+  if (!c) return;
+  const k = calc(c, Math.max(2022, state.year));
+  const url = SITE_URL + "c/" + c.iso3.toLowerCase() + ".html";
+  const text = `${c.name}: ${fmtMeasure(c, k.shift, "gdp", true)} of a year's GDP shifted toward ${k.shift >= 0 ? "Ukraine" : "Russia"} since before the war (${eur(k.shift, true)}).`;
+  try {
+    if (navigator.share) { await navigator.share({ title: "Follow the Money: Ukrainian Aid", text, url }); return; }
+    await navigator.clipboard.writeText(text + " " + url);
+    btn.textContent = "Link copied";
+  } catch (e) {
+    if (e && e.name === "AbortError") return;
+    prompt("Copy this link", url);
+  }
+  setTimeout(() => (btn.textContent = "Share"), 2000);
 }
 
 function waterfall(parts, total, totalLabel, totalLo, totalHi) {
@@ -935,7 +962,7 @@ function countryPanel(c) {
   const pos = k.shift >= 0, ytd = y === 2026 && FRAC[5] < 1 ? " (2026 to date)" : "";
   const meta = `${c.iso3} · ${c.pop ? (c.pop >= 10 ? Math.round(c.pop) : c.pop.toFixed(1)) + " m people" : "population n/a"} · ${c.gdp ? "GDP €" + Math.round(c.gdp).toLocaleString("en") + " bn" : "GDP n/a"}`;
   const others = Object.values(DATA).filter(o => o !== c).sort((a, b) => a.name.localeCompare(b.name));
-  const tools = `<div class="panel-tools"><select id="compare-select" aria-label="Compare with another country"><option value="">Compare with…</option>${others.map(o => `<option value="${o.n}">${o.name}</option>`).join("")}</select></div>`;
+  const tools = `<div class="panel-tools"><button class="btn" id="share-btn" aria-label="Share ${c.name}'s numbers">Share</button><select id="compare-select" aria-label="Compare with another country"><option value="">Compare with…</option>${others.map(o => `<option value="${o.n}">${o.name}</option>`).join("")}</select></div>`;
   const backSec = k.backParts.length ? `<section class="section">
       <h3>Money flowing back to ${c.name}</h3>
       <div class="big" style="font-size:24px;color:var(--back)">${eur(k.flowback)} <span style="font-size:13px;font-weight:500;font-family:var(--font-data)">(${rangeTxt(k.flowbackLo, k.flowbackHi)})</span></div>

@@ -37,6 +37,7 @@ Run it yourself:
 uv run python pipeline/build_data.py        # rebuild site/data.json from research/
 uv run python pipeline/check_data.py        # checks
 cd site && python3 -m http.server 8000      # open http://localhost:8000
+node pipeline/share_cards.mjs              # optional: share images and a page per country (needs Node and Playwright; the Pages deploy runs it)
 ```
 
 ## Corrections
