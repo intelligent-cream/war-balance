@@ -437,7 +437,9 @@ function triple(obj, key) {
   // price level per year against 2019-2021 (= 1): changes against the pre-war level compare volumes, not price swings
   const ones = YEARS.map(() => 1);
   const p = obj && obj.pidx ? obj.pidx : ones, pl = obj && obj.pidx_lo ? obj.pidx_lo : p, ph = obj && obj.pidx_hi ? obj.pidx_hi : p;
-  return { c, l, h, m, b: [Math.min(b[0], l[0], m), Math.max(b[1], h[0], m)], p, pl, ph };
+  // pre-war trend: where trade was already growing or shrinking, the counterfactual follows that trend (1 = flat)
+  const q = obj && obj.bmul ? obj.bmul : ones, ql = obj && obj.bmul_lo ? obj.bmul_lo : q, qh = obj && obj.bmul_hi ? obj.bmul_hi : q;
+  return { c, l, h, m, b: [Math.min(b[0], l[0], m), Math.max(b[1], h[0], m)], p, pl, ph, q, ql, qh };
 }
 function normalise(c) {
   c.T = {
@@ -447,7 +449,7 @@ function normalise(c) {
     own: triple(c.flowback, "own"), purl: triple(c.flowback, "purl_in"),
     premium: triple(c.energy, "premium"), discount: triple(c.energy, "discount"),
     tax: triple(c.company, "taxes"), mil: triple(c.military_rus, "years"),
-    svcBought: triple(c.svc_bought, "years"), svcSold: triple(c.svc_sold, "years"),
+    svcBought: triple(c.svc_bought, "years"), svcSold: triple(c.svc_sold, "years"), ship: triple(c.shipping, "years"),
     hidden: triple(c.hidden, "years"), undisc: triple(c.undisclosed, "years"), priv: triple(c.private, "years"),
   };
   c.aidY = c.T.aid.c; c.refY = c.T.ref.c; c.paidY = c.T.paid.c; c.launderedY = c.T.laundered.c; c.soldRusY = c.T.soldRus.c;
@@ -468,8 +470,9 @@ function calc(c, y) {
   const sum3 = t => { const r = [0, 0, 0]; for (let i = 1; i <= N; i++) { r[0] += t.c[i]; r[1] += t.l[i]; r[2] += t.h[i]; } return r; };
   // change against the pre-war level, at pre-war prices (actual values divided by the price level): the low end uses
   // the low baseline, the high actual value and the low price level, and the other way round
-  const delta3 = t => { const r = [0, 0, 0]; for (let i = 1; i <= N; i++) { r[0] += t.m * FRAC[i] - t.c[i] / t.p[i]; r[1] += t.b[0] * FRAC[i] - t.h[i] / t.pl[i]; r[2] += t.b[1] * FRAC[i] - t.l[i] / t.ph[i]; } return r; };
-  const above3 = t => { const r = [0, 0, 0]; for (let i = 1; i <= N; i++) { r[0] += Math.max(0, t.c[i] / t.p[i] - t.m * FRAC[i]); r[1] += Math.max(0, t.l[i] / t.ph[i] - t.b[1] * FRAC[i]); r[2] += Math.max(0, t.h[i] / t.pl[i] - t.b[0] * FRAC[i]); } return r; };
+  // expected without the war = pre-war level x pre-war trend; the low end takes the low baseline and trend
+  const delta3 = t => { const r = [0, 0, 0]; for (let i = 1; i <= N; i++) { r[0] += t.m * FRAC[i] * t.q[i] - t.c[i] / t.p[i]; r[1] += t.b[0] * FRAC[i] * t.ql[i] - t.h[i] / t.pl[i]; r[2] += t.b[1] * FRAC[i] * t.qh[i] - t.l[i] / t.ph[i]; } return r; };
+  const above3 = t => { const r = [0, 0, 0]; for (let i = 1; i <= N; i++) { r[0] += Math.max(0, t.c[i] / t.p[i] - t.m * FRAC[i] * t.q[i]); r[1] += Math.max(0, t.l[i] / t.ph[i] - t.b[1] * FRAC[i] * t.qh[i]); r[2] += Math.max(0, t.h[i] / t.pl[i] - t.b[0] * FRAC[i] * t.ql[i]); } return r; };
   const neg = r => [-r[0], -r[2], -r[1]];
   const scale = (r, f) => [r[0] * f, r[1] * f, r[2] * f];
   const aid3 = sum3(T.aid), ref3 = sum3(T.ref);
@@ -483,7 +486,7 @@ function calc(c, y) {
   const loansFace = (c.aid?.loans_face || 0) * loanShare;
   const loansGE = (c.aid?.loans_grant_eq ?? (c.aid?.loans_face || 0) * 0.3) * loanShare;
   const lessTax3 = T.tax.m ? delta3(T.tax) : [0, 0, 0];
-  const lessSold3 = delta3(T.soldRus), lessSvcSold3 = delta3(T.svcSold), lessSvcPaid3 = delta3(T.svcBought);
+  const lessSold3 = delta3(T.soldRus), lessSvcSold3 = delta3(T.svcSold), lessSvcPaid3 = delta3(T.svcBought), lessShip3 = c.shipping ? delta3(T.ship) : [0, 0, 0];
   const margin = META.lost_margin ?? 0.2;
   // profit lost on goods and services no longer sold to Russia
   const given = i => Math.max(0, lessSold3[i]) + Math.max(0, lessSvcSold3[i]);
@@ -511,6 +514,7 @@ function calc(c, y) {
     part("mil", "Weapons and troops sent to Russia", neg(sum3(T.mil)), "D", src("military_rus")),
     part("svcpaid", lessSvcPaid3[0] >= 0 ? "Less paid to Russia for services" : "More paid to Russia for services", lessSvcPaid3, c.svc_bought?.cert || "C", src("svc_bought")),
     part("svcsold", lessSvcSold3[0] >= 0 ? "Services to Russia given up (e.g. tourism)" : "Extra services sold to Russia (e.g. tourism)", lessSvcSold3, c.svc_sold?.cert || "C", src("svc_sold")),
+    part("ship", lessShip3[0] >= 0 ? "Less profit from shipping Russian oil" : "Profit from shipping and insuring Russian oil", lessShip3, c.shipping?.cert || "D", src("shipping")),
     part("hidden", "Gold and hidden payments to Russia", neg(sum3(T.hidden)), "D", src("hidden")),
     part("undisc", "Undisclosed military aid (estimate)", sum3(T.undisc), c.undisclosed?.cert || "D", src("undisclosed")),
     part("priv", "Private donations", sum3(T.priv), c.private?.cert || "D", src("private")),
@@ -538,16 +542,17 @@ function calc(c, y) {
     return [v, v - dl, v + dh];
   };
   const negPart = p => ({ ...p, v: -p.v, lo: -p.hi, hi: -p.lo });
-  const back = state.netBack ? backParts.map(negPart) : [];
-  // in the cost, money flowing back counts only as profit (the same share as profit lost on sales to Russia):
-  // the goods sold still cost money to make
-  const backCost = back.map(p => ({ ...p, v: p.v * margin, lo: p.lo * margin, hi: p.hi * margin }));
+  // money flowing back counts only as profit (the same share as profit lost on sales to Russia): the goods sold to
+  // or for Ukraine still cost money to make. The range runs from half to one and a half times that margin
+  const back = state.netBack ? backParts.map(negPart).map(p => ({ ...p, v: p.v * margin, lo: p.lo * margin * 1.5, hi: p.hi * margin * 0.5 })) : [];
+  const backCost = back;
   const shiftAll = live(shiftParts.concat(back)), costAll = live(costParts.concat(backCost));
   const [shift, shiftLo, shiftHi] = total(shiftAll), [cost, costLo, costHi] = total(costAll);
   const flow = total(backParts);
   return {
     aid: aid3[0], refugees: ref3[0], loansFace, loansGE,
     lessPaid: lessPaid3[0], lessSold: lessSold3[0], extraSell: sell3[0], laundered: sum3(T.laundered)[0], military: sum3(T.mil)[0],
+    backShift: back,
     own: backParts[0].v, purl: backParts[1].v, flowback: flow[0], flowbackLo: flow[1], flowbackHi: flow[2],
     premium: costParts[2].v, discount: -costParts[5].v,
     paidRussia: sum3(T.paid)[0] + sum3(T.laundered)[0] + sum3(T.tax)[0] + sum3(T.mil)[0] + sum3(T.svcBought)[0] + sum3(T.hidden)[0],
@@ -971,7 +976,7 @@ function countryPanel(c) {
   const backSec = k.backParts.length ? `<section class="section">
       <h3>${t("Money flowing back to {name}", { name: c.name })}</h3>
       <div class="big" style="font-size:24px;color:var(--back)">${eur(k.flowback)} <span style="font-size:13px;font-weight:500;font-family:var(--font-data)">(${rangeTxt(k.flowbackLo, k.flowbackHi)})</span></div>
-      <div class="big-cap">${t("spent by or for Ukraine here, above the pre-war level. Revenue for companies here, not profit: it counts in full in the net shift, and only as profit (20%) in the cost.")}${state.netBack ? "" : " " + t("Not subtracted (switch is off).")}</div>
+      <div class="big-cap">${t("spent by or for Ukraine here, above the pre-war level. This is revenue for companies here; only the profit on it (about 20%) is subtracted, because the goods still cost money to make.")}${state.netBack ? "" : " " + t("Not subtracted (switch is off).")}</div>
       <div class="kv" style="margin-top:10px">${k.backParts.map(p => `<span>${p.label}${chip(p.cert)}${ref(p.src)}</span><span class="v">${eur(p.v)}<small>${rangeTxt(p.lo, p.hi)}</small></span>`).join("")}</div>
     </section>` : "";
   const aidCats = c.aid?.cats ? Object.entries(c.aid.cats).filter(([, v]) => v) : [];
@@ -1011,7 +1016,7 @@ function countryPanel(c) {
       <div class="big ${pos ? "pos" : "neg"}">${fmtMeasure(c, k.shift, "gdp", true)} <span style="font-size:15px;font-weight:600">${t("of a year's GDP")}</span></div>
       <div class="big-cap">${t(pos ? "shifted toward <b>Ukraine</b> compared with before the war{after}: {eur} · {pp}" : "shifted toward <b>Russia</b> compared with before the war{after}: {eur} · {pp}", { after: state.netBack ? t(", after money flowing back") : "", eur: eur(k.shift, true), pp: perPerson(c, k.shift) })}</div>
       ${rangeLine(c, k.shiftLo, k.shiftHi, k.shiftCert)}
-      ${waterfall(k.shiftParts.concat(state.netBack ? k.backParts.map(p => ({ ...p, v: -p.v, lo: -p.hi, hi: -p.lo, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label.toLowerCase() }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
+      ${waterfall(k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label.toLowerCase() }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
       ${share}
       ${c.hub ? `<p class="key" style="margin-top:8px"><b>${t("Transit hub:")}</b> ${c.hub}.</p>` : ""}
     </section>
@@ -1276,7 +1281,8 @@ window.onLangChange = applyLang;
 
 // ===== Load =====
 // the chosen language's dictionary (i18n.js) loads alongside the data, so the first render is already translated
-Promise.all([fetch("countries-50m.json").then(r => r.json()), fetch("data.json").then(r => r.json()), I18N_READY]).then(([world, data]) => {
+// phones get simplified country shapes (all countries kept, a quarter of the size)
+Promise.all([fetch(narrow() || matchMedia("(pointer: coarse)").matches ? "countries-lite.json" : "countries-50m.json").then(r => r.json()), fetch("data.json").then(r => r.json()), I18N_READY]).then(([world, data]) => {
   YEARS = data.years; FRAC = data.frac; SRC = data.sources || {}; META = data.meta || {};
   if (data.data_to) DATA_TO = new Date(data.data_to);
   for (const c of Object.values(data.countries)) { normalise(c); c.name_en = c.name; DATA[c.n] = c; byIso[c.iso3] = c; }

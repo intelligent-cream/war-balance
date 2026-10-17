@@ -55,7 +55,7 @@ const cards = await page.evaluate(() => {
   const out = [];
   for (const c of Object.values(DATA)) {
     const k = calc(c, 2026);
-    const parts = k.shiftParts.concat(state.netBack ? k.backParts.map(p => ({ ...p, v: -p.v })) : [])
+    const parts = k.shiftParts.concat(state.netBack ? k.backShift : [])
       .filter(p => Math.abs(p.v) > 1e-3).sort((a, b) => Math.abs(b.v) - Math.abs(a.v)).slice(0, 4);
     out.push({
       iso3: c.iso3, name: c.name, toUkr: k.shift >= 0,

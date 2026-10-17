@@ -120,7 +120,7 @@ function wireRows(root, rows) {
 // ----- Ukraine vs Russia: what each country moved toward Ukraine against what it moved toward Russia -----
 function sides(c) {
   const k = calc(c, Math.max(2022, state.year));
-  const parts = k.shiftParts.concat(state.netBack ? k.backParts.map(p => ({ ...p, v: -p.v })) : []);
+  const parts = k.shiftParts.concat(state.netBack ? k.backShift : []);
   const ukr = parts.reduce((s, p) => s + Math.max(0, p.v), 0), rus = parts.reduce((s, p) => s + Math.max(0, -p.v), 0);
   return { c, k, ukr, rus, net: ukr - rus, bn: k.shift, v: scaled(c, k.shift), lo: scaled(c, k.shiftLo), hi: scaled(c, k.shiftHi) };
 }
@@ -196,7 +196,7 @@ function tableRows() {
       shift: k.shift, shiftLo: k.shiftLo, shiftHi: k.shiftHi,
       shiftGdp: g && k.shift * g, shiftLoGdp: g && k.shiftLo * g, shiftHiGdp: g && k.shiftHi * g, shiftPp: pp && k.shift * pp,
       cost: k.cost, costGdp: g && k.cost * g, aid: k.aid, refugees: k.refugees, paidRus: k.paidRussia, cert: k.shiftCert,
-      parts: k.shiftParts.concat(state.netBack ? k.backParts.map(p => ({ ...p, v: -p.v, lo: -p.hi, hi: -p.lo, k: "back_" + p.k })) : []),
+      parts: k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, k: "back_" + p.k })) : []),
     };
   });
 }
