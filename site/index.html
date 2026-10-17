@@ -927,11 +927,11 @@ function waterfall(parts, total, totalLabel, totalLo, totalHi) {
     <div class="wf-row total"><span>${totalLabel}</span><span class="val">${eur(total, true)}${totalLo != null ? `<small>${rangeTxt(totalLo, totalHi)}</small>` : ""}</span>
       <div class="track">${axis}${bar(0, total, total >= 0 ? "var(--ukr)" : "var(--rus)")}</div></div></div>`;
 }
-function miniChart(t, colour, title, srcIds) {
-  const years = t.c;
+function miniChart(tr, colour, title, srcIds) {
+  const years = tr.c;
   if (!years.some(v => v)) return "";
   const w = 360, h = 92, pad = { l: 34, r: 6, t: 6, b: 16 };
-  const base = t.m, rates = years.map((v, i) => v / FRAC[i]);
+  const base = tr.m, rates = years.map((v, i) => v / FRAC[i]);
   const max = Math.max(base, ...rates) * 1.08 || 1;
   const x = d3.scalePoint().domain(YEARS).range([pad.l + 8, w - pad.r - 8]);
   const y = d3.scaleLinear().domain([0, max]).range([h - pad.b, pad.t]);
