@@ -813,15 +813,31 @@ def import_mix(iso3: str) -> dict:
     return {k: sum((mixes[i].get(k) or 0) * w for i, w in weights.items()) / wsum for k in keys}
 
 
+GAS_PRICES = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/gas_prices.json").read_text())
+
+
+def gas_index(iso3: str, band: str) -> list[float]:
+    """Price level of Russian gas for one country (2019-2021 = 1): its own contract or customs price where researched
+    (Hungary pays hub prices, Serbia and Turkey oil-linked, Belarus a fixed dollar price), else the Europe-wide index."""
+    kind = "pipeline" if iso3 in PIPELINE_GAS else "lng"
+    own = (GAS_PRICES["countries"].get(iso3) or {}).get("index_vs_2019_2021") or {}
+    series = own.get(kind) or own.get("lng" if kind == "pipeline" else "pipeline") or {}
+    fallback = idx("pipeline_gas" if kind == "pipeline" else "lng", band)
+    out = []
+    for y, fb in zip(YEARS, fallback):
+        v = (series.get(str(y)) or {}).get(band)
+        out.append(v if v else fb)
+    return out
+
+
 def fuel_index(iso3: str, band: str) -> list[float]:
     """Price level of the fossil fuels a country bought from Russia before the war, per year (2019-2021 = 1)."""
     m = import_mix(iso3)
-    gas_ix = "pipeline_gas" if iso3 in PIPELINE_GAS else "lng"
     fuels = ("crude", "products", "gas", "coal", "other_fossil")
     total = sum(m.get(f) or 0 for f in fuels) or 1
     return [
         sum((m.get(f) or 0) * v for f, v in zip(fuels, vals)) / total
-        for vals in zip(idx("urals", band), idx("products", band), idx(gas_ix, band), idx("coal", band),
+        for vals in zip(idx("urals", band), idx("products", band), gas_index(iso3, band), idx("coal", band),
                         idx("products", band))
     ]  # fmt: skip
 
@@ -862,6 +878,13 @@ def pre_war_trends(countries: dict[str, dict], src: Sources) -> None:
         "https://comtradeapi.un.org/",
         tr.get("generated"),
         "back-tested on 2002-2013; see research/2026-10/gaps/trend-notes.md",
+    )
+    src.add(
+        "gas_prices",
+        "Russian gas prices per country: Eurostat Comext and UN Comtrade unit values, published contract prices, oil-formula estimates",
+        "https://ec.europa.eu/eurostat/web/international-trade-in-goods/data/database",
+        GAS_PRICES.get("generated"),
+        "see research/2026-10/gaps/gas_prices-notes.md; Turkey, Poland, Germany and Austria are modelled from neighbours or oil formulas",
     )
     for iso3, flows in tr["countries"].items():
         c = countries.get(iso3)

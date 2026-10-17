@@ -1,0 +1,6191 @@
+{
+ "generated": "2026-10-18",
+ "unit": "EUR/MWh",
+ "energy_basis": "gross calorific value; customs tonnes x 15.2 MWh/t; customs m3 x 10.55 kWh/m3 (energy2 used 0.73 kg/m3 x 10.55 kWh/m3 = 14.45 MWh/t, so its EUR/MWh levels are ~5% higher; indices are unaffected)",
+ "years": "2019-2025 calendar years; 2026 = January-August",
+ "index_definition": "central price / mean of the country's own 2019, 2020 and 2021 central prices (only years with purchases); see base_note where that is not possible. Index ranges carry the year's source uncertainty and a reduced base uncertainty; they exclude the common energy-conversion error.",
+ "certainty_scale": "A = own customs unit values with reported quantities; B = customs value with external volume, peer customs of buyers under the same contract type, or published contract prices; C = contract-structure model; D = assumed or swap prices",
+ "countries": {
+  "ARM": {
+   "pipeline": {
+    "2019": {
+     "low": 13.0,
+     "central": 14.0,
+     "high": 15.0
+    },
+    "2020": {
+     "low": 12.8,
+     "central": 13.7,
+     "high": 14.7
+    },
+    "2021": {
+     "low": 12.3,
+     "central": 13.2,
+     "high": 14.2
+    },
+    "2022": {
+     "low": 14.3,
+     "central": 15.3,
+     "high": 16.4
+    },
+    "2023": {
+     "low": 14.2,
+     "central": 15.2,
+     "high": 16.3
+    },
+    "2024": {
+     "low": 14.2,
+     "central": 15.2,
+     "high": 16.3
+    },
+    "2025": {
+     "low": 13.6,
+     "central": 14.6,
+     "high": 15.7
+    },
+    "2026": {
+     "low": 12.9,
+     "central": 14.1,
+     "high": 15.4
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.984,
+      "central": 1.025,
+      "high": 1.066
+     },
+     "2020": {
+      "low": 0.965,
+      "central": 1.005,
+      "high": 1.045
+     },
+     "2021": {
+      "low": 0.932,
+      "central": 0.97,
+      "high": 1.009
+     },
+     "2022": {
+      "low": 1.071,
+      "central": 1.126,
+      "high": 1.183
+     },
+     "2023": {
+      "low": 1.061,
+      "central": 1.115,
+      "high": 1.172
+     },
+     "2024": {
+      "low": 1.062,
+      "central": 1.117,
+      "high": 1.174
+     },
+     "2025": {
+      "low": 1.021,
+      "central": 1.074,
+      "high": 1.129
+     },
+     "2026": {
+      "low": 0.965,
+      "central": 1.036,
+      "high": 1.11
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 13.63
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comtrade (1582 kt)",
+     "2020": "comtrade (1612 kt)",
+     "2021": "comtrade (1788 kt)",
+     "2022": "comtrade (1898 kt)",
+     "2023": "comtrade (1723 kt)",
+     "2024": "comtrade (1671 kt)",
+     "2025": "comtrade (1628 kt)",
+     "2026": "comtrade_monthly (1009 kt)"
+    }
+   },
+   "contract": "Gazprom Armenia (100% Gazprom) buys at a political border price of $165/1000 m3 (since Jan 2019), unchanged through 2026.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, monthly, 2026-01 to 2026-08",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<M49>&period=2026MM&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "ARKA / JAM News: Gazprom border price for Armenia $165/1000 m3 since 2019, unchanged",
+     "url": "https://jam-news.net/explainer-russian-armenian-gas-talks/",
+     "date": "2020-2023"
+    }
+   ],
+   "reasoning": "Armenian customs unit values (value / reported m3) give $163-169/1000 m3, matching the published $165. EUR index moves only with USD/EUR. 2026 = Comtrade monthly (Jan-May, Aug)."
+  },
+  "AUT": {
+   "pipeline": {
+    "2019": {
+     "low": 14.6,
+     "central": 17.3,
+     "high": 20.1
+    },
+    "2020": {
+     "low": 9.7,
+     "central": 11.5,
+     "high": 13.4
+    },
+    "2021": {
+     "low": 26.6,
+     "central": 31.5,
+     "high": 36.7
+    },
+    "2022": {
+     "low": 82.3,
+     "central": 97.4,
+     "high": 113.5
+    },
+    "2023": {
+     "low": 41.0,
+     "central": 48.5,
+     "high": 56.5
+    },
+    "2024": {
+     "low": 30.9,
+     "central": 36.5,
+     "high": 43.5
+    },
+    "2025": {
+     "low": 31.5,
+     "central": 38.7,
+     "high": 48.2
+    },
+    "2026": {
+     "low": 39.1,
+     "central": 47.9,
+     "high": 59.8
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.728,
+      "central": 0.861,
+      "high": 1.004
+     },
+     "2020": {
+      "low": 0.484,
+      "central": 0.572,
+      "high": 0.667
+     },
+     "2021": {
+      "low": 1.326,
+      "central": 1.567,
+      "high": 1.829
+     },
+     "2022": {
+      "low": 3.953,
+      "central": 4.851,
+      "high": 5.905
+     },
+     "2023": {
+      "low": 1.969,
+      "central": 2.416,
+      "high": 2.941
+     },
+     "2024": {
+      "low": 1.482,
+      "central": 1.818,
+      "high": 2.262
+     },
+     "2025": {
+      "low": 1.515,
+      "central": 1.925,
+      "high": 2.511
+     },
+     "2026": {
+      "low": 1.877,
+      "central": 2.385,
+      "high": 3.111
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 20.08
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "peer hub benchmark (CZE/SVK/ITA customs)",
+     "2020": "peer hub benchmark (CZE/SVK/ITA customs)",
+     "2021": "peer hub benchmark (CZE/SVK/ITA customs)",
+     "2022": "peer hub benchmark (CZE/SVK/ITA customs)",
+     "2023": "peer hub benchmark (CZE/SVK/ITA customs)",
+     "2024": "peer hub benchmark (CZE/SVK/ITA customs)",
+     "2025": "Slovak customs unit value (residual TurkStream-route volumes)",
+     "2026": "Slovak customs unit value (residual TurkStream-route volumes)"
+    }
+   },
+   "contract": "OMV-Gazprom Export contract (to 2040), hub-indexed; OMV terminated the contract in Dec 2024 after an arbitration award, so Austrian imports from Russia ended with Ukraine transit on 1 Jan 2025.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Austrian customs record all gas as origin not specified, so there is no Austrian Russian-gas price. OMV's contract is hub-indexed (publicly confirmed in OMV's arbitration disclosures), so the price is the kt-weighted customs unit value of the same-route hub-indexed buyers (Slovakia, Italy, Czechia), ±12%. 2025-2026 residual volumes (high case only) use the Slovak unit value."
+  },
+  "AZE": {
+   "pipeline": {
+    "2019": {
+     "low": 13.8,
+     "central": 15.7,
+     "high": 17.6
+    },
+    "2020": null,
+    "2021": null,
+    "2022": {
+     "low": 14.7,
+     "central": 16.7,
+     "high": 18.7
+    },
+    "2023": {
+     "low": 14.6,
+     "central": 15.7,
+     "high": 16.8
+    },
+    "2024": {
+     "low": 14.3,
+     "central": 16.2,
+     "high": 18.2
+    },
+    "2025": null,
+    "2026": null
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.896,
+      "central": 1.0,
+      "high": 1.11
+     },
+     "2020": null,
+     "2021": null,
+     "2022": {
+      "low": 0.929,
+      "central": 1.063,
+      "high": 1.213
+     },
+     "2023": {
+      "low": 0.922,
+      "central": 1.001,
+      "high": 1.089
+     },
+     "2024": {
+      "low": 0.903,
+      "central": 1.034,
+      "high": 1.18
+     },
+     "2025": null,
+     "2026": null
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 15.66
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comtrade (294 kt)",
+     "2020": null,
+     "2021": null,
+     "2022": "comtrade (68 kt)",
+     "2023": "comtrade (584 kt)",
+     "2024": "comtrade (103 kt)",
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "SOCAR occasional purchases from Gazprom (swap/balancing for domestic demand and export commitments), ~$180/1000 m3.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Azerbaijani customs unit values; only 2019 in the base period, so the index base is 2019 alone."
+  },
+  "BEL": {
+   "pipeline": {
+    "2019": {
+     "low": 13.8,
+     "central": 17.3,
+     "high": 21.0
+    },
+    "2020": {
+     "low": 9.2,
+     "central": 11.5,
+     "high": 14.0
+    },
+    "2021": {
+     "low": 25.1,
+     "central": 31.5,
+     "high": 38.3
+    },
+    "2022": {
+     "low": 78.4,
+     "central": 88.7,
+     "high": 99.7
+    },
+    "2023": {
+     "low": 49.0,
+     "central": 55.5,
+     "high": 62.3
+    },
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "lng": {
+    "2019": {
+     "low": 15.4,
+     "central": 16.5,
+     "high": 17.7
+    },
+    "2020": {
+     "low": 12.0,
+     "central": 12.8,
+     "high": 13.8
+    },
+    "2021": {
+     "low": 17.9,
+     "central": 19.2,
+     "high": 20.6
+    },
+    "2022": {
+     "low": 86.1,
+     "central": 92.5,
+     "high": 99.1
+    },
+    "2023": {
+     "low": 37.1,
+     "central": 39.9,
+     "high": 42.7
+    },
+    "2024": {
+     "low": 27.0,
+     "central": 29.0,
+     "high": 31.0
+    },
+    "2025": {
+     "low": 31.3,
+     "central": 33.7,
+     "high": 36.0
+    },
+    "2026": {
+     "low": 32.0,
+     "central": 34.3,
+     "high": 36.8
+    }
+   },
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.676,
+      "central": 0.861,
+      "high": 1.067
+     },
+     "2020": {
+      "low": 0.449,
+      "central": 0.572,
+      "high": 0.709
+     },
+     "2021": {
+      "low": 1.231,
+      "central": 1.567,
+      "high": 1.944
+     },
+     "2022": {
+      "low": 3.652,
+      "central": 4.419,
+      "high": 5.382
+     },
+     "2023": {
+      "low": 2.284,
+      "central": 2.764,
+      "high": 3.366
+     },
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": {
+     "2019": {
+      "low": 0.979,
+      "central": 1.02,
+      "high": 1.061
+     },
+     "2020": {
+      "low": 0.762,
+      "central": 0.793,
+      "high": 0.825
+     },
+     "2021": {
+      "low": 1.14,
+      "central": 1.187,
+      "high": 1.235
+     },
+     "2022": {
+      "low": 5.434,
+      "central": 5.714,
+      "high": 6.005
+     },
+     "2023": {
+      "low": 2.343,
+      "central": 2.464,
+      "high": 2.589
+     },
+     "2024": {
+      "low": 1.701,
+      "central": 1.789,
+      "high": 1.88
+     },
+     "2025": {
+      "low": 1.977,
+      "central": 2.079,
+      "high": 2.185
+     },
+     "2026": {
+      "low": 2.018,
+      "central": 2.122,
+      "high": 2.23
+     }
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 20.08,
+    "lng": 16.19
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "peer hub benchmark (Belgian pipeline imports via Germany, not separately recorded)",
+     "2020": "peer hub benchmark (Belgian pipeline imports via Germany, not separately recorded)",
+     "2021": "peer hub benchmark (Belgian pipeline imports via Germany, not separately recorded)",
+     "2022": "comext (67 kt)",
+     "2023": "comext (33 kt)",
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": {
+     "2019": "comtrade (1253 kt)",
+     "2020": "comext (1351 kt)",
+     "2021": "comtrade (867 kt)",
+     "2022": "comext (1688 kt)",
+     "2023": "comext (2860 kt)",
+     "2024": "comext (2421 kt)",
+     "2025": "comtrade (3551 kt)",
+     "2026": "comext (2789 kt)"
+    }
+   },
+   "contract": "Pipeline imports via Germany were small; Belgium recorded Russian pipeline gas directly only in 2021-2023.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Customs unit values of imports from Russia (value / quantity, 1 t = 15.2 MWh GCV). Central = the customs source with the larger recorded quantity (Comext for EU reporters, the national Comtrade record where it covers more volume, e.g. Czech and Slovak gas consigned via other EU states); range = ±3% (≥300 kt), ±8% (30-300 kt) or ±15% (<30 kt), widened to include the other customs source, plus ±4% for energy-content conversion on the price level (not on the index). 2026 = Comext January-August."
+  },
+  "BGD": {
+   "pipeline": null,
+   "lng": {
+    "2019": null,
+    "2020": null,
+    "2021": {
+     "low": 22.5,
+     "central": 27.6,
+     "high": 33.0
+    },
+    "2022": null,
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": {
+      "low": 0.81,
+      "central": 1.0,
+      "high": 1.211
+     },
+     "2022": null,
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 27.61
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": "CREA modelled price for cargoes to this destination",
+     "2022": null,
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Occasional spot cargoes of Russian LNG (Kpler tracking via CREA).",
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker, yearly value and tonnes by destination (Kpler-based volumes, CREA price model)",
+     "url": "https://api.russiafossiltracker.com/v0/counter?aggregate_by=year,destination_iso2,commodity",
+     "date": "2026-08 download reused from the energy research run"
+    }
+   ],
+   "reasoning": "No customs record by partner; CREA's modelled cargo price (spot-linked) ±15%. Base = the years with cargoes (often none in 2019-2021, then the first year is the base) – treat the index as indicative."
+  },
+  "BGR": {
+   "pipeline": {
+    "2019": {
+     "low": 19.9,
+     "central": 21.4,
+     "high": 22.9
+    },
+    "2020": {
+     "low": 11.3,
+     "central": 12.2,
+     "high": 13.0
+    },
+    "2021": {
+     "low": 28.7,
+     "central": 30.8,
+     "high": 33.0
+    },
+    "2022": {
+     "low": 78.2,
+     "central": 84.0,
+     "high": 90.0
+    },
+    "2023": {
+     "low": 42.8,
+     "central": 48.5,
+     "high": 54.5
+    },
+    "2024": {
+     "low": 26.9,
+     "central": 30.5,
+     "high": 34.2
+    },
+    "2025": {
+     "low": 30.3,
+     "central": 32.6,
+     "high": 34.9
+    },
+    "2026": {
+     "low": 33.5,
+     "central": 35.9,
+     "high": 38.5
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.957,
+      "central": 0.997,
+      "high": 1.037
+     },
+     "2020": {
+      "low": 0.544,
+      "central": 0.567,
+      "high": 0.59
+     },
+     "2021": {
+      "low": 1.38,
+      "central": 1.437,
+      "high": 1.495
+     },
+     "2022": {
+      "low": 3.725,
+      "central": 3.917,
+      "high": 4.116
+     },
+     "2023": {
+      "low": 2.039,
+      "central": 2.26,
+      "high": 2.491
+     },
+     "2024": {
+      "low": 1.282,
+      "central": 1.422,
+      "high": 1.567
+     },
+     "2025": {
+      "low": 1.443,
+      "central": 1.518,
+      "high": 1.595
+     },
+     "2026": {
+      "low": 1.593,
+      "central": 1.675,
+      "high": 1.761
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 21.45
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comtrade (1591 kt)",
+     "2020": "comtrade (1557 kt)",
+     "2021": "comext (2168 kt)",
+     "2022": "comtrade (889 kt)",
+     "2023": "comext (237 kt)",
+     "2024": "comext (115 kt)",
+     "2025": "comtrade (1826 kt)",
+     "2026": "comext (1808 kt)"
+    }
+   },
+   "contract": "Bulgargaz-Gazprom Export contract (2013-2022), oil-indexed with partial hub indexation after the 2019-2020 EC commitments; Gazprom cut supply on 27 Apr 2022. From 2023 only small volumes recorded as Russian origin (TurkStream gas bought by traders).",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Customs unit values of imports from Russia (value / quantity, 1 t = 15.2 MWh GCV). Central = the customs source with the larger recorded quantity (Comext for EU reporters, the national Comtrade record where it covers more volume, e.g. Czech and Slovak gas consigned via other EU states); range = ±3% (≥300 kt), ±8% (30-300 kt) or ±15% (<30 kt), widened to include the other customs source, plus ±4% for energy-content conversion on the price level (not on the index). 2026 = Comext January-August."
+  },
+  "BIH": {
+   "pipeline": {
+    "2019": {
+     "low": 24.2,
+     "central": 27.4,
+     "high": 30.7
+    },
+    "2020": {
+     "low": 22.8,
+     "central": 25.8,
+     "high": 29.0
+    },
+    "2021": {
+     "low": 18.6,
+     "central": 21.1,
+     "high": 23.7
+    },
+    "2022": {
+     "low": 27.9,
+     "central": 31.6,
+     "high": 35.4
+    },
+    "2023": {
+     "low": 29.3,
+     "central": 33.1,
+     "high": 37.2
+    },
+    "2024": {
+     "low": 27.5,
+     "central": 31.1,
+     "high": 34.9
+    },
+    "2025": {
+     "low": 24.7,
+     "central": 28.0,
+     "high": 31.5
+    },
+    "2026": {
+     "low": 23.7,
+     "central": 26.8,
+     "high": 30.1
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.991,
+      "central": 1.105,
+      "high": 1.227
+     },
+     "2020": {
+      "low": 0.935,
+      "central": 1.044,
+      "high": 1.158
+     },
+     "2021": {
+      "low": 0.762,
+      "central": 0.851,
+      "high": 0.944
+     },
+     "2022": {
+      "low": 1.113,
+      "central": 1.275,
+      "high": 1.454
+     },
+     "2023": {
+      "low": 1.169,
+      "central": 1.338,
+      "high": 1.527
+     },
+     "2024": {
+      "low": 1.097,
+      "central": 1.256,
+      "high": 1.433
+     },
+     "2025": {
+      "low": 0.988,
+      "central": 1.132,
+      "high": 1.291
+     },
+     "2026": {
+      "low": 0.945,
+      "central": 1.082,
+      "high": 1.234
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 24.75
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comtrade (169 kt)",
+     "2020": "comtrade (134 kt)",
+     "2021": "comtrade (177 kt)",
+     "2022": "comtrade (182 kt)",
+     "2023": "comtrade (162 kt)",
+     "2024": "comtrade (157 kt)",
+     "2025": "comtrade (172 kt)",
+     "2026": "comtrade_monthly (120 kt)"
+    }
+   },
+   "contract": "Energoinvest (Federation) and Gas-Res (Republika Srpska) contracts with Gazprom, priced quarterly on the 9-month change in oil-product prices, paid in EUR.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, monthly, 2026-01 to 2026-08",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<M49>&period=2026MM&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "RFE/RL and PGJ: Energoinvest price adjusted quarterly on 9-month change in oil-product prices; Gazprom +9.7% from Oct 2022",
+     "url": "https://www.pgjonline.com/news/2022/june/bosnian-region-extends-gazprom-gas-deal-until-end-2022",
+     "date": "2022-06"
+    }
+   ],
+   "reasoning": "Bosnian customs unit values (oil-indexed, hence no 2022 spike). 2026 = Comtrade monthly January-August."
+  },
+  "BLR": {
+   "pipeline": {
+    "2019": {
+     "low": 10.0,
+     "central": 10.8,
+     "high": 11.5
+    },
+    "2020": {
+     "low": 9.8,
+     "central": 10.5,
+     "high": 11.3
+    },
+    "2021": {
+     "low": 9.6,
+     "central": 10.3,
+     "high": 11.0
+    },
+    "2022": {
+     "low": 10.8,
+     "central": 11.6,
+     "high": 12.4
+    },
+    "2023": {
+     "low": 10.0,
+     "central": 11.3,
+     "high": 12.7
+    },
+    "2024": {
+     "low": 9.9,
+     "central": 11.3,
+     "high": 12.6
+    },
+    "2025": {
+     "low": 9.5,
+     "central": 10.8,
+     "high": 12.1
+    },
+    "2026": {
+     "low": 8.5,
+     "central": 10.5,
+     "high": 12.5
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.981,
+      "central": 1.021,
+      "high": 1.062
+     },
+     "2020": {
+      "low": 0.961,
+      "central": 1.001,
+      "high": 1.041
+     },
+     "2021": {
+      "low": 0.939,
+      "central": 0.978,
+      "high": 1.018
+     },
+     "2022": {
+      "low": 1.045,
+      "central": 1.099,
+      "high": 1.155
+     },
+     "2023": {
+      "low": 0.965,
+      "central": 1.07,
+      "high": 1.179
+     },
+     "2024": {
+      "low": 0.964,
+      "central": 1.069,
+      "high": 1.178
+     },
+     "2025": {
+      "low": 0.923,
+      "central": 1.024,
+      "high": 1.128
+     },
+     "2026": {
+      "low": 0.829,
+      "central": 0.995,
+      "high": 1.168
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 10.53
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "published contract price $127.0/1000 m3",
+     "2020": "published contract price $127.0/1000 m3",
+     "2021": "published contract price $128.5/1000 m3",
+     "2022": "published contract price $128.52/1000 m3",
+     "2023": "published contract price $128.52/1000 m3",
+     "2024": "published contract price $128.5/1000 m3",
+     "2025": "published contract price $128.5/1000 m3",
+     "2026": "published contract price $128.5/1000 m3"
+    }
+   },
+   "contract": "Gazprom-Beltransgaz (Gazprom Transgaz Belarus) price set by intergovernmental protocol: $127 (2019-2020), $128.5 (2021), frozen at $128.52 for 2022 and, per Russian Economy Minister Reshetnikov, fixed at $128.5 for 2024-2025; settled in roubles since 2023. 2026: no published change, assumed unchanged.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "PrimePress: price of Russian gas for Belarus up 1.2% to $128.5 in 2021 (from $127 in 2020)",
+     "url": "https://primepress.by/news/ekonomika/price_of_russia_s_gas_for_belarus_up_1_2_to_128_5_per_1_000_cubic_meters_in_2021-28396/",
+     "date": "2021-01"
+    },
+    {
+     "name": "Belarus price: S&P Global \"Russia to keep gas price unchanged for Belarus in 2022\" ($128.5/1000 m3); neg.by citing Russian Economy Minister Reshetnikov: fixed $128.5 for 2024-2025",
+     "url": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/091021-russia-to-keep-gas-price-unchanged-for-belarus-in-2022",
+     "date": "2021-09-10 / 2023-11"
+    },
+    {
+     "name": "neg.by: price of Russian gas for Belarus for 2024-2025",
+     "url": "https://neg.by/novosti/otkrytj/stala-izvestna-tsena-rossiyskogo-gaza-dlya-belarusi-na-2024-2025-gody/",
+     "date": "2023-11"
+    }
+   ],
+   "reasoning": "Belarus no longer reports partner trade, so the price is the published USD contract price converted at ECB annual USD/EUR rates and 10.55 kWh/m3. Because the price is fixed in dollars (roubles since 2023), the EUR index moves only with the exchange rate. 2023-2025 ±8% (rouble settlement, protocol not public for 2023); 2026 ±15% (assumed unchanged)."
+  },
+  "BRA": {
+   "pipeline": null,
+   "lng": {
+    "2019": null,
+    "2020": null,
+    "2021": null,
+    "2022": null,
+    "2023": {
+     "low": 27.9,
+     "central": 34.2,
+     "high": 40.9
+    },
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": null,
+     "2023": {
+      "low": 0.784,
+      "central": 1.0,
+      "high": 1.246
+     },
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 34.2
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": null,
+     "2023": "CREA modelled price for cargoes to this destination",
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Occasional spot cargoes of Russian LNG (Kpler tracking via CREA).",
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker, yearly value and tonnes by destination (Kpler-based volumes, CREA price model)",
+     "url": "https://api.russiafossiltracker.com/v0/counter?aggregate_by=year,destination_iso2,commodity",
+     "date": "2026-08 download reused from the energy research run"
+    }
+   ],
+   "reasoning": "No customs record by partner; CREA's modelled cargo price (spot-linked) ±15%. Base = the years with cargoes (often none in 2019-2021, then the first year is the base) – treat the index as indicative.",
+   "base_note": "lng: no purchases in 2019-2021; index base = first year with purchases (2023)."
+  },
+  "CHE": {
+   "pipeline": {
+    "2019": {
+     "low": 14.1,
+     "central": 17.3,
+     "high": 29.1
+    },
+    "2020": {
+     "low": 9.4,
+     "central": 11.5,
+     "high": 17.9
+    },
+    "2021": {
+     "low": 25.7,
+     "central": 31.5,
+     "high": 37.6
+    },
+    "2022": {
+     "low": 79.5,
+     "central": 97.4,
+     "high": 116.5
+    },
+    "2023": {
+     "low": 37.3,
+     "central": 48.5,
+     "high": 63.1
+    },
+    "2024": {
+     "low": 28.0,
+     "central": 36.5,
+     "high": 47.5
+    },
+    "2025": {
+     "low": 29.9,
+     "central": 38.9,
+     "high": 50.6
+    },
+    "2026": {
+     "low": 36.8,
+     "central": 47.9,
+     "high": 62.3
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.641,
+      "central": 0.861,
+      "high": 1.62
+     },
+     "2020": {
+      "low": 0.426,
+      "central": 0.572,
+      "high": 0.996
+     },
+     "2021": {
+      "low": 1.168,
+      "central": 1.567,
+      "high": 2.097
+     },
+     "2022": {
+      "low": 3.219,
+      "central": 4.851,
+      "high": 7.759
+     },
+     "2023": {
+      "low": 1.509,
+      "central": 2.416,
+      "high": 4.201
+     },
+     "2024": {
+      "low": 1.136,
+      "central": 1.818,
+      "high": 3.161
+     },
+     "2025": {
+      "low": 1.211,
+      "central": 1.939,
+      "high": 3.371
+     },
+     "2026": {
+      "low": 1.489,
+      "central": 2.385,
+      "high": 4.146
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 20.08
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "peer hub benchmark; Swiss customs (small volume) inside range",
+     "2020": "peer hub benchmark; Swiss customs (small volume) inside range",
+     "2021": "peer hub benchmark; Swiss customs (small volume) inside range",
+     "2022": "peer hub benchmark; Swiss customs (small volume) inside range",
+     "2023": "gap fill: energy2 has volume but no customs price - peer hub benchmark",
+     "2024": "gap fill: energy2 has volume but no customs price - peer hub benchmark",
+     "2025": "gap fill: energy2 has volume but no customs price - peer hub benchmark",
+     "2026": "gap fill: energy2 has volume but no customs price - peer hub benchmark"
+    }
+   },
+   "contract": "Swiss utilities buy Russian-origin gas through German and Italian hubs and from wholesalers (Uniper, Eni); no direct Gazprom long-term contract of note.",
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Switzerland's Russian share is estimated in energy2; its customs record only a few tens of kt as Russian origin (unit values 17-30 EUR/MWh in 2019-2021, close to the peer benchmark). Price = hub-indexed peer benchmark ±15%."
+  },
+  "CHN": {
+   "pipeline": {
+    "2019": {
+     "low": 16.4,
+     "central": 18.0,
+     "high": 19.6
+    },
+    "2020": {
+     "low": 14.4,
+     "central": 16.1,
+     "high": 17.9
+    },
+    "2021": {
+     "low": 10.4,
+     "central": 11.6,
+     "high": 13.0
+    },
+    "2022": {
+     "low": 20.6,
+     "central": 23.1,
+     "high": 25.7
+    },
+    "2023": {
+     "low": 22.2,
+     "central": 24.9,
+     "high": 27.7
+    },
+    "2024": {
+     "low": 20.3,
+     "central": 22.7,
+     "high": 25.3
+    },
+    "2025": {
+     "low": 18.2,
+     "central": 20.4,
+     "high": 22.7
+    },
+    "2026": {
+     "low": 15.3,
+     "central": 18.4,
+     "high": 21.0
+    }
+   },
+   "lng": {
+    "2019": {
+     "low": 24.7,
+     "central": 26.6,
+     "high": 28.5
+    },
+    "2020": {
+     "low": 18.3,
+     "central": 19.6,
+     "high": 21.0
+    },
+    "2021": {
+     "low": 31.7,
+     "central": 34.0,
+     "high": 36.4
+    },
+    "2022": {
+     "low": 60.3,
+     "central": 64.8,
+     "high": 69.4
+    },
+    "2023": {
+     "low": 36.5,
+     "central": 39.2,
+     "high": 42.0
+    },
+    "2024": {
+     "low": 34.1,
+     "central": 36.6,
+     "high": 39.2
+    },
+    "2025": {
+     "low": 27.4,
+     "central": 29.4,
+     "high": 31.5
+    },
+    "2026": {
+     "low": 30.2,
+     "central": 36.3,
+     "high": 42.7
+    }
+   },
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 1.097,
+      "central": 1.179,
+      "high": 1.264
+     },
+     "2020": {
+      "low": 0.963,
+      "central": 1.057,
+      "high": 1.156
+     },
+     "2021": {
+      "low": 0.696,
+      "central": 0.764,
+      "high": 0.835
+     },
+     "2022": {
+      "low": 1.354,
+      "central": 1.517,
+      "high": 1.695
+     },
+     "2023": {
+      "low": 1.455,
+      "central": 1.631,
+      "high": 1.822
+     },
+     "2024": {
+      "low": 1.33,
+      "central": 1.49,
+      "high": 1.665
+     },
+     "2025": {
+      "low": 1.192,
+      "central": 1.336,
+      "high": 1.493
+     },
+     "2026": {
+      "low": 1.006,
+      "central": 1.206,
+      "high": 1.386
+     }
+    },
+    "lng": {
+     "2019": {
+      "low": 0.954,
+      "central": 0.994,
+      "high": 1.034
+     },
+     "2020": {
+      "low": 0.705,
+      "central": 0.734,
+      "high": 0.763
+     },
+     "2021": {
+      "low": 1.222,
+      "central": 1.273,
+      "high": 1.324
+     },
+     "2022": {
+      "low": 2.305,
+      "central": 2.424,
+      "high": 2.548
+     },
+     "2023": {
+      "low": 1.395,
+      "central": 1.466,
+      "high": 1.541
+     },
+     "2024": {
+      "low": 1.302,
+      "central": 1.369,
+      "high": 1.439
+     },
+     "2025": {
+      "low": 1.047,
+      "central": 1.101,
+      "high": 1.157
+     },
+     "2026": {
+      "low": 1.155,
+      "central": 1.357,
+      "high": 1.567
+     }
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 15.24,
+    "lng": 26.73
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "reported launch price $212.2/1000 m3 (Dec 2019)",
+     "2020": "Chinese customs value / Gazprom Power of Siberia volume (4.1 bcm)",
+     "2021": "Chinese customs value / Gazprom Power of Siberia volume (10.4 bcm)",
+     "2022": "Chinese customs value / Gazprom Power of Siberia volume (15.5 bcm)",
+     "2023": "Chinese customs value / Gazprom Power of Siberia volume (22.7 bcm)",
+     "2024": "Chinese customs value / Gazprom Power of Siberia volume (31.0 bcm)",
+     "2025": "Chinese customs value / Gazprom Power of Siberia volume (38.8 bcm)",
+     "2026": "oil formula calibrated on 2022-2025 China customs (k=0.295)"
+    },
+    "lng": {
+     "2019": "comtrade (2506 kt)",
+     "2020": "comtrade (5047 kt)",
+     "2021": "comtrade (4518 kt)",
+     "2022": "comtrade (6505 kt)",
+     "2023": "comtrade (8044 kt)",
+     "2024": "comtrade (8284 kt)",
+     "2025": "comtrade (9954 kt)",
+     "2026": "2025 customs x mean change of CREA China LNG price and Japan LNG import price"
+    }
+   },
+   "contract": "CNPC-Gazprom Power of Siberia 30-year contract (38 bcm/yr plateau reached Dec 2024), oil-product-linked with a ~9-month lag, base price undisclosed; Russian LNG (Yamal, Sakhalin, Arctic LNG 2 from 2024) bought on term and spot.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "RFA / Interfax on Power of Siberia prices from Russian and Chinese customs data ($212 launch, ~$203 Jan-Feb 2020, $126 Oct-Nov 2020, $148 2021; oil-product basket with 9-month lag)",
+     "url": "https://www.rfa.org/english/commentaries/energy_watch/pipeline-02122021105409.html",
+     "date": "2021-02-12"
+    },
+    {
+     "name": "Gazprom press releases on Power of Siberia annual deliveries (2020 4.1 bcm; 2021 10.4; 2022 15.5; 2023 22.7; 2024 31.0; 2025 38.8)",
+     "url": "https://www.gazprom.com/projects/power-of-siberia/",
+     "date": "2026-01"
+    },
+    {
+     "name": "CREA Russia Fossil Tracker, yearly value and tonnes by destination (Kpler-based volumes, CREA price model)",
+     "url": "https://api.russiafossiltracker.com/v0/counter?aggregate_by=year,destination_iso2,commodity",
+     "date": "2026-08 download reused from the energy research run"
+    },
+    {
+     "name": "FRED / IMF primary commodity prices: Brent (POILBREUSDM, DCOILBRENTEU), EU natural gas TTF (PNGASEUUSDM), Japan LNG (PNGASJPUSDM)",
+     "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=POILBREUSDM",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Chinese customs values of pipeline gas from Russia are published, but Comtrade imputes the quantity, so the unit value = customs value / Gazprom's reported annual Power of Siberia deliveries ($194/1000 m3 in 2020, $257 in 2022, $284 in 2023, $259 in 2024, $243 in 2025; 2024-2025 match the Russian Economy Ministry's $257/$247). 2019 = the reported launch price. 2026 is modelled with the oil formula calibrated on 2022-2025 (lagged Brent fell, so the 2026 price falls). LNG: Chinese customs unit values; 2026 scaled from 2025. China's index is low (≈1.3-1.6) because the oil link lags and caps spikes."
+  },
+  "CZE": {
+   "pipeline": {
+    "2019": {
+     "low": 12.7,
+     "central": 15.4,
+     "high": 16.5
+    },
+    "2020": {
+     "low": 9.5,
+     "central": 10.3,
+     "high": 11.0
+    },
+    "2021": {
+     "low": 23.3,
+     "central": 30.6,
+     "high": 32.7
+    },
+    "2022": {
+     "low": 86.5,
+     "central": 92.9,
+     "high": 99.5
+    },
+    "2023": {
+     "low": 42.3,
+     "central": 49.1,
+     "high": 52.6
+    },
+    "2024": {
+     "low": 38.9,
+     "central": 41.8,
+     "high": 44.8
+    },
+    "2025": {
+     "low": 29.9,
+     "central": 38.9,
+     "high": 50.6
+    },
+    "2026": {
+     "low": 36.8,
+     "central": 47.9,
+     "high": 62.3
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.675,
+      "central": 0.823,
+      "high": 0.886
+     },
+     "2020": {
+      "low": 0.506,
+      "central": 0.547,
+      "high": 0.589
+     },
+     "2021": {
+      "low": 1.242,
+      "central": 1.63,
+      "high": 1.754
+     },
+     "2022": {
+      "low": 4.425,
+      "central": 4.952,
+      "high": 5.579
+     },
+     "2023": {
+      "low": 2.165,
+      "central": 2.617,
+      "high": 2.948
+     },
+     "2024": {
+      "low": 1.991,
+      "central": 2.228,
+      "high": 2.51
+     },
+     "2025": {
+      "low": 1.53,
+      "central": 2.076,
+      "high": 2.838
+     },
+     "2026": {
+      "low": 1.882,
+      "central": 2.553,
+      "high": 3.491
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 18.76
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comtrade (6175 kt)",
+     "2020": "comtrade (4513 kt)",
+     "2021": "comtrade (6345 kt)",
+     "2022": "comtrade (5237 kt)",
+     "2023": "comtrade (588 kt)",
+     "2024": "comtrade (1309 kt)",
+     "2025": "gap fill: energy2 has volume but no customs price - peer hub benchmark",
+     "2026": "gap fill: energy2 has volume but no customs price - peer hub benchmark"
+    }
+   },
+   "contract": "Hub-indexed supply via Germany and Slovakia (RWE/innogy, Vemex). Ukraine-route transit ended 1 Jan 2025.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Customs unit values of imports from Russia (value / quantity, 1 t = 15.2 MWh GCV). Central = the customs source with the larger recorded quantity (Comext for EU reporters, the national Comtrade record where it covers more volume, e.g. Czech and Slovak gas consigned via other EU states); range = ±3% (≥300 kt), ±8% (30-300 kt) or ±15% (<30 kt), widened to include the other customs source, plus ±4% for energy-content conversion on the price level (not on the index). 2026 = Comext January-August."
+  },
+  "DEU": {
+   "pipeline": {
+    "2019": {
+     "low": 14.1,
+     "central": 16.4,
+     "high": 18.8
+    },
+    "2020": {
+     "low": 10.5,
+     "central": 11.9,
+     "high": 13.4
+    },
+    "2021": {
+     "low": 23.0,
+     "central": 28.4,
+     "high": 34.2
+    },
+    "2022": {
+     "low": 68.4,
+     "central": 86.5,
+     "high": 114.8
+    },
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.748,
+      "central": 0.867,
+      "high": 0.996
+     },
+     "2020": {
+      "low": 0.555,
+      "central": 0.629,
+      "high": 0.709
+     },
+     "2021": {
+      "low": 1.221,
+      "central": 1.504,
+      "high": 1.81
+     },
+     "2022": {
+      "low": 3.501,
+      "central": 4.575,
+      "high": 6.324
+     },
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 18.91
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "mean of BAFA border price (all origins) and peer hub benchmark",
+     "2020": "mean of BAFA border price (all origins) and peer hub benchmark",
+     "2021": "mean of BAFA border price (all origins) and peer hub benchmark",
+     "2022": "mean of BAFA border price (all origins) and peer hub benchmark",
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Uniper, RWE, Wingas/SEFE, EnBW/VNG: Gazprom Export contracts largely hub-indexed (NCG/Gaspool/TTF) after the 2010-2016 renegotiations; Nord Stream deliveries stopped 31 Aug 2022.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "BAFA Grenzuebergangspreis Erdgas (German border price, all origins) 2019-2022, as tabulated in cleanthinking.de \"Gazprom gewaehrte Deutschland nie einen Gasrabatt\"",
+     "url": "https://www.cleanthinking.de/?p=1073555",
+     "date": "2026-09-28"
+    },
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "German customs data hide the Russian gas quantity and value (confidential). Central = mean of the BAFA border price (average of all pipeline imports, ~55% Russian in 2021) and the customs unit value of hub-indexed peers (CZE/SVK/ITA). 2022 range widened upward because Russian deliveries were concentrated in January-August, when TTF averaged ~130 EUR/MWh. 2023-2026: no Russian gas consumed in Germany (null)."
+  },
+  "ESP": {
+   "pipeline": null,
+   "lng": {
+    "2019": {
+     "low": 13.9,
+     "central": 15.0,
+     "high": 16.0
+    },
+    "2020": {
+     "low": 11.3,
+     "central": 12.2,
+     "high": 13.1
+    },
+    "2021": {
+     "low": 27.1,
+     "central": 29.1,
+     "high": 31.2
+    },
+    "2022": {
+     "low": 70.8,
+     "central": 77.5,
+     "high": 83.0
+    },
+    "2023": {
+     "low": 35.9,
+     "central": 38.6,
+     "high": 41.3
+    },
+    "2024": {
+     "low": 29.6,
+     "central": 31.8,
+     "high": 34.0
+    },
+    "2025": {
+     "low": 30.2,
+     "central": 32.4,
+     "high": 34.7
+    },
+    "2026": {
+     "low": 32.8,
+     "central": 35.2,
+     "high": 37.7
+    }
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": {
+      "low": 0.766,
+      "central": 0.797,
+      "high": 0.829
+     },
+     "2020": {
+      "low": 0.624,
+      "central": 0.649,
+      "high": 0.676
+     },
+     "2021": {
+      "low": 1.492,
+      "central": 1.553,
+      "high": 1.616
+     },
+     "2022": {
+      "low": 3.855,
+      "central": 4.131,
+      "high": 4.342
+     },
+     "2023": {
+      "low": 1.955,
+      "central": 2.056,
+      "high": 2.161
+     },
+     "2024": {
+      "low": 1.61,
+      "central": 1.693,
+      "high": 1.78
+     },
+     "2025": {
+      "low": 1.643,
+      "central": 1.728,
+      "high": 1.816
+     },
+     "2026": {
+      "low": 1.786,
+      "central": 1.878,
+      "high": 1.974
+     }
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 18.76
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": "comext (2202 kt)",
+     "2020": "comext (2368 kt)",
+     "2021": "comtrade (2745 kt)",
+     "2022": "comtrade (3696 kt)",
+     "2023": "comext (3976 kt)",
+     "2024": "comext (5012 kt)",
+     "2025": "comext (2716 kt)",
+     "2026": "comext (2648 kt)"
+    }
+   },
+   "contract": "Naturgy long-term Yamal LNG contract (~2.5 Mt/yr, mix of oil and hub indexation) plus spot cargoes.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "LNG: customs unit values (Comext) for Russian-origin LNG. Pipeline where relevant: the importer's customs do not record a usable Russian pipeline quantity, so the price is the kt-weighted customs unit value of hub-indexed Central European buyers (Czechia, Slovakia, Italy) with a ±15-17% range. Rationale: these contracts were renegotiated to hub (TTF/NCG) indexation in 2013-2020 and the peer group buys under the same Gazprom Export terms."
+  },
+  "EST": {
+   "pipeline": {
+    "2019": {
+     "low": 16.1,
+     "central": 18.9,
+     "high": 21.2
+    },
+    "2020": {
+     "low": 7.5,
+     "central": 9.2,
+     "high": 9.8
+    },
+    "2021": {
+     "low": 22.8,
+     "central": 24.4,
+     "high": 29.0
+    },
+    "2022": {
+     "low": 55.4,
+     "central": 59.5,
+     "high": 95.8
+    },
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "lng": {
+    "2019": {
+     "low": 15.1,
+     "central": 18.6,
+     "high": 22.2
+    },
+    "2020": {
+     "low": 9.9,
+     "central": 12.1,
+     "high": 14.5
+    },
+    "2021": {
+     "low": 40.5,
+     "central": 49.7,
+     "high": 59.4
+    },
+    "2022": {
+     "low": 96.2,
+     "central": 117.9,
+     "high": 141.0
+    },
+    "2023": {
+     "low": 26.7,
+     "central": 32.8,
+     "high": 39.2
+    },
+    "2024": {
+     "low": 21.3,
+     "central": 26.1,
+     "high": 31.2
+    },
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.919,
+      "central": 1.079,
+      "high": 1.219
+     },
+     "2020": {
+      "low": 0.427,
+      "central": 0.524,
+      "high": 0.565
+     },
+     "2021": {
+      "low": 1.297,
+      "central": 1.397,
+      "high": 1.669
+     },
+     "2022": {
+      "low": 3.027,
+      "central": 3.399,
+      "high": 5.778
+     },
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": {
+     "2019": {
+      "low": 0.561,
+      "central": 0.693,
+      "high": 0.839
+     },
+     "2020": {
+      "low": 0.367,
+      "central": 0.453,
+      "high": 0.549
+     },
+     "2021": {
+      "low": 1.501,
+      "central": 1.854,
+      "high": 2.244
+     },
+     "2022": {
+      "low": 3.4,
+      "central": 4.4,
+      "high": 5.622
+     },
+     "2023": {
+      "low": 0.945,
+      "central": 1.223,
+      "high": 1.563
+     },
+     "2024": {
+      "low": 0.752,
+      "central": 0.973,
+      "high": 1.243
+     },
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 17.5,
+    "lng": 26.79
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comtrade (286 kt)",
+     "2020": "comtrade (444 kt)",
+     "2021": "comtrade (318 kt)",
+     "2022": "comtrade (369 kt)",
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": {
+     "2019": "comtrade (10 kt)",
+     "2020": "comtrade (11 kt)",
+     "2021": "comtrade (27 kt)",
+     "2022": "comtrade (14 kt)",
+     "2023": "comext (5 kt)",
+     "2024": "comtrade (5 kt)",
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Eesti Gaas contract with Gazprom, hub-linked after 2015; imports ended 2022.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Customs unit values of imports from Russia (value / quantity, 1 t = 15.2 MWh GCV). Central = the customs source with the larger recorded quantity (Comext for EU reporters, the national Comtrade record where it covers more volume, e.g. Czech and Slovak gas consigned via other EU states); range = ±3% (≥300 kt), ±8% (30-300 kt) or ±15% (<30 kt), widened to include the other customs source, plus ±4% for energy-content conversion on the price level (not on the index). 2026 = Comext January-August."
+  },
+  "FIN": {
+   "pipeline": {
+    "2019": {
+     "low": 13.8,
+     "central": 17.3,
+     "high": 21.0
+    },
+    "2020": {
+     "low": 9.2,
+     "central": 11.5,
+     "high": 14.0
+    },
+    "2021": {
+     "low": 25.1,
+     "central": 31.5,
+     "high": 38.3
+    },
+    "2022": {
+     "low": 77.6,
+     "central": 97.4,
+     "high": 118.5
+    },
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "lng": {
+    "2019": {
+     "low": 18.1,
+     "central": 20.5,
+     "high": 23.0
+    },
+    "2020": {
+     "low": 16.3,
+     "central": 18.4,
+     "high": 20.7
+    },
+    "2021": {
+     "low": 23.1,
+     "central": 26.1,
+     "high": 29.3
+    },
+    "2022": {
+     "low": 30.5,
+     "central": 34.5,
+     "high": 38.8
+    },
+    "2023": {
+     "low": 25.0,
+     "central": 28.3,
+     "high": 31.8
+    },
+    "2024": {
+     "low": 23.6,
+     "central": 26.8,
+     "high": 30.1
+    },
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.676,
+      "central": 0.861,
+      "high": 1.067
+     },
+     "2020": {
+      "low": 0.449,
+      "central": 0.572,
+      "high": 0.709
+     },
+     "2021": {
+      "low": 1.231,
+      "central": 1.567,
+      "high": 1.944
+     },
+     "2022": {
+      "low": 3.616,
+      "central": 4.851,
+      "high": 6.401
+     },
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": {
+     "2019": {
+      "low": 0.847,
+      "central": 0.945,
+      "high": 1.048
+     },
+     "2020": {
+      "low": 0.762,
+      "central": 0.851,
+      "high": 0.944
+     },
+     "2021": {
+      "low": 1.079,
+      "central": 1.204,
+      "high": 1.336
+     },
+     "2022": {
+      "low": 1.391,
+      "central": 1.593,
+      "high": 1.817
+     },
+     "2023": {
+      "low": 1.142,
+      "central": 1.308,
+      "high": 1.492
+     },
+     "2024": {
+      "low": 1.079,
+      "central": 1.235,
+      "high": 1.409
+     },
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 20.08,
+    "lng": 21.67
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "peer hub benchmark (customs volume of pipeline gas not published; hub-indexed contract)",
+     "2020": "peer hub benchmark (customs volume of pipeline gas not published; hub-indexed contract)",
+     "2021": "peer hub benchmark (customs volume of pipeline gas not published; hub-indexed contract)",
+     "2022": "peer hub benchmark (customs volume of pipeline gas not published; hub-indexed contract)",
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": {
+     "2019": "comext (89 kt)",
+     "2020": "comext (137 kt)",
+     "2021": "comtrade (142 kt)",
+     "2022": "comext (187 kt)",
+     "2023": "comtrade (133 kt)",
+     "2024": "comtrade (106 kt)",
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "LNG: small-scale cargoes (Pori/Tornio). Pipeline: Gasum-Gazprom contract, hub-related after Gasum's 2020 arbitration win; supply cut 21 May 2022.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "LNG: customs unit values (Comext) for Russian-origin LNG. Pipeline where relevant: the importer's customs do not record a usable Russian pipeline quantity, so the price is the kt-weighted customs unit value of hub-indexed Central European buyers (Czechia, Slovakia, Italy) with a ±15-17% range. Rationale: these contracts were renegotiated to hub (TTF/NCG) indexation in 2013-2020 and the peer group buys under the same Gazprom Export terms."
+  },
+  "FRA": {
+   "pipeline": {
+    "2019": {
+     "low": 13.8,
+     "central": 17.3,
+     "high": 21.0
+    },
+    "2020": {
+     "low": 9.2,
+     "central": 11.5,
+     "high": 14.0
+    },
+    "2021": {
+     "low": 25.1,
+     "central": 31.5,
+     "high": 38.3
+    },
+    "2022": {
+     "low": 77.6,
+     "central": 97.4,
+     "high": 118.5
+    },
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "lng": {
+    "2019": {
+     "low": 11.9,
+     "central": 15.5,
+     "high": 19.4
+    },
+    "2020": {
+     "low": 9.6,
+     "central": 12.5,
+     "high": 15.6
+    },
+    "2021": {
+     "low": 28.8,
+     "central": 32.0,
+     "high": 35.3
+    },
+    "2022": {
+     "low": 60.5,
+     "central": 73.9,
+     "high": 88.2
+    },
+    "2023": {
+     "low": 37.2,
+     "central": 42.7,
+     "high": 48.4
+    },
+    "2024": {
+     "low": 29.2,
+     "central": 32.2,
+     "high": 35.4
+    },
+    "2025": {
+     "low": 29.8,
+     "central": 33.5,
+     "high": 37.3
+    },
+    "2026": {
+     "low": 26.6,
+     "central": 34.7,
+     "high": 43.3
+    }
+   },
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.676,
+      "central": 0.861,
+      "high": 1.067
+     },
+     "2020": {
+      "low": 0.449,
+      "central": 0.572,
+      "high": 0.709
+     },
+     "2021": {
+      "low": 1.231,
+      "central": 1.567,
+      "high": 1.944
+     },
+     "2022": {
+      "low": 3.616,
+      "central": 4.851,
+      "high": 6.401
+     },
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": {
+     "2019": {
+      "low": 0.59,
+      "central": 0.776,
+      "high": 0.981
+     },
+     "2020": {
+      "low": 0.476,
+      "central": 0.626,
+      "high": 0.792
+     },
+     "2021": {
+      "low": 1.426,
+      "central": 1.599,
+      "high": 1.79
+     },
+     "2022": {
+      "low": 2.855,
+      "central": 3.693,
+      "high": 4.722
+     },
+     "2023": {
+      "low": 1.756,
+      "central": 2.132,
+      "high": 2.594
+     },
+     "2024": {
+      "low": 1.377,
+      "central": 1.61,
+      "high": 1.896
+     },
+     "2025": {
+      "low": 1.409,
+      "central": 1.673,
+      "high": 1.996
+     },
+     "2026": {
+      "low": 1.257,
+      "central": 1.733,
+      "high": 2.318
+     }
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 20.08,
+    "lng": 20.01
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "peer hub benchmark (Engie contracts via Germany, hub-indexed)",
+     "2020": "peer hub benchmark (Engie contracts via Germany, hub-indexed)",
+     "2021": "peer hub benchmark (Engie contracts via Germany, hub-indexed)",
+     "2022": "peer hub benchmark (Engie contracts via Germany, hub-indexed)",
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": {
+     "2019": "peer LNG benchmark (BEL/ESP/NLD/PRT Comext, kt-weighted)",
+     "2020": "peer LNG benchmark (BEL/ESP/NLD/PRT Comext, kt-weighted)",
+     "2021": "mean of [French customs value / Kpler volume] and peer LNG benchmark",
+     "2022": "mean of [French customs value / Kpler volume] and peer LNG benchmark",
+     "2023": "mean of [French customs value / Kpler volume] and peer LNG benchmark",
+     "2024": "mean of [French customs value / Kpler volume] and peer LNG benchmark",
+     "2025": "mean of [French customs value / Kpler volume] and peer LNG benchmark",
+     "2026": "peer LNG benchmark (BEL/ESP/NLD/PRT Comext, kt-weighted)"
+    }
+   },
+   "contract": "LNG: TotalEnergies long-term Yamal LNG offtake (oil/hub mix, terms undisclosed) plus spot cargoes into Montoir/Dunkirk; pipeline (2019-2022): Engie-Gazprom Export contracts via Germany, hub-indexed.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "CREA Russia Fossil Tracker, yearly value and tonnes by destination (Kpler-based volumes, CREA price model)",
+     "url": "https://api.russiafossiltracker.com/v0/counter?aggregate_by=year,destination_iso2,commodity",
+     "date": "2026-08 download reused from the energy research run"
+    },
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "France's customs value of Russian LNG is published, but the quantity is confidential (Comtrade imputes it). Central LNG price = mean of (French customs value / Kpler cargo tonnes from CREA, 2021-2025) and the kt-weighted Comext unit value of Belgian, Spanish, Dutch and Portuguese Russian LNG; 2019-2020 and 2026 use the peer benchmark only (±20%). The French value/volume estimate is below peers in 2022 (≈67 vs ≈85 EUR/MWh), consistent with part of the TotalEnergies volume being priced with a lag. Pipeline gas via Germany uses the hub-indexed peer benchmark."
+  },
+  "GBR": {
+   "pipeline": null,
+   "lng": {
+    "2019": {
+     "low": 15.3,
+     "central": 16.4,
+     "high": 17.6
+    },
+    "2020": {
+     "low": 12.2,
+     "central": 13.1,
+     "high": 14.0
+    },
+    "2021": {
+     "low": 28.2,
+     "central": 30.2,
+     "high": 32.4
+    },
+    "2022": {
+     "low": 82.0,
+     "central": 88.1,
+     "high": 94.4
+    },
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": {
+      "low": 0.792,
+      "central": 0.824,
+      "high": 0.858
+     },
+     "2020": {
+      "low": 0.631,
+      "central": 0.657,
+      "high": 0.683
+     },
+     "2021": {
+      "low": 1.459,
+      "central": 1.519,
+      "high": 1.58
+     },
+     "2022": {
+      "low": 4.208,
+      "central": 4.425,
+      "high": 4.65
+     },
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 19.91
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": "comtrade (1191 kt)",
+     "2020": "comtrade (2381 kt)",
+     "2021": "comtrade (2265 kt)",
+     "2022": "comtrade (366 kt)",
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Spot and portfolio Yamal cargoes into Isle of Grain/South Hook until the UK import ban (1 Jan 2023).",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "UK customs unit values of Russian-origin LNG."
+  },
+  "GEO": {
+   "pipeline": {
+    "2019": {
+     "low": 10.5,
+     "central": 15.7,
+     "high": 22.0
+    },
+    "2020": {
+     "low": 10.3,
+     "central": 15.4,
+     "high": 21.6
+    },
+    "2021": null,
+    "2022": {
+     "low": 18.1,
+     "central": 27.0,
+     "high": 37.9
+    },
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.633,
+      "central": 1.01,
+      "high": 1.544
+     },
+     "2020": {
+      "low": 0.621,
+      "central": 0.99,
+      "high": 1.513
+     },
+     "2021": null,
+     "2022": {
+      "low": 0.988,
+      "central": 1.741,
+      "high": 3.066
+     },
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 15.51
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "assumed price (customs value recorded, quantity imputed)",
+     "2020": "assumed price (customs value recorded, quantity imputed)",
+     "2021": null,
+     "2022": "assumed price (customs value recorded, quantity imputed)",
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Georgia receives Russian gas mainly as an in-kind transit fee for gas to Armenia (no price paid) plus small commercial purchases (2017-2022).",
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Georgian customs record a value for commercial imports from Russia in 2019-2022 but the quantity is imputed. Price assumed ~$185/1000 m3 (2019-2021) and ~$300 (2022), range -30%/+35%. No commercial purchases recorded after 2022."
+  },
+  "GRC": {
+   "pipeline": {
+    "2019": {
+     "low": 21.0,
+     "central": 24.0,
+     "high": 27.3
+    },
+    "2020": {
+     "low": 9.4,
+     "central": 10.1,
+     "high": 10.9
+    },
+    "2021": {
+     "low": 29.9,
+     "central": 32.2,
+     "high": 34.4
+    },
+    "2022": {
+     "low": 102.5,
+     "central": 110.1,
+     "high": 118.0
+    },
+    "2023": {
+     "low": 31.4,
+     "central": 33.7,
+     "high": 36.1
+    },
+    "2024": {
+     "low": 26.3,
+     "central": 28.2,
+     "high": 30.2
+    },
+    "2025": {
+     "low": 30.2,
+     "central": 32.4,
+     "high": 34.8
+    },
+    "2026": {
+     "low": 35.1,
+     "central": 37.7,
+     "high": 40.3
+    }
+   },
+   "lng": {
+    "2019": {
+     "low": 15.6,
+     "central": 19.1,
+     "high": 22.8
+    },
+    "2020": {
+     "low": 9.5,
+     "central": 10.8,
+     "high": 12.1
+    },
+    "2021": null,
+    "2022": {
+     "low": 94.8,
+     "central": 107.3,
+     "high": 120.5
+    },
+    "2023": {
+     "low": 28.6,
+     "central": 30.8,
+     "high": 33.0
+    },
+    "2024": {
+     "low": 24.3,
+     "central": 27.5,
+     "high": 30.9
+    },
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.971,
+      "central": 1.087,
+      "high": 1.206
+     },
+     "2020": {
+      "low": 0.438,
+      "central": 0.459,
+      "high": 0.481
+     },
+     "2021": {
+      "low": 1.387,
+      "central": 1.454,
+      "high": 1.524
+     },
+     "2022": {
+      "low": 4.674,
+      "central": 4.981,
+      "high": 5.309
+     },
+     "2023": {
+      "low": 1.431,
+      "central": 1.525,
+      "high": 1.626
+     },
+     "2024": {
+      "low": 1.199,
+      "central": 1.277,
+      "high": 1.361
+     },
+     "2025": {
+      "low": 1.377,
+      "central": 1.467,
+      "high": 1.564
+     },
+     "2026": {
+      "low": 1.599,
+      "central": 1.704,
+      "high": 1.816
+     }
+    },
+    "lng": {
+     "2019": {
+      "low": 1.045,
+      "central": 1.277,
+      "high": 1.527
+     },
+     "2020": {
+      "low": 0.641,
+      "central": 0.723,
+      "high": 0.812
+     },
+     "2021": null,
+     "2022": {
+      "low": 6.143,
+      "central": 7.189,
+      "high": 8.409
+     },
+     "2023": {
+      "low": 1.857,
+      "central": 2.061,
+      "high": 2.299
+     },
+     "2024": {
+      "low": 1.573,
+      "central": 1.84,
+      "high": 2.153
+     },
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 22.11,
+    "lng": 14.93
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "mean of comext and comtrade (1690 kt)",
+     "2020": "comtrade (2077 kt)",
+     "2021": "comtrade (2327 kt)",
+     "2022": "comtrade (2326 kt)",
+     "2023": "comtrade (2432 kt)",
+     "2024": "comtrade (3564 kt)",
+     "2025": "comtrade (2531 kt)",
+     "2026": "comext (1484 kt)"
+    },
+    "lng": {
+     "2019": "comtrade (13 kt)",
+     "2020": "comtrade (69 kt)",
+     "2021": null,
+     "2022": "comtrade (133 kt)",
+     "2023": "comtrade (549 kt)",
+     "2024": "comext (187 kt)",
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "DEPA-Gazprom contract to 2026, oil-indexed with growing hub component after the 2020 arbitration (DEPA won a retroactive price revision). Russian pipeline gas via TurkStream/Bulgaria.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Customs unit values of imports from Russia (value / quantity, 1 t = 15.2 MWh GCV). Central = the customs source with the larger recorded quantity (Comext for EU reporters, the national Comtrade record where it covers more volume, e.g. Czech and Slovak gas consigned via other EU states); range = ±3% (≥300 kt), ±8% (30-300 kt) or ±15% (<30 kt), widened to include the other customs source, plus ±4% for energy-content conversion on the price level (not on the index). 2026 = Comext January-August. Greek customs record 271121 by origin; LNG cargoes (Revithoussa) are listed separately."
+  },
+  "HRV": {
+   "pipeline": null,
+   "lng": {
+    "2019": null,
+    "2020": null,
+    "2021": {
+     "low": 36.2,
+     "central": 41.0,
+     "high": 46.0
+    },
+    "2022": null,
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": {
+      "low": 0.896,
+      "central": 1.0,
+      "high": 1.11
+     },
+     "2022": null,
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 40.97
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": "comtrade (117 kt)",
+     "2022": null,
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "One year of Russian-origin LNG at the Krk terminal (2021); pipeline gas of Russian origin arrives only via Slovenia/Hungary and is recorded under those countries.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Customs unit value of Russian-origin LNG (2021 only). No 2019-2021 base beyond 2021, so the index base is the single 2021 value."
+  },
+  "HUN": {
+   "pipeline": {
+    "2019": {
+     "low": 15.1,
+     "central": 16.2,
+     "high": 17.4
+    },
+    "2020": {
+     "low": 8.9,
+     "central": 9.6,
+     "high": 10.3
+    },
+    "2021": {
+     "low": 22.5,
+     "central": 25.0,
+     "high": 26.8
+    },
+    "2022": {
+     "low": 119.3,
+     "central": 128.1,
+     "high": 137.2
+    },
+    "2023": {
+     "low": 44.8,
+     "central": 48.1,
+     "high": 51.6
+    },
+    "2024": {
+     "low": 29.8,
+     "central": 32.0,
+     "high": 34.2
+    },
+    "2025": {
+     "low": 35.3,
+     "central": 37.9,
+     "high": 40.6
+    },
+    "2026": {
+     "low": 38.3,
+     "central": 41.1,
+     "high": 44.1
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.917,
+      "central": 0.958,
+      "high": 1.001
+     },
+     "2020": {
+      "low": 0.541,
+      "central": 0.565,
+      "high": 0.59
+     },
+     "2021": {
+      "low": 1.363,
+      "central": 1.477,
+      "high": 1.542
+     },
+     "2022": {
+      "low": 7.139,
+      "central": 7.563,
+      "high": 8.011
+     },
+     "2023": {
+      "low": 2.682,
+      "central": 2.841,
+      "high": 3.01
+     },
+     "2024": {
+      "low": 1.782,
+      "central": 1.887,
+      "high": 1.999
+     },
+     "2025": {
+      "low": 2.114,
+      "central": 2.24,
+      "high": 2.372
+     },
+     "2026": {
+      "low": 2.292,
+      "central": 2.428,
+      "high": 2.572
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 16.94
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comext (7506 kt)",
+     "2020": "comext (5084 kt)",
+     "2021": "comext (5759 kt)",
+     "2022": "comext (4026 kt)",
+     "2023": "comext (4665 kt)",
+     "2024": "comtrade (5282 kt)",
+     "2025": "comext (4803 kt)",
+     "2026": "comext (2740 kt)"
+    }
+   },
+   "contract": "MVM-Gazprom 15-year contract signed Sep 2021 (4.5 bcm/yr, from Oct 2021). Formula not disclosed; customs unit values track TTF with a short lag (2022: 128 EUR/MWh vs TTF 122), so in practice hub-indexed rather than oil-capped. Deferred-payment arrangement for winter 2022/23 changes timing, not price.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Atlantic Council: Hungary's Gazprom renegotiation and the decline of traditional contracts; OSW: new Hungarian-Russian gas agreement (15-year contract, 4.5 bcm/yr, from Oct 2021)",
+     "url": "https://www.osw.waw.pl/en/publikacje/analyses/2021-09-29/new-hungarian-russian-gas-agreement",
+     "date": "2021-09-29"
+    },
+    {
+     "name": "bne IntelliNews: Hungary agrees deferred payments with Gazprom for winter gas deliveries",
+     "url": "https://intellinews.com/hungary-agrees-on-deferred-payments-with-gazprom-for-winter-gas-deliveries-258321",
+     "date": "2022-10"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Customs unit values of imports from Russia (value / quantity, 1 t = 15.2 MWh GCV). Central = the customs source with the larger recorded quantity (Comext for EU reporters, the national Comtrade record where it covers more volume, e.g. Czech and Slovak gas consigned via other EU states); range = ±3% (≥300 kt), ±8% (30-300 kt) or ±15% (<30 kt), widened to include the other customs source, plus ±4% for energy-content conversion on the price level (not on the index). 2026 = Comext January-August. Hungary is NOT cheaper than hub-indexed buyers in the customs data: its 2022 unit value (128 EUR/MWh) was the highest of any large buyer, consistent with reports that the 2021 contract follows TTF with a ~2-month lag and that MVM bought heavily at summer-2022 peak prices. Its 2019-2021 base (16.9 EUR/MWh) was also below the European average, so its index peaks at ~7.6 in 2022 against the Europe-wide 4.5."
+  },
+  "IDN": {
+   "pipeline": null,
+   "lng": {
+    "2019": null,
+    "2020": null,
+    "2021": {
+     "low": 24.0,
+     "central": 29.4,
+     "high": 35.2
+    },
+    "2022": {
+     "low": 48.1,
+     "central": 58.9,
+     "high": 70.5
+    },
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": {
+      "low": 0.81,
+      "central": 1.0,
+      "high": 1.211
+     },
+     "2022": {
+      "low": 1.547,
+      "central": 2.002,
+      "high": 2.558
+     },
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 29.43
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": "CREA modelled price for cargoes to this destination",
+     "2022": "CREA modelled price for cargoes to this destination",
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Occasional spot cargoes of Russian LNG (Kpler tracking via CREA).",
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker, yearly value and tonnes by destination (Kpler-based volumes, CREA price model)",
+     "url": "https://api.russiafossiltracker.com/v0/counter?aggregate_by=year,destination_iso2,commodity",
+     "date": "2026-08 download reused from the energy research run"
+    }
+   ],
+   "reasoning": "No customs record by partner; CREA's modelled cargo price (spot-linked) ±15%. Base = the years with cargoes (often none in 2019-2021, then the first year is the base) – treat the index as indicative."
+  },
+  "IND": {
+   "pipeline": null,
+   "lng": {
+    "2019": {
+     "low": 34.1,
+     "central": 38.7,
+     "high": 43.4
+    },
+    "2020": {
+     "low": 8.9,
+     "central": 10.1,
+     "high": 11.3
+    },
+    "2021": {
+     "low": 21.2,
+     "central": 23.9,
+     "high": 26.9
+    },
+    "2022": {
+     "low": 28.4,
+     "central": 32.1,
+     "high": 36.1
+    },
+    "2023": {
+     "low": 39.8,
+     "central": 42.8,
+     "high": 45.8
+    },
+    "2024": {
+     "low": 34.4,
+     "central": 38.9,
+     "high": 43.7
+    },
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": {
+      "low": 1.429,
+      "central": 1.595,
+      "high": 1.77
+     },
+     "2020": {
+      "low": 0.373,
+      "central": 0.417,
+      "high": 0.462
+     },
+     "2021": {
+      "low": 0.886,
+      "central": 0.988,
+      "high": 1.097
+     },
+     "2022": {
+      "low": 1.158,
+      "central": 1.326,
+      "high": 1.513
+     },
+     "2023": {
+      "low": 1.625,
+      "central": 1.765,
+      "high": 1.92
+     },
+     "2024": {
+      "low": 1.403,
+      "central": 1.607,
+      "high": 1.833
+     },
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 24.23
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": "comtrade (36 kt)",
+     "2020": "comtrade (66 kt)",
+     "2021": "comtrade (71 kt)",
+     "2022": "comtrade (66 kt)",
+     "2023": "comtrade (422 kt)",
+     "2024": "comtrade (69 kt)",
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Spot Yamal cargoes and GAIL's Gazprom Marketing & Trading term contract (defaulted 2022-2023 after the SEFE seizure).",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Indian customs unit values; small volumes (one-two cargoes most years) so ±8-15% ranges."
+  },
+  "ITA": {
+   "pipeline": {
+    "2019": {
+     "low": 16.4,
+     "central": 17.6,
+     "high": 18.9
+    },
+    "2020": {
+     "low": 10.7,
+     "central": 11.5,
+     "high": 12.3
+    },
+    "2021": {
+     "low": 30.1,
+     "central": 32.3,
+     "high": 34.6
+    },
+    "2022": {
+     "low": 92.7,
+     "central": 99.6,
+     "high": 106.7
+    },
+    "2023": {
+     "low": 47.4,
+     "central": 50.9,
+     "high": 54.5
+    },
+    "2024": {
+     "low": 31.5,
+     "central": 33.8,
+     "high": 36.2
+    },
+    "2025": {
+     "low": 37.8,
+     "central": 40.6,
+     "high": 43.5
+    },
+    "2026": {
+     "low": 36.8,
+     "central": 47.9,
+     "high": 62.3
+    }
+   },
+   "lng": {
+    "2019": null,
+    "2020": null,
+    "2021": null,
+    "2022": {
+     "low": 80.4,
+     "central": 91.1,
+     "high": 102.3
+    },
+    "2023": {
+     "low": 50.5,
+     "central": 57.2,
+     "high": 64.2
+    },
+    "2024": {
+     "low": 39.1,
+     "central": 44.3,
+     "high": 49.7
+    },
+    "2025": {
+     "low": 29.1,
+     "central": 32.9,
+     "high": 37.0
+    },
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.827,
+      "central": 0.861,
+      "high": 0.896
+     },
+     "2020": {
+      "low": 0.538,
+      "central": 0.561,
+      "high": 0.583
+     },
+     "2021": {
+      "low": 1.516,
+      "central": 1.579,
+      "high": 1.642
+     },
+     "2022": {
+      "low": 4.633,
+      "central": 4.871,
+      "high": 5.12
+     },
+     "2023": {
+      "low": 2.369,
+      "central": 2.491,
+      "high": 2.618
+     },
+     "2024": {
+      "low": 1.574,
+      "central": 1.655,
+      "high": 1.739
+     },
+     "2025": {
+      "low": 1.887,
+      "central": 1.984,
+      "high": 2.085
+     },
+     "2026": {
+      "low": 1.837,
+      "central": 2.343,
+      "high": 2.988
+     }
+    },
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": {
+      "low": 0.849,
+      "central": 1.0,
+      "high": 1.17
+     },
+     "2023": {
+      "low": 0.533,
+      "central": 0.628,
+      "high": 0.734
+     },
+     "2024": {
+      "low": 0.413,
+      "central": 0.486,
+      "high": 0.568
+     },
+     "2025": {
+      "low": 0.307,
+      "central": 0.361,
+      "high": 0.423
+     },
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 20.45,
+    "lng": 91.1
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comtrade (21788 kt)",
+     "2020": "comtrade (21545 kt)",
+     "2021": "comtrade (20704 kt)",
+     "2022": "comext (8546 kt)",
+     "2023": "comtrade (1820 kt)",
+     "2024": "comext (3930 kt)",
+     "2025": "comtrade (473 kt)",
+     "2026": "gap fill: energy2 has volume but no customs price - peer hub benchmark"
+    },
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": "comtrade (137 kt)",
+     "2023": "comext (72 kt)",
+     "2024": "comext (65 kt)",
+     "2025": "comtrade (73 kt)",
+     "2026": null
+    }
+   },
+   "contract": "Eni and other Italian buyers: hub-indexed Gazprom contracts (renegotiated 2013-2016 to TTF/PSV); supply fell sharply after 2022 and ended with Ukraine transit in Jan 2025 except small traces.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Customs unit values of imports from Russia (value / quantity, 1 t = 15.2 MWh GCV). Central = the customs source with the larger recorded quantity (Comext for EU reporters, the national Comtrade record where it covers more volume, e.g. Czech and Slovak gas consigned via other EU states); range = ±3% (≥300 kt), ±8% (30-300 kt) or ±15% (<30 kt), widened to include the other customs source, plus ±4% for energy-content conversion on the price level (not on the index). 2026 = Comext January-August.",
+   "base_note": "lng: no purchases in 2019-2021; index base = first year with purchases (2022)."
+  },
+  "JPN": {
+   "pipeline": null,
+   "lng": {
+    "2019": {
+     "low": 26.5,
+     "central": 28.4,
+     "high": 30.5
+    },
+    "2020": {
+     "low": 20.6,
+     "central": 22.1,
+     "high": 23.6
+    },
+    "2021": {
+     "low": 26.8,
+     "central": 28.7,
+     "high": 30.8
+    },
+    "2022": {
+     "low": 43.6,
+     "central": 46.9,
+     "high": 50.2
+    },
+    "2023": {
+     "low": 38.5,
+     "central": 41.3,
+     "high": 44.3
+    },
+    "2024": {
+     "low": 36.1,
+     "central": 38.7,
+     "high": 41.5
+    },
+    "2025": {
+     "low": 31.3,
+     "central": 33.6,
+     "high": 36.0
+    },
+    "2026": {
+     "low": 28.7,
+     "central": 31.5,
+     "high": 34.4
+    }
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": {
+      "low": 1.034,
+      "central": 1.077,
+      "high": 1.12
+     },
+     "2020": {
+      "low": 0.803,
+      "central": 0.836,
+      "high": 0.869
+     },
+     "2021": {
+      "low": 1.045,
+      "central": 1.088,
+      "high": 1.132
+     },
+     "2022": {
+      "low": 1.687,
+      "central": 1.774,
+      "high": 1.865
+     },
+     "2023": {
+      "low": 1.488,
+      "central": 1.564,
+      "high": 1.644
+     },
+     "2024": {
+      "low": 1.394,
+      "central": 1.466,
+      "high": 1.54
+     },
+     "2025": {
+      "low": 1.211,
+      "central": 1.273,
+      "high": 1.338
+     },
+     "2026": {
+      "low": 1.11,
+      "central": 1.192,
+      "high": 1.277
+     }
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 26.42
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": "comtrade (6399 kt)",
+     "2020": "comtrade (6140 kt)",
+     "2021": "comtrade (6567 kt)",
+     "2022": "comtrade (6869 kt)",
+     "2023": "comtrade (6133 kt)",
+     "2024": "comtrade (5684 kt)",
+     "2025": "comtrade (5798 kt)",
+     "2026": "comtrade_monthly (3873 kt)"
+    }
+   },
+   "contract": "Sakhalin-2 long-term LNG contracts (JERA, Tokyo Gas, Kyushu, Hiroshima Gas, Tohoku), oil-indexed (JCC slope ~14-15%), plus some Yamal spot; continued after 2022 under Japanese exemptions.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, monthly, 2026-01 to 2026-08",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<M49>&period=2026MM&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Japanese customs unit values; 2026 = Comtrade monthly January-August. Oil indexation keeps the 2022 index at ≈1.7."
+  },
+  "KAZ": {
+   "pipeline": {
+    "2019": {
+     "low": 4.1,
+     "central": 4.4,
+     "high": 4.7
+    },
+    "2020": {
+     "low": 2.7,
+     "central": 2.9,
+     "high": 3.1
+    },
+    "2021": {
+     "low": 1.5,
+     "central": 2.5,
+     "high": 4.2
+    },
+    "2022": {
+     "low": 1.5,
+     "central": 2.5,
+     "high": 4.2
+    },
+    "2023": {
+     "low": 2.0,
+     "central": 2.1,
+     "high": 2.3
+    },
+    "2024": {
+     "low": 7.7,
+     "central": 8.3,
+     "high": 8.8
+    },
+    "2025": {
+     "low": 6.2,
+     "central": 6.7,
+     "high": 7.2
+    },
+    "2026": {
+     "low": 8.0,
+     "central": 8.8,
+     "high": 9.6
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 1.205,
+      "central": 1.333,
+      "high": 1.481
+     },
+     "2020": {
+      "low": 0.809,
+      "central": 0.895,
+      "high": 0.995
+     },
+     "2021": {
+      "low": 0.432,
+      "central": 0.772,
+      "high": 1.333
+     },
+     "2022": {
+      "low": 0.404,
+      "central": 0.772,
+      "high": 1.448
+     },
+     "2023": {
+      "low": 0.549,
+      "central": 0.649,
+      "high": 0.784
+     },
+     "2024": {
+      "low": 2.127,
+      "central": 2.514,
+      "high": 3.034
+     },
+     "2025": {
+      "low": 1.725,
+      "central": 2.04,
+      "high": 2.462
+     },
+     "2026": {
+      "low": 2.212,
+      "central": 2.67,
+      "high": 3.286
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 3.29
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comtrade (8609 kt)",
+     "2020": "comtrade (8511 kt)",
+     "2021": "interpolated (customs value recorded, quantity imputed)",
+     "2022": "interpolated (customs value recorded, quantity imputed)",
+     "2023": "comtrade (4797 kt)",
+     "2024": "comtrade (4814 kt)",
+     "2025": "comtrade (7681 kt)",
+     "2026": "comtrade_monthly (3726 kt)"
+    }
+   },
+   "contract": "QazaqGaz-Gazprom swap and processing arrangements (Karachaganak gas sent to Orenburg and Russian gas returned to southern Kazakhstan), plus since 2023 transit-linked purchases; prices are swap settlement values, not commercial prices.",
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, monthly, 2026-01 to 2026-08",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<M49>&period=2026MM&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Kazakh customs unit values are 2-9 EUR/MWh, i.e. swap settlement prices well below any commercial level. Quantities for 2021-2022 are imputed by Comtrade, so those years are interpolated with a wide range. Use with care: the index (≈0.2 in 2020 up to ≈2.7 in 2026) reflects changing swap terms more than market prices."
+  },
+  "KGZ": {
+   "pipeline": {
+    "2019": {
+     "low": 11.2,
+     "central": 12.7,
+     "high": 14.3
+    },
+    "2020": {
+     "low": 11.0,
+     "central": 12.4,
+     "high": 14.0
+    },
+    "2021": {
+     "low": 10.6,
+     "central": 12.0,
+     "high": 13.5
+    },
+    "2022": {
+     "low": 10.3,
+     "central": 12.6,
+     "high": 15.1
+    },
+    "2023": {
+     "low": 11.6,
+     "central": 13.1,
+     "high": 14.8
+    },
+    "2024": {
+     "low": 11.4,
+     "central": 14.0,
+     "high": 16.7
+    },
+    "2025": {
+     "low": 13.8,
+     "central": 14.8,
+     "high": 15.9
+    },
+    "2026": {
+     "low": 13.0,
+     "central": 14.8,
+     "high": 16.6
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.919,
+      "central": 1.025,
+      "high": 1.137
+     },
+     "2020": {
+      "low": 0.9,
+      "central": 1.005,
+      "high": 1.115
+     },
+     "2021": {
+      "low": 0.869,
+      "central": 0.97,
+      "high": 1.077
+     },
+     "2022": {
+      "low": 0.82,
+      "central": 1.016,
+      "high": 1.234
+     },
+     "2023": {
+      "low": 0.927,
+      "central": 1.061,
+      "high": 1.211
+     },
+     "2024": {
+      "low": 0.912,
+      "central": 1.13,
+      "high": 1.372
+     },
+     "2025": {
+      "low": 1.104,
+      "central": 1.198,
+      "high": 1.304
+     },
+     "2026": {
+      "low": 1.04,
+      "central": 1.191,
+      "high": 1.359
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 12.39
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comtrade (193 kt)",
+     "2020": "comtrade (202 kt)",
+     "2021": "comtrade (245 kt)",
+     "2022": "interpolated between neighbouring customs years (customs value recorded, quantity missing)",
+     "2023": "comtrade (284 kt)",
+     "2024": "interpolated between neighbouring customs years (customs value recorded, quantity missing)",
+     "2025": "comtrade (392 kt)",
+     "2026": "comtrade_monthly (206 kt)"
+    }
+   },
+   "contract": "Gazprom Kyrgyzstan (100% Gazprom) imports at a political price (~$150-180/1000 m3).",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, monthly, 2026-01 to 2026-08",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<M49>&period=2026MM&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Kyrgyz customs unit values (2019-2021 alternative quantity reported in litres and converted); 2022 and 2024 interpolated (quantity missing)."
+  },
+  "KOR": {
+   "pipeline": null,
+   "lng": {
+    "2019": {
+     "low": 26.7,
+     "central": 28.7,
+     "high": 30.7
+    },
+    "2020": {
+     "low": 20.6,
+     "central": 22.2,
+     "high": 23.7
+    },
+    "2021": {
+     "low": 31.0,
+     "central": 33.3,
+     "high": 35.6
+    },
+    "2022": {
+     "low": 43.9,
+     "central": 47.2,
+     "high": 50.5
+    },
+    "2023": {
+     "low": 36.2,
+     "central": 38.9,
+     "high": 41.7
+    },
+    "2024": {
+     "low": 33.2,
+     "central": 35.7,
+     "high": 38.2
+    },
+    "2025": {
+     "low": 28.9,
+     "central": 31.1,
+     "high": 33.3
+    },
+    "2026": {
+     "low": 30.5,
+     "central": 35.3,
+     "high": 40.3
+    }
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": {
+      "low": 0.983,
+      "central": 1.023,
+      "high": 1.064
+     },
+     "2020": {
+      "low": 0.759,
+      "central": 0.79,
+      "high": 0.822
+     },
+     "2021": {
+      "low": 1.14,
+      "central": 1.187,
+      "high": 1.235
+     },
+     "2022": {
+      "low": 1.599,
+      "central": 1.682,
+      "high": 1.768
+     },
+     "2023": {
+      "low": 1.32,
+      "central": 1.388,
+      "high": 1.459
+     },
+     "2024": {
+      "low": 1.211,
+      "central": 1.273,
+      "high": 1.338
+     },
+     "2025": {
+      "low": 1.053,
+      "central": 1.107,
+      "high": 1.164
+     },
+     "2026": {
+      "low": 1.109,
+      "central": 1.257,
+      "high": 1.411
+     }
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 28.04
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": "comtrade (2247 kt)",
+     "2020": "comtrade (2019 kt)",
+     "2021": "comtrade (2867 kt)",
+     "2022": "comtrade (1962 kt)",
+     "2023": "comtrade (1654 kt)",
+     "2024": "comtrade (2116 kt)",
+     "2025": "comtrade (2468 kt)",
+     "2026": "2025 customs x change in Japanese Russian-LNG and Japan LNG import prices"
+    }
+   },
+   "contract": "KOGAS Sakhalin-2 term contract (1.5 Mt/yr, oil-indexed, to 2028) plus spot Yamal/Sakhalin cargoes.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "FRED / IMF primary commodity prices: Brent (POILBREUSDM, DCOILBRENTEU), EU natural gas TTF (PNGASEUUSDM), Japan LNG (PNGASJPUSDM)",
+     "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=POILBREUSDM",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Korean customs unit values 2019-2025; 2026 not yet published, scaled from 2025 with the change in Japan's Russian-LNG unit value and the Japan LNG import price."
+  },
+  "KWT": {
+   "pipeline": null,
+   "lng": {
+    "2019": null,
+    "2020": null,
+    "2021": null,
+    "2022": {
+     "low": 40.0,
+     "central": 49.0,
+     "high": 58.6
+    },
+    "2023": {
+     "low": 28.9,
+     "central": 35.4,
+     "high": 42.3
+    },
+    "2024": {
+     "low": 24.7,
+     "central": 30.3,
+     "high": 36.2
+    },
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": {
+      "low": 0.785,
+      "central": 1.0,
+      "high": 1.246
+     },
+     "2023": {
+      "low": 0.567,
+      "central": 0.722,
+      "high": 0.899
+     },
+     "2024": {
+      "low": 0.485,
+      "central": 0.618,
+      "high": 0.77
+     },
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 49.0
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": "CREA modelled price for cargoes to this destination",
+     "2023": "CREA modelled price for cargoes to this destination",
+     "2024": "CREA modelled price for cargoes to this destination",
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Occasional spot cargoes of Russian LNG (Kpler tracking via CREA).",
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker, yearly value and tonnes by destination (Kpler-based volumes, CREA price model)",
+     "url": "https://api.russiafossiltracker.com/v0/counter?aggregate_by=year,destination_iso2,commodity",
+     "date": "2026-08 download reused from the energy research run"
+    }
+   ],
+   "reasoning": "No customs record by partner; CREA's modelled cargo price (spot-linked) ±15%. Base = the years with cargoes (often none in 2019-2021, then the first year is the base) – treat the index as indicative.",
+   "base_note": "lng: no purchases in 2019-2021; index base = first year with purchases (2022)."
+  },
+  "LTU": {
+   "pipeline": {
+    "2019": {
+     "low": 19.2,
+     "central": 20.6,
+     "high": 22.0
+    },
+    "2020": {
+     "low": 7.3,
+     "central": 7.9,
+     "high": 8.4
+    },
+    "2021": {
+     "low": 27.4,
+     "central": 29.5,
+     "high": 31.6
+    },
+    "2022": {
+     "low": 80.9,
+     "central": 86.9,
+     "high": 95.0
+    },
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "lng": {
+    "2019": {
+     "low": 11.5,
+     "central": 13.1,
+     "high": 14.7
+    },
+    "2020": {
+     "low": 8.1,
+     "central": 9.2,
+     "high": 10.3
+    },
+    "2021": {
+     "low": 32.8,
+     "central": 37.1,
+     "high": 41.7
+    },
+    "2022": {
+     "low": 81.0,
+     "central": 91.7,
+     "high": 103.0
+    },
+    "2023": {
+     "low": 22.8,
+     "central": 27.9,
+     "high": 33.4
+    },
+    "2024": {
+     "low": 19.1,
+     "central": 23.5,
+     "high": 28.1
+    },
+    "2025": {
+     "low": 22.1,
+     "central": 27.1,
+     "high": 32.4
+    },
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 1.023,
+      "central": 1.065,
+      "high": 1.108
+     },
+     "2020": {
+      "low": 0.392,
+      "central": 0.408,
+      "high": 0.425
+     },
+     "2021": {
+      "low": 1.466,
+      "central": 1.527,
+      "high": 1.588
+     },
+     "2022": {
+      "low": 4.28,
+      "central": 4.5,
+      "high": 4.828
+     },
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": {
+     "2019": {
+      "low": 0.592,
+      "central": 0.661,
+      "high": 0.733
+     },
+     "2020": {
+      "low": 0.416,
+      "central": 0.464,
+      "high": 0.515
+     },
+     "2021": {
+      "low": 1.68,
+      "central": 1.875,
+      "high": 2.081
+     },
+     "2022": {
+      "low": 4.045,
+      "central": 4.631,
+      "high": 5.284
+     },
+     "2023": {
+      "low": 1.137,
+      "central": 1.41,
+      "high": 1.712
+     },
+     "2024": {
+      "low": 0.957,
+      "central": 1.186,
+      "high": 1.44
+     },
+     "2025": {
+      "low": 1.105,
+      "central": 1.369,
+      "high": 1.663
+     },
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 19.31,
+    "lng": 19.79
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comext (773 kt)",
+     "2020": "comtrade (629 kt)",
+     "2021": "comtrade (396 kt)",
+     "2022": "comext (315 kt)",
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": {
+     "2019": "comtrade (179 kt)",
+     "2020": "comext (219 kt)",
+     "2021": "comtrade (220 kt)",
+     "2022": "comext (51 kt)",
+     "2023": "comext (5 kt)",
+     "2024": "comtrade (8 kt)",
+     "2025": "comtrade (6 kt)",
+     "2026": null
+    }
+   },
+   "contract": "Lietuvos Dujos/Ignitis: oil-linked contract ended 2015; spot/hub thereafter; Russian imports stopped Apr 2022.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Customs unit values of imports from Russia (value / quantity, 1 t = 15.2 MWh GCV). Central = the customs source with the larger recorded quantity (Comext for EU reporters, the national Comtrade record where it covers more volume, e.g. Czech and Slovak gas consigned via other EU states); range = ±3% (≥300 kt), ±8% (30-300 kt) or ±15% (<30 kt), widened to include the other customs source, plus ±4% for energy-content conversion on the price level (not on the index). 2026 = Comext January-August."
+  },
+  "LUX": {
+   "pipeline": {
+    "2019": {
+     "low": 13.8,
+     "central": 17.3,
+     "high": 21.0
+    },
+    "2020": {
+     "low": 9.2,
+     "central": 11.5,
+     "high": 14.0
+    },
+    "2021": {
+     "low": 25.1,
+     "central": 31.5,
+     "high": 38.3
+    },
+    "2022": null,
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.676,
+      "central": 0.861,
+      "high": 1.067
+     },
+     "2020": {
+      "low": 0.449,
+      "central": 0.572,
+      "high": 0.709
+     },
+     "2021": {
+      "low": 1.231,
+      "central": 1.567,
+      "high": 1.944
+     },
+     "2022": null,
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 20.08
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "peer hub benchmark (supplied via Germany/Belgium)",
+     "2020": "peer hub benchmark (supplied via Germany/Belgium)",
+     "2021": "peer hub benchmark (supplied via Germany/Belgium)",
+     "2022": null,
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Supplied by Enovos via German/Belgian hubs; Russian share by origin small.",
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "No customs record; hub-indexed peer benchmark ±17%."
+  },
+  "LVA": {
+   "pipeline": {
+    "2019": {
+     "low": 12.1,
+     "central": 13.0,
+     "high": 13.9
+    },
+    "2020": {
+     "low": 7.5,
+     "central": 8.1,
+     "high": 8.6
+    },
+    "2021": {
+     "low": 27.9,
+     "central": 29.9,
+     "high": 32.0
+    },
+    "2022": {
+     "low": 98.8,
+     "central": 106.2,
+     "high": 113.7
+    },
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.736,
+      "central": 0.766,
+      "high": 0.797
+     },
+     "2020": {
+      "low": 0.455,
+      "central": 0.474,
+      "high": 0.493
+     },
+     "2021": {
+      "low": 1.69,
+      "central": 1.76,
+      "high": 1.831
+     },
+     "2022": {
+      "low": 5.938,
+      "central": 6.244,
+      "high": 6.563
+     },
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 17.0
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comext (1153 kt)",
+     "2020": "comext (1055 kt)",
+     "2021": "comext (1232 kt)",
+     "2022": "comext (303 kt)",
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Latvijas Gaze, hub-linked; imports banned from Jan 2023.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Customs unit values of imports from Russia (value / quantity, 1 t = 15.2 MWh GCV). Central = the customs source with the larger recorded quantity (Comext for EU reporters, the national Comtrade record where it covers more volume, e.g. Czech and Slovak gas consigned via other EU states); range = ±3% (≥300 kt), ±8% (30-300 kt) or ±15% (<30 kt), widened to include the other customs source, plus ±4% for energy-content conversion on the price level (not on the index). 2026 = Comext January-August."
+  },
+  "MDA": {
+   "pipeline": {
+    "2019": {
+     "low": 16.8,
+     "central": 19.9,
+     "high": 22.3
+    },
+    "2020": {
+     "low": 11.4,
+     "central": 12.4,
+     "high": 13.4
+    },
+    "2021": {
+     "low": 21.9,
+     "central": 23.5,
+     "high": 25.2
+    },
+    "2022": {
+     "low": 66.5,
+     "central": 71.4,
+     "high": 76.5
+    },
+    "2023": {
+     "low": 84.0,
+     "central": 95.2,
+     "high": 106.9
+    },
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.922,
+      "central": 1.07,
+      "high": 1.181
+     },
+     "2020": {
+      "low": 0.625,
+      "central": 0.665,
+      "high": 0.706
+     },
+     "2021": {
+      "low": 1.202,
+      "central": 1.265,
+      "high": 1.331
+     },
+     "2022": {
+      "low": 3.573,
+      "central": 3.839,
+      "high": 4.129
+     },
+     "2023": {
+      "low": 4.518,
+      "central": 5.119,
+      "high": 5.772
+     },
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 18.59
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "formula estimate: Gazprom far-abroad price lagged 9 months ($203 in 2019, $245 in 2018)",
+     "2020": "Moldovagaz reported 2020 average $148.9/1000 m3",
+     "2021": "comtrade (855 kt)",
+     "2022": "comtrade (615 kt)",
+     "2023": "comtrade (52 kt)",
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Moldovagaz-Gazprom: until Oct 2021 a \"European formula\" (Gazprom far-abroad price over the previous 9 months), from Nov 2021 a 5-year contract linked to TTF and oil, with prices set monthly (record $1,195 in Apr 2022). Right-bank Moldova stopped buying Gazprom gas in Dec 2022/early 2023; Transnistria's gas was unpaid and ended 1 Jan 2025.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Carnegie: Moldova's gas crisis and its lessons for Europe (2020 average ~$148/1000 m3; formula = Gazprom far-abroad price over previous 9 months)",
+     "url": "https://carnegieendowment.org/posts/2021/11/moldovas-gas-crisis-and-its-lessons-for-europe",
+     "date": "2021-11"
+    },
+    {
+     "name": "InfoMarket / Interfax reporting on Moldovagaz monthly purchase prices 2021-2023",
+     "url": "https://interfax.com/newsroom/top-stories/91091/",
+     "date": "2023"
+    },
+    {
+     "name": "S&P Global Platts: Gazprom realised far-abroad price $203/1000 m3 in 2019",
+     "url": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/021220-russias-gazprom-eyes-european-gas-exports-at-200-bcmyear-to-2030",
+     "date": "2020-02-12"
+    }
+   ],
+   "reasoning": "Moldovan customs unit values for 2021-2023 (2021: $309/1000 m3, matching the $306 Moldovagaz reported); 2020 = the reported Moldovagaz average; 2019 = estimated from the contract formula (9-month lag on Gazprom's far-abroad price, $203 in 2019 and $245 in 2018 → ≈$235). 2023 covers only a few weeks of right-bank purchases. Transnistria's gas (high case in energy2) had no price paid and is not priced here; 2024-2026 null."
+  },
+  "MKD": {
+   "pipeline": {
+    "2019": {
+     "low": 20.1,
+     "central": 22.7,
+     "high": 25.5
+    },
+    "2020": {
+     "low": 17.1,
+     "central": 19.3,
+     "high": 21.7
+    },
+    "2021": {
+     "low": 20.5,
+     "central": 23.2,
+     "high": 26.1
+    },
+    "2022": {
+     "low": 90.4,
+     "central": 102.3,
+     "high": 114.9
+    },
+    "2023": {
+     "low": 52.6,
+     "central": 59.5,
+     "high": 66.9
+    },
+    "2024": {
+     "low": 32.1,
+     "central": 36.4,
+     "high": 40.9
+    },
+    "2025": {
+     "low": 37.1,
+     "central": 42.0,
+     "high": 47.2
+    },
+    "2026": {
+     "low": 29.1,
+     "central": 33.0,
+     "high": 37.0
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.937,
+      "central": 1.045,
+      "high": 1.16
+     },
+     "2020": {
+      "low": 0.797,
+      "central": 0.889,
+      "high": 0.986
+     },
+     "2021": {
+      "low": 0.955,
+      "central": 1.066,
+      "high": 1.183
+     },
+     "2022": {
+      "low": 4.107,
+      "central": 4.702,
+      "high": 5.364
+     },
+     "2023": {
+      "low": 2.39,
+      "central": 2.736,
+      "high": 3.121
+     },
+     "2024": {
+      "low": 1.46,
+      "central": 1.671,
+      "high": 1.907
+     },
+     "2025": {
+      "low": 1.685,
+      "central": 1.929,
+      "high": 2.201
+     },
+     "2026": {
+      "low": 1.323,
+      "central": 1.515,
+      "high": 1.729
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 21.76
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comtrade (202 kt)",
+     "2020": "comtrade (207 kt)",
+     "2021": "comtrade (270 kt)",
+     "2022": "comtrade (206 kt)",
+     "2023": "comtrade (246 kt)",
+     "2024": "comtrade (179 kt)",
+     "2025": "comtrade (106 kt)",
+     "2026": "comtrade_monthly (44 kt)"
+    }
+   },
+   "contract": "North Macedonia: GA-MA/ESM purchases of Russian gas (via Bulgaria) with partial hub linkage; volumes falling as Greek/Bulgarian LNG-based supply grows.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, monthly, 2026-01 to 2026-08",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<M49>&period=2026MM&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "North Macedonian customs unit values; the 2022 spike (102 EUR/MWh) shows hub exposure unlike Serbia and Bosnia. 2026 = Comtrade monthly January-August."
+  },
+  "NLD": {
+   "pipeline": {
+    "2019": {
+     "low": 13.8,
+     "central": 17.3,
+     "high": 21.0
+    },
+    "2020": {
+     "low": 9.2,
+     "central": 11.5,
+     "high": 14.0
+    },
+    "2021": {
+     "low": 25.1,
+     "central": 31.5,
+     "high": 38.3
+    },
+    "2022": {
+     "low": 77.6,
+     "central": 97.4,
+     "high": 118.5
+    },
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": {
+     "low": 27.0,
+     "central": 33.1,
+     "high": 39.6
+    }
+   },
+   "lng": {
+    "2019": {
+     "low": 11.9,
+     "central": 15.5,
+     "high": 19.4
+    },
+    "2020": {
+     "low": 9.6,
+     "central": 12.5,
+     "high": 15.6
+    },
+    "2021": {
+     "low": 39.0,
+     "central": 41.8,
+     "high": 44.8
+    },
+    "2022": {
+     "low": 68.3,
+     "central": 81.9,
+     "high": 96.4
+    },
+    "2023": {
+     "low": 71.6,
+     "central": 76.9,
+     "high": 82.4
+    },
+    "2024": {
+     "low": 36.4,
+     "central": 39.1,
+     "high": 41.9
+    },
+    "2025": {
+     "low": 35.9,
+     "central": 38.6,
+     "high": 41.3
+    },
+    "2026": {
+     "low": 32.5,
+     "central": 34.9,
+     "high": 37.4
+    }
+   },
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.676,
+      "central": 0.861,
+      "high": 1.067
+     },
+     "2020": {
+      "low": 0.449,
+      "central": 0.572,
+      "high": 0.709
+     },
+     "2021": {
+      "low": 1.231,
+      "central": 1.567,
+      "high": 1.944
+     },
+     "2022": {
+      "low": 3.616,
+      "central": 4.851,
+      "high": 6.401
+     },
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": {
+      "low": 1.26,
+      "central": 1.65,
+      "high": 2.14
+     }
+    },
+    "lng": {
+     "2019": {
+      "low": 0.509,
+      "central": 0.666,
+      "high": 0.84
+     },
+     "2020": {
+      "low": 0.41,
+      "central": 0.538,
+      "high": 0.677
+     },
+     "2021": {
+      "low": 1.663,
+      "central": 1.796,
+      "high": 1.943
+     },
+     "2022": {
+      "low": 2.789,
+      "central": 3.518,
+      "high": 4.401
+     },
+     "2023": {
+      "low": 2.923,
+      "central": 3.301,
+      "high": 3.759
+     },
+     "2024": {
+      "low": 1.488,
+      "central": 1.68,
+      "high": 1.914
+     },
+     "2025": {
+      "low": 1.467,
+      "central": 1.656,
+      "high": 1.886
+     },
+     "2026": {
+      "low": 1.326,
+      "central": 1.498,
+      "high": 1.706
+     }
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 20.08,
+    "lng": 23.29
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "peer hub benchmark (customs volume of pipeline gas not published; hub-indexed contract)",
+     "2020": "peer hub benchmark (customs volume of pipeline gas not published; hub-indexed contract)",
+     "2021": "peer hub benchmark (customs volume of pipeline gas not published; hub-indexed contract)",
+     "2022": "peer hub benchmark (customs volume of pipeline gas not published; hub-indexed contract)",
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": "comext (22 kt)"
+    },
+    "lng": {
+     "2019": "peer LNG benchmark (BEL/ESP/PRT Comext, kt-weighted); Dutch customs do not show RU-origin LNG",
+     "2020": "peer LNG benchmark (BEL/ESP/PRT Comext, kt-weighted); Dutch customs do not show RU-origin LNG",
+     "2021": "comext (2126 kt)",
+     "2022": "mean of comtrade and comext (2916 kt)",
+     "2023": "comext (1125 kt)",
+     "2024": "comtrade (1246 kt)",
+     "2025": "comext (1638 kt)",
+     "2026": "comext (1180 kt)"
+    }
+   },
+   "contract": "LNG: Yamal cargoes into Gate terminal (transshipment and portfolio sales). Pipeline (2019-2022): Russian gas via Germany under hub-indexed contracts (GasTerra/Gazprom Export, Wingas).",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "LNG: customs unit values (Comext) for Russian-origin LNG. Pipeline where relevant: the importer's customs do not record a usable Russian pipeline quantity, so the price is the kt-weighted customs unit value of hub-indexed Central European buyers (Czechia, Slovakia, Italy) with a ±15-17% range. Rationale: these contracts were renegotiated to hub (TTF/NCG) indexation in 2013-2020 and the peer group buys under the same Gazprom Export terms."
+  },
+  "PAK": {
+   "pipeline": null,
+   "lng": {
+    "2019": null,
+    "2020": {
+     "low": 10.5,
+     "central": 11.9,
+     "high": 13.4
+    },
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": null,
+     "2020": {
+      "low": 0.896,
+      "central": 1.0,
+      "high": 1.11
+     },
+     "2021": null,
+     "2022": null,
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 11.89
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": null,
+     "2020": "comtrade (64 kt)",
+     "2021": null,
+     "2022": null,
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Spot Russian LNG cargoes.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Pakistani customs unit value (single 2020 cargo). Base = years present only."
+  },
+  "POL": {
+   "pipeline": {
+    "2019": {
+     "low": 15.9,
+     "central": 22.3,
+     "high": 34.7
+    },
+    "2020": {
+     "low": 10.6,
+     "central": 16.4,
+     "high": 27.0
+    },
+    "2021": {
+     "low": 16.3,
+     "central": 26.8,
+     "high": 33.6
+    },
+    "2022": {
+     "low": 28.0,
+     "central": 67.8,
+     "high": 103.4
+    },
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.655,
+      "central": 1.022,
+      "high": 1.823
+     },
+     "2020": {
+      "low": 0.434,
+      "central": 0.75,
+      "high": 1.416
+     },
+     "2021": {
+      "low": 0.671,
+      "central": 1.228,
+      "high": 1.762
+     },
+     "2022": {
+      "low": 1.011,
+      "central": 3.104,
+      "high": 6.714
+     },
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 21.84
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "50% peer hub benchmark + 50% oil formula (Yamal contract after the 2020 arbitration)",
+     "2020": "50% peer hub benchmark + 50% oil formula (Yamal contract after the 2020 arbitration)",
+     "2021": "50% peer hub benchmark + 50% oil formula (Yamal contract after the 2020 arbitration)",
+     "2022": "50% peer hub benchmark + 50% oil formula (Yamal contract after the 2020 arbitration)",
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "PGNiG-Gazprom Yamal contract (to end-2022, ~10 bcm/yr). The Stockholm tribunal (Mar 2020) replaced the oil-linked price formula with one tied to Western European market prices, retroactive from Nov 2014; Gazprom stopped deliveries on 27 Apr 2022.",
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "FRED / IMF primary commodity prices: Brent (POILBREUSDM, DCOILBRENTEU), EU natural gas TTF (PNGASEUUSDM), Japan LNG (PNGASJPUSDM)",
+     "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=POILBREUSDM",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Polish customs do not publish Russian pipeline gas. The post-2020 Yamal formula is described as market-related but its weights are confidential, so the central estimate is an even blend of the hub-indexed peer benchmark and the oil formula calibrated on Serbian/Bosnian customs (scaled +10% for Poland's historically high base price); range = pure hub to pure oil. 2022 covers January-April deliveries only; the annual peer figure is used and may understate (TTF Jan-Apr 2022 ≈ 100 EUR/MWh)."
+  },
+  "PRT": {
+   "pipeline": null,
+   "lng": {
+    "2019": {
+     "low": 19.3,
+     "central": 21.9,
+     "high": 24.6
+    },
+    "2020": {
+     "low": 12.4,
+     "central": 13.4,
+     "high": 14.3
+    },
+    "2021": {
+     "low": 23.1,
+     "central": 24.8,
+     "high": 26.6
+    },
+    "2022": {
+     "low": 36.1,
+     "central": 40.9,
+     "high": 45.9
+    },
+    "2023": {
+     "low": 38.8,
+     "central": 43.9,
+     "high": 49.4
+    },
+    "2024": {
+     "low": 26.6,
+     "central": 30.1,
+     "high": 33.8
+    },
+    "2025": {
+     "low": 27.5,
+     "central": 31.2,
+     "high": 35.0
+    },
+    "2026": {
+     "low": 25.6,
+     "central": 29.0,
+     "high": 32.6
+    }
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": {
+      "low": 0.991,
+      "central": 1.094,
+      "high": 1.2
+     },
+     "2020": {
+      "low": 0.638,
+      "central": 0.668,
+      "high": 0.699
+     },
+     "2021": {
+      "low": 1.183,
+      "central": 1.238,
+      "high": 1.296
+     },
+     "2022": {
+      "low": 1.821,
+      "central": 2.041,
+      "high": 2.275
+     },
+     "2023": {
+      "low": 1.959,
+      "central": 2.195,
+      "high": 2.447
+     },
+     "2024": {
+      "low": 1.343,
+      "central": 1.505,
+      "high": 1.678
+     },
+     "2025": {
+      "low": 1.39,
+      "central": 1.558,
+      "high": 1.737
+     },
+     "2026": {
+      "low": 1.293,
+      "central": 1.449,
+      "high": 1.616
+     }
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 20.02
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": "comext (71 kt)",
+     "2020": "comtrade (418 kt)",
+     "2021": "comtrade (630 kt)",
+     "2022": "comtrade (211 kt)",
+     "2023": "comext (286 kt)",
+     "2024": "comtrade (217 kt)",
+     "2025": "comext (215 kt)",
+     "2026": "comext (143 kt)"
+    }
+   },
+   "contract": "Spot and portfolio Yamal LNG cargoes into Sines.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "LNG: customs unit values (Comext) for Russian-origin LNG. Pipeline where relevant: the importer's customs do not record a usable Russian pipeline quantity, so the price is the kt-weighted customs unit value of hub-indexed Central European buyers (Czechia, Slovakia, Italy) with a ±15-17% range. Rationale: these contracts were renegotiated to hub (TTF/NCG) indexation in 2013-2020 and the peer group buys under the same Gazprom Export terms."
+  },
+  "ROU": {
+   "pipeline": {
+    "2019": {
+     "low": 21.9,
+     "central": 23.5,
+     "high": 25.1
+    },
+    "2020": {
+     "low": 15.1,
+     "central": 16.2,
+     "high": 17.3
+    },
+    "2021": {
+     "low": 13.1,
+     "central": 14.1,
+     "high": 15.1
+    },
+    "2022": {
+     "low": 26.5,
+     "central": 30.0,
+     "high": 33.7
+    },
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 1.258,
+      "central": 1.31,
+      "high": 1.363
+     },
+     "2020": {
+      "low": 0.868,
+      "central": 0.904,
+      "high": 0.94
+     },
+     "2021": {
+      "low": 0.755,
+      "central": 0.786,
+      "high": 0.818
+     },
+     "2022": {
+      "low": 1.512,
+      "central": 1.677,
+      "high": 1.848
+     },
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 17.92
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comext (714 kt)",
+     "2020": "comext (684 kt)",
+     "2021": "comtrade (1991 kt)",
+     "2022": "comtrade (259 kt)",
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Short-term purchases by Romanian traders, hub-related; ended 2022.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Customs unit values of imports from Russia (value / quantity, 1 t = 15.2 MWh GCV). Central = the customs source with the larger recorded quantity (Comext for EU reporters, the national Comtrade record where it covers more volume, e.g. Czech and Slovak gas consigned via other EU states); range = ±3% (≥300 kt), ±8% (30-300 kt) or ±15% (<30 kt), widened to include the other customs source, plus ±4% for energy-content conversion on the price level (not on the index). 2026 = Comext January-August."
+  },
+  "SGP": {
+   "pipeline": null,
+   "lng": {
+    "2019": null,
+    "2020": null,
+    "2021": {
+     "low": 20.6,
+     "central": 23.3,
+     "high": 26.2
+    },
+    "2022": {
+     "low": 49.6,
+     "central": 56.1,
+     "high": 63.0
+    },
+    "2023": {
+     "low": 30.5,
+     "central": 34.5,
+     "high": 38.8
+    },
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": {
+      "low": 0.896,
+      "central": 1.0,
+      "high": 1.11
+     },
+     "2022": {
+      "low": 2.103,
+      "central": 2.408,
+      "high": 2.747
+     },
+     "2023": {
+      "low": 1.293,
+      "central": 1.481,
+      "high": 1.689
+     },
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 23.31
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": "comtrade (69 kt)",
+     "2022": "comtrade (68 kt)",
+     "2023": "comtrade (69 kt)",
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Spot Russian LNG cargoes.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Singapore customs unit values (bunkering/re-export hub cargoes). Base = years present only."
+  },
+  "SRB": {
+   "pipeline": {
+    "2019": {
+     "low": 22.8,
+     "central": 24.5,
+     "high": 26.2
+    },
+    "2020": {
+     "low": 17.4,
+     "central": 18.7,
+     "high": 20.0
+    },
+    "2021": {
+     "low": 13.8,
+     "central": 14.9,
+     "high": 15.9
+    },
+    "2022": {
+     "low": 31.9,
+     "central": 34.3,
+     "high": 36.7
+    },
+    "2023": {
+     "low": 36.5,
+     "central": 39.2,
+     "high": 41.9
+    },
+    "2024": {
+     "low": 28.4,
+     "central": 30.4,
+     "high": 32.6
+    },
+    "2025": {
+     "low": 26.6,
+     "central": 28.6,
+     "high": 30.6
+    },
+    "2026": {
+     "low": 25.1,
+     "central": 27.5,
+     "high": 30.0
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 1.215,
+      "central": 1.265,
+      "high": 1.317
+     },
+     "2020": {
+      "low": 0.928,
+      "central": 0.967,
+      "high": 1.006
+     },
+     "2021": {
+      "low": 0.738,
+      "central": 0.768,
+      "high": 0.799
+     },
+     "2022": {
+      "low": 1.685,
+      "central": 1.772,
+      "high": 1.862
+     },
+     "2023": {
+      "low": 1.924,
+      "central": 2.023,
+      "high": 2.126
+     },
+     "2024": {
+      "low": 1.496,
+      "central": 1.573,
+      "high": 1.654
+     },
+     "2025": {
+      "low": 1.405,
+      "central": 1.477,
+      "high": 1.552
+     },
+     "2026": {
+      "low": 1.324,
+      "central": 1.421,
+      "high": 1.523
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 19.35
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comtrade (1511 kt)",
+     "2020": "comtrade (1034 kt)",
+     "2021": "comtrade (1728 kt)",
+     "2022": "comtrade (1819 kt)",
+     "2023": "comtrade (1846 kt)",
+     "2024": "comtrade (1668 kt)",
+     "2025": "comtrade (1816 kt)",
+     "2026": "comtrade_monthly (1066 kt)"
+    }
+   },
+   "contract": "Srbijagas-Gazprom: 100% oil-indexed formula (2.2 bcm/yr contract signed May 2022, extended in 2025 at ~EUR 290/1000 m3 \"under the same formula\"); Serbia rejected a 30% oil / 70% hub mix. Supply via TurkStream-Bulgaria since Jan 2021 (Hungary route before).",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, monthly, 2026-01 to 2026-08",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<M49>&period=2026MM&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "TASS: gas price for Serbia under oil formula; Argus: Serbia signs new gas supply contract with Gazprom (2.2 bcm/yr, 100% oil-indexed)",
+     "url": "https://www.argusmedia.com/es/news/2336504-serbia-signs-new-gas-supply-contract-with-gazprom",
+     "date": "2022-05/2022-06"
+    },
+    {
+     "name": "bne IntelliNews: Serbia extends Russian gas supply deal until end-September (EUR 290/1000 m3, oil formula)",
+     "url": "https://www.intellinews.com/serbia-extends-russian-gas-supply-deal-until-end-september-382948",
+     "date": "2025"
+    }
+   ],
+   "reasoning": "Serbian customs unit values; they follow a 9-month Brent average with a factor of ~0.41 EUR/MWh per EUR/bbl (the oil formula used for Turkey and China is calibrated here). The 2021 value (15 EUR/MWh) is low because the lagged oil average was still depressed and Serbia booked part of the year at the old Hungary-route price. 2026 = Comtrade monthly January-July."
+  },
+  "SVK": {
+   "pipeline": {
+    "2019": {
+     "low": 16.5,
+     "central": 18.0,
+     "high": 19.3
+    },
+    "2020": {
+     "low": 10.3,
+     "central": 12.5,
+     "high": 14.7
+    },
+    "2021": {
+     "low": 24.2,
+     "central": 29.9,
+     "high": 35.9
+    },
+    "2022": {
+     "low": 73.3,
+     "central": 98.6,
+     "high": 125.6
+    },
+    "2023": {
+     "low": 43.8,
+     "central": 47.1,
+     "high": 50.4
+    },
+    "2024": {
+     "low": 34.9,
+     "central": 37.5,
+     "high": 40.1
+    },
+    "2025": {
+     "low": 33.3,
+     "central": 38.7,
+     "high": 44.3
+    },
+    "2026": {
+     "low": 44.6,
+     "central": 47.9,
+     "high": 51.3
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.822,
+      "central": 0.895,
+      "high": 0.958
+     },
+     "2020": {
+      "low": 0.516,
+      "central": 0.62,
+      "high": 0.731
+     },
+     "2021": {
+      "low": 1.209,
+      "central": 1.486,
+      "high": 1.784
+     },
+     "2022": {
+      "low": 3.531,
+      "central": 4.902,
+      "high": 6.496
+     },
+     "2023": {
+      "low": 2.111,
+      "central": 2.34,
+      "high": 2.606
+     },
+     "2024": {
+      "low": 1.681,
+      "central": 1.863,
+      "high": 2.076
+     },
+     "2025": {
+      "low": 1.605,
+      "central": 1.922,
+      "high": 2.29
+     },
+     "2026": {
+      "low": 2.148,
+      "central": 2.381,
+      "high": 2.652
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 20.11
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comtrade (6349 kt)",
+     "2020": "mean of comtrade and comext (6181 kt)",
+     "2021": "mean of comtrade and comext (6726 kt)",
+     "2022": "mean of comtrade and comext (4318 kt)",
+     "2023": "comtrade (3211 kt)",
+     "2024": "comtrade (3795 kt)",
+     "2025": "mean of comtrade and comext (2770 kt)",
+     "2026": "comext (725 kt)"
+    }
+   },
+   "contract": "SPP-Gazprom long-term contract (to 2034), largely hub-indexed since the 2010s; after Ukraine transit ended (Jan 2025) gas arrives via TurkStream/Hungary.",
+   "certainty": "A",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Customs unit values of imports from Russia (value / quantity, 1 t = 15.2 MWh GCV). Central = the customs source with the larger recorded quantity (Comext for EU reporters, the national Comtrade record where it covers more volume, e.g. Czech and Slovak gas consigned via other EU states); range = ±3% (≥300 kt), ±8% (30-300 kt) or ±15% (<30 kt), widened to include the other customs source, plus ±4% for energy-content conversion on the price level (not on the index). 2026 = Comext January-August."
+  },
+  "SVN": {
+   "pipeline": {
+    "2019": {
+     "low": 15.4,
+     "central": 17.5,
+     "high": 19.6
+    },
+    "2020": {
+     "low": 10.1,
+     "central": 11.8,
+     "high": 12.6
+    },
+    "2021": {
+     "low": 22.3,
+     "central": 24.0,
+     "high": 25.7
+    },
+    "2022": {
+     "low": 89.6,
+     "central": 96.3,
+     "high": 108.0
+    },
+    "2023": {
+     "low": 49.0,
+     "central": 55.5,
+     "high": 62.4
+    },
+    "2024": {
+     "low": 35.1,
+     "central": 43.0,
+     "high": 51.5
+    },
+    "2025": {
+     "low": 35.3,
+     "central": 43.3,
+     "high": 51.7
+    },
+    "2026": null
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.883,
+      "central": 0.984,
+      "high": 1.089
+     },
+     "2020": {
+      "low": 0.577,
+      "central": 0.665,
+      "high": 0.702
+     },
+     "2021": {
+      "low": 1.279,
+      "central": 1.351,
+      "high": 1.427
+     },
+     "2022": {
+      "low": 5.014,
+      "central": 5.424,
+      "high": 6.155
+     },
+     "2023": {
+      "low": 2.743,
+      "central": 3.128,
+      "high": 3.553
+     },
+     "2024": {
+      "low": 1.964,
+      "central": 2.425,
+      "high": 2.932
+     },
+     "2025": {
+      "low": 1.974,
+      "central": 2.437,
+      "high": 2.948
+     },
+     "2026": null
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 17.75
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "comtrade (281 kt)",
+     "2020": "comtrade (356 kt)",
+     "2021": "comtrade (427 kt)",
+     "2022": "comtrade (369 kt)",
+     "2023": "comtrade (52 kt)",
+     "2024": "comtrade (27 kt)",
+     "2025": "comtrade (17 kt)",
+     "2026": null
+    }
+   },
+   "contract": "Geoplin contract, hub-linked; Russian supply small after 2022.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Customs unit values of imports from Russia (value / quantity, 1 t = 15.2 MWh GCV). Central = the customs source with the larger recorded quantity (Comext for EU reporters, the national Comtrade record where it covers more volume, e.g. Czech and Slovak gas consigned via other EU states); range = ±3% (≥300 kt), ±8% (30-300 kt) or ±15% (<30 kt), widened to include the other customs source, plus ±4% for energy-content conversion on the price level (not on the index). 2026 = Comext January-August."
+  },
+  "SWE": {
+   "pipeline": null,
+   "lng": {
+    "2019": {
+     "low": 21.8,
+     "central": 24.7,
+     "high": 27.8
+    },
+    "2020": {
+     "low": 14.9,
+     "central": 16.9,
+     "high": 19.0
+    },
+    "2021": {
+     "low": 24.6,
+     "central": 27.8,
+     "high": 31.3
+    },
+    "2022": {
+     "low": 30.0,
+     "central": 33.9,
+     "high": 38.1
+    },
+    "2023": {
+     "low": 24.2,
+     "central": 27.4,
+     "high": 30.8
+    },
+    "2024": {
+     "low": 22.6,
+     "central": 25.6,
+     "high": 28.7
+    },
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": {
+      "low": 0.958,
+      "central": 1.069,
+      "high": 1.186
+     },
+     "2020": {
+      "low": 0.653,
+      "central": 0.729,
+      "high": 0.809
+     },
+     "2021": {
+      "low": 1.077,
+      "central": 1.202,
+      "high": 1.334
+     },
+     "2022": {
+      "low": 1.28,
+      "central": 1.465,
+      "high": 1.671
+     },
+     "2023": {
+      "low": 1.034,
+      "central": 1.184,
+      "high": 1.35
+     },
+     "2024": {
+      "low": 0.964,
+      "central": 1.104,
+      "high": 1.26
+     },
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 23.15
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": "comtrade (71 kt)",
+     "2020": "comtrade (133 kt)",
+     "2021": "comtrade (158 kt)",
+     "2022": "comtrade (64 kt)",
+     "2023": "comtrade (82 kt)",
+     "2024": "comtrade (45 kt)",
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Small-scale LNG (Nynashamn/Lysekil), mostly from Russian small-scale plants; ended 2024.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2019-01&reporter=<ISO2>",
+     "date": "2026-10-17 (dataset updated 2026-10-16)"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "LNG: customs unit values (Comext) for Russian-origin LNG. Pipeline where relevant: the importer's customs do not record a usable Russian pipeline quantity, so the price is the kt-weighted customs unit value of hub-indexed Central European buyers (Czechia, Slovakia, Italy) with a ±15-17% range. Rationale: these contracts were renegotiated to hub (TTF/NCG) indexation in 2013-2020 and the peer group buys under the same Gazprom Export terms."
+  },
+  "THA": {
+   "pipeline": null,
+   "lng": {
+    "2019": null,
+    "2020": null,
+    "2021": null,
+    "2022": {
+     "low": 46.7,
+     "central": 57.2,
+     "high": 68.4
+    },
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": {
+      "low": 0.785,
+      "central": 1.0,
+      "high": 1.246
+     },
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 57.2
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": "CREA modelled price for cargoes to this destination",
+     "2023": null,
+     "2024": null,
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "Occasional spot cargoes of Russian LNG (Kpler tracking via CREA).",
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker, yearly value and tonnes by destination (Kpler-based volumes, CREA price model)",
+     "url": "https://api.russiafossiltracker.com/v0/counter?aggregate_by=year,destination_iso2,commodity",
+     "date": "2026-08 download reused from the energy research run"
+    }
+   ],
+   "reasoning": "No customs record by partner; CREA's modelled cargo price (spot-linked) ±15%. Base = the years with cargoes (often none in 2019-2021, then the first year is the base) – treat the index as indicative.",
+   "base_note": "lng: no purchases in 2019-2021; index base = first year with purchases (2022)."
+  },
+  "TUR": {
+   "pipeline": {
+    "2019": {
+     "low": 20.0,
+     "central": 26.9,
+     "high": 33.2
+    },
+    "2020": {
+     "low": 15.5,
+     "central": 20.9,
+     "high": 25.8
+    },
+    "2021": {
+     "low": 15.7,
+     "central": 24.9,
+     "high": 32.1
+    },
+    "2022": {
+     "low": 27.6,
+     "central": 45.3,
+     "high": 60.8
+    },
+    "2023": {
+     "low": 27.8,
+     "central": 35.7,
+     "high": 45.8
+    },
+    "2024": {
+     "low": 25.7,
+     "central": 32.7,
+     "high": 42.5
+    },
+    "2025": {
+     "low": 22.5,
+     "central": 29.2,
+     "high": 37.2
+    },
+    "2026": {
+     "low": 20.2,
+     "central": 31.7,
+     "high": 40.3
+    }
+   },
+   "lng": {
+    "2019": null,
+    "2020": null,
+    "2021": null,
+    "2022": {
+     "low": 42.8,
+     "central": 52.4,
+     "high": 62.7
+    },
+    "2023": {
+     "low": 34.7,
+     "central": 42.5,
+     "high": 50.9
+    },
+    "2024": {
+     "low": 26.4,
+     "central": 32.3,
+     "high": 38.7
+    },
+    "2025": null,
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": {
+      "low": 0.79,
+      "central": 1.109,
+      "high": 1.444
+     },
+     "2020": {
+      "low": 0.614,
+      "central": 0.862,
+      "high": 1.123
+     },
+     "2021": {
+      "low": 0.622,
+      "central": 1.029,
+      "high": 1.399
+     },
+     "2022": {
+      "low": 1.008,
+      "central": 1.87,
+      "high": 2.928
+     },
+     "2023": {
+      "low": 1.016,
+      "central": 1.474,
+      "high": 2.206
+     },
+     "2024": {
+      "low": 0.939,
+      "central": 1.35,
+      "high": 2.049
+     },
+     "2025": {
+      "low": 0.823,
+      "central": 1.204,
+      "high": 1.791
+     },
+     "2026": {
+      "low": 0.739,
+      "central": 1.308,
+      "high": 1.941
+     }
+    },
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": {
+      "low": 0.785,
+      "central": 1.0,
+      "high": 1.246
+     },
+     "2023": {
+      "low": 0.637,
+      "central": 0.811,
+      "high": 1.012
+     },
+     "2024": {
+      "low": 0.484,
+      "central": 0.616,
+      "high": 0.769
+     },
+     "2025": null,
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 24.22,
+    "lng": 52.4
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": "oil formula (k = Serbian/Bosnian median x1.08)",
+     "2020": "oil formula (k = Serbian/Bosnian median x1.08)",
+     "2021": "mean of oil formula (k = Serbian/Bosnian median x1.08) and CREA modelled Turkey price",
+     "2022": "mean of oil formula (k = Serbian/Bosnian median x1.08) and CREA modelled Turkey price",
+     "2023": "mean of oil formula (k = Serbian/Bosnian median x1.08) and CREA modelled Turkey price",
+     "2024": "mean of oil formula (k = Serbian/Bosnian median x1.08) and CREA modelled Turkey price",
+     "2025": "mean of oil formula (k = Serbian/Bosnian median x1.08) and CREA modelled Turkey price",
+     "2026": "mean of oil formula (k = Serbian/Bosnian median x1.08) and CREA modelled Turkey price"
+    },
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": "CREA modelled LNG price for Turkish cargoes",
+     "2023": "CREA modelled LNG price for Turkish cargoes",
+     "2024": "CREA modelled LNG price for Turkish cargoes",
+     "2025": null,
+     "2026": null
+    }
+   },
+   "contract": "BOTAS-Gazprom (Blue Stream 16 bcm/yr and TurkStream-1 contracts, ~22 bcm/yr, extended year by year since 2025) plus private importers (Western line, ~5.75 bcm). Oil-indexed with negotiated discounts (10.25% in 2015-16, renewed demands 2021-2023) and a deferred-payment arrangement in 2022-2024 that shifts cash timing but not the contract price. Small Russian LNG cargoes 2022-2024.",
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "Enerdata / Reuters: Turkiye extends Russian gas import contracts for a year (22 bcm/yr)",
+     "url": "https://www.enerdata.net/publications/daily-energy-news/turkiye-extends-year-russian-gas-import-contracts-22-bcmyear.html",
+     "date": "2025-12"
+    },
+    {
+     "name": "ICIS: Turkey seeks mid-term Russian gas deal (existing BOTAS contracts oil-indexed)",
+     "url": "https://icis.com/explore/resources/news/2021/09/24/10688146/turkey-seeks-mid-term-russian-gas-deal-as-demand-set-to-soar",
+     "date": "2021-09-24"
+    },
+    {
+     "name": "CREA Russia Fossil Tracker, yearly value and tonnes by destination (Kpler-based volumes, CREA price model)",
+     "url": "https://api.russiafossiltracker.com/v0/counter?aggregate_by=year,destination_iso2,commodity",
+     "date": "2026-08 download reused from the energy research run"
+    },
+    {
+     "name": "FRED / IMF primary commodity prices: Brent (POILBREUSDM, DCOILBRENTEU), EU natural gas TTF (PNGASEUUSDM), Japan LNG (PNGASJPUSDM)",
+     "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=POILBREUSDM",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Turkish customs suppress all gas imports (Comtrade shows only LPG from Russia), so there is no observed price. Estimate = mean of (a) an oil-indexed formula, 9-month Brent average lagged 1 month x k, where k is the median Serbian/Bosnian customs ratio x1.08 (BOTAS has historically paid somewhat more than Srbijagas), and (b) CREA's modelled Turkey pipeline price (2021+). Range: k from the 10th percentile x0.92 (a deeper discount) to the 90th percentile x1.12, with the 6-month/3-month-lag variant. Deferred payment is treated as not changing the price.",
+   "base_note": "lng: no purchases in 2019-2021; index base = first year with purchases (2022)."
+  },
+  "TWN": {
+   "pipeline": null,
+   "lng": {
+    "2019": {
+     "low": 26.8,
+     "central": 28.7,
+     "high": 30.8
+    },
+    "2020": {
+     "low": 19.9,
+     "central": 21.3,
+     "high": 22.9
+    },
+    "2021": {
+     "low": 33.9,
+     "central": 36.4,
+     "high": 39.0
+    },
+    "2022": {
+     "low": 38.0,
+     "central": 46.5,
+     "high": 55.6
+    },
+    "2023": {
+     "low": 32.6,
+     "central": 39.9,
+     "high": 47.8
+    },
+    "2024": {
+     "low": 37.7,
+     "central": 46.2,
+     "high": 55.2
+    },
+    "2025": {
+     "low": 27.2,
+     "central": 33.3,
+     "high": 39.9
+    },
+    "2026": {
+     "low": 30.5,
+     "central": 37.4,
+     "high": 44.7
+    }
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": {
+      "low": 0.958,
+      "central": 0.997,
+      "high": 1.037
+     },
+     "2020": {
+      "low": 0.711,
+      "central": 0.741,
+      "high": 0.771
+     },
+     "2021": {
+      "low": 1.212,
+      "central": 1.262,
+      "high": 1.313
+     },
+     "2022": {
+      "low": 1.346,
+      "central": 1.615,
+      "high": 1.895
+     },
+     "2023": {
+      "low": 1.155,
+      "central": 1.386,
+      "high": 1.626
+     },
+     "2024": {
+      "low": 1.336,
+      "central": 1.603,
+      "high": 1.881
+     },
+     "2025": {
+      "low": 0.964,
+      "central": 1.157,
+      "high": 1.358
+     },
+     "2026": {
+      "low": 1.082,
+      "central": 1.298,
+      "high": 1.524
+     }
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 28.81
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": "comtrade (1482 kt)",
+     "2020": "comtrade (2469 kt)",
+     "2021": "comtrade (1763 kt)",
+     "2022": "Taiwan customs value / Kpler cargo tonnes (CREA)",
+     "2023": "Taiwan customs value / Kpler cargo tonnes (CREA)",
+     "2024": "Taiwan customs value / Kpler cargo tonnes (CREA)",
+     "2025": "CREA modelled price for Taiwanese cargoes",
+     "2026": "CREA modelled price for Taiwanese cargoes"
+    }
+   },
+   "contract": "CPC term purchases of Sakhalin-2 LNG and spot cargoes; reduced after 2022.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "CREA Russia Fossil Tracker, yearly value and tonnes by destination (Kpler-based volumes, CREA price model)",
+     "url": "https://api.russiafossiltracker.com/v0/counter?aggregate_by=year,destination_iso2,commodity",
+     "date": "2026-08 download reused from the energy research run"
+    }
+   ],
+   "reasoning": "Taiwan (Comtrade \"Other Asia, nes\") customs unit values 2019-2021; from 2022 the quantity is imputed, so value / Kpler tonnes (CREA); 2025-2026 = CREA modelled price."
+  },
+  "UZB": {
+   "pipeline": {
+    "2019": null,
+    "2020": null,
+    "2021": null,
+    "2022": null,
+    "2023": {
+     "low": 12.4,
+     "central": 14.0,
+     "high": 15.8
+    },
+    "2024": {
+     "low": 13.1,
+     "central": 14.0,
+     "high": 15.0
+    },
+    "2025": {
+     "low": 11.7,
+     "central": 13.5,
+     "high": 15.5
+    },
+    "2026": {
+     "low": 11.9,
+     "central": 13.0,
+     "high": 14.2
+    }
+   },
+   "lng": null,
+   "index_vs_2019_2021": {
+    "pipeline": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": null,
+     "2023": {
+      "low": 0.93,
+      "central": 1.061,
+      "high": 1.206
+     },
+     "2024": {
+      "low": 0.979,
+      "central": 1.06,
+      "high": 1.149
+     },
+     "2025": {
+      "low": 0.877,
+      "central": 1.023,
+      "high": 1.184
+     },
+     "2026": {
+      "low": 0.892,
+      "central": 0.986,
+      "high": 1.089
+     }
+    },
+    "lng": null
+   },
+   "base_2019_2021_eur_mwh": {
+    "pipeline": 13.22
+   },
+   "basis_by_year": {
+    "pipeline": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": null,
+     "2023": "comtrade (181 kt)",
+     "2024": "comtrade (4013 kt)",
+     "2025": "interpolated between 2024 customs and 2026 monthly customs (2025 not yet published)",
+     "2026": "comtrade_monthly (2455 kt)"
+    }
+   },
+   "contract": "Uzbekneftegaz-Gazprom deal (Oct 2023, via Kazakhstan, ~$160/1000 m3), volumes rising to ~5.5 bcm in 2024.",
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, reporter imports from Russia (partner 643), HS 271121 / 271111, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49>&period=<year>&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, monthly, 2026-01 to 2026-08",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<M49>&period=2026MM&partnerCode=643&flowCode=M&cmdCode=271111,271121",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Uzbek customs unit values (value / reported m3) ≈ $160/1000 m3. Imports began Oct 2023, so the 2019-2021 base is back-cast as the 2024 USD price at 2019-2021 exchange rates (index then shows only the euro effect).",
+   "base_note": "No purchases in 2019-2021: base = 2024 USD contract price converted at 2019-2021 USD/EUR."
+  },
+  "VNM": {
+   "pipeline": null,
+   "lng": {
+    "2019": null,
+    "2020": null,
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null,
+    "2025": {
+     "low": 27.2,
+     "central": 33.4,
+     "high": 39.9
+    },
+    "2026": null
+   },
+   "index_vs_2019_2021": {
+    "pipeline": null,
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": null,
+     "2023": null,
+     "2024": null,
+     "2025": {
+      "low": 0.783,
+      "central": 1.0,
+      "high": 1.244
+     },
+     "2026": null
+    }
+   },
+   "base_2019_2021_eur_mwh": {
+    "lng": 33.4
+   },
+   "basis_by_year": {
+    "lng": {
+     "2019": null,
+     "2020": null,
+     "2021": null,
+     "2022": null,
+     "2023": null,
+     "2024": null,
+     "2025": "CREA modelled price for cargoes to this destination",
+     "2026": null
+    }
+   },
+   "contract": "Occasional spot cargoes of Russian LNG (Kpler tracking via CREA).",
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker, yearly value and tonnes by destination (Kpler-based volumes, CREA price model)",
+     "url": "https://api.russiafossiltracker.com/v0/counter?aggregate_by=year,destination_iso2,commodity",
+     "date": "2026-08 download reused from the energy research run"
+    }
+   ],
+   "reasoning": "No customs record by partner; CREA's modelled cargo price (spot-linked) ±15%. Base = the years with cargoes (often none in 2019-2021, then the first year is the base) – treat the index as indicative.",
+   "base_note": "lng: no purchases in 2019-2021; index base = first year with purchases (2025)."
+  }
+ },
+ "europe_reference": {
+  "energy2_pipeline_gas_index": {
+   "2019": {
+    "low": 0.872,
+    "central": 0.928,
+    "high": 0.983
+   },
+   "2020": {
+    "low": 0.568,
+    "central": 0.604,
+    "high": 0.64
+   },
+   "2021": {
+    "low": 1.38,
+    "central": 1.468,
+    "high": 1.556
+   },
+   "2022": {
+    "low": 2.582,
+    "central": 4.506,
+    "high": 4.777
+   },
+   "2023": {
+    "low": 1.61,
+    "central": 2.323,
+    "high": 2.462
+   },
+   "2024": {
+    "low": 1.5,
+    "central": 1.714,
+    "high": 1.817
+   },
+   "2025": {
+    "low": 1.325,
+    "central": 1.776,
+    "high": 1.883
+   },
+   "2026": {
+    "low": 1.723,
+    "central": 2.309,
+    "high": 2.448
+   }
+  },
+  "energy2_lng_index": {
+   "2019": {
+    "low": 0.562,
+    "central": 0.876,
+    "high": 0.929
+   },
+   "2020": {
+    "low": 0.442,
+    "central": 0.678,
+    "high": 0.719
+   },
+   "2021": {
+    "low": 1.359,
+    "central": 1.446,
+    "high": 2.049
+   },
+   "2022": {
+    "low": 2.726,
+    "central": 3.719,
+    "high": 3.942
+   },
+   "2023": {
+    "low": 1.819,
+    "central": 2.136,
+    "high": 2.264
+   },
+   "2024": {
+    "low": 1.486,
+    "central": 1.581,
+    "high": 1.849
+   },
+   "2025": {
+    "low": 1.654,
+    "central": 1.76,
+    "high": 1.874
+   },
+   "2026": {
+    "low": 1.76,
+    "central": 1.872,
+    "high": 1.994
+   }
+  },
+  "ttf_index": {
+   "2019": {
+    "low": 0.591,
+    "central": 0.591,
+    "high": 0.591
+   },
+   "2020": {
+    "low": 0.413,
+    "central": 0.413,
+    "high": 0.413
+   },
+   "2021": {
+    "low": 1.996,
+    "central": 1.996,
+    "high": 1.996
+   },
+   "2022": {
+    "low": 5.289,
+    "central": 5.289,
+    "high": 5.289
+   },
+   "2023": {
+    "low": 1.769,
+    "central": 1.769,
+    "high": 1.769
+   },
+   "2024": {
+    "low": 1.494,
+    "central": 1.494,
+    "high": 1.494
+   },
+   "2025": {
+    "low": 1.565,
+    "central": 1.565,
+    "high": 1.565
+   },
+   "2026": {
+    "low": 1.922,
+    "central": 1.922,
+    "high": 1.922
+   }
+  },
+  "energy2_unit_values_eur_mwh_on_this_file_basis": {
+   "2019": {
+    "pipeline": 18.0,
+    "lng": 17.7
+   },
+   "2020": {
+    "pipeline": 11.7,
+    "lng": 13.7
+   },
+   "2021": {
+    "pipeline": 28.5,
+    "lng": 29.2
+   },
+   "2022": {
+    "pipeline": 87.5,
+    "lng": 75.2
+   },
+   "2023": {
+    "pipeline": 45.1,
+    "lng": 43.2
+   },
+   "2024": {
+    "pipeline": 33.3,
+    "lng": 31.9
+   },
+   "2025": {
+    "pipeline": 34.5,
+    "lng": 35.6
+   },
+   "2026": {
+    "pipeline": 44.9,
+    "lng": 37.7
+   }
+  },
+  "ttf_eur_mwh": {
+   "2019": 13.5,
+   "2020": 9.4,
+   "2021": 46.5,
+   "2022": 122.5,
+   "2023": 40.7,
+   "2024": 34.4,
+   "2025": 36.3,
+   "2026": 45.4
+  },
+  "brent_eur_bbl": {
+   "2019": 57.3,
+   "2020": 38.0,
+   "2021": 60.0,
+   "2022": 94.1,
+   "2023": 76.2,
+   "2024": 73.9,
+   "2025": 60.8,
+   "2026": 75.2
+  },
+  "oil_formula_driver_brent_9m_avg_lag1_eur_bbl": {
+   "2019": 59.5,
+   "2020": 46.2,
+   "2021": 48.1,
+   "2022": 82.9,
+   "2023": 82.6,
+   "2024": 76.3,
+   "2025": 66.9,
+   "2026": 62.3
+  },
+  "oil_formula_k_eur_mwh_per_eur_bbl": {
+   "median": 0.418,
+   "p10": 0.381,
+   "p90": 0.474,
+   "calibration": "SRB and BIH customs unit values 2019-2026 / 9-month Brent average lagged 1 month"
+  },
+  "peer_hub_benchmark_eur_mwh": {
+   "2019": 17.3,
+   "2020": 11.5,
+   "2021": 31.5,
+   "2022": 97.4,
+   "2023": 48.5,
+   "2024": 36.5,
+   "2025": 38.9,
+   "2026": 47.9
+  },
+  "this_file_volume_weighted_eur_mwh": {
+   "pipeline": {
+    "2019": 18.3,
+    "2020": 12.8,
+    "2021": 28.6,
+    "2022": 83.7,
+    "2023": 41.6,
+    "2024": 33.5,
+    "2025": 31.8,
+    "2026": 35.1
+   },
+   "lng": {
+    "2019": 15.7,
+    "2020": 12.6,
+    "2021": 31.8,
+    "2022": 77.5,
+    "2023": 43.1,
+    "2024": 32.0,
+    "2025": 33.9,
+    "2026": 34.7
+   }
+  },
+  "this_file_volume_weighted_index": {
+   "pipeline": {
+    "2019": 0.92,
+    "2020": 0.643,
+    "2021": 1.437,
+    "2022": 4.206,
+    "2023": 2.09,
+    "2024": 1.683,
+    "2025": 1.598,
+    "2026": 1.764
+   },
+   "lng": {
+    "2019": 0.784,
+    "2020": 0.629,
+    "2021": 1.587,
+    "2022": 3.869,
+    "2023": 2.151,
+    "2024": 1.597,
+    "2025": 1.692,
+    "2026": 1.732
+   }
+  },
+  "note": "energy2 indices are the Europe-wide indices the map used so far (EUR, 2019-2021 = 1). The volume-weighted figures re-aggregate this file's country prices with energy2 final-use volumes (33 European countries incl. Turkey) and should be close to the energy2 pipeline index; differences come from Turkey (modelled, large weight after 2022) and from the 15.2 MWh/t energy content used here vs 14.45 implied by energy2 (levels only)."
+ }
+}
