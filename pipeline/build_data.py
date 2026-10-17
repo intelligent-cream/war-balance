@@ -484,7 +484,8 @@ def build() -> dict:
             # the fossil value is known from 2021 only: brought to 2019-2021 prices to compare with the baseline
             f21 = {b: fuel_index(iso3, b)[0] for b in ("low", "central", "high")}
             tr["base_range"] = [
-                min(tr["base_range"][0], fossil["years_lo"][0] / f21["high"]),
+                # fuel is only part of imports: the low end is the larger of the two lows, not the smaller
+                max(tr["base_range"][0], fossil["years_lo"][0] / f21["high"]),
                 max(tr["base_range"][1], fossil["years_hi"][0] / f21["low"]),
             ]
             tr["base"] = round(max(tr.get("base", 0), fossil["years"][0] / f21["central"]), 5)
@@ -805,6 +806,7 @@ def build() -> dict:
             }
     remove_freight(countries)
     price_indices(countries)
+    apply_narrow(countries, src)
     pre_war_trends(countries, src)
     for iso3, c in countries.items():
         c["coverage"] = coverage(c, notes.get(iso3, {}))
@@ -988,7 +990,7 @@ def pre_war_trends(countries: dict[str, dict], src: Sources) -> None:
                 continue
             # the services baseline is 2021, a COVID year for travel: multipliers are against 2019-2021, so they are
             # divided by 2021's level relative to 2019-2021. An unreliable trend keeps only the rebound from COVID
-            r = d.get("base_2021_over_2019_2021") or 1.0
+            r = 1.0 if obj.get("base_2019_2021") else (d.get("base_2021_over_2019_2021") or 1.0)
             mex = d.get("multiplier_ex_covid") or d["multiplier"]
             mid, lo, hi = [1.0], [1.0], [1.0]
             for y in YEARS[1:]:
@@ -997,8 +999,9 @@ def pre_war_trends(countries: dict[str, dict], src: Sources) -> None:
                 # a level-based counterfactual (Egypt's flight ban, no COVID split) is used as it is
                 cen = (m["central"] if d.get("reliable") or not d.get("multiplier_ex_covid") else rebound) / r
                 mid.append(round(cen, 4))
-                lo.append(round(min(m["low"] / r, cen, rebound / r), 4))
-                hi.append(round(max(m["high"] / r, cen, rebound / r), 4))
+                # tiny or noisy series can give extreme fitted bounds: kept within 2.5 times the middle value
+                lo.append(round(max(cen / 2.5, min(m["low"] / r, cen, rebound / r)), 4))
+                hi.append(round(min(cen * 2.5, max(m["high"] / r, cen, rebound / r)), 4))
             put(obj, mid, lo, hi)
     comp_global = t2["global"]["company"]
     for iso3, c in countries.items():
@@ -1141,6 +1144,42 @@ def apply_audit(countries: dict[str, dict], src: Sources) -> None:
         a["refugee_years_lo"] = [max(lo, v * 19 / 24) for lo, v in zip(a["refugee_years_lo"], a["refugee_years"])]
         a["refugee_years_hi"] = [max(hi, v) for hi, v in zip(a["refugee_years_hi"], a["refugee_years"])]
         a["refugee_src"] = (a.get("refugee_src") or []) + [aid_src]
+
+
+def apply_narrow(countries: dict[str, dict], src: Sources) -> None:
+    """Better data for the countries with the widest ranges (official statistics of Belarus, the EAEU members,
+    Uzbekistan, Georgia, Turkey; tourism counts; intelligence estimates for North Korea): research/2026-10/gaps/narrow.json.
+    Services there use the 2019-2021 average as the baseline (not COVID-hit 2021)."""
+    nw = load(GAPS / "narrow.json")["countries"]
+    nid = src.add(
+        "narrow",
+        "Official trade and services statistics and tourism counts for countries with wide ranges (Belstat, NBG, TÜİK, stat.uz, INSS)",
+        None,
+        "2026-10-18",
+        "see research/2026-10/gaps/narrow-notes.md",
+    )
+    for iso3, series in nw.items():
+        c = countries.get(iso3)
+        if not c:
+            continue
+        for key, d in series.items():
+            obj = c.setdefault(key, {"cert": d.get("certainty") or "C", "src": []})
+            for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
+                old = obj.get(k) or [0.0] * 6
+                obj[k] = [round((d["years"].get(str(y)) or {}).get(b, old[i]), 5) for i, y in enumerate(YEARS)]
+            if d.get("base"):
+                obj["base"] = round(d["base"]["central"], 5)
+                obj["base_range"] = [round(d["base"]["low"], 5), round(d["base"]["high"], 5)]
+                if key.startswith("svc_"):
+                    obj["base_2019_2021"] = True
+            for k in ("pidx", "pidx_lo", "pidx_hi"):
+                if d.get(k):
+                    v = d[k]
+                    obj[k] = [round(v[str(y)] if isinstance(v, dict) else v[i], 4) for i, y in enumerate(YEARS)]
+            if d.get("certainty"):
+                obj["cert"] = d["certainty"]
+            if nid not in obj.setdefault("src", []):
+                obj["src"].append(nid)
 
 
 def remove_freight(countries: dict[str, dict]) -> None:
