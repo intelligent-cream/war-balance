@@ -42,7 +42,7 @@ node pipeline/share_cards.mjs              # optional: share images and a page p
 
 ## Corrections
 
-Found a wrong number, a better source or a missing flow? Open an issue with the country, the figure and a link to the source, or email `CORRECTIONS-EMAIL-PLACEHOLDER`. Corrections are listed in the commit history.
+Found a wrong number, a better source or a missing flow? Open an issue with the country, the figure and a link to the source, or send a message to [u/Intelligent-Cream-14 on Reddit](https://www.reddit.com/user/Intelligent-Cream-14/). Corrections are listed in the commit history.
 
 ## Licence
 
