@@ -292,12 +292,66 @@ details.more[open] summary { margin-bottom: 10px; }
   .rank-row { padding: 8px 6px; }
   .cmp { font-size: 12.5px; }
 }
+/* ===== Views: ranking, bubbles, table ===== */
+.views { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.views button { border: 0; background: transparent; padding: 6px 12px; cursor: pointer; font-weight: 600; font-size: 13.5px; color: var(--ink-soft); }
+.views button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+.app[data-view]:not([data-view="map"]) #map, .app[data-view]:not([data-view="map"]) #flows, .app[data-view]:not([data-view="map"]) .map-title,
+.app[data-view]:not([data-view="map"]) .legend, .app[data-view]:not([data-view="map"]) .zoom, .app[data-view]:not([data-view="map"]) .hint,
+.app[data-view]:not([data-view="map"]) .toggle { display: none !important; }
+.view { position: absolute; inset: 0; overflow: auto; background: var(--surface); z-index: 1; -webkit-overflow-scrolling: touch; }
+.view-inner { max-width: 1080px; margin: 0 auto; padding: 22px max(16px, env(safe-area-inset-left, 0px)) 48px; }
+body[data-panel="open"] .view-inner { margin-right: 420px; margin-left: 0; }
+.view h2 { font-family: var(--font-display); font-weight: 800; font-stretch: 112%; font-size: 24px; letter-spacing: -0.015em; margin: 0 0 4px; }
+.view .sub { color: var(--ink-soft); font-size: 14px; margin: 0 0 14px; max-width: 70ch; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0 0 14px; }
+.filters .chipbtn { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 4px 11px; font-size: 13px; cursor: pointer; }
+.filters .chipbtn[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.filters .sep { width: 1px; height: 20px; background: var(--line); margin: 0 4px; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { font-family: var(--font-body); font-size: 12.5px; fill: var(--ink-soft); }
+.chart .lbl { fill: var(--ink); font-size: 13px; }
+.chart .row:hover .lbl, .chart .row:focus .lbl { font-weight: 700; }
+.chart .row { cursor: pointer; outline: none; }
+.chart .row:focus-visible rect.hit { stroke: var(--focus); stroke-width: 2; }
+.chart .grid line { stroke: var(--line); stroke-width: 1; }
+.chart .zero { stroke: var(--ink-soft); stroke-width: 1; }
+.chart .whisk { stroke: var(--ink-soft); stroke-opacity: 0.55; stroke-width: 2; stroke-linecap: round; }
+.chart .dot { stroke: var(--surface); stroke-width: 2; }
+.chart .bubble { stroke: var(--surface); stroke-width: 1.5; fill-opacity: 0.82; cursor: pointer; }
+.chart .bubble:hover, .chart .bubble.sel { stroke: var(--ink); stroke-width: 2; fill-opacity: 1; }
+.chart .zone-ukr { fill: var(--ukr); opacity: 0.06; } .chart .zone-rus { fill: var(--rus); opacity: 0.07; }
+.chart .diag { stroke: var(--ink-soft); stroke-width: 1; }
+.chart .zone-lbl { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.02em; text-transform: uppercase; }
+.dl { display: inline-flex; gap: 8px; flex-wrap: wrap; margin-left: auto; }
+.dl a, .dl button { border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: 5px 11px; font-size: 13px; cursor: pointer; text-decoration: none; color: var(--ink); font-weight: 600; }
+.dtable { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.dtable th { position: sticky; top: 0; background: var(--surface); text-align: right; font-weight: 600; color: var(--ink-soft); font-size: 12px; padding: 8px 8px; border-bottom: 1px solid var(--line); cursor: pointer; white-space: nowrap; }
+.dtable th:first-child, .dtable td:first-child { text-align: left; }
+.dtable th[aria-sort="descending"]::after { content: " ▾"; } .dtable th[aria-sort="ascending"]::after { content: " ▴"; }
+.dtable td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: right; font-family: var(--font-data); font-size: 12.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dtable td:first-child { font-family: var(--font-body); font-size: 13.5px; }
+.dtable tbody tr { cursor: pointer; } .dtable tbody tr:hover { background: var(--mid); }
+.dtable .pos { color: var(--ukr); } .dtable .neg { color: var(--rus); }
+.tablewrap { overflow-x: auto; }
+.note-small { color: var(--ink-soft); font-size: 12.5px; margin-top: 12px; max-width: 80ch; }
+@media (max-width: 760px) {
+  body[data-panel="open"] .view-inner { margin-right: 0; }
+  .view h2 { font-size: 20px; }
+  .views button { padding: 6px 9px; font-size: 13px; }
+}
 </style>
 
-<div class="app">
+<div class="app" data-view="map">
   <div class="sample status" role="note" id="status"><b>Research preview.</b> Loading data…</div>
   <header class="bar" id="bar" data-menu="closed">
     <h1 class="brand">Follow the Money: Ukrainian Aid<span>change since before the war</span></h1>
+    <div class="views" role="group" aria-label="Show as">
+      <button data-view="map" aria-pressed="true">Map</button>
+      <button data-view="rank" aria-pressed="false">Ranking</button>
+      <button data-view="bubbles" aria-pressed="false">Ukraine vs Russia</button>
+      <button data-view="table" aria-pressed="false">Table &amp; data</button>
+    </div>
     <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="controls">Options</button>
     <div class="controls" id="controls">
       <div class="seg" role="group" aria-label="View">
@@ -330,6 +384,7 @@ details.more[open] summary { margin-bottom: 10px; }
   <div class="stage">
     <svg id="map" role="img" aria-label="World map coloured by the change in money flows since before the war"></svg>
     <canvas id="flows" aria-hidden="true"></canvas>
+    <div class="view" id="view" hidden></div>
     <div class="map-title" id="map-title"></div>
     <div class="hint" id="hint">Drag to move, scroll to zoom, click a country, Ukraine or Russia</div>
     <div class="tooltip" id="tip" hidden></div>
@@ -345,6 +400,7 @@ details.more[open] summary { margin-bottom: 10px; }
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script src="views.js" defer></script>
 <script>
 // ===== Model =====
 // All numbers come from data.json (built by build_data.py from the research files). Amounts are € billions.
@@ -680,6 +736,7 @@ function paint() {
   buildArcs();
   if (reduceMotion) drawFlows(0);
   renderPanel();
+  if (state.view && state.view !== "map" && window.renderView) renderView();
 }
 
 // ===== Flow layer =====
@@ -1158,6 +1215,7 @@ window.addEventListener("resize", () => { layout(); if (reduceMotion) drawFlows(
 // ===== Load =====
 Promise.all([fetch("countries-50m.json").then(r => r.json()), fetch("data.json").then(r => r.json())]).then(([world, data]) => {
   YEARS = data.years; FRAC = data.frac; SRC = data.sources || {}; META = data.meta || {};
+  if (data.data_to) document.body.dataset.dataTo = new Date(data.data_to).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
   for (const c of Object.values(data.countries)) { normalise(c); DATA[c.n] = c; byIso[c.iso3] = c; }
   INCLUDED = data.included_in || {};
   const status = document.getElementById("status");
