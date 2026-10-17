@@ -963,6 +963,69 @@ def pre_war_trends(countries: dict[str, dict], src: Sources) -> None:
             obj["bmul"], obj["bmul_lo"], obj["bmul_hi"] = mid, lo, hi
             obj["src"] = obj.get("src", []) + ([sid] if sid not in obj.get("src", []) else [])
 
+    # services, company taxes and shipping (research/2026-10/gaps/trend2.json)
+    t2 = load(GAPS / "trend2.json")
+    sid2 = src.add(
+        "trend2",
+        "Pre-war trends for services (OECD-WTO BaTiS, Eurostat, Bank of Russia), foreign companies in Russia and Russian seaborne exports",
+        "https://www.oecd.org/en/data/datasets/balanced-trade-in-services.html",
+        t2.get("generated"),
+        "travel fitted on 2012-2019 with the COVID rebound; see research/2026-10/gaps/trend2-notes.md",
+    )
+
+    def put(obj: dict, mid: list, lo: list, hi: list) -> None:
+        obj["bmul"], obj["bmul_lo"], obj["bmul_hi"] = mid, lo, hi
+        if sid2 not in obj.setdefault("src", []):
+            obj["src"].append(sid2)
+
+    for iso3, flows in t2["countries"].items():
+        c = countries.get(iso3)
+        if not c:
+            continue
+        for key in ("svc_bought", "svc_sold"):
+            d, obj = flows.get(key), c.get(key)
+            if not d or not obj or not d.get("multiplier"):
+                continue
+            # the services baseline is 2021, a COVID year for travel: multipliers are against 2019-2021, so they are
+            # divided by 2021's level relative to 2019-2021. An unreliable trend keeps only the rebound from COVID
+            r = d.get("base_2021_over_2019_2021") or 1.0
+            mex = d.get("multiplier_ex_covid") or d["multiplier"]
+            mid, lo, hi = [1.0], [1.0], [1.0]
+            for y in YEARS[1:]:
+                m, mx = d["multiplier"][str(y)], mex.get(str(y)) or d["multiplier"][str(y)]
+                rebound = m["central"] / mx["central"] if mx["central"] else 1.0
+                # a level-based counterfactual (Egypt's flight ban, no COVID split) is used as it is
+                cen = (m["central"] if d.get("reliable") or not d.get("multiplier_ex_covid") else rebound) / r
+                mid.append(round(cen, 4))
+                lo.append(round(min(m["low"] / r, cen, rebound / r), 4))
+                hi.append(round(max(m["high"] / r, cen, rebound / r), 4))
+            put(obj, mid, lo, hi)
+    comp_global = t2["global"]["company"]
+    for iso3, c in countries.items():
+        obj = c.get("company")
+        if not obj:
+            continue
+        d = (t2["countries"].get(iso3) or {}).get("company")
+        d = d if d and d.get("reliable") else comp_global
+        # the company series starts in 2021; the trend is against 2019-2021
+        r = d.get("trend_2021_over_2019_2021") or comp_global.get("trend_2021_over_2019_2021") or 1.045
+        r = r.get("central", 1.045) if isinstance(r, dict) else r
+        mid = [1.0] + [round(d["multiplier"][str(y)]["central"] / r, 4) for y in YEARS[1:]]
+        lo = [1.0] + [round(min(d["multiplier"][str(y)]["low"] / r, 1.0), 4) for y in YEARS[1:]]
+        hi = [1.0] + [round(max(d["multiplier"][str(y)]["high"] / r, 1.0), 4) for y in YEARS[1:]]
+        put(obj, mid, lo, hi)
+    ship = t2["global"]["shipping"]
+    for c in countries.values():
+        obj = c.get("shipping")
+        if obj:
+            ms = [ship["multiplier"][str(y)] for y in YEARS[1:]]
+            put(
+                obj,
+                [1.0] + [m["central"] for m in ms],
+                [1.0] + [min(m["low"], 1.0) for m in ms],
+                [1.0] + [max(m["high"], 1.0) for m in ms],
+            )
+
 
 def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict], src: Sources) -> None:
     """Pass on what trading hubs resell, to their customers by share of fuel exports, then keep only the crude value."""
