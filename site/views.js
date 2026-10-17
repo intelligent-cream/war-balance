@@ -1,6 +1,7 @@
 // ===== Views: ranking, Ukraine vs Russia bubbles, table and data download =====
 // Same numbers as the map: the current view (change, cost, to Ukraine, to Russia), measure and year.
-/* global state, DATA, calc, lensValue, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, closeMenu */
+/* global state, DATA, calc, lensValue, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, closeMenu, t, LANG */
+// Labels below are English keys; t() (i18n.js) translates them when rendered.
 
 const GROUPS = {
   all: { label: "All countries", list: null },
@@ -35,11 +36,11 @@ const LENS_TITLE = {
   rus: "Money and support reaching Russia",
 };
 function measureText() {
-  return { gdp: "total as % of one year's GDP", pp: "€ per person", total: "€ billion" }[state.measure];
+  return t({ gdp: "total as % of one year's GDP", pp: "€ per person", total: "€ billion" }[state.measure]);
 }
 function periodText() {
   const y = Math.max(2022, state.year);
-  return `2022–${y}${y === 2026 && FRAC[5] < 1 ? " (2026 to August)" : ""}`;
+  return `2022–${y}${y === 2026 && FRAC[5] < 1 ? t(" (2026 to August)") : ""}`;
 }
 function tick(v) {
   if (state.measure === "gdp") return d3.format("~")(+v.toFixed(2)) + "%";
@@ -47,10 +48,10 @@ function tick(v) {
   return "€" + d3.format("~")(v) + "bn";
 }
 function filtersHtml() {
-  return `<div class="filters" role="group" aria-label="Filter countries">
-    ${Object.entries(GROUPS).map(([k, g]) => `<button class="chipbtn" data-group="${k}" aria-pressed="${viewState.group === k}">${g.label}</button>`).join("")}
+  return `<div class="filters" role="group" aria-label="${t("Filter countries")}">
+    ${Object.entries(GROUPS).map(([k, g]) => `<button class="chipbtn" data-group="${k}" aria-pressed="${viewState.group === k}">${t(g.label)}</button>`).join("")}
     <span class="sep"></span>
-    <button class="chipbtn" data-small="1" aria-pressed="${viewState.small}" title="Economies under €${MIN_GDP_RANK}bn GDP swing a lot in % of GDP">Small economies</button>
+    <button class="chipbtn" data-small="1" aria-pressed="${viewState.small}" title="${t("Economies under €{min}bn GDP swing a lot in % of GDP", { min: MIN_GDP_RANK })}">${t("Small economies")}</button>
   </div>`;
 }
 function wireFilters(root) {
@@ -58,8 +59,8 @@ function wireFilters(root) {
   root.querySelectorAll("[data-small]").forEach(b => (b.onclick = () => { viewState.small = !viewState.small; renderView(); }));
 }
 function tipFor(m) {
-  const range = m.loBn != null ? `<br>Likely range ${fmtMeasure(m.c, m.loBn, state.measure, true)} to ${fmtMeasure(m.c, m.hiBn, state.measure, true)}` : "";
-  return `<b>${m.c.name}</b>${fmtMeasure(m.c, m.bn, state.measure, true)}${state.measure !== "total" ? ` · ${eur(m.bn, true)}` : ""}${range}<br><span style="opacity:.75">Click for the full breakdown</span>`;
+  const range = m.loBn != null ? "<br>" + t("Likely range {lo} to {hi}", { lo: fmtMeasure(m.c, m.loBn, state.measure, true), hi: fmtMeasure(m.c, m.hiBn, state.measure, true) }) : "";
+  return `<b>${m.c.name}</b>${fmtMeasure(m.c, m.bn, state.measure, true)}${state.measure !== "total" ? ` · ${eur(m.bn, true)}` : ""}${range}<br><span style="opacity:.75">${t("Click for the full breakdown")}</span>`;
 }
 
 // ----- Ranking: every country as a dot with its likely range, sorted -----
@@ -81,7 +82,7 @@ function renderRanking(root) {
   const ticks = [];
   for (const t of cand) if (ticks.every(u => Math.abs(x(u) - x(t)) >= (narrowScreen ? 38 : 46))) ticks.push(t);
   const col = v => (v >= 0 ? (state.lens === "rus" ? "var(--rus)" : "var(--ukr)") : "var(--rus)");
-  const svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${LENS_TITLE[state.lens]}, ${rows.length} countries, ranked">
+  const svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${t("{title}, {n} countries, ranked", { title: t(LENS_TITLE[state.lens]), n: rows.length })}">
     <g class="grid">${ticks.map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="${top - 6}" y2="${H - 6}"/><text x="${x(t)}" y="${top - 12}" text-anchor="middle">${tick(t)}</text>`).join("")}</g>
     ${diverging ? `<line class="zero" x1="${x(0)}" x2="${x(0)}" y1="${top - 6}" y2="${H - 6}"/>` : ""}
     ${rows.map((m, i) => {
@@ -96,11 +97,11 @@ function renderRanking(root) {
     }).join("")}
   </svg>`;
   root.innerHTML = `<div class="view-inner">
-    <h2>${LENS_TITLE[state.lens]}</h2>
-    <p class="sub">${measureText()}, ${periodText()}. Dot: middle estimate; line: likely range (about 90%). ${rows.length} countries; switch view and measure at the top. Click a country for the breakdown.</p>
+    <h2>${t(LENS_TITLE[state.lens])}</h2>
+    <p class="sub">${t("{measure}, {period}. Dot: middle estimate; line: likely range (about 90%). {n} countries; switch view and measure at the top. Click a country for the breakdown.", { measure: measureText(), period: periodText(), n: rows.length })}</p>
     ${filtersHtml()}
     <div class="chart">${svg}</div>
-    <p class="note-small">Scale is compressed (symmetric log) so small and large countries both stay readable; the axis labels give the true values.</p>
+    <p class="note-small">${t("Scale is compressed (symmetric log) so small and large countries both stay readable; the axis labels give the true values.")}</p>
   </div>`;
   wireRows(root, rows);
 }
@@ -141,7 +142,7 @@ function renderBubbles(root) {
   const big = all.slice().sort((a, b) => b.c.gdp - a.c.gdp).slice(0, W < 600 ? 10 : 22).map(s => s.c.n)
     .concat(all.slice().sort((a, b) => Math.max(sx(b), sy(b)) - Math.max(sx(a), sy(a))).slice(0, W < 600 ? 4 : 8).map(s => s.c.n));
   const sel = state.selected;
-  const unit = measure === "gdp" ? "% of one year's GDP" : "€ per person";
+  const unit = t(measure === "gdp" ? "% of one year's GDP" : "€ per person");
   const order = all.slice().sort((a, b) => b.c.gdp - a.c.gdp);   // big bubbles first, small ones on top
   // labels for the largest economies (and the selected one), skipped where they would overlap a label already placed
   const labels = [];
@@ -149,26 +150,26 @@ function renderBubbles(root) {
     const t = s.c.name.length > 14 ? s.c.iso3 : s.c.name, w = t.length * 6.6, lx = x(sx(s)), ly = y(sy(s)) - r(s.c.gdp) - 4;
     if (labels.every(l => Math.abs(l.x - lx) > (l.w + w) / 2 + 2 || Math.abs(l.y - ly) > 13)) labels.push({ x: lx, y: ly, w, t });
   }
-  const svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Each country: money moved toward Ukraine against money moved toward Russia">
+  const svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${t("Each country: money moved toward Ukraine against money moved toward Russia")}">
     <path class="zone-ukr" d="M${x(0)},${y(0)} L${x(d)},${y(0)} L${x(d)},${y(d)} Z"/>
     <path class="zone-rus" d="M${x(0)},${y(0)} L${x(0)},${y(d)} L${x(d)},${y(d)} Z"/>
     <g class="grid">${ticks.map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="${m.t}" y2="${H - m.b}"/><line x1="${m.l}" x2="${W - m.r}" y1="${y(t)}" y2="${y(t)}"/>
       <text x="${x(t)}" y="${H - m.b + 16}" text-anchor="middle">${measure === "gdp" ? t + "%" : "€" + d3.format("~s")(t)}</text>
       <text x="${m.l - 8}" y="${y(t) + 4}" text-anchor="end">${measure === "gdp" ? t + "%" : "€" + d3.format("~s")(t)}</text>`).join("")}</g>
     <line class="diag" x1="${x(0)}" y1="${y(0)}" x2="${x(d)}" y2="${y(d)}"/>
-    <text class="zone-lbl" x="${x(d) - 8}" y="${y(0) - 12}" text-anchor="end" style="fill:var(--ukr)">Net toward Ukraine</text>
-    <text class="zone-lbl" x="${x(0) + 10}" y="${y(d) + 18}" style="fill:var(--rus);paint-order:stroke;stroke:var(--surface);stroke-width:4px">Net toward Russia</text>
-    <text x="${(m.l + W - m.r) / 2}" y="${H - 8}" text-anchor="middle" style="fill:var(--ink)">Moved toward Ukraine → (${unit})</text>
-    <text transform="translate(14 ${(m.t + H - m.b) / 2}) rotate(-90)" text-anchor="middle" style="fill:var(--ink)">Moved toward Russia → (${unit})</text>
+    <text class="zone-lbl" x="${x(d) - 8}" y="${y(0) - 12}" text-anchor="end" style="fill:var(--ukr)">${t("Net toward Ukraine")}</text>
+    <text class="zone-lbl" x="${x(0) + 10}" y="${y(d) + 18}" style="fill:var(--rus);paint-order:stroke;stroke:var(--surface);stroke-width:4px">${t("Net toward Russia")}</text>
+    <text x="${(m.l + W - m.r) / 2}" y="${H - 8}" text-anchor="middle" style="fill:var(--ink)">${t("Moved toward Ukraine → ({unit})", { unit })}</text>
+    <text transform="translate(14 ${(m.t + H - m.b) / 2}) rotate(-90)" text-anchor="middle" style="fill:var(--ink)">${t("Moved toward Russia → ({unit})", { unit })}</text>
     ${order.map(s => `<circle class="bubble${s.c.n === sel ? " sel" : ""}" data-n="${s.c.n}" tabindex="0" role="button" aria-label="${s.c.name}" cx="${x(sx(s))}" cy="${y(sy(s))}" r="${r(s.c.gdp)}" fill="${s.net >= 0 ? "var(--ukr)" : "var(--rus)"}"/>`).join("")}
     ${labels.map(l => `<text x="${l.x}" y="${l.y}" text-anchor="middle" style="fill:var(--ink);font-size:11.5px;font-weight:600;paint-order:stroke;stroke:var(--surface);stroke-width:3px;pointer-events:none">${l.t}</text>`).join("")}
   </svg>`;
   root.innerHTML = `<div class="view-inner">
-    <h2>What each country moved toward Ukraine, and toward Russia</h2>
-    <p class="sub">${periodText()}, ${unit}. Right: aid, refugees, Russian trade given up. Up: trade with Russia above the pre-war level, oil bought via other countries, hidden channels, weapons${state.netBack ? ", money flowing back from Ukraine" : ""}. Below the diagonal a country is net toward Ukraine. Bubble size: size of the economy.</p>
+    <h2>${t("What each country moved toward Ukraine, and toward Russia")}</h2>
+    <p class="sub">${t("{period}, {unit}. Right: aid, refugees, Russian trade given up. Up: trade with Russia above the pre-war level, oil bought via other countries, hidden channels, weapons{back}. Below the diagonal a country is net toward Ukraine. Bubble size: size of the economy.", { period: periodText(), unit, back: state.netBack ? t(", money flowing back from Ukraine") : "" })}</p>
     ${filtersHtml()}
     <div class="chart">${svg}</div>
-    <p class="note-small">Log-like axes so that small and large shifts both stay visible. ${state.measure === "total" ? "Shown in % of GDP: totals in € would put every small country in one corner. " : ""}Middle estimates only; each country's range is in its breakdown.</p>
+    <p class="note-small">${t("Log-like axes so that small and large shifts both stay visible.")} ${state.measure === "total" ? t("Shown in % of GDP: totals in € would put every small country in one corner.") + " " : ""}${t("Middle estimates only; each country's range is in its breakdown.")}</p>
   </div>`;
   wireRows(root, all.map(s => ({ c: s.c, bn: s.k.shift, loBn: s.k.shiftLo, hiBn: s.k.shiftHi })));
 }
@@ -177,9 +178,9 @@ function renderBubbles(root) {
 const COLS = [
   { k: "name", label: "Country", fmt: (r) => r.name },
   { k: "shiftGdp", label: "Net shift, % of a year's GDP", fmt: r => pct(r.shiftGdp), sign: true },
-  { k: "shiftRange", label: "Likely range", fmt: r => `${pct(r.shiftLoGdp)} to ${pct(r.shiftHiGdp)}`, nosort: true },
+  { k: "shiftRange", label: "Likely range", fmt: r => t("{lo} to {hi}", { lo: pct(r.shiftLoGdp), hi: pct(r.shiftHiGdp) }), nosort: true },
   { k: "shift", label: "Net shift, €", fmt: r => eur(r.shift, true), sign: true },
-  { k: "shiftPp", label: "Per person", fmt: r => (r.shiftPp == null ? "–" : (r.shiftPp < 0 ? "−" : "") + "€" + Math.round(Math.abs(r.shiftPp)).toLocaleString("en")), sign: true },
+  { k: "shiftPp", label: "Per person", fmt: r => (r.shiftPp == null ? "–" : (r.shiftPp < 0 ? "−" : "") + "€" + Math.round(Math.abs(r.shiftPp)).toLocaleString(LANG)), sign: true },
   { k: "costGdp", label: "Cost, % of a year's GDP", fmt: r => pct(r.costGdp) },
   { k: "aid", label: "Aid incl. EU share, €", fmt: r => eur(r.aid) },
   { k: "paidRus", label: "Paid to Russia, €", fmt: r => eur(r.paidRus) },
@@ -202,23 +203,23 @@ function tableRows() {
 function renderTable(root) {
   const rows = tableRows();
   const key = viewState.sortKey === "metric" ? "shiftGdp" : viewState.sortKey;
-  rows.sort((a, b) => (key === "name" || key === "cert" ? String(a[key]).localeCompare(String(b[key])) : (a[key] ?? -Infinity) - (b[key] ?? -Infinity)) * viewState.sortDir);
+  rows.sort((a, b) => (key === "name" || key === "cert" ? String(a[key]).localeCompare(String(b[key]), LANG) : (a[key] ?? -Infinity) - (b[key] ?? -Infinity)) * viewState.sortDir);
   root.innerHTML = `<div class="view-inner">
     <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end">
-      <div><h2>All countries, all numbers</h2>
-      <p class="sub">${periodText()}${state.netBack ? ", after money flowing back" : ""}. Click a column to sort, a row for the breakdown.</p></div>
+      <div><h2>${t("All countries, all numbers")}</h2>
+      <p class="sub">${periodText()}${state.netBack ? t(", after money flowing back") : ""}. ${t("Click a column to sort, a row for the breakdown.")}</p></div>
       <div class="dl">
-        <button id="dl-csv">Download CSV</button>
-        <button id="dl-parts">CSV with every part</button>
-        <a href="data.json" download="follow-the-money-ukrainian-aid.json">Full data (JSON)</a>
+        <button id="dl-csv">${t("Download CSV")}</button>
+        <button id="dl-parts">${t("CSV with every part")}</button>
+        <a href="data.json" download="follow-the-money-ukrainian-aid.json">${t("Full data (JSON)")}</a>
       </div>
     </div>
     ${filtersHtml()}
     <div class="tablewrap"><table class="dtable">
-      <thead><tr>${COLS.map(col => `<th scope="col" data-k="${col.k}" ${col.nosort ? "" : `aria-sort="${key === col.k ? (viewState.sortDir < 0 ? "descending" : "ascending") : "none"}"`}>${col.label}</th>`).join("")}</tr></thead>
+      <thead><tr>${COLS.map(col => `<th scope="col" data-k="${col.k}" ${col.nosort ? "" : `aria-sort="${key === col.k ? (viewState.sortDir < 0 ? "descending" : "ascending") : "none"}"`}>${t(col.label)}</th>`).join("")}</tr></thead>
       <tbody>${rows.map(r => `<tr data-n="${r.c.n}">${COLS.map(col => `<td class="${col.sign ? (r[col.k] > 0 ? "pos" : r[col.k] < 0 ? "neg" : "") : ""}">${col.fmt(r)}</td>`).join("")}</tr>`).join("")}</tbody>
     </table></div>
-    <p class="note-small">Data and text: CC BY 4.0, credit "Follow the Money: Ukrainian Aid". Every figure has its sources in the country breakdown and in the research files on GitHub. Figures to ${document.body.dataset.dataTo || "the end of August 2026"}.</p>
+    <p class="note-small">${t("Data and text: CC BY 4.0, credit \"Follow the Money: Ukrainian Aid\". Every figure has its sources in the country breakdown and in the research files on GitHub. Figures to {date}.", { date: document.body.dataset.dataTo || t("the end of August 2026") })}</p>
   </div>`;
   root.querySelectorAll("th[data-k]").forEach(th => (th.onclick = () => {
     const k = th.dataset.k; if (k === "shiftRange") return;
@@ -233,13 +234,17 @@ function renderTable(root) {
 const q = v => (v == null || Number.isNaN(v) ? "" : typeof v === "number" ? +v.toFixed(4) : /[",\n]/.test(v) ? `"${String(v).replace(/"/g, '""')}"` : v);
 function csvSummary(rows) {
   const head = ["iso3", "country", "period", "net_shift_eur_bn", "net_shift_low", "net_shift_high", "net_shift_pct_gdp", "net_shift_eur_per_person", "cost_eur_bn", "cost_pct_gdp", "aid_eur_bn", "refugees_eur_bn", "paid_to_russia_eur_bn", "certainty", "gdp_eur_bn_2024", "population_m"];
-  const lines = rows.map(r => [r.iso3, r.name, periodText(), r.shift, r.shiftLo, r.shiftHi, r.shiftGdp, r.shiftPp, r.cost, r.costGdp, r.aid, r.refugees, r.paidRus, r.cert, r.gdp, r.pop].map(q).join(","));
+  const lines = rows.map(r => [r.iso3, r.c.name_en, periodTextEn(), r.shift, r.shiftLo, r.shiftHi, r.shiftGdp, r.shiftPp, r.cost, r.costGdp, r.aid, r.refugees, r.paidRus, r.cert, r.gdp, r.pop].map(q).join(","));
   return [head.join(","), ...lines].join("\n");
 }
 function csvParts(rows) {
   const head = ["iso3", "country", "period", "part", "label", "eur_bn", "low", "high", "certainty", "sources"];
-  const lines = rows.flatMap(r => r.parts.map(p => [r.iso3, r.name, periodText(), p.k, p.label, p.v, p.lo, p.hi, p.cert, (p.src || []).join(" ")].map(q).join(",")));
+  const lines = rows.flatMap(r => r.parts.map(p => [r.iso3, r.c.name_en, periodTextEn(), p.k, p.en, p.v, p.lo, p.hi, p.cert, (p.src || []).join(" ")].map(q).join(",")));
   return [head.join(","), ...lines].join("\n");
+}
+function periodTextEn() {
+  const y = Math.max(2022, state.year);
+  return `2022–${y}${y === 2026 && FRAC[5] < 1 ? " (2026 to August)" : ""}`;
 }
 function download(text, name) {
   const a = document.createElement("a");
@@ -261,12 +266,12 @@ function renderView() {
 }
 function setView(v) {
   state.view = v;
-  setPressed("[data-view]", "view", v);
+  setPressed(".views [data-view]", "view", v);
   tip.hidden = true;
   renderView();
   try { history.replaceState(null, "", location.pathname + location.search + (v === "map" ? (state.selected ? "#" + (DATA[state.selected]?.iso3 || "") : "") : "#view=" + v)); } catch (e) { /* file:// */ }
 }
-document.querySelectorAll("[data-view]").forEach(b => (b.onclick = () => { setView(b.dataset.view); if (typeof closeMenu === "function") closeMenu(); }));
+document.querySelectorAll(".views [data-view]").forEach(b => (b.onclick = () => { setView(b.dataset.view); if (typeof closeMenu === "function") closeMenu(); }));
 window.addEventListener("resize", () => state.view && state.view !== "map" && renderView());
 window.renderView = renderView;
 window.setView = setView;
