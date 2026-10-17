@@ -36,11 +36,7 @@ E2 = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps
 # laundered oil (fuel refined from Russian crude in India, Turkey, China...): trading hubs resell part of what they buy,
 # so that share is passed on to their customers (low, middle, high share resold) ...
 # (shares from research/2026-10/gaps/energy2.json; only hubs whose fuel customers are known are passed on)
-HUB_RESALE = {
-    hub: (d["low"], d["central"], d["high"])
-    for hub, d in E2["hub_resale"].items()
-    if hub in ("SGP", "NLD", "BEL", "GRC", "MLT")
-}
+HUB_RESALE = {hub: (d["low"], d["central"], d["high"]) for hub, d in E2["hub_resale"].items()}
 # fuel sold to ships in port (bunkers) has no known buyer country: it stays with the hub, except at the hub's low end
 # EUR bn per million tonnes of Russian fuel in 2021 (CREA, Germany): turns fuel tonnes into a value split per year
 EUR_PER_MT_2021 = {"crude": 0.414, "products": 0.549, "gas": 0.583, "lng": 0.583, "coal": 0.130}
@@ -468,6 +464,27 @@ def build() -> dict:
             laundered[iso3] = laund
         note(iso3, "Energy switching cost", "est", "modelled per fuel and month")
     reassign_laundered_oil(countries, laundered, src)
+    # refiners: the Russian crude in the fuel Turkey and India export is counted at the buyers (laundered oil),
+    # so it is taken out of the refiner's own payments to Russia; they keep what they use themselves
+    hb = load(GAPS / "hub_buyers.json")
+    exported = {
+        "TUR": hb["turkey_refining"]["double_count_at_turkey"],
+        "IND": {y: v["exported_crude_value_eur_bn"] for y, v in hb["india_refining"].items()},
+    }
+    rid = src.add(
+        "refining",
+        "Russian crude refined in Turkey and India and exported as fuel: refinery reports, UN Comtrade, CREA, Global Witness",
+        "https://energyandcleanair.org/",
+        hb.get("generated"),
+        "the exported part is counted at the buyers as laundered oil; see research/2026-10/gaps/hub_buyers-notes.md",
+    )
+    for iso3, by_year in exported.items():
+        tr = (countries.get(iso3) or {}).get("to_rus")
+        if not tr:
+            continue
+        for k, b in (("years", "central"), ("years_lo", "high"), ("years_hi", "low")):
+            tr[k] = [round(max(0.0, v - (by_year.get(str(y)) or {}).get(b, 0)), 5) for v, y in zip(tr[k], YEARS)]
+        tr["src"] = tr.get("src", []) + [rid]
 
     # ---- taxes paid in Russia by companies based in the country (all taxes, still foreign-owned) ----
     kse = src.add(
@@ -837,6 +854,10 @@ def price_indices(countries: dict[str, dict]) -> None:
 def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict], src: Sources) -> None:
     """Pass on what trading hubs resell, to their customers by share of fuel exports, then keep only the crude value."""
     hubs = load(GAPS / "hub_exports_2024.json")["shares"]
+    # customers of the other fuel hubs (UAE, India, Turkey, Togo, Gibraltar, Panama): fuel export shares 2022-2025
+    buyers = load(GAPS / "hub_buyers.json")
+    for hub, d in buyers["hubs"].items():
+        hubs.setdefault(hub, {k: v["central"] for k, v in d["destination_shares"].items() if k != "other"})
     totals = {iso3: {k: list(v[k]) for k in ("years", "years_lo", "years_hi")} for iso3, v in laundered.items()}
     for hub, (lo, mid, hi) in HUB_RESALE.items():
         if hub not in totals:

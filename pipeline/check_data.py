@@ -178,6 +178,12 @@ off = [
 ]
 check("re-export shares add up", not off, f"not summing to 1: {off or 'none'}", warn_only=True)
 
+# 15. refiners: Russian crude in exported fuel is counted once, at the buyers, not also at Turkey or India
+miss = [
+    i for i in ("TUR", "IND") if i in countries and "refining" not in (countries[i].get("to_rus") or {}).get("src", [])
+]
+check("refined exports counted once", not miss, f"refiner still counts exported crude: {miss or 'none'}")
+
 width = max(len(n) for _, n, _ in results)
 for status, name, detail in results:
     print(f"{status:4}  {name:<{width}}  {detail}")
