@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Follow the Money: Ukraine</title>
+<title>Follow the Money: Ukrainian Aid</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -297,7 +297,7 @@ details.more[open] summary { margin-bottom: 10px; }
 <div class="app">
   <div class="sample status" role="note" id="status"><b>Research preview.</b> Loading data…</div>
   <header class="bar" id="bar" data-menu="closed">
-    <h1 class="brand">Follow the Money: Ukraine<span>change since before the war</span></h1>
+    <h1 class="brand">Follow the Money: Ukrainian Aid<span>change since before the war</span></h1>
     <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="controls">Options</button>
     <div class="controls" id="controls">
       <div class="seg" role="group" aria-label="View">
@@ -315,7 +315,7 @@ details.more[open] summary { margin-bottom: 10px; }
         <button class="btn play" id="play" aria-label="Play 2021 to 2026">▶</button>
         <label for="year">Up to</label>
         <input id="year" type="range" min="2021" max="2026" step="1" value="2026">
-        <output id="year-out" for="year">2026</output>
+        <output id="year-out" for="year" title="2026 runs January to August; where a source has not published 2026 yet, the 2025 rate is used">2026 (to Aug)</output>
       </div>
       <label class="toggle" for="show-flows"><input id="show-flows" type="checkbox" checked> Flows</label>
       <label class="toggle" for="net-back"><input id="net-back" type="checkbox" checked> Subtract money flowing back</label>
@@ -405,6 +405,11 @@ function calc(c, y) {
   const neg = r => [-r[0], -r[2], -r[1]];
   const scale = (r, f) => [r[0] * f, r[1] * f, r[2] * f];
   const aid3 = sum3(T.aid), ref3 = sum3(T.ref);
+  // EU-level aid (EU budget, Ukraine Facility, EPF) is split over members by their share of EU budget contributions;
+  // shown as its own part, with the same relative range as the country's aid
+  const eu = c.aid?.eu_years ? c.aid.eu_years.slice(1, N + 1).reduce((a, b) => a + b, 0) : 0;
+  const eu3 = aid3[0] ? [eu, eu * aid3[1] / aid3[0], eu * aid3[2] / aid3[0]] : [eu, eu, eu];
+  const ownAid3 = [aid3[0] - eu3[0], aid3[1] - eu3[1], aid3[2] - eu3[2]];
   const aidAll = T.aid.c.reduce((a, b) => a + b, 0) || 1;
   const loanShare = c.aid && c.aid.loans_face ? Math.min(1, aid3[0] / aidAll) : 0;
   const loansFace = (c.aid?.loans_face || 0) * loanShare;
@@ -427,7 +432,8 @@ function calc(c, y) {
   };
   const lessPaid3 = delta3(T.paid);
   const shiftParts = [
-    part("aid", c.aid?.eu_years ? "Aid to Ukraine, incl. EU share" : "Aid to Ukraine", aid3, cAid, src("aid")),
+    part("aid", "Aid to Ukraine", ownAid3, cAid, src("aid")),
+    part("euaid", "Share of EU-level aid", eu3, "B", ["kiel_eu_share"]),
     part("ref", "Hosting refugees", ref3, c.aid?.refugee_cert || "B", c.aid?.refugee_src || []),
     part("buy", "Extra purchases from Ukraine", above3(T.buyUkr), cTrade, src("buy_ukr")),
     part("paid", lessPaid3[0] >= 0 ? "Less paid to Russia" : "More paid to Russia", lessPaid3, cRus, src("to_rus")),
@@ -858,7 +864,7 @@ function miniChart(t, colour, title, srcIds) {
       <line x1="${pad.l}" x2="${w - pad.r}" y1="${by}" y2="${by}" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
       <text x="${pad.l - 6}" y="${by + 3}" text-anchor="end">pre-war</text>
       <path d="${line}" fill="none" stroke="var(--${colour === "sold" ? "rus" : colour})" stroke-width="2"/>
-      ${pts.map(p => `<circle cx="${p[0]}" cy="${p[1]}" r="2.6" fill="var(--${colour === "sold" ? "rus" : colour})"/>`).join("")}
+      ${pts.map((p, i) => i === 5 ? `<circle cx="${p[0]}" cy="${p[1]}" r="2.8" fill="var(--surface)" stroke="var(--${colour === "sold" ? "rus" : colour})" stroke-width="1.5"><title>2026: January to August as a yearly rate, partly projected from 2025</title></circle>` : `<circle cx="${p[0]}" cy="${p[1]}" r="2.6" fill="var(--${colour === "sold" ? "rus" : colour})"/>`).join("")}
       ${YEARS.map(yr => `<text x="${x(yr)}" y="${h - 3}" text-anchor="middle">${yr}</text>`).join("")}
     </svg></div>`;
 }
@@ -881,7 +887,7 @@ function countryPanel(c) {
     </section>` : "";
   const aidCats = c.aid?.cats ? Object.entries(c.aid.cats).filter(([, v]) => v) : [];
   const euAid = c.aid?.eu_years ? c.aid.eu_years.slice(1, yi(y) + 1).reduce((a, b) => a + b, 0) : 0;
-  const share = euAid ? `<p class="key" style="margin-top:8px">Aid includes ${eur(euAid)} of EU-level aid: ${(c.aid.eu_share * 100).toFixed(1)}% of the EU's aid, ${c.name}'s share of contributions to the EU budget${ref(["kiel_eu_share"])}.</p>` : "";
+  const share = euAid ? `<p class="key" style="margin-top:8px"><b>Share of EU-level aid</b>: ${eur(euAid)}. The EU itself gives aid to Ukraine (the Ukraine Facility, macro-financial loans, the European Peace Facility), paid from the EU budget that members fund. Each member is counted for its share of that budget: ${(c.aid.eu_share * 100).toFixed(1)}% for ${c.name}. This applies to every member, also those that opposed the aid, because their contributions paid for it${ref(["kiel_eu_share"])}.</p>` : "";
   const companies = c.company ? `<section class="section">
       <h3>Companies based here, operating in Russia</h3>
       <div class="kv">
@@ -937,7 +943,7 @@ function countryPanel(c) {
       ${miniChart(c.T.soldRus, "sold", "Sold to Russia", c.from_rus?.src)}
       ${miniChart(c.T.buyUkr, "ukr", "Bought from Ukraine", c.buy_ukr?.src)}
       ${miniChart(c.T.sellUkr, "back", "Sold to Ukraine", c.sell_ukr?.src)}
-      <div class="key" style="margin-top:8px">Dashed line: the pre-war level (2019–2021 average). Blue shading helps Ukraine, orange helps Russia, grey is a drop caused by the war (not counted), ochre is extra sales to Ukraine (money flowing back). 2026 is shown as a yearly rate.</div>
+      <div class="key" style="margin-top:8px">Dashed line: the pre-war level (2019–2021 average). Blue shading helps Ukraine, orange helps Russia, grey is a drop caused by the war (not counted), ochre is extra sales to Ukraine (money flowing back). 2026 (open dot) is January to August shown as a yearly rate; where a source has not published 2026 yet, it is projected from 2025.</div>
     </section>
     ${aidCats.length ? `<section class="section"><h3>Aid to Ukraine by type</h3><div class="kv">${aidCats.map(([k2, v]) => `<span>${{ military: "Military", financial: "Financial", humanitarian: "Humanitarian" }[k2] || k2}${chip(c.aid.cert || "A")}${ref(c.aid.src)}</span><span class="v">${eur(v)}</span>`).join("")}</div></section>` : ""}
     ${companies}
@@ -1116,7 +1122,7 @@ const LENS_RANK = { change: "shift", cost: "cost", ukr: "shift", rus: "rus" };
 document.querySelectorAll("[data-lens]").forEach(b => (b.onclick = () => { state.lens = b.dataset.lens; state.rankMetric = LENS_RANK[state.lens]; setPressed("[data-lens]", "lens", state.lens); paint(); }));
 document.querySelectorAll("[data-measure]").forEach(b => (b.onclick = () => { state.measure = b.dataset.measure; setPressed("[data-measure]", "measure", state.measure); paint(); }));
 const yearInput = document.getElementById("year");
-function setYear(y) { state.year = y; yearInput.value = y; document.getElementById("year-out").textContent = y; paint(); }
+function setYear(y) { state.year = y; yearInput.value = y; document.getElementById("year-out").textContent = y === 2026 && FRAC[5] < 1 ? "2026 (to Aug)" : y; paint(); }
 yearInput.oninput = () => { stopPlay(); setYear(+yearInput.value); };
 let playTimer = null;
 const playBtn = document.getElementById("play");

@@ -1,4 +1,4 @@
-# Follow the Money: Ukraine
+# Follow the Money: Ukrainian Aid
 
 An interactive map of how much each country has shifted money and support towards Ukraine or towards Russia since the full-scale invasion, and what that has cost it.
 

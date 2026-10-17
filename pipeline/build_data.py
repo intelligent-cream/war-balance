@@ -67,6 +67,9 @@ PIPELINE_GAS = EU27 | {
     "BLR",
 }  # grant equivalent of ordinary loans, cost-to-lender view (certainty C)
 CERT_ORDER = "ABCD"
+# the latest month in the data (2026 runs January to August) and the date of this build
+DATA_TO, DATA_TO_TEXT = "2026-08-31", "31 August 2026"
+UPDATED, UPDATED_TEXT = "2026-10-18", "18 October 2026"
 # territories whose trade and aid statistics are reported by another country (customs unions, dependencies)
 INCLUDED_IN = {"LIE": "CHE", "MCO": "FRA", "IMN": "GBR", "PRI": "USA", "VIR": "USA", "MAF": "FRA"}
 
@@ -735,12 +738,14 @@ def build() -> dict:
     for iso3, c in countries.items():
         c["coverage"] = coverage(c, notes.get(iso3, {}))
     status = (
-        "<b>Research preview.</b> Real figures and estimates from public sources, not yet reviewed by a person. "
+        f"<b>Research preview</b> · figures to {DATA_TO_TEXT}, updated {UPDATED_TEXT}. "
+        "Real figures and estimates from public sources, not yet reviewed by a person. "
         "Every number has a likely range and a source; gaps are filled with estimates, never left at zero. "
         'Method, data and corrections: <a href="https://github.com/intelligent-cream/follow-the-money-ukraine">GitHub</a>.'
     )
     return {
-        "generated": "2026-10-17",
+        "generated": UPDATED,
+        "data_to": DATA_TO,
         "years": YEARS,
         "frac": FRAC,
         "meta": {"tariff_rate": 0.04, "lost_margin": 0.2},
@@ -996,14 +1001,42 @@ def apply_residual(countries: dict[str, dict], src: Sources, note) -> None:
         c = countries.get(iso3)
         if c and not c.get("gdp") and (d.get("gdp_eur_bn") or {}).get("central"):
             c["gdp"], c["pop"] = d["gdp_eur_bn"]["central"], (d.get("pop_m") or {}).get("central")
-    # sales to Russia missing from partner data (Russia's own imports by origin are higher): added to the country of origin
+    # sales to Russia missing from partner data (Russia's own imports by origin are higher): added to the country of origin.
+    # Part of the gap is spread by each country's reported sales; for trade hubs, the re-exported share of that part
+    # goes on to the countries that made the goods (the hub keeps its margin)
+    gaps = {}
+    rx = load(GAPS / "reexports.json")["hubs"]
     for iso3, d in res["exports_to_rus_gap"]["countries"].items():
-        c = countries.get(iso3)
-        if not c:
-            continue
         add = lch(d)
         for k in ("years_lo", "years", "years_hi"):  # 2026: the 2025 rate for eight months
             add[k][5] = round(add[k][4] * FRAC[5], 5)
+        gaps[iso3] = add
+    for hub, d in rx.items():
+        if hub not in gaps:
+            continue
+        share = d.get("reexport_share_of_exports_to_RUS") or {}
+        keep = 1 - d["hub_margin_share"]["central"]
+        moved = {k: [0.0] * 6 for k in ("years", "years_lo", "years_hi")}
+        for i, y in enumerate(YEARS):
+            sh = min(1.0, (share.get(str(y)) or share.get("2025") or {}).get("central", 0)) if y > 2021 else 0
+            for k in moved:
+                moved[k][i] = gaps[hub][k][i] * sh * keep
+                gaps[hub][k][i] -= moved[k][i]
+        origins = d.get("origin_shares") or {}
+        other = {i: w for i, w in (d.get("origin_other_detail") or {}).items() if i in countries}
+        for o, w in origins.items():
+            targets = {o: 1.0} if o in countries else {}
+            if o == "other":
+                tot = sum(other.values()) or 1
+                targets = {i: v / tot for i, v in other.items()}
+            for t, f in targets.items():
+                g = gaps.setdefault(t, {k: [0.0] * 6 for k in moved})
+                for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
+                    g[k] = [a + m * w[b] * f for a, m in zip(g[k], moved[k])]
+    for iso3, add in gaps.items():
+        c = countries.get(iso3)
+        if not c:
+            continue
         f = c.setdefault(
             "from_rus",
             {
