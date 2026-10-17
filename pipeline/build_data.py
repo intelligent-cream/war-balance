@@ -741,7 +741,7 @@ def build() -> dict:
         f"<b>Research preview</b> · figures to {DATA_TO_TEXT}, updated {UPDATED_TEXT}. "
         "Real figures and estimates from public sources, not yet reviewed by a person. "
         "Every number has a likely range and a source; gaps are filled with estimates, never left at zero. "
-        'Method, data and corrections: <a href="https://github.com/intelligent-cream/follow-the-money-ukraine">GitHub</a>.'
+        'Method and data: <a href="https://github.com/intelligent-cream/follow-the-money-ukraine">GitHub</a>. Corrections: <a href="https://www.reddit.com/user/Intelligent-Cream-14/">Reddit</a> or a GitHub issue.'
     )
     return {
         "generated": UPDATED,
