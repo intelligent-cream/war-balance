@@ -753,6 +753,7 @@ def build() -> dict:
     apply_reexports(countries, src, note)
     apply_residual(countries, src, note)
     price_indices(countries)
+    pre_war_trends(countries, src)
     for iso3, c in countries.items():
         c["coverage"] = coverage(c, notes.get(iso3, {}))
     status = (
@@ -849,6 +850,36 @@ def price_indices(countries: dict[str, dict]) -> None:
                     fs = m.get("fossil_share") or 0
                     series = [fs * f + (1 - fs) * g for f, g in zip(fuel, idx("non_fuel_goods", band))]
                 obj["pidx" + suffix] = [round(v, 4) for v in series]
+
+
+def pre_war_trends(countries: dict[str, dict], src: Sources) -> None:
+    """Where trade was already growing or shrinking before the war, the counterfactual follows that trend (damped,
+    capped at -10%..+10% a year). The range always includes the flat 2019-2021 level; unreliable trends centre on it."""
+    tr = load(GAPS / "trend.json")
+    sid = src.add(
+        "trend",
+        "Pre-war trade trends 2012-2021 in real terms (UN Comtrade, price indices), continued with a 3-year half-life",
+        "https://comtradeapi.un.org/",
+        tr.get("generated"),
+        "back-tested on 2002-2013; see research/2026-10/gaps/trend-notes.md",
+    )
+    for iso3, flows in tr["countries"].items():
+        c = countries.get(iso3)
+        if not c:
+            continue
+        for key, d in flows.items():
+            obj = c.get(key)
+            if not obj or not d.get("multiplier"):
+                continue
+            mid, lo, hi = [1.0], [1.0], [1.0]
+            for y in YEARS[1:]:
+                m = d["multiplier"].get(str(y)) or {"low": 1, "central": 1, "high": 1}
+                cen = m["central"] if d.get("reliable") else 1.0
+                mid.append(round(cen, 4))
+                lo.append(round(min(m["low"], cen, 1.0), 4))
+                hi.append(round(max(m["high"], cen, 1.0), 4))
+            obj["bmul"], obj["bmul_lo"], obj["bmul_hi"] = mid, lo, hi
+            obj["src"] = obj.get("src", []) + ([sid] if sid not in obj.get("src", []) else [])
 
 
 def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict], src: Sources) -> None:
