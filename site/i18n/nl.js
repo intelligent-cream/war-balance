@@ -53,7 +53,7 @@ I18N.nl = {
   "Compare with another country": "Vergelijk met een ander land",
   "Compare with…": "Vergelijk met…",
   "Money flowing back to {name}": "Terugvloeiend geld naar het land",
-  "spent by or for Ukraine here, above the pre-war level. Revenue for companies here, not profit: it counts in full in the net shift, and only as profit (20%) in the cost.": "hier door of voor Oekraïne uitgegeven, boven het vooroorlogse niveau. Omzet voor bedrijven hier, geen winst: het telt volledig mee in de nettoverschuiving en alleen als winst (20%) in de kosten.",
+  "spent by or for Ukraine here, above the pre-war level. This is revenue for companies here; only the profit on it (about 20%) is subtracted, because the goods still cost money to make.": "hier door of voor Oekraïne uitgegeven, boven het vooroorlogse niveau. Dit is omzet voor bedrijven hier; alleen de winst erop (ongeveer 20%) wordt afgetrokken, omdat het maken van de goederen nog steeds geld kost.",
   "Not subtracted (switch is off).": "Niet afgetrokken (schakelaar staat uit).",
   "<b>Share of EU-level aid</b>: {eur}. The EU itself gives aid to Ukraine (the Ukraine Facility, macro-financial loans, the European Peace Facility), paid from the EU budget that members fund. Each member is counted for its share of that budget: {pct}% for {name}. This applies to every member, also those that opposed the aid, because their contributions paid for it": "<b>Aandeel in EU-steun</b>: {eur}. De EU geeft zelf steun aan Oekraïne (de Oekraïnefaciliteit, macrofinanciële leningen, de Europese Vredesfaciliteit), betaald uit de EU-begroting die de lidstaten financieren. Elke lidstaat krijgt zijn aandeel in die begroting toegerekend ({name}: {pct}%). Dat geldt voor elke lidstaat, ook voor wie tegen de steun was, omdat hun bijdragen ervoor betaalden",
   "Companies based here, operating in Russia": "Bedrijven van hier die in Rusland actief zijn",
@@ -276,4 +276,6 @@ I18N.nl = {
   "Aid incl. EU share, €": "Steun incl. EU-aandeel, €",
   "Paid to Russia, €": "Betaald aan Rusland, €",
   "Certainty": "Zekerheid",
+  "Less profit from shipping Russian oil": "Minder winst op het vervoer van Russische olie",
+  "Profit from shipping and insuring Russian oil": "Winst op het vervoer en verzekeren van Russische olie",
 };

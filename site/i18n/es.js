@@ -53,7 +53,7 @@ I18N.es = {
   "Compare with another country": "Comparar con otro país",
   "Compare with…": "Comparar con…",
   "Money flowing back to {name}": "Dinero que vuelve al país",
-  "spent by or for Ukraine here, above the pre-war level. Revenue for companies here, not profit: it counts in full in the net shift, and only as profit (20%) in the cost.": "gastado aquí por Ucrania o para Ucrania, por encima del nivel de antes de la guerra. Es facturación para las empresas del país, no beneficio: cuenta entero en el giro neto y solo como beneficio (20%) en el coste.",
+  "spent by or for Ukraine here, above the pre-war level. This is revenue for companies here; only the profit on it (about 20%) is subtracted, because the goods still cost money to make.": "gastado aquí por Ucrania o para Ucrania, por encima del nivel de antes de la guerra. Es facturación para las empresas del país; solo se resta el beneficio (alrededor del 20%), porque fabricar los bienes sigue costando dinero.",
   "Not subtracted (switch is off).": "No restado (interruptor apagado).",
   "<b>Share of EU-level aid</b>: {eur}. The EU itself gives aid to Ukraine (the Ukraine Facility, macro-financial loans, the European Peace Facility), paid from the EU budget that members fund. Each member is counted for its share of that budget: {pct}% for {name}. This applies to every member, also those that opposed the aid, because their contributions paid for it": "<b>Parte de la ayuda de la UE</b>: {eur}. La propia UE ayuda a Ucrania (el Mecanismo para Ucrania, préstamos de ayuda macrofinanciera, el Fondo Europeo de Apoyo a la Paz) con cargo al presupuesto de la UE, que financian los Estados miembros. A cada miembro se le atribuye su parte de ese presupuesto ({name}: {pct}%). Esto vale para todos los miembros, también para los que se opusieron a la ayuda, porque sus aportaciones la pagaron",
   "Companies based here, operating in Russia": "Empresas del país que operan en Rusia",
@@ -275,4 +275,6 @@ I18N.es = {
   "Aid incl. EU share, €": "Ayuda incl. parte de la UE, €",
   "Paid to Russia, €": "Pagado a Rusia, €",
   "Certainty": "Fiabilidad",
+  "Less profit from shipping Russian oil": "Menos beneficio por transportar petróleo ruso",
+  "Profit from shipping and insuring Russian oil": "Beneficio por transportar y asegurar petróleo ruso",
 };

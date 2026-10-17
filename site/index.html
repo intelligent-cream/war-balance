@@ -303,6 +303,14 @@ details.more[open] summary { margin-bottom: 10px; }
   .cmp { font-size: 12.5px; }
 }
 /* ===== Views: ranking, bubbles, table ===== */
+.views { max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.views button { white-space: nowrap; }
+.how-steps { padding-left: 22px; max-width: 80ch; line-height: 1.5; font-size: 15px; }
+.how-steps li { margin-bottom: 8px; }
+.how-limits { padding-left: 20px; max-width: 80ch; line-height: 1.5; color: var(--ink-soft); }
+.how-h { font-family: var(--font-display); font-weight: 700; font-size: 17px; margin: 26px 0 8px; }
+.how-wf { max-width: 640px; }
+.ai-note { background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px; padding: 10px 14px; margin: 6px 0 12px; max-width: 80ch; font-size: 14px; line-height: 1.45; }
 .views { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
 .views button { border: 0; background: transparent; padding: 6px 12px; cursor: pointer; font-weight: 600; font-size: 13.5px; color: var(--ink-soft); }
 .views button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
@@ -361,6 +369,8 @@ body[data-panel="open"] .view-inner { margin-right: 420px; margin-left: 0; }
       <button data-view="rank" aria-pressed="false" data-i18n="Ranking">Ranking</button>
       <button data-view="bubbles" aria-pressed="false" data-i18n="Ukraine vs Russia">Ukraine vs Russia</button>
       <button data-view="table" aria-pressed="false" data-i18n="Table &amp; data">Table &amp; data</button>
+      <button data-view="expect" aria-pressed="false" data-i18n="Above or below expectation">Above or below expectation</button>
+      <button data-view="how" aria-pressed="false" data-i18n="How it works">How it works</button>
     </div>
     <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="controls">Options</button>
     <div class="controls" id="controls">
@@ -413,6 +423,7 @@ body[data-panel="open"] .view-inner { margin-right: 420px; margin-left: 0; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
 <script src="i18n.js"></script>
 <script src="views.js" defer></script>
+<script src="views2.js" defer></script>
 <script>
 // ===== Model =====
 // All numbers come from data.json (built by build_data.py from the research files). Amounts are € billions.

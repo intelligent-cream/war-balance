@@ -261,7 +261,7 @@ function renderView() {
   root.hidden = v === "map";
   if (v === "map") return;
   const scroll = root.scrollTop;
-  ({ rank: renderRanking, bubbles: renderBubbles, table: renderTable })[v](root);
+  ({ rank: renderRanking, bubbles: renderBubbles, table: renderTable, ...(window.EXTRA_VIEWS || {}) })[v](root);
   root.scrollTop = scroll;
 }
 function setView(v) {
@@ -276,6 +276,6 @@ window.addEventListener("resize", () => state.view && state.view !== "map" && re
 window.renderView = renderView;
 window.setView = setView;
 const startView = (location.hash.match(/view=(\w+)/) || [])[1];
-if (startView && ["rank", "bubbles", "table"].includes(startView)) {
+if (startView && ["rank", "bubbles", "table", "how", "expect"].includes(startView)) {
   const wait = setInterval(() => { if (Object.keys(DATA).length) { clearInterval(wait); setView(startView); } }, 100);
 }
