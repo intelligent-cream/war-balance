@@ -1,0 +1,2662 @@
+{
+ "meta": {
+  "generated": "2026-10-17",
+  "scope": "Gap-fill: own-industry share of military aid, donor funding of refugee hosting, military support/people for Russia, volunteers for Ukraine",
+  "scripts": "working/scripts-flowback2/{kiel_source.py,build_own.py,fts_dest.py,build_all.py}",
+  "certainty": "B documented; C modelled from partial data; D mostly assumption"
+ },
+ "own_industry": {
+  "DEU": {
+   "own_share": {
+    "low": 0.4,
+    "central": 0.497,
+    "high": 0.593
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 25.004,
+    "split_share_of_total": {
+     "procured_domestic": 0.141,
+     "own_stocks": 0.155,
+     "us_or_third_party_stocks_incl_purl": 0.031,
+     "procured_ukraine": 0.096,
+     "procured_us": 0.139,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.438
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.4,
+      "central": 0.6,
+      "high": 0.8
+     },
+     "pu_unknown_domestic": {
+      "low": 0.45,
+      "central": 0.6,
+      "high": 0.75
+     }
+    },
+    "top_contractors_eur_bn": {
+     "Auterion Airlogix Joint Venture GmbH": 0.3,
+     "Diehl": 2.382,
+     "Dynamit Nobel Defence": 0.2015,
+     "Hensoldt": 0.0503,
+     "Krauss-Maffei Wegmann": 0.2036,
+     "Planet Labs Germany GmbH": 0.24,
+     "Raytheon": 3.2,
+     "Skyfall": 0.09
+    },
+    "eu_share_allocated_all_aid_eur_bn": 22.7017
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "SIPRI Top 100 2024: Diehl delivered IRIS-T for Ukraine, largest-ever ammo order; Rheinmetall Ukraine revenues $1.4bn",
+     "url": "https://www.sipri.org/sites/default/files/2025-11/fs_2512_top_100_2024.pdf",
+     "date": "2025-12"
+    }
+   ],
+   "reasoning": "Kiel codes 14% of German military aid as procurement in Germany (Diehl EUR 2.4bn, KMW, Dynamit Nobel, Hensoldt), 14% as procurement in the US (Raytheon Patriot EUR 3.2bn), 10% Ukraine (incl. long-range drones), 3% PURL, 19% own stocks; 43% has no location/source. German Ertuechtigungsinitiative contracts not itemised since Jun 2025 are mostly placed with German firms (Rheinmetall, Diehl, KNDS) but Patriot/IRIS-T missile content and the Czech initiative (EUR 0.9bn) go abroad -> pu 0.45-0.75. Bundeswehr backfill of donated stocks: PzH2000/Leopard/IRIS-T/ammo re-ordered from German industry, Patriot from Raytheon (partly MBDA Germany/COMLOG), Gepard/MARS not replaced -> r 0.4-0.8."
+  },
+  "GBR": {
+   "own_share": {
+    "low": 0.441,
+    "central": 0.619,
+    "high": 0.737
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 16.184,
+    "split_share_of_total": {
+     "procured_domestic": 0.129,
+     "own_stocks": 0.357,
+     "us_or_third_party_stocks_incl_purl": 0.011,
+     "procured_ukraine": 0.066,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.122,
+     "unknown_or_unspecified": 0.314
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.4,
+      "central": 0.6,
+      "high": 0.8
+     },
+     "pu_unknown_domestic": {
+      "low": 0.35,
+      "central": 0.5,
+      "high": 0.65
+     }
+    },
+    "top_contractors_eur_bn": {
+     "BAE Systems; Sheffield Forgemasters": 0.0727,
+     "Flanders Technical Supply": 0.0702,
+     "MBDA UK": 0.0824,
+     "Thales": 2.3596,
+     "Thales Air Defence": 0.1928
+    },
+    "eu_share_allocated_all_aid_eur_bn": null
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "UK MoD: GBP 1.6bn Thales Belfast LMM air-defence missile deal for Ukraine (Mar 2025)",
+     "url": "https://www.gov.uk/government/news/16-billion-air-defence-missile-deal-to-bolster-ukraine-and-boost-uk-jobs",
+     "date": "2025-03-02"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 36%, UK procurement 12%, Ukraine 8%, 'France' 12% (this is Thales LMM, built in Belfast, so I treat it as UK in central/high and half in low), unknown 31%. The International Fund for Ukraine (UK GBP ~0.5bn) buys internationally; AS90 replaced by Archer (Sweden) and RCH155 (German design) -> backfill r 0.4-0.8; NLAW/Starstreak/Brimstone re-orders are UK (Thales, MBDA UK, BAE). pu 0.35-0.65."
+  },
+  "DNK": {
+   "own_share": {
+    "low": 0.136,
+    "central": 0.198,
+    "high": 0.284
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 10.538,
+    "split_share_of_total": {
+     "procured_domestic": 0.105,
+     "own_stocks": 0.079,
+     "us_or_third_party_stocks_incl_purl": 0.012,
+     "procured_ukraine": 0.138,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.202,
+     "unknown_or_unspecified": 0.465
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.1,
+      "central": 0.3,
+      "high": 0.5
+     },
+     "pu_unknown_domestic": {
+      "low": 0.05,
+      "central": 0.15,
+      "high": 0.3
+     }
+    },
+    "top_contractors_eur_bn": {
+     "BAE Systems": 0.4575,
+     "KNDS Deutschland": 0.13,
+     "KONŠTRUKTA-Defence JSC": 0.1102,
+     "Rheinmetall": 0.0136
+    },
+    "eu_share_allocated_all_aid_eur_bn": 2.3049
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "Danish MFA: Ukraine Fund DKK 64.8bn 2023-28 buys equipment 'produced by Danish and foreign defence industries'",
+     "url": "https://um.dk/ukraine/en/news/denmark-increases-military-support-to-ukraine-by-4-4-billion-dkk-590-million-euro-in-2024/",
+     "date": "2024"
+    }
+   ],
+   "reasoning": "Kiel: Danish procurement 10%, Ukraine (Danish model) 14%, other foreign 20% (Czechia EUR 1.27bn, Sweden CV90 EUR 0.5bn, Germany, Slovakia Zuzana), own stocks 8% (F-16, CAESAR, M113), unknown 47%. Backfill: F-16 replaced by already-ordered US F-35, CAESAR re-ordered from France, artillery from France/Israel (ATMOS) -> r 0.1-0.5. Denmark has a small industry (Terma, Weibel, Nammo DK, Systematic) -> pu 0.05-0.3."
+  },
+  "NLD": {
+   "own_share": {
+    "low": 0.108,
+    "central": 0.172,
+    "high": 0.268
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 9.357,
+    "split_share_of_total": {
+     "procured_domestic": 0.076,
+     "own_stocks": 0.234,
+     "us_or_third_party_stocks_incl_purl": 0.115,
+     "procured_ukraine": 0.11,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.056,
+     "unknown_or_unspecified": 0.409
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.05,
+      "central": 0.15,
+      "high": 0.3
+     },
+     "pu_unknown_domestic": {
+      "low": 0.05,
+      "central": 0.15,
+      "high": 0.3
+     }
+    },
+    "top_contractors_eur_bn": {
+     "DeltaQuad": 0.0426,
+     "Rheinmetall; KNDS": 0.1024,
+     "VDL Defentec; GreentechHarvest": 0.248
+    },
+    "eu_share_allocated_all_aid_eur_bn": 4.77
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 23% (F-16, PzH2000, Patriot, YPR), US stocks via PURL 11%, Dutch procurement 5% (+ Dutch-Ukrainian JV share 4.8%, split), Ukraine 13%, Czechia 4%, Germany 1%, unknown 41%. Backfill goes abroad (F-35 and Patriot from US, PzH2000 from Germany, CV90 Sweden). Dutch industry (Damen, VDL, Thales NL, DeltaQuad) small relative to aid -> r and pu 0.05-0.3."
+  },
+  "SWE": {
+   "own_share": {
+    "low": 0.542,
+    "central": 0.642,
+    "high": 0.732
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 9.275,
+    "split_share_of_total": {
+     "procured_domestic": 0.237,
+     "own_stocks": 0.413,
+     "us_or_third_party_stocks_incl_purl": 0.052,
+     "procured_ukraine": 0.038,
+     "procured_us": 0.003,
+     "procured_other_foreign": 0.067,
+     "unknown_or_unspecified": 0.19
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.6,
+      "central": 0.75,
+      "high": 0.9
+     },
+     "pu_unknown_domestic": {
+      "low": 0.3,
+      "central": 0.5,
+      "high": 0.65
+     }
+    },
+    "top_contractors_eur_bn": {
+     "BAE Systems": 0.2821,
+     "BAE Systems Hägglunds": 0.2106,
+     "Nammo": 0.1778,
+     "Saab": 0.1045
+    },
+    "eu_share_allocated_all_aid_eur_bn": 3.3367
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "SIPRI Top 100 2024: Saab arms revenues $5.55bn (+24%)",
+     "url": "https://www.sipri.org/sites/default/files/2025-11/fs_2512_top_100_2024.pdf",
+     "date": "2025-12"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 41% (CV90, Archer, Strv 122, RBS-70, Carl-Gustaf, ASC 890), US stocks/PURL 5%, Swedish procurement 17% + 'Sweden; other' 13% (half counted Swedish), Ukraine 4%, unknown 19%. Backfill of CV90/Archer/RBS/AT4/Carl-Gustaf is ordered from BAE Hagglunds, BAE Bofors, Saab, Nammo (Swedish plants) -> r 0.6-0.9. PURL USD 0.55bn and Danish-model money go abroad -> pu 0.3-0.65."
+  },
+  "NOR": {
+   "own_share": {
+    "low": 0.215,
+    "central": 0.284,
+    "high": 0.354
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 7.461,
+    "split_share_of_total": {
+     "procured_domestic": 0.135,
+     "own_stocks": 0.103,
+     "us_or_third_party_stocks_incl_purl": 0.182,
+     "procured_ukraine": 0.103,
+     "procured_us": 0.128,
+     "procured_other_foreign": 0.023,
+     "unknown_or_unspecified": 0.326
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.3,
+      "central": 0.5,
+      "high": 0.7
+     },
+     "pu_unknown_domestic": {
+      "low": 0.15,
+      "central": 0.3,
+      "high": 0.45
+     }
+    },
+    "top_contractors_eur_bn": {
+     "Kongsberg": 0.9273,
+     "Nammo": 0.0172,
+     "Watchbird": 0.0084
+    },
+    "eu_share_allocated_all_aid_eur_bn": null
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Kiel: US stocks via PURL 18%, procurement in US 13% (NASAMS co-financed with Canada / US items), Norwegian procurement 13% (Kongsberg NASAMS, Nammo), Ukraine 10%, own stocks 10%, unknown 33%. Backfill: M109 replaced by K9 (Korea), NASAMS re-ordered from Kongsberg (with US AMRAAM content), F-16 not replaced -> r 0.3-0.7; pu 0.15-0.45 given heavy US/Ukraine routing."
+  },
+  "FRA": {
+   "own_share": {
+    "low": 0.702,
+    "central": 0.817,
+    "high": 0.9
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 6.232,
+    "split_share_of_total": {
+     "procured_domestic": 0.104,
+     "own_stocks": 0.224,
+     "us_or_third_party_stocks_incl_purl": 0.0,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.058,
+     "unknown_or_unspecified": 0.614
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.75,
+      "central": 0.85,
+      "high": 0.95
+     },
+     "pu_unknown_domestic": {
+      "low": 0.7,
+      "central": 0.85,
+      "high": 0.95
+     }
+    },
+    "top_contractors_eur_bn": {
+     "Delair": 0.0066,
+     "Delair; KNDS": 0.002,
+     "KNDS": 0.3,
+     "Nexter": 0.0893,
+     "S2M-Equipment": 0.1785,
+     "Thales": 0.0457
+    },
+    "eu_share_allocated_all_aid_eur_bn": 19.2554
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "Assemblee nationale: EUR 200m special fund for Ukraine to order directly from French industry",
+     "url": "https://www.assemblee-nationale.fr/dyn/16/rapports/cion_def/l16b1300_rapport-information",
+     "date": "2023"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 22%, French procurement 9% (KNDS/Nexter CAESAR, Thales, Delair), Netherlands 5% (KNDS NL entity) and Australia/France 2%, unknown/unspecified 61%. France is not a PURL payer; nearly all items are French-made (CAESAR, AMX-10RC, SAMP/T, AASM, Mirage 2000, VAB) and stocks are re-ordered from KNDS France/MBDA/Safran -> r and pu 0.7-0.95. EPF reimbursements to France are outside this bilateral figure."
+  },
+  "CAN": {
+   "own_share": {
+    "low": 0.354,
+    "central": 0.432,
+    "high": 0.51
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 5.816,
+    "split_share_of_total": {
+     "procured_domestic": 0.257,
+     "own_stocks": 0.083,
+     "us_or_third_party_stocks_incl_purl": 0.157,
+     "procured_ukraine": 0.034,
+     "procured_us": 0.031,
+     "procured_other_foreign": 0.031,
+     "unknown_or_unspecified": 0.407
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.2,
+      "central": 0.4,
+      "high": 0.6
+     },
+     "pu_unknown_domestic": {
+      "low": 0.2,
+      "central": 0.35,
+      "high": 0.5
+     }
+    },
+    "top_contractors_eur_bn": {
+     "Colt Canada": 0.0804,
+     "General Dynamics Land Systems Canada": 0.181,
+     "Kongsberg; RTX Corporation": 0.3647,
+     "L3 Wescam": 0.0948,
+     "PGW Defence Technologies": 0.0017,
+     "Roshel": 0.0661,
+     "Teledyne FLIR": 0.0735,
+     "Zodiac Hurricane Technologies": 0.0137
+    },
+    "eu_share_allocated_all_aid_eur_bn": null
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Kiel: US stocks/PURL 16%, NASAMS bought from Kongsberg/RTX (US/Norway) 6%, Canadian procurement 25% (GDLS-Canada ACSV, Colt, Roshel, L3 Wescam, Teledyne FLIR), Ukraine 2%, own stocks 8% (Leopard 2, M777, Carl-Gustaf), unknown 41%. Backfill: M777 and Leopard parts from US/Germany, armoured vehicles domestic -> r 0.2-0.6; pu 0.2-0.5."
+  },
+  "POL": {
+   "own_share": {
+    "low": 0.182,
+    "central": 0.329,
+    "high": 0.511
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 4.452,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.283,
+     "us_or_third_party_stocks_incl_purl": 0.019,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.698
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.15,
+      "central": 0.3,
+      "high": 0.45
+     },
+     "pu_unknown_domestic": {
+      "low": 0.2,
+      "central": 0.35,
+      "high": 0.55
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 3.9896
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "Notes from Poland: Poland buys 116 used Abrams to fill gap after T-72 donations",
+     "url": "https://notesfrompoland.com/2022/07/15/poland-to-buy-116-used-abrams-tanks-from-us/",
+     "date": "2022-07-15"
+    },
+    {
+     "name": "SIPRI Top 100 2024: PGZ arms revenues $3.04bn (+34%)",
+     "url": "https://www.sipri.org/sites/default/files/2025-11/fs_2512_top_100_2024.pdf",
+     "date": "2025-12"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 28% (almost all Soviet-era: T-72, PT-91, 2S1, MiG-29), US 2%, no procurement location coded, unspecified/unknown 70%. Soviet stocks are replaced mainly abroad (K2/K9/K239 from Korea, Abrams/HIMARS/Apache from US); domestic share via Krab/Borsuk/Piorun (PGZ, HSW) -> r 0.15-0.45. Unspecified includes PGZ Krab/Rosomak/Piorun deliveries partly paid by others (but the largest unspecified item, EUR 1.8bn reported by Dworczyk in Jun 2022, is early stock transfers, and EUR 0.26bn is the Czech initiative) -> pu 0.2-0.55. Lower than the earlier 0.7 assumption because the backfill evidence points abroad."
+  },
+  "FIN": {
+   "own_share": {
+    "low": 0.358,
+    "central": 0.529,
+    "high": 0.701
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 3.337,
+    "split_share_of_total": {
+     "procured_domestic": 0.101,
+     "own_stocks": 0.059,
+     "us_or_third_party_stocks_incl_purl": 0.042,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.798
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.3,
+      "central": 0.5,
+      "high": 0.7
+     },
+     "pu_unknown_domestic": {
+      "low": 0.3,
+      "central": 0.5,
+      "high": 0.7
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 1.873
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Kiel: 79% unspecified (Finnish packages are classified), own stocks 10%, Finnish procurement 10%. Finland backfills with Patria/Nammo/Sako (domestic or Nordic) but also buys K9 (Korea), David's Sling (Israel), F-35 (US) -> r and pu 0.3-0.7. Weak evidence."
+  },
+  "ITA": {
+   "own_share": {
+    "low": 0.4,
+    "central": 0.6,
+    "high": 0.8
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 3.0,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.443,
+     "us_or_third_party_stocks_incl_purl": 0.0,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.557
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.4,
+      "central": 0.6,
+      "high": 0.8
+     },
+     "pu_unknown_domestic": {
+      "low": 0.4,
+      "central": 0.6,
+      "high": 0.8
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 13.6696
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "SIPRI Top 100 2024: Leonardo $13.8bn, Fincantieri $3.0bn",
+     "url": "https://www.sipri.org/sites/default/files/2025-11/fs_2512_top_100_2024.pdf",
+     "date": "2025-12"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 44% (SAMP/T, FH70, M109, PzH2000, Lince, M113; 21% of value is US-origin types), 56% unspecified (Italian decrees classified). Backfill via Italian industry (Leonardo, MBDA Italia, Iveco Defence) for SAMP/T/Aster and vehicles, US-origin M109/M113 not replaced like-for-like -> r and pu 0.4-0.8. Weak evidence."
+  },
+  "BEL": {
+   "own_share": {
+    "low": 0.31,
+    "central": 0.495,
+    "high": 0.609
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 2.836,
+    "split_share_of_total": {
+     "procured_domestic": 0.005,
+     "own_stocks": 0.215,
+     "us_or_third_party_stocks_incl_purl": 0.071,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.709
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.1,
+      "central": 0.3,
+      "high": 0.5
+     },
+     "pu_unknown_domestic": {
+      "low": 0.4,
+      "central": 0.6,
+      "high": 0.7
+     }
+    },
+    "top_contractors_eur_bn": {
+     "ECA Robotics Belgium": 0.0073
+    },
+    "eu_share_allocated_all_aid_eur_bn": 3.842
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "Belga: two-thirds (EUR 645m) of Belgium's EUR 1bn 2025 military aid package to flow back to Belgian companies",
+     "url": "https://www.belganewsagency.eu/two-thirds-of-military-aid-to-ukraine-to-be-provided-through-belgian-companies",
+     "date": "2025-04"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 22% (F-16 pledge, ammunition, M113), US stocks/PURL 7%, unknown/unspecified 70%. Government says 2/3 of the 2025 EUR 1bn package goes to Belgian firms (FN Herstal, John Cockerill, Mecar, ECA Robotics, Unimog/ambulances partly foreign) -> pu 0.4-0.7. F-16 donation not replaced (F-35 bought from US anyway) -> r 0.1-0.5."
+  },
+  "ESP": {
+   "own_share": {
+    "low": 0.323,
+    "central": 0.475,
+    "high": 0.627
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 1.507,
+    "split_share_of_total": {
+     "procured_domestic": 0.143,
+     "own_stocks": 0.466,
+     "us_or_third_party_stocks_incl_purl": 0.1,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.292
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.2,
+      "central": 0.4,
+      "high": 0.6
+     },
+     "pu_unknown_domestic": {
+      "low": 0.3,
+      "central": 0.5,
+      "high": 0.7
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 9.0534
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 47% (Leopard 2A4, Hawk/Aspide, M113, ammo), US stocks/PURL 10%, Spanish procurement 14%, unspecified 29%. Ammunition is re-ordered from Spanish plants (Rheinmetall Expal, Santa Barbara/GDELS); Leopard 2A4/Hawk not replaced -> r 0.2-0.6; pu 0.3-0.7."
+  },
+  "LTU": {
+   "own_share": {
+    "low": 0.067,
+    "central": 0.138,
+    "high": 0.272
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 1.209,
+    "split_share_of_total": {
+     "procured_domestic": 0.049,
+     "own_stocks": 0.298,
+     "us_or_third_party_stocks_incl_purl": 0.025,
+     "procured_ukraine": 0.033,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.596
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.0,
+      "central": 0.1,
+      "high": 0.25
+     },
+     "pu_unknown_domestic": {
+      "low": 0.03,
+      "central": 0.1,
+      "high": 0.25
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 0.3585
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "Lithuania MoD (via lithuania.lt): 2026 package USD 265m, USD 38m into Ukrainian industry (Lithuanian model), USD 24m Ukrainian drones, USD 33m Czech initiative",
+     "url": "https://lithuania.lt/governance-in-lithuania/lithuania-steps-up-military-support-for-ukraine-e223-million-package-focused-on-air-defence-drones-and-long-range-ammunition/",
+     "date": "2026-02"
+    },
+    {
+     "name": "LRT: Lithuania EUR 10m for Ukrainian Palianytsia drones; buys drones from Lithuanian manufacturers",
+     "url": "https://www.lrt.lt/en/news-in-english/19/2422673/lithuania-vows-to-support-ukraine-s-defence-industry-allocate-eur10m",
+     "date": "2024-11-25"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 27% (M113, M577, L-70, Stinger, Carl-Gustaf, ammo), Lithuanian procurement 5% (drones), Ukraine 3%, US stocks 2%, unknown 63%. Large documented outflows to Ukraine (Lithuanian model), Czechia (initiative) and NASAMS/Kongsberg; backfill via Germany (Boxer/Leopard), US (Stinger/HIMARS), Sweden -> r 0-0.25, pu 0.03-0.25."
+  },
+  "AUS": {
+   "own_share": {
+    "low": 0.314,
+    "central": 0.464,
+    "high": 0.643
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.912,
+    "split_share_of_total": {
+     "procured_domestic": 0.072,
+     "own_stocks": 0.585,
+     "us_or_third_party_stocks_incl_purl": 0.031,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.312
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.2,
+      "central": 0.35,
+      "high": 0.55
+     },
+     "pu_unknown_domestic": {
+      "low": 0.4,
+      "central": 0.6,
+      "high": 0.8
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": null
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "Australian Minister for Defence: AUD 160m contract with Thales Australia (Bendigo) for 78 Bushmasters to restore capability after Ukraine gifts",
+     "url": "https://www.minister.defence.gov.au/media-releases/2023-05-17/new-bushmasters-australian-defence-force",
+     "date": "2023-05-17"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 59% (Bushmaster, M113AS4, M1A1 Abrams, M777), Australian procurement 7%, PURL 3%, unknown 31%. Bushmasters partly replaced from Thales Bendigo (78 of ~120+), Abrams/M113 retired (replacement M1A2/Redback already contracted, US/Korean-German) -> r 0.2-0.55. New-build Bushmasters and Australian drones dominate procurement -> pu 0.4-0.8."
+  },
+  "EST": {
+   "own_share": {
+    "low": 0.154,
+    "central": 0.261,
+    "high": 0.401
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.888,
+    "split_share_of_total": {
+     "procured_domestic": 0.113,
+     "own_stocks": 0.657,
+     "us_or_third_party_stocks_incl_purl": 0.024,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.207
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.0,
+      "central": 0.1,
+      "high": 0.25
+     },
+     "pu_unknown_domestic": {
+      "low": 0.2,
+      "central": 0.4,
+      "high": 0.6
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 0.2216
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "Estonian Centre for Defence Investments: Ukraine support measure - Estonian-made products (>=30% local production), EUR 100m list 2025",
+     "url": "https://www.kaitseinvesteeringud.ee/en/ukraine-selects-e100-million-worth-of-estonian-military-aid-from-estonian-defence-industry/",
+     "date": "2025-03"
+    },
+    {
+     "name": "Estonian MFA: Estonia's support to Ukraine - 0.25% of GDP 2026-27, 2025 support 0.35% GDP mostly procured from Estonian industry",
+     "url": "https://vm.ee/en/estonias-aid-ukraine",
+     "date": "2026"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 66% (FH70, D-30, Javelin, mortars, ammo), Estonian procurement 11%, unknown 21%. Stocks were donated 2022-23 and backfilled by K9 (Korea), HIMARS (US), CAESAR (France) -> r 0-0.25. Since 2025 most new aid buys Estonian products (Milrem, drones) -> pu 0.2-0.6."
+  },
+  "SVK": {
+   "own_share": {
+    "low": 0.021,
+    "central": 0.101,
+    "high": 0.251
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.697,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.992,
+     "us_or_third_party_stocks_incl_purl": 0.0,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.008
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.02,
+      "central": 0.1,
+      "high": 0.25
+     },
+     "pu_unknown_domestic": {
+      "low": 0.1,
+      "central": 0.2,
+      "high": 0.4
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 0.6151
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "STVR: EU to compensate Slovakia for material donated to Ukraine (EPF)",
+     "url": "https://enrsi.stvr.sk/articles/news/290030/eu-to-compensate-slovakia-for-material-donated-to-ukraine",
+     "date": "2022"
+    },
+    {
+     "name": "Arab News/Reuters: MiG-29 transfer compensated by EUR 200m EU + US AH-1Z/Hellfire offer (~USD 1bn, Slovakia pays ~USD 340m)",
+     "url": "https://www.arabnews.pk/node/2273596",
+     "date": "2023"
+    }
+   ],
+   "reasoning": "Kiel: 99% from own stocks, 63% Soviet-origin (MiG-29, S-300, BMP-1, Mi-17, Grad, Kub). Replacement flows to the US (F-16 already ordered, AH-1Z), Sweden (CV90) and EU EPF reimbursement; domestic share via Zuzana 2/ammunition (Konstrukta, ZVS, MSM), largely paid by DK/DE/NO -> r 0.02-0.25."
+  },
+  "LVA": {
+   "own_share": {
+    "low": 0.121,
+    "central": 0.197,
+    "high": 0.298
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.652,
+    "split_share_of_total": {
+     "procured_domestic": 0.107,
+     "own_stocks": 0.621,
+     "us_or_third_party_stocks_incl_purl": 0.037,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.102,
+     "unknown_or_unspecified": 0.133
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.0,
+      "central": 0.08,
+      "high": 0.2
+     },
+     "pu_unknown_domestic": {
+      "low": 0.1,
+      "central": 0.3,
+      "high": 0.5
+     }
+    },
+    "top_contractors_eur_bn": {
+     "Patria": 0.0662
+    },
+    "eu_share_allocated_all_aid_eur_bn": 0.2279
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "Ukrainska Pravda / Latvian MoD: Latvia buys >2,700 drones from 7 Latvian manufacturers; EUR 20m drone coalition 2024 (>EUR 10m Latvian industry)",
+     "url": "https://www.pravda.com.ua/eng/news/2024/07/05/7464243/",
+     "date": "2024-07-05"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 62% (Stinger, M109, Soviet items), Latvian procurement 11% (drones), Patria (Finland) 10%, unknown 14%. Stinger/M109 backfill goes to US/Korea/Finland -> r 0-0.2; drone coalition money partly to Latvian firms (Origin Robotics, Atlas Dynamics, Edge Autonomy Riga) -> pu 0.1-0.5."
+  },
+  "CZE": {
+   "own_share": {
+    "low": 0.556,
+    "central": 0.61,
+    "high": 0.684
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.578,
+    "split_share_of_total": {
+     "procured_domestic": 0.516,
+     "own_stocks": 0.409,
+     "us_or_third_party_stocks_incl_purl": 0.01,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.065
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.05,
+      "central": 0.15,
+      "high": 0.3
+     },
+     "pu_unknown_domestic": {
+      "low": 0.3,
+      "central": 0.5,
+      "high": 0.7
+     }
+    },
+    "top_contractors_eur_bn": {
+     "CZUB Česká zbrojovka, Holík International, DSS and Sellier &": 0.0007,
+     "STV Group": 0.2975
+    },
+    "eu_share_allocated_all_aid_eur_bn": 1.4256
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "SIPRI Top 100 2024: Czechoslovak Group +193%, 51% of arms revenues linked to Ukraine (Czech ammunition initiative)",
+     "url": "https://www.sipri.org/sites/default/files/2025-11/fs_2512_top_100_2024.pdf",
+     "date": "2025-12"
+    }
+   ],
+   "reasoning": "Kiel (Czech budget only): Czech procurement 52% (STV Group), own stocks 41% (Soviet T-72, BMP-1, RM-70, Dana; backfilled by Leopard 2A4 gifts from Germany and CV90 from Sweden), unknown 7%. The Czech ammunition initiative is financed by other donors and shows up in their figures. -> r 0.05-0.3, pu 0.3-0.7."
+  },
+  "ROU": {
+   "own_share": {
+    "low": 0.001,
+    "central": 0.045,
+    "high": 0.134
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.414,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.869,
+     "us_or_third_party_stocks_incl_purl": 0.121,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.01
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.0,
+      "central": 0.05,
+      "high": 0.15
+     },
+     "pu_unknown_domestic": {
+      "low": 0.1,
+      "central": 0.2,
+      "high": 0.4
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 1.6373
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "The Defense Post: US approves Patriot sale to Romania to replace system donated to Ukraine (~USD 280m, partly funded by Norway and Sweden)",
+     "url": "https://thedefensepost.com/2025/04/30/us-patriot-system-romania",
+     "date": "2025-04-30"
+    }
+   ],
+   "reasoning": "Kiel: 99% from own stocks; the Patriot battery (US-origin) is ~36% of value and is replaced by a US FMS purchase funded partly by NO/SE grants. Other items (ammunition, Soviet-era) are replaced by Romarm only marginally -> r 0-0.15; pu 0.1-0.4."
+  },
+  "PRT": {
+   "own_share": {
+    "low": 0.068,
+    "central": 0.153,
+    "high": 0.279
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.382,
+    "split_share_of_total": {
+     "procured_domestic": 0.026,
+     "own_stocks": 0.188,
+     "us_or_third_party_stocks_incl_purl": 0.131,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.655
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.05,
+      "central": 0.15,
+      "high": 0.3
+     },
+     "pu_unknown_domestic": {
+      "low": 0.05,
+      "central": 0.15,
+      "high": 0.3
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 1.6114
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 30% (Leopard 2A6, M113, ammo), PURL 13%, Portuguese procurement 3%, unspecified 65%. Small industry (idD Portugal Defence, Tekever, OGMA); contributes to PURL and Czech initiative; Leopards not replaced -> r and pu 0.05-0.3. Weak evidence."
+  },
+  "IRL": {
+   "own_share": {
+    "low": 0.0,
+    "central": 0.03,
+    "high": 0.098
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.309,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.016,
+     "us_or_third_party_stocks_incl_purl": 0.0,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.983
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "pu_unknown_domestic": {
+      "low": 0.0,
+      "central": 0.03,
+      "high": 0.1
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 1.8957
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Ireland gives only non-lethal military aid (EPF assistance measures, demining, medical); Kiel: 72% unspecified, 26% unknown location. Ireland has no defence industry to speak of -> own share 0-0.1."
+  },
+  "HRV": {
+   "own_share": {
+    "low": 0.044,
+    "central": 0.131,
+    "high": 0.262
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.276,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.0,
+     "us_or_third_party_stocks_incl_purl": 0.127,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.873
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.0,
+      "central": 0.1,
+      "high": 0.25
+     },
+     "pu_unknown_domestic": {
+      "low": 0.05,
+      "central": 0.15,
+      "high": 0.3
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 0.4098
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "Rubryka/Air Recognition: Croatia transfers 14 Mi-8 to Ukraine, replaced by UH-60M Black Hawks from the US",
+     "url": "https://rubryka.com/en/2023/10/20/horvatiya-nadala-ukrayini-svoyi-gelikoptery-mi-8/",
+     "date": "2023-10-20"
+    }
+   ],
+   "reasoning": "Kiel: 87% unspecified, 13% own stocks. Main item (14 Mi-8) replaced by US Black Hawks (US-funded in part). Croatian industry (DOK-ING demining, Duro Dakovic, HS Produkt small arms) supplies some items; PURL EUR 15m -> r 0-0.25, pu 0.05-0.3."
+  },
+  "BGR": {
+   "own_share": {
+    "low": 0.186,
+    "central": 0.373,
+    "high": 0.559
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.254,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.011,
+     "us_or_third_party_stocks_incl_purl": 0.068,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.921
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.2,
+      "central": 0.4,
+      "high": 0.6
+     },
+     "pu_unknown_domestic": {
+      "low": 0.2,
+      "central": 0.4,
+      "high": 0.6
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 0.4681
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Kiel: 92% unspecified (Bulgaria's packages are classified; large 2022 deliveries were commercial sales and are not in Kiel). Bulgaria has a large ammunition and small-arms industry (VMZ, Arsenal, Arcus) that refills stocks domestically, but heavier Soviet items are replaced by US F-16/Stryker -> r and pu 0.2-0.6. Weak evidence."
+  },
+  "LUX": {
+   "own_share": {
+    "low": 0.0,
+    "central": 0.013,
+    "high": 0.058
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.239,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.315,
+     "us_or_third_party_stocks_incl_purl": 0.237,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.021,
+     "unknown_or_unspecified": 0.427
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.05
+     },
+     "pu_unknown_domestic": {
+      "low": 0.0,
+      "central": 0.03,
+      "high": 0.1
+     }
+    },
+    "top_contractors_eur_bn": {
+     "KNDS": 0.005
+    },
+    "eu_share_allocated_all_aid_eur_bn": 0.3098
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 31%, US stocks/PURL 23%, unknown 43% (Czech initiative, drones, satellites via other states). Luxembourg has no defence-equipment industry (SES satellite services aside) -> own share 0-0.1."
+  },
+  "GRC": {
+   "own_share": {
+    "low": 0.088,
+    "central": 0.22,
+    "high": 0.397
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.169,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.22,
+     "us_or_third_party_stocks_incl_purl": 0.119,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.662
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.1,
+      "central": 0.25,
+      "high": 0.45
+     },
+     "pu_unknown_domestic": {
+      "low": 0.1,
+      "central": 0.25,
+      "high": 0.45
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 1.3484
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Kiel: 66% unspecified, 34% own stocks (BMP-1, ammunition, Soviet-origin items via German ring exchange with Marders from Germany). Hellenic Defence Systems (EAS) refills some ammunition domestically -> r and pu 0.1-0.45. Weak evidence."
+  },
+  "SVN": {
+   "own_share": {
+    "low": 0.0,
+    "central": 0.014,
+    "high": 0.07
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.159,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.423,
+     "us_or_third_party_stocks_incl_purl": 0.545,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.033
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.0,
+      "central": 0.03,
+      "high": 0.15
+     },
+     "pu_unknown_domestic": {
+      "low": 0.0,
+      "central": 0.05,
+      "high": 0.2
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 0.3689
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "The Defense Post: Slovenia gives 28 M-55S tanks to Ukraine in exchange for 40 German trucks",
+     "url": "https://thedefensepost.com/2022/09/20/slovenia-ukraine-tanks-german-gear/",
+     "date": "2022-09-20"
+    }
+   ],
+   "reasoning": "Kiel: own stocks 42% (M-55S, ammo), US stocks/PURL 55%. Tank donation backfilled by German trucks (paid by Germany) -> own share near 0."
+  },
+  "JPN": {
+   "own_share": {
+    "low": 0.009,
+    "central": 0.053,
+    "high": 0.178
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.076,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.015,
+     "us_or_third_party_stocks_incl_purl": 0.166,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.819
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.6,
+      "central": 0.8,
+      "high": 0.95
+     },
+     "pu_unknown_domestic": {
+      "low": 0.0,
+      "central": 0.05,
+      "high": 0.2
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": null
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "AP via Washington Times: Japan to donate ~100 SDF vehicles (trucks, high-mobility vehicles) to Ukraine",
+     "url": "https://www.washingtontimes.com/news/2023/may/24/japan-to-donate-100-military-vehicles-to-ukraine/",
+     "date": "2023-05-24"
+    }
+   ],
+   "reasoning": "Japan provides only non-lethal military items. Kiel item data: EUR 62m of EUR 76m are contributions to the NATO CAP Trust Fund (USD 30m + USD 37m for anti-drone systems), which procures internationally, and EUR 12.6m PURL; only ~EUR 1-2m are SDF stock items (vehicles, vests, helmets, small drones) replaced from Japanese suppliers (r 0.6-0.95). CAP money: assumed 0-20% reaches Japanese firms -> total 0.02-0.2."
+  },
+  "TUR": {
+   "own_share": {
+    "low": 0.5,
+    "central": 0.75,
+    "high": 0.9
+   },
+   "certainty": "C",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.066,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 1.0,
+     "us_or_third_party_stocks_incl_purl": 0.0,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.0
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.5,
+      "central": 0.75,
+      "high": 0.9
+     },
+     "pu_unknown_domestic": {
+      "low": 0.5,
+      "central": 0.75,
+      "high": 0.9
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": null
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "SIPRI Top 100 2024: record 5 Turkish companies (ASELSAN, TAI, Baykar, Roketsan, MKE)",
+     "url": "https://www.sipri.org/sites/default/files/2025-11/fs_2512_top_100_2024.pdf",
+     "date": "2025-12"
+    }
+   ],
+   "reasoning": "Kiel: 100% from stocks (small value). Turkiye's supplies to Ukraine are mostly commercial sales (Bayraktar, MKE ammo), not counted as aid; gifted stocks are replaced by MKE/ASELSAN/Roketsan -> 0.5-0.9."
+  },
+  "ISL": {
+   "own_share": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.015
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.057,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.0,
+     "us_or_third_party_stocks_incl_purl": 0.141,
+     "procured_ukraine": 0.097,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 0.764
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "pu_unknown_domestic": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.02
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": null
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Iceland has no armed forces or defence industry; its military aid goes through the Danish model (Ukraine), the Czech initiative, PURL and UK-led funds -> 0."
+  },
+  "NZL": {
+   "own_share": {
+    "low": 0.0,
+    "central": 0.021,
+    "high": 0.074
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.036,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.086,
+     "us_or_third_party_stocks_incl_purl": 0.206,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.011,
+     "unknown_or_unspecified": 0.694
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.05
+     },
+     "pu_unknown_domestic": {
+      "low": 0.0,
+      "central": 0.03,
+      "high": 0.1
+     }
+    },
+    "top_contractors_eur_bn": {
+     "TAIT": 0.0004
+    },
+    "eu_share_allocated_all_aid_eur_bn": null
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Kiel: unknown 53%, own stocks 21% (M72 LAWs, kit), PURL 21%; funds go to UK International Fund, PURL and Australia (TAIT radios). Minimal domestic industry -> 0-0.1."
+  },
+  "KOR": {
+   "own_share": {
+    "low": 0.1,
+    "central": 0.22,
+    "high": 0.35
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.015,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.0,
+     "us_or_third_party_stocks_incl_purl": 0.0,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 1.0
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.7,
+      "central": 0.9,
+      "high": 1.0
+     },
+     "pu_unknown_domestic": {
+      "low": 0.1,
+      "central": 0.22,
+      "high": 0.35
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": null
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "Rubryka: South Korea sends ~USD 0.8m non-lethal military aid (vests, helmets, rations)",
+     "url": "https://rubryka.com/en/2022/03/15/pivdenna-koreya-napravyt-ukrayini-neletalnu-vijskovu-dopomogu-na-800-tys/",
+     "date": "2022-03-15"
+    }
+   ],
+   "reasoning": "Kiel: of EUR 15m, EUR 11m is USD 12m to the NATO CAP Trust Fund (medical/rehab, procured internationally); ~EUR 3m are non-lethal items (helmets, vests, MREs, CBRN kit) bought from Korean suppliers -> blended pu 0.1-0.35. Value tiny."
+  },
+  "AUT": {
+   "own_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.9
+   },
+   "certainty": "D",
+   "basis": "modelled: [Kiel domestic procurement + own stocks x r + unknown x pu] / Kiel bilateral military allocations",
+   "components": {
+    "kiel_military_allocated_eur_bn": 0.003,
+    "split_share_of_total": {
+     "procured_domestic": 0.0,
+     "own_stocks": 0.0,
+     "us_or_third_party_stocks_incl_purl": 0.0,
+     "procured_ukraine": 0.0,
+     "procured_us": 0.0,
+     "procured_other_foreign": 0.0,
+     "unknown_or_unspecified": 1.0
+    },
+    "params": {
+     "r_backfill_domestic": {
+      "low": 0.3,
+      "central": 0.6,
+      "high": 0.9
+     },
+     "pu_unknown_domestic": {
+      "low": 0.3,
+      "central": 0.6,
+      "high": 0.9
+     }
+    },
+    "top_contractors_eur_bn": {},
+    "eu_share_allocated_all_aid_eur_bn": 2.8783
+   },
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Neutral Austria gives no lethal aid; EUR 3m of protective/demining items, likely Austrian suppliers (assumption) -> 0.3-0.9. Negligible value."
+  },
+  "USA": {
+   "own_share": {
+    "low": 0.86,
+    "central": 0.88,
+    "high": 0.9
+   },
+   "certainty": "B",
+   "basis": "documented (unchanged from flowback.json)",
+   "sources": [
+    {
+     "name": "CSIS (Cancian): Where Is the Missing $100 Billion in U.S. Aid for Ukraine?",
+     "url": "https://www.csis.org/analysis/where-missing-100-billion-us-aid-ukraine",
+     "date": "2025-02-11"
+    }
+   ],
+   "reasoning": "CSIS: ~90% of US military aid spent in the US (86% of the military part of the Apr-2024 supplemental). Kiel item data agree: 52% stocks (PDA, replenished by US industry) + 38% USAI procurement in the US. Kept as is."
+  },
+  "CHE": {
+   "own_share": null,
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Switzerland provides no military aid (Kiel military allocations 0; War Materiel Act bars re-export). Own share not applicable; use 0 military flowback."
+  },
+  "EU_INST": {
+   "own_share_eu_eea_industry": {
+    "low": 0.7,
+    "central": 0.78,
+    "high": 0.88
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker Release 31 (item-level sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location, procurement_contractor)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "date": "2026-10"
+    },
+    {
+     "name": "SIPRI Top 100 arms-producing companies 2024 (fact sheet)",
+     "url": "https://www.sipri.org/sites/default/files/2025-11/fs_2512_top_100_2024.pdf",
+     "date": "2025-12"
+    }
+   ],
+   "reasoning": "Kiel R31 EU military allocations EUR 8.87bn: EUR 5.87bn coded 'EEA; EFTA; Ukraine' (EPF/ERA-funded procurement with origin rules), EUR 2.5bn Saab (Sweden), EUR 0.5bn unknown. Kiel KPB203: procurement in Ukraine 12-22% of procurement-based aid in 2025 -> EU/EEA industry 0.70-0.88. EPF reimbursements flow back to member states that donated (their own-industry share applies). For a member's EU share, the 'own' part is only its share of EU/EEA production: rough split of EU+EEA Top-100 arms revenue 2024 (SIPRI, trans-European groups split by location): FRA ~0.39, DEU ~0.24, ITA ~0.19, SWE ~0.06, CZE ~0.04, ESP ~0.035, POL ~0.03, NOR ~0.02, others ~0 (overstates big groups, ignores Nammo/Patria/FN/Indra). Multiply 0.78 by these to get each member's own-industry share of its EU-channel military aid."
+  }
+ },
+ "refugee_donor_funding": {
+  "MDA": {
+   "donor_share": {
+    "low": 0.6,
+    "central": 0.8,
+    "high": 0.95
+   },
+   "by_year_eur_bn": {
+    "2022": {
+     "low": 0.2807,
+     "central": 0.3466,
+     "high": 0.3986
+    },
+    "2023": {
+     "low": 0.1296,
+     "central": 0.16,
+     "high": 0.184
+    },
+    "2024": {
+     "low": 0.1307,
+     "central": 0.1614,
+     "high": 0.1856
+    },
+    "2025": {
+     "low": 0.0518,
+     "central": 0.0639,
+     "high": 0.0735
+    },
+    "2026": {
+     "low": 0.0258,
+     "central": 0.043,
+     "high": 0.0602
+    }
+   },
+   "modelled_host_cost_eur_bn_for_comparison": {
+    "2022": {
+     "low": 0.0244,
+     "central": 0.0776,
+     "high": 0.2472
+    },
+    "2023": {
+     "low": 0.0374,
+     "central": 0.1189,
+     "high": 0.3785
+    },
+    "2024": {
+     "low": 0.043,
+     "central": 0.1369,
+     "high": 0.4358
+    },
+    "2025": {
+     "low": 0.0478,
+     "central": 0.152,
+     "high": 0.4839
+    },
+    "2026": {
+     "low": 0.0336,
+     "central": 0.107,
+     "high": 0.3406
+    }
+   },
+   "host_community_share_of_rrp_targets": 0.31,
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2022, incoming flows by destination country (plan 1103)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1103",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2023, incoming flows by destination country (plan 1127)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1127",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2024, incoming flows by destination country (plan 1167)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1167",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2025, incoming flows by destination country (plan 1218)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1218",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UNHCR Moldova: since 2022 Moldova received over USD 785m to manage the refugee situation; 2026 appeal USD 116m for 75,600 refugees + 34,400 host community members",
+     "url": "https://www.unhcr.org/md/en/news/press-releases/four-years-full-scale-invasion-refugees-ukraine-moldova-still-need-protection",
+     "date": "2026-02"
+    },
+    {
+     "name": "UNHCR Moldova funding update 30 Apr 2026: USD 64.0m requirement, 28% funded",
+     "url": "https://www.unhcr.org/sites/default/files/2026-05/republic-of-moldova-funding-30-04-2026.pdf",
+     "date": "2026-05"
+    },
+    {
+     "name": "UNHCR Moldova programme summary 2026",
+     "url": "https://www.unhcr.org/sites/default/files/2026-02/unhcr-moldova-programme-summary-2026.pdf",
+     "date": "2026-02"
+    },
+    {
+     "name": "Moldova Ministry of Finance report on the refugee crisis (state budget MDL ~200m + MDL 35.1m donations, Apr 2022)",
+     "url": "https://mf.gov.md/sites/default/files/30.04.2022_Raport%20_criza%20refugiati.pdf",
+     "date": "2022-04-30"
+    },
+    {
+     "name": "Infomarket: MDL 386.7m from Reserve (41.9m) and Intervention (344.8m) funds for the refugee crisis by end-Jul 2022",
+     "url": "https://www.infomarket.md/en/goverment/283226",
+     "date": "2022-08"
+    },
+    {
+     "name": "Logos Press: Economic Council - refugees contributed ~MDL 1.6bn (>USD 90m) in taxes/contributions since 2022",
+     "url": "https://logos-pres.md/en/news/since-the-start-of-the-war-ukrainian-refugees-have-contributed-more-than-90-million-to-moldovas-budget/",
+     "date": "2025"
+    }
+   ],
+   "reasoning": "Donor money for Moldova's refugee response, by year: low = FTS flows recorded against the Ukraine RRP with destination Moldova (USD 636m 2022-25, 2022 incl. a pro-rata share of multi-country flows); central = the same year profile scaled to UNHCR's 'over USD 785m' 2022-25 total (x1.23; FTS misses some partner funding); high = central x1.15 for bilateral money outside the RRP (EU/US grants to ministries, e.g. NHIC health coverage financed via IOM/UNICEF/UNFPA). 2026: UNHCR's own USD 64m was 28% funded by April; RRP USD 116m; assumed USD 30/50/70m for the year. Donor funding (EUR ~0.35bn in 2022, ~0.16bn in 2023 and 2024) is larger than the modelled host cost in refugees.json for those years (central EUR 0.08-0.14bn), and Moldova's own budget outlays were small (MDL ~387m, ~EUR 19m, from emergency funds by July 2022). About 31% of RRP target beneficiaries are vulnerable Moldovans, and part is agency overhead, so donor money is not all refugee cost. Share of total refugee-related spending in Moldova paid by donors: 0.6-0.95, central 0.8. Use: Moldova's own (net) cost = max(modelled cost x (1 - donor_share), small government outlays) - do not count donor-funded parts for Moldova and the donors at the same time."
+  },
+  "POL": {
+   "donor_share": {
+    "low": 0.02,
+    "central": 0.06,
+    "high": 0.15
+   },
+   "un_rrp_funding_eur_bn_by_year": {
+    "2022": 0.3949,
+    "2023": 0.1027,
+    "2024": 0.0623,
+    "2025": 0.0181
+   },
+   "eu_funds_eur_bn": {
+    "strict_additional": 0.145,
+    "gross_incl_cohesion_reprogramming": 1.75
+   },
+   "modelled_host_cost_2022_2025_eur_bn": {
+    "low": 10.4346,
+    "central": 18.0734,
+    "high": 31.3039
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2022, incoming flows by destination country (plan 1103)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1103",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2023, incoming flows by destination country (plan 1127)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1127",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2024, incoming flows by destination country (plan 1167)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1167",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2025, incoming flows by destination country (plan 1218)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1218",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Demagog: EU support to Poland for refugees - CARE advance EUR 562m, REACT-EU EUR 268m, AMIF/BMVI emergency EUR 144.6m (PLN 695m, of which PLN 329m direct refugee aid), FAST-CARE expected EUR 716m; EIB loan EUR 2bn (loan)",
+     "url": "https://demagog.org.pl/wypowiedzi/ile-pieniedzy-polska-dostala-od-ue-na-wsparcie-uchodzcow/",
+     "date": "2023-02"
+    },
+    {
+     "name": "Notes from Poland: EU has given Poland EUR 144m to help with Ukraine refugees",
+     "url": "https://notesfrompoland.com/2022/10/20/eu-has-given-poland-e144m-to-help-with-ukraine-refugees/",
+     "date": "2022-10-20"
+    }
+   ],
+   "reasoning": "Modelled/reported Polish cost 2022-25 EUR ~18bn central (10-31). External money: UN RRP flows to Poland USD ~0.61bn (EUR ~0.57bn) 2022-25; EU AMIF/BMVI emergency EUR 0.145bn (half for border infrastructure); REACT-EU EUR 0.27bn and CARE/FAST-CARE advances EUR 0.56bn + ~0.72bn are re-programmed cohesion money from Poland's own 2014-20 envelope (not additional). EIB EUR 2bn is a loan. Strict additional (UN + EU emergency) ~EUR 0.7bn = ~4%; gross incl. cohesion re-programming ~EUR 2.3bn = ~13%. Range 0.02-0.15, central 0.06."
+  },
+  "ROU": {
+   "donor_share": {
+    "low": 0.08,
+    "central": 0.2,
+    "high": 0.45
+   },
+   "un_rrp_funding_eur_bn_by_year": {
+    "2022": 0.1456,
+    "2023": 0.0473,
+    "2024": 0.0206,
+    "2025": 0.006
+   },
+   "eu_funds_eur_bn": {
+    "strict_additional": 0.09,
+    "gross_incl_cohesion_reprogramming": 0.54
+   },
+   "modelled_host_cost_2022_2025_eur_bn": {
+    "low": 0.4676,
+    "central": 1.4884,
+    "high": 4.7378
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2022, incoming flows by destination country (plan 1103)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1103",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2023, incoming flows by destination country (plan 1127)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1127",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2024, incoming flows by destination country (plan 1167)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1167",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2025, incoming flows by destination country (plan 1218)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1218",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Romania Insider: EC disburses EUR 450m to Romania for handling Ukrainian refugees (CARE advance)",
+     "url": "https://www.romania-insider.com/romania-eu-funds-ukrainian-refugees",
+     "date": "2022"
+    },
+    {
+     "name": "Romania Insider: Romania spent EUR 63.9m on refugees and received EUR 39m back from EU",
+     "url": "https://romania-insider.com/romania-ukrainian-refugees-money-eu",
+     "date": "2022-08"
+    },
+    {
+     "name": "OCCRP/Context.ro: of ~EUR 2bn EU money that could have gone to refugees, >EUR 1.5bn never reached them",
+     "url": "https://occrp.org/en/news/romania-has-blocked-aid-for-ukrainian-refugees",
+     "date": "2023-10"
+    },
+    {
+     "name": "Gandul: Chancellery report - 50/20 programme payments ~EUR 106m in 2022",
+     "url": "https://www.gandul.ro/actualitate/cate-sute-mii-euro-cheltuie-zilnic-romania-cazarea-hrana-ucrainenilor-19949673",
+     "date": "2023"
+    }
+   ],
+   "reasoning": "Modelled Romanian cost 2022-25 EUR ~1.5bn central (0.5-4.7). UN RRP flows to Romania USD ~0.23bn (EUR ~0.21bn). EU: CARE advance EUR 450m (re-programmed cohesion, largely not used for refugees per OCCRP/Context.ro), EUR 39m reimbursed for 50/20 meals and housing (2022). 50/20 itself cost EUR 106-150m in 2022. Strict external (UN + reimbursements + AMIF emergency) ~EUR 0.3bn = ~20% of central cost; gross incl. CARE ~EUR 0.7bn. Range 0.08-0.45."
+  },
+  "SVK": {
+   "donor_share": {
+    "low": 0.06,
+    "central": 0.15,
+    "high": 0.35
+   },
+   "un_rrp_funding_eur_bn_by_year": {
+    "2022": 0.085,
+    "2023": 0.0259,
+    "2024": 0.0091,
+    "2025": 0.0
+   },
+   "eu_funds_eur_bn": {
+    "strict_additional": 0.02,
+    "gross_incl_cohesion_reprogramming": 0.15
+   },
+   "modelled_host_cost_2022_2025_eur_bn": {
+    "low": 0.4936,
+    "central": 1.571,
+    "high": 5.0011
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2022, incoming flows by destination country (plan 1103)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1103",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2023, incoming flows by destination country (plan 1127)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1127",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2024, incoming flows by destination country (plan 1167)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1167",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2025, incoming flows by destination country (plan 1218)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1218",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "EUAA Who-is-Who/DIP: Slovak contribution to housing costs May 2023-Apr 2025 reimbursed from EU resources (national project), 47,546 displaced persons supported",
+     "url": "https://dip.euaa.europa.eu/node/1738",
+     "date": "2025"
+    },
+    {
+     "name": "RTVS: accommodation allowances fell from almost EUR 5m (Jun 2024) to EUR 1.2m a month (Jul 2024)",
+     "url": "https://enrsi.rtvs.sk/articles/news/374841/allowances-for-accommodating-ukrainian-refugees-declines",
+     "date": "2024-08"
+    }
+   ],
+   "reasoning": "Modelled Slovak cost 2022-25 EUR ~1.6bn central (0.5-5.0). UN RRP flows to Slovakia USD ~0.13bn (EUR ~0.12bn). The accommodation allowance May 2023-Apr 2025 (~EUR 4-5m/month until mid-2024, ~EUR 1-2m after) was reimbursed from EU funds: ~EUR 0.08-0.15bn. 2022 allowance phases (EUR 16m+) were state-funded. External ~EUR 0.2-0.27bn = ~15% of central. Range 0.06-0.35."
+  },
+  "CZE": {
+   "donor_share": {
+    "low": 0.02,
+    "central": 0.06,
+    "high": 0.12
+   },
+   "un_rrp_funding_eur_bn_by_year": {
+    "2022": 0.0,
+    "2023": 0.0273,
+    "2024": 0.0173,
+    "2025": 0.0017
+   },
+   "eu_funds_eur_bn": {
+    "strict_additional": 0.044,
+    "gross_incl_cohesion_reprogramming": 0.33
+   },
+   "modelled_host_cost_2022_2025_eur_bn": {
+    "low": 3.175,
+    "central": 3.175,
+    "high": 6.0326
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2022, incoming flows by destination country (plan 1103)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1103",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2023, incoming flows by destination country (plan 1127)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1127",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2024, incoming flows by destination country (plan 1167)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1167",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2025, incoming flows by destination country (plan 1218)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1218",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Babel: Commission paid EUR 3.5bn CARE advances; Czechia received EUR 283m",
+     "url": "https://babel.ua/en/news/78135-eu-countries-accepting-refugees-from-ukraine-have-been-paid-3-5-billion",
+     "date": "2022"
+    },
+    {
+     "name": "Radio Prague: Czechia to receive CZK 680m (EUR 27.4m) from EU emergency funds for refugees",
+     "url": "https://english.radio.cz/node/8750955",
+     "date": "2022"
+    },
+    {
+     "name": "European Newsroom/CTK: of CZK 28.5bn REACT-EU only ~CZK 412m went to Ukrainian refugees",
+     "url": "https://europeannewsroom.com/the-eu-provided-the-czech-republic-with-28-5-billion-czk-to-address-health-and-social-crises",
+     "date": "2023"
+    },
+    {
+     "name": "EIB: EUR 200m loan to Czechia for refugee healthcare costs",
+     "url": "https://www.eib.org/en/press/all/2023-042-eib-and-czech-republic-take-steps-to-mitigate-the-impact-of-the-ukraine-war",
+     "date": "2023"
+    }
+   ],
+   "reasoning": "Reported Czech cost 2022-25 EUR ~3.2bn (MPSV gross; high 6.0). External: UN RRP USD ~50m (EUR 0.046bn), EU emergency EUR 27m, REACT-EU ~EUR 17m; CARE advance EUR 283m is re-programmed cohesion money; EIB EUR 200m is a loan. Strict ~EUR 0.09bn = 3%; gross ~EUR 0.37bn = 12%. Range 0.02-0.12."
+  },
+  "BGR": {
+   "donor_share": {
+    "low": 0.05,
+    "central": 0.17,
+    "high": 0.35
+   },
+   "un_rrp_funding_eur_bn_by_year": {
+    "2022": 0.0,
+    "2023": 0.0092,
+    "2024": 0.0055,
+    "2025": 0.0009
+   },
+   "eu_funds_eur_bn": {
+    "strict_additional": 0.03,
+    "gross_incl_cohesion_reprogramming": 0.15
+   },
+   "modelled_host_cost_2022_2025_eur_bn": {
+    "low": 0.3096,
+    "central": 0.9858,
+    "high": 3.1376
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2022, incoming flows by destination country (plan 1103)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1103",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2023, incoming flows by destination country (plan 1127)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1127",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2024, incoming flows by destination country (plan 1167)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1167",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "OCHA FTS: Ukraine Situation Regional Refugee Response Plan 2025, incoming flows by destination country (plan 1218)",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?planId=1218",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Sofia Globe: hotel accommodation programme payouts ~BGN 523m (~EUR 267m) by late 2022, of which BGN 200m state budget and ~BGN 300m EU programmes and funds",
+     "url": "https://sofiaglobe.com/?p=109719",
+     "date": "2022"
+    },
+    {
+     "name": "SeeNews: Bulgaria pays EUR 42m for accommodation/transport of Ukrainian refugees (Sept 2022)",
+     "url": "https://seenews.com/news/bulgaria-to-pay-42-mln-euro-for-accommodation-transportation-of-ukrainian-refugees-in-sept-804158",
+     "date": "2022-11"
+    }
+   ],
+   "reasoning": "Modelled Bulgarian cost 2022-25 EUR ~1.0bn central (0.3-3.1); the 2022 hotel programme alone was EUR ~0.27bn, of which ~57% (BGN ~300m, EUR ~0.15bn) from EU programmes (mostly re-programmed cohesion/AMIF). UN RRP flows USD ~17m (2023-25). External ~EUR 0.17bn = 17% of central. Range 0.05-0.35."
+  },
+  "GEO": {
+   "donor_share": {
+    "low": 0.05,
+    "central": 0.15,
+    "high": 0.35
+   },
+   "un_rrp_funding_eur_bn_by_year": null,
+   "modelled_host_cost_2022_2025_eur_bn": {
+    "low": 0.0397,
+    "central": 0.1262,
+    "high": 0.4016
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "UNHCR Help Georgia: government monthly support GEL 300 per family + GEL 45 per person (decree from 1 Aug 2023, extended)",
+     "url": "https://help.unhcr.org/georgia/protection-for-arrivals-from-ukraine",
+     "date": "2025"
+    },
+    {
+     "name": "UNN: Georgian assistance programmes for Ukrainians extended to 1 Jan 2027",
+     "url": "https://unn.ua/en/amp/in-georgia-assistance-programs-for-ukrainian-refugees-have-been-extended-until-2027-what-the-payments-will-be",
+     "date": "2025"
+    },
+    {
+     "name": "FactCheck.ge: one-off GEL 470 per child paid by the government with UNICEF support",
+     "url": "https://www.factcheck.ge/en/story/41577-disinformation-refugee-children-from-ukraine-receive-more-government-aid-in-georgia-as-compared-to-georgian-refugees",
+     "date": "2023"
+    },
+    {
+     "name": "ReliefWeb: UNHCR Georgia fact sheet Sep 2024 (UNHCR cash to ~238 vulnerable people in 2024)",
+     "url": "https://reliefweb.int/report/georgia/georgia-fact-sheet-september-2024",
+     "date": "2024-09"
+    }
+   ],
+   "reasoning": "Georgia is not part of the Ukraine RRP. The main cash programme (GEL 300/family + GEL 45/person per month, roughly GEL 40-55m a year for ~26k people) is paid from the state budget; donors fund a UNICEF child payment, UNHCR/NGO protection and small cash programmes (People in Need, ACF). No total donor figure found -> 0.05-0.35, central 0.15. Weak evidence."
+  },
+  "ARM": {
+   "donor_share": {
+    "low": 0.1,
+    "central": 0.3,
+    "high": 0.6
+   },
+   "un_rrp_funding_eur_bn_by_year": null,
+   "modelled_host_cost_2022_2025_eur_bn": {
+    "low": 0.0017,
+    "central": 0.0055,
+    "high": 0.017
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "UNHCR Refugee Data Finder API (Ukrainian refugees in Armenia 528-4,830, 2022-25)",
+     "url": "https://api.unhcr.org/population/v1/population/?year=2025&coo=UKR&coa_all=true",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Armenia hosts few Ukrainian refugees (~0.5-5k) and runs no dedicated state cash scheme for them that I found; assistance comes from UNHCR/NGOs, while schooling and health access are state-funded. No figures found -> wide 0.1-0.6. Modelled cost is tiny (EUR <0.01bn/yr), so the choice hardly matters."
+  }
+ },
+ "military_to_russia": {
+  "PRK": {
+   "total_eur_bn": {
+    "low": 2.3,
+    "central": 9.5,
+    "high": 19.0
+   },
+   "by_year": {
+    "2023": {
+     "low": 0.5,
+     "central": 2.2,
+     "high": 4.5
+    },
+    "2024": {
+     "low": 1.0,
+     "central": 4.3,
+     "high": 8.5
+    },
+    "2025": {
+     "low": 0.5,
+     "central": 2.0,
+     "high": 4.0
+    },
+    "2026": {
+     "low": 0.3,
+     "central": 1.0,
+     "high": 2.0
+    }
+   },
+   "items": {
+    "artillery_shells": "4-6m (Reuters/OSC container count, Sep 2023-Mar 2025) to >12m 152mm-equivalent (ROK DIA, Jul 2025)",
+    "missiles": "KN-23/24: ~100 by Nov 2024, ~150 by Aug 2025, +~40 in 2026 (Ukrainian GUR, belligerent); ~250 per Nikkei on INSS",
+    "artillery_systems": "~120 Koksan 170mm SPGs + ~120 240mm MLRS (GUR, belligerent)",
+    "troops": "11,000-20,000+ (see fighters_for_russia.PRK); Russia paid >USD 0.6bn for the units (INSS)",
+    "workers": "15,000 (NIS, Jun 2025); 2-3x the 8,000 dispatched in 2024 (MSMT, 2026) -> ~16,000-24,000; up to 25,000 in drone production (Ukrainian report, Sep 2026). Value not included in the total (labour paid at market-ish rates; KIDA labour ~USD 0.28bn)."
+   },
+   "sources": [
+    {
+     "name": "Bloomberg on INSS (Seoul) report: North Korea gave Russia up to USD 14bn (USD 7.67-14.4bn Aug 2023-Dec 2025)",
+     "url": "https://www.bloomberg.com/news/articles/2026-03-18/n-korea-gave-russia-up-to-14-billion-in-military-aid-report",
+     "date": "2026-03-18"
+    },
+    {
+     "name": "Mezha (Nikkei on INSS): USD 7-13.8bn rocket artillery and ~250 KN-23; >USD 600m for units",
+     "url": "https://mezha.net/eng/bukvy/4ed5619d_north_korea_earned/",
+     "date": "2026-03"
+    },
+    {
+     "name": "Friedrich Naumann Foundation Korea (Guseinova): supplies USD 1.72-5.52bn (2024); later up to USD 9.8bn incl. troops",
+     "url": "https://freiheit.org/north-and-south-korea/new-ties-between-north-korea-and-russia",
+     "date": "2025"
+    },
+    {
+     "name": "Kyiv Independent: ROK DIA - >28,000 containers, >12m 152mm-equivalent rounds",
+     "url": "https://kyivindependent.com/north-korea-supplied-russia-with-12-million-rounds-of-152mm-shells-south-korean-intel-estimates/",
+     "date": "2025-07"
+    },
+    {
+     "name": "Kyunghyang/MSMT: North Korean workers in Russia 2-3x the 8,000 assessed for 2024",
+     "url": "https://www.khan.co.kr/en/article/202609162109017",
+     "date": "2026-09-16"
+    },
+    {
+     "name": "NPR: NIS - 15,000 North Korean labourers sent to Russia; 1,000 deminers + 5,000 military builders to Kursk",
+     "url": "https://www.wfae.org/2025-06-18/north-korea-plans-to-send-military-construction-workers-and-deminers-to-russia",
+     "date": "2025-06-18"
+    },
+    {
+     "name": "Ukrainska Pravda: up to 25,000 North Koreans work in Russian drone production (BELLIGERENT-side source)",
+     "url": "https://www.pravda.com.ua/eng/news/2026/09/17/8053849/index.amp",
+     "date": "2026-09-17"
+    }
+   ],
+   "belligerent_sources_flag": "missile and artillery-system counts rely on Ukrainian GUR; value estimates are South Korean (INSS state-funded, DIA) and German foundation (FNF) - non-belligerent but ROK is a Ukraine supporter",
+   "reasoning": "Low: robust part only - 4m shells at USD 300 (old stock) + 100 KN-23 at USD 1.5m + troops USD 0.6bn + systems ~0.1bn = ~USD 2.5bn = EUR 2.3bn. Central: INSS mid/FNF ~USD 10bn to end-2025 (EUR ~8.5bn) + 2026 continuation (more KN-23, shells at lower pace, engineers) EUR ~1bn. High: INSS top USD 14.4bn + the KIDA-type ~USD 20bn view (shells at >12m), ~EUR 19bn incl. 2026. By year follows shipment timing: deliveries began Aug/Sep 2023, peaked 2024 (Reuters/OSC container counts), slowed in 2025 as Russia's own output rose. Paid mostly in kind (oil, food, air-defence and missile/space technology, cash), so this is a sale/barter, not a gift. Overlaps other.json PRK (7.09/9.05/13.30, to 2025); this replaces it with 2026 added and a lower low bound."
+  },
+  "IRN": {
+   "total_eur_bn": {
+    "low": 1.9,
+    "central": 4.3,
+    "high": 6.0
+   },
+   "by_year": {
+    "2022": {
+     "low": 0.6,
+     "central": 1.2,
+     "high": 1.6
+    },
+    "2023": {
+     "low": 0.8,
+     "central": 1.6,
+     "high": 2.1
+    },
+    "2024": {
+     "low": 0.4,
+     "central": 1.1,
+     "high": 1.6
+    },
+    "2025": {
+     "low": 0.1,
+     "central": 0.35,
+     "high": 0.6
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    }
+   },
+   "items": {
+    "missiles": "contracts ~USD 2.7bn since Oct 2021: hundreds of Fath-360, ~500 other SRBMs, ~200 SAMs (Western official via Bloomberg); Fath-360 use in Ukraine not confirmed",
+    "drones": "Shahed-136 deliveries 2022-23 + USD 1.75bn contract (early 2023) for drones and Alabuga licence/production technology",
+    "ammunition": "~300,000 artillery shells and ~1m rounds (WSJ 2023), unpriced"
+   },
+   "sources": [
+    {
+     "name": "Ukrainska Pravda on Bloomberg: Iran sold nearly USD 3bn of missiles to Russia, total contracts >USD 4bn",
+     "url": "https://www.pravda.com.ua/eng/news/2026/01/13/8015831",
+     "date": "2026-01-13"
+    },
+    {
+     "name": "RFE/RL: How important is Iran for Russia's war effort?",
+     "url": "https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html",
+     "date": "2026-01"
+    },
+    {
+     "name": "Militarnyi: Iran sent Russia USD 2.7bn worth of missiles alone",
+     "url": "https://militarnyi.com/en/blogs/iran-sent-russia-2-7-billion-worth-of-missiles-alone/",
+     "date": "2026-01"
+    }
+   ],
+   "belligerent_sources_flag": "values from an anonymous Western security official (Bloomberg) - non-belligerent but from a Ukraine supporter",
+   "reasoning": "Central = Bloomberg >USD 4bn (USD 2.7bn missiles + USD 1.75bn Shahed contract = USD 4.45bn) + ~USD 0.2bn for 300k shells at USD 300-1,000 and small arms ammo = ~USD 4.65bn = EUR ~4.3bn. Low: only the Shahed contract plus ammo and a fraction of missiles (contracts are not deliveries; Fath-360 not observed in use) = ~USD 2.1bn. High: unpriced follow-on items, spare parts and components for Geran production, ~USD 6.5bn. By year: Shahed deliveries from Aug 2022, licence/technology 2023, Fath-360 shipments 2024, near stop after Iran's 2025 war and 2026 crisis. These are sales (partly gold/cash), not gifts."
+  },
+  "BLR": {
+   "total_eur_bn": {
+    "low": 0.5,
+    "central": 1.2,
+    "high": 3.0
+   },
+   "by_year": {
+    "2022": {
+     "low": 0.3,
+     "central": 0.7,
+     "high": 1.5
+    },
+    "2023": {
+     "low": 0.07,
+     "central": 0.2,
+     "high": 0.5
+    },
+    "2024": {
+     "low": 0.03,
+     "central": 0.08,
+     "high": 0.3
+    },
+    "2025": {
+     "low": 0.05,
+     "central": 0.12,
+     "high": 0.4
+    },
+    "2026": {
+     "low": 0.04,
+     "central": 0.1,
+     "high": 0.3
+    }
+   },
+   "items": {
+    "ammunition_from_stocks": "131,582 t by rail Jan 2022-Feb 2023 (peak 29,741 t in Apr 2022); ~5,000 t in 2024",
+    "production": "Grad rocket components 40,000/yr rising to 120,000 (2025-27 plan); claim of 240,000 152mm shells + 240,000 122mm rockets/yr with Chinese help (single ex-officer source)",
+    "armour": ">=94 T-72A from storage"
+   },
+   "sources": [
+    {
+     "name": "Ukrainska Pravda / Belarusian railway workers' community: 131,500 t ammunition to Russia in one year",
+     "url": "https://www.pravda.com.ua/eng/news/2023/06/10/7406295/",
+     "date": "2023-06-10"
+    },
+    {
+     "name": "Belaruski Hajun: >130,000 t in a year",
+     "url": "https://hajun.info/news/over-130000-tons-in-a-year-the-lukashenko-regime-supplies-russia-with-ammunition-which-is-transported-to-crimea-and-the-area-bordering-georgia/amp",
+     "date": "2023"
+    },
+    {
+     "name": "Euromaidan Press: half a million shells annually - China enabled Belarus munitions output for Moscow (BelPol claim)",
+     "url": "https://euromaidanpress.com/2025/11/18/half-a-million-shells-annually-how-china-enabled-belaruss-munitions-output-for-moscow/",
+     "date": "2025-11-18"
+    },
+    {
+     "name": "Pozirk: Belarusian companies produce projectiles for Russian army (BelPol)",
+     "url": "https://pozirk.online/en/news/122381",
+     "date": "2025"
+    }
+   ],
+   "belligerent_sources_flag": "quantities come from Belarusian opposition/activist groups (Hajun, BelPol, railway workers) - not belligerent states, but advocacy sources; no official valuation exists",
+   "reasoning": "My valuation, no published one exists. Tonnage x value per tonne: a packaged 152mm round weighs ~60-100 kg and old-stock rounds were priced USD 300-1,000 (same scenarios as for DPRK), small-arms ammunition is worth more per tonne; so USD 3,000/6,000/12,000 per tonne -> 131.6 kt = USD 0.39/0.79/1.58bn for Jan 2022-Feb 2023. Later stock shipments (Mar 2023-2024, assumed 20-40 kt) add USD 0.06-0.5bn. Production for Russia 2025-26: Grad rockets 40-120k/yr at USD 1-3k plus the unverified 152mm claim (0-240k/yr at USD 500-1,000) -> USD 0.05-0.5bn/yr. T-72A: 94 x USD 0.2-0.6m. Total ~USD 0.55/1.3/3.2bn = EUR 0.5/1.2/3.0bn. Payment terms unknown (Belarus depends on Russian credit and energy subsidies), so treat as transfer of uncertain price. Belarus also lent its territory for the 2022 invasion (not valued)."
+  },
+  "CHN": {
+   "total_eur_bn": {
+    "low": 5.45,
+    "central": 9.0,
+    "high": 18.0
+   },
+   "by_year": {
+    "2023": {
+     "low": 0.0,
+     "central": 2.5,
+     "high": 5.0
+    },
+    "2024": {
+     "low": 3.7,
+     "central": 3.7,
+     "high": 6.0
+    },
+    "2025": {
+     "low": 1.75,
+     "central": 2.0,
+     "high": 5.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.8,
+     "high": 2.0
+    }
+   },
+   "beyond_trade_data_eur_bn": null,
+   "overlaps_trade_data": true,
+   "sources": [
+    {
+     "name": "19FortyFive: China has become the de facto weapons parts factory for Russia (NATO official: >USD 20bn of tools, components and consumables since 2023)",
+     "url": "https://www.19fortyfive.com/2026/02/china-has-become-the-de-facto-weapons-parts-factory-for-russias-war-in-ukraine/",
+     "date": "2026-02"
+    },
+    {
+     "name": "Euromaidan Press: China provides 80% of critical electronics for Russian drones (Ukrainian intelligence, BELLIGERENT; NATO official similar)",
+     "url": "https://euromaidanpress.com/?p=340553",
+     "date": "2025"
+    },
+    {
+     "name": "Babel/Telegraph: Chinese firms sold >GBP 47m of drone parts to sanctioned Russian producers in 2 years",
+     "url": "https://babel.ua/en/news/121125-the-telegraph-china-sold-over-60-million-worth-of-drone-parts-to-russia-in-2-years",
+     "date": "2025"
+    },
+    {
+     "name": "MERICS estimate via The Gaze: China dual-use exports to Russia 2024 >USD 4bn",
+     "url": "https://thegaze.media/news/why-does-china-increase-the-supply-of-dual-use-goods-to-russia",
+     "date": "2025"
+    },
+    {
+     "name": "Swedish National China Centre / OSW China-Russia dashboard: H1 2025 high-priority dual-use exports USD 1.9bn",
+     "url": "https://kinacentrum.se/en/publications/china-russia-trade-in-early-2025-fueling-moscows-war-despite-headwinds/",
+     "date": "2025-08"
+    },
+    {
+     "name": "KSE Institute CHP Imports Tracker Q2 2026: China ~75-85% of Russia CHP imports, ~300% premium",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/07/CHP-Q2-2026-Report.pdf",
+     "date": "2026-07"
+    }
+   ],
+   "belligerent_sources_flag": "component shares partly from Ukrainian intelligence (belligerent)",
+   "reasoning": "No defensible estimate of Chinese military help outside recorded trade exists. Totals here are high-priority dual-use goods (CHPL items, machine tools, drone parts), which are commercial sales largely already inside customs data (incl. transit via KGZ/KAZ/HK/UAE). Low = MERICS 2024 + OSW H1 2025 (EUR 5.45bn, as other.json); central adds 2023 and H2 2025-2026 at the observed ~USD 4bn/yr declining pace; high = NATO official's >USD 20bn since 2023 (includes consumables). DO NOT add to trade flows; use only as a 'military-relevant share of China-Russia trade' indicator. beyond_trade_data stays null."
+  }
+ },
+ "volunteers_for_ukraine": {
+  "COL": {
+   "low": 2000,
+   "central": 4500,
+   "high": 7000,
+   "as_of": "2026-06",
+   "belligerent_source": false,
+   "sources": [
+    {
+     "name": "Intellinews: Colombian Foreign Ministry counts 173 dead (140 on Ukraine's side, 33 confirmed by Russia) and 670 missing",
+     "url": "https://www.intellinews.com/colombia-counts-173-dead-and-670-missing-in-russia-ukraine-war-447567/",
+     "date": "2026-06"
+    },
+    {
+     "name": "President Petro: ~7,000 Colombian 'mercenaries' fighting in Ukraine (via NV investigation: >7,000 served since 2022)",
+     "url": "https://www.intellinews.com/colombia-s-battle-hardened-veterans-fuel-ukraine-s-front-lines-442135/",
+     "date": "2026-05"
+    }
+   ],
+   "note": "Cumulative served since 2022. High = Colombian president / NV; low = International Legion unofficial 1,500-2,500 rounded up given 140 officially recorded deaths and 670 missing. Ukrainian ombudsman (belligerent) says ~40% of 16,000 foreigners are Latin American (~6,400)."
+  },
+  "GEO": {
+   "low": 700,
+   "central": 1200,
+   "high": 2000,
+   "as_of": "2025",
+   "belligerent_source": false,
+   "sources": [
+    {
+     "name": "Wikipedia compilation: ~1,500 Georgians (unofficial), Georgian Legion",
+     "url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
+     "date": "2026-10"
+    },
+    {
+     "name": "GFSIS: at least several hundred Georgians",
+     "url": "https://gfsis.org.ge/publications/view/3269",
+     "date": "2024"
+    }
+   ],
+   "note": "Georgian government publishes no figure. Russian IC 712 / MoD 1,042 (belligerent) fall inside the range."
+  },
+  "USA": {
+   "low": 800,
+   "central": 1500,
+   "high": 3000,
+   "as_of": "2025",
+   "belligerent_source": false,
+   "sources": [
+    {
+     "name": "Espreso/US media: at least 92 Americans killed; volunteer estimates from >1,000 to several thousand",
+     "url": "https://global.espreso.tv/at-least-92-americans-have-died-fighting-for-ukraine-against-russia-reports-say",
+     "date": "2025"
+    },
+    {
+     "name": "Wikipedia: List of Americans in the Armed Forces of Ukraine",
+     "url": "https://en.wikipedia.org/wiki/List_of_Americans_in_the_Armed_Forces_of_Ukraine",
+     "date": "2026-10"
+    }
+   ],
+   "note": "No US government count. Russian IC 816 / MoD 1,113 (belligerent) are inside the range; Ukraine's Mar-2022 '3,000 applied' is the high end."
+  },
+  "FIN": {
+   "low": 60,
+   "central": 100,
+   "high": 150,
+   "as_of": "2025-04",
+   "belligerent_source": false,
+   "sources": [
+    {
+     "name": "Yle: Finnish MFA - about 100 Finns believed to have fought for Ukraine, ~30 at the time, over a dozen killed",
+     "url": "https://yle.fi/a/74-20141662",
+     "date": "2025-04-30"
+    }
+   ]
+  },
+  "HUN": {
+   "low": 200,
+   "central": 400,
+   "high": 600,
+   "as_of": "2023-07",
+   "belligerent_source": false,
+   "sources": [
+    {
+     "name": "Wikipedia compilation citing Fegyir Sandor estimate (~400, ~30 killed)",
+     "url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
+     "date": "2026-10"
+    }
+   ],
+   "note": "Largely ethnic Hungarians with Ukrainian ties; may overlap with Ukrainian citizens."
+  },
+  "EST": {
+   "low": 50,
+   "central": 80,
+   "high": 100,
+   "as_of": "2024",
+   "belligerent_source": false,
+   "sources": [
+    {
+     "name": "Wikipedia compilation: up to ~100 Estonians, 3 killed",
+     "url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
+     "date": "2026-10"
+    }
+   ]
+  },
+  "BLR": {
+   "low": 450,
+   "central": 1000,
+   "high": 2000,
+   "as_of": "2023-07",
+   "belligerent_source": false,
+   "sources": [
+    {
+     "name": "RFE/RL (via Wikipedia): ~450 Belarusians fighting (Kalinouski Regiment etc.)",
+     "url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
+     "date": "2026-10"
+    }
+   ],
+   "note": "Citizens of a co-belligerent state; other.json excludes RUS/BLR citizens - keep flagged/optional. Central/high are my allowance for growth since 2023."
+  },
+  "_TOTAL": {
+   "low": 4000,
+   "central": 10000,
+   "high": 16000,
+   "as_of": "2026-08",
+   "belligerent_source": true,
+   "sources": [
+    {
+     "name": "Euromaidan Press: Ukraine's Military Ombudsman - ~16,000 foreign volunteers from >=72 countries, ~40% Latin American (BELLIGERENT)",
+     "url": "https://euromaidanpress.com/2026/08/06/ukraine-16000-foreign-volunteers/",
+     "date": "2026-08-06"
+    },
+    {
+     "name": "The Week/PTI: >10,000 foreigners from 75 countries served in Ground Forces (BELLIGERENT, Feb 2026)",
+     "url": "https://www.theweek.in/wire-updates/international/2026/02/26/over-10k-foreign-fighters-from-75-nations-fighting-for-ukraine-reports.amp.html",
+     "date": "2026-02-26"
+    }
+   ],
+   "note": "Independent: 1,500-2,000 active in 2023 (Rekawek). Low = sum of non-belligerent country figures above plus small others; central = Ground Forces >10,000; high = ombudsman 16,000. Russian FSB claim ~20,000 (Sep 2025, belligerent) not used."
+  }
+ },
+ "fighters_for_russia": {
+  "PRK": {
+   "low": 11000,
+   "central": 17000,
+   "high": 25000,
+   "as_of": "2026-03",
+   "belligerent_source": false,
+   "sources": [
+    {
+     "name": "Kyiv Independent: NIS - ~11,000 North Korean troops in Kursk at start of 2026",
+     "url": "https://kyivindependent.com/nearly-11-000-north-korean-troops-stationed-in-russias-kursk-oblast-at-start-of-2026-media-reports/",
+     "date": "2026-01"
+    },
+    {
+     "name": "NPR: NIS - 1,000 deminers and 5,000 military construction workers to Kursk",
+     "url": "https://www.wfae.org/2025-06-18/north-korea-plans-to-send-military-construction-workers-and-deminers-to-russia",
+     "date": "2025-06-18"
+    },
+    {
+     "name": "Bloomberg on INSS: >20,000 across four rotations",
+     "url": "https://www.bloomberg.com/news/articles/2026-03-18/n-korea-gave-russia-up-to-14-billion-in-military-aid-report",
+     "date": "2026-03-18"
+    }
+   ],
+   "note": "Cumulative deployed incl. engineers: 11k initial + ~3k reinforcement (early 2025) + part of 6k engineers/builders = ~17k central; INSS >20k, high 25k. Plus 15-25k civilian workers (not counted)."
+  },
+  "KEN": {
+   "low": 200,
+   "central": 1000,
+   "high": 1500,
+   "as_of": "2026-02",
+   "belligerent_source": false,
+   "sources": [
+    {
+     "name": "Al Jazeera / SCMP: Kenya National Intelligence Service report to parliament - over 1,000 Kenyans recruited (89 on front line, 39 hospitalised, 28 MIA)",
+     "url": "https://www.aljazeera.com/news/2026/2/19/kenyan-families-demand-return-of-loved-ones-conscripted-by-russian-army",
+     "date": "2026-02-19"
+    }
+   ]
+  },
+  "NPL": {
+   "low": 600,
+   "central": 3000,
+   "high": 15000,
+   "as_of": "2024-03/2025-04",
+   "belligerent_source": false,
+   "sources": [
+    {
+     "name": "Himal Press: Nepal government confirms 36 Nepalis died fighting for Russia",
+     "url": "https://en.himalpress.com/16-more-nepalis-die-in-russia-death-toll-rises-to-36/",
+     "date": "2024-03"
+    },
+    {
+     "name": "CNN via KTVZ: as many as 15,000 Nepalis may have joined; government figure ~200",
+     "url": "https://ktvz.com/news/national-world/cnn-world/2024/02/10/russia-has-recruited-as-many-as-15000-nepalis-to-fight-its-war-many-returned-traumatized-some-never-came-back/",
+     "date": "2024-02-10"
+    },
+    {
+     "name": "iStories leak (Moscow EMIAS): 603 Nepalis at recruitment centres",
+     "url": "https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+     "date": "2025-04-23"
+    }
+   ],
+   "note": "Central = geometric midpoint of iStories lower bound (603) and CNN/opposition upper (15,000); Nepal government's ~200 (2024) is below the leaked Moscow-only count."
+  },
+  "CUB": {
+   "low": 1000,
+   "central": 3000,
+   "high": 20000,
+   "as_of": "2025-10",
+   "belligerent_source": false,
+   "sources": [
+    {
+     "name": "Reuters on US State Dept cable: 1,000-5,000 Cubans fighting for Russia",
+     "url": "https://kyivindependent.com/exclusive-1-076-cubans-identified-fighting-for-russia-ukraine-says-96-dead-or-disappeared/",
+     "date": "2025-10"
+    },
+    {
+     "name": "El Pais (via Wikipedia): up to 20,000 recruited, 200-300 killed",
+     "url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
+     "date": "2025-07"
+    }
+   ],
+   "note": "Central = middle of US cable range; GUR 1,076 named (belligerent) is the floor."
+  },
+  "IND": {
+   "low": 126,
+   "central": 202,
+   "high": 300,
+   "as_of": "2025-12",
+   "belligerent_source": false,
+   "sources": [
+    {
+     "name": "India MEA, Rajya Sabha Dec 2025: 202 recruited since 2022, 26 dead, 7 missing",
+     "url": "https://superkalam.com/current-affairs/19-12-2025/202-indians-hired-for-russian-armed-forces-pg1-7b0d2f4f-de26-44e1-9c03-83b68e74b2a2",
+     "date": "2025-12-19"
+    }
+   ]
+  },
+  "ZAF": {
+   "low": 17,
+   "central": 17,
+   "high": 50,
+   "as_of": "2025-11",
+   "belligerent_source": false,
+   "sources": [
+    {
+     "name": "South African presidency (via Wikipedia): investigation into 17 nationals in Donbas, 8 arrests",
+     "url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
+     "date": "2025-11"
+    }
+   ]
+  }
+ },
+ "notes": [
+  "FX EUR per USD: 2022 0.950, 2023 0.925, 2024 0.924 (ECB annual averages), 2025 0.885 (approx.), 2026 0.86 (as flowback.json).",
+  "own_industry: shares apply to Kiel UST R31 bilateral military allocations (incl. PURL and Danish-model money coded under the donor). For EU members' EU share use EU_INST (0.70-0.88 to EU/EEA industry) times the member's share of EU/EEA arms production; it is not the member's own-industry share.",
+  "own_industry: 'own stocks' count as own-industry flowback only to the extent they are replaced by orders to domestic industry (r); unreplaced Soviet-era/obsolete stocks are no new spending at all.",
+  "own_industry vs flowback.json: DEU falls from 0.65 to 0.50 (Kiel codes EUR 3.2bn Patriot buys from Raytheon), POL from 0.70 to 0.33 (backfill from Korea/US), JPN 0.05 (mostly NATO CAP Trust Fund money), BEL 0.50 (2/3 of the 2025 package domestic), CZE 0.61 (Czech budget only; the initiative is in other donors' figures).",
+  "refugee_donor_funding: UN RRP flows (FTS) undercount total donor money; EU CARE/FAST-CARE advances re-program host countries' own cohesion envelopes and are not additional; EIB money is loans. Use donor_share to net donor-funded refugee costs out of host-country costs where donors' humanitarian aid is already counted.",
+  "military_to_russia: PRK and IRN deliveries are sales/barter; BLR price terms unknown; CHN figures overlap trade data and must not be added to trade flows.",
+  "People: volunteers_for_ukraine per-country figures are cumulative 'served since 2022' where possible; non-belligerent sources preferred, belligerent ones flagged; Ukraine's own figures (ombudsman, Ground Forces) are belligerent."
+ ]
+}

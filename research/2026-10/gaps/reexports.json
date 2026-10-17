@@ -1,0 +1,2664 @@
+{
+ "unit": "EUR bn, current prices; USD->EUR at ECB annual averages (2022 1.0530, 2023 1.0813, 2024 1.0824, 2025 1.1300, 2026 Jan-Aug 1.1629); low/high = ~90% range",
+ "retrieved": "2026-10-17",
+ "method": "reexports_to_RUS: the part of each hub's RECORDED exports to Russia (inside trade_full exports_to_RUS) that is made elsewhere. Where the hub flags re-exports (UAE, Georgia), the flag is used. Elsewhere, for each HS2 manufactured chapter (28-40, 42-43, 61-70, 73, 82-96): matched increase = min(increase in exports to Russia over the 2019-21 average, increase in imports from non-Russian partners over 2019-21), times a hub-specific share that is a genuine re-export (see reasoning). Low uses 0.75x the import increase as the cap; high uses 1.5x (no cap for hubs that under-record imports: KAZ, KGZ, MNG, TJK). A baseline level of re-exports (2019-21) is added: matched baseline flow in net-import chapters x a hub share. origin_shares: increase of the hub's HS84/85/87/90 imports by origin country (customs origin) over 2021 (KAZ: 2019), mixed with the 2021 import structure for the baseline part, weighted over years; low/high = yearly min x0.75 / max x1.25. Applied to all chapters. reexports_from_RUS: Russian goods passed on = min(increase of hub imports from Russia in HS71 (gold, diamonds) or HS27 (fuel), increase of hub exports of the same chapter to non-Russian partners) x pass-through share. destination_shares = increase of those exports by partner (first onward hop only). 2026_JanAug = 2025 share x trade_full Jan-Aug 2026 (not annualized), range widened by 0.8/1.2. Missing Comtrade years use the latest model share x trade_full totals.",
+ "how_to_apply": "In the map, for each hub and year: move reexports_to_RUS x (1 - hub_margin_share) from the hub to the origin countries according to origin_shares (the hub keeps the margin); move reexports_from_RUS x (1 - from_RUS margin) from the hub's imports from Russia to destination_shares. To get the change against the pre-war level, subtract reexports_to_RUS_baseline_2019_2021 in the same way. \"other\" in origin_shares includes VNM (Samsung phones made in Vietnam), GBR, CZE, POL, ESP, IND, MEX (see origin_other_detail).",
+ "hubs": {
+  "ARM": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 0.711,
+     "central": 1.022,
+     "high": 1.223
+    },
+    "2023": {
+     "low": 1.303,
+     "central": 1.768,
+     "high": 2.07
+    },
+    "2024": {
+     "low": 1.018,
+     "central": 1.385,
+     "high": 1.637
+    },
+    "2025": {
+     "low": 0.988,
+     "central": 1.306,
+     "high": 1.535
+    },
+    "2026_JanAug": {
+     "low": 0.28,
+     "central": 0.769,
+     "high": 2.803
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.038,
+    "central": 0.075,
+    "high": 0.113
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.31,
+     "central": 0.445,
+     "high": 0.533
+    },
+    "2023": {
+     "low": 0.402,
+     "central": 0.545,
+     "high": 0.639
+    },
+    "2024": {
+     "low": 0.351,
+     "central": 0.478,
+     "high": 0.565
+    },
+    "2025": {
+     "low": 0.383,
+     "central": 0.506,
+     "high": 0.595
+    }
+   },
+   "origin_shares": {
+    "CHN": {
+     "low": 0.144,
+     "central": 0.245,
+     "high": 0.366
+    },
+    "DEU": {
+     "low": 0.016,
+     "central": 0.059,
+     "high": 0.137
+    },
+    "USA": {
+     "low": 0.019,
+     "central": 0.076,
+     "high": 0.174
+    },
+    "KOR": {
+     "low": 0.016,
+     "central": 0.026,
+     "high": 0.048
+    },
+    "JPN": {
+     "low": 0.018,
+     "central": 0.057,
+     "high": 0.123
+    },
+    "ITA": {
+     "low": 0.011,
+     "central": 0.018,
+     "high": 0.037
+    },
+    "FRA": {
+     "low": 0.005,
+     "central": 0.007,
+     "high": 0.02
+    },
+    "TUR": {
+     "low": 0.013,
+     "central": 0.02,
+     "high": 0.045
+    },
+    "VNM": {
+     "low": 0.063,
+     "central": 0.274,
+     "high": 0.5
+    },
+    "other": {
+     "low": 0.137,
+     "central": 0.218,
+     "high": 0.311
+    }
+   },
+   "origin_other_detail": {
+    "MEX": 0.14,
+    "EGY": 0.13,
+    "IND": 0.082,
+    "GBR": 0.075,
+    "CUW": 0.06,
+    "AUT": 0.047
+   },
+   "reexports_from_RUS": {
+    "2022": {
+     "low": 0.234,
+     "central": 0.278,
+     "high": 0.293
+    },
+    "2023": {
+     "low": 1.433,
+     "central": 1.912,
+     "high": 2.013
+    },
+    "2024": {
+     "low": 4.091,
+     "central": 6.061,
+     "high": 6.38
+    },
+    "2025": {
+     "low": 1.283,
+     "central": 1.934,
+     "high": 2.036
+    },
+    "2026_JanAug": {
+     "low": 0.228,
+     "central": 0.738,
+     "high": 2.401
+    }
+   },
+   "destination_shares": {
+    "ARE": {
+     "low": 0.409,
+     "central": 0.711,
+     "high": 1
+    },
+    "CHN": {
+     "low": 0.001,
+     "central": 0.055,
+     "high": 0.129
+    },
+    "HKG": {
+     "low": 0.013,
+     "central": 0.217,
+     "high": 0.349
+    },
+    "IND": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.02
+    },
+    "TUR": {
+     "low": 0,
+     "central": 0.003,
+     "high": 0.168
+    },
+    "CHE": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.02
+    },
+    "EU27": {
+     "low": 0.0,
+     "central": 0.001,
+     "high": 0.064
+    },
+    "other": {
+     "low": 0.006,
+     "central": 0.013,
+     "high": 0.059
+    }
+   },
+   "destination_other_detail": {
+    "THA": 0.5,
+    "TKM": 0.319,
+    "KAZ": 0.086,
+    "ISR": 0.037,
+    "BLR": 0.032,
+    "MEX": 0.008
+   },
+   "hub_margin_share": {
+    "low": 0.05,
+    "central": 0.1,
+    "high": 0.2,
+    "from_RUS": {
+     "low": 0.005,
+     "central": 0.02,
+     "high": 0.06
+    },
+    "reasoning": "Margin = (re-export sales value - cost of the goods bought abroad) / sales value. Educated guess, no direct source: wholesale gross margins are typically 5-20% of sales; pure pass-through traders in a re-export hub work at the low end, intermediaries taking sanctions or compliance risk on Russia-bound goods at the high end. residual.json used the same 5-20% band. For onward Russian gold and diamonds the margin is far smaller (bullion dealing and refining margins are around 0.5-3% of value; Armenian cutting and jewellery work adds a little more); for fuel, 3-12% (trading and logistics)."
+   },
+   "top_chapters_central_usd_bn": {
+    "2022": {
+     "85": 0.3993,
+     "87": 0.2574,
+     "84": 0.13,
+     "90": 0.059,
+     "39": 0.0195,
+     "40": 0.0155,
+     "61": 0.0094,
+     "33": 0.0074
+    },
+    "2023": {
+     "85": 0.798,
+     "87": 0.3976,
+     "84": 0.2609,
+     "90": 0.0691,
+     "62": 0.0522,
+     "61": 0.0403,
+     "64": 0.0292,
+     "40": 0.0214
+    },
+    "2024": {
+     "85": 0.8577,
+     "84": 0.1609,
+     "90": 0.0793,
+     "62": 0.0519,
+     "87": 0.0437,
+     "61": 0.0414,
+     "64": 0.0352,
+     "39": 0.0202
+    },
+    "2025": {
+     "85": 0.8565,
+     "84": 0.1381,
+     "90": 0.1318,
+     "64": 0.052,
+     "33": 0.0298,
+     "61": 0.0236,
+     "62": 0.0204,
+     "87": 0.0169
+    }
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, ARM HS2 trade with world and Russia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=51&period={2019..2025}&partnerCode=0,643&flowCode=X|M&cmdCode=AG2",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, ARM imports by origin and exports by destination",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=51&period={2021..2025}&flowCode=M&cmdCode=84,85|87,90 (imports by origin); flowCode=X&cmdCode=71,27 (exports by destination)",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "research/2026-10/gaps/trade_full.json (hub totals, 2026 Jan-Aug, gap years)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Armenpress: Armenian finance ministry - re-exports contributed ~187 pp of the ~215% growth in goods exports to Russia, H1 2023",
+     "url": "https://armenpress.am/en/article/1120421",
+     "date": "2023 (accessed 2026-10-17)"
+    },
+    {
+     "name": "ARKA, Armenia foreign trade 2024 (Armstat): exports to Russia USD 3.1bn (-11%), imports from Russia >USD 9.4bn (x2), exports to UAE >USD 5.2bn (x2.4); precious stones/metals exports >USD 8bn, imports USD 7.4bn",
+     "url": "https://arka.am/en/news/economy/armenia-s-foreign-trade-t2024-exceeded-30-billion-growth-has-been-slowing-for-six-months/",
+     "date": "2025-02-06"
+    },
+    {
+     "name": "The Insider / Hetq investigation: Russian customs show 89 t of gold (~USD 5.2bn) to Armenia 2022-2024; Armenian customs 111 t (USD 6.2bn) of Russian gold 2023-H1 2024, re-exported mainly to the UAE",
+     "url": "https://theins.co/en/corruption/276578",
+     "date": "2025 (accessed 2026-10-17)"
+    },
+    {
+     "name": "EBRD (Chupilkin, Javorcik, Plekhanov), \"The Eurasian roundabout: trade flows into Russia through the Caucasus and Central Asia\", EBRD Working Paper, news item 24 Feb 2023: increase in sanctioned-goods exports to ARM/KAZ/KGZ about 5% of the drop in direct sanctioned exports to Russia",
+     "url": "https://www.ebrd.com/home/news-and-events/news/2023/ebrd-analyses-trade-flows-between-russia-caucasus-and-central-asia.html",
+     "date": "2023-02-24"
+    },
+    {
+     "name": "Robin Brooks, \"Transshipments from the EU to Russia\", Brookings: Western transshipments offset at least half of the drop in direct exports to Russia",
+     "url": "https://www.brookings.edu/articles/transshipments-from-the-eu-to-russia",
+     "date": "2024-09-12"
+    },
+    {
+     "name": "Belga News Agency on Eric Dor: EU exports to KAZ +EUR 4.9bn, ARM +EUR 1.1bn, KGZ +EUR 0.9bn 2021->2022",
+     "url": "https://www.belganewsagency.eu/eu-trade-numbers-rise-in-countries-bordering-russia",
+     "date": "2023"
+    }
+   ],
+   "reasoning": "Armenia does not flag re-exports in Comtrade. Re-exports = matched increase per HS2 chapter (manufactured chapters 28-40, 42-43, 61-70, 73, 82-96): min(increase in exports to Russia over 2019-21, increase in imports from non-Russian partners) x 0.87 (0.70-1.0). 0.87 is calibrated on the finance ministry statement that re-exports gave 187 of 215 pp of export growth to Russia in H1 2023. Plus a baseline 2019-21 re-export level (60% of the matched baseline flow in net-import chapters). HS85 (phones, electronics), HS87 (cars, until Russia raised duties in 2023-24) and HS84 dominate. Onward Russian goods: matched increase of HS71 imports from Russia vs HS71 exports to non-Russian partners (gold, diamonds) x 0.95; 2024 peak USD ~6.6bn, consistent with Armstat (precious stones/metals imports USD 7.4bn) and The Insider/Hetq (111 t Russian gold)."
+  },
+  "GEO": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 0.089,
+     "central": 0.099,
+     "high": 0.149
+    },
+    "2023": {
+     "low": 0.081,
+     "central": 0.09,
+     "high": 0.135
+    },
+    "2024": {
+     "low": 0.023,
+     "central": 0.026,
+     "high": 0.066
+    },
+    "2025": {
+     "low": 0.039,
+     "central": 0.043,
+     "high": 0.076
+    },
+    "2026_JanAug": {
+     "low": 0.015,
+     "central": 0.026,
+     "high": 0.07
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.036,
+    "central": 0.04,
+    "high": 0.06
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.146,
+     "central": 0.163,
+     "high": 0.244
+    },
+    "2023": {
+     "low": 0.134,
+     "central": 0.149,
+     "high": 0.223
+    },
+    "2024": {
+     "low": 0.037,
+     "central": 0.041,
+     "high": 0.104
+    },
+    "2025": {
+     "low": 0.058,
+     "central": 0.065,
+     "high": 0.115
+    }
+   },
+   "origin_shares": {
+    "CHN": {
+     "low": 0.073,
+     "central": 0.107,
+     "high": 0.177
+    },
+    "DEU": {
+     "low": 0.067,
+     "central": 0.097,
+     "high": 0.136
+    },
+    "USA": {
+     "low": 0.159,
+     "central": 0.261,
+     "high": 0.402
+    },
+    "KOR": {
+     "low": 0.008,
+     "central": 0.013,
+     "high": 0.026
+    },
+    "JPN": {
+     "low": 0.047,
+     "central": 0.079,
+     "high": 0.129
+    },
+    "ITA": {
+     "low": 0.016,
+     "central": 0.024,
+     "high": 0.051
+    },
+    "FRA": {
+     "low": 0.007,
+     "central": 0.01,
+     "high": 0.025
+    },
+    "TUR": {
+     "low": 0.068,
+     "central": 0.115,
+     "high": 0.2
+    },
+    "VNM": {
+     "low": 0.001,
+     "central": 0.007,
+     "high": 0.023
+    },
+    "other": {
+     "low": 0.189,
+     "central": 0.287,
+     "high": 0.403
+    }
+   },
+   "origin_other_detail": {
+    "ARE": 0.207,
+    "CZE": 0.111,
+    "POL": 0.067,
+    "NLD": 0.066,
+    "GBR": 0.062,
+    "BEL": 0.061
+   },
+   "reexports_from_RUS": {
+    "2022": {
+     "low": 0.026,
+     "central": 0.07,
+     "high": 0.158
+    },
+    "2023": {
+     "low": 0.029,
+     "central": 0.076,
+     "high": 0.172
+    },
+    "2024": {
+     "low": 0.025,
+     "central": 0.066,
+     "high": 0.149
+    },
+    "2025": {
+     "low": 0.029,
+     "central": 0.078,
+     "high": 0.176
+    },
+    "2026_JanAug": {
+     "low": 0.014,
+     "central": 0.059,
+     "high": 0.199
+    }
+   },
+   "destination_shares": {
+    "ARE": {
+     "low": 0.001,
+     "central": 0.058,
+     "high": 0.247
+    },
+    "CHN": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.022
+    },
+    "HKG": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.02
+    },
+    "IND": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.02
+    },
+    "TUR": {
+     "low": 0.086,
+     "central": 0.436,
+     "high": 0.952
+    },
+    "CHE": {
+     "low": 0,
+     "central": 0.007,
+     "high": 0.059
+    },
+    "EU27": {
+     "low": 0.033,
+     "central": 0.186,
+     "high": 0.467
+    },
+    "other": {
+     "low": 0.149,
+     "central": 0.313,
+     "high": 0.547
+    }
+   },
+   "destination_other_detail": {
+    "AZE": 0.384,
+    "ARM": 0.313,
+    "UKR": 0.15,
+    "GIB": 0.082,
+    "UZB": 0.022,
+    "MNG": 0.013
+   },
+   "hub_margin_share": {
+    "low": 0.05,
+    "central": 0.1,
+    "high": 0.2,
+    "from_RUS": {
+     "low": 0.03,
+     "central": 0.06,
+     "high": 0.12
+    },
+    "reasoning": "Margin = (re-export sales value - cost of the goods bought abroad) / sales value. Educated guess, no direct source: wholesale gross margins are typically 5-20% of sales; pure pass-through traders in a re-export hub work at the low end, intermediaries taking sanctions or compliance risk on Russia-bound goods at the high end. residual.json used the same 5-20% band. For onward Russian gold and diamonds the margin is far smaller (bullion dealing and refining margins are around 0.5-3% of value; Armenian cutting and jewellery work adds a little more); for fuel, 3-12% (trading and logistics)."
+   },
+   "top_chapters_central_usd_bn": {
+    "2022": {
+     "87": 0.0526,
+     "85": 0.0055
+    },
+    "2023": {
+     "87": 0.0446,
+     "85": 0.007,
+     "33": 0.0055
+    },
+    "2024": {
+     "33": 0.008
+    },
+    "2025": {
+     "33": 0.0173,
+     "34": 0.0054
+    }
+   },
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, GEO HS2 trade with world and Russia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=268&period={2019..2025}&partnerCode=0,643&flowCode=X|M&cmdCode=AG2",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, GEO imports by origin and exports by destination",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=268&period={2021..2025}&flowCode=M&cmdCode=84,85|87,90 (imports by origin); flowCode=X&cmdCode=71,27 (exports by destination)",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "research/2026-10/gaps/trade_full.json (hub totals, 2026 Jan-Aug, gap years)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Geostat re-export flag in UN Comtrade (GEO flowCode RX, partner Russia)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=268&period=2023&partnerCode=643&flowCode=RX&cmdCode=AG2",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "IDFI, \"To Central Asia or Russia? Record growth in car re-exports\": light-vehicle re-exports USD 456.5m (2021), >USD 2bn (2024, 37% of exports), USD 1.2bn H1 2025, mainly to KGZ/KAZ; no recorded exports to Russia since 2023",
+     "url": "https://idfi.ge/en/to-central-asia-or-russia-record-growth-in-car-re-exports",
+     "date": "2025-07-30"
+    }
+   ],
+   "reasoning": "Geostat flags re-exports: Comtrade RX to Russia USD 0.105bn (2022), 0.098bn (2023), 0.028bn (2024), 0.049bn (2025). Central = reported RX, low 0.9x, high = max(1.5x, model high). Georgia's big car re-export trade (>USD 2bn in 2024) goes to KGZ, KAZ, ARM and AZE, not directly to Russia; any onward leg to Russia appears in those hubs' figures or in residual.json's unrecorded transit, so it is NOT counted here. Onward Russian goods = matched increase of HS27 imports from Russia and HS27 exports to non-Russian partners (fuel to AZE, ARM, UKR) x 0.6 (0.3-0.9)."
+  },
+  "KAZ": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 1.151,
+     "central": 1.785,
+     "high": 3.119
+    },
+    "2023": {
+     "low": 1.612,
+     "central": 2.5,
+     "high": 4.37
+    },
+    "2024": {
+     "low": 1.413,
+     "central": 2.2,
+     "high": 4.256
+    },
+    "2025": {
+     "low": 1.157,
+     "central": 1.825,
+     "high": 3.145
+    },
+    "2026_JanAug": {
+     "low": 0.484,
+     "central": 1.156,
+     "high": 2.897
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.126,
+    "central": 0.251,
+    "high": 0.44
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.138,
+     "central": 0.214,
+     "high": 0.374
+    },
+    "2023": {
+     "low": 0.178,
+     "central": 0.276,
+     "high": 0.483
+    },
+    "2024": {
+     "low": 0.16,
+     "central": 0.249,
+     "high": 0.483
+    },
+    "2025": {
+     "low": 0.158,
+     "central": 0.25,
+     "high": 0.431
+    }
+   },
+   "origin_shares": {
+    "CHN": {
+     "low": 0.026,
+     "central": 0.369,
+     "high": 0.693
+    },
+    "DEU": {
+     "low": 0.006,
+     "central": 0.062,
+     "high": 0.113
+    },
+    "USA": {
+     "low": 0.007,
+     "central": 0.039,
+     "high": 0.076
+    },
+    "KOR": {
+     "low": 0.025,
+     "central": 0.087,
+     "high": 0.145
+    },
+    "JPN": {
+     "low": 0.003,
+     "central": 0.048,
+     "high": 0.098
+    },
+    "ITA": {
+     "low": 0.009,
+     "central": 0.013,
+     "high": 0.028
+    },
+    "FRA": {
+     "low": 0.002,
+     "central": 0.011,
+     "high": 0.029
+    },
+    "TUR": {
+     "low": 0.002,
+     "central": 0.015,
+     "high": 0.043
+    },
+    "VNM": {
+     "low": 0.002,
+     "central": 0.019,
+     "high": 0.046
+    },
+    "other": {
+     "low": 0.114,
+     "central": 0.337,
+     "high": 1
+    }
+   },
+   "origin_other_detail": {
+    "UZB": 0.178,
+    "CZE": 0.067,
+    "POL": 0.05,
+    "ESP": 0.047,
+    "IND": 0.045,
+    "SWE": 0.045
+   },
+   "reexports_from_RUS": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.038,
+     "central": 0.101,
+     "high": 0.199
+    },
+    "2025": {
+     "low": 0.09,
+     "central": 0.239,
+     "high": 0.396
+    },
+    "2026_JanAug": {
+     "low": 0.036,
+     "central": 0.152,
+     "high": 0.381
+    }
+   },
+   "destination_shares": {
+    "ARE": {
+     "low": 0.02,
+     "central": 0.056,
+     "high": 0.173
+    },
+    "CHN": {
+     "low": 0.002,
+     "central": 0.004,
+     "high": 0.028
+    },
+    "HKG": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.02
+    },
+    "IND": {
+     "low": 0,
+     "central": 0.011,
+     "high": 0.042
+    },
+    "TUR": {
+     "low": 0.0,
+     "central": 0.012,
+     "high": 0.043
+    },
+    "CHE": {
+     "low": 0,
+     "central": 0.019,
+     "high": 0.058
+    },
+    "EU27": {
+     "low": 0.0,
+     "central": 0.001,
+     "high": 0.022
+    },
+    "other": {
+     "low": 0.529,
+     "central": 0.897,
+     "high": 1
+    }
+   },
+   "destination_other_detail": {
+    "KGZ": 0.436,
+    "USA": 0.281,
+    "GBR": 0.269,
+    "SGP": 0.012,
+    "BLR": 0.001,
+    "TJK": 0.0
+   },
+   "hub_margin_share": {
+    "low": 0.05,
+    "central": 0.12,
+    "high": 0.25,
+    "from_RUS": {
+     "low": 0.01,
+     "central": 0.03,
+     "high": 0.08
+    },
+    "reasoning": "Margin = (re-export sales value - cost of the goods bought abroad) / sales value. Educated guess, no direct source: wholesale gross margins are typically 5-20% of sales; pure pass-through traders in a re-export hub work at the low end, intermediaries taking sanctions or compliance risk on Russia-bound goods at the high end. residual.json used the same 5-20% band. For onward Russian gold and diamonds the margin is far smaller (bullion dealing and refining margins are around 0.5-3% of value; Armenian cutting and jewellery work adds a little more); for fuel, 3-12% (trading and logistics)."
+   },
+   "top_chapters_central_usd_bn": {
+    "2022": {
+     "39": 0.0765,
+     "28": 0.0445,
+     "38": 0.0417,
+     "40": 0.0416,
+     "32": 0.039,
+     "29": 0.0284,
+     "34": 0.0198,
+     "69": 0.0102
+    },
+    "2023": {
+     "84": 0.7391,
+     "85": 0.4182,
+     "87": 0.2968,
+     "39": 0.121,
+     "90": 0.119,
+     "40": 0.1166,
+     "38": 0.0897,
+     "28": 0.0645
+    },
+    "2024": {
+     "84": 0.6469,
+     "85": 0.3956,
+     "87": 0.1426,
+     "39": 0.1277,
+     "40": 0.1152,
+     "90": 0.0931,
+     "38": 0.0651,
+     "33": 0.0643
+    },
+    "2025": {
+     "84": 0.5225,
+     "85": 0.3386,
+     "33": 0.1392,
+     "39": 0.1239,
+     "28": 0.0815,
+     "40": 0.0753,
+     "90": 0.0718,
+     "82": 0.0401
+    }
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, KAZ HS2 trade with world and Russia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=398&period={2019..2025}&partnerCode=0,643&flowCode=X|M&cmdCode=AG2",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, KAZ imports by origin and exports by destination",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=398&period={2021..2025}&flowCode=M&cmdCode=84,85|87,90 (imports by origin); flowCode=X&cmdCode=71,27 (exports by destination)",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "research/2026-10/gaps/trade_full.json (hub totals, 2026 Jan-Aug, gap years)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "EBRD (Chupilkin, Javorcik, Plekhanov), \"The Eurasian roundabout: trade flows into Russia through the Caucasus and Central Asia\", EBRD Working Paper, news item 24 Feb 2023: increase in sanctioned-goods exports to ARM/KAZ/KGZ about 5% of the drop in direct sanctioned exports to Russia",
+     "url": "https://www.ebrd.com/home/news-and-events/news/2023/ebrd-analyses-trade-flows-between-russia-caucasus-and-central-asia.html",
+     "date": "2023-02-24"
+    },
+    {
+     "name": "Robin Brooks, \"Transshipments from the EU to Russia\", Brookings: Western transshipments offset at least half of the drop in direct exports to Russia",
+     "url": "https://www.brookings.edu/articles/transshipments-from-the-eu-to-russia",
+     "date": "2024-09-12"
+    },
+    {
+     "name": "Belga News Agency on Eric Dor: EU exports to KAZ +EUR 4.9bn, ARM +EUR 1.1bn, KGZ +EUR 0.9bn 2021->2022",
+     "url": "https://www.belganewsagency.eu/eu-trade-numbers-rise-in-countries-bordering-russia",
+     "date": "2023"
+    },
+    {
+     "name": "research/2026-10/gaps/residual.json (unrecorded transit via KGZ/KAZ, allocated to origins)",
+     "url": "research/2026-10/gaps/residual.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Matched-increase method with share 0.75 (0.5-0.95): Kazakhstan has some domestic car assembly and machinery, so not every matched increase is a re-export. Kazakhstan under-records imports (mirror gap, see residual.json), so the high bound takes the full increase in exports to Russia without the import cap. Comtrade import data for 2021-2022 are incomplete: 2022 uses the 2023 low/central-to-high ratios on the 2022 high, and origin shares use 2019 as the base year. HS84/85/87/90 plus chemicals/plastics (28-40) dominate. Onward Russian goods are negligible in recorded data (Russian oil transit to China via Kazakhstan is not in trade statistics; KAZ fuel trade is own production)."
+  },
+  "KGZ": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 0.308,
+     "central": 0.43,
+     "high": 0.508
+    },
+    "2023": {
+     "low": 0.295,
+     "central": 0.397,
+     "high": 0.498
+    },
+    "2024": {
+     "low": 0.243,
+     "central": 0.34,
+     "high": 0.643
+    },
+    "2025": {
+     "low": 0.204,
+     "central": 0.279,
+     "high": 0.339
+    },
+    "2026_JanAug": {
+     "low": 0.093,
+     "central": 0.189,
+     "high": 0.323
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.035,
+    "central": 0.062,
+    "high": 0.083
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.304,
+     "central": 0.423,
+     "high": 0.5
+    },
+    "2023": {
+     "low": 0.389,
+     "central": 0.523,
+     "high": 0.656
+    },
+    "2024": {
+     "low": 0.269,
+     "central": 0.377,
+     "high": 0.713
+    },
+    "2025": {
+     "low": 0.467,
+     "central": 0.64,
+     "high": 0.776
+    }
+   },
+   "origin_shares": {
+    "CHN": {
+     "low": 0.419,
+     "central": 0.619,
+     "high": 0.875
+    },
+    "DEU": {
+     "low": 0.02,
+     "central": 0.045,
+     "high": 0.083
+    },
+    "USA": {
+     "low": 0.029,
+     "central": 0.052,
+     "high": 0.09
+    },
+    "KOR": {
+     "low": 0.047,
+     "central": 0.072,
+     "high": 0.123
+    },
+    "JPN": {
+     "low": 0.013,
+     "central": 0.029,
+     "high": 0.057
+    },
+    "ITA": {
+     "low": 0.005,
+     "central": 0.008,
+     "high": 0.021
+    },
+    "FRA": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.015
+    },
+    "TUR": {
+     "low": 0.01,
+     "central": 0.017,
+     "high": 0.042
+    },
+    "VNM": {
+     "low": 0.005,
+     "central": 0.012,
+     "high": 0.038
+    },
+    "other": {
+     "low": 0.089,
+     "central": 0.142,
+     "high": 0.243
+    }
+   },
+   "origin_other_detail": {
+    "UZB": 0.113,
+    "GBR": 0.102,
+    "KAZ": 0.092,
+    "LTU": 0.068,
+    "ARE": 0.057,
+    "GEO": 0.053
+   },
+   "reexports_from_RUS": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.001,
+     "high": 0.002
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.001,
+     "high": 0.001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026_JanAug": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "destination_shares": {},
+   "destination_other_detail": {
+    "GBR": 0.989,
+    "MYS": 0.011,
+    "UZB": 0.0,
+    "PAK": 0.0,
+    "MDA": 0.0,
+    "USA": 0.0
+   },
+   "hub_margin_share": {
+    "low": 0.05,
+    "central": 0.12,
+    "high": 0.25,
+    "from_RUS": {
+     "low": 0.01,
+     "central": 0.03,
+     "high": 0.08
+    },
+    "reasoning": "Margin = (re-export sales value - cost of the goods bought abroad) / sales value. Educated guess, no direct source: wholesale gross margins are typically 5-20% of sales; pure pass-through traders in a re-export hub work at the low end, intermediaries taking sanctions or compliance risk on Russia-bound goods at the high end. residual.json used the same 5-20% band. For onward Russian gold and diamonds the margin is far smaller (bullion dealing and refining margins are around 0.5-3% of value; Armenian cutting and jewellery work adds a little more); for fuel, 3-12% (trading and logistics)."
+   },
+   "top_chapters_central_usd_bn": {
+    "2022": {
+     "64": 0.0525,
+     "84": 0.0508,
+     "62": 0.0431,
+     "83": 0.0416,
+     "61": 0.0374,
+     "96": 0.0279,
+     "87": 0.0247,
+     "85": 0.0192
+    },
+    "2023": {
+     "84": 0.1561,
+     "87": 0.0566,
+     "85": 0.0487,
+     "64": 0.0312,
+     "90": 0.013,
+     "39": 0.0103,
+     "69": 0.0079,
+     "83": 0.0073
+    },
+    "2024": {
+     "84": 0.1472,
+     "63": 0.0439,
+     "85": 0.0339,
+     "90": 0.0155,
+     "87": 0.0144,
+     "39": 0.0126,
+     "73": 0.0105
+    },
+    "2025": {
+     "84": 0.1263,
+     "90": 0.0278,
+     "85": 0.0241,
+     "87": 0.0159,
+     "69": 0.0078,
+     "33": 0.0065,
+     "39": 0.0054,
+     "63": 0.0054
+    }
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, KGZ HS2 trade with world and Russia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=417&period={2019..2025}&partnerCode=0,643&flowCode=X|M&cmdCode=AG2",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, KGZ imports by origin and exports by destination",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=417&period={2021..2025}&flowCode=M&cmdCode=84,85|87,90 (imports by origin); flowCode=X&cmdCode=71,27 (exports by destination)",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "research/2026-10/gaps/trade_full.json (hub totals, 2026 Jan-Aug, gap years)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "RFE/RL, \"Reexports to Russia: how the Ukraine war made trade boom in Kyrgyzstan\"",
+     "url": "https://www.rferl.org/amp/ukraine-war-kyrgyzstan-trade-russia/32277438.html",
+     "date": "2023 (accessed 2026-10-17)"
+    },
+    {
+     "name": "EBRD (Chupilkin, Javorcik, Plekhanov), \"The Eurasian roundabout: trade flows into Russia through the Caucasus and Central Asia\", EBRD Working Paper, news item 24 Feb 2023: increase in sanctioned-goods exports to ARM/KAZ/KGZ about 5% of the drop in direct sanctioned exports to Russia",
+     "url": "https://www.ebrd.com/home/news-and-events/news/2023/ebrd-analyses-trade-flows-between-russia-caucasus-and-central-asia.html",
+     "date": "2023-02-24"
+    },
+    {
+     "name": "Robin Brooks, \"Transshipments from the EU to Russia\", Brookings: Western transshipments offset at least half of the drop in direct exports to Russia",
+     "url": "https://www.brookings.edu/articles/transshipments-from-the-eu-to-russia",
+     "date": "2024-09-12"
+    },
+    {
+     "name": "research/2026-10/gaps/residual.json (unrecorded transit via KGZ/KAZ, allocated to origins)",
+     "url": "research/2026-10/gaps/residual.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Matched-increase method with share 0.9 (0.7-1.0): Kyrgyzstan makes few of the HS84/85/87/90 goods it ships to Russia. Its recorded exports to Russia are small (USD 0.4-1.1bn); most Kyrgyz transit never appears in Kyrgyz export data and is already allocated to origin countries in residual.json (transit_KGZ, EUR 3-9bn a year). The high bound ignores the import cap because Kyrgyz imports are under-recorded."
+  },
+  "UZB": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 0.047,
+     "central": 0.112,
+     "high": 0.191
+    },
+    "2023": {
+     "low": 0.09,
+     "central": 0.193,
+     "high": 0.314
+    },
+    "2024": {
+     "low": 0.063,
+     "central": 0.148,
+     "high": 0.26
+    },
+    "2025": {
+     "low": 0.081,
+     "central": 0.214,
+     "high": 0.423
+    },
+    "2026_JanAug": {
+     "low": 0.019,
+     "central": 0.136,
+     "high": 0.559
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.008,
+    "central": 0.025,
+    "high": 0.05
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.019,
+     "central": 0.046,
+     "high": 0.077
+    },
+    "2023": {
+     "low": 0.032,
+     "central": 0.069,
+     "high": 0.112
+    },
+    "2024": {
+     "low": 0.023,
+     "central": 0.054,
+     "high": 0.094
+    },
+    "2025": {
+     "low": 0.02,
+     "central": 0.054,
+     "high": 0.106
+    }
+   },
+   "origin_shares": {
+    "CHN": {
+     "low": 0.317,
+     "central": 0.577,
+     "high": 0.813
+    },
+    "DEU": {
+     "low": 0.01,
+     "central": 0.025,
+     "high": 0.052
+    },
+    "USA": {
+     "low": 0.007,
+     "central": 0.016,
+     "high": 0.035
+    },
+    "KOR": {
+     "low": 0.037,
+     "central": 0.087,
+     "high": 0.207
+    },
+    "JPN": {
+     "low": 0.01,
+     "central": 0.021,
+     "high": 0.045
+    },
+    "ITA": {
+     "low": 0.007,
+     "central": 0.012,
+     "high": 0.029
+    },
+    "FRA": {
+     "low": 0.002,
+     "central": 0.006,
+     "high": 0.031
+    },
+    "TUR": {
+     "low": 0.014,
+     "central": 0.022,
+     "high": 0.041
+    },
+    "VNM": {
+     "low": 0.002,
+     "central": 0.004,
+     "high": 0.017
+    },
+    "other": {
+     "low": 0.141,
+     "central": 0.23,
+     "high": 0.405
+    }
+   },
+   "origin_other_detail": {
+    "MEX": 0.133,
+    "IND": 0.11,
+    "BRA": 0.085,
+    "ARE": 0.076,
+    "CZE": 0.076,
+    "KAZ": 0.065
+   },
+   "reexports_from_RUS": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026_JanAug": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "destination_shares": {},
+   "destination_other_detail": {},
+   "hub_margin_share": {
+    "low": 0.05,
+    "central": 0.1,
+    "high": 0.2,
+    "from_RUS": {
+     "low": 0.01,
+     "central": 0.03,
+     "high": 0.08
+    },
+    "reasoning": "Margin = (re-export sales value - cost of the goods bought abroad) / sales value. Educated guess, no direct source: wholesale gross margins are typically 5-20% of sales; pure pass-through traders in a re-export hub work at the low end, intermediaries taking sanctions or compliance risk on Russia-bound goods at the high end. residual.json used the same 5-20% band. For onward Russian gold and diamonds the margin is far smaller (bullion dealing and refining margins are around 0.5-3% of value; Armenian cutting and jewellery work adds a little more); for fuel, 3-12% (trading and logistics)."
+   },
+   "top_chapters_central_usd_bn": {
+    "2022": {
+     "84": 0.0358,
+     "85": 0.0204,
+     "28": 0.0069,
+     "61": 0.0052
+    },
+    "2023": {
+     "84": 0.0392,
+     "85": 0.0334,
+     "87": 0.0231,
+     "38": 0.0202,
+     "28": 0.009,
+     "69": 0.0079,
+     "61": 0.0067,
+     "62": 0.0063
+    },
+    "2024": {
+     "62": 0.0169,
+     "61": 0.016,
+     "85": 0.0133,
+     "84": 0.0117,
+     "68": 0.0107,
+     "87": 0.0097,
+     "63": 0.0092,
+     "69": 0.009
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, UZB HS2 trade with world and Russia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=860&period={2019..2025}&partnerCode=0,643&flowCode=X|M&cmdCode=AG2",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, UZB imports by origin and exports by destination",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=860&period={2021..2025}&flowCode=M&cmdCode=84,85|87,90 (imports by origin); flowCode=X&cmdCode=71,27 (exports by destination)",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "research/2026-10/gaps/trade_full.json (hub totals, 2026 Jan-Aug, gap years)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "EBRD (Chupilkin, Javorcik, Plekhanov), \"The Eurasian roundabout: trade flows into Russia through the Caucasus and Central Asia\", EBRD Working Paper, news item 24 Feb 2023: increase in sanctioned-goods exports to ARM/KAZ/KGZ about 5% of the drop in direct sanctioned exports to Russia",
+     "url": "https://www.ebrd.com/home/news-and-events/news/2023/ebrd-analyses-trade-flows-between-russia-caucasus-and-central-asia.html",
+     "date": "2023-02-24"
+    },
+    {
+     "name": "Robin Brooks, \"Transshipments from the EU to Russia\", Brookings: Western transshipments offset at least half of the drop in direct exports to Russia",
+     "url": "https://www.brookings.edu/articles/transshipments-from-the-eu-to-russia",
+     "date": "2024-09-12"
+    }
+   ],
+   "reasoning": "Uzbekistan reports a re-export flag in Comtrade but only USD 6-21m to Russia (used as a floor). Its exports to Russia are mostly domestic (cars from UzAuto kits, textiles, food, copper products), so the matched-increase share is 0.4 (0.2-0.6) and the baseline share 0.15. 2025 has no Comtrade HS data: 2024 re-export share x trade_full 2025 exports (national statistics)."
+  },
+  "TUR": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 0.655,
+     "central": 1.371,
+     "high": 2.149
+    },
+    "2023": {
+     "low": 0.981,
+     "central": 2.022,
+     "high": 3.124
+    },
+    "2024": {
+     "low": 0.629,
+     "central": 1.319,
+     "high": 2.068
+    },
+    "2025": {
+     "low": 0.349,
+     "central": 0.755,
+     "high": 1.218
+    },
+    "2026_JanAug": {
+     "low": 0.139,
+     "central": 0.441,
+     "high": 1.0
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.057,
+    "central": 0.17,
+    "high": 0.34
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.074,
+     "central": 0.155,
+     "high": 0.242
+    },
+    "2023": {
+     "low": 0.097,
+     "central": 0.2,
+     "high": 0.31
+    },
+    "2024": {
+     "low": 0.08,
+     "central": 0.167,
+     "high": 0.261
+    },
+    "2025": {
+     "low": 0.059,
+     "central": 0.127,
+     "high": 0.205
+    }
+   },
+   "origin_shares": {
+    "CHN": {
+     "low": 0.162,
+     "central": 0.227,
+     "high": 0.306
+    },
+    "DEU": {
+     "low": 0.096,
+     "central": 0.148,
+     "high": 0.211
+    },
+    "USA": {
+     "low": 0.021,
+     "central": 0.041,
+     "high": 0.079
+    },
+    "KOR": {
+     "low": 0.019,
+     "central": 0.028,
+     "high": 0.049
+    },
+    "JPN": {
+     "low": 0.011,
+     "central": 0.02,
+     "high": 0.041
+    },
+    "ITA": {
+     "low": 0.03,
+     "central": 0.052,
+     "high": 0.084
+    },
+    "FRA": {
+     "low": 0.04,
+     "central": 0.066,
+     "high": 0.099
+    },
+    "TUR": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.01
+    },
+    "VNM": {
+     "low": 0.01,
+     "central": 0.019,
+     "high": 0.041
+    },
+    "other": {
+     "low": 0.291,
+     "central": 0.401,
+     "high": 0.526
+    }
+   },
+   "origin_other_detail": {
+    "ESP": 0.206,
+    "POL": 0.078,
+    "GBR": 0.072,
+    "IND": 0.065,
+    "HUN": 0.063,
+    "CZE": 0.062
+   },
+   "reexports_from_RUS": {
+    "2022": {
+     "low": 0.171,
+     "central": 0.343,
+     "high": 0.514
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026_JanAug": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "processed_from_RUS_not_counted": {
+    "2022": {
+     "low": 1.284,
+     "central": 4.281,
+     "high": 10.274
+    },
+    "2023": {
+     "low": 1.256,
+     "central": 4.187,
+     "high": 10.05
+    },
+    "2024": {
+     "low": 1.293,
+     "central": 4.31,
+     "high": 10.345
+    },
+    "2025": {
+     "low": 1.071,
+     "central": 3.57,
+     "high": 8.567
+    }
+   },
+   "destination_shares": {
+    "ARE": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.02
+    },
+    "CHN": {
+     "low": 0.004,
+     "central": 0.006,
+     "high": 0.029
+    },
+    "HKG": {
+     "low": 0.052,
+     "central": 0.087,
+     "high": 0.142
+    },
+    "IND": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.02
+    },
+    "TUR": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.02
+    },
+    "CHE": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.02
+    },
+    "EU27": {
+     "low": 0.105,
+     "central": 0.175,
+     "high": 0.266
+    },
+    "other": {
+     "low": 0.439,
+     "central": 0.731,
+     "high": 1
+    }
+   },
+   "destination_other_detail": {
+    "GBR": 0.167,
+    "USA": 0.111,
+    "SGP": 0.073,
+    "MAR": 0.058,
+    "ZAF": 0.049,
+    "LBY": 0.039
+   },
+   "hub_margin_share": {
+    "low": 0.05,
+    "central": 0.1,
+    "high": 0.2,
+    "from_RUS": {
+     "low": 0.005,
+     "central": 0.02,
+     "high": 0.05
+    },
+    "reasoning": "Margin = (re-export sales value - cost of the goods bought abroad) / sales value. Educated guess, no direct source: wholesale gross margins are typically 5-20% of sales; pure pass-through traders in a re-export hub work at the low end, intermediaries taking sanctions or compliance risk on Russia-bound goods at the high end. residual.json used the same 5-20% band. For onward Russian gold and diamonds the margin is far smaller (bullion dealing and refining margins are around 0.5-3% of value; Armenian cutting and jewellery work adds a little more); for fuel, 3-12% (trading and logistics)."
+   },
+   "top_chapters_central_usd_bn": {
+    "2022": {
+     "84": 0.3884,
+     "39": 0.1739,
+     "85": 0.1381,
+     "32": 0.0783,
+     "29": 0.0491,
+     "38": 0.048,
+     "34": 0.0468,
+     "73": 0.0383
+    },
+    "2023": {
+     "84": 0.7292,
+     "85": 0.1853,
+     "39": 0.1807,
+     "87": 0.1226,
+     "32": 0.1036,
+     "62": 0.0848,
+     "38": 0.0666,
+     "61": 0.0642
+    },
+    "2024": {
+     "84": 0.4985,
+     "39": 0.1478,
+     "87": 0.0894,
+     "85": 0.0736,
+     "32": 0.0653,
+     "38": 0.0507,
+     "34": 0.0439,
+     "62": 0.0371
+    },
+    "2025": {
+     "84": 0.2273,
+     "39": 0.113,
+     "32": 0.0533,
+     "38": 0.0445,
+     "33": 0.0382,
+     "34": 0.029,
+     "35": 0.0251,
+     "90": 0.0232
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, TUR HS2 trade with world and Russia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=792&period={2019..2025}&partnerCode=0,643&flowCode=X|M&cmdCode=AG2",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, TUR imports by origin and exports by destination",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=792&period={2021..2025}&flowCode=M&cmdCode=84,85|87,90 (imports by origin); flowCode=X&cmdCode=71,27 (exports by destination)",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "research/2026-10/gaps/trade_full.json (hub totals, 2026 Jan-Aug, gap years)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "S&P Global Market Intelligence, \"Navigating sanctions evasion: trade analysis of high-priority goods exports to Russia\": share of Turkey's CHPI shipments to Russia of Turkish origin 71% (2022) -> 50% (2023)",
+     "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/navigating-sanctions-evasion-trade-analysis-of-high-priority-goods-exports-to-russia",
+     "date": "2024-07-22"
+    },
+    {
+     "name": "KSE Institute / Yermak-McFaul group, \"Challenges of export controls enforcement\" (critical components): almost half of Russia's battlefield-goods imports Jan-Oct 2023 were coalition-brand goods via third countries (mainly CHN/HKG, TUR, UAE)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2024/01/Russian-import-of-critical-components.pdf",
+     "date": "2024-01"
+    }
+   ],
+   "reasoning": "Turkey is a large manufacturer; the matched-increase share is 0.4 (0.2-0.6), taken from S&P Global: the Turkish-origin share of Turkey's high-priority-goods shipments to Russia fell from 71% to 50% (2022-2023), so 30-50% were foreign-origin. Applied to all manufactured chapters it is an upper-end assumption for consumer goods and a lower-end one for electronics. Onward Russian goods: HS71 (Russian gold, 2022). Refined oil products made from Russian crude and exported (HS27, USD ~4bn a year matched) are processing, not re-export, and are reported separately in processed_from_RUS_not_counted."
+  },
+  "AZE": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 0.08,
+     "central": 0.127,
+     "high": 0.18
+    },
+    "2023": {
+     "low": 0.105,
+     "central": 0.185,
+     "high": 0.304
+    },
+    "2024": {
+     "low": 0.111,
+     "central": 0.193,
+     "high": 0.29
+    },
+    "2025": {
+     "low": 0.112,
+     "central": 0.185,
+     "high": 0.254
+    },
+    "2026_JanAug": {
+     "low": 0.052,
+     "central": 0.126,
+     "high": 0.242
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.033,
+    "central": 0.055,
+    "high": 0.089
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.087,
+     "central": 0.137,
+     "high": 0.195
+    },
+    "2023": {
+     "low": 0.095,
+     "central": 0.167,
+     "high": 0.275
+    },
+    "2024": {
+     "low": 0.102,
+     "central": 0.177,
+     "high": 0.267
+    },
+    "2025": {
+     "low": 0.107,
+     "central": 0.177,
+     "high": 0.242
+    }
+   },
+   "origin_shares": {
+    "CHN": {
+     "low": 0.197,
+     "central": 0.428,
+     "high": 0.723
+    },
+    "DEU": {
+     "low": 0.035,
+     "central": 0.069,
+     "high": 0.122
+    },
+    "USA": {
+     "low": 0.026,
+     "central": 0.045,
+     "high": 0.075
+    },
+    "KOR": {
+     "low": 0.023,
+     "central": 0.052,
+     "high": 0.11
+    },
+    "JPN": {
+     "low": 0.022,
+     "central": 0.051,
+     "high": 0.098
+    },
+    "ITA": {
+     "low": 0.02,
+     "central": 0.031,
+     "high": 0.052
+    },
+    "FRA": {
+     "low": 0.003,
+     "central": 0.007,
+     "high": 0.025
+    },
+    "TUR": {
+     "low": 0.046,
+     "central": 0.079,
+     "high": 0.171
+    },
+    "VNM": {
+     "low": 0.009,
+     "central": 0.012,
+     "high": 0.026
+    },
+    "other": {
+     "low": 0.134,
+     "central": 0.225,
+     "high": 0.43
+    }
+   },
+   "origin_other_detail": {
+    "GBR": 0.166,
+    "FIN": 0.104,
+    "UZB": 0.064,
+    "S19": 0.051,
+    "IND": 0.051,
+    "CZE": 0.049
+   },
+   "reexports_from_RUS": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026_JanAug": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "destination_shares": {},
+   "destination_other_detail": {},
+   "hub_margin_share": {
+    "low": 0.05,
+    "central": 0.1,
+    "high": 0.2,
+    "from_RUS": {
+     "low": 0.01,
+     "central": 0.03,
+     "high": 0.08
+    },
+    "reasoning": "Margin = (re-export sales value - cost of the goods bought abroad) / sales value. Educated guess, no direct source: wholesale gross margins are typically 5-20% of sales; pure pass-through traders in a re-export hub work at the low end, intermediaries taking sanctions or compliance risk on Russia-bound goods at the high end. residual.json used the same 5-20% band. For onward Russian gold and diamonds the margin is far smaller (bullion dealing and refining margins are around 0.5-3% of value; Armenian cutting and jewellery work adds a little more); for fuel, 3-12% (trading and logistics)."
+   },
+   "top_chapters_central_usd_bn": {
+    "2022": {
+     "39": 0.0465,
+     "84": 0.0137
+    },
+    "2023": {
+     "39": 0.0879,
+     "84": 0.0143,
+     "38": 0.0091,
+     "85": 0.0063,
+     "87": 0.0054
+    },
+    "2024": {
+     "39": 0.0861,
+     "38": 0.0189,
+     "83": 0.0132,
+     "84": 0.0078,
+     "85": 0.0071,
+     "87": 0.0055
+    },
+    "2025": {
+     "39": 0.103,
+     "83": 0.014,
+     "38": 0.0121
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, AZE HS2 trade with world and Russia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=31&period={2019..2025}&partnerCode=0,643&flowCode=X|M&cmdCode=AG2",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, AZE imports by origin and exports by destination",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=31&period={2021..2025}&flowCode=M&cmdCode=84,85|87,90 (imports by origin); flowCode=X&cmdCode=71,27 (exports by destination)",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "research/2026-10/gaps/trade_full.json (hub totals, 2026 Jan-Aug, gap years)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "EBRD (Chupilkin, Javorcik, Plekhanov), \"The Eurasian roundabout: trade flows into Russia through the Caucasus and Central Asia\", EBRD Working Paper, news item 24 Feb 2023: increase in sanctioned-goods exports to ARM/KAZ/KGZ about 5% of the drop in direct sanctioned exports to Russia",
+     "url": "https://www.ebrd.com/home/news-and-events/news/2023/ebrd-analyses-trade-flows-between-russia-caucasus-and-central-asia.html",
+     "date": "2023-02-24"
+    }
+   ],
+   "reasoning": "Matched-increase method with share 0.75 (0.5-0.95). Exports to Russia are mostly fruit, vegetables and plastics (SOCAR polymer, domestic). The small matched increase is in HS39/84/38. Russian gas imported while Azerbaijan exports its own gas is substitution, not re-export, and is not counted."
+  },
+  "MNG": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 0.022,
+     "central": 0.035,
+     "high": 0.045
+    },
+    "2023": {
+     "low": 0.022,
+     "central": 0.035,
+     "high": 0.044
+    },
+    "2024": {
+     "low": 0.013,
+     "central": 0.039,
+     "high": 0.09
+    },
+    "2025": {
+     "low": 0.012,
+     "central": 0.037,
+     "high": 0.084
+    },
+    "2026_JanAug": {
+     "low": 0.005,
+     "central": 0.032,
+     "high": 0.162
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.001,
+    "central": 0.001,
+    "high": 0.002
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.206,
+     "central": 0.333,
+     "high": 0.419
+    },
+    "2023": {
+     "low": 0.21,
+     "central": 0.339,
+     "high": 0.427
+    },
+    "2024": {
+     "low": 0.115,
+     "central": 0.339,
+     "high": 0.778
+    },
+    "2025": {
+     "low": 0.115,
+     "central": 0.339,
+     "high": 0.778
+    }
+   },
+   "origin_shares": {
+    "CHN": {
+     "low": 0.195,
+     "central": 0.397,
+     "high": 0.681
+    },
+    "DEU": {
+     "low": 0.006,
+     "central": 0.011,
+     "high": 0.027
+    },
+    "USA": {
+     "low": 0.013,
+     "central": 0.028,
+     "high": 0.057
+    },
+    "KOR": {
+     "low": 0.017,
+     "central": 0.046,
+     "high": 0.096
+    },
+    "JPN": {
+     "low": 0.164,
+     "central": 0.306,
+     "high": 0.499
+    },
+    "ITA": {
+     "low": 0.003,
+     "central": 0.005,
+     "high": 0.016
+    },
+    "FRA": {
+     "low": 0.011,
+     "central": 0.019,
+     "high": 0.039
+    },
+    "TUR": {
+     "low": 0.005,
+     "central": 0.006,
+     "high": 0.018
+    },
+    "VNM": {
+     "low": 0.002,
+     "central": 0.014,
+     "high": 0.042
+    },
+    "other": {
+     "low": 0.104,
+     "central": 0.168,
+     "high": 0.256
+    }
+   },
+   "origin_other_detail": {
+    "AUT": 0.162,
+    "IND": 0.116,
+    "GBR": 0.092,
+    "FIN": 0.074,
+    "SWE": 0.074,
+    "CAN": 0.047
+   },
+   "reexports_from_RUS": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026_JanAug": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "destination_shares": {},
+   "destination_other_detail": {},
+   "hub_margin_share": {
+    "low": 0.05,
+    "central": 0.1,
+    "high": 0.2,
+    "from_RUS": {
+     "low": 0.01,
+     "central": 0.03,
+     "high": 0.08
+    },
+    "reasoning": "Margin = (re-export sales value - cost of the goods bought abroad) / sales value. Educated guess, no direct source: wholesale gross margins are typically 5-20% of sales; pure pass-through traders in a re-export hub work at the low end, intermediaries taking sanctions or compliance risk on Russia-bound goods at the high end. residual.json used the same 5-20% band. For onward Russian gold and diamonds the margin is far smaller (bullion dealing and refining margins are around 0.5-3% of value; Armenian cutting and jewellery work adds a little more); for fuel, 3-12% (trading and logistics)."
+   },
+   "top_chapters_central_usd_bn": {
+    "2022": {
+     "88": 0.0241,
+     "40": 0.0061
+    },
+    "2023": {
+     "84": 0.0117,
+     "40": 0.0115,
+     "87": 0.0088
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, MNG HS2 trade with world and Russia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=496&period={2019..2025}&partnerCode=0,643&flowCode=X|M&cmdCode=AG2",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, MNG imports by origin and exports by destination",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=496&period={2021..2025}&flowCode=M&cmdCode=84,85|87,90 (imports by origin); flowCode=X&cmdCode=71,27 (exports by destination)",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "research/2026-10/gaps/trade_full.json (hub totals, 2026 Jan-Aug, gap years)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "EBRD (Chupilkin, Javorcik, Plekhanov), \"The Eurasian roundabout: trade flows into Russia through the Caucasus and Central Asia\", EBRD Working Paper, news item 24 Feb 2023: increase in sanctioned-goods exports to ARM/KAZ/KGZ about 5% of the drop in direct sanctioned exports to Russia",
+     "url": "https://www.ebrd.com/home/news-and-events/news/2023/ebrd-analyses-trade-flows-between-russia-caucasus-and-central-asia.html",
+     "date": "2023-02-24"
+    }
+   ],
+   "reasoning": "Very small exports to Russia (~EUR 0.1bn). Matched-increase share 0.8 (0.5-1.0). 2024-25 have no Comtrade HS data: 2023 share x trade_full (IMF) exports."
+  },
+  "TJK": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 0.006,
+     "central": 0.011,
+     "high": 0.019
+    },
+    "2023": {
+     "low": 0.005,
+     "central": 0.01,
+     "high": 0.064
+    },
+    "2024": {
+     "low": 0.002,
+     "central": 0.009,
+     "high": 0.103
+    },
+    "2025": {
+     "low": 0.002,
+     "central": 0.009,
+     "high": 0.115
+    },
+    "2026_JanAug": {
+     "low": 0.0,
+     "central": 0.005,
+     "high": 0.218
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.003,
+    "central": 0.006,
+    "high": 0.009
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.066,
+     "central": 0.126,
+     "high": 0.222
+    },
+    "2023": {
+     "low": 0.041,
+     "central": 0.077,
+     "high": 0.513
+    },
+    "2024": {
+     "low": 0.021,
+     "central": 0.077,
+     "high": 0.922
+    },
+    "2025": {
+     "low": 0.022,
+     "central": 0.077,
+     "high": 1.029
+    }
+   },
+   "origin_shares": {
+    "CHN": {
+     "low": 0.261,
+     "central": 0.354,
+     "high": 0.46
+    },
+    "DEU": {
+     "low": 0.084,
+     "central": 0.112,
+     "high": 0.151
+    },
+    "USA": {
+     "low": 0.029,
+     "central": 0.045,
+     "high": 0.077
+    },
+    "KOR": {
+     "low": 0.029,
+     "central": 0.053,
+     "high": 0.096
+    },
+    "JPN": {
+     "low": 0.087,
+     "central": 0.121,
+     "high": 0.167
+    },
+    "ITA": {
+     "low": 0.009,
+     "central": 0.016,
+     "high": 0.035
+    },
+    "FRA": {
+     "low": 0.007,
+     "central": 0.009,
+     "high": 0.023
+    },
+    "TUR": {
+     "low": 0.023,
+     "central": 0.034,
+     "high": 0.057
+    },
+    "VNM": {
+     "low": 0.001,
+     "central": 0.002,
+     "high": 0.012
+    },
+    "other": {
+     "low": 0.164,
+     "central": 0.254,
+     "high": 0.367
+    }
+   },
+   "origin_other_detail": {
+    "UZB": 0.196,
+    "IRN": 0.08,
+    "GBR": 0.072,
+    "ARE": 0.072,
+    "LTU": 0.07,
+    "POL": 0.059
+   },
+   "reexports_from_RUS": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026_JanAug": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "destination_shares": {},
+   "destination_other_detail": {},
+   "hub_margin_share": {
+    "low": 0.05,
+    "central": 0.1,
+    "high": 0.2,
+    "from_RUS": {
+     "low": 0.01,
+     "central": 0.03,
+     "high": 0.08
+    },
+    "reasoning": "Margin = (re-export sales value - cost of the goods bought abroad) / sales value. Educated guess, no direct source: wholesale gross margins are typically 5-20% of sales; pure pass-through traders in a re-export hub work at the low end, intermediaries taking sanctions or compliance risk on Russia-bound goods at the high end. residual.json used the same 5-20% band. For onward Russian gold and diamonds the margin is far smaller (bullion dealing and refining margins are around 0.5-3% of value; Armenian cutting and jewellery work adds a little more); for fuel, 3-12% (trading and logistics)."
+   },
+   "top_chapters_central_usd_bn": {
+    "2022": {},
+    "2023": {}
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, TJK HS2 trade with world and Russia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=762&period={2019..2025}&partnerCode=0,643&flowCode=X|M&cmdCode=AG2",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, TJK imports by origin and exports by destination",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=762&period={2021..2025}&flowCode=M&cmdCode=84,85|87,90 (imports by origin); flowCode=X&cmdCode=71,27 (exports by destination)",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "research/2026-10/gaps/trade_full.json (hub totals, 2026 Jan-Aug, gap years)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "EBRD (Chupilkin, Javorcik, Plekhanov), \"The Eurasian roundabout: trade flows into Russia through the Caucasus and Central Asia\", EBRD Working Paper, news item 24 Feb 2023: increase in sanctioned-goods exports to ARM/KAZ/KGZ about 5% of the drop in direct sanctioned exports to Russia",
+     "url": "https://www.ebrd.com/home/news-and-events/news/2023/ebrd-analyses-trade-flows-between-russia-caucasus-and-central-asia.html",
+     "date": "2023-02-24"
+    }
+   ],
+   "reasoning": "Very small exports to Russia (~EUR 0.1bn). Matched-increase share 0.8 (0.5-1.0). 2024-25 have no Comtrade HS data: 2023 share x trade_full exports."
+  },
+  "SRB": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 0.081,
+     "central": 0.175,
+     "high": 0.322
+    },
+    "2023": {
+     "low": 0.092,
+     "central": 0.197,
+     "high": 0.36
+    },
+    "2024": {
+     "low": 0.064,
+     "central": 0.14,
+     "high": 0.26
+    },
+    "2025": {
+     "low": 0.051,
+     "central": 0.114,
+     "high": 0.214
+    },
+    "2026_JanAug": {
+     "low": 0.021,
+     "central": 0.069,
+     "high": 0.184
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.023,
+    "central": 0.058,
+    "high": 0.116
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.071,
+     "central": 0.154,
+     "high": 0.284
+    },
+    "2023": {
+     "low": 0.083,
+     "central": 0.178,
+     "high": 0.325
+    },
+    "2024": {
+     "low": 0.072,
+     "central": 0.157,
+     "high": 0.292
+    },
+    "2025": {
+     "low": 0.068,
+     "central": 0.151,
+     "high": 0.284
+    }
+   },
+   "origin_shares": {
+    "CHN": {
+     "low": 0.127,
+     "central": 0.238,
+     "high": 0.441
+    },
+    "DEU": {
+     "low": 0.066,
+     "central": 0.129,
+     "high": 0.207
+    },
+    "USA": {
+     "low": 0.014,
+     "central": 0.039,
+     "high": 0.09
+    },
+    "KOR": {
+     "low": 0.011,
+     "central": 0.017,
+     "high": 0.033
+    },
+    "JPN": {
+     "low": 0.01,
+     "central": 0.015,
+     "high": 0.032
+    },
+    "ITA": {
+     "low": 0.027,
+     "central": 0.047,
+     "high": 0.089
+    },
+    "FRA": {
+     "low": 0.017,
+     "central": 0.04,
+     "high": 0.073
+    },
+    "TUR": {
+     "low": 0.037,
+     "central": 0.057,
+     "high": 0.091
+    },
+    "VNM": {
+     "low": 0.004,
+     "central": 0.007,
+     "high": 0.025
+    },
+    "other": {
+     "low": 0.265,
+     "central": 0.411,
+     "high": 0.605
+    }
+   },
+   "origin_other_detail": {
+    "CZE": 0.224,
+    "ROU": 0.084,
+    "IND": 0.054,
+    "NLD": 0.054,
+    "AUT": 0.052,
+    "SVK": 0.052
+   },
+   "reexports_from_RUS": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026_JanAug": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "destination_shares": {},
+   "destination_other_detail": {},
+   "hub_margin_share": {
+    "low": 0.05,
+    "central": 0.1,
+    "high": 0.2,
+    "from_RUS": {
+     "low": 0.01,
+     "central": 0.03,
+     "high": 0.08
+    },
+    "reasoning": "Margin = (re-export sales value - cost of the goods bought abroad) / sales value. Educated guess, no direct source: wholesale gross margins are typically 5-20% of sales; pure pass-through traders in a re-export hub work at the low end, intermediaries taking sanctions or compliance risk on Russia-bound goods at the high end. residual.json used the same 5-20% band. For onward Russian gold and diamonds the margin is far smaller (bullion dealing and refining margins are around 0.5-3% of value; Armenian cutting and jewellery work adds a little more); for fuel, 3-12% (trading and logistics)."
+   },
+   "top_chapters_central_usd_bn": {
+    "2022": {
+     "84": 0.0328,
+     "85": 0.0265,
+     "61": 0.0122,
+     "34": 0.0075,
+     "87": 0.007,
+     "90": 0.0053
+    },
+    "2023": {
+     "84": 0.0493,
+     "61": 0.0173,
+     "85": 0.0165,
+     "73": 0.0109,
+     "90": 0.0096,
+     "87": 0.0069,
+     "33": 0.0058
+    },
+    "2024": {
+     "84": 0.0183,
+     "29": 0.0088,
+     "90": 0.0086,
+     "61": 0.0078,
+     "62": 0.0065
+    },
+    "2025": {
+     "29": 0.0162,
+     "84": 0.0107,
+     "90": 0.0095,
+     "62": 0.0055
+    }
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, SRB HS2 trade with world and Russia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=688&period={2019..2025}&partnerCode=0,643&flowCode=X|M&cmdCode=AG2",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, SRB imports by origin and exports by destination",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=688&period={2021..2025}&flowCode=M&cmdCode=84,85|87,90 (imports by origin); flowCode=X&cmdCode=71,27 (exports by destination)",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "research/2026-10/gaps/trade_full.json (hub totals, 2026 Jan-Aug, gap years)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "EBRD (Chupilkin, Javorcik, Plekhanov), \"The Eurasian roundabout: trade flows into Russia through the Caucasus and Central Asia\", EBRD Working Paper, news item 24 Feb 2023: increase in sanctioned-goods exports to ARM/KAZ/KGZ about 5% of the drop in direct sanctioned exports to Russia",
+     "url": "https://www.ebrd.com/home/news-and-events/news/2023/ebrd-analyses-trade-flows-between-russia-caucasus-and-central-asia.html",
+     "date": "2023-02-24"
+    }
+   ],
+   "reasoning": "Serbia manufactures much of what it sells to Russia (tyres, food, pharma, appliances). Matched-increase share 0.4 (0.2-0.7), baseline share 0.25."
+  },
+  "ARE": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 2.155,
+     "central": 2.268,
+     "high": 2.381
+    },
+    "2023": {
+     "low": 3.702,
+     "central": 3.896,
+     "high": 4.091
+    },
+    "2024": {
+     "low": 2.337,
+     "central": 3.187,
+     "high": 4.25
+    },
+    "2025": {
+     "low": 2.708,
+     "central": 3.972,
+     "high": 6.86
+    },
+    "2026_JanAug": {
+     "low": 1.264,
+     "central": 2.648,
+     "high": 5.946
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.572,
+    "central": 0.673,
+    "high": 0.74
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.876,
+     "central": 0.922,
+     "high": 0.968
+    },
+    "2023": {
+     "low": 0.891,
+     "central": 0.938,
+     "high": 0.985
+    },
+    "2024": {
+     "low": 0.629,
+     "central": 0.858,
+     "high": 1.144
+    },
+    "2025": {
+     "low": 0.729,
+     "central": 1.07,
+     "high": 1.847
+    }
+   },
+   "origin_shares": {
+    "CHN": {
+     "low": 0.291,
+     "central": 0.418,
+     "high": 0.596
+    },
+    "DEU": {
+     "low": 0.025,
+     "central": 0.046,
+     "high": 0.078
+    },
+    "USA": {
+     "low": 0.077,
+     "central": 0.113,
+     "high": 0.158
+    },
+    "KOR": {
+     "low": 0.011,
+     "central": 0.015,
+     "high": 0.03
+    },
+    "JPN": {
+     "low": 0.033,
+     "central": 0.066,
+     "high": 0.108
+    },
+    "ITA": {
+     "low": 0.01,
+     "central": 0.013,
+     "high": 0.027
+    },
+    "FRA": {
+     "low": 0.012,
+     "central": 0.02,
+     "high": 0.041
+    },
+    "TUR": {
+     "low": 0.006,
+     "central": 0.008,
+     "high": 0.021
+    },
+    "VNM": {
+     "low": 0.015,
+     "central": 0.044,
+     "high": 0.083
+    },
+    "other": {
+     "low": 0.187,
+     "central": 0.257,
+     "high": 0.345
+    }
+   },
+   "origin_other_detail": {
+    "IND": 0.251,
+    "GBR": 0.213,
+    "THA": 0.105,
+    "MEX": 0.04,
+    "S19": 0.037,
+    "IDN": 0.033
+   },
+   "reexports_from_RUS": {
+    "2022": {
+     "low": 2.671,
+     "central": 4.274,
+     "high": 5.342
+    },
+    "2023": {
+     "low": 1.33,
+     "central": 2.129,
+     "high": 2.661
+    },
+    "2024": {
+     "low": 0.832,
+     "central": 2.152,
+     "high": 4.35
+    },
+    "2025": {
+     "low": 0.993,
+     "central": 2.57,
+     "high": 5.194
+    },
+    "2026_JanAug": {
+     "low": 0.464,
+     "central": 1.713,
+     "high": 4.501
+    }
+   },
+   "destination_shares": {
+    "ARE": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.02
+    },
+    "CHN": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.02
+    },
+    "HKG": {
+     "low": 0,
+     "central": 0.031,
+     "high": 0.148
+    },
+    "IND": {
+     "low": 0,
+     "central": 0.016,
+     "high": 0.085
+    },
+    "TUR": {
+     "low": 0.156,
+     "central": 0.318,
+     "high": 0.625
+    },
+    "CHE": {
+     "low": 0.038,
+     "central": 0.072,
+     "high": 0.127
+    },
+    "EU27": {
+     "low": 0.008,
+     "central": 0.06,
+     "high": 0.138
+    },
+    "other": {
+     "low": 0.211,
+     "central": 0.502,
+     "high": 0.832
+    }
+   },
+   "destination_other_detail": {
+    "IRQ": 0.206,
+    "OMN": 0.162,
+    "QAT": 0.135,
+    "USA": 0.08,
+    "SGP": 0.057,
+    "ISR": 0.051
+   },
+   "hub_margin_share": {
+    "low": 0.03,
+    "central": 0.07,
+    "high": 0.15,
+    "from_RUS": {
+     "low": 0.003,
+     "central": 0.01,
+     "high": 0.03
+    },
+    "reasoning": "Margin = (re-export sales value - cost of the goods bought abroad) / sales value. Educated guess, no direct source: wholesale gross margins are typically 5-20% of sales; pure pass-through traders in a re-export hub work at the low end, intermediaries taking sanctions or compliance risk on Russia-bound goods at the high end. residual.json used the same 5-20% band. For onward Russian gold and diamonds the margin is far smaller (bullion dealing and refining margins are around 0.5-3% of value; Armenian cutting and jewellery work adds a little more); for fuel, 3-12% (trading and logistics)."
+   },
+   "top_chapters_central_usd_bn": {
+    "2022": {
+     "85": 1.2621,
+     "84": 0.2586,
+     "87": 0.0633,
+     "95": 0.0241,
+     "91": 0.0094,
+     "33": 0.0074,
+     "32": 0.006
+    },
+    "2023": {
+     "85": 1.9713,
+     "84": 0.634,
+     "87": 0.1176,
+     "64": 0.0932,
+     "61": 0.0476,
+     "33": 0.0401,
+     "95": 0.0318,
+     "88": 0.0273
+    }
+   },
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API, ARE HS2 trade with world and Russia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=784&period={2019..2025}&partnerCode=0,643&flowCode=X|M&cmdCode=AG2",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UN Comtrade public preview API, ARE imports by origin and exports by destination",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=784&period={2021..2025}&flowCode=M&cmdCode=84,85|87,90 (imports by origin); flowCode=X&cmdCode=71,27 (exports by destination)",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "research/2026-10/gaps/trade_full.json (hub totals, 2026 Jan-Aug, gap years)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "UAE FCSC re-export flag in UN Comtrade (ARE flowCode RX, partner Russia) 2021-2023: USD 1.145, 2.388, 4.213bn",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=784&period=2023&partnerCode=643&cmdCode=TOTAL",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Gulf Today / UAE Ministry of Economy: 2022 imports from Russia AED 30.1bn, re-exports AED 9bn, national exports AED 1bn",
+     "url": "https://gulftoday.ae/business/2023/09/01/uae-is-our-first-arab-trade-partner-with-$10-billion-russian-minister",
+     "date": "2023-09-01"
+    },
+    {
+     "name": "UAE Ministry of Foreign Trade press release (Zawya): UAE-Russia non-oil trade USD 20.4bn in 2025 (+77.7%); 2024 AED 42.23bn (~USD 11.5bn)",
+     "url": "https://www.zawya.com/en/press-release/government-news/uae-russia-trade-in-services-and-investment-agreement-enters-into-force-464653",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters analysis of Russian customs data (via The New Arab): UAE took 75.7 t of Russian gold worth USD 4.3bn Feb 2022-Mar 2023 (1.3 t in 2021); China/HK and Turkey ~20 t each",
+     "url": "https://www.newarab.com/news/russia-gold-uae-cashes-sanctions-bite",
+     "date": "2023-05-25"
+    },
+    {
+     "name": "KSE Institute / Yermak-McFaul group, \"Challenges of export controls enforcement\" (critical components): almost half of Russia's battlefield-goods imports Jan-Oct 2023 were coalition-brand goods via third countries (mainly CHN/HKG, TUR, UAE)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2024/01/Russian-import-of-critical-components.pdf",
+     "date": "2024-01"
+    }
+   ],
+   "reasoning": "The UAE flags re-exports: Comtrade RX to Russia USD 1.145bn (2021), 2.388bn (2022), 4.213bn (2023, 94% of exports to Russia); the MoE figure for 2022 (AED 9bn = USD 2.45bn) confirms it. 2024-25 are not in Comtrade: non-oil trade with Russia (USD 11.5bn in 2024, 20.4bn in 2025, which includes imports from Russia) x a re-export share of non-oil trade of 22% (2022) to 38% (2023); for 2025 a lower central (22%, range 15-38%), because the 2025 jump is likely driven by gold imports from Russia at record prices. Onward Russian goods = matched increase of HS71 imports from Russia (gold) x 0.8 (0.5-1.0), consistent with Reuters (75.7 t, USD 4.3bn Feb 2022-Mar 2023). Destinations are proxied by the increase of UAE HS71 exports by partner, which mixes Russian with other gold. Baseline = 2021 RX share of exports to Russia (79%) x 2019-21 average exports (trade_full). 2026 Jan-Aug = 2025 x 8/12 (x0.7 low, x1.3 high), because trade_full's 2026 UAE range is an extrapolation."
+  }
+ },
+ "overlap_with_residual": "No double counting. residual.json adds to origin countries the goods that are MISSING from partner-reported exports to Russia: the rise in the mirror gap between partners' reported exports to KGZ/KAZ and those hubs' own recorded imports (transit_KGZ EUR 3.2/5.8/6.7/8.6bn, transit_KAZ EUR 0.6/1.1/4.2/2.9bn, 2022-2025), which by construction never appear in KGZ/KAZ exports to Russia either. The figures here move value that IS recorded in the hubs' own exports to Russia (part of trade_full exports_to_RUS) from the hub to origin countries; the matched-import cap uses the hubs' RECORDED imports, so the same goods cannot be in the mirror gap. Two caveats: (1) for the high bounds of KAZ/KGZ the import cap is dropped, so some high-bound value could in principle also be in the mirror gap; treat the KAZ/KGZ highs as not additive with residual highs. (2) residual's pro-rata \"residual\" component (EUR 11-21bn) is distributed over all countries by their reported exports to Russia, including hubs; if the map moves hub re-exports to origins, the hub's pro-rata share should be moved in the same proportion (reexport_share_of_exports_to_RUS). Georgia's car re-exports to KGZ/KAZ/ARM are not counted here at all (they show up in those hubs or in residual transit). Hong Kong's onward gold to mainland China is handled in residual.json and not repeated here.",
+ "notes": [
+  "Total re-exports to Russia across the 11 hubs (central): EUR 7.4bn (2022), 11.3bn (2023), 9.0bn (2024), 8.7bn (2025). UAE, KAZ, ARM and TUR are ~90%. The rise in re-exports covers ~90-100% of the extra exports to Russia for ARE, 50-70% for ARM/KAZ/KGZ, 25-35% for TUR/AZE and 5-15% for UZB. Most transit to Russia via KGZ/KAZ is unrecorded and lives in residual.json.",
+  "China via third countries: weighted over hubs (2023), origin shares are CHN ~35%, named coalition origins (DEU, USA, JPN, KOR, ITA, FRA) 28% plus other EU/GBR in \"other\" (~8-12%), VNM 7%. China is the largest origin for KGZ, UZB, MNG, KAZ, AZE and ARE; combined with residual.json (China 61-65% of KGZ transit), China is the main origin of hub-routed goods.",
+  "Origin shares are by customs country of origin, so brand owners differ: Samsung phones count as Vietnam, Apple as China. Imports recorded from the UAE or other hubs (e.g. ARE in GEO or KGZ data) stay in \"other\".",
+  "HS2 aggregation hides domestic production within chapters; that is what the hub-specific shares and wide ranges try to cover. Hub-specific shares are educated guesses calibrated on: Armenian finance ministry (87% of export growth to Russia were re-exports, H1 2023), S&P Global (30-50% foreign origin in Turkey's high-priority shipments), and the UAE/Georgia re-export flags.",
+  "Onward Russian gold/diamonds: ARM peak 2024 (EUR ~6bn) collapsed in 2025 as re-exports to the UAE fell; UAE onward gold proxied. Destinations are first hop only (Armenian gold goes to the UAE and is then traded on to CHE, IND, HKG, TUR).",
+  "Turkey's refined-product exports from Russian crude (processed_from_RUS_not_counted) are not re-exports under rules of origin; include them only if the map wants a \"refining loophole\" view.",
+  "Certainty: B = hub publishes a re-export flag (UAE, Georgia); C = matched-trade estimate with an official calibration point (ARM, KAZ, KGZ); D = matched-trade estimate with assumed shares (TUR, UZB, AZE, MNG, TJK, SRB)."
+ ]
+}

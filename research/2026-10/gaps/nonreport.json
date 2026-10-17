@@ -1,0 +1,3427 @@
+{
+ "method": "Corrections to research/2026-10/gaps/trade_full.json for Russia's partners that do not report (or whose reports miss Russian oil/aid deliveries). EUR bn, current prices; 2026 = Jan-Aug (not annualized). Years not overridden are copied from trade_full ('basis':'trade_full (kept)'); overridden years carry 'basis':'nonreport_study' plus the trade_full central for comparison. USD converted at ECB annual averages (USD/EUR 2019 1.1195 ... 2025 1.1300, 2026 1.1629). Fossil values from CREA (Kpler-based, destination of discharge) retrieved 2026-10-17. Ranges ~90%, wider (C/D) where reconstructed from official statements. paid_share = share of Russian supplies (imports_from_RUS) paid for in money; 1-paid_share is Russian credit/aid/barter - support to that country, not money to Russia.",
+ "unit": "EUR bn",
+ "retrieved": "2026-10-17",
+ "countries": {
+  "CUB": {
+   "name": "Cuba",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.367619,
+     "central": 0.472032,
+     "high": 0.606102,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.472032,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.218321,
+     "central": 0.280329,
+     "high": 0.35995,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.280329,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.413494,
+     "central": 0.530937,
+     "high": 0.681737,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.530937,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.42,
+     "central": 0.6,
+     "high": 0.85,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.087808,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.22,
+     "central": 0.37,
+     "high": 0.55,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.089633,
+     "trade_full_basis": "imf"
+    },
+    "2024": {
+     "low": 0.18,
+     "central": 0.28,
+     "high": 0.42,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.106872,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 0.16,
+     "central": 0.26,
+     "high": 0.4,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.105716,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.06,
+     "central": 0.11,
+     "high": 0.22,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.047923,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.018337,
+     "central": 0.023545,
+     "high": 0.030232,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.023545,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.005062,
+     "central": 0.0065,
+     "high": 0.008346,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.0065,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.003554,
+     "central": 0.004563,
+     "high": 0.005859,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.004563,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.01,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.002268,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.01,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.002452,
+     "trade_full_basis": "imf"
+    },
+    "2024": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.01,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.003281,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.01,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.00157,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.002,
+     "high": 0.007,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.000999,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.15,
+    "central": 0.35,
+    "high": 0.65
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker API v0/counter, monthly by destination (Kpler-based)",
+     "url": "https://api.russiafossiltracker.com/v0/counter",
+     "date": "2026-10-17 (retrieved; data to 2026-08)"
+    },
+    {
+     "name": "Chernyshenko via Russia-Cuba business council: 2022 turnover tripled to USD 452m",
+     "url": "https://xn--90aivcdt6dxbc.xn--p1ai/articles/news/tovarooborot_mezhdu_rossiey_i_kuboy_za_god_vyros_v_tri_raza/",
+     "date": "2023 (accessed 2026-10-17)"
+    },
+    {
+     "name": "Interfax: Mishustin, Russia-Cuba trade x9 in Jan-Apr 2023 (USD 137.6m); 2022 ~RUB 60bn",
+     "url": "https://interfax.com/newsroom/top-stories/91271/",
+     "date": "2023-06-07"
+    },
+    {
+     "name": "gCaptain/Reuters: first Russian oil in a year, 90 kt, ~USD 46m (Pinon); no Russian crude to Cuba in 2023",
+     "url": "https://gcaptain.com/russian-oil-arrives-in-cuba-after-year-long-hiatus/",
+     "date": "2024-03"
+    },
+    {
+     "name": "TASS: Chernyshenko, ~100 kt oil delivered 19 Feb 2025 under Russian state loan",
+     "url": "https://tass.com/economy/1939131",
+     "date": "2025"
+    },
+    {
+     "name": "Maritime Executive: Anatoly Kolodkin, 100 kt \"humanitarian\" crude at Matanzas",
+     "url": "https://news.maritime-executive.com/article/sanctioned-russian-tanker-docks-in-cuba-bringing-badly-needed-crude-oil",
+     "date": "2026-03-31"
+    },
+    {
+     "name": "ADN/AP: Russia plans second tanker to Cuba",
+     "url": "https://www.adn.com/nation-world/2026/04/02/russia-plans-to-send-second-oil-tanker-to-cuba-amid-energy-blockade/",
+     "date": "2026-04-02"
+    }
+   ],
+   "reasoning": "Cuba's own 2022 report (EUR 0.09bn) and the IMF/estimated 2023-26 values (~0.1bn) omit Russian oil. CREA (Kpler) puts Russian crude+products to Cuba at EUR 0.545bn in 2022, 0.164 (2023), 0.158 (2024), 0.139 (2025), 0.044 (Jan-Aug 2026 = one 100 kt cargo). Russian officials: 2022 turnover USD 452m (Chernyshenko) to ~RUB 60bn (~USD 0.87bn, Mishustin); Jan-Apr 2023 USD 137.6m. Educated guess: imports = CREA fossil value + non-fossil goods (cars/trucks, flour, sunflower oil, spare parts; ~EUR 0.07-0.2bn/yr, growing per Agroexport +20% in 2024). 2022 central 0.60 sits between the two official turnover statements and above CREA fossil alone; 2023 central = Jan-Apr x3. Paid share: the Feb 2025 cargo was explicitly under a Russian state loan, the Mar 2026 cargo 'humanitarian'; Cuba was already in arrears and Russia deferred Cuban debt service; non-oil goods are partly on Russian export credits. Central 35% paid, i.e. ~65% of Russian supplies 2022-26 are Russian support to Cuba rather than money to Russia (oil share of unpaid higher, ~80%). Exports to Russia (rum, cigars, pharma) tiny; trade_full values kept in magnitude but range widened."
+  },
+  "VEN": {
+   "name": "Venezuela",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.070602,
+     "central": 0.100471,
+     "high": 0.142974,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.100471,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 0.072068,
+     "central": 0.102557,
+     "high": 0.145943,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.102557,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.102812,
+     "central": 0.146306,
+     "high": 0.208201,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.146306,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.06,
+     "central": 0.1,
+     "high": 0.16,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.154536,
+     "trade_full_basis": "estimated"
+    },
+    "2023": {
+     "low": 0.07,
+     "central": 0.11,
+     "high": 0.17,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.092711,
+     "trade_full_basis": "estimated"
+    },
+    "2024": {
+     "low": 0.16,
+     "central": 0.25,
+     "high": 0.36,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.090532,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 0.8,
+     "central": 1.1,
+     "high": 1.35,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.062207,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.05,
+     "central": 0.09,
+     "high": 0.18,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.040176,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.000829,
+     "central": 0.001096,
+     "high": 0.001449,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.001096,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 0.000776,
+     "central": 0.001026,
+     "high": 0.001357,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.001026,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.000867,
+     "central": 0.001146,
+     "high": 0.001516,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.001146,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.01,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.000865,
+     "trade_full_basis": "estimated"
+    },
+    "2023": {
+     "low": 0.002,
+     "central": 0.006,
+     "high": 0.015,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.000691,
+     "trade_full_basis": "estimated"
+    },
+    "2024": {
+     "low": 0.005,
+     "central": 0.015,
+     "high": 0.03,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.000583,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 0.005,
+     "central": 0.015,
+     "high": 0.03,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.000572,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.002,
+     "central": 0.007,
+     "high": 0.02,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.000364,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.65,
+    "central": 0.85,
+    "high": 0.97
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker API v0/counter, monthly by destination (Kpler-based)",
+     "url": "https://api.russiafossiltracker.com/v0/counter",
+     "date": "2026-10-17 (retrieved; data to 2026-08)"
+    },
+    {
+     "name": "Argus (Vortexa/Kpler): Venezuela naphtha imports 88 kb/d in 2025, Russia 41% (~36 kb/d); Jan 2026 loadings all US Gulf",
+     "url": "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2781568-us-naphtha-displaces-russian-flows-to-venezuela",
+     "date": "2026-01"
+    },
+    {
+     "name": "Baird Maritime/Reuters: PDVSA importing Russian naphtha",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/data-indicates-venezuelas-pdvsa-is-importing-naphtha-from-russia",
+     "date": "2025"
+    },
+    {
+     "name": "Interfax: Putin, Russia-Venezuela trade ~USD 200m, +64% last year",
+     "url": "https://interfax.com/newsroom/top-stories/111314/",
+     "date": "2025-05-07"
+    },
+    {
+     "name": "Interfax: Russia-Venezuela trade +47% Jan-May 2023",
+     "url": "https://interfax.com/newsroom/top-stories/92659/",
+     "date": "2023"
+    }
+   ],
+   "reasoning": "trade_full only extrapolated Russia's 2019-21 mirror data (~EUR 0.1bn) and misses the 2025 naphtha trade. Kpler/Vortexa: Russia supplied ~36 kb/d of naphtha (diluent) in 2025 (from Dec 2024); CREA values Russian fossil to Venezuela at EUR 0.16bn (2024), 0.97bn (2025), 0.044bn (Jan-Aug 2026, after the US takeover of Venezuelan oil exports in Jan 2026). Non-fossil (fertilizer, wheat, soybean oil, vehicles): official turnover ~USD 120m in 2023 and ~USD 200m in 2024 (Putin) -> ~EUR 0.1-0.18bn. 2025 = CREA 0.97 + ~0.13 non-fossil. Paid share: naphtha was bought by PDVSA via intermediaries (swaps against crude / cash) - commercial; Venezuela also serviced its restructured Russian debt. Arms deliveries on earlier Russian credit are not in goods trade. Exports to Russia: cocoa, rum etc., small (FM: +453% vs 2022 by Sep 2024 from a tiny base)."
+  },
+  "SYR": {
+   "name": "Syria",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.222622,
+     "central": 0.316801,
+     "high": 0.450823,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.316801,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 0.132616,
+     "central": 0.188719,
+     "high": 0.268555,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.188719,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.416881,
+     "central": 0.593241,
+     "high": 0.84421,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.593241,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.35,
+     "central": 0.544,
+     "high": 0.8,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.543902,
+     "trade_full_basis": "imf"
+    },
+    "2023": {
+     "low": 0.3,
+     "central": 0.477,
+     "high": 0.7,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.476546,
+     "trade_full_basis": "imf"
+    },
+    "2024": {
+     "low": 0.3,
+     "central": 0.513,
+     "high": 0.75,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.513047,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 0.9,
+     "central": 1.25,
+     "high": 1.55,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.84589,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.95,
+     "central": 1.3,
+     "high": 1.65,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.546311,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.002689,
+     "central": 0.003557,
+     "high": 0.004704,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.003557,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 0.004091,
+     "central": 0.00541,
+     "high": 0.007154,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.00541,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.006028,
+     "central": 0.007972,
+     "high": 0.010543,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.007972,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.001805,
+     "central": 0.00602,
+     "high": 0.018123,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.00602,
+     "trade_full_basis": "estimated"
+    },
+    "2023": {
+     "low": 0.000357,
+     "central": 0.004805,
+     "high": 0.021798,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.004805,
+     "trade_full_basis": "estimated"
+    },
+    "2024": {
+     "low": 0.000181,
+     "central": 0.004058,
+     "high": 0.023404,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.004058,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 0.000272,
+     "central": 0.003978,
+     "high": 0.015163,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.003978,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 9.2e-05,
+     "central": 0.002532,
+     "high": 0.014825,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.002532,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.35,
+    "central": 0.65,
+    "high": 0.9
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker API v0/counter, monthly by destination (Kpler-based)",
+     "url": "https://api.russiafossiltracker.com/v0/counter",
+     "date": "2026-10-17 (retrieved; data to 2026-08)"
+    },
+    {
+     "name": "gCaptain/Reuters: Russia ships Arctic crude to Syria (Baniyas) for first time; ~350 kt by spring 2025",
+     "url": "https://gcaptain.com/russia-ships-arctic-oil-to-syria-for-first-time/",
+     "date": "2025-03"
+    },
+    {
+     "name": "IENE/Reuters: Russia boosts oil supplies to Syria",
+     "url": "https://www.iene.eu/energy-news/russia-boosts-oil-supplies-to-syria-data-shows--p7843.html",
+     "date": "2025"
+    },
+    {
+     "name": "AJOT/Signal Ocean: Syria tanker trade 2026, Russian load ports 8.0m bbl = 47% of 2026 wet arrivals",
+     "url": "https://www.ajot.com/news/signal-market-insights-syrias-tanker-trade-what-the-data-shows",
+     "date": "2026"
+    }
+   ],
+   "reasoning": "Syria does not report; 2019-21 = Russia's mirror, 2022-24 IMF (mainly Russian wheat, partly grain from occupied Ukraine) kept with wider range. After Assad fell (Dec 2024) Iranian crude stopped and Russia became the main crude/product supplier to Baniyas: CREA EUR 1.13bn in 2025 and 1.26bn in Jan-Aug 2026, vs trade_full 0.85 (2025) and 0.55 (2026). 2025-26 = CREA fossil + ~0.05-0.15 non-fossil (wheat resumed in reduced volumes). Paid share: Assad-era wheat largely on Russian credit/aid terms (central ~40% paid); 2025-26 cargoes are sanctioned Gazprom Neft Arctic barrels sold via intermediaries at discount, presumably paid (~85%); weighted central 0.65."
+  },
+  "IRN": {
+   "name": "Iran",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.814678,
+     "central": 1.040292,
+     "high": 1.328386,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.040292,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.706534,
+     "central": 0.902199,
+     "high": 1.15205,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.902199,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 1.101149,
+     "central": 1.406097,
+     "high": 1.795497,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.406097,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 1.134747,
+     "central": 1.449,
+     "high": 1.850281,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.449,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 1.156128,
+     "central": 1.710378,
+     "high": 2.184044,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.710378,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 1.05,
+     "central": 1.25,
+     "high": 1.55,
+     "basis": "nonreport_study",
+     "trade_full_central": 1.133541,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 0.95,
+     "central": 1.28,
+     "high": 1.6,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.974246,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.45,
+     "central": 0.75,
+     "high": 1.0,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.494751,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.373501,
+     "central": 0.409909,
+     "high": 0.449866,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.409909,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.399772,
+     "central": 0.438742,
+     "high": 0.481509,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.438742,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.445691,
+     "central": 0.489137,
+     "high": 0.536817,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.489137,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.598692,
+     "central": 0.657052,
+     "high": 0.7211,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.657052,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.766612,
+     "central": 0.84134,
+     "high": 0.923353,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.84134,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.75,
+     "central": 0.97,
+     "high": 1.15,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.467177,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 0.65,
+     "central": 0.97,
+     "high": 1.25,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.467268,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.3,
+     "central": 0.55,
+     "high": 0.8,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.293283,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.75,
+    "central": 0.9,
+    "high": 0.98
+   },
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "Eghtesad Online/IRICA: 9M 1403 (to 20 Dec 2024) imports from Russia USD 1.099bn, exports USD 803m",
+     "url": "https://www.eghtesadonline.com/en/news/2000632/irans-exports-to-russia-up-14-in-9-months-irica",
+     "date": "2025-01-15"
+    },
+    {
+     "name": "Tehran Times/IRICA: non-oil imports from Russia USD 1.3bn in year to Mar 2025",
+     "url": "https://www.tehrantimes.com/news/512018/",
+     "date": "2025"
+    },
+    {
+     "name": "TASS: Tsivilev, Russia-Iran turnover +16.2% in 2024 to USD 4.8bn (2023 ~USD 4.0bn)",
+     "url": "https://tass.com/economy/1949413",
+     "date": "2025"
+    },
+    {
+     "name": "TASS: turnover +13.1% to USD 4.8bn in Jan-Nov 2025",
+     "url": "https://tass.com/economy/2088433",
+     "date": "2026-02-18"
+    },
+    {
+     "name": "Iran International: customs vs ambassador export claims; drones not in customs data",
+     "url": "https://www.iranintl.com/en/202402266973",
+     "date": "2024-02-26"
+    }
+   ],
+   "reasoning": "Iran reported through 2023; trade_full's IMF values for 2024-25 understate Iranian exports to Russia (0.47 vs customs ~USD 1.05bn) and slightly imports. Used Iranian customs (IRICA) for consistency with the 2019-23 reporter basis: 2024 imports ~USD 1.35-1.4bn, exports ~USD 1.05bn (9M x 12/9, cross-checked with full-year 1403 'over USD 1bn' and 1.3bn). 2025 = 2024 x Russian-side growth (+13% Jan-Nov) tempered by the June 2025 war; 2026 = 8/12 of 2025 with wide downside. Russian official turnover (~USD 4-5bn) is ~2x Iranian customs in every year including 2021, so it is a different coverage (grain via Caspian traders, gold, transit), not a post-2022 gap; using it would break comparability with the baseline. Iranian drones/missiles to Russia (Shahed licence deal ~USD 1.75bn, reportedly partly paid in gold) are NOT in these goods figures - see arms_note.",
+   "arms_note": "Iranian UAV/missile transfers to Russia (2022-24) are outside customs data; reported Shahed production deal ~USD 1.75bn. Not included in exports_to_RUS to avoid double counting with military modules."
+  },
+  "PRK": {
+   "name": "Dem. People's Rep. of Korea",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.033243,
+     "central": 0.047306,
+     "high": 0.067319,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.047306,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 0.030467,
+     "central": 0.043356,
+     "high": 0.061697,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.043356,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.02,
+     "central": 0.04,
+     "high": 0.065,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.064199,
+     "trade_full_basis": "estimated"
+    },
+    "2022": {
+     "low": 0.005,
+     "central": 0.02,
+     "high": 0.06,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.068516,
+     "trade_full_basis": "estimated"
+    },
+    "2023": {
+     "low": 0.02,
+     "central": 0.06,
+     "high": 0.15,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.045352,
+     "trade_full_basis": "estimated"
+    },
+    "2024": {
+     "low": 0.1,
+     "central": 0.18,
+     "high": 0.35,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.040172,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 0.1,
+     "central": 0.22,
+     "high": 0.45,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.032699,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.06,
+     "central": 0.15,
+     "high": 0.3,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.021118,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.001553,
+     "central": 0.002054,
+     "high": 0.002716,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.002054,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 0.000352,
+     "central": 0.000465,
+     "high": 0.000615,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000465,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 2e-05,
+     "central": 2.6e-05,
+     "high": 3.4e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 2.6e-05,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0005,
+     "high": 0.003,
+     "basis": "nonreport_study",
+     "trade_full_central": 2e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.002,
+     "high": 0.01,
+     "basis": "nonreport_study",
+     "trade_full_central": 1.6e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2024": {
+     "low": 0.002,
+     "central": 0.008,
+     "high": 0.03,
+     "basis": "nonreport_study",
+     "trade_full_central": 1.3e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 0.002,
+     "central": 0.01,
+     "high": 0.04,
+     "basis": "nonreport_study",
+     "trade_full_central": 1.3e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.001,
+     "central": 0.006,
+     "high": 0.03,
+     "basis": "nonreport_study",
+     "trade_full_central": 8e-06,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.05,
+    "central": 0.2,
+    "high": 0.5
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "NK News: Russia-North Korea trade hit record USD 34m in 2024 on food and fuel (official)",
+     "url": "https://www.nknews.org/2025/06/russia-north-korea-trade-hit-record-34m-in-2024-on-food-and-fuel-official",
+     "date": "2025-06"
+    },
+    {
+     "name": "Malay Mail/BBC-Open Source Centre: >1m barrels Russian oil to DPRK in 8 months of 2024 (cap 500k/yr)",
+     "url": "https://www.malaymail.com/news/world/2024/11/23/report-north-korea-received-over-1-million-barrels-of-russian-oil-violating-un-sanctions/157741",
+     "date": "2024-11-23"
+    },
+    {
+     "name": "OCCRP: leaked records on Russian fuel to DPRK (~1.3m bbl), payment channels",
+     "url": "https://www.occrp.org/en/scoop/leaked-russian-records-reveal-obscure-firms-helping-bust-oil-sanctions-on-north-korea",
+     "date": "2025-11"
+    },
+    {
+     "name": "Kyiv Independent/KIDA: DPRK earned ~USD 20bn from Russia (munitions ~19.2bn)",
+     "url": "https://kyivindependent.com/north-korea-earns-over-20-billion-aiding-russias-war-effort-report-says/",
+     "date": "2025-04-16"
+    },
+    {
+     "name": "The Defense Post/INSS: up to USD 14.4bn through Dec 2025, 0.58-1.5bn observably confirmed",
+     "url": "https://thedefensepost.com/2026/03/17/n-korea-earnings-russia-military/",
+     "date": "2026-03-17"
+    }
+   ],
+   "reasoning": "Official trade is tiny (USD 34m in 2024, 'record'), but Russia ships refined oil far above the UN cap: >1m bbl in 8 months of 2024 (OSC), i.e. ~1.5-2m bbl/yr ~ USD 0.13-0.18bn delivered, plus food, flour and vehicles outside official statistics. Central 2024 ~USD 0.2bn; 2025 slightly higher (expanded rail/road links, tourism, food); 2022 near zero (border closed), 2023 ramp-up from Sep 2023. Military technology transfers excluded. Paid share: these goods are largely compensation in kind for DPRK munitions and troops (barter) - not money to Russia; cash payments via UAE intermediaries exist (OCCRP) -> central 20% paid. DPRK civilian goods exports to Russia negligible; munitions are reported separately in military_exports_to_RUS and NOT included in exports_to_RUS.",
+   "military_exports_to_RUS_cumulative_2023_2025": {
+    "low": 1.39,
+    "central": 8.31,
+    "high": 17.74,
+    "unit": "EUR bn (USD at 2024 rate)",
+    "note": "Munitions/missiles/troop services valued at market-equivalent prices; low = INSS observably confirmed (USD 0.58-1.5bn), high = KIDA USD 19.2bn munitions (to early 2025), central = educated guess between INSS ceiling 14.4bn and confirmed amounts. Paid mostly in kind (oil, food, technology). Use only in a military module."
+   }
+  },
+  "TKM": {
+   "name": "Turkmenistan",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.40256,
+     "central": 0.572861,
+     "high": 0.815208,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.572861,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 0.471649,
+     "central": 0.671179,
+     "high": 0.955119,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.671179,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.508447,
+     "central": 0.723544,
+     "high": 1.029636,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.723544,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.5,
+     "central": 0.7,
+     "high": 1.2,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.764242,
+     "trade_full_basis": "estimated"
+    },
+    "2023": {
+     "low": 0.45,
+     "central": 0.59,
+     "high": 0.85,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.458495,
+     "trade_full_basis": "estimated"
+    },
+    "2024": {
+     "low": 0.8,
+     "central": 1.11,
+     "high": 1.4,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.447715,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 1.0,
+     "central": 1.38,
+     "high": 1.7,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.30764,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.55,
+     "central": 0.92,
+     "high": 1.25,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.198687,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.077557,
+     "central": 0.102567,
+     "high": 0.135642,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.102567,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 0.160831,
+     "central": 0.212694,
+     "high": 0.281281,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.212694,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.068096,
+     "central": 0.090054,
+     "high": 0.119094,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.090054,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.07,
+     "central": 0.105,
+     "high": 0.2,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.067999,
+     "trade_full_basis": "estimated"
+    },
+    "2023": {
+     "low": 0.09,
+     "central": 0.126,
+     "high": 0.2,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.054282,
+     "trade_full_basis": "estimated"
+    },
+    "2024": {
+     "low": 0.15,
+     "central": 0.28,
+     "high": 0.4,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.045842,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 0.2,
+     "central": 0.35,
+     "high": 0.5,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.04493,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.12,
+     "central": 0.23,
+     "high": 0.35,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.028596,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.9,
+    "central": 0.97,
+    "high": 1.0
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "Oilgas.gov.tm: TKM-RUS turnover +13% in 2023 to 678m (Russian supplies 542m +11%, TKM exports 136m +22%; units printed as tons)",
+     "url": "https://oilgas.gov.tm/en/posts/news/10897/trade-turnover-between-turkmenistan-and-russia-increased-by-13-in-2023",
+     "date": "2024-05-17"
+    },
+    {
+     "name": "Oilgas.gov.tm: Jan-Mar 2023 turnover +10.4% to USD 386m",
+     "url": "https://oilgas.gov.tm/en/posts/news/7703/in-january-march-the-trade-turnover-of-turkmenistan-with-russia-increased-by-104",
+     "date": "2023"
+    },
+    {
+     "name": "Russia's Pivot to Asia: H1 2024 turnover +73% to >USD 700m",
+     "url": "https://russiaspivottoasia.com/russian/tovarooborot-mezhdu-rossiej-i-turkmenistanom-vyros-na-73-v-pervom-polugodii-2024-goda/",
+     "date": "2024-09-15"
+    },
+    {
+     "name": "Oilgas.gov.tm: Russia a key partner, annual turnover over USD 1.6bn",
+     "url": "https://oilgas.gov.tm/en/posts/news/14264/russia-is-one-of-turkmenistans-key-trading-partners",
+     "date": "2025-06"
+    },
+    {
+     "name": "TASS: Putin, turnover +35% in Jan-Oct 2025, exceeding all of 2024",
+     "url": "https://tass.com/politics/2057993",
+     "date": "2025"
+    },
+    {
+     "name": "TASS: turnover up nearly one-third since start of 2025",
+     "url": "https://tass.com/economy/1998263",
+     "date": "2025-08-05"
+    }
+   ],
+   "reasoning": "Neither side publishes; trade_full extrapolated a decline to EUR 0.31bn imports in 2025, contradicted by official statements of strong growth. Reconstruction (educated guess, wide ranges): 2023 turnover ~USD 0.68-1.0bn with Russia ~80% (542m vs 136m per Turkmen statement, units read as USD); 2022 = 2023/1.13 but bounded up by the ambassador's 'USD >1.6bn'; H1 2024 >USD 700m (+73%), full 2024 ~USD 1.5bn (consistent with 'over USD 1.6bn annual' in June 2025); 2025 = +30-35% (~USD 1.95bn); 2026 Jan-Aug = 8/12 of 2025. Split 80/20 assumed (2023 ratio). Commercial trade (grain, machinery, timber vs. textiles, fruit, polymers): paid ~97%. Gas purchases by Gazprom are not visible in either source and are excluded."
+  },
+  "TJK": {
+   "name": "Tajikistan",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.874792,
+     "central": 0.901433,
+     "high": 0.928886,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.901433,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.792364,
+     "central": 0.816496,
+     "high": 0.841362,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.816496,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 1.050662,
+     "central": 1.082659,
+     "high": 1.115631,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.082659,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 1.461315,
+     "central": 1.505818,
+     "high": 1.551677,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.505818,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.83,
+     "central": 1.4,
+     "high": 1.6,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.831853,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 1.4,
+     "central": 1.65,
+     "high": 1.85,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.841694,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 1.5,
+     "central": 1.77,
+     "high": 2.1,
+     "basis": "nonreport_study",
+     "trade_full_central": 1.523784,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.9,
+     "central": 1.18,
+     "high": 1.45,
+     "basis": "nonreport_study",
+     "trade_full_central": 1.098291,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.03508,
+     "central": 0.039576,
+     "high": 0.044649,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.039576,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.031843,
+     "central": 0.035924,
+     "high": 0.040529,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.035924,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.05431,
+     "central": 0.061271,
+     "high": 0.069124,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.061271,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.07426,
+     "central": 0.083778,
+     "high": 0.094515,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.083778,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.110414,
+     "central": 0.124565,
+     "high": 0.14053,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.124565,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.08,
+     "central": 0.1,
+     "high": 0.14,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.11135,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 0.08,
+     "central": 0.1,
+     "high": 0.14,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.111331,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.05,
+     "central": 0.07,
+     "high": 0.1,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.070857,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.9,
+    "central": 0.97,
+    "high": 1.0
+   },
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "Interfax: Tajik-Russian trade USD 1.9bn in 2024, +USD 200m vs 2023; Jan-Apr 2024 imports USD 600.7m, exports 36.1m",
+     "url": "https://interfax.com/newsroom/top-stories/114318/",
+     "date": "2025-10-15"
+    },
+    {
+     "name": "Interfax: Russian MinEcon, 2025 record USD 2.47bn (+24.8%)",
+     "url": "https://interfax.com/newsroom/top-stories/114209/",
+     "date": "2025-10-09"
+    },
+    {
+     "name": "bne IntelliNews: Jan-May 2025 Russian-Tajik trade ~USD 900m, Tajik exports 42m, +9.3% y/y",
+     "url": "https://www.intellinews.com/russia-s-relegation-in-central-asia-trade-complete-as-china-takes-tajikistan-export-import-crown-391198/",
+     "date": "2025"
+    },
+    {
+     "name": "TASS: turnover >USD 1bn in H1 2025 (+10%)",
+     "url": "https://tass.com/economy/1992635",
+     "date": "2025-07"
+    }
+   ],
+   "reasoning": "Tajikistan's 2023 Comtrade report (EUR 0.83bn imports) and IMF 2024 (0.84) are far below Tajik national statistics: total trade USD 1.7bn (2023) and 1.9bn (2024) with ~94% Russian exports (Jan-Apr 2024 600.7 vs 36.1). 2024 imports ~USD 1.79bn; 2025 Tajik-basis ~USD 2.1bn (+~10% per Tajik H1/5M data; the Russian MinEcon USD 2.47bn is Russian-basis and treated as upper bound); 2026 = 8/12 of 2025. 2023 low = the Comtrade report. Exports ~USD 0.11bn/yr. Commercial (fuel, grain, timber, metals); paid ~97%."
+  },
+  "AFG": {
+   "name": "Afghanistan",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.155144,
+     "central": 0.232716,
+     "high": 0.298813,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.232716,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.086976,
+     "central": 0.15848,
+     "high": 0.288769,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.15848,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.044876,
+     "central": 0.081769,
+     "high": 0.148993,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.081769,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.12,
+     "central": 0.24,
+     "high": 0.4,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.088785,
+     "trade_full_basis": "imf"
+    },
+    "2023": {
+     "low": 0.3,
+     "central": 0.42,
+     "high": 0.6,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.083481,
+     "trade_full_basis": "imf"
+    },
+    "2024": {
+     "low": 0.28,
+     "central": 0.38,
+     "high": 0.55,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.066908,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 0.3,
+     "central": 0.47,
+     "high": 0.55,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.101811,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.18,
+     "central": 0.3,
+     "high": 0.42,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.070671,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.001571,
+     "central": 0.001806,
+     "high": 0.002077,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.001806,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.001779,
+     "central": 0.002353,
+     "high": 0.003112,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.002353,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.002287,
+     "central": 0.003024,
+     "high": 0.004,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.003024,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.008,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.001291,
+     "trade_full_basis": "imf"
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.008,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.001273,
+     "trade_full_basis": "imf"
+    },
+    "2024": {
+     "low": 0.002,
+     "central": 0.004,
+     "high": 0.01,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.00148,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 0.002,
+     "central": 0.004,
+     "high": 0.01,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.001958,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.007,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.001336,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.85,
+    "central": 0.95,
+    "high": 1.0
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "Afghanistan International: Taliban MoIC, trade with Russia USD 538m (imports 534m, exports 4m)",
+     "url": "https://www.afintl.com/en/202603314184",
+     "date": "2026-03-31"
+    },
+    {
+     "name": "Hellenic Shipping News/Reuters: Russian gasoline to Afghanistan tripled to 325 kt in 2023, LPG doubled to 104 kt",
+     "url": "https://www.hellenicshippingnews.com/russia-boosts-fuel-exports-to-central-asia-afghanistan-and-mongolia-in-2023/",
+     "date": "2024-01"
+    },
+    {
+     "name": "VOA: Afghan oil trade with Russia >USD 300m in 11 months of 2023",
+     "url": "https://www.voanews.com/a/afghanistan-boosts-russian-oil-imports-trade-amid-banking-sanctions/7407123.html",
+     "date": "2023-12"
+    },
+    {
+     "name": "BNN Bloomberg: discounted fuel and grain make Taliban boost trade with Russia",
+     "url": "https://www.bnnbloomberg.ca/discounted-fuel-grains-make-taliban-boost-trade-with-russia-1.1830763",
+     "date": "2022-10-11"
+    },
+    {
+     "name": "Profit/Agroexport: Russian flour to Afghanistan ~USD 80m in 2024, double 2023",
+     "url": "https://profit.pakistantoday.com.pk/?p=183159",
+     "date": "2025"
+    }
+   ],
+   "reasoning": "IMF imputes only EUR 0.07-0.10bn; Taliban and Russian statements show far more after the Sep 2022 fuel/wheat deal (much moves by rail via Central Asia, so Russian customs may book it to transit countries). 2023: oil >USD 300m in 11 months + flour ~40m + wheat/other -> ~USD 0.45bn; 2024: Overchuk ~USD 326m (lower bound, Russian basis) vs Taliban-side larger, central ~USD 0.41bn; 2025: Taliban USD 534m imports (latest annual, period not explicit -> range 0.30-0.55 EUR); 2026 = Jan-Aug share. Paid commercially in roubles/cash at a discount: ~95% paid."
+  },
+  "LBY": {
+   "name": "Libya",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.129344,
+     "central": 0.140526,
+     "high": 0.152674,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.140526,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.088051,
+     "central": 0.1253,
+     "high": 0.178308,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.1253,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.232811,
+     "central": 0.331301,
+     "high": 0.471456,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.331301,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.35,
+     "central": 0.5,
+     "high": 0.7,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.349936,
+     "trade_full_basis": "estimated"
+    },
+    "2023": {
+     "low": 1.6,
+     "central": 2.2,
+     "high": 2.8,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.205126,
+     "trade_full_basis": "estimated"
+    },
+    "2024": {
+     "low": 2.0,
+     "central": 2.8,
+     "high": 3.3,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.189935,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 1.3,
+     "central": 1.85,
+     "high": 2.3,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.148904,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.25,
+     "central": 0.38,
+     "high": 0.6,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.096168,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 5e-06,
+     "central": 6e-06,
+     "high": 6e-06,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 6e-06,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.0,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.0,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-06,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.0,
+     "trade_full_basis": "estimated"
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-06,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.0,
+     "trade_full_basis": "estimated"
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-06,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.0,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-06,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.0,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-06,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.0,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.85,
+    "central": 0.95,
+    "high": 1.0
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker API v0/counter, monthly by destination (Kpler-based)",
+     "url": "https://api.russiafossiltracker.com/v0/counter",
+     "date": "2026-10-17 (retrieved; data to 2026-08)"
+    },
+    {
+     "name": "Attaqa (Energy Research Unit, Kpler): Libya top Arab buyer of Russian diesel 2024; Russian fuel exports to Libya 0.26 Mt (2022) -> 2.5 Mt (2023)",
+     "url": "https://attaqa.net/2024/10/20/%d8%a3%d9%83%d8%a8%d8%b1-%d9%85%d8%b3%d8%aa%d9%88%d8%b1%d8%af%d9%8a-%d8%a7%d9%84%d8%af%d9%8a%d8%b2%d9%84-%d8%a7%d9%84%d8%b1%d9%88%d8%b3%d9%8a-%d9%81%d9%8a-2024-5-%d8%af%d9%88%d9%84-%d8%b9%d8%b1/",
+     "date": "2024-10-20"
+    },
+    {
+     "name": "StartMag: ~40% of subsidised fuel imported into Libya smuggled, much of Russian origin",
+     "url": "https://www.startmag.it/?p=268110",
+     "date": "2024"
+    },
+    {
+     "name": "Interfax/Agroexport: Libya among top-5 African buyers of Russian food 2024, value -18%",
+     "url": "https://interfax.com/newsroom/top-stories/110252/",
+     "date": "2025-03-10"
+    },
+    {
+     "name": "Russia's Pivot to Asia: Russia-Libya turnover ~USD 1bn in 2023 vs 350m in 2021",
+     "url": "https://russiaspivottoasia.com/russia-libya-bilateral-2024-relations-update/",
+     "date": "2024"
+    }
+   ],
+   "reasoning": "Libya does not report; trade_full extrapolated EUR 0.15-0.35bn. CREA (Kpler) shows Russian oil products discharged in Libya (largely Benghazi/east and Brega-NOC tenders) of EUR 2.16bn (2023), 2.78bn (2024), 1.76bn (2025), 0.21bn (Jan-Aug 2026). Imports = 0.75-1.0 x CREA (part may be ship-to-ship/transit rather than discharge) + Russian food ~EUR 0.2-0.3bn (Agroexport 2021 USD 275m, -18% in 2024). Russian official turnover (~USD 1bn 2023) is lower because cargoes are sold via third-country traders; by origin they are Russian. A sizeable share is then smuggled onward (Malta/Italy/Sudan/Chad) - still an import into Libya first. Paid: Libyan NOC/Brega fuel imports are paid (crude-for-fuel swaps, cash); ~95%. Russia's military presence in eastern Libya is not trade."
+  },
+  "SDN": {
+   "name": "Sudan",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.203316,
+     "central": 0.289328,
+     "high": 0.411728,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.289328,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 0.271826,
+     "central": 0.386822,
+     "high": 0.550465,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.386822,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.214807,
+     "central": 0.305681,
+     "high": 0.434998,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.305681,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.2,
+     "central": 0.3,
+     "high": 0.45,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.283951,
+     "trade_full_basis": "imf"
+    },
+    "2023": {
+     "low": 0.17,
+     "central": 0.27,
+     "high": 0.4,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.261124,
+     "trade_full_basis": "imf"
+    },
+    "2024": {
+     "low": 0.3,
+     "central": 0.45,
+     "high": 0.6,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.134636,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 0.38,
+     "central": 0.48,
+     "high": 0.6,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.207309,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.42,
+     "central": 0.62,
+     "high": 0.85,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.191541,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.000338,
+     "central": 0.000447,
+     "high": 0.000591,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000447,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 9.1e-05,
+     "central": 0.000121,
+     "high": 0.00016,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000121,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.000132,
+     "central": 0.000174,
+     "high": 0.000231,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000174,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0005,
+     "high": 0.05,
+     "basis": "nonreport_study",
+     "trade_full_central": 2.3e-05,
+     "trade_full_basis": "imf"
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0005,
+     "high": 0.05,
+     "basis": "nonreport_study",
+     "trade_full_central": 1.9e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0005,
+     "high": 0.05,
+     "basis": "nonreport_study",
+     "trade_full_central": 1.7e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0005,
+     "high": 0.05,
+     "basis": "nonreport_study",
+     "trade_full_central": 1.6e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0005,
+     "high": 0.03,
+     "basis": "nonreport_study",
+     "trade_full_central": 1e-05,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.75,
+    "central": 0.9,
+    "high": 1.0
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker API v0/counter, monthly by destination (Kpler-based)",
+     "url": "https://api.russiafossiltracker.com/v0/counter",
+     "date": "2026-10-17 (retrieved; data to 2026-08)"
+    },
+    {
+     "name": "Interfax/Agroexport: Russian agri exports to Sudan ~USD 410m in 2025 (wheat 408m)",
+     "url": "https://www.interfax.com/newsroom/top-stories/115584/",
+     "date": "2026-01-14"
+    },
+    {
+     "name": "Interfax: Russia shipped ~1.7 Mt wheat to Sudan Jul 2025-early Apr 2026 vs 0.7 Mt a year earlier",
+     "url": "https://interfax.com/newsroom/top-stories/117113/",
+     "date": "2026-04-14"
+    },
+    {
+     "name": "Hellenic Shipping News/LSEG: Russia begins diesel exports to Sudan (Port Sudan)",
+     "url": "https://www.hellenicshippingnews.com/russia-begins-diesel-exports-to-sudan-lseg-data-shows/",
+     "date": "2023"
+    }
+   ],
+   "reasoning": "Sudan does not report; trade_full uses IMF imputations (EUR 0.13-0.28bn). Agroexport: wheat USD 408m in 2025, and wheat flows Jul 2025-Apr 2026 2.4x the year before; CREA Russian fuel to Sudan EUR 0.28bn (2024), 0.12 (2025), 0.38 (Jan-Aug 2026). 2025 = 0.36 agri + 0.12 fuel; 2026 = ~1.1 Mt wheat x ~USD 245/t + CREA fuel; 2024 = ~0.75 Mt wheat + flour + CREA fuel. Paid: commercial imports by Port Sudan government/traders, ~90% (some Russian humanitarian wheat). Exports high bound covers unrecorded gold flows (most Sudanese gold goes via UAE)."
+  },
+  "MMR": {
+   "name": "Myanmar",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.012821,
+     "central": 0.016462,
+     "high": 0.021138,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.016462,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.019084,
+     "central": 0.024505,
+     "high": 0.031465,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.024505,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.00724,
+     "central": 0.009297,
+     "high": 0.011937,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.009297,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.0151,
+     "central": 0.0194,
+     "high": 0.15,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.019422,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.018,
+     "central": 0.0231,
+     "high": 0.2,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.023106,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.0113,
+     "central": 0.0145,
+     "high": 0.2,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.014516,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 0.002,
+     "central": 0.0025,
+     "high": 0.1,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.002531,
+     "trade_full_basis": "reported"
+    },
+    "2026": {
+     "low": 0.0018,
+     "central": 0.0024,
+     "high": 0.06,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.00245,
+     "trade_full_basis": "reported",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.022557,
+     "central": 0.028963,
+     "high": 0.037189,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.028963,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.020673,
+     "central": 0.026545,
+     "high": 0.034084,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.026545,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.01544,
+     "central": 0.019826,
+     "high": 0.025457,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.019826,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.009143,
+     "central": 0.011739,
+     "high": 0.015074,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.011739,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.027819,
+     "central": 0.035721,
+     "high": 0.045866,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.035721,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.02543,
+     "central": 0.032653,
+     "high": 0.041927,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.032653,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 0.008032,
+     "central": 0.010314,
+     "high": 0.013243,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.010314,
+     "trade_full_basis": "reported"
+    },
+    "2026": {
+     "low": 0.004042,
+     "central": 0.005373,
+     "high": 0.007144,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.005373,
+     "trade_full_basis": "reported",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.6,
+    "central": 0.85,
+    "high": 0.95
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker API v0/counter, monthly by destination (Kpler-based)",
+     "url": "https://api.russiafossiltracker.com/v0/counter",
+     "date": "2026-10-17 (retrieved; data to 2026-08)"
+    },
+    {
+     "name": "Myanmar Now/Energy Intelligence: Russian crude unloaded at Kyaukphyu and piped to PetroChina Yunnan",
+     "url": "https://myanmar-now.org/en/news/russia-moves-crude-to-chinese-refineries-via-myanmar-pipeline/",
+     "date": "2023-04"
+    },
+    {
+     "name": "TASS: Myanmar minister, bilateral trade USD 74.7m in FY2023-24",
+     "url": "https://tass.com/economy/1898807",
+     "date": "2025"
+    },
+    {
+     "name": "Egypt Independent/Reuters: Myanmar buying Russian oil products, paying in roubles",
+     "url": "https://egyptindependent.com/myanmar-is-purchasing-russian-oil-products-and-will-pay-in-rubles-russian-state-media",
+     "date": "2022-09"
+    }
+   ],
+   "reasoning": "CREA attributes EUR 0.96bn (2023) and 1.39bn (2024) of Russian crude to Myanmar, but it is discharged at Kyaukphyu for the China-Myanmar pipeline and consumed in China (China's customs records it as imports from Russia) - NOT counted here, to avoid double counting. Myanmar's own reports (EUR 0.01-0.04bn) agree with Myanmar's fiscal-year statement (USD 74.7m turnover FY2023-24), so centrals kept; highs raised for Russian diesel/fuel oil bought from 2022 via Singapore traders that may be booked to the consignment country. Paid: commercial in roubles; fertilizer barter; ~85%. Russian arms (on credit) are not in goods data."
+  },
+  "ERI": {
+   "name": "Eritrea",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.002432,
+     "central": 0.00346,
+     "high": 0.004924,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.00346,
+     "trade_full_basis": "imf"
+    },
+    "2020": {
+     "low": 0.000295,
+     "central": 0.000419,
+     "high": 0.000597,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000419,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.006444,
+     "central": 0.00917,
+     "high": 0.01305,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.00917,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.008,
+     "central": 0.012,
+     "high": 0.02,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.009478,
+     "trade_full_basis": "imf"
+    },
+    "2023": {
+     "low": 0.00629,
+     "central": 0.008951,
+     "high": 0.012738,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.008951,
+     "trade_full_basis": "imf"
+    },
+    "2024": {
+     "low": 0.0125,
+     "central": 0.0172,
+     "high": 0.0231,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.009231,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 0.005542,
+     "central": 0.007886,
+     "high": 0.011222,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.007886,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.003807,
+     "central": 0.00576,
+     "high": 0.008716,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.00576,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.000129,
+     "central": 0.00017,
+     "high": 0.000225,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.00017,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 1.1e-05,
+     "central": 1.4e-05,
+     "high": 1.9e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.4e-05,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 6.3e-05,
+     "central": 8.4e-05,
+     "high": 0.000111,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 8.4e-05,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.000981,
+     "central": 0.001297,
+     "high": 0.001715,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.001297,
+     "trade_full_basis": "imf"
+    },
+    "2023": {
+     "low": 0.000542,
+     "central": 0.000716,
+     "high": 0.000948,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000716,
+     "trade_full_basis": "imf"
+    },
+    "2024": {
+     "low": 0.001138,
+     "central": 0.001505,
+     "high": 0.001991,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.001505,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 0.000261,
+     "central": 0.000346,
+     "high": 0.000457,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000346,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.000615,
+     "central": 0.00084,
+     "high": 0.001146,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.00084,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.9
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "The EastAfrican: Russia completes free grain to six African states (25 kt each Mali, Burkina, Zimbabwe, Eritrea; 50 kt Somalia, CAR)",
+     "url": "https://www.theeastafrican.co.ke/tea/business/russia-completes-shipping-of-free-grains-to-six-african-states-4532416",
+     "date": "2024-02"
+    },
+    {
+     "name": "Modern Diplomacy: Eritrea-Russia partnership, 2022 turnover ~USD 13.5m, wheat 27.5 kt",
+     "url": "https://moderndiplomacy.eu/2023/06/02/the-strategic-partnership-between-eritrea-and-russia/",
+     "date": "2023-06-02"
+    }
+   ],
+   "reasoning": "Eritrea does not report; IMF values (~EUR 0.009bn) are of the right order. Adjusted 2022 to the Russian-cited USD 12.7m exports, and added the free 25 kt wheat (~USD 8-10m incl. freight) delivered Jan 2024. Unpaid share = donations (2024) plus concessional terms; central 60% paid."
+  },
+  "MLI": {
+   "name": "Mali",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.061561,
+     "central": 0.064412,
+     "high": 0.067395,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.064412,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.07861,
+     "central": 0.082251,
+     "high": 0.086061,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.082251,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.080652,
+     "central": 0.084387,
+     "high": 0.088296,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.084387,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.066358,
+     "central": 0.069432,
+     "high": 0.072648,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.069432,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.032,
+     "central": 0.09,
+     "high": 0.15,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.032463,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.044,
+     "central": 0.05,
+     "high": 0.09,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.043705,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 0.025,
+     "central": 0.041,
+     "high": 0.08,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.040763,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.021962,
+     "central": 0.03323,
+     "high": 0.050277,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.03323,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.000184,
+     "central": 0.000212,
+     "high": 0.000244,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000212,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.001915,
+     "central": 0.002202,
+     "high": 0.002532,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.002202,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.000251,
+     "central": 0.000289,
+     "high": 0.000332,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000289,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 1e-06,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.0,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 7e-06,
+     "high": 0.000103,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 7e-06,
+     "trade_full_basis": "estimated"
+    },
+    "2024": {
+     "low": 7.8e-05,
+     "central": 9e-05,
+     "high": 0.000103,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 9e-05,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 5e-05,
+     "central": 8.3e-05,
+     "high": 0.000127,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 8.3e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 1.7e-05,
+     "central": 5.3e-05,
+     "high": 0.000124,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 5.3e-05,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.4,
+    "central": 0.7,
+    "high": 0.9
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "Al Jazeera: Russia to ship ~USD 100m food and fuel to Mali (60 kt petroleum products, 30 kt fertiliser, 25 kt wheat)",
+     "url": "https://www.aljazeera.com/news/2022/11/3/malian-minister-says-russia-will-ship-food-and-fuel-to-mali-in-coming-weeks",
+     "date": "2022-11-03"
+    },
+    {
+     "name": "The EastAfrican: 25 kt free Russian wheat to Mali",
+     "url": "https://www.theeastafrican.co.ke/tea/business/russia-completes-shipping-of-free-grains-to-six-african-states-4532416",
+     "date": "2024-02"
+    }
+   ],
+   "reasoning": "Mali reports, but its 2023 figure (EUR 0.03bn) cannot contain the ~USD 100m Russian fuel/fertiliser/wheat package announced Nov 2022 for delivery in following months (likely booked under transit countries Senegal/Guinea/Cote d'Ivoire or not recorded). 2023 central raised to 0.09; 2024 includes 25 kt free wheat. Terms of the 2022 package unclear (preferential; fertiliser offered free by Putin) -> paid share central 0.7."
+  },
+  "BFA": {
+   "name": "Burkina Faso",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.233645,
+     "central": 0.300006,
+     "high": 0.385215,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.300006,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.197054,
+     "central": 0.253023,
+     "high": 0.324887,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.253023,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.155597,
+     "central": 0.199791,
+     "high": 0.256536,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.199791,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.324319,
+     "central": 0.416434,
+     "high": 0.534712,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.416434,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.377354,
+     "central": 0.484532,
+     "high": 0.622151,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.484532,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.540639,
+     "central": 0.694194,
+     "high": 0.891363,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.694194,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 0.389002,
+     "central": 0.708807,
+     "high": 1.291531,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.708807,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.264616,
+     "central": 0.500829,
+     "high": 0.947903,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.500829,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 3.6e-05,
+     "central": 5.1e-05,
+     "high": 5.8e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 5.1e-05,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 1e-06,
+     "central": 1e-06,
+     "high": 1e-06,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1e-06,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 3.8e-05,
+     "central": 5.7e-05,
+     "high": 6.6e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 5.7e-05,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.000128,
+     "central": 0.000192,
+     "high": 0.000221,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000192,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.000246,
+     "central": 0.000283,
+     "high": 0.000326,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000283,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.001595,
+     "central": 0.001835,
+     "high": 0.00211,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.001835,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 0.000263,
+     "central": 0.001691,
+     "high": 0.002592,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.001691,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 8.9e-05,
+     "central": 0.001076,
+     "high": 0.002534,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.001076,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.85,
+    "central": 0.95,
+    "high": 1.0
+   },
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "The EastAfrican: 25 kt free Russian wheat to Burkina Faso",
+     "url": "https://www.theeastafrican.co.ke/tea/business/russia-completes-shipping-of-free-grains-to-six-african-states-4532416",
+     "date": "2024-02"
+    }
+   ],
+   "reasoning": "Burkina Faso reports to Comtrade (imports from Russia rising to EUR 0.69bn in 2024, IMF 0.71 in 2025) - consistent with the large-flow expectation; no correction. Free 25 kt wheat (~USD 8m) is the only identified unpaid component -> ~95% paid."
+  },
+  "NER": {
+   "name": "Niger",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.002344,
+     "central": 0.00301,
+     "high": 0.003864,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.00301,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.009968,
+     "central": 0.0128,
+     "high": 0.016435,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.0128,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.007054,
+     "central": 0.009057,
+     "high": 0.011629,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.009057,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.008565,
+     "central": 0.010997,
+     "high": 0.01412,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.010997,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.009186,
+     "central": 0.011796,
+     "high": 0.015146,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.011796,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.006483,
+     "central": 0.008324,
+     "high": 0.010688,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.008324,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 0.002578,
+     "central": 0.00331,
+     "high": 0.004966,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.00331,
+     "trade_full_basis": "reported"
+    },
+    "2026": {
+     "low": 0.001401,
+     "central": 0.002098,
+     "high": 0.003332,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.002098,
+     "trade_full_basis": "reported",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 4.7e-05,
+     "central": 5.3e-05,
+     "high": 6.2e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 5.3e-05,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 3.9e-05,
+     "central": 4.4e-05,
+     "high": 5.1e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 4.4e-05,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 1e-05,
+     "central": 1.1e-05,
+     "high": 1.3e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.1e-05,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 3.3e-05,
+     "central": 3.8e-05,
+     "high": 4.4e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 3.8e-05,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 3.2e-05,
+     "central": 5.1e-05,
+     "high": 8e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 5.1e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2024": {
+     "low": 6e-05,
+     "central": 6.9e-05,
+     "high": 8e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 6.9e-05,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 0.000147,
+     "central": 0.000221,
+     "high": 0.000254,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000221,
+     "trade_full_basis": "reported"
+    },
+    "2026": {
+     "low": 5e-05,
+     "central": 0.000168,
+     "high": 0.000318,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000168,
+     "trade_full_basis": "reported",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.7,
+    "central": 0.9,
+    "high": 1.0
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "trade_full.json (Niger customs via Comtrade)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Niger reports small imports from Russia (EUR <0.015bn). No evidence found of large unrecorded Russian commercial flows (Russian support is mainly military/security). Kept; paid share mostly commercial."
+  },
+  "CAF": {
+   "name": "Central African Rep.",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.000625,
+     "central": 0.000745,
+     "high": 0.000889,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000745,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.000374,
+     "central": 0.000446,
+     "high": 0.000532,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000446,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.001487,
+     "central": 0.001774,
+     "high": 0.002116,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.001774,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.001,
+     "central": 0.005,
+     "high": 0.02,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.000992,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.01,
+     "high": 0.03,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.000611,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.002,
+     "central": 0.02,
+     "high": 0.04,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.002228,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 0.002,
+     "central": 0.008,
+     "high": 0.03,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.002006,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.001,
+     "central": 0.005,
+     "high": 0.02,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.001296,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 4.6e-05,
+     "central": 6.1e-05,
+     "high": 8e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 6.1e-05,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 2.7e-05,
+     "central": 3.6e-05,
+     "high": 4.7e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 3.6e-05,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 3.2e-05,
+     "central": 3.7e-05,
+     "high": 4.3e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 3.7e-05,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 6.3e-05,
+     "central": 7.2e-05,
+     "high": 8.3e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 7.2e-05,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 5e-05,
+     "central": 5.7e-05,
+     "high": 6.6e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 5.7e-05,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 2.7e-05,
+     "central": 5.1e-05,
+     "high": 9.4e-05,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 5.1e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 2.8e-05,
+     "central": 5.1e-05,
+     "high": 0.000103,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 5.1e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 9e-06,
+     "central": 3.2e-05,
+     "high": 0.000101,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 3.2e-05,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.1,
+    "central": 0.3,
+    "high": 0.6
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "The EastAfrican: 50 kt free Russian grain to CAR",
+     "url": "https://www.theeastafrican.co.ke/tea/business/russia-completes-shipping-of-free-grains-to-six-african-states-4532416",
+     "date": "2024-02"
+    }
+   ],
+   "reasoning": "CAR's reported imports from Russia (EUR 0.001-0.002bn) miss even the 50 kt free wheat (~USD 15m, delivered early 2024) and fuel/consumer goods brought in with the Russian (Wagner/Africa Corps) presence via Cameroon. Educated guess with wide ranges. Largely donations / in-kind (payment via mining concessions) -> paid share central 0.3."
+  },
+  "NIC": {
+   "name": "Nicaragua",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.048709,
+     "central": 0.054028,
+     "high": 0.059929,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.054028,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.050143,
+     "central": 0.055619,
+     "high": 0.061693,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.055619,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.073858,
+     "central": 0.110786,
+     "high": 0.122885,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.110786,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.071959,
+     "central": 0.079817,
+     "high": 0.088534,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.079817,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.087798,
+     "central": 0.097386,
+     "high": 0.146079,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.097386,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.081438,
+     "central": 0.090332,
+     "high": 0.135498,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.090332,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 0.089526,
+     "central": 0.134289,
+     "high": 0.148955,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.134289,
+     "trade_full_basis": "reported"
+    },
+    "2026": {
+     "low": 0.041524,
+     "central": 0.077741,
+     "high": 0.115406,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.077741,
+     "trade_full_basis": "reported",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.007585,
+     "central": 0.010817,
+     "high": 0.011211,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.010817,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.006074,
+     "central": 0.009111,
+     "high": 0.009444,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.009111,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.010698,
+     "central": 0.011088,
+     "high": 0.011493,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.011088,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.003833,
+     "central": 0.003973,
+     "high": 0.004118,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.003973,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.004609,
+     "central": 0.004777,
+     "high": 0.004951,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.004777,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.003656,
+     "central": 0.003869,
+     "high": 0.00401,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.003869,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 0.004922,
+     "central": 0.005101,
+     "high": 0.005287,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.005101,
+     "trade_full_basis": "reported"
+    },
+    "2026": {
+     "low": 0.001666,
+     "central": 0.003247,
+     "high": 0.005169,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.003247,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.6,
+    "central": 0.8,
+    "high": 0.95
+   },
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "trade_full.json (Nicaragua customs via Comtrade)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Nicaragua reports to Comtrade (imports EUR 0.08-0.13bn, rising in 2025) - no correction needed. Russia has donated wheat and vehicles (buses, Lada cars) to Nicaragua; part of trade is on concessional terms -> paid ~80%."
+  },
+  "LAO": {
+   "name": "Lao People's Dem. Rep.",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.007467,
+     "central": 0.009588,
+     "high": 0.012311,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.009588,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.003011,
+     "central": 0.003867,
+     "high": 0.004965,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.003867,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.015681,
+     "central": 0.023521,
+     "high": 0.030202,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.023521,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.00832,
+     "central": 0.010684,
+     "high": 0.016026,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.010684,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.0027,
+     "central": 0.003467,
+     "high": 0.0052,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.003467,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.001013,
+     "central": 0.003122,
+     "high": 0.012162,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.003122,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 0.000565,
+     "central": 0.002732,
+     "high": 0.011077,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.002732,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.000115,
+     "central": 0.001764,
+     "high": 0.014329,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.001764,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.000265,
+     "central": 0.000305,
+     "high": 0.000351,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000305,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.00193,
+     "central": 0.002219,
+     "high": 0.002552,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.002219,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.000778,
+     "central": 0.001167,
+     "high": 0.001342,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.001167,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 8.2e-05,
+     "central": 9.5e-05,
+     "high": 0.000142,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 9.5e-05,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.000191,
+     "central": 0.00022,
+     "high": 0.00033,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.00022,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.000406,
+     "central": 0.000536,
+     "high": 0.000709,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000536,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 0.000725,
+     "central": 0.000959,
+     "high": 0.001269,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000959,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.000243,
+     "central": 0.000332,
+     "high": 0.000453,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.000332,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.7,
+    "central": 0.9,
+    "high": 1.0
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "trade_full.json (Laos customs via Comtrade 2019-23)",
+     "url": "research/2026-10/gaps/trade_full.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Laos reported through 2023 (EUR 0.003-0.024bn imports); no evidence of large unrecorded Russian flows (Lao fuel comes via Thailand/Vietnam/China). Kept."
+  },
+  "YEM": {
+   "name": "Yemen",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.102298,
+     "central": 0.131354,
+     "high": 0.168662,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.131354,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.135135,
+     "central": 0.246231,
+     "high": 0.448663,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.246231,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.128373,
+     "central": 0.233911,
+     "high": 0.426214,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.233911,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.3,
+     "central": 0.42,
+     "high": 0.6,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.227105,
+     "trade_full_basis": "imf"
+    },
+    "2023": {
+     "low": 0.24,
+     "central": 0.36,
+     "high": 0.5,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.089947,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.33,
+     "central": 0.47,
+     "high": 0.62,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.148989,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 0.27,
+     "central": 0.39,
+     "high": 0.52,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.148622,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.13,
+     "central": 0.2,
+     "high": 0.3,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.097529,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 6.1e-05,
+     "central": 8e-05,
+     "high": 0.000106,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 8e-05,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 2e-06,
+     "central": 3e-06,
+     "high": 4e-06,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 3e-06,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 7.5e-05,
+     "central": 9.9e-05,
+     "high": 0.000131,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 9.9e-05,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 2.2e-05,
+     "central": 7.5e-05,
+     "high": 0.000226,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 7.5e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2023": {
+     "low": 4e-06,
+     "central": 6e-05,
+     "high": 0.000267,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 6e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2024": {
+     "low": 2e-06,
+     "central": 5.1e-05,
+     "high": 0.000223,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 5.1e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2025": {
+     "low": 3e-06,
+     "central": 5e-05,
+     "high": 0.000189,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 5e-05,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 1e-06,
+     "central": 3.2e-05,
+     "high": 0.000185,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 3.2e-05,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.85,
+    "central": 0.95,
+    "high": 1.0
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker API v0/counter, monthly by destination (Kpler-based)",
+     "url": "https://api.russiafossiltracker.com/v0/counter",
+     "date": "2026-10-17 (retrieved; data to 2026-08)"
+    }
+   ],
+   "reasoning": "Yemen's reports (Aden government) do not cover Houthi-controlled Hodeidah. CREA Russian oil products to Yemen EUR 0.27 (2022), 0.24, 0.35, 0.27, 0.12 (Jan-Aug 2026) - each year above the reported/IMF total of all goods (0.09-0.23). Imports = CREA fuel + ~EUR 0.12-0.18bn wheat/food (Russia's 2019-21 mirror ~0.23 with fuel only ~0.03). Commercial, ~95% paid."
+  },
+  "LBN": {
+   "name": "Lebanon",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 1.018428,
+     "central": 1.20045,
+     "high": 1.415005,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.20045,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.383737,
+     "central": 0.452321,
+     "high": 0.533164,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.452321,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.4366,
+     "central": 0.514633,
+     "high": 0.606613,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.514633,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.279292,
+     "central": 0.32921,
+     "high": 0.388049,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.32921,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.460001,
+     "central": 0.542217,
+     "high": 0.639126,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.542217,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.266588,
+     "central": 0.314235,
+     "high": 0.370397,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.314235,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 0.3,
+     "central": 0.45,
+     "high": 0.6,
+     "basis": "nonreport_study",
+     "trade_full_central": 0.158087,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.064385,
+     "central": 0.097417,
+     "high": 0.147396,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.097417,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.006106,
+     "central": 0.007246,
+     "high": 0.008597,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.007246,
+     "trade_full_basis": "reported"
+    },
+    "2020": {
+     "low": 0.005132,
+     "central": 0.006089,
+     "high": 0.007225,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.006089,
+     "trade_full_basis": "reported"
+    },
+    "2021": {
+     "low": 0.008626,
+     "central": 0.010236,
+     "high": 0.012145,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.010236,
+     "trade_full_basis": "reported"
+    },
+    "2022": {
+     "low": 0.006262,
+     "central": 0.00743,
+     "high": 0.008816,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.00743,
+     "trade_full_basis": "reported"
+    },
+    "2023": {
+     "low": 0.006959,
+     "central": 0.008257,
+     "high": 0.009798,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.008257,
+     "trade_full_basis": "reported"
+    },
+    "2024": {
+     "low": 0.005262,
+     "central": 0.006243,
+     "high": 0.007408,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.006243,
+     "trade_full_basis": "reported"
+    },
+    "2025": {
+     "low": 0.001254,
+     "central": 0.005752,
+     "high": 0.009101,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.005752,
+     "trade_full_basis": "estimated"
+    },
+    "2026": {
+     "low": 0.000424,
+     "central": 0.003661,
+     "high": 0.008898,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.003661,
+     "trade_full_basis": "estimated",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.9,
+    "central": 0.97,
+    "high": 1.0
+   },
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "CREA Russia Fossil Tracker API v0/counter, monthly by destination (Kpler-based)",
+     "url": "https://api.russiafossiltracker.com/v0/counter",
+     "date": "2026-10-17 (retrieved; data to 2026-08)"
+    }
+   ],
+   "reasoning": "Lebanon reports through 2024. IMF 2025 (EUR 0.16bn) is below CREA's Russian oil products to Lebanon alone (EUR 0.32bn in 2025, 0.19 in 2024 when the reported total was 0.31). 2025 = CREA 0.32 + ~0.13 non-fuel. 2026 kept (CREA shows no Russian fuel Jan-Aug 2026). Commercial."
+  },
+  "BGD": {
+   "name": "Bangladesh",
+   "imports_from_RUS": {
+    "2019": {
+     "low": 0.828202,
+     "central": 1.178571,
+     "high": 1.677161,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.178571,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 1.110136,
+     "central": 1.579775,
+     "high": 2.248093,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.579775,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 1.207113,
+     "central": 1.717779,
+     "high": 2.444479,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.717779,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.488541,
+     "central": 0.977082,
+     "high": 1.954164,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.977082,
+     "trade_full_basis": "imf"
+    },
+    "2023": {
+     "low": 0.566111,
+     "central": 1.132221,
+     "high": 2.264442,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.132221,
+     "trade_full_basis": "imf"
+    },
+    "2024": {
+     "low": 0.930504,
+     "central": 1.861007,
+     "high": 3.722015,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.861007,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 0.657316,
+     "central": 1.314633,
+     "high": 2.629265,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 1.314633,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.120822,
+     "central": 0.239503,
+     "high": 0.409824,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.239503,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "exports_to_RUS": {
+    "2019": {
+     "low": 0.5071,
+     "central": 0.670624,
+     "high": 0.886878,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.670624,
+     "trade_full_basis": "mirror"
+    },
+    "2020": {
+     "low": 0.448857,
+     "central": 0.593599,
+     "high": 0.785016,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.593599,
+     "trade_full_basis": "mirror"
+    },
+    "2021": {
+     "low": 0.616647,
+     "central": 0.815496,
+     "high": 1.078468,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.815496,
+     "trade_full_basis": "mirror"
+    },
+    "2022": {
+     "low": 0.414913,
+     "central": 0.619288,
+     "high": 0.924333,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.619288,
+     "trade_full_basis": "imf"
+    },
+    "2023": {
+     "low": 0.324272,
+     "central": 0.483999,
+     "high": 0.722404,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.483999,
+     "trade_full_basis": "imf"
+    },
+    "2024": {
+     "low": 0.337362,
+     "central": 0.503537,
+     "high": 0.751566,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.503537,
+     "trade_full_basis": "imf"
+    },
+    "2025": {
+     "low": 0.264345,
+     "central": 0.394554,
+     "high": 0.588901,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.394554,
+     "trade_full_basis": "imf"
+    },
+    "2026": {
+     "low": 0.149785,
+     "central": 0.221181,
+     "high": 0.301873,
+     "basis": "trade_full (kept)",
+     "trade_full_central": 0.221181,
+     "trade_full_basis": "imf",
+     "period": "2026-01..2026-08 (not annualized)"
+    }
+   },
+   "paid_share": {
+    "low": 0.3,
+    "central": 0.5,
+    "high": 0.75
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "TBS News: Rooppur loan payment hurdle; USD 7.7bn of USD 11.38bn Russian credit disbursed by Dec 2023",
+     "url": "https://www.tbsnews.net/economy/rooppur-plant-payment-hurdle-sticks-it-1097121",
+     "date": "2025"
+    },
+    {
+     "name": "Financial Express: USD 7.77bn released incl. 1.295bn in FY2024; repayment stuck by sanctions",
+     "url": "https://thefinancialexpress.com.bd/economy/dhaka-moscow-meet-misses-consensus-on-back-pay",
+     "date": "2025"
+    }
+   ],
+   "reasoning": "Values kept from trade_full (IMF 2022-25). Included for paid_share: a large part of Russian deliveries to Bangladesh is Rooppur NPP equipment financed by the USD 11.38bn Russian state loan (USD ~1.3bn disbursed in FY2024 alone; repayment blocked by sanctions, first principal due 2027). Grain/fertiliser are paid commercially. Central 50% paid. Similar credit-financed Russian deliveries exist for Egypt (El Dabaa) and Turkey (Akkuyu, Russian-owned) - see notes."
+  }
+ },
+ "notes": [
+  "Myanmar: CREA's EUR 0.96bn (2023) / 1.39bn (2024) / 0.28bn (2025) Russian crude 'to Myanmar' is transit to China via the Kyaukphyu pipeline; excluded here, must not be added to MMR (China reports it).",
+  "Libya, Tunisia, UAE etc.: CREA attributes by first discharge; part of Libyan imports of Russian diesel is re-exported/smuggled. Counted as Libyan imports (country of origin basis), central 0.75-1.0 x CREA.",
+  "Iran: Russian official turnover (~USD 4-5bn) is ~2x Iranian customs in every year incl. 2021; Iranian customs basis kept for comparability with the 2019-21 baseline. Iranian drones/missiles excluded.",
+  "North Korea: munitions/troops (USD 1.5-19bn cumulative estimates) excluded from exports_to_RUS; given separately under military_exports_to_RUS_cumulative_2023_2025 for a military module only.",
+  "Cuba/Syria/North Korea/CAR/Bangladesh: low paid shares - unpaid Russian supplies should be booked as Russian support to the partner (e.g. Cuba ~EUR 0.15-0.4bn/yr 2022-25), not as money to Russia.",
+  "Credit-financed Russian deliveries also matter for reporters not covered here: Egypt (El Dabaa NPP, ~USD 25bn Russian loan), Turkey (Akkuyu, Rosatom-owned), Hungary (Paks II), India (Kudankulam), Belarus (Ostrovets loan). Their trade is reported, but paid share < 1.",
+  "Turkmenistan and Afghanistan rely on official statements (turnover + growth rates) rather than customs data; certainty C, ranges wide. Turkmen gas sales to Gazprom not captured.",
+  "Countries checked with no correction needed: Nicaragua, Burkina Faso, Niger, Laos (reporters, no evidence of large unrecorded flows); Mongolia, Algeria, Tunisia, Vietnam (IMF 2024-25 values plausible vs CREA/national data); Belarus/UAE/Uzbekistan handled in trade_full special cases.",
+  "Not done: Comtrade mirror queries of third-country re-exports to these partners; Venezuela/Cuba arms on credit (pre-2022 stock) excluded as not goods trade in the period."
+ ]
+}

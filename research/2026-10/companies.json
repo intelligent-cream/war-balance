@@ -1,0 +1,2176 @@
+{
+ "source": {
+  "primary": "KSE Institute Leave Russia / SelfSanctions database (RAS filings from Russian FTS/EGRUL), as published in KSE digests and B4Ukraine reports",
+  "documents": {
+   "B4U22": {
+    "title": "The Business of Staying: a closer look at multinational revenues and taxes in Russia in 2022 (B4Ukraine/KSE Institute)",
+    "url": "https://b4ukraine.org/pdf/BusinessOfStaying.pdf",
+    "date": "2023-07",
+    "scope": "2022 data; excludes companies that had exited by mid-2023; profit tax excludes rebates; p.8 chart"
+   },
+   "B4U23": {
+    "title": "Corporate Enablers of Russia's War in Ukraine: multinational taxes and revenue in Russia in 2023 (B4Ukraine/KSE/Squeezing Putin)",
+    "url": "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "date": "2025-01-13",
+    "scope": "2021 and 2023 data; excludes companies that have exited; profit tax excludes rebates; pp.16-17 and 25 charts (Source: KSE)"
+   },
+   "B4U24": {
+    "title": "Corporate Complicity: How Global Firms Bankrolled Russia's War Chest in 2024 (B4Ukraine/KSE/Squeezing Putin)",
+    "url": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "date": "2025-08",
+    "scope": "2024 profit tax by country of HQ (top-10 overall + top-10 EU), pp.12-14"
+   },
+   "KSE80": {
+    "title": "KSE Institute, 80th regular digest on impact of foreign companies' exit on RF economy",
+    "url": "https://institute.kse.ua/wp-content/uploads/2026/07/leave-russia_regular-digest_09_07_26_eng_july_2026.pdf",
+    "date": "2026-07-10",
+    "scope": "aggregate tables 2021-2025 by KSE status (1,646 groups with RF financials); 2025 is preliminary"
+   },
+   "KSE_NEWS_2024_09": {
+    "title": "KSE: Revenue of foreign companies in Russia fell by $125 billion, but profits remained stable",
+    "url": "https://kse.ua/about-the-school/news/revenue-of-foreign-companies-in-russia-fell-by-125-billion-but-profits-remained-stable-kse-institute-study/",
+    "date": "2024-09-26",
+    "scope": "2021 totals: profit $18.4bn, income tax $5.4bn"
+   },
+   "LR_SITE": {
+    "title": "leave-russia.org country filter counts (all entries) and companies-that-exited page counts",
+    "url": "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited",
+    "date": "fetched 2026-10-17 (page cache date not shown)",
+    "scope": "all database entries incl. firms without Russian legal entities"
+   },
+   "ECB": {
+    "title": "ECB reference rate USD per EUR, annual average (EXR A.USD.EUR.SP00.A)",
+    "url": "https://data-api.ecb.europa.eu/service/data/EXR/A.USD.EUR.SP00.A?startPeriod=2021&endPeriod=2025&format=csvdata",
+    "date": "fetched 2026-10-17"
+   }
+  },
+  "access_notes": "leave-russia.org filtered/paged views return HTTP 500; Power BI analytics dashboards return 403; SSRN and ResearchGate PDFs return 403 (Cloudflare). KSE full per-country tables (SSRN 5375884 etc.) therefore not obtained; per-country figures come from B4Ukraine reports built on KSE data. Paid API exists (Patreon) - not used."
+ },
+ "currency": "EUR bn",
+ "fx": {
+  "method": "KSE publishes in USD (KSE converts RUB->USD itself; rate not stated in sources reviewed). Converted USD->EUR with ECB annual average reference rate (USD per EUR).",
+  "usd_per_eur": {
+   "2021": 1.1827403100775,
+   "2022": 1.0530486381323,
+   "2023": 1.081268627451,
+   "2024": 1.08238046875,
+   "2025": 1.1299831372549
+  }
+ },
+ "certainty": "B = KSE estimates from Russian RAS filings; 2024 partly extrapolated by KSE for ~50 of top-100 firms that stopped publishing",
+ "countries": {
+  "USA": {
+   "companies_staying": 325,
+   "companies_leaving_curtailed": 387,
+   "companies_exited": 96,
+   "companies_left": 483,
+   "companies_total": 808,
+   "counts_basis": "B4U24 report (KSE data, mid-2025): staying/leaving/exited of companies with ties to Russia at start of 2022",
+   "site_entries_total": 812,
+   "site_entries_exited": 104,
+   "pct_staying_reported": {
+    "B4U22_2023-07": 44,
+    "B4U23_2025-01": 40,
+    "B4U24_2025-08": 40
+   },
+   "revenue_in_russia": {
+    "2021": 40.3301,
+    "2022": 38.0201,
+    "2023": 28.2076,
+    "2024": 35.1078
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.7742,
+    "2022": 0.6761,
+    "2023": 1.1098,
+    "2024": 1.1087
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 47700,
+    "2022": 40037,
+    "2023": 30500,
+    "2024": 38000
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 915.7,
+    "2022": 712,
+    "2023": 1200,
+    "2024": 1200
+   },
+   "top_companies": [
+    {
+     "name": "Philip Morris",
+     "profit_tax_usd_m": 220,
+     "profit_tax_eur_bn": 0.2033,
+     "year": "2024",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf"
+    },
+    {
+     "name": "PepsiCo",
+     "profit_tax_usd_m": 122,
+     "profit_tax_eur_bn": 0.1127,
+     "year": "2024",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf"
+    },
+    {
+     "name": "Mars",
+     "profit_tax_usd_m": 99,
+     "profit_tax_eur_bn": 0.0915,
+     "year": "2024",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf"
+    },
+    {
+     "name": "Citigroup",
+     "profit_tax_usd_m": 66,
+     "profit_tax_eur_bn": 0.061,
+     "year": "2024",
+     "status": "leaving",
+     "source": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf"
+    },
+    {
+     "name": "Mondelez",
+     "profit_tax_usd_m": 62,
+     "profit_tax_eur_bn": 0.0573,
+     "year": "2024",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf"
+    }
+   ],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/BusinessOfStaying.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2021 revenue: $47.7bn per B4U23 (excl. exited); B4U24 text says \"$50 billion reported in 2021\" (different vintage/scope). 2024 revenue $38bn and profit tax $1.2bn from B4U24 text. 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "DEU": {
+   "companies_staying": 248,
+   "companies_leaving_curtailed": 135,
+   "companies_exited": 74,
+   "companies_left": 209,
+   "companies_total": 457,
+   "counts_basis": "B4U24 report (KSE data, mid-2025): staying/leaving/exited of companies with ties to Russia at start of 2022",
+   "site_entries_total": 462,
+   "site_entries_exited": 89,
+   "pct_staying_reported": {
+    "B4U22_2023-07": 69,
+    "B4U23_2025-01": 55,
+    "B4U24_2025-08": 55
+   },
+   "revenue_in_russia": {
+    "2021": 27.4786,
+    "2022": 22.0151,
+    "2023": 16.7396,
+    "2024": 17.5539
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.5358,
+    "2022": 0.3817,
+    "2023": 0.6405,
+    "2024": 0.5488
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 32500,
+    "2022": 23183,
+    "2023": 18100,
+    "2024": 19000
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 633.7,
+    "2022": 402,
+    "2023": 692.5,
+    "2024": 594
+   },
+   "top_companies": [
+    {
+     "name": "Uniper SE",
+     "profit_tax_usd_m": 107,
+     "profit_tax_eur_bn": 0.0989,
+     "year": "2024",
+     "status": "leaving",
+     "source": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf"
+    },
+    {
+     "name": "Knauf",
+     "profit_tax_usd_m": 56,
+     "profit_tax_eur_bn": 0.0517,
+     "year": "2024",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf"
+    },
+    {
+     "name": "Metro AG",
+     "profit_tax_usd_m": 26,
+     "profit_tax_eur_bn": 0.024,
+     "year": "2024",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf"
+    },
+    {
+     "name": "Globus",
+     "profit_tax_usd_m": 22,
+     "profit_tax_eur_bn": 0.0203,
+     "year": "2024",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf"
+    },
+    {
+     "name": "Bayer",
+     "profit_tax_usd_m": 21,
+     "profit_tax_eur_bn": 0.0194,
+     "year": "2024",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf"
+    }
+   ],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/BusinessOfStaying.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2024 revenue ~$19bn and profit tax $594M from B4U24 text. 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "GBR": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 42,
+   "companies_left": null,
+   "companies_total": 294,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 294,
+   "site_entries_exited": 42,
+   "pct_staying_reported": {
+    "B4U22_2023-07": 36,
+    "B4U23_2025-01": 37,
+    "B4U24_2025-08": 37
+   },
+   "revenue_in_russia": {
+    "2021": 7.3558,
+    "2022": 11.8902,
+    "2023": 3.5144,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.1082,
+    "2022": 0.1947,
+    "2023": 0.1099,
+    "2024": 0.2781
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 8700,
+    "2022": 12521,
+    "2023": 3800,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 128.0,
+    "2022": 205,
+    "2023": 118.8,
+    "2024": 301
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/BusinessOfStaying.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "FRA": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 41,
+   "companies_left": null,
+   "companies_total": 189,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 189,
+   "site_entries_exited": 41,
+   "pct_staying_reported": {
+    "B4U22_2023-07": 64,
+    "B4U23_2025-01": 61,
+    "B4U24_2025-08": 56
+   },
+   "revenue_in_russia": {
+    "2021": 16.8253,
+    "2022": 18.1673,
+    "2023": 15.1674,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.2667,
+    "2022": 0.1121,
+    "2023": 0.331,
+    "2024": 0.522
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 19900,
+    "2022": 19131,
+    "2023": 16400,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 315.4,
+    "2022": 118,
+    "2023": 357.9,
+    "2024": 565
+   },
+   "top_companies": [
+    {
+     "name": "Leroy Merlin",
+     "profit_tax_usd_m": 125.0,
+     "profit_tax_eur_bn": 0.1156,
+     "year": "2023",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4U_Report_2025.pdf"
+    }
+   ],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/BusinessOfStaying.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "ITA": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 8,
+   "companies_left": null,
+   "companies_total": 151,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 151,
+   "site_entries_exited": 8,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 72,
+    "B4U24_2025-08": 72
+   },
+   "revenue_in_russia": {
+    "2021": 5.8339,
+    "2022": null,
+    "2023": 4.6242,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.1268,
+    "2022": null,
+    "2023": 0.2455,
+    "2024": 0.2725
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 6900,
+    "2022": null,
+    "2023": 5000,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 150.0,
+    "2022": null,
+    "2023": 265.5,
+    "2024": 295
+   },
+   "top_companies": [
+    {
+     "name": "UniCredit Bank",
+     "profit_tax_usd_m": 154.2,
+     "profit_tax_eur_bn": 0.1426,
+     "year": "2023",
+     "status": "leaving",
+     "source": "https://b4ukraine.org/pdf/B4U_Report_2025.pdf"
+    }
+   ],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "ESP": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 8,
+   "companies_left": null,
+   "companies_total": 45,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 45,
+   "site_entries_exited": 8,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": null,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "No per-country revenue/tax figures published in sources reviewed (country not in the B4U top-20 country charts). Counts only. 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "NLD": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 21,
+   "companies_left": null,
+   "companies_total": 112,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 112,
+   "site_entries_exited": 21,
+   "pct_staying_reported": {
+    "B4U22_2023-07": 54,
+    "B4U23_2025-01": 47,
+    "B4U24_2025-08": 44
+   },
+   "revenue_in_russia": {
+    "2021": 4.312,
+    "2022": 8.6321,
+    "2023": 3.3294,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.0812,
+    "2022": 0.1045,
+    "2023": 0.099,
+    "2024": 0.1968
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 5100,
+    "2022": 9090,
+    "2023": 3600,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 96.0,
+    "2022": 110,
+    "2023": 107.0,
+    "2024": 213
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/BusinessOfStaying.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "BEL": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 3,
+   "companies_left": null,
+   "companies_total": 36,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 36,
+   "site_entries_exited": 3,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": null,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "No per-country revenue/tax figures published in sources reviewed (country not in the B4U top-20 country charts). Counts only. 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "AUT": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 17,
+   "companies_left": null,
+   "companies_total": 80,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 80,
+   "site_entries_exited": 17,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 69,
+    "B4U24_2025-08": 63
+   },
+   "revenue_in_russia": {
+    "2021": 3.6356,
+    "2022": null,
+    "2023": 4.8092,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.1011,
+    "2022": null,
+    "2023": 0.5354,
+    "2024": 0.4564
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 4300,
+    "2022": null,
+    "2023": 5200,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 119.6,
+    "2022": null,
+    "2023": 578.9,
+    "2024": 494
+   },
+   "top_companies": [
+    {
+     "name": "Raiffeisen Bank International",
+     "profit_tax_usd_m": 491.0,
+     "profit_tax_eur_bn": 0.4541,
+     "year": "2023",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4U_Report_2025.pdf"
+    },
+    {
+     "name": "Raiffeisen Bank International",
+     "profit_tax_usd_m": 402,
+     "profit_tax_eur_bn": 0.3714,
+     "year": "2024",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf"
+    }
+   ],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "Raiffeisen 2024 profit tax $402mn from B4U24 p.20 text. 2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "IRL": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 10,
+   "companies_left": null,
+   "companies_total": 31,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 31,
+   "site_entries_exited": 10,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": null,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "No per-country revenue/tax figures published in sources reviewed (country not in the B4U top-20 country charts). Counts only. 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "SWE": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 30,
+   "companies_left": null,
+   "companies_total": 81,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 81,
+   "site_entries_exited": 30,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 29,
+    "B4U24_2025-08": 27
+   },
+   "revenue_in_russia": {
+    "2021": 2.2828,
+    "2022": null,
+    "2023": 0.6474,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.0589,
+    "2022": null,
+    "2023": 0.0533,
+    "2024": 0.0647
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 2700,
+    "2022": null,
+    "2023": 700,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 69.7,
+    "2022": null,
+    "2023": 57.6,
+    "2024": 70
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "DNK": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 20,
+   "companies_left": null,
+   "companies_total": 62,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 62,
+   "site_entries_exited": 20,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 29,
+    "B4U24_2025-08": 31
+   },
+   "revenue_in_russia": {
+    "2021": 1.2682,
+    "2022": null,
+    "2023": 0.7399,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.0364,
+    "2022": null,
+    "2023": 0.0364,
+    "2024": 0.0564
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 1500,
+    "2022": null,
+    "2023": 800,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 43.0,
+    "2022": null,
+    "2023": 39.4,
+    "2024": 61
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "NOR": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 12,
+   "companies_left": null,
+   "companies_total": 38,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 38,
+   "site_entries_exited": 12,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": null,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "No per-country revenue/tax figures published in sources reviewed (country not in the B4U top-20 country charts). Counts only. 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "FIN": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 50,
+   "companies_left": null,
+   "companies_total": 101,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 101,
+   "site_entries_exited": 50,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": null,
+    "B4U24_2025-08": 18
+   },
+   "revenue_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": 0.1146
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": 124
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "POL": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 7,
+   "companies_left": null,
+   "companies_total": 58,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 58,
+   "site_entries_exited": 7,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 34,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": 1.5219,
+    "2022": null,
+    "2023": 1.2023,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.0519,
+    "2022": null,
+    "2023": 0.0229,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 1800,
+    "2022": null,
+    "2023": 1300,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 61.4,
+    "2022": null,
+    "2023": 24.8,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "CZE": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 5,
+   "companies_left": null,
+   "companies_total": 62,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 62,
+   "site_entries_exited": 5,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": null,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "No per-country revenue/tax figures published in sources reviewed (country not in the B4U top-20 country charts). Counts only. 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "HUN": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 1,
+   "companies_left": null,
+   "companies_total": 20,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 20,
+   "site_entries_exited": 1,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 74,
+    "B4U24_2025-08": 75
+   },
+   "revenue_in_russia": {
+    "2021": 0.3382,
+    "2022": null,
+    "2023": 0.6474,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.0034,
+    "2022": null,
+    "2023": 0.0646,
+    "2024": 0.0841
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 400,
+    "2022": null,
+    "2023": 700,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 4.0,
+    "2022": null,
+    "2023": 69.8,
+    "2024": 91
+   },
+   "top_companies": [
+    {
+     "name": "OTP Bank",
+     "profit_tax_usd_m": 68.6,
+     "profit_tax_eur_bn": 0.0634,
+     "year": "2023",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4U_Report_2025.pdf"
+    }
+   ],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "OTP Bank shown with an Italian flag in B4U23 p.25 chart; OTP is HQ in Hungary, assigned to HUN here. 2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "CHE": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 22,
+   "companies_left": null,
+   "companies_total": 169,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 169,
+   "site_entries_exited": 22,
+   "pct_staying_reported": {
+    "B4U22_2023-07": 53,
+    "B4U23_2025-01": 51,
+    "B4U24_2025-08": 51
+   },
+   "revenue_in_russia": {
+    "2021": 16.5717,
+    "2022": 13.5948,
+    "2023": 13.0402,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.2186,
+    "2022": 0.2611,
+    "2023": 0.292,
+    "2024": 0.3049
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 19600,
+    "2022": 14316,
+    "2023": 14100,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 258.6,
+    "2022": 275,
+    "2023": 315.7,
+    "2024": 330
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/BusinessOfStaying.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "CAN": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 8,
+   "companies_left": null,
+   "companies_total": 54,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 54,
+   "site_entries_exited": 8,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": null,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "No per-country revenue/tax figures published in sources reviewed (country not in the B4U top-20 country charts). Counts only. 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "JPN": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 24,
+   "companies_left": null,
+   "companies_total": 183,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 183,
+   "site_entries_exited": 24,
+   "pct_staying_reported": {
+    "B4U22_2023-07": 65,
+    "B4U23_2025-01": 52,
+    "B4U24_2025-08": 51
+   },
+   "revenue_in_russia": {
+    "2021": 14.4579,
+    "2022": 8.6112,
+    "2023": 3.5144,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.2331,
+    "2022": 0.1947,
+    "2023": 0.1555,
+    "2024": 0.1136
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 17100,
+    "2022": 9068,
+    "2023": 3800,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 275.7,
+    "2022": 205,
+    "2023": 168.1,
+    "2024": 123
+   },
+   "top_companies": [
+    {
+     "name": "Japan Tobacco International",
+     "profit_tax_usd_m": 182.3,
+     "profit_tax_eur_bn": 0.1686,
+     "year": "2023",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4U_Report_2025.pdf"
+    }
+   ],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/BusinessOfStaying.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "Japan Tobacco International is listed under Japan in B4U reports but under Switzerland on leave-russia.org (JTI HQ Geneva). Country totals follow the report's classification. 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "KOR": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 0,
+   "companies_left": null,
+   "companies_total": 56,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 56,
+   "site_entries_exited": 0,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 81,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": 15.388,
+    "2022": null,
+    "2023": 2.5896,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.1766,
+    "2022": null,
+    "2023": 0.0978,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 18200,
+    "2022": null,
+    "2023": 2800,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 208.9,
+    "2022": null,
+    "2023": 105.8,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "CHN": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 0,
+   "companies_left": null,
+   "companies_total": 271,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 271,
+   "site_entries_exited": 0,
+   "pct_staying_reported": {
+    "B4U22_2023-07": 95,
+    "B4U23_2025-01": 90,
+    "B4U24_2025-08": 92
+   },
+   "revenue_in_russia": {
+    "2021": 7.4403,
+    "2022": 9.5209,
+    "2023": 23.121,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.0598,
+    "2022": 0.1747,
+    "2023": 0.4499,
+    "2024": 0.4777
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 8800,
+    "2022": 10026,
+    "2023": 25000,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 70.7,
+    "2022": 184,
+    "2023": 486.5,
+    "2024": 517
+   },
+   "top_companies": [
+    {
+     "name": "Chery Automobile",
+     "profit_tax_usd_m": 221.9,
+     "profit_tax_eur_bn": 0.2052,
+     "year": "2023",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4U_Report_2025.pdf"
+    },
+    {
+     "name": "ICBC",
+     "profit_tax_usd_m": 63.8,
+     "profit_tax_eur_bn": 0.059,
+     "year": "2023",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4U_Report_2025.pdf"
+    },
+    {
+     "name": "Haval Motor",
+     "profit_tax_usd_m": 42.3,
+     "profit_tax_eur_bn": 0.0391,
+     "year": "2023",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4U_Report_2025.pdf"
+    }
+   ],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/BusinessOfStaying.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "IND": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 1,
+   "companies_left": null,
+   "companies_total": 108,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 108,
+   "site_entries_exited": 1,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 95,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": 0.7609,
+    "2022": null,
+    "2023": 0.7399,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.0068,
+    "2022": null,
+    "2023": 0.0212,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 900,
+    "2022": null,
+    "2023": 800,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 8.0,
+    "2022": null,
+    "2023": 22.9,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "TUR": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 2,
+   "companies_left": null,
+   "companies_total": 85,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 85,
+   "site_entries_exited": 2,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 91,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": 3.4665,
+    "2022": null,
+    "2023": 4.3467,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.0489,
+    "2022": null,
+    "2023": 0.1165,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 4100,
+    "2022": null,
+    "2023": 4700,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 57.8,
+    "2022": null,
+    "2023": 126.0,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "ARE": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 0,
+   "companies_left": null,
+   "companies_total": 68,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 68,
+   "site_entries_exited": 0,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": null,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "No per-country revenue/tax figures published in sources reviewed (country not in the B4U top-20 country charts). Counts only. 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "CYP": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 5,
+   "companies_left": null,
+   "companies_total": 29,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 29,
+   "site_entries_exited": 5,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": null,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "No per-country revenue/tax figures published in sources reviewed (country not in the B4U top-20 country charts). Counts only. 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "LUX": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 4,
+   "companies_left": null,
+   "companies_total": 26,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 26,
+   "site_entries_exited": 4,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": null,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "No per-country revenue/tax figures published in sources reviewed (country not in the B4U top-20 country charts). Counts only. 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "BLR": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 1,
+   "companies_left": null,
+   "companies_total": 15,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 15,
+   "site_entries_exited": 1,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 100,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": 1.691,
+    "2022": null,
+    "2023": 3.1445,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.0093,
+    "2022": null,
+    "2023": 0.019,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 2000,
+    "2022": null,
+    "2023": 3400,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 11.0,
+    "2022": null,
+    "2023": 20.5,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "SVN": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 0,
+   "companies_left": null,
+   "companies_total": 12,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 12,
+   "site_entries_exited": 0,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 83,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": 0.7609,
+    "2022": null,
+    "2023": 1.2948,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.0059,
+    "2022": null,
+    "2023": 0.0104,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 900,
+    "2022": null,
+    "2023": 1400,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 7.0,
+    "2022": null,
+    "2023": 11.2,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "THA": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 0,
+   "companies_left": null,
+   "companies_total": 9,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 9,
+   "site_entries_exited": 0,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 100,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": 0.93,
+    "2022": null,
+    "2023": 1.2023,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.0042,
+    "2022": null,
+    "2023": 0.0093,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 1100,
+    "2022": null,
+    "2023": 1300,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 5.0,
+    "2022": null,
+    "2023": 10.1,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "GRC": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 1,
+   "companies_left": null,
+   "companies_total": 29,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 29,
+   "site_entries_exited": 1,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 81,
+    "B4U24_2025-08": 82
+   },
+   "revenue_in_russia": {
+    "2021": 1.3528,
+    "2022": null,
+    "2023": 1.0173,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.0355,
+    "2022": null,
+    "2023": 0.0508,
+    "2024": 0.0462
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 1600,
+    "2022": null,
+    "2023": 1100,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 42.0,
+    "2022": null,
+    "2023": 54.9,
+    "2024": 50
+   },
+   "top_companies": [
+    {
+     "name": "Hellenic Bottling Company (Coca-Cola HBC)",
+     "profit_tax_usd_m": 49.3,
+     "profit_tax_eur_bn": 0.0456,
+     "year": "2023",
+     "status": "staying",
+     "source": "https://b4ukraine.org/pdf/B4U_Report_2025.pdf"
+    }
+   ],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "Hellenic Bottling (Coca-Cola HBC) shown under Greece in B4U23 although Coca-Cola HBC AG is Swiss-domiciled. 2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  },
+  "ZAF": {
+   "companies_staying": null,
+   "companies_leaving_curtailed": null,
+   "companies_exited": 1,
+   "companies_left": null,
+   "companies_total": 11,
+   "counts_basis": "leave-russia.org site counts: companies_total = all database entries for that HQ country, companies_exited = entries with status Exit Completed (fetched 2026-10-17); stay/leave split per country not published on the site",
+   "site_entries_total": 11,
+   "site_entries_exited": 1,
+   "pct_staying_reported": {
+    "B4U22_2023-07": null,
+    "B4U23_2025-01": 67,
+    "B4U24_2025-08": null
+   },
+   "revenue_in_russia": {
+    "2021": 0.5918,
+    "2022": null,
+    "2023": 0.2775,
+    "2024": null
+   },
+   "profit_in_russia": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null
+   },
+   "taxes_paid_in_russia": {
+    "2021": 0.0152,
+    "2022": null,
+    "2023": 0.0195,
+    "2024": null
+   },
+   "taxes_type": "corporate profit tax only (excl. rebates); not total tax",
+   "revenue_in_russia_usd_m": {
+    "2021": 700,
+    "2022": null,
+    "2023": 300,
+    "2024": null
+   },
+   "taxes_paid_in_russia_usd_m": {
+    "2021": 18.0,
+    "2022": null,
+    "2023": 21.1,
+    "2024": null
+   },
+   "top_companies": [],
+   "certainty": "B",
+   "sources": [
+    "https://b4ukraine.org/pdf/B4U_Report_2025.pdf",
+    "https://leave-russia.org/ ; https://leave-russia.org/companies-that-exited"
+   ],
+   "notes": "2022 per-country figures only published for top 8 countries (B4U22). 2022 vintage (B4U22, published 2023-07, excl. firms exited by then) is not strictly comparable with 2021/2023 (B4U23, excl. firms exited by end-2024) or 2024 (B4U24; unclear whether exited firms included). Profit (net income) by country not published -> null."
+  }
+ },
+ "totals": {
+  "basis": "KSE Institute, 1,646 foreign groups with Russian (RAS) financials; all statuses incl. exited (digest 80, 2026-07-10). 2025 preliminary.",
+  "revenue_in_russia_usd_m": {
+   "2021": 320430,
+   "2022": 246390,
+   "2023": 198525,
+   "2024": 200964,
+   "2025": 200789
+  },
+  "profit_in_russia_usd_m": {
+   "2021": 18400,
+   "2022": 15244,
+   "2023": 16083,
+   "2024": 19540,
+   "2025": 11510
+  },
+  "profit_tax_usd_m": {
+   "2021": 5400,
+   "2022": 6266,
+   "2023": 6406,
+   "2024": 5683,
+   "2025": 5043
+  },
+  "total_taxes_usd_m": {
+   "2021": 25884,
+   "2022": null,
+   "2023": 21600,
+   "2024": 20000,
+   "2025": null
+  },
+  "total_taxes_definition": "All taxes: profit tax, VAT, exit taxes, payroll tax, property tax, excise and customs duties (B4U23 footnote 1). 2024 = \"at least $20bn\" (B4U24). 2022: B4Ukraine Feb-2024 report says 2022-23 \"may amount to $20 billion annually\" (estimate, not recorded as a number). Cumulative 2022-2024: >$60bn (B4U24).",
+  "notes_per_year": {
+   "2021": "profit $18.4bn and profit tax $5.4bn from KSE news 2024-09-26 (1,510 companies basis); revenue and total taxes from digest 80",
+   "2023": "total taxes $21.6bn from B4U23"
+  },
+  "by_status_usd_m": {
+   "2021": {
+    "exited": {
+     "n": 565,
+     "revenue": 114941,
+     "taxes_all": 6576
+    },
+    "leave": {
+     "n": 374,
+     "revenue": 67177,
+     "taxes_all": 3873
+    },
+    "stay": {
+     "n": 707,
+     "revenue": 138312,
+     "taxes_all": 15435
+    }
+   },
+   "2022": {
+    "exited": {
+     "n": 565,
+     "revenue": 79710,
+     "net_income": 3792,
+     "profit_tax": 1642
+    },
+    "leave": {
+     "n": 362,
+     "revenue": 33864,
+     "net_income": 424,
+     "profit_tax": 1200
+    },
+    "stay": {
+     "n": 667,
+     "revenue": 132815,
+     "net_income": 11028,
+     "profit_tax": 3424
+    }
+   },
+   "2023": {
+    "exited": {
+     "n": 565,
+     "revenue": 53263,
+     "net_income": 3343,
+     "profit_tax": 1564
+    },
+    "leave": {
+     "n": 309,
+     "revenue": 15025,
+     "net_income": 2133,
+     "profit_tax": 909
+    },
+    "stay": {
+     "n": 625,
+     "revenue": 130237,
+     "net_income": 10608,
+     "profit_tax": 3933
+    }
+   },
+   "2024": {
+    "exited": {
+     "n": 565,
+     "revenue": 54684,
+     "net_income": 6128,
+     "profit_tax": 1571
+    },
+    "leave": {
+     "n": 315,
+     "revenue": 12505,
+     "net_income": 2316,
+     "profit_tax": 719
+    },
+    "stay": {
+     "n": 676,
+     "revenue": 133775,
+     "net_income": 11096,
+     "profit_tax": 3392
+    }
+   },
+   "2025": {
+    "exited": {
+     "n": 565,
+     "revenue": 56216,
+     "net_income": 3569,
+     "profit_tax": 1246
+    },
+    "leave": {
+     "n": 267,
+     "revenue": 8887,
+     "net_income": 1216,
+     "profit_tax": 774
+    },
+    "stay": {
+     "n": 644,
+     "revenue": 135686,
+     "net_income": 6725,
+     "profit_tax": 3023
+    }
+   }
+  },
+  "company_counts": {
+   "kse_database_2026-07-10": {
+    "stay": 2362,
+    "leave": 1373,
+    "exited": 565,
+    "total_approx": 4300,
+    "source": "KSE80"
+   },
+   "groups_with_financials": {
+    "stay": 707,
+    "leave": 374,
+    "exited": 565,
+    "total": 1646,
+    "source": "KSE80"
+   },
+   "leave_russia_site_2026-10-17": {
+    "stay": 2401,
+    "leave": 1355,
+    "exited": 569,
+    "total": 4325,
+    "detail": {
+     "Continue Operations": 1814,
+     "Pausing Investments": 104,
+     "Scaling Back": 483,
+     "Suspension": 769,
+     "Withdrawal": 586,
+     "Exit Completed": 569
+    },
+    "source": "LR_SITE"
+   }
+  },
+  "eu_aggregates_usd_m": {
+   "2022_excl_exited": {
+    "revenue": 75200,
+    "profit_tax": 594,
+    "src": "B4U22 (note: inconsistent with its own DEU+FRA+NLD=630)"
+   },
+   "2022_excl_exited_B4U23": {
+    "revenue": 70100,
+    "profit_tax_approx": 2300,
+    "src": "B4U23"
+   },
+   "2023_excl_exited": {
+    "revenue": 55800,
+    "profit_tax_approx": 2300,
+    "src": "B4U23"
+   },
+   "2023_incl_exited": {
+    "firms": 827,
+    "revenue": 81400,
+    "profit_tax_approx": 3000,
+    "src": "B4U23"
+   },
+   "2022_incl_exited": {
+    "revenue": 111400,
+    "src": "B4U23"
+   },
+   "2024": {
+    "revenue": 93500,
+    "profit_tax": 2640,
+    "src": "B4U24"
+   }
+  },
+  "revenue_in_russia_eur_bn": {
+   "2021": 270.9217,
+   "2022": 233.9778,
+   "2023": 183.6038,
+   "2024": 185.6685,
+   "2025": 177.692
+  },
+  "profit_in_russia_eur_bn": {
+   "2021": 15.5571,
+   "2022": 14.4761,
+   "2023": 14.8742,
+   "2024": 18.0528,
+   "2025": 10.186
+  },
+  "profit_tax_eur_bn": {
+   "2021": 4.5657,
+   "2022": 5.9503,
+   "2023": 5.9245,
+   "2024": 5.2505,
+   "2025": 4.4629
+  },
+  "total_taxes_eur_bn": {
+   "2021": 21.8848,
+   "2022": null,
+   "2023": 19.9765,
+   "2024": 18.4778,
+   "2025": null
+  }
+ },
+ "notes": [
+  "taxes_paid_in_russia per country = corporate PROFIT TAX only, excluding rebates and excluding exited companies (B4U22/B4U23). Total taxes (VAT, payroll, excise, customs etc.) are only available as all-company totals.",
+  "Per-country net profit is not published in any accessible source -> null.",
+  "Country data cover only the countries shown in B4U charts (top 20-22 by revenue/tax); others null.",
+  "Yale CELI list not used for numbers (no financials; letter grades), B4Ukraine figures are KSE data.",
+  "Company counts: per-country stay/leave split only published for USA and DEU (B4U24); others have % staying as reported and site entry totals/exited counts.",
+  "2025 figures (preliminary) available only as all-company totals (KSE digest 80)."
+ ]
+}

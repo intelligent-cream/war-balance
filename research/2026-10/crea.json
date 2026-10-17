@@ -1,0 +1,4761 @@
+{
+ "source": {
+  "primary": "CREA Russia Fossil Tracker API v0/counter (version v2, Kpler trades + CREA pricing model, pricing_scenario=default \"USD60/bbl (actual)\")",
+  "api": "https://api.russiafossiltracker.com/v0/counter",
+  "swagger": "https://api.russiafossiltracker.com/swagger.json",
+  "retrieved": "2026-10-17",
+  "data_through": "2026-10-16",
+  "queries": {
+   "calendar_years_2021_on": "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD",
+   "since_invasion": "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD"
+  },
+  "other": [
+   "UN Comtrade public preview API (2021 importer-reported HS27 imports from Russia, cross-check)",
+   "CREA reports: Refining loophole widens (19 Feb 2024), UK analysis (5 Feb 2024), Third year of invasion (24 Feb 2025, rev. 10 Apr 2025), Four years of invasion (24 Feb 2026), Australia fact sheet (24 Jul 2025), Sep 2026 monthly analysis",
+   "Russian MinFin, Kratkaya informatsiya ob ispolnenii federalnogo byudzheta (annual + monthly xlsx) https://minfin.gov.ru/ru/statistics/fedbud/execute/",
+   "ECB SDW EXR A.USD.EUR.SP00.A",
+   "ICRA via Deccan Chronicle; Banque de France; Reuters via Daily Sabah (discount gains)"
+  ],
+  "raw_dir": "working/research/raw"
+ },
+ "currency": "EUR bn",
+ "fx": {
+  "basis": "ECB reference rate, annual average, USD per EUR (EXR A.USD.EUR.SP00.A); 2026 = mean of Jan-Sep monthly averages",
+  "url": "https://data-api.ecb.europa.eu/service/data/EXR/A.USD.EUR.SP00.A?startPeriod=2021&format=csvdata",
+  "2021": 1.1827,
+  "2022": 1.053,
+  "2023": 1.0813,
+  "2024": 1.0824,
+  "2025": 1.13,
+  "2026_jan_sep": 1.1616
+ },
+ "global": {
+  "russia_fossil_export_revenue_eur_bn": {
+   "calendar_year": {
+    "2021": 237.254,
+    "2022": 375.624,
+    "2023": 244.765,
+    "2024": 235.949,
+    "2025": 193.215,
+    "2026": 170.298
+   },
+   "2026_ytd_to": "2026-10-16",
+   "by_fuel_calendar_year": {
+    "2021": {
+     "coal": 21.298,
+     "crude": 80.935,
+     "lng": 15.975,
+     "products": 63.666,
+     "pipeline_gas": 55.38
+    },
+    "2022": {
+     "coal": 35.86,
+     "crude": 135.943,
+     "lng": 32.278,
+     "products": 94.445,
+     "pipeline_gas": 77.099
+    },
+    "2023": {
+     "coal": 23.864,
+     "crude": 103.147,
+     "lng": 17.776,
+     "products": 74.571,
+     "pipeline_gas": 25.407
+    },
+    "2024": {
+     "coal": 17.448,
+     "crude": 107.729,
+     "lng": 15.576,
+     "products": 68.427,
+     "pipeline_gas": 26.768
+    },
+    "2025": {
+     "coal": 17.488,
+     "crude": 86.54,
+     "lng": 15.449,
+     "products": 52.91,
+     "pipeline_gas": 20.829
+    },
+    "2026": {
+     "coal": 15.777,
+     "crude": 83.802,
+     "lng": 15.265,
+     "products": 36.805,
+     "pipeline_gas": 18.649
+    }
+   },
+   "since_2022_02_24": 1166.344,
+   "since_2022_02_24_by_fuel": {
+    "crude": 497.438,
+    "products": 315.268,
+    "pipeline_gas": 154.954,
+    "lng": 91.656,
+    "coal": 107.028
+   },
+   "certainty": "B",
+   "source": "CREA counter API (see source.queries), sum over all destinations"
+  },
+  "crea_reported_invasion_years_eur_bn": {
+   "year3_2024-02-24_to_2025-02-23": 242,
+   "year4_2025-02-24_to_2026-02-23": 193,
+   "cumulative_to_2025-02-24": 847,
+   "source": [
+    "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+   ],
+   "note": "year4 = 27% below pre-invasion level; CREA report numbers; year3 split: crude 104, products 75, gas 40, coal 23"
+  },
+  "by_destination_region_eur_bn": {
+   "China": {
+    "2021": 25.264,
+    "2022": 75.294,
+    "2023": 79.33,
+    "2024": 79.781,
+    "2025": 65.804,
+    "2026": 66.969
+   },
+   "EU": {
+    "2021": 137.755,
+    "2022": 183.591,
+    "2023": 31.214,
+    "2024": 23.723,
+    "2025": 16.21,
+    "2026": 14.436
+   },
+   "India": {
+    "2021": 3.04,
+    "2022": 26.299,
+    "2023": 44.295,
+    "2024": 46.449,
+    "2025": 39.501,
+    "2026": 36.035
+   },
+   "Others": {
+    "2021": 26.559,
+    "2022": 41.033,
+    "2023": 52.744,
+    "2024": 48.079,
+    "2025": 40.779,
+    "2026": 32.517
+   },
+   "South Korea": {
+    "2021": 11.8,
+    "2022": 10.999,
+    "2023": 5.279,
+    "2024": 4.299,
+    "2025": 3.795,
+    "2026": 3.251
+   },
+   "Türkiye": {
+    "2021": 15.451,
+    "2022": 31.88,
+    "2023": 31.772,
+    "2024": 33.619,
+    "2025": 27.126,
+    "2026": 17.086
+   },
+   "United Kingdom": {
+    "2021": 5.773,
+    "2022": 2.815
+   },
+   "United States": {
+    "2021": 11.613,
+    "2022": 3.712,
+    "2023": 0.131,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.004
+   }
+  },
+  "russia_federal_budget": {
+   "unit": "RUB bn",
+   "source": "https://minfin.gov.ru/ru/statistics/fedbud/execute/ (Prilozhenie 3 annual & monthly xlsx, retrieved 2026-10-17)",
+   "certainty": "A",
+   "by_year": {
+    "2021": {
+     "total_revenue": 25286.4,
+     "oil_gas_revenue": 9056.5,
+     "oil_gas_share_pct": 35.8
+    },
+    "2022": {
+     "total_revenue": 27824.4,
+     "oil_gas_revenue": 11586.2,
+     "oil_gas_share_pct": 41.6
+    },
+    "2023": {
+     "total_revenue": 29124.0,
+     "oil_gas_revenue": 8822.3,
+     "oil_gas_share_pct": 30.3
+    },
+    "2024": {
+     "total_revenue": 36708.6,
+     "oil_gas_revenue": 11131.1,
+     "oil_gas_share_pct": 30.3
+    },
+    "2025": {
+     "total_revenue": 37283.8,
+     "oil_gas_revenue": 8476.8,
+     "oil_gas_share_pct": 22.7
+    },
+    "2026_jan_sep": {
+     "total_revenue": 29639.5,
+     "oil_gas_revenue": 5471.0,
+     "oil_gas_share_pct": 18.5
+    }
+   },
+   "note": "2026 = Jan-Sep cumulative (preliminary, MinFin marks Sep as estimate). Oil & gas revenues = MinFin \"neftegazovye dokhody\" (MET, export duty, damper offsets etc.), not export revenue."
+  },
+  "laundered_oil_aggregates": [
+   {
+    "scope": "Price cap coalition (EU, G7, Australia)",
+    "period": "2022-12-05/2023-12-31",
+    "eur_bn": 8.5,
+    "measure": "oil products made from Russian crude (Russian crude input EUR 4.2 bn; Kremlin tax EUR 1.7 bn)",
+    "src": "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf",
+    "certainty": "C"
+   },
+   {
+    "scope": "EU",
+    "period": "2022-12-05/2023-12-31",
+    "eur_bn": 2.6,
+    "measure": "value of Russian crude used for products imported by EU",
+    "src": "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf",
+    "certainty": "C"
+   },
+   {
+    "scope": "G7+",
+    "period": "2024-03/2025-02",
+    "eur_bn": 9.0,
+    "measure": "refined from Russian crude (gross imports from 6 refineries EUR 18 bn)",
+    "src": "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf",
+    "certainty": "C"
+   },
+   {
+    "scope": "G7+",
+    "period": "2025-03/2026-02",
+    "eur_bn": 7.2,
+    "measure": "refined from Russian crude (gross imports EUR 14.7 bn)",
+    "src": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf",
+    "certainty": "C"
+   },
+   {
+    "scope": "EU",
+    "period": "2026-01/2026-05",
+    "eur_bn": 0.929,
+    "measure": "products of Russian-origin crude entering EU via Turkey, India, Georgia refineries (CREA data via Novaya Gazeta Europe, 24 Jun 2026)",
+    "src": "https://novayagazeta.eu/en/articles/2026/06/24/the-billion-euro-loophole-en",
+    "certainty": "C"
+   },
+   {
+    "scope": "EU+UK",
+    "period": "2025",
+    "eur_bn": 0.417,
+    "measure": "gross refined fuel imports from Batumi/Kulevi (Georgia), likely Russian molecules",
+    "src": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf",
+    "certainty": "C"
+   }
+  ],
+  "laundered_oil_g7plus_partial_sum_eur_bn": {
+   "value": 24.7,
+   "note": "8.5 + 9.0 + 7.2 over Dec 2022-Feb 2026, missing Jan-Feb 2024 -> lower bound; mixing slightly different CREA methods/refinery sets",
+   "certainty": "C"
+  },
+  "kse_oil_export_losses": {
+   "usd_bn": 159,
+   "period": "2022-03/2025-08",
+   "measure": "KSE estimate of Russia oil export revenue lost due to sanctions/discounts",
+   "src": "https://sanctions.kse.ua/en/export-revenues-declined-but-the-shadow-fleet-offsets-the-losses/",
+   "kse_projection_oil_export_revenue_usd_bn": {
+    "2025": 155,
+    "2026": 125
+   },
+   "certainty": "C"
+  }
+ },
+ "countries": {
+  "USA": {
+   "name": "United States",
+   "fossil_2021": 11.613,
+   "fossil_2021_by_fuel": {
+    "crude": 3.168,
+    "products": 8.272,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.173
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 15.318,
+    "hs27_usd_bn": 18.117,
+    "hs2701_coal_usd_bn": 0.051,
+    "hs2709_crude_usd_bn": 4.843,
+    "hs2710_products_usd_bn": 13.211,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 2.504,
+    "2022_calendar_full": 3.712,
+    "2023": 0.131,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026_ytd": 0.004,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 2.639,
+   "by_fuel": {
+    "crude": 0.338,
+    "products": 2.253,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.047
+   },
+   "laundered_oil": 2.399,
+   "laundered_oil_detail": {
+    "value": 2.399,
+    "basis": "sum of two non-overlapping CREA windows of oil-product imports estimated refined from Russian crude: EUR 1.6 bn (5 Dec 2022-Dec 2023) + EUR 0.799 bn (Mar 2025-Feb 2026); Jan 2024-Feb 2025 not reported per country -> lower bound",
+    "windows": [
+     {
+      "period": "2022-12-05/2023-12-31",
+      "eur_bn": 1.6,
+      "measure": "product value derived from Russian crude",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf"
+     },
+     {
+      "period": "2022-12-05/2023-12-31",
+      "eur_bn": 0.807,
+      "measure": "value of Russian crude used to make these products",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf"
+     },
+     {
+      "period": "2025-03/2026-02",
+      "eur_bn": 0.799,
+      "measure": "product value refined from Russian crude (gross imports from these refineries EUR 1.8 bn)",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+     }
+    ]
+   },
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": "C",
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of USA>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+   ],
+   "notes": ""
+  },
+  "DEU": {
+   "name": "Germany",
+   "fossil_2021": 32.13,
+   "fossil_2021_by_fuel": {
+    "crude": 9.065,
+    "products": 4.057,
+    "pipeline_gas": 18.177,
+    "lng": 0,
+    "coal": 0.831
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 15.089,
+    "hs27_usd_bn": 17.847,
+    "hs2701_coal_usd_bn": 2.565,
+    "hs2709_crude_usd_bn": 11.455,
+    "hs2710_products_usd_bn": 3.059,
+    "hs2711_gas_usd_bn": 0.112,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 28.937,
+    "2022_calendar_full": 36.478,
+    "2023": 0.654,
+    "2024": 0.012,
+    "2025": 0.0,
+    "2026_ytd": 0.0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 29.603,
+   "by_fuel": {
+    "crude": 8.555,
+    "products": 5.833,
+    "pipeline_gas": 14.384,
+    "lng": 0,
+    "coal": 0.83
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of DEU>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "Germany pipeline gas 2021/2022 includes Nord Stream landings, part of which transited onward to other EU states; CREA attributes to first destination."
+  },
+  "GBR": {
+   "name": "United Kingdom",
+   "fossil_2021": 5.773,
+   "fossil_2021_by_fuel": {
+    "crude": 1.137,
+    "products": 3.371,
+    "pipeline_gas": 0.031,
+    "lng": 1.079,
+    "coal": 0.153
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 5.097,
+    "hs27_usd_bn": 6.028,
+    "hs2701_coal_usd_bn": 0.212,
+    "hs2709_crude_usd_bn": 1.421,
+    "hs2710_products_usd_bn": 3.019,
+    "hs2711_gas_usd_bn": 1.26,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 1.521,
+    "2022_calendar_full": 2.815,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 1.521,
+   "by_fuel": {
+    "crude": 0.03,
+    "products": 1.284,
+    "pipeline_gas": 0.0,
+    "lng": 0.068,
+    "coal": 0.139
+   },
+   "laundered_oil": 0.66,
+   "laundered_oil_detail": {
+    "value": 0.66,
+    "basis": "CREA: ~EUR 660 mn of UK oil-product imports produced from Russian crude, Dec 2022-Nov 2023 (Russian crude input EUR 304 mn); later periods not reported as derived value -> lower bound",
+    "windows": [
+     {
+      "period": "2022-12/2023-11",
+      "eur_bn": 0.66,
+      "measure": "product value derived from Russian crude",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_UK-Russian-oil_Analysis_02.2024_Rev_15.04.2024.pdf"
+     },
+     {
+      "period": "2022-12/2023-11",
+      "eur_bn": 0.304,
+      "measure": "value of Russian crude used",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_UK-Russian-oil_Analysis_02.2024_Rev_15.04.2024.pdf"
+     }
+    ]
+   },
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": "C",
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of GBR>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_UK-Russian-oil_Analysis_02.2024_Rev_15.04.2024.pdf"
+   ],
+   "notes": ""
+  },
+  "FRA": {
+   "name": "France",
+   "fossil_2021": 9.352,
+   "fossil_2021_by_fuel": {
+    "crude": 1.262,
+    "products": 4.61,
+    "pipeline_gas": 1.153,
+    "lng": 2.065,
+    "coal": 0.261
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 8.5,
+    "hs27_usd_bn": 10.053,
+    "hs2701_coal_usd_bn": 0.392,
+    "hs2709_crude_usd_bn": 1.867,
+    "hs2710_products_usd_bn": 5.328,
+    "hs2711_gas_usd_bn": 2.144,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 12.047,
+    "2022_calendar_full": 14.772,
+    "2023": 2.001,
+    "2024": 2.815,
+    "2025": 3.09,
+    "2026_ytd": 3.042,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 22.993,
+   "by_fuel": {
+    "crude": 0.553,
+    "products": 5.994,
+    "pipeline_gas": 0.295,
+    "lng": 15.997,
+    "coal": 0.154
+   },
+   "laundered_oil": 0.422,
+   "laundered_oil_detail": {
+    "value": 0.422,
+    "basis": "CREA: EUR 422 mn of Russian CRUDE used for products imported by FR, 5 Dec 2022-Dec 2023 -> lower bound",
+    "windows": [
+     {
+      "period": "2022-12-05/2023-12-31",
+      "eur_bn": 0.422,
+      "measure": "value of Russian crude used",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf"
+     },
+     {
+      "period": "2024-03/2025-02",
+      "eur_bn": 1.4,
+      "measure": "GROSS imports from refineries using Russian crude",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf"
+     }
+    ]
+   },
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": "C",
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of FRA>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf"
+   ],
+   "notes": ""
+  },
+  "ITA": {
+   "name": "Italy",
+   "fossil_2021": 16.057,
+   "fossil_2021_by_fuel": {
+    "crude": 4.001,
+    "products": 1.417,
+    "pipeline_gas": 10.144,
+    "lng": 0,
+    "coal": 0.495
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 14.398,
+    "hs27_usd_bn": 17.029,
+    "hs2701_coal_usd_bn": 0.798,
+    "hs2709_crude_usd_bn": 2.638,
+    "hs2710_products_usd_bn": 1.528,
+    "hs2711_gas_usd_bn": 12.014,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 16.815,
+    "2022_calendar_full": 20.014,
+    "2023": 0.864,
+    "2024": 1.94,
+    "2025": 0.251,
+    "2026_ytd": 0.175,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 20.045,
+   "by_fuel": {
+    "crude": 7.668,
+    "products": 2.216,
+    "pipeline_gas": 9.433,
+    "lng": 0.254,
+    "coal": 0.475
+   },
+   "laundered_oil": 0.324,
+   "laundered_oil_detail": {
+    "value": 0.324,
+    "basis": "CREA: EUR 324 mn of Russian CRUDE used for products imported by IT, 5 Dec 2022-Dec 2023 -> lower bound",
+    "windows": [
+     {
+      "period": "2022-12-05/2023-12-31",
+      "eur_bn": 0.324,
+      "measure": "value of Russian crude used",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf"
+     },
+     {
+      "period": "2024-03/2025-02",
+      "eur_bn": 0.949,
+      "measure": "GROSS imports from refineries using Russian crude",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf"
+     }
+    ]
+   },
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": "C",
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of ITA>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf"
+   ],
+   "notes": ""
+  },
+  "ESP": {
+   "name": "Spain",
+   "fossil_2021": 5.719,
+   "fossil_2021_by_fuel": {
+    "crude": 1.262,
+    "products": 2.799,
+    "pipeline_gas": 0.077,
+    "lng": 1.319,
+    "coal": 0.263
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 5.048,
+    "hs27_usd_bn": 5.971,
+    "hs2701_coal_usd_bn": 0.224,
+    "hs2709_crude_usd_bn": 1.786,
+    "hs2710_products_usd_bn": 2.47,
+    "hs2711_gas_usd_bn": 1.438,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 6.166,
+    "2022_calendar_full": 7.162,
+    "2023": 2.873,
+    "2024": 2.097,
+    "2025": 1.386,
+    "2026_ytd": 1.533,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 14.055,
+   "by_fuel": {
+    "crude": 0.261,
+    "products": 1.677,
+    "pipeline_gas": 0.001,
+    "lng": 11.779,
+    "coal": 0.337
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": {
+    "value": null,
+    "basis": "only gross figures available",
+    "windows": [
+     {
+      "period": "2024-03/2025-02",
+      "eur_bn": 1.1,
+      "measure": "GROSS imports from refineries using Russian crude",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf"
+     },
+     {
+      "period": "2025-01/2026-01",
+      "eur_bn": 0.092,
+      "measure": "GROSS product imports from Turkish ports Ceyhan/Marmara/Mersin (82% of their product imports Russian)",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+     }
+    ]
+   },
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": "C",
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of ESP>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+   ],
+   "notes": ""
+  },
+  "NLD": {
+   "name": "Netherlands",
+   "fossil_2021": 20.499,
+   "fossil_2021_by_fuel": {
+    "crude": 10.588,
+    "products": 6.929,
+    "pipeline_gas": 0.027,
+    "lng": 1.205,
+    "coal": 1.75
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 16.189,
+    "hs27_usd_bn": 19.147,
+    "hs2701_coal_usd_bn": 0.612,
+    "hs2709_crude_usd_bn": 10.164,
+    "hs2710_products_usd_bn": 2.817,
+    "hs2711_gas_usd_bn": 1.667,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 17.65,
+    "2022_calendar_full": 21.783,
+    "2023": 1.011,
+    "2024": 0.606,
+    "2025": 0.716,
+    "2026_ytd": 0.714,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 20.698,
+   "by_fuel": {
+    "crude": 6.319,
+    "products": 9.033,
+    "pipeline_gas": 0.001,
+    "lng": 4.017,
+    "coal": 1.328
+   },
+   "laundered_oil": 0.59,
+   "laundered_oil_detail": {
+    "value": 0.59,
+    "basis": "CREA: EUR 590 mn of Russian CRUDE (input value) used to make products imported by NL, 5 Dec 2022-Dec 2023; product value higher; later years only gross figures -> lower bound",
+    "windows": [
+     {
+      "period": "2022-12-05/2023-12-31",
+      "eur_bn": 0.59,
+      "measure": "value of Russian crude used",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf"
+     },
+     {
+      "period": "2024-03/2025-02",
+      "eur_bn": 3.3,
+      "measure": "GROSS imports from refineries in India/Turkey using Russian crude",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf"
+     }
+    ]
+   },
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": "C",
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of NLD>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf"
+   ],
+   "notes": ""
+  },
+  "BEL": {
+   "name": "Belgium",
+   "fossil_2021": 3.639,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 2.667,
+    "pipeline_gas": 0.102,
+    "lng": 0.699,
+    "coal": 0.171
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 2.381,
+    "hs27_usd_bn": 2.817,
+    "hs2701_coal_usd_bn": 0.203,
+    "hs2709_crude_usd_bn": 0.004,
+    "hs2710_products_usd_bn": 2.018,
+    "hs2711_gas_usd_bn": 0.304,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 10.429,
+    "2022_calendar_full": 11.738,
+    "2023": 3.377,
+    "2024": 1.909,
+    "2025": 2.11,
+    "2026_ytd": 1.655,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 19.481,
+   "by_fuel": {
+    "crude": 0,
+    "products": 6.75,
+    "pipeline_gas": 0.005,
+    "lng": 12.496,
+    "coal": 0.23
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of BEL>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "AUT": {
+   "name": "Austria",
+   "fossil_2021": 3.076,
+   "fossil_2021_by_fuel": {
+    "crude": 0.246,
+    "products": 0.065,
+    "pipeline_gas": 2.764,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.474,
+    "hs27_usd_bn": 0.561,
+    "hs2701_coal_usd_bn": 0.122,
+    "hs2709_crude_usd_bn": 0.304,
+    "hs2710_products_usd_bn": 0.094,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 6.511,
+    "2022_calendar_full": 7.08,
+    "2023": 1.931,
+    "2024": 1.819,
+    "2025": 0.006,
+    "2026_ytd": 0.002,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 10.269,
+   "by_fuel": {
+    "crude": 0.038,
+    "products": 0.047,
+    "pipeline_gas": 10.183,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of AUT>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "Pipeline gas (TurkStream/transit) and Druzhba crude attributed to destination country by CREA."
+  },
+  "IRL": {
+   "name": "Ireland",
+   "fossil_2021": 0.341,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.179,
+    "pipeline_gas": 0.003,
+    "lng": 0,
+    "coal": 0.16
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.372,
+    "hs27_usd_bn": 0.44,
+    "hs2701_coal_usd_bn": 0.168,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.273,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.018,
+    "2022_calendar_full": 0.102,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.018,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0.018,
+    "pipeline_gas": 0.0,
+    "lng": 0,
+    "coal": 0.001
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of IRL>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "PRT": {
+   "name": "Portugal",
+   "fossil_2021": 0.607,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.345,
+    "pipeline_gas": 0.001,
+    "lng": 0.258,
+    "coal": 0.004
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.729,
+    "hs27_usd_bn": 0.862,
+    "hs2701_coal_usd_bn": null,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.411,
+    "hs2711_gas_usd_bn": 0.281,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.334,
+    "2022_calendar_full": 0.443,
+    "2023": 0.189,
+    "2024": 0.105,
+    "2025": 0.108,
+    "2026_ytd": 0.133,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.87,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0.12,
+    "pipeline_gas": 0.0,
+    "lng": 0.749,
+    "coal": 0.0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of PRT>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "GRC": {
+   "name": "Greece",
+   "fossil_2021": 3.905,
+   "fossil_2021_by_fuel": {
+    "crude": 1.44,
+    "products": 1.951,
+    "pipeline_gas": 0.49,
+    "lng": 0,
+    "coal": 0.025
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 3.659,
+    "hs27_usd_bn": 4.328,
+    "hs2701_coal_usd_bn": 0.028,
+    "hs2709_crude_usd_bn": 0.893,
+    "hs2710_products_usd_bn": 2.055,
+    "hs2711_gas_usd_bn": 1.345,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 5.105,
+    "2022_calendar_full": 5.944,
+    "2023": 0.934,
+    "2024": 0.361,
+    "2025": 0.155,
+    "2026_ytd": 0.149,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 6.704,
+   "by_fuel": {
+    "crude": 0.179,
+    "products": 5.226,
+    "pipeline_gas": 0.7,
+    "lng": 0.599,
+    "coal": 0.0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": {
+    "value": null,
+    "basis": "only gross figure available",
+    "windows": [
+     {
+      "period": "2025-01/2026-01",
+      "eur_bn": 2.54,
+      "measure": "GROSS product imports from Turkish ports Ceyhan/Marmara/Mersin, whose seaborne product imports were 82% Russian (likely relabelled Russian product)",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+     }
+    ]
+   },
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": "C",
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of GRC>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+   ],
+   "notes": ""
+  },
+  "SWE": {
+   "name": "Sweden",
+   "fossil_2021": 1.221,
+   "fossil_2021_by_fuel": {
+    "crude": 0.652,
+    "products": 0.428,
+    "pipeline_gas": 0,
+    "lng": 0.099,
+    "coal": 0.043
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 1.335,
+    "hs27_usd_bn": 1.579,
+    "hs2701_coal_usd_bn": 0.096,
+    "hs2709_crude_usd_bn": 0.809,
+    "hs2710_products_usd_bn": 0.238,
+    "hs2711_gas_usd_bn": 0.103,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.23,
+    "2022_calendar_full": 0.469,
+    "2023": 0.035,
+    "2024": 0,
+    "2025": 0,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.265,
+   "by_fuel": {
+    "crude": 0.069,
+    "products": 0.109,
+    "pipeline_gas": 0,
+    "lng": 0.085,
+    "coal": 0.003
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of SWE>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "DNK": {
+   "name": "Denmark",
+   "fossil_2021": 1.296,
+   "fossil_2021_by_fuel": {
+    "crude": 0.198,
+    "products": 0.497,
+    "pipeline_gas": 0.547,
+    "lng": 0,
+    "coal": 0.054
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.737,
+    "hs27_usd_bn": 0.871,
+    "hs2701_coal_usd_bn": 0.007,
+    "hs2709_crude_usd_bn": 0.508,
+    "hs2710_products_usd_bn": 0.35,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.383,
+    "2022_calendar_full": 0.534,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.383,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0.383,
+    "lng": 0,
+    "coal": 0.0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of DNK>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "NOR": {
+   "name": "Norway",
+   "fossil_2021": 0.522,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.489,
+    "pipeline_gas": 0,
+    "lng": 0.034,
+    "coal": 0.0
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.5,
+    "hs27_usd_bn": 0.591,
+    "hs2701_coal_usd_bn": 0.029,
+    "hs2709_crude_usd_bn": 0.026,
+    "hs2710_products_usd_bn": 0.433,
+    "hs2711_gas_usd_bn": 0.038,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.456,
+    "2022_calendar_full": 0.566,
+    "2023": 0.025,
+    "2024": 0,
+    "2025": 0,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.481,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0.436,
+    "pipeline_gas": 0,
+    "lng": 0.045,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of NOR>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "FIN": {
+   "name": "Finland",
+   "fossil_2021": 4.076,
+   "fossil_2021_by_fuel": {
+    "crude": 2.8,
+    "products": 0.419,
+    "pipeline_gas": 0.688,
+    "lng": 0.116,
+    "coal": 0.053
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 5.04,
+    "hs27_usd_bn": 5.961,
+    "hs2701_coal_usd_bn": 0.148,
+    "hs2709_crude_usd_bn": 3.409,
+    "hs2710_products_usd_bn": 0.752,
+    "hs2711_gas_usd_bn": 0.116,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 1.118,
+    "2022_calendar_full": 2.041,
+    "2023": 0.051,
+    "2024": 0.0,
+    "2025": 0,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 1.169,
+   "by_fuel": {
+    "crude": 0.38,
+    "products": 0.25,
+    "pipeline_gas": 0.254,
+    "lng": 0.255,
+    "coal": 0.029
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of FIN>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "EST": {
+   "name": "Estonia",
+   "fossil_2021": 1.287,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 1.271,
+    "pipeline_gas": 0.015,
+    "lng": 0,
+    "coal": 0.001
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 1.293,
+    "hs27_usd_bn": 1.53,
+    "hs2701_coal_usd_bn": 0.0,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.563,
+    "hs2711_gas_usd_bn": 0.176,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 1.803,
+    "2022_calendar_full": 2.1,
+    "2023": 0.003,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026_ytd": 0.0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 1.806,
+   "by_fuel": {
+    "crude": 0,
+    "products": 1.716,
+    "pipeline_gas": 0.09,
+    "lng": 0,
+    "coal": 0.0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of EST>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "LVA": {
+   "name": "Latvia",
+   "fossil_2021": 1.023,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.739,
+    "pipeline_gas": 0.277,
+    "lng": 0,
+    "coal": 0.008
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.624,
+    "hs27_usd_bn": 0.738,
+    "hs2701_coal_usd_bn": 0.001,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.111,
+    "hs2711_gas_usd_bn": 0.536,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 2.106,
+    "2022_calendar_full": 2.37,
+    "2023": 0.179,
+    "2024": 0.015,
+    "2025": 0.0,
+    "2026_ytd": 0.0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 2.3,
+   "by_fuel": {
+    "crude": 0,
+    "products": 1.937,
+    "pipeline_gas": 0.311,
+    "lng": 0,
+    "coal": 0.053
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of LVA>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "LTU": {
+   "name": "Lithuania",
+   "fossil_2021": 3.285,
+   "fossil_2021_by_fuel": {
+    "crude": 2.755,
+    "products": 0.293,
+    "pipeline_gas": 0.0,
+    "lng": 0.137,
+    "coal": 0.1
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 3.088,
+    "hs27_usd_bn": 3.653,
+    "hs2701_coal_usd_bn": 0.024,
+    "hs2709_crude_usd_bn": 2.725,
+    "hs2710_products_usd_bn": 0.302,
+    "hs2711_gas_usd_bn": 0.362,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.432,
+    "2022_calendar_full": 1.075,
+    "2023": 0.021,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026_ytd": 0.0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.454,
+   "by_fuel": {
+    "crude": 0.243,
+    "products": 0.137,
+    "pipeline_gas": 0.0,
+    "lng": 0,
+    "coal": 0.073
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of LTU>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "POL": {
+   "name": "Poland",
+   "fossil_2021": 10.493,
+   "fossil_2021_by_fuel": {
+    "crude": 6.861,
+    "products": 2.186,
+    "pipeline_gas": 0.473,
+    "lng": 0,
+    "coal": 0.973
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 8.949,
+    "hs27_usd_bn": 10.585,
+    "hs2701_coal_usd_bn": 0.784,
+    "hs2709_crude_usd_bn": 6.57,
+    "hs2710_products_usd_bn": 2.315,
+    "hs2711_gas_usd_bn": 0.757,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 9.675,
+    "2022_calendar_full": 11.885,
+    "2023": 1.0,
+    "2024": 0.521,
+    "2025": 0.016,
+    "2026_ytd": 0.039,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 11.251,
+   "by_fuel": {
+    "crude": 6.426,
+    "products": 2.295,
+    "pipeline_gas": 2.246,
+    "lng": 0,
+    "coal": 0.284
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of POL>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "CZE": {
+   "name": "Czechia",
+   "fossil_2021": 3.26,
+   "fossil_2021_by_fuel": {
+    "crude": 1.428,
+    "products": 0.0,
+    "pipeline_gas": 1.808,
+    "lng": 0,
+    "coal": 0.024
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 4.461,
+    "hs27_usd_bn": 5.276,
+    "hs2701_coal_usd_bn": 0.033,
+    "hs2709_crude_usd_bn": 1.745,
+    "hs2710_products_usd_bn": 0.0,
+    "hs2711_gas_usd_bn": 3.489,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 3.934,
+    "2022_calendar_full": 4.51,
+    "2023": 2.32,
+    "2024": 2.347,
+    "2025": 0.237,
+    "2026_ytd": 0.004,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 8.841,
+   "by_fuel": {
+    "crude": 5.662,
+    "products": 0,
+    "pipeline_gas": 3.175,
+    "lng": 0,
+    "coal": 0.005
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of CZE>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "Pipeline gas (TurkStream/transit) and Druzhba crude attributed to destination country by CREA."
+  },
+  "SVK": {
+   "name": "Slovakia",
+   "fossil_2021": 3.672,
+   "fossil_2021_by_fuel": {
+    "crude": 2.155,
+    "products": 0.0,
+    "pipeline_gas": 1.405,
+    "lng": 0,
+    "coal": 0.112
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 4.791,
+    "hs27_usd_bn": 5.666,
+    "hs2701_coal_usd_bn": 0.105,
+    "hs2709_crude_usd_bn": 2.494,
+    "hs2710_products_usd_bn": 0.003,
+    "hs2711_gas_usd_bn": 3.059,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 6.09,
+    "2022_calendar_full": 6.848,
+    "2023": 4.328,
+    "2024": 3.404,
+    "2025": 2.721,
+    "2026_ytd": 2.37,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 18.913,
+   "by_fuel": {
+    "crude": 10.089,
+    "products": 0.0,
+    "pipeline_gas": 8.814,
+    "lng": 0,
+    "coal": 0.01
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of SVK>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "Pipeline gas (TurkStream/transit) and Druzhba crude attributed to destination country by CREA."
+  },
+  "HUN": {
+   "name": "Hungary",
+   "fossil_2021": 4.1,
+   "fossil_2021_by_fuel": {
+    "crude": 1.418,
+    "products": 0.016,
+    "pipeline_gas": 2.64,
+    "lng": 0,
+    "coal": 0.026
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 3.076,
+    "hs27_usd_bn": 3.638,
+    "hs2701_coal_usd_bn": 0.039,
+    "hs2709_crude_usd_bn": 1.707,
+    "hs2710_products_usd_bn": 0.021,
+    "hs2711_gas_usd_bn": 1.867,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 10.355,
+    "2022_calendar_full": 11.17,
+    "2023": 5.303,
+    "2024": 4.399,
+    "2025": 4.24,
+    "2026_ytd": 3.482,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 27.779,
+   "by_fuel": {
+    "crude": 9.46,
+    "products": 0.017,
+    "pipeline_gas": 18.301,
+    "lng": 0,
+    "coal": 0.001
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of HUN>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "Pipeline gas (TurkStream/transit) and Druzhba crude attributed to destination country by CREA."
+  },
+  "ROU": {
+   "name": "Romania",
+   "fossil_2021": 4.718,
+   "fossil_2021_by_fuel": {
+    "crude": 2.278,
+    "products": 1.147,
+    "pipeline_gas": 1.242,
+    "lng": 0,
+    "coal": 0.051
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 3.971,
+    "hs27_usd_bn": 4.697,
+    "hs2701_coal_usd_bn": 0.077,
+    "hs2709_crude_usd_bn": 2.716,
+    "hs2710_products_usd_bn": 1.144,
+    "hs2711_gas_usd_bn": 0.587,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 4.676,
+    "2022_calendar_full": 6.047,
+    "2023": 0.578,
+    "2024": 0.325,
+    "2025": 0.423,
+    "2026_ytd": 0.277,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 6.279,
+   "by_fuel": {
+    "crude": 1.522,
+    "products": 1.792,
+    "pipeline_gas": 2.953,
+    "lng": 0,
+    "coal": 0.012
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": {
+    "value": null,
+    "basis": "only gross figure available",
+    "windows": [
+     {
+      "period": "2024-03/2025-02",
+      "eur_bn": 1.2,
+      "measure": "GROSS imports from refineries using Russian crude",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf"
+     }
+    ]
+   },
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": "C",
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of ROU>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf"
+   ],
+   "notes": ""
+  },
+  "BGR": {
+   "name": "Bulgaria",
+   "fossil_2021": 2.647,
+   "fossil_2021_by_fuel": {
+    "crude": 1.152,
+    "products": 0.193,
+    "pipeline_gas": 1.282,
+    "lng": 0,
+    "coal": 0.02
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 2.496,
+    "hs27_usd_bn": 2.953,
+    "hs2701_coal_usd_bn": 0.1,
+    "hs2709_crude_usd_bn": 1.24,
+    "hs2710_products_usd_bn": 0.338,
+    "hs2711_gas_usd_bn": 1.263,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 5.309,
+    "2022_calendar_full": 6.004,
+    "2023": 3.132,
+    "2024": 0.648,
+    "2025": 0.571,
+    "2026_ytd": 0.846,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 10.507,
+   "by_fuel": {
+    "crude": 5.504,
+    "products": 0.708,
+    "pipeline_gas": 4.29,
+    "lng": 0,
+    "coal": 0.005
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": {
+    "value": null,
+    "basis": "only gross figure available",
+    "windows": [
+     {
+      "period": "2025-01/2026-01",
+      "eur_bn": 0.179,
+      "measure": "GROSS product imports from Turkish ports importing Russian products",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+     }
+    ]
+   },
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": "C",
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of BGR>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+   ],
+   "notes": ""
+  },
+  "HRV": {
+   "name": "Croatia",
+   "fossil_2021": 0.748,
+   "fossil_2021_by_fuel": {
+    "crude": 0.291,
+    "products": 0.188,
+    "pipeline_gas": 0.147,
+    "lng": 0.02,
+    "coal": 0.102
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.324,
+    "hs27_usd_bn": 0.383,
+    "hs2701_coal_usd_bn": 0.067,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.131,
+    "hs2711_gas_usd_bn": 0.087,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 1.303,
+    "2022_calendar_full": 1.387,
+    "2023": 0.224,
+    "2024": 0.18,
+    "2025": 0.178,
+    "2026_ytd": 0.009,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 1.893,
+   "by_fuel": {
+    "crude": 0.933,
+    "products": 0.69,
+    "pipeline_gas": 0.206,
+    "lng": 0,
+    "coal": 0.064
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of HRV>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "SVN": {
+   "name": "Slovenia",
+   "fossil_2021": 0.491,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.155,
+    "pipeline_gas": 0.307,
+    "lng": 0,
+    "coal": 0.029
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.253,
+    "hs27_usd_bn": 0.299,
+    "hs2701_coal_usd_bn": 0.002,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.112,
+    "hs2711_gas_usd_bn": 0.184,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 1.261,
+    "2022_calendar_full": 1.413,
+    "2023": 0.194,
+    "2024": 0.185,
+    "2025": 0.002,
+    "2026_ytd": 0.006,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 1.649,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0.925,
+    "pipeline_gas": 0.703,
+    "lng": 0,
+    "coal": 0.021
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of SVN>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "LUX": {
+   "name": "Luxembourg",
+   "fossil_2021": 0.03,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0.03,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.001,
+    "hs27_usd_bn": 0.001,
+    "hs2701_coal_usd_bn": 0.001,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.0,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.001,
+    "2022_calendar_full": 0.002,
+    "2023": 0.0,
+    "2024": 0,
+    "2025": 0,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.001,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0.001,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of LUX>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "CREA records ~zero imports since invasion."
+  },
+  "MDA": {
+   "name": "Moldova",
+   "fossil_2021": 0.908,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.036,
+    "pipeline_gas": 0.872,
+    "lng": 0,
+    "coal": 0.0
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.46,
+    "hs27_usd_bn": 0.544,
+    "hs2701_coal_usd_bn": 0.016,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.15,
+    "hs2711_gas_usd_bn": 0.37,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 1.2,
+    "2022_calendar_full": 1.619,
+    "2023": 0.964,
+    "2024": 0.953,
+    "2025": 0.5,
+    "2026_ytd": 0.47,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 4.087,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0.005,
+    "pipeline_gas": 4.082,
+    "lng": 0,
+    "coal": 0.001
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of MDA>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "CREA covers seaborne/pipeline flows only; rail/road deliveries from Russia (significant for CIS states) are missing, so CREA figure is a lower bound."
+  },
+  "CHE": {
+   "name": "Switzerland",
+   "fossil_2021": 0.35,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0.35,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.015,
+    "hs27_usd_bn": 0.018,
+    "hs2701_coal_usd_bn": 0.002,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": null,
+    "hs2711_gas_usd_bn": 0.015,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.063,
+    "2022_calendar_full": 0.129,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026_ytd": 0.0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.063,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0.063,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of CHE>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "CAN": {
+   "name": "Canada",
+   "fossil_2021": 0.171,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.161,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.009
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.257,
+    "hs27_usd_bn": 0.304,
+    "hs2701_coal_usd_bn": 0.025,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.279,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.001,
+    "2022_calendar_full": 0.052,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026_ytd": 0.0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.002,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.002
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of CAN>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "CREA records ~zero imports since invasion."
+  },
+  "JPN": {
+   "name": "Japan",
+   "fossil_2021": 8.082,
+   "fossil_2021_by_fuel": {
+    "crude": 1.86,
+    "products": 0.255,
+    "pipeline_gas": 0,
+    "lng": 3.6,
+    "coal": 2.366
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 7.333,
+    "hs27_usd_bn": 8.673,
+    "hs2701_coal_usd_bn": 2.577,
+    "hs2709_crude_usd_bn": 2.349,
+    "hs2710_products_usd_bn": 0.353,
+    "hs2711_gas_usd_bn": 3.393,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 6.332,
+    "2022_calendar_full": 8.047,
+    "2023": 3.83,
+    "2024": 2.933,
+    "2025": 3.104,
+    "2026_ytd": 2.423,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 18.622,
+   "by_fuel": {
+    "crude": 0.661,
+    "products": 0.131,
+    "pipeline_gas": 0,
+    "lng": 15.357,
+    "coal": 2.472
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of JPN>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "KOR": {
+   "name": "South Korea",
+   "fossil_2021": 11.8,
+   "fossil_2021_by_fuel": {
+    "crude": 3.355,
+    "products": 4.671,
+    "pipeline_gas": 0,
+    "lng": 1.539,
+    "coal": 2.235
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 11.179,
+    "hs27_usd_bn": 13.221,
+    "hs2701_coal_usd_bn": 2.566,
+    "hs2709_crude_usd_bn": 4.269,
+    "hs2710_products_usd_bn": 4.657,
+    "hs2711_gas_usd_bn": 1.715,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 8.92,
+    "2022_calendar_full": 10.999,
+    "2023": 5.279,
+    "2024": 4.299,
+    "2025": 3.795,
+    "2026_ytd": 3.251,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 25.543,
+   "by_fuel": {
+    "crude": 1.156,
+    "products": 5.752,
+    "pipeline_gas": 0,
+    "lng": 4.927,
+    "coal": 13.708
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of KOR>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "AUS": {
+   "name": "Australia",
+   "fossil_2021": 0.018,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.016,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.002
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.053,
+    "hs27_usd_bn": 0.063,
+    "hs2701_coal_usd_bn": 0.005,
+    "hs2709_crude_usd_bn": 0.046,
+    "hs2710_products_usd_bn": 0.012,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.095,
+    "2022_calendar_full": 0.174,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.095,
+   "by_fuel": {
+    "crude": 0.095,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": 2.277,
+   "laundered_oil_detail": {
+    "value": 2.277,
+    "basis": "CREA: USD 2.5 bn of oil products estimated refined from Russian crude, 5 Feb 2023-30 Jun 2025 (gross imports from 3 Indian refineries USD 6.4 bn); converted at mean ECB rate 2023-2025 (1.0979); Jul 2025-Feb 2026 not separately reported -> lower bound",
+    "windows": [
+     {
+      "period": "2023-02-05/2025-06-30",
+      "usd_bn": 2.5,
+      "measure": "product value derived from Russian crude",
+      "src": "https://energyandcleanair.org/fact-sheet-australias-imports-of-oil-products-refined-from-russian-crude-twice-their-aid-to-ukraine/"
+     },
+     {
+      "period": "2024-03/2025-02",
+      "eur_bn": 3.38,
+      "measure": "GROSS imports from refineries using Russian crude",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf"
+     },
+     {
+      "period": "2025-03/2026-02",
+      "eur_bn": 1.6,
+      "measure": "product value refined from Russian crude (gross EUR 3.4 bn); overlaps the fact-sheet window",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+     }
+    ]
+   },
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": "C",
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of AUS>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
+    "https://energyandcleanair.org/fact-sheet-australias-imports-of-oil-products-refined-from-russian-crude-twice-their-aid-to-ukraine/",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+   ],
+   "notes": ""
+  },
+  "NZL": {
+   "name": "New Zealand",
+   "fossil_2021": 0.032,
+   "fossil_2021_by_fuel": {
+    "crude": 0.032,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.033,
+    "hs27_usd_bn": 0.04,
+    "hs2701_coal_usd_bn": null,
+    "hs2709_crude_usd_bn": 0.04,
+    "hs2710_products_usd_bn": 0.0,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.0,
+    "2022_calendar_full": 0.0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.0,
+   "by_fuel": {
+    "crude": 0.0,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of NZL>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "CREA records ~zero imports since invasion."
+  },
+  "GEO": {
+   "name": "Georgia",
+   "fossil_2021": 0.196,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.196,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.151,
+    "hs27_usd_bn": 0.179,
+    "hs2701_coal_usd_bn": 0.007,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.135,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.25,
+    "2022_calendar_full": 0.291,
+    "2023": 0.173,
+    "2024": 0.332,
+    "2025": 0.366,
+    "2026_ytd": 0.338,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 1.459,
+   "by_fuel": {
+    "crude": 0.281,
+    "products": 1.178,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of GEO>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "CREA covers seaborne/pipeline flows only; rail/road deliveries from Russia (significant for CIS states) are missing, so CREA figure is a lower bound."
+  },
+  "ISR": {
+   "name": "Israel",
+   "fossil_2021": 0.658,
+   "fossil_2021_by_fuel": {
+    "crude": 0.134,
+    "products": 0.317,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.207
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.008,
+    "hs27_usd_bn": 0.01,
+    "hs2701_coal_usd_bn": null,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.009,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.932,
+    "2022_calendar_full": 1.021,
+    "2023": 0.529,
+    "2024": 0.634,
+    "2025": 0.268,
+    "2026_ytd": 0.118,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 2.481,
+   "by_fuel": {
+    "crude": 0.213,
+    "products": 1.716,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.551
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of ISR>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "TUR": {
+   "name": "Türkiye",
+   "fossil_2021": 15.451,
+   "fossil_2021_by_fuel": {
+    "crude": 2.713,
+    "products": 3.597,
+    "pipeline_gas": 8.066,
+    "lng": 0,
+    "coal": 1.075
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 12.085,
+    "hs27_usd_bn": 14.293,
+    "hs2701_coal_usd_bn": 1.443,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 3.728,
+    "hs2711_gas_usd_bn": 0.02,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 28.412,
+    "2022_calendar_full": 31.88,
+    "2023": 31.772,
+    "2024": 33.619,
+    "2025": 27.126,
+    "2026_ytd": 17.086,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 138.015,
+   "by_fuel": {
+    "crude": 25.547,
+    "products": 60.421,
+    "pipeline_gas": 36.561,
+    "lng": 1.206,
+    "coal": 14.279
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": 1.85,
+   "oil_discount_gain_detail": {
+    "value": 1.85,
+    "usd_bn": 2.0,
+    "period": "2023 (data to Nov)",
+    "basis": "Reuters calculation (LSEG data + trader estimates), crude and products, reported 19 Dec 2023; other years not estimated.",
+    "src": "https://www.dailysabah.com/business/energy/turkiye-saves-2-billion-on-russian-oil-purchases-calculations-show/amp"
+   },
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": "C"
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of TUR>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
+    "https://www.dailysabah.com/business/energy/turkiye-saves-2-billion-on-russian-oil-purchases-calculations-show/amp"
+   ],
+   "notes": "Includes TurkStream pipeline gas; part of TurkStream flows transit to SE Europe and may be attributed to Turkey."
+  },
+  "CHN": {
+   "name": "China",
+   "fossil_2021": 25.264,
+   "fossil_2021_by_fuel": {
+    "crude": 15.458,
+    "products": 0.993,
+    "pipeline_gas": 1.284,
+    "lng": 2.494,
+    "coal": 5.035
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 45.524,
+    "hs27_usd_bn": 53.842,
+    "hs2701_coal_usd_bn": 7.092,
+    "hs2709_crude_usd_bn": 40.544,
+    "hs2710_products_usd_bn": 1.322,
+    "hs2711_gas_usd_bn": 4.304,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 66.615,
+    "2022_calendar_full": 75.294,
+    "2023": 79.33,
+    "2024": 79.781,
+    "2025": 65.804,
+    "2026_ytd": 66.969,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 358.499,
+   "by_fuel": {
+    "crude": 238.517,
+    "products": 28.793,
+    "pipeline_gas": 32.284,
+    "lng": 21.374,
+    "coal": 37.531
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": 9.967,
+   "oil_discount_gain_detail": {
+    "value": 9.967,
+    "usd_bn": 10.6,
+    "period": "2022-01/2023-06",
+    "basis": "Banque de France (27 Sep 2023): USD 6.6 bn (2022) + USD 4.0 bn (H1 2023) savings on Russian crude vs average import price from other suppliers; excludes Malaysia-relabelled oil (further USD 4.9 bn + 2.7 bn). Rosneft CEO claimed USD 20 bn since 2022 (company claim, not used).",
+    "src": "https://banque-france.fr/en/publications-and-statistics/publications/china-has-reduced-its-energy-bill-thanks-russian-oil-discounts"
+   },
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": "C"
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of CHN>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
+    "https://banque-france.fr/en/publications-and-statistics/publications/china-has-reduced-its-energy-bill-thanks-russian-oil-discounts"
+   ],
+   "notes": ""
+  },
+  "IND": {
+   "name": "India",
+   "fossil_2021": 3.04,
+   "fossil_2021_by_fuel": {
+    "crude": 0.944,
+    "products": 1.05,
+    "pipeline_gas": 0,
+    "lng": 0.186,
+    "coal": 0.86
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 3.947,
+    "hs27_usd_bn": 4.668,
+    "hs2701_coal_usd_bn": 1.097,
+    "hs2709_crude_usd_bn": 2.31,
+    "hs2710_products_usd_bn": 1.187,
+    "hs2711_gas_usd_bn": 0.037,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 25.754,
+    "2022_calendar_full": 26.299,
+    "2023": 44.295,
+    "2024": 46.449,
+    "2025": 39.501,
+    "2026_ytd": 36.035,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 192.035,
+   "by_fuel": {
+    "crude": 154.908,
+    "products": 18.883,
+    "pipeline_gas": 0,
+    "lng": 0.486,
+    "coal": 17.759
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": 12.149,
+   "oil_discount_gain_detail": {
+    "value": 12.149,
+    "usd_bn": 13.0,
+    "period": "2022-04/2024-02 (FY2023 + 11M FY2024)",
+    "basis": "ICRA estimate (reported 1 May 2024): USD 5.1 bn FY2023 + USD 7.9 bn Apr 2023-Feb 2024, savings vs West-Asian crude unit values; FY23 converted at 2022 ECB rate, FY24 at 2023 rate. Alternative: Indian Express >= USD 10.5 bn Apr 2022-May 2024.",
+    "src": "https://deccanchronicle.com/business/economics/russian-oil-imports-save-india-79b-in-fy24-891929"
+   },
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": "C"
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of IND>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
+    "https://deccanchronicle.com/business/economics/russian-oil-imports-save-india-79b-in-fy24-891929"
+   ],
+   "notes": ""
+  },
+  "ARE": {
+   "name": "United Arab Emirates",
+   "fossil_2021": 0.811,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.804,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.008
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.074,
+    "hs27_usd_bn": 0.087,
+    "hs2701_coal_usd_bn": 0.016,
+    "hs2709_crude_usd_bn": 0.043,
+    "hs2710_products_usd_bn": 0.028,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 5.423,
+    "2022_calendar_full": 5.623,
+    "2023": 6.052,
+    "2024": 2.137,
+    "2025": 1.596,
+    "2026_ytd": 0.41,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 15.618,
+   "by_fuel": {
+    "crude": 0.376,
+    "products": 15.077,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.165
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of ARE>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "SAU": {
+   "name": "Saudi Arabia",
+   "fossil_2021": 0.668,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.668,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.12,
+    "hs27_usd_bn": 0.142,
+    "hs2701_coal_usd_bn": 0.004,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.136,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 1.285,
+    "2022_calendar_full": 1.337,
+    "2023": 5.078,
+    "2024": 3.133,
+    "2025": 3.703,
+    "2026_ytd": 4.516,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 17.716,
+   "by_fuel": {
+    "crude": 0.025,
+    "products": 17.686,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.004
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of SAU>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "KAZ": {
+   "name": "Kazakhstan",
+   "fossil_2021": 0.004,
+   "fossil_2021_by_fuel": {
+    "crude": 0.004,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.0
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 1.14,
+    "hs27_usd_bn": 1.348,
+    "hs2701_coal_usd_bn": 0.06,
+    "hs2709_crude_usd_bn": 0.0,
+    "hs2710_products_usd_bn": 0.423,
+    "hs2711_gas_usd_bn": 0.276,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.0,
+    "2022_calendar_full": 0.0,
+    "2023": 0.0,
+    "2024": 0.002,
+    "2025": 0,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.002,
+   "by_fuel": {
+    "crude": 0.001,
+    "products": 0.001,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of KAZ>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "CREA records ~zero imports since invasion. CREA covers seaborne/pipeline flows only; rail/road deliveries from Russia (significant for CIS states) are missing, so CREA figure is a lower bound."
+  },
+  "KGZ": {
+   "name": null,
+   "fossil_2021": null,
+   "fossil_2021_by_fuel": null,
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.655,
+    "hs27_usd_bn": 0.775,
+    "hs2701_coal_usd_bn": 0.0,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.701,
+    "hs2711_gas_usd_bn": 0.068,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": null,
+   "fossil_total_since_invasion": null,
+   "by_fuel": null,
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": null,
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": null,
+    "fossil_total_since_invasion": null,
+    "by_fuel": null,
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of KGZ>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "Not present in CREA Russia Fossil Tracker (CREA tracks seaborne trade via Kpler plus pipeline gas/oil to EU, Turkey, China; overland rail/road/pipeline flows to CIS states such as Belarus, Kazakhstan, Kyrgyzstan, Armenia, Uzbekistan are not covered). Value null = not tracked, not zero."
+  },
+  "ARM": {
+   "name": null,
+   "fossil_2021": null,
+   "fossil_2021_by_fuel": null,
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.579,
+    "hs27_usd_bn": 0.685,
+    "hs2701_coal_usd_bn": 0.001,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.269,
+    "hs2711_gas_usd_bn": 0.414,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": null,
+   "fossil_total_since_invasion": null,
+   "by_fuel": null,
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": null,
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": null,
+    "fossil_total_since_invasion": null,
+    "by_fuel": null,
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of ARM>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "Not present in CREA Russia Fossil Tracker (CREA tracks seaborne trade via Kpler plus pipeline gas/oil to EU, Turkey, China; overland rail/road/pipeline flows to CIS states such as Belarus, Kazakhstan, Kyrgyzstan, Armenia, Uzbekistan are not covered). Value null = not tracked, not zero."
+  },
+  "AZE": {
+   "name": "Azerbaijan",
+   "fossil_2021": 0.682,
+   "fossil_2021_by_fuel": {
+    "crude": 0.653,
+    "products": 0.028,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.001
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.054,
+    "hs27_usd_bn": 0.064,
+    "hs2701_coal_usd_bn": 0.003,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.055,
+    "hs2711_gas_usd_bn": 0.0,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.619,
+    "2022_calendar_full": 0.764,
+    "2023": 0.503,
+    "2024": 0.447,
+    "2025": 0.317,
+    "2026_ytd": 0.019,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 1.906,
+   "by_fuel": {
+    "crude": 1.875,
+    "products": 0.031,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of AZE>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "CREA covers seaborne/pipeline flows only; rail/road deliveries from Russia (significant for CIS states) are missing, so CREA figure is a lower bound."
+  },
+  "UZB": {
+   "name": null,
+   "fossil_2021": null,
+   "fossil_2021_by_fuel": null,
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.413,
+    "hs27_usd_bn": 0.488,
+    "hs2701_coal_usd_bn": 0.0,
+    "hs2709_crude_usd_bn": 0.04,
+    "hs2710_products_usd_bn": 0.404,
+    "hs2711_gas_usd_bn": 0.0,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": null,
+   "fossil_total_since_invasion": null,
+   "by_fuel": null,
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": null,
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": null,
+    "fossil_total_since_invasion": null,
+    "by_fuel": null,
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of UZB>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "Not present in CREA Russia Fossil Tracker (CREA tracks seaborne trade via Kpler plus pipeline gas/oil to EU, Turkey, China; overland rail/road/pipeline flows to CIS states such as Belarus, Kazakhstan, Kyrgyzstan, Armenia, Uzbekistan are not covered). Value null = not tracked, not zero."
+  },
+  "BLR": {
+   "name": null,
+   "fossil_2021": null,
+   "fossil_2021_by_fuel": null,
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 5.936,
+    "hs27_usd_bn": 7.021,
+    "note": "MIRROR: Russia-reported exports to Belarus (Belarus does not report); gas largely confidential/under-reported"
+   },
+   "fossil_by_year": null,
+   "fossil_total_since_invasion": null,
+   "by_fuel": null,
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": null,
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": null,
+    "fossil_total_since_invasion": null,
+    "by_fuel": null,
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=643&period=2021&partnerCode=112&flowCode=X&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": "Not present in CREA Russia Fossil Tracker (CREA tracks seaborne trade via Kpler plus pipeline gas/oil to EU, Turkey, China; overland rail/road/pipeline flows to CIS states such as Belarus, Kazakhstan, Kyrgyzstan, Armenia, Uzbekistan are not covered). Value null = not tracked, not zero."
+  },
+  "BRA": {
+   "name": "Brazil",
+   "fossil_2021": 1.069,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.573,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.495
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.899,
+    "hs27_usd_bn": 1.064,
+    "hs2701_coal_usd_bn": 0.566,
+    "hs2709_crude_usd_bn": 0.017,
+    "hs2710_products_usd_bn": 0.453,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.992,
+    "2022_calendar_full": 1.208,
+    "2023": 5.849,
+    "2024": 8.125,
+    "2025": 5.017,
+    "2026_ytd": 3.689,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 23.673,
+   "by_fuel": {
+    "crude": 0.09,
+    "products": 22.979,
+    "pipeline_gas": 0,
+    "lng": 0.035,
+    "coal": 0.569
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of BRA>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "MEX": {
+   "name": "Mexico",
+   "fossil_2021": 0.034,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.015,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.018
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.059,
+    "hs27_usd_bn": 0.069,
+    "hs2701_coal_usd_bn": 0.001,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.006,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.042,
+    "2022_calendar_full": 0.042,
+    "2023": 0.014,
+    "2024": 0.011,
+    "2025": 0.018,
+    "2026_ytd": 0.013,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.098,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0.042,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.056
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of MEX>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "ZAF": {
+   "name": "South Africa",
+   "fossil_2021": 0.006,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.006
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.075,
+    "hs27_usd_bn": 0.088,
+    "hs2701_coal_usd_bn": 0.059,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.005,
+    "hs2711_gas_usd_bn": 0.013,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.0,
+    "2022_calendar_full": 0.002,
+    "2023": 0.128,
+    "2024": 0.064,
+    "2025": 0.013,
+    "2026_ytd": 0.046,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.252,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0.195,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.057
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of ZAF>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "EGY": {
+   "name": "Egypt",
+   "fossil_2021": 0.497,
+   "fossil_2021_by_fuel": {
+    "crude": 0.011,
+    "products": 0.44,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.046
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.073,
+    "hs27_usd_bn": 0.086,
+    "hs2701_coal_usd_bn": 0.03,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.041,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 1.844,
+    "2022_calendar_full": 1.91,
+    "2023": 1.143,
+    "2024": 2.339,
+    "2025": 2.306,
+    "2026_ytd": 2.959,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 10.591,
+   "by_fuel": {
+    "crude": 1.12,
+    "products": 8.819,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.653
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of EGY>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "IDN": {
+   "name": "Indonesia",
+   "fossil_2021": 0.222,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.04,
+    "pipeline_gas": 0,
+    "lng": 0.012,
+    "coal": 0.17
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.197,
+    "hs27_usd_bn": 0.233,
+    "hs2701_coal_usd_bn": 0.188,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.045,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.662,
+    "2022_calendar_full": 0.707,
+    "2023": 0.962,
+    "2024": 0.928,
+    "2025": 1.756,
+    "2026_ytd": 1.866,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 6.173,
+   "by_fuel": {
+    "crude": 0.176,
+    "products": 3.301,
+    "pipeline_gas": 0,
+    "lng": 0.22,
+    "coal": 2.477
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of IDN>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "MYS": {
+   "name": "Malaysia",
+   "fossil_2021": 0.848,
+   "fossil_2021_by_fuel": {
+    "crude": 0.292,
+    "products": 0.212,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.345
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.729,
+    "hs27_usd_bn": 0.862,
+    "hs2701_coal_usd_bn": 0.297,
+    "hs2709_crude_usd_bn": 0.372,
+    "hs2710_products_usd_bn": 0.174,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 2.298,
+    "2022_calendar_full": 2.558,
+    "2023": 3.349,
+    "2024": 1.464,
+    "2025": 0.889,
+    "2026_ytd": 1.02,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 9.02,
+   "by_fuel": {
+    "crude": 0.064,
+    "products": 6.22,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 2.736
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of MYS>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "SGP": {
+   "name": "Singapore",
+   "fossil_2021": 1.457,
+   "fossil_2021_by_fuel": {
+    "crude": 0.167,
+    "products": 1.27,
+    "pipeline_gas": 0,
+    "lng": 0.02,
+    "coal": 0.001
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 1.684,
+    "hs27_usd_bn": 1.992,
+    "hs2701_coal_usd_bn": 0.0,
+    "hs2709_crude_usd_bn": 0.33,
+    "hs2710_products_usd_bn": 1.633,
+    "hs2711_gas_usd_bn": 0.029,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 1.683,
+    "2022_calendar_full": 1.793,
+    "2023": 4.776,
+    "2024": 4.701,
+    "2025": 3.802,
+    "2026_ytd": 3.458,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 18.419,
+   "by_fuel": {
+    "crude": 0.077,
+    "products": 18.291,
+    "pipeline_gas": 0,
+    "lng": 0.038,
+    "coal": 0.013
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of SGP>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "THA": {
+   "name": "Thailand",
+   "fossil_2021": 0.603,
+   "fossil_2021_by_fuel": {
+    "crude": 0.55,
+    "products": 0.005,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.048
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.701,
+    "hs27_usd_bn": 0.829,
+    "hs2701_coal_usd_bn": 0.045,
+    "hs2709_crude_usd_bn": 0.784,
+    "hs2710_products_usd_bn": 0.0,
+    "hs2711_gas_usd_bn": 0.0,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.269,
+    "2022_calendar_full": 0.362,
+    "2023": 0.087,
+    "2024": 0.037,
+    "2025": 0.007,
+    "2026_ytd": 0.172,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.572,
+   "by_fuel": {
+    "crude": 0.106,
+    "products": 0.185,
+    "pipeline_gas": 0,
+    "lng": 0.063,
+    "coal": 0.217
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of THA>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "VNM": {
+   "name": "Vietnam",
+   "fossil_2021": 0.309,
+   "fossil_2021_by_fuel": {
+    "crude": 0.041,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.268
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.499,
+    "hs27_usd_bn": 0.59,
+    "hs2701_coal_usd_bn": 0.49,
+    "hs2709_crude_usd_bn": 0.055,
+    "hs2710_products_usd_bn": 0.007,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.302,
+    "2022_calendar_full": 0.368,
+    "2023": 0.495,
+    "2024": 0.623,
+    "2025": 0.744,
+    "2026_ytd": 1.111,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 3.275,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0.16,
+    "pipeline_gas": 0,
+    "lng": 0.032,
+    "coal": 3.083
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of VNM>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "PAK": {
+   "name": "Pakistan",
+   "fossil_2021": 0.061,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.061
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.074,
+    "hs27_usd_bn": 0.088,
+    "hs2701_coal_usd_bn": 0.087,
+    "hs2709_crude_usd_bn": null,
+    "hs2710_products_usd_bn": 0.0,
+    "hs2711_gas_usd_bn": null,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 0.024,
+    "2022_calendar_full": 0.024,
+    "2023": 0.186,
+    "2024": 0.346,
+    "2025": 0.026,
+    "2026_ytd": 0.098,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.68,
+   "by_fuel": {
+    "crude": 0.579,
+    "products": 0.077,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.024
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of PAK>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "SRB": {
+   "name": "Serbia",
+   "fossil_2021": 0.834,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0.834,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": {
+    "hs27_eur_bn": 0.753,
+    "hs27_usd_bn": 0.891,
+    "hs2701_coal_usd_bn": 0.034,
+    "hs2709_crude_usd_bn": 0.331,
+    "hs2710_products_usd_bn": 0.033,
+    "hs2711_gas_usd_bn": 0.485,
+    "note": "importer-reported customs value (CIF), HS 27 incl. electricity; origin attribution differs from CREA (e.g. pipeline gas often not attributed to Russia by EU reporters)"
+   },
+   "fossil_by_year": {
+    "2022": 1.346,
+    "2022_calendar_full": 1.691,
+    "2023": 1.009,
+    "2024": 0.858,
+    "2025": 0.841,
+    "2026_ytd": 0.665,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 4.719,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 4.719,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": "A",
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of SRB>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "TWN": {
+   "name": "Taiwan",
+   "fossil_2021": 2.847,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.667,
+    "pipeline_gas": 0,
+    "lng": 1.064,
+    "coal": 1.116
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 2.419,
+    "2022_calendar_full": 2.862,
+    "2023": 2.445,
+    "2024": 3.259,
+    "2025": 2.973,
+    "2026_ytd": 0.899,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 11.996,
+   "by_fuel": {
+    "crude": 0,
+    "products": 6.741,
+    "pipeline_gas": 0,
+    "lng": 1.324,
+    "coal": 3.931
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "LBY": {
+   "name": "Libya",
+   "fossil_2021": 0.177,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.177,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.224,
+    "2022_calendar_full": 0.234,
+    "2023": 2.163,
+    "2024": 2.778,
+    "2025": 1.755,
+    "2026_ytd": 0.208,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 7.129,
+   "by_fuel": {
+    "crude": 0,
+    "products": 7.129,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "MAR": {
+   "name": "Morocco",
+   "fossil_2021": 0.945,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.225,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.72
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 1.743,
+    "2022_calendar_full": 1.862,
+    "2023": 1.68,
+    "2024": 0.716,
+    "2025": 1.222,
+    "2026_ytd": 1.432,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 6.792,
+   "by_fuel": {
+    "crude": 0,
+    "products": 5.572,
+    "pipeline_gas": 0.0,
+    "lng": 0,
+    "coal": 1.221
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "TUN": {
+   "name": "Tunisia",
+   "fossil_2021": 0.034,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.034,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.823,
+    "2022_calendar_full": 0.842,
+    "2023": 2.255,
+    "2024": 1.858,
+    "2025": 1.188,
+    "2026_ytd": 0.657,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 6.782,
+   "by_fuel": {
+    "crude": 0.035,
+    "products": 6.744,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.003
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "GHA": {
+   "name": "Ghana",
+   "fossil_2021": 0.023,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.023,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.156,
+    "2022_calendar_full": 0.161,
+    "2023": 1.4,
+    "2024": 1.509,
+    "2025": 0.871,
+    "2026_ytd": 0.787,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 4.724,
+   "by_fuel": {
+    "crude": 0.264,
+    "products": 4.457,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.003
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "SEN": {
+   "name": "Senegal",
+   "fossil_2021": 0.329,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.318,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.012
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.526,
+    "2022_calendar_full": 0.626,
+    "2023": 1.069,
+    "2024": 1.126,
+    "2025": 1.056,
+    "2026_ytd": 0.709,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 4.486,
+   "by_fuel": {
+    "crude": 0,
+    "products": 4.205,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.281
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "NGA": {
+   "name": "Nigeria",
+   "fossil_2021": 0.004,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.004,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.209,
+    "2022_calendar_full": 0.239,
+    "2023": 1.562,
+    "2024": 1.035,
+    "2025": 0.19,
+    "2026_ytd": 0.036,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 3.032,
+   "by_fuel": {
+    "crude": 0,
+    "products": 3.03,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.002
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "BRN": {
+   "name": "Brunei Darussalam",
+   "fossil_2021": 0.208,
+   "fossil_2021_by_fuel": {
+    "crude": 0.208,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.056,
+    "2022_calendar_full": 0.16,
+    "2023": 0.097,
+    "2024": 1.042,
+    "2025": 0.69,
+    "2026_ytd": 0.961,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 2.846,
+   "by_fuel": {
+    "crude": 1.938,
+    "products": 0.908,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "MMR": {
+   "name": "Myanmar",
+   "fossil_2021": 0,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0,
+    "2022_calendar_full": 0,
+    "2023": 0.96,
+    "2024": 1.389,
+    "2025": 0.28,
+    "2026_ytd": 0.015,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 2.644,
+   "by_fuel": {
+    "crude": 2.614,
+    "products": 0.021,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.009
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "SYR": {
+   "name": "Syria",
+   "fossil_2021": 0,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.003,
+    "2022_calendar_full": 0.003,
+    "2023": 0.0,
+    "2024": 0.01,
+    "2025": 1.13,
+    "2026_ytd": 1.303,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 2.446,
+   "by_fuel": {
+    "crude": 1.468,
+    "products": 0.95,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.028
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "CYP": {
+   "name": "Cyprus",
+   "fossil_2021": 0.026,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.018,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.009
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.143,
+    "2022_calendar_full": 0.149,
+    "2023": 0.015,
+    "2024": 0.004,
+    "2025": 0,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.162,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0.153,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.009
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": {
+    "value": null,
+    "basis": "only gross figure available",
+    "windows": [
+     {
+      "period": "2025-01/2026-01",
+      "eur_bn": 0.289,
+      "measure": "GROSS product imports from Turkish ports importing Russian products",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+     }
+    ]
+   },
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": "C",
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+   ],
+   "notes": ""
+  },
+  "MLT": {
+   "name": "Malta",
+   "fossil_2021": 0.054,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.054,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.024,
+    "2022_calendar_full": 0.068,
+    "2023": 0.0,
+    "2024": 0.03,
+    "2025": 0,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.054,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0.054,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": {
+    "value": null,
+    "basis": "only gross figure available",
+    "windows": [
+     {
+      "period": "2025-01/2026-01",
+      "eur_bn": 0.104,
+      "measure": "GROSS product imports from Turkish ports importing Russian products",
+      "src": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+     }
+    ]
+   },
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": "C",
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf"
+   ],
+   "notes": ""
+  },
+  "LKA": {
+   "name": "Sri Lanka",
+   "fossil_2021": 0.045,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.045
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.268,
+    "2022_calendar_full": 0.285,
+    "2023": 0.204,
+    "2024": 0.29,
+    "2025": 0.182,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.944,
+   "by_fuel": {
+    "crude": 0.277,
+    "products": 0.054,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.614
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "CUB": {
+   "name": "Cuba",
+   "fossil_2021": 0.292,
+   "fossil_2021_by_fuel": {
+    "crude": 0.259,
+    "products": 0.033,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.5,
+    "2022_calendar_full": 0.545,
+    "2023": 0.164,
+    "2024": 0.158,
+    "2025": 0.139,
+    "2026_ytd": 0.044,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 1.004,
+   "by_fuel": {
+    "crude": 0.488,
+    "products": 0.517,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "VEN": {
+   "name": "Venezuela",
+   "fossil_2021": 0,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.007,
+    "2022_calendar_full": 0.007,
+    "2023": 0.0,
+    "2024": 0.16,
+    "2025": 0.966,
+    "2026_ytd": 0.049,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 1.182,
+   "by_fuel": {
+    "crude": 0.095,
+    "products": 1.075,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.012
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "YEM": {
+   "name": "Yemen",
+   "fossil_2021": 0.033,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.033,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.246,
+    "2022_calendar_full": 0.272,
+    "2023": 0.241,
+    "2024": 0.351,
+    "2025": 0.266,
+    "2026_ytd": 0.133,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 1.237,
+   "by_fuel": {
+    "crude": 0,
+    "products": 1.237,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "OMN": {
+   "name": "Oman",
+   "fossil_2021": 0.001,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.001
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.186,
+    "2022_calendar_full": 0.186,
+    "2023": 0.509,
+    "2024": 0.054,
+    "2025": 0.034,
+    "2026_ytd": 0.164,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.947,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0.916,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.03
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "LBN": {
+   "name": "Lebanon",
+   "fossil_2021": 0.4,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.394,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.006
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.201,
+    "2022_calendar_full": 0.22,
+    "2023": 0.234,
+    "2024": 0.187,
+    "2025": 0.324,
+    "2026_ytd": 0,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.946,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0.937,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.009
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "SDN": {
+   "name": "Sudan",
+   "fossil_2021": 0.011,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.011,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.077,
+    "2022_calendar_full": 0.077,
+    "2023": 0.031,
+    "2024": 0.28,
+    "2025": 0.116,
+    "2026_ytd": 0.417,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 0.921,
+   "by_fuel": {
+    "crude": 0,
+    "products": 0.896,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0.025
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "BEN": {
+   "name": "Benin",
+   "fossil_2021": 0.022,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.022,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.042,
+    "2022_calendar_full": 0.042,
+    "2023": 0.184,
+    "2024": 0.205,
+    "2025": 0.354,
+    "2026_ytd": 0.37,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 1.157,
+   "by_fuel": {
+    "crude": 0,
+    "products": 1.157,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "TGO": {
+   "name": "Togo",
+   "fossil_2021": 0.168,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0.168,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.111,
+    "2022_calendar_full": 0.178,
+    "2023": 0.259,
+    "2024": 0.295,
+    "2025": 0.335,
+    "2026_ytd": 0.112,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 1.111,
+   "by_fuel": {
+    "crude": 0,
+    "products": 1.111,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  },
+  "CIV": {
+   "name": "Côte d'Ivoire",
+   "fossil_2021": 0,
+   "fossil_2021_by_fuel": {
+    "crude": 0,
+    "products": 0,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "fossil_2021_comtrade_crosscheck": null,
+   "fossil_by_year": {
+    "2022": 0.079,
+    "2022_calendar_full": 0.093,
+    "2023": 0.328,
+    "2024": 0.125,
+    "2025": 0.413,
+    "2026_ytd": 0.07,
+    "2026_ytd_to": "2026-10-16"
+   },
+   "fossil_total_since_invasion": 1.015,
+   "by_fuel": {
+    "crude": 0,
+    "products": 1.015,
+    "pipeline_gas": 0,
+    "lng": 0,
+    "coal": 0
+   },
+   "laundered_oil": null,
+   "laundered_oil_detail": null,
+   "oil_discount_gain": null,
+   "oil_discount_gain_detail": null,
+   "certainty": {
+    "fossil_2021": "B",
+    "fossil_2021_comtrade_crosscheck": null,
+    "fossil_by_year": "B",
+    "fossil_total_since_invasion": "B",
+    "by_fuel": "B",
+    "laundered_oil": null,
+    "oil_discount_gain": null
+   },
+   "sources": [
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
+    "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)"
+   ],
+   "notes": ""
+  }
+ },
+ "notes": [
+  "fossil_by_year[\"2022\"] counts from 24 Feb 2022 (CREA counter default start); 2022_calendar_full also given. 2023-2025 are calendar years; 2026_ytd is 1 Jan-16 Oct 2026 (latest days may be revised upward as Kpler arrivals are confirmed).",
+  "fossil_total_since_invasion = 24 Feb 2022 to 16 Oct 2026.",
+  "CREA values = estimated payments to Russian exporters (export value at CREA modelled prices), certainty B. fossil_2021 also from CREA (same method) for comparability; UN Comtrade importer-reported 2021 values given as cross-check (A).",
+  "CREA attributes by destination (first discharge/border). Pipeline gas entering via Nord Stream/TurkStream/Ukraine transit is attributed to the entry/offtake country as modelled by CREA; values for transit hubs (DE, SK, AT, TR, HU) may include gas consumed elsewhere.",
+  "CREA does not track rail/road deliveries or most pipeline flows to CIS countries (Belarus absent; KZ, KG, AM, UZ, AZ partial) -> null or lower bound.",
+  "laundered_oil is heterogenous: for USA/GBR/AUS it is product value refined from Russian crude; for NLD/FRA/ITA it is the value of Russian crude input (Dec 2022-Dec 2023 only). All are partial-period lower bounds; see laundered_oil_detail.windows. Gross figures (all products from refineries that use Russian crude) are NOT counted in the headline value.",
+  "oil_discount_gain only for IND, CHN, TUR (published third-party estimates, different methods/periods); other countries null.",
+  "EUR conversion of USD figures uses ECB annual average for the year of the flow (multi-year Australia figure uses mean 2023-2025).",
+  "2026 YTD values are high relative to 2025 for some buyers (e.g. China EUR 67.0 bn by 16 Oct vs 65.8 bn in all of 2025) because oil prices spiked in 2026 (CREA Hormuz-crisis analysis, https://energyandcleanair.org/what-the-hormuz-crisis-has-cost-fossil-fuel-importers-march-to-august-2026/; Brent ~USD 126-130/bbl mid-Oct 2026 per FRED DCOILBRENTEU).",
+  "Sanity check: CREA EU 2021 total EUR 137.8 bn is higher than importer-reported customs data (Comtrade sum) mainly because EU customs do not attribute much pipeline gas to Russian origin and CREA prices gas at hub prices."
+ ]
+}

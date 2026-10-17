@@ -1,0 +1,4628 @@
+{
+ "generated": "2026-10-17",
+ "population_gdp": {
+  "CUB": {
+   "pop_m": {
+    "low": 8.62,
+    "central": 9.9,
+    "high": 10.98
+   },
+   "gdp_eur_bn": {
+    "low": 9.419887,
+    "central": 21.063508,
+    "high": 47.099436
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "Prensa Latina: 2024 fiscal deficit CUP 79,528m = 6.5% of GDP at current prices (implies GDP about CUP 1.22 trillion)",
+     "url": "https://www.prensa-latina.cu/?p=1600719",
+     "date": "2025-07"
+    },
+    {
+     "name": "CEPAL Anuario Estadistico 2025 via ANSA/La Nacion: Cuba GDP at current prices USD 12.1bn in 2025, USD 1,082 per head",
+     "url": "https://www.lanacion.com.ar/agencias/cuba-ultima-en-america-latina-por-pib-per-capita-nid24022026",
+     "date": "2026-02-24"
+    },
+    {
+     "name": "ONEI via OnCubaNews: effective population 9,748,007 at end-2024",
+     "url": "https://oncubanews.com/cuba/la-poblacion-efectiva-de-cuba-no-llega-a-10-millones-de-habitantes-confirma-la-onei",
+     "date": "2025"
+    },
+    {
+     "name": "elTOQUE informal rate about CUP 300-400 per USD (2024-25); official rates 24 and 120",
+     "url": "https://eltoque.com/us-dollar-hits-400-cuban-pesos-in-informal-market",
+     "date": "2025-08"
+    },
+    {
+     "name": "UN Statistics Division, National Accounts Main Aggregates (GDP at current prices, USD and national currency), file download",
+     "url": "https://unstats.un.org/unsd/amaapi/api/file/2",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "World Bank WDI NY.GDP.MKTP.CD and SP.POP.TOTL",
+     "url": "https://api.worldbank.org/v2/country/CUB;ERI;SYR;GUM;ASM;MNP/indicator/NY.GDP.MKTP.CD",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "GDP in pesos is about CUP 1.22 trillion in 2024 (official deficit 79.5bn = 6.5% of GDP; CEPAL's 8-9% would give 0.9-1.0 trillion). The dollar value depends entirely on the exchange rate. At the official 24 CUP/USD it is USD 51bn (high). At the 120 CUP/USD rate, the rate CEPAL appears to use (USD 12.1bn in 2025), it is USD 10.2bn (low). At the informal rate of about 320 it would be under USD 4bn, which is implausible next to goods imports of about USD 5-6.5bn (partner-reported exports to Cuba were USD 4.05bn in 2024, excluding Venezuela and Russia). The central value is the geometric mean of the 24 and 120 conversions (USD 22.8bn), which implies imports of roughly 25-30% of GDP. UNSD/World Bank/Factbook figures of USD 250-260bn convert at 1 CUP = 1 USD and are not used. Population: the low is an independent estimate (8.62m, migration-adjusted), the central is the ONEI 2024 mid-year average of 10.06m and 9.75m, and the high is UN WPP 2024 (10.98m), which does not reflect the post-2021 emigration."
+  },
+  "SYR": {
+   "pop_m": {
+    "low": 22.5,
+    "central": 24.67,
+    "high": 25.5
+   },
+   "gdp_eur_bn": {
+    "low": 15.244184,
+    "central": 19.771245,
+    "high": 24.021139
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "World Bank Syria Macro-Fiscal Assessment: nominal GDP an estimated USD 21.4bn in 2024",
+     "url": "https://www.worldbank.org/en/news/press-release/2025/07/07/new-world-bank-report-highlights-syria-s-economic-challenges-and-recovery-prospects-for-2025",
+     "date": "2025-07-07"
+    },
+    {
+     "name": "UN Statistics Division, National Accounts Main Aggregates (GDP at current prices, USD and national currency), file download",
+     "url": "https://unstats.un.org/unsd/amaapi/api/file/2",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "CIA World Factbook (Syria), via factbook.json mirror",
+     "url": "https://raw.githubusercontent.com/factbook/factbook.json/master/middle-east/sy.json",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "Central is the World Bank 2024 estimate of USD 21.4bn. The low is near UNSD (USD 17.3bn, SYP 225 trillion at the official rate). The high allows for an informal economy and exchange-rate uncertainty. The Factbook 2023 figure is USD 20.0bn. Population: central is WPP 2024 (24.67m); the low allows for refugees not yet returned and the high for returns since December 2024."
+  },
+  "ERI": {
+   "pop_m": {
+    "low": 3.3,
+    "central": 3.54,
+    "high": 6.42
+   },
+   "gdp_eur_bn": {
+    "low": 1.663002,
+    "central": 2.078752,
+    "high": 2.679281
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "UN Statistics Division, National Accounts Main Aggregates (GDP at current prices, USD and national currency), file download",
+     "url": "https://unstats.un.org/unsd/amaapi/api/file/2",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "CIA World Factbook (Eritrea), via factbook.json mirror",
+     "url": "https://raw.githubusercontent.com/factbook/factbook.json/master/africa/er.json",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "UNSD gives USD 1.92bn for 2024 (nakfa 28.9bn at the fixed rate of 15.075) and the Factbook gives USD 2.54bn (2024 est.). Central is about their mean; the range spans both plus 10%. Eritrea has had no census since independence, and population estimates run from 3.5m (UN WPP) to 6.4m (Factbook)."
+  },
+  "GIB": {
+   "pop_m": {
+    "low": 0.0327,
+    "central": 0.0382,
+    "high": 0.0393
+   },
+   "gdp_eur_bn": {
+    "low": 3.366327,
+    "central": 3.593111,
+    "high": 4.015969
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "HM Government of Gibraltar, GDP Estimates 2010/11-2024/25: 2023/24 GBP 2,901.24m (preliminary, factor cost), 2024/25 GBP 3,089.47m (forecast), GBP 75,957 per head",
+     "url": "https://www.gibraltar.gov.gi/uploads/statistics/2025/National%20Accounts/GDP%20Estimates%202010%20-%2011%20-%202024-25.pdf",
+     "date": "2025"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "Calendar 2024 is 0.25 x FY2023/24 + 0.75 x FY2024/25, which gives GBP 3.04bn, converted at the ECB 2024 average of 0.84662 GBP/EUR. The high allows a market-price uplift over factor cost. Population: central is implied by GDP per head (38.2k), the low is the 2022 census (32.7k), and the high is WPP (39.3k)."
+  },
+  "GUM": {
+   "pop_m": {
+    "low": 0.1538,
+    "central": 0.16,
+    "high": 0.1696
+   },
+   "gdp_eur_bn": {
+    "low": 6.46723,
+    "central": 6.929175,
+    "high": 7.483509
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "US BEA territorial GDP (latest year 2022; BEA paused the territorial program in 2025) as carried by World Bank WDI and CIA Factbook",
+     "url": "https://www.bea.gov/data/gdp/gdp-guam",
+     "date": "2025-01-24"
+    },
+    {
+     "name": "World Bank WDI NY.GDP.MKTP.CD and SP.POP.TOTL",
+     "url": "https://api.worldbank.org/v2/country/CUB;ERI;SYR;GUM;ASM;MNP/indicator/NY.GDP.MKTP.CD",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "CIA World Factbook (Guam), via factbook.json mirror",
+     "url": "https://raw.githubusercontent.com/factbook/factbook.json/master/australia-oceania/gq.json",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "BEA 2022 nominal GDP was USD 6.91bn; there is no 2023 or 2024 estimate because BEA paused the series. Extrapolated with nominal growth of 3-8% a year (2015-22 trend plus a military construction boom). Population ranges from the 2020 census (153.8k) to the Factbook 2024 figure (169.5k)."
+  },
+  "ASM": {
+   "pop_m": {
+    "low": 0.0433,
+    "central": 0.047,
+    "high": 0.0497
+   },
+   "gdp_eur_bn": {
+    "low": 0.785306,
+    "central": 0.859218,
+    "high": 0.942368
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "US BEA territorial GDP (latest year 2022; BEA paused the territorial program in 2025) as carried by World Bank WDI and CIA Factbook",
+     "url": "https://www.bea.gov/data/gdp/gdp-guam",
+     "date": "2025-01-24"
+    },
+    {
+     "name": "World Bank WDI NY.GDP.MKTP.CD and SP.POP.TOTL",
+     "url": "https://api.worldbank.org/v2/country/CUB;ERI;SYR;GUM;ASM;MNP/indicator/NY.GDP.MKTP.CD",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "BEA 2022: USD 0.871bn, extrapolated to 2024 at 2-8% nominal growth a year. Population ranges from the 2020 census (49.7k) to the Factbook 2025 figure (43.3k)."
+  },
+  "MNP": {
+   "pop_m": {
+    "low": 0.043,
+    "central": 0.0453,
+    "high": 0.0511
+   },
+   "gdp_eur_bn": {
+    "low": 0.877695,
+    "central": 1.016279,
+    "high": 1.154862
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "US BEA territorial GDP (latest year 2022; BEA paused the territorial program in 2025) as carried by World Bank WDI and CIA Factbook",
+     "url": "https://www.bea.gov/data/gdp/gdp-guam",
+     "date": "2025-01-24"
+    },
+    {
+     "name": "World Bank WDI NY.GDP.MKTP.CD and SP.POP.TOTL",
+     "url": "https://api.worldbank.org/v2/country/CUB;ERI;SYR;GUM;ASM;MNP/indicator/NY.GDP.MKTP.CD",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "CIA World Factbook (Northern Mariana Islands), via factbook.json mirror",
+     "url": "https://raw.githubusercontent.com/factbook/factbook.json/master/australia-oceania/cq.json",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "BEA 2022: USD 1.096bn. Tourism remained depressed in 2023-24, so 2024 is taken as roughly flat (-13% to +14%). Population ranges from WPP (44.3k) to the Factbook (51.1k); the 2020 census was 47.3k."
+  },
+  "VGB": {
+   "pop_m": {
+    "low": 0.0356,
+    "central": 0.0395,
+    "high": 0.0415
+   },
+   "gdp_eur_bn": {
+    "low": 1.52148,
+    "central": 1.690534,
+    "high": 1.859587
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "UN Statistics Division, National Accounts Main Aggregates (GDP at current prices, USD and national currency), file download",
+     "url": "https://unstats.un.org/unsd/amaapi/api/file/2",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "UNSD 2024: USD 1.83bn, with a range of +/-10%. Population is WPP 2024 +/-10%."
+  },
+  "AIA": {
+   "pop_m": {
+    "low": 0.0146,
+    "central": 0.0158,
+    "high": 0.0194
+   },
+   "gdp_eur_bn": {
+    "low": 0.383414,
+    "central": 0.421756,
+    "high": 0.438848
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "UN Statistics Division, National Accounts Main Aggregates (GDP at current prices, USD and national currency), file download",
+     "url": "https://unstats.un.org/unsd/amaapi/api/file/2",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "CIA World Factbook (Anguilla), via factbook.json mirror",
+     "url": "https://raw.githubusercontent.com/factbook/factbook.json/master/central-america-n-caribbean/av.json",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "UNSD 2024: USD 0.457bn; the Factbook gives USD 0.453bn. Population: WPP 14.6k against the Factbook 19.4k (the 2011 census was 13.5k); central is 15.8k."
+  },
+  "MSR": {
+   "pop_m": {
+    "low": 0.0044,
+    "central": 0.0045,
+    "high": 0.0055
+   },
+   "gdp_eur_bn": {
+    "low": 0.070216,
+    "central": 0.076498,
+    "high": 0.08315
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "UN Statistics Division, National Accounts Main Aggregates (GDP at current prices, USD and national currency), file download",
+     "url": "https://unstats.un.org/unsd/amaapi/api/file/2",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "CIA World Factbook (Montserrat), via factbook.json mirror",
+     "url": "https://raw.githubusercontent.com/factbook/factbook.json/master/central-america-n-caribbean/mh.json",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "UNSD 2024: USD 0.081bn; the Factbook gives USD 0.085bn. Population: WPP 4.4k, Factbook 5.5k."
+  },
+  "COK": {
+   "pop_m": {
+    "low": 0.0125,
+    "central": 0.014,
+    "high": 0.015
+   },
+   "gdp_eur_bn": {
+    "low": 0.351078,
+    "central": 0.380273,
+    "high": 0.406512
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "UN Statistics Division, National Accounts Main Aggregates (GDP at current prices, USD and national currency), file download",
+     "url": "https://unstats.un.org/unsd/amaapi/api/file/2",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "CIA World Factbook (Cook Islands), via factbook.json mirror",
+     "url": "https://raw.githubusercontent.com/factbook/factbook.json/master/australia-oceania/cw.json",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "UNSD 2024: USD 0.414bn; the Factbook gives USD 0.409bn. Population: WPP 13.7k (the 2021 census resident count was about 15k). The Factbook 7.6k is not used."
+  },
+  "NIU": {
+   "pop_m": {
+    "low": 0.0016,
+    "central": 0.0017,
+    "high": 0.00185
+   },
+   "gdp_eur_bn": {
+    "low": 0.022371,
+    "central": 0.024776,
+    "high": 0.027405
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "Statistics Niue, GDP 2023-2024 release: FY2023 GDP NZ$42.166m at current prices; population estimate 1,640",
+     "url": "https://niuestatistics.nu/economic/national-accounts-estimates-of-niue-2024/",
+     "date": "2024"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "FY to June 2023: NZ$42.2m. 2024 is taken as +5% (range -5% to +16%) and converted at 1.788 NZD/EUR. Population: Statistics Niue 1.64k, WPP 1.82k."
+  },
+  "SPM": {
+   "pop_m": {
+    "low": 0.005,
+    "central": 0.0058,
+    "high": 0.006
+   },
+   "gdp_eur_bn": {
+    "low": 0.24,
+    "central": 0.28,
+    "high": 0.32
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "IEDOM note no. 489: Saint-Pierre-et-Miquelon GDP 2015 EUR 240m, EUR 39,778 per head (6,034 inhabitants)",
+     "url": "https://www.iedom.fr/IMG/pdf/evaluation_du_pib_spm_22032018.pdf",
+     "date": "2018-02"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "Last measured GDP: EUR 240m in 2015. Rolled to 2024 at 0-3.5% nominal a year, allowing for population decline. Population: WPP 5.6k; INSEE legal population is about 5.8-6.0k."
+  },
+  "ESH": {
+   "pop_m": {
+    "low": 0.55,
+    "central": 0.59,
+    "high": 0.66
+   },
+   "gdp_eur_bn": {
+    "low": 3.6,
+    "central": 4.55,
+    "high": 5.6
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "HCP regional accounts 2022, via Morocco World News: GDP per head MAD 80,996 (Dakhla-Oued Ed-Dahab) and MAD 71,246 (Laayoune-Sakia El Hamra)",
+     "url": "https://www.moroccoworldnews.com/2024/09/364919/five-moroccan-regions-outperform-national-gdp-average-dakhla-oued-eddahab-leads-pack",
+     "date": "2024-09"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "No national accounts exist for the territory. Method: the population-weighted HCP 2022 GDP per head of the two Moroccan-administered southern regions (about MAD 74,000) x WPP population 0.59m x 1.12 nominal growth 2022-24, which gives MAD 49bn, converted at about 10.75 MAD/EUR. Range +/-22%. The regions are not exactly the territory (Tarfaya lies outside it, and the Polisario-held strip is sparsely populated). This is a Moroccan administrative estimate for a disputed territory."
+  },
+  "FLK": {
+   "pop_m": {
+    "low": 0.0033,
+    "central": 0.0035,
+    "high": 0.0037
+   },
+   "gdp_eur_bn": {
+    "low": 0.206704,
+    "central": 0.340176,
+    "high": 0.372068
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "Falkland Islands Government, Executive Council paper 150/25 (National Accounts 2014-2024): fishing and aquaculture GBP 168m = 58.3% of GDP, GDP per head GBP 86,050 (2024)",
+     "url": "https://assembly.gov.fk/jdownloads/Executive%20Council/Executive%20Council%20Papers/2025/10%2005%20August%202025/150-25P.pdf",
+     "date": "2025-08-05"
+    },
+    {
+     "name": "FITV: FIG publishes 2014-2024 National Accounts",
+     "url": "https://fitv.co.fk/news-and-events/falkland-islands-government-publishes-2014-2024-national-accounts/",
+     "date": "2025"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "Implied 2024 GDP is about GBP 288m (168/0.583). A press report of GBP 175m is taken as the low. Population: the 2021 census was 3,662; WPP gives 3.47k."
+  },
+  "SHN": {
+   "pop_m": {
+    "low": 0.0049,
+    "central": 0.0053,
+    "high": 0.0056
+   },
+   "gdp_eur_bn": {
+    "low": 0.049609,
+    "central": 0.056696,
+    "high": 0.07087
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "St Helena Government statistical update: GDP 2023/24 GBP 39.4m, 2024/25 GBP 40.7m (St Helena island)",
+     "url": "https://www.sainthelena.gov.sh/statistical-update-gross-domestic-product-2425",
+     "date": "2025"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "St Helena island is about GBP 40.4m in calendar 2024. ISO SHN also covers Ascension and Tristan da Cunha, which have no national accounts; GBP 2-20m is added for them (military-base services, fisheries). WPP population is 5.2k, of which St Helena is about 4.3-4.4k."
+  },
+  "BES": {
+   "pop_m": {
+    "low": 0.03,
+    "central": 0.0317,
+    "high": 0.0325
+   },
+   "gdp_eur_bn": {
+    "low": 0.803784,
+    "central": 0.849979,
+    "high": 0.905412
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "CBS Statistics Netherlands, Caribbean Netherlands GDP (table 84789ENG): 2023 USD 871m (Bonaire 722, St Eustatius 96, Saba 52)",
+     "url": "https://www.cbs.nl/en-gb/figures/detail/84789ENG",
+     "date": "2025-09"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "Covers Bonaire, St Eustatius and Saba (ISO BES; data.json names it \"Bonaire\"). 2023 was USD 871m; 2024 is taken as +5.6% (0-12.5%). Population is CBS/WPP, about 31-32k."
+  },
+  "BLM": {
+   "pop_m": {
+    "low": 0.0105,
+    "central": 0.011,
+    "high": 0.0113
+   },
+   "gdp_eur_bn": {
+    "low": 0.9,
+    "central": 1.01,
+    "high": 1.12
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "IEDOM via Outremers360: Saint-Barthelemy GDP per head EUR 90,103 in 2023",
+     "url": "https://outremers360.com/bassin-atlantique-appli/expertise-iedom-a-saint-barthelemy-le-pib-par-habitant-seleve-a-90-103-eur-en-2023",
+     "date": "2025"
+    },
+    {
+     "name": "IEDOM/AFD/INSEE: GDP 2014 EUR 367m",
+     "url": "https://www.iedom.fr/IMG/pdf/note_pib_saint-barth-2014_afd_iedom.pdf",
+     "date": "2018"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "GDP per head of EUR 90.1k (2023) x 10.6-11.3k inhabitants gives EUR 0.95-1.02bn in 2023, plus about 3% for 2024."
+  },
+  "WLF": {
+   "pop_m": {
+    "low": 0.011,
+    "central": 0.0113,
+    "high": 0.0116
+   },
+   "gdp_eur_bn": {
+    "low": 0.19,
+    "central": 0.21,
+    "high": 0.24
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "IEOM: Wallis-et-Futuna GDP 2019 XPF 22.6bn = EUR 189.4m",
+     "url": "https://www.ieom.fr/IMG/pdf/cp_pib_wf_2019_vf.pdf",
+     "date": "2022"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "GDP in 2019 was EUR 189.4m, rolled to 2024 at 0-5% nominal a year. Population: the 2023 census is about 11.2k. The Factbook 16k is not used."
+  },
+  "TKL": {
+   "pop_m": {
+    "low": 0.0024,
+    "central": 0.0025,
+    "high": 0.0026
+   },
+   "gdp_eur_bn": {
+    "low": 0.01109,
+    "central": 0.01386,
+    "high": 0.01848
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "CIA World Factbook (Tokelau), via factbook.json mirror",
+     "url": "https://raw.githubusercontent.com/factbook/factbook.json/master/australia-oceania/tl.json",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "Factbook: USD 12.7m (2017, official rate). 2024 is taken as USD 15m (12-20m). Most of the economy is New Zealand-funded public administration."
+  },
+  "NFK": {
+   "pop_m": {
+    "low": 0.0017,
+    "central": 0.0022,
+    "high": 0.0023
+   },
+   "gdp_eur_bn": {
+    "low": 0.085381,
+    "central": 0.0927,
+    "high": 0.100628
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "Norfolk Island Regional Council, Annual Economic Update 2024: FY2023 gross territorial product about A$146.7m",
+     "url": "https://www.nirc.gov.au/Economic-development/Aeuso-outlook-report",
+     "date": "2024"
+    },
+    {
+     "name": "CIA World Factbook (Norfolk Island), via factbook.json mirror",
+     "url": "https://raw.githubusercontent.com/factbook/factbook.json/master/australia-oceania/nf.json",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "FY2023 GTP was A$146.7m; FY2024 is taken as +3.6% (range -5% to +12%). Population: the 2021 census was 2.19k; the Factbook gives 1.74k."
+  },
+  "CXR": {
+   "pop_m": {
+    "low": 0.0015,
+    "central": 0.0017,
+    "high": 0.0019
+   },
+   "gdp_eur_bn": {
+    "low": 0.042691,
+    "central": 0.067085,
+    "high": 0.097579
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "Parliament of Australia, Joint Standing Committee on the NCET, economic environment of the Indian Ocean Territories: Christmas Island gross product about A$71m (older census-based estimate)",
+     "url": "https://aph.gov.au/~/media/wopapub/house/committee/ncet/EconomicEnvironment/Report/Chapter%203_pdf.ashx",
+     "date": "2010"
+    },
+    {
+     "name": "CIA World Factbook (Christmas Island), via factbook.json mirror",
+     "url": "https://raw.githubusercontent.com/factbook/factbook.json/master/australia-oceania/kt.json",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "There is no current estimate. The low is the older A$71m. The central applies Norfolk Island's GTP per head (about A$67k) x 1.69k residents, which gives A$110m (phosphate mining, detention centre, public services)."
+  },
+  "CCK": {
+   "pop_m": {
+    "low": 0.00055,
+    "central": 0.0006,
+    "high": 0.00065
+   },
+   "gdp_eur_bn": {
+    "low": 0.015247,
+    "central": 0.021345,
+    "high": 0.030493
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "Australian Department of Infrastructure: Cocos (Keeling) Islands economy (government services, small tourism)",
+     "url": "https://www.infrastructure.gov.au/territories-regions-cities/territories/indian-ocean-territories/cocos-keeling-islands/economy",
+     "date": "2025"
+    },
+    {
+     "name": "CIA World Factbook (Cocos (Keeling) Islands), via factbook.json mirror",
+     "url": "https://raw.githubusercontent.com/factbook/factbook.json/master/australia-oceania/ck.json",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "No estimate exists. Assumes A$40-85k per head (between Pacific microstates and Norfolk Island) x 593 residents (2021 census)."
+  },
+  "PCN": {
+   "pop_m": {
+    "low": 3.5e-05,
+    "central": 4e-05,
+    "high": 5e-05
+   },
+   "gdp_eur_bn": {
+    "low": 0.001,
+    "central": 0.0035,
+    "high": 0.005
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "CIA World Factbook (Pitcairn Islands), via factbook.json mirror",
+     "url": "https://raw.githubusercontent.com/factbook/factbook.json/master/australia-oceania/pc.json",
+     "date": "downloaded 2026-10-17"
+    }
+   ],
+   "note": "There are no national accounts, and order-of-magnitude bounds are used. The economy of about 40 residents is mainly public administration funded by UK budget support, plus honey, handicrafts, stamps and cruise visitors. The central is EUR 3.5m, about equal to annual public spending."
+  },
+  "VAT": {
+   "pop_m": {
+    "low": 0.00045,
+    "central": 0.0005,
+    "high": 0.0008
+   },
+   "gdp_eur_bn": {
+    "low": 0.25,
+    "central": 0.5,
+    "high": 1.3
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+     "date": "downloaded 2026-10-17"
+    },
+    {
+     "name": "Holy See consolidated budget (Secretariat for the Economy): expenditure about EUR 1.2bn a year, much of it spent abroad",
+     "url": "https://www.vatican.va/content/romancuria/en/segreterie/segreteria-per-l-economia.html",
+     "date": "2024"
+    }
+   ],
+   "note": "GDP is not defined for the Holy See. As a proxy, value added generated in Vatican City State (museums, Governorate, curia wages) is put at EUR 0.25-1.3bn, with the high equal to the Holy See's consolidated spending. Population: about 500 residents (WPP 496), up to about 800 citizens."
+  },
+  "ATA": {
+   "pop_m": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.004
+   },
+   "gdp_eur_bn": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "CIA World Factbook entry (no national accounts)",
+     "url": "https://www.cia.gov/the-world-factbook/",
+     "date": "2026"
+    }
+   ],
+   "note": "No permanent population; 1-4k seasonal research staff. No economy: GDP = 0. Show absolute values only, not % of GDP."
+  },
+  "BVT": {
+   "pop_m": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "gdp_eur_bn": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "CIA World Factbook entry (no national accounts)",
+     "url": "https://www.cia.gov/the-world-factbook/",
+     "date": "2026"
+    }
+   ],
+   "note": "Uninhabited Norwegian dependency. GDP = 0."
+  },
+  "ATF": {
+   "pop_m": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0003
+   },
+   "gdp_eur_bn": {
+    "low": 0.01,
+    "central": 0.03,
+    "high": 0.08
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "CIA World Factbook entry (no national accounts)",
+     "url": "https://www.cia.gov/the-world-factbook/",
+     "date": "2026"
+    }
+   ],
+   "note": "No permanent population (150-300 rotating staff). The economic activity is Patagonian toothfish licences and TAAF administration, put at EUR 0.01-0.08bn as an order of magnitude; the central is EUR 0.03bn."
+  },
+  "SGS": {
+   "pop_m": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 4e-05
+   },
+   "gdp_eur_bn": {
+    "low": 0.004,
+    "central": 0.008,
+    "high": 0.015
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "CIA World Factbook entry (no national accounts)",
+     "url": "https://www.cia.gov/the-world-factbook/",
+     "date": "2026"
+    }
+   ],
+   "note": "No permanent population (about 20-30 staff). Activity is fishing licences and tourism fees (order of GBP 5-12m), so the central is EUR 0.008bn."
+  },
+  "IOT": {
+   "pop_m": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.003
+   },
+   "gdp_eur_bn": {
+    "low": 0.0,
+    "central": 0.004,
+    "high": 0.01
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "CIA World Factbook entry (no national accounts)",
+     "url": "https://www.cia.gov/the-world-factbook/",
+     "date": "2026"
+    }
+   ],
+   "note": "No permanent population: about 3k military personnel and contractors on Diego Garcia, which are not residents. Activity is base services plus fishing licences, put at an order of EUR 0-10m. Sovereignty is being transferred to Mauritius under the 2025 treaty."
+  },
+  "UMI": {
+   "pop_m": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0003
+   },
+   "gdp_eur_bn": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "year": 2024,
+   "sources": [
+    {
+     "name": "CIA World Factbook entry (no national accounts)",
+     "url": "https://www.cia.gov/the-world-factbook/",
+     "date": "2026"
+    }
+   ],
+   "note": "No permanent population (about 300 personnel on Wake Atoll). GDP = 0."
+  }
+ },
+ "exports_to_rus_gap": {
+  "unit": "EUR bn (annual average ECB rates as in trade_full.json)",
+  "method": "Gap = Russia FCS total imports (CIF, includes EAEU trade) minus the sum of partner-reported exports to Russia in trade_full.json (FOB). The gap is split into four parts. (1) CIF/FOB valuation: 3.5-7.5% of FCS imports (triangular, mode 5.5%). This is freight and insurance, not goods sales, and it is not allocated to countries. (2) Unrecorded transit via Kyrgyzstan: the rise since 2021 in the mirror gap between partners' reported exports to KGZ (excluding Russia and Belarus) and KGZ's own reported imports (excluding Russia), times a share reaching Russia of 0.3-0.8. (3) The same for Kazakhstan: mirror-gap rise over 2019 (KAZ 2021 imports in Comtrade are incomplete), share reaching Russia 0.25-0.75; 2022 is taken as USD 0-3bn because of KAZ data problems. Transit amounts are attributed to the ORIGIN countries that recorded the sale to the hub, split by each origin's increase in exports to that hub since 2021 (China 61-65% of KGZ, 26-56% of KAZ). The hub keeps a 5-20% margin. (4) Residual: the rest of the gap, including the structural pre-war gap of about 3% of FCS seen in 2019-2021 (partner/FCS ratio 0.908-0.935) and war-specific under-recording. It is allocated pro rata to each country's reported exports to Russia in that year, with weight 0.25 for sanctions-coalition countries (their direct exports are fully recorded) and 1.0 for others. The FCS total has 0.9% noise and the partner sum has noise equal to the root-sum-square of the country ranges. Monte Carlo with 20,000 draws; the low and high are the 5th and 95th percentiles. The country values are ADDITIONS to trade_full exports_to_RUS (the share of money flowing from Russia that partner statistics miss). Summing the country lows or highs overstates the range of the total.",
+  "principle": "Each amount is attributed to the country whose sellers were paid for the goods: the origin for transit via EAEU hubs, plus the hub margin. A transit-country view would instead put all of components 2-3 on KGZ/KAZ.",
+  "by_year": {
+   "2022": {
+    "total": {
+     "low": 18.0938,
+     "central": 28.6588,
+     "high": 39.1379
+    },
+    "cif_fob": {
+     "low": 9.873,
+     "central": 13.2647,
+     "high": 16.5668
+    },
+    "transit_KGZ": {
+     "low": 1.8336,
+     "central": 3.1914,
+     "high": 4.8181
+    },
+    "transit_KAZ": {
+     "low": 0.0635,
+     "central": 0.6383,
+     "high": 1.6043
+    },
+    "residual": {
+     "low": 0.1537,
+     "central": 11.2893,
+     "high": 22.3038
+    },
+    "total_usd_bn": 30.18,
+    "fcs_imports_usd_bn": 255.3,
+    "partner_exports_sum_usd_bn": 225.12
+   },
+   "2023": {
+    "total": {
+     "low": 24.9732,
+     "central": 37.2634,
+     "high": 49.2367
+    },
+    "cif_fob": {
+     "low": 10.8461,
+     "central": 14.4925,
+     "high": 18.0785
+    },
+    "transit_KGZ": {
+     "low": 3.3224,
+     "central": 5.7718,
+     "high": 8.6743
+    },
+    "transit_KAZ": {
+     "low": 0.5777,
+     "central": 1.1065,
+     "high": 1.8448
+    },
+    "residual": {
+     "low": 2.6404,
+     "central": 15.7387,
+     "high": 28.6654
+    },
+    "total_usd_bn": 40.29,
+    "fcs_imports_usd_bn": 285.1,
+    "partner_exports_sum_usd_bn": 244.81
+   },
+   "2024": {
+    "total": {
+     "low": 27.7398,
+     "central": 40.5314,
+     "high": 53.1261
+    },
+    "cif_fob": {
+     "low": 10.6964,
+     "central": 14.3378,
+     "high": 17.8787
+    },
+    "transit_KGZ": {
+     "low": 3.8652,
+     "central": 6.7438,
+     "high": 10.1544
+    },
+    "transit_KAZ": {
+     "low": 2.2146,
+     "central": 4.2195,
+     "high": 6.9564
+    },
+    "residual": {
+     "low": 1.1069,
+     "central": 14.8918,
+     "high": 28.6932
+    },
+    "total_usd_bn": 43.84,
+    "fcs_imports_usd_bn": 282.8,
+    "partner_exports_sum_usd_bn": 238.96
+   },
+   "2025": {
+    "total": {
+     "low": 34.8234,
+     "central": 46.0647,
+     "high": 57.333
+    },
+    "cif_fob": {
+     "low": 10.1778,
+     "central": 13.595,
+     "high": 16.9375
+    },
+    "transit_KGZ": {
+     "low": 4.7804,
+     "central": 8.5765,
+     "high": 13.8768
+    },
+    "transit_KAZ": {
+     "low": 1.5293,
+     "central": 2.9196,
+     "high": 4.8472
+    },
+    "residual": {
+     "low": 7.832,
+     "central": 20.6816,
+     "high": 33.3211
+    },
+    "total_usd_bn": 52.14,
+    "fcs_imports_usd_bn": 279.0,
+    "partner_exports_sum_usd_bn": 226.86
+   }
+  },
+  "prewar_check_usd_bn": {
+   "2019": {
+    "fcs": 253.9,
+    "partners": 230.5,
+    "ratio": 0.908
+   },
+   "2020": {
+    "fcs": 231.7,
+    "partners": 216.7,
+    "ratio": 0.935
+   },
+   "2021": {
+    "fcs": 293.5,
+    "partners": 269.5,
+    "ratio": 0.918
+   },
+   "2022": {
+    "fcs": 255.3,
+    "partners": 225.1,
+    "ratio": 0.882
+   },
+   "2023": {
+    "fcs": 285.1,
+    "partners": 244.8,
+    "ratio": 0.859
+   },
+   "2024": {
+    "fcs": 282.8,
+    "partners": 239.0,
+    "ratio": 0.845
+   },
+   "2025": {
+    "fcs": 279.0,
+    "partners": 226.9,
+    "ratio": 0.813
+   }
+  },
+  "hub_mirror_gap_increase_usd_bn": {
+   "KGZ": {
+    "2022": 6.159999999999998,
+    "2023": 11.41,
+    "2024": 13.370000000000001,
+    "2025": 17.85
+   },
+   "KAZ": {
+    "2022": null,
+    "2023": 2.429999999999996,
+    "2024": 9.289999999999996,
+    "2025": 6.699999999999999
+   }
+  },
+  "origin_shares_of_hub_increase": {
+   "KGZ": {
+    "2022": {
+     "CHN": 0.7669515097576625,
+     "ARE": 0.06973009690876052,
+     "LTU": 0.027949116937492444,
+     "DEU": 0.02789046666226959,
+     "KOR": 0.024553459111544298,
+     "TUR": 0.014455126887032405,
+     "UZB": 0.014176086778114529,
+     "POL": 0.008468502558584457,
+     "OTHER": 0.04582563439853926
+    },
+    "2023": {
+     "CHN": 0.661576011631903,
+     "ARE": 0.057047578182979126,
+     "KOR": 0.05636792054838718,
+     "DEU": 0.03819276084013537,
+     "GEO": 0.03538618456786852,
+     "POL": 0.025424411444579922,
+     "TUR": 0.024022568562940192,
+     "KAZ": 0.021390833961938513,
+     "OTHER": 0.08059173025926814
+    },
+    "2024": {
+     "CHN": 0.6502578992983965,
+     "KOR": 0.086248544687867,
+     "GEO": 0.06477618305091626,
+     "DEU": 0.03441359191830295,
+     "TUR": 0.03248444026406429,
+     "KAZ": 0.02996025396616132,
+     "ITA": 0.02014447893018748,
+     "POL": 0.014897421826562885,
+     "OTHER": 0.06681718605754128
+    },
+    "2025": {
+     "CHN": 0.6212125813680043,
+     "KOR": 0.14228280202376564,
+     "GEO": 0.062088902196384015,
+     "KAZ": 0.04586810079858613,
+     "TUR": 0.025023320906792514,
+     "DEU": 0.01833556338961931,
+     "ITA": 0.016138221703978276,
+     "NLD": 0.008834719025545609,
+     "OTHER": 0.06021578858732424
+    }
+   },
+   "KAZ": {
+    "2022": {
+     "CHN": 0.25661830022340343,
+     "DEU": 0.13179903270450566,
+     "ARE": 0.10341667492554525,
+     "KOR": 0.0874594183926029,
+     "LTU": 0.04694785906033712,
+     "CZE": 0.045661160216886446,
+     "JPN": 0.032458122855216355,
+     "TUR": 0.03140535479314118,
+     "OTHER": 0.26423407682836164
+    },
+    "2023": {
+     "CHN": 0.4378472946275073,
+     "ARE": 0.1215355760887497,
+     "DEU": 0.07338772843663922,
+     "TUR": 0.06691691589054605,
+     "KOR": 0.04799400443938024,
+     "CZE": 0.02689370373449186,
+     "GEO": 0.024291580588910202,
+     "ITA": 0.022249067892218435,
+     "OTHER": 0.17888412830155698
+    },
+    "2024": {
+     "CHN": 0.5643073663949085,
+     "TUR": 0.08057476477473857,
+     "KOR": 0.06263687648896861,
+     "DEU": 0.055261589167277705,
+     "GEO": 0.03036274777041259,
+     "CZE": 0.027435657497327737,
+     "ITA": 0.027213041926871392,
+     "JPN": 0.022741314208133478,
+     "OTHER": 0.12946664177136136
+    },
+    "2025": {
+     "CHN": 0.5836998203501831,
+     "KOR": 0.08115890808932863,
+     "TUR": 0.06948107645167637,
+     "DEU": 0.04951840770932075,
+     "GEO": 0.029719797699031814,
+     "CZE": 0.02284013118492604,
+     "ITA": 0.022223092735940947,
+     "JPN": 0.0199009888175259,
+     "OTHER": 0.1214577769620665
+    }
+   }
+  },
+  "countries": {
+   "CHN": {
+    "2022": {
+     "low": 2.7578,
+     "central": 7.5933,
+     "high": 12.4871
+    },
+    "2023": {
+     "low": 5.8439,
+     "central": 12.7104,
+     "high": 19.5025
+    },
+    "2024": {
+     "low": 7.6065,
+     "central": 14.9677,
+     "high": 22.3036
+    },
+    "2025": {
+     "low": 11.5363,
+     "central": 17.7537,
+     "high": 24.1149
+    }
+   },
+   "BLR": {
+    "2022": {
+     "low": 0.0776,
+     "central": 1.7251,
+     "high": 3.3584
+    },
+    "2023": {
+     "low": 0.4072,
+     "central": 2.0084,
+     "high": 3.5861
+    },
+    "2024": {
+     "low": 0.2716,
+     "central": 2.0732,
+     "high": 3.8728
+    },
+    "2025": {
+     "low": 1.3116,
+     "central": 3.2163,
+     "high": 5.0843
+    }
+   },
+   "KAZ": {
+    "2022": {
+     "low": 0.127,
+     "central": 0.6912,
+     "high": 1.2776
+    },
+    "2023": {
+     "low": 0.4177,
+     "central": 1.0357,
+     "high": 1.6504
+    },
+    "2024": {
+     "low": 0.7571,
+     "central": 1.4585,
+     "high": 2.1995
+    },
+    "2025": {
+     "low": 1.0913,
+     "central": 1.6392,
+     "high": 2.2161
+    }
+   },
+   "TUR": {
+    "2022": {
+     "low": 0.1027,
+     "central": 0.7028,
+     "high": 1.308
+    },
+    "2023": {
+     "low": 0.3796,
+     "central": 1.0626,
+     "high": 1.7364
+    },
+    "2024": {
+     "low": 0.6111,
+     "central": 1.1661,
+     "high": 1.7179
+    },
+    "2025": {
+     "low": 0.7089,
+     "central": 1.1205,
+     "high": 1.5378
+    }
+   },
+   "KGZ": {
+    "2022": {
+     "low": 0.2192,
+     "central": 0.4501,
+     "high": 0.8302
+    },
+    "2023": {
+     "low": 0.347,
+     "central": 0.7381,
+     "high": 1.4301
+    },
+    "2024": {
+     "low": 0.4013,
+     "central": 0.8647,
+     "high": 1.6601
+    },
+    "2025": {
+     "low": 0.4695,
+     "central": 1.0631,
+     "high": 2.1649
+    }
+   },
+   "KOR": {
+    "2022": {
+     "low": 0.1162,
+     "central": 0.2318,
+     "high": 0.354
+    },
+    "2023": {
+     "low": 0.3068,
+     "central": 0.4567,
+     "high": 0.6188
+    },
+    "2024": {
+     "low": 0.5774,
+     "central": 0.8335,
+     "high": 1.1313
+    },
+    "2025": {
+     "low": 0.914,
+     "central": 1.397,
+     "high": 2.0594
+    }
+   },
+   "DEU": {
+    "2022": {
+     "low": 0.1706,
+     "central": 0.4315,
+     "high": 0.7039
+    },
+    "2023": {
+     "low": 0.2969,
+     "central": 0.4669,
+     "high": 0.6375
+    },
+    "2024": {
+     "low": 0.3942,
+     "central": 0.5725,
+     "high": 0.7591
+    },
+    "2025": {
+     "low": 0.3549,
+     "central": 0.494,
+     "high": 0.6354
+    }
+   },
+   "GEO": {
+    "2022": {
+     "low": 0.002,
+     "central": 0.0442,
+     "high": 0.0861
+    },
+    "2023": {
+     "low": 0.1716,
+     "central": 0.2564,
+     "high": 0.3507
+    },
+    "2024": {
+     "low": 0.3745,
+     "central": 0.5495,
+     "high": 0.7583
+    },
+    "2025": {
+     "low": 0.4229,
+     "central": 0.6291,
+     "high": 0.9109
+    }
+   },
+   "IND": {
+    "2022": {
+     "low": 0.0091,
+     "central": 0.2014,
+     "high": 0.3921
+    },
+    "2023": {
+     "low": 0.0659,
+     "central": 0.3251,
+     "high": 0.5804
+    },
+    "2024": {
+     "low": 0.0488,
+     "central": 0.3728,
+     "high": 0.6963
+    },
+    "2025": {
+     "low": 0.2034,
+     "central": 0.4987,
+     "high": 0.7883
+    }
+   },
+   "ITA": {
+    "2022": {
+     "low": 0.0047,
+     "central": 0.1054,
+     "high": 0.2051
+    },
+    "2023": {
+     "low": 0.0421,
+     "central": 0.1224,
+     "high": 0.2016
+    },
+    "2024": {
+     "low": 0.2159,
+     "central": 0.3151,
+     "high": 0.4176
+    },
+    "2025": {
+     "low": 0.2195,
+     "central": 0.2987,
+     "high": 0.3831
+    }
+   },
+   "ARE": {
+    "2022": {
+     "low": 0.2457,
+     "central": 0.4397,
+     "high": 0.6366
+    },
+    "2023": {
+     "low": 0.4769,
+     "central": 0.7739,
+     "high": 1.0709
+    },
+    "2024": {
+     "low": 0.0405,
+     "central": 0.3095,
+     "high": 0.5782
+    },
+    "2025": {
+     "low": 0.1898,
+     "central": 0.4655,
+     "high": 0.7359
+    }
+   },
+   "ARM": {
+    "2022": {
+     "low": 0.0075,
+     "central": 0.1663,
+     "high": 0.3238
+    },
+    "2023": {
+     "low": 0.0569,
+     "central": 0.2808,
+     "high": 0.5014
+    },
+    "2024": {
+     "low": 0.0316,
+     "central": 0.2415,
+     "high": 0.4512
+    },
+    "2025": {
+     "low": 0.1319,
+     "central": 0.3235,
+     "high": 0.5114
+    }
+   },
+   "UZB": {
+    "2022": {
+     "low": 0.0547,
+     "central": 0.2188,
+     "high": 0.387
+    },
+    "2023": {
+     "low": 0.0491,
+     "central": 0.2422,
+     "high": 0.4324
+    },
+    "2024": {
+     "low": 0.0301,
+     "central": 0.2298,
+     "high": 0.4293
+    },
+    "2025": {
+     "low": 0.2032,
+     "central": 0.4984,
+     "high": 0.7878
+    }
+   },
+   "VNM": {
+    "2022": {
+     "low": 0.0048,
+     "central": 0.1072,
+     "high": 0.2087
+    },
+    "2023": {
+     "low": 0.0283,
+     "central": 0.1397,
+     "high": 0.2495
+    },
+    "2024": {
+     "low": 0.0235,
+     "central": 0.1794,
+     "high": 0.3351
+    },
+    "2025": {
+     "low": 0.1053,
+     "central": 0.2582,
+     "high": 0.4081
+    }
+   },
+   "POL": {
+    "2022": {
+     "low": 0.0312,
+     "central": 0.1115,
+     "high": 0.1938
+    },
+    "2023": {
+     "low": 0.1302,
+     "central": 0.2087,
+     "high": 0.2896
+    },
+    "2024": {
+     "low": 0.0882,
+     "central": 0.1462,
+     "high": 0.205
+    },
+    "2025": {
+     "low": 0.0276,
+     "central": 0.0676,
+     "high": 0.1069
+    }
+   },
+   "IDN": {
+    "2022": {
+     "low": 0.0046,
+     "central": 0.1015,
+     "high": 0.1977
+    },
+    "2023": {
+     "low": 0.0186,
+     "central": 0.0917,
+     "high": 0.1637
+    },
+    "2024": {
+     "low": 0.0176,
+     "central": 0.134,
+     "high": 0.2504
+    },
+    "2025": {
+     "low": 0.0849,
+     "central": 0.2082,
+     "high": 0.3291
+    }
+   },
+   "JPN": {
+    "2022": {
+     "low": 0.0242,
+     "central": 0.0992,
+     "high": 0.1777
+    },
+    "2023": {
+     "low": 0.0116,
+     "central": 0.0571,
+     "high": 0.102
+    },
+    "2024": {
+     "low": 0.0738,
+     "central": 0.127,
+     "high": 0.1872
+    },
+    "2025": {
+     "low": 0.0739,
+     "central": 0.1202,
+     "high": 0.1679
+    }
+   },
+   "HKG": {
+    "2022": {
+     "low": 0.0074,
+     "central": 0.1638,
+     "high": 0.319
+    },
+    "2023": {
+     "low": 0.043,
+     "central": 0.2122,
+     "high": 0.379
+    },
+    "2024": {
+     "low": 0.0151,
+     "central": 0.1153,
+     "high": 0.2155
+    },
+    "2025": {
+     "low": 0.0746,
+     "central": 0.1829,
+     "high": 0.2891
+    }
+   },
+   "CZE": {
+    "2022": {
+     "low": 0.0183,
+     "central": 0.0536,
+     "high": 0.0975
+    },
+    "2023": {
+     "low": 0.0234,
+     "central": 0.0409,
+     "high": 0.0614
+    },
+    "2024": {
+     "low": 0.0653,
+     "central": 0.1137,
+     "high": 0.18
+    },
+    "2025": {
+     "low": 0.0447,
+     "central": 0.0736,
+     "high": 0.1125
+    }
+   },
+   "BRA": {
+    "2022": {
+     "low": 0.0061,
+     "central": 0.1358,
+     "high": 0.2644
+    },
+    "2023": {
+     "low": 0.0218,
+     "central": 0.1076,
+     "high": 0.1922
+    },
+    "2024": {
+     "low": 0.0146,
+     "central": 0.1117,
+     "high": 0.2086
+    },
+    "2025": {
+     "low": 0.0689,
+     "central": 0.1689,
+     "high": 0.267
+    }
+   },
+   "AZE": {
+    "2022": {
+     "low": 0.003,
+     "central": 0.0671,
+     "high": 0.1307
+    },
+    "2023": {
+     "low": 0.0194,
+     "central": 0.0958,
+     "high": 0.1711
+    },
+    "2024": {
+     "low": 0.0119,
+     "central": 0.0907,
+     "high": 0.1695
+    },
+    "2025": {
+     "low": 0.0536,
+     "central": 0.1313,
+     "high": 0.2076
+    }
+   },
+   "SRB": {
+    "2022": {
+     "low": 0.0037,
+     "central": 0.0822,
+     "high": 0.16
+    },
+    "2023": {
+     "low": 0.0194,
+     "central": 0.0957,
+     "high": 0.1709
+    },
+    "2024": {
+     "low": 0.0097,
+     "central": 0.0741,
+     "high": 0.1384
+    },
+    "2025": {
+     "low": 0.0385,
+     "central": 0.0945,
+     "high": 0.1494
+    }
+   },
+   "MYS": {
+    "2022": {
+     "low": 0.0017,
+     "central": 0.0377,
+     "high": 0.0733
+    },
+    "2023": {
+     "low": 0.0101,
+     "central": 0.0496,
+     "high": 0.0886
+    },
+    "2024": {
+     "low": 0.009,
+     "central": 0.0686,
+     "high": 0.1282
+    },
+    "2025": {
+     "low": 0.0358,
+     "central": 0.0878,
+     "high": 0.1388
+    }
+   },
+   "THA": {
+    "2022": {
+     "low": 0.0018,
+     "central": 0.0402,
+     "high": 0.0783
+    },
+    "2023": {
+     "low": 0.0133,
+     "central": 0.0658,
+     "high": 0.1174
+    },
+    "2024": {
+     "low": 0.009,
+     "central": 0.0683,
+     "high": 0.1276
+    },
+    "2025": {
+     "low": 0.044,
+     "central": 0.108,
+     "high": 0.1707
+    }
+   },
+   "ECU": {
+    "2022": {
+     "low": 0.0031,
+     "central": 0.0684,
+     "high": 0.1332
+    },
+    "2023": {
+     "low": 0.015,
+     "central": 0.074,
+     "high": 0.1321
+    },
+    "2024": {
+     "low": 0.0082,
+     "central": 0.0627,
+     "high": 0.1171
+    },
+    "2025": {
+     "low": 0.0472,
+     "central": 0.1158,
+     "high": 0.1831
+    }
+   },
+   "CHE": {
+    "2022": {
+     "low": 0.0025,
+     "central": 0.0546,
+     "high": 0.1064
+    },
+    "2023": {
+     "low": 0.0117,
+     "central": 0.0576,
+     "high": 0.1029
+    },
+    "2024": {
+     "low": 0.0063,
+     "central": 0.0482,
+     "high": 0.09
+    },
+    "2025": {
+     "low": 0.0305,
+     "central": 0.0747,
+     "high": 0.118
+    }
+   },
+   "EGY": {
+    "2022": {
+     "low": 0.0018,
+     "central": 0.0411,
+     "high": 0.0801
+    },
+    "2023": {
+     "low": 0.0085,
+     "central": 0.042,
+     "high": 0.075
+    },
+    "2024": {
+     "low": 0.0061,
+     "central": 0.0467,
+     "high": 0.0873
+    },
+    "2025": {
+     "low": 0.0367,
+     "central": 0.09,
+     "high": 0.1422
+    }
+   },
+   "NLD": {
+    "2022": {
+     "low": 0.0031,
+     "central": 0.0679,
+     "high": 0.1322
+    },
+    "2023": {
+     "low": 0.0098,
+     "central": 0.0482,
+     "high": 0.0861
+    },
+    "2024": {
+     "low": 0.006,
+     "central": 0.0457,
+     "high": 0.0854
+    },
+    "2025": {
+     "low": 0.0963,
+     "central": 0.1413,
+     "high": 0.1877
+    }
+   },
+   "FRA": {
+    "2022": {
+     "low": 0.0025,
+     "central": 0.056,
+     "high": 0.109
+    },
+    "2023": {
+     "low": 0.009,
+     "central": 0.0446,
+     "high": 0.0796
+    },
+    "2024": {
+     "low": 0.0056,
+     "central": 0.0425,
+     "high": 0.0793
+    },
+    "2025": {
+     "low": 0.0242,
+     "central": 0.0593,
+     "high": 0.0937
+    }
+   },
+   "BGD": {
+    "2022": {
+     "low": 0.002,
+     "central": 0.0449,
+     "high": 0.0874
+    },
+    "2023": {
+     "low": 0.0085,
+     "central": 0.0419,
+     "high": 0.0749
+    },
+    "2024": {
+     "low": 0.0055,
+     "central": 0.042,
+     "high": 0.0784
+    },
+    "2025": {
+     "low": 0.0202,
+     "central": 0.0495,
+     "high": 0.0782
+    }
+   },
+   "BEL": {
+    "2022": {
+     "low": 0.0021,
+     "central": 0.0466,
+     "high": 0.0908
+    },
+    "2023": {
+     "low": 0.0084,
+     "central": 0.0417,
+     "high": 0.0744
+    },
+    "2024": {
+     "low": 0.0053,
+     "central": 0.0406,
+     "high": 0.0759
+    },
+    "2025": {
+     "low": 0.0259,
+     "central": 0.0636,
+     "high": 0.1005
+    }
+   },
+   "IRN": {
+    "2022": {
+     "low": 0.0021,
+     "central": 0.0476,
+     "high": 0.0927
+    },
+    "2023": {
+     "low": 0.0148,
+     "central": 0.0729,
+     "high": 0.1301
+    },
+    "2024": {
+     "low": 0.0051,
+     "central": 0.0389,
+     "high": 0.0727
+    },
+    "2025": {
+     "low": 0.0239,
+     "central": 0.0586,
+     "high": 0.0926
+    }
+   },
+   "ISR": {
+    "2022": {
+     "low": 0.002,
+     "central": 0.045,
+     "high": 0.0875
+    },
+    "2023": {
+     "low": 0.0096,
+     "central": 0.0472,
+     "high": 0.0843
+    },
+    "2024": {
+     "low": 0.0047,
+     "central": 0.0362,
+     "high": 0.0676
+    },
+    "2025": {
+     "low": 0.0219,
+     "central": 0.0538,
+     "high": 0.085
+    }
+   },
+   "ARG": {
+    "2022": {
+     "low": 0.0015,
+     "central": 0.0343,
+     "high": 0.0668
+    },
+    "2023": {
+     "low": 0.0044,
+     "central": 0.0215,
+     "high": 0.0384
+    },
+    "2024": {
+     "low": 0.0037,
+     "central": 0.0284,
+     "high": 0.0531
+    },
+    "2025": {
+     "low": 0.0201,
+     "central": 0.0494,
+     "high": 0.0781
+    }
+   },
+   "CHL": {
+    "2022": {
+     "low": 0.0014,
+     "central": 0.0312,
+     "high": 0.0608
+    },
+    "2023": {
+     "low": 0.0075,
+     "central": 0.0368,
+     "high": 0.0657
+    },
+    "2024": {
+     "low": 0.0035,
+     "central": 0.0264,
+     "high": 0.0493
+    },
+    "2025": {
+     "low": 0.0206,
+     "central": 0.0505,
+     "high": 0.0799
+    }
+   },
+   "SVN": {
+    "2022": {
+     "low": 0.001,
+     "central": 0.0212,
+     "high": 0.0414
+    },
+    "2023": {
+     "low": 0.0048,
+     "central": 0.0239,
+     "high": 0.0427
+    },
+    "2024": {
+     "low": 0.0032,
+     "central": 0.0244,
+     "high": 0.0456
+    },
+    "2025": {
+     "low": 0.0161,
+     "central": 0.0394,
+     "high": 0.0623
+    }
+   },
+   "ZAF": {
+    "2022": {
+     "low": 0.0009,
+     "central": 0.0195,
+     "high": 0.0379
+    },
+    "2023": {
+     "low": 0.0046,
+     "central": 0.0227,
+     "high": 0.0404
+    },
+    "2024": {
+     "low": 0.003,
+     "central": 0.023,
+     "high": 0.043
+    },
+    "2025": {
+     "low": 0.0174,
+     "central": 0.0426,
+     "high": 0.0673
+    }
+   },
+   "LVA": {
+    "2022": {
+     "low": 0.001,
+     "central": 0.0217,
+     "high": 0.0422
+    },
+    "2023": {
+     "low": 0.005,
+     "central": 0.0245,
+     "high": 0.0437
+    },
+    "2024": {
+     "low": 0.0027,
+     "central": 0.0209,
+     "high": 0.0391
+    },
+    "2025": {
+     "low": 0.013,
+     "central": 0.032,
+     "high": 0.0505
+    }
+   },
+   "AUT": {
+    "2022": {
+     "low": 0.0015,
+     "central": 0.0333,
+     "high": 0.0648
+    },
+    "2023": {
+     "low": 0.0057,
+     "central": 0.0281,
+     "high": 0.0501
+    },
+    "2024": {
+     "low": 0.0027,
+     "central": 0.0207,
+     "high": 0.0386
+    },
+    "2025": {
+     "low": 0.0116,
+     "central": 0.0285,
+     "high": 0.0451
+    }
+   },
+   "EST": {
+    "2022": {
+     "low": 0.0011,
+     "central": 0.0237,
+     "high": 0.0462
+    },
+    "2023": {
+     "low": 0.0048,
+     "central": 0.0237,
+     "high": 0.0423
+    },
+    "2024": {
+     "low": 0.0026,
+     "central": 0.0198,
+     "high": 0.037
+    },
+    "2025": {
+     "low": 0.0077,
+     "central": 0.019,
+     "high": 0.03
+    }
+   },
+   "HUN": {
+    "2022": {
+     "low": 0.0011,
+     "central": 0.0238,
+     "high": 0.0464
+    },
+    "2023": {
+     "low": 0.0048,
+     "central": 0.0235,
+     "high": 0.0419
+    },
+    "2024": {
+     "low": 0.0024,
+     "central": 0.0187,
+     "high": 0.0349
+    },
+    "2025": {
+     "low": 0.0105,
+     "central": 0.0258,
+     "high": 0.0407
+    }
+   },
+   "JAM": {
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0069,
+     "high": 0.0134
+    },
+    "2023": {
+     "low": 0.0022,
+     "central": 0.0111,
+     "high": 0.0197
+    },
+    "2024": {
+     "low": 0.0024,
+     "central": 0.0182,
+     "high": 0.034
+    },
+    "2025": {
+     "low": 0.0084,
+     "central": 0.0207,
+     "high": 0.0327
+    }
+   },
+   "SWE": {
+    "2022": {
+     "low": 0.0008,
+     "central": 0.0173,
+     "high": 0.0337
+    },
+    "2023": {
+     "low": 0.0036,
+     "central": 0.0179,
+     "high": 0.0319
+    },
+    "2024": {
+     "low": 0.0023,
+     "central": 0.0174,
+     "high": 0.0326
+    },
+    "2025": {
+     "low": 0.017,
+     "central": 0.0416,
+     "high": 0.0657
+    }
+   },
+   "PRY": {
+    "2022": {
+     "low": 0.0011,
+     "central": 0.0245,
+     "high": 0.0477
+    },
+    "2023": {
+     "low": 0.0043,
+     "central": 0.0214,
+     "high": 0.0382
+    },
+    "2024": {
+     "low": 0.0021,
+     "central": 0.0159,
+     "high": 0.0298
+    },
+    "2025": {
+     "low": 0.0075,
+     "central": 0.0184,
+     "high": 0.029
+    }
+   },
+   "ESP": {
+    "2022": {
+     "low": 0.001,
+     "central": 0.0233,
+     "high": 0.0454
+    },
+    "2023": {
+     "low": 0.0037,
+     "central": 0.0184,
+     "high": 0.0329
+    },
+    "2024": {
+     "low": 0.0021,
+     "central": 0.0157,
+     "high": 0.0294
+    },
+    "2025": {
+     "low": 0.0098,
+     "central": 0.0241,
+     "high": 0.0381
+    }
+   },
+   "IRL": {
+    "2022": {
+     "low": 0.0004,
+     "central": 0.0099,
+     "high": 0.0194
+    },
+    "2023": {
+     "low": 0.0021,
+     "central": 0.0102,
+     "high": 0.0182
+    },
+    "2024": {
+     "low": 0.002,
+     "central": 0.015,
+     "high": 0.028
+    },
+    "2025": {
+     "low": 0.0106,
+     "central": 0.0259,
+     "high": 0.0409
+    }
+   },
+   "GBR": {
+    "2022": {
+     "low": 0.001,
+     "central": 0.0216,
+     "high": 0.042
+    },
+    "2023": {
+     "low": 0.0033,
+     "central": 0.0163,
+     "high": 0.0291
+    },
+    "2024": {
+     "low": 0.0018,
+     "central": 0.0137,
+     "high": 0.0256
+    },
+    "2025": {
+     "low": 0.0054,
+     "central": 0.0132,
+     "high": 0.0209
+    }
+   },
+   "LKA": {
+    "2022": {
+     "low": 0.0005,
+     "central": 0.0101,
+     "high": 0.0196
+    },
+    "2023": {
+     "low": 0.0024,
+     "central": 0.0117,
+     "high": 0.0209
+    },
+    "2024": {
+     "low": 0.0018,
+     "central": 0.0135,
+     "high": 0.0252
+    },
+    "2025": {
+     "low": 0.0067,
+     "central": 0.0165,
+     "high": 0.0261
+    }
+   },
+   "LTU": {
+    "2022": {
+     "low": 0.0937,
+     "central": 0.1573,
+     "high": 0.2239
+    },
+    "2023": {
+     "low": 0.0094,
+     "central": 0.0464,
+     "high": 0.0828
+    },
+    "2024": {
+     "low": 0.0017,
+     "central": 0.0132,
+     "high": 0.0247
+    },
+    "2025": {
+     "low": 0.0052,
+     "central": 0.0127,
+     "high": 0.0201
+    }
+   },
+   "FRO": {
+    "2022": {
+     "low": 0.0008,
+     "central": 0.0177,
+     "high": 0.0345
+    },
+    "2023": {
+     "low": 0.0047,
+     "central": 0.0233,
+     "high": 0.0415
+    },
+    "2024": {
+     "low": 0.0016,
+     "central": 0.0124,
+     "high": 0.0231
+    },
+    "2025": {
+     "low": 0.0072,
+     "central": 0.0177,
+     "high": 0.028
+    }
+   },
+   "TWN": {
+    "2022": {
+     "low": 0.0007,
+     "central": 0.0147,
+     "high": 0.0285
+    },
+    "2023": {
+     "low": 0.0032,
+     "central": 0.0159,
+     "high": 0.0283
+    },
+    "2024": {
+     "low": 0.0015,
+     "central": 0.0115,
+     "high": 0.0215
+    },
+    "2025": {
+     "low": 0.0065,
+     "central": 0.0159,
+     "high": 0.0252
+    }
+   },
+   "USA": {
+    "2022": {
+     "low": 0.0013,
+     "central": 0.0295,
+     "high": 0.0574
+    },
+    "2023": {
+     "low": 0.0024,
+     "central": 0.012,
+     "high": 0.0214
+    },
+    "2024": {
+     "low": 0.0013,
+     "central": 0.0101,
+     "high": 0.0189
+    },
+    "2025": {
+     "low": 0.0067,
+     "central": 0.0164,
+     "high": 0.026
+    }
+   },
+   "MNG": {
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0077,
+     "high": 0.015
+    },
+    "2023": {
+     "low": 0.0018,
+     "central": 0.0089,
+     "high": 0.0159
+    },
+    "2024": {
+     "low": 0.0013,
+     "central": 0.0097,
+     "high": 0.0181
+    },
+    "2025": {
+     "low": 0.0055,
+     "central": 0.0136,
+     "high": 0.0214
+    }
+   },
+   "TJK": {
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0061,
+     "high": 0.0118
+    },
+    "2023": {
+     "low": 0.0022,
+     "central": 0.0108,
+     "high": 0.0193
+    },
+    "2024": {
+     "low": 0.0012,
+     "central": 0.0093,
+     "high": 0.0173
+    },
+    "2025": {
+     "low": 0.0057,
+     "central": 0.014,
+     "high": 0.0221
+    }
+   },
+   "BGR": {
+    "2022": {
+     "low": 0.0004,
+     "central": 0.0088,
+     "high": 0.0172
+    },
+    "2023": {
+     "low": 0.0022,
+     "central": 0.0108,
+     "high": 0.0193
+    },
+    "2024": {
+     "low": 0.001,
+     "central": 0.0077,
+     "high": 0.0144
+    },
+    "2025": {
+     "low": 0.0054,
+     "central": 0.0132,
+     "high": 0.0209
+    }
+   },
+   "FIN": {
+    "2022": {
+     "low": 0.0017,
+     "central": 0.0375,
+     "high": 0.073
+    },
+    "2023": {
+     "low": 0.0029,
+     "central": 0.0143,
+     "high": 0.0255
+    },
+    "2024": {
+     "low": 0.0009,
+     "central": 0.0072,
+     "high": 0.0135
+    },
+    "2025": {
+     "low": 0.0039,
+     "central": 0.0096,
+     "high": 0.0151
+    }
+   },
+   "PER": {
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0066,
+     "high": 0.0129
+    },
+    "2023": {
+     "low": 0.0013,
+     "central": 0.0063,
+     "high": 0.0112
+    },
+    "2024": {
+     "low": 0.0009,
+     "central": 0.0066,
+     "high": 0.0124
+    },
+    "2025": {
+     "low": 0.0043,
+     "central": 0.0106,
+     "high": 0.0167
+    }
+   },
+   "MAR": {
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0061,
+     "high": 0.0119
+    },
+    "2023": {
+     "low": 0.0016,
+     "central": 0.0079,
+     "high": 0.0141
+    },
+    "2024": {
+     "low": 0.0008,
+     "central": 0.0065,
+     "high": 0.0121
+    },
+    "2025": {
+     "low": 0.0046,
+     "central": 0.0114,
+     "high": 0.018
+    }
+   },
+   "URY": {
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0051,
+     "high": 0.0099
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.0051,
+     "high": 0.009
+    },
+    "2024": {
+     "low": 0.0008,
+     "central": 0.0059,
+     "high": 0.0111
+    },
+    "2025": {
+     "low": 0.0028,
+     "central": 0.0069,
+     "high": 0.0108
+    }
+   },
+   "PAK": {
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0052,
+     "high": 0.0102
+    },
+    "2023": {
+     "low": 0.0014,
+     "central": 0.0071,
+     "high": 0.0126
+    },
+    "2024": {
+     "low": 0.0007,
+     "central": 0.0053,
+     "high": 0.0099
+    },
+    "2025": {
+     "low": 0.003,
+     "central": 0.0073,
+     "high": 0.0116
+    }
+   },
+   "COL": {
+    "2022": {
+     "low": 0.0004,
+     "central": 0.0088,
+     "high": 0.0171
+    },
+    "2023": {
+     "low": 0.0011,
+     "central": 0.0055,
+     "high": 0.0099
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.005,
+     "high": 0.0093
+    },
+    "2025": {
+     "low": 0.0023,
+     "central": 0.0055,
+     "high": 0.0088
+    }
+   },
+   "HRV": {
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0033,
+     "high": 0.0064
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.0048,
+     "high": 0.0086
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.0048,
+     "high": 0.0089
+    },
+    "2025": {
+     "low": 0.0033,
+     "central": 0.0082,
+     "high": 0.013
+    }
+   },
+   "SVK": {
+    "2022": {
+     "low": 0.0004,
+     "central": 0.0098,
+     "high": 0.0192
+    },
+    "2023": {
+     "low": 0.0015,
+     "central": 0.0076,
+     "high": 0.0135
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.0046,
+     "high": 0.0085
+    },
+    "2025": {
+     "low": 0.0025,
+     "central": 0.0062,
+     "high": 0.0098
+    }
+   },
+   "PHL": {
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0037,
+     "high": 0.0072
+    },
+    "2023": {
+     "low": 0.0009,
+     "central": 0.0042,
+     "high": 0.0076
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.0043,
+     "high": 0.0081
+    },
+    "2025": {
+     "low": 0.0026,
+     "central": 0.0063,
+     "high": 0.01
+    }
+   },
+   "ROU": {
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0075,
+     "high": 0.0145
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.0051,
+     "high": 0.0091
+    },
+    "2024": {
+     "low": 0.0005,
+     "central": 0.0039,
+     "high": 0.0072
+    },
+    "2025": {
+     "low": 0.0017,
+     "central": 0.0042,
+     "high": 0.0067
+    }
+   },
+   "BIH": {
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0036,
+     "high": 0.0071
+    },
+    "2023": {
+     "low": 0.0009,
+     "central": 0.0045,
+     "high": 0.0081
+    },
+    "2024": {
+     "low": 0.0005,
+     "central": 0.0039,
+     "high": 0.0074
+    },
+    "2025": {
+     "low": 0.0026,
+     "central": 0.0063,
+     "high": 0.01
+    }
+   },
+   "TKM": {
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0049,
+     "high": 0.0096
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.0047,
+     "high": 0.0084
+    },
+    "2024": {
+     "low": 0.0005,
+     "central": 0.0038,
+     "high": 0.0071
+    },
+    "2025": {
+     "low": 0.0023,
+     "central": 0.0056,
+     "high": 0.0089
+    }
+   },
+   "KEN": {
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0045,
+     "high": 0.0087
+    },
+    "2023": {
+     "low": 0.0006,
+     "central": 0.0027,
+     "high": 0.0049
+    },
+    "2024": {
+     "low": 0.0005,
+     "central": 0.0037,
+     "high": 0.007
+    },
+    "2025": {
+     "low": 0.0024,
+     "central": 0.0058,
+     "high": 0.0091
+    }
+   },
+   "SAU": {
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0031,
+     "high": 0.006
+    },
+    "2023": {
+     "low": 0.0003,
+     "central": 0.0015,
+     "high": 0.0027
+    },
+    "2024": {
+     "low": 0.0004,
+     "central": 0.0031,
+     "high": 0.0058
+    },
+    "2025": {
+     "low": 0.0033,
+     "central": 0.0081,
+     "high": 0.0128
+    }
+   },
+   "UGA": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0009,
+     "high": 0.0017
+    },
+    "2023": {
+     "low": 0.0002,
+     "central": 0.0012,
+     "high": 0.0022
+    },
+    "2024": {
+     "low": 0.0004,
+     "central": 0.003,
+     "high": 0.0057
+    },
+    "2025": {
+     "low": 0.0027,
+     "central": 0.0066,
+     "high": 0.0105
+    }
+   },
+   "GIN": {
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0036,
+     "high": 0.007
+    },
+    "2023": {
+     "low": 0.0007,
+     "central": 0.0034,
+     "high": 0.0061
+    },
+    "2024": {
+     "low": 0.0004,
+     "central": 0.0028,
+     "high": 0.0052
+    },
+    "2025": {
+     "low": 0.0017,
+     "central": 0.0041,
+     "high": 0.0065
+    }
+   },
+   "MMR": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0009,
+     "high": 0.0017
+    },
+    "2023": {
+     "low": 0.0006,
+     "central": 0.0031,
+     "high": 0.0055
+    },
+    "2024": {
+     "low": 0.0004,
+     "central": 0.0027,
+     "high": 0.0051
+    },
+    "2025": {
+     "low": 0.0005,
+     "central": 0.0013,
+     "high": 0.002
+    }
+   },
+   "CRI": {
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0017,
+     "high": 0.0033
+    },
+    "2023": {
+     "low": 0.0004,
+     "central": 0.0019,
+     "high": 0.0034
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0025,
+     "high": 0.0046
+    },
+    "2025": {
+     "low": 0.0013,
+     "central": 0.0031,
+     "high": 0.005
+    }
+   },
+   "DNK": {
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0057,
+     "high": 0.0112
+    },
+    "2023": {
+     "low": 0.0004,
+     "central": 0.0021,
+     "high": 0.0037
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0024,
+     "high": 0.0045
+    },
+    "2025": {
+     "low": 0.001,
+     "central": 0.0025,
+     "high": 0.0039
+    }
+   },
+   "SGP": {
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0031,
+     "high": 0.0061
+    },
+    "2023": {
+     "low": 0.0006,
+     "central": 0.0028,
+     "high": 0.005
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0024,
+     "high": 0.0044
+    },
+    "2025": {
+     "low": 0.0015,
+     "central": 0.0038,
+     "high": 0.006
+    }
+   },
+   "MDA": {
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0033,
+     "high": 0.0064
+    },
+    "2023": {
+     "low": 0.0006,
+     "central": 0.0029,
+     "high": 0.0052
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0023,
+     "high": 0.0042
+    },
+    "2025": {
+     "low": 0.0012,
+     "central": 0.003,
+     "high": 0.0047
+    }
+   },
+   "PRT": {
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0016,
+     "high": 0.0031
+    },
+    "2023": {
+     "low": 0.0003,
+     "central": 0.0016,
+     "high": 0.0028
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0021,
+     "high": 0.0038
+    },
+    "2025": {
+     "low": 0.0011,
+     "central": 0.0026,
+     "high": 0.0042
+    }
+   },
+   "CIV": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0009,
+     "high": 0.0017
+    },
+    "2023": {
+     "low": 0.0009,
+     "central": 0.0047,
+     "high": 0.0083
+    },
+    "2024": {
+     "low": 0.0002,
+     "central": 0.0019,
+     "high": 0.0035
+    },
+    "2025": {
+     "low": 0.0017,
+     "central": 0.0041,
+     "high": 0.0065
+    }
+   },
+   "GRC": {
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0028,
+     "high": 0.0055
+    },
+    "2023": {
+     "low": 0.0004,
+     "central": 0.0021,
+     "high": 0.0037
+    },
+    "2024": {
+     "low": 0.0002,
+     "central": 0.0018,
+     "high": 0.0034
+    },
+    "2025": {
+     "low": 0.0009,
+     "central": 0.0023,
+     "high": 0.0036
+    }
+   },
+   "GHA": {
+    "2022": {
+     "low": 0.0004,
+     "central": 0.0089,
+     "high": 0.0174
+    },
+    "2023": {
+     "low": 0.0002,
+     "central": 0.0009,
+     "high": 0.0015
+    },
+    "2024": {
+     "low": 0.0002,
+     "central": 0.0017,
+     "high": 0.0032
+    },
+    "2025": {
+     "low": 0.002,
+     "central": 0.005,
+     "high": 0.0079
+    }
+   },
+   "TUN": {
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0011,
+     "high": 0.0022
+    },
+    "2023": {
+     "low": 0.0003,
+     "central": 0.0014,
+     "high": 0.0025
+    },
+    "2024": {
+     "low": 0.0002,
+     "central": 0.0015,
+     "high": 0.0029
+    },
+    "2025": {
+     "low": 0.0009,
+     "central": 0.0022,
+     "high": 0.0034
+    }
+   },
+   "NOR": {
+    "2022": {
+     "low": 0.0002,
+     "central": 0.004,
+     "high": 0.0078
+    },
+    "2023": {
+     "low": 0.0007,
+     "central": 0.0034,
+     "high": 0.0061
+    },
+    "2024": {
+     "low": 0.0002,
+     "central": 0.0013,
+     "high": 0.0025
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0014,
+     "high": 0.0022
+    }
+   },
+   "MEX": {
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0074,
+     "high": 0.0143
+    },
+    "2023": {
+     "low": 0.0003,
+     "central": 0.0016,
+     "high": 0.0028
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0011,
+     "high": 0.002
+    },
+    "2025": {
+     "low": 0.0008,
+     "central": 0.0018,
+     "high": 0.0029
+    }
+   },
+   "ETH": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0009,
+     "high": 0.0018
+    },
+    "2023": {
+     "low": 0.0002,
+     "central": 0.001,
+     "high": 0.0019
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0011,
+     "high": 0.002
+    },
+    "2025": {
+     "low": 0.0005,
+     "central": 0.0013,
+     "high": 0.0021
+    }
+   },
+   "GRL": {
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0036,
+     "high": 0.0071
+    },
+    "2023": {
+     "low": 0.0003,
+     "central": 0.0012,
+     "high": 0.0022
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0011,
+     "high": 0.0021
+    },
+    "2025": {
+     "low": 0.0007,
+     "central": 0.0017,
+     "high": 0.0026
+    }
+   },
+   "OMN": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0005,
+     "high": 0.001
+    },
+    "2023": {
+     "low": 0.0004,
+     "central": 0.0018,
+     "high": 0.0031
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0009,
+     "high": 0.0017
+    },
+    "2025": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0013
+    }
+   },
+   "MKD": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0009,
+     "high": 0.0018
+    },
+    "2023": {
+     "low": 0.0002,
+     "central": 0.001,
+     "high": 0.0017
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0009,
+     "high": 0.0017
+    },
+    "2025": {
+     "low": 0.0008,
+     "central": 0.002,
+     "high": 0.0032
+    }
+   },
+   "CAN": {
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0028,
+     "high": 0.0055
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0007,
+     "high": 0.0013
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0007,
+     "high": 0.0013
+    },
+    "2025": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.0012
+    }
+   },
+   "TZA": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0004,
+     "high": 0.0008
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0005,
+     "high": 0.0009
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0007,
+     "high": 0.0013
+    },
+    "2025": {
+     "low": 0.0013,
+     "central": 0.0033,
+     "high": 0.0052
+    }
+   },
+   "MDG": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0003
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0004
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0006,
+     "high": 0.0011
+    },
+    "2025": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0008
+    }
+   },
+   "DZA": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0006,
+     "high": 0.0012
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0006,
+     "high": 0.0011
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0006,
+     "high": 0.0011
+    },
+    "2025": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.0013
+    }
+   },
+   "TGO": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0005
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0005,
+     "high": 0.0009
+    },
+    "2025": {
+     "low": 0.0003,
+     "central": 0.0007,
+     "high": 0.0011
+    }
+   },
+   "LBN": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0005,
+     "high": 0.001
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0007,
+     "high": 0.0013
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0005,
+     "high": 0.001
+    },
+    "2025": {
+     "low": 0.0003,
+     "central": 0.0007,
+     "high": 0.0011
+    }
+   },
+   "SMR": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0006,
+     "high": 0.0011
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0006,
+     "high": 0.001
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0008
+    },
+    "2025": {
+     "low": 0.0003,
+     "central": 0.0007,
+     "high": 0.001
+    }
+   },
+   "UKR": {
+    "2022": {
+     "low": 0.0004,
+     "central": 0.0085,
+     "high": 0.0165
+    },
+    "2023": {
+     "low": 0.0004,
+     "central": 0.002,
+     "high": 0.0036
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0008
+    },
+    "2025": {
+     "low": 0.0002,
+     "central": 0.0006,
+     "high": 0.0009
+    }
+   },
+   "BEN": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0004,
+     "high": 0.0007
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0004
+    }
+   },
+   "NAM": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0003
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0006
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0008
+    },
+    "2025": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.0006
+    }
+   },
+   "CYP": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0008,
+     "high": 0.0015
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0005,
+     "high": 0.0008
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0004,
+     "high": 0.0007
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0005
+    }
+   },
+   "MWI": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0004
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0008
+    },
+    "2025": {
+     "low": 0.001,
+     "central": 0.0025,
+     "high": 0.004
+    }
+   },
+   "HND": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0008,
+     "high": 0.0015
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0005,
+     "high": 0.0009
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0005
+    },
+    "2025": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.0006
+    }
+   },
+   "CUB": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0003
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0004
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0005
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0003
+    }
+   },
+   "RWA": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0006
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0005,
+     "high": 0.0009
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0006
+    },
+    "2025": {
+     "low": 0.0005,
+     "central": 0.0013,
+     "high": 0.002
+    }
+   },
+   "KHM": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0009,
+     "high": 0.0018
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0005
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0005
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0005
+    }
+   },
+   "SYR": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0004,
+     "high": 0.0008
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0007
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0006
+    },
+    "2025": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0008
+    }
+   },
+   "NIC": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0006
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0007
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0006
+    },
+    "2025": {
+     "low": 0.0003,
+     "central": 0.0006,
+     "high": 0.001
+    }
+   },
+   "MAC": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0005
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0006
+    }
+   },
+   "GTM": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0005,
+     "high": 0.0009
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0004
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0005
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0003
+    }
+   },
+   "JOR": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0006
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0006
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0006
+    },
+    "2025": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0008
+    }
+   },
+   "BFA": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0003
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0003
+    }
+   },
+   "BHR": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0006
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0003
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0004
+    }
+   },
+   "NZL": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0009,
+     "high": 0.0017
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0005
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0004
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0005
+    }
+   },
+   "KWT": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0003
+    },
+    "2025": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0008
+    }
+   },
+   "BOL": {
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0027,
+     "high": 0.0053
+    },
+    "2023": {
+     "low": 0.0002,
+     "central": 0.001,
+     "high": 0.0017
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    }
+   },
+   "ZWE": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0001,
+     "high": 0.0002
+    }
+   },
+   "NPL": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    }
+   },
+   "LUX": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0009,
+     "high": 0.0017
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    }
+   },
+   "NGA": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0006
+    },
+    "2023": {
+     "low": 0.0002,
+     "central": 0.0008,
+     "high": 0.0014
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2025": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.0007
+    }
+   },
+   "MUS": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "PNG": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    }
+   },
+   "SSD": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0001,
+     "high": 0.0002
+    }
+   },
+   "LBR": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0004
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0003
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0003
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0003
+    }
+   },
+   "ERI": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    }
+   },
+   "AFG": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0004
+    }
+   },
+   "QAT": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0004
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0006,
+     "high": 0.001
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "VEN": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    }
+   },
+   "MOZ": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "LAO": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    }
+   },
+   "CMR": {
+    "2022": {
+     "low": 0.0004,
+     "central": 0.0083,
+     "high": 0.0162
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "AUS": {
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0026,
+     "high": 0.005
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    }
+   },
+   "ZMB": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    }
+   },
+   "MHL": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    }
+   },
+   "SWZ": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    }
+   },
+   "AGO": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    }
+   },
+   "HTI": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    }
+   },
+   "DOM": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0006
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0003
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    }
+   },
+   "BDI": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    }
+   },
+   "ISL": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "FLK": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    }
+   },
+   "MRT": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0001
+    }
+   },
+   "STP": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    }
+   }
+  },
+  "sources": [
+   {
+    "name": "trade_full.json totals_check and Russia FCS aggregates (press reports)",
+    "url": "research/2026-10/gaps/trade_full.json",
+    "date": "2026-10-17"
+   },
+   {
+    "name": "UN Comtrade public preview: all reporters' exports to KGZ, KAZ, ARM, GEO, UZB, TJK, AZE, BLR, ARE, 2019-2025; hubs' own imports and exports",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2024&partnerCode=417&flowCode=X&cmdCode=TOTAL",
+    "date": "2026-10-17"
+   },
+   {
+    "name": "TASS: Russia-UAE turnover about USD 10bn in 2024 (Manturov)",
+    "url": "https://tass.com/economy/1914351/amp",
+    "date": "2025-02"
+   },
+   {
+    "name": "CAPS Unlock: Kyrgyzstan's re-export model (car re-exports fell from about 9,000 in 2023 to about 1,300 in 2024)",
+    "url": "https://capsunlock.org/kyrgyzstans-re-export-model-a-blessing-and-a-curse/",
+    "date": "2025"
+   }
+  ]
+ },
+ "hong_kong": {
+  "question": "What Hong Kong imports from Russia, by HS chapter, and whether it is gold in transit to mainland China",
+  "answer": "Yes, it is gold. 98-99% of Hong Kong's imports from Russia since 2023 are HS 71. Gold (HS 7108) is 63% (2023), 72% (2024), 80% (2025) and 93% (Jan-Jul 2026): about 92 t in 2025 and 113 t in Jan-Jul 2026. The rest is platinum-group metals (7110), diamonds (7102) and silver (7106). Transit to mainland China is likely for a majority but not all of it. Hong Kong sends 58-83% of its gold exports to mainland China (83% in Jan-Jul 2026), and Russia supplied 7-15% of its gold imports. If Russian gold follows the average path, about 45-65% goes to the mainland, a third stays in Hong Kong vaults (imports exceeded exports by USD 21bn in 2025), and the rest goes to Thailand, Singapore, the UK, the US and Switzerland. Comtrade cannot trace origin through re-exports, so the mainland share is inferred, not observed. China's own direct imports of gold from Russia are small (USD 0.3bn in 2023, 3.3bn in 2025), so Hong Kong is the main entry route.",
+  "by_year_usd_bn": {
+   "2021": {
+    "tot": 1.400982575119,
+    "ch71": 0.887769790431,
+    "ch02": 0.034710893757,
+    "7102": [
+     0.046518191799000005,
+     53.031
+    ],
+    "7108": [
+     0.084865809578,
+     1459.0
+    ],
+    "7110": [
+     0.741194291208,
+     10932.0
+    ]
+   },
+   "2022": {
+    "tot": 1.9710519709279999,
+    "ch71": 1.6657898460020002,
+    "ch02": 0.014765856767,
+    "7102": [
+     0.048893032053999995,
+     56.302
+    ],
+    "7106": [
+     0.012315052191,
+     17251.0
+    ],
+    "7108": [
+     0.578547301745,
+     10639.0
+    ],
+    "7110": [
+     1.0148839792920001,
+     15695.0
+    ]
+   },
+   "2023": {
+    "tot": 8.260172307308,
+    "ch71": 8.157992738381,
+    "ch02": 0.015002945652000001,
+    "7102": [
+     0.467094667931,
+     922.265
+    ],
+    "7106": [
+     0.181509216206,
+     244353.0
+    ],
+    "7108": [
+     5.211977730053,
+     82215.0
+    ],
+    "7110": [
+     2.290286585578,
+     55075.0
+    ]
+   },
+   "2024": {
+    "tot": 6.429145539188,
+    "ch71": 6.325905384033,
+    "ch02": 0.040262461638,
+    "7102": [
+     0.802621971159,
+     1870.005
+    ],
+    "7106": [
+     0.063338472874,
+     78006.0
+    ],
+    "7108": [
+     4.640132395208999,
+     58033.0
+    ],
+    "7110": [
+     0.815829075373,
+     20191.0
+    ]
+   },
+   "2025": {
+    "tot": 13.117452206768,
+    "ch71": 13.006569333903,
+    "ch02": 0.047642483490000005,
+    "7102": [
+     0.791683125845,
+     2078.088
+    ],
+    "7106": [
+     0.30178240943900003,
+     216551.0
+    ],
+    "7108": [
+     10.451102235922,
+     91501.0
+    ],
+    "7110": [
+     1.4553967613580001,
+     37300.0
+    ]
+   },
+   "2026JanJul": {
+    "71": 17.397444216709,
+    "7102": 0.634578792291,
+    "7108": 16.277560279762,
+    "7110": 0.260814780096,
+    "TOTAL": 17.466251539796,
+    "gold_t": 112.96
+   }
+  },
+  "by_year_eur_bn": {
+   "2021": {
+    "total": 1.185,
+    "hs71": 0.751,
+    "gold_7108": 0.072,
+    "pgm_7110": 0.627,
+    "diamonds_7102": 0.039,
+    "gold_share": 0.061,
+    "hs71_share": 0.634
+   },
+   "2022": {
+    "total": 1.872,
+    "hs71": 1.582,
+    "gold_7108": 0.549,
+    "pgm_7110": 0.964,
+    "diamonds_7102": 0.046,
+    "gold_share": 0.294,
+    "hs71_share": 0.845
+   },
+   "2023": {
+    "total": 7.639,
+    "hs71": 7.545,
+    "gold_7108": 4.82,
+    "pgm_7110": 2.118,
+    "diamonds_7102": 0.432,
+    "gold_share": 0.631,
+    "hs71_share": 0.988
+   },
+   "2024": {
+    "total": 5.94,
+    "hs71": 5.844,
+    "gold_7108": 4.287,
+    "pgm_7110": 0.754,
+    "diamonds_7102": 0.742,
+    "gold_share": 0.722,
+    "hs71_share": 0.984
+   },
+   "2025": {
+    "total": 11.609,
+    "hs71": 11.51,
+    "gold_7108": 9.249,
+    "pgm_7110": 1.288,
+    "diamonds_7102": 0.701,
+    "gold_share": 0.797,
+    "hs71_share": 0.992
+   }
+  },
+  "2026_jan_jul": {
+   "total_usd_bn": 17.466,
+   "gold_usd_bn": 16.278,
+   "gold_tonnes": 113.0,
+   "total_eur_bn": 15.02,
+   "gold_eur_bn": 13.998,
+   "note": "Comtrade monthly data for August 2026 were not yet available. trade_full's EUR 17.9bn for Jan-Aug is consistent with Jan-Jul EUR 15.0bn plus about 3.0bn in August."
+  },
+  "hk_gold_trade_usd_bn": {
+   "2023": {
+    "imports": 59.85,
+    "imports_from_RUS": 5.21,
+    "exports": 40.24,
+    "exports_to_CHN": 33.54
+   },
+   "2024": {
+    "imports": 65.38,
+    "imports_from_RUS": 4.64,
+    "exports": 56.54,
+    "exports_to_CHN": 34.17
+   },
+   "2025": {
+    "imports": 101.77,
+    "imports_from_RUS": 10.45,
+    "exports": 80.37,
+    "exports_to_CHN": 46.29
+   },
+   "2026_jan_jul": {
+    "imports": 111.5,
+    "imports_from_RUS": 16.28,
+    "exports": 88.67,
+    "exports_to_CHN": 73.5
+   }
+  },
+  "share_onward_to_mainland": {
+   "low": 0.3,
+   "central": 0.55,
+   "high": 0.85,
+   "method": "HK gold exports to CHN / HK gold imports, by year (2023 0.56, 2024 0.52, 2025 0.45, Jan-Jul 2026 0.66), widened for origin-specific routing"
+  },
+  "china_imports_gold_usd_bn": {
+   "2023": {
+    "from_RUS": 0.321,
+    "from_HKG": 9.168
+   },
+   "2024": {
+    "from_RUS": 0.224,
+    "from_HKG": 13.895
+   },
+   "2025": {
+    "from_RUS": 3.287,
+    "from_HKG": 26.52
+   }
+  },
+  "implication": "Keep the figure as Hong Kong's imports from Russia: money paid by Hong Kong traders to Russian sellers. If the map should show the final buyer, move 30-85% (central 55%) to China. Do not count it twice, because China's customs records gold bought through Hong Kong as imports from Hong Kong.",
+  "sources": [
+   {
+    "name": "UN Comtrade preview, HKG imports from RUS by HS2 and HS4 (chapter 71), 2021-2025, monthly 2026",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=344&period=2025&partnerCode=643&flowCode=M&cmdCode=AG2",
+    "date": "2026-10-17"
+   },
+   {
+    "name": "UN Comtrade preview, HKG HS 7108/7110 trade by partner 2023-2025 and monthly 2026",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=344&period=2025&flowCode=X,M&cmdCode=7108,7110",
+    "date": "2026-10-17"
+   },
+   {
+    "name": "UN Comtrade preview, CHN imports of HS 71/7108/7110 from RUS and HKG",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=156&period=2025&partnerCode=643,344&flowCode=M&cmdCode=7108,7110,71,TOTAL",
+    "date": "2026-10-17"
+   }
+  ]
+ },
+ "territories": {
+  "LIE": {
+   "included_in": "CHE",
+   "trade": "included in CHE",
+   "aid": "own government aid is small and not in Kiel; not part of Swiss aid",
+   "sources": [
+    {
+     "name": "BAZG Swiss foreign trade statistics, survey territory: Liechtenstein and Buesingen belong to the Swiss customs territory and are included",
+     "url": "https://www.bazg.admin.ch/en/swiss-foreign-trade-statistics-methods-survey",
+     "date": "2026"
+    },
+    {
+     "name": "UN Comtrade preview 2023: no reporter (including Russia 2021 and Ukraine 2023) records trade with partner codes 438 LIE, 492 MCO, 833 IMN, 630 PRI, 850 VIR or 663 MAF, while Saint-Barthelemy (652) is recorded separately (France exports to BLM USD 213m)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2023&partnerCode=438&flowCode=X&cmdCode=TOTAL",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker working paper: coverage of 41 donor governments (EU, G7, Australia, South Korea, Turkey, Norway, New Zealand, Switzerland, China, Taiwan, India, Iceland)",
+     "url": "https://ifw-kiel.de/publications/the-ukraine-support-tracker-which-countries-help-ukraine-and-how-20852",
+     "date": "2025"
+    }
+   ],
+   "note": "Customs union with Switzerland since the 1923 treaty. Its goods trade is inside the Swiss figures. Liechtenstein gives its own humanitarian aid to Ukraine (small, CHF millions), which Kiel does not track."
+  },
+  "MCO": {
+   "included_in": "FRA",
+   "trade": "included in FRA",
+   "aid": "own small aid not in Kiel",
+   "sources": [
+    {
+     "name": "IMSEE Monaco foreign trade: French customs statistical territory includes the Principality of Monaco; Monaco figures exclude trade with France",
+     "url": "https://imsee.mc/en/thematics/economy/foreign-trade",
+     "date": "2025"
+    },
+    {
+     "name": "UN Comtrade preview 2023: no reporter (including Russia 2021 and Ukraine 2023) records trade with partner codes 438 LIE, 492 MCO, 833 IMN, 630 PRI, 850 VIR or 663 MAF, while Saint-Barthelemy (652) is recorded separately (France exports to BLM USD 213m)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2023&partnerCode=438&flowCode=X&cmdCode=TOTAL",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker working paper: coverage of 41 donor governments (EU, G7, Australia, South Korea, Turkey, Norway, New Zealand, Switzerland, China, Taiwan, India, Iceland)",
+     "url": "https://ifw-kiel.de/publications/the-ukraine-support-tracker-which-countries-help-ukraine-and-how-20852",
+     "date": "2025"
+    }
+   ],
+   "note": "Franco-Monegasque customs union (1963 convention) and part of the EU customs territory (Regulation 952/2013, Art. 4). French customs statistics include Monaco."
+  },
+  "IMN": {
+   "included_in": "GBR",
+   "trade": "included in GBR",
+   "aid": "Isle of Man Government international development budget (GBP millions) not in Kiel",
+   "sources": [
+    {
+     "name": "HMRC paper to UN EG-IMTS: the UK statistical territory is defined by the customs territory, including the Isle of Man",
+     "url": "https://mdgs.un.org/unsd/trade/EG-IMTS/Web%20documents/Papers%20and%20presentations/UK%20-%20Item%207%20-%20Trade%20System.pdf",
+     "date": "2007"
+    },
+    {
+     "name": "UN Comtrade preview 2023: no reporter (including Russia 2021 and Ukraine 2023) records trade with partner codes 438 LIE, 492 MCO, 833 IMN, 630 PRI, 850 VIR or 663 MAF, while Saint-Barthelemy (652) is recorded separately (France exports to BLM USD 213m)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2023&partnerCode=438&flowCode=X&cmdCode=TOTAL",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker working paper: coverage of 41 donor governments (EU, G7, Australia, South Korea, Turkey, Norway, New Zealand, Switzerland, China, Taiwan, India, Iceland)",
+     "url": "https://ifw-kiel.de/publications/the-ukraine-support-tracker-which-countries-help-ukraine-and-how-20852",
+     "date": "2025"
+    }
+   ],
+   "note": "Customs and Excise Agreement 1979: the Isle of Man is in the UK customs territory, so HMRC trade statistics and the UK Comtrade report include it."
+  },
+  "PRI": {
+   "included_in": "USA",
+   "trade": "included in USA",
+   "aid": "US federal aid covers it (no own foreign aid)",
+   "sources": [
+    {
+     "name": "US Census Bureau, Guide to Foreign Trade Statistics, sec. 2: statistics cover the US Customs Territory (50 states, DC, Puerto Rico), Foreign Trade Zones and the US Virgin Islands",
+     "url": "https://census.gov/foreign-trade/guide/sec2.html",
+     "date": "2026"
+    },
+    {
+     "name": "UN Comtrade preview 2023: no reporter (including Russia 2021 and Ukraine 2023) records trade with partner codes 438 LIE, 492 MCO, 833 IMN, 630 PRI, 850 VIR or 663 MAF, while Saint-Barthelemy (652) is recorded separately (France exports to BLM USD 213m)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2023&partnerCode=438&flowCode=X&cmdCode=TOTAL",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker working paper: coverage of 41 donor governments (EU, G7, Australia, South Korea, Turkey, Norway, New Zealand, Switzerland, China, Taiwan, India, Iceland)",
+     "url": "https://ifw-kiel.de/publications/the-ukraine-support-tracker-which-countries-help-ukraine-and-how-20852",
+     "date": "2025"
+    }
+   ],
+   "note": "Part of the US customs territory."
+  },
+  "VIR": {
+   "included_in": "USA",
+   "trade": "included in USA",
+   "aid": "US federal aid covers it",
+   "sources": [
+    {
+     "name": "US Census Bureau, Guide to Foreign Trade Statistics, sec. 2",
+     "url": "https://census.gov/foreign-trade/guide/sec2.html",
+     "date": "2026"
+    },
+    {
+     "name": "UN Comtrade preview 2023: no reporter (including Russia 2021 and Ukraine 2023) records trade with partner codes 438 LIE, 492 MCO, 833 IMN, 630 PRI, 850 VIR or 663 MAF, while Saint-Barthelemy (652) is recorded separately (France exports to BLM USD 213m)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2023&partnerCode=438&flowCode=X&cmdCode=TOTAL",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker working paper: coverage of 41 donor governments (EU, G7, Australia, South Korea, Turkey, Norway, New Zealand, Switzerland, China, Taiwan, India, Iceland)",
+     "url": "https://ifw-kiel.de/publications/the-ukraine-support-tracker-which-countries-help-ukraine-and-how-20852",
+     "date": "2025"
+    }
+   ],
+   "note": "Outside the US customs territory, but explicitly included in US Census trade statistics."
+  },
+  "MAF": {
+   "included_in": "FRA",
+   "trade": "included in FRA (EU outermost region; no partner reports it separately in Comtrade)",
+   "aid": "French state aid covers it",
+   "sources": [
+    {
+     "name": "INSEE definition of the French economic territory: outermost regions, including Saint-Martin, are part of the EU reference territory",
+     "url": "https://insee.fr/en/metadonnees/definition/c1696",
+     "date": "2025"
+    },
+    {
+     "name": "Assemblee nationale question 415 (2018): since 2008 Saint-Martin has been outside the INSEE perimeter, with no local foreign trade figures",
+     "url": "https://www.assemblee-nationale.fr/dyn/15/questions/QANR5L15QOSD415.pdf",
+     "date": "2018"
+    },
+    {
+     "name": "UN Comtrade preview 2023: no reporter (including Russia 2021 and Ukraine 2023) records trade with partner codes 438 LIE, 492 MCO, 833 IMN, 630 PRI, 850 VIR or 663 MAF, while Saint-Barthelemy (652) is recorded separately (France exports to BLM USD 213m)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2023&partnerCode=438&flowCode=X&cmdCode=TOTAL",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "Kiel Institute, Ukraine Support Tracker working paper: coverage of 41 donor governments (EU, G7, Australia, South Korea, Turkey, Norway, New Zealand, Switzerland, China, Taiwan, India, Iceland)",
+     "url": "https://ifw-kiel.de/publications/the-ukraine-support-tracker-which-countries-help-ukraine-and-how-20852",
+     "date": "2025"
+    }
+   ],
+   "note": "This one is weaker than the others. Saint-Martin is an EU outermost region and part of France, and no Comtrade partner records it separately, so its trade is either in France's figures or unrecorded (it is a free port with no own trade statistics). Saint-Barthelemy, by contrast, has been an OCT since 2012 and is reported separately (Comtrade partner 652), so BLM must stay a separate entry."
+  }
+ },
+ "notes": [
+  "GDP and population are 2024. EUR conversions use ECB 2024 averages: 1.08238 USD, 0.84662 GBP, 1.7880 NZD, 1.6397 AUD and about 10.75 MAD per EUR. XPF is fixed at 119.33.",
+  "For uninhabited territories (ATA, BVT, UMI) GDP is 0. Their %-of-GDP values are undefined; show absolute values or \"n/a\".",
+  "Exports-gap country values are additions to exports_to_RUS. The cif_fob component (EUR 13-15bn a year) is freight and insurance, not goods sales, and is not allocated.",
+  "Hong Kong: keep imports from Russia as reported. They are gold (HS 7108) and other HS 71 items, about 55% (30-85%) of which go onward to mainland China.",
+  "build_data.py already maps LIE, MCO, IMN, PRI, VIR and MAF to CHE, FRA, GBR, USA, USA and FRA (INCLUDED_IN). This file supplies the evidence."
+ ]
+}

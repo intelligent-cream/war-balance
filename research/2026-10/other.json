@@ -1,0 +1,3989 @@
+{
+ "military_to_russia": {
+  "PRK": {
+   "items": [
+    {
+     "what": "Artillery shells (152mm/122mm; DIA figure is 152mm-equivalent)",
+     "qty": {
+      "low": 4000000,
+      "central": 6000000,
+      "high": 12000000
+     },
+     "unit_eur": {
+      "low": 277.17,
+      "central": 461.94,
+      "high": 923.89
+     },
+     "eur_bn": {
+      "low": 1.109,
+      "central": 2.772,
+      "high": 11.087
+     },
+     "period": "Sep 2023 - mid 2025",
+     "sources": [
+      "Reuters / Open Source Centre, Apr 2025: 64 voyages Rajin->Russia, ~16,000 containers, 4-6m shells (Sep 2023-Mar 2025) https://www.themoscowtimes.com/2025/04/15/north-korea-supplying-up-to-100-of-russian-artillery-shells-used-in-ukraine-reuters-a88745",
+      "RUSI 'Brothers in Arms' (OSC: 4.2-5.8m munitions) https://www.rusi.org/explore-our-research/publications/commentary/brothers-arms-assessing-north-koreas-contribution-russias-war-ukraine",
+      "South Korea Defense Intelligence Agency, Jul 2025: >28,000 containers, >12m rounds in 152mm-equivalent https://kyivindependent.com/north-korea-supplied-russia-with-12-million-rounds-of-152mm-shells-south-korean-intel-estimates/",
+      "Frontelligence Insight, most conservative model 502,000 shells https://frontelligence.substack.com/p/counting-the-rounds-north-korean",
+      "Guseinova (HUFS) for Friedrich Naumann Foundation Korea, Oct 2024: unit-price scenarios 152mm $300/$500/$800/$1,000; KN-23/24 $1.5m-$3m; total $1.72-5.52bn https://www.kyivpost.com/post/41325"
+     ],
+     "note": "Low/central = Reuters/OSC 4-6m (Frontelligence's most conservative model: 502k); high = South Korean DIA >12m 152mm-equivalent. Unit price assumptions from Guseinova/FNF scenarios ($300/$500/$1,000 per 152mm round)."
+    },
+    {
+     "what": "KN-23/KN-24 short-range ballistic missiles",
+     "qty": {
+      "low": 100,
+      "central": 150,
+      "high": 190
+     },
+     "unit_eur": {
+      "low": 1385834.32,
+      "central": 2078751.48,
+      "high": 2771668.64
+     },
+     "eur_bn": {
+      "low": 0.139,
+      "central": 0.312,
+      "high": 0.527
+     },
+     "period": "late 2023 - 2026",
+     "sources": [
+      "Ukraine GUR (BELLIGERENT): ~100 KN-23/24 by Nov 2024 https://www.koreajoongangdaily.com/korea/north-korea-sent-100-short-range-missiles-military-experts-to-russia-says-ukraines-military-intelligence/12168702 ; ~150 by Aug 2025, +~40 batch 2026, unit to hold up to 120 https://thedefensepost.com/2026/08/07/north-korean-russia-missiles/",
+      "Guseinova (HUFS) for Friedrich Naumann Foundation Korea, Oct 2024: unit-price scenarios 152mm $300/$500/$800/$1,000; KN-23/24 $1.5m-$3m; total $1.72-5.52bn https://www.kyivpost.com/post/41325"
+     ],
+     "note": "Counts are Ukrainian (belligerent) intelligence only: ~100 by Nov 2024, ~150 by Aug 2025, +~40 batch reported 2026. Central unit price = midpoint of Guseinova's $1.5m-$3m range (my midpoint)."
+    },
+    {
+     "what": "170mm Koksan SPGs + 240mm M-1991 MLRS",
+     "qty": {
+      "low": 240,
+      "central": 240,
+      "high": 480
+     },
+     "unit_eur": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "eur_bn": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "period": "Aug-Nov 2024 onward",
+     "sources": [
+      "Budanov/GUR (BELLIGERENT) to The War Zone: ~120 Koksan 170mm SPGs + ~120 M-1991 240mm MLRS, more expected https://twz.com/news-features/more-north-korean-artillery-troops-heading-to-russia-ukraine-intel-chief"
+     ],
+     "note": "~120 + ~120 per Budanov (belligerent); high = 'at least as many more' expected. No sourced unit price -> value null."
+    },
+    {
+     "what": "Troop deployment (wages and death benefits paid to DPRK)",
+     "qty": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "unit_eur": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "eur_bn": {
+      "low": 0.573,
+      "central": 0.573,
+      "high": 0.573
+     },
+     "period": "Oct 2024 - Dec 2025",
+     "sources": [
+      "Institute for National Security Strategy (Seoul, state-funded), Mar 2026: $7.67-14.4bn Aug 2023-Dec 2025 (munitions $7.05-13.78bn; troops $0.62bn) https://www.nknews.org/?p=969099 ; Bloomberg 2026-03-18"
+     ],
+     "note": "INSS estimate of payments for the troop deployment; troop counts are in fighters_for_russia.PRK."
+    }
+   ],
+   "items_sum_eur_bn": {
+    "low": 1.821,
+    "central": 3.657,
+    "high": 12.187
+   },
+   "total_eur_bn": {
+    "low": 7.086,
+    "central": 9.054,
+    "high": 13.304
+   },
+   "total_basis": "Aggregate third-party valuations: low/high = INSS (Mar 2026) $7.67-14.4bn for Aug 2023-Dec 2025; central = Friedrich Naumann Foundation (Sep 2025) up to $9.8bn. KIDA has floated 'up to $20bn' (ambiguous scope, excluded). Item-based sum (shells+missiles+troops) is lower; difference = MLRS/SPGs, other munitions, valuation method.",
+   "total_sources": [
+    "Institute for National Security Strategy (Seoul, state-funded), Mar 2026: $7.67-14.4bn Aug 2023-Dec 2025 (munitions $7.05-13.78bn; troops $0.62bn) https://www.nknews.org/?p=969099 ; Bloomberg 2026-03-18",
+    "Friedrich Naumann Foundation report, Sep 2025: up to $9.8bn in weapons, ammunition and troops since 2023; ~$1.2bn compensation https://thedefensepost.com/2025/09/19/north-korea-arms-russia-3/",
+    "Guseinova (HUFS) for Friedrich Naumann Foundation Korea, Oct 2024: unit-price scenarios 152mm $300/$500/$800/$1,000; KN-23/24 $1.5m-$3m; total $1.72-5.52bn https://www.kyivpost.com/post/41325"
+   ],
+   "nature": "Mostly paid/bartered transfers (Russia compensates with cash, food, oil, technology), not donations.",
+   "certainty": "D"
+  },
+  "IRN": {
+   "items": [
+    {
+     "what": "Shahed-136 drones + licence/technology transfer for Alabuga (Geran-2) production",
+     "qty": {
+      "low": 6000,
+      "central": 6000,
+      "high": 6000
+     },
+     "unit_eur": {
+      "low": 178310.68,
+      "central": 178310.68,
+      "high": 346458.58
+     },
+     "eur_bn": {
+      "low": 1.617,
+      "central": 1.617,
+      "high": 1.617
+     },
+     "period": "contract early 2023",
+     "sources": [
+      "Leaked Alabuga/Sahara Thunder documents (ISIS report May 2024; hacked emails): $1.75bn contract, 6,000 Shahed-136, negotiated $193k/drone (initial $375k) https://isis-online.org/isis-reports/alabugas-shahed-136-geran-2-warheads-a-dangerous-escalation ; https://en.thepage.ua/news/hackers-revealed-how-much-russia-paid-for-iranian-shahed-drones",
+      "Bloomberg (Western security officials), Jan 2026: Iran supplied >$4bn military equipment since late 2021; missile contracts ~$2.7bn; drone/Geran-2 contract ~$1.75bn https://anewz.tv/region/middle-east/17155/iran-sold-russia-27bn-in-missiles-western-official-says/news"
+     ],
+     "note": "Value = whole $1.75bn contract (drones ~$1.15bn + factory setup/tech/services), per leaks and Bloomberg. Unit price $193k negotiated (initial asking $375k). Iranian-built Shaheds delivered directly in 2022-23 before Alabuga: no reliable count. Later Russian domestic Geran output NOT included."
+    },
+    {
+     "what": "Short-range ballistic missiles (Fath-360 and others) and some SAMs",
+     "qty": {
+      "low": 350,
+      "central": 400,
+      "high": 850
+     },
+     "unit_eur": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "eur_bn": {
+      "low": null,
+      "central": 2.495,
+      "high": 2.495
+     },
+     "period": "contracts from Oct 2021; deliveries 2024-2025",
+     "sources": [
+      "Ukraine GUR (BELLIGERENT) via Kyiv Independent: >350 Fath-360 delivered, none confirmed launched https://kyivindependent.com/exclusive-iran-gave-russia-over-350-fath-missiles/",
+      "Gen. Cavoli (US EUCOM) Senate testimony 2025: Iran donated >400 SRBMs and hundreds of thousands of artillery shells https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html",
+      "Bloomberg (Western security officials), Jan 2026: Iran supplied >$4bn military equipment since late 2021; missile contracts ~$2.7bn; drone/Geran-2 contract ~$1.75bn https://anewz.tv/region/middle-east/17155/iran-sold-russia-27bn-in-missiles-western-official-says/news"
+     ],
+     "note": "Low = GUR >350 Fath-360 (belligerent); central = US EUCOM >400 SRBMs; high = Bloomberg-sourced 'hundreds of Fath-360 + nearly 500 other SRBMs' (+~200 SAMs not counted in qty). Value = ~$2.7bn missile contracts (Bloomberg); delivered share unknown so low is null."
+    },
+    {
+     "what": "Artillery shells (122/152mm)",
+     "qty": {
+      "low": 300000,
+      "central": 300000,
+      "high": null
+     },
+     "unit_eur": {
+      "low": 277.17,
+      "central": 461.94,
+      "high": 923.89
+     },
+     "eur_bn": {
+      "low": 0.083,
+      "central": 0.139,
+      "high": null
+     },
+     "period": "Oct 2022 - Apr 2023 (six months) and later",
+     "sources": [
+      "Wall Street Journal, Apr 2023: >300,000 artillery shells and ~1m rounds via Caspian in six months https://euromaidanpress.com/2023/04/27/iranian-ships-transported-300000-artillery-shells-1-million-rounds-of-ammunition-to-russia-in-six-months-wsj/",
+      "Gen. Cavoli (US EUCOM) Senate testimony 2025: Iran donated >400 SRBMs and hundreds of thousands of artillery shells https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html"
+     ],
+     "note": "300k is a six-month snapshot (WSJ); EUCOM says 'hundreds of thousands' overall -> high null. Unit prices borrowed from the DPRK Guseinova scenarios (assumption)."
+    }
+   ],
+   "items_sum_eur_bn": {
+    "low": 1.7,
+    "central": 4.251,
+    "high": 4.112
+   },
+   "total_eur_bn": {
+    "low": 3.696,
+    "central": 4.25,
+    "high": null
+   },
+   "total_basis": "Low = Bloomberg/Western officials '>$4bn' since late 2021 (Jan 2026); central = $2.7bn missiles + $1.75bn drone contract + ~$0.15bn shells; high null (officials say figures understate full support).",
+   "total_sources": [
+    "Bloomberg (Western security officials), Jan 2026: Iran supplied >$4bn military equipment since late 2021; missile contracts ~$2.7bn; drone/Geran-2 contract ~$1.75bn https://anewz.tv/region/middle-east/17155/iran-sold-russia-27bn-in-missiles-western-official-says/news",
+    "Leaked Alabuga/Sahara Thunder documents (ISIS report May 2024; hacked emails): $1.75bn contract, 6,000 Shahed-136, negotiated $193k/drone (initial $375k) https://isis-online.org/isis-reports/alabugas-shahed-136-geran-2-warheads-a-dangerous-escalation ; https://en.thepage.ua/news/hackers-revealed-how-much-russia-paid-for-iranian-shahed-drones",
+    "Gen. Cavoli (US EUCOM) Senate testimony 2025: Iran donated >400 SRBMs and hundreds of thousands of artillery shells https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html"
+   ],
+   "nature": "Sales (contracts), paid partly in cash/gold per reporting; not donations.",
+   "certainty": "D"
+  },
+  "BLR": {
+   "items": [
+    {
+     "what": "Ammunition by rail from Belarusian stocks",
+     "qty": {
+      "low": 131582,
+      "central": 131582,
+      "high": null
+     },
+     "unit_eur": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "eur_bn": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "period": "Jan 2022 - Feb 2023 (tonnes)",
+     "sources": [
+      "Anton Motolko investigation (railway data): 131,582 t ammunition Jan 2022-Feb 2023 https://kyivindependent.com/investigation-belarus-sent-over-130-000-tons-of-munitions-to-russia-in-first-year-of-full-scale-war/",
+      "Belaruski Hajun (independent monitor): 65,089 t ammunition by rail Mar-Sep 2022 https://www.pravda.com.ua/eng/news/2022/10/28/7374018/"
+     ],
+     "note": "Quantity in TONNES, not rounds. Hajun counted 65,089 t for Mar-Sep 2022 (subset). No sourced EUR value or price per tonne -> null."
+    },
+    {
+     "what": "Ammunition 2024",
+     "qty": {
+      "low": 5000,
+      "central": 5000,
+      "high": null
+     },
+     "unit_eur": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "eur_bn": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "period": "2024 (tonnes, ~192 railcars)",
+     "sources": [
+      "UNITED24 overview 2025: 192 railcars (~5,000 t) ammunition in 2024; Belarus mainly subcontractor https://united24media.com/latest-news/inside-belaruss-secret-role-in-arming-putins-war-machine-14010"
+     ],
+     "note": "Tonnes. Value null."
+    },
+    {
+     "what": "T-72A tanks and Ural trucks from storage",
+     "qty": {
+      "low": 94,
+      "central": 100,
+      "high": null
+     },
+     "unit_eur": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "eur_bn": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "period": "Oct-Nov 2022",
+     "sources": [
+      "Hajun / Ukrainian General Staff, Oct-Nov 2022: >=94 T-72A tanks + 36-44 Ural trucks transferred https://www.pravda.com.ua/eng/news/2022/10/12/7371556/"
+     ],
+     "note": "Plus 36-44 Ural trucks; ~20 armoured vehicles. Value null."
+    },
+    {
+     "what": "Territory/staging for Feb-Apr 2022 northern offensive, airfields for missile launches, training ranges, repair; subcontract production",
+     "qty": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "unit_eur": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "eur_bn": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "period": "2022-",
+     "sources": [
+      "UNITED24 overview 2025: 192 railcars (~5,000 t) ammunition in 2024; Belarus mainly subcontractor https://united24media.com/latest-news/inside-belaruss-secret-role-in-arming-putins-war-machine-14010"
+     ],
+     "note": "Not quantifiable in EUR."
+    }
+   ],
+   "items_sum_eur_bn": {
+    "low": null,
+    "central": null,
+    "high": null
+   },
+   "total_eur_bn": {
+    "low": null,
+    "central": null,
+    "high": null
+   },
+   "total_basis": "No credible EUR valuation found; quantities only.",
+   "certainty": "D"
+  },
+  "CHN": {
+   "items": [
+    {
+     "what": "Dual-use / high-priority (CHP) goods exports to Russia, 2024",
+     "qty": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "unit_eur": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "eur_bn": {
+      "low": 3.696,
+      "central": null,
+      "high": null
+     },
+     "period": "2024",
+     "sources": [
+      "MERICS estimate (via The Gaze): China dual-use exports to Russia 2024 >$4bn (~$300m/month) https://thegaze.media/news/why-does-china-increase-the-supply-of-dual-use-goods-to-russia",
+      "KSE Institute CHP Imports Tracker Q2 2026: China ~75-85% of Russia's CHP imports; Russian premium ~300% (2025) https://sanctions.kse.ua/wp-content/uploads/2026/07/CHP-Q2-2026-Report.pdf"
+     ],
+     "note": "Commercial sales, not aid. '>$4bn' per MERICS (secondary citation)."
+    },
+    {
+     "what": "High-priority dual-use goods exports to Russia, H1 2025",
+     "qty": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "unit_eur": {
+      "low": null,
+      "central": null,
+      "high": null
+     },
+     "eur_bn": {
+      "low": 1.755,
+      "central": null,
+      "high": null
+     },
+     "period": "Jan-Jun 2025",
+     "sources": [
+      "OSW / Swedish National China Centre China-Russia Dashboard, Aug 2025: H1 2025 high-priority dual-use exports $1.9bn (-7% y/y) https://kinacentrum.se/en/publications/china-russia-trade-in-early-2025-fueling-moscows-war-despite-headwinds/"
+     ],
+     "note": "Chinese customs data, 50 HS-6 high-priority codes; $1.9bn (-7% y/y => H1 2024 ~$2.0bn)."
+    }
+   ],
+   "items_sum_eur_bn": {
+    "low": 5.451,
+    "central": null,
+    "high": null
+   },
+   "total_eur_bn": {
+    "low": 5.451,
+    "central": null,
+    "high": null
+   },
+   "total_basis": "Low = 2024 + H1 2025 only. 2022, 2023, H2 2025 and 2026 not covered by a consistent sourced series -> central/high null. China (incl. HK) supplied ~76% of Russia's battlefield goods in 2023 and ~75-85% of CHP imports since (KSE). No lethal weapons transfers confirmed.",
+   "total_sources": [
+    "MERICS estimate (via The Gaze): China dual-use exports to Russia 2024 >$4bn (~$300m/month) https://thegaze.media/news/why-does-china-increase-the-supply-of-dual-use-goods-to-russia",
+    "OSW / Swedish National China Centre China-Russia Dashboard, Aug 2025: H1 2025 high-priority dual-use exports $1.9bn (-7% y/y) https://kinacentrum.se/en/publications/china-russia-trade-in-early-2025-fueling-moscows-war-despite-headwinds/",
+    "KSE Institute CHP Imports Tracker Q2 2026: China ~75-85% of Russia's CHP imports; Russian premium ~300% (2025) https://sanctions.kse.ua/wp-content/uploads/2026/07/CHP-Q2-2026-Report.pdf",
+    "KSE: China+HK 76% of battlefield goods 2023 https://kse.ua/about-the-school/news/china-supplied-76-of-russia-s-battlefield-goods-in-2023-kse-institute-report/"
+   ],
+   "nature": "Commercial trade (at ~300% premium per KSE), not grants.",
+   "certainty": "D"
+  }
+ },
+ "volunteers_for_ukraine": {
+  "POL": {
+   "low": null,
+   "central": null,
+   "high": 2960,
+   "as_of": "2024-03",
+   "sources": [
+    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
+   ],
+   "note": "Russian claim incl. 1,497 'killed'; no independent count."
+  },
+  "USA": {
+   "low": null,
+   "central": 816,
+   "high": 1113,
+   "as_of": "2024-03/2025-05",
+   "sources": [
+    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
+    "Russian Investigative Committee (BELLIGERENT), Bastrykin, May 2025 via The Insider https://theins.press/en/politics/281953"
+   ],
+   "note": "Central = Russian IC 816 (May 2025); high = Russian MoD 1,113. Both belligerent claims. Chosen Company etc. mainly Americans."
+  },
+  "GEO": {
+   "low": null,
+   "central": 712,
+   "high": 1042,
+   "as_of": "2024-03/2025-05",
+   "sources": [
+    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
+    "Russian Investigative Committee (BELLIGERENT), Bastrykin, May 2025 via The Insider https://theins.press/en/politics/281953",
+    "GFSIS: 'at least several hundred' Georgians https://gfsis.org.ge/publications/view/3269"
+   ],
+   "note": "Independent: at least several hundred (Georgian Legion)."
+  },
+  "CAN": {
+   "low": null,
+   "central": 719,
+   "high": 1005,
+   "as_of": "2024-03/2025-05",
+   "sources": [
+    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
+    "Russian Investigative Committee (BELLIGERENT), Bastrykin, May 2025 via The Insider https://theins.press/en/politics/281953"
+   ]
+  },
+  "GBR": {
+   "low": null,
+   "central": 694,
+   "high": 822,
+   "as_of": "2024-03/2025-05",
+   "sources": [
+    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
+    "Russian Investigative Committee (BELLIGERENT), Bastrykin, May 2025 via The Insider https://theins.press/en/politics/281953"
+   ]
+  },
+  "ROU": {
+   "low": null,
+   "central": null,
+   "high": 784,
+   "as_of": "2024-03",
+   "sources": [
+    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
+   ]
+  },
+  "FRA": {
+   "low": null,
+   "central": null,
+   "high": 356,
+   "as_of": "2024-03",
+   "sources": [
+    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
+   ],
+   "note": "France denies its nationals' presence in organized form."
+  },
+  "DEU": {
+   "low": null,
+   "central": null,
+   "high": 235,
+   "as_of": "2024-03",
+   "sources": [
+    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
+   ]
+  },
+  "IDN": {
+   "low": null,
+   "central": null,
+   "high": 10,
+   "as_of": "2024-03",
+   "sources": [
+    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
+   ]
+  },
+  "COL": {
+   "low": 2000,
+   "central": null,
+   "high": 7000,
+   "as_of": "2025-10/2026",
+   "sources": [
+    "CEPA interview: >2,000 Colombians fighting https://cepa.org/?p=33770",
+    "NV (Ukrainian media) investigation: >7,000 Colombians served since 2022 (cumulative) https://www.intellinews.com/colombia-s-battle-hardened-veterans-fuel-ukraine-s-front-lines-442135/",
+    "Colombian MFA: 140 dead in Ukraine as of Jun 2026 https://www.intellinews.com/colombia-counts-173-dead-and-670-missing-in-russia-ukraine-war-447567/"
+   ],
+   "note": "Likely the largest current foreign contingent; low = currently fighting, high = cumulative served."
+  },
+  "CZE": {
+   "low": 60,
+   "central": 60,
+   "high": 181,
+   "as_of": "2024-11",
+   "sources": [
+    "Czech Radio via The Insider: 181 applications, 60 approved (Feb 2022-Nov 2024) https://theins.press/en/politics/281953"
+   ],
+   "note": "Government-approved only; unauthorised volunteers not counted."
+  },
+  "_TOTAL": {
+   "low": 1500,
+   "central": 4000,
+   "high": 20000,
+   "as_of": "2023-2025",
+   "sources": [
+    "NYT 25 Mar 2023 / CEP Mar 2023: 1,500-2,000 actively fighting (via The Insider)",
+    "Responsible Statecraft: ~4,000 foreign fighters still in Ukraine https://responsiblestatecraft.org/foreign-fighters-ukraine/",
+    "Ukraine (BELLIGERENT) 2022: ~20,000 volunteers from 50+ countries signed up",
+    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
+    "FSB (BELLIGERENT): 18,000 from 85 countries https://tass.com/defense/1852091"
+   ],
+   "note": "Excludes Russian (RDK, Freedom of Russia Legion) and Belarusian (Kalinouski Regiment) citizens, which Russian sources call the largest groups; no count found. High = Ukrainian 2022 sign-up claim."
+  }
+ },
+ "fighters_for_russia": {
+  "PRK": {
+   "low": 11000,
+   "central": 14000,
+   "high": 20000,
+   "as_of": "2024-11/2026-03",
+   "sources": [
+    "South Korea NIS: ~11,000 in Kursk start-2026 (10k combat + 1k engineers); ~6,000 killed/wounded (Feb 2026) https://kyivindependent.com/nearly-11-000-north-korean-troops-stationed-in-russias-kursk-oblast-at-start-of-2026-media-reports/ https://united24media.com/latest-news/6000-north-korean-troops-killed-or-wounded-fighting-for-russia-seoul-reveals-15864",
+    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html",
+    "Institute for National Security Strategy (Seoul, state-funded), Mar 2026: $7.67-14.4bn Aug 2023-Dec 2025 (munitions $7.05-13.78bn; troops $0.62bn) https://www.nknews.org/?p=969099 ; Bloomberg 2026-03-18"
+   ],
+   "note": "Low = NIS ~11,000 initial/standing Kursk force; central = GUR >14,000; high = INSS >20,000 across four rotations (incl. engineers/deminers). Casualties: NIS ~6,000 killed+wounded (Feb 2026); ~2,300 dead (BBC memorial analysis / Mediazona 2,304 Jul 2026)."
+  },
+  "CUB": {
+   "low": 1076,
+   "central": null,
+   "high": 20000,
+   "as_of": "2025-10/2026-06",
+   "sources": [
+    "Ukraine GUR (BELLIGERENT), Oct 2025: 1,076 identified by name, 96 dead/missing https://kyivindependent.com/exclusive-1-076-cubans-identified-fighting-for-russia-ukraine-says-96-dead-or-disappeared/",
+    "US State Dept cable: 1,000-5,000 Cubans fighting (via same report)",
+    "Frontelligence Jul 2025: 'slightly more than 500' (2023 contracts) https://frontelligence.substack.com/p/outsourced-war",
+    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html (Cuba 15,000+)"
+   ],
+   "note": "Middle range per US cable 1,000-5,000; GUR spokesman up to 20,000 (belligerent)."
+  },
+  "NPL": {
+   "low": 603,
+   "central": null,
+   "high": 15000,
+   "as_of": "2024-02/2025-04",
+   "sources": [
+    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/ (Nepal 603)",
+    "Nepal government ~200 (2024); opposition/CNN estimate ~15,000 https://warontherocks.com/strangers-in-the-motherland-the-dynamics-of-russias-foreign-recruitment/"
+   ],
+   "note": "War on the Rocks author: 'mid-thousands'. Government figure (~200) lower than iStories count."
+  },
+  "IND": {
+   "low": 126,
+   "central": 202,
+   "high": null,
+   "as_of": "2025-12",
+   "sources": [
+    "India MEA, Rajya Sabha Dec 2025: 202 recruited since 2022, 26 dead, 7 missing, 119 discharged https://superkalam.com/current-affairs/19-12-2025/202-indians-hired-for-russian-armed-forces-pg1-7b0d2f4f-de26-44e1-9c03-83b68e74b2a2",
+    "MEA Jan 2025: 126 cases, 12 dead https://www.thenewsminute.com/news/mea-confirms-16-indians-missing-12-dead-in-russian-army-deployment"
+   ]
+  },
+  "LKA": {
+   "low": 280,
+   "central": null,
+   "high": 897,
+   "as_of": "2025/2026-06",
+   "sources": [
+    "Sri Lanka government ~280 (via Kyiv Post) https://www.kyivpost.com/analysis/85141",
+    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html (Sri Lanka 897)"
+   ]
+  },
+  "UZB": {
+   "low": 71,
+   "central": null,
+   "high": 4955,
+   "as_of": "2025-04/2026-06",
+   "sources": [
+    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
+   ]
+  },
+  "TJK": {
+   "low": 86,
+   "central": null,
+   "high": 3321,
+   "as_of": "2025-04/2026-06",
+   "sources": [
+    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
+   ]
+  },
+  "KAZ": {
+   "low": 59,
+   "central": null,
+   "high": 2420,
+   "as_of": "2025-04/2026-06",
+   "sources": [
+    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
+   ]
+  },
+  "KGZ": {
+   "low": 64,
+   "central": null,
+   "high": 1395,
+   "as_of": "2025-04/2026-06",
+   "sources": [
+    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
+   ]
+  },
+  "BLR": {
+   "low": 71,
+   "central": null,
+   "high": 2871,
+   "as_of": "2025-04/2026-06",
+   "sources": [
+    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
+   ]
+  },
+  "ARM": {
+   "low": null,
+   "central": null,
+   "high": 994,
+   "as_of": "2026-06",
+   "sources": [
+    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
+   ]
+  },
+  "TKM": {
+   "low": 19,
+   "central": null,
+   "high": null,
+   "as_of": "2025-04",
+   "sources": [
+    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/"
+   ]
+  },
+  "MDA": {
+   "low": 12,
+   "central": null,
+   "high": null,
+   "as_of": "2025-04",
+   "sources": [
+    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/"
+   ]
+  },
+  "CHN": {
+   "low": 51,
+   "central": null,
+   "high": null,
+   "as_of": "2025-04",
+   "sources": [
+    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/"
+   ]
+  },
+  "SRB": {
+   "low": 8,
+   "central": null,
+   "high": 500,
+   "as_of": "2025-04/2025-07",
+   "sources": [
+    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+    "Frontelligence Jul 2025: Serbia 'similar number' to Cuba (~500) https://frontelligence.substack.com/p/outsourced-war"
+   ]
+  },
+  "KEN": {
+   "low": 200,
+   "central": null,
+   "high": 1000,
+   "as_of": "2026-02",
+   "sources": [
+    "Kenyan government ~200; Kenyan intelligence report to parliament Feb 2026: 1,000 https://www.npr.org/2026/02/19/g-s1-110724/russia-ukraine-war-kenyans-recruited"
+   ]
+  },
+  "SYR": {
+   "low": null,
+   "central": null,
+   "high": 2000,
+   "as_of": "2023-01",
+   "sources": [
+    "Syrian Observatory for Human Rights Jan 2023: 2,000 Syrian soldiers sent (via War on the Rocks)"
+   ],
+   "note": "Old, unclear; pre-Assad-fall."
+  },
+  "IDN": {
+   "low": 8,
+   "central": null,
+   "high": null,
+   "as_of": "2026-08",
+   "sources": [
+    "Ukraine Foreign Intelligence Service (BELLIGERENT), Aug 2026, via Kyiv Post https://www.kyivpost.com/analysis/85141"
+   ]
+  },
+  "_AFRICA": {
+   "low": null,
+   "central": 1400,
+   "high": null,
+   "as_of": "2025-11",
+   "sources": [
+    "Ukraine FM Sybiha (BELLIGERENT): >1,400 Africans from 36 countries https://www.aljazeera.com/news/2025/11/8/ukraines-fm-says-over-1400-africans-recruited-to-fight-for-russia-in-war"
+   ]
+  },
+  "_SAS4": {
+   "low": 1794,
+   "central": null,
+   "high": null,
+   "as_of": "2025/2026",
+   "sources": [
+    "Ukraine Coordination HQ for POWs (BELLIGERENT): Sri Lanka+Nepal+India+Pakistan >=1,794 https://www.kyivpost.com/analysis/85141"
+   ]
+  },
+  "_TOTAL_EXCL_PRK": {
+   "low": 4660,
+   "central": 10000,
+   "high": 28000,
+   "as_of": "2025-07/2026-06",
+   "sources": [
+    "Frontelligence Jul 2025: 4,660-8,000 foreign recruits https://frontelligence.substack.com/p/outsourced-war",
+    "War on the Rocks: ~10,000, 'may well be closer to 20,000' https://warontherocks.com/strangers-in-the-motherland-the-dynamics-of-russias-foreign-recruitment/",
+    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html (>28,000 non-DPRK)"
+   ],
+   "note": "GUR per-country list does not reconcile with its own total (sums to ~31,850 non-DPRK). Dead foreigners (excl. DPRK) identified by BBC/Mediazona: 1,285 as of Jul 2026."
+  }
+ },
+ "refugees_hosted": {
+  "ALB": {
+   "count": 4571,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 4571,
+   "unhcr_end2025_asylum_seekers": 0
+  },
+  "EGY": {
+   "count": 0,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 0,
+   "unhcr_end2025_asylum_seekers": 10
+  },
+  "ARG": {
+   "count": 121,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 121,
+   "unhcr_end2025_asylum_seekers": 41
+  },
+  "ARM": {
+   "count": 4790,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 4790,
+   "unhcr_end2025_asylum_seekers": 40
+  },
+  "AUS": {
+   "count": 4181,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 4181,
+   "unhcr_end2025_asylum_seekers": 1292
+  },
+  "AUT": {
+   "count": 91620,
+   "as_of": "2026-09",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-09 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 91865,
+   "unhcr_end2025_asylum_seekers": 57
+  },
+  "AZE": {
+   "count": 4893,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 4893,
+   "unhcr_end2025_asylum_seekers": 150
+  },
+  "BEL": {
+   "count": 95640,
+   "as_of": "2026-09",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-09 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 91773,
+   "unhcr_end2025_asylum_seekers": 713
+  },
+  "BEN": {
+   "count": 0,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 0,
+   "unhcr_end2025_asylum_seekers": 5
+  },
+  "BLR": {
+   "count": 40561,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 40561,
+   "unhcr_end2025_asylum_seekers": 1460
+  },
+  "BOL": {
+   "count": 12,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 12,
+   "unhcr_end2025_asylum_seekers": 0
+  },
+  "BRA": {
+   "count": 1639,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 1639,
+   "unhcr_end2025_asylum_seekers": 30
+  },
+  "BIH": {
+   "count": 324,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 324,
+   "unhcr_end2025_asylum_seekers": 5
+  },
+  "BGR": {
+   "count": 78350,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 82455,
+   "unhcr_end2025_asylum_seekers": 5
+  },
+  "CAN": {
+   "count": 172945,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 172945,
+   "unhcr_end2025_asylum_seekers": 1363
+  },
+  "CHN": {
+   "count": 0,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 0,
+   "unhcr_end2025_asylum_seekers": 17
+  },
+  "CHL": {
+   "count": 82,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 82,
+   "unhcr_end2025_asylum_seekers": 23
+  },
+  "COL": {
+   "count": 9,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 9,
+   "unhcr_end2025_asylum_seekers": 18
+  },
+  "CRI": {
+   "count": 38,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 38,
+   "unhcr_end2025_asylum_seekers": 11
+  },
+  "CYP": {
+   "count": 26640,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 24986,
+   "unhcr_end2025_asylum_seekers": 35
+  },
+  "CZE": {
+   "count": 397645,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 392955,
+   "unhcr_end2025_asylum_seekers": 125
+  },
+  "DNK": {
+   "count": 53805,
+   "as_of": "2026-09",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-09 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 48216,
+   "unhcr_end2025_asylum_seekers": 613
+  },
+  "DOM": {
+   "count": 5,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 5,
+   "unhcr_end2025_asylum_seekers": 29
+  },
+  "ECU": {
+   "count": 119,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 119,
+   "unhcr_end2025_asylum_seekers": 9
+  },
+  "EST": {
+   "count": 30825,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 40809,
+   "unhcr_end2025_asylum_seekers": 245
+  },
+  "FIN": {
+   "count": 66230,
+   "as_of": "2026-09",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-09 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 77439,
+   "unhcr_end2025_asylum_seekers": 126
+  },
+  "FRA": {
+   "count": 45525,
+   "as_of": "2026-09",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-09 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 75695,
+   "unhcr_end2025_asylum_seekers": 3765
+  },
+  "GBR": {
+   "count": 270489,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 270489,
+   "unhcr_end2025_asylum_seekers": 371
+  },
+  "GEO": {
+   "count": 25908,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 25908,
+   "unhcr_end2025_asylum_seekers": 88
+  },
+  "DEU": {
+   "count": 1259155,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 1173192,
+   "unhcr_end2025_asylum_seekers": 1716
+  },
+  "GRC": {
+   "count": 41755,
+   "as_of": "2026-09",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-09 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 38426,
+   "unhcr_end2025_asylum_seekers": 71
+  },
+  "GTM": {
+   "count": 5,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 5,
+   "unhcr_end2025_asylum_seekers": 0
+  },
+  "HRV": {
+   "count": 30295,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 28317,
+   "unhcr_end2025_asylum_seekers": 15
+  },
+  "HUN": {
+   "count": 45075,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 64841,
+   "unhcr_end2025_asylum_seekers": 0
+  },
+  "ISL": {
+   "count": 4800,
+   "as_of": "2026-06",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-06 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 4664,
+   "unhcr_end2025_asylum_seekers": 55
+  },
+  "IND": {
+   "count": 0,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 0,
+   "unhcr_end2025_asylum_seekers": 98
+  },
+  "IRL": {
+   "count": 119610,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 118319,
+   "unhcr_end2025_asylum_seekers": 406
+  },
+  "IRQ": {
+   "count": 0,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 0,
+   "unhcr_end2025_asylum_seekers": 7
+  },
+  "ISR": {
+   "count": 40,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 40,
+   "unhcr_end2025_asylum_seekers": 436
+  },
+  "ITA": {
+   "count": 58720,
+   "as_of": "2026-09",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-09 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 64721,
+   "unhcr_end2025_asylum_seekers": 2096
+  },
+  "JPN": {
+   "count": 2346,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 2346,
+   "unhcr_end2025_asylum_seekers": 0
+  },
+  "KAZ": {
+   "count": 4145,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 4145,
+   "unhcr_end2025_asylum_seekers": 95
+  },
+  "KEN": {
+   "count": 0,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 0,
+   "unhcr_end2025_asylum_seekers": 6
+  },
+  "KGZ": {
+   "count": 915,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 915,
+   "unhcr_end2025_asylum_seekers": 31
+  },
+  "KOR": {
+   "count": 23,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 23,
+   "unhcr_end2025_asylum_seekers": 37
+  },
+  "LBN": {
+   "count": 0,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 0,
+   "unhcr_end2025_asylum_seekers": 18
+  },
+  "LIE": {
+   "count": 1015,
+   "as_of": "2026-09",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-09 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 875,
+   "unhcr_end2025_asylum_seekers": 0
+  },
+  "LTU": {
+   "count": 51585,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 51321,
+   "unhcr_end2025_asylum_seekers": 5
+  },
+  "LUX": {
+   "count": 3800,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 3856,
+   "unhcr_end2025_asylum_seekers": 73
+  },
+  "LVA": {
+   "count": 31865,
+   "as_of": "2026-09",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-09 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 31003,
+   "unhcr_end2025_asylum_seekers": 0
+  },
+  "MKD": {
+   "count": 20741,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 20741,
+   "unhcr_end2025_asylum_seekers": 0
+  },
+  "MDA": {
+   "count": 148852,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 148852,
+   "unhcr_end2025_asylum_seekers": 143
+  },
+  "MEX": {
+   "count": 91,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 91,
+   "unhcr_end2025_asylum_seekers": 59
+  },
+  "MNE": {
+   "count": 12186,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 12186,
+   "unhcr_end2025_asylum_seekers": 5
+  },
+  "MAR": {
+   "count": 0,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 0,
+   "unhcr_end2025_asylum_seekers": 5
+  },
+  "MLT": {
+   "count": 2695,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 2493,
+   "unhcr_end2025_asylum_seekers": 70
+  },
+  "NPL": {
+   "count": 0,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 0,
+   "unhcr_end2025_asylum_seekers": 9
+  },
+  "NLD": {
+   "count": 141275,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 131899,
+   "unhcr_end2025_asylum_seekers": 330
+  },
+  "NOR": {
+   "count": 86255,
+   "as_of": "2026-09",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-09 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 83790,
+   "unhcr_end2025_asylum_seekers": 810
+  },
+  "NZL": {
+   "count": 17,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 17,
+   "unhcr_end2025_asylum_seekers": 5
+  },
+  "PAN": {
+   "count": 21,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 21,
+   "unhcr_end2025_asylum_seekers": 10
+  },
+  "PRY": {
+   "count": 10,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 10,
+   "unhcr_end2025_asylum_seekers": 11
+  },
+  "PER": {
+   "count": 31,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 31,
+   "unhcr_end2025_asylum_seekers": 111
+  },
+  "PHL": {
+   "count": 0,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 0,
+   "unhcr_end2025_asylum_seekers": 15
+  },
+  "POL": {
+   "count": 856340,
+   "as_of": "2026-09",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-09 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 972287,
+   "unhcr_end2025_asylum_seekers": 5205
+  },
+  "PRT": {
+   "count": 61570,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 59343,
+   "unhcr_end2025_asylum_seekers": 490
+  },
+  "ROU": {
+   "count": 219900,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 199461,
+   "unhcr_end2025_asylum_seekers": 8
+  },
+  "RUS": {
+   "count": 5488,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 5488,
+   "unhcr_end2025_asylum_seekers": 249,
+   "note": "UNHCR end-2025 shows only 5,488; UNHCR reported 1,275,315 (end-2022) and 1,227,554 (end-2023) based on Russian government data, then dropped them. Many were forcibly transferred/filtered; treat as disputed."
+  },
+  "ESP": {
+   "count": 268650,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 251276,
+   "unhcr_end2025_asylum_seekers": 955
+  },
+  "SRB": {
+   "count": 16142,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 16142,
+   "unhcr_end2025_asylum_seekers": 0
+  },
+  "SVK": {
+   "count": 148970,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 138849,
+   "unhcr_end2025_asylum_seekers": 6
+  },
+  "SVN": {
+   "count": 11535,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 11368,
+   "unhcr_end2025_asylum_seekers": 133
+  },
+  "SWE": {
+   "count": 50980,
+   "as_of": "2026-09",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-09 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 49216,
+   "unhcr_end2025_asylum_seekers": 135
+  },
+  "CHE": {
+   "count": 72410,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens, end of 2026-08 https://ec.europa.eu/eurostat/databrowser/view/migr_asytpsm/default/table",
+   "unhcr_end2025_refugees": 70714,
+   "unhcr_end2025_asylum_seekers": 18
+  },
+  "TZA": {
+   "count": 0,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 0,
+   "unhcr_end2025_asylum_seekers": 12
+  },
+  "TUR": {
+   "count": 2645,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 2645,
+   "unhcr_end2025_asylum_seekers": 0
+  },
+  "UNK": {
+   "count": 0,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 0,
+   "unhcr_end2025_asylum_seekers": 0
+  },
+  "UKR": {
+   "count": 0,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 0,
+   "unhcr_end2025_asylum_seekers": 0
+  },
+  "URY": {
+   "count": 20,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 20,
+   "unhcr_end2025_asylum_seekers": 5
+  },
+  "USA": {
+   "count": 3302,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true",
+   "unhcr_end2025_refugees": 3302,
+   "unhcr_end2025_asylum_seekers": 1973
+  },
+  "_EU27_total_TP": {
+   "count": 4363955,
+   "as_of": "2026-08",
+   "source": "Eurostat migr_asytpsm EU27_2020, Ukrainian citizens"
+  },
+  "_UNHCR_global_end2025": {
+   "count": 5224131,
+   "as_of": "2025-12-31",
+   "source": "UNHCR Refugee Data Finder API (population v1), end-2025, coo=UKR: refugees (+asylum seekers listed separately) https://api.unhcr.org/population/v1/population/?yearFrom=2025&yearTo=2025&coo=UKR&coa_all=true"
+  }
+ },
+ "population_gdp": {
+  "ABW": {
+   "name": "Aruba",
+   "m49": "533",
+   "iso3": "ABW",
+   "region": "Americas",
+   "pop_m": 0.108,
+   "gdp_usd_bn": 4.168,
+   "gdp_eur_bn": 3.85,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "AFG": {
+   "name": "Afghanistan",
+   "m49": "004",
+   "iso3": "AFG",
+   "region": "Asia",
+   "pop_m": 42.6475,
+   "gdp_usd_bn": 17.779,
+   "gdp_eur_bn": 16.425,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "AGO": {
+   "name": "Angola",
+   "m49": "024",
+   "iso3": "AGO",
+   "region": "Africa",
+   "pop_m": 37.8858,
+   "gdp_usd_bn": 103.081,
+   "gdp_eur_bn": 95.235,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ALB": {
+   "name": "Albania",
+   "m49": "008",
+   "iso3": "ALB",
+   "region": "Europe",
+   "pop_m": 2.3771,
+   "gdp_usd_bn": 27.037,
+   "gdp_eur_bn": 24.98,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "AND": {
+   "name": "Andorra",
+   "m49": "020",
+   "iso3": "AND",
+   "region": "Europe",
+   "pop_m": 0.0819,
+   "gdp_usd_bn": 4.044,
+   "gdp_eur_bn": 3.736,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ARE": {
+   "name": "United Arab Emirates",
+   "m49": "784",
+   "iso3": "ARE",
+   "region": "Asia",
+   "pop_m": 10.9864,
+   "gdp_usd_bn": 552.325,
+   "gdp_eur_bn": 510.287,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ARG": {
+   "name": "Argentina",
+   "m49": "032",
+   "iso3": "ARG",
+   "region": "Americas",
+   "pop_m": 45.6962,
+   "gdp_usd_bn": 638.365,
+   "gdp_eur_bn": 589.779,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ARM": {
+   "name": "Armenia",
+   "m49": "051",
+   "iso3": "ARM",
+   "region": "Asia",
+   "pop_m": 3.0335,
+   "gdp_usd_bn": 25.955,
+   "gdp_eur_bn": 23.98,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ASM": {
+   "name": "American Samoa",
+   "m49": "016",
+   "iso3": "ASM",
+   "region": "Oceania",
+   "pop_m": 0.0468,
+   "gdp_usd_bn": null,
+   "gdp_eur_bn": null,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": null
+  },
+  "ATG": {
+   "name": "Antigua and Barbuda",
+   "m49": "028",
+   "iso3": "ATG",
+   "region": "Americas",
+   "pop_m": 0.0938,
+   "gdp_usd_bn": 2.162,
+   "gdp_eur_bn": 1.998,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "AUS": {
+   "name": "Australia",
+   "m49": "036",
+   "iso3": "AUS",
+   "region": "Oceania",
+   "pop_m": 27.1943,
+   "gdp_usd_bn": 1757.022,
+   "gdp_eur_bn": 1623.295,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "AUT": {
+   "name": "Austria",
+   "m49": "040",
+   "iso3": "AUT",
+   "region": "Europe",
+   "pop_m": 9.178,
+   "gdp_usd_bn": 534.791,
+   "gdp_eur_bn": 494.088,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "AZE": {
+   "name": "Azerbaijan",
+   "m49": "031",
+   "iso3": "AZE",
+   "region": "Asia",
+   "pop_m": 10.2028,
+   "gdp_usd_bn": 74.426,
+   "gdp_eur_bn": 68.761,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BDI": {
+   "name": "Burundi",
+   "m49": "108",
+   "iso3": "BDI",
+   "region": "Africa",
+   "pop_m": 14.0478,
+   "gdp_usd_bn": 3.038,
+   "gdp_eur_bn": 2.806,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BEL": {
+   "name": "Belgium",
+   "m49": "056",
+   "iso3": "BEL",
+   "region": "Europe",
+   "pop_m": 11.8586,
+   "gdp_usd_bn": 670.983,
+   "gdp_eur_bn": 619.914,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BEN": {
+   "name": "Benin",
+   "m49": "204",
+   "iso3": "BEN",
+   "region": "Africa",
+   "pop_m": 14.4627,
+   "gdp_usd_bn": 21.483,
+   "gdp_eur_bn": 19.848,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BFA": {
+   "name": "Burkina Faso",
+   "m49": "854",
+   "iso3": "BFA",
+   "region": "Africa",
+   "pop_m": 23.5488,
+   "gdp_usd_bn": 23.137,
+   "gdp_eur_bn": 21.376,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BGD": {
+   "name": "Bangladesh",
+   "m49": "050",
+   "iso3": "BGD",
+   "region": "Asia",
+   "pop_m": 173.5624,
+   "gdp_usd_bn": 450.119,
+   "gdp_eur_bn": 415.861,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BGR": {
+   "name": "Bulgaria",
+   "m49": "100",
+   "iso3": "BGR",
+   "region": "Europe",
+   "pop_m": 6.4414,
+   "gdp_usd_bn": 113.349,
+   "gdp_eur_bn": 104.722,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BHR": {
+   "name": "Bahrain",
+   "m49": "048",
+   "iso3": "BHR",
+   "region": "Asia",
+   "pop_m": 1.5887,
+   "gdp_usd_bn": 47.211,
+   "gdp_eur_bn": 43.618,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BHS": {
+   "name": "Bahamas",
+   "m49": "044",
+   "iso3": "BHS",
+   "region": "Americas",
+   "pop_m": 0.4013,
+   "gdp_usd_bn": 15.833,
+   "gdp_eur_bn": 14.628,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BIH": {
+   "name": "Bosnia and Herzegovina",
+   "m49": "070",
+   "iso3": "BIH",
+   "region": "Europe",
+   "pop_m": 3.1643,
+   "gdp_usd_bn": 29.737,
+   "gdp_eur_bn": 27.474,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BLR": {
+   "name": "Belarus",
+   "m49": "112",
+   "iso3": "BLR",
+   "region": "Europe",
+   "pop_m": 9.1326,
+   "gdp_usd_bn": 78.592,
+   "gdp_eur_bn": 72.61,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BLZ": {
+   "name": "Belize",
+   "m49": "084",
+   "iso3": "BLZ",
+   "region": "Americas",
+   "pop_m": 0.4171,
+   "gdp_usd_bn": 3.204,
+   "gdp_eur_bn": 2.96,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BMU": {
+   "name": "Bermuda",
+   "m49": "060",
+   "iso3": "BMU",
+   "region": "Americas",
+   "pop_m": 0.0646,
+   "gdp_usd_bn": 9.194,
+   "gdp_eur_bn": 8.495,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BOL": {
+   "name": "Bolivia (Plurinational State of)",
+   "m49": "068",
+   "iso3": "BOL",
+   "region": "Americas",
+   "pop_m": 12.4133,
+   "gdp_usd_bn": 54.881,
+   "gdp_eur_bn": 50.704,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BRA": {
+   "name": "Brazil",
+   "m49": "076",
+   "iso3": "BRA",
+   "region": "Americas",
+   "pop_m": 211.9986,
+   "gdp_usd_bn": 2185.822,
+   "gdp_eur_bn": 2019.458,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BRB": {
+   "name": "Barbados",
+   "m49": "052",
+   "iso3": "BRB",
+   "region": "Americas",
+   "pop_m": 0.2825,
+   "gdp_usd_bn": 7.598,
+   "gdp_eur_bn": 7.019,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BRN": {
+   "name": "Brunei Darussalam",
+   "m49": "096",
+   "iso3": "BRN",
+   "region": "Asia",
+   "pop_m": 0.4627,
+   "gdp_usd_bn": 15.341,
+   "gdp_eur_bn": 14.173,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BTN": {
+   "name": "Bhutan",
+   "m49": "064",
+   "iso3": "BTN",
+   "region": "Asia",
+   "pop_m": 0.7915,
+   "gdp_usd_bn": 3.347,
+   "gdp_eur_bn": 3.092,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "BWA": {
+   "name": "Botswana",
+   "m49": "072",
+   "iso3": "BWA",
+   "region": "Africa",
+   "pop_m": 2.5211,
+   "gdp_usd_bn": 19.286,
+   "gdp_eur_bn": 17.818,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "CAF": {
+   "name": "Central African Republic",
+   "m49": "140",
+   "iso3": "CAF",
+   "region": "Africa",
+   "pop_m": 5.3307,
+   "gdp_usd_bn": 2.751,
+   "gdp_eur_bn": 2.542,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "CAN": {
+   "name": "Canada",
+   "m49": "124",
+   "iso3": "CAN",
+   "region": "Americas",
+   "pop_m": 41.2623,
+   "gdp_usd_bn": 2270.076,
+   "gdp_eur_bn": 2097.3,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "CHE": {
+   "name": "Switzerland",
+   "m49": "756",
+   "iso3": "CHE",
+   "region": "Europe",
+   "pop_m": 9.0056,
+   "gdp_usd_bn": 969.92,
+   "gdp_eur_bn": 896.099,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "CHL": {
+   "name": "Chile",
+   "m49": "152",
+   "iso3": "CHL",
+   "region": "Americas",
+   "pop_m": 19.7648,
+   "gdp_usd_bn": 329.261,
+   "gdp_eur_bn": 304.2,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "CHN": {
+   "name": "China",
+   "m49": "156",
+   "iso3": "CHN",
+   "region": "Asia",
+   "pop_m": 1408.975,
+   "gdp_usd_bn": 18729.668,
+   "gdp_eur_bn": 17304.145,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "CIV": {
+   "name": "Côte d’Ivoire",
+   "m49": "384",
+   "iso3": "CIV",
+   "region": "Africa",
+   "pop_m": 31.9342,
+   "gdp_usd_bn": 87.113,
+   "gdp_eur_bn": 80.483,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "CMR": {
+   "name": "Cameroon",
+   "m49": "120",
+   "iso3": "CMR",
+   "region": "Africa",
+   "pop_m": 29.1237,
+   "gdp_usd_bn": 53.297,
+   "gdp_eur_bn": 49.24,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "COD": {
+   "name": "Democratic Republic of the Congo",
+   "m49": "180",
+   "iso3": "COD",
+   "region": "Africa",
+   "pop_m": 109.2763,
+   "gdp_usd_bn": 75.716,
+   "gdp_eur_bn": 69.953,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "COG": {
+   "name": "Congo",
+   "m49": "178",
+   "iso3": "COG",
+   "region": "Africa",
+   "pop_m": 6.333,
+   "gdp_usd_bn": 15.72,
+   "gdp_eur_bn": 14.524,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "COL": {
+   "name": "Colombia",
+   "m49": "170",
+   "iso3": "COL",
+   "region": "Americas",
+   "pop_m": 52.8864,
+   "gdp_usd_bn": 420.504,
+   "gdp_eur_bn": 388.499,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "COM": {
+   "name": "Comoros",
+   "m49": "174",
+   "iso3": "COM",
+   "region": "Africa",
+   "pop_m": 0.8666,
+   "gdp_usd_bn": 1.61,
+   "gdp_eur_bn": 1.488,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "CPV": {
+   "name": "Cabo Verde",
+   "m49": "132",
+   "iso3": "CPV",
+   "region": "Africa",
+   "pop_m": 0.5249,
+   "gdp_usd_bn": 2.714,
+   "gdp_eur_bn": 2.507,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "CRI": {
+   "name": "Costa Rica",
+   "m49": "188",
+   "iso3": "CRI",
+   "region": "Americas",
+   "pop_m": 5.1299,
+   "gdp_usd_bn": 96.716,
+   "gdp_eur_bn": 89.355,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "CUB": {
+   "name": "Cuba",
+   "m49": "192",
+   "iso3": "CUB",
+   "region": "Americas",
+   "pop_m": 10.9798,
+   "gdp_usd_bn": null,
+   "gdp_eur_bn": null,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": null
+  },
+  "CUW": {
+   "name": "Curaçao",
+   "m49": "531",
+   "iso3": "CUW",
+   "region": "Americas",
+   "pop_m": 0.156,
+   "gdp_usd_bn": 3.561,
+   "gdp_eur_bn": 3.29,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "CYM": {
+   "name": "Cayman Islands",
+   "m49": "136",
+   "iso3": "CYM",
+   "region": "Americas",
+   "pop_m": 0.0745,
+   "gdp_usd_bn": 7.765,
+   "gdp_eur_bn": 7.174,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "CYP": {
+   "name": "Cyprus",
+   "m49": "196",
+   "iso3": "CYP",
+   "region": "Asia",
+   "pop_m": 1.3583,
+   "gdp_usd_bn": 37.635,
+   "gdp_eur_bn": 34.77,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "CZE": {
+   "name": "Czechia",
+   "m49": "203",
+   "iso3": "CZE",
+   "region": "Europe",
+   "pop_m": 10.905,
+   "gdp_usd_bn": 347.083,
+   "gdp_eur_bn": 320.666,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "DEU": {
+   "name": "Germany",
+   "m49": "276",
+   "iso3": "DEU",
+   "region": "Europe",
+   "pop_m": 83.5166,
+   "gdp_usd_bn": 4685.593,
+   "gdp_eur_bn": 4328.97,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "DJI": {
+   "name": "Djibouti",
+   "m49": "262",
+   "iso3": "DJI",
+   "region": "Africa",
+   "pop_m": 1.1687,
+   "gdp_usd_bn": 4.152,
+   "gdp_eur_bn": 3.836,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "DMA": {
+   "name": "Dominica",
+   "m49": "212",
+   "iso3": "DMA",
+   "region": "Americas",
+   "pop_m": 0.0662,
+   "gdp_usd_bn": 0.689,
+   "gdp_eur_bn": 0.636,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "DNK": {
+   "name": "Denmark",
+   "m49": "208",
+   "iso3": "DNK",
+   "region": "Europe",
+   "pop_m": 5.977,
+   "gdp_usd_bn": 424.525,
+   "gdp_eur_bn": 392.214,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "DOM": {
+   "name": "Dominican Republic",
+   "m49": "214",
+   "iso3": "DOM",
+   "region": "Americas",
+   "pop_m": 11.4276,
+   "gdp_usd_bn": 124.282,
+   "gdp_eur_bn": 114.823,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "DZA": {
+   "name": "Algeria",
+   "m49": "012",
+   "iso3": "DZA",
+   "region": "Africa",
+   "pop_m": 46.8143,
+   "gdp_usd_bn": 269.322,
+   "gdp_eur_bn": 248.824,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ECU": {
+   "name": "Ecuador",
+   "m49": "218",
+   "iso3": "ECU",
+   "region": "Americas",
+   "pop_m": 18.1355,
+   "gdp_usd_bn": 123.802,
+   "gdp_eur_bn": 114.38,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "EGY": {
+   "name": "Egypt",
+   "m49": "818",
+   "iso3": "EGY",
+   "region": "Africa",
+   "pop_m": 116.5383,
+   "gdp_usd_bn": 389.06,
+   "gdp_eur_bn": 359.448,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ERI": {
+   "name": "Eritrea",
+   "m49": "232",
+   "iso3": "ERI",
+   "region": "Africa",
+   "pop_m": 3.5356,
+   "gdp_usd_bn": null,
+   "gdp_eur_bn": null,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": null
+  },
+  "ESP": {
+   "name": "Spain",
+   "m49": "724",
+   "iso3": "ESP",
+   "region": "Europe",
+   "pop_m": 48.8488,
+   "gdp_usd_bn": 1725.672,
+   "gdp_eur_bn": 1594.33,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "EST": {
+   "name": "Estonia",
+   "m49": "233",
+   "iso3": "EST",
+   "region": "Europe",
+   "pop_m": 1.3723,
+   "gdp_usd_bn": 43.13,
+   "gdp_eur_bn": 39.848,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ETH": {
+   "name": "Ethiopia",
+   "m49": "231",
+   "iso3": "ETH",
+   "region": "Africa",
+   "pop_m": 132.0598,
+   "gdp_usd_bn": 149.74,
+   "gdp_eur_bn": 138.343,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "FIN": {
+   "name": "Finland",
+   "m49": "246",
+   "iso3": "FIN",
+   "region": "Europe",
+   "pop_m": 5.6199,
+   "gdp_usd_bn": 298.729,
+   "gdp_eur_bn": 275.993,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "FJI": {
+   "name": "Fiji",
+   "m49": "242",
+   "iso3": "FJI",
+   "region": "Oceania",
+   "pop_m": 0.9288,
+   "gdp_usd_bn": 5.968,
+   "gdp_eur_bn": 5.514,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "FRA": {
+   "name": "France",
+   "m49": "250",
+   "iso3": "FRA",
+   "region": "Europe",
+   "pop_m": 68.5517,
+   "gdp_usd_bn": 3160.443,
+   "gdp_eur_bn": 2919.9,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "FRO": {
+   "name": "Faroe Islands",
+   "m49": "234",
+   "iso3": "FRO",
+   "region": "Europe",
+   "pop_m": 0.0546,
+   "gdp_usd_bn": 4.053,
+   "gdp_eur_bn": 3.744,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "FSM": {
+   "name": "Micronesia (Federated States of)",
+   "m49": "583",
+   "iso3": "FSM",
+   "region": "Oceania",
+   "pop_m": 0.1132,
+   "gdp_usd_bn": 0.481,
+   "gdp_eur_bn": 0.445,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "GAB": {
+   "name": "Gabon",
+   "m49": "266",
+   "iso3": "GAB",
+   "region": "Africa",
+   "pop_m": 2.539,
+   "gdp_usd_bn": 20.896,
+   "gdp_eur_bn": 19.305,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "GBR": {
+   "name": "United Kingdom of Great Britain and Northern Ireland",
+   "m49": "826",
+   "iso3": "GBR",
+   "region": "Europe",
+   "pop_m": 69.281,
+   "gdp_usd_bn": 3695.54,
+   "gdp_eur_bn": 3414.27,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "GEO": {
+   "name": "Georgia",
+   "m49": "268",
+   "iso3": "GEO",
+   "region": "Asia",
+   "pop_m": 3.8125,
+   "gdp_usd_bn": 34.189,
+   "gdp_eur_bn": 31.587,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "GHA": {
+   "name": "Ghana",
+   "m49": "288",
+   "iso3": "GHA",
+   "region": "Africa",
+   "pop_m": 34.4274,
+   "gdp_usd_bn": 83.289,
+   "gdp_eur_bn": 76.949,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "GIB": {
+   "name": "Gibraltar",
+   "m49": "292",
+   "iso3": "GIB",
+   "region": "Europe",
+   "pop_m": 0.0393,
+   "gdp_usd_bn": null,
+   "gdp_eur_bn": null,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": null
+  },
+  "GIN": {
+   "name": "Guinea",
+   "m49": "324",
+   "iso3": "GIN",
+   "region": "Africa",
+   "pop_m": 14.7548,
+   "gdp_usd_bn": 25.009,
+   "gdp_eur_bn": 23.105,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "GMB": {
+   "name": "Gambia",
+   "m49": "270",
+   "iso3": "GMB",
+   "region": "Africa",
+   "pop_m": 2.76,
+   "gdp_usd_bn": 2.405,
+   "gdp_eur_bn": 2.222,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "GNB": {
+   "name": "Guinea-Bissau",
+   "m49": "624",
+   "iso3": "GNB",
+   "region": "Africa",
+   "pop_m": 2.2014,
+   "gdp_usd_bn": 2.198,
+   "gdp_eur_bn": 2.031,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "GNQ": {
+   "name": "Equatorial Guinea",
+   "m49": "226",
+   "iso3": "GNQ",
+   "region": "Africa",
+   "pop_m": 1.8925,
+   "gdp_usd_bn": 13.254,
+   "gdp_eur_bn": 12.246,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "GRC": {
+   "name": "Greece",
+   "m49": "300",
+   "iso3": "GRC",
+   "region": "Europe",
+   "pop_m": 10.4051,
+   "gdp_usd_bn": 256.238,
+   "gdp_eur_bn": 236.736,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "GRD": {
+   "name": "Grenada",
+   "m49": "308",
+   "iso3": "GRD",
+   "region": "Americas",
+   "pop_m": 0.1172,
+   "gdp_usd_bn": 1.351,
+   "gdp_eur_bn": 1.248,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "GRL": {
+   "name": "Greenland",
+   "m49": "304",
+   "iso3": "GRL",
+   "region": "Americas",
+   "pop_m": 0.0568,
+   "gdp_usd_bn": 3.327,
+   "gdp_eur_bn": 3.077,
+   "year": 2023,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2023 (2024 missing); converted at ECB 2023 avg 1.0813"
+  },
+  "GTM": {
+   "name": "Guatemala",
+   "m49": "320",
+   "iso3": "GTM",
+   "region": "Americas",
+   "pop_m": 18.4064,
+   "gdp_usd_bn": 113.216,
+   "gdp_eur_bn": 104.599,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "GUM": {
+   "name": "Guam",
+   "m49": "316",
+   "iso3": "GUM",
+   "region": "Oceania",
+   "pop_m": 0.1678,
+   "gdp_usd_bn": null,
+   "gdp_eur_bn": null,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": null
+  },
+  "GUY": {
+   "name": "Guyana",
+   "m49": "328",
+   "iso3": "GUY",
+   "region": "Americas",
+   "pop_m": 0.8311,
+   "gdp_usd_bn": 24.663,
+   "gdp_eur_bn": 22.786,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "HKG": {
+   "name": "China, Hong Kong Special Administrative Region",
+   "m49": "344",
+   "iso3": "HKG",
+   "region": "Asia",
+   "pop_m": 7.5241,
+   "gdp_usd_bn": 408.369,
+   "gdp_eur_bn": 377.288,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "HND": {
+   "name": "Honduras",
+   "m49": "340",
+   "iso3": "HND",
+   "region": "Americas",
+   "pop_m": 10.8257,
+   "gdp_usd_bn": 36.98,
+   "gdp_eur_bn": 34.166,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "HRV": {
+   "name": "Croatia",
+   "m49": "191",
+   "iso3": "HRV",
+   "region": "Europe",
+   "pop_m": 3.8662,
+   "gdp_usd_bn": 92.982,
+   "gdp_eur_bn": 85.905,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "HTI": {
+   "name": "Haiti",
+   "m49": "332",
+   "iso3": "HTI",
+   "region": "Americas",
+   "pop_m": 11.7726,
+   "gdp_usd_bn": 24.256,
+   "gdp_eur_bn": 22.41,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "HUN": {
+   "name": "Hungary",
+   "m49": "348",
+   "iso3": "HUN",
+   "region": "Europe",
+   "pop_m": 9.5621,
+   "gdp_usd_bn": 222.848,
+   "gdp_eur_bn": 205.887,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "IDN": {
+   "name": "Indonesia",
+   "m49": "360",
+   "iso3": "IDN",
+   "region": "Asia",
+   "pop_m": 283.4879,
+   "gdp_usd_bn": 1396.302,
+   "gdp_eur_bn": 1290.029,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "IMN": {
+   "name": "Isle of Man",
+   "m49": "833",
+   "iso3": "IMN",
+   "region": "Europe",
+   "pop_m": 0.0842,
+   "gdp_usd_bn": 7.576,
+   "gdp_eur_bn": 7.007,
+   "year": 2023,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2023 (2024 missing); converted at ECB 2023 avg 1.0813"
+  },
+  "IND": {
+   "name": "India",
+   "m49": "356",
+   "iso3": "IND",
+   "region": "Asia",
+   "pop_m": 1450.9358,
+   "gdp_usd_bn": 3760.813,
+   "gdp_eur_bn": 3474.576,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "IRL": {
+   "name": "Ireland",
+   "m49": "372",
+   "iso3": "IRL",
+   "region": "Europe",
+   "pop_m": 5.3958,
+   "gdp_usd_bn": 609.157,
+   "gdp_eur_bn": 562.794,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "IRN": {
+   "name": "Iran (Islamic Republic of)",
+   "m49": "364",
+   "iso3": "IRN",
+   "region": "Asia",
+   "pop_m": 91.5677,
+   "gdp_usd_bn": 475.252,
+   "gdp_eur_bn": 439.08,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "IRQ": {
+   "name": "Iraq",
+   "m49": "368",
+   "iso3": "IRQ",
+   "region": "Asia",
+   "pop_m": 46.042,
+   "gdp_usd_bn": 279.641,
+   "gdp_eur_bn": 258.358,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ISL": {
+   "name": "Iceland",
+   "m49": "352",
+   "iso3": "ISL",
+   "region": "Europe",
+   "pop_m": 0.3865,
+   "gdp_usd_bn": 33.187,
+   "gdp_eur_bn": 30.661,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ISR": {
+   "name": "Israel",
+   "m49": "376",
+   "iso3": "ISR",
+   "region": "Asia",
+   "pop_m": 10.0022,
+   "gdp_usd_bn": 542.284,
+   "gdp_eur_bn": 501.011,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ITA": {
+   "name": "Italy",
+   "m49": "380",
+   "iso3": "ITA",
+   "region": "Europe",
+   "pop_m": 58.9527,
+   "gdp_usd_bn": 2383.436,
+   "gdp_eur_bn": 2202.031,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "JAM": {
+   "name": "Jamaica",
+   "m49": "388",
+   "iso3": "JAM",
+   "region": "Americas",
+   "pop_m": 2.8392,
+   "gdp_usd_bn": 22.014,
+   "gdp_eur_bn": 20.339,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "JOR": {
+   "name": "Jordan",
+   "m49": "400",
+   "iso3": "JOR",
+   "region": "Asia",
+   "pop_m": 11.5529,
+   "gdp_usd_bn": 58.618,
+   "gdp_eur_bn": 54.157,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "JPN": {
+   "name": "Japan",
+   "m49": "392",
+   "iso3": "JPN",
+   "region": "Asia",
+   "pop_m": 123.9754,
+   "gdp_usd_bn": 4190.008,
+   "gdp_eur_bn": 3871.105,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "KAZ": {
+   "name": "Kazakhstan",
+   "m49": "398",
+   "iso3": "KAZ",
+   "region": "Asia",
+   "pop_m": 20.5926,
+   "gdp_usd_bn": 291.48,
+   "gdp_eur_bn": 269.296,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "KEN": {
+   "name": "Kenya",
+   "m49": "404",
+   "iso3": "KEN",
+   "region": "Africa",
+   "pop_m": 56.4329,
+   "gdp_usd_bn": 120.398,
+   "gdp_eur_bn": 111.234,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "KGZ": {
+   "name": "Kyrgyzstan",
+   "m49": "417",
+   "iso3": "KGZ",
+   "region": "Asia",
+   "pop_m": 7.2219,
+   "gdp_usd_bn": 18.162,
+   "gdp_eur_bn": 16.779,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "KHM": {
+   "name": "Cambodia",
+   "m49": "116",
+   "iso3": "KHM",
+   "region": "Asia",
+   "pop_m": 17.6388,
+   "gdp_usd_bn": 46.353,
+   "gdp_eur_bn": 42.825,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "KIR": {
+   "name": "Kiribati",
+   "m49": "296",
+   "iso3": "KIR",
+   "region": "Oceania",
+   "pop_m": 0.1345,
+   "gdp_usd_bn": 0.343,
+   "gdp_eur_bn": 0.317,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "KNA": {
+   "name": "Saint Kitts and Nevis",
+   "m49": "659",
+   "iso3": "KNA",
+   "region": "Americas",
+   "pop_m": 0.0468,
+   "gdp_usd_bn": 1.122,
+   "gdp_eur_bn": 1.037,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "KOR": {
+   "name": "Republic of Korea",
+   "m49": "410",
+   "iso3": "KOR",
+   "region": "Asia",
+   "pop_m": 51.7511,
+   "gdp_usd_bn": 1875.388,
+   "gdp_eur_bn": 1732.652,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "KWT": {
+   "name": "Kuwait",
+   "m49": "414",
+   "iso3": "KWT",
+   "region": "Asia",
+   "pop_m": 4.8973,
+   "gdp_usd_bn": 160.903,
+   "gdp_eur_bn": 148.657,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "LAO": {
+   "name": "Lao People's Democratic Republic",
+   "m49": "418",
+   "iso3": "LAO",
+   "region": "Asia",
+   "pop_m": 7.7698,
+   "gdp_usd_bn": 16.503,
+   "gdp_eur_bn": 15.247,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "LBN": {
+   "name": "Lebanon",
+   "m49": "422",
+   "iso3": "LBN",
+   "region": "Asia",
+   "pop_m": 5.806,
+   "gdp_usd_bn": 25.972,
+   "gdp_eur_bn": 23.995,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "LBR": {
+   "name": "Liberia",
+   "m49": "430",
+   "iso3": "LBR",
+   "region": "Africa",
+   "pop_m": 5.6128,
+   "gdp_usd_bn": 4.779,
+   "gdp_eur_bn": 4.416,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "LBY": {
+   "name": "Libya",
+   "m49": "434",
+   "iso3": "LBY",
+   "region": "Africa",
+   "pop_m": 7.381,
+   "gdp_usd_bn": 48.487,
+   "gdp_eur_bn": 44.797,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "LCA": {
+   "name": "Saint Lucia",
+   "m49": "662",
+   "iso3": "LCA",
+   "region": "Americas",
+   "pop_m": 0.1797,
+   "gdp_usd_bn": 2.605,
+   "gdp_eur_bn": 2.407,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "LIE": {
+   "name": "Liechtenstein",
+   "m49": "438",
+   "iso3": "LIE",
+   "region": "Europe",
+   "pop_m": 0.0404,
+   "gdp_usd_bn": 8.906,
+   "gdp_eur_bn": 8.228,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "LKA": {
+   "name": "Sri Lanka",
+   "m49": "144",
+   "iso3": "LKA",
+   "region": "Asia",
+   "pop_m": 21.916,
+   "gdp_usd_bn": 99.616,
+   "gdp_eur_bn": 92.034,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "LSO": {
+   "name": "Lesotho",
+   "m49": "426",
+   "iso3": "LSO",
+   "region": "Africa",
+   "pop_m": 2.3374,
+   "gdp_usd_bn": 2.391,
+   "gdp_eur_bn": 2.209,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "LTU": {
+   "name": "Lithuania",
+   "m49": "440",
+   "iso3": "LTU",
+   "region": "Europe",
+   "pop_m": 2.8883,
+   "gdp_usd_bn": 85.504,
+   "gdp_eur_bn": 78.996,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "LUX": {
+   "name": "Luxembourg",
+   "m49": "442",
+   "iso3": "LUX",
+   "region": "Europe",
+   "pop_m": 0.677,
+   "gdp_usd_bn": 93.28,
+   "gdp_eur_bn": 86.18,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "LVA": {
+   "name": "Latvia",
+   "m49": "428",
+   "iso3": "LVA",
+   "region": "Europe",
+   "pop_m": 1.8661,
+   "gdp_usd_bn": 44.001,
+   "gdp_eur_bn": 40.652,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MAC": {
+   "name": "China, Macao Special Administrative Region",
+   "m49": "446",
+   "iso3": "MAC",
+   "region": "Asia",
+   "pop_m": 0.687,
+   "gdp_usd_bn": 49.467,
+   "gdp_eur_bn": 45.702,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MAF": {
+   "name": "Saint Martin (French Part)",
+   "m49": "663",
+   "iso3": "MAF",
+   "region": "Americas",
+   "pop_m": 0.0261,
+   "gdp_usd_bn": null,
+   "gdp_eur_bn": null,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": null
+  },
+  "MAR": {
+   "name": "Morocco",
+   "m49": "504",
+   "iso3": "MAR",
+   "region": "Africa",
+   "pop_m": 38.0812,
+   "gdp_usd_bn": 160.611,
+   "gdp_eur_bn": 148.387,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MCO": {
+   "name": "Monaco",
+   "m49": "492",
+   "iso3": "MCO",
+   "region": "Europe",
+   "pop_m": 0.0386,
+   "gdp_usd_bn": 11.126,
+   "gdp_eur_bn": 10.279,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MDA": {
+   "name": "Republic of Moldova",
+   "m49": "498",
+   "iso3": "MDA",
+   "region": "Europe",
+   "pop_m": 2.4023,
+   "gdp_usd_bn": 18.207,
+   "gdp_eur_bn": 16.821,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MDG": {
+   "name": "Madagascar",
+   "m49": "450",
+   "iso3": "MDG",
+   "region": "Africa",
+   "pop_m": 31.965,
+   "gdp_usd_bn": 17.593,
+   "gdp_eur_bn": 16.254,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MDV": {
+   "name": "Maldives",
+   "m49": "462",
+   "iso3": "MDV",
+   "region": "Asia",
+   "pop_m": 0.5278,
+   "gdp_usd_bn": 7.062,
+   "gdp_eur_bn": 6.524,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MEX": {
+   "name": "Mexico",
+   "m49": "484",
+   "iso3": "MEX",
+   "region": "Americas",
+   "pop_m": 130.861,
+   "gdp_usd_bn": 1830.489,
+   "gdp_eur_bn": 1691.17,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MHL": {
+   "name": "Marshall Islands",
+   "m49": "584",
+   "iso3": "MHL",
+   "region": "Oceania",
+   "pop_m": 0.0375,
+   "gdp_usd_bn": 0.285,
+   "gdp_eur_bn": 0.263,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MKD": {
+   "name": "North Macedonia",
+   "m49": "807",
+   "iso3": "MKD",
+   "region": "Europe",
+   "pop_m": 1.8244,
+   "gdp_usd_bn": 16.952,
+   "gdp_eur_bn": 15.661,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MLI": {
+   "name": "Mali",
+   "m49": "466",
+   "iso3": "MLI",
+   "region": "Africa",
+   "pop_m": 24.4786,
+   "gdp_usd_bn": 26.761,
+   "gdp_eur_bn": 24.724,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MLT": {
+   "name": "Malta",
+   "m49": "470",
+   "iso3": "MLT",
+   "region": "Europe",
+   "pop_m": 0.5688,
+   "gdp_usd_bn": 25.043,
+   "gdp_eur_bn": 23.137,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MMR": {
+   "name": "Myanmar",
+   "m49": "104",
+   "iso3": "MMR",
+   "region": "Asia",
+   "pop_m": 54.5001,
+   "gdp_usd_bn": 74.068,
+   "gdp_eur_bn": 68.431,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MNE": {
+   "name": "Montenegro",
+   "m49": "499",
+   "iso3": "MNE",
+   "region": "Europe",
+   "pop_m": 0.6235,
+   "gdp_usd_bn": 8.274,
+   "gdp_eur_bn": 7.645,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MNG": {
+   "name": "Mongolia",
+   "m49": "496",
+   "iso3": "MNG",
+   "region": "Asia",
+   "pop_m": 3.5248,
+   "gdp_usd_bn": 23.795,
+   "gdp_eur_bn": 21.984,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MNP": {
+   "name": "Northern Mariana Islands",
+   "m49": "580",
+   "iso3": "MNP",
+   "region": "Oceania",
+   "pop_m": 0.0443,
+   "gdp_usd_bn": null,
+   "gdp_eur_bn": null,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": null
+  },
+  "MOZ": {
+   "name": "Mozambique",
+   "m49": "508",
+   "iso3": "MOZ",
+   "region": "Africa",
+   "pop_m": 34.6318,
+   "gdp_usd_bn": 22.752,
+   "gdp_eur_bn": 21.021,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MRT": {
+   "name": "Mauritania",
+   "m49": "478",
+   "iso3": "MRT",
+   "region": "Africa",
+   "pop_m": 5.1694,
+   "gdp_usd_bn": 10.879,
+   "gdp_eur_bn": 10.051,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MUS": {
+   "name": "Mauritius",
+   "m49": "480",
+   "iso3": "MUS",
+   "region": "Africa",
+   "pop_m": 1.2458,
+   "gdp_usd_bn": 14.938,
+   "gdp_eur_bn": 13.801,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MWI": {
+   "name": "Malawi",
+   "m49": "454",
+   "iso3": "MWI",
+   "region": "Africa",
+   "pop_m": 21.6553,
+   "gdp_usd_bn": 11.312,
+   "gdp_eur_bn": 10.451,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "MYS": {
+   "name": "Malaysia",
+   "m49": "458",
+   "iso3": "MYS",
+   "region": "Asia",
+   "pop_m": 35.5577,
+   "gdp_usd_bn": 422.227,
+   "gdp_eur_bn": 390.091,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "NAM": {
+   "name": "Namibia",
+   "m49": "516",
+   "iso3": "NAM",
+   "region": "Africa",
+   "pop_m": 3.0301,
+   "gdp_usd_bn": 13.641,
+   "gdp_eur_bn": 12.603,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "NCL": {
+   "name": "New Caledonia",
+   "m49": "540",
+   "iso3": "NCL",
+   "region": "Oceania",
+   "pop_m": 0.2926,
+   "gdp_usd_bn": 8.549,
+   "gdp_eur_bn": 7.898,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "NER": {
+   "name": "Niger",
+   "m49": "562",
+   "iso3": "NER",
+   "region": "Africa",
+   "pop_m": 27.0324,
+   "gdp_usd_bn": 19.73,
+   "gdp_eur_bn": 18.228,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "NGA": {
+   "name": "Nigeria",
+   "m49": "566",
+   "iso3": "NGA",
+   "region": "Africa",
+   "pop_m": 232.6795,
+   "gdp_usd_bn": 252.262,
+   "gdp_eur_bn": 233.062,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "NIC": {
+   "name": "Nicaragua",
+   "m49": "558",
+   "iso3": "NIC",
+   "region": "Americas",
+   "pop_m": 6.9161,
+   "gdp_usd_bn": 19.696,
+   "gdp_eur_bn": 18.197,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "NLD": {
+   "name": "Netherlands (Kingdom of the)",
+   "m49": "528",
+   "iso3": "NLD",
+   "region": "Europe",
+   "pop_m": 17.9935,
+   "gdp_usd_bn": 1213.936,
+   "gdp_eur_bn": 1121.543,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "NOR": {
+   "name": "Norway",
+   "m49": "578",
+   "iso3": "NOR",
+   "region": "Europe",
+   "pop_m": 5.5723,
+   "gdp_usd_bn": 500.886,
+   "gdp_eur_bn": 462.764,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "NPL": {
+   "name": "Nepal",
+   "m49": "524",
+   "iso3": "NPL",
+   "region": "Asia",
+   "pop_m": 29.6511,
+   "gdp_usd_bn": 43.299,
+   "gdp_eur_bn": 40.003,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "NRU": {
+   "name": "Naoero",
+   "m49": "520",
+   "iso3": "NRU",
+   "region": "Oceania",
+   "pop_m": 0.0119,
+   "gdp_usd_bn": 0.168,
+   "gdp_eur_bn": 0.155,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "NZL": {
+   "name": "New Zealand",
+   "m49": "554",
+   "iso3": "NZL",
+   "region": "Oceania",
+   "pop_m": 5.29,
+   "gdp_usd_bn": 261.497,
+   "gdp_eur_bn": 241.595,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "OMN": {
+   "name": "Oman",
+   "m49": "512",
+   "iso3": "OMN",
+   "region": "Asia",
+   "pop_m": 5.2815,
+   "gdp_usd_bn": 107.137,
+   "gdp_eur_bn": 98.983,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "PAK": {
+   "name": "Pakistan",
+   "m49": "586",
+   "iso3": "PAK",
+   "region": "Asia",
+   "pop_m": 251.2692,
+   "gdp_usd_bn": 371.747,
+   "gdp_eur_bn": 343.453,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "PAN": {
+   "name": "Panama",
+   "m49": "591",
+   "iso3": "PAN",
+   "region": "Americas",
+   "pop_m": 4.5156,
+   "gdp_usd_bn": 86.524,
+   "gdp_eur_bn": 79.939,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "PER": {
+   "name": "Peru",
+   "m49": "604",
+   "iso3": "PER",
+   "region": "Americas",
+   "pop_m": 34.2178,
+   "gdp_usd_bn": 291.752,
+   "gdp_eur_bn": 269.546,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "PHL": {
+   "name": "Philippines",
+   "m49": "608",
+   "iso3": "PHL",
+   "region": "Asia",
+   "pop_m": 115.8437,
+   "gdp_usd_bn": 461.671,
+   "gdp_eur_bn": 426.533,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "PLW": {
+   "name": "Palau",
+   "m49": "585",
+   "iso3": "PLW",
+   "region": "Oceania",
+   "pop_m": 0.0177,
+   "gdp_usd_bn": 0.322,
+   "gdp_eur_bn": 0.297,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "PNG": {
+   "name": "Papua New Guinea",
+   "m49": "598",
+   "iso3": "PNG",
+   "region": "Oceania",
+   "pop_m": 10.5765,
+   "gdp_usd_bn": 30.804,
+   "gdp_eur_bn": 28.459,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "POL": {
+   "name": "Poland",
+   "m49": "616",
+   "iso3": "POL",
+   "region": "Europe",
+   "pop_m": 36.5592,
+   "gdp_usd_bn": 917.767,
+   "gdp_eur_bn": 847.915,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "PRI": {
+   "name": "Puerto Rico",
+   "m49": "630",
+   "iso3": "PRI",
+   "region": "Americas",
+   "pop_m": 3.2025,
+   "gdp_usd_bn": 126.03,
+   "gdp_eur_bn": 116.437,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "PRK": {
+   "name": "Democratic People's Republic of Korea",
+   "m49": "408",
+   "iso3": "PRK",
+   "region": "Asia",
+   "pop_m": 26.4988,
+   "gdp_usd_bn": 32.01,
+   "gdp_eur_bn": 29.574,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "Bank of Korea estimate of DPRK nominal GNI 2024 (44.4 trn KRW ~ USD 32.01bn), Aug 2025; GNI not GDP"
+  },
+  "PRT": {
+   "name": "Portugal",
+   "m49": "620",
+   "iso3": "PRT",
+   "region": "Europe",
+   "pop_m": 10.6947,
+   "gdp_usd_bn": 313.657,
+   "gdp_eur_bn": 289.784,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "PRY": {
+   "name": "Paraguay",
+   "m49": "600",
+   "iso3": "PRY",
+   "region": "Americas",
+   "pop_m": 6.9292,
+   "gdp_usd_bn": 44.739,
+   "gdp_eur_bn": 41.334,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "PSE": {
+   "name": "State of Palestine",
+   "m49": "275",
+   "iso3": "PSE",
+   "region": "Asia",
+   "pop_m": 5.2892,
+   "gdp_usd_bn": 16.017,
+   "gdp_eur_bn": 14.798,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "PYF": {
+   "name": "French Polynesia",
+   "m49": "258",
+   "iso3": "PYF",
+   "region": "Oceania",
+   "pop_m": 0.2818,
+   "gdp_usd_bn": 6.324,
+   "gdp_eur_bn": 5.842,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "QAT": {
+   "name": "Qatar",
+   "m49": "634",
+   "iso3": "QAT",
+   "region": "Asia",
+   "pop_m": 2.8578,
+   "gdp_usd_bn": 216.295,
+   "gdp_eur_bn": 199.832,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ROU": {
+   "name": "Romania",
+   "m49": "642",
+   "iso3": "ROU",
+   "region": "Europe",
+   "pop_m": 19.0518,
+   "gdp_usd_bn": 382.564,
+   "gdp_eur_bn": 353.447,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "RUS": {
+   "name": "Russian Federation",
+   "m49": "643",
+   "iso3": "RUS",
+   "region": "Europe",
+   "pop_m": 143.6696,
+   "gdp_usd_bn": 2186.462,
+   "gdp_eur_bn": 2020.05,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "RWA": {
+   "name": "Rwanda",
+   "m49": "646",
+   "iso3": "RWA",
+   "region": "Africa",
+   "pop_m": 14.2566,
+   "gdp_usd_bn": 15.111,
+   "gdp_eur_bn": 13.961,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SAU": {
+   "name": "Saudi Arabia",
+   "m49": "682",
+   "iso3": "SAU",
+   "region": "Asia",
+   "pop_m": 35.3003,
+   "gdp_usd_bn": 1254.141,
+   "gdp_eur_bn": 1158.688,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SDN": {
+   "name": "Sudan",
+   "m49": "729",
+   "iso3": "SDN",
+   "region": "Africa",
+   "pop_m": 50.449,
+   "gdp_usd_bn": 49.672,
+   "gdp_eur_bn": 45.892,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SEN": {
+   "name": "Senegal",
+   "m49": "686",
+   "iso3": "SEN",
+   "region": "Africa",
+   "pop_m": 18.502,
+   "gdp_usd_bn": 32.17,
+   "gdp_eur_bn": 29.722,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SGP": {
+   "name": "Singapore",
+   "m49": "702",
+   "iso3": "SGP",
+   "region": "Asia",
+   "pop_m": 6.0369,
+   "gdp_usd_bn": 572.877,
+   "gdp_eur_bn": 529.275,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SLB": {
+   "name": "Solomon Islands",
+   "m49": "090",
+   "iso3": "SLB",
+   "region": "Oceania",
+   "pop_m": 0.8192,
+   "gdp_usd_bn": 1.584,
+   "gdp_eur_bn": 1.463,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SLE": {
+   "name": "Sierra Leone",
+   "m49": "694",
+   "iso3": "SLE",
+   "region": "Africa",
+   "pop_m": 8.642,
+   "gdp_usd_bn": 6.971,
+   "gdp_eur_bn": 6.441,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SLV": {
+   "name": "El Salvador",
+   "m49": "222",
+   "iso3": "SLV",
+   "region": "Americas",
+   "pop_m": 6.3382,
+   "gdp_usd_bn": 34.88,
+   "gdp_eur_bn": 32.225,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SMR": {
+   "name": "San Marino",
+   "m49": "674",
+   "iso3": "SMR",
+   "region": "Europe",
+   "pop_m": 0.034,
+   "gdp_usd_bn": 2.087,
+   "gdp_eur_bn": 1.928,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "IMF WEO (DataMapper NGDPD) 2024"
+  },
+  "SOM": {
+   "name": "Somalia",
+   "m49": "706",
+   "iso3": "SOM",
+   "region": "Africa",
+   "pop_m": 19.0092,
+   "gdp_usd_bn": 11.967,
+   "gdp_eur_bn": 11.056,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SRB": {
+   "name": "Serbia",
+   "m49": "688",
+   "iso3": "SRB",
+   "region": "Europe",
+   "pop_m": 6.5865,
+   "gdp_usd_bn": 90.088,
+   "gdp_eur_bn": 83.232,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SSD": {
+   "name": "South Sudan",
+   "m49": "728",
+   "iso3": "SSD",
+   "region": "Africa",
+   "pop_m": 11.9434,
+   "gdp_usd_bn": 4.616,
+   "gdp_eur_bn": 4.265,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "IMF WEO (DataMapper NGDPD) 2024"
+  },
+  "STP": {
+   "name": "Sao Tome and Principe",
+   "m49": "678",
+   "iso3": "STP",
+   "region": "Africa",
+   "pop_m": 0.2355,
+   "gdp_usd_bn": 0.825,
+   "gdp_eur_bn": 0.762,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SUR": {
+   "name": "Suriname",
+   "m49": "740",
+   "iso3": "SUR",
+   "region": "Americas",
+   "pop_m": 0.6344,
+   "gdp_usd_bn": 4.417,
+   "gdp_eur_bn": 4.081,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SVK": {
+   "name": "Slovakia",
+   "m49": "703",
+   "iso3": "SVK",
+   "region": "Europe",
+   "pop_m": 5.4221,
+   "gdp_usd_bn": 140.934,
+   "gdp_eur_bn": 130.208,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SVN": {
+   "name": "Slovenia",
+   "m49": "705",
+   "iso3": "SVN",
+   "region": "Europe",
+   "pop_m": 2.1274,
+   "gdp_usd_bn": 72.972,
+   "gdp_eur_bn": 67.418,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SWE": {
+   "name": "Sweden",
+   "m49": "752",
+   "iso3": "SWE",
+   "region": "Europe",
+   "pop_m": 10.5697,
+   "gdp_usd_bn": 604.827,
+   "gdp_eur_bn": 558.794,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SWZ": {
+   "name": "Eswatini",
+   "m49": "748",
+   "iso3": "SWZ",
+   "region": "Africa",
+   "pop_m": 1.2428,
+   "gdp_usd_bn": 4.859,
+   "gdp_eur_bn": 4.489,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SXM": {
+   "name": "Sint Maarten (Dutch part)",
+   "m49": "534",
+   "iso3": "SXM",
+   "region": "Americas",
+   "pop_m": 0.0433,
+   "gdp_usd_bn": 1.798,
+   "gdp_eur_bn": 1.661,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SYC": {
+   "name": "Seychelles",
+   "m49": "690",
+   "iso3": "SYC",
+   "region": "Africa",
+   "pop_m": 0.1214,
+   "gdp_usd_bn": 2.229,
+   "gdp_eur_bn": 2.059,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "SYR": {
+   "name": "Syrian Arab Republic",
+   "m49": "760",
+   "iso3": "SYR",
+   "region": "Asia",
+   "pop_m": 24.6728,
+   "gdp_usd_bn": null,
+   "gdp_eur_bn": null,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": null
+  },
+  "TCA": {
+   "name": "Turks and Caicos Islands",
+   "m49": "796",
+   "iso3": "TCA",
+   "region": "Americas",
+   "pop_m": 0.0465,
+   "gdp_usd_bn": 1.745,
+   "gdp_eur_bn": 1.613,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "TCD": {
+   "name": "Chad",
+   "m49": "148",
+   "iso3": "TCD",
+   "region": "Africa",
+   "pop_m": 20.2991,
+   "gdp_usd_bn": 19.907,
+   "gdp_eur_bn": 18.392,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "TGO": {
+   "name": "Togo",
+   "m49": "768",
+   "iso3": "TGO",
+   "region": "Africa",
+   "pop_m": 8.4066,
+   "gdp_usd_bn": 10.643,
+   "gdp_eur_bn": 9.833,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "THA": {
+   "name": "Thailand",
+   "m49": "764",
+   "iso3": "THA",
+   "region": "Asia",
+   "pop_m": 71.668,
+   "gdp_usd_bn": 529.386,
+   "gdp_eur_bn": 489.094,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "TJK": {
+   "name": "Tajikistan",
+   "m49": "762",
+   "iso3": "TJK",
+   "region": "Asia",
+   "pop_m": 10.5909,
+   "gdp_usd_bn": 14.425,
+   "gdp_eur_bn": 13.327,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "TKM": {
+   "name": "Turkmenistan",
+   "m49": "795",
+   "iso3": "TKM",
+   "region": "Asia",
+   "pop_m": 7.4945,
+   "gdp_usd_bn": 44.249,
+   "gdp_eur_bn": 40.882,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "TLS": {
+   "name": "Timor-Leste",
+   "m49": "626",
+   "iso3": "TLS",
+   "region": "Asia",
+   "pop_m": 1.4006,
+   "gdp_usd_bn": 1.866,
+   "gdp_eur_bn": 1.724,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "TON": {
+   "name": "Tonga",
+   "m49": "776",
+   "iso3": "TON",
+   "region": "Oceania",
+   "pop_m": 0.1042,
+   "gdp_usd_bn": 0.647,
+   "gdp_eur_bn": 0.598,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "TTO": {
+   "name": "Trinidad and Tobago",
+   "m49": "780",
+   "iso3": "TTO",
+   "region": "Americas",
+   "pop_m": 1.3683,
+   "gdp_usd_bn": 25.634,
+   "gdp_eur_bn": 23.683,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "TUN": {
+   "name": "Tunisia",
+   "m49": "788",
+   "iso3": "TUN",
+   "region": "Africa",
+   "pop_m": 12.2771,
+   "gdp_usd_bn": 51.412,
+   "gdp_eur_bn": 47.499,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "TUR": {
+   "name": "Türkiye",
+   "m49": "792",
+   "iso3": "TUR",
+   "region": "Asia",
+   "pop_m": 85.5187,
+   "gdp_usd_bn": 1359.124,
+   "gdp_eur_bn": 1255.68,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "TUV": {
+   "name": "Tuvalu",
+   "m49": "798",
+   "iso3": "TUV",
+   "region": "Oceania",
+   "pop_m": 0.0096,
+   "gdp_usd_bn": 0.057,
+   "gdp_eur_bn": 0.052,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "TWN": {
+   "name": "Taiwan",
+   "m49": "158",
+   "iso3": "TWN",
+   "region": "Asia",
+   "pop_m": 23.4,
+   "gdp_usd_bn": 801.495,
+   "gdp_eur_bn": 740.493,
+   "year": 2024,
+   "pop_source": "IMF WEO (DataMapper LP) 2024",
+   "gdp_source": "IMF WEO (DataMapper NGDPD) 2024"
+  },
+  "TZA": {
+   "name": "United Republic of Tanzania",
+   "m49": "834",
+   "iso3": "TZA",
+   "region": "Africa",
+   "pop_m": 68.5602,
+   "gdp_usd_bn": 79.236,
+   "gdp_eur_bn": 73.205,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "UGA": {
+   "name": "Uganda",
+   "m49": "800",
+   "iso3": "UGA",
+   "region": "Africa",
+   "pop_m": 50.0151,
+   "gdp_usd_bn": 53.912,
+   "gdp_eur_bn": 49.809,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "UKR": {
+   "name": "Ukraine",
+   "m49": "804",
+   "iso3": "UKR",
+   "region": "Europe",
+   "pop_m": 37.8602,
+   "gdp_usd_bn": 190.834,
+   "gdp_eur_bn": 176.309,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "URY": {
+   "name": "Uruguay",
+   "m49": "858",
+   "iso3": "URY",
+   "region": "Americas",
+   "pop_m": 3.3866,
+   "gdp_usd_bn": 82.323,
+   "gdp_eur_bn": 76.057,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "USA": {
+   "name": "United States of America",
+   "m49": "840",
+   "iso3": "USA",
+   "region": "Americas",
+   "pop_m": 340.0038,
+   "gdp_usd_bn": 29298.013,
+   "gdp_eur_bn": 27068.128,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "UZB": {
+   "name": "Uzbekistan",
+   "m49": "860",
+   "iso3": "UZB",
+   "region": "Asia",
+   "pop_m": 36.3619,
+   "gdp_usd_bn": 121.356,
+   "gdp_eur_bn": 112.12,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "VCT": {
+   "name": "Saint Vincent and the Grenadines",
+   "m49": "670",
+   "iso3": "VCT",
+   "region": "Americas",
+   "pop_m": 0.1006,
+   "gdp_usd_bn": 1.157,
+   "gdp_eur_bn": 1.069,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "VEN": {
+   "name": "Venezuela (Bolivarian Republic of)",
+   "m49": "862",
+   "iso3": "VEN",
+   "region": "Americas",
+   "pop_m": 28.4055,
+   "gdp_usd_bn": 120.566,
+   "gdp_eur_bn": 111.39,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "VGB": {
+   "name": "British Virgin Islands",
+   "m49": "092",
+   "iso3": "VGB",
+   "region": "Americas",
+   "pop_m": 0.0395,
+   "gdp_usd_bn": null,
+   "gdp_eur_bn": null,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": null
+  },
+  "VIR": {
+   "name": "United States Virgin Islands",
+   "m49": "850",
+   "iso3": "VIR",
+   "region": "Americas",
+   "pop_m": 0.1044,
+   "gdp_usd_bn": null,
+   "gdp_eur_bn": null,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": null
+  },
+  "VNM": {
+   "name": "Viet Nam",
+   "m49": "704",
+   "iso3": "VNM",
+   "region": "Asia",
+   "pop_m": 100.9877,
+   "gdp_usd_bn": 476.325,
+   "gdp_eur_bn": 440.071,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "VUT": {
+   "name": "Vanuatu",
+   "m49": "548",
+   "iso3": "VUT",
+   "region": "Oceania",
+   "pop_m": 0.3278,
+   "gdp_usd_bn": 1.298,
+   "gdp_eur_bn": 1.199,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "WSM": {
+   "name": "Samoa",
+   "m49": "882",
+   "iso3": "WSM",
+   "region": "Oceania",
+   "pop_m": 0.218,
+   "gdp_usd_bn": 1.176,
+   "gdp_eur_bn": 1.086,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "XKX": {
+   "name": "Kosovo",
+   "m49": null,
+   "iso3": "XKX",
+   "region": null,
+   "pop_m": 1.5944,
+   "gdp_usd_bn": 11.203,
+   "gdp_eur_bn": 10.35,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "YEM": {
+   "name": "Yemen",
+   "m49": "887",
+   "iso3": "YEM",
+   "region": "Asia",
+   "pop_m": 40.5832,
+   "gdp_usd_bn": 8.069,
+   "gdp_eur_bn": 7.455,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "IMF WEO (DataMapper NGDPD) 2024"
+  },
+  "ZAF": {
+   "name": "South Africa",
+   "m49": "710",
+   "iso3": "ZAF",
+   "region": "Africa",
+   "pop_m": 64.0072,
+   "gdp_usd_bn": 401.145,
+   "gdp_eur_bn": 370.614,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ZMB": {
+   "name": "Zambia",
+   "m49": "894",
+   "iso3": "ZMB",
+   "region": "Africa",
+   "pop_m": 21.315,
+   "gdp_usd_bn": 25.303,
+   "gdp_eur_bn": 23.377,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  },
+  "ZWE": {
+   "name": "Zimbabwe",
+   "m49": "716",
+   "iso3": "ZWE",
+   "region": "Africa",
+   "pop_m": 16.6344,
+   "gdp_usd_bn": 41.522,
+   "gdp_eur_bn": 38.362,
+   "year": 2024,
+   "pop_source": "World Bank WDI SP.POP.TOTL 2024",
+   "gdp_source": "World Bank WDI NY.GDP.MKTP.CD 2024"
+  }
+ },
+ "undisclosed_aid_ukraine": {
+  "DEU": {
+   "what": "German military aid detail unpublished since Jun 2025 ('strategic ambiguity'); aggregates still published",
+   "eur_bn": {
+    "low": null,
+    "central": null,
+    "high": null
+   },
+   "context": "Government reports EUR 57.6bn military aid; Kiel traces EUR 56.3bn: ~22.7bn disbursed 2022-25 (budget), 11.6bn appropriated 2026 (disbursement unknown), 22bn future commitments. Undisclosed = item-level content, not totals. Mar-Apr 2026 allocations EUR 4.2bn.",
+   "sources": [
+    "Kiel Institute, 8 Oct 2026 (Policy Brief 10/2026) https://www.kielinstitut.de/media/news/ukraine-support-tracker-only-eur-417-billion-of-germanys-eur-100-billion-went-to-ukraine/",
+    "Merz announcement May 2025 https://euromaidanpress.com/2025/05/11/germany-to-halt-public-reports-on-arms-sent-to-ukraine/"
+   ],
+   "certainty": "B"
+  },
+  "ITA": {
+   "what": "Italian packages (12+ decrees) classified; lists held by Defence Staff, overseen by COPASIR",
+   "eur_bn": {
+    "low": 2.5,
+    "central": 3.0,
+    "high": 3.0
+   },
+   "context": "Bloomberg sources: first 11 packages EUR 2.5-3bn; Chief of Defence Staff Dec 2025: 'exceeded EUR 3bn'. IAI: no official data. 12th package (Nov 2025) value unknown -> high could exceed 3.0.",
+   "sources": [
+    "IAI https://www.iai.it/en/node/22399",
+    "Kyiv Independent/NV on 12th package https://english.nv.ua/amp/12th-italian-aid-package-boosts-ukraine-s-air-defenses-50565109.html",
+    "Il Sole 24 Ore https://en.ilsole24ore.com/art/weapons-from-italia-to-kyiv-controversy-erupts-over-crosetto-and-the-copasir-decree-when-will-it-be-ready-AJ5P70v"
+   ],
+   "certainty": "C"
+  },
+  "FRA": {
+   "what": "France long concealed exact amounts; valuation disputes",
+   "eur_bn": {
+    "low": 0.64,
+    "central": 2.615,
+    "high": 3.8
+   },
+   "context": "Range for Feb 2022-Dec 2023 equipment: Kiel own estimate EUR 0.64bn (equipment) vs MoD EUR 2.615bn equipment (+1.2bn EPF = 3.8bn); parliamentary report (Nov 2023) EUR 3.2bn total/1.7bn equipment at replacement cost. Gap is valuation, not necessarily hidden deliveries. Unverified 2025 media figure EUR 8.6bn (5.9bn arms) via Russian-embassy-sourced report - not used.",
+   "sources": [
+    "Kiel research note https://www.kielinstitut.de/fileadmin/Dateiverwaltung/Subject_Dossiers_Topics/Ukraine/Ukraine_Support_Tracker/Ukraine_Support_Tracker_-_Research_Note.pdf",
+    "European Focus https://europeanfocus.eu/number-of-the-week-france-aid-ukraine-war-russia/",
+    "Public Sénat (Lecornu) https://www.publicsenat.fr/actualites/international/ukraine-avec-le-degel-des-avoirs-russes-la-france-aura-accorde-pres-de-3-milliards-deuros-daides-en-2024-annonce-sebastien-lecornu"
+   ],
+   "certainty": "C"
+  },
+  "BGR": {
+   "what": "Secret 2022 Bulgarian ammunition and diesel flows via intermediaries (Poland/Romania/Hungary), officially commercial",
+   "eur_bn": {
+    "low": null,
+    "central": null,
+    "high": null
+   },
+   "context": "Ex-PM Petkov: ~1/3 of Ukraine's early-war ammunition; ex-FinMin Vassilev: up to 40% of diesel (Apr-Aug 2022). Paid sales via private firms - not donations; no value estimate found.",
+   "sources": [
+    "Die Welt Jan 2023 via Militarnyi https://militarnyi.com/en/news/at-the-beginning-of-the-war-a-third-of-ukrainian-ammunition-was-supplied-from-bulgaria-welt/",
+    "bne IntelliNews https://www.intellinews.com/bulgaria-secretly-provided-fuel-and-ammunition-to-ukraine-at-start-of-russian-invasion-267304/"
+   ],
+   "certainty": "D"
+  },
+  "_note": "No credible aggregate estimate of total undisclosed military aid to Ukraine was found. Kiel uses official/budget data and flags that several donors (DEU since 2025, ITA, FRA, and others) do not itemise. Use these as ranges/context, not additive to tracker totals (DEU and ITA amounts are largely already in Kiel totals)."
+ },
+ "notes": [
+  "FX: USD->EUR at ECB 2024 annual average 1.0824 USD per EUR (EXR.A.USD.EUR.SP00.A = 1.08238); 2023 fallbacks at 1.0813.",
+  "population_gdp: World Bank WDI 2024 (API reachable on retry, lastupdated 2026-10-08); IMF WEO DataMapper fills SSD, SMR, TWN etc.; 2023 WB for GRL, IMN; PRK = Bank of Korea GNI estimate. GDP null for CUB, SYR, ERI and small territories (no 2023/2024 data in WB/IMF files; Cuba's official-rate USD GDP is unreliable). Kosovo has no M49 code. Channel Islands aggregate dropped.",
+  "refugees_hosted: 'count' = Eurostat temporary-protection stock (latest month, Jun-Sep 2026) for EU/EFTA, else UNHCR end-2025 refugees. UNHCR end-2025 values retained in each EU record for comparison. US Uniting-for-Ukraine parolees (~200k+) are not counted by UNHCR as refugees (USA shows 3,302).",
+  "military_to_russia values are sales/barter in most cases (DPRK, Iran, China), not gifts; flag before adding to 'aid' totals. Belarus has quantities only.",
+  "Belligerent sources (Ukrainian GUR/MFA/CCD, Russian MoD/FSB/IC) are flagged with 'BELLIGERENT' inside source strings.",
+  "Unit prices for shells/missiles are scenario assumptions from one academic study (Guseinova/FNF), not transaction prices; certainty D."
+ ],
+ "meta": {
+  "generated": "2026-10-17",
+  "fx_usd_per_eur_2024": 1.08238046875
+ }
+}

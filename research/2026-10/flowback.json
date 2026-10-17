@@ -1,0 +1,988 @@
+{
+ "meta": {
+  "generated": "2026-10-17",
+  "scope": "Flowback of Ukraine aid to donor/third economies"
+ },
+ "countries": {
+  "USA": {
+   "own_industry_share": {
+    "of_military_aid": {
+     "low": 0.86,
+     "central": 0.88,
+     "high": 0.9
+    },
+    "of_total_aid": {
+     "low": 0.6,
+     "central": 0.6,
+     "high": 0.72
+    },
+    "basis": "CSIS Cancian (Feb 2025): ~90% of military aid and ~60% of all $175bn spent in the US (25% in Ukraine, 15% globally). CSIS Cancian & Park (May 2024): 86% of military part / 72% of the $61bn April-2024 supplemental."
+   },
+   "own_industry_eur_bn": {
+    "low": 89.13,
+    "central": 97.24,
+    "high": 105.34,
+    "basis": "0.60 x $175.2bn appropriated (2022-24 incl. $0.9bn base budget, excl. $9bn loans) = ~$105bn, at 0.925 EUR/USD; +/-5pp band. Not all of it is spent yet (multi-year USAI/replenishment contracts)."
+   },
+   "purl_paid_eur_bn": null,
+   "danish_model_eur_bn": null,
+   "czech_initiative_eur_bn": null,
+   "received_from_others_eur_bn": {
+    "purl_by_year": {
+     "2025": {
+      "value": 3.7,
+      "basis": "Kiel KPB 203: donors bought US weapons worth EUR 3.7bn in 2025 via PURL (24 donors)",
+      "certainty": "B"
+     },
+     "2026_to_july": {
+      "value": 2.06,
+      "basis": "KMU: USD 6.7bn cumulative by 2026-07-23 minus ~USD 4.3bn 2025 (Interfax/Ukr. reporting) = ~USD 2.4bn, x0.86",
+      "certainty": "C"
+     },
+     "cumulative_to_2026_07": {
+      "value": 5.76,
+      "usd_bn": 6.7,
+      "certainty": "B"
+     }
+    },
+    "fms_paid_by_others": {
+     "note": "ERAM sale up to $825m (Aug 2025) funded by Denmark, Netherlands, Norway plus US FMF - split not published; Patriot sustainment $179.1m (2025-08-29) and $105m (2025-11-18), satcom $150m - payer not specified (Ukraine/European funds). DSCA values are ceilings.",
+     "value": null
+    }
+   },
+   "certainty": "B",
+   "sources": [
+    {
+     "title": "Where Is the Missing $100 Billion in U.S. Aid for Ukraine? (Cancian, CSIS)",
+     "url": "https://www.csis.org/analysis/where-missing-100-billion-us-aid-ukraine",
+     "date": "2025-02-11"
+    },
+    {
+     "title": "Quincy Institute quoting Cancian & Park (CSIS, May 2024): 72% of $61bn supplemental / 86% of military part spent in US",
+     "url": "https://quincyinst.org/2024/09/10/as-the-money-dries-up-lawmakers-eye-even-more-aid-for-ukraine/",
+     "date": "2024-09-10"
+    },
+    {
+     "title": "How Supporting Ukraine Is Revitalizing the U.S. Defense Industrial Base (CSIS)",
+     "url": "https://www.csis.org/analysis/how-supporting-ukraine-revitalizing-us-defense-industrial-base",
+     "date": "2024-04-18"
+    },
+    {
+     "title": "GAO-24-107232 Ukraine funding (>$174bn in 5 supplementals)",
+     "url": "https://www.gao.gov/products/GAO-24-107232",
+     "date": "2024-05"
+    },
+    {
+     "title": "Politico: Biden admin map - >$27bn PDA replenishment+USAI obligations in 37 states",
+     "url": "https://www.politico.com/news/2023/11/29/biden-admin-map-states-benefit-ukraine-aid-00129068",
+     "date": "2023-11-29"
+    },
+    {
+     "title": "Kiel Policy Brief 203 'Europe Steps Up' (PURL EUR 3.7bn 2025; Danish model; 22% procurement in Ukraine)",
+     "url": "https://assets.ctfassets.net/mj324dykhxwi/4lI3lGjlJWbRhgU4T8QoQR/b594ceaf1b7472a674917fbf8c8ca7c9/Kiel_Institute_KPB_Ukraine_Support_Tracker.pdf",
+     "date": "2026-02"
+    },
+    {
+     "title": "Ukraine Cabinet: A year of PURL - USD 6.7bn, 29 countries, top-5 contributors",
+     "url": "https://www.kmu.gov.ua/en/news/rik-purl-maizhe-7-mlrd-dlia-postavok-krytychnoho-ozbroiennia-dlia-ukrainy",
+     "date": "2026-07-23"
+    },
+    {
+     "title": "Kiel: European support continues steadily - US assistance stalls (no new US aid since 2025-01-09)",
+     "url": "https://www.kielinstitut.de/media/news/european-support-for-ukraine-continues-steadily-us-assistance-stalls/",
+     "date": "2025"
+    },
+    {
+     "title": "AeroTime: US approves missile (ERAM $825m, funded by DK/NL/NO + FMF) and Patriot sales",
+     "url": "https://www.aerotime.aero/articles/us-approves-missile-patriot-sales-ukraine",
+     "date": "2025-08"
+    },
+    {
+     "title": "AA: US approves $179.1m Patriot support for Ukraine",
+     "url": "https://www.aa.com.tr/en/americas/us-approves-1791m-patriot-air-defense-system-support-for-ukraine/3673276",
+     "date": "2025-08-29"
+    },
+    {
+     "title": "DSCA: Ukraine - Patriot sustainment ($105m)",
+     "url": "https://www.dsca.mil/Press-Media/Major-Arms-Sales/Article-Display/Article/4290514/ukraine-patriot-air-defense-system-sustainment",
+     "date": "2025-11-18"
+    }
+   ],
+   "notes": [
+    "The CSIS 60% includes US-forces surge costs in Europe and DoD industrial-base money, which do not reach Ukraine at all.",
+    "Feb 2025 VOA/Babel reporting of '$58bn spent in US' is not traceable to a primary document; not used.",
+    "Economic budget support (~$30bn+ via World Bank PEACE) is spent in Ukraine and largely does not flow back."
+   ],
+   "us_aid_since_2025": {
+    "new_aid_packages": "None since 2025-01-09 (last Biden PDA). Kiel: US aid allocations fell 99% in 2025 vs 2022-24 average.",
+    "replacement": "Sales: PURL (allies pay US for stockpile items, >90% of PURL equipment from US stocks per Kiel) and FMS cases financed by Europeans.",
+    "certainty": "B"
+   },
+   "breakdown_known": {
+    "pda_replenishment_appropriated_usd_bn": 25.9,
+    "pda_replenishment_obligated_usd_bn_nov2023": 16.8,
+    "usai_obligated_usd_bn_late2023": 10.5,
+    "dod_obligations_37_states_usd_bn_nov2023": 27,
+    "csis_split_total": "60% US / 25% Ukraine / 15% global",
+    "committed_equipment_usd_bn": {
+     "PDA": 34.1,
+     "USAI": 33.2,
+     "FMS": 6.3
+    }
+   }
+  },
+  "DEU": {
+   "own_industry_share": {
+    "low": 0.55,
+    "central": 0.65,
+    "high": 0.75,
+    "basis": "Modelled. Bulk of Ertuechtigungsinitiative goes to German suppliers (Diehl IRIS-T, Rheinmetall ammo/Skynex/Gepard ammo, KNDS PzH2000/Leopard) but documented outflows: PURL ~USD 0.9bn, Czech initiative EUR 576m (2024) + EUR 300m (May 2026), EUR 400m Ukrainian long-range drones (May 2025), Patriot systems/missiles (US-origin content). No official domestic-share figure found."
+   },
+   "own_industry_eur_bn": null,
+   "purl_paid_eur_bn": {
+    "2025": {
+     "value": 0.6,
+     "basis": "Kiel KPB203: approx. EUR 600m by Dec 2025 (incl. USD 500m Oct 2025 pledge)"
+    },
+    "2026": {
+     "value": 0.17,
+     "basis": "Rest of USD 0.9bn cumulative (KMU July 2026); a further USD 200m PURL pledged 2026-06-18 (Pravda)"
+    },
+    "cumulative_usd_bn_to_2026_07": 0.9,
+    "cumulative_eur_bn": 0.77
+   },
+   "danish_model_eur_bn": {
+    "value": null,
+    "related": "EUR 0.4bn bilateral funding of Ukrainian Liutyi/Bars/Flamingo drones (May 2025) - parallel German scheme, not Danish model"
+   },
+   "czech_initiative_eur_bn": {
+    "value": 0.876,
+    "components": {
+     "2024": 0.576,
+     "2026-05": 0.3
+    },
+    "certainty": "B"
+   },
+   "received_from_others_eur_bn": null,
+   "certainty": "C",
+   "sources": [
+    {
+     "title": "Kiel Policy Brief 203 'Europe Steps Up' (PURL EUR 3.7bn 2025; Danish model; 22% procurement in Ukraine)",
+     "url": "https://assets.ctfassets.net/mj324dykhxwi/4lI3lGjlJWbRhgU4T8QoQR/b594ceaf1b7472a674917fbf8c8ca7c9/Kiel_Institute_KPB_Ukraine_Support_Tracker.pdf",
+     "date": "2026-02"
+    },
+    {
+     "title": "Ukraine Cabinet: A year of PURL - USD 6.7bn, 29 countries, top-5 contributors",
+     "url": "https://www.kmu.gov.ua/en/news/rik-purl-maizhe-7-mlrd-dlia-postavok-krytychnoho-ozbroiennia-dlia-ukrainy",
+     "date": "2026-07-23"
+    },
+    {
+     "title": "Pravda: Germany to allocate another US$400m (USD 200m PURL + USD 200m PAC-3)",
+     "url": "https://www.pravda.com.ua/eng/news/2026/06/18/8039903/",
+     "date": "2026-06-18"
+    },
+    {
+     "title": "Interfax-Ukraine: Germany EUR 576m for 180,000 rounds in Czech initiative",
+     "url": "https://en.interfax.com.ua/news/general/1132786-amp.html",
+     "date": "2024"
+    },
+    {
+     "title": "Germany invested another EUR 300m in Czech ammunition initiative",
+     "url": "https://deaidua.org/news/2026/05/14/germany-300-million-czech-ammunition-initiative/",
+     "date": "2026-05-14"
+    },
+    {
+     "title": "Rubryka: Germany EUR 11.5bn military aid in 2026 budget",
+     "url": "https://rubryka.com/en/2025/11/14/nimechchyna-zbilshuye-pidtrymku-ukrayiny/",
+     "date": "2025-11-14"
+    },
+    {
+     "title": "defenceukraine.com Danish Model reference",
+     "url": "https://www.defenceukraine.com/en/references/danish-model/",
+     "date": "2026"
+    }
+   ],
+   "notes": [
+    "Oct 2026 Merz visit: EUR 6.5-8.5bn German-Ukrainian industry deals incl. Diehl IRIS-T missiles - commercial/LoIs, not all Ertuechtigung money."
+   ],
+   "budget_context": {
+    "2026_military_aid_budget_eur_bn": 11.5
+   }
+  },
+  "GBR": {
+   "own_industry_share": {
+    "low": 0.45,
+    "central": 0.6,
+    "high": 0.75,
+    "basis": "Modelled. UK frames GBP 4.5bn 2025 package as supporting UK industry (e.g. GBP 1.6bn air-defence missile deal Mar 2025; BAE barrel forgings GBP 61m); but International Fund for Ukraine (IFU, >GBP 1bn pooled, UK ~GBP 500m) buys internationally (GBP 300m 152mm contract), plus UK PURL share (undisclosed). No official domestic share."
+   },
+   "own_industry_eur_bn": null,
+   "purl_paid_eur_bn": {
+    "value": null,
+    "note": "UK joined NL/NO/SE ~$500m package; UK share not published"
+   },
+   "danish_model_eur_bn": null,
+   "czech_initiative_eur_bn": null,
+   "received_from_others_eur_bn": {
+    "value": null,
+    "note": "IFU partner contributions: total pot >GBP 1bn of which UK ~GBP 0.5bn by Sep 2024; +GBP 190m from allies Jan 2025 - partly spent in UK (DE&S contracts), split unknown"
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "title": "DE&S: GBP 300m artillery contract as International Fund for Ukraine reaches GBP 1bn",
+     "url": "https://des.mod.uk/des-awards-300m-artillery-contract-as-international-fund-for-ukraine-reaches-1bn-milestone",
+     "date": "2024-09-06"
+    },
+    {
+     "title": "DE&S: Military boost to Ukraine will support UK growth and jobs (GBP 4.5bn 2025)",
+     "url": "https://des.mod.uk/military-boost-to-ukraine-front-line-will-support-uk-growth-and-jobs",
+     "date": "2025"
+    },
+    {
+     "title": "defenceukraine.com Danish Model reference",
+     "url": "https://www.defenceukraine.com/en/references/danish-model/",
+     "date": "2026"
+    }
+   ],
+   "notes": []
+  },
+  "FRA": {
+   "own_industry_share": {
+    "low": 0.75,
+    "central": 0.85,
+    "high": 0.95,
+    "basis": "Modelled. French aid drawn largely from French stocks and French industry (CAESAR, AMX-10RC, SAMP/T, AASM, Mirage). Special support fund EUR 200m (Oct 2022, doubled from EUR 100m) lets Ukraine order directly from French industry (Assemblee nationale). France is not a PURL contributor in sources found; contributed to Czech initiative (amount not published)."
+   },
+   "own_industry_eur_bn": {
+    "value": 0.2,
+    "scope": "only the fonds special de soutien a l'Ukraine (documented)",
+    "certainty": "B"
+   },
+   "purl_paid_eur_bn": null,
+   "danish_model_eur_bn": null,
+   "czech_initiative_eur_bn": null,
+   "received_from_others_eur_bn": null,
+   "certainty": "C",
+   "sources": [
+    {
+     "title": "Assemblée nationale: fonds spécial de soutien à l'Ukraine EUR 200m to order from French industry",
+     "url": "https://www.assemblee-nationale.fr/dyn/16/questions/QANR5L16QG509.pdf",
+     "date": "2022-2023"
+    },
+    {
+     "title": "defenceukraine.com Czech Ammunition Initiative reference",
+     "url": "https://www.defenceukraine.com/en/references/czech-ammunition-initiative/",
+     "date": "2026"
+    }
+   ],
+   "notes": [
+    "2025: Macron +EUR 2bn military support; EUR 195m financed from Russian-asset windfall interest. Ukraine Fund II EUR 71m (Feb 2026) for French firms' projects."
+   ]
+  },
+  "NLD": {
+   "own_industry_share": {
+    "low": 0.15,
+    "central": 0.25,
+    "high": 0.4,
+    "basis": "Modelled. NL has small domestic arms industry; large documented outflows to US (PURL ~USD 1.16bn), Ukraine ('Dutch model' ~EUR 790m 2025), Czech initiative, F-16s and Estonian Milrem THeMIS."
+   },
+   "own_industry_eur_bn": null,
+   "purl_paid_eur_bn": {
+    "2025": {
+     "value": 0.7,
+     "basis": "Kiel: over EUR 700m by Dec 2025 (first PURL package EUR 500m, Aug 2025)"
+    },
+    "cumulative_usd_bn_to_2026_07": 1.163,
+    "cumulative_eur_bn": 1.0
+   },
+   "danish_model_eur_bn": {
+    "value": 0.79,
+    "note": "'Dutch model' 2025 (direct contracts with Ukrainian firms) per Kiel - analogous, not Danish model proper"
+   },
+   "czech_initiative_eur_bn": {
+    "value": null,
+    "note": "Contributor since 2024 and still in 2026; amount not found in sources reviewed"
+   },
+   "received_from_others_eur_bn": null,
+   "certainty": "C",
+   "sources": [
+    {
+     "title": "Kiel Policy Brief 203 'Europe Steps Up' (PURL EUR 3.7bn 2025; Danish model; 22% procurement in Ukraine)",
+     "url": "https://assets.ctfassets.net/mj324dykhxwi/4lI3lGjlJWbRhgU4T8QoQR/b594ceaf1b7472a674917fbf8c8ca7c9/Kiel_Institute_KPB_Ukraine_Support_Tracker.pdf",
+     "date": "2026-02"
+    },
+    {
+     "title": "Ukraine Cabinet: A year of PURL - USD 6.7bn, 29 countries, top-5 contributors",
+     "url": "https://www.kmu.gov.ua/en/news/rik-purl-maizhe-7-mlrd-dlia-postavok-krytychnoho-ozbroiennia-dlia-ukrainy",
+     "date": "2026-07-23"
+    },
+    {
+     "title": "Euromaidan Press: US envoy names PURL leaders (DK DKK 580m, SE $275m, NO ~$135m, NL EUR 500m first package)",
+     "url": "https://euromaidanpress.com/2026/02/11/us-envoy-names-norway-netherlands-germany-as-purl-program-leaders-with-4-5-billion-in-weapons-commitments/",
+     "date": "2026-02-11"
+    },
+    {
+     "title": "defenceukraine.com Czech Ammunition Initiative reference",
+     "url": "https://www.defenceukraine.com/en/references/czech-ammunition-initiative/",
+     "date": "2026"
+    }
+   ],
+   "notes": []
+  },
+  "DNK": {
+   "own_industry_share": {
+    "low": 0.1,
+    "central": 0.2,
+    "high": 0.35,
+    "basis": "Modelled. Denmark spends a large share in Ukraine (Danish model ~EUR 830m by Dec 2025 + DKK 1.3bn 2026) and abroad (F-16s, CAESAR, Czech initiative, PURL); small domestic producer base (Terma, Weibel, Nammo DK)."
+   },
+   "own_industry_eur_bn": null,
+   "purl_paid_eur_bn": {
+    "value": 0.08,
+    "basis": "DKK 580m (Euromaidan Feb 2026) at ~0.134 EUR/DKK; part of Nordic-Baltic USD 500m package (Nov 2025)"
+   },
+   "danish_model_eur_bn": {
+    "value": 1.0,
+    "components": {
+     "to_Dec_2025": 0.83,
+     "2026_30th_package_DKK1.3bn": 0.17
+    },
+    "certainty": "B",
+    "eu_windfall_profits_channelled_by_DK": {
+     "2024": 0.4,
+     "2025": 0.83
+    }
+   },
+   "czech_initiative_eur_bn": {
+    "value": null,
+    "note": "Contributor 2024-2026; amount not found"
+   },
+   "received_from_others_eur_bn": null,
+   "certainty": "C",
+   "sources": [
+    {
+     "title": "Kiel Policy Brief 203 'Europe Steps Up' (PURL EUR 3.7bn 2025; Danish model; 22% procurement in Ukraine)",
+     "url": "https://assets.ctfassets.net/mj324dykhxwi/4lI3lGjlJWbRhgU4T8QoQR/b594ceaf1b7472a674917fbf8c8ca7c9/Kiel_Institute_KPB_Ukraine_Support_Tracker.pdf",
+     "date": "2026-02"
+    },
+    {
+     "title": "defenceukraine.com Danish Model reference",
+     "url": "https://www.defenceukraine.com/en/references/danish-model/",
+     "date": "2026"
+    },
+    {
+     "title": "Kyiv Independent: Denmark 30th package DKK 4.4bn, DKK 1.3bn via Danish model",
+     "url": "https://kyivindependent.com/denmark-announces-670-million-defense-aid-package-for-ukraine/",
+     "date": "2026-06-30"
+    },
+    {
+     "title": "Euromaidan Press: US envoy names PURL leaders (DK DKK 580m, SE $275m, NO ~$135m, NL EUR 500m first package)",
+     "url": "https://euromaidanpress.com/2026/02/11/us-envoy-names-norway-netherlands-germany-as-purl-program-leaders-with-4-5-billion-in-weapons-commitments/",
+     "date": "2026-02-11"
+    },
+    {
+     "title": "NATO: Nordic and Baltic Allies to fund joint $500m PURL package",
+     "url": "https://www.nato.int/en/news-and-events/articles/news/2025/11/13/nordic-and-baltic-allies-to-fund-joint-500m-purl-package-for-ukraine",
+     "date": "2025-11-13"
+    },
+    {
+     "title": "defenceukraine.com Czech Ammunition Initiative reference",
+     "url": "https://www.defenceukraine.com/en/references/czech-ammunition-initiative/",
+     "date": "2026"
+    }
+   ],
+   "notes": []
+  },
+  "NOR": {
+   "own_industry_share": {
+    "low": 0.2,
+    "central": 0.3,
+    "high": 0.45,
+    "basis": "Modelled. Largest PURL payer (USD 1.36bn) => large flow to US; Kongsberg/Nammo NASAMS & ammo are domestic but NASAMS has US Raytheon content; contributes to Danish model and Czech initiative."
+   },
+   "own_industry_eur_bn": null,
+   "purl_paid_eur_bn": {
+    "2025": {
+     "value": 0.7,
+     "basis": "Kiel: over EUR 700m by Dec 2025"
+    },
+    "cumulative_usd_bn_to_2026_07": 1.36,
+    "cumulative_eur_bn": 1.17
+   },
+   "danish_model_eur_bn": {
+    "value": null,
+    "note": "pledged for 2025, amount not found"
+   },
+   "czech_initiative_eur_bn": {
+    "value": null
+   },
+   "received_from_others_eur_bn": null,
+   "certainty": "C",
+   "sources": [
+    {
+     "title": "Kiel Policy Brief 203 'Europe Steps Up' (PURL EUR 3.7bn 2025; Danish model; 22% procurement in Ukraine)",
+     "url": "https://assets.ctfassets.net/mj324dykhxwi/4lI3lGjlJWbRhgU4T8QoQR/b594ceaf1b7472a674917fbf8c8ca7c9/Kiel_Institute_KPB_Ukraine_Support_Tracker.pdf",
+     "date": "2026-02"
+    },
+    {
+     "title": "Ukraine Cabinet: A year of PURL - USD 6.7bn, 29 countries, top-5 contributors",
+     "url": "https://www.kmu.gov.ua/en/news/rik-purl-maizhe-7-mlrd-dlia-postavok-krytychnoho-ozbroiennia-dlia-ukrainy",
+     "date": "2026-07-23"
+    },
+    {
+     "title": "defenceukraine.com Danish Model reference",
+     "url": "https://www.defenceukraine.com/en/references/danish-model/",
+     "date": "2026"
+    },
+    {
+     "title": "NATO: Nordic and Baltic Allies to fund joint $500m PURL package",
+     "url": "https://www.nato.int/en/news-and-events/articles/news/2025/11/13/nordic-and-baltic-allies-to-fund-joint-500m-purl-package-for-ukraine",
+     "date": "2025-11-13"
+    }
+   ],
+   "notes": []
+  },
+  "SWE": {
+   "own_industry_share": {
+    "low": 0.4,
+    "central": 0.5,
+    "high": 0.65,
+    "basis": "Modelled. Much Swedish aid is domestic kit (CV90, Archer, Saab RBS/Carl-Gustaf, ASC 890) but PURL USD 546m and Danish model ~EUR 180m flow abroad."
+   },
+   "own_industry_eur_bn": null,
+   "purl_paid_eur_bn": {
+    "cumulative_usd_bn_to_2026_07": 0.546,
+    "cumulative_eur_bn": 0.47,
+    "earlier": "USD 275m (Euromaidan Feb 2026)"
+   },
+   "danish_model_eur_bn": {
+    "value": 0.18,
+    "certainty": "B"
+   },
+   "czech_initiative_eur_bn": {
+    "value": null
+   },
+   "received_from_others_eur_bn": null,
+   "certainty": "C",
+   "sources": [
+    {
+     "title": "Ukraine Cabinet: A year of PURL - USD 6.7bn, 29 countries, top-5 contributors",
+     "url": "https://www.kmu.gov.ua/en/news/rik-purl-maizhe-7-mlrd-dlia-postavok-krytychnoho-ozbroiennia-dlia-ukrainy",
+     "date": "2026-07-23"
+    },
+    {
+     "title": "Euromaidan Press: US envoy names PURL leaders (DK DKK 580m, SE $275m, NO ~$135m, NL EUR 500m first package)",
+     "url": "https://euromaidanpress.com/2026/02/11/us-envoy-names-norway-netherlands-germany-as-purl-program-leaders-with-4-5-billion-in-weapons-commitments/",
+     "date": "2026-02-11"
+    },
+    {
+     "title": "Kiel Policy Brief 203 'Europe Steps Up' (PURL EUR 3.7bn 2025; Danish model; 22% procurement in Ukraine)",
+     "url": "https://assets.ctfassets.net/mj324dykhxwi/4lI3lGjlJWbRhgU4T8QoQR/b594ceaf1b7472a674917fbf8c8ca7c9/Kiel_Institute_KPB_Ukraine_Support_Tracker.pdf",
+     "date": "2026-02"
+    }
+   ],
+   "notes": []
+  },
+  "FIN": {
+   "own_industry_share": {
+    "low": 0.4,
+    "central": 0.55,
+    "high": 0.7,
+    "basis": "Modelled; Finnish packages mostly from stocks backfilled via domestic/ Nordic industry (Patria, Nammo). Weak evidence."
+   },
+   "own_industry_eur_bn": null,
+   "purl_paid_eur_bn": {
+    "value": null,
+    "note": "Part of Nordic-Baltic USD 500m package (Nov 2025); one secondary source cites EUR 100m - unverified"
+   },
+   "danish_model_eur_bn": null,
+   "czech_initiative_eur_bn": null,
+   "received_from_others_eur_bn": null,
+   "certainty": "C",
+   "sources": [
+    {
+     "title": "NATO: Nordic and Baltic Allies to fund joint $500m PURL package",
+     "url": "https://www.nato.int/en/news-and-events/articles/news/2025/11/13/nordic-and-baltic-allies-to-fund-joint-500m-purl-package-for-ukraine",
+     "date": "2025-11-13"
+    }
+   ],
+   "notes": []
+  },
+  "POL": {
+   "own_industry_share": {
+    "low": 0.5,
+    "central": 0.7,
+    "high": 0.85,
+    "basis": "Modelled. Polish aid mostly from own (largely Soviet-era) stocks plus domestic Krab/PGZ deliveries partly paid by others (EU EPF, US FMF). Stock transfers are not new spending; backfill largely K2/K9 (Korea) and US Abrams/HIMARS - i.e. replenishment flows abroad."
+   },
+   "own_industry_eur_bn": null,
+   "purl_paid_eur_bn": {
+    "value": null,
+    "note": "Co-funded a Dec 2025 package with DE and NO; Polish share not published"
+   },
+   "danish_model_eur_bn": null,
+   "czech_initiative_eur_bn": null,
+   "received_from_others_eur_bn": {
+    "value": null,
+    "note": "Krab howitzers financed partly by EU/US funds - amounts not established"
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "title": "defenceukraine.com PURL reference",
+     "url": "https://www.defenceukraine.com/en/references/purl/",
+     "date": "2026-07"
+    }
+   ],
+   "notes": []
+  },
+  "CZE": {
+   "own_industry_share": {
+    "low": 0.2,
+    "central": 0.35,
+    "high": 0.5,
+    "basis": "Modelled. The Czech-led initiative is mostly financed by others and buys mainly outside Czechia (South Korea, Turkey, South Africa, India per defenceukraine.com); Czech firms (CSG, Excalibur) earn brokerage/production margins. Czech national budget money small (Babis: no new budget funds)."
+   },
+   "own_industry_eur_bn": null,
+   "purl_paid_eur_bn": null,
+   "danish_model_eur_bn": null,
+   "czech_initiative_eur_bn": {
+    "value": null,
+    "note": "Czechia's own contribution: 'tens of millions of euros' (2024); total initiative: >EUR 1.6bn pledged by 15 states May 2024; ~4m rounds worth ~CZK 90bn delivered; EUR 1-1.4bn raised for 2026 vs EUR 5bn need"
+   },
+   "received_from_others_eur_bn": {
+    "value": null,
+    "note": "Funds pass through Czech MoD/firms but most is re-spent on non-EU suppliers; Czech-retained share unknown"
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "title": "defenceukraine.com Czech Ammunition Initiative reference",
+     "url": "https://www.defenceukraine.com/en/references/czech-ammunition-initiative/",
+     "date": "2026"
+    },
+    {
+     "title": "bne IntelliNews: Ukraine to start receiving ammunition worth EUR 1.6bn through Czech scheme (15 states >EUR 1.6bn)",
+     "url": "https://www.intellinews.com/ukraine-to-start-receiving-ammunition-worth-1-6bn-through-czech-scheme-327322/",
+     "date": "2024-05"
+    },
+    {
+     "title": "Euromaidan: Czech initiative needs EUR 5bn in 2026, EUR 1.4bn raised",
+     "url": "https://euromaidanpress.com/2026/02/11/czech-ammunition-initiative-for-ukraine-needs-e5-billion-in-2026-only-e1-4-billion-raised-so-far/",
+     "date": "2026-02-11"
+    }
+   ],
+   "notes": []
+  },
+  "CAN": {
+   "own_industry_share": {
+    "low": 0.2,
+    "central": 0.35,
+    "high": 0.5,
+    "basis": "Modelled. Large documented spending in the US: PURL ~CAD 892m, NASAMS purchase from US (2023), US-sourced items; some domestic (GDLS-Canada ACSVs, ammunition)."
+   },
+   "own_industry_eur_bn": null,
+   "purl_paid_eur_bn": {
+    "2025": {
+     "value": 0.55,
+     "basis": "Kiel: approx. EUR 550m by Dec 2025 (USD 500m Aug 2025 + CAD 200m share Dec 2025)"
+    },
+    "cumulative_cad_bn": 0.892,
+    "cumulative_usd_bn_to_2026_07": 0.834,
+    "cumulative_eur_bn": 0.72,
+    "certainty": "B"
+   },
+   "danish_model_eur_bn": {
+    "value": null,
+    "note": "pledged 2025, amount not found"
+   },
+   "czech_initiative_eur_bn": {
+    "value": null,
+    "note": "contributor; one tranche CAD 13m reported (Interfax), total not found"
+   },
+   "received_from_others_eur_bn": null,
+   "certainty": "C",
+   "sources": [
+    {
+     "title": "Canada DND Question Period Note: PURL contribution ~CAD 892m",
+     "url": "https://search.open.canada.ca/qpnotes/record/dnd-mdn%2CDND-2026-QP-00008",
+     "date": "2026"
+    },
+    {
+     "title": "Kiel Policy Brief 203 'Europe Steps Up' (PURL EUR 3.7bn 2025; Danish model; 22% procurement in Ukraine)",
+     "url": "https://assets.ctfassets.net/mj324dykhxwi/4lI3lGjlJWbRhgU4T8QoQR/b594ceaf1b7472a674917fbf8c8ca7c9/Kiel_Institute_KPB_Ukraine_Support_Tracker.pdf",
+     "date": "2026-02"
+    },
+    {
+     "title": "Ukraine Cabinet: A year of PURL - USD 6.7bn, 29 countries, top-5 contributors",
+     "url": "https://www.kmu.gov.ua/en/news/rik-purl-maizhe-7-mlrd-dlia-postavok-krytychnoho-ozbroiennia-dlia-ukrainy",
+     "date": "2026-07-23"
+    },
+    {
+     "title": "defenceukraine.com Danish Model reference",
+     "url": "https://www.defenceukraine.com/en/references/danish-model/",
+     "date": "2026"
+    },
+    {
+     "title": "Interfax-Ukraine: Germany EUR 576m for 180,000 rounds in Czech initiative",
+     "url": "https://en.interfax.com.ua/news/general/1132786-amp.html",
+     "date": "2024"
+    }
+   ],
+   "notes": []
+  },
+  "ITA": {
+   "own_industry_share": {
+    "low": 0.4,
+    "central": 0.6,
+    "high": 0.8,
+    "basis": "Modelled with weak evidence: Italian aid decrees are classified; deliveries mostly from stocks (SAMP/T, artillery). No PURL contribution amount found."
+   },
+   "own_industry_eur_bn": null,
+   "purl_paid_eur_bn": null,
+   "danish_model_eur_bn": null,
+   "czech_initiative_eur_bn": null,
+   "received_from_others_eur_bn": null,
+   "certainty": "C",
+   "sources": [],
+   "notes": [
+    "Listed as PURL participant in one secondary source; no amount"
+   ]
+  },
+  "ESP": {
+   "own_industry_share": {
+    "low": 0.4,
+    "central": 0.6,
+    "high": 0.8,
+    "basis": "Modelled with weak evidence: mostly from stocks; joined PURL Oct 2025, co-funded Dec 2025 package - amount not published."
+   },
+   "own_industry_eur_bn": null,
+   "purl_paid_eur_bn": null,
+   "danish_model_eur_bn": null,
+   "czech_initiative_eur_bn": null,
+   "received_from_others_eur_bn": null,
+   "certainty": "C",
+   "sources": [
+    {
+     "title": "defenceukraine.com PURL reference",
+     "url": "https://www.defenceukraine.com/en/references/purl/",
+     "date": "2026-07"
+    }
+   ],
+   "notes": []
+  },
+  "EU": {
+   "own_industry_share": {
+    "low": 0.7,
+    "central": 0.8,
+    "high": 0.9,
+    "basis": "EPF reimbursements flow back to member states (they donated/procured); ASAP/EDIRPA money is restricted to EU industry; new EUR 90bn Ukraine Support Loan (Dec 2025) earmarks EUR 60bn for defence with EU/EEA/Ukraine origin rules."
+   },
+   "own_industry_eur_bn": null,
+   "purl_paid_eur_bn": null,
+   "danish_model_eur_bn": null,
+   "czech_initiative_eur_bn": null,
+   "received_from_others_eur_bn": null,
+   "certainty": "B",
+   "sources": [
+    {
+     "title": "Kyiv Independent: EU court / EPF EUR 11.1bn for Ukraine since 2022, reimbursement mechanism blocked",
+     "url": "https://kyivindependent.com/top-eu-court-throws-out-orban-era-attempt-to-block-funds-for-ukraine/",
+     "date": "2026-09-09"
+    },
+    {
+     "title": "Kyiv Post: EU releases EUR 6.6bn EPF (EUR 4.7bn reimbursements, EUR 1bn joint procurement, EUR 0.9bn EUMAM)",
+     "url": "https://www.kyivpost.com/post/85439",
+     "date": "2026-09-25"
+    },
+    {
+     "title": "Kiel Policy Brief 203 'Europe Steps Up' (PURL EUR 3.7bn 2025; Danish model; 22% procurement in Ukraine)",
+     "url": "https://assets.ctfassets.net/mj324dykhxwi/4lI3lGjlJWbRhgU4T8QoQR/b594ceaf1b7472a674917fbf8c8ca7c9/Kiel_Institute_KPB_Ukraine_Support_Tracker.pdf",
+     "date": "2026-02"
+    }
+   ],
+   "notes": [],
+   "epf": {
+    "total_for_ukraine_eur_bn": 11.1,
+    "released_sep_2026_eur_bn": 6.6,
+    "of_which_reimbursements_eur_bn": 4.7,
+    "joint_procurement_eur_bn": 1.0,
+    "eumam_eur_bn": 0.9,
+    "ammo_2023_tracks_eur_bn": {
+     "stock_reimbursement": 1.0,
+     "joint_procurement": 1.0
+    }
+   }
+  },
+  "OTHER_PURL": {
+   "note": "Other PURL payers (amounts where found)",
+   "AUS": {
+    "eur_bn": 0.0284,
+    "source": "Kiel KPB203"
+   },
+   "NZL": {
+    "eur_bn": 0.0074,
+    "source": "Kiel KPB203"
+   },
+   "ROU": {
+    "eur_bn": 0.05,
+    "source": "secondary (ukranews/Interfax, end 2025)"
+   },
+   "HRV": {
+    "eur_bn": 0.015,
+    "source": "secondary, end 2025"
+   },
+   "Nordic_Baltic_joint_package_usd_bn": 0.5,
+   "BEL_LUX_PRT_SVN_ESP_package_dec2025": "amounts unpublished",
+   "certainty": "B/C"
+  }
+ },
+ "russia_side": {
+  "north_korea": {
+   "value_usd_bn": {
+    "low": 1.72,
+    "central": null,
+    "high": 20.1
+   },
+   "detail": "KIDA (South Korea) ~USD 20bn: munitions ~USD 19.2bn, tech transfer USD 0.63bn, labour USD 0.28bn; mostly paid in kind (tech, oil, food), not cash. Alternative study (Guseinova) USD 1.72-5.52bn.",
+   "certainty": "C",
+   "sources": [
+    {
+     "url": "https://news.online.ua/en/north-korea-earned-almost-20-billion-from-russian-arms-supplies-892621/"
+    },
+    {
+     "url": "https://www.kyivpost.com/post/41325"
+    }
+   ]
+  },
+  "iran": {
+   "value_usd_bn": 1.75,
+   "detail": "Leaked Sahara Thunder documents: USD 1.75bn contract (6,000 Shahed UAVs + tech, equipment, software; USD 193k/unit at 6,000 vs 375k asked), partly paid in gold (2,067,795 g bullion Feb 2023). Unverified leak.",
+   "certainty": "C",
+   "sources": [
+    {
+     "url": "https://www.twz.com/news-features/what-does-a-shahed-136-really-cost"
+    },
+    {
+     "url": "https://en.thepage.ua/news/hackers-revealed-how-much-russia-paid-for-iranian-shahed-drones"
+    }
+   ]
+  },
+  "china": {
+   "dual_use_high_priority_usd_bn_per_year": {
+    "2024": ">4",
+    "2025": ">4",
+    "H1_2025": 1.9
+   },
+   "detail": "MERICS/OSW: China exports of CHPL dual-use goods to Russia >USD 4bn/yr; Bloomberg (2026): China supplies ~90% of Russia's sanctioned-tech imports. Commercial payments, not aid.",
+   "certainty": "B",
+   "sources": [
+    {
+     "url": "https://merics.org/en/china-russia-dashboard"
+    },
+    {
+     "url": "https://www.osw.waw.pl/chinarussia/"
+    },
+    {
+     "url": "https://www.themoscowtimes.com/2026/08/04/china-now-supplies-90-of-russias-sanctioned-tech-imports-bloomberg"
+    }
+   ]
+  },
+  "discount_gains": {
+   "value": null,
+   "note": "No sourced estimate collected of Russian gains from discounts; the oil discount runs the other way (buyers China/India gain). Not quantified here."
+  }
+ },
+ "ukraine_civil_imports": {
+  "drones": {
+   "2024_imports_usd_bn": 1.17,
+   "share_of_goods_imports": 0.0166,
+   "china_share_2024": 0.9235,
+   "components_2024_usd_bn": 0.135,
+   "china_share_of_drone_component_imports": {
+    "H1_2025": 0.38,
+    "Jan-Aug_2026": 0.28,
+    "early_2024": "~0.9"
+   },
+   "sources": [
+    {
+     "url": "https://dev.ua/en/news/import-droniv-1745323111"
+    },
+    {
+     "url": "https://www.rferl.org/a/ukraine-drones-china-chinese-components/33835808.html"
+    },
+    {
+     "url": "https://abcnews.com/amp/International/wireStory/secret-vulnerability-ukraines-drone-arsenal-chinese-technology-137247698"
+    }
+   ],
+   "certainty": "B"
+  },
+  "generators_energy_equipment": {
+   "value": null,
+   "note": "No sourced breakdown found in this pass; needs State Customs Service HS 8501/8502 data."
+  },
+  "steel_from_china_H1_2025_usd_bn": 0.12
+ },
+ "notes": [
+  "Currency assumptions: 2022-24 USD->EUR 0.925; 2025-26 USD->EUR 0.86; DKK->EUR 0.134. Conversions are approximations.",
+  "own_industry_share for all countries except USA (and EU institutional rules) is a modelled range (certainty C); no government publishes a domestic-procurement share of Ukraine aid.",
+  "Kiel (Aug 2025): Europe allocated >=EUR 35.1bn via procurement through June 2025, contracts 'primarily' to European and Ukrainian firms - no per-country split.",
+  "Kiel KPB203: procurement in Ukraine rose from 4% (H2 2024) to 12% (H1 2025) and 22% (H2 2025) of procurement-based aid; >=11 donors fund Ukrainian production. Ukraine MoD: USD 6.1bn foreign money for Ukrainian production in 2025, ~USD 1.8bn via Danish model.",
+  "PURL: USD 6.7bn from 29 countries by 2026-07-23 (KMU); EUR 3.7bn in 2025 (Kiel). >90% of PURL equipment from US stocks; ~95% of Patriot interceptors reaching Ukraine come via PURL.",
+  "Czech initiative: ~4-4.4m large-calibre rounds delivered (2024: 1.5m, 2025: 1.8m); ~1m contracted for 2026; donors fell 18->9; mostly bought from non-EU producers.",
+  "Stock-based aid and its backfill: when donors give from stocks and replenish from foreign suppliers (e.g. Poland->Korea, many->US), the flowback goes abroad with a lag; not quantified."
+ ],
+ "source_index": {
+  "csis_missing": {
+   "title": "Where Is the Missing $100 Billion in U.S. Aid for Ukraine? (Cancian, CSIS)",
+   "url": "https://www.csis.org/analysis/where-missing-100-billion-us-aid-ukraine",
+   "date": "2025-02-11"
+  },
+  "csis_dib": {
+   "title": "How Supporting Ukraine Is Revitalizing the U.S. Defense Industrial Base (CSIS)",
+   "url": "https://www.csis.org/analysis/how-supporting-ukraine-revitalizing-us-defense-industrial-base",
+   "date": "2024-04-18"
+  },
+  "quincy_cancian": {
+   "title": "Quincy Institute quoting Cancian & Park (CSIS, May 2024): 72% of $61bn supplemental / 86% of military part spent in US",
+   "url": "https://quincyinst.org/2024/09/10/as-the-money-dries-up-lawmakers-eye-even-more-aid-for-ukraine/",
+   "date": "2024-09-10"
+  },
+  "gao": {
+   "title": "GAO-24-107232 Ukraine funding (>$174bn in 5 supplementals)",
+   "url": "https://www.gao.gov/products/GAO-24-107232",
+   "date": "2024-05"
+  },
+  "politico_map": {
+   "title": "Politico: Biden admin map - >$27bn PDA replenishment+USAI obligations in 37 states",
+   "url": "https://www.politico.com/news/2023/11/29/biden-admin-map-states-benefit-ukraine-aid-00129068",
+   "date": "2023-11-29"
+  },
+  "kiel_kpb203": {
+   "title": "Kiel Policy Brief 203 'Europe Steps Up' (PURL EUR 3.7bn 2025; Danish model; 22% procurement in Ukraine)",
+   "url": "https://assets.ctfassets.net/mj324dykhxwi/4lI3lGjlJWbRhgU4T8QoQR/b594ceaf1b7472a674917fbf8c8ca7c9/Kiel_Institute_KPB_Ukraine_Support_Tracker.pdf",
+   "date": "2026-02"
+  },
+  "kiel_aug2025": {
+   "title": "Kiel: Europe now leading spender on weapons production for Ukraine (EUR 35.1bn procurement, contracts mainly to European & Ukrainian firms)",
+   "url": "https://www.kielinstitut.de/media/news/ukraine-support-tracker-europe-now-leading-spender-on-weapons-production-for-ukraine/",
+   "date": "2025-08-12"
+  },
+  "kmu_purl": {
+   "title": "Ukraine Cabinet: A year of PURL - USD 6.7bn, 29 countries, top-5 contributors",
+   "url": "https://www.kmu.gov.ua/en/news/rik-purl-maizhe-7-mlrd-dlia-postavok-krytychnoho-ozbroiennia-dlia-ukrainy",
+   "date": "2026-07-23"
+  },
+  "defua_purl": {
+   "title": "defenceukraine.com PURL reference",
+   "url": "https://www.defenceukraine.com/en/references/purl/",
+   "date": "2026-07"
+  },
+  "nato_nb8": {
+   "title": "NATO: Nordic and Baltic Allies to fund joint $500m PURL package",
+   "url": "https://www.nato.int/en/news-and-events/articles/news/2025/11/13/nordic-and-baltic-allies-to-fund-joint-500m-purl-package-for-ukraine",
+   "date": "2025-11-13"
+  },
+  "canada_qp": {
+   "title": "Canada DND Question Period Note: PURL contribution ~CAD 892m",
+   "url": "https://search.open.canada.ca/qpnotes/record/dnd-mdn%2CDND-2026-QP-00008",
+   "date": "2026"
+  },
+  "euromaidan_purl": {
+   "title": "Euromaidan Press: US envoy names PURL leaders (DK DKK 580m, SE $275m, NO ~$135m, NL EUR 500m first package)",
+   "url": "https://euromaidanpress.com/2026/02/11/us-envoy-names-norway-netherlands-germany-as-purl-program-leaders-with-4-5-billion-in-weapons-commitments/",
+   "date": "2026-02-11"
+  },
+  "pravda_de_purl": {
+   "title": "Pravda: Germany to allocate another US$400m (USD 200m PURL + USD 200m PAC-3)",
+   "url": "https://www.pravda.com.ua/eng/news/2026/06/18/8039903/",
+   "date": "2026-06-18"
+  },
+  "defua_danish": {
+   "title": "defenceukraine.com Danish Model reference",
+   "url": "https://www.defenceukraine.com/en/references/danish-model/",
+   "date": "2026"
+  },
+  "kyivind_dk30": {
+   "title": "Kyiv Independent: Denmark 30th package DKK 4.4bn, DKK 1.3bn via Danish model",
+   "url": "https://kyivindependent.com/denmark-announces-670-million-defense-aid-package-for-ukraine/",
+   "date": "2026-06-30"
+  },
+  "defua_czech": {
+   "title": "defenceukraine.com Czech Ammunition Initiative reference",
+   "url": "https://www.defenceukraine.com/en/references/czech-ammunition-initiative/",
+   "date": "2026"
+  },
+  "interfax_czech": {
+   "title": "Interfax-Ukraine: Germany EUR 576m for 180,000 rounds in Czech initiative",
+   "url": "https://en.interfax.com.ua/news/general/1132786-amp.html",
+   "date": "2024"
+  },
+  "intellinews_czech": {
+   "title": "bne IntelliNews: Ukraine to start receiving ammunition worth EUR 1.6bn through Czech scheme (15 states >EUR 1.6bn)",
+   "url": "https://www.intellinews.com/ukraine-to-start-receiving-ammunition-worth-1-6bn-through-czech-scheme-327322/",
+   "date": "2024-05"
+  },
+  "euromaidan_czech": {
+   "title": "Euromaidan: Czech initiative needs EUR 5bn in 2026, EUR 1.4bn raised",
+   "url": "https://euromaidanpress.com/2026/02/11/czech-ammunition-initiative-for-ukraine-needs-e5-billion-in-2026-only-e1-4-billion-raised-so-far/",
+   "date": "2026-02-11"
+  },
+  "deaidua_de_czech": {
+   "title": "Germany invested another EUR 300m in Czech ammunition initiative",
+   "url": "https://deaidua.org/news/2026/05/14/germany-300-million-czech-ammunition-initiative/",
+   "date": "2026-05-14"
+  },
+  "an_fonds_fr": {
+   "title": "Assemblée nationale: fonds spécial de soutien à l'Ukraine EUR 200m to order from French industry",
+   "url": "https://www.assemblee-nationale.fr/dyn/16/questions/QANR5L16QG509.pdf",
+   "date": "2022-2023"
+  },
+  "ukfund": {
+   "title": "DE&S: GBP 300m artillery contract as International Fund for Ukraine reaches GBP 1bn",
+   "url": "https://des.mod.uk/des-awards-300m-artillery-contract-as-international-fund-for-ukraine-reaches-1bn-milestone",
+   "date": "2024-09-06"
+  },
+  "ukdes_jobs": {
+   "title": "DE&S: Military boost to Ukraine will support UK growth and jobs (GBP 4.5bn 2025)",
+   "url": "https://des.mod.uk/military-boost-to-ukraine-front-line-will-support-uk-growth-and-jobs",
+   "date": "2025"
+  },
+  "de_budget26": {
+   "title": "Rubryka: Germany EUR 11.5bn military aid in 2026 budget",
+   "url": "https://rubryka.com/en/2025/11/14/nimechchyna-zbilshuye-pidtrymku-ukrayiny/",
+   "date": "2025-11-14"
+  },
+  "kyivind_epf": {
+   "title": "Kyiv Independent: EU court / EPF EUR 11.1bn for Ukraine since 2022, reimbursement mechanism blocked",
+   "url": "https://kyivindependent.com/top-eu-court-throws-out-orban-era-attempt-to-block-funds-for-ukraine/",
+   "date": "2026-09-09"
+  },
+  "kyivpost_epf": {
+   "title": "Kyiv Post: EU releases EUR 6.6bn EPF (EUR 4.7bn reimbursements, EUR 1bn joint procurement, EUR 0.9bn EUMAM)",
+   "url": "https://www.kyivpost.com/post/85439",
+   "date": "2026-09-25"
+  },
+  "dsca_patriot": {
+   "title": "DSCA: Ukraine - Patriot sustainment ($105m)",
+   "url": "https://www.dsca.mil/Press-Media/Major-Arms-Sales/Article-Display/Article/4290514/ukraine-patriot-air-defense-system-sustainment",
+   "date": "2025-11-18"
+  },
+  "aa_patriot": {
+   "title": "AA: US approves $179.1m Patriot support for Ukraine",
+   "url": "https://www.aa.com.tr/en/americas/us-approves-1791m-patriot-air-defense-system-support-for-ukraine/3673276",
+   "date": "2025-08-29"
+  },
+  "aerotime_eram": {
+   "title": "AeroTime: US approves missile (ERAM $825m, funded by DK/NL/NO + FMF) and Patriot sales",
+   "url": "https://www.aerotime.aero/articles/us-approves-missile-patriot-sales-ukraine",
+   "date": "2025-08"
+  },
+  "kiel_nonew": {
+   "title": "Kiel: European support continues steadily - US assistance stalls (no new US aid since 2025-01-09)",
+   "url": "https://www.kielinstitut.de/media/news/european-support-for-ukraine-continues-steadily-us-assistance-stalls/",
+   "date": "2025"
+  }
+ }
+}
