@@ -732,6 +732,7 @@ def build() -> dict:
                     "src": [pid],
                 }
 
+    apply_shipping(countries, src, note)
     apply_reexports(countries, src, note)
     apply_residual(countries, src, note)
     price_indices(countries)
@@ -818,6 +819,7 @@ def price_indices(countries: dict[str, dict]) -> None:
             ("sell_ukr", "non_fuel_goods"),
             ("svc_bought", "services"),
             ("svc_sold", "services"),
+            ("shipping", "services"),
         ):
             obj = c.get(key)
             if not obj:
@@ -882,6 +884,47 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
 HK_METALS_SHARE = 0.98
 HK_ONWARD = (0.3, 0.55, 0.85)
 TRANSIT_HUBS = {"HKG": "gold transit hub: the share of Russian gold passed on to mainland China is counted for China"}  # fmt: skip
+
+
+def apply_shipping(countries: dict[str, dict], src: Sources, note) -> None:
+    """Income from carrying, insuring and financing Russian oil and LNG exports, and from selling tankers to the shadow
+    fleet, by the country of the company that earns it. The share already inside services trade with Russia is left out."""
+    sh = load(GAPS / "shipping.json")
+    sid = src.add(
+        "shipping",
+        "Tanker shipping, insurance and ship sales serving Russian oil and LNG exports: CREA, KSE Institute, S&P Global, Windward, press reports",
+        "https://energyandcleanair.org/",
+        sh.get("generated"),
+        "freight = barrels x freight rates, split by owner or manager country; see research/2026-10/gaps/shipping-notes.md",
+    )
+    parts = ("freight", "ship_sales", "insurance_finance", "registry")
+    for iso3, d in sh["countries"].items():
+        c = countries.get(iso3)
+        if not c:
+            continue
+        ov = d.get("overlap_share_with_services_sold_to_rus") or {}
+        out = {"years": [0.0] * 6, "years_lo": [0.0] * 6, "years_hi": [0.0] * 6}
+        for part in parts:
+            for i, y in enumerate(YEARS):
+                v = (d.get(part) or {}).get(str(y)) or {}
+                o = ov.get(f"{part}_2021_2022" if part == "insurance_finance" and y <= 2022 else part) or {}
+                # the low end leaves out the most overlap, the high end the least
+                out["years"][i] += v.get("central", 0) * (1 - o.get("central", 0))
+                out["years_lo"][i] += v.get("low", 0) * (1 - o.get("high", 0))
+                out["years_hi"][i] += v.get("high", 0) * (1 - o.get("low", 0))
+        if not any(out["years_hi"]):
+            continue
+        b, ob = d.get("baseline_2019_2021") or {}, ov.get("freight") or {}
+        c["shipping"] = {k: [round(v, 5) for v in vals] for k, vals in out.items()} | {
+            "base": round(b.get("central", 0) * (1 - ob.get("central", 0)), 5),
+            "base_range": [
+                round(b.get("low", 0) * (1 - ob.get("high", 0)), 5),
+                round(b.get("high", 0) * (1 - ob.get("low", 0)), 5),
+            ],
+            "cert": d.get("certainty") or "D",
+            "src": [sid],
+        }
+        note(iso3, "Services trade with Russia", "est", "includes shipping and insuring Russian oil (estimate)")
 
 
 def apply_reexports(countries: dict[str, dict], src: Sources, note) -> None:
