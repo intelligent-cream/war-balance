@@ -1,0 +1,8215 @@
+{
+ "generated": "2026-10-18",
+ "unit": "EUR bn",
+ "method": "Earnings of each country's companies (owner or manager of the ship, insurer, lender, registry; never the flag of convenience as owner) from Russian seaborne crude, oil-product and LNG exports. EUR bn at ECB yearly averages; 2026 = Jan-Aug. (1) Freight: a yearly gross freight pool in USD (crude: barrels x average freight per barrel across long-haul Baltic/Black Sea-India/China and short-haul Kozmino/Europe routes; products: barrels x product-tanker freight; LNG: Arc7 and conventional carrier charter earnings) = crude 3.0/3.6/2.2, products 2.5/2.4/2.0, LNG 0.8/0.9/1.0 for 2019/2020/2021; 2022 8.5/5.0/1.3; 2023 11.0/5.0/1.2; 2024 8.1/4.0/1.1; 2025 7.2/3.6/1.1; 2026 Jan-Aug 9.7/3.6/0.8. Freight per barrel follows Reuters/Argus voyage quotes (Baltic-India Aframax ~USD 20m record 2022, 7.8m Apr 2023, Suezmax 27-30m Oct 2023, 4.7-8m in 2025, 16-23m Mar-Apr 2026) and volumes from KSE/CREA (seaborne crude ~3.3-3.5 mb/d, products ~2.1-2.4 mb/d, LNG ~30-33 Mt). The pool is split by owner/manager country with yearly shares from CREA, S&P Global, Windward, Global Witness and FT evidence; Russian-owned and Russian-controlled tankers (Sovcomflot and fronts registered in the UAE/HK etc., about 45% of UAE-registered shadow tonnage) form a Russian pool that is not assigned to any foreign country. Opaque owners (2-5.5%) are spread over the shadow hubs (UAE 35%, HK 20%, China 15%, India 15%, Vietnam/Seychelles/Malaysia 5% each) so missing ownership data never counts as zero. Gross freight is revenue, not profit: time-charter-equivalent earnings are ~60-75% of it, the rest is bunkers and port costs. (2) Ship sales: second-hand tankers sold to shadow-fleet buyers by seller country (FTM: >230 Western tankers, >USD 6bn; Greece ~USD 4bn, UK 0.59, Germany 0.19, Belgium 0.135; non-Western sellers educated guesses), timed 38/37/17/6/2% over 2022-2026. Counted value = 40% of sale price (the price premium over scrap/pre-war values for 15-20-year-old tonnage), low 20% x 0.7, high 80% x 1.5 (the full sale value when the buyer is clearly Russia-linked). No baseline (there was no shadow-fleet demand before 2022). (3) Insurance/finance/management: P&I+hull premiums = tanker-equivalents in Russian trade (340-350 pre-war, 550 in 2022, ~700 from 2023) x USD 0.45-0.6m per ship-year, split by insurer country (IG clubs in the UK, Norway, Sweden, Luxembourg, US, Japan before the Dec 2022 ban; Ingosstrakh and other Russian insurers, plus Indian, UAE and Chinese providers after); cargo insurance (0.04% of export value), third-party management fees (USD 0.18m per ship-year) and a finance margin (2-5% of freight) follow the owner shares. (4) Registry fees: ship-years x USD 20-35k by flag share; Liberian and Marshall Islands fees split 50/50 with their US-based operators. (5) Baseline 2019-2021 = mean of the three years for freight, insurance/finance and registry. Ranges ~90%: country range = common pool uncertainty (x0.65-x1.45) combined with share uncertainty by certainty (B x0.7-1.35, C x0.5-1.8, D x0.35/0.4-2.2/2.5) as independent log errors. Totals keep the pool error fully correlated. Script: working/shipping/build.py and assemble.py.",
+ "countries": {
+  "ARE": {
+   "freight": {
+    "2021": {
+     "low": 0.019,
+     "central": 0.0524,
+     "high": 0.1253
+    },
+    "2022": {
+     "low": 0.2795,
+     "central": 0.7692,
+     "high": 1.8391
+    },
+    "2023": {
+     "low": 0.6861,
+     "central": 1.8885,
+     "high": 4.5149
+    },
+    "2024": {
+     "low": 0.6817,
+     "central": 1.8764,
+     "high": 4.4861
+    },
+    "2025": {
+     "low": 0.5382,
+     "central": 1.4814,
+     "high": 3.5417
+    },
+    "2026": {
+     "low": 0.7237,
+     "central": 1.992,
+     "high": 4.7625
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0012,
+     "central": 0.0037,
+     "high": 0.0107
+    },
+    "2022": {
+     "low": 0.0151,
+     "central": 0.0478,
+     "high": 0.1365
+    },
+    "2023": {
+     "low": 0.0318,
+     "central": 0.1005,
+     "high": 0.287
+    },
+    "2024": {
+     "low": 0.0319,
+     "central": 0.1007,
+     "high": 0.2877
+    },
+    "2025": {
+     "low": 0.0261,
+     "central": 0.0824,
+     "high": 0.2353
+    },
+    "2026": {
+     "low": 0.0243,
+     "central": 0.0765,
+     "high": 0.2186
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0008
+    },
+    "2025": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0011
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0012
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0246,
+    "central": 0.0702,
+    "high": 0.1758
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "Shipping Telegraph: UAE and Russia the biggest registered owners of shadow tankers (CREA counts: UAE ~41%, India 12%, HK/China/Vietnam ~8% each of shadow crude tankers)",
+     "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
+     "date": "2024"
+    },
+    {
+     "name": "S&P Global Market Intelligence: Russian shadow shipping, emerging new owners (India, UAE)",
+     "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/russian-shadow-shipping-emerging-new-owners",
+     "date": "2023-05-17"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Main shadow-fleet registered-owner/manager hub (CREA: ~41% of shadow crude tankers registered in the UAE). Gross UAE-registered share of crude freight about 0.25-0.32 in 2023-2026; roughly 45% of that is judged Russian-controlled (ex-Sovcomflot transfers, oil-company-linked shells) and moved to the Russian pool, leaving 13-17% net. Also takes 35% of the opaque-owner residual. Insurance: some UAE-based P&I providers for shadow tankers. Pre-war presence small. Certainty D: control split is an educated guess.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "BEL": {
+   "freight": {
+    "2021": {
+     "low": 0.0194,
+     "central": 0.044,
+     "high": 0.0881
+    },
+    "2022": {
+     "low": 0.0521,
+     "central": 0.1178,
+     "high": 0.236
+    },
+    "2023": {
+     "low": 0.0147,
+     "central": 0.0333,
+     "high": 0.0667
+    },
+    "2024": {
+     "low": 0.0135,
+     "central": 0.0305,
+     "high": 0.0611
+    },
+    "2025": {
+     "low": 0.0129,
+     "central": 0.0292,
+     "high": 0.0585
+    },
+    "2026": {
+     "low": 0.0091,
+     "central": 0.0206,
+     "high": 0.0414
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0068,
+     "central": 0.0195,
+     "high": 0.0585
+    },
+    "2023": {
+     "low": 0.0065,
+     "central": 0.0185,
+     "high": 0.0554
+    },
+    "2024": {
+     "low": 0.003,
+     "central": 0.0085,
+     "high": 0.0254
+    },
+    "2025": {
+     "low": 0.001,
+     "central": 0.0029,
+     "high": 0.0086
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0028
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0012,
+     "central": 0.0031,
+     "high": 0.0078
+    },
+    "2022": {
+     "low": 0.0027,
+     "central": 0.0073,
+     "high": 0.0181
+    },
+    "2023": {
+     "low": 0.0006,
+     "central": 0.0015,
+     "high": 0.0038
+    },
+    "2024": {
+     "low": 0.0005,
+     "central": 0.0013,
+     "high": 0.0033
+    },
+    "2025": {
+     "low": 0.0005,
+     "central": 0.0013,
+     "high": 0.0032
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0006,
+     "high": 0.0015
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0222,
+    "central": 0.0524,
+    "high": 0.1113
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "Follow the Money: European shipowners keep Russia's shadow fleet afloat (230+ tankers, >USD 6bn; Greece ~USD 4bn/127 ships, UK USD 590m/22, Germany USD 190m)",
+     "url": "https://www.ftm.eu/articles/who-is-behind-the-russian-shadow-fleet",
+     "date": "2025-02-04"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Euronav (now CMB.TECH) sold 5 tankers for USD 135m (FTM); small crude share; Exmar/LNG share in LNG pool. Certainty C.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "BRB": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.001
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0007,
+     "high": 0.0017
+    },
+    "2025": {
+     "low": 0.0003,
+     "central": 0.0007,
+     "high": 0.0016
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.0011
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Flag registry fees only: ship-years in Russian trade x USD 20-35k per ship-year by flag share (Panama, Gabon, Cameroon, Comoros, Sierra Leone, Barbados and Cook Islands rose with the shadow fleet; Liberian and Marshall Islands fees are split 50/50 with the US operators of the registries). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "CAN": {
+   "freight": {
+    "2021": {
+     "low": 0.0446,
+     "central": 0.1387,
+     "high": 0.3727
+    },
+    "2022": {
+     "low": 0.026,
+     "central": 0.0807,
+     "high": 0.217
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.003,
+     "central": 0.0087,
+     "high": 0.026
+    },
+    "2023": {
+     "low": 0.0029,
+     "central": 0.0082,
+     "high": 0.0246
+    },
+    "2024": {
+     "low": 0.0013,
+     "central": 0.0038,
+     "high": 0.0113
+    },
+    "2025": {
+     "low": 0.0004,
+     "central": 0.0013,
+     "high": 0.0038
+    },
+    "2026": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0012
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0028,
+     "central": 0.0099,
+     "high": 0.0312
+    },
+    "2022": {
+     "low": 0.0014,
+     "central": 0.005,
+     "high": 0.0158
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0482,
+    "central": 0.155,
+    "high": 0.434
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Teekay LNG (Vancouver/Bermuda) held the Arc7 JV stake before its sale to Stonepeak (USA) in 2022; small Teekay crude presence pre-war. Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "CHE": {
+   "freight": {
+    "2021": {
+     "low": 0.0083,
+     "central": 0.0259,
+     "high": 0.0695
+    },
+    "2022": {
+     "low": 0.0108,
+     "central": 0.0335,
+     "high": 0.0902
+    },
+    "2023": {
+     "low": 0.0011,
+     "central": 0.0033,
+     "high": 0.0089
+    },
+    "2024": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.0082
+    },
+    "2025": {
+     "low": 0.0009,
+     "central": 0.0029,
+     "high": 0.0078
+    },
+    "2026": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0055
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.003,
+     "central": 0.0087,
+     "high": 0.026
+    },
+    "2023": {
+     "low": 0.0029,
+     "central": 0.0082,
+     "high": 0.0246
+    },
+    "2024": {
+     "low": 0.0013,
+     "central": 0.0038,
+     "high": 0.0113
+    },
+    "2025": {
+     "low": 0.0004,
+     "central": 0.0013,
+     "high": 0.0038
+    },
+    "2026": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0012
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0008,
+     "central": 0.003,
+     "high": 0.0093
+    },
+    "2022": {
+     "low": 0.0013,
+     "central": 0.0044,
+     "high": 0.014
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0004
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0004
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0107,
+    "central": 0.0343,
+    "high": 0.0961
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other pre-war European owners' pool (2% of crude, 7% of products before the war), mostly gone after 2023. Small tanker sales to shadow buyers inside FTM's Western total (educated guess). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "CHN": {
+   "freight": {
+    "2021": {
+     "low": 0.1075,
+     "central": 0.2959,
+     "high": 0.7075
+    },
+    "2022": {
+     "low": 0.2708,
+     "central": 0.7455,
+     "high": 1.7823
+    },
+    "2023": {
+     "low": 0.3857,
+     "central": 1.0617,
+     "high": 2.5383
+    },
+    "2024": {
+     "low": 0.3506,
+     "central": 0.9649,
+     "high": 2.307
+    },
+    "2025": {
+     "low": 0.3427,
+     "central": 0.9434,
+     "high": 2.2554
+    },
+    "2026": {
+     "low": 0.5337,
+     "central": 1.4689,
+     "high": 3.5119
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0253,
+     "central": 0.0722,
+     "high": 0.2165
+    },
+    "2023": {
+     "low": 0.024,
+     "central": 0.0684,
+     "high": 0.2053
+    },
+    "2024": {
+     "low": 0.011,
+     "central": 0.0314,
+     "high": 0.0942
+    },
+    "2025": {
+     "low": 0.0037,
+     "central": 0.0106,
+     "high": 0.0319
+    },
+    "2026": {
+     "low": 0.0012,
+     "central": 0.0034,
+     "high": 0.0103
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0067,
+     "central": 0.0211,
+     "high": 0.0603
+    },
+    "2022": {
+     "low": 0.0147,
+     "central": 0.0463,
+     "high": 0.1323
+    },
+    "2023": {
+     "low": 0.0182,
+     "central": 0.0573,
+     "high": 0.1638
+    },
+    "2024": {
+     "low": 0.0174,
+     "central": 0.0548,
+     "high": 0.1566
+    },
+    "2025": {
+     "low": 0.017,
+     "central": 0.0535,
+     "high": 0.1528
+    },
+    "2026": {
+     "low": 0.018,
+     "central": 0.0568,
+     "high": 0.1622
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0001,
+     "high": 0.0003
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2026": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.1215,
+    "central": 0.3468,
+    "high": 0.8683
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "Shipping Telegraph: UAE and Russia the biggest registered owners of shadow tankers (CREA counts: UAE ~41%, India 12%, HK/China/Vietnam ~8% each of shadow crude tankers)",
+     "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
+     "date": "2024"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Mainland Chinese owners: COSCO/China LNG Shipping (half of the 6 Seapeak-CLNG Arc7 carriers and half of the 3 MOL-COSCO Arc7 carriers), Kozmino-China short-haul ESPO trade (5% of crude before the war), and growing shadow-fleet ownership in 2025-26 (crude share 12% in 2026). Some Chinese P&I for shadow tankers. Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "CMR": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.0019
+    },
+    "2024": {
+     "low": 0.0007,
+     "central": 0.0018,
+     "high": 0.0045
+    },
+    "2025": {
+     "low": 0.0007,
+     "central": 0.0017,
+     "high": 0.0043
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0011,
+     "high": 0.0028
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Flag registry fees only: ship-years in Russian trade x USD 20-35k per ship-year by flag share (Panama, Gabon, Cameroon, Comoros, Sierra Leone, Barbados and Cook Islands rose with the shadow fleet; Liberian and Marshall Islands fees are split 50/50 with the US operators of the registries). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "COK": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0002,
+     "central": 0.0006,
+     "high": 0.0015
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0007,
+     "high": 0.0017
+    },
+    "2025": {
+     "low": 0.0003,
+     "central": 0.0007,
+     "high": 0.0016
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.0011
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Flag registry fees only: ship-years in Russian trade x USD 20-35k per ship-year by flag share (Panama, Gabon, Cameroon, Comoros, Sierra Leone, Barbados and Cook Islands rose with the shadow fleet; Liberian and Marshall Islands fees are split 50/50 with the US operators of the registries). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "COM": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0002,
+     "central": 0.0006,
+     "high": 0.0015
+    },
+    "2024": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0034
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0015,
+     "high": 0.0038
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0011,
+     "high": 0.0028
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Flag registry fees only: ship-years in Russian trade x USD 20-35k per ship-year by flag share (Panama, Gabon, Cameroon, Comoros, Sierra Leone, Barbados and Cook Islands rose with the shadow fleet; Liberian and Marshall Islands fees are split 50/50 with the US operators of the registries). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "CYP": {
+   "freight": {
+    "2021": {
+     "low": 0.0785,
+     "central": 0.1776,
+     "high": 0.3559
+    },
+    "2022": {
+     "low": 0.2834,
+     "central": 0.641,
+     "high": 1.2849
+    },
+    "2023": {
+     "low": 0.1963,
+     "central": 0.4439,
+     "high": 0.8898
+    },
+    "2024": {
+     "low": 0.0989,
+     "central": 0.2236,
+     "high": 0.4482
+    },
+    "2025": {
+     "low": 0.0845,
+     "central": 0.1912,
+     "high": 0.3832
+    },
+    "2026": {
+     "low": 0.0506,
+     "central": 0.1144,
+     "high": 0.2292
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0101,
+     "central": 0.0289,
+     "high": 0.0866
+    },
+    "2023": {
+     "low": 0.0096,
+     "central": 0.0274,
+     "high": 0.0821
+    },
+    "2024": {
+     "low": 0.0044,
+     "central": 0.0126,
+     "high": 0.0377
+    },
+    "2025": {
+     "low": 0.0015,
+     "central": 0.0042,
+     "high": 0.0127
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0041
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0048,
+     "central": 0.0127,
+     "high": 0.0314
+    },
+    "2022": {
+     "low": 0.0149,
+     "central": 0.0398,
+     "high": 0.0988
+    },
+    "2023": {
+     "low": 0.0076,
+     "central": 0.0202,
+     "high": 0.0502
+    },
+    "2024": {
+     "low": 0.0037,
+     "central": 0.0099,
+     "high": 0.0245
+    },
+    "2025": {
+     "low": 0.0032,
+     "central": 0.0086,
+     "high": 0.0212
+    },
+    "2026": {
+     "low": 0.0013,
+     "central": 0.0034,
+     "high": 0.0083
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.001
+    },
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.002
+    },
+    "2023": {
+     "low": 0.0002,
+     "central": 0.0006,
+     "high": 0.0015
+    },
+    "2024": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0011
+    },
+    "2025": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.0011
+    },
+    "2026": {
+     "low": 0.0001,
+     "central": 0.0001,
+     "high": 0.0004
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.1033,
+    "central": 0.2444,
+    "high": 0.5187
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "Global Witness via manueldelia.com: Greek, Maltese, Cypriot ships carried just over half of Russian seaborne oil by May 2022",
+     "url": "https://manueldelia.com/2022/06/malta-helps-shipowners-increase-profits-transporting-putins-oil-report/",
+     "date": "2022-06"
+    },
+    {
+     "name": "Follow the Money: European shipowners keep Russia's shadow fleet afloat (230+ tankers, >USD 6bn; Greece ~USD 4bn/127 ships, UK USD 590m/22, Germany USD 190m)",
+     "url": "https://www.ftm.eu/articles/who-is-behind-the-russian-shadow-fleet",
+     "date": "2025-02-04"
+    },
+    {
+     "name": "OECD-WTO BaTiS, transport services exports to Russia (SC), balanced series 2019-2024",
+     "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_BATIS@DF_BATIS,1.0/",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Cyprus-based managers (Greek, German and formerly Russian-owned groups); Cypriot-managed tankers carried ~5% of crude in 2019-2022, falling after the EU services bans. Ship sales ~USD 0.2bn (guess within FTM's Western total). Flag fees small. Certainty C.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "DEU": {
+   "freight": {
+    "2021": {
+     "low": 0.0389,
+     "central": 0.0879,
+     "high": 0.1763
+    },
+    "2022": {
+     "low": 0.0777,
+     "central": 0.1757,
+     "high": 0.3522
+    },
+    "2023": {
+     "low": 0.0327,
+     "central": 0.074,
+     "high": 0.1483
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0096,
+     "central": 0.0274,
+     "high": 0.0823
+    },
+    "2023": {
+     "low": 0.0091,
+     "central": 0.026,
+     "high": 0.078
+    },
+    "2024": {
+     "low": 0.0042,
+     "central": 0.0119,
+     "high": 0.0358
+    },
+    "2025": {
+     "low": 0.0014,
+     "central": 0.004,
+     "high": 0.0121
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0013,
+     "high": 0.0039
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0024,
+     "central": 0.0063,
+     "high": 0.0156
+    },
+    "2022": {
+     "low": 0.0041,
+     "central": 0.0109,
+     "high": 0.0271
+    },
+    "2023": {
+     "low": 0.0013,
+     "central": 0.0034,
+     "high": 0.0084
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0503,
+    "central": 0.119,
+    "high": 0.2526
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "Follow the Money: European shipowners keep Russia's shadow fleet afloat (230+ tankers, >USD 6bn; Greece ~USD 4bn/127 ships, UK USD 590m/22, Germany USD 190m)",
+     "url": "https://www.ftm.eu/articles/who-is-behind-the-russian-shadow-fleet",
+     "date": "2025-02-04"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "German owners/KG funds; FTM: USD 190m of tanker sales to shadow buyers. Certainty C.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "DNK": {
+   "freight": {
+    "2021": {
+     "low": 0.0695,
+     "central": 0.1573,
+     "high": 0.3152
+    },
+    "2022": {
+     "low": 0.1554,
+     "central": 0.3514,
+     "high": 0.7043
+    },
+    "2023": {
+     "low": 0.0429,
+     "central": 0.0971,
+     "high": 0.1946
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0076,
+     "central": 0.0217,
+     "high": 0.065
+    },
+    "2023": {
+     "low": 0.0072,
+     "central": 0.0205,
+     "high": 0.0616
+    },
+    "2024": {
+     "low": 0.0033,
+     "central": 0.0094,
+     "high": 0.0283
+    },
+    "2025": {
+     "low": 0.0011,
+     "central": 0.0032,
+     "high": 0.0096
+    },
+    "2026": {
+     "low": 0.0004,
+     "central": 0.001,
+     "high": 0.0031
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0042,
+     "central": 0.0112,
+     "high": 0.0278
+    },
+    "2022": {
+     "low": 0.0082,
+     "central": 0.0218,
+     "high": 0.0541
+    },
+    "2023": {
+     "low": 0.0017,
+     "central": 0.0044,
+     "high": 0.011
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0891,
+    "central": 0.2107,
+    "high": 0.4471
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Danish product tanker owners (TORM, Maersk Tankers) carried ~6% of Russian products pre-war and left in 2022-23. Certainty C.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "EGY": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0026,
+     "central": 0.008,
+     "high": 0.0214
+    },
+    "2023": {
+     "low": 0.0126,
+     "central": 0.0393,
+     "high": 0.1056
+    },
+    "2024": {
+     "low": 0.0144,
+     "central": 0.0447,
+     "high": 0.1202
+    },
+    "2025": {
+     "low": 0.0123,
+     "central": 0.0382,
+     "high": 0.1028
+    },
+    "2026": {
+     "low": 0.0179,
+     "central": 0.0556,
+     "high": 0.1495
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0005,
+     "high": 0.0016
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0018,
+     "high": 0.0057
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.002,
+     "high": 0.0062
+    },
+    "2025": {
+     "low": 0.0005,
+     "central": 0.0017,
+     "high": 0.0054
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0016,
+     "high": 0.0052
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "Shipping Telegraph: UAE and Russia the biggest registered owners of shadow tankers (CREA counts: UAE ~41%, India 12%, HK/China/Vietnam ~8% each of shadow crude tankers)",
+     "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
+     "date": "2024"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other shadow-fleet owners' pool (5-10% of crude, 6-9% of products in 2023-26), split by an educated guess (Vietnam 30%, Seychelles 20%, Malaysia 20%, Oman 10%, Georgia/Saudi Arabia/Egypt/Kazakhstan 5% each), from CREA/press counts of registered owners. Vietnam, Seychelles and Malaysia also take 5% each of the opaque-owner residual. Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "FRA": {
+   "freight": {
+    "2021": {
+     "low": 0.0083,
+     "central": 0.0259,
+     "high": 0.0695
+    },
+    "2022": {
+     "low": 0.0108,
+     "central": 0.0335,
+     "high": 0.0902
+    },
+    "2023": {
+     "low": 0.0011,
+     "central": 0.0033,
+     "high": 0.0089
+    },
+    "2024": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.0082
+    },
+    "2025": {
+     "low": 0.0009,
+     "central": 0.0029,
+     "high": 0.0078
+    },
+    "2026": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0055
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0025,
+     "central": 0.0072,
+     "high": 0.0217
+    },
+    "2023": {
+     "low": 0.0024,
+     "central": 0.0068,
+     "high": 0.0205
+    },
+    "2024": {
+     "low": 0.0011,
+     "central": 0.0031,
+     "high": 0.0094
+    },
+    "2025": {
+     "low": 0.0004,
+     "central": 0.0011,
+     "high": 0.0032
+    },
+    "2026": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.001
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0008,
+     "central": 0.003,
+     "high": 0.0093
+    },
+    "2022": {
+     "low": 0.0013,
+     "central": 0.0044,
+     "high": 0.014
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0004
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0004
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0107,
+    "central": 0.0343,
+    "high": 0.0961
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other pre-war European owners' pool (2% of crude, 7% of products before the war), mostly gone after 2023. Small tanker sales to shadow buyers inside FTM's Western total (educated guess). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "GAB": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0007
+    },
+    "2023": {
+     "low": 0.0006,
+     "central": 0.0016,
+     "high": 0.0039
+    },
+    "2024": {
+     "low": 0.0009,
+     "central": 0.0023,
+     "high": 0.0057
+    },
+    "2025": {
+     "low": 0.0007,
+     "central": 0.0017,
+     "high": 0.0043
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.0021
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Flag registry fees only: ship-years in Russian trade x USD 20-35k per ship-year by flag share (Panama, Gabon, Cameroon, Comoros, Sierra Leone, Barbados and Cook Islands rose with the shadow fleet; Liberian and Marshall Islands fees are split 50/50 with the US operators of the registries). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "GBR": {
+   "freight": {
+    "2021": {
+     "low": 0.0471,
+     "central": 0.1065,
+     "high": 0.2135
+    },
+    "2022": {
+     "low": 0.1033,
+     "central": 0.2336,
+     "high": 0.4683
+    },
+    "2023": {
+     "low": 0.0323,
+     "central": 0.0731,
+     "high": 0.1464
+    },
+    "2024": {
+     "low": 0.009,
+     "central": 0.0203,
+     "high": 0.0407
+    },
+    "2025": {
+     "low": 0.0086,
+     "central": 0.0195,
+     "high": 0.039
+    },
+    "2026": {
+     "low": 0.0061,
+     "central": 0.0138,
+     "high": 0.0276
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0298,
+     "central": 0.0852,
+     "high": 0.2555
+    },
+    "2023": {
+     "low": 0.0283,
+     "central": 0.0808,
+     "high": 0.2423
+    },
+    "2024": {
+     "low": 0.013,
+     "central": 0.0371,
+     "high": 0.1112
+    },
+    "2025": {
+     "low": 0.0044,
+     "central": 0.0125,
+     "high": 0.0376
+    },
+    "2026": {
+     "low": 0.0014,
+     "central": 0.0041,
+     "high": 0.0122
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0278,
+     "central": 0.0742,
+     "high": 0.1841
+    },
+    "2022": {
+     "low": 0.0525,
+     "central": 0.1399,
+     "high": 0.3471
+    },
+    "2023": {
+     "low": 0.0377,
+     "central": 0.1004,
+     "high": 0.2492
+    },
+    "2024": {
+     "low": 0.0244,
+     "central": 0.0649,
+     "high": 0.1611
+    },
+    "2025": {
+     "low": 0.0285,
+     "central": 0.0758,
+     "high": 0.1882
+    },
+    "2026": {
+     "low": 0.0093,
+     "central": 0.0247,
+     "high": 0.0612
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0867,
+    "central": 0.205,
+    "high": 0.4352
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "Follow the Money: European shipowners keep Russia's shadow fleet afloat (230+ tankers, >USD 6bn; Greece ~USD 4bn/127 ships, UK USD 590m/22, Germany USD 190m)",
+     "url": "https://www.ftm.eu/articles/who-is-behind-the-russian-shadow-fleet",
+     "date": "2025-02-04"
+    },
+    {
+     "name": "CREA monthly analysis of Russian fossil fuel exports and sanctions, July 2025 (G7+ tanker share 36% Jan -> 55% Jul 2025; crude 17% -> 42%)",
+     "url": "https://energyandcleanair.org/july-2025-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/",
+     "date": "2025-08"
+    },
+    {
+     "name": "OECD-WTO BaTiS, transport services exports to Russia (SC), balanced series 2019-2024",
+     "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_BATIS@DF_BATIS,1.0/",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "UK earnings are mostly P&I and hull insurance (London IG clubs and Lloyd's: ~45% of the pre-war P&I/hull pool on Russian-trade tankers, 18-25% in 2024-25 while price-cap-compliant voyages continued, 10% in 2026). Small ownership share before 2023. Ship sales USD 0.59bn (FTM, 22 tankers). Certainty C.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "GEO": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0026,
+     "central": 0.008,
+     "high": 0.0214
+    },
+    "2023": {
+     "low": 0.0126,
+     "central": 0.0393,
+     "high": 0.1056
+    },
+    "2024": {
+     "low": 0.0144,
+     "central": 0.0447,
+     "high": 0.1202
+    },
+    "2025": {
+     "low": 0.0123,
+     "central": 0.0382,
+     "high": 0.1028
+    },
+    "2026": {
+     "low": 0.0179,
+     "central": 0.0556,
+     "high": 0.1495
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0005,
+     "high": 0.0016
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0018,
+     "high": 0.0057
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.002,
+     "high": 0.0062
+    },
+    "2025": {
+     "low": 0.0005,
+     "central": 0.0017,
+     "high": 0.0054
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0016,
+     "high": 0.0052
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "Shipping Telegraph: UAE and Russia the biggest registered owners of shadow tankers (CREA counts: UAE ~41%, India 12%, HK/China/Vietnam ~8% each of shadow crude tankers)",
+     "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
+     "date": "2024"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other shadow-fleet owners' pool (5-10% of crude, 6-9% of products in 2023-26), split by an educated guess (Vietnam 30%, Seychelles 20%, Malaysia 20%, Oman 10%, Georgia/Saudi Arabia/Egypt/Kazakhstan 5% each), from CREA/press counts of registered owners. Vietnam, Seychelles and Malaysia also take 5% each of the opaque-owner residual. Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "GRC": {
+   "freight": {
+    "2021": {
+     "low": 0.5877,
+     "central": 1.0282,
+     "high": 1.6576
+    },
+    "2022": {
+     "low": 2.3885,
+     "central": 4.1785,
+     "high": 6.7368
+    },
+    "2023": {
+     "low": 2.5613,
+     "central": 4.4807,
+     "high": 7.224
+    },
+    "2024": {
+     "low": 1.2236,
+     "central": 2.1406,
+     "high": 3.4512
+    },
+    "2025": {
+     "low": 1.2404,
+     "central": 2.1699,
+     "high": 3.4984
+    },
+    "2026": {
+     "low": 0.637,
+     "central": 1.1145,
+     "high": 1.7968
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.2127,
+     "central": 0.6078,
+     "high": 1.8234
+    },
+    "2023": {
+     "low": 0.1968,
+     "central": 0.5623,
+     "high": 1.6869
+    },
+    "2024": {
+     "low": 0.0776,
+     "central": 0.2217,
+     "high": 0.6652
+    },
+    "2025": {
+     "low": 0.0248,
+     "central": 0.0708,
+     "high": 0.2124
+    },
+    "2026": {
+     "low": 0.0096,
+     "central": 0.0275,
+     "high": 0.0826
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0336,
+     "central": 0.0734,
+     "high": 0.1561
+    },
+    "2022": {
+     "low": 0.119,
+     "central": 0.2595,
+     "high": 0.5522
+    },
+    "2023": {
+     "low": 0.0937,
+     "central": 0.2042,
+     "high": 0.4347
+    },
+    "2024": {
+     "low": 0.0433,
+     "central": 0.0944,
+     "high": 0.2009
+    },
+    "2025": {
+     "low": 0.0446,
+     "central": 0.0972,
+     "high": 0.2069
+    },
+    "2026": {
+     "low": 0.015,
+     "central": 0.0328,
+     "high": 0.0697
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0002,
+     "central": 0.0006,
+     "high": 0.0015
+    },
+    "2022": {
+     "low": 0.0004,
+     "central": 0.001,
+     "high": 0.0026
+    },
+    "2023": {
+     "low": 0.0004,
+     "central": 0.001,
+     "high": 0.0024
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0007,
+     "high": 0.0017
+    },
+    "2025": {
+     "low": 0.0003,
+     "central": 0.0007,
+     "high": 0.0016
+    },
+    "2026": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0007
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.7306,
+    "central": 1.3623,
+    "high": 2.3793
+   },
+   "certainty": "B",
+   "sources": [
+    {
+     "name": "Financial Times analysis of Greek tanker earnings from Russian crude, Jul 2023-mid 2026 (via GreekReporter)",
+     "url": "https://greekreporter.com/2026/07/07/greek-shipping-companies-russian-oil/",
+     "date": "2026-07-07"
+    },
+    {
+     "name": "bne IntelliNews: Greek shipowners earnt $4bn from Russian oil trade (FT; 389m priced + 153m unpriced barrels)",
+     "url": "https://www.intellinews.com/greek-shipowners-earnt-4bn-from-russian-oil-trade-sanctions-busting-ft-453099/",
+     "date": "2026-07-07"
+    },
+    {
+     "name": "Follow the Money: European shipowners keep Russia's shadow fleet afloat (230+ tankers, >USD 6bn; Greece ~USD 4bn/127 ships, UK USD 590m/22, Germany USD 190m)",
+     "url": "https://www.ftm.eu/articles/who-is-behind-the-russian-shadow-fleet",
+     "date": "2025-02-04"
+    },
+    {
+     "name": "VesselsValue via Mind.ua: Greece sold 60 tankers for USD 2.47bn, Jan 2022-Aug 2023",
+     "url": "https://mind.ua/en/news/20262523-greece-sold-old-tankers-to-russia-for-its-shadow-fleet-at-a-premium",
+     "date": "2023-09"
+    },
+    {
+     "name": "S&P Global Market Intelligence: Russian shipping and trade sanctions risk analysis (Greek owners carry 20%+ of Russian crude)",
+     "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/russian-shipping-and-trade-sanctions-risk-analysis",
+     "date": "2023-12-18"
+    },
+    {
+     "name": "Windward: Greek tankers cut Russian crude liftings as lower EU/UK price cap bites (Greek share up to 40% in some months 2023-24)",
+     "url": "https://windward.ai/?p=40111",
+     "date": "2025"
+    },
+    {
+     "name": "Global Witness via manueldelia.com: Greek, Maltese, Cypriot ships carried just over half of Russian seaborne oil by May 2022",
+     "url": "https://manueldelia.com/2022/06/malta-helps-shipowners-increase-profits-transporting-putins-oil-report/",
+     "date": "2022-06"
+    },
+    {
+     "name": "CREA monthly analysis of Russian fossil fuel exports and sanctions, July 2025 (G7+ tanker share 36% Jan -> 55% Jul 2025; crude 17% -> 42%)",
+     "url": "https://energyandcleanair.org/july-2025-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/",
+     "date": "2025-08"
+    },
+    {
+     "name": "OECD-WTO BaTiS, transport services exports to Russia (SC), balanced series 2019-2024",
+     "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_BATIS@DF_BATIS,1.0/",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Largest earner. Crude share of Russian seaborne freight: 34% (2022), 30.5% (2023), 17% (2024), 22% (2025), 8% (2026; Urals above the lowered cap during the Hormuz price spike pushed G7+ tankers out). Products 18-25%, 10% in 2026. LNG: Dynagas (5 Arc7 carriers on long charters to Yamal LNG, 20% of LNG carrier earnings, unchanged from baseline). Check: FT found USD 3.8bn for 389m priced barrels Jul 2023-mid 2026 (USD 9.8/bbl) plus 153m unpriced barrels; scaled to all 542m barrels that is ~USD 1.8bn/yr of crude freight, matching the model's ~1.8bn/yr for that window. 2022-H1 2023 rests on share evidence (Global Witness: Greek/Maltese/Cypriot ships carried just over half of seaborne oil by May 2022; S&P/Windward: 20-40% of crude in 2023). Ship sales: FTM ~USD 4bn for 127 tankers (VesselsValue: USD 2.47bn for 60 ships by Aug 2023); counted at 40% premium (20% low, 80%-of-value high for clearly Russia-linked buyers). Baseline: Greek owners already carried ~28% of Russian crude and 20% of products before the war, on short Baltic/Black Sea-Europe routes at USD 2-3/bbl. Replaces GRC.oil_shipping_earned in uncovered.json (crude only, central 2.3/2.3/1.0/1.2/0.9).",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "HKG": {
+   "freight": {
+    "2021": {
+     "low": 0.0258,
+     "central": 0.071,
+     "high": 0.1698
+    },
+    "2022": {
+     "low": 0.1397,
+     "central": 0.3846,
+     "high": 0.9195
+    },
+    "2023": {
+     "low": 0.3273,
+     "central": 0.9008,
+     "high": 2.1535
+    },
+    "2024": {
+     "low": 0.3238,
+     "central": 0.8912,
+     "high": 2.1306
+    },
+    "2025": {
+     "low": 0.2778,
+     "central": 0.7646,
+     "high": 1.828
+    },
+    "2026": {
+     "low": 0.4219,
+     "central": 1.1611,
+     "high": 2.7761
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0253,
+     "central": 0.0722,
+     "high": 0.2165
+    },
+    "2023": {
+     "low": 0.024,
+     "central": 0.0684,
+     "high": 0.2053
+    },
+    "2024": {
+     "low": 0.011,
+     "central": 0.0314,
+     "high": 0.0942
+    },
+    "2025": {
+     "low": 0.0037,
+     "central": 0.0106,
+     "high": 0.0319
+    },
+    "2026": {
+     "low": 0.0012,
+     "central": 0.0034,
+     "high": 0.0103
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0016,
+     "central": 0.0051,
+     "high": 0.0145
+    },
+    "2022": {
+     "low": 0.0076,
+     "central": 0.0239,
+     "high": 0.0682
+    },
+    "2023": {
+     "low": 0.0135,
+     "central": 0.0426,
+     "high": 0.1217
+    },
+    "2024": {
+     "low": 0.0131,
+     "central": 0.0414,
+     "high": 0.1184
+    },
+    "2025": {
+     "low": 0.0113,
+     "central": 0.0356,
+     "high": 0.1017
+    },
+    "2026": {
+     "low": 0.0114,
+     "central": 0.0361,
+     "high": 0.1031
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0007
+    },
+    "2026": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0007
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0342,
+    "central": 0.0976,
+    "high": 0.2443
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "Shipping Telegraph: UAE and Russia the biggest registered owners of shadow tankers (CREA counts: UAE ~41%, India 12%, HK/China/Vietnam ~8% each of shadow crude tankers)",
+     "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
+     "date": "2024"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Hong Kong registered owners/managers of shadow tankers (8% of shadow crude tankers in CREA count), rising in 2024-26; net crude share 6-10%. Also small seller of second-hand tankers. Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "IND": {
+   "freight": {
+    "2021": {
+     "low": 0.0129,
+     "central": 0.0355,
+     "high": 0.0849
+    },
+    "2022": {
+     "low": 0.1225,
+     "central": 0.3371,
+     "high": 0.806
+    },
+    "2023": {
+     "low": 0.379,
+     "central": 1.0432,
+     "high": 2.494
+    },
+    "2024": {
+     "low": 0.3583,
+     "central": 0.9862,
+     "high": 2.3578
+    },
+    "2025": {
+     "low": 0.2604,
+     "central": 0.7168,
+     "high": 1.7137
+    },
+    "2026": {
+     "low": 0.34,
+     "central": 0.9358,
+     "high": 2.2373
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0051,
+     "central": 0.0144,
+     "high": 0.0433
+    },
+    "2023": {
+     "low": 0.0048,
+     "central": 0.0137,
+     "high": 0.0411
+    },
+    "2024": {
+     "low": 0.0022,
+     "central": 0.0063,
+     "high": 0.0188
+    },
+    "2025": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0064
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0007,
+     "high": 0.0021
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0008,
+     "central": 0.0025,
+     "high": 0.0072
+    },
+    "2022": {
+     "low": 0.0076,
+     "central": 0.0241,
+     "high": 0.0688
+    },
+    "2023": {
+     "low": 0.0216,
+     "central": 0.0681,
+     "high": 0.1947
+    },
+    "2024": {
+     "low": 0.0211,
+     "central": 0.0664,
+     "high": 0.1898
+    },
+    "2025": {
+     "low": 0.0159,
+     "central": 0.0502,
+     "high": 0.1433
+    },
+    "2026": {
+     "low": 0.0138,
+     "central": 0.0435,
+     "high": 0.1243
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0001,
+     "high": 0.0003
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2026": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0171,
+    "central": 0.0488,
+    "high": 0.1222
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "Shipping Telegraph: UAE and Russia the biggest registered owners of shadow tankers (CREA counts: UAE ~41%, India 12%, HK/China/Vietnam ~8% each of shadow crude tankers)",
+     "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
+     "date": "2024"
+    },
+    {
+     "name": "S&P Global Market Intelligence: Russian shadow shipping, emerging new owners (India, UAE)",
+     "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/russian-shadow-shipping-emerging-new-owners",
+     "date": "2023-05-17"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Indian ship managers (Gatik and successors, other Mumbai-based managers) ran a large part of the shadow fleet in 2023-24; net share of crude 8-10%, products 4-6%. Indian insurers covered some shadow tankers (5-6% of P&I pool). 15% of opaque-owner residual. Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "ITA": {
+   "freight": {
+    "2021": {
+     "low": 0.0139,
+     "central": 0.0431,
+     "high": 0.1159
+    },
+    "2022": {
+     "low": 0.018,
+     "central": 0.0559,
+     "high": 0.1503
+    },
+    "2023": {
+     "low": 0.0018,
+     "central": 0.0055,
+     "high": 0.0149
+    },
+    "2024": {
+     "low": 0.0016,
+     "central": 0.0051,
+     "high": 0.0137
+    },
+    "2025": {
+     "low": 0.0016,
+     "central": 0.0049,
+     "high": 0.0131
+    },
+    "2026": {
+     "low": 0.0011,
+     "central": 0.0034,
+     "high": 0.0092
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.004,
+     "central": 0.0115,
+     "high": 0.0346
+    },
+    "2023": {
+     "low": 0.0038,
+     "central": 0.0109,
+     "high": 0.0328
+    },
+    "2024": {
+     "low": 0.0018,
+     "central": 0.005,
+     "high": 0.0151
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0017,
+     "high": 0.0051
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0006,
+     "high": 0.0017
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0014,
+     "central": 0.0049,
+     "high": 0.0155
+    },
+    "2022": {
+     "low": 0.0021,
+     "central": 0.0074,
+     "high": 0.0233
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0008
+    },
+    "2024": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0007
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0007
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0003
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0004
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0178,
+    "central": 0.0572,
+    "high": 0.1602
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other pre-war European owners' pool (2% of crude, 7% of products before the war), mostly gone after 2023. Small tanker sales to shadow buyers inside FTM's Western total (educated guess). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "JPN": {
+   "freight": {
+    "2021": {
+     "low": 0.0725,
+     "central": 0.164,
+     "high": 0.3288
+    },
+    "2022": {
+     "low": 0.1176,
+     "central": 0.2659,
+     "high": 0.533
+    },
+    "2023": {
+     "low": 0.0736,
+     "central": 0.1665,
+     "high": 0.3337
+    },
+    "2024": {
+     "low": 0.0674,
+     "central": 0.1524,
+     "high": 0.3056
+    },
+    "2025": {
+     "low": 0.0646,
+     "central": 0.146,
+     "high": 0.2927
+    },
+    "2026": {
+     "low": 0.0456,
+     "central": 0.1032,
+     "high": 0.2068
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0253,
+     "central": 0.0722,
+     "high": 0.2165
+    },
+    "2023": {
+     "low": 0.024,
+     "central": 0.0684,
+     "high": 0.2053
+    },
+    "2024": {
+     "low": 0.011,
+     "central": 0.0314,
+     "high": 0.0942
+    },
+    "2025": {
+     "low": 0.0037,
+     "central": 0.0106,
+     "high": 0.0319
+    },
+    "2026": {
+     "low": 0.0012,
+     "central": 0.0034,
+     "high": 0.0103
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0072,
+     "central": 0.0191,
+     "high": 0.0474
+    },
+    "2022": {
+     "low": 0.0109,
+     "central": 0.029,
+     "high": 0.0721
+    },
+    "2023": {
+     "low": 0.0069,
+     "central": 0.0183,
+     "high": 0.0453
+    },
+    "2024": {
+     "low": 0.0049,
+     "central": 0.0129,
+     "high": 0.0321
+    },
+    "2025": {
+     "low": 0.005,
+     "central": 0.0134,
+     "high": 0.0331
+    },
+    "2026": {
+     "low": 0.002,
+     "central": 0.0055,
+     "high": 0.0135
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0791,
+    "central": 0.1871,
+    "high": 0.3971
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Japan P&I Club, MOL/NYK/K Line LNG carriers on Yamal (MOL-COSCO Arc7) and Sakhalin LNG (15% of LNG carrier earnings, unchanged from baseline), small crude share pre-war; tanker sales to shadow buyers ~USD 0.5bn (guess). Certainty C.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "KAZ": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0026,
+     "central": 0.008,
+     "high": 0.0214
+    },
+    "2023": {
+     "low": 0.0126,
+     "central": 0.0393,
+     "high": 0.1056
+    },
+    "2024": {
+     "low": 0.0144,
+     "central": 0.0447,
+     "high": 0.1202
+    },
+    "2025": {
+     "low": 0.0123,
+     "central": 0.0382,
+     "high": 0.1028
+    },
+    "2026": {
+     "low": 0.0179,
+     "central": 0.0556,
+     "high": 0.1495
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0005,
+     "high": 0.0016
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0018,
+     "high": 0.0057
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.002,
+     "high": 0.0062
+    },
+    "2025": {
+     "low": 0.0005,
+     "central": 0.0017,
+     "high": 0.0054
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0016,
+     "high": 0.0052
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "Shipping Telegraph: UAE and Russia the biggest registered owners of shadow tankers (CREA counts: UAE ~41%, India 12%, HK/China/Vietnam ~8% each of shadow crude tankers)",
+     "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
+     "date": "2024"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other shadow-fleet owners' pool (5-10% of crude, 6-9% of products in 2023-26), split by an educated guess (Vietnam 30%, Seychelles 20%, Malaysia 20%, Oman 10%, Georgia/Saudi Arabia/Egypt/Kazakhstan 5% each), from CREA/press counts of registered owners. Vietnam, Seychelles and Malaysia also take 5% each of the opaque-owner residual. Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "KOR": {
+   "freight": {
+    "2021": {
+     "low": 0.006,
+     "central": 0.0186,
+     "high": 0.05
+    },
+    "2022": {
+     "low": 0.026,
+     "central": 0.0807,
+     "high": 0.217
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0177,
+     "central": 0.0505,
+     "high": 0.1516
+    },
+    "2023": {
+     "low": 0.0168,
+     "central": 0.0479,
+     "high": 0.1437
+    },
+    "2024": {
+     "low": 0.0077,
+     "central": 0.022,
+     "high": 0.066
+    },
+    "2025": {
+     "low": 0.0026,
+     "central": 0.0074,
+     "high": 0.0223
+    },
+    "2026": {
+     "low": 0.0008,
+     "central": 0.0024,
+     "high": 0.0072
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0004,
+     "central": 0.0013,
+     "high": 0.0042
+    },
+    "2022": {
+     "low": 0.0014,
+     "central": 0.005,
+     "high": 0.0158
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0085,
+    "central": 0.0274,
+    "high": 0.0766
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Small crude share pre-war; second-hand tanker sales to shadow buyers (educated guess). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "LBR": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0003,
+     "central": 0.0007,
+     "high": 0.0018
+    },
+    "2022": {
+     "low": 0.0007,
+     "central": 0.0016,
+     "high": 0.0041
+    },
+    "2023": {
+     "low": 0.0007,
+     "central": 0.0017,
+     "high": 0.0044
+    },
+    "2024": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0034
+    },
+    "2025": {
+     "low": 0.0005,
+     "central": 0.0013,
+     "high": 0.0033
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.0011
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0002,
+    "central": 0.0008,
+    "high": 0.0021
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Flag registry fees only: ship-years in Russian trade x USD 20-35k per ship-year by flag share (Panama, Gabon, Cameroon, Comoros, Sierra Leone, Barbados and Cook Islands rose with the shadow fleet; Liberian and Marshall Islands fees are split 50/50 with the US operators of the registries). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "LUX": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0021,
+     "central": 0.0074,
+     "high": 0.0233
+    },
+    "2022": {
+     "low": 0.0036,
+     "central": 0.0125,
+     "high": 0.0395
+    },
+    "2023": {
+     "low": 0.003,
+     "central": 0.0107,
+     "high": 0.0337
+    },
+    "2024": {
+     "low": 0.0018,
+     "central": 0.0062,
+     "high": 0.0196
+    },
+    "2025": {
+     "low": 0.0019,
+     "central": 0.0068,
+     "high": 0.0215
+    },
+    "2026": {
+     "low": 0.0007,
+     "central": 0.0024,
+     "high": 0.0077
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0022,
+    "central": 0.007,
+    "high": 0.0197
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Share of the 'other IG clubs' P&I pool (Swedish Club; Shipowners' Club in Luxembourg). Flag registry fees only: ship-years in Russian trade x USD 20-35k per ship-year by flag share (Panama, Gabon, Cameroon, Comoros, Sierra Leone, Barbados and Cook Islands rose with the shadow fleet; Liberian and Marshall Islands fees are split 50/50 with the US operators of the registries). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "MCO": {
+   "freight": {
+    "2021": {
+     "low": 0.0246,
+     "central": 0.0766,
+     "high": 0.2059
+    },
+    "2022": {
+     "low": 0.0413,
+     "central": 0.1285,
+     "high": 0.3454
+    },
+    "2023": {
+     "low": 0.0159,
+     "central": 0.0496,
+     "high": 0.1332
+    },
+    "2024": {
+     "low": 0.0069,
+     "central": 0.0215,
+     "high": 0.0579
+    },
+    "2025": {
+     "low": 0.0061,
+     "central": 0.0188,
+     "high": 0.0507
+    },
+    "2026": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0055
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0076,
+     "central": 0.0217,
+     "high": 0.065
+    },
+    "2023": {
+     "low": 0.0072,
+     "central": 0.0205,
+     "high": 0.0616
+    },
+    "2024": {
+     "low": 0.0033,
+     "central": 0.0094,
+     "high": 0.0283
+    },
+    "2025": {
+     "low": 0.0011,
+     "central": 0.0032,
+     "high": 0.0096
+    },
+    "2026": {
+     "low": 0.0004,
+     "central": 0.001,
+     "high": 0.0031
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0019,
+     "central": 0.0066,
+     "high": 0.0207
+    },
+    "2022": {
+     "low": 0.0029,
+     "central": 0.0103,
+     "high": 0.0326
+    },
+    "2023": {
+     "low": 0.0006,
+     "central": 0.0023,
+     "high": 0.0071
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.003
+    },
+    "2025": {
+     "low": 0.0002,
+     "central": 0.0008,
+     "high": 0.0027
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0307,
+    "central": 0.0986,
+    "high": 0.2762
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other pre-war European owners' pool (2% of crude, 7% of products before the war), mostly gone after 2023. Monaco-based product tanker groups (Scorpio, Ardmore and others): 3% of products pre-war. Small tanker sales to shadow buyers inside FTM's Western total (educated guess). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "MHL": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.0011
+    },
+    "2022": {
+     "low": 0.0004,
+     "central": 0.0009,
+     "high": 0.0023
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0012,
+     "high": 0.0029
+    },
+    "2024": {
+     "low": 0.0005,
+     "central": 0.0011,
+     "high": 0.0028
+    },
+    "2025": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0022
+    },
+    "2026": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0009
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0001,
+    "central": 0.0005,
+    "high": 0.0013
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Flag registry fees only: ship-years in Russian trade x USD 20-35k per ship-year by flag share (Panama, Gabon, Cameroon, Comoros, Sierra Leone, Barbados and Cook Islands rose with the shadow fleet; Liberian and Marshall Islands fees are split 50/50 with the US operators of the registries). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "MLT": {
+   "freight": {
+    "2021": {
+     "low": 0.0389,
+     "central": 0.0879,
+     "high": 0.1763
+    },
+    "2022": {
+     "low": 0.1344,
+     "central": 0.3039,
+     "high": 0.6091
+    },
+    "2023": {
+     "low": 0.1084,
+     "central": 0.2451,
+     "high": 0.4912
+    },
+    "2024": {
+     "low": 0.0576,
+     "central": 0.1303,
+     "high": 0.2611
+    },
+    "2025": {
+     "low": 0.0493,
+     "central": 0.1115,
+     "high": 0.2235
+    },
+    "2026": {
+     "low": 0.0321,
+     "central": 0.0727,
+     "high": 0.1457
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.004,
+     "central": 0.0115,
+     "high": 0.0346
+    },
+    "2023": {
+     "low": 0.0038,
+     "central": 0.0109,
+     "high": 0.0328
+    },
+    "2024": {
+     "low": 0.0018,
+     "central": 0.005,
+     "high": 0.0151
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0017,
+     "high": 0.0051
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0006,
+     "high": 0.0017
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0024,
+     "central": 0.0063,
+     "high": 0.0156
+    },
+    "2022": {
+     "low": 0.0071,
+     "central": 0.0189,
+     "high": 0.0468
+    },
+    "2023": {
+     "low": 0.0042,
+     "central": 0.0112,
+     "high": 0.0277
+    },
+    "2024": {
+     "low": 0.0022,
+     "central": 0.0057,
+     "high": 0.0143
+    },
+    "2025": {
+     "low": 0.0019,
+     "central": 0.005,
+     "high": 0.0124
+    },
+    "2026": {
+     "low": 0.0008,
+     "central": 0.0021,
+     "high": 0.0053
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0005,
+     "central": 0.0012,
+     "high": 0.003
+    },
+    "2022": {
+     "low": 0.0009,
+     "central": 0.0024,
+     "high": 0.0059
+    },
+    "2023": {
+     "low": 0.0008,
+     "central": 0.0019,
+     "high": 0.0049
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.0016,
+     "high": 0.004
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0015,
+     "high": 0.0038
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.0011
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0508,
+    "central": 0.1202,
+    "high": 0.2552
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "Global Witness via manueldelia.com: Greek, Maltese, Cypriot ships carried just over half of Russian seaborne oil by May 2022",
+     "url": "https://manueldelia.com/2022/06/malta-helps-shipowners-increase-profits-transporting-putins-oil-report/",
+     "date": "2022-06"
+    },
+    {
+     "name": "Follow the Money: European shipowners keep Russia's shadow fleet afloat (230+ tankers, >USD 6bn; Greece ~USD 4bn/127 ships, UK USD 590m/22, Germany USD 190m)",
+     "url": "https://www.ftm.eu/articles/who-is-behind-the-russian-shadow-fleet",
+     "date": "2025-02-04"
+    },
+    {
+     "name": "OECD-WTO BaTiS, transport services exports to Russia (SC), balanced series 2019-2024",
+     "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_BATIS@DF_BATIS,1.0/",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Maltese owners/managers small (1-3%); Malta matters more as a flag (20% of flag fees pre-war, 7% by 2024). Certainty C.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "MYS": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0103,
+     "central": 0.0319,
+     "high": 0.0858
+    },
+    "2023": {
+     "low": 0.0553,
+     "central": 0.172,
+     "high": 0.4624
+    },
+    "2024": {
+     "low": 0.0632,
+     "central": 0.1966,
+     "high": 0.5283
+    },
+    "2025": {
+     "low": 0.0543,
+     "central": 0.1688,
+     "high": 0.4539
+    },
+    "2026": {
+     "low": 0.0804,
+     "central": 0.2501,
+     "high": 0.6723
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0006,
+     "central": 0.002,
+     "high": 0.0063
+    },
+    "2023": {
+     "low": 0.0023,
+     "central": 0.0082,
+     "high": 0.026
+    },
+    "2024": {
+     "low": 0.0026,
+     "central": 0.0092,
+     "high": 0.029
+    },
+    "2025": {
+     "low": 0.0022,
+     "central": 0.0079,
+     "high": 0.0249
+    },
+    "2026": {
+     "low": 0.0022,
+     "central": 0.0078,
+     "high": 0.0247
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "Shipping Telegraph: UAE and Russia the biggest registered owners of shadow tankers (CREA counts: UAE ~41%, India 12%, HK/China/Vietnam ~8% each of shadow crude tankers)",
+     "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
+     "date": "2024"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other shadow-fleet owners' pool (5-10% of crude, 6-9% of products in 2023-26), split by an educated guess (Vietnam 30%, Seychelles 20%, Malaysia 20%, Oman 10%, Georgia/Saudi Arabia/Egypt/Kazakhstan 5% each), from CREA/press counts of registered owners. Vietnam, Seychelles and Malaysia also take 5% each of the opaque-owner residual. Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "NLD": {
+   "freight": {
+    "2021": {
+     "low": 0.0301,
+     "central": 0.0935,
+     "high": 0.2514
+    },
+    "2022": {
+     "low": 0.0566,
+     "central": 0.176,
+     "high": 0.4731
+    },
+    "2023": {
+     "low": 0.0159,
+     "central": 0.0496,
+     "high": 0.1332
+    },
+    "2024": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.0082
+    },
+    "2025": {
+     "low": 0.0009,
+     "central": 0.0029,
+     "high": 0.0078
+    },
+    "2026": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0055
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.004,
+     "central": 0.0115,
+     "high": 0.0346
+    },
+    "2023": {
+     "low": 0.0038,
+     "central": 0.0109,
+     "high": 0.0328
+    },
+    "2024": {
+     "low": 0.0018,
+     "central": 0.005,
+     "high": 0.0151
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0017,
+     "high": 0.0051
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0006,
+     "high": 0.0017
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0022,
+     "central": 0.0078,
+     "high": 0.0245
+    },
+    "2022": {
+     "low": 0.0038,
+     "central": 0.0133,
+     "high": 0.0419
+    },
+    "2023": {
+     "low": 0.0006,
+     "central": 0.0023,
+     "high": 0.0071
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0004
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0004
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0374,
+    "central": 0.1201,
+    "high": 0.3362
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other pre-war European owners' pool (2% of crude, 7% of products before the war), mostly gone after 2023. Dutch product tanker owners 4% of products pre-war. Small tanker sales to shadow buyers inside FTM's Western total (educated guess). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "NOR": {
+   "freight": {
+    "2021": {
+     "low": 0.0703,
+     "central": 0.159,
+     "high": 0.3186
+    },
+    "2022": {
+     "low": 0.1709,
+     "central": 0.3865,
+     "high": 0.7748
+    },
+    "2023": {
+     "low": 0.0523,
+     "central": 0.1184,
+     "high": 0.2373
+    },
+    "2024": {
+     "low": 0.018,
+     "central": 0.0407,
+     "high": 0.0815
+    },
+    "2025": {
+     "low": 0.0172,
+     "central": 0.0389,
+     "high": 0.0781
+    },
+    "2026": {
+     "low": 0.0122,
+     "central": 0.0275,
+     "high": 0.0552
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0152,
+     "central": 0.0433,
+     "high": 0.1299
+    },
+    "2023": {
+     "low": 0.0144,
+     "central": 0.0411,
+     "high": 0.1232
+    },
+    "2024": {
+     "low": 0.0066,
+     "central": 0.0188,
+     "high": 0.0565
+    },
+    "2025": {
+     "low": 0.0022,
+     "central": 0.0064,
+     "high": 0.0191
+    },
+    "2026": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0062
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0154,
+     "central": 0.0409,
+     "high": 0.1016
+    },
+    "2022": {
+     "low": 0.0302,
+     "central": 0.0804,
+     "high": 0.1995
+    },
+    "2023": {
+     "low": 0.0195,
+     "central": 0.052,
+     "high": 0.129
+    },
+    "2024": {
+     "low": 0.0127,
+     "central": 0.0338,
+     "high": 0.0839
+    },
+    "2025": {
+     "low": 0.0147,
+     "central": 0.0392,
+     "high": 0.0973
+    },
+    "2026": {
+     "low": 0.0049,
+     "central": 0.0129,
+     "high": 0.0321
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0995,
+    "central": 0.2353,
+    "high": 0.4994
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "Follow the Money: European shipowners keep Russia's shadow fleet afloat (230+ tankers, >USD 6bn; Greece ~USD 4bn/127 ships, UK USD 590m/22, Germany USD 190m)",
+     "url": "https://www.ftm.eu/articles/who-is-behind-the-russian-shadow-fleet",
+     "date": "2025-02-04"
+    },
+    {
+     "name": "CREA monthly analysis of Russian fossil fuel exports and sanctions, July 2025 (G7+ tanker share 36% Jan -> 55% Jul 2025; crude 17% -> 42%)",
+     "url": "https://energyandcleanair.org/july-2025-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/",
+     "date": "2025-08"
+    },
+    {
+     "name": "OECD-WTO BaTiS, transport services exports to Russia (SC), balanced series 2019-2024",
+     "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_BATIS@DF_BATIS,1.0/",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Gard and Skuld (Norwegian IG clubs): ~20% of pre-war P&I/hull pool, 9-12% in 2023-25. Norwegian owners carried 3-4% of crude pre-war, exited 2023. Ship sales ~USD 0.3bn (guess). Certainty C.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "OMN": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0051,
+     "central": 0.016,
+     "high": 0.0429
+    },
+    "2023": {
+     "low": 0.0253,
+     "central": 0.0786,
+     "high": 0.2113
+    },
+    "2024": {
+     "low": 0.0288,
+     "central": 0.0894,
+     "high": 0.2404
+    },
+    "2025": {
+     "low": 0.0246,
+     "central": 0.0765,
+     "high": 0.2055
+    },
+    "2026": {
+     "low": 0.0358,
+     "central": 0.1113,
+     "high": 0.2991
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0003,
+     "central": 0.001,
+     "high": 0.0031
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.0036,
+     "high": 0.0113
+    },
+    "2024": {
+     "low": 0.0011,
+     "central": 0.0039,
+     "high": 0.0124
+    },
+    "2025": {
+     "low": 0.001,
+     "central": 0.0034,
+     "high": 0.0108
+    },
+    "2026": {
+     "low": 0.0009,
+     "central": 0.0033,
+     "high": 0.0103
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "Shipping Telegraph: UAE and Russia the biggest registered owners of shadow tankers (CREA counts: UAE ~41%, India 12%, HK/China/Vietnam ~8% each of shadow crude tankers)",
+     "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
+     "date": "2024"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other shadow-fleet owners' pool (5-10% of crude, 6-9% of products in 2023-26), split by an educated guess (Vietnam 30%, Seychelles 20%, Malaysia 20%, Oman 10%, Georgia/Saudi Arabia/Egypt/Kazakhstan 5% each), from CREA/press counts of registered owners. Vietnam, Seychelles and Malaysia also take 5% each of the opaque-owner residual. Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "PAN": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0012
+    },
+    "2022": {
+     "low": 0.0006,
+     "central": 0.0016,
+     "high": 0.0039
+    },
+    "2023": {
+     "low": 0.0016,
+     "central": 0.0039,
+     "high": 0.0097
+    },
+    "2024": {
+     "low": 0.0018,
+     "central": 0.0045,
+     "high": 0.0113
+    },
+    "2025": {
+     "low": 0.0012,
+     "central": 0.003,
+     "high": 0.0076
+    },
+    "2026": {
+     "low": 0.0006,
+     "central": 0.0014,
+     "high": 0.0035
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0002,
+    "central": 0.0005,
+    "high": 0.0014
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Flag registry fees only: ship-years in Russian trade x USD 20-35k per ship-year by flag share (Panama, Gabon, Cameroon, Comoros, Sierra Leone, Barbados and Cook Islands rose with the shadow fleet; Liberian and Marshall Islands fees are split 50/50 with the US operators of the registries). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "SAU": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0026,
+     "central": 0.008,
+     "high": 0.0214
+    },
+    "2023": {
+     "low": 0.0126,
+     "central": 0.0393,
+     "high": 0.1056
+    },
+    "2024": {
+     "low": 0.0144,
+     "central": 0.0447,
+     "high": 0.1202
+    },
+    "2025": {
+     "low": 0.0123,
+     "central": 0.0382,
+     "high": 0.1028
+    },
+    "2026": {
+     "low": 0.0179,
+     "central": 0.0556,
+     "high": 0.1495
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0005,
+     "high": 0.0016
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0018,
+     "high": 0.0057
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.002,
+     "high": 0.0062
+    },
+    "2025": {
+     "low": 0.0005,
+     "central": 0.0017,
+     "high": 0.0054
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0016,
+     "high": 0.0052
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "Shipping Telegraph: UAE and Russia the biggest registered owners of shadow tankers (CREA counts: UAE ~41%, India 12%, HK/China/Vietnam ~8% each of shadow crude tankers)",
+     "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
+     "date": "2024"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other shadow-fleet owners' pool (5-10% of crude, 6-9% of products in 2023-26), split by an educated guess (Vietnam 30%, Seychelles 20%, Malaysia 20%, Oman 10%, Georgia/Saudi Arabia/Egypt/Kazakhstan 5% each), from CREA/press counts of registered owners. Vietnam, Seychelles and Malaysia also take 5% each of the opaque-owner residual. Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "SGP": {
+   "freight": {
+    "2021": {
+     "low": 0.0621,
+     "central": 0.1404,
+     "high": 0.2813
+    },
+    "2022": {
+     "low": 0.1911,
+     "central": 0.4321,
+     "high": 0.8661
+    },
+    "2023": {
+     "low": 0.1513,
+     "central": 0.3422,
+     "high": 0.6859
+    },
+    "2024": {
+     "low": 0.107,
+     "central": 0.2421,
+     "high": 0.4852
+    },
+    "2025": {
+     "low": 0.0704,
+     "central": 0.1593,
+     "high": 0.3193
+    },
+    "2026": {
+     "low": 0.0643,
+     "central": 0.1453,
+     "high": 0.2913
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0354,
+     "central": 0.101,
+     "high": 0.3031
+    },
+    "2023": {
+     "low": 0.0335,
+     "central": 0.0958,
+     "high": 0.2874
+    },
+    "2024": {
+     "low": 0.0154,
+     "central": 0.044,
+     "high": 0.1319
+    },
+    "2025": {
+     "low": 0.0052,
+     "central": 0.0149,
+     "high": 0.0446
+    },
+    "2026": {
+     "low": 0.0017,
+     "central": 0.0048,
+     "high": 0.0144
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0038,
+     "central": 0.01,
+     "high": 0.0248
+    },
+    "2022": {
+     "low": 0.0101,
+     "central": 0.0268,
+     "high": 0.0666
+    },
+    "2023": {
+     "low": 0.0059,
+     "central": 0.0156,
+     "high": 0.0387
+    },
+    "2024": {
+     "low": 0.004,
+     "central": 0.0107,
+     "high": 0.0265
+    },
+    "2025": {
+     "low": 0.0027,
+     "central": 0.0071,
+     "high": 0.0177
+    },
+    "2026": {
+     "low": 0.0016,
+     "central": 0.0043,
+     "high": 0.0106
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.08,
+    "central": 0.1892,
+    "high": 0.4016
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Singapore owners/managers (and Monaco/Singapore-listed product tanker groups) carried 3-5% pre-war; sold old tankers to shadow buyers (~USD 0.7bn, educated guess). Certainty C.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "SLE": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.001
+    },
+    "2024": {
+     "low": 0.0004,
+     "central": 0.0009,
+     "high": 0.0023
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0015,
+     "high": 0.0038
+    },
+    "2026": {
+     "low": 0.0006,
+     "central": 0.0014,
+     "high": 0.0035
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Flag registry fees only: ship-years in Russian trade x USD 20-35k per ship-year by flag share (Panama, Gabon, Cameroon, Comoros, Sierra Leone, Barbados and Cook Islands rose with the shadow fleet; Liberian and Marshall Islands fees are split 50/50 with the US operators of the registries). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "SWE": {
+   "freight": {
+    "2021": {
+     "low": 0.0083,
+     "central": 0.0259,
+     "high": 0.0695
+    },
+    "2022": {
+     "low": 0.0108,
+     "central": 0.0335,
+     "high": 0.0902
+    },
+    "2023": {
+     "low": 0.0011,
+     "central": 0.0033,
+     "high": 0.0089
+    },
+    "2024": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.0082
+    },
+    "2025": {
+     "low": 0.0009,
+     "central": 0.0029,
+     "high": 0.0078
+    },
+    "2026": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0055
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.003,
+     "central": 0.0087,
+     "high": 0.026
+    },
+    "2023": {
+     "low": 0.0029,
+     "central": 0.0082,
+     "high": 0.0246
+    },
+    "2024": {
+     "low": 0.0013,
+     "central": 0.0038,
+     "high": 0.0113
+    },
+    "2025": {
+     "low": 0.0004,
+     "central": 0.0013,
+     "high": 0.0038
+    },
+    "2026": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0012
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0029,
+     "central": 0.0104,
+     "high": 0.0327
+    },
+    "2022": {
+     "low": 0.0048,
+     "central": 0.017,
+     "high": 0.0535
+    },
+    "2023": {
+     "low": 0.0031,
+     "central": 0.0108,
+     "high": 0.0342
+    },
+    "2024": {
+     "low": 0.0018,
+     "central": 0.0064,
+     "high": 0.0201
+    },
+    "2025": {
+     "low": 0.002,
+     "central": 0.0069,
+     "high": 0.0219
+    },
+    "2026": {
+     "low": 0.0007,
+     "central": 0.0025,
+     "high": 0.0078
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0129,
+    "central": 0.0414,
+    "high": 0.1158
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other pre-war European owners' pool (2% of crude, 7% of products before the war), mostly gone after 2023. Share of the 'other IG clubs' P&I pool (Swedish Club; Shipowners' Club in Luxembourg). Small tanker sales to shadow buyers inside FTM's Western total (educated guess). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "SYC": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0103,
+     "central": 0.0319,
+     "high": 0.0858
+    },
+    "2023": {
+     "low": 0.0553,
+     "central": 0.172,
+     "high": 0.4624
+    },
+    "2024": {
+     "low": 0.0632,
+     "central": 0.1966,
+     "high": 0.5283
+    },
+    "2025": {
+     "low": 0.0543,
+     "central": 0.1688,
+     "high": 0.4539
+    },
+    "2026": {
+     "low": 0.0804,
+     "central": 0.2501,
+     "high": 0.6723
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0006,
+     "central": 0.002,
+     "high": 0.0063
+    },
+    "2023": {
+     "low": 0.0023,
+     "central": 0.0082,
+     "high": 0.026
+    },
+    "2024": {
+     "low": 0.0026,
+     "central": 0.0092,
+     "high": 0.029
+    },
+    "2025": {
+     "low": 0.0022,
+     "central": 0.0079,
+     "high": 0.0249
+    },
+    "2026": {
+     "low": 0.0022,
+     "central": 0.0078,
+     "high": 0.0247
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "Shipping Telegraph: UAE and Russia the biggest registered owners of shadow tankers (CREA counts: UAE ~41%, India 12%, HK/China/Vietnam ~8% each of shadow crude tankers)",
+     "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
+     "date": "2024"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other shadow-fleet owners' pool (5-10% of crude, 6-9% of products in 2023-26), split by an educated guess (Vietnam 30%, Seychelles 20%, Malaysia 20%, Oman 10%, Georgia/Saudi Arabia/Egypt/Kazakhstan 5% each), from CREA/press counts of registered owners. Vietnam, Seychelles and Malaysia also take 5% each of the opaque-owner residual. Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "TUR": {
+   "freight": {
+    "2021": {
+     "low": 0.0688,
+     "central": 0.1556,
+     "high": 0.3118
+    },
+    "2022": {
+     "low": 0.296,
+     "central": 0.6695,
+     "high": 1.342
+    },
+    "2023": {
+     "low": 0.3394,
+     "central": 0.7676,
+     "high": 1.5386
+    },
+    "2024": {
+     "low": 0.2627,
+     "central": 0.5941,
+     "high": 1.1908
+    },
+    "2025": {
+     "low": 0.2254,
+     "central": 0.5097,
+     "high": 1.0217
+    },
+    "2026": {
+     "low": 0.2475,
+     "central": 0.5598,
+     "high": 1.1221
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0126,
+     "central": 0.0361,
+     "high": 0.1083
+    },
+    "2023": {
+     "low": 0.012,
+     "central": 0.0342,
+     "high": 0.1027
+    },
+    "2024": {
+     "low": 0.0055,
+     "central": 0.0157,
+     "high": 0.0471
+    },
+    "2025": {
+     "low": 0.0019,
+     "central": 0.0053,
+     "high": 0.0159
+    },
+    "2026": {
+     "low": 0.0006,
+     "central": 0.0017,
+     "high": 0.0052
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0042,
+     "central": 0.0111,
+     "high": 0.0275
+    },
+    "2022": {
+     "low": 0.0156,
+     "central": 0.0416,
+     "high": 0.1032
+    },
+    "2023": {
+     "low": 0.0131,
+     "central": 0.035,
+     "high": 0.0868
+    },
+    "2024": {
+     "low": 0.0098,
+     "central": 0.0262,
+     "high": 0.065
+    },
+    "2025": {
+     "low": 0.0086,
+     "central": 0.0228,
+     "high": 0.0567
+    },
+    "2026": {
+     "low": 0.0062,
+     "central": 0.0165,
+     "high": 0.0408
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0866,
+    "central": 0.2048,
+    "high": 0.4346
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "OECD-WTO BaTiS, transport services exports to Russia (SC), balanced series 2019-2024",
+     "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_BATIS@DF_BATIS,1.0/",
+     "date": "2026-10-17"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Turkish owners are big in Black Sea product trades (Russian diesel/fuel oil to Turkey and the Med); products share 7% pre-war, 9-10% after. Some crude. Ship sales to shadow buyers ~USD 0.25bn (guess). Certainty C.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "TWN": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0076,
+     "central": 0.0217,
+     "high": 0.065
+    },
+    "2023": {
+     "low": 0.0072,
+     "central": 0.0205,
+     "high": 0.0616
+    },
+    "2024": {
+     "low": 0.0033,
+     "central": 0.0094,
+     "high": 0.0283
+    },
+    "2025": {
+     "low": 0.0011,
+     "central": 0.0032,
+     "high": 0.0096
+    },
+    "2026": {
+     "low": 0.0004,
+     "central": 0.001,
+     "high": 0.0031
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Small crude share pre-war; second-hand tanker sales to shadow buyers (educated guess). Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "USA": {
+   "freight": {
+    "2021": {
+     "low": 0.0082,
+     "central": 0.0186,
+     "high": 0.0373
+    },
+    "2022": {
+     "low": 0.0833,
+     "central": 0.1885,
+     "high": 0.3779
+    },
+    "2023": {
+     "low": 0.0589,
+     "central": 0.1332,
+     "high": 0.2669
+    },
+    "2024": {
+     "low": 0.0539,
+     "central": 0.122,
+     "high": 0.2444
+    },
+    "2025": {
+     "low": 0.0516,
+     "central": 0.1168,
+     "high": 0.2342
+    },
+    "2026": {
+     "low": 0.0365,
+     "central": 0.0826,
+     "high": 0.1655
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0126,
+     "central": 0.0361,
+     "high": 0.1083
+    },
+    "2023": {
+     "low": 0.012,
+     "central": 0.0342,
+     "high": 0.1027
+    },
+    "2024": {
+     "low": 0.0055,
+     "central": 0.0157,
+     "high": 0.0471
+    },
+    "2025": {
+     "low": 0.0019,
+     "central": 0.0053,
+     "high": 0.0159
+    },
+    "2026": {
+     "low": 0.0006,
+     "central": 0.0017,
+     "high": 0.0052
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0033,
+     "central": 0.0087,
+     "high": 0.0217
+    },
+    "2022": {
+     "low": 0.0091,
+     "central": 0.0242,
+     "high": 0.0602
+    },
+    "2023": {
+     "low": 0.0063,
+     "central": 0.0168,
+     "high": 0.0416
+    },
+    "2024": {
+     "low": 0.0044,
+     "central": 0.0116,
+     "high": 0.0288
+    },
+    "2025": {
+     "low": 0.0045,
+     "central": 0.012,
+     "high": 0.0299
+    },
+    "2026": {
+     "low": 0.0018,
+     "central": 0.0049,
+     "high": 0.012
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0005,
+     "central": 0.0012,
+     "high": 0.003
+    },
+    "2022": {
+     "low": 0.001,
+     "central": 0.0025,
+     "high": 0.0064
+    },
+    "2023": {
+     "low": 0.0012,
+     "central": 0.0029,
+     "high": 0.0073
+    },
+    "2024": {
+     "low": 0.001,
+     "central": 0.0025,
+     "high": 0.0062
+    },
+    "2025": {
+     "low": 0.0009,
+     "central": 0.0022,
+     "high": 0.0054
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.0019
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0151,
+    "central": 0.0356,
+    "high": 0.0756
+   },
+   "certainty": "C",
+   "sources": [
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Seapeak (ex-Teekay LNG, owned by Stonepeak since Jan 2022) owns 50% of 6 Arc7 LNG carriers; American Club P&I; half of Liberian and Marshall Islands registry fees (LISCR and IRI are US-based); ship sales ~USD 0.25bn. Certainty C.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  },
+  "VNM": {
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0154,
+     "central": 0.0479,
+     "high": 0.1287
+    },
+    "2023": {
+     "low": 0.0806,
+     "central": 0.2506,
+     "high": 0.6737
+    },
+    "2024": {
+     "low": 0.0919,
+     "central": 0.286,
+     "high": 0.7687
+    },
+    "2025": {
+     "low": 0.0789,
+     "central": 0.2453,
+     "high": 0.6594
+    },
+    "2026": {
+     "low": 0.1162,
+     "central": 0.3614,
+     "high": 0.9714
+    }
+   },
+   "ship_sales": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "insurance_finance": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0008,
+     "central": 0.003,
+     "high": 0.0094
+    },
+    "2023": {
+     "low": 0.0034,
+     "central": 0.0118,
+     "high": 0.0373
+    },
+    "2024": {
+     "low": 0.0037,
+     "central": 0.0131,
+     "high": 0.0415
+    },
+    "2025": {
+     "low": 0.0032,
+     "central": 0.0113,
+     "high": 0.0357
+    },
+    "2026": {
+     "low": 0.0032,
+     "central": 0.0111,
+     "high": 0.0351
+    }
+   },
+   "registry": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0002
+    }
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "sources": [
+    {
+     "name": "Shipping Telegraph: UAE and Russia the biggest registered owners of shadow tankers (CREA counts: UAE ~41%, India 12%, HK/China/Vietnam ~8% each of shadow crude tankers)",
+     "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
+     "date": "2024"
+    },
+    {
+     "name": "KSE Institute Russian Oil Tracker, July 2026 (268 tankers, 56% shadow; seaborne crude+products ~5.3 mb/d)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "date": "2026-08"
+    },
+    {
+     "name": "Reuters via Baird Maritime / WorldPorts: Urals freight Baltic/Black Sea to India per voyage (USD 7.8m Apr 2023; Suezmax USD 27-30m Oct 2023; USD 4.7-8m 2025; USD 16-23m Mar-Apr 2026; record ~USD 20m 2022)",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "date": "2026-05"
+    },
+    {
+     "name": "Bank of Russia balance of payments, standard components (sea freight and insurance imports, 2019-2025)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Part of the 'other shadow-fleet owners' pool (5-10% of crude, 6-9% of products in 2023-26), split by an educated guess (Vietnam 30%, Seychelles 20%, Malaysia 20%, Oman 10%, Georgia/Saudi Arabia/Egypt/Kazakhstan 5% each), from CREA/press counts of registered owners. Vietnam, Seychelles and Malaysia also take 5% each of the opaque-owner residual. Certainty D.",
+   "overlap_share_with_services_sold_to_rus": {
+    "freight": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "insurance_finance": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "insurance_finance_2021_2022": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.4
+    },
+    "ship_sales": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1
+    },
+    "registry": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.05
+    }
+   }
+  }
+ },
+ "totals": {
+  "freight": {
+   "2022": {
+    "low": 7.1259,
+    "central": 10.963,
+    "high": 15.8963
+   },
+   "2023": {
+    "low": 8.3292,
+    "central": 12.8142,
+    "high": 18.5806
+   },
+   "2024": {
+    "low": 6.1109,
+    "central": 9.4013,
+    "high": 13.6319
+   },
+   "2025": {
+    "low": 5.3599,
+    "central": 8.246,
+    "high": 11.9567
+   },
+   "2026": {
+    "low": 5.8639,
+    "central": 9.0214,
+    "high": 13.081
+   }
+  },
+  "insurance_finance": {
+   "2022": {
+    "low": 0.5123,
+    "central": 0.9315,
+    "high": 1.6766
+   },
+   "2023": {
+    "low": 0.4494,
+    "central": 0.8171,
+    "high": 1.4709
+   },
+   "2024": {
+    "low": 0.3258,
+    "central": 0.5924,
+    "high": 1.0662
+   },
+   "2025": {
+    "low": 0.3062,
+    "central": 0.5567,
+    "high": 1.0021
+   },
+   "2026": {
+    "low": 0.1992,
+    "central": 0.3623,
+    "high": 0.6521
+   }
+  },
+  "registry": {
+   "2022": {
+    "low": 0.0059,
+    "central": 0.0118,
+    "high": 0.0235
+   },
+   "2023": {
+    "low": 0.0087,
+    "central": 0.0175,
+    "high": 0.035
+   },
+   "2024": {
+    "low": 0.0104,
+    "central": 0.0208,
+    "high": 0.0416
+   },
+   "2025": {
+    "low": 0.0095,
+    "central": 0.0191,
+    "high": 0.0382
+   },
+   "2026": {
+    "low": 0.0053,
+    "central": 0.0106,
+    "high": 0.0212
+   }
+  },
+  "ship_sales": {
+   "2022": {
+    "low": 0.4898,
+    "central": 1.3995,
+    "high": 4.1986
+   },
+   "2023": {
+    "low": 0.4596,
+    "central": 1.313,
+    "high": 3.9391
+   },
+   "2024": {
+    "low": 0.1982,
+    "central": 0.5663,
+    "high": 1.6989
+   },
+   "2025": {
+    "low": 0.0656,
+    "central": 0.1873,
+    "high": 0.5619
+   },
+   "2026": {
+    "low": 0.0228,
+    "central": 0.0653,
+    "high": 0.1958
+   }
+  },
+  "all_foreign": {
+   "2022": {
+    "low": 9.3401,
+    "central": 13.3058,
+    "high": 19.0266
+   },
+   "2023": {
+    "low": 10.3815,
+    "central": 14.9618,
+    "high": 21.3317
+   },
+   "2024": {
+    "low": 7.2591,
+    "central": 10.5808,
+    "high": 14.986
+   },
+   "2025": {
+    "low": 6.1096,
+    "central": 9.0091,
+    "high": 12.7652
+   },
+   "2026": {
+    "low": 6.2976,
+    "central": 9.4596,
+    "high": 13.5316
+   },
+   "2021": {
+    "low": 2.1593,
+    "central": 3.5988,
+    "high": 5.7581
+   }
+  },
+  "baseline_2019_2021_all_foreign": {
+   "low": 2.5839,
+   "central": 4.3065,
+   "high": 6.8904
+  },
+  "of_which_opaque_owners_spread_to_hubs": {
+   "2021": 0.0,
+   "2022": 0.0,
+   "2023": 0.3172,
+   "2024": 0.381,
+   "2025": 0.341,
+   "2026": 0.579
+  },
+  "russia_own_and_controlled": {
+   "2021": {
+    "low": 0.696,
+    "central": 1.2655,
+    "high": 2.1513
+   },
+   "2022": {
+    "low": 1.8415,
+    "central": 3.3481,
+    "high": 5.6918
+   },
+   "2023": {
+    "low": 1.865,
+    "central": 3.3908,
+    "high": 5.7644
+   },
+   "2024": {
+    "low": 1.7031,
+    "central": 3.0966,
+    "high": 5.2643
+   },
+   "2025": {
+    "low": 1.3988,
+    "central": 2.5432,
+    "high": 4.3235
+   },
+   "2026": {
+    "low": 1.8391,
+    "central": 3.3437,
+    "high": 5.6844
+   },
+   "baseline_2019_2021": {
+    "low": 0.933,
+    "central": 1.555,
+    "high": 2.488
+   }
+  },
+  "gross_freight_pool_all_owners": {
+   "2021": {
+    "low": 2.8579,
+    "central": 4.3967,
+    "high": 6.3752
+   },
+   "2022": {
+    "low": 9.1358,
+    "central": 14.0551,
+    "high": 20.3799
+   },
+   "2023": {
+    "low": 10.3394,
+    "central": 15.9068,
+    "high": 23.0648
+   },
+   "2024": {
+    "low": 7.9268,
+    "central": 12.1951,
+    "high": 17.6829
+   },
+   "2025": {
+    "low": 6.8451,
+    "central": 10.531,
+    "high": 15.2699
+   },
+   "2026": {
+    "low": 7.8812,
+    "central": 12.1249,
+    "high": 17.581
+   }
+  }
+ },
+ "overlap": "Mostly NOT inside uncovered.json services, with a small overlap. In balance-of-payments terms freight on an export is a transaction between the carrier and whoever charters the ship. Russian oil is mostly sold to non-resident buyers (Indian and Chinese refiners) or offshore traders in Dubai and Hong Kong. Those buyers and traders pay the freight, so the money does not pass through Russia's balance of payments. It therefore does not appear in the carriers' services exports to Russia, which is what Eurostat/BaTiS sold_to_rus measures. Evidence: (a) Russia's total sea-freight imports from all countries fell from USD 4.6bn (2021) to 3.7 (2022), 3.6 (2023) and 2.8 (2024, 2025) (Bank of Russia). Over the same years the foreign-owned freight on Russian oil in this file rose to USD 10-14bn, so at most a small part can sit in Russia's imports. Most of Russia's sea-freight imports pay for its own imports (containers, CIF). (b) BaTiS transport exports to Russia for Greece rose only from USD 0.18bn (2021) to 0.29/0.33/0.39bn (2022-24). That is 4-8% of the Greek earnings estimated here; Cyprus, Malta, Norway and Denmark fell. (c) Russia's insurance imports collapsed from USD 1.2bn (2021) to 0.4 (2022) and below 0.15 (2023-25). So most P&I on Russian-trade tankers is paid by non-Russian owners and is not in sold_to_rus. Share to remove to avoid double counting with sold_to_rus: freight 5% (0-15%); insurance/finance 20% (5-40%) for 2021-2022, when Sovcomflot and Russian charterers still bought Western P&I and services, and 10% (0-25%) from 2023; ship sales 0% (they are goods, not services; direct sales to Russian-resident buyers could sit in goods trade, HS 8901, high 10%); registry 0%. The 2021 values in this file carry the same shares, so the baseline is treated alike. Overlap with the Greek item uncovered.json GRC.oil_shipping_earned: this file replaces it (it covered Greek crude freight only). Do not add both. Overlap with crea.json fossil payments: crude is valued free-on-board at Russian ports (CREA methodology), so crude freight is not inside buyers' payments to Russia (0%). Products and LNG are priced with Eurostat import unit values, which are CIF, so an amount close to EU-route freight (USD 2-5/bbl) is probably embedded in the payments credited to Russia. That is roughly 30-60% of the products and LNG freight here, or about 10-20% of total freight. It is a valuation issue in the fossil figures: the money goes to the carriers, not to Russia. The cleaner fix is to trim CREA product values. Russian-owned and Russian-controlled tankers (totals.russia_own_and_controlled, EUR 2.5-3.4bn a year) are not a foreign country's earnings and are not assigned.",
+ "fx_usd_per_eur": {
+  "2019": 1.1195,
+  "2020": 1.1422,
+  "2021": 1.1827,
+  "2022": 1.053,
+  "2023": 1.0813,
+  "2024": 1.0824,
+  "2025": 1.13,
+  "2026": 1.1629
+ }
+}
