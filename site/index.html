@@ -1275,7 +1275,8 @@ function applyLang() {
 window.onLangChange = applyLang;
 
 // ===== Load =====
-Promise.all([fetch("countries-50m.json").then(r => r.json()), fetch("data.json").then(r => r.json())]).then(([world, data]) => {
+// the chosen language's dictionary (i18n.js) loads alongside the data, so the first render is already translated
+Promise.all([fetch("countries-50m.json").then(r => r.json()), fetch("data.json").then(r => r.json()), I18N_READY]).then(([world, data]) => {
   YEARS = data.years; FRAC = data.frac; SRC = data.sources || {}; META = data.meta || {};
   if (data.data_to) DATA_TO = new Date(data.data_to);
   for (const c of Object.values(data.countries)) { normalise(c); c.name_en = c.name; DATA[c.n] = c; byIso[c.iso3] = c; }

@@ -199,13 +199,13 @@
       "high": 72.88
      },
      "check": {
-      "value": 46.02,
-      "source": "Eurostat Comext DS-045409, imports/exports with Russia, all products, annual 2019-2025 and monthly Jan-Aug 2026 (EUR); Comtrade national 35.7 incl. ~3.5bn unlabelled HS27 (gas) + CREA 2022 pipeline gas 19.3 x final-use share 0.75; Comext TOTAL 33.6; CREA fossil total 37.1",
-      "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409",
+      "value": 49.37,
+      "source": "UN Comtrade (public preview API), reporter-declared trade with Russia, HS TOTAL and chapters, 2019-2025, converted at ECB annual EUR/USD (Eurostat ert_bil_eur_a); 2026 = 2025 x 8/12; German national customs (FOB) 35.7, which already hold ~3.5bn of unlabelled HS 27 (gas), plus 2022 final-use Russian gas of 25.9 bcm valued at EUR 18bn (BAFA border prices weighted to the H1-heavy flow; plausible span 14.5 = CREA border value x final-use share 0.75, to 23.6 = project gas_prices.json EUR 86.5/MWh); Comext TOTAL 33.6; CREA fossil total 37.1",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS",
       "date": "2026-10-17"
      },
      "verdict": "ok",
-     "note": "Inside the range but the central is high by about EUR 10bn: the 2022 Russian gas value (EUR 25.2bn) uses a Europe-wide unit value of EUR 92/MWh, above CREA's Germany border value (EUR 19.3bn incl. gas passed on to Czechia and Austria), and the gas swap does not remove about EUR 2-3.5bn of gas German customs already record under unlabelled HS 27. Suggested central about EUR 10bn lower."
+     "note": "Inside the range but the central is high by about EUR 10bn: the 2022 Russian gas value (EUR 25.2bn) uses a Europe-wide unit value of EUR 92/MWh, above CREA's Germany border value (EUR 19.3bn incl. gas passed on to Czechia and Austria), and the gas swap does not remove about EUR 2-3.5bn of gas German customs already record under unlabelled HS 27. Suggested central about 50, range 45-56."
     },
     "laundered_oil": {
      "ours": {
