@@ -754,6 +754,20 @@ def build() -> dict:
             continue
         ser = lch(d["by_year"])
         c["military_rus"] = {**ser, "src": [oid2]}
+    # China: only what is not already in recorded trade (unrecorded military items, satellite imagery and training,
+    # smuggled dual-use goods); the dual-use goods in recorded exports are already counted as sales to Russia
+    cm = load(GAPS / "china_military.json")
+    if "CHN" in countries:
+        cid = src.add(
+            "china_military",
+            "China's military support to Russia not in recorded trade: CSIS, RUSI, KSE, Reuters, US and EU findings",
+            None,
+            cm.get("generated"),
+            "rough indication (D); recorded dual-use exports are already counted as sales to Russia; see research/2026-10/gaps/china_military-notes.md",
+        )
+        countries["CHN"]["military_rus"] = {**lch(cm["items"]["uncounted_total"]), "cert": "D", "src": [cid]}
+        du = lch(cm["items"]["dual_use_recorded"])
+        countries["CHN"]["dual_use_note"] = round(sum(du["years"]), 2)
     pid = src.add(
         "people",
         "Volunteers and recruited fighters: compiled estimates",

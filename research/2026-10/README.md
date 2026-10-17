@@ -79,3 +79,4 @@ Method choices made in this round:
   - G7 loans repaid from Russia's frozen assets (ERA: US 18.3, EU 18.1, Canada 3.3, UK 2.6, Japan 1.6) are left out of donors' aid: it is Russia's money.
   - The 2026 EU Ukraine Support Loan is split over the 24 members that guarantee it (not Czechia, Hungary, Slovakia).
   - Denmark's sales to Russia sit between Danish and Eurostat data; laundered oil bought by EU members is scaled to Global Witness's figure for Russian crude in EU imports (x0.62); Poland's refugee cost follows the government report (about EUR 24bn).
+- **China's military support** (`gaps/china_military.json`): only what is not in recorded trade is added as weapons to Russia (unrecorded finished military items, satellite imagery and training, smuggled dual-use goods): EUR 0.2-0.3bn a year, certainty D. China's recorded dual-use exports (EUR 4.5-5.8bn a year, high-priority list items) are already counted in its sales to Russia and are not added again.

@@ -1,0 +1,426 @@
+{
+ "generated": "2026-10-18",
+ "unit": "EUR bn, current prices, ECB annual average USD/EUR (2026 = Jan-Aug, Jan-Aug mean rate). Ranges are roughly 90%.",
+ "scope": "China (mainland) plus Hong Kong. 2026 values cover Jan-Aug only.",
+ "items": {
+  "dual_use_recorded": {
+   "2022": {
+    "low": 4.1,
+    "central": 4.49,
+    "high": 5.54
+   },
+   "2023": {
+    "low": 5.34,
+    "central": 5.84,
+    "high": 7.7
+   },
+   "2024": {
+    "low": 4.53,
+    "central": 5.04,
+    "high": 6.67
+   },
+   "2025": {
+    "low": 4.19,
+    "central": 4.85,
+    "high": 6.44
+   },
+   "2026": {
+    "low": 2.14,
+    "central": 3.0,
+    "high": 4.9
+   }
+  },
+  "finished_military": {
+   "2022": {
+    "low": 0.019,
+    "central": 0.076,
+    "high": 0.285
+   },
+   "2023": {
+    "low": 0.074,
+    "central": 0.231,
+    "high": 0.555
+   },
+   "2024": {
+    "low": 0.139,
+    "central": 0.37,
+    "high": 0.832
+   },
+   "2025": {
+    "low": 0.221,
+    "central": 0.531,
+    "high": 1.239
+   },
+   "2026": {
+    "low": 0.172,
+    "central": 0.43,
+    "high": 1.032
+   }
+  },
+  "intelligence": {
+   "2022": {
+    "low": 0.005,
+    "central": 0.028,
+    "high": 0.114
+   },
+   "2023": {
+    "low": 0.009,
+    "central": 0.046,
+    "high": 0.166
+   },
+   "2024": {
+    "low": 0.018,
+    "central": 0.074,
+    "high": 0.231
+   },
+   "2025": {
+    "low": 0.027,
+    "central": 0.106,
+    "high": 0.31
+   },
+   "2026": {
+    "low": 0.017,
+    "central": 0.086,
+    "high": 0.258
+   }
+  },
+  "uncounted_total": {
+   "2022": {
+    "low": 0.12,
+    "central": 0.17,
+    "high": 0.46
+   },
+   "2023": {
+    "low": 0.19,
+    "central": 0.26,
+    "high": 0.65
+   },
+   "2024": {
+    "low": 0.22,
+    "central": 0.28,
+    "high": 0.64
+   },
+   "2025": {
+    "low": 0.27,
+    "central": 0.33,
+    "high": 0.72
+   },
+   "2026": {
+    "low": 0.2,
+    "central": 0.24,
+    "high": 0.53
+   }
+  }
+ },
+ "items_note": {
+  "dual_use_recorded": "Common High Priority (CHP) goods, 51 HS-6 codes, in China's and Hong Kong's own reported exports to Russia, plus clearly drone- and munitions-relevant codes outside the list (small electric motors 850131/850132, piston engines 840790/840731, optical fibre and cable 900110/854470, drones 8806, nitrocellulose 391220, propellant 360200, navigation 901410, laser parts 901390). Low = CHP list only (x0.95). High adds non-CHP machine tools (HS 8456-8466), motorcycles 871130, a fifth of lithium batteries 8507, and 10% for goods declared under civilian codes. ALREADY IN TRADE: display flag only, never add.",
+  "finished_military": "TOTAL value of finished or near-finished military items of Chinese origin (drone engines for Garpiya and Geran, turbojets, Garpiya-3 airframes, commercial quadcopters, thermal sights, body armour). Most of it is already in recorded trade or in the residual transit (see already_in_trade_share). Only finished_military_uncounted enters uncounted_total.",
+  "finished_military_uncounted": {
+   "2022": {
+    "low": 0.001,
+    "central": 0.011,
+    "high": 0.085
+   },
+   "2023": {
+    "low": 0.004,
+    "central": 0.035,
+    "high": 0.166
+   },
+   "2024": {
+    "low": 0.007,
+    "central": 0.055,
+    "high": 0.249
+   },
+   "2025": {
+    "low": 0.011,
+    "central": 0.08,
+    "high": 0.372
+   },
+   "2026": {
+    "low": 0.009,
+    "central": 0.064,
+    "high": 0.31
+   }
+  },
+  "dual_use_unrecorded": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.135,
+    "high": 0.554
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.175,
+    "high": 0.77
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.151,
+    "high": 0.667
+   },
+   "2025": {
+    "low": 0.0,
+    "central": 0.145,
+    "high": 0.644
+   },
+   "2026": {
+    "low": 0.0,
+    "central": 0.09,
+    "high": 0.49
+   }
+  },
+  "intelligence": "Satellite imagery and geospatial intelligence, plus military training and engineering services (Garpiya-3 development in China, ~200 Russian personnel trained in China in late 2025). Services, not goods: none of it is in goods trade. Entirely uncounted.",
+  "uncounted_total": "= finished_military_uncounted + dual_use_unrecorded + intelligence. Central = sum of item centrals (most likely values). Low/high = 5th/95th percentile of a 20,000-draw Monte Carlo with triangular distributions; the distribution is right-skewed (Monte Carlo medians: 2022 0.26, 2023 0.38, 2024 0.41, 2025 0.47, 2026 0.35). This is the only part that may be ADDED to China, as military_rus."
+ },
+ "already_in_trade_share": {
+  "dual_use_recorded": {
+   "share": 1.0,
+   "note": "100% by construction: these are China's and Hong Kong's own customs records, which are what trade_full.json exports_to_RUS sums (HS TOTAL). The map's from_rus only counts the part above the pre-war level."
+  },
+  "dual_use_recorded_above_2021_level_central": {
+   "2022": 0.14,
+   "2023": 1.49,
+   "2024": 0.69,
+   "2025": 0.5,
+   "2026": 0.22
+  },
+  "dual_use_2021_baseline_central": {
+   "CHN": 3.16,
+   "HKG": 1.19
+  },
+  "dual_use_share_of_recorded_exports_to_RUS_central": {
+   "2022": {
+    "CHN": 0.053,
+    "HKG": 0.287
+   },
+   "2023": {
+    "CHN": 0.05,
+    "HKG": 0.314
+   },
+   "2024": {
+    "CHN": 0.043,
+    "HKG": 0.354
+   },
+   "2025": {
+    "CHN": 0.047,
+    "HKG": 0.37
+   },
+   "2026": {
+    "CHN": 0.038,
+    "HKG": 0.286
+   }
+  },
+  "dual_use_by_reporter_central": {
+   "2022": {
+    "CHN": 3.84,
+    "HKG": 0.65
+   },
+   "2023": {
+    "CHN": 5.08,
+    "HKG": 0.77
+   },
+   "2024": {
+    "CHN": 4.55,
+    "HKG": 0.49
+   },
+   "2025": {
+    "CHN": 4.31,
+    "HKG": 0.54
+   },
+   "2026": {
+    "CHN": 2.68,
+    "HKG": 0.32
+   }
+  },
+  "finished_military": {
+   "low": 0.7,
+   "central": 0.85,
+   "high": 0.95,
+   "note": "Share of finished_military already inside China's recorded exports to Russia (often under false HS codes, e.g. Garpiya engines declared as cooling units, drone motors as household motors) or inside residual.json's Kyrgyz/Kazakh transit and pro-rata residual. The remaining 5-30% (central 15%) is assumed to move through channels neither customs records (state or military-technical channels, hand carry, items made for Russia inside China and moved as undeclared kits)."
+  },
+  "dual_use_via_transit_hubs": {
+   "note": "China's CHP exports to Kazakhstan and Kyrgyzstan rose from USD 0.92bn (2021) to 1.39bn (2023), 1.67bn (2024) and 1.29bn (2025). The goods that reach Russia unrecorded are already credited to China as origin in residual.json (Kyrgyz and Kazakh transit); goods re-exported with a record (Armenia, UAE, Turkey and others) are reassigned to China by reexports.json. Do not add them again."
+  },
+  "residual_CHN_for_reference": {
+   "2022": {
+    "low": 2.7578,
+    "central": 7.5933,
+    "high": 12.4871
+   },
+   "2023": {
+    "low": 5.8439,
+    "central": 12.7104,
+    "high": 19.5025
+   },
+   "2024": {
+    "low": 7.6065,
+    "central": 14.9677,
+    "high": 22.3036
+   },
+   "2025": {
+    "low": 11.5363,
+    "central": 17.7537,
+    "high": 24.1149
+   }
+  },
+  "intelligence": {
+   "share": 0.0,
+   "note": "Services; not in goods trade. If commercially sold it would belong in services trade, but none of these deals appear in the services data used by the map."
+  },
+  "payment_channels": {
+   "share": "n/a",
+   "note": "Payments settle the recorded trade; valuing them would count the same goods twice. Not valued."
+  }
+ },
+ "military_weight_flag": {
+  "recommend": true,
+  "value_central": {
+   "2022": 4.49,
+   "2023": 5.84,
+   "2024": 5.04,
+   "2025": 4.85,
+   "2026": 3.0
+  },
+  "note": "Show as 'of which war-critical dual-use goods' inside China's and Hong Kong's from_rus, for display only. About 4-5% of China's recorded exports to Russia and about 30-37% of Hong Kong's. Do not add to military_rus."
+ },
+ "certainty": "dual_use_recorded B (measured customs records; the list scope is a choice). finished_military C/D (unit counts from Reuters/WSJ documents x assumed unit prices). intelligence D (existence documented by US and EU sanctions and Reuters, no price data). uncounted_total D overall.",
+ "sources": [
+  {
+   "name": "UN Comtrade public preview API: China (156) and Hong Kong (344) exports to Russia, Kazakhstan, Kyrgyzstan and the world, HS-6 and HS-4, annual 2019-2025, Hong Kong monthly 2025-Jul 2026",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS",
+   "date": "2026-10-17"
+  },
+  {
+   "name": "KSE Institute, Russian CHP Imports Tracker Q2 2026 (China ~75-85% of Russia's CHP imports; ~300% price premium paid to China in 2025)",
+   "url": "https://sanctions.kse.ua/?p=13285",
+   "date": "2026-07-03"
+  },
+  {
+   "name": "HSBC Critical Goods List (Common High Priority Items with HS codes, as published by US, EU, UK, Japan)",
+   "url": "https://www.hsbc.com/-/files/hsbc/who-we-are/pdf/240717-critical-goods-list.pdf",
+   "date": "2024-07-17"
+  },
+  {
+   "name": "OSW China-Russia Dashboard (Chinese dual-use exports to Russia above USD 4bn in 2024 and 2025)",
+   "url": "https://www.osw.waw.pl/chinarussia/",
+   "date": "2026"
+  },
+  {
+   "name": "SCEEUS, China remains central to sustaining Russia's economy and war effort in 2025",
+   "url": "https://sceeus.se/en/publications/despite-falling-oil-and-car-shipments-dragging-down-headline-trade-figures-china-remains-central-to-sustaining-russias-economy-and-war-effort-in-2025/",
+   "date": "2026"
+  },
+  {
+   "name": "AP, US intelligence: ~90% of Russia's microelectronics and ~70% of its ~USD 900m Q4 2023 machine-tool imports came from China",
+   "url": "https://www.pbs.org/newshour/world/u-s-intelligence-shows-china-is-surging-equipment-sales-to-russia-to-help-war-effort-in-ukraine-ap-says",
+   "date": "2024-04-12"
+  },
+  {
+   "name": "Bloomberg, US warns China is providing Russia with drone and missile components (incl. satellite imagery)",
+   "url": "https://www.bloomberg.com/news/articles/2024-04-12/us-warns-china-providing-russia-with-drone-missile-components",
+   "date": "2024-04-12"
+  },
+  {
+   "name": "US Secretary of State Blinken in Beijing: China top supplier of machine tools, microelectronics and nitrocellulose to Russia's defence sector (Axios)",
+   "url": "https://www.axios.com/2024/04/26/blinken-xi-meeting-china-russia",
+   "date": "2024-04-26"
+  },
+  {
+   "name": "Korea Times: Blinken says China, unlike North Korea and Iran, is not sending arms to Russia",
+   "url": "https://www.koreatimes.co.kr/amp/foreignaffairs/northkorea/20240522/blinken-says-china-not-sending-arms-to-russia-unlike-north-korea-and-iran",
+   "date": "2024-05-22"
+  },
+  {
+   "name": "Reuters, Russia producing Garpiya kamikaze drones with Chinese engines (2,500+ made Jul 2023-Jul 2024; Xiamen Limbach engines), syndicated",
+   "url": "https://origin01-en.protothema.gr/2024/09/13/reuters-russia-producing-kamikaze-drones-with-chinese-engines-since-last-year",
+   "date": "2024-09-13"
+  },
+  {
+   "name": "Reuters, Russia has secret war drones project in China (Garpiya-3; seven Chinese-made drones delivered to Kupol), syndicated",
+   "url": "https://kathmandupost.com/world/2024/09/25/russia-has-secret-war-drones-project-in-china-intel-sources-say",
+   "date": "2024-09-25"
+  },
+  {
+   "name": "Reuters, Chinese engines shipped as 'cooling units' power Russian drones (Beijing Xichao; 6,000+ Garpiya contracted for 2025), syndicated",
+   "url": "https://finance.yahoo.com/news/exclusive-chinese-engines-shipped-cooling-174654680.html",
+   "date": "2025-07"
+  },
+  {
+   "name": "WSJ via Euromaidan Press, Chinese engines and navigation for Russia's Shahed-type drones",
+   "url": "https://euromaidanpress.com/2025/10/31/wsj-how-chinese-engines-power-russias-deadly-drone-raids-on-ukrainian-cities/",
+   "date": "2025-10-31"
+  },
+  {
+   "name": "Censor.net citing WSJ: 3.3m drone motors bought from Shenzhen Kiosk Electronic for USD 83m (Jul 2023-Feb 2025)",
+   "url": "https://censor.net/en/news/3582610/russia-bought-more-than-3-million-engines-for-drones-from-china",
+   "date": "2025"
+  },
+  {
+   "name": "Euromaidan Press, jet Shaheds (Geran-3) run on Chinese Telefly turbojets",
+   "url": "https://euromaidanpress.com/2026/08/27/russias-new-jet-shaheds-run-on-turbojets-from-one-chinese-company-it-deleted-them-from-its-english-website/",
+   "date": "2026-08-27"
+  },
+  {
+   "name": "Washington Post via LIGA: China increases exports of fibre-optic drone components to Russia, cuts finished UAV exports",
+   "url": "https://news.liga.net/en/amp/world/news/wp-china-increases-exports-of-fiber-optic-drone-components-to-russia",
+   "date": "2025-10-13"
+  },
+  {
+   "name": "Politico/Telegraph via LIGA: Chinese state-owned company supplied materials for attack drones",
+   "url": "https://news.liga.net/en/world/news/politico-a-chinese-state-owned-company-supplied-russia-with-materials-for-the-production-of-attack-drones",
+   "date": "2026-09-06"
+  },
+  {
+   "name": "Telegraph via Kyiv Independent: at least USD 10.3bn of Chinese technology and equipment for Russia's military industry since 2022, incl. CNC tools >= USD 3.1bn",
+   "url": "https://kyivindependent.com/china-denies-helping-russia-produce-oreshnik-missiles/",
+   "date": "2026-01-29"
+  },
+  {
+   "name": "Bloomberg via Fortune: China expanding aid to Russian war effort, Western officials say",
+   "url": "https://fortune.com/2026/02/14/china-aid-drones-minerals-russia-war-ukraine-invasion-putin-xi-jinping",
+   "date": "2026-02-14"
+  },
+  {
+   "name": "Reuters via CP24: Russians covertly trained by China return to fight in Ukraine (~200 personnel, late 2025)",
+   "url": "https://www.cp24.com/news/world/2026/05/19/russians-covertly-trained-by-china-return-to-fight-in-ukraine-reuters-sources-say/",
+   "date": "2026-05-19"
+  },
+  {
+   "name": "SCMP: US Treasury targets Chinese firm (Changsha Tianyi / Spacety) for satellite imagery to Wagner in Ukraine",
+   "url": "https://amp.scmp.com/news/world/russia-central-asia/article/3208132/us-targets-chinese-firm-helping-russias-wagner-group-ukraine",
+   "date": "2023-01-26"
+  },
+  {
+   "name": "Brussels Times: EU 14th package lists Chang Guang Satellite Technology; Wagner USD 30m+ satellite and imagery contract with Beijing Yunze (AFP)",
+   "url": "https://www.brusselstimes.com/business/1109130/eu-sanctions-chinese-companies-including-global-satellite-giant",
+   "date": "2024-06"
+  },
+  {
+   "name": "FDD: Ukraine alleges China provides satellite imagery to support Russian strikes",
+   "url": "https://www.fdd.org/analysis/2025/10/15/ukraine-alleges-china-provides-satellite-imagery-to-support-russian-strikes/",
+   "date": "2025-10-15"
+  },
+  {
+   "name": "SCMP: EU 18th package sanctions Heihe and Suifenhe Rural Commercial Banks",
+   "url": "https://www.scmp.com/news/china/diplomacy/article/3318793/european-union-sanctions-2-chinese-banks-over-aid-russia",
+   "date": "2025-07-18"
+  },
+  {
+   "name": "The Insider: Russian customs stopped publishing 180 high-tech import categories",
+   "url": "https://theins.org/en/inv/288081",
+   "date": "2025"
+  },
+  {
+   "name": "Wikipedia, China and the Russo-Ukrainian war (secondary summary of Politico 2023 rifles/body armour, NYT gunpowder, sanctions chronology)",
+   "url": "https://en.wikipedia.org/wiki/China_and_the_Russo-Ukrainian_war",
+   "date": "2026-10-17"
+  },
+  {
+   "name": "Project files: trade_full.json, residual.json, reexports.json (same folder)",
+   "url": "research/2026-10/gaps/",
+   "date": "2026-10-17"
+  }
+ ],
+ "reasoning": "(1) Recorded dual-use. China's own customs records (UN Comtrade, HS-6) show CHP-list exports to Russia of USD 3.9bn (2022), 5.2bn (2023), 4.6bn (2024) and 4.4bn (2025), against 3.6bn in 2021; Hong Kong adds USD 0.5-0.8bn a year (1.4bn in 2021). This matches OSW/MERICS (dual-use above USD 4bn in 2024 and 2025) and KSE (China 75-85% of Russia's CHP imports). Drone-relevant codes outside the list (small motors, engines, optical fibre) add USD 0.2-0.5bn and are growing fastest (fibre-optic drones, FPV motors). The rise above 2021 is modest because the value of Russia's CHP imports fell by more than half and China replaced Western suppliers within a shrinking market; KSE's ~300% premium means recorded values overstate the quantity of goods. 2026: China's monthly HS data are not in Comtrade, so Jan-Aug = 2025 x 0.64 (seasonal share) x 0.8-1.25; Hong Kong Jan-Jul 2026 is flat on 2025. All of it is already inside trade_full exports_to_RUS. (2) Finished military items. Unit counts x unit prices: Garpiya ~2,000-2,500 (2024) and 6,000+ contracted (2025) at USD 5-15k per Chinese L550E-type engine; Geran-2 output ~25-35k a year in 2025 with an assumed 30-70% Chinese engines at USD 3-10k; Geran-3 Chinese turbojets at USD 20-50k; plus Chinese thermal sights, quadcopters, body armour and helmets bought commercially. Total USD 0.08bn (2022) rising to 0.6bn (2025, central). Reuters saw invoices and transport documents, and WSJ found the motors in customs data, so most of it is recorded, often under false codes: 70-95% (central 85%) is already in trade or residual. (3) Intelligence and services. Paid or free satellite imagery (Spacety/Changsha Tianyi to Wagner 2022-23; Chang Guang EU-listed 2024; US accusation of geospatial help April 2024; Ukrainian claims 2025), Garpiya-3 engineering in China, and training of ~200 Russian personnel (late 2025). Valued against commercial benchmarks: the Wagner deal was USD 30m+ for two satellites and imagery; a full national imagery service such as the US NRO's commercial contracts runs to about USD 300m a year. Central USD 0.03bn (2022) rising to 0.12bn (2025); high 0.35bn. (4) Unrecorded dual-use. residual.json already credits China with EUR 7.6-17.8bn a year of goods that Russia's customs record and partners do not (Kyrgyz and Kazakh transit, mis-declared and cargo-scheme goods). Only goods that escape BOTH customs systems (hand carry, smuggling, classified codes left out of Russia's totals) are added: 0-10% (central 3%) of recorded dual-use. (5) Payment channels (VTB Shanghai, small border banks such as Heihe and Suifenhe Rural Commercial Banks, payment agents, netting, Kyrgyz crypto routes, Hong Kong and Central Asian shells) settle trade that is already counted, so they are described but not valued.",
+ "display_note": "Add only uncounted_total to China as military_rus (EUR 0.17bn 2022, 0.26bn 2023, 0.28bn 2024, 0.33bn 2025, 0.24bn Jan-Aug 2026; certainty D). China's war-critical dual-use goods (EUR 4.5-5.8bn a year with Hong Kong) are already inside its exports to Russia: show them only as an 'of which' flag on from_rus, never add them. Suggested tooltip: 'China sends no declared weapons. Most of its military help is war-critical dual-use goods (chips, machine tools, drone engines), already counted in its exports to Russia; the extra amount here is satellite imagery, training and shipments that no customs office records.' Note that Russia pays China a large premium for these goods (about 300% in 2025, KSE), so money also flows from Russia to China."
+}
