@@ -752,6 +752,7 @@ def build() -> dict:
     apply_shipping(countries, src, note)
     apply_reexports(countries, src, note)
     apply_residual(countries, src, note)
+    remove_freight(countries)
     price_indices(countries)
     pre_war_trends(countries, src)
     for iso3, c in countries.items():
@@ -961,6 +962,28 @@ HK_ONWARD = (0.3, 0.55, 0.85)
 TRANSIT_HUBS = {"HKG": "gold transit hub: the share of Russian gold passed on to mainland China is counted for China"}  # fmt: skip
 
 
+# share of shipping income that is profit (low, middle, high): freight pays for fuel, port fees, crew and the ship itself
+# (tanker operating margins in the 2022-23 boom: 30-50%); a ship sale is already counted as its price premium
+SHIPPING_PROFIT = {"freight": (0.2, 0.35, 0.5), "insurance_finance": (0.1, 0.25, 0.4), "ship_sales": (0.8, 1.0, 1.0), "registry": (0.3, 0.5, 0.7)}  # fmt: skip
+# customs values of imports include freight and insurance (CIF): that part is paid to shippers and insurers, not to Russia,
+# and is counted for them (shipping, services); taken out of payments to Russia (low, middle, high share)
+CIF_SHARE = (0.035, 0.055, 0.075)
+
+
+def remove_freight(countries: dict[str, dict]) -> None:
+    """Payments to Russia at the Russian border (FOB): the freight and insurance inside import values are taken out."""
+    for c in countries.values():
+        tr = c.get("to_rus")
+        if not tr:
+            continue
+        for k, f in (("years", CIF_SHARE[1]), ("years_lo", CIF_SHARE[2]), ("years_hi", CIF_SHARE[0])):
+            tr[k] = [round(v * (1 - f), 5) for v in tr[k]]
+        tr["base"] = round(tr.get("base", 0) * (1 - CIF_SHARE[1]), 5)
+        if tr.get("base_range"):
+            br = tr["base_range"]
+            tr["base_range"] = [round(br[0] * (1 - CIF_SHARE[2]), 5), round(br[1] * (1 - CIF_SHARE[0]), 5)]
+
+
 def apply_shipping(countries: dict[str, dict], src: Sources, note) -> None:
     """Income from carrying, insuring and financing Russian oil and LNG exports, and from selling tankers to the shadow
     fleet, by the country of the company that earns it. The share already inside services trade with Russia is left out."""
@@ -983,18 +1006,19 @@ def apply_shipping(countries: dict[str, dict], src: Sources, note) -> None:
             for i, y in enumerate(YEARS):
                 v = (d.get(part) or {}).get(str(y)) or {}
                 o = ov.get(f"{part}_2021_2022" if part == "insurance_finance" and y <= 2022 else part) or {}
-                # the low end leaves out the most overlap, the high end the least
-                out["years"][i] += v.get("central", 0) * (1 - o.get("central", 0))
-                out["years_lo"][i] += v.get("low", 0) * (1 - o.get("high", 0))
-                out["years_hi"][i] += v.get("high", 0) * (1 - o.get("low", 0))
+                # the low end leaves out the most overlap, the high end the least; only the profit counts
+                pr = SHIPPING_PROFIT[part]
+                out["years"][i] += v.get("central", 0) * (1 - o.get("central", 0)) * pr[1]
+                out["years_lo"][i] += v.get("low", 0) * (1 - o.get("high", 0)) * pr[0]
+                out["years_hi"][i] += v.get("high", 0) * (1 - o.get("low", 0)) * pr[2]
         if not any(out["years_hi"]):
             continue
         b, ob = d.get("baseline_2019_2021") or {}, ov.get("freight") or {}
         c["shipping"] = {k: [round(v, 5) for v in vals] for k, vals in out.items()} | {
-            "base": round(b.get("central", 0) * (1 - ob.get("central", 0)), 5),
+            "base": round(b.get("central", 0) * (1 - ob.get("central", 0)) * SHIPPING_PROFIT["freight"][1], 5),
             "base_range": [
-                round(b.get("low", 0) * (1 - ob.get("high", 0)), 5),
-                round(b.get("high", 0) * (1 - ob.get("low", 0)), 5),
+                round(b.get("low", 0) * (1 - ob.get("high", 0)) * SHIPPING_PROFIT["freight"][0], 5),
+                round(b.get("high", 0) * (1 - ob.get("low", 0)) * SHIPPING_PROFIT["freight"][2], 5),
             ],
             "cert": d.get("certainty") or "D",
             "src": [sid],
