@@ -23,7 +23,7 @@ function eligible(c) {
 
 // the headline number of the current view, with its likely range, in the current measure
 function metricOf(c) {
-  const k = calc(c, Math.max(2022, state.year));
+  const k = calc(c, state.year);
   const pick = { change: [k.shift, k.shiftLo, k.shiftHi], cost: [k.cost, k.costLo, k.costHi] }[state.lens];
   const [v, lo, hi] = pick || [lensValue(c), null, null];
   const s = x => (x == null ? null : scaled(c, x));
@@ -39,7 +39,8 @@ function measureText() {
   return t({ gdp: "total as % of one year's GDP", pp: "€ per person", total: "€ billion" }[state.measure]);
 }
 function periodText() {
-  const y = Math.max(2022, state.year);
+  if (state.year === 2021) return t("2021 (before the war)");
+  const y = state.year;
   return `2022–${y}${y === 2026 && FRAC[5] < 1 ? t(" (2026 to August)") : ""}`;
 }
 function tick(v) {
@@ -119,7 +120,7 @@ function wireRows(root, rows) {
 
 // ----- Ukraine vs Russia: what each country moved toward Ukraine against what it moved toward Russia -----
 function sides(c) {
-  const k = calc(c, Math.max(2022, state.year));
+  const k = calc(c, state.year);
   const parts = k.shiftParts.concat(state.netBack ? k.backShift : []);
   const ukr = parts.reduce((s, p) => s + Math.max(0, p.v), 0), rus = parts.reduce((s, p) => s + Math.max(0, -p.v), 0);
   return { c, k, ukr, rus, net: ukr - rus, bn: k.shift, v: scaled(c, k.shift), lo: scaled(c, k.shiftLo), hi: scaled(c, k.shiftHi) };
@@ -188,7 +189,7 @@ const COLS = [
 ];
 const pct = v => (v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(Math.abs(v) >= 1 ? 1 : 2) + "%");
 function tableRows() {
-  const y = Math.max(2022, state.year);
+  const y = state.year;
   return Object.values(DATA).filter(eligible).map(c => {
     const k = calc(c, y), g = c.gdp ? 100 / c.gdp : null, pp = c.pop ? 1e9 / (c.pop * 1e6) : null;
     return {
@@ -243,7 +244,8 @@ function csvParts(rows) {
   return [head.join(","), ...lines].join("\n");
 }
 function periodTextEn() {
-  const y = Math.max(2022, state.year);
+  if (state.year === 2021) return "2021 (before the war)";
+  const y = state.year;
   return `2022–${y}${y === 2026 && FRAC[5] < 1 ? " (2026 to August)" : ""}`;
 }
 function download(text, name) {

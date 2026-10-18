@@ -7,7 +7,7 @@ let exampleIso = "DEU";
 
 function howHtml() {
   const c = byIso[exampleIso];
-  const y = Math.max(2022, state.year);
+  const y = state.year;
   const k = calc(c, y);
   const parts = k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: p.label.toLowerCase() }) })) : []);
   const live = parts.filter(p => Math.abs(p.v) > 1e-3);
@@ -71,7 +71,7 @@ function fitExpectation(rows) {
 // small economies have noisy trade data that dominate a ranking of differences, so only economies above €20bn
 const EXPECT_MIN_GDP = 20;
 function renderExpect(root) {
-  const y = Math.max(2022, state.year);
+  const y = state.year;
   const rows = Object.values(DATA).filter(c => c.incentive && c.incentive.direction != null && c.gdp >= EXPECT_MIN_GDP && eligible(c)).map(c => {
     const k = calc(c, y);
     return { c, k, y: (k.shift / c.gdp) * 100, dir: c.incentive.direction, thr: c.incentive.threat };

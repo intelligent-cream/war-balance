@@ -452,7 +452,8 @@ function triple(obj, key) {
   const p = obj && obj.pidx ? obj.pidx : ones, pl = obj && obj.pidx_lo ? obj.pidx_lo : p, ph = obj && obj.pidx_hi ? obj.pidx_hi : p;
   // pre-war trend: where trade was already growing or shrinking, the counterfactual follows that trend (1 = flat)
   const q = obj && obj.bmul ? obj.bmul : ones, ql = obj && obj.bmul_lo ? obj.bmul_lo : q, qh = obj && obj.bmul_hi ? obj.bmul_hi : q;
-  return { c, l, h, m, b: [Math.min(b[0], l[0], m), Math.max(b[1], h[0], m)], p, pl, ph, q, ql, qh };
+  // 2021 alone is an alternative baseline, at pre-war prices
+  return { c, l, h, m, b: [Math.min(b[0], l[0] / ph[0], m), Math.max(b[1], h[0] / pl[0], m)], p, pl, ph, q, ql, qh };
 }
 function normalise(c) {
   c.T = {
@@ -567,7 +568,7 @@ function calc(c, y) {
     lessPaid: lessPaid3[0], lessSold: lessSold3[0], extraSell: sell3[0], laundered: sum3(T.laundered)[0], military: sum3(T.mil)[0],
     backShift: back,
     own: backParts[0].v, purl: backParts[1].v, flowback: flow[0], flowbackLo: flow[1], flowbackHi: flow[2],
-    premium: costParts[2].v, discount: -costParts[5].v,
+    premium: costParts.find(p => p.k === "prem").v, discount: -costParts.find(p => p.k === "disc").v,
     paidRussia: sum3(T.paid)[0] + sum3(T.laundered)[0] + sum3(T.tax)[0] + sum3(T.mil)[0] + sum3(T.svcBought)[0] + sum3(T.hidden)[0],
     shiftParts: live(shiftParts), backParts: live(backParts), costParts: live(costParts),
     flowbackProfit: flow[0] * margin,
@@ -580,7 +581,7 @@ function lensValue(c) {
   const y = state.year;
   if (y === 2021) {
     if (state.lens === "ukr") return c.aidY[0] + c.buyUkrY[0];
-    if (state.lens === "rus") return c.paidY[0] + c.taxY[0];
+    if (state.lens === "rus") return c.paidY[0] + c.taxY[0] + c.launderedY[0] + c.milY[0] + c.T.svcBought.c[0] + c.T.hidden.c[0];
     return 0;
   }
   const k = calc(c, y);
@@ -949,26 +950,29 @@ function miniChart(tr, colour, title, srcIds) {
   const years = tr.c;
   if (!years.some(v => v)) return "";
   const w = 360, h = 92, pad = { l: 34, r: 6, t: 6, b: 16 };
-  const base = tr.m, rates = years.map((v, i) => v / FRAC[i]);
-  const max = Math.max(base, ...rates) * 1.08 || 1;
+  // yearly rate at pre-war prices, against what was expected without the war (pre-war level x pre-war trend),
+  // the same comparison the map makes
+  const rates = years.map((v, i) => v / FRAC[i] / (tr.p[i] || 1)), expd = YEARS.map((_, i) => tr.m * (tr.q[i] || 1));
+  const base = tr.m, max = Math.max(...expd, ...rates) * 1.08 || 1;
   const x = d3.scalePoint().domain(YEARS).range([pad.l + 8, w - pad.r - 8]);
   const y = d3.scaleLinear().domain([0, max]).range([h - pad.b, pad.t]);
   const upto = Math.max(1, yi(state.year));
   const pts = YEARS.map((yr, i) => [x(yr), y(rates[i])]).slice(0, upto + 1);
   const by = y(base);
-  const line = d3.line()(pts), area = d3.area().x(p => p[0]).y0(by).y1(p => p[1])(pts);
-  const diff = rates[upto] - base;
+  const ex = YEARS.map((yr, i) => [x(yr), y(expd[i])]).slice(0, upto + 1);
+  const line = d3.line()(pts), expLine = d3.line()(YEARS.map((yr, i) => [x(yr), y(expd[i])]));
+  const above = d3.area().x(p => p[0]).y0((p, i) => ex[i][1]).y1((p, i) => Math.min(p[1], ex[i][1]))(pts);
+  const below = d3.area().x(p => p[0]).y0((p, i) => ex[i][1]).y1((p, i) => Math.max(p[1], ex[i][1]))(pts);
+  const diff = rates[upto] - expd[upto];
   const id = colour + Math.random().toString(36).slice(2, 7);
   const fills = {
     rus: ["var(--rus)", "var(--ukr)"], ukr: ["var(--ukr)", "var(--ink-soft)"], back: ["var(--back)", "none"], sold: ["var(--rus)", "var(--ukr)"],
   }[colour];
-  return `<div class="mini"><div class="t">${title}${ref(srcIds)}<span>${YEARS[upto]}: ${shortEur(rates[upto])}${t("/yr")} (${base > 0 ? (diff >= 0 ? "+" : "−") + Math.abs(Math.round((diff / base) * 100)) + "%" : t("new")})</span></div>
+  return `<div class="mini"><div class="t">${title}${ref(srcIds)}<span>${YEARS[upto]}: ${shortEur(rates[upto])}${t("/yr")} (${expd[upto] > 0 ? (diff >= 0 ? "+" : "−") + Math.abs(Math.round((diff / expd[upto]) * 100)) + "%" : t("new")})</span></div>
     <svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${t("{title}, per year compared with before the war", { title })}">
-      <clipPath id="a-${id}"><rect x="0" y="0" width="${w}" height="${by}"/></clipPath>
-      <clipPath id="b-${id}"><rect x="0" y="${by}" width="${w}" height="${h - by}"/></clipPath>
-      <path d="${area}" fill="${fills[0]}" opacity="0.28" clip-path="url(#a-${id})"/>
-      <path d="${area}" fill="${fills[1]}" opacity="${colour === "ukr" ? 0.14 : 0.28}" clip-path="url(#b-${id})"/>
-      <line x1="${pad.l}" x2="${w - pad.r}" y1="${by}" y2="${by}" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
+      <path d="${above}" fill="${fills[0]}" opacity="0.28"/>
+      <path d="${below}" fill="${fills[1]}" opacity="${colour === "ukr" ? 0.14 : 0.28}"/>
+      <path d="${expLine}" fill="none" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
       <text x="${pad.l - 6}" y="${by + 3}" text-anchor="end">${t("pre-war")}</text>
       <path d="${line}" fill="none" stroke="var(--${colour === "sold" ? "rus" : colour})" stroke-width="2"/>
       ${pts.map((p, i) => i === 5 ? `<circle cx="${p[0]}" cy="${p[1]}" r="2.8" fill="var(--surface)" stroke="var(--${colour === "sold" ? "rus" : colour})" stroke-width="1.5"><title>${t("2026: January to August as a yearly rate, partly projected from 2025")}</title></circle>` : `<circle cx="${p[0]}" cy="${p[1]}" r="2.6" fill="var(--${colour === "sold" ? "rus" : colour})"/>`).join("")}
@@ -1083,7 +1087,7 @@ function comparePanel(a, b) {
     ["Aid to Ukraine", x => x.k.aid, "total", false],
     ["Money flowing back", x => x.k.flowback, "total", false],
     ["Paid to Russia since 2022", x => x.k.paidRussia, "total", false],
-    ["Paid to Russia, change vs before the war", x => (x.c.T.paid.m ? (x.c.paidY[Math.max(1, yi(y))] / FRAC[yi(y)] / x.c.T.paid.m - 1) * 100 : null), "pct", true],
+    ["Paid to Russia, change vs before the war", x => { const T = x.c.T.paid, i = Math.max(1, yi(y)); return T.m ? (T.c[i] / FRAC[i] / (T.p[i] || 1) / (T.m * (T.q[i] || 1)) - 1) * 100 : null; }, "pct", true],
   ];
   const A = { c: a, k: ka }, B = { c: b, k: kb };
   const fmt = (x, f, m, sg) => { const v = f(x); if (v == null) return "–"; if (m === "pct") return (v >= 0 ? "+" : "−") + Math.abs(Math.round(v)) + "%"; return fmtMeasure(x.c, v, m, sg).replace(" pp", ""); };
@@ -1146,7 +1150,8 @@ function targetPanel(side) {
       })()}
     </div>`;
   }
-  const paidNow = list.reduce((s, c) => s + c.paidY[yi(y)] / FRAC[yi(y)], 0), paid21 = list.reduce((s, c) => s + c.T.paid.m, 0);
+  // at pre-war prices, against the expected level (pre-war level x trend), as on the map
+  const iy = yi(y), paidNow = list.reduce((s, c) => s + c.paidY[iy] / FRAC[iy] / (c.T.paid.p[iy] || 1), 0), paid21 = list.reduce((s, c) => s + c.T.paid.m * (c.T.paid.q[iy] || 1), 0);
   return head(regionName("RU", "Russia"), `${t("Who helps Russia the most")} · 2022–${y}`) + `<div class="panel-body">
     <section class="section"><div class="totals">
       <div class="head rus"><div class="lbl">${t("Paid to Russia since 2022, countries in the data")}</div><div class="num" style="color:var(--rus)">${eur(list.reduce((s, c) => s + K.get(c).paidRussia, 0))}</div></div>

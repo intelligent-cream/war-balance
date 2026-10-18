@@ -43,7 +43,7 @@ Five more research agents filled every gap with an estimate and a low/middle/hig
 Method choices made in this round:
 - Company taxes: all taxes (not only profit tax), counting only companies still foreign-owned; KSE's broader totals sit in the notes.
 - Refugee costs: Kiel's per-country figures are modelled, not spending; national budgets are 2-3x lower, so the model is calibrated on budgets.
-- Money flowing back counts in full in the net shift, but only as profit (20%, the same share as profit lost on sales to Russia) in the cost.
+- Money flowing back counts only as profit (20%, the same share as profit lost on sales to Russia), in both the net shift and the cost: the goods sold still cost money to make.
 - Ranges are about 90%; parts without a range from the data get a default by certainty letter; totals combine parts as independent errors.
 
 ## Attribution through middlemen (2026-10-17)

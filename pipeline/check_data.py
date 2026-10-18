@@ -120,21 +120,19 @@ check(
     warn_only=True,
 )
 
-# 9. fossil fuel payments: our total vs CREA's total since the invasion
+# 9. fossil fuel payments: CREA's countries since the invasion vs our payments to Russia for the same countries
 crea = json.loads((RESEARCH / "crea.json").read_text())
-crea_total = sum(v.get("fossil_total_since_invasion") or 0 for v in crea["countries"].values())
-ours_fossil = sum(total(((c.get("energy") or {}).get("fossil"))) for c in countries.values())
+crea_c = {k: v.get("fossil_total_since_invasion") or 0 for k, v in crea["countries"].items()}
+ours_c = sum(
+    total((countries.get(k, {}).get("to_rus") or {}).get("years")[1:] if countries.get(k, {}).get("to_rus") else [])
+    for k in crea_c
+)
 check(
-    "fossil payments vs CREA",
-    True,
-    f"CREA countries since 24 Feb 2022: {crea_total:.0f} EUR bn (for reference)",
+    "payments to Russia cover CREA fossil fuel",
+    ours_c >= 0.8 * sum(crea_c.values()),
+    f"ours {ours_c:.0f} (all goods) vs CREA fossil {sum(crea_c.values()):.0f} EUR bn for the same countries",
     warn_only=True,
 )
-
-# 10. payments to Russia vs Russia's own export totals (trade_full totals check)
-trade = json.loads((RESEARCH / "gaps" / "trade_full.json").read_text())
-tc = trade.get("totals_check") or {}
-check("imports from Russia vs Russia's exports", True, json.dumps(tc)[:300], warn_only=True)
 
 # 11. refugees hosted where donors paid: flag hosts whose refugee cost is large next to aid received (Moldova)
 mda = countries.get("MDA", {}).get("aid", {})
@@ -185,6 +183,34 @@ miss = [
     i for i in ("TUR", "IND") if i in countries and "refining" not in (countries[i].get("to_rus") or {}).get("src", [])
 ]
 check("refined exports counted once", not miss, f"refiner still counts exported crude: {miss or 'none'}")
+
+# 16. every baseline lies inside its range, and no range bound comes from a projected trend
+outside = [
+    f"{c['iso3']}.{k}"
+    for c in countries.values()
+    for k, obj in c.items()
+    if isinstance(obj, dict)
+    and obj.get("base_range")
+    and obj.get("base") is not None
+    and not (obj["base_range"][0] - 1e-6 <= obj["base"] <= obj["base_range"][1] + 1e-6)
+]
+check("baselines inside their ranges", not outside, f"outside: {outside[:8] or 'none'}")
+
+# 17. aid categories add up to aid (loans repaid from frozen Russian assets left out of both)
+off = []
+for c in countries.values():
+    a = c.get("aid") or {}
+    cats, yrs = sum((a.get("cats") or {}).values()), sum(a.get("years") or [])
+    if "kiel" in a.get("src", []) and yrs > 1 and abs(cats - yrs) / yrs > 0.05:
+        off.append(f"{c['iso3']} {cats:.1f}/{yrs:.1f}")
+check("aid categories add up to aid", not off, f"off by more than 5%: {off[:8] or 'none'}", warn_only=True)
+
+# 18. hub resale never takes out more laundered oil than a country bought
+check(
+    "no negative laundered oil",
+    all(min((c.get("to_rus") or {}).get("laundered") or [0]) >= -1e-9 for c in countries.values()),
+    "laundered oil >= 0 everywhere",
+)
 
 width = max(len(n) for _, n, _ in results)
 for status, name, detail in results:
