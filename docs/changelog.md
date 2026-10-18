@@ -170,11 +170,18 @@ in Sweden, NLMK, EuroChem, Uranium One) added to the profits sent to Russia; the
 **Shareable views.** The address keeps the view and the buttons on top (`#view=rank&lens=ukr&m=total`); flow lines
 are on at start; the names of Ukraine and Russia are drawn above the flow lines ([README](README.md)).
 
-Headline effects (% of GDP, round 9 → round 10): Lithuania +27.8 → +15.1, Estonia +23.2 → +9.4, Moldova +22.7 → +3.6,
-Finland +16.3 → +9.0, Latvia +11.4 → +4.1, Germany +5.2 → +3.5, Poland +8.1 → +3.9, United Kingdom +3.2 → +1.2,
-United States +0.57 → +0.36, Hungary −4.5 → −4.9, India −5.2 → −2.9, Serbia 0.0 → −3.1, Hong Kong −8.3 → −4.5
-(gold counts at Russia's gain on gold). The top of the ranking keeps
-its order; the median range narrows from 4.7 to 2.1 points of GDP.
+Headline effects (% of GDP, round 9 → round 10): Lithuania +27.8 → +14.8, Estonia +23.2 → +9.6, Finland +16.3 → +9.3,
+Moldova +22.7 → +5.8, Latvia +11.4 → +4.2, Germany +5.2 → +3.7, Poland +8.1 → +4.1, United Kingdom +3.2 → +1.2,
+United States +0.57 → +0.36, Hungary −4.5 → −3.9, Serbia 0.0 → −1.9, India −5.2 → −2.4, Hong Kong −8.3 → −5.0
+(gold counts at Russia's gain on gold). The top of the ranking keeps its order; the median range narrows from 4.7 to
+1.8 points of GDP.
+
+**Audit fixes (round 10).** A full audit found that the mix of what was bought used current prices, so war-time price
+rises moved it and were counted twice; that the expected and actual mixes split fuels differently in 2021; that LNG
+used the pipeline-gas gain; that refiners were relieved at a lower gain than their buyers were charged; that the Rosatom
+customs correction was taken off at full value; that gold and hidden payments had changed the *To Russia* view; that
+fuel refined in China before the war was subtracted twice; and that relabelled Russian products counted at the crude
+gain. All are fixed. Shared links: Back keeps the current filters, and invalid values are tidied out of the address.
 
 ## See also
 

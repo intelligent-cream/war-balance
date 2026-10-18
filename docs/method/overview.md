@@ -100,11 +100,21 @@ rule above), now applied to the other side of each trade. The suggestion came fr
 
 Crude in 2023, for example: Russia sold at 64.2 USD a barrel FOB; real costs were 23 USD (lifting 4, pipelines and
 ports 5, depreciation 6.5, overhead 1.5, normal return 6), so the net gain is 0.64, of which the state took 0.47 in
-taxes (Finance Ministry totals). Each country's payments get the gain of what it bought: the 2019–2021 customs mix
-for what was expected without the war, and that mix moved by the fuel tracker's change in fuel since 2021 for what was
-bought (`apply_net_gain()`; Moldova's gas from its own customs, since Transnistria's gas is not counted). Gold counts
-at Russia's gain on gold: Hong Kong's purchases (98% precious metals) and the gold Hong Kong and the UAE pass on to
-their buyers are tagged as gold.
+taxes (Finance Ministry totals). Each country's payments get the gain of what it bought (`apply_net_gain()`):
+
+- **expected without the war**: the 2019–2021 customs share of fuel in its purchases from Russia, split over crude,
+  products, pipeline gas, LNG and coal as the fuel tracker records them in 2021;
+- **bought each year**: that fuel share moved by the tracker's change in fuel volume against all payments in volume
+  since 2021, with that year's split, all at constant 2019–2021 prices, so price changes (already counted in full as
+  the war-time premium) do not move the mix, and 2021 matches the expected mix exactly;
+- **fuel a refiner passed on** (India, Türkiye, China) counts at the gain on crude, the same as for its buyers;
+- **gold** counts at the gain on gold: gold the UAE and Hong Kong pass on to their buyers, and Hong Kong's own rise
+  since before the war (98% precious metals); everything the UAE passes on is treated as gold;
+- **Moldova's gas** comes from its own customs, since Transnistria's unpaid gas is not counted;
+- the Rosatom customs over-count taken out of Türkiye's and Egypt's payments is rescaled to the same gain.
+
+Gold and hidden payments stay in money in `data.json` (for the *To Russia* view and the flow lines) and are weighted
+in the map; weapons bought from Russia are stored already at Russia's gain on arms.
 
 **Ukraine's net gain per euro** ([`net_gain_ukraine.json`](../../research/2026-10/gaps/net_gain_ukraine.json),
 [notes](../../research/2026-10/gaps/net_gain_ukraine-notes.md)): about 0.18 before the war, 0.06 in 2022, 0.045 in
@@ -116,8 +126,8 @@ nothing more to produce), taxes companies pay in Russia, profits sent to Russia,
 frozen reserves. The *cost* view and the *To Ukraine* and *To Russia* views (money, not gain) do not change.
 
 **Effect:** both sides shrink toward zero, most for countries whose score came from buying less from Russia: Lithuania
-+27.8 → +14.9% of GDP, Estonia +23.2 → +9.4, Finland +16.3 → +9.0, Moldova +22.7 → +3.6, Germany +5.2 → +3.5, India
-−5.2 → −2.9. Ranges narrow: the median width falls from 4.7 to 2.1 points, because the uncertain no-war level is now
++27.8 → +14.8% of GDP, Estonia +23.2 → +9.6, Finland +16.3 → +9.3, Moldova +22.7 → +5.8, Germany +5.2 → +3.7, India
+−5.2 → −2.4. Ranges narrow: the median width falls from 4.7 to 1.8 points, because the uncertain no-war level is now
 multiplied by a smaller number.
 
 ## Two balances (round 6)
@@ -151,16 +161,16 @@ gold outline (threshold EUR 10m and 0.05% of GDP).
 
 ## A worked reading
 
-Germany, 2022–August 2026: about +4.2% of a year's GDP toward Ukraine (likely range 2.6% to 7.2%, EUR 183bn on a 2024 GDP of EUR 4,329bn). Its balance with Ukraine is +68bn (gave 77.5, earned back 9.9) and its balance with Russia +116bn. In EUR bn, the largest parts are:
+Germany, 2022–August 2026: about +3.7% of a year's GDP toward Ukraine (likely range 2.5% to 5.2%, EUR 161bn on a 2024 GDP of EUR 4,329bn). Its balance with Ukraine is +67bn (gave 77.5, earned back 10.3) and its balance with Russia +93bn. In EUR bn, the largest parts are:
 
 | part | middle (range) |
 |---|---|
-| Less paid to Russia (volume at pre-war prices, against the expected level) | +111.1 (47.0 to 227.5) |
+| Less paid to Russia (volume at pre-war prices, against the expected level, at Russia's net gain) | +79.1 (38.4 to 131.2) |
 | Aid to Ukraine (bilateral, Kiel) | +30.2 (28.6 to 32.5) |
 | Hosting refugees (net cost) | +29.5 (11.7 to 42.6) |
 | Income lost on sales to Russia given up (money rule) | +21.7 (5.8 to 54.6) |
 | Share of EU-level aid | +14.4 (10.1 to 16.5) |
-| Extra paid to Russia because of war-time prices (mostly 2022 gas) | −29.2 (−33.6 to −25.9) |
+| Extra paid to Russia because of war-time prices (mostly 2022 gas) | −17.5 (−25.8 to −10.7) |
 | Own aid spent in its own economy, incl. replacing donated stock (money rule) | −5.6 (−10.8 to −2.5) |
 
 The wide range comes almost entirely from "less paid to Russia": the expected no-war level of Germany's purchases is uncertain (see [counterfactual.md](counterfactual.md)), and the total takes the weakest certainty letter of its parts (D). The "How it works" view on the map ([`views2.js`](../../site/views2.js)) builds this waterfall live for Germany, Poland, the US, Hungary, India and China.

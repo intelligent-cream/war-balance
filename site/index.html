@@ -552,7 +552,7 @@ function normalise(c) {
   };
   // the seller's net gain per euro (round 10): Russia's on purchases from it, Ukraine's on extra purchases from it
   const gw = w => (w ? { e: w } : null);
-  c.T.paid.g = c.to_rus?.gain || null; c.T.laundered.g = gw(c.to_rus?.laund_gain);
+  c.T.paid.g = c.to_rus?.gain || null; c.T.laundered.g = c.to_rus?.laund_gain || null;
   c.T.svcBought.g = gw(c.svc_bought?.gain); c.T.buyUkr.g = gw(c.buy_ukr?.gain);
   c.aidY = c.T.aid.c; c.refY = c.T.ref.c; c.paidY = c.T.paid.c; c.launderedY = c.T.laundered.c; c.soldRusY = c.T.soldRus.c;
   c.buyUkrY = c.T.buyUkr.c; c.sellUkrY = c.T.sellUkr.c; c.ownY = c.T.own.c; c.purlY = c.T.purl.c;
@@ -619,6 +619,8 @@ function calc(c, y) {
   const above3 = t => { const r = [0, 0, 0]; for (let i = 1; i <= N; i++) { const one = spreadYear(t, i); r[0] += Math.max(0, one[0]); r[1] += Math.max(0, one[1]); r[2] += Math.max(0, one[2]); } return r; };
   const spreadYear = (t, i) => { const d = spread({ ...t, c: t.c.map((v, j) => (j === i ? v : 0)), l: t.l.map((v, j) => (j === i ? v : 0)), h: t.h.map((v, j) => (j === i ? v : 0)), m: t.m, b: t.b, q: t.q.map((v, j) => (j === i ? v : 0)), ql: t.ql.map((v, j) => (j === i ? v : 0)), qh: t.qh.map((v, j) => (j === i ? v : 0)), cb: null, nr: null }, exV, actV); return [-d[0], -d[2], -d[1]]; };
   const neg = r => [-r[0], -r[2], -r[1]];
+  // a yearly series weighted by a gain share per year ([low, central, high]); without one, the plain sum
+  const sumG = (t, w) => { if (!w) return sum3(t); const r = [0, 0, 0]; for (let i = 1; i <= N; i++) { r[0] += t.c[i] * w[1][i]; r[1] += t.l[i] * w[0][i]; r[2] += t.h[i] * w[2][i]; } return r; };
   const scale = (r, f) => [r[0] * f, r[1] * f, r[2] * f];
   const aid3 = sum3(T.aid), ref3 = sum3(T.ref);
   // EU-level aid (EU budget, Ukraine Facility, EPF) is split over members by their share of EU budget contributions;
@@ -683,7 +685,8 @@ function calc(c, y) {
     part("svcpaid", lessSvcPaid3[0] >= 0 ? "Less paid to Russia for services" : "More paid to Russia for services", lessSvcPaid3, c.svc_bought?.cert || "C", src("svc_bought")),
     part("svcsold", lessSvcSold3[0] >= 0 ? "Income lost on services to Russia given up (e.g. tourism)" : "Income from extra services sold to Russia (e.g. tourism)", earned3(lessSvcSold3, "sl", "sx"), c.svc_sold?.cert || "C", src("svc_sold")),
     part("ship", lessShip3[0] >= 0 ? "Less income from shipping Russian oil" : "Income from shipping and insuring Russian oil", lessShip3, c.shipping?.cert || "D", src("shipping")),
-    part("hidden", "Gold and hidden payments to Russia", neg(sum3(T.hidden)), "D", src("hidden")),
+    // gold and hidden payments are money in data.json (the "To Russia" view); here at Russia's gain on gold
+    part("hidden", "Gold and hidden payments to Russia", neg(sumG(T.hidden, c.hidden?.gain)), "D", src("hidden")),
     part("undisc", "Undisclosed military aid (estimate)", sum3(T.undisc), c.undisclosed?.cert || "D", src("undisclosed")),
     part("priv", "Private donations", sum3(T.priv), c.private?.cert || "D", src("private")),
     // parts without a series of their own (state loans, arms bought from Russia, company exits...): yearly change
@@ -1095,7 +1098,12 @@ function panelCode() {
   const c = DATA[state.selected];
   return { country: c && c.iso3, compare: c && c.iso3, ukraine: "UKR", russia: "RUS", overview: "rankings" }[state.panel] || "";
 }
-function writeHash(push) {
+// the address as the page shows it now: unknown or default values left out, country codes in capitals
+function tidyHash() {
+  const now = location.hash, want = hashFor();
+  if (now !== want && !(now === "#" && !want)) try { history.replaceState(history.state, "", location.pathname + location.search + want); } catch (e) { /* file:// */ }
+}
+function hashFor() {
   const v = state.view && state.view !== "map" ? state.view : "", c = panelCode();
   const p = new URLSearchParams();
   if (v) p.set("view", v);
@@ -1104,6 +1112,10 @@ function writeHash(push) {
   if (state.measure !== START.measure) p.set("m", state.measure);
   if (state.year !== START.year) p.set("y", state.year);
   const h = c && [...p.keys()].length === 1 ? "#" + c : [...p.keys()].length ? "#" + p : "";
+  return h;
+}
+function writeHash(push) {
+  const h = hashFor(), c = panelCode();
   try { history[push ? "pushState" : "replaceState"]({ panel: !!c }, "", location.pathname + location.search + h); } catch (e) { /* file:// */ }
 }
 // opening a panel adds a history entry, so the phone's Back button closes the sheet; closing it with × or Escape goes back
@@ -1148,7 +1160,9 @@ function closePanel(how) {
 // Back, Forward or an edited address: show what the address says
 function route(how) {
   const h = parseHash();
-  setFilters(h);
+  // the buttons on top come from the address when it names them (a shared or edited link) or on loading; an address
+  // without them (Back to an earlier panel) keeps the current ones, as closing with × does
+  if (how === "load" || h.lens || h.m || h.y) setFilters(h);
   if (window.setView && VIEWS.includes(h.view) && h.view !== (state.view || "map")) window.setView(h.view, true);
   if (h.c === "UKR") { if (state.panel !== "ukraine") select("804", false, how); }
   else if (h.c === "RUS") { if (state.panel !== "russia") select("643", false, how); }
@@ -1160,7 +1174,7 @@ const VIEWS = ["map", "rank", "bubbles", "table", "how"];
 window.addEventListener("popstate", () => {
   // the entry left by closing the panel: keep the view chosen meanwhile in the address
   if (backing) { backing = false; writeHash(false); return; }
-  if (countryPaths) route("history");
+  if (countryPaths) { route("history"); tidyHash(); }
 });
 function head(title, meta) {
   return `<button class="sheet-handle" id="sheet-handle" aria-label="${t("Expand panel")}"></button>
@@ -1738,6 +1752,7 @@ Promise.all([fetch(narrow() || matchMedia("(pointer: coarse)").matches ? "countr
   const start = parseHash();
   if (VIEWS.includes(start.view) && !state.view) state.view = start.view;
   route("load");
+  tidyHash();
   if (!state.panel) { const [cx, cy] = projection(narrow() ? [20, 46] : [40, 42]); svg.call(zoom.transform, d3.zoomIdentity.translate(W / 2, H / 2).scale(narrow() ? 8 : 1.6).translate(-cx, -cy)); }
   startLoop();
   if (reduceMotion) drawFlows(0);
