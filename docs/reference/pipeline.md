@@ -62,7 +62,7 @@ Two things apply to every step:
 | 32 | `counterfactual()` | back-tested multipliers and 2021 base for covered flows, cumulative bands (`cf_bands.json`, `ua_trade_cf.json`, `to_rus_cf.json`, `fuel_volume_cf.json`, `belarus.json`); replaces step 31 there | [counterfactual](../method/counterfactual.md) |
 | 33 | `apply_weapons_value()` | donated weapons at market value, stored as yearly corrections (`weapons_value.json`) | [aid](../method/aid-refugees-military.md#donated-weapons-at-market-value-round-5) |
 | 34 | `apply_state_finance()` | Rosatom nuclear projects and Russia's state loans (`russia_state_finance.json`) | [Russia](../method/russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia) |
-| 35 | `apply_company_flows()` | exit payments to Russia and profits sent home by Russian-owned companies abroad (`company_flows.json`) | [Russia](../method/russia-state-and-companies.md#companies-leaving-russia) |
+| 35 | `apply_company_flows()` | exit payments to Russia and profits sent home by Russian-owned companies abroad (`company_flows.json`; metals, mining and chemicals plants from `russian_owned_r10.json`) | [Russia](../method/russia-state-and-companies.md#companies-leaving-russia) |
 | 36 | `apply_refugees_net()` | refugee hosting at net cost: cost minus the taxes refugees pay (`refugees_net.json`) | [refugees](../method/aid-refugees-military.md#refugees) |
 | 37 | `apply_ua_arms_purchases()` | arms Ukraine bought abroad, as flowback to the seller (`ua_arms_purchases.json`) | [flowback](../method/aid-refugees-military.md#arms-ukraine-bought-abroad-round-5) |
 | 38 | `apply_loans_value()` | loans and guarantees at their grant element (`loans_value.json`) | [aid](../method/aid-refugees-military.md#loans-at-their-economic-value-round-5) |
@@ -88,7 +88,7 @@ Per country: `n` (numeric ISO for the map shapes), `iso3`, `name`, `kind`, `pop`
 |---|---|
 | `to_rus`, `from_rus`, `buy_ukr`, `sell_ukr` | goods trade; `to_rus` also holds `laundered*`, `paid_share`, `nowar_prices` and `nrl`/`nrh` (the no-war price's range, as factors on the expected path) |
 | `to_rus.gain`, `buy_ukr.gain` | the seller's net gain per euro (round 10): weights per year as `[low, central, high]`; in `to_rus.gain`, `e` is for what was expected without the war (the 2019–2021 mix) and `a` for what was bought (that year's mix) |
-| `to_rus.laund_gain`, `svc_bought.gain` | the same weights per year `[low, central, high]` for Russia's gain on crude in laundered fuel and on services |
+| `to_rus.laund_gain`, `svc_bought.gain` | Russia's gain on crude in laundered fuel (`e` for the pre-war level, `a` for what was bought, with relabelled Russian products at the products gain) and on services, per year `[low, central, high]` |
 | `svc_bought`, `svc_sold`, `shipping` | services and tanker income; `svc_sold.relocants_out` marks that relocants' spending was taken out |
 | `aid` | `years`, `cats`, `loans_face`, `loans_grant_eq`, `loans_value_ukraine`, `loan_adj_own`, `loan_adj_eu`, `weapons_mv`, `era_excluded`, `pledged_open`, `eu_years`, `eu_share`, `refugee_years*`, `refugee_gross`, `refugee_donor_share`, `refugee_cert` |
 | `energy` | `premium*`, `discount*` |
@@ -98,7 +98,7 @@ Per country: `n` (numeric ISO for the map shapes), `iso3`, `name`, `kind`, `pop`
 | `vk` | value kept x genuinely extra, `[low, central, high]` per kind of earning (`fw`, `fo`, `rl`, `rx`, `ux`, `sl`, `sx`, `sh`) |
 | `company` | `taxes*`, `staying`, `left`, `base_2018_2021` |
 | `windfall` | price windfall on Russian fuel against no-war prices, yearly triple |
-| `military_rus`, `hidden`, `undisclosed`, `private` | yearly triples |
+| `military_rus`, `hidden`, `undisclosed`, `private` | yearly triples, in money (`hidden.gain`: Russia's gain on gold per year, applied in the map) |
 | `flowback` | from the all-money ledger: `own*`, `purl_in*`, `arms*`, `othsp*` (other spending), `purl_out`, `cert_own`, `arms_cert` |
 | `people`, `incentive`, `sanctions` | counts, AI scores, sanctions labels |
 
