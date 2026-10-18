@@ -138,6 +138,15 @@ def build() -> dict:
         load(RESEARCH / "other.json"),
     )
     trade = load(GAPS / "trade_full.json")
+    # better official data for the countries with the widest ranges (narrow.json) enter at customs level, so every later
+    # step (re-exports, residual, freight, audits) applies to them as to everyone else
+    for iso3, series in load(GAPS / "narrow.json")["countries"].items():
+        for key, field in (("to_rus", "imports_from_RUS"), ("from_rus", "exports_to_RUS")):
+            tl = (series.get(key) or {}).get("trade_layer")
+            if tl and iso3 in trade["countries"]:
+                f = trade["countries"][iso3].setdefault(field, {})
+                for y, v in tl.items():
+                    f[y] = {**(f.get(y) or {}), **{b: v[b] for b in ("low", "central", "high")}}
     aid_gaps, refugees = load(GAPS / "aid_gaps.json"), load(GAPS / "refugees.json")
     energy, companies = load(GAPS / "energy.json"), load(GAPS / "companies_all.json")
     countries: dict[str, dict] = {}
@@ -1204,8 +1213,9 @@ def apply_narrow(countries: dict[str, dict], src: Sources) -> None:
             continue
         for key, d in series.items():
             obj = c.setdefault(key, {"cert": d.get("certainty") or "C", "src": []})
-            # entries marked as unchanged only bring a better baseline or price index, not new yearly values
-            if not (d.get("reasoning") or "").startswith("Values unchanged"):
+            # entries marked as unchanged only bring a better baseline or price index, not new yearly values; entries with
+            # customs-level values (trade_layer) already entered at the start
+            if not (d.get("reasoning") or "").startswith("Values unchanged") and not d.get("trade_layer"):
                 delta = obj.get("_refine_delta") or {}
                 for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
                     old = obj.get(k) or [0.0] * 6
