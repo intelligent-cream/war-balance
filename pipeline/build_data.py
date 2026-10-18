@@ -84,8 +84,57 @@ NAMES = {
 }  # fmt: skip
 
 
+# round 7: narrower actual values from national and partner statistics (research/2026-10/gaps/actuals_r7.json). Each
+# entry names the input it replaces ("file:path"); the inputs are changed as they are loaded, so nothing is applied twice
+ACTUALS_R7 = {
+    key: val
+    for c in json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/actuals_r7.json").read_text())[
+        "countries"
+    ].values()
+    for s in c.values()
+    for key, val in s["inputs"].items()
+}
+
+
+def _band(f: dict, y: str, lo: float, hi: float) -> None:
+    v = f.get(y)
+    if v and v.get("central"):
+        v["low"], v["high"] = round(v["central"] * lo, 6), round(v["central"] * hi, 6)
+
+
+def _actuals_r7(name: str, d: dict) -> dict:
+    for key, val in ACTUALS_R7.items():
+        if " and narrow.json:" in key:
+            # own-report margins for land-border partners: Russia's mirror sits near 1.0, not the world median ratio
+            iso, field = key.split(":")[1].split(" ")[0].split(".")
+            if name == "trade_full.json":
+                f = d["countries"][iso][field]
+                for y in val["years"]:
+                    _band(f, y, val["lo"], val["hi"])
+                if f.get("baseline") and "2021" in val["years"]:
+                    f["baseline"]["low"], f["baseline"]["high"] = f["2021"]["low"], f["2021"]["high"]
+            elif name == "narrow.json":
+                k = {"imports_from_RUS": "to_rus", "exports_to_RUS": "from_rus"}[field]
+                tl = ((d["countries"].get(iso) or {}).get(k) or {}).get("trade_layer")
+                for y in val["years"] if tl else []:
+                    _band(tl, y, val["lo"], val["hi"])
+        elif key.startswith(name + ":") and isinstance(val, dict):
+            *path, last = key.split(":", 1)[1].split(".")
+            obj = d
+            for part in path:
+                obj = obj[part]
+            if name == "nonreport.json":
+                for y, v in val.items():
+                    obj[last][y].update(v)
+            elif last == "reexports_from_RUS":
+                obj[last].update(val)
+            else:
+                obj[last] = val
+    return d
+
+
 def load(path: Path) -> dict | None:
-    return json.loads(path.read_text()) if path.exists() else None
+    return _actuals_r7(path.name, json.loads(path.read_text())) if path.exists() else None
 
 
 def iso_numeric(iso3: str) -> str | None:
@@ -1091,6 +1140,9 @@ PRICES["TUR"] = _TUR["countries"]["TUR"]
 GAS_PRICES["countries"].setdefault("TUR", {}).setdefault("index_vs_2019_2021", {})["pipeline"] = _TUR[
     "gas_prices_tur_replacement"
 ]["index_vs_2019_2021"]
+# Belarus: fixed dollar contract price, so only the exchange rate moves it (round 7)
+for _v in GAS_PRICES["countries"]["BLR"]["index_vs_2019_2021"]["pipeline"].values():
+    _v["low"], _v["high"] = round(_v["central"] * 0.98, 4), round(_v["central"] * 1.02, 4)
 PRICES_SKIP: set[str] = set()
 
 
@@ -1112,23 +1164,31 @@ def own_index(iso3: str, name: str, band: str) -> list[float] | None:
     # prices.json measures against 2018-2021; rebased to 2019-2021 = 1 like every other index on the map
     pre = [s[str(y)]["central"] for y in (2019, 2020, 2021) if str(y) in s and s[str(y)].get("central")]
     r = sum(pre) / len(pre) if len(pre) == 3 else 1.0
-    return [s[str(y)][band] / r for y in YEARS]
+    out = [s[str(y)][band] / r for y in YEARS]
+    if iso3 == "TJK" and name == "fossil_all" and band != "central":
+        # its 2021 band came from a fixed own-price ratio that cancels in the 2021 index (actuals_r7.json)
+        out[0] = s["2021"]["central"] / r * (0.97 if band == "low" else 1.03)
+    return out
+
+
+# Belarus buys Russian crude at the Urals price minus the Russian export duty (phased out by 2024), round 7
+BLR_CRUDE = ACTUALS_R7["crude_index_vs_2019_2021 (replaces idx('urals') for BLR only)"]
 
 
 def fuel_index(iso3: str, band: str) -> list[float]:
     """Price level of the fossil fuels a country bought from Russia before the war, per year (pre-war = 1): its own
     realised prices where measured, else its pre-war fuel mix with benchmark indices."""
-    own = own_index(iso3, "fossil_all", band)
+    own = own_index(iso3, "fossil_all", band) if iso3 != "BLR" else None
     if own:
         return own
     m = import_mix(iso3)
     fuels = ("crude", "products", "gas", "coal", "other_fossil")
     total = sum(m.get(f) or 0 for f in fuels) or 1
+    crude = [BLR_CRUDE[str(y)][band] for y in YEARS] if iso3 == "BLR" else idx("urals", band)
     return [
         sum((m.get(f) or 0) * v for f, v in zip(fuels, vals)) / total
-        for vals in zip(idx("urals", band), idx("products", band), gas_index(iso3, band), idx("coal", band),
-                        idx("products", band))
-    ]  # fmt: skip
+        for vals in zip(crude, idx("products", band), gas_index(iso3, band), idx("coal", band), idx("products", band))
+    ]
 
 
 def fuel_share_year(iso3: str) -> list[float | None]:
