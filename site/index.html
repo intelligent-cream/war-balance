@@ -596,11 +596,18 @@ function calc(c, y) {
   const lessSold3 = delta3(T.soldRus), lessSvcSold3 = delta3(T.svcSold), lessSvcPaid3 = delta3(T.svcBought), lessShip3 = c.shipping ? delta3(T.ship) : [0, 0, 0];
   const margin = META.lost_margin ?? 0.2;
   // profit lost on goods and services no longer sold to Russia
-  const given = i => Math.max(0, lessSold3[i]) + Math.max(0, lessSvcSold3[i]);
-  const lostMargin3 = [given(0) * margin, given(1) * margin * 0.5, given(2) * margin * 1.5];
+  // money earned counts at the value kept in the economy x how much of it is genuinely extra (round 6), per country and
+  // kind of earning (c.vk: [low, central, high]); the flat 20% profit margin is the fallback
+  const vk = key => (c.vk && c.vk[key]) || [margin * 0.5, margin, margin * 1.5];
+  const earned3 = (r, kPos, kNeg) => {
+    const f = vk(r[0] >= 0 ? kPos : kNeg);
+    return [r[0] * f[1], r[1] * (r[1] >= 0 ? f[0] : f[2]), r[2] * (r[2] >= 0 ? f[2] : f[0])];
+  };
+  const lostS = earned3(lessSold3.map(v => Math.max(0, v)), "rl", "rl"), lostV = earned3(lessSvcSold3.map(v => Math.max(0, v)), "sl", "sl");
+  const lostMargin3 = [lostS[0] + lostV[0], lostS[1] + lostV[1], lostS[2] + lostV[2]];
   // selling to Russia (or giving it up) moves the seller's profit, not the whole sales value: the goods still cost
   // money to make. The profit share ranges from half to one and a half times the margin
-  const profit3 = r => [r[0] * margin, r[1] * margin * (r[1] >= 0 ? 0.5 : 1.5), r[2] * margin * (r[2] >= 0 ? 1.5 : 0.5)];
+
   const tariff3 = c.tariff_waiver ? scale(sum3(T.buyUkr), META.tariff_rate ?? 0.04) : [0, 0, 0];
   // comparing with 2021 assumes trade would otherwise have stayed at that level, so these parts are at best B
   const cAid = c.aid?.cert || "B", cRus = weakest([c.to_rus?.cert, "B"]), cTrade = weakest([c.buy_ukr?.cert, "B"]);
@@ -624,12 +631,12 @@ function calc(c, y) {
     part("windfall", "Extra paid to Russia because of war-time prices", neg(sum3(T.windfall)), c.windfall?.cert || "C", src("windfall")),
     // only the rise above the pre-war level (and its pre-war growth); in money, so higher prices count too
     part("laund", "Russian oil bought via other countries", neg(c.laund ? above3({ ...T.laundered, p: T.laundered.c.map(() => 1), pl: T.laundered.c.map(() => 1), ph: T.laundered.c.map(() => 1) }) : sum3(T.laundered)), "C", c.to_rus?.laundered_src || []),
-    part("sold", lessSold3[0] >= 0 ? "Profit lost on sales to Russia given up" : "Profit on extra sales to Russia", profit3(lessSold3), weakest([c.from_rus?.cert, "B"]), src("from_rus")),
+    part("sold", lessSold3[0] >= 0 ? "Income lost on sales to Russia given up" : "Income from extra sales to Russia", earned3(lessSold3, "rl", "rx"), weakest([c.from_rus?.cert, "B"]), src("from_rus")),
     part("tax", lessTax3[0] >= 0 ? "Less tax paid in Russia by companies" : "More tax paid in Russia by companies", lessTax3, c.company?.cert || "B", src("company")),
     part("mil", "Weapons and troops sent to Russia", neg(sum3(T.mil)), c.military_rus?.cert || "D", src("military_rus")),
     part("svcpaid", lessSvcPaid3[0] >= 0 ? "Less paid to Russia for services" : "More paid to Russia for services", lessSvcPaid3, c.svc_bought?.cert || "C", src("svc_bought")),
-    part("svcsold", lessSvcSold3[0] >= 0 ? "Profit lost on services to Russia given up (e.g. tourism)" : "Profit on extra services sold to Russia (e.g. tourism)", profit3(lessSvcSold3), c.svc_sold?.cert || "C", src("svc_sold")),
-    part("ship", lessShip3[0] >= 0 ? "Less profit from shipping Russian oil" : "Profit from shipping and insuring Russian oil", lessShip3, c.shipping?.cert || "D", src("shipping")),
+    part("svcsold", lessSvcSold3[0] >= 0 ? "Income lost on services to Russia given up (e.g. tourism)" : "Income from extra services sold to Russia (e.g. tourism)", earned3(lessSvcSold3, "sl", "sx"), c.svc_sold?.cert || "C", src("svc_sold")),
+    part("ship", lessShip3[0] >= 0 ? "Less income from shipping Russian oil" : "Income from shipping and insuring Russian oil", lessShip3.map(v => v * vk("sh")[1] / 0.35), c.shipping?.cert || "D", src("shipping")),
     part("hidden", "Gold and hidden payments to Russia", neg(sum3(T.hidden)), "D", src("hidden")),
     part("undisc", "Undisclosed military aid (estimate)", sum3(T.undisc), c.undisclosed?.cert || "D", src("undisclosed")),
     part("priv", "Private donations", sum3(T.priv), c.private?.cert || "D", src("private")),
@@ -650,7 +657,7 @@ function calc(c, y) {
     part("undisc", "Undisclosed military aid (estimate)", sum3(T.undisc), c.undisclosed?.cert || "D", src("undisclosed")),
     part("priv", "Private donations", sum3(T.priv), c.private?.cert || "D", src("private")),
     part("prem", "Extra paid to replace Russian energy", sum3(T.premium), c.energy?.cert || "C", c.energy?.src || []),
-    part("margin", "Profit lost on sales to Russia (goods and services)", lostMargin3, "C", src("from_rus").concat(src("svc_sold"))),
+    part("margin", "Income lost on sales to Russia (goods and services)", lostMargin3, "C", src("from_rus").concat(src("svc_sold"))),
     part("tariff", "Import tariffs dropped for Ukraine", tariff3, "C", src("buy_ukr")),
     part("disc", "Discount gained on Russian oil", neg(sum3(T.discount)), "C", c.energy?.discount_src || []),
   ];
@@ -671,7 +678,9 @@ function calc(c, y) {
   const negPart = p => ({ ...p, v: -p.v, lo: -p.hi, hi: -p.lo });
   // money flowing back counts only as profit (the same share as profit lost on sales to Russia): the goods sold to
   // or for Ukraine still cost money to make. The range runs from half to one and a half times that margin
-  const back = state.netBack ? live(backParts.map(negPart).map(p => ({ ...p, v: p.v * margin, lo: p.lo * margin * 1.5, hi: p.hi * margin * 0.5 }))) : [];
+  // money flowing back to this economy from the war effort: weapons and aid spent here at the weapons factor, extra sales
+  // to Ukraine at the ordinary-goods factor (value kept x genuinely extra)
+  const back = state.netBack ? live(backParts.map(negPart).map(p => { const f = vk(p.k === "sell" ? "ux" : "fw"); return { ...p, v: p.v * f[1], lo: p.lo * f[2], hi: p.hi * f[0] }; })) : [];
   const backCost = back;
   const shiftAll = live(shiftParts.concat(back)), costAll = live(costParts.concat(backCost));
   const [shift, shiftLo, shiftHi] = total(shiftAll), [cost, costLo, costHi] = total(costAll);

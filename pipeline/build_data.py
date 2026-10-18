@@ -957,6 +957,7 @@ def build() -> dict:
     apply_loans_value(countries, src)
     apply_russian_arms(countries, src)
     apply_payment_agents(countries, src)
+    apply_value_kept(countries, src)
     apply_audit2(countries, src, "trends")
     for c in countries.values():
         for obj in c.values():
@@ -1598,6 +1599,19 @@ def apply_russian_arms(countries: dict[str, dict], src: Sources) -> None:
     round 5). Arms are almost entirely outside customs data; the small part inside it is taken out. Much of the fall
     came from Russia keeping its output for its own army, not from the buyer (not_buyer_choice_share, in the notes)."""
     ra = load(GAPS / "russian_arms_exports.json")
+    # round 6: 18 more buyers found for the "rest of world" (arms_r6.json), and Iran's payments partly settled in drones
+    # and missiles already counted as weapons sent to Russia: that part is taken off Iran's payments, not off its drones
+    r6 = load(GAPS / "arms_r6.json")
+    ra["countries"].update({k: v for k, v in r6["countries"].items() if k != "ROW"})
+    ov = r6["iran_overlap"]["overlap_eur_bn"]
+    irn = ra["countries"].get("IRN")
+    if irn:
+        for y, v in (irn.get("change_vs_expected") or {}).items():
+            o = ov.get(y) or {}
+            irn["change_vs_expected"][y] = {b: v[b] + o.get(b, 0.0) for b in ("low", "central", "high")}
+        ex = irn.get("change_vs_expected_ex_customs") or {}
+        for y in ex:
+            ex[y] = ex[y] + (ov.get(y) or {}).get("central", 0.0)
     sid = src.add(
         "russian_arms",
         "Russian arms exports by buyer: Rosoboronexport and FSVTS statements, SIPRI fact sheets, contract reporting (S-400, Su-35, Su-57)",
@@ -1651,6 +1665,38 @@ def apply_payment_agents(countries: dict[str, dict], src: Sources) -> None:
             (d.get("certainty") or "D")[0],
             sid,
         )
+
+
+def apply_value_kept(countries: dict[str, dict], src: Sources) -> None:
+    """The money rule for money a country earns (value_kept.json, round 6): the value kept in its economy (domestic
+    value-added share, OECD TiVA; defence-industry evidence for weapons) x how much of it is genuinely extra. Stored as
+    factors (low, central, high) per kind of earning; calc() applies them instead of the flat 20% profit margin."""
+    vk = load(GAPS / "value_kept.json")
+    sid = src.add(
+        "value_kept",
+        "Value kept in the economy: OECD Trade in Value Added (TiVA, 2025 edition), defence-industry content studies; genuinely extra: production ramp-ups, trade-redirection studies",
+        "https://www.oecd.org/en/topics/sub-issues/trade-in-value-added.html",
+        vk.get("generated"),
+        "value kept x genuinely extra, per country and kind of earning; see research/2026-10/gaps/value_kept-notes.md",
+    )
+    keys = {"fw": ("flowback_weapons", "product"), "fo": ("flowback_other", "product"),
+            "rl": ("sales_to_russia_lost", "product"), "rx": ("sales_to_russia_extra", "product"),
+            "ux": ("sales_to_ukraine_extra", "product"), "sl": ("services_to_russia", "product"),
+            "sx": ("services_to_russia", "product_when_more"), "sh": ("shipping", "product")}  # fmt: skip
+    for iso3, d in vk["countries"].items():
+        c = countries.get(iso3)
+        if not c:
+            continue
+        out = {}
+        for k, (flow, field) in keys.items():
+            v = (d.get(flow) or {}).get(field) or (d.get(flow) or {}).get("product")
+            if v:
+                out[k] = [round(v["low"], 3), round(v["central"], 3), round(v["high"], 3)]
+        c["vk"] = out
+    VALUE_KEPT_SRC.append(sid)
+
+
+VALUE_KEPT_SRC: list[str] = []
 
 
 def apply_weapons_value(countries: dict[str, dict], src: Sources) -> None:
@@ -2133,13 +2179,15 @@ def apply_shipping(countries: dict[str, dict], src: Sources, note) -> None:
     )
     # freight by the country that really controls each tanker (shadow_fleet.json, round 5): replaces shipping.json's
     # freight split; Russian-owned tankers behind UAE, Indian and Hong Kong fronts count for nobody abroad
-    sf = load(GAPS / "shadow_fleet.json")
+    sf = load(
+        GAPS / "shadow_fleet_r6.json"
+    )  # round 6: Russian share of opaque owners from sanctions and investigations
     src.add(
         "shadow_fleet",
         "Tanker control by country: KSE Institute shadow-fleet tracker, Lloyd's List, S&P Global, Kpler and Windward reporting, US/UK/EU sanctions designations",
         "https://kse.ua/russia-will-pay/",
         sf.get("generated"),
-        "beneficial owner or commercial controller, not the registered manager; see research/2026-10/gaps/shadow_fleet-notes.md",
+        "beneficial owner or commercial controller, not the registered manager; see research/2026-10/gaps/shadow_fleet_r6-notes.md",
     )
     for iso3 in sf["countries"]:
         sh["countries"].setdefault(iso3, {})

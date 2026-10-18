@@ -49,6 +49,15 @@ buyer's choice: Russia kept its output for its own army and sanctions hit its pr
 Egypt 20%, about 60% elsewhere). The country panel says so in a note, like the sanctions split; the number is not
 reduced. Most buyer values after 2021 are educated guesses (certainty D; India and China C).
 
+### Round 6
+
+18 more buyers were found for the "rest of world" remainder from SIPRI fact sheets ([`arms_r6.json`](../../research/2026-10/gaps/arms_r6.json),
+[notes](../../research/2026-10/gaps/arms_r6-notes.md)): Mali, Burkina Faso, Niger, Libya, Sudan, Ethiopia, Uganda,
+Angola, Nigeria, Laos, Mongolia, Malaysia, Turkmenistan, Thailand, Azerbaijan, Venezuela, Bulgaria, Slovakia. The
+unassigned amount falls from EUR 3.0bn to 1.2bn. **Iran** is counted once: about 35% (10–70%) of its payments for
+Russian arms were settled in drones and missiles that are already counted as weapons sent to Russia, so that part
+(EUR 1.2bn central) is taken off its arms payments.
+
 ## Companies leaving Russia
 
 Code: `apply_company_flows()`; data: [`company_flows.json`](../../research/2026-10/gaps/company_flows.json)

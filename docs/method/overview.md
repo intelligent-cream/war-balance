@@ -53,6 +53,36 @@ Not a part of its own, but built into the parts above:
 - **Re-export hubs, transit gas, hub resale, Baltic pass-through, freight**: these move value between countries before the parts are computed ([trade.md](trade.md), [energy-and-laundered-oil.md](energy-and-laundered-oil.md)).
 - **Sanctions label**: which share of a cut was required by sanctions is shown as a label and does not change totals ([trade.md](trade.md#sanctions-mandated-or-own-choice)).
 
+## The money rule (round 6)
+
+Money a country **pays out** (aid, payments to Russia) counts at full value: it leaves the economy. Money a country
+**earns** (from Russia, or from the war effort for Ukraine) counts at the **value kept in its economy × how much of it
+is genuinely extra**:
+
+- **value kept**: the domestic value-added share of the sale (OECD Trade in Value Added, 2025 edition; for weapons,
+  defence-industry evidence: US 0.90, Germany, France, UK, Italy 0.72–0.75, Czechia 0.55);
+- **genuinely extra**: the share that would not exist without the sale (weapons 0.6 by default, US 0.70 with 155mm
+  output up from 14,000 to about 40,000 rounds a month; sales lost to Russia 0.20–0.45 because many firms found other
+  buyers; extra sales to Russia 0.40–0.60; extra fuel sales to Ukraine 0.20; tourism lost 0.30; shadow shipping 0.65).
+
+So US weapons sold for Ukraine count at 0.63 (0.45–0.77), Germany's at 0.47, lost sales to Russia at 0.17–0.32,
+Greek shipping at 0.17. This replaces the flat 20% profit used before for flowback, sales and services to Russia and
+shipping. Factors per country and kind of earning: [`value_kept.json`](../../research/2026-10/gaps/value_kept.json)
+([notes](../../research/2026-10/gaps/value_kept-notes.md)); `c.vk` in `data.json`; applied in `calc()`.
+
+## Two balances (round 6)
+
+The headline adds two balances, shown as cards in each country panel:
+
+- **with Ukraine**: aid, EU share, refugees, extra purchases from Ukraine, donations, multilateral lending, minus money
+  flowing back from the war effort into the country's economy;
+- **with Russia**: everything else.
+
+A negative balance with Ukraine is shown as its real number and means **net earning from the war effort**, not money
+toward Russia. On the map a country whose total is negative mainly because of that is **gold**, not orange; a country
+that is blue overall but earns more than it gives on the Ukraine side gets a thin gold outline (threshold EUR 10m and
+0.05% of GDP).
+
 ## The cost view
 
 "Cost carried" is a second lens: what the country gave up, not where money went. Parts (`costParts` in `calc()`): aid with loans at the lender's grant equivalent (30% of face value, `LOAN_GRANT_ELEMENT`; the net shift uses their value to Ukraine instead), donated weapons at their recorded value, refugee hosting at net cost, refugee hosting, undisclosed aid, private donations, the extra price paid to replace Russian energy, profit lost on sales to Russia (goods and services, 20%), import tariffs dropped for Ukraine (4% of purchases from Ukraine, EU, UK and Canada only), minus discounts gained on Russian oil, and minus flowback profit.

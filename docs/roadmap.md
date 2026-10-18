@@ -30,8 +30,8 @@ services to Russia and shipping. The profit-only figures stay in the docs as a c
 |---|---|---|
 | A1 | **All-money ledger**: every euro that reached Ukraine (bilateral aid, EU and multilateral money, frozen-asset loans, private donations, Ukraine's own budget spent on weapons abroad), by what it paid for and the economy where it was spent; each euro assigned once | research |
 | A2 | **Stock replacement**: purchases made to replace weapons given to Ukraine (e.g. the Netherlands buying new US systems), up to the donated value, not general rearmament | research |
-| A3 | **Value kept**: domestic value-added share per seller and kind of good (OECD TiVA; defence industry studies) | research |
-| A4 | **Genuinely extra**: for weapons (capacity built for the war, backlogs) and for sales to and from Russia (redirection to other buyers), per sector, with ranges | research |
+| A3 | **Value kept**: domestic value-added share per seller and kind of good (OECD TiVA; defence industry studies) | research: done |
+| A4 | **Genuinely extra**: for weapons (capacity built for the war, backlogs) and for sales to and from Russia (redirection to other buyers), per sector, with ranges | research: done |
 | A5 | Builder: flowback from the ledger at value kept × extra; the same rule for sales to Russia, services to Russia and shipping; the Ukraine and Russia balances in `data.json` | code |
 | A6 | Map: blue when the total is positive; orange when negative mainly because of Russia; **gold** when negative mainly because of earning from the war effort; a thin gold outline on blue countries whose Ukraine balance is negative; ochre flow lines from the war effort to earners | code |
 | A7 | Country panel: two balance cards ("With Ukraine: gave X, earned back Y" and "With Russia"), then the total; How it works and docs explain the rule | code, docs |
@@ -50,10 +50,10 @@ services to Russia and shipping. The profit-only figures stay in the docs as a c
 
 | # | step | kind |
 |---|---|---|
-| C1 | A home for the EUR 3bn of Russian arms income with no known buyer | research |
+| C1 | A home for the EUR 3bn of Russian arms income with no known buyer | done: 18 buyers, 1.2bn left |
 | C2 | Laundered oil: Brunei's refinery (Russian crude, sold to Australia) and Russian fuel relabelled in Turkish ports | research |
-| C3 | Shadow fleet: an evidence-based Russian share of tankers with opaque owners, per manager country | research |
-| C4 | Iran: drones sent to Russia against Su-35s bought from Russia, counted once | research |
+| C3 | Shadow fleet: an evidence-based Russian share of tankers with opaque owners, per manager country | done |
+| C4 | Iran: drones sent to Russia against Su-35s bought from Russia, counted once | done |
 | C5 | Loan deferrals: Belarus counted net of Russia's new loans that repaid old ones; Viet Nam and Iraq labelled "blocked by sanctions, not the borrower's choice" | code: done |
 | C6 | More evidence for the predictions of trade with Ukraine | research |
 | C7 | Company taxes in Russia: richer data and more sources than KSE | research |
