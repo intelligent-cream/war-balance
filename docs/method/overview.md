@@ -102,7 +102,9 @@ Crude in 2023, for example: Russia sold at 64.2 USD a barrel FOB; real costs wer
 ports 5, depreciation 6.5, overhead 1.5, normal return 6), so the net gain is 0.64, of which the state took 0.47 in
 taxes (Finance Ministry totals). Each country's payments get the gain of what it bought: the 2019–2021 customs mix
 for what was expected without the war, and that mix moved by the fuel tracker's change in fuel since 2021 for what was
-bought (`apply_net_gain()`; Moldova's gas from its own customs, since Transnistria's gas is not counted).
+bought (`apply_net_gain()`; Moldova's gas from its own customs, since Transnistria's gas is not counted). Gold counts
+at Russia's gain on gold: Hong Kong's purchases (98% precious metals) and the gold Hong Kong and the UAE pass on to
+their buyers are tagged as gold.
 
 **Ukraine's net gain per euro** ([`net_gain_ukraine.json`](../../research/2026-10/gaps/net_gain_ukraine.json),
 [notes](../../research/2026-10/gaps/net_gain_ukraine-notes.md)): about 0.18 before the war, 0.06 in 2022, 0.045 in

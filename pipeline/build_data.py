@@ -1087,6 +1087,7 @@ def build() -> dict:
         for obj in c.values():
             if isinstance(obj, dict):
                 obj.pop("_refine_delta", None)
+                obj.pop("_gold", None)
                 # the baseline always lies inside its own range
                 if obj.get("base_range") and obj.get("base") is not None:
                     br = obj["base_range"]
@@ -2687,14 +2688,20 @@ def apply_net_gain(countries: dict[str, dict], src: Sources) -> None:
     g = lambda grp, y: tuple((g_ru[grp].get(str(y)) or g_ru[grp]["2025"])[b] for b in BANDS)  # noqa: E731
     fuels = ("crude", "products", "gas", "coal")
 
-    def mix_gain(fossil: float, shares: dict[str, float], y: int) -> tuple[float, ...]:
-        """Gain share of a mix: fossil share split over the fuels (other fossil as products), the rest non-fuel goods."""
+    def mix_gain(fossil: float, shares: dict[str, float], y: int, gold: float = 0.0) -> tuple[float, ...]:
+        """Gain share of a mix: fossil share split over the fuels (other fossil as products), gold, the rest other
+        goods. Gold is taken out of the non-fuel part (Hong Kong buys almost only gold; gold passed on by the UAE and
+        Hong Kong is tagged for its buyers)."""
         tot = sum(shares.get(f, 0.0) for f in fuels) + shares.get("other_fossil", 0.0) or 1.0
         fuel = [
             sum(shares.get(f, 0.0) * g(f, y)[i] for f in fuels) + shares.get("other_fossil", 0.0) * g("products", y)[i]
             for i in range(3)
         ]
-        return tuple(fossil * fuel[i] / tot + (1 - fossil) * g("non_fuel_average", y)[i] for i in range(3))
+        gold = min(gold, 1 - fossil)
+        return tuple(
+            fossil * fuel[i] / tot + gold * g("gold", y)[i] + (1 - fossil - gold) * g("non_fuel_average", y)[i]
+            for i in range(3)
+        )
 
     energy = load(GAPS / "energy.json")["countries"]
     customs_gas = load(GAPS / "customs_gas.json")["countries"]
@@ -2703,7 +2710,10 @@ def apply_net_gain(countries: dict[str, dict], src: Sources) -> None:
         if not tr:
             continue
         m = import_mix(iso3)
-        e = [mix_gain(m.get("fossil_share") or 0.0, m, y) for y in YEARS]
+        hk_gold = HK_METALS_SHARE if iso3 == "HKG" else 0.0
+        e = [mix_gain(m.get("fossil_share") or 0.0, m, y, hk_gold) for y in YEARS]
+        tagged = tr.get("_gold") or [0.0] * 6
+        gold_a = [max(hk_gold, min(1.0, t / p)) if p and p > 0 else hk_gold for t, p in zip(tagged, tr["years"])]
         # what was bought each year: the change in the fuel share since 2021 from the fossil tracker (fuel value over
         # payments, against its 2021 ratio), applied to the 2019-2021 customs mix, so 2021 matches the expected mix; the
         # fuels in the tracker's split of that year. A year without Russian fuel is all other goods
@@ -2724,7 +2734,7 @@ def apply_net_gain(countries: dict[str, dict], src: Sources) -> None:
 
         v21, p21 = sum(fuel_val(2021).values()), tr["years"][0] or 0.0
         if not by_mt or v21 <= 0 or p21 <= 0:
-            a = list(e)
+            a = [mix_gain(m.get("fossil_share") or 0.0, m, y, gold_a[i]) for i, y in enumerate(YEARS)]
         else:
             a = []
             for i, y in enumerate(YEARS):
@@ -2732,7 +2742,7 @@ def apply_net_gain(countries: dict[str, dict], src: Sources) -> None:
                 fv = sum(val.values())
                 fossil = min(1.0, (m.get("fossil_share") or 0.0) * (fv / paid) / (v21 / p21)) if paid > 0 else 0.0
                 shares = {f: v / fv for f, v in val.items()} if fv > 0 else {}
-                a.append(mix_gain(fossil, shares, y))
+                a.append(mix_gain(fossil, shares, y, gold_a[i]))
         tr["gain"] = {k: [[round(t[n], 4) for t in w] for n in range(3)] for k, w in (("e", e), ("a", a))}
         if rid not in tr.setdefault("src", []):
             tr["src"].append(rid)
@@ -3181,6 +3191,12 @@ def apply_reexports(countries: dict[str, dict], src: Sources, note) -> None:
                 o = countries[iso3]["to_rus"]
                 for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
                     o[k] = [round(v + g * keep_r[k] * sh[b], 5) for v, g in zip(o[k], back[k])]
+                if hub == "ARE":
+                    # the UAE passes on Russian gold: tagged so that it counts at Russia's gain on gold (round 10)
+                    o["_gold"] = [
+                        x + g * keep_r["years"] * sh["central"]
+                        for x, g in zip(o.get("_gold", [0.0] * 6), back["years"])
+                    ]
                 if sid not in o.setdefault("src", []):
                     o["src"].append(sid)
         h["hub"] = (
@@ -3292,6 +3308,11 @@ def apply_residual(countries: dict[str, dict], src: Sources, note) -> None:
                 v if i == 0 else round(v + rise[i] * HK_METALS_SHARE * on[i][give_b], 5)
                 for i, v in enumerate(cn["to_rus"][key])
             ]
+            if key == "years":
+                g0 = cn["to_rus"].get("_gold", [0.0] * 6)
+                cn["to_rus"]["_gold"] = [
+                    x + rise[i] * HK_METALS_SHARE * on[i]["central"] if i else x for i, x in enumerate(g0)
+                ]
         cn["to_rus"]["src"] = cn["to_rus"]["src"] + [rid]
     for iso3, text in TRANSIT_HUBS.items():
         if iso3 in countries:
