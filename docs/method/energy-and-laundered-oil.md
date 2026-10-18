@@ -33,6 +33,23 @@ For these countries the pipeline:
 
 **Starting values** (`energy.json` `laundered_oil`): each refiner's HS 2710 exports to a destination × the Russian share of that refiner's crude (India 15% in 2022, 38% in 2023–24, 34% in 2025; China 17–20%; Turkey 35–54%), calibrated to CREA's named-refinery figures (central × 0.699). **EU members** are scaled to Global Witness's figure for Russian crude in EU imports (× 0.62, range 0.5–0.8; [audit-notes.md](../../research/2026-10/gaps/audit-notes.md) item 4).
 
+### Per-country values for the EU, USA, UK and Australia (round 5)
+
+The model got the EU total right (within about 5% of customs evidence) but split it badly between members.
+[`apply_laundered_eu()`](../../pipeline/build_data.py) replaces the modelled values with customs-based ones from
+[`laundered_eu.json`](../../research/2026-10/gaps/laundered_eu.json) ([notes](../../research/2026-10/gaps/laundered_eu-notes.md)):
+Eurostat Comext imports of fuel (HS 2710) by member and origin (India, Türkiye, UAE, China, Singapore, Georgia) × the
+Russian-crude share of each origin's exports × the crude-to-fuel value ratio, with the Netherlands (about 74% resold)
+and Belgium (48%) passing fuel on to their customers, so each value is at the **final consumer**. Checked against
+CREA's per-country figures for 2023 (EU 2.60 vs 2.6; France 0.42 vs 0.42; Italy 0.34 vs 0.32). USA, UK and Australia
+come from CREA's country figures. Italy, Spain, France and Slovenia were too low in the model (they buy directly from
+Jamnagar, Vadinar and STAR); the Netherlands, Germany, Malta and Cyprus too high (refiners' mirror data and bunkers).
+2026 drops sharply after the EU ban of 21 January 2026 on fuel made from Russian crude.
+
+Not yet covered: Brunei's Hengyi refinery (about 60% Russian crude, a main source of Australia's fuel in 2025–26) is
+not in the refiner list, and relabelled Russian products from Turkish ports without refineries (Ceyhan, Marmara
+Ereğlisi, Mersin; EUR 3.1–3.3bn a year to the EU, mostly Greece) are recorded under other origins in EU customs.
+
 ### Hub resale chain
 
 Trading hubs buy fuel and resell part of it. `reassign_laundered_oil()` passes each hub's resold share to its customers (`HUB_RESALE` from `energy2.json` `hub_resale`; customers from [`hub_exports_2024.json`](../../research/2026-10/gaps/hub_exports_2024.json), [`hub_buyers.json`](../../research/2026-10/gaps/hub_buyers.json) and, for Togo, African importers' records in `refine.json`):
@@ -53,7 +70,7 @@ Fuel passed from one hub to another (India to the Netherlands, Belgium to the Ne
 
 ### Valuing and capping
 
-- Only the **Russian crude inside** the fuel is money for Russia: `CRUDE_CONTENT = 0.60 / 0.68 / 0.75` of the fuel value.
+- Only the **Russian crude inside** the fuel is money for Russia: `CRUDE_CONTENT = 0.42 / 0.50 / 0.60` of the fuel value (CREA: EUR 4.2bn of Russian crude in EUR 8.5bn of fuel, moved with prices; lowered from 0.60 / 0.68 / 0.75 in round 5).
 - Laundered oil cannot exceed what an economy can use: capped at 1% (middle) and 2% (high) of GDP per year (`LAUNDERED_CAP`), so ship registries and storage points (Marshall Islands, Liberia) do not absorb fuel. GDP from `residual.json` is loaded before the cap so it applies to small territories too.
 
 ### Pre-war laundered oil
@@ -66,19 +83,22 @@ Fuel refined from Russian crude reached buyers before 2022 too: EUR 3–5bn a ye
 
 ## Refiners: counted once
 
-Turkey, India and China refine Russian crude and export part of the fuel. That exported part is already counted at the buyers as laundered oil (95–100% per [`hub_buyers-notes.md`](../../research/2026-10/gaps/hub_buyers-notes.md)), so its crude value is taken out of the refiner's own payments to Russia, which then cover only what it uses itself:
+Turkey, India and China refine Russian crude and export part of the fuel. That exported part is already counted at the buyers as laundered oil (95–100% per [`hub_buyers-notes.md`](../../research/2026-10/gaps/hub_buyers-notes.md)), so it is taken out of the refiner's own payments to Russia. What is taken off the refiner equals what its buyers
+are charged: the **exported fuel value × `CRUDE_CONTENT`** (0.42 / 0.50 / 0.60), the same ratio used for the buyers, so
+no crude money is lost between them (round 5 review: using the refiners' measured crude values, about 0.67 of the fuel,
+had left about EUR 14bn uncounted):
 
-| refiner | exported crude value | source |
+| refiner | exported fuel value | source |
 |---|---|---|
-| Turkey | EUR 2.1–3.6bn a year in 2022–2025 | `hub_buyers.json` `turkey_refining.double_count_at_turkey` |
-| India | per year | `hub_buyers.json` `india_refining` |
-| China | per year | `round4a.json` `china_refining` |
+| Turkey | EUR 0.4–3.6bn a year in 2022–2026 | `hub_buyers.json` `turkey_refining.by_year` |
+| India | EUR 8–16bn a year | `hub_buyers.json` `india_refining` |
+| China | crude value ÷ 0.70 (India's measured crude-to-fuel ratio) | `round4a.json` `china_refining` |
 
 [`check_data.py`](../../pipeline/check_data.py) check 15 verifies the refining source on Turkey and India. **EU refiners' exports** (Lithuania, Finland, others) are not counted as laundered oil anywhere and stay with the refiner country (`round4a.json` `eu_refiners`).
 
 ## Turkey, a special case
 
-Turkey appears in almost every energy step: a TurkStream transit and final-use gas country whose customs hide gas under other headings, a refiner of Russian crude, a fuel hub whose customers are 50–57% in the EU, a re-export hub for goods, and a buyer whose crude and gas prices are hidden by its customs. Its price index keeps the benchmark-based version (`PRICES_SKIP`) because the measured index (3.3 in 2022) conflicts with the oil-formula gas price (1.75) and **needs a person's review** ([prices-notes.md](../../research/2026-10/gaps/prices-notes.md); [limitations.md](../limitations.md)).
+Turkey appears in almost every energy step: a TurkStream transit and final-use gas country whose customs hide gas under other headings, a refiner of Russian crude, a fuel hub whose customers are 50–57% in the EU, a re-export hub for goods, and a buyer whose crude and gas prices are hidden by its customs. Its prices (round 5, [`turkey_prices.json`](../../research/2026-10/gaps/turkey_prices.json), [notes](../../research/2026-10/gaps/turkey_prices-notes.md)) are rebuilt without the hidden customs lines: volumes from EPDK (the Turkish energy regulator), crude at the Russian Finance Ministry's Urals average plus freight, and gas from the contract terms (about 70% hub-indexed since 2021, spot purchases at 95% of TTF), checked against the customs residual for chapter 27 (2022: 101 vs 98 EUR/MWh). The old measured index (3.3 in 2022) was right; the oil-formula gas price (1.75) was not. This raises Türkiye's war-time windfall and lowers its volume change: −5.9% → −6.6% of GDP, with a narrower range.
 
 ## Energy premium and oil discount
 

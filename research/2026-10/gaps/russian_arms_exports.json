@@ -1,0 +1,3167 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "Payments to Russia for weapons, military equipment and military services (incl. spares, licence kits, repair, training), by buyer country and year. Payments (cash or offsets) received by Russia, not SIPRI TIV.",
+  "units": "EUR bn nominal per year; 2026 = January-August, not annualised. USD converted with ECB annual averages (USD per EUR): 2019 1.11947, 2020 1.14219, 2021 1.18274, 2022 1.05304, 2023 1.08126, 2024 1.08238, 2025 1.12998, 2026 1.16285 (2026 = Jan-Aug mean).",
+  "method": "(1) National total per year from Russian official statements (FSVTS/Putin/Rostec): ~15 (2019), >15 (2020), 14.6 (2021), ~7 (2022), ~6 (2023), claim 13.75 (2024) vs Rostec \"lower than 6\", claim >15 (2025); central path 15.0/15.5/14.6/7.1/6.0/6.5/9.0/6.6 USD bn (2026 Jan-Aug). (2) Allocation to buyers from contract reporting, SIPRI recipient shares (2017-21, 2019-23, 2020-24, 2021-25) and payment timing (advances, stuck payments), with a residual \"ROW\". (3) Ranges per country: multipliers on the central value (wider for certainty D). (4) expected_no_war: what the buyer would have paid per year without the war, given the pre-war contract pipeline and the pre-war decline that SIPRI documents for 2020-21 (one-offs like Turkey's S-400 removed). (5) change = expected - actual: positive = less paid to Russia (toward Ukraine), negative = more paid (toward Russia). Ranges of the change combine baseline and actual half-ranges in quadrature. (6) in_customs: the part of the payments that is already inside the buyer's imports from Russia in trade_full.json (checked against UN Comtrade HS 88/89/93/8411/8526/8710/8805/8906 lines, partner Russia).",
+  "recommended_use": "Add \"paid to Russia for arms\" as its own part using change_vs_expected_ex_customs (central; range = central shifted by the change_vs_expected half-ranges). It removes the in_customs part, whose change already sits in trade_full. Use prewar_avg_2019_2021 only as an alternative; it overstates the cut (one-offs, pre-war decline). Show not_buyer_choice_share as a label (like sanctions_share)."
+ },
+ "countries": {
+  "IND": {
+   "name": "India",
+   "certainty": "C",
+   "payments": {
+    "2019": {
+     "low": 2.144,
+     "central": 3.573,
+     "high": 5.36
+    },
+    "2020": {
+     "low": 2.364,
+     "central": 3.94,
+     "high": 5.91
+    },
+    "2021": {
+     "low": 2.435,
+     "central": 4.058,
+     "high": 6.088
+    },
+    "2022": {
+     "low": 1.14,
+     "central": 1.899,
+     "high": 2.849
+    },
+    "2023": {
+     "low": 1.11,
+     "central": 1.85,
+     "high": 2.775
+    },
+    "2024": {
+     "low": 1.22,
+     "central": 2.033,
+     "high": 3.049
+    },
+    "2025": {
+     "low": 1.593,
+     "central": 2.655,
+     "high": 3.982
+    },
+    "2026": {
+     "low": 1.032,
+     "central": 1.72,
+     "high": 2.58
+    }
+   },
+   "prewar_avg_2019_2021": 3.857,
+   "expected_no_war_per_year": {
+    "low": 2.273,
+    "central": 3.182,
+    "high": 4.091,
+    "note": "USD bn/yr (3.5, 2.5, 4.5) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": 0.081,
+     "central": 1.425,
+     "high": 2.64
+    },
+    "2023": {
+     "low": 0.079,
+     "central": 1.387,
+     "high": 2.571
+    },
+    "2024": {
+     "low": -0.173,
+     "central": 1.201,
+     "high": 2.431
+    },
+    "2025": {
+     "low": -1.153,
+     "central": 0.442,
+     "high": 1.825
+    },
+    "2026": {
+     "low": -0.747,
+     "central": 0.287,
+     "high": 1.182
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -1.912,
+    "central": 4.741,
+    "high": 10.65
+   },
+   "change_vs_prewar_avg": {
+    "2022": 1.958,
+    "2023": 2.007,
+    "2024": 1.824,
+    "2025": 1.202,
+    "2026": 0.851
+   },
+   "change_vs_prewar_avg_total_2022_2026": 7.843,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.004,
+     "high": 0.134
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.306,
+     "high": 0.438
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.002,
+     "high": 0.127
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.005,
+     "high": 0.095
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.277
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.006,
+     "high": 0.277
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.019,
+     "high": 0.265
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.013,
+     "high": 0.172
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 1.326,
+    "2023": 1.283,
+    "2024": 1.103,
+    "2025": 0.357,
+    "2026": 0.231
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 4.3,
+   "not_buyer_choice_share": {
+    "low": 0.3,
+    "central": 0.5,
+    "high": 0.7,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "Largest buyer (SIPRI: 48% of Russian major-arms deliveries 2021-25). S-400 (USD 5.43bn, 2018; 3 of 5 regiments by 2023, rest 2026-27), two Project 11356 frigates (Tushil Dec 2024, Tamal Jul 2025), Chakra III lease, AK-203 JV, Su-30MKI/T-90 licence kits, AL-31FP kits for HAL, spares. India paid ~USD 5.4-5.9bn/yr to all foreign vendors (Lok Sabha, FY2019-22); Russia ~45-60% of that plus licence kits. Over USD 2bn of payments stuck for ~a year (Bloomberg Apr 2023) -> low 2022-23, catch-up later."
+  },
+  "CHN": {
+   "name": "China",
+   "certainty": "C",
+   "payments": {
+    "2019": {
+     "low": 1.251,
+     "central": 2.501,
+     "high": 4.002
+    },
+    "2020": {
+     "low": 1.226,
+     "central": 2.451,
+     "high": 3.922
+    },
+    "2021": {
+     "low": 1.099,
+     "central": 2.198,
+     "high": 3.517
+    },
+    "2022": {
+     "low": 0.712,
+     "central": 1.424,
+     "high": 2.279
+    },
+    "2023": {
+     "low": 0.462,
+     "central": 0.925,
+     "high": 1.48
+    },
+    "2024": {
+     "low": 0.37,
+     "central": 0.739,
+     "high": 1.183
+    },
+    "2025": {
+     "low": 0.265,
+     "central": 0.531,
+     "high": 0.85
+    },
+    "2026": {
+     "low": 0.172,
+     "central": 0.344,
+     "high": 0.55
+    }
+   },
+   "prewar_avg_2019_2021": 2.384,
+   "expected_no_war_per_year": {
+    "low": 0.909,
+    "central": 1.636,
+    "high": 2.273,
+    "note": "USD bn/yr (1.8, 1.0, 2.5) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.858,
+     "central": 0.285,
+     "high": 1.259
+    },
+    "2023": {
+     "low": -0.185,
+     "central": 0.74,
+     "high": 1.536
+    },
+    "2024": {
+     "low": 0.062,
+     "central": 0.924,
+     "high": 1.669
+    },
+    "2025": {
+     "low": 0.285,
+     "central": 1.062,
+     "high": 1.736
+    },
+    "2026": {
+     "low": 0.185,
+     "central": 0.688,
+     "high": 1.125
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -0.511,
+    "central": 3.699,
+    "high": 7.324
+   },
+   "change_vs_prewar_avg": {
+    "2022": 0.96,
+    "2023": 1.459,
+    "2024": 1.645,
+    "2025": 1.853,
+    "2026": 1.245
+   },
+   "change_vs_prewar_avg_total_2022_2026": 7.161,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.018,
+     "high": 0.179
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.018,
+     "high": 0.175
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.017,
+     "high": 0.169
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.019,
+     "high": 0.19
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.018,
+     "high": 0.185
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.018,
+     "high": 0.185
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.018,
+     "high": 0.177
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.017,
+     "high": 0.172
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.286,
+    "2023": 0.74,
+    "2024": 0.924,
+    "2025": 1.062,
+    "2026": 0.693
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 3.705,
+   "not_buyer_choice_share": {
+    "low": 0.5,
+    "central": 0.7,
+    "high": 0.9,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "Russia's own customs exports of turbojets (HS 8411) to China were USD 1.57/1.65/1.77bn in 2019/2020/2021 (Comtrade, reporter Russia), while China's own report shows only USD 12-17m: military engines are outside China's customs data. S-400 and Su-35 (2015 contracts) finished by 2020. SIPRI: China's arms imports -72% 2016-20 to 2021-25, Russia 66% of the rest. Post-war values are a decline path for engines (D-30KP-2, AL-31F, RD-93) and helicopter parts; estimate."
+  },
+  "DZA": {
+   "name": "Algeria",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.643,
+     "central": 1.608,
+     "high": 3.216
+    },
+    "2020": {
+     "low": 0.63,
+     "central": 1.576,
+     "high": 3.152
+    },
+    "2021": {
+     "low": 0.676,
+     "central": 1.691,
+     "high": 3.382
+    },
+    "2022": {
+     "low": 0.38,
+     "central": 0.95,
+     "high": 1.899
+    },
+    "2023": {
+     "low": 0.296,
+     "central": 0.74,
+     "high": 1.48
+    },
+    "2024": {
+     "low": 0.37,
+     "central": 0.924,
+     "high": 1.848
+    },
+    "2025": {
+     "low": 0.531,
+     "central": 1.327,
+     "high": 2.655
+    },
+    "2026": {
+     "low": 0.413,
+     "central": 1.032,
+     "high": 2.064
+    }
+   },
+   "prewar_avg_2019_2021": 1.625,
+   "expected_no_war_per_year": {
+    "low": 0.909,
+    "central": 1.455,
+    "high": 2.0,
+    "note": "USD bn/yr (1.6, 1.0, 2.2) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.537,
+     "central": 0.569,
+     "high": 1.375
+    },
+    "2023": {
+     "low": -0.185,
+     "central": 0.74,
+     "high": 1.45
+    },
+    "2024": {
+     "low": -0.523,
+     "central": 0.554,
+     "high": 1.338
+    },
+    "2025": {
+     "low": -1.341,
+     "central": 0.089,
+     "high": 1.046
+    },
+    "2026": {
+     "low": -1.203,
+     "central": -0.115,
+     "high": 0.593
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -3.79,
+    "central": 1.838,
+    "high": 5.803
+   },
+   "change_vs_prewar_avg": {
+    "2022": 0.675,
+    "2023": 0.885,
+    "2024": 0.701,
+    "2025": 0.298,
+    "2026": 0.051
+   },
+   "change_vs_prewar_avg_total_2022_2026": 2.61,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.054,
+     "high": 0.089
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.026,
+     "high": 0.044
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.068,
+     "high": 0.085
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.095,
+     "high": 0.38
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.092,
+     "high": 0.37
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.351,
+     "high": 0.37
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.088,
+     "high": 0.354
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.06,
+     "high": 0.258
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.615,
+    "2023": 0.783,
+    "2024": 0.856,
+    "2025": 0.128,
+    "2026": -0.088
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 2.294,
+   "not_buyer_choice_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "SIPRI 2017-21: Russia 81% of Algerian imports (~11% of Russian exports). SIPRI 2021-25 shows Algeria -78% but warns Algeria is secretive and unverified Russian deals suggest SIPRI is low. Reported Su-57E order (~USD 2bn for 14, deliveries from late 2025), Su-34 (14) in leaked Rostec files (Oct 2025). Algeria's 2024 customs report shows USD 379m of radar (HS 8526) and simulators (HS 8805) from Russia."
+  },
+  "EGY": {
+   "name": "Egypt",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.572,
+     "central": 1.429,
+     "high": 2.858
+    },
+    "2020": {
+     "low": 0.63,
+     "central": 1.576,
+     "high": 3.152
+    },
+    "2021": {
+     "low": 0.541,
+     "central": 1.353,
+     "high": 2.706
+    },
+    "2022": {
+     "low": 0.152,
+     "central": 0.38,
+     "high": 0.76
+    },
+    "2023": {
+     "low": 0.074,
+     "central": 0.185,
+     "high": 0.37
+    },
+    "2024": {
+     "low": 0.055,
+     "central": 0.139,
+     "high": 0.277
+    },
+    "2025": {
+     "low": 0.035,
+     "central": 0.088,
+     "high": 0.177
+    },
+    "2026": {
+     "low": 0.017,
+     "central": 0.043,
+     "high": 0.086
+    }
+   },
+   "prewar_avg_2019_2021": 1.453,
+   "expected_no_war_per_year": {
+    "low": 0.364,
+    "central": 0.818,
+    "high": 1.364,
+    "note": "USD bn/yr (0.9, 0.4, 1.5) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.133,
+     "central": 0.475,
+     "high": 1.088
+    },
+    "2023": {
+     "low": 0.149,
+     "central": 0.647,
+     "high": 1.213
+    },
+    "2024": {
+     "low": 0.21,
+     "central": 0.693,
+     "high": 1.253
+    },
+    "2025": {
+     "low": 0.257,
+     "central": 0.708,
+     "high": 1.242
+    },
+    "2026": {
+     "low": 0.183,
+     "central": 0.473,
+     "high": 0.818
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": 0.666,
+    "central": 2.996,
+    "high": 5.615
+   },
+   "change_vs_prewar_avg": {
+    "2022": 1.073,
+    "2023": 1.268,
+    "2024": 1.314,
+    "2025": 1.365,
+    "2026": 0.925
+   },
+   "change_vs_prewar_avg_total_2022_2026": 5.944,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.071,
+     "high": 0.071
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.032,
+     "high": 0.035
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.017
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.019
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.018
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.018
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.018
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.017
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.441,
+    "2023": 0.613,
+    "2024": 0.659,
+    "2025": 0.674,
+    "2026": 0.45
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 2.837,
+   "not_buyer_choice_share": {
+    "low": 0.1,
+    "central": 0.2,
+    "high": 0.4,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "SIPRI 2017-21: Egypt 13% of Russian exports (MiG-29M, Ka-52, S-300VM). Su-35 order (24 jets, ~USD 2bn, 2018) abandoned under US CAATSA pressure; Russia absent from Egypt's top-3 suppliers 2021-25 (SIPRI). Post-war: spares/support only; estimate."
+  },
+  "TUR": {
+   "name": "Turkiye",
+   "certainty": "C",
+   "payments": {
+    "2019": {
+     "low": 0.581,
+     "central": 1.161,
+     "high": 1.858
+    },
+    "2020": {
+     "low": 0.131,
+     "central": 0.263,
+     "high": 0.42
+    },
+    "2021": {
+     "low": 0.042,
+     "central": 0.085,
+     "high": 0.135
+    },
+    "2022": {
+     "low": 0.024,
+     "central": 0.047,
+     "high": 0.076
+    },
+    "2023": {
+     "low": 0.009,
+     "central": 0.018,
+     "high": 0.03
+    },
+    "2024": {
+     "low": 0.009,
+     "central": 0.018,
+     "high": 0.03
+    },
+    "2025": {
+     "low": 0.009,
+     "central": 0.018,
+     "high": 0.028
+    },
+    "2026": {
+     "low": 0.004,
+     "central": 0.009,
+     "high": 0.014
+    }
+   },
+   "prewar_avg_2019_2021": 0.503,
+   "expected_no_war_per_year": {
+    "low": 0.027,
+    "central": 0.091,
+    "high": 0.273,
+    "note": "USD bn/yr (0.1, 0.03, 0.3) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.025,
+     "central": 0.048,
+     "high": 0.239
+    },
+    "2023": {
+     "low": 0.009,
+     "central": 0.074,
+     "high": 0.26
+    },
+    "2024": {
+     "low": 0.009,
+     "central": 0.074,
+     "high": 0.259
+    },
+    "2025": {
+     "low": 0.008,
+     "central": 0.07,
+     "high": 0.248
+    },
+    "2026": {
+     "low": 0.008,
+     "central": 0.048,
+     "high": 0.163
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": 0.008,
+    "central": 0.316,
+    "high": 1.169
+   },
+   "change_vs_prewar_avg": {
+    "2022": 0.456,
+    "2023": 0.485,
+    "2024": 0.485,
+    "2025": 0.485,
+    "2026": 0.326
+   },
+   "change_vs_prewar_avg_total_2022_2026": 2.237,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.018,
+     "high": 0.447
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.009
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.008
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.009
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.009
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.009
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.009
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.009
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.042,
+    "2023": 0.068,
+    "2024": 0.068,
+    "2025": 0.064,
+    "2026": 0.044
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 0.286,
+   "not_buyer_choice_share": {
+    "low": 0.1,
+    "central": 0.3,
+    "high": 0.5,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "S-400 (USD 2.5bn, 2017) delivered Jul-Sep 2019; second batch never ordered. The 2019 payment is a one-off: the expected no-war level excludes it."
+  },
+  "VNM": {
+   "name": "Viet Nam",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.179,
+     "central": 0.447,
+     "high": 0.893
+    },
+    "2020": {
+     "low": 0.175,
+     "central": 0.438,
+     "high": 0.876
+    },
+    "2021": {
+     "low": 0.169,
+     "central": 0.423,
+     "high": 0.845
+    },
+    "2022": {
+     "low": 0.114,
+     "central": 0.285,
+     "high": 0.57
+    },
+    "2023": {
+     "low": 0.111,
+     "central": 0.277,
+     "high": 0.555
+    },
+    "2024": {
+     "low": 0.148,
+     "central": 0.37,
+     "high": 0.739
+    },
+    "2025": {
+     "low": 0.142,
+     "central": 0.354,
+     "high": 0.708
+    },
+    "2026": {
+     "low": 0.103,
+     "central": 0.258,
+     "high": 0.516
+    }
+   },
+   "prewar_avg_2019_2021": 0.436,
+   "expected_no_war_per_year": {
+    "low": 0.273,
+    "central": 0.455,
+    "high": 0.727,
+    "note": "USD bn/yr (0.5, 0.3, 0.8) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.153,
+     "central": 0.19,
+     "high": 0.522
+    },
+    "2023": {
+     "low": -0.148,
+     "central": 0.185,
+     "high": 0.509
+    },
+    "2024": {
+     "low": -0.321,
+     "central": 0.092,
+     "high": 0.447
+    },
+    "2025": {
+     "low": -0.307,
+     "central": 0.088,
+     "high": 0.428
+    },
+    "2026": {
+     "low": -0.254,
+     "central": 0.029,
+     "high": 0.26
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -1.183,
+    "central": 0.584,
+    "high": 2.166
+   },
+   "change_vs_prewar_avg": {
+    "2022": 0.151,
+    "2023": 0.159,
+    "2024": 0.066,
+    "2025": 0.082,
+    "2026": 0.032
+   },
+   "change_vs_prewar_avg_total_2022_2026": 0.489,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.19,
+    "2023": 0.185,
+    "2024": 0.092,
+    "2025": 0.088,
+    "2026": 0.029
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 0.584,
+   "not_buyer_choice_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "Russia 56% of Viet Nam's imports 2017-21 (SIPRI). Leaked finance-ministry document (NYT 2023) and Rostec papers (AP Sep 2025): new arms paid by offsetting Vietnam's profits from the Rusvietpetro oil JV in Siberia, ~USD 8bn over ~20 years (~0.4bn/yr), implemented from 2024. Not in customs."
+  },
+  "IRN": {
+   "name": "Iran",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2021": {
+     "low": 0.013,
+     "central": 0.042,
+     "high": 0.076
+    },
+    "2022": {
+     "low": 0.057,
+     "central": 0.19,
+     "high": 0.342
+    },
+    "2023": {
+     "low": 0.166,
+     "central": 0.555,
+     "high": 0.999
+    },
+    "2024": {
+     "low": 0.194,
+     "central": 0.647,
+     "high": 1.164
+    },
+    "2025": {
+     "low": 0.319,
+     "central": 1.062,
+     "high": 1.912
+    },
+    "2026": {
+     "low": 0.258,
+     "central": 0.86,
+     "high": 1.548
+    }
+   },
+   "prewar_avg_2019_2021": 0.014,
+   "expected_no_war_per_year": {
+    "low": 0.0,
+    "central": 0.182,
+    "high": 0.455,
+    "note": "USD bn/yr (0.2, 0.0, 0.5) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.243,
+     "central": -0.0,
+     "high": 0.314
+    },
+    "2023": {
+     "low": -0.851,
+     "central": -0.37,
+     "high": 0.108
+    },
+    "2024": {
+     "low": -1.011,
+     "central": -0.462,
+     "high": 0.069
+    },
+    "2025": {
+     "low": -1.753,
+     "central": -0.885,
+     "high": -0.096
+    },
+    "2026": {
+     "low": -1.443,
+     "central": -0.745,
+     "high": -0.119
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -5.302,
+    "central": -2.463,
+    "high": 0.276
+   },
+   "change_vs_prewar_avg": {
+    "2022": -0.176,
+    "2023": -0.541,
+    "2024": -0.633,
+    "2025": -1.048,
+    "2026": -0.851
+   },
+   "change_vs_prewar_avg_total_2022_2026": -3.248,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": -0.0,
+    "2023": -0.37,
+    "2024": -0.462,
+    "2025": -0.885,
+    "2026": -0.745
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": -2.462,
+   "not_buyer_choice_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "UN arms embargo ended Oct 2020. Yak-130 (2023), Su-35: Iran confirmed purchase Mar 2023; leaked Rostec files (Black Mirror, Oct 2025): 48 Su-35 for ~EUR 6bn (USD 6.5bn), deliveries 2026-28; first 20 reported complete by Jul 2026. Payment may be partly barter (oil, drones): see overlaps."
+  },
+  "BLR": {
+   "name": "Belarus",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.08,
+     "central": 0.268,
+     "high": 0.67
+    },
+    "2020": {
+     "low": 0.079,
+     "central": 0.263,
+     "high": 0.657
+    },
+    "2021": {
+     "low": 0.076,
+     "central": 0.254,
+     "high": 0.634
+    },
+    "2022": {
+     "low": 0.085,
+     "central": 0.285,
+     "high": 0.712
+    },
+    "2023": {
+     "low": 0.111,
+     "central": 0.37,
+     "high": 0.925
+    },
+    "2024": {
+     "low": 0.111,
+     "central": 0.37,
+     "high": 0.924
+    },
+    "2025": {
+     "low": 0.106,
+     "central": 0.354,
+     "high": 0.885
+    },
+    "2026": {
+     "low": 0.064,
+     "central": 0.215,
+     "high": 0.537
+    }
+   },
+   "prewar_avg_2019_2021": 0.261,
+   "expected_no_war_per_year": {
+    "low": 0.136,
+    "central": 0.273,
+    "high": 0.455,
+    "note": "USD bn/yr (0.3, 0.15, 0.5) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.45,
+     "central": -0.0,
+     "high": 0.276
+    },
+    "2023": {
+     "low": -0.665,
+     "central": -0.093,
+     "high": 0.226
+    },
+    "2024": {
+     "low": -0.664,
+     "central": -0.093,
+     "high": 0.225
+    },
+    "2025": {
+     "low": -0.636,
+     "central": -0.089,
+     "high": 0.216
+    },
+    "2026": {
+     "low": -0.376,
+     "central": -0.043,
+     "high": 0.147
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -2.791,
+    "central": -0.317,
+    "high": 1.09
+   },
+   "change_vs_prewar_avg": {
+    "2022": -0.024,
+    "2023": -0.109,
+    "2024": -0.109,
+    "2025": -0.093,
+    "2026": -0.041
+   },
+   "change_vs_prewar_avg_total_2022_2026": -0.374,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.089
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.088
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.085
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.095
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.092
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.092
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.088
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.086
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": -0.0,
+    "2023": -0.093,
+    "2024": -0.093,
+    "2025": -0.089,
+    "2026": -0.043
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": -0.318,
+   "not_buyer_choice_share": {
+    "low": 0.2,
+    "central": 0.5,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "SIPRI 2021-25: Belarus 13% of Russian deliveries (Su-30SM2, Yak-130, Mi-35, Tor-M2, Iskander, S-400). Much is at Russian domestic prices, credit-financed or free (Iskander/S-400 for Union State defence); payments estimated far below SIPRI volume."
+  },
+  "KAZ": {
+   "name": "Kazakhstan",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.143,
+     "central": 0.357,
+     "high": 0.643
+    },
+    "2020": {
+     "low": 0.14,
+     "central": 0.35,
+     "high": 0.63
+    },
+    "2021": {
+     "low": 0.135,
+     "central": 0.338,
+     "high": 0.609
+    },
+    "2022": {
+     "low": 0.19,
+     "central": 0.475,
+     "high": 0.855
+    },
+    "2023": {
+     "low": 0.148,
+     "central": 0.37,
+     "high": 0.666
+    },
+    "2024": {
+     "low": 0.111,
+     "central": 0.277,
+     "high": 0.499
+    },
+    "2025": {
+     "low": 0.106,
+     "central": 0.265,
+     "high": 0.478
+    },
+    "2026": {
+     "low": 0.069,
+     "central": 0.172,
+     "high": 0.31
+    }
+   },
+   "prewar_avg_2019_2021": 0.349,
+   "expected_no_war_per_year": {
+    "low": 0.227,
+    "central": 0.364,
+    "high": 0.545,
+    "note": "USD bn/yr (0.4, 0.25, 0.6) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.501,
+     "central": -0.095,
+     "high": 0.247
+    },
+    "2023": {
+     "low": -0.327,
+     "central": -0.0,
+     "high": 0.289
+    },
+    "2024": {
+     "low": -0.169,
+     "central": 0.093,
+     "high": 0.341
+    },
+    "2025": {
+     "low": -0.162,
+     "central": 0.089,
+     "high": 0.327
+    },
+    "2026": {
+     "low": -0.105,
+     "central": 0.057,
+     "high": 0.211
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -1.264,
+    "central": 0.144,
+    "high": 1.416
+   },
+   "change_vs_prewar_avg": {
+    "2022": -0.126,
+    "2023": -0.021,
+    "2024": 0.072,
+    "2025": 0.084,
+    "2026": 0.06
+   },
+   "change_vs_prewar_avg_total_2022_2026": 0.068,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.045,
+     "high": 0.116
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.026,
+     "high": 0.088
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.017,
+     "high": 0.051
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.047,
+     "high": 0.142
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.046,
+     "high": 0.166
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.065,
+     "high": 0.203
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.053,
+     "high": 0.177
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.034,
+     "high": 0.112
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": -0.077,
+    "2023": 0.017,
+    "2024": 0.129,
+    "2025": 0.113,
+    "2026": 0.071
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 0.253,
+   "not_buyer_choice_share": {
+    "low": 0.4,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "SIPRI 2020-24: Kazakhstan 11% of Russian deliveries (Su-30SM, helicopters, armour), at CSTO domestic prices. Part may be in Kazakh customs (HS 8802 aircraft from Russia USD 176-222m/yr 2023-25)."
+  },
+  "MMR": {
+   "name": "Myanmar",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.071,
+     "central": 0.179,
+     "high": 0.357
+    },
+    "2020": {
+     "low": 0.105,
+     "central": 0.263,
+     "high": 0.525
+    },
+    "2021": {
+     "low": 0.101,
+     "central": 0.254,
+     "high": 0.507
+    },
+    "2022": {
+     "low": 0.095,
+     "central": 0.237,
+     "high": 0.475
+    },
+    "2023": {
+     "low": 0.074,
+     "central": 0.185,
+     "high": 0.37
+    },
+    "2024": {
+     "low": 0.055,
+     "central": 0.139,
+     "high": 0.277
+    },
+    "2025": {
+     "low": 0.053,
+     "central": 0.133,
+     "high": 0.265
+    },
+    "2026": {
+     "low": 0.034,
+     "central": 0.086,
+     "high": 0.172
+    }
+   },
+   "prewar_avg_2019_2021": 0.232,
+   "expected_no_war_per_year": {
+    "low": 0.136,
+    "central": 0.273,
+    "high": 0.409,
+    "note": "USD bn/yr (0.3, 0.15, 0.45) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.229,
+     "central": 0.048,
+     "high": 0.249
+    },
+    "2023": {
+     "low": -0.139,
+     "central": 0.092,
+     "high": 0.27
+    },
+    "2024": {
+     "low": -0.057,
+     "central": 0.138,
+     "high": 0.3
+    },
+    "2025": {
+     "low": -0.055,
+     "central": 0.132,
+     "high": 0.287
+    },
+    "2026": {
+     "low": -0.036,
+     "central": 0.086,
+     "high": 0.186
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -0.516,
+    "central": 0.497,
+    "high": 1.293
+   },
+   "change_vs_prewar_avg": {
+    "2022": -0.005,
+    "2023": 0.047,
+    "2024": 0.093,
+    "2025": 0.099,
+    "2026": 0.068
+   },
+   "change_vs_prewar_avg_total_2022_2026": 0.301,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.048,
+    "2023": 0.092,
+    "2024": 0.138,
+    "2025": 0.132,
+    "2026": 0.086
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 0.496,
+   "not_buyer_choice_share": {
+    "low": 0.5,
+    "central": 0.7,
+    "high": 0.9,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "Su-30SME (6, ~USD 400m, delivered 2022-24), Yak-130, Mi-35, Orlan UAVs; new cooperation agreement 2025. Not in customs."
+  },
+  "IRQ": {
+   "name": "Iraq",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.143,
+     "central": 0.357,
+     "high": 0.715
+    },
+    "2020": {
+     "low": 0.105,
+     "central": 0.263,
+     "high": 0.525
+    },
+    "2021": {
+     "low": 0.068,
+     "central": 0.169,
+     "high": 0.338
+    },
+    "2022": {
+     "low": 0.038,
+     "central": 0.095,
+     "high": 0.19
+    },
+    "2023": {
+     "low": 0.018,
+     "central": 0.046,
+     "high": 0.092
+    },
+    "2024": {
+     "low": 0.018,
+     "central": 0.046,
+     "high": 0.092
+    },
+    "2025": {
+     "low": 0.018,
+     "central": 0.044,
+     "high": 0.088
+    },
+    "2026": {
+     "low": 0.01,
+     "central": 0.026,
+     "high": 0.052
+    }
+   },
+   "prewar_avg_2019_2021": 0.263,
+   "expected_no_war_per_year": {
+    "low": 0.091,
+    "central": 0.182,
+    "high": 0.318,
+    "note": "USD bn/yr (0.2, 0.1, 0.35) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.039,
+     "central": 0.095,
+     "high": 0.248
+    },
+    "2023": {
+     "low": 0.036,
+     "central": 0.139,
+     "high": 0.28
+    },
+    "2024": {
+     "low": 0.036,
+     "central": 0.139,
+     "high": 0.28
+    },
+    "2025": {
+     "low": 0.034,
+     "central": 0.133,
+     "high": 0.268
+    },
+    "2026": {
+     "low": 0.026,
+     "central": 0.089,
+     "high": 0.176
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": 0.092,
+    "central": 0.594,
+    "high": 1.253
+   },
+   "change_vs_prewar_avg": {
+    "2022": 0.168,
+    "2023": 0.217,
+    "2024": 0.217,
+    "2025": 0.219,
+    "2026": 0.149
+   },
+   "change_vs_prewar_avg_total_2022_2026": 0.97,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.095,
+    "2023": 0.139,
+    "2024": 0.139,
+    "2025": 0.133,
+    "2026": 0.089
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 0.595,
+   "not_buyer_choice_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "T-90S and spares; Russia 44% of Iraqi imports 2017-21 (SIPRI)."
+  },
+  "ARM": {
+   "name": "Armenia",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.04,
+     "central": 0.134,
+     "high": 0.268
+    },
+    "2020": {
+     "low": 0.039,
+     "central": 0.131,
+     "high": 0.263
+    },
+    "2021": {
+     "low": 0.025,
+     "central": 0.085,
+     "high": 0.169
+    },
+    "2022": {
+     "low": 0.028,
+     "central": 0.095,
+     "high": 0.19
+    },
+    "2023": {
+     "low": 0.006,
+     "central": 0.018,
+     "high": 0.037
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "prewar_avg_2019_2021": 0.117,
+   "expected_no_war_per_year": {
+    "low": 0.045,
+    "central": 0.109,
+    "high": 0.182,
+    "note": "USD bn/yr (0.12, 0.05, 0.2) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.097,
+     "central": 0.019,
+     "high": 0.12
+    },
+    "2023": {
+     "low": 0.026,
+     "central": 0.093,
+     "high": 0.168
+    },
+    "2024": {
+     "low": 0.046,
+     "central": 0.111,
+     "high": 0.185
+    },
+    "2025": {
+     "low": 0.044,
+     "central": 0.106,
+     "high": 0.177
+    },
+    "2026": {
+     "low": 0.029,
+     "central": 0.069,
+     "high": 0.115
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": 0.048,
+    "central": 0.398,
+    "high": 0.765
+   },
+   "change_vs_prewar_avg": {
+    "2022": 0.022,
+    "2023": 0.099,
+    "2024": 0.117,
+    "2025": 0.117,
+    "2026": 0.078
+   },
+   "change_vs_prewar_avg_total_2022_2026": 0.431,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.019,
+    "2023": 0.093,
+    "2024": 0.111,
+    "2025": 0.106,
+    "2026": 0.069
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 0.398,
+   "not_buyer_choice_share": {
+    "low": 0.4,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "Su-30SM (2019-20), Iskander; mostly credit-financed. From 2023 Armenia complained of paid but undelivered arms (~USD 400m reported) and turned to India/France."
+  },
+  "SRB": {
+   "name": "Serbia",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.054,
+     "central": 0.179,
+     "high": 0.357
+    },
+    "2020": {
+     "low": 0.053,
+     "central": 0.175,
+     "high": 0.35
+    },
+    "2021": {
+     "low": 0.025,
+     "central": 0.085,
+     "high": 0.169
+    },
+    "2022": {
+     "low": 0.014,
+     "central": 0.047,
+     "high": 0.095
+    },
+    "2023": {
+     "low": 0.006,
+     "central": 0.018,
+     "high": 0.037
+    },
+    "2024": {
+     "low": 0.006,
+     "central": 0.018,
+     "high": 0.037
+    },
+    "2025": {
+     "low": 0.005,
+     "central": 0.018,
+     "high": 0.035
+    },
+    "2026": {
+     "low": 0.003,
+     "central": 0.009,
+     "high": 0.017
+    }
+   },
+   "prewar_avg_2019_2021": 0.146,
+   "expected_no_war_per_year": {
+    "low": 0.045,
+    "central": 0.091,
+    "high": 0.182,
+    "note": "USD bn/yr (0.1, 0.05, 0.2) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.02,
+     "central": 0.048,
+     "high": 0.148
+    },
+    "2023": {
+     "low": 0.024,
+     "central": 0.074,
+     "high": 0.168
+    },
+    "2024": {
+     "low": 0.024,
+     "central": 0.074,
+     "high": 0.168
+    },
+    "2025": {
+     "low": 0.023,
+     "central": 0.07,
+     "high": 0.16
+    },
+    "2026": {
+     "low": 0.019,
+     "central": 0.048,
+     "high": 0.106
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": 0.071,
+    "central": 0.316,
+    "high": 0.75
+   },
+   "change_vs_prewar_avg": {
+    "2022": 0.099,
+    "2023": 0.128,
+    "2024": 0.128,
+    "2025": 0.128,
+    "2026": 0.088
+   },
+   "change_vs_prewar_avg_total_2022_2026": 0.572,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.089,
+     "high": 0.17
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.026,
+     "high": 0.053
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.021,
+     "high": 0.042
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.019,
+     "high": 0.038
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.009,
+     "high": 0.018
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.018,
+     "high": 0.018
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.009
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.009
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.022,
+    "2023": 0.038,
+    "2024": 0.047,
+    "2025": 0.025,
+    "2026": 0.018
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 0.15,
+   "not_buyer_choice_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "Pantsir-S1 (2020), Mi-35/Mi-17; Serbian customs records part (HS 88)."
+  },
+  "ARE": {
+   "name": "United Arab Emirates",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.04,
+     "central": 0.134,
+     "high": 0.268
+    },
+    "2020": {
+     "low": 0.039,
+     "central": 0.131,
+     "high": 0.263
+    },
+    "2021": {
+     "low": 0.038,
+     "central": 0.127,
+     "high": 0.254
+    },
+    "2022": {
+     "low": 0.028,
+     "central": 0.095,
+     "high": 0.19
+    },
+    "2023": {
+     "low": 0.014,
+     "central": 0.046,
+     "high": 0.092
+    },
+    "2024": {
+     "low": 0.014,
+     "central": 0.046,
+     "high": 0.092
+    },
+    "2025": {
+     "low": 0.013,
+     "central": 0.044,
+     "high": 0.088
+    },
+    "2026": {
+     "low": 0.008,
+     "central": 0.026,
+     "high": 0.052
+    }
+   },
+   "prewar_avg_2019_2021": 0.131,
+   "expected_no_war_per_year": {
+    "low": 0.045,
+    "central": 0.109,
+    "high": 0.182,
+    "note": "USD bn/yr (0.12, 0.05, 0.2) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.097,
+     "central": 0.019,
+     "high": 0.12
+    },
+    "2023": {
+     "low": -0.014,
+     "central": 0.065,
+     "high": 0.146
+    },
+    "2024": {
+     "low": -0.014,
+     "central": 0.065,
+     "high": 0.145
+    },
+    "2025": {
+     "low": -0.014,
+     "central": 0.062,
+     "high": 0.139
+    },
+    "2026": {
+     "low": -0.005,
+     "central": 0.043,
+     "high": 0.092
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -0.145,
+    "central": 0.254,
+    "high": 0.643
+   },
+   "change_vs_prewar_avg": {
+    "2022": 0.036,
+    "2023": 0.085,
+    "2024": 0.085,
+    "2025": 0.087,
+    "2026": 0.061
+   },
+   "change_vs_prewar_avg_total_2022_2026": 0.353,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.019,
+    "2023": 0.065,
+    "2024": 0.065,
+    "2025": 0.062,
+    "2026": 0.043
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 0.254,
+   "not_buyer_choice_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "Pantsir, BMP-3 support; Russia 5.3% of UAE imports 2017-21 (SIPRI)."
+  },
+  "SAU": {
+   "name": "Saudi Arabia",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.045,
+     "high": 0.134
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.044,
+     "high": 0.131
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.042,
+     "high": 0.127
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.047,
+     "high": 0.142
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.046,
+     "high": 0.139
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.092,
+     "high": 0.277
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.265,
+     "high": 0.796
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.258,
+     "high": 0.774
+    }
+   },
+   "prewar_avg_2019_2021": 0.044,
+   "expected_no_war_per_year": {
+    "low": 0.0,
+    "central": 0.045,
+    "high": 0.136,
+    "note": "USD bn/yr (0.05, 0.0, 0.15) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.106,
+     "central": 0.0,
+     "high": 0.106
+    },
+    "2023": {
+     "low": -0.104,
+     "central": 0.0,
+     "high": 0.104
+    },
+    "2024": {
+     "low": -0.236,
+     "central": -0.046,
+     "high": 0.085
+    },
+    "2025": {
+     "low": -0.754,
+     "central": -0.221,
+     "high": 0.059
+    },
+    "2026": {
+     "low": -0.746,
+     "central": -0.229,
+     "high": 0.035
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -1.946,
+    "central": -0.495,
+    "high": 0.388
+   },
+   "change_vs_prewar_avg": {
+    "2022": -0.003,
+    "2023": -0.002,
+    "2024": -0.048,
+    "2025": -0.221,
+    "2026": -0.229
+   },
+   "change_vs_prewar_avg_total_2022_2026": -0.505,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": -0.046,
+    "2025": -0.221,
+    "2026": -0.229
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": -0.496,
+   "not_buyer_choice_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "SIPRI 2020-24 lists Saudi Arabia among the main pending Russian deliveries; Pantsir-S1 deal (~USD 2bn) reported Jan 2025 in secondary sources only. Educated guess."
+  },
+  "UZB": {
+   "name": "Uzbekistan",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.027,
+     "central": 0.089,
+     "high": 0.179
+    },
+    "2020": {
+     "low": 0.026,
+     "central": 0.088,
+     "high": 0.175
+    },
+    "2021": {
+     "low": 0.038,
+     "central": 0.127,
+     "high": 0.254
+    },
+    "2022": {
+     "low": 0.043,
+     "central": 0.142,
+     "high": 0.285
+    },
+    "2023": {
+     "low": 0.028,
+     "central": 0.092,
+     "high": 0.185
+    },
+    "2024": {
+     "low": 0.028,
+     "central": 0.092,
+     "high": 0.185
+    },
+    "2025": {
+     "low": 0.027,
+     "central": 0.088,
+     "high": 0.177
+    },
+    "2026": {
+     "low": 0.018,
+     "central": 0.06,
+     "high": 0.12
+    }
+   },
+   "prewar_avg_2019_2021": 0.101,
+   "expected_no_war_per_year": {
+    "low": 0.045,
+    "central": 0.109,
+    "high": 0.182,
+    "note": "USD bn/yr (0.12, 0.05, 0.2) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.186,
+     "central": -0.028,
+     "high": 0.097
+    },
+    "2023": {
+     "low": -0.094,
+     "central": 0.019,
+     "high": 0.117
+    },
+    "2024": {
+     "low": -0.094,
+     "central": 0.019,
+     "high": 0.117
+    },
+    "2025": {
+     "low": -0.09,
+     "central": 0.018,
+     "high": 0.112
+    },
+    "2026": {
+     "low": -0.063,
+     "central": 0.009,
+     "high": 0.071
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -0.528,
+    "central": 0.037,
+    "high": 0.513
+   },
+   "change_vs_prewar_avg": {
+    "2022": -0.041,
+    "2023": 0.009,
+    "2024": 0.009,
+    "2025": 0.013,
+    "2026": 0.007
+   },
+   "change_vs_prewar_avg_total_2022_2026": -0.002,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.018,
+     "high": 0.023
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": -0.028,
+    "2023": 0.019,
+    "2024": 0.037,
+    "2025": 0.018,
+    "2026": 0.009
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 0.055,
+   "not_buyer_choice_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "Russia 68% of Uzbek imports 2020-23 (Caspian Policy Center via defence24)."
+  },
+  "IDN": {
+   "name": "Indonesia",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.018,
+     "central": 0.089,
+     "high": 0.179
+    },
+    "2020": {
+     "low": 0.018,
+     "central": 0.088,
+     "high": 0.175
+    },
+    "2021": {
+     "low": 0.008,
+     "central": 0.042,
+     "high": 0.085
+    },
+    "2022": {
+     "low": 0.009,
+     "central": 0.047,
+     "high": 0.095
+    },
+    "2023": {
+     "low": 0.009,
+     "central": 0.046,
+     "high": 0.092
+    },
+    "2024": {
+     "low": 0.009,
+     "central": 0.046,
+     "high": 0.092
+    },
+    "2025": {
+     "low": 0.009,
+     "central": 0.044,
+     "high": 0.088
+    },
+    "2026": {
+     "low": 0.005,
+     "central": 0.026,
+     "high": 0.052
+    }
+   },
+   "prewar_avg_2019_2021": 0.073,
+   "expected_no_war_per_year": {
+    "low": 0.027,
+    "central": 0.064,
+    "high": 0.136,
+    "note": "USD bn/yr (0.07, 0.03, 0.15) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.042,
+     "central": 0.019,
+     "high": 0.104
+    },
+    "2023": {
+     "low": -0.04,
+     "central": 0.019,
+     "high": 0.101
+    },
+    "2024": {
+     "low": -0.04,
+     "central": 0.019,
+     "high": 0.101
+    },
+    "2025": {
+     "low": -0.039,
+     "central": 0.018,
+     "high": 0.097
+    },
+    "2026": {
+     "low": -0.021,
+     "central": 0.014,
+     "high": 0.065
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -0.181,
+    "central": 0.089,
+    "high": 0.469
+   },
+   "change_vs_prewar_avg": {
+    "2022": 0.026,
+    "2023": 0.027,
+    "2024": 0.027,
+    "2025": 0.029,
+    "2026": 0.023
+   },
+   "change_vs_prewar_avg_total_2022_2026": 0.132,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.019,
+    "2023": 0.019,
+    "2024": 0.019,
+    "2025": 0.018,
+    "2026": 0.014
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 0.089,
+   "not_buyer_choice_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "Su-35 order (2018) abandoned 2021; spares for Su-27/30."
+  },
+  "BGD": {
+   "name": "Bangladesh",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.027,
+     "central": 0.089,
+     "high": 0.179
+    },
+    "2020": {
+     "low": 0.026,
+     "central": 0.088,
+     "high": 0.175
+    },
+    "2021": {
+     "low": 0.025,
+     "central": 0.085,
+     "high": 0.169
+    },
+    "2022": {
+     "low": 0.014,
+     "central": 0.047,
+     "high": 0.095
+    },
+    "2023": {
+     "low": 0.008,
+     "central": 0.028,
+     "high": 0.055
+    },
+    "2024": {
+     "low": 0.008,
+     "central": 0.028,
+     "high": 0.055
+    },
+    "2025": {
+     "low": 0.008,
+     "central": 0.027,
+     "high": 0.053
+    },
+    "2026": {
+     "low": 0.005,
+     "central": 0.017,
+     "high": 0.034
+    }
+   },
+   "prewar_avg_2019_2021": 0.087,
+   "expected_no_war_per_year": {
+    "low": 0.036,
+    "central": 0.073,
+    "high": 0.109,
+    "note": "USD bn/yr (0.08, 0.04, 0.12) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.032,
+     "central": 0.029,
+     "high": 0.079
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.046,
+     "high": 0.088
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.046,
+     "high": 0.088
+    },
+    "2025": {
+     "low": -0.0,
+     "central": 0.044,
+     "high": 0.084
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.029,
+     "high": 0.055
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -0.032,
+    "central": 0.194,
+    "high": 0.394
+   },
+   "change_vs_prewar_avg": {
+    "2022": 0.04,
+    "2023": 0.059,
+    "2024": 0.059,
+    "2025": 0.06,
+    "2026": 0.041
+   },
+   "change_vs_prewar_avg_total_2022_2026": 0.26,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.029,
+    "2023": 0.046,
+    "2024": 0.046,
+    "2025": 0.044,
+    "2026": 0.029
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 0.194,
+   "not_buyer_choice_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "Yak-130, Mi-171Sh, spares."
+  },
+  "PAK": {
+   "name": "Pakistan",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.013,
+     "central": 0.045,
+     "high": 0.089
+    },
+    "2020": {
+     "low": 0.013,
+     "central": 0.044,
+     "high": 0.088
+    },
+    "2021": {
+     "low": 0.013,
+     "central": 0.042,
+     "high": 0.085
+    },
+    "2022": {
+     "low": 0.009,
+     "central": 0.028,
+     "high": 0.057
+    },
+    "2023": {
+     "low": 0.006,
+     "central": 0.018,
+     "high": 0.037
+    },
+    "2024": {
+     "low": 0.006,
+     "central": 0.018,
+     "high": 0.037
+    },
+    "2025": {
+     "low": 0.005,
+     "central": 0.018,
+     "high": 0.035
+    },
+    "2026": {
+     "low": 0.003,
+     "central": 0.009,
+     "high": 0.017
+    }
+   },
+   "prewar_avg_2019_2021": 0.044,
+   "expected_no_war_per_year": {
+    "low": 0.018,
+    "central": 0.036,
+    "high": 0.073,
+    "note": "USD bn/yr (0.04, 0.02, 0.08) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -0.025,
+     "central": 0.01,
+     "high": 0.052
+    },
+    "2023": {
+     "low": -0.008,
+     "central": 0.019,
+     "high": 0.058
+    },
+    "2024": {
+     "low": -0.008,
+     "central": 0.019,
+     "high": 0.058
+    },
+    "2025": {
+     "low": -0.007,
+     "central": 0.017,
+     "high": 0.055
+    },
+    "2026": {
+     "low": -0.0,
+     "central": 0.014,
+     "high": 0.038
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -0.047,
+    "central": 0.079,
+    "high": 0.261
+   },
+   "change_vs_prewar_avg": {
+    "2022": 0.016,
+    "2023": 0.026,
+    "2024": 0.026,
+    "2025": 0.026,
+    "2026": 0.02
+   },
+   "change_vs_prewar_avg_total_2022_2026": 0.112,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.01,
+    "2023": 0.019,
+    "2024": 0.019,
+    "2025": 0.017,
+    "2026": 0.014
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 0.079,
+   "not_buyer_choice_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "Mi-35M, RD-93 engines for JF-17 (via China)."
+  },
+  "ROW": {
+   "name": "Rest of world (not attributed: Africa incl. Mali, Burkina Faso, Niger, Sudan, Ethiopia, Angola, Uganda; Syria, Laos, Mongolia, Latin America)",
+   "certainty": "D",
+   "payments": {
+    "2019": {
+     "low": 0.228,
+     "central": 0.759,
+     "high": 1.898
+    },
+    "2020": {
+     "low": 0.263,
+     "central": 0.876,
+     "high": 2.189
+    },
+    "2021": {
+     "low": 0.292,
+     "central": 0.972,
+     "high": 2.431
+    },
+    "2022": {
+     "low": 0.256,
+     "central": 0.855,
+     "high": 2.137
+    },
+    "2023": {
+     "low": 0.139,
+     "central": 0.462,
+     "high": 1.156
+    },
+    "2024": {
+     "low": 0.139,
+     "central": 0.462,
+     "high": 1.155
+    },
+    "2025": {
+     "low": 0.212,
+     "central": 0.708,
+     "high": 1.77
+    },
+    "2026": {
+     "low": 0.155,
+     "central": 0.516,
+     "high": 1.29
+    }
+   },
+   "prewar_avg_2019_2021": 0.869,
+   "expected_no_war_per_year": {
+    "low": 0.455,
+    "central": 0.909,
+    "high": 1.364,
+    "note": "USD bn/yr (1.0, 0.5, 1.5) converted at ~1.10; per-year conversion used in change"
+   },
+   "change_vs_expected": {
+    "2022": {
+     "low": -1.272,
+     "central": 0.095,
+     "high": 0.859
+    },
+    "2023": {
+     "low": -0.371,
+     "central": 0.463,
+     "high": 1.027
+    },
+    "2024": {
+     "low": -0.371,
+     "central": 0.462,
+     "high": 1.026
+    },
+    "2025": {
+     "low": -0.974,
+     "central": 0.177,
+     "high": 0.842
+    },
+    "2026": {
+     "low": -0.768,
+     "central": 0.057,
+     "high": 0.518
+    }
+   },
+   "change_vs_expected_total_2022_2026": {
+    "low": -3.756,
+    "central": 1.254,
+    "high": 4.271
+   },
+   "change_vs_prewar_avg": {
+    "2022": 0.014,
+    "2023": 0.407,
+    "2024": 0.407,
+    "2025": 0.161,
+    "2026": 0.063
+   },
+   "change_vs_prewar_avg_total_2022_2026": 1.053,
+   "in_customs": {
+    "2019": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2020": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "change_vs_expected_ex_customs": {
+    "2022": 0.095,
+    "2023": 0.463,
+    "2024": 0.462,
+    "2025": 0.177,
+    "2026": 0.057
+   },
+   "change_vs_expected_ex_customs_total_2022_2026": 1.254,
+   "not_buyer_choice_share": {
+    "low": 0.3,
+    "central": 0.6,
+    "high": 0.8,
+    "note": "share of the fall due to Russian supply limits (war priority, sanctions on production) or pre-war trend, not the buyer's choice; label only"
+   },
+   "note": "Residual to the national total. Africa Corps deals are partly paid in mining rights and gold (outside customs). Not assigned to a country; spread by SIPRI share only if needed."
+  }
+ },
+ "national_total_usd_bn": {
+  "2019": 15.05,
+  "2020": 14.9,
+  "2021": 14.75,
+  "2022": 8.08,
+  "2023": 6.81,
+  "2024": 7.04,
+  "2025": 9.09,
+  "2026": 6.61
+ },
+ "national_total_eur_bn": {
+  "2019": 13.444,
+  "2020": 13.045,
+  "2021": 12.471,
+  "2022": 7.673,
+  "2023": 6.298,
+  "2024": 6.504,
+  "2025": 8.044,
+  "2026": 5.684
+ },
+ "official_statements_usd_bn": {
+  "2019": "~15 (FSVTS; CRS R46937: 2020 >15, roughly level with 2019)",
+  "2020": ">15 (CRS R46937 citing official data)",
+  "2021": "14.6 (Shugaev, FSVTS) / ~15 (Chemezov)",
+  "2022": "~7 (Chemezov, Nov 2024); 5.4 by late Aug, forecast 10.8 (Rosoboronexport, Aug 2022)",
+  "2023": "~6 (Chemezov, Nov 2024); contracts signed >12 (Rosoboronexport)",
+  "2024": "13.75 claimed (Defense News, Feb 2026) vs Rostec \"lower than 2023\"; Chemezov Nov 2025: exports halved vs 2022",
+  "2025": ">15 foreign-currency revenue (Putin, 30 Jan 2026); Rosoboronexport: H1 2026 contracts of 13 \"equal to all of 2025 exports\"",
+  "2026": "H1 contracts 13 (Rosoboronexport, 7 Sep 2026); order book >60-65"
+ },
+ "sources": [
+  {
+   "name": "SIPRI Fact Sheet, Trends in International Arms Transfers, 2025",
+   "url": "https://www.sipri.org/sites/default/files/2026-03/fs_2603_at_2025.pdf",
+   "date": "2026-03"
+  },
+  {
+   "name": "SIPRI Fact Sheet, Trends in International Arms Transfers, 2024",
+   "url": "https://www.sipri.org/sites/default/files/2025-03/fs_2503_at_2024.pdf",
+   "date": "2025-03"
+  },
+  {
+   "name": "SIPRI Fact Sheet, Trends in International Arms Transfers, 2023",
+   "url": "https://www.sipri.org/sites/default/files/2024-03/fs_2403_at_2023.pdf",
+   "date": "2024-03"
+  },
+  {
+   "name": "SIPRI Fact Sheet, Trends in International Arms Transfers, 2021",
+   "url": "https://www.sipri.org/sites/default/files/2022-03/fs_2203_at_2021.pdf",
+   "date": "2022-03"
+  },
+  {
+   "name": "Defense News: Russia forecasts drop in arms export revenue (Shugaev 2021 = USD 14.6bn; Mikheev 2022 YTD 5.4bn)",
+   "url": "https://www.defensenews.com/global/europe/2022/08/29/russia-forecasts-drop-in-arms-export-revenue/",
+   "date": "2022-08-29"
+  },
+  {
+   "name": "CRS R46937 Russian Arms Sales and Defense Industry",
+   "url": "https://www.everycrsreport.com/reports/R46937.html",
+   "date": "2021-10-14"
+  },
+  {
+   "name": "www1.ru: Chemezov at Financial University (2021 ~15bn, 2022 ~7bn, 2023 ~6bn, 2024 lower)",
+   "url": "https://www1.ru/en/news/2024/11/26/zakryt-svoi-potrebnosti-rossiia-snizaet-obieem-eksporta-oruziia-i-voennoi-texniki-v-2024-godu.amp.html",
+   "date": "2024-11-26"
+  },
+  {
+   "name": "The Moscow Times (ru): Chemezov at Dubai Airshow, exports halved vs 2022",
+   "url": "https://ru.themoscowtimes.com/2025/11/18/glava-rosteha-konstatiroval-obval-eksporta-rossiiskogo-oruzhiya-vdvoe-a180382",
+   "date": "2025-11-18"
+  },
+  {
+   "name": "The Moscow Times (ru): disrupted export contracts USD 5-10bn, S-400 delay to India",
+   "url": "https://ru.themoscowtimes.com/2024/08/23/rossiya-sorvala-kontrakti-napostavku-vooruzhenii-zagranitsu-namilliardi-dollarov-a140175",
+   "date": "2024-08-23"
+  },
+  {
+   "name": "Defense News: Russia claims $15 billion in 2025 arms exports (and 13.75bn claim for 2024)",
+   "url": "https://www.defensenews.com/global/europe/2026/02/02/russia-claims-15-billion-in-2025-arms-exports-with-focus-on-africa/",
+   "date": "2026-02-02"
+  },
+  {
+   "name": "Defence24: Behind Putin's 15 billion arms revenue claim",
+   "url": "https://defence24.com/other/behind-putins-15-billion-arms-revenue-claim",
+   "date": "2026-02"
+  },
+  {
+   "name": "Jamestown EDM: Rosoboronexport's international arms sales status uncertain (H1 2026 contracts USD 13bn; order book)",
+   "url": "https://jamestown.org/rosoboronexports-international-arms-sales-status-uncertain/",
+   "date": "2026-09-08"
+  },
+  {
+   "name": "Jamestown EDM: Russian arms exports collapse by 92 percent (note: its USD figures are SIPRI TIV, not money)",
+   "url": "https://jamestown.org/russian-arms-exports-collapse-by-92-percent-as-military-industrial-complex-fails/",
+   "date": "2025-01-15"
+  },
+  {
+   "name": "Sputnik via GlobalSecurity: Rosoboronexport order portfolio >USD 55bn, 2023 contracts >12bn",
+   "url": "https://www.globalsecurity.org/wmd/library/news/russia/2024/02/russia-240205-sputnik01.htm",
+   "date": "2024-02-05"
+  },
+  {
+   "name": "BNN Bloomberg: Russia says it has billions of Indian rupees it can't use (Bloomberg Apr 2023: >USD 2bn Indian arms payments stuck ~1 year)",
+   "url": "https://www.bnnbloomberg.ca/russia-says-it-has-billions-of-indian-rupees-that-it-can-t-use-1.1916440",
+   "date": "2023-05-05"
+  },
+  {
+   "name": "Kyiv Independent summarising Bloomberg: India-Russia arms shipments stalled",
+   "url": "https://kyivindependent.com/bloomberg-india-russia-arms-shipments-stalled",
+   "date": "2023-04"
+  },
+  {
+   "name": "Lok Sabha reply on defence procurement from foreign sources 2017-18 to 2021-22 (via EastMojo)",
+   "url": "https://eastmojo.com/national-news/2023/02/04/rs-1-93-lakh-crore-military-equipment-imported-between-2017-18-and-2021-22-govt/",
+   "date": "2023-02-04"
+  },
+  {
+   "name": "AP: Russia, Vietnam using energy profits (Rusvietpetro) to avoid possible US sanctions for arms deals",
+   "url": "https://www.news4jax.com/news/world/2025/09/19/ap-exclusive-russia-vietnam-using-energy-profits-to-avoid-possible-us-sanctions-for-arms-deals/",
+   "date": "2025-09-19"
+  },
+  {
+   "name": "Iran International: Leaked Russian files show Iran's EUR 6bn plan to buy 48 Su-35",
+   "url": "https://www.iranintl.com/en/202510069695",
+   "date": "2025-10-06"
+  },
+  {
+   "name": "Defense News: Russian stealth jets have arrived in North Africa (Algeria Su-57E)",
+   "url": "https://defensenews.com/global/europe/2026/02/10/russian-stealth-jets-have-arrived-in-north-africa-as-filmed-by-algerian-potato-farmer",
+   "date": "2026-02-10"
+  },
+  {
+   "name": "The Aviationist: Algeria's first Su-57E (order ~USD 2bn for 14 reported)",
+   "url": "https://theaviationist.com/2026/02/11/algerias-first-su-57e/",
+   "date": "2026-02-11"
+  },
+  {
+   "name": "UN Comtrade public preview API, HS 88/89/93/8411/8526/8710/8805/8906 and HS2, imports from Russia (reporters IND, CHN, DZA, EGY, VNM, KAZ, ARM, IDN, BGD, SRB, UZB, TUR, MMR) and Russia's own exports 2019-2021",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS",
+   "date": "2026-10-18"
+  }
+ ],
+ "customs_check": {
+  "IND": "India reported imports from Russia: HS 93 USD 0.0-22m/yr, HS 88 USD 0.5-24m, HS 89 USD 6-35m except 2020 (HS 8906 USD 346m, a vessel), HS 8411 <5m. India's capital acquisitions from Russia (S-400, frigates) are not in DGCI&S customs data. HS 99 (unspecified) USD 0.25-0.92bn/yr from Russia could hide some items: high case.",
+  "CHN": "China reported HS 8411 imports from Russia USD 12-17m (2019-21) vs Russia's reported 8411 exports to China USD 1.57-1.77bn: military engines are missing from China's data. HS 88 USD 68-154m (mostly helicopter/aircraft parts) partly civil.",
+  "DZA": "No Algerian report 2019-23 (trade_full uses Russia's mirror 2019-21 = HS 93 USD 63m in 2019, HS 8411 1-77m, and IMF 2022-23); 2024 own report includes HS 8805 USD 179m and HS 8526 USD 200m.",
+  "EGY": "HS 8526 (radar) USD 80m 2019, 36m 2020; otherwise nil.",
+  "VNM": "HS 88 USD 3-10m (parts), nothing else.",
+  "KAZ": "HS 8802 aircraft from Russia USD 61-222m/yr; assumed ~30% military.",
+  "SRB": "HS 88 USD 193m (2019), 52-61m (2020-21): partly military helicopters/parts.",
+  "TUR": "No S-400 visible in HS 93/88/8710; Turkish customs likely excludes it. High case 0.5 for 2019.",
+  "MMR": "Nothing in customs.",
+  "note": "Russia's own customs data (FCS) excludes arms exported under military-technical cooperation; only civil/dual items like HS 8411 engines appear."
+ },
+ "overlaps": "(a) trade_full.json (goods imports from Russia): arms are almost entirely outside buyers' customs data; the in_customs series gives the part that is inside (central about EUR 0.1-0.5bn/yr in total, mostly Algeria 2024, Kazakhstan, Serbia, India 2020). Subtract in_customs change from this part, or equivalently use (payments - in_customs). (b) flowback2.json / other.json military_to_russia: the opposite direction (Iran, North Korea, Belarus, China supplying Russia). Iran: if Su-35s are partly paid by drones/missiles delivered to Russia, counting both double counts that barter value (up to EUR 1-2bn); Iran's high case here assumes cash. (c) china_military.json: China to Russia, other direction; no overlap. (d) services (BaTiS/Eurostat): repair/training of Russian-made equipment could appear in partners' services imports from Russia (maintenance and repair, government goods and services n.i.e.); likely small, most partners (India, China, Algeria) are BaTiS-modelled. (e) companies_all.json: Vietnam's arms payments via Rusvietpetro are dividends forgone, not taxes; no overlap with company taxes. (f) residual.json (Russia's import gap) is about Russia's imports, not exports; no overlap.",
+ "notes": "Official Russian totals are \"foreign-currency revenue\" and include advances on new contracts; independent analysts doubt the 2024 and 2025 claims, so the national path used is well below them in 2024-2025 and the high cases reach them. Jamestown/Arbat figures of USD 3bn (2023) and <1bn (2024) are SIPRI TIV mislabelled as dollars and are not used. Most of the fall since 2022 is not the buyers' choice: Rostec and SIPRI attribute it to Russia prioritising its own army, sanctions and US pressure (CAATSA); the not_buyer_choice_share label reflects that. Egypt, Indonesia, Turkey and partly India cut orders under US pressure (buyer choice, but sanctions-driven). Rest-of-world (ROW) is not attributed to ISO3 codes."
+}

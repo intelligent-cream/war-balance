@@ -56,7 +56,17 @@ Variants:
 
 ## From parts to a total
 
-`total(parts)` in `calc()` adds middle values and combines the parts' distances to their low and high ends as **independent errors** (square root of the sum of squares). The country panel shows each part's range as a thin line in the waterfall and the total's range in the headline ("Likely range ... to ...").
+`total(parts)` in `calc()` adds middle values and combines the parts' distances to their low and high ends as errors in quadrature (square root of the sum of squares), with one exception: where the counterfactual's back-tests show the expected levels of two flows missing together, their errors are correlated (`RHO` in `site/index.html`, the median Spearman correlation of the back-test errors over the 2008, 2013 and 2016 tests, medium and large flows):
+
+| parts | correlation |
+|---|---|
+| services bought from and sold to Russia | 0.40 |
+| paid to Russia (goods) and services bought | 0.25 |
+| sales to Russia and services bought / sold | 0.20 |
+| paid to Russia and services sold | 0.15 |
+| all other pairs (e.g. goods bought vs sold: about 0) | 0 |
+
+The effect is small (Germany's range +3.1% to +7.3% → +7.4%). The country panel shows each part's range as a thin line in the waterfall and the total's range in the headline ("Likely range ... to ...").
 
 Rankings use these totals: countries whose likely range crosses zero are left out of top lists, as are economies under EUR 5bn GDP (`rankList()`, `MIN_GDP_RANK`).
 
@@ -74,7 +84,7 @@ The site marks the parts "paid to Russia", "sold to Russia" and "company taxes" 
 
 - **Russia-side shocks.** The counterfactual intervals cover about 90% of outcomes in normal periods but only 77–79% in the 2013 back-test, when Russia's own economy moved ([counterfactual.md](counterfactual.md#7-how-the-predictions-error-enters-the-ranges)).
 - **The method itself**: what counts as a shift, the 20% margin, the choice of 2024 GDP, counting gas where it is burned. These are choices, not uncertainties.
-- **Correlated errors across parts.** Totals treat parts as independent; a shared error (one deflator for several flows, one KSE report behind all company taxes) is understated.
+- **Other correlated errors across parts.** Only the measured counterfactual correlations are included; a shared source error (one KSE report behind all company taxes) is still treated as independent.
 - **Correlated errors across countries.** Moving value between countries (re-exports, hub resale, the residual gap) shifts error from one country to another; each country's range is computed alone.
 - **Unknown unknowns**: flows nobody has measured (crypto, payment agents) are not on the map ([trade.md](trade.md#gold-and-hidden-channels)).
 - **Inputs touched by the war** in the counterfactual (realised trade and GDP in 2022–2026).

@@ -49,7 +49,17 @@ Goods made in China or the EU and sold on to Russia through Armenia or the UAE s
 - **UAE 2024–2026** re-exports and gold passed on are raised to match its customs totals (`round4b.json`).
 - **The pre-war level moves the same way**: `reexports_to_RUS_baseline_2019_2021` comes out of the hub's base and into the origins'; since the counterfactual starts from 2021, the pre-war re-exports are also taken out of the hubs' 2021 values.
 
-Hubs are labelled on the map (`hub` field). Their trade keeps the 2021 level as the counterfactual ([counterfactual.md](counterfactual.md#6-which-model-is-used-for-which-flow)). **Not yet moved**: Belarus's re-exports to Russia (goods from China, Turkey and the EU inside its official exports, EUR 0.3–1.9bn a year by `round4b.json`), see [limitations.md](../limitations.md).
+Hubs are labelled on the map (`hub` field). Their trade keeps the 2021 level as the counterfactual ([counterfactual.md](counterfactual.md#6-which-model-is-used-for-which-flow)). Belarus's re-exports are moved too since round 5 (below).
+
+### Belarus (round 5)
+
+Belarus and Russia stopped publishing trade by product in 2022, so Belarus's re-exports to Russia are estimated from
+what partners report shipping to Belarus ([`belarus.json`](../../research/2026-10/gaps/belarus.json),
+[notes](../../research/2026-10/gaps/belarus-notes.md)): EU used cars in 2022–23 (German, Polish and Lithuanian car
+exports to Belarus rose from USD 0.36bn in 2021 to 2.53bn in 2023, then fell after Lithuania's 2024 ban), machinery and
+electronics from China, Türkiye and the UAE, net of what only replaced lost EU supplies. EUR 0.6 / 1.7 / 1.2 / 0.8 / 0.6bn
+in 2022–2026 against 0.25bn a year before the war, moved to the makers (China 45%, Germany 16%, Poland 15%, Lithuania
+11%, Türkiye 7%) with a 10% margin kept. Chinese car kits assembled at BelGee are processing and stay Belarusian.
 
 ## Baltic and Finnish pass-through
 
@@ -58,6 +68,11 @@ Before the war much of the Baltic states' trade with Russia was transit: Estonia
 - takes the unprocessed transit share out of the imports from Russia of Estonia, Latvia, Lithuania and Finland, before and after the war alike;
 - takes re-exports out of their sales to Russia (Lithuania 0.85, Estonia 0.39, Latvia 0.45, Finland 0.10) and gives them to the EU members that made the goods, by their own sales to Russia; a 7% margin stays;
 - leaves crude refined in Lithuania and Finland (real processing).
+
+The transit share is **not** added to the final buyers. Those buyers already record the goods: the EU, the US and most
+other countries record imports by country of origin, so Russian diesel shipped to the Netherlands through Estonia is
+already in Dutch imports from Russia. Adding it again would count it twice (checked in round 5; the audit's
+recommendation to "give it to the final buyers" is met by their own customs records).
 
 ## Residual gap
 
@@ -83,6 +98,16 @@ Russia's own customs record more imports than its partners report selling: EUR 2
 ## Freight: CIF to FOB
 
 Import values include freight and insurance (CIF). That part is paid to shippers and insurers, and is counted for them in [shipping](services-shipping-companies.md#shipping) and services, not for Russia. [build_data.py `remove_freight()`](../../pipeline/build_data.py) takes `CIF_SHARE = 3.5% / 5.5% / 7.5%` (low/middle/high) out of every country's payments to Russia, yearly values and baseline alike, except for the share priced at the Russian border (pipeline gas and crude, electricity, overland trade; `BORDER_PRICED` from audit 2, question 7).
+
+## 2026 refresh (round 5)
+
+January–August 2026 trade was refreshed in October 2026 for 32 economies from monthly UN Comtrade data and national
+statistics (Kazakhstan, Uzbekistan, Armenia, Belarus), replacing the 2025-rate estimates
+([`refresh_2026.json`](../../research/2026-10/gaps/refresh_2026.json), [notes](../../research/2026-10/gaps/refresh_2026-notes.md)).
+The largest change: India's imports from Russia, EUR 48bn instead of 38bn (India −5.1% → −5.4% of GDP). Kazakhstan's
+IMF monthly series were a flat fill-in and are replaced with official figures. Not yet published: Taiwan, UAE exports,
+Turkmenistan, Syria, Iran. Aid stays on Kiel release 31 (8 October 2026, data to 31 August 2026), the latest; the map
+counts Kiel **allocations**, not pledges.
 
 ## Smaller corrections
 

@@ -1,0 +1,1638 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "Price levels of what Türkiye buys from Russia (crude, oil products, pipeline gas, LNG, coal, other fossil, non-fuel goods), 2018-2026, built so that crude and gas do not rest on the partner-hidden Turkish customs lines. Drop-in replacement for prices.json countries.TUR (same fields) plus a gas_prices.json-style pipeline series.",
+  "units": "index = level / own 2018-2021 average (= 1); levels EUR/t (crude CIF Turkey, products, coal) or EUR/MWh GCV (gas); paid, at_base_prices, windfall in EUR bn nominal; 2026 = January-August, not annualised; USD at ECB yearly averages 2018 1.181, 2019 1.1195, 2020 1.142, 2021 1.183, 2022 1.053, 2023 1.081, 2024 1.082, 2025 1.13, 2026 1.16.",
+  "method": "Crude: EPDK crude imports from Russia (t) x (Russian MinFin Urals + Black Sea freight). Pipeline gas: EPDK volumes from Russia split into long-term and spot pipeline gas; long-term priced 70% TTF / 30% oil formula from 2022 (Gazprom-BOTAS contracts renegotiated in 2021 to include hub indexation: OIES, CGEP), oil formula = 0.418 x 9-month Brent lagged 1 month x Turkish factor 0.85; spot pipeline gas at 95% of TTF; central = mean of this contract model and the gas value implied by Turkish customs (chapter 27 from Russia, partner visible, minus visible headings, minus crude and LNG). Base 2018-2021 from the same two sources plus the reported 2020 TurkStream price. LNG: EPDK Russian spot LNG x CREA price, European Russian-LNG base. Products and coal: partner-visible Turkish customs unit values, kept from prices.json and checked against CREA. Non-fuel goods: kept from prices.json.",
+  "review": "Not yet reviewed by a person."
+ },
+ "countries": {
+  "TUR": {
+   "name": "Türkiye",
+   "index": {
+    "crude": {
+     "2018": {
+      "low": 1.089,
+      "central": 1.121,
+      "high": 1.136
+     },
+     "2019": {
+      "low": 1.044,
+      "central": 1.076,
+      "high": 1.09
+     },
+     "2020": {
+      "low": 0.675,
+      "central": 0.699,
+      "high": 0.711
+     },
+     "2021": {
+      "low": 1.072,
+      "central": 1.104,
+      "high": 1.119
+     },
+     "2022": {
+      "low": 1.371,
+      "central": 1.406,
+      "high": 1.544
+     },
+     "2023": {
+      "low": 1.046,
+      "central": 1.125,
+      "high": 1.245
+     },
+     "2024": {
+      "low": 1.132,
+      "central": 1.197,
+      "high": 1.34
+     },
+     "2025": {
+      "low": 0.904,
+      "central": 0.945,
+      "high": 1.052
+     },
+     "2026": {
+      "low": 1.083,
+      "central": 1.165,
+      "high": 1.303
+     }
+    },
+    "products": {
+     "2018": {
+      "low": 1.075,
+      "central": 1.126,
+      "high": 1.176
+     },
+     "2019": {
+      "low": 1.03,
+      "central": 1.078,
+      "high": 1.126
+     },
+     "2020": {
+      "low": 0.687,
+      "central": 0.719,
+      "high": 0.751
+     },
+     "2021": {
+      "low": 1.029,
+      "central": 1.077,
+      "high": 1.126
+     },
+     "2022": {
+      "low": 1.843,
+      "central": 1.929,
+      "high": 2.016
+     },
+     "2023": {
+      "low": 1.453,
+      "central": 1.521,
+      "high": 1.589
+     },
+     "2024": {
+      "low": 1.405,
+      "central": 1.471,
+      "high": 1.536
+     },
+     "2025": {
+      "low": 1.212,
+      "central": 1.268,
+      "high": 1.325
+     },
+     "2026": {
+      "low": 1.407,
+      "central": 1.652,
+      "high": 1.898
+     }
+    },
+    "coal": {
+     "2018": {
+      "low": 1.126,
+      "central": 1.178,
+      "high": 1.231
+     },
+     "2019": {
+      "low": 0.947,
+      "central": 0.992,
+      "high": 1.036
+     },
+     "2020": {
+      "low": 0.753,
+      "central": 0.788,
+      "high": 0.823
+     },
+     "2021": {
+      "low": 0.996,
+      "central": 1.042,
+      "high": 1.089
+     },
+     "2022": {
+      "low": 2.183,
+      "central": 2.285,
+      "high": 2.388
+     },
+     "2023": {
+      "low": 1.319,
+      "central": 1.381,
+      "high": 1.443
+     },
+     "2024": {
+      "low": 1.119,
+      "central": 1.171,
+      "high": 1.224
+     },
+     "2025": {
+      "low": 0.965,
+      "central": 1.01,
+      "high": 1.055
+     },
+     "2026": {
+      "low": 1.066,
+      "central": 1.157,
+      "high": 1.248
+     }
+    },
+    "lng": {
+     "2022": {
+      "low": 2.233,
+      "central": 3.064,
+      "high": 3.924
+     },
+     "2023": {
+      "low": 1.811,
+      "central": 2.485,
+      "high": 3.184
+     },
+     "2024": {
+      "low": 1.377,
+      "central": 1.889,
+      "high": 2.421
+     }
+    },
+    "pipeline_gas": {
+     "2018": {
+      "low": 0.784,
+      "central": 1.003,
+      "high": 1.198
+     },
+     "2019": {
+      "low": 0.903,
+      "central": 1.132,
+      "high": 1.446
+     },
+     "2020": {
+      "low": 0.72,
+      "central": 0.947,
+      "high": 1.061
+     },
+     "2021": {
+      "low": 0.731,
+      "central": 0.918,
+      "high": 1.051
+     },
+     "2022": {
+      "low": 3.63,
+      "central": 5.332,
+      "high": 6.654
+     },
+     "2023": {
+      "low": 1.556,
+      "central": 2.031,
+      "high": 2.304
+     },
+     "2024": {
+      "low": 1.386,
+      "central": 1.881,
+      "high": 2.277
+     },
+     "2025": {
+      "low": 1.371,
+      "central": 1.944,
+      "high": 2.324
+     },
+     "2026": {
+      "low": 1.477,
+      "central": 2.125,
+      "high": 2.595
+     }
+    },
+    "fossil_all": {
+     "2018": {
+      "low": 0.938,
+      "central": 1.077,
+      "high": 1.188
+     },
+     "2019": {
+      "low": 0.992,
+      "central": 1.083,
+      "high": 1.17
+     },
+     "2020": {
+      "low": 0.708,
+      "central": 0.807,
+      "high": 0.86
+     },
+     "2021": {
+      "low": 0.891,
+      "central": 1.01,
+      "high": 1.09
+     },
+     "2022": {
+      "low": 2.405,
+      "central": 2.801,
+      "high": 3.129
+     },
+     "2023": {
+      "low": 1.376,
+      "central": 1.533,
+      "high": 1.654
+     },
+     "2024": {
+      "low": 1.289,
+      "central": 1.437,
+      "high": 1.581
+     },
+     "2025": {
+      "low": 1.138,
+      "central": 1.278,
+      "high": 1.397
+     },
+     "2026": {
+      "low": 1.324,
+      "central": 1.589,
+      "high": 1.824
+     }
+    },
+    "non_fuel_goods": {
+     "2018": {
+      "low": 0.927,
+      "central": 0.95,
+      "high": 0.972
+     },
+     "2019": {
+      "low": 0.905,
+      "central": 0.93,
+      "high": 0.955
+     },
+     "2020": {
+      "low": 0.871,
+      "central": 0.893,
+      "high": 0.915
+     },
+     "2021": {
+      "low": 1.189,
+      "central": 1.229,
+      "high": 1.269
+     },
+     "2022": {
+      "low": 1.398,
+      "central": 1.473,
+      "high": 1.549
+     },
+     "2023": {
+      "low": 1.09,
+      "central": 1.218,
+      "high": 1.346
+     },
+     "2024": {
+      "low": 1.03,
+      "central": 1.149,
+      "high": 1.267
+     },
+     "2025": {
+      "low": 1.057,
+      "central": 1.11,
+      "high": 1.164
+     },
+     "2026": {
+      "low": 1.166,
+      "central": 1.228,
+      "high": 1.29
+     }
+    }
+   },
+   "levels": {
+    "crude": {
+     "2018": {
+      "low": 428.8,
+      "central": 440.7,
+      "high": 444.7
+     },
+     "2019": {
+      "low": 411.0,
+      "central": 422.7,
+      "high": 426.7
+     },
+     "2020": {
+      "low": 265.8,
+      "central": 274.7,
+      "high": 278.7
+     },
+     "2021": {
+      "low": 422.0,
+      "central": 433.9,
+      "high": 437.9
+     },
+     "2022": {
+      "low": 540.0,
+      "central": 552.5,
+      "high": 606.625
+     },
+     "2023": {
+      "low": 411.2,
+      "central": 442.3,
+      "high": 489.095
+     },
+     "2024": {
+      "low": 445.3,
+      "central": 470.6,
+      "high": 526.24
+     },
+     "2025": {
+      "low": 355.8,
+      "central": 371.3,
+      "high": 413.195
+     },
+     "2026": {
+      "low": 426.1,
+      "central": 458.0,
+      "high": 511.75
+     }
+    },
+    "pipeline_gas": {
+     "2018": {
+      "low": 16.377,
+      "central": 18.719,
+      "high": 21.947
+     },
+     "2019": {
+      "low": 19.139,
+      "central": 21.127,
+      "high": 26.676
+     },
+     "2020": {
+      "low": 14.869,
+      "central": 17.665,
+      "high": 19.114
+     },
+     "2021": {
+      "low": 15.479,
+      "central": 17.122,
+      "high": 19.097
+     },
+     "2022": {
+      "low": 73.2,
+      "central": 99.482,
+      "high": 122.509
+     },
+     "2023": {
+      "low": 32.199,
+      "central": 37.893,
+      "high": 41.714
+     },
+     "2024": {
+      "low": 28.325,
+      "central": 35.101,
+      "high": 41.801
+     },
+     "2025": {
+      "low": 27.77,
+      "central": 36.264,
+      "high": 42.591
+     },
+     "2026": {
+      "low": 29.862,
+      "central": 39.647,
+      "high": 47.678
+     }
+    },
+    "lng": {
+     "2022": {
+      "low": 42.8,
+      "central": 52.4,
+      "high": 62.7
+     },
+     "2023": {
+      "low": 34.7,
+      "central": 42.5,
+      "high": 50.9
+     },
+     "2024": {
+      "low": 26.4,
+      "central": 32.3,
+      "high": 38.7
+     }
+    },
+    "products": {
+     "2018": {
+      "low": 479.5,
+      "central": 499.5,
+      "high": 519.5
+     },
+     "2019": {
+      "low": 459.2,
+      "central": 478.3,
+      "high": 497.5
+     },
+     "2020": {
+      "low": 306.1,
+      "central": 318.9,
+      "high": 331.6
+     },
+     "2021": {
+      "low": 458.9,
+      "central": 478.0,
+      "high": 497.1
+     },
+     "2022": {
+      "low": 821.8,
+      "central": 856.1,
+      "high": 890.3
+     },
+     "2023": {
+      "low": 647.6,
+      "central": 674.6,
+      "high": 701.6
+     },
+     "2024": {
+      "low": 626.4,
+      "central": 652.5,
+      "high": 678.6
+     },
+     "2025": {
+      "low": 540.3,
+      "central": 562.8,
+      "high": 585.3
+     },
+     "2026": {
+      "low": 625.2,
+      "central": 733.1,
+      "high": 840.9
+     }
+    },
+    "coal": {
+     "2018": {
+      "low": 93.1,
+      "central": 97.0,
+      "high": 100.9
+     },
+     "2019": {
+      "low": 78.4,
+      "central": 81.7,
+      "high": 84.9
+     },
+     "2020": {
+      "low": 62.3,
+      "central": 64.9,
+      "high": 67.5
+     },
+     "2021": {
+      "low": 82.4,
+      "central": 85.8,
+      "high": 89.2
+     },
+     "2022": {
+      "low": 180.7,
+      "central": 188.2,
+      "high": 195.7
+     },
+     "2023": {
+      "low": 109.2,
+      "central": 113.7,
+      "high": 118.3
+     },
+     "2024": {
+      "low": 92.6,
+      "central": 96.5,
+      "high": 100.3
+     },
+     "2025": {
+      "low": 79.8,
+      "central": 83.2,
+      "high": 86.5
+     },
+     "2026": {
+      "low": 88.1,
+      "central": 95.3,
+      "high": 102.5
+     }
+    }
+   },
+   "base_2018_2021": {
+    "crude": {
+     "value": 393.0,
+     "years": [
+      "2018",
+      "2019",
+      "2020",
+      "2021"
+     ],
+     "err": 0.0099,
+     "unit": "EUR/t CIF Turkey"
+    },
+    "pipeline_gas": {
+     "value": 18.66,
+     "low": 17.0,
+     "high": 22.0,
+     "years": [
+      "2018",
+      "2019",
+      "2020",
+      "2021"
+     ],
+     "unit": "EUR/MWh GCV"
+    },
+    "lng": {
+     "value": 17.1,
+     "years": [],
+     "err": 0.2,
+     "unit": "EUR/MWh (no Turkish purchases of Russian LNG before 2022; European Russian-LNG base, as prices.json)"
+    },
+    "products": {
+     "value": 443.68,
+     "years": [
+      "2018",
+      "2019",
+      "2020",
+      "2021"
+     ],
+     "err": 0.02,
+     "unit": "EUR/t"
+    },
+    "coal": {
+     "value": 82.34,
+     "years": [
+      "2018",
+      "2019",
+      "2020",
+      "2021"
+     ],
+     "err": 0.02,
+     "unit": "EUR/t"
+    }
+   },
+   "certainty": {
+    "crude": "B",
+    "products": "B",
+    "coal": "B",
+    "lng": "C",
+    "pipeline_gas": "C",
+    "fossil_all": "B"
+   },
+   "mix_2018_2021": {
+    "crude": 0.1156,
+    "products": 0.1703,
+    "coal": 0.0567,
+    "lng": 0.0,
+    "pipeline_gas": 0.1979,
+    "other_fossil": 0.007,
+    "non_fuel_goods": 0.4525,
+    "imports_from_rus_2018_2021_eur_bn": 79.97,
+    "non_fuel_detail": {
+     "iron_steel": 0.3588,
+     "wheat": 0.1427,
+     "aluminium": 0.0962,
+     "copper": 0.0568,
+     "sunflower_oil": 0.0522,
+     "maize": 0.0183,
+     "gold": 0.0146,
+     "iron_ore": 0.0145,
+     "fertiliser": 0.0123,
+     "barley": 0.0121,
+     "wood": 0.0048,
+     "nickel": 0.0024,
+     "pulp": 0.0013,
+     "rapeseed": 0.0003,
+     "fish": 0.0002,
+     "uranium_radioactive": 0.0001,
+     "other_goods": 0.2125
+    }
+   },
+   "paid": {
+    "2018": {
+     "low": 18.753,
+     "central": 19.23,
+     "high": 19.707
+    },
+    "2019": {
+     "low": 19.332,
+     "central": 20.648,
+     "high": 21.964
+    },
+    "2020": {
+     "low": 15.132,
+     "central": 15.61,
+     "high": 16.088
+    },
+    "2021": {
+     "low": 23.541,
+     "central": 24.483,
+     "high": 25.426
+    },
+    "2022": {
+     "low": 55.239,
+     "central": 56.236,
+     "high": 57.232
+    },
+    "2023": {
+     "low": 41.235,
+     "central": 42.111,
+     "high": 42.987
+    },
+    "2024": {
+     "low": 39.305,
+     "central": 40.056,
+     "high": 40.806
+    },
+    "2025": {
+     "low": 36.069,
+     "central": 36.775,
+     "high": 37.481
+    },
+    "2026": {
+     "low": 20.941,
+     "central": 23.183,
+     "high": 25.425
+    }
+   },
+   "at_base_prices": {
+    "2018": {
+     "low": 17.998,
+     "central": 18.827,
+     "high": 19.657
+    },
+    "2019": {
+     "low": 18.897,
+     "central": 20.226,
+     "high": 21.556
+    },
+    "2020": {
+     "low": 17.585,
+     "central": 18.353,
+     "high": 19.122
+    },
+    "2021": {
+     "low": 20.933,
+     "central": 22.051,
+     "high": 23.17
+    },
+    "2022": {
+     "low": 24.398,
+     "central": 25.286,
+     "high": 26.174
+    },
+    "2023": {
+     "low": 28.94,
+     "central": 29.891,
+     "high": 30.841
+    },
+    "2024": {
+     "low": 28.89,
+     "central": 29.771,
+     "high": 30.652
+    },
+    "2025": {
+     "low": 29.199,
+     "central": 30.097,
+     "high": 30.996
+    },
+    "2026": {
+     "low": 13.968,
+     "central": 15.682,
+     "high": 17.395
+    }
+   },
+   "windfall": {
+    "2018": {
+     "low": -0.613,
+     "central": 0.403,
+     "high": 1.419
+    },
+    "2019": {
+     "low": -0.427,
+     "central": 0.422,
+     "high": 1.27
+    },
+    "2020": {
+     "low": -3.391,
+     "central": -2.743,
+     "high": -2.095
+    },
+    "2021": {
+     "low": 1.47,
+     "central": 2.432,
+     "high": 3.394
+    },
+    "2022": {
+     "low": 25.22,
+     "central": 30.95,
+     "high": 36.679
+    },
+    "2023": {
+     "low": 10.211,
+     "central": 12.221,
+     "high": 14.23
+    },
+    "2024": {
+     "low": 8.144,
+     "central": 10.285,
+     "high": 12.426
+    },
+    "2025": {
+     "low": 4.751,
+     "central": 6.678,
+     "high": 8.604
+    },
+    "2026": {
+     "low": 5.697,
+     "central": 7.501,
+     "high": 9.305
+    }
+   },
+   "windfall_fuel_only": {
+    "2018": {
+     "low": -0.17,
+     "central": 0.815,
+     "high": 1.8
+    },
+    "2019": {
+     "low": 0.184,
+     "central": 0.996,
+     "high": 1.807
+    },
+    "2020": {
+     "low": -2.326,
+     "central": -1.744,
+     "high": -1.162
+    },
+    "2021": {
+     "low": -0.77,
+     "central": 0.121,
+     "high": 1.013
+    },
+    "2022": {
+     "low": 20.077,
+     "central": 25.752,
+     "high": 31.426
+    },
+    "2023": {
+     "low": 8.309,
+     "central": 9.654,
+     "high": 10.999
+    },
+    "2024": {
+     "low": 7.044,
+     "central": 8.873,
+     "high": 10.701
+    },
+    "2025": {
+     "low": 3.72,
+     "central": 5.575,
+     "high": 7.43
+    },
+    "2026": {
+     "low": 4.655,
+     "central": 6.407,
+     "high": 8.158
+    }
+   },
+   "windfall_2022_2026": {
+    "low": 54.023,
+    "central": 67.635,
+    "high": 81.244
+   },
+   "windfall_parts": {
+    "crude": {
+     "2018": {
+      "low": 0.0505,
+      "central": 0.0737,
+      "high": 0.0968,
+      "paid": 0.6806
+     },
+     "2019": {
+      "low": 0.2135,
+      "central": 0.3512,
+      "high": 0.4889,
+      "paid": 4.999
+     },
+     "2020": {
+      "low": -0.4371,
+      "central": -0.3475,
+      "high": -0.2578,
+      "paid": 0.8068
+     },
+     "2021": {
+      "low": 0.1732,
+      "central": 0.2601,
+      "high": 0.3471,
+      "paid": 2.7598
+     },
+     "2022": {
+      "low": 1.5045,
+      "central": 1.9142,
+      "high": 2.3239,
+      "paid": 6.6306
+     },
+     "2023": {
+      "low": 0.1084,
+      "central": 0.5279,
+      "high": 0.9473,
+      "paid": 4.7357
+     },
+     "2024": {
+      "low": 0.6241,
+      "central": 1.3149,
+      "high": 2.0056,
+      "paid": 7.9738
+     },
+     "2025": {
+      "low": -0.7725,
+      "central": -0.3305,
+      "high": 0.1116,
+      "paid": 5.6545
+     },
+     "2026": {
+      "low": 0.1303,
+      "central": 0.4055,
+      "high": 0.6806,
+      "paid": 2.857
+     }
+    },
+    "products": {
+     "2018": {
+      "low": 0.316,
+      "central": 0.5218,
+      "high": 0.7275,
+      "paid": 4.663
+     },
+     "2019": {
+      "low": 0.0976,
+      "central": 0.2489,
+      "high": 0.4002,
+      "paid": 3.4394
+     },
+     "2020": {
+      "low": -1.0458,
+      "central": -0.9251,
+      "high": -0.8044,
+      "paid": 2.3671
+     },
+     "2021": {
+      "low": 0.0851,
+      "central": 0.2254,
+      "high": 0.3657,
+      "paid": 3.1522
+     },
+     "2022": {
+      "low": 2.9807,
+      "central": 3.2933,
+      "high": 3.6059,
+      "paid": 6.8383
+     },
+     "2023": {
+      "low": 3.2405,
+      "central": 3.7214,
+      "high": 4.2023,
+      "paid": 10.8641
+     },
+     "2024": {
+      "low": 2.8997,
+      "central": 3.361,
+      "high": 3.8223,
+      "paid": 10.4969
+     },
+     "2025": {
+      "low": 1.4619,
+      "central": 1.8425,
+      "high": 2.223,
+      "paid": 8.7174
+     },
+     "2026": {
+      "low": 1.7801,
+      "central": 2.9833,
+      "high": 4.1865,
+      "paid": 7.5589
+     }
+    },
+    "coal": {
+     "2018": {
+      "low": 0.1314,
+      "central": 0.185,
+      "high": 0.2385,
+      "paid": 1.224
+     },
+     "2019": {
+      "low": -0.0573,
+      "central": -0.0087,
+      "high": 0.0399,
+      "paid": 1.0816
+     },
+     "2020": {
+      "low": -0.3189,
+      "central": -0.2704,
+      "high": -0.2218,
+      "paid": 1.005
+     },
+     "2021": {
+      "low": -0.0049,
+      "central": 0.0492,
+      "high": 0.1032,
+      "paid": 1.2201
+     },
+     "2022": {
+      "low": 1.9078,
+      "central": 2.0812,
+      "high": 2.2546,
+      "paid": 3.7008
+     },
+     "2023": {
+      "low": 0.734,
+      "central": 0.8738,
+      "high": 1.0135,
+      "paid": 3.1671
+     },
+     "2024": {
+      "low": 0.2403,
+      "central": 0.344,
+      "high": 0.4476,
+      "paid": 2.3555
+     },
+     "2025": {
+      "low": -0.0925,
+      "central": 0.0265,
+      "high": 0.1455,
+      "paid": 2.6765
+     },
+     "2026": {
+      "low": 0.0804,
+      "central": 0.198,
+      "high": 0.3156,
+      "paid": 1.4591
+     }
+    },
+    "lng": {
+     "2022": {
+      "low": 0.0501,
+      "central": 0.0719,
+      "high": 0.0936,
+      "paid": 0.1067
+     },
+     "2023": {
+      "low": 0.1376,
+      "central": 0.2117,
+      "high": 0.2858,
+      "paid": 0.3542
+     },
+     "2024": {
+      "low": 0.0426,
+      "central": 0.0797,
+      "high": 0.1168,
+      "paid": 0.1694
+     }
+    },
+    "pipeline_gas": {
+     "2018": {
+      "low": -0.9464,
+      "central": 0.0152,
+      "high": 0.9767,
+      "paid": 4.6689
+     },
+     "2019": {
+      "low": -0.388,
+      "central": 0.3958,
+      "high": 1.1797,
+      "paid": 3.3871
+     },
+     "2020": {
+      "low": -0.7294,
+      "central": -0.1696,
+      "high": 0.3902,
+      "paid": 3.015
+     },
+     "2021": {
+      "low": -1.3016,
+      "central": -0.4269,
+      "high": 0.4478,
+      "paid": 4.7586
+     },
+     "2022": {
+      "low": 12.5839,
+      "central": 18.2321,
+      "high": 23.8804,
+      "paid": 22.4411
+     },
+     "2023": {
+      "low": 2.9969,
+      "central": 4.1702,
+      "high": 5.3435,
+      "paid": 8.2153
+     },
+     "2024": {
+      "low": 2.031,
+      "central": 3.6559,
+      "high": 5.2809,
+      "paid": 7.8044
+     },
+     "2025": {
+      "low": 2.1738,
+      "central": 3.9304,
+      "high": 5.6869,
+      "paid": 8.0956
+     },
+     "2026": {
+      "low": 1.452,
+      "central": 2.6882,
+      "high": 3.9244,
+      "paid": 5.0779
+     }
+    },
+    "other_fossil": {
+     "2018": {
+      "low": 0.0039,
+      "central": 0.019,
+      "high": 0.0341,
+      "paid": 0.1698
+     },
+     "2019": {
+      "low": -0.0024,
+      "central": 0.0084,
+      "high": 0.0191,
+      "paid": 0.1155
+     },
+     "2020": {
+      "low": -0.043,
+      "central": -0.0316,
+      "high": -0.0203,
+      "paid": 0.081
+     },
+     "2021": {
+      "low": -0.0041,
+      "central": 0.0137,
+      "high": 0.0316,
+      "paid": 0.1921
+     },
+     "2022": {
+      "low": 0.14,
+      "central": 0.1589,
+      "high": 0.1777,
+      "paid": 0.3299
+     },
+     "2023": {
+      "low": 0.1196,
+      "central": 0.1492,
+      "high": 0.1788,
+      "paid": 0.4357
+     },
+     "2024": {
+      "low": 0.0916,
+      "central": 0.1171,
+      "high": 0.1427,
+      "paid": 0.3658
+     },
+     "2025": {
+      "low": 0.0659,
+      "central": 0.1058,
+      "high": 0.1456,
+      "paid": 0.5004
+     },
+     "2026": {
+      "low": 0.0741,
+      "central": 0.1317,
+      "high": 0.1892,
+      "paid": 0.3336
+     }
+    },
+    "non_fuel_goods": {
+     "2018": {
+      "low": -0.6597,
+      "central": -0.4118,
+      "high": -0.1639,
+      "paid": 7.8237
+     },
+     "2019": {
+      "low": -0.8216,
+      "central": -0.574,
+      "high": -0.3263,
+      "paid": 7.6255
+     },
+     "2020": {
+      "low": -1.2832,
+      "central": -0.9988,
+      "high": -0.7143,
+      "paid": 8.3355
+     },
+     "2021": {
+      "low": 1.9508,
+      "central": 2.3106,
+      "high": 2.6704,
+      "paid": 12.4005
+     },
+     "2022": {
+      "low": 4.4053,
+      "central": 5.1983,
+      "high": 5.9914,
+      "paid": 16.1885
+     },
+     "2023": {
+      "low": 1.0742,
+      "central": 2.5664,
+      "high": 4.0587,
+      "paid": 14.339
+     },
+     "2024": {
+      "low": 0.2984,
+      "central": 1.4122,
+      "high": 2.5259,
+      "paid": 10.8898
+     },
+     "2025": {
+      "low": 0.5836,
+      "central": 1.103,
+      "high": 1.6225,
+      "paid": 11.1307
+     },
+     "2026": {
+      "low": 0.6636,
+      "central": 1.0948,
+      "high": 1.526,
+      "paid": 5.8966
+     }
+    }
+   },
+   "fuel_share_year": {
+    "2018": 0.5932,
+    "2019": 0.6307,
+    "2020": 0.466,
+    "2021": 0.4935,
+    "2022": 0.7121,
+    "2023": 0.6595,
+    "2024": 0.7281,
+    "2025": 0.6973,
+    "2026": 0.7457
+   },
+   "basis": {
+    "crude": {
+     "2018": "Russian export customs to Turkey (volume, FOB) for 2018-2020 volumes; level = MinFin Urals + Black Sea freight",
+     "2019": "Russian export customs to Turkey (volume, FOB) for 2018-2020 volumes; level = MinFin Urals + Black Sea freight",
+     "2020": "Russian export customs to Turkey (volume, FOB) for 2018-2020 volumes; level = MinFin Urals + Black Sea freight",
+     "2021": "CREA tonnes; level = MinFin Urals + freight",
+     "2022": "EPDK crude imports from Russia (t); level = MinFin Urals + Black Sea freight",
+     "2023": "EPDK crude imports from Russia (t); level = MinFin Urals + Black Sea freight",
+     "2024": "EPDK crude imports from Russia (t); level = MinFin Urals + Black Sea freight",
+     "2025": "EPDK crude imports from Russia (t); level = MinFin Urals + Black Sea freight",
+     "2026": "CREA tonnes; level = MinFin Urals + freight"
+    },
+    "pipeline_gas": {
+     "2018": "mean of customs residual and oil formula x Turkish factor 0.85",
+     "2019": "oil formula x Turkish factor 0.85 (customs residual 31 EUR/MWh not used: Russian crude by origin exceeds Russia's own export record)",
+     "2020": "mean of customs residual and oil formula x Turkish factor 0.85 and the reported 2020 TurkStream price (USD 225-230/1000 m3)",
+     "2021": "mean of customs residual and oil formula x Turkish factor 0.85",
+     "2022": "mean of contract model (EPDK long-term/spot volumes; 70% TTF + 30% oil formula on long-term, spot at 95% of TTF) and customs residual",
+     "2023": "mean of contract model (EPDK long-term/spot volumes; 70% TTF + 30% oil formula on long-term, spot at 95% of TTF) and customs residual",
+     "2024": "mean of contract model (EPDK long-term/spot volumes; 70% TTF + 30% oil formula on long-term, spot at 95% of TTF) and customs residual",
+     "2025": "mean of contract model (EPDK long-term/spot volumes; 70% TTF + 30% oil formula on long-term, spot at 95% of TTF) and customs residual",
+     "2026": "contract model only (no customs yet): 2025 contract structure, TTF and Brent Jan-Aug 2026; contracts extended for 2026 on undisclosed terms"
+    },
+    "lng": {
+     "2022": "EPDK spot LNG volume from Russia x CREA modelled price for Turkish cargoes",
+     "2023": "EPDK spot LNG volume from Russia x CREA modelled price for Turkish cargoes",
+     "2024": "EPDK spot LNG volume from Russia x CREA modelled price for Turkish cargoes"
+    },
+    "products": {
+     "2018": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2019": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2020": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2021": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2022": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2023": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2024": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2025": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2026": "benchmark x own post-war ratio (partner visible in Turkish customs; kept from prices.json)"
+    },
+    "coal": {
+     "2018": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2019": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2020": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2021": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2022": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2023": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2024": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2025": "customs: Comtrade (partner visible in Turkish customs; kept from prices.json)",
+     "2026": "benchmark x own post-war ratio (partner visible in Turkish customs; kept from prices.json)"
+    }
+   },
+   "checks_gas_eur_mwh": {
+    "2022": {
+     "model": 101.0,
+     "residual": 97.9,
+     "ttf": 122.5,
+     "oil_formula_turkey": 29.4
+    },
+    "2023": {
+     "model": 37.6,
+     "residual": 38.2,
+     "ttf": 40.7,
+     "oil_formula_turkey": 29.4
+    },
+    "2024": {
+     "model": 32.3,
+     "residual": 37.9,
+     "ttf": 34.4,
+     "oil_formula_turkey": 27.1
+    },
+    "2025": {
+     "model": 33.0,
+     "residual": 39.5,
+     "ttf": 36.3,
+     "oil_formula_turkey": 23.8
+    },
+    "2026": {
+     "model": 39.6,
+     "residual": null,
+     "ttf": 45.4,
+     "oil_formula_turkey": 22.1
+    }
+   },
+   "customs_residual_check": {
+    "2018": {
+     "turkish_customs_hs27_from_russia_usd_bn": 13.471,
+     "visible_headings_usd_bn": 7.153,
+     "hidden_residual_eur_bn": 5.35,
+     "crude_plus_gas_plus_lng_this_file_eur_bn": 5.35,
+     "ratio": 1.0
+    },
+    "2019": {
+     "turkish_customs_hs27_from_russia_usd_bn": 14.579,
+     "visible_headings_usd_bn": 5.191,
+     "hidden_residual_eur_bn": 8.386,
+     "crude_plus_gas_plus_lng_this_file_eur_bn": 8.386,
+     "ratio": 1.0
+    },
+    "2020": {
+     "turkish_customs_hs27_from_russia_usd_bn": 8.308,
+     "visible_headings_usd_bn": 3.944,
+     "hidden_residual_eur_bn": 3.822,
+     "crude_plus_gas_plus_lng_this_file_eur_bn": 3.822,
+     "ratio": 1.0
+    },
+    "2021": {
+     "turkish_customs_hs27_from_russia_usd_bn": 14.293,
+     "visible_headings_usd_bn": 5.399,
+     "hidden_residual_eur_bn": 7.518,
+     "crude_plus_gas_plus_lng_this_file_eur_bn": 7.518,
+     "ratio": 1.0
+    },
+    "2022": {
+     "turkish_customs_hs27_from_russia_usd_bn": 41.802,
+     "visible_headings_usd_bn": 11.445,
+     "hidden_residual_eur_bn": 28.828,
+     "crude_plus_gas_plus_lng_this_file_eur_bn": 29.178,
+     "ratio": 1.012
+    },
+    "2023": {
+     "turkish_customs_hs27_from_russia_usd_bn": 30.095,
+     "visible_headings_usd_bn": 15.642,
+     "hidden_residual_eur_bn": 13.37,
+     "crude_plus_gas_plus_lng_this_file_eur_bn": 13.305,
+     "ratio": 0.995
+    },
+    "2024": {
+     "turkish_customs_hs27_from_russia_usd_bn": 32.231,
+     "visible_headings_usd_bn": 14.307,
+     "hidden_residual_eur_bn": 16.566,
+     "crude_plus_gas_plus_lng_this_file_eur_bn": 15.948,
+     "ratio": 0.963
+    },
+    "2025": {
+     "turkish_customs_hs27_from_russia_usd_bn": 29.796,
+     "visible_headings_usd_bn": 13.44,
+     "hidden_residual_eur_bn": 14.474,
+     "crude_plus_gas_plus_lng_this_file_eur_bn": 13.75,
+     "ratio": 0.95
+    }
+   },
+   "note": "",
+   "builder_impact_estimate": {
+    "central": {
+     "pidx_new": [
+      1.1092,
+      2.224,
+      1.4088,
+      1.3455,
+      1.2219,
+      1.4784
+     ],
+     "pidx_now": [
+      1.0666,
+      1.5401,
+      1.3082,
+      1.2677,
+      1.1652,
+      1.2892
+     ],
+     "windfall_new": [
+      0.0,
+      23.31,
+      8.92,
+      8.305,
+      5.377,
+      6.16
+     ],
+     "windfall_now": [
+      0.0,
+      14.008,
+      6.093,
+      5.086,
+      2.174,
+      3.087
+     ]
+    },
+    "low": {
+     "pidx_new": [
+      1.026,
+      1.992,
+      1.2632,
+      1.2062,
+      1.112,
+      1.2801
+     ],
+     "pidx_now": [
+      0.94,
+      1.2748,
+      1.1475,
+      1.1261,
+      1.0326,
+      1.1081
+     ],
+     "windfall_new": [
+      0.0,
+      21.178,
+      7.012,
+      6.113,
+      2.995,
+      4.07
+     ],
+     "windfall_now": [
+      0.0,
+      8.502,
+      2.99,
+      2.251,
+      -0.776,
+      0.795
+     ]
+    },
+    "high": {
+     "pidx_new": [
+      1.1711,
+      2.4188,
+      1.5347,
+      1.4813,
+      1.3174,
+      1.6502
+     ],
+     "pidx_now": [
+      1.1726,
+      1.8726,
+      1.5367,
+      1.4744,
+      1.3498,
+      1.494
+     ],
+     "windfall_new": [
+      0.0,
+      24.665,
+      10.15,
+      10.034,
+      7.033,
+      7.508
+     ],
+     "windfall_now": [
+      0.0,
+      23.249,
+      12.264,
+      10.049,
+      7.16,
+      6.506
+     ]
+    },
+    "volume_at_prewar_prices_now": [
+     21.69,
+     33.05,
+     29.74,
+     29.58,
+     30.44,
+     17.29
+    ],
+    "volume_at_prewar_prices_new": [
+     20.86,
+     22.89,
+     27.62,
+     27.87,
+     29.03,
+     15.08
+    ],
+    "volume_ratio_to_2021_now": [
+     1.0,
+     1.524,
+     1.371,
+     1.363,
+     1.403,
+     0.797
+    ],
+    "volume_ratio_to_2021_new": [
+     1.0,
+     1.097,
+     1.324,
+     1.336,
+     1.392,
+     0.723
+    ],
+    "excess_volume_2022_2026_now": 31.63,
+    "excess_volume_2022_2026_new": 18.18,
+    "windfall_2022_2026_now": 30.45,
+    "windfall_2022_2026_new": 52.07
+   }
+  }
+ },
+ "gas_prices_tur_replacement": {
+  "pipeline_levels_eur_mwh": {
+   "2018": {
+    "low": 16.377,
+    "central": 18.719,
+    "high": 21.947
+   },
+   "2019": {
+    "low": 19.139,
+    "central": 21.127,
+    "high": 26.676
+   },
+   "2020": {
+    "low": 14.869,
+    "central": 17.665,
+    "high": 19.114
+   },
+   "2021": {
+    "low": 15.479,
+    "central": 17.122,
+    "high": 19.097
+   },
+   "2022": {
+    "low": 73.2,
+    "central": 99.482,
+    "high": 122.509
+   },
+   "2023": {
+    "low": 32.199,
+    "central": 37.893,
+    "high": 41.714
+   },
+   "2024": {
+    "low": 28.325,
+    "central": 35.101,
+    "high": 41.801
+   },
+   "2025": {
+    "low": 27.77,
+    "central": 36.264,
+    "high": 42.591
+   },
+   "2026": {
+    "low": 29.862,
+    "central": 39.647,
+    "high": 47.678
+   }
+  },
+  "base_2019_2021_eur_mwh": 18.64,
+  "index_vs_2019_2021": {
+   "2019": {
+    "low": 1.027,
+    "central": 1.134,
+    "high": 1.431
+   },
+   "2020": {
+    "low": 0.798,
+    "central": 0.948,
+    "high": 1.026
+   },
+   "2021": {
+    "low": 0.831,
+    "central": 0.919,
+    "high": 1.025
+   },
+   "2022": {
+    "low": 3.927,
+    "central": 5.338,
+    "high": 6.573
+   },
+   "2023": {
+    "low": 1.728,
+    "central": 2.033,
+    "high": 2.238
+   },
+   "2024": {
+    "low": 1.52,
+    "central": 1.883,
+    "high": 2.243
+   },
+   "2025": {
+    "low": 1.49,
+    "central": 1.946,
+    "high": 2.285
+   },
+   "2026": {
+    "low": 1.602,
+    "central": 2.127,
+    "high": 2.558
+   }
+  },
+  "note": "Drop-in candidate for gas_prices.json countries.TUR.pipeline / index_vs_2019_2021.pipeline (used by gas_index() for Turkish final-use gas in the transit-gas swap). Index ranges here are level ranges over the central base; the base itself is uncertain by -9%/+18% (17.0-22.0 EUR/MWh over 2018-2021)."
+ },
+ "reconciliation": {
+  "old_conflict": "prices.json measured a combined crude+gas index of 3.32 for 2022 from the customs residual; gas_prices.json modelled Turkish Russian gas at 1.75-1.87 with an oil formula. The map skipped the measured value (PRICES_SKIP) and used the oil-formula gas index.",
+  "finding": "The oil-formula assumption is wrong from 2022. Gazprom and BOTAS added hub (TTF) indexation to the contracts in 2021, and in 2022-2025 BOTAS bought 4.5-6.3 bcm a year of Russian gas as spot pipeline gas (EPDK). With EPDK volumes and hub-linked prices the gas price is about 100 EUR/MWh in 2022 and 35-38 in 2023-2025, against about 18.7 in 2018-2021 (oil-indexed with the 10.25% BOTAS discount). The contract model and the customs residual agree within 3% in 2022-2023 and within 15% in 2024-2025. The reported BOTAS debt to Gazprom of about USD 20 bn at the end of 2022 (OSW) is only possible with a gas bill near the residual (about USD 23 bn), not with the oil formula (about USD 7 bn).",
+  "which_to_trust": "The measured value. The new combined crude+gas index for 2022 is 3.2 (crude 1.41, gas 5.3), close to the old 3.3; fossil_all 2022 is 2.80 against 2.84 in prices.json. gas_prices.json TUR (1.87 in 2022) understates the price by a factor of about 2.8 in 2022 and 1.3-1.6 in 2023-2025."
+ },
+ "sources": [
+  {
+   "name": "EPDK, Doğal Gaz Piyasası 2022 Yılı Sektör Raporu (Tables 2.1 imports by country 2013-2022, 2.2 pipeline/LNG, 2.8 spot pipeline gas by country 2020-2022: Russia 6,321.57 million Sm3 in 2022, 2.9 spot LNG by country)",
+   "url": "https://www.epdk.gov.tr/Detay/DownloadDocument?id=J3PMRLrxosE= (copy used: https://md.teyit.org/file/epdk-2022-rapor-compressed.pdf)",
+   "date": "2023"
+  },
+  {
+   "name": "EPDK, Natural Gas Market Report 2023 (English): spot pipeline gas 8,682 million Sm3, of which Russia 4,470.75; Russian spot LNG 789.66 million Sm3",
+   "url": "https://www.epdk.gov.tr/Detay/DownloadDocument?id=G7sh7x6Yl/Q=",
+   "date": "2024"
+  },
+  {
+   "name": "EPDK, Natural Gas Market Report 2024 (English): spot pipeline gas 11,084 million Sm3, Russian spot LNG 496.75 million Sm3",
+   "url": "https://www.epdk.gov.tr/Detay/DownloadDocument?id=IcvEG0irscs=",
+   "date": "2025"
+  },
+  {
+   "name": "EPDK, Natural Gas Market Development Report 2025 (English): imports by country 2020-2025 (Russia 16,178 / 26,343 / 21,575 / 21,340 / 21,572 / 21,160 million Sm3), Table 2.8 spot pipeline gas by country 2020-2025",
+   "url": "https://www.epdk.gov.tr/Detay/DownloadDocument?id=sCPs2s44DLA=",
+   "date": "2026"
+  },
+  {
+   "name": "EPDK, Petroleum Market Reports 2022, 2023, 2024 and Petroleum Market Development Report 2025: imports by country (crude from Russia 12.00 / 10.71 / 16.94 / 15.23 Mt)",
+   "url": "https://www.epdk.gov.tr/Detay/DownloadDocument?id=zfTpcPymxMk= ; https://www.epdk.gov.tr/Detay/DownloadDocument?id=A2Bza6vGyaQ= ; https://www.epdk.gov.tr/Detay/DownloadDocument?id=NXPHGFPfzlQ= ; https://www.epdk.gov.tr/Detay/DownloadDocument?id=+vEFbdM0dCU=",
+   "date": "2023-2026"
+  },
+  {
+   "name": "UN Comtrade public preview: Türkiye imports from Russia (partner 643) and world (partner 0), HS TOTAL, 27 and all chapter-27 headings, 2018-2025",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=792&period=<YYYY>&flowCode=M&cmdCode=TOTAL,27,2701,...,2716&partnerCode=643,0",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "UN Comtrade public preview: Russian Federation exports to Türkiye (reporter 643, partner 792), HS 27, 2701, 2709, 2710, 2711, 2017-2020 (crude 2.12 / 8.16 / 2.65 Mt in 2018-2020)",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=643&period=<YYYY>&flowCode=X&cmdCode=27,2709,2710,2701,2711&partnerCode=792",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "CREA Russia Fossil Tracker, yearly tonnes and modelled values by destination (Türkiye), 2021-2026-08",
+   "url": "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-08-31&aggregate_by=year,destination_iso2,commodity",
+   "date": "2026-10-17 (download reused)"
+  },
+  {
+   "name": "Russian Ministry of Finance Urals averages and CREA Urals (prices.json benchmarks)",
+   "url": "research/2026-10/gaps/prices.json",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "FRED / IMF: Brent (POILBREUSDM) and EU natural gas TTF (PNGASEUUSDM), monthly, converted with ECB rates (gas_prices.json market data)",
+   "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=PNGASEUUSDM",
+   "date": "2026-10-17"
+  },
+  {
+   "name": "Columbia CGEP, \"Russia's Gas Export Strategy: Adapting to the New Reality\" (In 2021 Gazprom renegotiated its contracts with BOTAS to include a spot indexation, making them very expensive in 2022 and 2023)",
+   "url": "https://www.energypolicy.columbia.edu/wp-content/uploads/2024/02/Russia-Gas-Exports-Commentary_CGEP_021624.pdf",
+   "date": "2024-02-16"
+  },
+  {
+   "name": "OIES Insight 113, \"Turkey's supply-demand balance and renewal of its LTCs\" (BOTAS-Gazprom TurkStream/Kiyikoy contracts about 70% TTF/Henry Hub and 30% oil indexed; content taken from search abstracts and the CGEP citation, the PDF itself returned HTTP 403)",
+   "url": "https://www.oxfordenergy.org/wpcms/wp-content/uploads/2022/04/Insight-113-Turkeys-supply-demand-balance-and-renewal-of-its-LTCs.pdf",
+   "date": "2022-04"
+  },
+  {
+   "name": "OSW Commentary, \"Turkey's dream of a hub. Ankara's wartime gas policy\" (almost three quarters of 2022 imports oil-linked; reported BOTAS debt to Gazprom about USD 20 bn; >25% discount sought)",
+   "url": "https://www.osw.waw.pl/en/publikacje/osw-commentary/2023-03-10/turkeys-dream-a-hub-ankaras-wartime-gas-policy",
+   "date": "2023-03-10"
+  },
+  {
+   "name": "ICIS, \"Official TurkStream launch opens new supply corridor\" (Russian gas to Turkish importers at a fixed price of about USD 225-230 per 1000 m3 in 2020)",
+   "url": "https://www.icis.com/explore/resources/news/2020/01/08/10457879/official-turkstream-launch-opens-new-supply-corridor/",
+   "date": "2020-01-08"
+  },
+  {
+   "name": "prices.json and gas_prices.json (this research run): products, coal and non-fuel indices and payments; Serbian/Bosnian oil-formula calibration k = 0.418",
+   "url": "research/2026-10/gaps/prices.json ; research/2026-10/gaps/gas_prices.json",
+   "date": "2026-10-18"
+  }
+ ],
+ "overlaps": "No new flow. This file only prices payments that are already in the map (TUR to_rus = Turkish customs imports from Russia; final-use gas already inside, GAS_IN_CUSTOMS TUR = 1.0). It replaces three existing price inputs for Türkiye and must not be added to them: (1) prices.json countries.TUR (same fields; the builder should read this entry instead and drop TUR from PRICES_SKIP); (2) narrow.json countries.TUR.to_rus pidx/pidx_lo/pidx_hi, which apply_narrow() writes over price_indices() output, so the builder must remove or ignore those three fields or the new index never reaches the map; (3) gas_prices.json countries.TUR pipeline, which gas_index() uses for fuel_index fallbacks and for valuing Turkish final-use gas in the transit-gas swap (gas_prices_tur_replacement is the drop-in). Non-fuel goods, products and coal series are copied unchanged from prices.json. windfall here includes non-fuel goods (as prices.json); the map windfall is fuel only (windfall_fuel_only). Laundered oil (Turkish refining of Russian crude) is compared in money and is not affected.",
+ "notes": [
+  "Not yet reviewed by a person.",
+  "Built by working scripts in the session scratchpad (build.py, assemble.py) from downloads listed in sources.",
+  "See turkey_prices-notes.md for method, checks and weak spots.",
+  "builder_impact_estimate in the TUR entry re-runs the build_data.py formulas (fuel_index from fossil_all, fuel_share_year from windfall_parts paid, harmonic pidx, war_windfall) on the current site/data.json to_rus series; it is an estimate, not a rebuild."
+ ]
+}

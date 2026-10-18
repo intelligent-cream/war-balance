@@ -1,0 +1,8538 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "Who controls the tankers carrying Russia's seaborne crude and oil-product exports, by country of the beneficial owner / commercial controller (not flag, not front-company registration), 2021-2026, split into the mainstream fleet (G7+-linked: owned, managed, flagged or IG P&I-insured in a price-cap country, KSE 'white') and the shadow fleet; and the resulting gross freight revenue per country. Russian-owned and Russian-controlled tankers (Sovcomflot and its UAE/HK fronts, Russian managers, half of opaque Seychelles/Marshall Islands/unknown owners) are kept as a separate Russian pool and count for no foreign country.",
+  "units": "Shares: fraction of the segment's barrels (crude, products, or crude+products weighted 58/42). freight: EUR bn GROSS freight revenue (not profit), nominal, ECB yearly average USD/EUR (2021 1.1827, 2022 1.0530, 2023 1.0813, 2024 1.0824, 2025 1.1300, 2026 1.1629 = same as shipping.json); 2026 = Jan-Aug, not annualised. Each value {low, central, high}, ~90% range.",
+  "method": "1) Mainstream vs shadow by segment: combined shadow share from KSE Shadow Fleet Tracker (Sep 2026; monthly Apr 2022-Aug 2026, read from chart geometry: 23% Apr-Dec 2022, 43% 2023, 63% 2024, 55% 2025, 58% Jan-Aug 2026; Jan-Mar 2022 ~7%; 2021 ~6% per Bloomberg/Brookings); products shadow share from KSE Russian Oil Tracker monthly statements (31-52% in 2023-24, 18-37% in 2025); crude = residual (23%, 49%, 79%, 76%, 78%). 2) Greek beneficial owners' share of each segment from Lloyd's List, S&P Global, Kpler, Windward and KSE top-10 tables (see GRC). 3) Rest of the mainstream segment split by educated fractions from the pre-war fleet structure and KSE top-10 tables (Turkey, Cyprus, Malta, Kuwait/AMPTC, Singapore, India, China, UAE; Russian owners still IG-insured in 2021-22). 4) Shadow segment split by KSE monthly shadow volumes by country of ship/commercial manager, then mapped to the beneficial controller: Russia-managed 100% Russian; UAE-managed foreign 15/20/25/32/20% (2022-26) else Russian (Sovcomflot chain, refine.json); KSE 'China' 55% mainland (80% foreign) / 45% Hong Kong (65% foreign); India 45-55% foreign; Singapore 80%; Seychelles, Marshall Islands and unknown managers 50% Russian, 50% spread over the hubs (ARE 37, HKG 21, CHN 16, IND 16, VNM 5, MYS 5); 'other' managers TUR 18, VNM 12, AZE 8, MYS 6, OMN 6, IDN 4, GEO 3, EGY 3, SAU 2, Russian fronts 25, opaque 13. 5) Freight = crude pool x crude share + products pool x products share (pools from shipping.json, 2026 crude pool 11.0 per refine.json freight_per_bbl), Chinese/HK shadow crude at 0.6x per barrel (Kozmino short haul), + LNG part unchanged from shipping.json. Ranges: share factor by certainty (B 0.8-1.25, C 0.55-1.7, D 0.35-2.4; Greece year-specific) combined with pool uncertainty as independent log errors."
+ },
+ "how_to_use": "Replaces the country allocation of FREIGHT in shipping.json (field countries.ISO3.freight and baseline_2019_2021 freight part). If the builder uses countries.ISO3.freight from this file: (a) do NOT also apply refine.json shipping_control freight_scale_vs_current_model (the Russian carve-out for UAE/IND/CHN/HKG is already inside these shares); (b) do NOT apply the 2026 freight x1.065 factor in apply_shipping (the 2026 crude pool here is already 11.0 instead of 9.7); (c) the insurance_finance items in shipping.json that follow owner shares can be scaled by freight_scale_vs_shipping_json; (d) ship_sales, registry and P&I-by-insurer parts of shipping.json are unchanged; (e) SYC, MHL get no freight here (fronts; their volume is split Russia/hubs), so the Seychelles 20% cut in fix_artefacts no longer matters for freight; (f) profit factors (SHIPPING_PROFIT freight 0.2/0.35/0.5) and overlap shares still apply on top - these are gross values. replacement_share_tables gives CRUDE and PRODUCTS share tables in the format of working/shipping/build.py (RUS = Russian own and controlled pool).",
+ "countries": {
+  "ARE": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0148,
+     "central": 0.0269,
+     "high": 0.0457
+    },
+    "2022": {
+     "low": 0.0231,
+     "central": 0.0421,
+     "high": 0.0715
+    },
+    "2023": {
+     "low": 0.0426,
+     "central": 0.0775,
+     "high": 0.1318
+    },
+    "2024": {
+     "low": 0.0552,
+     "central": 0.1003,
+     "high": 0.1705
+    },
+    "2025": {
+     "low": 0.0477,
+     "central": 0.0866,
+     "high": 0.1473
+    },
+    "2026": {
+     "low": 0.0303,
+     "central": 0.0551,
+     "high": 0.0937
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0145,
+     "central": 0.0263,
+     "high": 0.0448
+    },
+    "2022": {
+     "low": 0.0233,
+     "central": 0.0424,
+     "high": 0.072
+    },
+    "2023": {
+     "low": 0.0405,
+     "central": 0.0736,
+     "high": 0.125
+    },
+    "2024": {
+     "low": 0.0411,
+     "central": 0.0747,
+     "high": 0.127
+    },
+    "2025": {
+     "low": 0.0368,
+     "central": 0.0669,
+     "high": 0.1138
+    },
+    "2026": {
+     "low": 0.033,
+     "central": 0.06,
+     "high": 0.102
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0147,
+     "central": 0.0267,
+     "high": 0.0453
+    },
+    "2022": {
+     "low": 0.0232,
+     "central": 0.0422,
+     "high": 0.0717
+    },
+    "2023": {
+     "low": 0.0417,
+     "central": 0.0759,
+     "high": 0.129
+    },
+    "2024": {
+     "low": 0.0492,
+     "central": 0.0895,
+     "high": 0.1522
+    },
+    "2025": {
+     "low": 0.0431,
+     "central": 0.0784,
+     "high": 0.1332
+    },
+    "2026": {
+     "low": 0.0314,
+     "central": 0.0572,
+     "high": 0.0972
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0061,
+     "central": 0.0111,
+     "high": 0.0189
+    },
+    "2022": {
+     "low": 0.0129,
+     "central": 0.0234,
+     "high": 0.0398
+    },
+    "2023": {
+     "low": 0.0138,
+     "central": 0.0251,
+     "high": 0.0426
+    },
+    "2024": {
+     "low": 0.0083,
+     "central": 0.015,
+     "high": 0.0256
+    },
+    "2025": {
+     "low": 0.0095,
+     "central": 0.0173,
+     "high": 0.0294
+    },
+    "2026": {
+     "low": 0.0134,
+     "central": 0.0244,
+     "high": 0.0416
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0085,
+     "central": 0.0155,
+     "high": 0.0264
+    },
+    "2022": {
+     "low": 0.0103,
+     "central": 0.0188,
+     "high": 0.0319
+    },
+    "2023": {
+     "low": 0.0279,
+     "central": 0.0508,
+     "high": 0.0863
+    },
+    "2024": {
+     "low": 0.041,
+     "central": 0.0745,
+     "high": 0.1266
+    },
+    "2025": {
+     "low": 0.0336,
+     "central": 0.0611,
+     "high": 0.1039
+    },
+    "2026": {
+     "low": 0.018,
+     "central": 0.0327,
+     "high": 0.0556
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0454,
+     "central": 0.0949,
+     "high": 0.1815
+    },
+    "2022": {
+     "low": 0.271,
+     "central": 0.5436,
+     "high": 1.0189
+    },
+    "2023": {
+     "low": 0.5983,
+     "central": 1.1489,
+     "high": 2.0307
+    },
+    "2024": {
+     "low": 0.5721,
+     "central": 1.0829,
+     "high": 1.9141
+    },
+    "2025": {
+     "low": 0.424,
+     "central": 0.8102,
+     "high": 1.4407
+    },
+    "2026": {
+     "low": 0.3963,
+     "central": 0.7609,
+     "high": 1.3617
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0583,
+    "central": 0.1219,
+    "high": 0.233
+   },
+   "certainty": "C",
+   "shipping_json_freight_central": {
+    "2021": 0.0524,
+    "2022": 0.7692,
+    "2023": 1.8885,
+    "2024": 1.8764,
+    "2025": 1.4814,
+    "2026": 1.992
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0524,
+    "2022": 0.2385,
+    "2023": 0.5288,
+    "2024": 0.5066,
+    "2025": 0.2963,
+    "2026": 0.1697
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 1.811,
+    "2022": 0.707,
+    "2023": 0.608,
+    "2024": 0.577,
+    "2025": 0.547,
+    "2026": 0.382
+   },
+   "reasoning": "Two parts. (1) Shadow: KSE shows UAE-registered managers handled 12-18% of all seaborne barrels in 2022-24, 10% in 2025, 7% in 2026, but most is the Sovcomflot chain (Sun Ship and SCF Mgmt, OFAC-identified as Sovcomflot-owned; then Stream, Fornax, Avebury, Nova, Dreamer, Greenlight, Albatross, Lynx, Grace, Twister operating ex-Sovcomflot tankers). Only 15-32% is treated as truly UAE-resident control (refine.json). (2) 37% of the opaque Seychelles/Marshall Islands/unknown remainder, and UAE companies in the mainstream products trade (e.g. Onex DMCC in KSE product tables). Certainty C.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "AZE": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0008,
+     "central": 0.0022,
+     "high": 0.0052
+    },
+    "2023": {
+     "low": 0.0023,
+     "central": 0.0066,
+     "high": 0.0158
+    },
+    "2024": {
+     "low": 0.0038,
+     "central": 0.0109,
+     "high": 0.0261
+    },
+    "2025": {
+     "low": 0.0035,
+     "central": 0.0099,
+     "high": 0.0237
+    },
+    "2026": {
+     "low": 0.0024,
+     "central": 0.0069,
+     "high": 0.0167
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0004,
+     "central": 0.0011,
+     "high": 0.0027
+    },
+    "2023": {
+     "low": 0.0016,
+     "central": 0.0046,
+     "high": 0.011
+    },
+    "2024": {
+     "low": 0.002,
+     "central": 0.0057,
+     "high": 0.0136
+    },
+    "2025": {
+     "low": 0.0011,
+     "central": 0.0032,
+     "high": 0.0078
+    },
+    "2026": {
+     "low": 0.0009,
+     "central": 0.0027,
+     "high": 0.0064
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0006,
+     "central": 0.0017,
+     "high": 0.0042
+    },
+    "2023": {
+     "low": 0.002,
+     "central": 0.0057,
+     "high": 0.0137
+    },
+    "2024": {
+     "low": 0.003,
+     "central": 0.0087,
+     "high": 0.0208
+    },
+    "2025": {
+     "low": 0.0025,
+     "central": 0.0071,
+     "high": 0.017
+    },
+    "2026": {
+     "low": 0.0018,
+     "central": 0.0052,
+     "high": 0.0124
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0006,
+     "central": 0.0017,
+     "high": 0.0042
+    },
+    "2023": {
+     "low": 0.002,
+     "central": 0.0057,
+     "high": 0.0137
+    },
+    "2024": {
+     "low": 0.003,
+     "central": 0.0087,
+     "high": 0.0208
+    },
+    "2025": {
+     "low": 0.0025,
+     "central": 0.0071,
+     "high": 0.017
+    },
+    "2026": {
+     "low": 0.0018,
+     "central": 0.0052,
+     "high": 0.0124
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0076,
+     "central": 0.0231,
+     "high": 0.059
+    },
+    "2023": {
+     "low": 0.0304,
+     "central": 0.0896,
+     "high": 0.2204
+    },
+    "2024": {
+     "low": 0.0371,
+     "central": 0.1084,
+     "high": 0.2665
+    },
+    "2025": {
+     "low": 0.0266,
+     "central": 0.0783,
+     "high": 0.1934
+    },
+    "2026": {
+     "low": 0.0274,
+     "central": 0.0808,
+     "high": 0.2003
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026": 0
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026": 0.0
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "BEL": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0033,
+     "central": 0.0095,
+     "high": 0.0228
+    },
+    "2022": {
+     "low": 0.0026,
+     "central": 0.0074,
+     "high": 0.0177
+    },
+    "2023": {
+     "low": 0.0017,
+     "central": 0.0048,
+     "high": 0.0116
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.0018,
+     "high": 0.0043
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0009
+    },
+    "2026": {
+     "low": 0.001,
+     "central": 0.0028,
+     "high": 0.0066
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0012,
+     "central": 0.0033,
+     "high": 0.0079
+    },
+    "2024": {
+     "low": 0.0009,
+     "central": 0.0026,
+     "high": 0.0062
+    },
+    "2025": {
+     "low": 0.0014,
+     "central": 0.0039,
+     "high": 0.0094
+    },
+    "2026": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0103
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0019,
+     "central": 0.0055,
+     "high": 0.0132
+    },
+    "2022": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0103
+    },
+    "2023": {
+     "low": 0.0015,
+     "central": 0.0042,
+     "high": 0.0101
+    },
+    "2024": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2025": {
+     "low": 0.0007,
+     "central": 0.0019,
+     "high": 0.0045
+    },
+    "2026": {
+     "low": 0.0012,
+     "central": 0.0034,
+     "high": 0.0082
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0019,
+     "central": 0.0055,
+     "high": 0.0132
+    },
+    "2022": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0103
+    },
+    "2023": {
+     "low": 0.0015,
+     "central": 0.0042,
+     "high": 0.0101
+    },
+    "2024": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2025": {
+     "low": 0.0007,
+     "central": 0.0019,
+     "high": 0.0045
+    },
+    "2026": {
+     "low": 0.0012,
+     "central": 0.0034,
+     "high": 0.0082
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0139,
+     "central": 0.0431,
+     "high": 0.1116
+    },
+    "2022": {
+     "low": 0.032,
+     "central": 0.0971,
+     "high": 0.248
+    },
+    "2023": {
+     "low": 0.0336,
+     "central": 0.099,
+     "high": 0.2434
+    },
+    "2024": {
+     "low": 0.0186,
+     "central": 0.0544,
+     "high": 0.1337
+    },
+    "2025": {
+     "low": 0.0151,
+     "central": 0.0443,
+     "high": 0.1093
+    },
+    "2026": {
+     "low": 0.0212,
+     "central": 0.0627,
+     "high": 0.1553
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0254,
+    "2022": 0.037,
+    "2023": 0.0333,
+    "2024": 0.0305,
+    "2025": 0.0292,
+    "2026": 0.0206
+   },
+   "baseline_2019_2021": {
+    "low": 0.0154,
+    "central": 0.0478,
+    "high": 0.1237
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.044,
+    "2022": 0.1178,
+    "2023": 0.0333,
+    "2024": 0.0305,
+    "2025": 0.0292,
+    "2026": 0.0206
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.044,
+    "2022": 0.1178,
+    "2023": 0.0333,
+    "2024": 0.0305,
+    "2025": 0.0292,
+    "2026": 0.0219
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.98,
+    "2022": 0.824,
+    "2023": 2.973,
+    "2024": 1.784,
+    "2025": 1.517,
+    "2026": 3.044
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "CAN": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0066,
+     "central": 0.019,
+     "high": 0.0455
+    },
+    "2022": {
+     "low": 0.0013,
+     "central": 0.0037,
+     "high": 0.0089
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0039,
+     "central": 0.011,
+     "high": 0.0264
+    },
+    "2022": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0039,
+     "central": 0.011,
+     "high": 0.0264
+    },
+    "2022": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.044,
+     "central": 0.137,
+     "high": 0.3546
+    },
+    "2022": {
+     "low": 0.0099,
+     "central": 0.03,
+     "high": 0.0767
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight_lng": {
+    "2021": 0.1015,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0458,
+    "central": 0.1426,
+    "high": 0.369
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.1387,
+    "2022": 0.0807,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.1387,
+    "2022": 0.0807,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.988,
+    "2022": 0.372,
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "CHE": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0011,
+     "central": 0.0032,
+     "high": 0.0076
+    },
+    "2022": {
+     "low": 0.0013,
+     "central": 0.0037,
+     "high": 0.0089
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0023,
+     "central": 0.0067,
+     "high": 0.0161
+    },
+    "2022": {
+     "low": 0.0018,
+     "central": 0.0051,
+     "high": 0.0121
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0016,
+     "central": 0.0046,
+     "high": 0.0112
+    },
+    "2022": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0102
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0016,
+     "central": 0.0046,
+     "high": 0.0112
+    },
+    "2022": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0102
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0055,
+     "central": 0.0173,
+     "high": 0.0447
+    },
+    "2022": {
+     "low": 0.0178,
+     "central": 0.054,
+     "high": 0.138
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0069,
+    "central": 0.0216,
+    "high": 0.0558
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0259,
+    "2022": 0.0335,
+    "2023": 0.0033,
+    "2024": 0.003,
+    "2025": 0.0029,
+    "2026": 0.0021
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0259,
+    "2022": 0.0335,
+    "2023": 0.0033,
+    "2024": 0.003,
+    "2025": 0.0029,
+    "2026": 0.0022
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.668,
+    "2022": 1.612,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "CHN": {
+   "share_crude": {
+    "2021": {
+     "low": 0.025,
+     "central": 0.0455,
+     "high": 0.0773
+    },
+    "2022": {
+     "low": 0.0205,
+     "central": 0.0373,
+     "high": 0.0635
+    },
+    "2023": {
+     "low": 0.0349,
+     "central": 0.0634,
+     "high": 0.1078
+    },
+    "2024": {
+     "low": 0.0604,
+     "central": 0.1098,
+     "high": 0.1866
+    },
+    "2025": {
+     "low": 0.0594,
+     "central": 0.1081,
+     "high": 0.1837
+    },
+    "2026": {
+     "low": 0.0839,
+     "central": 0.1525,
+     "high": 0.2592
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0105,
+     "central": 0.019,
+     "high": 0.0323
+    },
+    "2022": {
+     "low": 0.0088,
+     "central": 0.016,
+     "high": 0.0272
+    },
+    "2023": {
+     "low": 0.0204,
+     "central": 0.0372,
+     "high": 0.0632
+    },
+    "2024": {
+     "low": 0.0342,
+     "central": 0.0622,
+     "high": 0.1057
+    },
+    "2025": {
+     "low": 0.0277,
+     "central": 0.0503,
+     "high": 0.0855
+    },
+    "2026": {
+     "low": 0.0383,
+     "central": 0.0696,
+     "high": 0.1184
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0189,
+     "central": 0.0344,
+     "high": 0.0584
+    },
+    "2022": {
+     "low": 0.0156,
+     "central": 0.0284,
+     "high": 0.0482
+    },
+    "2023": {
+     "low": 0.0288,
+     "central": 0.0524,
+     "high": 0.089
+    },
+    "2024": {
+     "low": 0.0494,
+     "central": 0.0898,
+     "high": 0.1526
+    },
+    "2025": {
+     "low": 0.0461,
+     "central": 0.0838,
+     "high": 0.1425
+    },
+    "2026": {
+     "low": 0.0647,
+     "central": 0.1177,
+     "high": 0.2001
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0152,
+     "central": 0.0276,
+     "high": 0.047
+    },
+    "2022": {
+     "low": 0.0106,
+     "central": 0.0192,
+     "high": 0.0327
+    },
+    "2023": {
+     "low": 0.0123,
+     "central": 0.0224,
+     "high": 0.038
+    },
+    "2024": {
+     "low": 0.0058,
+     "central": 0.0105,
+     "high": 0.0179
+    },
+    "2025": {
+     "low": 0.0043,
+     "central": 0.0079,
+     "high": 0.0134
+    },
+    "2026": {
+     "low": 0.0092,
+     "central": 0.0168,
+     "high": 0.0286
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0037,
+     "central": 0.0067,
+     "high": 0.0114
+    },
+    "2022": {
+     "low": 0.005,
+     "central": 0.0091,
+     "high": 0.0155
+    },
+    "2023": {
+     "low": 0.0165,
+     "central": 0.03,
+     "high": 0.051
+    },
+    "2024": {
+     "low": 0.0436,
+     "central": 0.0792,
+     "high": 0.1347
+    },
+    "2025": {
+     "low": 0.0418,
+     "central": 0.0759,
+     "high": 0.1291
+    },
+    "2026": {
+     "low": 0.0555,
+     "central": 0.1009,
+     "high": 0.1715
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.1344,
+     "central": 0.2808,
+     "high": 0.5366
+    },
+    "2022": {
+     "low": 0.2937,
+     "central": 0.5892,
+     "high": 1.1044
+    },
+    "2023": {
+     "low": 0.4748,
+     "central": 0.9117,
+     "high": 1.6115
+    },
+    "2024": {
+     "low": 0.5268,
+     "central": 0.9973,
+     "high": 1.7627
+    },
+    "2025": {
+     "low": 0.4229,
+     "central": 0.808,
+     "high": 1.4368
+    },
+    "2026": {
+     "low": 0.717,
+     "central": 1.3768,
+     "high": 2.4638
+    }
+   },
+   "freight_lng": {
+    "2021": 0.1691,
+    "2022": 0.2469,
+    "2023": 0.222,
+    "2024": 0.2033,
+    "2025": 0.1947,
+    "2026": 0.1376
+   },
+   "baseline_2019_2021": {
+    "low": 0.149,
+    "central": 0.3113,
+    "high": 0.5949
+   },
+   "certainty": "C",
+   "shipping_json_freight_central": {
+    "2021": 0.2959,
+    "2022": 0.7455,
+    "2023": 1.0617,
+    "2024": 0.9649,
+    "2025": 0.9434,
+    "2026": 1.4689
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.2959,
+    "2022": 0.7455,
+    "2023": 0.722,
+    "2024": 0.7912,
+    "2025": 0.6792,
+    "2026": 1.2046
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.949,
+    "2022": 0.79,
+    "2023": 0.859,
+    "2024": 1.034,
+    "2025": 0.856,
+    "2026": 0.937
+   },
+   "reasoning": "KSE 'China' managers (incl. Hong Kong; 55% mainland assumed) rose from 2% of seaborne barrels (2022) to 21% (2026; KSE label 42% of shadow in Aug 2026). Mainly Kozmino-China ESPO runs for private Chinese owners (Sunne, Prominent, Searun, Shang, Sino) plus serial single-ship companies; 80% treated as Chinese-controlled. Short-haul Kozmino trips earn about 0.6x the average crude freight per barrel. Plus IG-insured Chinese owners and COSCO's half of Arc7 LNG carriers (LNG part unchanged from shipping.json).",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "CYP": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0243,
+     "central": 0.0443,
+     "high": 0.0752
+    },
+    "2022": {
+     "low": 0.0162,
+     "central": 0.0295,
+     "high": 0.0502
+    },
+    "2023": {
+     "low": 0.0133,
+     "central": 0.0242,
+     "high": 0.0411
+    },
+    "2024": {
+     "low": 0.0049,
+     "central": 0.0089,
+     "high": 0.0151
+    },
+    "2025": {
+     "low": 0.0011,
+     "central": 0.0019,
+     "high": 0.0033
+    },
+    "2026": {
+     "low": 0.0076,
+     "central": 0.0138,
+     "high": 0.0234
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0221,
+     "central": 0.0402,
+     "high": 0.0683
+    },
+    "2022": {
+     "low": 0.0194,
+     "central": 0.0354,
+     "high": 0.0601
+    },
+    "2023": {
+     "low": 0.0145,
+     "central": 0.0264,
+     "high": 0.0449
+    },
+    "2024": {
+     "low": 0.0114,
+     "central": 0.0208,
+     "high": 0.0354
+    },
+    "2025": {
+     "low": 0.0172,
+     "central": 0.0312,
+     "high": 0.053
+    },
+    "2026": {
+     "low": 0.0189,
+     "central": 0.0344,
+     "high": 0.0585
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0234,
+     "central": 0.0426,
+     "high": 0.0723
+    },
+    "2022": {
+     "low": 0.0176,
+     "central": 0.032,
+     "high": 0.0543
+    },
+    "2023": {
+     "low": 0.0138,
+     "central": 0.0251,
+     "high": 0.0427
+    },
+    "2024": {
+     "low": 0.0076,
+     "central": 0.0139,
+     "high": 0.0236
+    },
+    "2025": {
+     "low": 0.0078,
+     "central": 0.0142,
+     "high": 0.0242
+    },
+    "2026": {
+     "low": 0.0123,
+     "central": 0.0224,
+     "high": 0.0381
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0234,
+     "central": 0.0426,
+     "high": 0.0723
+    },
+    "2022": {
+     "low": 0.0176,
+     "central": 0.032,
+     "high": 0.0543
+    },
+    "2023": {
+     "low": 0.0138,
+     "central": 0.0251,
+     "high": 0.0427
+    },
+    "2024": {
+     "low": 0.0076,
+     "central": 0.0139,
+     "high": 0.0236
+    },
+    "2025": {
+     "low": 0.0078,
+     "central": 0.0142,
+     "high": 0.0242
+    },
+    "2026": {
+     "low": 0.0123,
+     "central": 0.0224,
+     "high": 0.0381
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0722,
+     "central": 0.1509,
+     "high": 0.2884
+    },
+    "2022": {
+     "low": 0.2034,
+     "central": 0.4081,
+     "high": 0.765
+    },
+    "2023": {
+     "low": 0.195,
+     "central": 0.3744,
+     "high": 0.6618
+    },
+    "2024": {
+     "low": 0.0783,
+     "central": 0.1482,
+     "high": 0.2619
+    },
+    "2025": {
+     "low": 0.0589,
+     "central": 0.1126,
+     "high": 0.2002
+    },
+    "2026": {
+     "low": 0.1302,
+     "central": 0.2501,
+     "high": 0.4475
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.093,
+    "central": 0.1942,
+    "high": 0.3712
+   },
+   "certainty": "C",
+   "shipping_json_freight_central": {
+    "2021": 0.1776,
+    "2022": 0.641,
+    "2023": 0.4439,
+    "2024": 0.2236,
+    "2025": 0.1912,
+    "2026": 0.1144
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.1776,
+    "2022": 0.641,
+    "2023": 0.4439,
+    "2024": 0.2236,
+    "2025": 0.1912,
+    "2026": 0.1218
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.85,
+    "2022": 0.637,
+    "2023": 0.843,
+    "2024": 0.663,
+    "2025": 0.589,
+    "2026": 2.186
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty C.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "DEU": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0066,
+     "central": 0.019,
+     "high": 0.0455
+    },
+    "2022": {
+     "low": 0.0026,
+     "central": 0.0074,
+     "high": 0.0177
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.007,
+     "central": 0.0201,
+     "high": 0.0482
+    },
+    "2022": {
+     "low": 0.0035,
+     "central": 0.0101,
+     "high": 0.0242
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0068,
+     "central": 0.0194,
+     "high": 0.0467
+    },
+    "2022": {
+     "low": 0.003,
+     "central": 0.0085,
+     "high": 0.0205
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0068,
+     "central": 0.0194,
+     "high": 0.0467
+    },
+    "2022": {
+     "low": 0.003,
+     "central": 0.0085,
+     "high": 0.0205
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0224,
+     "central": 0.0695,
+     "high": 0.1799
+    },
+    "2022": {
+     "low": 0.0356,
+     "central": 0.108,
+     "high": 0.2759
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0286,
+    "central": 0.089,
+    "high": 0.2304
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0879,
+    "2022": 0.1757,
+    "2023": 0.074,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0879,
+    "2022": 0.1757,
+    "2023": 0.074,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.791,
+    "2022": 0.615,
+    "2023": 0.0,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "DNK": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0089,
+     "central": 0.0253,
+     "high": 0.0607
+    },
+    "2022": {
+     "low": 0.0039,
+     "central": 0.0111,
+     "high": 0.0266
+    },
+    "2023": {
+     "low": 0.0008,
+     "central": 0.0024,
+     "high": 0.0058
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0021
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0033
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0164,
+     "central": 0.0469,
+     "high": 0.1126
+    },
+    "2022": {
+     "low": 0.0071,
+     "central": 0.0202,
+     "high": 0.0485
+    },
+    "2023": {
+     "low": 0.0012,
+     "central": 0.0033,
+     "high": 0.0079
+    },
+    "2024": {
+     "low": 0.0009,
+     "central": 0.0026,
+     "high": 0.0062
+    },
+    "2025": {
+     "low": 0.0014,
+     "central": 0.0039,
+     "high": 0.0094
+    },
+    "2026": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0103
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.012,
+     "central": 0.0344,
+     "high": 0.0825
+    },
+    "2022": {
+     "low": 0.0052,
+     "central": 0.0149,
+     "high": 0.0358
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.0028,
+     "high": 0.0067
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.0016,
+     "high": 0.0039
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0017,
+     "high": 0.0042
+    },
+    "2026": {
+     "low": 0.0009,
+     "central": 0.0026,
+     "high": 0.0062
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.012,
+     "central": 0.0344,
+     "high": 0.0825
+    },
+    "2022": {
+     "low": 0.0052,
+     "central": 0.0149,
+     "high": 0.0358
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.0028,
+     "high": 0.0067
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.0016,
+     "high": 0.0039
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0017,
+     "high": 0.0042
+    },
+    "2026": {
+     "low": 0.0009,
+     "central": 0.0026,
+     "high": 0.0062
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0407,
+     "central": 0.1267,
+     "high": 0.3279
+    },
+    "2022": {
+     "low": 0.0614,
+     "central": 0.186,
+     "high": 0.4752
+    },
+    "2023": {
+     "low": 0.0137,
+     "central": 0.0405,
+     "high": 0.0996
+    },
+    "2024": {
+     "low": 0.0057,
+     "central": 0.0167,
+     "high": 0.0412
+    },
+    "2025": {
+     "low": 0.0047,
+     "central": 0.0137,
+     "high": 0.0339
+    },
+    "2026": {
+     "low": 0.0094,
+     "central": 0.0277,
+     "high": 0.0686
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0511,
+    "central": 0.159,
+    "high": 0.4117
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.1573,
+    "2022": 0.3514,
+    "2023": 0.0971,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.1573,
+    "2022": 0.3514,
+    "2023": 0.0971,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.805,
+    "2022": 0.529,
+    "2023": 0.417,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "EGY": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.002
+    },
+    "2023": {
+     "low": 0.0009,
+     "central": 0.0025,
+     "high": 0.0059
+    },
+    "2024": {
+     "low": 0.0014,
+     "central": 0.0041,
+     "high": 0.0098
+    },
+    "2025": {
+     "low": 0.0013,
+     "central": 0.0037,
+     "high": 0.0089
+    },
+    "2026": {
+     "low": 0.0009,
+     "central": 0.0026,
+     "high": 0.0063
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.001
+    },
+    "2023": {
+     "low": 0.0018,
+     "central": 0.005,
+     "high": 0.012
+    },
+    "2024": {
+     "low": 0.0017,
+     "central": 0.0047,
+     "high": 0.0113
+    },
+    "2025": {
+     "low": 0.0018,
+     "central": 0.0051,
+     "high": 0.0123
+    },
+    "2026": {
+     "low": 0.0019,
+     "central": 0.0053,
+     "high": 0.0127
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0007,
+     "high": 0.0016
+    },
+    "2023": {
+     "low": 0.0012,
+     "central": 0.0035,
+     "high": 0.0085
+    },
+    "2024": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0104
+    },
+    "2025": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0103
+    },
+    "2026": {
+     "low": 0.0013,
+     "central": 0.0037,
+     "high": 0.009
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0033
+    },
+    "2024": {
+     "low": 0.0004,
+     "central": 0.0011,
+     "high": 0.0026
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0016,
+     "high": 0.0039
+    },
+    "2026": {
+     "low": 0.0006,
+     "central": 0.0018,
+     "high": 0.0043
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0007,
+     "high": 0.0016
+    },
+    "2023": {
+     "low": 0.0008,
+     "central": 0.0021,
+     "high": 0.0052
+    },
+    "2024": {
+     "low": 0.0011,
+     "central": 0.0033,
+     "high": 0.0078
+    },
+    "2025": {
+     "low": 0.0009,
+     "central": 0.0027,
+     "high": 0.0064
+    },
+    "2026": {
+     "low": 0.0007,
+     "central": 0.0019,
+     "high": 0.0046
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0029,
+     "central": 0.0087,
+     "high": 0.0221
+    },
+    "2023": {
+     "low": 0.0166,
+     "central": 0.0489,
+     "high": 0.1202
+    },
+    "2024": {
+     "low": 0.0172,
+     "central": 0.0503,
+     "high": 0.1236
+    },
+    "2025": {
+     "low": 0.0142,
+     "central": 0.0418,
+     "high": 0.1032
+    },
+    "2026": {
+     "low": 0.0148,
+     "central": 0.0436,
+     "high": 0.1081
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0,
+    "2022": 0.008,
+    "2023": 0.0393,
+    "2024": 0.0447,
+    "2025": 0.0382,
+    "2026": 0.0556
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0,
+    "2022": 0.008,
+    "2023": 0.0393,
+    "2024": 0.0447,
+    "2025": 0.0382,
+    "2026": 0.0592
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": null,
+    "2022": 1.087,
+    "2023": 1.244,
+    "2024": 1.125,
+    "2025": 1.094,
+    "2026": 0.784
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "FRA": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0022,
+     "central": 0.0063,
+     "high": 0.0152
+    },
+    "2022": {
+     "low": 0.0013,
+     "central": 0.0037,
+     "high": 0.0089
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0047,
+     "central": 0.0134,
+     "high": 0.0322
+    },
+    "2022": {
+     "low": 0.0018,
+     "central": 0.0051,
+     "high": 0.0121
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0033,
+     "central": 0.0093,
+     "high": 0.0223
+    },
+    "2022": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0102
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0033,
+     "central": 0.0093,
+     "high": 0.0223
+    },
+    "2022": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0102
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0111,
+     "central": 0.0345,
+     "high": 0.0893
+    },
+    "2022": {
+     "low": 0.0178,
+     "central": 0.054,
+     "high": 0.138
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0139,
+    "central": 0.0431,
+    "high": 0.1116
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0259,
+    "2022": 0.0335,
+    "2023": 0.0033,
+    "2024": 0.003,
+    "2025": 0.0029,
+    "2026": 0.0021
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0259,
+    "2022": 0.0335,
+    "2023": 0.0033,
+    "2024": 0.003,
+    "2025": 0.0029,
+    "2026": 0.0022
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 1.332,
+    "2022": 1.612,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "GBR": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0089,
+     "central": 0.0253,
+     "high": 0.0607
+    },
+    "2022": {
+     "low": 0.0039,
+     "central": 0.0111,
+     "high": 0.0266
+    },
+    "2023": {
+     "low": 0.0008,
+     "central": 0.0024,
+     "high": 0.0058
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0021
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0033
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0047,
+     "central": 0.0134,
+     "high": 0.0322
+    },
+    "2022": {
+     "low": 0.0018,
+     "central": 0.0051,
+     "high": 0.0121
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0071,
+     "central": 0.0203,
+     "high": 0.0487
+    },
+    "2022": {
+     "low": 0.003,
+     "central": 0.0085,
+     "high": 0.0205
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0034
+    },
+    "2024": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0012
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0003
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.0019
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0071,
+     "central": 0.0203,
+     "high": 0.0487
+    },
+    "2022": {
+     "low": 0.003,
+     "central": 0.0085,
+     "high": 0.0205
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0034
+    },
+    "2024": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0012
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0003
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.0019
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.028,
+     "central": 0.0869,
+     "high": 0.225
+    },
+    "2022": {
+     "low": 0.0458,
+     "central": 0.1388,
+     "high": 0.3545
+    },
+    "2023": {
+     "low": 0.0161,
+     "central": 0.0474,
+     "high": 0.1166
+    },
+    "2024": {
+     "low": 0.0094,
+     "central": 0.0275,
+     "high": 0.0675
+    },
+    "2025": {
+     "low": 0.0071,
+     "central": 0.0208,
+     "high": 0.0513
+    },
+    "2026": {
+     "low": 0.0095,
+     "central": 0.0281,
+     "high": 0.0697
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0169,
+    "2022": 0.0247,
+    "2023": 0.0222,
+    "2024": 0.0203,
+    "2025": 0.0195,
+    "2026": 0.0138
+   },
+   "baseline_2019_2021": {
+    "low": 0.0345,
+    "central": 0.1074,
+    "high": 0.278
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.1065,
+    "2022": 0.2336,
+    "2023": 0.0731,
+    "2024": 0.0203,
+    "2025": 0.0195,
+    "2026": 0.0138
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.1065,
+    "2022": 0.2336,
+    "2023": 0.0731,
+    "2024": 0.0203,
+    "2025": 0.0195,
+    "2026": 0.0147
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.816,
+    "2022": 0.594,
+    "2023": 0.648,
+    "2024": 1.355,
+    "2025": 1.067,
+    "2026": 2.036
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "GEO": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.002
+    },
+    "2023": {
+     "low": 0.0009,
+     "central": 0.0025,
+     "high": 0.0059
+    },
+    "2024": {
+     "low": 0.0014,
+     "central": 0.0041,
+     "high": 0.0098
+    },
+    "2025": {
+     "low": 0.0013,
+     "central": 0.0037,
+     "high": 0.0089
+    },
+    "2026": {
+     "low": 0.0009,
+     "central": 0.0026,
+     "high": 0.0063
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.001
+    },
+    "2023": {
+     "low": 0.0006,
+     "central": 0.0017,
+     "high": 0.0041
+    },
+    "2024": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2025": {
+     "low": 0.0004,
+     "central": 0.0012,
+     "high": 0.0029
+    },
+    "2026": {
+     "low": 0.0004,
+     "central": 0.001,
+     "high": 0.0024
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0007,
+     "high": 0.0016
+    },
+    "2023": {
+     "low": 0.0008,
+     "central": 0.0021,
+     "high": 0.0052
+    },
+    "2024": {
+     "low": 0.0011,
+     "central": 0.0033,
+     "high": 0.0078
+    },
+    "2025": {
+     "low": 0.0009,
+     "central": 0.0027,
+     "high": 0.0064
+    },
+    "2026": {
+     "low": 0.0007,
+     "central": 0.0019,
+     "high": 0.0046
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0007,
+     "high": 0.0016
+    },
+    "2023": {
+     "low": 0.0008,
+     "central": 0.0021,
+     "high": 0.0052
+    },
+    "2024": {
+     "low": 0.0011,
+     "central": 0.0033,
+     "high": 0.0078
+    },
+    "2025": {
+     "low": 0.0009,
+     "central": 0.0027,
+     "high": 0.0064
+    },
+    "2026": {
+     "low": 0.0007,
+     "central": 0.0019,
+     "high": 0.0046
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0029,
+     "central": 0.0087,
+     "high": 0.0221
+    },
+    "2023": {
+     "low": 0.0114,
+     "central": 0.0336,
+     "high": 0.0826
+    },
+    "2024": {
+     "low": 0.0139,
+     "central": 0.0406,
+     "high": 0.0999
+    },
+    "2025": {
+     "low": 0.01,
+     "central": 0.0294,
+     "high": 0.0725
+    },
+    "2026": {
+     "low": 0.0103,
+     "central": 0.0303,
+     "high": 0.0751
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0,
+    "2022": 0.008,
+    "2023": 0.0393,
+    "2024": 0.0447,
+    "2025": 0.0382,
+    "2026": 0.0556
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0,
+    "2022": 0.008,
+    "2023": 0.0393,
+    "2024": 0.0447,
+    "2025": 0.0382,
+    "2026": 0.0592
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": null,
+    "2022": 1.087,
+    "2023": 0.855,
+    "2024": 0.908,
+    "2025": 0.77,
+    "2026": 0.545
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "GRC": {
+   "share_crude": {
+    "2021": {
+     "low": 0.2573,
+     "central": 0.31,
+     "high": 0.3627
+    },
+    "2022": {
+     "low": 0.328,
+     "central": 0.4,
+     "high": 0.46
+    },
+    "2023": {
+     "low": 0.224,
+     "central": 0.28,
+     "high": 0.336
+    },
+    "2024": {
+     "low": 0.0975,
+     "central": 0.13,
+     "high": 0.169
+    },
+    "2025": {
+     "low": 0.187,
+     "central": 0.22,
+     "high": 0.253
+    },
+    "2026": {
+     "low": 0.063,
+     "central": 0.09,
+     "high": 0.1215
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.2324,
+     "central": 0.28,
+     "high": 0.3276
+    },
+    "2022": {
+     "low": 0.3116,
+     "central": 0.38,
+     "high": 0.437
+    },
+    "2023": {
+     "low": 0.264,
+     "central": 0.33,
+     "high": 0.396
+    },
+    "2024": {
+     "low": 0.2475,
+     "central": 0.33,
+     "high": 0.429
+    },
+    "2025": {
+     "low": 0.306,
+     "central": 0.36,
+     "high": 0.414
+    },
+    "2026": {
+     "low": 0.189,
+     "central": 0.27,
+     "high": 0.3645
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.2468,
+     "central": 0.2974,
+     "high": 0.348
+    },
+    "2022": {
+     "low": 0.3211,
+     "central": 0.3916,
+     "high": 0.4503
+    },
+    "2023": {
+     "low": 0.2408,
+     "central": 0.301,
+     "high": 0.3612
+    },
+    "2024": {
+     "low": 0.1605,
+     "central": 0.214,
+     "high": 0.2782
+    },
+    "2025": {
+     "low": 0.237,
+     "central": 0.2788,
+     "high": 0.3206
+    },
+    "2026": {
+     "low": 0.1159,
+     "central": 0.1656,
+     "high": 0.2236
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.2468,
+     "central": 0.2974,
+     "high": 0.348
+    },
+    "2022": {
+     "low": 0.3211,
+     "central": 0.3916,
+     "high": 0.4503
+    },
+    "2023": {
+     "low": 0.2408,
+     "central": 0.301,
+     "high": 0.3612
+    },
+    "2024": {
+     "low": 0.1605,
+     "central": 0.214,
+     "high": 0.2782
+    },
+    "2025": {
+     "low": 0.237,
+     "central": 0.2788,
+     "high": 0.3206
+    },
+    "2026": {
+     "low": 0.1159,
+     "central": 0.1656,
+     "high": 0.2236
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.7651,
+     "central": 1.2233,
+     "high": 1.8311
+    },
+    "2022": {
+     "low": 3.5283,
+     "central": 5.3067,
+     "high": 7.6394
+    },
+    "2023": {
+     "low": 3.3109,
+     "central": 4.6688,
+     "high": 6.1518
+    },
+    "2024": {
+     "low": 1.7154,
+     "central": 2.4688,
+     "high": 3.4485
+    },
+    "2025": {
+     "low": 2.1233,
+     "central": 2.8572,
+     "high": 3.7179
+    },
+    "2026": {
+     "low": 1.229,
+     "central": 1.9125,
+     "high": 2.8069
+    }
+   },
+   "freight_lng": {
+    "2021": 0.1691,
+    "2022": 0.2469,
+    "2023": 0.222,
+    "2024": 0.2033,
+    "2025": 0.1947,
+    "2026": 0.1376
+   },
+   "baseline_2019_2021": {
+    "low": 0.9467,
+    "central": 1.5137,
+    "high": 2.2658
+   },
+   "certainty": "B",
+   "shipping_json_freight_central": {
+    "2021": 1.0282,
+    "2022": 4.1785,
+    "2023": 4.4807,
+    "2024": 2.1406,
+    "2025": 2.1699,
+    "2026": 1.1145
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 1.0282,
+    "2022": 4.1785,
+    "2023": 4.4807,
+    "2024": 2.1406,
+    "2025": 2.1699,
+    "2026": 1.1869
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 1.19,
+    "2022": 1.27,
+    "2023": 1.042,
+    "2024": 1.153,
+    "2025": 1.317,
+    "2026": 1.716
+   },
+   "reasoning": "Mainstream (G7+-linked, price-cap) fleet only. Greek beneficial owners' share of Russian seaborne barrels: crude 31% pre-war (Lloyd's List: a third of oil shipments Aug 2021), 40% in 2022 (LL: 50% of oil shipments Aug 2022, 42% of crude Oct 2022), 28% in 2023 (S&P: G7 tankers 52% of crude May 2023, Greeks 20%+ by Dec 2023), 13% in 2024 (S&P: Greek operators 11.5m bbl Jan, 16.6m bbl Feb 2024), 22% in 2025 (Kpler Jan-Jul 33% of crude; Windward 27% Jun, 16% Aug, <5% Nov after the EU cap cut), 9% in Jan-Aug 2026 (KSE top-10: Dynacom 3-6% of crude May-Aug, 2-5 Greek firms in the top 10). Products 28-38% throughout (Kpler 51% of fuel oil; Windward 43% of clean products Jun 2025; KSE: Greek firms hold 6-9 of the top-10 product shipper spots 2024-26). Cross-check: FT found USD 3.8bn for 389m priced barrels of crude Jul 2023-mid 2026 (scaled ~USD 1.8bn/yr); this model gives ~USD 1.65bn/yr for the same window. Greek-sold tankers now in the shadow fleet are NOT counted here (they are in shipping.json ship_sales).",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)",
+    "Lloyd's List",
+    "S&P Global",
+    "Kpler via Hellenic Shipping News",
+    "Windward",
+    "FT via GreekReporter"
+   ]
+  },
+  "HKG": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0159,
+     "central": 0.0289,
+     "high": 0.049
+    },
+    "2022": {
+     "low": 0.013,
+     "central": 0.0237,
+     "high": 0.0402
+    },
+    "2023": {
+     "low": 0.0232,
+     "central": 0.0422,
+     "high": 0.0717
+    },
+    "2024": {
+     "low": 0.0446,
+     "central": 0.0811,
+     "high": 0.1379
+    },
+    "2025": {
+     "low": 0.0458,
+     "central": 0.0832,
+     "high": 0.1414
+    },
+    "2026": {
+     "low": 0.0582,
+     "central": 0.1059,
+     "high": 0.18
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0114,
+     "central": 0.0207,
+     "high": 0.0353
+    },
+    "2022": {
+     "low": 0.0108,
+     "central": 0.0197,
+     "high": 0.0335
+    },
+    "2023": {
+     "low": 0.016,
+     "central": 0.0292,
+     "high": 0.0496
+    },
+    "2024": {
+     "low": 0.0261,
+     "central": 0.0474,
+     "high": 0.0806
+    },
+    "2025": {
+     "low": 0.0212,
+     "central": 0.0386,
+     "high": 0.0657
+    },
+    "2026": {
+     "low": 0.0278,
+     "central": 0.0505,
+     "high": 0.0859
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.014,
+     "central": 0.0254,
+     "high": 0.0433
+    },
+    "2022": {
+     "low": 0.0121,
+     "central": 0.022,
+     "high": 0.0374
+    },
+    "2023": {
+     "low": 0.0202,
+     "central": 0.0367,
+     "high": 0.0624
+    },
+    "2024": {
+     "low": 0.0368,
+     "central": 0.067,
+     "high": 0.1138
+    },
+    "2025": {
+     "low": 0.0355,
+     "central": 0.0645,
+     "high": 0.1096
+    },
+    "2026": {
+     "low": 0.0454,
+     "central": 0.0826,
+     "high": 0.1405
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0091,
+     "central": 0.0166,
+     "high": 0.0283
+    },
+    "2022": {
+     "low": 0.0082,
+     "central": 0.0149,
+     "high": 0.0254
+    },
+    "2023": {
+     "low": 0.0069,
+     "central": 0.0126,
+     "high": 0.0214
+    },
+    "2024": {
+     "low": 0.0035,
+     "central": 0.0064,
+     "high": 0.0108
+    },
+    "2025": {
+     "low": 0.0031,
+     "central": 0.0056,
+     "high": 0.0095
+    },
+    "2026": {
+     "low": 0.0056,
+     "central": 0.0102,
+     "high": 0.0174
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0049,
+     "central": 0.0088,
+     "high": 0.015
+    },
+    "2022": {
+     "low": 0.0039,
+     "central": 0.0071,
+     "high": 0.012
+    },
+    "2023": {
+     "low": 0.0133,
+     "central": 0.0241,
+     "high": 0.041
+    },
+    "2024": {
+     "low": 0.0333,
+     "central": 0.0606,
+     "high": 0.103
+    },
+    "2025": {
+     "low": 0.0324,
+     "central": 0.0589,
+     "high": 0.1001
+    },
+    "2026": {
+     "low": 0.0398,
+     "central": 0.0724,
+     "high": 0.1231
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0391,
+     "central": 0.0817,
+     "high": 0.1562
+    },
+    "2022": {
+     "low": 0.1282,
+     "central": 0.2571,
+     "high": 0.482
+    },
+    "2023": {
+     "low": 0.2392,
+     "central": 0.4593,
+     "high": 0.8118
+    },
+    "2024": {
+     "low": 0.3084,
+     "central": 0.5839,
+     "high": 1.032
+    },
+    "2025": {
+     "low": 0.2461,
+     "central": 0.4701,
+     "high": 0.836
+    },
+    "2026": {
+     "low": 0.4446,
+     "central": 0.8537,
+     "high": 1.5278
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0554,
+    "central": 0.1156,
+    "high": 0.221
+   },
+   "certainty": "C",
+   "shipping_json_freight_central": {
+    "2021": 0.071,
+    "2022": 0.3846,
+    "2023": 0.9008,
+    "2024": 0.8912,
+    "2025": 0.7646,
+    "2026": 1.1611
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.071,
+    "2022": 0.3846,
+    "2023": 0.5855,
+    "2024": 0.5971,
+    "2025": 0.4435,
+    "2026": 0.7667
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 1.151,
+    "2022": 0.668,
+    "2023": 0.51,
+    "2024": 0.655,
+    "2025": 0.615,
+    "2026": 0.735
+   },
+   "reasoning": "45% of KSE 'China' managers assumed Hong Kong-registered (Glory Shipping HK, Eurus HKG etc.); 65% treated as foreign, since Sovcomflot-chain tankers also use Hong Kong shells (Comitana, Insania, Vimena, Anchorstar). Plus 21% of the opaque remainder.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "IDN": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0004,
+     "central": 0.0011,
+     "high": 0.0026
+    },
+    "2023": {
+     "low": 0.0028,
+     "central": 0.0081,
+     "high": 0.0195
+    },
+    "2024": {
+     "low": 0.0025,
+     "central": 0.0072,
+     "high": 0.0173
+    },
+    "2025": {
+     "low": 0.0019,
+     "central": 0.0053,
+     "high": 0.0128
+    },
+    "2026": {
+     "low": 0.0022,
+     "central": 0.0062,
+     "high": 0.0149
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0006,
+     "high": 0.0013
+    },
+    "2023": {
+     "low": 0.0043,
+     "central": 0.0122,
+     "high": 0.0293
+    },
+    "2024": {
+     "low": 0.0037,
+     "central": 0.0106,
+     "high": 0.0255
+    },
+    "2025": {
+     "low": 0.0047,
+     "central": 0.0133,
+     "high": 0.032
+    },
+    "2026": {
+     "low": 0.005,
+     "central": 0.0142,
+     "high": 0.0342
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0021
+    },
+    "2023": {
+     "low": 0.0034,
+     "central": 0.0098,
+     "high": 0.0236
+    },
+    "2024": {
+     "low": 0.003,
+     "central": 0.0086,
+     "high": 0.0208
+    },
+    "2025": {
+     "low": 0.003,
+     "central": 0.0087,
+     "high": 0.0208
+    },
+    "2026": {
+     "low": 0.0034,
+     "central": 0.0096,
+     "high": 0.023
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0024,
+     "central": 0.007,
+     "high": 0.0167
+    },
+    "2024": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0103
+    },
+    "2025": {
+     "low": 0.0018,
+     "central": 0.0051,
+     "high": 0.0123
+    },
+    "2026": {
+     "low": 0.0025,
+     "central": 0.007,
+     "high": 0.0168
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0021
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.0029,
+     "high": 0.0069
+    },
+    "2024": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0104
+    },
+    "2025": {
+     "low": 0.0012,
+     "central": 0.0035,
+     "high": 0.0085
+    },
+    "2026": {
+     "low": 0.0009,
+     "central": 0.0026,
+     "high": 0.0062
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0038,
+     "central": 0.0115,
+     "high": 0.0295
+    },
+    "2023": {
+     "low": 0.0478,
+     "central": 0.1411,
+     "high": 0.3468
+    },
+    "2024": {
+     "low": 0.0333,
+     "central": 0.0973,
+     "high": 0.2392
+    },
+    "2025": {
+     "low": 0.0269,
+     "central": 0.0791,
+     "high": 0.1952
+    },
+    "2026": {
+     "low": 0.037,
+     "central": 0.1091,
+     "high": 0.2703
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026": 0
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026": 0.0
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "IND": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0094,
+     "central": 0.017,
+     "high": 0.0289
+    },
+    "2022": {
+     "low": 0.0129,
+     "central": 0.0235,
+     "high": 0.0399
+    },
+    "2023": {
+     "low": 0.0304,
+     "central": 0.0552,
+     "high": 0.0938
+    },
+    "2024": {
+     "low": 0.0244,
+     "central": 0.0444,
+     "high": 0.0755
+    },
+    "2025": {
+     "low": 0.0268,
+     "central": 0.0487,
+     "high": 0.0829
+    },
+    "2026": {
+     "low": 0.0291,
+     "central": 0.0529,
+     "high": 0.0899
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0068,
+     "central": 0.0123,
+     "high": 0.0209
+    },
+    "2022": {
+     "low": 0.0097,
+     "central": 0.0177,
+     "high": 0.0301
+    },
+    "2023": {
+     "low": 0.0209,
+     "central": 0.038,
+     "high": 0.0647
+    },
+    "2024": {
+     "low": 0.0183,
+     "central": 0.0332,
+     "high": 0.0565
+    },
+    "2025": {
+     "low": 0.0213,
+     "central": 0.0386,
+     "high": 0.0657
+    },
+    "2026": {
+     "low": 0.0219,
+     "central": 0.0398,
+     "high": 0.0677
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0083,
+     "central": 0.015,
+     "high": 0.0256
+    },
+    "2022": {
+     "low": 0.0116,
+     "central": 0.0211,
+     "high": 0.0358
+    },
+    "2023": {
+     "low": 0.0264,
+     "central": 0.048,
+     "high": 0.0816
+    },
+    "2024": {
+     "low": 0.0218,
+     "central": 0.0397,
+     "high": 0.0675
+    },
+    "2025": {
+     "low": 0.0245,
+     "central": 0.0445,
+     "high": 0.0757
+    },
+    "2026": {
+     "low": 0.0261,
+     "central": 0.0474,
+     "high": 0.0806
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0046,
+     "central": 0.0083,
+     "high": 0.0141
+    },
+    "2022": {
+     "low": 0.0094,
+     "central": 0.0171,
+     "high": 0.029
+    },
+    "2023": {
+     "low": 0.0138,
+     "central": 0.0252,
+     "high": 0.0428
+    },
+    "2024": {
+     "low": 0.007,
+     "central": 0.0127,
+     "high": 0.0216
+    },
+    "2025": {
+     "low": 0.0061,
+     "central": 0.0112,
+     "high": 0.019
+    },
+    "2026": {
+     "low": 0.0112,
+     "central": 0.0204,
+     "high": 0.0347
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0037,
+     "central": 0.0067,
+     "high": 0.0114
+    },
+    "2022": {
+     "low": 0.0022,
+     "central": 0.004,
+     "high": 0.0068
+    },
+    "2023": {
+     "low": 0.0126,
+     "central": 0.0228,
+     "high": 0.0388
+    },
+    "2024": {
+     "low": 0.0148,
+     "central": 0.027,
+     "high": 0.0459
+    },
+    "2025": {
+     "low": 0.0183,
+     "central": 0.0333,
+     "high": 0.0567
+    },
+    "2026": {
+     "low": 0.0148,
+     "central": 0.027,
+     "high": 0.0459
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0252,
+     "central": 0.0527,
+     "high": 0.1007
+    },
+    "2022": {
+     "low": 0.1371,
+     "central": 0.2751,
+     "high": 0.5157
+    },
+    "2023": {
+     "low": 0.3915,
+     "central": 0.7518,
+     "high": 1.3288
+    },
+    "2024": {
+     "low": 0.2536,
+     "central": 0.48,
+     "high": 0.8484
+    },
+    "2025": {
+     "low": 0.2402,
+     "central": 0.4589,
+     "high": 0.8161
+    },
+    "2026": {
+     "low": 0.3516,
+     "central": 0.6752,
+     "high": 1.2084
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0327,
+    "central": 0.0683,
+    "high": 0.1306
+   },
+   "certainty": "C",
+   "shipping_json_freight_central": {
+    "2021": 0.0355,
+    "2022": 0.3371,
+    "2023": 1.0432,
+    "2024": 0.9862,
+    "2025": 0.7168,
+    "2026": 0.9358
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0355,
+    "2022": 0.3371,
+    "2023": 0.6468,
+    "2024": 0.1677,
+    "2025": 0.1935,
+    "2026": 0.2292
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 1.485,
+    "2022": 0.816,
+    "2023": 0.721,
+    "2024": 0.487,
+    "2025": 0.64,
+    "2026": 0.722
+   },
+   "reasoning": "Gatik Ship Management (Mumbai, 2022-23, ~58 tankers, suspected Rosneft link) and later Indian technical managers for Seychelles/Marshall Islands owners: KSE India-managed 1-4% of barrels; 45-55% treated as Indian-controlled, plus 16% of the opaque remainder and IG-insured Indian owners in the mainstream trade.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "ITA": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0022,
+     "central": 0.0063,
+     "high": 0.0152
+    },
+    "2022": {
+     "low": 0.0013,
+     "central": 0.0037,
+     "high": 0.0089
+    },
+    "2023": {
+     "low": 0.0008,
+     "central": 0.0024,
+     "high": 0.0058
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0021
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0033
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.007,
+     "central": 0.0201,
+     "high": 0.0482
+    },
+    "2022": {
+     "low": 0.0035,
+     "central": 0.0101,
+     "high": 0.0242
+    },
+    "2023": {
+     "low": 0.0023,
+     "central": 0.0066,
+     "high": 0.0158
+    },
+    "2024": {
+     "low": 0.0018,
+     "central": 0.0052,
+     "high": 0.0125
+    },
+    "2025": {
+     "low": 0.0027,
+     "central": 0.0078,
+     "high": 0.0187
+    },
+    "2026": {
+     "low": 0.003,
+     "central": 0.0086,
+     "high": 0.0206
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0042,
+     "central": 0.0121,
+     "high": 0.0291
+    },
+    "2022": {
+     "low": 0.0022,
+     "central": 0.0064,
+     "high": 0.0153
+    },
+    "2023": {
+     "low": 0.0015,
+     "central": 0.0042,
+     "high": 0.01
+    },
+    "2024": {
+     "low": 0.0009,
+     "central": 0.0027,
+     "high": 0.0065
+    },
+    "2025": {
+     "low": 0.0012,
+     "central": 0.0034,
+     "high": 0.0081
+    },
+    "2026": {
+     "low": 0.0015,
+     "central": 0.0044,
+     "high": 0.0106
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0042,
+     "central": 0.0121,
+     "high": 0.0291
+    },
+    "2022": {
+     "low": 0.0022,
+     "central": 0.0064,
+     "high": 0.0153
+    },
+    "2023": {
+     "low": 0.0015,
+     "central": 0.0042,
+     "high": 0.01
+    },
+    "2024": {
+     "low": 0.0009,
+     "central": 0.0027,
+     "high": 0.0065
+    },
+    "2025": {
+     "low": 0.0012,
+     "central": 0.0034,
+     "high": 0.0081
+    },
+    "2026": {
+     "low": 0.0015,
+     "central": 0.0044,
+     "high": 0.0106
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0147,
+     "central": 0.0458,
+     "high": 0.1186
+    },
+    "2022": {
+     "low": 0.0257,
+     "central": 0.078,
+     "high": 0.1992
+    },
+    "2023": {
+     "low": 0.0189,
+     "central": 0.0558,
+     "high": 0.1371
+    },
+    "2024": {
+     "low": 0.009,
+     "central": 0.0263,
+     "high": 0.0648
+    },
+    "2025": {
+     "low": 0.0089,
+     "central": 0.0262,
+     "high": 0.0646
+    },
+    "2026": {
+     "low": 0.0139,
+     "central": 0.041,
+     "high": 0.1016
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0182,
+    "central": 0.0566,
+    "high": 0.1465
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0431,
+    "2022": 0.0559,
+    "2023": 0.0055,
+    "2024": 0.0051,
+    "2025": 0.0049,
+    "2026": 0.0034
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0431,
+    "2022": 0.0559,
+    "2023": 0.0055,
+    "2024": 0.0051,
+    "2025": 0.0049,
+    "2026": 0.0036
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 1.063,
+    "2022": 1.395,
+    "2023": 10.145,
+    "2024": 5.157,
+    "2025": 5.347,
+    "2026": 12.059
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "JPN": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0066,
+     "central": 0.019,
+     "high": 0.0455
+    },
+    "2022": {
+     "low": 0.0026,
+     "central": 0.0074,
+     "high": 0.0177
+    },
+    "2023": {
+     "low": 0.0017,
+     "central": 0.0048,
+     "high": 0.0116
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.0018,
+     "high": 0.0043
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0009
+    },
+    "2026": {
+     "low": 0.001,
+     "central": 0.0028,
+     "high": 0.0066
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0039,
+     "central": 0.011,
+     "high": 0.0264
+    },
+    "2022": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0103
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.0028,
+     "high": 0.0067
+    },
+    "2024": {
+     "low": 0.0004,
+     "central": 0.001,
+     "high": 0.0025
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2026": {
+     "low": 0.0006,
+     "central": 0.0016,
+     "high": 0.0038
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0039,
+     "central": 0.011,
+     "high": 0.0264
+    },
+    "2022": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0103
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.0028,
+     "high": 0.0067
+    },
+    "2024": {
+     "low": 0.0004,
+     "central": 0.001,
+     "high": 0.0025
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2026": {
+     "low": 0.0006,
+     "central": 0.0016,
+     "high": 0.0038
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0522,
+     "central": 0.1624,
+     "high": 0.4203
+    },
+    "2022": {
+     "low": 0.0809,
+     "central": 0.2452,
+     "high": 0.6265
+    },
+    "2023": {
+     "low": 0.0735,
+     "central": 0.2169,
+     "high": 0.5334
+    },
+    "2024": {
+     "low": 0.057,
+     "central": 0.1667,
+     "high": 0.4099
+    },
+    "2025": {
+     "low": 0.0505,
+     "central": 0.1487,
+     "high": 0.3669
+    },
+    "2026": {
+     "low": 0.0447,
+     "central": 0.1319,
+     "high": 0.3269
+    }
+   },
+   "freight_lng": {
+    "2021": 0.1268,
+    "2022": 0.1852,
+    "2023": 0.1665,
+    "2024": 0.1524,
+    "2025": 0.146,
+    "2026": 0.1032
+   },
+   "baseline_2019_2021": {
+    "low": 0.0534,
+    "central": 0.166,
+    "high": 0.4298
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.164,
+    "2022": 0.2659,
+    "2023": 0.1665,
+    "2024": 0.1524,
+    "2025": 0.146,
+    "2026": 0.1032
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.164,
+    "2022": 0.2659,
+    "2023": 0.1665,
+    "2024": 0.1524,
+    "2025": 0.146,
+    "2026": 0.1099
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.99,
+    "2022": 0.922,
+    "2023": 1.303,
+    "2024": 1.094,
+    "2025": 1.018,
+    "2026": 1.278
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "KOR": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0033,
+     "central": 0.0095,
+     "high": 0.0228
+    },
+    "2022": {
+     "low": 0.0013,
+     "central": 0.0037,
+     "high": 0.0089
+    },
+    "2023": {
+     "low": 0.0008,
+     "central": 0.0024,
+     "high": 0.0058
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0021
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0033
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0019,
+     "central": 0.0055,
+     "high": 0.0132
+    },
+    "2022": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0034
+    },
+    "2024": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0012
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0003
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.0019
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0019,
+     "central": 0.0055,
+     "high": 0.0132
+    },
+    "2022": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0034
+    },
+    "2024": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0012
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0003
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.0019
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0057,
+     "central": 0.0178,
+     "high": 0.046
+    },
+    "2022": {
+     "low": 0.0099,
+     "central": 0.03,
+     "high": 0.0767
+    },
+    "2023": {
+     "low": 0.0086,
+     "central": 0.0252,
+     "high": 0.062
+    },
+    "2024": {
+     "low": 0.0024,
+     "central": 0.0071,
+     "high": 0.0175
+    },
+    "2025": {
+     "low": 0.0004,
+     "central": 0.0013,
+     "high": 0.0033
+    },
+    "2026": {
+     "low": 0.0049,
+     "central": 0.0144,
+     "high": 0.0356
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0078,
+    "central": 0.0243,
+    "high": 0.0629
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0186,
+    "2022": 0.0807,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0186,
+    "2022": 0.0807,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.957,
+    "2022": 0.372,
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "KWT": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0017,
+     "central": 0.0048,
+     "high": 0.0116
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.0018,
+     "high": 0.0043
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0009
+    },
+    "2026": {
+     "low": 0.001,
+     "central": 0.0028,
+     "high": 0.0066
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0047,
+     "central": 0.0134,
+     "high": 0.0322
+    },
+    "2022": {
+     "low": 0.0071,
+     "central": 0.0202,
+     "high": 0.0485
+    },
+    "2023": {
+     "low": 0.0115,
+     "central": 0.033,
+     "high": 0.0792
+    },
+    "2024": {
+     "low": 0.0091,
+     "central": 0.026,
+     "high": 0.0624
+    },
+    "2025": {
+     "low": 0.0137,
+     "central": 0.039,
+     "high": 0.0936
+    },
+    "2026": {
+     "low": 0.015,
+     "central": 0.043,
+     "high": 0.1032
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.002,
+     "central": 0.0056,
+     "high": 0.0135
+    },
+    "2022": {
+     "low": 0.003,
+     "central": 0.0085,
+     "high": 0.0204
+    },
+    "2023": {
+     "low": 0.0058,
+     "central": 0.0167,
+     "high": 0.04
+    },
+    "2024": {
+     "low": 0.0042,
+     "central": 0.0119,
+     "high": 0.0287
+    },
+    "2025": {
+     "low": 0.0058,
+     "central": 0.0166,
+     "high": 0.0398
+    },
+    "2026": {
+     "low": 0.0069,
+     "central": 0.0197,
+     "high": 0.0472
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.002,
+     "central": 0.0056,
+     "high": 0.0135
+    },
+    "2022": {
+     "low": 0.003,
+     "central": 0.0085,
+     "high": 0.0204
+    },
+    "2023": {
+     "low": 0.0058,
+     "central": 0.0167,
+     "high": 0.04
+    },
+    "2024": {
+     "low": 0.0042,
+     "central": 0.0119,
+     "high": 0.0287
+    },
+    "2025": {
+     "low": 0.0058,
+     "central": 0.0166,
+     "high": 0.0398
+    },
+    "2026": {
+     "low": 0.0069,
+     "central": 0.0197,
+     "high": 0.0472
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0073,
+     "central": 0.0227,
+     "high": 0.0587
+    },
+    "2022": {
+     "low": 0.0317,
+     "central": 0.0959,
+     "high": 0.2451
+    },
+    "2023": {
+     "low": 0.0688,
+     "central": 0.2031,
+     "high": 0.4992
+    },
+    "2024": {
+     "low": 0.0377,
+     "central": 0.1103,
+     "high": 0.2713
+    },
+    "2025": {
+     "low": 0.0431,
+     "central": 0.1269,
+     "high": 0.3132
+    },
+    "2026": {
+     "low": 0.0549,
+     "central": 0.1618,
+     "high": 0.401
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0087,
+    "central": 0.0269,
+    "high": 0.0697
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026": 0
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026": 0.0
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": null,
+    "2022": null,
+    "2023": null,
+    "2024": null,
+    "2025": null,
+    "2026": null
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "MCO": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0022,
+     "central": 0.0063,
+     "high": 0.0152
+    },
+    "2022": {
+     "low": 0.0013,
+     "central": 0.0037,
+     "high": 0.0089
+    },
+    "2023": {
+     "low": 0.0008,
+     "central": 0.0024,
+     "high": 0.0058
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0021
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0033
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.007,
+     "central": 0.0201,
+     "high": 0.0482
+    },
+    "2022": {
+     "low": 0.0035,
+     "central": 0.0101,
+     "high": 0.0242
+    },
+    "2023": {
+     "low": 0.0023,
+     "central": 0.0066,
+     "high": 0.0158
+    },
+    "2024": {
+     "low": 0.0018,
+     "central": 0.0052,
+     "high": 0.0125
+    },
+    "2025": {
+     "low": 0.0027,
+     "central": 0.0078,
+     "high": 0.0187
+    },
+    "2026": {
+     "low": 0.003,
+     "central": 0.0086,
+     "high": 0.0206
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0042,
+     "central": 0.0121,
+     "high": 0.0291
+    },
+    "2022": {
+     "low": 0.0022,
+     "central": 0.0064,
+     "high": 0.0153
+    },
+    "2023": {
+     "low": 0.0015,
+     "central": 0.0042,
+     "high": 0.01
+    },
+    "2024": {
+     "low": 0.0009,
+     "central": 0.0027,
+     "high": 0.0065
+    },
+    "2025": {
+     "low": 0.0012,
+     "central": 0.0034,
+     "high": 0.0081
+    },
+    "2026": {
+     "low": 0.0015,
+     "central": 0.0044,
+     "high": 0.0106
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0042,
+     "central": 0.0121,
+     "high": 0.0291
+    },
+    "2022": {
+     "low": 0.0022,
+     "central": 0.0064,
+     "high": 0.0153
+    },
+    "2023": {
+     "low": 0.0015,
+     "central": 0.0042,
+     "high": 0.01
+    },
+    "2024": {
+     "low": 0.0009,
+     "central": 0.0027,
+     "high": 0.0065
+    },
+    "2025": {
+     "low": 0.0012,
+     "central": 0.0034,
+     "high": 0.0081
+    },
+    "2026": {
+     "low": 0.0015,
+     "central": 0.0044,
+     "high": 0.0106
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0147,
+     "central": 0.0458,
+     "high": 0.1186
+    },
+    "2022": {
+     "low": 0.0257,
+     "central": 0.078,
+     "high": 0.1992
+    },
+    "2023": {
+     "low": 0.0189,
+     "central": 0.0558,
+     "high": 0.1371
+    },
+    "2024": {
+     "low": 0.009,
+     "central": 0.0263,
+     "high": 0.0648
+    },
+    "2025": {
+     "low": 0.0089,
+     "central": 0.0262,
+     "high": 0.0646
+    },
+    "2026": {
+     "low": 0.0139,
+     "central": 0.041,
+     "high": 0.1016
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0182,
+    "central": 0.0566,
+    "high": 0.1465
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0766,
+    "2022": 0.1285,
+    "2023": 0.0496,
+    "2024": 0.0215,
+    "2025": 0.0188,
+    "2026": 0.0021
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0766,
+    "2022": 0.1285,
+    "2023": 0.0496,
+    "2024": 0.0215,
+    "2025": 0.0188,
+    "2026": 0.0022
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.598,
+    "2022": 0.607,
+    "2023": 1.125,
+    "2024": 1.223,
+    "2025": 1.394,
+    "2026": 19.524
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "MLT": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0104,
+     "central": 0.019,
+     "high": 0.0322
+    },
+    "2022": {
+     "low": 0.0081,
+     "central": 0.0148,
+     "high": 0.0251
+    },
+    "2023": {
+     "low": 0.008,
+     "central": 0.0145,
+     "high": 0.0247
+    },
+    "2024": {
+     "low": 0.0029,
+     "central": 0.0053,
+     "high": 0.009
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0011,
+     "high": 0.002
+    },
+    "2026": {
+     "low": 0.0045,
+     "central": 0.0083,
+     "high": 0.014
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0147,
+     "central": 0.0268,
+     "high": 0.0456
+    },
+    "2022": {
+     "low": 0.0111,
+     "central": 0.0202,
+     "high": 0.0343
+    },
+    "2023": {
+     "low": 0.0109,
+     "central": 0.0198,
+     "high": 0.0337
+    },
+    "2024": {
+     "low": 0.0086,
+     "central": 0.0156,
+     "high": 0.0265
+    },
+    "2025": {
+     "low": 0.0129,
+     "central": 0.0234,
+     "high": 0.0398
+    },
+    "2026": {
+     "low": 0.0142,
+     "central": 0.0258,
+     "high": 0.0439
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0122,
+     "central": 0.0223,
+     "high": 0.0378
+    },
+    "2022": {
+     "low": 0.0094,
+     "central": 0.017,
+     "high": 0.029
+    },
+    "2023": {
+     "low": 0.0092,
+     "central": 0.0167,
+     "high": 0.0284
+    },
+    "2024": {
+     "low": 0.0053,
+     "central": 0.0096,
+     "high": 0.0164
+    },
+    "2025": {
+     "low": 0.0058,
+     "central": 0.0105,
+     "high": 0.0178
+    },
+    "2026": {
+     "low": 0.0086,
+     "central": 0.0156,
+     "high": 0.0266
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0122,
+     "central": 0.0223,
+     "high": 0.0378
+    },
+    "2022": {
+     "low": 0.0094,
+     "central": 0.017,
+     "high": 0.029
+    },
+    "2023": {
+     "low": 0.0092,
+     "central": 0.0167,
+     "high": 0.0284
+    },
+    "2024": {
+     "low": 0.0053,
+     "central": 0.0096,
+     "high": 0.0164
+    },
+    "2025": {
+     "low": 0.0058,
+     "central": 0.0105,
+     "high": 0.0178
+    },
+    "2026": {
+     "low": 0.0086,
+     "central": 0.0156,
+     "high": 0.0266
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0387,
+     "central": 0.0808,
+     "high": 0.1545
+    },
+    "2022": {
+     "low": 0.1077,
+     "central": 0.216,
+     "high": 0.405
+    },
+    "2023": {
+     "low": 0.1265,
+     "central": 0.243,
+     "high": 0.4294
+    },
+    "2024": {
+     "low": 0.0531,
+     "central": 0.1004,
+     "high": 0.1775
+    },
+    "2025": {
+     "low": 0.0432,
+     "central": 0.0825,
+     "high": 0.1466
+    },
+    "2026": {
+     "low": 0.0864,
+     "central": 0.166,
+     "high": 0.2971
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.049,
+    "central": 0.1025,
+    "high": 0.1958
+   },
+   "certainty": "C",
+   "shipping_json_freight_central": {
+    "2021": 0.0879,
+    "2022": 0.3039,
+    "2023": 0.2451,
+    "2024": 0.1303,
+    "2025": 0.1115,
+    "2026": 0.0727
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0879,
+    "2022": 0.3039,
+    "2023": 0.2451,
+    "2024": 0.1303,
+    "2025": 0.1115,
+    "2026": 0.0774
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.919,
+    "2022": 0.711,
+    "2023": 0.991,
+    "2024": 0.771,
+    "2025": 0.74,
+    "2026": 2.283
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty C.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "MYS": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0008,
+     "central": 0.0024,
+     "high": 0.0056
+    },
+    "2022": {
+     "low": 0.0008,
+     "central": 0.0022,
+     "high": 0.0054
+    },
+    "2023": {
+     "low": 0.0042,
+     "central": 0.0121,
+     "high": 0.029
+    },
+    "2024": {
+     "low": 0.0051,
+     "central": 0.0147,
+     "high": 0.0353
+    },
+    "2025": {
+     "low": 0.0047,
+     "central": 0.0134,
+     "high": 0.0323
+    },
+    "2026": {
+     "low": 0.004,
+     "central": 0.0114,
+     "high": 0.0275
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0006,
+     "central": 0.0017,
+     "high": 0.0042
+    },
+    "2022": {
+     "low": 0.0004,
+     "central": 0.0011,
+     "high": 0.0028
+    },
+    "2023": {
+     "low": 0.0029,
+     "central": 0.0083,
+     "high": 0.02
+    },
+    "2024": {
+     "low": 0.0033,
+     "central": 0.0093,
+     "high": 0.0224
+    },
+    "2025": {
+     "low": 0.0029,
+     "central": 0.0082,
+     "high": 0.0197
+    },
+    "2026": {
+     "low": 0.0027,
+     "central": 0.0077,
+     "high": 0.0184
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.005
+    },
+    "2022": {
+     "low": 0.0006,
+     "central": 0.0018,
+     "high": 0.0043
+    },
+    "2023": {
+     "low": 0.0037,
+     "central": 0.0105,
+     "high": 0.0252
+    },
+    "2024": {
+     "low": 0.0044,
+     "central": 0.0124,
+     "high": 0.0299
+    },
+    "2025": {
+     "low": 0.0039,
+     "central": 0.0112,
+     "high": 0.027
+    },
+    "2026": {
+     "low": 0.0034,
+     "central": 0.0099,
+     "high": 0.0236
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0015,
+     "central": 0.0042,
+     "high": 0.0101
+    },
+    "2024": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2025": {
+     "low": 0.0007,
+     "central": 0.0019,
+     "high": 0.0045
+    },
+    "2026": {
+     "low": 0.0012,
+     "central": 0.0034,
+     "high": 0.0082
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.005
+    },
+    "2022": {
+     "low": 0.0006,
+     "central": 0.0018,
+     "high": 0.0043
+    },
+    "2023": {
+     "low": 0.0022,
+     "central": 0.0063,
+     "high": 0.0152
+    },
+    "2024": {
+     "low": 0.0036,
+     "central": 0.0103,
+     "high": 0.0248
+    },
+    "2025": {
+     "low": 0.0033,
+     "central": 0.0094,
+     "high": 0.0225
+    },
+    "2026": {
+     "low": 0.0023,
+     "central": 0.0065,
+     "high": 0.0155
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0024,
+     "central": 0.0074,
+     "high": 0.0191
+    },
+    "2022": {
+     "low": 0.0078,
+     "central": 0.0237,
+     "high": 0.0606
+    },
+    "2023": {
+     "low": 0.0558,
+     "central": 0.1645,
+     "high": 0.4045
+    },
+    "2024": {
+     "low": 0.0522,
+     "central": 0.1528,
+     "high": 0.3756
+    },
+    "2025": {
+     "low": 0.0404,
+     "central": 0.1187,
+     "high": 0.2931
+    },
+    "2026": {
+     "low": 0.0485,
+     "central": 0.1431,
+     "high": 0.3547
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0031,
+    "central": 0.0095,
+    "high": 0.0247
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0,
+    "2022": 0.0319,
+    "2023": 0.172,
+    "2024": 0.1966,
+    "2025": 0.1688,
+    "2026": 0.2501
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0,
+    "2022": 0.0319,
+    "2023": 0.172,
+    "2024": 0.1966,
+    "2025": 0.1688,
+    "2026": 0.2664
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": null,
+    "2022": 0.743,
+    "2023": 0.956,
+    "2024": 0.777,
+    "2025": 0.703,
+    "2026": 0.572
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "NLD": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0022,
+     "central": 0.0063,
+     "high": 0.0152
+    },
+    "2022": {
+     "low": 0.0013,
+     "central": 0.0037,
+     "high": 0.0089
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0117,
+     "central": 0.0335,
+     "high": 0.0804
+    },
+    "2022": {
+     "low": 0.0053,
+     "central": 0.0152,
+     "high": 0.0364
+    },
+    "2023": {
+     "low": 0.0012,
+     "central": 0.0033,
+     "high": 0.0079
+    },
+    "2024": {
+     "low": 0.0009,
+     "central": 0.0026,
+     "high": 0.0062
+    },
+    "2025": {
+     "low": 0.0014,
+     "central": 0.0039,
+     "high": 0.0094
+    },
+    "2026": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0103
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0062,
+     "central": 0.0177,
+     "high": 0.0426
+    },
+    "2022": {
+     "low": 0.003,
+     "central": 0.0085,
+     "high": 0.0204
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0033
+    },
+    "2024": {
+     "low": 0.0004,
+     "central": 0.0011,
+     "high": 0.0026
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0016,
+     "high": 0.0039
+    },
+    "2026": {
+     "low": 0.0006,
+     "central": 0.0018,
+     "high": 0.0043
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0062,
+     "central": 0.0177,
+     "high": 0.0426
+    },
+    "2022": {
+     "low": 0.003,
+     "central": 0.0085,
+     "high": 0.0204
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0033
+    },
+    "2024": {
+     "low": 0.0004,
+     "central": 0.0011,
+     "high": 0.0026
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0016,
+     "high": 0.0039
+    },
+    "2026": {
+     "low": 0.0006,
+     "central": 0.0018,
+     "high": 0.0043
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.022,
+     "central": 0.0685,
+     "high": 0.1773
+    },
+    "2022": {
+     "low": 0.0336,
+     "central": 0.102,
+     "high": 0.2605
+    },
+    "2023": {
+     "low": 0.0052,
+     "central": 0.0153,
+     "high": 0.0375
+    },
+    "2024": {
+     "low": 0.0033,
+     "central": 0.0096,
+     "high": 0.0236
+    },
+    "2025": {
+     "low": 0.0042,
+     "central": 0.0124,
+     "high": 0.0307
+    },
+    "2026": {
+     "low": 0.0045,
+     "central": 0.0133,
+     "high": 0.033
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0268,
+    "central": 0.0835,
+    "high": 0.2161
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0935,
+    "2022": 0.176,
+    "2023": 0.0496,
+    "2024": 0.003,
+    "2025": 0.0029,
+    "2026": 0.0021
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0935,
+    "2022": 0.176,
+    "2023": 0.0496,
+    "2024": 0.003,
+    "2025": 0.0029,
+    "2026": 0.0022
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.733,
+    "2022": 0.58,
+    "2023": 0.308,
+    "2024": 3.2,
+    "2025": 4.276,
+    "2026": 6.333
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "NOR": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0133,
+     "central": 0.0379,
+     "high": 0.091
+    },
+    "2022": {
+     "low": 0.0052,
+     "central": 0.0148,
+     "high": 0.0354
+    },
+    "2023": {
+     "low": 0.0017,
+     "central": 0.0048,
+     "high": 0.0116
+    },
+    "2024": {
+     "low": 0.0006,
+     "central": 0.0018,
+     "high": 0.0043
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0004,
+     "high": 0.0009
+    },
+    "2026": {
+     "low": 0.001,
+     "central": 0.0028,
+     "high": 0.0066
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.007,
+     "central": 0.0201,
+     "high": 0.0482
+    },
+    "2022": {
+     "low": 0.0035,
+     "central": 0.0101,
+     "high": 0.0242
+    },
+    "2023": {
+     "low": 0.0012,
+     "central": 0.0033,
+     "high": 0.0079
+    },
+    "2024": {
+     "low": 0.0009,
+     "central": 0.0026,
+     "high": 0.0062
+    },
+    "2025": {
+     "low": 0.0014,
+     "central": 0.0039,
+     "high": 0.0094
+    },
+    "2026": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0103
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0107,
+     "central": 0.0304,
+     "high": 0.0731
+    },
+    "2022": {
+     "low": 0.0045,
+     "central": 0.0128,
+     "high": 0.0307
+    },
+    "2023": {
+     "low": 0.0015,
+     "central": 0.0042,
+     "high": 0.0101
+    },
+    "2024": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2025": {
+     "low": 0.0007,
+     "central": 0.0019,
+     "high": 0.0045
+    },
+    "2026": {
+     "low": 0.0012,
+     "central": 0.0034,
+     "high": 0.0082
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0107,
+     "central": 0.0304,
+     "high": 0.0731
+    },
+    "2022": {
+     "low": 0.0045,
+     "central": 0.0128,
+     "high": 0.0307
+    },
+    "2023": {
+     "low": 0.0015,
+     "central": 0.0042,
+     "high": 0.0101
+    },
+    "2024": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2025": {
+     "low": 0.0007,
+     "central": 0.0019,
+     "high": 0.0045
+    },
+    "2026": {
+     "low": 0.0012,
+     "central": 0.0034,
+     "high": 0.0082
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0446,
+     "central": 0.1389,
+     "high": 0.3595
+    },
+    "2022": {
+     "low": 0.0718,
+     "central": 0.2175,
+     "high": 0.5555
+    },
+    "2023": {
+     "low": 0.0373,
+     "central": 0.1101,
+     "high": 0.2707
+    },
+    "2024": {
+     "low": 0.0221,
+     "central": 0.0645,
+     "high": 0.1586
+    },
+    "2025": {
+     "low": 0.0184,
+     "central": 0.054,
+     "high": 0.1333
+    },
+    "2026": {
+     "low": 0.0236,
+     "central": 0.0695,
+     "high": 0.1723
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0338,
+    "2022": 0.0494,
+    "2023": 0.0444,
+    "2024": 0.0407,
+    "2025": 0.0389,
+    "2026": 0.0275
+   },
+   "baseline_2019_2021": {
+    "low": 0.0543,
+    "central": 0.1689,
+    "high": 0.4373
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.159,
+    "2022": 0.3865,
+    "2023": 0.1184,
+    "2024": 0.0407,
+    "2025": 0.0389,
+    "2026": 0.0275
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.159,
+    "2022": 0.3865,
+    "2023": 0.1184,
+    "2024": 0.0407,
+    "2025": 0.0389,
+    "2026": 0.0293
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.874,
+    "2022": 0.563,
+    "2023": 0.93,
+    "2024": 1.585,
+    "2025": 1.388,
+    "2026": 2.527
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "OMN": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0006,
+     "central": 0.0016,
+     "high": 0.0039
+    },
+    "2023": {
+     "low": 0.0034,
+     "central": 0.0098,
+     "high": 0.0234
+    },
+    "2024": {
+     "low": 0.0035,
+     "central": 0.0099,
+     "high": 0.0238
+    },
+    "2025": {
+     "low": 0.0027,
+     "central": 0.0078,
+     "high": 0.0187
+    },
+    "2026": {
+     "low": 0.0028,
+     "central": 0.008,
+     "high": 0.0191
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0021,
+     "central": 0.0059,
+     "high": 0.0141
+    },
+    "2023": {
+     "low": 0.007,
+     "central": 0.0199,
+     "high": 0.0478
+    },
+    "2024": {
+     "low": 0.006,
+     "central": 0.0173,
+     "high": 0.0414
+    },
+    "2025": {
+     "low": 0.0077,
+     "central": 0.0219,
+     "high": 0.0526
+    },
+    "2026": {
+     "low": 0.0082,
+     "central": 0.0235,
+     "high": 0.0564
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0012,
+     "central": 0.0034,
+     "high": 0.0082
+    },
+    "2023": {
+     "low": 0.0049,
+     "central": 0.014,
+     "high": 0.0337
+    },
+    "2024": {
+     "low": 0.0046,
+     "central": 0.013,
+     "high": 0.0312
+    },
+    "2025": {
+     "low": 0.0048,
+     "central": 0.0137,
+     "high": 0.0329
+    },
+    "2026": {
+     "low": 0.0051,
+     "central": 0.0145,
+     "high": 0.0348
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2023": {
+     "low": 0.0034,
+     "central": 0.0097,
+     "high": 0.0234
+    },
+    "2024": {
+     "low": 0.0023,
+     "central": 0.0065,
+     "high": 0.0156
+    },
+    "2025": {
+     "low": 0.0029,
+     "central": 0.0084,
+     "high": 0.0202
+    },
+    "2026": {
+     "low": 0.0037,
+     "central": 0.0106,
+     "high": 0.0255
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0005,
+     "central": 0.0013,
+     "high": 0.0031
+    },
+    "2023": {
+     "low": 0.0015,
+     "central": 0.0043,
+     "high": 0.0103
+    },
+    "2024": {
+     "low": 0.0023,
+     "central": 0.0065,
+     "high": 0.0156
+    },
+    "2025": {
+     "low": 0.0019,
+     "central": 0.0053,
+     "high": 0.0128
+    },
+    "2026": {
+     "low": 0.0014,
+     "central": 0.0039,
+     "high": 0.0093
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0136,
+     "central": 0.0413,
+     "high": 0.1055
+    },
+    "2023": {
+     "low": 0.0658,
+     "central": 0.194,
+     "high": 0.4769
+    },
+    "2024": {
+     "low": 0.0491,
+     "central": 0.1436,
+     "high": 0.3531
+    },
+    "2025": {
+     "low": 0.042,
+     "central": 0.1235,
+     "high": 0.3049
+    },
+    "2026": {
+     "low": 0.0528,
+     "central": 0.1559,
+     "high": 0.3863
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0,
+    "2022": 0.016,
+    "2023": 0.0786,
+    "2024": 0.0894,
+    "2025": 0.0765,
+    "2026": 0.1113
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0,
+    "2022": 0.016,
+    "2023": 0.0786,
+    "2024": 0.0894,
+    "2025": 0.0765,
+    "2026": 0.1185
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": null,
+    "2022": 2.581,
+    "2023": 2.468,
+    "2024": 1.606,
+    "2025": 1.614,
+    "2026": 1.401
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "SAU": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0013
+    },
+    "2023": {
+     "low": 0.0006,
+     "central": 0.0016,
+     "high": 0.0039
+    },
+    "2024": {
+     "low": 0.001,
+     "central": 0.0027,
+     "high": 0.0065
+    },
+    "2025": {
+     "low": 0.0009,
+     "central": 0.0025,
+     "high": 0.0059
+    },
+    "2026": {
+     "low": 0.0006,
+     "central": 0.0017,
+     "high": 0.0042
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0001,
+     "central": 0.0003,
+     "high": 0.0007
+    },
+    "2023": {
+     "low": 0.0027,
+     "central": 0.0077,
+     "high": 0.0186
+    },
+    "2024": {
+     "low": 0.0023,
+     "central": 0.0066,
+     "high": 0.0159
+    },
+    "2025": {
+     "low": 0.003,
+     "central": 0.0086,
+     "high": 0.0207
+    },
+    "2026": {
+     "low": 0.0032,
+     "central": 0.0093,
+     "high": 0.0222
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.001
+    },
+    "2023": {
+     "low": 0.0015,
+     "central": 0.0042,
+     "high": 0.0101
+    },
+    "2024": {
+     "low": 0.0015,
+     "central": 0.0044,
+     "high": 0.0105
+    },
+    "2025": {
+     "low": 0.0018,
+     "central": 0.005,
+     "high": 0.0121
+    },
+    "2026": {
+     "low": 0.0017,
+     "central": 0.0049,
+     "high": 0.0118
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.001,
+     "central": 0.0028,
+     "high": 0.0067
+    },
+    "2024": {
+     "low": 0.0008,
+     "central": 0.0022,
+     "high": 0.0052
+    },
+    "2025": {
+     "low": 0.0011,
+     "central": 0.0033,
+     "high": 0.0079
+    },
+    "2026": {
+     "low": 0.0013,
+     "central": 0.0036,
+     "high": 0.0087
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0004,
+     "high": 0.001
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0034
+    },
+    "2024": {
+     "low": 0.0008,
+     "central": 0.0022,
+     "high": 0.0052
+    },
+    "2025": {
+     "low": 0.0006,
+     "central": 0.0018,
+     "high": 0.0043
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0013,
+     "high": 0.0031
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0019,
+     "central": 0.0058,
+     "high": 0.0147
+    },
+    "2023": {
+     "low": 0.0179,
+     "central": 0.0529,
+     "high": 0.1301
+    },
+    "2024": {
+     "low": 0.0158,
+     "central": 0.0463,
+     "high": 0.1139
+    },
+    "2025": {
+     "low": 0.0151,
+     "central": 0.0444,
+     "high": 0.1097
+    },
+    "2026": {
+     "low": 0.0159,
+     "central": 0.0468,
+     "high": 0.116
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0,
+    "2022": 0.008,
+    "2023": 0.0393,
+    "2024": 0.0447,
+    "2025": 0.0382,
+    "2026": 0.0556
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0,
+    "2022": 0.008,
+    "2023": 0.0393,
+    "2024": 0.0447,
+    "2025": 0.0382,
+    "2026": 0.0592
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": null,
+    "2022": 0.725,
+    "2023": 1.346,
+    "2024": 1.036,
+    "2025": 1.162,
+    "2026": 0.842
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "SGP": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0174,
+     "central": 0.0316,
+     "high": 0.0537
+    },
+    "2022": {
+     "low": 0.0142,
+     "central": 0.0259,
+     "high": 0.044
+    },
+    "2023": {
+     "low": 0.0121,
+     "central": 0.0221,
+     "high": 0.0375
+    },
+    "2024": {
+     "low": 0.0066,
+     "central": 0.0121,
+     "high": 0.0205
+    },
+    "2025": {
+     "low": 0.0028,
+     "central": 0.005,
+     "high": 0.0085
+    },
+    "2026": {
+     "low": 0.0076,
+     "central": 0.0139,
+     "high": 0.0236
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0221,
+     "central": 0.0402,
+     "high": 0.0683
+    },
+    "2022": {
+     "low": 0.0149,
+     "central": 0.0272,
+     "high": 0.0462
+    },
+    "2023": {
+     "low": 0.011,
+     "central": 0.0201,
+     "high": 0.0341
+    },
+    "2024": {
+     "low": 0.0088,
+     "central": 0.0161,
+     "high": 0.0273
+    },
+    "2025": {
+     "low": 0.0114,
+     "central": 0.0207,
+     "high": 0.0352
+    },
+    "2026": {
+     "low": 0.0127,
+     "central": 0.0231,
+     "high": 0.0394
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0194,
+     "central": 0.0352,
+     "high": 0.0599
+    },
+    "2022": {
+     "low": 0.0145,
+     "central": 0.0264,
+     "high": 0.0449
+    },
+    "2023": {
+     "low": 0.0117,
+     "central": 0.0212,
+     "high": 0.0361
+    },
+    "2024": {
+     "low": 0.0076,
+     "central": 0.0137,
+     "high": 0.0234
+    },
+    "2025": {
+     "low": 0.0064,
+     "central": 0.0116,
+     "high": 0.0197
+    },
+    "2026": {
+     "low": 0.0098,
+     "central": 0.0178,
+     "high": 0.0302
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0194,
+     "central": 0.0352,
+     "high": 0.0599
+    },
+    "2022": {
+     "low": 0.0129,
+     "central": 0.0234,
+     "high": 0.0399
+    },
+    "2023": {
+     "low": 0.0092,
+     "central": 0.0168,
+     "high": 0.0285
+    },
+    "2024": {
+     "low": 0.005,
+     "central": 0.0091,
+     "high": 0.0154
+    },
+    "2025": {
+     "low": 0.0049,
+     "central": 0.009,
+     "high": 0.0152
+    },
+    "2026": {
+     "low": 0.008,
+     "central": 0.0146,
+     "high": 0.0248
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0016,
+     "central": 0.003,
+     "high": 0.005
+    },
+    "2023": {
+     "low": 0.0025,
+     "central": 0.0045,
+     "high": 0.0076
+    },
+    "2024": {
+     "low": 0.0026,
+     "central": 0.0047,
+     "high": 0.008
+    },
+    "2025": {
+     "low": 0.0015,
+     "central": 0.0026,
+     "high": 0.0045
+    },
+    "2026": {
+     "low": 0.0017,
+     "central": 0.0032,
+     "high": 0.0054
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0609,
+     "central": 0.1272,
+     "high": 0.2431
+    },
+    "2022": {
+     "low": 0.1692,
+     "central": 0.3395,
+     "high": 0.6363
+    },
+    "2023": {
+     "low": 0.1682,
+     "central": 0.3229,
+     "high": 0.5708
+    },
+    "2024": {
+     "low": 0.0826,
+     "central": 0.1564,
+     "high": 0.2765
+    },
+    "2025": {
+     "low": 0.0526,
+     "central": 0.1005,
+     "high": 0.1788
+    },
+    "2026": {
+     "low": 0.1129,
+     "central": 0.2167,
+     "high": 0.3879
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0774,
+    "central": 0.1618,
+    "high": 0.3092
+   },
+   "certainty": "C",
+   "shipping_json_freight_central": {
+    "2021": 0.1404,
+    "2022": 0.4321,
+    "2023": 0.3422,
+    "2024": 0.2421,
+    "2025": 0.1593,
+    "2026": 0.1453
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.1404,
+    "2022": 0.4321,
+    "2023": 0.3422,
+    "2024": 0.2421,
+    "2025": 0.1593,
+    "2026": 0.1547
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.906,
+    "2022": 0.786,
+    "2023": 0.944,
+    "2024": 0.646,
+    "2025": 0.631,
+    "2026": 1.491
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty C.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "SWE": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0011,
+     "central": 0.0032,
+     "high": 0.0076
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0047,
+     "central": 0.0134,
+     "high": 0.0322
+    },
+    "2022": {
+     "low": 0.0018,
+     "central": 0.0051,
+     "high": 0.0121
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0026,
+     "central": 0.0075,
+     "high": 0.0179
+    },
+    "2022": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0026,
+     "central": 0.0075,
+     "high": 0.0179
+    },
+    "2022": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0092,
+     "central": 0.0286,
+     "high": 0.074
+    },
+    "2022": {
+     "low": 0.0079,
+     "central": 0.024,
+     "high": 0.0613
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0113,
+    "central": 0.035,
+    "high": 0.0906
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0259,
+    "2022": 0.0335,
+    "2023": 0.0033,
+    "2024": 0.003,
+    "2025": 0.0029,
+    "2026": 0.0021
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0259,
+    "2022": 0.0335,
+    "2023": 0.0033,
+    "2024": 0.003,
+    "2025": 0.0029,
+    "2026": 0.0022
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 1.104,
+    "2022": 0.716,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "TUR": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0104,
+     "central": 0.019,
+     "high": 0.0322
+    },
+    "2022": {
+     "low": 0.0149,
+     "central": 0.0271,
+     "high": 0.046
+    },
+    "2023": {
+     "low": 0.0241,
+     "central": 0.0438,
+     "high": 0.0745
+    },
+    "2024": {
+     "low": 0.0193,
+     "central": 0.0351,
+     "high": 0.0596
+    },
+    "2025": {
+     "low": 0.0135,
+     "central": 0.0245,
+     "high": 0.0417
+    },
+    "2026": {
+     "low": 0.0177,
+     "central": 0.0321,
+     "high": 0.0547
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0369,
+     "central": 0.067,
+     "high": 0.1139
+    },
+    "2022": {
+     "low": 0.043,
+     "central": 0.0783,
+     "high": 0.1331
+    },
+    "2023": {
+     "low": 0.051,
+     "central": 0.0928,
+     "high": 0.1578
+    },
+    "2024": {
+     "low": 0.0428,
+     "central": 0.0778,
+     "high": 0.1322
+    },
+    "2025": {
+     "low": 0.0576,
+     "central": 0.1048,
+     "high": 0.1781
+    },
+    "2026": {
+     "low": 0.0624,
+     "central": 0.1135,
+     "high": 0.193
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0215,
+     "central": 0.0391,
+     "high": 0.0665
+    },
+    "2022": {
+     "low": 0.0267,
+     "central": 0.0486,
+     "high": 0.0826
+    },
+    "2023": {
+     "low": 0.0354,
+     "central": 0.0644,
+     "high": 0.1094
+    },
+    "2024": {
+     "low": 0.0292,
+     "central": 0.053,
+     "high": 0.0901
+    },
+    "2025": {
+     "low": 0.032,
+     "central": 0.0582,
+     "high": 0.099
+    },
+    "2026": {
+     "low": 0.0365,
+     "central": 0.0663,
+     "high": 0.1128
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0215,
+     "central": 0.0391,
+     "high": 0.0665
+    },
+    "2022": {
+     "low": 0.0246,
+     "central": 0.0447,
+     "high": 0.0759
+    },
+    "2023": {
+     "low": 0.0283,
+     "central": 0.0515,
+     "high": 0.0875
+    },
+    "2024": {
+     "low": 0.0184,
+     "central": 0.0335,
+     "high": 0.0569
+    },
+    "2025": {
+     "low": 0.0233,
+     "central": 0.0423,
+     "high": 0.0719
+    },
+    "2026": {
+     "low": 0.0301,
+     "central": 0.0547,
+     "high": 0.093
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0021,
+     "central": 0.0039,
+     "high": 0.0066
+    },
+    "2023": {
+     "low": 0.0071,
+     "central": 0.0129,
+     "high": 0.0219
+    },
+    "2024": {
+     "low": 0.0107,
+     "central": 0.0195,
+     "high": 0.0332
+    },
+    "2025": {
+     "low": 0.0088,
+     "central": 0.0159,
+     "high": 0.0271
+    },
+    "2026": {
+     "low": 0.0064,
+     "central": 0.0116,
+     "high": 0.0197
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0712,
+     "central": 0.1488,
+     "high": 0.2845
+    },
+    "2022": {
+     "low": 0.295,
+     "central": 0.5918,
+     "high": 1.1094
+    },
+    "2023": {
+     "low": 0.4614,
+     "central": 0.8859,
+     "high": 1.5659
+    },
+    "2024": {
+     "low": 0.3009,
+     "central": 0.5697,
+     "high": 1.0069
+    },
+    "2025": {
+     "low": 0.2631,
+     "central": 0.5027,
+     "high": 0.894
+    },
+    "2026": {
+     "low": 0.3577,
+     "central": 0.6869,
+     "high": 1.2292
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0877,
+    "central": 0.1832,
+    "high": 0.3501
+   },
+   "certainty": "C",
+   "shipping_json_freight_central": {
+    "2021": 0.1556,
+    "2022": 0.6695,
+    "2023": 0.7676,
+    "2024": 0.5941,
+    "2025": 0.5097,
+    "2026": 0.5598
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.1556,
+    "2022": 0.6695,
+    "2023": 0.7676,
+    "2024": 0.5941,
+    "2025": 0.5097,
+    "2026": 0.5962
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.956,
+    "2022": 0.884,
+    "2023": 1.154,
+    "2024": 0.959,
+    "2025": 0.986,
+    "2026": 1.227
+   },
+   "reasoning": "Turkish owners in the mainstream Black Sea / Med product trade (Beks, Besiktas, Tokyo Gemi, Sand, Cape, Güngen in KSE tables): 25% of the non-Greek mainstream products segment post-war, and 18% of KSE 'other' shadow managers.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "USA": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0033,
+     "central": 0.0095,
+     "high": 0.0228
+    },
+    "2022": {
+     "low": 0.0013,
+     "central": 0.0037,
+     "high": 0.0089
+    },
+    "2023": {
+     "low": 0.0008,
+     "central": 0.0024,
+     "high": 0.0058
+    },
+    "2024": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0021
+    },
+    "2025": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0033
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0019,
+     "central": 0.0055,
+     "high": 0.0132
+    },
+    "2022": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0034
+    },
+    "2024": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0012
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0003
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.0019
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0019,
+     "central": 0.0055,
+     "high": 0.0132
+    },
+    "2022": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.0051
+    },
+    "2023": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0034
+    },
+    "2024": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0012
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0001,
+     "high": 0.0003
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0008,
+     "high": 0.0019
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0057,
+     "central": 0.0178,
+     "high": 0.046
+    },
+    "2022": {
+     "low": 0.0588,
+     "central": 0.1782,
+     "high": 0.4552
+    },
+    "2023": {
+     "low": 0.0537,
+     "central": 0.1584,
+     "high": 0.3895
+    },
+    "2024": {
+     "low": 0.0441,
+     "central": 0.1291,
+     "high": 0.3174
+    },
+    "2025": {
+     "low": 0.0402,
+     "central": 0.1181,
+     "high": 0.2916
+    },
+    "2026": {
+     "low": 0.0328,
+     "central": 0.0969,
+     "high": 0.2402
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.1481,
+    "2023": 0.1332,
+    "2024": 0.122,
+    "2025": 0.1168,
+    "2026": 0.0826
+   },
+   "baseline_2019_2021": {
+    "low": 0.0078,
+    "central": 0.0243,
+    "high": 0.0629
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0186,
+    "2022": 0.1885,
+    "2023": 0.1332,
+    "2024": 0.122,
+    "2025": 0.1168,
+    "2026": 0.0826
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0186,
+    "2022": 0.1885,
+    "2023": 0.1332,
+    "2024": 0.122,
+    "2025": 0.1168,
+    "2026": 0.088
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": 0.957,
+    "2022": 0.945,
+    "2023": 1.189,
+    "2024": 1.058,
+    "2025": 1.011,
+    "2026": 1.173
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  },
+  "VNM": {
+   "share_crude": {
+    "2021": {
+     "low": 0.0008,
+     "central": 0.0024,
+     "high": 0.0056
+    },
+    "2022": {
+     "low": 0.0014,
+     "central": 0.0039,
+     "high": 0.0093
+    },
+    "2023": {
+     "low": 0.0043,
+     "central": 0.0122,
+     "high": 0.0292
+    },
+    "2024": {
+     "low": 0.0074,
+     "central": 0.0211,
+     "high": 0.0506
+    },
+    "2025": {
+     "low": 0.0072,
+     "central": 0.0205,
+     "high": 0.0491
+    },
+    "2026": {
+     "low": 0.0049,
+     "central": 0.0139,
+     "high": 0.0334
+    }
+   },
+   "share_products": {
+    "2021": {
+     "low": 0.0006,
+     "central": 0.0017,
+     "high": 0.0042
+    },
+    "2022": {
+     "low": 0.0007,
+     "central": 0.002,
+     "high": 0.0048
+    },
+    "2023": {
+     "low": 0.003,
+     "central": 0.0085,
+     "high": 0.0203
+    },
+    "2024": {
+     "low": 0.0039,
+     "central": 0.011,
+     "high": 0.0264
+    },
+    "2025": {
+     "low": 0.0024,
+     "central": 0.0067,
+     "high": 0.0161
+    },
+    "2026": {
+     "low": 0.0019,
+     "central": 0.0054,
+     "high": 0.0129
+    }
+   },
+   "share_crude_products": {
+    "2021": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.005
+    },
+    "2022": {
+     "low": 0.0011,
+     "central": 0.0031,
+     "high": 0.0074
+    },
+    "2023": {
+     "low": 0.0037,
+     "central": 0.0106,
+     "high": 0.0255
+    },
+    "2024": {
+     "low": 0.0059,
+     "central": 0.0168,
+     "high": 0.0404
+    },
+    "2025": {
+     "low": 0.0051,
+     "central": 0.0147,
+     "high": 0.0353
+    },
+    "2026": {
+     "low": 0.0036,
+     "central": 0.0103,
+     "high": 0.0248
+    }
+   },
+   "share_mainstream": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "share_shadow": {
+    "2021": {
+     "low": 0.0007,
+     "central": 0.0021,
+     "high": 0.005
+    },
+    "2022": {
+     "low": 0.0011,
+     "central": 0.0031,
+     "high": 0.0074
+    },
+    "2023": {
+     "low": 0.0037,
+     "central": 0.0106,
+     "high": 0.0255
+    },
+    "2024": {
+     "low": 0.0059,
+     "central": 0.0168,
+     "high": 0.0404
+    },
+    "2025": {
+     "low": 0.0051,
+     "central": 0.0147,
+     "high": 0.0353
+    },
+    "2026": {
+     "low": 0.0036,
+     "central": 0.0103,
+     "high": 0.0248
+    }
+   },
+   "freight": {
+    "2021": {
+     "low": 0.0024,
+     "central": 0.0074,
+     "high": 0.0191
+    },
+    "2022": {
+     "low": 0.0135,
+     "central": 0.041,
+     "high": 0.1048
+    },
+    "2023": {
+     "low": 0.0563,
+     "central": 0.166,
+     "high": 0.4082
+    },
+    "2024": {
+     "low": 0.0719,
+     "central": 0.2102,
+     "high": 0.5168
+    },
+    "2025": {
+     "low": 0.0552,
+     "central": 0.1624,
+     "high": 0.4009
+    },
+    "2026": {
+     "low": 0.0548,
+     "central": 0.1617,
+     "high": 0.4008
+    }
+   },
+   "freight_lng": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "baseline_2019_2021": {
+    "low": 0.0031,
+    "central": 0.0095,
+    "high": 0.0247
+   },
+   "certainty": "D",
+   "shipping_json_freight_central": {
+    "2021": 0.0,
+    "2022": 0.0479,
+    "2023": 0.2506,
+    "2024": 0.286,
+    "2025": 0.2453,
+    "2026": 0.3614
+   },
+   "shipping_json_freight_after_refine_central": {
+    "2021": 0.0,
+    "2022": 0.0479,
+    "2023": 0.2506,
+    "2024": 0.286,
+    "2025": 0.2453,
+    "2026": 0.3849
+   },
+   "freight_scale_vs_shipping_json": {
+    "2021": null,
+    "2022": 0.856,
+    "2023": 0.662,
+    "2024": 0.735,
+    "2025": 0.662,
+    "2026": 0.447
+   },
+   "reasoning": "Educated allocation (see meta.method): mainstream share from pre-war fleet structure and KSE top-10 tables; shadow share from KSE 'other'/opaque manager volumes. Certainty D.",
+   "sources": [
+    "KSE Shadow Fleet Tracker Sep 2026",
+    "KSE Russian Oil Tracker (monthly)"
+   ]
+  }
+ },
+ "russia_own_and_controlled": {
+  "share_crude": {
+   "2021": {
+    "low": 0.1982,
+    "central": 0.2478,
+    "high": 0.3097
+   },
+   "2022": {
+    "low": 0.2196,
+    "central": 0.2745,
+    "high": 0.3431
+   },
+   "2023": {
+    "low": 0.2304,
+    "central": 0.2881,
+    "high": 0.3601
+   },
+   "2024": {
+    "low": 0.3089,
+    "central": 0.3861,
+    "high": 0.4826
+   },
+   "2025": {
+    "low": 0.281,
+    "central": 0.3513,
+    "high": 0.4391
+   },
+   "2026": {
+    "low": 0.3223,
+    "central": 0.4028,
+    "high": 0.5035
+   }
+  },
+  "share_products": {
+   "2021": {
+    "low": 0.1942,
+    "central": 0.2428,
+    "high": 0.3035
+   },
+   "2022": {
+    "low": 0.1882,
+    "central": 0.2353,
+    "high": 0.2941
+   },
+   "2023": {
+    "low": 0.1645,
+    "central": 0.2056,
+    "high": 0.257
+   },
+   "2024": {
+    "low": 0.1665,
+    "central": 0.2081,
+    "high": 0.2601
+   },
+   "2025": {
+    "low": 0.1015,
+    "central": 0.1268,
+    "high": 0.1585
+   },
+   "2026": {
+    "low": 0.1333,
+    "central": 0.1667,
+    "high": 0.2083
+   }
+  },
+  "share_crude_products": {
+   "2021": {
+    "low": 0.1966,
+    "central": 0.2457,
+    "high": 0.3071
+   },
+   "2022": {
+    "low": 0.2064,
+    "central": 0.258,
+    "high": 0.3225
+   },
+   "2023": {
+    "low": 0.2027,
+    "central": 0.2534,
+    "high": 0.3168
+   },
+   "2024": {
+    "low": 0.2491,
+    "central": 0.3113,
+    "high": 0.3891
+   },
+   "2025": {
+    "low": 0.2056,
+    "central": 0.257,
+    "high": 0.3213
+   },
+   "2026": {
+    "low": 0.2429,
+    "central": 0.3036,
+    "high": 0.3796
+   }
+  },
+  "share_mainstream": {
+   "2021": {
+    "low": 0.1822,
+    "central": 0.2277,
+    "high": 0.2846
+   },
+   "2022": {
+    "low": 0.1023,
+    "central": 0.1278,
+    "high": 0.1598
+   },
+   "2023": {
+    "low": 0.0067,
+    "central": 0.0084,
+    "high": 0.0105
+   },
+   "2024": {
+    "low": 0.0039,
+    "central": 0.0048,
+    "high": 0.006
+   },
+   "2025": {
+    "low": 0.0042,
+    "central": 0.0052,
+    "high": 0.0066
+   },
+   "2026": {
+    "low": 0.0062,
+    "central": 0.0078,
+    "high": 0.0098
+   }
+  },
+  "share_shadow": {
+   "2021": {
+    "low": 0.0144,
+    "central": 0.018,
+    "high": 0.0225
+   },
+   "2022": {
+    "low": 0.1041,
+    "central": 0.1302,
+    "high": 0.1627
+   },
+   "2023": {
+    "low": 0.1961,
+    "central": 0.2451,
+    "high": 0.3063
+   },
+   "2024": {
+    "low": 0.2452,
+    "central": 0.3065,
+    "high": 0.3831
+   },
+   "2025": {
+    "low": 0.2014,
+    "central": 0.2518,
+    "high": 0.3147
+   },
+   "2026": {
+    "low": 0.2367,
+    "central": 0.2958,
+    "high": 0.3698
+   }
+  },
+  "freight": {
+   "2021": {
+    "low": 0.653,
+    "central": 1.0607,
+    "high": 1.6362
+   },
+   "2022": {
+    "low": 2.3786,
+    "central": 3.6227,
+    "high": 5.4247
+   },
+   "2023": {
+    "low": 2.9784,
+    "central": 4.1999,
+    "high": 5.6941
+   },
+   "2024": {
+    "low": 2.9897,
+    "central": 4.0991,
+    "high": 5.5575
+   },
+   "2025": {
+    "low": 2.1758,
+    "central": 3.0385,
+    "high": 4.1659
+   },
+   "2026": {
+    "low": 3.454,
+    "central": 4.8705,
+    "high": 6.7544
+   }
+  },
+  "baseline_2019_2021": {
+   "low": 0.7973,
+   "central": 1.2951,
+   "high": 1.9978
+  },
+  "note": "Sovcomflot and its UAE/Hong Kong fronts, Russian-registered managers (South Fleet, Invest Fleet, Idas, SCF TM), Russian owners still IG-insured before the Dec 2022 bans, and half of the opaque Seychelles/Marshall Islands/unknown owners. Counts for Russia itself, not for any foreign country."
+ },
+ "segment_shadow_share": {
+  "2021": {
+   "crude": 0.067,
+   "products": 0.05,
+   "combined": 0.06
+  },
+  "2022": {
+   "crude": 0.235,
+   "products": 0.12,
+   "combined": 0.187
+  },
+  "2023": {
+   "crude": 0.488,
+   "products": 0.34,
+   "combined": 0.426
+  },
+  "2024": {
+   "crude": 0.785,
+   "products": 0.41,
+   "combined": 0.627
+  },
+  "2025": {
+   "crude": 0.762,
+   "products": 0.25,
+   "combined": 0.547
+  },
+  "2026": {
+   "crude": 0.778,
+   "products": 0.3,
+   "combined": 0.577
+  }
+ },
+ "replacement_share_tables": {
+  "crude": {
+   "base": {
+    "ARE": 0.0269,
+    "BEL": 0.0095,
+    "CAN": 0.019,
+    "CHE": 0.0032,
+    "CHN": 0.0455,
+    "CYP": 0.0443,
+    "DEU": 0.019,
+    "DNK": 0.0253,
+    "FRA": 0.0063,
+    "GBR": 0.0253,
+    "GRC": 0.31,
+    "HKG": 0.0289,
+    "IND": 0.017,
+    "ITA": 0.0063,
+    "JPN": 0.019,
+    "KOR": 0.0095,
+    "MCO": 0.0063,
+    "MLT": 0.019,
+    "MYS": 0.0024,
+    "NLD": 0.0063,
+    "NOR": 0.0379,
+    "RUS": 0.2478,
+    "SGP": 0.0316,
+    "SWE": 0.0032,
+    "TUR": 0.019,
+    "USA": 0.0095,
+    "VNM": 0.0024
+   },
+   "2022": {
+    "ARE": 0.0421,
+    "AZE": 0.0022,
+    "BEL": 0.0074,
+    "CAN": 0.0037,
+    "CHE": 0.0037,
+    "CHN": 0.0373,
+    "CYP": 0.0295,
+    "DEU": 0.0074,
+    "DNK": 0.0111,
+    "EGY": 0.0008,
+    "FRA": 0.0037,
+    "GBR": 0.0111,
+    "GEO": 0.0008,
+    "GRC": 0.4,
+    "HKG": 0.0237,
+    "IDN": 0.0011,
+    "IND": 0.0235,
+    "ITA": 0.0037,
+    "JPN": 0.0074,
+    "KOR": 0.0037,
+    "MCO": 0.0037,
+    "MLT": 0.0148,
+    "MYS": 0.0022,
+    "NLD": 0.0037,
+    "NOR": 0.0148,
+    "OMN": 0.0016,
+    "RUS": 0.2745,
+    "SAU": 0.0005,
+    "SGP": 0.0259,
+    "TUR": 0.0271,
+    "USA": 0.0037,
+    "VNM": 0.0039
+   },
+   "2023": {
+    "ARE": 0.0775,
+    "AZE": 0.0066,
+    "BEL": 0.0048,
+    "CHN": 0.0634,
+    "CYP": 0.0242,
+    "DNK": 0.0024,
+    "EGY": 0.0025,
+    "GBR": 0.0024,
+    "GEO": 0.0025,
+    "GRC": 0.28,
+    "HKG": 0.0422,
+    "IDN": 0.0081,
+    "IND": 0.0552,
+    "ITA": 0.0024,
+    "JPN": 0.0048,
+    "KOR": 0.0024,
+    "KWT": 0.0048,
+    "MCO": 0.0024,
+    "MLT": 0.0145,
+    "MYS": 0.0121,
+    "NOR": 0.0048,
+    "OMN": 0.0098,
+    "RUS": 0.2881,
+    "SAU": 0.0016,
+    "SGP": 0.0221,
+    "TUR": 0.0438,
+    "USA": 0.0024,
+    "VNM": 0.0122
+   },
+   "2024": {
+    "ARE": 0.1003,
+    "AZE": 0.0109,
+    "BEL": 0.0018,
+    "CHN": 0.1098,
+    "CYP": 0.0089,
+    "DNK": 0.0009,
+    "EGY": 0.0041,
+    "GBR": 0.0009,
+    "GEO": 0.0041,
+    "GRC": 0.13,
+    "HKG": 0.0811,
+    "IDN": 0.0072,
+    "IND": 0.0444,
+    "ITA": 0.0009,
+    "JPN": 0.0018,
+    "KOR": 0.0009,
+    "KWT": 0.0018,
+    "MCO": 0.0009,
+    "MLT": 0.0053,
+    "MYS": 0.0147,
+    "NOR": 0.0018,
+    "OMN": 0.0099,
+    "RUS": 0.3861,
+    "SAU": 0.0027,
+    "SGP": 0.0121,
+    "TUR": 0.0351,
+    "USA": 0.0009,
+    "VNM": 0.0211
+   },
+   "2025": {
+    "ARE": 0.0866,
+    "AZE": 0.0099,
+    "CHN": 0.1081,
+    "CYP": 0.0019,
+    "EGY": 0.0037,
+    "GEO": 0.0037,
+    "GRC": 0.22,
+    "HKG": 0.0832,
+    "IDN": 0.0053,
+    "IND": 0.0487,
+    "MLT": 0.0011,
+    "MYS": 0.0134,
+    "OMN": 0.0078,
+    "RUS": 0.3513,
+    "SAU": 0.0025,
+    "SGP": 0.005,
+    "TUR": 0.0245,
+    "VNM": 0.0205
+   },
+   "2026": {
+    "ARE": 0.0551,
+    "AZE": 0.0069,
+    "BEL": 0.0028,
+    "CHN": 0.1525,
+    "CYP": 0.0138,
+    "DNK": 0.0014,
+    "EGY": 0.0026,
+    "GBR": 0.0014,
+    "GEO": 0.0026,
+    "GRC": 0.09,
+    "HKG": 0.1059,
+    "IDN": 0.0062,
+    "IND": 0.0529,
+    "ITA": 0.0014,
+    "JPN": 0.0028,
+    "KOR": 0.0014,
+    "KWT": 0.0028,
+    "MCO": 0.0014,
+    "MLT": 0.0083,
+    "MYS": 0.0114,
+    "NOR": 0.0028,
+    "OMN": 0.008,
+    "RUS": 0.4028,
+    "SAU": 0.0017,
+    "SGP": 0.0139,
+    "TUR": 0.0321,
+    "USA": 0.0014,
+    "VNM": 0.0139
+   }
+  },
+  "products": {
+   "base": {
+    "ARE": 0.0263,
+    "CHE": 0.0067,
+    "CHN": 0.019,
+    "CYP": 0.0402,
+    "DEU": 0.0201,
+    "DNK": 0.0469,
+    "FRA": 0.0134,
+    "GBR": 0.0134,
+    "GRC": 0.28,
+    "HKG": 0.0207,
+    "IND": 0.0123,
+    "ITA": 0.0201,
+    "KWT": 0.0134,
+    "MCO": 0.0201,
+    "MLT": 0.0268,
+    "MYS": 0.0017,
+    "NLD": 0.0335,
+    "NOR": 0.0201,
+    "RUS": 0.2428,
+    "SGP": 0.0402,
+    "SWE": 0.0134,
+    "TUR": 0.067,
+    "VNM": 0.0017
+   },
+   "2022": {
+    "ARE": 0.0424,
+    "AZE": 0.0011,
+    "CHE": 0.0051,
+    "CHN": 0.016,
+    "CYP": 0.0354,
+    "DEU": 0.0101,
+    "DNK": 0.0202,
+    "FRA": 0.0051,
+    "GBR": 0.0051,
+    "GRC": 0.38,
+    "HKG": 0.0197,
+    "IDN": 0.0006,
+    "IND": 0.0177,
+    "ITA": 0.0101,
+    "KWT": 0.0202,
+    "MCO": 0.0101,
+    "MLT": 0.0202,
+    "MYS": 0.0011,
+    "NLD": 0.0152,
+    "NOR": 0.0101,
+    "OMN": 0.0059,
+    "RUS": 0.2353,
+    "SGP": 0.0272,
+    "SWE": 0.0051,
+    "TUR": 0.0783,
+    "VNM": 0.002
+   },
+   "2023": {
+    "ARE": 0.0736,
+    "AZE": 0.0046,
+    "BEL": 0.0033,
+    "CHN": 0.0372,
+    "CYP": 0.0264,
+    "DNK": 0.0033,
+    "EGY": 0.005,
+    "GEO": 0.0017,
+    "GRC": 0.33,
+    "HKG": 0.0292,
+    "IDN": 0.0122,
+    "IND": 0.038,
+    "ITA": 0.0066,
+    "KWT": 0.033,
+    "MCO": 0.0066,
+    "MLT": 0.0198,
+    "MYS": 0.0083,
+    "NLD": 0.0033,
+    "NOR": 0.0033,
+    "OMN": 0.0199,
+    "RUS": 0.2056,
+    "SAU": 0.0077,
+    "SGP": 0.0201,
+    "TUR": 0.0928,
+    "VNM": 0.0085
+   },
+   "2024": {
+    "ARE": 0.0747,
+    "AZE": 0.0057,
+    "BEL": 0.0026,
+    "CHN": 0.0622,
+    "CYP": 0.0208,
+    "DNK": 0.0026,
+    "EGY": 0.0047,
+    "GEO": 0.0021,
+    "GRC": 0.33,
+    "HKG": 0.0474,
+    "IDN": 0.0106,
+    "IND": 0.0332,
+    "ITA": 0.0052,
+    "KWT": 0.026,
+    "MCO": 0.0052,
+    "MLT": 0.0156,
+    "MYS": 0.0093,
+    "NLD": 0.0026,
+    "NOR": 0.0026,
+    "OMN": 0.0173,
+    "RUS": 0.2081,
+    "SAU": 0.0066,
+    "SGP": 0.0161,
+    "TUR": 0.0778,
+    "VNM": 0.011
+   },
+   "2025": {
+    "ARE": 0.0669,
+    "AZE": 0.0032,
+    "BEL": 0.0039,
+    "CHN": 0.0503,
+    "CYP": 0.0312,
+    "DNK": 0.0039,
+    "EGY": 0.0051,
+    "GEO": 0.0012,
+    "GRC": 0.36,
+    "HKG": 0.0386,
+    "IDN": 0.0133,
+    "IND": 0.0386,
+    "ITA": 0.0078,
+    "KWT": 0.039,
+    "MCO": 0.0078,
+    "MLT": 0.0234,
+    "MYS": 0.0082,
+    "NLD": 0.0039,
+    "NOR": 0.0039,
+    "OMN": 0.0219,
+    "RUS": 0.1268,
+    "SAU": 0.0086,
+    "SGP": 0.0207,
+    "TUR": 0.1048,
+    "VNM": 0.0067
+   },
+   "2026": {
+    "ARE": 0.06,
+    "AZE": 0.0027,
+    "BEL": 0.0043,
+    "CHN": 0.0696,
+    "CYP": 0.0344,
+    "DNK": 0.0043,
+    "EGY": 0.0053,
+    "GEO": 0.001,
+    "GRC": 0.27,
+    "HKG": 0.0505,
+    "IDN": 0.0142,
+    "IND": 0.0398,
+    "ITA": 0.0086,
+    "KWT": 0.043,
+    "MCO": 0.0086,
+    "MLT": 0.0258,
+    "MYS": 0.0077,
+    "NLD": 0.0043,
+    "NOR": 0.0043,
+    "OMN": 0.0235,
+    "RUS": 0.1667,
+    "SAU": 0.0093,
+    "SGP": 0.0231,
+    "TUR": 0.1135,
+    "VNM": 0.0054
+   }
+  }
+ },
+ "totals": {
+  "freight_all_foreign_central": {
+   "2021": 3.319,
+   "2022": 10.408,
+   "2023": 11.685,
+   "2024": 8.076,
+   "2025": 7.473,
+   "2026": 8.358
+  },
+  "shipping_json_freight_all_foreign_central": {
+   "2021": 0,
+   "2022": 10.963,
+   "2023": 12.814,
+   "2024": 9.401,
+   "2025": 8.246,
+   "2026": 9.021
+  },
+  "russia_own_and_controlled_freight_central": {
+   "2021": 1.0607,
+   "2022": 3.6227,
+   "2023": 4.1999,
+   "2024": 4.0991,
+   "2025": 3.0385,
+   "2026": 4.8705
+  },
+  "mainstream_share_of_barrels": {
+   "2021": 0.94,
+   "2022": 0.813,
+   "2023": 0.575,
+   "2024": 0.372,
+   "2025": 0.453,
+   "2026": 0.423
+  },
+  "greek_share_of_mainstream_barrels": {
+   "2021": 0.316,
+   "2022": 0.481,
+   "2023": 0.524,
+   "2024": 0.575,
+   "2025": 0.615,
+   "2026": 0.392
+  },
+  "russian_share_of_shadow_barrels": {
+   "2021": 0.301,
+   "2022": 0.697,
+   "2023": 0.576,
+   "2024": 0.489,
+   "2025": 0.461,
+   "2026": 0.512
+  }
+ },
+ "sources": [
+  {
+   "name": "KSE Institute, Russian Shadow Fleet Tracker September 2026 (shadow vs white volumes; shadow volume by country of ship/commercial manager and registered owner, monthly Apr 2022-Aug 2026)",
+   "url": "https://sanctions.kse.ua/wp-content/uploads/2026/10/KSE_Shadow_Fleer_Tracker_SEP26.pdf",
+   "date": "2026-10-02"
+  },
+  {
+   "name": "KSE Institute, Russian Oil Tracker monthly issues Jun 2023-Sep 2026 (shadow share of crude and of products; top-10 ship managers of crude and products)",
+   "url": "https://institute.kse.ua/wp-content/uploads/2026/10/rot_eng_september_2026.pdf",
+   "date": "2023-07 to 2026-10"
+  },
+  {
+   "name": "KSE Institute, Assessing Russia's Shadow Fleet (June 2024): Sun Ship / SCF Mgmt beneficially owned by the Russian state via Sovcomflot; Stream and Fornax took ex-Sovcomflot tankers",
+   "url": "https://sanctions.kse.ua/wp-content/uploads/2024/06/Global-Shadow-Fleet-June-2024.pdf",
+   "date": "2024-06"
+  },
+  {
+   "name": "US Treasury/OFAC press release jy2121: Sovcomflot designated, 14 crude tankers identified as Sovcomflot property",
+   "url": "https://home.treasury.gov/news/press-releases/jy2121",
+   "date": "2024-02-23"
+  },
+  {
+   "name": "Lloyd's List: Greeks shipping half of Russian crude (Greek beneficially owned tankers 50% of oil shipments Aug 2022 vs a third Aug 2021)",
+   "url": "https://www.lloydslist.com/LL1142145/Greeks-shipping-half-of-Russian-crude",
+   "date": "2022-09"
+  },
+  {
+   "name": "Lloyd's List: Greece owners ship 42% of crude in October",
+   "url": "https://www.lloydslist.com/LL1142763/Russia-postsanctions-tanker-tonnage-challenge-exposed-as-Greece-owners-ship-42-of-crude-in-October",
+   "date": "2022-11"
+  },
+  {
+   "name": "S&P Global via Hellenic Shipping News: G7-linked tankers 52.4% of Russian crude May 2023, 30.1% Jan 2024, 33% Feb 2024; Greek operators 11.5m / 16.6m bbl Jan / Feb 2024",
+   "url": "https://www.hellenicshippingnews.com/greek-operators-regain-share-in-russian-crude-exports-despite-tighter-sanctions/",
+   "date": "2024-03-08"
+  },
+  {
+   "name": "S&P Global Market Intelligence whitepaper: Greek owners carry 20%+ of Russian crude",
+   "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/russian-shipping-and-trade-sanctions-risk-analysis",
+   "date": "2023-12-18"
+  },
+  {
+   "name": "Kpler data via Cyprus Shipping News / PGJ (Reuters): Greek beneficially owned vessels 34% of Russia-linked seaborne volume, 33% of crude, 51% of fuel oil, 1 Jan-27 Jul 2025",
+   "url": "https://pgjonline.com/news/2025/july/greek-tankers-to-keep-moving-russian-oil-despite-new-eu-sanctions",
+   "date": "2025-07-22"
+  },
+  {
+   "name": "Windward: Greek shipowners fill Russia's tonnage void (Jun 2025: 37% of crude+products, 41% of Urals, 43% of clean products)",
+   "url": "https://windward.ai/blog/greek-shipowners-fill-russias-tonnage-void-to-blunt-sanctions-impact/",
+   "date": "2025-07-14"
+  },
+  {
+   "name": "Windward: Greek tankers cut Russian crude liftings as lower EU and UK price cap bites (27% Jun, 20% Jul, 16% Aug 2025)",
+   "url": "https://windward.ai/blog/greek-tankers-cut-russian-crude-liftings-as-lower-eu-and-uk-price-cap-bites/",
+   "date": "2025-09"
+  },
+  {
+   "name": "Windward: Greece-owned tankers exit Russia crude trades ahead of US sanctions deadline (EU-owned <5% of crude early Nov 2025)",
+   "url": "https://windward.ai/blog/greece-owned-tankers-exit-russia-crude-trades-ahead-of-u-s-sanctions-deadline/",
+   "date": "2025-11"
+  },
+  {
+   "name": "FT analysis via GreekReporter: Greek shipping companies made USD 3.8bn transporting Russian crude since mid-2023",
+   "url": "https://greekreporter.com/2026/07/07/greek-shipping-companies-russian-oil/",
+   "date": "2026-07-07"
+  },
+  {
+   "name": "Brookings (Brooks & Harris): Where did Russia's shadow fleet come from? (shadow ~6% of departures pre-war, ~35% early 2025; Greek owners largest sellers)",
+   "url": "https://www.brookings.edu/articles/where-did-russias-shadow-fleet-come-from/",
+   "date": "2025-02-27"
+  },
+  {
+   "name": "Shipping Telegraph on CREA registered-owner counts (UAE ~41% of shadow crude tankers)",
+   "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
+   "date": "2024"
+  }
+ ],
+ "overlaps": "This file is a re-allocation of the freight part of shipping.json, not a new flow: use it INSTEAD of shipping.json freight (and instead of refine.json shipping_control scaling and the 2026 x1.065 factor), never in addition. Totals are close: all-foreign gross freight 2022-26 here vs shipping.json are given in totals; the difference is mostly the 2026 crude pool (11.0 vs 9.7 USD bn) and a larger Russian pool than shipping.json had before refine. Ship sales (Greek and other tankers sold into the shadow fleet) stay in shipping.json ship_sales and are not in these shares, so a Greek-built/ex-Greek tanker now run by a UAE front counts here for the controller (often Russia) and its sale premium counts for the seller in ship_sales - no double count. Services overlap (uncovered.json sold_to_rus) and CIF overlap with fossil-fuel payments are unchanged and handled by shipping.json overlap_share_with_services_sold_to_rus, which still applies per country. uncovered.json GRC.oil_shipping_earned remains replaced by shipping.json. Insurance by insurer country (UK, Norway IG clubs vs Ingosstrakh) is not re-estimated here.",
+ "notes": "Gross freight, not profit. The biggest open guesses: the Russian-controlled share of opaque Seychelles/Marshall Islands/unknown-managed tankers (50%, range 25-80%), the mainland/Hong Kong split of KSE 'China' managers (55/45), and the non-Greek mainstream split. Greek 2026 products share (27%) is higher than shipping.json's 10% because KSE shows Greek firms holding 7-9 of the top-10 product shipper spots in Mar-Jun 2026."
+}

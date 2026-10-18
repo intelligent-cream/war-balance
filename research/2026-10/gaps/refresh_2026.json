@@ -1,0 +1,3161 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "Round-5 refresh for roadmap items 8 (actual Jan-Aug 2026 goods trade with Russia/Ukraine where the map used estimates or Jan-Jun extrapolations), 22 (latest Kiel Ukraine Support Tracker release, 2025 and 2026 allocations by type) and 27 (pledged vs allocated vs delivered aid).",
+  "units": "EUR bn, nominal. 2026 = January-August 2026, not annualised. USD converted with ECB monthly USD/EUR reference rates (Jan-Aug 2026 mean 1.1629) for Comtrade monthly data; national Jan-Aug totals at the Jan-Aug 2026 mean.",
+  "method": "Trade: each economy's own monthly customs report in UN Comtrade (public preview API, HS TOTAL, C00, all modes), summed Jan-Aug 2026; where only Jan-Jul is published, August = median of three seasonal extrapolations from the same series in 2025 (ratios capped at 2); a missing interior month = neighbour average. Kept only where at least 7 months of 2026 are published. National statistics for Kazakhstan (Jan-Aug), Uzbekistan (Jan-Aug turnover), Armenia (Jan-Jun turnover + Comtrade May/Aug), Belarus (Jan-Jul turnover from the Russian side). Values are on the same level as trade_full.json 2025 (Comtrade monthly 2025 sums agree with trade_full 2025 within 1% for all reporters except Israel, which is spliced and flagged). Aid: Kiel Release 31 sheets 'Allocations per Month', '... Military', '... Humanitar' (financial = total - military - humanitarian, because Kiel's 'Allocations per Month Financial' sheet stops at June 2026), plus item-level main data for guarantees, ERA loans and earmark years.",
+  "trade_entries_format": "countries.<ISO3>.<flow>.'2026' in trade_full.json's format (low/central/high, basis, src, period) plus certainty, previous (the trade_full value replaced) and months_actual.",
+  "fx_usd_per_eur_2026_janaug": 1.1629
+ },
+ "countries": {
+  "AUS": {
+   "name": "Australia",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.000955,
+     "central": 0.000995,
+     "high": 0.001035,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.001046,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.000995
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.025803,
+     "central": 0.026878,
+     "high": 0.027954,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.025735,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.026878
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.100451,
+     "central": 0.104637,
+     "high": 0.108822,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.093016,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.104637
+    }
+   }
+  },
+  "AZE": {
+   "name": "Azerbaijan",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 1.19924,
+     "central": 1.259514,
+     "high": 1.33564,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0900), May-Jul 2026 average x Aug/May-Jul 2025 (0.1156) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0838), seasonal ratios capped at 2 = +0.0900 (range 0.0838-0.1156).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 1.223621,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 1.259514
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.691467,
+     "central": 0.736133,
+     "high": 0.780799,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0925), May-Jul 2026 average x Aug/May-Jul 2025 (0.0903) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0835), seasonal ratios capped at 2 = +0.0903 (range 0.0835-0.0925).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.71462,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.736133
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.154385,
+     "central": 0.163608,
+     "high": 0.172831,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0173), May-Jul 2026 average x Aug/May-Jul 2025 (0.0186) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0169), seasonal ratios capped at 2 = +0.0173 (range 0.0169-0.0186).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.162502,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.163608
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.143628,
+     "central": 0.158909,
+     "high": 0.170378,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0177), May-Jul 2026 average x Aug/May-Jul 2025 (0.0298) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0268), seasonal ratios capped at 2 = +0.0268 (range 0.0177-0.0298).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.166323,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.158909
+    }
+   }
+  },
+  "BIH": {
+   "name": "Bosnia Herzegovina",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.076167,
+     "central": 0.079341,
+     "high": 0.082514,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.088342,
+      "basis": "estimated"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.079341
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.022798,
+     "central": 0.023748,
+     "high": 0.024698,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.027131,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.023748
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.037134,
+     "central": 0.038681,
+     "high": 0.040228,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.032024,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.038681
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.003912,
+     "central": 0.004075,
+     "high": 0.004238,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.004337,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.004075
+    }
+   }
+  },
+  "BOL": {
+   "name": "Bolivia (Plurinational State of)",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.003713,
+     "central": 0.003868,
+     "high": 0.004023,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.00329,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.003868
+    }
+   }
+  },
+  "BRA": {
+   "name": "Brazil",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 6.533071,
+     "central": 6.805282,
+     "high": 7.077493,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 7.234634,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 6.805282
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.983764,
+     "central": 1.024755,
+     "high": 1.065745,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.890089,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 1.024755
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.046703,
+     "central": 0.048649,
+     "high": 0.050595,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.040713,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.048649
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.044466,
+     "central": 0.046318,
+     "high": 0.048171,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.042264,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.046318
+    }
+   }
+  },
+  "CAN": {
+   "name": "Canada",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.020937,
+     "central": 0.021809,
+     "high": 0.022682,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.019831,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.021809
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.010972,
+     "central": 0.011429,
+     "high": 0.011887,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.018385,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.011429
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.093589,
+     "central": 0.097488,
+     "high": 0.101388,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.100724,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.097488
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.252525,
+     "central": 0.263047,
+     "high": 0.273569,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.219167,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.263047
+    }
+   }
+  },
+  "CHE": {
+   "name": "Switzerland",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.043819,
+     "central": 0.045645,
+     "high": 0.04747,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.049341,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.045645
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 1.360305,
+     "central": 1.416985,
+     "high": 1.473664,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 1.636418,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 1.416985
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.104663,
+     "central": 0.109024,
+     "high": 0.113385,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.14731,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.109024
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.248502,
+     "central": 0.258856,
+     "high": 0.26921,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.324925,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.258856
+    }
+   }
+  },
+  "CHL": {
+   "name": "Chile",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.030493,
+     "central": 0.031764,
+     "high": 0.033034,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.027329,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.031764
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.241443,
+     "central": 0.251503,
+     "high": 0.261563,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.224867,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.251503
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.004928,
+     "central": 0.005133,
+     "high": 0.005338,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.005363,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.005133
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.008866,
+     "central": 0.009236,
+     "high": 0.009605,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.007684,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.009236
+    }
+   }
+  },
+  "GBR": {
+   "name": "United Kingdom",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.183869,
+     "central": 0.193781,
+     "high": 0.202831,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0068), May-Jul 2026 average x Aug/May-Jul 2025 (0.0028) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0090), seasonal ratios capped at 2 = +0.0068 (range 0.0028-0.0090).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.310211,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.193781
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.403705,
+     "central": 0.431513,
+     "high": 0.459321,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0595), May-Jul 2026 average x Aug/May-Jul 2025 (0.0662) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0543), seasonal ratios capped at 2 = +0.0595 (range 0.0543-0.0662).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.362426,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.431513
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.575549,
+     "central": 0.615596,
+     "high": 0.656747,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0985), May-Jul 2026 average x Aug/May-Jul 2025 (0.0818) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0863), seasonal ratios capped at 2 = +0.0863 (range 0.0818-0.0985).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.629594,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.615596
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.900028,
+     "central": 0.944578,
+     "high": 0.989129,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0580), May-Jul 2026 average x Aug/May-Jul 2025 (0.0649) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0723), seasonal ratios capped at 2 = +0.0649 (range 0.0580-0.0723).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 1.065885,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.944578
+    }
+   }
+  },
+  "GEO": {
+   "name": "Georgia",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 1.265566,
+     "central": 1.318297,
+     "high": 1.371029,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 1.296143,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 1.318297
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.414548,
+     "central": 0.431821,
+     "high": 0.449094,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.407922,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.431821
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.155082,
+     "central": 0.161544,
+     "high": 0.168006,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.158719,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.161544
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.074778,
+     "central": 0.077893,
+     "high": 0.081009,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.092133,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.077893
+    }
+   }
+  },
+  "GTM": {
+   "name": "Guatemala",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.13345,
+     "central": 0.143866,
+     "high": 0.157805,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0077), May-Jul 2026 average x Aug/May-Jul 2025 (0.0205) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0132), seasonal ratios capped at 2 = +0.0132 (range 0.0077-0.0205).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.160542,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.143866
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.002504,
+     "central": 0.00287,
+     "high": 0.003514,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0010), May-Jul 2026 average x Aug/May-Jul 2025 (0.0006) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0004), seasonal ratios capped at 2 = +0.0006 (range 0.0004-0.0010).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.002109,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.00287
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.00073,
+     "central": 0.000798,
+     "high": 0.000866,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0002), May-Jul 2026 average x Aug/May-Jul 2025 (0.0002) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0002), seasonal ratios capped at 2 = +0.0002 (range 0.0002-0.0002).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.001407,
+      "basis": "estimated"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.000798
+    }
+   }
+  },
+  "HKG": {
+   "name": "China, Hong Kong SAR",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 17.448131,
+     "central": 19.002226,
+     "high": 20.611457,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (3.7411), May-Jul 2026 average x Aug/May-Jul 2025 (4.4955) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (3.9361), seasonal ratios capped at 2 = +3.9361 (range 3.7411-4.4955).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 17.870947,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 19.002226
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.968747,
+     "central": 1.041552,
+     "high": 1.114356,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.1403), May-Jul 2026 average x Aug/May-Jul 2025 (0.1662) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.1815), seasonal ratios capped at 2 = +0.1662 (range 0.1403-0.1815).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 1.119722,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 1.041552
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.009811,
+     "central": 0.010347,
+     "high": 0.011003,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0009), May-Jul 2026 average x Aug/May-Jul 2025 (0.0008) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0011), seasonal ratios capped at 2 = +0.0009 (range 0.0008-0.0011).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.012108,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.010347
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.118777,
+     "central": 0.127189,
+     "high": 0.138732,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0235), May-Jul 2026 average x Aug/May-Jul 2025 (0.0184) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0170), seasonal ratios capped at 2 = +0.0184 (range 0.0170-0.0235).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.119999,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.127189
+    }
+   }
+  },
+  "IDN": {
+   "name": "Indonesia",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 2.424468,
+     "central": 2.58111,
+     "high": 2.803341,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.3859), May-Jul 2026 average x Aug/May-Jul 2025 (0.2839) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.2247), seasonal ratios capped at 2 = +0.2839 (range 0.2247-0.3859).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 1.981813,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 2.58111
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.853054,
+     "central": 0.909959,
+     "high": 0.972082,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.1144), May-Jul 2026 average x Aug/May-Jul 2025 (0.1348) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0932), seasonal ratios capped at 2 = +0.1144 (range 0.0932-0.1348).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.918906,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.909959
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.212961,
+     "central": 0.284327,
+     "high": 0.496643,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.2796), May-Jul 2026 average x Aug/May-Jul 2025 (0.1097) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0499), seasonal ratios capped at 2 = +0.1097 (range 0.0499-0.2796).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.275545,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.284327
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.049163,
+     "central": 0.053648,
+     "high": 0.061985,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0154), May-Jul 2026 average x Aug/May-Jul 2025 (0.0105) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0083), seasonal ratios capped at 2 = +0.0105 (range 0.0083-0.0154).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.036355,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.053648
+    }
+   }
+  },
+  "IND": {
+   "name": "India",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 44.133561,
+     "central": 48.306321,
+     "high": 51.631536,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (8.2114), May-Jul 2026 average x Aug/May-Jul 2025 (7.5041) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (5.2181), seasonal ratios capped at 2 = +7.5041 (range 5.2181-8.2114).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 38.222968,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 48.306321
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 2.539032,
+     "central": 2.702289,
+     "high": 2.865547,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.3216), May-Jul 2026 average x Aug/May-Jul 2025 (0.3637) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.3288), seasonal ratios capped at 2 = +0.3288 (range 0.3216-0.3637).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 2.651246,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 2.702289
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.370017,
+     "central": 0.412907,
+     "high": 0.435961,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0125), May-Jul 2026 average x Aug/May-Jul 2025 (0.0436) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0427), seasonal ratios capped at 2 = +0.0427 (range 0.0125-0.0436).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.556465,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.412907
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.114574,
+     "central": 0.124071,
+     "high": 0.133568,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0224), May-Jul 2026 average x Aug/May-Jul 2025 (0.0256) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0231), seasonal ratios capped at 2 = +0.0231 (range 0.0224-0.0256).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.115398,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.124071
+    }
+   }
+  },
+  "ISL": {
+   "name": "Iceland",
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.004476,
+     "central": 0.004662,
+     "high": 0.004849,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.003558,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.004662
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.002079,
+     "central": 0.002166,
+     "high": 0.002253,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.002752,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.002166
+    }
+   }
+  },
+  "ISR": {
+   "name": "Israel",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.157022,
+     "central": 0.188247,
+     "high": 0.219472,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,3,4,5,6,7,8. Month 2 missing in Comtrade, filled with neighbour average (+0.1767). Comtrade monthly 2025 (2.081) differs from the file 2025 level (0.318); spliced by x0.153 to stay consistent with the file series (flag).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.136234,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 1.231701
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.214371,
+     "central": 0.223303,
+     "high": 0.232236,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.220348,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.223303
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.086365,
+     "central": 0.102808,
+     "high": 0.11925,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,3,4,5,6,7,8. Month 2 missing in Comtrade, filled with neighbour average (+0.0359). Comtrade monthly 2025 (0.336) differs from the file 2025 level (0.115); spliced by x0.343 to stay consistent with the file series (flag).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.0829,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.29953
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.113907,
+     "central": 0.118653,
+     "high": 0.123399,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.128956,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.118653
+    }
+   }
+  },
+  "JPN": {
+   "name": "Japan",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 3.376983,
+     "central": 3.517691,
+     "high": 3.658399,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 3.170009,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 3.517691
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 1.523282,
+     "central": 1.586752,
+     "high": 1.650223,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 1.484201,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 1.586752
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.03047,
+     "central": 0.03174,
+     "high": 0.03301,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.023485,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.03174
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.324486,
+     "central": 0.338007,
+     "high": 0.351527,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.317116,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.338007
+    }
+   }
+  },
+  "MAC": {
+   "name": "China, Macao SAR",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.003929,
+     "central": 0.0041,
+     "high": 0.004319,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0003), May-Jul 2026 average x Aug/May-Jul 2025 (0.0002) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0002), seasonal ratios capped at 2 = +0.0002 (range 0.0002-0.0003).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.007737,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.0041
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.000446,
+     "central": 0.000477,
+     "high": 0.000538,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0001), May-Jul 2026 average x Aug/May-Jul 2025 (0.0000) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0000), seasonal ratios capped at 2 = +0.0000 (range 0.0000-0.0001).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.000817,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.000477
+    }
+   }
+  },
+  "MEX": {
+   "name": "Mexico",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.542561,
+     "central": 0.598937,
+     "high": 0.650509,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.1250), May-Jul 2026 average x Aug/May-Jul 2025 (0.1048) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0725), seasonal ratios capped at 2 = +0.1048 (range 0.0725-0.1250).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.630897,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.598937
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.007559,
+     "central": 0.007956,
+     "high": 0.008499,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0005), May-Jul 2026 average x Aug/May-Jul 2025 (0.0007) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0004), seasonal ratios capped at 2 = +0.0005 (range 0.0004-0.0007).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.007674,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.007956
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.026473,
+     "central": 0.028243,
+     "high": 0.030012,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0037), May-Jul 2026 average x Aug/May-Jul 2025 (0.0037) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0033), seasonal ratios capped at 2 = +0.0037 (range 0.0033-0.0037).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.026899,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.028243
+    }
+   }
+  },
+  "MKD": {
+   "name": "North Macedonia",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.027252,
+     "central": 0.028387,
+     "high": 0.029523,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.02482,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.028387
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.036567,
+     "central": 0.03809,
+     "high": 0.039614,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.030115,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.03809
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.037577,
+     "central": 0.039143,
+     "high": 0.040709,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.038537,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.039143
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.022801,
+     "central": 0.023751,
+     "high": 0.024701,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.020286,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.023751
+    }
+   }
+  },
+  "MYS": {
+   "name": "Malaysia",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.916413,
+     "central": 0.954597,
+     "high": 0.99278,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.962313,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.954597
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.425597,
+     "central": 0.443331,
+     "high": 0.461064,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.499425,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.443331
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.068432,
+     "central": 0.071283,
+     "high": 0.074135,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.069957,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.071283
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.021649,
+     "central": 0.022551,
+     "high": 0.023453,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.029065,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.022551
+    }
+   }
+  },
+  "NOR": {
+   "name": "Norway",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.120547,
+     "central": 0.12557,
+     "high": 0.130593,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.143754,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.12557
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.024161,
+     "central": 0.025168,
+     "high": 0.026175,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.022771,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.025168
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.074873,
+     "central": 0.077993,
+     "high": 0.081113,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.069418,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.077993
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.346452,
+     "central": 0.360888,
+     "high": 0.375324,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.386799,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.360888
+    }
+   }
+  },
+  "NZL": {
+   "name": "New Zealand",
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.007963,
+     "central": 0.008675,
+     "high": 0.009386,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,7,8. Month 6 missing in Comtrade, filled with neighbour average (+0.0018).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.006533,
+      "basis": "estimated"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.008675
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.00351,
+     "central": 0.003656,
+     "high": 0.003802,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.003282,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.003656
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.00587,
+     "central": 0.006115,
+     "high": 0.006359,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.006638,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.006115
+    }
+   }
+  },
+  "PAN": {
+   "name": "Panama",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.015809,
+     "central": 0.016555,
+     "high": 0.017301,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 2,3,4,5,6,7,8. Month 1 missing in Comtrade, filled with neighbour average (+0.0010).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.020423,
+      "basis": "estimated"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.016555
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.000489,
+     "central": 0.00051,
+     "high": 0.00053,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.000307,
+      "basis": "estimated"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.00051
+    }
+   }
+  },
+  "PHL": {
+   "name": "Philippines",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.187582,
+     "central": 0.195398,
+     "high": 0.211991,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0037), May-Jul 2026 average x Aug/May-Jul 2025 (0.0029) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0129), seasonal ratios capped at 2 = +0.0037 (range 0.0029-0.0129).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.234702,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.195398
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.030201,
+     "central": 0.032792,
+     "high": 0.035382,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0063), May-Jul 2026 average x Aug/May-Jul 2025 (0.0067) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0064), seasonal ratios capped at 2 = +0.0064 (range 0.0063-0.0067).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.033168,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.032792
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.005475,
+     "central": 0.005781,
+     "high": 0.006087,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0005), May-Jul 2026 average x Aug/May-Jul 2025 (0.0005) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0005), seasonal ratios capped at 2 = +0.0005 (range 0.0005-0.0005).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.005905,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.005781
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.015762,
+     "central": 0.016819,
+     "high": 0.017876,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0021), May-Jul 2026 average x Aug/May-Jul 2025 (0.0023) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0022), seasonal ratios capped at 2 = +0.0022 (range 0.0021-0.0023).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.017354,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.016819
+    }
+   }
+  },
+  "SLV": {
+   "name": "El Salvador",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.027775,
+     "central": 0.028932,
+     "high": 0.030089,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7,8.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 0.069729,
+      "basis": "reported"
+     },
+     "months_actual": 8,
+     "comtrade_janaug_eur_bn": 0.028932
+    }
+   }
+  },
+  "SRB": {
+   "name": "Serbia",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 0.666496,
+     "central": 0.705987,
+     "high": 0.743601,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0521), May-Jul 2026 average x Aug/May-Jul 2025 (0.0657) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0733), seasonal ratios capped at 2 = +0.0657 (range 0.0521-0.0733).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.730079,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.705987
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.443576,
+     "central": 0.470906,
+     "high": 0.498236,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0575), May-Jul 2026 average x Aug/May-Jul 2025 (0.0528) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0494), seasonal ratios capped at 2 = +0.0528 (range 0.0494-0.0575).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.455525,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.470906
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.144025,
+     "central": 0.153756,
+     "high": 0.163487,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0205), May-Jul 2026 average x Aug/May-Jul 2025 (0.0224) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0191), seasonal ratios capped at 2 = +0.0205 (range 0.0191-0.0224).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.148401,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.153756
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.208907,
+     "central": 0.225632,
+     "high": 0.242357,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0401), May-Jul 2026 average x Aug/May-Jul 2025 (0.0349) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0398), seasonal ratios capped at 2 = +0.0398 (range 0.0349-0.0401).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.225623,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.225632
+    }
+   }
+  },
+  "USA": {
+   "name": "USA",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 1.86665,
+     "central": 1.953909,
+     "high": 2.043601,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.1146), May-Jul 2026 average x Aug/May-Jul 2025 (0.1006) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.1316), seasonal ratios capped at 2 = +0.1146 (range 0.1006-0.1316).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 1.926005,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 1.953909
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 0.319571,
+     "central": 0.340371,
+     "high": 0.368427,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0543), May-Jul 2026 average x Aug/May-Jul 2025 (0.0424) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0411), seasonal ratios capped at 2 = +0.0424 (range 0.0411-0.0543).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.320498,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.340371
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.798474,
+     "central": 0.875963,
+     "high": 0.924783,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.0415), May-Jul 2026 average x Aug/May-Jul 2025 (0.0927) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.0902), seasonal ratios capped at 2 = +0.0902 (range 0.0415-0.0927).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.937042,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 0.875963
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 1.565334,
+     "central": 1.724291,
+     "high": 1.933937,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Months with data: 1,2,3,4,5,6,7. August not yet published: median of Jul 2026 x Aug/Jul 2025 (0.4731), May-Jul 2026 average x Aug/May-Jul 2025 (0.3671) and Jan-Jul 2026 x Aug/Jan-Jul 2025 (0.2851), seasonal ratios capped at 2 = +0.3671 (range 0.2851-0.4731).",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 1.506258,
+      "basis": "reported"
+     },
+     "months_actual": 7,
+     "comtrade_janaug_eur_bn": 1.724291
+    }
+   }
+  },
+  "KAZ": {
+   "name": "Kazakhstan",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 10.891429,
+     "central": 11.345238,
+     "high": 11.799048,
+     "basis": "reported",
+     "src": "Bureau of National Statistics of Kazakhstan, \"Foreign and mutual trade of RK, January-August 2026\" (express information + \"Страны рус.xlsx\" partner shares and \"Динамика взаимка рус.xlsx\" EAEU turnover by country), https://stat.gov.kz/ru/industries/economy/foreign-market/publications/352894/: turnover with Russia USD 18326.0m; Russia = 31% of imports (USD 42,570.2m) and 8.5% of exports (USD 60,389m); imports = turnover - exports = USD 13193m; converted at Jan-Aug 2026 ECB mean 1.1629. Replaces an IMF monthly series that is flat (identical value every month since mid-2025, i.e. an imputation).",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 10.958695,
+      "basis": "reported"
+     }
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 4.300449,
+     "central": 4.414179,
+     "high": 4.528947,
+     "basis": "reported",
+     "src": "Bureau of National Statistics of Kazakhstan, \"Foreign and mutual trade of RK, January-August 2026\" (express information + \"Страны рус.xlsx\" partner shares and \"Динамика взаимка рус.xlsx\" EAEU turnover by country), https://stat.gov.kz/ru/industries/economy/foreign-market/publications/352894/: Russia = 8.5% (rounded to 0.1 pt) of exports USD 60,389m = USD 5133m.",
+     "period": "2026-01..2026-08",
+     "certainty": "A",
+     "previous": {
+      "central": 4.626141,
+      "basis": "reported"
+     }
+    }
+   }
+  },
+  "UZB": {
+   "name": "Uzbekistan",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 4.48272,
+     "central": 4.9808,
+     "high": 5.47888,
+     "basis": "reported",
+     "src": "National Statistics Committee of Uzbekistan, foreign trade January-August 2026 (press release 2026-10-02: Russia 16% of USD 57.4bn turnover, https://stat.uz/ru/press-tsentr/novosti-goskomstata/70472-zbekistonning-tash-i-savdo-ajlanmasi-8-ojda-57-4-mlrd-dollarga-etdi-3 ; Russia USD 9.19bn, +9.7% y/y, Spot.uz 2026-10-01 https://www.spot.uz/ru/2026/10/01/foreign-trade/); split: national 2025 export share (0.346, the file 2025 level) moved by the change in the Comtrade export share (Jan-Jul 2026 0.306 vs Jan-Oct 2025 0.286) -> export share 0.370. Comtrade (customs) Jan-Jul 2026 alone: imports USD 5050m, exports USD 2228m.",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 4.862718,
+      "basis": "estimated"
+     }
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 2.571483,
+     "central": 2.922139,
+     "high": 3.272796,
+     "basis": "reported",
+     "src": "National Statistics Committee of Uzbekistan, foreign trade January-August 2026 (press release 2026-10-02: Russia 16% of USD 57.4bn turnover, https://stat.uz/ru/press-tsentr/novosti-goskomstata/70472-zbekistonning-tash-i-savdo-ajlanmasi-8-ojda-57-4-mlrd-dollarga-etdi-3 ; Russia USD 9.19bn, +9.7% y/y, Spot.uz 2026-10-01 https://www.spot.uz/ru/2026/10/01/foreign-trade/); export share 0.370 as for imports.",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 2.530142,
+      "basis": "estimated"
+     }
+    }
+   },
+   "imports_from_UKR": {
+    "2026": {
+     "low": 0.183551,
+     "central": 0.203945,
+     "high": 0.22434,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Uzbekistan own customs report Jan-Jul 2026, August = Jan-Jul x (Aug 2025/Jan-Jul 2025). Replaces the Ukraine-side mirror.",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.153543,
+      "basis": "mirror"
+     }
+    }
+   },
+   "exports_to_UKR": {
+    "2026": {
+     "low": 0.033373,
+     "central": 0.037081,
+     "high": 0.040789,
+     "basis": "reported",
+     "src": "UN Comtrade public preview API, monthly HS TOTAL (C00), reporter = this economy, https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=<code>&period=2026MM&partnerCode=643,804&cmdCode=TOTAL&flowCode=M,X (retrieved 2026-10-18); USD converted with ECB monthly USD/EUR rates. Uzbekistan own customs report Jan-Jul 2026, August = Jan-Jul x (Aug 2025/Jan-Jul 2025). Replaces the Ukraine-side mirror.",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 0.041892,
+      "basis": "mirror"
+     }
+    }
+   }
+  },
+  "ARM": {
+   "name": "Armenia",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 1.449624,
+     "central": 1.575678,
+     "high": 1.701733,
+     "basis": "reported",
+     "src": "Statistical Committee of Armenia via Interfax/investfuture.ru: Armenia-Russia goods turnover Jan-Jun 2026 USD 2.630bn (-20.9% y/y), https://investfuture.ru/articles/v-yanvare-iyune-tovarooborot-armenii-s-rossiey-sokratilsya-na-20-9-do-2-630-mlrd-37514792 ; plus Armenia's monthly Comtrade report (Jan-May and Aug 2026). June = Armstat Jan-Jun minus Comtrade Jan-May (split by May shares); July (missing) = average of June and August.",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 1.585728,
+      "basis": "reported"
+     }
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 1.278412,
+     "central": 1.389578,
+     "high": 1.500744,
+     "basis": "reported",
+     "src": "Statistical Committee of Armenia via Interfax/investfuture.ru: Armenia-Russia goods turnover Jan-Jun 2026 USD 2.630bn (-20.9% y/y), https://investfuture.ru/articles/v-yanvare-iyune-tovarooborot-armenii-s-rossiey-sokratilsya-na-20-9-do-2-630-mlrd-37514792 ; plus Armenia's monthly Comtrade report (Jan-May and Aug 2026). June = Armstat Jan-Jun minus Comtrade Jan-May (split by May shares); July (missing) = average of June and August.",
+     "period": "2026-01..2026-08",
+     "certainty": "B",
+     "previous": {
+      "central": 1.51872,
+      "basis": "reported"
+     }
+    }
+   }
+  },
+  "BLR": {
+   "name": "Belarus",
+   "imports_from_RUS": {
+    "2026": {
+     "low": 13.142906,
+     "central": 15.646316,
+     "high": 17.477268,
+     "basis": "estimated",
+     "src": "Russian Ministry of Industry and Trade (A. Alikhanov): Russia-Belarus goods turnover Jan-Jul 2026 USD 32.8bn, +14% y/y (investfuture.ru 2026-10-01, https://investfuture.ru/articles/alihanov-tovarooborot-rossii-i-belorussii-vyros-na-14-5faf501db8a71d29 ); Q1 2026 ~USD 13bn +7.1% (A. Overchuk, finance.mail.ru); Jan-Aug = Jan-Jul + August (Aug-Dec 2025 monthly average x 1.14) = USD 38.7bn; split with the file 2025 Belarus export share 0.530 (range 0.50-0.58). Turnover from the Russian side; not confirmed by Belstat (no partner data published).",
+     "period": "2026-01..2026-08",
+     "certainty": "C",
+     "previous": {
+      "central": 17.686814,
+      "basis": "estimated"
+     }
+    }
+   },
+   "exports_to_RUS": {
+    "2026": {
+     "low": 15.646316,
+     "central": 17.643718,
+     "high": 20.273631,
+     "basis": "estimated",
+     "src": "Russian Ministry of Industry and Trade (A. Alikhanov): Russia-Belarus goods turnover Jan-Jul 2026 USD 32.8bn, +14% y/y (investfuture.ru 2026-10-01, https://investfuture.ru/articles/alihanov-tovarooborot-rossii-i-belorussii-vyros-na-14-5faf501db8a71d29 ); Q1 2026 ~USD 13bn +7.1% (A. Overchuk, finance.mail.ru); as above, Belarus export share 0.530.",
+     "period": "2026-01..2026-08",
+     "certainty": "C",
+     "previous": {
+      "central": 19.944705,
+      "basis": "estimated"
+     }
+    }
+   }
+  }
+ },
+ "kiel_release_check": {
+  "latest_release": "Release 31, published 8 October 2026 (tracker page 'Update October 8, 2026'), data 24 Jan 2022 to 31 Aug 2026",
+  "used_by_map": "Release 31 (research/2026-10/kiel.json). The map already uses the latest release; no newer release (32) exists as of 2026-10-18.",
+  "check": "Re-downloaded the Release 31 workbook on 2026-10-18 and rebuilt yearly allocations from the monthly sheets: 2025 and 2026 totals equal kiel.json by_year for every donor (difference < 0.01bn). EU_INST includes the European Investment Bank row (0.0009bn in 2025, 0 in 2026).",
+  "kiel_financial_sheet_note": "Kiel's own 'Allocations per Month Financial' sheet ends at June 2026; July-August 2026 financial allocations are only in the total sheet. Financial here = total - military - humanitarian. This matters for the UK (1.40bn guarantees in Jun), Japan (0.39bn Jul) and Spain (0.32bn loan Jul).",
+  "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+  "page": "https://www.kielinstitut.de/research/topics/war-against-ukraine/ukraine-support-tracker/"
+ },
+ "aid_2025_2026": {
+  "AUS": {
+   "name": "Australia",
+   "2025": {
+    "total": 0.0539,
+    "military": 0.0539,
+    "humanitarian": 0,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0334
+   },
+   "2026": {
+    "total": 0.0058,
+    "military": 0,
+    "humanitarian": 0.0058,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0668
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "AUT": {
+   "name": "Austria",
+   "2025": {
+    "total": 0.0348,
+    "military": 0,
+    "humanitarian": 0.02,
+    "financial": 0.0148,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0026,
+    "commitments_new": 0.0478
+   },
+   "2026": {
+    "total": 0.0281,
+    "military": 0,
+    "humanitarian": 0.0281,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0028,
+    "commitments_new": 0.0181
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "BEL": {
+   "name": "Belgium",
+   "2025": {
+    "total": 1.4215,
+    "military": 1.143,
+    "humanitarian": 0.2785,
+    "financial": -0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.075,
+    "commitments_new": 1.4215
+   },
+   "2026": {
+    "total": 0.1153,
+    "military": 0.1153,
+    "humanitarian": 0.0001,
+    "financial": 0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 1.1001
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "BGR": {
+   "name": "Bulgaria",
+   "2025": {
+    "total": 0,
+    "military": 0,
+    "humanitarian": 0,
+    "financial": 0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0,
+    "commitments_new": 0
+   },
+   "2026": {
+    "total": 0.0173,
+    "military": 0.0173,
+    "humanitarian": 0.0,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0173
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "CAN": {
+   "name": "Canada",
+   "2025": {
+    "total": 5.3601,
+    "military": 2.0234,
+    "humanitarian": 0.073,
+    "financial": 3.2637,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 3.2637,
+    "of_which_earmarked_after_2026": 0.0014,
+    "commitments_new": 2.9045
+   },
+   "2026": {
+    "total": 1.1756,
+    "military": 1.1211,
+    "humanitarian": 0.0545,
+    "financial": -0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0247,
+    "commitments_new": 1.0954
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "HRV": {
+   "name": "Croatia",
+   "2025": {
+    "total": 0.047,
+    "military": 0.045,
+    "humanitarian": 0.002,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.047
+   },
+   "2026": {
+    "total": 0.0235,
+    "military": 0.02,
+    "humanitarian": 0.0035,
+    "financial": -0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0235
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "CZE": {
+   "name": "Czechia",
+   "2025": {
+    "total": 0.2394,
+    "military": 0.2344,
+    "humanitarian": 0.005,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.4439
+   },
+   "2026": {
+    "total": 0.0062,
+    "military": 0.0058,
+    "humanitarian": 0.0004,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0058
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "DNK": {
+   "name": "Denmark",
+   "2025": {
+    "total": 3.0402,
+    "military": 2.5068,
+    "humanitarian": 0.5334,
+    "financial": -0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.483,
+    "commitments_new": 0.8147
+   },
+   "2026": {
+    "total": 0.8719,
+    "military": 0.6914,
+    "humanitarian": 0.0805,
+    "financial": 0.1,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 1.8996
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "EST": {
+   "name": "Estonia",
+   "2025": {
+    "total": 0.1762,
+    "military": 0.162,
+    "humanitarian": 0.0142,
+    "financial": -0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0004,
+    "commitments_new": 0.0685
+   },
+   "2026": {
+    "total": 0.0181,
+    "military": 0.0167,
+    "humanitarian": 0.0014,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0107
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "EU_INST": {
+   "name": "EU (Commission and Council)",
+   "2025": {
+    "total": 35.1249,
+    "military": 0,
+    "humanitarian": 0.29,
+    "financial": 34.8349,
+    "of_which_guarantees": 5.2419,
+    "of_which_era_loans": 18.1,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.39
+   },
+   "2026": {
+    "total": 15.8792,
+    "military": 8.874,
+    "humanitarian": 0.3247,
+    "financial": 6.6805,
+    "of_which_guarantees": 1.02,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 90.3247
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "FIN": {
+   "name": "Finland",
+   "2025": {
+    "total": 0.7311,
+    "military": 0.693,
+    "humanitarian": 0.0335,
+    "financial": 0.0046,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0015,
+    "commitments_new": 1.2226
+   },
+   "2026": {
+    "total": 0.3615,
+    "military": 0.309,
+    "humanitarian": 0.0525,
+    "financial": -0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0016,
+    "commitments_new": 0.3
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "FRA": {
+   "name": "France",
+   "2025": {
+    "total": 2.395,
+    "military": 2.195,
+    "humanitarian": 0.2,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 2.495
+   },
+   "2026": {
+    "total": 0.3393,
+    "military": 0.265,
+    "humanitarian": 0.0743,
+    "financial": -0.0,
+    "of_which_guarantees": 0.265,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.3543
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "DEU": {
+   "name": "Germany",
+   "2025": {
+    "total": 9.3675,
+    "military": 9.0135,
+    "humanitarian": 0.2985,
+    "financial": 0.0555,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 20.8525
+   },
+   "2026": {
+    "total": 5.4515,
+    "military": 4.9898,
+    "humanitarian": 0.4617,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 7.502
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "B"
+  },
+  "GRC": {
+   "name": "Greece",
+   "2025": {
+    "total": 0.02,
+    "military": 0.02,
+    "humanitarian": 0,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.02
+   },
+   "2026": {
+    "total": 0,
+    "military": 0,
+    "humanitarian": 0,
+    "financial": 0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0,
+    "commitments_new": 0
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "B"
+  },
+  "ISL": {
+   "name": "Iceland",
+   "2025": {
+    "total": 0.0536,
+    "military": 0.0387,
+    "humanitarian": 0.0132,
+    "financial": 0.0017,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0003,
+    "commitments_new": 0.0502
+   },
+   "2026": {
+    "total": 0.006,
+    "military": 0,
+    "humanitarian": 0.006,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.006
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "IRL": {
+   "name": "Ireland",
+   "2025": {
+    "total": 0.2707,
+    "military": 0.2018,
+    "humanitarian": 0.0619,
+    "financial": 0.007,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.1583
+   },
+   "2026": {
+    "total": 0.1883,
+    "military": 0.1,
+    "humanitarian": 0.0883,
+    "financial": -0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.157
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "ITA": {
+   "name": "Italy",
+   "2025": {
+    "total": 0.5297,
+    "military": 0.3232,
+    "humanitarian": 0.2065,
+    "financial": -0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.5297
+   },
+   "2026": {
+    "total": 0.211,
+    "military": 0,
+    "humanitarian": 0.146,
+    "financial": 0.065,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.211
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "JPN": {
+   "name": "Japan",
+   "2025": {
+    "total": 0.7031,
+    "military": 0,
+    "humanitarian": 0.2289,
+    "financial": 0.4742,
+    "of_which_guarantees": 0.4742,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 3.6452
+   },
+   "2026": {
+    "total": 3.8857,
+    "military": 0.0126,
+    "humanitarian": 0.0341,
+    "financial": 3.839,
+    "of_which_guarantees": 2.26,
+    "of_which_era_loans": 1.579,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0467
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "LVA": {
+   "name": "Latvia",
+   "2025": {
+    "total": 0.0998,
+    "military": 0.0936,
+    "humanitarian": 0.0063,
+    "financial": 0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0948
+   },
+   "2026": {
+    "total": 0.0726,
+    "military": 0.0673,
+    "humanitarian": 0.0053,
+    "financial": -0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.177
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "LTU": {
+   "name": "Lithuania",
+   "2025": {
+    "total": 0.258,
+    "military": 0.224,
+    "humanitarian": 0.034,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.474
+   },
+   "2026": {
+    "total": 0.1106,
+    "military": 0.068,
+    "humanitarian": 0.0426,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0035,
+    "commitments_new": 0.052
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "LUX": {
+   "name": "Luxembourg",
+   "2025": {
+    "total": 0.0635,
+    "military": 0.0435,
+    "humanitarian": 0.02,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.1925
+   },
+   "2026": {
+    "total": 0.034,
+    "military": 0.026,
+    "humanitarian": 0.008,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.008
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "NLD": {
+   "name": "Netherlands",
+   "2025": {
+    "total": 2.8374,
+    "military": 2.5344,
+    "humanitarian": 0.303,
+    "financial": -0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 2.235
+   },
+   "2026": {
+    "total": 0.8128,
+    "military": 0.7508,
+    "humanitarian": 0.062,
+    "financial": -0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.003,
+    "commitments_new": 10.319
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "NZL": {
+   "name": "New Zealand",
+   "2025": {
+    "total": 0.0169,
+    "military": 0.0116,
+    "humanitarian": 0.0037,
+    "financial": 0.0016,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0169
+   },
+   "2026": {
+    "total": 0.0066,
+    "military": 0,
+    "humanitarian": 0.0051,
+    "financial": 0.0015,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0066
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "NOR": {
+   "name": "Norway",
+   "2025": {
+    "total": 4.6772,
+    "military": 3.6287,
+    "humanitarian": 0.3927,
+    "financial": 0.6558,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0517,
+    "commitments_new": 10.6125
+   },
+   "2026": {
+    "total": 2.5889,
+    "military": 1.8196,
+    "humanitarian": 0.5918,
+    "financial": 0.1775,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0334,
+    "commitments_new": 7.3884
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "POL": {
+   "name": "Poland",
+   "2025": {
+    "total": 0.3147,
+    "military": 0.3108,
+    "humanitarian": 0.0039,
+    "financial": -0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.4419
+   },
+   "2026": {
+    "total": 0.3149,
+    "military": 0.2912,
+    "humanitarian": 0.0087,
+    "financial": 0.015,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.002,
+    "commitments_new": 0.3149
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "PRT": {
+   "name": "Portugal",
+   "2025": {
+    "total": 0.0812,
+    "military": 0.0805,
+    "humanitarian": 0.0006,
+    "financial": 0.0001,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0007
+   },
+   "2026": {
+    "total": 0.0008,
+    "military": 0,
+    "humanitarian": 0.0008,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.1312
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "KOR": {
+   "name": "South Korea",
+   "2025": {
+    "total": 0.0375,
+    "military": 0,
+    "humanitarian": 0.0375,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0061,
+    "commitments_new": 0.0892
+   },
+   "2026": {
+    "total": 0.0087,
+    "military": 0,
+    "humanitarian": 0.0018,
+    "financial": 0.0069,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0945
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "ROU": {
+   "name": "Romania",
+   "2025": {
+    "total": 0.05,
+    "military": 0.05,
+    "humanitarian": 0,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.05
+   },
+   "2026": {
+    "total": 0,
+    "military": 0,
+    "humanitarian": 0,
+    "financial": 0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0,
+    "commitments_new": 0
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "B"
+  },
+  "SVK": {
+   "name": "Slovakia",
+   "2025": {
+    "total": 0.0063,
+    "military": 0,
+    "humanitarian": 0.0063,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0043
+   },
+   "2026": {
+    "total": 0.0324,
+    "military": 0,
+    "humanitarian": 0.0015,
+    "financial": 0.0309,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0207
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "B"
+  },
+  "SVN": {
+   "name": "Slovenia",
+   "2025": {
+    "total": 0.0485,
+    "military": 0.043,
+    "humanitarian": 0.0055,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0012,
+    "commitments_new": 0.051
+   },
+   "2026": {
+    "total": 0.0485,
+    "military": 0.048,
+    "humanitarian": 0.0005,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0552
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "B"
+  },
+  "ESP": {
+   "name": "Spain",
+   "2025": {
+    "total": 0.8287,
+    "military": 0.615,
+    "humanitarian": 0.2137,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 1.2117
+   },
+   "2026": {
+    "total": 0.4234,
+    "military": 0.1024,
+    "humanitarian": 0.001,
+    "financial": 0.32,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 1.321
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "SWE": {
+   "name": "Sweden",
+   "2025": {
+    "total": 4.4243,
+    "military": 3.7114,
+    "humanitarian": 0.3418,
+    "financial": 0.3711,
+    "of_which_guarantees": 0.0456,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 6.4391
+   },
+   "2026": {
+    "total": 2.0053,
+    "military": 1.336,
+    "humanitarian": 0.3035,
+    "financial": 0.3658,
+    "of_which_guarantees": 0.239,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0054,
+    "commitments_new": 0.1372
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "CHE": {
+   "name": "Switzerland",
+   "2025": {
+    "total": 0.1739,
+    "military": 0,
+    "humanitarian": 0.1739,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.042,
+    "commitments_new": 3.7358
+   },
+   "2026": {
+    "total": 0.3197,
+    "military": 0,
+    "humanitarian": 0.3197,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0376,
+    "commitments_new": 0.0006
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "GBR": {
+   "name": "United Kingdom",
+   "2025": {
+    "total": 5.7893,
+    "military": 5.4401,
+    "humanitarian": 0.3132,
+    "financial": 0.036,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 1.7792,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.4594
+   },
+   "2026": {
+    "total": 3.5151,
+    "military": 1.9071,
+    "humanitarian": 0.207,
+    "financial": 1.401,
+    "of_which_guarantees": 1.4009,
+    "of_which_era_loans": 0.8707,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 1.5062
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "USA": {
+   "name": "United States",
+   "2025": {
+    "total": 0.4829,
+    "military": 0.4829,
+    "humanitarian": 0,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0
+   },
+   "2026": {
+    "total": 0,
+    "military": 0,
+    "humanitarian": 0,
+    "financial": 0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0,
+    "commitments_new": 0
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  },
+  "TWN": {
+   "name": "Taiwan",
+   "2025": {
+    "total": 0.0062,
+    "military": 0,
+    "humanitarian": 0.0062,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0062
+   },
+   "2026": {
+    "total": 0.0092,
+    "military": 0,
+    "humanitarian": 0.0092,
+    "financial": 0.0,
+    "of_which_guarantees": 0,
+    "of_which_era_loans": 0,
+    "of_which_earmarked_after_2026": 0.0,
+    "commitments_new": 0.0092
+   },
+   "matches_kiel_json_by_year": true,
+   "certainty": "A"
+  }
+ },
+ "pledged_vs_allocated": {
+  "kiel_definitions": {
+   "commitment": "Declaration of future support by a donor government (framework agreements, MoUs, security agreements, donor-conference pledges). Official stance, not necessarily a legal obligation. Dataset Documentation v1.1 p.6.",
+   "allocation": "Aid 'designated for a more specific purpose' that has 'already been delivered or [is] specified for delivery': technical agreements, procurement contracts, project plans; can be a subset of earlier commitments. Kiel's primary metric. Dataset Documentation p.6; workbook ReadMe; Fig. 5 note.",
+   "delivery_disbursement": "Reported only where donors publish it (heavy-weapon deliveries; budget-support disbursements from Ukraine's Ministry of Finance in Fig. 9). Item-level tot_value_deliv_EUR is 0 for nearly all 2025-2026 rows. Dataset Documentation p.20.",
+   "loans_and_guarantees": "Loans at face value when allocated; guarantees to IFIs that back loans to Ukraine are counted at the guaranteed amount (the IFI loan itself is not tracked). Documentation p.12.",
+   "links": [
+    "https://www.ifw-kiel.de/fileadmin/Dateiverwaltung/Subject_Dossiers_Topics/Ukraine/Ukraine_Support_Tracker/Dataset_Documentation.pdf",
+    "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+    "https://www.kielinstitut.de/publications/the-ukraine-support-tracker-which-countries-help-ukraine-and-how-6540/"
+   ]
+  },
+  "what_the_map_counts": "Kiel allocations (by month), not commitments. Commitments not yet allocated are only shown as 'pledged_open' (pipeline/build_data.py aid section; kiel.json pledged_not_delivered). So no Kiel donor's 2025-2026 figure contains a bare announcement. Allocation is still not the same as delivery: contracts for future delivery and guarantees are counted when signed.",
+  "donor_flags": {
+   "BEL": {
+    "2025": {
+     "map_as_built": 1.4215,
+     "kiel_allocated": 1.4215,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 1.4215,
+     "guarantees_face_value": 0,
+     "earmarked_after_aug2026": 0.075,
+     "corrected_disbursed_or_delivered_basis": 1.3465,
+     "difference_vs_map": -0.075
+    },
+    "2026": {
+     "map_as_built": 0.1153,
+     "kiel_allocated": 0.1153,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 0.1153,
+     "guarantees_face_value": 0,
+     "earmarked_after_aug2026": 0.0,
+     "corrected_disbursed_or_delivered_basis": 0.1153,
+     "difference_vs_map": 0.0
+    },
+    "reasons": [
+     "allocations earmarked for years after 2026 (multi-year packages)"
+    ]
+   },
+   "CAN": {
+    "2025": {
+     "map_as_built": 2.0964,
+     "kiel_allocated": 5.3601,
+     "era_in_year": 3.2637,
+     "allocated_ex_era_correct_year": 2.0964,
+     "guarantees_face_value": 0,
+     "earmarked_after_aug2026": 0.0014,
+     "corrected_disbursed_or_delivered_basis": 2.095,
+     "difference_vs_map": -0.0014
+    },
+    "2026": {
+     "map_as_built": 1.1756,
+     "kiel_allocated": 1.1756,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 1.1756,
+     "guarantees_face_value": 0,
+     "earmarked_after_aug2026": 0.0247,
+     "corrected_disbursed_or_delivered_basis": 1.1509,
+     "difference_vs_map": -0.0247
+    },
+    "reasons": [
+     "allocations earmarked for years after 2026 (multi-year packages)"
+    ]
+   },
+   "DNK": {
+    "2025": {
+     "map_as_built": 3.0402,
+     "kiel_allocated": 3.0402,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 3.0402,
+     "guarantees_face_value": 0,
+     "earmarked_after_aug2026": 0.483,
+     "corrected_disbursed_or_delivered_basis": 2.5572,
+     "difference_vs_map": -0.483
+    },
+    "2026": {
+     "map_as_built": 0.8719,
+     "kiel_allocated": 0.8719,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 0.8719,
+     "guarantees_face_value": 0,
+     "earmarked_after_aug2026": 0.0,
+     "corrected_disbursed_or_delivered_basis": 0.8719,
+     "difference_vs_map": 0.0
+    },
+    "reasons": [
+     "allocations earmarked for years after 2026 (multi-year packages)"
+    ]
+   },
+   "EU_INST": {
+    "2025": {
+     "map_as_built": 17.0258,
+     "kiel_allocated": 35.1249,
+     "era_in_year": 18.1,
+     "allocated_ex_era_correct_year": 17.0249,
+     "guarantees_face_value": 5.2419,
+     "earmarked_after_aug2026": 0.0,
+     "corrected_disbursed_or_delivered_basis": 11.783,
+     "difference_vs_map": -5.2428
+    },
+    "2026": {
+     "map_as_built": 15.8792,
+     "kiel_allocated": 15.8792,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 15.8792,
+     "guarantees_face_value": 1.02,
+     "earmarked_after_aug2026": 0.0,
+     "corrected_disbursed_or_delivered_basis": 14.8592,
+     "difference_vs_map": -1.02
+    },
+    "reasons": [
+     "loan guarantees counted at face value (contingent, no money paid unless the loan defaults)"
+    ]
+   },
+   "FRA": {
+    "2025": {
+     "map_as_built": 2.4974,
+     "kiel_allocated": 2.395,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 2.395,
+     "guarantees_face_value": 0,
+     "earmarked_after_aug2026": 0.0,
+     "corrected_disbursed_or_delivered_basis": 2.395,
+     "difference_vs_map": -0.1024
+    },
+    "2026": {
+     "map_as_built": 0.3538,
+     "kiel_allocated": 0.3393,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 0.3393,
+     "guarantees_face_value": 0.265,
+     "earmarked_after_aug2026": 0.0,
+     "corrected_disbursed_or_delivered_basis": 0.0743,
+     "difference_vs_map": -0.2795
+    },
+    "reasons": [
+     "loan guarantees counted at face value (contingent, no money paid unless the loan defaults)"
+    ]
+   },
+   "JPN": {
+    "2025": {
+     "map_as_built": 0.0,
+     "kiel_allocated": 0.7031,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 0.7031,
+     "guarantees_face_value": 0.4742,
+     "earmarked_after_aug2026": 0.0,
+     "corrected_disbursed_or_delivered_basis": 0.2289,
+     "difference_vs_map": 0.2289
+    },
+    "2026": {
+     "map_as_built": 3.0098,
+     "kiel_allocated": 3.8857,
+     "era_in_year": 1.579,
+     "allocated_ex_era_correct_year": 2.3067,
+     "guarantees_face_value": 2.26,
+     "earmarked_after_aug2026": 0.0,
+     "corrected_disbursed_or_delivered_basis": 0.0467,
+     "difference_vs_map": -2.9631
+    },
+    "reasons": [
+     "loan guarantees counted at face value (contingent, no money paid unless the loan defaults)",
+     "ERA loan removed from the wrong year by the pipeline (Japan received its ERA tranches in Feb and Apr 2026; UK tranches Mar/Apr 2025 and Jun 2026)"
+    ]
+   },
+   "NOR": {
+    "2025": {
+     "map_as_built": 4.6772,
+     "kiel_allocated": 4.6772,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 4.6772,
+     "guarantees_face_value": 0,
+     "earmarked_after_aug2026": 0.0517,
+     "corrected_disbursed_or_delivered_basis": 4.6255,
+     "difference_vs_map": -0.0517
+    },
+    "2026": {
+     "map_as_built": 2.5889,
+     "kiel_allocated": 2.5889,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 2.5889,
+     "guarantees_face_value": 0,
+     "earmarked_after_aug2026": 0.0334,
+     "corrected_disbursed_or_delivered_basis": 2.5555,
+     "difference_vs_map": -0.0334
+    },
+    "reasons": [
+     "allocations earmarked for years after 2026 (multi-year packages)"
+    ]
+   },
+   "SWE": {
+    "2025": {
+     "map_as_built": 4.4243,
+     "kiel_allocated": 4.4243,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 4.4243,
+     "guarantees_face_value": 0.0456,
+     "earmarked_after_aug2026": 0.0,
+     "corrected_disbursed_or_delivered_basis": 4.3787,
+     "difference_vs_map": -0.0456
+    },
+    "2026": {
+     "map_as_built": 2.0053,
+     "kiel_allocated": 2.0053,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 2.0053,
+     "guarantees_face_value": 0.239,
+     "earmarked_after_aug2026": 0.0054,
+     "corrected_disbursed_or_delivered_basis": 1.7609,
+     "difference_vs_map": -0.2444
+    },
+    "reasons": [
+     "loan guarantees counted at face value (contingent, no money paid unless the loan defaults)"
+    ]
+   },
+   "CHE": {
+    "2025": {
+     "map_as_built": 0.1739,
+     "kiel_allocated": 0.1739,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 0.1739,
+     "guarantees_face_value": 0,
+     "earmarked_after_aug2026": 0.042,
+     "corrected_disbursed_or_delivered_basis": 0.1319,
+     "difference_vs_map": -0.042
+    },
+    "2026": {
+     "map_as_built": 0.3197,
+     "kiel_allocated": 0.3197,
+     "era_in_year": 0,
+     "allocated_ex_era_correct_year": 0.3197,
+     "guarantees_face_value": 0,
+     "earmarked_after_aug2026": 0.0376,
+     "corrected_disbursed_or_delivered_basis": 0.2821,
+     "difference_vs_map": -0.0376
+    },
+    "reasons": [
+     "allocations earmarked for years after 2026 (multi-year packages)"
+    ]
+   },
+   "GBR": {
+    "2025": {
+     "map_as_built": 3.1394,
+     "kiel_allocated": 5.7893,
+     "era_in_year": 1.779,
+     "allocated_ex_era_correct_year": 4.0103,
+     "guarantees_face_value": 0,
+     "earmarked_after_aug2026": 0.0,
+     "corrected_disbursed_or_delivered_basis": 4.0103,
+     "difference_vs_map": 0.8709
+    },
+    "2026": {
+     "map_as_built": 3.5151,
+     "kiel_allocated": 3.5151,
+     "era_in_year": 0.871,
+     "allocated_ex_era_correct_year": 2.6441,
+     "guarantees_face_value": 1.4009,
+     "earmarked_after_aug2026": 0.0,
+     "corrected_disbursed_or_delivered_basis": 1.2432,
+     "difference_vs_map": -2.2719
+    },
+    "reasons": [
+     "loan guarantees counted at face value (contingent, no money paid unless the loan defaults)",
+     "ERA loan removed from the wrong year by the pipeline (Japan received its ERA tranches in Feb and Apr 2026; UK tranches Mar/Apr 2025 and Jun 2026)"
+    ]
+   }
+  },
+  "other_parts_with_pledge_like_items": {
+   "uncovered.json undisclosed_aid DEU 2026 (0/1.5/4.0)": "Built from the FY2026 appropriation (EUR 11.6bn, disbursed amount unknown per Kiel 8 Oct 2026). An appropriation is a budget ceiling, not a delivery; low=0 covers that. Note the comparison in its note uses Kiel's cumulative military allocations to Aug 2026 (25.0) against the 2022-25 budget (22.7); Kiel's 2022-2025 military allocations are 20.0, so Kiel is below budget outlays, not above. Keep as is (D), but describe as budget-based.",
+   "aid_gaps.json central/high": "Include UN OCHA FTS commitments (not yet paid). 2025-2026 effect is tiny: central minus low = Qatar 0.012/0.011, UAE 0.011/0, others < 0.002 EUR bn.",
+   "EU_INST pledged_open": "EUR 90.6bn of commitments (mainly the EUR 90bn Ukraine Support Loan) are not counted; only the 2026 disbursements (8.87 military, 6.68 financial) are.",
+   "kiel.json pledged_not_delivered for Germany, Norway, Netherlands": "23.4, 20.2, 12.3 EUR bn open commitments: correctly left out of the map."
+  },
+  "pipeline_issues_found": [
+   "ERA year: build_data.py removes ERA from 2025 first for all non-US lenders. Japan's ERA (1.579) was disbursed in Feb/Apr 2026, so the map sets Japan 2025 to 0 (should be 0.703) and 2026 to 3.010 (should be 2.307). The UK's ERA (2.65) was split 1.779 in 2025 and 0.871 in 2026: map 2025 3.139 (should be 4.010), 2026 3.515 (should be 2.644). Totals are unchanged.",
+   "ERA category: Kiel codes the UK ERA loan as Military, but build_data.py subtracts every lender's ERA from 'financial'. UK military stays 16.18 (should be 13.53) and financial drops to 2.50 (should stay 5.15); since flowback uses military aid, the UK's own-industry flowback is computed on 2.65bn too much.",
+   "Guarantees: Kiel financial allocations include guarantees at face value (EU 2025 5.24, 2026 1.02; Japan 2025 0.47, 2026 2.26; UK 2026 1.40; Sweden 2026 0.24; France 2026 0.265 coded military). If the map wants money actually transferred, these should count at expected loss (or as a contingent note), like loans count at grant equivalent in the cost view."
+  ]
+ },
+ "sources": [
+  {
+   "name": "UN Comtrade public preview API, monthly HS TOTAL by reporter, partners RUS (643) and UKR (804), 2025-01..2026-08",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "UN Comtrade data availability (getDA), monthly 2026",
+   "url": "https://comtradeapi.un.org/public/v1/getDA/C/M/HS?period=202607",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "ECB reference rates USD/EUR monthly (EXR.M.USD.EUR.SP00.A)",
+   "url": "https://data.ecb.europa.eu/data/datasets/EXR",
+   "date": "2026-10-17"
+  },
+  {
+   "name": "Bureau of National Statistics of Kazakhstan, foreign and mutual trade Jan-Aug 2026 (with xlsx partner tables)",
+   "url": "https://stat.gov.kz/ru/industries/economy/foreign-market/publications/352894/",
+   "date": "2026-10"
+  },
+  {
+   "name": "National Statistics Committee of Uzbekistan, foreign trade Jan-Aug 2026",
+   "url": "https://stat.uz/ru/press-tsentr/novosti-goskomstata/70472-zbekistonning-tash-i-savdo-ajlanmasi-8-ojda-57-4-mlrd-dollarga-etdi-3",
+   "date": "2026-10-02"
+  },
+  {
+   "name": "Spot.uz, Uzbekistan foreign trade Jan-Aug 2026 (Russia USD 9.19bn, +9.7%)",
+   "url": "https://www.spot.uz/ru/2026/10/01/foreign-trade/",
+   "date": "2026-10-01"
+  },
+  {
+   "name": "Investfuture/Interfax, Armenia-Russia turnover Jan-Jun 2026 USD 2.630bn (Armstat)",
+   "url": "https://investfuture.ru/articles/v-yanvare-iyune-tovarooborot-armenii-s-rossiey-sokratilsya-na-20-9-do-2-630-mlrd-37514792",
+   "date": "2026-07"
+  },
+  {
+   "name": "Investfuture, Alikhanov: Russia-Belarus turnover Jan-Jul 2026 USD 32.8bn +14%",
+   "url": "https://investfuture.ru/articles/alihanov-tovarooborot-rossii-i-belorussii-vyros-na-14-5faf501db8a71d29",
+   "date": "2026-10-01"
+  },
+  {
+   "name": "finance.mail.ru, Overchuk: Russia-Belarus turnover Q1 2026 ~USD 13bn +7.1%",
+   "url": "https://finance.mail.ru/article/overchuk-soobschil-o-roste-tovarooborota-rossii-i-belorussii-69209336/",
+   "date": "2026"
+  },
+  {
+   "name": "Kiel Institute, Ukraine Support Tracker Release 31 workbook",
+   "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+   "date": "2026-10-08"
+  },
+  {
+   "name": "Kiel Institute, Ukraine Support Tracker page (Update October 8, 2026)",
+   "url": "https://www.kielinstitut.de/research/topics/war-against-ukraine/ukraine-support-tracker/",
+   "date": "2026-10-08"
+  },
+  {
+   "name": "Kiel Institute press release: Only EUR 41.7 billion of Germany's EUR 100 billion went to Ukraine",
+   "url": "https://www.kielinstitut.de/media/news/ukraine-support-tracker-only-eur-417-billion-of-germanys-eur-100-billion-went-to-ukraine/",
+   "date": "2026-10-08"
+  },
+  {
+   "name": "Kiel, Dataset Documentation for the Ukraine Support Tracker v1.1",
+   "url": "https://www.ifw-kiel.de/fileadmin/Dateiverwaltung/Subject_Dossiers_Topics/Ukraine/Ukraine_Support_Tracker/Dataset_Documentation.pdf",
+   "date": "2024-12-05"
+  },
+  {
+   "name": "Kiel Working Paper 2218 (Trebesch et al.)",
+   "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/3ce24028-f1f9-4a1c-b456-2ef810d22188-KWP_2218_Trebesch_et_al_Ukraine_Support_Tracker.pdf",
+   "date": "2026"
+  }
+ ],
+ "overlaps": "Trade: the 'countries' entries REPLACE the 2026 entries of trade_full.json for the listed country-flows (same concept, same level); they must not be added. If a replacement is applied, '2026_annualized' in trade_full.json should be recomputed from the new value. EU27 are not touched (trade_full already has Eurostat Comext Jan-Aug). Hong Kong's 2026 gold is already inside its trade value; the pipeline already skips the uncovered.json Hong Kong 2026 gold correction (build_data.py line ~650), keep it that way. Belarus: a parallel round-5 Belarus file may give better Belarus-Russia figures; prefer it if it uses Belarusian data. Aid: aid_2025_2026 equals kiel.json by_year (nothing new to add); donor_flags are corrections to existing values, not additions. undisclosed aid (uncovered.json) and aid_gaps.json are not changed here.",
+ "notes": [
+  "IMF IMTS monthly series used by trade_full for Kazakhstan (imports from and exports to Russia) and Russia->Kazakhstan are flat: the same value every month from mid-2025 to June 2026. They are imputations, not data, although marked 'r'. Kazakhstan's national Jan-Aug figures replace them here.",
+  "IMF IMTS monthly values for Uzbekistan imports from Russia (about USD 3bn a month in 2026) and Belarus exports to Russia (about USD 0.9bn a month) are implausible against national totals; trade_full correctly did not use them.",
+  "India's imports from Russia jumped from about USD 3-5bn a month in Jan-Mar 2026 to USD 7.6-9.7bn a month in Apr-Jul 2026 in India's own Comtrade report. IMF IMTS (vintage 2026-10-01) has lower Apr-Jun values (7.2-7.5bn), so trade_full's Jan-Jun extrapolation (38.2) understates. Jan-Jul actual is EUR 40.8bn; with August, 48.3 (44.1-51.6). This is the largest single change.",
+  "Israel: monthly Comtrade imports from Russia in 2025 sum to EUR 2.08bn, against 0.32bn in the annual Comtrade report used by trade_full (Israel's annual series also jumps between 0.2 and 2.2bn across years, probably diamonds by origin vs consignment). The 2026 value is spliced to the annual level (x0.15) and flagged; open question.",
+  "Not found: Taiwan (Ministry of Finance portal unreachable), UAE exports to Russia, Turkmenistan, Syria, Tajikistan exports, Iran, Algeria exports to Russia: no monthly partner data for 2026 beyond what trade_full has. They stay 'estimated' or 'imf' in trade_full.",
+  "Countries with fewer than 7 months in Comtrade (Kyrgyzstan 5, Egypt 6, Saudi Arabia 4, Thailand 5, South Africa 5, Singapore 3, Moldova 6, Argentina 6) were not replaced; trade_full's IMF Jan-Jun based values remain. Comtrade spot checks: Saudi Arabia imports from Russia Jan-Apr 2026 EUR 0.71bn vs trade_full Jan-Aug 2.34 (looks high); Thailand imports from Russia Jan-May 0.47 vs trade_full Jan-Aug 0.36 (looks low, May 2026 spike); Singapore Jan-Mar 1.08 vs 2.39.",
+  "Aid numbers: all from Kiel Release 31; certainty A except where kiel.json grades B."
+ ]
+}

@@ -66,13 +66,18 @@ for c in countries.values():
                 mid_k = k[:-3]
                 hi_k = mid_k + "_hi"
                 if mid_k in obj and hi_k in obj:
-                    for lo, mid, hi in zip(v, obj[mid_k], obj[hi_k]):
+                    rows = zip(v, obj[mid_k], obj[hi_k])
+                    if mid_k == "refugee_years":  # floored on the running total: the running totals are ordered
+                        run = [0.0, 0.0, 0.0]
+                        rows = [tuple(run.__setitem__(i, run[i] + x) or run[i] for i, x in enumerate(t)) for t in rows]
+                    for lo, mid, hi in rows:
                         if not (lo <= mid + 1e-6 and mid <= hi + 1e-6):
                             bad.append(f"{c['iso3']}.{key}.{mid_k}")
                             break
 check("ranges ordered", not bad, f"out of order: {sorted(set(bad))[:12] or 'none'}")
 
 # 5. loans repaid from frozen Russian assets (ERA) cost the lender nothing
+LOANS = json.loads((ROOT / "research/2026-10/gaps/loans_value.json").read_text())["countries"]
 era_bad = []
 for iso3, d in kiel["donors"].items():
     c = countries.get(iso3)
@@ -85,7 +90,10 @@ for iso3, d in kiel["donors"].items():
         * (kiel["donors"]["EU_INST"].get("loans_face_value", 0) - kiel["donors"]["EU_INST"].get("era_allocated", 0))
         * 0.3
     )
-    if ge > max(0, own_loans) * 0.3 + eu_ge + 0.01:
+    # loans valued at their grant element (loans_value.json, round 5, which leaves ERA out) replace the flat 0.3
+    lv = (LOANS.get(iso3) or {}).get("loans_guarantees_economic_value")
+    limit = sum((v or {}).get("central", 0) for v in lv.values()) if lv else max(0, own_loans) * 0.3 + eu_ge
+    if ge > limit + 0.01:
         era_bad.append(iso3)
 check("ERA loans not counted as a cost", not era_bad, f"too high: {era_bad or 'none'}")
 

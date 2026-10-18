@@ -23,9 +23,9 @@ The parts below are what the country panel's waterfall shows (`shiftParts` and `
 
 | part on the map | how it is counted | toward | page |
 |---|---|---|---|
-| Aid to Ukraine | Kiel Institute allocations (bilateral), loans repaid from frozen Russian assets left out | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#aid) |
+| Aid to Ukraine | Kiel Institute allocations (bilateral), loans repaid from frozen Russian assets left out; loans at their economic value, donated weapons at market value | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#aid) |
 | Share of EU-level aid | EU institutions' aid split over members by EU budget share | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#eu-level-aid) |
-| Hosting refugees | government budgets where reported, else a calibrated model; donor-paid part taken off | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#refugees) |
+| Hosting refugees | net cost: budgets where reported, else a calibrated model, minus refugees' taxes; donor-paid part taken off; floored at zero per country | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#refugees) |
 | Extra purchases from Ukraine | rise above the expected level, each year on its own, full value | Ukraine | [trade.md](trade.md) |
 | Less (or more) paid to Russia | expected minus actual goods imports from Russia, at pre-war prices | either | [trade.md](trade.md), [energy-and-laundered-oil.md](energy-and-laundered-oil.md) |
 | Extra paid because of war-time prices (windfall) | payments for Russian fuel minus the same volume at pre-war prices | Russia | [prices.md](prices.md#war-time-windfall) |
@@ -39,7 +39,12 @@ The parts below are what the country panel's waterfall shows (`shiftParts` and `
 | Gold and hidden payments to Russia | gold and channels missing from customs data | Russia | [trade.md](trade.md#gold-and-hidden-channels) |
 | Undisclosed military aid | beyond what Kiel records | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#undisclosed-aid-and-private-donations) |
 | Private donations | national donation totals, GDP model elsewhere | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#undisclosed-aid-and-private-donations) |
-| Flowing back (optional, on by default) | own aid spent with own industry, others' aid spent here, extra sales to Ukraine, each × 20% profit | subtracted | [aid-refugees-military.md](aid-refugees-military.md#flowback) |
+| Weapons bought from Russia | payments against the expected level, outside customs data | either | [russia-state-and-companies.md](russia-state-and-companies.md#weapons-bought-from-russia) |
+| Nuclear projects and state loans from Russia | own payments for Rosatom construction, loan repayments against schedule, customs over-counts removed | either | [russia-state-and-companies.md](russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia) |
+| Paid to Russia by companies leaving it | exit contribution and forced discount, by home country | Russia | [russia-state-and-companies.md](russia-state-and-companies.md#companies-leaving-russia) |
+| Profits sent to Russia by Russian-owned companies here | against 2019–2021; trusteeships count the other way | either | [russia-state-and-companies.md](russia-state-and-companies.md#russian-owned-companies-abroad) |
+| Share of new IMF, World Bank and EBRD lending | rise over pre-war own-risk lending, at economic value, by shareholding | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#loans-at-their-economic-value-round-5) |
+| Flowing back (optional, on by default) | own aid spent with own industry, others' aid spent here, extra sales to Ukraine, arms Ukraine bought here, each × 20% profit | subtracted | [aid-refugees-military.md](aid-refugees-military.md#flowback) |
 
 Not a part of its own, but built into the parts above:
 
@@ -50,7 +55,7 @@ Not a part of its own, but built into the parts above:
 
 ## The cost view
 
-"Cost carried" is a second lens: what the country gave up, not where money went. Parts (`costParts` in `calc()`): aid with loans at grant equivalent (30% of face value, `LOAN_GRANT_ELEMENT`), refugee hosting, undisclosed aid, private donations, the extra price paid to replace Russian energy, profit lost on sales to Russia (goods and services, 20%), import tariffs dropped for Ukraine (4% of purchases from Ukraine, EU, UK and Canada only), minus discounts gained on Russian oil, and minus flowback profit.
+"Cost carried" is a second lens: what the country gave up, not where money went. Parts (`costParts` in `calc()`): aid with loans at the lender's grant equivalent (30% of face value, `LOAN_GRANT_ELEMENT`; the net shift uses their value to Ukraine instead), donated weapons at their recorded value, refugee hosting at net cost, refugee hosting, undisclosed aid, private donations, the extra price paid to replace Russian energy, profit lost on sales to Russia (goods and services, 20%), import tariffs dropped for Ukraine (4% of purchases from Ukraine, EU, UK and Canada only), minus discounts gained on Russian oil, and minus flowback profit.
 
 ## The other lenses
 
