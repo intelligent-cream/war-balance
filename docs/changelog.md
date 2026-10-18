@@ -172,7 +172,8 @@ are on at start; the names of Ukraine and Russia are drawn above the flow lines 
 
 Headline effects (% of GDP, round 9 → round 10): Lithuania +27.8 → +15.1, Estonia +23.2 → +9.4, Moldova +22.7 → +3.6,
 Finland +16.3 → +9.0, Latvia +11.4 → +4.1, Germany +5.2 → +3.5, Poland +8.1 → +3.9, United Kingdom +3.2 → +1.2,
-United States +0.57 → +0.36, Hungary −4.5 → −4.9, India −5.2 → −2.9, Serbia 0.0 → −3.1. The top of the ranking keeps
+United States +0.57 → +0.36, Hungary −4.5 → −4.9, India −5.2 → −2.9, Serbia 0.0 → −3.1, Hong Kong −8.3 → −4.5
+(gold counts at Russia's gain on gold). The top of the ranking keeps
 its order; the median range narrows from 4.7 to 2.1 points of GDP.
 
 ## See also
