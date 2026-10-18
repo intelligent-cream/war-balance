@@ -943,8 +943,38 @@ def gas_index(iso3: str, band: str) -> list[float]:
     return out
 
 
+PRICES = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/prices.json").read_text())[
+    "countries"
+]
+# Turkey hides the partner for crude and gas; its measured index needs a person's review (prices-notes.md), so it keeps
+# the benchmark-based index for now
+PRICES_SKIP = {"TUR"}
+
+
+def fossil_share(iso3: str) -> float:
+    """Fuel's share of a country's pre-war imports from Russia: measured 2018-2021 mix where available."""
+    mx = (PRICES.get(iso3) or {}).get("mix_2018_2021") if iso3 not in PRICES_SKIP else None
+    if mx and mx.get("non_fuel_goods") is not None:
+        return 1 - mx["non_fuel_goods"]
+    return import_mix(iso3).get("fossil_share") or 0
+
+
+def own_index(iso3: str, name: str, band: str) -> list[float] | None:
+    """A country's own realised price index for Russian goods (customs unit values, 2018-2021 = 1), if measured."""
+    if iso3 in PRICES_SKIP:
+        return None
+    s = ((PRICES.get(iso3) or {}).get("index") or {}).get(name)
+    if not s or not all(str(y) in s for y in YEARS):
+        return None
+    return [s[str(y)][band] for y in YEARS]
+
+
 def fuel_index(iso3: str, band: str) -> list[float]:
-    """Price level of the fossil fuels a country bought from Russia before the war, per year (2019-2021 = 1)."""
+    """Price level of the fossil fuels a country bought from Russia before the war, per year (pre-war = 1): its own
+    realised prices where measured, else its pre-war fuel mix with benchmark indices."""
+    own = own_index(iso3, "fossil_all", band)
+    if own:
+        return own
     m = import_mix(iso3)
     fuels = ("crude", "products", "gas", "coal", "other_fossil")
     total = sum(m.get(f) or 0 for f in fuels) or 1
@@ -958,7 +988,6 @@ def fuel_index(iso3: str, band: str) -> list[float]:
 def price_indices(countries: dict[str, dict]) -> None:
     """Price level of each flow per year against 2019-2021 (= 1), so changes compare volumes, not price swings."""
     for iso3, c in countries.items():
-        m = import_mix(iso3)
         for key, names in (
             ("to_rus", None),
             ("from_rus", "non_fuel_goods"),
@@ -976,8 +1005,9 @@ def price_indices(countries: dict[str, dict]) -> None:
                     series = idx(names, band)
                 else:
                     fuel = fuel_index(iso3, band)
-                    fs = m.get("fossil_share") or 0
-                    series = [fs * f + (1 - fs) * g for f, g in zip(fuel, idx("non_fuel_goods", band))]
+                    fs = fossil_share(iso3)
+                    nf = own_index(iso3, "non_fuel_goods", band) or idx("non_fuel_goods", band)
+                    series = [fs * f + (1 - fs) * g for f, g in zip(fuel, nf)]
                 obj["pidx" + suffix] = [round(v, 4) for v in series]
 
 
@@ -996,13 +1026,13 @@ def war_windfall(countries: dict[str, dict], src: Sources) -> None:
         tr = c.get("to_rus")
         if not tr:
             continue
-        fs = import_mix(iso3).get("fossil_share") or 0
+        fs = fossil_share(iso3)
         if not fs:
             continue
         out = {}
         # the low end takes the low fuel price level (less windfall), the high end the high one
         for k, band in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
-            fuel, nf = fuel_index(iso3, band), idx("non_fuel_goods", band)
+            fuel, nf = fuel_index(iso3, band), own_index(iso3, "non_fuel_goods", band) or idx("non_fuel_goods", band)
             vals = []
             for i, y in enumerate(YEARS):
                 if y < 2022 or fuel[i] <= 0:
