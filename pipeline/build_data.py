@@ -140,6 +140,11 @@ def build() -> dict:
     trade = load(GAPS / "trade_full.json")
     # better official data for the countries with the widest ranges (narrow.json) enter at customs level, so every later
     # step (re-exports, residual, freight, audits) applies to them as to everyone else
+    # the UAE: its own customs totals, which match the official non-oil trade with Russia (round4b.json)
+    for key, field in (("to_rus", "imports_from_RUS"), ("from_rus", "exports_to_RUS")):
+        f = trade["countries"].setdefault("ARE", {}).setdefault(field, {})
+        for y, v in R4B["uae"][key].items():
+            f[y] = {**(f.get(y) or {}), **{b: v[b] for b in ("low", "central", "high")}}
     for iso3, series in load(GAPS / "narrow.json")["countries"].items():
         for key, field in (("to_rus", "imports_from_RUS"), ("from_rus", "exports_to_RUS")):
             tl = (series.get(key) or {}).get("trade_layer")
@@ -836,6 +841,7 @@ def build() -> dict:
     apply_reexports(countries, src, note)
     apply_residual(countries, src, note)
     apply_audit(countries, src)
+    fix_artefacts(countries)
     baltic_transit(countries)
     # AI guesses, no real data: how far each country's direction is from Russia's and how threatened it feels;
     # shown separately to compare what a country did with what its incentives would predict
@@ -849,6 +855,7 @@ def build() -> dict:
     price_indices(countries)
     apply_narrow(countries, src)
     apply_audit2(countries, src, "values")
+    uae_fuel_net(countries)
     war_windfall(countries, src)
     pre_war_trends(countries, src)
     apply_audit2(countries, src, "trends")
@@ -1259,6 +1266,45 @@ def move_loan(a: dict, amount: float) -> None:
     cats["financial"] = round(max(0.0, (cats.get("financial") or 0) + amount), 3)
 
 
+def fix_artefacts(countries: dict[str, dict]) -> None:
+    """Small countries whose headline came from data artefacts (round4b.json): storage terminals, traders' origin labels,
+    diamonds bought for resale, front companies, suppressed statistics, a pre-collapse baseline year."""
+
+    def ser(iso3, key):
+        return (countries.get(iso3) or {}).get(key)
+
+    # Lebanon: 2019 fuel bought for smuggling into Syria; baseline is the mean of 2018, 2020 and 2021
+    if t := ser("LBN", "to_rus"):
+        t["base"], t["base_range"] = 0.482 * (1 - CIF_SHARE[1]), [0.42 * (1 - CIF_SHARE[2]), 0.55 * (1 - CIF_SHARE[0])]
+    # Mauritania: pre-war 'Russian' fuel was traders' origin labels; Russia's own exports x1.1
+    if t := ser("MRT", "to_rus"):
+        t["base"], t["base_range"] = 0.021, [0.013, 0.035]
+        t["years"][0], t["years_lo"][0], t["years_hi"][0] = 0.021, 0.013, 0.035
+    # Saint Lucia and Bonaire: crude and fuel oil to storage terminals, not used there
+    for iso3 in ("LCA", "BES"):
+        if t := ser(iso3, "to_rus"):
+            for k in ("years", "years_lo", "years_hi"):
+                t[k] = [0.0] * 6
+            t["base"], t["base_range"] = 0.0, [0.0, 0.0]
+            t.pop("laundered", None)
+    # Botswana: rough diamonds bought for sorting and resale; only a trading margin stays
+    if t := ser("BWA", "to_rus"):
+        t["base"], t["base_range"] = 0.006, [0.003, 0.012]
+        t["years"][0], t["years_lo"][0], t["years_hi"][0] = 0.006, 0.003, 0.012
+    # Seychelles: shadow-tanker managers registered there are fronts; 20% (5-50%) kept
+    if t := ser("SYC", "shipping"):
+        for k, f in (("years", 0.2), ("years_lo", 0.05), ("years_hi", 0.5)):
+            t[k] = [round(v * f, 5) for v in t[k]]
+    # Malta: services bought from Russia reported as near zero after 2022 (confidential cells)
+    if t := ser("MLT", "svc_bought"):
+        new = [0.127, 0.133, 0.08, 0.07, 0.06, 0.04]
+        t["years"], t["years_lo"], t["years_hi"] = (
+            new,
+            [round(v * 0.65, 4) for v in new],
+            [round(v * 1.35, 4) for v in new],
+        )
+
+
 def apply_audit(countries: dict[str, dict], src: Sources) -> None:
     """Corrections from the audit of 31 major countries against independent sources (research/2026-10/gaps/audit.json)."""
     au = load(GAPS / "audit.json")["countries"]
@@ -1301,8 +1347,18 @@ def apply_audit(countries: dict[str, dict], src: Sources) -> None:
         if f.get("base_range"):
             f["base_range"] = [round(f["base_range"][0] * 0.98, 5), round(f["base_range"][1] * 1.9, 5)]
         f["src"] = f.get("src", []) + [aid_src]
-    # Poland's refugee costs: the government's own report (PLN 90bn for 2022-23 alone)
-    a = (countries.get("POL") or {}).get("aid")
+    # refugee hosting costs from government budgets and audit offices for 27 hosts (round4b.json); Moldova's figures are
+    # its own costs, already net of donor funding
+    for iso3, d in R4B["refugees"].items():
+        a = (countries.get(iso3) or {}).get("aid")
+        if not isinstance(d, dict) or "2022" not in d or not a:
+            continue
+        for k, b in (("refugee_years", "central"), ("refugee_years_lo", "low"), ("refugee_years_hi", "high")):
+            a[k] = [0.0] + [round((d.get(str(y)) or {}).get(b, 0), 5) for y in YEARS[1:]]
+        a["refugee_cert"] = d.get("certainty") or "B"
+        a["refugee_src"] = (a.get("refugee_src") or []) + [aid_src]
+    # Poland is now in the list above; the older single correction is kept only if it is missing there
+    a = None if "POL" in R4B["refugees"] else (countries.get("POL") or {}).get("aid")
     if a and a.get("refugee_years"):
         tot = sum(a["refugee_years"][1:]) or 1
         a["refugee_years"] = [round(v * 24 / tot, 5) for v in a["refugee_years"]]
@@ -1354,6 +1410,7 @@ def apply_narrow(countries: dict[str, dict], src: Sources) -> None:
                 obj["src"].append(nid)
 
 
+R4B = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/round4b.json").read_text())
 AUDIT2 = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/audit2.json").read_text())
 # share of each country's payments to Russia priced at the border (audit 2, question 7), per year and for 2019-2021
 BORDER_PRICED: dict[str, dict] = {}
@@ -1362,6 +1419,17 @@ for _x in AUDIT2["questions"][6]["corrections"]:
 # 2021 uses the pre-war share
 for _v in BORDER_PRICED.values():
     _v.setdefault("2021", _v.get("2019-2021", 0.0))
+
+
+def uae_fuel_net(countries: dict[str, dict]) -> None:
+    """Fuel CREA tracks to the UAE minus the part UAE customs already record (round4b): lower in 2024-2026."""
+    tr = (countries.get("ARE") or {}).get("to_rus")
+    if not tr:
+        return
+    for y, d in ((2024, 0.37), (2025, 0.62), (2026, 0.19)):
+        i = YEARS.index(y)
+        for k in ("years", "years_lo", "years_hi"):
+            tr[k][i] = round(max(0.0, tr[k][i] - d), 5)
 
 
 def apply_audit2(countries: dict[str, dict], src: Sources, stage: str) -> None:
@@ -1525,6 +1593,13 @@ def apply_reexports(countries: dict[str, dict], src: Sources, note) -> None:
     """Goods re-exported to Russia by trade hubs count for the countries that made them; Russian goods the hubs pass on
     (mostly gold and diamonds) count for the final buyer. The hub keeps only its trading margin."""
     rx = load(GAPS / "reexports.json")
+    # UAE 2024-2026: larger re-exports to Russia and more Russian gold passed on, matching its customs totals (round4b)
+    are = rx["hubs"].get("ARE")
+    if are:
+        for y, c in (("2025", 4.78), ("2026_JanAug", 3.27)):
+            are["reexports_to_RUS"][y] = {"low": round(c * 0.74, 3), "central": c, "high": round(c * 1.28, 3)}
+        for y, c in (("2024", 5.3), ("2025", 9.8), ("2026_JanAug", 4.3)):
+            are["reexports_from_RUS"][y] = {"low": round(c * 0.8, 3), "central": c, "high": round(c * 1.2, 3)}
     sid = src.add(
         "reexports",
         "Re-exports through trade hubs (UAE, Armenia, Kazakhstan, Turkey, Kyrgyzstan and others): UN Comtrade re-export flags and matched product trade",
@@ -1688,6 +1763,15 @@ def apply_residual(countries: dict[str, dict], src: Sources, note) -> None:
                 g = gaps.setdefault(t, {k: [0.0] * 6 for k in moved})
                 for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
                     g[k] = [a + m * w[b] * f for a, m in zip(g[k], moved[k])]
+    # Belarus already reports its full trade with Russia (Union State totals), so its pro-rata share of the gap is
+    # spread over the other countries instead (round4b.json)
+    blr = gaps.pop("BLR", None)
+    if blr:
+        tot = [sum(g["years"][i] for g in gaps.values()) or 1 for i in range(len(YEARS))]
+        for g in gaps.values():
+            share = [g["years"][i] / tot[i] for i in range(len(YEARS))]
+            for k in ("years", "years_lo", "years_hi"):
+                g[k] = [v + b * sh for v, b, sh in zip(g[k], blr[k], share)]
     for iso3, add in gaps.items():
         c = countries.get(iso3)
         if not c:
