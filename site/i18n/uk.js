@@ -191,6 +191,8 @@ I18N.uk = {
   "Up to": "До",
   "2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).": "2026 рік — це період з початку року (січень–серпень), а не повний рік. Якщо джерело ще не опублікувало дані за 2026 рік, січень–серпень оцінено за його місячним темпом 2025 року (позначено *).",
   "Flows": "Потоки",
+  "Light or dark": "Світла або темна тема",
+  "Layers": "Шари",
   "Subtract money flowing back": "Відняти гроші, що повертаються",
   "Find your country": "Знайдіть свою країну",
   "World map coloured by the change in money flows since before the war": "Мапа світу, забарвлена за зміною грошових потоків порівняно з довоєнним часом",

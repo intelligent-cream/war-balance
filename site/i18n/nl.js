@@ -191,6 +191,8 @@ I18N.nl = {
   "Up to": "Tot",
   "2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).": "2026 is het jaar tot nu toe (januari tot augustus), geen volledig jaar. Waar een bron 2026 nog niet heeft gepubliceerd, is januari tot augustus geschat uit het maandtempo van 2025 (gemarkeerd met *).",
   "Flows": "Stromen",
+  "Light or dark": "Licht of donker",
+  "Layers": "Lagen",
   "Subtract money flowing back": "Terugvloeiend geld aftrekken",
   "Find your country": "Zoek je land",
   "World map coloured by the change in money flows since before the war": "Wereldkaart gekleurd naar de verandering in geldstromen ten opzichte van vóór de oorlog",

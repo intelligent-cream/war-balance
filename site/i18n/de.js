@@ -190,6 +190,8 @@ I18N.de = {
   "Up to": "Bis",
   "2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).": "2026 ist das Jahr bis heute (Januar bis August), kein volles Jahr. Wo eine Quelle 2026 noch nicht veröffentlicht hat, wird Januar bis August aus ihrer monatlichen Rate von 2025 geschätzt (mit * markiert).",
   "Flows": "Ströme",
+  "Light or dark": "Hell oder dunkel",
+  "Layers": "Ebenen",
   "Subtract money flowing back": "Zurückfließendes Geld abziehen",
   "Find your country": "Ihr Land finden",
   "World map coloured by the change in money flows since before the war": "Weltkarte, eingefärbt nach der Veränderung der Geldströme gegenüber der Vorkriegszeit",
