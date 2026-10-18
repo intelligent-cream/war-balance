@@ -6,7 +6,7 @@ The map is a research preview. Its figures were compiled with AI assistance from
 
 | issue | effect | where documented |
 |---|---|---|
-| **Belarus's range still crosses zero** (−24% of GDP, likely range −58% to +19%), narrower since round 5 with a Belarus-specific band for its imports from Russia. It is left out of top lists. | Belarus | [counterfactual.md](method/counterfactual.md#belarus-round-5) |
+| **Belarus's range still crosses zero** (−29% of GDP, likely range −64% to +16%), narrower since round 5 with a Belarus-specific band for its imports from Russia. It is left out of top lists. | Belarus | [counterfactual.md](method/counterfactual.md#belarus-round-5) |
 | **2025–2026 partner data incomplete.** 121 reporters had 2025 annual data; 2026 is estimated from 2025 for many importers (marked `*`). | recent years | [ranges.md](method/ranges.md#2026-and-the--mark) |
 | **Hub margins and re-export shares** are educated guesses (goods 5–20%, gold 0.3–6%). | hubs and their suppliers | [trade.md](method/trade.md#re-export-hubs) |
 | **Refugee costs** outside the 27 hosts with budgets are modelled; Poland's 2022 count may be low. | refugee hosts | [aid-refugees-military.md](method/aid-refugees-military.md#refugees) |

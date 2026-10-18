@@ -1336,6 +1336,20 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
     )
     # round 6: the range of the 2022-2026 total is measured on the back-tests' cumulative errors (per flow, size class,
     # model and number of years), and some of Russia's neighbours get bands tested on their own history (cf_bands.json)
+    # round 6: more back-tests for trade with Ukraine (rolling origins on Ukraine's history, analogue partners); both
+    # flows fall back to 2021 held flat, each with its own cumulative band (ua_trade_cf.json); replaces round 4's models
+    ua = load(GAPS / "ua_trade_cf.json")
+    for iso3, flows in ua["countries"].items():
+        for key in ("buy_ukr", "sell_ukr"):
+            if flows.get(key):
+                cf["countries"].setdefault(iso3, {})[key] = flows[key]
+    uid = src.add(
+        "ua_trade_cf",
+        "Expected trade with Ukraine without the war: rolling back-tests on Ukraine's own history and on analogue partners (IMF WEO vintages, IMF DOTS)",
+        "https://db.nomics.world/IMF/DOT",
+        ua.get("generated"),
+        "2021 held flat for both flows; see research/2026-10/gaps/ua_trade_cf-notes.md",
+    )
     bands = load(GAPS / "cf_bands.json")
     for iso3, flows in bands["countries"].items():
         for key, d in flows.items():
@@ -1394,6 +1408,8 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
                 hs = ["H1", "H2", "H3", "H4", "H5_2026_8of12"]
                 obj["cb"] = [None] + [[cb[h]["low"], cb[h]["high"]] for h in hs]
                 obj["src"].append(bid)
+            if key in ("buy_ukr", "sell_ukr") and key in (ua["countries"].get(iso3) or {}):
+                obj["src"].append(uid)
             if iso3 == "MDA" and key == "to_rus":
                 # right-bank gas and other goods at 2019-2021 prices; the 2019-2021 average as the low alternative
                 m = bands["countries"]["MDA"]["to_rus"]["base_range_recommended_eur_bn_at_2019_2021_prices"]
