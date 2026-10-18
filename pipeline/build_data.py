@@ -816,7 +816,9 @@ def build() -> dict:
     remove_freight(countries)
     price_indices(countries)
     apply_narrow(countries, src)
+    apply_audit2(countries, src, "values")
     pre_war_trends(countries, src)
+    apply_audit2(countries, src, "trends")
     for c in countries.values():
         for obj in c.values():
             if isinstance(obj, dict):
@@ -1226,18 +1228,77 @@ def apply_narrow(countries: dict[str, dict], src: Sources) -> None:
                 obj["src"].append(nid)
 
 
+AUDIT2 = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/audit2.json").read_text())
+# share of each country's payments to Russia priced at the border (audit 2, question 7), per year and for 2019-2021
+BORDER_PRICED: dict[str, dict] = {}
+for _x in AUDIT2["questions"][6]["corrections"]:
+    BORDER_PRICED.setdefault(_x["country"], {})[str(_x["year"])] = _x["central"]
+# 2021 uses the pre-war share
+for _v in BORDER_PRICED.values():
+    _v.setdefault("2021", _v.get("2019-2021", 0.0))
+
+
+def apply_audit2(countries: dict[str, dict], src: Sources, stage: str) -> None:
+    """Corrections from the second audit (research/2026-10/gaps/audit2.json). Stage "values": changes to yearly values
+    and baselines (UAE gold via Armenia and 2026 hidden gold, Russian fuel delivered to the UAE, France's undisclosed
+    aid already in Kiel, the structural pre-war gap in Russia's import statistics). Stage "trends": pre-war trends
+    fitted on the full 2012-2021 window where the post-2016 window was only a rebound (Kazakhstan, Montenegro...).
+    Baltic and Finnish pre-war transit (question 6) is not applied."""
+    aid2 = src.add(
+        "audit2",
+        "Second audit: UAE gold and fuel, undisclosed aid, Russia's import-statistics gap, trend windows, border-priced imports",
+        None,
+        "2026-10-18",
+        "see research/2026-10/gaps/audit2-notes.md",
+    )
+    for q in AUDIT2["questions"]:
+        for x in q["corrections"]:
+            c = countries.get(x["country"])
+            if not c:
+                continue
+            if stage == "values" and x["field"] in ("years", "base") and q["id"] in ("Q1", "Q2", "Q3", "Q4"):
+                obj = c.setdefault(x["series"], {"years": [0.0] * 6, "years_lo": [0.0] * 6, "years_hi": [0.0] * 6, "base": 0, "base_range": [0, 0], "cert": "C", "src": []})  # fmt: skip
+                if x["field"] == "base":
+                    obj["base"] = round(max(0.0, obj.get("base", 0) + x["central"]), 5)
+                    br = obj.get("base_range") or [obj["base"], obj["base"]]
+                    obj["base_range"] = [round(max(0.0, br[0] + x["low"]), 5), round(max(0.0, br[1] + x["high"]), 5)]
+                else:
+                    i = YEARS.index(int(x["year"]))
+                    lo, mid, hi = sorted((x["low"], x["central"], x["high"]))[0], x["central"], max(x["low"], x["high"])
+                    for k, d in (("years", mid), ("years_lo", lo), ("years_hi", hi)):
+                        arr = obj.setdefault(k, [0.0] * 6)
+                        arr[i] = round(max(0.0, arr[i] + d), 5)
+                    obj["years_lo"][i] = min(obj["years_lo"][i], obj["years"][i])
+                    obj["years_hi"][i] = max(obj["years_hi"][i], obj["years"][i])
+                if aid2 not in obj.setdefault("src", []):
+                    obj["src"].append(aid2)
+            elif stage == "trends" and x["field"] == "bmul" and q["id"] == "Q5":
+                obj = c.get(x["series"])
+                if not obj or not obj.get("bmul"):
+                    continue
+                i = YEARS.index(int(x["year"]))
+                obj["bmul"][i], obj["bmul_lo"][i], obj["bmul_hi"][i] = (
+                    x["central"],
+                    min(x["low"], x["central"]),
+                    max(x["high"], x["central"]),
+                )
+
+
 def remove_freight(countries: dict[str, dict]) -> None:
     """Payments to Russia at the Russian border (FOB): the freight and insurance inside import values are taken out."""
     for c in countries.values():
         tr = c.get("to_rus")
         if not tr:
             continue
+        # pipeline gas and crude, electricity and trade over land are priced at the border: no sea freight to take out
+        bp = BORDER_PRICED.get(c["iso3"], {})
         for k, f in (("years", CIF_SHARE[1]), ("years_lo", CIF_SHARE[2]), ("years_hi", CIF_SHARE[0])):
-            tr[k] = [round(v * (1 - f), 5) for v in tr[k]]
-        tr["base"] = round(tr.get("base", 0) * (1 - CIF_SHARE[1]), 5)
+            tr[k] = [round(v * (1 - f * (1 - bp.get(str(y), 0.0))), 5) for v, y in zip(tr[k], YEARS)]
+        b0 = 1 - bp.get("2019-2021", 0.0)
+        tr["base"] = round(tr.get("base", 0) * (1 - CIF_SHARE[1] * b0), 5)
         if tr.get("base_range"):
             br = tr["base_range"]
-            tr["base_range"] = [round(br[0] * (1 - CIF_SHARE[2]), 5), round(br[1] * (1 - CIF_SHARE[0]), 5)]
+            tr["base_range"] = [round(br[0] * (1 - CIF_SHARE[2] * b0), 5), round(br[1] * (1 - CIF_SHARE[0] * b0), 5)]
 
 
 def apply_shipping(countries: dict[str, dict], src: Sources, note) -> None:
