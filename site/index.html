@@ -626,7 +626,7 @@ function calc(c, y) {
     part("laund", "Russian oil bought via other countries", neg(c.laund ? above3({ ...T.laundered, p: T.laundered.c.map(() => 1), pl: T.laundered.c.map(() => 1), ph: T.laundered.c.map(() => 1) }) : sum3(T.laundered)), "C", c.to_rus?.laundered_src || []),
     part("sold", lessSold3[0] >= 0 ? "Profit lost on sales to Russia given up" : "Profit on extra sales to Russia", profit3(lessSold3), weakest([c.from_rus?.cert, "B"]), src("from_rus")),
     part("tax", lessTax3[0] >= 0 ? "Less tax paid in Russia by companies" : "More tax paid in Russia by companies", lessTax3, c.company?.cert || "B", src("company")),
-    part("mil", "Weapons and troops sent to Russia", neg(sum3(T.mil)), "D", src("military_rus")),
+    part("mil", "Weapons and troops sent to Russia", neg(sum3(T.mil)), c.military_rus?.cert || "D", src("military_rus")),
     part("svcpaid", lessSvcPaid3[0] >= 0 ? "Less paid to Russia for services" : "More paid to Russia for services", lessSvcPaid3, c.svc_bought?.cert || "C", src("svc_bought")),
     part("svcsold", lessSvcSold3[0] >= 0 ? "Profit lost on services to Russia given up (e.g. tourism)" : "Profit on extra services sold to Russia (e.g. tourism)", profit3(lessSvcSold3), c.svc_sold?.cert || "C", src("svc_sold")),
     part("ship", lessShip3[0] >= 0 ? "Less profit from shipping Russian oil" : "Profit from shipping and insuring Russian oil", lessShip3, c.shipping?.cert || "D", src("shipping")),

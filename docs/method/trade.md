@@ -95,6 +95,17 @@ Russia's own customs record more imports than its partners report selling: EUR 2
 
 "Gold and hidden payments to Russia" holds money that appears nowhere in customs data ([`uncovered.json`](../../research/2026-10/gaps/uncovered.json) `hidden_channels`, [notes §2](../../research/2026-10/gaps/uncovered-notes.md), certainty D): Kyrgyzstan's gold gap (partners record 16–52 t a year more than Kyrgyzstan exports; 0/25/75% assumed Russian), Hong Kong's 2026 gold, and high-band margins for China, Turkey, Kazakhstan, Armenia and India. UAE gold is in its customs data and is zero here (audit 2). Kyrgyzstan's hidden gold is passed on to the buyers of Kyrgyz gold ([`kgz_gold.json`](../../research/2026-10/gaps/kgz_gold.json), UN Comtrade HS 7108 imports from Kyrgyzstan 2023–2024: Switzerland 37%, China 33% with Hong Kong, UK 15%, UAE 11%); Kyrgyzstan keeps 5%. Crypto and payment agents are not added: they mostly pay for trade that customs already record, and no source splits them by country.
 
+## Payment agents (round 6)
+
+Agents in third countries settle much of Russia's trade outside normal banking and charge fees (3–4% in 2022–2024,
+peaks of 10–15%, 2–2.5% since 2025) that are in neither customs values nor services data. The share of those fees kept
+by residents (35–60%; the rest belongs to Russian-owned networks), against 2021, counts as money earned from Russia,
+about EUR 7bn over 2022–2026: China 1.7bn, Kazakhstan 1.1, the UAE 1.0, Hong Kong 0.9, Türkiye 0.85, Kyrgyzstan 0.7
+(checked against Kyrgyz banks' extra profits), Armenia 0.45. The country split is an educated guess (certainty D; C for
+Kyrgyzstan). Crypto volumes (Garantex, the A7A5 rouble stablecoin) and the 2022 transfers of people leaving Russia have
+no country split or are not payments to Russia, and are not counted
+([`payment_channels.json`](../../research/2026-10/gaps/payment_channels.json), [notes](../../research/2026-10/gaps/payment_channels-notes.md)).
+
 ## Freight: CIF to FOB
 
 Import values include freight and insurance (CIF). That part is paid to shippers and insurers, and is counted for them in [shipping](services-shipping-companies.md#shipping) and services, not for Russia. [build_data.py `remove_freight()`](../../pipeline/build_data.py) takes `CIF_SHARE = 3.5% / 5.5% / 7.5%` (low/middle/high) out of every country's payments to Russia, yearly values and baseline alike, except for the share priced at the Russian border (pipeline gas and crude, electricity, overland trade; `BORDER_PRICED` from audit 2, question 7).

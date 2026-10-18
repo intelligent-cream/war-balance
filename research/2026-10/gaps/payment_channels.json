@@ -1,0 +1,1206 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "Crypto and payment-agent channels between Russia and other countries. Only one piece is a new flow that can be split by country: the fees (margin) that intermediaries outside Russia earn for settling Russia's trade. All other parts (payment volumes, crypto volumes, A7A5, Garantex, remittances) either settle trade already in customs data, are capital flight out of Russia, or cannot be attributed to a country; they are recorded in 'not_counted' for scale only.",
+  "units": "EUR bn, nominal. 2026 = January-August, not annualised. USD converted at ECB yearly averages 2021 1.183, 2022 1.053, 2023 1.081, 2024 1.082, 2025 1.13, 2026 1.16.",
+  "part": "countries[ISO3].to_rus: payment-agent margin earned by residents of that country from Russian importers/exporters, as change against the 2021 level (2021 level kept flat; 2026 baseline x 8/12). Direction: toward Russia (money earned by helping Russia trade around sanctions), same sign as profit on sales to Russia. The value is already profit: add directly, do NOT multiply by the 0.2 margin.",
+  "method": "gross fees = (Russia's goods imports, Bank of Russia BoP, minus hub re-exports already in reexports.json) x share paid through third-country agents x average agent fee, plus (Russian goods exports x share received through agents x 0.3-1.5% fee). Gross fees are split by the country where the agent sits (educated split, two periods: 2022-23 and 2024-26), then multiplied by the share retained by residents of that country (the rest goes to Russian-owned agent structures such as the A7 network, VTB's China netting, Russian-owned shells in Hong Kong/UAE, and stays with Russia; ~10% is unallocated: Seychelles fronts and others). Ranges combine factor ranges as independent log-normal uncertainties (90%).",
+  "factors": {
+   "imports_usd_bn_bop": {
+    "2021": 301.0,
+    "2022": 276.5,
+    "2023": 303.1,
+    "2024": 301.5,
+    "2025": 306.4,
+    "2026": 213.5
+   },
+   "exports_usd_bn_bop": {
+    "2021": 494.2,
+    "2022": 592.1,
+    "2023": 424.7,
+    "2024": 433.6,
+    "2025": 419.5,
+    "2026": 302.1
+   },
+   "share_imports_via_agents_low_central_high": {
+    "2021": [
+     0.01,
+     0.03,
+     0.06
+    ],
+    "2022": [
+     0.1,
+     0.2,
+     0.35
+    ],
+    "2023": [
+     0.15,
+     0.3,
+     0.45
+    ],
+    "2024": [
+     0.35,
+     0.55,
+     0.75
+    ],
+    "2025": [
+     0.35,
+     0.55,
+     0.75
+    ],
+    "2026": [
+     0.3,
+     0.5,
+     0.7
+    ]
+   },
+   "agent_fee_imports_low_central_high": {
+    "2021": [
+     0.01,
+     0.02,
+     0.03
+    ],
+    "2022": [
+     0.015,
+     0.03,
+     0.05
+    ],
+    "2023": [
+     0.02,
+     0.035,
+     0.06
+    ],
+    "2024": [
+     0.025,
+     0.04,
+     0.07
+    ],
+    "2025": [
+     0.015,
+     0.025,
+     0.04
+    ],
+    "2026": [
+     0.012,
+     0.02,
+     0.035
+    ]
+   },
+   "share_exports_via_agents": {
+    "2022": [
+     0.05,
+     0.1,
+     0.2
+    ],
+    "2023": [
+     0.05,
+     0.15,
+     0.3
+    ],
+    "2024-2026": [
+     0.1,
+     0.2,
+     0.35
+    ]
+   },
+   "agent_fee_exports": [
+    0.003,
+    0.007,
+    0.015
+   ],
+   "agent_location_split_2022_2023": {
+    "CHN": 0.15,
+    "HKG": 0.12,
+    "ARE": 0.18,
+    "KAZ": 0.14,
+    "KGZ": 0.08,
+    "TUR": 0.12,
+    "ARM": 0.07,
+    "UZB": 0.03,
+    "GEO": 0.02,
+    "unallocated": 0.09
+   },
+   "agent_location_split_2024_2026": {
+    "CHN": 0.24,
+    "HKG": 0.16,
+    "ARE": 0.14,
+    "KAZ": 0.09,
+    "KGZ": 0.08,
+    "TUR": 0.07,
+    "ARM": 0.04,
+    "UZB": 0.03,
+    "GEO": 0.01,
+    "IDN": 0.01,
+    "THA": 0.01,
+    "SRB": 0.01,
+    "unallocated": 0.11
+   },
+   "retained_by_residents": {
+    "CHN": 0.45,
+    "HKG": 0.35,
+    "ARE": 0.4,
+    "KAZ": 0.6,
+    "KGZ": 0.5,
+    "TUR": 0.6,
+    "ARM": 0.55,
+    "UZB": 0.6,
+    "GEO": 0.5,
+    "IDN": 0.5,
+    "THA": 0.5,
+    "SRB": 0.5
+   }
+  },
+  "gross_fees_all_agents": {
+   "2021": {
+    "gross_fees_imports": {
+     "low": 0.041,
+     "central": 0.152,
+     "high": 0.339
+    },
+    "gross_fees_exports": {
+     "low": 0,
+     "central": 0.029,
+     "high": 0.188
+    },
+    "gross_fees_total": {
+     "low": 0.067,
+     "central": 0.181,
+     "high": 0.427
+    },
+    "base_imports_eur_bn": 252.8
+   },
+   "2022": {
+    "gross_fees_imports": {
+     "low": 0.574,
+     "central": 1.531,
+     "high": 3.272
+    },
+    "gross_fees_exports": {
+     "low": 0.132,
+     "central": 0.394,
+     "high": 1.104
+    },
+    "gross_fees_total": {
+     "low": 0.932,
+     "central": 1.925,
+     "high": 3.805
+    },
+    "base_imports_eur_bn": 255.2
+   },
+   "2023": {
+    "gross_fees_imports": {
+     "low": 1.158,
+     "central": 2.825,
+     "high": 5.556
+    },
+    "gross_fees_exports": {
+     "low": 0.103,
+     "central": 0.413,
+     "high": 1.157
+    },
+    "gross_fees_total": {
+     "low": 1.542,
+     "central": 3.238,
+     "high": 6.068
+    },
+    "base_imports_eur_bn": 269.1
+   },
+   "2024": {
+    "gross_fees_imports": {
+     "low": 3.084,
+     "central": 5.932,
+     "high": 11.269
+    },
+    "gross_fees_exports": {
+     "low": 0.188,
+     "central": 0.561,
+     "high": 1.446
+    },
+    "gross_fees_total": {
+     "low": 3.621,
+     "central": 6.493,
+     "high": 11.903
+    },
+    "base_imports_eur_bn": 269.7
+   },
+   "2025": {
+    "gross_fees_imports": {
+     "low": 1.821,
+     "central": 3.609,
+     "high": 6.351
+    },
+    "gross_fees_exports": {
+     "low": 0.174,
+     "central": 0.52,
+     "high": 1.34
+    },
+    "gross_fees_total": {
+     "low": 2.307,
+     "central": 4.128,
+     "high": 6.99
+    },
+    "base_imports_eur_bn": 262.5
+   },
+   "2026": {
+    "gross_fees_imports": {
+     "low": 0.865,
+     "central": 1.784,
+     "high": 3.434
+    },
+    "gross_fees_exports": {
+     "low": 0.122,
+     "central": 0.365,
+     "high": 0.94
+    },
+    "gross_fees_total": {
+     "low": 1.198,
+     "central": 2.149,
+     "high": 3.896
+    },
+    "base_imports_eur_bn": 178.4
+   }
+  },
+  "why_not_in_trade": "Russian Ministry of Finance letter 01.11.2024 No. 27-01-21/106988 and FTS letter 20.08.2024: a payment agent's commission paid by the Russian importer for only arranging payment is not included in customs value (EAEU Customs Code art. 40). Russia's BoP financial-services imports are only USD 1.1-1.4bn a year in 2023-2025 (down from 2.5bn in 2021), so the fees are not captured there either."
+ },
+ "countries": {
+  "CHN": {
+   "to_rus": {
+    "2022": {
+     "low": 0.03,
+     "central": 0.118,
+     "high": 0.316
+    },
+    "2023": {
+     "low": 0.058,
+     "central": 0.206,
+     "high": 0.52
+    },
+    "2024": {
+     "low": 0.249,
+     "central": 0.689,
+     "high": 1.575
+    },
+    "2025": {
+     "low": 0.154,
+     "central": 0.434,
+     "high": 0.941
+    },
+    "2026": {
+     "low": 0.078,
+     "central": 0.224,
+     "high": 0.513
+    }
+   },
+   "sum_2022_2026": {
+    "low": 0.569,
+    "central": 1.671,
+    "high": 3.864
+   },
+   "margin_level_incl_2021_baseline": {
+    "2021": {
+     "low": 0.003,
+     "central": 0.012,
+     "high": 0.035
+    },
+    "2022": {
+     "low": 0.042,
+     "central": 0.13,
+     "high": 0.328
+    },
+    "2023": {
+     "low": 0.07,
+     "central": 0.219,
+     "high": 0.532
+    },
+    "2024": {
+     "low": 0.261,
+     "central": 0.701,
+     "high": 1.587
+    },
+    "2025": {
+     "low": 0.166,
+     "central": 0.446,
+     "high": 0.953
+    },
+    "2026": {
+     "low": 0.086,
+     "central": 0.232,
+     "high": 0.521
+    }
+   },
+   "certainty": "D",
+   "note": "Chinese payment agents, netting counterparties and regional/border banks (Heihe, Suifenhe Rural Commercial Banks, EU 18th package) paid for settling Russian imports after big Chinese banks refused Russian payments (2024). Retained share 45% (25-65%): the 'China Track' netting is run by Russian banks (VTB Shanghai etc.), whose fees stay with Russia."
+  },
+  "HKG": {
+   "to_rus": {
+    "2022": {
+     "low": 0.014,
+     "central": 0.073,
+     "high": 0.204
+    },
+    "2023": {
+     "low": 0.029,
+     "central": 0.128,
+     "high": 0.336
+    },
+    "2024": {
+     "low": 0.098,
+     "central": 0.356,
+     "high": 0.885
+    },
+    "2025": {
+     "low": 0.059,
+     "central": 0.224,
+     "high": 0.532
+    },
+    "2026": {
+     "low": 0.03,
+     "central": 0.115,
+     "high": 0.288
+    }
+   },
+   "sum_2022_2026": {
+    "low": 0.229,
+    "central": 0.897,
+    "high": 2.246
+   },
+   "margin_level_incl_2021_baseline": {
+    "2021": {
+     "low": 0.002,
+     "central": 0.008,
+     "high": 0.023
+    },
+    "2022": {
+     "low": 0.022,
+     "central": 0.081,
+     "high": 0.212
+    },
+    "2023": {
+     "low": 0.036,
+     "central": 0.136,
+     "high": 0.344
+    },
+    "2024": {
+     "low": 0.105,
+     "central": 0.364,
+     "high": 0.893
+    },
+    "2025": {
+     "low": 0.067,
+     "central": 0.231,
+     "high": 0.539
+    },
+    "2026": {
+     "low": 0.035,
+     "central": 0.12,
+     "high": 0.293
+    }
+   },
+   "certainty": "D",
+   "note": "Hong Kong shell and trading companies used as paying agents. Retained share only 35% (15-55%): many are Russian-owned fronts whose fee income belongs to Russia."
+  },
+  "ARE": {
+   "to_rus": {
+    "2022": {
+     "low": 0.03,
+     "central": 0.126,
+     "high": 0.33
+    },
+    "2023": {
+     "low": 0.059,
+     "central": 0.22,
+     "high": 0.543
+    },
+    "2024": {
+     "low": 0.112,
+     "central": 0.351,
+     "high": 0.844
+    },
+    "2025": {
+     "low": 0.067,
+     "central": 0.218,
+     "high": 0.503
+    },
+    "2026": {
+     "low": 0.033,
+     "central": 0.112,
+     "high": 0.273
+    }
+   },
+   "sum_2022_2026": {
+    "low": 0.301,
+    "central": 1.026,
+    "high": 2.494
+   },
+   "margin_level_incl_2021_baseline": {
+    "2021": {
+     "low": 0.003,
+     "central": 0.013,
+     "high": 0.037
+    },
+    "2022": {
+     "low": 0.043,
+     "central": 0.139,
+     "high": 0.343
+    },
+    "2023": {
+     "low": 0.072,
+     "central": 0.233,
+     "high": 0.556
+    },
+    "2024": {
+     "low": 0.125,
+     "central": 0.364,
+     "high": 0.857
+    },
+    "2025": {
+     "low": 0.08,
+     "central": 0.231,
+     "high": 0.516
+    },
+    "2026": {
+     "low": 0.041,
+     "central": 0.12,
+     "high": 0.282
+    }
+   },
+   "certainty": "D",
+   "note": "Dubai payment agents and exchange houses; A7 Network subagents named by FinCEN (Oct 2026). Retained share 40% (20-60%): many UAE agents are run by Russian emigrants or Russian-owned companies."
+  },
+  "KAZ": {
+   "to_rus": {
+    "2022": {
+     "low": 0.04,
+     "central": 0.146,
+     "high": 0.369
+    },
+    "2023": {
+     "low": 0.076,
+     "central": 0.257,
+     "high": 0.606
+    },
+    "2024": {
+     "low": 0.104,
+     "central": 0.335,
+     "high": 0.8
+    },
+    "2025": {
+     "low": 0.061,
+     "central": 0.208,
+     "high": 0.475
+    },
+    "2026": {
+     "low": 0.029,
+     "central": 0.106,
+     "high": 0.257
+    }
+   },
+   "sum_2022_2026": {
+    "low": 0.31,
+    "central": 1.052,
+    "high": 2.507
+   },
+   "margin_level_incl_2021_baseline": {
+    "2021": {
+     "low": 0.004,
+     "central": 0.015,
+     "high": 0.042
+    },
+    "2022": {
+     "low": 0.055,
+     "central": 0.162,
+     "high": 0.385
+    },
+    "2023": {
+     "low": 0.091,
+     "central": 0.272,
+     "high": 0.621
+    },
+    "2024": {
+     "low": 0.119,
+     "central": 0.351,
+     "high": 0.815
+    },
+    "2025": {
+     "low": 0.076,
+     "central": 0.223,
+     "high": 0.49
+    },
+    "2026": {
+     "low": 0.039,
+     "central": 0.116,
+     "high": 0.268
+    }
+   },
+   "certainty": "D",
+   "note": "Kazakh agents and banks; strong in 2022-2023 for EU goods, falling after banks tightened checks in 2024. Cross-check: Russia-to-Kazakhstan transfers fell 44% in 2024 (RBC)."
+  },
+  "KGZ": {
+   "to_rus": {
+    "2022": {
+     "low": 0.013,
+     "central": 0.07,
+     "high": 0.191
+    },
+    "2023": {
+     "low": 0.027,
+     "central": 0.122,
+     "high": 0.313
+    },
+    "2024": {
+     "low": 0.067,
+     "central": 0.252,
+     "high": 0.626
+    },
+    "2025": {
+     "low": 0.04,
+     "central": 0.158,
+     "high": 0.375
+    },
+    "2026": {
+     "low": 0.02,
+     "central": 0.081,
+     "high": 0.203
+    }
+   },
+   "sum_2022_2026": {
+    "low": 0.167,
+    "central": 0.684,
+    "high": 1.708
+   },
+   "margin_level_incl_2021_baseline": {
+    "2021": {
+     "low": 0.002,
+     "central": 0.007,
+     "high": 0.021
+    },
+    "2022": {
+     "low": 0.021,
+     "central": 0.077,
+     "high": 0.198
+    },
+    "2023": {
+     "low": 0.034,
+     "central": 0.13,
+     "high": 0.32
+    },
+    "2024": {
+     "low": 0.074,
+     "central": 0.26,
+     "high": 0.633
+    },
+    "2025": {
+     "low": 0.047,
+     "central": 0.165,
+     "high": 0.382
+    },
+    "2026": {
+     "low": 0.025,
+     "central": 0.086,
+     "high": 0.208
+    }
+   },
+   "certainty": "C",
+   "note": "Kyrgyz banks (Keremet Bank, OFAC Jan 2025; Capital Bank as sole rouble channel), payment agents and the A7/A7A5/Grinex crypto rails (issuer Old Vector). Russia sent USD 2.8bn to Kyrgyz entities in 2023 (RBC); fees up to 3%. A7/Old Vector/Grinex are Russian-controlled, so their income is not Kyrgyz: retained share 50% (30-70%). Cross-check: Kyrgyz bank net profit rose to KGS 24bn (2023) and 31bn (2024) per NBKR, i.e. ~USD 0.2-0.3bn a year above pre-war, consistent with the central here."
+  },
+  "TUR": {
+   "to_rus": {
+    "2022": {
+     "low": 0.034,
+     "central": 0.126,
+     "high": 0.327
+    },
+    "2023": {
+     "low": 0.065,
+     "central": 0.22,
+     "high": 0.537
+    },
+    "2024": {
+     "low": 0.077,
+     "central": 0.26,
+     "high": 0.632
+    },
+    "2025": {
+     "low": 0.044,
+     "central": 0.16,
+     "high": 0.375
+    },
+    "2026": {
+     "low": 0.021,
+     "central": 0.082,
+     "high": 0.203
+    }
+   },
+   "sum_2022_2026": {
+    "low": 0.242,
+    "central": 0.847,
+    "high": 2.075
+   },
+   "margin_level_incl_2021_baseline": {
+    "2021": {
+     "low": 0.004,
+     "central": 0.013,
+     "high": 0.037
+    },
+    "2022": {
+     "low": 0.047,
+     "central": 0.139,
+     "high": 0.34
+    },
+    "2023": {
+     "low": 0.078,
+     "central": 0.233,
+     "high": 0.551
+    },
+    "2024": {
+     "low": 0.09,
+     "central": 0.273,
+     "high": 0.645
+    },
+    "2025": {
+     "low": 0.057,
+     "central": 0.173,
+     "high": 0.388
+    },
+    "2026": {
+     "low": 0.03,
+     "central": 0.09,
+     "high": 0.212
+    }
+   },
+   "certainty": "D",
+   "note": "Turkish agents and banks settling Russian imports of Turkish and third-country goods, mostly 2022-2023 before US secondary-sanctions pressure (EO 14114) made Turkish banks cautious; FinCEN names Turkey among A7 subagent locations."
+  },
+  "ARM": {
+   "to_rus": {
+    "2022": {
+     "low": 0.015,
+     "central": 0.067,
+     "high": 0.171
+    },
+    "2023": {
+     "low": 0.03,
+     "central": 0.118,
+     "high": 0.28
+    },
+    "2024": {
+     "low": 0.035,
+     "central": 0.136,
+     "high": 0.338
+    },
+    "2025": {
+     "low": 0.02,
+     "central": 0.084,
+     "high": 0.201
+    },
+    "2026": {
+     "low": 0.009,
+     "central": 0.043,
+     "high": 0.109
+    }
+   },
+   "sum_2022_2026": {
+    "low": 0.109,
+    "central": 0.447,
+    "high": 1.098
+   },
+   "margin_level_incl_2021_baseline": {
+    "2021": {
+     "low": 0.002,
+     "central": 0.007,
+     "high": 0.019
+    },
+    "2022": {
+     "low": 0.022,
+     "central": 0.074,
+     "high": 0.178
+    },
+    "2023": {
+     "low": 0.037,
+     "central": 0.125,
+     "high": 0.287
+    },
+    "2024": {
+     "low": 0.042,
+     "central": 0.143,
+     "high": 0.345
+    },
+    "2025": {
+     "low": 0.027,
+     "central": 0.091,
+     "high": 0.208
+    },
+    "2026": {
+     "low": 0.014,
+     "central": 0.047,
+     "high": 0.113
+    }
+   },
+   "certainty": "D",
+   "note": "Armenian agents and banks. Armenian bank profits tripled to AMD 256bn (~USD 640m) in 2022, but most of that came from relocant money and FX conversion, not agent fees, so only a small part is counted here."
+  },
+  "UZB": {
+   "to_rus": {
+    "2022": {
+     "low": 0.005,
+     "central": 0.031,
+     "high": 0.092
+    },
+    "2023": {
+     "low": 0.011,
+     "central": 0.055,
+     "high": 0.152
+    },
+    "2024": {
+     "low": 0.028,
+     "central": 0.114,
+     "high": 0.303
+    },
+    "2025": {
+     "low": 0.017,
+     "central": 0.071,
+     "high": 0.183
+    },
+    "2026": {
+     "low": 0.008,
+     "central": 0.037,
+     "high": 0.099
+    }
+   },
+   "sum_2022_2026": {
+    "low": 0.07,
+    "central": 0.308,
+    "high": 0.829
+   },
+   "margin_level_incl_2021_baseline": {
+    "2021": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.01
+    },
+    "2022": {
+     "low": 0.009,
+     "central": 0.035,
+     "high": 0.095
+    },
+    "2023": {
+     "low": 0.015,
+     "central": 0.058,
+     "high": 0.155
+    },
+    "2024": {
+     "low": 0.032,
+     "central": 0.117,
+     "high": 0.307
+    },
+    "2025": {
+     "low": 0.02,
+     "central": 0.074,
+     "high": 0.186
+    },
+    "2026": {
+     "low": 0.01,
+     "central": 0.039,
+     "high": 0.101
+    }
+   },
+   "certainty": "D",
+   "note": "Uzbek agents; small, educated guess."
+  },
+  "GEO": {
+   "to_rus": {
+    "2022": {
+     "low": 0.002,
+     "central": 0.017,
+     "high": 0.052
+    },
+    "2023": {
+     "low": 0.004,
+     "central": 0.031,
+     "high": 0.086
+    },
+    "2024": {
+     "low": 0.006,
+     "central": 0.031,
+     "high": 0.117
+    },
+    "2025": {
+     "low": 0.003,
+     "central": 0.019,
+     "high": 0.071
+    },
+    "2026": {
+     "low": 0.001,
+     "central": 0.01,
+     "high": 0.038
+    }
+   },
+   "sum_2022_2026": {
+    "low": 0.017,
+    "central": 0.107,
+    "high": 0.364
+   },
+   "margin_level_incl_2021_baseline": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.002,
+     "high": 0.006
+    },
+    "2022": {
+     "low": 0.004,
+     "central": 0.019,
+     "high": 0.054
+    },
+    "2023": {
+     "low": 0.006,
+     "central": 0.032,
+     "high": 0.087
+    },
+    "2024": {
+     "low": 0.008,
+     "central": 0.032,
+     "high": 0.119
+    },
+    "2025": {
+     "low": 0.005,
+     "central": 0.021,
+     "high": 0.073
+    },
+    "2026": {
+     "low": 0.003,
+     "central": 0.011,
+     "high": 0.039
+    }
+   },
+   "certainty": "D",
+   "note": "Georgian agents; small (Georgia's role is car re-exports and relocant money, not payment agency)."
+  },
+  "IDN": {
+   "to_rus": {
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0.008,
+     "central": 0.032,
+     "high": 0.119
+    },
+    "2025": {
+     "low": 0.005,
+     "central": 0.021,
+     "high": 0.073
+    },
+    "2026": {
+     "low": 0.003,
+     "central": 0.011,
+     "high": 0.039
+    }
+   },
+   "sum_2022_2026": {
+    "low": 0.015,
+    "central": 0.064,
+    "high": 0.231
+   },
+   "margin_level_incl_2021_baseline": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0.008,
+     "central": 0.032,
+     "high": 0.119
+    },
+    "2025": {
+     "low": 0.005,
+     "central": 0.021,
+     "high": 0.073
+    },
+    "2026": {
+     "low": 0.003,
+     "central": 0.011,
+     "high": 0.039
+    }
+   },
+   "certainty": "D",
+   "note": "Named by FinCEN as an A7 subagent location (2025-26); educated guess, 2024 on."
+  },
+  "THA": {
+   "to_rus": {
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0.008,
+     "central": 0.032,
+     "high": 0.119
+    },
+    "2025": {
+     "low": 0.005,
+     "central": 0.021,
+     "high": 0.073
+    },
+    "2026": {
+     "low": 0.003,
+     "central": 0.011,
+     "high": 0.039
+    }
+   },
+   "sum_2022_2026": {
+    "low": 0.015,
+    "central": 0.064,
+    "high": 0.231
+   },
+   "margin_level_incl_2021_baseline": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0.008,
+     "central": 0.032,
+     "high": 0.119
+    },
+    "2025": {
+     "low": 0.005,
+     "central": 0.021,
+     "high": 0.073
+    },
+    "2026": {
+     "low": 0.003,
+     "central": 0.011,
+     "high": 0.039
+    }
+   },
+   "certainty": "D",
+   "note": "Thai payment agents reported in Russian importer guides; educated guess, 2024 on."
+  },
+  "SRB": {
+   "to_rus": {
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0.008,
+     "central": 0.032,
+     "high": 0.102
+    },
+    "2025": {
+     "low": 0.005,
+     "central": 0.021,
+     "high": 0.063
+    },
+    "2026": {
+     "low": 0.003,
+     "central": 0.011,
+     "high": 0.034
+    }
+   },
+   "sum_2022_2026": {
+    "low": 0.015,
+    "central": 0.064,
+    "high": 0.199
+   },
+   "margin_level_incl_2021_baseline": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0.008,
+     "central": 0.032,
+     "high": 0.102
+    },
+    "2025": {
+     "low": 0.005,
+     "central": 0.021,
+     "high": 0.063
+    },
+    "2026": {
+     "low": 0.003,
+     "central": 0.011,
+     "high": 0.034
+    }
+   },
+   "certainty": "D",
+   "note": "Serbian companies used as payment agents for EU goods; educated guess, 2024 on."
+  }
+ },
+ "not_counted": {
+  "payment_volumes": "Payments for Russian imports routed through agents in KGZ, KAZ, ARM, ARE, HKG, CHN, TUR (up to 70-85% of import payments in 2024-25 per Vedomosti/B1/bank sources) settle goods that are in customs data (trade_full.json) or in residual.json. Route only, not a new flow.",
+  "crypto_volumes": "Chainalysis: Russia received ~USD 376bn of crypto value Jul 2024-Jun 2025 (largest in Europe); Garantex >USD 100bn 2019-2025 (TRM); A7A5 >USD 100bn transfers by Jan 2026 (Elliptic) and at least USD 179.1bn of A7A5 operations Feb 2025-Jun 2026 through >180 organisations (FinCEN via Economist.kg, Oct 2026); A7 subagents >USD 17bn dollar operations Jan 2025-Jun 2026 with accounts at ~435 institutions in 83 countries. No source gives volumes by counterparty country; the bulk is domestic Russian trading, round-tripping, and settlement of recorded trade. A7, Old Vector, Grinex and Garantex are Russian-controlled, so their commissions stay with Russia (no foreign country part).",
+  "remittance_surge_2022": "Transfers from Russia to Armenia USD 3.5bn in 2022 (0.865bn 2021), Georgia ~USD 2bn (0.41bn), Kazakhstan up ~7x; to Kyrgyzstan USD 2.6-3.0bn a year (mostly migrant workers). These are Russian relocants' and capital-flight money leaving Russia (money FROM Russia, not payments to Russia, and not intermediary margins). Not counted; relocants' spending is partly in services (Russian travel imports). The banks' FX windfall in Armenia/Georgia is not counted either.",
+  "bop_other_investment": "Bank of Russia BoP 'other accounts receivable' (assets) rose to USD 79.7bn (2022), 27.2 (2023), 46.4 (2024), 19.8 (2025), 24.6 (H1 2026) against 19.5 in 2021: advances and export receipts held abroad, much of it payments stuck in agent chains. Net errors and omissions negative every year (see uncovered.json upper_bound). These are Russia's claims and capital outflows, not hidden payments to Russia by any country.",
+  "crypto_mining": "Russian bitcoin mining output sold abroad is money reaching Russia outside trade data, but the buyers are anonymous market participants who did not choose Russia, and mining pre-dates the war. Not attributable to a country.",
+  "cybercrime": "Ransomware and darknet proceeds to Russia-linked groups (Chainalysis: global ransomware USD 1.1bn 2023, 0.8bn 2024) are paid by victims who made no choice; similar size before the war. Not counted.",
+  "oil_paid_in_crypto": "Reported crypto/USDT settlement of some Russian oil sales to China and India: the oil is in customs data. Route only."
+ },
+ "overlaps": "(1) reexports.json hub margin (5-20%, incl. sanctions-risk premium) on goods hubs resell to Russia: re-export values (EUR 7-11bn a year) are removed from the fee base, so a hub trader's own margin is not counted twice. (2) residual.json (goods Russia records but partners do not): those goods are in the fee base (they are paid through agents too), but residual counts goods value moved to origin countries, not the agents' fees, so no overlap. (3) uncovered.json services: Russia's whole financial-services imports are USD 1.1-1.4bn a year and BaTiS allocates them mostly to Western financial centres; overlap at most ~EUR 0.1bn a year, ignored. (4) uncovered.json hidden_channels (gold) and kgz_gold.json: gold value paid to Russia; this file counts only intermediary fees, no gold. (5) china_military.json section 1d says agent commissions are not counted there; this file is where they are counted. (6) Sellers' 20% profit on exports to Russia (trade.md): agent fees are paid by the Russian buyer on top of the invoice to a separate intermediary, outside customs value, so they are additional to the seller's profit. If a seller country and the agent country are the same and the builder worries about margin stacking, CHN is the case to watch (use the low value).",
+ "notes": "Certainty D for the split (no source gives agent volumes by country); C for Kyrgyzstan where bank profits give a cross-check. Gross agent fees (all locations) are EUR 1.9bn (2022), 3.2 (2023), 6.5 (2024), 4.1 (2025), 2.1 (Jan-Aug 2026); only ~40% is counted for named countries. Fee levels: up to 10-15% in 2023 and 12% in early 2024 at peaks, averages ~3-5% in 2024, 2-3% in 2025 (Reuters via Moscow Times, Apr 2025; Vesti 2025: 5% to 2%, 1.5% for large batches). Shares via agents: <20% before mid-2024 and up to 80% in late 2024 (Vedomosti via The Bell, Nov 2024); ~70% of import operations (B1 via T-Bank), up to 85% of FX transfers (bank sources via New Retail). The country split and retained shares are educated guesses.",
+ "sources": [
+  {
+   "name": "Bank of Russia, Balance of payments standard components (quarterly, to Q2 2026)",
+   "url": "https://www.cbr.ru/vfs/eng/statistics/credit_statistics/bop/bal_of_payments_standart_e.xlsx",
+   "date": "2026-10"
+  },
+  {
+   "name": "The Bell: The rise of Russia's foreign trade middlemen (citing Vedomosti: up to 80% of cross-border payments, fees up to ~8%)",
+   "url": "https://en.thebell.io/the-rise-of-russias-foreign-trade-middlemen/",
+   "date": "2024-11-02"
+  },
+  {
+   "name": "Harici (citing Reuters): agent commissions up to 12% early 2024, 2-3% average after China Track netting",
+   "url": "https://harici.com.tr/en/new-russia-china-payment-network-cuts-trade-costs/",
+   "date": "2025-04"
+  },
+  {
+   "name": "The Moscow Times (Russian): sanctioned Russian banks created a secret netting system (China Track)",
+   "url": "https://ru.themoscowtimes.com/2025/04/22/popavshie-pod-sanktsii-rossiiskie-banki-sozdali-sekretnuyu-sistemu-dlya-sdelok-skitaem-a161694",
+   "date": "2025-04-22"
+  },
+  {
+   "name": "Vesti: average agent commission fell from 5% to 2% in 2025",
+   "url": "https://www.vesti.ru/article/4567302",
+   "date": "2025"
+  },
+  {
+   "name": "Alta.ru: commissions reached 10-15% in 2023",
+   "url": "https://www.alta.ru/external_news/120536/",
+   "date": "2025"
+  },
+  {
+   "name": "T-Bank Secrets (citing B1): agents used in about 7 of 10 import operations",
+   "url": "https://secrets.tbank.ru/razvitie/kak-vesti-mezhdunarodnye-raschety/",
+   "date": "2025"
+  },
+  {
+   "name": "New Retail: up to 85% of FX transfers via agents",
+   "url": "https://new-retail.ru/business/ekonomika/transgranichnye_raschety_cherez_agentov_novye_realii_i_skrytye_izderzhki/",
+   "date": "2025"
+  },
+  {
+   "name": "TKS.RU (R.I. Vasiliev): agent remuneration and customs value; Minfin letter 01.11.2024 No. 27-01-21/106988",
+   "url": "https://www.tks.ru/columns/vasiliev/2025/03/11/0001/",
+   "date": "2025-03-11"
+  },
+  {
+   "name": "The Moscow Times: Kyrgyz banks tighten restrictions; Russian entities sent USD 2.8bn to Kyrgyzstan in 2023, fees up to 3%",
+   "url": "https://www.themoscowtimes.com/2026/08/06/kyrgyz-banks-tighten-restrictions-on-russian-transactions-amid-us-sanctions-pressure",
+   "date": "2026-08-06"
+  },
+  {
+   "name": "US Treasury press release: Keremet Bank designated (E.O. 14024), PSB network",
+   "url": "https://home.treasury.gov/news/press-releases/jy2785",
+   "date": "2025-01-15"
+  },
+  {
+   "name": "Economist.kg: A7A5 operations USD 179.1bn, FinCEN proposed special measure on A7 Network (5 Oct 2026)",
+   "url": "https://economist.kg/dengi/2026/10/11/a7a5-operatsii-179-mlrd-fincen/",
+   "date": "2026-10-11"
+  },
+  {
+   "name": "Elliptic: A7A5, the ruble-backed stablecoin, USD 100bn in transactions",
+   "url": "https://www.elliptic.co/insights/a7a5-the-ruble-backed-stablecoin-100-billion-in-transactions/",
+   "date": "2026-01"
+  },
+  {
+   "name": "TRM Labs: the takedown of Garantex",
+   "url": "https://www.trmlabs.com/resources/blog/the-takedown-of-garantex-a-notorious-crypto-exchanges-role-in-illicit-finance",
+   "date": "2025-03"
+  },
+  {
+   "name": "Forklog (citing Chainalysis 2025 Geography of Crypto): Russia USD 376bn received Jul 2024-Jun 2025",
+   "url": "https://forklog.com/?p=267711",
+   "date": "2025-10"
+  },
+  {
+   "name": "Akchabar: Kyrgyz regulator on A7A5 (100bn tokens registered, issuer Old Vector)",
+   "url": "https://www.akchabar.kg/en/article/lichnie-finansi-hnqkxevqxnwxkxsy/finnadzor-raskryl-realnye-masshtaby-rublevogo-stejblkoina-a7a5-vypushhennogo-v-kyrgyzstane",
+   "date": "2025"
+  },
+  {
+   "name": "Economist.kg: Kyrgyz banks net profit 2024 KGS 31.1bn (2023: 24.2bn), NBKR",
+   "url": "https://economist.kg/all/2025/02/25/chistaia-pribyl-bankov-kyrghyzstana-v-2024-ghodu-prievysila-31-mlrd-somov/",
+   "date": "2025-02-25"
+  },
+  {
+   "name": "Eurasianet: Armenian banks record mega profits; transfers from Russia USD 3.5bn in 2022 (0.865bn 2021)",
+   "url": "https://eurasianet.org/armenian-banks-record-mega-profits-but-the-economy-doesnt-feel-it",
+   "date": "2023-02"
+  },
+  {
+   "name": "Kyiv Independent (citing RBC): transfers from Russia to neighbours up 300-500% in 2022; Georgia ~USD 2bn",
+   "url": "https://kyivindependent.com/russian-media-money-transfers-from-russia-to-neighboring-countries-up-by-300-500-in-2022/",
+   "date": "2023-01"
+  },
+  {
+   "name": "Orda.kz (citing RBC): transfers from Russia to Kazakhstan fell 44% in 2024; Armenia -13%, Kyrgyzstan +12%",
+   "url": "https://en.orda.kz/money-transfers-from-russia-to-kazakhstan-drop-significantly-4851/",
+   "date": "2025-02"
+  },
+  {
+   "name": "24.kg: remittances from Russia to Kyrgyzstan record USD 2.99bn Jan-Nov 2025",
+   "url": "https://24.kg/english/360721_Remittances_from_Russia_to_Kyrgyzstan_reach_record_299_billion",
+   "date": "2025-12"
+  },
+  {
+   "name": "Novaya Gazeta Europe: ~80% of Russian payments to China returned (2024)",
+   "url": "https://novayagazeta.eu/articles/2024/07/29/some-80-of-russian-payments-to-china-returned-amid-increasing-western-pressure-en-news",
+   "date": "2024-07-29"
+  }
+ ]
+}

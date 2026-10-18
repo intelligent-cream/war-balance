@@ -847,12 +847,25 @@ def build() -> dict:
         "2026-10",
         "rough indication, certainty D; China left out because it overlaps trade data",
     )
-    for iso3, d in fb2all["military_to_russia"].items():
+    # round 6: North Korea, Iran and Belarus revalued with more sources (military_rus_r6.json); China below
+    mr6 = load(GAPS / "military_rus_r6.json")
+    mid6 = src.add(
+        "military_rus_r6",
+        "Military support to Russia: Ukrainian and South Korean intelligence, Open Source Centre, the Multilateral Sanctions Monitoring Team, INSS, leaked Alabuga contracts, Russian procurement prices",
+        None,
+        mr6.get("generated"),
+        "market value of what Russia received; North Korea and Iran certainty C; see research/2026-10/gaps/military_rus_r6-notes.md",
+    )
+    for iso3, d in {**fb2all["military_to_russia"], **mr6["countries"]}.items():
         c = countries.get(iso3)
         if iso3 == "CHN" or not c or not d.get("by_year"):
             continue
         ser = lch(d["by_year"])
-        c["military_rus"] = {**ser, "src": [oid2]}
+        c["military_rus"] = {
+            **ser,
+            "cert": (d.get("certainty") or "D")[0],
+            "src": [mid6 if iso3 in mr6["countries"] else oid2],
+        }
     # China: only what is not already in recorded trade (unrecorded military items, satellite imagery and training,
     # smuggled dual-use goods); the dual-use goods in recorded exports are already counted as sales to Russia
     cm = load(GAPS / "china_military.json")
@@ -943,6 +956,7 @@ def build() -> dict:
     apply_ua_arms_purchases(countries, src)
     apply_loans_value(countries, src)
     apply_russian_arms(countries, src)
+    apply_payment_agents(countries, src)
     apply_audit2(countries, src, "trends")
     for c in countries.values():
         for obj in c.values():
@@ -1609,6 +1623,36 @@ def apply_russian_arms(countries: dict[str, dict], src: Sources) -> None:
         c["extra"][-1]["not_choice"] = (d.get("not_buyer_choice_share") or {}).get("central")
 
 
+def apply_payment_agents(countries: dict[str, dict], src: Sources) -> None:
+    """Fees that payment agents in third countries earn for settling Russia's trade outside normal banking
+    (payment_channels.json, round 6): not in customs values or services data. Only the share kept by residents (the
+    rest belongs to Russian-owned networks), against 2021. Already a margin: money earned from Russia."""
+    pc = load(GAPS / "payment_channels.json")
+    sid = src.add(
+        "payment_agents",
+        "Payment agents settling Russia's trade: Bank of Russia balance of payments, Russian Finance Ministry and customs letters on agent commissions, press and sanctions reporting",
+        "https://www.cbr.ru/eng/statistics/macro_itm/svs/",
+        pc.get("generated"),
+        "fees kept by residents of the agent's country, against 2021; see research/2026-10/gaps/payment_channels-notes.md",
+    )
+    for iso3, d in pc["countries"].items():
+        c, tr = countries.get(iso3), d.get("to_rus") or {}
+        if not c or not tr:
+            continue
+        out = {
+            b: [0.0 if y < 2022 else (tr.get(str(y)) or {}).get(b, 0.0) for y in YEARS]
+            for b in ("low", "central", "high")
+        }
+        add_extra(
+            c,
+            "agents",
+            "Fees earned settling Russia's trade (payment agents)",
+            out,
+            (d.get("certainty") or "D")[0],
+            sid,
+        )
+
+
 def apply_weapons_value(countries: dict[str, dict], src: Sources) -> None:
     """Donated weapons at market value, the value to Ukraine (weapons_value.json, round 5): stock donations recorded at
     replacement cost or list price are corrected to what the equipment would fetch on the market. Stored as yearly
@@ -1916,6 +1960,8 @@ def apply_narrow(countries: dict[str, dict], src: Sources) -> None:
         if not c:
             continue
         for key, d in series.items():
+            if key == "military_rus":  # replaced by military_rus_r6.json (round 6)
+                continue
             obj = c.setdefault(key, {"cert": d.get("certainty") or "C", "src": []})
             # entries marked as unchanged only bring a better baseline or price index, not new yearly values; entries with
             # customs-level values (trade_layer) already entered at the start

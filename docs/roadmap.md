@@ -57,8 +57,8 @@ services to Russia and shipping. The profit-only figures stay in the docs as a c
 | C5 | Loan deferrals: Belarus counted net of Russia's new loans that repaid old ones; Viet Nam and Iraq labelled "blocked by sanctions, not the borrower's choice" | code: done |
 | C6 | More evidence for the predictions of trade with Ukraine | research |
 | C7 | Company taxes in Russia: richer data and more sources than KSE | research |
-| C8 | Crypto and payment agents: any country split | research |
-| C9 | Military support to Russia: more certainty (North Korea, Iran, Belarus, China) | research |
+| C8 | Crypto and payment agents: any country split | done: agents' fees added ([trade.md](method/trade.md#payment-agents-round-6)) |
+| C9 | Military support to Russia: more certainty (North Korea, Iran, Belarus, China) | done: North Korea and Iran now C ([aid-refugees-military.md](method/aid-refugees-military.md#round-6-revision)) |
 
 ### D. Finish
 
