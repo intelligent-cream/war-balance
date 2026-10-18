@@ -235,6 +235,19 @@ alternative, 0.64). The expected path is 0.97 × 2021: right-bank gas at its 201
 headline barely moves (+17.2% to +16.9% of GDP), but its range narrows from −14…+74% to +7…+35%.
 [`cf_bands.json`](../../research/2026-10/gaps/cf_bands.json) ([notes](../../research/2026-10/gaps/cf_bands-notes.md)).
 
+### Imports from Russia (round 7)
+
+Five ways to narrow the band for "paid to Russia" were tested on back-tests
+([`to_rus_cf.json`](../../research/2026-10/gaps/to_rus_cf.json),
+[notes](../../research/2026-10/gaps/to_rus_cf-notes.md)): fuel and other goods modelled apart (an energy-balance model
+for fuel), steady staples apart from one-off items, analogue partners, each country's own history, and the size-class
+band re-measured on rolling origins 2005–2020. Only the last passed: calibrated by era (bands from two eras cover
+90–94% of the third), it is a little narrower than before. Large flows 2022–2026: ×0.57–1.62 (was ×0.61–1.74);
+mid-size: ×0.47–3.19 (was ×0.42–3.51). It applies to every country of those sizes without an own tested band
+(Belarus, Moldova, Mongolia and Yemen keep theirs). Splitting fuel from other goods did not help: the fuel part's error
+is as large as the total's, and the two errors are almost uncorrelated. For Russia's neighbours as a group, the fuel
+model predicts better (+26–32%) but raises the expected level by ×1.08–1.28 without narrowing the band; it is not used.
+
 ### Deliberate choices
 
 - **Actual figures as inputs.** The models use each country's actual 2022–2026 GDP and trade with others, although the war affected them too. The map asks how far a country went out of its way: if its economy shrank because of the war, it would have traded less with Russia anyway, and that is not a choice to credit or blame. (Decided in round 5; pre-war forecasts were considered and rejected.)

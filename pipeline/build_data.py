@@ -1525,6 +1525,22 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
         "2021 held flat for both flows; see research/2026-10/gaps/ua_trade_cf-notes.md",
     )
     bands = load(GAPS / "cf_bands.json")
+    # round 7: the band for imports from Russia re-measured on rolling origins 2005-2020 and calibrated by era (each
+    # era covered 90-94% by bands from the other two), per size class; applied to every country of that size that has
+    # no own tested band (to_rus_cf.json)
+    trc = load(GAPS / "to_rus_cf.json")["countries"]
+    cls = {}
+    for d in trc.values():
+        cls.setdefault(d["size_class"], d)
+    for size, d in cls.items():
+        for table in ("chosen", "rw"):
+            if f"to_rus/{size}" in bands["cumulative_bands"][table]:
+                bands["cumulative_bands"][table][f"to_rus/{size}"] = d["cumulative_band"]
+    own = {i for i, f in bands["countries"].items() if "to_rus" in f} | {"BLR"}
+    for iso3, flows in cf["countries"].items():
+        d = flows.get("to_rus")
+        if d and iso3 not in own and d.get("size_class") in cls and d.get("multiplier_vs_2021"):
+            d["multiplier_vs_2021"] = cls[d["size_class"]]["multiplier_vs_2021"]
     for iso3, flows in bands["countries"].items():
         for key, d in flows.items():
             cf["countries"].setdefault(iso3, {}).setdefault(key, {}).update(
