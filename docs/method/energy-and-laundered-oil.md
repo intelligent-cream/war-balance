@@ -92,6 +92,8 @@ Fuel passed from one hub to another (India to the Netherlands, Belgium to the Ne
   | China | 0.95 | 0.72 | 0.75 | 0.82 | 0.76 | 0.75 |
   | Brunei (Hengyi) | 0.90 | 0.66 | 0.63 | 0.74 | 0.67 | 0.63 |
 
+  Since round 10 the crude money counts at Russia's net gain on crude in the change view ([overview](overview.md#the-net-gain-rule-round-10)).
+
   Fuel whose refiner is no longer known after trading hubs mixed it uses the refiners' average, weighted by their exports. India's measured share matches its own refinery data (EUR 18.5bn of Russian crude in EUR 28.5bn of fuel in 2022, 0.65). The buyer whose demand creates the sale is charged this part; the rest of the fuel price is the refiner's income, and its profit from the Russian discount is counted for the refiner ("discount gained" in the cost view). Earlier rounds used one ratio, 0.42 / 0.50 / 0.60, from CREA's "EUR 4.2bn of crude in EUR 8.5bn of fuel"; that figure prices diesel alone, without refining losses or the cheaper products in the export mix. The round-5 EU figures (`laundered_eu.json`) and the round-6 Brunei channel are rescaled from their ratios to these.
 - Laundered oil cannot exceed what an economy can use: capped at 1% (middle) and 2% (high) of GDP per year (`LAUNDERED_CAP`), so ship registries and storage points (Marshall Islands, Liberia) do not absorb fuel. GDP from `residual.json` is loaded before the cap so it applies to small territories too.
 

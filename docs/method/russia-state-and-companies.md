@@ -81,6 +81,27 @@ Profits Russian parents receive from their companies abroad, by host country, ag
 Viet Nam, Russian banks. Trusteeships that stopped transfers count toward Ukraine: Germany (Rosneft Deutschland,
 Gazprom Germania, now SEFE) about EUR 1.3bn over 2022–2026. Mostly estimates (certainty D) except Serbia.
 
+**Round 10: metals, mining and chemicals plants.** Prompted by a reader asking about Rusal's Aughinish Alumina in
+Limerick, Russian-owned industrial plants abroad were added ([`russian_owned_r10.json`](../../research/2026-10/gaps/russian_owned_r10.json),
+[notes](../../research/2026-10/gaps/russian_owned_r10-notes.md)), by host country, in the same part. They send little
+home: about EUR 0.1–0.2bn a year in total, before and after the war, and the change against 2019–2021 stays within
+±0.05bn a year.
+
+- **Ireland, Aughinish Alumina (Rusal):** no dividends in any year. It had accumulated losses (USD 360m at the end of
+  2023, 240m at the end of 2024), so it cannot legally pay one; for 2024 none was paid (pre-tax profit USD 119m).
+  Profit can leave through prices charged to Rusal's trading companies, which public data do not show. Its alumina
+  sold to Russia (Eurostat: EUR 0.11bn in 2019, 0.16bn in 2021, 0.35bn in 2024) is already in Ireland's exports to
+  Russia, counted at the money rule like all sales to Russia ([trade.md](trade.md#profit-not-revenue)).
+- **Sweden, KUBAL (Rusal):** about EUR 0.07bn sent to its Cyprus parent in 2023 and a small dividend in 2024; none
+  in 2026, after a police raid over suspected sanctions breaches froze its payments.
+- **Belgium, Denmark, Italy, France (NLMK's plants; EuroChem Antwerpen):** about zero; the steel plants lose money and
+  Antwerpen kept its profit.
+- **Lithuania, Lifosa (EuroChem):** zero since 2022: accounts frozen in March 2022, a state administrator since 2024.
+- **Kazakhstan, Uranium One (Rosatom):** a rough guess of EUR 0.07bn a year before the war rising to 0.18bn in 2024
+  (certainty D), the largest and least certain item.
+- **Angola, Catoca (Alrosa 41%):** USD 322m of dividends for 2021–2023 blocked; the stake was sold in May 2025.
+- **USA and Canada, Evraz North America:** zero after the UK sanctions of May 2022; sold in August 2025.
+
 ## Frozen central-bank reserves (round 7)
 
 About EUR 260bn of the Bank of Russia's reserves have been immobilised since 28 February 2022, about 185bn at

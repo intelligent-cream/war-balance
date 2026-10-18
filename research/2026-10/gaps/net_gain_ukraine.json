@@ -1,0 +1,1391 @@
+{
+ "generated": "2026-10-18",
+ "definition": "Net gain share = (taxes the Ukrainian state collects on producing/exporting the good: profit tax, subsoil rent, export duties, land tax/single tax and other non-labour production taxes) + (operating profit above a normal return on capital), divided by the export price (FOB). Counted along the whole Ukrainian value chain (farm + trader for grain; farm + crusher + duty for oilseeds; mill + upstream Ukrainian ore for steel). Not counted: wages and labour taxes (PIT, military levy, social contribution - they are part of the wage), materials, fuel, energy, logistics (rail, trucks, Danube/port charges, war-risk costs), depreciation, land lease payments to landowners, VAT (exports are zero-rated), and a normal return on capital of 10% a year pre-tax in nominal USD on capital employed (low case 12%, high case 8%). Stage formula: s*[t_other + tau*E(max(m,0)) + (1-tau)*E(max(m - r*k, 0))], where s = stage revenue/FOB, m = EBIT/stage revenue (after rent and production taxes), k = capital/stage revenue, r = normal return, tau = profit-tax rate; E(max(.)) taken over a normal spread of firm margins (sd given) so that profitable firms still count when the average firm breaks even. Values are shares of FOB value, 0..1. 2026 = January-August.",
+ "units": "share of FOB export value (0-1); low/central/high is a ~90% range; the low and high cases set all inputs low/high together",
+ "groups": {
+  "grain": {
+   "2021": {
+    "low": 0.107,
+    "central": 0.19,
+    "high": 0.257
+   },
+   "2022": {
+    "low": 0.012,
+    "central": 0.031,
+    "high": 0.083
+   },
+   "2023": {
+    "low": 0.012,
+    "central": 0.025,
+    "high": 0.069
+   },
+   "2024": {
+    "low": 0.022,
+    "central": 0.055,
+    "high": 0.115
+   },
+   "2025": {
+    "low": 0.057,
+    "central": 0.118,
+    "high": 0.185
+   },
+   "2026": {
+    "low": 0.032,
+    "central": 0.078,
+    "high": 0.151
+   }
+  },
+  "oilseeds": {
+   "2021": {
+    "low": 0.153,
+    "central": 0.24,
+    "high": 0.319
+   },
+   "2022": {
+    "low": 0.028,
+    "central": 0.061,
+    "high": 0.128
+   },
+   "2023": {
+    "low": 0.02,
+    "central": 0.051,
+    "high": 0.116
+   },
+   "2024": {
+    "low": 0.05,
+    "central": 0.119,
+    "high": 0.198
+   },
+   "2025": {
+    "low": 0.136,
+    "central": 0.216,
+    "high": 0.332
+   },
+   "2026": {
+    "low": 0.075,
+    "central": 0.169,
+    "high": 0.273
+   }
+  },
+  "food_other": {
+   "2021": {
+    "low": 0.05,
+    "central": 0.09,
+    "high": 0.14
+   },
+   "2022": {
+    "low": 0.03,
+    "central": 0.06,
+    "high": 0.1
+   },
+   "2023": {
+    "low": 0.04,
+    "central": 0.07,
+    "high": 0.11
+   },
+   "2024": {
+    "low": 0.05,
+    "central": 0.08,
+    "high": 0.12
+   },
+   "2025": {
+    "low": 0.05,
+    "central": 0.08,
+    "high": 0.12
+   },
+   "2026": {
+    "low": 0.04,
+    "central": 0.08,
+    "high": 0.12
+   }
+  },
+  "iron_ore": {
+   "2021": {
+    "low": 0.303,
+    "central": 0.432,
+    "high": 0.544
+   },
+   "2022": {
+    "low": 0.093,
+    "central": 0.242,
+    "high": 0.404
+   },
+   "2023": {
+    "low": 0.051,
+    "central": 0.093,
+    "high": 0.201
+   },
+   "2024": {
+    "low": 0.051,
+    "central": 0.08,
+    "high": 0.156
+   },
+   "2025": {
+    "low": 0.047,
+    "central": 0.068,
+    "high": 0.119
+   },
+   "2026": {
+    "low": 0.047,
+    "central": 0.066,
+    "high": 0.119
+   }
+  },
+  "steel": {
+   "2021": {
+    "low": 0.11,
+    "central": 0.184,
+    "high": 0.267
+   },
+   "2022": {
+    "low": 0.03,
+    "central": 0.069,
+    "high": 0.133
+   },
+   "2023": {
+    "low": 0.021,
+    "central": 0.032,
+    "high": 0.067
+   },
+   "2024": {
+    "low": 0.022,
+    "central": 0.032,
+    "high": 0.061
+   },
+   "2025": {
+    "low": 0.022,
+    "central": 0.034,
+    "high": 0.058
+   },
+   "2026": {
+    "low": 0.022,
+    "central": 0.031,
+    "high": 0.058
+   }
+  },
+  "metals_other": {
+   "2021": {
+    "low": 0.04,
+    "central": 0.1,
+    "high": 0.18
+   },
+   "2022": {
+    "low": 0.02,
+    "central": 0.05,
+    "high": 0.1
+   },
+   "2023": {
+    "low": 0.015,
+    "central": 0.04,
+    "high": 0.08
+   },
+   "2024": {
+    "low": 0.02,
+    "central": 0.05,
+    "high": 0.09
+   },
+   "2025": {
+    "low": 0.02,
+    "central": 0.05,
+    "high": 0.09
+   },
+   "2026": {
+    "low": 0.02,
+    "central": 0.05,
+    "high": 0.09
+   }
+  },
+  "wood": {
+   "2021": {
+    "low": 0.04,
+    "central": 0.08,
+    "high": 0.13
+   },
+   "2022": {
+    "low": 0.02,
+    "central": 0.05,
+    "high": 0.09
+   },
+   "2023": {
+    "low": 0.02,
+    "central": 0.05,
+    "high": 0.09
+   },
+   "2024": {
+    "low": 0.03,
+    "central": 0.06,
+    "high": 0.1
+   },
+   "2025": {
+    "low": 0.03,
+    "central": 0.06,
+    "high": 0.1
+   },
+   "2026": {
+    "low": 0.03,
+    "central": 0.06,
+    "high": 0.1
+   }
+  },
+  "machinery": {
+   "2021": {
+    "low": 0.02,
+    "central": 0.04,
+    "high": 0.07
+   },
+   "2022": {
+    "low": 0.015,
+    "central": 0.03,
+    "high": 0.06
+   },
+   "2023": {
+    "low": 0.015,
+    "central": 0.03,
+    "high": 0.06
+   },
+   "2024": {
+    "low": 0.015,
+    "central": 0.035,
+    "high": 0.065
+   },
+   "2025": {
+    "low": 0.015,
+    "central": 0.035,
+    "high": 0.065
+   },
+   "2026": {
+    "low": 0.015,
+    "central": 0.035,
+    "high": 0.065
+   }
+  },
+  "chemicals": {
+   "2021": {
+    "low": 0.05,
+    "central": 0.1,
+    "high": 0.16
+   },
+   "2022": {
+    "low": 0.01,
+    "central": 0.04,
+    "high": 0.08
+   },
+   "2023": {
+    "low": 0.01,
+    "central": 0.03,
+    "high": 0.07
+   },
+   "2024": {
+    "low": 0.015,
+    "central": 0.04,
+    "high": 0.08
+   },
+   "2025": {
+    "low": 0.015,
+    "central": 0.04,
+    "high": 0.08
+   },
+   "2026": {
+    "low": 0.015,
+    "central": 0.04,
+    "high": 0.08
+   }
+  },
+  "other": {
+   "2021": {
+    "low": 0.04,
+    "central": 0.08,
+    "high": 0.12
+   },
+   "2022": {
+    "low": 0.02,
+    "central": 0.05,
+    "high": 0.09
+   },
+   "2023": {
+    "low": 0.02,
+    "central": 0.05,
+    "high": 0.09
+   },
+   "2024": {
+    "low": 0.02,
+    "central": 0.05,
+    "high": 0.09
+   },
+   "2025": {
+    "low": 0.02,
+    "central": 0.05,
+    "high": 0.09
+   },
+   "2026": {
+    "low": 0.02,
+    "central": 0.05,
+    "high": 0.09
+   }
+  },
+  "average": {
+   "2021": {
+    "low": 0.112,
+    "central": 0.182,
+    "high": 0.252
+   },
+   "2022": {
+    "low": 0.026,
+    "central": 0.062,
+    "high": 0.121
+   },
+   "2023": {
+    "low": 0.021,
+    "central": 0.045,
+    "high": 0.094
+   },
+   "2024": {
+    "low": 0.034,
+    "central": 0.071,
+    "high": 0.125
+   },
+   "2025": {
+    "low": 0.061,
+    "central": 0.105,
+    "high": 0.166
+   },
+   "2026": {
+    "low": 0.04,
+    "central": 0.086,
+    "high": 0.146
+   }
+  }
+ },
+ "mix": {
+  "2021": {
+   "grain": 0.1798,
+   "oilseeds": 0.1562,
+   "food_other": 0.0688,
+   "iron_ore": 0.1034,
+   "steel": 0.2183,
+   "metals_other": 0.0143,
+   "wood": 0.0451,
+   "machinery": 0.0931,
+   "chemicals": 0.0581,
+   "other": 0.0629
+  },
+  "2022": {
+   "grain": 0.2063,
+   "oilseeds": 0.2372,
+   "food_other": 0.0867,
+   "iron_ore": 0.0656,
+   "steel": 0.1264,
+   "metals_other": 0.0134,
+   "wood": 0.0607,
+   "machinery": 0.0956,
+   "chemicals": 0.0401,
+   "other": 0.0681
+  },
+  "2023": {
+   "grain": 0.2296,
+   "oilseeds": 0.2608,
+   "food_other": 0.1176,
+   "iron_ore": 0.0488,
+   "steel": 0.0975,
+   "metals_other": 0.0136,
+   "wood": 0.0629,
+   "machinery": 0.0848,
+   "chemicals": 0.0335,
+   "other": 0.051
+  },
+  "2024": {
+   "grain": 0.2257,
+   "oilseeds": 0.2439,
+   "food_other": 0.1218,
+   "iron_ore": 0.0672,
+   "steel": 0.0969,
+   "metals_other": 0.0132,
+   "wood": 0.0568,
+   "machinery": 0.0881,
+   "chemicals": 0.0317,
+   "other": 0.0547
+  },
+  "2025": {
+   "grain": 0.1801,
+   "oilseeds": 0.2413,
+   "food_other": 0.136,
+   "iron_ore": 0.0565,
+   "steel": 0.106,
+   "metals_other": 0.0136,
+   "wood": 0.0674,
+   "machinery": 0.0961,
+   "chemicals": 0.0322,
+   "other": 0.0708
+  },
+  "2026": {
+   "grain": 0.2097,
+   "oilseeds": 0.2352,
+   "food_other": 0.1318,
+   "iron_ore": 0.0449,
+   "steel": 0.088,
+   "metals_other": 0.0131,
+   "wood": 0.0708,
+   "machinery": 0.0899,
+   "chemicals": 0.0318,
+   "other": 0.0846
+  }
+ },
+ "mix_note": "2021-2024: UN Comtrade, Ukraine as reporter, exports to World, HS2 (AG2) with HS 2306 (oilcake/meal) moved to oilseeds and HS 2601 (iron ore) split from HS 26. Group map: grain=HS10; oilseeds=HS12+HS15+2306; food_other=HS01-24 rest; iron_ore=2601; steel=HS72+73; metals_other=HS26 except 2601 + HS74-83; wood=HS44+94; machinery=HS84-90; chemicals=HS28-40; other=rest. Comtrade totals: 2021 65.9, 2022 44.4, 2023 36.2, 2024 41.7 USD bn. 2025: State Customs Service figures via export.gov.ua (total 40.37 USD bn; HS10 7.27, HS12 2.36, HS15 6.38, HS26 2.38, HS72 3.33, HS44 1.68, HS94 1.04, HS85 2.41, machinery sector 3.65, food 22.5) with HS73, 2306, chemicals and machinery-to-HS90 estimated from 2024 Comtrade. 2026 Jan-Aug: State Customs totals via Interfax-Ukraine (exports 26.70; food 15.4; metals and metal products ~2.7; machinery ~2.4; iron ore 15.8 Mt) and H1 shares from export.gov.ua (cereals 22.4%, fats/oils 17.2%); the split is estimated (mix certainty C).",
+ "buyer_mix": {
+  "POL": {
+   "grain": 0.024,
+   "oilseeds": 0.194,
+   "food_other": 0.122,
+   "iron_ore": 0.088,
+   "steel": 0.22,
+   "metals_other": 0.024,
+   "wood": 0.114,
+   "machinery": 0.095,
+   "chemicals": 0.034,
+   "other": 0.086
+  },
+  "ROU": {
+   "grain": 0.195,
+   "oilseeds": 0.372,
+   "food_other": 0.103,
+   "iron_ore": 0.038,
+   "steel": 0.074,
+   "metals_other": 0.006,
+   "wood": 0.056,
+   "machinery": 0.044,
+   "chemicals": 0.017,
+   "other": 0.094
+  },
+  "TUR": {
+   "grain": 0.293,
+   "oilseeds": 0.429,
+   "food_other": 0.074,
+   "iron_ore": 0.021,
+   "steel": 0.07,
+   "metals_other": 0.006,
+   "wood": 0.039,
+   "machinery": 0.041,
+   "chemicals": 0.007,
+   "other": 0.019
+  },
+  "CHN": {
+   "grain": 0.399,
+   "oilseeds": 0.308,
+   "food_other": 0.024,
+   "iron_ore": 0.231,
+   "steel": 0.002,
+   "metals_other": 0.002,
+   "wood": 0.004,
+   "machinery": 0.018,
+   "chemicals": 0.004,
+   "other": 0.007
+  },
+  "ESP": {
+   "grain": 0.686,
+   "oilseeds": 0.203,
+   "food_other": 0.022,
+   "iron_ore": 0.0,
+   "steel": 0.039,
+   "metals_other": 0.004,
+   "wood": 0.016,
+   "machinery": 0.008,
+   "chemicals": 0.004,
+   "other": 0.018
+  },
+  "DEU": {
+   "grain": 0.056,
+   "oilseeds": 0.287,
+   "food_other": 0.093,
+   "iron_ore": 0.013,
+   "steel": 0.083,
+   "metals_other": 0.012,
+   "wood": 0.125,
+   "machinery": 0.235,
+   "chemicals": 0.031,
+   "other": 0.065
+  },
+  "ITA": {
+   "grain": 0.341,
+   "oilseeds": 0.258,
+   "food_other": 0.071,
+   "iron_ore": 0.018,
+   "steel": 0.151,
+   "metals_other": 0.016,
+   "wood": 0.049,
+   "machinery": 0.019,
+   "chemicals": 0.014,
+   "other": 0.063
+  },
+  "NLD": {
+   "grain": 0.258,
+   "oilseeds": 0.443,
+   "food_other": 0.18,
+   "iron_ore": 0.0,
+   "steel": 0.017,
+   "metals_other": 0.005,
+   "wood": 0.047,
+   "machinery": 0.026,
+   "chemicals": 0.017,
+   "other": 0.007
+  },
+  "HUN": {
+   "grain": 0.092,
+   "oilseeds": 0.079,
+   "food_other": 0.138,
+   "iron_ore": 0.008,
+   "steel": 0.025,
+   "metals_other": 0.014,
+   "wood": 0.071,
+   "machinery": 0.503,
+   "chemicals": 0.017,
+   "other": 0.053
+  },
+  "SVK": {
+   "grain": 0.029,
+   "oilseeds": 0.031,
+   "food_other": 0.109,
+   "iron_ore": 0.487,
+   "steel": 0.021,
+   "metals_other": 0.03,
+   "wood": 0.043,
+   "machinery": 0.132,
+   "chemicals": 0.04,
+   "other": 0.078
+  },
+  "EGY": {
+   "grain": 0.577,
+   "oilseeds": 0.323,
+   "food_other": 0.009,
+   "iron_ore": 0.014,
+   "steel": 0.072,
+   "metals_other": 0.001,
+   "wood": 0.001,
+   "machinery": 0.003,
+   "chemicals": 0.002,
+   "other": 0.001
+  },
+  "MDA": {
+   "grain": 0.005,
+   "oilseeds": 0.059,
+   "food_other": 0.32,
+   "iron_ore": 0.0,
+   "steel": 0.144,
+   "metals_other": 0.015,
+   "wood": 0.106,
+   "machinery": 0.107,
+   "chemicals": 0.111,
+   "other": 0.132
+  }
+ },
+ "buyer_mix_note": "Ukraine's exports to each partner, 2023 and 2024 pooled, UN Comtrade (Ukraine reporter), same group map. avg_annual_usd_bn = average annual value in Comtrade. 2025 partner detail was not in Comtrade at time of writing; use 2023-24 shares for 2025. Romania and Poland include grain/oilseed shipped through their ports or land routes when Ukraine's customs records them as the partner.",
+ "buyer_avg_annual_usd_bn": {
+  "POL": 4.73,
+  "ROU": 2.76,
+  "TUR": 2.29,
+  "CHN": 2.4,
+  "ESP": 2.44,
+  "DEU": 2.43,
+  "ITA": 1.74,
+  "NLD": 1.74,
+  "HUN": 1.17,
+  "SVK": 1.01,
+  "EGY": 1.36,
+  "MDA": 0.88
+ },
+ "buyer_central_average": {
+  "POL": {
+   "2023": 0.049,
+   "2024": 0.065,
+   "2025": 0.085
+  },
+  "ROU": {
+   "2023": 0.047,
+   "2024": 0.079,
+   "2025": 0.127
+  },
+  "TUR": {
+   "2023": 0.043,
+   "2024": 0.082,
+   "2025": 0.142
+  },
+  "CHN": {
+   "2023": 0.05,
+   "2024": 0.081,
+   "2025": 0.133
+  },
+  "ESP": {
+   "2023": 0.033,
+   "2024": 0.067,
+   "2025": 0.13
+  },
+  "DEU": {
+   "2023": 0.044,
+   "2024": 0.069,
+   "2025": 0.101
+  },
+  "ITA": {
+   "2023": 0.04,
+   "2024": 0.07,
+   "2025": 0.116
+  },
+  "NLD": {
+   "2023": 0.046,
+   "2024": 0.087,
+   "2025": 0.146
+  },
+  "HUN": {
+   "2023": 0.04,
+   "2024": 0.053,
+   "2025": 0.066
+  },
+  "SVK": {
+   "2023": 0.068,
+   "2024": 0.068,
+   "2025": 0.067
+  },
+  "EGY": {
+   "2023": 0.035,
+   "2024": 0.075,
+   "2025": 0.142
+  },
+  "MDA": {
+   "2023": 0.049,
+   "2024": 0.059,
+   "2025": 0.066
+  }
+ },
+ "inputs": {
+  "normal_return_pretax": {
+   "low": 0.12,
+   "central": 0.1,
+   "high": 0.08
+  },
+  "profit_tax_rate": 0.18,
+  "ukrstat_operating_profitability_pct": {
+   "note": "operating result / operating costs, enterprises (excl. banks, budget institutions, occupied territories). Sales margin = p/(1+p).",
+   "agriculture_forestry_fishing": {
+    "2019": 19.2,
+    "2020": 18.6,
+    "2021": 40.3,
+    "2022": 20.0,
+    "2023": 12.0,
+    "2024": 22.7
+   },
+   "industry": {
+    "2019": 5.5,
+    "2020": 3.9,
+    "2021": 11.2,
+    "2022": 0.8,
+    "2023": 4.7,
+    "2024": 7.4
+   },
+   "wholesale_retail_trade": {
+    "2021": 17.9,
+    "2022": 17.2,
+    "2023": 29.1,
+    "2024": 26.3
+   },
+   "all": {
+    "2021": 12.6,
+    "2022": 3.3,
+    "2023": 8.0,
+    "2024": 5.7
+   }
+  },
+  "crop_profitability_pct": {
+   "wheat_2022": -14.9,
+   "wheat_2023": -1.8,
+   "wheat_2025_26": 26,
+   "corn_2025_26": 23,
+   "sunflower_2025_26": 48,
+   "note": "UkrAgroConsult via Interfax-Ukraine; Latifundist table: sunflower 2021 70, 2024 15-20; corn 2021 50, 2024 -5; MAS Seeds sunflower 2025 106; Ukrstat grain 2020 20.0, sunflower 2020 39.4"
+  },
+  "usda_grain_prices_usd_t": {
+   "wheat_fob": {
+    "2021": 275.49,
+    "2022": 301.55,
+    "2023": 229.68,
+    "2024": 215.47,
+    "2025": 231.67
+   },
+   "wheat_farm": {
+    "2021": 273.08,
+    "2022": 188.24,
+    "2023": 140.28,
+    "2024": 176.89,
+    "2025": 224.29
+   },
+   "corn_fob": {
+    "2021": 267.46,
+    "2022": 270.72,
+    "2023": 206.2,
+    "2024": 193.34,
+    "2025": 226.35
+   },
+   "corn_farm": {
+    "2021": 270.12,
+    "2022": 171.53,
+    "2023": 135.73,
+    "2024": 158.42,
+    "2025": 216.97
+   },
+   "inland_rail_truck_to_odesa_2024_2025": [
+    21.96,
+    17.58
+   ],
+   "note": "USDA farm prices look VAT-inclusive or mis-timed in 2021 and 2025 (farm = FOB); the model uses farm/FOB ex VAT of 0.85 (2021), 0.55, 0.58, 0.75, 0.82, 0.80"
+  },
+  "kernel": {
+   "group_ebitda_usd_m": {
+    "FY2021": 806,
+    "FY2022": 220,
+    "FY2023": 544,
+    "FY2024": 381,
+    "FY2025": 466
+   },
+   "oilseed_processing_ebitda_per_t_oil": {
+    "FY2024": 56,
+    "FY2025": 105
+   },
+   "oilseed_ebitda_margin_FY2025": 0.07,
+   "infrastructure_trading_ebitda_per_t_grain": {
+    "FY2024": 37,
+    "FY2025": 40
+   },
+   "ukraine_grain_export_ebitda_FY2025_usd_m": 119,
+   "grain_exported_kt_FY2025": 5427
+  },
+  "ferrexpo": {
+   "revenue_usd_m": {
+    "2022": 1248,
+    "2023": 652,
+    "2024": 933,
+    "2025": 787
+   },
+   "underlying_ebitda_usd_m": {
+    "2022": "~765 (implied by '5.9x fall' to 2023)",
+    "2023": 130,
+    "2024": 69,
+    "2025": 28
+   },
+   "royalty_share_of_C1": 0.07,
+   "C1_usd_t": {
+    "2024": 77.5,
+    "2025": 76.3
+   },
+   "selling_distribution_usd_m": {
+    "2024": 246,
+    "2025": 242
+   },
+   "note": "royalty ~US$5.4/t on ~US$118/t FOB-equivalent = ~4.5% of FOB"
+  },
+  "metinvest": {
+   "revenue_usd_m": {
+    "2022": 8288,
+    "2023": 7397
+   },
+   "ebitda_usd_m": {
+    "2022": 1873,
+    "2023": 861,
+    "2025": 765
+   },
+   "metallurgical_ebitda_margin_2023": 0.03,
+   "ebitda_margin": {
+    "2024": 0.13,
+    "2025": 0.11
+   },
+   "mining_ebitda_usd_m": {
+    "2023": 770,
+    "2025": 424
+   },
+   "metallurgical_ebitda_usd_m": {
+    "2023": 159,
+    "2025": 437
+   },
+   "taxes_paid_ukraine_2025_usd_m": 263
+  },
+  "export_duties": "10% on sunflower seed (since 1999); 10% on soybean and rapeseed exported by traders from September 2025 (producers exempt); duty revenue as share of oilseeds group: {\"2021\": 0.0004, \"2022\": 0.012, \"2023\": 0.003, \"2024\": 0.001, \"2025\": 0.005, \"2026\": 0.008}",
+  "model": {
+   "grain": {
+    "s_farm": {
+     "2021": 0.85,
+     "2022": 0.55,
+     "2023": 0.58,
+     "2024": 0.75,
+     "2025": 0.82,
+     "2026": 0.8
+    },
+    "m_farm": {
+     "2021": [
+      0.2,
+      0.28,
+      0.33
+     ],
+     "2022": [
+      -0.08,
+      0.03,
+      0.1
+     ],
+     "2023": [
+      -0.08,
+      0.0,
+      0.08
+     ],
+     "2024": [
+      0.0,
+      0.08,
+      0.15
+     ],
+     "2025": [
+      0.12,
+      0.19,
+      0.24
+     ],
+     "2026": [
+      0.05,
+      0.13,
+      0.2
+     ]
+    },
+    "m_trader": {
+     "2021": [
+      0.02,
+      0.025,
+      0.035
+     ],
+     "2022": [
+      0.01,
+      0.03,
+      0.06
+     ],
+     "2023": [
+      0.01,
+      0.025,
+      0.05
+     ],
+     "2024": [
+      0.02,
+      0.035,
+      0.05
+     ],
+     "2025": [
+      0.02,
+      0.03,
+      0.045
+     ],
+     "2026": [
+      0.02,
+      0.03,
+      0.045
+     ]
+    },
+    "k_farm": 0.9,
+    "k_trader": 0.3,
+    "tau_farm": {
+     "low": 0.05,
+     "central": 0.1,
+     "high": 0.15
+    },
+    "tau_trader": 0.18,
+    "t_other_farm": 0.01,
+    "t_other_trader": 0.002,
+    "sd_farm": 0.1,
+    "sd_trader": 0.02
+   },
+   "oilseeds": {
+    "s_farm": {
+     "2021": 0.72,
+     "2022": 0.55,
+     "2023": 0.6,
+     "2024": 0.68,
+     "2025": 0.75,
+     "2026": 0.72
+    },
+    "m_farm": {
+     "2021": [
+      0.28,
+      0.36,
+      0.42
+     ],
+     "2022": [
+      0.0,
+      0.12,
+      0.22
+     ],
+     "2023": [
+      0.0,
+      0.1,
+      0.2
+     ],
+     "2024": [
+      0.12,
+      0.22,
+      0.3
+     ],
+     "2025": [
+      0.25,
+      0.33,
+      0.45
+     ],
+     "2026": [
+      0.15,
+      0.27,
+      0.38
+     ]
+    },
+    "m_crusher": {
+     "2021": [
+      0.03,
+      0.05,
+      0.07
+     ],
+     "2022": [
+      -0.04,
+      0.0,
+      0.03
+     ],
+     "2023": [
+      -0.03,
+      0.01,
+      0.03
+     ],
+     "2024": [
+      0.0,
+      0.02,
+      0.04
+     ],
+     "2025": [
+      0.01,
+      0.025,
+      0.04
+     ],
+     "2026": [
+      0.01,
+      0.025,
+      0.04
+     ]
+    },
+    "duty_share": {
+     "2021": 0.0004,
+     "2022": 0.012,
+     "2023": 0.003,
+     "2024": 0.001,
+     "2025": 0.005,
+     "2026": 0.008
+    },
+    "k_farm": 0.9,
+    "k_crusher": 0.35,
+    "tau_farm": {
+     "low": 0.05,
+     "central": 0.1,
+     "high": 0.15
+    },
+    "tau_crusher": 0.18,
+    "t_other_farm": 0.01,
+    "t_other_crusher": 0.005,
+    "sd_farm": 0.1,
+    "sd_crusher": 0.03
+   },
+   "iron_ore": {
+    "m": {
+     "2021": [
+      0.38,
+      0.45,
+      0.52
+     ],
+     "2022": [
+      0.15,
+      0.28,
+      0.4
+     ],
+     "2023": [
+      0.0,
+      0.1,
+      0.2
+     ],
+     "2024": [
+      0.0,
+      0.07,
+      0.15
+     ],
+     "2025": [
+      -0.05,
+      0.03,
+      0.1
+     ],
+     "2026": [
+      -0.05,
+      0.02,
+      0.1
+     ]
+    },
+    "rent": {
+     "2021": [
+      0.06,
+      0.07,
+      0.08
+     ],
+     "2022": [
+      0.04,
+      0.05,
+      0.06
+     ],
+     "2023": [
+      0.035,
+      0.045,
+      0.055
+     ],
+     "2024": [
+      0.035,
+      0.045,
+      0.055
+     ],
+     "2025": [
+      0.035,
+      0.045,
+      0.055
+     ],
+     "2026": [
+      0.035,
+      0.045,
+      0.055
+     ]
+    },
+    "k": {
+     "low": 1.5,
+     "central": 1.2,
+     "high": 1.0
+    },
+    "tau": 0.18,
+    "t_other": 0.01,
+    "sd": 0.08
+   },
+   "steel": {
+    "m": {
+     "2021": [
+      0.1,
+      0.15,
+      0.2
+     ],
+     "2022": [
+      -0.05,
+      0.02,
+      0.08
+     ],
+     "2023": [
+      -0.08,
+      -0.02,
+      0.03
+     ],
+     "2024": [
+      -0.05,
+      0.0,
+      0.04
+     ],
+     "2025": [
+      -0.03,
+      0.02,
+      0.05
+     ],
+     "2026": [
+      -0.03,
+      0.01,
+      0.05
+     ]
+    },
+    "k": 0.8,
+    "tau": 0.18,
+    "t_other": 0.01,
+    "sd": 0.06,
+    "ore_input_share": 0.2
+   },
+   "judgement_groups": {
+    "food_other": {
+     "2021": [
+      0.05,
+      0.09,
+      0.14
+     ],
+     "2022": [
+      0.03,
+      0.06,
+      0.1
+     ],
+     "2023": [
+      0.04,
+      0.07,
+      0.11
+     ],
+     "2024": [
+      0.05,
+      0.08,
+      0.12
+     ],
+     "2025": [
+      0.05,
+      0.08,
+      0.12
+     ],
+     "2026": [
+      0.04,
+      0.08,
+      0.12
+     ]
+    },
+    "metals_other": {
+     "2021": [
+      0.04,
+      0.1,
+      0.18
+     ],
+     "2022": [
+      0.02,
+      0.05,
+      0.1
+     ],
+     "2023": [
+      0.015,
+      0.04,
+      0.08
+     ],
+     "2024": [
+      0.02,
+      0.05,
+      0.09
+     ],
+     "2025": [
+      0.02,
+      0.05,
+      0.09
+     ],
+     "2026": [
+      0.02,
+      0.05,
+      0.09
+     ]
+    },
+    "wood": {
+     "2021": [
+      0.04,
+      0.08,
+      0.13
+     ],
+     "2022": [
+      0.02,
+      0.05,
+      0.09
+     ],
+     "2023": [
+      0.02,
+      0.05,
+      0.09
+     ],
+     "2024": [
+      0.03,
+      0.06,
+      0.1
+     ],
+     "2025": [
+      0.03,
+      0.06,
+      0.1
+     ],
+     "2026": [
+      0.03,
+      0.06,
+      0.1
+     ]
+    },
+    "machinery": {
+     "2021": [
+      0.02,
+      0.04,
+      0.07
+     ],
+     "2022": [
+      0.015,
+      0.03,
+      0.06
+     ],
+     "2023": [
+      0.015,
+      0.03,
+      0.06
+     ],
+     "2024": [
+      0.015,
+      0.035,
+      0.065
+     ],
+     "2025": [
+      0.015,
+      0.035,
+      0.065
+     ],
+     "2026": [
+      0.015,
+      0.035,
+      0.065
+     ]
+    },
+    "chemicals": {
+     "2021": [
+      0.05,
+      0.1,
+      0.16
+     ],
+     "2022": [
+      0.01,
+      0.04,
+      0.08
+     ],
+     "2023": [
+      0.01,
+      0.03,
+      0.07
+     ],
+     "2024": [
+      0.015,
+      0.04,
+      0.08
+     ],
+     "2025": [
+      0.015,
+      0.04,
+      0.08
+     ],
+     "2026": [
+      0.015,
+      0.04,
+      0.08
+     ]
+    },
+    "other": {
+     "2021": [
+      0.04,
+      0.08,
+      0.12
+     ],
+     "2022": [
+      0.02,
+      0.05,
+      0.09
+     ],
+     "2023": [
+      0.02,
+      0.05,
+      0.09
+     ],
+     "2024": [
+      0.02,
+      0.05,
+      0.09
+     ],
+     "2025": [
+      0.02,
+      0.05,
+      0.09
+     ],
+     "2026": [
+      0.02,
+      0.05,
+      0.09
+     ]
+    }
+   }
+  }
+ },
+ "sources": [
+  {
+   "id": "ukrstat_yb2024",
+   "title": "State Statistics Service of Ukraine, Statistical Yearbook of Ukraine for 2024, table 22.12 Profitability of operational activity by economic activity",
+   "url": "https://stat.gov.ua/sites/default/files/2026-09/yearbook_24e.pdf",
+   "note": "agriculture 20.0/12.0/22.7%, industry 0.8/4.7/7.4% for 2022/2023/2024"
+  },
+  {
+   "id": "ukrstat_yb2022",
+   "title": "Статистичний щорічник України за 2022 рік, табл. 23.12 and 16.10",
+   "url": "https://stat.gov.ua/sites/default/files/2024-02/%D0%97%D0%B1%D1%96%D1%80%D0%BD%D0%B8%D0%BA%20%D0%A1%D1%82%D0%B0%D1%82%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B8%D0%B9%20%D1%89%D0%BE%D1%80%D1%96%D1%87%D0%BD%D0%B8%D0%BA%20%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B8%202022%20%D1%80%D1%96%D0%BA.pdf",
+   "note": "agriculture 40.3% (2021); crop profitability to 2020 (grain 20.0, sunflower 39.4); crop table suspended from 2021"
+  },
+  {
+   "id": "datagov_rent",
+   "title": "Data.gov.ua: Рівень рентабельності операційної діяльності підприємств за видами економічної діяльності (Derzhstat)",
+   "url": "https://data.gov.ua/dataset/afb3d64f-7346-47bf-a9e2-0671629fc1d3",
+   "note": "2010-2021 series"
+  },
+  {
+   "id": "comtrade",
+   "title": "UN Comtrade API, Ukraine (804) exports to World and 12 partners, HS2 and selected HS4, 2021-2024",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS",
+   "note": "mix 2021-2024 and buyer mix"
+  },
+  {
+   "id": "exportgov_2025",
+   "title": "Export Promotion Office: How Ukraine's goods exports changed in 2025",
+   "url": "https://export.gov.ua/news/how-ukraines-goods-exports-changed-in-2025",
+   "note": "State Customs data by HS group, 2025 vs 2024"
+  },
+  {
+   "id": "exportgov_h1_2026",
+   "title": "Export Promotion Office: Ukrainian exports in H1 2026",
+   "url": "https://www.export.gov.ua/news/yak-zminyvsia-ukrainskyi-eksport-posluh-za-i-pivrichchia-2026-roku",
+   "note": "H1 2026 total 21.02; cereals 22.4%, fats/oils 17.2%"
+  },
+  {
+   "id": "interfax_8m2026",
+   "title": "Interfax-Ukraine: foreign trade deficit approached $40 bn in 8 months of 2026",
+   "url": "https://en.interfax.com.ua/news/projects/1217001.html",
+   "note": "Jan-Aug 2026 exports 26.70; partner values"
+  },
+  {
+   "id": "usda_ams_2026",
+   "title": "USDA AMS, Ukraine Grain Transportation, July 2026",
+   "url": "https://www.ams.usda.gov/sites/default/files/media/Ukraine_Grain_Transportation_2026_July.pdf",
+   "note": "farm vs FOB prices 2021-2025; inland and ocean transport costs"
+  },
+  {
+   "id": "interfax_crops",
+   "title": "Interfax-Ukraine: crop structure shift, profitability of wheat, corn, sunflower (UkrAgroConsult)",
+   "url": "https://interfax.com.ua/news/economic/1161565.html",
+   "note": "wheat -14.9% (2022), -1.8% (2023); 2025/26 wheat 26%, corn 23%, sunflower 48%"
+  },
+  {
+   "id": "latifundist",
+   "title": "Latifundist: profitability of crops in Ukraine 2021-2026",
+   "url": "https://latifundist.com/analytics/37-rentabelnist-silgospkultur-v-ukrayini-20212026-rr-ekonomika-vizhivannya-ta-rozrahunku",
+   "note": "sunflower 70% (2021), 15-20% (2024), 106% (2025, MAS Seeds); corn 50%/-5%; transport costs up 4-5x in 2022-23"
+  },
+  {
+   "id": "kernel_fy2025",
+   "title": "Kernel Holding S.A. Annual Report FY2025 (year to 30 June 2025)",
+   "url": "https://www.annualreports.com/HostedData/AnnualReports/PDF/kernel_2025.pdf",
+   "note": "segment EBITDA, EBITDA/t oil and per t grain exported; 10% duty on soy/rapeseed from Sept 2025"
+  },
+  {
+   "id": "ferrexpo_2025",
+   "title": "Ferrexpo plc full-year results 2025 (3 Sept 2026)",
+   "url": "https://www.ferrexpo.com/media/yo2jxkc3/ferrexpo-full-year-financial-results-for-2025-combined-for-website.pdf",
+   "note": "revenue, EBITDA, C1 cost split incl. royalties 7%, freight and rail tariffs (+70% Jul 2022, +36% Jul 2026)"
+  },
+  {
+   "id": "ferrexpo_2023",
+   "title": "Interfax: Ferrexpo swings to $85m net loss in 2023",
+   "url": "https://interfax.com/newsroom/top-stories/101557/",
+   "note": "2023 revenue 652, EBITDA 130"
+  },
+  {
+   "id": "metinvest_2025",
+   "title": "Metinvest Annual Report 2025, financial review",
+   "url": "https://metinvestholding.com/ar2025/uploads/en/financial-review.pdf",
+   "note": "EBITDA 765, margin 11% (13% 2024); mining vs metallurgical; taxes paid in Ukraine US$263m"
+  },
+  {
+   "id": "metinvest_2023",
+   "title": "Interfax: Metinvest posts $194m loss for 2023",
+   "url": "https://interfax.com/newsroom/top-stories/100516/",
+   "note": "revenue 8,288 -> 7,397; EBITDA 1,873 -> 861; steel EBITDA margin 3% (GMK Center)"
+  }
+ ],
+ "certainty": "C overall. B for the export mix 2021-2024 (Comtrade) and for the sector profitability anchors (Ukrstat). C for grain, oilseeds, iron ore and steel shares: built from Ukrstat sector profitability, crop profitability from trade analysts, USDA farm/FOB spreads and company reports, but capital intensity, farm/FOB ratios and tax incidence are estimated. D-to-C for food_other, metals_other, wood, machinery, chemicals and other: judgement values anchored on Ukrstat industry profitability (0.8-11%) and tolling/low-margin structure, no product-level margin data. 2025 and 2026 have no Ukrstat profitability data yet; they rest on company and analyst data. Mix 2025 is B-/C, 2026 Jan-Aug C."
+}
