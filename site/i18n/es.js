@@ -191,6 +191,8 @@ I18N.es = {
   "Up to": "Hasta",
   "2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).": "2026 es el año hasta la fecha (de enero a agosto), no un año completo. Si una fuente aún no ha publicado 2026, de enero a agosto se estima a partir de su ritmo mensual de 2025 (marcado con *).",
   "Flows": "Flujos",
+  "Light or dark": "Claro u oscuro",
+  "Layers": "Capas",
   "Subtract money flowing back": "Restar el dinero que vuelve",
   "Find your country": "Busca tu país",
   "World map coloured by the change in money flows since before the war": "Mapa del mundo coloreado según el cambio en los flujos de dinero desde antes de la guerra",
