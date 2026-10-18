@@ -1264,6 +1264,11 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
     The pre-war level becomes 2021 at 2019-2021 prices, and the multipliers carry the back-tested 90% error, so the
     expected path is never treated as exact. Replaces the trend.json and trend2.json trends for these flows."""
     cf = load(GAPS / "counterfactual.json")
+    # Belarus's imports from Russia: its own 2002-2021 history gives an error band about half as wide as the generic
+    # one (belarus.json, round 5); its exports to Russia keep the generic band, which rests on far more errors
+    cf["countries"].setdefault("BLR", {})["to_rus"] = load(GAPS / "belarus.json")["countries"]["BLR"]["counterfactual"][
+        "to_rus"
+    ]
     sid = src.add(
         "counterfactual",
         "Expected trade without the war: models back-tested on 2008, 2013 and 2016 against holding 2021 flat (UN Comtrade, World Bank WDI and commodity prices, UN voting)",
@@ -2101,6 +2106,9 @@ def apply_reexports(countries: dict[str, dict], src: Sources, note) -> None:
     """Goods re-exported to Russia by trade hubs count for the countries that made them; Russian goods the hubs pass on
     (mostly gold and diamonds) count for the final buyer. The hub keeps only its trading margin."""
     rx = load(GAPS / "reexports.json")
+    # Belarus: goods from China, the EU and Türkiye sold on to Russia inside its official exports (belarus.json, round 5)
+    blr = load(GAPS / "belarus.json")["countries"]["BLR"]["reexports"]
+    rx["hubs"]["BLR"] = {k: blr[k] for k in ("reexports_to_RUS", "reexports_to_RUS_baseline_2019_2021", "origin_shares", "origin_other_detail", "hub_margin_share", "certainty") if k in blr}  # fmt: skip
     # UAE 2024-2026: larger re-exports to Russia and more Russian gold passed on, matching its customs totals (round4b)
     are = rx["hubs"].get("ARE")
     if are:

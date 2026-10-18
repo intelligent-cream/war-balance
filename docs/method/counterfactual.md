@@ -185,6 +185,15 @@ Typical 2026 interval widths (median high/low, flows of at least EUR 10 m):
 
 A no-war 2022–2026 with a Russian recession or boom would fall outside many intervals. This is listed in [limitations.md](../limitations.md).
 
+### Belarus (round 5)
+
+Belarus's imports from Russia (about EUR 18bn a year, a third crude and gas on negotiated terms) are much steadier
+than the average partner's: its own 2002–2021 history gives a random-walk error of 0.11 against 0.17–0.28 for large
+flows in the generic test. Its 90% band for 2026 is ×0.72–1.44 instead of ×0.47–1.91 (central still 1.00; a model on
+Belarus's GDP failed the 2013 test with forecasts available at the time). Its exports to Russia keep the generic band,
+which rests on far more errors. Belarus's range narrows from −79% to +51% of GDP to −58% to +19%; it still crosses
+zero. [`belarus.json`](../../research/2026-10/gaps/belarus.json) ([notes](../../research/2026-10/gaps/belarus-notes.md)).
+
 ### Deliberate choices
 
 - **Actual figures as inputs.** The models use each country's actual 2022–2026 GDP and trade with others, although the war affected them too. The map asks how far a country went out of its way: if its economy shrank because of the war, it would have traded less with Russia anyway, and that is not a choice to credit or blame. (Decided in round 5; pre-war forecasts were considered and rejected.)

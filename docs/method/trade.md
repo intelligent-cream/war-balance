@@ -51,6 +51,16 @@ Goods made in China or the EU and sold on to Russia through Armenia or the UAE s
 
 Hubs are labelled on the map (`hub` field). Their trade keeps the 2021 level as the counterfactual ([counterfactual.md](counterfactual.md#6-which-model-is-used-for-which-flow)). **Not yet moved**: Belarus's re-exports to Russia (goods from China, Turkey and the EU inside its official exports, EUR 0.3–1.9bn a year by `round4b.json`), see [limitations.md](../limitations.md).
 
+### Belarus (round 5)
+
+Belarus and Russia stopped publishing trade by product in 2022, so Belarus's re-exports to Russia are estimated from
+what partners report shipping to Belarus ([`belarus.json`](../../research/2026-10/gaps/belarus.json),
+[notes](../../research/2026-10/gaps/belarus-notes.md)): EU used cars in 2022–23 (German, Polish and Lithuanian car
+exports to Belarus rose from USD 0.36bn in 2021 to 2.53bn in 2023, then fell after Lithuania's 2024 ban), machinery and
+electronics from China, Türkiye and the UAE, net of what only replaced lost EU supplies. EUR 0.6 / 1.7 / 1.2 / 0.8 / 0.6bn
+in 2022–2026 against 0.25bn a year before the war, moved to the makers (China 45%, Germany 16%, Poland 15%, Lithuania
+11%, Türkiye 7%) with a 10% margin kept. Chinese car kits assembled at BelGee are processing and stay Belarusian.
+
 ## Baltic and Finnish pass-through
 
 Before the war much of the Baltic states' trade with Russia was transit: Estonia's oil entrepôt at Muuga, Latvian steel, Lithuanian re-exports (85–90% of its sales to Russia). Counting that as "given up" made Lithuania +45% of GDP. [build_data.py `baltic_transit()`](../../pipeline/build_data.py), from [`audit2.json`](../../research/2026-10/gaps/audit2.json) question 6:

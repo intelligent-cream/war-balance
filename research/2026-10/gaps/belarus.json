@@ -1,0 +1,803 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "Two Belarus-specific additions. (1) reexports: goods made elsewhere (China, Germany, Poland, Lithuania, Turkey and others) that Belarus imported and sold on to Russia INSIDE its recorded exports to Russia, in the same structure as a hub entry of reexports.json. (2) counterfactual: Belarus-specific no-war multipliers vs 2021 for Belarus's imports from Russia (to_rus) and exports to Russia (from_rus), in the per-country structure of counterfactual.json, back-tested on Belarus's own 2002-2021 history.",
+  "units": "EUR bn, nominal, ECB yearly average USD/EUR (2021 1.183, 2022 1.053, 2023 1.081, 2024 1.082, 2025 1.13, 2026 Jan-Aug 1.16). 2026 = January-August, not annualised (re-exports). Counterfactual multipliers are real (the map's own deflators), relative to 2021, 2026 as an annual rate, like counterfactual.json.",
+  "method": "Re-exports: per HS chapter group, the increase over 2019-2021 in partners' reported exports to Belarus (net of falling supplies from other partners in the same group, i.e. after substitution for Belarus's own use) times a pass-on share per group (EU cars 0.7 x recorded share 0.5; Chinese cars 0.15 because most are BelGee assembly kits and Belarusian retail; machinery/electronics/instruments 0.45; other manufactures 0.25). The cap (increase in Belarus's exports to Russia, +EUR 8-10bn a year) never binds. Counterfactual: rolling-origin back-test (origins 2007-2020, 1-5 years ahead, 60 errors per flow) of random walk, 3-year average, trends, GDP-, oil- and pooled linear models on Belarus-only data; decision rule of counterfactual.json; intervals from the random walk's Belarus-only errors scaled by sqrt(h), widened halfway to the block-bootstrap 10%/90% bounds of the quantiles.",
+  "how_to_apply": "Re-exports: for each year move reexports_to_RUS x (1 - hub_margin_share) from Belarus's exports to Russia (from_rus) to the origin countries by origin_shares (better: origin_shares_by_year, the mix shifts from EU cars in 2022-23 to China in 2025); subtract reexports_to_RUS_baseline_2019_2021 in the same way for the change view. This REPLACES round4b.json belarus.residual_allocation.components.recorded_reexports_in_official_exports and the matching part of belarus_from_rus_change_central. reexports_unrecorded_car_transit is NOT inside Belarus's recorded exports and must not be subtracted from Belarus; it is optional extra sales to Russia for the origin countries. Counterfactual: replace counterfactual.json countries.BLR.to_rus and .from_rus multiplier_vs_2021 by the ones below (method stays a held-2021 'rw' type)."
+ },
+ "countries": {
+  "BLR": {
+   "reexports": {
+    "reexports_to_RUS": {
+     "2022": {
+      "low": 0.211,
+      "central": 0.573,
+      "high": 1.065
+     },
+     "2023": {
+      "low": 0.731,
+      "central": 1.747,
+      "high": 3.102
+     },
+     "2024": {
+      "low": 0.509,
+      "central": 1.218,
+      "high": 2.191
+     },
+     "2025": {
+      "low": 0.331,
+      "central": 0.789,
+      "high": 1.57
+     },
+     "2026_JanAug": {
+      "low": 0.132,
+      "central": 0.554,
+      "high": 1.543
+     }
+    },
+    "reexports_to_RUS_baseline_2019_2021": {
+     "low": 0.1,
+     "central": 0.25,
+     "high": 0.5
+    },
+    "reexport_share_of_exports_to_RUS": {
+     "2022": {
+      "low": 0.009,
+      "central": 0.026,
+      "high": 0.048
+     },
+     "2023": {
+      "low": 0.032,
+      "central": 0.076,
+      "high": 0.134
+     },
+     "2024": {
+      "low": 0.021,
+      "central": 0.05,
+      "high": 0.09
+     },
+     "2025": {
+      "low": 0.014,
+      "central": 0.033,
+      "high": 0.066
+     }
+    },
+    "reexports_to_RUS_components_central": {
+     "2022": {
+      "eu_cars": 0.397,
+      "chn_cars": 0.018,
+      "machinery_electronics": 0.0,
+      "other_manufactures": 0.158
+     },
+     "2023": {
+      "eu_cars": 0.73,
+      "chn_cars": 0.18,
+      "machinery_electronics": 0.483,
+      "other_manufactures": 0.355
+     },
+     "2024": {
+      "eu_cars": 0.363,
+      "chn_cars": 0.231,
+      "machinery_electronics": 0.338,
+      "other_manufactures": 0.286
+     },
+     "2025": {
+      "eu_cars": 0.041,
+      "chn_cars": 0.233,
+      "machinery_electronics": 0.421,
+      "other_manufactures": 0.094
+     }
+    },
+    "reexports_unrecorded_car_transit": {
+     "2022": {
+      "low": 0.113,
+      "central": 0.397,
+      "high": 0.722
+     },
+     "2023": {
+      "low": 0.208,
+      "central": 0.73,
+      "high": 1.329
+     },
+     "2024": {
+      "low": 0.104,
+      "central": 0.363,
+      "high": 0.661
+     },
+     "2025": {
+      "low": 0.012,
+      "central": 0.041,
+      "high": 0.5
+     },
+     "2026_JanAug": {
+      "low": 0.0,
+      "central": 0.027,
+      "high": 0.374
+     }
+    },
+    "origin_shares": {
+     "CHN": {
+      "low": 0.115,
+      "central": 0.452,
+      "high": 0.94
+     },
+     "DEU": {
+      "low": 0.0,
+      "central": 0.16,
+      "high": 0.357
+     },
+     "POL": {
+      "low": 0.028,
+      "central": 0.146,
+      "high": 0.221
+     },
+     "LTU": {
+      "low": 0.013,
+      "central": 0.11,
+      "high": 0.345
+     },
+     "TUR": {
+      "low": 0.034,
+      "central": 0.072,
+      "high": 0.098
+     },
+     "ARE": {
+      "low": 0.0,
+      "central": 0.024,
+      "high": 0.068
+     },
+     "ITA": {
+      "low": 0.0,
+      "central": 0.006,
+      "high": 0.018
+     },
+     "other": {
+      "low": 0.018,
+      "central": 0.03,
+      "high": 0.105
+     }
+    },
+    "origin_other_detail": {
+     "ARM": 0.361,
+     "KAZ": 0.346,
+     "UZB": 0.173,
+     "KOR": 0.08,
+     "VNM": 0.034,
+     "JPN": 0.006
+    },
+    "origin_shares_by_year": {
+     "2022": {
+      "DEU": 0.31,
+      "POL": 0.192,
+      "LTU": 0.3,
+      "ITA": 0.0,
+      "CHN": 0.144,
+      "TUR": 0.042,
+      "ARE": 0.0,
+      "KAZ": 0.004,
+      "ARM": 0.003,
+      "UZB": 0.004,
+      "VNM": 0.001
+     },
+     "2023": {
+      "DEU": 0.183,
+      "POL": 0.18,
+      "LTU": 0.129,
+      "ITA": 0.004,
+      "CHN": 0.347,
+      "TUR": 0.068,
+      "ARE": 0.059,
+      "KAZ": 0.01,
+      "ARM": 0.008,
+      "UZB": 0.006,
+      "KOR": 0.002,
+      "VNM": 0.002,
+      "JPN": 0.0
+     },
+     "2024": {
+      "DEU": 0.16,
+      "POL": 0.148,
+      "LTU": 0.052,
+      "ITA": 0.016,
+      "CHN": 0.509,
+      "TUR": 0.085,
+      "KAZ": 0.009,
+      "ARM": 0.011,
+      "UZB": 0.008,
+      "KOR": 0.003
+     },
+     "2025": {
+      "DEU": 0.0,
+      "POL": 0.035,
+      "LTU": 0.017,
+      "ITA": 0.0,
+      "CHN": 0.817,
+      "TUR": 0.085,
+      "KAZ": 0.019,
+      "ARM": 0.023,
+      "KOR": 0.004
+     }
+    },
+    "processing_not_counted": {
+     "belgee_kits_central_eur_bn": {
+      "2022": 0.05,
+      "2023": 0.75,
+      "2024": 1.0,
+      "2025": 0.95,
+      "2026_JanAug": 0.6
+     },
+     "why": "Most of China's jump in HS 8703 exports to Belarus (USD 0.30bn in 2021 to 1.50/1.87/1.80bn in 2023-2025) matches BelGee's assembly of Geely cars from Chinese kits (about 60,000 cars in 2023 and over 90,000 in 2024, 70-80% sold to Russia). Assembly is processing, so these exports stay Belarusian, as in reexports.json. Rough value of kits in cars sold to Russia: 60-75% of the 8703 increase x 70-80% exported. Shown for information; the high bound of reexports_to_RUS covers about a third of it."
+    },
+    "inputs_usd_bn": {
+     "2022": {
+      "eu_cars_increase_8703": 1.193,
+      "eu_cars_by_exporter": {
+       "DEU": 0.534,
+       "POL": 0.212,
+       "LTU": 0.447,
+       "ITA": 0.0
+      },
+      "china_cars_increase_8703": 0.126,
+      "machinery_electronics_net_increase_84_85_90": 0,
+      "other_manufactures_net_increase": 0.666
+     },
+     "2023": {
+      "eu_cars_increase_8703": 2.253,
+      "eu_cars_by_exporter": {
+       "DEU": 0.988,
+       "POL": 0.681,
+       "LTU": 0.578,
+       "ITA": 0.006
+      },
+      "china_cars_increase_8703": 1.296,
+      "machinery_electronics_net_increase_84_85_90": 1.161,
+      "other_manufactures_net_increase": 1.533
+     },
+     "2024": {
+      "eu_cars_increase_8703": 1.122,
+      "eu_cars_by_exporter": {
+       "DEU": 0.601,
+       "POL": 0.351,
+       "LTU": 0.162,
+       "ITA": 0.008
+      },
+      "china_cars_increase_8703": 1.669,
+      "machinery_electronics_net_increase_84_85_90": 0.813,
+      "other_manufactures_net_increase": 1.239
+     },
+     "2025": {
+      "eu_cars_increase_8703": 0.12,
+      "eu_cars_by_exporter": {
+       "DEU": 0,
+       "POL": 0.082,
+       "LTU": 0.039,
+       "ITA": 0
+      },
+      "china_cars_increase_8703": 1.594,
+      "machinery_electronics_net_increase_84_85_90": 0.961,
+      "other_manufactures_net_increase": 0.387
+     }
+    },
+    "pass_on_shares": {
+     "eu_cars_to_russia": {
+      "low": 0.5,
+      "central": 0.7,
+      "high": 0.85
+     },
+     "eu_cars_recorded_in_belarus_exports": {
+      "low": 0.25,
+      "central": 0.5,
+      "high": 0.8
+     },
+     "china_cars": {
+      "low": 0.05,
+      "central": 0.15,
+      "high": 0.35
+     },
+     "machinery_electronics": {
+      "low": 0.25,
+      "central": 0.45,
+      "high": 0.65
+     },
+     "other_manufactures": {
+      "low": 0.1,
+      "central": 0.25,
+      "high": 0.4
+     },
+     "coverage_uplift_2025": {
+      "low": 1.0,
+      "central": 1.1,
+      "high": 1.25
+     }
+    },
+    "hub_margin_share": {
+     "low": 0.05,
+     "central": 0.1,
+     "high": 0.2,
+     "reasoning": "Same educated guess as reexports.json and residual.json: wholesale gross margins of 5-20% of sales; pass-through dealers at the low end, intermediaries taking sanctions risk (luxury cars, dual-use electronics) at the high end. No direct source."
+    },
+    "certainty": "C",
+    "certainty_by_year": {
+     "2022": "C",
+     "2023": "C",
+     "2024": "C",
+     "2025": "D",
+     "2026_JanAug": "D"
+    },
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API: exports to Belarus (partner 112) by HS2 of CHN, TUR, POL, LTU, DEU, ARE, KAZ, ITA, ARM, UZB, KOR, JPN, USA, VNM, IND, 2019-2025",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode={156,792,616,440,276,784,398,380,51,860,410,392,842,704,356}&period={2019..2025}&partnerCode=112&flowCode=X&cmdCode=AG2",
+      "date": "2026-10-18"
+     },
+     {
+      "name": "UN Comtrade public preview API: the same partners (CHN, DEU, POL, LTU, TUR), selected HS4 lines in chapters 84, 85, 87, 90 (8703 cars etc.), 2021-2025",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode={156,276,616,440,792}&period={2021..2025}&partnerCode=112&flowCode=X&cmdCode=8703,8704,8708,8471,8517,8528,...",
+      "date": "2026-10-18"
+     },
+     {
+      "name": "UN Comtrade public preview API: Belarus exports to Russia, Russia imports from Belarus and Belarus imports from world by HS2, 2017-2021 (pre-war baseline)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=112|643&period={2017..2021}&partnerCode=643|112|0&cmdCode=AG2",
+      "date": "2026-10-18"
+     },
+     {
+      "name": "UN Comtrade partner totals to Belarus 2019-2025 (all reporters), as used in round4b.json",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=all&partnerCode=112&flowCode=X&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     },
+     {
+      "name": "Avtostat via Nasha Niva / Telegraf.news: 17.1 thousand new and 19.1 thousand used cars imported from Belarus to Russia in 2025",
+      "url": "https://nashaniva.com/en/388158",
+      "date": "2026-02-14"
+     },
+     {
+      "name": "Avtostat (S. Tselikov) via autonews.ru / alta.ru: used cars into Russia via Belarus 45.4 thousand (2023), 45.9 thousand (2024); 16.4 thousand cars in Jan-Aug 2026",
+      "url": "https://www.autonews.ru/news/693aab0d9a79472bebd6701b",
+      "date": "2025-12-11"
+     },
+     {
+      "name": "Interfax: shipments of Geely cars from the Belarusian BelGee plant to Russia exceed 45,000 units in 2023 (plant output ~60,000, ~80% to Russia)",
+      "url": "https://interfax.com/newsroom/top-stories/96780/",
+      "date": "2024 (exact day not checked)"
+     },
+     {
+      "name": "www1.ru: most Geely and BelGee cars were sold in Russia in 2024 (plant output >90,000, ~25,000 sold in Belarus)",
+      "url": "https://www1.ru/news/2025/01/08/bolsinstvo-avtomobilei-geely-i-belgee-byli-prodany-v-2024-godu-v-rossii-a-ne-v-belorussii.html",
+      "date": "2025-01-08"
+     },
+     {
+      "name": "Pozirk citing the Belarusian Automobile Association: 14,843 new cars sold in Belarus in 2022 (Geely 4,355); 4,574 in Jan-Apr 2023",
+      "url": "https://pozirk.online/en/news/46736",
+      "date": "2023-05-05"
+     },
+     {
+      "name": "Kyiv Independent (FT): EU seeks to stop Russian imports of Western luxury cars via Belarus",
+      "url": "https://kyivindependent.com/ft-eu-seeks-to-stop-russian-imports-of-western-luxury-cars-via-belarus/",
+      "date": "2024"
+     },
+     {
+      "name": "LRT: Lithuanian railway (LTG Cargo) detects possible sanctions-evasion scheme for luxury cars to Russia (447 shipments reviewed)",
+      "url": "https://www.lrt.lt/en/news-in-english/19/2118281/lithuanian-railway-co-detects-possible-sanctions-evasion-scheme-to-ship-luxury-cars-to-russia",
+      "date": "2023-11-07"
+     },
+     {
+      "name": "LRT: Lithuania's customs uncovers sanction-evasion scheme for car exports to Russia",
+      "url": "https://www.lrt.lt/en/news-in-english/19/2307628/lithuania-s-customs-uncovers-sanction-evasion-scheme-for-car-exports-to-russia",
+      "date": "2024-06-28"
+     },
+     {
+      "name": "Buro media citing Corisk: Belarus over a third of 'shadow exports' to Russia, more than EUR 10bn in 2022-2023 (method not published; treated as an upper anchor only)",
+      "url": "https://buromedia.io/en/news/eksperty-cherez-belarus-prokhodit-tret-ot-tenevogo-eksporta-v-rossiyu",
+      "date": "2024-02-26"
+     },
+     {
+      "name": "Mayer Brown: EU extends anti-circumvention sanctions to Belarus (14th package, CHPL risk assessments from 2 Jan 2025)",
+      "url": "https://www.mayerbrown.com/en/insights/publications/2024/07/eu-extends-sanctions-against-belarus-to-fight-circumvention",
+      "date": "2024-07-01"
+     },
+     {
+      "name": "OSW Commentary 533: Russia's increased role in the Belarusian economy (China second partner; Western embargoes on machinery and microelectronics)",
+      "url": "https://osw.waw.pl/en/publikacje/osw-commentary/2023-08-18/towards-a-dependence-no-alternative-russias-increased-role",
+      "date": "2023-08-18"
+     },
+     {
+      "name": "OEC: Belarus car imports 2023 (China USD 1.5bn, Germany 1.1bn, Lithuania 0.73bn, Poland 0.70bn)",
+      "url": "https://oec.world/profile/bilateral-product/cars/reporter/blr",
+      "date": "2026-10-18"
+     }
+    ],
+    "reasoning": "Belarus no longer publishes trade by partner or product, and Russia's customs stopped too, so Belarus's exports to Russia cannot be split by product after 2021. The estimate therefore works from the supply side: what partners say they shipped to Belarus. Cars are the clearest channel: German, Polish and Lithuanian car exports to Belarus (HS 8703) went from USD 0.36bn in 2021 to 1.48bn (2022), 2.53bn (2023) and 1.40bn (2024), then fell to 0.36bn in 2025 after Lithuania's March 2024 ban on cars over 1.9 litres and the EU's 14th package; Belarus's own new-car market was only 15,000 cars in 2022 while Avtostat counts about 45,000 used cars a year entering Russia via Belarus in 2023-2024. Much of this moves through individuals registered in Belarus, so only part of it is inside Belarus's recorded exports (central 50%). China's exports to Belarus rose from USD 2.7bn (2021) to 7.2bn (2025); a third of the increase is cars, mostly BelGee kits and Belarusian retail, the rest machinery and electronics that partly replaced lost EU supplies for Belarus's own industry (EU machinery to Belarus fell by about USD 1.0-1.2bn a year) and partly went on to Russia. Turkey's HS84/85 exports to Belarus rose by USD 0.3-0.4bn; the UAE shipped USD 0.5bn of electronics (HS85) in 2023 only. The result, EUR 0.6/1.7/1.2/0.8bn in 2022-2025, is 2-7% of Belarus's exports to Russia, far below the Corisk claim of EUR 10bn+ over 2022-2023 (no method published; Belarus's total imports from non-Russian partners rose by only about USD 4.5bn by 2023, which caps any re-export story)."
+   },
+   "counterfactual": {
+    "to_rus": {
+     "level_2021": {
+      "low": 17.954,
+      "central": 18.909,
+      "high": 19.889
+     },
+     "multiplier_vs_2021": {
+      "2022": {
+       "low": 0.864,
+       "central": 1.0,
+       "high": 1.178
+      },
+      "2023": {
+       "low": 0.813,
+       "central": 1.0,
+       "high": 1.261
+      },
+      "2024": {
+       "low": 0.776,
+       "central": 1.0,
+       "high": 1.328
+      },
+      "2025": {
+       "low": 0.746,
+       "central": 1.0,
+       "high": 1.388
+      },
+      "2026": {
+       "low": 0.72,
+       "central": 1.0,
+       "high": 1.443
+      }
+     },
+     "generic_multiplier_vs_2021_replaced": {
+      "2022": {
+       "low": 0.704,
+       "central": 1.0,
+       "high": 1.348
+      },
+      "2023": {
+       "low": 0.612,
+       "central": 1.0,
+       "high": 1.517
+      },
+      "2024": {
+       "low": 0.55,
+       "central": 1.0,
+       "high": 1.661
+      },
+      "2025": {
+       "low": 0.503,
+       "central": 1.0,
+       "high": 1.791
+      },
+      "2026": {
+       "low": 0.465,
+       "central": 1.0,
+       "high": 1.914
+      }
+     },
+     "method": "2021 level held (random walk), Belarus-specific interval: no model beat holding 2021 once only pre-war (IMF WEO October 2021) inputs are allowed; the interval is the 5th-95th percentile of Belarus's own random-walk errors 1-5 years ahead (rolling origins 2007-2020, 60 errors, all years kept), scaled by sqrt(h/3) and widened halfway to the block-bootstrap bounds",
+     "size_class": "L",
+     "certainty": "C"
+    },
+    "from_rus": {
+     "level_2021": {
+      "low": 13.43,
+      "central": 13.846,
+      "high": 14.261
+     },
+     "multiplier_vs_2021": {
+      "2022": {
+       "low": 0.783,
+       "central": 1.0,
+       "high": 1.553
+      },
+      "2023": {
+       "low": 0.708,
+       "central": 1.0,
+       "high": 1.863
+      },
+      "2024": {
+       "low": 0.655,
+       "central": 1.0,
+       "high": 2.143
+      },
+      "2025": {
+       "low": 0.614,
+       "central": 1.0,
+       "high": 2.411
+      },
+      "2026": {
+       "low": 0.579,
+       "central": 1.0,
+       "high": 2.674
+      }
+     },
+     "generic_multiplier_vs_2021_replaced": {
+      "2022": {
+       "low": 0.717,
+       "central": 1.0,
+       "high": 1.331
+      },
+      "2023": {
+       "low": 0.628,
+       "central": 1.0,
+       "high": 1.491
+      },
+      "2024": {
+       "low": 0.568,
+       "central": 1.0,
+       "high": 1.626
+      },
+      "2025": {
+       "low": 0.522,
+       "central": 1.0,
+       "high": 1.748
+      },
+      "2026": {
+       "low": 0.484,
+       "central": 1.0,
+       "high": 1.862
+      }
+     },
+     "method": "2021 level held (random walk), Belarus-specific interval as for to_rus. NOT narrower than the generic one: the lower bound is higher (Belarus's sales to Russia rarely fell far outside 2009 and 2015) but the upper bound is higher too (the 2010-2013 Customs Union and devaluation boom)",
+     "size_class": "L",
+     "certainty": "C"
+    },
+    "backtest_belarus_only": {
+     "unit": "median absolute log error of the real flow, 1-5 years ahead",
+     "to_rus": {
+      "rolling_2007_2020_all_years": {
+       "rw": 0.108,
+       "avg3": 0.089,
+       "trend5": 0.163,
+       "trend5_damped": 0.119,
+       "gdp_blr": 0.09,
+       "gdp_rus": 0.1,
+       "oil_fit": 0.095,
+       "lin_fit": 0.088
+      },
+      "T2008": {
+       "rw": 0.138,
+       "gdp_blr": 0.055,
+       "gdp_blr_with_WEO_2008_forecast": 0.076,
+       "lin_fit": 0.052
+      },
+      "T2013": {
+       "rw": 0.175,
+       "gdp_blr": 0.163,
+       "gdp_blr_with_WEO_2012_forecast": 0.216,
+       "lin_fit": 0.077
+      },
+      "T2016": {
+       "rw": 0.193,
+       "gdp_blr": 0.153,
+       "lin_fit": 0.116
+      },
+      "generic_large_flows_rw": {
+       "T2008": 0.17,
+       "T2013": 0.17,
+       "T2016": 0.2
+      }
+     },
+     "from_rus": {
+      "rolling_2007_2020_all_years": {
+       "rw": 0.172,
+       "avg3": 0.153,
+       "trend5": 0.226,
+       "gdp_blr": 0.142,
+       "gdp_rus": 0.153,
+       "oil_fit": 0.196,
+       "lin_fit": 0.16,
+       "imp_rus_not_eligible": 0.091
+      },
+      "T2008": {
+       "rw": 0.283,
+       "gdp_blr": 0.187,
+       "gdp_blr_with_WEO_2008_forecast": 0.165
+      },
+      "T2013": {
+       "rw": 0.14,
+       "gdp_blr": 0.126,
+       "gdp_blr_with_WEO_2012_forecast": 0.331
+      },
+      "T2016": {
+       "rw": 0.136,
+       "gdp_blr": 0.086
+      },
+      "generic_large_flows_rw": {
+       "T2008": 0.22,
+       "T2013": 0.28,
+       "T2016": 0.22
+      }
+     },
+     "scaled_error_quantiles_h3": {
+      "to_rus": {
+       "point_all_years": [
+        -0.208,
+        0.266
+       ],
+       "point_excl_2014_15_2020": [
+        -0.192,
+        0.286
+       ],
+       "bootstrap_conservative": [
+        -0.3,
+        0.302
+       ],
+       "used": [
+        -0.254,
+        0.284
+       ]
+      },
+      "from_rus": {
+       "point_all_years": [
+        -0.358,
+        0.679
+       ],
+       "point_excl_2014_15_2020": [
+        -0.318,
+        0.778
+       ],
+       "bootstrap_conservative": [
+        -0.487,
+        0.844
+       ],
+       "used": [
+        -0.423,
+        0.762
+       ]
+      }
+     },
+     "decision": "Random walk for both flows. With realised predictors the Belarus GDP model gains 7-60% (to_rus) and 10-37% (from_rus) by test and passes the rule, but with the IMF forecast that was actually available at the origin it loses to the random walk in the 2013 test (0.216 vs 0.175; 0.331 vs 0.140), so it is not used. The pre-war WEO path (Belarus +0.5% to +1.3% a year) would only move the central by +0.5% (2022) to +5.4% (2026).",
+     "realised_real_multiplier_in_map": {
+      "to_rus": [
+       0.916,
+       0.996,
+       1.039,
+       1.099,
+       1.099
+      ],
+      "from_rus": [
+       1.437,
+       1.491,
+       1.58,
+       1.552,
+       1.682
+      ]
+     }
+    },
+    "sources": [
+     {
+      "name": "Belarus-Russia goods series 2002-2021 in EUR and the map's deflators (UN Comtrade own report with mirror repair; fuel-mix index for imports from Russia, non-fuel goods index for exports), as built for counterfactual.json/trend3.json",
+      "url": "research/2026-10/gaps/counterfactual.json",
+      "date": "2026-10-18"
+     },
+     {
+      "name": "UN Comtrade public preview API: Belarus and Russia annual TOTAL and HS27 trade with each other and the world, 2003-2021 (cross-check of levels)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=112,643&partnerCode=0,643,112&cmdCode=TOTAL,27",
+      "date": "2026-10-18"
+     },
+     {
+      "name": "World Bank WDI: real GDP of Belarus and Russia (NY.GDP.MKTP.KD), real imports (NE.IMP.GNFS.KD)",
+      "url": "https://api.worldbank.org/v2/country/BLR;RUS/indicator/NY.GDP.MKTP.KD",
+      "date": "2026-10-18"
+     },
+     {
+      "name": "World Bank Pink Sheet annual crude oil price (EUR) and the IMF WEO October 2021 pre-war oil path",
+      "url": "https://www.worldbank.org/en/research/commodity-markets",
+      "date": "2026-10-18"
+     },
+     {
+      "name": "IMF World Economic Outlook vintages April 2008, October 2012, October 2021: real GDP growth forecasts for Belarus and Russia (via DBnomics)",
+      "url": "https://db.nomics.world/IMF/WEO:2021-10",
+      "date": "2026-10-18"
+     }
+    ]
+   }
+  }
+ },
+ "sources": [
+  {
+   "name": "UN Comtrade public preview API: exports to Belarus (partner 112) by HS2 of CHN, TUR, POL, LTU, DEU, ARE, KAZ, ITA, ARM, UZB, KOR, JPN, USA, VNM, IND, 2019-2025",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode={156,792,616,440,276,784,398,380,51,860,410,392,842,704,356}&period={2019..2025}&partnerCode=112&flowCode=X&cmdCode=AG2",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "UN Comtrade public preview API: the same partners (CHN, DEU, POL, LTU, TUR), selected HS4 lines in chapters 84, 85, 87, 90 (8703 cars etc.), 2021-2025",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode={156,276,616,440,792}&period={2021..2025}&partnerCode=112&flowCode=X&cmdCode=8703,8704,8708,8471,8517,8528,...",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "UN Comtrade public preview API: Belarus exports to Russia, Russia imports from Belarus and Belarus imports from world by HS2, 2017-2021 (pre-war baseline)",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=112|643&period={2017..2021}&partnerCode=643|112|0&cmdCode=AG2",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "UN Comtrade partner totals to Belarus 2019-2025 (all reporters), as used in round4b.json",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=all&partnerCode=112&flowCode=X&cmdCode=TOTAL",
+   "date": "2026-10-17"
+  },
+  {
+   "name": "Avtostat via Nasha Niva / Telegraf.news: 17.1 thousand new and 19.1 thousand used cars imported from Belarus to Russia in 2025",
+   "url": "https://nashaniva.com/en/388158",
+   "date": "2026-02-14"
+  },
+  {
+   "name": "Avtostat (S. Tselikov) via autonews.ru / alta.ru: used cars into Russia via Belarus 45.4 thousand (2023), 45.9 thousand (2024); 16.4 thousand cars in Jan-Aug 2026",
+   "url": "https://www.autonews.ru/news/693aab0d9a79472bebd6701b",
+   "date": "2025-12-11"
+  },
+  {
+   "name": "Interfax: shipments of Geely cars from the Belarusian BelGee plant to Russia exceed 45,000 units in 2023 (plant output ~60,000, ~80% to Russia)",
+   "url": "https://interfax.com/newsroom/top-stories/96780/",
+   "date": "2024 (exact day not checked)"
+  },
+  {
+   "name": "www1.ru: most Geely and BelGee cars were sold in Russia in 2024 (plant output >90,000, ~25,000 sold in Belarus)",
+   "url": "https://www1.ru/news/2025/01/08/bolsinstvo-avtomobilei-geely-i-belgee-byli-prodany-v-2024-godu-v-rossii-a-ne-v-belorussii.html",
+   "date": "2025-01-08"
+  },
+  {
+   "name": "Pozirk citing the Belarusian Automobile Association: 14,843 new cars sold in Belarus in 2022 (Geely 4,355); 4,574 in Jan-Apr 2023",
+   "url": "https://pozirk.online/en/news/46736",
+   "date": "2023-05-05"
+  },
+  {
+   "name": "Kyiv Independent (FT): EU seeks to stop Russian imports of Western luxury cars via Belarus",
+   "url": "https://kyivindependent.com/ft-eu-seeks-to-stop-russian-imports-of-western-luxury-cars-via-belarus/",
+   "date": "2024"
+  },
+  {
+   "name": "LRT: Lithuanian railway (LTG Cargo) detects possible sanctions-evasion scheme for luxury cars to Russia (447 shipments reviewed)",
+   "url": "https://www.lrt.lt/en/news-in-english/19/2118281/lithuanian-railway-co-detects-possible-sanctions-evasion-scheme-to-ship-luxury-cars-to-russia",
+   "date": "2023-11-07"
+  },
+  {
+   "name": "LRT: Lithuania's customs uncovers sanction-evasion scheme for car exports to Russia",
+   "url": "https://www.lrt.lt/en/news-in-english/19/2307628/lithuania-s-customs-uncovers-sanction-evasion-scheme-for-car-exports-to-russia",
+   "date": "2024-06-28"
+  },
+  {
+   "name": "Buro media citing Corisk: Belarus over a third of 'shadow exports' to Russia, more than EUR 10bn in 2022-2023 (method not published; treated as an upper anchor only)",
+   "url": "https://buromedia.io/en/news/eksperty-cherez-belarus-prokhodit-tret-ot-tenevogo-eksporta-v-rossiyu",
+   "date": "2024-02-26"
+  },
+  {
+   "name": "Mayer Brown: EU extends anti-circumvention sanctions to Belarus (14th package, CHPL risk assessments from 2 Jan 2025)",
+   "url": "https://www.mayerbrown.com/en/insights/publications/2024/07/eu-extends-sanctions-against-belarus-to-fight-circumvention",
+   "date": "2024-07-01"
+  },
+  {
+   "name": "OSW Commentary 533: Russia's increased role in the Belarusian economy (China second partner; Western embargoes on machinery and microelectronics)",
+   "url": "https://osw.waw.pl/en/publikacje/osw-commentary/2023-08-18/towards-a-dependence-no-alternative-russias-increased-role",
+   "date": "2023-08-18"
+  },
+  {
+   "name": "OEC: Belarus car imports 2023 (China USD 1.5bn, Germany 1.1bn, Lithuania 0.73bn, Poland 0.70bn)",
+   "url": "https://oec.world/profile/bilateral-product/cars/reporter/blr",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "Belarus-Russia goods series 2002-2021 in EUR and the map's deflators (UN Comtrade own report with mirror repair; fuel-mix index for imports from Russia, non-fuel goods index for exports), as built for counterfactual.json/trend3.json",
+   "url": "research/2026-10/gaps/counterfactual.json",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "UN Comtrade public preview API: Belarus and Russia annual TOTAL and HS27 trade with each other and the world, 2003-2021 (cross-check of levels)",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=112,643&partnerCode=0,643,112&cmdCode=TOTAL,27",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "World Bank WDI: real GDP of Belarus and Russia (NY.GDP.MKTP.KD), real imports (NE.IMP.GNFS.KD)",
+   "url": "https://api.worldbank.org/v2/country/BLR;RUS/indicator/NY.GDP.MKTP.KD",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "World Bank Pink Sheet annual crude oil price (EUR) and the IMF WEO October 2021 pre-war oil path",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "IMF World Economic Outlook vintages April 2008, October 2012, October 2021: real GDP growth forecasts for Belarus and Russia (via DBnomics)",
+   "url": "https://db.nomics.world/IMF/WEO:2021-10",
+   "date": "2026-10-18"
+  }
+ ],
+ "overlaps": "(1) round4b.json belarus.residual_allocation.components.recorded_reexports_in_official_exports (EUR 0.30/1.72/1.81/1.94/1.42bn, China 86%) is the same flow: this file replaces it; do not apply both. round4b's belarus_from_rus_change_central bundles that re-export move with the removal of Belarus's pro-rata residual share; keep the residual part, swap the re-export part. (2) reexports.json has no Belarus hub entry, so no double counting; Belarus appears there only as a minor onward destination of Armenian gold (destination_other_detail), a different flow. (3) residual.json: Belarus's pro-rata residual share is already removed and re-spread (round4b, pipeline); the unrecorded car transit here is by construction outside both Belarus's recorded exports and partners' reported exports to Russia, so it can overlap with residual.json's pro-rata residual, which is spread over countries that already includes Germany, Poland, Lithuania and China; add it to origins only if the residual is not also raised for them, otherwise leave it out (it is small, EUR 0.4/0.7/0.4bn in 2022-2024). (4) The origin countries' exports to Belarus themselves are not counted anywhere in the map as Russia flows, so moving re-exports to origins adds new sales to Russia for them (counted at profit) without overlap. (5) BelGee kit processing is NOT counted (stays Belarusian). (6) Counterfactual: replaces counterfactual.json countries.BLR.to_rus/from_rus multipliers only; the other BLR flows (Ukraine, services) are unchanged. (7) Belarusian oil products sold via Russian ports (round4b imports_composition) are a different flow.",
+ "notes": "Re-export certainty C for 2022-2024 (partner customs data plus assumed pass-on shares), D for 2025 (partner coverage incomplete: UAE, Vietnam, Uzbekistan, India not yet reported) and 2026 (extrapolated from 2025 with Belarus's Jan-Aug 2026 exports to Russia). Origin attribution follows the exporter of record (a Lithuanian dealer's used German car counts as Lithuania), because Belarus's imports by country of origin are not published. Counterfactual: 14 rolling origins only, errors overlap, so the quantiles are uncertain; that is why they are widened halfway to bootstrap bounds. The intervals do not include a Belarus-Russia oil or gas dispute bigger than those of 2010 and 2020 (both in the sample)."
+}

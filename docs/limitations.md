@@ -6,8 +6,7 @@ The map is a research preview. Its figures were compiled with AI assistance from
 
 | issue | effect | where documented |
 |---|---|---|
-| **Belarus's range crosses zero** (−24% of GDP, likely range −76% to +49%). Its imports from Russia (about EUR 18bn a year) are held at the 2021 level, and the honest back-tested error of "2021 held flat" on a flow that large is very wide. It is left out of top lists. | Belarus | [counterfactual.md](method/counterfactual.md#9-effect-on-the-headline-numbers) |
-| **Belarus's re-exports to Russia are not moved to their origins.** Goods from China, Turkey and the EU inside its official exports (EUR 0.3–1.9bn a year) stay with Belarus. | Belarus slightly too far toward Russia; China slightly too little | [round4b-notes.md](../research/2026-10/gaps/round4b-notes.md) §3 |
+| **Belarus's range still crosses zero** (−24% of GDP, likely range −58% to +19%), narrower since round 5 with a Belarus-specific band for its imports from Russia. It is left out of top lists. | Belarus | [counterfactual.md](method/counterfactual.md#belarus-round-5) |
 | **2025–2026 partner data incomplete.** 121 reporters had 2025 annual data; 2026 is estimated from 2025 for many importers (marked `*`). | recent years | [ranges.md](method/ranges.md#2026-and-the--mark) |
 | **Laundered oil: two channels missing.** Brunei's Hengyi refinery (Russian crude, sold to Australia) and Russian fuel relabelled in Turkish ports without refineries (EUR 3.1–3.3bn a year to the EU, mostly Greece) are not counted. | Australia, Greece | [energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#per-country-values-for-the-eu-usa-uk-and-australia-round-5) |
 | **Shadow-fleet control** (who owns UAE-, Indian- and Chinese-managed tankers) is the biggest guess in shipping. | UAE, India, China, Greece | [shipping-notes.md](../research/2026-10/gaps/shipping-notes.md) |

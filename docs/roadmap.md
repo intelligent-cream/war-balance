@@ -9,8 +9,8 @@ changes. Status is updated as items are done; the [changelog](changelog.md) reco
 |---|---|---|---|
 | 1 | Ukraine's own arms purchases abroad (also with donor cash, e.g. Dutch money for US weapons, the Czech ammunition initiative) | the seller's profit counts as money flowing back | done ([aid-refugees-military.md](method/aid-refugees-military.md#arms-ukraine-bought-abroad-round-5)) |
 | 2 | Turkey's prices from Russian export data and tanker tracking | Turkey's payments to Russia and windfall | done ([energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#turkey-a-special-case)) |
-| 3 | Belarus's re-exports to Russia moved to the countries that made the goods | Belarus, China, Türkiye, EU | researching |
-| 4 | A Belarus-specific counterfactual tested on its own 2008–2021 history | Belarus's range | researching |
+| 3 | Belarus's re-exports to Russia moved to the countries that made the goods | Belarus, China, Türkiye, EU | done ([trade.md](method/trade.md#belarus-round-5)) |
+| 4 | A Belarus-specific counterfactual tested on its own 2008–2021 history | Belarus's range | done for imports from Russia; range −58% to +19% ([counterfactual.md](method/counterfactual.md#belarus-round-5)) |
 | 5 | Laundered oil per EU country from per-country studies | EU members, fuel hubs | done: customs-based per member ([energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#per-country-values-for-the-eu-usa-uk-and-australia-round-5)) |
 | 6 | Shadow-fleet ownership and control | shipping profit by country | done: freight by real controller ([services-shipping-companies.md](method/services-shipping-companies.md#shipping)) |
 | 7 | Refugee costs for more hosts; Poland's 2022 count | refugee hosts | done: Poland, Bulgaria, Croatia revised ([aid-refugees-military.md](method/aid-refugees-military.md#refugees)) |
