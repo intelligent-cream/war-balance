@@ -1,0 +1,1802 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "Bank of Russia reserves immobilised by each holding jurisdiction since 28 Feb 2022, and the yearly return those reserves would have earned for Russia without the freeze ('return denied'), credited to the holding country on its balance with Russia. Private sanctioned assets and unfrozen reserves are listed separately and are not part of the per-country numbers.",
+  "units": "EUR bn, nominal. Rates as fractions per year. 2022 = 28 Feb-31 Dec (10/12 of a year), 2023-2025 full years, 2026 = January-August (8/12), not annualised. Ranges about 90%.",
+  "method": "return_denied[y] = immobilised_central[y] x blended_rate_central[y] x year_fraction[y]. blended_rate = sum over currencies of share x the yield Russia's reserve managers would plausibly earn on short government paper and deposits in that currency (low = policy/deposit rate, central = between policy rate and 1-year government yield, high = 1-2 year government yield plus a small spread). Low/high combine the relative error of the amount and of the rate in quadrature (independent), floored at amount_low x rate_low. Immobilised amounts are by holding jurisdiction (custodian location), not by issuer: Euroclear's cash held in Canada, Australia or the UK counts for Belgium only. The return is counted once, toward Ukraine on the holder's balance, as money Russia did not get; the windfall contributions and ERA loans sent to Ukraine stay out of every donor's aid.",
+  "status": "Research file, not yet reviewed by a person. Not wired into the pipeline."
+ },
+ "countries": {
+  "BEL": {
+   "name": "Belgium (Euroclear Bank)",
+   "immobilised_eur_bn": {
+    "2022": {
+     "low": 165,
+     "central": 180,
+     "high": 195
+    },
+    "2023": {
+     "low": 170,
+     "central": 181,
+     "high": 192
+    },
+    "2024": {
+     "low": 175,
+     "central": 183,
+     "high": 192
+    },
+    "2025": {
+     "low": 178,
+     "central": 185,
+     "high": 193
+    },
+    "2026": {
+     "low": 180,
+     "central": 186,
+     "high": 194
+    }
+   },
+   "currency_mix": {
+    "EUR": 0.65,
+    "GBP": 0.17,
+    "CAD": 0.08,
+    "USD": 0.07,
+    "AUD": 0.02,
+    "SGD": 0.01
+   },
+   "currency_mix_basis": "Currency mix of Euroclear's cash balances from Russian state assets, Q3 2024 (Euroclear Q3 2024 results as cited by New Lines Institute); AUD 2% confirmed by an Australian Senate committee submission. Applied to the whole position in all years (educated guess for 2022, when most of it was still securities).",
+   "return_rate": {
+    "2022": {
+     "low": 0.0053,
+     "central": 0.0098,
+     "high": 0.0158
+    },
+    "2023": {
+     "low": 0.0352,
+     "central": 0.038,
+     "high": 0.0407
+    },
+    "2024": {
+     "low": 0.0353,
+     "central": 0.0396,
+     "high": 0.0422
+    },
+    "2025": {
+     "low": 0.0246,
+     "central": 0.0275,
+     "high": 0.0302
+    },
+    "2026": {
+     "low": 0.0216,
+     "central": 0.0248,
+     "high": 0.0276
+    }
+   },
+   "return_denied_eur_bn": {
+    "2022": {
+     "low": 0.782,
+     "central": 1.466,
+     "high": 2.378
+    },
+    "2023": {
+     "low": 6.219,
+     "central": 6.88,
+     "high": 7.516
+    },
+    "2024": {
+     "low": 6.4,
+     "central": 7.243,
+     "high": 7.84
+    },
+    "2025": {
+     "low": 4.523,
+     "central": 5.095,
+     "high": 5.631
+    },
+    "2026": {
+     "low": 2.67,
+     "central": 3.074,
+     "high": 3.447
+    }
+   },
+   "return_denied_total_2022_2026": {
+    "low": 20.59,
+    "central": 23.76,
+    "high": 26.81
+   },
+   "certainty": "B",
+   "basis": "EU Commission: about EUR 185bn of Bank of Russia assets at Euroclear (of EUR 210bn in the EU); EPRS/PISM 2025: 180. Euroclear's balance-sheet figure for all sanctioned Russian assets (incl. private, cash only) rose from about 86 (Sep 2022 cash) to 183 (Dec 2024), 195 (Dec 2025) and 202 (Jun 2026) as securities matured into cash; the Bank of Russia part of the total position (cash + securities) is taken as roughly flat at 180-186, with FX moves. Value at the freeze is not published: 2022 range wider.",
+   "strict_lost_only_eur_bn": {
+    "what": "Stricter variant: only the return that is permanently lost to Russia, i.e. Euroclear's interest on the Bank of Russia's unremunerated cash. Euroclear's reported interest on all Russian sanctioned cash (incl. private, ~7%) times 0.93. 2026 = H1 2.3 plus about 0.75 for Jul-Aug.",
+    "euroclear_interest_all_sanctioned": {
+     "2022": 0.821,
+     "2023": 4.4,
+     "2024": 6.9,
+     "2025": 5.0,
+     "2026": 3.05
+    },
+    "bank_of_russia_part": {
+     "2022": 0.76,
+     "2023": 4.1,
+     "2024": 6.4,
+     "2025": 4.65,
+     "2026": 2.85
+    }
+   }
+  },
+  "FRA": {
+   "name": "France (commercial banks)",
+   "immobilised_eur_bn": {
+    "2022": {
+     "low": 15,
+     "central": 20,
+     "high": 23
+    },
+    "2023": {
+     "low": 15,
+     "central": 20,
+     "high": 23
+    },
+    "2024": {
+     "low": 15,
+     "central": 20,
+     "high": 23
+    },
+    "2025": {
+     "low": 15,
+     "central": 20,
+     "high": 23
+    },
+    "2026": {
+     "low": 15,
+     "central": 20,
+     "high": 23
+    }
+   },
+   "currency_mix": {
+    "EUR": 0.85,
+    "USD": 0.1,
+    "GBP": 0.05
+   },
+   "currency_mix_basis": "Educated guess: mostly euro deposits at French banks.",
+   "return_rate": {
+    "2022": {
+     "low": 0.0024,
+     "central": 0.0066,
+     "high": 0.0126
+    },
+    "2023": {
+     "low": 0.0326,
+     "central": 0.0355,
+     "high": 0.0384
+    },
+    "2024": {
+     "low": 0.0325,
+     "central": 0.0372,
+     "high": 0.0401
+    },
+    "2025": {
+     "low": 0.022,
+     "central": 0.025,
+     "high": 0.0278
+    },
+    "2026": {
+     "low": 0.0194,
+     "central": 0.0226,
+     "high": 0.0255
+    }
+   },
+   "return_denied_eur_bn": {
+    "2022": {
+     "low": 0.034,
+     "central": 0.11,
+     "high": 0.211
+    },
+    "2023": {
+     "low": 0.523,
+     "central": 0.71,
+     "high": 0.831
+    },
+    "2024": {
+     "low": 0.536,
+     "central": 0.745,
+     "high": 0.87
+    },
+    "2025": {
+     "low": 0.361,
+     "central": 0.5,
+     "high": 0.594
+    },
+    "2026": {
+     "low": 0.215,
+     "central": 0.301,
+     "high": 0.361
+    }
+   },
+   "return_denied_total_2022_2026": {
+    "low": 1.67,
+    "central": 2.37,
+    "high": 2.87
+   },
+   "certainty": "C",
+   "basis": "Finance minister Le Maire: EUR 22.8bn of Bank of Russia assets immobilised (Mar 2022); EPRS/PISM 2025: 19. France has not confirmed a later figure."
+  },
+  "LUX": {
+   "name": "Luxembourg (Clearstream Banking SA)",
+   "immobilised_eur_bn": {
+    "2022": {
+     "low": 0.0,
+     "central": 2.0,
+     "high": 10.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 2.0,
+     "high": 10.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 2.0,
+     "high": 10.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 2.0,
+     "high": 10.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 2.0,
+     "high": 10.0
+    }
+   },
+   "currency_mix": {
+    "EUR": 0.8,
+    "USD": 0.2
+   },
+   "currency_mix_basis": "Guess.",
+   "return_rate": {
+    "2022": {
+     "low": 0.0032,
+     "central": 0.0076,
+     "high": 0.0136
+    },
+    "2023": {
+     "low": 0.0338,
+     "central": 0.0366,
+     "high": 0.0394
+    },
+    "2024": {
+     "low": 0.0334,
+     "central": 0.038,
+     "high": 0.0408
+    },
+    "2025": {
+     "low": 0.023,
+     "central": 0.026,
+     "high": 0.0288
+    },
+    "2026": {
+     "low": 0.0202,
+     "central": 0.0234,
+     "high": 0.0264
+    }
+   },
+   "return_denied_eur_bn": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.013,
+     "high": 0.064
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.073,
+     "high": 0.366
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.076,
+     "high": 0.38
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.052,
+     "high": 0.26
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.031,
+     "high": 0.156
+    }
+   },
+   "return_denied_total_2022_2026": {
+    "low": 0.0,
+    "central": 0.24,
+    "high": 1.23
+   },
+   "certainty": "D",
+   "basis": "Conflicting: EPRS uses EUR 10bn as a 'conservative' figure from estimates of 'several billion to about 20bn'; the Luxembourg finance and foreign ministers said the Bank of Russia assets immobilised in Luxembourg are below EUR 10,000. The EU total (210 = 185 Euroclear + 25 elsewhere, of which France ~19-20) leaves little room. Central 2, range 0-10."
+  },
+  "DEU": {
+   "name": "Germany",
+   "immobilised_eur_bn": {
+    "2022": {
+     "low": 0.1,
+     "central": 0.21,
+     "high": 0.5
+    },
+    "2023": {
+     "low": 0.1,
+     "central": 0.21,
+     "high": 0.5
+    },
+    "2024": {
+     "low": 0.1,
+     "central": 0.21,
+     "high": 0.5
+    },
+    "2025": {
+     "low": 0.1,
+     "central": 0.21,
+     "high": 0.5
+    },
+    "2026": {
+     "low": 0.1,
+     "central": 0.21,
+     "high": 0.5
+    }
+   },
+   "currency_mix": {
+    "EUR": 1.0
+   },
+   "currency_mix_basis": "Assumed euro.",
+   "return_rate": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.004,
+     "high": 0.01
+    },
+    "2023": {
+     "low": 0.03,
+     "central": 0.033,
+     "high": 0.036
+    },
+    "2024": {
+     "low": 0.03,
+     "central": 0.035,
+     "high": 0.038
+    },
+    "2025": {
+     "low": 0.019,
+     "central": 0.022,
+     "high": 0.025
+    },
+    "2026": {
+     "low": 0.017,
+     "central": 0.02,
+     "high": 0.023
+    }
+   },
+   "return_denied_eur_bn": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.001,
+     "high": 0.002
+    },
+    "2023": {
+     "low": 0.003,
+     "central": 0.007,
+     "high": 0.017
+    },
+    "2024": {
+     "low": 0.003,
+     "central": 0.007,
+     "high": 0.018
+    },
+    "2025": {
+     "low": 0.002,
+     "central": 0.005,
+     "high": 0.011
+    },
+    "2026": {
+     "low": 0.001,
+     "central": 0.003,
+     "high": 0.007
+    }
+   },
+   "return_denied_total_2022_2026": {
+    "low": 0.01,
+    "central": 0.02,
+    "high": 0.06
+   },
+   "certainty": "C",
+   "basis": "EPRS/PISM: EUR 0.21bn; Berlin told EU partners only a 'small three-digit million amount' is held in Germany (dpa, Dec 2025). Note: the Bank of Russia's 15.7% 'Germany' share in Jan 2022 is by issuer (German government bonds), mostly held at Euroclear, not in Germany."
+  },
+  "AUT": {
+   "name": "Austria",
+   "immobilised_eur_bn": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.3,
+     "high": 2.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.3,
+     "high": 2.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.3,
+     "high": 2.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.3,
+     "high": 2.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.3,
+     "high": 2.0
+    }
+   },
+   "currency_mix": {
+    "EUR": 1.0
+   },
+   "currency_mix_basis": "Assumed euro.",
+   "return_rate": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.004,
+     "high": 0.01
+    },
+    "2023": {
+     "low": 0.03,
+     "central": 0.033,
+     "high": 0.036
+    },
+    "2024": {
+     "low": 0.03,
+     "central": 0.035,
+     "high": 0.038
+    },
+    "2025": {
+     "low": 0.019,
+     "central": 0.022,
+     "high": 0.025
+    },
+    "2026": {
+     "low": 0.017,
+     "central": 0.02,
+     "high": 0.023
+    }
+   },
+   "return_denied_eur_bn": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.001,
+     "high": 0.007
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.01,
+     "high": 0.066
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.011,
+     "high": 0.07
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.007,
+     "high": 0.044
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.004,
+     "high": 0.027
+    }
+   },
+   "return_denied_total_2022_2026": {
+    "low": 0.0,
+    "central": 0.03,
+    "high": 0.21
+   },
+   "certainty": "D",
+   "basis": "No official central-bank figure. Austria's DSN/OeNB report EUR 2bn (end-2022) and 1.5bn (later) frozen in total, mostly private. The Bank of Russia's 2.5% 'Austria' share is by issuer, not custody. Guess."
+  },
+  "JPN": {
+   "name": "Japan",
+   "immobilised_eur_bn": {
+    "2022": {
+     "low": 20,
+     "central": 28,
+     "high": 40
+    },
+    "2023": {
+     "low": 20,
+     "central": 28,
+     "high": 40
+    },
+    "2024": {
+     "low": 20,
+     "central": 28,
+     "high": 40
+    },
+    "2025": {
+     "low": 20,
+     "central": 28,
+     "high": 40
+    },
+    "2026": {
+     "low": 20,
+     "central": 28,
+     "high": 40
+    }
+   },
+   "currency_mix": {
+    "JPY": 1.0
+   },
+   "currency_mix_basis": "Assumed yen (Bank of Japan / Japanese custodians); Euroclear's cash mix has no yen.",
+   "return_rate": {
+    "2022": {
+     "low": -0.001,
+     "central": 0.0,
+     "high": 0.0005
+    },
+    "2023": {
+     "low": -0.001,
+     "central": 0.0,
+     "high": 0.001
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.001,
+     "high": 0.003
+    },
+    "2025": {
+     "low": 0.004,
+     "central": 0.005,
+     "high": 0.007
+    },
+    "2026": {
+     "low": 0.006,
+     "central": 0.008,
+     "high": 0.01
+    }
+   },
+   "return_denied_eur_bn": {
+    "2022": {
+     "low": -0.017,
+     "central": 0.0,
+     "high": 0.017
+    },
+    "2023": {
+     "low": -0.02,
+     "central": 0.0,
+     "high": 0.04
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.028,
+     "high": 0.085
+    },
+    "2025": {
+     "low": 0.091,
+     "central": 0.14,
+     "high": 0.222
+    },
+    "2026": {
+     "low": 0.093,
+     "central": 0.149,
+     "high": 0.223
+    }
+   },
+   "return_denied_total_2022_2026": {
+    "low": 0.15,
+    "central": 0.32,
+    "high": 0.59
+   },
+   "certainty": "C",
+   "basis": "Not disclosed by Tokyo. EPRS/PISM: EUR 28.1bn; press estimates EUR 25-30bn / USD 30bn (Dec 2025); Nikkei (Mar 2022): Bank of Japan held JPY 4-5 trillion (USD 34-43bn) of Russian reserves in 2021. Belgian PM claim of 50 is outside the range."
+  },
+  "GBR": {
+   "name": "United Kingdom",
+   "immobilised_eur_bn": {
+    "2022": {
+     "low": 3,
+     "central": 10,
+     "high": 27
+    },
+    "2023": {
+     "low": 3,
+     "central": 10,
+     "high": 27
+    },
+    "2024": {
+     "low": 3,
+     "central": 10,
+     "high": 27
+    },
+    "2025": {
+     "low": 3,
+     "central": 10,
+     "high": 27
+    },
+    "2026": {
+     "low": 3,
+     "central": 10,
+     "high": 27
+    }
+   },
+   "currency_mix": {
+    "GBP": 0.9,
+    "USD": 0.1
+   },
+   "currency_mix_basis": "Assumed mostly sterling.",
+   "return_rate": {
+    "2022": {
+     "low": 0.0151,
+     "central": 0.0202,
+     "high": 0.0262
+    },
+    "2023": {
+     "low": 0.0445,
+     "central": 0.0474,
+     "high": 0.0494
+    },
+    "2024": {
+     "low": 0.047,
+     "central": 0.05,
+     "high": 0.052
+    },
+    "2025": {
+     "low": 0.039,
+     "central": 0.042,
+     "high": 0.044
+    },
+    "2026": {
+     "low": 0.0339,
+     "central": 0.0379,
+     "high": 0.04
+    }
+   },
+   "return_denied_eur_bn": {
+    "2022": {
+     "low": 0.043,
+     "central": 0.168,
+     "high": 0.459
+    },
+    "2023": {
+     "low": 0.141,
+     "central": 0.474,
+     "high": 1.28
+    },
+    "2024": {
+     "low": 0.149,
+     "central": 0.5,
+     "high": 1.35
+    },
+    "2025": {
+     "low": 0.124,
+     "central": 0.42,
+     "high": 1.134
+    },
+    "2026": {
+     "low": 0.074,
+     "central": 0.253,
+     "high": 0.682
+    }
+   },
+   "return_denied_total_2022_2026": {
+    "low": 0.53,
+    "central": 1.81,
+    "high": 4.91
+   },
+   "certainty": "D",
+   "basis": "Not disclosed. EPRS/PISM: EUR 26.6bn. But the Bank of Russia held only about USD 38bn in sterling in Jan 2022 and about 17% of Euroclear's ~EUR 175bn cash (about EUR 30bn) is sterling, so much of the sterling money is at Euroclear, not in the UK. OFSI's GBP 25-28.7bn of frozen assets is reported to exclude sovereign assets. Central 10 is an educated guess; high end = PISM."
+  },
+  "CHE": {
+   "name": "Switzerland",
+   "immobilised_eur_bn": {
+    "2022": {
+     "low": 7.0,
+     "central": 7.6,
+     "high": 8.3
+    },
+    "2023": {
+     "low": 7.0,
+     "central": 7.7,
+     "high": 8.3
+    },
+    "2024": {
+     "low": 7.2,
+     "central": 7.8,
+     "high": 8.4
+    },
+    "2025": {
+     "low": 7.3,
+     "central": 7.9,
+     "high": 8.5
+    },
+    "2026": {
+     "low": 7.4,
+     "central": 8.0,
+     "high": 8.6
+    }
+   },
+   "currency_mix": {
+    "EUR": 0.5,
+    "USD": 0.4,
+    "GBP": 0.1
+   },
+   "currency_mix_basis": "Guess: the Bank of Russia's Swiss franc balances were 'negligible', so assume EUR/USD deposits.",
+   "return_rate": {
+    "2022": {
+     "low": 0.0079,
+     "central": 0.0128,
+     "high": 0.0188
+    },
+    "2023": {
+     "low": 0.039,
+     "central": 0.0416,
+     "high": 0.0441
+    },
+    "2024": {
+     "low": 0.0385,
+     "central": 0.0425,
+     "high": 0.045
+    },
+    "2025": {
+     "low": 0.029,
+     "central": 0.032,
+     "high": 0.0345
+    },
+    "2026": {
+     "low": 0.0251,
+     "central": 0.0286,
+     "high": 0.0315
+    }
+   },
+   "return_denied_eur_bn": {
+    "2022": {
+     "low": 0.049,
+     "central": 0.081,
+     "high": 0.12
+    },
+    "2023": {
+     "low": 0.285,
+     "central": 0.32,
+     "high": 0.352
+    },
+    "2024": {
+     "low": 0.291,
+     "central": 0.331,
+     "high": 0.364
+    },
+    "2025": {
+     "low": 0.222,
+     "central": 0.253,
+     "high": 0.28
+    },
+    "2026": {
+     "low": 0.131,
+     "central": 0.153,
+     "high": 0.172
+    }
+   },
+   "return_denied_total_2022_2026": {
+    "low": 0.98,
+    "central": 1.14,
+    "high": 1.29
+   },
+   "certainty": "B",
+   "basis": "SECO (1 Apr 2025): Bank of Russia reserves and assets in Switzerland CHF 7.45bn at current exchange rates (earlier SECO releases ~CHF 7.4bn). EUR value by year from CHF/EUR."
+  },
+  "USA": {
+   "name": "United States",
+   "immobilised_eur_bn": {
+    "2022": {
+     "low": 3,
+     "central": 4.5,
+     "high": 8
+    },
+    "2023": {
+     "low": 3,
+     "central": 4.5,
+     "high": 8
+    },
+    "2024": {
+     "low": 3,
+     "central": 4.5,
+     "high": 8
+    },
+    "2025": {
+     "low": 3,
+     "central": 4.5,
+     "high": 8
+    },
+    "2026": {
+     "low": 3,
+     "central": 4.5,
+     "high": 8
+    }
+   },
+   "currency_mix": {
+    "USD": 1.0
+   },
+   "currency_mix_basis": "US dollar.",
+   "return_rate": {
+    "2022": {
+     "low": 0.016,
+     "central": 0.022,
+     "high": 0.028
+    },
+    "2023": {
+     "low": 0.049,
+     "central": 0.051,
+     "high": 0.053
+    },
+    "2024": {
+     "low": 0.047,
+     "central": 0.05,
+     "high": 0.052
+    },
+    "2025": {
+     "low": 0.039,
+     "central": 0.042,
+     "high": 0.044
+    },
+    "2026": {
+     "low": 0.033,
+     "central": 0.037,
+     "high": 0.04
+    }
+   },
+   "return_denied_eur_bn": {
+    "2022": {
+     "low": 0.047,
+     "central": 0.083,
+     "high": 0.15
+    },
+    "2023": {
+     "low": 0.152,
+     "central": 0.229,
+     "high": 0.408
+    },
+    "2024": {
+     "low": 0.149,
+     "central": 0.225,
+     "high": 0.4
+    },
+    "2025": {
+     "low": 0.125,
+     "central": 0.189,
+     "high": 0.336
+    },
+    "2026": {
+     "low": 0.072,
+     "central": 0.111,
+     "high": 0.198
+    }
+   },
+   "return_denied_total_2022_2026": {
+    "low": 0.54,
+    "central": 0.84,
+    "high": 1.49
+   },
+   "certainty": "C",
+   "basis": "REPO task force via Axios (Sep 2023): USD 5.06bn of Russian sovereign assets in the US system; EPRS/PISM: EUR 4.3bn. Russia had cut US holdings sharply after 2018."
+  },
+  "CAN": {
+   "name": "Canada",
+   "immobilised_eur_bn": {
+    "2022": {
+     "low": 0.1,
+     "central": 0.5,
+     "high": 3.0
+    },
+    "2023": {
+     "low": 0.1,
+     "central": 0.5,
+     "high": 3.0
+    },
+    "2024": {
+     "low": 0.1,
+     "central": 0.5,
+     "high": 3.0
+    },
+    "2025": {
+     "low": 0.1,
+     "central": 0.5,
+     "high": 3.0
+    },
+    "2026": {
+     "low": 0.1,
+     "central": 0.5,
+     "high": 3.0
+    }
+   },
+   "currency_mix": {
+    "CAD": 1.0
+   },
+   "currency_mix_basis": "Canadian dollar.",
+   "return_rate": {
+    "2022": {
+     "low": 0.016,
+     "central": 0.022,
+     "high": 0.028
+    },
+    "2023": {
+     "low": 0.046,
+     "central": 0.048,
+     "high": 0.05
+    },
+    "2024": {
+     "low": 0.042,
+     "central": 0.045,
+     "high": 0.047
+    },
+    "2025": {
+     "low": 0.025,
+     "central": 0.027,
+     "high": 0.029
+    },
+    "2026": {
+     "low": 0.021,
+     "central": 0.023,
+     "high": 0.026
+    }
+   },
+   "return_denied_eur_bn": {
+    "2022": {
+     "low": 0.001,
+     "central": 0.009,
+     "high": 0.055
+    },
+    "2023": {
+     "low": 0.005,
+     "central": 0.024,
+     "high": 0.144
+    },
+    "2024": {
+     "low": 0.004,
+     "central": 0.022,
+     "high": 0.135
+    },
+    "2025": {
+     "low": 0.003,
+     "central": 0.014,
+     "high": 0.081
+    },
+    "2026": {
+     "low": 0.001,
+     "central": 0.008,
+     "high": 0.046
+    }
+   },
+   "return_denied_total_2022_2026": {
+    "low": 0.01,
+    "central": 0.08,
+    "high": 0.46
+   },
+   "certainty": "D",
+   "basis": "EPRS/PISM put EUR 15.1bn in Canada, but this matches the ~C$22bn of Euroclear's Russian cash held in Canadian banks (8% of Euroclear's cash), which is Euroclear's (Belgium's) immobilisation. RCMP: C$185m frozen plus C$473m blocked transactions (not split by owner). Central 0.5 is a guess; EUR 15bn must not be added on top of Belgium."
+  },
+  "AUS": {
+   "name": "Australia",
+   "immobilised_eur_bn": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.5
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.5
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.5
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.5
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.5
+    }
+   },
+   "currency_mix": {
+    "AUD": 1.0
+   },
+   "currency_mix_basis": "Australian dollar.",
+   "return_rate": {
+    "2022": {
+     "low": 0.012,
+     "central": 0.016,
+     "high": 0.023
+    },
+    "2023": {
+     "low": 0.037,
+     "central": 0.039,
+     "high": 0.041
+    },
+    "2024": {
+     "low": 0.042,
+     "central": 0.0435,
+     "high": 0.044
+    },
+    "2025": {
+     "low": 0.037,
+     "central": 0.039,
+     "high": 0.04
+    },
+    "2026": {
+     "low": 0.034,
+     "central": 0.037,
+     "high": 0.039
+    }
+   },
+   "return_denied_eur_bn": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.001,
+     "high": 0.007
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.002,
+     "high": 0.02
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.002,
+     "high": 0.022
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.002,
+     "high": 0.02
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.001,
+     "high": 0.012
+    }
+   },
+   "return_denied_total_2022_2026": {
+    "low": 0.0,
+    "central": 0.01,
+    "high": 0.08
+   },
+   "certainty": "D",
+   "basis": "DFAT: under AUD 100m of Russian assets held in Australia. The ~AUD 7bn cited by a Senate committee is the AUD share (2%) of Euroclear's cash, i.e. Belgium's."
+  },
+  "SGP": {
+   "name": "Singapore",
+   "immobilised_eur_bn": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.3,
+     "high": 1.5
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.3,
+     "high": 1.5
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.3,
+     "high": 1.5
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.3,
+     "high": 1.5
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.3,
+     "high": 1.5
+    }
+   },
+   "currency_mix": {
+    "SGD": 0.5,
+    "USD": 0.5
+   },
+   "currency_mix_basis": "Guess.",
+   "return_rate": {
+    "2022": {
+     "low": 0.013,
+     "central": 0.0185,
+     "high": 0.025
+    },
+    "2023": {
+     "low": 0.042,
+     "central": 0.0445,
+     "high": 0.0465
+    },
+    "2024": {
+     "low": 0.04,
+     "central": 0.043,
+     "high": 0.045
+    },
+    "2025": {
+     "low": 0.0285,
+     "central": 0.032,
+     "high": 0.0345
+    },
+    "2026": {
+     "low": 0.023,
+     "central": 0.0265,
+     "high": 0.0295
+    }
+   },
+   "return_denied_eur_bn": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.005,
+     "high": 0.023
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.013,
+     "high": 0.067
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.013,
+     "high": 0.065
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.01,
+     "high": 0.048
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.005,
+     "high": 0.027
+    }
+   },
+   "return_denied_total_2022_2026": {
+    "low": 0.0,
+    "central": 0.05,
+    "high": 0.23
+   },
+   "certainty": "D",
+   "basis": "MAS banned transactions with the Bank of Russia (Mar 2022). No amount published. The Bank of Russia held 0.3% of reserves (about USD 1.8bn) in SGD, partly at Euroclear (1% of its cash). Guess."
+  },
+  "KOR": {
+   "name": "South Korea",
+   "immobilised_eur_bn": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 1.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 1.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 1.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 1.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.1,
+     "high": 1.0
+    }
+   },
+   "currency_mix": {
+    "USD": 1.0
+   },
+   "currency_mix_basis": "Guess.",
+   "return_rate": {
+    "2022": {
+     "low": 0.016,
+     "central": 0.022,
+     "high": 0.028
+    },
+    "2023": {
+     "low": 0.049,
+     "central": 0.051,
+     "high": 0.053
+    },
+    "2024": {
+     "low": 0.047,
+     "central": 0.05,
+     "high": 0.052
+    },
+    "2025": {
+     "low": 0.039,
+     "central": 0.042,
+     "high": 0.044
+    },
+    "2026": {
+     "low": 0.033,
+     "central": 0.037,
+     "high": 0.04
+    }
+   },
+   "return_denied_eur_bn": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.002,
+     "high": 0.018
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.005,
+     "high": 0.051
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.005,
+     "high": 0.05
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.004,
+     "high": 0.042
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.002,
+     "high": 0.025
+    }
+   },
+   "return_denied_total_2022_2026": {
+    "low": 0.0,
+    "central": 0.02,
+    "high": 0.19
+   },
+   "certainty": "D",
+   "basis": "Korea banned transactions with the Bank of Russia (Mar 2022). No amount published. Guess."
+  }
+ },
+ "unallocated_eu": {
+  "immobilised_eur_bn": {
+   "low": 1,
+   "central": 3,
+   "high": 8
+  },
+  "basis": "EU total about EUR 210bn = 185 Euroclear + about 25 in commercial banks (France, Germany, Sweden, Cyprus, Belgium). After France (~20), Germany, Luxembourg and Austria, about EUR 1-8bn is left with no published split (Sweden, Cyprus, Belgian commercial banks). Return denied about EUR 0.35bn (0.1-1.0) over 2022-2026 at the euro rate. Not assigned to a country; the builder may leave it out.",
+  "certainty": "D"
+ },
+ "rates_by_currency_pct": {
+  "values": {
+   "EUR": {
+    "2022": [
+     0.0,
+     0.4,
+     1.0
+    ],
+    "2023": [
+     3.0,
+     3.3,
+     3.6
+    ],
+    "2024": [
+     3.0,
+     3.5,
+     3.8
+    ],
+    "2025": [
+     1.9,
+     2.2,
+     2.5
+    ],
+    "2026": [
+     1.7,
+     2.0,
+     2.3
+    ]
+   },
+   "USD": {
+    "2022": [
+     1.6,
+     2.2,
+     2.8
+    ],
+    "2023": [
+     4.9,
+     5.1,
+     5.3
+    ],
+    "2024": [
+     4.7,
+     5.0,
+     5.2
+    ],
+    "2025": [
+     3.9,
+     4.2,
+     4.4
+    ],
+    "2026": [
+     3.3,
+     3.7,
+     4.0
+    ]
+   },
+   "GBP": {
+    "2022": [
+     1.5,
+     2.0,
+     2.6
+    ],
+    "2023": [
+     4.4,
+     4.7,
+     4.9
+    ],
+    "2024": [
+     4.7,
+     5.0,
+     5.2
+    ],
+    "2025": [
+     3.9,
+     4.2,
+     4.4
+    ],
+    "2026": [
+     3.4,
+     3.8,
+     4.0
+    ]
+   },
+   "JPY": {
+    "2022": [
+     -0.1,
+     0.0,
+     0.05
+    ],
+    "2023": [
+     -0.1,
+     0.0,
+     0.1
+    ],
+    "2024": [
+     0.0,
+     0.1,
+     0.3
+    ],
+    "2025": [
+     0.4,
+     0.5,
+     0.7
+    ],
+    "2026": [
+     0.6,
+     0.8,
+     1.0
+    ]
+   },
+   "CAD": {
+    "2022": [
+     1.6,
+     2.2,
+     2.8
+    ],
+    "2023": [
+     4.6,
+     4.8,
+     5.0
+    ],
+    "2024": [
+     4.2,
+     4.5,
+     4.7
+    ],
+    "2025": [
+     2.5,
+     2.7,
+     2.9
+    ],
+    "2026": [
+     2.1,
+     2.3,
+     2.6
+    ]
+   },
+   "AUD": {
+    "2022": [
+     1.2,
+     1.6,
+     2.3
+    ],
+    "2023": [
+     3.7,
+     3.9,
+     4.1
+    ],
+    "2024": [
+     4.2,
+     4.35,
+     4.4
+    ],
+    "2025": [
+     3.7,
+     3.9,
+     4.0
+    ],
+    "2026": [
+     3.4,
+     3.7,
+     3.9
+    ]
+   },
+   "SGD": {
+    "2022": [
+     1.0,
+     1.5,
+     2.2
+    ],
+    "2023": [
+     3.5,
+     3.8,
+     4.0
+    ],
+    "2024": [
+     3.3,
+     3.6,
+     3.8
+    ],
+    "2025": [
+     1.8,
+     2.2,
+     2.5
+    ],
+    "2026": [
+     1.3,
+     1.6,
+     1.9
+    ]
+   }
+  },
+  "note": "Per currency and year (low, central, high), % per year. 2022 = March-December averages. 2026 = January-August, assumed close to mid-2026 policy rates. Cross-check: Euroclear earned 3.4% (2023), 3.8% (2024), 2.6% (2025) and about 2.3% (H1 2026, annualised) on its Russian cash, close to the blended central rates for its currency mix (3.8, 4.0, 2.75, 2.5%). The Bank of Russia's own actual returns in 2021 were -0.74% (EUR), 0.05% (USD), -0.32% (GBP), -0.07% (JPY), -0.14% (CAD)."
+ },
+ "year_fraction": {
+  "2022": 0.8333333333333334,
+  "2023": 1,
+  "2024": 1,
+  "2025": 1,
+  "2026": 0.6666666666666666
+ },
+ "totals_2022_2026": {
+  "return_denied_eur_bn": {
+   "low": 24.5,
+   "central": 30.7,
+   "high": 40.4
+  },
+  "with_unallocated_eu_central": 31.0,
+  "at_owner_flat_3_5pct": 40.5,
+  "note": "Sum of country ranges (fully correlated), so the total range is wide. At the owner's flat 3.5% the total would be about EUR 40bn; the currency-and-year rates give about 31bn, mainly because euro rates were near zero in 2022 and yen rates near zero throughout (Japan 0.3bn instead of 4.4bn)."
+ },
+ "bank_of_russia_reserves_before_the_war": {
+  "date": "2022-01-01",
+  "total_usd_bn": 612.9,
+  "fx_usd_bn": 481.4,
+  "gold_usd_bn": 131.5,
+  "by_country_pct": {
+   "gold_in_russia": 21.5,
+   "China": 16.8,
+   "Germany": 15.7,
+   "France": 9.9,
+   "Japan": 9.3,
+   "United States": 6.4,
+   "United Kingdom": 5.1,
+   "supranational": 4.3,
+   "Canada": 2.7,
+   "Austria": 2.5,
+   "other": 5.8
+  },
+  "by_currency_pct": {
+   "EUR": 33.9,
+   "gold": 21.5,
+   "CNY": 17.1,
+   "USD": 10.9,
+   "GBP": 6.2,
+   "other": 10.4,
+   "of_which_JPY": 5.9,
+   "of_which_CAD": 3.2,
+   "of_which_AUD": 1.0,
+   "of_which_SGD": 0.3
+  },
+  "caution": "Country = residence of the counterparty or issuer of the securities, not where they are held. German, Austrian, Canadian and UK government bonds held at Euroclear count as 'Germany' etc. here. So these shares cannot be used as holding-country amounts.",
+  "source": "Bank of Russia Annual Report for 2021, charts 30-32 (also 30 Jun 2021 in the Foreign Exchange and Gold Asset Management Report No. 1 (61) 2022)"
+ },
+ "private_assets": {
+  "recommendation": "Do not count on the map. These are private owners' money, not the Russian state's; much of it is yachts, villas and company stakes with no yield; and the owners' lost income does not reduce Russia's state resources. Keep for the docs only.",
+  "by_country": {
+   "EU27": {
+    "eur_bn": 28,
+    "date": "2024",
+    "certainty": "C",
+    "note": "Commission figure for assets of sanctioned persons and entities frozen in the EU (about EUR 24.9bn end-2023, 28bn in 2024). Widely cited Commission figure; not checked against the primary Commission text in this round."
+   },
+   "EU_member_split_2022": {
+    "date": "late 2022 (total 18.9)",
+    "eur_bn": {
+     "BEL": 3.5,
+     "LUX": 2.5,
+     "ITA": 2.3,
+     "DEU": 2.2,
+     "IRL": 1.8,
+     "AUT": 1.8,
+     "FRA": 1.3,
+     "ESP": 1.0,
+     "other": 2.5
+    },
+    "certainty": "C",
+    "note": "Commission overview obtained by AFP. Scale by about 1.5 for the 2024 total of 28 if a split is needed (guess)."
+   },
+   "GBR": {
+    "gbp_bn": 25.0,
+    "eur_bn": 29,
+    "date": "OFSI annual review 2024-25 (Mar 2025); 28.7 by May 2025",
+    "certainty": "B",
+    "note": "Reported frozen under UK sanctions; said to exclude sovereign assets."
+   },
+   "CHE": {
+    "chf_bn": 7.4,
+    "eur_bn": 7.9,
+    "date": "31 Mar 2025 (SECO)",
+    "certainty": "A"
+   },
+   "AUT": {
+    "eur_bn": 1.5,
+    "date": "DSN/OeNB, after end-2022 (2.0)",
+    "certainty": "B"
+   },
+   "CAN": {
+    "cad_bn": 0.185,
+    "eur_bn": 0.12,
+    "note": "RCMP: C$185m frozen plus C$473m blocked transactions",
+    "certainty": "C"
+   },
+   "AUS": {
+    "aud_bn": 0.1,
+    "eur_bn": 0.06,
+    "note": "DFAT: under AUD 100m (all Russian assets)",
+    "certainty": "C"
+   },
+   "REPO_all_members": {
+    "usd_bn": 58,
+    "date": "Mar 2023",
+    "note": "Russian Elites, Proxies and Oligarchs task force: blocked or frozen by all members combined (US, UK, EU, Canada, Japan, Australia).",
+    "certainty": "B"
+   }
+  }
+ },
+ "not_frozen": {
+  "for": "docs only",
+  "items": [
+   {
+    "holder": "China",
+    "usd_bn": 103,
+    "basis": "16.8% of reserves on 1 Jan 2022 (counterparty/issuer residence); yuan assets were 17.1% (about USD 105bn). Not frozen. Russia has since used part of it (NWF yuan sales)."
+   },
+   {
+    "holder": "Gold in Bank of Russia vaults (Russia)",
+    "usd_bn": 131.5,
+    "basis": "21.5% on 1 Jan 2022; out of reach of sanctions; its value rose strongly since."
+   },
+   {
+    "holder": "Supranational (IMF position, BIS, others)",
+    "usd_bn": 26,
+    "basis": "4.3% on 1 Jan 2022. The IMF net position and SDRs are not frozen as such but hard to use; the BIS stopped dealing with the Bank of Russia. Some supranational bonds are held at Euroclear and are inside Belgium's figure."
+   },
+   {
+    "holder": "Other countries (not named)",
+    "usd_bn": 36,
+    "basis": "5.8% 'other' on 1 Jan 2022, part in sanctioning countries (Singapore, Korea, Sweden...), part elsewhere. Countries such as India, Turkey, the UAE, Kazakhstan or Hong Kong are not known to hold Bank of Russia reserves in size; no data."
+   }
+  ],
+  "note": "Russia said about USD 300bn of its about USD 640bn reserves were frozen (Siluanov, Mar 2022). The rest (gold, yuan, some other) stayed usable."
+ },
+ "overlaps": {
+  "summary": "Crediting the holder with the return denied does not double count with the ERA loans or the EU windfall contributions, as long as both stay out of donors' aid (they do: ERA is removed in build_data.py; windfall money is not in any donor's Kiel line except as noted below). It does overlap with two smaller things the builder must remove or accept.",
+  "items": [
+   {
+    "what": "ERA loans (USD 50bn: US 18.3, EU 18.1, Canada 3.3, UK 2.6, Japan 1.6 EUR bn)",
+    "double_count": "no",
+    "why": "Already left out of donors' aid as Russia's money. They are repaid from the EU windfall contributions, which are part of the return denied. The return is counted once, on the holder's Russia balance; the loan/windfall money reaching Ukraine is no one's aid."
+   },
+   {
+    "what": "EU windfall contributions from Euroclear (Jul 2024 1.55; Mar/Apr 2025 about 2.05; Jul 2025 1.6; early 2026 about 1.4; Jul 2026 about 1.4 EUR bn; about 6.6 paid by Q1 2026)",
+    "double_count": "small, 2024 only",
+    "why": "From 2025 they go to the Ukraine Loan Cooperation Mechanism to repay ERA loans (excluded). The July 2024 tranche (and part of the 2025 H2-2024 tranche) went mostly (about 90%) to the European Peace Facility and 10% to the Ukraine Facility. If Kiel counts those EPF/UF payments as EU aid, they flow into member states' EU shares: about EUR 1.4-3bn across the EU27, of which Belgium about 4%. Check Kiel's EU row for 2024-2025 windfall-funded entries and remove them, or accept a small double count."
+   },
+   {
+    "what": "Belgian corporate tax on Euroclear's Russian-asset income (about EUR 1.7bn in 2024, about 1.0bn estimated for 2025, less in 2026)",
+    "double_count": "yes, for Belgium",
+    "why": "Belgium pledged to spend all of it on Ukraine (mostly military). Its Kiel aid rises in 2024-2025 (1.35 and 1.42 EUR bn a year). That aid is paid out of Russia's denied return, which Belgium already gets credit for. Options: (a) subtract the tax-funded part from Belgium's aid (about 1.0-1.7 a year, 2024-2026), or (b) keep the aid and credit Belgium only with return denied minus the tax. Same total either way; (a) is cleaner. The exact split of Belgian aid by funding source is not published (Kyiv Post fact-check)."
+   },
+   {
+    "what": "Euroclear's retained profits (the rest of the Russian-asset income kept as a risk buffer, plus 10% of the windfall held back for 5 years)",
+    "double_count": "no",
+    "why": "Inside the return denied; not aid to anyone."
+   },
+   {
+    "what": "War-time price windfall ('windfall' on the map)",
+    "double_count": "no, but a naming clash",
+    "why": "Different thing: extra paid to Russia for fuel. Call this part 'return on frozen reserves' or 'reserves' return denied', never 'windfall'."
+   },
+   {
+    "what": "Principal of the immobilised reserves",
+    "double_count": "not counted",
+    "why": "Owner's rule: only the yearly return, not the frozen amount. If the EU later lends the principal to Ukraine (Reparations Loan, shelved Dec 2025), that loan must also stay out of donors' aid like ERA."
+   }
+  ]
+ },
+ "sources": [
+  {
+   "name": "Bank of Russia Annual Report for 2021 (reserves by country and currency, 1 Jan 2022; returns 2021)",
+   "url": "https://www.cbr.ru/Collection/Collection/File/43443/ar_2021_e.pdf",
+   "date": "2022"
+  },
+  {
+   "name": "Bank of Russia Foreign Exchange and Gold Asset Management Report No. 1 (61) 2022 (30 Jun 2021)",
+   "url": "https://www.cbr.ru/Collection/Collection/File/39685/2022-01_res_en.pdf",
+   "date": "2022-01"
+  },
+  {
+   "name": "EPRS briefing BRI(2025)775908, Figure 1 (data PISM, Swiss government): Belgium 180, France 19, Luxembourg 10, Germany 0.21, Japan 28.1, UK 26.6, Canada 15.1, Switzerland 6.2, US 4.3 EUR bn",
+   "url": "https://eprs.europarl.europa.eu/contents/publications/EPRS/2025/09/EPRS_BRI(2025)775908.html",
+   "date": "2025-09-10"
+  },
+  {
+   "name": "Euronews: Where are the Russian immobilised assets? Nobody except Belgium wants to say",
+   "url": "https://www.euronews.com/my-europe/2025/11/06/where-are-the-russian-immobilised-assets-nobody-except-belgium-wants-to-say",
+   "date": "2025-11-06"
+  },
+  {
+   "name": "Euroclear 2025 results (interest EUR 5.0bn; balance sheet 222, of which 195 sanctioned Russian; windfall 3.3)",
+   "url": "https://www.euroclear.com/newsandinsights/en/press/2026/mr-06-euroclear-delivers-strong-2025-results.html",
+   "date": "2026-02-04"
+  },
+  {
+   "name": "Euroclear Q1 2026 results (interest 1.1; 200 sanctioned; 6.6 paid out)",
+   "url": "https://www.euroclear.com/newsandinsights/en/press/2026/mr-12-euroclear-delivers-q1-2026-results.html",
+   "date": "2026-05-08"
+  },
+  {
+   "name": "Euroclear H1 2026 results (interest 2.3; 202 sanctioned; windfall provision 1.5)",
+   "url": "https://www.euroclear.com/newsandinsights/en/press/2026/mr-20-euroclear-h1-2026-results.html",
+   "date": "2026-07-17"
+  },
+  {
+   "name": "Euroclear H1 2025 results (interest 2.7; 194 sanctioned)",
+   "url": "https://www.euroclear.com/newsandinsights/en/press/2025/mr-20-h1-results.html",
+   "date": "2025-07"
+  },
+  {
+   "name": "Euroclear Q3 2025 results (193 sanctioned)",
+   "url": "https://www.euroclear.com/newsandinsights/en/press/2025/mr-29-strong-third-quarter-results.html",
+   "date": "2025-10-24"
+  },
+  {
+   "name": "Euroclear 2024 results (interest 6.9; 183 sanctioned; windfall 4.0; Belgian tax 1.7)",
+   "url": "https://www.euroclear.com/newsandinsights/en/press/2025/mr-05-euroclear-delivers-strong-results-in-2024.html",
+   "date": "2025-02-05"
+  },
+  {
+   "name": "Euroclear 2023 results (interest 4.4 linked to Russian sanctions)",
+   "url": "https://www.euroclear.com/newsandinsights/en/press/2024/2024-mr-04-strong-performance-fy2023.html",
+   "date": "2024-02"
+  },
+  {
+   "name": "Euroclear 2022 results (interest 0.821 on Russia-sanctioned cash)",
+   "url": "https://www.euroclear.com/newsandinsights/en/press/2023/2023-mr-01-euroclear-group-delivers-another-record-year.html",
+   "date": "2023-02-08"
+  },
+  {
+   "name": "New Lines Institute: Resolving Accountability Over Russian State Assets (Euroclear cash by currency, Q3 2024: EUR 65, GBP 17, CAD 8, USD 7, AUD 2, SGD 1%)",
+   "url": "https://newlinesinstitute.org/wp-content/uploads/2025116-Ukraine-Reparations-NLISAP-1.pdf",
+   "date": "2025-01"
+  },
+  {
+   "name": "PIIE chart: Cash keeps accumulating at Euroclear Bank",
+   "url": "https://www.piie.com/research/piie-charts/2024/cash-keeps-accumulating-euroclear-bank-result-sanctions-russia",
+   "date": "2024-01-09"
+  },
+  {
+   "name": "Euronews: Brussels pitches EUR 140bn loan based on frozen assets (EU 210, Euroclear ~185, cash ~175-176)",
+   "url": "https://www.euronews.com/my-europe/2025/09/26/brussels-pitches-140-billion-loan-to-ukraine-based-on-russias-frozen-assets",
+   "date": "2025-09-26"
+  },
+  {
+   "name": "Euronews (fr): France froze EUR 22.8bn of Bank of Russia assets",
+   "url": "https://fr.euronews.com/2022/03/20/la-france-a-gele-plus-de-22-milliards-d-euros-d-actifs-de-la-banque-de-russie",
+   "date": "2022-03-20"
+  },
+  {
+   "name": "SECO via swissinfo/bluewin: CHF 7.4bn private frozen, CHF 7.45bn central bank reserves",
+   "url": "https://www.bluewin.ch/en/news/switzerland-freezes-russian-assets-worth-15-billion-2633158.html",
+   "date": "2025-04-01"
+  },
+  {
+   "name": "Nikkei via nippon.com: Bank of Japan to freeze Russia's yen reserves (JPY 4-5 trillion)",
+   "url": "https://www.nippon.com/en/news/reu20220301KBN2KX1YY/",
+   "date": "2022-03-01"
+  },
+  {
+   "name": "Axios: REPO task force, USD 5.06bn Russian sovereign assets in the US",
+   "url": "https://www.axios.com/2023/09/07/repo-russian-elites-proxies-oligarchs-assets-us",
+   "date": "2023-09-07"
+  },
+  {
+   "name": "Kyiv Independent: Russian frozen assets have Australia's Senate fired up (AUD 2% of Euroclear cash; DFAT < AUD 100m)",
+   "url": "https://kyivindependent.com/russian-frozen-assets-have-australias-senate-fired-up/",
+   "date": "2026-08"
+  },
+  {
+   "name": "Canada Senate debate (C$22bn of Euroclear cash in Canadian banks)",
+   "url": "https://sencanada.ca/en/senators/dasko-donna/interventions/665292/19",
+   "date": "2025-06"
+  },
+  {
+   "name": "Schwaebische/dpa: Germany holds only a small three-digit million amount",
+   "url": "https://www.schwaebische.de/politik/von-der-leyen-will-auch-russen-geld-in-deutschland-nutzen-4158437",
+   "date": "2025-12"
+  },
+  {
+   "name": "vol.at: frozen Russian assets in Austria fell from EUR 2bn to 1.5bn (DSN, OeNB)",
+   "url": "https://www.vol.at/eingefrorenes-russisches-vermogen-in-osterreich-gesunken/8579134",
+   "date": "2023"
+  },
+  {
+   "name": "UK government: GBP 25bn of Russian assets frozen (OFSI)",
+   "url": "https://gov.uk/government/news/uk-sanctions-freeze-25bn-of-russian-assets",
+   "date": "2025-03-21"
+  },
+  {
+   "name": "Belga: frozen Russian assets at Euroclear earn Belgium EUR 1.7bn in tax",
+   "url": "https://www.belganewsagency.eu/frozen-russian-assets-at-euroclear-earn-belgium-17-billion-euros-in-tax-revenue",
+   "date": "2025-02"
+  },
+  {
+   "name": "Kyiv Post fact-check: Is Belgium giving Ukraine EUR 1.7bn taxed from Russia's frozen assets?",
+   "url": "https://www.kyivpost.com/post/46802",
+   "date": "2025"
+  },
+  {
+   "name": "Belga: Belgium blocked EUR 3.5bn in Russian private assets (member-state split, total 18.9)",
+   "url": "https://belganewsagency.eu/belgium-blocked-35-billion-in-russian-assets-more-than-any-other-eu-member",
+   "date": "2022"
+  },
+  {
+   "name": "Euronews: EU triggers emergency clause to indefinitely immobilise Russian assets",
+   "url": "https://www.euronews.com/my-europe/2025/12/11/eu-triggers-emergency-clause-to-indefinitely-immobilise-russian-assets",
+   "date": "2025-12-11"
+  }
+ ],
+ "notes": [
+  "Belgium dominates: about EUR 24bn of the EUR 31bn total, about 4% of Belgium's GDP. Euroclear is an international depository and the freeze is an EU sanctions decision. Open question for the owner: credit Belgium alone (where the assets are held, as the brief says) or spread the Euroclear part over EU members (e.g. by GNI key, like EU aid). The same question applies, much smaller, to Clearstream (Luxembourg).",
+  "Japan gets almost nothing (EUR 0.3bn) because yen rates were about zero; the owner's 3-4% would give it about 4.4bn. The per-currency rate is the right one: Russia's yen holdings would have earned about zero.",
+  "Counterfactual caveat: without a freeze, Russia would have spent part of these reserves (it sold reserves in 2022 and later), so it would not have earned the return on all of it. The central assumes it kept them; this could overstate by perhaps 10-30% (not included in the range; a guess).",
+  "Return-denied vs return-lost: at Euroclear the Bank of Russia's cash is unremunerated, so the return is lost for good (Euroclear, the EU and Belgium keep it). In commercial banks (France, Switzerland) interest may still be credited to Russia's blocked accounts, so it is denied for use, not lost. Owner's rule (return denied) counts both. A stricter variant for Belgium is given in strict_lost_only_eur_bn.",
+  "Do not use the EPRS/PISM figures for Canada (15.1) and the UK (26.6) on top of Belgium's: the Canadian figure, and probably part of the UK one, is Euroclear's cash held in those currencies. The total of 289.5 in EPRS therefore double counts; this file's countries sum to about EUR 260bn, which matches the CFR/G7 estimate.",
+  "The Bank of Russia's pre-war 'by country' shares are by issuer/counterparty, not by custodian; they cannot be read as holding-country amounts."
+ ]
+}
