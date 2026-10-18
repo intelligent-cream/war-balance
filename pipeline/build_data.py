@@ -882,6 +882,7 @@ def build() -> dict:
     uae_fuel_net(countries)
     war_windfall(countries, src)
     pre_war_trends(countries, src)
+    counterfactual(countries, src)
     apply_audit2(countries, src, "trends")
     for c in countries.values():
         for obj in c.values():
@@ -1181,6 +1182,47 @@ def pre_war_trends(countries: dict[str, dict], src: Sources) -> None:
                 [1.0] + [max(m["high"], 1.0) for m in ms],
             )
 
+
+def counterfactual(countries: dict[str, dict], src: Sources) -> None:
+    """Expected trade without the war (research/2026-10/gaps/counterfactual.json): per flow type, the model that beat
+    holding 2021 flat in back-tests from 2008, 2013 and 2016, else 2021 held flat (services with the travel recovery).
+    The pre-war level becomes 2021 at 2019-2021 prices, and the multipliers carry the back-tested 90% error, so the
+    expected path is never treated as exact. Replaces the trend.json and trend2.json trends for these flows."""
+    cf = load(GAPS / "counterfactual.json")
+    sid = src.add(
+        "counterfactual",
+        "Expected trade without the war: models back-tested on 2008, 2013 and 2016 against holding 2021 flat (UN Comtrade, World Bank WDI and commodity prices, UN voting)",
+        "https://comtradeapi.un.org/",
+        cf.get("generated"),
+        "exports to Russia and trade with Ukraine follow a nowcast; imports from Russia and services keep 2021; see research/2026-10/gaps/counterfactual-notes.md",
+    )
+    for iso3, flows in cf["countries"].items():
+        c = countries.get(iso3)
+        if not c:
+            continue
+        for key, d in flows.items():
+            obj = c.get(key)
+            if not obj or not obj.get("base") or not d.get("multiplier_vs_2021"):
+                continue
+            p = obj.get("pidx") or [1.0] * len(YEARS)
+            pl, ph = obj.get("pidx_lo") or p, obj.get("pidx_hi") or p
+            if not p[0]:
+                continue
+            obj["base_2019_2021_avg"] = obj["base"]
+            obj["base"] = round(obj["years"][0] / p[0], 5)
+            obj["base_range"] = [
+                round(min(obj["years_lo"][0] / ph[0], obj["base"]), 5),
+                round(max(obj["years_hi"][0] / pl[0], obj["base"]), 5),
+            ]
+            ms = [d["multiplier_vs_2021"][str(y)] for y in YEARS[1:]]
+            obj["bmul"] = [1.0] + [m["central"] for m in ms]
+            obj["bmul_lo"] = [1.0] + [min(m["low"], m["central"]) for m in ms]
+            obj["bmul_hi"] = [1.0] + [max(m["high"], m["central"]) for m in ms]
+            obj["cf"] = cf["chosen"].get(key, {}).get("model", "rw") if iso3 not in HUBS_CF else "rw"
+            obj["src"] = [x for x in obj.get("src", []) if x not in ("trend", "trend2")] + [sid]
+
+
+HUBS_CF = {"ARM", "GEO", "KAZ", "KGZ", "UZB", "TUR", "AZE", "MNG", "TJK", "SRB", "ARE", "BLR"}
 
 LAUNDERED_PREWAR = json.loads(
     (Path(__file__).resolve().parent.parent / "research/2026-10/gaps/round4a.json").read_text()
@@ -1492,7 +1534,8 @@ def apply_audit2(countries: dict[str, dict], src: Sources, stage: str) -> None:
                     obj["src"].append(aid2)
             elif stage == "trends" and x["field"] == "bmul" and q["id"] == "Q5":
                 obj = c.get(x["series"])
-                if not obj or not obj.get("bmul"):
+                # corrections to the old trends; the back-tested counterfactual replaces them
+                if not obj or not obj.get("bmul") or obj.get("cf"):
                     continue
                 i = YEARS.index(int(x["year"]))
                 obj["bmul"][i], obj["bmul_lo"][i], obj["bmul_hi"][i] = (

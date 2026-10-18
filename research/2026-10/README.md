@@ -101,3 +101,21 @@ Method choices made in this round:
 - **Refugee costs** for 27 hosts come from government budgets and audit offices instead of the GDP-per-person model (US, Canada, Spain, Italy and others fall; Germany and Norway rise). Moldova's figures are its own costs, net of donors.
 - **Belarus** reports its full trade with Russia, so its share of Russia's unexplained imports is spread over the other countries.
 - **Artefacts**: Lebanon's baseline leaves out 2019 (fuel bought for smuggling); Mauritania's pre-war fuel was traders' origin labels; Saint Lucia's and Bonaire's Russian fuel went to storage terminals; Botswana's rough diamonds were bought for resale; Seychelles shipping managers are fronts; Malta's suppressed services data are filled.
+
+### Counterfactual: back-tested models instead of trends
+
+`gaps/counterfactual.json` (notes: `gaps/counterfactual-notes.md`) tested 16 ways to predict trade with Russia and Ukraine without the war. Back-tests started in 2008, 2013 and 2016 and predicted 1–5 years ahead. A model replaced "hold 2021 flat" only where it beat it by 15% in every test, or by 15% on average with no test worse.
+
+- **Exports to Russia:** linear nowcast from the country's other trade, GDP, volumes, pre-war commodity price paths and momentum, about 18% more accurate.
+- **Trade with Ukraine:** linear nowcast for purchases and a random forest for sales. The evidence is weaker: two tests only.
+- **Imports from Russia and services:** 2021 held flat. Services add the travel recovery from COVID. No model passed, because these flows depend on Russia's side.
+- **Re-export hubs and Belarus:** 2021 held flat.
+
+`counterfactual()` in `build_data.py` applies this. For these flows:
+
+- The pre-war level is 2021 at 2019–2021 prices. The old 2019–2021 average is kept as `base_2019_2021_avg`.
+- `bmul` carries the back-tested 90% interval, so the expected path is never treated as exact.
+- It replaces the trend.json and trend2.json trends, and the audit-2 Q5 trend corrections, for these flows.
+- Company taxes, shipping and the few countries without a model keep their trends.
+
+Effect on the map: middle values change little (Germany +4.8% to +4.7%, China −1.1% to −1.6%, Hungary −5.6% to −6.7%). Ranges are about 1.5–2 times wider.

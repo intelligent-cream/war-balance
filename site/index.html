@@ -498,7 +498,7 @@ function triple(obj, key) {
   // price level per year against 2019-2021 (= 1): changes against the pre-war level compare volumes, not price swings
   const ones = YEARS.map(() => 1);
   const p = obj && obj.pidx ? obj.pidx : ones, pl = obj && obj.pidx_lo ? obj.pidx_lo : p, ph = obj && obj.pidx_hi ? obj.pidx_hi : p;
-  // pre-war trend: where trade was already growing or shrinking, the counterfactual follows that trend (1 = flat)
+  // expected path without the war against the pre-war level (1 = flat): the back-tested counterfactual, or a pre-war trend
   const q = obj && obj.bmul ? obj.bmul : ones, ql = obj && obj.bmul_lo ? obj.bmul_lo : q, qh = obj && obj.bmul_hi ? obj.bmul_hi : q;
   // 2021 alone is an alternative baseline, at pre-war prices
   return { c, l, h, m, b: [Math.min(b[0], l[0] / ph[0], m), Math.max(b[1], h[0] / pl[0], m)], p, pl, ph, q, ql, qh };
@@ -852,7 +852,7 @@ function paint() {
     <div class="flowkey" ${state.flows ? "" : "hidden"}>
       <span><svg width="28" height="8"><line x1="0" y1="4" x2="28" y2="4" stroke="${C.ukr}" stroke-width="3" stroke-linecap="round"/><circle cx="18" cy="4" r="3" fill="${C.ukr}"/></svg>${t("To Ukraine in {y}", { y: state.year })}</span>
       <span><svg width="28" height="8"><line x1="0" y1="4" x2="28" y2="4" stroke="${C.rus}" stroke-width="3" stroke-linecap="round"/><circle cx="18" cy="4" r="3" fill="${C.rus}"/></svg>${t("To Russia in {y}", { y: state.year })}</span>
-      <span><svg width="28" height="8"><line x1="0" y1="4" x2="28" y2="4" stroke="${C["ink-soft"]}" stroke-width="5" stroke-opacity="0.3" stroke-linecap="round"/></svg>${t("To Russia before the war (2019–2021 average)")}</span>
+      <span><svg width="28" height="8"><line x1="0" y1="4" x2="28" y2="4" stroke="${C["ink-soft"]}" stroke-width="5" stroke-opacity="0.3" stroke-linecap="round"/></svg>${t("To Russia before the war (2021)")}</span>
       <span><svg width="28" height="8"><line x1="0" y1="4" x2="28" y2="4" stroke="${C.back}" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 5"/><circle cx="10" cy="4" r="3" fill="${C.back}"/></svg>${t("Flowing back from Ukraine")}</span>
     </div>`;
   document.getElementById("legend-toggle").onclick = () => { leg.dataset.collapsed = leg.dataset.collapsed === "true" ? "false" : "true"; paint(); };
@@ -1237,14 +1237,14 @@ function countryPanel(c) {
       ${miniChart(c.T.soldRus, "sold", t("Sold to Russia"), c.from_rus?.src)}
       ${miniChart(c.T.buyUkr, "ukr", t("Bought from Ukraine"), c.buy_ukr?.src)}
       ${miniChart(c.T.sellUkr, "back", t("Sold to Ukraine"), c.sell_ukr?.src)}
-      <div class="key" style="margin-top:8px">${t("Dashed line: the pre-war level (2019–2021 average). Blue shading helps Ukraine, orange helps Russia, grey is a drop caused by the war (not counted), ochre is extra sales to Ukraine (money flowing back). 2026 (open dot) is January to August shown as a yearly rate; where a source has not published 2026 yet, it is projected from 2025.")}</div>
+      <div class="key" style="margin-top:8px">${t("Dashed line: the level expected without the war (from 2021, by the best back-tested model). Blue shading helps Ukraine, orange helps Russia, grey is a drop caused by the war (not counted), ochre is extra sales to Ukraine (money flowing back). 2026 (open dot) is January to August shown as a yearly rate; where a source has not published 2026 yet, it is projected from 2025.")}</div>
     </section>
     ${aidCats.length ? `<section class="section"><h3>${t("Aid to Ukraine by type")}</h3><div class="kv">${aidCats.map(([k2, v]) => `<span>${t({ military: "Military", financial: "Financial", humanitarian: "Humanitarian" }[k2] || k2)}${chip(c.aid.cert || "A")}${ref(c.aid.src)}</span><span class="v">${eur(v)}</span>`).join("")}</div></section>` : ""}
     ${companies}
     ${pp.length ? `<section class="section"><h3>${t("People")}</h3><div class="people">${pp.join("")}</div></section>` : ""}
     ${details.length ? `<details class="more"><summary>${t("More details")}</summary><div class="kv">${details.join("")}</div></details>` : ""}
     <details class="more"><summary>${t("How this is calculated")}</summary><ul class="how">
-      <li>${t("<b>Pre-war level</b> = the 2019–2021 average for each flow. 2021 alone and the 2019–2021 trend widen the range. Trade that already existed before the war does not count; a fall in trade with Ukraine caused by the war is not held against a country.")}</li>
+      <li>${t("<b>Pre-war level</b> = 2021 at 2019–2021 prices for trade and services (company taxes: the 2018–2021 average). What would have happened without the war is predicted from it: imports from Russia and services keep the 2021 level (services with the travel recovery after COVID); exports to Russia and trade with Ukraine follow each country's other trade and GDP, which predicted better than holding 2021 flat in back-tests from 2008, 2013 and 2016. The tested error of that prediction is part of every range. Trade that already existed before the war does not count; a fall in trade with Ukraine caused by the war is not held against a country.")}</li>
       <li>${t("<b>Change since before the war</b> (the main map) = aid (incl. undisclosed estimates and EU-level aid by budget share) + private donations + refugee hosting + purchases from Ukraine above the pre-war level + the drop in payments to Russia for goods and services + sales to Russia given up + less tax paid in Russia by companies based here, minus gold and hidden payments, weapons sent to Russia and anything bought from or sold to Russia above the pre-war level{back}.", { back: state.netBack ? t(", minus money flowing back from Ukraine") : "" })}</li>
       <li>${t("<b>Cost carried</b> = only what the country gave up: aid (loans at grant equivalent; loans repaid from frozen Russian assets cost nothing) + undisclosed aid + private donations + refugee hosting + extra price for replacing Russian energy + profit lost on goods and services no longer sold to Russia + tariffs dropped for Ukraine − discounts gained on Russian oil{back}. Buying less from Russia is not a cost in itself.", { back: state.netBack ? t(" − profit on money flowing back (20%, the same profit share as lost sales)") : "" })}</li>
       <li>${t("<b>% of GDP</b> is the total for the whole period (2022 up to the chosen year; 2026 is January to August) against one year's GDP (2024). Example: 10% means the country moved, over the whole war, as much as a tenth of one year's output.")}</li>
@@ -1343,7 +1343,7 @@ function targetPanel(side) {
     <section class="section"><h3>${t("As on the map: change since before the war, toward Russia")}</h3>
       ${measureTabs()}
       ${rankList(list, c => -K.get(c).shift, state.rankMeasure, () => "var(--rus)", 20, c => [-K.get(c).shiftHi, -K.get(c).shiftLo])}
-      <p class="key" style="margin-top:8px">${t("More paid to Russia and more sold to Russia than before the war (2019–2021 average), plus weapons and troops sent, minus any aid to Ukraine. Trade hubs (Armenia, Kyrgyzstan, Georgia) rank high because re-exports to Russia passed through them.")}</p>
+      <p class="key" style="margin-top:8px">${t("More paid to Russia and more sold to Russia than before the war (2021), plus weapons and troops sent, minus any aid to Ukraine. Trade hubs (Armenia, Kyrgyzstan, Georgia) rank high because re-exports to Russia passed through them.")}</p>
     </section>
     <section class="section"><h3>${t("Most money still reaching Russia")}</h3>
       ${rankList(list, c => K.get(c).paidRussia, state.rankMeasure, () => "var(--rus)", 10)}
