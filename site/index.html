@@ -199,15 +199,17 @@ button, input, select { font: inherit; color: inherit; }
 .big-cap { font-size: 13.5px; color: var(--ink-soft); margin-top: 4px; line-height: 1.4; }
 .big-cap b { color: var(--ink); font-weight: 600; }
 .wf { display: grid; gap: 7px; margin-top: 14px; }
-.wf-row { display: grid; grid-template-columns: minmax(0, 1fr) 118px; gap: 2px 10px; align-items: center; font-size: 13px; }
+.wf-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; align-items: center; font-size: 13px; }
 .wf-row .val { font-family: var(--font-data); font-size: 12.5px; text-align: right; font-variant-numeric: tabular-nums; }
 .wf-row .val small, .kv .v small { display: block; font-size: 10.5px; color: var(--ink-soft); }
-.wf-row .track .whisker { position: absolute; top: 4px; height: 2px; background: var(--ink); opacity: 0.7; }
-.wf-row .track .whisker::before, .wf-row .track .whisker::after { content: ''; position: absolute; top: -4px; width: 2px; height: 10px; background: var(--ink); }
-.wf-row .track .whisker::after { right: 0; }
-.wf-row .track { grid-column: 1 / -1; position: relative; height: 10px; }
-.wf-row .track .axis { position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--ink-soft); opacity: 0.5; }
-.wf-row .track .seg2 { position: absolute; top: 0; bottom: 0; border-radius: 2px; }
+.wf-row .val small { white-space: nowrap; }
+.wf-row .track { grid-column: 1 / -1; position: relative; height: 14px; }
+/* the likely range: a pale band in the part's own colour, behind the bar */
+.wf-row .track .band { position: absolute; top: 0; bottom: 0; border-radius: 3px; opacity: 0.22; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .wf-row .track .band { opacity: 0.32; } }
+:root[data-theme="dark"] .wf-row .track .band { opacity: 0.32; }
+.wf-row .track .axis { position: absolute; top: -2px; bottom: -2px; width: 1px; background: var(--ink-soft); opacity: 0.6; }
+.wf-row .track .seg2 { position: absolute; top: 4px; bottom: 4px; border-radius: 2px; }
 .wf-row.total { font-weight: 600; padding-top: 6px; border-top: 1px solid var(--line); }
 .costs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
 .costs > div { border: 1px solid var(--line); border-radius: 8px; padding: 8px 9px; min-width: 0; }
@@ -1116,12 +1118,13 @@ function waterfall(parts, total, totalLabel, totalLo, totalHi) {
   const bar = (a, b, col, op = 1) => `<div class="seg2" style="left:${x(Math.min(a, b))}%;width:${Math.max(0.8, Math.abs(x(b) - x(a)))}%;background:${col};opacity:${op}"></div>`;
   const axis = `<div class="axis" style="left:${x(0)}%"></div>`;
   const rng = (a, b) => `<small>${rangeTxt(a, b)}</small>`;
-  const whisker = (l, h) => l == null ? "" : `<div class="whisker" style="left:${x(Math.min(l, h))}%;width:${Math.max(0.8, Math.abs(x(h) - x(l)))}%"></div>`;
+  const band = (l, h, col) => l == null ? "" : `<div class="band" style="left:${x(Math.min(l, h))}%;width:${Math.max(0.8, Math.abs(x(h) - x(l)))}%;background:${col}"></div>`;
+  const colOf = s => ["own", "purl", "sell", "arms"].includes(s.k) ? "var(--back)" : s.v >= 0 ? "var(--ukr)" : "var(--rus)";
   const upto = Math.max(2022, state.year);
-  return `<div class="wf"><div class="key">${t("Totals for 2022–{y}{ytd}, all years added up. Bar: each part; line with end marks: its likely range.", { y: upto, ytd: upto === 2026 && FRAC[5] < 1 ? t(" (2026 year to date, Jan–Aug)") : "" })}</div>${parts.map(s => `<div class="wf-row"><span>${s.label}${chip(s.cert)}${ref(s.src)}</span><span class="val">${eur(s.v, true)}${s.lo != null ? rng(s.lo, s.hi) : ""}</span>
-      <div class="track">${axis}${bar(0, s.v, ["own", "purl", "sell", "arms"].includes(s.k) ? "var(--back)" : s.v >= 0 ? "var(--ukr)" : "var(--rus)", s.cert === "C" || s.cert === "D" ? 0.6 : 1)}${whisker(s.lo, s.hi)}</div></div>`).join("")}
+  return `<div class="wf"><div class="key">${t("Totals for 2022–{y}{ytd}, all years added up. Bar: each part; pale band: its likely range.", { y: upto, ytd: upto === 2026 && FRAC[5] < 1 ? t(" (2026 year to date, Jan–Aug)") : "" })}</div>${parts.map(s => `<div class="wf-row"><span>${s.label}${chip(s.cert)}${ref(s.src)}</span><span class="val">${eur(s.v, true)}${s.lo != null ? rng(s.lo, s.hi) : ""}</span>
+      <div class="track">${band(s.lo, s.hi, colOf(s))}${axis}${bar(0, s.v, colOf(s), s.cert === "C" || s.cert === "D" ? 0.75 : 1)}</div></div>`).join("")}
     <div class="wf-row total"><span>${totalLabel}</span><span class="val">${eur(total, true)}${totalLo != null ? `<small>${rangeTxt(totalLo, totalHi)}</small>` : ""}</span>
-      <div class="track">${axis}${bar(0, total, total >= 0 ? "var(--ukr)" : "var(--rus)")}${whisker(totalLo, totalHi)}</div></div></div>`;
+      <div class="track">${band(totalLo, totalHi, total >= 0 ? "var(--ukr)" : "var(--rus)")}${axis}${bar(0, total, total >= 0 ? "var(--ukr)" : "var(--rus)")}</div></div></div>`;
 }
 function miniChart(tr, colour, title, srcIds) {
   const years = tr.c;
