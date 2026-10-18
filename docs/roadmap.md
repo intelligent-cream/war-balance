@@ -11,7 +11,7 @@ changes. Status is updated as items are done; the [changelog](changelog.md) reco
 | 2 | Turkey's prices from Russian export data and tanker tracking | Turkey's payments to Russia and windfall | researching |
 | 3 | Belarus's re-exports to Russia moved to the countries that made the goods | Belarus, China, Türkiye, EU | researching |
 | 4 | A Belarus-specific counterfactual tested on its own 2008–2021 history | Belarus's range | researching |
-| 5 | Laundered oil per EU country from per-country studies | EU members, fuel hubs | researching |
+| 5 | Laundered oil per EU country from per-country studies | EU members, fuel hubs | done: customs-based per member ([energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#per-country-values-for-the-eu-usa-uk-and-australia-round-5)) |
 | 6 | Shadow-fleet ownership and control | shipping profit by country | done: freight by real controller ([services-shipping-companies.md](method/services-shipping-companies.md#shipping)) |
 | 7 | Refugee costs for more hosts; Poland's 2022 count | refugee hosts | researching |
 | 8 | Newer 2026 trade data | fewer `*` estimates | researching |

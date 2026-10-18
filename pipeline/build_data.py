@@ -44,7 +44,7 @@ HUB_RESALE = {hub: (d["low"], d["central"], d["high"]) for hub, d in E2["hub_res
 EUR_PER_MT_2021 = {"crude": 0.414, "products": 0.549, "gas": 0.583, "lng": 0.583, "coal": 0.130}
 FUEL_INDEX = {"crude": "urals", "products": "products", "gas": "pipeline_gas", "lng": "lng", "coal": "coal"}
 # ... and only the Russian crude inside the fuel is money for Russia, bought at a discount (low, middle, high share)
-CRUDE_CONTENT = (0.6, 0.68, 0.75)
+CRUDE_CONTENT = (0.42, 0.5, 0.6)  # Russian crude per euro of fuel made from it (CREA: 4.2 of 8.5bn; laundered_eu.json)
 # laundered oil can not exceed what an economy can use: capped at a share of GDP per year (middle, high); the fuel model
 # otherwise assigns fuel to ship registries and storage points (Marshall Islands, Liberia)
 LAUNDERED_CAP = (0.01, 0.02)
@@ -523,6 +523,7 @@ def build() -> dict:
         if c and not c.get("gdp") and (d.get("gdp_eur_bn") or {}).get("central"):
             c["gdp"], c["pop"] = d["gdp_eur_bn"]["central"], (d.get("pop_m") or {}).get("central")
     reassign_laundered_oil(countries, laundered, src)
+    apply_laundered_eu(countries, src)
     # refiners: the Russian crude in the fuel Turkey and India export is counted at the buyers (laundered oil),
     # so it is taken out of the refiner's own payments to Russia; they keep what they use themselves
     hb = load(GAPS / "hub_buyers.json")
@@ -1277,6 +1278,38 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
 LAUNDERED_PREWAR = json.loads(
     (Path(__file__).resolve().parent.parent / "research/2026-10/gaps/round4a.json").read_text()
 )["laundered_prewar"]
+
+
+def apply_laundered_eu(countries: dict[str, dict], src: Sources) -> None:
+    """Laundered oil of EU members (and the USA, UK and Australia) from customs records of fuel imports by origin x the
+    Russian-crude share of each origin's exports (laundered_eu.json, round 5), at the final consumer after the ARA hubs
+    resell. Replaces the modelled values, which got the EU total right but the split between members wrong."""
+    le = load(GAPS / "laundered_eu.json")
+    sid = src.add(
+        "laundered_eu",
+        "Fuel made from Russian crude per EU member: Eurostat Comext HS 2710 imports by origin, refinery Russian-crude shares, CREA per-country checks",
+        "https://ec.europa.eu/eurostat/comext/newxtweb/",
+        le.get("generated"),
+        "final consumer after Dutch and Belgian resale; see research/2026-10/gaps/laundered_eu-notes.md",
+    )
+    rows = {
+        i: (d["final_consumer_russian_crude_eur_bn"], d.get("base_2019_2021_final_consumer"), d.get("certainty"))
+        for i, d in le["countries"].items()
+    }
+    rows |= {
+        i: (d["years"], None, d.get("certainty")) for i, d in (le.get("non_eu") or {}).items() if d and d.get("years")
+    }
+    for iso3, (ys, base, cert) in rows.items():
+        c = countries.get(iso3)
+        if not c:
+            continue
+        lb = c.setdefault("laund", {"base": 0.0, "base_range": [0.0, 0.0], "src": []})
+        for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
+            lb[k] = [round(ys[str(y)][b], 5) for y in YEARS]
+        if base:
+            lb["base"], lb["base_range"] = base["central"], [base["low"], base["high"]]
+        lb["cert"] = (cert or "C")[0]
+        lb["src"] = [sid]
 
 
 def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict], src: Sources) -> None:
