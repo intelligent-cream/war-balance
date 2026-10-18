@@ -1559,6 +1559,20 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
         d = flows.get("to_rus")
         if d and iso3 not in own and d.get("size_class") in cls and d.get("multiplier_vs_2021"):
             d["multiplier_vs_2021"] = cls[d["size_class"]]["multiplier_vs_2021"]
+    # round 8: buyers of Russian fuel mainly by pipeline (Druzhba crude plus pipeline gas) had steady physical volumes
+    # before the war; their band is measured on tonnes and terajoules, combined with other goods by fuel share and
+    # calibrated by era (fuel_volume_cf.json). Poland had notified in 2019 that its Yamal gas contract would end in
+    # 2022, so its no-war path drops the gas from 2023 (a decision taken before the war)
+    fv = load(GAPS / "fuel_volume_cf.json")["countries"]
+    for iso3, d in fv.items():
+        tr = (cf["countries"].get(iso3) or {}).get("to_rus")
+        if d.get("status") != "new" or not tr:
+            continue
+        alt = (d.get("central_alternative") or {}).get("multiplier_vs_2021") or {}
+        tr["multiplier_vs_2021"] = {
+            y: {b: v * alt.get(y, 1.0) for b, v in m.items()} for y, m in d["multiplier_vs_2021"].items()
+        }
+        tr["cumulative_band"] = d["cumulative_band"]
     for iso3, flows in bands["countries"].items():
         for key, d in flows.items():
             cf["countries"].setdefault(iso3, {}).setdefault(key, {}).update(
