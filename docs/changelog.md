@@ -70,6 +70,26 @@ Applied after a review of round 4 (section "Review fixes" in the [research log](
 
 Headline numbers after these fixes (2022–Aug 2026, % of a year's GDP): Germany +4.8%, Poland +10.0%, China −1.6%, India −5.1%, Hungary −6.7%, UAE −1.5%.
 
+## Round 5
+
+The [round 5 roadmap](roadmap.md) in full. Research:
+
+- **New money flows to Russia:** Russian arms sales against the expected level; Rosatom construction and Russia's state
+  loans; exit payments of companies leaving Russia; profits of Russian-owned companies abroad
+  ([russia-state-and-companies.md](method/russia-state-and-companies.md)).
+- **Aid valued for Ukraine:** loans at their economic value (grant element at 10%), multilateral lending by
+  shareholding, donated weapons at market value, refugees at net cost (minus their taxes), Poland's refugee spending
+  corrected ([aid-refugees-military.md](method/aid-refugees-military.md)).
+- **Flowback:** arms Ukraine bought abroad count for the seller (Czechia, Bulgaria, the US).
+- **Better data:** tanker freight by real controller; laundered oil per EU member from customs; Türkiye's prices from
+  contract terms and EPDK volumes; actual January–August 2026 trade for 32 economies; ERA loans in the year paid;
+  Belarus's re-exports and its own error band.
+- **Code:** measured correlations between parts' errors; one price base (2019–2021); bars from zero with capped range
+  lines; data-coverage notes load after the map; data text translatable.
+
+Headline effects: Poland +10.0% → +7.1% of GDP (refugees), Türkiye −6.0% → −6.6% (prices), Hungary −6.7% → −7.6%,
+Germany +4.8% → +4.3%, Japan +0.91% → +0.76% (loans), Belarus's range −79% to +51% → −58% to +19%.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open
