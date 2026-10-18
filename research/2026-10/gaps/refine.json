@@ -1,0 +1,1144 @@
+{
+ "generated": "2026-10-18",
+ "shipping_control": {
+  "ARE": {
+   "2022": {
+    "foreign_share": {
+     "low": 0.05,
+     "central": 0.15,
+     "high": 0.3
+    },
+    "hub_managed_share_of_seaborne_volume": 0.1226,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0049,
+     "central": 0.0184,
+     "high": 0.046
+    },
+    "current_model_share": 0.06,
+    "freight_scale_vs_current_model": {
+     "low": 0.08,
+     "central": 0.31,
+     "high": 0.77
+    },
+    "method": "kse_volume"
+   },
+   "2023": {
+    "foreign_share": {
+     "low": 0.1,
+     "central": 0.2,
+     "high": 0.3
+    },
+    "hub_managed_share_of_seaborne_volume": 0.1789,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0143,
+     "central": 0.0358,
+     "high": 0.0671
+    },
+    "current_model_share": 0.1276,
+    "freight_scale_vs_current_model": {
+     "low": 0.11,
+     "central": 0.28,
+     "high": 0.53
+    },
+    "method": "kse_volume"
+   },
+   "2024": {
+    "foreign_share": {
+     "low": 0.15,
+     "central": 0.25,
+     "high": 0.35
+    },
+    "hub_managed_share_of_seaborne_volume": 0.1846,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0222,
+     "central": 0.0461,
+     "high": 0.0808
+    },
+    "current_model_share": 0.1679,
+    "freight_scale_vs_current_model": {
+     "low": 0.13,
+     "central": 0.27,
+     "high": 0.48
+    },
+    "method": "kse_volume"
+   },
+   "2025": {
+    "foreign_share": {
+     "low": 0.18,
+     "central": 0.32,
+     "high": 0.45
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0967,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0139,
+     "central": 0.0309,
+     "high": 0.0544
+    },
+    "current_model_share": 0.155,
+    "freight_scale_vs_current_model": {
+     "low": 0.09,
+     "central": 0.2,
+     "high": 0.35
+    },
+    "method": "kse_volume"
+   },
+   "2026": {
+    "foreign_share": {
+     "low": 0.1,
+     "central": 0.2,
+     "high": 0.32
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0675,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0054,
+     "central": 0.0135,
+     "high": 0.027
+    },
+    "current_model_share": 0.1742,
+    "freight_scale_vs_current_model": {
+     "low": 0.03,
+     "central": 0.08,
+     "high": 0.16
+    },
+    "method": "kse_volume"
+   }
+  },
+  "IND": {
+   "2022": {
+    "foreign_share": {
+     "low": 0.2,
+     "central": 0.45,
+     "high": 0.75
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0066,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0158,
+     "central": 0.0263,
+     "high": 0.0394
+    },
+    "current_model_share": 0.0263,
+    "freight_scale_vs_current_model": {
+     "low": 0.6,
+     "central": 1.0,
+     "high": 1.5
+    },
+    "method": "current_model_kept_no_new_volume_evidence"
+   },
+   "2023": {
+    "foreign_share": {
+     "low": 0.25,
+     "central": 0.5,
+     "high": 0.75
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0327,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0244,
+     "central": 0.0435,
+     "high": 0.0682
+    },
+    "current_model_share": 0.0705,
+    "freight_scale_vs_current_model": {
+     "low": 0.35,
+     "central": 0.62,
+     "high": 0.97
+    },
+    "method": "average_of_kse_volume_and_model_gross"
+   },
+   "2024": {
+    "foreign_share": {
+     "low": 0.3,
+     "central": 0.55,
+     "high": 0.8
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0268,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0064,
+     "central": 0.0147,
+     "high": 0.0268
+    },
+    "current_model_share": 0.0882,
+    "freight_scale_vs_current_model": {
+     "low": 0.07,
+     "central": 0.17,
+     "high": 0.3
+    },
+    "method": "kse_volume"
+   },
+   "2025": {
+    "foreign_share": {
+     "low": 0.3,
+     "central": 0.55,
+     "high": 0.8
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0369,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0088,
+     "central": 0.0203,
+     "high": 0.0369
+    },
+    "current_model_share": 0.075,
+    "freight_scale_vs_current_model": {
+     "low": 0.12,
+     "central": 0.27,
+     "high": 0.49
+    },
+    "method": "kse_volume"
+   },
+   "2026": {
+    "foreign_share": {
+     "low": 0.3,
+     "central": 0.55,
+     "high": 0.8
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0338,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0081,
+     "central": 0.0186,
+     "high": 0.0338
+    },
+    "current_model_share": 0.0818,
+    "freight_scale_vs_current_model": {
+     "low": 0.1,
+     "central": 0.23,
+     "high": 0.41
+    },
+    "method": "kse_volume"
+   }
+  },
+  "CHN": {
+   "2022": {
+    "foreign_share": {
+     "low": 0.6,
+     "central": 0.8,
+     "high": 0.92
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0118,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0233,
+     "central": 0.0389,
+     "high": 0.0583
+    },
+    "current_model_share": 0.0389,
+    "freight_scale_vs_current_model": {
+     "low": 0.6,
+     "central": 1.0,
+     "high": 1.5
+    },
+    "method": "current_model_kept_no_new_volume_evidence"
+   },
+   "2023": {
+    "foreign_share": {
+     "low": 0.6,
+     "central": 0.8,
+     "high": 0.92
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0258,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0232,
+     "central": 0.0387,
+     "high": 0.0574
+    },
+    "current_model_share": 0.0568,
+    "freight_scale_vs_current_model": {
+     "low": 0.41,
+     "central": 0.68,
+     "high": 1.01
+    },
+    "method": "average_of_kse_volume_and_model_gross"
+   },
+   "2024": {
+    "foreign_share": {
+     "low": 0.6,
+     "central": 0.8,
+     "high": 0.92
+    },
+    "hub_managed_share_of_seaborne_volume": 0.07,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0336,
+     "central": 0.056,
+     "high": 0.0805
+    },
+    "current_model_share": 0.0681,
+    "freight_scale_vs_current_model": {
+     "low": 0.49,
+     "central": 0.82,
+     "high": 1.18
+    },
+    "method": "kse_volume"
+   },
+   "2025": {
+    "foreign_share": {
+     "low": 0.6,
+     "central": 0.8,
+     "high": 0.92
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0705,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0339,
+     "central": 0.0564,
+     "high": 0.0811
+    },
+    "current_model_share": 0.0783,
+    "freight_scale_vs_current_model": {
+     "low": 0.43,
+     "central": 0.72,
+     "high": 1.04
+    },
+    "method": "kse_volume"
+   },
+   "2026": {
+    "foreign_share": {
+     "low": 0.6,
+     "central": 0.8,
+     "high": 0.92
+    },
+    "hub_managed_share_of_seaborne_volume": 0.1116,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0536,
+     "central": 0.0893,
+     "high": 0.1283
+    },
+    "current_model_share": 0.1164,
+    "freight_scale_vs_current_model": {
+     "low": 0.46,
+     "central": 0.77,
+     "high": 1.1
+    },
+    "method": "kse_volume"
+   }
+  },
+  "HKG": {
+   "2022": {
+    "foreign_share": {
+     "low": 0.4,
+     "central": 0.65,
+     "high": 0.85
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0091,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.018,
+     "central": 0.03,
+     "high": 0.045
+    },
+    "current_model_share": 0.03,
+    "freight_scale_vs_current_model": {
+     "low": 0.6,
+     "central": 1.0,
+     "high": 1.5
+    },
+    "method": "current_model_kept_no_new_volume_evidence"
+   },
+   "2023": {
+    "foreign_share": {
+     "low": 0.4,
+     "central": 0.65,
+     "high": 0.85
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0276,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0227,
+     "central": 0.0394,
+     "high": 0.0604
+    },
+    "current_model_share": 0.0609,
+    "freight_scale_vs_current_model": {
+     "low": 0.37,
+     "central": 0.65,
+     "high": 0.99
+    },
+    "method": "average_of_kse_volume_and_model_gross"
+   },
+   "2024": {
+    "foreign_share": {
+     "low": 0.4,
+     "central": 0.65,
+     "high": 0.85
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0819,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0262,
+     "central": 0.0533,
+     "high": 0.0871
+    },
+    "current_model_share": 0.0797,
+    "freight_scale_vs_current_model": {
+     "low": 0.33,
+     "central": 0.67,
+     "high": 1.09
+    },
+    "method": "kse_volume"
+   },
+   "2025": {
+    "foreign_share": {
+     "low": 0.4,
+     "central": 0.65,
+     "high": 0.85
+    },
+    "hub_managed_share_of_seaborne_volume": 0.072,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0231,
+     "central": 0.0468,
+     "high": 0.0765
+    },
+    "current_model_share": 0.08,
+    "freight_scale_vs_current_model": {
+     "low": 0.29,
+     "central": 0.58,
+     "high": 0.96
+    },
+    "method": "kse_volume"
+   },
+   "2026": {
+    "foreign_share": {
+     "low": 0.4,
+     "central": 0.65,
+     "high": 0.85
+    },
+    "hub_managed_share_of_seaborne_volume": 0.0973,
+    "implied_foreign_share_of_crude_products_freight": {
+     "low": 0.0311,
+     "central": 0.0632,
+     "high": 0.1034
+    },
+    "current_model_share": 0.1015,
+    "freight_scale_vs_current_model": {
+     "low": 0.31,
+     "central": 0.62,
+     "high": 1.02
+    },
+    "method": "kse_volume"
+   }
+  },
+  "freight_per_bbl": {
+   "unit": "USD per barrel, long-haul crude (Baltic/Black Sea to India/China), annual average; and suggested crude freight pool, USD bn",
+   "long_haul_crude_usd_per_bbl": {
+    "2022": {
+     "low": 8,
+     "central": 12,
+     "high": 17
+    },
+    "2023": {
+     "low": 9,
+     "central": 11.5,
+     "high": 14
+    },
+    "2024": {
+     "low": 6.5,
+     "central": 8,
+     "high": 10
+    },
+    "2025": {
+     "low": 5.5,
+     "central": 7,
+     "high": 9
+    },
+    "2026": {
+     "low": 13,
+     "central": 17.5,
+     "high": 22
+    }
+   },
+   "suggested_crude_pool_usd_bn": {
+    "2022": {
+     "low": 6.0,
+     "central": 8.5,
+     "high": 12.0
+    },
+    "2023": {
+     "low": 8.5,
+     "central": 11.0,
+     "high": 13.5
+    },
+    "2024": {
+     "low": 6.5,
+     "central": 8.1,
+     "high": 10.0
+    },
+    "2025": {
+     "low": 5.6,
+     "central": 7.2,
+     "high": 9.0
+    },
+    "2026": {
+     "low": 8.5,
+     "central": 11.0,
+     "high": 14.0
+    }
+   },
+   "verdict": "Pools for 2022-2025 confirmed (implied long-haul rates of USD 7-11.5/bbl match quotes); 2026 Jan-Aug raised from 9.7 to 11.0 bn because monthly quotes after the Hormuz closure (USD 22-31/bbl in March-April, record USD 23-26/bbl from Novorossiysk in early September) average about USD 17-18/bbl, not 15.5."
+  },
+  "sources": [
+   {
+    "name": "KSE Institute, Russian Shadow Fleet Tracker September 2026 (shadow fleet volume by country of ship/commercial manager and shadow vs white volumes, monthly Apr 2022-Aug 2026; read from chart geometry)",
+    "url": "https://sanctions.kse.ua/wp-content/uploads/2026/10/KSE_Shadow_Fleer_Tracker_SEP26.pdf",
+    "date": "2026-10-02"
+   },
+   {
+    "name": "KSE Institute, Russian Shadow Fleet Tracker March 2026 (registered-owner and manager charts; top managers Nova and Dreamer operate ex-Sovcomflot ships)",
+    "url": "https://sanctions.kse.ua/wp-content/uploads/2026/04/KSE_Shadow_fleet_tracker_MAR26.pdf",
+    "date": "2026-04-02"
+   },
+   {
+    "name": "KSE Institute, Russian Oil Tracker monthly issues Jun 2023-Sep 2026 (top-10 ship managers of shadow crude and products, kb/d)",
+    "url": "https://institute.kse.ua/wp-content/uploads/2026/10/rot_eng_september_2026.pdf",
+    "date": "2023-07 to 2026-10"
+   },
+   {
+    "name": "KSE Institute, Russian Oil Tracker June 2023 (Sun Ship Management 74% of shadow crude in Apr 2022, 50% in Apr 2023; monthly Sun Ship volumes)",
+    "url": "https://kse-ua-prod-media.fra1.digitaloceanspaces.com/wp-content/uploads/2023/07/08120759/rot_june23.pdf",
+    "date": "2023-07"
+   },
+   {
+    "name": "KSE Institute, Assessing Russia's Shadow Fleet (June 2024): 2023 shadow volumes by manager (Sun Ship 25%, Oil Tankers SCF 9%); OFAC identified both as beneficially owned by the Russian state via Sovcomflot; Stream (46) and Fornax (23) took over ex-Sovcomflot tankers",
+    "url": "https://sanctions.kse.ua/wp-content/uploads/2024/06/Global-Shadow-Fleet-June-2024.pdf",
+    "date": "2024-06"
+   },
+   {
+    "name": "KSE Institute, The Core of Russia's Shadow Fleet (Aug 2024): 28 of 45 core crude tankers managed by UAE-based Stream Ship Management (ex-Sovcomflot); 11 of 16 UAE-managed core product tankers by Fornax",
+    "url": "https://sanctions.kse.ua/wp-content/uploads/2024/08/KSE_core_shadow_fleet.pdf",
+    "date": "2024-08"
+   },
+   {
+    "name": "KSE Institute, Emerging and Unsanctioned Russian Shadow Fleet Tankers (Sep 2025): vessel-level managers, owners, ISM managers",
+    "url": "https://sanctions.kse.ua/wp-content/uploads/2025/09/New-shadow-tankers-Overview.pdf",
+    "date": "2025-09"
+   },
+   {
+    "name": "KSE Institute, Assessment of measures targeting the shadow fleet (Jan 2026): Nova Shipmanagement (UAE) runs the former Sovcomflot fleet",
+    "url": "https://sanctions.kse.ua/wp-content/uploads/2026/01/KSE_Assessment_of_Measures_Targeting_Shadow_Fleet_Jan26.pdf",
+    "date": "2026-01-30"
+   },
+   {
+    "name": "War&Sanctions (GUR) vessel card ZALIV AMURSKIY: management moved from Stream Ship Management to Avebury Shipmanagement (UAE) in Oct 2024",
+    "url": "https://war-sanctions.gur.gov.ua/en/transport/ships/270",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "Reuters via MarineLink: 45 tankers moved to Dubai-based Oil Tankers SCF MGMT FZCO (Equasis)",
+    "url": "https://ws16.marinelink.com/news/russias-sovcomflot-transfers-ships-new-508512",
+    "date": "2023-10"
+   },
+   {
+    "name": "GTR on S&P Global: 23 new UAE companies with 28 ex-Russian tankers, 57% with no stated group beneficial owner",
+    "url": "https://www.gtreview.com/news/global/opaque-structures-hundreds-of-russia-linked-shipping-companies-formed-since-2022/",
+    "date": "2023-05-24"
+   },
+   {
+    "name": "TradeWinds / FT via Moneylife: Gatik Ship Management (Mumbai) fleet of 58 tankers, suspected Rosneft link",
+    "url": "https://moneylife.in/article/unknown-indian-company-shipping-millions-of-barrels-of-russian-oil-financial-times/70636.html",
+    "date": "2023"
+   },
+   {
+    "name": "Reuters via Baird Maritime: Urals freight Baltic-India USD 20-23m (Mar 2026), 16m (Apr 2026)",
+    "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+    "date": "2026-04-13"
+   },
+   {
+    "name": "Kommersant via Yerepouni: Novorossiysk-India USD 23.2/bbl, -China 25.7/bbl, record, week to 6 Sep 2026",
+    "url": "https://www.yerepouni-news.com/record-freight-costs-squeeze-russias-black-sea-crude-exports/",
+    "date": "2026-09-14"
+   },
+   {
+    "name": "KSE Russian Oil Tracker Feb/Mar 2024: Primorsk-West Coast India about USD 12/bbl Dec 2023-Feb 2024, up from 7.4 in early Oct 2023",
+    "url": "https://kse-ua-prod-media.fra1.digitaloceanspaces.com/wp-content/uploads/2024/04/08121943/rot_march24.pdf",
+    "date": "2024-04"
+   }
+  ],
+  "reasoning": "KSE publishes monthly shadow-fleet volumes by the country of the ship/commercial manager and names the top-10 managers. Measured from those series: UAE managers handled 723 kb/d of shadow volume in 2022 (12% of all Russian seaborne crude+products), 1,096 (18%) in 2023, 1,081 (18%) in 2024, 550 (10%) in 2025 and 376 (7%) in Jan-Aug 2026. Most of it is the Sovcomflot chain: Sun Ship Management and Oil Tankers SCF (OFAC: beneficially owned by the Russian state through Sovcomflot), then Stream, Fornax and Avebury, then Nova, Dreamer, Greenlight, Albatross, Grace, Lynx and Twister, which KSE and the GUR register identify as operators of former Sovcomflot tankers. Named Sovcomflot-chain managers alone carried 73-89% of UAE-managed shadow volume in 2023, about 69% in 2024, at least 57% in 2025 (plus 21% with unclear, probably Russian, owners such as Moonlight, Sterling and Starfish) and about 80% in 2026. Because only top-10 managers are named, these are lower bounds for the Russian-controlled part. So the UAE's truly foreign share is about 0.15-0.32, not 0.55. Russian-controlled tankers also use Hong Kong-named owner companies (Comitana, Insania, Vimena, Anchorstar Shipping HK), so the Hong Kong share is set lower than mainland China. Chinese managers mostly run Kozmino-China trips for private Chinese owners (Sunne, Prominent, Searun), with some sanctioned networks of serial single-ship managers. India: Gatik (2022-23, suspected Rosneft link) and later technical managers for Seychelles and Marshall Islands companies whose owners are unknown, so the central share stays near half with a wide range. The KSE volume series also shows the current model gives the UAE and India too large a gross share of the freight pool. implied_foreign_share_of_crude_products_freight is the hub-managed share of seaborne volume times the foreign share. freight_scale_vs_current_model is that share divided by the hub's share in shipping.json, and is the factor to apply to the hub's freight and to the owner-linked insurance, management and finance items. The removed amount moves to the Russian pool. For China, Hong Kong and India in 2022 (and half-weight in 2023) the KSE shadow series misses tankers that still had G7 insurance, so the current model share is kept with a wider range.",
+  "verdict": "Large move. The UAE's foreign share falls from 0.55 to about 0.20 (0.10-0.35), and once the KSE volume series is applied the UAE's freight income falls to roughly 0.3x the current model in 2022-2024, 0.2x in 2025 and 0.1x in 2026. India falls to about 0.2-0.6x and China and Hong Kong to about 0.6-0.8x from 2023. The ranges are narrower because they rest on measured manager volumes rather than a single guessed share.",
+  "old_value": "foreign_share 0.55 for ARE (45% of UAE-registered shadow tonnage judged Russian-controlled); the same assumption carried to HKG, IND, CHN"
+ },
+ "reexport_share": {
+  "ARM": {
+   "2022": {
+    "low": 0.732,
+    "central": 0.861,
+    "high": 0.99,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.796,
+    "old": 0.87
+   },
+   "2023": {
+    "low": 0.749,
+    "central": 0.881,
+    "high": 1.0,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.857,
+    "old": 0.87
+   },
+   "2024": {
+    "low": 0.767,
+    "central": 0.902,
+    "high": 1.0,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.877,
+    "old": 0.87
+   },
+   "2025": {
+    "low": 0.778,
+    "central": 0.915,
+    "high": 1.0,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.898,
+    "old": 0.87
+   },
+   "2026": {
+    "low": 0.661,
+    "central": 0.915,
+    "high": 1.0,
+    "old": 0.87,
+    "note": "no Comtrade HS data for this year; latest year carried forward with a wider range"
+   }
+  },
+  "KAZ": {
+   "2022": {
+    "low": 0.654,
+    "central": 0.77,
+    "high": 0.885,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.116,
+    "old": 0.75
+   },
+   "2023": {
+    "low": 0.714,
+    "central": 0.84,
+    "high": 0.966,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.609,
+    "old": 0.75
+   },
+   "2024": {
+    "low": 0.696,
+    "central": 0.819,
+    "high": 0.942,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.512,
+    "old": 0.75
+   },
+   "2025": {
+    "low": 0.711,
+    "central": 0.837,
+    "high": 0.963,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.596,
+    "old": 0.75
+   },
+   "2026": {
+    "low": 0.604,
+    "central": 0.837,
+    "high": 1.0,
+    "old": 0.75,
+    "note": "no Comtrade HS data for this year; latest year carried forward with a wider range"
+   }
+  },
+  "KGZ": {
+   "2022": {
+    "low": 0.537,
+    "central": 0.716,
+    "high": 0.895,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.623,
+    "old": 0.9
+   },
+   "2023": {
+    "low": 0.578,
+    "central": 0.77,
+    "high": 0.963,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.693,
+    "old": 0.9
+   },
+   "2024": {
+    "low": 0.565,
+    "central": 0.753,
+    "high": 0.941,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.414,
+    "old": 0.9
+   },
+   "2025": {
+    "low": 0.449,
+    "central": 0.598,
+    "high": 0.747,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.472,
+    "old": 0.9
+   },
+   "2026": {
+    "low": 0.382,
+    "central": 0.598,
+    "high": 0.822,
+    "old": 0.9,
+    "note": "no Comtrade HS data for this year; latest year carried forward with a wider range"
+   }
+  },
+  "TUR": {
+   "2022": {
+    "low": 0.204,
+    "central": 0.339,
+    "high": 0.547,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.329,
+    "old": 0.4
+   },
+   "2023": {
+    "low": 0.179,
+    "central": 0.308,
+    "high": 0.514,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.285,
+    "old": 0.4
+   },
+   "2024": {
+    "low": 0.174,
+    "central": 0.305,
+    "high": 0.513,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.266,
+    "old": 0.4
+   },
+   "2025": {
+    "low": 0.21,
+    "central": 0.356,
+    "high": 0.571,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.322,
+    "old": 0.4
+   },
+   "2026": {
+    "low": 0.178,
+    "central": 0.356,
+    "high": 0.628,
+    "old": 0.4,
+    "note": "no Comtrade HS data for this year; latest year carried forward with a wider range"
+   }
+  },
+  "UZB": {
+   "2022": {
+    "low": 0.621,
+    "central": 0.828,
+    "high": 1.0,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.246,
+    "old": 0.4
+   },
+   "2023": {
+    "low": 0.504,
+    "central": 0.672,
+    "high": 0.84,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.284,
+    "old": 0.4
+   },
+   "2024": {
+    "low": 0.461,
+    "central": 0.614,
+    "high": 0.767,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.234,
+    "old": 0.4
+   },
+   "2025": {
+    "low": 0.392,
+    "central": 0.614,
+    "high": 0.844,
+    "old": 0.4,
+    "note": "no Comtrade HS data for this year; latest year carried forward with a wider range"
+   },
+   "2026": {
+    "low": 0.392,
+    "central": 0.614,
+    "high": 0.844,
+    "old": 0.4,
+    "note": "no Comtrade HS data for this year; latest year carried forward with a wider range"
+   }
+  },
+  "AZE": {
+   "2022": {
+    "low": 0.314,
+    "central": 0.418,
+    "high": 0.522,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.314,
+    "old": 0.75
+   },
+   "2023": {
+    "low": 0.283,
+    "central": 0.378,
+    "high": 0.473,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.27,
+    "old": 0.75
+   },
+   "2024": {
+    "low": 0.321,
+    "central": 0.428,
+    "high": 0.535,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.387,
+    "old": 0.75
+   },
+   "2025": {
+    "low": 0.271,
+    "central": 0.361,
+    "high": 0.451,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.314,
+    "old": 0.75
+   },
+   "2026": {
+    "low": 0.23,
+    "central": 0.361,
+    "high": 0.496,
+    "old": 0.75,
+    "note": "no Comtrade HS data for this year; latest year carried forward with a wider range"
+   }
+  },
+  "SRB": {
+   "2022": {
+    "low": 0.321,
+    "central": 0.451,
+    "high": 0.66,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.331,
+    "old": 0.4
+   },
+   "2023": {
+    "low": 0.252,
+    "central": 0.366,
+    "high": 0.573,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.25,
+    "old": 0.4
+   },
+   "2024": {
+    "low": 0.283,
+    "central": 0.426,
+    "high": 0.682,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.244,
+    "old": 0.4
+   },
+   "2025": {
+    "low": 0.332,
+    "central": 0.478,
+    "high": 0.744,
+    "weighted_share_of_increase_in_exports_to_RUS": 0.25,
+    "old": 0.4
+   },
+   "2026": {
+    "low": 0.282,
+    "central": 0.478,
+    "high": 0.818,
+    "old": 0.4,
+    "note": "no Comtrade HS data for this year; latest year carried forward with a wider range"
+   }
+  },
+  "sources": [
+   {
+    "name": "UN Comtrade public preview API: HS4 exports to Russia and world, imports from world and Russia, manufactured chapters 28-40, 42-43, 61-70, 73, 82-96; ARM, KAZ, KGZ, TUR, UZB, AZE, SRB; 2019, 2021-2025",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=51,398,417,792,860,31,688&period=2019|2021|2022|2023|2024|2025&partnerCode=0,643&flowCode=X,M&cmdCode=<HS4 list>",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "Armenpress: finance minister, re-exports gave ~187 of ~215 percentage points of export growth to Russia, H1 2023 (validation point: 0.87 of growth)",
+    "url": "https://armenpress.am/en/article/1120421",
+    "date": "2023-09"
+   },
+   {
+    "name": "Azatutyun (RFE/RL Armenian service): deputy finance minister, exports to Russia +85% in Jan-Sep 2023, of which 80% re-export",
+    "url": "https://www.azatutyun.am/a/32827996.html",
+    "date": "2024-02"
+   },
+   {
+    "name": "S&P Global Market Intelligence: Turkish-origin share of Turkey's high-priority shipments to Russia fell from 71% to 50% (2022-23)",
+    "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/navigating-sanctions-evasion-trade-analysis-of-high-priority-goods-exports-to-russia",
+    "date": "2024-07-22"
+   },
+   {
+    "name": "Kursiv: Kazakhstan's exports of laptops and machinery to Russia surged with matching imports from third countries",
+    "url": "https://kz.kursiv.media/en/2025-02-25/engk-yeri-kazakhstans-exports-of-laptops-bulldozers-to-russia-surge-after-war/",
+    "date": "2025-02-25"
+   },
+   {
+    "name": "RFE/RL: re-exports to Russia drove Kyrgyzstan's 2022 export boom",
+    "url": "https://www.rferl.org/a/ukraine-war-kyrgyzstan-trade-russia/32277438.html",
+    "date": "2023"
+   },
+   {
+    "name": "UN Comtrade re-export flags (flowCode RX): ARM, KAZ, KGZ, TUR, AZE, SRB report none to Russia; UZB reports USD 6-21m",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=51,398,417,792,860,31,688&period=2022&partnerCode=643&flowCode=X,RX&cmdCode=TOTAL",
+    "date": "2026-10-18"
+   }
+  ],
+  "reasoning": "No hub except Uzbekistan (negligibly) flags re-exports to Russia in Comtrade, and no study gives hub-level shares, so the shares are now measured from heading-level (HS4) trade instead of being assumed. For each hub, year and heading the matched increase is min(rise in exports to Russia, rise in imports from non-Russian partners) against the 2019/2021 average. Each heading is then weighted by how far the hub was a pure importer before the war: w = 1 - X_nonRUS/M_nonRUS in the base years, clipped to 0-1. A heading the hub already exported to the rest of the world is treated as home production, and one it only imported as a re-export. The reported share is the weighted HS4 match divided by the HS2 match, so it plays exactly the role of the old hub share (a multiplier on the HS2-matched increase in reexports.json). Low and high use 1.5x and 0.5x the export/import ratio in the weight, widened by x0.9/x1.05 and to at least ±15% (±25% for KGZ, UZB, AZE and SRB). Years are pooled 60/40 with the hub mean. Validation: for Armenia the weighted match explains 80-90% of the increase in exports to Russia (2022-2025), against the finance ministry's 87% (H1 2023) and about 80-94% (Jan-Sep 2023). For Turkey the weighted share of the increase is 27-33%, below S&P's 30-50% foreign origin for high-priority goods, as expected because consumer goods are more often Turkish-made. 2026 carries 2025 forward (UZB 2025 carries 2024 forward) with wider ranges. Caveats: the 2019/2021 base differs slightly from the 2019-2021 base in reexports.json. Kazakhstan's 2021-22 import records are incomplete, so its 2022 share rests on a small HS2 match. Customs origin is not checked at product level.",
+  "verdict": "Moderate move. Turkey 0.40 to about 0.31-0.36 (0.17-0.57) and Serbia 0.40 to about 0.37-0.48 are roughly confirmed. Armenia (0.87 to 0.86-0.92) and Kazakhstan (0.75 to 0.77-0.84) are confirmed or a little higher. Kyrgyzstan falls from 0.9 to 0.60-0.77, Azerbaijan from 0.75 to 0.36-0.43, and Uzbekistan rises from 0.4 to 0.61-0.83. Re-exports to Russia from AZE and KGZ fall by about 40% and 15-35%, Uzbekistan's rise by about 50-100% (all small), and Turkey's fall by about 10-25%.",
+  "old_value": {
+   "ARM": 0.87,
+   "KAZ": 0.75,
+   "KGZ": 0.9,
+   "TUR": 0.4,
+   "UZB": 0.4,
+   "AZE": 0.75,
+   "SRB": 0.4
+  }
+ },
+ "togo_buyers": {
+  "NGA": {
+   "low": 0.197,
+   "central": 0.324,
+   "high": 0.508
+  },
+  "CMR": {
+   "low": 0.055,
+   "central": 0.119,
+   "high": 0.218
+  },
+  "COD": {
+   "low": 0.074,
+   "central": 0.104,
+   "high": 0.142
+  },
+  "AGO": {
+   "low": 0.036,
+   "central": 0.067,
+   "high": 0.128
+  },
+  "BEN": {
+   "low": 0.037,
+   "central": 0.054,
+   "high": 0.082
+  },
+  "COG": {
+   "low": 0.026,
+   "central": 0.044,
+   "high": 0.073
+  },
+  "CPV": {
+   "low": 0.016,
+   "central": 0.043,
+   "high": 0.089
+  },
+  "GHA": {
+   "low": 0.02,
+   "central": 0.034,
+   "high": 0.063
+  },
+  "SEN": {
+   "low": 0.004,
+   "central": 0.025,
+   "high": 0.061
+  },
+  "ZAF": {
+   "low": 0.009,
+   "central": 0.019,
+   "high": 0.036
+  },
+  "NER": {
+   "low": 0.008,
+   "central": 0.015,
+   "high": 0.028
+  },
+  "GAB": {
+   "low": 0.009,
+   "central": 0.014,
+   "high": 0.022
+  },
+  "CIV": {
+   "low": 0.008,
+   "central": 0.013,
+   "high": 0.026
+  },
+  "TGO": {
+   "low": 0.009,
+   "central": 0.013,
+   "high": 0.018
+  },
+  "MRT": {
+   "low": 0.004,
+   "central": 0.013,
+   "high": 0.03
+  },
+  "GMB": {
+   "low": 0.007,
+   "central": 0.012,
+   "high": 0.021
+  },
+  "NAM": {
+   "low": 0.006,
+   "central": 0.011,
+   "high": 0.022
+  },
+  "BFA": {
+   "low": 0.005,
+   "central": 0.011,
+   "high": 0.023
+  },
+  "STP": {
+   "low": 0.005,
+   "central": 0.009,
+   "high": 0.017
+  },
+  "MLI": {
+   "low": 0.004,
+   "central": 0.006,
+   "high": 0.01
+  },
+  "other": {
+   "low": 0.0,
+   "central": 0.05,
+   "high": 0.15
+  },
+  "sources": [
+   {
+    "name": "UN Comtrade: India's HS 271019 exports to Togo and to West/Central African countries, 2022-2025",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2022|2023|2024|2025&partnerCode=768,566,120,180,...&flowCode=X&cmdCode=271019",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "UN Comtrade: West/Central African importers' HS 271019 imports from India, Togo and the world, 2022-2023",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=566,120,180,204,...&period=2022|2023&partnerCode=0,768,699&flowCode=M&cmdCode=271019",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "UN Comtrade: importers' HS 2710 imports from Togo (mirror), 2024-2025",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=768&cmdCode=2710&flowCode=M&period=2024,2025",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "Argus: West African products market supplied by large tankers discharging STS offshore Lomé for onward delivery to Nigeria, Togo and Ghana; Europe-bound diesel VLCCs stop off in Togo",
+    "url": "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2585824-europe-bound-diesel-vlccs-to-stop-off-in-togo-sources",
+    "date": "2024"
+   },
+   {
+    "name": "New Telegraph: 3.51 Mt of gasoline moved from Lomé to Lagos in Jan-Apr 2025; S&P Global: Nigeria+Togo gasoline imports 200-300 kb/d",
+    "url": "https://newtelegraphng.com/marketers-pay-n120bn-to-move-pms-from-togo-to-lagos/",
+    "date": "2025-05-21"
+   },
+   {
+    "name": "Reuters via MarineLink: Russian diesel supply to Lomé about 200 kt in March 2023, STS transfers off Lomé and Lagos",
+    "url": "https://www.marinelink.com/news/russia-using-shiptoship-diesel-transfers-504157",
+    "date": "2023-04-05"
+   },
+   {
+    "name": "Nairametrics (NBS): Nigeria's petrol imports from Togo N84.7bn in Q4 2025",
+    "url": "https://nairametrics.com/2026/03/16/nigeria-spends-n84-69-billion-on-petrol-imports-from-togo-in-q4-2025/",
+    "date": "2026-03-16"
+   }
+  ],
+  "reasoning": "The fuel India ships 'to Togo' is gasoil and diesel (HS 271019: USD 4.8bn in 2022, 3.2bn in 2023, 2.1bn in 2024, 1.7bn in 2025; no gasoline). Importers usually record the country of origin (India), not Lomé, so plain mirror data miss most of it. Origin reconciliation: for each West/Central African importer, imports recorded from India minus India's recorded direct exports to that country, plus imports recorded from Togo, is the cargo India declared elsewhere. In 2023 this finds USD 2.78bn of the 3.24bn India declared to Togo: Nigeria 53%, DR Congo 15%, Cameroon 12%, Congo 6%, Benin 5%. 2022 importer records are incomplete (Nigeria records less from India than India shipped directly), so 2022 is half its own reconciliation and half the 2023 structure. From 2024 Dangote's diesel cut Nigeria's imports (India's direct gasoil exports to Nigeria fell from USD 1.3bn to 0.2bn and then 0.02bn), so 2024-25 use 70% importers' mirror data (Angola, Ghana, South Africa, Benin, Congo, Côte d'Ivoire) and 30% the 2023 structure. Years are weighted by India's exports to Togo. Low and high are the minimum and maximum over three scenarios, x0.75/x1.3. 5% is left as 'other' for Europe-bound part-cargoes and non-reporting buyers. Trade press confirms that Lomé STS mainly serves Nigeria, then Ghana and Gulf of Guinea ports. Gasoline via Lomé is almost all Nigerian but is not part of this flow.",
+  "verdict": "Moderate move. Nigeria rises from 0.18 to 0.32 (0.20-0.51), and Cameroon (0.02 to 0.12) and DR Congo (0.04 to 0.10) rise. Angola (0.17 to 0.07), Côte d'Ivoire (0.10 to 0.01), Burkina Faso, Mali and Niger fall. The prior is replaced by an origin-reconciliation of trade data for 2023, the year with the most complete data.",
+  "old_value": "50% mirror + 50% prior: NGA 0.18, AGO 0.17, CIV 0.10, GHA 0.09, ZAF 0.05, BEN 0.05, BFA 0.04, COG 0.04, COD 0.04, MLI 0.03"
+ },
+ "hk_onward": {
+  "2022": {
+   "low": 0.43,
+   "central": 0.566,
+   "high": 0.734
+  },
+  "2023": {
+   "low": 0.412,
+   "central": 0.546,
+   "high": 0.834
+  },
+  "2024": {
+   "low": 0.308,
+   "central": 0.476,
+   "high": 0.604
+  },
+  "2025": {
+   "low": 0.17,
+   "central": 0.372,
+   "high": 0.576
+  },
+  "2026": {
+   "low": 0.12,
+   "central": 0.372,
+   "high": 0.616
+  },
+  "sources": [
+   {
+    "name": "UN Comtrade: Hong Kong HS 7108 imports (world, Russia, mainland China) and exports (world, mainland China), 2019-2025",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=344&period=2019|2021|2022|2023|2024|2025&partnerCode=0,643,156,784,756,699,826&flowCode=M,X,RX&cmdCode=7108,TOTAL",
+    "date": "2026-10-18"
+   }
+  ],
+  "reasoning": "Russian gold is fungible inside Hong Kong's gold trade, so the onward share is HK's own gold pass-through to the mainland. Central is the mean of two measures: gross onward share (exports to China / all gold imports: 0.58, 0.56, 0.52, 0.46 for 2022-25) and net onward share ((exports to China - imports from China) / (imports - imports from China): 0.55, 0.53, 0.43, 0.29). Hong Kong retained 13-33% of gold imports in 2022-25 (vault and hub build-up), and two-way flows with the mainland grew sharply in 2024-25 (imports from China USD 10.8bn and 23.6bn). Low is the net share minus 0.12. High is China's share of HK gold exports (0.73, 0.83, 0.60, 0.58), which applies if Russian bars go mainly to the one large market that takes them openly. HK imports from Russia were USD 0.58bn (2022), 5.2bn (2023), 4.6bn (2024) and 10.5bn (2025). 2026 carries 2025 forward with a wider range. Mainland China does not publish gold imports by partner, and Swissaid reports give no Russian-specific HK onward figure.",
+  "verdict": "Moderate move. The central falls from 0.55 to 0.57/0.55/0.48/0.37 for 2022-2025, and the range narrows from 0.30-0.85 to about 0.4-0.8 (2022-23) and 0.17-0.6 (2025). From 2024 less of the Russian gold counts for China, because Hong Kong keeps more gold and the mainland sends gold back.",
+  "old_value": {
+   "low": 0.3,
+   "central": 0.55,
+   "high": 0.85
+  }
+ },
+ "are_gold_destinations": {
+  "HKG": {
+   "low": 0.163,
+   "central": 0.295,
+   "high": 0.398
+  },
+  "IND": {
+   "low": 0.107,
+   "central": 0.192,
+   "high": 0.26
+  },
+  "TUR": {
+   "low": 0.078,
+   "central": 0.141,
+   "high": 0.19
+  },
+  "CHE": {
+   "low": 0.0,
+   "central": 0.153,
+   "high": 0.352
+  },
+  "SAU": {
+   "low": 0.042,
+   "central": 0.077,
+   "high": 0.103
+  },
+  "THA": {
+   "low": 0.012,
+   "central": 0.022,
+   "high": 0.029
+  },
+  "SGP": {
+   "low": 0.011,
+   "central": 0.016,
+   "high": 0.022
+  },
+  "MYS": {
+   "low": 0.01,
+   "central": 0.015,
+   "high": 0.02
+  },
+  "CHN": {
+   "low": 0.005,
+   "central": 0.009,
+   "high": 0.012
+  },
+  "other": {
+   "low": 0.048,
+   "central": 0.08,
+   "high": 0.12
+  },
+  "level_shares_all_uae_gold": {
+   "CHE": 0.306,
+   "HKG": 0.233,
+   "IND": 0.152,
+   "TUR": 0.111,
+   "SAU": 0.061,
+   "KWT": 0.018,
+   "THA": 0.017,
+   "SGP": 0.016,
+   "OMN": 0.015,
+   "MYS": 0.015,
+   "JOR": 0.009,
+   "ITA": 0.007,
+   "BHR": 0.007,
+   "other": 0.007,
+   "CHN": 0.007,
+   "EGY": 0.006,
+   "IDN": 0.004,
+   "LBN": 0.004,
+   "NPL": 0.003,
+   "IRN": 0.001,
+   "GBR": 0.0
+  },
+  "sources": [
+   {
+    "name": "UN Comtrade mirror: all reporters' HS 7108 imports from the UAE, 2021-2025",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2021|2022|2023|2024|2025&partnerCode=784&flowCode=M&cmdCode=7108",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "This repository: reexports.json ARE reexports_from_RUS (weights by year)",
+    "url": "research/2026-10/gaps/reexports.json",
+    "date": "2026-10-17"
+   },
+   {
+    "name": "Reuters via The New Arab: 75.7 t of Russian gold to the UAE, Feb 2022-Mar 2023",
+    "url": "https://www.newarab.com/news/russia-gold-uae-cashes-sanctions-bite",
+    "date": "2023-05-25"
+   }
+  ],
+  "reasoning": "The UAE does not report gold exports by partner usefully, so first-hop destinations come from importers' records of HS 7108 from the UAE. Weighted by the yearly Russian gold flow through the UAE (2022-heavy), the level shares are Switzerland 31%, Hong Kong 23%, India 15%, Turkey 11% and Saudi Arabia 6%. The old proxy (increase in UAE-reported HS71 exports, mostly 'other': Iraq, Oman, Qatar) missed Hong Kong and India almost entirely. Switzerland bars Russian-origin gold and its refiners screen for it, so the Russian component reaching Switzerland is likely below Switzerland's share of all UAE gold. The central halves it (low 0, high = its full level share), and the freed share goes pro rata to Hong Kong, India, Turkey, Saudi Arabia, Thailand and China. Gold re-melted in the UAE takes UAE origin, which is why some Swiss share remains possible. First hop only: Hong Kong's onward share to China is in hk_onward.",
+  "verdict": "Large move in the split. 'Other' falls from 0.50 to 0.08. Hong Kong rises from 0.03 to 0.30, India from 0.02 to 0.19 and Switzerland from 0.07 to 0.15 (0-0.35); Turkey falls from 0.32 to 0.14. The total amount of onward Russian gold is unchanged.",
+  "old_value": "other 0.50, TUR 0.32, CHE 0.07, EU27 0.06, HKG 0.03, IND 0.02"
+ },
+ "notes": "Scripts are in working/refine/ (scripts/: bars.py reads KSE chart geometry; rot_tables.py parses KSE top-10 manager tables; shipping_control.py; ct_fetch.py and reexport_hs4.py for the HS4 re-export match; togo.py and togo_final.py; gold.py; assemble.py and finalize.py). How to apply: shipping - multiply each listed hub's freight and owner-linked insurance/finance by freight_scale_vs_current_model and move the difference to the Russian pool (not to any foreign country). For 2026 also scale the crude pool from 9.7 to 11.0 bn. Re-exports - replace the hub share (ARM 0.87 etc.) by reexport_share[hub][year], keeping the HS2 match and baseline in reexports.json. Togo - replace hub_buyers TGO destination_shares. HK - replace HK_ONWARD by year. UAE gold - replace ARE destination_shares in reexports.json. All ranges are about 90%. Weakest points: beneficial owners of non-Sovcomflot UAE, Indian and Chinese managers; KSE chart values read from bar geometry (±16 kb/d); re-export weights use pre-war net trade, not product-level origin; Togo 2024-26 rests on thin mirror data."
+}

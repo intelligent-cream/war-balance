@@ -31,6 +31,8 @@ OWN_SHARE_DEFAULT = (0.2, 0.4, 0.7)
 # each member's share of EU/EEA arms production (SIPRI Top 100, 2024): where EU-level military aid is spent
 EU_ARMS_SLICE = {"FRA": 0.39, "DEU": 0.24, "ITA": 0.19, "SWE": 0.06, "CZE": 0.04, "ESP": 0.035, "POL": 0.03}
 LOAN_GRANT_ELEMENT = 0.3
+# better data for the biggest guesses: shadow fleet ownership, re-export shares, Togo's buyers, gold routes
+REFINE = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/refine.json").read_text())
 # energy research: transit gas, price indices, fuel mix before the war, hub resale shares
 E2 = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/energy2.json").read_text())
 # laundered oil (fuel refined from Russian crude in India, Turkey, China...): trading hubs resell part of what they buy,
@@ -1035,6 +1037,8 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
     hubs = load(GAPS / "hub_exports_2024.json")["shares"]
     # customers of the other fuel hubs (UAE, India, Turkey, Togo, Gibraltar, Panama): fuel export shares 2022-2025
     buyers = load(GAPS / "hub_buyers.json")
+    # Togo: buyers traced from African importers' records of fuel from India (ship-to-ship off Lomé)
+    hubs["TGO"] = {k: v["central"] for k, v in REFINE["togo_buyers"].items() if isinstance(v, dict) and "central" in v}
     for hub, d in buyers["hubs"].items():
         hubs.setdefault(hub, {k: v["central"] for k, v in d["destination_shares"].items() if k != "other"})
     totals = {iso3: {k: list(v[k]) for k in ("years", "years_lo", "years_hi")} for iso3, v in laundered.items()}
@@ -1220,9 +1224,16 @@ def apply_shipping(countries: dict[str, dict], src: Sources, note) -> None:
                 o = ov.get(f"{part}_2021_2022" if part == "insurance_finance" and y <= 2022 else part) or {}
                 # the low end leaves out the most overlap, the high end the least; only the profit counts
                 pr = SHIPPING_PROFIT[part]
-                out["years"][i] += v.get("central", 0) * (1 - o.get("central", 0)) * pr[1]
-                out["years_lo"][i] += v.get("low", 0) * (1 - o.get("high", 0)) * pr[0]
-                out["years_hi"][i] += v.get("high", 0) * (1 - o.get("low", 0)) * pr[2]
+                # tankers managed from the UAE, India, China and Hong Kong that belong to Russia's own fleet
+                # (Sovcomflot's chain): their freight stays with Russia, not the manager's country
+                sc = (REFINE["shipping_control"].get(iso3) or {}).get(str(y), {}).get("freight_scale_vs_current_model")
+                if part not in ("freight", "insurance_finance") or not sc:
+                    sc = {"low": 1, "central": 1, "high": 1}
+                # 2026 freight rates after the Hormuz closure: the crude pool is about 13% larger (crude about half)
+                f26 = 1.065 if part == "freight" and y == 2026 else 1.0
+                out["years"][i] += v.get("central", 0) * (1 - o.get("central", 0)) * pr[1] * sc["central"] * f26
+                out["years_lo"][i] += v.get("low", 0) * (1 - o.get("high", 0)) * pr[0] * sc["low"] * f26
+                out["years_hi"][i] += v.get("high", 0) * (1 - o.get("low", 0)) * pr[2] * sc["high"] * f26
         if not any(out["years_hi"]):
             continue
         b, ob = d.get("baseline_2019_2021") or {}, ov.get("freight") or {}
@@ -1280,6 +1291,10 @@ def apply_reexports(countries: dict[str, dict], src: Sources, note) -> None:
         }
 
     for hub, d in rx["hubs"].items():
+        if hub == "ARE":
+            # UAE gold: first buyers from importers' records of gold bought from the UAE
+            gd = {k: v for k, v in REFINE["are_gold_destinations"].items() if isinstance(v, dict) and "central" in v}
+            d = {**d, "destination_shares": gd}
         h = countries.get(hub)
         if not h:
             continue
@@ -1287,6 +1302,13 @@ def apply_reexports(countries: dict[str, dict], src: Sources, note) -> None:
         cert = d.get("certainty") or "D"
         # goods made elsewhere, sold on to Russia: out of the hub's sales to Russia, into the origin countries'
         goods = series(d.get("reexports_to_RUS") or {})
+        # re-export shares measured at product-heading level replace the first guesses (old shares kept in refine.json)
+        rs = REFINE["reexport_share"].get(hub) or {}
+        for i, y in enumerate(YEARS):
+            sh = rs.get(str(y))
+            if sh and sh.get("old"):
+                for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
+                    goods[k][i] *= sh[b] / sh["old"]
         pre = d.get("reexports_to_RUS_baseline_2019_2021") or {"low": 0, "central": 0, "high": 0}
         keep = {"years": 1 - m["central"], "years_lo": 1 - m["high"], "years_hi": 1 - m["low"]}
         if h.get("from_rus") and any(goods["years"]):
@@ -1414,14 +1436,21 @@ def apply_residual(countries: dict[str, dict], src: Sources, note) -> None:
     hk, cn = countries.get("HKG"), countries.get("CHN")
     if hk and cn and hk.get("to_rus") and cn.get("to_rus"):
         base = {k: list(hk["to_rus"][k]) for k in ("years", "years_lo", "years_hi")}
-        lo, mid, hi = HK_ONWARD
-        for key, keep_f, give_f in (("years", mid, mid), ("years_lo", hi, lo), ("years_hi", lo, hi)):
+        # share passed on to the mainland per year, from Hong Kong's own gold trade (falls from 2024)
+        on = [None] + [
+            REFINE["hk_onward"].get(str(y)) or dict(zip(("low", "central", "high"), HK_ONWARD)) for y in YEARS[1:]
+        ]
+        for key, keep_b, give_b in (
+            ("years", "central", "central"),
+            ("years_lo", "high", "low"),
+            ("years_hi", "low", "high"),
+        ):
             # only the change since before the war is gold in transit; 2021 stays as it was
             hk["to_rus"][key] = [
-                v if i == 0 else round(v * (1 - HK_METALS_SHARE * keep_f), 5) for i, v in enumerate(base[key])
+                v if i == 0 else round(v * (1 - HK_METALS_SHARE * on[i][keep_b]), 5) for i, v in enumerate(base[key])
             ]
             cn["to_rus"][key] = [
-                v if i == 0 else round(v + base[key][i] * HK_METALS_SHARE * give_f, 5)
+                v if i == 0 else round(v + base[key][i] * HK_METALS_SHARE * on[i][give_b], 5)
                 for i, v in enumerate(cn["to_rus"][key])
             ]
         cn["to_rus"]["src"] = cn["to_rus"]["src"] + [rid]
