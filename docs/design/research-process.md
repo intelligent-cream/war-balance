@@ -1,7 +1,9 @@
 # Research process
 
+> **Historical design note.** This page describes an early plan; the map was built differently (a single Python build script and static JSON, no warehouse or estimate cards). For the current method and data see the [documentation index](../README.md).
+
 Certainty A and B numbers come from importers. Certainty **C and D** numbers come from research,
-written down as **estimate cards** (see 03-data-model.md) and reviewed like code.
+written down as **estimate cards** (see data-model.md) and reviewed like code.
 
 ## Research topics (initial backlog)
 

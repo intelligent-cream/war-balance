@@ -1,0 +1,224 @@
+# Expected without the war: the counterfactual models
+
+Every trade number on the map is a change against what a country would have bought from or sold to Russia and Ukraine **if there had been no war**. That expected level cannot be observed, so it has to be predicted. This page explains what the map predicts, which models were tried (four generations, 16 models in the last one), how they were tested on past years, which model is used for which flow and why, how the prediction's own error widens the map's ranges, and what changed in the headline numbers. The short version: for most flows the best prediction turned out to be "2021 held flat"; only exports to Russia (and, on weaker evidence, trade with Ukraine) are predicted better by a model that uses the country's trade with everyone else and its GDP.
+
+Main files: [`counterfactual.json`](../../research/2026-10/gaps/counterfactual.json) with its notes [`counterfactual-notes.md`](../../research/2026-10/gaps/counterfactual-notes.md), applied by [build_data.py `counterfactual()`](../../pipeline/build_data.py), and used on the site by `triple()` and `spread()` in [`site/index.html`](../../site/index.html).
+
+## 1. What "expected without the war" means
+
+For one flow (say, Germany's exports to Russia) and one year *i* from 2022 to 2026, the map compares
+
+```
+expected_i = base × FRAC_i × bmul_i          (volume at pre-war prices)
+actual_i   = value_i / pidx_i                (the year's money, divided by its price level)
+change_i   = expected_i − actual_i           (positive = less than expected)
+```
+
+- `base` is the pre-war level at pre-war prices. For the flows covered by `counterfactual.json` it is **the 2021 value divided by the 2021 price level** (`years[0] / pidx[0]`); the older 2019–2021 average is kept in `data.json` as `base_2019_2021_avg`. For flows not covered (company taxes, shipping, laundered oil) see [section 6](#6-which-model-is-used-for-which-flow).
+- `FRAC_i` is 1 for full years and 8/12 for 2026 (January–August).
+- `bmul_i` is the counterfactual multiplier against the base (1 = flat), with `bmul_lo` and `bmul_hi` as its 90% interval.
+- `pidx_i` is the flow's price level against 2019–2021 (see [prices.md](prices.md)).
+
+The changes are summed over 2022 up to the chosen year and divided by one year's GDP (see [overview.md](overview.md)). The code is `exV`, `actV` and `spread()` inside `calc()` in [`site/index.html`](../../site/index.html).
+
+A good counterfactual must not use anything the war caused. That rules out, for example, Russia's own trade with China or India after 2022, or realised 2022 energy prices. Section 8 lists what was rejected for that reason.
+
+## 2. History: four generations
+
+| generation | file and notes | idea | status |
+|---|---|---|---|
+| 1. Flat average | none (in `trade_full.json` baselines) | expected = the 2019–2021 average at pre-war prices, every year | rounds 1–3; still the starting `base` before `counterfactual()` runs |
+| 2. Damped trends | [`trend.json`](../../research/2026-10/gaps/trend.json) ([notes](../../research/2026-10/gaps/trend-notes.md)), [`trend2.json`](../../research/2026-10/gaps/trend2.json) ([notes](../../research/2026-10/gaps/trend2-notes.md)) | each country's own 2012–2021 real trend, continued with a 3-year half-life and capped at ±10% a year (multiplier 0.68–1.41 by 2026); services, company taxes and shipping in `trend2.json` | round 3; applied by [build_data.py `pre_war_trends()`](../../pipeline/build_data.py); now used only for company taxes, shipping and flows without a counterfactual |
+| 3. Back-tested methods | [`trend3.json`](../../research/2026-10/gaps/trend3.json) ([notes](../../research/2026-10/gaps/trend3-notes.md)) | nine methods scored on 2008 and 2013 origins against the flat average; **the random walk (2021 held flat) won** | research only, never wired into the pipeline; it set up generation 4 |
+| 4. Nowcasts with realised non-war predictors | [`counterfactual.json`](../../research/2026-10/gaps/counterfactual.json) ([notes](../../research/2026-10/gaps/counterfactual-notes.md)) | 16 models scored on 2008, 2013 and 2016 origins against the random walk; a model replaces "2021 flat" only if it clearly wins | round 4; applied by [build_data.py `counterfactual()`](../../pipeline/build_data.py) |
+
+**Why the flat average was dropped.** It is biased low: trade usually grows, so a 2019–2021 average predicts too little, and every fall looks larger than it was. In the trend3 back-test it had a median bias of +0.21 log (actual above predicted) and lost to the random walk by 22–31% on median absolute log error over 1–5 years ahead.
+
+**Why the damped trends were dropped for trade.** The generation-2 back-test (fits on 2002–2007, scored on 2008 and 2010–2013, 291 flows above EUR 50 m) favoured damping over both flat and undamped trends:
+
+| rule (trend.json back-test) | median abs. log error | median bias |
+|---|---|---|
+| flat baseline | 0.406 | +0.27 |
+| undamped trend | 0.771 | −0.62 |
+| undamped, capped ±10% | 0.360 | −0.08 |
+| half-life 2 years, cap ±10% | 0.311 | +0.09 |
+| **half-life 3 years, cap ±10% (chosen)** | **0.318** | **+0.05** |
+| half-life 5 years, cap ±10% | 0.328 | +0.02 |
+
+But that test covered a single boom period. The trend3 back-test, with two origins, showed the trend adds error for Russia flows and services, and the second audit ([audit2-notes.md](../../research/2026-10/gaps/audit2-notes.md), question 5) found 68 "reliable" trends fitted on 2016–2021 only, which measured the rebound from the 2014–2016 crash (Kazakhstan's imports from Russia were projected to grow 9.4% a year; the full window gives 0.8%). The ranges were also far too narrow: published bands of about ×1.5 (high/low in 2026) against ×8.3 for an honest back-tested interval.
+
+**What generation 3 found** (1–5 years ahead, median absolute log error):
+
+| flow | flat | trend | share | gravity | ensemble | **flat_last (random walk)** | holt |
+|---|---|---|---|---|---|---|---|
+| to_rus | 0.41 | 0.39 | 0.39 | 0.39 | 0.36 | **0.32** | 0.33 |
+| from_rus | 0.43 | 0.34 | 0.46 | 0.42 | 0.33 | **0.30** | 0.43 |
+| buy_ukr | 0.49 | 0.41 | 0.41 | 0.44 | 0.39 | 0.39 | **0.38** |
+| sell_ukr | 0.45 | 0.36 | 0.65 | 0.52 | 0.36 | **0.35** | 0.35 |
+| svc_bought | 0.27 | 0.26 | **0.18** | 0.21 | 0.22 | 0.20 | 0.20 |
+| svc_sold | 0.29 | 0.28 | 0.28 | 0.25 | 0.24 | **0.20** | 0.22 |
+
+The models that extrapolate growth (trend, share, gravity) win one origin and lose the other; only the random walk was good in both. Generation 4 therefore made the random walk the benchmark to beat.
+
+## 3. The 16 models of generation 4
+
+All predict the log real level of a flow in year *t* from data up to the origin year *L*. "Realised predictors" (the country's trade with others, GDP) for year *t* are allowed, because they will be known for 2022–2026 too.
+
+| key | model | eligible |
+|---|---|---|
+| `rw` | random walk: the year-L level held flat (2021 for the map) | benchmark |
+| `sh_last` | the flow's share of the country's same-direction trade with the rest of the world, held at year L, × realised rest-of-world trade | yes |
+| `sh_avg` | the same with the 4-year average share | yes |
+| `sh_fuel` | shares held separately for fuel (HS 27) and non-fuel | yes |
+| `sh_hs` | share held per HS chapter (24 chapters + rest; 60 largest partners) | yes |
+| `elastic` | pooled elasticity of the flow to real rest-of-world trade | yes |
+| `gdp` | year-L level × realised real GDP growth | yes |
+| `vol` | year-L level × realised import or export volume growth | yes |
+| `lin` | pooled robust (Huber) linear model on 14 features: rest-of-world trade growth (real, nominal, fuel, non-fuel), GDP and volume growth, oil, metals, fertiliser and grain prices, 1- and 3-year momentum, UN voting distance and drift, horizon | yes |
+| `rf` | random forest on 25 features (the above plus more prices, share, size, flow type, EU and sanctioning-country flags, price-index change) | yes |
+| `gbm` | gradient-boosted trees, absolute-error loss, same 25 features | yes |
+| `gbm_xo` | as `gbm`, also trained on years after the test window | no (diagnostic) |
+| `hub_donor` | year-L level × Russia's (or Ukraine's) realised trade with non-sanctioning countries | no |
+| `hub_all` | the same with all other partners | no |
+| `elastic_hub`, `gbm_hub` | `elastic` and `gbm` with the hub-side growth added | no |
+
+The hub-side models are not eligible: their 2022–2026 inputs are Russia's trade after the invasion, which is the war outcome itself.
+
+## 4. The three back-tests, and why 2013 matters
+
+| test | data to | years predicted (ahead) | left out |
+|---|---|---|---|
+| T2008 | 2007 | 2008–2012 (1–5) | nothing |
+| T2013 | 2012 | 2013, 2016, 2017 (1, 4, 5) | 2014–2015 (Crimea, Donbas, sanctions); all Ukraine flows |
+| T2016 | 2016 | 2017–2019, 2021 (1–3, 5) | 2020 (COVID); services also 2021 |
+
+Sample: country-flows with a base of at least EUR 10 m, 6,385 country-flow-years in all, in size classes S (< EUR 0.1 bn), M (0.1–1 bn) and L (> 1 bn).
+
+**Why the 2013 test is the hard one.** In 2014–2016 the shock came from Russia itself: the oil price halved, the rouble lost half its value and Russia banned EU food. Predictors from the partner's side (its trade with others, its GDP) cannot see such a shock. Only Russia-side predictors helped there, and those cannot be used for 2022–2026. So the 2013 test is the best available warning of how wrong a partner-side counterfactual can be when Russia's own economy moves. Ukraine flows are left out of the 2013 test because post-2014 Ukrainian trade is itself a war outcome.
+
+## 5. Results and the decision rule
+
+**Decision rule** (fixed before the results): per flow type, the eligible model with the lowest mean median absolute log error over 1–5 years ahead is used only if it beats the random walk by at least 15% in every test, or by at least 15% on average with no test worse. Otherwise the random walk is used.
+
+**Gain against the random walk** (1 − MAE/MAE_rw), T2008 / T2013 / T2016:
+
+| flow | sh_last | sh_hs | gdp | vol | lin | rf | gbm | hub_all (not eligible) |
+|---|---|---|---|---|---|---|---|---|
+| to_rus | −1 / −30 / −2% | +1 / +4 / +11% | +5 / +6 / +9% | +2 / −5 / +16% | −2 / −15 / +19% | +2 / −10 / +17% | +2 / −7 / +21% | −2 / −4 / +19% |
+| from_rus | +21 / −24 / +25% | +16 / −30 / +22% | +8 / −18 / +19% | +11 / −20 / +21% | **+20 / +11 / +22%** | +19 / −2 / +31% | +15 / −10 / +26% | +18 / +26 / +29% |
+| buy_ukr | +4 / – / +21% | 0 / – / 0% | +7 / – / +11% | +6 / – / +18% | **+8 / – / +28%** | +1 / – / +29% | +7 / – / +27% | +12 / – / +30% |
+| sell_ukr | +11 / – / +34% | 0 / – / 0% | +7 / – / +18% | +6 / – / +26% | −2 / – / +47% | **+9 / – / +40%** | −7 / – / +45% | +27 / – / +54% |
+| svc_bought | +6 / −24 / +23% | 0 / 0 / 0% | +12 / −15 / +22% | +13 / −21 / +26% | +27 / −7 / +29% | −8 / −19 / +28% | +11 / −4 / +27% | +32 / −4 / +28% |
+| svc_sold | +26 / −17 / +29% | 0 / 0 / 0% | +18 / −7 / +22% | +14 / −25 / +30% | +35 / −0 / +17% | +4 / −10 / +25% | +16 / −14 / +14% | +40 / +6 / +27% |
+
+Median absolute log error of the random walk and the chosen (or best) model, all sizes:
+
+| flow | T2008 rw → model | T2013 rw → model | T2016 rw → model |
+|---|---|---|---|
+| to_rus (gdp, not chosen) | 0.308 → 0.294 | 0.355 → 0.335 | 0.306 → 0.280 |
+| from_rus (lin) | 0.292 → 0.234 | 0.303 → 0.269 | 0.254 → 0.199 |
+| buy_ukr (lin) | 0.394 → 0.361 | – | 0.432 → 0.310 |
+| sell_ukr (rf) | 0.345 → 0.314 | – | 0.369 → 0.221 |
+| svc_bought (lin, not chosen) | 0.179 → 0.132 | 0.222 → 0.238 | 0.190 → 0.134 |
+| svc_sold (lin, not chosen) | 0.199 → 0.130 | 0.213 → 0.214 | 0.178 → 0.147 |
+
+The full tables for all 16 models, by size class, with bias, a bootstrap check and a COVID sensitivity run are in [counterfactual-notes.md §4](../../research/2026-10/gaps/counterfactual-notes.md) and under `backtest`, `backtest_by_size`, `bootstrap_gain_90` and `backtest_incl_covid_T2016` in [`counterfactual.json`](../../research/2026-10/gaps/counterfactual.json).
+
+**Outcome** (`chosen` in the JSON):
+
+| flow | chosen | mean gain (by test) | note |
+|---|---|---|---|
+| to_rus (bought from Russia) | `rw` | – | best alternative `gdp` +6% (5/6/9%), below the bar |
+| from_rus (sold to Russia) | `lin` | **+17.7%** (20/11/22%) | bootstrap interval above zero in all three tests |
+| buy_ukr (bought from Ukraine) | `lin` | **+18.2%** (8/28%) | two tests only; 2008 interval includes zero |
+| sell_ukr (sold to Ukraine) | `rf` | **+24.6%** (9/40%) | two tests only; lost for large flows in 2008 |
+| svc_bought, svc_sold | `rw` + travel recovery | – | `lin` wins 2008 and 2016 but is 0–7% worse in 2013 |
+
+## 6. Which model is used for which flow
+
+| flow on the map | expected level | why |
+|---|---|---|
+| Sold to Russia (`from_rus`) | linear nowcast (`lin`) | clear win in all three tests, about 18% more accurate. Growth in exports to everyone else carries over (coefficient 0.51), spikes fade (momentum −0.16 and −0.28), higher pre-war oil-price paths lift Russia's import capacity |
+| Bought from / sold to Ukraine (`buy_ukr`, `sell_ukr`) | `lin` / random forest | pass the rule on weaker evidence (two tests) |
+| Bought from Russia (`to_rus`) | 2021 held flat | what a country buys from Russia depends on Russian supply and prices, which partner-side data cannot see |
+| Services (`svc_bought`, `svc_sold`) | 2021 held flat + travel recovery | 2021 was a COVID year for travel; the 2021 shortfall against 2019 closes at the UNWTO world pace (49% of the gap open in 2022, 17% in 2023, 1% in 2024, closed from 2025). The recovery is sized on the model's own 2021 level: where the map's 2021 is higher (its source shows little COVID dip), `counterfactual()` caps the expected level at the model's recovered level in euros (`eur_bn_at_2018_2021_prices`), so the recovery is not applied twice (Montenegro: +10.8% → +5.4% of GDP) |
+| Re-export hubs and Belarus (ARM, GEO, KAZ, KGZ, UZB, TUR, AZE, MNG, TJK, SRB, ARE, BLR) | 2021 held flat | their trade with the rest of the world was itself reshaped by goods passing through to Russia (`HUBS_CF` in build_data.py) |
+| Company taxes | `trend2.json` trend on a 2018–2021 base | not covered by the back-test; see [services-shipping-companies.md](services-shipping-companies.md) |
+| Shipping | `trend2.json` Russian seaborne export volumes (+3.9% a year) | not covered by the back-test |
+| Laundered oil | pre-war level 2018–2021 × its pre-war growth ([`round4a.json`](../../research/2026-10/gaps/round4a.json)) | see [energy-and-laundered-oil.md](energy-and-laundered-oil.md) |
+| Countries missing from `counterfactual.json` | `trend.json` / `trend2.json` from `pre_war_trends()`, with the audit-2 window fixes | fallback |
+
+Four adjustments keep war effects out of the model inputs for 2022–2026 ([notes §5](../../research/2026-10/gaps/counterfactual-notes.md)):
+
+1. **Commodity prices** follow the IMF World Economic Outlook of October 2021 (the last pre-war forecast), not realised prices. Realised 2022 oil alone would add about +0.1 log to exports to Russia.
+2. **Sourcing switches.** The model is run with rest-of-world trade both excluding and including Russia, Ukraine and Belarus; the central is midway and the range covers both (median difference 0.002 log, at most about 0.1 for the Baltic states, Moldova and Georgia).
+3. **Hubs and Belarus** keep the 2021 level (above).
+4. **Missing years.** 2026 has no annual partner data; the last available real multiplier is carried forward.
+
+In `data.json` every covered flow carries `cf` (`lin`, `rf` or `rw`): the method `counterfactual.json` used for that country and flow. Flows held at 2021 for lack of rest-of-world data, and the trade hubs, are `rw`.
+
+## 7. How the prediction's error enters the ranges
+
+The multipliers carry the back-tested 90% interval, so the expected path is never treated as exact.
+
+- **Construction** ([notes §7](../../research/2026-10/gaps/counterfactual-notes.md)): back-test errors (actual − predicted) of the chosen model are pooled over the three tests, divided by a horizon scale g(h) ∝ h^0.50 (`lin`), h^0.43 (`rf`), h^0.48 (`rw`), and their 5th, 50th and 95th percentiles taken per flow type × size class. Then `low = central × exp(q05 × g(h))` and `high = central × exp(q95 × g(h))`, widened by half the sourcing-switch difference.
+- **In the pipeline**, `counterfactual()` writes `bmul`, `bmul_lo = min(low, central)` and `bmul_hi = max(high, central)` for 2022–2026 (2021 = 1); for services all three are scaled by the same cap factor as the central (section 6).
+- **On the site**, `triple()` reads them as `q`, `ql`, `qh`, and `spread()` adds the trend term `ql`/`qh` in quadrature with the baseline, actual-value and price terms (see [ranges.md](ranges.md)).
+
+Typical 2026 interval widths (median high/low, flows of at least EUR 10 m):
+
+| flow / size | chosen | random walk |
+|---|---|---|
+| to_rus L | ×4.12 | ×4.11 |
+| from_rus M / L | ×4.98 / ×2.82 | ×6.15 / ×3.85 |
+| buy_ukr L | ×6.1 | ×6.58 |
+| sell_ukr M | ×5.07 | ×6.9 |
+| services M | ×3.3–3.5 | same |
+
+**Coverage caveat.** Scored on held-out tests, the 90% intervals cover about 90% of outcomes in normal periods but only 77–79% in the 2013 test:
+
+| model | T2008 | T2013 | T2016 |
+|---|---|---|---|
+| lin | 0.90 | 0.77 | 0.90 |
+| rf | 0.88 | 0.79 | 0.91 |
+| rw | 0.87 | 0.78 | 0.87 |
+
+A no-war 2022–2026 with a Russian recession or boom would fall outside many intervals. This is listed in [limitations.md](../limitations.md).
+
+## 8. What was tried and rejected
+
+| idea | result | why rejected |
+|---|---|---|
+| Flat 2019–2021 average (gen. 1) | biased low (+0.21), 22–31% worse than the random walk | replaced |
+| Damped own trends (gen. 2) | helped only for Ukraine flows; window problems (2016–2021 rebounds) | replaced for trade and services |
+| Share, gravity, shrinkage, ensemble, Holt (gen. 3) | share and gravity biased strongly downward for Russia flows (−0.6 to −0.8); none beat the random walk by the bar | rejected |
+| Machine learning (`rf`, `gbm`, `gbm_xo`) | about as good as `lin` in 2016, worse in the other tests; `gbm_xo` (more history) best for `to_rus` at +10%, still below the bar | only `rf` for `sell_ukr` passes |
+| Product detail (`sh_hs`, `sh_fuel`) | no better than total-trade shares; worse in 2013 (`sh_hs` +1/+4/+11% for `to_rus`) | rejected |
+| UN voting distance (feature in `lin`, `rf`) | −0.03 per unit; one standard deviation moves the prediction by −0.015 | kept as a feature, negligible |
+| Russia-side hub models (`hub_donor`, `hub_all`, `elastic_hub`, `gbm_hub`) | the only predictors that helped in every test (+18–40%) | inputs for 2022–2026 are the war outcome |
+| Realised commodity prices | would put part of the 2022 price shock into the "no-war" path | replaced by the IMF WEO October 2021 path |
+
+## 9. Effect on the headline numbers
+
+Middle values change little; ranges become about 1.5–2 times wider. Shift toward Ukraine, 2022–August 2026, % of one year's GDP. "Before" is a build of the committed round-4 code with `counterfactual()` switched off (so `trend.json` / `trend2.json` and the audit-2 window fixes apply); "after" is the current `site/data.json`, which also contains the round-4 review fixes (windfall from yearly fuel shares, services cap, UAE customs order and others, see the [research log](../../research/2026-10/README.md)). Both computed with the site's own `calc()`.
+
+| country | before (trend.json / trend2.json) | after (counterfactual.json, current data) |
+|---|---|---|
+| Germany | +4.9% (3.9 to 6.2) | +4.8% (3.1 to 7.3) |
+| China | −1.2% (−1.8 to −0.7) | −1.6% (−2.4 to −0.5) |
+| Hungary | −5.7% (−8.1 to −3.1) | −6.7% (−10.4 to −1.7) |
+| Poland | +9.5% (7.7 to 12.2) | +10.0% (5.9 to 15.5) |
+
+The round-4 log in [`research/2026-10/README.md`](../../research/2026-10/README.md) gives the counterfactual's own effect as Germany +4.8% → +4.7%, China −1.1% → −1.6%, Hungary −5.6% → −6.7%; the small differences to the table come from the review fixes made afterwards.
+
+The widest case is Belarus: −24% of GDP with a range of −76% to +49%. Its 2021 imports from Russia (about EUR 18bn a year) are held flat, and the honest random-walk error on a flow that large is wide enough to cross zero ([limitations.md](../limitations.md)).
+
+## See also
+
+- [ranges.md](ranges.md): how the multiplier's interval combines with the other uncertainties
+- [prices.md](prices.md): the price levels that turn values into volumes
+- [trade.md](trade.md): the goods-trade series the counterfactual is applied to
+- [services-shipping-companies.md](services-shipping-companies.md): the flows that still use `trend2.json`
+- Research notes: [trend-notes.md](../../research/2026-10/gaps/trend-notes.md), [trend2-notes.md](../../research/2026-10/gaps/trend2-notes.md), [trend3-notes.md](../../research/2026-10/gaps/trend3-notes.md), [counterfactual-notes.md](../../research/2026-10/gaps/counterfactual-notes.md), [audit2-notes.md](../../research/2026-10/gaps/audit2-notes.md) (question 5)
+- Code: [build_data.py `counterfactual()` and `pre_war_trends()`](../../pipeline/build_data.py), `triple()` and `calc()` in [site/index.html](../../site/index.html)
+- [Documentation index](../README.md)

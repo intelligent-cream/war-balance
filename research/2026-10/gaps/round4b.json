@@ -1,0 +1,3038 @@
+{
+ "generated": "2026-10-18",
+ "uae": {
+  "unit": "EUR bn (USD converted at ECB annual averages as in trade_full.json); 2026 = January-August, not annualised",
+  "basis": "UAE customs (FCSC) basis: goods recorded at the UAE border with Russia as partner. Total of to_rus + from_rus matches the Ministry of Economy / Foreign Trade 'non-oil trade' totals (USD 10.8bn 2022, ~11.0bn 2023, 11.5bn 2024, 20.4bn 2025), which equal the customs totals including the small HS 27 imports.",
+  "to_rus": {
+   "2021": {
+    "low": 3.137,
+    "central": 3.137,
+    "high": 3.137
+   },
+   "2022": {
+    "low": 7.777,
+    "central": 7.777,
+    "high": 7.777
+   },
+   "2023": {
+    "low": 5.965,
+    "central": 5.965,
+    "high": 5.965
+   },
+   "2024": {
+    "low": 6.467,
+    "central": 7.206,
+    "high": 7.945
+   },
+   "2025": {
+    "low": 11.416,
+    "central": 12.744,
+    "high": 14.071
+   },
+   "2026": {
+    "low": 3.44,
+    "central": 5.848,
+    "high": 8.17
+   }
+  },
+  "from_rus": {
+   "2021": {
+    "low": 1.226,
+    "central": 1.226,
+    "high": 1.226
+   },
+   "2022": {
+    "low": 2.46,
+    "central": 2.46,
+    "high": 2.46
+   },
+   "2023": {
+    "low": 4.153,
+    "central": 4.153,
+    "high": 4.153
+   },
+   "2024": {
+    "low": 2.679,
+    "central": 3.418,
+    "high": 4.158
+   },
+   "2025": {
+    "low": 3.982,
+    "central": 5.31,
+    "high": 6.637
+   },
+   "2026": {
+    "low": 2.408,
+    "central": 3.612,
+    "high": 4.816
+   }
+  },
+  "split": {
+   "gold_from_rus": {
+    "2021": {
+     "low": 0.287,
+     "central": 0.287,
+     "high": 0.287
+    },
+    "2022": {
+     "low": 5.09,
+     "central": 5.09,
+     "high": 5.09
+    },
+    "2023": {
+     "low": 2.331,
+     "central": 2.331,
+     "high": 2.331
+    },
+    "2024": {
+     "low": 4.619,
+     "central": 4.989,
+     "high": 5.359
+    },
+    "2025": {
+     "low": 7.08,
+     "central": 9.204,
+     "high": 11.062
+    },
+    "2026": {
+     "low": 1.72,
+     "central": 3.87,
+     "high": 6.02
+    }
+   },
+   "precious_stones_pgm_from_rus": {
+    "2021": {
+     "low": 1.547,
+     "central": 1.547,
+     "high": 1.547
+    },
+    "2022": {
+     "low": 1.662,
+     "central": 1.662,
+     "high": 1.662
+    },
+    "2023": {
+     "low": 1.702,
+     "central": 1.702,
+     "high": 1.702
+    },
+    "2024": {
+     "low": 0.924,
+     "central": 1.293,
+     "high": 1.755
+    },
+    "2025": {
+     "low": 1.062,
+     "central": 1.593,
+     "high": 2.301
+    },
+    "2026": {
+     "low": 0.516,
+     "central": 0.86,
+     "high": 1.29
+    }
+   },
+   "fuel_from_rus_in_uae_customs": {
+    "2021": {
+     "low": 0.076,
+     "central": 0.076,
+     "high": 0.076
+    },
+    "2022": {
+     "low": 0.266,
+     "central": 0.266,
+     "high": 0.266
+    },
+    "2023": {
+     "low": 1.073,
+     "central": 1.073,
+     "high": 1.073
+    },
+    "2024": {
+     "low": 0.185,
+     "central": 0.37,
+     "high": 0.739
+    },
+    "2025": {
+     "low": 0.265,
+     "central": 0.619,
+     "high": 1.062
+    },
+    "2026": {
+     "low": 0.086,
+     "central": 0.258,
+     "high": 0.516
+    }
+   },
+   "other_goods_from_rus": {
+    "2021": {
+     "low": 1.226,
+     "central": 1.226,
+     "high": 1.226
+    },
+    "2022": {
+     "low": 0.76,
+     "central": 0.76,
+     "high": 0.76
+    },
+    "2023": {
+     "low": 0.86,
+     "central": 0.86,
+     "high": 0.86
+    },
+    "2024": {
+     "low": 0.37,
+     "central": 0.554,
+     "high": 0.924
+    },
+    "2025": {
+     "low": 0.796,
+     "central": 1.327,
+     "high": 1.947
+    },
+    "2026": {
+     "low": 0.43,
+     "central": 0.86,
+     "high": 1.29
+    }
+   },
+   "reexports_to_rus": {
+    "2021": {
+     "low": 0.964,
+     "central": 0.964,
+     "high": 0.964
+    },
+    "2022": {
+     "low": 2.27,
+     "central": 2.27,
+     "high": 2.27
+    },
+    "2023": {
+     "low": 3.894,
+     "central": 3.894,
+     "high": 3.894
+    },
+    "2024": {
+     "low": 2.495,
+     "central": 3.187,
+     "high": 3.88
+    },
+    "2025": {
+     "low": 3.54,
+     "central": 4.779,
+     "high": 6.106
+    },
+    "2026": {
+     "low": 2.15,
+     "central": 3.268,
+     "high": 4.386
+    }
+   },
+   "national_exports_to_rus": {
+    "2021": {
+     "low": 0.262,
+     "central": 0.262,
+     "high": 0.262
+    },
+    "2022": {
+     "low": 0.19,
+     "central": 0.19,
+     "high": 0.19
+    },
+    "2023": {
+     "low": 0.259,
+     "central": 0.259,
+     "high": 0.259
+    },
+    "2024": {
+     "low": 0.139,
+     "central": 0.231,
+     "high": 0.37
+    },
+    "2025": {
+     "low": 0.265,
+     "central": 0.531,
+     "high": 0.796
+    },
+    "2026": {
+     "low": 0.172,
+     "central": 0.344,
+     "high": 0.516
+    }
+   }
+  },
+  "split_usd_bn": {
+   "gold_from_rus": {
+    "2021": {
+     "low": 0.34,
+     "central": 0.34,
+     "high": 0.34
+    },
+    "2022": {
+     "low": 5.36,
+     "central": 5.36,
+     "high": 5.36
+    },
+    "2023": {
+     "low": 2.52,
+     "central": 2.52,
+     "high": 2.52
+    },
+    "2024": {
+     "low": 5.0,
+     "central": 5.4,
+     "high": 5.8
+    },
+    "2025": {
+     "low": 8.0,
+     "central": 10.4,
+     "high": 12.5
+    },
+    "2026": {
+     "low": 2.0,
+     "central": 4.5,
+     "high": 7.0
+    }
+   },
+   "precious_stones_pgm_from_rus": {
+    "2021": {
+     "low": 1.83,
+     "central": 1.83,
+     "high": 1.83
+    },
+    "2022": {
+     "low": 1.75,
+     "central": 1.75,
+     "high": 1.75
+    },
+    "2023": {
+     "low": 1.84,
+     "central": 1.84,
+     "high": 1.84
+    },
+    "2024": {
+     "low": 1.0,
+     "central": 1.4,
+     "high": 1.9
+    },
+    "2025": {
+     "low": 1.2,
+     "central": 1.8,
+     "high": 2.6
+    },
+    "2026": {
+     "low": 0.6,
+     "central": 1.0,
+     "high": 1.5
+    }
+   },
+   "fuel_from_rus_in_uae_customs": {
+    "2021": {
+     "low": 0.09,
+     "central": 0.09,
+     "high": 0.09
+    },
+    "2022": {
+     "low": 0.28,
+     "central": 0.28,
+     "high": 0.28
+    },
+    "2023": {
+     "low": 1.16,
+     "central": 1.16,
+     "high": 1.16
+    },
+    "2024": {
+     "low": 0.2,
+     "central": 0.4,
+     "high": 0.8
+    },
+    "2025": {
+     "low": 0.3,
+     "central": 0.7,
+     "high": 1.2
+    },
+    "2026": {
+     "low": 0.1,
+     "central": 0.3,
+     "high": 0.6
+    }
+   },
+   "other_goods_from_rus": {
+    "2021": {
+     "low": 1.45,
+     "central": 1.45,
+     "high": 1.45
+    },
+    "2022": {
+     "low": 0.8,
+     "central": 0.8,
+     "high": 0.8
+    },
+    "2023": {
+     "low": 0.93,
+     "central": 0.93,
+     "high": 0.93
+    },
+    "2024": {
+     "low": 0.4,
+     "central": 0.6,
+     "high": 1.0
+    },
+    "2025": {
+     "low": 0.9,
+     "central": 1.5,
+     "high": 2.2
+    },
+    "2026": {
+     "low": 0.5,
+     "central": 1.0,
+     "high": 1.5
+    }
+   },
+   "reexports_to_rus": {
+    "2021": {
+     "low": 1.14,
+     "central": 1.14,
+     "high": 1.14
+    },
+    "2022": {
+     "low": 2.39,
+     "central": 2.39,
+     "high": 2.39
+    },
+    "2023": {
+     "low": 4.21,
+     "central": 4.21,
+     "high": 4.21
+    },
+    "2024": {
+     "low": 2.7,
+     "central": 3.45,
+     "high": 4.2
+    },
+    "2025": {
+     "low": 4.0,
+     "central": 5.4,
+     "high": 6.9
+    },
+    "2026": {
+     "low": 2.5,
+     "central": 3.8,
+     "high": 5.1
+    }
+   },
+   "national_exports_to_rus": {
+    "2021": {
+     "low": 0.31,
+     "central": 0.31,
+     "high": 0.31
+    },
+    "2022": {
+     "low": 0.2,
+     "central": 0.2,
+     "high": 0.2
+    },
+    "2023": {
+     "low": 0.28,
+     "central": 0.28,
+     "high": 0.28
+    },
+    "2024": {
+     "low": 0.15,
+     "central": 0.25,
+     "high": 0.4
+    },
+    "2025": {
+     "low": 0.3,
+     "central": 0.6,
+     "high": 0.9
+    },
+    "2026": {
+     "low": 0.2,
+     "central": 0.4,
+     "high": 0.6
+    }
+   }
+  },
+  "gold_tonnes": {
+   "2021": {
+    "low": 5.5,
+    "central": 5.5,
+    "high": 5.5
+   },
+   "2022": {
+    "low": 96.4,
+    "central": 96.4,
+    "high": 96.4
+   },
+   "2023": {
+    "low": 40.6,
+    "central": 40.6,
+    "high": 40.6
+   },
+   "2024": {
+    "low": 62,
+    "central": 66,
+    "high": 70
+   },
+   "2025": {
+    "low": 73,
+    "central": 95,
+    "high": 114
+   },
+   "2026": {
+    "low": 15,
+    "central": 33,
+    "high": 52
+   }
+  },
+  "check_against_map": {
+   "map_trade_layer_eur_bn": {
+    "to_rus": {
+     "2022": 7.78,
+     "2023": 5.96,
+     "2024": 6.03,
+     "2025": 7.2,
+     "2026": 4.29
+    },
+    "from_rus": {
+     "2022": 2.46,
+     "2023": 4.15,
+     "2024": 3.71,
+     "2025": 3.71,
+     "2026": 2.36
+    }
+   },
+   "change_eur_bn_central": {
+    "to_rus": {
+     "2024": 1.18,
+     "2025": 5.54,
+     "2026": 1.56
+    },
+    "from_rus": {
+     "2024": -0.29,
+     "2025": 1.6,
+     "2026": 1.25
+    }
+   },
+   "official_total_usd_bn": {
+    "2022": 10.8,
+    "2023": 10.9,
+    "2024": 11.5,
+    "2025": 20.4
+   },
+   "this_estimate_total_usd_bn": {
+    "2022": 10.78,
+    "2023": 10.94,
+    "2024": 11.5,
+    "2025": 20.4,
+    "2026_JanAug": 11.0
+   }
+  },
+  "consistency": {
+   "reexports_json": "reexports_to_RUS central in reexports.json (EUR 2.27/3.90/3.19/3.97/2.65 for 2022-2026) is kept for 2022-2024 (3.19 vs 3.19 here); for 2025 and 2026 the re-export part of the larger export total is EUR 4.78 (3.54-6.11) and 3.27 (2.15-4.39). Raise reexports_to_RUS 2025 to 4.78 and 2026 to 3.27 and move the extra to origins with the same origin_shares; the UAE keeps the margin as now.",
+   "reexports_from_rus": "The extra 2024-2026 gold and stones are mostly passed on (UAE passes on 84-91% of its direct Russian gold; refine.json first buyers HKG 30%, IND 19%, CHE 15%, TUR 14%). reexports_from_RUS should rise to about EUR 5.3 (2024), 9.8 (2025) and 4.3 (2026 Jan-Aug) central, so the UAE's own net payments rise much less than its imports.",
+   "crea_fuel": "CREA fuel delivered to the UAE (EUR 0.8/5.6/6.1/2.1/1.6/0.2 for 2021-2026) is the total; the part already in UAE customs is fuel_from_rus_in_uae_customs (EUR 0.08/0.27/1.07/0.37/0.62/0.26). The fuel addition from audit2 Q2 must be CREA minus that customs part, floored at zero: EUR 0.73/5.35/4.98/1.77/0.98/0.00. For 2024-2026 audit2 assumed no customs fuel, so the addition falls by 0.37/0.62/0.19.",
+   "hidden_gold": "Keep hidden UAE gold at zero for 2022-2026: the gold is now inside the trade layer (Swissaid 66 t for 2024; 2025-2026 estimated).",
+   "armenia_route": "Armenian-routed Russian gold collapsed in 2025 (Armenian exports -36%, precious-metal re-exports to the UAE down ~60%); the 2025 rise in direct UAE gold is largely that route moving back to direct shipments. Armenia's 2025-2026 imports of Russian gold in the map should be checked against this (not done here)."
+  },
+  "certainty": {
+   "2021": "A",
+   "2022": "A",
+   "2023": "A",
+   "2024": "B",
+   "2025": "B (total A, split C)",
+   "2026": "C"
+  },
+  "sources": [
+   {
+    "name": "UN Comtrade (UAE FCSC reports): UAE imports from Russia 2021-2023 by HS (TOTAL, 27, 71, 7102, 7108), exports (X) and re-exports (RX) to Russia",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=784&period=2023&partnerCode=643&flowCode=M&cmdCode=TOTAL,27,71,7108,7102",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "UAE Ministry of Foreign Trade press release (Zawya): non-oil trade with Russia USD 20.4bn in 2025, +77.7% on 2024, nearly double the 2022 level of USD 10.8bn",
+    "url": "https://www.zawya.com/en/press-release/government-news/uae-russia-trade-in-services-and-investment-agreement-enters-into-force-464653",
+    "date": "2026-08"
+   },
+   {
+    "name": "Finance Middle East: UAE-Russia non-oil trade about USD 11.5bn in 2024 (+5% on 2023); H1 2025 +75%",
+    "url": "https://www.financemiddleeast.com/?p=22951",
+    "date": "2025-08-11"
+   },
+   {
+    "name": "Gulf Today / UAE Ministry of Economy: 2022 imports from Russia AED 30.1bn, re-exports AED 9bn, national exports AED 1bn; gold AED 20bn, diamonds AED 6.1bn",
+    "url": "https://gulftoday.ae/business/2023/09/01/uae-is-our-first-arab-trade-partner-with-$10-billion-russian-minister",
+    "date": "2023-09-01"
+   },
+   {
+    "name": "UAE embassy in Moscow (MOFA): bilateral trade about USD 12bn in 2025 (Russian-side measure), Russian exports led by petroleum products, gold and precious metals",
+    "url": "https://www.mofa.gov.ae/en/missions/moscow/uae-relationships/economic-cooperation",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "TASS via InvestFuture: Russia-UAE turnover record USD 10.2bn in 2023; USD 8.9bn Jan-Sep 2025 (Alikhanov, Russian side)",
+    "url": "https://investfuture.ru/articles/tovarooborot-rossii-i-oae-stremitelno-rastet-priblizhayas-k-rekordam-0BFA7A1C0B772E9343258D5400344B2F",
+    "date": "2025-12-02"
+   },
+   {
+    "name": "Swissaid: United Arab Emirates more than ever a hub for conflict gold (UAE-reported 2024: 66 t / USD 5.4bn of gold from Russia, 78 t from Armenia)",
+    "url": "https://www.swissaid.ch/en/media/united-arab-emirates-more-than-ever-a-hub-for-conflict-gold/",
+    "date": "2025"
+   },
+   {
+    "name": "Reuters (via mining.com): 75.7 t of Russian gold to the UAE Feb 2022-Mar 2023 in Russian customs records; 96.4 t in 2022 in Comtrade",
+    "url": "https://www.mining.com/web/from-russia-with-gold-uae-cashes-in-as-sanctions-bite/",
+    "date": "2023-05"
+   },
+   {
+    "name": "Interfax: Hong Kong imports of Russian gold 92.1 t (USD 10.5bn) in 2025, mainland China USD 3.3bn",
+    "url": "https://interfax.com/newsroom/top-stories/115819/",
+    "date": "2026-01-28"
+   },
+   {
+    "name": "ARKA / World Bank: Armenia's 2025 exports -36% on a sharp fall of gold and diamond re-exports, mainly to the UAE",
+    "url": "https://www.arka.am/en/news/economy/sharp-decline-in-diamond-and-gold-re-exports-leads-to-decline-in-exports-and-imports-in-armenia-wb",
+    "date": "2026"
+   },
+   {
+    "name": "CREA Russia Fossil Tracker (fuel delivered to the UAE, as used in audit2 Q2)",
+    "url": "https://api.russiafossiltracker.com",
+    "date": "2026-10-16"
+   }
+  ],
+  "reasoning": "The official USD 20.4bn is UAE customs trade with Russia; the map's EUR ~11bn (USD ~12bn) for 2025 rests on an IMF IMTS import estimate (USD 8.1bn) and an export value carried forward from 2023, so it misses about USD 8bn. 2021-2023 are the UAE's own FCSC records in Comtrade, which reproduce the Ministry totals exactly (2022: 8.19 + 2.59 = 10.78 vs 10.8). 2024 is pinned by the Ministry total (USD 11.5bn) and Swissaid's 66 t of Russian gold (USD 5.4bn); exports stay near the trade_full estimate. For 2025 the USD 8.9bn rise is split with three anchors: gold prices rose ~44%; the Armenian gold route collapsed, so Russian gold that went UAE-via-Armenia in 2024 (78 t) went more directly; and the Russian-side turnover (USD 8.9bn Jan-Sep, about 12bn for the year, which appears to leave out gold) implies non-gold trade of USD 10-12bn including Russian fuel that UAE customs miss, i.e. UAE exports to Russia of roughly USD 5-7bn. Gold therefore takes USD 8-12.5bn (73-114 t, against Russia's exportable 220-260 t after Hong Kong's 92 t and China's 25 t). 2026 Jan-Aug: Russian gold moved to Hong Kong (99.7 t by July), so UAE gold falls to an estimated 15-52 t; exports run at the 2025 rate. Ranges on the split are wide; the yearly totals for 2022-2025 are tight."
+ },
+ "refugees": {
+  "unit": "EUR bn per year, gross public cost to the host government (2026 = January-August)",
+  "eu_funded_note": "eu_funded is the part of the host's cost paid from EU funds: CARE/FAST-CARE re-use of 2014-2020 cohesion funds, the EUR 3.4bn REACT-EU pre-financing (April 2022), AMIF/BMVI emergency aid and reallocations, ESF. It is EU-budget money. If the map counts EU-level spending on refugees inside EU aid (spread over members by budget share), subtract eu_funded from the host's cost; if it does not (the Kiel EU-institutions line covers aid to Ukraine, not refugee costs inside the EU), keep the host's gross cost and do nothing. Estimates are given where a national source names the EU share; elsewhere eu_funded is null (unknown, likely small).",
+  "USA": {
+   "2022": {
+    "low": 0.338,
+    "central": 0.52,
+    "high": 0.78
+   },
+   "2023": {
+    "low": 0.812,
+    "central": 1.25,
+    "high": 1.875
+   },
+   "2024": {
+    "low": 0.683,
+    "central": 1.05,
+    "high": 1.575
+   },
+   "2025": {
+    "low": 0.416,
+    "central": 0.64,
+    "high": 0.96
+   },
+   "2026": {
+    "low": 0.15,
+    "central": 0.23,
+    "high": 0.345
+   },
+   "eu_funded": null,
+   "certainty": "B",
+   "basis": "federal appropriations (ORR) plus mainstream benefits (estimated)",
+   "sources": [
+    {
+     "name": "GAO-26-107815, Ukraine Funding: HHS Allocation and Oversight of Refugee Assistance: USD 3.78bn to ORR in three Ukraine supplementals FY2022-24, USD 1.79bn allocated on Ukrainian population estimates; ~259,000 Ukrainians paroled FY2022-24; ~135,000 received ORR assistance",
+     "url": "https://www.gao.gov/assets/890/884851.pdf",
+     "date": "2026-03-16"
+    },
+    {
+     "name": "P.L. 117-128 (May 2022): USD 900m Refugee and Entrant Assistance for Ukrainians; Section 401 eligibility for SNAP, Medicaid, SSI, TANF",
+     "url": "https://www.fns.usda.gov/snap/additional-ukraine-supplemental-appropriations-act-2022",
+     "date": "2022-05-21"
+    },
+    {
+     "name": "P.L. 118-50 (Apr 2024): USD 481m ORR, eligibility extended to parolees arriving by 30 Sep 2024",
+     "url": "https://acf.gov/orr/policy/dear-colleague-letters/24-01",
+     "date": "2024"
+    }
+   ],
+   "reasoning": "ORR's Ukrainian-allocated USD 1.79bn spread by arrival and eligibility (FY22 0.35, FY23 0.75, FY24 0.45, FY25 0.25). Mainstream federal benefits (Medicaid, SNAP, SSI, TANF) for Ukrainian parolees have no published total; estimated from ~135,000 ORR beneficiaries and usual take-up (USD 0.15/0.55/0.65/0.45/0.22bn), plus small DHS processing costs. The remaining USD 1.99bn of the supplementals served other populations and is not counted. The map's model (EUR 11.1bn for 2022-26) is about three times this.",
+   "map_now": {
+    "2022": 0.99,
+    "2023": 1.91,
+    "2024": 2.85,
+    "2025": 3.22,
+    "2026": 2.12
+   }
+  },
+  "CAN": {
+   "2022": {
+    "low": 0.306,
+    "central": 0.51,
+    "high": 0.816
+   },
+   "2023": {
+    "low": 0.45,
+    "central": 0.75,
+    "high": 1.2
+   },
+   "2024": {
+    "low": 0.324,
+    "central": 0.54,
+    "high": 0.864
+   },
+   "2025": {
+    "low": 0.222,
+    "central": 0.37,
+    "high": 0.592
+   },
+   "2026": {
+    "low": 0.126,
+    "central": 0.21,
+    "high": 0.336
+   },
+   "eu_funded": null,
+   "certainty": "B-C",
+   "basis": "federal programme costs (CUAET, CUTAI) plus provincial health, schooling and social assistance (estimated)",
+   "sources": [
+    {
+     "name": "IRCC Question Period note: CUTAI payments completed; 296,779 approved, CAD 794.8m paid (to 1 Sep 2024)",
+     "url": "https://search.open.canada.ca/qpnotes/record/cic,IRCC-2025-QP-00012",
+     "date": "2025"
+    },
+    {
+     "name": "IRCC CIMM briefing: Budget 2023 CAD 171.4m over two years; CUTAI CAD 288.3m; CAD 641.6m over 10 years for special measures; Supplementary Estimates (B) CAD 88m",
+     "url": "https://www.canada.ca/en/immigration-refugees-citizenship/corporate/transparency/committees/cimm-dec-05-2023/additional-funding-ukraine.html",
+     "date": "2023-12-05"
+    }
+   ],
+   "reasoning": "Federal spending is about CAD 1.3bn in all (CUTAI 0.79bn, processing, hotels and settlement), mostly 2022-2024. CUAET holders have open work permits and most work, so provincial costs (health coverage, schools, social assistance) are the larger part later; estimated at CAD 0.25-0.6bn a year. CAD 0.70/1.10/0.80/0.58/0.34bn.",
+   "map_now": {
+    "2022": 0.77,
+    "2023": 1.41,
+    "2024": 2.03,
+    "2025": 2.09,
+    "2026": 1.25
+   }
+  },
+  "DEU": {
+   "2022": {
+    "low": 5.5,
+    "central": 7.0,
+    "high": 8.5
+   },
+   "2023": {
+    "low": 8.8,
+    "central": 11.2,
+    "high": 13.0
+   },
+   "2024": {
+    "low": 8.3,
+    "central": 10.9,
+    "high": 12.6
+   },
+   "2025": {
+    "low": 8.0,
+    "central": 10.6,
+    "high": 12.2
+   },
+   "2026": {
+    "low": 5.3,
+    "central": 7.0,
+    "high": 8.1
+   },
+   "eu_funded": null,
+   "certainty": "B",
+   "basis": "federal outturn (Bundestag) plus Länder and municipal costs (estimated)",
+   "sources": [
+    {
+     "name": "Bundestag Drucksache 20/13346: federal refugee-related burden for Ukrainians EUR 5.5bn (2022), 8.8bn (2023)",
+     "url": "https://dserver.bundestag.de/btd/20/133/2013346.pdf",
+     "date": "2024-10-14"
+    },
+    {
+     "name": "Kiel Policy Brief: EUR 34.6bn federal spending on Ukrainian refugees to mid-2026 (27.45 Bürgergeld via BMAS, 7.15 BMF to Länder)",
+     "url": "https://www.kielinstitut.de/publications/how-much-aid-has-germany-given-to-ukraine-20290/",
+     "date": "2026-10"
+    },
+    {
+     "name": "ZDF heute: Bürgergeld to Ukrainian nationals ~EUR 6.3bn in 2024 (BMAS)",
+     "url": "https://www.zdfheute.de/politik/buergergeld-ukraine-zahlen-soeder-100.html",
+     "date": "2025"
+    },
+    {
+     "name": "Bavarian Landtag answer: federal EUR 2bn (2022) and 1.5bn (2023) to the Länder for Ukrainian refugees",
+     "url": "https://www.bayern.landtag.de/www/ElanTextAblage_WP18/Drucksachen/Basisdrucksachen/0000017000/0000017137_012.pdf",
+     "date": "2023"
+    }
+   ],
+   "reasoning": "Low = federal only (Bürgergeld, lump sums to Länder). Central adds Länder and municipal own costs (municipal share of housing costs, schools and day care, AsylbLG in spring 2022 and again for arrivals after April 2025): about EUR 1.5-2.6bn a year. Close to the map.",
+   "map_now": {
+    "2022": 6.85,
+    "2023": 10.96,
+    "2024": 10.33,
+    "2025": 9.96,
+    "2026": 6.64
+   }
+  },
+  "POL": {
+   "2022": {
+    "low": 4.0,
+    "central": 7.0,
+    "high": 9.6
+   },
+   "2023": {
+    "low": 4.5,
+    "central": 7.5,
+    "high": 9.9
+   },
+   "2024": {
+    "low": 3.2,
+    "central": 4.5,
+    "high": 5.8
+   },
+   "2025": {
+    "low": 2.6,
+    "central": 3.4,
+    "high": 4.5
+   },
+   "2026": {
+    "low": 1.1,
+    "central": 1.6,
+    "high": 2.2
+   },
+   "eu_funded": {
+    "2022": {
+     "low": 0.3,
+     "central": 0.6,
+     "high": 0.9
+    },
+    "2023": {
+     "low": 0.1,
+     "central": 0.25,
+     "high": 0.4
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.05,
+     "high": 0.1
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.05
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "certainty": "B",
+   "basis": "Aid Fund outturn plus ministries (education, health, 800+), checked against the government's PLN 90bn for 2022-23",
+   "sources": [
+    {
+     "name": "Radio Spacja: Aid Fund spending PLN 13.87bn (2022), 14.78bn (2023), ~10.12bn (2024), ~7.93bn (2025)",
+     "url": "https://radiospacja.pl/ile-polska-wydaa-na-pomoc-ukrainie-pene-dane-z-2026-roku/",
+     "date": "2026-08-09"
+    },
+    {
+     "name": "NIK audit: Aid Fund >PLN 11bn in 2022, >PLN 14bn to 30 Apr 2023",
+     "url": "https://www.nik.gov.pl/najnowsze-informacje-o-wynikach-kontroli/dzialania-na-rzecz-pomocy-obywatelom-ukrainy.html",
+     "date": "2024-06-25"
+    },
+    {
+     "name": "Government of Poland: support 1000 days after the aggression (refugee support figures)",
+     "url": "https://www.gov.pl/web/japonia/polands-support-1000-days-after-russias-aggression-against-ukraine",
+     "date": "2024-11"
+    }
+   ],
+   "reasoning": "Low = Aid Fund plus child benefit (800+) paid to Ukrainians. High = the government's PLN 90bn for 2022-23, which also counts local government and some non-budget costs. Central PLN 33/34/19/14.5/7bn. EU funds (REACT-EU pre-financing, AMIF emergency aid) paid part of 2022-23.",
+   "map_now": {
+    "2022": 6.52,
+    "2023": 7.17,
+    "2024": 5.18,
+    "2025": 4.12,
+    "2026": 1.0
+   }
+  },
+  "CZE": {
+   "2022": {
+    "low": 0.969,
+    "central": 1.14,
+    "high": 1.539
+   },
+   "2023": {
+    "low": 0.612,
+    "central": 0.72,
+    "high": 0.972
+   },
+   "2024": {
+    "low": 0.586,
+    "central": 0.69,
+    "high": 0.931
+   },
+   "2025": {
+    "low": 0.527,
+    "central": 0.62,
+    "high": 0.837
+   },
+   "2026": {
+    "low": 0.332,
+    "central": 0.39,
+    "high": 0.527
+   },
+   "eu_funded": {
+    "2022": {
+     "low": 0.05,
+     "central": 0.15,
+     "high": 0.25
+    },
+    "2023": {
+     "low": 0.02,
+     "central": 0.06,
+     "high": 0.1
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.02,
+     "high": 0.05
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.02
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "certainty": "A-B",
+   "basis": "state budget outturn (Labour Ministry balance)",
+   "sources": [
+    {
+     "name": "ČTK via České noviny: CZK 62.5bn spent on humanitarian benefits and other refugee aid to end-2024; humanitarian benefit CZK 8.7bn (2022), 6.96bn (2023), 7.93bn (2024), 8.82bn (2025)",
+     "url": "https://www.ceskenoviny.cz/zpravy/vydaje-na-davku-klesaji-pribyva-zamestnanych-z-ukrajiny/2864752",
+     "date": "2026-02"
+    },
+    {
+     "name": "MPSV press release: balance of refugee spending and revenue (24 Feb 2025)",
+     "url": "https://www.mpsv.cz/cms/documents/960141c9-77fe-a2a0-08eb-0935789a6a7e/TZ_bilance_UA_24022025.pdf",
+     "date": "2025-02-24"
+    },
+    {
+     "name": "Brno Daily: MPSV quarterly state expenditure on Ukrainian refugees (Q1-Q3 2025 CZK 11.5bn)",
+     "url": "https://brnodaily.com/2025/11/10/news/ukrainian-refugees-contribute-twice-as-much-as-they-receive-from-the-czech-state/",
+     "date": "2025-11-10"
+    }
+   ],
+   "reasoning": "CZK 28/17.2/17.3/15.5/9.5bn: 2022 is the CZK 62.5bn total less 2023-2024; 2024 = state final account (CZK 17.3bn direct war-related); 2025 = Q1-Q3 x 4/3. High adds health insurance for state-insured refugees and regional costs.",
+   "map_now": {
+    "2022": 0.96,
+    "2023": 0.86,
+    "2024": 0.58,
+    "2025": 0.59,
+    "2026": 0.4
+   }
+  },
+  "GBR": {
+   "2022": {
+    "low": 1.148,
+    "central": 1.64,
+    "high": 2.46
+   },
+   "2023": {
+    "low": 1.365,
+    "central": 1.95,
+    "high": 2.925
+   },
+   "2024": {
+    "low": 0.952,
+    "central": 1.36,
+    "high": 2.04
+   },
+   "2025": {
+    "low": 0.693,
+    "central": 0.99,
+    "high": 1.485
+   },
+   "2026": {
+    "low": 0.399,
+    "central": 0.57,
+    "high": 0.855
+   },
+   "eu_funded": null,
+   "certainty": "B",
+   "basis": "Homes for Ukraine payments (NAO) plus Universal Credit, schools and health (estimated)",
+   "sources": [
+    {
+     "name": "NAO Investigation into the Homes for Ukraine scheme: GBP 2.1bn to Sep 2023; GBP 1.1bn of tariff to councils by end of 2022-23; tariff GBP 10,500 per guest, GBP 5,900 from 2023",
+     "url": "https://www.nao.org.uk/press-releases/investigation-into-homes-for-ukraine/",
+     "date": "2023-10-17"
+    },
+    {
+     "name": "ICAI: UK aid to refugees in the UK (DLUHC GBP 524m on Homes for Ukraine in 2022; in-donor refugee costs GBP 3.7bn 2022, 4.3bn 2023)",
+     "url": "https://icai.independent.gov.uk/html-version/uk-aid-to-refugees-in-the-uk-oda-eligibility-update",
+     "date": "2024"
+    },
+    {
+     "name": "Hansard written statement: Homes for Ukraine tariff cut to GBP 3,300 from 2027",
+     "url": "https://hansard.parliament.uk/commons/2026-09-15/debates/26091543000017/HomesForUkraineFunding",
+     "date": "2026-09-15"
+    }
+   ],
+   "reasoning": "GBP 1.40/1.70/1.15/0.85/0.50bn: Homes for Ukraine tariffs and thank-you payments (GBP 2.1bn by Sep 2023, falling with the lower tariff and fewer hosts), Universal Credit and housing support, schools and NHS. The Ukraine Family Scheme has no tariff. The map's model rises to 2025; real spending peaked in 2023.",
+   "map_now": {
+    "2022": 1.12,
+    "2023": 1.54,
+    "2024": 1.81,
+    "2025": 1.98,
+    "2026": 1.37
+   }
+  },
+  "ESP": {
+   "2022": {
+    "low": 0.527,
+    "central": 0.62,
+    "high": 1.116
+   },
+   "2023": {
+    "low": 0.383,
+    "central": 0.45,
+    "high": 0.81
+   },
+   "2024": {
+    "low": 0.306,
+    "central": 0.36,
+    "high": 0.648
+   },
+   "2025": {
+    "low": 0.255,
+    "central": 0.3,
+    "high": 0.54
+   },
+   "2026": {
+    "low": 0.145,
+    "central": 0.17,
+    "high": 0.306
+   },
+   "eu_funded": {
+    "2022": {
+     "low": 0.06,
+     "central": 0.1,
+     "high": 0.14
+    },
+    "2023": {
+     "low": 0.05,
+     "central": 0.08,
+     "high": 0.11
+    },
+    "2024": {
+     "low": 0.03,
+     "central": 0.06,
+     "high": 0.09
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.02,
+     "high": 0.04
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.02
+    }
+   },
+   "certainty": "B",
+   "basis": "Ministry of Inclusion total (state funds plus EU co-financing)",
+   "sources": [
+    {
+     "name": "Vozpópuli citing Ministry of Inclusion: public spending since 2022 above EUR 1.4bn incl. EU co-financing (AMIF EUR 28m, ESF EUR 209m); EUR 1.2bn extraordinary credit line",
+     "url": "https://www.vozpopuli.com/espana/espana-acogido-casi-200-000-refugiados-ucranianos-inicio-guerra-pais.html",
+     "date": "2024"
+    },
+    {
+     "name": "Ministerio de Inclusión: informe Ucrania (Feb 2025)",
+     "url": "https://inclusion.gob.es/documents/d/guest/20250225_informe-ucrania_2025",
+     "date": "2025-02-25"
+    },
+    {
+     "name": "Noticias de Navarra: 2022 transfers to regions EUR 52.8m (EUR 400/month aid) and EUR 30m reception",
+     "url": "https://www.noticiasdenavarra.com/sociedad/2022/08/02/reparto-comunidades-ayuda-atencion-ucranianos-5875153.html",
+     "date": "2022-08-02"
+    }
+   ],
+   "reasoning": "EUR 1.43bn for 2022-2024 split by the reception caseload; 2025-26 continue at the falling rate. High adds regional health and education spending not in the Ministry total. EU funds: EUR 237m (AMIF + ESF).",
+   "map_now": {
+    "2022": 0.51,
+    "2023": 0.88,
+    "2024": 1.03,
+    "2025": 1.18,
+    "2026": 0.87
+   }
+  },
+  "ITA": {
+   "2022": {
+    "low": 0.42,
+    "central": 0.6,
+    "high": 0.96
+   },
+   "2023": {
+    "low": 0.28,
+    "central": 0.4,
+    "high": 0.64
+   },
+   "2024": {
+    "low": 0.175,
+    "central": 0.25,
+    "high": 0.4
+   },
+   "2025": {
+    "low": 0.084,
+    "central": 0.12,
+    "high": 0.192
+   },
+   "2026": {
+    "low": 0.042,
+    "central": 0.06,
+    "high": 0.096
+   },
+   "eu_funded": {
+    "2022": {
+     "low": 0.15,
+     "central": 0.25,
+     "high": 0.35
+    },
+    "2023": {
+     "low": 0.05,
+     "central": 0.15,
+     "high": 0.2
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.05,
+     "high": 0.08
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.02
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "certainty": "C",
+   "basis": "national allocations (decree-laws, Civil Protection) and EU pre-financing",
+   "sources": [
+    {
+     "name": "Open: government allocates EUR 428m for reception; EUR 300/month per adult support",
+     "url": "https://www.open.online/2022/03/28/ucraina-piano-aiuti-italia-ue-profughi",
+     "date": "2022-03-28"
+    },
+    {
+     "name": "Eunews: Italy received over EUR 450m from the EU (REACT-EU pre-financing) for Ukrainian refugees",
+     "url": "https://www.eunews.it/2022/04/28/italia-ha-ricevuto-oltre-450-milioni-di-euro-dallue-per-laccoglienza-dei-rifugiati-dallucraina/",
+     "date": "2022-04-28"
+    },
+    {
+     "name": "Money.it: Quanto paga l'Italia ai profughi ucraini (CAS/SAI places EUR 181.6m 2022-24, contributo di sostentamento)",
+     "url": "https://www.money.it/quanto-paga-italia-ai-profughi-ucraini",
+     "date": "2022"
+    }
+   ],
+   "reasoning": "Italy hosted few Ukrainians in state reception; most stayed with relatives. 2022 = EUR 428m first allocation plus extensions; later years follow the falling number on support and Eurostat's 2025 clean-up of the register (162k to 60k). About EUR 0.45bn of EU pre-financing.",
+   "map_now": {
+    "2022": 0.43,
+    "2023": 0.89,
+    "2024": 0.94,
+    "2025": 0.56,
+    "2026": 0.19
+   }
+  },
+  "NLD": {
+   "2022": {
+    "low": 1.377,
+    "central": 1.53,
+    "high": 1.759
+   },
+   "2023": {
+    "low": 3.222,
+    "central": 3.58,
+    "high": 4.117
+   },
+   "2024": {
+    "low": 2.691,
+    "central": 2.99,
+    "high": 3.438
+   },
+   "2025": {
+    "low": 2.394,
+    "central": 2.66,
+    "high": 3.059
+   },
+   "2026": {
+    "low": 1.665,
+    "central": 1.85,
+    "high": 2.127
+   },
+   "eu_funded": null,
+   "certainty": "A-B",
+   "basis": "central-government outturn (kept from refugees.json)",
+   "sources": [
+    {
+     "name": "Jaarverslag JenV 2024: municipal/private reception EUR 2,639m",
+     "url": "https://www.rijksfinancien.nl/jaarverslag/2024/VI",
+     "date": "2025-05"
+    },
+    {
+     "name": "Miljoenennota 2024, Ukraine table 2.2.8 (domestic schemes)",
+     "url": "https://www.rijksfinancien.nl/miljoenennota/2024/2153111",
+     "date": "2023-09"
+    }
+   ],
+   "reasoning": "Already reported (central government pays municipalities a normative amount per person per day); unchanged.",
+   "map_now": {
+    "2022": 1.53,
+    "2023": 3.58,
+    "2024": 2.99,
+    "2025": 2.66,
+    "2026": 1.85
+   }
+  },
+  "IRL": {
+   "2022": {
+    "low": 0.85,
+    "central": 1.0,
+    "high": 1.15
+   },
+   "2023": {
+    "low": 1.7,
+    "central": 2.0,
+    "high": 2.3
+   },
+   "2024": {
+    "low": 1.488,
+    "central": 1.75,
+    "high": 2.012
+   },
+   "2025": {
+    "low": 0.935,
+    "central": 1.1,
+    "high": 1.265
+   },
+   "2026": {
+    "low": 0.51,
+    "central": 0.6,
+    "high": 0.69
+   },
+   "eu_funded": null,
+   "certainty": "A-B",
+   "basis": "all-government Ukraine response (accommodation outturn plus welfare, education, health)",
+   "sources": [
+    {
+     "name": "Irish Times: Budget estimates, assistance to people fleeing Ukraine EUR 1bn (2022), ~EUR 2bn (2023), EUR 2.5bn budgeted 2024; accommodation ~2/3, social protection ~22%",
+     "url": "https://www.irishtimes.com/your-money/2023/10/10/budget-estimates-show-500m-increase-in-aid-to-support-ukrainians/",
+     "date": "2023-10-10"
+    },
+    {
+     "name": "Tipperary Live: EUR 1.49bn on accommodation for Ukrainians in 2023, EUR 118m to hosts",
+     "url": "https://www.tipperarylive.ie/national/government-spent-almost-eu15-billion-on-accommodation-for-ukrainian-refugees-last-year-7165026",
+     "date": "2024"
+    },
+    {
+     "name": "RTE: Ukrainian accommodation EUR 1.165bn (2024), EUR 719m (2025), EUR 607m allocated for 2026",
+     "url": "https://www.rte.ie/news/2026/0219/1559258-ukraine-accommodation/",
+     "date": "2026-02-19"
+    }
+   ],
+   "reasoning": "2022-2023 are the all-government totals. 2024-2026 scale the accommodation outturn by its ~2/3 share (welfare for new arrivals was cut in 2024, so the share rises). 2026 Jan-Aug = 8/12 of the allocation-based year.",
+   "map_now": {
+    "2022": 0.59,
+    "2023": 1.36,
+    "2024": 1.67,
+    "2025": 1.79,
+    "2026": 1.26
+   }
+  },
+  "AUT": {
+   "2022": {
+    "low": 0.245,
+    "central": 0.35,
+    "high": 0.525
+   },
+   "2023": {
+    "low": 0.329,
+    "central": 0.47,
+    "high": 0.705
+   },
+   "2024": {
+    "low": 0.301,
+    "central": 0.43,
+    "high": 0.645
+   },
+   "2025": {
+    "low": 0.273,
+    "central": 0.39,
+    "high": 0.585
+   },
+   "2026": {
+    "low": 0.168,
+    "central": 0.24,
+    "high": 0.36
+   },
+   "eu_funded": null,
+   "certainty": "C",
+   "basis": "Grundversorgung rates x Ukrainians in basic care (Bund 60% / Länder 40%)",
+   "sources": [
+    {
+     "name": "Bundeskanzleramt: Grundversorgung rates for displaced Ukrainians (private EUR 165 rent + 260 food per month, organised EUR 25/day)",
+     "url": "https://www.bundeskanzleramt.gv.at/dam/jcr:2095f7ab-69eb-419a-b92d-494a26fcc4f6/20220608_grundversorgung.pdf",
+     "date": "2022-06-08"
+    },
+    {
+     "name": "Vienna.at: Länder refuse higher cost rates for Ukrainian refugees",
+     "url": "https://www.vienna.at/laender-verweigern-anhebung-der-kostensaetze-fuer-ukraine-fluechtlinge/7555678",
+     "date": "2023"
+    }
+   ],
+   "reasoning": "No Austria-wide outturn found. 75% of person-years in basic care in 2022 falling to 45% by 2026, at EUR 8-9k per person-year, plus schools. Similar to the map.",
+   "map_now": {
+    "2022": 0.48,
+    "2023": 0.64,
+    "2024": 0.65,
+    "2025": 0.7,
+    "2026": 0.49
+   }
+  },
+  "BEL": {
+   "2022": {
+    "low": 0.196,
+    "central": 0.28,
+    "high": 0.448
+   },
+   "2023": {
+    "low": 0.294,
+    "central": 0.42,
+    "high": 0.672
+   },
+   "2024": {
+    "low": 0.294,
+    "central": 0.42,
+    "high": 0.672
+   },
+   "2025": {
+    "low": 0.28,
+    "central": 0.4,
+    "high": 0.64
+   },
+   "2026": {
+    "low": 0.182,
+    "central": 0.26,
+    "high": 0.416
+   },
+   "eu_funded": null,
+   "certainty": "C",
+   "basis": "CPAS social aid (federal refund 125-135%) and Fedasil reception, from rates x caseload",
+   "sources": [
+    {
+     "name": "La Libre: CPAS social aid for temporary-protection holders up to the integration income; federal sets no level",
+     "url": "https://www.lalibre.be/belgique/societe/2022/03/17/refugies-ukrainiens-en-belgique-loctroi-de-laide-sociale-nest-pas-un-choix-politique-cest-la-loi-47RCD77GVJACJM5AFEPAI4OBTE/",
+     "date": "2022-03-17"
+    },
+    {
+     "name": "UVCW: CPAS and Ukrainians, state of play (Oct 2022)",
+     "url": "https://www.uvcw.be/no_index/files/10691-cpas-plus-octobre-2022----etrangers---ukraine-etat-des-lieux.pdf",
+     "date": "2022-10"
+    },
+    {
+     "name": "Fedasil: two years of war in Ukraine (77,636 temporary-protection certificates)",
+     "url": "https://fedasil.be/en/node/11833",
+     "date": "2024-02"
+    }
+   ],
+   "reasoning": "About 40% of person-years on CPAS aid at the integration income (~EUR 15k a year incl. federal refund), plus Fedasil emergency places in 2022 and regional costs. Lower than the map from 2024.",
+   "map_now": {
+    "2022": 0.33,
+    "2023": 0.53,
+    "2024": 0.64,
+    "2025": 0.71,
+    "2026": 0.5
+   }
+  },
+  "SWE": {
+   "2022": {
+    "low": 0.21,
+    "central": 0.3,
+    "high": 0.45
+   },
+   "2023": {
+    "low": 0.28,
+    "central": 0.4,
+    "high": 0.6
+   },
+   "2024": {
+    "low": 0.245,
+    "central": 0.35,
+    "high": 0.525
+   },
+   "2025": {
+    "low": 0.224,
+    "central": 0.32,
+    "high": 0.48
+   },
+   "2026": {
+    "low": 0.14,
+    "central": 0.2,
+    "high": 0.3
+   },
+   "eu_funded": null,
+   "certainty": "C",
+   "basis": "Migration Agency reception and compensation to municipalities",
+   "sources": [
+    {
+     "name": "Migrationsverket July 2023 forecast (appropriation needs; long-term effects of the war in Ukraine)",
+     "url": "https://migrationsverket.se/download/18.2cd2e409193b84c506a324d3/1738068932589/Migrationsverkets%20juliprognos%202023%20P3-23.pdf",
+     "date": "2023-07"
+    },
+    {
+     "name": "SVT: Migration Agency forecast, SEK 7bn more needed in 2023 for compensation to municipalities, regions and protected persons",
+     "url": "https://www.svt.se/nyheter/migrationsverkets-prognos",
+     "date": "2022"
+    }
+   ],
+   "reasoning": "Ukrainians in Sweden stay in the reception system (daily allowance, housing, municipal compensation since July 2022): about SEK 3.5-4.5bn a year in 2022-2024, falling as more work. Close to the map.",
+   "map_now": {
+    "2022": 0.25,
+    "2023": 0.33,
+    "2024": 0.34,
+    "2025": 0.37,
+    "2026": 0.26
+   }
+  },
+  "NOR": {
+   "2022": {
+    "low": 0.455,
+    "central": 0.65,
+    "high": 0.91
+   },
+   "2023": {
+    "low": 0.77,
+    "central": 1.1,
+    "high": 1.54
+   },
+   "2024": {
+    "low": 0.84,
+    "central": 1.2,
+    "high": 1.68
+   },
+   "2025": {
+    "low": 0.721,
+    "central": 1.03,
+    "high": 1.442
+   },
+   "2026": {
+    "low": 0.392,
+    "central": 0.56,
+    "high": 0.784
+   },
+   "eu_funded": null,
+   "certainty": "B-C",
+   "basis": "state budget appropriations (integration grant, reception, introduction programme)",
+   "sources": [
+    {
+     "name": "Regjeringen: NOK 10.7bn proposed for municipalities to receive and settle refugees from Ukraine (2022)",
+     "url": "https://www.regjeringen.no/no/aktuelt/regjeringen-foreslar-tiltak-for-a-ta-imot-ukrainske-flyktninger/id2905672/",
+     "date": "2022"
+    },
+    {
+     "name": "Regjeringen, revised budget 2023: refugee costs up NOK 6bn as more Ukrainians arrive",
+     "url": "https://www.regjeringen.no/no/aktuelt/nar-malet-om-en-prosent-til-bistand/id2976806/",
+     "date": "2023-05"
+    },
+    {
+     "name": "Regjeringen, budget 2027: 105,000 people from Ukraine received since 2022",
+     "url": "https://www.regjeringen.no/no/aktuelt/handtering-av-fordrevne-fra-ukraina/id3174539/",
+     "date": "2026-10"
+    }
+   ],
+   "reasoning": "Norway pays municipalities a five-year integration grant per settled refugee (year 1 about NOK 200k per adult) plus reception: NOK 6.6/12.6/14/12/6.5bn. The map's model is too low for 2022-2024 because Norwegian cost per refugee is high.",
+   "map_now": {
+    "2022": 0.21,
+    "2023": 0.62,
+    "2024": 0.92,
+    "2025": 1.02,
+    "2026": 0.72
+   }
+  },
+  "DNK": {
+   "2022": {
+    "low": 0.203,
+    "central": 0.29,
+    "high": 0.435
+   },
+   "2023": {
+    "low": 0.322,
+    "central": 0.46,
+    "high": 0.69
+   },
+   "2024": {
+    "low": 0.322,
+    "central": 0.46,
+    "high": 0.69
+   },
+   "2025": {
+    "low": 0.308,
+    "central": 0.44,
+    "high": 0.66
+   },
+   "2026": {
+    "low": 0.21,
+    "central": 0.3,
+    "high": 0.45
+   },
+   "eu_funded": null,
+   "certainty": "C",
+   "basis": "special-law benefits and municipal compensation, from rates x caseload",
+   "sources": [
+    {
+     "name": "Folketinget L 145 (special law for displaced Ukrainians), annex",
+     "url": "https://ft.dk/samling/20211/lovforslag/l145/bilag/3/2543605.pdf",
+     "date": "2022"
+    },
+    {
+     "name": "Skagen Online FAQ: who pays for Ukrainian refugees (municipal block-grant compensation; DKK 2.2bn estimate for 2022)",
+     "url": "https://www.skagenonline.dk/faq/hvem-betaler-for-ukrainske-flygtninge",
+     "date": "2022"
+    }
+   ],
+   "reasoning": "About DKK 100k (EUR 13k) per person-year in 2022-2024 falling to EUR 11k as employment rises; municipalities are compensated through the block grant.",
+   "map_now": {
+    "2022": 0.19,
+    "2023": 0.35,
+    "2024": 0.35,
+    "2025": 0.4,
+    "2026": 0.34
+   }
+  },
+  "FIN": {
+   "2022": {
+    "low": 0.126,
+    "central": 0.18,
+    "high": 0.27
+   },
+   "2023": {
+    "low": 0.259,
+    "central": 0.37,
+    "high": 0.555
+   },
+   "2024": {
+    "low": 0.266,
+    "central": 0.38,
+    "high": 0.57
+   },
+   "2025": {
+    "low": 0.28,
+    "central": 0.4,
+    "high": 0.6
+   },
+   "2026": {
+    "low": 0.182,
+    "central": 0.26,
+    "high": 0.39
+   },
+   "eu_funded": null,
+   "certainty": "C",
+   "basis": "Migri reception costs and integration compensation to municipalities",
+   "sources": [
+    {
+     "name": "Migri: municipalities compensated for costs of receiving people who fled Ukraine",
+     "url": "https://migri.fi/en/-/municipalities-receive-compensation-for-costs-associated-with-the-reception-of-people-who-have-fled-ukraine",
+     "date": "2023"
+    },
+    {
+     "name": "UNN: Finance Minister Purra, integration compensation now over EUR 150m a year, two-thirds to three-quarters for Ukrainians",
+     "url": "https://unn.ua/en/news/finland-is-ready-to-present-a-budget-that-significantly-restricts-aid-to-refugees-from-ukraine",
+     "date": "2024"
+    }
+   ],
+   "reasoning": "Reception allowance and centres (EUR 6-7k per person-year) for those not yet in a municipality, integration compensation afterwards. Close to the map.",
+   "map_now": {
+    "2022": 0.19,
+    "2023": 0.39,
+    "2024": 0.48,
+    "2025": 0.55,
+    "2026": 0.36
+   }
+  },
+  "SVK": {
+   "2022": {
+    "low": 0.105,
+    "central": 0.15,
+    "high": 0.27
+   },
+   "2023": {
+    "low": 0.105,
+    "central": 0.15,
+    "high": 0.27
+   },
+   "2024": {
+    "low": 0.07,
+    "central": 0.1,
+    "high": 0.18
+   },
+   "2025": {
+    "low": 0.056,
+    "central": 0.08,
+    "high": 0.144
+   },
+   "2026": {
+    "low": 0.028,
+    "central": 0.04,
+    "high": 0.072
+   },
+   "eu_funded": {
+    "2022": {
+     "low": 0.03,
+     "central": 0.06,
+     "high": 0.09
+    },
+    "2023": {
+     "low": 0.03,
+     "central": 0.06,
+     "high": 0.09
+    },
+    "2024": {
+     "low": 0.01,
+     "central": 0.03,
+     "high": 0.05
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.01,
+     "high": 0.03
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    }
+   },
+   "certainty": "C",
+   "basis": "accommodation contributions (Interior Ministry) plus benefits; EU co-financed",
+   "sources": [
+    {
+     "name": "Noviny.sk: Interior Ministry paid almost EUR 130m in accommodation contributions; rate halved",
+     "url": "https://www.noviny.sk/slovensko/893610-stat-znizil-prispevok-na-ubytovanie-pre-utecencov-z-ukrajiny",
+     "date": "2023"
+    },
+    {
+     "name": "TASR: accommodation contribution cut to EUR 12/6 per night, extended to March 2024",
+     "url": "https://www.teraz.sk/utok-na-ukrajinu/prispevok-za-ubytovanie-ukrajincov-bude/759373-clanok.html",
+     "date": "2023"
+    }
+   ],
+   "reasoning": "EUR ~130m of accommodation contributions in 2022-23 plus material-need benefits; much refunded from EU cohesion funds (CARE). The map's model is about three times higher.",
+   "map_now": {
+    "2022": 0.21,
+    "2023": 0.33,
+    "2024": 0.38,
+    "2025": 0.42,
+    "2026": 0.3
+   }
+  },
+  "ROU": {
+   "2022": {
+    "low": 0.105,
+    "central": 0.15,
+    "high": 0.24
+   },
+   "2023": {
+    "low": 0.112,
+    "central": 0.16,
+    "high": 0.256
+   },
+   "2024": {
+    "low": 0.063,
+    "central": 0.09,
+    "high": 0.144
+   },
+   "2025": {
+    "low": 0.049,
+    "central": 0.07,
+    "high": 0.112
+   },
+   "2026": {
+    "low": 0.028,
+    "central": 0.04,
+    "high": 0.064
+   },
+   "eu_funded": {
+    "2022": {
+     "low": 0.04,
+     "central": 0.09,
+     "high": 0.12
+    },
+    "2023": {
+     "low": 0.04,
+     "central": 0.09,
+     "high": 0.12
+    },
+    "2024": {
+     "low": 0.01,
+     "central": 0.04,
+     "high": 0.06
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.02,
+     "high": 0.04
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.01,
+     "high": 0.02
+    }
+   },
+   "certainty": "B-C",
+   "basis": "50/20 programme payments and its 2023 successor; EU-funded in large part",
+   "sources": [
+    {
+     "name": "Europa Liberă: RON 591.97m paid in 2022 for food and housing of Ukrainians (50/20)",
+     "url": "https://romania.europalibera.org/a/32343094.html",
+     "date": "2023"
+    },
+    {
+     "name": "Economedia: over EUR 106m paid last year for housing and food of Ukrainian refugees; switch to a lump sum of RON 2,000/month",
+     "url": "https://economedia.ro/guvernul-are-miercuri-pe-masa-din-nou-proiectul-de-ordonanta-de-urgenta-care-schimba-mecanismul-de-decontare-a-cazarii-si-mesei-pentru-refugiati-ucraineni-refugiatii-vor-primi-o-suma-forfetara-de-2-0.html",
+     "date": "2023"
+    }
+   ],
+   "reasoning": "50/20 cost RON 592m (EUR 0.12bn) in 2022 and over EUR 0.1bn in the following year, plus schooling and health; the 2023 lump sum is conditional on work or school. Large parts were claimed from EU funds.",
+   "map_now": {
+    "2022": 0.1,
+    "2023": 0.3,
+    "2024": 0.37,
+    "2025": 0.43,
+    "2026": 0.32
+   }
+  },
+  "MDA": {
+   "2022": {
+    "low": 0.012,
+    "central": 0.02,
+    "high": 0.036
+   },
+   "2023": {
+    "low": 0.009,
+    "central": 0.015,
+    "high": 0.027
+   },
+   "2024": {
+    "low": 0.009,
+    "central": 0.015,
+    "high": 0.027
+   },
+   "2025": {
+    "low": 0.007,
+    "central": 0.012,
+    "high": 0.022
+   },
+   "2026": {
+    "low": 0.004,
+    "central": 0.006,
+    "high": 0.011
+   },
+   "eu_funded": null,
+   "certainty": "C",
+   "basis": "Moldova's own budget (state and municipal), net of donor funding",
+   "sources": [
+    {
+     "name": "Moldova Ministry of Finance: refugee crisis report (state budget MDL ~200m + donations, Apr 2022)",
+     "url": "https://mf.gov.md/sites/default/files/30.04.2022_Raport%20_criza%20refugiati.pdf",
+     "date": "2022-04-30"
+    },
+    {
+     "name": "Infomarket: MDL 386.7m from Reserve and Intervention funds for the refugee crisis by end-Jul 2022",
+     "url": "https://www.infomarket.md/en/goverment/283226",
+     "date": "2022-08"
+    },
+    {
+     "name": "UNHCR Moldova: over USD 785m received since 2022 to manage the refugee situation",
+     "url": "https://www.unhcr.org/md/en/news/press-releases/four-years-full-scale-invasion-refugees-ukraine-moldova-still-need-protection",
+     "date": "2026-02"
+    }
+   ],
+   "reasoning": "These are Moldova's own costs; donor-funded costs (UNHCR, EU) are excluded already, so the donor share in flowback2.json must not be applied again.",
+   "map_now": {
+    "2022": 0.02,
+    "2023": 0.02,
+    "2024": 0.03,
+    "2025": 0.03,
+    "2026": 0.02
+   }
+  },
+  "LTU": {
+   "2022": {
+    "low": 0.035,
+    "central": 0.05,
+    "high": 0.125
+   },
+   "2023": {
+    "low": 0.042,
+    "central": 0.06,
+    "high": 0.15
+   },
+   "2024": {
+    "low": 0.035,
+    "central": 0.05,
+    "high": 0.125
+   },
+   "2025": {
+    "low": 0.028,
+    "central": 0.04,
+    "high": 0.1
+   },
+   "2026": {
+    "low": 0.014,
+    "central": 0.02,
+    "high": 0.05
+   },
+   "eu_funded": null,
+   "certainty": "B-C",
+   "basis": "state budget allocations (Social Security and Labour Ministry) plus education",
+   "sources": [
+    {
+     "name": "Euromaidan Press: Lithuania's state budget support for Ukrainian refugees over EUR 114m after a further EUR 9m; EUR 34.5m in 2022",
+     "url": "https://euromaidanpress.com/2024/08/05/lithuania-allocates-98-million-for-ukrainian-refugees-support/",
+     "date": "2024-08-05"
+    },
+    {
+     "name": "Kyiv Post: Lithuania provides nearly EUR 33m for tuition of Ukrainian refugees",
+     "url": "https://www.kyivpost.com/post/46841",
+     "date": "2025"
+    }
+   ],
+   "reasoning": "EUR 114m of state support by mid-2024 plus ~EUR 33m education; high allows for mainstream benefits and health not in these allocations.",
+   "map_now": {
+    "2022": 0.17,
+    "2023": 0.29,
+    "2024": 0.29,
+    "2025": 0.2,
+    "2026": 0.14
+   }
+  },
+  "LVA": {
+   "2022": {
+    "low": 0.035,
+    "central": 0.05,
+    "high": 0.125
+   },
+   "2023": {
+    "low": 0.035,
+    "central": 0.05,
+    "high": 0.125
+   },
+   "2024": {
+    "low": 0.028,
+    "central": 0.04,
+    "high": 0.1
+   },
+   "2025": {
+    "low": 0.021,
+    "central": 0.03,
+    "high": 0.075
+   },
+   "2026": {
+    "low": 0.01,
+    "central": 0.015,
+    "high": 0.037
+   },
+   "eu_funded": null,
+   "certainty": "B-C",
+   "basis": "transfers to municipalities and state benefits",
+   "sources": [
+    {
+     "name": "Ukrinform: Latvian government allocates EUR 15.6m to municipalities for refugee reception to June 2024; EUR 28.6m for Jan-Nov 2023",
+     "url": "https://ukrinform.net/rubric-economy/3817369-latvian-government-allocates-156-million-to-support-ukrainians.html",
+     "date": "2023-12"
+    }
+   ],
+   "reasoning": "Municipal reception transfers of about EUR 30m a year plus state benefits and schooling.",
+   "map_now": {
+    "2022": 0.08,
+    "2023": 0.14,
+    "2024": 0.15,
+    "2025": 0.12,
+    "2026": 0.07
+   }
+  },
+  "EST": {
+   "2022": {
+    "low": 0.035,
+    "central": 0.05,
+    "high": 0.1
+   },
+   "2023": {
+    "low": 0.042,
+    "central": 0.06,
+    "high": 0.12
+   },
+   "2024": {
+    "low": 0.035,
+    "central": 0.05,
+    "high": 0.1
+   },
+   "2025": {
+    "low": 0.032,
+    "central": 0.045,
+    "high": 0.09
+   },
+   "2026": {
+    "low": 0.017,
+    "central": 0.025,
+    "high": 0.05
+   },
+   "eu_funded": null,
+   "certainty": "C",
+   "basis": "state budget (benefits, accommodation, schooling), from rates x caseload",
+   "sources": [
+    {
+     "name": "ERR: EU funding for Ukraine war refugees in Estonia remains marginal (EUR 9m) against own budget spending",
+     "url": "https://news.err.ee/1608654079/eu-funding-for-ukraine-war-refugees-in-estonia-remains-marginal",
+     "date": "2022"
+    }
+   ],
+   "reasoning": "About EUR 1.5-2k per person-year; Ukrainians in Estonia work at high rates.",
+   "map_now": {
+    "2022": 0.11,
+    "2023": 0.16,
+    "2024": 0.15,
+    "2025": 0.15,
+    "2026": 0.09
+   }
+  },
+  "PRT": {
+   "2022": {
+    "low": 0.03,
+    "central": 0.05,
+    "high": 0.1
+   },
+   "2023": {
+    "low": 0.042,
+    "central": 0.07,
+    "high": 0.14
+   },
+   "2024": {
+    "low": 0.036,
+    "central": 0.06,
+    "high": 0.12
+   },
+   "2025": {
+    "low": 0.036,
+    "central": 0.06,
+    "high": 0.12
+   },
+   "2026": {
+    "low": 0.021,
+    "central": 0.035,
+    "high": 0.07
+   },
+   "eu_funded": null,
+   "certainty": "C",
+   "basis": "no outturn published; benefit rules x caseload",
+   "sources": [
+    {
+     "name": "RTP Madeira: about 54,000 Ukrainians under temporary protection in Portugal",
+     "url": "https://madeira.rtp.pt/?p=186624",
+     "date": "2025"
+    }
+   ],
+   "reasoning": "Portugal gives temporary-protection holders access to general social benefits and the health service; most work. EUR 1-1.5k per person-year.",
+   "map_now": {
+    "2022": 0.13,
+    "2023": 0.2,
+    "2024": 0.21,
+    "2025": 0.23,
+    "2026": 0.17
+   }
+  },
+  "CHE": {
+   "2022": {
+    "low": 0.79,
+    "central": 0.93,
+    "high": 1.163
+   },
+   "2023": {
+    "low": 1.232,
+    "central": 1.45,
+    "high": 1.812
+   },
+   "2024": {
+    "low": 1.275,
+    "central": 1.5,
+    "high": 1.875
+   },
+   "2025": {
+    "low": 1.369,
+    "central": 1.61,
+    "high": 2.013
+   },
+   "2026": {
+    "low": 0.969,
+    "central": 1.14,
+    "high": 1.425
+   },
+   "eu_funded": null,
+   "certainty": "B",
+   "basis": "federal lump sums (Programm S) x person-years (kept from refugees.json)",
+   "sources": [
+    {
+     "name": "SEM Fachbericht Programm S 2024 (federal lump sum ~CHF 1,500 per person per month)",
+     "url": "https://www.sem.admin.ch/dam/sem/de/data/integration/foerderung/programm-s/rapport-programm-s-2024.pdf.download.pdf/rapport-programm-s-2024-d.pdf",
+     "date": "2024"
+    }
+   ],
+   "reasoning": "Unchanged; cantons add some own costs (high).",
+   "map_now": {
+    "2022": 0.93,
+    "2023": 1.45,
+    "2024": 1.5,
+    "2025": 1.61,
+    "2026": 1.14
+   }
+  },
+  "FRA": {
+   "2022": {
+    "low": 0.504,
+    "central": 0.63,
+    "high": 0.945
+   },
+   "2023": {
+    "low": 0.36,
+    "central": 0.45,
+    "high": 0.675
+   },
+   "2024": {
+    "low": 0.264,
+    "central": 0.33,
+    "high": 0.495
+   },
+   "2025": {
+    "low": 0.216,
+    "central": 0.27,
+    "high": 0.405
+   },
+   "2026": {
+    "low": 0.12,
+    "central": 0.15,
+    "high": 0.225
+   },
+   "eu_funded": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.03,
+     "high": 0.06
+    },
+    "2023": {
+     "low": 0,
+     "central": 0.01,
+     "high": 0.03
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "certainty": "B",
+   "basis": "Cour des comptes (2022) and Senate budget reports (asylum mission)",
+   "sources": [
+    {
+     "name": "L'info durable: Cour des comptes, reception of Ukrainians cost France EUR 634m in 2022",
+     "url": "https://www.linfodurable.fr/laccueil-des-ukrainiens-coute-634-millions-deuros-la-france-en-2022-37137",
+     "date": "2023"
+    },
+    {
+     "name": "Sénat, budget report 2024, asylum mission: EUR 481.8m paid in 2022, EUR 321.8m estimated for 2023",
+     "url": "https://www.senat.fr/rap/l23-128-316/l23-128-316-syn.pdf",
+     "date": "2023-11"
+    }
+   ],
+   "reasoning": "2022 = Cour des comptes (allowances, housing, social benefits). 2023 = Senate asylum-mission figure plus the same non-asylum share as in 2022. Later years follow the falling number of beneficiaries (ADA, housing).",
+   "map_now": {
+    "2022": 0.32,
+    "2023": 0.42,
+    "2024": 0.38,
+    "2025": 0.34,
+    "2026": 0.21
+   }
+  },
+  "JPN": {
+   "2022": {
+    "low": 0.004,
+    "central": 0.008,
+    "high": 0.016
+   },
+   "2023": {
+    "low": 0.005,
+    "central": 0.01,
+    "high": 0.02
+   },
+   "2024": {
+    "low": 0.004,
+    "central": 0.008,
+    "high": 0.016
+   },
+   "2025": {
+    "low": 0.003,
+    "central": 0.006,
+    "high": 0.012
+   },
+   "2026": {
+    "low": 0.002,
+    "central": 0.003,
+    "high": 0.006
+   },
+   "eu_funded": null,
+   "certainty": "C",
+   "basis": "Immigration Services Agency allowances x evacuees without sponsors",
+   "sources": [
+    {
+     "name": "Jiji: government lump sum up to JPY 160,000 and daily living allowance JPY 2,400/1,600 for Ukrainian evacuees",
+     "url": "https://sp.m.jiji.com/english/show/19109",
+     "date": "2022-04"
+    },
+    {
+     "name": "Interfax: Japan to launch new living-support programme for Ukrainian evacuees in spring 2024",
+     "url": "https://interfax.com/newsroom/top-stories/95717/",
+     "date": "2023-10"
+    }
+   ],
+   "reasoning": "About 2,000-2,600 evacuees; government living allowances, housing and language courses. The Nippon Foundation's private JPY 5.3bn is private, not public.",
+   "map_now": {
+    "2022": 0.01,
+    "2023": 0.01,
+    "2024": 0.01,
+    "2025": 0.01,
+    "2026": 0.01
+   }
+  },
+  "AUS": {
+   "2022": {
+    "low": 0.01,
+    "central": 0.02,
+    "high": 0.04
+   },
+   "2023": {
+    "low": 0.025,
+    "central": 0.05,
+    "high": 0.1
+   },
+   "2024": {
+    "low": 0.02,
+    "central": 0.04,
+    "high": 0.08
+   },
+   "2025": {
+    "low": 0.015,
+    "central": 0.03,
+    "high": 0.06
+   },
+   "2026": {
+    "low": 0.01,
+    "central": 0.02,
+    "high": 0.04
+   },
+   "eu_funded": null,
+   "certainty": "C",
+   "basis": "Special Benefit, Medicare and settlement services x visa holders",
+   "sources": [
+    {
+     "name": "ASRC submission to the Senate inquiry: over 11,000 visas granted to Ukrainians since Feb 2022",
+     "url": "https://asrc.org.au/wp-content/uploads/2024/08/Senate-Committee-on-Foreign-Affairs-Defence-Trade-Australian-support-for-Ukraine-Inquiry.docx.pdf",
+     "date": "2024-08"
+    },
+    {
+     "name": "Home Affairs: temporary humanitarian stay (subclass 449/786: Medicare, Special Benefit, Humanitarian Settlement Program)",
+     "url": "https://www.homeaffairs.gov.au/help-and-support/ukraine-visa-support/australian-government-offer-for-temporary-humanitarian-stay-in-australia",
+     "date": "2024"
+    }
+   ],
+   "reasoning": "UNHCR's count (1-8k) understates; 11,000 visas granted. At AUD 6-8k per person-year in benefits and settlement services.",
+   "map_now": {
+    "2022": 0.01,
+    "2023": 0.05,
+    "2024": 0.04,
+    "2025": 0.03,
+    "2026": 0.03
+   }
+  }
+ },
+ "belarus": {
+  "unit": "EUR bn unless stated; 2026 = January-August",
+  "residual_allocation": {
+   "correction_to_premise": "Belarus's pro-rata share of the residual is EUR 1.7/2.0/2.1/3.2bn for 2022-2025 (EUR 9.0bn in total, not a year), plus 2.1 for Jan-Aug 2026. In the current site/data.json it IS added to Belarus's sales to Russia on top of the official Belstat/Union State totals (from_rus 23.9/25.1/26.4/27.1/18.9 vs official 22.2/23.1/24.3/23.9/16.8); the audit2 finding that it vanished predates commit 72ff61c.",
+   "current_pro_rata_share": {
+    "2022": 1.72,
+    "2023": 2.0,
+    "2024": 2.1,
+    "2025": 3.2,
+    "2026": 2.13
+   },
+   "components": {
+    "own_exports_missed_by_partner_data": {
+     "2022": {
+      "low": 0,
+      "central": 0,
+      "high": 0.5
+     },
+     "2023": {
+      "low": 0,
+      "central": 0,
+      "high": 0.5
+     },
+     "2024": {
+      "low": 0,
+      "central": 0,
+      "high": 0.5
+     },
+     "2025": {
+      "low": 0,
+      "central": 0,
+      "high": 0.5
+     },
+     "2026": {
+      "low": 0,
+      "central": 0,
+      "high": 0.35
+     },
+     "why": "The map uses Belarus's own official totals (Union State 2022, Belstat/NBRB and Russian-side totals 2023-2026), not partner mirror data, so nothing is missed because Belarus stopped publishing by partner. High allows for classified military-industrial deliveries; Russia's FCS also leaves out such goods, so they are unlikely to sit in the FCS gap."
+    },
+    "eaeu_transit_unrecorded": {
+     "2022": {
+      "low": 0,
+      "central": 0.1,
+      "high": 0.6
+     },
+     "2023": {
+      "low": 0,
+      "central": 0.1,
+      "high": 0.6
+     },
+     "2024": {
+      "low": 0,
+      "central": 0.1,
+      "high": 0.6
+     },
+     "2025": {
+      "low": 0,
+      "central": 0.1,
+      "high": 0.6
+     },
+     "2026": {
+      "low": 0,
+      "central": 0.07,
+      "high": 0.4
+     },
+     "why": "Mirror test as for Kyrgyzstan: partners' reported exports to Belarus excluding Russia (USD 15.1bn 2021, 12.8bn 2022, 18.1bn 2023, 16.6bn 2024; +5% CIF) against Belarus's non-Russian goods imports (NBRB total FOB imports less official imports from Russia: 16.1, 14.9, 18.6, 20.2bn). No growing gap: Belarus records at least what partners say they sent, so goods do not cross Belarus to Russia unrecorded at scale."
+    },
+    "valuation_basis": {
+     "2022": {
+      "low": -1.3,
+      "central": -0.8,
+      "high": -0.3
+     },
+     "2023": {
+      "low": -1.3,
+      "central": -0.8,
+      "high": -0.3
+     },
+     "2024": {
+      "low": -1.3,
+      "central": -0.8,
+      "high": -0.3
+     },
+     "2025": {
+      "low": -1.4,
+      "central": -0.9,
+      "high": -0.3
+     },
+     "2026": {
+      "low": -0.9,
+      "central": -0.6,
+      "high": -0.2
+     },
+     "why": "Belarus-basis totals run 3-5% above Russian-basis totals (2022 Union State scaled by 1.03-1.05; 2025 Belarusian side ~USD 54.9bn vs Russian side 50.9-51.9bn). Russia's FCS imports therefore contain less from Belarus than the partner sum, so Belarus's own contribution to the FCS-minus-partners gap is negative."
+    },
+    "recorded_reexports_in_official_exports": {
+     "2022": {
+      "low": 0.15,
+      "central": 0.3,
+      "high": 0.5
+     },
+     "2023": {
+      "low": 1.0,
+      "central": 1.72,
+      "high": 2.4
+     },
+     "2024": {
+      "low": 1.1,
+      "central": 1.81,
+      "high": 2.5
+     },
+     "2025": {
+      "low": 1.2,
+      "central": 1.94,
+      "high": 2.7
+     },
+     "2026": {
+      "low": 0.8,
+      "central": 1.42,
+      "high": 2.0
+     },
+     "origin_shares": {
+      "CHN": {
+       "low": 0.75,
+       "central": 0.86,
+       "high": 0.95
+      },
+      "TUR": {
+       "low": 0.03,
+       "central": 0.09,
+       "high": 0.15
+      },
+      "EU27": {
+       "low": 0,
+       "central": 0.05,
+       "high": 0.12
+      }
+     },
+     "why": "Not part of the residual, but the same question: Belarus's official exports to Russia include goods it imported (China's exports to Belarus rose from USD 2.7bn in 2021 to 5.8/6.6/7.2bn in 2023-2025: cars, electronics, machinery; Turkey's and, in 2023, Poland's and Lithuania's rose too). Taking 45% (35-60%) of China's increase and 30% of the others' as passed on to Russia. These should be moved from Belarus to the origin countries like other hubs (Belarus keeps a 3-15% margin)."
+    }
+   },
+   "proposed_belarus_residual": {
+    "2022": {
+     "low": -1.2,
+     "central": 0.0,
+     "high": 1.0
+    },
+    "2023": {
+     "low": -1.2,
+     "central": 0.0,
+     "high": 1.0
+    },
+    "2024": {
+     "low": -1.2,
+     "central": 0.0,
+     "high": 1.0
+    },
+    "2025": {
+     "low": -1.3,
+     "central": 0.0,
+     "high": 1.0
+    },
+    "2026": {
+     "low": -0.9,
+     "central": 0.0,
+     "high": 0.7
+    }
+   },
+   "release_to_other_countries": {
+    "2022": 2.5,
+    "2023": 2.8,
+    "2024": 2.9,
+    "2025": 4.1,
+    "2026": 2.7,
+    "why": "Belarus's current share plus the valuation offset (central): the gap that really belongs to others. Re-spread it with the residual rule (pro rata to reported sales, coalition weight 0.25), i.e. mostly China, Kazakhstan, Turkey; or recompute the residual with Belarus's official exports in the partner sum (trade_full's Belarus split, EUR 23.8bn in 2022, was 1.6bn above the official 22.2bn, so the residual itself was understated by that amount)."
+   },
+   "belarus_from_rus_change_central": {
+    "2022": -2.0,
+    "2023": -3.6,
+    "2024": -3.8,
+    "2025": -5.0,
+    "2026": -3.5,
+    "why": "Remove the pro-rata residual (1.72/2.0/2.1/3.2/2.13) and move the recorded re-exports net of a 7% margin (0.28/1.60/1.68/1.80/1.32) to origins."
+   }
+  },
+  "imports_composition": {
+   "unit": "USD bn (Belarus-basis; 2019-2020 Belstat via Comtrade, 2021 Russia's report plus gas; 2022-2026 estimated within the official totals)",
+   "years": {
+    "2019": {
+     "total": 21.6,
+     "crude": 6.58,
+     "gas": 2.74,
+     "oil_products": 0.05,
+     "other_goods": 12.2,
+     "crude_mt": 18.2,
+     "gas_bcm": 20.3
+    },
+    "2020": {
+     "total": 16.3,
+     "crude": 3.44,
+     "gas": 2.53,
+     "oil_products": 0.04,
+     "other_goods": 10.3,
+     "crude_mt": 13.0,
+     "gas_bcm": 18.8
+    },
+    "2021": {
+     "total": 23.7,
+     "crude": 6.7,
+     "gas": {
+      "low": 2.3,
+      "central": 2.5,
+      "high": 2.7
+     },
+     "oil_products": 0.08,
+     "other_goods": 14.4,
+     "crude_mt": 15.6,
+     "gas_bcm": 19.5
+    },
+    "2022": {
+     "total": 22.4,
+     "crude": {
+      "low": 3.9,
+      "central": 4.6,
+      "high": 5.3
+     },
+     "gas": {
+      "low": 2.2,
+      "central": 2.4,
+      "high": 2.6
+     },
+     "oil_products": 0.1,
+     "other_goods": {
+      "low": 14.4,
+      "central": 15.3,
+      "high": 16.2
+     },
+     "crude_mt": {
+      "low": 9.5,
+      "central": 10.5,
+      "high": 12.0
+     },
+     "gas_bcm": 18.7
+    },
+    "2023": {
+     "total": 23.0,
+     "crude": {
+      "low": 4.6,
+      "central": 5.3,
+      "high": 6.0
+     },
+     "gas": {
+      "low": 2.3,
+      "central": 2.5,
+      "high": 2.7
+     },
+     "oil_products": 0.1,
+     "other_goods": {
+      "low": 14.2,
+      "central": 15.1,
+      "high": 16.0
+     },
+     "crude_mt": {
+      "low": 13.0,
+      "central": 14.0,
+      "high": 15.0
+     },
+     "gas_bcm": 19.2
+    },
+    "2024": {
+     "total": 24.0,
+     "crude": {
+      "low": 5.4,
+      "central": 6.3,
+      "high": 7.1
+     },
+     "gas": {
+      "low": 2.4,
+      "central": 2.6,
+      "high": 2.8
+     },
+     "oil_products": 0.1,
+     "other_goods": {
+      "low": 14.0,
+      "central": 15.0,
+      "high": 16.0
+     },
+     "crude_mt": {
+      "low": 14.0,
+      "central": 15.0,
+      "high": 16.5
+     },
+     "gas_bcm": 20.0
+    },
+    "2025": {
+     "total": 25.0,
+     "crude": {
+      "low": 4.8,
+      "central": 5.4,
+      "high": 6.1
+     },
+     "gas": {
+      "low": 2.4,
+      "central": 2.6,
+      "high": 2.8
+     },
+     "oil_products": 0.15,
+     "other_goods": {
+      "low": 16.0,
+      "central": 16.9,
+      "high": 17.8
+     },
+     "crude_mt": {
+      "low": 13.0,
+      "central": 14.5,
+      "high": 16.0
+     },
+     "gas_bcm": 20.0
+    },
+    "2026": {
+     "total": 18.1,
+     "crude": {
+      "low": 2.8,
+      "central": 3.3,
+      "high": 3.8
+     },
+     "gas": {
+      "low": 1.5,
+      "central": 1.7,
+      "high": 1.9
+     },
+     "oil_products": 0.1,
+     "other_goods": {
+      "low": 12.2,
+      "central": 13.0,
+      "high": 13.8
+     },
+     "crude_mt": {
+      "low": 8.5,
+      "central": 9.5,
+      "high": 10.5
+     },
+     "gas_bcm": 13.0
+    }
+   },
+   "prices": "Crude at the Belarusian contract price (no Russian export duty; Urals-linked with a discount, USD 360/t 2019, 430 2021, ~440 2022, ~380 2023, ~420 2024, ~370 2025, ~350 2026); gas at the frozen USD 128.5 per 1,000 m3 (settled in roubles from 2023).",
+   "other_goods": "Metals, cars and machinery parts, chemicals and plastics, food, electricity and coal; about two-thirds of the total."
+  },
+  "reexport_share": {
+   "definition": "Share of the crude refined in Belarus (Russian crude plus 1.6-1.9 Mt of domestic crude) that leaves the country as oil products, by mass; the same share applies to Russian crude imports",
+   "years": {
+    "2019": {
+     "share": {
+      "low": 0.56,
+      "central": 0.61,
+      "high": 0.66
+     },
+     "throughput_mt": 19.0,
+     "product_exports_mt": 11.5,
+     "destinations": {
+      "GBR": 0.43,
+      "UKR": 0.29,
+      "NLD": 0.11,
+      "POL": 0.03,
+      "Baltics": 0.03,
+      "RUS": 0.01,
+      "other": 0.1
+     }
+    },
+    "2020": {
+     "share": {
+      "low": 0.5,
+      "central": 0.56,
+      "high": 0.61
+     },
+     "throughput_mt": 17.0,
+     "product_exports_mt": 9.5,
+     "destinations": {
+      "UKR": 0.37,
+      "GBR": 0.34,
+      "NLD": 0.15,
+      "RUS": 0.04,
+      "DNK": 0.04,
+      "POL": 0.03,
+      "other": 0.03
+     }
+    },
+    "2021": {
+     "share": {
+      "low": 0.47,
+      "central": 0.52,
+      "high": 0.58
+     },
+     "throughput_mt": 17.2,
+     "product_exports_mt": 9.0,
+     "destinations": {
+      "UKR": 0.4,
+      "EU_GBR_before_sanctions": 0.25,
+      "third_countries_via_russian_ports": 0.22,
+      "RUS_domestic": 0.05,
+      "other": 0.08
+     }
+    },
+    "2022": {
+     "share": {
+      "low": 0.41,
+      "central": 0.47,
+      "high": 0.53
+     },
+     "throughput_mt": 12.0,
+     "product_exports_mt": 5.6,
+     "destinations": {
+      "UKR_Jan_Feb": 0.19,
+      "third_countries_via_russian_ports": 0.55,
+      "RUS_domestic": 0.18,
+      "CIS_other": 0.08
+     }
+    },
+    "2023": {
+     "share": {
+      "low": 0.47,
+      "central": 0.53,
+      "high": 0.58
+     },
+     "throughput_mt": 16.0,
+     "product_exports_mt": 8.5,
+     "destinations": {
+      "third_countries_via_russian_ports": 0.72,
+      "RUS_domestic": 0.12,
+      "CIS_other": 0.16
+     }
+    },
+    "2024": {
+     "share": {
+      "low": 0.47,
+      "central": 0.53,
+      "high": 0.58
+     },
+     "throughput_mt": 16.5,
+     "product_exports_mt": 8.8,
+     "destinations": {
+      "third_countries_via_russian_ports": 0.72,
+      "RUS_domestic": 0.14,
+      "CIS_other": 0.14
+     }
+    },
+    "2025": {
+     "share": {
+      "low": 0.46,
+      "central": 0.52,
+      "high": 0.58
+     },
+     "throughput_mt": 16.0,
+     "product_exports_mt": 8.3,
+     "destinations": {
+      "third_countries_via_russian_ports": 0.65,
+      "RUS_domestic": 0.22,
+      "CIS_other": 0.13
+     }
+    },
+    "2026": {
+     "share": {
+      "low": 0.45,
+      "central": 0.51,
+      "high": 0.57
+     },
+     "throughput_mt": 10.8,
+     "product_exports_mt": 5.5,
+     "destinations": {
+      "third_countries_via_russian_ports": 0.55,
+      "RUS_domestic": 0.32,
+      "CIS_other": 0.13
+     }
+    }
+   },
+   "product_export_value_usd_bn": {
+    "2019": 5.5,
+    "2020": 3.0,
+    "2021": 4.0,
+    "2022": 3.6,
+    "2023": 4.5,
+    "2024": 4.7,
+    "2025": 4.0,
+    "2026": 2.6
+   },
+   "note": "After 2022 almost no importer records Belarusian oil products (partners' imports from Belarus of HS 2710: USD 0.87bn in 2022, of which Ukraine 0.76bn in Jan-Feb; 0.10bn 2023; 0.15bn 2024). The cargoes loaded at Ust-Luga and St Petersburg are booked as Russian origin by buyers and by CREA, so buyers' payments 'to Russia' for these products partly reach Belarus (processing margin) and only the crude value reaches Russia."
+  },
+  "sources": [
+   {
+    "name": "Russia's Comtrade report 2019-2021: exports to Belarus TOTAL and HS 2709/2710/2711; Belarus's report 2019-2020 (imports incl. gas HS 2711)",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=643&period=2021&partnerCode=112&flowCode=X&cmdCode=TOTAL,2709,2710,2711",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "UN Comtrade: all reporters' exports to Belarus 2019-2025 (TOTAL); China's exports to Belarus",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2023&partnerCode=112&flowCode=X&cmdCode=TOTAL",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "UN Comtrade: Belarus HS 2710 exports by destination 2019-2020; partners' imports of HS 2710 from Belarus 2021-2024",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=112&period=2019&flowCode=X&cmdCode=2710",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "National Bank of Belarus: foreign trade in goods and services, monthly (goods FOB exports 39.1/37.6/39.0/39.5/40.4 and imports 39.8/37.3/41.6/44.2/45.9 USD bn, 2021-2025)",
+    "url": "https://www.nbrb.by/statistics/foreigntrade/dynamics.xls",
+    "date": "2026-08-10"
+   },
+   {
+    "name": "OSW Commentary, The end of prosperity: the state of Belarusian refineries (throughput ~18 Mt pre-2020, 12 Mt 2022, 16 Mt 2023; exports 5.6 Mt 2022, up to 9 Mt 2023; Ukraine USD 2.35bn in 2021; >3 Mt via Russian ports in 2022; ~14 Mt Russian crude in 2023)",
+    "url": "https://www.osw.waw.pl/en/publikacje/osw-commentary/2024-08-29/end-prosperity-state-belarusian-refineries",
+    "date": "2024-08-29"
+   },
+   {
+    "name": "Novaya Gazeta Europe / The Moscow Times: Belarusian gasoline to Russia Jan-May 2026 ~13x (270 kt), diesel x3 (179 kt), amid Russian refinery outages",
+    "url": "https://novayagazeta.eu/articles/2026/08/12/benzin-iz-belarusi-bodiaga-v-bak-i-otmenennye-otpuska",
+    "date": "2026-08-12"
+   },
+   {
+    "name": "TKS: Russia-Belarus goods turnover USD 51.9bn in 2025 vs 38.4bn in 2021 (Russian side)",
+    "url": "https://www.tks.ru/news/nearby/2026/04/03/0007/eksport-belorusskih-tovarov-v-rossiyu-vyiros-na-40-procent-posle-sanktsij-2022-goda/",
+    "date": "2026-04-03"
+   },
+   {
+    "name": "Kommersant: Union State Council of Ministers, 2022 Russia-Belarus trade USD 43.4bn",
+    "url": "https://www.kommersant.ru/doc/5900590",
+    "date": "2023-03"
+   },
+   {
+    "name": "research/2026-10/gaps/residual.json and narrow.json (Belarus pro-rata residual and official totals)",
+    "url": "research/2026-10/gaps/residual.json",
+    "date": "2026-10-17"
+   }
+  ],
+  "reasoning": "(a) Belarus enters the partner sum with its own official totals, so its pro-rata share of the residual (EUR 9.0bn over 2022-2025) has no basis: partner data miss nothing for Belarus, a mirror test shows no unrecorded transit, and Belarus-basis figures are 3-5% above what Russia books, which makes Belarus's own part of the gap slightly negative. Set Belarus's residual to zero (range -1.2 to +1.0 a year) and release EUR 2.5-4.1bn a year to the other countries; separately move the re-exports recorded inside Belarus's official exports (mainly Chinese goods, EUR 0.3-1.9bn a year) to their origins. Effect on Belarus's headline 2022-2026: -27.6% to -22.2% of GDP. (b) About 22-26% of Belarus's imports from Russia are crude for Mozyr and Naftan and 10-11% gas; roughly half of the crude refined leaves as products (61% in 2019, 47% in 2022, 52-53% since). Before the war the products went to the UK, Ukraine and the Netherlands; since 2022 they go through Russian ports to third countries under Russian origin, and increasingly to Russia itself (22% in 2025, about a third in 2026)."
+ },
+ "artefacts": {
+  "LBN": {
+   "fix": "Use a baseline without the 2019 fuel spike: mean of 2018, 2020 and 2021 imports from Russia (EUR 0.48bn, range 0.42-0.55) instead of the 2019-2021 mean (0.66). 2019 imports (USD 1.34bn, of which fuel 1.19bn) were inflated by subsidised fuel bought for smuggling into Syria before the 2019-2020 collapse; Lebanon's fuel imports were 4.3 (2018), 6.5 (2019), 3.2 (2020), 3.9 (2021) USD bn. Keep sales and services baselines (both tiny).",
+   "values": {
+    "imports_from_rus_usd_bn": {
+     "2018": 0.567,
+     "2019": 1.344,
+     "2020": 0.517,
+     "2021": 0.609
+    },
+    "of_which_fuel_usd_bn": {
+     "2018": 0.344,
+     "2019": 1.191,
+     "2020": 0.426,
+     "2021": 0.504
+    },
+    "imports_from_rus_eur_bn": {
+     "2018": 0.48,
+     "2019": 1.2,
+     "2020": 0.452,
+     "2021": 0.515
+    },
+    "sales_to_rus_usd_bn": {
+     "2018": 0.005,
+     "2019": 0.0081,
+     "2020": 0.007,
+     "2021": 0.0121
+    },
+    "services_eur_bn": {
+     "bought_2019_2021_mean": 0.018,
+     "sold_2019_2021_mean": 0.022,
+     "2018_note": "no partner breakdown published for 2018; the 2019-2021 level (EUR ~0.02bn each way) is the best estimate"
+    },
+    "baseline_to_rus_eur_bn": {
+     "low": 0.42,
+     "central": 0.48,
+     "high": 0.55
+    },
+    "headline_2022_2026": {
+     "before": {
+      "shift": 1.89,
+      "pct_gdp": 7.9
+     },
+     "after": {
+      "shift": 1.04,
+      "pct_gdp": 4.3
+     }
+    }
+   }
+  },
+  "MRT": {
+   "fix": "Count Russian sellers, not Russian-origin labels. Pre-war 'imports from Russia' in Mauritanian customs (USD 0.126/0.123/0.031bn of fuel in 2019-2021) were traders' cargoes declared by origin; Russia recorded only USD 1-2m of fuel and USD 16-36m of all goods to Mauritania. Set the to_rus baseline to Russia's own export records x1.1 (EUR 0.021bn, 0.013-0.035) and treat the origin-labelled cargoes as Russian oil bought via other countries, before and after the war, with its own pre-war level (EUR 0.065bn). Fish exports to Russia (USD 0.16/0.095/0.051bn, HS 0303) did stop in 2022; Russia itself recorded only USD 1.5-1.9m of fish imports from Mauritania, so most was catch by Russian-operated trawlers sold on elsewhere: keep, but the profit share is all Mauritania lost.",
+   "values": {
+    "mauritania_customs_fuel_from_rus_usd_bn": {
+     "2019": 0.126,
+     "2020": 0.123,
+     "2021": 0.031,
+     "2022": 0.0016,
+     "2023": 0.0036,
+     "2024": 0.014
+    },
+    "russia_reported_exports_to_mrt_usd_bn": {
+     "2019": {
+      "total": 0.0157,
+      "fuel": 0.0012
+     },
+     "2020": {
+      "total": 0.0363,
+      "fuel": 0.0014,
+      "wheat": 0.031
+     },
+     "2021": {
+      "total": 0.0156,
+      "fuel": 0.0023
+     }
+    },
+    "true_prewar_imports_from_rus_eur_bn": {
+     "low": 0.013,
+     "central": 0.021,
+     "high": 0.035
+    },
+    "russian_origin_fuel_via_uae_togo_india_eur_bn": {
+     "2021": {
+      "low": 0.015,
+      "central": 0.065,
+      "high": 0.1
+     },
+     "2022": {
+      "low": 0.03,
+      "central": 0.07,
+      "high": 0.15
+     },
+     "2023": {
+      "low": 0.02,
+      "central": 0.06,
+      "high": 0.12
+     },
+     "2024": {
+      "low": 0.01,
+      "central": 0.03,
+      "high": 0.08
+     },
+     "2025": {
+      "low": 0.01,
+      "central": 0.03,
+      "high": 0.08
+     },
+     "2026": {
+      "low": 0.005,
+      "central": 0.015,
+      "high": 0.05
+     }
+    },
+    "mauritania_fuel_imports_by_partner_usd_bn": {
+     "2021": {
+      "ARE": 0.464,
+      "ESP": 0.44,
+      "BEL": 0.038,
+      "RUS": 0.031
+     },
+     "2022": {
+      "ARE": 0.882,
+      "ESP": 0.69,
+      "BEL": 0.122,
+      "NLD": 0.107,
+      "TGO": 0.054
+     },
+     "2023": {
+      "ARE": 0.831,
+      "ESP": 0.505,
+      "BEL": 0.347
+     },
+     "2024": {
+      "ARE": 0.742,
+      "ESP": 0.528,
+      "BEL": 0.249,
+      "NGA": 0.069
+     }
+    },
+    "fish_exports_to_rus_usd_bn": {
+     "2019": 0.161,
+     "2020": 0.095,
+     "2021": 0.051,
+     "2022": 0.0001
+    },
+    "headline_2022_2026": {
+     "before": {
+      "shift": 0.41,
+      "pct_gdp": 4.1
+     },
+     "after": {
+      "shift": 0.085,
+      "pct_gdp": 0.8
+     }
+    }
+   }
+  },
+  "LCA": {
+   "fix": "Saint Lucia's 'imports from Russia' are one Russian mirror record of USD 0.285bn of crude (HS 2709) in 2021 to the Cul de Sac storage and transshipment terminal, carried forward to 2022-2025 by the growth rule. Saint Lucia's own reports show zero imports from Russia in 2019-2020. Set to_rus (years and baseline) and the derived war-time price extra to zero; label it a transit terminal.",
+   "values": {
+    "russia_reported_exports_to_lca_usd_bn": {
+     "2019": 0.0,
+     "2021": 0.285,
+     "2021_crude_hs2709": 0.2848
+    },
+    "map_to_rus_eur_bn_2021_2026": [
+     0.269,
+     0.284,
+     0.17,
+     0.166,
+     0.114,
+     0.074
+    ],
+    "proposed": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "headline_2022_2026": {
+     "before": {
+      "shift": -0.35,
+      "range": [
+       -5.26,
+       0.89
+      ],
+      "pct_gdp": -14.6
+     },
+     "after": {
+      "shift": 0.0,
+      "pct_gdp": 0.0
+     }
+    }
+   }
+  },
+  "BES": {
+   "fix": "Bonaire's imports from Russia are a 2019 Russian mirror record of USD 0.064bn of fuel oil (HS 2710) to the BOPEC storage terminal, extended by estimates. Terminal storage and bunkering are transit, not use on an island of 25,000 people. Set to_rus and its price extra to zero (or keep only a bunker share at the low end).",
+   "values": {
+    "russia_reported_exports_to_bes_usd_bn": {
+     "2019": 0.0641
+    },
+    "map_to_rus_eur_bn_2021_2026": [
+     0.076,
+     0.089,
+     0.05,
+     0.045,
+     0.038,
+     0.024
+    ],
+    "proposed": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "headline_2022_2026": {
+     "before": {
+      "shift": 0.063,
+      "pct_gdp": 7.4
+     },
+     "after": {
+      "shift": 0.0,
+      "pct_gdp": 0.0
+     }
+    }
+   }
+  },
+  "BWA": {
+   "fix": "Botswana's pre-war imports from Russia were rough diamonds (HS 7102: USD 0.143/0.111/0.173bn in 2019-2021) bought for sorting and resale; they stopped with the G7 diamond sanctions. Botswana did not use them; treat it like a gold hub: pass the stones on to their buyers (or drop the flow) and keep a trading margin of 5% (2-10%) as Botswana's own baseline.",
+   "values": {
+    "diamond_imports_from_rus_usd_bn": {
+     "2019": 0.1425,
+     "2020": 0.1113,
+     "2021": 0.1734,
+     "2022": 0.047,
+     "2023": 0.0
+    },
+    "proposed_baseline_eur_bn": {
+     "low": 0.003,
+     "central": 0.006,
+     "high": 0.012
+    },
+    "headline_2022_2026": {
+     "before": {
+      "shift": 0.5,
+      "pct_gdp": 2.8
+     },
+     "after": {
+      "shift": -0.01,
+      "pct_gdp": -0.1
+     }
+    }
+   }
+  },
+  "SYC": {
+   "fix": "Shipping income is booked to the Seychelles because shadow-tanker managers are incorporated there; these are fronts for Russian (Sovcomflot chain), Emirati and Indian operators. Apply the UAE foreign-share scaling from refine.json (keep 20%, 5-50%) and give the rest to the Russian-controlled pool; the Seychelles keeps only company and registry fees.",
+   "values": {
+    "map_shipping_eur_bn_2022_2026": [
+     0.011,
+     0.059,
+     0.067,
+     0.058,
+     0.09
+    ],
+    "proposed_share_kept": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.5
+    },
+    "headline_2022_2026": {
+     "before": {
+      "shift": -0.21,
+      "pct_gdp": -10.4
+     },
+     "after": {
+      "shift": -0.02,
+      "pct_gdp": -0.8
+     }
+    }
+   }
+  },
+  "MLT": {
+   "fix": "Malta's services bought from Russia drop from EUR 0.133bn (2022) to 0.003bn (2023-2025), a 98% fall in one year that reflects confidential cells reported as zero, and the COVID-rebound multiplier (1.35) is applied to services that are not travel. Treat 2023-2026 as missing (2022 level falling with EU services imports from Russia: 0.08/0.07/0.06/0.04) and use no rebound for non-travel services.",
+   "values": {
+    "map_svc_bought_eur_bn_2021_2026": [
+     0.127,
+     0.133,
+     0.003,
+     0.005,
+     0.005,
+     0.003
+    ],
+    "proposed": [
+     0.127,
+     0.133,
+     0.08,
+     0.07,
+     0.06,
+     0.04
+    ],
+    "headline_2022_2026": {
+     "before": {
+      "shift": 0.98,
+      "pct_gdp": 4.2
+     },
+     "after": {
+      "shift": 0.57,
+      "pct_gdp": 2.5
+     }
+    }
+   }
+  }
+ },
+ "scripts": "working/round4b/ (Comtrade queries ct.sh, partners_blr.py, build_round4b.py, artefact_fix.py, scan.js)"
+}

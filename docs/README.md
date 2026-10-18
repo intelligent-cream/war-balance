@@ -1,0 +1,75 @@
+# Follow the Money: Ukrainian Aid — documentation
+
+[The map](https://intelligent-cream.github.io/follow-the-money-ukraine/) shows, for every country, how much money and support it has shifted toward Ukraine or toward Russia since before the full-scale invasion. Each country's number is a total over 2022 to 2026 (2026 counts January to August, the latest data), as a percentage of one year's GDP, with a likely range and a source behind every part. This documentation explains how those numbers are made: the idea, the models that predict what would have happened without the war, every part of the calculation, the data pipeline, the sources and the known weaknesses. It is written for curious readers who are not economists, but it gives the formulas and links to the code for those who want to check.
+
+Status: research preview. The research was compiled with AI assistance and has not yet been reviewed line by line by a person.
+
+## What the map shows, in plain language
+
+Think of each country as having two ledgers: money and support going toward Ukraine (aid, refugee hosting, buying Ukrainian goods) and money going toward Russia (buying its oil, gas and goods, selling it goods, taxes paid there, weapons). Before the war, most countries already traded with both. So the map does not count totals. It asks: **compared with what the country would have done without the war, how much did it move, and in which direction?**
+
+- **Toward Ukraine** (blue on the map): it gave aid, hosted refugees, bought less from Russia than expected, gave up sales to Russia.
+- **Toward Russia** (orange): it bought more from Russia than expected, sold Russia more, paid war-time prices for Russian fuel, bought Russian oil refined elsewhere, sent weapons.
+
+The total is shown as a share of one year's GDP, so a small country that did a lot is not hidden behind a large one that did a little. Per person and total euros are one click away.
+
+## How to read a number
+
+Suppose the map shows **Poland: +10.0% of a year's GDP, likely range 5.9% to 15.5%, certainty C**.
+
+1. **+10.0%**: over 2022 to August 2026, Poland moved toward Ukraine an amount equal to a tenth of one year's economic output (its 2024 GDP, about EUR 848bn; so about EUR 85bn). The plus sign means toward Ukraine; a minus sign means toward Russia.
+2. **What it is made of**: open Poland's panel. The waterfall shows each part: aid (Kiel Institute), its share of EU-level aid, refugee hosting (EUR 24bn from the government's report), the fall in payments to Russia measured in volumes at pre-war prices, the profit on sales to Russia given up, minus the extra Poland paid for Russian fuel because of war-time prices, minus aid money that flowed back to its own industry ([overview](method/overview.md)).
+3. **"Compared with what?"**: for trade, the expected level without the war is predicted by a model tested on past years. For Poland's imports from Russia it is the 2021 level held flat ([counterfactual](method/counterfactual.md)).
+4. **5.9% to 15.5%**: the likely range, about 90%. It combines the uncertainty of the data, the price levels and the no-war prediction ([ranges](method/ranges.md)). Countries whose range crosses zero are left out of the top lists, because even the direction is uncertain.
+5. **Certainty C**: the weakest letter among the parts. A = reported, B = measured estimate, C = modelled estimate, D = rough indication.
+6. **A `*` on a part**: its 2026 value is estimated from the 2025 rate.
+7. **Each part has numbered sources**: click them in the panel; the list is also in [sources](reference/sources.md).
+
+## Contents
+
+### Method
+
+| page | what it covers |
+|---|---|
+| [method/overview.md](method/overview.md) | the core idea and the full list of parts, each linked to its page; the cost view and other lenses |
+| [method/counterfactual.md](method/counterfactual.md) | **the models**: what "expected without the war" means, four generations of approaches, 16 models, three back-tests, the decision rule, which model is used for which flow, how its error widens the ranges, what was rejected, effect on headlines |
+| [method/prices.md](method/prices.md) | why the map compares volumes; price indices per flow, own customs prices, gas prices per country, the war-time windfall |
+| [method/ranges.md](method/ranges.md) | certainty letters, where ranges come from, the quadrature in `spread()`, 2026 `*` marks, what ranges do not cover |
+| [method/trade.md](method/trade.md) | goods trade: sources, non-reporters, re-export hubs, Baltic transit, residual gap, Hong Kong gold, hidden channels, freight, profit not revenue, sanctions labels |
+| [method/energy-and-laundered-oil.md](method/energy-and-laundered-oil.md) | transit gas, laundered oil and the hub resale chain, refiners, pre-war laundered oil, Turkey, energy premium and oil discount |
+| [method/services-shipping-companies.md](method/services-shipping-companies.md) | services and tourism, tanker shipping as profit, company taxes in Russia |
+| [method/aid-refugees-military.md](method/aid-refugees-military.md) | Kiel aid, EU-level aid, ERA loans, undisclosed aid, private donations, refugees, military support to Russia, flowback |
+| [method/incentives.md](method/incentives.md) | the AI-guessed "above or below expectation" view and its caveats |
+
+### Data and pipeline (`reference/`)
+
+| page | what it covers |
+|---|---|
+| [reference/pipeline.md](reference/pipeline.md) | how to build, the 30 build steps in order, the `data.json` schema, the checks |
+| [reference/research-files.md](reference/research-files.md) | every research file, its notes, and which step and page use it |
+| [reference/sources.md](reference/sources.md) | the main external sources by topic, with addresses |
+
+### Status
+
+| page | what it covers |
+|---|---|
+| [limitations.md](limitations.md) | known open issues and how to report corrections |
+| [changelog.md](changelog.md) | research rounds 1–4 and the review fixes |
+
+## Research notes, data and code
+
+- **Research log by round**: [`research/2026-10/README.md`](../research/2026-10/README.md)
+- **Per-country coverage** (reported, estimated, missing): [`research/2026-10/gaps.md`](../research/2026-10/gaps.md)
+- **Key research notes**: [counterfactual](../research/2026-10/gaps/counterfactual-notes.md), [trend](../research/2026-10/gaps/trend-notes.md), [trend2](../research/2026-10/gaps/trend2-notes.md), [trend3](../research/2026-10/gaps/trend3-notes.md), [prices](../research/2026-10/gaps/prices-notes.md), [trade_full](../research/2026-10/gaps/trade_full-notes.md), [energy](../research/2026-10/gaps/energy-notes.md), [energy2](../research/2026-10/gaps/energy2-notes.md), [audit](../research/2026-10/gaps/audit-notes.md), [audit2](../research/2026-10/gaps/audit2-notes.md), [round4a](../research/2026-10/gaps/round4a-notes.md), [round4b](../research/2026-10/gaps/round4b-notes.md); all others in [research-files.md](reference/research-files.md)
+- **The data the map reads**: [`site/data.json`](../site/data.json)
+- **Code**: [`pipeline/build_data.py`](../pipeline/build_data.py) (build), [`pipeline/check_data.py`](../pipeline/check_data.py) (checks), [`pipeline/share_cards.mjs`](../pipeline/share_cards.mjs) (share images), [`site/index.html`](../site/index.html) (map and `calc()`), [`site/views.js`](../site/views.js) (ranking, bubbles, table, downloads), [`site/views2.js`](../site/views2.js) (How it works, incentives view), [`site/i18n.js`](../site/i18n.js) (seven languages)
+- **Older design notes** (partly superseded): [architecture](design/architecture.md), [concept](design/concept.md), [data ingestion](design/data-ingestion.md), [data model](design/data-model.md), [research process](design/research-process.md), [roadmap](design/roadmap.md), [website](design/website.md)
+
+## Corrections and licence
+
+Corrections are welcome: open a GitHub issue or message [u/Intelligent-Cream-14 on Reddit](https://www.reddit.com/user/Intelligent-Cream-14/) with the country, the figure and a source ([how](limitations.md#how-to-report-a-correction)). Code is MIT ([`LICENSE`](../LICENSE)); data and text, including this documentation, are CC BY 4.0 ([`LICENSE-DATA.md`](../LICENSE-DATA.md)).
+
+## See also
+
+- [Project README](../README.md)
+- [The map](https://intelligent-cream.github.io/follow-the-money-ukraine/)

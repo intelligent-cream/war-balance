@@ -1,5 +1,7 @@
 # Website: the map
 
+> **Historical design note.** This page describes an early plan; the map was built differently (a single Python build script and static JSON, no warehouse or estimate cards). For the current method and data see the [documentation index](../README.md).
+
 Current prototype: `site/index.html` reads `site/data.json` (built by `pipeline/build_data.py` from `research/2026-10/`).
 
 EU-level aid is never shown on its own: it is split over the member states by their contribution to the EU budget

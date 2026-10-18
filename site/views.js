@@ -42,7 +42,7 @@ function measureText() {
 function periodText() {
   if (state.year === 2021) return t("2021 (before the war)");
   const y = state.year;
-  return `2022–${y}${y === 2026 && FRAC[5] < 1 ? t(" (2026 to August)") : ""}`;
+  return `2022–${y}${y === 2026 && FRAC[5] < 1 ? t(" (2026 year to date, Jan–Aug)") : ""}`;
 }
 function tick(v) {
   const sg = v < 0 ? "−" : "", a = Math.abs(v);
@@ -266,7 +266,7 @@ function periodTextEn() {
   if (state.year === 2021) return "2021 (before the war)";
   const y = state.year;
   // a plain hyphen: spreadsheets and scripts handle it everywhere
-  return `2022-${y}${y === 2026 && FRAC[5] < 1 ? " (2026 to August)" : ""}`;
+  return `2022-${y}${y === 2026 && FRAC[5] < 1 ? " (2026 year to date, Jan–Aug)" : ""}`;
 }
 function download(text, name) {
   const a = document.createElement("a");
