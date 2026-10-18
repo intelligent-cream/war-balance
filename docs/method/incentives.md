@@ -1,5 +1,7 @@
 # The "above or below expectation" layer (AI guesses)
 
+> **Removed from the map** (October 2026). The view was AI guesses, not data. This page and `incentives.json` are kept for the record.
+
 The map has one view that is **not built from data**: "Who went out of their way" compares what each country actually shifted with what two AI-guessed incentive scores would predict. It exists as a conversation starter: a small, far-away country that did a lot stands out against a large, threatened neighbour that did little. This page explains how the guesses were made, how the expected shift is fitted, and why the view must not be read as a finding. Nothing in this layer changes any number elsewhere on the map.
 
 ## What the scores are

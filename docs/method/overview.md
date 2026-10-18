@@ -94,7 +94,6 @@ gold outline (threshold EUR 10m and 0.05% of GDP).
 
 - **To Ukraine**: aid + refugees + purchases from Ukraine (totals, not changes).
 - **To Russia**: payments for goods, laundered oil, company taxes, weapons, services and hidden channels (totals).
-- **Doing more or less than expected**: an AI-guessed incentive layer, kept apart from the data ([incentives.md](incentives.md)).
 
 ## Rules that apply everywhere
 

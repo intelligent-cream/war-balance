@@ -40,7 +40,7 @@ Suppose the map shows **Poland: +10.0% of a year's GDP, likely range 5.9% to 15.
 | [method/services-shipping-companies.md](method/services-shipping-companies.md) | services and tourism, tanker shipping as profit, company taxes in Russia |
 | [method/russia-state-and-companies.md](method/russia-state-and-companies.md) | nuclear projects and state loans from Russia, Russian arms sales, company exits and Russian companies abroad (round 5) |
 | [method/aid-refugees-military.md](method/aid-refugees-military.md) | Kiel aid, EU-level aid, ERA loans, undisclosed aid, private donations, refugees, military support to Russia, flowback |
-| [method/incentives.md](method/incentives.md) | the AI-guessed "above or below expectation" view and its caveats |
+| [method/incentives.md](method/incentives.md) | the AI-guessed "above or below expectation" view (removed from the map) |
 
 ### Data and pipeline (`reference/`)
 

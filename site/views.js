@@ -308,6 +308,6 @@ window.renderView = renderView;
 window.setView = setView;
 // "#view=rank", also combined with a country: "#view=rank&c=POL"
 const startView = parseHash().view;
-if (["rank", "bubbles", "table", "how", "expect"].includes(startView)) {
+if (["rank", "bubbles", "table", "how"].includes(startView)) {
   const wait = setInterval(() => { if (Object.keys(DATA).length) { clearInterval(wait); setView(startView); } }, 100);
 }
