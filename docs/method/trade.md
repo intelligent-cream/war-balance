@@ -59,6 +59,11 @@ Before the war much of the Baltic states' trade with Russia was transit: Estonia
 - takes re-exports out of their sales to Russia (Lithuania 0.85, Estonia 0.39, Latvia 0.45, Finland 0.10) and gives them to the EU members that made the goods, by their own sales to Russia; a 7% margin stays;
 - leaves crude refined in Lithuania and Finland (real processing).
 
+The transit share is **not** added to the final buyers. Those buyers already record the goods: the EU, the US and most
+other countries record imports by country of origin, so Russian diesel shipped to the Netherlands through Estonia is
+already in Dutch imports from Russia. Adding it again would count it twice (checked in round 5; the audit's
+recommendation to "give it to the final buyers" is met by their own customs records).
+
 ## Residual gap
 
 Russia's own customs record more imports than its partners report selling: EUR 29–46bn a year in 2022–2025 ([`residual.json`](../../research/2026-10/gaps/residual.json), [notes §2](../../research/2026-10/gaps/residual-notes.md)). [build_data.py `apply_residual()`](../../pipeline/build_data.py) splits it:

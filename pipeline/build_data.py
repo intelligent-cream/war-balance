@@ -1012,13 +1012,16 @@ def fossil_share(iso3: str) -> float:
 
 
 def own_index(iso3: str, name: str, band: str) -> list[float] | None:
-    """A country's own realised price index for Russian goods (customs unit values, 2018-2021 = 1), if measured."""
+    """A country's own realised price index for Russian goods (customs unit values, rebased to 2019-2021 = 1)."""
     if iso3 in PRICES_SKIP:
         return None
     s = ((PRICES.get(iso3) or {}).get("index") or {}).get(name)
     if not s or not all(str(y) in s for y in YEARS):
         return None
-    return [s[str(y)][band] for y in YEARS]
+    # prices.json measures against 2018-2021; rebased to 2019-2021 = 1 like every other index on the map
+    pre = [s[str(y)]["central"] for y in (2019, 2020, 2021) if str(y) in s and s[str(y)].get("central")]
+    r = sum(pre) / len(pre) if len(pre) == 3 else 1.0
+    return [s[str(y)][band] / r for y in YEARS]
 
 
 def fuel_index(iso3: str, band: str) -> list[float]:

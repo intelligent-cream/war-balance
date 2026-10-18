@@ -528,7 +528,10 @@ const state = { lens: "change", measure: "gdp", year: 2026, selected: null, comp
 
 // Every number is a part with a middle value, a low and a high (a ~90% range) and a certainty letter.
 // Ranges come from the data where it has them; otherwise from the certainty letter. Totals combine the parts'
-// margins as independent errors (square root of the sum of squares).
+// margins as errors (square root of the sum of squares), with the measured correlations in RHO.
+// Correlation of the counterfactual's errors between flows of the same country, measured in its back-tests (median of
+// the 2008, 2013 and 2016 tests; research/2026-10/gaps/counterfactual-notes.md). Other pairs are independent.
+const RHO = { "svcpaid|svcsold": 0.4, "paid|svcpaid": 0.25, "sold|svcpaid": 0.2, "sold|svcsold": 0.2, "paid|svcsold": 0.15 };
 function calc(c, y) {
   const N = yi(y), T = c.T;
   const sum3 = t => { const r = [0, 0, 0]; for (let i = 1; i <= N; i++) { r[0] += t.c[i]; r[1] += t.l[i]; r[2] += t.h[i]; } return r; };
@@ -632,8 +635,16 @@ function calc(c, y) {
   const live = parts => parts.filter(p => Math.abs(p.v) > 1e-6 || p.hi - p.lo > 1e-6);
   const total = parts => {
     const v = parts.reduce((s, p) => s + p.v, 0);
-    const dl = Math.sqrt(parts.reduce((s, p) => s + (p.v - p.lo) ** 2, 0)), dh = Math.sqrt(parts.reduce((s, p) => s + (p.hi - p.v) ** 2, 0));
-    return [v, v - dl, v + dh];
+    // parts' errors are independent except where the back-tests show expected trade missing together (RHO)
+    const spreadOf = d => {
+      let s2 = 0;
+      for (let i = 0; i < parts.length; i++) {
+        s2 += d(parts[i]) ** 2;
+        for (let j = i + 1; j < parts.length; j++) s2 += 2 * (RHO[parts[i].k + "|" + parts[j].k] || RHO[parts[j].k + "|" + parts[i].k] || 0) * d(parts[i]) * d(parts[j]);
+      }
+      return Math.sqrt(Math.max(0, s2));
+    };
+    return [v, v - spreadOf(p => p.v - p.lo), v + spreadOf(p => p.hi - p.v)];
   };
   const negPart = p => ({ ...p, v: -p.v, lo: -p.hi, hi: -p.lo });
   // money flowing back counts only as profit (the same share as profit lost on sales to Russia): the goods sold to

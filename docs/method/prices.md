@@ -83,7 +83,7 @@ Rules:
 
 ## A note on index bases
 
-`energy2.json` indices are 2019–2021 = 1; `prices.json` and `gas_prices.json` indices are relative to each country's own 2018–2021 (or 2019–2021) average. For flows that use the counterfactual, the pre-war level is `years[0] / pidx[0]` (2021 at 2021's price level), so only the ratio between 2021 and later years matters and the base-period difference cancels ([counterfactual.md](counterfactual.md#1-what-expected-without-the-war-means)).
+Every price index on the map is 2019–2021 = 1. `energy2.json` and `gas_prices.json` are on that base already; the own customs indices in `prices.json` are measured against 2018–2021 and rebased in `own_index()` (round 5). For flows that use the counterfactual the base cancels (the pre-war level is `years[0] / pidx[0]`), but the war-time windfall depends on it: measured against 2019–2021 prices it is about 5–7% larger than against 2018–2021, because 2018 had higher oil prices (Hungary −6.7% → −7.0% of GDP).
 
 ## See also
 

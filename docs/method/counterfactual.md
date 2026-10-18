@@ -185,6 +185,11 @@ Typical 2026 interval widths (median high/low, flows of at least EUR 10 m):
 
 A no-war 2022–2026 with a Russian recession or boom would fall outside many intervals. This is listed in [limitations.md](../limitations.md).
 
+### Deliberate choices
+
+- **Actual figures as inputs.** The models use each country's actual 2022–2026 GDP and trade with others, although the war affected them too. The map asks how far a country went out of its way: if its economy shrank because of the war, it would have traded less with Russia anyway, and that is not a choice to credit or blame. (Decided in round 5; pre-war forecasts were considered and rejected.)
+- **90% ranges as tested.** The ranges cover about 90% in normal periods (2008, 2016 tests) and 77–79% when the shock comes from Russia's side (2013 test). They are not widened for Russia-side shocks: the map already uses a real prediction instead of a flat 2021 level, and stretching every range for a rare shock would blur the result more than it adds honesty. (Decided in round 5.)
+
 ## 8. What was tried and rejected
 
 | idea | result | why rejected |
