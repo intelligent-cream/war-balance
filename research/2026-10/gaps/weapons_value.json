@@ -1,0 +1,4399 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "Correction of in-kind military aid (Kiel Ukraine Support Tracker Release 31, bilateral military allocations) from the value donors report (replacement cost, book value or Kiel list price) to MARKET value: what the used equipment would fetch on the international market. Procurement from industry (incl. purchases of refurbished second-hand systems) is already at market price and gets factor 1.",
+  "units": "EUR bn, nominal. Years 2022-2025 calendar, 2026 = Jan-Aug (not annualised). Kiel values are already in EUR (Kiel's conversion). Allocations with unknown month (Italy 1.30, Norway 0.02, Slovenia 0.02) are spread over the years in proportion, as in the pipeline.",
+  "method": "Row-level on 'Bilateral Assistance, MAIN DATA' (military allocations, tot_sub_activity_value_EUR_redistr). Each row is classified by source (procurement / stocks / both / unspecified), valuation (donor-reported vs 'calculated with prices' by Kiel) and item class (munitions/missiles, equipment, uncoded, Soviet-origin). Stock rows get factor = market/recorded by valuation basis x class (R replacement: munitions 0.65/0.85/1.0, equipment 0.20/0.35/0.60; U US net book value after Mar 2023: ~1.0; B book value: munitions 1.0/1.4/2.5, equipment 0.4/0.9/1.6; K Kiel price list: munitions 0.9/1.3/2.0, equipment 0.45/0.75/1.1, Soviet-origin 0.15/0.35/0.7), with item overrides for the largest items (see items_overridden). Mixed rows = half stock, half procurement; unspecified-source rows use the donor's coded stock share x its stock factor. UK calibrated to NAO book vs replacement values. Low/high use all-low/all-high factors (fully correlated within a donor), so ranges are wide.",
+  "how_to_apply": "Add correction_by_year (negative = less aid toward Ukraine) to the donor's military aid in the net shift. Prefer the absolute correction over multiplying the factor, because ERA-loan and other pipeline adjustments sit in rows with factor 1. EU_INST military aid (EPF is excluded; Kiel's EU military rows are procurement) is not corrected.",
+  "exchange_rates": "Kiel values used as given (EUR). NAO GBP figures converted at ~1.16 EUR/GBP; USD datapoints in notes at ECB yearly averages (2022 1.053, 2023 1.081, 2024 1.082).",
+  "totals": {
+   "recorded_excl_EU_INST": 177.01,
+   "market_value": {
+    "low": 136.16,
+    "central": 152.32,
+    "high": 173.65
+   },
+   "correction": {
+    "low": -40.85,
+    "central": -24.69,
+    "high": -3.36
+   }
+  }
+ },
+ "countries": {
+  "AUS": {
+   "kiel_name": "Australia",
+   "military_recorded": {
+    "2022": 0.3138,
+    "2023": 0.1399,
+    "2024": 0.4041,
+    "2025": 0.0539,
+    "2026": 0.0
+   },
+   "military_recorded_total": 0.9117,
+   "split_total": {
+    "stock": 0.5616,
+    "procurement": 0.1392,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.2109,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.601,
+     "central": 0.776,
+     "high": 0.978
+    },
+    "2023": {
+     "low": 0.491,
+     "central": 0.712,
+     "high": 0.973
+    },
+    "2024": {
+     "low": 0.603,
+     "central": 0.766,
+     "high": 0.952
+    },
+    "2025": {
+     "low": 0.491,
+     "central": 0.71,
+     "high": 0.959
+    },
+    "2026": {
+     "low": null,
+     "central": null,
+     "high": null
+    }
+   },
+   "factor_total": {
+    "low": 0.579,
+    "central": 0.758,
+    "high": 0.964
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.1887,
+     "central": 0.2434,
+     "high": 0.3067
+    },
+    "2023": {
+     "low": 0.0688,
+     "central": 0.0997,
+     "high": 0.1361
+    },
+    "2024": {
+     "low": 0.2436,
+     "central": 0.3094,
+     "high": 0.3846
+    },
+    "2025": {
+     "low": 0.0264,
+     "central": 0.0383,
+     "high": 0.0517
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.5275,
+    "central": 0.6908,
+    "high": 0.8791
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.1251,
+     "central": -0.0704,
+     "high": -0.0071
+    },
+    "2023": {
+     "low": -0.0711,
+     "central": -0.0402,
+     "high": -0.0038
+    },
+    "2024": {
+     "low": -0.1605,
+     "central": -0.0947,
+     "high": -0.0195
+    },
+    "2025": {
+     "low": -0.0275,
+     "central": -0.0156,
+     "high": -0.0022
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "correction_total": {
+    "low": -0.3842,
+    "central": -0.2209,
+    "high": -0.0326
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "Stock: Bushmasters, M113AS4, 49 retiring M1A1 Abrams (AUD 245m, ~AUD 5m each).",
+   "valuation_basis": "Abrams value close to a used-market price; Bushmasters at replacement.",
+   "reasoning": "Mix 60% near-market / 40% replacement basis."
+  },
+  "AUT": {
+   "kiel_name": "Austria",
+   "military_recorded": {
+    "2022": 0.0033,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "military_recorded_total": 0.0033,
+   "split_total": {
+    "stock": 0.0,
+    "procurement": 0.0,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.0033,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.675,
+     "central": 0.775,
+     "high": 0.9
+    },
+    "2023": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2024": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2025": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2026": {
+     "low": null,
+     "central": null,
+     "high": null
+    }
+   },
+   "factor_total": {
+    "low": 0.667,
+    "central": 0.758,
+    "high": 0.879
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0022,
+     "central": 0.0025,
+     "high": 0.0029
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.0022,
+    "central": 0.0025,
+    "high": 0.0029
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0011,
+     "central": -0.0008,
+     "high": -0.0004
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "correction_total": {
+    "low": -0.0011,
+    "central": -0.0008,
+    "high": -0.0004
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "BEL": {
+   "kiel_name": "Belgium",
+   "military_recorded": {
+    "2022": 0.147,
+    "2023": 0.1807,
+    "2024": 1.2503,
+    "2025": 1.143,
+    "2026": 0.1153
+   },
+   "military_recorded_total": 2.8363,
+   "split_total": {
+    "stock": 0.8111,
+    "procurement": 0.2564,
+    "procurement_and_stock_mixed": 1.2168,
+    "source_unspecified": 0.552,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.346,
+     "central": 0.469,
+     "high": 0.673
+    },
+    "2023": {
+     "low": 0.658,
+     "central": 0.845,
+     "high": 1.062
+    },
+    "2024": {
+     "low": 0.638,
+     "central": 0.734,
+     "high": 0.855
+    },
+    "2025": {
+     "low": 0.528,
+     "central": 0.629,
+     "high": 0.784
+    },
+    "2026": {
+     "low": 0.383,
+     "central": 0.573,
+     "high": 0.81
+    }
+   },
+   "factor_total": {
+    "low": 0.569,
+    "central": 0.678,
+    "high": 0.829
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0509,
+     "central": 0.0689,
+     "high": 0.099
+    },
+    "2023": {
+     "low": 0.119,
+     "central": 0.1526,
+     "high": 0.1919
+    },
+    "2024": {
+     "low": 0.7977,
+     "central": 0.9173,
+     "high": 1.0692
+    },
+    "2025": {
+     "low": 0.6035,
+     "central": 0.7193,
+     "high": 0.8967
+    },
+    "2026": {
+     "low": 0.0441,
+     "central": 0.066,
+     "high": 0.0934
+    }
+   },
+   "military_market_value_total": {
+    "low": 1.6152,
+    "central": 1.9241,
+    "high": 2.3502
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0961,
+     "central": -0.0781,
+     "high": -0.048
+    },
+    "2023": {
+     "low": -0.0617,
+     "central": -0.0281,
+     "high": 0.0112
+    },
+    "2024": {
+     "low": -0.4526,
+     "central": -0.333,
+     "high": -0.1811
+    },
+    "2025": {
+     "low": -0.5395,
+     "central": -0.4237,
+     "high": -0.2463
+    },
+    "2026": {
+     "low": -0.0712,
+     "central": -0.0493,
+     "high": -0.0219
+    }
+   },
+   "correction_total": {
+    "low": -1.2211,
+    "central": -0.9122,
+    "high": -0.4861
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "in_kind_share": "Mixed; F-16 transfers from 2025 on are partly in later years.",
+   "valuation_basis": "Assumed replacement basis.",
+   "reasoning": "Default factors; certainty D."
+  },
+  "BGR": {
+   "kiel_name": "Bulgaria",
+   "military_recorded": {
+    "2022": 0.2335,
+    "2023": 0.0028,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0173
+   },
+   "military_recorded_total": 0.2536,
+   "split_total": {
+    "stock": 0.0201,
+    "procurement": 0.0,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.2335,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.329,
+     "central": 0.522,
+     "high": 0.772
+    },
+    "2023": {
+     "low": 0.2,
+     "central": 0.35,
+     "high": 0.6
+    },
+    "2024": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2025": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2026": {
+     "low": 0.35,
+     "central": 0.55,
+     "high": 0.8
+    }
+   },
+   "factor_total": {
+    "low": 0.329,
+    "central": 0.522,
+    "high": 0.772
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0769,
+     "central": 0.1219,
+     "high": 0.1803
+    },
+    "2023": {
+     "low": 0.0006,
+     "central": 0.001,
+     "high": 0.0017
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.006,
+     "central": 0.0095,
+     "high": 0.0138
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.0835,
+    "central": 0.1324,
+    "high": 0.1958
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.1566,
+     "central": -0.1116,
+     "high": -0.0532
+    },
+    "2023": {
+     "low": -0.0022,
+     "central": -0.0018,
+     "high": -0.0011
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": -0.0113,
+     "central": -0.0078,
+     "high": -0.0035
+    }
+   },
+   "correction_total": {
+    "low": -0.1701,
+    "central": -0.1212,
+    "high": -0.0578
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "CAN": {
+   "kiel_name": "Canada",
+   "military_recorded": {
+    "2022": 1.4027,
+    "2023": 0.8839,
+    "2024": 0.3852,
+    "2025": 2.0234,
+    "2026": 1.1211
+   },
+   "military_recorded_total": 5.8163,
+   "split_total": {
+    "stock": 1.3938,
+    "procurement": 3.2307,
+    "procurement_and_stock_mixed": 0.0248,
+    "source_unspecified": 1.1671,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.891,
+     "central": 1.026,
+     "high": 1.294
+    },
+    "2023": {
+     "low": 0.971,
+     "central": 1.019,
+     "high": 1.108
+    },
+    "2024": {
+     "low": 0.833,
+     "central": 0.923,
+     "high": 1.031
+    },
+    "2025": {
+     "low": 0.805,
+     "central": 0.908,
+     "high": 1.085
+    },
+    "2026": {
+     "low": 0.941,
+     "central": 0.985,
+     "high": 1.065
+    }
+   },
+   "factor_total": {
+    "low": 0.879,
+    "central": 0.969,
+    "high": 1.132
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 1.2496,
+     "central": 1.4384,
+     "high": 1.815
+    },
+    "2023": {
+     "low": 0.858,
+     "central": 0.9011,
+     "high": 0.9791
+    },
+    "2024": {
+     "low": 0.3209,
+     "central": 0.3557,
+     "high": 0.3972
+    },
+    "2025": {
+     "low": 1.6296,
+     "central": 1.8378,
+     "high": 2.1963
+    },
+    "2026": {
+     "low": 1.0554,
+     "central": 1.1048,
+     "high": 1.194
+    }
+   },
+   "military_market_value_total": {
+    "low": 5.1135,
+    "central": 5.6378,
+    "high": 6.5816
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.1531,
+     "central": 0.0357,
+     "high": 0.4123
+    },
+    "2023": {
+     "low": -0.0259,
+     "central": 0.0172,
+     "high": 0.0952
+    },
+    "2024": {
+     "low": -0.0643,
+     "central": -0.0295,
+     "high": 0.012
+    },
+    "2025": {
+     "low": -0.3938,
+     "central": -0.1856,
+     "high": 0.1729
+    },
+    "2026": {
+     "low": -0.0657,
+     "central": -0.0163,
+     "high": 0.0729
+    }
+   },
+   "correction_total": {
+    "low": -0.7028,
+    "central": -0.1785,
+    "high": 0.7653
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "Procurement (NASAMS, ACSVs, Ukrainian drones) dominates; stock: M777, Leopard 2A4, ammunition, AIM-9.",
+   "valuation_basis": "Unknown; assumed half replacement, half book.",
+   "reasoning": "Small net correction."
+  },
+  "HRV": {
+   "kiel_name": "Croatia",
+   "military_recorded": {
+    "2022": 0.0788,
+    "2023": 0.132,
+    "2024": 0.0,
+    "2025": 0.045,
+    "2026": 0.02
+   },
+   "military_recorded_total": 0.2758,
+   "split_total": {
+    "stock": 0.035,
+    "procurement": 0.0005,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.2403,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.359,
+     "central": 0.556,
+     "high": 0.803
+    },
+    "2023": {
+     "low": 0.362,
+     "central": 0.558,
+     "high": 0.804
+    },
+    "2024": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2025": {
+     "low": 0.356,
+     "central": 0.554,
+     "high": 0.802
+    },
+    "2026": {
+     "low": 0.35,
+     "central": 0.55,
+     "high": 0.8
+    }
+   },
+   "factor_total": {
+    "low": 0.359,
+    "central": 0.556,
+    "high": 0.803
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0283,
+     "central": 0.0438,
+     "high": 0.0633
+    },
+    "2023": {
+     "low": 0.0477,
+     "central": 0.0737,
+     "high": 0.1061
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.016,
+     "central": 0.0249,
+     "high": 0.0361
+    },
+    "2026": {
+     "low": 0.007,
+     "central": 0.011,
+     "high": 0.016
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.099,
+    "central": 0.1534,
+    "high": 0.2215
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0505,
+     "central": -0.035,
+     "high": -0.0155
+    },
+    "2023": {
+     "low": -0.0843,
+     "central": -0.0583,
+     "high": -0.0259
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": -0.029,
+     "central": -0.0201,
+     "high": -0.0089
+    },
+    "2026": {
+     "low": -0.013,
+     "central": -0.009,
+     "high": -0.004
+    }
+   },
+   "correction_total": {
+    "low": -0.1768,
+    "central": -0.1224,
+    "high": -0.0543
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "CZE": {
+   "kiel_name": "Czechia",
+   "military_recorded": {
+    "2022": 0.2009,
+    "2023": 0.0567,
+    "2024": 0.0802,
+    "2025": 0.2344,
+    "2026": 0.0058
+   },
+   "military_recorded_total": 0.578,
+   "split_total": {
+    "stock": 0.242,
+    "procurement": 0.336,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.0,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.22,
+     "central": 0.386,
+     "high": 0.66
+    },
+    "2023": {
+     "low": 0.369,
+     "central": 0.747,
+     "high": 1.287
+    },
+    "2024": {
+     "low": 0.652,
+     "central": 0.786,
+     "high": 1.027
+    },
+    "2025": {
+     "low": 1.126,
+     "central": 1.036,
+     "high": 0.868
+    },
+    "2026": {
+     "low": 0.525,
+     "central": 0.865,
+     "high": 1.5
+    }
+   },
+   "factor_total": {
+    "low": 0.665,
+    "central": 0.745,
+    "high": 0.865
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0442,
+     "central": 0.0775,
+     "high": 0.1327
+    },
+    "2023": {
+     "low": 0.0209,
+     "central": 0.0423,
+     "high": 0.073
+    },
+    "2024": {
+     "low": 0.0523,
+     "central": 0.063,
+     "high": 0.0824
+    },
+    "2025": {
+     "low": 0.2639,
+     "central": 0.2428,
+     "high": 0.2034
+    },
+    "2026": {
+     "low": 0.003,
+     "central": 0.005,
+     "high": 0.0087
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.3843,
+    "central": 0.4306,
+    "high": 0.5002
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.1567,
+     "central": -0.1234,
+     "high": -0.0682
+    },
+    "2023": {
+     "low": -0.0358,
+     "central": -0.0144,
+     "high": 0.0163
+    },
+    "2024": {
+     "low": -0.0279,
+     "central": -0.0172,
+     "high": 0.0022
+    },
+    "2025": {
+     "low": 0.0295,
+     "central": 0.0084,
+     "high": -0.031
+    },
+    "2026": {
+     "low": -0.0028,
+     "central": -0.0008,
+     "high": 0.0029
+    }
+   },
+   "correction_total": {
+    "low": -0.1937,
+    "central": -0.1474,
+    "high": -0.0778
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "2022 Soviet-era stock (T-72M1, BVP-1, Mi-24, rocket launchers, ammunition); later Czech-made procurement.",
+   "valuation_basis": "Assumed mostly book value.",
+   "reasoning": "Book-basis factors; Mi-24 x0.35. The Czech ammunition initiative is funded by other donors and is not Czech aid."
+  },
+  "DNK": {
+   "kiel_name": "Denmark",
+   "military_recorded": {
+    "2022": 0.5706,
+    "2023": 3.963,
+    "2024": 2.8066,
+    "2025": 2.5068,
+    "2026": 0.6914
+   },
+   "military_recorded_total": 10.5384,
+   "split_total": {
+    "stock": 0.9555,
+    "procurement": 7.9221,
+    "procurement_and_stock_mixed": 0.1109,
+    "source_unspecified": 1.5499,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.941,
+     "central": 0.952,
+     "high": 0.967
+    },
+    "2023": {
+     "low": 0.833,
+     "central": 0.861,
+     "high": 0.899
+    },
+    "2024": {
+     "low": 0.988,
+     "central": 0.995,
+     "high": 1.0
+    },
+    "2025": {
+     "low": 0.953,
+     "central": 0.968,
+     "high": 0.986
+    },
+    "2026": {
+     "low": 0.996,
+     "central": 0.997,
+     "high": 0.998
+    }
+   },
+   "factor_total": {
+    "low": 0.92,
+    "central": 0.936,
+    "high": 0.957
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.5369,
+     "central": 0.5434,
+     "high": 0.5519
+    },
+    "2023": {
+     "low": 3.3026,
+     "central": 3.4121,
+     "high": 3.5647
+    },
+    "2024": {
+     "low": 2.7738,
+     "central": 2.7925,
+     "high": 2.8066
+    },
+    "2025": {
+     "low": 2.3897,
+     "central": 2.4257,
+     "high": 2.4708
+    },
+    "2026": {
+     "low": 0.6889,
+     "central": 0.6894,
+     "high": 0.69
+    }
+   },
+   "military_market_value_total": {
+    "low": 9.6919,
+    "central": 9.8631,
+    "high": 10.084
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0337,
+     "central": -0.0272,
+     "high": -0.0187
+    },
+    "2023": {
+     "low": -0.6604,
+     "central": -0.5509,
+     "high": -0.3983
+    },
+    "2024": {
+     "low": -0.0328,
+     "central": -0.0141,
+     "high": 0.0
+    },
+    "2025": {
+     "low": -0.1171,
+     "central": -0.0811,
+     "high": -0.036
+    },
+    "2026": {
+     "low": -0.0025,
+     "central": -0.002,
+     "high": -0.0014
+    }
+   },
+   "correction_total": {
+    "low": -0.8465,
+    "central": -0.6753,
+    "high": -0.4544
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "Danish model: mostly procurement (Ukrainian industry, Czech ammunition initiative, CV90), stock ~10% (F-16s, CAESAR).",
+   "valuation_basis": "Assumed replacement basis.",
+   "reasoning": "F-16 x0.30; little else to correct."
+  },
+  "EST": {
+   "kiel_name": "Estonia",
+   "military_recorded": {
+    "2022": 0.2931,
+    "2023": 0.389,
+    "2024": 0.0275,
+    "2025": 0.162,
+    "2026": 0.0167
+   },
+   "military_recorded_total": 0.8883,
+   "split_total": {
+    "stock": 0.6047,
+    "procurement": 0.144,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.1395,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.249,
+     "central": 0.398,
+     "high": 0.643
+    },
+    "2023": {
+     "low": 0.501,
+     "central": 0.676,
+     "high": 0.857
+    },
+    "2024": {
+     "low": 0.301,
+     "central": 0.432,
+     "high": 0.65
+    },
+    "2025": {
+     "low": 0.913,
+     "central": 0.935,
+     "high": 0.965
+    },
+    "2026": {
+     "low": 0.393,
+     "central": 0.58,
+     "high": 0.813
+    }
+   },
+   "factor_total": {
+    "low": 0.485,
+    "central": 0.622,
+    "high": 0.799
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0731,
+     "central": 0.1167,
+     "high": 0.1884
+    },
+    "2023": {
+     "low": 0.1947,
+     "central": 0.2629,
+     "high": 0.3332
+    },
+    "2024": {
+     "low": 0.0083,
+     "central": 0.0119,
+     "high": 0.0179
+    },
+    "2025": {
+     "low": 0.1479,
+     "central": 0.1514,
+     "high": 0.1564
+    },
+    "2026": {
+     "low": 0.0066,
+     "central": 0.0097,
+     "high": 0.0136
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.4306,
+    "central": 0.5526,
+    "high": 0.7095
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.22,
+     "central": -0.1764,
+     "high": -0.1047
+    },
+    "2023": {
+     "low": -0.1943,
+     "central": -0.1261,
+     "high": -0.0558
+    },
+    "2024": {
+     "low": -0.0192,
+     "central": -0.0156,
+     "high": -0.0096
+    },
+    "2025": {
+     "low": -0.0141,
+     "central": -0.0106,
+     "high": -0.0056
+    },
+    "2026": {
+     "low": -0.0101,
+     "central": -0.007,
+     "high": -0.0031
+    }
+   },
+   "correction_total": {
+    "low": -0.4577,
+    "central": -0.3357,
+    "high": -0.1788
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "Mostly stock (Javelin, D-30, FH70, ammunition).",
+   "valuation_basis": "Replacement value; claimed 91% of new price at the EPF (Politico, ERR).",
+   "reasoning": "R-basis factors."
+  },
+  "FIN": {
+   "kiel_name": "Finland",
+   "military_recorded": {
+    "2022": 0.2067,
+    "2023": 1.408,
+    "2024": 0.7201,
+    "2025": 0.693,
+    "2026": 0.309
+   },
+   "military_recorded_total": 3.3368,
+   "split_total": {
+    "stock": 0.338,
+    "procurement": 0.3241,
+    "procurement_and_stock_mixed": 0.052,
+    "source_unspecified": 2.6227,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.669,
+     "central": 0.771,
+     "high": 0.898
+    },
+    "2023": {
+     "low": 0.669,
+     "central": 0.771,
+     "high": 0.898
+    },
+    "2024": {
+     "low": 0.687,
+     "central": 0.783,
+     "high": 0.904
+    },
+    "2025": {
+     "low": 0.6,
+     "central": 0.723,
+     "high": 0.877
+    },
+    "2026": {
+     "low": 0.779,
+     "central": 0.847,
+     "high": 0.932
+    }
+   },
+   "factor_total": {
+    "low": 0.669,
+    "central": 0.771,
+    "high": 0.898
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.1382,
+     "central": 0.1593,
+     "high": 0.1856
+    },
+    "2023": {
+     "low": 0.9415,
+     "central": 1.085,
+     "high": 1.2645
+    },
+    "2024": {
+     "low": 0.4948,
+     "central": 0.5641,
+     "high": 0.6508
+    },
+    "2025": {
+     "low": 0.4161,
+     "central": 0.5013,
+     "high": 0.6078
+    },
+    "2026": {
+     "low": 0.2406,
+     "central": 0.2616,
+     "high": 0.288
+    }
+   },
+   "military_market_value_total": {
+    "low": 2.2312,
+    "central": 2.5713,
+    "high": 2.9967
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0685,
+     "central": -0.0474,
+     "high": -0.0211
+    },
+    "2023": {
+     "low": -0.4665,
+     "central": -0.323,
+     "high": -0.1435
+    },
+    "2024": {
+     "low": -0.2253,
+     "central": -0.156,
+     "high": -0.0693
+    },
+    "2025": {
+     "low": -0.2769,
+     "central": -0.1917,
+     "high": -0.0852
+    },
+    "2026": {
+     "low": -0.0684,
+     "central": -0.0474,
+     "high": -0.021
+    }
+   },
+   "correction_total": {
+    "low": -1.1056,
+    "central": -0.7655,
+    "high": -0.3401
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "Finland gives mainly from Defence Forces stocks (contents mostly classified) with replacement procurement; recent packages more procurement.",
+   "valuation_basis": "Claimed 100% of new purchase price at the EPF (Politico) = replacement basis.",
+   "reasoning": "R-basis factors on a ~55% assumed stock share (source mostly unspecified)."
+  },
+  "FRA": {
+   "kiel_name": "France",
+   "military_recorded": {
+    "2022": 0.9669,
+    "2023": 1.7951,
+    "2024": 1.0097,
+    "2025": 2.195,
+    "2026": 0.265
+   },
+   "military_recorded_total": 6.2317,
+   "split_total": {
+    "stock": 1.3988,
+    "procurement": 0.9349,
+    "procurement_and_stock_mixed": 2.265,
+    "source_unspecified": 1.6329,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.586,
+     "central": 0.758,
+     "high": 0.95
+    },
+    "2023": {
+     "low": 0.412,
+     "central": 0.442,
+     "high": 0.485
+    },
+    "2024": {
+     "low": 0.719,
+     "central": 0.86,
+     "high": 1.047
+    },
+    "2025": {
+     "low": 0.841,
+     "central": 0.932,
+     "high": 1.0
+    },
+    "2026": {
+     "low": 0.675,
+     "central": 0.775,
+     "high": 0.9
+    }
+   },
+   "factor_total": {
+    "low": 0.651,
+    "central": 0.745,
+    "high": 0.847
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.567,
+     "central": 0.7326,
+     "high": 0.9181
+    },
+    "2023": {
+     "low": 0.7394,
+     "central": 0.7938,
+     "high": 0.87
+    },
+    "2024": {
+     "low": 0.7262,
+     "central": 0.868,
+     "high": 1.0569
+    },
+    "2025": {
+     "low": 1.845,
+     "central": 2.045,
+     "high": 2.195
+    },
+    "2026": {
+     "low": 0.1789,
+     "central": 0.2054,
+     "high": 0.2385
+    }
+   },
+   "military_market_value_total": {
+    "low": 4.0565,
+    "central": 4.6448,
+    "high": 5.2785
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.3999,
+     "central": -0.2343,
+     "high": -0.0488
+    },
+    "2023": {
+     "low": -1.0557,
+     "central": -1.0013,
+     "high": -0.9251
+    },
+    "2024": {
+     "low": -0.2835,
+     "central": -0.1417,
+     "high": 0.0472
+    },
+    "2025": {
+     "low": -0.35,
+     "central": -0.15,
+     "high": 0.0
+    },
+    "2026": {
+     "low": -0.0861,
+     "central": -0.0596,
+     "high": -0.0265
+    }
+   },
+   "correction_total": {
+    "low": -2.1752,
+    "central": -1.5869,
+    "high": -0.9532
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "France's 'cessions' from stocks plus a support fund for purchases; 2025-26 entries are mixed.",
+   "valuation_basis": "French official values are high: Kiel's own price-based estimate was EUR 0.85-2.0bn vs France's EUR 2.6bn (Kiel 2024 research note); France claimed 71% of new purchase price at the EPF (Politico).",
+   "reasoning": "Replacement-type basis: AMX-10 RC recorded at EUR 12m each (retiring 1980s vehicles) x0.08; other stock R-basis factors."
+  },
+  "DEU": {
+   "kiel_name": "Germany",
+   "military_recorded": {
+    "2022": 2.8188,
+    "2023": 4.2232,
+    "2024": 3.9584,
+    "2025": 9.0135,
+    "2026": 4.9898
+   },
+   "military_recorded_total": 25.0037,
+   "split_total": {
+    "stock": 4.6418,
+    "procurement": 17.1867,
+    "procurement_and_stock_mixed": 0.3172,
+    "source_unspecified": 2.858,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.772,
+     "central": 1.052,
+     "high": 1.484
+    },
+    "2023": {
+     "low": 0.955,
+     "central": 1.019,
+     "high": 1.121
+    },
+    "2024": {
+     "low": 0.957,
+     "central": 0.98,
+     "high": 1.016
+    },
+    "2025": {
+     "low": 0.891,
+     "central": 0.934,
+     "high": 0.982
+    },
+    "2026": {
+     "low": 0.979,
+     "central": 0.991,
+     "high": 1.003
+    }
+   },
+   "factor_total": {
+    "low": 0.916,
+    "central": 0.98,
+    "high": 1.072
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 2.1756,
+     "central": 2.9653,
+     "high": 4.1832
+    },
+    "2023": {
+     "low": 4.0336,
+     "central": 4.3023,
+     "high": 4.7346
+    },
+    "2024": {
+     "low": 3.7877,
+     "central": 3.8781,
+     "high": 4.0205
+    },
+    "2025": {
+     "low": 8.029,
+     "central": 8.4206,
+     "high": 8.8524
+    },
+    "2026": {
+     "low": 4.8831,
+     "central": 4.9464,
+     "high": 5.0057
+    }
+   },
+   "military_market_value_total": {
+    "low": 22.909,
+    "central": 24.5127,
+    "high": 26.7964
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.6432,
+     "central": 0.1465,
+     "high": 1.3644
+    },
+    "2023": {
+     "low": -0.1896,
+     "central": 0.0791,
+     "high": 0.5114
+    },
+    "2024": {
+     "low": -0.1707,
+     "central": -0.0803,
+     "high": 0.0621
+    },
+    "2025": {
+     "low": -0.9845,
+     "central": -0.5929,
+     "high": -0.1611
+    },
+    "2026": {
+     "low": -0.1067,
+     "central": -0.0434,
+     "high": 0.0159
+    }
+   },
+   "correction_total": {
+    "low": -2.0947,
+    "central": -0.491,
+    "high": 1.7927
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "Mostly procurement financed by the Ertüchtigungsinitiative; stock deliveries (Patriot, Leopard 2A6, PzH2000, Gepard, MARS) are ~19%.",
+   "valuation_basis": "Kiel values most German stock deliveries with its own price list (39% of German aid is 'calculated with prices'); the government's own EUR 5.2bn replacement cost for Bundeswehr stock is not used by Kiel.",
+   "reasoning": "Kiel prices are SIPRI average contract prices, often already second-hand (Gepard, Leopard 1, M113), so the correction is small: x0.98."
+  },
+  "GRC": {
+   "kiel_name": "Greece",
+   "military_recorded": {
+    "2022": 0.1343,
+    "2023": 0.0105,
+    "2024": 0.0038,
+    "2025": 0.02,
+    "2026": 0.0
+   },
+   "military_recorded_total": 0.1686,
+   "split_total": {
+    "stock": 0.057,
+    "procurement": 0.0,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.1116,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.9,
+     "central": 1.2,
+     "high": 1.8
+    },
+    "2023": {
+     "low": 0.9,
+     "central": 1.2,
+     "high": 1.8
+    },
+    "2024": {
+     "low": 0.9,
+     "central": 1.3,
+     "high": 2.0
+    },
+    "2025": {
+     "low": 0.35,
+     "central": 0.55,
+     "high": 0.8
+    },
+    "2026": {
+     "low": null,
+     "central": null,
+     "high": null
+    }
+   },
+   "factor_total": {
+    "low": 0.834,
+    "central": 1.125,
+    "high": 1.686
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.1208,
+     "central": 0.1611,
+     "high": 0.2417
+    },
+    "2023": {
+     "low": 0.0094,
+     "central": 0.0126,
+     "high": 0.0189
+    },
+    "2024": {
+     "low": 0.0034,
+     "central": 0.0049,
+     "high": 0.0076
+    },
+    "2025": {
+     "low": 0.007,
+     "central": 0.011,
+     "high": 0.016
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.1406,
+    "central": 0.1896,
+    "high": 0.2842
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0135,
+     "central": 0.0268,
+     "high": 0.1074
+    },
+    "2023": {
+     "low": -0.0011,
+     "central": 0.0021,
+     "high": 0.0084
+    },
+    "2024": {
+     "low": -0.0004,
+     "central": 0.0011,
+     "high": 0.0038
+    },
+    "2025": {
+     "low": -0.013,
+     "central": -0.009,
+     "high": -0.004
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "correction_total": {
+    "low": -0.028,
+    "central": 0.021,
+    "high": 0.1156
+   },
+   "direction": "raises aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "IRL": {
+   "kiel_name": "Ireland",
+   "military_recorded": {
+    "2022": 0.0001,
+    "2023": 0.0039,
+    "2024": 0.0031,
+    "2025": 0.2018,
+    "2026": 0.1
+   },
+   "military_recorded_total": 0.3089,
+   "split_total": {
+    "stock": 0.005,
+    "procurement": 0.08,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.2239,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.2,
+     "central": 0.35,
+     "high": 0.6
+    },
+    "2023": {
+     "low": 0.963,
+     "central": 0.978,
+     "high": 0.997
+    },
+    "2024": {
+     "low": 0.34,
+     "central": 0.574,
+     "high": 0.88
+    },
+    "2025": {
+     "low": 0.976,
+     "central": 0.989,
+     "high": 1.004
+    },
+    "2026": {
+     "low": 0.963,
+     "central": 0.978,
+     "high": 0.997
+    }
+   },
+   "factor_total": {
+    "low": 0.965,
+    "central": 0.981,
+    "high": 1.001
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0001
+    },
+    "2023": {
+     "low": 0.0037,
+     "central": 0.0038,
+     "high": 0.0038
+    },
+    "2024": {
+     "low": 0.0011,
+     "central": 0.0018,
+     "high": 0.0028
+    },
+    "2025": {
+     "low": 0.1969,
+     "central": 0.1996,
+     "high": 0.2027
+    },
+    "2026": {
+     "low": 0.0963,
+     "central": 0.0978,
+     "high": 0.0997
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.298,
+    "central": 0.303,
+    "high": 0.3091
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0001,
+     "central": -0.0001,
+     "high": 0.0
+    },
+    "2023": {
+     "low": -0.0002,
+     "central": -0.0001,
+     "high": -0.0001
+    },
+    "2024": {
+     "low": -0.002,
+     "central": -0.0013,
+     "high": -0.0003
+    },
+    "2025": {
+     "low": -0.0049,
+     "central": -0.0022,
+     "high": 0.0009
+    },
+    "2026": {
+     "low": -0.0037,
+     "central": -0.0022,
+     "high": -0.0003
+    }
+   },
+   "correction_total": {
+    "low": -0.0109,
+    "central": -0.0059,
+    "high": 0.0002
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "ISL": {
+   "kiel_name": "Iceland",
+   "military_recorded": {
+    "2022": 0.0009,
+    "2023": 0.0149,
+    "2024": 0.0025,
+    "2025": 0.0387,
+    "2026": 0.0
+   },
+   "military_recorded_total": 0.057,
+   "split_total": {
+    "stock": 0.008,
+    "procurement": 0.0341,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.0149,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.905,
+     "central": 0.934,
+     "high": 0.971
+    },
+    "2023": {
+     "low": 1.0,
+     "central": 1.0,
+     "high": 1.0
+    },
+    "2024": {
+     "low": 1.0,
+     "central": 1.0,
+     "high": 1.0
+    },
+    "2025": {
+     "low": 0.82,
+     "central": 0.875,
+     "high": 0.945
+    },
+    "2026": {
+     "low": null,
+     "central": null,
+     "high": null
+    }
+   },
+   "factor_total": {
+    "low": 0.875,
+    "central": 0.914,
+    "high": 0.96
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0008,
+     "central": 0.0008,
+     "high": 0.0008
+    },
+    "2023": {
+     "low": 0.0149,
+     "central": 0.0149,
+     "high": 0.0149
+    },
+    "2024": {
+     "low": 0.0025,
+     "central": 0.0025,
+     "high": 0.0025
+    },
+    "2025": {
+     "low": 0.0317,
+     "central": 0.0339,
+     "high": 0.0365
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.0499,
+    "central": 0.0521,
+    "high": 0.0547
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0001,
+     "central": -0.0001,
+     "high": -0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": -0.007,
+     "central": -0.0048,
+     "high": -0.0022
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "correction_total": {
+    "low": -0.0071,
+    "central": -0.0049,
+    "high": -0.0023
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "ITA": {
+   "kiel_name": "Italy",
+   "military_recorded": {
+    "2022": 0.5718,
+    "2023": 1.2994,
+    "2024": 0.5595,
+    "2025": 0.5692,
+    "2026": 0.0
+   },
+   "military_recorded_total": 2.9999,
+   "split_total": {
+    "stock": 1.3303,
+    "procurement": 0.0,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 1.6697,
+    "unknown_month_spread": 1.2967
+   },
+   "factor": {
+    "2022": {
+     "low": 0.397,
+     "central": 0.647,
+     "high": 0.948
+    },
+    "2023": {
+     "low": 0.552,
+     "central": 0.809,
+     "high": 1.104
+    },
+    "2024": {
+     "low": 0.5,
+     "central": 0.75,
+     "high": 1.0
+    },
+    "2025": {
+     "low": 0.481,
+     "central": 0.725,
+     "high": 0.975
+    },
+    "2026": {
+     "low": null,
+     "central": null,
+     "high": null
+    }
+   },
+   "factor_total": {
+    "low": 0.499,
+    "central": 0.751,
+    "high": 1.031
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.2272,
+     "central": 0.3701,
+     "high": 0.5423
+    },
+    "2023": {
+     "low": 0.7173,
+     "central": 1.0506,
+     "high": 1.4347
+    },
+    "2024": {
+     "low": 0.2797,
+     "central": 0.4196,
+     "high": 0.5595
+    },
+    "2025": {
+     "low": 0.274,
+     "central": 0.4127,
+     "high": 0.555
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "military_market_value_total": {
+    "low": 1.4982,
+    "central": 2.253,
+    "high": 3.0915
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.3446,
+     "central": -0.2017,
+     "high": -0.0295
+    },
+    "2023": {
+     "low": -0.5821,
+     "central": -0.2488,
+     "high": 0.1353
+    },
+    "2024": {
+     "low": -0.2798,
+     "central": -0.1399,
+     "high": 0.0
+    },
+    "2025": {
+     "low": -0.2952,
+     "central": -0.1565,
+     "high": -0.0142
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "correction_total": {
+    "low": -1.5017,
+    "central": -0.7469,
+    "high": 0.0916
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "in_kind_share": "Classified decrees; Kiel estimates from SAMP/T, FH70, M109L, Lince, M113 and others.",
+   "valuation_basis": "Mostly Kiel prices and undisclosed values.",
+   "reasoning": "SAMP/T x0.75, other default; certainty D."
+  },
+  "JPN": {
+   "kiel_name": "Japan",
+   "military_recorded": {
+    "2022": 0.0,
+    "2023": 0.028,
+    "2024": 0.0351,
+    "2025": 0.0,
+    "2026": 0.0126
+   },
+   "military_recorded_total": 0.0757,
+   "split_total": {
+    "stock": 0.0137,
+    "procurement": 0.0,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.062,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2023": {
+     "low": 0.359,
+     "central": 0.567,
+     "high": 0.826
+    },
+    "2024": {
+     "low": 0.45,
+     "central": 0.75,
+     "high": 1.1
+    },
+    "2025": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2026": {
+     "low": 0.35,
+     "central": 0.55,
+     "high": 0.8
+    }
+   },
+   "factor_total": {
+    "low": 0.399,
+    "central": 0.649,
+    "high": 0.947
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.01,
+     "central": 0.0159,
+     "high": 0.0231
+    },
+    "2024": {
+     "low": 0.0158,
+     "central": 0.0263,
+     "high": 0.0386
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0044,
+     "central": 0.0069,
+     "high": 0.01
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.0302,
+    "central": 0.0491,
+    "high": 0.0717
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": -0.018,
+     "central": -0.0121,
+     "high": -0.0049
+    },
+    "2024": {
+     "low": -0.0193,
+     "central": -0.0088,
+     "high": 0.0035
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": -0.0082,
+     "central": -0.0057,
+     "high": -0.0026
+    }
+   },
+   "correction_total": {
+    "low": -0.0455,
+    "central": -0.0266,
+    "high": -0.004
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "LVA": {
+   "kiel_name": "Latvia",
+   "military_recorded": {
+    "2022": 0.2967,
+    "2023": 0.0826,
+    "2024": 0.1121,
+    "2025": 0.0936,
+    "2026": 0.0673
+   },
+   "military_recorded_total": 0.6523,
+   "split_total": {
+    "stock": 0.4295,
+    "procurement": 0.1922,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.0306,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.251,
+     "central": 0.402,
+     "high": 0.657
+    },
+    "2023": {
+     "low": 0.351,
+     "central": 0.536,
+     "high": 0.815
+    },
+    "2024": {
+     "low": 0.557,
+     "central": 0.64,
+     "high": 0.779
+    },
+    "2025": {
+     "low": 0.949,
+     "central": 0.965,
+     "high": 0.984
+    },
+    "2026": {
+     "low": 0.834,
+     "central": 0.885,
+     "high": 0.949
+    }
+   },
+   "factor_total": {
+    "low": 0.476,
+    "central": 0.591,
+    "high": 0.775
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0745,
+     "central": 0.1193,
+     "high": 0.195
+    },
+    "2023": {
+     "low": 0.029,
+     "central": 0.0443,
+     "high": 0.0673
+    },
+    "2024": {
+     "low": 0.0624,
+     "central": 0.0718,
+     "high": 0.0873
+    },
+    "2025": {
+     "low": 0.0888,
+     "central": 0.0903,
+     "high": 0.0921
+    },
+    "2026": {
+     "low": 0.0561,
+     "central": 0.0596,
+     "high": 0.0639
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.3108,
+    "central": 0.3853,
+    "high": 0.5056
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.2222,
+     "central": -0.1774,
+     "high": -0.1017
+    },
+    "2023": {
+     "low": -0.0536,
+     "central": -0.0383,
+     "high": -0.0153
+    },
+    "2024": {
+     "low": -0.0497,
+     "central": -0.0403,
+     "high": -0.0248
+    },
+    "2025": {
+     "low": -0.0048,
+     "central": -0.0033,
+     "high": -0.0015
+    },
+    "2026": {
+     "low": -0.0112,
+     "central": -0.0077,
+     "high": -0.0034
+    }
+   },
+   "correction_total": {
+    "low": -0.3415,
+    "central": -0.267,
+    "high": -0.1467
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "Mostly stock (Stinger, M109, Mi-17, M113).",
+   "valuation_basis": "Claimed 99% of new price at the EPF (Politico).",
+   "reasoning": "R-basis; Stinger and helicopters overridden."
+  },
+  "LTU": {
+   "kiel_name": "Lithuania",
+   "military_recorded": {
+    "2022": 0.3735,
+    "2023": 0.3069,
+    "2024": 0.2366,
+    "2025": 0.224,
+    "2026": 0.068
+   },
+   "military_recorded_total": 1.209,
+   "split_total": {
+    "stock": 0.39,
+    "procurement": 0.2877,
+    "procurement_and_stock_mixed": 0.0545,
+    "source_unspecified": 0.4767,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.429,
+     "central": 0.55,
+     "high": 0.746
+    },
+    "2023": {
+     "low": 0.558,
+     "central": 0.648,
+     "high": 0.79
+    },
+    "2024": {
+     "low": 0.691,
+     "central": 0.749,
+     "high": 0.845
+    },
+    "2025": {
+     "low": 0.689,
+     "central": 0.784,
+     "high": 0.904
+    },
+    "2026": {
+     "low": 0.568,
+     "central": 0.663,
+     "high": 0.809
+    }
+   },
+   "factor_total": {
+    "low": 0.569,
+    "central": 0.663,
+    "high": 0.809
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.1601,
+     "central": 0.2054,
+     "high": 0.2787
+    },
+    "2023": {
+     "low": 0.1712,
+     "central": 0.1987,
+     "high": 0.2423
+    },
+    "2024": {
+     "low": 0.1634,
+     "central": 0.1771,
+     "high": 0.2
+    },
+    "2025": {
+     "low": 0.1543,
+     "central": 0.1757,
+     "high": 0.2025
+    },
+    "2026": {
+     "low": 0.0386,
+     "central": 0.0451,
+     "high": 0.055
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.6876,
+    "central": 0.802,
+    "high": 0.9785
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.2134,
+     "central": -0.1681,
+     "high": -0.0948
+    },
+    "2023": {
+     "low": -0.1357,
+     "central": -0.1082,
+     "high": -0.0646
+    },
+    "2024": {
+     "low": -0.0732,
+     "central": -0.0595,
+     "high": -0.0366
+    },
+    "2025": {
+     "low": -0.0697,
+     "central": -0.0483,
+     "high": -0.0215
+    },
+    "2026": {
+     "low": -0.0294,
+     "central": -0.0229,
+     "high": -0.013
+    }
+   },
+   "correction_total": {
+    "low": -0.5214,
+    "central": -0.407,
+    "high": -0.2305
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "Mixed stock/procurement.",
+   "valuation_basis": "Claimed 93% of new price at the EPF (Politico).",
+   "reasoning": "R-basis factors."
+  },
+  "LUX": {
+   "kiel_name": "Luxembourg",
+   "military_recorded": {
+    "2022": 0.075,
+    "2023": 0.0485,
+    "2024": 0.0457,
+    "2025": 0.0435,
+    "2026": 0.026
+   },
+   "military_recorded_total": 0.2387,
+   "split_total": {
+    "stock": 0.1317,
+    "procurement": 0.0591,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.0479,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.287,
+     "central": 0.425,
+     "high": 0.654
+    },
+    "2023": {
+     "low": 0.908,
+     "central": 0.934,
+     "high": 0.967
+    },
+    "2024": {
+     "low": 0.755,
+     "central": 0.895,
+     "high": 1.0
+    },
+    "2025": {
+     "low": 0.516,
+     "central": 0.665,
+     "high": 0.851
+    },
+    "2026": {
+     "low": 0.35,
+     "central": 0.55,
+     "high": 0.8
+    }
+   },
+   "factor_total": {
+    "low": 0.551,
+    "central": 0.675,
+    "high": 0.835
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0215,
+     "central": 0.0318,
+     "high": 0.049
+    },
+    "2023": {
+     "low": 0.044,
+     "central": 0.0453,
+     "high": 0.0469
+    },
+    "2024": {
+     "low": 0.0345,
+     "central": 0.0409,
+     "high": 0.0457
+    },
+    "2025": {
+     "low": 0.0224,
+     "central": 0.0289,
+     "high": 0.037
+    },
+    "2026": {
+     "low": 0.0091,
+     "central": 0.0143,
+     "high": 0.0208
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.1315,
+    "central": 0.1612,
+    "high": 0.1994
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0535,
+     "central": -0.0432,
+     "high": -0.026
+    },
+    "2023": {
+     "low": -0.0045,
+     "central": -0.0032,
+     "high": -0.0016
+    },
+    "2024": {
+     "low": -0.0112,
+     "central": -0.0048,
+     "high": 0.0
+    },
+    "2025": {
+     "low": -0.0211,
+     "central": -0.0146,
+     "high": -0.0065
+    },
+    "2026": {
+     "low": -0.0169,
+     "central": -0.0117,
+     "high": -0.0052
+    }
+   },
+   "correction_total": {
+    "low": -0.1072,
+    "central": -0.0775,
+    "high": -0.0393
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "NLD": {
+   "kiel_name": "Netherlands",
+   "military_recorded": {
+    "2022": 1.0963,
+    "2023": 2.4608,
+    "2024": 2.5152,
+    "2025": 2.5344,
+    "2026": 0.7508
+   },
+   "military_recorded_total": 9.3575,
+   "split_total": {
+    "stock": 3.2605,
+    "procurement": 4.0871,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 2.0098,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.602,
+     "central": 0.798,
+     "high": 1.036
+    },
+    "2023": {
+     "low": 0.652,
+     "central": 0.74,
+     "high": 0.875
+    },
+    "2024": {
+     "low": 0.833,
+     "central": 0.901,
+     "high": 0.987
+    },
+    "2025": {
+     "low": 0.828,
+     "central": 0.935,
+     "high": 1.086
+    },
+    "2026": {
+     "low": 0.866,
+     "central": 0.95,
+     "high": 1.067
+    }
+   },
+   "factor_total": {
+    "low": 0.76,
+    "central": 0.86,
+    "high": 0.996
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.6602,
+     "central": 0.8747,
+     "high": 1.1353
+    },
+    "2023": {
+     "low": 1.6037,
+     "central": 1.822,
+     "high": 2.1533
+    },
+    "2024": {
+     "low": 2.0951,
+     "central": 2.2655,
+     "high": 2.4815
+    },
+    "2025": {
+     "low": 2.098,
+     "central": 2.3707,
+     "high": 2.7525
+    },
+    "2026": {
+     "low": 0.6503,
+     "central": 0.7131,
+     "high": 0.801
+    }
+   },
+   "military_market_value_total": {
+    "low": 7.1073,
+    "central": 8.046,
+    "high": 9.3236
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.4361,
+     "central": -0.2216,
+     "high": 0.039
+    },
+    "2023": {
+     "low": -0.8571,
+     "central": -0.6388,
+     "high": -0.3075
+    },
+    "2024": {
+     "low": -0.4201,
+     "central": -0.2497,
+     "high": -0.0337
+    },
+    "2025": {
+     "low": -0.4364,
+     "central": -0.1637,
+     "high": 0.2181
+    },
+    "2026": {
+     "low": -0.1005,
+     "central": -0.0377,
+     "high": 0.0502
+    }
+   },
+   "correction_total": {
+    "low": -2.2502,
+    "central": -1.3115,
+    "high": -0.0339
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "About 45% from stocks (F-16, PzH2000, Patriot, YPR-765), rest procurement (refurbished T-72s, Leopard 1, ammunition).",
+   "valuation_basis": "Dutch official estimate matched Kiel's price-based estimate within 10% (Kiel 2024 research note), so treated as Kiel-price basis.",
+   "reasoning": "F-16AM/BM recorded at ~USD 41m (new-built proxy) vs used F-16 ~EUR 12m incl. upgrade and support (Norway-Romania 2022) x0.30; PzH2000 x0.45."
+  },
+  "NZL": {
+   "kiel_name": "New Zealand",
+   "military_recorded": {
+    "2022": 0.0168,
+    "2023": 0.0004,
+    "2024": 0.007,
+    "2025": 0.0116,
+    "2026": 0.0
+   },
+   "military_recorded_total": 0.0358,
+   "split_total": {
+    "stock": 0.0105,
+    "procurement": 0.0194,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.0059,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.869,
+     "central": 0.94,
+     "high": 1.024
+    },
+    "2023": {
+     "low": 1.0,
+     "central": 1.0,
+     "high": 1.0
+    },
+    "2024": {
+     "low": 0.897,
+     "central": 0.935,
+     "high": 0.981
+    },
+    "2025": {
+     "low": 0.585,
+     "central": 0.712,
+     "high": 0.872
+    },
+    "2026": {
+     "low": null,
+     "central": null,
+     "high": null
+    }
+   },
+   "factor_total": {
+    "low": 0.785,
+    "central": 0.869,
+    "high": 0.966
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0146,
+     "central": 0.0158,
+     "high": 0.0172
+    },
+    "2023": {
+     "low": 0.0004,
+     "central": 0.0004,
+     "high": 0.0004
+    },
+    "2024": {
+     "low": 0.0063,
+     "central": 0.0066,
+     "high": 0.0069
+    },
+    "2025": {
+     "low": 0.0068,
+     "central": 0.0083,
+     "high": 0.0101
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.0281,
+    "central": 0.0311,
+    "high": 0.0346
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0022,
+     "central": -0.001,
+     "high": 0.0004
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": -0.0007,
+     "central": -0.0004,
+     "high": -0.0001
+    },
+    "2025": {
+     "low": -0.0048,
+     "central": -0.0033,
+     "high": -0.0015
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "correction_total": {
+    "low": -0.0077,
+    "central": -0.0047,
+    "high": -0.0012
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "NOR": {
+   "kiel_name": "Norway",
+   "military_recorded": {
+    "2022": 0.4576,
+    "2023": 0.3123,
+    "2024": 1.2243,
+    "2025": 3.6408,
+    "2026": 1.8256
+   },
+   "military_recorded_total": 7.4606,
+   "split_total": {
+    "stock": 2.1273,
+    "procurement": 3.9683,
+    "procurement_and_stock_mixed": 0.2547,
+    "source_unspecified": 1.1104,
+    "unknown_month_spread": 0.0248
+   },
+   "factor": {
+    "2022": {
+     "low": 0.867,
+     "central": 0.982,
+     "high": 1.154
+    },
+    "2023": {
+     "low": 0.529,
+     "central": 0.715,
+     "high": 0.989
+    },
+    "2024": {
+     "low": 0.733,
+     "central": 0.785,
+     "high": 0.856
+    },
+    "2025": {
+     "low": 0.872,
+     "central": 0.911,
+     "high": 0.961
+    },
+    "2026": {
+     "low": 0.67,
+     "central": 0.794,
+     "high": 0.935
+    }
+   },
+   "factor_total": {
+    "low": 0.785,
+    "central": 0.858,
+    "high": 0.95
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.3968,
+     "central": 0.4493,
+     "high": 0.5279
+    },
+    "2023": {
+     "low": 0.1652,
+     "central": 0.2233,
+     "high": 0.3087
+    },
+    "2024": {
+     "low": 0.8969,
+     "central": 0.9613,
+     "high": 1.0476
+    },
+    "2025": {
+     "low": 3.1748,
+     "central": 3.3182,
+     "high": 3.4974
+    },
+    "2026": {
+     "low": 1.2229,
+     "central": 1.4498,
+     "high": 1.7065
+    }
+   },
+   "military_market_value_total": {
+    "low": 5.8566,
+    "central": 6.4019,
+    "high": 7.0881
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0608,
+     "central": -0.0083,
+     "high": 0.0703
+    },
+    "2023": {
+     "low": -0.1471,
+     "central": -0.089,
+     "high": -0.0036
+    },
+    "2024": {
+     "low": -0.3274,
+     "central": -0.263,
+     "high": -0.1767
+    },
+    "2025": {
+     "low": -0.466,
+     "central": -0.3226,
+     "high": -0.1434
+    },
+    "2026": {
+     "low": -0.6027,
+     "central": -0.3758,
+     "high": -0.1191
+    }
+   },
+   "correction_total": {
+    "low": -1.604,
+    "central": -1.0587,
+    "high": -0.3725
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "About 35% from stocks (M109A3GN, F-16, NASAMS units, M113), most later aid via procurement (Nansen programme).",
+   "valuation_basis": "Assumed replacement basis (Nansen funds also replace donated materiel); not documented item by item.",
+   "reasoning": "Default R-basis factors; F-16 x0.30."
+  },
+  "POL": {
+   "kiel_name": "Poland",
+   "military_recorded": {
+    "2022": 1.8343,
+    "2023": 1.4892,
+    "2024": 0.5263,
+    "2025": 0.3108,
+    "2026": 0.2912
+   },
+   "military_recorded_total": 4.4518,
+   "split_total": {
+    "stock": 1.3458,
+    "procurement": 0.7894,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 2.3166,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.458,
+     "central": 0.586,
+     "high": 0.809
+    },
+    "2023": {
+     "low": 0.3,
+     "central": 0.465,
+     "high": 0.753
+    },
+    "2024": {
+     "low": 1.0,
+     "central": 1.0,
+     "high": 1.0
+    },
+    "2025": {
+     "low": 0.524,
+     "central": 0.671,
+     "high": 0.854
+    },
+    "2026": {
+     "low": 0.472,
+     "central": 0.598,
+     "high": 0.815
+    }
+   },
+   "factor_total": {
+    "low": 0.475,
+    "central": 0.601,
+    "high": 0.816
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.8408,
+     "central": 1.0746,
+     "high": 1.4837
+    },
+    "2023": {
+     "low": 0.447,
+     "central": 0.6923,
+     "high": 1.1214
+    },
+    "2024": {
+     "low": 0.5263,
+     "central": 0.5263,
+     "high": 0.5263
+    },
+    "2025": {
+     "low": 0.163,
+     "central": 0.2085,
+     "high": 0.2653
+    },
+    "2026": {
+     "low": 0.1375,
+     "central": 0.1742,
+     "high": 0.2373
+    }
+   },
+   "military_market_value_total": {
+    "low": 2.1146,
+    "central": 2.6759,
+    "high": 3.634
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.9935,
+     "central": -0.7597,
+     "high": -0.3506
+    },
+    "2023": {
+     "low": -1.0422,
+     "central": -0.7969,
+     "high": -0.3678
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": -0.1478,
+     "central": -0.1023,
+     "high": -0.0455
+    },
+    "2026": {
+     "low": -0.1537,
+     "central": -0.117,
+     "high": -0.0539
+    }
+   },
+   "correction_total": {
+    "low": -2.3372,
+    "central": -1.7759,
+    "high": -0.8178
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "Mostly 2022-23 Soviet-era stock (T-72M1, PT-91, MiG-29, 2S1, BMP-1), little later.",
+   "valuation_basis": "Polish government totals (no item values) plus Kiel prices for heavy weapons: MiG-29 at USD 32m (post-2000 contracts), PT-91 at USD 3.3m (new export price).",
+   "reasoning": "Old Soviet airframes and tanks are worth a fraction of those prices: MiG-29 x0.12 (Germany sold 22 MiG-29 to Poland for EUR 1 each in 2003), PT-91 x0.25, other Soviet equipment x0.35."
+  },
+  "PRT": {
+   "kiel_name": "Portugal",
+   "military_recorded": {
+    "2022": 0.0414,
+    "2023": 0.0328,
+    "2024": 0.2274,
+    "2025": 0.0805,
+    "2026": 0.0
+   },
+   "military_recorded_total": 0.3821,
+   "split_total": {
+    "stock": 0.122,
+    "procurement": 0.01,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.2501,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.171,
+     "central": 0.369,
+     "high": 0.716
+    },
+    "2023": {
+     "low": 0.439,
+     "central": 0.724,
+     "high": 1.072
+    },
+    "2024": {
+     "low": 0.367,
+     "central": 0.573,
+     "high": 0.857
+    },
+    "2025": {
+     "low": 0.443,
+     "central": 0.615,
+     "high": 0.829
+    },
+    "2026": {
+     "low": null,
+     "central": null,
+     "high": null
+    }
+   },
+   "factor_total": {
+    "low": 0.368,
+    "central": 0.573,
+    "high": 0.854
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0071,
+     "central": 0.0153,
+     "high": 0.0297
+    },
+    "2023": {
+     "low": 0.0144,
+     "central": 0.0238,
+     "high": 0.0352
+    },
+    "2024": {
+     "low": 0.0835,
+     "central": 0.1303,
+     "high": 0.1949
+    },
+    "2025": {
+     "low": 0.0357,
+     "central": 0.0495,
+     "high": 0.0667
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.1407,
+    "central": 0.2189,
+    "high": 0.3265
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0343,
+     "central": -0.0261,
+     "high": -0.0117
+    },
+    "2023": {
+     "low": -0.0184,
+     "central": -0.009,
+     "high": 0.0024
+    },
+    "2024": {
+     "low": -0.1439,
+     "central": -0.0971,
+     "high": -0.0325
+    },
+    "2025": {
+     "low": -0.0448,
+     "central": -0.031,
+     "high": -0.0138
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "correction_total": {
+    "low": -0.2414,
+    "central": -0.1632,
+    "high": -0.0556
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "KOR": {
+   "kiel_name": "South Korea",
+   "military_recorded": {
+    "2022": 0.0033,
+    "2023": 0.0,
+    "2024": 0.0112,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "military_recorded_total": 0.0145,
+   "split_total": {
+    "stock": 0.0,
+    "procurement": 0.0112,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.0033,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 1.0,
+     "central": 1.0,
+     "high": 1.0
+    },
+    "2023": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2024": {
+     "low": 1.0,
+     "central": 1.0,
+     "high": 1.0
+    },
+    "2025": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2026": {
+     "low": null,
+     "central": null,
+     "high": null
+    }
+   },
+   "factor_total": {
+    "low": 1.0,
+    "central": 1.0,
+    "high": 1.0
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0033,
+     "central": 0.0033,
+     "high": 0.0033
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0112,
+     "central": 0.0112,
+     "high": 0.0112
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.0145,
+    "central": 0.0145,
+    "high": 0.0145
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "correction_total": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "direction": "raises aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "ROU": {
+   "kiel_name": "Romania",
+   "military_recorded": {
+    "2022": 0.0034,
+    "2023": 0.0008,
+    "2024": 0.3602,
+    "2025": 0.05,
+    "2026": 0.0
+   },
+   "military_recorded_total": 0.4144,
+   "split_total": {
+    "stock": 0.4102,
+    "procurement": 0.0012,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.003,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.545,
+     "central": 0.759,
+     "high": 0.979
+    },
+    "2023": {
+     "low": 1.0,
+     "central": 1.0,
+     "high": 1.0
+    },
+    "2024": {
+     "low": 0.5,
+     "central": 0.75,
+     "high": 1.0
+    },
+    "2025": {
+     "low": 0.35,
+     "central": 0.55,
+     "high": 0.8
+    },
+    "2026": {
+     "low": null,
+     "central": null,
+     "high": null
+    }
+   },
+   "factor_total": {
+    "low": 0.483,
+    "central": 0.726,
+    "high": 0.976
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0019,
+     "central": 0.0026,
+     "high": 0.0033
+    },
+    "2023": {
+     "low": 0.0008,
+     "central": 0.0008,
+     "high": 0.0008
+    },
+    "2024": {
+     "low": 0.1801,
+     "central": 0.2701,
+     "high": 0.3602
+    },
+    "2025": {
+     "low": 0.0175,
+     "central": 0.0275,
+     "high": 0.04
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.2003,
+    "central": 0.301,
+    "high": 0.4043
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0015,
+     "central": -0.0008,
+     "high": -0.0001
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": -0.1801,
+     "central": -0.0901,
+     "high": 0.0
+    },
+    "2025": {
+     "low": -0.0325,
+     "central": -0.0225,
+     "high": -0.01
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "correction_total": {
+    "low": -0.2141,
+    "central": -0.1134,
+    "high": -0.0101
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "SVK": {
+   "kiel_name": "Slovakia",
+   "military_recorded": {
+    "2022": 0.2152,
+    "2023": 0.4813,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "military_recorded_total": 0.6965,
+   "split_total": {
+    "stock": 0.6906,
+    "procurement": 0.0,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.0059,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.603,
+     "central": 0.917,
+     "high": 1.605
+    },
+    "2023": {
+     "low": 0.055,
+     "central": 0.128,
+     "high": 0.314
+    },
+    "2024": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2025": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2026": {
+     "low": null,
+     "central": null,
+     "high": null
+    }
+   },
+   "factor_total": {
+    "low": 0.224,
+    "central": 0.372,
+    "high": 0.713
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.1297,
+     "central": 0.1973,
+     "high": 0.3453
+    },
+    "2023": {
+     "low": 0.0266,
+     "central": 0.0617,
+     "high": 0.1512
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.1563,
+    "central": 0.259,
+    "high": 0.4965
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0855,
+     "central": -0.0179,
+     "high": 0.1301
+    },
+    "2023": {
+     "low": -0.4547,
+     "central": -0.4196,
+     "high": -0.3301
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "correction_total": {
+    "low": -0.5402,
+    "central": -0.4375,
+    "high": -0.2
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "Almost all from stocks in 2022-23: S-300, 13 MiG-29, Kub, BMP-1, Mi-17, ammunition.",
+   "valuation_basis": "Slovak NKÚ audit used book/residual value (S-300 residual EUR 69m; MiG-29 and Kub ~EUR 0.5bn book); Kiel prices MiG-29 at USD 32m and S-300 at USD 209m.",
+   "reasoning": "Prosecutor called the ~40-year-old jets nearly worthless (non-operational, no missiles); MiG-29 x0.12, other Soviet equipment x0.35."
+  },
+  "SVN": {
+   "kiel_name": "Slovenia",
+   "military_recorded": {
+    "2022": 0.0567,
+    "2023": 0.0,
+    "2024": 0.0011,
+    "2025": 0.048,
+    "2026": 0.0536
+   },
+   "military_recorded_total": 0.1594,
+   "split_total": {
+    "stock": 0.1542,
+    "procurement": 0.001,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.0042,
+    "unknown_month_spread": 0.0165
+   },
+   "factor": {
+    "2022": {
+     "low": 0.15,
+     "central": 0.35,
+     "high": 0.7
+    },
+    "2023": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2024": {
+     "low": 1.0,
+     "central": 1.0,
+     "high": 1.0
+    },
+    "2025": {
+     "low": 0.35,
+     "central": 0.55,
+     "high": 0.8
+    },
+    "2026": {
+     "low": 0.35,
+     "central": 0.55,
+     "high": 0.8
+    }
+   },
+   "factor_total": {
+    "low": 0.284,
+    "central": 0.482,
+    "high": 0.766
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0085,
+     "central": 0.0199,
+     "high": 0.0397
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0011,
+     "central": 0.0011,
+     "high": 0.0011
+    },
+    "2025": {
+     "low": 0.0168,
+     "central": 0.0264,
+     "high": 0.0384
+    },
+    "2026": {
+     "low": 0.0188,
+     "central": 0.0295,
+     "high": 0.0429
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.0452,
+    "central": 0.0769,
+    "high": 0.1221
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0482,
+     "central": -0.0368,
+     "high": -0.017
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": -0.0312,
+     "central": -0.0216,
+     "high": -0.0096
+    },
+    "2026": {
+     "low": -0.0348,
+     "central": -0.0241,
+     "high": -0.0107
+    }
+   },
+   "correction_total": {
+    "low": -0.1142,
+    "central": -0.0825,
+    "high": -0.0373
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "ESP": {
+   "kiel_name": "Spain",
+   "military_recorded": {
+    "2022": 0.5221,
+    "2023": 0.1928,
+    "2024": 0.0748,
+    "2025": 0.615,
+    "2026": 0.1024
+   },
+   "military_recorded_total": 1.5071,
+   "split_total": {
+    "stock": 0.8517,
+    "procurement": 0.215,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.4404,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.369,
+     "central": 0.568,
+     "high": 0.808
+    },
+    "2023": {
+     "low": 0.325,
+     "central": 0.488,
+     "high": 0.742
+    },
+    "2024": {
+     "low": 0.559,
+     "central": 0.789,
+     "high": 1.187
+    },
+    "2025": {
+     "low": 0.641,
+     "central": 0.752,
+     "high": 0.89
+    },
+    "2026": {
+     "low": 0.476,
+     "central": 0.651,
+     "high": 0.863
+    }
+   },
+   "factor_total": {
+    "low": 0.491,
+    "central": 0.649,
+    "high": 0.855
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.1928,
+     "central": 0.2964,
+     "high": 0.422
+    },
+    "2023": {
+     "low": 0.0626,
+     "central": 0.0941,
+     "high": 0.143
+    },
+    "2024": {
+     "low": 0.0418,
+     "central": 0.059,
+     "high": 0.0888
+    },
+    "2025": {
+     "low": 0.3943,
+     "central": 0.4622,
+     "high": 0.5471
+    },
+    "2026": {
+     "low": 0.0488,
+     "central": 0.0667,
+     "high": 0.0884
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.7403,
+    "central": 0.9784,
+    "high": 1.2893
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.3293,
+     "central": -0.2257,
+     "high": -0.1001
+    },
+    "2023": {
+     "low": -0.1302,
+     "central": -0.0987,
+     "high": -0.0498
+    },
+    "2024": {
+     "low": -0.033,
+     "central": -0.0158,
+     "high": 0.014
+    },
+    "2025": {
+     "low": -0.2207,
+     "central": -0.1528,
+     "high": -0.0679
+    },
+    "2026": {
+     "low": -0.0536,
+     "central": -0.0357,
+     "high": -0.014
+    }
+   },
+   "correction_total": {
+    "low": -0.7668,
+    "central": -0.5287,
+    "high": -0.2178
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "in_kind_share": "Stock: Leopard 2A4 (refurbished from storage), M113, HAWK, Aspide, ammunition.",
+   "valuation_basis": "Assumed replacement; Kiel prices for part.",
+   "reasoning": "HAWK x0.25."
+  },
+  "SWE": {
+   "kiel_name": "Sweden",
+   "military_recorded": {
+    "2022": 0.5483,
+    "2023": 1.4711,
+    "2024": 2.2078,
+    "2025": 3.7114,
+    "2026": 1.336
+   },
+   "military_recorded_total": 9.2746,
+   "split_total": {
+    "stock": 4.3081,
+    "procurement": 3.9269,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 1.0397,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.565,
+     "central": 0.824,
+     "high": 1.276
+    },
+    "2023": {
+     "low": 0.276,
+     "central": 0.391,
+     "high": 0.537
+    },
+    "2024": {
+     "low": 0.457,
+     "central": 0.595,
+     "high": 0.789
+    },
+    "2025": {
+     "low": 0.902,
+     "central": 0.928,
+     "high": 0.964
+    },
+    "2026": {
+     "low": 0.688,
+     "central": 0.784,
+     "high": 0.904
+    }
+   },
+   "factor_total": {
+    "low": 0.646,
+    "central": 0.737,
+    "high": 0.864
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.3095,
+     "central": 0.4518,
+     "high": 0.6995
+    },
+    "2023": {
+     "low": 0.4065,
+     "central": 0.5753,
+     "high": 0.7901
+    },
+    "2024": {
+     "low": 1.0079,
+     "central": 1.3129,
+     "high": 1.7412
+    },
+    "2025": {
+     "low": 3.3468,
+     "central": 3.444,
+     "high": 3.5777
+    },
+    "2026": {
+     "low": 0.9186,
+     "central": 1.0471,
+     "high": 1.2076
+    }
+   },
+   "military_market_value_total": {
+    "low": 5.9893,
+    "central": 6.8311,
+    "high": 8.0161
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.2388,
+     "central": -0.0965,
+     "high": 0.1512
+    },
+    "2023": {
+     "low": -1.0646,
+     "central": -0.8958,
+     "high": -0.681
+    },
+    "2024": {
+     "low": -1.1999,
+     "central": -0.8949,
+     "high": -0.4666
+    },
+    "2025": {
+     "low": -0.3646,
+     "central": -0.2674,
+     "high": -0.1337
+    },
+    "2026": {
+     "low": -0.4174,
+     "central": -0.2889,
+     "high": -0.1284
+    }
+   },
+   "correction_total": {
+    "low": -3.2853,
+    "central": -2.4435,
+    "high": -1.2585
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "C",
+   "in_kind_share": "47% of Swedish military aid is from Armed Forces stocks (CV90, Strv 122, Archer, ASC 890, RBS 70), recent packages mostly new production.",
+   "valuation_basis": "Package values include the funds the Armed Forces get for replacement procurement (government package texts); in 2022 Sweden claimed only ~26% of new purchase price at the EPF (Politico).",
+   "reasoning": "Replacement basis: Strv 122 recorded at ~EUR 60m per tank (= new Leopard 2A8 replacement) vs used value ~EUR 3-6m; CV9040 x0.35; ASC 890 x0.4."
+  },
+  "TUR": {
+   "kiel_name": "Turkiye",
+   "military_recorded": {
+    "2022": 0.0662,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "military_recorded_total": 0.0662,
+   "split_total": {
+    "stock": 0.0662,
+    "procurement": 0.0,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 0.0,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.45,
+     "central": 0.75,
+     "high": 1.1
+    },
+    "2023": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2024": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2025": {
+     "low": null,
+     "central": null,
+     "high": null
+    },
+    "2026": {
+     "low": null,
+     "central": null,
+     "high": null
+    }
+   },
+   "factor_total": {
+    "low": 0.45,
+    "central": 0.751,
+    "high": 1.101
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 0.0298,
+     "central": 0.0497,
+     "high": 0.0729
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "military_market_value_total": {
+    "low": 0.0298,
+    "central": 0.0497,
+    "high": 0.0729
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -0.0364,
+     "central": -0.0165,
+     "high": 0.0067
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "correction_total": {
+    "low": -0.0364,
+    "central": -0.0165,
+    "high": 0.0067
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "D",
+   "reasoning": "Small donor: default factors by item class, assumed replacement-cost basis for donor-reported stock values (certainty D)."
+  },
+  "GBR": {
+   "kiel_name": "United Kingdom",
+   "military_recorded": {
+    "2022": 3.593,
+    "2023": 2.5775,
+    "2024": 2.6662,
+    "2025": 5.4401,
+    "2026": 1.9071
+   },
+   "military_recorded_total": 16.1839,
+   "split_total": {
+    "stock": 5.9512,
+    "procurement": 8.5593,
+    "procurement_and_stock_mixed": 0.0,
+    "source_unspecified": 1.6733,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.546,
+     "central": 0.66,
+     "high": 0.801
+    },
+    "2023": {
+     "low": 0.661,
+     "central": 0.746,
+     "high": 0.852
+    },
+    "2024": {
+     "low": 0.73,
+     "central": 0.799,
+     "high": 0.896
+    },
+    "2025": {
+     "low": 0.975,
+     "central": 0.982,
+     "high": 0.99
+    },
+    "2026": {
+     "low": 0.883,
+     "central": 0.919,
+     "high": 0.964
+    }
+   },
+   "factor_total": {
+    "low": 0.779,
+    "central": 0.835,
+    "high": 0.908
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 1.9627,
+     "central": 2.3703,
+     "high": 2.8798
+    },
+    "2023": {
+     "low": 1.7048,
+     "central": 1.923,
+     "high": 2.1957
+    },
+    "2024": {
+     "low": 1.9465,
+     "central": 2.1307,
+     "high": 2.3898
+    },
+    "2025": {
+     "low": 5.3063,
+     "central": 5.3402,
+     "high": 5.3837
+    },
+    "2026": {
+     "low": 1.6842,
+     "central": 1.7528,
+     "high": 1.8385
+    }
+   },
+   "military_market_value_total": {
+    "low": 12.6045,
+    "central": 13.517,
+    "high": 14.6875
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -1.6303,
+     "central": -1.2227,
+     "high": -0.7132
+    },
+    "2023": {
+     "low": -0.8727,
+     "central": -0.6545,
+     "high": -0.3818
+    },
+    "2024": {
+     "low": -0.7197,
+     "central": -0.5355,
+     "high": -0.2764
+    },
+    "2025": {
+     "low": -0.1338,
+     "central": -0.0999,
+     "high": -0.0564
+    },
+    "2026": {
+     "low": -0.2229,
+     "central": -0.1543,
+     "high": -0.0686
+    }
+   },
+   "correction_total": {
+    "low": -3.5794,
+    "central": -2.6669,
+    "high": -1.4964
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "B",
+   "in_kind_share": "About 37% of coded UK military aid is from stocks (mostly 2022-23), the rest procurement and IFU contributions.",
+   "valuation_basis": "UK budget figures include the REPLACEMENT cost of donated stock (NAO Sept 2024): stock donated to Mar 2024 had a book value of GBP 171.5m but a replacement cost of GBP 2.71bn.",
+   "reasoning": "Calibrated to NAO: EUR 3.15bn of 2022-Q1 2024 stock treated as replacement-valued with market/replacement 0.20/0.40/0.65 (missiles near replacement, retired vehicles, AS-90, Challenger 2 near scrap-to-used values)."
+  },
+  "USA": {
+   "kiel_name": "United States",
+   "military_recorded": {
+    "2022": 20.8821,
+    "2023": 23.1109,
+    "2024": 20.141,
+    "2025": 0.4829,
+    "2026": 0.0
+   },
+   "military_recorded_total": 64.6169,
+   "split_total": {
+    "stock": 33.7858,
+    "procurement": 24.5152,
+    "procurement_and_stock_mixed": 0.1286,
+    "source_unspecified": 6.1873,
+    "unknown_month_spread": 0.0
+   },
+   "factor": {
+    "2022": {
+     "low": 0.604,
+     "central": 0.759,
+     "high": 0.911
+    },
+    "2023": {
+     "low": 0.819,
+     "central": 0.916,
+     "high": 1.037
+    },
+    "2024": {
+     "low": 0.937,
+     "central": 0.998,
+     "high": 1.114
+    },
+    "2025": {
+     "low": 0.85,
+     "central": 1.0,
+     "high": 1.3
+    },
+    "2026": {
+     "low": null,
+     "central": null,
+     "high": null
+    }
+   },
+   "factor_total": {
+    "low": 0.787,
+    "central": 0.892,
+    "high": 1.022
+   },
+   "military_market_value": {
+    "2022": {
+     "low": 12.6132,
+     "central": 15.8426,
+     "high": 19.0265
+    },
+    "2023": {
+     "low": 18.9379,
+     "central": 21.1789,
+     "high": 23.9639
+    },
+    "2024": {
+     "low": 18.8801,
+     "central": 20.104,
+     "high": 22.4316
+    },
+    "2025": {
+     "low": 0.4105,
+     "central": 0.4829,
+     "high": 0.6278
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "military_market_value_total": {
+    "low": 50.8417,
+    "central": 57.6084,
+    "high": 66.0498
+   },
+   "correction_by_year": {
+    "2022": {
+     "low": -8.2689,
+     "central": -5.0395,
+     "high": -1.8556
+    },
+    "2023": {
+     "low": -4.173,
+     "central": -1.932,
+     "high": 0.853
+    },
+    "2024": {
+     "low": -1.2609,
+     "central": -0.037,
+     "high": 2.2906
+    },
+    "2025": {
+     "low": -0.0724,
+     "central": 0.0,
+     "high": 0.1449
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "correction_total": {
+    "low": -13.7752,
+    "central": -7.0085,
+    "high": 1.4329
+   },
+   "direction": "reduces aid toward Ukraine",
+   "certainty": "B",
+   "in_kind_share": "Presidential Drawdown (PDA) packages from DoD stocks (52% of Kiel's US military aid) and USAI contracts with industry (38%, no correction).",
+   "valuation_basis": "PDA valued at replacement cost until 31 Mar 2023, then at (average) net book value for equipment and moving-average/standard price for munitions (OUSD-C memo; GAO-24-106934). Kiel records announced package values, which were not restated after the USD 6.2bn revaluation.",
+   "reasoning": "Stock is 69% munitions and missiles; in-date munitions fetched near-replacement prices in 2022-25, so replacement-cost munitions x0.85, equipment at replacement x0.35 (used US vehicles/guns), item overrides for M777, Stinger, HAWK, Sea Sparrow, HIMARS. After March 2023 book-valued items are roughly at market (x1.0). 2022 factor 0.76, 2023 0.92, 2024 ~1.0."
+  }
+ },
+ "items_overridden": {
+  "United States | himars 142 multiple rocket launcher": {
+   "recorded": 2.2894,
+   "market_central": 1.717,
+   "note": "near-new launchers at replacement cost"
+  },
+  "United States | patriot air defense munition": {
+   "recorded": 2.0087,
+   "market_central": 1.8078,
+   "note": "in-date interceptors, seller's market"
+  },
+  "United States | m777 howitzer": {
+   "recorded": 1.9047,
+   "market_central": 0.9524,
+   "note": "used 2005-2010 guns vs replacement"
+  },
+  "United States | mark vi patrol boat": {
+   "recorded": 1.1594,
+   "market_central": 0.8116,
+   "note": "2015+ boats"
+  },
+  "United States | patriot air defense battery": {
+   "recorded": 0.9444,
+   "market_central": 0.7083,
+   "note": "in-service long-range SAM, scarce; no second-hand market, partial discount for age"
+  },
+  "Italy | samp/t anti-air missile defense system": {
+   "recorded": 0.9381,
+   "market_central": 0.7035,
+   "note": "in-service long-range SAM, scarce; no second-hand market, partial discount for age"
+  },
+  "Netherlands | f-16am/bm": {
+   "recorded": 0.9073,
+   "market_central": 0.2722,
+   "note": "Norway sold 32 used F-16 to Romania for EUR 388m incl. upgrade and support (~EUR 12m each) vs USD 41m"
+  },
+  "Sweden | airborne surveillance and control aircraft (asc 890)": {
+   "recorded": 0.8332,
+   "market_central": 0.3333,
+   "note": "1990s Saab 340 AEW"
+  },
+  "United Kingdom | husky tsv": {
+   "recorded": 0.8273,
+   "market_central": 0.2896,
+   "note": "used protected vehicles"
+  },
+  "United States | stinger anti-aircraft system": {
+   "recorded": 0.726,
+   "market_central": 0.363,
+   "note": "older life-extended Stinger stocks at replacement cost"
+  },
+  "Denmark | f-16am/bm": {
+   "recorded": 0.7164,
+   "market_central": 0.2149,
+   "note": "Norway sold 32 used F-16 to Romania for EUR 388m incl. upgrade and support (~EUR 12m each) vs USD 41m"
+  },
+  "Germany | patriot air defense battery": {
+   "recorded": 0.6878,
+   "market_central": 0.5158,
+   "note": "in-service long-range SAM, scarce; no second-hand market, partial discount for age"
+  },
+  "Sweden | leopard-2a5 (second hand)": {
+   "recorded": 0.6019,
+   "market_central": 0.0722,
+   "note": "Swedish value includes replacement by new Leopard 2A8 (~EUR 60m per tank recorded)"
+  },
+  "Slovakia | mig-29": {
+   "recorded": 0.4726,
+   "market_central": 0.0567,
+   "note": "1980s airframes; Germany sold 22 MiG-29 to Poland for EUR 1 each (2003); Slovak jets largely non-operational"
+  },
+  "France | amx-10 rc": {
+   "recorded": 0.4551,
+   "market_central": 0.0364,
+   "note": "38 retiring 1980s vehicles recorded at EUR 12m each"
+  },
+  "United States | missiles for hawk air defense system": {
+   "recorded": 0.3921,
+   "market_central": 0.098,
+   "note": "obsolete system, out of production"
+  },
+  "Sweden | cv90 combat vehicle": {
+   "recorded": 0.3838,
+   "market_central": 0.1343,
+   "note": "1990s CV9040 at replacement cost"
+  },
+  "Netherlands | patriot air defense battery": {
+   "recorded": 0.3718,
+   "market_central": 0.2788,
+   "note": "in-service long-range SAM, scarce; no second-hand market, partial discount for age"
+  },
+  "Romania | patriot air defense battery": {
+   "recorded": 0.3602,
+   "market_central": 0.2701,
+   "note": "in-service long-range SAM, scarce; no second-hand market, partial discount for age"
+  },
+  "Spain | hawk air defense system": {
+   "recorded": 0.2988,
+   "market_central": 0.0747,
+   "note": "obsolete system, out of production"
+  },
+  "Norway | patriot air defense battery": {
+   "recorded": 0.2707,
+   "market_central": 0.203,
+   "note": "in-service long-range SAM, scarce; no second-hand market, partial discount for age"
+  },
+  "France | mirage 2000-5 (second-hand)": {
+   "recorded": 0.2698,
+   "market_central": 0.1889,
+   "note": "Kiel already uses a second-hand price"
+  },
+  "Sweden | patriot air defense munition": {
+   "recorded": 0.2364,
+   "market_central": 0.2128,
+   "note": "in-date interceptors, seller's market"
+  },
+  "Norway | f-16": {
+   "recorded": 0.2276,
+   "market_central": 0.0683,
+   "note": "Norway sold 32 used F-16 to Romania for EUR 388m incl. upgrade and support (~EUR 12m each) vs USD 41m"
+  },
+  "Czechia | mi-24 attack helicopter": {
+   "recorded": 0.2078,
+   "market_central": 0.0727,
+   "note": "used Soviet-era helicopters"
+  },
+  "Germany | pac-3 missile patriot system": {
+   "recorded": 0.1736,
+   "market_central": 0.1563,
+   "note": "in-date interceptors, seller's market"
+  },
+  "United Kingdom | m270 weapon system": {
+   "recorded": 0.1207,
+   "market_central": 0.0422,
+   "note": "retired/old artillery at new-equivalent price"
+  },
+  "Spain | hawk firing unit": {
+   "recorded": 0.0852,
+   "market_central": 0.0213,
+   "note": "obsolete system, out of production"
+  },
+  "United Kingdom | mastiff 6x6, wolfhound and husky armored vehicle": {
+   "recorded": 0.0791,
+   "market_central": 0.0277,
+   "note": "used protected vehicles"
+  },
+  "Latvia | stinger anti-aircraft system": {
+   "recorded": 0.0766,
+   "market_central": 0.0383,
+   "note": "older life-extended Stinger stocks at replacement cost"
+  },
+  "Slovakia | mi-17": {
+   "recorded": 0.0722,
+   "market_central": 0.0253,
+   "note": "used Soviet-era helicopters"
+  },
+  "Canada | aim-9 missile": {
+   "recorded": 0.0672,
+   "market_central": 0.0336,
+   "note": "older AIM-9 variants"
+  },
+  "Spain | leopard-2a4": {
+   "recorded": 0.0572,
+   "market_central": 0.0687,
+   "note": "Kiel uses pre-war second-hand prices; wartime used market higher (Jordan Gepards resold at ~5x 2013 price)"
+  },
+  "Norway | m109 a3gm 155mm howitzer": {
+   "recorded": 0.049,
+   "market_central": 0.0588,
+   "note": "Kiel uses pre-war second-hand prices; wartime used market higher (Jordan Gepards resold at ~5x 2013 price)"
+  },
+  "Lithuania | stinger anti-aircraft system": {
+   "recorded": 0.0482,
+   "market_central": 0.0241,
+   "note": "older life-extended Stinger stocks at replacement cost"
+  },
+  "Italy | m109 a3gm 155mm howitzer": {
+   "recorded": 0.0475,
+   "market_central": 0.0569,
+   "note": "Kiel uses pre-war second-hand prices; wartime used market higher (Jordan Gepards resold at ~5x 2013 price)"
+  },
+  "Latvia | mi-17": {
+   "recorded": 0.0376,
+   "market_central": 0.0132,
+   "note": "used Soviet-era helicopters"
+  },
+  "Greece | bmp-1": {
+   "recorded": 0.0332,
+   "market_central": 0.0398,
+   "note": "Kiel uses pre-war second-hand prices; wartime used market higher (Jordan Gepards resold at ~5x 2013 price)"
+  },
+  "Canada | m777 howitzer": {
+   "recorded": 0.0207,
+   "market_central": 0.0104,
+   "note": "used 2005-2010 guns vs replacement"
+  },
+  "Netherlands | ypr-765 infantry vehicle": {
+   "recorded": 0.0192,
+   "market_central": 0.0231,
+   "note": "Kiel uses pre-war second-hand prices; wartime used market higher (Jordan Gepards resold at ~5x 2013 price)"
+  },
+  "Australia | m777 howitzer": {
+   "recorded": 0.0182,
+   "market_central": 0.0091,
+   "note": "used 2005-2010 guns vs replacement"
+  },
+  "Slovakia | bmp-1": {
+   "recorded": 0.0166,
+   "market_central": 0.02,
+   "note": "Kiel uses pre-war second-hand prices; wartime used market higher (Jordan Gepards resold at ~5x 2013 price)"
+  },
+  "Spain | patriot air defense munition": {
+   "recorded": 0.013,
+   "market_central": 0.0117,
+   "note": "in-date interceptors, seller's market"
+  },
+  "Latvia | m109 a3gm 155mm howitzer": {
+   "recorded": 0.0103,
+   "market_central": 0.0123,
+   "note": "Kiel uses pre-war second-hand prices; wartime used market higher (Jordan Gepards resold at ~5x 2013 price)"
+  },
+  "Canada | leopard-2a4": {
+   "recorded": 0.0079,
+   "market_central": 0.0095,
+   "note": "Kiel uses pre-war second-hand prices; wartime used market higher (Jordan Gepards resold at ~5x 2013 price)"
+  },
+  "Spain | m113 armored personnel carrier": {
+   "recorded": 0.0022,
+   "market_central": 0.0026,
+   "note": "Kiel uses pre-war second-hand prices; wartime used market higher (Jordan Gepards resold at ~5x 2013 price)"
+  },
+  "Portugal | m113 armored personnel carrier": {
+   "recorded": 0.0017,
+   "market_central": 0.002,
+   "note": "Kiel uses pre-war second-hand prices; wartime used market higher (Jordan Gepards resold at ~5x 2013 price)"
+  },
+  "Norway | m113 armored personnel carrier": {
+   "recorded": 0.001,
+   "market_central": 0.0012,
+   "note": "Kiel uses pre-war second-hand prices; wartime used market higher (Jordan Gepards resold at ~5x 2013 price)"
+  },
+  "Lithuania | m113 armored personnel carrier": {
+   "recorded": 0.0009,
+   "market_central": 0.0011,
+   "note": "Kiel uses pre-war second-hand prices; wartime used market higher (Jordan Gepards resold at ~5x 2013 price)"
+  },
+  "Canada | m113 armored personnel carrier chassis": {
+   "recorded": 0.0006,
+   "market_central": 0.0007,
+   "note": "Kiel uses pre-war second-hand prices; wartime used market higher (Jordan Gepards resold at ~5x 2013 price)"
+  }
+ },
+ "sources": [
+  {
+   "name": "Kiel Institute, Ukraine Support Tracker Release 31 workbook (MAIN DATA, Price List, Fig A26 procurement vs stocks)",
+   "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+   "date": "2026-10-08"
+  },
+  {
+   "name": "Kiel Institute, Ukraine Support Tracker research note (valuation: official values first, own prices for 26% of allocation entries / 6% of value; France and Germany benchmarks)",
+   "url": "https://www.kielinstitut.de/research/topics/war-against-ukraine/ukraine-support-tracker/",
+   "date": "2024-04"
+  },
+  {
+   "name": "GAO-24-106934, Ukraine Assistance: Actions Needed to Properly Value Defense Articles Provided under Presidential Drawdown Authority",
+   "url": "https://www.gao.gov/assets/gao-24-106934.pdf",
+   "date": "2024-06"
+  },
+  {
+   "name": "DoD OIG, DODIG-2024-095 Audit of the DoD's Revaluation of the Support Provided to Ukraine Through PDA (further USD 1.9bn overvaluation, total USD 8.1bn)",
+   "url": "https://www.dodig.mil/Reports/Audits-and-Evaluations/Article/3805413/audit-of-the-dods-revaluation-of-the-support-provided-to-ukraine-through-presid/",
+   "date": "2024-06-13"
+  },
+  {
+   "name": "Al Jazeera / Pentagon: USD 6.2bn overvaluation (FY22 2.6bn, FY23 3.6bn), replacement cost instead of net book value",
+   "url": "https://www.aljazeera.com/news/2023/6/21/pentagon-overestimates-value-of-ukraine-military-aid-by-6bn",
+   "date": "2023-06-21"
+  },
+  {
+   "name": "CRS IN12453, Presidential Drawdown Authority and Ukraine Security Assistance",
+   "url": "https://www.congress.gov/crs-product/IN12453",
+   "date": "2024"
+  },
+  {
+   "name": "UK National Audit Office, Investigation into military support for Ukraine (stock book value GBP 171.5m vs replacement GBP 2.71bn)",
+   "url": "https://nao.org.uk/wp-content/uploads/2024/09/Investigation-into-military-support-for-Ukraine-Summary-1.pdf",
+   "date": "2024-09-06"
+  },
+  {
+   "name": "ERR / Politico: EPF claims, six countries valued donations at new purchase price (FIN 100%, LVA 99%, LTU 93%, EST 91%, FRA 71%, SWE 26%)",
+   "url": "https://news.err.ee/1608928883/politico-estonia-using-epf-to-modernize-its-military",
+   "date": "2023-03-28"
+  },
+  {
+   "name": "LRT: Estonia raises eyebrows claiming reimbursement for aid to Ukraine",
+   "url": "https://www.lrt.lt/en/news-in-english/19/1948442/estonia-raises-eyebrows-claiming-reimbursement-for-aid-to-ukraine-media",
+   "date": "2023-03-28"
+  },
+  {
+   "name": "NKÚ Slovakia: donation of military property to Ukraine (S-300 residual value ~EUR 69m, EUR 82m EPF)",
+   "url": "https://www.nku.gov.sk/web/nku-en/-/slovakia-has-actively-helped-ukraine-by-donating-military-property",
+   "date": "2025"
+  },
+  {
+   "name": "DSCA, Excess Defense Articles: sale price 5-50% of original acquisition value by age and condition",
+   "url": "https://www.dsca.mil/Programs/Defense-Trade-and-Arms-Transfers/Excess-Defense-Articles",
+   "date": "accessed 2026-10-18"
+  },
+  {
+   "name": "The Local / Defense Post: Norway sells 32 used F-16 to Romania for EUR 388m incl. upgrade, spares, training",
+   "url": "https://thedefensepost.com/2022/11/07/norway-sell-f-16-romania/",
+   "date": "2022-11-07"
+  },
+  {
+   "name": "Ukrainska Pravda / Euro-SD: US buys 60 Gepards from Jordan for USD 118m (Netherlands had sold them to Jordan in 2013 for EUR 21m)",
+   "url": "https://euro-sd.com/2023/11/news/land/35117/us-to-supply-gepard-to-ukraine/",
+   "date": "2023-11"
+  },
+  {
+   "name": "Defense News: US and Netherlands fund refurbishment of 90 Czech T-72 tanks (~USD 90m)",
+   "url": "https://www.defensenews.com/pentagon/2022/11/04/us-netherlands-go-dutch-to-refurbish-czech-tanks-for-ukraine/",
+   "date": "2022-11-04"
+  },
+  {
+   "name": "Al Jazeera: second-hand Leopard 1 tanks from Belgium's OIP (bought from Belgian state cheaply, ~EUR 0.5m per tank to restore)",
+   "url": "https://www.aljazeera.com/news/2023/8/9/deal-struck-to-send-second-hand-leopard-1-tanks-from-belgium-to-ukraine",
+   "date": "2023-08-09"
+  },
+  {
+   "name": "Defense Industry Daily: Spain's 108 ex-German Leopard 2A4 for EUR 16.9m; Finland's 100 used Leopard 2A6 for EUR 200m (2014)",
+   "url": "https://www.defenseindustrydaily.com/spain-finalizes-buy-of-108-leopard-2a4-tanks-01155/",
+   "date": "2006/2014"
+  },
+  {
+   "name": "Defense One: NATO 155mm shell price roughly quadrupled from EUR 2,000 (Adm. Bauer)",
+   "url": "https://www.defenseone.com/business/2023/11/race-make-artillery-shells-us-eu-see-different-results/392288/",
+   "date": "2023-11"
+  },
+  {
+   "name": "ERR: US Army M795 155mm ~USD 3,000; NSPA contracts ~USD 5,500 per shell",
+   "url": "https://news.err.ee/1609258719/salm-to-us-defense-publication-takes-europe-a-year-to-fulfill-ukrainian-artillery-shells-orders",
+   "date": "2024"
+  },
+  {
+   "name": "Regeringen.se: Swedish support package 21 (donated materiel with funds for replacement procurement)",
+   "url": "https://www.regeringen.se/pressmeddelanden/2026/02/luftforsvar-i-fokus-for-nytt-stort-stodpaket-till-ukraina/",
+   "date": "2026-02"
+  },
+  {
+   "name": "Wall-Street.ro / AFP: France values its deliveries at EUR 2.6bn; Paris says Kiel ignores complete capabilities",
+   "url": "https://www.wall-street.ro/articol/International/305874/franta-detalii-despre-ajutorul-de-peste-2-5-miliarde-de-euro-destinat-ucrainei.html",
+   "date": "2024-03"
+  }
+ ],
+ "overlaps": "Only Kiel bilateral military allocations are corrected (kiel.json military_allocated; totals match to 0.001). Not corrected and not double counted: (1) uncovered.json undisclosed military aid (Germany 2026 appropriations, Italy decrees, France 2024 gap) - mostly budget money for procurement; if the builder wants consistency, Italy's undisclosed decrees are largely stock and could take ITA's stock factor (~0.73). (2) EU_INST military (procurement, factor 1); EPF reimbursements are not in Kiel. (3) PURL: European purchases from US stocks at FMS prices are market transactions (factor 1); the US does not get a stock correction for them. (4) Flowback (flowback.json, flowback2.json): own-industry shares include 'own stocks refilled at home'. Replenishment orders are donor spending, not aid to Ukraine; the market-value correction does not change them, but if the builder applies own-industry shares to the corrected aid, the replenishment part must stay tied to recorded (replacement) value or be recomputed - otherwise flowback shrinks twice. (5) ERA loans: UK ERA (2.65, Kiel military) sits in 2025 rows with factor ~1, so the absolute correction is unaffected by the pipeline's ERA exclusion. (6) Cost view: arguably replacement cost is the donor's true fiscal cost; the owner's instruction (market value = value to Ukraine) is applied here to the net shift; the builder should decide whether the cost view keeps recorded values.",
+ "notes": "Factors are educated estimates built from a few hard benchmarks: US net book value about 68% of replacement cost for FY22-23 PDA (USD 8.1bn overvaluation); UK stock book value 6% of replacement cost; US EDA sale prices 5-50% of original acquisition value; used F-16 ~EUR 12m incl. upgrade vs ~USD 41m new-equivalent; Jordan Gepards resold at ~5x their 2013 price in 2023 (war premium on used systems); 155mm shells EUR 2,000 -> 4,000-8,000. Old systems near end of life (Gepard, M113, MiG-29, HAWK, Sea Sparrow) can have high use value to Ukraine but low market value; following the owner's instruction they are valued at market. Kiel's own price list mostly uses SIPRI average contract prices from 2021 USD, often already second-hand deals, so Kiel-priced stock needs much less correction than donor-reported replacement values. Kiel redistributes package totals over priced rows, so item overrides on Kiel-priced rows are used only where row value is within 0.5-2x count x price."
+}

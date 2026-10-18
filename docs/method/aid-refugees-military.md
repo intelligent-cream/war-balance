@@ -21,6 +21,22 @@ Aid from EU institutions (Commission, Council, EIB; Kiel's `EU_INST`) is split o
 
 The European Peace Facility is not in Kiel's EU figures since tracker version 16 ([kiel-notes.md](../../research/2026-10/kiel-notes.md)).
 
+### Donated weapons at market value (round 5)
+
+Donors value weapons from their stocks differently: the US at replacement cost until March 2023 and at depreciated book
+value after (GAO-24-106934: about USD 8.1bn overstated), the UK budget at replacement cost (National Audit Office: book
+value GBP 0.17bn against replacement GBP 2.7bn), Nordic and Baltic EU Peace Facility claims at 91–100% of the new price.
+The map counts the **value to Ukraine: what the equipment would fetch on the market**. Each Kiel row gets a factor
+(market value ÷ recorded value) by how it was valued and what it is (MiG-29 × 0.12, F-16 × 0.30, Patriot × 0.75, shells
+× 1.3 because their price doubled); new procurement keeps factor 1. Code: `apply_weapons_value()` stores yearly
+corrections (`aid.weapons_mv`), which `calc()` adds to aid in the shift toward Ukraine. **The cost view keeps the
+recorded values**, closer to what the donor spent. Data: [`weapons_value.json`](../../research/2026-10/gaps/weapons_value.json)
+([notes](../../research/2026-10/gaps/weapons_value-notes.md)).
+
+Over 2022–2026 this lowers bilateral military aid by about 14% (EUR 177bn → 152bn): USA −7.0bn, UK −2.7, Sweden −2.4,
+Poland −1.8, France −1.6, Netherlands −1.3, Norway −1.1; Germany only −0.5 (mostly new procurement). The correction
+shrinks over time as aid moved from stocks to new production.
+
 ## Undisclosed aid and private donations
 
 From [`uncovered.json`](../../research/2026-10/gaps/uncovered.json) ([notes §3–4](../../research/2026-10/gaps/uncovered-notes.md)):
@@ -35,6 +51,9 @@ Hosting refugees from Ukraine counts toward Ukraine in both the net shift and th
 1. **Government budgets and audit offices** for 27 hosts ([`round4b.json`](../../research/2026-10/gaps/round4b.json) §2, [notes](../../research/2026-10/gaps/round4b-notes.md)), applied by `apply_audit()`: gross public spending on Ukrainians per calendar year (US ORR and benefits, German federal budget and Bürgergeld, Polish Aid Fund, UK Homes for Ukraine, Dutch central government, Swiss lump sums and others). 2022–2026 total EUR 133bn against 155bn in the earlier model: the US (−7.4), Canada (−5.2), Spain, Italy and the UK fall; Germany (+2.0) and Norway (+1.0) rise.
 2. **Elsewhere**, [`refugees.json`](../../research/2026-10/gaps/refugees.json) ([notes](../../research/2026-10/gaps/refugees-notes.md)): person-years per calendar year (Eurostat `migr_asytpsm` monthly stocks for the EU and EFTA, UNHCR end-year counts with a ramp elsewhere, US and Canadian programme arrivals) × k × GDP per head, with k calibrated on the reported budgets (certainty C).
 3. **Donor-paid costs** are taken off the host ([`flowback2.json`](../../research/2026-10/gaps/flowback2.json) `refugee_donor_funding`): UN refugee plans and EU grants paid for part of the cost in Moldova and others. Moldova's `round4b.json` figures are already its own cost, net of donors. Check 11 verifies this for Moldova.
+
+4. **Net cost** (round 5, `apply_refugees_net()`, [`refugees_net.json`](../../research/2026-10/gaps/refugees_net.json), [notes](../../research/2026-10/gaps/refugees_net-notes.md)): the cost minus the taxes and social contributions working refugees pay. Official revenue figures for Czechia (Labour Ministry: CZK 11 / 19 / 25bn in 2022–2024), Poland (Ministry of Finance, only the increase over a no-war path for Ukrainians already working there), Lithuania and Moldova; Germany from official job counts × wages × tax rate; elsewhere modelled (working-age share × employment rate × half the average wage × tax wedge, plus VAT). Across all hosts revenue offsets about half the cost over 2022–2026 (about 20% in 2022, over 60% in 2025). **Floored at zero on each country's 2022–2026 total**: where refugees paid more than they cost (Czechia, Canada, Slovakia, Romania, the Baltic states), hosting counts as zero, not as a shift toward Russia. Used in both the shift and the cost view.
+5. **Poland** (round 5): the cost is refugee spending from the Aid Fund at BGK (PLN 11.3bn in 2022, 8.9bn in 2023, 8.1bn in 2024; NIK confirms 2022), not the Fund's total, which also pays for tasks outside Poland. Poland's 2022–2026 hosting falls from EUR 24bn gross to about 3bn net; Poland +9.7% → +7.3% of GDP. Bulgaria and Croatia also have new budget figures.
 
 The panel also shows the latest refugee count (`people.refugees`).
 

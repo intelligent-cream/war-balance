@@ -904,6 +904,10 @@ def build() -> dict:
     war_windfall(countries, src)
     pre_war_trends(countries, src)
     counterfactual(countries, src)
+    apply_weapons_value(countries, src)
+    apply_state_finance(countries, src)
+    apply_company_flows(countries, src)
+    apply_refugees_net(countries, src)
     apply_audit2(countries, src, "trends")
     for c in countries.values():
         for obj in c.values():
@@ -1278,6 +1282,170 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
 LAUNDERED_PREWAR = json.loads(
     (Path(__file__).resolve().parent.parent / "research/2026-10/gaps/round4a.json").read_text()
 )["laundered_prewar"]
+
+
+def add_extra(c: dict, k: str, label: str, to_russia: dict[str, list[float]], cert: str, sid: str) -> None:
+    """A part with no series of its own: yearly change against the pre-war level, as money toward Russia (low, central,
+    high), stored as the shift toward Ukraine (the sign flipped, so its low end is the most toward Russia)."""
+    part = {"k": k, "label": label, "cert": cert, "src": [sid],
+            "c": [round(-v, 5) for v in to_russia["central"]],
+            "l": [round(-v, 5) for v in to_russia["high"]],
+            "h": [round(-v, 5) for v in to_russia["low"]]}  # fmt: skip
+    c.setdefault("extra", []).append(part)
+
+
+def apply_state_finance(countries: dict[str, dict], src: Sources) -> None:
+    """Rosatom nuclear projects and Russia's state loans (russia_state_finance.json, round 5): the buyer's own payments
+    for construction, repayments and interest on Russian state loans against the schedule, and Rosatom equipment that
+    customs data counted as the host's purchases (Akkuyu, El Dabaa). Nuclear fuel is already in goods trade."""
+    rf = load(GAPS / "russia_state_finance.json")
+    sid = src.add(
+        "state_finance",
+        "Rosatom projects abroad and Russia's state loans: World Bank International Debt Statistics (Russia as creditor), project and loan reporting",
+        "https://www.worldbank.org/en/programs/debt-statistics/ids",
+        rf.get("generated"),
+        "drawdowns left out (they pay for work not counted); see research/2026-10/gaps/russia_state_finance-notes.md",
+    )
+    for iso3, d in rf["countries"].items():
+        c = countries.get(iso3)
+        if not c:
+            continue
+        ro, sl = d.get("rosatom") or {}, d.get("state_loans") or {}
+        out = {"low": [], "central": [], "high": []}
+        for b in out:
+            add = ro.get("to_add") or {}
+            cc = ro.get("customs_correction") or {}
+            dev = sl.get("deviation_from_schedule") or {}
+            add_base = (ro.get("to_add_base_2019_2021") or {}).get(b, 0.0)
+            cc_base = sum((cc.get(str(y)) or {}).get(b, 0.0) for y in (2019, 2020, 2021)) / 3
+            for y in YEARS:
+                v = (
+                    0.0
+                    if y < 2022
+                    else (
+                        ((add.get(str(y)) or {}).get(b, 0.0) - add_base)
+                        + ((cc.get(str(y)) or {}).get(b, 0.0) - cc_base)
+                        + (dev.get(str(y)) or {}).get(b, 0.0)
+                    )
+                )
+                out[b].append(v)
+        # bands combined linearly, then put back in order per year
+        trip = [sorted(t) for t in zip(out["low"], out["central"], out["high"])]
+        out = {"low": [t[0] for t in trip], "central": [t[1] for t in trip], "high": [t[2] for t in trip]}
+        if max(abs(v) for v in out["low"] + out["high"]) < 1e-4:
+            continue
+        cert = weakest([x for x in (ro.get("certainty"), sl.get("certainty")) if x] or ["D"])
+        add_extra(c, "statefin", "Nuclear projects and state loans from Russia", out, cert[0], sid)
+
+
+def apply_company_flows(countries: dict[str, dict], src: Sources) -> None:
+    """Company money to Russia (company_flows.json, round 5), by the company's home country: the exit contribution to
+    Russia's budget and the forced discount to Russian buyers when foreign companies sell out, and the profits that
+    Russian-owned companies abroad send home, against the pre-war level (trusteeships that stopped them count the other
+    way). Seizures without payment are recorded in the research file but not counted: they were not a choice."""
+    cf = load(GAPS / "company_flows.json")
+    sid = src.add(
+        "company_flows",
+        "Company exits from Russia and Russian-owned companies abroad: Russian budget data, KSE and Yale exit lists, company reports, Bank of Russia balance of payments",
+        "https://leave-russia.org/",
+        cf.get("generated"),
+        "exit contribution and forced discount by home country; profits of Russian-owned firms by host country; see research/2026-10/gaps/company_flows-notes.md",
+    )
+    # holdings whose owners were mostly international: their 2024 discount is not the home country's (central, EUR bn)
+    conduit = {"NLD": 4.7, "KAZ": 3.5}
+    for iso3, d in cf["countries"].items():
+        c = countries.get(iso3)
+        if not c:
+            continue
+        ex = {"low": [], "central": [], "high": []}
+        for b in ex:
+            for y in YEARS:
+                v = (d.get("exit_contribution") or {}).get(str(y), {}).get(b, 0.0)
+                dt = (d.get("discount_transfer") or {}).get(str(y), {})
+                disc = dt.get(b, 0.0)
+                if y == 2024 and iso3 in conduit and dt.get("central"):
+                    disc *= max(0.0, 1 - conduit[iso3] / dt["central"])
+                ex[b].append(v + disc)
+        if any(ex["high"]):
+            cert = weakest([d.get("exit_contribution_certainty"), d.get("discount_transfer_certainty")])
+            add_extra(c, "exits", "Paid to Russia by companies leaving it", ex, cert or "C", sid)
+        pr = d.get("profits_change_vs_prewar") or {}
+        if pr:
+            out = {
+                b: [(pr.get(str(y)) or {}).get(b, 0.0) if y >= 2022 else 0.0 for y in YEARS]
+                for b in ("low", "central", "high")
+            }
+            if max(abs(v) for v in out["low"] + out["high"]) > 1e-4:
+                add_extra(
+                    c,
+                    "rusfirms",
+                    "Profits sent to Russia by Russian-owned companies here",
+                    out,
+                    d.get("profits_certainty") or "D",
+                    sid,
+                )
+
+
+def apply_refugees_net(countries: dict[str, dict], src: Sources) -> None:
+    """Refugee hosting at net cost (refugees_net.json, round 5): the cost minus the taxes and contributions working
+    refugees pay (official for Czechia, Poland, Lithuania and Moldova; modelled elsewhere), with Poland's cost limited to
+    refugee spending from its Aid Fund. Floored at zero on each country's 2022-2026 total: a budget gain is the refugees'
+    own work, not a shift toward Russia. Used in both the shift and the cost view."""
+    rn = load(GAPS / "refugees_net.json")
+    sid = src.add(
+        "refugees_net",
+        "Refugees' taxes and contributions: Czech Labour Ministry, Polish Ministry of Finance, Lithuanian ministry, OECD and IAB employment data; Poland's Aid Fund (BGK) spending",
+        "https://www.oecd.org/en/topics/sub-issues/migration-and-ukraine.html",
+        rn.get("generated"),
+        "net = hosting cost - refugees' tax revenue; see research/2026-10/gaps/refugees_net-notes.md",
+    )
+    donors = load(GAPS / "flowback2.json")["refugee_donor_funding"]
+    for iso3, d in rn["countries"].items():
+        a = (countries.get(iso3) or {}).get("aid")
+        if not a or not d.get("gross") or not d.get("revenue"):
+            continue
+        # costs paid by donors are not the host's; Moldova's, Poland's and Bulgaria's figures are already the host's own
+        sh = (donors.get(iso3) or {}).get("donor_share") if iso3 not in ("MDA", "POL", "BGR") else None
+        sh = sh or {"low": 0, "central": 0, "high": 0}
+        g = lambda y, b: (d["gross"].get(str(y)) or {}).get(b, 0.0)  # noqa: E731
+        r = lambda y, b: (d["revenue"].get(str(y)) or {}).get(b, 0.0)  # noqa: E731
+        mid = [g(y, "central") * (1 - sh["central"]) - r(y, "central") for y in YEARS]
+        lo = [g(y, "low") * (1 - sh["high"]) - r(y, "high") for y in YEARS]
+        hi = [g(y, "high") * (1 - sh["low"]) - r(y, "low") for y in YEARS]
+        for arr in (mid, lo, hi):
+            if sum(arr[1:]) <= 0:
+                arr[:] = [0.0] * len(arr)
+        a["refugee_years"] = [round(v, 5) for v in mid]
+        a["refugee_years_lo"] = [round(min(v, m), 5) for v, m in zip(lo, mid)]
+        a["refugee_years_hi"] = [round(max(v, m), 5) for v, m in zip(hi, mid)]
+        a["refugee_gross"] = round(sum(g(y, "central") for y in YEARS[1:]), 4)
+        a["refugee_cert"] = weakest([(d.get("gross_certainty") or "C")[0], (d.get("revenue_certainty") or "C")[0]])
+        a["refugee_src"] = list(dict.fromkeys((a.get("refugee_src") or []) + [sid]))
+
+
+def apply_weapons_value(countries: dict[str, dict], src: Sources) -> None:
+    """Donated weapons at market value, the value to Ukraine (weapons_value.json, round 5): stock donations recorded at
+    replacement cost or list price are corrected to what the equipment would fetch on the market. Stored as yearly
+    corrections (EUR bn, negative = less aid) used for the shift toward Ukraine; the cost view keeps the recorded values."""
+    wv = load(GAPS / "weapons_value.json")
+    sid = src.add(
+        "weapons_value",
+        "Donated weapons at market value: GAO and DoD Inspector General (US drawdown valuation), UK National Audit Office, EU Peace Facility claims, used-equipment and munitions prices",
+        "https://www.gao.gov/products/gao-24-106934",
+        wv.get("generated"),
+        "factor = market value / recorded value per Kiel row; see research/2026-10/gaps/weapons_value-notes.md",
+    )
+    for iso3, d in wv["countries"].items():
+        aid = (countries.get(iso3) or {}).get("aid")
+        corr = d.get("correction_by_year") or {}
+        if not aid or not corr:
+            continue
+        get = lambda y, b: (corr.get(str(y)) or {}).get(b, 0.0)  # noqa: E731
+        aid["weapons_mv"] = {
+            k: [round(get(y, b), 5) for y in YEARS] for k, b in (("c", "central"), ("l", "low"), ("h", "high"))
+        }
+        if sid not in aid.setdefault("src", []):
+            aid["src"].append(sid)
 
 
 def apply_laundered_eu(countries: dict[str, dict], src: Sources) -> None:

@@ -13,18 +13,18 @@ changes. Status is updated as items are done; the [changelog](changelog.md) reco
 | 4 | A Belarus-specific counterfactual tested on its own 2008–2021 history | Belarus's range | researching |
 | 5 | Laundered oil per EU country from per-country studies | EU members, fuel hubs | done: customs-based per member ([energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#per-country-values-for-the-eu-usa-uk-and-australia-round-5)) |
 | 6 | Shadow-fleet ownership and control | shipping profit by country | done: freight by real controller ([services-shipping-companies.md](method/services-shipping-companies.md#shipping)) |
-| 7 | Refugee costs for more hosts; Poland's 2022 count | refugee hosts | researching |
+| 7 | Refugee costs for more hosts; Poland's 2022 count | refugee hosts | done: Poland, Bulgaria, Croatia revised ([aid-refugees-military.md](method/aid-refugees-military.md#refugees)) |
 | 8 | Newer 2026 trade data | fewer `*` estimates | researching |
 | 17 | Russian arms sales to other countries, against pre-war | new part: money to Russia | researching |
-| 18 | Exit payments and forced discounts of companies leaving Russia | new part: money to Russia, by home country | researching |
-| 19 | Rosatom nuclear projects abroad: check whether payments are in trade or services; add if not | money to Russia | researching |
+| 18 | Exit payments and forced discounts of companies leaving Russia | new part: money to Russia, by home country | done; seizures recorded, not counted ([russia-state-and-companies.md](method/russia-state-and-companies.md#companies-leaving-russia)) |
+| 19 | Rosatom nuclear projects abroad: check whether payments are in trade or services; add if not | money to Russia | done: fuel already in trade; construction added ([russia-state-and-companies.md](method/russia-state-and-companies.md)) |
 | 20 | Loans at their economic value: only the saving against what Ukraine would otherwise pay to borrow counts | aid from lenders | researching |
-| 21 | Refugees at net cost: hosting cost minus taxes and contributions of working refugees | refugee hosts | researching |
+| 21 | Refugees at net cost: hosting cost minus taxes and contributions of working refugees | refugee hosts | done, floored at zero per country ([aid-refugees-military.md](method/aid-refugees-military.md#refugees)) |
 | 22 | Latest Kiel tracker release for 2026 aid | 2026 aid | researching |
-| 23 | Donated weapons at market value (value to Ukraine), not replacement or book value | military aid | researching |
-| 24 | Profits Russian-owned companies abroad send home (and trusteeships that stopped them) | money to Russia, by host country | researching |
+| 23 | Donated weapons at market value (value to Ukraine), not replacement or book value | military aid | done ([aid-refugees-military.md](method/aid-refugees-military.md#donated-weapons-at-market-value-round-5)) |
+| 24 | Profits Russian-owned companies abroad send home (and trusteeships that stopped them) | money to Russia, by host country | done ([russia-state-and-companies.md](method/russia-state-and-companies.md#russian-owned-companies-abroad)) |
 | 25 | World Bank, IMF, EBRD and EIB support credited to members by shareholding, valued as in 20 | aid | researching |
-| 26 | Interest and repayments on Russia's state loans to other countries | money to Russia | researching |
+| 26 | Interest and repayments on Russia's state loans to other countries | money to Russia | done ([russia-state-and-companies.md](method/russia-state-and-companies.md)) |
 | 27 | Pledged versus delivered aid: count delivered or firmly allocated aid only | aid | researching |
 
 ## Code
