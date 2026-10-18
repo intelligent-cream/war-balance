@@ -2,7 +2,7 @@
 // The English text in index.html and views.js is the key: t("...") looks it up in the chosen language and falls back to
 // English, so a string missing in a dictionary simply shows in English. Placeholders like {name} are filled in after translating,
 // so word order can differ per language. Country names are not translated here: they come from the browser
-// (Intl.DisplayNames). Text from data.json (status banner, sources, notes) stays in English.
+// (Intl.DisplayNames). Text from data.json (status banner, sources, notes) goes through tData(), which also matches numbers as {n0}, {n1}...
 const LANGS = { en: "English", uk: "Українська", de: "Deutsch", fr: "Français", pl: "Polski", nl: "Nederlands", es: "Español" };
 // each language's dictionary is its own file, i18n/<lang>.js (it sets I18N.<lang>), fetched only when that language is chosen
 const I18N = {};
