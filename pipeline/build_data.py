@@ -1038,6 +1038,7 @@ def build() -> dict:
     apply_russian_arms(countries, src)
     apply_payment_agents(countries, src)
     apply_frozen_reserves(countries, src)
+    apply_remittances(countries, src)
     apply_value_kept(countries, src)
     apply_audit2(countries, src, "trends")
     apply_nowar_prices(countries, src)
@@ -1974,6 +1975,49 @@ def apply_frozen_reserves(countries: dict[str, dict], src: Sources) -> None:
         out = {"low": [-v for v in cr["high"]], "central": [-v for v in cr["central"]], "high": [-v for v in cr["low"]]}
         add_extra(
             countries[iso3], "frozen", "Return denied to Russia on its frozen reserves", out, cert.get(iso3, "C"), sid
+        )
+
+
+def apply_remittances(countries: dict[str, dict], src: Sources) -> None:
+    """Migrant workers' remittances from Russia (remittances.json, round 7): wages for labour sold to Russia's economy,
+    so counted like services sold to Russia: the change against the expected no-war level, at value kept x genuinely
+    extra. Relocants' transfers (money leaving Russia with people who moved after 2022) are split out and left out."""
+    rm = load(GAPS / "remittances.json")
+    sid = src.add(
+        "remittances",
+        "Remittances from Russia: receiving central banks' transfers by country of origin (CBU, NBKR, CBA, NBG and others), World Bank; relocants' transfers split out",
+        "https://www.worldbank.org/en/topic/migrationremittancesdiasporaissues",
+        rm.get("generated"),
+        "labour remittances against the expected level, at value kept x genuinely extra; see research/2026-10/gaps/remittances-notes.md",
+    )
+    for iso3, d in rm["countries"].items():
+        c = countries.get(iso3)
+        lab, exp = d.get("labour_eur_bn") or {}, d.get("expected_labour_eur_bn") or {}
+        if not c or not lab or not exp:
+            continue
+        up, down = d["product_when_more"], d["product_when_less"]
+        out = {"low": [], "central": [], "high": []}
+        for y in YEARS:
+            ly, ey = lab.get(str(y)), exp.get(str(y))
+            if y < 2022 or not ly or not ey:
+                for b in out:
+                    out[b].append(0.0)
+                continue
+            mid = ly["central"] - ey["central"]
+            # the reported and the expected level are independent: combined in quadrature
+            lo = mid - math.hypot(ly["central"] - ly["low"], ey["high"] - ey["central"])
+            hi = mid + math.hypot(ly["high"] - ly["central"], ey["central"] - ey["low"])
+            f = up if mid >= 0 else down
+            out["central"].append(round(mid * f["central"], 5))
+            out["low"].append(round(min(lo * f["low"], lo * f["high"]), 5))
+            out["high"].append(round(max(hi * f["low"], hi * f["high"]), 5))
+        add_extra(
+            c,
+            "remit",
+            "Wages earned working in Russia (migrants' remittances)",
+            out,
+            (d.get("certainty") or "C")[0],
+            sid,
         )
 
 
