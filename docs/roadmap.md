@@ -37,7 +37,7 @@ changes. Status is updated as items are done; the [changelog](changelog.md) reco
 | 12 | Range lines in the country breakdown on phones | done: bars from zero, range lines with end marks |
 | 13 | Split `data.json` so phones load faster | done: coverage notes load after the map (`detail.json`) |
 | 14 | Chart label overlaps on narrow screens | done: bubble labels keep clear of the axis numbers |
-| 15 | Translate the status line, source names and notes from the data | mechanism done (`tData()`); translations after the research is in |
+| 15 | Translate the status line, source names and notes from the data | done: 135 data strings in all six languages (`tData()`) |
 | 16 | Docs: record deliberate choices (actual figures as model inputs; 90% ranges as tested) | done ([counterfactual.md](method/counterfactual.md#deliberate-choices)) |
 
 ## Decided not to do

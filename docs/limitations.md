@@ -19,7 +19,6 @@ The map is a research preview. Its figures were compiled with AI assistance from
 
 ## Display issues
 
-- Text from `data.json` (status banner, source names, notes) stays in English in all seven languages ([`site/i18n.js`](../site/i18n.js)).
 
 ## Deliberate choices (not limitations)
 
