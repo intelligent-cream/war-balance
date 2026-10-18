@@ -1,7 +1,13 @@
 # Roadmap
 
-The work list for each data round. Rounds 5, 6 and 7 are done. Each item links to the limitation or method page it
+The work list for each data round. Rounds 5 to 8 are done. Each item links to the limitation or method page it
 changes. Status is updated as items are done; the [changelog](changelog.md) records what each finished item changed.
+
+## Round 8 (done)
+
+| # | step | kind |
+|---|---|---|
+| F1 | The no-war band for "paid to Russia" measured on physical fuel volumes; narrower for pipeline buyers (Germany, Hungary, Slovakia, Czechia, Poland, Finland, North Macedonia); Poland's pre-war decision to end its Yamal gas contract in the no-war path | done ([counterfactual.md](method/counterfactual.md#pipeline-fuel-buyers-round-8)) |
 
 ## Round 7 (done)
 

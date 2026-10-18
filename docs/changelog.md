@@ -139,6 +139,13 @@ Headline effects (% of GDP, develop → round 7): Tajikistan −6.4 → −45.1 
 +7.3 → +9.2, Belgium +2.1 → +4.2. Ranges grew a little overall (median width 4.3 → 4.8 points), because fuel valued
 at no-war prices makes the amounts larger.
 
+## Round 8
+
+**Narrower ranges for pipeline fuel buyers.** The no-war band for payments to Russia measured on physical fuel
+volumes: Germany, Hungary, Slovakia, Czechia, Poland, Finland and North Macedonia get narrower ranges; Hungary's range
+no longer crosses zero. Poland's no-war path drops its Yamal gas from 2023 (ended by a 2019 decision): +9.2% → +8.1%
+([counterfactual.md](method/counterfactual.md#pipeline-fuel-buyers-round-8)).
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open

@@ -249,6 +249,29 @@ suggests the high side may be a little short (10 of 12 own windows covered). Spl
 is as large as the total's, and the two errors are almost uncorrelated. For Russia's neighbours as a group, the fuel
 model predicts better (+26–32%) but raises the expected level by ×1.08–1.28 without narrowing the band; it is not used.
 
+### Pipeline fuel buyers (round 8)
+
+Most of the width of "less paid to Russia" comes from not knowing what a country would have bought from Russia
+without the war. That band was measured on trade values divided by price indices, over all kinds of goods. Round 8
+measured fuel on **physical volumes** instead (tonnes of crude and products, terajoules of gas; Eurostat and UN
+Comtrade, 2005–2021), with rolling back-tests calibrated by era as before
+([`fuel_volume_cf.json`](../../research/2026-10/gaps/fuel_volume_cf.json),
+[notes](../../research/2026-10/gaps/fuel_volume_cf-notes.md)):
+
+- Buyers whose Russian fuel came mainly by **pipeline** (Druzhba crude plus pipeline gas, at least 60% of their fuel)
+  had steady volumes: their 5-year fuel band is ×0.80–1.30. Seaborne fuel is as unsteady as before (×0.52–1.77), and so
+  are other goods (×0.50–2.60).
+- Combined by each country's fuel share, and checked against the country's own windows, seven countries get a
+  narrower band for 2022–2026: Germany ×0.74–1.31 (was ×0.57–1.62), Hungary ×0.79–1.29, Slovakia ×0.84–1.29, Czechia
+  ×0.79–1.48, Poland ×0.75–1.64, Finland ×0.66–1.61, North Macedonia ×0.47–1.64 (was ×0.47–3.19). The others keep
+  their band: their fuel came by sea, or most of what they bought from Russia was other goods (Russia's neighbours).
+- **Poland** had notified Gazprom in November 2019 that its Yamal contract would end in 2022. That decision came before
+  the war, so its no-war path drops that gas from 2023 (×0.86 of 2021). Poland moves from +9.2% to +8.1% of GDP.
+- Long-term contracts (Uniper, MVM, ČEZ take-or-pay) were used as checks: they all sit inside the new bands.
+
+Effect on the total ranges (% of GDP): Germany 3.0…8.6 → 3.5…7.7, Hungary −9.8…+2.5 → −8.2…−0.1, Slovakia
+−6.5…+16.0 → −3.8…+11.6, Czechia −1.4…+10.5 → −0.4…+9.6, North Macedonia −4.7…+11.4 → −4.7…+4.1.
+
 ### Deliberate choices
 
 - **Actual figures as inputs.** The models use each country's actual 2022–2026 GDP and trade with others, although the war affected them too. The map asks how far a country went out of its way: if its economy shrank because of the war, it would have traded less with Russia anyway, and that is not a choice to credit or blame. (Decided in round 5; pre-war forecasts were considered and rejected.)
