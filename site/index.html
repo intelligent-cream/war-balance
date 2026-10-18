@@ -1,4 +1,7 @@
+<!doctype html>
+<html lang="en">
 <meta charset="utf-8">
+<link rel="icon" href="data:,">   <!-- no icon file: this stops the browser asking for /favicon.ico (a 404 in the console) -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Follow the Money: Ukrainian Aid</title>
 <meta name="description" content="How much each country has shifted money and support toward Ukraine or toward Russia since the full-scale invasion, and what it cost. Every number with a range and a source.">
@@ -32,6 +35,8 @@
   --focus: #0d4f66;
   --warn-bg: #fff3d6;
   --warn-ink: #6b4b00;
+  --rus-text: #b4500f;     /* orange for text and for pressed buttons with white text: 4.5:1 on the surface */
+  --on-accent: #fff;       /* text on a pressed blue or orange button */
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
   --font-data: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -41,15 +46,17 @@
     --sea: #0e161d; --land: #26333d; --land-edge: #0e161d; --surface: #141f28; --ink: #e3e9ee; --ink-soft: #97a6b1;
     --line: #2b3944; --ukr: #6aa8e0; --ukr-lo: #1b3350; --rus: #f39a52; --rus-lo: #4a2a14; --back: #d9bd55; --target: #6b7782; --mid: #2c3236;
     --focus: #8fd3ea; --warn-bg: #3a2f12; --warn-ink: #f2d38a; color-scheme: dark;
+    --rus-text: #f39a52; --on-accent: #141f28;
   }
 }
 :root[data-theme="dark"] {
   --sea: #0e161d; --land: #26333d; --land-edge: #0e161d; --surface: #141f28; --ink: #e3e9ee; --ink-soft: #97a6b1;
   --line: #2b3944; --ukr: #6aa8e0; --ukr-lo: #1b3350; --rus: #f39a52; --rus-lo: #4a2a14; --back: #d9bd55; --target: #6b7782; --mid: #2c3236;
   --focus: #8fd3ea; --warn-bg: #3a2f12; --warn-ink: #f2d38a; color-scheme: dark;
+    --rus-text: #f39a52; --on-accent: #141f28;
 }
 html, body { height: 100%; }
-body { background: var(--sea); color: var(--ink); font-family: var(--font-body); font-size: 15px; overflow: hidden; }
+body { margin: 0; background: var(--sea); color: var(--ink); font-family: var(--font-body); font-size: 15px; overflow: hidden; }
 * { box-sizing: border-box; }
 button, input, select { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
@@ -61,24 +68,25 @@ button, input, select { font: inherit; color: inherit; }
 
 .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; padding-block: 10px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-  background: var(--surface); border-bottom: 1px solid var(--line); z-index: 3; }
+  background: var(--surface); border-bottom: 1px solid var(--line); z-index: 5; position: relative; }
 .brand { font-family: var(--font-display); font-weight: 800; font-stretch: 115%; font-size: 18px; letter-spacing: -0.01em; margin: 0; white-space: nowrap; }
 .brand span { color: var(--ink-soft); font-weight: 500; font-stretch: 100%; font-size: 13px; margin-left: 6px; letter-spacing: 0; }
 .controls { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin-left: auto; }
 .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
-.seg button { border: 0; background: transparent; padding: 6px 10px; font-size: 13px; cursor: pointer; white-space: nowrap; }
+.seg button { border: 0; background: transparent; padding: 6px 10px; font-size: 13px; cursor: pointer; white-space: nowrap; hyphens: auto; }
 .seg button + button { border-left: 1px solid var(--line); }
 .seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
-.seg button[data-lens="ukr"][aria-pressed="true"] { background: var(--ukr); color: #fff; }
-.seg button[data-lens="rus"][aria-pressed="true"] { background: var(--rus); color: #fff; }
+/* the light blues and oranges of dark mode take dark text; light mode's orange is darkened for white text (4.5:1 either way) */
+.seg button[data-lens="ukr"][aria-pressed="true"] { background: var(--ukr); color: var(--on-accent); }
+.seg button[data-lens="rus"][aria-pressed="true"] { background: var(--rus-text); color: var(--on-accent); }
 .year { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-soft); }
 .year input { width: 110px; accent-color: var(--ink); }
-.year output { font-family: var(--font-data); color: var(--ink); min-width: 4ch; }
+.year output { font-family: var(--font-data); color: var(--ink); min-width: 4ch; white-space: nowrap; }
 .search input { width: 190px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--sea); font-size: 13px; }
 .lang { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; }
 .lang select { padding: 5px 4px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); font-size: 13px; cursor: pointer; }
 
-.stage { position: relative; flex: 1; min-height: 0; }
+.stage { position: relative; flex: 1; min-height: 0; overflow: hidden; }   /* clips the closed panel, which waits off to the side */
 #map { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
 #map:active { cursor: grabbing; }
 .country { stroke: var(--land-edge); stroke-width: 0.6; vector-effect: non-scaling-stroke; transition: fill 0.35s ease; cursor: pointer; }
@@ -101,7 +109,7 @@ button, input, select { font: inherit; color: inherit; }
 .legend .ramp { height: 10px; border-radius: 3px; }
 .legend .steps { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 2px; height: 14px; }
 .legend .steps span { border-radius: 2px; }
-.legend .step-labels { position: relative; height: 13px; margin-top: 3px; font-family: var(--font-data); font-size: 9px; color: var(--ink-soft); }
+.legend .step-labels { position: relative; height: 14px; margin-top: 3px; font-family: var(--font-data); font-size: 11px; color: var(--ink-soft); }
 .legend .step-labels span { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap; }
 .map-title { position: absolute; top: 12px; left: max(16px, env(safe-area-inset-left, 0px)); max-width: min(520px, calc(100% - 32px)); background: var(--surface);
   border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; z-index: 2; font-size: 13px; line-height: 1.35; box-shadow: 0 4px 14px rgba(0,0,0,0.08); }
@@ -164,9 +172,9 @@ button, input, select { font: inherit; color: inherit; }
 .empty { color: var(--ink-soft); font-size: 13.5px; }
 
 .hint { position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%); background: var(--surface); border: 1px solid var(--line);
-  border-radius: 999px; padding: 6px 14px; font-size: 13px; color: var(--ink-soft); z-index: 2; white-space: nowrap; transition: opacity 0.4s; }
+  border-radius: 999px; padding: 6px 14px; font-size: 13px; color: var(--ink-soft); z-index: 2; width: max-content; max-width: calc(100% - 140px); text-align: center; transition: opacity 0.4s; }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .controls { margin-left: 0; }
   .search input { width: 150px; }
   .legend { width: 200px; padding: 8px 10px; }
@@ -179,8 +187,8 @@ button, input, select { font: inherit; color: inherit; }
 
 /* v2: flow layer, change view */
 #flows { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-.seg button[data-lens="change"][aria-pressed="true"] { background: linear-gradient(90deg, var(--rus), var(--ukr)); color: #fff; }
-.seg button[data-lens="cost"][aria-pressed="true"] { background: var(--ukr); color: #fff; }
+.seg button[data-lens="change"][aria-pressed="true"] { background: linear-gradient(90deg, var(--rus-text), var(--ukr)); color: var(--on-accent); }
+.seg button[data-lens="cost"][aria-pressed="true"] { background: var(--ukr); color: var(--on-accent); }
 .toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ink-soft); cursor: pointer; white-space: nowrap; }
 .toggle input { accent-color: var(--ukr); }
 .legend .flowkey { display: grid; gap: 4px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--ink-soft); }
@@ -211,7 +219,7 @@ button, input, select { font: inherit; color: inherit; }
 .mini text { font-family: var(--font-data); font-size: 10px; fill: var(--ink-soft); }
 .how { font-size: 12.5px; color: var(--ink-soft); line-height: 1.55; margin: 0; padding-left: 18px; }
 .how b { color: var(--ink); font-weight: 600; }
-@media (max-width: 760px) { .costs { grid-template-columns: 1fr 1fr; } .big { font-size: 28px; } }
+@media (max-width: 900px) { .costs { grid-template-columns: 1fr 1fr; } .big { font-size: 28px; } }
 
 /* v3: rankings, compare, sources, phone */
 .bar .menu-btn { display: none; margin-left: auto; border: 1px solid var(--line); background: transparent; border-radius: 6px; padding: 6px 12px; font-size: 13px; cursor: pointer; }
@@ -219,7 +227,7 @@ button, input, select { font: inherit; color: inherit; }
 .btn:hover { border-color: var(--ink-soft); }
 .btn.primary { background: var(--ink); color: var(--surface); border-color: var(--ink); }
 .play { width: 30px; height: 30px; padding: 0; display: inline-grid; place-items: center; border-radius: 50%; }
-.ref { font-family: var(--font-data); font-size: 9.5px; color: var(--ink-soft); margin-left: 2px; vertical-align: super; line-height: 0; white-space: nowrap; }
+.ref { font-family: var(--font-data); font-size: 11px; color: var(--ink-soft); margin-left: 2px; vertical-align: super; line-height: 0; white-space: nowrap; }
 .ref a { color: inherit; text-decoration: none; }
 .ref a:hover { text-decoration: underline; }
 .range-txt { font-family: var(--font-data); font-size: 12px; color: var(--ink-soft); margin-top: 4px; }
@@ -232,7 +240,8 @@ button, input, select { font: inherit; color: inherit; }
 .rank-row .v b { font-weight: 600; }
 .rank-row .v .eur { color: var(--ink-soft); margin-left: 6px; display: inline-block; min-width: 64px; text-align: right; }
 .rank-row .track { grid-column: 2 / -1; height: 6px; background: var(--mid); border-radius: 3px; overflow: hidden; }
-.rank-row .track div { height: 100%; border-radius: 3px; }
+.rank-row > span { display: block; }
+.rank-row .track span { display: block; height: 100%; border-radius: 3px; }
 .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .tabs button { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 4px 10px; font-size: 12.5px; cursor: pointer; }
 .tabs button[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
@@ -259,10 +268,11 @@ table.tbl { border-collapse: collapse; width: 100%; font-size: 12.5px; }
 .cov-row .dot.ok { background: var(--ukr); }
 .cov-row .dot.est { background: transparent; border: 2px solid var(--ukr); width: 9px; height: 9px; box-sizing: border-box; }
 .cov-row .dot.missing { background: var(--rus); }
+.cov-row .miss { color: var(--rus-text); }
 .cov-row .n { color: var(--ink-soft); font-size: 12px; grid-column: 2; }
 .tbl td.cov-ok, .tbl td.cov-est { color: var(--ukr); text-align: center; }
 .tbl td.cov-missing { text-align: center; }
-.tbl td.cov-missing { color: var(--rus); font-weight: 600; }
+.tbl td.cov-missing { color: var(--rus-text); font-weight: 600; }
 details.more { border-top: 1px solid var(--line); padding-top: 10px; }
 details.more summary { cursor: pointer; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-soft); }
 details.more[open] summary { margin-bottom: 10px; }
@@ -275,7 +285,7 @@ details.more[open] summary { margin-bottom: 10px; }
 .marker text { font-family: var(--font-display); font-weight: 800; fill: var(--surface); pointer-events: none; }
 .legend-toggle { display: none; }
 .sheet-handle { display: none; }
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .status { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; font-size: 12px; }
   .status[data-open="true"] { white-space: normal; }
   .map-title { font-size: 11.5px; padding: 6px 9px; top: 8px; }
@@ -350,20 +360,53 @@ body[data-panel="open"] .view-inner { margin-right: 420px; margin-left: 0; }
 .dtable td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: right; font-family: var(--font-data); font-size: 12.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .dtable td:first-child { font-family: var(--font-body); font-size: 13.5px; }
 .dtable tbody tr { cursor: pointer; } .dtable tbody tr:hover { background: var(--mid); }
-.dtable .pos { color: var(--ukr); } .dtable .neg { color: var(--rus); }
-.tablewrap { overflow-x: auto; }
+.dtable .pos { color: var(--ukr); } .dtable .neg { color: var(--rus-text); }
+/* scrolls both ways inside its own box, so the sticky header row stays in view */
+.tablewrap { overflow: auto; max-height: max(320px, calc(100dvh - 230px)); }
+.dtable th button, .tbl th button { border: 0; background: transparent; padding: 0; font: inherit; color: inherit; cursor: pointer; text-align: inherit; white-space: nowrap; }
+.dtable td:first-child button { border: 0; background: transparent; padding: 0; font: inherit; color: inherit; cursor: pointer; text-align: left; }
+.dtable td:first-child button:hover { text-decoration: underline; }
 .note-small { color: var(--ink-soft); font-size: 12.5px; margin-top: 12px; max-width: 80ch; }
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   body[data-panel="open"] .view-inner { margin-right: 0; }
   .view h2 { font-size: 20px; }
   .views button { padding: 6px 9px; font-size: 13px; }
   .views { flex-wrap: wrap; overflow: visible; border-radius: 8px; }
   .views button { flex: 1 1 auto; }
 }
+/* audit fixes: loading, screen-reader text, search message */
+.map-title:empty, .legend:empty { display: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.search { position: relative; }
+.search-msg { position: absolute; top: 100%; left: 0; margin-top: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 3px 8px; font-size: 12.5px; color: var(--ink); white-space: nowrap; z-index: 6; box-shadow: 0 4px 14px rgba(0,0,0,0.1); }
+.search-msg:empty { display: none; }
+.panel-head h2:focus { outline: none; }
+.panel-head h2:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (max-width: 900px) {
+  /* first row: title and Options; second row: the view tabs, one line that scrolls sideways */
+  .bar { flex-wrap: wrap; }
+  .brand { order: 0; flex: 1 1 0; min-width: 0; white-space: normal; font-size: clamp(14px, 4.4vw, 18px); line-height: 1.15; }
+  .bar .menu-btn { order: 1; margin-left: 0; flex: none; min-height: 32px; }
+  .bar .views { order: 2; width: 100%; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; }
+  .bar .views button { flex: 0 0 auto; min-height: 34px; }
+  /* the open menu lies over the map instead of pushing it down, and scrolls by itself when taller than the screen */
+  .bar[data-menu="open"] .controls { order: 3; position: absolute; top: 100%; left: 0; right: 0; max-height: calc(100dvh - 140px); overflow-y: auto;
+    background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: 0 10px 24px rgba(0,0,0,0.15); z-index: 5;
+    padding: 12px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px)); }
+  /* tap targets of at least 24 px */
+  .controls .year input { height: 28px; }
+  .toggle { min-height: 28px; }
+  .toggle input { width: 18px; height: 18px; }
+  .legend-toggle { min-height: 28px; }
+  .status a { display: inline-block; padding-block: 2px; line-height: 20px; }
+}
 </style>
 
 <div class="app" data-view="map">
-  <div class="sample status" role="note" id="status"><b data-i18n="Research preview.">Research preview.</b> <span data-i18n="Loading data…">Loading data…</span></div>
+  <!-- a landmark of its own, so screen reader users can find (and skip) the banner -->
+  <aside aria-label="Research preview." data-i18n-aria="Research preview.">
+    <div class="sample status" role="note" id="status"><b data-i18n="Research preview.">Research preview.</b> <span data-i18n="Loading data…">Loading data…</span></div>
+  </aside>
   <header class="bar" id="bar" data-menu="closed">
     <h1 class="brand" id="brand">Follow the Money: Ukrainian Aid<span>change since before the war</span></h1>
     <div class="views" role="group" aria-label="Show as" data-i18n-aria="Show as">
@@ -395,21 +438,23 @@ body[data-panel="open"] .view-inner { margin-right: 420px; margin-left: 0; }
       </div>
       <label class="toggle" for="show-flows"><input id="show-flows" type="checkbox" checked> <span data-i18n="Flows">Flows</span></label>
       <label class="toggle" for="net-back"><input id="net-back" type="checkbox" checked> <span data-i18n="Subtract money flowing back">Subtract money flowing back</span></label>
-      <button class="btn" id="open-rank" data-i18n="Rankings">Rankings</button>
+      <button class="btn" id="open-rank" data-i18n="Top lists">Top lists</button>
       <div class="search">
         <input id="search" list="country-list" placeholder="Find your country" aria-label="Find your country" data-i18n-ph="Find your country" data-i18n-aria="Find your country" autocomplete="off">
         <datalist id="country-list"></datalist>
+        <span class="search-msg" id="search-msg" role="status"></span>
       </div>
-      <label class="lang" title="Language">🌐<select id="lang" aria-label="Language"></select></label>
+      <label class="lang" title="Language" data-i18n-title="Language">🌐<select id="lang" aria-label="Language"></select></label>
     </div>
   </header>
 
-  <div class="stage">
-    <svg id="map" role="img" aria-label="World map coloured by the change in money flows since before the war" data-i18n-aria="World map coloured by the change in money flows since before the war"></svg>
+  <main class="stage">
+    <!-- the label (with how to get at countries by keyboard) is set in applyLang -->
+    <svg id="map" role="img" aria-label="World map coloured by the change in money flows since before the war. With a keyboard, use “Find your country” or the Ranking view."></svg>
     <canvas id="flows" aria-hidden="true"></canvas>
     <div class="view" id="view" hidden></div>
     <div class="map-title" id="map-title"></div>
-    <div class="hint" id="hint" data-i18n="Drag to move, scroll to zoom, click a country, Ukraine or Russia">Drag to move, scroll to zoom, click a country, Ukraine or Russia</div>
+    <div class="hint" id="hint"><span data-i18n="Drag to move, scroll to zoom, click a country, Ukraine or Russia">Drag to move, scroll to zoom, click a country, Ukraine or Russia</span>. <span data-i18n="With a keyboard, use “Find your country” or the Ranking view.">With a keyboard, use “Find your country” or the Ranking view.</span></div>
     <div class="tooltip" id="tip" hidden></div>
     <div class="legend" id="legend" data-collapsed="true"></div>
     <div class="zoom">
@@ -417,8 +462,11 @@ body[data-panel="open"] .view-inner { margin-right: 420px; margin-left: 0; }
       <button id="zout" aria-label="Zoom out" data-i18n-aria="Zoom out">−</button>
       <button id="zreset" aria-label="Show whole world" data-i18n-aria="Show whole world" style="font-size:12px">⟲</button>
     </div>
-    <aside class="panel" id="panel" data-open="false" data-full="false" aria-live="polite"></aside>
-  </div>
+    <!-- inert while closed, so Tab cannot reach its hidden controls; named by its heading (see head()) -->
+    <aside class="panel" id="panel" data-open="false" data-full="false" role="region" aria-labelledby="panel-title" inert></aside>
+  </main>
+  <!-- one-line summary of what the panel shows, read out when it opens -->
+  <div class="sr-only" id="announce" aria-live="polite"></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
@@ -595,32 +643,42 @@ function scaled(c, bn, measure = state.measure) {
 }
 
 // ===== Formatting =====
+// every displayed decimal goes through num(): decimal comma and digit grouping as the chosen language writes them
+const num = (v, digits = 0, minDigits = digits) => v.toLocaleString(LANG, { minimumFractionDigits: minDigits, maximumFractionDigits: digits });
+// an amount with its unit ("bn", "m" or none); each language places the € and the unit word its own way ("€848 bn", "848 Mrd. €")
+const money = (n, unit) => t(unit === "bn" ? "€{n} bn" : unit === "m" ? "€{n} m" : "€{n}", { n });
+// English writes compact amounts without the space ("€21.7bn"); other languages keep their unit word apart
+const tight = s => (LANG === "en" ? s.replace(/ (bn|m)$/, "$1") : s);
+// number and unit of an amount in € billion
+const amount = bn => { const a = Math.abs(bn); return a < 0.0005 ? ["0", ""] : a >= 100 ? [num(a), "bn"] : a >= 1 ? [num(a, 1), "bn"] : [num(a * 1000), "m"]; };
 function eur(bn, signed) {
   if (bn == null || isNaN(bn)) return "–";
   const s = bn > 0 ? (signed ? "+" : "") : bn < 0 ? "−" : "";
-  const a = Math.abs(bn);
-  if (a < 0.0005) return "€0";
-  return s + "€" + (a >= 100 ? Math.round(a) + " bn" : a >= 1 ? a.toFixed(1) + " bn" : Math.round(a * 1000) + " m");
+  const [n, unit] = amount(bn);
+  if (n === "0") return money("0");
+  return s + money(n, unit);
 }
-const shortEur = (v, signed) => eur(v, signed).replace(" bn", "bn").replace(" m", "m");
+const shortEur = (v, signed) => tight(eur(v, signed));
 // compact range: "€21.7–23.9bn", "−€891m to −€429m"
 function rangeTxt(lo, hi) {
-  const a = shortEur(lo), b = shortEur(hi);
-  const unit = x => x.slice(-2) === "bn" ? "bn" : x.slice(-1);
-  if (lo >= 0 && unit(a) === unit(b)) return a.replace(/(bn|m)$/, "") + "–" + b.replace("€", "");
-  return t("{lo} to {hi}", { lo: a, hi: b });
+  const [na, ua] = amount(lo), [nb, ub] = amount(hi);
+  if (lo >= 0 && ua === ub && ua) return tight(money(na + "–" + nb, ua));
+  return t("{lo} to {hi}", { lo: shortEur(lo), hi: shortEur(hi) });
 }
-function fmtMeasure(c, bn, measure = state.measure, signed = false) {
+// unit = false leaves out the "pp" (per person) after amounts per person, for places that say "per person" in words
+function fmtMeasure(c, bn, measure = state.measure, signed = false, unit = true) {
   const v = scaled(c, bn, measure);
   if (v == null) return "–";
   const sg = v > 0 ? (signed ? "+" : "") : v < 0 ? "−" : "";
   const a = Math.abs(v);
-  if (measure === "pp") return sg + "€" + (a >= 10 ? Math.round(a).toLocaleString(LANG) : a.toFixed(1)) + (measure === "pp" ? " pp" : "");
-  if (measure === "gdp") return sg + (a >= 1 ? a.toFixed(1) : a >= 0.01 ? a.toFixed(2) : a > 0 ? "<0.01" : "0") + "%";
+  if (measure === "pp") { const m = money(a >= 10 ? num(a) : num(a, 1)); return sg + (unit ? t("{v} pp", { v: m }) : m); }
+  if (measure === "gdp") return sg + (a >= 1 ? num(a, 1) : a >= 0.01 ? num(a, 2) : a > 0 ? "<" + num(0.01, 2) : "0") + "%";
   return eur(bn, signed);
 }
-const perPerson = (c, bn) => t("{v} per person", { v: fmtMeasure(c, bn, "pp").replace(" pp", "") });
-const count = n => (n >= 1000 ? (n / 1000).toFixed(n % 1000 && n < 100000 ? 1 : 0) + "k" : String(Math.round(n)));
+const perPerson = (c, bn) => t("{v} per person", { v: fmtMeasure(c, bn, "pp", false, false) });
+// English keeps "12.5k"; other languages get the browser's short form ("12,5 тис.")
+const compact = v => (LANG === "en" ? d3.format("~s")(v).replace("G", "B") : v.toLocaleString(LANG, { notation: "compact", maximumFractionDigits: 1 }));
+const count = n => (n >= 1000 ? (LANG === "en" ? (n / 1000).toFixed(n % 1000 && n < 100000 ? 1 : 0) + "k" : compact(n)) : String(Math.round(n)));
 const chip = cert => `<span class="chip ${cert.toLowerCase()}" title="${t("Certainty {c}: {what}", { c: cert, what: t({ A: "reported", B: "measured estimate", C: "modelled estimate", D: "rough indication" }[cert]) })}">${cert}</span>`;
 
 // footnotes: each panel render numbers its sources
@@ -635,7 +693,8 @@ function sourcesHtml() {
   if (!refs.length) return "";
   return `<section class="section"><h3>${t("Sources")}</h3><ol class="sources">${refs.map((id, i) => {
     const s = SRC[id];
-    return `<li id="src-${i + 1}">${s.url ? `<a href="${s.url}" target="_blank" rel="noopener">${s.name}</a>` : s.name}${s.date ? t(", data to {date}", { date: s.date }) : ""}${s.note ? ` · ${s.note}` : ""}</li>`;
+    // names and notes come from data.json in English: lang="en" lets screen readers and hyphenation treat them as English
+    return `<li id="src-${i + 1}">${s.url ? `<a href="${s.url}" target="_blank" rel="noopener" lang="en">${s.name}</a>` : `<span lang="en">${s.name}</span>`}${s.date ? t(", data to {date}", { date: s.date }) : ""}${s.note ? ` · <span lang="en">${s.note}</span>` : ""}</li>`;
   }).join("")}</ol></section>`;
 }
 
@@ -647,8 +706,8 @@ function readColors() {
 }
 function fmtTick(v, signed) {
   const sg = v < 0 ? "−" : signed && v > 0 ? "+" : "";
-  if (state.measure === "pp") return sg + "€" + d3.format("~s")(Math.abs(v)).replace("G", "B");
-  if (state.measure === "gdp") return sg + d3.format(".2~")(Math.abs(v)) + "%";
+  if (state.measure === "pp") return sg + money(compact(Math.abs(v)));
+  if (state.measure === "gdp") return sg + num(+d3.format(".2~")(Math.abs(v)), 2, 0) + "%";
   return shortEur(v, signed);
 }
 let currentScale = null;
@@ -663,9 +722,12 @@ const STEPS = {
   rus: { gdp: [0.5, 2.5, 5, 15], pp: [20, 200, 1000, 3000], total: [0.5, 5, 25, 100] },
 };
 function stepLabel(v) {
-  if (state.measure === "gdp") return d3.format("~")(v) + "%";
-  if (state.measure === "pp") return "€" + d3.format(",")(v);
-  return v < 1 ? "€" + v * 1000 + "m" : "€" + v + "bn";
+  if (state.measure === "gdp") return num(v, 2, 0) + "%";
+  // other languages write the € and unit apart ("50 млрд €"), too wide for the legend: there the labels are bare
+  // numbers and the unit is said once below them (legendUnit)
+  if (LANG !== "en") return state.measure === "pp" ? num(v) : num(v, 1, 0);
+  if (state.measure === "pp") return money(num(v));
+  return tight(v < 1 ? money(num(v * 1000), "m") : money(num(v), "bn"));
 }
 function scaleFor() {
   const st = STEPS[state.lens][state.measure];
@@ -696,7 +758,7 @@ const projection = d3.geoEqualEarth();
 const path = d3.geoPath(projection);
 let features = [], countryPaths, W = 0, H = 0, transform = d3.zoomIdentity;
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const narrow = () => window.innerWidth <= 760;
+const narrow = () => window.innerWidth <= 900;   // same breakpoint as the CSS: phones and tablets get the compact layout
 
 const zoom = d3.zoom().scaleExtent([1, 14]).on("zoom", e => {
   transform = e.transform;
@@ -755,7 +817,7 @@ function paint() {
     <div class="steps">${sc.colors.map(col => `<span style="background:${col}"></span>`).join("")}</div>
     <div class="step-labels">${sc.labels.map((l, i) => (sc.labels.length > 4 && ![0, 2, 5, 7].includes(i) ? "" : `<span style="left:${((i + 1) / sc.colors.length) * 100}%">${l}</span>`)).join("")}${sc.labels.length > 4 ? `<span style="left:50%">0</span>` : ""}</div>
     <div class="ticks" style="font-family:var(--font-body);margin-top:2px"><span>← ${sc.ends[0]}</span><span>${sc.ends[1]} →</span></div>
-    <div class="keys"><span>${period}, ${measure}</span>
+    <div class="keys"><span>${period}, ${LANG !== "en" && state.measure !== "gdp" ? t(state.measure === "pp" ? "€ per person" : "€ billion") : measure}</span>
       <span><svg width="10" height="10" style="vertical-align:-1px;margin-right:4px"><rect width="10" height="10" fill="url(#hatch)"/></svg>${t("No data yet")}</span></div>
     <div class="flowkey" ${state.flows ? "" : "hidden"}>
       <span><svg width="28" height="8"><line x1="0" y1="4" x2="28" y2="4" stroke="${C.ukr}" stroke-width="3" stroke-linecap="round"/><circle cx="18" cy="4" r="3" fill="${C.ukr}"/></svg>${t("To Ukraine in {y}", { y: state.year })}</span>
@@ -845,7 +907,7 @@ function tipHtml(c, name) {
     extra = `<br><span style="color:var(--ink-soft)">${t("range {lo} to {hi}", { lo: fmtMeasure(c, lo, state.measure, true), hi: fmtMeasure(c, hi, state.measure, true) })}</span>`;
   }
   const dir = state.lens === "change" && state.year > 2021 ? " " + t(v >= 0 ? "toward Ukraine" : "toward Russia") : state.lens === "cost" && v < 0 ? " " + t("net gain") : "";
-  return `<b>${c.name}</b><span class="v">${fmtMeasure(c, state.lens === "change" ? Math.abs(v) : v, state.measure, false).replace(" pp", " " + t("per person"))}${dir}</span>${extra}`;
+  return `<b>${c.name}</b><span class="v">${fmtMeasure(c, state.lens === "change" ? Math.abs(v) : v, state.measure, false, false)}${state.measure === "pp" ? " " + t("per person") : ""}${dir}</span>${extra}`;
 }
 function showTip(e, html) {
   tip.innerHTML = html; tip.hidden = false;
@@ -858,28 +920,80 @@ function showTip(e, html) {
 
 // ===== Panels =====
 const panel = document.getElementById("panel");
-function openPanel(kind, id) {
+// ----- the address: "#POL" (a panel), "#view=rank" (a view) or both, "#view=rank&c=POL" -----
+function parseHash() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (!h.includes("=")) return { view: "map", c: h.toUpperCase() };
+  const p = new URLSearchParams(h);
+  return { view: p.get("view") || "map", c: (p.get("c") || "").toUpperCase() };
+}
+function panelCode() {
+  const c = DATA[state.selected];
+  return { country: c && c.iso3, compare: c && c.iso3, ukraine: "UKR", russia: "RUS", overview: "rankings" }[state.panel] || "";
+}
+function writeHash(push) {
+  const v = state.view && state.view !== "map" ? state.view : "", c = panelCode();
+  const h = v && c ? `#view=${v}&c=${c}` : v ? "#view=" + v : c ? "#" + c : "";
+  try { history[push ? "pushState" : "replaceState"]({ panel: !!c }, "", location.pathname + location.search + h); } catch (e) { /* file:// */ }
+}
+// opening a panel adds a history entry, so the phone's Back button closes the sheet; closing it with × or Escape goes back
+// over that entry. how: "history" (Back/Forward: the address is already right) or "load" (first render: no entry, no focus move)
+let pushed = false, backing = false, opener = null;
+function openPanel(kind, id, how) {
+  const wasOpen = !!state.panel;
+  if (!wasOpen) opener = document.activeElement && document.activeElement !== document.body ? document.activeElement : null;
   document.body.dataset.panel = "open";
   state.panel = kind; state.selected = kind === "country" ? id : null;
   if (kind !== "compare") state.compare = null;
   countryPaths.classed("selected", f => f.id === state.selected);
   if (state.selected) countryPaths.filter(f => f.id === state.selected).raise();
-  const c = DATA[id];
-  try { history.replaceState(null, "", kind === "country" && c ? "#" + c.iso3 : kind === "ukraine" ? "#UKR" : kind === "russia" ? "#RUS" : kind === "overview" ? "#rankings" : location.pathname); } catch (e) {}
+  if (how === "history") pushed = !!(history.state && history.state.panel);
+  else { writeHash(!wasOpen && how !== "load"); if (!wasOpen) pushed = how !== "load"; }
   renderPanel();
   panel.scrollTop = 0;
+  if (how !== "load") { const h = panel.querySelector("#panel-title"); if (h) h.focus({ preventScroll: true }); }
+  announce(kind === "country" && DATA[id] ? shareText(DATA[id]) : [panel.querySelector("#panel-title"), panel.querySelector(".panel-head .meta")].filter(Boolean).map(e => e.textContent).join(" · "));
   if (reduceMotion) drawFlows(0);
 }
-function closePanel() {
+function announce(text) {
+  const el = document.getElementById("announce");
+  // cleared first, so the same summary is read out again when the same panel opens twice
+  el.textContent = ""; setTimeout(() => (el.textContent = text), 60);
+}
+function closePanel(how) {
+  if (!state.panel) return;
   panel.dataset.open = "false"; state.panel = null; state.selected = null; state.compare = null;
+  panel.inert = true;   // its controls are off screen: Tab must not reach them (and scroll the page sideways)
   document.body.dataset.panel = "closed";
   countryPaths.classed("selected", false);
   if (reduceMotion) drawFlows(0);
-  try { history.replaceState(null, "", location.pathname); } catch (e) {}
+  if (how !== "history") { if (pushed) { backing = true; history.back(); } else writeHash(false); }
+  pushed = false;
+  // focus goes back to what opened the panel; a chart row re-rendered since then is found again by its country
+  let back = opener;
+  if (back && !back.isConnected && back.dataset && back.dataset.n) back = document.querySelector(`#view [data-n="${back.dataset.n}"]`);
+  if (back && back.isConnected) back.focus({ preventScroll: true });
+  opener = null;
 }
+// Back, Forward or an edited address: show what the address says
+function route(how) {
+  const h = parseHash();
+  if (window.setView && VIEWS.includes(h.view) && h.view !== (state.view || "map")) window.setView(h.view, true);
+  if (h.c === "UKR") { if (state.panel !== "ukraine") select("804", false, how); }
+  else if (h.c === "RUS") { if (state.panel !== "russia") select("643", false, how); }
+  else if (h.c === "RANKINGS") { if (state.panel !== "overview") openPanel("overview", null, how); }
+  else if (byIso[h.c]) { if (state.panel !== "country" || state.selected !== byIso[h.c].n) select(byIso[h.c].n, true, how); }
+  else if (state.panel) closePanel("history");
+}
+const VIEWS = ["map", "rank", "bubbles", "table", "how", "expect"];
+window.addEventListener("popstate", () => {
+  // the entry left by closing the panel: keep the view chosen meanwhile in the address
+  if (backing) { backing = false; writeHash(false); return; }
+  if (countryPaths) route("history");
+});
 function head(title, meta) {
   return `<button class="sheet-handle" id="sheet-handle" aria-label="${t("Expand panel")}"></button>
-    <div class="panel-head"><div style="min-width:0"><h2>${title}</h2>${meta ? `<div class="meta">${meta}</div>` : ""}</div>
+    <div class="panel-head"><div style="min-width:0"><h2 id="panel-title" tabindex="-1">${title}</h2>${meta ? `<div class="meta">${meta}</div>` : ""}</div>
     <button class="close" id="close" aria-label="${t("Close")}">×</button></div>`;
 }
 function renderPanel() {
@@ -891,15 +1005,20 @@ function renderPanel() {
   else if (state.panel === "ukraine") html = targetPanel("ukr");
   else if (state.panel === "russia") html = targetPanel("rus");
   else if (state.panel === "overview") html = overviewPanel();
+  // a re-render (new year, other tab) replaces every control: keep keyboard focus on the same one, or on the heading
+  const a = panel.contains(document.activeElement) ? document.activeElement : null;
+  const again = a && (a.id ? "#" + a.id : [...a.attributes].filter(x => x.name.startsWith("data-")).map(x => `[${x.name}="${x.value}"]`).join(""));
   panel.innerHTML = html;
   panel.dataset.open = "true";
+  panel.inert = false;
   wirePanel();
+  if (a) (again && panel.querySelector(again) || panel.querySelector("#panel-title")).focus({ preventScroll: true });
 }
 function wirePanel() {
   const q = s => panel.querySelector(s);
-  q("#close") && (q("#close").onclick = closePanel);
+  q("#close") && (q("#close").onclick = () => closePanel());
   q("#sheet-handle") && (q("#sheet-handle").onclick = () => (panel.dataset.full = panel.dataset.full === "true" ? "false" : "true"));
-  panel.querySelectorAll("[data-goto]").forEach(b => (b.onclick = () => select(b.dataset.goto, true)));
+  panel.querySelectorAll("[data-goto]").forEach(b => (b.onclick = e => { e.preventDefault(); select(b.dataset.goto, true); }));
   panel.querySelectorAll("[data-rank-metric]").forEach(b => (b.onclick = () => { state.rankMetric = b.dataset.rankMetric; renderPanel(); }));
   panel.querySelectorAll("[data-rank-measure]").forEach(b => (b.onclick = () => { state.rankMeasure = b.dataset.rankMeasure; renderPanel(); }));
   panel.querySelectorAll("[data-sort]").forEach(b => (b.onclick = () => { state.tableSort = b.dataset.sort; renderPanel(); }));
@@ -912,19 +1031,23 @@ function wirePanel() {
 }
 // each country has its own page with a preview image, so a shared link shows that country's number
 const SITE_URL = "https://intelligent-cream.github.io/follow-the-money-ukraine/";
+// the one-line summary of a country: shared, and read out when its panel opens
+function shareText(c) {
+  const k = calc(c, Math.max(2022, state.year));
+  return t(k.shift >= 0 ? "{name}: {pct} of a year's GDP shifted toward Ukraine since before the war ({eur})." : "{name}: {pct} of a year's GDP shifted toward Russia since before the war ({eur}).",
+    { name: c.name, pct: fmtMeasure(c, k.shift, "gdp", true), eur: eur(k.shift, true) });
+}
 async function shareCountry(c, btn) {
   if (!c) return;
-  const k = calc(c, Math.max(2022, state.year));
   const url = SITE_URL + "c/" + c.iso3.toLowerCase() + ".html";
-  const text = t(k.shift >= 0 ? "{name}: {pct} of a year's GDP shifted toward Ukraine since before the war ({eur})." : "{name}: {pct} of a year's GDP shifted toward Russia since before the war ({eur}).",
-    { name: c.name, pct: fmtMeasure(c, k.shift, "gdp", true), eur: eur(k.shift, true) });
+  const text = shareText(c);
   try {
     if (navigator.share) { await navigator.share({ title: t("Follow the Money: Ukrainian Aid"), text, url }); return; }
     await navigator.clipboard.writeText(text + " " + url);
     btn.textContent = t("Link copied");
   } catch (e) {
     if (e && e.name === "AbortError") return;
-    prompt(t("Copy this link"), url);
+    prompt(t("Copy this link"), text + " " + url);
   }
   setTimeout(() => (btn.textContent = t("Share")), 2000);
 }
@@ -983,13 +1106,22 @@ function rangeLine(c, lo, hi, cert) {
   return `<div class="range-txt">${t("Likely range {lo} to {hi} of a year's GDP ({elo} to {ehi})", { lo: fmtMeasure(c, lo, "gdp", true), hi: fmtMeasure(c, hi, "gdp", true), elo: eur(lo, true), ehi: eur(hi, true) })} ${chip(cert)} <span title="${t("About a 90% range. Each part has its own low and high value from the data or method; the parts' margins are combined as independent errors (square root of the sum of squares).")}">ⓘ</span></div>`;
 }
 
+// regions for the compare list (ISO 3166 alpha-3); anything not listed is Asia & Pacific
+const REGIONS = [["eu", "EU"], ["eur", "Other Europe"], ["am", "Americas"], ["asia", "Asia & Pacific"], ["mea", "Middle East & Africa"]];
+const REGION_OF = {};
+Object.entries({
+  eu: "AUT BEL BGR HRV CYP CZE DNK EST FIN FRA DEU GRC HUN IRL ITA LVA LTU LUX MLT NLD POL PRT ROU SVK SVN ESP SWE",
+  eur: "ALB AND ARM AZE BIH BLR CHE FRO GBR GEO GIB GGY IMN ISL JEY LIE MCO MDA MKD MNE NOR SMR SRB TUR UKR VAT XKX",
+  am: "ABW AIA ARG ATG BES BHS BLM BLZ BMU BOL BRA BRB BVT CAN CHL COL CRI CUB CUW CYM DMA DOM ECU FLK GRD GRL GTM GUY HND HTI JAM KNA LCA MAF MEX MSR NIC PAN PER PRI PRY SGS SLV SPM SUR SXM TCA TTO UMI URY USA VCT VEN VGB VIR",
+  mea: "AGO ARE ATF BDI BEN BFA BHR BWA CAF CIV CMR COD COG COM CPV DJI DZA EGY ERI ESH ETH GAB GHA GIN GMB GNB GNQ IRN IRQ ISR JOR KEN KWT LBN LBR LBY LSO MAR MDG MLI MOZ MRT MUS MWI MYT NAM NER NGA OMN PSE QAT REU RWA SAU SDN SEN SHN SLE SOM SSD STP SWZ SYC SYR TCD TGO TUN TZA UGA YEM ZAF ZMB ZWE",
+}).forEach(([r, list]) => list.split(" ").forEach(i => (REGION_OF[i] = r)));
 function countryPanel(c) {
   if (!c) return head(t("Unknown")) + `<div class="panel-body"><p class="empty">${t("No data for this country yet.")}</p></div>`;
   const y = Math.max(2022, state.year), k = calc(c, y);
   const pos = k.shift >= 0, ytd = y === 2026 && FRAC[5] < 1 ? t(" (2026 to date)") : "";
-  const meta = `${c.iso3} · ${c.pop ? t("{n} m people", { n: c.pop >= 10 ? Math.round(c.pop) : c.pop.toFixed(1) }) : t("population n/a")} · ${c.gdp ? t("GDP €{n} bn", { n: Math.round(c.gdp).toLocaleString(LANG) }) : t("GDP n/a")}`;
+  const meta = `${c.iso3} · ${c.pop ? t("{n} m people", { n: num(c.pop, c.pop >= 10 ? 0 : 1) }) : t("population n/a")} · ${c.gdp ? t("GDP {eur}", { eur: money(num(c.gdp), "bn") }) : t("GDP n/a")}`;
   const others = Object.values(DATA).filter(o => o !== c).sort((a, b) => a.name.localeCompare(b.name, LANG));
-  const tools = `<div class="panel-tools"><button class="btn" id="share-btn" aria-label="${t("Share {name}'s numbers", { name: c.name })}">${t("Share")}</button><select id="compare-select" aria-label="${t("Compare with another country")}"><option value="">${t("Compare with…")}</option>${others.map(o => `<option value="${o.n}">${o.name}</option>`).join("")}</select></div>`;
+  const tools = `<div class="panel-tools"><button class="btn" id="share-btn" aria-label="${t("Share {name}'s numbers", { name: c.name })}">${t("Share")}</button><select id="compare-select" aria-label="${t("Compare with another country")}"><option value="">${t("Compare with…")}</option>${REGIONS.map(([r, label]) => `<optgroup label="${t(label)}">${others.filter(o => (REGION_OF[o.iso3] || "asia") === r).map(o => `<option value="${o.n}">${o.name}</option>`).join("")}</optgroup>`).join("")}</select></div>`;
   const backSec = k.backParts.length ? `<section class="section">
       <h3>${t("Money flowing back to {name}", { name: c.name })}</h3>
       <div class="big" style="font-size:24px;color:var(--back)">${eur(k.flowback)} <span style="font-size:13px;font-weight:500;font-family:var(--font-data)">(${rangeTxt(k.flowbackLo, k.flowbackHi)})</span></div>
@@ -998,7 +1130,7 @@ function countryPanel(c) {
     </section>` : "";
   const aidCats = c.aid?.cats ? Object.entries(c.aid.cats).filter(([, v]) => v) : [];
   const euAid = c.aid?.eu_years ? c.aid.eu_years.slice(1, yi(y) + 1).reduce((a, b) => a + b, 0) : 0;
-  const share = euAid ? `<p class="key" style="margin-top:8px">${t("<b>Share of EU-level aid</b>: {eur}. The EU itself gives aid to Ukraine (the Ukraine Facility, macro-financial loans, the European Peace Facility), paid from the EU budget that members fund. Each member is counted for its share of that budget: {pct}% for {name}. This applies to every member, also those that opposed the aid, because their contributions paid for it", { eur: eur(euAid), pct: (c.aid.eu_share * 100).toFixed(1), name: c.name })}${ref(["kiel_eu_share"])}.</p>` : "";
+  const share = euAid ? `<p class="key" style="margin-top:8px">${t("<b>Share of EU-level aid</b>: {eur}. The EU itself gives aid to Ukraine (the Ukraine Facility, macro-financial loans, the European Peace Facility), paid from the EU budget that members fund. Each member is counted for its share of that budget: {pct}% for {name}. This applies to every member, also those that opposed the aid, because their contributions paid for it", { eur: eur(euAid), pct: num(c.aid.eu_share * 100, 1), name: c.name })}${ref(["kiel_eu_share"])}.</p>` : "";
   const companies = c.company ? `<section class="section">
       <h3>${t("Companies based here, operating in Russia")}</h3>
       <div class="kv">
@@ -1023,8 +1155,8 @@ function countryPanel(c) {
   const signed = state.lens === "change";
   const figCard = `<div class="fig"><span class="sw" style="background:${sv == null || !currentScale ? "transparent" : currentScale.color(sv)}"></span>
       <div><div class="t">${t("On the map: {what}", { what: lensName + (state.netBack && kk ? t(", after money flowing back") : "") })}</div>
-      <div class="v">${fmtMeasure(c, lv, state.measure, signed).replace(" pp", "")}${state.measure === "pp" ? ` <span style="font-size:14px">${t("per person")}</span>` : state.measure === "gdp" ? ` <span style="font-size:14px">${t("of a year's GDP")}</span>` : ""}</div></div>
-      <div class="s">${kk ? t("Likely range {lo} to {hi}", { lo: fmtMeasure(c, rlo, state.measure, signed).replace(" pp", ""), hi: fmtMeasure(c, rhi, state.measure, signed).replace(" pp", "") }) + " · " : ""}${state.year === 2021 ? "2021" : "2022–" + state.year}${state.measure !== "total" ? " · " + eur(lv, signed) : ""}. ${t("Change the view or measure at the top to see other numbers.")}</div></div>`;
+      <div class="v">${fmtMeasure(c, lv, state.measure, signed, false)}${state.measure === "pp" ? ` <span style="font-size:14px">${t("per person")}</span>` : state.measure === "gdp" ? ` <span style="font-size:14px">${t("of a year's GDP")}</span>` : ""}</div></div>
+      <div class="s">${kk ? t("Likely range {lo} to {hi}", { lo: fmtMeasure(c, rlo, state.measure, signed, false), hi: fmtMeasure(c, rhi, state.measure, signed, false) }) + " · " : ""}${state.year === 2021 ? "2021" : "2022–" + state.year}${state.measure !== "total" ? " · " + eur(lv, signed) : ""}. ${t("Change the view or measure at the top to see other numbers.")}</div></div>`;
   return head(c.name, meta) + `<div class="panel-body">
     ${figCard}
     ${tools}
@@ -1035,7 +1167,7 @@ function countryPanel(c) {
       ${rangeLine(c, k.shiftLo, k.shiftHi, k.shiftCert)}
       ${waterfall(k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label.toLowerCase() }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
       ${share}
-      ${c.hub ? `<p class="key" style="margin-top:8px"><b>${t("Transit hub:")}</b> ${c.hub}.</p>` : ""}
+      ${c.hub ? `<p class="key" style="margin-top:8px"><b>${t("Transit hub:")}</b> <span lang="en">${c.hub}</span>.</p>` : ""}
     </section>
     <section class="section">
       <h3>${t("What it cost {name}", { name: c.name })}</h3>
@@ -1046,7 +1178,7 @@ function countryPanel(c) {
         ${state.netBack && k.flowback ? `<span>${t("Profit on money flowing back (20%)")}</span><span class="v">${eur(-k.flowbackProfit, true)}</span>` : ""}</div>
     </section>
     ${backSec}
-    ${c.coverage ? `<section class="section"><h3>${t("Data coverage")}</h3><div class="cov">${c.coverage.map(p => `<div class="cov-row"><span class="dot ${p.status}" title="${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}"></span><span>${t(p.part)}: ${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}</span><span class="n">${p.note}</span></div>`).join("")}</div>
+    ${c.coverage ? `<section class="section"><h3>${t("Data coverage")}</h3><div class="cov">${c.coverage.map(p => `<div class="cov-row"><span class="dot ${p.status}" title="${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}"></span><span>${t(p.part)}: <span class="${p.status === "missing" ? "miss" : ""}">${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}</span></span><span class="n" lang="en">${p.note}</span></div>`).join("")}</div>
       <p class="key" style="margin-top:8px">${t("Estimated parts carry a wider range. Nothing is left at zero because data is missing.")}</p></section>` : ""}
     <section class="section">
       <h3>${t("Per year against the pre-war level")}</h3>
@@ -1069,7 +1201,7 @@ function countryPanel(c) {
       <li>${t("<b>Prices</b>: changes against the pre-war level compare volumes, not price swings. What was bought from or sold to Russia (and Ukraine) each year is divided by its price level against 2019–2021, from the country's own pre-war mix of oil, oil products, gas, coal and other goods. A country that bought the same amount of gas in 2022 at four times the price did not move towards Russia; one that cut its purchases is credited with the drop in volume, at pre-war prices.")}</li>
       <li>${t("<b>Transit</b>: gas, oil and goods are counted where they are used, not where they cross the border. Gas passing through Slovakia, Austria, Germany or Bulgaria is counted for the country that burns it; fuel resold by trading hubs (Singapore, the Netherlands, Belgium, Greece, Malta) for the hub's customers; gold passed through Hong Kong for mainland China.")}</li>
       <li>${t("<b>Margins of error</b>: every part has a middle value and a low–high range of about 90%. The range comes from the data where the sources give one (alternative pre-war baselines, reporting differences, spread between methods); otherwise from the certainty letter (A ±5%, B ±15%, C ±35%, D ±70%). Totals combine the parts' margins as independent errors.")}</li>
-      <li>${t("<b>Rankings</b> leave out economies under €5bn GDP and countries whose likely range crosses zero.")}</li>
+      <li>${t("<b>Top lists</b> leave out economies under {min} GDP and countries whose likely range crosses zero.", { min: tight(money(num(MIN_GDP_RANK), "bn")) })}</li>
     </ul></details>
     ${sourcesHtml()}
   </div>`;
@@ -1090,7 +1222,7 @@ function comparePanel(a, b) {
     ["Paid to Russia, change vs before the war", x => { const T = x.c.T.paid, i = Math.max(1, yi(y)); return T.m ? (T.c[i] / FRAC[i] / (T.p[i] || 1) / (T.m * (T.q[i] || 1)) - 1) * 100 : null; }, "pct", true],
   ];
   const A = { c: a, k: ka }, B = { c: b, k: kb };
-  const fmt = (x, f, m, sg) => { const v = f(x); if (v == null) return "–"; if (m === "pct") return (v >= 0 ? "+" : "−") + Math.abs(Math.round(v)) + "%"; return fmtMeasure(x.c, v, m, sg).replace(" pp", ""); };
+  const fmt = (x, f, m, sg) => { const v = f(x); if (v == null) return "–"; if (m === "pct") return (v >= 0 ? "+" : "−") + Math.abs(Math.round(v)) + "%"; return fmtMeasure(x.c, v, m, sg, false); };
   const val = (x, f, m) => { const v = f(x); return m === "pct" ? v : scaled(x.c, v, m); };
   return head(t("{a} vs {b}", { a: a.name, b: b.name }), `2022–${y}`) + `<div class="panel-body">
     <div class="panel-tools"><button class="btn" id="compare-back">${t("← Back to {name}", { name: a.name })}</button></div>
@@ -1118,12 +1250,12 @@ function rankList(list, metricFn, _measure, colourFn, n = 20, rangeFn = null) {
   const max = rows.length ? (byEur ? rows[0].eurV : rows[0].pct) : 1;
   return `<div class="rank">${rows.map((r, i) => `<button class="rank-row" data-goto="${r.c.n}">
       <span class="i">${i + 1}</span><span>${r.c.name}</span><span class="v"><b>${fmtMeasure(r.c, r.eurV, "gdp")}</b> <span class="eur">${eur(r.eurV)}</span></span>
-      <span class="track"><div style="width:${((byEur ? r.eurV : r.pct) / max) * 100}%;background:${colourFn(r.c)}"></div></span></button>`).join("")}</div>`;
+      <span class="track"><span style="width:${((byEur ? r.eurV : r.pct) / max) * 100}%;background:${colourFn(r.c)}"></span></span></button>`).join("")}</div>`;
 }
 const MIN_GDP_RANK = 5;   // € billion
 function measureTabs() {
   return `<div class="tabs"><span class="key" style="align-self:center">${t("Sort by")}</span>${[["gdp", "% of GDP"], ["total", "Net €"]].map(([m, l]) => `<button data-rank-measure="${m}" aria-pressed="${(state.rankMeasure === "total") === (m === "total")}">${t(l)}</button>`).join("")}</div>
-    <p class="key" style="margin:-4px 0 8px">${t("Each row: the total as % of a year's GDP (as on the map), then the same total in euros, 2022–{y}. Left out: economies under €{min}bn GDP, and countries whose likely range crosses zero.", { y: Math.max(2022, state.year), min: MIN_GDP_RANK })}</p>`;
+    <p class="key" style="margin:-4px 0 8px">${t("Each row: the total as % of a year's GDP (as on the map), then the same total in euros, 2022–{y}. Left out: economies under {min} GDP, and countries whose likely range crosses zero.", { y: Math.max(2022, state.year), min: tight(money(num(MIN_GDP_RANK), "bn")) })}</p>`;
 }
 function targetPanel(side) {
   const y = Math.max(2022, state.year);
@@ -1181,7 +1313,7 @@ function overviewPanel() {
   const tUkr = rows.reduce((s, r) => s + r.k.aid + r.k.refugees, 0), tRus = rows.reduce((s, r) => s + r.k.paidRussia, 0);
   const metricFns = { shift: c => calc(c, y).shift, cost: c => calc(c, y).cost, rus: c => -calc(c, y).shift };
   const rangeFns = { shift: c => { const k = calc(c, y); return [k.shiftLo, k.shiftHi]; }, cost: c => { const k = calc(c, y); return [k.costLo, k.costHi]; }, rus: c => { const k = calc(c, y); return [-k.shiftHi, -k.shiftLo]; } };
-  return head(t("Rankings"), `2022–${y} · ${t("{n} countries", { n: rows.length })}`) + `<div class="panel-body">
+  return head(t("Top lists"), `2022–${y} · ${t("{n} countries", { n: rows.length })}`) + `<div class="panel-body">
     <section class="section"><div class="totals">
       <div class="head ukr"><div class="lbl">${t("Aid and refugee hosting for Ukraine")}</div><div class="num" style="color:var(--ukr)">${eur(tUkr)}</div></div>
       <div class="head rus"><div class="lbl">${t("Money reaching Russia")}</div><div class="num" style="color:var(--rus)">${eur(tRus)}</div></div>
@@ -1194,19 +1326,19 @@ function overviewPanel() {
     <details class="more"><summary>${t("Data gaps by country")}</summary>
       <p class="key">${t("● reported · ○ estimated with a range · ✕ missing. Hover a mark for details. Scroll the table sideways for all parts.")}</p>
       <div class="tbl-wrap"><table class="tbl"><thead><tr><th scope="col">${t("Country")}</th>${(rows[0]?.c.coverage || []).map(p => `<th scope="col" style="cursor:default">${t(p.part.replace("Company taxes in Russia", "Company taxes").replace("Energy switching cost", "Energy cost").replace("Money flowing back", "Flowback"))}</th>`).join("")}</tr></thead>
-      <tbody>${[...rows].sort((a, b) => (b.c.gdp || 0) - (a.c.gdp || 0)).map(r => `<tr><td><a href="#${r.c.iso3}" data-goto="${r.c.n}">${r.c.name}</a></td>${(rows[0]?.c.coverage || []).map(h => { const p = (r.c.coverage || []).find(x => x.part === h.part); return p ? `<td class="cov-${p.status}" title="${p.note.replace(/"/g, "&quot;")}">${{ ok: "●", est: "○", missing: "✕" }[p.status]}</td>` : "<td>–</td>"; }).join("")}</tr>`).join("")}</tbody></table></div>
+      <tbody>${[...rows].sort((a, b) => (b.c.gdp || 0) - (a.c.gdp || 0)).map(r => `<tr><td><a href="#${r.c.iso3}" data-goto="${r.c.n}">${r.c.name}</a></td>${(rows[0]?.c.coverage || []).map(h => { const p = (r.c.coverage || []).find(x => x.part === h.part); return p ? `<td class="cov-${p.status}" lang="en" title="${p.note.replace(/"/g, "&quot;")}">${{ ok: "●", est: "○", missing: "✕" }[p.status]}</td>` : "<td>–</td>"; }).join("")}</tr>`).join("")}</tbody></table></div>
     </details>
     <details class="more"><summary>${t("All countries (table)")}</summary>
-      <div class="tbl-wrap"><table class="tbl"><thead><tr><th scope="col">${t("Country")}</th>${cols.map(([k, l]) => `<th scope="col" data-sort="${k}" aria-sort="${state.tableSort === k ? "descending" : "none"}">${t(l)}${state.tableSort === k ? " ▾" : ""}</th>`).join("")}</tr></thead>
-      <tbody>${rows.map(r => `<tr><td><a href="#${r.c.iso3}" data-goto="${r.c.n}">${r.c.name}</a></td>${cols.map(([, , f, m]) => `<td>${fmtMeasure(r.c, f(r), m, m !== "pp" && f === cols[0][2]).replace(" pp", "")}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th scope="col">${t("Country")}</th>${cols.map(([k, l]) => `<th scope="col" aria-sort="${state.tableSort === k ? "descending" : "none"}"><button data-sort="${k}">${t(l)}${state.tableSort === k ? " ▾" : ""}</button></th>`).join("")}</tr></thead>
+      <tbody>${rows.map(r => `<tr><td><a href="#${r.c.iso3}" data-goto="${r.c.n}">${r.c.name}</a></td>${cols.map(([, , f, m]) => `<td>${fmtMeasure(r.c, f(r), m, m !== "pp" && f === cols[0][2], false)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
     </details>
   </div>`;
 }
 
-function select(id, zoomTo) {
-  if (id === "804") return openPanel("ukraine");
-  if (id === "643") return openPanel("russia");
-  openPanel("country", id);
+function select(id, zoomTo, how) {
+  if (id === "804") return openPanel("ukraine", null, how);
+  if (id === "643") return openPanel("russia", null, how);
+  openPanel("country", id, how);
   hideHint();
   if (!zoomTo) return;
   const c = DATA[id];
@@ -1231,27 +1363,38 @@ function hideHint() { if (hintHidden) return; hintHidden = true; const h = docum
 // ===== Controls =====
 function setPressed(sel, attr, val) { document.querySelectorAll(sel).forEach(b => b.setAttribute("aria-pressed", String(b.dataset[attr] === val))); }
 const LENS_RANK = { change: "shift", cost: "cost", ukr: "shift", rus: "rus" };
-document.querySelectorAll("[data-lens]").forEach(b => (b.onclick = () => { state.lens = b.dataset.lens; state.rankMetric = LENS_RANK[state.lens]; setPressed("[data-lens]", "lens", state.lens); paint(); }));
+document.querySelectorAll("[data-lens]").forEach(b => (b.onclick = () => { state.lens = b.dataset.lens; state.rankMetric = LENS_RANK[state.lens]; setPressed("[data-lens]", "lens", state.lens); if (!playTimer) playBtn.setAttribute("aria-label", playLabel()); paint(); }));
 document.querySelectorAll("[data-measure]").forEach(b => (b.onclick = () => { state.measure = b.dataset.measure; setPressed("[data-measure]", "measure", state.measure); paint(); }));
 const yearInput = document.getElementById("year");
-function setYear(y) { state.year = y; yearInput.value = y; document.getElementById("year-out").textContent = y === 2026 && FRAC[5] < 1 ? t("2026 (to Aug)") : y; paint(); }
+const yearText = y => (y === 2026 && FRAC[5] < 1 ? t("2026 (to Aug)") : String(y));
+// the slider reads out the period, not just the number: "2021 (before the war)", "2026 (to Aug)"
+function showYear(y) {
+  document.getElementById("year-out").textContent = yearText(y);
+  yearInput.setAttribute("aria-valuetext", y === 2021 ? t("2021 (before the war)") : yearText(y));
+}
+function setYear(y) { state.year = y; yearInput.value = y; showYear(y); paint(); }
 yearInput.oninput = () => { stopPlay(); setYear(+yearInput.value); };
 let playTimer = null;
 const playBtn = document.getElementById("play");
-function stopPlay() { clearInterval(playTimer); playTimer = null; playBtn.textContent = "▶"; playBtn.setAttribute("aria-label", t("Play 2021 to 2026")); }
+// change and cost are zero in 2021 by definition (it is the comparison year), so playing them starts at 2022
+const playFrom = () => (state.lens === "change" || state.lens === "cost" ? 2022 : 2021);
+const playLabel = () => t(playFrom() === 2022 ? "Play 2022 to 2026" : "Play 2021 to 2026");
+function stopPlay() { clearInterval(playTimer); playTimer = null; playBtn.textContent = "▶"; playBtn.setAttribute("aria-label", playLabel()); }
 playBtn.onclick = () => {
   if (playTimer) return stopPlay();
   playBtn.textContent = "❚❚"; playBtn.setAttribute("aria-label", t("Pause"));
-  setYear(2021);
+  setYear(playFrom());
   playTimer = setInterval(() => { if (state.year >= 2026) return stopPlay(); setYear(state.year + 1); }, 1800);
 };
 document.getElementById("show-flows").onchange = e => { state.flows = e.target.checked; paint(); drawFlows(0); };
 document.getElementById("net-back").onchange = e => { state.netBack = e.target.checked; paint(); };
-document.getElementById("open-rank").onclick = () => { state.rankMetric = LENS_RANK[state.lens]; openPanel("overview"); closeMenu(); };
+document.getElementById("open-rank").onclick = () => { state.rankMetric = LENS_RANK[state.lens]; closeMenu(); openPanel("overview"); };
 const bar = document.getElementById("bar"), menuBtn = document.getElementById("menu-btn");
 function closeMenu() { bar.dataset.menu = "closed"; menuBtn.setAttribute("aria-expanded", "false"); menuBtn.textContent = t("Options"); }
-menuBtn.onclick = () => { const open = bar.dataset.menu !== "open"; bar.dataset.menu = open ? "open" : "closed"; menuBtn.setAttribute("aria-expanded", String(open)); menuBtn.textContent = t(open ? "Close" : "Options"); setTimeout(layout, 0); };
-const search = document.getElementById("search");
+// the open menu lies over the map (see the CSS), so the map keeps its size
+menuBtn.onclick = () => { const open = bar.dataset.menu !== "open"; bar.dataset.menu = open ? "open" : "closed"; menuBtn.setAttribute("aria-expanded", String(open)); menuBtn.textContent = t(open ? "Close" : "Options"); };
+const search = document.getElementById("search"), searchMsg = document.getElementById("search-msg");
+search.addEventListener("input", () => (searchMsg.textContent = ""));
 search.addEventListener("change", () => {
   const q = search.value.trim().toLowerCase();
   const all = Object.values(DATA);
@@ -1260,12 +1403,19 @@ search.addEventListener("change", () => {
   const c = all.find(x => names(x).includes(q) || x.iso3.toLowerCase() === q) || all.find(x => names(x).some(s => s.startsWith(q)));
   const is = (iso2, en) => q === en.toLowerCase() || q === regionName(iso2, en).toLowerCase();
   if (is("UA", "ukraine")) select("804"); else if (is("RU", "russia")) select("643");
-  else if (c) { select(c.n, true); search.blur(); closeMenu(); setTimeout(layout, 0); }
+  else if (c) { searchMsg.textContent = ""; closeMenu(); select(c.n, true); }
+  // no match: say so, and leave the focus in the box to try again
+  else if (q) { searchMsg.textContent = t("No country found"); if (document.activeElement !== search) search.focus(); }
 });
 document.getElementById("zin").onclick = () => svg.transition().duration(300).call(zoom.scaleBy, 1.6);
 document.getElementById("zout").onclick = () => svg.transition().duration(300).call(zoom.scaleBy, 1 / 1.6);
 document.getElementById("zreset").onclick = () => svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
-document.addEventListener("keydown", e => { if (e.key === "Escape" && state.panel) closePanel(); });
+// Escape closes the Options menu first (focus back on its button), then the panel
+document.addEventListener("keydown", e => {
+  if (e.key !== "Escape") return;
+  if (bar.dataset.menu === "open" && menuBtn.offsetParent) { closeMenu(); menuBtn.focus(); }
+  else if (state.panel) closePanel();
+});
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => countryPaths && paint());
 new MutationObserver(() => countryPaths && paint()).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 window.addEventListener("resize", () => { layout(); if (reduceMotion) drawFlows(0); });
@@ -1280,22 +1430,41 @@ function statusHtml() {
   // the banner text comes from data.json and stays English, except its first sentence (the dates), rebuilt here
   const m = STATUS_HTML.match(/^<b>Research preview<\/b> · figures to ([^,]+), updated ([^.]+)\.\s*/);
   if (LANG === "en" || !m || isNaN(new Date(m[1])) || isNaN(new Date(m[2]))) return STATUS_HTML;
-  return t("<b>Research preview</b> · figures to {to}, updated {updated}.", { to: fmtDate(new Date(m[1])), updated: fmtDate(new Date(m[2])) }) + " " + STATUS_HTML.slice(m[0].length);
+  return t("<b>Research preview</b> · figures to {to}, updated {updated}.", { to: fmtDate(new Date(m[1])), updated: fmtDate(new Date(m[2])) }) + ` <span lang="en">${STATUS_HTML.slice(m[0].length)}</span>`;
 }
 function applyLang() {
   menuBtn.textContent = t(bar.dataset.menu === "open" ? "Close" : "Options");
-  playBtn.setAttribute("aria-label", t(playTimer ? "Pause" : "Play 2021 to 2026"));
+  playBtn.setAttribute("aria-label", playTimer ? t("Pause") : playLabel());
+  svg.attr("aria-label", t("World map coloured by the change in money flows since before the war") + ". " + t("With a keyboard, use “Find your country” or the Ranking view."));
   if (!countryPaths) return;
   for (const c of Object.values(DATA)) c.name = regionName(ISO2[c.iso3], c.name_en);
   if (DATA_TO) document.body.dataset.dataTo = fmtDate(DATA_TO);
-  document.getElementById("status").innerHTML = statusHtml();
+  status.innerHTML = statusHtml();
+  syncStatus();
   const names = Object.values(DATA).map(c => c.name);
   document.getElementById("country-list").innerHTML = [regionName("UA", "Ukraine"), regionName("RU", "Russia"), ...(LANG === "en" ? names.sort() : names.sort((a, b) => a.localeCompare(b, LANG)))].map(n => `<option value="${n}"></option>`).join("");
   g.selectAll("text.target-label").text(f => (f.id === "804" ? regionName("UA", "Ukraine") : regionName("RU", "Russia")));
-  document.getElementById("year-out").textContent = state.year === 2026 && FRAC[5] < 1 ? t("2026 (to Aug)") : state.year;
+  showYear(state.year);
   paint();
 }
 window.onLangChange = applyLang;
+
+// ===== Status banner =====
+// On phones the banner is one line that opens on tap or Enter. While closed it is a button (its links, cut off in the line,
+// are inert); open, it is plain text again so its links work.
+const status = document.getElementById("status");
+function syncStatus() {
+  const phone = narrow(), open = status.dataset.open === "true";
+  status.tabIndex = phone ? 0 : -1;
+  if (!phone) status.removeAttribute("tabindex");
+  if (phone && !open) { status.setAttribute("role", "button"); status.setAttribute("aria-expanded", "false"); }
+  else { status.setAttribute("role", "note"); status.removeAttribute("aria-expanded"); }
+  status.querySelectorAll("a").forEach(a => (a.inert = phone && !open));
+}
+function toggleStatus() { if (!narrow()) return; status.dataset.open = status.dataset.open === "true" ? "false" : "true"; syncStatus(); }
+status.addEventListener("click", e => { if (!e.target.closest("a")) toggleStatus(); });
+status.addEventListener("keydown", e => { if (e.target === status && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); toggleStatus(); } });
+window.addEventListener("resize", syncStatus);
 
 // ===== Load =====
 // the chosen language's dictionary (i18n.js) loads alongside the data, so the first render is already translated
@@ -1305,9 +1474,7 @@ Promise.all([fetch(narrow() || matchMedia("(pointer: coarse)").matches ? "countr
   if (data.data_to) DATA_TO = new Date(data.data_to);
   for (const c of Object.values(data.countries)) { normalise(c); c.name_en = c.name; DATA[c.n] = c; byIso[c.iso3] = c; }
   INCLUDED = data.included_in || {};
-  const status = document.getElementById("status");
   STATUS_HTML = data.status_html || "";
-  status.onclick = () => (status.dataset.open = status.dataset.open === "true" ? "false" : "true");
   features = topojson.feature(world, world.objects.countries).features.filter(f => f.id !== "010");
   layout();
   countryPaths = g.selectAll("path.country").data(features).join("path")
@@ -1320,11 +1487,17 @@ Promise.all([fetch(narrow() || matchMedia("(pointer: coarse)").matches ? "countr
   g.selectAll("text.target-label").data(features.filter(f => f.id === "804" || f.id === "643")).join("text").attr("class", "target-label").attr("text-anchor", "middle")
     .attr("x", f => labelPos(f)[0]).attr("y", f => labelPos(f)[1] + 4);
   applyLang();
-  const hash = location.hash.slice(1).toUpperCase();
-  if (hash === "UKR") select("804"); else if (hash === "RUS") select("643"); else if (hash === "RANKINGS") openPanel("overview");
-  else if (byIso[hash]) select(byIso[hash].n, true);
-  else { const [cx, cy] = projection(narrow() ? [20, 46] : [40, 42]); svg.call(zoom.transform, d3.zoomIdentity.translate(W / 2, H / 2).scale(narrow() ? 8 : 1.6).translate(-cx, -cy)); }
+  // the view in the address is known before views.js shows it, so opening a panel keeps it in the address
+  const start = parseHash();
+  if (VIEWS.includes(start.view) && !state.view) state.view = start.view;
+  route("load");
+  if (!state.panel) { const [cx, cy] = projection(narrow() ? [20, 46] : [40, 42]); svg.call(zoom.transform, d3.zoomIdentity.translate(W / 2, H / 2).scale(narrow() ? 8 : 1.6).translate(-cx, -cy)); }
   startLoop();
   if (reduceMotion) drawFlows(0);
-}).catch(err => { document.getElementById("hint").textContent = t("The data could not load: {msg}", { msg: err.message }); });
+}).catch(err => {
+  // in the banner too: phones hide the hint
+  const msg = t("The data could not load: {msg}", { msg: err.message });
+  document.getElementById("hint").textContent = msg;
+  status.textContent = msg; status.dataset.open = "true";
+});
 </script>

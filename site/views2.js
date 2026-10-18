@@ -1,5 +1,6 @@
 // ===== Views: how the map works (with worked examples), and doing more or less than expected =====
-/* global state, DATA, byIso, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, waterfall, chip, MIN_GDP_RANK, FRAC, t, viewState, filtersHtml, wireFilters, eligible, periodText */
+/* global state, DATA, byIso, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, waterfall, chip, MIN_GDP_RANK, FRAC, t, viewState, filtersHtml, wireFilters, eligible, periodText,
+   num, fitName, activateOnKey, minGdp */
 
 // ----- How it works -----
 const EXAMPLES = ["DEU", "POL", "USA", "HUN", "IND", "CHN"];
@@ -13,8 +14,9 @@ function howHtml() {
   const live = parts.filter(p => Math.abs(p.v) > 1e-3);
   const top = live.slice().sort((a, b) => b.v - a.v);
   const pos = top.filter(p => p.v > 0).slice(0, 2), neg = top.filter(p => p.v < 0).slice(-2).reverse();
-  const story = t("{name}: {pct} of a year's GDP toward {side}. Biggest parts toward Ukraine: {pos}. Biggest toward Russia: {neg}.", {
-    name: c.name, pct: fmtMeasure(c, k.shift, "gdp", true), side: k.shift >= 0 ? t("Ukraine") : t("Russia"),
+  // one whole sentence per direction: "Ukraine"/"Russia" alone would need a different case in many languages
+  const story = t(k.shift >= 0 ? "{name}: {pct} of a year's GDP toward Ukraine. Biggest parts toward Ukraine: {pos}. Biggest toward Russia: {neg}." : "{name}: {pct} of a year's GDP toward Russia. Biggest parts toward Ukraine: {pos}. Biggest toward Russia: {neg}.", {
+    name: c.name, pct: fmtMeasure(c, k.shift, "gdp", true),
     pos: pos.map(p => `${p.label} (${eur(p.v, true)})`).join(", ") || "–",
     neg: neg.map(p => `${p.label} (${eur(p.v, true)})`).join(", ") || "–",
   });
@@ -87,35 +89,38 @@ function renderExpect(root) {
   const maxAbs = Math.max(...best.concat(worst).map(r => Math.abs(r.diff)), 1);
   // each list runs one way, so bars start at zero and show the size of the difference
   const x = d3.scaleLinear().domain([0, maxAbs]).range([labelW, W - 80]);
-  const bars = (list, colour) => {
+  const diffTxt = r => `${r.diff >= 0 ? "+" : "−"}${num(Math.abs(r.diff), 1)} ${t("pts")}`;
+  // a group of row buttons, named by the heading above it
+  const bars = (list, colour, title) => {
     const H = list.length * rowH + 8;
-    return `<svg viewBox="0 0 ${W} ${H}" role="img">${list.map((r, i) => {
+    return `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${title}">${list.map((r, i) => {
       const yy = i * rowH + rowH / 2 + 4, x0 = x(0), x1 = x(Math.abs(r.diff));
-      return `<g class="row" tabindex="0" role="button" data-n="${r.c.n}">
+      return `<g class="row" tabindex="0" role="button" data-n="${r.c.n}" aria-label="${r.c.name}: ${diffTxt(r)}">
         <rect class="hit" x="0" y="${yy - rowH / 2}" width="${W}" height="${rowH}" fill="transparent"/>
-        <text class="lbl" x="${labelW - 10}" y="${yy + 4}" text-anchor="end">${r.c.name.length > (narrowScreen ? 13 : 22) ? r.c.iso3 : r.c.name}</text>
+        <text class="lbl" x="${labelW - 10}" y="${yy + 4}" text-anchor="end">${fitName(r.c.name, narrowScreen ? 13 : 22)}<title>${r.c.name}</title></text>
         <rect x="${Math.min(x0, x1)}" y="${yy - 7}" width="${Math.max(2, Math.abs(x1 - x0))}" height="14" rx="3" fill="${colour}"/>
-        <text x="${W}" y="${yy + 4}" text-anchor="end" style="font-family:var(--font-data);font-size:12px;fill:var(--ink)">${r.diff >= 0 ? "+" : "−"}${Math.abs(r.diff).toFixed(1)} ${t("pts")}</text>
+        <text x="${W}" y="${yy + 4}" text-anchor="end" style="font-family:var(--font-data);font-size:12px;fill:var(--ink)">${diffTxt(r)}</text>
       </g>`;
     }).join("")}<line class="zero" x1="${x(0)}" x2="${x(0)}" y1="0" y2="${H}"/></svg>`;
   };
   root.innerHTML = `<div class="view-inner">
     <h2>${t("Who went out of their way")}</h2>
     <div class="ai-note"><b>${t("AI guesses, no real data.")}</b> ${t("Each country's political distance from Russia (0–10) and how threatened it feels by Russia (0–100) were guessed by an AI, without sources. From those two guesses we fit what a country would be expected to shift, then show who did much more, or much less, than that. Treat it as a conversation starter, not a finding.")}</div>
-    <p class="sub">${t("Actual shift minus expected shift, in percentage points of a year's GDP, {period}. Expected = {a} + {b} × direction + {g} × threat.", { period: periodText(), a: a.toFixed(1), b: b.toFixed(2), g: g.toFixed(3) })}</p>
+    <p class="sub">${t("Actual shift minus expected shift, in percentage points of a year's GDP, {period}. Expected = {a} + {b} × direction + {g} × threat.", { period: periodText(), a: num(a, 1), b: num(b, 2), g: num(g, 3) })}</p>
     ${filtersHtml()}
     <h3 class="how-h">${t("Did more than their incentives predict")}</h3>
-    <div class="chart">${bars(best, "var(--ukr)")}</div>
+    <div class="chart">${bars(best, "var(--ukr)", t("Did more than their incentives predict"))}</div>
     <h3 class="how-h">${t("Did less than predicted, or helped Russia")}</h3>
-    <div class="chart">${bars(worst, "var(--rus)")}</div>
-    <p class="note-small">${t("Economies under €{min}bn GDP are left out. The guesses for each country, with a one-line reason, are in the research files on GitHub.", { min: EXPECT_MIN_GDP })}</p>
+    <div class="chart">${bars(worst, "var(--rus)", t("Did less than predicted, or helped Russia"))}</div>
+    <p class="note-small">${t("Economies under {min} GDP are left out. The guesses for each country, with a one-line reason, are in the research files on GitHub.", { min: minGdp(EXPECT_MIN_GDP) })}</p>
   </div>`;
   const by = Object.fromEntries(rows.map(r => [r.c.n, r]));
   root.querySelectorAll(".row").forEach(el => {
     const r = by[el.dataset.n];
-    el.addEventListener("pointermove", e => showTip(e, `<b>${r.c.name}</b>${t("Actual {act}, expected {exp} of a year's GDP", { act: (r.y >= 0 ? "+" : "") + r.y.toFixed(1) + "%", exp: (r.exp >= 0 ? "+" : "") + r.exp.toFixed(1) + "%" })}<br>${t("Direction {d}/10, threat {th}/100 (AI guess)", { d: r.dir, th: r.thr })}<br><span style="opacity:.8">${r.c.incentive.why || ""}</span>`));
+    el.addEventListener("pointermove", e => showTip(e, `<b>${r.c.name}</b>${t("Actual {act}, expected {exp} of a year's GDP", { act: (r.y >= 0 ? "+" : "−") + num(Math.abs(r.y), 1) + "%", exp: (r.exp >= 0 ? "+" : "−") + num(Math.abs(r.exp), 1) + "%" })}<br>${t("Direction {d}/10, threat {th}/100 (AI guess)", { d: num(r.dir, 1, 0), th: num(r.thr, 1, 0) })}<br><span style="opacity:.8" lang="en">${r.c.incentive.why || ""}</span>`));
     el.addEventListener("pointerleave", () => (tip.hidden = true));
     el.addEventListener("click", () => { tip.hidden = true; select(r.c.n, false); });
+    activateOnKey(el, () => select(r.c.n, false));
   });
   wireFilters(root);
 }

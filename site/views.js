@@ -1,6 +1,7 @@
 // ===== Views: ranking, Ukraine vs Russia bubbles, table and data download =====
 // Same numbers as the map: the current view (change, cost, to Ukraine, to Russia), measure and year.
-/* global state, DATA, calc, lensValue, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, closeMenu, t, LANG */
+/* global state, DATA, calc, lensValue, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, closeMenu, t, LANG,
+   num, money, tight, compact, parseHash, writeHash */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
 const GROUPS = {
@@ -44,15 +45,21 @@ function periodText() {
   return `2022–${y}${y === 2026 && FRAC[5] < 1 ? t(" (2026 to August)") : ""}`;
 }
 function tick(v) {
-  if (state.measure === "gdp") return d3.format("~")(+v.toFixed(2)) + "%";
-  if (state.measure === "pp") return "€" + d3.format("~s")(v);
-  return "€" + d3.format("~")(v) + "bn";
+  const sg = v < 0 ? "−" : "", a = Math.abs(v);
+  if (state.measure === "gdp") return sg + num(a, 2, 0) + "%";
+  if (state.measure === "pp") return sg + money(compact(a));
+  return sg + tight(money(num(a), "bn"));
 }
+// long names are cut with an ellipsis; the full name is in a <title> (and in the row's label and tooltip)
+const fitName = (name, max) => (name.length > max ? name.slice(0, max - 1).trimEnd() + "…" : name);
+// chart rows and bubbles act like buttons: Enter and Space open the country, as a click does
+function activateOnKey(el, fn) { el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } }); }
+const minGdp = n => tight(money(num(n), "bn"));
 function filtersHtml() {
   return `<div class="filters" role="group" aria-label="${t("Filter countries")}">
     ${Object.entries(GROUPS).map(([k, g]) => `<button class="chipbtn" data-group="${k}" aria-pressed="${viewState.group === k}">${t(g.label)}</button>`).join("")}
     <span class="sep"></span>
-    <button class="chipbtn" data-small="1" aria-pressed="${viewState.small}" title="${t("Economies under €{min}bn GDP swing a lot in % of GDP", { min: MIN_GDP_RANK })}">${t("Small economies")}</button>
+    <button class="chipbtn" data-small="1" aria-pressed="${viewState.small}" title="${t("Economies under {min} GDP swing a lot in % of GDP", { min: minGdp(MIN_GDP_RANK) })}">${t("Small economies")}</button>
   </div>`;
 }
 function wireFilters(root) {
@@ -83,7 +90,8 @@ function renderRanking(root) {
   const ticks = [];
   for (const t of cand) if (ticks.every(u => Math.abs(x(u) - x(t)) >= (narrowScreen ? 38 : 46))) ticks.push(t);
   const col = v => (v >= 0 ? (state.lens === "rus" ? "var(--rus)" : "var(--ukr)") : "var(--rus)");
-  const svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${t("{title}, {n} countries, ranked", { title: t(LENS_TITLE[state.lens]), n: rows.length })}">
+  // a group, not an image: its rows are buttons that keyboard and screen reader users reach one by one
+  const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("{title}, {n} countries, ranked", { title: t(LENS_TITLE[state.lens]), n: rows.length })}">
     <g class="grid">${ticks.map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="${top - 6}" y2="${H - 6}"/><text x="${x(t)}" y="${top - 12}" text-anchor="middle">${tick(t)}</text>`).join("")}</g>
     ${diverging ? `<line class="zero" x1="${x(0)}" x2="${x(0)}" y1="${top - 6}" y2="${H - 6}"/>` : ""}
     ${rows.map((m, i) => {
@@ -91,9 +99,9 @@ function renderRanking(root) {
       const w = m.lo != null ? `<line class="whisk" x1="${x(m.lo)}" x2="${x(m.hi)}" y1="${y}" y2="${y}"/>` : `<line class="whisk" x1="${x(0)}" x2="${x(m.v)}" y1="${y}" y2="${y}" style="stroke:${col(m.v)};stroke-opacity:.35;stroke-width:6"/>`;
       return `<g class="row" tabindex="0" role="button" data-n="${m.c.n}" aria-label="${m.c.name}: ${fmtMeasure(m.c, m.bn, state.measure, true)}">
         <rect class="hit" x="0" y="${y - rowH / 2}" width="${W}" height="${rowH}" fill="transparent"/>
-        <text class="lbl" x="${labelW - 10}" y="${y + 4}" text-anchor="end">${i + 1}. ${m.c.name.length > (narrowScreen ? 13 : 22) ? m.c.iso3 : m.c.name}</text>
+        <text class="lbl" x="${labelW - 10}" y="${y + 4}" text-anchor="end">${i + 1}. ${fitName(m.c.name, narrowScreen ? 13 : 22)}<title>${m.c.name}</title></text>
         ${w}<circle class="dot" cx="${x(m.v)}" cy="${y}" r="5.5" fill="${col(m.v)}"/>
-        <text x="${W}" y="${y + 4}" text-anchor="end" style="font-family:var(--font-data);font-size:12px;fill:var(--ink)">${fmtMeasure(m.c, m.bn, state.measure, diverging)}</text>
+        <text x="${W}" y="${y + 4}" text-anchor="end" style="font-family:var(--font-data);font-size:12px;fill:var(--ink)">${fmtMeasure(m.c, m.bn, state.measure, diverging, false)}</text>
       </g>`;
     }).join("")}
   </svg>`;
@@ -113,7 +121,7 @@ function wireRows(root, rows) {
     el.addEventListener("pointermove", e => showTip(e, tipFor(m)));
     el.addEventListener("pointerleave", () => (tip.hidden = true));
     el.addEventListener("click", () => { tip.hidden = true; select(m.c.n, false); });
-    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(m.c.n, false); } });
+    activateOnKey(el, () => select(m.c.n, false));
   });
   wireFilters(root);
 }
@@ -146,24 +154,29 @@ function renderBubbles(root) {
   const unit = t(measure === "gdp" ? "% of one year's GDP" : "€ per person");
   const order = all.slice().sort((a, b) => b.c.gdp - a.c.gdp);   // big bubbles first, small ones on top
   // labels for the largest economies (and the selected one), skipped where they would overlap a label already placed
-  const labels = [];
+  // the two zone labels are placed first, so country labels keep clear of them
+  const zw = s => s.length * 9;
+  const zU = t("Net toward Ukraine"), zR = t("Net toward Russia");
+  const labels = [{ x: x(d) - 8 - zw(zU) / 2, y: y(0) - 12, w: zw(zU), zone: true }, { x: x(0) + 10 + zw(zR) / 2, y: y(d) + 18, w: zw(zR), zone: true }];
   for (const s of [...order.filter(s => s.c.n === sel), ...order.filter(s => big.includes(s.c.n) && s.c.n !== sel)]) {
-    const t = s.c.name.length > 14 ? s.c.iso3 : s.c.name, w = t.length * 6.6, lx = x(sx(s)), ly = y(sy(s)) - r(s.c.gdp) - 4;
-    if (labels.every(l => Math.abs(l.x - lx) > (l.w + w) / 2 + 2 || Math.abs(l.y - ly) > 13)) labels.push({ x: lx, y: ly, w, t });
+    const t = fitName(s.c.name, 14), w = t.length * 6.6, lx = x(sx(s)), ly = y(sy(s)) - r(s.c.gdp) - 4;
+    if (labels.every(l => Math.abs(l.x - lx) > (l.w + w) / 2 + 2 || Math.abs(l.y - ly) > (l.zone ? 17 : 13))) labels.push({ x: lx, y: ly, w, t });
   }
-  const svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${t("Each country: money moved toward Ukraine against money moved toward Russia")}">
+  const fv = v => (measure === "gdp" ? num(v, v >= 1 ? 1 : 2) + "%" : money(num(v)));
+  const tk = v => (measure === "gdp" ? num(v) + "%" : money(compact(v)));
+  const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("Each country: money moved toward Ukraine against money moved toward Russia")}">
     <path class="zone-ukr" d="M${x(0)},${y(0)} L${x(d)},${y(0)} L${x(d)},${y(d)} Z"/>
     <path class="zone-rus" d="M${x(0)},${y(0)} L${x(0)},${y(d)} L${x(d)},${y(d)} Z"/>
     <g class="grid">${ticks.map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="${m.t}" y2="${H - m.b}"/><line x1="${m.l}" x2="${W - m.r}" y1="${y(t)}" y2="${y(t)}"/>
-      <text x="${x(t)}" y="${H - m.b + 16}" text-anchor="middle">${measure === "gdp" ? t + "%" : "€" + d3.format("~s")(t)}</text>
-      <text x="${m.l - 8}" y="${y(t) + 4}" text-anchor="end">${measure === "gdp" ? t + "%" : "€" + d3.format("~s")(t)}</text>`).join("")}</g>
+      <text x="${x(t)}" y="${H - m.b + 16}" text-anchor="middle">${tk(t)}</text>
+      <text x="${m.l - 8}" y="${y(t) + 4}" text-anchor="end">${tk(t)}</text>`).join("")}</g>
     <line class="diag" x1="${x(0)}" y1="${y(0)}" x2="${x(d)}" y2="${y(d)}"/>
-    <text class="zone-lbl" x="${x(d) - 8}" y="${y(0) - 12}" text-anchor="end" style="fill:var(--ukr)">${t("Net toward Ukraine")}</text>
-    <text class="zone-lbl" x="${x(0) + 10}" y="${y(d) + 18}" style="fill:var(--rus);paint-order:stroke;stroke:var(--surface);stroke-width:4px">${t("Net toward Russia")}</text>
+    <text class="zone-lbl" x="${x(d) - 8}" y="${y(0) - 12}" text-anchor="end" style="fill:var(--ukr)">${zU}</text>
+    <text class="zone-lbl" x="${x(0) + 10}" y="${y(d) + 18}" style="fill:var(--rus-text);paint-order:stroke;stroke:var(--surface);stroke-width:4px">${zR}</text>
     <text x="${(m.l + W - m.r) / 2}" y="${H - 8}" text-anchor="middle" style="fill:var(--ink)">${t("Moved toward Ukraine → ({unit})", { unit })}</text>
     <text transform="translate(14 ${(m.t + H - m.b) / 2}) rotate(-90)" text-anchor="middle" style="fill:var(--ink)">${t("Moved toward Russia → ({unit})", { unit })}</text>
-    ${order.map(s => `<circle class="bubble${s.c.n === sel ? " sel" : ""}" data-n="${s.c.n}" tabindex="0" role="button" aria-label="${s.c.name}" cx="${x(sx(s))}" cy="${y(sy(s))}" r="${r(s.c.gdp)}" fill="${s.net >= 0 ? "var(--ukr)" : "var(--rus)"}"/>`).join("")}
-    ${labels.map(l => `<text x="${l.x}" y="${l.y}" text-anchor="middle" style="fill:var(--ink);font-size:11.5px;font-weight:600;paint-order:stroke;stroke:var(--surface);stroke-width:3px;pointer-events:none">${l.t}</text>`).join("")}
+    ${order.map(s => `<circle class="bubble${s.c.n === sel ? " sel" : ""}" data-n="${s.c.n}" tabindex="0" role="button" aria-label="${s.c.name}: ${t("toward Ukraine")} ${fv(sx(s))}, ${t("toward Russia")} ${fv(sy(s))}" cx="${x(sx(s))}" cy="${y(sy(s))}" r="${r(s.c.gdp)}" fill="${s.net >= 0 ? "var(--ukr)" : "var(--rus)"}"/>`).join("")}
+    ${labels.filter(l => !l.zone).map(l => `<text x="${l.x}" y="${l.y}" text-anchor="middle" style="fill:var(--ink);font-size:11.5px;font-weight:600;paint-order:stroke;stroke:var(--surface);stroke-width:3px;pointer-events:none">${l.t}</text>`).join("")}
   </svg>`;
   root.innerHTML = `<div class="view-inner">
     <h2>${t("What each country moved toward Ukraine, and toward Russia")}</h2>
@@ -181,13 +194,13 @@ const COLS = [
   { k: "shiftGdp", label: "Net shift, % of a year's GDP", fmt: r => pct(r.shiftGdp), sign: true },
   { k: "shiftRange", label: "Likely range", fmt: r => t("{lo} to {hi}", { lo: pct(r.shiftLoGdp), hi: pct(r.shiftHiGdp) }), nosort: true },
   { k: "shift", label: "Net shift, €", fmt: r => eur(r.shift, true), sign: true },
-  { k: "shiftPp", label: "Per person", fmt: r => (r.shiftPp == null ? "–" : (r.shiftPp < 0 ? "−" : "") + "€" + Math.round(Math.abs(r.shiftPp)).toLocaleString(LANG)), sign: true },
+  { k: "shiftPp", label: "Per person", fmt: r => (r.shiftPp == null ? "–" : (r.shiftPp < 0 ? "−" : "") + money(num(Math.abs(r.shiftPp)))), sign: true },
   { k: "costGdp", label: "Cost, % of a year's GDP", fmt: r => pct(r.costGdp) },
   { k: "aid", label: "Aid incl. EU share, €", fmt: r => eur(r.aid) },
   { k: "paidRus", label: "Paid to Russia, €", fmt: r => eur(r.paidRus) },
   { k: "cert", label: "Certainty", fmt: r => r.cert },
 ];
-const pct = v => (v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(Math.abs(v) >= 1 ? 1 : 2) + "%");
+const pct = v => (v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + num(Math.abs(v), Math.abs(v) >= 1 ? 1 : 2) + "%");
 function tableRows() {
   const y = state.year;
   return Object.values(DATA).filter(eligible).map(c => {
@@ -217,40 +230,48 @@ function renderTable(root) {
     </div>
     ${filtersHtml()}
     <div class="tablewrap"><table class="dtable">
-      <thead><tr>${COLS.map(col => `<th scope="col" data-k="${col.k}" ${col.nosort ? "" : `aria-sort="${key === col.k ? (viewState.sortDir < 0 ? "descending" : "ascending") : "none"}"`}>${t(col.label)}</th>`).join("")}</tr></thead>
-      <tbody>${rows.map(r => `<tr data-n="${r.c.n}">${COLS.map(col => `<td class="${col.sign ? (r[col.k] > 0 ? "pos" : r[col.k] < 0 ? "neg" : "") : ""}">${col.fmt(r)}</td>`).join("")}</tr>`).join("")}</tbody>
+      <thead><tr>${COLS.map(col => `<th scope="col" ${col.nosort ? "" : `aria-sort="${key === col.k ? (viewState.sortDir < 0 ? "descending" : "ascending") : "none"}"`}>${col.nosort ? t(col.label) : `<button data-k="${col.k}">${t(col.label)}</button>`}</th>`).join("")}</tr></thead>
+      <tbody>${rows.map(r => `<tr data-n="${r.c.n}">${COLS.map(col => `<td class="${col.sign ? (r[col.k] > 0 ? "pos" : r[col.k] < 0 ? "neg" : "") : ""}">${col.k === "name" ? `<button>${col.fmt(r)}</button>` : col.fmt(r)}</td>`).join("")}</tr>`).join("")}</tbody>
     </table></div>
     <p class="note-small">${t("Data and text: CC BY 4.0, credit \"Follow the Money: Ukrainian Aid\". Every figure has its sources in the country breakdown and in the research files on GitHub. Figures to {date}.", { date: document.body.dataset.dataTo || t("the end of August 2026") })}</p>
   </div>`;
-  root.querySelectorAll("th[data-k]").forEach(th => (th.onclick = () => {
-    const k = th.dataset.k; if (k === "shiftRange") return;
+  // sorting buttons in the header row; the re-render replaces them, so focus goes to the same column's new button
+  root.querySelectorAll("th button[data-k]").forEach(b => (b.onclick = () => {
+    const k = b.dataset.k;
     viewState.sortDir = viewState.sortKey === k || (viewState.sortKey === "metric" && k === "shiftGdp") ? -viewState.sortDir : k === "name" ? 1 : -1;
     viewState.sortKey = k; renderView();
+    const again = root.querySelector(`th button[data-k="${k}"]`); if (again) again.focus();
   }));
+  // a click anywhere on a row opens the country; the button in the country cell (Enter, Space) gets there by keyboard
   root.querySelectorAll("tbody tr").forEach(tr => (tr.onclick = () => select(tr.dataset.n, false)));
-  root.querySelector("#dl-csv").onclick = () => download(csvSummary(rows), "follow-the-money-ukrainian-aid.csv");
-  root.querySelector("#dl-parts").onclick = () => download(csvParts(rows), "follow-the-money-ukrainian-aid-parts.csv");
+  // file names say which period and filter they hold
+  const tag = `${state.year === 2021 ? "2021" : "2022-" + state.year}_${viewState.group}${viewState.small ? "-with-small" : ""}`;
+  root.querySelector("#dl-csv").onclick = () => download(csvSummary(rows), `follow-the-money-ukrainian-aid_${tag}.csv`);
+  root.querySelector("#dl-parts").onclick = () => download(csvParts(rows), `follow-the-money-ukrainian-aid-parts_${tag}.csv`);
   wireFilters(root);
 }
 const q = v => (v == null || Number.isNaN(v) ? "" : typeof v === "number" ? +v.toFixed(4) : /[",\n]/.test(v) ? `"${String(v).replace(/"/g, '""')}"` : v);
 function csvSummary(rows) {
-  const head = ["iso3", "country", "period", "net_shift_eur_bn", "net_shift_low", "net_shift_high", "net_shift_pct_gdp", "net_shift_eur_per_person", "cost_eur_bn", "cost_pct_gdp", "aid_eur_bn", "refugees_eur_bn", "paid_to_russia_eur_bn", "certainty", "gdp_eur_bn_2024", "population_m"];
-  const lines = rows.map(r => [r.iso3, r.c.name_en, periodTextEn(), r.shift, r.shiftLo, r.shiftHi, r.shiftGdp, r.shiftPp, r.cost, r.costGdp, r.aid, r.refugees, r.paidRus, r.cert, r.gdp, r.pop].map(q).join(","));
+  // every column name carries its unit; net_of_flowback says whether money flowing back was subtracted
+  const head = ["iso3", "country", "period", "net_of_flowback", "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person", "cost_eur_bn", "cost_pct_gdp", "aid_eur_bn", "refugees_eur_bn", "paid_to_russia_eur_bn", "certainty", "gdp_eur_bn_2024", "population_m"];
+  const lines = rows.map(r => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, r.shift, r.shiftLo, r.shiftHi, r.shiftGdp, r.shiftPp, r.cost, r.costGdp, r.aid, r.refugees, r.paidRus, r.cert, r.gdp, r.pop].map(q).join(","));
   return [head.join(","), ...lines].join("\n");
 }
 function csvParts(rows) {
-  const head = ["iso3", "country", "period", "part", "label", "eur_bn", "low", "high", "certainty", "sources"];
-  const lines = rows.flatMap(r => r.parts.map(p => [r.iso3, r.c.name_en, periodTextEn(), p.k, p.en, p.v, p.lo, p.hi, p.cert, (p.src || []).join(" ")].map(q).join(",")));
+  const head = ["iso3", "country", "period", "net_of_flowback", "part", "label", "eur_bn", "low_eur_bn", "high_eur_bn", "certainty", "sources"];
+  const lines = rows.flatMap(r => r.parts.map(p => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, p.k, p.en, p.v, p.lo, p.hi, p.cert, (p.src || []).join(" ")].map(q).join(",")));
   return [head.join(","), ...lines].join("\n");
 }
 function periodTextEn() {
   if (state.year === 2021) return "2021 (before the war)";
   const y = state.year;
-  return `2022–${y}${y === 2026 && FRAC[5] < 1 ? " (2026 to August)" : ""}`;
+  // a plain hyphen: spreadsheets and scripts handle it everywhere
+  return `2022-${y}${y === 2026 && FRAC[5] < 1 ? " (2026 to August)" : ""}`;
 }
 function download(text, name) {
   const a = document.createElement("a");
-  a.href = URL.createObjectURL(new Blob([text], { type: "text/csv;charset=utf-8" }));
+  // the byte order mark makes Excel read the file as UTF-8 (country names, €)
+  a.href = URL.createObjectURL(new Blob(["\ufeff" + text], { type: "text/csv;charset=utf-8" }));
   a.download = name; document.body.appendChild(a); a.click();
   setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
 }
@@ -266,18 +287,23 @@ function renderView() {
   ({ rank: renderRanking, bubbles: renderBubbles, table: renderTable, ...(window.EXTRA_VIEWS || {}) })[v](root);
   root.scrollTop = scroll;
 }
-function setView(v) {
+// quiet: the address already says this view (Back/Forward)
+function setView(v, quiet) {
   state.view = v;
   setPressed(".views [data-view]", "view", v);
+  // on phones the tabs are one row that scrolls sideways: bring the chosen one into sight
+  const tab = document.querySelector(`.views [data-view="${v}"]`), row = tab && tab.parentElement;
+  if (row && row.scrollWidth > row.clientWidth) row.scrollLeft += tab.getBoundingClientRect().left - row.getBoundingClientRect().left - (row.clientWidth - tab.offsetWidth) / 2;
   tip.hidden = true;
   renderView();
-  try { history.replaceState(null, "", location.pathname + location.search + (v === "map" ? (state.selected ? "#" + (DATA[state.selected]?.iso3 || "") : "") : "#view=" + v)); } catch (e) { /* file:// */ }
+  if (!quiet) writeHash(false);
 }
 document.querySelectorAll(".views [data-view]").forEach(b => (b.onclick = () => { setView(b.dataset.view); if (typeof closeMenu === "function") closeMenu(); }));
 window.addEventListener("resize", () => state.view && state.view !== "map" && renderView());
 window.renderView = renderView;
 window.setView = setView;
-const startView = (location.hash.match(/view=(\w+)/) || [])[1];
-if (startView && ["rank", "bubbles", "table", "how", "expect"].includes(startView)) {
+// "#view=rank", also combined with a country: "#view=rank&c=POL"
+const startView = parseHash().view;
+if (["rank", "bubbles", "table", "how", "expect"].includes(startView)) {
   const wait = setInterval(() => { if (Object.keys(DATA).length) { clearInterval(wait); setView(startView); } }, 100);
 }
