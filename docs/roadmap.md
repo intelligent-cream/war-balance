@@ -15,7 +15,7 @@ changes. Status is updated as items are done; the [changelog](changelog.md) reco
 | 6 | Shadow-fleet ownership and control | shipping profit by country | done: freight by real controller ([services-shipping-companies.md](method/services-shipping-companies.md#shipping)) |
 | 7 | Refugee costs for more hosts; Poland's 2022 count | refugee hosts | done: Poland, Bulgaria, Croatia revised ([aid-refugees-military.md](method/aid-refugees-military.md#refugees)) |
 | 8 | Newer 2026 trade data | fewer `*` estimates | done: 32 economies ([trade.md](method/trade.md#2026-refresh-round-5)) |
-| 17 | Russian arms sales to other countries, against pre-war | new part: money to Russia | researching |
+| 17 | Russian arms sales to other countries, against pre-war | new part: money to Russia | done ([russia-state-and-companies.md](method/russia-state-and-companies.md#weapons-bought-from-russia)) |
 | 18 | Exit payments and forced discounts of companies leaving Russia | new part: money to Russia, by home country | done; seizures recorded, not counted ([russia-state-and-companies.md](method/russia-state-and-companies.md#companies-leaving-russia)) |
 | 19 | Rosatom nuclear projects abroad: check whether payments are in trade or services; add if not | money to Russia | done: fuel already in trade; construction added ([russia-state-and-companies.md](method/russia-state-and-companies.md)) |
 | 20 | Loans at their economic value: only the saving against what Ukraine would otherwise pay to borrow counts | aid from lenders | done ([aid-refugees-military.md](method/aid-refugees-military.md#loans-at-their-economic-value-round-5)) |

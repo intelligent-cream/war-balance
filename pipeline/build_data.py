@@ -930,6 +930,7 @@ def build() -> dict:
     apply_refugees_net(countries, src)
     apply_ua_arms_purchases(countries, src)
     apply_loans_value(countries, src)
+    apply_russian_arms(countries, src)
     apply_audit2(countries, src, "trends")
     for c in countries.values():
         for obj in c.values():
@@ -1532,6 +1533,36 @@ def apply_loans_value(countries: dict[str, dict], src: Sources) -> None:
                     (d.get("certainty") or {}).get("multilateral_new", "C"),
                     sid,
                 )
+
+
+def apply_russian_arms(countries: dict[str, dict], src: Sources) -> None:
+    """Payments to Russia for Russian weapons, against what was expected without the war (russian_arms_exports.json,
+    round 5). Arms are almost entirely outside customs data; the small part inside it is taken out. Much of the fall
+    came from Russia keeping its output for its own army, not from the buyer (not_buyer_choice_share, in the notes)."""
+    ra = load(GAPS / "russian_arms_exports.json")
+    sid = src.add(
+        "russian_arms",
+        "Russian arms exports by buyer: Rosoboronexport and FSVTS statements, SIPRI fact sheets, contract reporting (S-400, Su-35, Su-57)",
+        "https://www.sipri.org/databases/armstransfers",
+        ra.get("generated"),
+        "change against expected payments, customs part removed; see research/2026-10/gaps/russian_arms_exports-notes.md",
+    )
+    for iso3, d in ra["countries"].items():
+        c = countries.get(iso3)
+        ch, ex = d.get("change_vs_expected") or {}, d.get("change_vs_expected_ex_customs") or {}
+        if not c or not ch:
+            continue
+        out = {"low": [], "central": [], "high": []}
+        for y in YEARS:
+            v = ch.get(str(y)) or {}
+            # the customs part moves the whole band; change > 0 = paid less = toward Ukraine
+            off = (ex.get(str(y), v.get("central", 0.0)) - v.get("central", 0.0)) if v else 0.0
+            for b, nb in (("low", "high"), ("central", "central"), ("high", "low")):
+                out[b].append(-(v.get(nb, 0.0) + off) if y >= 2022 else 0.0)
+        if max(abs(x) for x in out["low"] + out["high"]) < 1e-4:
+            continue
+        add_extra(c, "rusarms", "Weapons bought from Russia", out, d.get("certainty") or "D", sid)
+        c["extra"][-1]["not_choice"] = (d.get("not_buyer_choice_share") or {}).get("central")
 
 
 def apply_weapons_value(countries: dict[str, dict], src: Sources) -> None:

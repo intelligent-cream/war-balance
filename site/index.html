@@ -1171,6 +1171,13 @@ Object.entries({
 }).forEach(([r, list]) => list.split(" ").forEach(i => (REGION_OF[i] = r)));
 // How much of the shift away from Russian trade was required by sanctions, gas cut by Russia or stopped with
 // transit, and own choice (research/2026-10/gaps/sanctions_share.json). Only parts toward Ukraine are split.
+// share of a drop in weapons bought from Russia that came from Russia keeping its output for its own army or
+// sanctions on its production, not the buyer's choice (russian_arms_exports.json): a label, like the sanctions split
+function armsNote(c, k) {
+  const x = (c.extra || []).find(e => e.k === "rusarms"), p = k.shiftParts.find(q => q.k === "rusarms");
+  if (!x || !p || p.v <= 0 || !x.not_choice) return "";
+  return `<p class="note">${t("About {p}% of the drop in weapons bought from Russia came from Russia keeping its output for its own army, not from the buyer's choice.", { p: Math.round(x.not_choice * 100) })}</p>`;
+}
 function sanctionNote(c, k) {
   if (!c.sanctions) return "";
   const flows = { paid: "to_rus", sold: "from_rus", svcpaid: "svc_bought", svcsold: "svc_sold" };
@@ -1241,6 +1248,7 @@ function countryPanel(c) {
       ${rangeLine(c, k.shiftLo, k.shiftHi, k.shiftCert)}
       ${waterfall(k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label.toLowerCase() }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
       ${sanctionNote(c, k)}
+      ${armsNote(c, k)}
       ${share}
       ${c.hub ? `<p class="key" style="margin-top:8px"><b>${t("Transit hub:")}</b> ${dataText(c.hub)}.</p>` : ""}
     </section>

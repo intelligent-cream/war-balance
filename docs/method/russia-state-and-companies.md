@@ -33,6 +33,22 @@ Code: `apply_state_finance()`; data: [`russia_state_finance.json`](../../researc
 
 Arrears in Viet Nam, Iraq and Bangladesh were caused by sanctions on payment channels, not by choice.
 
+## Weapons bought from Russia
+
+Code: `apply_russian_arms()`; data: [`russian_arms_exports.json`](../../research/2026-10/gaps/russian_arms_exports.json)
+([notes](../../research/2026-10/gaps/russian_arms_exports-notes.md)). Russia's income from arms sales fell from about
+USD 15bn a year in 2019–2021 to 7–9bn after 2022 (official statements of the export agency and Rostec; Russia's later
+claims of 14–15bn are used only as the high end). Arms are almost entirely outside customs data (India and China record
+almost none), so this is a new part; the small part inside customs (Algeria's 2024 radars) is taken out. Split by buyer
+from contracts (India's S-400, Iran's Su-35, Algeria's Su-57, Egypt's cancelled Su-35), SIPRI buyer shares and payment
+timing, against an expected level without the war that leaves out one-off contracts (Türkiye's 2019 S-400).
+
+Biggest changes over 2022–2026 (toward Ukraine = paid less): India +4.3bn, China +3.7, Egypt +2.8, Algeria +2.3, Iraq,
+Viet Nam, Myanmar about +0.5 each; Iran −2.5 (paid more), Saudi Arabia −0.5. A large part of the fall was not the
+buyer's choice: Russia kept its output for its own army and sanctions hit its production (India about 50%, China 70%,
+Egypt 20%, about 60% elsewhere). The country panel says so in a note, like the sanctions split; the number is not
+reduced. Most buyer values after 2021 are educated guesses (certainty D; India and China C).
+
 ## Companies leaving Russia
 
 Code: `apply_company_flows()`; data: [`company_flows.json`](../../research/2026-10/gaps/company_flows.json)
