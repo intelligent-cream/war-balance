@@ -517,6 +517,8 @@ def build() -> dict:
     exported = {
         "TUR": hb["turkey_refining"]["double_count_at_turkey"],
         "IND": {y: v["exported_crude_value_eur_bn"] for y, v in hb["india_refining"].items()},
+        # China: fuel made from Russian crude and exported is fully in buyers' laundered oil (round4a.json)
+        "CHN": load(GAPS / "round4a.json")["china_refining"]["exported_crude_value"],
     }
     rid = src.add(
         "refining",
@@ -565,6 +567,26 @@ def build() -> dict:
             "ok" if d.get("basis") == "reported" else "est",
             "KSE country figures" if d.get("basis") == "reported" else "allocated by company counts and investment",
         )
+
+    # taxes paid in Russia that count: profit tax in full and half of the other taxes (VAT, excise and payroll taxes are
+    # largely paid by Russian customers and staff); the baseline is the 2018-2021 average (round4a.json)
+    r4a = load(GAPS / "round4a.json")["taxes"]
+    for iso3, c in countries.items():
+        co, sp = c.get("company"), r4a["split"].get(iso3)
+        if not co or not sp:
+            continue
+        hist = r4a["history_2018_2020_split"].get(iso3) or {}
+        meas = lambda d, b: (d.get("profit") or {}).get(b, 0) + 0.5 * (d.get("other") or {}).get(b, 0)  # noqa: E731
+        for k, b in (("taxes", "central"), ("taxes_lo", "low"), ("taxes_hi", "high")):
+            vals = [meas(sp.get(str(y)) or {}, b) for y in YEARS[:5]]
+            vals.append(vals[4] * FRAC[5])  # 2026 to August: the 2025 rate
+            co[k] = [round(v, 5) for v in vals]
+        pre = [meas(hist.get(str(y)) or {}, "central") for y in (2018, 2019, 2020)] + [co["taxes"][0]]
+        pre_lo = [meas(hist.get(str(y)) or {}, "low") for y in (2018, 2019, 2020)] + [co["taxes_lo"][0]]
+        pre_hi = [meas(hist.get(str(y)) or {}, "high") for y in (2018, 2019, 2020)] + [co["taxes_hi"][0]]
+        co["base"] = round(sum(pre) / 4, 5)
+        co["base_range"] = [round(sum(pre_lo) / 4, 5), round(sum(pre_hi) / 4, 5)]
+        co["base_2018_2021"] = True
 
     # ---- flows researched last: services trade, gold and hidden channels, undisclosed aid, private donations ----
     unc = load(GAPS / "uncovered.json")
@@ -1077,9 +1099,11 @@ def pre_war_trends(countries: dict[str, dict], src: Sources) -> None:
             continue
         d = (t2["countries"].get(iso3) or {}).get("company")
         d = d if d and d.get("reliable") else comp_global
-        # the company series starts in 2021; the trend is against 2019-2021
+        # the company series starts in 2021; the trend is against 2019-2021 (or about that level, for a 2018-2021 base)
         r = d.get("trend_2021_over_2019_2021") or comp_global.get("trend_2021_over_2019_2021") or 1.045
         r = r.get("central", 1.045) if isinstance(r, dict) else r
+        if obj.get("base_2018_2021"):
+            r = 1.0
         mid = [1.0] + [round(d["multiplier"][str(y)]["central"] / r, 4) for y in YEARS[1:]]
         lo = [1.0] + [round(min(d["multiplier"][str(y)]["low"] / r, 1.0), 4) for y in YEARS[1:]]
         hi = [1.0] + [round(max(d["multiplier"][str(y)]["high"] / r, 1.0), 4) for y in YEARS[1:]]
@@ -1095,6 +1119,11 @@ def pre_war_trends(countries: dict[str, dict], src: Sources) -> None:
                 [1.0] + [min(m["low"], 1.0) for m in ms],
                 [1.0] + [max(m["high"], 1.0) for m in ms],
             )
+
+
+LAUNDERED_PREWAR = json.loads(
+    (Path(__file__).resolve().parent.parent / "research/2026-10/gaps/round4a.json").read_text()
+)["laundered_prewar"]
 
 
 def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict], src: Sources) -> None:
@@ -1154,6 +1183,24 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
             round(max(min(v * CRUDE_CONTENT[2], h), m), 5) for v, h, m in zip(t["years_hi"], cap_hi, mid)
         ]
         tr["laundered_src"] = [lid]
+        # some fuel refined from Russian crude reached buyers before the war too: only the rise above that level, and
+        # its pre-war growth, counts (round4a.json; same crude-content factor and EU correction as the yearly values)
+        pw = LAUNDERED_PREWAR.get(iso3)
+        lb = {"years": tr["laundered"], "years_lo": tr["laundered_lo"], "years_hi": tr["laundered_hi"], "base": 0.0, "base_range": [0.0, 0.0], "cert": "C", "src": [lid]}  # fmt: skip
+        if pw:
+            eu = (0.5, 0.62, 0.8) if iso3 in EU27 else (1, 1, 1)
+            b = pw["base_2018_2021"]
+            lb["base"] = round(b["central"] * CRUDE_CONTENT[1] * eu[1], 5)
+            lb["base_range"] = [
+                round(b["low"] * CRUDE_CONTENT[0] * eu[0], 5),
+                round(b["high"] * CRUDE_CONTENT[2] * eu[2], 5),
+            ]
+            # growth from the 2018-2021 midpoint; the range always includes no growth
+            g = pw.get("g") or {"low": 0, "central": 0, "high": 0}
+            lb["bmul"] = [1.0] + [round((1 + g["central"]) ** (y - 2019.5), 4) for y in YEARS[1:]]
+            lb["bmul_lo"] = [1.0] + [round(min(1.0, (1 + g["low"]) ** (y - 2019.5)), 4) for y in YEARS[1:]]
+            lb["bmul_hi"] = [1.0] + [round(max(1.0, (1 + g["high"]) ** (y - 2019.5)), 4) for y in YEARS[1:]]
+        countries[iso3]["laund"] = lb
         if iso3 in HUB_RESALE:
             countries[iso3]["hub"] = (
                 "fuel trading hub: the share of laundered oil it resells is counted for its customers"

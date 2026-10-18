@@ -93,3 +93,6 @@ Method choices made in this round:
 - **Ranges** combine the baseline, actual values, price level and trend in quadrature (baseline and actual values correlated 0.5) instead of stacking worst cases.
 - **2026** is labelled year to date (January to August); parts estimated from the 2025 monthly rate are marked with *.
 - Better official data for the widest-range countries (narrow.json) enters at customs level.
+- **Company taxes** (`gaps/round4a.json`): profit tax in full plus half of the other taxes (VAT, excise and payroll are largely paid by Russian customers and staff); baseline is the 2018-2021 average (2018-2020 carried back from 2021 with FDI income and Russian GDP indices).
+- **China's refined exports**: the Russian crude inside fuel China exports is already fully in buyers' laundered oil, so it is taken out of China's own payments, as for Turkey and India. EU refiners' exports are not counted as laundered oil anywhere and stay with the refiner country.
+- **Laundered oil before the war**: fuel refined from Russian crude reached buyers before 2022 too (EUR 3-5bn a year, mostly via China). Only the rise above each buyer's 2018-2021 level and its pre-war growth counts.

@@ -506,7 +506,7 @@ function triple(obj, key) {
 function normalise(c) {
   c.T = {
     aid: triple(c.aid, "years"), ref: triple(c.aid, "refugee_years"),
-    paid: triple(c.to_rus, "years"), laundered: triple(c.to_rus, "laundered"), soldRus: triple(c.from_rus, "years"),
+    paid: triple(c.to_rus, "years"), laundered: triple(c.laund || c.to_rus, c.laund ? "years" : "laundered"), soldRus: triple(c.from_rus, "years"),
     buyUkr: triple(c.buy_ukr, "years"), sellUkr: triple(c.sell_ukr, "years"),
     own: triple(c.flowback, "own"), purl: triple(c.flowback, "purl_in"),
     premium: triple(c.energy, "premium"), discount: triple(c.energy, "discount"),
@@ -599,7 +599,8 @@ function calc(c, y) {
     part("buy", "Extra purchases from Ukraine", above3(T.buyUkr), cTrade, src("buy_ukr")),
     part("paid", lessPaid3[0] >= 0 ? "Less paid to Russia" : "More paid to Russia", lessPaid3, cRus, src("to_rus")),
     part("windfall", "Extra paid to Russia because of war-time prices", neg(sum3(T.windfall)), c.windfall?.cert || "C", src("windfall")),
-    part("laund", "Russian oil bought via other countries", neg(sum3(T.laundered)), "C", c.to_rus?.laundered_src || []),
+    // only the rise above the pre-war level (and its pre-war growth); in money, so higher prices count too
+    part("laund", "Russian oil bought via other countries", neg(c.laund ? above3({ ...T.laundered, p: T.laundered.c.map(() => 1), pl: T.laundered.c.map(() => 1), ph: T.laundered.c.map(() => 1) }) : sum3(T.laundered)), "C", c.to_rus?.laundered_src || []),
     part("sold", lessSold3[0] >= 0 ? "Profit lost on sales to Russia given up" : "Profit on extra sales to Russia", profit3(lessSold3), weakest([c.from_rus?.cert, "B"]), src("from_rus")),
     part("tax", lessTax3[0] >= 0 ? "Less tax paid in Russia by companies" : "More tax paid in Russia by companies", lessTax3, c.company?.cert || "B", src("company")),
     part("mil", "Weapons and troops sent to Russia", neg(sum3(T.mil)), "D", src("military_rus")),
