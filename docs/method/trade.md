@@ -39,6 +39,8 @@ How the four flows enter the net shift (`calc()` in [`site/index.html`](../../si
 
 Selling EUR 10bn less to Russia does not cost the seller EUR 10bn: the goods would have cost money to make. Since round 4, sales given up and extra sales (goods and services) count as the seller's **profit**, `META.lost_margin = 0.2` (about 20%), the same share used for flowback. `profit3()` in `calc()` applies it with a range of 0.5× to 1.5× the margin. The audit had shown why this matters: Cyprus at +30% of GDP and Lithuania at +45% came from sales and services counted at gross revenue ([audit2-notes.md §5](../../research/2026-10/gaps/audit2-notes.md)). In the cost view, the same 20% is the "profit lost on sales to Russia".
 
+**Round 10: purchases count at the seller's net gain.** A purchase from Russia counts at Russia's net gain on that mix of goods (about 0.6 of the price for oil and gas, 0.1–0.2 for other goods), and an extra purchase from Ukraine at Ukraine's (0.045–0.18), so that trade and aid are on the same scale ([overview.md](overview.md#the-net-gain-rule-round-10)).
+
 **Round 6: the money rule replaces the flat 20%.** Income from sales to Russia now counts at the value kept in the seller's economy (OECD TiVA) times the share that is genuinely extra, with separate factors for sales lost and extra sales, and for goods and services ([overview.md](overview.md#the-money-rule-round-6)). The 20% figures above stay as a check. Labels now read "income" rather than "profit".
 
 ## Re-export hubs

@@ -1,0 +1,1888 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "Gap fill for roadmap item 24: dividends/profit transfers to Russian parents from Russian-owned NON-oil industrial companies abroad (metals, mining, fertilisers, chemicals, diamonds, uranium), by HOST country (where the plant operates; Cyprus/Swiss/UK/Dutch/Jersey holding conduits are not hosts). Plus, for captive plants, sales of their product to Russia (already in customs trade; for checking only).",
+  "units": "EUR bn nominal; {low, central, high} ~90%. 2026 = Jan-Aug, not annualised.",
+  "fx": {
+   "USD_per_EUR": {
+    "2019": 1.12,
+    "2020": 1.142,
+    "2021": 1.183,
+    "2022": 1.053,
+    "2023": 1.081,
+    "2024": 1.082,
+    "2025": 1.13,
+    "2026": 1.16
+   },
+   "SEK_per_EUR": {
+    "2023": 11.47,
+    "2024": 11.43
+   }
+  },
+  "series": {
+   "profits_remitted": "Dividends/profit transfers (incl. value distributions to the parent holding) actually paid out of the host. Retained, frozen or blocked amounts are 0 in that year.",
+   "profits_change_vs_prewar": "Same as company_flows.json: central = remitted central - 2019-2021 average (x 8/12 for 2026); low/high = central -/+ 0.9 x max(|change|, prewar avg x f). Where the pre-war average is 0, or a blocked-dividend high case exists (AGO 2025), low/high are taken from the remitted range (as company_flows does for IND). 2021 = 0.",
+   "sales_to_russia_eur_bn": "Value of the plant's product sold to Russia (customs trade, already counted elsewhere). IRL is Eurostat data; GIN/JAM/AUS are rough estimates."
+  },
+  "excluded_already_in_company_flows": "FIN (Nornickel Harjavalta, in company_flows FIN with Teboil) and USA NLMK USA and TMK IPSCO (in company_flows USA). Not repeated here.",
+  "checked_nil_or_not_material": "Rusal: Alpart (sold to JISCO 2016), Aluminium Rheinfelden (German family-owned, not Rusal), Bauxite Co. of Guyana (closed 2021), ALSCON Nigeria (idle), Armenal Armenia (small foil plant), Nikolaev Ukraine (seized). Nornickel: Nkomati ZAF (50% sold to ARM 2021, care and maintenance), Tati Botswana (closed). EuroChem: Tarragona/Spain and EuroChem Agro GmbH Germany (distribution/trading arms, excluded like Litasco), Brazil Serra do Salitre/Heringer (investment phase, no dividend). PhosAgro, Uralkali, Severstal, Metalloinvest, Sibur, Mechel: only trading/sales arms abroad (excluded) or none. TMK: Romanian plants, no dividend found. No K+S stake held by EuroChem found.",
+  "totals_profits_remitted": {
+   "2019": {
+    "low": 0.06,
+    "central": 0.164,
+    "high": 0.482
+   },
+   "2020": {
+    "low": 0.045,
+    "central": 0.125,
+    "high": 0.374
+   },
+   "2021": {
+    "low": 0.06,
+    "central": 0.199,
+    "high": 0.585
+   },
+   "2022": {
+    "low": 0.04,
+    "central": 0.11,
+    "high": 0.338
+   },
+   "2023": {
+    "low": 0.095,
+    "central": 0.2097,
+    "high": 0.37
+   },
+   "2024": {
+    "low": 0.081,
+    "central": 0.1932,
+    "high": 0.4
+   },
+   "2025": {
+    "low": 0.055,
+    "central": 0.15,
+    "high": 0.62
+   },
+   "2026": {
+    "low": 0.03,
+    "central": 0.08,
+    "high": 0.195
+   }
+  },
+  "totals_change_vs_prewar_central": {
+   "2021": 0,
+   "2022": -0.0527,
+   "2023": 0.047,
+   "2024": 0.0305,
+   "2025": -0.0127,
+   "2026": -0.0284
+  },
+  "method_short": "See russian_owned_r10-notes.md. Builder script in scratch r10/build.py."
+ },
+ "countries": {
+  "IRL": {
+   "companies": [
+    {
+     "name": "Aughinish Alumina Ltd / Limerick Alumina Refining Ltd (Aughinish refinery, Co. Limerick)",
+     "parent": "UC Rusal (via Rusal holding companies; En+ / Deripaska)",
+     "sector": "alumina refining",
+     "note": "~1.9 Mt/yr alumina; 459 employees (2023). Pre-tax: 2018 +$40.9m, 2019 +$54.6m, 2023 -$113.6m, 2024 +$119.4m; losses in 2021-2022 reported. Accumulated losses $359.7m end-2023, $240.2m end-2024, so no distributable reserves; Irish Times: no dividend paid to Rusal (2024 accounts). Relies on parent letter of support. Not sanctioned (EU/UK/US) as of Oct 2026; 21st EU package debated listing it or alumina."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0,
+     "central": 0,
+     "high": 0.03
+    },
+    "2020": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.005
+    },
+    "2023": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.01
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.01
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.005
+    }
+   },
+   "profits_certainty": "C",
+   "profits_note": "No dividend found in any year; accumulated losses (USD 360m end-2023, 240m end-2024) make a dividend legally impossible 2021-2025 and very unlikely in 2026. High case allows small interest/fees on group funding (2019 also allows an unreported dividend). Profit is effectively taken through transfer prices: alumina is sold to Rusal Trading (Jersey/Switzerland) and the refinery depends on parent funding - this margin is NOT counted here (it is part of Rusal's export/trading revenue). Sales to Russia: customs exports of alumina to Russian smelters (Sayanogorsk, Krasnoyarsk), from Eurostat.",
+   "sales_to_russia_eur_bn": {
+    "2019": {
+     "low": 0.1092,
+     "central": 0.1125,
+     "high": 0.1159
+    },
+    "2020": {
+     "low": 0.0869,
+     "central": 0.0896,
+     "high": 0.0923
+    },
+    "2021": {
+     "low": 0.1511,
+     "central": 0.1558,
+     "high": 0.1604
+    },
+    "2022": {
+     "low": 0.2242,
+     "central": 0.2312,
+     "high": 0.2381
+    },
+    "2023": {
+     "low": 0.1881,
+     "central": 0.1939,
+     "high": 0.1997
+    },
+    "2024": {
+     "low": 0.3366,
+     "central": 0.347,
+     "high": 0.3574
+    },
+    "2025": {
+     "low": 0.3066,
+     "central": 0.316,
+     "high": 0.3255
+    },
+    "2026": {
+     "low": 0.1587,
+     "central": 0.1637,
+     "high": 0.1686
+    }
+   },
+   "sales_to_russia_note": "Eurostat Comext DS-045409, reporter IE, partner RU, HS 281820, exports (EUR). Tonnes: 2019 377 kt, 2020 394 kt, 2021 511 kt, 2022 631 kt, 2023 630 kt, 2024 827 kt, 2025 776 kt, 2026 568 kt. 2026 = Jan-Aug. Range +-3% for valuation/classification. Already in customs trade (EU exports to Russia).",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": 0.0
+   }
+  },
+  "SWE": {
+   "companies": [
+    {
+     "name": "Kubikenborg Aluminium AB (KUBAL), Sundsvall",
+     "parent": "UC Rusal via Libertatum Materials Ltd (Cyprus)",
+     "sector": "primary aluminium smelter (~135 kt/yr)",
+     "note": "Pre-tax EUR 15.5m (2022), 9.5m (2023), 10.3m (2024); equity EUR 93.7m -> 30.1m (2023) -> 24.2m (2024). 2023: ~SEK 800m moved to Libertatum Materials (Cyprus parent) per 2023 annual report; 2024 dividend SEK 151m. Police raid Mar 2026 (suspected gross sanctions breach, events from 2023); Swedish banks stopped payments and Skatteverket froze SEK 56m in 2026."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0,
+     "central": 0.005,
+     "high": 0.02
+    },
+    "2020": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2021": {
+     "low": 0,
+     "central": 0.01,
+     "high": 0.03
+    },
+    "2022": {
+     "low": 0,
+     "central": 0.01,
+     "high": 0.04
+    },
+    "2023": {
+     "low": 0.04,
+     "central": 0.0697,
+     "high": 0.075
+    },
+    "2024": {
+     "low": 0.011,
+     "central": 0.0132,
+     "high": 0.015
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.01,
+     "high": 0.03
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.005,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0.0005,
+     "central": 0.005,
+     "high": 0.0095
+    },
+    "2023": {
+     "low": 0.0065,
+     "central": 0.0647,
+     "high": 0.123
+    },
+    "2024": {
+     "low": 0.0008,
+     "central": 0.0082,
+     "high": 0.0156
+    },
+    "2025": {
+     "low": 0.0005,
+     "central": 0.005,
+     "high": 0.0095
+    },
+    "2026": {
+     "low": -0.0063,
+     "central": -0.0033,
+     "high": -0.0003
+    }
+   },
+   "profits_certainty": "C",
+   "profits_note": "2023-2024 from KUBAL's annual reports as reported by EFN (SEK 800m to the Cyprus parent in 2023, SEK 151m dividend 2024) and the equity fall (EUR 93.7m to 30.1m in 2023 with a profit), which shows the 2023 transfer was a distribution, not only a loan; low case treats part as an intra-group loan. Attributed to Sweden (host), not Cyprus. 2019-2022 and 2025 not found: small guesses. 2026: payments stopped by banks and tax account frozen.",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0.103,
+    "profits_change_vs_prewar": 0.0796
+   }
+  },
+  "BEL": {
+   "companies": [
+    {
+     "name": "NLMK Belgium Holdings (NBH): NLMK La Louviere, NLMK Clabecq (and holding for Dansteel, Verona, Strip France)",
+     "parent": "NLMK 49% (+2% NBH-affiliated THN) / SOGEPA (Wallonia) 49%",
+     "sector": "steel rolling (slabs from Novolipetsk)",
+     "note": "Chronic losses; NLMK recapitalised NBH by >EUR 500m over four years (Wallonia parliament, 2019) and NLMK and SOGEPA each put EUR 100m in 2019-2021. No dividend found."
+    },
+    {
+     "name": "EuroChem Antwerpen NV",
+     "parent": "EuroChem Group AG (Switzerland, conduit) - Melnichenko family (EU-sanctioned)",
+     "sector": "nitrogen/NPK fertilisers",
+     "note": "Turnover EUR 861m (2022), 707m (2023), 734m (2024), 772m (2025); result +2.7m, -15.1m, +11.1m, +47.1m; equity 271.2 -> 256.4 -> 267.4 -> 314.4m, i.e. all profit retained, no dividend 2023-2025. Ammonia supply from EuroChem Northwest (Russia) disrupted in 2022."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0,
+     "central": 0.005,
+     "high": 0.04
+    },
+    "2020": {
+     "low": 0,
+     "central": 0.005,
+     "high": 0.04
+    },
+    "2021": {
+     "low": 0,
+     "central": 0.01,
+     "high": 0.06
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.03
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0067,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": -0.0127,
+     "central": -0.0067,
+     "high": -0.0007
+    },
+    "2023": {
+     "low": -0.0127,
+     "central": -0.0067,
+     "high": -0.0007
+    },
+    "2024": {
+     "low": -0.0127,
+     "central": -0.0067,
+     "high": -0.0007
+    },
+    "2025": {
+     "low": -0.0127,
+     "central": -0.0067,
+     "high": -0.0007
+    },
+    "2026": {
+     "low": -0.0084,
+     "central": -0.0044,
+     "high": -0.0004
+    }
+   },
+   "profits_certainty": "C",
+   "profits_note": "NBH: loss-making, recapitalised by NLMK, so no dividend (high case pre-war allows interest on NLMK shareholder loans). EuroChem Antwerpen: equity movements show no dividends 2023-2025; any dividend now would reach a structure whose beneficial owner is EU-sanctioned. Pre-war Antwerp dividends not found: small guess. NBH plants in Denmark, Italy and France are listed under those hosts with zero.",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": -0.0312
+   }
+  },
+  "DNK": {
+   "companies": [
+    {
+     "name": "NLMK DanSteel (Frederiksvaerk)",
+     "parent": "NLMK via NBH (Belgium)",
+     "sector": "heavy plate",
+     "note": "Integrated into NBH; slabs imported from Russia (Danish imports of HS 72 from Russia EUR 0.32bn 2019, 0.52bn 2021, 0.24bn 2024 - purchases, not sales)."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2020": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.005
+    },
+    "2023": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "profits_certainty": "C",
+   "profits_note": "Part of loss-making NBH; no dividend found.",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": 0.0
+   }
+  },
+  "ITA": {
+   "companies": [
+    {
+     "name": "NLMK Verona",
+     "parent": "NLMK via NBH",
+     "sector": "heavy plate",
+     "note": "Part of NBH."
+    },
+    {
+     "name": "Eurallumina (Portovesme, Sardinia)",
+     "parent": "UC Rusal",
+     "sector": "alumina refining",
+     "note": "Idle since 2009; no income."
+    },
+    {
+     "name": "Evraz Palini e Bertoli",
+     "parent": "Evraz plc",
+     "sector": "plate",
+     "note": "Small; Evraz plc UK-sanctioned May 2022."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2020": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "profits_certainty": "C",
+   "profits_note": "No dividends found; idle or loss-making units. Company_flows ITA (Lukoil ISAB) is separate.",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": 0.0
+   }
+  },
+  "FRA": {
+   "companies": [
+    {
+     "name": "NLMK Strip (Strasbourg)",
+     "parent": "NLMK via NBH",
+     "sector": "coated steel",
+     "note": "Part of NBH."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2020": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "profits_certainty": "D",
+   "profits_note": "Part of NBH; no dividend found. (Aluminium Dunkerque is not Russian-owned; it buys ~68% of Aughinish alumina.)",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": 0.0
+   }
+  },
+  "LTU": {
+   "companies": [
+    {
+     "name": "AB Lifosa (Kedainiai)",
+     "parent": "EuroChem Group AG (Switzerland, conduit) - Melnichenko",
+     "sector": "phosphate fertilisers",
+     "note": "Net profit EUR 16.8m (2020), 120.7m (2021); pre-tax 37.7m (2022), -64.2m (2023), 29.9m (2024), 58.4m (2025). Paid EUR 165m dividend to EuroChem in 2016. Accounts frozen 10 Mar 2022 (Melnichenko listed); temporary administrator UAB Valnetas from Jul 2024 (removed from sanctions list on that basis); EuroChem announced mothballing."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0.01,
+     "central": 0.03,
+     "high": 0.08
+    },
+    "2020": {
+     "low": 0.005,
+     "central": 0.02,
+     "high": 0.05
+    },
+    "2021": {
+     "low": 0.01,
+     "central": 0.03,
+     "high": 0.1
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0267,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": -0.0507,
+     "central": -0.0267,
+     "high": -0.0027
+    },
+    "2023": {
+     "low": -0.0507,
+     "central": -0.0267,
+     "high": -0.0027
+    },
+    "2024": {
+     "low": -0.0507,
+     "central": -0.0267,
+     "high": -0.0027
+    },
+    "2025": {
+     "low": -0.0507,
+     "central": -0.0267,
+     "high": -0.0027
+    },
+    "2026": {
+     "low": -0.0338,
+     "central": -0.0178,
+     "high": -0.0018
+    }
+   },
+   "profits_certainty": "C",
+   "profits_note": "Post-war zero is firm (frozen accounts, then state-appointed administrator). Pre-war dividends not found for 2019-2021; guessed from profits and the 2016 payout history (D). The fall is the host's own sanctions decision.",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": -0.1246
+   }
+  },
+  "POL": {
+   "companies": [
+    {
+     "name": "Grupa Azoty S.A. (19.8% via Norica Holding)",
+     "parent": "Acron (Kantor)",
+     "sector": "nitrogen fertilisers/chemicals",
+     "note": "Minority stake, not control. Norica's shares frozen under Polish sanctions list (2022). Grupa Azoty paid no dividend found in 2019-2021 (investment programme) and had losses 2022-2023."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2020": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "profits_certainty": "C",
+   "profits_note": "Portfolio-size stake; no dividend found; frozen since 2022.",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": 0.0
+   }
+  },
+  "AGO": {
+   "companies": [
+    {
+     "name": "Sociedade Mineira de Catoca (41%)",
+     "parent": "Alrosa",
+     "sector": "diamond mining",
+     "note": "Alrosa received ~$464m from Catoca 1995-2018. Dividends due for FY2021 $100m, FY2022 $85m, FY2023 $134.4m (total ~$322m) could not be repatriated (Expansao, Oct 2024). Stake transferred via Endiama to Taadeen (Oman sovereign fund) on 26 May 2025; Alrosa booked RUB 6.75bn gain; price undisclosed."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0.02,
+     "central": 0.04,
+     "high": 0.08
+    },
+    "2020": {
+     "low": 0.01,
+     "central": 0.03,
+     "high": 0.06
+    },
+    "2021": {
+     "low": 0.02,
+     "central": 0.04,
+     "high": 0.08
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.285
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0367,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": -0.0697,
+     "central": -0.0367,
+     "high": -0.0037
+    },
+    "2023": {
+     "low": -0.0697,
+     "central": -0.0367,
+     "high": -0.0037
+    },
+    "2024": {
+     "low": -0.0697,
+     "central": -0.0367,
+     "high": -0.0037
+    },
+    "2025": {
+     "low": -0.0697,
+     "central": -0.0367,
+     "high": 0.2483
+    },
+    "2026": {
+     "low": -0.0464,
+     "central": -0.0244,
+     "high": -0.0024
+    }
+   },
+   "profits_certainty": "C",
+   "profits_note": "Pre-war yearly dividends not published: guessed from the 1995-2018 total and the FY2021 $100m. 2022-2024: declared but blocked in Angola (host decision under sanctions pressure). 2025 high case: the ~$322m blocked dividends may have been settled inside the May 2025 exit deal; the sale price itself is capital, not income. Change 2025 high uses that high case (as company_flows does for India).",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": -0.1712
+   }
+  },
+  "KAZ": {
+   "companies": [
+    {
+     "name": "Uranium One Group JVs with Kazatomprom: Akdala, South Inkai (Betpak Dala 30%), Karatau 50%, Akbastau 50%, Zarechnoye 49.98% (sold to SNURDC Dec 2024), Khorasan-U 30% (transfer to CGN-linked buyer agreed), Budenovskoye",
+     "parent": "Rosatom (via TENEX; Uranium One holding is a conduit)",
+     "sector": "uranium mining",
+     "note": "Uranium One net profit $60m in H1 2021 (RBC). No JV dividend series found."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0.03,
+     "central": 0.07,
+     "high": 0.14
+    },
+    "2020": {
+     "low": 0.03,
+     "central": 0.07,
+     "high": 0.14
+    },
+    "2021": {
+     "low": 0.03,
+     "central": 0.08,
+     "high": 0.16
+    },
+    "2022": {
+     "low": 0.04,
+     "central": 0.1,
+     "high": 0.2
+    },
+    "2023": {
+     "low": 0.055,
+     "central": 0.14,
+     "high": 0.28
+    },
+    "2024": {
+     "low": 0.07,
+     "central": 0.18,
+     "high": 0.36
+    },
+    "2025": {
+     "low": 0.055,
+     "central": 0.14,
+     "high": 0.28
+    },
+    "2026": {
+     "low": 0.03,
+     "central": 0.08,
+     "high": 0.16
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0733,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": -0.0393,
+     "central": 0.0267,
+     "high": 0.0927
+    },
+    "2023": {
+     "low": 0.0007,
+     "central": 0.0667,
+     "high": 0.1327
+    },
+    "2024": {
+     "low": 0.0107,
+     "central": 0.1067,
+     "high": 0.2027
+    },
+    "2025": {
+     "low": 0.0007,
+     "central": 0.0667,
+     "high": 0.1327
+    },
+    "2026": {
+     "low": -0.0129,
+     "central": 0.0311,
+     "high": 0.0751
+    }
+   },
+   "profits_certainty": "D",
+   "profits_note": "Not in company_flows KAZ (that covers Lukoil, Gazprom, banks). Level guessed from Uranium One's ~$120m/yr net profit (2021) and uranium prices (spot ~$35/lb 2021, ~$60 2023, ~$85 2024, ~$72 2025); 2025-2026 lower for the Zarechnoye/Khorasan stake sales and Kazakhstan's higher mineral extraction tax. No sanctions block. Uranium shipped to Russia for enrichment is in customs trade, not counted here.",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0.64,
+    "profits_change_vs_prewar": 0.2979
+   }
+  },
+  "USA": {
+   "companies": [
+    {
+     "name": "Evraz North America (Pueblo CO, Portland OR; US part)",
+     "parent": "Evraz plc (UK conduit; Abramovich ~29%, Abramov, Frolov, Shvidler)",
+     "sector": "steel, rail, pipe",
+     "note": "Evraz plc UK-sanctioned May 2022 with OFSI licence for Evraz NA; sold to Atlas Holdings 1 Aug 2025 (Orion Steel) for up to $500m, mostly deferred, proceeds withheld from Evraz plc until sanctions lifted. NLMK USA and TMK IPSCO are already in company_flows USA and are NOT included here."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0,
+     "central": 0.01,
+     "high": 0.04
+    },
+    "2020": {
+     "low": 0,
+     "central": 0,
+     "high": 0.02
+    },
+    "2021": {
+     "low": 0,
+     "central": 0.02,
+     "high": 0.07
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.03
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.01,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": -0.019,
+     "central": -0.01,
+     "high": -0.001
+    },
+    "2023": {
+     "low": -0.019,
+     "central": -0.01,
+     "high": -0.001
+    },
+    "2024": {
+     "low": -0.019,
+     "central": -0.01,
+     "high": -0.001
+    },
+    "2025": {
+     "low": -0.019,
+     "central": -0.01,
+     "high": -0.001
+    },
+    "2026": {
+     "low": -0.0127,
+     "central": -0.0067,
+     "high": -0.0007
+    }
+   },
+   "profits_certainty": "D",
+   "profits_note": "Evraz NA only (70% of Evraz NA to USA, 30% to Canada). No dividend series found; guesses. From May 2022 nothing can reach the sanctioned parent; the sale price is capital.",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": -0.0467
+   }
+  },
+  "CAN": {
+   "companies": [
+    {
+     "name": "Evraz North America (Regina SK, Calgary, Red Deer, Camrose; Canadian part)",
+     "parent": "Evraz plc",
+     "sector": "pipe, plate",
+     "note": "Sold with Evraz NA to Atlas (Aug 2025). Canada sanctioned Abramovich/Evraz 2022. Acron's North Atlantic Potash (exploration) earns nothing."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0,
+     "central": 0.004,
+     "high": 0.017
+    },
+    "2020": {
+     "low": 0,
+     "central": 0,
+     "high": 0.009
+    },
+    "2021": {
+     "low": 0,
+     "central": 0.009,
+     "high": 0.03
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.013
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0043,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": -0.0082,
+     "central": -0.0043,
+     "high": -0.0004
+    },
+    "2023": {
+     "low": -0.0082,
+     "central": -0.0043,
+     "high": -0.0004
+    },
+    "2024": {
+     "low": -0.0082,
+     "central": -0.0043,
+     "high": -0.0004
+    },
+    "2025": {
+     "low": -0.0082,
+     "central": -0.0043,
+     "high": -0.0004
+    },
+    "2026": {
+     "low": -0.0055,
+     "central": -0.0029,
+     "high": -0.0003
+    }
+   },
+   "profits_certainty": "D",
+   "profits_note": "30% share of the Evraz NA guess.",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": -0.0201
+   }
+  },
+  "TUR": {
+   "companies": [
+    {
+     "name": "MMK Metalurji (Iskenderun, Istanbul)",
+     "parent": "MMK",
+     "sector": "steel rolling",
+     "note": "Mostly loss-making; no dividend found. Company_flows TUR (Lukoil Akpet) is separate."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2020": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "profits_certainty": "D",
+   "profits_note": "No dividend found.",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": 0.0
+   }
+  },
+  "GIN": {
+   "companies": [
+    {
+     "name": "Compagnie des Bauxites de Kindia (CBK), Dian-Dian bauxite (Boke), Friguia alumina refinery (restarted 2018-19)",
+     "parent": "UC Rusal",
+     "sector": "bauxite mining, alumina",
+     "note": "About half of Rusal's bauxite came from Guinea in 2021. Output goes to Rusal refineries (Russia, Aughinish, Friguia) at transfer prices."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2020": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.01
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.01
+    },
+    "2023": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.01
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.01
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.01
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.01
+    }
+   },
+   "profits_certainty": "D",
+   "profits_note": "Captive cost centres; no dividend found (profit booked in Rusal trading arms). Sales to Russia are a rough estimate (bauxite ~3-5 Mt/yr at ~$40-50/t plus part of Friguia alumina), not customs data.",
+   "sales_to_russia_eur_bn": {
+    "2019": {
+     "low": 0.1,
+     "central": 0.2,
+     "high": 0.32
+    },
+    "2020": {
+     "low": 0.09,
+     "central": 0.18,
+     "high": 0.29
+    },
+    "2021": {
+     "low": 0.11,
+     "central": 0.22,
+     "high": 0.35
+    },
+    "2022": {
+     "low": 0.12,
+     "central": 0.24,
+     "high": 0.38
+    },
+    "2023": {
+     "low": 0.12,
+     "central": 0.24,
+     "high": 0.38
+    },
+    "2024": {
+     "low": 0.17,
+     "central": 0.33,
+     "high": 0.53
+    },
+    "2025": {
+     "low": 0.16,
+     "central": 0.32,
+     "high": 0.51
+    },
+    "2026": {
+     "low": 0.1,
+     "central": 0.2,
+     "high": 0.32
+    }
+   },
+   "sales_to_russia_note": "Rough estimate (D): no Guinean or Russian customs data by product; range x0.5-1.6.",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": 0.0
+   }
+  },
+  "JAM": {
+   "companies": [
+    {
+     "name": "West Indies Alumina Co. (Windalco: Ewarton refinery, mines, Port Esquivel)",
+     "parent": "UC Rusal 93% (GoJ 7%)",
+     "sector": "alumina",
+     "note": "2025 output 396 kt alumina, 1.565 Mt bauxite. Russia took 34% of Windalco alumina in 2013-2017. Rusal seeking buyers (Sep 2026). Alpart was sold to JISCO in 2016 and is not Russian-owned."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2020": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.005
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.005
+    },
+    "2023": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.005
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.005
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.005
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.005
+    }
+   },
+   "profits_certainty": "D",
+   "profits_note": "Captive refinery; no dividend found.",
+   "sales_to_russia_eur_bn": {
+    "2019": {
+     "low": 0.02,
+     "central": 0.05,
+     "high": 0.09
+    },
+    "2020": {
+     "low": 0.02,
+     "central": 0.04,
+     "high": 0.07
+    },
+    "2021": {
+     "low": 0.02,
+     "central": 0.05,
+     "high": 0.09
+    },
+    "2022": {
+     "low": 0.03,
+     "central": 0.07,
+     "high": 0.13
+    },
+    "2023": {
+     "low": 0.03,
+     "central": 0.06,
+     "high": 0.11
+    },
+    "2024": {
+     "low": 0.04,
+     "central": 0.1,
+     "high": 0.18
+    },
+    "2025": {
+     "low": 0.03,
+     "central": 0.08,
+     "high": 0.14
+    },
+    "2026": {
+     "low": 0.02,
+     "central": 0.05,
+     "high": 0.09
+    }
+   },
+   "sales_to_russia_note": "Rough estimate (D): 396 kt/yr x 34-60% to Russia x alumina price; range x0.4-1.8.",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": 0.0
+   }
+  },
+  "AUS": {
+   "companies": [
+    {
+     "name": "Queensland Alumina Ltd (20%)",
+     "parent": "UC Rusal",
+     "sector": "alumina (tolling JV)",
+     "note": "Australia banned alumina/bauxite exports to Russia (Mar 2022); Rio Tinto took over 100% of QAL capacity; Rusal's dispute ongoing. Tolling JV: no dividends."
+    }
+   ],
+   "profits_remitted": {
+    "2019": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2020": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "profits_prewar_avg_2019_2021": 0.0,
+   "profits_change_vs_prewar": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "profits_certainty": "C",
+   "profits_note": "Tolling joint venture: no profit or dividend to Rusal. Remitted zero.",
+   "sales_to_russia_eur_bn": {
+    "2019": {
+     "low": 0.12,
+     "central": 0.2,
+     "high": 0.28
+    },
+    "2020": {
+     "low": 0.1,
+     "central": 0.17,
+     "high": 0.24
+    },
+    "2021": {
+     "low": 0.13,
+     "central": 0.22,
+     "high": 0.31
+    },
+    "2022": {
+     "low": 0.02,
+     "central": 0.04,
+     "high": 0.06
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "sales_to_russia_note": "Rough estimate: Rusal's ~0.75-0.8 Mt/yr QAL share x alumina price, Jan-Mar only in 2022; range x0.6-1.4. Should match Australian alumina exports to Russia in customs data.",
+   "sum_2022_2026_central": {
+    "profits_remitted": 0,
+    "profits_change_vs_prewar": 0.0
+   }
+  }
+ },
+ "sources": [
+  {
+   "id": "it_aughinish_2024",
+   "title": "Irish Times: Russian-owned Aughinish Alumina plant in Limerick records profits of EUR 103m (2024 accounts; no dividend to Rusal; accumulated losses $240m)",
+   "url": "https://www.irishtimes.com/business/2026/04/03/russian-owned-aughinish-alumina-plant-in-limerick-records-profits-of-103m/",
+   "note": "2026-04-03"
+  },
+  {
+   "id": "rte_aughinish_2023",
+   "title": "RTE: Aughinish Alumina on course to return to profit in 2025 (2023 loss $113.6m; accumulated losses $359.65m; parent letter of support)",
+   "url": "https://www.rte.ie/news/business/2024/1212/1486128-limerick-alumina-refining-ltd-results/",
+   "note": "2024-12-12"
+  },
+  {
+   "id": "it_aughinish_2019",
+   "title": "Irish Times: Lifting of US sanctions boosts profits at Aughinish Alumina (2019 pre-tax $54.6m; owes Rusal Trading $126.3m)",
+   "url": "https://www.irishtimes.com/business/energy-and-resources/lifting-of-us-sanctions-boosts-profits-at-aughinish-alumina-1.4333962",
+   "note": "2020-08-19"
+  },
+  {
+   "id": "ie_aughinish_2018",
+   "title": "Irish Examiner: Aughinish Alumina revenues up despite sanctions (2018 pre-tax $40.9m)",
+   "url": "https://www.irishexaminer.com/breakingnews/business/aughinish-alumina-revenues-up-despite-sanctions-951369.html",
+   "note": "2019-09-17"
+  },
+  {
+   "id": "rte_aughinish_sanctions",
+   "title": "RTE analysis: Collateral damage - Aughinish Alumina and EU sanctions (exports to Russia 396 kt 2020, ~826 kt 2024; 45% of exports to Russia; 21st package debate)",
+   "url": "https://www.rte.ie/news/analysis-and-comment/2026/0530/1575983-aughinish-alumina-analysis/",
+   "note": "2026-05-30"
+  },
+  {
+   "id": "occrp_aughinish",
+   "title": "OCCRP: Inside the supply chain funneling Irish alumina to Russian rockets",
+   "url": "https://www.occrp.org/en/investigation/inside-the-aluminum-supply-chain-linking-irish-industry-to-russian-rockets",
+   "note": "not fetched (timeout); figures via RTE"
+  },
+  {
+   "id": "eurostat_comext",
+   "title": "Eurostat Comext DS-045409: IE exports to RU, HS 281820, annual 2019-2025 and monthly 2026",
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=A&reporter=IE&partner=RU&product=281820&flow=2&indicators=VALUE_IN_EUROS",
+   "note": "queried 2026-10-18 (dataset updated 2026-10-16)"
+  },
+  {
+   "id": "efn_kubal_1",
+   "title": "EFN: Bankstopp for Kubal - miljoner frysta och miljardoverforing utreds (SEK 800m to Libertatum Materials 2023; SEK 151m dividend 2024)",
+   "url": "https://efn.se/bankstopp-for-kubal-miljoner-frysta-och-miljardoverforing-utreds",
+   "note": "2026-09-02"
+  },
+  {
+   "id": "efn_kubal_2",
+   "title": "EFN: Kubal i Sundsvall utreds for brott (raid 26 Mar 2026)",
+   "url": "https://efn.se/kubal-i-sundsvall-utreds-for-brott-nu-vantas-vinsten-oka",
+   "note": "2026-04-03"
+  },
+  {
+   "id": "lc_kubal",
+   "title": "Largest Companies: Kubikenborg Aluminium AB closing figures 2022-2024 (EUR k)",
+   "url": "https://largestcompanies.com/company/Kubikenborg-Aluminium-AB-21997/closing-figures-and-key-ratios",
+   "note": "aggregator of Bolagsverket filings"
+  },
+  {
+   "id": "cw_eurochem_antwerp",
+   "title": "Companyweb: EuroChem Antwerpen NV (BE0837473452) accounts 2022-2025",
+   "url": "https://www.companyweb.be/en/0837473452/euro-chem-antwerpen",
+   "note": "aggregator of NBB filings"
+  },
+  {
+   "id": "nlmk_sogepa",
+   "title": "NLMK: NLMK Group and SOGEPA equalize holdings in NBH (49% each)",
+   "url": "https://eu.nlmk.com/en/media-center/news-groups/nlmk-group-and-sogepa-equalize-their-holdings-in-nlmk-belgium-holdings-sa/",
+   "note": "2018-09-27"
+  },
+  {
+   "id": "wallonia_nbh",
+   "title": "Parlement de Wallonie question: NBH results negative, NLMK recapitalised NBH by >EUR 500m",
+   "url": "https://www.parlement-wallonie.be/content/print.php?print=interp-questions-voir.php&iddoc=91193&type=32",
+   "note": "2019"
+  },
+  {
+   "id": "lifosa_tax",
+   "title": "tax.lt: Lifosa AB profit table 2020-2025",
+   "url": "https://tax.lt/imones/6109-lifosa-ab",
+   "note": "via search snippet"
+  },
+  {
+   "id": "lrt_lifosa",
+   "title": "LRT: Lifosa accounts frozen after Melnichenko listed",
+   "url": "https://www.lrt.lt/en/news-in-english/19/1640865/lithuania-based-fertiliser-plant-falls-under-eu-sanctions-on-putin-linked-oligarch",
+   "note": "2022-03-10"
+  },
+  {
+   "id": "fd_lifosa",
+   "title": "Fertilizer Daily: Lifosa cleared from EU sanctions list with appointment of temporary administrator",
+   "url": "https://www.fertilizerdaily.com/20240731-lifosa-cleared-from-eu-sanctions-list-with-the-appointment-of-temporary-administrator",
+   "note": "2024-07-31"
+  },
+  {
+   "id": "mu_lifosa_2016",
+   "title": "Mano ukis: Lifosa paid EUR 165m dividend to EuroChem (2016)",
+   "url": "https://manoukis.lt/naujienos/rinka/smukusios-pasaulines-trasu-kainos-apkarpe-lietuvos-gamintoju-pajamas",
+   "note": ""
+  },
+  {
+   "id": "expansao_catoca",
+   "title": "Expansao: Alrosa cannot repatriate USD 320m Catoca dividends (FY2021 100m, FY2022 85m, FY2023 134.4m)",
+   "url": "https://www.expansao.co.ao/empresas/detalhe/alrosa-nao-consegue-repatriar-para-a-russia-dividendos-de-320-milhoes-usd-62633.html",
+   "note": "2024-10-01"
+  },
+  {
+   "id": "interfax_catoca",
+   "title": "Interfax: Alrosa's Catoca stake now held by Taadeen (Oman); $464m dividends 1995-2018",
+   "url": "https://interfax.com/newsroom/top-stories/111927/",
+   "note": "2025-06-09"
+  },
+  {
+   "id": "mt_alrosa_h1",
+   "title": "Moscow Times: Alrosa H1 2025, Catoca deal closed 26 May 2025, RUB 6.75bn gain",
+   "url": "https://ru.themoscowtimes.com/2025/08/12/update-1-alrosa-uvelichila-chistuyu-pribyl-na-11-v-1-pol-25g-a171379",
+   "note": ""
+  },
+  {
+   "id": "u1_china",
+   "title": "Mining.com/Reuters: Russia sells stakes in some Kazakh uranium deposits to China",
+   "url": "https://www.mining.com/web/russia-sells-stakes-in-some-kazakh-uranium-deposits-to-china/",
+   "note": "2024-12"
+  },
+  {
+   "id": "rbc_u1",
+   "title": "RBC: Rosatom to sell US uranium unit; Uranium One H1 2021 net profit $60m",
+   "url": "https://www.rbc.ru/business/09/11/2021/618a641c9a794728ea77abb5",
+   "note": "2021-11-09"
+  },
+  {
+   "id": "evraz_atlas",
+   "title": "GMK Center: Atlas Holdings completes acquisition of Evraz North America (1 Aug 2025)",
+   "url": "https://gmk.center/en/news/atlas-holdings-completes-acquisition-of-evraz-north-america/",
+   "note": ""
+  },
+  {
+   "id": "coloradosun_evraz",
+   "title": "Colorado Sun/AP: Pueblo steel mill sale; proceeds withheld from Evraz plc until sanctions lifted",
+   "url": "https://coloradosun.com/2025/06/27/pueblo-steel-mill-evraz-sale/",
+   "note": "2025-06-27"
+  },
+  {
+   "id": "gleaner_windalco",
+   "title": "Gleaner: Rusal seeks buyers for Windalco (2025 output 396 kt alumina)",
+   "url": "https://jamaica-gleaner.com/article/business/20260925/rusal-seeks-buyers-windalco-it-pulls-back-caribbean",
+   "note": "2026-09-25"
+  },
+  {
+   "id": "company_flows",
+   "title": "Project file company_flows.json section 24 (method for profits_change_vs_prewar; FIN Harjavalta, USA NLMK USA/TMK IPSCO already counted)",
+   "url": "research/2026-10/gaps/company_flows.json",
+   "note": ""
+  }
+ ],
+ "overlaps": "1) company_flows.json: FIN (Harjavalta) and USA (NLMK USA, TMK IPSCO) are already there and are excluded here; KAZ, ITA, TUR, POL, BEL, SWE, IRL entries here cover different companies from company_flows (oil, gas, banks) and can be added. company_flows has no AGO, GIN, JAM, AUS, CAN profits. 2) sales_to_russia_eur_bn (IRL alumina etc.) is customs trade already counted in trade files: report only, do not add. Purchases from Russia (Danish/Belgian slab imports for NBH, Antwerp ammonia, Harjavalta nickel matte) are also in trade. 3) Transfer-pricing margins (e.g. Aughinish selling to Rusal Trading) are part of Rusal's export revenue, not counted. 4) Sale prices (Evraz NA to Atlas, Catoca to Taadeen, Uranium One stakes to China) are capital swaps, not income, as in company_flows. 5) Host corporate taxes of these plants are not in any file as Russian money and are not counted here."
+}

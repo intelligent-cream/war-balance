@@ -1,7 +1,15 @@
 # Roadmap
 
-The work list for each data round. Rounds 5 to 9 are done. Each item links to the limitation or method page it
+The work list for each data round. Rounds 5 to 10 are done. Each item links to the limitation or method page it
 changes. Status is updated as items are done; the [changelog](changelog.md) records what each finished item changed.
+
+## Round 10 (done)
+
+| # | step | kind |
+|---|---|---|
+| H1 | Trade at the seller's net gain: Russia's per product and year, Ukraine's per product, year and buyer | done ([overview.md](method/overview.md#the-net-gain-rule-round-10)) |
+| H2 | Russian-owned metals, mining and chemicals plants abroad (Aughinish and others) | done ([russia-state-and-companies.md](method/russia-state-and-companies.md#russian-owned-companies-abroad)) |
+| H3 | Later: a marker for the share of its own military stock a country gave (for example Australia's Abrams), next to the euros | open |
 
 ## Round 9 (done)
 

@@ -1082,6 +1082,7 @@ def build() -> dict:
     apply_value_kept(countries, src)
     apply_audit2(countries, src, "trends")
     apply_nowar_prices(countries, src)
+    apply_net_gain(countries, src)
     for c in countries.values():
         for obj in c.values():
             if isinstance(obj, dict):
@@ -1760,7 +1761,29 @@ def apply_company_flows(countries: dict[str, dict], src: Sources) -> None:
     )
     # holdings whose owners were mostly international: their 2024 discount is not the home country's (central, EUR bn)
     conduit = {"NLD": 4.7, "KAZ": 3.5}
-    for iso3, d in cf["countries"].items():
+    # Russian-owned metals, mining and chemicals plants abroad (round 10, russian_owned_r10.json: Rusal's Aughinish in
+    # Ireland, NLMK, Nornickel, EuroChem...), added to the oil, gas and bank subsidiaries above, by host country
+    r10 = (load(GAPS / "russian_owned_r10.json") or {}).get("countries") or {}
+    rid = src.add(
+        "russian_owned_r10",
+        "Russian-owned metals, mining and chemicals plants abroad (Rusal, NLMK, Nornickel, EuroChem): company filings and parent reports",
+        "https://core.cro.ie/",
+        "2026-10-18",
+        "profits and dividends sent to the Russian parent, by host country; see research/2026-10/gaps/russian_owned_r10-notes.md",
+    )
+    hosts = dict(cf["countries"])
+    for iso3, d in r10.items():
+        old = hosts.get(iso3) or {}
+        pr0, pr1 = old.get("profits_change_vs_prewar") or {}, d.get("profits_change_vs_prewar") or {}
+        merged = {
+            y: {b: (pr0.get(y) or {}).get(b, 0.0) + (pr1.get(y) or {}).get(b, 0.0) for b in ("low", "central", "high")}
+            for y in set(pr0) | set(pr1)
+        }
+        cert = (
+            weakest([old.get("profits_certainty"), d.get("profits_certainty")]) if old else d.get("profits_certainty")
+        )
+        hosts[iso3] = {**old, "profits_change_vs_prewar": merged, "profits_certainty": cert, "_r10": True}
+    for iso3, d in hosts.items():
         c = countries.get(iso3)
         if not c:
             continue
@@ -1791,6 +1814,8 @@ def apply_company_flows(countries: dict[str, dict], src: Sources) -> None:
                     d.get("profits_certainty") or "D",
                     sid,
                 )
+                if d.get("_r10"):
+                    c["extra"][-1]["src"].append(rid)
 
 
 def apply_refugees_net(countries: dict[str, dict], src: Sources) -> None:
@@ -2631,6 +2656,131 @@ def apply_brunei_r6(countries: dict[str, dict]) -> None:
         ]
     r21 = res["2021"]
     tr["base"], tr["base_range"] = round(r21["central"], 5), [round(r21["low"], 5), round(r21["high"], 5)]
+
+
+BANDS = ("low", "central", "high")
+
+
+def apply_net_gain(countries: dict[str, dict], src: Sources) -> None:
+    """Trade counts at the seller's net gain, as aid counts at its full value (round 10): a purchase from Russia at
+    Russia's gain (taxes plus profit above a normal return, as a share of the price; net_gain_russia.json) and extra
+    purchases from Ukraine at Ukraine's (net_gain_ukraine.json). Sales to Russia already count at the seller's profit.
+    Stored as weights per year, (low, central, high), for what was expected without the war ("e": the 2019-2021 mix
+    of goods bought) and for what was bought ("a": that year's mix); the map applies them (spread() in index.html)."""
+    ru = load(GAPS / "net_gain_russia.json")
+    ua = load(GAPS / "net_gain_ukraine.json")
+    rid = src.add(
+        "net_gain_russia",
+        "Russia's net gain per euro of exports (taxes plus profit above a normal return): Russian Finance Ministry, company reports, IEA, Rosstat",
+        "https://minfin.gov.ru/en/statistics/fedbud/oil/",
+        ru.get("generated"),
+        "see research/2026-10/gaps/net_gain_russia-notes.md",
+    )
+    uid = src.add(
+        "net_gain_ukraine",
+        "Ukraine's net gain per euro of exports (taxes plus profit above a normal return): Ukrstat, company reports, KSE Institute",
+        "https://www.ukrstat.gov.ua/",
+        ua.get("generated"),
+        "see research/2026-10/gaps/net_gain_ukraine-notes.md",
+    )
+    g_ru = ru["groups"]
+    g = lambda grp, y: tuple((g_ru[grp].get(str(y)) or g_ru[grp]["2025"])[b] for b in BANDS)  # noqa: E731
+    fuels = ("crude", "products", "gas", "coal")
+
+    def mix_gain(fossil: float, shares: dict[str, float], y: int) -> tuple[float, ...]:
+        """Gain share of a mix: fossil share split over the fuels (other fossil as products), the rest non-fuel goods."""
+        tot = sum(shares.get(f, 0.0) for f in fuels) + shares.get("other_fossil", 0.0) or 1.0
+        fuel = [
+            sum(shares.get(f, 0.0) * g(f, y)[i] for f in fuels) + shares.get("other_fossil", 0.0) * g("products", y)[i]
+            for i in range(3)
+        ]
+        return tuple(fossil * fuel[i] / tot + (1 - fossil) * g("non_fuel_average", y)[i] for i in range(3))
+
+    energy = load(GAPS / "energy.json")["countries"]
+    customs_gas = load(GAPS / "customs_gas.json")["countries"]
+    for iso3, c in countries.items():
+        tr = c.get("to_rus")
+        if not tr:
+            continue
+        m = import_mix(iso3)
+        e = [mix_gain(m.get("fossil_share") or 0.0, m, y) for y in YEARS]
+        # what was bought each year: the change in the fuel share since 2021 from the fossil tracker (fuel value over
+        # payments, against its 2021 ratio), applied to the 2019-2021 customs mix, so 2021 matches the expected mix; the
+        # fuels in the tracker's split of that year. A year without Russian fuel is all other goods
+        d = energy.get(iso3) or {}
+        by_mt = d.get("fossil_from_russia_by_fuel_mt") or {}
+
+        def fuel_val(y: int) -> dict[str, float]:
+            out: dict[str, float] = {}
+            for f, t in (by_mt.get(str(y)) or {}).items():
+                key = "gas" if f == "lng" else f
+                pr = E2["price_index"][FUEL_INDEX.get(f, "products")][str(y)]["central"]
+                out[key] = out.get(key, 0.0) + t * EUR_PER_MT_2021.get(f, 0.4) * pr
+            if iso3 == "MDA":
+                # Moldova's payments hold only the gas right-bank Moldova paid for (its customs); the tracker's gas
+                # includes Transnistria's unpaid gas, which is not counted as money to Russia
+                out["gas"] = (customs_gas.get("MDA") or {}).get(str(y), 0.0)
+            return out
+
+        v21, p21 = sum(fuel_val(2021).values()), tr["years"][0] or 0.0
+        if not by_mt or v21 <= 0 or p21 <= 0:
+            a = list(e)
+        else:
+            a = []
+            for i, y in enumerate(YEARS):
+                val, paid = fuel_val(y), tr["years"][i] or 0.0
+                fv = sum(val.values())
+                fossil = min(1.0, (m.get("fossil_share") or 0.0) * (fv / paid) / (v21 / p21)) if paid > 0 else 0.0
+                shares = {f: v / fv for f, v in val.items()} if fv > 0 else {}
+                a.append(mix_gain(fossil, shares, y))
+        tr["gain"] = {k: [[round(t[n], 4) for t in w] for n in range(3)] for k, w in (("e", e), ("a", a))}
+        if rid not in tr.setdefault("src", []):
+            tr["src"].append(rid)
+        # fuel made from Russian crude elsewhere: Russia's gain on crude
+        tr["laund_gain"] = [[round(g("crude", y)[n], 4) for y in YEARS] for n in range(3)]
+        sb = c.get("svc_bought")
+        if sb:
+            sb["gain"] = [[round(g("services", y)[n], 4) for y in YEARS] for n in range(3)]
+        # weapons and gold bought from Russia, stored as yearly changes: scaled here
+        for x in c.get("extra") or []:
+            grp = {"rusarms": "arms"}.get(x["k"])
+            if grp:
+                # stored as the shift toward Ukraine: each end takes whichever gain share moves it furthest
+                gs = [g(grp, y) for y in YEARS]
+                x["c"] = [round(v * gg[1], 5) for v, gg in zip(x["c"], gs)]
+                x["l"] = [round(min(v * gg[0], v * gg[2]), 5) for v, gg in zip(x["l"], gs)]
+                x["h"] = [round(max(v * gg[0], v * gg[2]), 5) for v, gg in zip(x["h"], gs)]
+        hd = c.get("hidden")
+        if hd:
+            for k, n in (("years", 1), ("years_lo", 0), ("years_hi", 2)):
+                if hd.get(k):
+                    hd[k] = [round(v * g("gold", y)[n], 5) for v, y in zip(hd[k], YEARS)]
+    # extra purchases from Ukraine: Ukraine's gain, by the buyer's own mix where known
+    g_ua = ua["groups"]
+    for iso3, c in countries.items():
+        bu = c.get("buy_ukr")
+        if not bu:
+            continue
+        mix = (ua.get("buyer_mix") or {}).get(iso3)
+        rows = []
+        for y in YEARS:
+            if mix:
+                tot = sum(mix.values()) or 1
+                rows.append(
+                    tuple(
+                        sum(
+                            w * ((g_ua.get(k) or g_ua["average"]).get(str(y)) or g_ua["average"][str(y)])[b]
+                            for k, w in mix.items()
+                        )
+                        / tot
+                        for b in BANDS
+                    )
+                )
+            else:
+                rows.append(tuple(g_ua["average"][str(y)][b] for b in BANDS))
+        bu["gain"] = [[round(t[n], 4) for t in rows] for n in range(3)]
+        if uid not in bu.setdefault("src", []):
+            bu["src"].append(uid)
 
 
 def apply_relocants(countries: dict[str, dict]) -> None:

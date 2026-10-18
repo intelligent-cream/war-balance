@@ -550,6 +550,10 @@ function normalise(c) {
     svcBought: triple(c.svc_bought, "years"), svcSold: triple(c.svc_sold, "years"), ship: triple(c.shipping, "years"), windfall: triple(c.windfall, "years"),
     hidden: triple(c.hidden, "years"), undisc: triple(c.undisclosed, "years"), priv: triple(c.private, "years"),
   };
+  // the seller's net gain per euro (round 10): Russia's on purchases from it, Ukraine's on extra purchases from it
+  const gw = w => (w ? { e: w } : null);
+  c.T.paid.g = c.to_rus?.gain || null; c.T.laundered.g = gw(c.to_rus?.laund_gain);
+  c.T.svcBought.g = gw(c.svc_bought?.gain); c.T.buyUkr.g = gw(c.buy_ukr?.gain);
   c.aidY = c.T.aid.c; c.refY = c.T.ref.c; c.paidY = c.T.paid.c; c.launderedY = c.T.laundered.c; c.soldRusY = c.T.soldRus.c;
   c.buyUkrY = c.T.buyUkr.c; c.sellUkrY = c.T.sellUkr.c; c.ownY = c.T.own.c; c.purlY = c.T.purl.c;
   c.premiumY = c.T.premium.c; c.discountY = c.T.discount.c; c.taxY = c.T.tax.c; c.milY = c.T.mil.c;
@@ -580,6 +584,19 @@ function calc(c, y) {
   const spread = (t, ex, act) => {
     // ex(i, base, trend) and act(i, value, price) give one year's expected and actual volume
     let mid = 0, bl = 0, bh = 0, al = 0, ah = 0, pl = 0, ph = 0, ql = 0, qh = 0, se = 0, nl = 0, nh = 0;
+    // trade counts at the seller's net gain (round 10): t.g = { e, a } weights per year, [low, central, high] each, for
+    // what was expected (the pre-war mix of goods) and what was bought; their range is one more term in quadrature
+    const ge = i => (t.g ? t.g.e[1][i] : 1), ga = i => (t.g ? (t.g.a || t.g.e)[1][i] : 1);
+    let gl = 0, gh = 0;
+    if (t.g) {
+      const ex0 = ex, act0 = act;
+      ex = (i, b, q) => ex0(i, b, q) * ge(i); act = (i, v, p) => act0(i, v, p) * ga(i);
+      for (let i = 1; i <= N; i++) {
+        const e = ex0(i, t.m, t.q[i]), a = act0(i, t.c[i], t.p[i]), A = t.g.a || t.g.e;
+        const v = e * ge(i) - a * ga(i), lo = e * t.g.e[0][i] - a * A[0][i], hi = e * t.g.e[2][i] - a * A[2][i];
+        gl += v - Math.min(v, lo, hi); gh += Math.max(v, lo, hi) - v;
+      }
+    }
     for (let i = 1; i <= N; i++) {
       const e = ex(i, t.m, t.q[i]), a = act(i, t.c[i], t.p[i]);
       mid += e - a; se += e;
@@ -591,8 +608,8 @@ function calc(c, y) {
     }
     // the expected total's own measured band replaces the sum of the yearly bands
     if (t.cb && t.cb[N]) { ql = (1 - t.cb[N][0]) * se; qh = (t.cb[N][1] - 1) * se; }
-    const lo = Math.sqrt(Math.max(0, bl * bl + al * al - bl * al) + pl * pl + ql * ql + nl * nl);
-    const hi = Math.sqrt(Math.max(0, bh * bh + ah * ah - bh * ah) + ph * ph + qh * qh + nh * nh);
+    const lo = Math.sqrt(Math.max(0, bl * bl + al * al - bl * al) + pl * pl + ql * ql + nl * nl + gl * gl);
+    const hi = Math.sqrt(Math.max(0, bh * bh + ah * ah - bh * ah) + ph * ph + qh * qh + nh * nh + gh * gh);
     return [mid, mid - lo, mid + hi];
   };
   const exV = (i, base, q) => base * FRAC[i] * q, actV = (i, v, p) => v / p;
@@ -1374,6 +1391,7 @@ function countryPanel(c) {
       ${rangeLine(c, k.shiftLo, k.shiftHi, k.shiftCert)}
       ${balanceCards(c, k)}${chplNote(c)}
       ${waterfall(k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label[0].toLowerCase() + p.label.slice(1) }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
+      <p class="note">${t("Trade counts at the seller's net gain: a euro paid to Russia counts only for what Russia keeps after its real costs (its taxes plus profit above a normal return), and extra purchases from Ukraine for what Ukraine keeps. Aid counts in full.")}</p>
       ${sanctionNote(c, k)}
       ${armsNote(c, k)}
       ${blockedNote(c, k)}
@@ -1406,6 +1424,7 @@ function countryPanel(c) {
     <details class="more"><summary>${t("How this is calculated")}</summary><ul class="how">
       <li>${t("<b>Pre-war level</b> = 2021 at pre-war prices for trade and services (company taxes: the 2018–2021 average). What would have happened without the war is predicted from it: imports from Russia and services keep the 2021 level (services with the travel recovery after COVID); exports to Russia and trade with Ukraine follow each country's other trade and GDP, which predicted better than holding 2021 flat in back-tests from 2008, 2013 and 2016. The tested error of that prediction is part of every range. Trade that already existed before the war does not count; a fall in trade with Ukraine caused by the war is not held against a country.")}</li>
       <li>${t("<b>Change since before the war</b> (the main map) = aid (incl. undisclosed estimates and EU-level aid by budget share) + private donations + refugee hosting + purchases from Ukraine above the pre-war level + the drop in payments to Russia for goods and services + the profit (about 20%) on sales to Russia given up + less tax paid in Russia by companies based here, minus gold and hidden payments, weapons sent to Russia, anything bought from Russia above the expected level, the profit on sales to Russia above it, fuel made from Russian crude bought via third countries, and the extra paid for Russian fuel because of war-time prices{back}.", { back: state.netBack ? t(", minus money flowing back from Ukraine") : "" })}</li>
+      <li>${t("<b>Trade at the seller's net gain</b>: in the change view, payments to Russia, fuel made from Russian crude, services and weapons bought from Russia count at Russia's net gain per euro (its taxes plus profit above a normal return), and purchases from Ukraine at Ukraine's. The extra paid because of war-time prices, taxes paid in Russia, profits sent to Russia and aid count in full.")}</li>
       <li>${t("<b>Cost carried</b> = only what the country gave up: aid (loans at grant equivalent; loans repaid from frozen Russian assets cost nothing) + undisclosed aid + private donations + refugee hosting + extra price for replacing Russian energy + profit lost on goods and services no longer sold to Russia + tariffs dropped for Ukraine − discounts gained on Russian oil{back}. Buying less from Russia is not a cost in itself.", { back: state.netBack ? t(" − profit on money flowing back (20%, the same profit share as lost sales)") : "" })}</li>
       <li>${t("<b>% of GDP</b> is the total for the whole period (2022 up to the chosen year; 2026 is January to August) against one year's GDP (2024). Example: 10% means the country moved, over the whole war, as much as a tenth of one year's output.")}</li>
       <li>${t("<b>Middlemen</b>: fuel refined from Russian crude counts for the final buyer, at the value of the Russian crude in it; Russian gold passed on through Hong Kong counts for China; goods reaching Russia through Kyrgyzstan and Kazakhstan count for the country that made them. Liechtenstein, Monaco, the Isle of Man, Puerto Rico, the US Virgin Islands and Saint Martin are counted in the figures of the country that reports for them.")}</li>
