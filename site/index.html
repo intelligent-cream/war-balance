@@ -188,6 +188,7 @@ button, input, select { font: inherit; color: inherit; }
 
 /* v2: flow layer, change view */
 #flows { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+#labels { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
 .seg button[data-lens="change"][aria-pressed="true"] { background: linear-gradient(90deg, var(--rus-text), var(--ukr)); color: var(--on-accent); }
 .seg button[data-lens="cost"][aria-pressed="true"] { background: var(--ukr); color: var(--on-accent); }
 .toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ink-soft); cursor: pointer; white-space: nowrap; }
@@ -462,7 +463,7 @@ body[data-panel="open"] .view-inner { margin-right: 420px; margin-left: 0; }
         <output id="year-out" for="year" title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *)." data-i18n-title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).">2026 YTD</output>
       </div>
       <details class="layers" id="layers"><summary class="btn" data-i18n="Layers">Layers</summary><div class="layers-pop">
-        <label class="toggle" for="show-flows"><input id="show-flows" type="checkbox"> <span data-i18n="Flows">Flows</span></label>
+        <label class="toggle" for="show-flows"><input id="show-flows" type="checkbox" checked> <span data-i18n="Flows">Flows</span></label>
         <label class="toggle" for="show-chpl"><input id="show-chpl" type="checkbox" checked> <span data-i18n="Critical goods">Critical goods</span></label>
         <label class="toggle" for="net-back"><input id="net-back" type="checkbox" checked> <span data-i18n="Subtract money flowing back">Subtract money flowing back</span></label>
       </div></details>
@@ -481,6 +482,8 @@ body[data-panel="open"] .view-inner { margin-right: 420px; margin-left: 0; }
     <!-- the label (with how to get at countries by keyboard) is set in applyLang -->
     <svg id="map" role="img" aria-label="World map coloured by the change in money flows since before the war. With a keyboard, use “Find your country” or the Ranking view."></svg>
     <canvas id="flows" aria-hidden="true"></canvas>
+    <!-- names of Ukraine and Russia, above the flow lines so they stay readable -->
+    <svg id="labels" aria-hidden="true"></svg>
     <div class="view" id="view" hidden></div>
     <div class="map-title" id="map-title"></div>
     <div class="hint" id="hint"><span data-i18n="Drag to move, scroll to zoom, click a country, Ukraine or Russia">Drag to move, scroll to zoom, click a country, Ukraine or Russia</span>. <span data-i18n="With a keyboard, use “Find your country” or the Ranking view.">With a keyboard, use “Find your country” or the Ranking view.</span></div>
@@ -554,7 +557,7 @@ function normalise(c) {
 }
 
 const state = { lens: "change", measure: "gdp", year: 2026, selected: null, compare: null, panel: null,
-  flows: false, netBack: true, chpl: true, rankMetric: "shift", rankMeasure: "gdp", tableSort: "shiftGdp" };
+  flows: true, netBack: true, chpl: true, rankMetric: "shift", rankMeasure: "gdp", tableSort: "shiftGdp" };
 
 
 // Every number is a part with a middle value, a low and a high (a ~90% range) and a certainty letter.
@@ -865,6 +868,7 @@ const mapEntities = () => Object.values(DATA);
 // ===== Map =====
 const svg = d3.select("#map");
 const g = svg.append("g");
+const lg = d3.select("#labels").append("g");   // country names, drawn above the flow canvas
 const defs = svg.append("defs");
 const hatch = defs.append("pattern").attr("id", "hatch").attr("patternUnits", "userSpaceOnUse").attr("width", 6).attr("height", 6).attr("patternTransform", "rotate(45)");
 hatch.append("rect").attr("class", "hatch-bg").attr("width", 6).attr("height", 6);
@@ -878,26 +882,29 @@ const narrow = () => window.innerWidth <= 900;   // same breakpoint as the CSS: 
 const zoom = d3.zoom().scaleExtent([1, 14]).on("zoom", e => {
   transform = e.transform;
   g.attr("transform", e.transform);
-  g.selectAll(".target-label").style("font-size", 11 / e.transform.k + "px").style("stroke-width", 2 / e.transform.k + "px");
+  lg.attr("transform", e.transform);
+  lg.selectAll(".target-label").style("font-size", 11 / e.transform.k + "px").style("stroke-width", 2 / e.transform.k + "px");
   g.selectAll(".chpl").attr("transform", d => `translate(${d.x},${d.y}) scale(${1 / e.transform.k})`);
   hideHint();
   if (reduceMotion) drawFlows(0);
 });
 svg.call(zoom).on("dblclick.zoom", null);
-function labelPos(f) { return f.id === "643" ? projection([45, 57]) : path.centroid(f); }
+// fixed points: the middle of each country, clear of Crimea, the Black Sea and the flow bubbles around the capitals
+function labelPos(f) { return projection(f.id === "643" ? [45, 57] : [31.5, 49.3]); }
 
 function layout() {
   const box = svg.node().getBoundingClientRect();
   W = box.width; H = box.height;
   projection.fitExtent([[10, 10], [W - 10, H - 10]], { type: "Sphere" });
   svg.attr("viewBox", [0, 0, W, H]);
+  d3.select("#labels").attr("viewBox", [0, 0, W, H]);
   zoom.translateExtent([[-W * 0.25, -H * 0.25], [W * 1.25, H * 1.25]]).extent([[0, 0], [W, H]]);
   const cv = document.getElementById("flows"), dpr = window.devicePixelRatio || 1;
   cv.width = W * dpr; cv.height = H * dpr;
   cv.getContext("2d").setTransform(dpr, 0, 0, dpr, 0, 0);
   if (countryPaths) {
     countryPaths.attr("d", path);
-    g.selectAll(".target-label").attr("x", f => labelPos(f)[0]).attr("y", f => labelPos(f)[1] + 4);
+    lg.selectAll(".target-label").attr("x", f => labelPos(f)[0]).attr("y", f => labelPos(f)[1] + 4);
     drawChpl();
     buildArcs();
   }
@@ -1645,7 +1652,7 @@ function applyLang() {
   syncStatus();
   const names = Object.values(DATA).map(c => c.name);
   document.getElementById("country-list").innerHTML = [regionName("UA", "Ukraine"), regionName("RU", "Russia"), ...(LANG === "en" ? names.sort() : names.sort((a, b) => a.localeCompare(b, LANG)))].map(n => `<option value="${n}"></option>`).join("");
-  g.selectAll("text.target-label").text(f => (f.id === "804" ? regionName("UA", "Ukraine") : regionName("RU", "Russia")));
+  lg.selectAll("text.target-label").text(f => (f.id === "804" ? regionName("UA", "Ukraine") : regionName("RU", "Russia")));
   showYear(state.year);
   paint();
 }
@@ -1686,7 +1693,7 @@ Promise.all([fetch(narrow() || matchMedia("(pointer: coarse)").matches ? "countr
     .on("pointerleave", () => (tip.hidden = true))
     .on("click", (e, f) => { select(INCLUDED[f.id] || f.id, false); });
   g.selectAll(".target-ukr, .target-rus").style("cursor", "pointer");
-  g.selectAll("text.target-label").data(features.filter(f => f.id === "804" || f.id === "643")).join("text").attr("class", "target-label").attr("text-anchor", "middle")
+  lg.selectAll("text.target-label").data(features.filter(f => f.id === "804" || f.id === "643")).join("text").attr("class", "target-label").attr("text-anchor", "middle")
     .attr("x", f => labelPos(f)[0]).attr("y", f => labelPos(f)[1] + 4);
   applyLang();
   // the view in the address is known before views.js shows it, so opening a panel keeps it in the address
