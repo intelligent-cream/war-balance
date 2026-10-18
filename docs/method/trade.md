@@ -108,6 +108,39 @@ Kyrgyzstan). Crypto volumes (Garantex, the A7A5 rouble stablecoin) and the 2022 
 no country split or are not payments to Russia, and are not counted
 ([`payment_channels.json`](../../research/2026-10/gaps/payment_channels.json), [notes](../../research/2026-10/gaps/payment_channels-notes.md)).
 
+## Remittances and relocants (round 7)
+
+**Migrant workers' remittances** from Russia are wages for labour sold to Russia's economy, so they count like
+services sold to Russia: the change against the expected no-war level, at value kept (0.97) × genuinely extra (0.55
+when above expected, 0.40 when below) (`apply_remittances()`,
+[`remittances.json`](../../research/2026-10/gaps/remittances.json),
+[notes](../../research/2026-10/gaps/remittances-notes.md)). The expected level is the 2019 and 2021 average grown at
+each country's pre-war trend. Most of the rise came from Russia's war economy pushing wages up (average wage 57,000
+roubles in 2021, 100,000 in 2025). Effects, % of GDP 2022–2026: Tajikistan −37 (−83 to −10, certainty D: no split by
+country of origin), Uzbekistan −9 (−17 to −2), Kyrgyzstan −1.2, Armenia −0.8, Belarus −0.6; Georgia, Azerbaijan and
+Moldova slightly positive (less earned from Russia than expected).
+
+**Relocants are left out.** Money Russians brought or sent when they moved abroad after 2022 (savings, property
+purchases, transfers through local accounts) is money leaving Russia, which hurts Russia; counting it toward Russia
+would be the wrong sign, and counting it toward Ukraine would credit countries for something unrelated to Ukraine.
+About EUR 30bn of the 2022 surge in transfers was split out this way (Armenia 11.9, Uzbekistan 7.5, Tajikistan 3.3,
+Georgia 3.0, Azerbaijan 2.5), tested by the drop back after the surge.
+
+## Narrower actual values (round 7)
+
+National and partner statistics narrowed ten series in nine countries
+([`actuals_r7.json`](../../research/2026-10/gaps/actuals_r7.json),
+[notes](../../research/2026-10/gaps/actuals_r7-notes.md)); each entry names the input it replaces, changed as the
+builder loads it (`_actuals_r7()`):
+
+- **Armenia**: 95–100% of the gold and diamonds it buys from Russia is passed on (its gold exports exceed its gold
+  imports from all origins every year), instead of 64–95%; more goes to the final buyers (UAE, China, Hong Kong).
+- **Brunei**: one Russian crude share for both the refinery's intake and the crude passed on to fuel buyers.
+- **Tajikistan**: Tajik official totals and Russian figures agree (imports from Russia USD 1.5–2.4bn a year).
+- **Belarus**: crude at the Urals price minus Russia's export duty (phased out by 2024); gas at a fixed dollar price.
+- **Kazakhstan, Kyrgyzstan, Mongolia**: own-report margins from Russia's mirror data, which sit near 1.0 for land
+  neighbours, not the world median ratio. **Yemen, Syria**: the pre-war level from Russia's own export figures.
+
 ## Freight: CIF to FOB
 
 Import values include freight and insurance (CIF). That part is paid to shippers and insurers, and is counted for them in [shipping](services-shipping-companies.md#shipping) and services, not for Russia. [build_data.py `remove_freight()`](../../pipeline/build_data.py) takes `CIF_SHARE = 3.5% / 5.5% / 7.5%` (low/middle/high) out of every country's payments to Russia, yearly values and baseline alike, except for the share priced at the Russian border (pipeline gas and crude, electricity, overland trade; `BORDER_PRICED` from audit 2, question 7).

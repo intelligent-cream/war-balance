@@ -63,23 +63,56 @@ Examples of the 2022 index: Hungary about 7 (hub prices), Austria 4.85, Bulgaria
 [build_data.py `war_windfall()`](../../pipeline/build_data.py), per country and year from 2022:
 
 ```
-windfall_i = to_rus.years_i × fuel_share_i × (1 − 1 / fuel_index_i)
+windfall_i = to_rus.years_i × fuel_share_i × (1 − nowar_i / fuel_index_i)
 ```
 
+`nowar_i` is the price a no-war market expected (round 7, next section); before round 7 it was 1, the 2019–2021 price.
+
 - `fuel_share_i` is fuel's share of that year's payments: measured from customs where `prices.json` has it (`fuel_share_year()`), otherwise the pre-war share moved to that year's prices, `fs × fuel / (fs × fuel + (1 − fs) × nonfuel)`.
-- `(1 − 1/fuel_index)` is the part of the fuel payment above the same volume at pre-war prices.
-- The low value uses the low fuel price level, the high value the high one; the three are re-sorted each year because the fuel share moves with the price too.
+- `(1 − nowar/fuel_index)` is the part of the fuel payment above the same volume at no-war prices. It is negative where Russia sold below them (discounts, the price cap): less money to Russia.
+- The low value uses the low fuel price level and the high no-war price, the high value the reverse; the three are re-sorted each year because the fuel share moves with the price too.
 - Certainty C, source id `windfall`.
 
-On the map it is the part "Extra paid to Russia because of war-time prices", always toward Russia (`neg(sum3(T.windfall))` in `calc()`).
+On the map it is the part "Extra paid to Russia because of war-time prices" (`neg(sum3(T.windfall))` in `calc()`), or "Paid Russia less than no-war prices" where the total is negative.
 
 Rules:
 
 - **Fuel only.** The price rise of non-fuel goods is mostly general inflation, so it is left out.
 - **Only money flowing to Russia.** Higher prices on goods *sold to* Russia do not count in the seller's favour.
-- **On top of volume.** A country that cut volumes still gets the windfall on what it kept buying. Germany: −29.2bn (−33.6 to −25.9), almost all in 2022.
+- **On top of volume.** A country that cut volumes still gets the windfall on what it kept buying. Germany: −15.5bn (−23.5 to −7.3), almost all in 2022 (−29.2bn against 2019–2021 prices).
 
 `prices.json` computes its own windfall too (all 102 countries EUR 601bn for 2022–2026, 486–716, including non-fuel goods); the map's part uses fuel only and the map's own payments series, so the two differ.
+
+## No-war prices (round 7)
+
+Comparing with 2019–2021 prices overstated the windfall: that average includes the 2020 COVID crash, and prices were
+already rising in late 2021. Since round 7 the map compares with the prices a **no-war market expected**, from sources
+dated before the invasion only ([`energy_nowar.json`](../../research/2026-10/gaps/energy_nowar.json),
+[notes](../../research/2026-10/gaps/energy_nowar-notes.md)):
+
+- **Central**: the median (oil) or mean (gas, coal) of the IMF WEO (October 2021, January 2022), the World Bank
+  Commodity Markets Outlook (October 2021), the EIA STEO (December 2021 to February 2022), ECB and European Commission
+  projections, and futures from October 2021 to January 2022. **Low**: the lowest of them. **High**: the mid-February
+  2022 futures, which already held some war-risk premium.
+- **Contract formulas**: hub-indexed gas (Hungary, Slovakia, Austria and others) follows the no-war TTF path;
+  oil-indexed contracts (Serbia, Bosnia, Power of Siberia) a 9-month oil formula; mixed contracts (Türkiye 70/30,
+  Greece, Bulgaria, North Macedonia, Moldova 50/50) both; fixed-price buyers (Belarus, Armenia, Kyrgyzstan, Uzbekistan,
+  Kazakhstan, Azerbaijan, Georgia) get no windfall on gas. Per-country customs prices per fuel where `prices.json`
+  measures them, else the pre-war fuel mix.
+- **2026**: the Strait of Hormuz closure was not caused by this war, so the no-war price in 2026 is the actual world
+  price (Brent, diesel, TTF, JKM, Newcastle). Only Russia-specific price gaps count that year.
+- **The change in volume** is valued at the same no-war prices, so the two parts add up exactly:
+  `actual − expected payment = (volume change × no-war price) + (actual volume × (actual price − no-war price))`.
+  In the builder (`apply_nowar_prices()`) the expected path takes the no-war price on its fuel share
+  (`bmul × (fs × nowar + 1 − fs)`), and the price index of payments values the fuel part at the no-war price.
+- **Oil discount gain** (cost view) no longer counts Russia's normal pre-war discount to Brent (about 5%): India
+  34 → 24bn, China 25 → 18bn.
+- **Exchange rate**: the actual euro–dollar rate, so the windfall measures commodity prices, not the euro's fall.
+
+Effect: the windfall falls from EUR 455bn to about 153bn across all countries (China 117 → 28, India 55 → 10,
+Türkiye 54 → 20, Germany 29 → 16). Urals sold in 2022 at almost exactly its no-war price; gas in 2022 was still more
+than twice its no-war level. Countries that cut Russian gas and oil gain most: a no-war market would have paid Russia
+more for the same fuel.
 
 ## A note on index bases
 
