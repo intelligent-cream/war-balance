@@ -66,7 +66,7 @@ Examples of the 2022 index: Hungary about 7 (hub prices), Austria 4.85, Bulgaria
 windfall_i = to_rus.years_i × fuel_share_i × (1 − nowar_i / fuel_index_i)
 ```
 
-`nowar_i` is the price a no-war market expected (round 7, next section); before round 7 it was 1, the 2019–2021 price.
+`nowar_i` is the price level a no-war market expected for the fuels the country bought (round 7, next section): each fuel's forecast price, weighted by the volume bought (`nowar_ratio()`), so a premium the country paid over the market is not carried into it. Before round 7 it was 1, the 2019–2021 price.
 
 - `fuel_share_i` is fuel's share of that year's payments: measured from customs where `prices.json` has it (`fuel_share_year()`), otherwise the pre-war share moved to that year's prices, `fs × fuel / (fs × fuel + (1 − fs) × nonfuel)`.
 - `(1 − nowar/fuel_index)` is the part of the fuel payment above the same volume at no-war prices. It is negative where Russia sold below them (discounts, the price cap): less money to Russia.
@@ -108,9 +108,10 @@ dated before the invasion only ([`energy_nowar.json`](../../research/2026-10/gap
 - **Oil discount gain** (cost view) no longer counts Russia's normal pre-war discount to Brent (about 5%): India
   34 → 24bn, China 25 → 18bn.
 - **Exchange rate**: the actual euro–dollar rate, so the windfall measures commodity prices, not the euro's fall.
+- **Ranges**: the windfall and the volume part share the no-war price, so its uncertainty cancels between them except on the expected volume. It is carried once, as factors on the expected path (`nrl`, `nrh` in `data.json`, a fifth term in `spread()`); the windfall's own range covers only the actual price.
 
-Effect: the windfall falls from EUR 455bn to about 153bn across all countries (China 117 → 28, India 55 → 10,
-Türkiye 54 → 20, Germany 29 → 16). Urals sold in 2022 at almost exactly its no-war price; gas in 2022 was still more
+Effect: the windfall falls from EUR 455bn to roughly a third across all countries (China 117 → about 28, India 55 →
+about 10, Türkiye 54 → about 20, Germany 29 → about 16). Urals sold in 2022 at almost exactly its no-war price; gas in 2022 was still more
 than twice its no-war level. Countries that cut Russian gas and oil gain most: a no-war market would have paid Russia
 more for the same fuel.
 

@@ -517,7 +517,9 @@ function triple(obj, key) {
   // 2021 alone is an alternative baseline, at pre-war prices
   // range of the expected total over 1-5 years, measured on the back-tests' summed errors (round 6)
   const cb = key === "years" && obj && obj.cb ? obj.cb : null;
-  return { c, l, h, m, b: [Math.min(b[0], l[0] / ph[0], m), Math.max(b[1], h[0] / pl[0], m)], p, pl, ph, q, ql, qh, cb };
+  // range of the no-war fuel price, as factors on the expected path (payments to Russia, round 7)
+  const nr = key === "years" && obj && obj.nrl ? [obj.nrl, obj.nrh] : null;
+  return { c, l, h, m, b: [Math.min(b[0], l[0] / ph[0], m), Math.max(b[1], h[0] / pl[0], m)], p, pl, ph, q, ql, qh, cb, nr };
 }
 function normalise(c) {
   c.T = {
@@ -559,10 +561,11 @@ function calc(c, y) {
   // the price level and the pre-war trend. Errors are summed over the years first (the same baseline every year).
   const spread = (t, ex, act) => {
     // ex(i, base, trend) and act(i, value, price) give one year's expected and actual volume
-    let mid = 0, bl = 0, bh = 0, al = 0, ah = 0, pl = 0, ph = 0, ql = 0, qh = 0, se = 0;
+    let mid = 0, bl = 0, bh = 0, al = 0, ah = 0, pl = 0, ph = 0, ql = 0, qh = 0, se = 0, nl = 0, nh = 0;
     for (let i = 1; i <= N; i++) {
       const e = ex(i, t.m, t.q[i]), a = act(i, t.c[i], t.p[i]);
       mid += e - a; se += e;
+      if (t.nr) { nl += e * (1 - t.nr[0][i]); nh += e * (t.nr[1][i] - 1); }
       bl += e - ex(i, t.b[0], t.q[i]); bh += ex(i, t.b[1], t.q[i]) - e;
       al += act(i, t.h[i], t.p[i]) - a; ah += a - act(i, t.l[i], t.p[i]);
       pl += act(i, t.c[i], t.pl[i]) - a; ph += a - act(i, t.c[i], t.ph[i]);
@@ -570,8 +573,8 @@ function calc(c, y) {
     }
     // the expected total's own measured band replaces the sum of the yearly bands
     if (t.cb && t.cb[N]) { ql = (1 - t.cb[N][0]) * se; qh = (t.cb[N][1] - 1) * se; }
-    const lo = Math.sqrt(Math.max(0, bl * bl + al * al - bl * al) + pl * pl + ql * ql);
-    const hi = Math.sqrt(Math.max(0, bh * bh + ah * ah - bh * ah) + ph * ph + qh * qh);
+    const lo = Math.sqrt(Math.max(0, bl * bl + al * al - bl * al) + pl * pl + ql * ql + nl * nl);
+    const hi = Math.sqrt(Math.max(0, bh * bh + ah * ah - bh * ah) + ph * ph + qh * qh + nh * nh);
     return [mid, mid - lo, mid + hi];
   };
   const exV = (i, base, q) => base * FRAC[i] * q, actV = (i, v, p) => v / p;
@@ -579,7 +582,7 @@ function calc(c, y) {
   const delta3 = t => spread(t, exV, actV);
   // only the rise above the expected level (each year on its own), negative values count as zero
   const above3 = t => { const r = [0, 0, 0]; for (let i = 1; i <= N; i++) { const one = spreadYear(t, i); r[0] += Math.max(0, one[0]); r[1] += Math.max(0, one[1]); r[2] += Math.max(0, one[2]); } return r; };
-  const spreadYear = (t, i) => { const d = spread({ ...t, c: t.c.map((v, j) => (j === i ? v : 0)), l: t.l.map((v, j) => (j === i ? v : 0)), h: t.h.map((v, j) => (j === i ? v : 0)), m: t.m, b: t.b, q: t.q.map((v, j) => (j === i ? v : 0)), ql: t.ql.map((v, j) => (j === i ? v : 0)), qh: t.qh.map((v, j) => (j === i ? v : 0)), cb: null }, exV, actV); return [-d[0], -d[2], -d[1]]; };
+  const spreadYear = (t, i) => { const d = spread({ ...t, c: t.c.map((v, j) => (j === i ? v : 0)), l: t.l.map((v, j) => (j === i ? v : 0)), h: t.h.map((v, j) => (j === i ? v : 0)), m: t.m, b: t.b, q: t.q.map((v, j) => (j === i ? v : 0)), ql: t.ql.map((v, j) => (j === i ? v : 0)), qh: t.qh.map((v, j) => (j === i ? v : 0)), cb: null, nr: null }, exV, actV); return [-d[0], -d[2], -d[1]]; };
   const neg = r => [-r[0], -r[2], -r[1]];
   const scale = (r, f) => [r[0] * f, r[1] * f, r[2] * f];
   const aid3 = sum3(T.aid), ref3 = sum3(T.ref);

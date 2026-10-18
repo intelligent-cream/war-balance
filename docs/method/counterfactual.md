@@ -244,7 +244,8 @@ for fuel), steady staples apart from one-off items, analogue partners, each coun
 band re-measured on rolling origins 2005–2020. Only the last passed: calibrated by era (bands from two eras cover
 90–94% of the third), it is a little narrower than before. Large flows 2022–2026: ×0.57–1.62 (was ×0.61–1.74);
 mid-size: ×0.47–3.19 (was ×0.42–3.51). It applies to every country of those sizes without an own tested band
-(Belarus, Moldova, Mongolia and Yemen keep theirs). Splitting fuel from other goods did not help: the fuel part's error
+(Belarus, Moldova, Mongolia and Yemen keep theirs). For Armenia, Uzbekistan, Syria and Bosnia their own history
+suggests the high side may be a little short (10 of 12 own windows covered). Splitting fuel from other goods did not help: the fuel part's error
 is as large as the total's, and the two errors are almost uncorrelated. For Russia's neighbours as a group, the fuel
 model predicts better (+26–32%) but raises the expected level by ×1.08–1.28 without narrowing the band; it is not used.
 

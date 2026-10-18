@@ -1170,6 +1170,8 @@ def own_index(iso3: str, name: str, band: str) -> list[float] | None:
     pre = [s[str(y)]["central"] for y in (2019, 2020, 2021) if str(y) in s and s[str(y)].get("central")]
     r = sum(pre) / len(pre) if len(pre) == 3 else 1.0
     out = [s[str(y)][band] / r for y in YEARS]
+    if iso3 == "BLR" and name == "crude":
+        return [BLR_CRUDE[str(y)][band] for y in YEARS]  # Urals netback minus the export duty (actuals_r7.json)
     if iso3 == "TJK" and name == "fossil_all" and band != "central":
         # its 2021 band came from a fixed own-price ratio that cancels in the 2021 index (actuals_r7.json)
         out[0] = s["2021"]["central"] / r * (0.97 if band == "low" else 1.03)
@@ -1275,36 +1277,46 @@ def formula_ratio(f: dict, y: int, band: str) -> float:
 
 
 def nowar_ratio(iso3: str, i: int, band_nw: str, band_p: str) -> float:
-    """No-war price over actual price of the fuel a country bought from Russia in year i: per fuel paid where its
-    customs measure it (prices.json), else its pre-war fuel mix."""
+    """No-war price level over actual price level of the fuel a country bought from Russia in year i. The no-war level
+    is the forecast price of each fuel (gas by its contract formula; fixed-price gas keeps its actual price), weighted
+    by volume: per fuel paid where its customs measure it (prices.json), else its pre-war fuel mix. Any premium the
+    country paid over the market is not carried into the no-war price."""
     y = YEARS[i]
     if y < 2022:
         return 1.0
     pipe = GAS_FORMULA.get(iso3, {"ttf": 0.75, "oil9": 0.25})
     lng = LNG_FORMULA.get(iso3, {"ttf": 1.0})
+    key = {"ttf": "ttf", "oil9": "oil_formula_9m", "jkm": "jkm"}
+
+    def gas_n(f: dict) -> float:
+        if not f:
+            return gas_index(iso3, band_p)[i]  # fixed contract price: no windfall
+        return sum(w * nw(key[k], y, band_nw) for k, w in f.items()) / sum(f.values())
+
     parts = ((PRICES.get(iso3) or {}).get("windfall_parts") or {}) if iso3 not in PRICES_SKIP else {}
     paid = {f: (v.get(str(y)) or {}).get("paid") or 0 for f, v in parts.items() if f != "non_fuel_goods"}
-    tot = sum(v for v in paid.values() if v > 0)
     bench = {"crude": ("urals", "urals"), "products": ("diesel_gasoil_products", "products"),
              "coal": ("russian_coal", "coal"), "other_fossil": ("diesel_gasoil_products", "products")}  # fmt: skip
-    if tot > 0:
-        acc = 0.0
+    if sum(v for v in paid.values() if v > 0) > 0:
+        vol = num = 0.0
         for f, v in paid.items():
             if v <= 0:
                 continue
             if f in ("pipeline_gas", "lng"):
-                acc += v / tot * formula_ratio(pipe if f == "pipeline_gas" else lng, y, band_nw)
-                continue
-            nwk, ik = bench.get(f, bench["products"])
-            own = own_index(iso3, f, band_p) if f in ("crude", "products", "coal") else None
-            acc += v / tot * nw(nwk, y, band_nw) / (own[i] if own else idx(ik, band_p)[i])
-        return acc
+                pf, nf = gas_index(iso3, band_p)[i], gas_n(pipe if f == "pipeline_gas" else lng)
+            else:
+                nwk, ik = bench.get(f, bench["products"])
+                own = own_index(iso3, f, band_p) if f in ("crude", "products", "coal") else None
+                pf, nf = (own[i] if own else idx(ik, band_p)[i]), nw(nwk, y, band_nw)
+            vol += v / pf
+            num += v / pf * nf
+        return num / vol / fuel_index(iso3, band_p)[i]
     m = import_mix(iso3)
     fuels = ("crude", "products", "gas", "coal", "other_fossil")
     total = sum(m.get(f) or 0 for f in fuels) or 1
-    gas_n = gas_index(iso3, band_p)[i] * formula_ratio(pipe if iso3 in PIPELINE_GAS else lng, y, band_nw)
-    nmap = {"crude": nw("urals", y, band_nw), "products": nw("diesel_gasoil_products", y, band_nw), "gas": gas_n,
-            "coal": nw("russian_coal", y, band_nw), "other_fossil": nw("diesel_gasoil_products", y, band_nw)}  # fmt: skip
+    nmap = {"crude": nw("urals", y, band_nw), "products": nw("diesel_gasoil_products", y, band_nw),
+            "gas": gas_n(pipe if iso3 in PIPELINE_GAS else lng), "coal": nw("russian_coal", y, band_nw),
+            "other_fossil": nw("diesel_gasoil_products", y, band_nw)}  # fmt: skip
     return sum((m.get(f) or 0) * nmap[f] for f in fuels) / total / fuel_index(iso3, band_p)[i]
 
 
@@ -1328,11 +1340,12 @@ def war_windfall(countries: dict[str, dict], src: Sources) -> None:
         if not fs and not any(fsy_own):
             continue
         out = {}
-        # the low end takes the low fuel price level and the high no-war price (less windfall), the high end the reverse
+        # the low end takes the low fuel price level; the uncertainty of the no-war price is carried once, on the
+        # expected path (apply_nowar_prices), because the windfall and the volume part share it and it cancels
         for k, band, band_nw in (
             ("years", "central", "central"),
-            ("years_lo", "low", "high"),
-            ("years_hi", "high", "low"),
+            ("years_lo", "low", "central"),
+            ("years_hi", "high", "central"),
         ):
             fuel, nf = fuel_index(iso3, band), own_index(iso3, "non_fuel_goods", band) or idx("non_fuel_goods", band)
             vals = []
@@ -1370,6 +1383,10 @@ def apply_nowar_prices(countries: dict[str, dict], src: Sources) -> None:
         # the no-war fuel price level per year (2019-2021 = 1)
         n = [nowar_ratio(iso3, i, "central", "central") * fuel_c[i] if y >= 2022 else 1.0 for i, y in enumerate(YEARS)]
         mul = [fs * v + (1 - fs) for v in n]
+        # the no-war price's own range, as factors on the expected path (the site adds it to the range of the change)
+        for suf, b in (("nrl", "low"), ("nrh", "high")):
+            nb = [nowar_ratio(iso3, i, b, "central") * fuel_c[i] if y >= 2022 else 1.0 for i, y in enumerate(YEARS)]
+            tr[suf] = [round((fs * v + (1 - fs)) / m, 4) for v, m in zip(nb, mul)]
         for k in ("bmul", "bmul_lo", "bmul_hi"):
             if tr.get(k):
                 tr[k] = [round(b * m, 4) for b, m in zip(tr[k], mul)]

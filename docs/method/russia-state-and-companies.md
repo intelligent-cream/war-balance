@@ -97,6 +97,8 @@ have earned for Russia without the freeze: money Russia did not get, so toward U
   Ukraine and already in Belgium's aid, so it is taken off the return first.
 - **The low end** allows for Russia having spent part of the reserves without a freeze (× 0.8).
 - **No double count** with the G7 ERA loans, which are repaid from this return and already left out of donors' aid.
+  One small possible overlap remains: most of the July 2024 windfall tranche went to the European Peace Facility, and
+  if the Kiel data count it as EU aid it also sits in members' EU shares (EUR 1.4–3bn across the EU).
 - **Left out**: private sanctioned assets (about EUR 28bn in the EU): private money, much of it yachts and property
   that earn nothing. Reserves held in China (about USD 103bn) and gold held in Russia were not frozen.
 
