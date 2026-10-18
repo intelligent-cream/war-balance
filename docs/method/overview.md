@@ -79,9 +79,9 @@ The headline adds two balances, shown as cards in each country panel:
 - **with Russia**: everything else.
 
 A negative balance with Ukraine is shown as its real number and means **net earning from the war effort**, not money
-toward Russia. On the map a country whose total is negative mainly because of that is **gold**, not orange; a country
-that is blue overall but earns more than it gives on the Ukraine side gets a thin gold outline (threshold EUR 10m and
-0.05% of GDP).
+toward Russia. On the map a country whose total is negative mainly because of that is **gold**, not orange; any other
+country that earns more than it gives on the Ukraine side (blue overall, or orange mainly because of Russia) gets a thin
+gold outline (threshold EUR 10m and 0.05% of GDP).
 
 ## The cost view
 

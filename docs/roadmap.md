@@ -32,9 +32,9 @@ services to Russia and shipping. The profit-only figures stay in the docs as a c
 | A2 | **Stock replacement**: purchases made to replace weapons given to Ukraine (e.g. the Netherlands buying new US systems), up to the donated value, not general rearmament | research: done |
 | A3 | **Value kept**: domestic value-added share per seller and kind of good (OECD TiVA; defence industry studies) | research: done |
 | A4 | **Genuinely extra**: for weapons (capacity built for the war, backlogs) and for sales to and from Russia (redirection to other buyers), per sector, with ranges | research: done |
-| A5 | Builder: flowback from the ledger at value kept × extra; the same rule for sales to Russia, services to Russia and shipping; the Ukraine and Russia balances in `data.json` | code |
-| A6 | Map: blue when the total is positive; orange when negative mainly because of Russia; **gold** when negative mainly because of earning from the war effort; a thin gold outline on blue countries whose Ukraine balance is negative; ochre flow lines from the war effort to earners | code |
-| A7 | Country panel: two balance cards ("With Ukraine: gave X, earned back Y" and "With Russia"), then the total; How it works and docs explain the rule | code, docs |
+| A5 | Builder: flowback from the ledger at value kept × extra; the same rule for sales to Russia, services to Russia and shipping; the Ukraine and Russia balances, computed on the map (`calc()`) | done |
+| A6 | Map: blue when the total is positive; orange when negative mainly because of Russia; **gold** when negative mainly because of earning from the war effort; a thin gold outline on any other country whose Ukraine balance is negative; ochre flow lines from the war effort to earners (all ledger money) | done |
+| A7 | Country panel: two balance cards ("With Ukraine: gave X, earned back Y" and "With Russia"), then the total; How it works and docs explain the rule | done |
 | A8 | Comparison of every country before and after, shown to the owner before merging | check |
 
 ### B. Narrower, honest ranges
@@ -43,7 +43,7 @@ services to Russia and shipping. The profit-only figures stay in the docs as a c
 |---|---|---|
 | B1 | Measure the 90% range of the 2022–2026 total prediction error directly from the back-tests, instead of adding up yearly ranges | done: about as wide as before (×0.8–1.2), now measured ([ranges.md](method/ranges.md#quadrature-for-traded-flows-spread)) |
 | B2 | Own error bands for Russia's neighbours (Moldova, Kyrgyzstan, Tajikistan, Armenia, Georgia, Mongolia, Kazakhstan, Uzbekistan, Turkmenistan), tested on their own history | done: own bands for Mongolia, Yemen, Tajikistan, Moldova ([counterfactual.md](method/counterfactual.md#russias-neighbours-and-moldova-round-6)) |
-| B3 | Moldova: Transnistria gas and whether 2021 is a fair starting point | done: Transnistria's unpaid gas left out; range −5…+35% |
+| B3 | Moldova: Transnistria gas and whether 2021 is a fair starting point | done: Transnistria's unpaid gas left out; range +7…+35% |
 | B4 | Phone display: range as a pale band in the part's colour behind the bar; checked for readability in dark mode at phone width | code: done |
 
 ### C. Data gaps

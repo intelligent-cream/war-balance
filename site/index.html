@@ -640,7 +640,7 @@ function calc(c, y) {
     part("mil", "Weapons and troops sent to Russia", neg(sum3(T.mil)), c.military_rus?.cert || "D", src("military_rus")),
     part("svcpaid", lessSvcPaid3[0] >= 0 ? "Less paid to Russia for services" : "More paid to Russia for services", lessSvcPaid3, c.svc_bought?.cert || "C", src("svc_bought")),
     part("svcsold", lessSvcSold3[0] >= 0 ? "Income lost on services to Russia given up (e.g. tourism)" : "Income from extra services sold to Russia (e.g. tourism)", earned3(lessSvcSold3, "sl", "sx"), c.svc_sold?.cert || "C", src("svc_sold")),
-    part("ship", lessShip3[0] >= 0 ? "Less income from shipping Russian oil" : "Income from shipping and insuring Russian oil", lessShip3.map(v => v * vk("sh")[1] / 0.35), c.shipping?.cert || "D", src("shipping")),
+    part("ship", lessShip3[0] >= 0 ? "Less income from shipping Russian oil" : "Income from shipping and insuring Russian oil", lessShip3, c.shipping?.cert || "D", src("shipping")),
     part("hidden", "Gold and hidden payments to Russia", neg(sum3(T.hidden)), "D", src("hidden")),
     part("undisc", "Undisclosed military aid (estimate)", sum3(T.undisc), c.undisclosed?.cert || "D", src("undisclosed")),
     part("priv", "Private donations", sum3(T.priv), c.private?.cert || "D", src("private")),
@@ -704,7 +704,7 @@ function calc(c, y) {
     premium: costParts.find(p => p.k === "prem").v, discount: -costParts.find(p => p.k === "disc").v,
     paidRussia: sum3(T.paid)[0] + sum3(T.laundered)[0] + sum3(T.tax)[0] + sum3(T.mil)[0] + sum3(T.svcBought)[0] + sum3(T.hidden)[0],
     shiftParts: live(shiftParts), backParts: live(backParts), costParts: live(costParts),
-    flowbackProfit: flow[0] * margin,
+    flowbackProfit: back.length ? -total(back)[0] : 0,
     shift, shiftLo, shiftHi, shiftCert: weakest(shiftAll.map(p => p.cert)),
     uaBal, uaLo, uaHi, uaGave, uaBack, rusBal, rusLo, rusHi,
     // negative overall mainly because it earned from the war effort, not because of money toward Russia
@@ -944,7 +944,8 @@ function buildArcs() {
   const add = (id, from, c) => {
     list.push({ id, from, to: projection(KYIV), v: c.aidY[i] + c.buyUkrY[i], side: "ukr" });
     list.push({ id, from, to: projection(MOSCOW), v: c.paidY[i] + c.taxY[i] + c.launderedY[i] + c.milY[i] + c.T.svcBought.c[i] + c.T.hidden.c[i], base: c.T.paid.m + c.taxY[0] + c.T.svcBought.m, side: "rus" });
-    const back = c.ownY[i] + c.purlY[i] + Math.max(0, c.sellUkrY[i] - c.sellUkrY[0] * FRAC[i]);
+    // money from the war effort spent here (all of the ledger), gross
+    const back = c.ownY[i] + c.purlY[i] + c.T.arms.c[i] + c.T.othsp.c[i] + Math.max(0, c.sellUkrY[i] - c.sellUkrY[0] * FRAC[i]);
     list.push({ id, from: projection(KYIV), to: from, v: i ? back : 0, side: "back" });
   };
   for (const f of features) { const c = DATA[f.id]; if (c) add(f.id, projection(f._anchor || (f._anchor = anchorOf(f))), c); }
@@ -1321,7 +1322,7 @@ function countryPanel(c) {
       <div class="big-cap">${k.cost >= 0 ? eur(k.cost) : t("{v} gain", { v: eur(-k.cost) })} · ${perPerson(c, k.cost)}${state.netBack ? " · " + t("after money flowing back") : ""}</div>
       ${rangeLine(c, k.costLo, k.costHi, k.costCert)}
       <div class="kv" style="margin-top:10px">${k.costParts.map(p => `<span>${p.label}${chip(p.cert)}${ref(p.src)}</span><span class="v">${eur(p.v, p.v < 0)}<small>${rangeTxt(p.lo, p.hi)}</small></span>`).join("")}
-        ${state.netBack && k.flowback ? `<span>${t("Profit on money flowing back (20%)")}</span><span class="v">${eur(-k.flowbackProfit, true)}</span>` : ""}</div>
+        ${state.netBack && k.flowback ? `<span>${t("Earned back from the war effort (value kept × genuinely extra)")}</span><span class="v">${eur(-k.flowbackProfit, true)}</span>` : ""}</div>
     </section>
     ${backSec}
     ${c.coverage ? `<section class="section"><h3>${t("Data coverage")}</h3><div class="cov">${c.coverage.map(p => `<div class="cov-row"><span class="dot ${p.status}" title="${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}"></span><span>${t(p.part)}: <span class="${p.status === "missing" ? "miss" : ""}">${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}</span></span><span class="n">${dataText(p.note)}</span></div>`).join("")}</div>

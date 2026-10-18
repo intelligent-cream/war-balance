@@ -51,7 +51,10 @@ Round 6 adds two channels ([`laundered_r6.json`](../../research/2026-10/gaps/lau
 
 - **Brunei's Hengyi refinery**: Russian crude rose from 4–5% of its intake in 2022–23 to 37% in 2025 and 68% in 2026;
   its fuel goes mostly to Australia, then Singapore, Malaysia and Viet Nam (EUR 2.0bn of Russian crude in 2022–2026;
-  checked against CREA's 2.6 Mt to Australia).
+  checked against CREA's 2.6 Mt to Australia). Brunei's customs record only part of this crude, so its payments to
+  Russia are its true Russian crude intake (refinery throughput × Russian share) minus what it passed on, plus any
+  other goods (`apply_brunei_r6()`): EUR 0.14–0.97bn a year kept for paraxylene, benzene and home use. Brunei's total
+  moves from +6.6% to −4.8% of GDP (likely range −18% to +11%).
 - **Turkish ports without refineries** (Ceyhan, Marmara Ereğlisi, Mersin): Russian fuel relabelled and sold to the EU,
   EUR 2.6–3.3bn a year in 2023–2025 (CREA/CSD), mostly Greece, which resells half. Counted at 0.76 per euro (Russian
   product, not refined). Greek imports labelled Iraq, Turkmenistan, Kazakhstan or Azerbaijan rose from EUR 0.04bn a

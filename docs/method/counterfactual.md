@@ -214,9 +214,9 @@ their own history was no steadier, or too short to test.
 **Moldova.** Its customs data hold the gas right-bank Moldova bought from Gazprom until December 2022. The gas research
 added Transnistria's Gazprom gas in the high case. Transnistria never paid for that gas, and it ended on 1 January
 2025, so it is support for Transnistria, not money to Russia. It is now left out of the baseline and the actual values
-alike. The pre-war level is EUR 0.76bn at 2019–2021 prices (gas 0.25, other goods 0.51; 2019–2021 average as the low
+alike (also from the fossil-fuel floor used for pipeline-gas countries). The pre-war level is EUR 0.76bn at 2019–2021 prices (gas 0.25, other goods 0.51; 2019–2021 average as the low
 alternative, 0.64). The expected path is 0.97 × 2021: right-bank gas at its 2019–2021 average volume. Moldova's
-headline barely moves (+17.2% to +16.9% of GDP), but its range narrows from −14…+74% to −5…+35%.
+headline barely moves (+17.2% to +16.9% of GDP), but its range narrows from −14…+74% to +7…+35%.
 [`cf_bands.json`](../../research/2026-10/gaps/cf_bands.json) ([notes](../../research/2026-10/gaps/cf_bands-notes.md)).
 
 ### Deliberate choices

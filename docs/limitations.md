@@ -10,8 +10,9 @@ The map is a research preview. Its figures were compiled with AI assistance from
 | **2025–2026 partner data incomplete.** 121 reporters had 2025 annual data; 2026 is estimated from 2025 for many importers (marked `*`). | recent years | [ranges.md](method/ranges.md#2026-and-the--mark) |
 | **Hub margins and re-export shares** are educated guesses (goods 5–20%, gold 0.3–6%). | hubs and their suppliers | [trade.md](method/trade.md#re-export-hubs) |
 | **Refugee costs** outside the 27 hosts with budgets are modelled; Poland's 2022 count may be low. | refugee hosts | [aid-refugees-military.md](method/aid-refugees-military.md#refugees) |
-| **Military support to Russia** is a rough indication (D) everywhere. | North Korea, Iran, Belarus, China | [aid-refugees-military.md](method/aid-refugees-military.md#military-support-to-russia) |
+| **Military support to Russia** is a rough indication (D) for Belarus and China; North Korea and Iran are now C (round 6). | North Korea, Iran, Belarus, China | [aid-refugees-military.md](method/aid-refugees-military.md#military-support-to-russia) |
 | **Refiners and buyers of laundered oil** are matched at one crude-to-fuel ratio (0.5, CREA); India's own refinery data suggest about 0.67, so a little of the crude may sit with the refiner rather than the buyer. | India, Türkiye, China and their buyers | [energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#refiners-counted-once) |
+| **Aid spent on energy, relief and rebuilding** (round 6 ledger) may partly also appear in customs as extra sales to Ukraine (in-kind goods, energy equipment); only weapons are netted against customs so far. At the money rule's factors the overlap is small (Germany at most about EUR 0.7bn). | donors of in-kind goods | [aid-refugees-military.md](method/aid-refugees-military.md#flowback) |
 | **The AI-guessed incentive view** is not data. | that view only | [incentives.md](method/incentives.md) |
 
 ## Display issues
