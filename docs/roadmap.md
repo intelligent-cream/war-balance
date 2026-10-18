@@ -51,7 +51,7 @@ services to Russia and shipping. The profit-only figures stay in the docs as a c
 | # | step | kind |
 |---|---|---|
 | C1 | A home for the EUR 3bn of Russian arms income with no known buyer | done: 18 buyers, 1.2bn left |
-| C2 | Laundered oil: Brunei's refinery (Russian crude, sold to Australia) and Russian fuel relabelled in Turkish ports | research |
+| C2 | Laundered oil: Brunei's refinery (Russian crude, sold to Australia) and Russian fuel relabelled in Turkish ports | done ([energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#per-country-values-for-the-eu-usa-uk-and-australia-round-5)) |
 | C3 | Shadow fleet: an evidence-based Russian share of tankers with opaque owners, per manager country | done |
 | C4 | Iran: drones sent to Russia against Su-35s bought from Russia, counted once | done |
 | C5 | Loan deferrals: Belarus counted net of Russia's new loans that repaid old ones; Viet Nam and Iraq labelled "blocked by sanctions, not the borrower's choice" | code: done |

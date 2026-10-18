@@ -544,6 +544,7 @@ def build() -> dict:
             c["gdp"], c["pop"] = d["gdp_eur_bn"]["central"], (d.get("pop_m") or {}).get("central")
     reassign_laundered_oil(countries, laundered, src)
     apply_laundered_eu(countries, src)
+    apply_laundered_r6(countries, src)
     # refiners: the Russian crude in the fuel Turkey and India export is counted at the buyers (laundered oil),
     # so it is taken out of the refiner's own payments to Russia; they keep what they use themselves
     hb = load(GAPS / "hub_buyers.json")
@@ -1721,6 +1722,57 @@ def apply_weapons_value(countries: dict[str, dict], src: Sources) -> None:
         aid["weapons_mv"] = {k: [round(t[n], 5) for t in trip] for k, n in (("l", 0), ("c", 1), ("h", 2))}
         if sid not in aid.setdefault("src", []):
             aid["src"].append(sid)
+
+
+def apply_laundered_r6(countries: dict[str, dict], src: Sources) -> None:
+    """Two more channels (laundered_r6.json, round 6): fuel from Brunei's Hengyi refinery, which runs on Russian crude
+    (Australia, Singapore, Malaysia, Viet Nam), and Russian fuel relabelled in Turkish ports without refineries and sold
+    to the EU (mostly Greece, partly resold). Added to the buyers' laundered oil; taken off Türkiye's and Brunei's own
+    payments to Russia, which they passed on. Australia's series replaces the one in laundered_eu.json."""
+    lr = load(GAPS / "laundered_r6.json")
+    sid = src.add(
+        "laundered_r6",
+        "Brunei's Hengyi refinery and Turkish ports relabelling Russian fuel: CREA, CSD, Eurostat Comext, UN Comtrade, Kpler-based reporting",
+        "https://energyandcleanair.org/",
+        lr.get("generated"),
+        "see research/2026-10/gaps/laundered_r6-notes.md",
+    )
+    keys = (("years", "central"), ("years_lo", "low"), ("years_hi", "high"))
+    for iso3, d in lr["countries"].items():
+        c = countries.get(iso3)
+        add = d.get("add_total_eur_bn") or {}
+        if not c or not add:
+            continue
+        get = lambda by, y, b: (by.get(str(y)) or {}).get(b, 0.0)  # noqa: E731
+        if iso3 in ("TUR", "BRN"):
+            # passed on: out of the hub's own payments to Russia (Brunei's customs miss most of its Russian crude,
+            # so its deduction stops at zero)
+            tr = c.get("to_rus")
+            if tr:
+                sub = d.get("subtract_reexported_russian_products_eur_bn") or {
+                    y: {b: -v for b, v in x.items()} for y, x in add.items()
+                }
+                for k, b in (("years", "central"), ("years_lo", "high"), ("years_hi", "low")):
+                    tr[k] = [round(max(0.0, v - get(sub, y, b)), 5) for v, y in zip(tr[k], YEARS)]
+                if sid not in tr.setdefault("src", []):
+                    tr["src"].append(sid)
+            continue
+        lb = c.setdefault("laund", {"years": [0.0] * 6, "years_lo": [0.0] * 6, "years_hi": [0.0] * 6, "base": 0.0, "base_range": [0.0, 0.0], "cert": "C", "src": []})  # fmt: skip
+        repl = (d.get("replacement_for_laundered_eu_non_eu_AUS") or {}).get("new_total")
+        for k, b in keys:
+            lb[k] = [round(get(repl, y, b) if repl else lb[k][i] + get(add, y, b), 5) for i, y in enumerate(YEARS)]
+        trip = [sorted(t) for t in zip(lb["years_lo"], lb["years"], lb["years_hi"])]
+        lb["years_lo"], lb["years"], lb["years_hi"] = ([t[n] for t in trip] for n in range(3))
+        # the pre-war part of the Brunei channel raises the pre-war level too
+        pre = get(repl or add, 2021, "central")
+        if pre > 0 and not repl:
+            lb["base"] = round(lb.get("base", 0.0) + pre, 5)
+            lb["base_range"] = [
+                round(lb["base_range"][0] + get(add, 2021, "low"), 5),
+                round(lb["base_range"][1] + get(add, 2021, "high"), 5),
+            ]
+        if sid not in lb.setdefault("src", []):
+            lb["src"].append(sid)
 
 
 def apply_laundered_eu(countries: dict[str, dict], src: Sources) -> None:
