@@ -1,0 +1,1519 @@
+{
+ "generated": "2026-10-18",
+ "round": 7,
+ "unit": "EUR bn nominal (years); EUR bn at 2019-2021 prices (base); index 2019-2021 = 1 (pidx)",
+ "layer": "years, base and pidx are the final series as site/data.json carries them (after re-exports, residual, freight and the Brunei refinery step), produced by running the current builder with the input changes in each entry's 'inputs'. The builder should take the 'inputs' (customs-level and parameter changes), not the final values, so nothing is applied twice.",
+ "how_to_apply": "Each entry's 'inputs' says which research file value it replaces. A copy of the builder run with these inputs reproduces every 'years'/'base'/'pidx' here (scratch: r7/actuals/scripts/patch.py). Series not listed are unchanged.",
+ "checked_overlaps": {
+  "narrow.json": "KAZ/KGZ/MNG to_rus and KAZ from_rus: only the low/high bands of narrow.json's trade_layer (and trade_full's own-report years) change; centrals are kept. ARM to_rus: narrow.json's trade_layer is kept; the change is in reexports.json's gold pass-through. BRN: narrow.json's values were already superseded by laundered_r6.json (apply_brunei_r6); this file replaces laundered_r6's residual. TJK, YEM, SYR are not in narrow.json.",
+  "laundered_r6.json": "BRN: replaces refiner.option_b_residual_kept_by_brunei_eur_bn (to_rus and its 2021 base). The deduction passed to fuel buyers (deduct_exported_crude_value_eur_bn) and the buyers' laundered-oil series are NOT changed; only the residual's range is recomputed with one Russian crude share applied to both intake and deduction.",
+  "reexports.json": "ARM: replaces hubs.ARM.reexports_from_RUS (gold and diamonds passed on). The extra gold passed on goes to the buyers through destination_shares as now: UAE +0.06 to +0.18, China +0.02 to +0.04, Hong Kong +0.01 to +0.03 EUR bn a year (central). No other hub changed. Checked: Armenia's HS 71 exports exceed its HS 71 imports from all origins in every year 2019-2025, so the pass-through is real, not a double count with Armenia's own sales.",
+  "nonreport.json": "TJK imports_from_RUS 2023-2026 and YEM/SYR 2019-2021 bands replaced; paid shares unchanged.",
+  "windfall": "BLR: the new crude index raises Belarus's fuel windfall by EUR 0.27-0.61bn a year (central), because it includes the end of the Russian export duty (tax manoeuvre). See notes: part of that is not a war effect."
+ },
+ "countries": {
+  "ARM": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 1.3542,
+      "central": 1.4263,
+      "high": 1.5001
+     },
+     "2022": {
+      "low": 1.9012,
+      "central": 2.032,
+      "high": 2.1953
+     },
+     "2023": {
+      "low": 1.7067,
+      "central": 1.9336,
+      "high": 2.2536
+     },
+     "2024": {
+      "low": 1.7129,
+      "central": 2.209,
+      "high": 2.9453
+     },
+     "2025": {
+      "low": 1.7853,
+      "central": 2.0176,
+      "high": 2.3444
+     },
+     "2026": {
+      "low": 0.863,
+      "central": 1.1292,
+      "high": 1.437
+     }
+    },
+    "base": {
+     "low": 1.23154,
+     "central": 1.35347,
+     "high": 1.48818
+    },
+    "replaces": "reexports.json hubs.ARM.reexports_from_RUS (2022-2026); narrow.json trade_layer kept",
+    "inputs": {
+     "reexports.json:hubs.ARM.reexports_from_RUS": {
+      "2022": {
+       "low": 0.3581,
+       "central": 0.3693,
+       "high": 0.3769
+      },
+      "2023": {
+       "low": 1.9899,
+       "central": 2.0527,
+       "high": 2.0946
+      },
+      "2024": {
+       "low": 6.1385,
+       "central": 6.3324,
+       "high": 6.4616
+      },
+      "2025": {
+       "low": 2.0082,
+       "central": 2.0717,
+       "high": 2.1139
+      },
+      "2026_JanAug": {
+       "low": 0.2694,
+       "central": 0.3953,
+       "high": 0.52
+      }
+     }
+    },
+    "certainty": "A",
+    "reasoning": "The width came from the Russian gold Armenia passes on, ranged 64-95% of Armstat's own HS 71 imports from Russia. Armstat: HS 71 imports from Russia USD 0.40bn (2022), 2.26 (2023), 6.99 (2024), 2.39bn (2025); Armenia's HS 71 exports exceed its HS 71 imports from all origins every year 2019-2025 (2024: 8.05 vs 7.37bn), so 95-100% (central 98%) is passed on. 2026 Jan-Aug: HS 71 was 25.6% of imports from Russia in the four months Comtrade has (Jan-Mar, May; 12-44% by month), applied to the Jan-Aug total (refresh_2026.json) with an 18-33% range. Total imports and HS 71 come from the same Armstat data, so the remaining range is the +-3% customs margin plus 0-5% retained.",
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API: reporter's own annual and monthly data (HS TOTAL, 71) and Russia's own 2019-2021 reports (mirror)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=643&partnerCode=51,417,398,762,496,112,96,887,760&flowCode=X&period=2021&cmdCode=TOTAL",
+      "date": "2026-10-18"
+     },
+     {
+      "name": "UN Comtrade: Armenia HS 71 imports from Russia and HS 71 exports to the world, 2019-2025; monthly 2026",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=51&partnerCode=643&flowCode=M&period=2024&cmdCode=71",
+      "date": "2026-10-18"
+     }
+    ],
+    "old": {
+     "years": {
+      "2021": {
+       "low": 1.3542,
+       "central": 1.4263,
+       "high": 1.5001
+      },
+      "2022": {
+       "low": 1.9785,
+       "central": 2.1165,
+       "high": 2.3079
+      },
+      "2023": {
+       "low": 1.7818,
+       "central": 2.0639,
+       "high": 2.7587
+      },
+      "2024": {
+       "low": 1.788,
+       "central": 2.4603,
+       "high": 4.8026
+      },
+      "2025": {
+       "low": 1.857,
+       "central": 2.1452,
+       "high": 3.0022
+      },
+      "2026": {
+       "low": 0.0007,
+       "central": 0.8119,
+       "high": 1.4745
+      }
+     },
+     "base": {
+      "low": 1.23154,
+      "central": 1.35347,
+      "high": 1.48818
+     }
+    },
+    "width_pct_gdp_2022_2026": {
+     "before": {
+      "mid": -6.6,
+      "lo": 18.7,
+      "hi": 20.6,
+      "al": 16.5,
+      "ah": 7.5,
+      "bl": 2.4,
+      "bh": 2.6,
+      "pl": 1.8,
+      "ph": 1.6
+     },
+     "after": {
+      "mid": -5.6,
+      "lo": 11.9,
+      "hi": 19.9,
+      "al": 6.4,
+      "ah": 4.7,
+      "bl": 2.4,
+      "bh": 2.6,
+      "pl": 1.7,
+      "ph": 1.6
+     },
+     "key": "mid = central change vs expected (positive = less than expected); lo/hi = total half-widths; al/ah actual values, bl/bh base, pl/ph price level"
+    }
+   }
+  },
+  "BRN": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 0.2701,
+      "central": 0.6206,
+      "high": 0.8866
+     },
+     "2022": {
+      "low": 0.0806,
+      "central": 0.139,
+      "high": 0.269
+     },
+     "2023": {
+      "low": 0.0408,
+      "central": 0.0765,
+      "high": 0.1399
+     },
+     "2024": {
+      "low": 0.2872,
+      "central": 0.4851,
+      "high": 0.7014
+     },
+     "2025": {
+      "low": 0.4662,
+      "central": 0.7835,
+      "high": 1.2315
+     },
+     "2026": {
+      "low": 0.2197,
+      "central": 0.893,
+      "high": 1.6814
+     }
+    },
+    "base": {
+     "low": 0.1908,
+     "central": 0.46117,
+     "high": 0.69445
+    },
+    "replaces": "laundered_r6.json countries.BRN.refiner.option_b_residual_kept_by_brunei_eur_bn (which already supersedes narrow.json for Brunei)",
+    "inputs": {
+     "laundered_r6.json:countries.BRN.refiner.option_b_residual_kept_by_brunei_eur_bn": {
+      "2021": {
+       "low": 0.2701,
+       "central": 0.6206,
+       "high": 0.8866
+      },
+      "2022": {
+       "low": 0.0806,
+       "central": 0.139,
+       "high": 0.269
+      },
+      "2023": {
+       "low": 0.0408,
+       "central": 0.0765,
+       "high": 0.1399
+      },
+      "2024": {
+       "low": 0.2872,
+       "central": 0.4851,
+       "high": 0.7014
+      },
+      "2025": {
+       "low": 0.4662,
+       "central": 0.7835,
+       "high": 1.2315
+      },
+      "2026": {
+       "low": 0.2197,
+       "central": 0.893,
+       "high": 1.5784
+      }
+     }
+    },
+    "certainty": "B",
+    "reasoning": "Brunei keeps the Russian crude its refinery takes in minus the crude in fuel passed on to buyers. Round 6 ranged intake and deduction independently, although both are the same Russian share of Hengyi's crude times a value; the low end therefore fell to 0. Here one share is applied to (crude imports - crude content of fuel exports), with the export value +-10% and CRUDE_CONTENT 0.42-0.60 as before. 2021 share 0.10-0.26 (central 0.20, was 0.17): Brunei customs record 1.74 Mt of 6.85 Mt (25%) of crude from Russia in 2021; CREA's 8% is kept as the low end. 2026 uses one share (0.42/0.70/0.82) for both sides (round 6 used 0.68 and 0.72) and +-12% on the guessed Jan-Aug crude bill. Deduction to buyers unchanged.",
+    "sources": [
+     {
+      "name": "UN Comtrade: Brunei HS 2709 imports by origin with tonnes, 2020-2025 (round-6 download)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=96&partnerCode=643&flowCode=M&period=2021&cmdCode=2709",
+      "date": "2026-10-17"
+     },
+     {
+      "name": "laundered_r6.json / brunei_out.json: Brunei HS 2710 exports by destination and Russian crude share of Hengyi (CREA, KSE)",
+      "url": "research/2026-10/gaps/laundered_r6-notes.md",
+      "date": "2026-10-18"
+     }
+    ],
+    "old": {
+     "years": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.5274,
+       "high": 1.0138
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.1389,
+       "high": 0.3411
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0764,
+       "high": 0.1791
+      },
+      "2024": {
+       "low": 0.0749,
+       "central": 0.4851,
+       "high": 0.8231
+      },
+      "2025": {
+       "low": 0.0552,
+       "central": 0.7835,
+       "high": 1.467
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.9728,
+       "high": 1.9336
+      }
+     },
+     "base": {
+      "low": 0.0,
+      "central": 0.39191,
+      "high": 0.79408
+     }
+    },
+    "width_pct_gdp_2022_2026": {
+     "before": {
+      "mid": -0.3,
+      "lo": 13.6,
+      "hi": 16.0,
+      "al": 12.1,
+      "ah": 12.4,
+      "bl": 12.9,
+      "bh": 13.2,
+      "pl": 1.3,
+      "ph": 1.1
+     },
+     "after": {
+      "mid": 2.4,
+      "lo": 10.7,
+      "hi": 13.4,
+      "al": 8.7,
+      "ah": 6.7,
+      "bl": 8.9,
+      "bh": 7.7,
+      "pl": 1.3,
+      "ph": 1.1
+     },
+     "key": "mid = central change vs expected (positive = less than expected); lo/hi = total half-widths; al/ah actual values, bl/bh base, pl/ph price level"
+    }
+   }
+  },
+  "TJK": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 0.8747,
+      "central": 0.9924,
+      "high": 1.0766
+     },
+     "2022": {
+      "low": 1.2165,
+      "central": 1.3803,
+      "high": 1.4974
+     },
+     "2023": {
+      "low": 1.1072,
+      "central": 1.2971,
+      "high": 1.4475
+     },
+     "2024": {
+      "low": 1.3486,
+      "central": 1.5757,
+      "high": 1.7563
+     },
+     "2025": {
+      "low": 1.6317,
+      "central": 1.9149,
+      "high": 2.1326
+     },
+     "2026": {
+      "low": 1.0573,
+      "central": 1.2457,
+      "high": 1.3896
+     }
+    },
+    "base": {
+     "low": 0.75959,
+     "central": 0.89287,
+     "high": 1.00549
+    },
+    "pidx": {
+     "2021": {
+      "low": 1.0707,
+      "central": 1.1115,
+      "high": 1.1515
+     },
+     "2022": {
+      "low": 1.3991,
+      "central": 1.5087,
+      "high": 1.6164
+     },
+     "2023": {
+      "low": 1.1905,
+      "central": 1.2566,
+      "high": 1.3222
+     },
+     "2024": {
+      "low": 1.0745,
+      "central": 1.1396,
+      "high": 1.2046
+     },
+     "2025": {
+      "low": 1.0701,
+      "central": 1.1369,
+      "high": 1.2038
+     },
+     "2026": {
+      "low": 1.0965,
+      "central": 1.1702,
+      "high": 1.2449
+     }
+    },
+    "replaces": "nonreport.json countries.TJK.imports_from_RUS 2023-2026; prices.json TJK fossil_all 2021 band (+-3%)",
+    "inputs": {
+     "nonreport.json:countries.TJK.imports_from_RUS": {
+      "2023": {
+       "low": 1.33,
+       "central": 1.415,
+       "high": 1.5
+      },
+      "2024": {
+       "low": 1.62,
+       "central": 1.719,
+       "high": 1.82
+      },
+      "2025": {
+       "low": 1.96,
+       "central": 2.089,
+       "high": 2.21
+      },
+      "2026": {
+       "low": 1.27,
+       "central": 1.359,
+       "high": 1.44
+      }
+     },
+     "prices.json:countries.TJK.index.fossil_all.2021": "low/high = central x 0.97/1.03 (benchmark x own ratio in all of 2019-2021, so the ratio cancels in the 2021 index)"
+    },
+    "certainty": "B",
+    "reasoning": "Tajik official totals and Russian-side figures agree: turnover ~USD 1.7bn (2023; Russian side Jan-Oct 2024 1.618bn at +19.1% implies ~1.63bn), ~1.98bn (2024: 2025's 2.47bn / 1.248; Interfax 1.9bn), 2.47bn (2025, same figure from the Tajik minister and the Russian MinEcon), 1.68bn Jan-Aug 2026. Minus Tajik exports to Russia (~0.10-0.14bn a year; 74m in H1 2026) gives imports USD 1.53, 1.86, 2.36 and 1.58bn (Jan-Aug 2026), +-6%. The 2023 Comtrade report (0.90bn) is inconsistent with both and is dropped as the low end. Centrals rise 2-18%. The 2021 fuel price band (0.95-1.35) came from benchmark x a fixed own ratio, which cancels in the 2021/2019-2021 index.",
+    "sources": [
+     {
+      "name": "TASS via InvestFuture: Tajik Minister of Economic Development Abdurakhmonzoda, H1 2026 turnover USD 1.316bn (+22.9%), imports from Russia USD 1.242bn, exports ~USD 74m; 2025 turnover >USD 2.47bn (+~25%), Russia 22.9% of Tajik trade",
+      "url": "https://investfuture.ru/articles/tadzhikistan-i-rossiya-uvelichili-tovarooborot-37329310",
+      "date": "2026-07-20"
+     },
+     {
+      "name": "Interfax: Tajik-Russian trade USD 1.9bn in 2024, +USD 200m vs 2023; Jan-Apr 2024 imports USD 600.7m, exports 36.1m",
+      "url": "https://interfax.com/newsroom/top-stories/114318/",
+      "date": "2025-10-15"
+     },
+     {
+      "name": "Expert.ru / 1prime: Russian trade representative, Jan-Oct 2024 turnover USD 1.618bn (+19.1%); Jan-Jul 2024 imports from Russia USD 1.06bn",
+      "url": "https://expert.ru/news/tovarooborot-tadzhikistana-i-rf-v-yanvare-iyule-2024-goda-prevysil-1-mlrd-dollarov",
+      "date": "2024-08"
+     },
+     {
+      "name": "Tajik-Russian turnover Jan-Aug 2026 USD 1,676.5m (+16.4%), as reported in Russian-language press (search result; original page not opened)",
+      "url": "https://www.alta.ru/external_news/131513/",
+      "date": "2026-09"
+     },
+     {
+      "name": "UN Comtrade public preview API: reporter's own annual and monthly data (HS TOTAL, 71) and Russia's own 2019-2021 reports (mirror)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=643&partnerCode=51,417,398,762,496,112,96,887,760&flowCode=X&period=2021&cmdCode=TOTAL",
+      "date": "2026-10-18"
+     }
+    ],
+    "old": {
+     "years": {
+      "2021": {
+       "low": 0.8747,
+       "central": 0.9924,
+       "high": 1.0766
+      },
+      "2022": {
+       "low": 1.2165,
+       "central": 1.3803,
+       "high": 1.4974
+      },
+      "2023": {
+       "low": 0.691,
+       "central": 1.2833,
+       "high": 1.544
+      },
+      "2024": {
+       "low": 1.1655,
+       "central": 1.5125,
+       "high": 1.7853
+      },
+      "2025": {
+       "low": 1.2488,
+       "central": 1.6225,
+       "high": 2.0265
+      },
+      "2026": {
+       "low": 0.7492,
+       "central": 1.0817,
+       "high": 1.3993
+      }
+     },
+     "base": {
+      "low": 0.73588,
+      "central": 0.89287,
+      "high": 1.04178
+     },
+     "pidx": {
+      "2021": {
+       "low": 1.0334,
+       "central": 1.1115,
+       "high": 1.1886
+      },
+      "2022": {
+       "low": 1.3991,
+       "central": 1.5087,
+       "high": 1.6164
+      },
+      "2023": {
+       "low": 1.1905,
+       "central": 1.2566,
+       "high": 1.3222
+      },
+      "2024": {
+       "low": 1.0745,
+       "central": 1.1396,
+       "high": 1.2046
+      },
+      "2025": {
+       "low": 1.0701,
+       "central": 1.1369,
+       "high": 1.2038
+      },
+      "2026": {
+       "low": 1.0965,
+       "central": 1.1702,
+       "high": 1.2449
+      }
+     }
+    },
+    "width_pct_gdp_2022_2026": {
+     "before": {
+      "mid": -10.9,
+      "lo": 14.7,
+      "hi": 25.1,
+      "al": 8.6,
+      "ah": 11.2,
+      "bl": 5.5,
+      "bh": 5.2,
+      "pl": 2.7,
+      "ph": 2.4
+     },
+     "after": {
+      "mid": -14.3,
+      "lo": 13.5,
+      "hi": 23.9,
+      "al": 5.0,
+      "ah": 6.5,
+      "bl": 4.7,
+      "bh": 3.9,
+      "pl": 2.9,
+      "ph": 2.6
+     },
+     "key": "mid = central change vs expected (positive = less than expected); lo/hi = total half-widths; al/ah actual values, bl/bh base, pl/ph price level"
+    }
+   }
+  },
+  "BLR": {
+   "to_rus": {
+    "base": {
+     "low": 15.71043,
+     "central": 17.27671,
+     "high": 19.0342
+    },
+    "pidx": {
+     "2021": {
+      "low": 1.0449,
+      "central": 1.0945,
+      "high": 1.1428
+     },
+     "2022": {
+      "low": 1.2007,
+      "central": 1.2818,
+      "high": 1.3723
+     },
+     "2023": {
+      "low": 1.1156,
+      "central": 1.1874,
+      "high": 1.2616
+     },
+     "2024": {
+      "low": 1.1241,
+      "central": 1.1943,
+      "high": 1.2633
+     },
+     "2025": {
+      "low": 1.0657,
+      "central": 1.1285,
+      "high": 1.19
+     },
+     "2026": {
+      "low": 1.1216,
+      "central": 1.1885,
+      "high": 1.257
+     }
+    },
+    "replaces": "the Urals benchmark band in Belarus's fuel index (builder fuel_index fallback) and gas_prices.json BLR pipeline band (now +-2%); years unchanged (narrow.json)",
+    "inputs": {
+     "crude_index_vs_2019_2021 (replaces idx('urals') for BLR only)": {
+      "2021": {
+       "low": 1.127,
+       "central": 1.199,
+       "high": 1.259
+      },
+      "2022": {
+       "low": 1.454,
+       "central": 1.547,
+       "high": 1.624
+      },
+      "2023": {
+       "low": 1.232,
+       "central": 1.311,
+       "high": 1.377
+      },
+      "2024": {
+       "low": 1.382,
+       "central": 1.47,
+       "high": 1.544
+      },
+      "2025": {
+       "low": 1.123,
+       "central": 1.195,
+       "high": 1.255
+      },
+      "2026": {
+       "low": 1.313,
+       "central": 1.427,
+       "high": 1.541
+      }
+     },
+     "gas_prices.json:countries.BLR.index_vs_2019_2021.pipeline": "low/high = central x 0.98/1.02 (fixed contract price USD 128.5/tcm 2020-2026; only FX moves it)"
+    },
+    "certainty": "B",
+    "reasoning": "Belarus buys Russian crude at a Urals-linked netback (Urals quotation minus the Russian export duty, plus a small premium; Interfax 2020), not at Brent. The builder's Urals band reached Brent-like highs (1.92 in 2022). Netback index in EUR: Urals (MinFin annual averages 63.6, 41.7, 69.0, 76.1, 63.0, ~68, ~57.7 USD/bbl) minus the duty (about 13, 5.5, 8.6, 6.4, 2.6, 0, 0 USD/bbl as the tax manoeuvre phased it out) gives 1.20, 1.55, 1.31, 1.47, 1.20 (2021-2025); 2026 = builder Urals x 1.183 (no duty). Band -6%/+5% (2026 -8%/+8%) for the premium, the duty averaging and any discount. Gas is a fixed USD price, so its index is known to +-2%. The price width falls; the central index rises 2-6% (less volume bought), and the fuel windfall rises because the end of the export duty is counted as a price rise.",
+    "sources": [
+     {
+      "name": "Interfax: Belarus crude pricing (Urals monitoring, export duty, premium in USD/t)",
+      "url": "https://www.interfax.ru/business/696274",
+      "date": "2020-02-21"
+     },
+     {
+      "name": "gas_prices.json: Gazprom-Belarus contract price USD 127-128.5/tcm 2019-2026",
+      "url": "research/2026-10/gaps/gas_prices-notes.md",
+      "date": "2026-10-18"
+     },
+     {
+      "name": "Russian Ministry of Finance: average Urals price by year; export duty formula (tax manoeuvre coefficients 0.833, 0.667, 0.5, 0.333, 0.167, 0 for 2019-2024)",
+      "url": "https://minfin.gov.ru/ru/press-center/",
+      "date": "2019-2025"
+     }
+    ],
+    "old": {
+     "years": {
+      "2021": {
+       "low": 17.9539,
+       "central": 18.9094,
+       "high": 19.8888
+      },
+      "2022": {
+       "low": 18.7108,
+       "central": 20.1027,
+       "high": 21.2617
+      },
+      "2023": {
+       "low": 18.3925,
+       "central": 20.1016,
+       "high": 21.8686
+      },
+      "2024": {
+       "low": 19.2288,
+       "central": 20.9559,
+       "high": 22.7462
+      },
+      "2025": {
+       "low": 19.237,
+       "central": 20.908,
+       "high": 22.6346
+      },
+      "2026": {
+       "low": 12.1572,
+       "central": 14.7862,
+       "high": 16.8704
+      }
+     },
+     "base": {
+      "low": 15.84212,
+      "central": 17.42156,
+      "high": 19.10001
+     },
+     "pidx": {
+      "2021": {
+       "low": 1.0413,
+       "central": 1.0854,
+       "high": 1.1333
+      },
+      "2022": {
+       "low": 1.1855,
+       "central": 1.2598,
+       "high": 1.4239
+      },
+      "2023": {
+       "low": 1.084,
+       "central": 1.1586,
+       "high": 1.2939
+      },
+      "2024": {
+       "low": 1.0884,
+       "central": 1.1579,
+       "high": 1.2624
+      },
+      "2025": {
+       "low": 1.03,
+       "central": 1.0925,
+       "high": 1.1923
+      },
+      "2026": {
+       "low": 1.0914,
+       "central": 1.1588,
+       "high": 1.2684
+      }
+     }
+    },
+    "width_pct_gdp_2022_2026": {
+     "before": {
+      "mid": -2.8,
+      "lo": 26.8,
+      "hi": 38.0,
+      "al": 10.2,
+      "ah": 10.8,
+      "bl": 10.2,
+      "bh": 10.8,
+      "pl": 7.3,
+      "ph": 10.8
+     },
+     "after": {
+      "mid": -0.7,
+      "lo": 26.5,
+      "hi": 36.8,
+      "al": 9.9,
+      "ah": 10.6,
+      "bl": 10.1,
+      "bh": 11.3,
+      "pl": 7.0,
+      "ph": 6.4
+     },
+     "key": "mid = central change vs expected (positive = less than expected); lo/hi = total half-widths; al/ah actual values, bl/bh base, pl/ph price level"
+    }
+   }
+  },
+  "KAZ": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 13.2181,
+      "central": 14.0666,
+      "high": 15.2262
+     },
+     "2022": {
+      "low": 14.6248,
+      "central": 15.5638,
+      "high": 16.8482
+     },
+     "2023": {
+      "low": 13.299,
+      "central": 14.1538,
+      "high": 15.3286
+     },
+     "2024": {
+      "low": 14.7948,
+      "central": 15.8495,
+      "high": 17.2474
+     },
+     "2025": {
+      "low": 14.9932,
+      "central": 16.1237,
+      "high": 17.6182
+     },
+     "2026": {
+      "low": 9.7258,
+      "central": 10.5823,
+      "high": 11.3567
+     }
+    },
+    "base": {
+     "low": 11.61933,
+     "central": 12.97179,
+     "high": 14.76263
+    },
+    "replaces": "band of trade_full.json imports_from_RUS own-report years and narrow.json trade_layer (0.96/1.06 x central); centrals unchanged",
+    "inputs": {
+     "trade_full.json:KAZ.imports_from_RUS and narrow.json:KAZ.to_rus.trade_layer": {
+      "years": [
+       "2019",
+       "2020",
+       "2021",
+       "2022",
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "lo": 0.96,
+      "hi": 1.06
+     }
+    },
+    "certainty": "A",
+    "reasoning": "trade_full set own-report margins at half the gap to Russia's mirror measured against the world median ratio (0.847), which reflects sea freight and origin attribution. For a land-border/EAEU partner the expected ratio is about 1.0. Russia's own exports to Kazakhstan / Kazakhstan's imports from Russia: 1.00 (2019), 1.02 (2020), 1.05 (2021); Russia's imports from Kazakhstan / Kazakhstan's exports: 1.01, ~1.0, 1.02. The band now spans the own report and the mirror; base narrows with the 2021 year.",
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API: reporter's own annual and monthly data (HS TOTAL, 71) and Russia's own 2019-2021 reports (mirror)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=643&partnerCode=51,417,398,762,496,112,96,887,760&flowCode=X&period=2021&cmdCode=TOTAL",
+      "date": "2026-10-18"
+     }
+    ],
+    "old": {
+     "years": {
+      "2021": {
+       "low": 12.545,
+       "central": 14.0666,
+       "high": 15.7658
+      },
+      "2022": {
+       "low": 13.8799,
+       "central": 15.5637,
+       "high": 17.4447
+      },
+      "2023": {
+       "low": 12.6214,
+       "central": 14.1537,
+       "high": 15.871
+      },
+      "2024": {
+       "low": 14.0312,
+       "central": 15.8492,
+       "high": 17.8582
+      },
+      "2025": {
+       "low": 14.2109,
+       "central": 16.1235,
+       "high": 18.2446
+      },
+      "2026": {
+       "low": 9.7258,
+       "central": 10.5827,
+       "high": 11.366
+      }
+     },
+     "base": {
+      "low": 11.02764,
+      "central": 12.97179,
+      "high": 15.28581
+     }
+    },
+    "width_pct_gdp_2022_2026": {
+     "before": {
+      "mid": 0.5,
+      "lo": 9.4,
+      "hi": 17.0,
+      "al": 2.6,
+      "ah": 2.4,
+      "bl": 3.4,
+      "bh": 4.0,
+      "pl": 1.4,
+      "ph": 1.2
+     },
+     "after": {
+      "mid": 0.5,
+      "lo": 9.2,
+      "hi": 16.8,
+      "al": 1.9,
+      "ah": 1.5,
+      "bl": 2.3,
+      "bh": 3.1,
+      "pl": 1.4,
+      "ph": 1.2
+     },
+     "key": "mid = central change vs expected (positive = less than expected); lo/hi = total half-widths; al/ah actual values, bl/bh base, pl/ph price level"
+    }
+   },
+   "from_rus": {
+    "years": {
+     "2021": {
+      "low": 5.28,
+      "central": 5.7179,
+      "high": 6.1597
+     },
+     "2022": {
+      "low": 3.9907,
+      "central": 6.9954,
+      "high": 9.131
+     },
+     "2023": {
+      "low": 3.0204,
+      "central": 7.0505,
+      "high": 9.7169
+     },
+     "2024": {
+      "low": 3.1111,
+      "central": 7.3974,
+      "high": 10.0681
+     },
+     "2025": {
+      "low": 3.4541,
+      "central": 6.572,
+      "high": 8.8109
+     },
+     "2026": {
+      "low": 0.8182,
+      "central": 3.9889,
+      "high": 5.598
+     }
+    },
+    "base": {
+     "low": 5.04296,
+     "central": 5.51916,
+     "high": 6.19065
+    },
+    "replaces": "band of trade_full.json exports_to_RUS own-report years and narrow.json trade_layer (0.96/1.05 x central); centrals unchanged",
+    "inputs": {
+     "trade_full.json:KAZ.exports_to_RUS and narrow.json:KAZ.from_rus.trade_layer": {
+      "years": [
+       "2019",
+       "2020",
+       "2021",
+       "2022",
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "lo": 0.96,
+      "hi": 1.05
+     }
+    },
+    "certainty": "A",
+    "reasoning": "trade_full set own-report margins at half the gap to Russia's mirror measured against the world median ratio (0.847), which reflects sea freight and origin attribution. For a land-border/EAEU partner the expected ratio is about 1.0. Russia's own exports to Kazakhstan / Kazakhstan's imports from Russia: 1.00 (2019), 1.02 (2020), 1.05 (2021); Russia's imports from Kazakhstan / Kazakhstan's exports: 1.01, ~1.0, 1.02. The band now spans the own report and the mirror; base narrows with the 2021 year.",
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API: reporter's own annual and monthly data (HS TOTAL, 71) and Russia's own 2019-2021 reports (mirror)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=643&partnerCode=51,417,398,762,496,112,96,887,760&flowCode=X&period=2021&cmdCode=TOTAL",
+      "date": "2026-10-18"
+     }
+    ],
+    "old": {
+     "years": {
+      "2021": {
+       "low": 4.7725,
+       "central": 5.7179,
+       "high": 6.7147
+      },
+      "2022": {
+       "low": 3.2776,
+       "central": 6.9954,
+       "high": 9.9108
+      },
+      "2023": {
+       "low": 2.2463,
+       "central": 7.0505,
+       "high": 10.5635
+      },
+      "2024": {
+       "low": 2.3569,
+       "central": 7.3974,
+       "high": 10.893
+      },
+      "2025": {
+       "low": 2.83,
+       "central": 6.572,
+       "high": 9.4936
+      },
+      "2026": {
+       "low": 0.8182,
+       "central": 3.9889,
+       "high": 5.598
+      }
+     },
+     "base": {
+      "low": 4.55831,
+      "central": 5.51916,
+      "high": 6.74842
+     }
+    },
+    "width_pct_gdp_2022_2026": {
+     "before": {
+      "mid": -0.7,
+      "lo": 5.4,
+      "hi": 8.7,
+      "al": 4.6,
+      "ah": 6.6,
+      "bl": 1.7,
+      "bh": 2.1,
+      "pl": 0.7,
+      "ph": 0.2
+     },
+     "after": {
+      "mid": -0.7,
+      "lo": 4.8,
+      "hi": 8.3,
+      "al": 3.6,
+      "ah": 5.6,
+      "bl": 0.8,
+      "bh": 1.2,
+      "pl": 0.7,
+      "ph": 0.2
+     },
+     "key": "mid = central change vs expected (positive = less than expected); lo/hi = total half-widths; al/ah actual values, bl/bh base, pl/ph price level"
+    }
+   }
+  },
+  "KGZ": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 1.4349,
+      "central": 1.527,
+      "high": 1.7621
+     },
+     "2022": {
+      "low": 2.0281,
+      "central": 2.1583,
+      "high": 2.4905
+     },
+     "2023": {
+      "low": 1.8662,
+      "central": 1.987,
+      "high": 2.293
+     },
+     "2024": {
+      "low": 1.9015,
+      "central": 2.0519,
+      "high": 2.4099
+     },
+     "2025": {
+      "low": 2.0576,
+      "central": 2.2566,
+      "high": 2.6701
+     },
+     "2026": {
+      "low": 1.4784,
+      "central": 1.6203,
+      "high": 1.8216
+     }
+    },
+    "base": {
+     "low": 1.23455,
+     "central": 1.36917,
+     "high": 1.64925
+    },
+    "replaces": "band of trade_full.json imports_from_RUS own-report years and narrow.json trade_layer (0.96/1.13 x central); centrals unchanged",
+    "inputs": {
+     "trade_full.json:KGZ.imports_from_RUS and narrow.json:KGZ.to_rus.trade_layer": {
+      "years": [
+       "2019",
+       "2020",
+       "2021",
+       "2022",
+       "2023",
+       "2024",
+       "2025"
+      ],
+      "lo": 0.96,
+      "hi": 1.13
+     }
+    },
+    "certainty": "A",
+    "reasoning": "trade_full set own-report margins at half the gap to Russia's mirror measured against the world median ratio (0.847), which reflects sea freight and origin attribution. For a land-border/EAEU partner the expected ratio is about 1.0. Russia's exports / Kyrgyzstan's imports: 1.11 (2019), 1.34 (2020), 1.13 (2021); Kyrgyz figures (NBKR, matching Comtrade) already include survey-based additions for unrecorded EAEU trade, so no source puts the true level below them. The band now spans the own report and the mirror; base narrows with the 2021 year.",
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API: reporter's own annual and monthly data (HS TOTAL, 71) and Russia's own 2019-2021 reports (mirror)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=643&partnerCode=51,417,398,762,496,112,96,887,760&flowCode=X&period=2021&cmdCode=TOTAL",
+      "date": "2026-10-18"
+     }
+    ],
+    "old": {
+     "years": {
+      "2021": {
+       "low": 1.2953,
+       "central": 1.527,
+       "high": 1.7993
+      },
+      "2022": {
+       "low": 1.8308,
+       "central": 2.1583,
+       "high": 2.5433
+      },
+      "2023": {
+       "low": 1.6844,
+       "central": 1.987,
+       "high": 2.3417
+      },
+      "2024": {
+       "low": 1.7171,
+       "central": 2.0519,
+       "high": 2.4593
+      },
+      "2025": {
+       "low": 1.8592,
+       "central": 2.2566,
+       "high": 2.7232
+      },
+      "2026": {
+       "low": 1.4784,
+       "central": 1.6203,
+       "high": 1.8216
+      }
+     },
+     "base": {
+      "low": 1.11441,
+      "central": 1.36917,
+      "high": 1.68414
+     }
+    },
+    "width_pct_gdp_2022_2026": {
+     "before": {
+      "mid": -8.1,
+      "lo": 17.2,
+      "hi": 29.3,
+      "al": 8.3,
+      "ah": 6.9,
+      "bl": 7.1,
+      "bh": 8.8,
+      "pl": 3.3,
+      "ph": 2.8
+     },
+     "after": {
+      "mid": -8.1,
+      "lo": 16.6,
+      "hi": 29.0,
+      "al": 7.4,
+      "ah": 3.4,
+      "bl": 3.7,
+      "bh": 7.8,
+      "pl": 3.3,
+      "ph": 2.8
+     },
+     "key": "mid = central change vs expected (positive = less than expected); lo/hi = total half-widths; al/ah actual values, bl/bh base, pl/ph price level"
+    }
+   }
+  },
+  "MNG": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 1.4526,
+      "central": 1.5621,
+      "high": 1.6749
+     },
+     "2022": {
+      "low": 2.2138,
+      "central": 2.381,
+      "high": 2.5539
+     },
+     "2023": {
+      "low": 1.9394,
+      "central": 2.0859,
+      "high": 2.2376
+     },
+     "2024": {
+      "low": 2.0511,
+      "central": 2.2703,
+      "high": 2.5421
+     },
+     "2025": {
+      "low": 1.8009,
+      "central": 2.0911,
+      "high": 2.3926
+     },
+     "2026": {
+      "low": 1.746,
+      "central": 1.9391,
+      "high": 2.1399
+     }
+    },
+    "base": {
+     "low": 1.27878,
+     "central": 1.43218,
+     "high": 1.6037
+    },
+    "replaces": "band of trade_full.json imports_from_RUS own-report years and narrow.json trade_layer (0.95/1.05 (2019-2023 only) x central); centrals unchanged",
+    "inputs": {
+     "trade_full.json:MNG.imports_from_RUS and narrow.json:MNG.to_rus.trade_layer": {
+      "years": [
+       "2019",
+       "2020",
+       "2021",
+       "2022",
+       "2023"
+      ],
+      "lo": 0.95,
+      "hi": 1.05
+     }
+    },
+    "certainty": "A",
+    "reasoning": "trade_full set own-report margins at half the gap to Russia's mirror measured against the world median ratio (0.847), which reflects sea freight and origin attribution. For a land-border/EAEU partner the expected ratio is about 1.0. Russia's exports / Mongolia's imports: 1.00 (2019), 0.99 (2020), 0.93 (2021). The band now spans the own report and the mirror; base narrows with the 2021 year.",
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API: reporter's own annual and monthly data (HS TOTAL, 71) and Russia's own 2019-2021 reports (mirror)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=643&partnerCode=51,417,398,762,496,112,96,887,760&flowCode=X&period=2021&cmdCode=TOTAL",
+      "date": "2026-10-18"
+     }
+    ],
+    "old": {
+     "years": {
+      "2021": {
+       "low": 1.4151,
+       "central": 1.5621,
+       "high": 1.7236
+      },
+      "2022": {
+       "low": 2.1566,
+       "central": 2.381,
+       "high": 2.628
+      },
+      "2023": {
+       "low": 1.8894,
+       "central": 2.0859,
+       "high": 2.3026
+      },
+      "2024": {
+       "low": 2.0511,
+       "central": 2.2703,
+       "high": 2.5421
+      },
+      "2025": {
+       "low": 1.8009,
+       "central": 2.0911,
+       "high": 2.3926
+      },
+      "2026": {
+       "low": 1.746,
+       "central": 1.9391,
+       "high": 2.1399
+      }
+     },
+     "base": {
+      "low": 1.24577,
+      "central": 1.43218,
+      "high": 1.65032
+     }
+    },
+    "width_pct_gdp_2022_2026": {
+     "before": {
+      "mid": -5.5,
+      "lo": 6.8,
+      "hi": 26.4,
+      "al": 4.2,
+      "ah": 3.8,
+      "bl": 4.0,
+      "bh": 4.6,
+      "pl": 2.8,
+      "ph": 2.3
+     },
+     "after": {
+      "mid": -5.5,
+      "lo": 6.5,
+      "hi": 26.3,
+      "al": 3.8,
+      "ah": 3.5,
+      "bl": 3.3,
+      "bh": 3.6,
+      "pl": 2.8,
+      "ph": 2.3
+     },
+     "key": "mid = central change vs expected (positive = less than expected); lo/hi = total half-widths; al/ah actual values, bl/bh base, pl/ph price level"
+    }
+   }
+  },
+  "YEM": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 0.1618,
+      "central": 0.21,
+      "high": 0.2709
+     },
+     "2022": {
+      "low": 0.2359,
+      "central": 0.377,
+      "high": 0.579
+     },
+     "2023": {
+      "low": 0.1887,
+      "central": 0.3232,
+      "high": 0.4825
+     },
+     "2024": {
+      "low": 0.2595,
+      "central": 0.4219,
+      "high": 0.5983
+     },
+     "2025": {
+      "low": 0.2123,
+      "central": 0.3501,
+      "high": 0.5018
+     },
+     "2026": {
+      "low": 0.1022,
+      "central": 0.1795,
+      "high": 0.2895
+     }
+    },
+    "base": {
+     "low": 0.13316,
+     "central": 0.18912,
+     "high": 0.26943
+    },
+    "replaces": "nonreport.json countries.YEM.imports_from_RUS 2019-2021 bands (2019 central for YEM)",
+    "inputs": {
+     "nonreport.json:countries.YEM.imports_from_RUS": {
+      "2019": {
+       "low": 0.2314,
+       "central": 0.263,
+       "high": 0.3156
+      },
+      "2020": {
+       "low": 0.2167,
+       "central": 0.2462,
+       "high": 0.2955
+      },
+      "2021": {
+       "low": 0.2058,
+       "central": 0.2339,
+       "high": 0.2807
+      }
+     }
+    },
+    "certainty": "B",
+    "reasoning": "Russia's own exports to Yemen were stable at USD 250m (2019), 238m (2020), 234m (2021). These are what Russia was paid (FOB); Yemen's own 2019 report covers only Aden-controlled ports. Band -12%/+20% (goods diverted or unpaid vs Russian goods reaching Yemen via Oman/Saudi Arabia/UAE), replacing the generic +-80% mirror band. 2019 also uses the mirror (0.263, not Yemen's own 0.131). Years 2022-2026 unchanged: see notes, the central is probably too low (Yemen entered Russia's top-10 wheat buyers in 2023), which this file does not fix.",
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API: reporter's own annual and monthly data (HS TOTAL, 71) and Russia's own 2019-2021 reports (mirror)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=643&partnerCode=51,417,398,762,496,112,96,887,760&flowCode=X&period=2021&cmdCode=TOTAL",
+      "date": "2026-10-18"
+     }
+    ],
+    "old": {
+     "years": {
+      "2021": {
+       "low": 0.1009,
+       "central": 0.21,
+       "high": 0.4113
+      },
+      "2022": {
+       "low": 0.2359,
+       "central": 0.377,
+       "high": 0.579
+      },
+      "2023": {
+       "low": 0.1887,
+       "central": 0.3232,
+       "high": 0.4825
+      },
+      "2024": {
+       "low": 0.2595,
+       "central": 0.4219,
+       "high": 0.5983
+      },
+      "2025": {
+       "low": 0.2123,
+       "central": 0.3501,
+       "high": 0.5018
+      },
+      "2026": {
+       "low": 0.1022,
+       "central": 0.1795,
+       "high": 0.2895
+      }
+     },
+     "base": {
+      "low": 0.08306,
+      "central": 0.18913,
+      "high": 0.40908
+     }
+    },
+    "width_pct_gdp_2022_2026": {
+     "before": {
+      "mid": -7.1,
+      "lo": 10.0,
+      "hi": 18.6,
+      "al": 9.1,
+      "ah": 7.6,
+      "bl": 6.6,
+      "bh": 13.8,
+      "pl": 2.8,
+      "ph": 2.1
+     },
+     "after": {
+      "mid": -7.1,
+      "lo": 9.8,
+      "hi": 15.8,
+      "al": 9.1,
+      "ah": 7.6,
+      "bl": 3.5,
+      "bh": 5.0,
+      "pl": 2.8,
+      "ph": 2.1
+     },
+     "key": "mid = central change vs expected (positive = less than expected); lo/hi = total half-widths; al/ah actual values, bl/bh base, pl/ph price level"
+    }
+   }
+  },
+  "SYR": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 0.169,
+      "central": 0.3644,
+      "high": 0.644
+     },
+     "2022": {
+      "low": 0.1133,
+      "central": 0.3342,
+      "high": 0.6948
+     },
+     "2023": {
+      "low": 0.0971,
+      "central": 0.293,
+      "high": 0.6079
+     },
+     "2024": {
+      "low": 0.0971,
+      "central": 0.3151,
+      "high": 0.6514
+     },
+     "2025": {
+      "low": 0.2914,
+      "central": 0.7678,
+      "high": 1.3462
+     },
+     "2026": {
+      "low": 0.3076,
+      "central": 0.7985,
+      "high": 1.433
+     }
+    },
+    "base": {
+     "low": 0.13435,
+     "central": 0.31864,
+     "high": 0.58662
+    },
+    "replaces": "nonreport.json countries.SYR.imports_from_RUS 2019-2021 bands (2019 central for YEM)",
+    "inputs": {
+     "nonreport.json:countries.SYR.imports_from_RUS": {
+      "2019": {
+       "low": 0.2788,
+       "central": 0.3168,
+       "high": 0.396
+      },
+      "2020": {
+       "low": 0.1661,
+       "central": 0.1887,
+       "high": 0.2359
+      },
+      "2021": {
+       "low": 0.522,
+       "central": 0.5932,
+       "high": 0.7415
+      }
+     }
+    },
+    "certainty": "B",
+    "reasoning": "Russia's own exports to Syria: USD 300m (2019), 183m (2020), 594m (2021). Band -12%/+25% (more room upward for goods routed via Lebanon), replacing the generic +-42% mirror band. Paid share (0.35-0.90) unchanged and still the main width. Years 2022-2026 unchanged.",
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API: reporter's own annual and monthly data (HS TOTAL, 71) and Russia's own 2019-2021 reports (mirror)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=643&partnerCode=51,417,398,762,496,112,96,887,760&flowCode=X&period=2021&cmdCode=TOTAL",
+      "date": "2026-10-18"
+     }
+    ],
+    "old": {
+     "years": {
+      "2021": {
+       "low": 0.135,
+       "central": 0.3644,
+       "high": 0.7332
+      },
+      "2022": {
+       "low": 0.1133,
+       "central": 0.3342,
+       "high": 0.6948
+      },
+      "2023": {
+       "low": 0.0971,
+       "central": 0.293,
+       "high": 0.6079
+      },
+      "2024": {
+       "low": 0.0971,
+       "central": 0.3151,
+       "high": 0.6514
+      },
+      "2025": {
+       "low": 0.2914,
+       "central": 0.7678,
+       "high": 1.3462
+      },
+      "2026": {
+       "low": 0.3076,
+       "central": 0.7985,
+       "high": 1.433
+      }
+     },
+     "base": {
+      "low": 0.1073,
+      "central": 0.31867,
+      "high": 0.66788
+     }
+    },
+    "width_pct_gdp_2022_2026": {
+     "before": {
+      "mid": -1.6,
+      "lo": 8.2,
+      "hi": 20.3,
+      "al": 8.0,
+      "ah": 5.8,
+      "bl": 5.0,
+      "bh": 8.2,
+      "pl": 0.5,
+      "ph": 1.6
+     },
+     "after": {
+      "mid": -1.6,
+      "lo": 8.2,
+      "hi": 19.9,
+      "al": 8.0,
+      "ah": 5.8,
+      "bl": 4.3,
+      "bh": 6.3,
+      "pl": 0.5,
+      "ph": 1.6
+     },
+     "key": "mid = central change vs expected (positive = less than expected); lo/hi = total half-widths; al/ah actual values, bl/bh base, pl/ph price level"
+    }
+   }
+  }
+ }
+}
