@@ -83,13 +83,16 @@ Fuel refined from Russian crude reached buyers before 2022 too: EUR 3–5bn a ye
 
 ## Refiners: counted once
 
-Turkey, India and China refine Russian crude and export part of the fuel. That exported part is already counted at the buyers as laundered oil (95–100% per [`hub_buyers-notes.md`](../../research/2026-10/gaps/hub_buyers-notes.md)), so its crude value is taken out of the refiner's own payments to Russia, which then cover only what it uses itself:
+Turkey, India and China refine Russian crude and export part of the fuel. That exported part is already counted at the buyers as laundered oil (95–100% per [`hub_buyers-notes.md`](../../research/2026-10/gaps/hub_buyers-notes.md)), so it is taken out of the refiner's own payments to Russia. What is taken off the refiner equals what its buyers
+are charged: the **exported fuel value × `CRUDE_CONTENT`** (0.42 / 0.50 / 0.60), the same ratio used for the buyers, so
+no crude money is lost between them (round 5 review: using the refiners' measured crude values, about 0.67 of the fuel,
+had left about EUR 14bn uncounted):
 
-| refiner | exported crude value | source |
+| refiner | exported fuel value | source |
 |---|---|---|
-| Turkey | EUR 2.1–3.6bn a year in 2022–2025 | `hub_buyers.json` `turkey_refining.double_count_at_turkey` |
-| India | per year | `hub_buyers.json` `india_refining` |
-| China | per year | `round4a.json` `china_refining` |
+| Turkey | EUR 0.4–3.6bn a year in 2022–2026 | `hub_buyers.json` `turkey_refining.by_year` |
+| India | EUR 8–16bn a year | `hub_buyers.json` `india_refining` |
+| China | crude value ÷ 0.70 (India's measured crude-to-fuel ratio) | `round4a.json` `china_refining` |
 
 [`check_data.py`](../../pipeline/check_data.py) check 15 verifies the refining source on Turkey and India. **EU refiners' exports** (Lithuania, Finland, others) are not counted as laundered oil anywhere and stay with the refiner country (`round4a.json` `eu_refiners`).
 

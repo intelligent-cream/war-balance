@@ -634,7 +634,7 @@ function calc(c, y) {
     part("arms", "Arms Ukraine bought here", sum3(T.arms), c.flowback?.arms_cert || "C", c.flowback?.arms_src || []),
   ];
   const costParts = [
-    part("aidge", "Aid given (loans at grant equivalent)", [aid3[0] - loansFace + loansGE, aid3[1] - loansFace + loansGE * 0.5, aid3[2] - loansFace + loansGE * 1.5], loansFace ? weakest([cAid, "C"]) : cAid, src("aid")),
+    part("aidge", "Aid given (loans at grant equivalent)", [aid3[0] - loansFace + loansGE, aid3[1] - loansFace + loansGE * 0.5, aid3[2] - loansFace + Math.min(loansFace, loansGE * 1.5)], loansFace ? weakest([cAid, "C"]) : cAid, src("aid")),
     part("ref", "Hosting refugees", ref3, c.aid?.refugee_cert || "B", c.aid?.refugee_src || []),
     part("undisc", "Undisclosed military aid (estimate)", sum3(T.undisc), c.undisclosed?.cert || "D", src("undisclosed")),
     part("priv", "Private donations", sum3(T.priv), c.private?.cert || "D", src("private")),
@@ -660,7 +660,7 @@ function calc(c, y) {
   const negPart = p => ({ ...p, v: -p.v, lo: -p.hi, hi: -p.lo });
   // money flowing back counts only as profit (the same share as profit lost on sales to Russia): the goods sold to
   // or for Ukraine still cost money to make. The range runs from half to one and a half times that margin
-  const back = state.netBack ? backParts.map(negPart).map(p => ({ ...p, v: p.v * margin, lo: p.lo * margin * 1.5, hi: p.hi * margin * 0.5 })) : [];
+  const back = state.netBack ? live(backParts.map(negPart).map(p => ({ ...p, v: p.v * margin, lo: p.lo * margin * 1.5, hi: p.hi * margin * 0.5 }))) : [];
   const backCost = back;
   const shiftAll = live(shiftParts.concat(back)), costAll = live(costParts.concat(backCost));
   const [shift, shiftLo, shiftHi] = total(shiftAll), [cost, costLo, costHi] = total(costAll);
@@ -1246,7 +1246,7 @@ function countryPanel(c) {
       <div class="big ${pos ? "pos" : "neg"}">${fmtMeasure(c, k.shift, "gdp", true)} <span style="font-size:15px;font-weight:600">${t("of a year's GDP")}</span></div>
       <div class="big-cap">${t(pos ? "shifted toward <b>Ukraine</b> compared with before the war{after}: {eur} · {pp}" : "shifted toward <b>Russia</b> compared with before the war{after}: {eur} · {pp}", { after: state.netBack ? t(", after money flowing back") : "", eur: eur(k.shift, true), pp: perPerson(c, k.shift) })}</div>
       ${rangeLine(c, k.shiftLo, k.shiftHi, k.shiftCert)}
-      ${waterfall(k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label.toLowerCase() }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
+      ${waterfall(k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label[0].toLowerCase() + p.label.slice(1) }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
       ${sanctionNote(c, k)}
       ${armsNote(c, k)}
       ${share}

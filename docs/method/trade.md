@@ -49,7 +49,7 @@ Goods made in China or the EU and sold on to Russia through Armenia or the UAE s
 - **UAE 2024–2026** re-exports and gold passed on are raised to match its customs totals (`round4b.json`).
 - **The pre-war level moves the same way**: `reexports_to_RUS_baseline_2019_2021` comes out of the hub's base and into the origins'; since the counterfactual starts from 2021, the pre-war re-exports are also taken out of the hubs' 2021 values.
 
-Hubs are labelled on the map (`hub` field). Their trade keeps the 2021 level as the counterfactual ([counterfactual.md](counterfactual.md#6-which-model-is-used-for-which-flow)). **Not yet moved**: Belarus's re-exports to Russia (goods from China, Turkey and the EU inside its official exports, EUR 0.3–1.9bn a year by `round4b.json`), see [limitations.md](../limitations.md).
+Hubs are labelled on the map (`hub` field). Their trade keeps the 2021 level as the counterfactual ([counterfactual.md](counterfactual.md#6-which-model-is-used-for-which-flow)). Belarus's re-exports are moved too since round 5 (below).
 
 ### Belarus (round 5)
 

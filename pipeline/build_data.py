@@ -547,11 +547,23 @@ def build() -> dict:
     # refiners: the Russian crude in the fuel Turkey and India export is counted at the buyers (laundered oil),
     # so it is taken out of the refiner's own payments to Russia; they keep what they use themselves
     hb = load(GAPS / "hub_buyers.json")
+    # what is taken off the refiner must equal what its buyers are charged: the exported fuel x CRUDE_CONTENT, the same
+    # ratio reassign_laundered_oil() uses (round 5 review: the measured crude values, about 0.67 of the fuel, left
+    # EUR 14bn uncounted after CRUDE_CONTENT was lowered to 0.5)
+    bands = {"low": 0, "central": 1, "high": 2}
+
+    def as_crude(by_year: dict, key: str, scale: float = 1.0) -> dict:
+        return {
+            y: {b: (v.get(key) or {}).get(b, 0.0) * CRUDE_CONTENT[i] * scale for b, i in bands.items()}
+            for y, v in by_year.items()
+        }
+
+    china = load(GAPS / "round4a.json")["china_refining"]["exported_crude_value"]
     exported = {
-        "TUR": hb["turkey_refining"]["double_count_at_turkey"],
-        "IND": {y: v["exported_crude_value_eur_bn"] for y, v in hb["india_refining"].items()},
-        # China: fuel made from Russian crude and exported is fully in buyers' laundered oil (round4a.json)
-        "CHN": load(GAPS / "round4a.json")["china_refining"]["exported_crude_value"],
+        "TUR": as_crude(hb["turkey_refining"]["by_year"], "exported_product_value_eur_bn"),
+        "IND": as_crude(hb["india_refining"], "exported_product_value_eur_bn"),
+        # China reports crude values only: fuel = crude / 0.70 (India's measured crude-to-fuel ratio, 2022-2026)
+        "CHN": {y: {b: v.get(b, 0.0) / 0.70 * CRUDE_CONTENT[i] for b, i in bands.items()} for y, v in china.items()},
     }
     rid = src.add(
         "refining",
@@ -1351,13 +1363,15 @@ def apply_state_finance(countries: dict[str, dict], src: Sources) -> None:
             dev = sl.get("deviation_from_schedule") or {}
             add_base = (ro.get("to_add_base_2019_2021") or {}).get(b, 0.0)
             cc_base = sum((cc.get(str(y)) or {}).get(b, 0.0) for y in (2019, 2020, 2021)) / 3
-            for y in YEARS:
+            # the customs over-count is taken out of "paid", which is measured at pre-war prices: deflated the same way
+            p = (c.get("to_rus") or {}).get("pidx") or [1.0] * len(YEARS)
+            for i, y in enumerate(YEARS):
                 v = (
                     0.0
                     if y < 2022
                     else (
                         ((add.get(str(y)) or {}).get(b, 0.0) - add_base)
-                        + ((cc.get(str(y)) or {}).get(b, 0.0) - cc_base)
+                        + ((cc.get(str(y)) or {}).get(b, 0.0) - cc_base) / (p[i] or 1.0)
                         + (dev.get(str(y)) or {}).get(b, 0.0)
                     )
                 )
@@ -1437,20 +1451,31 @@ def apply_refugees_net(countries: dict[str, dict], src: Sources) -> None:
         a = (countries.get(iso3) or {}).get("aid")
         if not a or not d.get("gross") or not d.get("revenue"):
             continue
-        # costs paid by donors are not the host's; Moldova's, Poland's and Bulgaria's figures are already the host's own
-        sh = (donors.get(iso3) or {}).get("donor_share") if iso3 not in ("MDA", "POL", "BGR") else None
+        # costs paid by donors are not the host's; Moldova's, Poland's, Bulgaria's, Georgia's and Armenia's figures are
+        # already the host's own
+        sh = (donors.get(iso3) or {}).get("donor_share") if iso3 not in ("MDA", "POL", "BGR", "GEO", "ARM") else None
         sh = sh or {"low": 0, "central": 0, "high": 0}
         g = lambda y, b: (d["gross"].get(str(y)) or {}).get(b, 0.0)  # noqa: E731
         r = lambda y, b: (d["revenue"].get(str(y)) or {}).get(b, 0.0)  # noqa: E731
         mid = [g(y, "central") * (1 - sh["central"]) - r(y, "central") for y in YEARS]
         lo = [g(y, "low") * (1 - sh["high"]) - r(y, "high") for y in YEARS]
         hi = [g(y, "high") * (1 - sh["low"]) - r(y, "low") for y in YEARS]
-        for arr in (mid, lo, hi):
-            if sum(arr[1:]) <= 0:
-                arr[:] = [0.0] * len(arr)
+
+        # floored on the running total, so no period on the year slider shows hosting as a gain: a later surplus
+        # offsets earlier costs, down to zero and no further (each band on its own; the bands stay ordered in total)
+        def floor_running(arr: list[float]) -> list[float]:
+            out, run = [], 0.0
+            for v in arr:
+                new = max(0.0, run + v)
+                out.append(new - run)
+                run = new
+            return out
+
+        band = [sorted(t) for t in zip(lo, mid, hi)]
+        lo, mid, hi = (floor_running([b[i] for b in band]) for i in range(3))
         a["refugee_years"] = [round(v, 5) for v in mid]
-        a["refugee_years_lo"] = [round(min(v, m), 5) for v, m in zip(lo, mid)]
-        a["refugee_years_hi"] = [round(max(v, m), 5) for v, m in zip(hi, mid)]
+        a["refugee_years_lo"] = [round(v, 5) for v in lo]
+        a["refugee_years_hi"] = [round(v, 5) for v in hi]
         a["refugee_gross"] = round(sum(g(y, "central") for y in YEARS[1:]), 4)
         a["refugee_cert"] = weakest([(d.get("gross_certainty") or "C")[0], (d.get("revenue_certainty") or "C")[0]])
         a["refugee_src"] = list(dict.fromkeys((a.get("refugee_src") or []) + [sid]))
@@ -1518,8 +1543,14 @@ def apply_loans_value(countries: dict[str, dict], src: Sources) -> None:
             a["loan_adj_eu"] = {k: [round(t - o, 5) for t, o in zip(tot[k], own[k])] for k in tot}
             face = sum((d.get("loans_guarantees_face_in_map") or {}).values())
             ev = sum((v or {}).get("central", 0.0) for v in (d.get("loans_guarantees_economic_value") or {}).values())
+            # the cost view keeps the lender's cost (30% of face): the economic value is Ukraine's gain, discounted at
+            # Ukraine's borrowing rate, not what the lender gave up
             if face:
-                a["loans_face"], a["loans_grant_eq"] = round(face, 3), round(ev, 3)
+                a["loans_face"], a["loans_grant_eq"], a["loans_value_ukraine"] = (
+                    round(face, 3),
+                    round(face * LOAN_GRANT_ELEMENT, 3),
+                    round(ev, 3),
+                )
             if sid not in a.setdefault("src", []):
                 a["src"].append(sid)
         ml = (d.get("multilateral_new") or {}).get("economic_value") or {}
@@ -1588,9 +1619,8 @@ def apply_weapons_value(countries: dict[str, dict], src: Sources) -> None:
         if not aid or not corr:
             continue
         get = lambda y, b: (corr.get(str(y)) or {}).get(b, 0.0)  # noqa: E731
-        aid["weapons_mv"] = {
-            k: [round(get(y, b), 5) for y in YEARS] for k, b in (("c", "central"), ("l", "low"), ("h", "high"))
-        }
+        trip = [sorted((get(y, "low"), get(y, "central"), get(y, "high"))) for y in YEARS]
+        aid["weapons_mv"] = {k: [round(t[n], 5) for t in trip] for k, n in (("l", 0), ("c", 1), ("h", 2))}
         if sid not in aid.setdefault("src", []):
             aid["src"].append(sid)
 
@@ -1686,7 +1716,7 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
         "Laundered oil: fuel made from Russian crude, assigned to the final buyer (trading hubs pass on what they resell), valued at the Russian crude inside it",
         "https://www.russiafossiltracker.com/methodology/",
         "2026-10",
-        "hub resale shares are estimates; hub customers from UN Comtrade HS 2710 exports 2024; crude content 60-75% of the fuel value",
+        "hub resale shares are estimates; hub customers from UN Comtrade HS 2710 exports 2024; crude content 42-60% of the fuel value (CREA)",
     )
     for iso3, t in totals.items():
         tr = (countries.get(iso3) or {}).get("to_rus")

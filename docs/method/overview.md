@@ -55,7 +55,7 @@ Not a part of its own, but built into the parts above:
 
 ## The cost view
 
-"Cost carried" is a second lens: what the country gave up, not where money went. Parts (`costParts` in `calc()`): aid with loans at grant equivalent (30% of face value, `LOAN_GRANT_ELEMENT`), refugee hosting, undisclosed aid, private donations, the extra price paid to replace Russian energy, profit lost on sales to Russia (goods and services, 20%), import tariffs dropped for Ukraine (4% of purchases from Ukraine, EU, UK and Canada only), minus discounts gained on Russian oil, and minus flowback profit.
+"Cost carried" is a second lens: what the country gave up, not where money went. Parts (`costParts` in `calc()`): aid with loans at the lender's grant equivalent (30% of face value, `LOAN_GRANT_ELEMENT`; the net shift uses their value to Ukraine instead), donated weapons at their recorded value, refugee hosting at net cost, refugee hosting, undisclosed aid, private donations, the extra price paid to replace Russian energy, profit lost on sales to Russia (goods and services, 20%), import tariffs dropped for Ukraine (4% of purchases from Ukraine, EU, UK and Canada only), minus discounts gained on Russian oil, and minus flowback profit.
 
 ## The other lenses
 

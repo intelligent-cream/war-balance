@@ -22,7 +22,7 @@ Set by [build_data.py `price_indices()`](../../pipeline/build_data.py), with low
 | `company` (taxes) | none: compared in money | |
 | laundered oil | none: compared in money (higher prices count) | |
 
-Exceptions: [`narrow.json`](../../research/2026-10/gaps/narrow.json) can set its own `pidx` (Turkey's `to_rus`), applied by `apply_narrow()`. [`check_data.py`](../../pipeline/check_data.py) check 12 verifies that every benchmark index averages 1 over 2019–2021 and that every `to_rus` series has a price level.
+Exceptions: [`narrow.json`](../../research/2026-10/gaps/narrow.json) can set its own `pidx`, applied by `apply_narrow()` (no longer for Turkey's `to_rus`, which uses `turkey_prices.json` since round 5). [`check_data.py`](../../pipeline/check_data.py) check 12 verifies that every benchmark index averages 1 over 2019–2021 and that every `to_rus` series has a price level.
 
 ## The composite index for payments to Russia
 
@@ -34,7 +34,7 @@ For `to_rus`, a country's price level mixes what it bought before the war:
 2. **Non-fuel price level**: the country's own non-fuel index from `prices.json` where measured, else the Eurostat non-fuel index.
 3. **Weights**: fuel's share of pre-war imports from Russia (`fossil_share()`: the measured 2018–2021 mix in `prices.json`, else the `energy2.json` mix). Where `prices.json` measures what share of each year's payments was fuel (`fuel_share_year()`), that yearly share is used instead, as a harmonic mean: `pidx = 1 / (s/fuel + (1 − s)/nonfuel)`. India is the reason: it bought mostly crude after 2022, so its pre-war mix (43% fuel) understated both its price level and its windfall (India −4.6% → −5.1% of GDP after this fix).
 
-**Turkey is the exception** (`PRICES_SKIP`): its customs hide the partner for crude and gas, and its measured index (3.3 in 2022) conflicts with `gas_prices.json` (1.75). It keeps the benchmark-based index until a person reviews it ([prices-notes.md, "Weakest data"](../../research/2026-10/gaps/prices-notes.md); [limitations.md](../limitations.md)).
+**Turkey** hides the partner for crude and gas in its customs. Since round 5 its prices come from [`turkey_prices.json`](../../research/2026-10/gaps/turkey_prices.json): Russian export prices, EPDK volumes and contract terms (gas about 70% hub-indexed), which confirmed the measured 2022 index of about 3 and replaced the oil-formula gas price (1.75) in `gas_prices.json` ([energy-and-laundered-oil.md](energy-and-laundered-oil.md#turkey-a-special-case)). `PRICES_SKIP` is now empty.
 
 The effect of own prices on band width (composite index, 2022, from `prices.json` `band_width_comparison`):
 
@@ -44,7 +44,7 @@ The effect of own prices on band width (composite index, 2022, from `prices.json
 | India | 40% | 11% |
 | Korea | 52% | 10% |
 | Germany | 45% | 36% (gas prices confidential) |
-| Turkey | 41% | 21% (benchmark kept) |
+| Turkey | 41% | own index from contract terms (round 5) |
 
 ## Gas prices per country
 
