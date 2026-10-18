@@ -25,6 +25,19 @@ Suppose the map shows **Poland: +10.0% of a year's GDP, likely range 5.9% to 15.
 6. **A `*` on a part**: its 2026 value is estimated from the 2025 rate.
 7. **Each part has numbered sources**: click them in the panel; the list is also in [sources](reference/sources.md).
 
+## Sharing a view
+
+The address in the browser keeps what you see, so you can copy it and share it.
+
+- **The view and the buttons on top**: for example `#view=rank&lens=ukr&m=total` opens the ranking, toward Ukraine, in total euros.
+  - `view`: `map`, `rank`, `bubbles`, `table` or `how`.
+  - `lens`: `change` (change since before the war), `cost` (cost carried), `ukr` (to Ukraine) or `rus` (to Russia).
+  - `m`: `gdp` (% of GDP), `pp` (per person) or `total` (total euros).
+  - `y`: a year, 2021 to 2026.
+- **A country**: `#AUS` opens Australia's panel. With a view it becomes `c=AUS`, e.g. `#view=rank&c=AUS`. `UKR` and `RUS` open the Ukraine and Russia panels.
+- **Values left at their start are not written.** A plain `#AUS` is the map, change since before the war, % of GDP, 2026. An address with an unknown value falls back to the start.
+- **A country's own page**: `c/aus.html` (lower-case code) is a page per country whose link preview shows that country's card and which opens the map on that country (`#AUS`). Use it to share a country on social media. These pages are made by `share_cards.mjs` when the site is published.
+
 ## Contents
 
 ### Method
@@ -46,7 +59,7 @@ Suppose the map shows **Poland: +10.0% of a year's GDP, likely range 5.9% to 15.
 
 | page | what it covers |
 |---|---|
-| [reference/pipeline.md](reference/pipeline.md) | how to build, the 30 build steps in order, the `data.json` schema, the checks |
+| [reference/pipeline.md](reference/pipeline.md) | how to build, the 49 build steps in order, the `data.json` schema, the checks |
 | [reference/research-files.md](reference/research-files.md) | every research file, its notes, and which step and page use it |
 | [reference/sources.md](reference/sources.md) | the main external sources by topic, with addresses |
 

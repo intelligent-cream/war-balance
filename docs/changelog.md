@@ -146,6 +146,43 @@ volumes: Germany, Hungary, Slovakia, Czechia, Poland, Finland and North Macedoni
 no longer crosses zero. Poland's no-war path drops its Yamal gas from 2023 (ended by a 2019 decision): +9.2% → +8.1%
 ([counterfactual.md](method/counterfactual.md#pipeline-fuel-buyers-round-8)).
 
+## Round 9
+
+**Russian crude in fuel refined elsewhere, measured.** The share of a refined fuel's price that reaches Russia for its
+crude is now measured per refiner (India, Türkiye, China, Brunei) and year from Russia's realised crude prices and the
+refiners' fuel export prices, instead of one ratio of 0.42 / 0.50 / 0.60 for everything: 0.63–0.82 after the invasion,
+about 0.9 before it ([energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#valuing-and-capping)). The buyer is charged the crude money,
+the refiner keeps the rest of the price and its discount profit. The higher pre-war share raises the pre-war level too,
+so most buyers move little: Australia 0.00 → −0.03, India −5.5 → −5.2, Türkiye −5.0 → −4.9, Tanzania −2.7 → −3.5.
+
+## Round 10
+
+**Trade counts at the seller's net gain.** Aid is a gift and counts in full; trade is an exchange, so a purchase from
+Russia now counts at Russia's net gain on it (its taxes plus profit above a normal return: about 0.6 of the price for
+oil and gas, 0.1–0.2 for other goods, 0.08 for services, 0.12 for arms), and an extra purchase from Ukraine at
+Ukraine's (0.045 in 2023 to 0.18 before the war). The war-time price premium, taxes and profits paid to Russia and aid
+still count in full ([overview.md](method/overview.md#the-net-gain-rule-round-10)). Suggested by a reader on Reddit.
+
+**Russian-owned plants abroad.** Metals, mining and chemicals subsidiaries (Rusal's Aughinish in Ireland and KUBAL
+in Sweden, NLMK, EuroChem, Uranium One) added to the profits sent to Russia; the amounts are small
+([russia-state-and-companies.md](method/russia-state-and-companies.md#russian-owned-companies-abroad)).
+
+**Shareable views.** The address keeps the view and the buttons on top (`#view=rank&lens=ukr&m=total`); flow lines
+are on at start; the names of Ukraine and Russia are drawn above the flow lines ([README](README.md)).
+
+Headline effects (% of GDP, round 9 → round 10): Lithuania +27.8 → +14.8, Estonia +23.2 → +9.6, Finland +16.3 → +9.3,
+Moldova +22.7 → +5.8, Latvia +11.4 → +4.2, Germany +5.2 → +3.7, Poland +8.1 → +4.1, United Kingdom +3.2 → +1.2,
+United States +0.57 → +0.36, Hungary −4.5 → −3.9, Serbia 0.0 → −1.9, India −5.2 → −2.4, Hong Kong −8.3 → −5.0
+(gold counts at Russia's gain on gold). The top of the ranking keeps its order; the median range narrows from 4.7 to
+1.8 points of GDP.
+
+**Audit fixes (round 10).** A full audit found that the mix of what was bought used current prices, so war-time price
+rises moved it and were counted twice; that the expected and actual mixes split fuels differently in 2021; that LNG
+used the pipeline-gas gain; that refiners were relieved at a lower gain than their buyers were charged; that the Rosatom
+customs correction was taken off at full value; that gold and hidden payments had changed the *To Russia* view; that
+fuel refined in China before the war was subtracted twice; and that relabelled Russian products counted at the crude
+gain. All are fixed. Shared links: Back keeps the current filters, and invalid values are tidied out of the address.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open

@@ -6,7 +6,7 @@ Three smaller flows complete the Russia side of the ledger: services traded with
 
 Data: [`uncovered.json`](../../research/2026-10/gaps/uncovered.json) `services` ([notes §1](../../research/2026-10/gaps/uncovered-notes.md)), 199 economies, two flows:
 
-- `svc_bought` (bought from Russia): "Less / more paid to Russia for services", full change;
+- `svc_bought` (bought from Russia): "Less / more paid to Russia for services", the change × Russia's net gain on services, 0.08 (round 10, [overview](overview.md#the-net-gain-rule-round-10));
 - `svc_sold` (sold to Russia, including what Russian tourists spend in the country): "Income lost on services to Russia given up (e.g. tourism)", change × the money rule ([overview.md](overview.md#the-money-rule-round-6); 20% margin until round 5).
 
 Sources: Eurostat `bop_its6_det` (EU, EFTA, candidates, Turkey), OECD-WTO BaTiS (own reports and the balanced estimate), the Bank of Russia balance of payments. Non-reporters (China, UAE, India, Kazakhstan, Belarus) use BaTiS balanced values × 0.6–1.5 (certainty C). Turkey uses the mean of its report and BaTiS, because 6.3 million Russian visitors imply more travel income than Turkey reports. 2026 is the 2025 value × 0.66–0.71.
