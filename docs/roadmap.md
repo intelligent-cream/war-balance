@@ -1,9 +1,28 @@
 # Roadmap
 
-The work list for each data round. Round 6 is planned below; round 5 is done. Each item links to the limitation or method page it
+The work list for each data round. Round 7 is planned below; rounds 5 and 6 are done. Each item links to the limitation or method page it
 changes. Status is updated as items are done; the [changelog](changelog.md) records what each finished item changed.
 
-## Round 6 (planned 2026-10-18)
+## Round 7 (planned 2026-10-18)
+
+Agreed with the owner: keep the headline as money that actually moved (a country that stopped buying Russian energy
+gets the credit even where Russia cut supply, because it followed from its own stance). This round adds what freezing
+Russia's reserves denies Russia, marks sales of goods Russia's weapons need, narrows the widest ranges, and compares
+energy payments with the prices a no-war market expected.
+
+| # | step | kind |
+|---|---|---|
+| R1 | **Frozen Russian reserves**: per holding country, the return the immobilised central-bank assets would have earned (about 3–4% a year), credited to the holder on the Russia balance; no overlap with the ERA loans already left out of aid | research, code |
+| R2 | **Critical-goods marker**: each country's sales to Russia of items on the Common High Priority List (tiers 1–2 and all tiers), shown as a marker and in the panel; totals unchanged | research, code |
+| R3 | **Narrower ranges**: (a) the 2019–2021 alternative baseline no longer counted on top of the back-tested error for flows held at 2021; (b) a better no-war path for imports from Russia, split into fuel and other goods, tested on back-tests; (c) national statistics to narrow the actual values for the widest countries (Belarus, Kyrgyzstan, Armenia, Tajikistan, Georgia, Mongolia, Kazakhstan, Yemen, Brunei, Syria, Uzbekistan) | code, research |
+| R4 | **No-war energy prices**: payments and the war-time windfall compared with the price path markets expected before the invasion (late-2021 futures and forecasts), not 2019–2021 prices; actual contract prices where known; the cost view consistently at what each choice cost | research, code |
+| R5 | **Remittances from Russia** (labour sold to Russia's economy), against the expected level and at the money rule, with relocants' transfers split out | research, code |
+| R6 | Docs: why relocants' savings and Russians' property purchases abroad are left out (money leaving Russia) | docs |
+| R7 | Integrate, translations, review, before/after comparison shown to the owner, merge into `develop` | finish |
+
+Open for the owner: loans to Russia (Chinese and other banks) at their economic value.
+
+## Round 6 (done)
 
 The main change of this round is a fairer way to count money that comes back from the war effort. The rest narrows
 the ranges and closes data gaps.
