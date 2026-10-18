@@ -118,6 +118,27 @@ Headline effects (% of GDP, develop → round 6): Kyrgyzstan −15.3 → −23.3
 +19.3 (range now above zero), Bulgaria +1.7 → +0.7 and Czechia +2.4 → +1.9 (gold outline: they earned more from the war
 effort than they gave). Large donors barely move: US +0.61 → +0.51, Germany +4.26 → +4.23, Poland +7.1 → +7.3.
 
+## Round 7
+
+The [round 7 roadmap](roadmap.md) in full:
+
+- **No-war energy prices**: fuel payments and the war-time windfall are compared with the prices a no-war market
+  expected (pre-invasion forecasts and futures), not 2019–2021 prices; 2026 against actual world prices (the Hormuz
+  spike was not caused by this war); a negative windfall where Russia sold below those prices. The windfall falls
+  from EUR 455bn to roughly a third ([prices.md](method/prices.md#no-war-prices-round-7)).
+- **Frozen Russian reserves**: the return they would have earned for Russia, credited to the holders; Euroclear a
+  third to Belgium and two thirds to all EU members ([russia-state-and-companies.md](method/russia-state-and-companies.md#frozen-central-bank-reserves-round-7)).
+- **Remittances from Russia**: migrant workers' wages at the money rule; relocants' transfers and living spending left
+  out ([trade.md](method/trade.md#remittances-and-relocants-round-7)).
+- **Critical-goods marker**: sales to Russia of goods its weapons need, shown as ◆, not in the totals
+  ([trade.md](method/trade.md#goods-russias-weapons-need-the-critical-goods-marker-round-7)).
+- **Narrower figures**: national statistics for nine countries; the band for imports from Russia re-measured.
+
+Headline effects (% of GDP, develop → round 7): Tajikistan −6.4 → −45.1 (remittances, certainty D), Uzbekistan
+−9.5 → −18.1, Hungary −7.6 → −4.5, Slovakia −1.2 → +3.5, Lithuania +22.5 → +27.8, Germany +4.2 → +5.2, Poland
++7.3 → +9.2, Belgium +2.1 → +4.2. Ranges grew a little overall (median width 4.3 → 4.8 points), because fuel valued
+at no-war prices makes the amounts larger.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open

@@ -1,9 +1,9 @@
 # Roadmap
 
-The work list for each data round. Round 7 is planned below; rounds 5 and 6 are done. Each item links to the limitation or method page it
+The work list for each data round. Rounds 5, 6 and 7 are done. Each item links to the limitation or method page it
 changes. Status is updated as items are done; the [changelog](changelog.md) records what each finished item changed.
 
-## Round 7 (planned 2026-10-18)
+## Round 7 (done)
 
 Agreed with the owner: keep the headline as money that actually moved (a country that stopped buying Russian energy
 gets the credit even where Russia cut supply, because it followed from its own stance). This round adds what freezing
@@ -18,7 +18,7 @@ energy payments with the prices a no-war market expected.
 | R4 | **No-war energy prices**: payments and the war-time windfall compared with the price path markets expected before the invasion (late-2021 futures and forecasts), not 2019–2021 prices; actual contract prices where known; the cost view consistently at what each choice cost | done: windfall 455 → 153bn; 2026 against actual world prices ([prices.md](method/prices.md#no-war-prices-round-7)) |
 | R5 | **Remittances from Russia** (labour sold to Russia's economy), against the expected level and at the money rule, with relocants' transfers split out | done ([trade.md](method/trade.md#remittances-and-relocants-round-7)); relocants' spending taken out of travel income too |
 | R6 | Docs: why relocants' savings and Russians' property purchases abroad are left out (money leaving Russia) | done |
-| R7 | Integrate, translations, review, before/after comparison shown to the owner, merge into `develop` | finish |
+| R7 | Integrate, translations, review, before/after comparison shown to the owner, merge into `develop` | done |
 
 Open for the owner: loans to Russia (Chinese and other banks) at their economic value.
 
