@@ -1,7 +1,13 @@
 # Roadmap
 
-The work list for each data round. Rounds 5 to 8 are done. Each item links to the limitation or method page it
+The work list for each data round. Rounds 5 to 9 are done. Each item links to the limitation or method page it
 changes. Status is updated as items are done; the [changelog](changelog.md) records what each finished item changed.
+
+## Round 9 (done)
+
+| # | step | kind |
+|---|---|---|
+| G1 | The share of a refined fuel's price that reaches Russia for its crude, measured per refiner and year instead of one ratio | done ([energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#valuing-and-capping)) |
 
 ## Round 8 (done)
 

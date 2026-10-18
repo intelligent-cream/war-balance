@@ -146,6 +146,15 @@ volumes: Germany, Hungary, Slovakia, Czechia, Poland, Finland and North Macedoni
 no longer crosses zero. Poland's no-war path drops its Yamal gas from 2023 (ended by a 2019 decision): +9.2% → +8.1%
 ([counterfactual.md](method/counterfactual.md#pipeline-fuel-buyers-round-8)).
 
+## Round 9
+
+**Russian crude in fuel refined elsewhere, measured.** The share of a refined fuel's price that reaches Russia for its
+crude is now measured per refiner (India, Türkiye, China, Brunei) and year from Russia's realised crude prices and the
+refiners' fuel export prices, instead of one ratio of 0.42 / 0.50 / 0.60 for everything: 0.63–0.82 after the invasion,
+about 0.9 before it ([energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#valuing-and-capping)). The buyer is charged the crude money,
+the refiner keeps the rest of the price and its discount profit. The higher pre-war share raises the pre-war level too,
+so most buyers move little: Australia 0.00 → −0.03, India −5.5 → −5.2, Türkiye −5.0 → −4.9, Tanzania −2.7 → −3.5.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open

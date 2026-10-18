@@ -83,7 +83,16 @@ Fuel passed from one hub to another (India to the Netherlands, Belgium to the Ne
 
 ### Valuing and capping
 
-- Only the **Russian crude inside** the fuel is money for Russia: `CRUDE_CONTENT = 0.42 / 0.50 / 0.60` of the fuel value (CREA: EUR 4.2bn of Russian crude in EUR 8.5bn of fuel, moved with prices; lowered from 0.60 / 0.68 / 0.75 in round 5).
+- Only the **Russian crude inside** the fuel is money for Russia. Since round 9 that share is measured per refiner and year (`crude_k()`, [`crude_content.json`](../../research/2026-10/gaps/crude_content.json), [notes](../../research/2026-10/gaps/crude_content-notes.md)): the price Russia was paid for the crude (FOB, after the discount; CREA's Urals and ESPO series) × tonnes of crude per tonne of fuel (about 1.06) ÷ the refiner's fuel export price (UN Comtrade HS 2710), averaged with a check by value (crude price ÷ what a barrel yields in products). Central values:
+
+  | refiner | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
+  |---|---|---|---|---|---|---|
+  | India | 0.89 | 0.66 | 0.64 | 0.75 | 0.68 | 0.64 |
+  | Türkiye | 0.89 | 0.67 | 0.67 | 0.78 | 0.71 | 0.67 |
+  | China | 0.95 | 0.72 | 0.75 | 0.82 | 0.76 | 0.75 |
+  | Brunei (Hengyi) | 0.90 | 0.66 | 0.63 | 0.74 | 0.67 | 0.63 |
+
+  Fuel whose refiner is no longer known after trading hubs mixed it uses the refiners' average, weighted by their exports. India's measured share matches its own refinery data (EUR 18.5bn of Russian crude in EUR 28.5bn of fuel in 2022, 0.65). The buyer whose demand creates the sale is charged this part; the rest of the fuel price is the refiner's income, and its profit from the Russian discount is counted for the refiner ("discount gained" in the cost view). Earlier rounds used one ratio, 0.42 / 0.50 / 0.60, from CREA's "EUR 4.2bn of crude in EUR 8.5bn of fuel"; that figure prices diesel alone, without refining losses or the cheaper products in the export mix. The round-5 EU figures (`laundered_eu.json`) and the round-6 Brunei channel are rescaled from their ratios to these.
 - Laundered oil cannot exceed what an economy can use: capped at 1% (middle) and 2% (high) of GDP per year (`LAUNDERED_CAP`), so ship registries and storage points (Marshall Islands, Liberia) do not absorb fuel. GDP from `residual.json` is loaded before the cap so it applies to small territories too.
 
 ### Pre-war laundered oil
@@ -97,7 +106,7 @@ Fuel refined from Russian crude reached buyers before 2022 too: EUR 3–5bn a ye
 ## Refiners: counted once
 
 Turkey, India and China refine Russian crude and export part of the fuel. That exported part is already counted at the buyers as laundered oil (95–100% per [`hub_buyers-notes.md`](../../research/2026-10/gaps/hub_buyers-notes.md)), so it is taken out of the refiner's own payments to Russia. What is taken off the refiner equals what its buyers
-are charged: the **exported fuel value × `CRUDE_CONTENT`** (0.42 / 0.50 / 0.60), the same ratio used for the buyers, so
+are charged: the **exported fuel value × the refiner's own crude share for that year** (`crude_k()`), which the buyers' average is built from, so
 no crude money is lost between them (round 5 review: using the refiners' measured crude values, about 0.67 of the fuel,
 had left about EUR 14bn uncounted):
 
