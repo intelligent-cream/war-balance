@@ -533,8 +533,30 @@ function calc(c, y) {
   // change against the pre-war level, at pre-war prices (actual values divided by the price level): the low end uses
   // the low baseline, the high actual value and the low price level, and the other way round
   // expected without the war = pre-war level x pre-war trend; the low end takes the low baseline and trend
-  const delta3 = t => { const r = [0, 0, 0]; for (let i = 1; i <= N; i++) { r[0] += t.m * FRAC[i] * t.q[i] - t.c[i] / t.p[i]; r[1] += t.b[0] * FRAC[i] * t.ql[i] - t.h[i] / t.pl[i]; r[2] += t.b[1] * FRAC[i] * t.qh[i] - t.l[i] / t.ph[i]; } return r; };
-  const above3 = t => { const r = [0, 0, 0]; for (let i = 1; i <= N; i++) { r[0] += Math.max(0, t.c[i] / t.p[i] - t.m * FRAC[i] * t.q[i]); r[1] += Math.max(0, t.l[i] / t.ph[i] - t.b[1] * FRAC[i] * t.qh[i]); r[2] += Math.max(0, t.h[i] / t.pl[i] - t.b[0] * FRAC[i] * t.ql[i]); } return r; };
+  // Ranges combine four independent sources of uncertainty in quadrature instead of stacking their worst cases:
+  // the baseline level and the actual values (from the same sources, so their errors partly cancel: correlation 0.5),
+  // the price level and the pre-war trend. Errors are summed over the years first (the same baseline every year).
+  const spread = (t, ex, act) => {
+    // ex(i, base, trend) and act(i, value, price) give one year's expected and actual volume
+    let mid = 0, bl = 0, bh = 0, al = 0, ah = 0, pl = 0, ph = 0, ql = 0, qh = 0;
+    for (let i = 1; i <= N; i++) {
+      const e = ex(i, t.m, t.q[i]), a = act(i, t.c[i], t.p[i]);
+      mid += e - a;
+      bl += e - ex(i, t.b[0], t.q[i]); bh += ex(i, t.b[1], t.q[i]) - e;
+      al += act(i, t.h[i], t.p[i]) - a; ah += a - act(i, t.l[i], t.p[i]);
+      pl += act(i, t.c[i], t.pl[i]) - a; ph += a - act(i, t.c[i], t.ph[i]);
+      ql += e - ex(i, t.m, t.ql[i]); qh += ex(i, t.m, t.qh[i]) - e;
+    }
+    const lo = Math.sqrt(Math.max(0, bl * bl + al * al - bl * al) + pl * pl + ql * ql);
+    const hi = Math.sqrt(Math.max(0, bh * bh + ah * ah - bh * ah) + ph * ph + qh * qh);
+    return [mid, mid - lo, mid + hi];
+  };
+  const exV = (i, base, q) => base * FRAC[i] * q, actV = (i, v, p) => v / p;
+  // change against the pre-war level at pre-war prices: positive = less than expected
+  const delta3 = t => spread(t, exV, actV);
+  // only the rise above the expected level (each year on its own), negative values count as zero
+  const above3 = t => { const r = [0, 0, 0]; for (let i = 1; i <= N; i++) { const one = spreadYear(t, i); r[0] += Math.max(0, one[0]); r[1] += Math.max(0, one[1]); r[2] += Math.max(0, one[2]); } return r; };
+  const spreadYear = (t, i) => { const d = spread({ ...t, c: t.c.map((v, j) => (j === i ? v : 0)), l: t.l.map((v, j) => (j === i ? v : 0)), h: t.h.map((v, j) => (j === i ? v : 0)), m: t.m, b: t.b, q: t.q.map((v, j) => (j === i ? v : 0)), ql: t.ql.map((v, j) => (j === i ? v : 0)), qh: t.qh.map((v, j) => (j === i ? v : 0)) }, exV, actV); return [-d[0], -d[2], -d[1]]; };
   const neg = r => [-r[0], -r[2], -r[1]];
   const scale = (r, f) => [r[0] * f, r[1] * f, r[2] * f];
   const aid3 = sum3(T.aid), ref3 = sum3(T.ref);
@@ -553,6 +575,9 @@ function calc(c, y) {
   // profit lost on goods and services no longer sold to Russia
   const given = i => Math.max(0, lessSold3[i]) + Math.max(0, lessSvcSold3[i]);
   const lostMargin3 = [given(0) * margin, given(1) * margin * 0.5, given(2) * margin * 1.5];
+  // selling to Russia (or giving it up) moves the seller's profit, not the whole sales value: the goods still cost
+  // money to make. The profit share ranges from half to one and a half times the margin
+  const profit3 = r => [r[0] * margin, r[1] * margin * (r[1] >= 0 ? 0.5 : 1.5), r[2] * margin * (r[2] >= 0 ? 1.5 : 0.5)];
   const tariff3 = c.tariff_waiver ? scale(sum3(T.buyUkr), META.tariff_rate ?? 0.04) : [0, 0, 0];
   // comparing with 2021 assumes trade would otherwise have stayed at that level, so these parts are at best B
   const cAid = c.aid?.cert || "B", cRus = weakest([c.to_rus?.cert, "B"]), cTrade = weakest([c.buy_ukr?.cert, "B"]);
@@ -571,11 +596,11 @@ function calc(c, y) {
     part("buy", "Extra purchases from Ukraine", above3(T.buyUkr), cTrade, src("buy_ukr")),
     part("paid", lessPaid3[0] >= 0 ? "Less paid to Russia" : "More paid to Russia", lessPaid3, cRus, src("to_rus")),
     part("laund", "Russian oil bought via other countries", neg(sum3(T.laundered)), "C", c.to_rus?.laundered_src || []),
-    part("sold", lessSold3[0] >= 0 ? "Sales to Russia given up" : "Extra sales to Russia", lessSold3, weakest([c.from_rus?.cert, "B"]), src("from_rus")),
+    part("sold", lessSold3[0] >= 0 ? "Profit lost on sales to Russia given up" : "Profit on extra sales to Russia", profit3(lessSold3), weakest([c.from_rus?.cert, "B"]), src("from_rus")),
     part("tax", lessTax3[0] >= 0 ? "Less tax paid in Russia by companies" : "More tax paid in Russia by companies", lessTax3, c.company?.cert || "B", src("company")),
     part("mil", "Weapons and troops sent to Russia", neg(sum3(T.mil)), "D", src("military_rus")),
     part("svcpaid", lessSvcPaid3[0] >= 0 ? "Less paid to Russia for services" : "More paid to Russia for services", lessSvcPaid3, c.svc_bought?.cert || "C", src("svc_bought")),
-    part("svcsold", lessSvcSold3[0] >= 0 ? "Services to Russia given up (e.g. tourism)" : "Extra services sold to Russia (e.g. tourism)", lessSvcSold3, c.svc_sold?.cert || "C", src("svc_sold")),
+    part("svcsold", lessSvcSold3[0] >= 0 ? "Profit lost on services to Russia given up (e.g. tourism)" : "Profit on extra services sold to Russia (e.g. tourism)", profit3(lessSvcSold3), c.svc_sold?.cert || "C", src("svc_sold")),
     part("ship", lessShip3[0] >= 0 ? "Less profit from shipping Russian oil" : "Profit from shipping and insuring Russian oil", lessShip3, c.shipping?.cert || "D", src("shipping")),
     part("hidden", "Gold and hidden payments to Russia", neg(sum3(T.hidden)), "D", src("hidden")),
     part("undisc", "Undisclosed military aid (estimate)", sum3(T.undisc), c.undisclosed?.cert || "D", src("undisclosed")),
