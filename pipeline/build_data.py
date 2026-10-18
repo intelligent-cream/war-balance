@@ -1040,6 +1040,7 @@ def build() -> dict:
     apply_frozen_reserves(countries, src)
     apply_value_kept(countries, src)
     apply_audit2(countries, src, "trends")
+    apply_nowar_prices(countries, src)
     for c in countries.values():
         for obj in c.values():
             if isinstance(obj, dict):
@@ -1237,13 +1238,81 @@ def price_indices(countries: dict[str, dict]) -> None:
                 obj["pidx" + suffix] = [round(v, 4) for v in series]
 
 
+# ---- round 7: prices a no-war market expected (energy_nowar.json) ----
+NOWAR = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/energy_nowar.json").read_text())
+NW_IDX = NOWAR["nowar_index"]
+# 2026: the Strait of Hormuz closure was not caused by this war, so the no-war price is the actual world price
+NW_WORLD_2026 = {"urals": "brent", "diesel_gasoil_products": "diesel_gasoil_products", "russian_coal": "newcastle",
+                 "ttf": "ttf", "jkm": "jkm", "oil_formula_9m": "oil_formula_9m"}  # fmt: skip
+# gas contract formulas (weights on hub TTF, a 9-month oil formula and spot JKM); empty = fixed price, no windfall
+GAS_FORMULA = {**{i: {"ttf": 1.0} for i in ("HUN", "SVK", "AUT", "DEU", "ITA", "CZE", "FRA", "NLD", "BEL", "CHE", "FIN",
+                                            "POL", "SVN", "HRV", "ROU", "LVA", "LTU", "EST", "LUX", "GBR", "ESP", "PRT",
+                                            "SWE")},
+               "TUR": {"ttf": 0.7, "oil9": 0.3}, **{i: {"ttf": 0.5, "oil9": 0.5} for i in ("GRC", "BGR", "MKD", "MDA")},
+               **{i: {"oil9": 1.0} for i in ("SRB", "BIH", "CHN")}, **{i: {} for i in ("BLR", "ARM", "KGZ", "UZB",
+                                                                                      "KAZ", "AZE", "GEO")}}  # fmt: skip
+LNG_FORMULA = {"JPN": {"oil9": 1.0}, "KOR": {"oil9": 1.0}, "TWN": {"oil9": 0.5, "jkm": 0.5}, "CHN": {"oil9": 0.5, "jkm": 0.5},
+               **{i: {"jkm": 1.0} for i in ("IND", "SGP", "THA", "BGD", "PAK", "IDN", "VNM", "KWT", "BRA")}}  # fmt: skip
+
+
+def nw(name: str, y: int, band: str) -> float:
+    """No-war price level of one benchmark (2019-2021 = 1); the actual world price in 2026."""
+    if y >= 2026:
+        return NW_IDX[NW_WORLD_2026[name]][str(y)]["actual"]
+    return NW_IDX[name][str(y)][band]
+
+
+def formula_ratio(f: dict, y: int, band: str) -> float:
+    """No-war over actual value of a gas price formula (1 for a fixed price)."""
+    if not f:
+        return 1.0
+    key = {"ttf": "ttf", "oil9": "oil_formula_9m", "jkm": "jkm"}
+    num = sum(w * nw(key[k], y, band) for k, w in f.items())
+    return num / sum(w * NW_IDX[key[k]][str(y)]["actual"] for k, w in f.items())
+
+
+def nowar_ratio(iso3: str, i: int, band_nw: str, band_p: str) -> float:
+    """No-war price over actual price of the fuel a country bought from Russia in year i: per fuel paid where its
+    customs measure it (prices.json), else its pre-war fuel mix."""
+    y = YEARS[i]
+    if y < 2022:
+        return 1.0
+    pipe = GAS_FORMULA.get(iso3, {"ttf": 0.75, "oil9": 0.25})
+    lng = LNG_FORMULA.get(iso3, {"ttf": 1.0})
+    parts = ((PRICES.get(iso3) or {}).get("windfall_parts") or {}) if iso3 not in PRICES_SKIP else {}
+    paid = {f: (v.get(str(y)) or {}).get("paid") or 0 for f, v in parts.items() if f != "non_fuel_goods"}
+    tot = sum(v for v in paid.values() if v > 0)
+    bench = {"crude": ("urals", "urals"), "products": ("diesel_gasoil_products", "products"),
+             "coal": ("russian_coal", "coal"), "other_fossil": ("diesel_gasoil_products", "products")}  # fmt: skip
+    if tot > 0:
+        acc = 0.0
+        for f, v in paid.items():
+            if v <= 0:
+                continue
+            if f in ("pipeline_gas", "lng"):
+                acc += v / tot * formula_ratio(pipe if f == "pipeline_gas" else lng, y, band_nw)
+                continue
+            nwk, ik = bench.get(f, bench["products"])
+            own = own_index(iso3, f, band_p) if f in ("crude", "products", "coal") else None
+            acc += v / tot * nw(nwk, y, band_nw) / (own[i] if own else idx(ik, band_p)[i])
+        return acc
+    m = import_mix(iso3)
+    fuels = ("crude", "products", "gas", "coal", "other_fossil")
+    total = sum(m.get(f) or 0 for f in fuels) or 1
+    gas_n = gas_index(iso3, band_p)[i] * formula_ratio(pipe if iso3 in PIPELINE_GAS else lng, y, band_nw)
+    nmap = {"crude": nw("urals", y, band_nw), "products": nw("diesel_gasoil_products", y, band_nw), "gas": gas_n,
+            "coal": nw("russian_coal", y, band_nw), "other_fossil": nw("diesel_gasoil_products", y, band_nw)}  # fmt: skip
+    return sum((m.get(f) or 0) * nmap[f] for f in fuels) / total / fuel_index(iso3, band_p)[i]
+
+
 def war_windfall(countries: dict[str, dict], src: Sources) -> None:
     """Extra money Russia earned because fuel prices were higher during the war: what a country paid for Russian fuel
-    minus what the same fuel would have cost at 2019-2021 prices. It counts toward Russia, on top of any change in
-    volume. Non-fuel goods are left out (their price rise is mostly general inflation)."""
+    minus what the same fuel would have cost at the prices a no-war market expected (round 7: pre-invasion forecasts
+    and futures, energy_nowar.json; 2019-2021 prices before). Negative where Russia sold below that price (the
+    sanctions discount): less money to Russia. Non-fuel goods are left out (their price rise is general inflation)."""
     wid = src.add(
         "windfall",
-        "War-time price windfall on Russian fuel: payments minus the same volume at 2019-2021 prices",
+        "War-time price windfall on Russian fuel: payments minus the same volume at the prices a no-war market expected (pre-invasion forecasts and futures: IMF, World Bank, EIA, ECB, ICE)",
         None,
         "2026-10-18",
         "fuel share of payments per year from own customs where measured (prices.json), else the pre-war import mix; fuel price indices (prices.json, energy2.json, gas_prices.json)",
@@ -1256,8 +1325,12 @@ def war_windfall(countries: dict[str, dict], src: Sources) -> None:
         if not fs and not any(fsy_own):
             continue
         out = {}
-        # the low end takes the low fuel price level (less windfall), the high end the high one
-        for k, band in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
+        # the low end takes the low fuel price level and the high no-war price (less windfall), the high end the reverse
+        for k, band, band_nw in (
+            ("years", "central", "central"),
+            ("years_lo", "low", "high"),
+            ("years_hi", "high", "low"),
+        ):
             fuel, nf = fuel_index(iso3, band), own_index(iso3, "non_fuel_goods", band) or idx("non_fuel_goods", band)
             vals = []
             for i, y in enumerate(YEARS):
@@ -1266,12 +1339,50 @@ def war_windfall(countries: dict[str, dict], src: Sources) -> None:
                     continue
                 # fuel's share of the year's payments, at that year's prices
                 fsy = fsy_own[i] if fsy_own[i] is not None else fs * fuel[i] / (fs * fuel[i] + (1 - fs) * nf[i])
-                vals.append(round(tr["years"][i] * fsy * (1 - 1 / fuel[i]), 5))
+                vals.append(round(tr["years"][i] * fsy * (1 - nowar_ratio(iso3, i, band_nw, band)), 5))
             out[k] = vals
         # the fuel share moves with the price level too, so the three values are put back in order each year
         trip = [sorted((a, b, h)) for a, b, h in zip(out["years_lo"], out["years"], out["years_hi"])]
         out = {"years_lo": [t[0] for t in trip], "years": [t[1] for t in trip], "years_hi": [t[2] for t in trip]}
         c["windfall"] = {**out, "cert": "C", "src": [wid]}
+
+
+def apply_nowar_prices(countries: dict[str, dict], src: Sources) -> None:
+    """Round 7: the change in fuel volume is valued at the prices a no-war market expected, not 2019-2021 prices, so
+    that it and the windfall add up exactly: actual - expected payment = (volume change x no-war price) + (actual
+    volume x (actual price - no-war price)). The expected path (bmul) takes the no-war fuel price on its fuel share,
+    and the price index of payments values the fuel part at the no-war price. The oil discount gain (cost view) no
+    longer counts Russia's normal pre-war discount to Brent."""
+    disc = NOWAR["switching_cost_r7"]["oil_discount_gain_factor"]
+    for iso3, c in countries.items():
+        en = c.get("energy")
+        if en and en.get("discount"):
+            for k in ("discount", "discount_lo", "discount_hi"):
+                en[k] = [round(v * disc.get(str(y), 1.0), 5) for v, y in zip(en[k], YEARS)]
+        tr = c.get("to_rus")
+        fs, fsy_own = fossil_share(iso3), fuel_share_year(iso3)
+        if not tr or (not fs and not any(v for v in fsy_own if v)):
+            continue
+        fuel_c = fuel_index(iso3, "central")
+        # the no-war fuel price level per year (2019-2021 = 1)
+        n = [nowar_ratio(iso3, i, "central", "central") * fuel_c[i] if y >= 2022 else 1.0 for i, y in enumerate(YEARS)]
+        mul = [fs * v + (1 - fs) for v in n]
+        for k in ("bmul", "bmul_lo", "bmul_hi"):
+            if tr.get(k):
+                tr[k] = [round(b * m, 4) for b, m in zip(tr[k], mul)]
+        if not tr.get("bmul"):
+            tr["bmul"] = tr["bmul_lo"] = tr["bmul_hi"] = [round(m, 4) for m in mul]
+        for band, suffix in (("central", ""), ("low", "_lo"), ("high", "_hi")):
+            fuel = fuel_index(iso3, band)
+            nf = own_index(iso3, "non_fuel_goods", band) or idx("non_fuel_goods", band)
+            out = []
+            for i, y in enumerate(YEARS):
+                f, g = fuel[i], nf[i]
+                sy = fsy_own[i] if fsy_own[i] is not None else fs * f / (fs * f + (1 - fs) * g)
+                # value / index = fuel volume x no-war price + other goods at pre-war prices
+                out.append(round(1 / (sy * n[i] / f + (1 - sy) / g), 4) if f > 0 and g > 0 else tr["pidx" + suffix][i])
+            tr["pidx" + suffix] = out
+        tr["nowar_prices"] = True
 
 
 def pre_war_trends(countries: dict[str, dict], src: Sources) -> None:
