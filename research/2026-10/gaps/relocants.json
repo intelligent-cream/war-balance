@@ -1,0 +1,741 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "Share of svc_sold (services sold to Russia) that is living spending of Russians who relocated after Feb 2022 (rent, food, local services) and is recorded in the host's travel credits from Russia. That part is money leaving Russia, not income earned from Russia, and should be removed from svc_sold. Ordinary tourism stays in.",
+  "units": "Shares are fractions of the map's svc_sold central value. remove_eur_bn = share x svc_sold central, EUR bn nominal; 2026 = Jan-Aug, not annualised. low/central/high are a ~80-90% range; educated guesses carry wider ranges.",
+  "svc_sold_used": {
+   "GEO": {
+    "2022": 0.946,
+    "2023": 0.968,
+    "2024": 0.885,
+    "2025": 0.714,
+    "2026": 0.44
+   },
+   "ARM": {
+    "2022": 0.351,
+    "2023": 0.371,
+    "2024": 0.394,
+    "2025": 0.45,
+    "2026": 0.301
+   },
+   "SRB": {
+    "2022": 0.366,
+    "2023": 0.819,
+    "2024": 0.922,
+    "2025": 0.754,
+    "2026": 0.497
+   },
+   "KAZ": {
+    "2022": 1.094,
+    "2023": 1.253,
+    "2024": 1.294,
+    "2025": 1.374,
+    "2026": 0.888
+   },
+   "UZB": {
+    "2022": 0.34,
+    "2023": 0.383,
+    "2024": 0.434,
+    "2025": 0.484,
+    "2026": 0.32
+   },
+   "KGZ": {
+    "2022": 0.229,
+    "2023": 0.265,
+    "2024": 0.353,
+    "2025": 0.402,
+    "2026": 0.268
+   },
+   "TUR": {
+    "2022": 5.83,
+    "2023": 7.15,
+    "2024": 7.38,
+    "2025": 7.31,
+    "2026": 4.32
+   },
+   "ARE": {
+    "2022": 1.58,
+    "2023": 1.57,
+    "2024": 1.74,
+    "2025": 2.02,
+    "2026": 1.36
+   },
+   "MNE": {
+    "2022": 0.19,
+    "2023": 0.35,
+    "2024": 0.263,
+    "2025": 0.237,
+    "2026": 0.17
+   }
+  },
+  "method": "Per country: (1) the pre-war tourist level of travel credits from Russia (2019 where 2021 was COVID-hit) and the jump after 2022; (2) the relocant stock (registrations, residence permits, migration balances, bank accounts) and monthly spending (~USD 1,000-1,600 in the Caucasus, Balkans and Turkey; more in the UAE); (3) the part of that spending the compiler records as travel: under BPM6 people staying 1 year+ (or intending to) are residents, so a relocant's spending sits in travel credits mostly in the first year and for visa-run stayers. Shares therefore peak in 2022-2023 and fall after. Cross-check: the relocant part cannot exceed the rise over the pre-war tourist level by much, and the implied spend per remaining tourist visit must stay plausible.",
+  "scope": "Relocants' spending only. Their money transfers are already left out in remittances.json; their property purchases are capital, not services. ICT/business services sold to Russian clients by relocated firms are kept (earned from Russia).",
+  "total_remove_2022_2026_eur_bn": {
+   "GEO": {
+    "low": 0.388,
+    "central": 0.731,
+    "high": 1.124
+   },
+   "ARM": {
+    "low": 0.082,
+    "central": 0.238,
+    "high": 0.462
+   },
+   "SRB": {
+    "low": 0.136,
+    "central": 0.384,
+    "high": 0.751
+   },
+   "KAZ": {
+    "low": 0.03,
+    "central": 0.178,
+    "high": 0.391
+   },
+   "UZB": {
+    "low": 0.004,
+    "central": 0.041,
+    "high": 0.098
+   },
+   "KGZ": {
+    "low": 0.009,
+    "central": 0.052,
+    "high": 0.114
+   },
+   "TUR": {
+    "low": 0.29,
+    "central": 0.901,
+    "high": 1.859
+   },
+   "ARE": {
+    "low": 0.123,
+    "central": 0.519,
+    "high": 1.254
+   },
+   "MNE": {
+    "low": 0.084,
+    "central": 0.229,
+    "high": 0.414
+   }
+  },
+  "total_all_countries_eur_bn": {
+   "low": 1.15,
+   "central": 3.27,
+   "high": 6.47
+  }
+ },
+ "countries": {
+  "GEO": {
+   "relocant_share_of_svc_sold": {
+    "2022": {
+     "low": 0.25,
+     "central": 0.38,
+     "high": 0.52
+    },
+    "2023": {
+     "low": 0.12,
+     "central": 0.24,
+     "high": 0.36
+    },
+    "2024": {
+     "low": 0.04,
+     "central": 0.11,
+     "high": 0.2
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.04,
+     "high": 0.1
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.03,
+     "high": 0.08
+    }
+   },
+   "remove_eur_bn": {
+    "2022": {
+     "low": 0.2365,
+     "central": 0.3595,
+     "high": 0.4919
+    },
+    "2023": {
+     "low": 0.1162,
+     "central": 0.2323,
+     "high": 0.3485
+    },
+    "2024": {
+     "low": 0.0354,
+     "central": 0.0974,
+     "high": 0.177
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0286,
+     "high": 0.0714
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0132,
+     "high": 0.0352
+    }
+   },
+   "certainty": "B-C",
+   "basis": "NBG travel credits from Russia (USD): ~775m in 2019 (pre-war), 891m 2022, 938m 2023, ~835m 2024 (backed out from 2025 y/y falls), ~694m 2025 (sum of NBG quarters). Spend per Russian visit rose from ~USD 530 (2019) to ~830 (2022) while visits fell; Russians' spending in Oct 2022 was +526% y/y, the month after mobilisation. NBG counts Russians who have stayed or intend to stay 1 year+ as residents (35.5% of resident Russians at 31 Mar 2023) and leaves them out of travel; everyone else, including first-year relocants and visa-run stayers, is in travel credits. Relocant stock ~70-110k end-2022 (Geostat net immigration of Russians ~60k in 2022, +17k in 2023; IDFI 73.7k stayed over 2022-23), spending ~USD 1,000-1,600/month. Relocant spending recorded as travel ~USD 0.25-0.5bn in 2022, falling as stayers cross the 1-year line or leave; by 2025 Russia travel credits are below the 2019 tourist level, so little relocant spending is left. svc_sold also has ~10-15% non-travel services, which are left in."
+  },
+  "ARM": {
+   "relocant_share_of_svc_sold": {
+    "2022": {
+     "low": 0.08,
+     "central": 0.2,
+     "high": 0.35
+    },
+    "2023": {
+     "low": 0.07,
+     "central": 0.18,
+     "high": 0.32
+    },
+    "2024": {
+     "low": 0.04,
+     "central": 0.12,
+     "high": 0.24
+    },
+    "2025": {
+     "low": 0.02,
+     "central": 0.08,
+     "high": 0.18
+    },
+    "2026": {
+     "low": 0.01,
+     "central": 0.06,
+     "high": 0.15
+    }
+   },
+   "remove_eur_bn": {
+    "2022": {
+     "low": 0.0281,
+     "central": 0.0702,
+     "high": 0.1228
+    },
+    "2023": {
+     "low": 0.026,
+     "central": 0.0668,
+     "high": 0.1187
+    },
+    "2024": {
+     "low": 0.0158,
+     "central": 0.0473,
+     "high": 0.0946
+    },
+    "2025": {
+     "low": 0.009,
+     "central": 0.036,
+     "high": 0.081
+    },
+    "2026": {
+     "low": 0.003,
+     "central": 0.0181,
+     "high": 0.0451
+    }
+   },
+   "certainty": "C",
+   "basis": "CBA BoP travel by country is not published in detail; svc_sold rose only +0.10 in 2022 over a COVID-depressed 2021. Relocants: Migration Service net ~42k Russians Jan-Sep 2022, government claims 100-150k, settled stock ~40-60k in 2023 and falling to ~25-40k by 2025; 68.7k non-resident bank accounts opened Mar-Sep 2022. Their likely living spending (USD 0.4-0.8bn a year) is larger than the whole svc_sold figure, so most of it must be recorded elsewhere (resident households, remittances, or missed); only part sits in travel credits. Share is capped by the rise over the pre-war tourist level."
+  },
+  "SRB": {
+   "relocant_share_of_svc_sold": {
+    "2022": {
+     "low": 0.06,
+     "central": 0.18,
+     "high": 0.32
+    },
+    "2023": {
+     "low": 0.07,
+     "central": 0.17,
+     "high": 0.3
+    },
+    "2024": {
+     "low": 0.04,
+     "central": 0.11,
+     "high": 0.22
+    },
+    "2025": {
+     "low": 0.02,
+     "central": 0.07,
+     "high": 0.16
+    },
+    "2026": {
+     "low": 0.01,
+     "central": 0.05,
+     "high": 0.13
+    }
+   },
+   "remove_eur_bn": {
+    "2022": {
+     "low": 0.022,
+     "central": 0.0659,
+     "high": 0.1171
+    },
+    "2023": {
+     "low": 0.0573,
+     "central": 0.1392,
+     "high": 0.2457
+    },
+    "2024": {
+     "low": 0.0369,
+     "central": 0.1014,
+     "high": 0.2028
+    },
+    "2025": {
+     "low": 0.0151,
+     "central": 0.0528,
+     "high": 0.1206
+    },
+    "2026": {
+     "low": 0.005,
+     "central": 0.0249,
+     "high": 0.0646
+    }
+   },
+   "certainty": "C-D",
+   "basis": "NBS travel credits from Russia; svc_sold more than doubled in 2023, partly ICT and business services of relocated firms (kept: earned from Russian clients). Relocants: Interior Ministry ~300k entries, ~53k settled; >67k temporary residence permits granted Feb 2022-end 2024. Holders of residence permits mostly become residents within a year, so their spending leaves travel credits; visa-run stayers (30-day visa-free) stay in. Estimate: 20-40k relocant-equivalents in travel in 2022-23 at ~USD 1,000-1,300/month, a smaller part later."
+  },
+  "KAZ": {
+   "relocant_share_of_svc_sold": {
+    "2022": {
+     "low": 0.01,
+     "central": 0.05,
+     "high": 0.1
+    },
+    "2023": {
+     "low": 0.01,
+     "central": 0.04,
+     "high": 0.08
+    },
+    "2024": {
+     "low": 0.005,
+     "central": 0.025,
+     "high": 0.06
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.02,
+     "high": 0.05
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.015,
+     "high": 0.04
+    }
+   },
+   "remove_eur_bn": {
+    "2022": {
+     "low": 0.0109,
+     "central": 0.0547,
+     "high": 0.1094
+    },
+    "2023": {
+     "low": 0.0125,
+     "central": 0.0501,
+     "high": 0.1002
+    },
+    "2024": {
+     "low": 0.0065,
+     "central": 0.0324,
+     "high": 0.0776
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0275,
+     "high": 0.0687
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0133,
+     "high": 0.0355
+    }
+   },
+   "certainty": "C-D",
+   "basis": "svc_sold is mostly transport (transit, pipelines, rail) and is flat 2021-2025: no travel jump. ~146k of 930k post-mobilisation arrivals still present Dec 2022; ~50-80k at end 2023 (Russian consul, The Bell); ~36k temporary residence. Most stayed in the north/Almaty for months but many are ethnic Kazakhs or have family ties. Small share."
+  },
+  "UZB": {
+   "relocant_share_of_svc_sold": {
+    "2022": {
+     "low": 0.005,
+     "central": 0.03,
+     "high": 0.07
+    },
+    "2023": {
+     "low": 0.005,
+     "central": 0.03,
+     "high": 0.06
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.02,
+     "high": 0.05
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.015,
+     "high": 0.04
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.01,
+     "high": 0.03
+    }
+   },
+   "remove_eur_bn": {
+    "2022": {
+     "low": 0.0017,
+     "central": 0.0102,
+     "high": 0.0238
+    },
+    "2023": {
+     "low": 0.0019,
+     "central": 0.0115,
+     "high": 0.023
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0087,
+     "high": 0.0217
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0073,
+     "high": 0.0194
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0032,
+     "high": 0.0096
+    }
+   },
+   "certainty": "D",
+   "basis": "Few relocants (low tens of thousands, IT workers in Tashkent, mostly short); svc_sold growth tracks transport and labour-linked travel. Educated guess."
+  },
+  "KGZ": {
+   "relocant_share_of_svc_sold": {
+    "2022": {
+     "low": 0.02,
+     "central": 0.07,
+     "high": 0.14
+    },
+    "2023": {
+     "low": 0.01,
+     "central": 0.05,
+     "high": 0.1
+    },
+    "2024": {
+     "low": 0.005,
+     "central": 0.03,
+     "high": 0.07
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.02,
+     "high": 0.05
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.015,
+     "high": 0.04
+    }
+   },
+   "remove_eur_bn": {
+    "2022": {
+     "low": 0.0046,
+     "central": 0.016,
+     "high": 0.0321
+    },
+    "2023": {
+     "low": 0.0027,
+     "central": 0.0133,
+     "high": 0.0265
+    },
+    "2024": {
+     "low": 0.0018,
+     "central": 0.0106,
+     "high": 0.0247
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.008,
+     "high": 0.0201
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.004,
+     "high": 0.0107
+    }
+   },
+   "certainty": "D",
+   "basis": "Bishkek drew a short-lived 2022 relocant wave (tens of thousands, many moving on); svc_sold actually fell in 2022. Educated guess."
+  },
+  "TUR": {
+   "relocant_share_of_svc_sold": {
+    "2022": {
+     "low": 0.025,
+     "central": 0.06,
+     "high": 0.11
+    },
+    "2023": {
+     "low": 0.012,
+     "central": 0.035,
+     "high": 0.07
+    },
+    "2024": {
+     "low": 0.005,
+     "central": 0.02,
+     "high": 0.045
+    },
+    "2025": {
+     "low": 0.003,
+     "central": 0.015,
+     "high": 0.035
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.01,
+     "high": 0.03
+    }
+   },
+   "remove_eur_bn": {
+    "2022": {
+     "low": 0.1458,
+     "central": 0.3498,
+     "high": 0.6413
+    },
+    "2023": {
+     "low": 0.0858,
+     "central": 0.2503,
+     "high": 0.5005
+    },
+    "2024": {
+     "low": 0.0369,
+     "central": 0.1476,
+     "high": 0.3321
+    },
+    "2025": {
+     "low": 0.0219,
+     "central": 0.1096,
+     "high": 0.2559
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0432,
+     "high": 0.1296
+    }
+   },
+   "certainty": "C-D",
+   "basis": "Russian residence permit holders: ~66k end 2021, peak ~150-158k end 2022/Mar 2023, ~96k May 2024, ~85-90k 2025 (Interior Ministry, OECD, Russian Embassy). Excess over pre-war ~85k in 2022 falling to ~20-30k by 2025. At ~USD 1,000-1,500/month and only part captured by TurkStat's departing-visitor survey (permit holders are residents after a year), relocant spending in travel credits ~USD 0.2-0.6bn in 2022. The rest of the 2022-2025 jump is ordinary tourism recovery (Russian visits 4.7m 2021 -> 5.2m 2022 -> 6.3m 2023 -> 6.7m 2024)."
+  },
+  "ARE": {
+   "relocant_share_of_svc_sold": {
+    "2022": {
+     "low": 0.02,
+     "central": 0.08,
+     "high": 0.18
+    },
+    "2023": {
+     "low": 0.02,
+     "central": 0.08,
+     "high": 0.18
+    },
+    "2024": {
+     "low": 0.015,
+     "central": 0.06,
+     "high": 0.15
+    },
+    "2025": {
+     "low": 0.01,
+     "central": 0.05,
+     "high": 0.13
+    },
+    "2026": {
+     "low": 0.01,
+     "central": 0.045,
+     "high": 0.12
+    }
+   },
+   "remove_eur_bn": {
+    "2022": {
+     "low": 0.0316,
+     "central": 0.1264,
+     "high": 0.2844
+    },
+    "2023": {
+     "low": 0.0314,
+     "central": 0.1256,
+     "high": 0.2826
+    },
+    "2024": {
+     "low": 0.0261,
+     "central": 0.1044,
+     "high": 0.261
+    },
+    "2025": {
+     "low": 0.0202,
+     "central": 0.101,
+     "high": 0.2626
+    },
+    "2026": {
+     "low": 0.0136,
+     "central": 0.0612,
+     "high": 0.1632
+    }
+   },
+   "certainty": "D",
+   "basis": "No UAE BoP by country; svc_sold is the OECD-WTO BaTiS balanced estimate built from Russia's travel debits. Dubai drew wealthy relocants (estimates of tens of thousands to 100k+), spending well above USD 3k/month, but most hold residence visas and BaTiS allocates by trips, so only part is in the figure. Educated guess, wide range."
+  },
+  "MNE": {
+   "relocant_share_of_svc_sold": {
+    "2022": {
+     "low": 0.06,
+     "central": 0.18,
+     "high": 0.33
+    },
+    "2023": {
+     "low": 0.12,
+     "central": 0.28,
+     "high": 0.45
+    },
+    "2024": {
+     "low": 0.06,
+     "central": 0.18,
+     "high": 0.33
+    },
+    "2025": {
+     "low": 0.04,
+     "central": 0.13,
+     "high": 0.27
+    },
+    "2026": {
+     "low": 0.03,
+     "central": 0.11,
+     "high": 0.25
+    }
+   },
+   "remove_eur_bn": {
+    "2022": {
+     "low": 0.0114,
+     "central": 0.0342,
+     "high": 0.0627
+    },
+    "2023": {
+     "low": 0.042,
+     "central": 0.098,
+     "high": 0.1575
+    },
+    "2024": {
+     "low": 0.0158,
+     "central": 0.0473,
+     "high": 0.0868
+    },
+    "2025": {
+     "low": 0.0095,
+     "central": 0.0308,
+     "high": 0.064
+    },
+    "2026": {
+     "low": 0.0051,
+     "central": 0.0187,
+     "high": 0.0425
+    }
+   },
+   "certainty": "D",
+   "basis": "CBCG travel credits from Russia rose 0.19 -> 0.35 in 2023 while direct flights from Russia were banned (tourist flows fell), so much of the rise is Russians staying for months (temporary residence, property, visa runs, 'digital nomad' stays). Relocant stock several thousand to ~10-15k on top of a pre-war base of property-owning Russians. Educated guess, wide range."
+  }
+ },
+ "sources": [
+  {
+   "id": "nbg_travel",
+   "name": "National Bank of Georgia, international travel revenues by country (quarterly), via 1tv.ge, gbc.ge, Georgia Today, CBW",
+   "url": "https://1tv.ge/lang/en/news/nbg-georgias-travel-income-reaches-usd-1052-4-million-in-q4-2025-up-9-2-year-on-year/"
+  },
+  {
+   "id": "pmcg_2023",
+   "name": "PMCG Monthly Tourism Update (April 2023): NBG note that 35.5% of resident Russians at 31 Mar 2023 stayed/intended 1 year+ and are excluded from travel",
+   "url": "https://pmcg-i.com/research/monthly-tourism-update-april-2023/"
+  },
+  {
+   "id": "idfi_2022",
+   "name": "IDFI / JAM News: income from Russian travellers USD 891m in 2022, +15% vs 2019; IDFI 73.7k Russians stayed 2022-23",
+   "url": "https://jam-news.net/idfi-study/"
+  },
+  {
+   "id": "geo_2023",
+   "name": "Georgia Today: 2023 travel revenue from Russia USD 938.3m",
+   "url": "https://georgiatoday.ge/in-2023-georgia-received-high-income-from-tourism"
+  },
+  {
+   "id": "geo_oct22",
+   "name": "JAM News: Russians spent 526% more in Georgia in Oct 2022",
+   "url": "https://jam-news.net/?p=133403"
+  },
+  {
+   "id": "geostat_mig",
+   "name": "Geostat migration by citizenship 2023 (52.6k Russian immigrants, 35.3k emigrants)",
+   "url": "https://sakartvelosambebi.ge/en/news/163-480-georgian-citizens-emigrated-last-year"
+  },
+  {
+   "id": "arm_fip",
+   "name": "Fact Investigation Platform (Armenia): Migration Service net 42k Russians Jan-Sep 2022; 68.7k non-resident accounts",
+   "url": "https://fip.am/en/20786"
+  },
+  {
+   "id": "srb_wiki",
+   "name": "Russians in Serbia (Interior Ministry: 300k entries, ~53k settled); BCSP: >67k temporary residence permits to end 2024",
+   "url": "https://en.wikipedia.org/wiki/Russians_in_Serbia"
+  },
+  {
+   "id": "cep_srb",
+   "name": "European Policy Centre (CEP), Russian Migration Surge in Serbia, Sep 2023",
+   "url": "https://cep.org.rs/wp-content/uploads/2023/09/Russian-Migration-Surge-in-Serbia.pdf"
+  },
+  {
+   "id": "tur_oecd",
+   "name": "OECD International Migration Outlook 2024, Turkiye (Russian permit holders 158k Mar 2023, <100k Mar 2024)",
+   "url": "https://www.oecd.org/en/publications/international-migration-outlook-2024_50b0353e-en/full-report/turkiye_e05e2874.html"
+  },
+  {
+   "id": "tur_agbi",
+   "name": "AGBI / Reuters: Russian permit holders 96k (May 2024) from 154k end 2022",
+   "url": "https://www.agbi.com/lifestyle/2024/05/russians-leave-turkey-as-costs-and-restrictions-bite/"
+  },
+  {
+   "id": "tur_gv",
+   "name": "Global Voices: ~66k pre-war, ~90k Sep 2024",
+   "url": "https://globalvoices.org/2024/11/05/a-temporary-welcome-russians-in-turkey-since-february-2022/"
+  },
+  {
+   "id": "kaz_intellinews",
+   "name": "bne IntelliNews: how many Russians stayed in Kazakhstan; 146k still present Dec 2022",
+   "url": "https://www.intellinews.com/central-asia-blog-how-many-of-the-russians-who-fled-putin-s-war-machine-for-kazakhstan-stayed-there-291989"
+  },
+  {
+   "id": "kaz_bizmedia",
+   "name": "Bizmedia.kz / TASS: ~80k Russians remain in Kazakhstan end 2023",
+   "url": "https://bizmedia.kz/2024-02-13-okolo-80-tysyach-grazhdan-rossii-ostayutsya-v-kazahstane-s-2022-goda/"
+  },
+  {
+   "id": "bell_650k",
+   "name": "The Bell via Novaya Gazeta Europe: ~650k left Russia permanently",
+   "url": "https://novayagazeta.eu/en/articles/2024/07/16/the-bell-650000-people-have-left-russia-permanently-since-the-invasion-of-ukraine-en-news"
+  },
+  {
+   "id": "map_uncovered",
+   "name": "This project: research/2026-10/gaps/uncovered.json (svc_sold construction) and remittances.json (relocant transfers left out)",
+   "url": null
+  }
+ ],
+ "notes": [
+  "Removal uses the map's svc_sold central for all three bounds; if svc_sold is itself revised, apply the shares, not the EUR amounts.",
+  "Georgia is the best-documented case: NBG's resident rule means first-year relocants are inside travel credits, which is why 2022 spend per Russian visit jumped ~55% over 2019 while visits fell.",
+  "Armenia: relocant living costs would exceed the whole svc_sold series, so most of their spending is not in it; the share is bounded by the jump over the pre-war level, not by relocant numbers.",
+  "Shares fall after 2023 because relocants who stay become residents (their spending then leaves travel credits entirely) or move on.",
+  "UAE, Uzbekistan, Kyrgyzstan and Montenegro rest on educated guesses (certainty D) with wide ranges.",
+  "ISET, CRRC and EBRD/World Bank work was not read in detail in this pass and no published year-by-year split of relocant spending inside travel credits was found. The EBRD and World Bank 2022-23 regional updates do credit relocants' spending and inflows for Georgia's and Armenia's 2022 growth, which fits the 2022 peak used here.",
+  "Possible double count to watch: remittances.json already leaves out relocant transfers into Georgia/Armenia; the transfers fund the spending removed here, but the two are different BoP lines (secondary income/financial vs travel), so removing both is consistent, not double."
+ ]
+}

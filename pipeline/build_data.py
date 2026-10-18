@@ -1023,6 +1023,7 @@ def build() -> dict:
     price_indices(countries)
     apply_narrow(countries, src)
     apply_brunei_r6(countries)
+    apply_relocants(countries)
     apply_audit2(countries, src, "values")
     uae_fuel_net(countries)
     war_windfall(countries, src)
@@ -2493,6 +2494,22 @@ def apply_brunei_r6(countries: dict[str, dict]) -> None:
         ]
     r21 = res["2021"]
     tr["base"], tr["base_range"] = round(r21["central"], 5), [round(r21["low"], 5), round(r21["high"], 5)]
+
+
+def apply_relocants(countries: dict[str, dict]) -> None:
+    """Russians who moved abroad after 2022 and spend there count in the host's travel credits from Russia. That is
+    money leaving Russia, not income from it, so its share comes out of services sold to Russia (relocants.json,
+    round 7; Georgia's central bank applies the one-year residence rule explicitly)."""
+    rl = load(GAPS / "relocants.json")
+    for iso3, d in rl["countries"].items():
+        t = (countries.get(iso3) or {}).get("svc_sold")
+        sh = d.get("relocant_share_of_svc_sold") or {}
+        if not t:
+            continue
+        # the low value of what was sold takes the high share, and the other way round
+        for k, b in (("years", "central"), ("years_lo", "high"), ("years_hi", "low")):
+            t[k] = [round(v * (1 - (sh.get(str(y)) or {}).get(b, 0.0)), 5) for v, y in zip(t[k], YEARS)]
+        t["relocants_out"] = True
 
 
 def apply_narrow(countries: dict[str, dict], src: Sources) -> None:

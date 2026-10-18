@@ -126,6 +126,12 @@ would be the wrong sign, and counting it toward Ukraine would credit countries f
 About EUR 30bn of the 2022 surge in transfers was split out this way (Armenia 11.9, Uzbekistan 7.5, Tajikistan 3.3,
 Georgia 3.0, Azerbaijan 2.5), tested by the drop back after the surge.
 
+Relocants' **living spending** is recorded in the host's travel credits from Russia, so that share also comes out of
+services sold to Russia (`apply_relocants()`, [`relocants.json`](../../research/2026-10/gaps/relocants.json),
+[notes](../../research/2026-10/gaps/relocants-notes.md)): about EUR 3.3bn (1.2–6.5) over 2022–2026, mostly Türkiye
+(0.9), Georgia (0.7, from its central bank's one-year residence rule; 38% of 2022 travel credits from Russia), the UAE,
+Serbia, Armenia and Montenegro. Georgia moves from −14.8% to −13.5% of GDP, Montenegro +4.4% to +5.0%.
+
 ## Narrower actual values (round 7)
 
 National and partner statistics narrowed ten series in nine countries
