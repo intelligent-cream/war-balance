@@ -814,6 +814,7 @@ def build() -> dict:
     apply_reexports(countries, src, note)
     apply_residual(countries, src, note)
     apply_audit(countries, src)
+    baltic_transit(countries)
     # AI guesses, no real data: how far each country's direction is from Russia's and how threatened it feels;
     # shown separately to compare what a country did with what its incentives would predict
     inc = load(GAPS / "incentives.json")
@@ -1292,6 +1293,51 @@ def apply_audit2(countries: dict[str, dict], src: Sources, stage: str) -> None:
                     min(x["low"], x["central"]),
                     max(x["high"], x["central"]),
                 )
+
+
+def baltic_transit(countries: dict[str, dict]) -> None:
+    """Goods that only passed through the Baltic states and Finland: Russian goods passed on unprocessed to buyers
+    elsewhere, and goods made elsewhere re-exported to Russia (audit 2, question 6). Both are taken out of their trade
+    with Russia, before and after the war alike; re-exports go to the EU countries that made the goods (7% margin
+    stays). Crude refined in Lithuania and Finland is real processing and stays."""
+    q6 = [x for x in AUDIT2["questions"][5]["corrections"]]
+    makers = {
+        i: (countries[i].get("from_rus") or {}).get("base", 0)
+        for i in EU27
+        if i in countries and i not in ("EST", "LVA", "LTU", "FIN")
+    }
+    mk_tot = sum(makers.values()) or 1
+    for x in q6:
+        c = countries.get(x["country"])
+        obj = (c or {}).get(x["series"])
+        if not obj:
+            continue
+        keep = 0.07 if x["series"] == "from_rus" else 0.0
+        sh = {"years": x["central"], "years_lo": x["high"], "years_hi": x["low"]}
+        moved = {}
+        for k in ("years", "years_lo", "years_hi"):
+            f = sh[k] * (1 - keep)
+            moved[k] = [v * f for v in obj[k]]
+            obj[k] = [round(v * (1 - f), 5) for v in obj[k]]
+        base_moved = obj.get("base", 0) * x["central"] * (1 - keep)
+        obj["base"] = round(obj.get("base", 0) - base_moved, 5)
+        if obj.get("base_range"):
+            br = obj["base_range"]
+            obj["base_range"] = [
+                round(br[0] * (1 - x["high"] * (1 - keep)), 5),
+                round(br[1] * (1 - x["low"] * (1 - keep)), 5),
+            ]
+        if x["series"] == "from_rus":
+            for i, w in makers.items():
+                f = countries[i]["from_rus"]
+                for k in moved:
+                    f[k] = [round(v + m * w / mk_tot, 5) for v, m in zip(f[k], moved[k])]
+                f["base"] = round(f.get("base", 0) + base_moved * w / mk_tot, 5)
+                if f.get("base_range"):
+                    f["base_range"] = [
+                        round(f["base_range"][0] + base_moved * w / mk_tot, 5),
+                        round(f["base_range"][1] + base_moved * w / mk_tot, 5),
+                    ]
 
 
 def remove_freight(countries: dict[str, dict]) -> None:
