@@ -28,8 +28,8 @@ services to Russia and shipping. The profit-only figures stay in the docs as a c
 
 | # | step | kind |
 |---|---|---|
-| A1 | **All-money ledger**: every euro that reached Ukraine (bilateral aid, EU and multilateral money, frozen-asset loans, private donations, Ukraine's own budget spent on weapons abroad), by what it paid for and the economy where it was spent; each euro assigned once | research |
-| A2 | **Stock replacement**: purchases made to replace weapons given to Ukraine (e.g. the Netherlands buying new US systems), up to the donated value, not general rearmament | research |
+| A1 | **All-money ledger**: every euro that reached Ukraine (bilateral aid, EU and multilateral money, frozen-asset loans, private donations, Ukraine's own budget spent on weapons abroad), by what it paid for and the economy where it was spent; each euro assigned once | research: done |
+| A2 | **Stock replacement**: purchases made to replace weapons given to Ukraine (e.g. the Netherlands buying new US systems), up to the donated value, not general rearmament | research: done |
 | A3 | **Value kept**: domestic value-added share per seller and kind of good (OECD TiVA; defence industry studies) | research: done |
 | A4 | **Genuinely extra**: for weapons (capacity built for the war, backlogs) and for sales to and from Russia (redirection to other buyers), per sector, with ranges | research: done |
 | A5 | Builder: flowback from the ledger at value kept × extra; the same rule for sales to Russia, services to Russia and shipping; the Ukraine and Russia balances in `data.json` | code |

@@ -519,7 +519,7 @@ function normalise(c) {
     aid: triple(c.aid, "years"), ref: triple(c.aid, "refugee_years"),
     paid: triple(c.to_rus, "years"), laundered: triple(c.laund || c.to_rus, c.laund ? "years" : "laundered"), soldRus: triple(c.from_rus, "years"),
     buyUkr: triple(c.buy_ukr, "years"), sellUkr: triple(c.sell_ukr, "years"),
-    own: triple(c.flowback, "own"), purl: triple(c.flowback, "purl_in"), arms: triple(c.flowback, "arms"),
+    own: triple(c.flowback, "own"), purl: triple(c.flowback, "purl_in"), arms: triple(c.flowback, "arms"), othsp: triple(c.flowback, "othsp"),
     premium: triple(c.energy, "premium"), discount: triple(c.energy, "discount"),
     tax: triple(c.company, "taxes"), mil: triple(c.military_rus, "years"),
     svcBought: triple(c.svc_bought, "years"), svcSold: triple(c.svc_sold, "years"), ship: triple(c.shipping, "years"), windfall: triple(c.windfall, "years"),
@@ -646,10 +646,11 @@ function calc(c, y) {
   ];
   const sell3 = above3(T.sellUkr);
   const backParts = [
-    part("own", "Own aid spent with its own defence industry", sum3(T.own), c.flowback?.cert_own || "C", src("flowback")),
-    part("purl", "Other countries' aid spent here", sum3(T.purl), "B", c.flowback?.purl_src || src("flowback")),
+    part("own", "Own aid spent in its own economy (incl. replacing donated stock)", sum3(T.own), c.flowback?.cert_own || "C", src("flowback")),
+    part("purl", "Other countries' aid spent here (incl. their stock replacement)", sum3(T.purl), c.flowback?.cert_own || "C", c.flowback?.purl_src || src("flowback")),
     part("sell", "Extra sales to Ukraine above the pre-war level", sell3, cTrade, src("sell_ukr")),
     part("arms", "Arms Ukraine bought here", sum3(T.arms), c.flowback?.arms_cert || "C", c.flowback?.arms_src || []),
+    part("othsp", "Aid spent here on energy, relief and rebuilding", sum3(T.othsp), c.flowback?.cert_own || "C", c.flowback?.src || []),
   ];
   const costParts = [
     part("aidge", "Aid given (loans at grant equivalent)", [aid3[0] - loansFace + loansGE, aid3[1] - loansFace + loansGE * 0.5, aid3[2] - loansFace + Math.min(loansFace, loansGE * 1.5)], loansFace ? weakest([cAid, "C"]) : cAid, src("aid")),
@@ -680,7 +681,7 @@ function calc(c, y) {
   // or for Ukraine still cost money to make. The range runs from half to one and a half times that margin
   // money flowing back to this economy from the war effort: weapons and aid spent here at the weapons factor, extra sales
   // to Ukraine at the ordinary-goods factor (value kept x genuinely extra)
-  const back = state.netBack ? live(backParts.map(negPart).map(p => { const f = vk(p.k === "sell" ? "ux" : "fw"); return { ...p, v: p.v * f[1], lo: p.lo * f[2], hi: p.hi * f[0] }; })) : [];
+  const back = state.netBack ? live(backParts.map(negPart).map(p => { const f = vk(p.k === "sell" ? "ux" : p.k === "othsp" ? "fo" : "fw"); return { ...p, v: p.v * f[1], lo: p.lo * f[2], hi: p.hi * f[0] }; })) : [];
   const backCost = back;
   const shiftAll = live(shiftParts.concat(back)), costAll = live(costParts.concat(backCost));
   const [shift, shiftLo, shiftHi] = total(shiftAll), [cost, costLo, costHi] = total(costAll);
@@ -1153,7 +1154,7 @@ function waterfall(parts, total, totalLabel, totalLo, totalHi) {
   const axis = `<div class="axis" style="left:${x(0)}%"></div>`;
   const rng = (a, b) => `<small>${rangeTxt(a, b)}</small>`;
   const band = (l, h, col) => l == null ? "" : `<div class="band" style="left:${x(Math.min(l, h))}%;width:${Math.max(0.8, Math.abs(x(h) - x(l)))}%;background:${col}"></div>`;
-  const colOf = s => ["own", "purl", "sell", "arms"].includes(s.k) ? "var(--back)" : s.v >= 0 ? "var(--ukr)" : "var(--rus)";
+  const colOf = s => ["own", "purl", "sell", "arms", "othsp"].includes(s.k) ? "var(--back)" : s.v >= 0 ? "var(--ukr)" : "var(--rus)";
   const upto = Math.max(2022, state.year);
   return `<div class="wf"><div class="key">${t("Totals for 2022–{y}{ytd}, all years added up. Bar: each part; pale band: its likely range.", { y: upto, ytd: upto === 2026 && FRAC[5] < 1 ? t(" (2026 year to date, Jan–Aug)") : "" })}</div>${parts.map(s => `<div class="wf-row"><span>${s.label}${chip(s.cert)}${ref(s.src)}</span><span class="val">${eur(s.v, true)}${s.lo != null ? rng(s.lo, s.hi) : ""}</span>
       <div class="track">${band(s.lo, s.hi, colOf(s))}${axis}${bar(0, s.v, colOf(s), s.cert === "C" || s.cert === "D" ? 0.75 : 1)}</div></div>`).join("")}

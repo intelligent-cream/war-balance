@@ -956,6 +956,7 @@ def build() -> dict:
     apply_refugees_net(countries, src)
     apply_ua_arms_purchases(countries, src)
     apply_loans_value(countries, src)
+    apply_money_ledger(countries, src)
     apply_russian_arms(countries, src)
     apply_payment_agents(countries, src)
     apply_value_kept(countries, src)
@@ -1698,6 +1699,66 @@ def apply_value_kept(countries: dict[str, dict], src: Sources) -> None:
 
 
 VALUE_KEPT_SRC: list[str] = []
+
+
+def apply_money_ledger(countries: dict[str, dict], src: Sources) -> None:
+    """Where the money for Ukraine was spent (money_ledger.json, round 6): every euro that reached Ukraine (bilateral and
+    EU aid, frozen-asset loans, multilateral and private money, Ukraine's own arms purchases abroad) assigned once to the
+    economy where it was spent, plus purchases that replaced weapons given to Ukraine (up to the value given). Replaces
+    the earlier flowback estimates (own-industry shares, PURL, EU arms slice, arms bought abroad). Gross amounts; calc()
+    counts the value kept x genuinely extra. Stock donations earn nothing unless replaced."""
+    ml = load(GAPS / "money_ledger.json")
+    sid = src.add(
+        "money_ledger",
+        "Where the money for Ukraine was spent: Kiel Ukraine Support Tracker item coding (release 31), CSIS, DSCA notifications, Ukraine's Ministry of Finance, replacement purchases (DoD Inspector General, NAO, government statements)",
+        "https://www.ifw-kiel.de/topics/war-against-ukraine/ukraine-support-tracker/",
+        ml.get("generated"),
+        "each euro assigned once to the economy where it was spent; see research/2026-10/gaps/money_ledger-notes.md",
+    )
+    keys = ("own", "purl_in", "arms", "othsp")
+    for c in countries.values():
+        fb = c.get("flowback")
+        if fb:
+            for k in keys:
+                for suf in ("", "_lo", "_hi"):
+                    fb.pop(k + suf, None)
+    bands = (("", "central"), ("_lo", "low"), ("_hi", "high"))
+    for iso3, d in ml["countries"].items():
+        c = countries.get(iso3)
+        if not c or iso3 == "UKR":
+            continue
+        bst = d.get("by_source_and_type") or {}
+        rep = d.get("replacement_sales_eur_bn") or {}
+        rep_tot = (d.get("replacement_sales_total") or {}).get("central") or 0.0
+        self_share = (
+            ((d.get("replacement_bought_by_seller_total") or {}).get(iso3) or {}).get("central", 0.0) / rep_tot
+            if rep_tot
+            else 0.0
+        )
+        customs = d.get("already_in_customs_trade_eur_bn") or {}
+
+        def ser(names: list[str], y: int, b: str) -> float:
+            return sum((bst.get(n) or {}).get(str(y), {}).get(b, 0.0) for n in names)
+
+        fb = c.setdefault("flowback", {"src": []})
+        for suf, b in bands:
+            own, purl, arms, oth = [0.0], [0.0], [0.0], [0.0]
+            for y in YEARS[1:]:
+                r = (rep.get(str(y)) or {}).get(b, 0.0)
+                own.append(ser(["own_aid|weapons"], y, b) + r * self_share)
+                purl.append(
+                    ser(["other_donors|weapons", "EU|weapons", "ERA|weapons", "private|weapons"], y, b)
+                    + r * (1 - self_share)
+                )
+                arms.append(max(0.0, ser(["UKR_budget|weapons"], y, b) - (customs.get(str(y)) or 0.0)))
+                oth.append(ser([k for k in bst if k.endswith("|other")], y, b))
+            for k, v in (("own", own), ("purl_in", purl), ("arms", arms), ("othsp", oth)):
+                fb[k + suf] = [round(x, 5) for x in v]
+        fb["cert_own"] = d.get("certainty") or "C"
+        fb["arms_cert"] = d.get("certainty") or "C"
+        fb["purl_src"] = fb["arms_src"] = [sid]
+        if sid not in fb.setdefault("src", []):
+            fb["src"].append(sid)
 
 
 def apply_weapons_value(countries: dict[str, dict], src: Sources) -> None:

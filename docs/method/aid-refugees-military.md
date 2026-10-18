@@ -123,6 +123,23 @@ profit: Czechia 5.7bn gross, Bulgaria 5.0, the US 4.1, Türkiye 1.5, Serbia 1.1.
 [`ua_arms_purchases.json`](../../research/2026-10/gaps/ua_arms_purchases.json)
 ([notes](../../research/2026-10/gaps/ua_arms_purchases-notes.md)).
 
+
+### Round 6: the all-money ledger
+
+Flowback now comes from one ledger of all money that reached Ukraine ([`money_ledger.json`](../../research/2026-10/gaps/money_ledger.json),
+[notes](../../research/2026-10/gaps/money_ledger-notes.md)): every one of Kiel's 5,587 allocations plus undisclosed aid,
+IMF/World Bank/EBRD/CEB money, private donations and Ukraine's own budget spent on arms abroad, EUR 437bn in all,
+assigned once to what it paid for and the economy where it was spent. Of the new money, EUR 220bn was spent in Ukraine
+(mostly pensions, social payments and salaries), 71bn in the payer's own economy, 69bn in other economies. Weapons
+given from donors' own stocks (EUR 72bn) are not new spending and earn nothing, unless the donor bought replacements:
+EUR 29bn of explicit replacement purchases, capped at the value given (the US 19.3bn at home, Poland's Abrams, German
+Patriots, the UK's and Sweden's restocking). Each seller's flowback has four parts: its own aid spent at home (with its
+own replacement), other countries' and EU money spent there (with their replacement purchases), Ukraine's own arms
+purchases there, and aid spent there on energy, relief and rebuilding. `apply_money_ledger()` replaces the earlier
+own-industry shares, PURL, EU arms slice and arms-bought-abroad estimates. The money rule then counts the value kept
+× genuinely extra. Example, the US 2022–2026: gave EUR 94bn, earned back 44bn (own aid 30, others' purchases 12), so
+its balance with Ukraine is +50bn.
+
 ## See also
 
 - [overview.md](overview.md): where these parts sit in the net shift and the cost view
