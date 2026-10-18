@@ -28,7 +28,7 @@ Start at the [documentation index](docs/README.md), which explains in plain lang
 - [Method overview](docs/method/overview.md): the core idea and every part of the calculation
 - [Expected without the war](docs/method/counterfactual.md): the models tried, the back-tests and which prediction is used for which flow
 - [Prices and the war-time windfall](docs/method/prices.md) · [Ranges and certainty](docs/method/ranges.md)
-- [Trade](docs/method/trade.md) · [Energy and laundered oil](docs/method/energy-and-laundered-oil.md) · [Services, shipping, company taxes](docs/method/services-shipping-companies.md) · [Aid, refugees, military, flowback](docs/method/aid-refugees-military.md) · [AI-guessed incentives](docs/method/incentives.md)
+- [Trade](docs/method/trade.md) · [Energy and laundered oil](docs/method/energy-and-laundered-oil.md) · [Services, shipping, company taxes](docs/method/services-shipping-companies.md) · [Aid, refugees, military, flowback](docs/method/aid-refugees-military.md)
 - [Pipeline and data.json](docs/reference/pipeline.md) · [Research files](docs/reference/research-files.md) · [Sources](docs/reference/sources.md)
 - [Limitations](docs/limitations.md) · [Changelog](docs/changelog.md)
 

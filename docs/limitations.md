@@ -15,7 +15,6 @@ The map is a research preview. Its figures were compiled with AI assistance from
 | **Aid spent on energy, relief and rebuilding** (round 6 ledger) may partly also appear in customs as extra sales to Ukraine (in-kind goods, energy equipment); only weapons are netted against customs so far. At the money rule's factors the overlap is small (Germany at most about EUR 0.7bn). | donors of in-kind goods | [aid-refugees-military.md](method/aid-refugees-military.md#flowback) |
 | **Remittances for Tajikistan** (about −37% of GDP, range −83% to −10%) rest on World Bank totals and an assumed Russian share (0.88), certainty D; Belarus and Moldova also use an assumed share. | Tajikistan, Belarus, Moldova | [trade.md](method/trade.md#remittances-and-relocants-round-7) |
 | **The no-war gas price** rests on late-2021 futures, which already held the autumn-2021 gas squeeze (partly Gazprom's); a lower path would raise the windfall for gas buyers. | gas buyers | [prices.md](method/prices.md#no-war-prices-round-7) |
-| **The AI-guessed incentive view** is not data. | that view only | [incentives.md](method/incentives.md) |
 
 ## Display issues
 

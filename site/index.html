@@ -427,7 +427,6 @@ body[data-panel="open"] .view-inner { margin-right: 420px; margin-left: 0; }
       <button data-view="rank" aria-pressed="false" data-i18n="Ranking">Ranking</button>
       <button data-view="bubbles" aria-pressed="false" data-i18n="Ukraine vs Russia">Ukraine vs Russia</button>
       <button data-view="table" aria-pressed="false" data-i18n="Table &amp; data">Table &amp; data</button>
-      <button data-view="expect" aria-pressed="false" data-i18n="Above or below expectation">Above or below expectation</button>
       <button data-view="how" aria-pressed="false" data-i18n="How it works">How it works</button>
     </div>
     <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="controls">Options</button>
@@ -1108,7 +1107,7 @@ function route(how) {
   else if (byIso[h.c]) { if (state.panel !== "country" || state.selected !== byIso[h.c].n) select(byIso[h.c].n, true, how); }
   else if (state.panel) closePanel("history");
 }
-const VIEWS = ["map", "rank", "bubbles", "table", "how", "expect"];
+const VIEWS = ["map", "rank", "bubbles", "table", "how"];
 window.addEventListener("popstate", () => {
   // the entry left by closing the panel: keep the view chosen meanwhile in the address
   if (backing) { backing = false; writeHash(false); return; }
