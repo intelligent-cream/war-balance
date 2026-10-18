@@ -1698,11 +1698,33 @@ def apply_shipping(countries: dict[str, dict], src: Sources, note) -> None:
         sh.get("generated"),
         "freight = barrels x freight rates, split by owner or manager country; see research/2026-10/gaps/shipping-notes.md",
     )
+    # freight by the country that really controls each tanker (shadow_fleet.json, round 5): replaces shipping.json's
+    # freight split; Russian-owned tankers behind UAE, Indian and Hong Kong fronts count for nobody abroad
+    sf = load(GAPS / "shadow_fleet.json")
+    src.add(
+        "shadow_fleet",
+        "Tanker control by country: KSE Institute shadow-fleet tracker, Lloyd's List, S&P Global, Kpler and Windward reporting, US/UK/EU sanctions designations",
+        "https://kse.ua/russia-will-pay/",
+        sf.get("generated"),
+        "beneficial owner or commercial controller, not the registered manager; see research/2026-10/gaps/shadow_fleet-notes.md",
+    )
+    for iso3 in sf["countries"]:
+        sh["countries"].setdefault(iso3, {})
     parts = ("freight", "ship_sales", "insurance_finance", "registry")
     for iso3, d in sh["countries"].items():
         c = countries.get(iso3)
         if not c:
             continue
+        f = sf["countries"].get(iso3) or {}
+        fs = f.get("freight_scale_vs_shipping_json") or {}
+        d = {**d, "freight": f.get("freight") or {}, "certainty": f.get("certainty") or d.get("certainty")}
+        # the freight baseline follows the same split; fronts (Seychelles, Marshall Islands) have none
+        d["baseline_2019_2021"] = f.get("baseline_2019_2021") or {}
+        if d.get("insurance_finance") and fs:
+            d["insurance_finance"] = {
+                y: {b: (x * (fs.get(y) or 1.0) if isinstance(x, (int, float)) else x) for b, x in v.items()}
+                for y, v in d["insurance_finance"].items()
+            }
         ov = d.get("overlap_share_with_services_sold_to_rus") or {}
         out = {"years": [0.0] * 6, "years_lo": [0.0] * 6, "years_hi": [0.0] * 6}
         for part in parts:
@@ -1711,13 +1733,8 @@ def apply_shipping(countries: dict[str, dict], src: Sources, note) -> None:
                 o = ov.get(f"{part}_2021_2022" if part == "insurance_finance" and y <= 2022 else part) or {}
                 # the low end leaves out the most overlap, the high end the least; only the profit counts
                 pr = SHIPPING_PROFIT[part]
-                # tankers managed from the UAE, India, China and Hong Kong that belong to Russia's own fleet
-                # (Sovcomflot's chain): their freight stays with Russia, not the manager's country
-                sc = (REFINE["shipping_control"].get(iso3) or {}).get(str(y), {}).get("freight_scale_vs_current_model")
-                if part not in ("freight", "insurance_finance") or not sc:
-                    sc = {"low": 1, "central": 1, "high": 1}
-                # 2026 freight rates after the Hormuz closure: the crude pool is about 13% larger (crude about half)
-                f26 = 1.065 if part == "freight" and y == 2026 else 1.0
+                # Russia's own fleet behind fronts and 2026 freight rates are already inside shadow_fleet.json
+                sc, f26 = {"low": 1, "central": 1, "high": 1}, 1.0
                 out["years"][i] += v.get("central", 0) * (1 - o.get("central", 0)) * pr[1] * sc["central"] * f26
                 out["years_lo"][i] += v.get("low", 0) * (1 - o.get("high", 0)) * pr[0] * sc["low"] * f26
                 out["years_hi"][i] += v.get("high", 0) * (1 - o.get("low", 0)) * pr[2] * sc["high"] * f26
