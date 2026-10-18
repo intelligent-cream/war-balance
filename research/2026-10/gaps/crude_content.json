@@ -1,0 +1,979 @@
+{
+ "generated": "2026-10-18",
+ "definition": "Share of each euro a buyer pays (FOB at the refiner) for fuel exported by a refiner of Russian crude that is paid to Russia for the crude, valuing the crude at the FOB price Russia receives (Urals/ESPO after discount; freight, insurance and trader margins excluded). Central = mean of two methods. A (the requested definition, weight based): crude USD/t x (1/yield) / refiner HS 2710 export unit value USD/t. B (value based): Russian FOB crude USD/bbl / gross product worth per bbl of crude (marker crude Dubai or Brent + Singapore complex refining margin + refiner premium). Low/high = widest of the two methods after varying crude price, Urals/ESPO mix, product price, yield (0.92-0.97) and margin. Ratios apply to the refiner whole export basket; for diesel/jet-only flows see inputs.diesel_only_weight_based.",
+ "refiners": {
+  "IND": {
+   "2021": {
+    "low": 0.81,
+    "central": 0.89,
+    "high": 0.96
+   },
+   "2022": {
+    "low": 0.56,
+    "central": 0.66,
+    "high": 0.75
+   },
+   "2023": {
+    "low": 0.54,
+    "central": 0.64,
+    "high": 0.76
+   },
+   "2024": {
+    "low": 0.67,
+    "central": 0.75,
+    "high": 0.84
+   },
+   "2025": {
+    "low": 0.6,
+    "central": 0.68,
+    "high": 0.81
+   },
+   "2026": {
+    "low": 0.54,
+    "central": 0.64,
+    "high": 0.74
+   }
+  },
+  "CHN": {
+   "2021": {
+    "low": 0.91,
+    "central": 0.95,
+    "high": 0.97
+   },
+   "2022": {
+    "low": 0.63,
+    "central": 0.72,
+    "high": 0.79
+   },
+   "2023": {
+    "low": 0.63,
+    "central": 0.75,
+    "high": 0.86
+   },
+   "2024": {
+    "low": 0.71,
+    "central": 0.82,
+    "high": 0.92
+   },
+   "2025": {
+    "low": 0.64,
+    "central": 0.76,
+    "high": 0.89
+   },
+   "2026": {
+    "low": 0.64,
+    "central": 0.75,
+    "high": 0.84
+   }
+  },
+  "TUR": {
+   "2021": {
+    "low": 0.82,
+    "central": 0.89,
+    "high": 0.95
+   },
+   "2022": {
+    "low": 0.59,
+    "central": 0.67,
+    "high": 0.73
+   },
+   "2023": {
+    "low": 0.58,
+    "central": 0.67,
+    "high": 0.75
+   },
+   "2024": {
+    "low": 0.66,
+    "central": 0.78,
+    "high": 0.87
+   },
+   "2025": {
+    "low": 0.64,
+    "central": 0.71,
+    "high": 0.8
+   },
+   "2026": {
+    "low": 0.58,
+    "central": 0.67,
+    "high": 0.79
+   }
+  },
+  "BRN": {
+   "2021": {
+    "low": 0.79,
+    "central": 0.9,
+    "high": 0.97
+   },
+   "2022": {
+    "low": 0.55,
+    "central": 0.66,
+    "high": 0.76
+   },
+   "2023": {
+    "low": 0.54,
+    "central": 0.63,
+    "high": 0.77
+   },
+   "2024": {
+    "low": 0.66,
+    "central": 0.74,
+    "high": 0.85
+   },
+   "2025": {
+    "low": 0.59,
+    "central": 0.67,
+    "high": 0.82
+   },
+   "2026": {
+    "low": 0.55,
+    "central": 0.63,
+    "high": 0.74
+   }
+  },
+  "other": {
+   "2021": {
+    "low": 0.84,
+    "central": 0.93,
+    "high": 0.97
+   },
+   "2022": {
+    "low": 0.58,
+    "central": 0.69,
+    "high": 0.77
+   },
+   "2023": {
+    "low": 0.58,
+    "central": 0.69,
+    "high": 0.8
+   },
+   "2024": {
+    "low": 0.69,
+    "central": 0.79,
+    "high": 0.88
+   },
+   "2025": {
+    "low": 0.62,
+    "central": 0.72,
+    "high": 0.84
+   },
+   "2026": {
+    "low": 0.58,
+    "central": 0.69,
+    "high": 0.79
+   }
+  }
+ },
+ "inputs": {
+  "per_year": {
+   "2021": {
+    "urals_fob_usd_bbl": {
+     "low": 66.5,
+     "central": 67.7,
+     "high": 69.0,
+     "src": [
+      "crea_price_api",
+      "minfin_urals",
+      "dallasfed_argus",
+      "comtrade_crude_imports"
+     ]
+    },
+    "espo_fob_usd_bbl": {
+     "low": 67.1,
+     "central": 70.1,
+     "high": 73.1,
+     "src": [
+      "crea_price_api",
+      "dallasfed_argus"
+     ]
+    },
+    "minfin_urals_usd_bbl": 69.0,
+    "brent_usd_bbl": 70.9,
+    "dubai_usd_bbl": 69.3,
+    "singapore_complex_grm_usd_bbl": {
+     "central": 2.5,
+     "plus_minus": 2,
+     "src": [
+      "krungsri_grm",
+      "icra_2026",
+      "kiatnakin_2q26"
+     ]
+    },
+    "crea_diesel_usd_t": 673,
+    "product_export_unit_value_usd_t": {
+     "IND": 612,
+     "CHN": 539,
+     "TUR": 590,
+     "BRN": 600,
+     "other": 585
+    },
+    "eur_usd": 1.1827,
+    "note": "BRN 2021: only HS 271019 has a weight (USD 600/t); range widened."
+   },
+   "2022": {
+    "urals_fob_usd_bbl": {
+     "low": 72.0,
+     "central": 77.8,
+     "high": 80.0,
+     "src": [
+      "crea_price_api",
+      "minfin_urals",
+      "dallasfed_argus",
+      "comtrade_crude_imports"
+     ]
+    },
+    "espo_fob_usd_bbl": {
+     "low": 77.5,
+     "central": 81.5,
+     "high": 85.5,
+     "src": [
+      "crea_price_api",
+      "dallasfed_argus"
+     ]
+    },
+    "minfin_urals_usd_bbl": 76.09,
+    "brent_usd_bbl": 99.0,
+    "dubai_usd_bbl": 96.4,
+    "singapore_complex_grm_usd_bbl": {
+     "central": 11.5,
+     "plus_minus": 3,
+     "src": [
+      "krungsri_grm",
+      "icra_2026",
+      "kiatnakin_2q26"
+     ]
+    },
+    "crea_diesel_usd_t": 1041,
+    "product_export_unit_value_usd_t": {
+     "IND": 996,
+     "CHN": 900,
+     "TUR": 930,
+     "BRN": 983,
+     "other": 952
+    },
+    "eur_usd": 1.053
+   },
+   "2023": {
+    "urals_fob_usd_bbl": {
+     "low": 57.0,
+     "central": 60.1,
+     "high": 65.0,
+     "src": [
+      "crea_price_api",
+      "minfin_urals",
+      "dallasfed_argus",
+      "comtrade_crude_imports"
+     ]
+    },
+    "espo_fob_usd_bbl": {
+     "low": 70.9,
+     "central": 73.9,
+     "high": 76.9,
+     "src": [
+      "crea_price_api",
+      "dallasfed_argus"
+     ]
+    },
+    "minfin_urals_usd_bbl": 62.99,
+    "brent_usd_bbl": 82.5,
+    "dubai_usd_bbl": 82.1,
+    "singapore_complex_grm_usd_bbl": {
+     "central": 6.3,
+     "plus_minus": 2,
+     "src": [
+      "krungsri_grm",
+      "icra_2026",
+      "kiatnakin_2q26"
+     ]
+    },
+    "crea_diesel_usd_t": 834,
+    "product_export_unit_value_usd_t": {
+     "IND": 819,
+     "CHN": 770,
+     "TUR": 689,
+     "BRN": 799,
+     "other": 769
+    },
+    "eur_usd": 1.0813
+   },
+   "2024": {
+    "urals_fob_usd_bbl": {
+     "low": 63.0,
+     "central": 65.5,
+     "high": 69.0,
+     "src": [
+      "crea_price_api",
+      "minfin_urals",
+      "dallasfed_argus",
+      "comtrade_crude_imports"
+     ]
+    },
+    "espo_fob_usd_bbl": {
+     "low": 71.7,
+     "central": 74.7,
+     "high": 77.7,
+     "src": [
+      "crea_price_api",
+      "dallasfed_argus"
+     ]
+    },
+    "minfin_urals_usd_bbl": 67.85,
+    "brent_usd_bbl": 80.5,
+    "dubai_usd_bbl": 79.6,
+    "singapore_complex_grm_usd_bbl": {
+     "central": 4.0,
+     "plus_minus": 2,
+     "src": [
+      "krungsri_grm",
+      "icra_2026",
+      "kiatnakin_2q26"
+     ]
+    },
+    "crea_diesel_usd_t": 810,
+    "product_export_unit_value_usd_t": {
+     "IND": 721,
+     "CHN": 719,
+     "TUR": 630,
+     "BRN": 716,
+     "other": 696
+    },
+    "eur_usd": 1.0824
+   },
+   "2025": {
+    "urals_fob_usd_bbl": {
+     "low": 52.0,
+     "central": 54.2,
+     "high": 60.0,
+     "src": [
+      "crea_price_api",
+      "minfin_urals",
+      "dallasfed_argus",
+      "comtrade_crude_imports"
+     ]
+    },
+    "espo_fob_usd_bbl": {
+     "low": 61.9,
+     "central": 64.9,
+     "high": 67.9,
+     "src": [
+      "crea_price_api",
+      "dallasfed_argus"
+     ]
+    },
+    "minfin_urals_usd_bbl": 55.62,
+    "brent_usd_bbl": 69.0,
+    "dubai_usd_bbl": 69.5,
+    "singapore_complex_grm_usd_bbl": {
+     "central": 6.0,
+     "plus_minus": 2.5,
+     "src": [
+      "krungsri_grm",
+      "icra_2026",
+      "kiatnakin_2q26"
+     ]
+    },
+    "crea_diesel_usd_t": 687,
+    "product_export_unit_value_usd_t": {
+     "IND": 673,
+     "CHN": 679,
+     "TUR": 589,
+     "BRN": 661,
+     "other": 650
+    },
+    "eur_usd": 1.13,
+    "note": "Comtrade 2025 annual export values; Dubai and Singapore GRM approximate (ICRA FY25 3.8, FY26 YTD 5.6)."
+   },
+   "2026": {
+    "urals_fob_usd_bbl": {
+     "low": 62.0,
+     "central": 67.3,
+     "high": 72.0,
+     "src": [
+      "crea_price_api",
+      "minfin_urals",
+      "dallasfed_argus",
+      "comtrade_crude_imports"
+     ]
+    },
+    "espo_fob_usd_bbl": {
+     "low": 80.8,
+     "central": 83.8,
+     "high": 86.8,
+     "src": [
+      "crea_price_api",
+      "dallasfed_argus"
+     ]
+    },
+    "minfin_urals_usd_bbl": null,
+    "brent_usd_bbl": 90.4,
+    "dubai_usd_bbl": 90.0,
+    "singapore_complex_grm_usd_bbl": {
+     "central": 13.0,
+     "plus_minus": 5,
+     "src": [
+      "krungsri_grm",
+      "icra_2026",
+      "kiatnakin_2q26"
+     ]
+    },
+    "crea_diesel_usd_t": 901,
+    "product_export_unit_value_usd_t": {
+     "IND": 900,
+     "CHN": 838,
+     "TUR": 740,
+     "BRN": 840,
+     "other": 830
+    },
+    "eur_usd": 1.162,
+    "note": "Jan-Aug. Oil shock from the Strait of Hormuz disruption (Mar-May 2026). India UV = Comtrade Mar-Jul 2026 (USD 1,045/t) scaled to Jan-Aug with CREA diesel; TUR/CHN/BRN = their 2023-25 ratio of UV to CREA diesel x CREA diesel Jan-Aug; Brent from EIA STEO monthly (Jan estimated); Dubai and GRM estimated."
+   }
+  },
+  "per_refiner": {
+   "IND": {
+    "urals_weight": 0.8,
+    "urals_weight_range": [
+     0.65,
+     0.9
+    ],
+    "yield": 0.94,
+    "grm_premium_vs_singapore_usd_bbl": "3 +/- 2",
+    "marker": "Dubai",
+    "note": "Urals dominant; ESPO, Sokol and Arctic grades priced at ESPO level."
+   },
+   "TUR": {
+    "urals_weight": 1.0,
+    "yield": 0.94,
+    "grm_premium_vs_singapore_usd_bbl": "2 +/- 3 (Med margin proxy)",
+    "marker": "Brent",
+    "note": "Urals via Novorossiysk; customs UV is low (fuel oil, naphtha in the mix), so product high = 0.95 x diesel to allow for diesel-heavy STAR exports."
+   },
+   "CHN": {
+    "urals_weight": 0.3,
+    "urals_weight_range": [
+     0.15,
+     0.45
+    ],
+    "yield": 0.94,
+    "grm_premium_vs_singapore_usd_bbl": "0 +/- 2",
+    "marker": "Dubai",
+    "note": "ESPO by pipeline and from Kozmino dominant; export UV includes cheap bonded bunker fuel oil (method A > 1 in 2021)."
+   },
+   "BRN": {
+    "urals_weight": 1.0,
+    "urals_weight_range": [
+     0.7,
+     1.0
+    ],
+    "yield": 0.95,
+    "grm_premium_vs_singapore_usd_bbl": "1 +/- 2",
+    "marker": "Dubai",
+    "note": "Hengyi takes Urals and Arctic (Arco) cargoes; exports are diesel, jet and gasoline."
+   },
+   "other": {
+    "urals_weight": 0.7,
+    "urals_weight_range": [
+     0.5,
+     0.85
+    ],
+    "yield": 0.94,
+    "grm_premium_vs_singapore_usd_bbl": "1 +/- 2.5",
+    "marker": "Dubai",
+    "note": "Product UV = mean of IND/CHN/TUR/BRN, product range widened by 3 points."
+   }
+  },
+  "per_refiner_year_detail": {
+   "IND": {
+    "2021": {
+     "urals_weight_in_russian_crude": 0.8,
+     "russian_crude_fob_usd_bbl": 68.2,
+     "russian_crude_fob_usd_t": 499,
+     "export_unit_value_usd_t": 612,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.868,
+     "gross_product_worth_usd_per_bbl_crude": 74.8,
+     "method_B_value_based": 0.911
+    },
+    "2022": {
+     "urals_weight_in_russian_crude": 0.8,
+     "russian_crude_fob_usd_bbl": 78.5,
+     "russian_crude_fob_usd_t": 575,
+     "export_unit_value_usd_t": 996,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.614,
+     "gross_product_worth_usd_per_bbl_crude": 110.9,
+     "method_B_value_based": 0.708
+    },
+    "2023": {
+     "urals_weight_in_russian_crude": 0.8,
+     "russian_crude_fob_usd_bbl": 62.9,
+     "russian_crude_fob_usd_t": 460,
+     "export_unit_value_usd_t": 819,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.598,
+     "gross_product_worth_usd_per_bbl_crude": 91.4,
+     "method_B_value_based": 0.688
+    },
+    "2024": {
+     "urals_weight_in_russian_crude": 0.8,
+     "russian_crude_fob_usd_bbl": 67.3,
+     "russian_crude_fob_usd_t": 493,
+     "export_unit_value_usd_t": 721,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.728,
+     "gross_product_worth_usd_per_bbl_crude": 86.6,
+     "method_B_value_based": 0.778
+    },
+    "2025": {
+     "urals_weight_in_russian_crude": 0.8,
+     "russian_crude_fob_usd_bbl": 56.3,
+     "russian_crude_fob_usd_t": 413,
+     "export_unit_value_usd_t": 673,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.652,
+     "gross_product_worth_usd_per_bbl_crude": 78.5,
+     "method_B_value_based": 0.718
+    },
+    "2026": {
+     "urals_weight_in_russian_crude": 0.8,
+     "russian_crude_fob_usd_bbl": 70.6,
+     "russian_crude_fob_usd_t": 517,
+     "export_unit_value_usd_t": 900,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.611,
+     "gross_product_worth_usd_per_bbl_crude": 106.0,
+     "method_B_value_based": 0.666
+    }
+   },
+   "CHN": {
+    "2021": {
+     "urals_weight_in_russian_crude": 0.3,
+     "russian_crude_fob_usd_bbl": 69.4,
+     "russian_crude_fob_usd_t": 511,
+     "export_unit_value_usd_t": 539,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 1.009,
+     "gross_product_worth_usd_per_bbl_crude": 71.8,
+     "method_B_value_based": 0.966
+    },
+    "2022": {
+     "urals_weight_in_russian_crude": 0.3,
+     "russian_crude_fob_usd_bbl": 80.4,
+     "russian_crude_fob_usd_t": 593,
+     "export_unit_value_usd_t": 900,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.7,
+     "gross_product_worth_usd_per_bbl_crude": 107.9,
+     "method_B_value_based": 0.745
+    },
+    "2023": {
+     "urals_weight_in_russian_crude": 0.3,
+     "russian_crude_fob_usd_bbl": 69.8,
+     "russian_crude_fob_usd_t": 514,
+     "export_unit_value_usd_t": 770,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.711,
+     "gross_product_worth_usd_per_bbl_crude": 88.4,
+     "method_B_value_based": 0.789
+    },
+    "2024": {
+     "urals_weight_in_russian_crude": 0.3,
+     "russian_crude_fob_usd_bbl": 71.9,
+     "russian_crude_fob_usd_t": 530,
+     "export_unit_value_usd_t": 719,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.785,
+     "gross_product_worth_usd_per_bbl_crude": 83.6,
+     "method_B_value_based": 0.861
+    },
+    "2025": {
+     "urals_weight_in_russian_crude": 0.3,
+     "russian_crude_fob_usd_bbl": 61.7,
+     "russian_crude_fob_usd_t": 455,
+     "export_unit_value_usd_t": 679,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.713,
+     "gross_product_worth_usd_per_bbl_crude": 75.5,
+     "method_B_value_based": 0.817
+    },
+    "2026": {
+     "urals_weight_in_russian_crude": 0.3,
+     "russian_crude_fob_usd_bbl": 78.8,
+     "russian_crude_fob_usd_t": 581,
+     "export_unit_value_usd_t": 838,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.738,
+     "gross_product_worth_usd_per_bbl_crude": 103.0,
+     "method_B_value_based": 0.766
+    }
+   },
+   "TUR": {
+    "2021": {
+     "urals_weight_in_russian_crude": 1.0,
+     "russian_crude_fob_usd_bbl": 67.7,
+     "russian_crude_fob_usd_t": 494,
+     "export_unit_value_usd_t": 590,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.891,
+     "gross_product_worth_usd_per_bbl_crude": 75.4,
+     "method_B_value_based": 0.898
+    },
+    "2022": {
+     "urals_weight_in_russian_crude": 1.0,
+     "russian_crude_fob_usd_bbl": 77.8,
+     "russian_crude_fob_usd_t": 568,
+     "export_unit_value_usd_t": 930,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.65,
+     "gross_product_worth_usd_per_bbl_crude": 112.5,
+     "method_B_value_based": 0.692
+    },
+    "2023": {
+     "urals_weight_in_russian_crude": 1.0,
+     "russian_crude_fob_usd_bbl": 60.1,
+     "russian_crude_fob_usd_t": 439,
+     "export_unit_value_usd_t": 689,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.677,
+     "gross_product_worth_usd_per_bbl_crude": 90.8,
+     "method_B_value_based": 0.662
+    },
+    "2024": {
+     "urals_weight_in_russian_crude": 1.0,
+     "russian_crude_fob_usd_bbl": 65.5,
+     "russian_crude_fob_usd_t": 478,
+     "export_unit_value_usd_t": 630,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.807,
+     "gross_product_worth_usd_per_bbl_crude": 86.5,
+     "method_B_value_based": 0.757
+    },
+    "2025": {
+     "urals_weight_in_russian_crude": 1.0,
+     "russian_crude_fob_usd_bbl": 54.2,
+     "russian_crude_fob_usd_t": 396,
+     "export_unit_value_usd_t": 589,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.715,
+     "gross_product_worth_usd_per_bbl_crude": 77.0,
+     "method_B_value_based": 0.704
+    },
+    "2026": {
+     "urals_weight_in_russian_crude": 1.0,
+     "russian_crude_fob_usd_bbl": 67.3,
+     "russian_crude_fob_usd_t": 491,
+     "export_unit_value_usd_t": 740,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.706,
+     "gross_product_worth_usd_per_bbl_crude": 105.4,
+     "method_B_value_based": 0.639
+    }
+   },
+   "BRN": {
+    "2021": {
+     "urals_weight_in_russian_crude": 1.0,
+     "russian_crude_fob_usd_bbl": 67.7,
+     "russian_crude_fob_usd_t": 494,
+     "export_unit_value_usd_t": 600,
+     "yield_t_product_per_t_crude": 0.95,
+     "method_A_weight_based": 0.867,
+     "gross_product_worth_usd_per_bbl_crude": 72.8,
+     "method_B_value_based": 0.93
+    },
+    "2022": {
+     "urals_weight_in_russian_crude": 1.0,
+     "russian_crude_fob_usd_bbl": 77.8,
+     "russian_crude_fob_usd_t": 568,
+     "export_unit_value_usd_t": 983,
+     "yield_t_product_per_t_crude": 0.95,
+     "method_A_weight_based": 0.608,
+     "gross_product_worth_usd_per_bbl_crude": 108.9,
+     "method_B_value_based": 0.714
+    },
+    "2023": {
+     "urals_weight_in_russian_crude": 1.0,
+     "russian_crude_fob_usd_bbl": 60.1,
+     "russian_crude_fob_usd_t": 439,
+     "export_unit_value_usd_t": 799,
+     "yield_t_product_per_t_crude": 0.95,
+     "method_A_weight_based": 0.578,
+     "gross_product_worth_usd_per_bbl_crude": 89.4,
+     "method_B_value_based": 0.672
+    },
+    "2024": {
+     "urals_weight_in_russian_crude": 1.0,
+     "russian_crude_fob_usd_bbl": 65.5,
+     "russian_crude_fob_usd_t": 478,
+     "export_unit_value_usd_t": 716,
+     "yield_t_product_per_t_crude": 0.95,
+     "method_A_weight_based": 0.703,
+     "gross_product_worth_usd_per_bbl_crude": 84.6,
+     "method_B_value_based": 0.774
+    },
+    "2025": {
+     "urals_weight_in_russian_crude": 1.0,
+     "russian_crude_fob_usd_bbl": 54.2,
+     "russian_crude_fob_usd_t": 396,
+     "export_unit_value_usd_t": 661,
+     "yield_t_product_per_t_crude": 0.95,
+     "method_A_weight_based": 0.63,
+     "gross_product_worth_usd_per_bbl_crude": 76.5,
+     "method_B_value_based": 0.708
+    },
+    "2026": {
+     "urals_weight_in_russian_crude": 1.0,
+     "russian_crude_fob_usd_bbl": 67.3,
+     "russian_crude_fob_usd_t": 491,
+     "export_unit_value_usd_t": 840,
+     "yield_t_product_per_t_crude": 0.95,
+     "method_A_weight_based": 0.616,
+     "gross_product_worth_usd_per_bbl_crude": 104.0,
+     "method_B_value_based": 0.647
+    }
+   },
+   "other": {
+    "2021": {
+     "urals_weight_in_russian_crude": 0.7,
+     "russian_crude_fob_usd_bbl": 68.4,
+     "russian_crude_fob_usd_t": 502,
+     "export_unit_value_usd_t": 585,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.912,
+     "gross_product_worth_usd_per_bbl_crude": 72.8,
+     "method_B_value_based": 0.94
+    },
+    "2022": {
+     "urals_weight_in_russian_crude": 0.7,
+     "russian_crude_fob_usd_bbl": 78.9,
+     "russian_crude_fob_usd_t": 578,
+     "export_unit_value_usd_t": 952,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.646,
+     "gross_product_worth_usd_per_bbl_crude": 108.9,
+     "method_B_value_based": 0.725
+    },
+    "2023": {
+     "urals_weight_in_russian_crude": 0.7,
+     "russian_crude_fob_usd_bbl": 64.2,
+     "russian_crude_fob_usd_t": 471,
+     "export_unit_value_usd_t": 769,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.652,
+     "gross_product_worth_usd_per_bbl_crude": 89.4,
+     "method_B_value_based": 0.719
+    },
+    "2024": {
+     "urals_weight_in_russian_crude": 0.7,
+     "russian_crude_fob_usd_bbl": 68.3,
+     "russian_crude_fob_usd_t": 501,
+     "export_unit_value_usd_t": 696,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.765,
+     "gross_product_worth_usd_per_bbl_crude": 84.6,
+     "method_B_value_based": 0.807
+    },
+    "2025": {
+     "urals_weight_in_russian_crude": 0.7,
+     "russian_crude_fob_usd_bbl": 57.4,
+     "russian_crude_fob_usd_t": 421,
+     "export_unit_value_usd_t": 650,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.689,
+     "gross_product_worth_usd_per_bbl_crude": 76.5,
+     "method_B_value_based": 0.75
+    },
+    "2026": {
+     "urals_weight_in_russian_crude": 0.7,
+     "russian_crude_fob_usd_bbl": 72.2,
+     "russian_crude_fob_usd_t": 530,
+     "export_unit_value_usd_t": 830,
+     "yield_t_product_per_t_crude": 0.94,
+     "method_A_weight_based": 0.679,
+     "gross_product_worth_usd_per_bbl_crude": 104.0,
+     "method_B_value_based": 0.695
+    }
+   }
+  },
+  "diesel_only_weight_based": {
+   "2021": {
+    "IND": 0.79,
+    "TUR": 0.78,
+    "CHN": 0.81,
+    "BRN": 0.78,
+    "other": 0.79
+   },
+   "2022": {
+    "IND": 0.59,
+    "TUR": 0.58,
+    "CHN": 0.61,
+    "BRN": 0.58,
+    "other": 0.59
+   },
+   "2023": {
+    "IND": 0.59,
+    "TUR": 0.56,
+    "CHN": 0.66,
+    "BRN": 0.56,
+    "other": 0.6
+   },
+   "2024": {
+    "IND": 0.65,
+    "TUR": 0.63,
+    "CHN": 0.7,
+    "BRN": 0.63,
+    "other": 0.66
+   },
+   "2025": {
+    "IND": 0.64,
+    "TUR": 0.61,
+    "CHN": 0.7,
+    "BRN": 0.61,
+    "other": 0.65
+   },
+   "2026": {
+    "IND": 0.61,
+    "TUR": 0.58,
+    "CHN": 0.69,
+    "BRN": 0.58,
+    "other": 0.63
+   }
+  },
+  "crea_style_check_urals_over_diesel_per_tonne": {
+   "2021": 0.729,
+   "2022": 0.542,
+   "2023": 0.522,
+   "2024": 0.586,
+   "2025": 0.572,
+   "2026": 0.542
+  },
+  "conversions": {
+   "crude_urals_bbl_per_t": 7.3,
+   "espo_bbl_per_t": 7.4,
+   "diesel_bbl_per_t": 7.45,
+   "gasoline_bbl_per_t": 8.5,
+   "jet_bbl_per_t": 7.9,
+   "fuel_oil_bbl_per_t": 6.35,
+   "note": "CREA diesel USD/t is used as published (CREA converts at about 7.25 bbl/t)."
+  },
+  "cross_checks": {
+   "crea_feb2024": "EUR 4.2bn crude in EUR 8.5bn products, Dec 2022-Dec 2023 = 0.494. Reproduced as Urals FOB / CREA diesel per tonne with no yield loss (0.52 for 2023). The gap to our 0.64 (IND 2023) = yield loss (x1.06), Indian crude mix incl. ESPO/Sokol (x1.05) and a cheaper export basket than diesel (x1.02-1.10).",
+   "india_customs_crude_from_russia_cif_usd_bbl": {
+    "2021": 69.4,
+    "2022": 94.1,
+    "2023": 74.6,
+    "2024": 78.2,
+    "2025": 69.8,
+    "note": "CIF minus freight of USD 8-18/bbl gives FOB about 60-76, at or above CREA Urals; used for the high crude case."
+   },
+   "china_customs_crude_from_russia_cif_usd_bbl": {
+    "2021": 69.5,
+    "2022": 92.3,
+    "2023": 83.2,
+    "2024": 78.7
+   },
+   "ppac_india_product_exports": {
+    "FY2021-22": "62.8 MMT, USD 44.4bn = USD 707/t",
+    "FY2022-23": "61.0 MMT, USD 57.3bn = USD 939/t"
+   },
+   "global_witness_2023": "390m bbl of Russian crude at 7 refineries valued about EUR 23bn = EUR 59/bbl (about USD 64/bbl), consistent with our India 2023 crude price of USD 62.9/bbl.",
+   "project_constant": "0.42/0.50/0.60 is below every post-war central here (0.63-0.82). It matches a diesel-only, no-yield-loss calculation, not a whole export basket."
+  }
+ },
+ "sources": [
+  {
+   "id": "crea_price_api",
+   "title": "CREA Russia Fossil Tracker, modelled Russian export prices (crude_oil_urals, crude_oil_espo, kpler_diesel, kpler_jet, kpler_gasoline, kpler_fo), daily 2021-Sep 2026",
+   "url": "https://api.russiafossiltracker.com/v0/price?date_from=2021-01-01&date_to=2026-09-30&format=csv",
+   "note": "Downloaded 2026-10-18; annual means of daily values. Urals FOB 67.7/77.8/60.1/65.5/54.2/67.3, ESPO 70.1/81.5/73.9/74.7/64.9/83.8 USD/bbl (2021-2026 Jan-Aug)."
+  },
+  {
+   "id": "minfin_urals",
+   "title": "Russian Finance Ministry Urals averages (via fomag.ru/Interfax, TASS, ldaily.ua; collected in energy2.json)",
+   "url": "https://tass.com/economy/1730001",
+   "note": "2021 69.0, 2022 76.09, 2023 62.99, 2024 67.85, 2025 55.62. Before 2023 based on CIF Med/Rotterdam quotes, so above FOB in 2022."
+  },
+  {
+   "id": "dallasfed_argus",
+   "title": "Dallas Fed Working Paper 2401 (rev. Jan 2025), The Impact of the 2022 Oil Embargo and Price Cap on Russian Oil Prices",
+   "url": "https://www.dallasfed.org/~/media/documents/research/papers/2024/wp2401r1.pdf",
+   "note": "Argus Urals FOB Primorsk 84.71 (Jan 2022), 44.46 (Mar 2023); ESPO FOB Kozmino 84.99, 67.53; Urals FOB discount USD 20-35 for most of 2022-early 2023."
+  },
+  {
+   "id": "comtrade_exports",
+   "title": "UN Comtrade public API, HS 2710 exports to world, India/China/Turkey/Brunei, annual 2021-2025 and India monthly Mar-Jul 2026",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2023&partnerCode=0&flowCode=X&cmdCode=2710",
+   "note": "Unit values USD/t: IND 612/996/819/721/673; CHN 539/900/770/719/679; TUR 590/930/689/630/589; BRN -/983/799/716/661 (2021 HS271019 600). India Mar-Jul 2026 1,045."
+  },
+  {
+   "id": "comtrade_crude_imports",
+   "title": "UN Comtrade public API, HS 2709 imports from Russia, India and China",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2023&partnerCode=643&flowCode=M&cmdCode=2709",
+   "note": "CIF unit values, used only as a check on the FOB level."
+  },
+  {
+   "id": "ppac_nov2023",
+   "title": "PPAC Snapshot of India's Oil & Gas data, November 2023",
+   "url": "https://ppac.gov.in/uploads/whatsnew/1702638638_MRR_November%202023.pdf",
+   "note": "POL exports FY22 62.8 MMT / USD 44.4bn; FY23 61.0 MMT / USD 57.3bn; crude imports FY23 232.7 MMT / USD 157.5bn."
+  },
+  {
+   "id": "crea_feb2024",
+   "title": "CREA, Refining loophole widens (Feb 2024, rev. Apr 2024)",
+   "url": "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf",
+   "note": "EUR 8.5bn products from Russian crude containing EUR 4.2bn crude, Dec 2022-Dec 2023 (basis of the current 0.42/0.50/0.60)."
+  },
+  {
+   "id": "crea_apr2026",
+   "title": "CREA, April 2026 monthly analysis of Russian fossil fuel exports and sanctions",
+   "url": "https://energyandcleanair.org/april-2026-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/",
+   "note": "Urals USD 112.3/bbl in April (delivered-type, FOB still discounted); MET estimate on USD 93/bbl; 64% of STAR and 14% of Jamnagar feedstock Russian; EUR 232m of EUR 760m products to sanctioning countries refined from Russian crude."
+  },
+  {
+   "id": "crea_dec2025",
+   "title": "CREA, December 2025 monthly analysis",
+   "url": "https://energyandcleanair.org/december-2025-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/",
+   "note": "EUR 274m of EUR 943m products (India, Turkey, Brunei refineries to sanctioning countries) refined from Russian crude. This is a product share, not crude content."
+  },
+  {
+   "id": "global_witness_2023",
+   "title": "Global Witness, EU purchases of laundered Russian oil worth an estimated EUR 1.1 billion to the Kremlin in 2023",
+   "url": "https://globalwitness.org/en/campaigns/fossil-fuels/eu-purchases-of-laundered-russian-oil-worth-an-estimated-11-billion-to-the-kremlin-in-2023/",
+   "note": "390m bbl Russian crude at 7 refineries, about EUR 23bn; Vadinar 57% Russian."
+  },
+  {
+   "id": "reuters_brunei",
+   "title": "Reuters via Baird Maritime, Russia to send first oil shipment to Brunei via Arctic passage",
+   "url": "https://www.bairdmaritime.com/amp/story/shipping/tankers/russia-to-send-first-oil-shipment-to-brunei-via-arctic-passage",
+   "note": "Arco cargo to Hengyi; first Urals cargo to Hengyi in 2023."
+  },
+  {
+   "id": "eia_steo_2026",
+   "title": "EIA Short-Term Energy Outlook, May/Sep/Oct 2026",
+   "url": "https://www.eia.gov/outlooks/steo/archives/sep26.pdf",
+   "note": "Brent Mar 103, Apr 117, May ~107, Jun ~85, Jul ~84, Aug 91 USD/bbl; Jan-Feb about 65 and 71 (estimated)."
+  },
+  {
+   "id": "krungsri_grm",
+   "title": "Krungsri Research, Industry Outlook 2025-2027: Refinery",
+   "url": "https://www.krungsri.com/en/research/industry/industry-outlook/energy-utilities/refinery/io/industry-outlook-refinery-2025-2027",
+   "note": "Singapore GRM 2022 about 11.3-12.2, 2023 6.3, 9M2024 4.8 USD/bbl (via search snippet)."
+  },
+  {
+   "id": "icra_2026",
+   "title": "ICRA, Refining and Marketing Industry, March 2026",
+   "url": "https://www.icra.in/Rating/DownloadResearchSummaryReport?id=6843",
+   "note": "Singapore GRM about 3.8 (FY2025) and 5.6 (FY2026 YTD) USD/bbl; Hormuz disruption."
+  },
+  {
+   "id": "kiatnakin_2q26",
+   "title": "Kaohoon International, Kiatnakin upgrades Thai refinery outlook",
+   "url": "https://www.kaohooninternational.com/markets/589557",
+   "note": "Singapore GRM USD 24.7/bbl in 2Q26; 2026 forecast 19.6."
+  },
+  {
+   "id": "ecb_fx",
+   "title": "ECB annual EUR/USD reference rates (as used in companies_all.json); 2026 = CREA-implied Jan-Aug",
+   "url": "https://data.ecb.europa.eu/data/datasets/EXR/EXR.A.USD.EUR.SP00.A",
+   "note": "1.1827, 1.053, 1.0813, 1.0824, 1.13, ~1.162 (2026 estimate). Ratios are unit-free, so FX does not change them."
+  }
+ ],
+ "certainty": "C: prices and customs unit values are published, but the two valid ways to split crude cost between joint products differ by 0.03-0.08, and 2026, Brunei, the margins and the \"other\" basket are estimated."
+}

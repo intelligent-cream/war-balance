@@ -48,7 +48,43 @@ HUB_RESALE = {hub: (d["low"], d["central"], d["high"]) for hub, d in E2["hub_res
 EUR_PER_MT_2021 = {"crude": 0.414, "products": 0.549, "gas": 0.583, "lng": 0.583, "coal": 0.130}
 FUEL_INDEX = {"crude": "urals", "products": "products", "gas": "pipeline_gas", "lng": "lng", "coal": "coal"}
 # ... and only the Russian crude inside the fuel is money for Russia, bought at a discount (low, middle, high share)
-CRUDE_CONTENT = (0.42, 0.5, 0.6)  # Russian crude per euro of fuel made from it (CREA: 4.2 of 8.5bn; laundered_eu.json)
+# Russian crude per euro of fuel made from it, per refiner and year (round 9, crude_content.json): the price Russia was paid
+# for the crude (FOB, after the discount) x tonnes of crude per tonne of fuel / the refiner's fuel export price. The buyer
+# whose demand creates the sale is charged this part; the rest of the fuel price stays with the refiner
+_CC = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/crude_content.json").read_text())
+CRUDE_K = {r: {int(y): (v["low"], v["central"], v["high"]) for y, v in by.items()} for r, by in _CC["refiners"].items()}
+
+
+def _refiner_exports() -> dict[str, dict[int, float]]:
+    """Fuel made from Russian crude that each refiner exported (EUR bn, central): the weights of the blended ratio."""
+    gaps = Path(__file__).resolve().parent.parent / "research/2026-10/gaps"
+    hb = json.loads((gaps / "hub_buyers.json").read_text())
+    china = json.loads((gaps / "round4a.json").read_text())["china_refining"]["exported_crude_value"]
+    pv = lambda by: {int(y): (v.get("exported_product_value_eur_bn") or {}).get("central", 0.0) for y, v in by.items()}  # noqa: E731
+    return {
+        "TUR": pv(hb["turkey_refining"]["by_year"]),
+        "IND": pv(hb["india_refining"]),
+        "CHN": {int(y): v.get("central", 0.0) / 0.70 for y, v in china.items()},
+    }
+
+
+REFINER_EXPORTS = _refiner_exports()
+
+
+def crude_k(year: int, refiner: str | None = None) -> tuple[float, float, float]:
+    """(low, central, high) crude per euro of fuel. Without a refiner: the refiners' average weighted by their fuel
+    exports, for fuel whose refiner is not known once trading hubs have mixed it (2021: the 2022 weights)."""
+    if refiner:
+        return CRUDE_K.get(refiner, CRUDE_K["other"])[year]
+    w = {r: by.get(year) or by.get(2022, 0.0) for r, by in REFINER_EXPORTS.items()}
+    tot = sum(w.values()) or 1
+    return tuple(sum(CRUDE_K[r][year][i] * x for r, x in w.items()) / tot for i in range(3))  # type: ignore[return-value]
+
+
+# the crude ratio the round-5 EU research used (laundered_eu.json k, central; low x0.88, high x1.12; pre-war about 0.70)
+EU_K_OLD = {2021: 0.70, 2022: 0.47, 2023: 0.494, 2024: 0.60, 2025: 0.56, 2026: 0.415}
+# and the single ratio the round-6 Brunei research used (laundered_r6.json), low, central, high
+R6_K_OLD = (0.42, 0.5, 0.6)
 # laundered oil can not exceed what an economy can use: capped at a share of GDP per year (middle, high); the fuel model
 # otherwise assigns fuel to ship registries and storage points (Marshall Islands, Liberia)
 LAUNDERED_CAP = (0.01, 0.02)
@@ -600,23 +636,25 @@ def build() -> dict:
     # refiners: the Russian crude in the fuel Turkey and India export is counted at the buyers (laundered oil),
     # so it is taken out of the refiner's own payments to Russia; they keep what they use themselves
     hb = load(GAPS / "hub_buyers.json")
-    # what is taken off the refiner must equal what its buyers are charged: the exported fuel x CRUDE_CONTENT, the same
-    # ratio reassign_laundered_oil() uses (round 5 review: the measured crude values, about 0.67 of the fuel, left
-    # EUR 14bn uncounted after CRUDE_CONTENT was lowered to 0.5)
+    # what is taken off the refiner must equal what its buyers are charged: the exported fuel x the refiner's own crude
+    # ratio for that year (crude_k), which the buyers' blended ratio averages (round 5 review: different ratios on the two
+    # sides had left EUR 14bn uncounted)
     bands = {"low": 0, "central": 1, "high": 2}
 
-    def as_crude(by_year: dict, key: str, scale: float = 1.0) -> dict:
+    def as_crude(by_year: dict, key: str, ref: str) -> dict:
         return {
-            y: {b: (v.get(key) or {}).get(b, 0.0) * CRUDE_CONTENT[i] * scale for b, i in bands.items()}
+            y: {b: (v.get(key) or {}).get(b, 0.0) * crude_k(int(y), ref)[i] for b, i in bands.items()}
             for y, v in by_year.items()
         }
 
     china = load(GAPS / "round4a.json")["china_refining"]["exported_crude_value"]
     exported = {
-        "TUR": as_crude(hb["turkey_refining"]["by_year"], "exported_product_value_eur_bn"),
-        "IND": as_crude(hb["india_refining"], "exported_product_value_eur_bn"),
+        "TUR": as_crude(hb["turkey_refining"]["by_year"], "exported_product_value_eur_bn", "TUR"),
+        "IND": as_crude(hb["india_refining"], "exported_product_value_eur_bn", "IND"),
         # China reports crude values only: fuel = crude / 0.70 (India's measured crude-to-fuel ratio, 2022-2026)
-        "CHN": {y: {b: v.get(b, 0.0) / 0.70 * CRUDE_CONTENT[i] for b, i in bands.items()} for y, v in china.items()},
+        "CHN": {
+            y: {b: v.get(b, 0.0) / 0.70 * crude_k(int(y), "CHN")[i] for b, i in bands.items()} for y, v in china.items()
+        },
     }
     rid = src.add(
         "refining",
@@ -2246,6 +2284,10 @@ def apply_laundered_r6(countries: dict[str, dict], src: Sources) -> None:
         if not c or not add:
             continue
         get = lambda by, y, b: (by.get(str(y)) or {}).get(b, 0.0)  # noqa: E731
+        # Brunei's fuel at Hengyi's own crude ratio per year; Australia's other fuel at the measured blended ratio
+        nb = (d.get("replacement_for_laundered_eu_non_eu_AUS") or {}).get("non_brunei_part") or {}
+        fix = lambda y, b: r6_brunei_change(d, y, b) + get(nb, y, b) * (eu_k_factor(y, b) - 1)  # noqa: E731
+        add = {str(y): {b: get(add, y, b) + fix(y, b) for b in ("low", "central", "high")} for y in YEARS}
         if iso3 in ("TUR", "BRN"):
             # passed on: out of the hub's own payments to Russia
             tr = c.get("to_rus")
@@ -2262,6 +2304,8 @@ def apply_laundered_r6(countries: dict[str, dict], src: Sources) -> None:
             continue
         lb = c.setdefault("laund", {"years": [0.0] * 6, "years_lo": [0.0] * 6, "years_hi": [0.0] * 6, "base": 0.0, "base_range": [0.0, 0.0], "cert": "C", "src": []})  # fmt: skip
         repl = (d.get("replacement_for_laundered_eu_non_eu_AUS") or {}).get("new_total")
+        if repl:
+            repl = {str(y): {b: get(repl, y, b) + fix(y, b) for b in ("low", "central", "high")} for y in YEARS}
         for k, b in keys:
             lb[k] = [round(get(repl, y, b) if repl else lb[k][i] + get(add, y, b), 5) for i, y in enumerate(YEARS)]
         trip = [sorted(t) for t in zip(lb["years_lo"], lb["years"], lb["years_hi"])]
@@ -2276,6 +2320,19 @@ def apply_laundered_r6(countries: dict[str, dict], src: Sources) -> None:
             ]
         if sid not in lb.setdefault("src", []):
             lb["src"].append(sid)
+
+
+def eu_k_factor(year: int, band: str) -> float:
+    """From the crude ratio laundered_eu.json used (EU_K_OLD) to the measured one (crude_k, refiners blended)."""
+    i = ("low", "central", "high").index(band)
+    return crude_k(year)[i] / (EU_K_OLD[year] * (0.88, 1.0, 1.12)[i])
+
+
+def r6_brunei_change(d: dict, y: int, b: str) -> float:
+    """Change to a buyer's Brunei channel: its fuel from Hengyi x (Hengyi's measured ratio - the round-6 ratio)."""
+    fuel = ((d.get("brunei") or {}).get("fuel_value_russian_derived_eur_bn") or {}).get(str(y)) or {}
+    i = ("low", "central", "high").index(b)
+    return fuel.get(b, 0.0) * (crude_k(y, "BRN")[i] - R6_K_OLD[i])
 
 
 def apply_laundered_eu(countries: dict[str, dict], src: Sources) -> None:
@@ -2303,9 +2360,13 @@ def apply_laundered_eu(countries: dict[str, dict], src: Sources) -> None:
             continue
         lb = c.setdefault("laund", {"base": 0.0, "base_range": [0.0, 0.0], "src": []})
         for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
-            lb[k] = [round(ys[str(y)][b], 5) for y in YEARS]
+            lb[k] = [round(ys[str(y)][b] * eu_k_factor(y, b), 5) for y in YEARS]
         if base:
-            lb["base"], lb["base_range"] = base["central"], [base["low"], base["high"]]
+            lb["base"] = round(base["central"] * eu_k_factor(2021, "central"), 5)
+            lb["base_range"] = [
+                round(base["low"] * eu_k_factor(2021, "low"), 5),
+                round(base["high"] * eu_k_factor(2021, "high"), 5),
+            ]
         lb["cert"] = (cert or "C")[0]
         lb["src"] = [sid]
 
@@ -2369,7 +2430,7 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
         "Laundered oil: fuel made from Russian crude, assigned to the final buyer (trading hubs pass on what they resell), valued at the Russian crude inside it",
         "https://www.russiafossiltracker.com/methodology/",
         "2026-10",
-        "hub resale shares are estimates; hub customers from UN Comtrade HS 2710 exports 2024; crude content 42-60% of the fuel value (CREA)",
+        "hub resale shares are estimates; hub customers from UN Comtrade HS 2710 exports 2024; crude share of the fuel value per refiner and year (crude_content.json)",
     )
     for iso3, t in totals.items():
         tr = (countries.get(iso3) or {}).get("to_rus")
@@ -2378,12 +2439,11 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
         gdp = countries[iso3].get("gdp") or 0
         cap_mid = [gdp * LAUNDERED_CAP[0] * f for f in FRAC] if gdp else [float("inf")] * 6
         cap_hi = [gdp * LAUNDERED_CAP[1] * f for f in FRAC] if gdp else [float("inf")] * 6
-        mid = [min(v * CRUDE_CONTENT[1], m) for v, m in zip(t["years"], cap_mid)]
+        ks = [crude_k(y) for y in YEARS]
+        mid = [min(v * k[1], m) for v, k, m in zip(t["years"], ks, cap_mid)]
         tr["laundered"] = [round(v, 5) for v in mid]
-        tr["laundered_lo"] = [round(min(v * CRUDE_CONTENT[0], m), 5) for v, m in zip(t["years_lo"], mid)]
-        tr["laundered_hi"] = [
-            round(max(min(v * CRUDE_CONTENT[2], h), m), 5) for v, h, m in zip(t["years_hi"], cap_hi, mid)
-        ]
+        tr["laundered_lo"] = [round(min(v * k[0], m), 5) for v, k, m in zip(t["years_lo"], ks, mid)]
+        tr["laundered_hi"] = [round(max(min(v * k[2], h), m), 5) for v, k, h, m in zip(t["years_hi"], ks, cap_hi, mid)]
         tr["laundered_src"] = [lid]
         # some fuel refined from Russian crude reached buyers before the war too: only the rise above that level, and
         # its pre-war growth, counts (round4a.json; same crude-content factor and EU correction as the yearly values)
@@ -2391,11 +2451,10 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
         lb = {"years": tr["laundered"], "years_lo": tr["laundered_lo"], "years_hi": tr["laundered_hi"], "base": 0.0, "base_range": [0.0, 0.0], "cert": "C", "src": [lid]}  # fmt: skip
         if prewar.get(iso3) and prewar[iso3][0] > 0:
             mid_b, lo, hi = prewar[iso3][0], *sorted(prewar[iso3][1:])
-            lb["base"] = round(mid_b * CRUDE_CONTENT[1], 5)
-            lb["base_range"] = [
-                round(min(lo * CRUDE_CONTENT[0], lb["base"]), 5),
-                round(max(hi * CRUDE_CONTENT[2], lb["base"]), 5),
-            ]
+            # before the war: the 2021 ratio (no discount yet)
+            k21 = crude_k(2021)
+            lb["base"] = round(mid_b * k21[1], 5)
+            lb["base_range"] = [round(min(lo * k21[0], lb["base"]), 5), round(max(hi * k21[2], lb["base"]), 5)]
             # growth from the 2018-2021 midpoint; the range always includes no growth
             g = pw.get("g") or {"low": 0, "central": 0, "high": 0}
             lb["bmul"] = [1.0] + [round((1 + g["central"]) ** (y - 2019.5), 4) for y in YEARS[1:]]
@@ -2555,6 +2614,16 @@ def apply_brunei_r6(countries: dict[str, dict]) -> None:
         return
     ref = load(GAPS / "laundered_r6.json")["countries"]["BRN"]["refiner"]
     cus, res = ref["customs_russian_imports_now_in_model_eur_bn"], ref["option_b_residual_kept_by_brunei_eur_bn"]
+    # the residual is the true crude intake minus the crude passed on to buyers: at Hengyi's measured ratio (round 9)
+    # instead of the round-6 one, a different amount is passed on
+    ded = ref["deduct_exported_crude_value_eur_bn"]
+    res = {
+        y: {
+            b: max(0.0, v[b] + ded[y][b] * (1 - crude_k(int(y), "BRN")[i] / R6_K_OLD[i]))
+            for i, b in enumerate(("low", "central", "high"))
+        }
+        for y, v in res.items()
+    }
     for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
         tr[k] = [
             round(max(0.0, v - cus.get(str(y), 0.0)) + (res.get(str(y)) or {}).get(b, 0.0), 5)
