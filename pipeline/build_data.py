@@ -1037,6 +1037,7 @@ def build() -> dict:
     apply_money_ledger(countries, src)
     apply_russian_arms(countries, src)
     apply_payment_agents(countries, src)
+    apply_frozen_reserves(countries, src)
     apply_value_kept(countries, src)
     apply_audit2(countries, src, "trends")
     for c in countries.values():
@@ -1807,6 +1808,61 @@ def apply_payment_agents(countries: dict[str, dict], src: Sources) -> None:
             out,
             (d.get("certainty") or "D")[0],
             sid,
+        )
+
+
+# Belgian corporate tax on Euroclear's Russian-asset income, pledged to Ukraine and so already in Belgium's aid
+# (frozen_assets.json overlaps; 2026 less than 2025, a guess)
+BEL_EUROCLEAR_TAX = {2024: 1.7, 2025: 1.0, 2026: 0.5}
+# share of a clearing house's frozen-reserve return credited to its host; the rest goes to all EU members by their
+# share of EU-level aid, because the freeze is an EU decision (owner, round 7)
+HOST_SHARE = 1 / 3
+
+
+def apply_frozen_reserves(countries: dict[str, dict], src: Sources) -> None:
+    """The return Russia's frozen central-bank reserves would have earned without the freeze (frozen_assets.json,
+    round 7): per holding country, at the rates each currency paid each year; the frozen amount itself is not counted.
+    Money Russia did not get, so it counts toward Ukraine on the Russia balance. Euroclear (Belgium) and Clearstream
+    (Luxembourg): a third to the host, two thirds to all EU members; Belgium's tax on that income, already in its aid,
+    is taken off first. The low end allows for Russia having spent part of the reserves without a freeze (x0.8).
+    Private sanctioned assets are left out (private money, much of it earning nothing)."""
+    fa = load(GAPS / "frozen_assets.json")
+    sid = src.add(
+        "frozen_reserves",
+        "Return denied on Russia's frozen central-bank reserves: Euroclear reports, Swiss SECO, EU Commission, G7 and central bank statements; rates per currency and year",
+        "https://www.euroclear.com/newsandinsights/en/press.html",
+        fa.get("generated"),
+        "per holding country; Euroclear and Clearstream shared with all EU members; see research/2026-10/gaps/frozen_assets-notes.md",
+    )
+    bands = ("low", "central", "high")
+    credit = {i: {b: [0.0] * len(YEARS) for b in bands} for i in countries}
+    eu = {i: c["aid"]["eu_share"] for i, c in countries.items() if i in EU27 and (c.get("aid") or {}).get("eu_share")}
+    eu_sum = sum(eu.values()) or 1
+    cert = {}
+    for iso3, d in fa["countries"].items():
+        if iso3 not in countries:
+            continue
+        cert[iso3] = (d.get("certainty") or "C")[0]
+        ret = d["return_denied_eur_bn"]
+        for i, y in enumerate(YEARS):
+            r = ret.get(str(y)) or {}
+            tax = BEL_EUROCLEAR_TAX.get(y, 0.0) if iso3 == "BEL" else 0.0
+            for b in bands:
+                v = max(0.0, r.get(b, 0.0) - tax) * (0.8 if b == "low" else 1.0)
+                if iso3 in ("BEL", "LUX"):
+                    credit[iso3][b][i] += v * HOST_SHARE
+                    for j, sh in eu.items():
+                        credit[j][b][i] += v * (1 - HOST_SHARE) * sh / eu_sum
+                        cert.setdefault(j, "C")
+                else:
+                    credit[iso3][b][i] += v
+    for iso3, cr in credit.items():
+        if not any(cr["high"]):
+            continue
+        # less money to Russia: negative toward Russia, the low end of the return is the least toward Ukraine
+        out = {"low": [-v for v in cr["high"]], "central": [-v for v in cr["central"]], "high": [-v for v in cr["low"]]}
+        add_extra(
+            countries[iso3], "frozen", "Return denied to Russia on its frozen reserves", out, cert.get(iso3, "C"), sid
         )
 
 
