@@ -1065,12 +1065,14 @@ function showTip(e, html) {
 
 // ===== Panels =====
 const panel = document.getElementById("panel");
-// ----- the address: "#POL" (a panel), "#view=rank" (a view) or both, "#view=rank&c=POL" -----
+// ----- the address: "#POL" (a panel), "#view=rank" (a view) or both, "#view=rank&c=POL"; the buttons on top
+// (lens, measure, year) are added when they differ from the start, e.g. "#view=rank&lens=ukr&m=total" -----
+const START = { lens: state.lens, measure: state.measure, year: state.year };
 function parseHash() {
   const h = decodeURIComponent(location.hash.slice(1));
   if (!h.includes("=")) return { view: "map", c: h.toUpperCase() };
   const p = new URLSearchParams(h);
-  return { view: p.get("view") || "map", c: (p.get("c") || "").toUpperCase() };
+  return { view: p.get("view") || "map", c: (p.get("c") || "").toUpperCase(), lens: p.get("lens"), m: p.get("m"), y: p.get("y") };
 }
 function panelCode() {
   const c = DATA[state.selected];
@@ -1078,7 +1080,13 @@ function panelCode() {
 }
 function writeHash(push) {
   const v = state.view && state.view !== "map" ? state.view : "", c = panelCode();
-  const h = v && c ? `#view=${v}&c=${c}` : v ? "#view=" + v : c ? "#" + c : "";
+  const p = new URLSearchParams();
+  if (v) p.set("view", v);
+  if (c) p.set("c", c);
+  if (state.lens !== START.lens) p.set("lens", state.lens);
+  if (state.measure !== START.measure) p.set("m", state.measure);
+  if (state.year !== START.year) p.set("y", state.year);
+  const h = c && [...p.keys()].length === 1 ? "#" + c : [...p.keys()].length ? "#" + p : "";
   try { history[push ? "pushState" : "replaceState"]({ panel: !!c }, "", location.pathname + location.search + h); } catch (e) { /* file:// */ }
 }
 // opening a panel adds a history entry, so the phone's Back button closes the sheet; closing it with × or Escape goes back
@@ -1123,6 +1131,7 @@ function closePanel(how) {
 // Back, Forward or an edited address: show what the address says
 function route(how) {
   const h = parseHash();
+  setFilters(h);
   if (window.setView && VIEWS.includes(h.view) && h.view !== (state.view || "map")) window.setView(h.view, true);
   if (h.c === "UKR") { if (state.panel !== "ukraine") select("804", false, how); }
   else if (h.c === "RUS") { if (state.panel !== "russia") select("643", false, how); }
@@ -1565,8 +1574,8 @@ function hideHint() { if (hintHidden) return; hintHidden = true; const h = docum
 // ===== Controls =====
 function setPressed(sel, attr, val) { document.querySelectorAll(sel).forEach(b => b.setAttribute("aria-pressed", String(b.dataset[attr] === val))); }
 const LENS_RANK = { change: "shift", cost: "cost", ukr: "shift", rus: "rus" };
-document.querySelectorAll("[data-lens]").forEach(b => (b.onclick = () => { state.lens = b.dataset.lens; state.rankMetric = LENS_RANK[state.lens]; setPressed("[data-lens]", "lens", state.lens); if (!playTimer) playBtn.setAttribute("aria-label", playLabel()); paint(); }));
-document.querySelectorAll("[data-measure]").forEach(b => (b.onclick = () => { state.measure = b.dataset.measure; setPressed("[data-measure]", "measure", state.measure); paint(); }));
+document.querySelectorAll("[data-lens]").forEach(b => (b.onclick = () => { state.lens = b.dataset.lens; state.rankMetric = LENS_RANK[state.lens]; setPressed("[data-lens]", "lens", state.lens); if (!playTimer) playBtn.setAttribute("aria-label", playLabel()); paint(); writeHash(false); }));
+document.querySelectorAll("[data-measure]").forEach(b => (b.onclick = () => { state.measure = b.dataset.measure; setPressed("[data-measure]", "measure", state.measure); paint(); writeHash(false); }));
 const yearInput = document.getElementById("year");
 const yearText = y => (y === 2026 && FRAC[5] < 1 ? t("2026 YTD") : String(y));
 // the slider reads out the period, not just the number: "2021 (before the war)", "2026 YTD"
@@ -1575,13 +1584,23 @@ function showYear(y) {
   yearInput.setAttribute("aria-valuetext", y === 2021 ? t("2021 (before the war)") : yearText(y));
 }
 function setYear(y) { state.year = y; yearInput.value = y; showYear(y); paint(); }
-yearInput.oninput = () => { stopPlay(); setYear(+yearInput.value); };
+yearInput.oninput = () => { stopPlay(); setYear(+yearInput.value); writeHash(false); };
+// the buttons on top as the address gives them (a shared link); anything not given goes back to the start
+function setFilters(h) {
+  const lens = LENS_RANK[h.lens] ? h.lens : START.lens, measure = ["gdp", "pp", "total"].includes(h.m) ? h.m : START.measure;
+  const y = +h.y >= +yearInput.min && +h.y <= +yearInput.max ? +h.y : START.year;
+  if (lens === state.lens && measure === state.measure && y === state.year) return;
+  state.lens = lens; state.rankMetric = LENS_RANK[lens]; state.measure = measure;
+  setPressed("[data-lens]", "lens", lens); setPressed("[data-measure]", "measure", measure);
+  if (!playTimer) playBtn.setAttribute("aria-label", playLabel());
+  setYear(y);
+}
 let playTimer = null;
 const playBtn = document.getElementById("play");
 // change and cost are zero in 2021 by definition (it is the comparison year), so playing them starts at 2022
 const playFrom = () => (state.lens === "change" || state.lens === "cost" ? 2022 : 2021);
 const playLabel = () => t(playFrom() === 2022 ? "Play 2022 to 2026" : "Play 2021 to 2026");
-function stopPlay() { clearInterval(playTimer); playTimer = null; playBtn.textContent = "▶"; playBtn.setAttribute("aria-label", playLabel()); }
+function stopPlay() { clearInterval(playTimer); playTimer = null; playBtn.textContent = "▶"; playBtn.setAttribute("aria-label", playLabel()); writeHash(false); }
 playBtn.onclick = () => {
   if (playTimer) return stopPlay();
   playBtn.textContent = "❚❚"; playBtn.setAttribute("aria-label", t("Pause"));
