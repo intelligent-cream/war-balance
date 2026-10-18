@@ -44,7 +44,7 @@ services to Russia and shipping. The profit-only figures stay in the docs as a c
 | B1 | Measure the 90% range of the 2022–2026 total prediction error directly from the back-tests, instead of adding up yearly ranges | code |
 | B2 | Own error bands for Russia's neighbours (Moldova, Kyrgyzstan, Tajikistan, Armenia, Georgia, Mongolia, Kazakhstan, Uzbekistan, Turkmenistan), tested on their own history | research |
 | B3 | Moldova: Transnistria gas and whether 2021 is a fair starting point | research |
-| B4 | Phone display: range as a pale band in the part's colour behind the bar; checked for readability in dark mode at phone width | code |
+| B4 | Phone display: range as a pale band in the part's colour behind the bar; checked for readability in dark mode at phone width | code: done |
 
 ### C. Data gaps
 
@@ -54,7 +54,7 @@ services to Russia and shipping. The profit-only figures stay in the docs as a c
 | C2 | Laundered oil: Brunei's refinery (Russian crude, sold to Australia) and Russian fuel relabelled in Turkish ports | research |
 | C3 | Shadow fleet: an evidence-based Russian share of tankers with opaque owners, per manager country | research |
 | C4 | Iran: drones sent to Russia against Su-35s bought from Russia, counted once | research |
-| C5 | Loan deferrals: Belarus counted net of Russia's new loans that repaid old ones; Viet Nam and Iraq labelled "blocked by sanctions, not the borrower's choice" | code |
+| C5 | Loan deferrals: Belarus counted net of Russia's new loans that repaid old ones; Viet Nam and Iraq labelled "blocked by sanctions, not the borrower's choice" | code: done |
 | C6 | More evidence for the predictions of trade with Ukraine | research |
 | C7 | Company taxes in Russia: richer data and more sources than KSE | research |
 | C8 | Crypto and payment agents: any country split | research |

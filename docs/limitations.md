@@ -15,7 +15,6 @@ The map is a research preview. Its figures were compiled with AI assistance from
 | **Military support to Russia** is a rough indication (D) everywhere. | North Korea, Iran, Belarus, China | [aid-refugees-military.md](method/aid-refugees-military.md#military-support-to-russia) |
 | **Crypto and payment agents** are not counted: no source splits them by country. | Russia side, unknown size | [trade.md](method/trade.md#gold-and-hidden-channels) |
 | **Iran: drones and Su-35s may overlap.** If Iran's Su-35 purchases were partly paid with drones and missiles, "weapons sent to Russia" and "weapons bought from Russia" count up to about EUR 1–2bn twice. | Iran | [russia-state-and-companies.md](method/russia-state-and-companies.md#weapons-bought-from-russia) |
-| **Russia's loan deferrals and sanction-blocked arrears** (Belarus, Viet Nam, Iraq) count as paying Russia less, though Russia granted the deferrals and sanctions blocked the payments. | Belarus, Viet Nam, Iraq | [russia-state-and-companies.md](method/russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia) |
 | **Refiners and buyers of laundered oil** are matched at one crude-to-fuel ratio (0.5, CREA); India's own refinery data suggest about 0.67, so a little of the crude may sit with the refiner rather than the buyer. | India, Türkiye, China and their buyers | [energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#refiners-counted-once) |
 | **The AI-guessed incentive view** is not data. | that view only | [incentives.md](method/incentives.md) |
 

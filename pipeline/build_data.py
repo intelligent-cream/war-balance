@@ -1339,6 +1339,9 @@ def add_extra(c: dict, k: str, label: str, to_russia: dict[str, list[float]], ce
     c.setdefault("extra", []).append(part)
 
 
+SANCTION_BLOCKED_LOANS = {"VNM", "IRQ", "BGD"}
+
+
 def apply_state_finance(countries: dict[str, dict], src: Sources) -> None:
     """Rosatom nuclear projects and Russia's state loans (russia_state_finance.json, round 5): the buyer's own payments
     for construction, repayments and interest on Russian state loans against the schedule, and Rosatom equipment that
@@ -1360,7 +1363,9 @@ def apply_state_finance(countries: dict[str, dict], src: Sources) -> None:
         for b in out:
             add = ro.get("to_add") or {}
             cc = ro.get("customs_correction") or {}
-            dev = sl.get("deviation_from_schedule") or {}
+            # Belarus's deferrals were granted by Russia and refinanced with new Russian loans: net of that, its
+            # repayments did not change by its own choice (round 6), so only its nuclear-plant part counts
+            dev = {} if iso3 == "BLR" else (sl.get("deviation_from_schedule") or {})
             add_base = (ro.get("to_add_base_2019_2021") or {}).get(b, 0.0)
             cc_base = sum((cc.get(str(y)) or {}).get(b, 0.0) for y in (2019, 2020, 2021)) / 3
             # the customs over-count is taken out of "paid", which is measured at pre-war prices: deflated the same way
@@ -1383,6 +1388,9 @@ def apply_state_finance(countries: dict[str, dict], src: Sources) -> None:
             continue
         cert = weakest([x for x in (ro.get("certainty"), sl.get("certainty")) if x] or ["D"])
         add_extra(c, "statefin", "Nuclear projects and state loans from Russia", out, cert[0], sid)
+        # repayments stopped because sanctions blocked the payment channels, not by the borrower's choice
+        if iso3 in SANCTION_BLOCKED_LOANS:
+            c["extra"][-1]["blocked"] = True
 
 
 def apply_company_flows(countries: dict[str, dict], src: Sources) -> None:

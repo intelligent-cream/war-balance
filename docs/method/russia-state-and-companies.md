@@ -31,7 +31,7 @@ Code: `apply_state_finance()`; data: [`russia_state_finance.json`](../../researc
 | Viet Nam | −0.7 | stopped paying in 2023 (blocked payment channels) |
 | Iraq | −0.4 | stopped paying |
 
-Arrears in Viet Nam, Iraq and Bangladesh were caused by sanctions on payment channels, not by choice.
+Arrears in Viet Nam, Iraq and Bangladesh were caused by sanctions on payment channels, not by choice: they count (the money did not reach Russia) and the country panel says so in a note. **Belarus's** deferrals were granted by Russia and refinanced with new Russian loans, so its loan repayments are left out (round 6); only its nuclear-plant part counts.
 
 ## Weapons bought from Russia
 
