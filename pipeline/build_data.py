@@ -851,6 +851,30 @@ def build() -> dict:
             countries[iso3]["incentive"] = {
                 k: d.get(k) for k in ("direction", "threat", "confidence", "why", "capacity_note")
             }
+    # label only, the totals do not change: which part of each cut was required by sanctions, and which part of the fall
+    # in purchases was gas that Russia cut off or that stopped with Ukrainian transit (sanctions_share.json)
+    for iso3, d in load(GAPS / "sanctions_share.json")["countries"].items():
+        c = countries.get(iso3)
+        if not c:
+            continue
+        lab = {}
+        for flow in ("to_rus", "from_rus", "svc_bought", "svc_sold"):
+            ys = [v for y, v in (d.get(flow) or {}).items() if y.isdigit() and v.get("mandated_share_map")]
+            mand = sum(v["mandated_eurbn"]["central"] for v in ys)
+            fall = sum(
+                v["mandated_eurbn"]["central"] / v["mandated_share_map"]["central"]
+                for v in ys
+                if v["mandated_share_map"]["central"]
+            )
+            if fall > 0:
+                gas = sum(
+                    (v.get("gas_part") or 0) * v["mandated_eurbn"]["central"] / v["mandated_share_map"]["central"]
+                    for v in ys
+                    if v["mandated_share_map"]["central"]
+                )
+                lab[flow] = {"mandated": round(min(1.0, mand / fall), 3), "gas": round(min(1.0, gas / fall), 3)}
+        if lab:
+            c["sanctions"] = lab
     remove_freight(countries)
     price_indices(countries)
     apply_narrow(countries, src)

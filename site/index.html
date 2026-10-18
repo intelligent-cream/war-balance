@@ -1145,6 +1145,26 @@ Object.entries({
   am: "ABW AIA ARG ATG BES BHS BLM BLZ BMU BOL BRA BRB BVT CAN CHL COL CRI CUB CUW CYM DMA DOM ECU FLK GRD GRL GTM GUY HND HTI JAM KNA LCA MAF MEX MSR NIC PAN PER PRI PRY SGS SLV SPM SUR SXM TCA TTO UMI URY USA VCT VEN VGB VIR",
   mea: "AGO ARE ATF BDI BEN BFA BHR BWA CAF CIV CMR COD COG COM CPV DJI DZA EGY ERI ESH ETH GAB GHA GIN GMB GNB GNQ IRN IRQ ISR JOR KEN KWT LBN LBR LBY LSO MAR MDG MLI MOZ MRT MUS MWI MYT NAM NER NGA OMN PSE QAT REU RWA SAU SDN SEN SHN SLE SOM SSD STP SWZ SYC SYR TCD TGO TUN TZA UGA YEM ZAF ZMB ZWE",
 }).forEach(([r, list]) => list.split(" ").forEach(i => (REGION_OF[i] = r)));
+// How much of the shift away from Russian trade was required by sanctions, gas cut by Russia or stopped with
+// transit, and own choice (research/2026-10/gaps/sanctions_share.json). Only parts toward Ukraine are split.
+function sanctionNote(c, k) {
+  if (!c.sanctions) return "";
+  const flows = { paid: "to_rus", sold: "from_rus", svcpaid: "svc_bought", svcsold: "svc_sold" };
+  let tot = 0, mand = 0, gas = 0;
+  for (const p of k.shiftParts) {
+    const f = flows[p.k], s = f && c.sanctions[f];
+    if (!s || p.v <= 0) continue;
+    const g = Math.max(0, Math.min(s.gas || 0, 1 - s.mandated));
+    tot += p.v; mand += p.v * s.mandated; gas += p.v * g;
+  }
+  if (tot < 1e-3) return "";
+  const pc = x => Math.round(100 * x / tot) + "%";
+  const v = { m: pc(mand), g: pc(gas), o: pc(tot - mand - gas) };
+  return `<p class="note">${gas / tot >= 0.005
+    ? t("Of the move away from Russian trade: {m} required by sanctions, {g} gas (mostly cut by Russia or ended with Ukrainian transit), {o} own choice.", v)
+    : t("Of the move away from Russian trade: {m} required by sanctions, {o} own choice.", v)}</p>`;
+}
+
 function countryPanel(c) {
   if (!c) return head(t("Unknown")) + `<div class="panel-body"><p class="empty">${t("No data for this country yet.")}</p></div>`;
   const y = Math.max(2022, state.year), k = calc(c, y);
@@ -1196,6 +1216,7 @@ function countryPanel(c) {
       <div class="big-cap">${t(pos ? "shifted toward <b>Ukraine</b> compared with before the war{after}: {eur} · {pp}" : "shifted toward <b>Russia</b> compared with before the war{after}: {eur} · {pp}", { after: state.netBack ? t(", after money flowing back") : "", eur: eur(k.shift, true), pp: perPerson(c, k.shift) })}</div>
       ${rangeLine(c, k.shiftLo, k.shiftHi, k.shiftCert)}
       ${waterfall(k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label.toLowerCase() }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
+      ${sanctionNote(c, k)}
       ${share}
       ${c.hub ? `<p class="key" style="margin-top:8px"><b>${t("Transit hub:")}</b> <span lang="en">${c.hub}</span>.</p>` : ""}
     </section>
