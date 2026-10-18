@@ -46,6 +46,16 @@ range = [mid − lo, mid + hi]
 - **Price and counterfactual terms are independent** of the others.
 - **Errors are summed over the years first**, then combined: the same baseline applies every year, so its error does not average out over time.
 
+**The expected total's own band (round 6).** For flows with a back-tested counterfactual, the trend term no longer adds
+up the yearly bands. The back-tests measured the error of the *sum* over 1–5 years directly (per flow, size class and
+model, calibrated so that two tests' bands cover 90% of the third), and `spread()` uses
+`ql = (1 − low) × Σe` and `qh = (high − 1) × Σe`, where `Σe` is the expected total and `[low, high]` the measured band
+for that number of years (`cb` in `data.json`; 2026 counted at 8 of 12 months). Because one flow's yearly errors are
+strongly correlated (0.6–0.7 between years), the measured bands are about as wide as the old sum (×0.8–1.2), so most
+ranges barely move. The yearly view and the "only the rise" parts keep the yearly bands. Belarus's imports from Russia
+keep their own yearly band. Source: [`cf_bands.json`](../../research/2026-10/gaps/cf_bands.json)
+([notes](../../research/2026-10/gaps/cf_bands-notes.md)).
+
 Before round 4 the low end took the low baseline, the high actual value and the low price level all at once (stacked worst cases), which made ranges too wide in one way and ignored forecast error in another.
 
 Variants:
@@ -74,7 +84,7 @@ Rankings use these totals: countries whose likely range crosses zero are left ou
 
 2026 counts January to August (`FRAC[5] = 8/12`, `DATA_TO = 2026-08-31`). Where no 2026 figures exist yet, the research files estimate them from the 2025 monthly rate, and the part's label carries a `*`. In `data.json` this is the `est26` flag:
 
-- `company` (company taxes; 2026 is always the 2025 rate × 8/12);
+- `company` (company taxes; 2026 estimated from 2025 and the first 2026 company reports);
 - `from_rus` where the residual gap is added (its 2026 is estimated from 2025);
 - `to_rus`, `from_rus`, `buy_ukr`, `sell_ukr` where the 2026 trade value itself is an estimate (`basis = estimated` in [`trade_full.json`](../../research/2026-10/gaps/trade_full.json), for example Belarus and Uzbekistan).
 
@@ -86,7 +96,7 @@ The site marks the parts "paid to Russia", "sold to Russia" and "company taxes" 
 - **The method itself**: what counts as a shift, the 20% margin, the choice of 2024 GDP, counting gas where it is burned. These are choices, not uncertainties.
 - **Other correlated errors across parts.** Only the measured counterfactual correlations are included; a shared source error (one KSE report behind all company taxes) is still treated as independent.
 - **Correlated errors across countries.** Moving value between countries (re-exports, hub resale, the residual gap) shifts error from one country to another; each country's range is computed alone.
-- **Unknown unknowns**: flows nobody has measured (crypto, payment agents) are not on the map ([trade.md](trade.md#gold-and-hidden-channels)).
+- **Unknown unknowns**: flows nobody has measured are not on the map. Crypto and payment agents appear only as the agents' fees; the trade they settle is already in customs ([trade.md](trade.md#payment-agents-round-6)).
 - **Inputs touched by the war** in the counterfactual (realised trade and GDP in 2022–2026).
 
 ## See also

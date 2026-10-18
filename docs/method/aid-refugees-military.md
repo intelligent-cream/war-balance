@@ -89,6 +89,19 @@ The panel also shows the latest refugee count (`people.refugees`).
 
 Most of these supplies are sales or barter paid for by Russia, so they are counted as support to Russia, not as aid. Volunteers for Ukraine and fighters for Russia are shown as counts (`people`), not money; belligerent-sourced counts are left out.
 
+
+### Round 6 revision
+
+North Korea, Iran and Belarus are revalued from more sources ([`military_rus_r6.json`](../../research/2026-10/gaps/military_rus_r6.json),
+[notes](../../research/2026-10/gaps/military_rus_r6-notes.md)), at market value (what Russia pays its own industry):
+
+| supplier | 2022–Aug 2026, EUR bn (range) | certainty | main evidence |
+|---|---|---|---|
+| North Korea | 8.8 (3.3–17.6) | C | 6.5–15m shells (Ukrainian and South Korean intelligence, Open Source Centre container counts, the sanctions monitoring team), 150–280 KN-23 missiles, troops' pay |
+| Iran | 3.5 (1.5–5.5) | C | ready drones 2022–23, the Alabuga licence (leaked USD 1.75bn), over 400 ballistic missiles; nothing in 2026 |
+| Belarus | 1.3 (0.55–2.7) | D | ammunition from army stocks; components sold by companies are already in trade |
+| China | 1.3 (1.0–3.0) | D | unchanged (`china_military.json`) |
+
 ## Flowback
 
 Part of military aid comes back to the donor as orders for its own industry. Counting the full aid as a shift toward Ukraine while ignoring this would flatter big arms producers. Code: flowback section of `build()`; data: [`flowback.json`](../../research/2026-10/flowback.json) ([notes](../../research/2026-10/flowback-notes.md)) and [`flowback2.json`](../../research/2026-10/gaps/flowback2.json) ([notes](../../research/2026-10/gaps/flowback2-notes.md)).
@@ -97,7 +110,7 @@ Part of military aid comes back to the donor as orders for its own industry. Cou
 - **Other countries' aid spent here**: NATO PURL purchases from US stocks (US receives EUR 3.7bn in 2025 and more in 2026), and EU-level military aid credited to member arms industries by SIPRI production share (`EU_ARMS_SLICE`: France 39%, Germany 24%, Italy 19%, Sweden 6%, Czechia 4%, Spain 3.5%, Poland 3%), × 70–88% spent with EU/EEA industry.
 - **Extra sales to Ukraine** above the expected level ([trade.md](trade.md)).
 
-All three count only as **profit** (20%, range 0.5–1.5×), the same share as profit lost on sales to Russia: the goods still cost money to make. They are subtracted from both the net shift and the cost. The "money flowing back" switch on the map (on by default, `state.netBack`) turns them off. Check 6 compares PURL paid with PURL received by the US.
+Until round 5 all three counted only as **profit** (20%, range 0.5–1.5×), the same share as profit lost on sales to Russia. Since round 6 they come from the all-money ledger below and count at value kept × genuinely extra ([the money rule](overview.md#the-money-rule-round-6)). They are subtracted from both the net shift and the cost. The "money flowing back" switch on the map (on by default, `state.netBack`) turns them off. Check 6 compares PURL paid with PURL received by the US.
 
 ### Arms Ukraine bought abroad (round 5)
 
@@ -109,6 +122,23 @@ share count; the seller keeps the profit (20%, like other flowback). Over 2022�
 profit: Czechia 5.7bn gross, Bulgaria 5.0, the US 4.1, Türkiye 1.5, Serbia 1.1. Code: `apply_ua_arms_purchases()`; data:
 [`ua_arms_purchases.json`](../../research/2026-10/gaps/ua_arms_purchases.json)
 ([notes](../../research/2026-10/gaps/ua_arms_purchases-notes.md)).
+
+
+### Round 6: the all-money ledger
+
+Flowback now comes from one ledger of all money that reached Ukraine ([`money_ledger.json`](../../research/2026-10/gaps/money_ledger.json),
+[notes](../../research/2026-10/gaps/money_ledger-notes.md)): every one of Kiel's 5,587 allocations plus undisclosed aid,
+IMF/World Bank/EBRD/CEB money, private donations and Ukraine's own budget spent on arms abroad, EUR 437bn in all,
+assigned once to what it paid for and the economy where it was spent. Of the new money, EUR 220bn was spent in Ukraine
+(mostly pensions, social payments and salaries), 71bn in the payer's own economy, 69bn in other economies. Weapons
+given from donors' own stocks (EUR 72bn) are not new spending and earn nothing, unless the donor bought replacements:
+EUR 29bn of explicit replacement purchases, capped at the value given (the US 19.3bn at home, Poland's Abrams, German
+Patriots, the UK's and Sweden's restocking). Each seller's flowback has four parts: its own aid spent at home (with its
+own replacement), other countries' and EU money spent there (with their replacement purchases), Ukraine's own arms
+purchases there, and aid spent there on energy, relief and rebuilding. `apply_money_ledger()` replaces the earlier
+own-industry shares, PURL, EU arms slice and arms-bought-abroad estimates. The money rule then counts the value kept
+× genuinely extra. Example, the US 2022–2026: gave EUR 94bn, earned back 44bn (own aid 30, others' purchases 12), so
+its balance with Ukraine is +50bn.
 
 ## See also
 

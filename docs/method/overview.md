@@ -30,12 +30,12 @@ The parts below are what the country panel's waterfall shows (`shiftParts` and `
 | Less (or more) paid to Russia | expected minus actual goods imports from Russia, at pre-war prices | either | [trade.md](trade.md), [energy-and-laundered-oil.md](energy-and-laundered-oil.md) |
 | Extra paid because of war-time prices (windfall) | payments for Russian fuel minus the same volume at pre-war prices | Russia | [prices.md](prices.md#war-time-windfall) |
 | Russian oil bought via other countries (laundered oil) | Russian crude inside fuel refined elsewhere, above its pre-war level | Russia | [energy-and-laundered-oil.md](energy-and-laundered-oil.md#laundered-oil) |
-| Profit lost on sales to Russia given up / profit on extra sales | expected minus actual exports to Russia, × 20% margin | either | [trade.md](trade.md#profit-not-revenue) |
+| Income lost on sales to Russia given up / income from extra sales | expected minus actual exports to Russia, × value kept × genuinely extra (the money rule) | either | [trade.md](trade.md#profit-not-revenue) |
 | Less (or more) tax paid in Russia by companies | profit tax + half of other taxes, against 2018–2021 | either | [services-shipping-companies.md](services-shipping-companies.md#company-taxes) |
 | Weapons and troops sent to Russia | North Korea, Iran, Belarus, China's unrecorded part | Russia | [aid-refugees-military.md](aid-refugees-military.md#military-support-to-russia) |
 | Less (or more) paid to Russia for services | expected minus actual services imports | either | [services-shipping-companies.md](services-shipping-companies.md#services) |
-| Profit lost on services to Russia given up (e.g. tourism) | expected minus actual services exports, × 20% | either | [services-shipping-companies.md](services-shipping-companies.md#services) |
-| Profit from shipping and insuring Russian oil | profit share of freight, insurance and ship sales, against 2019–2021 | either | [services-shipping-companies.md](services-shipping-companies.md#shipping) |
+| Income lost on services to Russia given up (e.g. tourism) | expected minus actual services exports, × the money rule | either | [services-shipping-companies.md](services-shipping-companies.md#services) |
+| Income from shipping and insuring Russian oil | freight, insurance and ship sales against 2019–2021, × the money rule | either | [services-shipping-companies.md](services-shipping-companies.md#shipping) |
 | Gold and hidden payments to Russia | gold and channels missing from customs data | Russia | [trade.md](trade.md#gold-and-hidden-channels) |
 | Undisclosed military aid | beyond what Kiel records | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#undisclosed-aid-and-private-donations) |
 | Private donations | national donation totals, GDP model elsewhere | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#undisclosed-aid-and-private-donations) |
@@ -44,7 +44,7 @@ The parts below are what the country panel's waterfall shows (`shiftParts` and `
 | Paid to Russia by companies leaving it | exit contribution and forced discount, by home country | Russia | [russia-state-and-companies.md](russia-state-and-companies.md#companies-leaving-russia) |
 | Profits sent to Russia by Russian-owned companies here | against 2019–2021; trusteeships count the other way | either | [russia-state-and-companies.md](russia-state-and-companies.md#russian-owned-companies-abroad) |
 | Share of new IMF, World Bank and EBRD lending | rise over pre-war own-risk lending, at economic value, by shareholding | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#loans-at-their-economic-value-round-5) |
-| Flowing back (optional, on by default) | own aid spent with own industry, others' aid spent here, extra sales to Ukraine, arms Ukraine bought here, each × 20% profit | subtracted | [aid-refugees-military.md](aid-refugees-military.md#flowback) |
+| Flowing back (optional, on by default) | every euro for Ukraine followed to the economy where it was spent (own and others' aid incl. stock replacement, arms Ukraine bought, energy, relief and rebuilding) and extra sales to Ukraine, × the money rule | subtracted from the balance with Ukraine | [aid-refugees-military.md](aid-refugees-military.md#flowback) |
 
 Not a part of its own, but built into the parts above:
 
@@ -52,6 +52,36 @@ Not a part of its own, but built into the parts above:
 - **Residual gap**: sales to Russia missing from partners' data are added to the country of origin inside "sold to Russia" ([trade.md](trade.md#residual-gap)).
 - **Re-export hubs, transit gas, hub resale, Baltic pass-through, freight**: these move value between countries before the parts are computed ([trade.md](trade.md), [energy-and-laundered-oil.md](energy-and-laundered-oil.md)).
 - **Sanctions label**: which share of a cut was required by sanctions is shown as a label and does not change totals ([trade.md](trade.md#sanctions-mandated-or-own-choice)).
+
+## The money rule (round 6)
+
+Money a country **pays out** (aid, payments to Russia) counts at full value: it leaves the economy. Money a country
+**earns** (from Russia, or from the war effort for Ukraine) counts at the **value kept in its economy × how much of it
+is genuinely extra**:
+
+- **value kept**: the domestic value-added share of the sale (OECD Trade in Value Added, 2025 edition; for weapons,
+  defence-industry evidence: US 0.90, Germany, France, UK, Italy 0.72–0.75, Czechia 0.55);
+- **genuinely extra**: the share that would not exist without the sale (weapons 0.6 by default, US 0.70 with 155mm
+  output up from 14,000 to about 40,000 rounds a month; sales lost to Russia 0.20–0.45 because many firms found other
+  buyers; extra sales to Russia 0.40–0.60; extra fuel sales to Ukraine 0.20; tourism lost 0.30; shadow shipping 0.65).
+
+So US weapons sold for Ukraine count at 0.63 (0.45–0.77), Germany's at 0.47, lost sales to Russia at 0.17–0.32,
+Greek shipping at 0.17. This replaces the flat 20% profit used before for flowback, sales and services to Russia and
+shipping. Factors per country and kind of earning: [`value_kept.json`](../../research/2026-10/gaps/value_kept.json)
+([notes](../../research/2026-10/gaps/value_kept-notes.md)); `c.vk` in `data.json`; applied in `calc()`.
+
+## Two balances (round 6)
+
+The headline adds two balances, shown as cards in each country panel:
+
+- **with Ukraine**: aid, EU share, refugees, extra purchases from Ukraine, donations, multilateral lending, minus money
+  flowing back from the war effort into the country's economy;
+- **with Russia**: everything else.
+
+A negative balance with Ukraine is shown as its real number and means **net earning from the war effort**, not money
+toward Russia. On the map a country whose total is negative mainly because of that is **gold**, not orange; any other
+country that earns more than it gives on the Ukraine side (blue overall, or orange mainly because of Russia) gets a thin
+gold outline (threshold EUR 10m and 0.05% of GDP).
 
 ## The cost view
 
@@ -72,17 +102,17 @@ Not a part of its own, but built into the parts above:
 
 ## A worked reading
 
-Germany, 2022–August 2026: about +4.8% of a year's GDP toward Ukraine (likely range 3.1% to 7.3%, EUR 207bn on a 2024 GDP of EUR 4,329bn). In EUR bn, the largest parts are:
+Germany, 2022–August 2026: about +4.2% of a year's GDP toward Ukraine (likely range 2.6% to 7.2%, EUR 183bn on a 2024 GDP of EUR 4,329bn). Its balance with Ukraine is +68bn (gave 77.5, earned back 9.9) and its balance with Russia +116bn. In EUR bn, the largest parts are:
 
 | part | middle (range) |
 |---|---|
-| Less paid to Russia (volume at pre-war prices, against 2021 held flat) | +110.7 (42.9 to 213.5) |
-| Hosting refugees | +46.7 (35.9 to 54.4) |
-| Aid to Ukraine (bilateral, Kiel) | +30.8 (26.2 to 35.5) |
-| Share of EU-level aid | +18.7 (15.9 to 21.5) |
-| Profit lost on sales to Russia given up (20% of the fall) | +17.7 (3.6 to 44.9) |
+| Less paid to Russia (volume at pre-war prices, against the expected level) | +111.1 (47.0 to 227.5) |
+| Aid to Ukraine (bilateral, Kiel) | +30.2 (28.6 to 32.5) |
+| Hosting refugees (net cost) | +29.5 (11.7 to 42.6) |
+| Income lost on sales to Russia given up (money rule) | +21.7 (5.8 to 54.6) |
+| Share of EU-level aid | +14.4 (10.1 to 16.5) |
 | Extra paid to Russia because of war-time prices (mostly 2022 gas) | −29.2 (−33.6 to −25.9) |
-| Own aid spent with its own defence industry (flowback, 20%) | −2.4 (−4.3 to −1.0) |
+| Own aid spent in its own economy, incl. replacing donated stock (money rule) | −5.6 (−10.8 to −2.5) |
 
 The wide range comes almost entirely from "less paid to Russia": the expected no-war level of Germany's purchases is uncertain (see [counterfactual.md](counterfactual.md)), and the total takes the weakest certainty letter of its parts (D). The "How it works" view on the map ([`views2.js`](../../site/views2.js)) builds this waterfall live for Germany, Poland, the US, Hungary, India and China.
 

@@ -10,6 +10,7 @@ No country is left at zero because data is missing: gaps are filled with estimat
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 
 import pycountry
@@ -496,7 +497,9 @@ def build() -> dict:
             share = non_gas_share(d.get("fossil_from_russia_by_fuel_mt") or {}, e2["price_index"])
             for k in ("years", "years_lo", "years_hi"):
                 fossil[k] = [round(f * s + g, 5) for f, s, g in zip(fossil[k], share, gas[k])]
-            if tr:
+            # Moldova: its own customs data hold the gas right-bank Moldova paid for; the gas research adds
+            # Transnistria's unpaid Gazprom gas, which is support for Transnistria, not money to Russia (cf_bands.json)
+            if tr and iso3 != "MDA":
                 # customs data record gas where it crosses the border too: that gas is swapped for final-use gas
                 if iso3 in GAS_IN_CUSTOMS:
                     # customs already hold this gas under another heading (Turkey, Poland; part of it for Germany)
@@ -516,7 +519,7 @@ def build() -> dict:
                     round(max(0.0, tr["base_range"][1] - cpre) + pre["high"], 5),
                 ]
                 tr["src"] = tr.get("src", []) + ["transit_gas"]
-        if tr and iso3 in PIPELINE_GAS:
+        if tr and iso3 in PIPELINE_GAS and iso3 != "MDA":  # Moldova: customs gas only (see above)
             # customs data miss some fossil fuel (pipeline gas is not always recorded as Russian),
             # so payments to Russia use whichever is larger each year: all imports from Russia, or the fossil fuel value
             for k in ("years", "years_lo", "years_hi"):
@@ -544,6 +547,7 @@ def build() -> dict:
             c["gdp"], c["pop"] = d["gdp_eur_bn"]["central"], (d.get("pop_m") or {}).get("central")
     reassign_laundered_oil(countries, laundered, src)
     apply_laundered_eu(countries, src)
+    apply_laundered_r6(countries, src)
     # refiners: the Russian crude in the fuel Turkey and India export is counted at the buyers (laundered oil),
     # so it is taken out of the refiner's own payments to Russia; they keep what they use themselves
     hb = load(GAPS / "hub_buyers.json")
@@ -632,6 +636,31 @@ def build() -> dict:
         co["base"] = round(sum(pre) / 4, 5)
         co["base_range"] = [round(sum(pre_lo) / 4, 5), round(sum(pre_hi) / 4, 5)]
         co["base_2018_2021"] = True
+
+    # round 6: KSE's series checked against company reports (Raiffeisen's country-by-country tax, UniCredit, OTP,
+    # PepsiCo) and the Bundesbank; carried-forward and interpolated years revised, seized Unipro and Fortum removed from
+    # May 2023, JTI moved to Japan. Same measure (profit tax + half the other taxes); 2026 is January-August already
+    r6 = load(GAPS / "company_taxes_r6.json")
+    rid = src.add(
+        "company_taxes_r6",
+        "Company taxes in Russia: KSE checked against company reports (Raiffeisen, UniCredit, OTP, PepsiCo) and Bundesbank reinvested earnings",
+        "https://leavingrussia.org/",
+        r6.get("generated"),
+        "replaces the KSE split; see research/2026-10/gaps/company_taxes_r6-notes.md",
+    )
+    for iso3, d in r6["countries"].items():
+        c = countries.get(iso3)
+        om = d.get("owner_measure")
+        if not c or not om or not any((om.get(str(y)) or {}).get("high") for y in YEARS):
+            continue
+        co = c.setdefault("company", {"cert": "C", "src": []})
+        for k, b in (("taxes", "central"), ("taxes_lo", "low"), ("taxes_hi", "high")):
+            co[k] = [round((om.get(str(y)) or {}).get(b, 0.0), 5) for y in YEARS]
+        bb = d["base_2018_2021"]
+        co["base"], co["base_range"], co["base_2018_2021"] = bb["central"], [bb["low"], bb["high"]], True
+        co["cert"] = d.get("certainty") or co["cert"]
+        co["src"] = [x for x in co["src"] if x != kse] + [rid]
+        co["est26"] = True
 
     # ---- flows researched last: services trade, gold and hidden channels, undisclosed aid, private donations ----
     unc = load(GAPS / "uncovered.json")
@@ -847,12 +876,25 @@ def build() -> dict:
         "2026-10",
         "rough indication, certainty D; China left out because it overlaps trade data",
     )
-    for iso3, d in fb2all["military_to_russia"].items():
+    # round 6: North Korea, Iran and Belarus revalued with more sources (military_rus_r6.json); China below
+    mr6 = load(GAPS / "military_rus_r6.json")
+    mid6 = src.add(
+        "military_rus_r6",
+        "Military support to Russia: Ukrainian and South Korean intelligence, Open Source Centre, the Multilateral Sanctions Monitoring Team, INSS, leaked Alabuga contracts, Russian procurement prices",
+        None,
+        mr6.get("generated"),
+        "market value of what Russia received; North Korea and Iran certainty C; see research/2026-10/gaps/military_rus_r6-notes.md",
+    )
+    for iso3, d in {**fb2all["military_to_russia"], **mr6["countries"]}.items():
         c = countries.get(iso3)
         if iso3 == "CHN" or not c or not d.get("by_year"):
             continue
         ser = lch(d["by_year"])
-        c["military_rus"] = {**ser, "src": [oid2]}
+        c["military_rus"] = {
+            **ser,
+            "cert": (d.get("certainty") or "D")[0],
+            "src": [mid6 if iso3 in mr6["countries"] else oid2],
+        }
     # China: only what is not already in recorded trade (unrecorded military items, satellite imagery and training,
     # smuggled dual-use goods); the dual-use goods in recorded exports are already counted as sales to Russia
     cm = load(GAPS / "china_military.json")
@@ -931,6 +973,7 @@ def build() -> dict:
     remove_freight(countries)
     price_indices(countries)
     apply_narrow(countries, src)
+    apply_brunei_r6(countries)
     apply_audit2(countries, src, "values")
     uae_fuel_net(countries)
     war_windfall(countries, src)
@@ -942,7 +985,10 @@ def build() -> dict:
     apply_refugees_net(countries, src)
     apply_ua_arms_purchases(countries, src)
     apply_loans_value(countries, src)
+    apply_money_ledger(countries, src)
     apply_russian_arms(countries, src)
+    apply_payment_agents(countries, src)
+    apply_value_kept(countries, src)
     apply_audit2(countries, src, "trends")
     for c in countries.values():
         for obj in c.values():
@@ -1288,6 +1334,35 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
         cf.get("generated"),
         "exports to Russia and trade with Ukraine follow a nowcast; imports from Russia and services keep 2021; see research/2026-10/gaps/counterfactual-notes.md",
     )
+    # round 6: the range of the 2022-2026 total is measured on the back-tests' cumulative errors (per flow, size class,
+    # model and number of years), and some of Russia's neighbours get bands tested on their own history (cf_bands.json)
+    # round 6: more back-tests for trade with Ukraine (rolling origins on Ukraine's history, analogue partners); both
+    # flows fall back to 2021 held flat, each with its own cumulative band (ua_trade_cf.json); replaces round 4's models
+    ua = load(GAPS / "ua_trade_cf.json")
+    for iso3, flows in ua["countries"].items():
+        for key in ("buy_ukr", "sell_ukr"):
+            if flows.get(key):
+                cf["countries"].setdefault(iso3, {})[key] = flows[key]
+    uid = src.add(
+        "ua_trade_cf",
+        "Expected trade with Ukraine without the war: rolling back-tests on Ukraine's own history and on analogue partners (IMF WEO vintages, IMF DOTS)",
+        "https://db.nomics.world/IMF/DOT",
+        ua.get("generated"),
+        "2021 held flat for both flows; see research/2026-10/gaps/ua_trade_cf-notes.md",
+    )
+    bands = load(GAPS / "cf_bands.json")
+    for iso3, flows in bands["countries"].items():
+        for key, d in flows.items():
+            cf["countries"].setdefault(iso3, {}).setdefault(key, {}).update(
+                {k: d[k] for k in ("multiplier_vs_2021", "cumulative_band", "method", "size_class") if k in d}
+            )
+    bid = src.add(
+        "cf_bands",
+        "Ranges of the 2022-2026 total measured on the back-tests' cumulative errors; own bands for Mongolia, Yemen, Tajikistan and Moldova",
+        None,
+        bands.get("generated"),
+        "see research/2026-10/gaps/cf_bands-notes.md",
+    )
     for iso3, flows in cf["countries"].items():
         c = countries.get(iso3)
         if not c:
@@ -1322,6 +1397,23 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
             meth = d.get("method", "")
             obj["cf"] = "lin" if meth.startswith("linear") else "rf" if meth.startswith("random-forest") else "rw"
             obj["src"] = [x for x in obj.get("src", []) if x not in ("trend", "trend2")] + [sid]
+            # cumulative band per number of years summed (index 1-5; 5 = 2026 at 8 of 12 months), as [low, high]
+            # multipliers on the sum of the expected levels
+            cb = d.get("cumulative_band")
+            if not cb and not (iso3 == "BLR" and key == "to_rus"):  # Belarus keeps its own yearly band (round 5)
+                table = bands["cumulative_bands"]
+                cell = f"{key}/{d.get('size_class', 'M')}"
+                cb = (table["rw"] if obj["cf"] == "rw" and cell in table["rw"] else table["chosen"]).get(cell)
+            if cb:
+                hs = ["H1", "H2", "H3", "H4", "H5_2026_8of12"]
+                obj["cb"] = [None] + [[cb[h]["low"], cb[h]["high"]] for h in hs]
+                obj["src"].append(bid)
+            if key in ("buy_ukr", "sell_ukr") and key in (ua["countries"].get(iso3) or {}):
+                obj["src"].append(uid)
+            if iso3 == "MDA" and key == "to_rus":
+                # right-bank gas and other goods at 2019-2021 prices; the 2019-2021 average as the low alternative
+                m = bands["countries"]["MDA"]["to_rus"]["base_range_recommended_eur_bn_at_2019_2021_prices"]
+                obj["base"], obj["base_range"] = m["central"], [m["low"], m["high"]]
 
 
 LAUNDERED_PREWAR = json.loads(
@@ -1337,6 +1429,9 @@ def add_extra(c: dict, k: str, label: str, to_russia: dict[str, list[float]], ce
             "l": [round(-v, 5) for v in to_russia["high"]],
             "h": [round(-v, 5) for v in to_russia["low"]]}  # fmt: skip
     c.setdefault("extra", []).append(part)
+
+
+SANCTION_BLOCKED_LOANS = {"VNM", "IRQ", "BGD"}
 
 
 def apply_state_finance(countries: dict[str, dict], src: Sources) -> None:
@@ -1360,7 +1455,9 @@ def apply_state_finance(countries: dict[str, dict], src: Sources) -> None:
         for b in out:
             add = ro.get("to_add") or {}
             cc = ro.get("customs_correction") or {}
-            dev = sl.get("deviation_from_schedule") or {}
+            # Belarus's deferrals were granted by Russia and refinanced with new Russian loans: net of that, its
+            # repayments did not change by its own choice (round 6), so only its nuclear-plant part counts
+            dev = {} if iso3 == "BLR" else (sl.get("deviation_from_schedule") or {})
             add_base = (ro.get("to_add_base_2019_2021") or {}).get(b, 0.0)
             cc_base = sum((cc.get(str(y)) or {}).get(b, 0.0) for y in (2019, 2020, 2021)) / 3
             # the customs over-count is taken out of "paid", which is measured at pre-war prices: deflated the same way
@@ -1383,6 +1480,9 @@ def apply_state_finance(countries: dict[str, dict], src: Sources) -> None:
             continue
         cert = weakest([x for x in (ro.get("certainty"), sl.get("certainty")) if x] or ["D"])
         add_extra(c, "statefin", "Nuclear projects and state loans from Russia", out, cert[0], sid)
+        # repayments stopped because sanctions blocked the payment channels, not by the borrower's choice
+        if iso3 in SANCTION_BLOCKED_LOANS:
+            c["extra"][-1]["blocked"] = True
 
 
 def apply_company_flows(countries: dict[str, dict], src: Sources) -> None:
@@ -1576,6 +1676,25 @@ def apply_russian_arms(countries: dict[str, dict], src: Sources) -> None:
     round 5). Arms are almost entirely outside customs data; the small part inside it is taken out. Much of the fall
     came from Russia keeping its output for its own army, not from the buyer (not_buyer_choice_share, in the notes)."""
     ra = load(GAPS / "russian_arms_exports.json")
+    # round 6: 18 more buyers found for the "rest of world" (arms_r6.json), and Iran's payments partly settled in drones
+    # and missiles already counted as weapons sent to Russia: that part is taken off Iran's payments, not off its drones
+    r6 = load(GAPS / "arms_r6.json")
+    ra["countries"].update({k: v for k, v in r6["countries"].items() if k != "ROW"})
+    ov = r6["iran_overlap"]["overlap_eur_bn"]
+    irn = ra["countries"].get("IRN")
+    if irn:
+        for y, v in (irn.get("change_vs_expected") or {}).items():
+            o = ov.get(y) or {}
+            # the two ranges are independent: combined in quadrature around the middle, not end to end
+            oc, mid = o.get("central", 0.0), v["central"] + o.get("central", 0.0)
+            irn["change_vs_expected"][y] = {
+                "low": mid - math.hypot(v["central"] - v["low"], oc - o.get("low", oc)),
+                "central": mid,
+                "high": mid + math.hypot(v["high"] - v["central"], o.get("high", oc) - oc),
+            }
+        ex = irn.get("change_vs_expected_ex_customs") or {}
+        for y in ex:
+            ex[y] = ex[y] + (ov.get(y) or {}).get("central", 0.0)
     sid = src.add(
         "russian_arms",
         "Russian arms exports by buyer: Rosoboronexport and FSVTS statements, SIPRI fact sheets, contract reporting (S-400, Su-35, Su-57)",
@@ -1601,6 +1720,148 @@ def apply_russian_arms(countries: dict[str, dict], src: Sources) -> None:
         c["extra"][-1]["not_choice"] = (d.get("not_buyer_choice_share") or {}).get("central")
 
 
+def apply_payment_agents(countries: dict[str, dict], src: Sources) -> None:
+    """Fees that payment agents in third countries earn for settling Russia's trade outside normal banking
+    (payment_channels.json, round 6): not in customs values or services data. Only the share kept by residents (the
+    rest belongs to Russian-owned networks), against 2021. Already a margin: money earned from Russia."""
+    pc = load(GAPS / "payment_channels.json")
+    sid = src.add(
+        "payment_agents",
+        "Payment agents settling Russia's trade: Bank of Russia balance of payments, Russian Finance Ministry and customs letters on agent commissions, press and sanctions reporting",
+        "https://www.cbr.ru/eng/statistics/macro_itm/svs/",
+        pc.get("generated"),
+        "fees kept by residents of the agent's country, against 2021; see research/2026-10/gaps/payment_channels-notes.md",
+    )
+    for iso3, d in pc["countries"].items():
+        c, tr = countries.get(iso3), d.get("to_rus") or {}
+        if not c or not tr:
+            continue
+        out = {
+            b: [0.0 if y < 2022 else (tr.get(str(y)) or {}).get(b, 0.0) for y in YEARS]
+            for b in ("low", "central", "high")
+        }
+        add_extra(
+            c,
+            "agents",
+            "Fees earned settling Russia's trade (payment agents)",
+            out,
+            (d.get("certainty") or "D")[0],
+            sid,
+        )
+
+
+def apply_value_kept(countries: dict[str, dict], src: Sources) -> None:
+    """The money rule for money a country earns (value_kept.json, round 6): the value kept in its economy (domestic
+    value-added share, OECD TiVA; defence-industry evidence for weapons) x how much of it is genuinely extra. Stored as
+    factors (low, central, high) per kind of earning; calc() applies them instead of the flat 20% profit margin."""
+    vk = load(GAPS / "value_kept.json")
+    sid = src.add(
+        "value_kept",
+        "Value kept in the economy: OECD Trade in Value Added (TiVA, 2025 edition), defence-industry content studies; genuinely extra: production ramp-ups, trade-redirection studies",
+        "https://www.oecd.org/en/topics/sub-issues/trade-in-value-added.html",
+        vk.get("generated"),
+        "value kept x genuinely extra, per country and kind of earning; see research/2026-10/gaps/value_kept-notes.md",
+    )
+    keys = {"fw": ("flowback_weapons", "product"), "fo": ("flowback_other", "product"),
+            "rl": ("sales_to_russia_lost", "product"), "rx": ("sales_to_russia_extra", "product"),
+            "ux": ("sales_to_ukraine_extra", "product"), "sl": ("services_to_russia", "product"),
+            "sx": ("services_to_russia", "product_when_more"), "sh": ("shipping", "product")}  # fmt: skip
+    for iso3, d in vk["countries"].items():
+        c = countries.get(iso3)
+        if not c:
+            continue
+        out = {}
+        for k, (flow, field) in keys.items():
+            v = (d.get(flow) or {}).get(field) or (d.get(flow) or {}).get("product")
+            if v:
+                out[k] = [round(v["low"], 3), round(v["central"], 3), round(v["high"], 3)]
+        c["vk"] = out
+    # freight earned carrying Russian oil: gross freight x value kept x genuinely extra, in place of its profit share;
+    # insurance, ship sales and registry fees keep their profit shares (SHIPPING_PROFIT)
+    pf = SHIPPING_PROFIT["freight"]
+    for c in countries.values():
+        sh = c.get("shipping")
+        fr = sh.pop("_fr", None) if sh else None
+        f = (c.get("vk") or {}).get("sh")
+        if not fr or not f:
+            continue
+        for k, n in (("years", 1), ("years_lo", 0), ("years_hi", 2)):
+            sh[k] = [round(max(0.0, v - g * pf[n]) + g * f[n], 5) for v, g in zip(sh[k], fr[k])]
+        sh["base"] = round(fr["base"] * f[1], 5)
+        sh["base_range"] = [round(fr["base_range"][0] * f[0], 5), round(fr["base_range"][1] * f[2], 5)]
+        if sid not in sh["src"]:
+            sh["src"].append(sid)
+    for c in countries.values():
+        if c.get("shipping"):
+            c["shipping"].pop("_fr", None)
+    VALUE_KEPT_SRC.append(sid)
+
+
+VALUE_KEPT_SRC: list[str] = []
+
+
+def apply_money_ledger(countries: dict[str, dict], src: Sources) -> None:
+    """Where the money for Ukraine was spent (money_ledger.json, round 6): every euro that reached Ukraine (bilateral and
+    EU aid, frozen-asset loans, multilateral and private money, Ukraine's own arms purchases abroad) assigned once to the
+    economy where it was spent, plus purchases that replaced weapons given to Ukraine (up to the value given). Replaces
+    the earlier flowback estimates (own-industry shares, PURL, EU arms slice, arms bought abroad). Gross amounts; calc()
+    counts the value kept x genuinely extra. Stock donations earn nothing unless replaced."""
+    ml = load(GAPS / "money_ledger.json")
+    sid = src.add(
+        "money_ledger",
+        "Where the money for Ukraine was spent: Kiel Ukraine Support Tracker item coding (release 31), CSIS, DSCA notifications, Ukraine's Ministry of Finance, replacement purchases (DoD Inspector General, NAO, government statements)",
+        "https://www.ifw-kiel.de/topics/war-against-ukraine/ukraine-support-tracker/",
+        ml.get("generated"),
+        "each euro assigned once to the economy where it was spent; see research/2026-10/gaps/money_ledger-notes.md",
+    )
+    keys = ("own", "purl_in", "arms", "othsp")
+    for c in countries.values():
+        fb = c.get("flowback")
+        if fb:
+            for k in keys:
+                for suf in ("", "_lo", "_hi"):
+                    fb.pop(k + suf, None)
+    bands = (("", "central"), ("_lo", "low"), ("_hi", "high"))
+    for iso3, d in ml["countries"].items():
+        c = countries.get(iso3)
+        if not c or iso3 == "UKR":
+            continue
+        bst = d.get("by_source_and_type") or {}
+        rep = d.get("replacement_sales_eur_bn") or {}
+        rep_tot = (d.get("replacement_sales_total") or {}).get("central") or 0.0
+        self_share = (
+            ((d.get("replacement_bought_by_seller_total") or {}).get(iso3) or {}).get("central", 0.0) / rep_tot
+            if rep_tot
+            else 0.0
+        )
+        customs = d.get("already_in_customs_trade_eur_bn") or {}
+
+        def ser(names: list[str], y: int, b: str) -> float:
+            return sum((bst.get(n) or {}).get(str(y), {}).get(b, 0.0) for n in names)
+
+        fb = c.setdefault("flowback", {"src": []})
+        for suf, b in bands:
+            own, purl, arms, oth = [0.0], [0.0], [0.0], [0.0]
+            for y in YEARS[1:]:
+                r = (rep.get(str(y)) or {}).get(b, 0.0)
+                own.append(ser(["own_aid|weapons"], y, b) + r * self_share)
+                # weapons sales already in customs (counted as extra sales to Ukraine) come off all money that paid for
+                # weapons sold to Ukraine (other donors, the EU, ERA loans, private and Ukraine's budget), pro rata
+                bought = ser(["other_donors|weapons", "EU|weapons", "ERA|weapons", "private|weapons"], y, b)
+                ukr = ser(["UKR_budget|weapons"], y, b)
+                net = max(0.0, 1 - (customs.get(str(y)) or 0.0) / (bought + ukr)) if bought + ukr else 0.0
+                purl.append(bought * net + r * (1 - self_share))
+                arms.append(ukr * net)
+                oth.append(ser([k for k in bst if k.endswith("|other")], y, b))
+            for k, v in (("own", own), ("purl_in", purl), ("arms", arms), ("othsp", oth)):
+                fb[k + suf] = [round(x, 5) for x in v]
+        fb["cert_own"] = d.get("certainty") or "C"
+        fb["arms_cert"] = d.get("certainty") or "C"
+        fb["purl_src"] = fb["arms_src"] = [sid]
+        if sid not in fb.setdefault("src", []):
+            fb["src"].append(sid)
+
+
 def apply_weapons_value(countries: dict[str, dict], src: Sources) -> None:
     """Donated weapons at market value, the value to Ukraine (weapons_value.json, round 5): stock donations recorded at
     replacement cost or list price are corrected to what the equipment would fetch on the market. Stored as yearly
@@ -1623,6 +1884,58 @@ def apply_weapons_value(countries: dict[str, dict], src: Sources) -> None:
         aid["weapons_mv"] = {k: [round(t[n], 5) for t in trip] for k, n in (("l", 0), ("c", 1), ("h", 2))}
         if sid not in aid.setdefault("src", []):
             aid["src"].append(sid)
+
+
+def apply_laundered_r6(countries: dict[str, dict], src: Sources) -> None:
+    """Two more channels (laundered_r6.json, round 6): fuel from Brunei's Hengyi refinery, which runs on Russian crude
+    (Australia, Singapore, Malaysia, Viet Nam), and Russian fuel relabelled in Turkish ports without refineries and sold
+    to the EU (mostly Greece, partly resold). Added to the buyers' laundered oil; taken off Türkiye's and Brunei's own
+    payments to Russia, which they passed on. Australia's series replaces the one in laundered_eu.json."""
+    lr = load(GAPS / "laundered_r6.json")
+    sid = src.add(
+        "laundered_r6",
+        "Brunei's Hengyi refinery and Turkish ports relabelling Russian fuel: CREA, CSD, Eurostat Comext, UN Comtrade, Kpler-based reporting",
+        "https://energyandcleanair.org/",
+        lr.get("generated"),
+        "see research/2026-10/gaps/laundered_r6-notes.md",
+    )
+    keys = (("years", "central"), ("years_lo", "low"), ("years_hi", "high"))
+    for iso3, d in lr["countries"].items():
+        c = countries.get(iso3)
+        add = d.get("add_total_eur_bn") or {}
+        if not c or not add:
+            continue
+        get = lambda by, y, b: (by.get(str(y)) or {}).get(b, 0.0)  # noqa: E731
+        if iso3 in ("TUR", "BRN"):
+            # passed on: out of the hub's own payments to Russia
+            tr = c.get("to_rus")
+            if tr and iso3 == "BRN":
+                pass  # after apply_narrow(), which replaces Brunei's values: apply_brunei_r6()
+            elif tr:
+                sub = d.get("subtract_reexported_russian_products_eur_bn") or {
+                    y: {b: -v for b, v in x.items()} for y, x in add.items()
+                }
+                for k, b in (("years", "central"), ("years_lo", "high"), ("years_hi", "low")):
+                    tr[k] = [round(max(0.0, v - get(sub, y, b)), 5) for v, y in zip(tr[k], YEARS)]
+                if sid not in tr.setdefault("src", []):
+                    tr["src"].append(sid)
+            continue
+        lb = c.setdefault("laund", {"years": [0.0] * 6, "years_lo": [0.0] * 6, "years_hi": [0.0] * 6, "base": 0.0, "base_range": [0.0, 0.0], "cert": "C", "src": []})  # fmt: skip
+        repl = (d.get("replacement_for_laundered_eu_non_eu_AUS") or {}).get("new_total")
+        for k, b in keys:
+            lb[k] = [round(get(repl, y, b) if repl else lb[k][i] + get(add, y, b), 5) for i, y in enumerate(YEARS)]
+        trip = [sorted(t) for t in zip(lb["years_lo"], lb["years"], lb["years_hi"])]
+        lb["years_lo"], lb["years"], lb["years_hi"] = ([t[n] for t in trip] for n in range(3))
+        # the pre-war part of the Brunei channel raises the pre-war level too
+        pre = get(repl or add, 2021, "central")
+        if pre > 0 and not repl:
+            lb["base"] = round(lb.get("base", 0.0) + pre, 5)
+            lb["base_range"] = [
+                round(lb["base_range"][0] + get(add, 2021, "low"), 5),
+                round(lb["base_range"][1] + get(add, 2021, "high"), 5),
+            ]
+        if sid not in lb.setdefault("src", []):
+            lb["src"].append(sid)
 
 
 def apply_laundered_eu(countries: dict[str, dict], src: Sources) -> None:
@@ -1819,6 +2132,8 @@ def fix_artefacts(countries: dict[str, dict]) -> None:
     if t := ser("SYC", "shipping"):
         for k, f in (("years", 0.2), ("years_lo", 0.05), ("years_hi", 0.5)):
             t[k] = [round(v * f, 5) for v in t[k]]
+            if t.get("_fr"):
+                t["_fr"][k] = [v * f for v in t["_fr"][k]]
     # Malta: services bought from Russia reported as near zero after 2022 (confidential cells)
     if t := ser("MLT", "svc_bought"):
         new = [0.127, 0.133, 0.08, 0.07, 0.06, 0.04]
@@ -1891,6 +2206,24 @@ def apply_audit(countries: dict[str, dict], src: Sources) -> None:
         a["refugee_src"] = (a.get("refugee_src") or []) + [aid_src]
 
 
+def apply_brunei_r6(countries: dict[str, dict]) -> None:
+    """Brunei's customs record only part of the Russian crude its refinery takes in: payments to Russia are the true
+    crude intake minus the crude in fuel passed on to its buyers (counted for them as laundered oil), plus any other goods
+    from Russia (laundered_r6.json, option B). Runs after apply_narrow(), which sets Brunei's customs values."""
+    tr = (countries.get("BRN") or {}).get("to_rus")
+    if not tr:
+        return
+    ref = load(GAPS / "laundered_r6.json")["countries"]["BRN"]["refiner"]
+    cus, res = ref["customs_russian_imports_now_in_model_eur_bn"], ref["option_b_residual_kept_by_brunei_eur_bn"]
+    for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
+        tr[k] = [
+            round(max(0.0, v - cus.get(str(y), 0.0)) + (res.get(str(y)) or {}).get(b, 0.0), 5)
+            for v, y in zip(tr[k], YEARS)
+        ]
+    r21 = res["2021"]
+    tr["base"], tr["base_range"] = round(r21["central"], 5), [round(r21["low"], 5), round(r21["high"], 5)]
+
+
 def apply_narrow(countries: dict[str, dict], src: Sources) -> None:
     """Better data for the countries with the widest ranges (official statistics of Belarus, the EAEU members,
     Uzbekistan, Georgia, Turkey; tourism counts; intelligence estimates for North Korea): research/2026-10/gaps/narrow.json.
@@ -1908,6 +2241,8 @@ def apply_narrow(countries: dict[str, dict], src: Sources) -> None:
         if not c:
             continue
         for key, d in series.items():
+            if key == "military_rus":  # replaced by military_rus_r6.json (round 6)
+                continue
             obj = c.setdefault(key, {"cert": d.get("certainty") or "C", "src": []})
             # entries marked as unchanged only bring a better baseline or price index, not new yearly values; entries with
             # customs-level values (trade_layer) already entered at the start
@@ -2079,13 +2414,15 @@ def apply_shipping(countries: dict[str, dict], src: Sources, note) -> None:
     )
     # freight by the country that really controls each tanker (shadow_fleet.json, round 5): replaces shipping.json's
     # freight split; Russian-owned tankers behind UAE, Indian and Hong Kong fronts count for nobody abroad
-    sf = load(GAPS / "shadow_fleet.json")
+    sf = load(
+        GAPS / "shadow_fleet_r6.json"
+    )  # round 6: Russian share of opaque owners from sanctions and investigations
     src.add(
         "shadow_fleet",
         "Tanker control by country: KSE Institute shadow-fleet tracker, Lloyd's List, S&P Global, Kpler and Windward reporting, US/UK/EU sanctions designations",
         "https://kse.ua/russia-will-pay/",
         sf.get("generated"),
-        "beneficial owner or commercial controller, not the registered manager; see research/2026-10/gaps/shadow_fleet-notes.md",
+        "beneficial owner or commercial controller, not the registered manager; see research/2026-10/gaps/shadow_fleet_r6-notes.md",
     )
     for iso3 in sf["countries"]:
         sh["countries"].setdefault(iso3, {})
@@ -2106,6 +2443,8 @@ def apply_shipping(countries: dict[str, dict], src: Sources, note) -> None:
             }
         ov = d.get("overlap_share_with_services_sold_to_rus") or {}
         out = {"years": [0.0] * 6, "years_lo": [0.0] * 6, "years_hi": [0.0] * 6}
+        # gross freight kept apart: apply_value_kept() replaces its profit share with the money rule (round 6)
+        fr = {"years": [0.0] * 6, "years_lo": [0.0] * 6, "years_hi": [0.0] * 6}
         for part in parts:
             for i, y in enumerate(YEARS):
                 v = (d.get(part) or {}).get(str(y)) or {}
@@ -2117,6 +2456,10 @@ def apply_shipping(countries: dict[str, dict], src: Sources, note) -> None:
                 out["years"][i] += v.get("central", 0) * (1 - o.get("central", 0)) * pr[1] * sc["central"] * f26
                 out["years_lo"][i] += v.get("low", 0) * (1 - o.get("high", 0)) * pr[0] * sc["low"] * f26
                 out["years_hi"][i] += v.get("high", 0) * (1 - o.get("low", 0)) * pr[2] * sc["high"] * f26
+                if part == "freight":
+                    fr["years"][i] += v.get("central", 0) * (1 - o.get("central", 0))
+                    fr["years_lo"][i] += v.get("low", 0) * (1 - o.get("high", 0))
+                    fr["years_hi"][i] += v.get("high", 0) * (1 - o.get("low", 0))
         if not any(out["years_hi"]):
             continue
         b, ob = d.get("baseline_2019_2021") or {}, ov.get("freight") or {}
@@ -2128,6 +2471,11 @@ def apply_shipping(countries: dict[str, dict], src: Sources, note) -> None:
             ],
             "cert": d.get("certainty") or "D",
             "src": [sid],
+            "_fr": fr
+            | {
+                "base": b.get("central", 0) * (1 - ob.get("central", 0)),
+                "base_range": [b.get("low", 0) * (1 - ob.get("high", 0)), b.get("high", 0) * (1 - ob.get("low", 0))],
+            },
         }
         note(iso3, "Services trade with Russia", "est", "includes shipping and insuring Russian oil (estimate)")
 

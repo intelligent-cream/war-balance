@@ -1,9 +1,73 @@
-# Roadmap: round 5
+# Roadmap
 
-The work list for the next data round, agreed on 2026-10-18. Each item links to the limitation or method page it
+The work list for each data round. Round 6 is planned below; round 5 is done. Each item links to the limitation or method page it
 changes. Status is updated as items are done; the [changelog](changelog.md) records what each finished item changed.
 
-## Research
+## Round 6 (planned 2026-10-18)
+
+The main change of this round is a fairer way to count money that comes back from the war effort. The rest narrows
+the ranges and closes data gaps.
+
+### A. Two balances and one money rule (the main change)
+
+**Principle.** Every country gets two balances:
+
+- **with Ukraine**: what it gave (aid, refugees, extra purchases from Ukraine, donations) minus what it earned from the
+  war effort (money spent in its economy for Ukraine, by anyone);
+- **with Russia**: the change in money going to and coming from Russia.
+
+The headline adds the two. A negative Ukraine balance is shown as its real number and means **net earning from the war
+effort**, not money toward Russia.
+
+**One rule for all money.** Money a country *pays out* (aid, payments to Russia) counts at full value: it leaves the
+economy. Money a country *earns* (from the war effort, or from Russia) counts at the **value kept in its economy** (the
+domestic share of the sale, from OECD trade-in-value-added data) **× how much of it is genuinely extra** (business that
+would not exist otherwise: high for weapons production expanded for the war, lower for sales lost to Russia where firms
+found other buyers). Both with ranges. This replaces the flat 20% profit used so far for flowback, sales to Russia,
+services to Russia and shipping. The profit-only figures stay in the docs as a check.
+
+| # | step | kind |
+|---|---|---|
+| A1 | **All-money ledger**: every euro that reached Ukraine (bilateral aid, EU and multilateral money, frozen-asset loans, private donations, Ukraine's own budget spent on weapons abroad), by what it paid for and the economy where it was spent; each euro assigned once | research: done |
+| A2 | **Stock replacement**: purchases made to replace weapons given to Ukraine (e.g. the Netherlands buying new US systems), up to the donated value, not general rearmament | research: done |
+| A3 | **Value kept**: domestic value-added share per seller and kind of good (OECD TiVA; defence industry studies) | research: done |
+| A4 | **Genuinely extra**: for weapons (capacity built for the war, backlogs) and for sales to and from Russia (redirection to other buyers), per sector, with ranges | research: done |
+| A5 | Builder: flowback from the ledger at value kept × extra; the same rule for sales to Russia, services to Russia and shipping; the Ukraine and Russia balances, computed on the map (`calc()`) | done |
+| A6 | Map: blue when the total is positive; orange when negative mainly because of Russia; **gold** when negative mainly because of earning from the war effort; a thin gold outline on any other country whose Ukraine balance is negative; ochre flow lines from the war effort to earners (all ledger money) | done |
+| A7 | Country panel: two balance cards ("With Ukraine: gave X, earned back Y" and "With Russia"), then the total; How it works and docs explain the rule | done |
+| A8 | Comparison of every country before and after, shown to the owner before merging | check |
+
+### B. Narrower, honest ranges
+
+| # | step | kind |
+|---|---|---|
+| B1 | Measure the 90% range of the 2022–2026 total prediction error directly from the back-tests, instead of adding up yearly ranges | done: about as wide as before (×0.8–1.2), now measured ([ranges.md](method/ranges.md#quadrature-for-traded-flows-spread)) |
+| B2 | Own error bands for Russia's neighbours (Moldova, Kyrgyzstan, Tajikistan, Armenia, Georgia, Mongolia, Kazakhstan, Uzbekistan, Turkmenistan), tested on their own history | done: own bands for Mongolia, Yemen, Tajikistan, Moldova ([counterfactual.md](method/counterfactual.md#russias-neighbours-and-moldova-round-6)) |
+| B3 | Moldova: Transnistria gas and whether 2021 is a fair starting point | done: Transnistria's unpaid gas left out; range +7…+35% |
+| B4 | Phone display: range as a pale band in the part's colour behind the bar; checked for readability in dark mode at phone width | code: done |
+
+### C. Data gaps
+
+| # | step | kind |
+|---|---|---|
+| C1 | A home for the EUR 3bn of Russian arms income with no known buyer | done: 18 buyers, 1.2bn left |
+| C2 | Laundered oil: Brunei's refinery (Russian crude, sold to Australia) and Russian fuel relabelled in Turkish ports | done ([energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#per-country-values-for-the-eu-usa-uk-and-australia-round-5)) |
+| C3 | Shadow fleet: an evidence-based Russian share of tankers with opaque owners, per manager country | done |
+| C4 | Iran: drones sent to Russia against Su-35s bought from Russia, counted once | done |
+| C5 | Loan deferrals: Belarus counted net of Russia's new loans that repaid old ones; Viet Nam and Iraq labelled "blocked by sanctions, not the borrower's choice" | code: done |
+| C6 | More evidence for the predictions of trade with Ukraine | done: both flows back to 2021 held flat ([counterfactual.md](method/counterfactual.md#trade-with-ukraine-round-6)) |
+| C7 | Company taxes in Russia: richer data and more sources than KSE | done: KSE checked against company reports; seized firms and JTI fixed ([services-shipping-companies.md](method/services-shipping-companies.md#company-taxes)) |
+| C8 | Crypto and payment agents: any country split | done: agents' fees added ([trade.md](method/trade.md#payment-agents-round-6)) |
+| C9 | Military support to Russia: more certainty (North Korea, Iran, Belarus, China) | done: North Korea and Iran now C ([aid-refugees-military.md](method/aid-refugees-military.md#round-6-revision)) |
+
+### D. Finish
+
+Integrate, update the docs and translations, a fresh review agent, the before/after comparison (A8), then merge into
+`develop`. Nothing goes to `main` without the owner's "go live".
+
+## Round 5 (done)
+
+### Research
 
 | # | item | what changes | status |
 |---|---|---|---|
@@ -27,7 +91,7 @@ changes. Status is updated as items are done; the [changelog](changelog.md) reco
 | 26 | Interest and repayments on Russia's state loans to other countries | money to Russia | done ([russia-state-and-companies.md](method/russia-state-and-companies.md)) |
 | 27 | Pledged versus delivered aid: count delivered or firmly allocated aid only | aid | checked: the map counts allocations; guarantees now at economic value |
 
-## Code
+### Code
 
 | # | item | status |
 |---|---|---|
@@ -40,7 +104,7 @@ changes. Status is updated as items are done; the [changelog](changelog.md) reco
 | 15 | Translate the status line, source names and notes from the data | done: 135 data strings in all six languages (`tData()`) |
 | 16 | Docs: record deliberate choices (actual figures as model inputs; 90% ranges as tested) | done ([counterfactual.md](method/counterfactual.md#deliberate-choices)) |
 
-## Decided not to do
+### Decided not to do
 
 - **Wider ranges for Russia-side shocks.** The counterfactual's ranges stay at their tested 90% for normal periods.
   Stretching them for a rare Russia-side shock would blur the result more than it adds honesty, since the map already

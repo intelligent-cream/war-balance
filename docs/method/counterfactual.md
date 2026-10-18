@@ -132,6 +132,7 @@ The full tables for all 16 models, by size class, with bias, a bootstrap check a
 | from_rus (sold to Russia) | `lin` | **+17.7%** (20/11/22%) | bootstrap interval above zero in all three tests |
 | buy_ukr (bought from Ukraine) | `lin` | **+18.2%** (8/28%) | two tests only; 2008 interval includes zero |
 | sell_ukr (sold to Ukraine) | `rf` | **+24.6%** (9/40%) | two tests only; lost for large flows in 2008 |
+| buy_ukr, sell_ukr (round 6) | `rw` | 13 rolling origins: `lin` +4% (worse at 2 of 10), `rf` +6% (worse at 4 of 10) with the map's inputs; see section 7 |
 | svc_bought, svc_sold | `rw` + travel recovery | – | `lin` wins 2008 and 2016 but is 0–7% worse in 2013 |
 
 ## 6. Which model is used for which flow
@@ -139,7 +140,7 @@ The full tables for all 16 models, by size class, with bias, a bootstrap check a
 | flow on the map | expected level | why |
 |---|---|---|
 | Sold to Russia (`from_rus`) | linear nowcast (`lin`) | clear win in all three tests, about 18% more accurate. Growth in exports to everyone else carries over (coefficient 0.51), spikes fade (momentum −0.16 and −0.28), higher pre-war oil-price paths lift Russia's import capacity |
-| Bought from / sold to Ukraine (`buy_ukr`, `sell_ukr`) | `lin` / random forest | pass the rule on weaker evidence (two tests) |
+| Bought from / sold to Ukraine (`buy_ukr`, `sell_ukr`) | 2021 held flat (round 6; `lin` / random forest before) | with more back-tests neither model passes the rule; see below |
 | Bought from Russia (`to_rus`) | 2021 held flat | what a country buys from Russia depends on Russian supply and prices, which partner-side data cannot see |
 | Services (`svc_bought`, `svc_sold`) | 2021 held flat + travel recovery | 2021 was a COVID year for travel; the 2021 shortfall against 2019 closes at the UNWTO world pace (49% of the gap open in 2022, 17% in 2023, 1% in 2024, closed from 2025). The recovery is sized on the model's own 2021 level: where the map's 2021 is higher (its source shows little COVID dip), `counterfactual()` caps the expected level at the model's recovered level in euros (`eur_bn_at_2018_2021_prices`), so the recovery is not applied twice (Montenegro: +10.8% → +5.4% of GDP) |
 | Re-export hubs and Belarus (ARM, GEO, KAZ, KGZ, UZB, TUR, AZE, MNG, TJK, SRB, ARE, BLR) | 2021 held flat | their trade with the rest of the world was itself reshaped by goods passing through to Russia (`HUBS_CF` in build_data.py) |
@@ -193,6 +194,46 @@ flows in the generic test. Its 90% band for 2026 is ×0.72–1.44 instead of ×0
 Belarus's GDP failed the 2013 test with forecasts available at the time). Its exports to Russia keep the generic band,
 which rests on far more errors. Belarus's range narrows from −79% to +51% of GDP to −58% to +19%; it still crosses
 zero. [`belarus.json`](../../research/2026-10/gaps/belarus.json) ([notes](../../research/2026-10/gaps/belarus-notes.md)).
+
+### Trade with Ukraine (round 6)
+
+Round 4 chose a linear model for purchases from Ukraine and a random forest for sales to Ukraine on two back-tests.
+Round 6 tested them on far more evidence ([`ua_trade_cf.json`](../../research/2026-10/gaps/ua_trade_cf.json),
+[notes](../../research/2026-10/gaps/ua_trade_cf-notes.md)): rolling origins on Ukraine's own 2004–2021 trade, and
+trade with eight analogue partners (Poland, Romania, Türkiye, Kazakhstan, Georgia, Moldova, Bulgaria, Hungary) from
+IMF DOTS. Scored with the commodity-price *forecasts* the map actually feeds them (not realised prices), their gains
+roughly halve (`lin` +8%, `rf` +10%) and they lose at several origins. Both flows now hold 2021 flat, with bands from
+the random walk's own rolling errors and a measured cumulative band (2026 for large flows: purchases ×0.46–2.67, sales
+×0.20–2.54).
+
+A simple share model for sales to Ukraine (`sh_last`: 2021 share of the country's other exports) is 18–20% better on
+average but 0.8% worse at one origin (2008), so it misses the rule by a hair; it is kept in the file as an alternative.
+The effect on the map is small: Moldova +2.5 points of GDP, every other country under 0.2.
+
+### Russia's neighbours and Moldova (round 6)
+
+Each of Russia's neighbours was tested on its own 2005–2020 history (the counterfactual's series and Russia's mirror
+report, 1–5 years ahead). An own band is used only where it is at least 10% narrower than the generic one and still
+covers its held-out years:
+
+| country, flow | 2022–2026 band of the expected total | generic band |
+|---|---|---|
+| Mongolia, payments to Russia | ×0.85–1.85 | ×0.61–1.74 (same width, moved up) |
+| Mongolia, sales to Russia | ×0.66–2.62 | ×0.21–3.48 |
+| Yemen, payments to Russia | ×0.58–2.19 | ×0.42–3.51 |
+| Tajikistan, sales to Russia | ×0.41–2.59 | ×0.21–3.48 |
+| Moldova, payments to Russia | ×0.85–1.44 | ×0.42–3.51 |
+
+Kyrgyzstan, Armenia, Kazakhstan, Uzbekistan and Georgia, and Tajikistan's payments to Russia, keep the generic band:
+their own history was no steadier, or too short to test.
+
+**Moldova.** Its customs data hold the gas right-bank Moldova bought from Gazprom until December 2022. The gas research
+added Transnistria's Gazprom gas in the high case. Transnistria never paid for that gas, and it ended on 1 January
+2025, so it is support for Transnistria, not money to Russia. It is now left out of the baseline and the actual values
+alike (also from the fossil-fuel floor used for pipeline-gas countries). The pre-war level is EUR 0.76bn at 2019–2021 prices (gas 0.25, other goods 0.51; 2019–2021 average as the low
+alternative, 0.64). The expected path is 0.97 × 2021: right-bank gas at its 2019–2021 average volume. Moldova's
+headline barely moves (+17.2% to +16.9% of GDP), but its range narrows from −14…+74% to +7…+35%.
+[`cf_bands.json`](../../research/2026-10/gaps/cf_bands.json) ([notes](../../research/2026-10/gaps/cf_bands-notes.md)).
 
 ### Deliberate choices
 

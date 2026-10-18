@@ -31,13 +31,15 @@ How the four flows enter the net shift (`calc()` in [`site/index.html`](../../si
 | flow | part | counted as |
 |---|---|---|
 | `to_rus` | Less / more paid to Russia | full change in volume at pre-war prices |
-| `from_rus` | Profit lost on sales given up / profit on extra sales | change × 20% margin |
+| `from_rus` | Income lost on sales given up / income from extra sales | change × value kept × genuinely extra ([the money rule](overview.md#the-money-rule-round-6)) |
 | `buy_ukr` | Extra purchases from Ukraine | rise above expected, each year, full value; a fall is not held against a country |
-| `sell_ukr` | Extra sales to Ukraine | rise above expected, × 20%, subtracted as flowback |
+| `sell_ukr` | Extra sales to Ukraine | rise above expected, × the money rule, subtracted as flowback |
 
 ## Profit, not revenue
 
 Selling EUR 10bn less to Russia does not cost the seller EUR 10bn: the goods would have cost money to make. Since round 4, sales given up and extra sales (goods and services) count as the seller's **profit**, `META.lost_margin = 0.2` (about 20%), the same share used for flowback. `profit3()` in `calc()` applies it with a range of 0.5× to 1.5× the margin. The audit had shown why this matters: Cyprus at +30% of GDP and Lithuania at +45% came from sales and services counted at gross revenue ([audit2-notes.md §5](../../research/2026-10/gaps/audit2-notes.md)). In the cost view, the same 20% is the "profit lost on sales to Russia".
+
+**Round 6: the money rule replaces the flat 20%.** Income from sales to Russia now counts at the value kept in the seller's economy (OECD TiVA) times the share that is genuinely extra, with separate factors for sales lost and extra sales, and for goods and services ([overview.md](overview.md#the-money-rule-round-6)). The 20% figures above stay as a check. Labels now read "income" rather than "profit".
 
 ## Re-export hubs
 
@@ -93,7 +95,18 @@ Russia's own customs record more imports than its partners report selling: EUR 2
 
 ## Gold and hidden channels
 
-"Gold and hidden payments to Russia" holds money that appears nowhere in customs data ([`uncovered.json`](../../research/2026-10/gaps/uncovered.json) `hidden_channels`, [notes §2](../../research/2026-10/gaps/uncovered-notes.md), certainty D): Kyrgyzstan's gold gap (partners record 16–52 t a year more than Kyrgyzstan exports; 0/25/75% assumed Russian), Hong Kong's 2026 gold, and high-band margins for China, Turkey, Kazakhstan, Armenia and India. UAE gold is in its customs data and is zero here (audit 2). Kyrgyzstan's hidden gold is passed on to the buyers of Kyrgyz gold ([`kgz_gold.json`](../../research/2026-10/gaps/kgz_gold.json), UN Comtrade HS 7108 imports from Kyrgyzstan 2023–2024: Switzerland 37%, China 33% with Hong Kong, UK 15%, UAE 11%); Kyrgyzstan keeps 5%. Crypto and payment agents are not added: they mostly pay for trade that customs already record, and no source splits them by country.
+"Gold and hidden payments to Russia" holds money that appears nowhere in customs data ([`uncovered.json`](../../research/2026-10/gaps/uncovered.json) `hidden_channels`, [notes §2](../../research/2026-10/gaps/uncovered-notes.md), certainty D): Kyrgyzstan's gold gap (partners record 16–52 t a year more than Kyrgyzstan exports; 0/25/75% assumed Russian), Hong Kong's 2026 gold, and high-band margins for China, Turkey, Kazakhstan, Armenia and India. UAE gold is in its customs data and is zero here (audit 2). Kyrgyzstan's hidden gold is passed on to the buyers of Kyrgyz gold ([`kgz_gold.json`](../../research/2026-10/gaps/kgz_gold.json), UN Comtrade HS 7108 imports from Kyrgyzstan 2023–2024: Switzerland 37%, China 33% with Hong Kong, UK 15%, UAE 11%); Kyrgyzstan keeps 5%. The payments themselves are not added again: payment agents and crypto settle trade that customs already record. Only the fees the agents keep are added, since round 6 (next section).
+
+## Payment agents (round 6)
+
+Agents in third countries settle much of Russia's trade outside normal banking and charge fees (3–4% in 2022–2024,
+peaks of 10–15%, 2–2.5% since 2025) that are in neither customs values nor services data. The share of those fees kept
+by residents (35–60%; the rest belongs to Russian-owned networks), against 2021, counts as money earned from Russia,
+about EUR 7bn over 2022–2026: China 1.7bn, Kazakhstan 1.1, the UAE 1.0, Hong Kong 0.9, Türkiye 0.85, Kyrgyzstan 0.7
+(checked against Kyrgyz banks' extra profits), Armenia 0.45. The country split is an educated guess (certainty D; C for
+Kyrgyzstan). Crypto volumes (Garantex, the A7A5 rouble stablecoin) and the 2022 transfers of people leaving Russia have
+no country split or are not payments to Russia, and are not counted
+([`payment_channels.json`](../../research/2026-10/gaps/payment_channels.json), [notes](../../research/2026-10/gaps/payment_channels-notes.md)).
 
 ## Freight: CIF to FOB
 

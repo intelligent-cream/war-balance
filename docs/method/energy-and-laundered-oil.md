@@ -46,9 +46,22 @@ come from CREA's country figures. Italy, Spain, France and Slovenia were too low
 Jamnagar, Vadinar and STAR); the Netherlands, Germany, Malta and Cyprus too high (refiners' mirror data and bunkers).
 2026 drops sharply after the EU ban of 21 January 2026 on fuel made from Russian crude.
 
-Not yet covered: Brunei's Hengyi refinery (about 60% Russian crude, a main source of Australia's fuel in 2025–26) is
-not in the refiner list, and relabelled Russian products from Turkish ports without refineries (Ceyhan, Marmara
-Ereğlisi, Mersin; EUR 3.1–3.3bn a year to the EU, mostly Greece) are recorded under other origins in EU customs.
+Round 6 adds two channels ([`laundered_r6.json`](../../research/2026-10/gaps/laundered_r6.json),
+[notes](../../research/2026-10/gaps/laundered_r6-notes.md)), added to the buyers and taken off the hub's own payments:
+
+- **Brunei's Hengyi refinery**: Russian crude rose from 4–5% of its intake in 2022–23 to 37% in 2025 and 68% in 2026;
+  its fuel goes mostly to Australia, then Singapore, Malaysia and Viet Nam (EUR 2.0bn of Russian crude in 2022–2026;
+  checked against CREA's 2.6 Mt to Australia). Brunei's customs record only part of this crude, so its payments to
+  Russia are its true Russian crude intake (refinery throughput × Russian share) minus what it passed on, plus any
+  other goods (`apply_brunei_r6()`): EUR 0.14–0.97bn a year kept for paraxylene, benzene and home use. Brunei's total
+  moves from +6.6% to −4.8% of GDP (likely range −18% to +11%).
+- **Turkish ports without refineries** (Ceyhan, Marmara Ereğlisi, Mersin): Russian fuel relabelled and sold to the EU,
+  EUR 2.6–3.3bn a year in 2023–2025 (CREA/CSD), mostly Greece, which resells half. Counted at 0.76 per euro (Russian
+  product, not refined). Greek imports labelled Iraq, Turkmenistan, Kazakhstan or Azerbaijan rose from EUR 0.04bn a
+  year to 1.3–1.6bn. Türkiye's payments to Russia fall by what it passed on (EUR 7.3bn).
+
+Not covered: non-EU buyers from the Turkish ports (about EUR 1–1.5bn a year, buyers unknown) and Georgia's Black Sea
+terminals.
 
 ### Hub resale chain
 

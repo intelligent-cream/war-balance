@@ -97,14 +97,18 @@ for iso3, d in kiel["donors"].items():
         era_bad.append(iso3)
 check("ERA loans not counted as a cost", not era_bad, f"too high: {era_bad or 'none'}")
 
-# 6. NATO PURL: what payers spent abroad vs what the US received
-paid = sum(total((c.get("flowback") or {}).get("purl_out")) for c in countries.values())
-received = total((countries.get("USA", {}).get("flowback") or {}).get("purl_in"))
+# 6. the all-money ledger (round 6): money flowing back across all countries cannot exceed the money that reached
+# Ukraine plus replacement purchases (each euro is assigned to one economy at most)
+LEDGER = json.loads((ROOT / "research/2026-10/gaps/money_ledger.json").read_text())
+reached = sum(v["total"] for v in LEDGER["top_level"]["sources"].values() if isinstance(v, dict) and "total" in v)
+repl = sum(r["high"] for r in LEDGER["replacement"]["rows_buyer_seller_total_paid_by_aug_2026"].values())
+back = sum(
+    total((c.get("flowback") or {}).get(k)) for c in countries.values() for k in ("own", "purl_in", "arms", "othsp")
+)
 check(
-    "PURL paid ~ received by the US",
-    received == 0 or abs(paid - received) / received < 0.5,
-    f"payers {paid:.2f} vs US {received:.2f} EUR bn (payer amounts are incomplete in sources)",
-    warn_only=True,
+    "flowback within the money that reached Ukraine",
+    back <= reached + repl,
+    f"flowing back {back:.1f} vs reached {reached:.1f} + replacement {repl:.1f} EUR bn",
 )
 
 # 7. Hong Kong gold is counted once (trade data), not again as a hidden channel

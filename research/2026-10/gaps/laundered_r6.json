@@ -1,0 +1,8498 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "Two channels of laundered Russian oil missing from the model (roadmap round 6, C2): (1) fuel from Brunei's Hengyi refinery (Pulau Muara Besar), which runs Russian crude, by buyer; (2) Russian oil products relabelled in Turkish ports without refineries (Ceyhan, Marmara Ereglisi, Mersin; Dortyol/Hatay terminals inside the Ceyhan-Iskenderun figure) and re-exported to the EU, by buyer. Plus the matching amounts to take off Brunei and Turkiye.",
+  "units": "EUR bn, nominal, low/central/high; 2026 = January-August, not annualised. USD converted with ECB yearly averages: 2019 1.120, 2020 1.142, 2021 1.183, 2022 1.053, 2023 1.081, 2024 1.082, 2025 1.13, 2026 1.16.",
+  "method": "Brunei: Brunei-reported HS 2710 exports by partner averaged with partners' imports from Brunei (/1.05 CIF to FOB), UN Comtrade 2019-2025; 2026 Jan-Aug from partners' monthly imports (AUS, MYS, SGP Jan-Mar extrapolated, JPN, PHL; others = 2025 x 8/12 x 1.3). x Russian share of Hengyi crude (CREA Sep 2026: 5% 2022, 37% 2025, 72% Jan-Jul 2026; CREA Feb 2025/2026 and KSE/Kpler for 2024-26; Brunei customs and CREA tracker for 2020-2023) = Russian-derived fuel value; x CRUDE_CONTENT 0.42/0.50/0.60 = Russian crude value, the same ratio the builder uses. Turkish ports: value of EU imports from the three ports (CREA/CSD May 2024: EUR 3.1 bn Feb 2023-Feb 2024; CREA Feb 2026: EUR 3.3 bn Feb 2025-Jan 2026, Greece 2.54, Cyprus 0.289, Bulgaria 0.179, Malta 0.104, Spain 0.092), 2024 interpolated, 2026 from Greek Comext pace; x Russian share of port supply (82-86%) x Russian sale price / EU purchase price (0.9) = money Russia received (0.756 per euro; 0.52-0.90). This is Russian product, not refined from Russian crude, so it is valued at the full Russian product value, not CRUDE_CONTENT. Split by member from CREA (2025) and Comext origin data (Greek imports labelled Iraq, Turkmenistan, Kazakhstan, Azerbaijan). Greece resells 50% (energy2 hub_resale) to its customers (hub_exports_2024). Overlap with laundered_eu.json removed (Turkish-labelled part; Cyprus 'not specified' part).",
+  "builder": "Per buyer: add `add_total_eur_bn` to the laundered-oil (laund) values after apply_laundered_eu(). For AUS use `replacement_for_laundered_eu_non_eu_AUS.new_total` instead of laundered_eu non_eu AUS (add_total is the difference). For hubs (SGP, MYS, NLD) better: put the Brunei fuel value into the starting values of reassign_laundered_oil() so the hub pass-on applies. Pre-war: add `brunei.prewar_base_2018_2021_fuel_value` to LAUNDERED_PREWAR base (product stage) per buyer; the Turkish-port channel has a zero pre-war base. Turkiye: subtract `subtract_reexported_russian_products_eur_bn` from its payments to Russia (it equals the buyers' gross amount, incl. the part already in laundered_eu). Brunei: take off `refiner.deduct_exported_crude_value_eur_bn` (equals what the buyers are charged); because Brunei customs under-record Russian crude (cargoes labelled Malaysia after ship-to-ship transfers), first replace Brunei's crude line from Russia by `true_russian_crude_intake_eur_bn` (option B), or floor the result at zero (option A)."
+ },
+ "countries": {
+  "TUR": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0009,
+      "high": 0.0032
+     },
+     "2023": {
+      "low": 0.011,
+      "central": 0.0219,
+      "high": 0.0311
+     },
+     "2024": {
+      "low": 0.0145,
+      "central": 0.0276,
+      "high": 0.0394
+     },
+     "2025": {
+      "low": 0.0176,
+      "central": 0.0324,
+      "high": 0.0445
+     },
+     "2026": {
+      "low": 0.0011,
+      "central": 0.0049,
+      "high": 0.0121
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     },
+     "2023": {
+      "low": 0.0009,
+      "central": 0.0013,
+      "high": 0.0015
+     },
+     "2024": {
+      "low": 0.002,
+      "central": 0.0027,
+      "high": 0.0032
+     },
+     "2025": {
+      "low": 0.0021,
+      "central": 0.0026,
+      "high": 0.003
+     },
+     "2026": {
+      "low": 0.0001,
+      "central": 0.0002,
+      "high": 0.0004
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0009,
+      "high": 0.0032
+     },
+     "2023": {
+      "low": 0.0097,
+      "central": 0.0206,
+      "high": 0.0298
+     },
+     "2024": {
+      "low": 0.0118,
+      "central": 0.0249,
+      "high": 0.0367
+     },
+     "2025": {
+      "low": 0.015,
+      "central": 0.0298,
+      "high": 0.0419
+     },
+     "2026": {
+      "low": 0.0009,
+      "central": 0.0047,
+      "high": 0.0119
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": -0.0,
+     "central": -0.0,
+     "high": -0.0
+    },
+    "2022": {
+     "low": -0.27,
+     "central": -0.075,
+     "high": -0.0
+    },
+    "2023": {
+     "low": -2.79,
+     "central": -1.9656,
+     "high": -0.988
+    },
+    "2024": {
+     "low": -3.24,
+     "central": -2.268,
+     "high": -1.196
+    },
+    "2025": {
+     "low": -3.42,
+     "central": -2.4948,
+     "high": -1.352
+    },
+    "2026": {
+     "low": -1.19,
+     "central": -0.48,
+     "high": -0.105
+    }
+   },
+   "add_total_2022_2026_central": -7.2834,
+   "subtract_reexported_russian_products_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.075,
+     "high": 0.27
+    },
+    "2023": {
+     "low": 0.988,
+     "central": 1.9656,
+     "high": 2.79
+    },
+    "2024": {
+     "low": 1.196,
+     "central": 2.268,
+     "high": 3.24
+    },
+    "2025": {
+     "low": 1.352,
+     "central": 2.4948,
+     "high": 3.42
+    },
+    "2026": {
+     "low": 0.105,
+     "central": 0.48,
+     "high": 1.19
+    }
+   },
+   "certainty": "C",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale); re-export hub: its Russian product imports re-exported to the EU are counted at the buyers"
+  },
+  "GRC": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0525,
+      "high": 0.189
+     },
+     "2023": {
+      "low": 0.6521,
+      "central": 1.2973,
+      "high": 1.8414
+     },
+     "2024": {
+      "low": 0.8611,
+      "central": 1.633,
+      "high": 2.3328
+     },
+     "2025": {
+      "low": 1.041,
+      "central": 1.921,
+      "high": 2.6334
+     },
+     "2026": {
+      "low": 0.063,
+      "central": 0.288,
+      "high": 0.714
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0263,
+      "high": 0.0945
+     },
+     "2023": {
+      "low": 0.326,
+      "central": 0.6486,
+      "high": 0.9207
+     },
+     "2024": {
+      "low": 0.4306,
+      "central": 0.8165,
+      "high": 1.1664
+     },
+     "2025": {
+      "low": 0.5205,
+      "central": 0.9605,
+      "high": 1.3167
+     },
+     "2026": {
+      "low": 0.0315,
+      "central": 0.144,
+      "high": 0.357
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0013,
+      "high": 0.0038
+     },
+     "2023": {
+      "low": 0.0279,
+      "central": 0.0381,
+      "high": 0.0455
+     },
+     "2024": {
+      "low": 0.0606,
+      "central": 0.0791,
+      "high": 0.0949
+     },
+     "2025": {
+      "low": 0.0617,
+      "central": 0.0783,
+      "high": 0.0901
+     },
+     "2026": {
+      "low": 0.0026,
+      "central": 0.007,
+      "high": 0.0122
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.025,
+      "high": 0.0932
+     },
+     "2023": {
+      "low": 0.2879,
+      "central": 0.6105,
+      "high": 0.8826
+     },
+     "2024": {
+      "low": 0.3515,
+      "central": 0.7374,
+      "high": 1.0873
+     },
+     "2025": {
+      "low": 0.4422,
+      "central": 0.8822,
+      "high": 1.2384
+     },
+     "2026": {
+      "low": 0.0245,
+      "central": 0.137,
+      "high": 0.35
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.025,
+     "high": 0.0932
+    },
+    "2023": {
+     "low": 0.2879,
+     "central": 0.6105,
+     "high": 0.8826
+    },
+    "2024": {
+     "low": 0.3515,
+     "central": 0.7374,
+     "high": 1.0873
+    },
+    "2025": {
+     "low": 0.4422,
+     "central": 0.8822,
+     "high": 1.2384
+    },
+    "2026": {
+     "low": 0.0245,
+     "central": 0.137,
+     "high": 0.35
+    }
+   },
+   "add_total_2022_2026_central": 2.3921,
+   "certainty": "C",
+   "role": "buyer of relabelled Russian products from Turkish ports"
+  },
+  "BRN": {
+   "refiner": {
+    "deduct_exported_crude_value_eur_bn": {
+     "2021": {
+      "low": 0.0762,
+      "central": 0.2138,
+      "high": 0.4148
+     },
+     "2022": {
+      "low": 0.0723,
+      "central": 0.1195,
+      "high": 0.2521
+     },
+     "2023": {
+      "low": 0.0389,
+      "central": 0.0689,
+      "high": 0.1363
+     },
+     "2024": {
+      "low": 0.207,
+      "central": 0.3542,
+      "high": 0.5737
+     },
+     "2025": {
+      "low": 0.2994,
+      "central": 0.5236,
+      "high": 0.934
+     },
+     "2026": {
+      "low": 0.412,
+      "central": 0.9268,
+      "high": 1.439
+     }
+    },
+    "deduct_2019_2021_avg_central": 0.094,
+    "customs_russian_imports_now_in_model_eur_bn": {
+     "2021": 1.107,
+     "2022": 0.22,
+     "2023": 0.222,
+     "2024": 0.763,
+     "2025": 0.471,
+     "2026": 0.367
+    },
+    "true_russian_crude_intake_eur_bn": {
+     "2021": {
+      "low": 0.3488,
+      "central": 0.7412,
+      "high": 1.09
+     },
+     "2022": {
+      "low": 0.2067,
+      "central": 0.2584,
+      "high": 0.4134
+     },
+     "2023": {
+      "low": 0.109,
+      "central": 0.1453,
+      "high": 0.218
+     },
+     "2024": {
+      "low": 0.6486,
+      "central": 0.8393,
+      "high": 1.0301
+     },
+     "2025": {
+      "low": 0.9892,
+      "central": 1.3071,
+      "high": 1.7664
+     },
+     "2026": {
+      "low": 1.1873,
+      "central": 1.8996,
+      "high": 2.2426
+     }
+    },
+    "true_intake_2019_2021_avg_central": 0.2897,
+    "option_b_residual_kept_by_brunei_eur_bn": {
+     "2021": {
+      "low": 0,
+      "central": 0.5274,
+      "high": 1.0138
+     },
+     "2022": {
+      "low": 0,
+      "central": 0.1389,
+      "high": 0.3411
+     },
+     "2023": {
+      "low": 0,
+      "central": 0.0764,
+      "high": 0.1791
+     },
+     "2024": {
+      "low": 0.0749,
+      "central": 0.4851,
+      "high": 0.8231
+     },
+     "2025": {
+      "low": 0.0552,
+      "central": 0.7835,
+      "high": 1.467
+     },
+     "2026": {
+      "low": 0,
+      "central": 0.9728,
+      "high": 1.8306
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": -0.4148,
+     "central": -0.2138,
+     "high": -0.0762
+    },
+    "2022": {
+     "low": -0.2521,
+     "central": -0.1195,
+     "high": -0.0723
+    },
+    "2023": {
+     "low": -0.1363,
+     "central": -0.0689,
+     "high": -0.0389
+    },
+    "2024": {
+     "low": -0.5737,
+     "central": -0.3542,
+     "high": -0.207
+    },
+    "2025": {
+     "low": -0.934,
+     "central": -0.5236,
+     "high": -0.2994
+    },
+    "2026": {
+     "low": -1.439,
+     "central": -0.9268,
+     "high": -0.412
+    }
+   },
+   "add_total_2022_2026_central": -1.993,
+   "certainty": "C",
+   "role": "refiner: exported Russian crude counted at buyers"
+  },
+  "SGP": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0761,
+      "central": 0.1797,
+      "high": 0.2906
+     },
+     "2022": {
+      "low": 0.0516,
+      "central": 0.0717,
+      "high": 0.1262
+     },
+     "2023": {
+      "low": 0.0348,
+      "central": 0.0515,
+      "high": 0.085
+     },
+     "2024": {
+      "low": 0.1376,
+      "central": 0.1978,
+      "high": 0.2671
+     },
+     "2025": {
+      "low": 0.1755,
+      "central": 0.2577,
+      "high": 0.3831
+     },
+     "2026": {
+      "low": 0.1676,
+      "central": 0.3167,
+      "high": 0.4098
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.032,
+      "central": 0.0898,
+      "high": 0.1744
+     },
+     "2022": {
+      "low": 0.0217,
+      "central": 0.0359,
+      "high": 0.0757
+     },
+     "2023": {
+      "low": 0.0146,
+      "central": 0.0258,
+      "high": 0.051
+     },
+     "2024": {
+      "low": 0.0578,
+      "central": 0.0989,
+      "high": 0.1602
+     },
+     "2025": {
+      "low": 0.0737,
+      "central": 0.1289,
+      "high": 0.2299
+     },
+     "2026": {
+      "low": 0.0704,
+      "central": 0.1583,
+      "high": 0.2459
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0278,
+     "central": 0.0645,
+     "high": 0.1003
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0117,
+     "central": 0.0323,
+     "high": 0.0602
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 1.2503,
+     "2022": 1.5104,
+     "2023": 1.3923,
+     "2024": 0.9729,
+     "2025": 0.7872,
+     "2026": 0.5402
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.032,
+     "central": 0.0898,
+     "high": 0.1744
+    },
+    "2022": {
+     "low": 0.0217,
+     "central": 0.0359,
+     "high": 0.0757
+    },
+    "2023": {
+     "low": 0.0146,
+     "central": 0.0258,
+     "high": 0.051
+    },
+    "2024": {
+     "low": 0.0578,
+     "central": 0.0989,
+     "high": 0.1602
+    },
+    "2025": {
+     "low": 0.0737,
+     "central": 0.1289,
+     "high": 0.2299
+    },
+    "2026": {
+     "low": 0.0704,
+     "central": 0.1583,
+     "high": 0.2459
+    }
+   },
+   "add_total_2022_2026_central": 0.4478,
+   "certainty": "C",
+   "role": "buyer of Hengyi (Brunei) fuel"
+  },
+  "ITA": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0075,
+      "high": 0.027
+     },
+     "2023": {
+      "low": 0.0692,
+      "central": 0.1376,
+      "high": 0.1953
+     },
+     "2024": {
+      "low": 0.0598,
+      "central": 0.1134,
+      "high": 0.162
+     },
+     "2025": {
+      "low": 0.0203,
+      "central": 0.0374,
+      "high": 0.0513
+     },
+     "2026": {
+      "low": 0.0053,
+      "central": 0.024,
+      "high": 0.0595
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0091,
+      "high": 0.0329
+     },
+     "2023": {
+      "low": 0.0895,
+      "central": 0.1781,
+      "high": 0.2528
+     },
+     "2024": {
+      "low": 0.0867,
+      "central": 0.1644,
+      "high": 0.2348
+     },
+     "2025": {
+      "low": 0.0528,
+      "central": 0.0974,
+      "high": 0.1335
+     },
+     "2026": {
+      "low": 0.0072,
+      "central": 0.033,
+      "high": 0.0818
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0008,
+      "high": 0.0024
+     },
+     "2023": {
+      "low": 0.0136,
+      "central": 0.0186,
+      "high": 0.0221
+     },
+     "2024": {
+      "low": 0.0206,
+      "central": 0.0269,
+      "high": 0.0323
+     },
+     "2025": {
+      "low": 0.0087,
+      "central": 0.011,
+      "high": 0.0126
+     },
+     "2026": {
+      "low": 0.001,
+      "central": 0.0028,
+      "high": 0.0048
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0083,
+      "high": 0.0321
+     },
+     "2023": {
+      "low": 0.0709,
+      "central": 0.1595,
+      "high": 0.2342
+     },
+     "2024": {
+      "low": 0.0598,
+      "central": 0.1375,
+      "high": 0.2079
+     },
+     "2025": {
+      "low": 0.0418,
+      "central": 0.0864,
+      "high": 0.1225
+     },
+     "2026": {
+      "low": 0.0044,
+      "central": 0.0302,
+      "high": 0.079
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0083,
+     "high": 0.0321
+    },
+    "2023": {
+     "low": 0.0709,
+     "central": 0.1595,
+     "high": 0.2342
+    },
+    "2024": {
+     "low": 0.0598,
+     "central": 0.1375,
+     "high": 0.2079
+    },
+    "2025": {
+     "low": 0.0418,
+     "central": 0.0864,
+     "high": 0.1225
+    },
+    "2026": {
+     "low": 0.0044,
+     "central": 0.0302,
+     "high": 0.079
+    }
+   },
+   "add_total_2022_2026_central": 0.4219,
+   "certainty": "C",
+   "role": "buyer of relabelled Russian products from Turkish ports"
+  },
+  "AUS": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0495,
+      "central": 0.1168,
+      "high": 0.1889
+     },
+     "2022": {
+      "low": 0.0596,
+      "central": 0.0828,
+      "high": 0.1458
+     },
+     "2023": {
+      "low": 0.0428,
+      "central": 0.0635,
+      "high": 0.1047
+     },
+     "2024": {
+      "low": 0.2202,
+      "central": 0.3166,
+      "high": 0.4274
+     },
+     "2025": {
+      "low": 0.3555,
+      "central": 0.5219,
+      "high": 0.7758
+     },
+     "2026": {
+      "low": 0.5905,
+      "central": 1.1154,
+      "high": 1.4435
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.0208,
+      "central": 0.0584,
+      "high": 0.1133
+     },
+     "2022": {
+      "low": 0.0251,
+      "central": 0.0414,
+      "high": 0.0875
+     },
+     "2023": {
+      "low": 0.018,
+      "central": 0.0317,
+      "high": 0.0628
+     },
+     "2024": {
+      "low": 0.0925,
+      "central": 0.1583,
+      "high": 0.2564
+     },
+     "2025": {
+      "low": 0.1493,
+      "central": 0.2609,
+      "high": 0.4655
+     },
+     "2026": {
+      "low": 0.248,
+      "central": 0.5577,
+      "high": 0.8661
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0143,
+     "central": 0.0333,
+     "high": 0.0531
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.006,
+     "central": 0.0167,
+     "high": 0.0319
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0.8125,
+     "2022": 1.7447,
+     "2023": 1.7148,
+     "2024": 1.557,
+     "2025": 1.5939,
+     "2026": 1.9028
+    }
+   },
+   "replacement_for_laundered_eu_non_eu_AUS": {
+    "non_brunei_part": {
+     "2021": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "2022": {
+      "low": 0.12,
+      "central": 0.25,
+      "high": 0.45
+     },
+     "2023": {
+      "low": 0.3,
+      "central": 0.43,
+      "high": 0.6
+     },
+     "2024": {
+      "low": 0.4,
+      "central": 0.57,
+      "high": 0.8
+     },
+     "2025": {
+      "low": 0.25,
+      "central": 0.41,
+      "high": 0.6
+     },
+     "2026": {
+      "low": 0.08,
+      "central": 0.21,
+      "high": 0.45
+     }
+    },
+    "brunei_part": {
+     "2021": {
+      "low": 0.0208,
+      "central": 0.0584,
+      "high": 0.1133
+     },
+     "2022": {
+      "low": 0.0251,
+      "central": 0.0414,
+      "high": 0.0875
+     },
+     "2023": {
+      "low": 0.018,
+      "central": 0.0317,
+      "high": 0.0628
+     },
+     "2024": {
+      "low": 0.0925,
+      "central": 0.1583,
+      "high": 0.2564
+     },
+     "2025": {
+      "low": 0.1493,
+      "central": 0.2609,
+      "high": 0.4655
+     },
+     "2026": {
+      "low": 0.248,
+      "central": 0.5577,
+      "high": 0.8661
+     }
+    },
+    "new_total": {
+     "2021": {
+      "low": 0.0208,
+      "central": 0.0584,
+      "high": 0.1133
+     },
+     "2022": {
+      "low": 0.1451,
+      "central": 0.2914,
+      "high": 0.5375
+     },
+     "2023": {
+      "low": 0.318,
+      "central": 0.4617,
+      "high": 0.6628
+     },
+     "2024": {
+      "low": 0.4925,
+      "central": 0.7283,
+      "high": 1.0564
+     },
+     "2025": {
+      "low": 0.3993,
+      "central": 0.6709,
+      "high": 1.0655
+     },
+     "2026": {
+      "low": 0.328,
+      "central": 0.7677,
+      "high": 1.3161
+     }
+    },
+    "current_laundered_eu": {
+     "2021": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "2022": {
+      "low": 0.12,
+      "central": 0.25,
+      "high": 0.45
+     },
+     "2023": {
+      "low": 0.3,
+      "central": 0.43,
+      "high": 0.6
+     },
+     "2024": {
+      "low": 0.4,
+      "central": 0.57,
+      "high": 0.8
+     },
+     "2025": {
+      "low": 0.6,
+      "central": 0.9,
+      "high": 1.1
+     },
+     "2026": {
+      "low": 0.2,
+      "central": 0.35,
+      "high": 0.6
+     }
+    },
+    "brunei_already_inside_current": {
+     "2025": {
+      "low": 0.35,
+      "central": 0.49,
+      "high": 0.6
+     },
+     "2026": {
+      "low": 0.05,
+      "central": 0.14,
+      "high": 0.25
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0208,
+     "central": 0.0584,
+     "high": 0.1133
+    },
+    "2022": {
+     "low": 0.0251,
+     "central": 0.0414,
+     "high": 0.0875
+    },
+    "2023": {
+     "low": 0.018,
+     "central": 0.0317,
+     "high": 0.0628
+    },
+    "2024": {
+     "low": 0.0925,
+     "central": 0.1583,
+     "high": 0.2564
+    },
+    "2025": {
+     "low": -0.2007,
+     "central": -0.2291,
+     "high": -0.0345
+    },
+    "2026": {
+     "low": 0.128,
+     "central": 0.4177,
+     "high": 0.7161
+    }
+   },
+   "add_total_2022_2026_central": 0.42,
+   "certainty": "B",
+   "role": "buyer of Hengyi (Brunei) fuel"
+  },
+  "CYP": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0038,
+      "high": 0.0135
+     },
+     "2023": {
+      "low": 0.0593,
+      "central": 0.1179,
+      "high": 0.1674
+     },
+     "2024": {
+      "low": 0.0837,
+      "central": 0.1588,
+      "high": 0.2268
+     },
+     "2025": {
+      "low": 0.119,
+      "central": 0.2195,
+      "high": 0.301
+     },
+     "2026": {
+      "low": 0.021,
+      "central": 0.096,
+      "high": 0.238
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0054,
+      "high": 0.0194
+     },
+     "2023": {
+      "low": 0.0796,
+      "central": 0.1583,
+      "high": 0.2247
+     },
+     "2024": {
+      "low": 0.1105,
+      "central": 0.2096,
+      "high": 0.2994
+     },
+     "2025": {
+      "low": 0.1514,
+      "central": 0.2793,
+      "high": 0.3829
+     },
+     "2026": {
+      "low": 0.023,
+      "central": 0.105,
+      "high": 0.2602
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0038,
+      "high": 0.0137
+     },
+     "2023": {
+      "low": 0.0158,
+      "central": 0.0604,
+      "high": 0.1567
+     },
+     "2024": {
+      "low": 0.033,
+      "central": 0.1346,
+      "high": 0.2327
+     },
+     "2025": {
+      "low": 0.0276,
+      "central": 0.1341,
+      "high": 0.3066
+     },
+     "2026": {
+      "low": 0.0045,
+      "central": 0.0406,
+      "high": 0.138
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0016,
+      "high": 0.0156
+     },
+     "2023": {
+      "low": 0.0192,
+      "central": 0.0979,
+      "high": 0.1643
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.075,
+      "high": 0.1648
+     },
+     "2025": {
+      "low": 0.0173,
+      "central": 0.1452,
+      "high": 0.2488
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0644,
+      "high": 0.2196
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0016,
+     "high": 0.0156
+    },
+    "2023": {
+     "low": 0.0192,
+     "central": 0.0979,
+     "high": 0.1643
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.075,
+     "high": 0.1648
+    },
+    "2025": {
+     "low": 0.0173,
+     "central": 0.1452,
+     "high": 0.2488
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0644,
+     "high": 0.2196
+    }
+   },
+   "add_total_2022_2026_central": 0.3841,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports"
+  },
+  "ESP": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0075,
+      "high": 0.027
+     },
+     "2023": {
+      "low": 0.079,
+      "central": 0.1572,
+      "high": 0.2232
+     },
+     "2024": {
+      "low": 0.0598,
+      "central": 0.1134,
+      "high": 0.162
+     },
+     "2025": {
+      "low": 0.0379,
+      "central": 0.0699,
+      "high": 0.0958
+     },
+     "2026": {
+      "low": 0.0063,
+      "central": 0.0288,
+      "high": 0.0714
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0078,
+      "high": 0.0281
+     },
+     "2023": {
+      "low": 0.0828,
+      "central": 0.1647,
+      "high": 0.2338
+     },
+     "2024": {
+      "low": 0.0648,
+      "central": 0.1228,
+      "high": 0.1755
+     },
+     "2025": {
+      "low": 0.0439,
+      "central": 0.0809,
+      "high": 0.111
+     },
+     "2026": {
+      "low": 0.0067,
+      "central": 0.0305,
+      "high": 0.0755
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0007,
+      "high": 0.0022
+     },
+     "2023": {
+      "low": 0.0138,
+      "central": 0.0189,
+      "high": 0.0226
+     },
+     "2024": {
+      "low": 0.0175,
+      "central": 0.0229,
+      "high": 0.0274
+     },
+     "2025": {
+      "low": 0.0097,
+      "central": 0.0123,
+      "high": 0.0141
+     },
+     "2026": {
+      "low": 0.0011,
+      "central": 0.0029,
+      "high": 0.005
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0071,
+      "high": 0.0274
+     },
+     "2023": {
+      "low": 0.0639,
+      "central": 0.1458,
+      "high": 0.2149
+     },
+     "2024": {
+      "low": 0.0419,
+      "central": 0.0999,
+      "high": 0.1526
+     },
+     "2025": {
+      "low": 0.0316,
+      "central": 0.0686,
+      "high": 0.0987
+     },
+     "2026": {
+      "low": 0.0038,
+      "central": 0.0276,
+      "high": 0.0726
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0071,
+     "high": 0.0274
+    },
+    "2023": {
+     "low": 0.0639,
+     "central": 0.1458,
+     "high": 0.2149
+    },
+    "2024": {
+     "low": 0.0419,
+     "central": 0.0999,
+     "high": 0.1526
+    },
+    "2025": {
+     "low": 0.0316,
+     "central": 0.0686,
+     "high": 0.0987
+    },
+    "2026": {
+     "low": 0.0038,
+     "central": 0.0276,
+     "high": 0.0726
+    }
+   },
+   "add_total_2022_2026_central": 0.349,
+   "certainty": "C",
+   "role": "buyer of relabelled Russian products from Turkish ports"
+  },
+  "BGR": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0038,
+      "high": 0.0135
+     },
+     "2023": {
+      "low": 0.0395,
+      "central": 0.0786,
+      "high": 0.1116
+     },
+     "2024": {
+      "low": 0.0478,
+      "central": 0.0907,
+      "high": 0.1296
+     },
+     "2025": {
+      "low": 0.073,
+      "central": 0.1347,
+      "high": 0.1847
+     },
+     "2026": {
+      "low": 0.0053,
+      "central": 0.024,
+      "high": 0.0595
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.004,
+      "high": 0.0143
+     },
+     "2023": {
+      "low": 0.0421,
+      "central": 0.0838,
+      "high": 0.1189
+     },
+     "2024": {
+      "low": 0.0513,
+      "central": 0.0972,
+      "high": 0.1389
+     },
+     "2025": {
+      "low": 0.0772,
+      "central": 0.1424,
+      "high": 0.1952
+     },
+     "2026": {
+      "low": 0.0055,
+      "central": 0.0251,
+      "high": 0.0623
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0004,
+      "high": 0.0011
+     },
+     "2023": {
+      "low": 0.007,
+      "central": 0.0096,
+      "high": 0.0114
+     },
+     "2024": {
+      "low": 0.014,
+      "central": 0.0182,
+      "high": 0.0218
+     },
+     "2025": {
+      "low": 0.0178,
+      "central": 0.0226,
+      "high": 0.026
+     },
+     "2026": {
+      "low": 0.0009,
+      "central": 0.0024,
+      "high": 0.0042
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0036,
+      "high": 0.0139
+     },
+     "2023": {
+      "low": 0.0325,
+      "central": 0.0742,
+      "high": 0.1093
+     },
+     "2024": {
+      "low": 0.0331,
+      "central": 0.079,
+      "high": 0.1207
+     },
+     "2025": {
+      "low": 0.0546,
+      "central": 0.1198,
+      "high": 0.1726
+     },
+     "2026": {
+      "low": 0.0031,
+      "central": 0.0227,
+      "high": 0.0599
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0036,
+     "high": 0.0139
+    },
+    "2023": {
+     "low": 0.0325,
+     "central": 0.0742,
+     "high": 0.1093
+    },
+    "2024": {
+     "low": 0.0331,
+     "central": 0.079,
+     "high": 0.1207
+    },
+    "2025": {
+     "low": 0.0546,
+     "central": 0.1198,
+     "high": 0.1726
+    },
+    "2026": {
+     "low": 0.0031,
+     "central": 0.0227,
+     "high": 0.0599
+    }
+   },
+   "add_total_2022_2026_central": 0.2993,
+   "certainty": "C",
+   "role": "buyer of relabelled Russian products from Turkish ports"
+  },
+  "GIB": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0025,
+      "high": 0.0091
+     },
+     "2023": {
+      "low": 0.0315,
+      "central": 0.0627,
+      "high": 0.0891
+     },
+     "2024": {
+      "low": 0.0416,
+      "central": 0.079,
+      "high": 0.1128
+     },
+     "2025": {
+      "low": 0.0503,
+      "central": 0.0929,
+      "high": 0.1274
+     },
+     "2026": {
+      "low": 0.003,
+      "central": 0.0139,
+      "high": 0.0345
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0004
+     },
+     "2023": {
+      "low": 0.0027,
+      "central": 0.0037,
+      "high": 0.0044
+     },
+     "2024": {
+      "low": 0.0059,
+      "central": 0.0076,
+      "high": 0.0092
+     },
+     "2025": {
+      "low": 0.006,
+      "central": 0.0076,
+      "high": 0.0087
+     },
+     "2026": {
+      "low": 0.0003,
+      "central": 0.0007,
+      "high": 0.0012
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0024,
+      "high": 0.009
+     },
+     "2023": {
+      "low": 0.0278,
+      "central": 0.059,
+      "high": 0.0854
+     },
+     "2024": {
+      "low": 0.034,
+      "central": 0.0714,
+      "high": 0.1052
+     },
+     "2025": {
+      "low": 0.0427,
+      "central": 0.0853,
+      "high": 0.1198
+     },
+     "2026": {
+      "low": 0.0023,
+      "central": 0.0132,
+      "high": 0.0338
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0024,
+     "high": 0.009
+    },
+    "2023": {
+     "low": 0.0278,
+     "central": 0.059,
+     "high": 0.0854
+    },
+    "2024": {
+     "low": 0.034,
+     "central": 0.0714,
+     "high": 0.1052
+    },
+    "2025": {
+     "low": 0.0427,
+     "central": 0.0853,
+     "high": 0.1198
+    },
+    "2026": {
+     "low": 0.0023,
+     "central": 0.0132,
+     "high": 0.0338
+    }
+   },
+   "add_total_2022_2026_central": 0.2313,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "LBN": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0025,
+      "high": 0.0089
+     },
+     "2023": {
+      "low": 0.0305,
+      "central": 0.0608,
+      "high": 0.0863
+     },
+     "2024": {
+      "low": 0.0403,
+      "central": 0.0765,
+      "high": 0.1093
+     },
+     "2025": {
+      "low": 0.0488,
+      "central": 0.09,
+      "high": 0.1234
+     },
+     "2026": {
+      "low": 0.003,
+      "central": 0.0135,
+      "high": 0.0334
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0004
+     },
+     "2023": {
+      "low": 0.0026,
+      "central": 0.0036,
+      "high": 0.0043
+     },
+     "2024": {
+      "low": 0.0057,
+      "central": 0.0074,
+      "high": 0.0089
+     },
+     "2025": {
+      "low": 0.0058,
+      "central": 0.0073,
+      "high": 0.0084
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0007,
+      "high": 0.0011
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0024,
+      "high": 0.0088
+     },
+     "2023": {
+      "low": 0.0269,
+      "central": 0.0572,
+      "high": 0.0827
+     },
+     "2024": {
+      "low": 0.0329,
+      "central": 0.0691,
+      "high": 0.1019
+     },
+     "2025": {
+      "low": 0.0415,
+      "central": 0.0827,
+      "high": 0.1161
+     },
+     "2026": {
+      "low": 0.0023,
+      "central": 0.0128,
+      "high": 0.0327
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0024,
+     "high": 0.0088
+    },
+    "2023": {
+     "low": 0.0269,
+     "central": 0.0572,
+     "high": 0.0827
+    },
+    "2024": {
+     "low": 0.0329,
+     "central": 0.0691,
+     "high": 0.1019
+    },
+    "2025": {
+     "low": 0.0415,
+     "central": 0.0827,
+     "high": 0.1161
+    },
+    "2026": {
+     "low": 0.0023,
+     "central": 0.0128,
+     "high": 0.0327
+    }
+   },
+   "add_total_2022_2026_central": 0.2242,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "UKR": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0023,
+      "high": 0.0082
+     },
+     "2023": {
+      "low": 0.0283,
+      "central": 0.0562,
+      "high": 0.0798
+     },
+     "2024": {
+      "low": 0.0373,
+      "central": 0.0708,
+      "high": 0.1011
+     },
+     "2025": {
+      "low": 0.0451,
+      "central": 0.0832,
+      "high": 0.1141
+     },
+     "2026": {
+      "low": 0.0027,
+      "central": 0.0125,
+      "high": 0.0309
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0003
+     },
+     "2023": {
+      "low": 0.0024,
+      "central": 0.0033,
+      "high": 0.0039
+     },
+     "2024": {
+      "low": 0.0053,
+      "central": 0.0069,
+      "high": 0.0082
+     },
+     "2025": {
+      "low": 0.0053,
+      "central": 0.0068,
+      "high": 0.0078
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0006,
+      "high": 0.0011
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0022,
+      "high": 0.0081
+     },
+     "2023": {
+      "low": 0.025,
+      "central": 0.0529,
+      "high": 0.0765
+     },
+     "2024": {
+      "low": 0.0304,
+      "central": 0.0639,
+      "high": 0.0942
+     },
+     "2025": {
+      "low": 0.0383,
+      "central": 0.0764,
+      "high": 0.1073
+     },
+     "2026": {
+      "low": 0.0021,
+      "central": 0.0119,
+      "high": 0.0303
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0022,
+     "high": 0.0081
+    },
+    "2023": {
+     "low": 0.025,
+     "central": 0.0529,
+     "high": 0.0765
+    },
+    "2024": {
+     "low": 0.0304,
+     "central": 0.0639,
+     "high": 0.0942
+    },
+    "2025": {
+     "low": 0.0383,
+     "central": 0.0764,
+     "high": 0.1073
+    },
+    "2026": {
+     "low": 0.0021,
+     "central": 0.0119,
+     "high": 0.0303
+    }
+   },
+   "add_total_2022_2026_central": 0.2073,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "MLT": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0198,
+      "central": 0.0393,
+      "high": 0.0558
+     },
+     "2024": {
+      "low": 0.0359,
+      "central": 0.068,
+      "high": 0.0972
+     },
+     "2025": {
+      "low": 0.0433,
+      "central": 0.0798,
+      "high": 0.1094
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0006,
+      "high": 0.002
+     },
+     "2023": {
+      "low": 0.0266,
+      "central": 0.0529,
+      "high": 0.0751
+     },
+     "2024": {
+      "low": 0.0449,
+      "central": 0.0852,
+      "high": 0.1217
+     },
+     "2025": {
+      "low": 0.0542,
+      "central": 0.1,
+      "high": 0.1371
+     },
+     "2026": {
+      "low": 0.0007,
+      "central": 0.003,
+      "high": 0.0075
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     },
+     "2023": {
+      "low": 0.004,
+      "central": 0.0054,
+      "high": 0.0065
+     },
+     "2024": {
+      "low": 0.0114,
+      "central": 0.0148,
+      "high": 0.0178
+     },
+     "2025": {
+      "low": 0.0115,
+      "central": 0.0147,
+      "high": 0.0169
+     },
+     "2026": {
+      "low": 0.0001,
+      "central": 0.0001,
+      "high": 0.0003
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0006,
+      "high": 0.002
+     },
+     "2023": {
+      "low": 0.0212,
+      "central": 0.0475,
+      "high": 0.0697
+     },
+     "2024": {
+      "low": 0.0301,
+      "central": 0.0704,
+      "high": 0.1069
+     },
+     "2025": {
+      "low": 0.0395,
+      "central": 0.0853,
+      "high": 0.1224
+     },
+     "2026": {
+      "low": 0.0006,
+      "central": 0.0029,
+      "high": 0.0074
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0006,
+     "high": 0.002
+    },
+    "2023": {
+     "low": 0.0212,
+     "central": 0.0475,
+     "high": 0.0697
+    },
+    "2024": {
+     "low": 0.0301,
+     "central": 0.0704,
+     "high": 0.1069
+    },
+    "2025": {
+     "low": 0.0395,
+     "central": 0.0853,
+     "high": 0.1224
+    },
+    "2026": {
+     "low": 0.0006,
+     "central": 0.0029,
+     "high": 0.0074
+    }
+   },
+   "add_total_2022_2026_central": 0.2067,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports"
+  },
+  "LBY": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0021,
+      "high": 0.0075
+     },
+     "2023": {
+      "low": 0.026,
+      "central": 0.0517,
+      "high": 0.0734
+     },
+     "2024": {
+      "low": 0.0343,
+      "central": 0.0651,
+      "high": 0.093
+     },
+     "2025": {
+      "low": 0.0415,
+      "central": 0.0766,
+      "high": 0.105
+     },
+     "2026": {
+      "low": 0.0025,
+      "central": 0.0115,
+      "high": 0.0285
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0003
+     },
+     "2023": {
+      "low": 0.0022,
+      "central": 0.003,
+      "high": 0.0036
+     },
+     "2024": {
+      "low": 0.0048,
+      "central": 0.0063,
+      "high": 0.0076
+     },
+     "2025": {
+      "low": 0.0049,
+      "central": 0.0062,
+      "high": 0.0072
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0006,
+      "high": 0.001
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.002,
+      "high": 0.0074
+     },
+     "2023": {
+      "low": 0.023,
+      "central": 0.0487,
+      "high": 0.0704
+     },
+     "2024": {
+      "low": 0.028,
+      "central": 0.0588,
+      "high": 0.0867
+     },
+     "2025": {
+      "low": 0.0353,
+      "central": 0.0704,
+      "high": 0.0988
+     },
+     "2026": {
+      "low": 0.0019,
+      "central": 0.0109,
+      "high": 0.0279
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.002,
+     "high": 0.0074
+    },
+    "2023": {
+     "low": 0.023,
+     "central": 0.0487,
+     "high": 0.0704
+    },
+    "2024": {
+     "low": 0.028,
+     "central": 0.0588,
+     "high": 0.0867
+    },
+    "2025": {
+     "low": 0.0353,
+     "central": 0.0704,
+     "high": 0.0988
+    },
+    "2026": {
+     "low": 0.0019,
+     "central": 0.0109,
+     "high": 0.0279
+    }
+   },
+   "add_total_2022_2026_central": 0.1908,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "MKD": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0017,
+      "high": 0.0063
+     },
+     "2023": {
+      "low": 0.0217,
+      "central": 0.0432,
+      "high": 0.0613
+     },
+     "2024": {
+      "low": 0.0287,
+      "central": 0.0544,
+      "high": 0.0777
+     },
+     "2025": {
+      "low": 0.0347,
+      "central": 0.064,
+      "high": 0.0877
+     },
+     "2026": {
+      "low": 0.0021,
+      "central": 0.0096,
+      "high": 0.0238
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0002
+     },
+     "2023": {
+      "low": 0.0019,
+      "central": 0.0025,
+      "high": 0.003
+     },
+     "2024": {
+      "low": 0.004,
+      "central": 0.0053,
+      "high": 0.0063
+     },
+     "2025": {
+      "low": 0.0041,
+      "central": 0.0052,
+      "high": 0.006
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0005,
+      "high": 0.0008
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0016,
+      "high": 0.0062
+     },
+     "2023": {
+      "low": 0.0192,
+      "central": 0.0407,
+      "high": 0.0588
+     },
+     "2024": {
+      "low": 0.0234,
+      "central": 0.0491,
+      "high": 0.0724
+     },
+     "2025": {
+      "low": 0.0295,
+      "central": 0.0588,
+      "high": 0.0825
+     },
+     "2026": {
+      "low": 0.0016,
+      "central": 0.0091,
+      "high": 0.0233
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0016,
+     "high": 0.0062
+    },
+    "2023": {
+     "low": 0.0192,
+     "central": 0.0407,
+     "high": 0.0588
+    },
+    "2024": {
+     "low": 0.0234,
+     "central": 0.0491,
+     "high": 0.0724
+    },
+    "2025": {
+     "low": 0.0295,
+     "central": 0.0588,
+     "high": 0.0825
+    },
+    "2026": {
+     "low": 0.0016,
+     "central": 0.0091,
+     "high": 0.0233
+    }
+   },
+   "add_total_2022_2026_central": 0.1593,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "MYS": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0147,
+      "central": 0.0348,
+      "high": 0.0562
+     },
+     "2022": {
+      "low": 0.0152,
+      "central": 0.0211,
+      "high": 0.0372
+     },
+     "2023": {
+      "low": 0.0057,
+      "central": 0.0084,
+      "high": 0.0139
+     },
+     "2024": {
+      "low": 0.0697,
+      "central": 0.1002,
+      "high": 0.1353
+     },
+     "2025": {
+      "low": 0.061,
+      "central": 0.0896,
+      "high": 0.1332
+     },
+     "2026": {
+      "low": 0.0434,
+      "central": 0.082,
+      "high": 0.1061
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.0062,
+      "central": 0.0174,
+      "high": 0.0337
+     },
+     "2022": {
+      "low": 0.0064,
+      "central": 0.0106,
+      "high": 0.0223
+     },
+     "2023": {
+      "low": 0.0024,
+      "central": 0.0042,
+      "high": 0.0083
+     },
+     "2024": {
+      "low": 0.0293,
+      "central": 0.0501,
+      "high": 0.0812
+     },
+     "2025": {
+      "low": 0.0256,
+      "central": 0.0448,
+      "high": 0.0799
+     },
+     "2026": {
+      "low": 0.0182,
+      "central": 0.041,
+      "high": 0.0636
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0049,
+     "central": 0.0113,
+     "high": 0.0178
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0021,
+     "central": 0.0056,
+     "high": 0.0107
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0.2419,
+     "2022": 0.4451,
+     "2023": 0.2278,
+     "2024": 0.4929,
+     "2025": 0.2736,
+     "2026": 0.1398
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0062,
+     "central": 0.0174,
+     "high": 0.0337
+    },
+    "2022": {
+     "low": 0.0064,
+     "central": 0.0106,
+     "high": 0.0223
+    },
+    "2023": {
+     "low": 0.0024,
+     "central": 0.0042,
+     "high": 0.0083
+    },
+    "2024": {
+     "low": 0.0293,
+     "central": 0.0501,
+     "high": 0.0812
+    },
+    "2025": {
+     "low": 0.0256,
+     "central": 0.0448,
+     "high": 0.0799
+    },
+    "2026": {
+     "low": 0.0182,
+     "central": 0.041,
+     "high": 0.0636
+    }
+   },
+   "add_total_2022_2026_central": 0.1507,
+   "certainty": "C",
+   "role": "buyer of Hengyi (Brunei) fuel"
+  },
+  "VNM": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0074,
+      "central": 0.0175,
+      "high": 0.0283
+     },
+     "2022": {
+      "low": 0.0153,
+      "central": 0.0212,
+      "high": 0.0374
+     },
+     "2023": {
+      "low": 0.0003,
+      "central": 0.0005,
+      "high": 0.0008
+     },
+     "2024": {
+      "low": 0.0211,
+      "central": 0.0303,
+      "high": 0.0409
+     },
+     "2025": {
+      "low": 0.0632,
+      "central": 0.0928,
+      "high": 0.1379
+     },
+     "2026": {
+      "low": 0.0762,
+      "central": 0.144,
+      "high": 0.1863
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.0031,
+      "central": 0.0087,
+      "high": 0.017
+     },
+     "2022": {
+      "low": 0.0064,
+      "central": 0.0106,
+      "high": 0.0224
+     },
+     "2023": {
+      "low": 0.0001,
+      "central": 0.0002,
+      "high": 0.0005
+     },
+     "2024": {
+      "low": 0.0088,
+      "central": 0.0151,
+      "high": 0.0245
+     },
+     "2025": {
+      "low": 0.0265,
+      "central": 0.0464,
+      "high": 0.0828
+     },
+     "2026": {
+      "low": 0.032,
+      "central": 0.072,
+      "high": 0.1118
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0022,
+     "central": 0.0051,
+     "high": 0.008
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0009,
+     "central": 0.0026,
+     "high": 0.0048
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0.1216,
+     "2022": 0.447,
+     "2023": 0.0132,
+     "2024": 0.149,
+     "2025": 0.2834,
+     "2026": 0.2456
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0031,
+     "central": 0.0087,
+     "high": 0.017
+    },
+    "2022": {
+     "low": 0.0064,
+     "central": 0.0106,
+     "high": 0.0224
+    },
+    "2023": {
+     "low": 0.0001,
+     "central": 0.0002,
+     "high": 0.0005
+    },
+    "2024": {
+     "low": 0.0088,
+     "central": 0.0151,
+     "high": 0.0245
+    },
+    "2025": {
+     "low": 0.0265,
+     "central": 0.0464,
+     "high": 0.0828
+    },
+    "2026": {
+     "low": 0.032,
+     "central": 0.072,
+     "high": 0.1118
+    }
+   },
+   "add_total_2022_2026_central": 0.1443,
+   "certainty": "C",
+   "role": "buyer of Hengyi (Brunei) fuel"
+  },
+  "NLD": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0296,
+      "central": 0.059,
+      "high": 0.0837
+     },
+     "2024": {
+      "low": 0.0239,
+      "central": 0.0454,
+      "high": 0.0648
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0005,
+      "high": 0.002
+     },
+     "2023": {
+      "low": 0.0364,
+      "central": 0.0725,
+      "high": 0.1029
+     },
+     "2024": {
+      "low": 0.0329,
+      "central": 0.0624,
+      "high": 0.0892
+     },
+     "2025": {
+      "low": 0.0109,
+      "central": 0.0201,
+      "high": 0.0275
+     },
+     "2026": {
+      "low": 0.0007,
+      "central": 0.003,
+      "high": 0.0075
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     },
+     "2023": {
+      "low": 0.0057,
+      "central": 0.0077,
+      "high": 0.0092
+     },
+     "2024": {
+      "low": 0.008,
+      "central": 0.0104,
+      "high": 0.0125
+     },
+     "2025": {
+      "low": 0.0013,
+      "central": 0.0016,
+      "high": 0.0019
+     },
+     "2026": {
+      "low": 0.0001,
+      "central": 0.0001,
+      "high": 0.0003
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0005,
+      "high": 0.002
+     },
+     "2023": {
+      "low": 0.0287,
+      "central": 0.0648,
+      "high": 0.0952
+     },
+     "2024": {
+      "low": 0.0225,
+      "central": 0.052,
+      "high": 0.0788
+     },
+     "2025": {
+      "low": 0.0093,
+      "central": 0.0185,
+      "high": 0.0259
+     },
+     "2026": {
+      "low": 0.0006,
+      "central": 0.0029,
+      "high": 0.0074
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0005,
+     "high": 0.002
+    },
+    "2023": {
+     "low": 0.0287,
+     "central": 0.0648,
+     "high": 0.0952
+    },
+    "2024": {
+     "low": 0.0225,
+     "central": 0.052,
+     "high": 0.0788
+    },
+    "2025": {
+     "low": 0.0093,
+     "central": 0.0185,
+     "high": 0.0259
+    },
+    "2026": {
+     "low": 0.0006,
+     "central": 0.0029,
+     "high": 0.0074
+    }
+   },
+   "add_total_2022_2026_central": 0.1387,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports"
+  },
+  "ROU": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0296,
+      "central": 0.059,
+      "high": 0.0837
+     },
+     "2024": {
+      "low": 0.0239,
+      "central": 0.0454,
+      "high": 0.0648
+     },
+     "2025": {
+      "low": 0.0176,
+      "central": 0.0324,
+      "high": 0.0445
+     },
+     "2026": {
+      "low": 0.0042,
+      "central": 0.0192,
+      "high": 0.0476
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0296,
+      "central": 0.059,
+      "high": 0.0837
+     },
+     "2024": {
+      "low": 0.0239,
+      "central": 0.0454,
+      "high": 0.0648
+     },
+     "2025": {
+      "low": 0.0176,
+      "central": 0.0324,
+      "high": 0.0445
+     },
+     "2026": {
+      "low": 0.0042,
+      "central": 0.0192,
+      "high": 0.0476
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0051,
+      "central": 0.0069,
+      "high": 0.0083
+     },
+     "2024": {
+      "low": 0.0067,
+      "central": 0.0088,
+      "high": 0.0105
+     },
+     "2025": {
+      "low": 0.0042,
+      "central": 0.0053,
+      "high": 0.0061
+     },
+     "2026": {
+      "low": 0.0007,
+      "central": 0.0019,
+      "high": 0.0033
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0227,
+      "central": 0.0521,
+      "high": 0.0768
+     },
+     "2024": {
+      "low": 0.0151,
+      "central": 0.0366,
+      "high": 0.056
+     },
+     "2025": {
+      "low": 0.0123,
+      "central": 0.0271,
+      "high": 0.0392
+     },
+     "2026": {
+      "low": 0.0023,
+      "central": 0.0173,
+      "high": 0.0457
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0227,
+     "central": 0.0521,
+     "high": 0.0768
+    },
+    "2024": {
+     "low": 0.0151,
+     "central": 0.0366,
+     "high": 0.056
+    },
+    "2025": {
+     "low": 0.0123,
+     "central": 0.0271,
+     "high": 0.0392
+    },
+    "2026": {
+     "low": 0.0023,
+     "central": 0.0173,
+     "high": 0.0457
+    }
+   },
+   "add_total_2022_2026_central": 0.1331,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports"
+  },
+  "EGY": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0013,
+      "high": 0.0048
+     },
+     "2023": {
+      "low": 0.0164,
+      "central": 0.0327,
+      "high": 0.0464
+     },
+     "2024": {
+      "low": 0.0217,
+      "central": 0.0411,
+      "high": 0.0587
+     },
+     "2025": {
+      "low": 0.0262,
+      "central": 0.0484,
+      "high": 0.0663
+     },
+     "2026": {
+      "low": 0.0016,
+      "central": 0.0073,
+      "high": 0.018
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0002
+     },
+     "2023": {
+      "low": 0.0014,
+      "central": 0.0019,
+      "high": 0.0023
+     },
+     "2024": {
+      "low": 0.0031,
+      "central": 0.004,
+      "high": 0.0048
+     },
+     "2025": {
+      "low": 0.0031,
+      "central": 0.0039,
+      "high": 0.0045
+     },
+     "2026": {
+      "low": 0.0001,
+      "central": 0.0004,
+      "high": 0.0006
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0012,
+      "high": 0.0047
+     },
+     "2023": {
+      "low": 0.0145,
+      "central": 0.0308,
+      "high": 0.0445
+     },
+     "2024": {
+      "low": 0.0177,
+      "central": 0.0371,
+      "high": 0.0547
+     },
+     "2025": {
+      "low": 0.0223,
+      "central": 0.0445,
+      "high": 0.0624
+     },
+     "2026": {
+      "low": 0.0012,
+      "central": 0.0069,
+      "high": 0.0176
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0012,
+     "high": 0.0047
+    },
+    "2023": {
+     "low": 0.0145,
+     "central": 0.0308,
+     "high": 0.0445
+    },
+    "2024": {
+     "low": 0.0177,
+     "central": 0.0371,
+     "high": 0.0547
+    },
+    "2025": {
+     "low": 0.0223,
+     "central": 0.0445,
+     "high": 0.0624
+    },
+    "2026": {
+     "low": 0.0012,
+     "central": 0.0069,
+     "high": 0.0176
+    }
+   },
+   "add_total_2022_2026_central": 0.1205,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "USA": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0052,
+      "central": 0.0075,
+      "high": 0.0102
+     },
+     "2025": {
+      "low": 0.0068,
+      "central": 0.01,
+      "high": 0.0148
+     },
+     "2026": {
+      "low": 0.0082,
+      "central": 0.0154,
+      "high": 0.02
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0022,
+      "central": 0.0038,
+      "high": 0.0061
+     },
+     "2025": {
+      "low": 0.0028,
+      "central": 0.005,
+      "high": 0.0089
+     },
+     "2026": {
+      "low": 0.0034,
+      "central": 0.0077,
+      "high": 0.012
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0006,
+     "central": 0.0014,
+     "high": 0.0019
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0003,
+     "central": 0.0007,
+     "high": 0.0011
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0,
+     "2022": 0,
+     "2023": 0,
+     "2024": 0.0371,
+     "2025": 0.0304,
+     "2026": 0.0263
+    }
+   },
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0011,
+      "high": 0.0039
+     },
+     "2023": {
+      "low": 0.0136,
+      "central": 0.027,
+      "high": 0.0383
+     },
+     "2024": {
+      "low": 0.0179,
+      "central": 0.034,
+      "high": 0.0486
+     },
+     "2025": {
+      "low": 0.0217,
+      "central": 0.04,
+      "high": 0.0548
+     },
+     "2026": {
+      "low": 0.0013,
+      "central": 0.006,
+      "high": 0.0149
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0002
+     },
+     "2023": {
+      "low": 0.0012,
+      "central": 0.0016,
+      "high": 0.0019
+     },
+     "2024": {
+      "low": 0.0025,
+      "central": 0.0033,
+      "high": 0.004
+     },
+     "2025": {
+      "low": 0.0026,
+      "central": 0.0033,
+      "high": 0.0038
+     },
+     "2026": {
+      "low": 0.0001,
+      "central": 0.0003,
+      "high": 0.0005
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.001,
+      "high": 0.0038
+     },
+     "2023": {
+      "low": 0.012,
+      "central": 0.0254,
+      "high": 0.0367
+     },
+     "2024": {
+      "low": 0.0146,
+      "central": 0.0307,
+      "high": 0.0453
+     },
+     "2025": {
+      "low": 0.0184,
+      "central": 0.0367,
+      "high": 0.0515
+     },
+     "2026": {
+      "low": 0.001,
+      "central": 0.0057,
+      "high": 0.0146
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.001,
+     "high": 0.0038
+    },
+    "2023": {
+     "low": 0.012,
+     "central": 0.0254,
+     "high": 0.0367
+    },
+    "2024": {
+     "low": 0.0168,
+     "central": 0.0345,
+     "high": 0.0514
+    },
+    "2025": {
+     "low": 0.0212,
+     "central": 0.0417,
+     "high": 0.0604
+    },
+    "2026": {
+     "low": 0.0044,
+     "central": 0.0134,
+     "high": 0.0266
+    }
+   },
+   "add_total_2022_2026_central": 0.116,
+   "certainty": "D",
+   "role": "buyer of Hengyi (Brunei) fuel; buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "KOR": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0021,
+      "central": 0.0049,
+      "high": 0.0079
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.003,
+      "central": 0.0044,
+      "high": 0.0059
+     },
+     "2025": {
+      "low": 0.0076,
+      "central": 0.0112,
+      "high": 0.0166
+     },
+     "2026": {
+      "low": 0.0092,
+      "central": 0.0173,
+      "high": 0.0224
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.0009,
+      "central": 0.0024,
+      "high": 0.0047
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0013,
+      "central": 0.0022,
+      "high": 0.0035
+     },
+     "2025": {
+      "low": 0.0032,
+      "central": 0.0056,
+      "high": 0.01
+     },
+     "2026": {
+      "low": 0.0039,
+      "central": 0.0087,
+      "high": 0.0135
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0006,
+     "central": 0.0014,
+     "high": 0.0022
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0003,
+     "central": 0.0007,
+     "high": 0.0013
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0.0338,
+     "2022": 0,
+     "2023": 0,
+     "2024": 0.0214,
+     "2025": 0.0341,
+     "2026": 0.0296
+    }
+   },
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0008,
+      "high": 0.0028
+     },
+     "2023": {
+      "low": 0.0098,
+      "central": 0.0195,
+      "high": 0.0276
+     },
+     "2024": {
+      "low": 0.0129,
+      "central": 0.0245,
+      "high": 0.035
+     },
+     "2025": {
+      "low": 0.0156,
+      "central": 0.0288,
+      "high": 0.0395
+     },
+     "2026": {
+      "low": 0.0009,
+      "central": 0.0043,
+      "high": 0.0107
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     },
+     "2023": {
+      "low": 0.0008,
+      "central": 0.0011,
+      "high": 0.0014
+     },
+     "2024": {
+      "low": 0.0018,
+      "central": 0.0024,
+      "high": 0.0028
+     },
+     "2025": {
+      "low": 0.0019,
+      "central": 0.0023,
+      "high": 0.0027
+     },
+     "2026": {
+      "low": 0.0001,
+      "central": 0.0002,
+      "high": 0.0004
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0008,
+      "high": 0.0028
+     },
+     "2023": {
+      "low": 0.0087,
+      "central": 0.0184,
+      "high": 0.0265
+     },
+     "2024": {
+      "low": 0.0105,
+      "central": 0.0221,
+      "high": 0.0326
+     },
+     "2025": {
+      "low": 0.0133,
+      "central": 0.0265,
+      "high": 0.0372
+     },
+     "2026": {
+      "low": 0.0007,
+      "central": 0.0041,
+      "high": 0.0105
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0009,
+     "central": 0.0024,
+     "high": 0.0047
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0008,
+     "high": 0.0028
+    },
+    "2023": {
+     "low": 0.0087,
+     "central": 0.0184,
+     "high": 0.0265
+    },
+    "2024": {
+     "low": 0.0118,
+     "central": 0.0243,
+     "high": 0.0361
+    },
+    "2025": {
+     "low": 0.0165,
+     "central": 0.0321,
+     "high": 0.0472
+    },
+    "2026": {
+     "low": 0.0046,
+     "central": 0.0128,
+     "high": 0.024
+    }
+   },
+   "add_total_2022_2026_central": 0.0884,
+   "certainty": "D",
+   "role": "buyer of Hengyi (Brunei) fuel; buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "SVN": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0008,
+      "high": 0.0029
+     },
+     "2023": {
+      "low": 0.0101,
+      "central": 0.0201,
+      "high": 0.0285
+     },
+     "2024": {
+      "low": 0.0133,
+      "central": 0.0253,
+      "high": 0.0361
+     },
+     "2025": {
+      "low": 0.0161,
+      "central": 0.0297,
+      "high": 0.0407
+     },
+     "2026": {
+      "low": 0.001,
+      "central": 0.0045,
+      "high": 0.011
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     },
+     "2023": {
+      "low": 0.0009,
+      "central": 0.0012,
+      "high": 0.0014
+     },
+     "2024": {
+      "low": 0.0019,
+      "central": 0.0024,
+      "high": 0.0029
+     },
+     "2025": {
+      "low": 0.0019,
+      "central": 0.0024,
+      "high": 0.0028
+     },
+     "2026": {
+      "low": 0.0001,
+      "central": 0.0002,
+      "high": 0.0004
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0008,
+      "high": 0.0029
+     },
+     "2023": {
+      "low": 0.0089,
+      "central": 0.0189,
+      "high": 0.0273
+     },
+     "2024": {
+      "low": 0.0109,
+      "central": 0.0229,
+      "high": 0.0337
+     },
+     "2025": {
+      "low": 0.0137,
+      "central": 0.0273,
+      "high": 0.0383
+     },
+     "2026": {
+      "low": 0.0008,
+      "central": 0.0043,
+      "high": 0.0108
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0008,
+     "high": 0.0029
+    },
+    "2023": {
+     "low": 0.0089,
+     "central": 0.0189,
+     "high": 0.0273
+    },
+    "2024": {
+     "low": 0.0109,
+     "central": 0.0229,
+     "high": 0.0337
+    },
+    "2025": {
+     "low": 0.0137,
+     "central": 0.0273,
+     "high": 0.0383
+    },
+    "2026": {
+     "low": 0.0008,
+     "central": 0.0043,
+     "high": 0.0108
+    }
+   },
+   "add_total_2022_2026_central": 0.0742,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "GBR": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0006,
+      "high": 0.0023
+     },
+     "2023": {
+      "low": 0.0078,
+      "central": 0.0156,
+      "high": 0.0221
+     },
+     "2024": {
+      "low": 0.0103,
+      "central": 0.0196,
+      "high": 0.028
+     },
+     "2025": {
+      "low": 0.0125,
+      "central": 0.0231,
+      "high": 0.0316
+     },
+     "2026": {
+      "low": 0.0008,
+      "central": 0.0035,
+      "high": 0.0086
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     },
+     "2023": {
+      "low": 0.0007,
+      "central": 0.0009,
+      "high": 0.0011
+     },
+     "2024": {
+      "low": 0.0015,
+      "central": 0.0019,
+      "high": 0.0023
+     },
+     "2025": {
+      "low": 0.0015,
+      "central": 0.0019,
+      "high": 0.0022
+     },
+     "2026": {
+      "low": 0.0001,
+      "central": 0.0002,
+      "high": 0.0003
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0006,
+      "high": 0.0023
+     },
+     "2023": {
+      "low": 0.0069,
+      "central": 0.0147,
+      "high": 0.0212
+     },
+     "2024": {
+      "low": 0.0084,
+      "central": 0.0177,
+      "high": 0.0261
+     },
+     "2025": {
+      "low": 0.0106,
+      "central": 0.0212,
+      "high": 0.0297
+     },
+     "2026": {
+      "low": 0.0006,
+      "central": 0.0033,
+      "high": 0.0084
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0006,
+     "high": 0.0023
+    },
+    "2023": {
+     "low": 0.0069,
+     "central": 0.0147,
+     "high": 0.0212
+    },
+    "2024": {
+     "low": 0.0084,
+     "central": 0.0177,
+     "high": 0.0261
+    },
+    "2025": {
+     "low": 0.0106,
+     "central": 0.0212,
+     "high": 0.0297
+    },
+    "2026": {
+     "low": 0.0006,
+     "central": 0.0033,
+     "high": 0.0084
+    }
+   },
+   "add_total_2022_2026_central": 0.0575,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "PHL": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0023,
+      "central": 0.0055,
+      "high": 0.0089
+     },
+     "2022": {
+      "low": 0.0074,
+      "central": 0.0102,
+      "high": 0.018
+     },
+     "2023": {
+      "low": 0.002,
+      "central": 0.003,
+      "high": 0.0049
+     },
+     "2024": {
+      "low": 0.0125,
+      "central": 0.0179,
+      "high": 0.0242
+     },
+     "2025": {
+      "low": 0.0147,
+      "central": 0.0216,
+      "high": 0.0322
+     },
+     "2026": {
+      "low": 0.0231,
+      "central": 0.0435,
+      "high": 0.0564
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.001,
+      "central": 0.0028,
+      "high": 0.0053
+     },
+     "2022": {
+      "low": 0.0031,
+      "central": 0.0051,
+      "high": 0.0108
+     },
+     "2023": {
+      "low": 0.0008,
+      "central": 0.0015,
+      "high": 0.003
+     },
+     "2024": {
+      "low": 0.0052,
+      "central": 0.009,
+      "high": 0.0145
+     },
+     "2025": {
+      "low": 0.0062,
+      "central": 0.0108,
+      "high": 0.0193
+     },
+     "2026": {
+      "low": 0.0097,
+      "central": 0.0218,
+      "high": 0.0338
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0008,
+     "central": 0.0018,
+     "high": 0.0028
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0017
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0.0383,
+     "2022": 0.2155,
+     "2023": 0.0807,
+     "2024": 0.0883,
+     "2025": 0.0661,
+     "2026": 0.0743
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.001,
+     "central": 0.0028,
+     "high": 0.0053
+    },
+    "2022": {
+     "low": 0.0031,
+     "central": 0.0051,
+     "high": 0.0108
+    },
+    "2023": {
+     "low": 0.0008,
+     "central": 0.0015,
+     "high": 0.003
+    },
+    "2024": {
+     "low": 0.0052,
+     "central": 0.009,
+     "high": 0.0145
+    },
+    "2025": {
+     "low": 0.0062,
+     "central": 0.0108,
+     "high": 0.0193
+    },
+    "2026": {
+     "low": 0.0097,
+     "central": 0.0218,
+     "high": 0.0338
+    }
+   },
+   "add_total_2022_2026_central": 0.0482,
+   "certainty": "C",
+   "role": "buyer of Hengyi (Brunei) fuel"
+  },
+  "SAU": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0005,
+      "high": 0.0018
+     },
+     "2023": {
+      "low": 0.0061,
+      "central": 0.0122,
+      "high": 0.0173
+     },
+     "2024": {
+      "low": 0.0081,
+      "central": 0.0153,
+      "high": 0.0219
+     },
+     "2025": {
+      "low": 0.0098,
+      "central": 0.018,
+      "high": 0.0247
+     },
+     "2026": {
+      "low": 0.0006,
+      "central": 0.0027,
+      "high": 0.0067
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     },
+     "2023": {
+      "low": 0.0005,
+      "central": 0.0007,
+      "high": 0.0009
+     },
+     "2024": {
+      "low": 0.0011,
+      "central": 0.0015,
+      "high": 0.0018
+     },
+     "2025": {
+      "low": 0.0012,
+      "central": 0.0015,
+      "high": 0.0017
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0002
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0005,
+      "high": 0.0018
+     },
+     "2023": {
+      "low": 0.0054,
+      "central": 0.0115,
+      "high": 0.0166
+     },
+     "2024": {
+      "low": 0.0066,
+      "central": 0.0138,
+      "high": 0.0204
+     },
+     "2025": {
+      "low": 0.0083,
+      "central": 0.0165,
+      "high": 0.0232
+     },
+     "2026": {
+      "low": 0.0005,
+      "central": 0.0026,
+      "high": 0.0066
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0005,
+     "high": 0.0018
+    },
+    "2023": {
+     "low": 0.0054,
+     "central": 0.0115,
+     "high": 0.0166
+    },
+    "2024": {
+     "low": 0.0066,
+     "central": 0.0138,
+     "high": 0.0204
+    },
+    "2025": {
+     "low": 0.0083,
+     "central": 0.0165,
+     "high": 0.0232
+    },
+    "2026": {
+     "low": 0.0005,
+     "central": 0.0026,
+     "high": 0.0066
+    }
+   },
+   "add_total_2022_2026_central": 0.0449,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "JPN": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0054,
+      "central": 0.0128,
+      "high": 0.0207
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0026,
+      "central": 0.0037,
+      "high": 0.005
+     },
+     "2025": {
+      "low": 0.0053,
+      "central": 0.0078,
+      "high": 0.0116
+     },
+     "2026": {
+      "low": 0.0346,
+      "central": 0.0653,
+      "high": 0.0845
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.0023,
+      "central": 0.0064,
+      "high": 0.0124
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0011,
+      "central": 0.0018,
+      "high": 0.003
+     },
+     "2025": {
+      "low": 0.0022,
+      "central": 0.0039,
+      "high": 0.007
+     },
+     "2026": {
+      "low": 0.0145,
+      "central": 0.0327,
+      "high": 0.0507
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0021,
+     "central": 0.0048,
+     "high": 0.0074
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0009,
+     "central": 0.0024,
+     "high": 0.0044
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0.0892,
+     "2022": 0,
+     "2023": 0,
+     "2024": 0.0181,
+     "2025": 0.0239,
+     "2026": 0.1114
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0023,
+     "central": 0.0064,
+     "high": 0.0124
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0011,
+     "central": 0.0018,
+     "high": 0.003
+    },
+    "2025": {
+     "low": 0.0022,
+     "central": 0.0039,
+     "high": 0.007
+    },
+    "2026": {
+     "low": 0.0145,
+     "central": 0.0327,
+     "high": 0.0507
+    }
+   },
+   "add_total_2022_2026_central": 0.0384,
+   "certainty": "D",
+   "role": "buyer of Hengyi (Brunei) fuel"
+  },
+  "MNE": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0004,
+      "high": 0.0015
+     },
+     "2023": {
+      "low": 0.0051,
+      "central": 0.0101,
+      "high": 0.0144
+     },
+     "2024": {
+      "low": 0.0067,
+      "central": 0.0128,
+      "high": 0.0182
+     },
+     "2025": {
+      "low": 0.0081,
+      "central": 0.015,
+      "high": 0.0206
+     },
+     "2026": {
+      "low": 0.0005,
+      "central": 0.0023,
+      "high": 0.0056
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     },
+     "2023": {
+      "low": 0.0004,
+      "central": 0.0006,
+      "high": 0.0007
+     },
+     "2024": {
+      "low": 0.0009,
+      "central": 0.0012,
+      "high": 0.0015
+     },
+     "2025": {
+      "low": 0.001,
+      "central": 0.0012,
+      "high": 0.0014
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0002
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0004,
+      "high": 0.0015
+     },
+     "2023": {
+      "low": 0.0045,
+      "central": 0.0095,
+      "high": 0.0138
+     },
+     "2024": {
+      "low": 0.0055,
+      "central": 0.0116,
+      "high": 0.017
+     },
+     "2025": {
+      "low": 0.0069,
+      "central": 0.0138,
+      "high": 0.0194
+     },
+     "2026": {
+      "low": 0.0004,
+      "central": 0.0022,
+      "high": 0.0055
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0004,
+     "high": 0.0015
+    },
+    "2023": {
+     "low": 0.0045,
+     "central": 0.0095,
+     "high": 0.0138
+    },
+    "2024": {
+     "low": 0.0055,
+     "central": 0.0116,
+     "high": 0.017
+    },
+    "2025": {
+     "low": 0.0069,
+     "central": 0.0138,
+     "high": 0.0194
+    },
+    "2026": {
+     "low": 0.0004,
+     "central": 0.0022,
+     "high": 0.0055
+    }
+   },
+   "add_total_2022_2026_central": 0.0375,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "NZL": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0046,
+      "central": 0.0108,
+      "high": 0.0175
+     },
+     "2022": {
+      "low": 0.0034,
+      "central": 0.0047,
+      "high": 0.0082
+     },
+     "2023": {
+      "low": 0.0015,
+      "central": 0.0022,
+      "high": 0.0036
+     },
+     "2024": {
+      "low": 0.0041,
+      "central": 0.0059,
+      "high": 0.008
+     },
+     "2025": {
+      "low": 0.0155,
+      "central": 0.0228,
+      "high": 0.0338
+     },
+     "2026": {
+      "low": 0.0187,
+      "central": 0.0353,
+      "high": 0.0457
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.0019,
+      "central": 0.0054,
+      "high": 0.0105
+     },
+     "2022": {
+      "low": 0.0014,
+      "central": 0.0023,
+      "high": 0.0049
+     },
+     "2023": {
+      "low": 0.0006,
+      "central": 0.0011,
+      "high": 0.0021
+     },
+     "2024": {
+      "low": 0.0017,
+      "central": 0.0029,
+      "high": 0.0048
+     },
+     "2025": {
+      "low": 0.0065,
+      "central": 0.0114,
+      "high": 0.0203
+     },
+     "2026": {
+      "low": 0.0079,
+      "central": 0.0177,
+      "high": 0.0274
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0011,
+     "central": 0.0027,
+     "high": 0.0044
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0005,
+     "central": 0.0014,
+     "high": 0.0026
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0.0751,
+     "2022": 0.0982,
+     "2023": 0.0586,
+     "2024": 0.029,
+     "2025": 0.0695,
+     "2026": 0.0602
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0019,
+     "central": 0.0054,
+     "high": 0.0105
+    },
+    "2022": {
+     "low": 0.0014,
+     "central": 0.0023,
+     "high": 0.0049
+    },
+    "2023": {
+     "low": 0.0006,
+     "central": 0.0011,
+     "high": 0.0021
+    },
+    "2024": {
+     "low": 0.0017,
+     "central": 0.0029,
+     "high": 0.0048
+    },
+    "2025": {
+     "low": 0.0065,
+     "central": 0.0114,
+     "high": 0.0203
+    },
+    "2026": {
+     "low": 0.0079,
+     "central": 0.0177,
+     "high": 0.0274
+    }
+   },
+   "add_total_2022_2026_central": 0.0354,
+   "certainty": "C",
+   "role": "buyer of Hengyi (Brunei) fuel"
+  },
+  "TUN": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0004,
+      "high": 0.0014
+     },
+     "2023": {
+      "low": 0.0047,
+      "central": 0.0093,
+      "high": 0.0132
+     },
+     "2024": {
+      "low": 0.0062,
+      "central": 0.0117,
+      "high": 0.0168
+     },
+     "2025": {
+      "low": 0.0075,
+      "central": 0.0138,
+      "high": 0.0189
+     },
+     "2026": {
+      "low": 0.0005,
+      "central": 0.0021,
+      "high": 0.0051
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     },
+     "2023": {
+      "low": 0.0004,
+      "central": 0.0005,
+      "high": 0.0007
+     },
+     "2024": {
+      "low": 0.0009,
+      "central": 0.0011,
+      "high": 0.0014
+     },
+     "2025": {
+      "low": 0.0009,
+      "central": 0.0011,
+      "high": 0.0013
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0002
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0004,
+      "high": 0.0014
+     },
+     "2023": {
+      "low": 0.0042,
+      "central": 0.0088,
+      "high": 0.0127
+     },
+     "2024": {
+      "low": 0.0051,
+      "central": 0.0106,
+      "high": 0.0157
+     },
+     "2025": {
+      "low": 0.0064,
+      "central": 0.0127,
+      "high": 0.0178
+     },
+     "2026": {
+      "low": 0.0004,
+      "central": 0.002,
+      "high": 0.005
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0004,
+     "high": 0.0014
+    },
+    "2023": {
+     "low": 0.0042,
+     "central": 0.0088,
+     "high": 0.0127
+    },
+    "2024": {
+     "low": 0.0051,
+     "central": 0.0106,
+     "high": 0.0157
+    },
+    "2025": {
+     "low": 0.0064,
+     "central": 0.0127,
+     "high": 0.0178
+    },
+    "2026": {
+     "low": 0.0004,
+     "central": 0.002,
+     "high": 0.005
+    }
+   },
+   "add_total_2022_2026_central": 0.0345,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "LBR": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0004,
+      "high": 0.0013
+     },
+     "2023": {
+      "low": 0.0046,
+      "central": 0.0092,
+      "high": 0.013
+     },
+     "2024": {
+      "low": 0.0061,
+      "central": 0.0116,
+      "high": 0.0165
+     },
+     "2025": {
+      "low": 0.0074,
+      "central": 0.0136,
+      "high": 0.0186
+     },
+     "2026": {
+      "low": 0.0004,
+      "central": 0.002,
+      "high": 0.0051
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     },
+     "2023": {
+      "low": 0.0004,
+      "central": 0.0005,
+      "high": 0.0006
+     },
+     "2024": {
+      "low": 0.0009,
+      "central": 0.0011,
+      "high": 0.0013
+     },
+     "2025": {
+      "low": 0.0009,
+      "central": 0.0011,
+      "high": 0.0013
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0002
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0004,
+      "high": 0.0013
+     },
+     "2023": {
+      "low": 0.0041,
+      "central": 0.0087,
+      "high": 0.0125
+     },
+     "2024": {
+      "low": 0.005,
+      "central": 0.0105,
+      "high": 0.0154
+     },
+     "2025": {
+      "low": 0.0063,
+      "central": 0.0125,
+      "high": 0.0175
+     },
+     "2026": {
+      "low": 0.0003,
+      "central": 0.0019,
+      "high": 0.005
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0004,
+     "high": 0.0013
+    },
+    "2023": {
+     "low": 0.0041,
+     "central": 0.0087,
+     "high": 0.0125
+    },
+    "2024": {
+     "low": 0.005,
+     "central": 0.0105,
+     "high": 0.0154
+    },
+    "2025": {
+     "low": 0.0063,
+     "central": 0.0125,
+     "high": 0.0175
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0019,
+     "high": 0.005
+    }
+   },
+   "add_total_2022_2026_central": 0.034,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "HRV": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0003,
+      "high": 0.0012
+     },
+     "2023": {
+      "low": 0.0043,
+      "central": 0.0086,
+      "high": 0.0122
+     },
+     "2024": {
+      "low": 0.0057,
+      "central": 0.0108,
+      "high": 0.0154
+     },
+     "2025": {
+      "low": 0.0069,
+      "central": 0.0127,
+      "high": 0.0174
+     },
+     "2026": {
+      "low": 0.0004,
+      "central": 0.0019,
+      "high": 0.0047
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0004,
+      "central": 0.0005,
+      "high": 0.0006
+     },
+     "2024": {
+      "low": 0.0008,
+      "central": 0.001,
+      "high": 0.0013
+     },
+     "2025": {
+      "low": 0.0008,
+      "central": 0.001,
+      "high": 0.0012
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0002
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0003,
+      "high": 0.0012
+     },
+     "2023": {
+      "low": 0.0038,
+      "central": 0.0081,
+      "high": 0.0117
+     },
+     "2024": {
+      "low": 0.0047,
+      "central": 0.0098,
+      "high": 0.0144
+     },
+     "2025": {
+      "low": 0.0059,
+      "central": 0.0117,
+      "high": 0.0164
+     },
+     "2026": {
+      "low": 0.0003,
+      "central": 0.0018,
+      "high": 0.0046
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0012
+    },
+    "2023": {
+     "low": 0.0038,
+     "central": 0.0081,
+     "high": 0.0117
+    },
+    "2024": {
+     "low": 0.0047,
+     "central": 0.0098,
+     "high": 0.0144
+    },
+    "2025": {
+     "low": 0.0059,
+     "central": 0.0117,
+     "high": 0.0164
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0018,
+     "high": 0.0046
+    }
+   },
+   "add_total_2022_2026_central": 0.0317,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "ALB": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0003,
+      "high": 0.0011
+     },
+     "2023": {
+      "low": 0.0039,
+      "central": 0.0077,
+      "high": 0.0109
+     },
+     "2024": {
+      "low": 0.0051,
+      "central": 0.0097,
+      "high": 0.0138
+     },
+     "2025": {
+      "low": 0.0062,
+      "central": 0.0114,
+      "high": 0.0156
+     },
+     "2026": {
+      "low": 0.0004,
+      "central": 0.0017,
+      "high": 0.0042
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0003,
+      "central": 0.0005,
+      "high": 0.0005
+     },
+     "2024": {
+      "low": 0.0007,
+      "central": 0.0009,
+      "high": 0.0011
+     },
+     "2025": {
+      "low": 0.0007,
+      "central": 0.0009,
+      "high": 0.0011
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0001
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0003,
+      "high": 0.0011
+     },
+     "2023": {
+      "low": 0.0034,
+      "central": 0.0072,
+      "high": 0.0104
+     },
+     "2024": {
+      "low": 0.0042,
+      "central": 0.0088,
+      "high": 0.0129
+     },
+     "2025": {
+      "low": 0.0053,
+      "central": 0.0105,
+      "high": 0.0147
+     },
+     "2026": {
+      "low": 0.0003,
+      "central": 0.0016,
+      "high": 0.0041
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0011
+    },
+    "2023": {
+     "low": 0.0034,
+     "central": 0.0072,
+     "high": 0.0104
+    },
+    "2024": {
+     "low": 0.0042,
+     "central": 0.0088,
+     "high": 0.0129
+    },
+    "2025": {
+     "low": 0.0053,
+     "central": 0.0105,
+     "high": 0.0147
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0016,
+     "high": 0.0041
+    }
+   },
+   "add_total_2022_2026_central": 0.0284,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "GEO": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0003,
+      "high": 0.0011
+     },
+     "2023": {
+      "low": 0.0037,
+      "central": 0.0073,
+      "high": 0.0103
+     },
+     "2024": {
+      "low": 0.0048,
+      "central": 0.0092,
+      "high": 0.0131
+     },
+     "2025": {
+      "low": 0.0058,
+      "central": 0.0108,
+      "high": 0.0148
+     },
+     "2026": {
+      "low": 0.0004,
+      "central": 0.0016,
+      "high": 0.004
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0003,
+      "central": 0.0004,
+      "high": 0.0005
+     },
+     "2024": {
+      "low": 0.0007,
+      "central": 0.0009,
+      "high": 0.0011
+     },
+     "2025": {
+      "low": 0.0007,
+      "central": 0.0009,
+      "high": 0.001
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0001
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0003,
+      "high": 0.0011
+     },
+     "2023": {
+      "low": 0.0033,
+      "central": 0.0069,
+      "high": 0.0099
+     },
+     "2024": {
+      "low": 0.0039,
+      "central": 0.0083,
+      "high": 0.0122
+     },
+     "2025": {
+      "low": 0.0049,
+      "central": 0.0099,
+      "high": 0.0139
+     },
+     "2026": {
+      "low": 0.0003,
+      "central": 0.0015,
+      "high": 0.0039
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0011
+    },
+    "2023": {
+     "low": 0.0033,
+     "central": 0.0069,
+     "high": 0.0099
+    },
+    "2024": {
+     "low": 0.0039,
+     "central": 0.0083,
+     "high": 0.0122
+    },
+    "2025": {
+     "low": 0.0049,
+     "central": 0.0099,
+     "high": 0.0139
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0015,
+     "high": 0.0039
+    }
+   },
+   "add_total_2022_2026_central": 0.0269,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "MAR": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0003,
+      "high": 0.0011
+     },
+     "2023": {
+      "low": 0.0036,
+      "central": 0.0072,
+      "high": 0.0102
+     },
+     "2024": {
+      "low": 0.0048,
+      "central": 0.0091,
+      "high": 0.013
+     },
+     "2025": {
+      "low": 0.0058,
+      "central": 0.0107,
+      "high": 0.0146
+     },
+     "2026": {
+      "low": 0.0004,
+      "central": 0.0016,
+      "high": 0.004
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0003,
+      "central": 0.0004,
+      "high": 0.0005
+     },
+     "2024": {
+      "low": 0.0007,
+      "central": 0.0009,
+      "high": 0.0011
+     },
+     "2025": {
+      "low": 0.0007,
+      "central": 0.0009,
+      "high": 0.001
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0001
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0003,
+      "high": 0.0011
+     },
+     "2023": {
+      "low": 0.0032,
+      "central": 0.0068,
+      "high": 0.0098
+     },
+     "2024": {
+      "low": 0.0039,
+      "central": 0.0082,
+      "high": 0.0121
+     },
+     "2025": {
+      "low": 0.0049,
+      "central": 0.0098,
+      "high": 0.0137
+     },
+     "2026": {
+      "low": 0.0003,
+      "central": 0.0015,
+      "high": 0.0039
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.0011
+    },
+    "2023": {
+     "low": 0.0032,
+     "central": 0.0068,
+     "high": 0.0098
+    },
+    "2024": {
+     "low": 0.0039,
+     "central": 0.0082,
+     "high": 0.0121
+    },
+    "2025": {
+     "low": 0.0049,
+     "central": 0.0098,
+     "high": 0.0137
+    },
+    "2026": {
+     "low": 0.0003,
+     "central": 0.0015,
+     "high": 0.0039
+    }
+   },
+   "add_total_2022_2026_central": 0.0266,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "ISR": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0003,
+      "high": 0.001
+     },
+     "2023": {
+      "low": 0.0036,
+      "central": 0.0071,
+      "high": 0.0101
+     },
+     "2024": {
+      "low": 0.0047,
+      "central": 0.009,
+      "high": 0.0128
+     },
+     "2025": {
+      "low": 0.0057,
+      "central": 0.0106,
+      "high": 0.0145
+     },
+     "2026": {
+      "low": 0.0003,
+      "central": 0.0016,
+      "high": 0.0039
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0003,
+      "central": 0.0004,
+      "high": 0.0005
+     },
+     "2024": {
+      "low": 0.0007,
+      "central": 0.0009,
+      "high": 0.001
+     },
+     "2025": {
+      "low": 0.0007,
+      "central": 0.0009,
+      "high": 0.001
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0001
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0003,
+      "high": 0.001
+     },
+     "2023": {
+      "low": 0.0032,
+      "central": 0.0067,
+      "high": 0.0097
+     },
+     "2024": {
+      "low": 0.0038,
+      "central": 0.0081,
+      "high": 0.0119
+     },
+     "2025": {
+      "low": 0.0048,
+      "central": 0.0097,
+      "high": 0.0136
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0015,
+      "high": 0.0038
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.001
+    },
+    "2023": {
+     "low": 0.0032,
+     "central": 0.0067,
+     "high": 0.0097
+    },
+    "2024": {
+     "low": 0.0038,
+     "central": 0.0081,
+     "high": 0.0119
+    },
+    "2025": {
+     "low": 0.0048,
+     "central": 0.0097,
+     "high": 0.0136
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0015,
+     "high": 0.0038
+    }
+   },
+   "add_total_2022_2026_central": 0.0263,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "MHL": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0003,
+      "high": 0.001
+     },
+     "2023": {
+      "low": 0.0036,
+      "central": 0.0071,
+      "high": 0.0101
+     },
+     "2024": {
+      "low": 0.0047,
+      "central": 0.009,
+      "high": 0.0128
+     },
+     "2025": {
+      "low": 0.0057,
+      "central": 0.0106,
+      "high": 0.0145
+     },
+     "2026": {
+      "low": 0.0003,
+      "central": 0.0016,
+      "high": 0.0039
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0003,
+      "central": 0.0004,
+      "high": 0.0005
+     },
+     "2024": {
+      "low": 0.0007,
+      "central": 0.0009,
+      "high": 0.001
+     },
+     "2025": {
+      "low": 0.0007,
+      "central": 0.0009,
+      "high": 0.001
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0001
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0003,
+      "high": 0.001
+     },
+     "2023": {
+      "low": 0.0032,
+      "central": 0.0067,
+      "high": 0.0097
+     },
+     "2024": {
+      "low": 0.0038,
+      "central": 0.0081,
+      "high": 0.0119
+     },
+     "2025": {
+      "low": 0.0048,
+      "central": 0.0097,
+      "high": 0.0136
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0015,
+      "high": 0.0038
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0003,
+     "high": 0.001
+    },
+    "2023": {
+     "low": 0.0032,
+     "central": 0.0067,
+     "high": 0.0097
+    },
+    "2024": {
+     "low": 0.0038,
+     "central": 0.0081,
+     "high": 0.0119
+    },
+    "2025": {
+     "low": 0.0048,
+     "central": 0.0097,
+     "high": 0.0136
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0015,
+     "high": 0.0038
+    }
+   },
+   "add_total_2022_2026_central": 0.0263,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "IRL": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0009
+     },
+     "2023": {
+      "low": 0.003,
+      "central": 0.0061,
+      "high": 0.0086
+     },
+     "2024": {
+      "low": 0.004,
+      "central": 0.0076,
+      "high": 0.0109
+     },
+     "2025": {
+      "low": 0.0049,
+      "central": 0.009,
+      "high": 0.0123
+     },
+     "2026": {
+      "low": 0.0003,
+      "central": 0.0013,
+      "high": 0.0033
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0003,
+      "central": 0.0004,
+      "high": 0.0004
+     },
+     "2024": {
+      "low": 0.0006,
+      "central": 0.0007,
+      "high": 0.0009
+     },
+     "2025": {
+      "low": 0.0006,
+      "central": 0.0007,
+      "high": 0.0008
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0001
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0009
+     },
+     "2023": {
+      "low": 0.0026,
+      "central": 0.0057,
+      "high": 0.0082
+     },
+     "2024": {
+      "low": 0.0033,
+      "central": 0.0069,
+      "high": 0.0102
+     },
+     "2025": {
+      "low": 0.0042,
+      "central": 0.0083,
+      "high": 0.0116
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0012,
+      "high": 0.0032
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0009
+    },
+    "2023": {
+     "low": 0.0026,
+     "central": 0.0057,
+     "high": 0.0082
+    },
+    "2024": {
+     "low": 0.0033,
+     "central": 0.0069,
+     "high": 0.0102
+    },
+    "2025": {
+     "low": 0.0042,
+     "central": 0.0083,
+     "high": 0.0116
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0012,
+     "high": 0.0032
+    }
+   },
+   "add_total_2022_2026_central": 0.0223,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "DEU": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0009
+     },
+     "2023": {
+      "low": 0.003,
+      "central": 0.0061,
+      "high": 0.0086
+     },
+     "2024": {
+      "low": 0.004,
+      "central": 0.0076,
+      "high": 0.0109
+     },
+     "2025": {
+      "low": 0.0049,
+      "central": 0.009,
+      "high": 0.0123
+     },
+     "2026": {
+      "low": 0.0003,
+      "central": 0.0013,
+      "high": 0.0033
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0003,
+      "central": 0.0004,
+      "high": 0.0004
+     },
+     "2024": {
+      "low": 0.0006,
+      "central": 0.0007,
+      "high": 0.0009
+     },
+     "2025": {
+      "low": 0.0006,
+      "central": 0.0007,
+      "high": 0.0008
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0001
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0009
+     },
+     "2023": {
+      "low": 0.0026,
+      "central": 0.0057,
+      "high": 0.0082
+     },
+     "2024": {
+      "low": 0.0033,
+      "central": 0.0069,
+      "high": 0.0102
+     },
+     "2025": {
+      "low": 0.0042,
+      "central": 0.0083,
+      "high": 0.0116
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0012,
+      "high": 0.0032
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0009
+    },
+    "2023": {
+     "low": 0.0026,
+     "central": 0.0057,
+     "high": 0.0082
+    },
+    "2024": {
+     "low": 0.0033,
+     "central": 0.0069,
+     "high": 0.0102
+    },
+    "2025": {
+     "low": 0.0042,
+     "central": 0.0083,
+     "high": 0.0116
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0012,
+     "high": 0.0032
+    }
+   },
+   "add_total_2022_2026_central": 0.0223,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "FRA": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0016,
+      "central": 0.0023,
+      "high": 0.0034
+     },
+     "2026": {
+      "low": 0.0019,
+      "central": 0.0036,
+      "high": 0.0046
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0007,
+      "central": 0.0011,
+      "high": 0.002
+     },
+     "2026": {
+      "low": 0.0008,
+      "central": 0.0018,
+      "high": 0.0028
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0,
+     "2022": 0,
+     "2023": 0,
+     "2024": 0,
+     "2025": 0.007,
+     "2026": 0.0061
+    }
+   },
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0099,
+      "central": 0.0197,
+      "high": 0.0279
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0099,
+      "central": 0.0197,
+      "high": 0.0279
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0017,
+      "central": 0.0023,
+      "high": 0.0028
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0076,
+      "central": 0.0174,
+      "high": 0.0256
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0076,
+     "central": 0.0174,
+     "high": 0.0256
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0007,
+     "central": 0.0011,
+     "high": 0.002
+    },
+    "2026": {
+     "low": 0.0008,
+     "central": 0.0018,
+     "high": 0.0028
+    }
+   },
+   "add_total_2022_2026_central": 0.0203,
+   "certainty": "D",
+   "role": "buyer of Hengyi (Brunei) fuel; buyer of relabelled Russian products from Turkish ports"
+  },
+  "BEL": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0008
+     },
+     "2023": {
+      "low": 0.0028,
+      "central": 0.0055,
+      "high": 0.0078
+     },
+     "2024": {
+      "low": 0.0037,
+      "central": 0.0069,
+      "high": 0.0099
+     },
+     "2025": {
+      "low": 0.0044,
+      "central": 0.0082,
+      "high": 0.0112
+     },
+     "2026": {
+      "low": 0.0003,
+      "central": 0.0012,
+      "high": 0.003
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0002,
+      "central": 0.0003,
+      "high": 0.0004
+     },
+     "2024": {
+      "low": 0.0005,
+      "central": 0.0007,
+      "high": 0.0008
+     },
+     "2025": {
+      "low": 0.0005,
+      "central": 0.0007,
+      "high": 0.0008
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0001
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0008
+     },
+     "2023": {
+      "low": 0.0025,
+      "central": 0.0052,
+      "high": 0.0075
+     },
+     "2024": {
+      "low": 0.003,
+      "central": 0.0062,
+      "high": 0.0092
+     },
+     "2025": {
+      "low": 0.0037,
+      "central": 0.0075,
+      "high": 0.0105
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0011,
+      "high": 0.0029
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0008
+    },
+    "2023": {
+     "low": 0.0025,
+     "central": 0.0052,
+     "high": 0.0075
+    },
+    "2024": {
+     "low": 0.003,
+     "central": 0.0062,
+     "high": 0.0092
+    },
+    "2025": {
+     "low": 0.0037,
+     "central": 0.0075,
+     "high": 0.0105
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0011,
+     "high": 0.0029
+    }
+   },
+   "add_total_2022_2026_central": 0.0202,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "PAN": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0008
+     },
+     "2023": {
+      "low": 0.0028,
+      "central": 0.0055,
+      "high": 0.0078
+     },
+     "2024": {
+      "low": 0.0037,
+      "central": 0.0069,
+      "high": 0.0099
+     },
+     "2025": {
+      "low": 0.0044,
+      "central": 0.0082,
+      "high": 0.0112
+     },
+     "2026": {
+      "low": 0.0003,
+      "central": 0.0012,
+      "high": 0.003
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0002,
+      "central": 0.0003,
+      "high": 0.0004
+     },
+     "2024": {
+      "low": 0.0005,
+      "central": 0.0007,
+      "high": 0.0008
+     },
+     "2025": {
+      "low": 0.0005,
+      "central": 0.0007,
+      "high": 0.0008
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0001
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0008
+     },
+     "2023": {
+      "low": 0.0025,
+      "central": 0.0052,
+      "high": 0.0075
+     },
+     "2024": {
+      "low": 0.003,
+      "central": 0.0062,
+      "high": 0.0092
+     },
+     "2025": {
+      "low": 0.0037,
+      "central": 0.0075,
+      "high": 0.0105
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0011,
+      "high": 0.0029
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0008
+    },
+    "2023": {
+     "low": 0.0025,
+     "central": 0.0052,
+     "high": 0.0075
+    },
+    "2024": {
+     "low": 0.003,
+     "central": 0.0062,
+     "high": 0.0092
+    },
+    "2025": {
+     "low": 0.0037,
+     "central": 0.0075,
+     "high": 0.0105
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0011,
+     "high": 0.0029
+    }
+   },
+   "add_total_2022_2026_central": 0.0202,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "IDN": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0061,
+      "central": 0.0144,
+      "high": 0.0233
+     },
+     "2022": {
+      "low": 0.0175,
+      "central": 0.0243,
+      "high": 0.0428
+     },
+     "2023": {
+      "low": 0.0022,
+      "central": 0.0032,
+      "high": 0.0053
+     },
+     "2024": {
+      "low": 0.0057,
+      "central": 0.0082,
+      "high": 0.0111
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.0026,
+      "central": 0.0072,
+      "high": 0.014
+     },
+     "2022": {
+      "low": 0.0074,
+      "central": 0.0122,
+      "high": 0.0257
+     },
+     "2023": {
+      "low": 0.0009,
+      "central": 0.0016,
+      "high": 0.0032
+     },
+     "2024": {
+      "low": 0.0024,
+      "central": 0.0041,
+      "high": 0.0066
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0019,
+     "central": 0.0044,
+     "high": 0.007
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0008,
+     "central": 0.0022,
+     "high": 0.0042
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0.1,
+     "2022": 0.5124,
+     "2023": 0.0864,
+     "2024": 0.0403,
+     "2025": 0,
+     "2026": 0
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0026,
+     "central": 0.0072,
+     "high": 0.014
+    },
+    "2022": {
+     "low": 0.0074,
+     "central": 0.0122,
+     "high": 0.0257
+    },
+    "2023": {
+     "low": 0.0009,
+     "central": 0.0016,
+     "high": 0.0032
+    },
+    "2024": {
+     "low": 0.0024,
+     "central": 0.0041,
+     "high": 0.0066
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "add_total_2022_2026_central": 0.0179,
+   "certainty": "D",
+   "role": "buyer of Hengyi (Brunei) fuel"
+  },
+  "HKG": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0031,
+      "central": 0.0072,
+      "high": 0.0117
+     },
+     "2022": {
+      "low": 0.0004,
+      "central": 0.0005,
+      "high": 0.0009
+     },
+     "2023": {
+      "low": 0.001,
+      "central": 0.0014,
+      "high": 0.0024
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.0013,
+      "central": 0.0036,
+      "high": 0.007
+     },
+     "2022": {
+      "low": 0.0002,
+      "central": 0.0003,
+      "high": 0.0006
+     },
+     "2023": {
+      "low": 0.0004,
+      "central": 0.0007,
+      "high": 0.0014
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0008,
+     "central": 0.0018,
+     "high": 0.003
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0018
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0.0504,
+     "2022": 0.011,
+     "2023": 0.0389,
+     "2024": 0,
+     "2025": 0,
+     "2026": 0
+    }
+   },
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0006
+     },
+     "2023": {
+      "low": 0.0019,
+      "central": 0.0038,
+      "high": 0.0054
+     },
+     "2024": {
+      "low": 0.0025,
+      "central": 0.0048,
+      "high": 0.0069
+     },
+     "2025": {
+      "low": 0.0031,
+      "central": 0.0056,
+      "high": 0.0077
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0008,
+      "high": 0.0021
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0002,
+      "central": 0.0002,
+      "high": 0.0003
+     },
+     "2024": {
+      "low": 0.0004,
+      "central": 0.0005,
+      "high": 0.0006
+     },
+     "2025": {
+      "low": 0.0004,
+      "central": 0.0005,
+      "high": 0.0005
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0006
+     },
+     "2023": {
+      "low": 0.0017,
+      "central": 0.0036,
+      "high": 0.0052
+     },
+     "2024": {
+      "low": 0.002,
+      "central": 0.0043,
+      "high": 0.0064
+     },
+     "2025": {
+      "low": 0.0026,
+      "central": 0.0051,
+      "high": 0.0072
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0008,
+      "high": 0.0021
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0013,
+     "central": 0.0036,
+     "high": 0.007
+    },
+    "2022": {
+     "low": 0.0002,
+     "central": 0.0005,
+     "high": 0.0012
+    },
+    "2023": {
+     "low": 0.0021,
+     "central": 0.0043,
+     "high": 0.0066
+    },
+    "2024": {
+     "low": 0.002,
+     "central": 0.0043,
+     "high": 0.0064
+    },
+    "2025": {
+     "low": 0.0026,
+     "central": 0.0051,
+     "high": 0.0072
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0008,
+     "high": 0.0021
+    }
+   },
+   "add_total_2022_2026_central": 0.015,
+   "certainty": "D",
+   "role": "buyer of Hengyi (Brunei) fuel; buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "BHS": {
+   "turkish_ports": {
+    "first_importer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "final_consumer_russian_value_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0006
+     },
+     "2023": {
+      "low": 0.0019,
+      "central": 0.0038,
+      "high": 0.0054
+     },
+     "2024": {
+      "low": 0.0025,
+      "central": 0.0048,
+      "high": 0.0069
+     },
+     "2025": {
+      "low": 0.0031,
+      "central": 0.0056,
+      "high": 0.0077
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0008,
+      "high": 0.0021
+     }
+    },
+    "already_in_laundered_eu_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0002,
+      "central": 0.0002,
+      "high": 0.0003
+     },
+     "2024": {
+      "low": 0.0004,
+      "central": 0.0005,
+      "high": 0.0006
+     },
+     "2025": {
+      "low": 0.0004,
+      "central": 0.0005,
+      "high": 0.0005
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     }
+    },
+    "add_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0006
+     },
+     "2023": {
+      "low": 0.0017,
+      "central": 0.0036,
+      "high": 0.0052
+     },
+     "2024": {
+      "low": 0.002,
+      "central": 0.0043,
+      "high": 0.0064
+     },
+     "2025": {
+      "low": 0.0026,
+      "central": 0.0051,
+      "high": 0.0072
+     },
+     "2026": {
+      "low": 0.0002,
+      "central": 0.0008,
+      "high": 0.0021
+     }
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0006
+    },
+    "2023": {
+     "low": 0.0017,
+     "central": 0.0036,
+     "high": 0.0052
+    },
+    "2024": {
+     "low": 0.002,
+     "central": 0.0043,
+     "high": 0.0064
+    },
+    "2025": {
+     "low": 0.0026,
+     "central": 0.0051,
+     "high": 0.0072
+    },
+    "2026": {
+     "low": 0.0002,
+     "central": 0.0008,
+     "high": 0.0021
+    }
+   },
+   "add_total_2022_2026_central": 0.014,
+   "certainty": "D",
+   "role": "buyer of relabelled Russian products from Turkish ports (via Greek resale)"
+  },
+  "BGD": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0008,
+      "central": 0.0011,
+      "high": 0.0019
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0062,
+      "central": 0.0091,
+      "high": 0.0136
+     },
+     "2026": {
+      "low": 0.0075,
+      "central": 0.0142,
+      "high": 0.0183
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2022": {
+      "low": 0.0003,
+      "central": 0.0006,
+      "high": 0.0012
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0026,
+      "central": 0.0046,
+      "high": 0.0081
+     },
+     "2026": {
+      "low": 0.0031,
+      "central": 0.0071,
+      "high": 0.011
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0,
+     "2022": 0.0232,
+     "2023": 0,
+     "2024": 0,
+     "2025": 0.0279,
+     "2026": 0.0241
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0006,
+     "high": 0.0012
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0026,
+     "central": 0.0046,
+     "high": 0.0081
+    },
+    "2026": {
+     "low": 0.0031,
+     "central": 0.0071,
+     "high": 0.011
+    }
+   },
+   "add_total_2022_2026_central": 0.0123,
+   "certainty": "D",
+   "role": "buyer of Hengyi (Brunei) fuel"
+  },
+  "CHN": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.0056,
+      "central": 0.0131,
+      "high": 0.0213
+     },
+     "2022": {
+      "low": 0.0007,
+      "central": 0.001,
+      "high": 0.0017
+     },
+     "2023": {
+      "low": 0.0006,
+      "central": 0.0009,
+      "high": 0.0015
+     },
+     "2024": {
+      "low": 0.0093,
+      "central": 0.0134,
+      "high": 0.0181
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.0023,
+      "central": 0.0066,
+      "high": 0.0128
+     },
+     "2022": {
+      "low": 0.0003,
+      "central": 0.0005,
+      "high": 0.001
+     },
+     "2023": {
+      "low": 0.0003,
+      "central": 0.0005,
+      "high": 0.0009
+     },
+     "2024": {
+      "low": 0.0039,
+      "central": 0.0067,
+      "high": 0.0108
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0022,
+     "central": 0.0051,
+     "high": 0.008
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0009,
+     "central": 0.0026,
+     "high": 0.0048
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0.0915,
+     "2022": 0.0206,
+     "2023": 0.0246,
+     "2024": 0.0658,
+     "2025": 0,
+     "2026": 0
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0023,
+     "central": 0.0066,
+     "high": 0.0128
+    },
+    "2022": {
+     "low": 0.0003,
+     "central": 0.0005,
+     "high": 0.001
+    },
+    "2023": {
+     "low": 0.0003,
+     "central": 0.0005,
+     "high": 0.0009
+    },
+    "2024": {
+     "low": 0.0039,
+     "central": 0.0067,
+     "high": 0.0108
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "add_total_2022_2026_central": 0.0077,
+   "certainty": "D",
+   "role": "buyer of Hengyi (Brunei) fuel"
+  },
+  "TWN": {
+   "brunei": {
+    "fuel_value_russian_derived_eur_bn": {
+     "2021": {
+      "low": 0.003,
+      "central": 0.0071,
+      "high": 0.0115
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0018,
+      "central": 0.0026,
+      "high": 0.0036
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "russian_crude_eur_bn": {
+     "2021": {
+      "low": 0.0013,
+      "central": 0.0036,
+      "high": 0.0069
+     },
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0008,
+      "central": 0.0013,
+      "high": 0.0021
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "prewar_base_2018_2021_fuel_value": {
+     "low": 0.0008,
+     "central": 0.0018,
+     "high": 0.0029
+    },
+    "prewar_base_2018_2021_crude_value": {
+     "low": 0.0003,
+     "central": 0.0009,
+     "high": 0.0017
+    },
+    "brunei_exports_usd_bn": {
+     "2021": 0.0496,
+     "2022": 0,
+     "2023": 0,
+     "2024": 0.013,
+     "2025": 0,
+     "2026": 0
+    }
+   },
+   "add_total_eur_bn": {
+    "2021": {
+     "low": 0.0013,
+     "central": 0.0036,
+     "high": 0.0069
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0008,
+     "central": 0.0013,
+     "high": 0.0021
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "add_total_2022_2026_central": 0.0013,
+   "certainty": "D",
+   "role": "buyer of Hengyi (Brunei) fuel"
+  }
+ },
+ "brunei_totals": {
+  "russian_derived_fuel_exported_eur_bn": {
+   "2019": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0052
+   },
+   "2020": {
+    "low": 0.0615,
+    "central": 0.1364,
+    "high": 0.1875
+   },
+   "2021": {
+    "low": 0.1811,
+    "central": 0.4274,
+    "high": 0.6914
+   },
+   "2022": {
+    "low": 0.1719,
+    "central": 0.2386,
+    "high": 0.4201
+   },
+   "2023": {
+    "low": 0.093,
+    "central": 0.1377,
+    "high": 0.2272
+   },
+   "2024": {
+    "low": 0.4928,
+    "central": 0.7085,
+    "high": 0.9568
+   },
+   "2025": {
+    "low": 0.7131,
+    "central": 1.0471,
+    "high": 1.5565
+   },
+   "2026": {
+    "low": 0.9812,
+    "central": 1.8532,
+    "high": 2.3983
+   }
+  },
+  "russian_crude_in_exported_fuel_eur_bn": {
+   "2019": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0031
+   },
+   "2020": {
+    "low": 0.0257,
+    "central": 0.0682,
+    "high": 0.1126
+   },
+   "2021": {
+    "low": 0.0762,
+    "central": 0.2138,
+    "high": 0.4148
+   },
+   "2022": {
+    "low": 0.0723,
+    "central": 0.1195,
+    "high": 0.2521
+   },
+   "2023": {
+    "low": 0.0389,
+    "central": 0.0689,
+    "high": 0.1363
+   },
+   "2024": {
+    "low": 0.207,
+    "central": 0.3542,
+    "high": 0.5737
+   },
+   "2025": {
+    "low": 0.2994,
+    "central": 0.5236,
+    "high": 0.934
+   },
+   "2026": {
+    "low": 0.412,
+    "central": 0.9268,
+    "high": 1.439
+   }
+  },
+  "true_russian_crude_intake_eur_bn": {
+   "2019": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0104
+   },
+   "2020": {
+    "low": 0.064,
+    "central": 0.1279,
+    "high": 0.1599
+   },
+   "2021": {
+    "low": 0.3488,
+    "central": 0.7412,
+    "high": 1.09
+   },
+   "2022": {
+    "low": 0.2067,
+    "central": 0.2584,
+    "high": 0.4134
+   },
+   "2023": {
+    "low": 0.109,
+    "central": 0.1453,
+    "high": 0.218
+   },
+   "2024": {
+    "low": 0.6486,
+    "central": 0.8393,
+    "high": 1.0301
+   },
+   "2025": {
+    "low": 0.9892,
+    "central": 1.3071,
+    "high": 1.7664
+   },
+   "2026": {
+    "low": 1.1873,
+    "central": 1.8996,
+    "high": 2.2426
+   }
+  },
+  "russian_share_of_feedstock": {
+   "2019": [
+    0,
+    0,
+    0.01
+   ],
+   "2020": [
+    0.05,
+    0.1,
+    0.125
+   ],
+   "2021": [
+    0.08,
+    0.17,
+    0.25
+   ],
+   "2022": [
+    0.04,
+    0.05,
+    0.08
+   ],
+   "2023": [
+    0.03,
+    0.04,
+    0.06
+   ],
+   "2024": [
+    0.17,
+    0.22,
+    0.27
+   ],
+   "2025": [
+    0.28,
+    0.37,
+    0.5
+   ],
+   "2026": [
+    0.4,
+    0.68,
+    0.8
+   ]
+  },
+  "brunei_hs2710_exports_usd_bn_by_partner": {
+   "2019": {
+    "SGP": 0.2871,
+    "MYS": 0.0822,
+    "AUS": 0.0666,
+    "CHN": 0.0553,
+    "HKG": 0.0226,
+    "IDN": 0.0182
+   },
+   "2020": {
+    "SGP": 0.8936,
+    "AUS": 0.1896,
+    "MYS": 0.1187,
+    "CHN": 0.0845,
+    "JPN": 0.0738,
+    "USA": 0.0635,
+    "IDN": 0.0373,
+    "VNM": 0.0325,
+    "MOZ": 0.0196,
+    "PAK": 0.0195,
+    "PHL": 0.0184,
+    "KOR": 0.0065
+   },
+   "2021": {
+    "SGP": 1.2503,
+    "AUS": 0.8125,
+    "MYS": 0.2419,
+    "VNM": 0.1216,
+    "IDN": 0.1,
+    "CHN": 0.0915,
+    "JPN": 0.0892,
+    "NZL": 0.0751,
+    "HKG": 0.0504,
+    "TWN": 0.0496,
+    "PHL": 0.0383,
+    "KOR": 0.0338,
+    "ARE": 0.0119,
+    "OMN": 0.0077
+   },
+   "2022": {
+    "AUS": 1.7447,
+    "SGP": 1.5104,
+    "IDN": 0.5124,
+    "VNM": 0.447,
+    "MYS": 0.4451,
+    "PHL": 0.2155,
+    "NZL": 0.0982,
+    "BGD": 0.0232,
+    "CHN": 0.0206,
+    "HKG": 0.011
+   },
+   "2023": {
+    "AUS": 1.7148,
+    "SGP": 1.3923,
+    "MYS": 0.2278,
+    "IDN": 0.0864,
+    "PHL": 0.0807,
+    "NZL": 0.0586,
+    "ZAF": 0.0516,
+    "HKG": 0.0389,
+    "MOZ": 0.0329,
+    "CHN": 0.0246,
+    "VNM": 0.0132
+   },
+   "2024": {
+    "AUS": 1.557,
+    "SGP": 0.9729,
+    "MYS": 0.4929,
+    "VNM": 0.149,
+    "PHL": 0.0883,
+    "CHN": 0.0658,
+    "IDN": 0.0403,
+    "USA": 0.0371,
+    "NZL": 0.029,
+    "KOR": 0.0214,
+    "JPN": 0.0181,
+    "TWN": 0.013
+   },
+   "2025": {
+    "AUS": 1.5939,
+    "SGP": 0.7872,
+    "VNM": 0.2834,
+    "MYS": 0.2736,
+    "NZL": 0.0695,
+    "PHL": 0.0661,
+    "KOR": 0.0341,
+    "USA": 0.0304,
+    "BGD": 0.0279,
+    "JPN": 0.0239,
+    "FRA": 0.007,
+    "KHM": 0.001
+   },
+   "2026": {
+    "AUS": 1.9028,
+    "SGP": 0.5402,
+    "VNM": 0.2456,
+    "MYS": 0.1398,
+    "JPN": 0.1114,
+    "PHL": 0.0743,
+    "NZL": 0.0602,
+    "KOR": 0.0296,
+    "USA": 0.0263,
+    "BGD": 0.0241,
+    "FRA": 0.0061,
+    "KHM": 0.0009
+   }
+  },
+  "check_cumulative_tonnes": "CREA (Sep 2026): Australia imported about 2.6 Mt of Russian-derived fuel from Hengyi from 2022 to July 2026. These shares x Australia's recorded tonnes from Brunei give about 2.9 Mt (2022 0.10, 2023 0.10, 2024 0.57, 2025 1.00, Jan-Jul 2026 ~1.1), about 10% higher."
+ },
+ "turkish_ports_totals": {
+  "eu_imports_from_three_ports_eur_bn": {
+   "2021": {
+    "low": 0,
+    "central": 0,
+    "high": 0.05
+   },
+   "2022": {
+    "low": 0.0,
+    "central": 0.1,
+    "high": 0.3
+   },
+   "2023": {
+    "low": 1.9,
+    "central": 2.6,
+    "high": 3.1
+   },
+   "2024": {
+    "low": 2.3,
+    "central": 3.0,
+    "high": 3.6
+   },
+   "2025": {
+    "low": 2.6,
+    "central": 3.3,
+    "high": 3.8
+   },
+   "2026": {
+    "low": 0.3,
+    "central": 0.8,
+    "high": 1.4
+   }
+  },
+  "money_to_russia_per_euro": {
+   "2022": [
+    0.5,
+    0.75,
+    0.9
+   ],
+   "2023-2025": [
+    0.52,
+    0.756,
+    0.9
+   ],
+   "2026": [
+    0.35,
+    0.6,
+    0.85
+   ]
+  },
+  "member_split": {
+   "2022": {
+    "GRC": 0.7,
+    "ITA": 0.1,
+    "ESP": 0.1,
+    "BGR": 0.05,
+    "CYP": 0.05
+   },
+   "2023": {
+    "GRC": 0.66,
+    "ESP": 0.08,
+    "ITA": 0.07,
+    "CYP": 0.06,
+    "BGR": 0.04,
+    "ROU": 0.03,
+    "NLD": 0.03,
+    "MLT": 0.02,
+    "FRA": 0.01
+   },
+   "2024": {
+    "GRC": 0.72,
+    "CYP": 0.07,
+    "ESP": 0.05,
+    "ITA": 0.05,
+    "BGR": 0.04,
+    "MLT": 0.03,
+    "ROU": 0.02,
+    "NLD": 0.02
+   },
+   "2025": {
+    "GRC": 0.77,
+    "CYP": 0.088,
+    "BGR": 0.054,
+    "MLT": 0.032,
+    "ESP": 0.028,
+    "ITA": 0.015,
+    "ROU": 0.013
+   },
+   "2026": {
+    "GRC": 0.6,
+    "CYP": 0.2,
+    "ESP": 0.06,
+    "BGR": 0.05,
+    "ITA": 0.05,
+    "ROU": 0.04
+   }
+  },
+  "turkey_subtract_eur_bn": {
+   "2021": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "2022": {
+    "low": 0.0,
+    "central": 0.075,
+    "high": 0.27
+   },
+   "2023": {
+    "low": 0.988,
+    "central": 1.9656,
+    "high": 2.79
+   },
+   "2024": {
+    "low": 1.196,
+    "central": 2.268,
+    "high": 3.24
+   },
+   "2025": {
+    "low": 1.352,
+    "central": 2.4948,
+    "high": 3.42
+   },
+   "2026": {
+    "low": 0.105,
+    "central": 0.48,
+    "high": 1.19
+   }
+  },
+  "greek_comext_check_eur_bn": {
+   "note": "Greek HS 2710 imports labelled Iraq+Turkmenistan+Azerbaijan+Kazakhstan (Eurostat Comext DS-045409)",
+   "2019_2021_avg": 0.04,
+   "2022": 0.23,
+   "2023": 1.59,
+   "2024": 1.33,
+   "2025": 1.57,
+   "2025_jan_aug": 1.32,
+   "2026_jan_aug": 0.77,
+   "plus_turkiye_origin": {
+    "2021": 0.4,
+    "2023": 0.24,
+    "2024": 0.49,
+    "2025": 0.5,
+    "2026_jan_aug": 0.013
+   }
+  }
+ },
+ "sources": [
+  {
+   "name": "UN Comtrade public API: Brunei HS 2710 exports by partner and HS 2709 imports by partner, 2019-2025; partners' HS 2710 imports from Brunei, annual 2021-2025 and monthly Jan-Aug 2026",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=96&cmdCode=2710&flowCode=X",
+   "date": "downloaded 2026-10-18"
+  },
+  {
+   "name": "CREA Russia Fossil Tracker API: Russian crude and products delivered to Brunei by month, 2021-Aug 2026 (crude 0.56 Mt 2021, 0.28 Mt 2022, 0.23 Mt 2023, 1.13 Mt 2024, 1.54 Mt 2025, 1.88 Mt Jan-Aug 2026; direct deliveries only)",
+   "url": "https://api.russiafossiltracker.com/v0/counter?destination_iso2=BN&aggregate_by=destination_iso2,commodity,month",
+   "date": "downloaded 2026-10-18"
+  },
+  {
+   "name": "CREA via Sydney Morning Herald: Hengyi Russian crude 5% (2022), 37% (2025), 72% (Jan-Jul 2026, peak 88% Apr-Jun); 68% of fuel to Australia Russian-derived in Jan-Jul 2026 vs 24% two years earlier; 2.6 Mt to Australia since 2022; 43% of Hengyi exports to Australia",
+   "url": "https://au.headtopics.com/news/majority-of-australian-fuel-from-key-refinery-traced-to-87992177",
+   "date": "2026-09-22"
+  },
+  {
+   "name": "Australian Federation of Ukrainian Organisations, summary of the same CREA report",
+   "url": "https://afuo.org.au/russian-blood-oil-is-still-flowing-into-australia-and-imports-from-one-asian-supplier-are-surging/",
+   "date": "2026-10-01"
+  },
+  {
+   "name": "CREA, Fourth year of full-scale invasion: Hengyi Russian crude 25% (Y3) to 60% (Y4); EUR 1.5 bn of products to sanctioning countries, 98% to Australia; Turkish ports Ceyhan, Marmara, Mersin: 82% of product imports Russian (13.1 Mt, EUR 7.5 bn), EUR 3.3 bn (6.7 Mt) to the EU Feb 2025-Jan 2026, Greece 2.54 bn (68% MOH Corinth), Cyprus 289 mn, Bulgaria 179 mn, Malta 104 mn, Spain 92 mn",
+   "url": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf",
+   "date": "2026-02-24"
+  },
+  {
+   "name": "KSE Institute, EU ban on products refined from Russian crude: Hengyi Russian crude 0.10 mb/d P1 2025, 0.12 mb/d P4 2025 and P1 2026; share of feedstock 24%, 42%, 33%; Australia 41-52% of Hengyi's Russian-derived exports; no Hengyi exports to the EU",
+   "url": "https://institute.kse.ua/wp-content/uploads/2026/06/kse_refining_loophole_eng_june_2026.pdf",
+   "date": "2026-06"
+  },
+  {
+   "name": "CREA monthly analyses April and August 2026 (Hengyi two diesel cargoes EUR 76 mn to Australia in April; refineries using Russian crude in India, Turkiye, Brunei, Georgia: Australia EUR 399 mn April, 34 mn August)",
+   "url": "https://energyandcleanair.org/august-2026-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/",
+   "date": "2026-09"
+  },
+  {
+   "name": "CREA/CSD, A Kremlin pit stop: the EU imported EUR 3 bn of oil products from Turkish ports handling Russian oil (Feb 2023-Feb 2024: 5.16 Mt, EUR 3.1 bn; Ceyhan EUR 1.9 bn to EU, 92% Russian imports; Marmara Ereglisi EUR 1.46 bn exports, over a third to EU; Mersin 0.836 Mt to EU; Toros Ceyhan to MOH Corinth; GTS to Repsol Cartagena)",
+   "url": "https://energyandcleanair.org/wp/wp-content/uploads/2024/05/CREA_CSD_A-Kremlin-pit-stop_The-EU-imported-EUR-3-bn-of-oil-products-from-Turkish-ports-handling-Russian-oil.pdf",
+   "date": "2024-05"
+  },
+  {
+   "name": "CREA/CSD, Turkish refineries (Akpet/Lukoil terminals in Mersin, Samsun, Hatay incl. Dortyol)",
+   "url": "https://csd.eu/fileadmin/user_upload/publications_library/files/2024_9/FINAL_CREA_CSD_Analysis_Turkish-Refineries_09.2024.pdf",
+   "date": "2024-09"
+  },
+  {
+   "name": "Novaya Gazeta Europe, The billion-euro loophole (CREA: EUR 929 mn Jan-May 2026 via Turkiye, India, Georgia; 36 of 49 shipments from Turkish ports; Cyprus 16 cargoes)",
+   "url": "https://novayagazeta.eu/en/articles/2026/06/24/the-billion-euro-loophole-en",
+   "date": "2026-06-24"
+  },
+  {
+   "name": "Global Trade Review, EU still buying Russian oil products as Turkey becomes re-export hub",
+   "url": "https://www.gtreview.com/news/europe/eu-still-buying-russian-oil-products-as-turkey-becomes-re-export-hub/",
+   "date": "2024-05"
+  },
+  {
+   "name": "Eurostat Comext DS-045409: HS 2710 imports of GR, CY, BG, MT, ES, IT, RO by origin, annual 2019-2025 and monthly Jan-Aug 2025/2026",
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409",
+   "date": "updated 2026-10-16, downloaded 2026-10-18"
+  }
+ ],
+ "overlaps": "Brunei: not in energy.json laundered_oil (refiners IN, TR, CN, AE) nor round4a laundered_prewar, so new for every buyer except Australia: laundered_eu.json non_eu AUS 2025 (0.90) is built from CREA's Mar 2025-Feb 2026 figure that includes Hengyi at 60% Russian (about 0.49 of the 0.90) and AUS 2026 (0.35) from CREA monthly tracking that includes some Hengyi cargoes (about 0.14); the AUS replacement series removes these. Brunei's own payments (trade_full customs) include its recorded Russian crude; the refiner deduction takes off exactly what the buyers are charged. Turkish ports: hub_buyers.json turkey_refining covers refinery output (STAR, Tupras) and is a different flow; its refiner deduction at Turkiye stays. The re-export block hub_buyers.json turkey_refining.reexport_of_russian_products (EUR 1.7-3.3 bn central) is the same flow and is replaced by this file (it was never added). The model's Turkey component for non-EU buyers (energy.json, national Russian share on all Turkish exports) partly covers non-EU re-exports; not changed here. laundered_eu.json: its Turkish-origin imports (TR share x k) contain the port cargoes declared as Turkish (assumed 20% for Greece, 40% for other members), and its Cyprus value (40% of 'not specified' imports) is the same cargoes; both are subtracted (`already_in_laundered_eu_eur_bn`, total about EUR 1.0 bn 2022-2026). Turkiye's subtraction is the gross amount, so the earlier double count (laundered_eu buyers + Turkiye's own payments) disappears too. Direct EU imports of Russian products in 2022 to Feb 2023 are in to_rus of the EU members and not here. Shadow-fleet and shipping files are about freight, not fuel value: no overlap.",
+ "notes": "Educated guesses: 2024 Turkish-port value (interpolated), 2026 Turkish-port value (Greek Comext pace, wide range), the money-to-Russia factor, the member split outside 2025, the Turkish-labelled share used for the overlap, Brunei 2026 exports to destinations other than Australia, Hengyi's 2020-2021 Russian share (customs 25% vs CREA tracker 8% in 2021) and 2026 crude import value. Ukraine appears as a customer of Greek resale (hub_exports_2024): the builder may drop it if Ukraine is not scored. Gibraltar receives Greek resale as bunker fuel; the existing Gibraltar margin rule applies. Brunei crude also feeds Hengyi's paraxylene and benzene (sold mostly to China), which is not fuel and is not counted at any buyer; it stays with Brunei under option B. Non-EU exports from the three Turkish ports (about EUR 1-1.5 bn a year, buyers unknown) are not quantified per buyer."
+}

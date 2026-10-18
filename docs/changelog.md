@@ -90,6 +90,34 @@ The [round 5 roadmap](roadmap.md) in full. Research:
 Headline effects: Poland +10.0% → +7.1% of GDP (refugees), Türkiye −6.0% → −6.6% (prices), Hungary −6.7% → −7.6%,
 Germany +4.8% → +4.3%, Japan +0.91% → +0.76% (loans), Belarus's range −79% to +51% → −58% to +19%.
 
+## Round 6
+
+The [round 6 roadmap](roadmap.md) in full. The main change is a fairer count of money earned from the war effort:
+
+- **Two balances:** each country has a balance with Ukraine (what it gave minus what it earned from the war effort) and
+  one with Russia; the headline adds them. A country that earned more from the war effort than it gave gets a gold
+  outline, and gold fill when that makes its total negative; that is never counted as money toward Russia
+  ([overview.md](method/overview.md#two-balances-round-6)).
+- **The money rule:** money paid out counts in full; money earned (flowback, sales and services to Russia, freight for
+  Russian oil) counts as value kept in the economy (OECD TiVA) × the share that is genuinely extra. It replaces the flat
+  20% profit ([overview.md](method/overview.md#the-money-rule-round-6)).
+- **The all-money ledger:** every euro that reached Ukraine followed to the economy where it was spent, including
+  purchases that replaced donated weapons and aid spent on energy, relief and rebuilding. The US earns back EUR 44bn of
+  94bn given, Germany 10 of 78 ([aid-refugees-military.md](method/aid-refugees-military.md#flowback)).
+- **Ranges:** the 2022–2026 total's range measured directly on the back-tests (about as wide as before); own bands for
+  Mongolia, Yemen, Tajikistan and Moldova; Moldova without Transnistria's unpaid gas (range −14…+74% → +8…+36%)
+  ([counterfactual.md](method/counterfactual.md)). Trade with Ukraine back to 2021 held flat after more back-tests.
+- **Data gaps closed:** payment agents' fees; North Korea and Iran military support at certainty C; 18 more buyers of
+  Russian arms and Iran's drones counted once; Brunei's refinery at its true Russian crude intake and Russian fuel
+  relabelled in Turkish ports; shadow-fleet shares from evidence; Belarus's loan deferrals net of refinancing; company
+  taxes checked against company reports.
+- **Display:** ranges as a pale band behind each bar, readable on phones and in dark mode.
+
+Headline effects (% of GDP, develop → round 6): Kyrgyzstan −15.3 → −23.3, Armenia −7.8 → −13.4, Georgia −12.0 → −16.0
+(payment agents, money rule), Belarus −23.7 → −28.6, North Korea −36.8 → −30.0, Brunei +6.6 → −4.8, Moldova +16.9 →
++19.3 (range now above zero), Bulgaria +1.7 → +0.7 and Czechia +2.4 → +1.9 (gold outline: they earned more from the war
+effort than they gave). Large donors barely move: US +0.61 → +0.51, Germany +4.26 → +4.23, Poland +7.1 → +7.3.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open

@@ -31,7 +31,7 @@ Code: `apply_state_finance()`; data: [`russia_state_finance.json`](../../researc
 | Viet Nam | −0.7 | stopped paying in 2023 (blocked payment channels) |
 | Iraq | −0.4 | stopped paying |
 
-Arrears in Viet Nam, Iraq and Bangladesh were caused by sanctions on payment channels, not by choice.
+Arrears in Viet Nam, Iraq and Bangladesh were caused by sanctions on payment channels, not by choice: they count (the money did not reach Russia) and the country panel says so in a note. **Belarus's** deferrals were granted by Russia and refinanced with new Russian loans, so its loan repayments are left out (round 6); only its nuclear-plant part counts.
 
 ## Weapons bought from Russia
 
@@ -48,6 +48,15 @@ Viet Nam, Myanmar about +0.5 each; Iran −2.5 (paid more), Saudi Arabia −0.5.
 buyer's choice: Russia kept its output for its own army and sanctions hit its production (India about 50%, China 70%,
 Egypt 20%, about 60% elsewhere). The country panel says so in a note, like the sanctions split; the number is not
 reduced. Most buyer values after 2021 are educated guesses (certainty D; India and China C).
+
+### Round 6
+
+18 more buyers were found for the "rest of world" remainder from SIPRI fact sheets ([`arms_r6.json`](../../research/2026-10/gaps/arms_r6.json),
+[notes](../../research/2026-10/gaps/arms_r6-notes.md)): Mali, Burkina Faso, Niger, Libya, Sudan, Ethiopia, Uganda,
+Angola, Nigeria, Laos, Mongolia, Malaysia, Turkmenistan, Thailand, Azerbaijan, Venezuela, Bulgaria, Slovakia. The
+unassigned amount falls from EUR 3.0bn to 1.2bn. **Iran** is counted once: about 35% (10–70%) of its payments for
+Russian arms were settled in drones and missiles that are already counted as weapons sent to Russia, so that part
+(EUR 1.2bn central) is taken off its arms payments.
 
 ## Companies leaving Russia
 
