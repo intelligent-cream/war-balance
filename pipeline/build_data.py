@@ -140,11 +140,6 @@ def build() -> dict:
     trade = load(GAPS / "trade_full.json")
     # better official data for the countries with the widest ranges (narrow.json) enter at customs level, so every later
     # step (re-exports, residual, freight, audits) applies to them as to everyone else
-    # the UAE: its own customs totals, which match the official non-oil trade with Russia (round4b.json)
-    for key, field in (("to_rus", "imports_from_RUS"), ("from_rus", "exports_to_RUS")):
-        f = trade["countries"].setdefault("ARE", {}).setdefault(field, {})
-        for y, v in R4B["uae"][key].items():
-            f[y] = {**(f.get(y) or {}), **{b: v[b] for b in ("low", "central", "high")}}
     for iso3, series in load(GAPS / "narrow.json")["countries"].items():
         for key, field in (("to_rus", "imports_from_RUS"), ("from_rus", "exports_to_RUS")):
             tl = (series.get(key) or {}).get("trade_layer")
@@ -152,6 +147,11 @@ def build() -> dict:
                 f = trade["countries"][iso3].setdefault(field, {})
                 for y, v in tl.items():
                     f[y] = {**(f.get(y) or {}), **{b: v[b] for b in ("low", "central", "high")}}
+    # the UAE: its own customs totals, which match the official non-oil trade with Russia (round4b.json), after narrow.json, which is older for the UAE
+    for key, field in (("to_rus", "imports_from_RUS"), ("from_rus", "exports_to_RUS")):
+        f = trade["countries"].setdefault("ARE", {}).setdefault(field, {})
+        for y, v in R4B["uae"][key].items():
+            f[y] = {**(f.get(y) or {}), **{b: v[b] for b in ("low", "central", "high")}}
     aid_gaps, refugees = load(GAPS / "aid_gaps.json"), load(GAPS / "refugees.json")
     energy, companies = load(GAPS / "energy.json"), load(GAPS / "companies_all.json")
     countries: dict[str, dict] = {}
@@ -218,6 +218,8 @@ def build() -> dict:
             bases = [(f.get(str(y)) or {}).get("basis", "estimated") for y in YEARS]
             cert = weakest(basis_cert.get(b, "C") for b in bases[:5])
             c[key] = {**series, "cert": cert, "src": [tid]}
+            if bases[5] == "estimated":
+                c[key]["est26"] = True  # no 2026 figures published yet: estimated from 2025
             kinds = sorted({b for b in bases})
             status = "ok" if set(bases[:5]) == {"reported"} else "est"
             note(iso3, part, status, "reported 2021-2025" if status == "ok" else "partly filled: " + ", ".join(kinds))
@@ -515,6 +517,11 @@ def build() -> dict:
                     laund[k] = [v * m for v in laund[k]]
             laundered[iso3] = laund
         note(iso3, "Energy switching cost", "est", "modelled per fuel and month")
+    # GDP from residual.json is needed now: laundered oil is capped at a share of GDP (Gibraltar)
+    for iso3, d in load(GAPS / "residual.json")["population_gdp"].items():
+        c = countries.get(iso3)
+        if c and not c.get("gdp") and (d.get("gdp_eur_bn") or {}).get("central"):
+            c["gdp"], c["pop"] = d["gdp_eur_bn"]["central"], (d.get("pop_m") or {}).get("central")
     reassign_laundered_oil(countries, laundered, src)
     # refiners: the Russian crude in the fuel Turkey and India export is counted at the buyers (laundered oil),
     # so it is taken out of the refiner's own payments to Russia; they keep what they use themselves
@@ -645,6 +652,19 @@ def build() -> dict:
             ser = lch(d.get("to_rus") or d.get("years"))
             if c and any(ser["years_hi"]):
                 c[key] = {**ser, "cert": d.get("certainty") or "D", "src": [sid]}
+    # Kyrgyzstan's hidden gold went on to the buyers of Kyrgyz gold (kgz_gold.json): counted for them, as for other
+    # hubs; Kyrgyzstan keeps a 5% margin
+    kg, h = load(GAPS / "kgz_gold.json"), (countries.get("KGZ") or {}).get("hidden")
+    if h:
+        for buyer, w in kg["shares"].items():
+            b = countries.get("CHN" if buyer == "HKG" else buyer)  # Hong Kong's gold counts for China
+            if not b:
+                continue
+            o = b.setdefault("hidden", {"years": [0.0] * 6, "years_lo": [0.0] * 6, "years_hi": [0.0] * 6, "cert": "D", "src": [hid]})  # fmt: skip
+            for k in ("years", "years_lo", "years_hi"):
+                o[k] = [round(v + x * w * (1 - kg["margin_kept"]), 5) for v, x in zip(o[k], h[k])]
+        for k in ("years", "years_lo", "years_hi"):
+            h[k] = [round(x * kg["margin_kept"], 5) for x in h[k]]
     for iso3 in countries:
         if countries[iso3].get("private"):
             note(iso3, "Private donations", "est", "national totals or a GDP-based estimate")
@@ -1017,6 +1037,20 @@ def fuel_index(iso3: str, band: str) -> list[float]:
     ]  # fmt: skip
 
 
+def fuel_share_year(iso3: str) -> list[float | None]:
+    """Fuel's share of what a country actually paid Russia each year, at that year's prices, from its own customs
+    (prices.json: fuel payments per fuel / all payments); None where not measured. India bought mostly crude after
+    2022, so its pre-war mix (43% fuel) would understate both the fuel price level and the windfall."""
+    pr = PRICES.get(iso3) if iso3 not in PRICES_SKIP else None
+    parts, paid = (pr or {}).get("windfall_parts") or {}, (pr or {}).get("paid") or {}
+    out: list[float | None] = []
+    for y in YEARS:
+        tot = (paid.get(str(y)) or {}).get("central")
+        fuel = sum((p.get(str(y)) or {}).get("paid") or 0 for k, p in parts.items() if k != "non_fuel_goods")
+        out.append(round(min(1.0, fuel / tot), 4) if tot and fuel and y >= 2022 else None)
+    return out
+
+
 def price_indices(countries: dict[str, dict]) -> None:
     """Price level of each flow per year against 2019-2021 (= 1), so changes compare volumes, not price swings."""
     for iso3, c in countries.items():
@@ -1039,7 +1073,12 @@ def price_indices(countries: dict[str, dict]) -> None:
                     fuel = fuel_index(iso3, band)
                     fs = fossil_share(iso3)
                     nf = own_index(iso3, "non_fuel_goods", band) or idx("non_fuel_goods", band)
-                    series = [fs * f + (1 - fs) * g for f, g in zip(fuel, nf)]
+                    # pre-war weights, or the year's actual fuel share of payments where measured (a share of
+                    # value at that year's prices, so the index is the harmonic mean)
+                    series = [
+                        1 / (sy / f + (1 - sy) / g) if sy is not None and f > 0 and g > 0 else fs * f + (1 - fs) * g
+                        for f, g, sy in zip(fuel, nf, fuel_share_year(iso3))
+                    ]
                 obj["pidx" + suffix] = [round(v, 4) for v in series]
 
 
@@ -1052,14 +1091,14 @@ def war_windfall(countries: dict[str, dict], src: Sources) -> None:
         "War-time price windfall on Russian fuel: payments minus the same volume at 2019-2021 prices",
         None,
         "2026-10-18",
-        "fuel share and price level per country from its pre-war import mix and fuel price indices (energy2.json, gas_prices.json)",
+        "fuel share of payments per year from own customs where measured (prices.json), else the pre-war import mix; fuel price indices (prices.json, energy2.json, gas_prices.json)",
     )
     for iso3, c in countries.items():
         tr = c.get("to_rus")
         if not tr:
             continue
-        fs = fossil_share(iso3)
-        if not fs:
+        fs, fsy_own = fossil_share(iso3), fuel_share_year(iso3)
+        if not fs and not any(fsy_own):
             continue
         out = {}
         # the low end takes the low fuel price level (less windfall), the high end the high one
@@ -1071,7 +1110,7 @@ def war_windfall(countries: dict[str, dict], src: Sources) -> None:
                     vals.append(0.0)
                     continue
                 # fuel's share of the year's payments, at that year's prices
-                fsy = fs * fuel[i] / (fs * fuel[i] + (1 - fs) * nf[i])
+                fsy = fsy_own[i] if fsy_own[i] is not None else fs * fuel[i] / (fs * fuel[i] + (1 - fs) * nf[i])
                 vals.append(round(tr["years"][i] * fsy * (1 - 1 / fuel[i]), 5))
             out[k] = vals
         # the fuel share moves with the price level too, so the three values are put back in order each year
@@ -1215,9 +1254,18 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
                 round(max(obj["years_hi"][0] / pl[0], obj["base"]), 5),
             ]
             ms = [d["multiplier_vs_2021"][str(y)] for y in YEARS[1:]]
-            obj["bmul"] = [1.0] + [m["central"] for m in ms]
-            obj["bmul_lo"] = [1.0] + [min(m["low"], m["central"]) for m in ms]
-            obj["bmul_hi"] = [1.0] + [max(m["high"], m["central"]) for m in ms]
+            # services: the travel recovery is sized on the model's own 2021 level. Where the map's 2021 is higher
+            # (another source, little COVID dip), the expected level stops at the model's recovered level in euros
+            # (Montenegro: its 2021 was 6% of 2019 in the model's data, but not in the map's)
+            eur = d.get("eur_bn_at_2018_2021_prices") or {}
+            scale = []
+            for y, m in zip(YEARS[1:], ms):
+                e = (eur.get(str(y)) or {}).get("central")
+                cap = max(1.0, e / obj["base"]) if key.startswith("svc_") and e and m["central"] > 1 else m["central"]
+                scale.append(min(1.0, cap / m["central"]) if m["central"] else 1.0)
+            obj["bmul"] = [1.0] + [round(m["central"] * f, 4) for m, f in zip(ms, scale)]
+            obj["bmul_lo"] = [1.0] + [round(min(m["low"], m["central"]) * f, 4) for m, f in zip(ms, scale)]
+            obj["bmul_hi"] = [1.0] + [round(max(m["high"], m["central"]) * f, 4) for m, f in zip(ms, scale)]
             obj["cf"] = cf["chosen"].get(key, {}).get("model", "rw") if iso3 not in HUBS_CF else "rw"
             obj["src"] = [x for x in obj.get("src", []) if x not in ("trend", "trend2")] + [sid]
 
@@ -1238,33 +1286,51 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
     hubs["TGO"] = {k: v["central"] for k, v in REFINE["togo_buyers"].items() if isinstance(v, dict) and "central" in v}
     for hub, d in buyers["hubs"].items():
         hubs.setdefault(hub, {k: v["central"] for k, v in d["destination_shares"].items() if k != "other"})
-    totals = {iso3: {k: list(v[k]) for k in ("years", "years_lo", "years_hi")} for iso3, v in laundered.items()}
-    # fuel passed from one hub to another (India to the Netherlands, Belgium to the Netherlands) is passed on again:
-    # each hub resells what it has not yet processed, until nothing is left in transit (order does not matter)
-    keys = ("years", "years_lo", "years_hi")
-    pending = {h: {k: list(totals[h][k]) for k in keys} for h in HUB_RESALE if h in totals}
-    for _ in range(20):
-        if not any(any(v > 1e-6 for v in pk[k]) for pk in pending.values() for k in keys):
-            break
-        for hub, (lo, mid, hi) in HUB_RESALE.items():
-            amount = pending.pop(hub, None)
-            if not amount:
-                continue
-            shares = {d: w for d, w in hubs.get(hub, {}).items() if d in countries and d != hub}
-            norm = sum(shares.values()) or 1
-            # the hub keeps least at the high resale share (its low end) and most at the low share (its high end);
-            # its customers get the least at the low share and the most at the high share
-            bunker = HUB_BUNKER.get(hub, 0.0)
-            for key, out_f, give_f in (("years", mid, mid), ("years_lo", hi + bunker, lo), ("years_hi", lo, hi)):
-                totals[hub][key] = [v - a * min(1.0, out_f) for v, a in zip(totals[hub][key], amount[key])]
-                moved = [a * give_f for a in amount[key]]
-                for dest, w in shares.items():
-                    t = totals.setdefault(dest, {k: [0.0] * 6 for k in keys})
-                    add = [m * w / norm for m in moved]
-                    t[key] = [v + x for v, x in zip(t[key], add)]
-                    if dest in HUB_RESALE:
-                        pk = pending.setdefault(dest, {k: [0.0] * 6 for k in keys})
-                        pk[key] = [v + x for v, x in zip(pk[key], add)]
+
+    def pass_on(start: dict[str, dict]) -> dict[str, dict]:
+        """Each hub's resold share goes to its customers, through chains of hubs."""
+        totals = {iso3: {k: list(v[k]) for k in ("years", "years_lo", "years_hi")} for iso3, v in start.items()}
+        # fuel passed from one hub to another (India to the Netherlands, Belgium to the Netherlands) is passed on again:
+        # each hub resells what it has not yet processed, until nothing is left in transit (order does not matter)
+        keys = ("years", "years_lo", "years_hi")
+        pending = {h: {k: list(totals[h][k]) for k in keys} for h in HUB_RESALE if h in totals}
+        for _ in range(20):
+            if not any(any(v > 1e-6 for v in pk[k]) for pk in pending.values() for k in keys):
+                break
+            for hub, (lo, mid, hi) in HUB_RESALE.items():
+                amount = pending.pop(hub, None)
+                if not amount:
+                    continue
+                shares = {d: w for d, w in hubs.get(hub, {}).items() if d in countries and d != hub}
+                norm = sum(shares.values()) or 1
+                # the hub keeps least at the high resale share (its low end) and most at the low share (its high end);
+                # its customers get the least at the low share and the most at the high share
+                bunker = HUB_BUNKER.get(hub, 0.0)
+                for key, out_f, give_f in (("years", mid, mid), ("years_lo", hi + bunker, lo), ("years_hi", lo, hi)):
+                    totals[hub][key] = [v - a * min(1.0, out_f) for v, a in zip(totals[hub][key], amount[key])]
+                    moved = [a * give_f for a in amount[key]]
+                    for dest, w in shares.items():
+                        t = totals.setdefault(dest, {k: [0.0] * 6 for k in keys})
+                        add = [m * w / norm for m in moved]
+                        t[key] = [v + x for v, x in zip(t[key], add)]
+                        if dest in HUB_RESALE:
+                            pk = pending.setdefault(dest, {k: [0.0] * 6 for k in keys})
+                            pk[key] = [v + x for v, x in zip(pk[key], add)]
+        return totals
+
+    totals = pass_on(laundered)
+    # the pre-war level goes through the same chain (round4a.json gives it before hub pass-on); the EU correction
+    # comes first, as for the yearly values
+    prewar = {}
+    for iso3, pw in LAUNDERED_PREWAR.items():
+        b, eu = pw["base_2018_2021"], (0.5, 0.62, 0.8) if iso3 in EU27 else (1, 1, 1)
+        prewar[iso3] = {
+            k: [b[band] * e] * 6
+            for k, band, e in (("years", "central", eu[1]), ("years_lo", "low", eu[0]), ("years_hi", "high", eu[2]))
+        }
+    passed = pass_on(prewar)
+    prewar = {k: (v["years"][0], v["years_lo"][0], v["years_hi"][0]) for k, v in passed.items()}
+
     lid = src.add(
         "laundered",
         "Laundered oil: fuel made from Russian crude, assigned to the final buyer (trading hubs pass on what they resell), valued at the Russian crude inside it",
@@ -1288,15 +1354,14 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
         tr["laundered_src"] = [lid]
         # some fuel refined from Russian crude reached buyers before the war too: only the rise above that level, and
         # its pre-war growth, counts (round4a.json; same crude-content factor and EU correction as the yearly values)
-        pw = LAUNDERED_PREWAR.get(iso3)
+        pw = LAUNDERED_PREWAR.get(iso3) or {}
         lb = {"years": tr["laundered"], "years_lo": tr["laundered_lo"], "years_hi": tr["laundered_hi"], "base": 0.0, "base_range": [0.0, 0.0], "cert": "C", "src": [lid]}  # fmt: skip
-        if pw:
-            eu = (0.5, 0.62, 0.8) if iso3 in EU27 else (1, 1, 1)
-            b = pw["base_2018_2021"]
-            lb["base"] = round(b["central"] * CRUDE_CONTENT[1] * eu[1], 5)
+        if prewar.get(iso3) and prewar[iso3][0] > 0:
+            mid_b, lo, hi = prewar[iso3][0], *sorted(prewar[iso3][1:])
+            lb["base"] = round(mid_b * CRUDE_CONTENT[1], 5)
             lb["base_range"] = [
-                round(b["low"] * CRUDE_CONTENT[0] * eu[0], 5),
-                round(b["high"] * CRUDE_CONTENT[2] * eu[2], 5),
+                round(min(lo * CRUDE_CONTENT[0], lb["base"]), 5),
+                round(max(hi * CRUDE_CONTENT[2], lb["base"]), 5),
             ]
             # growth from the 2018-2021 midpoint; the range always includes no growth
             g = pw.get("g") or {"low": 0, "central": 0, "high": 0}
@@ -1353,6 +1418,19 @@ def fix_artefacts(countries: dict[str, dict]) -> None:
                 t[k] = [0.0] * 6
             t["base"], t["base_range"] = 0.0, [0.0, 0.0]
             t.pop("laundered", None)
+    # Gibraltar: fuel bought to sell as bunkers to passing ships; the money comes from shipowners elsewhere. Like the
+    # other resellers, it keeps a margin: 10% (5-30%) of its Russian fuel and of the fuel made from Russian crude
+    c_gib = countries.get("GIB") or {}
+    for key, ks in (("to_rus", ("years", "years_lo", "years_hi")), ("laund", ("years", "years_lo", "years_hi"))):
+        if t := c_gib.get(key):
+            for k, f in zip(ks, (0.1, 0.05, 0.3)):
+                t[k] = [round(v * f, 5) for v in t[k]]
+            t["base"] = round(t.get("base", 0) * 0.1, 5)
+            if t.get("base_range"):
+                t["base_range"] = [round(t["base_range"][0] * 0.05, 5), round(t["base_range"][1] * 0.3, 5)]
+            for k, f in (("laundered", 0.1), ("laundered_lo", 0.05), ("laundered_hi", 0.3)):
+                if t.get(k):
+                    t[k] = [round(v * f, 5) for v in t[k]]
     # Botswana: rough diamonds bought for sorting and resale; only a trading margin stays
     if t := ser("BWA", "to_rus"):
         t["base"], t["base_range"] = 0.006, [0.003, 0.012]
@@ -1503,7 +1581,7 @@ def apply_audit2(countries: dict[str, dict], src: Sources, stage: str) -> None:
     and baselines (UAE gold via Armenia and 2026 hidden gold, Russian fuel delivered to the UAE, France's undisclosed
     aid already in Kiel, the structural pre-war gap in Russia's import statistics). Stage "trends": pre-war trends
     fitted on the full 2012-2021 window where the post-2016 window was only a rebound (Kazakhstan, Montenegro...).
-    Baltic and Finnish pre-war transit (question 6) is not applied."""
+    Baltic and Finnish transit (question 6) is applied separately, in baltic_transit()."""
     aid2 = src.add(
         "audit2",
         "Second audit: UAE gold and fuel, undisclosed aid, Russia's import-statistics gap, trend windows, border-priced imports",
@@ -1524,12 +1602,12 @@ def apply_audit2(countries: dict[str, dict], src: Sources, stage: str) -> None:
                     obj["base_range"] = [round(max(0.0, br[0] + x["low"]), 5), round(max(0.0, br[1] + x["high"]), 5)]
                 else:
                     i = YEARS.index(int(x["year"]))
-                    lo, mid, hi = sorted((x["low"], x["central"], x["high"]))[0], x["central"], max(x["low"], x["high"])
-                    for k, d in (("years", mid), ("years_lo", lo), ("years_hi", hi)):
+                    # each band's change goes to that band (a cut can be largest at the high end)
+                    for k, d in (("years", x["central"]), ("years_lo", x["low"]), ("years_hi", x["high"])):
                         arr = obj.setdefault(k, [0.0] * 6)
                         arr[i] = round(max(0.0, arr[i] + d), 5)
-                    obj["years_lo"][i] = min(obj["years_lo"][i], obj["years"][i])
-                    obj["years_hi"][i] = max(obj["years_hi"][i], obj["years"][i])
+                    band = (obj["years_lo"][i], obj["years"][i], obj["years_hi"][i])
+                    obj["years_lo"][i], obj["years_hi"][i] = min(band), max(band)
                 if aid2 not in obj.setdefault("src", []):
                     obj["src"].append(aid2)
             elif stage == "trends" and x["field"] == "bmul" and q["id"] == "Q5":
@@ -1725,6 +1803,9 @@ def apply_reexports(countries: dict[str, dict], src: Sources, note) -> None:
                 for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
                     goods[k][i] *= sh[b] / sh["old"]
         pre = d.get("reexports_to_RUS_baseline_2019_2021") or {"low": 0, "central": 0, "high": 0}
+        # 2021 carries the pre-war re-exports too: the expected level without the war starts from 2021
+        for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
+            goods[k][0] = goods0[k][0] = pre[b]
         keep = {"years": 1 - m["central"], "years_lo": 1 - m["high"], "years_hi": 1 - m["low"]}
         if h.get("from_rus") and any(goods["years"]):
             f = h["from_rus"]

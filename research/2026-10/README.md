@@ -23,9 +23,9 @@ Each `*-notes.md` file has the method, caveats and gaps.
   in 2022, so its cost is likely too low. UNHCR's US count leaves out Uniting for Ukraine parolees.
 - `gaps.md` lists, per country, which parts are reported, estimated or missing. Missing parts count as zero.
 - Own-industry shares of military aid are modelled for every country except the US; countries without evidence get an assumed 40% (D).
-- Trade data stops in 2025; 2026 trade is the 2025 rate for eight months (estimate). Fossil payments in 2026 are CREA's actual figures, scaled to the end of August.
+- 2026 is January to August. Where a country has published 2026 trade it is used; otherwise 2026 is the 2025 rate for eight months, marked * on the map (81 importers, e.g. Belarus, Uzbekistan). Fossil payments in 2026 are CREA's actual figures, scaled to the end of August.
 - Transit hubs (Germany, Netherlands, Turkey, Slovakia, Austria, Hungary) may include fuel used further downstream.
-- Armenia, Kyrgyzstan, Georgia and the UAE rank high toward Russia because of re-exports; Belarus has no trade data after 2021.
+- Re-exports through hubs (Armenia, Kyrgyzstan, Georgia, Kazakhstan, the UAE and others) are moved to the countries that made the goods, but the shares are estimates. Kyrgyzstan's hidden gold payments are not yet passed on to the final buyers. Belarus publishes no trade data after 2021; its trade is estimated from official statements.
 - North Korea's and Iran's supplies are mostly paid for by Russia; they are counted as military support to Russia (D), not as aid.
 
 ## Round 2: gaps filled, margins everywhere (2026-10-17)
@@ -119,3 +119,18 @@ Method choices made in this round:
 - Company taxes, shipping and the few countries without a model keep their trends.
 
 Effect on the map: middle values change little (Germany +4.8% to +4.7%, China −1.1% to −1.6%, Hungary −5.6% to −6.7%). Ranges are about 1.5–2 times wider.
+
+### Review fixes (round 4 review)
+
+- **UAE customs:** the round4b customs figures were overwritten by older narrow.json values, which pushed its payments to Russia to zero in 2025. They now apply after narrow.json. UAE: −0.5% → −1.5% of GDP.
+- **Services counterfactual:** the travel recovery is sized on the model's own 2021 level. Where the map's 2021 is higher (little COVID dip in the map's source), the expected level now stops at the model's recovered level in euros. Montenegro: +10.8% → +5.4%.
+- **War-time windfall and the payments price index:** these now use each year's actual fuel share of payments from own customs (`fuel_share_year()`, prices.json) instead of the pre-war mix. India: −4.6% → −5.1%.
+- **Re-exports:** pre-war re-exports now also come out of the hubs' 2021 values, because the counterfactual starts from 2021.
+- **Pre-war laundered oil:** this level now goes through the same hub pass-on chain as the yearly values (Singapore, its customers).
+- **Laundered-oil GDP cap:** it now also applies to countries whose GDP comes from residual.json.
+- **Gibraltar:** bunker fuel resold to passing ships. Gibraltar keeps a 10% (5–30%) margin, like other resellers. −18.9% → −1.4%.
+- **Kyrgyzstan's hidden gold:** this is now passed on to the buyers of Kyrgyz gold (`gaps/kgz_gold.json`, UN Comtrade 2023–2024): Switzerland 37%, China 33% (Hong Kong's share included), UK 15%, UAE 11%. Kyrgyzstan keeps 5%. Kyrgyzstan: −30.5% → −15.1%.
+- **audit2 range corrections:** each band's change now goes to that band.
+- **2026 marking:** payments whose 2026 trade is estimated from 2025 are now marked *. Every period label shows "2026 year to date".
+- **Method text:** it now describes profit (about 20%) on sales, the windfall and laundered oil, instead of "price spikes do not count".
+- **Open:** Belarus's range crosses zero (−76% to +49%). It comes from the honest back-tested error of "2021 held flat", applied to an 18 bn/yr flow.

@@ -587,7 +587,7 @@ function calc(c, y) {
     lo = Math.min(lo, v); hi = Math.max(hi, v);
     if (Math.abs(hi - lo) < 1e-9) { lo = v - Math.abs(v) * RANGE[cert]; hi = v + Math.abs(v) * RANGE[cert]; }
     // a * marks parts whose 2026 (January to August) is estimated from the 2025 monthly rate
-    const est = { tax: "company", sold: "from_rus" }[k];
+    const est = { tax: "company", sold: "from_rus", paid: "to_rus" }[k];
     const star = est && c[est]?.est26 ? " *" : "";
     return { k, label: t(label) + star, en: label + star, v, lo, hi, cert, src: srcs };
   };
@@ -833,7 +833,7 @@ function paint() {
     rus: t("Money and support reaching Russia"),
   };
   const measure = t({ total: "total", pp: "per person", gdp: "total as % of a year's GDP" }[state.measure]);
-  const period = state.year === 2021 ? t("2021 (before the war)") : "2022–" + state.year;
+  const period = periodText();
   const what = {
     change: ["How much each country shifted money toward Ukraine or Russia since before the war", "toward Ukraine", "toward Russia"],
     cost: ["What supporting Ukraine cost each country", "cost", "net gain"],
@@ -1206,7 +1206,7 @@ function countryPanel(c) {
   const figCard = `<div class="fig"><span class="sw" style="background:${sv == null || !currentScale ? "transparent" : currentScale.color(sv)}"></span>
       <div><div class="t">${t("On the map: {what}", { what: lensName + (state.netBack && kk ? t(", after money flowing back") : "") })}</div>
       <div class="v">${fmtMeasure(c, lv, state.measure, signed, false)}${state.measure === "pp" ? ` <span style="font-size:14px">${t("per person")}</span>` : state.measure === "gdp" ? ` <span style="font-size:14px">${t("of a year's GDP")}</span>` : ""}</div></div>
-      <div class="s">${kk ? t("Likely range {lo} to {hi}", { lo: fmtMeasure(c, rlo, state.measure, signed, false), hi: fmtMeasure(c, rhi, state.measure, signed, false) }) + " · " : ""}${state.year === 2021 ? "2021" : "2022–" + state.year}${state.measure !== "total" ? " · " + eur(lv, signed) : ""}. ${t("Change the view or measure at the top to see other numbers.")}</div></div>`;
+      <div class="s">${kk ? t("Likely range {lo} to {hi}", { lo: fmtMeasure(c, rlo, state.measure, signed, false), hi: fmtMeasure(c, rhi, state.measure, signed, false) }) + " · " : ""}${periodText()}${state.measure !== "total" ? " · " + eur(lv, signed) : ""}. ${t("Change the view or measure at the top to see other numbers.")}</div></div>`;
   return head(c.name, meta) + `<div class="panel-body">
     ${figCard}
     ${tools}
@@ -1244,12 +1244,12 @@ function countryPanel(c) {
     ${pp.length ? `<section class="section"><h3>${t("People")}</h3><div class="people">${pp.join("")}</div></section>` : ""}
     ${details.length ? `<details class="more"><summary>${t("More details")}</summary><div class="kv">${details.join("")}</div></details>` : ""}
     <details class="more"><summary>${t("How this is calculated")}</summary><ul class="how">
-      <li>${t("<b>Pre-war level</b> = 2021 at 2019–2021 prices for trade and services (company taxes: the 2018–2021 average). What would have happened without the war is predicted from it: imports from Russia and services keep the 2021 level (services with the travel recovery after COVID); exports to Russia and trade with Ukraine follow each country's other trade and GDP, which predicted better than holding 2021 flat in back-tests from 2008, 2013 and 2016. The tested error of that prediction is part of every range. Trade that already existed before the war does not count; a fall in trade with Ukraine caused by the war is not held against a country.")}</li>
-      <li>${t("<b>Change since before the war</b> (the main map) = aid (incl. undisclosed estimates and EU-level aid by budget share) + private donations + refugee hosting + purchases from Ukraine above the pre-war level + the drop in payments to Russia for goods and services + sales to Russia given up + less tax paid in Russia by companies based here, minus gold and hidden payments, weapons sent to Russia and anything bought from or sold to Russia above the pre-war level{back}.", { back: state.netBack ? t(", minus money flowing back from Ukraine") : "" })}</li>
+      <li>${t("<b>Pre-war level</b> = 2021 at pre-war prices for trade and services (company taxes: the 2018–2021 average). What would have happened without the war is predicted from it: imports from Russia and services keep the 2021 level (services with the travel recovery after COVID); exports to Russia and trade with Ukraine follow each country's other trade and GDP, which predicted better than holding 2021 flat in back-tests from 2008, 2013 and 2016. The tested error of that prediction is part of every range. Trade that already existed before the war does not count; a fall in trade with Ukraine caused by the war is not held against a country.")}</li>
+      <li>${t("<b>Change since before the war</b> (the main map) = aid (incl. undisclosed estimates and EU-level aid by budget share) + private donations + refugee hosting + purchases from Ukraine above the pre-war level + the drop in payments to Russia for goods and services + the profit (about 20%) on sales to Russia given up + less tax paid in Russia by companies based here, minus gold and hidden payments, weapons sent to Russia, anything bought from Russia above the expected level, the profit on sales to Russia above it, fuel made from Russian crude bought via third countries, and the extra paid for Russian fuel because of war-time prices{back}.", { back: state.netBack ? t(", minus money flowing back from Ukraine") : "" })}</li>
       <li>${t("<b>Cost carried</b> = only what the country gave up: aid (loans at grant equivalent; loans repaid from frozen Russian assets cost nothing) + undisclosed aid + private donations + refugee hosting + extra price for replacing Russian energy + profit lost on goods and services no longer sold to Russia + tariffs dropped for Ukraine − discounts gained on Russian oil{back}. Buying less from Russia is not a cost in itself.", { back: state.netBack ? t(" − profit on money flowing back (20%, the same profit share as lost sales)") : "" })}</li>
       <li>${t("<b>% of GDP</b> is the total for the whole period (2022 up to the chosen year; 2026 is January to August) against one year's GDP (2024). Example: 10% means the country moved, over the whole war, as much as a tenth of one year's output.")}</li>
       <li>${t("<b>Middlemen</b>: fuel refined from Russian crude counts for the final buyer, at the value of the Russian crude in it; Russian gold passed on through Hong Kong counts for China; goods reaching Russia through Kyrgyzstan and Kazakhstan count for the country that made them. Liechtenstein, Monaco, the Isle of Man, Puerto Rico, the US Virgin Islands and Saint Martin are counted in the figures of the country that reports for them.")}</li>
-      <li>${t("<b>Prices</b>: changes against the pre-war level compare volumes, not price swings. What was bought from or sold to Russia (and Ukraine) each year is divided by its price level against 2019–2021, from the country's own pre-war mix of oil, oil products, gas, coal and other goods. A country that bought the same amount of gas in 2022 at four times the price did not move towards Russia; one that cut its purchases is credited with the drop in volume, at pre-war prices.")}</li>
+      <li>${t("<b>Prices</b>: changes against the pre-war level compare volumes, not price swings. What was bought from or sold to Russia (and Ukraine) each year is divided by its price level against 2019–2021, from the country's own pre-war mix of oil, oil products, gas, coal and other goods. A country that cut its purchases is credited with the drop in volume, at pre-war prices. What it still paid above pre-war prices for Russian fuel is counted on its own, as money toward Russia (the war-time price windfall).")}</li>
       <li>${t("<b>Transit</b>: gas, oil and goods are counted where they are used, not where they cross the border. Gas passing through Slovakia, Austria, Germany or Bulgaria is counted for the country that burns it; fuel resold by trading hubs (Singapore, the Netherlands, Belgium, Greece, Malta) for the hub's customers; gold passed through Hong Kong for mainland China.")}</li>
       <li>${t("<b>Margins of error</b>: every part has a middle value and a low–high range of about 90%. The range comes from the data where the sources give one (alternative pre-war baselines, reporting differences, spread between methods); otherwise from the certainty letter (A ±5%, B ±15%, C ±35%, D ±70%). Totals combine the parts' margins as independent errors.")}</li>
       <li>${t("<b>Top lists</b> leave out economies under {min} GDP and countries whose likely range crosses zero.", { min: tight(money(num(MIN_GDP_RANK), "bn")) })}</li>
@@ -1275,7 +1275,7 @@ function comparePanel(a, b) {
   const A = { c: a, k: ka }, B = { c: b, k: kb };
   const fmt = (x, f, m, sg) => { const v = f(x); if (v == null) return "–"; if (m === "pct") return (v >= 0 ? "+" : "−") + Math.abs(Math.round(v)) + "%"; return fmtMeasure(x.c, v, m, sg, false); };
   const val = (x, f, m) => { const v = f(x); return m === "pct" ? v : scaled(x.c, v, m); };
-  return head(t("{a} vs {b}", { a: a.name, b: b.name }), `2022–${y}`) + `<div class="panel-body">
+  return head(t("{a} vs {b}", { a: a.name, b: b.name }), `${periodText()}`) + `<div class="panel-body">
     <div class="panel-tools"><button class="btn" id="compare-back">${t("← Back to {name}", { name: a.name })}</button></div>
     <section class="section"><div class="cmp">
       <span></span><span class="h">${a.name}</span><span class="h">${b.name}</span>
@@ -1306,7 +1306,7 @@ function rankList(list, metricFn, _measure, colourFn, n = 20, rangeFn = null) {
 const MIN_GDP_RANK = 5;   // € billion
 function measureTabs() {
   return `<div class="tabs"><span class="key" style="align-self:center">${t("Sort by")}</span>${[["gdp", "% of GDP"], ["total", "Net €"]].map(([m, l]) => `<button data-rank-measure="${m}" aria-pressed="${(state.rankMeasure === "total") === (m === "total")}">${t(l)}</button>`).join("")}</div>
-    <p class="key" style="margin:-4px 0 8px">${t("Each row: the total as % of a year's GDP (as on the map), then the same total in euros, 2022–{y}. Left out: economies under {min} GDP, and countries whose likely range crosses zero.", { y: Math.max(2022, state.year), min: tight(money(num(MIN_GDP_RANK), "bn")) })}</p>`;
+    <p class="key" style="margin:-4px 0 8px">${t("Each row: the total as % of a year's GDP (as on the map), then the same total in euros, {y}. Left out: economies under {min} GDP, and countries whose likely range crosses zero.", { y: state.year === 2021 ? "2022" : periodText(), min: tight(money(num(MIN_GDP_RANK), "bn")) })}</p>`;
 }
 function targetPanel(side) {
   const y = Math.max(2022, state.year);
@@ -1314,7 +1314,7 @@ function targetPanel(side) {
   const K = new Map(list.map(c => [c, calc(c, y)]));
   if (side === "ukr") {
     const total = list.reduce((s, c) => s + K.get(c).aid, 0);
-    return head(regionName("UA", "Ukraine"), `${t("Who carries the most for Ukraine")} · 2022–${y}`) + `<div class="panel-body">
+    return head(regionName("UA", "Ukraine"), `${t("Who carries the most for Ukraine")} · ${periodText()}`) + `<div class="panel-body">
       <section class="section"><div class="totals">
         <div class="head ukr"><div class="lbl">${t("Aid received, all donors in the data")}</div><div class="num" style="color:var(--ukr)">${eur(total)}</div></div>
         <div class="head" style="background:var(--sea)"><div class="lbl">${t("Donors with data")}</div><div class="num">${list.filter(c => K.get(c).aid > 0).length}</div></div>
@@ -1335,7 +1335,7 @@ function targetPanel(side) {
   }
   // at pre-war prices, against the expected level (pre-war level x trend), as on the map
   const iy = yi(y), paidNow = list.reduce((s, c) => s + c.paidY[iy] / FRAC[iy] / (c.T.paid.p[iy] || 1), 0), paid21 = list.reduce((s, c) => s + c.T.paid.m * (c.T.paid.q[iy] || 1), 0);
-  return head(regionName("RU", "Russia"), `${t("Who helps Russia the most")} · 2022–${y}`) + `<div class="panel-body">
+  return head(regionName("RU", "Russia"), `${t("Who helps Russia the most")} · ${periodText()}`) + `<div class="panel-body">
     <section class="section"><div class="totals">
       <div class="head rus"><div class="lbl">${t("Paid to Russia since 2022, countries in the data")}</div><div class="num" style="color:var(--rus)">${eur(list.reduce((s, c) => s + K.get(c).paidRussia, 0))}</div></div>
       <div class="head" style="background:var(--sea)"><div class="lbl">${t("Yearly rate {y} vs before the war", { y })}</div><div class="num">${paid21 ? (paidNow >= paid21 ? "+" : "−") + Math.abs(Math.round((paidNow / paid21 - 1) * 100)) + "%" : "–"}</div></div>
@@ -1364,7 +1364,7 @@ function overviewPanel() {
   const tUkr = rows.reduce((s, r) => s + r.k.aid + r.k.refugees, 0), tRus = rows.reduce((s, r) => s + r.k.paidRussia, 0);
   const metricFns = { shift: c => calc(c, y).shift, cost: c => calc(c, y).cost, rus: c => -calc(c, y).shift };
   const rangeFns = { shift: c => { const k = calc(c, y); return [k.shiftLo, k.shiftHi]; }, cost: c => { const k = calc(c, y); return [k.costLo, k.costHi]; }, rus: c => { const k = calc(c, y); return [-k.shiftHi, -k.shiftLo]; } };
-  return head(t("Top lists"), `2022–${y} · ${t("{n} countries", { n: rows.length })}`) + `<div class="panel-body">
+  return head(t("Top lists"), `${periodText()} · ${t("{n} countries", { n: rows.length })}`) + `<div class="panel-body">
     <section class="section"><div class="totals">
       <div class="head ukr"><div class="lbl">${t("Aid and refugee hosting for Ukraine")}</div><div class="num" style="color:var(--ukr)">${eur(tUkr)}</div></div>
       <div class="head rus"><div class="lbl">${t("Money reaching Russia")}</div><div class="num" style="color:var(--rus)">${eur(tRus)}</div></div>
