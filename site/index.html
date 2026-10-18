@@ -210,6 +210,13 @@ button, input, select { font: inherit; color: inherit; }
 :root[data-theme="dark"] .wf-row .track .band { opacity: 0.32; }
 .wf-row .track .axis { position: absolute; top: -2px; bottom: -2px; width: 1px; background: var(--ink-soft); opacity: 0.6; }
 .wf-row .track .seg2 { position: absolute; top: 4px; bottom: 4px; border-radius: 2px; }
+.country.earner-line { stroke: #bfa233; stroke-width: 1.6px; vector-effect: non-scaling-stroke; }
+.balances { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0 4px; }
+.balances .bal { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+.balances .bal .lbl { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); }
+.balances .bal .num { font-family: var(--font-data); font-size: 19px; font-weight: 600; margin: 2px 0; }
+.balances .bal.pos .num { color: var(--ukr); } .balances .bal.neg .num { color: var(--rus-text, var(--rus)); } .balances .bal.earn .num { color: var(--back); }
+.balances .bal .s { font-size: 11.5px; color: var(--ink-soft); line-height: 1.35; }
 .wf-row.total { font-weight: 600; padding-top: 6px; border-top: 1px solid var(--line); }
 .costs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
 .costs > div { border: 1px solid var(--line); border-radius: 8px; padding: 8px 9px; min-width: 0; }
@@ -533,6 +540,8 @@ const state = { lens: "change", measure: "gdp", year: 2026, selected: null, comp
 // margins as errors (square root of the sum of squares), with the measured correlations in RHO.
 // Correlation of the counterfactual's errors between flows of the same country, measured in its back-tests (median of
 // the 2008, 2013 and 2016 tests; research/2026-10/gaps/counterfactual-notes.md). Other pairs are independent.
+// parts of the balance with Ukraine: what a country gave (money flowing back is subtracted from it)
+const UA_PARTS = new Set(["aid", "euaid", "ref", "buy", "undisc", "priv", "multilat"]);
 const RHO = { "svcpaid|svcsold": 0.4, "paid|svcpaid": 0.25, "sold|svcpaid": 0.2, "sold|svcsold": 0.2, "paid|svcsold": 0.15 };
 function calc(c, y) {
   const N = yi(y), T = c.T;
@@ -666,6 +675,12 @@ function calc(c, y) {
   const backCost = back;
   const shiftAll = live(shiftParts.concat(back)), costAll = live(costParts.concat(backCost));
   const [shift, shiftLo, shiftHi] = total(shiftAll), [cost, costLo, costHi] = total(costAll);
+  // two balances: with Ukraine (what it gave minus what it earned from the war effort) and with Russia (the rest).
+  // A negative Ukraine balance means net earning from the war effort, not money toward Russia
+  const uaGiveParts = live(shiftParts.filter(p => UA_PARTS.has(p.k)));
+  const [uaGave] = total(uaGiveParts), [uaBack] = back.length ? total(back) : [0];
+  const [uaBal, uaLo, uaHi] = total(uaGiveParts.concat(back));
+  const [rusBal, rusLo, rusHi] = total(live(shiftParts.filter(p => !UA_PARTS.has(p.k))));
   const flow = total(backParts);
   return {
     aid: aid3[0], refugees: ref3[0], loansFace, loansGE,
@@ -677,6 +692,11 @@ function calc(c, y) {
     shiftParts: live(shiftParts), backParts: live(backParts), costParts: live(costParts),
     flowbackProfit: flow[0] * margin,
     shift, shiftLo, shiftHi, shiftCert: weakest(shiftAll.map(p => p.cert)),
+    uaBal, uaLo, uaHi, uaGave, uaBack, rusBal, rusLo, rusHi,
+    // negative overall mainly because it earned from the war effort, not because of money toward Russia
+    // (only when it matters: at least EUR 10m and 0.05% of a year's GDP)
+    earnerUa: uaBal < -Math.max(0.01, (c.gdp || 0) * 0.0005),
+    earner: shift < 0 && uaBal < -Math.max(0.01, (c.gdp || 0) * 0.0005) && (rusBal >= 0 || -uaBal > -rusBal),
     cost, costLo, costHi, costCert: weakest(costAll.map(p => p.cert)),
   };
 }
@@ -771,6 +791,8 @@ let currentScale = null;
 // Stepped colours: easier to read than a smooth blend. Blue = toward Ukraine / carried, orange = toward Russia / gained.
 const BLUES = ["#d6e6f4", "#9cc5e3", "#5a9fd0", "#2a6fb0", "#0b3d79"];
 const ORANGES = ["#fde2c6", "#f9b277", "#f07c2f", "#c9520f", "#7f2a04"];
+// countries that earned more from the war effort than they gave: their own hue, not orange (not money toward Russia)
+const GOLDS = ["#efe6b4", "#ddcb6d", "#bfa233", "#8f7417", "#5c4a0b"];
 // step boundaries per view and measure (% of GDP, € per person, € billion)
 const STEPS = {
   change: { gdp: [0.25, 1, 4, 12], pp: [10, 100, 500, 2000], total: [0.1, 1, 10, 50] },
@@ -850,7 +872,10 @@ function paint() {
     if (f.id === "804" || f.id === "643") return;
     const c = DATA[f.id] || DATA[INCLUDED[f.id]];
     const v = c ? scaled(c, lensValue(c)) : null;
-    d3.select(this).classed("nodata", !c || v == null).style("fill", c && v != null ? sc.color(v) : null);
+    const k = c && v != null && state.lens === "change" && state.year > 2021 && state.netBack ? calc(c, state.year) : null;
+    // net earners from the war effort: the gold shade of the same step; a gold outline when only the Ukraine balance is negative
+    const fill = k?.earner ? GOLDS[Math.max(1, ORANGES.indexOf(sc.color(v)))] : c && v != null ? sc.color(v) : null;
+    d3.select(this).classed("nodata", !c || v == null).classed("earner-line", !!(k && !k.earner && k.earnerUa)).style("fill", fill);
   });
   const after = state.netBack ? t(", after money flowing back") : "";
   const titles = {
@@ -1174,6 +1199,19 @@ Object.entries({
 }).forEach(([r, list]) => list.split(" ").forEach(i => (REGION_OF[i] = r)));
 // How much of the shift away from Russian trade was required by sanctions, gas cut by Russia or stopped with
 // transit, and own choice (research/2026-10/gaps/sanctions_share.json). Only parts toward Ukraine are split.
+// the two balances behind the headline: with Ukraine (gave minus earned from the war effort) and with Russia
+function balanceCards(c, k) {
+  if (!state.netBack) return "";
+  const g = v => fmtMeasure(c, v, "gdp", true);
+  const ua = !k.earnerUa
+    ? t("Net contributing: gave {gave}, earned back {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) })
+    : t("Net earning from the war effort: gave {gave}, earned {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) });
+  const ru = k.rusBal >= 0 ? t("less money toward Russia than before the war") : t("more money toward Russia than before the war");
+  return `<div class="balances">
+    <div class="bal ${k.earnerUa ? "earn" : "pos"}"><div class="lbl">${t("With Ukraine")}</div><div class="num">${g(k.uaBal)}</div><div class="s">${ua}</div><div class="s">${t("Likely range {lo} to {hi}", { lo: g(k.uaLo), hi: g(k.uaHi) })}</div></div>
+    <div class="bal ${k.rusBal >= 0 ? "pos" : "neg"}"><div class="lbl">${t("With Russia")}</div><div class="num">${g(k.rusBal)}</div><div class="s">${ru}</div><div class="s">${t("Likely range {lo} to {hi}", { lo: g(k.rusLo), hi: g(k.rusHi) })}</div></div>
+  </div>${k.earner ? `<p class="note">${t("This country earned more from supplying the war effort for Ukraine than it gave. That is shown in gold on the map: it is not money toward Russia.")}</p>` : ""}`;
+}
 // share of a drop in weapons bought from Russia that came from Russia keeping its output for its own army or
 // sanctions on its production, not the buyer's choice (russian_arms_exports.json): a label, like the sanctions split
 function armsNote(c, k) {
@@ -1255,6 +1293,7 @@ function countryPanel(c) {
       <div class="big ${pos ? "pos" : "neg"}">${fmtMeasure(c, k.shift, "gdp", true)} <span style="font-size:15px;font-weight:600">${t("of a year's GDP")}</span></div>
       <div class="big-cap">${t(pos ? "shifted toward <b>Ukraine</b> compared with before the war{after}: {eur} · {pp}" : "shifted toward <b>Russia</b> compared with before the war{after}: {eur} · {pp}", { after: state.netBack ? t(", after money flowing back") : "", eur: eur(k.shift, true), pp: perPerson(c, k.shift) })}</div>
       ${rangeLine(c, k.shiftLo, k.shiftHi, k.shiftCert)}
+      ${balanceCards(c, k)}
       ${waterfall(k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label[0].toLowerCase() + p.label.slice(1) }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
       ${sanctionNote(c, k)}
       ${armsNote(c, k)}
