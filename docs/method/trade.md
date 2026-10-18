@@ -147,6 +147,25 @@ builder loads it (`_actuals_r7()`):
 - **Kazakhstan, Kyrgyzstan, Mongolia**: own-report margins from Russia's mirror data, which sit near 1.0 for land
   neighbours, not the world median ratio. **Yemen, Syria**: the pre-war level from Russia's own export figures.
 
+## Goods Russia's weapons need: the critical-goods marker (round 7)
+
+A euro of microchips matters more to Russia's war than a euro of bananas, but the map counts money. So sales to Russia
+of the 50 goods on the EU/US/UK/Japan **Common High Priority List** (chips, other electronics, navigation parts,
+bearings, machine tools) are shown as a **marker** (◆) and a line in the country panel, not added to any total; the
+money is already inside trade with Russia (`apply_chpl()`, [`chpl.json`](../../research/2026-10/gaps/chpl.json),
+[notes](../../research/2026-10/gaps/chpl-notes.md)).
+
+- **Per shipping country**: the country that let the goods go to Russia. Exporters' own customs records (Eurostat,
+  UN Comtrade), adjusted toward what Russian customs recorded as dispatched from each country in 2023 (KSE: China
+  ×1.25, Hong Kong ×2.96, Türkiye ×2.99, UAE ×1.59); the low end is the country's own record.
+- **Shown** where the total from 2022 to the chosen year is at least EUR 0.1bn; the diamond grows with the amount.
+- **2022 to August 2026**: about EUR 42bn in all. China 23.6bn (18.6–31.8), Hong Kong 7.5, the UAE 1.8, Belarus 1.4
+  (a guess), India 1.4, Türkiye 1.4, Kazakhstan 1.0. EU members sold EUR 3.8bn in 2021 and almost nothing from 2023.
+- **Not shown**: the brand behind the goods (Western brands made about 44% in 2023 by Russian customs data, about
+  a quarter US brands); later years are guesses because Russia restricted its customs data in 2024.
+- **Caution**: Russia pays well above world prices for these goods, so part of the money is the seller's margin, not
+  more hardware. China's military-support part (`china_military.json`) uses its own, narrower figure.
+
 ## Freight: CIF to FOB
 
 Import values include freight and insurance (CIF). That part is paid to shippers and insurers, and is counted for them in [shipping](services-shipping-companies.md#shipping) and services, not for Russia. [build_data.py `remove_freight()`](../../pipeline/build_data.py) takes `CIF_SHARE = 3.5% / 5.5% / 7.5%` (low/middle/high) out of every country's payments to Russia, yearly values and baseline alike, except for the share priced at the Russian border (pipeline gas and crude, electricity, overland trade; `BORDER_PRICED` from audit 2, question 7).

@@ -1040,6 +1040,7 @@ def build() -> dict:
     apply_payment_agents(countries, src)
     apply_frozen_reserves(countries, src)
     apply_remittances(countries, src)
+    apply_chpl(countries, src)
     apply_value_kept(countries, src)
     apply_audit2(countries, src, "trends")
     apply_nowar_prices(countries, src)
@@ -2036,6 +2037,26 @@ def apply_remittances(countries: dict[str, dict], src: Sources) -> None:
             (d.get("certainty") or "C")[0],
             sid,
         )
+
+
+def apply_chpl(countries: dict[str, dict], src: Sources) -> None:
+    """Sales to Russia of goods its weapons need (the EU/US/UK/Japan Common High Priority List, 50 HS-6 codes; chpl.json,
+    round 7), per shipping country: shown as a marker, not added to the totals (the money is already in trade)."""
+    ch = load(GAPS / "chpl.json")
+    sid = src.add(
+        "chpl",
+        "Sales to Russia of Common High Priority List goods: exporters' customs records (Eurostat, UN Comtrade), adjusted toward Russian dispatch records (KSE)",
+        "https://www.bis.gov/articles/russia-export-controls-list-common-high-priority-items",
+        ch.get("generated"),
+        "per shipping country; a marker, not in the totals; see research/2026-10/gaps/chpl-notes.md",
+    )
+    for iso3, d in ch["countries"].items():
+        c, ex = countries.get(iso3), d.get("exports_to_rus_eur_bn") or {}
+        if not c or not ex:
+            continue
+        c["chpl"] = {k: [round((ex.get(str(y)) or {}).get(b, 0.0), 4) for y in YEARS]
+                     for k, b in (("years", "central"), ("years_lo", "low"), ("years_hi", "high"))}  # fmt: skip
+        c["chpl"] |= {"cert": (d.get("certainty") or "C")[0], "src": [sid]}
 
 
 def apply_value_kept(countries: dict[str, dict], src: Sources) -> None:

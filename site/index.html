@@ -292,6 +292,8 @@ details.more[open] summary { margin-bottom: 10px; }
 .panel-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
 .panel-tools select { font-size: 12.5px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); max-width: 100%; }
 .marker { cursor: pointer; }
+/* critical-goods marker: sales to Russia of goods its weapons need (not in the totals) */
+.chpl { fill: var(--ink); stroke: var(--surface); stroke-width: 1.2; vector-effect: non-scaling-stroke; pointer-events: none; }
 .marker circle { stroke: var(--surface); stroke-width: 2; vector-effect: non-scaling-stroke; }
 .marker text { font-family: var(--font-display); font-weight: 800; fill: var(--surface); pointer-events: none; }
 .legend-toggle { display: none; }
@@ -448,6 +450,7 @@ body[data-panel="open"] .view-inner { margin-right: 420px; margin-left: 0; }
         <output id="year-out" for="year" title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *)." data-i18n-title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).">2026 YTD</output>
       </div>
       <label class="toggle" for="show-flows"><input id="show-flows" type="checkbox" checked> <span data-i18n="Flows">Flows</span></label>
+      <label class="toggle" for="show-chpl"><input id="show-chpl" type="checkbox" checked> <span data-i18n="Critical goods">Critical goods</span></label>
       <label class="toggle" for="net-back"><input id="net-back" type="checkbox" checked> <span data-i18n="Subtract money flowing back">Subtract money flowing back</span></label>
       <button class="btn" id="open-rank" data-i18n="Top lists">Top lists</button>
       <div class="search">
@@ -534,7 +537,7 @@ function normalise(c) {
 }
 
 const state = { lens: "change", measure: "gdp", year: 2026, selected: null, compare: null, panel: null,
-  flows: true, netBack: true, rankMetric: "shift", rankMeasure: "gdp", tableSort: "shiftGdp" };
+  flows: true, netBack: true, chpl: true, rankMetric: "shift", rankMeasure: "gdp", tableSort: "shiftGdp" };
 
 
 // Every number is a part with a middle value, a low and a high (a ~90% range) and a certainty letter.
@@ -858,6 +861,7 @@ const zoom = d3.zoom().scaleExtent([1, 14]).on("zoom", e => {
   transform = e.transform;
   g.attr("transform", e.transform);
   g.selectAll(".target-label").style("font-size", 11 / e.transform.k + "px").style("stroke-width", 2 / e.transform.k + "px");
+  g.selectAll(".chpl").attr("transform", d => `translate(${d.x},${d.y}) scale(${1 / e.transform.k})`);
   hideHint();
   if (reduceMotion) drawFlows(0);
 });
@@ -876,6 +880,7 @@ function layout() {
   if (countryPaths) {
     countryPaths.attr("d", path);
     g.selectAll(".target-label").attr("x", f => labelPos(f)[0]).attr("y", f => labelPos(f)[1] + 4);
+    drawChpl();
     buildArcs();
   }
 }
@@ -915,7 +920,8 @@ function paint() {
     <div class="step-labels">${sc.labels.map((l, i) => (sc.labels.length > 4 && ![0, 2, 5, 7].includes(i) ? "" : `<span style="left:${((i + 1) / sc.colors.length) * 100}%">${l}</span>`)).join("")}${sc.labels.length > 4 ? `<span style="left:50%">0</span>` : ""}</div>
     <div class="ticks" style="font-family:var(--font-body);margin-top:2px"><span>← ${sc.ends[0]}</span><span>${sc.ends[1]} →</span></div>
     <div class="keys"><span>${period}, ${LANG !== "en" && state.measure !== "gdp" ? t(state.measure === "pp" ? "€ per person" : "€ billion") : measure}</span>
-      <span><svg width="10" height="10" style="vertical-align:-1px;margin-right:4px"><rect width="10" height="10" fill="url(#hatch)"/></svg>${t("No data yet")}</span></div>
+      <span><svg width="10" height="10" style="vertical-align:-1px;margin-right:4px"><rect width="10" height="10" fill="url(#hatch)"/></svg>${t("No data yet")}</span>
+      ${state.chpl ? `<span><svg width="10" height="10" style="vertical-align:-1px;margin-right:4px"><path d="M5,0L10,5L5,10L0,5Z" fill="${C.ink}"/></svg>${t("Sold Russia goods its weapons need")}</span>` : ""}</div>
     <div class="flowkey" ${state.flows ? "" : "hidden"}>
       <span><svg width="28" height="8"><line x1="0" y1="4" x2="28" y2="4" stroke="${C.ukr}" stroke-width="3" stroke-linecap="round"/><circle cx="18" cy="4" r="3" fill="${C.ukr}"/></svg>${t("To Ukraine in {y}", { y: state.year })}</span>
       <span><svg width="28" height="8"><line x1="0" y1="4" x2="28" y2="4" stroke="${C.rus}" stroke-width="3" stroke-linecap="round"/><circle cx="18" cy="4" r="3" fill="${C.rus}"/></svg>${t("To Russia in {y}", { y: state.year })}</span>
@@ -924,6 +930,7 @@ function paint() {
     </div>`;
   document.getElementById("legend-toggle").onclick = () => { leg.dataset.collapsed = leg.dataset.collapsed === "true" ? "false" : "true"; paint(); };
   buildArcs();
+  drawChpl();
   if (reduceMotion) drawFlows(0);
   renderPanel();
   if (state.view && state.view !== "map" && window.renderView) renderView();
@@ -931,6 +938,21 @@ function paint() {
 
 // ===== Flow layer =====
 const ANCHOR = { "840": [-98, 39], "124": [-100, 56], "578": [10, 61], "250": [2.4, 46.6], "528": [5.3, 52.2], "036": [134, -25], "554": [172, -41], "392": [138, 36], "152": [-71, -33], "643": [37.6, 55.7] };
+// Critical-goods marker: a diamond on countries that sold Russia goods its weapons need (Common High Priority List),
+// EUR 0.1bn or more from 2022 to the chosen year; its size follows the amount. Not part of any total.
+function chplSum(c, N) { return c?.chpl ? c.chpl.years.slice(1, N + 1).reduce((a, b) => a + b, 0) : 0; }
+function drawChpl() {
+  if (!features) return;
+  const N = yi(state.year), k = transform ? transform.k : 1;
+  const on = state.chpl && N > 0;
+  const rows = on ? features.map(f => ({ f, c: DATA[f.id] })).filter(r => r.c && chplSum(r.c, N) >= 0.1).map(r => {
+    const [x, y] = projection(anchorOf(r.f)), s = Math.min(9, 2.5 + 1.6 * Math.sqrt(chplSum(r.c, N)));
+    return { id: r.f.id, x, y, s };
+  }) : [];
+  g.selectAll("path.chpl").data(rows, d => d.id).join("path").attr("class", "chpl")
+    .attr("d", d => `M0,${-d.s}L${d.s},0L0,${d.s}L${-d.s},0Z`)
+    .attr("transform", d => `translate(${d.x},${d.y}) scale(${1 / k})`);
+}
 function anchorOf(f) {
   if (ANCHOR[f.id]) return ANCHOR[f.id];
   if (f.geometry.type !== "MultiPolygon") return d3.geoCentroid(f);
@@ -1228,6 +1250,13 @@ function balanceCards(c, k) {
     <div class="bal ${k.rusBal >= 0 ? "pos" : "neg"}"><div class="lbl">${t("With Russia")}</div><div class="num">${g(k.rusBal)}</div><div class="s">${ru}</div><div class="s">${t("Likely range {lo} to {hi}", { lo: g(k.rusLo), hi: g(k.rusHi) })}</div></div>
   </div>${k.earner ? `<p class="note">${t("This country earned more from supplying the war effort for Ukraine than it gave. That is shown in gold on the map: it is not money toward Russia.")}</p>` : ""}`;
 }
+// sales to Russia of goods its weapons need (Common High Priority List): a marker, not in the totals
+function chplNote(c) {
+  const N = yi(state.year), v = chplSum(c, N);
+  if (N < 1 || v < 0.01) return "";
+  const lo = c.chpl.years_lo.slice(1, N + 1).reduce((a, b) => a + b, 0), hi = c.chpl.years_hi.slice(1, N + 1).reduce((a, b) => a + b, 0);
+  return `<p class="note">◆ ${t("Sold Russia goods its weapons need (chips, electronics, machine tools on the Common High Priority List): {v} in {p} (likely {lo} to {hi}); {pre} in 2021. Shown as a marker, not added to the totals.", { v: eur(v), p: periodText(), lo: eur(lo), hi: eur(hi), pre: eur(c.chpl.years[0]) })}${chip(c.chpl.cert)}${ref(c.chpl.src)}</p>`;
+}
 // share of a drop in weapons bought from Russia that came from Russia keeping its output for its own army or
 // sanctions on its production, not the buyer's choice (russian_arms_exports.json): a label, like the sanctions split
 function armsNote(c, k) {
@@ -1309,7 +1338,7 @@ function countryPanel(c) {
       <div class="big ${pos ? "pos" : "neg"}">${fmtMeasure(c, k.shift, "gdp", true)} <span style="font-size:15px;font-weight:600">${t("of a year's GDP")}</span></div>
       <div class="big-cap">${t(pos ? "shifted toward <b>Ukraine</b> compared with before the war{after}: {eur} · {pp}" : "shifted toward <b>Russia</b> compared with before the war{after}: {eur} · {pp}", { after: state.netBack ? t(", after money flowing back") : "", eur: eur(k.shift, true), pp: perPerson(c, k.shift) })}</div>
       ${rangeLine(c, k.shiftLo, k.shiftHi, k.shiftCert)}
-      ${balanceCards(c, k)}
+      ${balanceCards(c, k)}${chplNote(c)}
       ${waterfall(k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label[0].toLowerCase() + p.label.slice(1) }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
       ${sanctionNote(c, k)}
       ${armsNote(c, k)}
@@ -1535,6 +1564,7 @@ playBtn.onclick = () => {
   playTimer = setInterval(() => { if (state.year >= 2026) return stopPlay(); setYear(state.year + 1); }, 1800);
 };
 document.getElementById("show-flows").onchange = e => { state.flows = e.target.checked; paint(); drawFlows(0); };
+document.getElementById("show-chpl").onchange = e => { state.chpl = e.target.checked; drawChpl(); };
 document.getElementById("net-back").onchange = e => { state.netBack = e.target.checked; paint(); };
 document.getElementById("open-rank").onclick = () => { state.rankMetric = LENS_RANK[state.lens]; closeMenu(); openPanel("overview"); };
 const bar = document.getElementById("bar"), menuBtn = document.getElementById("menu-btn");
