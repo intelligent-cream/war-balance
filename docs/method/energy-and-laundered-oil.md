@@ -95,7 +95,7 @@ Turkey, India and China refine Russian crude and export part of the fuel. That e
 
 ## Turkey, a special case
 
-Turkey appears in almost every energy step: a TurkStream transit and final-use gas country whose customs hide gas under other headings, a refiner of Russian crude, a fuel hub whose customers are 50–57% in the EU, a re-export hub for goods, and a buyer whose crude and gas prices are hidden by its customs. Its price index keeps the benchmark-based version (`PRICES_SKIP`) because the measured index (3.3 in 2022) conflicts with the oil-formula gas price (1.75) and **needs a person's review** ([prices-notes.md](../../research/2026-10/gaps/prices-notes.md); [limitations.md](../limitations.md)).
+Turkey appears in almost every energy step: a TurkStream transit and final-use gas country whose customs hide gas under other headings, a refiner of Russian crude, a fuel hub whose customers are 50–57% in the EU, a re-export hub for goods, and a buyer whose crude and gas prices are hidden by its customs. Its prices (round 5, [`turkey_prices.json`](../../research/2026-10/gaps/turkey_prices.json), [notes](../../research/2026-10/gaps/turkey_prices-notes.md)) are rebuilt without the hidden customs lines: volumes from EPDK (the Turkish energy regulator), crude at the Russian Finance Ministry's Urals average plus freight, and gas from the contract terms (about 70% hub-indexed since 2021, spot purchases at 95% of TTF), checked against the customs residual for chapter 27 (2022: 101 vs 98 EUR/MWh). The old measured index (3.3 in 2022) was right; the oil-formula gas price (1.75) was not. This raises Türkiye's war-time windfall and lowers its volume change: −5.9% → −6.6% of GDP, with a narrower range.
 
 ## Energy premium and oil discount
 

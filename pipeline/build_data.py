@@ -31,6 +31,9 @@ OWN_SHARE_DEFAULT = (0.2, 0.4, 0.7)
 # each member's share of EU/EEA arms production (SIPRI Top 100, 2024): where EU-level military aid is spent
 EU_ARMS_SLICE = {"FRA": 0.39, "DEU": 0.24, "ITA": 0.19, "SWE": 0.06, "CZE": 0.04, "ESP": 0.035, "POL": 0.03}
 LOAN_GRANT_ELEMENT = 0.3
+# when each lender paid out its ERA loan (None = the rest), and Kiel's category for it where not financial
+ERA_YEARS = {"USA": {2024: None}, "JPN": {2026: None}, "GBR": {2025: 1.78, 2026: None}}
+ERA_CATEGORY = {"GBR": "military"}
 # better data for the biggest guesses: shadow fleet ownership, re-export shares, Togo's buyers, gold routes
 REFINE = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/refine.json").read_text())
 # energy research: transit gas, price indices, fuel mix before the war, hub resale shares
@@ -147,6 +150,15 @@ def build() -> dict:
                 f = trade["countries"][iso3].setdefault(field, {})
                 for y, v in tl.items():
                     f[y] = {**(f.get(y) or {}), **{b: v[b] for b in ("low", "central", "high")}}
+    # January-August 2026 actual trade where published since the first build (refresh_2026.json, round 5): monthly
+    # UN Comtrade and national statistics replace the 2025-rate estimates
+    for iso3, d in load(GAPS / "refresh_2026.json")["countries"].items():
+        for field, by_year in d.items():
+            v = by_year.get("2026") if isinstance(by_year, dict) else None
+            if not isinstance(v, dict) or "central" not in v:
+                continue
+            f = trade["countries"].setdefault(iso3, {}).setdefault(field, {})
+            f["2026"] = {**(f.get("2026") or {}), **{k: v[k] for k in ("low", "central", "high", "basis") if k in v}}
     # the UAE: its own customs totals, which match the official non-oil trade with Russia (round4b.json), after narrow.json, which is older for the UAE
     for key, field in (("to_rus", "imports_from_RUS"), ("from_rus", "exports_to_RUS")):
         f = trade["countries"].setdefault("ARE", {}).setdefault(field, {})
@@ -284,11 +296,16 @@ def build() -> dict:
             years = [round(v + unassigned * v / tot, 4) for v in years]
         loans, era = d.get("loans_face_value") or 0, d.get("era_allocated") or 0
         if era:
-            # G7 loans repaid from immobilised Russian assets (ERA) are Russia's money, not the donor's: left out.
-            # The US paid its share in December 2024, the others in 2025
-            y0 = YEARS.index(2024 if iso3 == "USA" else 2025)
+            # G7 loans repaid from immobilised Russian assets (ERA) are Russia's money, not the donor's: left out,
+            # in the years they were paid (Kiel release 31: the US in December 2024, Japan in 2026, the UK 1.78 in
+            # 2025 and the rest in 2026, the others in 2025; refresh_2026-notes.md)
+            plan = ERA_YEARS.get(iso3) or {2025: era}
             left = era
-            for i in [y0] + [j for j in range(len(YEARS) - 1, 0, -1) if j != y0]:
+            for y, amount in plan.items():
+                i = YEARS.index(y)
+                take = min(left, amount if amount is not None else left, years[i])
+                years[i], left = round(years[i] - take, 4), left - take
+            for i in range(len(YEARS) - 1, 0, -1):
                 take = min(left, years[i])
                 years[i], left = round(years[i] - take, 4), left - take
             loans = max(0, loans - era)
@@ -296,7 +313,10 @@ def build() -> dict:
             "years": years,
             # frozen-asset (ERA) loans are financial aid in Kiel's categories; they are left out here as in the years
             "cats": {
-                k: round(max(0.0, (d.get(f"{k}_allocated") or 0) - (era if k == "financial" else 0)), 3)
+                k: round(
+                    max(0.0, (d.get(f"{k}_allocated") or 0) - (era if k == ERA_CATEGORY.get(iso3, "financial") else 0)),
+                    3,
+                )
                 for k in ("military", "financial", "humanitarian")
             },
             "loans_face": round(loans, 3) or None,
@@ -908,6 +928,8 @@ def build() -> dict:
     apply_state_finance(countries, src)
     apply_company_flows(countries, src)
     apply_refugees_net(countries, src)
+    apply_ua_arms_purchases(countries, src)
+    apply_loans_value(countries, src)
     apply_audit2(countries, src, "trends")
     for c in countries.values():
         for obj in c.values():
@@ -1003,9 +1025,14 @@ def gas_index(iso3: str, band: str) -> list[float]:
 PRICES = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/prices.json").read_text())[
     "countries"
 ]
-# Turkey hides the partner for crude and gas; its measured index needs a person's review (prices-notes.md), so it keeps
-# the benchmark-based index for now
-PRICES_SKIP = {"TUR"}
+# Turkey hides the partner for crude and gas: its prices come from Russian export prices, EPDK volumes and contract
+# terms instead (turkey_prices.json, round 5), and so does its Russian pipeline gas price
+_TUR = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/turkey_prices.json").read_text())
+PRICES["TUR"] = _TUR["countries"]["TUR"]
+GAS_PRICES["countries"].setdefault("TUR", {}).setdefault("index_vs_2019_2021", {})["pipeline"] = _TUR[
+    "gas_prices_tur_replacement"
+]["index_vs_2019_2021"]
+PRICES_SKIP: set[str] = set()
 
 
 def fossil_share(iso3: str) -> float:
@@ -1423,6 +1450,90 @@ def apply_refugees_net(countries: dict[str, dict], src: Sources) -> None:
         a["refugee_src"] = list(dict.fromkeys((a.get("refugee_src") or []) + [sid]))
 
 
+def apply_ua_arms_purchases(countries: dict[str, dict], src: Sources) -> None:
+    """Arms Ukraine bought abroad, with its own budget or donors' cash (Czech ammunition initiative, German Patriots from
+    the US, Bulgarian and Serbian shells via third countries): money flowing back to the seller, which keeps the
+    profit (ua_arms_purchases.json, round 5). Only what is not already in sales to Ukraine (customs) or in donors'
+    own-industry shares; stored as gross sales (flowback.arms), the map counts the profit like other flowback."""
+    ua = load(GAPS / "ua_arms_purchases.json")
+    sid = src.add(
+        "ua_arms",
+        "Arms Ukraine bought abroad: Czech trade ministry licence reports, Czech ammunition initiative, Bulgarian defence exports, Kiel item coding, press investigations",
+        "https://www.mpo.gov.cz/",
+        ua.get("generated"),
+        "only sales not already in customs trade or donors' own-industry flowback; see research/2026-10/gaps/ua_arms_purchases-notes.md",
+    )
+    for iso3, d in ua["countries"].items():
+        c = countries.get(iso3)
+        add = d.get("add_to_map_gross_eur_bn") or {}
+        if not c or not add:
+            continue
+        broker = (d.get("broker_margin_profit") or {}).get("by_year") or {}
+        fb = c.setdefault("flowback", {"src": []})
+        for k, b in (("arms", "central"), ("arms_lo", "low"), ("arms_hi", "high")):
+            # Czech brokers' commission is profit already: stored as the gross that gives it at the 20% margin
+            fb[k] = [
+                round((add.get(str(y)) or {}).get(b, 0.0) + (broker.get(str(y)) or {}).get(b, 0.0) / 0.2, 5)
+                for y in YEARS
+            ]
+        fb["arms_cert"] = d.get("certainty") or "C"
+        fb["arms_src"] = [sid]
+
+
+def apply_loans_value(countries: dict[str, dict], src: Sources) -> None:
+    """Loans and guarantees at their economic value to Ukraine (loans_value.json, round 5): the grant element, face value
+    minus the present value of Ukraine's repayments at the rate it would otherwise pay (10%, range 6-7% to 13-15%).
+    Stored as yearly changes against face value, for the country's own aid and its share of EU-level aid; the cost view
+    uses the same economic value. New multilateral lending (IMF, World Bank, EBRD, CEB) is credited by shareholding."""
+    lv = load(GAPS / "loans_value.json")
+    sid = src.add(
+        "loans_value",
+        "Loans at economic value: Kiel loan terms (maturity, interest, grace), EU regulations, Ukraine's Eurobond yields; IMF, World Bank, EBRD and CEB lending by shareholding",
+        "https://www.ifw-kiel.de/topics/war-against-ukraine/ukraine-support-tracker/",
+        lv.get("generated"),
+        "grant element at a 10% discount rate (6-15%); see research/2026-10/gaps/loans_value-notes.md",
+    )
+    bands = (("c", "central"), ("l", "low"), ("h", "high"))
+    for iso3, d in lv["countries"].items():
+        c = countries.get(iso3)
+        a = (c or {}).get("aid")
+        if not a:
+            continue
+        net = d.get("net_adjustment_vs_face") or {}
+        bil = d.get("bilateral") or {}
+        face_b, ev_b = bil.get("face_value") or {}, bil.get("economic_value") or {}
+        own = {
+            k: [0.0 if y < 2022 else (ev_b.get(str(y)) or {}).get(b, 0.0) - face_b.get(str(y), 0.0) for y in YEARS]
+            for k, b in bands
+        }
+        tot = {k: [0.0 if y < 2022 else (net.get(str(y)) or {}).get(b, 0.0) for y in YEARS] for k, b in bands}
+        if any(tot["c"]) or any(own["c"]):
+            a["loan_adj_own"] = {k: [round(v, 5) for v in own[k]] for k in own}
+            a["loan_adj_eu"] = {k: [round(t - o, 5) for t, o in zip(tot[k], own[k])] for k in tot}
+            face = sum((d.get("loans_guarantees_face_in_map") or {}).values())
+            ev = sum((v or {}).get("central", 0.0) for v in (d.get("loans_guarantees_economic_value") or {}).values())
+            if face:
+                a["loans_face"], a["loans_grant_eq"] = round(face, 3), round(ev, 3)
+            if sid not in a.setdefault("src", []):
+                a["src"].append(sid)
+        ml = (d.get("multilateral_new") or {}).get("economic_value") or {}
+        if ml:
+            out = {
+                b: [0.0 if y < 2022 else -(ml.get(str(y)) or {}).get(b, 0.0) for y in YEARS]
+                for b in ("low", "central", "high")
+            }
+            out["low"], out["high"] = out["high"], out["low"]
+            if max(abs(v) for v in out["low"]) > 1e-4:
+                add_extra(
+                    c,
+                    "multilat",
+                    "Share of new IMF, World Bank and EBRD lending",
+                    out,
+                    (d.get("certainty") or {}).get("multilateral_new", "C"),
+                    sid,
+                )
+
+
 def apply_weapons_value(countries: dict[str, dict], src: Sources) -> None:
     """Donated weapons at market value, the value to Ukraine (weapons_value.json, round 5): stock donations recorded at
     replacement cost or list price are corrected to what the equipment would fetch on the market. Stored as yearly
@@ -1748,7 +1859,8 @@ def apply_narrow(countries: dict[str, dict], src: Sources) -> None:
                 if key.startswith("svc_"):
                     obj["base_2019_2021"] = True
             for k in ("pidx", "pidx_lo", "pidx_hi"):
-                if d.get(k):
+                # Türkiye's payments are priced from turkey_prices.json (round 5), not narrow.json's index
+                if d.get(k) and not (iso3 == "TUR" and key == "to_rus"):
                     v = d[k]
                     obj[k] = [round(v[str(y)] if isinstance(v, dict) else v[i], 4) for i, y in enumerate(YEARS)]
             if d.get("certainty"):

@@ -73,6 +73,7 @@ for c in countries.values():
 check("ranges ordered", not bad, f"out of order: {sorted(set(bad))[:12] or 'none'}")
 
 # 5. loans repaid from frozen Russian assets (ERA) cost the lender nothing
+LOANS = json.loads((ROOT / "research/2026-10/gaps/loans_value.json").read_text())["countries"]
 era_bad = []
 for iso3, d in kiel["donors"].items():
     c = countries.get(iso3)
@@ -85,7 +86,10 @@ for iso3, d in kiel["donors"].items():
         * (kiel["donors"]["EU_INST"].get("loans_face_value", 0) - kiel["donors"]["EU_INST"].get("era_allocated", 0))
         * 0.3
     )
-    if ge > max(0, own_loans) * 0.3 + eu_ge + 0.01:
+    # loans valued at their grant element (loans_value.json, round 5, which leaves ERA out) replace the flat 0.3
+    lv = (LOANS.get(iso3) or {}).get("loans_guarantees_economic_value")
+    limit = sum((v or {}).get("central", 0) for v in lv.values()) if lv else max(0, own_loans) * 0.3 + eu_ge
+    if ge > limit + 0.01:
         era_bad.append(iso3)
 check("ERA loans not counted as a cost", not era_bad, f"too high: {era_bad or 'none'}")
 

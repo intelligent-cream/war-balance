@@ -89,6 +89,16 @@ Russia's own customs record more imports than its partners report selling: EUR 2
 
 Import values include freight and insurance (CIF). That part is paid to shippers and insurers, and is counted for them in [shipping](services-shipping-companies.md#shipping) and services, not for Russia. [build_data.py `remove_freight()`](../../pipeline/build_data.py) takes `CIF_SHARE = 3.5% / 5.5% / 7.5%` (low/middle/high) out of every country's payments to Russia, yearly values and baseline alike, except for the share priced at the Russian border (pipeline gas and crude, electricity, overland trade; `BORDER_PRICED` from audit 2, question 7).
 
+## 2026 refresh (round 5)
+
+January–August 2026 trade was refreshed in October 2026 for 32 economies from monthly UN Comtrade data and national
+statistics (Kazakhstan, Uzbekistan, Armenia, Belarus), replacing the 2025-rate estimates
+([`refresh_2026.json`](../../research/2026-10/gaps/refresh_2026.json), [notes](../../research/2026-10/gaps/refresh_2026-notes.md)).
+The largest change: India's imports from Russia, EUR 48bn instead of 38bn (India −5.1% → −5.4% of GDP). Kazakhstan's
+IMF monthly series were a flat fill-in and are replaced with official figures. Not yet published: Taiwan, UAE exports,
+Turkmenistan, Syria, Iran. Aid stays on Kiel release 31 (8 October 2026, data to 31 August 2026), the latest; the map
+counts Kiel **allocations**, not pledges.
+
 ## Smaller corrections
 
 - **Denmark** sales to Russia sit between Danish and Eurostat data (×1.34, range 0.98–1.9), baseline scaled the same way (`apply_audit()`, [audit-notes.md](../../research/2026-10/gaps/audit-notes.md)).

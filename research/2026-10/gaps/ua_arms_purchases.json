@@ -1,0 +1,3318 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "Arms, ammunition and military equipment sold to Ukraine, or to intermediaries for Ukraine, per SELLER country and year, that are NOT the seller's own donated aid, NOT NATO PURL purchases from US stocks and NOT EU-level military aid (all three already in flowback.json/flowback2.json). Payers: Ukraine's own budget, other donors' earmarked cash (Czech initiative, bilateral purchases from third countries), US aid money spent abroad.",
+  "units": "EUR bn nominal, gross sales value (revenue, not profit); 2026 = January-August, not annualised. USD at ECB yearly averages 2022 1.053, 2023 1.081, 2024 1.082, 2025 1.13, 2026 1.16; CZK/EUR 24.57, 24.00, 25.12, 24.70.",
+  "method": "Seller-side data first (national export reports: Czech MIT, Polish MFA, Bulgarian Ministry of Economy; Comtrade HS93+8710 exports to Ukraine; Kiel R31 item-level procurement location), the Czech initiative from Czech government/CSG totals with an assumed origin split, investigative figures for Serbia and Pakistan, own estimates for Turkiye, Korea and Romania 2022-23. 'already_in_trade' = min(Comtrade HS93+8710 exports to Ukraine, rise of the seller's total exports to Ukraine over 2021 in trade_full.json): that part is inside sell_ukr already. 'add_to_map_gross' = gross - already_in_trade: the builder should take 20% (range 0.5-1.5x) of this as profit flowing back to the seller, and add CZE broker_margin_profit as profit directly.",
+  "fields": "gross_sales_eur_bn, already_in_trade_eur_bn, add_to_map_gross_eur_bn per year {low, central, high}; components with notes; payers; certainty A-D."
+ },
+ "countries": {
+  "CZE": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.2473,
+     "central": 0.291,
+     "high": 0.3346
+    },
+    "2023": {
+     "low": 0.678,
+     "central": 0.7533,
+     "high": 0.9793
+    },
+    "2024": {
+     "low": 1.5257,
+     "central": 1.795,
+     "high": 2.0642
+    },
+    "2025": {
+     "low": 1.6597,
+     "central": 1.9526,
+     "high": 2.2455
+    },
+    "2026": {
+     "low": 0.5,
+     "central": 0.9,
+     "high": 1.4
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.0016,
+    "2023": 0.0087,
+    "2024": 0.0028,
+    "2025": 0.0042,
+    "2026": 0.0028
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.2457,
+     "central": 0.2894,
+     "high": 0.3332
+    },
+    "2023": {
+     "low": 0.6693,
+     "central": 0.7446,
+     "high": 0.9715
+    },
+    "2024": {
+     "low": 1.5229,
+     "central": 1.7922,
+     "high": 2.0617
+    },
+    "2025": {
+     "low": 1.6555,
+     "central": 1.9484,
+     "high": 2.2417
+    },
+    "2026": {
+     "low": 0.4972,
+     "central": 0.8972,
+     "high": 1.3975
+    }
+   },
+   "total_2022_2026_gross_central": 5.692,
+   "total_2022_2026_add_central": 5.672,
+   "certainty": "B",
+   "payers": "Ukraine budget (2022-23 mostly), from 2024 mainly donors via the ammunition initiative (DEU, NLD, DNK, BEL, NOR, CAN, SWE, PRT, LTU, POL, ISL, SVN) and bilateral (DNK, NLD).",
+   "components": {
+    "national_export_report": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0.2473,
+       "central": 0.291,
+       "high": 0.3346
+      },
+      "2023": {
+       "low": 0.678,
+       "central": 0.7533,
+       "high": 0.9793
+      },
+      "2024": {
+       "low": 1.5257,
+       "central": 1.795,
+       "high": 2.0642
+      },
+      "2025": {
+       "low": 1.6597,
+       "central": 1.9526,
+       "high": 2.2455
+      },
+      "2026": {
+       "low": 0.5,
+       "central": 0.9,
+       "high": 1.4
+      }
+     },
+     "note": "Czech MIT annual reports: used export licences to Ukraine CZK 12.8bn (2022), >20bn (2023, Radio Prague), 47.1bn (2024), 50.7bn (2025); minus Czech in-kind aid (Kiel). Includes the Czech-made/Czech-exported part of the ammunition initiative (~45%), Ukraine's own purchases and donors' bilateral purchases. 2026 Jan-Aug estimated (initiative down 44%).",
+     "certainty": "B"
+    }
+   },
+   "broker_margin_profit": {
+    "by_year": {
+     "2021": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "2022": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "2023": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "2024": {
+      "low": 0.032,
+      "central": 0.0836,
+      "high": 0.2002
+     },
+     "2025": {
+      "low": 0.04,
+      "central": 0.1056,
+      "high": 0.2639
+     },
+     "2026": {
+      "low": 0.01,
+      "central": 0.0352,
+      "high": 0.1092
+     }
+    },
+    "note": "Commission of Czech intermediaries (CSG, STV, Colt CZ, Omnipol, DSS) on initiative rounds shipped directly from third countries: 5-13% (RFE/RL Schemes et al. 2025). Already PROFIT: add directly, do not multiply by the 0.2 margin.",
+    "certainty": "C"
+   }
+  },
+  "BGR": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.097,
+     "central": 0.4105,
+     "high": 2.4
+    },
+    "2023": {
+     "low": 0.584,
+     "central": 1.026,
+     "high": 1.4112
+    },
+    "2024": {
+     "low": 0.9155,
+     "central": 1.5232,
+     "high": 2.0079
+    },
+    "2025": {
+     "low": 0.75,
+     "central": 1.275,
+     "high": 1.71
+    },
+    "2026": {
+     "low": 0.265,
+     "central": 0.7275,
+     "high": 1.26
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.097,
+     "central": 0.4105,
+     "high": 2.4
+    },
+    "2023": {
+     "low": 0.584,
+     "central": 1.026,
+     "high": 1.4112
+    },
+    "2024": {
+     "low": 0.9155,
+     "central": 1.5232,
+     "high": 2.0079
+    },
+    "2025": {
+     "low": 0.75,
+     "central": 1.275,
+     "high": 1.71
+    },
+    "2026": {
+     "low": 0.265,
+     "central": 0.7275,
+     "high": 1.26
+    }
+   },
+   "total_2022_2026_gross_central": 4.962,
+   "total_2022_2026_add_central": 4.962,
+   "certainty": "C",
+   "payers": "2022: US and UK aid money and Ukraine budget via intermediaries; 2023-26 Ukraine budget, Czech-initiative donors, Polish/Czech traders.",
+   "components": {
+    "export_excess": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0.097,
+       "central": 0.4105,
+       "high": 2.4
+      },
+      "2023": {
+       "low": 0.584,
+       "central": 1.026,
+       "high": 1.4112
+      },
+      "2024": {
+       "low": 0.9155,
+       "central": 1.5232,
+       "high": 2.0079
+      },
+      "2025": {
+       "low": 0.75,
+       "central": 1.275,
+       "high": 1.71
+      },
+      "2026": {
+       "low": 0.265,
+       "central": 0.7275,
+       "high": 1.26
+      }
+     },
+     "note": "Bulgarian Ministry of Economy: defence exports+transfers EUR 1.654bn (2022), 2.168bn (2023), 2.831bn (2024), ~2.5bn (2025, HEMUS 2026), against ~0.6-1.0bn a year before the war; 50-90% of the rise assumed to reach Ukraine via Poland, Czechia, Romania, the US and the UK (direct exports to Ukraine only 0 / 0.013 / 0.156). 2022 high from Defense Express (USD 2.7bn in H1 2022). Minus Bulgaria's own 2022 aid. Includes Bulgarian rounds bought through the Czech initiative.",
+     "certainty": "C"
+    }
+   }
+  },
+  "USA": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.15,
+     "central": 0.3712,
+     "high": 0.5
+    },
+    "2023": {
+     "low": 0.1,
+     "central": 0.1686,
+     "high": 0.4
+    },
+    "2024": {
+     "low": 0.1,
+     "central": 0.3965,
+     "high": 0.6
+    },
+    "2025": {
+     "low": 0.6,
+     "central": 1.02,
+     "high": 1.6
+    },
+    "2026": {
+     "low": 1.0,
+     "central": 2.182,
+     "high": 4.0
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0811
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.15,
+     "central": 0.3712,
+     "high": 0.5
+    },
+    "2023": {
+     "low": 0.1,
+     "central": 0.1686,
+     "high": 0.4
+    },
+    "2024": {
+     "low": 0.1,
+     "central": 0.3965,
+     "high": 0.6
+    },
+    "2025": {
+     "low": 0.6,
+     "central": 1.02,
+     "high": 1.6
+    },
+    "2026": {
+     "low": 0.9189,
+     "central": 2.1009,
+     "high": 3.927
+    }
+   },
+   "total_2022_2026_gross_central": 4.138,
+   "total_2022_2026_add_central": 4.057,
+   "certainty": "C",
+   "payers": "German, Norwegian, Canadian aid budgets; Ukraine budget; DK/NL/NO for ERAM.",
+   "components": {
+    "donor_and_ukraine_purchases_non_purl": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0.15,
+       "central": 0.3712,
+       "high": 0.5
+      },
+      "2023": {
+       "low": 0.1,
+       "central": 0.1686,
+       "high": 0.4
+      },
+      "2024": {
+       "low": 0.1,
+       "central": 0.3965,
+       "high": 0.6
+      },
+      "2025": {
+       "low": 0.6,
+       "central": 1.02,
+       "high": 1.6
+      },
+      "2026": {
+       "low": 1.0,
+       "central": 2.182,
+       "high": 4.0
+      }
+     },
+     "note": "Kiel R31 item coding: military aid of Germany (Patriot systems/missiles from Raytheon, EUR 3.47bn, allocated 2026), Norway (0.95), Canada (0.18, NASAMS) and Sweden procured in the US outside PURL; DSCA cases paid by Ukraine or partners (Patriot sustainment, spare parts USD 185m, ERAM USD 825m co-funded DK/NL/NO + FMF); Comtrade HS93+8710 US exports to Ukraine (commercial). 2026: 60% of the German Patriot allocation assumed paid in Jan-Aug; DSCA values are ceilings.",
+     "certainty": "C"
+    }
+   }
+  },
+  "TUR": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.1,
+     "central": 0.3,
+     "high": 0.6
+    },
+    "2023": {
+     "low": 0.15,
+     "central": 0.3,
+     "high": 0.5
+    },
+    "2024": {
+     "low": 0.2046,
+     "central": 0.4884,
+     "high": 1.0161
+    },
+    "2025": {
+     "low": 0.1682,
+     "central": 0.488,
+     "high": 1.0804
+    },
+    "2026": {
+     "low": 0.0671,
+     "central": 0.2293,
+     "high": 0.5815
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.0177,
+    "2023": 0.0682,
+    "2024": 0.1421,
+    "2025": 0.069,
+    "2026": 0.046
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0823,
+     "central": 0.2823,
+     "high": 0.5841
+    },
+    "2023": {
+     "low": 0.0818,
+     "central": 0.2318,
+     "high": 0.4386
+    },
+    "2024": {
+     "low": 0.0625,
+     "central": 0.3463,
+     "high": 0.8882
+    },
+    "2025": {
+     "low": 0.0992,
+     "central": 0.419,
+     "high": 1.0183
+    },
+    "2026": {
+     "low": 0.0211,
+     "central": 0.1833,
+     "high": 0.5401
+    }
+   },
+   "total_2022_2026_gross_central": 1.806,
+   "total_2022_2026_add_central": 1.463,
+   "certainty": "D",
+   "payers": "Ukraine budget; some donor and crowdfunded money. Czech-initiative donors (DEU, NLD, DNK, BEL, NOR, CAN, SWE, PRT, LTU, POL, ISL, SVN), not Czechia.",
+   "components": {
+    "own_estimate": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0.1,
+       "central": 0.3,
+       "high": 0.6
+      },
+      "2023": {
+       "low": 0.15,
+       "central": 0.3,
+       "high": 0.5
+      },
+      "2024": {
+       "low": 0.15,
+       "central": 0.3,
+       "high": 0.5
+      },
+      "2025": {
+       "low": 0.1,
+       "central": 0.25,
+       "high": 0.4
+      },
+      "2026": {
+       "low": 0.05,
+       "central": 0.15,
+       "high": 0.3
+      }
+     },
+     "note": "Bayraktar TB2 deliveries bought by Ukraine in 2022 (others donated by Baykar or crowdfunded), Ada-class corvettes (Ukrainian contract 2020-21, paid in instalments), Turkish ammunition bought by Ukrainian importers (USD 22m in July 2023 alone, Import Genius); Comtrade HS93 to Ukraine USD 19/74/154/78m (2022-25) is a floor.",
+     "certainty": "D"
+    },
+    "czech_initiative": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0.0546,
+       "central": 0.1884,
+       "high": 0.5161
+      },
+      "2025": {
+       "low": 0.0682,
+       "central": 0.238,
+       "high": 0.6804
+      },
+      "2026": {
+       "low": 0.0171,
+       "central": 0.0793,
+       "high": 0.2815
+      }
+     },
+     "note": "Share 35% of initiative rounds shipped directly from third countries (after taking out Bulgarian, Serbian, Slovak and Greek rounds counted in their own totals). Origin split is an educated guess from press reports naming Turkiye, South Africa, South Korea, India, Bosnia and others; no official breakdown exists.",
+     "certainty": "D"
+    }
+   }
+  },
+  "SRB": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.12,
+     "central": 0.2,
+     "high": 0.35
+    },
+    "2023": {
+     "low": 0.2,
+     "central": 0.35,
+     "high": 0.5
+    },
+    "2024": {
+     "low": 0.15,
+     "central": 0.3,
+     "high": 0.45
+    },
+    "2025": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.35
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.07,
+     "high": 0.2
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026": 0
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.12,
+     "central": 0.2,
+     "high": 0.35
+    },
+    "2023": {
+     "low": 0.2,
+     "central": 0.35,
+     "high": 0.5
+    },
+    "2024": {
+     "low": 0.15,
+     "central": 0.3,
+     "high": 0.45
+    },
+    "2025": {
+     "low": 0.05,
+     "central": 0.2,
+     "high": 0.35
+    },
+    "2026": {
+     "low": 0,
+     "central": 0.07,
+     "high": 0.2
+    }
+   },
+   "total_2022_2026_gross_central": 1.12,
+   "total_2022_2026_add_central": 1.12,
+   "certainty": "C",
+   "payers": "US aid money (US brokers), Czech-initiative donors, Ukraine budget via Spanish/Czech traders.",
+   "components": {
+    "investigative": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0.12,
+       "central": 0.2,
+       "high": 0.35
+      },
+      "2023": {
+       "low": 0.2,
+       "central": 0.35,
+       "high": 0.5
+      },
+      "2024": {
+       "low": 0.15,
+       "central": 0.3,
+       "high": 0.45
+      },
+      "2025": {
+       "low": 0.05,
+       "central": 0.2,
+       "high": 0.35
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.07,
+       "high": 0.2
+      }
+     },
+     "note": "Financial Times (June 2024): ~EUR 800m of Serbian ammunition reached Ukraine via US, Spanish and Czech buyers since 2022; Vucic: over 'two or three years'. Continued into 2025 per Russian SVR allegations (May 2025); tapering assumed.",
+     "certainty": "C"
+    }
+   }
+  },
+  "PAK": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.13,
+     "central": 0.25,
+     "high": 0.4
+    },
+    "2023": {
+     "low": 0.2,
+     "central": 0.3,
+     "high": 0.45
+    },
+    "2024": {
+     "low": 0.0078,
+     "central": 0.0269,
+     "high": 0.0737
+    },
+    "2025": {
+     "low": 0.0097,
+     "central": 0.034,
+     "high": 0.0972
+    },
+    "2026": {
+     "low": 0.0024,
+     "central": 0.0113,
+     "high": 0.0402
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026": 0
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.13,
+     "central": 0.25,
+     "high": 0.4
+    },
+    "2023": {
+     "low": 0.2,
+     "central": 0.3,
+     "high": 0.45
+    },
+    "2024": {
+     "low": 0.0078,
+     "central": 0.0269,
+     "high": 0.0737
+    },
+    "2025": {
+     "low": 0.0097,
+     "central": 0.034,
+     "high": 0.0972
+    },
+    "2026": {
+     "low": 0.0024,
+     "central": 0.0113,
+     "high": 0.0402
+    }
+   },
+   "total_2022_2026_gross_central": 0.622,
+   "total_2022_2026_add_central": 0.622,
+   "certainty": "D",
+   "payers": "US aid money. Czech-initiative donors (DEU, NLD, DNK, BEL, NOR, CAN, SWE, PRT, LTU, POL, ISL, SVN), not Czechia.",
+   "components": {
+    "us_channel": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0.13,
+       "central": 0.25,
+       "high": 0.4
+      },
+      "2023": {
+       "low": 0.2,
+       "central": 0.3,
+       "high": 0.45
+      },
+      "2024": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2025": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2026": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      }
+     },
+     "note": "The Intercept (Sep 2023): shells sold to the US government via Global Military Products for Ukraine, summer 2022-spring 2023; US contract records USD 364m (low), programme reportedly ~USD 900m (high). Pakistan denies.",
+     "certainty": "D"
+    },
+    "czech_initiative": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0.0078,
+       "central": 0.0269,
+       "high": 0.0737
+      },
+      "2025": {
+       "low": 0.0097,
+       "central": 0.034,
+       "high": 0.0972
+      },
+      "2026": {
+       "low": 0.0024,
+       "central": 0.0113,
+       "high": 0.0402
+      }
+     },
+     "note": "Share 5% of initiative rounds shipped directly from third countries (after taking out Bulgarian, Serbian, Slovak and Greek rounds counted in their own totals). Origin split is an educated guess from press reports naming Turkiye, South Africa, South Korea, India, Bosnia and others; no official breakdown exists.",
+     "certainty": "D"
+    }
+   }
+  },
+  "SWE": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.175,
+     "central": 0.25,
+     "high": 0.325
+    },
+    "2024": {
+     "low": 0.175,
+     "central": 0.25,
+     "high": 0.325
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.0,
+    "2023": 0.0001,
+    "2024": 0.0,
+    "2025": 0.0008,
+    "2026": 0.0005
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.1749,
+     "central": 0.2499,
+     "high": 0.3249
+    },
+    "2024": {
+     "low": 0.175,
+     "central": 0.25,
+     "high": 0.325
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0001
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0001
+    }
+   },
+   "total_2022_2026_gross_central": 0.5,
+   "total_2022_2026_add_central": 0.5,
+   "certainty": "C",
+   "payers": "Danish aid budget.",
+   "components": {
+    "kiel_coded_third_country_procurement": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0.175,
+       "central": 0.25,
+       "high": 0.325
+      },
+      "2024": {
+       "low": 0.175,
+       "central": 0.25,
+       "high": 0.325
+      },
+      "2025": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2026": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      }
+     },
+     "note": "Denmark-funded CV90s and other items from Swedish industry (Kiel coding 0.50). Kiel codes only part of procurement locations, so this is a floor.",
+     "certainty": "C"
+    }
+   }
+  },
+  "KOR": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "2023": {
+     "low": 0.05,
+     "central": 0.15,
+     "high": 0.4
+    },
+    "2024": {
+     "low": 0.0156,
+     "central": 0.0538,
+     "high": 0.1475
+    },
+    "2025": {
+     "low": 0.0195,
+     "central": 0.068,
+     "high": 0.1944
+    },
+    "2026": {
+     "low": 0.0049,
+     "central": 0.0227,
+     "high": 0.0804
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026": 0.0
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0.05,
+     "high": 0.15
+    },
+    "2023": {
+     "low": 0.05,
+     "central": 0.15,
+     "high": 0.4
+    },
+    "2024": {
+     "low": 0.0156,
+     "central": 0.0538,
+     "high": 0.1475
+    },
+    "2025": {
+     "low": 0.0195,
+     "central": 0.068,
+     "high": 0.1944
+    },
+    "2026": {
+     "low": 0.0049,
+     "central": 0.0227,
+     "high": 0.0804
+    }
+   },
+   "total_2022_2026_gross_central": 0.345,
+   "total_2022_2026_add_central": 0.345,
+   "certainty": "D",
+   "payers": "US aid / US stock replenishment money. Czech-initiative donors (DEU, NLD, DNK, BEL, NOR, CAN, SWE, PRT, LTU, POL, ISL, SVN), not Czechia.",
+   "components": {
+    "us_channel": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.05,
+       "high": 0.15
+      },
+      "2023": {
+       "low": 0.05,
+       "central": 0.15,
+       "high": 0.4
+      },
+      "2024": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2025": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2026": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      }
+     },
+     "note": "US purchase of ~100,000 155mm rounds (negotiations confirmed Nov 2022) and a 2023 loan of 500,000 rounds to refill US stocks (DongA Ilbo); price not public (USD 1,000-2,500 a round).",
+     "certainty": "D"
+    },
+    "czech_initiative": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0.0156,
+       "central": 0.0538,
+       "high": 0.1475
+      },
+      "2025": {
+       "low": 0.0195,
+       "central": 0.068,
+       "high": 0.1944
+      },
+      "2026": {
+       "low": 0.0049,
+       "central": 0.0227,
+       "high": 0.0804
+      }
+     },
+     "note": "Share 10% of initiative rounds shipped directly from third countries (after taking out Bulgarian, Serbian, Slovak and Greek rounds counted in their own totals). Origin split is an educated guess from press reports naming Turkiye, South Africa, South Korea, India, Bosnia and others; no official breakdown exists.",
+     "certainty": "D"
+    }
+   }
+  },
+  "ROU": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.05,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "2023": {
+     "low": 0.15,
+     "central": 0.25,
+     "high": 0.4
+    },
+    "2024": {
+     "low": 0.2119,
+     "central": 0.3027,
+     "high": 0.4935
+    },
+    "2025": {
+     "low": 0.2168,
+     "central": 0.3097,
+     "high": 0.5026
+    },
+    "2026": {
+     "low": 0.08,
+     "central": 0.15,
+     "high": 0.3
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.0171,
+    "2023": 0.0075,
+    "2024": 0.6627,
+    "2025": 0.3597,
+    "2026": 0.2398
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0329,
+     "central": 0.0829,
+     "high": 0.2346
+    },
+    "2023": {
+     "low": 0.1425,
+     "central": 0.2425,
+     "high": 0.3932
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0663
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.1789
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0842
+    }
+   },
+   "total_2022_2026_gross_central": 1.112,
+   "total_2022_2026_add_central": 0.325,
+   "certainty": "C",
+   "payers": "Ukraine budget (state importers), some donors.",
+   "components": {
+    "imports_records_comtrade": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0.05,
+       "central": 0.1,
+       "high": 0.25
+      },
+      "2023": {
+       "low": 0.15,
+       "central": 0.25,
+       "high": 0.4
+      },
+      "2024": {
+       "low": 0.2119,
+       "central": 0.3027,
+       "high": 0.4935
+      },
+      "2025": {
+       "low": 0.2168,
+       "central": 0.3097,
+       "high": 0.5026
+      },
+      "2026": {
+       "low": 0.08,
+       "central": 0.15,
+       "high": 0.3
+      }
+     },
+     "note": "2022-23: Ukrainian import records (Import Genius via Defense One: USD 22m of Romanian munitions in July 2023 alone) and UNROCA; 2024-25 Comtrade HS93 minus the donated Patriot system (Kiel ROU military 2024 0.36); 2026 estimated.",
+     "certainty": "C"
+    }
+   }
+  },
+  "DEU": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.1722,
+     "central": 0.246,
+     "high": 0.3198
+    },
+    "2024": {
+     "low": 0.0595,
+     "central": 0.085,
+     "high": 0.1105
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.0,
+    "2023": 0.0055,
+    "2024": 0.0228,
+    "2025": 0.0289,
+    "2026": 0.0193
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.1667,
+     "central": 0.2405,
+     "high": 0.3148
+    },
+    "2024": {
+     "low": 0.0367,
+     "central": 0.0622,
+     "high": 0.09
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0029
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0019
+    }
+   },
+   "total_2022_2026_gross_central": 0.331,
+   "total_2022_2026_add_central": 0.303,
+   "certainty": "C",
+   "payers": "Danish, Dutch, Norwegian aid budgets.",
+   "components": {
+    "kiel_coded_third_country_procurement": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0.1722,
+       "central": 0.246,
+       "high": 0.3198
+      },
+      "2024": {
+       "low": 0.0595,
+       "central": 0.085,
+       "high": 0.1105
+      },
+      "2025": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2026": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      }
+     },
+     "note": "Denmark, Netherlands, Norway buying from German industry (Leopard 1, IRIS-T, Skynex etc.; Kiel coding 0.33); German HS93 commercial exports small. Kiel codes only part of procurement locations, so this is a floor.",
+     "certainty": "C"
+    }
+   }
+  },
+  "NLD": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.21,
+     "central": 0.3,
+     "high": 0.39
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.0,
+    "2023": 0,
+    "2024": 0.0002,
+    "2025": 0.0003,
+    "2026": 0.0002
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.2098,
+     "central": 0.2998,
+     "high": 0.3898
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "total_2022_2026_gross_central": 0.3,
+   "total_2022_2026_add_central": 0.3,
+   "certainty": "C",
+   "payers": "French aid budget.",
+   "components": {
+    "kiel_coded_third_country_procurement": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0.21,
+       "central": 0.3,
+       "high": 0.39
+      },
+      "2025": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2026": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      }
+     },
+     "note": "France-funded purchase coded as procured in the Netherlands (Kiel). Kiel codes only part of procurement locations, so this is a floor.",
+     "certainty": "C"
+    }
+   }
+  },
+  "ZAF": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0312,
+     "central": 0.1077,
+     "high": 0.2949
+    },
+    "2025": {
+     "low": 0.039,
+     "central": 0.136,
+     "high": 0.3888
+    },
+    "2026": {
+     "low": 0.0097,
+     "central": 0.0453,
+     "high": 0.1609
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026": 0
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0312,
+     "central": 0.1077,
+     "high": 0.2949
+    },
+    "2025": {
+     "low": 0.039,
+     "central": 0.136,
+     "high": 0.3888
+    },
+    "2026": {
+     "low": 0.0097,
+     "central": 0.0453,
+     "high": 0.1609
+    }
+   },
+   "total_2022_2026_gross_central": 0.289,
+   "total_2022_2026_add_central": 0.289,
+   "certainty": "D",
+   "payers": "Czech-initiative donors (DEU, NLD, DNK, BEL, NOR, CAN, SWE, PRT, LTU, POL, ISL, SVN), not Czechia.",
+   "components": {
+    "czech_initiative": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0.0312,
+       "central": 0.1077,
+       "high": 0.2949
+      },
+      "2025": {
+       "low": 0.039,
+       "central": 0.136,
+       "high": 0.3888
+      },
+      "2026": {
+       "low": 0.0097,
+       "central": 0.0453,
+       "high": 0.1609
+      }
+     },
+     "note": "Share 20% of initiative rounds shipped directly from third countries (after taking out Bulgarian, Serbian, Slovak and Greek rounds counted in their own totals). Origin split is an educated guess from press reports naming Turkiye, South Africa, South Korea, India, Bosnia and others; no official breakdown exists.",
+     "certainty": "D"
+    }
+   }
+  },
+  "BEL": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.049,
+     "central": 0.07,
+     "high": 0.091
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0889,
+     "central": 0.127,
+     "high": 0.1651
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0005,
+    "2026": 0.0003
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.049,
+     "central": 0.07,
+     "high": 0.091
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0889,
+     "central": 0.127,
+     "high": 0.1651
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0001
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "total_2022_2026_gross_central": 0.197,
+   "total_2022_2026_add_central": 0.197,
+   "certainty": "C",
+   "payers": "US and UK aid budgets.",
+   "components": {
+    "kiel_coded_third_country_procurement": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0.049,
+       "central": 0.07,
+       "high": 0.091
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0.0889,
+       "central": 0.127,
+       "high": 0.1651
+      },
+      "2025": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2026": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      }
+     },
+     "note": "US- and UK-funded vehicles/ammunition from Belgian dealers (Kiel coding). Kiel codes only part of procurement locations, so this is a floor.",
+     "certainty": "C"
+    }
+   }
+  },
+  "NOR": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.126,
+     "central": 0.18,
+     "high": 0.234
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.0,
+    "2023": 0.0849,
+    "2024": 0.0851,
+    "2025": 0.0621,
+    "2026": 0.0414
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.126,
+     "central": 0.18,
+     "high": 0.234
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0085
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0085
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0062
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0041
+    }
+   },
+   "total_2022_2026_gross_central": 0.18,
+   "total_2022_2026_add_central": 0.18,
+   "certainty": "C",
+   "payers": "Canadian aid budget.",
+   "components": {
+    "kiel_coded_third_country_procurement": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0.126,
+       "central": 0.18,
+       "high": 0.234
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2025": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2026": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      }
+     },
+     "note": "Canada-funded NASAMS (Kongsberg share; Kiel coding). Kiel codes only part of procurement locations, so this is a floor.",
+     "certainty": "C"
+    }
+   }
+  },
+  "GRC": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.1,
+     "central": 0.144,
+     "high": 0.17
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026": 0.0
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.1,
+     "central": 0.144,
+     "high": 0.17
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "total_2022_2026_gross_central": 0.144,
+   "total_2022_2026_add_central": 0.144,
+   "certainty": "C",
+   "payers": "Czech-initiative donors.",
+   "components": {
+    "czech_initiative_stock_sale": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0.1,
+       "central": 0.144,
+       "high": 0.17
+      },
+      "2025": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2026": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      }
+     },
+     "note": "Greek army surplus shells, fuses and propellant sold to the Czech initiative for ~USD 156m (Kyiv Post, April 2024). Stock sale: the whole price is income for the Greek state.",
+     "certainty": "C"
+    }
+   }
+  },
+  "IND": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0125,
+     "central": 0.0431,
+     "high": 0.118
+    },
+    "2025": {
+     "low": 0.0156,
+     "central": 0.0544,
+     "high": 0.1555
+    },
+    "2026": {
+     "low": 0.0039,
+     "central": 0.0181,
+     "high": 0.0644
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026": 0.0
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0125,
+     "central": 0.0431,
+     "high": 0.118
+    },
+    "2025": {
+     "low": 0.0156,
+     "central": 0.0544,
+     "high": 0.1555
+    },
+    "2026": {
+     "low": 0.0039,
+     "central": 0.0181,
+     "high": 0.0644
+    }
+   },
+   "total_2022_2026_gross_central": 0.116,
+   "total_2022_2026_add_central": 0.116,
+   "certainty": "D",
+   "payers": "Czech-initiative donors (DEU, NLD, DNK, BEL, NOR, CAN, SWE, PRT, LTU, POL, ISL, SVN), not Czechia.",
+   "components": {
+    "czech_initiative": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0.0125,
+       "central": 0.0431,
+       "high": 0.118
+      },
+      "2025": {
+       "low": 0.0156,
+       "central": 0.0544,
+       "high": 0.1555
+      },
+      "2026": {
+       "low": 0.0039,
+       "central": 0.0181,
+       "high": 0.0644
+      }
+     },
+     "note": "Share 8% of initiative rounds shipped directly from third countries (after taking out Bulgarian, Serbian, Slovak and Greek rounds counted in their own totals). Origin split is an educated guess from press reports naming Turkiye, South Africa, South Korea, India, Bosnia and others; no official breakdown exists.",
+     "certainty": "D"
+    }
+   }
+  },
+  "BIH": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0109,
+     "central": 0.0377,
+     "high": 0.1032
+    },
+    "2025": {
+     "low": 0.0136,
+     "central": 0.0476,
+     "high": 0.1361
+    },
+    "2026": {
+     "low": 0.0034,
+     "central": 0.0159,
+     "high": 0.0563
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0,
+    "2024": 0,
+    "2025": 0,
+    "2026": 0
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0109,
+     "central": 0.0377,
+     "high": 0.1032
+    },
+    "2025": {
+     "low": 0.0136,
+     "central": 0.0476,
+     "high": 0.1361
+    },
+    "2026": {
+     "low": 0.0034,
+     "central": 0.0159,
+     "high": 0.0563
+    }
+   },
+   "total_2022_2026_gross_central": 0.101,
+   "total_2022_2026_add_central": 0.101,
+   "certainty": "D",
+   "payers": "Czech-initiative donors (DEU, NLD, DNK, BEL, NOR, CAN, SWE, PRT, LTU, POL, ISL, SVN), not Czechia.",
+   "components": {
+    "czech_initiative": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0.0109,
+       "central": 0.0377,
+       "high": 0.1032
+      },
+      "2025": {
+       "low": 0.0136,
+       "central": 0.0476,
+       "high": 0.1361
+      },
+      "2026": {
+       "low": 0.0034,
+       "central": 0.0159,
+       "high": 0.0563
+      }
+     },
+     "note": "Share 7% of initiative rounds shipped directly from third countries (after taking out Bulgarian, Serbian, Slovak and Greek rounds counted in their own totals). Origin split is an educated guess from press reports naming Turkiye, South Africa, South Korea, India, Bosnia and others; no official breakdown exists.",
+     "certainty": "D"
+    }
+   }
+  },
+  "SVK": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.097,
+     "central": 0.172,
+     "high": 0.347
+    },
+    "2023": {
+     "low": 0.142,
+     "central": 0.182,
+     "high": 0.282
+    },
+    "2024": {
+     "low": 0.1906,
+     "central": 0.2506,
+     "high": 0.3506
+    },
+    "2025": {
+     "low": 0.4874,
+     "central": 0.4874,
+     "high": 0.5874
+    },
+    "2026": {
+     "low": 0.3,
+     "central": 0.3,
+     "high": 0.4
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.247,
+    "2023": 0.142,
+    "2024": 0.1906,
+    "2025": 0.4874,
+    "2026": 0.3249
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.1247
+    },
+    "2023": {
+     "low": 0,
+     "central": 0.04,
+     "high": 0.1542
+    },
+    "2024": {
+     "low": 0,
+     "central": 0.06,
+     "high": 0.1791
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.1487
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.1076
+    }
+   },
+   "total_2022_2026_gross_central": 1.392,
+   "total_2022_2026_add_central": 0.1,
+   "certainty": "C",
+   "payers": "Ukraine budget and donors (Zuzana: DNK, DEU, NOR; initiative rounds via Czech brokers).",
+   "components": {
+    "comtrade_plus_zuzana": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0.097,
+       "central": 0.172,
+       "high": 0.347
+      },
+      "2023": {
+       "low": 0.142,
+       "central": 0.182,
+       "high": 0.282
+      },
+      "2024": {
+       "low": 0.1906,
+       "central": 0.2506,
+       "high": 0.3506
+      },
+      "2025": {
+       "low": 0.4874,
+       "central": 0.4874,
+       "high": 0.5874
+      },
+      "2026": {
+       "low": 0.3,
+       "central": 0.3,
+       "high": 0.4
+      }
+     },
+     "note": "Comtrade HS93+8710 Slovak exports to Ukraine (MSM/ZVS ammunition, Konstrukta), plus Zuzana-2 howitzers bought for Ukraine by Denmark, Germany and Norway (EUR 92m, 2023-24); 2022 low removes a possible S-300 donation; 2026 estimated.",
+     "certainty": "C"
+    }
+   }
+  },
+  "POL": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.6729,
+     "central": 0.8411,
+     "high": 1.0093
+    },
+    "2023": {
+     "low": 1.1352,
+     "central": 1.419,
+     "high": 1.7028
+    },
+    "2024": {
+     "low": 1.9591,
+     "central": 2.4489,
+     "high": 2.9387
+    },
+    "2025": {
+     "low": 1.0403,
+     "central": 1.3004,
+     "high": 1.5605
+    },
+    "2026": {
+     "low": 0.6935,
+     "central": 0.8669,
+     "high": 1.0403
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.8411,
+    "2023": 1.3453,
+    "2024": 2.4489,
+    "2025": 1.3004,
+    "2026": 0.8669
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.2523
+    },
+    "2023": {
+     "low": 0,
+     "central": 0.0737,
+     "high": 0.492
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0.7347
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.3901
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.2601
+    }
+   },
+   "total_2022_2026_gross_central": 6.876,
+   "total_2022_2026_add_central": 0.074,
+   "certainty": "B",
+   "payers": "Mostly Ukraine budget; Krab contract partly financed by US FMF and EU funds; some donor-paid.",
+   "components": {
+    "national_export_report": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0.6729,
+       "central": 0.8411,
+       "high": 1.0093
+      },
+      "2023": {
+       "low": 1.1352,
+       "central": 1.419,
+       "high": 1.7028
+      },
+      "2024": {
+       "low": 1.9591,
+       "central": 2.4489,
+       "high": 2.9387
+      },
+      "2025": {
+       "low": 1.0403,
+       "central": 1.3004,
+       "high": 1.5605
+      },
+      "2026": {
+       "low": 0.6935,
+       "central": 0.8669,
+       "high": 1.0403
+      }
+     },
+     "note": "Poland MFA report 2023: actual arms exports to Ukraine EUR 1.419bn (81% of all, donations excluded); other years Comtrade HS93+8710 exports to Ukraine (2023 Comtrade 1.35, matching the MFA figure). Krab howitzers (54 sold 2022-24), Piorun, ammunition; may include Bulgarian and other goods re-exported via Polish traders.",
+     "certainty": "B"
+    }
+   }
+  },
+  "FIN": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0462,
+     "central": 0.066,
+     "high": 0.0858
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0462,
+     "central": 0.066,
+     "high": 0.0858
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "total_2022_2026_gross_central": 0.066,
+   "total_2022_2026_add_central": 0.066,
+   "certainty": "C",
+   "payers": "Latvian aid budget.",
+   "components": {
+    "kiel_coded_third_country_procurement": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2025": {
+       "low": 0.0462,
+       "central": 0.066,
+       "high": 0.0858
+      },
+      "2026": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      }
+     },
+     "note": "Latvia-funded purchase from Finnish industry (Kiel coding). Kiel codes only part of procurement locations, so this is a floor.",
+     "certainty": "C"
+    }
+   }
+  },
+  "AUS": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0413,
+     "central": 0.059,
+     "high": 0.0767
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0,
+    "2023": 0.0,
+    "2024": 0,
+    "2025": 0.1286,
+    "2026": 0.0296
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0413,
+     "central": 0.059,
+     "high": 0.0767
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0129
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.003
+    }
+   },
+   "total_2022_2026_gross_central": 0.059,
+   "total_2022_2026_add_central": 0.059,
+   "certainty": "C",
+   "payers": "French aid budget.",
+   "components": {
+    "kiel_coded_third_country_procurement": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0.0413,
+       "central": 0.059,
+       "high": 0.0767
+      },
+      "2024": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2025": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2026": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      }
+     },
+     "note": "France-funded purchase coded as procured in Australia (Kiel). Kiel codes only part of procurement locations, so this is a floor.",
+     "certainty": "C"
+    }
+   }
+  },
+  "EST": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0294,
+     "central": 0.042,
+     "high": 0.0546
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.0305,
+    "2023": 0.0002,
+    "2024": 0.0003,
+    "2025": 0.0004,
+    "2026": 0.0003
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0031
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.029,
+     "central": 0.0416,
+     "high": 0.0542
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    }
+   },
+   "total_2022_2026_gross_central": 0.042,
+   "total_2022_2026_add_central": 0.042,
+   "certainty": "C",
+   "payers": "Danish aid budget.",
+   "components": {
+    "kiel_coded_third_country_procurement": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2025": {
+       "low": 0.0294,
+       "central": 0.042,
+       "high": 0.0546
+      },
+      "2026": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      }
+     },
+     "note": "Denmark-funded purchase from Estonian industry (Kiel coding). Kiel codes only part of procurement locations, so this is a floor.",
+     "certainty": "C"
+    }
+   }
+  },
+  "GBR": {
+   "gross_sales_eur_bn": {
+    "2021": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0483,
+     "central": 0.069,
+     "high": 0.0897
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    }
+   },
+   "already_in_trade_eur_bn": {
+    "2021": 0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0384,
+    "2025": 0.1383,
+    "2026": 0.0922
+   },
+   "add_to_map_gross_eur_bn": {
+    "2021": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0038
+    },
+    "2025": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0138
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0.0092
+    }
+   },
+   "total_2022_2026_gross_central": 0.069,
+   "total_2022_2026_add_central": 0,
+   "certainty": "C",
+   "payers": "Norwegian, Dutch aid budgets.",
+   "components": {
+    "kiel_coded_third_country_procurement": {
+     "by_year": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2025": {
+       "low": 0.0483,
+       "central": 0.069,
+       "high": 0.0897
+      },
+      "2026": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      }
+     },
+     "note": "Norway- and Netherlands-funded purchases from UK industry (Kiel coding). Kiel codes only part of procurement locations, so this is a floor.",
+     "certainty": "C"
+    }
+   }
+  }
+ },
+ "memo": {
+  "comtrade_arms_exports_to_UKR_eur_bn": {
+   "POL": {
+    "2022": 0.8411,
+    "2023": 1.3453,
+    "2024": 2.4489,
+    "2025": 1.3004,
+    "2026": 0.8669
+   },
+   "SVK": {
+    "2022": 0.247,
+    "2023": 0.142,
+    "2024": 0.1906,
+    "2025": 0.4874,
+    "2026": 0.3249
+   },
+   "ROU": {
+    "2022": 0.0171,
+    "2023": 0.0075,
+    "2024": 0.6627,
+    "2025": 0.3597,
+    "2026": 0.2398
+   },
+   "USA": {
+    "2022": 0.1912,
+    "2023": 0.1686,
+    "2024": 0.2865,
+    "2025": 0.2959,
+    "2026": 0.1973
+   },
+   "CAN": {
+    "2022": 0.0399,
+    "2023": 0.2715,
+    "2024": 0.1878,
+    "2025": 0.1464,
+    "2026": 0.0976
+   },
+   "ESP": {
+    "2022": 0.0241,
+    "2023": 0.232,
+    "2024": 0.1916,
+    "2025": 0.1688,
+    "2026": 0.1125
+   },
+   "ITA": {
+    "2022": 0.0004,
+    "2023": 0.0303,
+    "2024": 0.1848,
+    "2025": 0.1614,
+    "2026": 0.1076
+   },
+   "NOR": {
+    "2022": 0.0765,
+    "2023": 0.0849,
+    "2024": 0.0851,
+    "2025": 0.0621,
+    "2026": 0.0414
+   },
+   "TUR": {
+    "2022": 0.0177,
+    "2023": 0.0682,
+    "2024": 0.1421,
+    "2025": 0.069,
+    "2026": 0.046
+   },
+   "GBR": {
+    "2022": 0.0004,
+    "2023": 0.0022,
+    "2024": 0.0384,
+    "2025": 0.1383,
+    "2026": 0.0922
+   },
+   "AUS": {
+    "2022": 0,
+    "2023": 0.0417,
+    "2024": 0,
+    "2025": 0.1286,
+    "2026": 0.0857
+   },
+   "HRV": {
+    "2022": 0.0115,
+    "2023": 0.002,
+    "2024": 0.1371,
+    "2025": 0.0251,
+    "2026": 0.0167
+   },
+   "DEU": {
+    "2022": 0.0034,
+    "2023": 0.0055,
+    "2024": 0.0228,
+    "2025": 0.0289,
+    "2026": 0.0193
+   },
+   "DNK": {
+    "2022": 0.001,
+    "2023": 0.0478,
+    "2024": 0.0019,
+    "2025": 0.0023,
+    "2026": 0.0015
+   },
+   "BEL": {
+    "2022": 0.0202,
+    "2023": 0.0066,
+    "2024": 0.0045,
+    "2025": 0.0005,
+    "2026": 0.0003
+   },
+   "EST": {
+    "2022": 0.0305,
+    "2023": 0.0002,
+    "2024": 0.0003,
+    "2025": 0.0004,
+    "2026": 0.0003
+   },
+   "ALB": {
+    "2022": 0,
+    "2023": 0.0037,
+    "2024": 0.0218,
+    "2025": 0,
+    "2026": 0.0
+   },
+   "LTU": {
+    "2022": 0.0073,
+    "2023": 0.0037,
+    "2024": 0.0013,
+    "2025": 0.0061,
+    "2026": 0.0041
+   },
+   "CZE": {
+    "2022": 0.0016,
+    "2023": 0.0087,
+    "2024": 0.0028,
+    "2025": 0.0042,
+    "2026": 0.0028
+   }
+  },
+  "comtrade_drones_8806_exports_to_UKR_eur_bn": {
+   "POL": {
+    "2022": 0.0209,
+    "2023": 0.1389,
+    "2024": 0.4806,
+    "2025": 0.757,
+    "2026": 0.5047
+   },
+   "DEU": {
+    "2022": 0.0054,
+    "2023": 0.0401,
+    "2024": 0.1238,
+    "2025": 0.1362,
+    "2026": 0.0908
+   },
+   "NLD": {
+    "2022": 0.0001,
+    "2023": 0.0002,
+    "2024": 0.0077,
+    "2025": 0.1653,
+    "2026": 0.1102
+   },
+   "PRT": {
+    "2022": 0.004,
+    "2023": 0.02,
+    "2024": 0.0305,
+    "2025": 0.0864,
+    "2026": 0.0576
+   },
+   "GBR": {
+    "2022": 0.0001,
+    "2023": 0.0079,
+    "2024": 0.0038,
+    "2025": 0.0966,
+    "2026": 0.0644
+   },
+   "CZE": {
+    "2022": 0.0022,
+    "2023": 0.0375,
+    "2024": 0.0601,
+    "2025": 0.0387,
+    "2026": 0.0258
+   },
+   "CAN": {
+    "2022": 0.0,
+    "2023": 0.0004,
+    "2024": 0.0376,
+    "2025": 0.0213,
+    "2026": 0.0142
+   },
+   "EST": {
+    "2022": 0.0067,
+    "2023": 0.0224,
+    "2024": 0.0178,
+    "2025": 0.0088,
+    "2026": 0.0059
+   },
+   "USA": {
+    "2022": 0.0019,
+    "2023": 0.0073,
+    "2024": 0.0056,
+    "2025": 0.0244,
+    "2026": 0.0163
+   },
+   "ROU": {
+    "2022": 0.0004,
+    "2023": 0.0113,
+    "2024": 0.0302,
+    "2025": 0.0061,
+    "2026": 0.0041
+   },
+   "LVA": {
+    "2022": 0.0098,
+    "2023": 0.0085,
+    "2024": 0.0029,
+    "2025": 0.0106,
+    "2026": 0.0071
+   },
+   "NOR": {
+    "2022": 0,
+    "2023": 0.001,
+    "2024": 0.0013,
+    "2025": 0.013,
+    "2026": 0.0087
+   },
+   "LTU": {
+    "2022": 0.0002,
+    "2023": 0.0009,
+    "2024": 0.0027,
+    "2025": 0.0116,
+    "2026": 0.0077
+   }
+  },
+  "czech_initiative_total_eur_bn": {
+   "2024": {
+    "low": 1.6,
+    "central": 1.9,
+    "high": 2.2
+   },
+   "2025": {
+    "low": 2.0,
+    "central": 2.4,
+    "high": 2.9
+   },
+   "2026": {
+    "low": 0.5,
+    "central": 0.8,
+    "high": 1.2
+   }
+  },
+  "czech_initiative_unallocated_other_origins_eur_bn": {
+   "2021": {
+    "low": 0,
+    "central": 0,
+    "high": 0.0
+   },
+   "2022": {
+    "low": 0,
+    "central": 0,
+    "high": 0.0
+   },
+   "2023": {
+    "low": 0,
+    "central": 0,
+    "high": 0.0
+   },
+   "2024": {
+    "low": 0.0234,
+    "central": 0.0808,
+    "high": 0.2212
+   },
+   "2025": {
+    "low": 0.0292,
+    "central": 0.102,
+    "high": 0.2916
+   },
+   "2026": {
+    "low": 0.0073,
+    "central": 0.034,
+    "high": 0.1207
+   }
+  },
+  "ukraine_own_budget_foreign_purchases_eur_bn": {
+   "2022": {
+    "low": 1.2,
+    "central": 2.5,
+    "high": 4.5
+   },
+   "2023": {
+    "low": 2.0,
+    "central": 3.5,
+    "high": 5.5
+   },
+   "2024": {
+    "low": 2.7,
+    "central": 3.4,
+    "high": 3.9
+   },
+   "2025": {
+    "low": 1.6,
+    "central": 2.0,
+    "high": 2.6
+   },
+   "2026": {
+    "low": 0.7,
+    "central": 1.2,
+    "high": 2.0
+   },
+   "basis": "Cross-check only, not added: DPA 2024 budget UAH 306bn with 54% imported (MoD, Jan 2026; another source 41%); 2025 domestic UAH ~430bn = 82% so imports ~UAH 94bn; 2022-23 guessed from state-importer activity. Seller-side figures (POL, CZE non-initiative, SVK, ROU, BGR, TUR, SRB) paid by Ukraine add up to roughly the same total, so no residual is allocated."
+  },
+  "us_aid_spent_abroad_eur_bn": {
+   "total_2022_2025": {
+    "low": 3.9,
+    "central": 5.8,
+    "high": 7.8
+   },
+   "basis": "US military aid (Kiel 64.6) x 6/9/12% spent with non-US, non-Ukrainian suppliers (CSIS: 86-90% in the US, part of the rest in Ukraine). Identified sellers (BGR 2022 part, SRB, PAK, KOR) are inside their own lines; the remainder (~EUR 3-5bn: subcontract content from NOR, DEU, GBR, CAN, ISR, TUR...) is NOT allocated."
+  },
+  "donor_aid_procured_abroad_unlocated_eur_bn": {
+   "total_2022_2026": {
+    "low": 3.0,
+    "central": 6.0,
+    "high": 11.0
+   },
+   "basis": "Kiel procurement with no location (EUR 25.6bn) and unspecified items: applying flowback2's domestic shares leaves ~EUR 15bn of non-domestic, non-Ukrainian value; minus the initiative money not coded by Kiel (~2.7bn) and donor-paid purchases inside the CZE/POL/SVK lines leaves 3-11bn bought from unknown foreign industry (largely US, German, Swedish, Norwegian, French). NOT allocated by seller."
+  }
+ },
+ "sources": [
+  {
+   "name": "Kiel Institute, Ukraine Support Tracker Release 31, item-level sheet (procurement_location, source_of_weapon)",
+   "url": "https://www.kielinstitut.de/research/topics/war-against-ukraine/ukraine-support-tracker/",
+   "date": "2026-10"
+  },
+  {
+   "name": "UN Comtrade public API: exports to Ukraine (partner 804), HS 93, 8710, 8806, all reporters, 2021-2025",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=804&flowCode=X&cmdCode=93,8710,8806",
+   "date": "2026-10-18"
+  },
+  {
+   "name": "Ekonomicky denik: Czech MIT report 2025 - arms exports CZK 112.6bn, Ukraine CZK 50.7bn",
+   "url": "https://ekonomickydenik.cz/ceske-firmy-vojensky-material-112-miliard/",
+   "date": "2026-08-05"
+  },
+  {
+   "name": "Seznam Zpravy: Czech MIT report 2024 - exports ~CZK 91bn, Ukraine CZK 47.1bn",
+   "url": "https://www.seznamzpravy.cz/clanek/domaci-zivot-v-cesku-vyvoz-vojenskeho-materialu-z-cr-loni-mezirocne-stoupl-o-86-procent-282612",
+   "date": "2025-07-25"
+  },
+  {
+   "name": "Radio Prague: Czech military exports 2023 CZK 48.9bn, Ukraine over CZK 20bn",
+   "url": "https://english.radio.cz/node/8821924",
+   "date": "2024"
+  },
+  {
+   "name": "Levice conference paper citing Czech report 2022: CZK 29.7bn exports, CZK 12.8bn to Ukraine",
+   "url": "https://jsmelevice.cz/wp-content/uploads/2024/11/Left-Perspectives-on-Security-Warsaw-15-17-November_-Levice.pdf",
+   "date": "2024-11"
+  },
+  {
+   "name": "LIGA.net: Czech government - foreign donors CZK 93.3bn for the initiative; 3.7m rounds; 1.8m in 2025",
+   "url": "https://news.liga.net/en/politics/news/ukraine-has-already-received-13-million-shells-from-the-czech-republic-by-the-end-of-2025-their-number-will-reach-18-million",
+   "date": "2025-10-15"
+  },
+  {
+   "name": "LIGA.net interview with CSG: 3.7m rounds worth EUR 4-4.5bn (2024-25)",
+   "url": "https://news.liga.net/en/politics/news/the-arms-giant-disclosed-how-many-shells-ukraine-received-under-the-czech-initiative-and-their-cost",
+   "date": "2025-12-04"
+  },
+  {
+   "name": "Grosswald: initiative donors 18 -> 9; 1.5m (2024), 1.8m (2025), ~1.0m contracted 2026; ~EUR 1bn secured",
+   "url": "https://www.grosswald.org/czech-led-ukraine-ammunition-initiative-donor-base-halves-2026-flow-down-44-percent/",
+   "date": "2026-05-26"
+  },
+  {
+   "name": "Euromaidan Press / Reuters: initiative needs EUR 5bn in 2026, EUR 1.4bn raised",
+   "url": "https://euromaidanpress.com/2026/02/11/czech-ammunition-initiative-for-ukraine-needs-e5-billion-in-2026-only-e1-4-billion-raised-so-far/",
+   "date": "2026-02-11"
+  },
+  {
+   "name": "RFE/RL Schemes, Investigace.cz, FTM: Czech initiative brokers' commissions up to 13% (coordinator: 5-10%); 2024 donations DEU USD 650m, NLD 283m, BEL 227m",
+   "url": "https://www.rferl.org/a/schemes-investigation-czech-ammo-ukraine/33406541.html",
+   "date": "2025-05"
+  },
+  {
+   "name": "Kyiv Post: Greece sells army stock shells to the initiative for ~USD 156m; suppliers in South Korea, Turkey, South Africa",
+   "url": "https://www.kyivpost.com/post/30533",
+   "date": "2024-04"
+  },
+  {
+   "name": "Defence Ukraine reference page: Czech Ammunition Initiative (named sources South Korea, Turkey, South Africa, India)",
+   "url": "https://www.defenceukraine.com/en/references/czech-ammunition-initiative/",
+   "date": "2026"
+  },
+  {
+   "name": "Balkan Insight: Czechia as a leading arms supplier to Ukraine (Czech share of initiative funding ~2%)",
+   "url": "https://balkaninsight.com/2025/08/27/czechia-as-a-leading-arms-supplier-to-ukraine-really-and-for-how-much-longer/rd/",
+   "date": "2025-08-27"
+  },
+  {
+   "name": "Defence24: Polish MFA arms export report 2023 - actual exports EUR 1.753bn, Ukraine EUR 1.419bn (donations excluded)",
+   "url": "https://defence24.com/industry/poland-increases-arms-exports-ukraine-and-whats-next-commentary",
+   "date": "2024-10-01"
+  },
+  {
+   "name": "Novinite (BGNES): Bulgarian Ministry of Economy - defence exports+transfers EUR 1.654bn (2022), 2.168bn (2023), 2.831bn (2024); direct to Ukraine 0 / 12.6m / 156.4m",
+   "url": "https://www.novinite.com/articles/239281/Bulgaria",
+   "date": "2026-06-28"
+  },
+  {
+   "name": "Novinite: How Bulgaria has been arming Ukraine (UNROCA 2022-25, Defense Express USD 2.7bn H1 2022, EUR 2.5bn exports 2025)",
+   "url": "https://www.novinite.com/view_news.php?id=238879",
+   "date": "2026-06-04"
+  },
+  {
+   "name": "Sofia Globe: Bulgarian military exports averaged >EUR 600m a year before 2022",
+   "url": "https://sofiaglobe.com/2022/03/08/upward-curve-for-bulgarias-exports-of-military-products/",
+   "date": "2022-03-08"
+  },
+  {
+   "name": "Defense One: Import records illuminate Ukraine's hunt for third-party arms (July 2023: USD 346m; Bulgaria >90m, Romania 22m, Turkey 22m, Czechia 20m)",
+   "url": "https://www.defenseone.com/business/2023/11/import-records-illuminate-ukraines-desperate-hunt-third-party-arms-and-ammo/391686/",
+   "date": "2023-11-01"
+  },
+  {
+   "name": "Ukrinform citing Financial Times: EUR 800m of Serbian ammunition reached Ukraine via third countries",
+   "url": "https://ukrinform.net/rubric-ato/3877795-ukraine-received-eur-800-million-worth-of-ammunition-from-serbia-through-intermediaries-ft.html",
+   "date": "2024-06-22"
+  },
+  {
+   "name": "The Intercept: Pakistan's secret arms sales for Ukraine (2022-23)",
+   "url": "https://theintercept.com/2023/09/17/pakistan-ukraine-arms-imf/",
+   "date": "2023-09-17"
+  },
+  {
+   "name": "Soch Fact Check: USD 364m of Pakistani 155mm shells sold to the US government via GMP and Northrop Grumman",
+   "url": "https://www.sochfactcheck.com/pakistani-government-officials-falsely-deny-selling-arms-to-ukraine",
+   "date": "2023"
+  },
+  {
+   "name": "Mind.ua citing DongA Ilbo: South Korea lends 500,000 shells to the US",
+   "url": "https://mind.ua/en/news/20256025-south-korea-lent-500000-shells-to-the-united-states-which-will-help-in-supplying-ukraine",
+   "date": "2023"
+  },
+  {
+   "name": "SABC/Reuters: South Korea negotiating sale of artillery shells to the US (100,000 rounds)",
+   "url": "https://www.sabcnews.com/sabcnews/s-korea-says-it-is-negotiating-sale-of-artillery-shells-to-us-after-report-of-weapons-to-ukraine/",
+   "date": "2022-11-11"
+  },
+  {
+   "name": "Ukraine MoD: DPA domestic share 46% -> 82% in 2025, domestic ~UAH 430bn, imports 54% -> 18%",
+   "url": "https://mod.gov.ua/en/news/share-of-ukrainian-manufacturers-in-military-procurement-rises-to-82",
+   "date": "2026-01-23"
+  },
+  {
+   "name": "Kyiv Independent: DPA 2024 budget UAH 306.1bn; domestic share 44.1% -> 71.4%",
+   "url": "https://kyivindependent.com/ukraines-defense-procurement-shifts-to-domestic-suppliers-rising-to-71-from-last-years-44/",
+   "date": "2025-07-28"
+  },
+  {
+   "name": "Euromaidan Press: foreign defence suppliers owe Ukraine USD 10.58bn (prepayments), USD 1.7bn overdue",
+   "url": "https://euromaidanpress.com/2026/09/21/ukraine-says-foreign-defense-suppliers-owe-country-about-10-58-billion-including-1-7-billion-already-paid-for-goods-delivered-late-or-never-at-all/",
+   "date": "2026-09-21"
+  },
+  {
+   "name": "DSCA: Ukraine - Class IX spare parts (USD 185m)",
+   "url": "https://www.dsca.mil/Press-Media/Major-Arms-Sales/Article-Display/Article/4399552/ukraine-class-ix-spare-parts",
+   "date": "2026-02-06"
+  },
+  {
+   "name": "DSCA: Ukraine - Air Delivered Munitions (ERAM, USD 825m, funded by Denmark, Netherlands, Norway and US FMF)",
+   "url": "https://www.dsca.mil/Press-Media/Major-Arms-Sales/Article-Display/Article/4289280/ukraine-air-delivered-munitions",
+   "date": "2025-08"
+  },
+  {
+   "name": "DSCA: Ukraine - Patriot air defense system sustainment",
+   "url": "https://www.dsca.mil/Press-Media/Major-Arms-Sales/Article-Display/Article/4334941/ukraine-patriot-air-defense-system-sustainment",
+   "date": "2025"
+  },
+  {
+   "name": "CSIS (Cancian): Where is the missing $100 billion in US aid for Ukraine (86-90% of military aid spent in the US)",
+   "url": "https://www.csis.org/analysis/where-missing-100-billion-us-aid-ukraine",
+   "date": "2025-02-11"
+  },
+  {
+   "name": "Council of the EU: 26th COARM annual report (2023 data) - per-destination statistics only in the online database; some states report Ukraine later",
+   "url": "https://data.consilium.europa.eu/doc/document/ST-16016-2024-INIT/en/pdf",
+   "date": "2024-12-16"
+  }
+ ],
+ "overlaps": "1) Seller's own aid: excluded. Czech, Slovak, Romanian and Bulgarian in-kind aid (Kiel) is subtracted from their export figures; Polish MFA sales exclude donations. Donated items already earn own-industry flowback in flowback2.json. 2) Donor flowback (flowback2.json own_share): a donor's aid spent with a THIRD country's industry is counted there as 'not own' and credited to nobody; this file credits it to the seller (e.g. German Patriot money to the US, Danish money to Sweden, initiative money to Turkiye). No double count: the donor's own share is unchanged. Do NOT also credit the Kiel rows 'procured in Czechia' (Denmark 1.33, Netherlands 0.41): they are the initiative/Czech purchases already inside CZE and the initiative lines. 3) NATO PURL (US stocks bought by allies) and EU-level military aid (EU_ARMS_SLICE, incl. Kiel rows EU->Sweden 2.5 and EU->EEA/EFTA 1.96 in 2026) are excluded here. UK aid bought from Thales Belfast (Kiel codes it 'France') is UK own industry in flowback2 and excluded here. 4) Trade (sell_ukr, trade_full.json): Comtrade exports to Ukraine include arms where customs record them (Poland HS93 USD 0.85-2.5bn a year, Slovakia, Romania 2024-25, Turkiye). already_in_trade = min(Comtrade HS93+8710, rise of total exports to Ukraine over 2021) is subtracted, so POL, SVK and ROU 2024-25 add almost nothing. Czech, Bulgarian, Serbian, Pakistani, initiative and US non-PURL sales are not in customs exports to Ukraine (Czech HS93 to Ukraine is <USD 15m a year; Bulgarian goods go via third countries). Residual risk: Bulgarian goods re-exported by Polish or Romanian traders may sit in POL/ROU sell_ukr AND in BGR here (estimated 10-30% of BGR). 5) Comtrade arms exports to Ukraine by DONORS (CAN 8710 armoured vehicles, ESP, ITA, NOR, GBR, AUS, HRV HS93) are probably donated aid recorded at the border; if sell_ukr counts them, those donors get flowback twice (own-industry + sell_ukr). Listed in memo.comtrade_arms_exports_to_UKR_eur_bn for the builder to check; not part of this file's totals. 6) US aid: CSIS 86-90% own-industry share already covers US aid spent in the US; the part spent abroad (PAK, KOR, BGR 2022, SRB) is credited here to the seller and is outside the US share, so no double count. 7) Danish model / Build with Ukraine: money spent with Ukrainian industry stays in Ukraine - no flowback abroad, nothing here. 8) Ukraine's own budget purchases: given only as a cross-check envelope (memo), NOT added, because the seller-side lines already contain them.",
+ "notes": [
+  "Gross sales values: the builder should take 20% (0.5-1.5x) of add_to_map_gross as profit flowing back to the seller, like sell_ukr. CZE broker_margin_profit is already profit: add directly.",
+  "Greek stock sale (GRC) is surplus stock: nearly the whole price is income for the Greek state; 20% understates it.",
+  "Initiative origin split (TUR/ZAF/KOR/IND/BIH/PAK/other) is an educated guess (D); no government publishes it. ~EUR 0.2bn of initiative value (central) has unknown origin and is not allocated (memo).",
+  "2026 values are Jan-Aug; Comtrade-based 2026 values (in_trade, POL gross) use 2025 x 8/12 because 2026 customs data by HS chapter are not yet available.",
+  "Not allocated by seller (memo only): US aid spent with foreign suppliers beyond the identified sellers (~EUR 3-5bn) and donor aid bought abroad without a coded location (EUR 3-11bn). If the builder wants them on the map they need a seller key; they would mostly add to USA, DEU, SWE, NOR, FRA, GBR.",
+  "Not included: donors' purchases for their OWN armed forces to replace donated stock (e.g. Polish K2/K9 from Korea, Czech Leopard 2A8): war-induced but not sales for Ukraine.",
+  "Scripts: kiel_sellers.py (Kiel R31 procurement locations), build.py (this file). Downloads: Comtrade JSON, COARM 2022/2023 reports (PDF annexes do not contain the per-destination tables)."
+ ]
+}

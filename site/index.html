@@ -510,7 +510,7 @@ function normalise(c) {
     aid: triple(c.aid, "years"), ref: triple(c.aid, "refugee_years"),
     paid: triple(c.to_rus, "years"), laundered: triple(c.laund || c.to_rus, c.laund ? "years" : "laundered"), soldRus: triple(c.from_rus, "years"),
     buyUkr: triple(c.buy_ukr, "years"), sellUkr: triple(c.sell_ukr, "years"),
-    own: triple(c.flowback, "own"), purl: triple(c.flowback, "purl_in"),
+    own: triple(c.flowback, "own"), purl: triple(c.flowback, "purl_in"), arms: triple(c.flowback, "arms"),
     premium: triple(c.energy, "premium"), discount: triple(c.energy, "discount"),
     tax: triple(c.company, "taxes"), mil: triple(c.military_rus, "years"),
     svcBought: triple(c.svc_bought, "years"), svcSold: triple(c.svc_sold, "years"), ship: triple(c.shipping, "years"), windfall: triple(c.windfall, "years"),
@@ -572,7 +572,11 @@ function calc(c, y) {
   // donated weapons at market value (the value to Ukraine) for the shift; the cost view keeps the recorded values
   const wmv = c.aid?.weapons_mv, wmv3 = [0, 0, 0];
   if (wmv) for (let i = 1; i <= N; i++) { wmv3[0] += wmv.c[i]; wmv3[1] += wmv.l[i]; wmv3[2] += wmv.h[i]; }
-  const ownAid3 = [aid3[0] - eu3[0] + wmv3[0], aid3[1] - eu3[1] + wmv3[1], aid3[2] - eu3[2] + wmv3[2]];
+  // loans at their economic value to Ukraine (the grant element), for the country's own aid and its EU-level share
+  const adj3 = a => { const r = [0, 0, 0]; if (a) for (let i = 1; i <= N; i++) { r[0] += a.c[i]; r[1] += a.l[i]; r[2] += a.h[i]; } return r; };
+  const lOwn = adj3(c.aid?.loan_adj_own), lEu = adj3(c.aid?.loan_adj_eu);
+  for (let j = 0; j < 3; j++) eu3[j] += lEu[j];
+  const ownAid3 = [aid3[0] - (eu3[0] - lEu[0]) + wmv3[0] + lOwn[0], aid3[1] - (eu3[1] - lEu[1]) + wmv3[1] + lOwn[1], aid3[2] - (eu3[2] - lEu[2]) + wmv3[2] + lOwn[2]];
   const aidAll = T.aid.c.reduce((a, b) => a + b, 0) || 1;
   const loanShare = c.aid && c.aid.loans_face ? Math.min(1, aid3[0] / aidAll) : 0;
   const loansFace = (c.aid?.loans_face || 0) * loanShare;
@@ -627,6 +631,7 @@ function calc(c, y) {
     part("own", "Own aid spent with its own defence industry", sum3(T.own), c.flowback?.cert_own || "C", src("flowback")),
     part("purl", "Other countries' aid spent here", sum3(T.purl), "B", c.flowback?.purl_src || src("flowback")),
     part("sell", "Extra sales to Ukraine above the pre-war level", sell3, cTrade, src("sell_ukr")),
+    part("arms", "Arms Ukraine bought here", sum3(T.arms), c.flowback?.arms_cert || "C", c.flowback?.arms_src || []),
   ];
   const costParts = [
     part("aidge", "Aid given (loans at grant equivalent)", [aid3[0] - loansFace + loansGE, aid3[1] - loansFace + loansGE * 0.5, aid3[2] - loansFace + loansGE * 1.5], loansFace ? weakest([cAid, "C"]) : cAid, src("aid")),
@@ -1114,7 +1119,7 @@ function waterfall(parts, total, totalLabel, totalLo, totalHi) {
   const whisker = (l, h) => l == null ? "" : `<div class="whisker" style="left:${x(Math.min(l, h))}%;width:${Math.max(0.8, Math.abs(x(h) - x(l)))}%"></div>`;
   const upto = Math.max(2022, state.year);
   return `<div class="wf"><div class="key">${t("Totals for 2022–{y}{ytd}, all years added up. Bar: each part; line with end marks: its likely range.", { y: upto, ytd: upto === 2026 && FRAC[5] < 1 ? t(" (2026 year to date, Jan–Aug)") : "" })}</div>${parts.map(s => `<div class="wf-row"><span>${s.label}${chip(s.cert)}${ref(s.src)}</span><span class="val">${eur(s.v, true)}${s.lo != null ? rng(s.lo, s.hi) : ""}</span>
-      <div class="track">${axis}${bar(0, s.v, ["own", "purl", "sell"].includes(s.k) ? "var(--back)" : s.v >= 0 ? "var(--ukr)" : "var(--rus)", s.cert === "C" || s.cert === "D" ? 0.6 : 1)}${whisker(s.lo, s.hi)}</div></div>`).join("")}
+      <div class="track">${axis}${bar(0, s.v, ["own", "purl", "sell", "arms"].includes(s.k) ? "var(--back)" : s.v >= 0 ? "var(--ukr)" : "var(--rus)", s.cert === "C" || s.cert === "D" ? 0.6 : 1)}${whisker(s.lo, s.hi)}</div></div>`).join("")}
     <div class="wf-row total"><span>${totalLabel}</span><span class="val">${eur(total, true)}${totalLo != null ? `<small>${rangeTxt(totalLo, totalHi)}</small>` : ""}</span>
       <div class="track">${axis}${bar(0, total, total >= 0 ? "var(--ukr)" : "var(--rus)")}${whisker(totalLo, totalHi)}</div></div></div>`;
 }

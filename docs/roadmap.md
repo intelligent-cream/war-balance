@@ -7,25 +7,25 @@ changes. Status is updated as items are done; the [changelog](changelog.md) reco
 
 | # | item | what changes | status |
 |---|---|---|---|
-| 1 | Ukraine's own arms purchases abroad (also with donor cash, e.g. Dutch money for US weapons, the Czech ammunition initiative) | the seller's profit counts as money flowing back | researching |
-| 2 | Turkey's prices from Russian export data and tanker tracking | Turkey's payments to Russia and windfall | researching |
+| 1 | Ukraine's own arms purchases abroad (also with donor cash, e.g. Dutch money for US weapons, the Czech ammunition initiative) | the seller's profit counts as money flowing back | done ([aid-refugees-military.md](method/aid-refugees-military.md#arms-ukraine-bought-abroad-round-5)) |
+| 2 | Turkey's prices from Russian export data and tanker tracking | Turkey's payments to Russia and windfall | done ([energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#turkey-a-special-case)) |
 | 3 | Belarus's re-exports to Russia moved to the countries that made the goods | Belarus, China, Türkiye, EU | researching |
 | 4 | A Belarus-specific counterfactual tested on its own 2008–2021 history | Belarus's range | researching |
 | 5 | Laundered oil per EU country from per-country studies | EU members, fuel hubs | done: customs-based per member ([energy-and-laundered-oil.md](method/energy-and-laundered-oil.md#per-country-values-for-the-eu-usa-uk-and-australia-round-5)) |
 | 6 | Shadow-fleet ownership and control | shipping profit by country | done: freight by real controller ([services-shipping-companies.md](method/services-shipping-companies.md#shipping)) |
 | 7 | Refugee costs for more hosts; Poland's 2022 count | refugee hosts | done: Poland, Bulgaria, Croatia revised ([aid-refugees-military.md](method/aid-refugees-military.md#refugees)) |
-| 8 | Newer 2026 trade data | fewer `*` estimates | researching |
+| 8 | Newer 2026 trade data | fewer `*` estimates | done: 32 economies ([trade.md](method/trade.md#2026-refresh-round-5)) |
 | 17 | Russian arms sales to other countries, against pre-war | new part: money to Russia | researching |
 | 18 | Exit payments and forced discounts of companies leaving Russia | new part: money to Russia, by home country | done; seizures recorded, not counted ([russia-state-and-companies.md](method/russia-state-and-companies.md#companies-leaving-russia)) |
 | 19 | Rosatom nuclear projects abroad: check whether payments are in trade or services; add if not | money to Russia | done: fuel already in trade; construction added ([russia-state-and-companies.md](method/russia-state-and-companies.md)) |
-| 20 | Loans at their economic value: only the saving against what Ukraine would otherwise pay to borrow counts | aid from lenders | researching |
+| 20 | Loans at their economic value: only the saving against what Ukraine would otherwise pay to borrow counts | aid from lenders | done ([aid-refugees-military.md](method/aid-refugees-military.md#loans-at-their-economic-value-round-5)) |
 | 21 | Refugees at net cost: hosting cost minus taxes and contributions of working refugees | refugee hosts | done, floored at zero per country ([aid-refugees-military.md](method/aid-refugees-military.md#refugees)) |
-| 22 | Latest Kiel tracker release for 2026 aid | 2026 aid | researching |
+| 22 | Latest Kiel tracker release for 2026 aid | 2026 aid | checked: release 31 is the latest and already used; ERA years fixed |
 | 23 | Donated weapons at market value (value to Ukraine), not replacement or book value | military aid | done ([aid-refugees-military.md](method/aid-refugees-military.md#donated-weapons-at-market-value-round-5)) |
 | 24 | Profits Russian-owned companies abroad send home (and trusteeships that stopped them) | money to Russia, by host country | done ([russia-state-and-companies.md](method/russia-state-and-companies.md#russian-owned-companies-abroad)) |
-| 25 | World Bank, IMF, EBRD and EIB support credited to members by shareholding, valued as in 20 | aid | researching |
+| 25 | World Bank, IMF, EBRD and EIB support credited to members by shareholding, valued as in 20 | aid | done ([aid-refugees-military.md](method/aid-refugees-military.md#loans-at-their-economic-value-round-5)) |
 | 26 | Interest and repayments on Russia's state loans to other countries | money to Russia | done ([russia-state-and-companies.md](method/russia-state-and-companies.md)) |
-| 27 | Pledged versus delivered aid: count delivered or firmly allocated aid only | aid | researching |
+| 27 | Pledged versus delivered aid: count delivered or firmly allocated aid only | aid | checked: the map counts allocations; guarantees now at economic value |
 
 ## Code
 
