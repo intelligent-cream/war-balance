@@ -20,11 +20,13 @@ The map is a research preview. Its figures were compiled with AI assistance from
 | **Military support to Russia** is a rough indication (D) everywhere. | North Korea, Iran, Belarus, China | [aid-refugees-military.md](method/aid-refugees-military.md#military-support-to-russia) |
 | **Crypto and payment agents** are not counted: no source splits them by country. | Russia side, unknown size | [trade.md](method/trade.md#gold-and-hidden-channels) |
 | **Totals treat parts as independent**, which understates shared errors. | all ranges | [ranges.md](method/ranges.md#what-the-ranges-do-not-cover) |
+| **Aid that comes back through Ukraine's own arms purchases is not counted as flowback.** Flowback covers donors' own-industry orders, NATO PURL (US stocks) and EU-level aid spent with EU industry. It misses money Ukraine itself spends abroad on weapons: budget support or another donor's cash that ends up buying US, Czech, Turkish, Polish or South Korean arms (for example Dutch money used to buy US weapons, or the Czech ammunition initiative). The selling country's industry profits without it showing. | arms exporters (US, Czechia, Türkiye, Poland, South Korea) slightly too far toward Ukraine | [aid-refugees-military.md](method/aid-refugees-military.md#flowback) |
 | **The AI-guessed incentive view** is not data. | that view only | [incentives.md](method/incentives.md) |
 
 ## Display issues
 
 - **`data.json` is about 1.4 MB**, all loaded at start; on slow phone connections the map takes a while to appear. Splitting per country is a possible fix.
+- **Range lines look wrong on phones.** In the country panel's breakdown, each part's likely range (the thin line) is drawn much shorter than the numbers next to it, and sits apart from its bar. Example: United States, "Less tax paid in Russia by companies", range −€1.5bn to €8.6bn, drawn as a short stub. The scale or position of these lines on narrow screens needs fixing.
 - **Small chart label overlaps**: in some waterfalls and rankings long part or country names can touch on narrow screens.
 - Text from `data.json` (status banner, source names, notes) stays in English in all seven languages ([`site/i18n.js`](../site/i18n.js)).
 
