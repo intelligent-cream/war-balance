@@ -30,12 +30,12 @@ The parts below are what the country panel's waterfall shows (`shiftParts` and `
 | Less (or more) paid to Russia | expected minus actual goods imports from Russia, at pre-war prices | either | [trade.md](trade.md), [energy-and-laundered-oil.md](energy-and-laundered-oil.md) |
 | Extra paid because of war-time prices (windfall) | payments for Russian fuel minus the same volume at pre-war prices | Russia | [prices.md](prices.md#war-time-windfall) |
 | Russian oil bought via other countries (laundered oil) | Russian crude inside fuel refined elsewhere, above its pre-war level | Russia | [energy-and-laundered-oil.md](energy-and-laundered-oil.md#laundered-oil) |
-| Profit lost on sales to Russia given up / profit on extra sales | expected minus actual exports to Russia, × 20% margin | either | [trade.md](trade.md#profit-not-revenue) |
+| Income lost on sales to Russia given up / income from extra sales | expected minus actual exports to Russia, × value kept × genuinely extra (the money rule) | either | [trade.md](trade.md#profit-not-revenue) |
 | Less (or more) tax paid in Russia by companies | profit tax + half of other taxes, against 2018–2021 | either | [services-shipping-companies.md](services-shipping-companies.md#company-taxes) |
 | Weapons and troops sent to Russia | North Korea, Iran, Belarus, China's unrecorded part | Russia | [aid-refugees-military.md](aid-refugees-military.md#military-support-to-russia) |
 | Less (or more) paid to Russia for services | expected minus actual services imports | either | [services-shipping-companies.md](services-shipping-companies.md#services) |
-| Profit lost on services to Russia given up (e.g. tourism) | expected minus actual services exports, × 20% | either | [services-shipping-companies.md](services-shipping-companies.md#services) |
-| Profit from shipping and insuring Russian oil | profit share of freight, insurance and ship sales, against 2019–2021 | either | [services-shipping-companies.md](services-shipping-companies.md#shipping) |
+| Income lost on services to Russia given up (e.g. tourism) | expected minus actual services exports, × the money rule | either | [services-shipping-companies.md](services-shipping-companies.md#services) |
+| Income from shipping and insuring Russian oil | freight, insurance and ship sales against 2019–2021, × the money rule | either | [services-shipping-companies.md](services-shipping-companies.md#shipping) |
 | Gold and hidden payments to Russia | gold and channels missing from customs data | Russia | [trade.md](trade.md#gold-and-hidden-channels) |
 | Undisclosed military aid | beyond what Kiel records | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#undisclosed-aid-and-private-donations) |
 | Private donations | national donation totals, GDP model elsewhere | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#undisclosed-aid-and-private-donations) |
@@ -44,7 +44,7 @@ The parts below are what the country panel's waterfall shows (`shiftParts` and `
 | Paid to Russia by companies leaving it | exit contribution and forced discount, by home country | Russia | [russia-state-and-companies.md](russia-state-and-companies.md#companies-leaving-russia) |
 | Profits sent to Russia by Russian-owned companies here | against 2019–2021; trusteeships count the other way | either | [russia-state-and-companies.md](russia-state-and-companies.md#russian-owned-companies-abroad) |
 | Share of new IMF, World Bank and EBRD lending | rise over pre-war own-risk lending, at economic value, by shareholding | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#loans-at-their-economic-value-round-5) |
-| Flowing back (optional, on by default) | own aid spent with own industry, others' aid spent here, extra sales to Ukraine, arms Ukraine bought here, each × 20% profit | subtracted | [aid-refugees-military.md](aid-refugees-military.md#flowback) |
+| Flowing back (optional, on by default) | every euro for Ukraine followed to the economy where it was spent (own and others' aid incl. stock replacement, arms Ukraine bought, energy, relief and rebuilding) and extra sales to Ukraine, × the money rule | subtracted from the balance with Ukraine | [aid-refugees-military.md](aid-refugees-military.md#flowback) |
 
 Not a part of its own, but built into the parts above:
 
@@ -102,17 +102,17 @@ that is blue overall but earns more than it gives on the Ukraine side gets a thi
 
 ## A worked reading
 
-Germany, 2022–August 2026: about +4.8% of a year's GDP toward Ukraine (likely range 3.1% to 7.3%, EUR 207bn on a 2024 GDP of EUR 4,329bn). In EUR bn, the largest parts are:
+Germany, 2022–August 2026: about +4.2% of a year's GDP toward Ukraine (likely range 2.6% to 7.2%, EUR 183bn on a 2024 GDP of EUR 4,329bn). Its balance with Ukraine is +68bn (gave 77.5, earned back 9.9) and its balance with Russia +116bn. In EUR bn, the largest parts are:
 
 | part | middle (range) |
 |---|---|
-| Less paid to Russia (volume at pre-war prices, against 2021 held flat) | +110.7 (42.9 to 213.5) |
-| Hosting refugees | +46.7 (35.9 to 54.4) |
-| Aid to Ukraine (bilateral, Kiel) | +30.8 (26.2 to 35.5) |
-| Share of EU-level aid | +18.7 (15.9 to 21.5) |
-| Profit lost on sales to Russia given up (20% of the fall) | +17.7 (3.6 to 44.9) |
+| Less paid to Russia (volume at pre-war prices, against the expected level) | +111.1 (47.0 to 227.5) |
+| Aid to Ukraine (bilateral, Kiel) | +30.2 (28.6 to 32.5) |
+| Hosting refugees (net cost) | +29.5 (11.7 to 42.6) |
+| Income lost on sales to Russia given up (money rule) | +21.7 (5.8 to 54.6) |
+| Share of EU-level aid | +14.4 (10.1 to 16.5) |
 | Extra paid to Russia because of war-time prices (mostly 2022 gas) | −29.2 (−33.6 to −25.9) |
-| Own aid spent with its own defence industry (flowback, 20%) | −2.4 (−4.3 to −1.0) |
+| Own aid spent in its own economy, incl. replacing donated stock (money rule) | −5.6 (−10.8 to −2.5) |
 
 The wide range comes almost entirely from "less paid to Russia": the expected no-war level of Germany's purchases is uncertain (see [counterfactual.md](counterfactual.md)), and the total takes the weakest certainty letter of its parts (D). The "How it works" view on the map ([`views2.js`](../../site/views2.js)) builds this waterfall live for Germany, Poland, the US, Hungary, India and China.
 

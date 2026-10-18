@@ -110,7 +110,7 @@ Part of military aid comes back to the donor as orders for its own industry. Cou
 - **Other countries' aid spent here**: NATO PURL purchases from US stocks (US receives EUR 3.7bn in 2025 and more in 2026), and EU-level military aid credited to member arms industries by SIPRI production share (`EU_ARMS_SLICE`: France 39%, Germany 24%, Italy 19%, Sweden 6%, Czechia 4%, Spain 3.5%, Poland 3%), × 70–88% spent with EU/EEA industry.
 - **Extra sales to Ukraine** above the expected level ([trade.md](trade.md)).
 
-All three count only as **profit** (20%, range 0.5–1.5×), the same share as profit lost on sales to Russia: the goods still cost money to make. They are subtracted from both the net shift and the cost. The "money flowing back" switch on the map (on by default, `state.netBack`) turns them off. Check 6 compares PURL paid with PURL received by the US.
+Until round 5 all three counted only as **profit** (20%, range 0.5–1.5×), the same share as profit lost on sales to Russia. Since round 6 they come from the all-money ledger below and count at value kept × genuinely extra ([the money rule](overview.md#the-money-rule-round-6)). They are subtracted from both the net shift and the cost. The "money flowing back" switch on the map (on by default, `state.netBack`) turns them off. Check 6 compares PURL paid with PURL received by the US.
 
 ### Arms Ukraine bought abroad (round 5)
 
