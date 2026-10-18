@@ -434,7 +434,7 @@ body[data-panel="open"] .view-inner { margin-right: 420px; margin-left: 0; }
         <button class="btn play" id="play" aria-label="Play 2021 to 2026">▶</button>
         <label for="year" data-i18n="Up to">Up to</label>
         <input id="year" type="range" min="2021" max="2026" step="1" value="2026">
-        <output id="year-out" for="year" title="2026 runs January to August; where a source has not published 2026 yet, the 2025 rate is used" data-i18n-title="2026 runs January to August; where a source has not published 2026 yet, the 2025 rate is used">2026 (to Aug)</output>
+        <output id="year-out" for="year" title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *)." data-i18n-title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).">2026 YTD</output>
       </div>
       <label class="toggle" for="show-flows"><input id="show-flows" type="checkbox" checked> <span data-i18n="Flows">Flows</span></label>
       <label class="toggle" for="net-back"><input id="net-back" type="checkbox" checked> <span data-i18n="Subtract money flowing back">Subtract money flowing back</span></label>
@@ -586,7 +586,10 @@ function calc(c, y) {
     let [v, lo, hi] = r;
     lo = Math.min(lo, v); hi = Math.max(hi, v);
     if (Math.abs(hi - lo) < 1e-9) { lo = v - Math.abs(v) * RANGE[cert]; hi = v + Math.abs(v) * RANGE[cert]; }
-    return { k, label: t(label), en: label, v, lo, hi, cert, src: srcs };
+    // a * marks parts whose 2026 (January to August) is estimated from the 2025 monthly rate
+    const est = { tax: "company", sold: "from_rus" }[k];
+    const star = est && c[est]?.est26 ? " *" : "";
+    return { k, label: t(label) + star, en: label + star, v, lo, hi, cert, src: srcs };
   };
   const lessPaid3 = delta3(T.paid);
   const shiftParts = [
@@ -1089,7 +1092,7 @@ function waterfall(parts, total, totalLabel, totalLo, totalHi) {
   const rng = (a, b) => `<small>${rangeTxt(a, b)}</small>`;
   const whisker = (s) => s.lo == null ? "" : `<div class="whisker" style="left:${x(s.from + s.lo)}%;width:${Math.max(0.3, x(s.from + s.hi) - x(s.from + s.lo))}%"></div>`;
   const upto = Math.max(2022, state.year);
-  return `<div class="wf"><div class="key">${t("Totals for 2022–{y}{ytd}, all years added up. Bar: each part, building up to the net total; thin line: its likely range.", { y: upto, ytd: upto === 2026 && FRAC[5] < 1 ? t(" (2026 to August)") : "" })}</div>${steps.map(s => `<div class="wf-row"><span>${s.label}${chip(s.cert)}${ref(s.src)}</span><span class="val">${eur(s.v, true)}${s.lo != null ? rng(s.lo, s.hi) : ""}</span>
+  return `<div class="wf"><div class="key">${t("Totals for 2022–{y}{ytd}, all years added up. Bar: each part, building up to the net total; thin line: its likely range.", { y: upto, ytd: upto === 2026 && FRAC[5] < 1 ? t(" (2026 year to date, Jan–Aug)") : "" })}</div>${steps.map(s => `<div class="wf-row"><span>${s.label}${chip(s.cert)}${ref(s.src)}</span><span class="val">${eur(s.v, true)}${s.lo != null ? rng(s.lo, s.hi) : ""}</span>
       <div class="track">${axis}${bar(s.from, s.to, ["own", "purl", "sell"].includes(s.k) ? "var(--back)" : s.v >= 0 ? "var(--ukr)" : "var(--rus)", s.cert === "C" || s.cert === "D" ? 0.6 : 1)}${whisker(s)}</div></div>`).join("")}
     <div class="wf-row total"><span>${totalLabel}</span><span class="val">${eur(total, true)}${totalLo != null ? `<small>${rangeTxt(totalLo, totalHi)}</small>` : ""}</span>
       <div class="track">${axis}${bar(0, total, total >= 0 ? "var(--ukr)" : "var(--rus)")}</div></div></div>`;
@@ -1123,7 +1126,7 @@ function miniChart(tr, colour, title, srcIds) {
       <path d="${expLine}" fill="none" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
       <text x="${pad.l - 6}" y="${by + 3}" text-anchor="end">${t("pre-war")}</text>
       <path d="${line}" fill="none" stroke="var(--${colour === "sold" ? "rus" : colour})" stroke-width="2"/>
-      ${pts.map((p, i) => i === 5 ? `<circle cx="${p[0]}" cy="${p[1]}" r="2.8" fill="var(--surface)" stroke="var(--${colour === "sold" ? "rus" : colour})" stroke-width="1.5"><title>${t("2026: January to August as a yearly rate, partly projected from 2025")}</title></circle>` : `<circle cx="${p[0]}" cy="${p[1]}" r="2.6" fill="var(--${colour === "sold" ? "rus" : colour})"/>`).join("")}
+      ${pts.map((p, i) => i === 5 ? `<circle cx="${p[0]}" cy="${p[1]}" r="2.8" fill="var(--surface)" stroke="var(--${colour === "sold" ? "rus" : colour})" stroke-width="1.5"><title>${t("2026 year to date (January to August), shown as a yearly rate; parts marked * are estimated from the 2025 monthly rate")}</title></circle>` : `<circle cx="${p[0]}" cy="${p[1]}" r="2.6" fill="var(--${colour === "sold" ? "rus" : colour})"/>`).join("")}
       ${YEARS.map(yr => `<text x="${x(yr)}" y="${h - 3}" text-anchor="middle">${yr}</text>`).join("")}
     </svg></div>`;
 }
@@ -1143,7 +1146,7 @@ Object.entries({
 function countryPanel(c) {
   if (!c) return head(t("Unknown")) + `<div class="panel-body"><p class="empty">${t("No data for this country yet.")}</p></div>`;
   const y = Math.max(2022, state.year), k = calc(c, y);
-  const pos = k.shift >= 0, ytd = y === 2026 && FRAC[5] < 1 ? t(" (2026 to date)") : "";
+  const pos = k.shift >= 0, ytd = y === 2026 && FRAC[5] < 1 ? t(" (2026 year to date, Jan–Aug)") : "";
   const meta = `${c.iso3} · ${c.pop ? t("{n} m people", { n: num(c.pop, c.pop >= 10 ? 0 : 1) }) : t("population n/a")} · ${c.gdp ? t("GDP {eur}", { eur: money(num(c.gdp), "bn") }) : t("GDP n/a")}`;
   const others = Object.values(DATA).filter(o => o !== c).sort((a, b) => a.name.localeCompare(b.name, LANG));
   const tools = `<div class="panel-tools"><button class="btn" id="share-btn" aria-label="${t("Share {name}'s numbers", { name: c.name })}">${t("Share")}</button><select id="compare-select" aria-label="${t("Compare with another country")}"><option value="">${t("Compare with…")}</option>${REGIONS.map(([r, label]) => `<optgroup label="${t(label)}">${others.filter(o => (REGION_OF[o.iso3] || "asia") === r).map(o => `<option value="${o.n}">${o.name}</option>`).join("")}</optgroup>`).join("")}</select></div>`;
@@ -1391,8 +1394,8 @@ const LENS_RANK = { change: "shift", cost: "cost", ukr: "shift", rus: "rus" };
 document.querySelectorAll("[data-lens]").forEach(b => (b.onclick = () => { state.lens = b.dataset.lens; state.rankMetric = LENS_RANK[state.lens]; setPressed("[data-lens]", "lens", state.lens); if (!playTimer) playBtn.setAttribute("aria-label", playLabel()); paint(); }));
 document.querySelectorAll("[data-measure]").forEach(b => (b.onclick = () => { state.measure = b.dataset.measure; setPressed("[data-measure]", "measure", state.measure); paint(); }));
 const yearInput = document.getElementById("year");
-const yearText = y => (y === 2026 && FRAC[5] < 1 ? t("2026 (to Aug)") : String(y));
-// the slider reads out the period, not just the number: "2021 (before the war)", "2026 (to Aug)"
+const yearText = y => (y === 2026 && FRAC[5] < 1 ? t("2026 YTD") : String(y));
+// the slider reads out the period, not just the number: "2021 (before the war)", "2026 YTD"
 function showYear(y) {
   document.getElementById("year-out").textContent = yearText(y);
   yearInput.setAttribute("aria-valuetext", y === 2021 ? t("2021 (before the war)") : yearText(y));

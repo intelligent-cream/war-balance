@@ -557,7 +557,7 @@ def build() -> dict:
         c["company"] = {
             "taxes": series["years"], "taxes_lo": series["years_lo"], "taxes_hi": series["years_hi"],
             "staying": counts.get(iso3, {}).get("companies_staying"), "left": counts.get(iso3, {}).get("companies_left"),
-            "cert": d.get("certainty") or "C", "src": [kse],
+            "cert": d.get("certainty") or "C", "src": [kse], "est26": True,
         }  # fmt: skip
         note(
             iso3,
@@ -1593,6 +1593,7 @@ def apply_residual(countries: dict[str, dict], src: Sources, note) -> None:
             f[k] = [round(a + b, 5) for a, b in zip(f[k], add[k])]
         f["cert"] = weakest([f.get("cert"), "C"])
         f["src"] = f["src"] + [rid]
+        f["est26"] = True  # the gap for 2026 is estimated from 2025
         note(
             iso3, "Sold to Russia", "est", "partner data plus an estimate of goods reaching Russia via third countries"
         )
