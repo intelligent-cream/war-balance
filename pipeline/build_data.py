@@ -827,6 +827,7 @@ def build() -> dict:
     price_indices(countries)
     apply_narrow(countries, src)
     apply_audit2(countries, src, "values")
+    war_windfall(countries, src)
     pre_war_trends(countries, src)
     apply_audit2(countries, src, "trends")
     for c in countries.values():
@@ -956,6 +957,43 @@ def price_indices(countries: dict[str, dict]) -> None:
                     fs = m.get("fossil_share") or 0
                     series = [fs * f + (1 - fs) * g for f, g in zip(fuel, idx("non_fuel_goods", band))]
                 obj["pidx" + suffix] = [round(v, 4) for v in series]
+
+
+def war_windfall(countries: dict[str, dict], src: Sources) -> None:
+    """Extra money Russia earned because fuel prices were higher during the war: what a country paid for Russian fuel
+    minus what the same fuel would have cost at 2019-2021 prices. It counts toward Russia, on top of any change in
+    volume. Non-fuel goods are left out (their price rise is mostly general inflation)."""
+    wid = src.add(
+        "windfall",
+        "War-time price windfall on Russian fuel: payments minus the same volume at 2019-2021 prices",
+        None,
+        "2026-10-18",
+        "fuel share and price level per country from its pre-war import mix and fuel price indices (energy2.json, gas_prices.json)",
+    )
+    for iso3, c in countries.items():
+        tr = c.get("to_rus")
+        if not tr:
+            continue
+        fs = import_mix(iso3).get("fossil_share") or 0
+        if not fs:
+            continue
+        out = {}
+        # the low end takes the low fuel price level (less windfall), the high end the high one
+        for k, band in (("years", "central"), ("years_lo", "low"), ("years_hi", "high")):
+            fuel, nf = fuel_index(iso3, band), idx("non_fuel_goods", band)
+            vals = []
+            for i, y in enumerate(YEARS):
+                if y < 2022 or fuel[i] <= 0:
+                    vals.append(0.0)
+                    continue
+                # fuel's share of the year's payments, at that year's prices
+                fsy = fs * fuel[i] / (fs * fuel[i] + (1 - fs) * nf[i])
+                vals.append(round(tr["years"][i] * fsy * (1 - 1 / fuel[i]), 5))
+            out[k] = vals
+        # the fuel share moves with the price level too, so the three values are put back in order each year
+        trip = [sorted((a, b, h)) for a, b, h in zip(out["years_lo"], out["years"], out["years_hi"])]
+        out = {"years_lo": [t[0] for t in trip], "years": [t[1] for t in trip], "years_hi": [t[2] for t in trip]}
+        c["windfall"] = {**out, "cert": "C", "src": [wid]}
 
 
 def pre_war_trends(countries: dict[str, dict], src: Sources) -> None:

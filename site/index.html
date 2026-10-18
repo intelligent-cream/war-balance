@@ -511,7 +511,7 @@ function normalise(c) {
     own: triple(c.flowback, "own"), purl: triple(c.flowback, "purl_in"),
     premium: triple(c.energy, "premium"), discount: triple(c.energy, "discount"),
     tax: triple(c.company, "taxes"), mil: triple(c.military_rus, "years"),
-    svcBought: triple(c.svc_bought, "years"), svcSold: triple(c.svc_sold, "years"), ship: triple(c.shipping, "years"),
+    svcBought: triple(c.svc_bought, "years"), svcSold: triple(c.svc_sold, "years"), ship: triple(c.shipping, "years"), windfall: triple(c.windfall, "years"),
     hidden: triple(c.hidden, "years"), undisc: triple(c.undisclosed, "years"), priv: triple(c.private, "years"),
   };
   c.aidY = c.T.aid.c; c.refY = c.T.ref.c; c.paidY = c.T.paid.c; c.launderedY = c.T.laundered.c; c.soldRusY = c.T.soldRus.c;
@@ -598,6 +598,7 @@ function calc(c, y) {
     part("ref", "Hosting refugees", ref3, c.aid?.refugee_cert || "B", c.aid?.refugee_src || []),
     part("buy", "Extra purchases from Ukraine", above3(T.buyUkr), cTrade, src("buy_ukr")),
     part("paid", lessPaid3[0] >= 0 ? "Less paid to Russia" : "More paid to Russia", lessPaid3, cRus, src("to_rus")),
+    part("windfall", "Extra paid to Russia because of war-time prices", neg(sum3(T.windfall)), c.windfall?.cert || "C", src("windfall")),
     part("laund", "Russian oil bought via other countries", neg(sum3(T.laundered)), "C", c.to_rus?.laundered_src || []),
     part("sold", lessSold3[0] >= 0 ? "Profit lost on sales to Russia given up" : "Profit on extra sales to Russia", profit3(lessSold3), weakest([c.from_rus?.cert, "B"]), src("from_rus")),
     part("tax", lessTax3[0] >= 0 ? "Less tax paid in Russia by companies" : "More tax paid in Russia by companies", lessTax3, c.company?.cert || "B", src("company")),
