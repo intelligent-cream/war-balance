@@ -1,5 +1,7 @@
 # Concept
 
+> **Historical design note.** This page describes an early plan; the map was built differently (a single Python build script and static JSON, no warehouse or estimate cards). For the current method and data see the [documentation index](../README.md).
+
 Status: **design only**, nothing is implemented yet.
 
 Goal: per country, see how much money flows **to Ukraine** (aid, loans, weapons)
@@ -366,15 +368,15 @@ The data is shown openly, including estimates and company names. To make that de
 
 ## 6. How it is built
 
-See [02-architecture.md](02-architecture.md) for the code layout, [03-data-model.md](03-data-model.md) for the tables,
-[04-data-ingestion.md](04-data-ingestion.md) for every data source, [05-research-process.md](05-research-process.md)
-for the estimates, and [06-website.md](06-website.md) for the map.
+See [architecture.md](architecture.md) for the code layout, [data-model.md](data-model.md) for the tables,
+[data-ingestion.md](data-ingestion.md) for every data source, [research-process.md](research-process.md)
+for the estimates, and [website.md](website.md) for the map.
 
 ---
 
 ## 7. Build order (summary)
 
-The detailed plan is in [07-roadmap.md](07-roadmap.md).
+The detailed plan is in [roadmap.md](roadmap.md).
 
 1. Ledger object and SQLite store, plus the Kiel importer → "money to Ukraine per country".
 2. CREA importer → "money to Russia for fossil fuels per country" and the first **balance ratio**.

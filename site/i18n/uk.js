@@ -331,4 +331,5 @@ I18N.uk = {
   "Middle East & Africa": "Близький Схід і Африка",
   "Of the move away from Russian trade: {m} required by sanctions, {g} gas (mostly cut by Russia or ended with Ukrainian transit), {o} own choice.": "Відхід від торгівлі з Росією: {m} вимагали санкції, {g} — газ (здебільшого перекритий Росією або припинений разом з українським транзитом), {o} — власний вибір.",
   "Of the move away from Russian trade: {m} required by sanctions, {o} own choice.": "Відхід від торгівлі з Росією: {m} вимагали санкції, {o} — власний вибір.",
+  "Full documentation: the models, every part of the calculation, the sources and the known limits": "Повна документація: моделі, кожна частина розрахунку, джерела та відомі обмеження",
 };

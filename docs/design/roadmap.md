@@ -1,5 +1,7 @@
 # Roadmap
 
+> **Historical design note.** This page describes an early plan; the map was built differently (a single Python build script and static JSON, no warehouse or estimate cards). For the current method and data see the [documentation index](../README.md).
+
 Each phase ends with something visible on the map.
 
 | phase | build | map shows | done when |

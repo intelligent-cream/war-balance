@@ -45,6 +45,7 @@ function howHtml() {
       <li>${t("It does not judge whether trade is legal; buying Russian oil within sanctions still sends money to Russia.")}</li>
       <li>${t("It has not yet been reviewed line by line by a person. Every figure links to its sources; corrections are welcome.")}</li>
     </ul>
+    <p class="note-small"><a href="https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/README.md" target="_blank" rel="noopener">${t("Full documentation: the models, every part of the calculation, the sources and the known limits")}</a></p>
   </div>`;
 }
 function renderHow(root) {

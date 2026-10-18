@@ -1266,11 +1266,10 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
             obj["bmul"] = [1.0] + [round(m["central"] * f, 4) for m, f in zip(ms, scale)]
             obj["bmul_lo"] = [1.0] + [round(min(m["low"], m["central"]) * f, 4) for m, f in zip(ms, scale)]
             obj["bmul_hi"] = [1.0] + [round(max(m["high"], m["central"]) * f, 4) for m, f in zip(ms, scale)]
-            obj["cf"] = cf["chosen"].get(key, {}).get("model", "rw") if iso3 not in HUBS_CF else "rw"
+            meth = d.get("method", "")
+            obj["cf"] = "lin" if meth.startswith("linear") else "rf" if meth.startswith("random-forest") else "rw"
             obj["src"] = [x for x in obj.get("src", []) if x not in ("trend", "trend2")] + [sid]
 
-
-HUBS_CF = {"ARM", "GEO", "KAZ", "KGZ", "UZB", "TUR", "AZE", "MNG", "TJK", "SRB", "ARE", "BLR"}
 
 LAUNDERED_PREWAR = json.loads(
     (Path(__file__).resolve().parent.parent / "research/2026-10/gaps/round4a.json").read_text()

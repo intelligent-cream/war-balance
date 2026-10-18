@@ -14,12 +14,23 @@ Status: **research preview**. All figures come from public sources or are estima
 
 ## Method in short
 
-- **Pre-war level**: the 2019-2021 average. Changes compare volumes at pre-war prices, so a price spike does not count as a shift.
+- **Expected without the war**: trade and services start from 2021 at pre-war prices (company taxes from the 2018-2021 average). Exports to Russia and trade with Ukraine then follow each country's other trade and GDP, the rest stays at the 2021 level: the models that predicted past years best in back-tests from 2008, 2013 and 2016. Changes compare volumes at pre-war prices; the extra Russia earned from war-time fuel prices counts as a separate part.
 - **Counted where used**: transit gas for the country that burns it, fuel resold by trading hubs for the hub's customers, goods re-exported to Russia by hubs (UAE, Armenia, Kazakhstan, Turkey, Kyrgyzstan and others) for the countries that made them, Hong Kong's gold for mainland China.
 - **No country is rewarded for missing data**: gaps are filled with estimates that carry wide ranges, never left at zero.
-- **Margins of error**: each part has a low and high value (about a 90% range) from the data, or from its certainty letter (A ±5%, B ±15%, C ±35%, D ±70%). Totals combine them as independent errors.
+- **Margins of error**: each part has a low and high value (about a 90% range) from the data, or from its certainty letter (A ±5%, B ±15%, C ±35%, D ±70%). The tested error of the no-war prediction is part of every range. Totals combine parts as independent errors.
 
-The full method, by data round, is in [`research/2026-10/README.md`](research/2026-10/README.md). Every research file has a notes file next to it with sources, retrieval dates and the reasoning behind each educated guess. Paths like `working/...` in the notes refer to the research scripts and raw downloads, which are not published here.
+The full method is documented in [`docs/`](docs/README.md) (see below); the log by data round is in [`research/2026-10/README.md`](research/2026-10/README.md). Every research file has a notes file next to it with sources, retrieval dates and the reasoning behind each educated guess. Paths like `working/...` in the notes refer to the research scripts and raw downloads, which are not published here.
+
+## Documentation
+
+Start at the [documentation index](docs/README.md), which explains in plain language how to read a number. Main pages:
+
+- [Method overview](docs/method/overview.md): the core idea and every part of the calculation
+- [Expected without the war](docs/method/counterfactual.md): the models tried, the back-tests and which prediction is used for which flow
+- [Prices and the war-time windfall](docs/method/prices.md) · [Ranges and certainty](docs/method/ranges.md)
+- [Trade](docs/method/trade.md) · [Energy and laundered oil](docs/method/energy-and-laundered-oil.md) · [Services, shipping, company taxes](docs/method/services-shipping-companies.md) · [Aid, refugees, military, flowback](docs/method/aid-refugees-military.md) · [AI-guessed incentives](docs/method/incentives.md)
+- [Pipeline and data.json](docs/reference/pipeline.md) · [Research files](docs/reference/research-files.md) · [Sources](docs/reference/sources.md)
+- [Limitations](docs/limitations.md) · [Changelog](docs/changelog.md)
 
 ## Repository
 
@@ -28,7 +39,8 @@ The full method, by data round, is in [`research/2026-10/README.md`](research/20
 | `site/` | the map (`index.html`), its data (`data.json`) and the country shapes |
 | `pipeline/` | `build_data.py` turns the research files into `site/data.json`; `check_data.py` tests for double counting, ordered ranges and totals that match the published sources |
 | `research/2026-10/` | research inputs (JSON) and notes, per topic; `gaps.md` lists what is reported and what is estimated, per country |
-| `docs/design/` | early design notes; where they differ from the map's methodology, the map and `research/2026-10/README.md` are current |
+| `docs/` | documentation of the method, data and pipeline ([index](docs/README.md)) |
+| `docs/design/` | early design notes; where they differ from the map's methodology, `docs/` and the code are current |
 
 Run it yourself:
 

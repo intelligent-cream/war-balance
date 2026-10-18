@@ -329,4 +329,5 @@ I18N.fr = {
   "Middle East & Africa": "Moyen-Orient et Afrique",
   "Of the move away from Russian trade: {m} required by sanctions, {g} gas (mostly cut by Russia or ended with Ukrainian transit), {o} own choice.": "Du recul du commerce avec la Russie : {m} imposé par les sanctions, {g} lié au gaz (le plus souvent coupé par la Russie ou arrêté avec la fin du transit par l'Ukraine), {o} par choix.",
   "Of the move away from Russian trade: {m} required by sanctions, {o} own choice.": "Du recul du commerce avec la Russie : {m} imposé par les sanctions, {o} par choix.",
+  "Full documentation: the models, every part of the calculation, the sources and the known limits": "Documentation complète : les modèles, chaque partie du calcul, les sources et les limites connues",
 };

@@ -40,7 +40,7 @@ File: `narrow.json`, generated 2026-10-18. Values are EUR bn per year for 2021�
      | Moldova | 12 | 10 |
 
    - **Recommend fixing it in the builder.** All base values in this file for these countries come from the fixed run.
-2. **The trend multiplier is not used by the site.**
+2. **The trend multiplier is not used by the site.** (Superseded: the site now applies `bmul`, which since round 4 comes from the back-tested counterfactual; see [docs/method/counterfactual.md](../../../docs/method/counterfactual.md).)
    - The builder writes `bmul`, `bmul_lo` and `bmul_hi`. The site's `delta3()` uses `base × FRAC` only.
    - The quoted widths match the site without `bmul`. With it they would be 10–20% larger (Belarus 290% of GDP instead of 259%).
    - Either wire it in (and accept wider ranges) or drop it from the data.

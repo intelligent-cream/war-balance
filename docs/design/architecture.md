@@ -1,5 +1,7 @@
 # Architecture
 
+> **Historical design note.** This page describes an early plan; the map was built differently (a single Python build script and static JSON, no warehouse or estimate cards). For the current method and data see the [documentation index](../README.md).
+
 ## Principles
 
 1. **Reproducible.** Every published number can be rebuilt from saved raw files plus the estimate cards in this repo.
@@ -30,7 +32,7 @@ follow-the-money-ukraine/
 ├── src/mft/
 │   ├── cli.py                   # `mft fetch | load | build | estimate | publish | validate`
 │   ├── model/                   # Pydantic: Flow, LoanTerms, Company, Estimate, Evidence, PeopleCount
-│   ├── sources/                 # one module per data source (see 04-data-ingestion.md)
+│   ├── sources/                 # one module per data source (see data-ingestion.md)
 │   │   ├── base.py              # Source interface: fetch() → Snapshot, parse(Snapshot) → rows
 │   │   ├── kiel.py  crea.py  comtrade.py  eurostat.py  kse_leave_russia.py
 │   │   ├── unhcr.py  ecb_fx.py  worldbank.py  imf.py  eu_commission.py  energy_prices.py

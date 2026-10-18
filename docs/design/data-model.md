@@ -1,5 +1,7 @@
 # Data model
 
+> **Historical design note.** This page describes an early plan; the map was built differently (a single Python build script and static JSON, no warehouse or estimate cards). For the current method and data see the [documentation index](../README.md).
+
 Three layers:
 1. **Warehouse** (DuckDB): the full detail, rebuilt on every run.
 2. **Research files** (YAML in git): estimate cards and evidence, written by people.

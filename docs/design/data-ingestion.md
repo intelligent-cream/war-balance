@@ -1,5 +1,7 @@
 # Data ingestion
 
+> **Historical design note.** This page describes an early plan; the map was built differently (a single Python build script and static JSON, no warehouse or estimate cards). For the current method and data see the [documentation index](../README.md).
+
 Every source is one module in `src/mft/sources/` with the same interface:
 
 ```python
@@ -49,7 +51,7 @@ Access types below: **open download**, **open API**, **API key (free)**, **paid*
 | Yale CELI list | open web | irregular | exit status | `actor.exit_status` | B | status only |
 | Bank of Russia balance of payments | open download | quarterly | errors and omissions, unexplained flows | upper bound for hidden channels | B (total) / D (per country) | totals only |
 | Gold and crypto flow reports | manual | quarterly | per-country gold exports, blockchain-analysis reports | `flow` hidden | D | |
-| Military support to Russia (DPRK, Iran, Belarus) | manual | quarterly | quantities, unit prices, troops | `flow` military_inkind, `people_count` | D | see 05-research-process.md |
+| Military support to Russia (DPRK, Iran, Belarus) | manual | quarterly | quantities, unit prices, troops | `flow` military_inkind, `people_count` | D | see research-process.md |
 
 ## Supporting data
 

@@ -329,4 +329,5 @@ I18N.nl = {
   "Middle East & Africa": "Midden-Oosten en Afrika",
   "Of the move away from Russian trade: {m} required by sanctions, {g} gas (mostly cut by Russia or ended with Ukrainian transit), {o} own choice.": "Van de afbouw van de handel met Rusland: {m} verplicht door sancties, {g} gas (meestal door Rusland afgesneden of gestopt met het einde van de doorvoer via Oekraïne), {o} eigen keuze.",
   "Of the move away from Russian trade: {m} required by sanctions, {o} own choice.": "Van de afbouw van de handel met Rusland: {m} verplicht door sancties, {o} eigen keuze.",
+  "Full documentation: the models, every part of the calculation, the sources and the known limits": "Volledige documentatie: de modellen, elk onderdeel van de berekening, de bronnen en de bekende beperkingen",
 };
