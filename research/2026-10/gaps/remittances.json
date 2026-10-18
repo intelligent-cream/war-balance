@@ -1,0 +1,1925 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "Round 7 R5: personal remittances (personal transfers + compensation of employees) received from Russia, per receiving country, split into migrant workers' labour remittances (counted) and relocants' / capital / other non-labour transfers (left out by owner decision), with the expected no-war labour level and money-rule factors.",
+  "units": "EUR bn nominal; USD->EUR at ECB yearly averages (2019 1.1195, 2020 1.1422, then as uncovered.json); 2026 = Jan-Aug (expected level x 2/3). Ranges ~90%.",
+  "total_basis": "Gross transfers from Russia as reported by the receiving central bank by country of origin (money transfer systems + bank transfers), except TJK and BLR (BoP total x assumed Russia share). These are wider than BoP personal remittances: they also carry relocants' own money and some trade payments.",
+  "labour_method": "Labour = migrant workers' remittances. Pre-war years: total minus a small non-labour part. 2022 on: the part explained by the 2019-2021 level x Russian average wage in USD x migrant numbers, checked against BoP personal remittances; surpluses that coincide with relocation (2022-23 ARM, GEO, KAZ, AZE, UZB) or that wages cannot explain (TJK 2022, 2024-25) go to relocant_eur_bn, which therefore means \"relocants, capital and other non-labour\".",
+  "expected_method": "base = mean of 2019 and 2021 labour (2020 left out, COVID). central = base x (1+g)^(y-2020); low = 0.95 base x (1+g-0.03)^n; high = 1.05 base x (1+g+0.03)^n. g per country from the pre-war trend: UZB 0.06, TJK 0.05, KGZ 0.03, BLR 0.03, ARM 0.02, AZE 0.02, GEO 0.01, KAZ 0.00, MDA -0.06. Pre-war Russian average wage in USD grew ~3.7% a year (2017-2021) at a rouble of ~73-75 per USD.",
+  "money_rule": "counted = change x value_kept x extra. Use product_when_more when labour is above the expected level, product_when_less when below. change ranges: labour and expected ranges summed over 2022-2026 (years fully correlated within a series), then combined in quadrature (independent). Money-rule low pairs a negative change with the high factor.",
+  "fx_effect": "Rouble per USD: 2021 73.7, 2022 68.5 (stronger; inflates 2022 by ~8% vs no-war ~74), 2023 85.2 and 2024 92.6 (weaker; deflates by 13-20%), 2025 ~83.5 (~-10%). Net FX effect over 2022-2026 is negative, not positive: the gap is driven by rouble wages (+14-18% a year in 2023-2025 vs ~7-9% pre-war: 57,244 RUB in 2021 -> 100,360 RUB in 2025).",
+  "certainty": "A official by country; B official by country with estimated years; C partial data / modelled split; D model with weak evidence.",
+  "status": "Not yet reviewed by a person. Not wired into data.json."
+ },
+ "countries": {
+  "UZB": {
+   "total_from_rus_eur_bn": {
+    "2019": {
+     "low": 3.7517,
+     "central": 4.2876,
+     "high": 4.9129
+    },
+    "2020": {
+     "low": 2.9767,
+     "central": 3.4145,
+     "high": 3.9398
+    },
+    "2021": {
+     "low": 4.1431,
+     "central": 4.5658,
+     "high": 5.0731
+    },
+    "2022": {
+     "low": 12.3457,
+     "central": 13.4853,
+     "high": 14.15
+    },
+    "2023": {
+     "low": 7.8609,
+     "central": 8.2308,
+     "high": 8.6008
+    },
+    "2024": {
+     "low": 10.3474,
+     "central": 10.6245,
+     "high": 10.9017
+    },
+    "2025": {
+     "low": 12.3894,
+     "central": 12.9204,
+     "high": 13.5398
+    },
+    "2026": {
+     "low": 7.2233,
+     "central": 7.8253,
+     "high": 8.4272
+    }
+   },
+   "labour_eur_bn": {
+    "2019": {
+     "low": 3.573,
+     "central": 4.1983,
+     "high": 4.8236
+    },
+    "2020": {
+     "low": 2.8892,
+     "central": 3.3269,
+     "high": 3.8522
+    },
+    "2021": {
+     "low": 3.974,
+     "central": 4.4813,
+     "high": 4.9886
+    },
+    "2022": {
+     "low": 5.9829,
+     "central": 7.2175,
+     "high": 9.0218
+    },
+    "2023": {
+     "low": 6.7511,
+     "central": 7.6759,
+     "high": 8.2308
+    },
+    "2024": {
+     "low": 8.3149,
+     "central": 10.3474,
+     "high": 10.6245
+    },
+    "2025": {
+     "low": 9.7345,
+     "central": 12.6549,
+     "high": 12.9204
+    },
+    "2026": {
+     "low": 6.3634,
+     "central": 7.6533,
+     "high": 8.2552
+    }
+   },
+   "relocant_eur_bn": {
+    "2019": 0.0893,
+    "2020": 0.0876,
+    "2021": 0.0846,
+    "2022": 6.2678,
+    "2023": 0.5549,
+    "2024": 0.2772,
+    "2025": 0.2655,
+    "2026": 0.172
+   },
+   "expected_labour_eur_bn": {
+    "2019": {
+     "low": 4.1983,
+     "central": 4.1983,
+     "high": 4.1983
+    },
+    "2020": {
+     "low": 3.3269,
+     "central": 3.3269,
+     "high": 3.3269
+    },
+    "2021": {
+     "low": 4.4813,
+     "central": 4.4813,
+     "high": 4.4813
+    },
+    "2022": {
+     "low": 4.7856,
+     "central": 5.3352,
+     "high": 5.9236
+    },
+    "2023": {
+     "low": 4.8002,
+     "central": 5.5073,
+     "high": 6.2877
+    },
+    "2024": {
+     "low": 4.9392,
+     "central": 5.8318,
+     "high": 6.8466
+    },
+    "2025": {
+     "low": 4.8731,
+     "central": 5.9214,
+     "high": 7.1485
+    },
+    "2026": {
+     "low": 3.2515,
+     "central": 4.066,
+     "high": 5.0476
+    }
+   },
+   "value_kept": {
+    "low": 0.93,
+    "central": 0.97,
+    "high": 0.99
+   },
+   "extra": {
+    "low": 0.3,
+    "central": 0.55,
+    "high": 0.8
+   },
+   "extra_when_less": {
+    "low": 0.25,
+    "central": 0.4,
+    "high": 0.6
+   },
+   "product_when_more": {
+    "low": 0.291,
+    "central": 0.533,
+    "high": 0.776
+   },
+   "product_when_less": {
+    "low": 0.242,
+    "central": 0.388,
+    "high": 0.582
+   },
+   "certainty": "C",
+   "basis": "CBU cross-border transfers by country (Russia 2022 87%, 2023 78%, 2024 USD 11.5bn = 77%, H1-2025 78%, Q1-2026 72%); 2019-2021 Russia part reconstructed from H1-2022 = 2.3x H1-2021 and WB \"about half\" pre-war share; labour = pre-war level x Russian wage in USD x migrant numbers, the 2022 surplus above that is capital/relocants (Uzbek migrants repatriating savings, Russians opening Uzbek cards, relocants).",
+   "change_2022_2026": {
+    "labour_sum_eur_bn": 45.5489,
+    "expected_sum_eur_bn": 26.6618,
+    "relocant_sum_eur_bn": 7.5373,
+    "change_eur_bn": {
+     "low": 9.312,
+     "central": 18.8871,
+     "high": 24.214
+    },
+    "change_pct_gdp": {
+     "low": 8.31,
+     "central": 16.85,
+     "high": 21.6
+    },
+    "money_rule_eur_bn": {
+     "low": 2.7098,
+     "central": 10.0668,
+     "high": 18.79
+    },
+    "money_rule_pct_gdp": {
+     "low": 2.42,
+     "central": 8.98,
+     "high": 16.76
+    },
+    "gdp_2024_eur_bn": 112.12,
+    "sign": "positive = more earned from Russia than expected (toward Russia); negative = less (toward Ukraine)"
+   }
+  },
+  "TJK": {
+   "total_from_rus_eur_bn": {
+    "2019": {
+     "low": 1.6525,
+     "central": 1.8222,
+     "high": 1.9652
+    },
+    "2020": {
+     "low": 1.5321,
+     "central": 1.6897,
+     "high": 1.7948
+    },
+    "2021": {
+     "low": 1.9447,
+     "central": 2.173,
+     "high": 2.3252
+    },
+    "2022": {
+     "low": 3.9886,
+     "central": 4.4634,
+     "high": 4.7483
+    },
+    "2023": {
+     "low": 3.3293,
+     "central": 3.764,
+     "high": 4.0229
+    },
+    "2024": {
+     "low": 4.2498,
+     "central": 5.0813,
+     "high": 5.8204
+    },
+    "2025": {
+     "low": 6.4602,
+     "central": 7.1681,
+     "high": 8.4071
+    },
+    "2026": {
+     "low": 3.0957,
+     "central": 3.7836,
+     "high": 4.6436
+    }
+   },
+   "labour_eur_bn": {
+    "2019": {
+     "low": 1.6079,
+     "central": 1.7865,
+     "high": 1.9652
+    },
+    "2020": {
+     "low": 1.4884,
+     "central": 1.6635,
+     "high": 1.7948
+    },
+    "2021": {
+     "low": 1.9024,
+     "central": 2.1138,
+     "high": 2.3252
+    },
+    "2022": {
+     "low": 2.849,
+     "central": 3.4188,
+     "high": 4.1785
+    },
+    "2023": {
+     "low": 2.9594,
+     "central": 3.5143,
+     "high": 3.8842
+    },
+    "2024": {
+     "low": 3.6955,
+     "central": 4.6194,
+     "high": 5.5432
+    },
+    "2025": {
+     "low": 4.6018,
+     "central": 6.0177,
+     "high": 7.5221
+    },
+    "2026": {
+     "low": 2.5798,
+     "central": 3.3537,
+     "high": 4.2996
+    }
+   },
+   "relocant_eur_bn": {
+    "2019": 0.0357,
+    "2020": 0.0263,
+    "2021": 0.0592,
+    "2022": 1.0446,
+    "2023": 0.2497,
+    "2024": 0.4619,
+    "2025": 1.1504,
+    "2026": 0.43
+   },
+   "expected_labour_eur_bn": {
+    "2019": {
+     "low": 1.7865,
+     "central": 1.7865,
+     "high": 1.7865
+    },
+    "2020": {
+     "low": 1.6635,
+     "central": 1.6635,
+     "high": 1.6635
+    },
+    "2021": {
+     "low": 2.1138,
+     "central": 2.1138,
+     "high": 2.1138
+    },
+    "2022": {
+     "low": 2.1119,
+     "central": 2.3558,
+     "high": 2.6169
+    },
+    "2023": {
+     "low": 2.0978,
+     "central": 2.4088,
+     "high": 2.7523
+    },
+    "2024": {
+     "low": 2.1376,
+     "central": 2.5267,
+     "high": 2.9695
+    },
+    "2025": {
+     "low": 2.0885,
+     "central": 2.5413,
+     "high": 3.0719
+    },
+    "2026": {
+     "low": 1.38,
+     "central": 1.7286,
+     "high": 2.1492
+    }
+   },
+   "value_kept": {
+    "low": 0.93,
+    "central": 0.97,
+    "high": 0.99
+   },
+   "extra": {
+    "low": 0.3,
+    "central": 0.55,
+    "high": 0.8
+   },
+   "extra_when_less": {
+    "low": 0.25,
+    "central": 0.4,
+    "high": 0.6
+   },
+   "product_when_more": {
+    "low": 0.291,
+    "central": 0.533,
+    "high": 0.776
+   },
+   "product_when_less": {
+    "low": 0.242,
+    "central": 0.388,
+    "high": 0.582
+   },
+   "certainty": "D",
+   "basis": "No country split published by the National Bank of Tajikistan; total = World Bank WDI personal remittances (BoP: 2.32/2.19/2.92/5.35/4.63/6.80/10.18 USD bn 2019-2025; IOM 2024 5.8, ADB 2025 9.2) x Russia share 0.88 (0.80-0.93); 2026 from EFSD forecast (43% of GDP after 54.5%). The 2022 jump and part of the 2024-25 jump exceed what wages and the rouble explain: treated as capital/trade payments, not labour.",
+   "change_2022_2026": {
+    "labour_sum_eur_bn": 20.9238,
+    "expected_sum_eur_bn": 11.5611,
+    "relocant_sum_eur_bn": 3.3367,
+    "change_eur_bn": {
+     "low": 4.6767,
+     "central": 9.3627,
+     "high": 14.193
+    },
+    "change_pct_gdp": {
+     "low": 35.09,
+     "central": 70.25,
+     "high": 106.5
+    },
+    "money_rule_eur_bn": {
+     "low": 1.3609,
+     "central": 4.9903,
+     "high": 11.0137
+    },
+    "money_rule_pct_gdp": {
+     "low": 10.21,
+     "central": 37.45,
+     "high": 82.64
+    },
+    "gdp_2024_eur_bn": 13.327,
+    "sign": "positive = more earned from Russia than expected (toward Russia); negative = less (toward Ukraine)"
+   }
+  },
+  "KGZ": {
+   "total_from_rus_eur_bn": {
+    "2019": {
+     "low": 1.8758,
+     "central": 2.0098,
+     "high": 2.1438
+    },
+    "2020": {
+     "low": 1.7948,
+     "central": 1.9261,
+     "high": 2.0574
+    },
+    "2021": {
+     "low": 2.0293,
+     "central": 2.1561,
+     "high": 2.2829
+    },
+    "2022": {
+     "low": 2.5641,
+     "central": 2.7255,
+     "high": 2.849
+    },
+    "2023": {
+     "low": 2.2658,
+     "central": 2.3398,
+     "high": 2.4045
+    },
+    "2024": {
+     "low": 2.4021,
+     "central": 2.5407,
+     "high": 2.5868
+    },
+    "2025": {
+     "low": 2.6549,
+     "central": 2.8319,
+     "high": 2.9646
+    },
+    "2026": {
+     "low": 1.5049,
+     "central": 1.6596,
+     "high": 1.8058
+    }
+   },
+   "labour_eur_bn": {
+    "2019": {
+     "low": 1.7865,
+     "central": 1.9652,
+     "high": 2.1438
+    },
+    "2020": {
+     "low": 1.7072,
+     "central": 1.8823,
+     "high": 2.0574
+    },
+    "2021": {
+     "low": 1.9447,
+     "central": 2.1138,
+     "high": 2.2829
+    },
+    "2022": {
+     "low": 2.1368,
+     "central": 2.4217,
+     "high": 2.7066
+    },
+    "2023": {
+     "low": 2.0808,
+     "central": 2.2658,
+     "high": 2.4045
+    },
+    "2024": {
+     "low": 2.2635,
+     "central": 2.476,
+     "high": 2.5868
+    },
+    "2025": {
+     "low": 2.4779,
+     "central": 2.7611,
+     "high": 2.9646
+    },
+    "2026": {
+     "low": 1.4189,
+     "central": 1.6166,
+     "high": 1.8058
+    }
+   },
+   "relocant_eur_bn": {
+    "2019": 0.0447,
+    "2020": 0.0438,
+    "2021": 0.0423,
+    "2022": 0.3039,
+    "2023": 0.074,
+    "2024": 0.0647,
+    "2025": 0.0708,
+    "2026": 0.043
+   },
+   "expected_labour_eur_bn": {
+    "2019": {
+     "low": 1.9652,
+     "central": 1.9652,
+     "high": 1.9652
+    },
+    "2020": {
+     "low": 1.8823,
+     "central": 1.8823,
+     "high": 1.8823
+    },
+    "2021": {
+     "low": 2.1138,
+     "central": 2.1138,
+     "high": 2.1138
+    },
+    "2022": {
+     "low": 2.1201,
+     "central": 2.3676,
+     "high": 2.6329
+    },
+    "2023": {
+     "low": 2.0646,
+     "central": 2.3748,
+     "high": 2.7179
+    },
+    "2024": {
+     "low": 2.0625,
+     "central": 2.4436,
+     "high": 2.878
+    },
+    "2025": {
+     "low": 1.9757,
+     "central": 2.4109,
+     "high": 2.9222
+    },
+    "2026": {
+     "low": 1.2798,
+     "central": 1.6086,
+     "high": 2.0066
+    }
+   },
+   "value_kept": {
+    "low": 0.93,
+    "central": 0.97,
+    "high": 0.99
+   },
+   "extra": {
+    "low": 0.3,
+    "central": 0.55,
+    "high": 0.8
+   },
+   "extra_when_less": {
+    "low": 0.25,
+    "central": 0.4,
+    "high": 0.6
+   },
+   "product_when_more": {
+    "low": 0.291,
+    "central": 0.533,
+    "high": 0.776
+   },
+   "product_when_less": {
+    "low": 0.242,
+    "central": 0.388,
+    "high": 0.582
+   },
+   "certainty": "B",
+   "basis": "NBKR cross-border transfers of individuals by country (Russia 93% of inflows; 2023 USD 2.53bn, 2024 2.78bn, 2025 +16% per EBRD; Jan-Apr 2026 -14% from Russia, H1-2026 total 1.54bn). Small 2022 relocant part (Russians in Bishkek).",
+   "change_2022_2026": {
+    "labour_sum_eur_bn": 11.5411,
+    "expected_sum_eur_bn": 11.2056,
+    "relocant_sum_eur_bn": 0.5563,
+    "change_eur_bn": {
+     "low": -1.9368,
+     "central": 0.3356,
+     "high": 2.2744
+    },
+    "change_pct_gdp": {
+     "low": -11.54,
+     "central": 2.0,
+     "high": 13.55
+    },
+    "money_rule_eur_bn": {
+     "low": -1.1272,
+     "central": 0.1789,
+     "high": 1.7649
+    },
+    "money_rule_pct_gdp": {
+     "low": -6.72,
+     "central": 1.07,
+     "high": 10.52
+    },
+    "gdp_2024_eur_bn": 16.779,
+    "sign": "positive = more earned from Russia than expected (toward Russia); negative = less (toward Ukraine)"
+   }
+  },
+  "ARM": {
+   "total_from_rus_eur_bn": {
+    "2019": {
+     "low": 0.7593,
+     "central": 0.8486,
+     "high": 0.9379
+    },
+    "2020": {
+     "low": 0.5691,
+     "central": 0.6566,
+     "high": 0.7442
+    },
+    "2021": {
+     "low": 0.6933,
+     "central": 0.7314,
+     "high": 0.7694
+    },
+    "2022": {
+     "low": 3.0389,
+     "central": 3.3238,
+     "high": 3.5138
+    },
+    "2023": {
+     "low": 3.3293,
+     "central": 3.653,
+     "high": 3.6993
+    },
+    "2024": {
+     "low": 2.9564,
+     "central": 3.1874,
+     "high": 3.3259
+    },
+    "2025": {
+     "low": 3.1858,
+     "central": 3.4513,
+     "high": 3.6283
+    },
+    "2026": {
+     "low": 1.8918,
+     "central": 2.1498,
+     "high": 2.4078
+    }
+   },
+   "labour_eur_bn": {
+    "2019": {
+     "low": 0.536,
+     "central": 0.7146,
+     "high": 0.8486
+    },
+    "2020": {
+     "low": 0.4378,
+     "central": 0.5691,
+     "high": 0.7004
+    },
+    "2021": {
+     "low": 0.5073,
+     "central": 0.6341,
+     "high": 0.7356
+    },
+    "2022": {
+     "low": 0.6173,
+     "central": 0.8547,
+     "high": 1.1396
+    },
+    "2023": {
+     "low": 0.5549,
+     "central": 0.7861,
+     "high": 1.0635
+    },
+    "2024": {
+     "low": 0.5543,
+     "central": 0.7853,
+     "high": 1.0163
+    },
+    "2025": {
+     "low": 0.6637,
+     "central": 0.9292,
+     "high": 1.2389
+    },
+    "2026": {
+     "low": 0.387,
+     "central": 0.5589,
+     "high": 0.7739
+    }
+   },
+   "relocant_eur_bn": {
+    "2019": 0.134,
+    "2020": 0.0876,
+    "2021": 0.0972,
+    "2022": 2.4691,
+    "2023": 2.8669,
+    "2024": 2.4021,
+    "2025": 2.5221,
+    "2026": 1.5909
+   },
+   "expected_labour_eur_bn": {
+    "2019": {
+     "low": 0.7146,
+     "central": 0.7146,
+     "high": 0.7146
+    },
+    "2020": {
+     "low": 0.5691,
+     "central": 0.5691,
+     "high": 0.5691
+    },
+    "2021": {
+     "low": 0.6341,
+     "central": 0.6341,
+     "high": 0.6341
+    },
+    "2022": {
+     "low": 0.6853,
+     "central": 0.7657,
+     "high": 0.852
+    },
+    "2023": {
+     "low": 0.6607,
+     "central": 0.7606,
+     "high": 0.8712
+    },
+    "2024": {
+     "low": 0.6534,
+     "central": 0.775,
+     "high": 0.9138
+    },
+    "2025": {
+     "low": 0.6196,
+     "central": 0.7572,
+     "high": 0.9191
+    },
+    "2026": {
+     "low": 0.3974,
+     "central": 0.5003,
+     "high": 0.6252
+    }
+   },
+   "value_kept": {
+    "low": 0.93,
+    "central": 0.97,
+    "high": 0.99
+   },
+   "extra": {
+    "low": 0.3,
+    "central": 0.55,
+    "high": 0.8
+   },
+   "extra_when_less": {
+    "low": 0.25,
+    "central": 0.4,
+    "high": 0.6
+   },
+   "product_when_more": {
+    "low": 0.291,
+    "central": 0.533,
+    "high": 0.776
+   },
+   "product_when_less": {
+    "low": 0.242,
+    "central": 0.388,
+    "high": 0.582
+   },
+   "certainty": "C",
+   "basis": "CBA gross bank transfers of individuals from Russia (2021 USD 0.865bn; 2022 ~3.5-3.6bn; 2023 3.95bn; Jan-Oct 2024 2.9bn; 2025 3.9bn; Jan-Feb 2026 0.63bn). Since 2022 most of it is not wages: relocants, Russians paying via Armenian accounts, and payments for re-exports through individuals. BoP personal remittances (all sources) barely moved: 1.56 (2021), 2.12, 1.55, 1.40, 1.57 (2025). Labour = Armenian seasonal/long-term migrants, modelled from the 2019-2021 level x Russian wage in USD.",
+   "change_2022_2026": {
+    "labour_sum_eur_bn": 3.9142,
+    "expected_sum_eur_bn": 3.5589,
+    "relocant_sum_eur_bn": 11.8511,
+    "change_eur_bn": {
+     "low": -0.9409,
+     "central": 0.3553,
+     "high": 1.7807
+    },
+    "change_pct_gdp": {
+     "low": -3.92,
+     "central": 1.48,
+     "high": 7.43
+    },
+    "money_rule_eur_bn": {
+     "low": -0.5476,
+     "central": 0.1894,
+     "high": 1.3818
+    },
+    "money_rule_pct_gdp": {
+     "low": -2.28,
+     "central": 0.79,
+     "high": 5.76
+    },
+    "gdp_2024_eur_bn": 23.98,
+    "sign": "positive = more earned from Russia than expected (toward Russia); negative = less (toward Ukraine)"
+   }
+  },
+  "GEO": {
+   "total_from_rus_eur_bn": {
+    "2019": {
+     "low": 0.3573,
+     "central": 0.3841,
+     "high": 0.4109
+    },
+    "2020": {
+     "low": 0.2889,
+     "central": 0.3152,
+     "high": 0.3414
+    },
+    "2021": {
+     "low": 0.3298,
+     "central": 0.3467,
+     "high": 0.3636
+    },
+    "2022": {
+     "low": 1.8993,
+     "central": 1.9658,
+     "high": 1.9943
+    },
+    "2023": {
+     "low": 1.341,
+     "central": 1.3872,
+     "high": 1.4335
+    },
+    "2024": {
+     "low": 0.4804,
+     "central": 0.4989,
+     "high": 0.5174
+    },
+    "2025": {
+     "low": 0.3894,
+     "central": 0.4248,
+     "high": 0.4602
+    },
+    "2026": {
+     "low": 0.2322,
+     "central": 0.258,
+     "high": 0.2838
+    }
+   },
+   "labour_eur_bn": {
+    "2019": {
+     "low": 0.268,
+     "central": 0.3394,
+     "high": 0.3841
+    },
+    "2020": {
+     "low": 0.2189,
+     "central": 0.2802,
+     "high": 0.3239
+    },
+    "2021": {
+     "low": 0.2452,
+     "central": 0.3044,
+     "high": 0.3467
+    },
+    "2022": {
+     "low": 0.2659,
+     "central": 0.3609,
+     "high": 0.4558
+    },
+    "2023": {
+     "low": 0.2497,
+     "central": 0.3422,
+     "high": 0.4347
+    },
+    "2024": {
+     "low": 0.2587,
+     "central": 0.3326,
+     "high": 0.4157
+    },
+    "2025": {
+     "low": 0.2478,
+     "central": 0.3186,
+     "high": 0.3982
+    },
+    "2026": {
+     "low": 0.1462,
+     "central": 0.1978,
+     "high": 0.2494
+    }
+   },
+   "relocant_eur_bn": {
+    "2019": 0.0447,
+    "2020": 0.035,
+    "2021": 0.0423,
+    "2022": 1.6049,
+    "2023": 1.045,
+    "2024": 0.1663,
+    "2025": 0.1062,
+    "2026": 0.0602
+   },
+   "expected_labour_eur_bn": {
+    "2019": {
+     "low": 0.3394,
+     "central": 0.3394,
+     "high": 0.3394
+    },
+    "2020": {
+     "low": 0.2802,
+     "central": 0.2802,
+     "high": 0.2802
+    },
+    "2021": {
+     "low": 0.3044,
+     "central": 0.3044,
+     "high": 0.3044
+    },
+    "2022": {
+     "low": 0.3206,
+     "central": 0.3584,
+     "high": 0.3991
+    },
+    "2023": {
+     "low": 0.306,
+     "central": 0.3525,
+     "high": 0.4042
+    },
+    "2024": {
+     "low": 0.2995,
+     "central": 0.3557,
+     "high": 0.4199
+    },
+    "2025": {
+     "low": 0.2812,
+     "central": 0.3441,
+     "high": 0.4183
+    },
+    "2026": {
+     "low": 0.1785,
+     "central": 0.2252,
+     "high": 0.2818
+    }
+   },
+   "value_kept": {
+    "low": 0.93,
+    "central": 0.97,
+    "high": 0.99
+   },
+   "extra": {
+    "low": 0.3,
+    "central": 0.55,
+    "high": 0.8
+   },
+   "extra_when_less": {
+    "low": 0.25,
+    "central": 0.4,
+    "high": 0.6
+   },
+   "product_when_more": {
+    "low": 0.291,
+    "central": 0.533,
+    "high": 0.776
+   },
+   "product_when_less": {
+    "low": 0.242,
+    "central": 0.388,
+    "high": 0.582
+   },
+   "certainty": "B",
+   "basis": "NBG money transfers by country (Russia 2021 USD 0.411bn, 2022 2.068bn, 2023 ~1.5bn, 2024 0.541bn, 2025 ~0.48bn from monthly data, Jan-Jul 2026 0.291bn, Aug 2026 ~0.005bn after Zolotaya Korona stopped). Labour/diaspora part ~0.35-0.4bn a year; the rest from 2022 is relocants (~112,000 Russians stayed in 2022).",
+   "change_2022_2026": {
+    "labour_sum_eur_bn": 1.552,
+    "expected_sum_eur_bn": 1.636,
+    "relocant_sum_eur_bn": 2.9827,
+    "change_eur_bn": {
+     "low": -0.5633,
+     "central": -0.084,
+     "high": 0.3894
+    },
+    "change_pct_gdp": {
+     "low": -1.78,
+     "central": -0.27,
+     "high": 1.23
+    },
+    "money_rule_eur_bn": {
+     "low": -0.3278,
+     "central": -0.0326,
+     "high": 0.3022
+    },
+    "money_rule_pct_gdp": {
+     "low": -1.04,
+     "central": -0.1,
+     "high": 0.96
+    },
+    "gdp_2024_eur_bn": 31.587,
+    "sign": "positive = more earned from Russia than expected (toward Russia); negative = less (toward Ukraine)"
+   }
+  },
+  "KAZ": {
+   "total_from_rus_eur_bn": {
+    "2019": {
+     "low": 0.0983,
+     "central": 0.1251,
+     "high": 0.1519
+    },
+    "2020": {
+     "low": 0.07,
+     "central": 0.0876,
+     "high": 0.1051
+    },
+    "2021": {
+     "low": 0.0761,
+     "central": 0.093,
+     "high": 0.1099
+    },
+    "2022": {
+     "low": 0.6648,
+     "central": 0.7407,
+     "high": 0.8072
+    },
+    "2023": {
+     "low": 0.222,
+     "central": 0.3052,
+     "high": 0.3699
+    },
+    "2024": {
+     "low": 0.1109,
+     "central": 0.1247,
+     "high": 0.1386
+    },
+    "2025": {
+     "low": 0.0885,
+     "central": 0.115,
+     "high": 0.1416
+    },
+    "2026": {
+     "low": 0.0516,
+     "central": 0.0688,
+     "high": 0.086
+    }
+   },
+   "labour_eur_bn": {
+    "2019": {
+     "low": 0.0536,
+     "central": 0.0893,
+     "high": 0.1251
+    },
+    "2020": {
+     "low": 0.0438,
+     "central": 0.07,
+     "high": 0.0876
+    },
+    "2021": {
+     "low": 0.0423,
+     "central": 0.0676,
+     "high": 0.093
+    },
+    "2022": {
+     "low": 0.057,
+     "central": 0.0855,
+     "high": 0.1235
+    },
+    "2023": {
+     "low": 0.0555,
+     "central": 0.0832,
+     "high": 0.1202
+    },
+    "2024": {
+     "low": 0.0554,
+     "central": 0.0831,
+     "high": 0.1109
+    },
+    "2025": {
+     "low": 0.0531,
+     "central": 0.0796,
+     "high": 0.1062
+    },
+    "2026": {
+     "low": 0.0344,
+     "central": 0.0516,
+     "high": 0.0688
+    }
+   },
+   "relocant_eur_bn": {
+    "2019": 0.0357,
+    "2020": 0.0175,
+    "2021": 0.0254,
+    "2022": 0.6553,
+    "2023": 0.222,
+    "2024": 0.0416,
+    "2025": 0.0354,
+    "2026": 0.0172
+   },
+   "expected_labour_eur_bn": {
+    "2019": {
+     "low": 0.0893,
+     "central": 0.0893,
+     "high": 0.0893
+    },
+    "2020": {
+     "low": 0.07,
+     "central": 0.07,
+     "high": 0.07
+    },
+    "2021": {
+     "low": 0.0676,
+     "central": 0.0676,
+     "high": 0.0676
+    },
+    "2022": {
+     "low": 0.0764,
+     "central": 0.0855,
+     "high": 0.0952
+    },
+    "2023": {
+     "low": 0.0722,
+     "central": 0.0832,
+     "high": 0.0955
+    },
+    "2024": {
+     "low": 0.0699,
+     "central": 0.0831,
+     "high": 0.0983
+    },
+    "2025": {
+     "low": 0.065,
+     "central": 0.0796,
+     "high": 0.0969
+    },
+    "2026": {
+     "low": 0.0408,
+     "central": 0.0516,
+     "high": 0.0647
+    }
+   },
+   "value_kept": {
+    "low": 0.93,
+    "central": 0.97,
+    "high": 0.99
+   },
+   "extra": {
+    "low": 0.3,
+    "central": 0.55,
+    "high": 0.8
+   },
+   "extra_when_less": {
+    "low": 0.25,
+    "central": 0.4,
+    "high": 0.6
+   },
+   "product_when_more": {
+    "low": 0.291,
+    "central": 0.533,
+    "high": 0.776
+   },
+   "product_when_less": {
+    "low": 0.242,
+    "central": 0.388,
+    "high": 0.582
+   },
+   "certainty": "C",
+   "basis": "NBK/RBC: transfers from Russia KZT 357bn (USD 0.775bn) in 2022, about 7x 2021; MTS only KZT 108bn in 2023; KZT 61.8bn in 2024 (banks + MTS). Few Kazakh labour migrants in Russia; the 2022 jump was relocants. BoP personal remittances total only 0.24-0.48bn.",
+   "change_2022_2026": {
+    "labour_sum_eur_bn": 0.3831,
+    "expected_sum_eur_bn": 0.3831,
+    "relocant_sum_eur_bn": 0.9714,
+    "change_eur_bn": {
+     "low": -0.1444,
+     "central": 0.0,
+     "high": 0.1578
+    },
+    "change_pct_gdp": {
+     "low": -0.05,
+     "central": 0.0,
+     "high": 0.06
+    },
+    "money_rule_eur_bn": {
+     "low": -0.0841,
+     "central": 0.0,
+     "high": 0.1225
+    },
+    "money_rule_pct_gdp": {
+     "low": -0.03,
+     "central": 0.0,
+     "high": 0.05
+    },
+    "gdp_2024_eur_bn": 269.296,
+    "sign": "positive = more earned from Russia than expected (toward Russia); negative = less (toward Ukraine)"
+   }
+  },
+  "AZE": {
+   "total_from_rus_eur_bn": {
+    "2019": {
+     "low": 0.4913,
+     "central": 0.5806,
+     "high": 0.6699
+    },
+    "2020": {
+     "low": 0.4378,
+     "central": 0.5253,
+     "high": 0.6129
+    },
+    "2021": {
+     "low": 0.465,
+     "central": 0.5496,
+     "high": 0.6341
+    },
+    "2022": {
+     "low": 2.4691,
+     "central": 2.8015,
+     "high": 2.944
+    },
+    "2023": {
+     "low": 0.9248,
+     "central": 0.9711,
+     "high": 1.0173
+    },
+    "2024": {
+     "low": 0.4342,
+     "central": 0.4619,
+     "high": 0.4897
+    },
+    "2025": {
+     "low": 0.3097,
+     "central": 0.3982,
+     "high": 0.4867
+    },
+    "2026": {
+     "low": 0.172,
+     "central": 0.2408,
+     "high": 0.3096
+    }
+   },
+   "labour_eur_bn": {
+    "2019": {
+     "low": 0.402,
+     "central": 0.536,
+     "high": 0.6253
+    },
+    "2020": {
+     "low": 0.3502,
+     "central": 0.4815,
+     "high": 0.5691
+    },
+    "2021": {
+     "low": 0.3805,
+     "central": 0.5073,
+     "high": 0.5919
+    },
+    "2022": {
+     "low": 0.4748,
+     "central": 0.6648,
+     "high": 0.8547
+    },
+    "2023": {
+     "low": 0.4624,
+     "central": 0.6289,
+     "high": 0.7861
+    },
+    "2024": {
+     "low": 0.3511,
+     "central": 0.4435,
+     "high": 0.4897
+    },
+    "2025": {
+     "low": 0.2655,
+     "central": 0.3717,
+     "high": 0.4602
+    },
+    "2026": {
+     "low": 0.1548,
+     "central": 0.2236,
+     "high": 0.2924
+    }
+   },
+   "relocant_eur_bn": {
+    "2019": 0.0447,
+    "2020": 0.0438,
+    "2021": 0.0423,
+    "2022": 2.1368,
+    "2023": 0.3422,
+    "2024": 0.0185,
+    "2025": 0.0265,
+    "2026": 0.0172
+   },
+   "expected_labour_eur_bn": {
+    "2019": {
+     "low": 0.536,
+     "central": 0.536,
+     "high": 0.536
+    },
+    "2020": {
+     "low": 0.4815,
+     "central": 0.4815,
+     "high": 0.4815
+    },
+    "2021": {
+     "low": 0.5073,
+     "central": 0.5073,
+     "high": 0.5073
+    },
+    "2022": {
+     "low": 0.5305,
+     "central": 0.5928,
+     "high": 0.6596
+    },
+    "2023": {
+     "low": 0.5115,
+     "central": 0.5889,
+     "high": 0.6745
+    },
+    "2024": {
+     "low": 0.5059,
+     "central": 0.6,
+     "high": 0.7075
+    },
+    "2025": {
+     "low": 0.4797,
+     "central": 0.5862,
+     "high": 0.7116
+    },
+    "2026": {
+     "low": 0.3076,
+     "central": 0.3874,
+     "high": 0.484
+    }
+   },
+   "value_kept": {
+    "low": 0.93,
+    "central": 0.97,
+    "high": 0.99
+   },
+   "extra": {
+    "low": 0.3,
+    "central": 0.55,
+    "high": 0.8
+   },
+   "extra_when_less": {
+    "low": 0.25,
+    "central": 0.4,
+    "high": 0.6
+   },
+   "product_when_more": {
+    "low": 0.291,
+    "central": 0.533,
+    "high": 0.776
+   },
+   "product_when_less": {
+    "low": 0.242,
+    "central": 0.388,
+    "high": 0.582
+   },
+   "certainty": "C",
+   "basis": "CBA (Azerbaijan) inbound transfers: 2022 ~USD 3.6bn (3.2x 2021), Russia share 82% (WB); 2023 Russia 1.047bn of 1.665bn; 2024 Russia 0.497bn of 1.083bn. 2025-26 estimated (Russia-Azerbaijan tensions from mid-2025). The 2022 jump = diaspora and Russians moving capital, not wages.",
+   "change_2022_2026": {
+    "labour_sum_eur_bn": 2.3324,
+    "expected_sum_eur_bn": 2.7553,
+    "relocant_sum_eur_bn": 2.5412,
+    "change_eur_bn": {
+     "low": -1.2111,
+     "central": -0.4229,
+     "high": 0.2696
+    },
+    "change_pct_gdp": {
+     "low": -1.76,
+     "central": -0.62,
+     "high": 0.39
+    },
+    "money_rule_eur_bn": {
+     "low": -0.7049,
+     "central": -0.1641,
+     "high": 0.2092
+    },
+    "money_rule_pct_gdp": {
+     "low": -1.03,
+     "central": -0.24,
+     "high": 0.3
+    },
+    "gdp_2024_eur_bn": 68.761,
+    "sign": "positive = more earned from Russia than expected (toward Russia); negative = less (toward Ukraine)"
+   }
+  },
+  "MDA": {
+   "total_from_rus_eur_bn": {
+    "2019": {
+     "low": 0.2144,
+     "central": 0.2287,
+     "high": 0.2412
+    },
+    "2020": {
+     "low": 0.1488,
+     "central": 0.1751,
+     "high": 0.2014
+    },
+    "2021": {
+     "low": 0.1353,
+     "central": 0.1606,
+     "high": 0.1945
+    },
+    "2022": {
+     "low": 0.114,
+     "central": 0.1519,
+     "high": 0.1994
+    },
+    "2023": {
+     "low": 0.074,
+     "central": 0.111,
+     "high": 0.148
+    },
+    "2024": {
+     "low": 0.0554,
+     "central": 0.0924,
+     "high": 0.1293
+    },
+    "2025": {
+     "low": 0.0442,
+     "central": 0.0796,
+     "high": 0.115
+    },
+    "2026": {
+     "low": 0.0258,
+     "central": 0.043,
+     "high": 0.0688
+    }
+   },
+   "labour_eur_bn": {
+    "2019": {
+     "low": 0.1965,
+     "central": 0.2188,
+     "high": 0.2322
+    },
+    "2020": {
+     "low": 0.1401,
+     "central": 0.1663,
+     "high": 0.1926
+    },
+    "2021": {
+     "low": 0.1268,
+     "central": 0.1522,
+     "high": 0.186
+    },
+    "2022": {
+     "low": 0.1045,
+     "central": 0.1425,
+     "high": 0.1899
+    },
+    "2023": {
+     "low": 0.0647,
+     "central": 0.1017,
+     "high": 0.1387
+    },
+    "2024": {
+     "low": 0.0462,
+     "central": 0.0831,
+     "high": 0.1201
+    },
+    "2025": {
+     "low": 0.0354,
+     "central": 0.0708,
+     "high": 0.1062
+    },
+    "2026": {
+     "low": 0.0215,
+     "central": 0.0387,
+     "high": 0.0645
+    }
+   },
+   "relocant_eur_bn": {
+    "2019": 0.0098,
+    "2020": 0.0088,
+    "2021": 0.0085,
+    "2022": 0.0095,
+    "2023": 0.0092,
+    "2024": 0.0092,
+    "2025": 0.0088,
+    "2026": 0.0043
+   },
+   "expected_labour_eur_bn": {
+    "2019": {
+     "low": 0.2188,
+     "central": 0.2188,
+     "high": 0.2188
+    },
+    "2020": {
+     "low": 0.1663,
+     "central": 0.1663,
+     "high": 0.1663
+    },
+    "2021": {
+     "low": 0.1522,
+     "central": 0.1522,
+     "high": 0.1522
+    },
+    "2022": {
+     "low": 0.1588,
+     "central": 0.1783,
+     "high": 0.1994
+    },
+    "2023": {
+     "low": 0.1407,
+     "central": 0.1632,
+     "high": 0.1883
+    },
+    "2024": {
+     "low": 0.1279,
+     "central": 0.1533,
+     "high": 0.1825
+    },
+    "2025": {
+     "low": 0.1115,
+     "central": 0.138,
+     "high": 0.1696
+    },
+    "2026": {
+     "low": 0.0657,
+     "central": 0.084,
+     "high": 0.1065
+    }
+   },
+   "value_kept": {
+    "low": 0.93,
+    "central": 0.97,
+    "high": 0.99
+   },
+   "extra": {
+    "low": 0.3,
+    "central": 0.55,
+    "high": 0.8
+   },
+   "extra_when_less": {
+    "low": 0.25,
+    "central": 0.4,
+    "high": 0.6
+   },
+   "product_when_more": {
+    "low": 0.291,
+    "central": 0.533,
+    "high": 0.776
+   },
+   "product_when_less": {
+    "low": 0.242,
+    "central": 0.388,
+    "high": 0.582
+   },
+   "certainty": "D",
+   "basis": "BNM transfers to individuals by country: Russia USD 0.256bn = 20.9% in 2019 (27% in 2018, ~36% in 2017): long decline before the war. No rouble transfers since 2023. Post-2021 Russia values are estimates continuing the decline.",
+   "change_2022_2026": {
+    "labour_sum_eur_bn": 0.4368,
+    "expected_sum_eur_bn": 0.7169,
+    "relocant_sum_eur_bn": 0.0411,
+    "change_eur_bn": {
+     "low": -0.4894,
+     "central": -0.2801,
+     "high": -0.0656
+    },
+    "change_pct_gdp": {
+     "low": -2.91,
+     "central": -1.66,
+     "high": -0.39
+    },
+    "money_rule_eur_bn": {
+     "low": -0.2848,
+     "central": -0.1087,
+     "high": -0.0159
+    },
+    "money_rule_pct_gdp": {
+     "low": -1.69,
+     "central": -0.65,
+     "high": -0.09
+    },
+    "gdp_2024_eur_bn": 16.821,
+    "sign": "positive = more earned from Russia than expected (toward Russia); negative = less (toward Ukraine)"
+   }
+  },
+  "BLR": {
+   "total_from_rus_eur_bn": {
+    "2019": {
+     "low": 0.3841,
+     "central": 0.5717,
+     "high": 0.7593
+    },
+    "2020": {
+     "low": 0.2627,
+     "central": 0.394,
+     "high": 0.5341
+    },
+    "2021": {
+     "low": 0.3467,
+     "central": 0.5158,
+     "high": 0.6933
+    },
+    "2022": {
+     "low": 0.5318,
+     "central": 0.7977,
+     "high": 1.0636
+    },
+    "2023": {
+     "low": 0.4717,
+     "central": 0.7029,
+     "high": 0.9341
+    },
+    "2024": {
+     "low": 0.5174,
+     "central": 0.7668,
+     "high": 1.0255
+    },
+    "2025": {
+     "low": 0.6283,
+     "central": 0.9469,
+     "high": 1.2566
+    },
+    "2026": {
+     "low": 0.387,
+     "central": 0.6019,
+     "high": 0.8169
+    }
+   },
+   "labour_eur_bn": {
+    "2019": {
+     "low": 0.3841,
+     "central": 0.5717,
+     "high": 0.7593
+    },
+    "2020": {
+     "low": 0.2627,
+     "central": 0.394,
+     "high": 0.5341
+    },
+    "2021": {
+     "low": 0.3467,
+     "central": 0.5158,
+     "high": 0.6933
+    },
+    "2022": {
+     "low": 0.5318,
+     "central": 0.7977,
+     "high": 1.0636
+    },
+    "2023": {
+     "low": 0.4717,
+     "central": 0.7029,
+     "high": 0.9341
+    },
+    "2024": {
+     "low": 0.5174,
+     "central": 0.7668,
+     "high": 1.0255
+    },
+    "2025": {
+     "low": 0.6283,
+     "central": 0.9469,
+     "high": 1.2566
+    },
+    "2026": {
+     "low": 0.387,
+     "central": 0.6019,
+     "high": 0.8169
+    }
+   },
+   "relocant_eur_bn": {
+    "2019": 0.0,
+    "2020": 0.0,
+    "2021": 0.0,
+    "2022": 0.0,
+    "2023": 0.0,
+    "2024": 0.0,
+    "2025": 0.0,
+    "2026": 0.0
+   },
+   "expected_labour_eur_bn": {
+    "2019": {
+     "low": 0.5717,
+     "central": 0.5717,
+     "high": 0.5717
+    },
+    "2020": {
+     "low": 0.394,
+     "central": 0.394,
+     "high": 0.394
+    },
+    "2021": {
+     "low": 0.5158,
+     "central": 0.5158,
+     "high": 0.5158
+    },
+    "2022": {
+     "low": 0.5639,
+     "central": 0.6297,
+     "high": 0.7002
+    },
+    "2023": {
+     "low": 0.5491,
+     "central": 0.6316,
+     "high": 0.7228
+    },
+    "2024": {
+     "low": 0.5485,
+     "central": 0.6499,
+     "high": 0.7654
+    },
+    "2025": {
+     "low": 0.5254,
+     "central": 0.6412,
+     "high": 0.7772
+    },
+    "2026": {
+     "low": 0.3404,
+     "central": 0.4278,
+     "high": 0.5337
+    }
+   },
+   "value_kept": {
+    "low": 0.93,
+    "central": 0.97,
+    "high": 0.99
+   },
+   "extra": {
+    "low": 0.3,
+    "central": 0.55,
+    "high": 0.8
+   },
+   "extra_when_less": {
+    "low": 0.25,
+    "central": 0.4,
+    "high": 0.6
+   },
+   "product_when_more": {
+    "low": 0.291,
+    "central": 0.533,
+    "high": 0.776
+   },
+   "product_when_less": {
+    "low": 0.242,
+    "central": 0.388,
+    "high": 0.582
+   },
+   "certainty": "D",
+   "basis": "No country split found. WDI personal remittances incl. compensation of employees (1.42/1.01/1.36/1.86/1.69/1.85/2.37 USD bn 2019-2025) x assumed Russia share 0.45 (0.30-0.60); 2026 assumed ~2.2bn annual rate. No relocant surge into Belarus, so all is labour (border and posted workers).",
+   "change_2022_2026": {
+    "labour_sum_eur_bn": 3.8162,
+    "expected_sum_eur_bn": 2.9802,
+    "relocant_sum_eur_bn": 0.0,
+    "change_eur_bn": {
+     "low": -0.5454,
+     "central": 0.836,
+     "high": 2.1943
+    },
+    "change_pct_gdp": {
+     "low": -0.75,
+     "central": 1.15,
+     "high": 3.02
+    },
+    "money_rule_eur_bn": {
+     "low": -0.3174,
+     "central": 0.4456,
+     "high": 1.7027
+    },
+    "money_rule_pct_gdp": {
+     "low": -0.44,
+     "central": 0.61,
+     "high": 2.35
+    },
+    "gdp_2024_eur_bn": 72.61,
+    "sign": "positive = more earned from Russia than expected (toward Russia); negative = less (toward Ukraine)"
+   }
+  }
+ },
+ "sources": [
+  {
+   "id": "wdi",
+   "what": "World Bank WDI BX.TRF.PWKR.CD.DT personal remittances received, 2017-2025 (downloaded 2026-10-18)",
+   "url": "https://api.worldbank.org/v2/country/TJK;KGZ;UZB;ARM;GEO;MDA;AZE;KAZ;BLR/indicator/BX.TRF.PWKR.CD.DT"
+  },
+  {
+   "id": "cbu",
+   "what": "Central Bank of Uzbekistan via Times of Central Asia / Kun.uz / Gazeta.uz: 2024 USD 14.8bn, Russia 11.5bn (77%); 2025 9M 13.9bn, H1 Russia 6.4bn (78%); H1-2026 +13%, Q1-2026 Russia 72.4%",
+   "url": "https://timesca.com/uzbekistan-receives-14-8-billion-in-remittances-in-2024/"
+  },
+  {
+   "id": "cbu2",
+   "what": "Uzbekistan 2022 USD 16.9bn, Russia share 87% (2022) -> 78% (2023); H1-2022 Russia 5.31bn = 2.3x H1-2021",
+   "url": "https://gazeta.uz/en/2024/04/25/remittances"
+  },
+  {
+   "id": "cbu3",
+   "what": "Q1/H1 2026 remittances to Uzbekistan, Russia share falling",
+   "url": "https://kun.uz/en/news/2026/07/07/remittances-to-uzbekistan-rise-13-despite-falling-share-from-russia-7ffbe4"
+  },
+  {
+   "id": "nbkr",
+   "what": "NBKR: 2024 inflows USD 2.99bn, Russia 93.1% (2.78bn); 2023 Russia 2.53bn",
+   "url": "https://24.kg/english/318729_Money_transfers_from_Russia_to_Kyrgyzstan_increase_by_12_percent_for_year/"
+  },
+  {
+   "id": "nbkr2",
+   "what": "Kyrgyzstan 2025 USD 3.5bn (+16.8%, Russia +16.1%) EBRD; 2026 Jan-Apr -10.2%, Russia -14%",
+   "url": "https://24.kg/english/362385_Remittances_to_Kyrgyzstan_reached_35_billion_in_2025"
+  },
+  {
+   "id": "nbkr3",
+   "what": "Kyrgyzstan 2026 decline",
+   "url": "https://caspianpost.com/kyrgyzstan/remittances-to-kyrgyzstan-decline-as-money-inflows-slow"
+  },
+  {
+   "id": "tjk",
+   "what": "Tajikistan: ADB ADO April 2026 (2025 USD 9.2bn, 52% of GDP); IOM 2024 USD 5.8bn; EFSD forecast 2026 43.2% of GDP",
+   "url": "https://www.adb.org/sites/default/files/publication/1135881/taj-ado-april-2026.pdf"
+  },
+  {
+   "id": "cba_am",
+   "what": "Armenia: Russia 2021 USD 865m (Eurasianet); 2022 ~3.6bn; 2023 3.95bn (70%); Jan-Oct 2024 2.9bn; Q1-2024 net from Russia -50%",
+   "url": "https://eurasianet.org/armenian-labor-migrants-reassess-work-in-collapsing-russian-economy"
+  },
+  {
+   "id": "cba_am2",
+   "what": "Armenia net inflows 2024 and Russia share",
+   "url": "https://arka.am/en/news/economy/net-inflow-of-non-commercial-money-transfers-to-armenia-from-abroad-down-1-4-times-in-10-months-of-2"
+  },
+  {
+   "id": "cba_am3",
+   "what": "Armenia 2025 transfers from Russia USD 3.9bn (RIA from CBA)",
+   "url": "https://finance.mail.ru/article/rossiya-stala-glavnym-donorom-denezhnyh-perevodov-dlya-armenii-69213862/"
+  },
+  {
+   "id": "wfp_am",
+   "what": "WFP Armenia market monitors (CBA monthly: Jan-2026 Russia 344.7m, Feb-2026 288.6m)",
+   "url": "https://docs.wfp.org/api/documents/WFP-0000173020/download/"
+  },
+  {
+   "id": "wb_am",
+   "what": "World Bank Armenia Monthly Economic Update Oct 2025 (net inflows from Russia +62.7% y/y)",
+   "url": "https://thedocs.worldbank.org/en/doc/aaeebd2860024488a9c3fcbb60caae30-0080012025/original/ARM-MEU-Oct-2025.pdf"
+  },
+  {
+   "id": "nbg",
+   "what": "NBG: Russia 2021 0.411bn, 2023 1.5bn, 2024 0.541bn (-64.6%)",
+   "url": "https://1tv.ge/lang/en/news/nbg-money-transfers-from-russia-decreased-by-64-6-in-2024/"
+  },
+  {
+   "id": "nbg2",
+   "what": "NBG 2022 Russia 2.068bn; ~112,000 relocants",
+   "url": "https://www.rferl.org/a/georgia-2-billion-russian-bank-transfers/32227284.html"
+  },
+  {
+   "id": "nbg3",
+   "what": "Georgia Aug 2026 transfers from Russia ~USD 5m after Zolotaya Korona suspension",
+   "url": "https://jam-news.net/russia-georgia-money-transfers-drop/"
+  },
+  {
+   "id": "nbg4",
+   "what": "Georgia Jan-Jul 2026 from Russia USD 291m",
+   "url": "https://caliber.az/en/post/remittances-from-russia-to-georgia-decline-in-july"
+  },
+  {
+   "id": "factcheck_ge",
+   "what": "Russia share of transfers to Georgia 18% (2021), 47% (2022), 37% (2023), 18% (9M 2024)",
+   "url": "https://factcheck.ge/en/story/43281-rusetis-tsili-fulad-gzavnilebshi-14-mde-shemtsirda"
+  },
+  {
+   "id": "nbk",
+   "what": "Kazakhstan: transfers from Russia 2022 KZT 357bn (USD 775m); 2024 KZT 61.8bn (-43%)",
+   "url": "https://en.orda.kz/money-transfers-from-russia-to-kazakhstan-drop-significantly-4851/"
+  },
+  {
+   "id": "nbk2",
+   "what": "NBK: IMTS 2023 KZT 1.33trn",
+   "url": "https://nationalbank.kz/en/news/informacionnye-soobshcheniya/16492"
+  },
+  {
+   "id": "cba_az",
+   "what": "Azerbaijan: 2023 Russia 1.047bn of 1.665bn; 2024 Russia 0.497bn of 1.083bn; 2022 ~3.6bn",
+   "url": "https://www.trend.az/azerbaijan/business/3879007.html"
+  },
+  {
+   "id": "bnm",
+   "what": "Moldova BNM: Russia 20.9% (USD 255.9m) of transfers in 2019",
+   "url": "https://www.bnm.md/en/node/58455"
+  },
+  {
+   "id": "bnm2",
+   "what": "Moldova: no transfers in Russian roubles in 2023-2024",
+   "url": "https://www.infomarket.md/en/currencymarket/350998"
+  },
+  {
+   "id": "wb_eca",
+   "what": "World Bank: ECA remittances +19% in 2022 driven by capital migration from Russia, strong rouble, demand for migrant labour",
+   "url": "https://blogs.worldbank.org/en/peoplemove/remittances-europe-and-central-asia-post-strong-growth"
+  },
+  {
+   "id": "cbr",
+   "what": "Bank of Russia cross-border transfers of individuals: published through 2021 (2020 survey), paused, resumed in Aug 2026 for Q3-2025 to Q2-2026 (outgoing totals, Financial Market Risk Review annex)",
+   "url": "https://raexpert.ru/researches/publications/rbc_aug13_2026"
+  },
+  {
+   "id": "cbr2",
+   "what": "Bank of Russia cross-border operations survey 2020",
+   "url": "https://www.cbr.ru/collection/collection/file/39301/cross-borderopssurvey%202020_e.pdf"
+  },
+  {
+   "id": "knomad",
+   "what": "KNOMAD/World Bank bilateral remittance matrix 2021 (modelled; download link redirected and was not used)",
+   "url": "https://www.knomad.org/data/remittances"
+  },
+  {
+   "id": "rosstat",
+   "what": "Russian average nominal wage 2025 RUB 100,360 (+14.1%)",
+   "url": "https://iz.ru/en/1960378/2025-09-24/expert-reported-excess-average-salary-russian-federation-100-thousand"
+  }
+ ],
+ "overlaps": [
+  {
+   "part": "svc_sold (services sold to Russia, uncovered.json services)",
+   "overlap": "None for labour remittances. svc_sold is EBOPS services trade (Eurostat bop_its6_det / BaTiS). Compensation of employees is primary income and personal transfers are secondary income: neither is in services trade.",
+   "caution": "Relocants' spending in the host country (rent, travel) sits in travel credits, so GEO/ARM svc_sold jumps in 2022 (GEO 0.25 -> 0.95) already carry part of the relocant money that this file leaves out. Keep relocant_eur_bn out to avoid counting it twice; the owner may also want to check whether relocants' travel spending should stay in svc_sold under the same rule."
+  },
+  {
+   "part": "payment_channels.json",
+   "overlap": "None. It lists the 2022 remittance surge as recorded but not counted (relocants, capital flight). Agent margins are fees, not wages."
+  },
+  {
+   "part": "company_flows.json (profits remitted by Russian-owned companies)",
+   "overlap": "None: investment income, not compensation of employees."
+  },
+  {
+   "part": "refugees_net.json",
+   "overlap": "None: it counts no remittances (and none from refugees to Ukraine)."
+  },
+  {
+   "part": "from_rus / to_rus goods trade and re-exports",
+   "overlap": "Possible through the non-labour part only. In ARM, KGZ and UZB some payments for goods go through individuals' transfers. These sit in relocant_eur_bn (non-labour) and are not counted, so no double count."
+  },
+  {
+   "part": "uncovered.json hidden_channels",
+   "overlap": "None: gold and crypto only."
+  },
+  {
+   "part": "site/data.json fields",
+   "overlap": "No field holds remittances or compensation of employees (checked: no \"remit\" key; svc_sold, company, private, people, hub are other flows)."
+  }
+ ],
+ "notes": [
+  "Labour remittances above the expected level count toward Russia (money earned from Russia), like services sold to Russia; below it they count toward Ukraine at product_when_less.",
+  "relocant_eur_bn = total minus labour: relocants, capital moved by migrants and Russians, Russians' own-account transfers, and trade payments through individuals. Left out by owner decision.",
+  "Uzbekistan and Tajikistan dominate. Their gaps are driven by Russian rouble wages (war labour shortage) and, partly, by a shift of migrants from cash to formal card/P2P channels; the latter is not real extra income and is why extra is 0.30-0.80, not ~0.9.",
+  "Coercion context only (not counted): after the March 2024 Crocus attack Russia tightened migrant rules (raids, patent costs up in 2026, registry of \"controlled persons\"); Central Asian migrants were pressed to sign military contracts (citizenship-for-service), and Nepalis, Indians, Cubans and others were recruited as soldiers. Military pay is not in these files.",
+  "Other receivers checked: Ukraine (not a map country for this flow); T\u00fcrkiye, China, Vietnam, Israel, Serbia, Germany, UAE get little labour income from Russia (< EUR 0.1bn a year, or relocant flows only). North Korea's workers in Russia (est. 10,000-15,000 since 2024) are a state labour export, not modelled here.",
+  "Bank of Russia country data were not available for 2022-2025 (publication paused; resumed only for totals in Aug 2026), so all figures come from receiving countries."
+ ]
+}

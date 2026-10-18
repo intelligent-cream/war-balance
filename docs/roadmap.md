@@ -1,9 +1,28 @@
 # Roadmap
 
-The work list for each data round. Round 6 is planned below; round 5 is done. Each item links to the limitation or method page it
+The work list for each data round. Rounds 5, 6 and 7 are done. Each item links to the limitation or method page it
 changes. Status is updated as items are done; the [changelog](changelog.md) records what each finished item changed.
 
-## Round 6 (planned 2026-10-18)
+## Round 7 (done)
+
+Agreed with the owner: keep the headline as money that actually moved (a country that stopped buying Russian energy
+gets the credit even where Russia cut supply, because it followed from its own stance). This round adds what freezing
+Russia's reserves denies Russia, marks sales of goods Russia's weapons need, narrows the widest ranges, and compares
+energy payments with the prices a no-war market expected.
+
+| # | step | kind |
+|---|---|---|
+| R1 | **Frozen Russian reserves**: per holding country, the return the immobilised central-bank assets would have earned (about 3–4% a year), credited to the holder on the Russia balance; no overlap with the ERA loans already left out of aid | done: EUR 27bn after Belgium's tax; Euroclear a third to Belgium, two thirds to all EU members ([russia-state-and-companies.md](method/russia-state-and-companies.md#frozen-central-bank-reserves-round-7)) |
+| R2 | **Critical-goods marker**: each country's sales to Russia of items on the Common High Priority List (tiers 1–2 and all tiers), shown as a marker and in the panel; totals unchanged | done: 19 countries marked ([trade.md](method/trade.md#goods-russias-weapons-need-the-critical-goods-marker-round-7)) |
+| R3 | **Narrower ranges**: (a) checked: for flows with a back-tested no-war path the baseline range already holds only the 2021 measurement (since round 4), and dropping it would widen ranges (it partly cancels the actual-value error), so nothing is double counted; (b) a better no-war path for imports from Russia, split into fuel and other goods, tested on back-tests; (c) national statistics to narrow the actual values for the widest countries (Belarus, Kyrgyzstan, Armenia, Tajikistan, Georgia, Mongolia, Kazakhstan, Yemen, Brunei, Syria, Uzbekistan) | (c) done: ten series in nine countries ([trade.md](method/trade.md#narrower-actual-values-round-7)); (b) done: re-measured size-class band, 7–12% narrower ([counterfactual.md](method/counterfactual.md#imports-from-russia-round-7)) |
+| R4 | **No-war energy prices**: payments and the war-time windfall compared with the price path markets expected before the invasion (late-2021 futures and forecasts), not 2019–2021 prices; actual contract prices where known; the cost view consistently at what each choice cost | done: windfall 455 → 153bn; 2026 against actual world prices ([prices.md](method/prices.md#no-war-prices-round-7)) |
+| R5 | **Remittances from Russia** (labour sold to Russia's economy), against the expected level and at the money rule, with relocants' transfers split out | done ([trade.md](method/trade.md#remittances-and-relocants-round-7)); relocants' spending taken out of travel income too |
+| R6 | Docs: why relocants' savings and Russians' property purchases abroad are left out (money leaving Russia) | done |
+| R7 | Integrate, translations, review, before/after comparison shown to the owner, merge into `develop` | done |
+
+Open for the owner: loans to Russia (Chinese and other banks) at their economic value.
+
+## Round 6 (done)
 
 The main change of this round is a fairer way to count money that comes back from the war effort. The rest narrows
 the ranges and closes data gaps.

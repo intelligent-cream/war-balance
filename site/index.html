@@ -292,6 +292,8 @@ details.more[open] summary { margin-bottom: 10px; }
 .panel-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
 .panel-tools select { font-size: 12.5px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); max-width: 100%; }
 .marker { cursor: pointer; }
+/* critical-goods marker: sales to Russia of goods its weapons need (not in the totals) */
+.chpl { fill: var(--ink); stroke: var(--surface); stroke-width: 1.2; vector-effect: non-scaling-stroke; pointer-events: none; }
 .marker circle { stroke: var(--surface); stroke-width: 2; vector-effect: non-scaling-stroke; }
 .marker text { font-family: var(--font-display); font-weight: 800; fill: var(--surface); pointer-events: none; }
 .legend-toggle { display: none; }
@@ -448,6 +450,7 @@ body[data-panel="open"] .view-inner { margin-right: 420px; margin-left: 0; }
         <output id="year-out" for="year" title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *)." data-i18n-title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).">2026 YTD</output>
       </div>
       <label class="toggle" for="show-flows"><input id="show-flows" type="checkbox" checked> <span data-i18n="Flows">Flows</span></label>
+      <label class="toggle" for="show-chpl"><input id="show-chpl" type="checkbox" checked> <span data-i18n="Critical goods">Critical goods</span></label>
       <label class="toggle" for="net-back"><input id="net-back" type="checkbox" checked> <span data-i18n="Subtract money flowing back">Subtract money flowing back</span></label>
       <button class="btn" id="open-rank" data-i18n="Top lists">Top lists</button>
       <div class="search">
@@ -514,7 +517,9 @@ function triple(obj, key) {
   // 2021 alone is an alternative baseline, at pre-war prices
   // range of the expected total over 1-5 years, measured on the back-tests' summed errors (round 6)
   const cb = key === "years" && obj && obj.cb ? obj.cb : null;
-  return { c, l, h, m, b: [Math.min(b[0], l[0] / ph[0], m), Math.max(b[1], h[0] / pl[0], m)], p, pl, ph, q, ql, qh, cb };
+  // range of the no-war fuel price, as factors on the expected path (payments to Russia, round 7)
+  const nr = key === "years" && obj && obj.nrl ? [obj.nrl, obj.nrh] : null;
+  return { c, l, h, m, b: [Math.min(b[0], l[0] / ph[0], m), Math.max(b[1], h[0] / pl[0], m)], p, pl, ph, q, ql, qh, cb, nr };
 }
 function normalise(c) {
   c.T = {
@@ -534,7 +539,7 @@ function normalise(c) {
 }
 
 const state = { lens: "change", measure: "gdp", year: 2026, selected: null, compare: null, panel: null,
-  flows: true, netBack: true, rankMetric: "shift", rankMeasure: "gdp", tableSort: "shiftGdp" };
+  flows: true, netBack: true, chpl: true, rankMetric: "shift", rankMeasure: "gdp", tableSort: "shiftGdp" };
 
 
 // Every number is a part with a middle value, a low and a high (a ~90% range) and a certainty letter.
@@ -556,10 +561,11 @@ function calc(c, y) {
   // the price level and the pre-war trend. Errors are summed over the years first (the same baseline every year).
   const spread = (t, ex, act) => {
     // ex(i, base, trend) and act(i, value, price) give one year's expected and actual volume
-    let mid = 0, bl = 0, bh = 0, al = 0, ah = 0, pl = 0, ph = 0, ql = 0, qh = 0, se = 0;
+    let mid = 0, bl = 0, bh = 0, al = 0, ah = 0, pl = 0, ph = 0, ql = 0, qh = 0, se = 0, nl = 0, nh = 0;
     for (let i = 1; i <= N; i++) {
       const e = ex(i, t.m, t.q[i]), a = act(i, t.c[i], t.p[i]);
       mid += e - a; se += e;
+      if (t.nr) { nl += e * (1 - t.nr[0][i]); nh += e * (t.nr[1][i] - 1); }
       bl += e - ex(i, t.b[0], t.q[i]); bh += ex(i, t.b[1], t.q[i]) - e;
       al += act(i, t.h[i], t.p[i]) - a; ah += a - act(i, t.l[i], t.p[i]);
       pl += act(i, t.c[i], t.pl[i]) - a; ph += a - act(i, t.c[i], t.ph[i]);
@@ -567,8 +573,8 @@ function calc(c, y) {
     }
     // the expected total's own measured band replaces the sum of the yearly bands
     if (t.cb && t.cb[N]) { ql = (1 - t.cb[N][0]) * se; qh = (t.cb[N][1] - 1) * se; }
-    const lo = Math.sqrt(Math.max(0, bl * bl + al * al - bl * al) + pl * pl + ql * ql);
-    const hi = Math.sqrt(Math.max(0, bh * bh + ah * ah - bh * ah) + ph * ph + qh * qh);
+    const lo = Math.sqrt(Math.max(0, bl * bl + al * al - bl * al) + pl * pl + ql * ql + nl * nl);
+    const hi = Math.sqrt(Math.max(0, bh * bh + ah * ah - bh * ah) + ph * ph + qh * qh + nh * nh);
     return [mid, mid - lo, mid + hi];
   };
   const exV = (i, base, q) => base * FRAC[i] * q, actV = (i, v, p) => v / p;
@@ -576,7 +582,7 @@ function calc(c, y) {
   const delta3 = t => spread(t, exV, actV);
   // only the rise above the expected level (each year on its own), negative values count as zero
   const above3 = t => { const r = [0, 0, 0]; for (let i = 1; i <= N; i++) { const one = spreadYear(t, i); r[0] += Math.max(0, one[0]); r[1] += Math.max(0, one[1]); r[2] += Math.max(0, one[2]); } return r; };
-  const spreadYear = (t, i) => { const d = spread({ ...t, c: t.c.map((v, j) => (j === i ? v : 0)), l: t.l.map((v, j) => (j === i ? v : 0)), h: t.h.map((v, j) => (j === i ? v : 0)), m: t.m, b: t.b, q: t.q.map((v, j) => (j === i ? v : 0)), ql: t.ql.map((v, j) => (j === i ? v : 0)), qh: t.qh.map((v, j) => (j === i ? v : 0)), cb: null }, exV, actV); return [-d[0], -d[2], -d[1]]; };
+  const spreadYear = (t, i) => { const d = spread({ ...t, c: t.c.map((v, j) => (j === i ? v : 0)), l: t.l.map((v, j) => (j === i ? v : 0)), h: t.h.map((v, j) => (j === i ? v : 0)), m: t.m, b: t.b, q: t.q.map((v, j) => (j === i ? v : 0)), ql: t.ql.map((v, j) => (j === i ? v : 0)), qh: t.qh.map((v, j) => (j === i ? v : 0)), cb: null, nr: null }, exV, actV); return [-d[0], -d[2], -d[1]]; };
   const neg = r => [-r[0], -r[2], -r[1]];
   const scale = (r, f) => [r[0] * f, r[1] * f, r[2] * f];
   const aid3 = sum3(T.aid), ref3 = sum3(T.ref);
@@ -632,7 +638,8 @@ function calc(c, y) {
     part("ref", "Hosting refugees", ref3, c.aid?.refugee_cert || "B", c.aid?.refugee_src || []),
     part("buy", "Extra purchases from Ukraine", above3(T.buyUkr), cTrade, src("buy_ukr")),
     part("paid", lessPaid3[0] >= 0 ? "Less paid to Russia" : "More paid to Russia", lessPaid3, cRus, src("to_rus")),
-    part("windfall", "Extra paid to Russia because of war-time prices", neg(sum3(T.windfall)), c.windfall?.cert || "C", src("windfall")),
+    // against the prices a no-war market expected; negative where Russia sold below them (price cap, discounts)
+    part("windfall", sum3(T.windfall)[0] >= 0 ? "Extra paid to Russia because of war-time prices" : "Paid Russia less than no-war prices (discounts, price cap)", neg(sum3(T.windfall)), c.windfall?.cert || "C", src("windfall")),
     // only the rise above the pre-war level (and its pre-war growth); in money, so higher prices count too
     part("laund", "Russian oil bought via other countries", neg(c.laund ? above3({ ...T.laundered, p: T.laundered.c.map(() => 1), pl: T.laundered.c.map(() => 1), ph: T.laundered.c.map(() => 1) }) : sum3(T.laundered)), "C", c.to_rus?.laundered_src || []),
     part("sold", lessSold3[0] >= 0 ? "Income lost on sales to Russia given up" : "Income from extra sales to Russia", earned3(lessSold3, "rl", "rx"), weakest([c.from_rus?.cert, "B"]), src("from_rus")),
@@ -857,6 +864,7 @@ const zoom = d3.zoom().scaleExtent([1, 14]).on("zoom", e => {
   transform = e.transform;
   g.attr("transform", e.transform);
   g.selectAll(".target-label").style("font-size", 11 / e.transform.k + "px").style("stroke-width", 2 / e.transform.k + "px");
+  g.selectAll(".chpl").attr("transform", d => `translate(${d.x},${d.y}) scale(${1 / e.transform.k})`);
   hideHint();
   if (reduceMotion) drawFlows(0);
 });
@@ -875,6 +883,7 @@ function layout() {
   if (countryPaths) {
     countryPaths.attr("d", path);
     g.selectAll(".target-label").attr("x", f => labelPos(f)[0]).attr("y", f => labelPos(f)[1] + 4);
+    drawChpl();
     buildArcs();
   }
 }
@@ -914,7 +923,8 @@ function paint() {
     <div class="step-labels">${sc.labels.map((l, i) => (sc.labels.length > 4 && ![0, 2, 5, 7].includes(i) ? "" : `<span style="left:${((i + 1) / sc.colors.length) * 100}%">${l}</span>`)).join("")}${sc.labels.length > 4 ? `<span style="left:50%">0</span>` : ""}</div>
     <div class="ticks" style="font-family:var(--font-body);margin-top:2px"><span>← ${sc.ends[0]}</span><span>${sc.ends[1]} →</span></div>
     <div class="keys"><span>${period}, ${LANG !== "en" && state.measure !== "gdp" ? t(state.measure === "pp" ? "€ per person" : "€ billion") : measure}</span>
-      <span><svg width="10" height="10" style="vertical-align:-1px;margin-right:4px"><rect width="10" height="10" fill="url(#hatch)"/></svg>${t("No data yet")}</span></div>
+      <span><svg width="10" height="10" style="vertical-align:-1px;margin-right:4px"><rect width="10" height="10" fill="url(#hatch)"/></svg>${t("No data yet")}</span>
+      ${state.chpl ? `<span><svg width="10" height="10" style="vertical-align:-1px;margin-right:4px"><path d="M5,0L10,5L5,10L0,5Z" fill="${C.ink}"/></svg>${t("Sold Russia goods its weapons need")}</span>` : ""}</div>
     <div class="flowkey" ${state.flows ? "" : "hidden"}>
       <span><svg width="28" height="8"><line x1="0" y1="4" x2="28" y2="4" stroke="${C.ukr}" stroke-width="3" stroke-linecap="round"/><circle cx="18" cy="4" r="3" fill="${C.ukr}"/></svg>${t("To Ukraine in {y}", { y: state.year })}</span>
       <span><svg width="28" height="8"><line x1="0" y1="4" x2="28" y2="4" stroke="${C.rus}" stroke-width="3" stroke-linecap="round"/><circle cx="18" cy="4" r="3" fill="${C.rus}"/></svg>${t("To Russia in {y}", { y: state.year })}</span>
@@ -923,6 +933,7 @@ function paint() {
     </div>`;
   document.getElementById("legend-toggle").onclick = () => { leg.dataset.collapsed = leg.dataset.collapsed === "true" ? "false" : "true"; paint(); };
   buildArcs();
+  drawChpl();
   if (reduceMotion) drawFlows(0);
   renderPanel();
   if (state.view && state.view !== "map" && window.renderView) renderView();
@@ -930,6 +941,21 @@ function paint() {
 
 // ===== Flow layer =====
 const ANCHOR = { "840": [-98, 39], "124": [-100, 56], "578": [10, 61], "250": [2.4, 46.6], "528": [5.3, 52.2], "036": [134, -25], "554": [172, -41], "392": [138, 36], "152": [-71, -33], "643": [37.6, 55.7] };
+// Critical-goods marker: a diamond on countries that sold Russia goods its weapons need (Common High Priority List),
+// EUR 0.1bn or more from 2022 to the chosen year; its size follows the amount. Not part of any total.
+function chplSum(c, N) { return c?.chpl ? c.chpl.years.slice(1, N + 1).reduce((a, b) => a + b, 0) : 0; }
+function drawChpl() {
+  if (!features) return;
+  const N = yi(state.year), k = transform ? transform.k : 1;
+  const on = state.chpl && N > 0;
+  const rows = on ? features.map(f => ({ f, c: DATA[f.id] })).filter(r => r.c && chplSum(r.c, N) >= 0.1).map(r => {
+    const [x, y] = projection(anchorOf(r.f)), s = Math.min(9, 2.5 + 1.6 * Math.sqrt(chplSum(r.c, N)));
+    return { id: r.f.id, x, y, s };
+  }) : [];
+  g.selectAll("path.chpl").data(rows, d => d.id).join("path").attr("class", "chpl")
+    .attr("d", d => `M0,${-d.s}L${d.s},0L0,${d.s}L${-d.s},0Z`)
+    .attr("transform", d => `translate(${d.x},${d.y}) scale(${1 / k})`);
+}
 function anchorOf(f) {
   if (ANCHOR[f.id]) return ANCHOR[f.id];
   if (f.geometry.type !== "MultiPolygon") return d3.geoCentroid(f);
@@ -1227,6 +1253,13 @@ function balanceCards(c, k) {
     <div class="bal ${k.rusBal >= 0 ? "pos" : "neg"}"><div class="lbl">${t("With Russia")}</div><div class="num">${g(k.rusBal)}</div><div class="s">${ru}</div><div class="s">${t("Likely range {lo} to {hi}", { lo: g(k.rusLo), hi: g(k.rusHi) })}</div></div>
   </div>${k.earner ? `<p class="note">${t("This country earned more from supplying the war effort for Ukraine than it gave. That is shown in gold on the map: it is not money toward Russia.")}</p>` : ""}`;
 }
+// sales to Russia of goods its weapons need (Common High Priority List): a marker, not in the totals
+function chplNote(c) {
+  const N = yi(state.year), v = chplSum(c, N);
+  if (N < 1 || v < 0.01) return "";
+  const lo = c.chpl.years_lo.slice(1, N + 1).reduce((a, b) => a + b, 0), hi = c.chpl.years_hi.slice(1, N + 1).reduce((a, b) => a + b, 0);
+  return `<p class="note">◆ ${t("Sold Russia goods its weapons need (chips, electronics, machine tools on the Common High Priority List): {v} in {p} (likely {lo} to {hi}); {pre} in 2021. Shown as a marker, not added to the totals.", { v: eur(v), p: periodText(), lo: eur(lo), hi: eur(hi), pre: eur(c.chpl.years[0]) })}${chip(c.chpl.cert)}${ref(c.chpl.src)}</p>`;
+}
 // share of a drop in weapons bought from Russia that came from Russia keeping its output for its own army or
 // sanctions on its production, not the buyer's choice (russian_arms_exports.json): a label, like the sanctions split
 function armsNote(c, k) {
@@ -1308,7 +1341,7 @@ function countryPanel(c) {
       <div class="big ${pos ? "pos" : "neg"}">${fmtMeasure(c, k.shift, "gdp", true)} <span style="font-size:15px;font-weight:600">${t("of a year's GDP")}</span></div>
       <div class="big-cap">${t(pos ? "shifted toward <b>Ukraine</b> compared with before the war{after}: {eur} · {pp}" : "shifted toward <b>Russia</b> compared with before the war{after}: {eur} · {pp}", { after: state.netBack ? t(", after money flowing back") : "", eur: eur(k.shift, true), pp: perPerson(c, k.shift) })}</div>
       ${rangeLine(c, k.shiftLo, k.shiftHi, k.shiftCert)}
-      ${balanceCards(c, k)}
+      ${balanceCards(c, k)}${chplNote(c)}
       ${waterfall(k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label[0].toLowerCase() + p.label.slice(1) }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
       ${sanctionNote(c, k)}
       ${armsNote(c, k)}
@@ -1345,7 +1378,7 @@ function countryPanel(c) {
       <li>${t("<b>Cost carried</b> = only what the country gave up: aid (loans at grant equivalent; loans repaid from frozen Russian assets cost nothing) + undisclosed aid + private donations + refugee hosting + extra price for replacing Russian energy + profit lost on goods and services no longer sold to Russia + tariffs dropped for Ukraine − discounts gained on Russian oil{back}. Buying less from Russia is not a cost in itself.", { back: state.netBack ? t(" − profit on money flowing back (20%, the same profit share as lost sales)") : "" })}</li>
       <li>${t("<b>% of GDP</b> is the total for the whole period (2022 up to the chosen year; 2026 is January to August) against one year's GDP (2024). Example: 10% means the country moved, over the whole war, as much as a tenth of one year's output.")}</li>
       <li>${t("<b>Middlemen</b>: fuel refined from Russian crude counts for the final buyer, at the value of the Russian crude in it; Russian gold passed on through Hong Kong counts for China; goods reaching Russia through Kyrgyzstan and Kazakhstan count for the country that made them. Liechtenstein, Monaco, the Isle of Man, Puerto Rico, the US Virgin Islands and Saint Martin are counted in the figures of the country that reports for them.")}</li>
-      <li>${t("<b>Prices</b>: changes against the pre-war level compare volumes, not price swings. What was bought from or sold to Russia (and Ukraine) each year is divided by its price level against 2019–2021, from the country's own pre-war mix of oil, oil products, gas, coal and other goods. A country that cut its purchases is credited with the drop in volume, at pre-war prices. What it still paid above pre-war prices for Russian fuel is counted on its own, as money toward Russia (the war-time price windfall).")}</li>
+      <li>${t("<b>Prices</b>: changes against the pre-war level compare volumes, not price swings. What was bought from or sold to Russia (and Ukraine) each year is divided by its price level against 2019–2021, from the country's own pre-war mix of oil, oil products, gas, coal and other goods. A country that cut its purchases is credited with the drop in volume: fuel at the prices a no-war market expected (forecasts and futures from before the invasion), other goods at pre-war prices. What it paid for Russian fuel above those no-war prices counts on its own, as money toward Russia (the war-time price windfall); paying below them (discounts, the price cap) counts as less money to Russia.")}</li>
       <li>${t("<b>Transit</b>: gas, oil and goods are counted where they are used, not where they cross the border. Gas passing through Slovakia, Austria, Germany or Bulgaria is counted for the country that burns it; fuel resold by trading hubs (Singapore, the Netherlands, Belgium, Greece, Malta) for the hub's customers; gold passed through Hong Kong for mainland China.")}</li>
       <li>${t("<b>Margins of error</b>: every part has a middle value and a low–high range of about 90%. The range comes from the data where the sources give one (alternative pre-war baselines, reporting differences, spread between methods); otherwise from the certainty letter (A ±5%, B ±15%, C ±35%, D ±70%). Totals combine the parts' margins as independent errors.")}</li>
       <li>${t("<b>Top lists</b> leave out economies under {min} GDP and countries whose likely range crosses zero.", { min: tight(money(num(MIN_GDP_RANK), "bn")) })}</li>
@@ -1534,6 +1567,7 @@ playBtn.onclick = () => {
   playTimer = setInterval(() => { if (state.year >= 2026) return stopPlay(); setYear(state.year + 1); }, 1800);
 };
 document.getElementById("show-flows").onchange = e => { state.flows = e.target.checked; paint(); drawFlows(0); };
+document.getElementById("show-chpl").onchange = e => { state.chpl = e.target.checked; drawChpl(); };
 document.getElementById("net-back").onchange = e => { state.netBack = e.target.checked; paint(); };
 document.getElementById("open-rank").onclick = () => { state.rankMetric = LENS_RANK[state.lens]; closeMenu(); openPanel("overview"); };
 const bar = document.getElementById("bar"), menuBtn = document.getElementById("menu-btn");

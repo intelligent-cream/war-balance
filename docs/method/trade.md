@@ -108,6 +108,64 @@ Kyrgyzstan). Crypto volumes (Garantex, the A7A5 rouble stablecoin) and the 2022 
 no country split or are not payments to Russia, and are not counted
 ([`payment_channels.json`](../../research/2026-10/gaps/payment_channels.json), [notes](../../research/2026-10/gaps/payment_channels-notes.md)).
 
+## Remittances and relocants (round 7)
+
+**Migrant workers' remittances** from Russia are wages for labour sold to Russia's economy, so they count like
+services sold to Russia: the change against the expected no-war level, at value kept (0.97) × genuinely extra (0.55
+when above expected, 0.40 when below) (`apply_remittances()`,
+[`remittances.json`](../../research/2026-10/gaps/remittances.json),
+[notes](../../research/2026-10/gaps/remittances-notes.md)). The expected level is the 2019 and 2021 average grown at
+each country's pre-war trend. Most of the rise came from Russia's war economy pushing wages up (average wage 57,000
+roubles in 2021, 100,000 in 2025). Effects, % of GDP 2022–2026: Tajikistan −37 (−83 to −10, certainty D: no split by
+country of origin), Uzbekistan −9 (−17 to −2), Kyrgyzstan −1.2, Armenia −0.8, Belarus −0.6; Georgia, Azerbaijan and
+Moldova slightly positive (less earned from Russia than expected).
+
+**Relocants are left out.** Money Russians brought or sent when they moved abroad after 2022 (savings, property
+purchases, transfers through local accounts) is money leaving Russia, which hurts Russia; counting it toward Russia
+would be the wrong sign, and counting it toward Ukraine would credit countries for something unrelated to Ukraine.
+About EUR 30bn of the 2022 surge in transfers was split out this way (Armenia 11.9, Uzbekistan 7.5, Tajikistan 3.3,
+Georgia 3.0, Azerbaijan 2.5), tested by the drop back after the surge.
+
+Relocants' **living spending** is recorded in the host's travel credits from Russia, so that share also comes out of
+services sold to Russia (`apply_relocants()`, [`relocants.json`](../../research/2026-10/gaps/relocants.json),
+[notes](../../research/2026-10/gaps/relocants-notes.md)): about EUR 3.3bn (1.2–6.5) over 2022–2026, mostly Türkiye
+(0.9), Georgia (0.7, from its central bank's one-year residence rule; 38% of 2022 travel credits from Russia), the UAE,
+Serbia, Armenia and Montenegro. Georgia moves from −14.8% to −13.5% of GDP, Montenegro +4.4% to +5.0%.
+
+## Narrower actual values (round 7)
+
+National and partner statistics narrowed ten series in nine countries
+([`actuals_r7.json`](../../research/2026-10/gaps/actuals_r7.json),
+[notes](../../research/2026-10/gaps/actuals_r7-notes.md)); each entry names the input it replaces, changed as the
+builder loads it (`_actuals_r7()`):
+
+- **Armenia**: 95–100% of the gold and diamonds it buys from Russia is passed on (its gold exports exceed its gold
+  imports from all origins every year), instead of 64–95%; more goes to the final buyers (UAE, China, Hong Kong).
+- **Brunei**: one Russian crude share for both the refinery's intake and the crude passed on to fuel buyers.
+- **Tajikistan**: Tajik official totals and Russian figures agree (imports from Russia USD 1.5–2.4bn a year).
+- **Belarus**: crude at the Urals price minus Russia's export duty (phased out by 2024); gas at a fixed dollar price.
+- **Kazakhstan, Kyrgyzstan, Mongolia**: own-report margins from Russia's mirror data, which sit near 1.0 for land
+  neighbours, not the world median ratio. **Yemen, Syria**: the pre-war level from Russia's own export figures.
+
+## Goods Russia's weapons need: the critical-goods marker (round 7)
+
+A euro of microchips matters more to Russia's war than a euro of bananas, but the map counts money. So sales to Russia
+of the 50 goods on the EU/US/UK/Japan **Common High Priority List** (chips, other electronics, navigation parts,
+bearings, machine tools) are shown as a **marker** (◆) and a line in the country panel, not added to any total; the
+money is already inside trade with Russia (`apply_chpl()`, [`chpl.json`](../../research/2026-10/gaps/chpl.json),
+[notes](../../research/2026-10/gaps/chpl-notes.md)).
+
+- **Per shipping country**: the country that let the goods go to Russia. Exporters' own customs records (Eurostat,
+  UN Comtrade), adjusted toward what Russian customs recorded as dispatched from each country in 2023 (KSE: China
+  ×1.25, Hong Kong ×2.96, Türkiye ×2.99, UAE ×1.59); the low end is the country's own record.
+- **Shown** where the total from 2022 to the chosen year is at least EUR 0.1bn; the diamond grows with the amount.
+- **2022 to August 2026**: about EUR 42bn in all. China 23.6bn (18.6–31.8), Hong Kong 7.5, the UAE 1.8, Belarus 1.4
+  (a guess), India 1.4, Türkiye 1.4, Kazakhstan 1.0. EU members sold EUR 3.8bn in 2021 and almost nothing from 2023.
+- **Not shown**: the brand behind the goods (Western brands made about 44% in 2023 by Russian customs data, about
+  a quarter US brands); later years are guesses because Russia restricted its customs data in 2024.
+- **Caution**: Russia pays well above world prices for these goods, so part of the money is the seller's margin, not
+  more hardware. China's military-support part (`china_military.json`) uses its own, narrower figure.
+
 ## Freight: CIF to FOB
 
 Import values include freight and insurance (CIF). That part is paid to shippers and insurers, and is counted for them in [shipping](services-shipping-companies.md#shipping) and services, not for Russia. [build_data.py `remove_freight()`](../../pipeline/build_data.py) takes `CIF_SHARE = 3.5% / 5.5% / 7.5%` (low/middle/high) out of every country's payments to Russia, yearly values and baseline alike, except for the share priced at the Russian border (pipeline gas and crude, electricity, overland trade; `BORDER_PRICED` from audit 2, question 7).

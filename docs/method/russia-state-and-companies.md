@@ -81,6 +81,30 @@ Profits Russian parents receive from their companies abroad, by host country, ag
 Viet Nam, Russian banks. Trusteeships that stopped transfers count toward Ukraine: Germany (Rosneft Deutschland,
 Gazprom Germania, now SEFE) about EUR 1.3bn over 2022–2026. Mostly estimates (certainty D) except Serbia.
 
+## Frozen central-bank reserves (round 7)
+
+About EUR 260bn of the Bank of Russia's reserves have been immobilised since 28 February 2022, about 185bn at
+Euroclear in Belgium. The frozen amount itself is not counted. What counts is the yearly return those reserves would
+have earned for Russia without the freeze: money Russia did not get, so toward Ukraine on the balance with Russia
+(`apply_frozen_reserves()`, [`frozen_assets.json`](../../research/2026-10/gaps/frozen_assets.json),
+[notes](../../research/2026-10/gaps/frozen_assets-notes.md)).
+
+- **Rates per currency and year**, close to what Euroclear actually earned (about 3.4%, 3.8% and 2.6% in 2023–2025);
+  yen and 2022 euro rates were near zero. Total about EUR 31bn over 2022 to August 2026 (24.5–40).
+- **Euroclear and Clearstream**: the freeze is an EU decision, so a third of their return goes to the host (Belgium,
+  Luxembourg, which carry the legal risk) and two thirds to all EU members by their share of EU-level aid.
+- **Belgium's tax** on Euroclear's Russian-asset income (about EUR 1.7bn in 2024, 1.0bn in 2025) is pledged to
+  Ukraine and already in Belgium's aid, so it is taken off the return first.
+- **The low end** allows for Russia having spent part of the reserves without a freeze (× 0.8).
+- **No double count** with the G7 ERA loans, which are repaid from this return and already left out of donors' aid.
+  One small possible overlap remains: most of the July 2024 windfall tranche went to the European Peace Facility, and
+  if the Kiel data count it as EU aid it also sits in members' EU shares (EUR 1.4–3bn across the EU).
+- **Left out**: private sanctioned assets (about EUR 28bn in the EU): private money, much of it yachts and property
+  that earn nothing. Reserves held in China (about USD 103bn) and gold held in Russia were not frozen.
+
+Largest credits, 2022–2026: Belgium EUR 7.4bn (1.2% of GDP), France 5.0, Germany 3.2, Italy 1.9, the UK 1.8,
+Spain 1.3, Switzerland 1.1, the US 0.8.
+
 ## See also
 
 - [overview.md](overview.md): every part of the map

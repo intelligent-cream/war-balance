@@ -1,0 +1,7166 @@
+{
+ "generated": "2026-10-18",
+ "meta": {
+  "what": "No-war price path per fuel (expected before the invasion), actual and no-war contract prices of the main buyers of Russian fuel, a corrected oil discount, and the formula that splits payments into a volume part at no-war prices and a war-time price windfall.",
+  "index_base": "2019-2021 average = 1, EUR-based (USD converted at actual ECB annual USD/EUR: 2019 1.1195, 2020 1.1422, 2021 1.1827, 2022 1.053, 2023 1.0813, 2024 1.0824, 2025 1.13, 2026 1.1616 Jan-Sep). 2026 = January-August.",
+  "bands": "low / central / high = range of the pre-war forecasts (low = lowest forecast, high = mid-February 2022 futures with war-risk premium). 'actual' = the index the map uses now (energy2.json) or the same benchmark computed on the same base.",
+  "nowar_levels": {
+   "2022": {
+    "brent_usd_bbl": [
+     66.2,
+     76.5,
+     88.0
+    ],
+    "urals_usd_bbl": [
+     62.9,
+     75.0,
+     87.1
+    ],
+    "ttf_eur_mwh": [
+     38.0,
+     59.4,
+     80.0
+    ],
+    "newcastle_usd_t": [
+     124.0,
+     147.0,
+     200.0
+    ],
+    "api2_usd_t": [
+     100.1,
+     118.7,
+     161.4
+    ],
+    "jkm_usd_mmbtu": [
+     12.23,
+     18.83,
+     25.19
+    ]
+   },
+   "2023": {
+    "brent_usd_bbl": [
+     66.3,
+     72.3,
+     80.0
+    ],
+    "urals_usd_bbl": [
+     63.0,
+     70.9,
+     79.2
+    ],
+    "ttf_eur_mwh": [
+     27.8,
+     37.1,
+     56.0
+    ],
+    "newcastle_usd_t": [
+     93.0,
+     116.0,
+     160.0
+    ],
+    "api2_usd_t": [
+     75.1,
+     93.6,
+     129.2
+    ],
+    "jkm_usd_mmbtu": [
+     9.31,
+     12.26,
+     18.25
+    ]
+   },
+   "2024": {
+    "brent_usd_bbl": [
+     66.0,
+     69.4,
+     75.0
+    ],
+    "urals_usd_bbl": [
+     62.7,
+     68.0,
+     74.2
+    ],
+    "ttf_eur_mwh": [
+     25.0,
+     30.0,
+     38.0
+    ],
+    "newcastle_usd_t": [
+     89.0,
+     102.0,
+     125.0
+    ],
+    "api2_usd_t": [
+     71.8,
+     82.3,
+     100.9
+    ],
+    "jkm_usd_mmbtu": [
+     8.43,
+     10.02,
+     12.55
+    ]
+   },
+   "2025": {
+    "brent_usd_bbl": [
+     65.5,
+     68.0,
+     72.5
+    ],
+    "urals_usd_bbl": [
+     62.2,
+     66.6,
+     71.8
+    ],
+    "ttf_eur_mwh": [
+     22.0,
+     26.5,
+     31.0
+    ],
+    "newcastle_usd_t": [
+     86.0,
+     93.0,
+     110.0
+    ],
+    "api2_usd_t": [
+     69.4,
+     75.1,
+     88.8
+    ],
+    "jkm_usd_mmbtu": [
+     7.79,
+     9.28,
+     10.77
+    ]
+   },
+   "2026": {
+    "brent_usd_bbl": [
+     65.0,
+     67.0,
+     71.0
+    ],
+    "urals_usd_bbl": [
+     61.8,
+     65.7,
+     70.3
+    ],
+    "ttf_eur_mwh": [
+     20.0,
+     25.3,
+     29.0
+    ],
+    "newcastle_usd_t": [
+     83.5,
+     89.0,
+     100.0
+    ],
+    "api2_usd_t": [
+     67.4,
+     71.8,
+     80.7
+    ],
+    "jkm_usd_mmbtu": [
+     7.31,
+     9.11,
+     10.37
+    ]
+   }
+  },
+  "bases_2019_2021": {
+   "brent_eur": 51.362,
+   "urals_eur": 50.559,
+   "ttf_eur_mwh": 23.133,
+   "nc_eur": 83.14,
+   "jkm_eur": 8.137,
+   "products_eur": 419.385,
+   "api2_over_nc_pre": 0.807
+  },
+  "certainty": {
+   "oil_2022_2023": "B",
+   "oil_2024_2026": "C",
+   "gas_2022_2023": "B",
+   "gas_2024_2026": "C",
+   "coal": "D",
+   "lng_asia": "C",
+   "contract_no_war": "C"
+  }
+ },
+ "nowar_index": {
+  "brent": {
+   "what": "Brent crude, EUR-based (USD path at actual ECB USD/EUR), base = 2019-2021 Brent in EUR",
+   "2022": {
+    "low": 1.224,
+    "central": 1.414,
+    "high": 1.627,
+    "actual": 1.866
+   },
+   "2023": {
+    "low": 1.194,
+    "central": 1.302,
+    "high": 1.44,
+    "actual": 1.485
+   },
+   "2024": {
+    "low": 1.187,
+    "central": 1.248,
+    "high": 1.349,
+    "actual": 1.448
+   },
+   "2025": {
+    "low": 1.129,
+    "central": 1.172,
+    "high": 1.249,
+    "actual": 1.191
+   },
+   "2026": {
+    "low": 1.089,
+    "central": 1.123,
+    "high": 1.19,
+    "actual": 1.515
+   }
+  },
+  "urals": {
+   "what": "Urals (Russian MinFin average, same base as energy2 price_index.urals): no-war Brent x pre-war Urals/Brent ratio 0.95 / 0.98 / 0.99",
+   "2022": {
+    "low": 1.181,
+    "central": 1.408,
+    "high": 1.636,
+    "actual": 1.429
+   },
+   "2023": {
+    "low": 1.152,
+    "central": 1.296,
+    "high": 1.449,
+    "actual": 1.152
+   },
+   "2024": {
+    "low": 1.146,
+    "central": 1.243,
+    "high": 1.357,
+    "actual": 1.24
+   },
+   "2025": {
+    "low": 1.089,
+    "central": 1.166,
+    "high": 1.256,
+    "actual": 0.974
+   },
+   "2026": {
+    "low": 1.051,
+    "central": 1.118,
+    "high": 1.197,
+    "actual": 1.206
+   }
+  },
+  "espo": {
+   "what": "ESPO Blend (China): pre-war ESPO traded at Dubai + 2-6 USD, about Brent; no-war = Brent x 0.97 / 1.00 / 1.04, base = Brent",
+   "2022": {
+    "low": 1.187,
+    "central": 1.414,
+    "high": 1.692
+   },
+   "2023": {
+    "low": 1.158,
+    "central": 1.302,
+    "high": 1.498
+   },
+   "2024": {
+    "low": 1.152,
+    "central": 1.248,
+    "high": 1.403
+   },
+   "2025": {
+    "low": 1.095,
+    "central": 1.172,
+    "high": 1.299
+   },
+   "2026": {
+    "low": 1.057,
+    "central": 1.123,
+    "high": 1.238
+   }
+  },
+  "diesel_gasoil_products": {
+   "what": "Russian oil-product basket incl. diesel/gasoil (same base as energy2 price_index.products): no-war Brent x pre-war products/Brent ratio x crack factor (2022 0.97/1.02/1.12, later 0.97/1.00/1.05)",
+   "2022": {
+    "low": 1.194,
+    "central": 1.451,
+    "high": 1.833,
+    "actual": 1.707
+   },
+   "2023": {
+    "low": 1.165,
+    "central": 1.309,
+    "high": 1.565,
+    "actual": 1.377
+   },
+   "2024": {
+    "low": 1.158,
+    "central": 1.255,
+    "high": 1.425,
+    "actual": 1.344
+   },
+   "2025": {
+    "low": 1.101,
+    "central": 1.178,
+    "high": 1.319,
+    "actual": 1.144
+   },
+   "2026": {
+    "low": 1.063,
+    "central": 1.129,
+    "high": 1.257,
+    "actual": 1.49
+   }
+  },
+  "lpg": {
+   "what": "LPG (propane/butane), priced off crude: no-war Brent x 0.90 / 1.00 / 1.10, base = Brent. Small: inside products/other_fossil on the map",
+   "2022": {
+    "low": 1.102,
+    "central": 1.414,
+    "high": 1.79
+   },
+   "2023": {
+    "low": 1.074,
+    "central": 1.302,
+    "high": 1.585
+   },
+   "2024": {
+    "low": 1.068,
+    "central": 1.248,
+    "high": 1.484
+   },
+   "2025": {
+    "low": 1.016,
+    "central": 1.172,
+    "high": 1.374
+   },
+   "2026": {
+    "low": 0.981,
+    "central": 1.123,
+    "high": 1.309
+   }
+  },
+  "ttf": {
+   "what": "European gas hub TTF (EUR/MWh), base 23.13 EUR/MWh (2019-2021)",
+   "2022": {
+    "low": 1.643,
+    "central": 2.568,
+    "high": 3.458,
+    "actual": 5.295
+   },
+   "2023": {
+    "low": 1.202,
+    "central": 1.604,
+    "high": 2.421,
+    "actual": 1.759
+   },
+   "2024": {
+    "low": 1.081,
+    "central": 1.297,
+    "high": 1.643,
+    "actual": 1.487
+   },
+   "2025": {
+    "low": 0.951,
+    "central": 1.146,
+    "high": 1.34,
+    "actual": 1.569
+   },
+   "2026": {
+    "low": 0.865,
+    "central": 1.094,
+    "high": 1.254,
+    "actual": 1.963
+   }
+  },
+  "jkm": {
+   "what": "Asian spot LNG (JKM; FRED PNGASJPUSDM used as the actual series): no-war = no-war TTF in USD + 0.5 USD/MMBtu",
+   "2022": {
+    "low": 1.427,
+    "central": 2.198,
+    "high": 2.94,
+    "actual": 3.886
+   },
+   "2023": {
+    "low": 1.058,
+    "central": 1.393,
+    "high": 2.074,
+    "actual": 1.53
+   },
+   "2024": {
+    "low": 0.957,
+    "central": 1.137,
+    "high": 1.425,
+    "actual": 1.329
+   },
+   "2025": {
+    "low": 0.847,
+    "central": 1.009,
+    "high": 1.171,
+    "actual": 1.315
+   },
+   "2026": {
+    "low": 0.773,
+    "central": 0.964,
+    "high": 1.097,
+    "actual": 1.714
+   }
+  },
+  "newcastle": {
+   "what": "Newcastle coal (FRED PCOALAUUSDM base), EUR-based",
+   "2022": {
+    "low": 1.416,
+    "central": 1.679,
+    "high": 2.285,
+    "actual": 4.388
+   },
+   "2023": {
+    "low": 1.034,
+    "central": 1.29,
+    "high": 1.78,
+    "actual": 2.093
+   },
+   "2024": {
+    "low": 0.989,
+    "central": 1.133,
+    "high": 1.389,
+    "actual": 1.595
+   },
+   "2025": {
+    "low": 0.915,
+    "central": 0.99,
+    "high": 1.171,
+    "actual": 1.197
+   },
+   "2026": {
+    "low": 0.865,
+    "central": 0.922,
+    "high": 1.035,
+    "actual": 1.409
+   }
+  },
+  "api2": {
+   "what": "API2 (ARA) coal: derived from Newcastle with the pre-war API2/Newcastle ratio (0.81), so its index equals Newcastle's; no free API2 futures archive found",
+   "2022": {
+    "low": 1.416,
+    "central": 1.679,
+    "high": 2.285
+   },
+   "2023": {
+    "low": 1.034,
+    "central": 1.29,
+    "high": 1.78
+   },
+   "2024": {
+    "low": 0.989,
+    "central": 1.133,
+    "high": 1.389
+   },
+   "2025": {
+    "low": 0.915,
+    "central": 0.99,
+    "high": 1.171
+   },
+   "2026": {
+    "low": 0.865,
+    "central": 0.922,
+    "high": 1.035
+   }
+  },
+  "russian_coal": {
+   "what": "Russian coal export price (same base as energy2 price_index.coal): moves with no-war Newcastle/API2",
+   "2022": {
+    "low": 1.416,
+    "central": 1.679,
+    "high": 2.285,
+    "actual": 2.221
+   },
+   "2023": {
+    "low": 1.034,
+    "central": 1.29,
+    "high": 1.78,
+    "actual": 1.449
+   },
+   "2024": {
+    "low": 0.989,
+    "central": 1.133,
+    "high": 1.389,
+    "actual": 1.26
+   },
+   "2025": {
+    "low": 0.915,
+    "central": 0.99,
+    "high": 1.171,
+    "actual": 1.145
+   },
+   "2026": {
+    "low": 0.865,
+    "central": 0.922,
+    "high": 1.035,
+    "actual": 1.213
+   }
+  },
+  "oil_formula_9m": {
+   "what": "An oil-indexed gas contract with a 9-month average lagged one month (annual value = half last year's, half this year's Brent), EUR-based",
+   "2022": {
+    "low": 1.262,
+    "central": 1.357,
+    "high": 1.463,
+    "actual": 1.582
+   },
+   "2023": {
+    "low": 1.188,
+    "central": 1.335,
+    "high": 1.507,
+    "actual": 1.645
+   },
+   "2024": {
+    "low": 1.185,
+    "central": 1.27,
+    "high": 1.389,
+    "actual": 1.461
+   },
+   "2025": {
+    "low": 1.129,
+    "central": 1.179,
+    "high": 1.266,
+    "actual": 1.284
+   },
+   "2026": {
+    "low": 1.09,
+    "central": 1.127,
+    "high": 1.198,
+    "actual": 1.332
+   }
+  },
+  "russian_pipeline_gas_europe": {
+   "what": "Russian pipeline gas in Europe, benchmark mix (same base as energy2 price_index.pipeline_gas): 0.75 TTF + 0.25 oil formula",
+   "2022": {
+    "low": 1.548,
+    "central": 2.265,
+    "high": 2.959,
+    "actual": 4.506
+   },
+   "2023": {
+    "low": 1.198,
+    "central": 1.536,
+    "high": 2.192,
+    "actual": 2.323
+   },
+   "2024": {
+    "low": 1.107,
+    "central": 1.29,
+    "high": 1.579,
+    "actual": 1.714
+   },
+   "2025": {
+    "low": 0.995,
+    "central": 1.154,
+    "high": 1.322,
+    "actual": 1.776
+   },
+   "2026": {
+    "low": 0.921,
+    "central": 1.102,
+    "high": 1.24,
+    "actual": 2.309
+   }
+  },
+  "russian_lng_europe": {
+   "what": "Russian LNG landed in Europe (same base as energy2 price_index.lng): moves with no-war TTF",
+   "2022": {
+    "low": 1.643,
+    "central": 2.568,
+    "high": 3.458,
+    "actual": 3.719
+   },
+   "2023": {
+    "low": 1.202,
+    "central": 1.604,
+    "high": 2.421,
+    "actual": 2.136
+   },
+   "2024": {
+    "low": 1.081,
+    "central": 1.297,
+    "high": 1.643,
+    "actual": 1.581
+   },
+   "2025": {
+    "low": 0.951,
+    "central": 1.146,
+    "high": 1.34,
+    "actual": 1.76
+   },
+   "2026": {
+    "low": 0.865,
+    "central": 1.094,
+    "high": 1.254,
+    "actual": 1.872
+   }
+  }
+ },
+ "contract_prices": {
+  "HUN": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "ttf": 1.0
+    },
+    "certainty_actual": "A",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 128.1,
+      "actual_index": 7.563,
+      "nowar_eur_mwh": {
+       "low": 39.7,
+       "central": 62.1,
+       "high": 83.7
+      },
+      "nowar_index": {
+       "low": 2.346,
+       "central": 3.667,
+       "high": 4.939
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 48.1,
+      "actual_index": 2.841,
+      "nowar_eur_mwh": {
+       "low": 32.9,
+       "central": 43.8,
+       "high": 66.2
+      },
+      "nowar_index": {
+       "low": 1.941,
+       "central": 2.59,
+       "high": 3.909
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 32.0,
+      "actual_index": 1.887,
+      "nowar_eur_mwh": {
+       "low": 23.3,
+       "central": 27.9,
+       "high": 35.3
+      },
+      "nowar_index": {
+       "low": 1.371,
+       "central": 1.646,
+       "high": 2.084
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 37.9,
+      "actual_index": 2.24,
+      "nowar_eur_mwh": {
+       "low": 23.0,
+       "central": 27.7,
+       "high": 32.4
+      },
+      "nowar_index": {
+       "low": 1.358,
+       "central": 1.635,
+       "high": 1.913
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 41.1,
+      "actual_index": 2.428,
+      "nowar_eur_mwh": {
+       "low": 18.1,
+       "central": 22.9,
+       "high": 26.3
+      },
+      "nowar_index": {
+       "low": 1.07,
+       "central": 1.353,
+       "high": 1.551
+      }
+     }
+    }
+   },
+   "contract_note": "MVM-Gazprom 15-year contract signed Sep 2021 (4.5 bcm/yr, from Oct 2021). Formula not disclosed; customs unit values track TTF with a short lag (2022: 128 EUR/MWh vs TTF 122), so in practice hub-indexed rather than oil-capped. Deferred-payment arrangement for winter 2022/23 changes timing, not price."
+  },
+  "SRB": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "oil9": 1.0
+    },
+    "certainty_actual": "A",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 34.3,
+      "actual_index": 1.772,
+      "nowar_eur_mwh": {
+       "low": 27.4,
+       "central": 29.4,
+       "high": 31.7
+      },
+      "nowar_index": {
+       "low": 1.414,
+       "central": 1.52,
+       "high": 1.639
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 39.2,
+      "actual_index": 2.023,
+      "nowar_eur_mwh": {
+       "low": 28.3,
+       "central": 31.8,
+       "high": 35.9
+      },
+      "nowar_index": {
+       "low": 1.461,
+       "central": 1.641,
+       "high": 1.853
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 30.4,
+      "actual_index": 1.573,
+      "nowar_eur_mwh": {
+       "low": 24.7,
+       "central": 26.4,
+       "high": 28.9
+      },
+      "nowar_index": {
+       "low": 1.277,
+       "central": 1.367,
+       "high": 1.496
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 28.6,
+      "actual_index": 1.477,
+      "nowar_eur_mwh": {
+       "low": 25.1,
+       "central": 26.3,
+       "high": 28.2
+      },
+      "nowar_index": {
+       "low": 1.298,
+       "central": 1.356,
+       "high": 1.456
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 27.5,
+      "actual_index": 1.421,
+      "nowar_eur_mwh": {
+       "low": 22.5,
+       "central": 23.3,
+       "high": 24.7
+      },
+      "nowar_index": {
+       "low": 1.162,
+       "central": 1.203,
+       "high": 1.278
+      }
+     }
+    }
+   },
+   "contract_note": "Srbijagas-Gazprom: 100% oil-indexed formula (2.2 bcm/yr contract signed May 2022, extended in 2025 at ~EUR 290/1000 m3 \"under the same formula\"); Serbia rejected a 30% oil / 70% hub mix. Supply via TurkStream-Bulgaria since Jan 2021 (Hungary route before)."
+  },
+  "SVK": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "ttf": 1.0
+    },
+    "certainty_actual": "A",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 98.6,
+      "actual_index": 4.902,
+      "nowar_eur_mwh": {
+       "low": 30.6,
+       "central": 47.8,
+       "high": 64.4
+      },
+      "nowar_index": {
+       "low": 1.521,
+       "central": 2.377,
+       "high": 3.201
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 47.1,
+      "actual_index": 2.34,
+      "nowar_eur_mwh": {
+       "low": 32.2,
+       "central": 42.9,
+       "high": 64.8
+      },
+      "nowar_index": {
+       "low": 1.598,
+       "central": 2.133,
+       "high": 3.22
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 37.5,
+      "actual_index": 1.863,
+      "nowar_eur_mwh": {
+       "low": 27.3,
+       "central": 32.7,
+       "high": 41.4
+      },
+      "nowar_index": {
+       "low": 1.354,
+       "central": 1.625,
+       "high": 2.058
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 38.7,
+      "actual_index": 1.922,
+      "nowar_eur_mwh": {
+       "low": 23.5,
+       "central": 28.3,
+       "high": 33.0
+      },
+      "nowar_index": {
+       "low": 1.165,
+       "central": 1.403,
+       "high": 1.641
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 47.9,
+      "actual_index": 2.381,
+      "nowar_eur_mwh": {
+       "low": 21.1,
+       "central": 26.7,
+       "high": 30.6
+      },
+      "nowar_index": {
+       "low": 1.049,
+       "central": 1.327,
+       "high": 1.521
+      }
+     }
+    }
+   },
+   "contract_note": "SPP-Gazprom long-term contract (to 2034), largely hub-indexed since the 2010s; after Ukraine transit ended (Jan 2025) gas arrives via TurkStream/Hungary."
+  },
+  "AUT": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "ttf": 1.0
+    },
+    "certainty_actual": "B",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 97.4,
+      "actual_index": 4.851,
+      "nowar_eur_mwh": {
+       "low": 30.2,
+       "central": 47.2,
+       "high": 63.6
+      },
+      "nowar_index": {
+       "low": 1.505,
+       "central": 2.352,
+       "high": 3.168
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 48.5,
+      "actual_index": 2.416,
+      "nowar_eur_mwh": {
+       "low": 33.1,
+       "central": 44.2,
+       "high": 66.7
+      },
+      "nowar_index": {
+       "low": 1.65,
+       "central": 2.202,
+       "high": 3.324
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 36.5,
+      "actual_index": 1.818,
+      "nowar_eur_mwh": {
+       "low": 26.5,
+       "central": 31.8,
+       "high": 40.3
+      },
+      "nowar_index": {
+       "low": 1.321,
+       "central": 1.585,
+       "high": 2.008
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 38.7,
+      "actual_index": 1.925,
+      "nowar_eur_mwh": {
+       "low": 23.5,
+       "central": 28.3,
+       "high": 33.0
+      },
+      "nowar_index": {
+       "low": 1.167,
+       "central": 1.405,
+       "high": 1.644
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 47.9,
+      "actual_index": 2.385,
+      "nowar_eur_mwh": {
+       "low": 21.1,
+       "central": 26.7,
+       "high": 30.6
+      },
+      "nowar_index": {
+       "low": 1.051,
+       "central": 1.329,
+       "high": 1.523
+      }
+     }
+    }
+   },
+   "contract_note": "OMV-Gazprom Export contract (to 2040), hub-indexed; OMV terminated the contract in Dec 2024 after an arbitration award, so Austrian imports from Russia ended with Ukraine transit on 1 Jan 2025."
+  },
+  "TUR": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "ttf": 0.7,
+     "oil9": 0.3
+    },
+    "certainty_actual": "C",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 99.482,
+      "actual_index": 5.338,
+      "nowar_eur_mwh": {
+       "low": 36.4,
+       "central": 52.4,
+       "high": 68.0
+      },
+      "nowar_index": {
+       "low": 1.951,
+       "central": 2.814,
+       "high": 3.651
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 37.893,
+      "actual_index": 2.033,
+      "nowar_eur_mwh": {
+       "low": 26.3,
+       "central": 33.5,
+       "high": 47.2
+      },
+      "nowar_index": {
+       "low": 1.412,
+       "central": 1.795,
+       "high": 2.53
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 35.101,
+      "actual_index": 1.883,
+      "nowar_eur_mwh": {
+       "low": 26.4,
+       "central": 30.6,
+       "high": 37.2
+      },
+      "nowar_index": {
+       "low": 1.416,
+       "central": 1.641,
+       "high": 1.994
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 36.264,
+      "actual_index": 1.946,
+      "nowar_eur_mwh": {
+       "low": 24.5,
+       "central": 28.2,
+       "high": 32.2
+      },
+      "nowar_index": {
+       "low": 1.317,
+       "central": 1.516,
+       "high": 1.728
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 39.647,
+      "actual_index": 2.127,
+      "nowar_eur_mwh": {
+       "low": 20.8,
+       "central": 24.7,
+       "high": 27.7
+      },
+      "nowar_index": {
+       "low": 1.118,
+       "central": 1.324,
+       "high": 1.484
+      }
+     }
+    }
+   },
+   "gas_lng": {
+    "formula_weights": {
+     "ttf": 1.0
+    },
+    "certainty_actual": "C",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": null,
+      "actual_index": 1.0,
+      "nowar_eur_mwh": null,
+      "nowar_index": {
+       "low": 0.31,
+       "central": 0.485,
+       "high": 0.653
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": null,
+      "actual_index": 0.811,
+      "nowar_eur_mwh": null,
+      "nowar_index": {
+       "low": 0.554,
+       "central": 0.739,
+       "high": 1.116
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": null,
+      "actual_index": 0.616,
+      "nowar_eur_mwh": null,
+      "nowar_index": {
+       "low": 0.448,
+       "central": 0.537,
+       "high": 0.68
+      }
+     }
+    }
+   },
+   "contract_note": "BOTAS-Gazprom (Blue Stream 16 bcm/yr and TurkStream-1 contracts, ~22 bcm/yr, extended year by year since 2025) plus private importers (Western line, ~5.75 bcm). Oil-indexed with negotiated discounts (10.25% in 2015-16, renewed demands 2021-2023) and a deferred-payment arrangement in 2022-2024 that shifts cash timing but not the contract price. Small Russian LNG cargoes 2022-2024.",
+   "crude_cif_usd_bbl": {
+    "2021": {
+     "cif_usd_bbl": 70.01,
+     "brent_usd_bbl": 70.86,
+     "discount_to_brent_usd_bbl": 0.85
+    },
+    "2022": {
+     "cif_usd_bbl": 79.37,
+     "brent_usd_bbl": 100.93,
+     "discount_to_brent_usd_bbl": 21.56,
+     "nowar_cif_usd_bbl": {
+      "low": 63.99,
+      "central": 76.28,
+      "high": 88.65
+     },
+     "paid_minus_nowar_cif_usd_bbl": 3.09
+    },
+    "2023": {
+     "cif_usd_bbl": 65.25,
+     "brent_usd_bbl": 82.49,
+     "discount_to_brent_usd_bbl": 17.24,
+     "nowar_cif_usd_bbl": {
+      "low": 64.09,
+      "central": 72.1,
+      "high": 80.59
+     },
+     "paid_minus_nowar_cif_usd_bbl": -6.85
+    },
+    "2024": {
+     "cif_usd_bbl": 69.49,
+     "brent_usd_bbl": 80.52,
+     "discount_to_brent_usd_bbl": 11.03,
+     "nowar_cif_usd_bbl": {
+      "low": 63.8,
+      "central": 69.2,
+      "high": 75.55
+     },
+     "paid_minus_nowar_cif_usd_bbl": 0.29
+    },
+    "2025": {
+     "cif_usd_bbl": 57.24,
+     "brent_usd_bbl": 69.14,
+     "discount_to_brent_usd_bbl": 11.9,
+     "nowar_cif_usd_bbl": {
+      "low": 63.32,
+      "central": 67.81,
+      "high": 73.03
+     },
+     "paid_minus_nowar_cif_usd_bbl": -10.57
+    },
+    "2026": {
+     "cif_usd_bbl": 72.58,
+     "brent_usd_bbl": 90.38,
+     "discount_to_brent_usd_bbl": 17.8,
+     "nowar_cif_usd_bbl": {
+      "low": 62.83,
+      "central": 66.81,
+      "high": 71.52
+     },
+     "paid_minus_nowar_cif_usd_bbl": 5.77
+    }
+   },
+   "urals_note": "Turkey's crude price is MinFin Urals plus Black Sea freight (turkey_prices.json), so its discount to Brent is the full Urals discount; Turkish pipeline gas uses turkey_prices.json (70% hub / 30% oil since the 2021 renegotiation, pre-war, so the no-war contract keeps that mix)."
+  },
+  "CHN": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "oil9": 1.0
+    },
+    "certainty_actual": "B",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 23.1,
+      "actual_index": 1.517,
+      "nowar_eur_mwh": {
+       "low": 18.4,
+       "central": 19.8,
+       "high": 21.4
+      },
+      "nowar_index": {
+       "low": 1.21,
+       "central": 1.301,
+       "high": 1.403
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 24.9,
+      "actual_index": 1.631,
+      "nowar_eur_mwh": {
+       "low": 18.0,
+       "central": 20.2,
+       "high": 22.8
+      },
+      "nowar_index": {
+       "low": 1.178,
+       "central": 1.323,
+       "high": 1.494
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 22.7,
+      "actual_index": 1.49,
+      "nowar_eur_mwh": {
+       "low": 18.4,
+       "central": 19.7,
+       "high": 21.6
+      },
+      "nowar_index": {
+       "low": 1.209,
+       "central": 1.295,
+       "high": 1.417
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 20.4,
+      "actual_index": 1.336,
+      "nowar_eur_mwh": {
+       "low": 17.9,
+       "central": 18.7,
+       "high": 20.1
+      },
+      "nowar_index": {
+       "low": 1.174,
+       "central": 1.227,
+       "high": 1.317
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 18.4,
+      "actual_index": 1.206,
+      "nowar_eur_mwh": {
+       "low": 15.1,
+       "central": 15.6,
+       "high": 16.6
+      },
+      "nowar_index": {
+       "low": 0.987,
+       "central": 1.021,
+       "high": 1.085
+      }
+     }
+    }
+   },
+   "gas_lng": {
+    "formula_weights": {
+     "oil3": 0.5,
+     "jkm": 0.5
+    },
+    "certainty_actual": "B",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 64.8,
+      "actual_index": 2.424,
+      "nowar_eur_mwh": {
+       "low": 30.8,
+       "central": 41.4,
+       "high": 51.8
+      },
+      "nowar_index": {
+       "low": 1.154,
+       "central": 1.548,
+       "high": 1.938
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 39.2,
+      "actual_index": 1.466,
+      "nowar_eur_mwh": {
+       "low": 28.5,
+       "central": 34.3,
+       "high": 44.9
+      },
+      "nowar_index": {
+       "low": 1.065,
+       "central": 1.284,
+       "high": 1.68
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 36.6,
+      "actual_index": 1.369,
+      "nowar_eur_mwh": {
+       "low": 28.2,
+       "central": 31.5,
+       "high": 36.7
+      },
+      "nowar_index": {
+       "low": 1.054,
+       "central": 1.178,
+       "high": 1.374
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 29.4,
+      "actual_index": 1.101,
+      "nowar_eur_mwh": {
+       "low": 22.7,
+       "central": 25.2,
+       "high": 28.0
+      },
+      "nowar_index": {
+       "low": 0.852,
+       "central": 0.942,
+       "high": 1.047
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 36.3,
+      "actual_index": 1.357,
+      "nowar_eur_mwh": {
+       "low": 21.6,
+       "central": 24.2,
+       "high": 26.5
+      },
+      "nowar_index": {
+       "low": 0.806,
+       "central": 0.904,
+       "high": 0.991
+      }
+     }
+    }
+   },
+   "contract_note": "CNPC-Gazprom Power of Siberia 30-year contract (38 bcm/yr plateau reached Dec 2024), oil-product-linked with a ~9-month lag, base price undisclosed; Russian LNG (Yamal, Sakhalin, Arctic LNG 2 from 2024) bought on term and spot.",
+   "crude_cif_usd_bbl": {
+    "2021": {
+     "cif_usd_bbl": 69.45,
+     "brent_usd_bbl": 70.86,
+     "discount_to_brent_usd_bbl": 1.41
+    },
+    "2022": {
+     "cif_usd_bbl": 92.34,
+     "brent_usd_bbl": 100.93,
+     "discount_to_brent_usd_bbl": 8.59,
+     "nowar_cif_usd_bbl": {
+      "low": 65.14,
+      "central": 77.65,
+      "high": 90.23
+     },
+     "paid_minus_nowar_cif_usd_bbl": 14.69
+    },
+    "2023": {
+     "cif_usd_bbl": 83.16,
+     "brent_usd_bbl": 82.49,
+     "discount_to_brent_usd_bbl": -0.67,
+     "nowar_cif_usd_bbl": {
+      "low": 65.23,
+      "central": 73.38,
+      "high": 82.03
+     },
+     "paid_minus_nowar_cif_usd_bbl": 9.78
+    },
+    "2024": {
+     "cif_usd_bbl": 78.72,
+     "brent_usd_bbl": 80.52,
+     "discount_to_brent_usd_bbl": 1.8,
+     "nowar_cif_usd_bbl": {
+      "low": 64.94,
+      "central": 70.44,
+      "high": 76.9
+     },
+     "paid_minus_nowar_cif_usd_bbl": 8.28
+    },
+    "2025": {
+     "cif_usd_bbl": 66.34,
+     "brent_usd_bbl": 69.14,
+     "discount_to_brent_usd_bbl": 2.8,
+     "nowar_cif_usd_bbl": {
+      "low": 64.45,
+      "central": 69.02,
+      "high": 74.34
+     },
+     "paid_minus_nowar_cif_usd_bbl": -2.68
+    },
+    "2026": {
+     "cif_usd_bbl": 91.34,
+     "brent_usd_bbl": 90.38,
+     "discount_to_brent_usd_bbl": -0.96,
+     "nowar_cif_usd_bbl": {
+      "low": 63.95,
+      "central": 68.0,
+      "high": 72.8
+     },
+     "paid_minus_nowar_cif_usd_bbl": 23.34
+    }
+   },
+   "espo_note": "No buyer-level ESPO price series was found free of charge. Platts: ESPO Blend traded at +4.5 to +6 USD/bbl over Dubai in Sep-Oct 2021 and premiums 'beat estimates' in Jan 2022; at a discount to Brent in Jun-Jul 2024; at -9 USD/bbl to Dubai after the Jan 2025 US sanctions. China's customs unit value (crude_cif_usd_bbl, includes pipeline ESPO and seaborne Urals) shows only a small discount to Brent (-0.7 to +8.6 USD/bbl), so the map's own Chinese crude index (prices.json) is better than any benchmark; no-war ESPO = Brent x 0.97/1.00/1.04 (nowar_index.espo)."
+  },
+  "BLR": {
+   "gas_pipeline": {
+    "formula_weights": "fixed price (no market link)",
+    "certainty_actual": "B",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 11.6,
+      "actual_index": 1.099,
+      "nowar_eur_mwh": {
+       "low": 11.6,
+       "central": 11.6,
+       "high": 11.6
+      },
+      "nowar_index": {
+       "low": 1.099,
+       "central": 1.099,
+       "high": 1.099
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 11.3,
+      "actual_index": 1.07,
+      "nowar_eur_mwh": {
+       "low": 11.3,
+       "central": 11.3,
+       "high": 11.3
+      },
+      "nowar_index": {
+       "low": 1.07,
+       "central": 1.07,
+       "high": 1.07
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 11.3,
+      "actual_index": 1.069,
+      "nowar_eur_mwh": {
+       "low": 11.3,
+       "central": 11.3,
+       "high": 11.3
+      },
+      "nowar_index": {
+       "low": 1.069,
+       "central": 1.069,
+       "high": 1.069
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 10.8,
+      "actual_index": 1.024,
+      "nowar_eur_mwh": {
+       "low": 10.8,
+       "central": 10.8,
+       "high": 10.8
+      },
+      "nowar_index": {
+       "low": 1.024,
+       "central": 1.024,
+       "high": 1.024
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 10.5,
+      "actual_index": 0.995,
+      "nowar_eur_mwh": {
+       "low": 10.5,
+       "central": 10.5,
+       "high": 10.5
+      },
+      "nowar_index": {
+       "low": 0.995,
+       "central": 0.995,
+       "high": 0.995
+      }
+     }
+    }
+   },
+   "contract_note": "Gazprom-Beltransgaz (Gazprom Transgaz Belarus) price set by intergovernmental protocol: $127 (2019-2020), $128.5 (2021), frozen at $128.52 for 2022 and, per Russian Economy Minister Reshetnikov, fixed at $128.5 for 2024-2025; settled in roubles since 2023. 2026: no published change, assumed unchanged."
+  },
+  "ARM": {
+   "gas_pipeline": {
+    "formula_weights": "fixed price (no market link)",
+    "certainty_actual": "A",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 15.3,
+      "actual_index": 1.126,
+      "nowar_eur_mwh": {
+       "low": 15.3,
+       "central": 15.3,
+       "high": 15.3
+      },
+      "nowar_index": {
+       "low": 1.126,
+       "central": 1.126,
+       "high": 1.126
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 15.2,
+      "actual_index": 1.115,
+      "nowar_eur_mwh": {
+       "low": 15.2,
+       "central": 15.2,
+       "high": 15.2
+      },
+      "nowar_index": {
+       "low": 1.115,
+       "central": 1.115,
+       "high": 1.115
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 15.2,
+      "actual_index": 1.117,
+      "nowar_eur_mwh": {
+       "low": 15.2,
+       "central": 15.2,
+       "high": 15.2
+      },
+      "nowar_index": {
+       "low": 1.117,
+       "central": 1.117,
+       "high": 1.117
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 14.6,
+      "actual_index": 1.074,
+      "nowar_eur_mwh": {
+       "low": 14.6,
+       "central": 14.6,
+       "high": 14.6
+      },
+      "nowar_index": {
+       "low": 1.074,
+       "central": 1.074,
+       "high": 1.074
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 14.1,
+      "actual_index": 1.036,
+      "nowar_eur_mwh": {
+       "low": 14.1,
+       "central": 14.1,
+       "high": 14.1
+      },
+      "nowar_index": {
+       "low": 1.036,
+       "central": 1.036,
+       "high": 1.036
+      }
+     }
+    }
+   },
+   "contract_note": "Gazprom Armenia (100% Gazprom) buys at a political border price of $165/1000 m3 (since Jan 2019), unchanged through 2026."
+  },
+  "KAZ": {
+   "gas_pipeline": {
+    "formula_weights": "fixed price (no market link)",
+    "certainty_actual": "D",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 2.5,
+      "actual_index": 0.772,
+      "nowar_eur_mwh": {
+       "low": 2.5,
+       "central": 2.5,
+       "high": 2.5
+      },
+      "nowar_index": {
+       "low": 0.772,
+       "central": 0.772,
+       "high": 0.772
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 2.1,
+      "actual_index": 0.649,
+      "nowar_eur_mwh": {
+       "low": 2.1,
+       "central": 2.1,
+       "high": 2.1
+      },
+      "nowar_index": {
+       "low": 0.649,
+       "central": 0.649,
+       "high": 0.649
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 8.3,
+      "actual_index": 2.514,
+      "nowar_eur_mwh": {
+       "low": 8.3,
+       "central": 8.3,
+       "high": 8.3
+      },
+      "nowar_index": {
+       "low": 2.514,
+       "central": 2.514,
+       "high": 2.514
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 6.7,
+      "actual_index": 2.04,
+      "nowar_eur_mwh": {
+       "low": 6.7,
+       "central": 6.7,
+       "high": 6.7
+      },
+      "nowar_index": {
+       "low": 2.04,
+       "central": 2.04,
+       "high": 2.04
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 8.8,
+      "actual_index": 2.67,
+      "nowar_eur_mwh": {
+       "low": 8.8,
+       "central": 8.8,
+       "high": 8.8
+      },
+      "nowar_index": {
+       "low": 2.67,
+       "central": 2.67,
+       "high": 2.67
+      }
+     }
+    }
+   },
+   "contract_note": "QazaqGaz-Gazprom swap and processing arrangements (Karachaganak gas sent to Orenburg and Russian gas returned to southern Kazakhstan), plus since 2023 transit-linked purchases; prices are swap settlement values, not commercial prices."
+  },
+  "UZB": {
+   "gas_pipeline": {
+    "formula_weights": "fixed price (no market link)",
+    "certainty_actual": "B",
+    "years": {
+     "2023": {
+      "actual_eur_mwh": 14.0,
+      "actual_index": 1.061,
+      "nowar_eur_mwh": {
+       "low": 14.0,
+       "central": 14.0,
+       "high": 14.0
+      },
+      "nowar_index": {
+       "low": 1.061,
+       "central": 1.061,
+       "high": 1.061
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 14.0,
+      "actual_index": 1.06,
+      "nowar_eur_mwh": {
+       "low": 14.0,
+       "central": 14.0,
+       "high": 14.0
+      },
+      "nowar_index": {
+       "low": 1.06,
+       "central": 1.06,
+       "high": 1.06
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 13.5,
+      "actual_index": 1.023,
+      "nowar_eur_mwh": {
+       "low": 13.5,
+       "central": 13.5,
+       "high": 13.5
+      },
+      "nowar_index": {
+       "low": 1.023,
+       "central": 1.023,
+       "high": 1.023
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 13.0,
+      "actual_index": 0.986,
+      "nowar_eur_mwh": {
+       "low": 13.0,
+       "central": 13.0,
+       "high": 13.0
+      },
+      "nowar_index": {
+       "low": 0.986,
+       "central": 0.986,
+       "high": 0.986
+      }
+     }
+    }
+   },
+   "contract_note": "Uzbekneftegaz-Gazprom deal (Oct 2023, via Kazakhstan, ~$160/1000 m3), volumes rising to ~5.5 bcm in 2024."
+  },
+  "MDA": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "ttf": 0.5,
+     "oil9": 0.5
+    },
+    "certainty_actual": "B",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 71.4,
+      "actual_index": 3.839,
+      "nowar_eur_mwh": {
+       "low": 30.2,
+       "central": 40.7,
+       "high": 51.1
+      },
+      "nowar_index": {
+       "low": 1.622,
+       "central": 2.191,
+       "high": 2.747
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 95.2,
+      "actual_index": 5.119,
+      "nowar_eur_mwh": {
+       "low": 66.8,
+       "central": 82.2,
+       "high": 109.8
+      },
+      "nowar_index": {
+       "low": 3.594,
+       "central": 4.418,
+       "high": 5.906
+      }
+     }
+    }
+   },
+   "contract_note": "Moldovagaz-Gazprom: until Oct 2021 a \"European formula\" (Gazprom far-abroad price over the previous 9 months), from Nov 2021 a 5-year contract linked to TTF and oil, with prices set monthly (record $1,195 in Apr 2022). Right-bank Moldova stopped buying Gazprom gas in Dec 2022/early 2023; Transnistria's gas was unpaid and ended 1 Jan 2025."
+  },
+  "BGR": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "ttf": 0.5,
+     "oil9": 0.5
+    },
+    "certainty_actual": "B",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 84.0,
+      "actual_index": 3.917,
+      "nowar_eur_mwh": {
+       "low": 35.5,
+       "central": 47.9,
+       "high": 60.1
+      },
+      "nowar_index": {
+       "low": 1.654,
+       "central": 2.235,
+       "high": 2.803
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 48.5,
+      "actual_index": 2.26,
+      "nowar_eur_mwh": {
+       "low": 34.0,
+       "central": 41.9,
+       "high": 56.0
+      },
+      "nowar_index": {
+       "low": 1.587,
+       "central": 1.951,
+       "high": 2.607
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 30.5,
+      "actual_index": 1.422,
+      "nowar_eur_mwh": {
+       "low": 23.4,
+       "central": 26.6,
+       "high": 31.4
+      },
+      "nowar_index": {
+       "low": 1.093,
+       "central": 1.238,
+       "high": 1.462
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 32.6,
+      "actual_index": 1.518,
+      "nowar_eur_mwh": {
+       "low": 23.8,
+       "central": 26.6,
+       "high": 29.8
+      },
+      "nowar_index": {
+       "low": 1.106,
+       "central": 1.237,
+       "high": 1.386
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 35.9,
+      "actual_index": 1.675,
+      "nowar_eur_mwh": {
+       "low": 21.3,
+       "central": 24.2,
+       "high": 26.7
+      },
+      "nowar_index": {
+       "low": 0.994,
+       "central": 1.129,
+       "high": 1.247
+      }
+     }
+    }
+   },
+   "contract_note": "Bulgargaz-Gazprom Export contract (2013-2022), oil-indexed with partial hub indexation after the 2019-2020 EC commitments; Gazprom cut supply on 27 Apr 2022. From 2023 only small volumes recorded as Russian origin (TurkStream gas bought by traders)."
+  },
+  "GRC": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "ttf": 0.5,
+     "oil9": 0.5
+    },
+    "certainty_actual": "A",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 110.1,
+      "actual_index": 4.981,
+      "nowar_eur_mwh": {
+       "low": 46.5,
+       "central": 62.8,
+       "high": 78.8
+      },
+      "nowar_index": {
+       "low": 2.104,
+       "central": 2.843,
+       "high": 3.564
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 33.7,
+      "actual_index": 1.525,
+      "nowar_eur_mwh": {
+       "low": 23.7,
+       "central": 29.1,
+       "high": 38.9
+      },
+      "nowar_index": {
+       "low": 1.071,
+       "central": 1.316,
+       "high": 1.759
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 28.2,
+      "actual_index": 1.277,
+      "nowar_eur_mwh": {
+       "low": 21.7,
+       "central": 24.6,
+       "high": 29.0
+      },
+      "nowar_index": {
+       "low": 0.982,
+       "central": 1.112,
+       "high": 1.313
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 32.4,
+      "actual_index": 1.467,
+      "nowar_eur_mwh": {
+       "low": 23.6,
+       "central": 26.4,
+       "high": 29.6
+      },
+      "nowar_index": {
+       "low": 1.069,
+       "central": 1.195,
+       "high": 1.34
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 37.7,
+      "actual_index": 1.704,
+      "nowar_eur_mwh": {
+       "low": 22.4,
+       "central": 25.4,
+       "high": 28.1
+      },
+      "nowar_index": {
+       "low": 1.011,
+       "central": 1.149,
+       "high": 1.268
+      }
+     }
+    }
+   },
+   "gas_lng": {
+    "formula_weights": {
+     "ttf": 1.0
+    },
+    "certainty_actual": "A",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 107.3,
+      "actual_index": 7.189,
+      "nowar_eur_mwh": {
+       "low": 33.3,
+       "central": 52.0,
+       "high": 70.1
+      },
+      "nowar_index": {
+       "low": 2.23,
+       "central": 3.486,
+       "high": 4.695
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 30.8,
+      "actual_index": 2.061,
+      "nowar_eur_mwh": {
+       "low": 21.0,
+       "central": 28.1,
+       "high": 42.4
+      },
+      "nowar_index": {
+       "low": 1.408,
+       "central": 1.879,
+       "high": 2.836
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 27.5,
+      "actual_index": 1.84,
+      "nowar_eur_mwh": {
+       "low": 20.0,
+       "central": 24.0,
+       "high": 30.4
+      },
+      "nowar_index": {
+       "low": 1.337,
+       "central": 1.605,
+       "high": 2.033
+      }
+     }
+    }
+   },
+   "contract_note": "DEPA-Gazprom contract to 2026, oil-indexed with growing hub component after the 2020 arbitration (DEPA won a retroactive price revision). Russian pipeline gas via TurkStream/Bulgaria."
+  },
+  "BIH": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "oil9": 1.0
+    },
+    "certainty_actual": "A",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 31.6,
+      "actual_index": 1.275,
+      "nowar_eur_mwh": {
+       "low": 25.2,
+       "central": 27.1,
+       "high": 29.2
+      },
+      "nowar_index": {
+       "low": 1.017,
+       "central": 1.094,
+       "high": 1.179
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 33.1,
+      "actual_index": 1.338,
+      "nowar_eur_mwh": {
+       "low": 23.9,
+       "central": 26.9,
+       "high": 30.3
+      },
+      "nowar_index": {
+       "low": 0.967,
+       "central": 1.085,
+       "high": 1.226
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 31.1,
+      "actual_index": 1.256,
+      "nowar_eur_mwh": {
+       "low": 25.2,
+       "central": 27.0,
+       "high": 29.6
+      },
+      "nowar_index": {
+       "low": 1.019,
+       "central": 1.092,
+       "high": 1.194
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 28.0,
+      "actual_index": 1.132,
+      "nowar_eur_mwh": {
+       "low": 24.6,
+       "central": 25.7,
+       "high": 27.6
+      },
+      "nowar_index": {
+       "low": 0.995,
+       "central": 1.039,
+       "high": 1.116
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 26.8,
+      "actual_index": 1.082,
+      "nowar_eur_mwh": {
+       "low": 21.9,
+       "central": 22.7,
+       "high": 24.1
+      },
+      "nowar_index": {
+       "low": 0.885,
+       "central": 0.916,
+       "high": 0.973
+      }
+     }
+    }
+   },
+   "contract_note": "Energoinvest (Federation) and Gas-Res (Republika Srpska) contracts with Gazprom, priced quarterly on the 9-month change in oil-product prices, paid in EUR."
+  },
+  "MKD": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "ttf": 0.5,
+     "oil9": 0.5
+    },
+    "certainty_actual": "A",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 102.3,
+      "actual_index": 4.702,
+      "nowar_eur_mwh": {
+       "low": 43.2,
+       "central": 58.4,
+       "high": 73.2
+      },
+      "nowar_index": {
+       "low": 1.986,
+       "central": 2.683,
+       "high": 3.365
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 59.5,
+      "actual_index": 2.736,
+      "nowar_eur_mwh": {
+       "low": 41.8,
+       "central": 51.4,
+       "high": 68.6
+      },
+      "nowar_index": {
+       "low": 1.921,
+       "central": 2.361,
+       "high": 3.156
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 36.4,
+      "actual_index": 1.671,
+      "nowar_eur_mwh": {
+       "low": 28.0,
+       "central": 31.7,
+       "high": 37.4
+      },
+      "nowar_index": {
+       "low": 1.285,
+       "central": 1.455,
+       "high": 1.719
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 42.0,
+      "actual_index": 1.929,
+      "nowar_eur_mwh": {
+       "low": 30.6,
+       "central": 34.2,
+       "high": 38.4
+      },
+      "nowar_index": {
+       "low": 1.406,
+       "central": 1.572,
+       "high": 1.762
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 33.0,
+      "actual_index": 1.515,
+      "nowar_eur_mwh": {
+       "low": 19.6,
+       "central": 22.2,
+       "high": 24.6
+      },
+      "nowar_index": {
+       "low": 0.899,
+       "central": 1.021,
+       "high": 1.127
+      }
+     }
+    }
+   },
+   "contract_note": "North Macedonia: GA-MA/ESM purchases of Russian gas (via Bulgaria) with partial hub linkage; volumes falling as Greek/Bulgarian LNG-based supply grows."
+  },
+  "DEU": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "ttf": 1.0
+    },
+    "certainty_actual": "B",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 86.5,
+      "actual_index": 4.575,
+      "nowar_eur_mwh": {
+       "low": 26.8,
+       "central": 41.9,
+       "high": 56.5
+      },
+      "nowar_index": {
+       "low": 1.419,
+       "central": 2.218,
+       "high": 2.988
+      }
+     }
+    }
+   },
+   "contract_note": "Uniper, RWE, Wingas/SEFE, EnBW/VNG: Gazprom Export contracts largely hub-indexed (NCG/Gaspool/TTF) after the 2010-2016 renegotiations; Nord Stream deliveries stopped 31 Aug 2022."
+  },
+  "ITA": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "ttf": 1.0
+    },
+    "certainty_actual": "A",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 99.6,
+      "actual_index": 4.871,
+      "nowar_eur_mwh": {
+       "low": 30.9,
+       "central": 48.3,
+       "high": 65.0
+      },
+      "nowar_index": {
+       "low": 1.511,
+       "central": 2.362,
+       "high": 3.181
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 50.9,
+      "actual_index": 2.491,
+      "nowar_eur_mwh": {
+       "low": 34.8,
+       "central": 46.4,
+       "high": 70.0
+      },
+      "nowar_index": {
+       "low": 1.701,
+       "central": 2.271,
+       "high": 3.427
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 33.8,
+      "actual_index": 1.655,
+      "nowar_eur_mwh": {
+       "low": 24.6,
+       "central": 29.5,
+       "high": 37.3
+      },
+      "nowar_index": {
+       "low": 1.203,
+       "central": 1.443,
+       "high": 1.828
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 40.6,
+      "actual_index": 1.984,
+      "nowar_eur_mwh": {
+       "low": 24.6,
+       "central": 29.6,
+       "high": 34.7
+      },
+      "nowar_index": {
+       "low": 1.202,
+       "central": 1.448,
+       "high": 1.694
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 47.9,
+      "actual_index": 2.343,
+      "nowar_eur_mwh": {
+       "low": 21.1,
+       "central": 26.7,
+       "high": 30.6
+      },
+      "nowar_index": {
+       "low": 1.032,
+       "central": 1.306,
+       "high": 1.497
+      }
+     }
+    }
+   },
+   "gas_lng": {
+    "formula_weights": {
+     "ttf": 1.0
+    },
+    "certainty_actual": "A",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 91.1,
+      "actual_index": 1.0,
+      "nowar_eur_mwh": {
+       "low": 28.3,
+       "central": 44.2,
+       "high": 59.5
+      },
+      "nowar_index": {
+       "low": 0.31,
+       "central": 0.485,
+       "high": 0.653
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 57.2,
+      "actual_index": 0.628,
+      "nowar_eur_mwh": {
+       "low": 39.1,
+       "central": 52.1,
+       "high": 78.7
+      },
+      "nowar_index": {
+       "low": 0.429,
+       "central": 0.572,
+       "high": 0.864
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 44.3,
+      "actual_index": 0.486,
+      "nowar_eur_mwh": {
+       "low": 32.2,
+       "central": 38.6,
+       "high": 48.9
+      },
+      "nowar_index": {
+       "low": 0.353,
+       "central": 0.424,
+       "high": 0.537
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 32.9,
+      "actual_index": 0.361,
+      "nowar_eur_mwh": {
+       "low": 19.9,
+       "central": 24.0,
+       "high": 28.1
+      },
+      "nowar_index": {
+       "low": 0.219,
+       "central": 0.264,
+       "high": 0.308
+      }
+     }
+    }
+   },
+   "contract_note": "Eni and other Italian buyers: hub-indexed Gazprom contracts (renegotiated 2013-2016 to TTF/PSV); supply fell sharply after 2022 and ended with Ukraine transit in Jan 2025 except small traces."
+  },
+  "CZE": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "ttf": 1.0
+    },
+    "certainty_actual": "A",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 92.9,
+      "actual_index": 4.952,
+      "nowar_eur_mwh": {
+       "low": 28.8,
+       "central": 45.0,
+       "high": 60.7
+      },
+      "nowar_index": {
+       "low": 1.536,
+       "central": 2.401,
+       "high": 3.234
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 49.1,
+      "actual_index": 2.617,
+      "nowar_eur_mwh": {
+       "low": 33.5,
+       "central": 44.8,
+       "high": 67.6
+      },
+      "nowar_index": {
+       "low": 1.788,
+       "central": 2.386,
+       "high": 3.601
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 41.8,
+      "actual_index": 2.228,
+      "nowar_eur_mwh": {
+       "low": 30.4,
+       "central": 36.5,
+       "high": 46.2
+      },
+      "nowar_index": {
+       "low": 1.619,
+       "central": 1.943,
+       "high": 2.461
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 38.9,
+      "actual_index": 2.076,
+      "nowar_eur_mwh": {
+       "low": 23.6,
+       "central": 28.4,
+       "high": 33.2
+      },
+      "nowar_index": {
+       "low": 1.258,
+       "central": 1.516,
+       "high": 1.773
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 47.9,
+      "actual_index": 2.553,
+      "nowar_eur_mwh": {
+       "low": 21.1,
+       "central": 26.7,
+       "high": 30.6
+      },
+      "nowar_index": {
+       "low": 1.125,
+       "central": 1.423,
+       "high": 1.631
+      }
+     }
+    }
+   },
+   "contract_note": "Hub-indexed supply via Germany and Slovakia (RWE/innogy, Vemex). Ukraine-route transit ended 1 Jan 2025."
+  },
+  "POL": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "ttf": 1.0
+    },
+    "certainty_actual": "C",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 67.8,
+      "actual_index": 3.104,
+      "nowar_eur_mwh": {
+       "low": 21.0,
+       "central": 32.9,
+       "high": 44.3
+      },
+      "nowar_index": {
+       "low": 0.963,
+       "central": 1.505,
+       "high": 2.027
+      }
+     }
+    }
+   },
+   "contract_note": "PGNiG-Gazprom Yamal contract (to end-2022, ~10 bcm/yr). The Stockholm tribunal (Mar 2020) replaced the oil-linked price formula with one tied to Western European market prices, retroactive from Nov 2014; Gazprom stopped deliveries on 27 Apr 2022."
+  },
+  "FIN": {
+   "gas_pipeline": {
+    "formula_weights": {
+     "ttf": 1.0
+    },
+    "certainty_actual": "B",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 97.4,
+      "actual_index": 4.851,
+      "nowar_eur_mwh": {
+       "low": 30.2,
+       "central": 47.2,
+       "high": 63.6
+      },
+      "nowar_index": {
+       "low": 1.505,
+       "central": 2.352,
+       "high": 3.168
+      }
+     }
+    }
+   },
+   "gas_lng": {
+    "formula_weights": {
+     "ttf": 1.0
+    },
+    "certainty_actual": "B",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 34.5,
+      "actual_index": 1.593,
+      "nowar_eur_mwh": {
+       "low": 10.7,
+       "central": 16.7,
+       "high": 22.5
+      },
+      "nowar_index": {
+       "low": 0.494,
+       "central": 0.772,
+       "high": 1.04
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 28.3,
+      "actual_index": 1.308,
+      "nowar_eur_mwh": {
+       "low": 19.3,
+       "central": 25.8,
+       "high": 38.9
+      },
+      "nowar_index": {
+       "low": 0.893,
+       "central": 1.192,
+       "high": 1.8
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 26.8,
+      "actual_index": 1.235,
+      "nowar_eur_mwh": {
+       "low": 19.5,
+       "central": 23.4,
+       "high": 29.6
+      },
+      "nowar_index": {
+       "low": 0.898,
+       "central": 1.077,
+       "high": 1.364
+      }
+     }
+    }
+   },
+   "contract_note": "LNG: small-scale cargoes (Pori/Tornio). Pipeline: Gasum-Gazprom contract, hub-related after Gasum's 2020 arbitration win; supply cut 21 May 2022."
+  },
+  "KGZ": {
+   "gas_pipeline": {
+    "formula_weights": "fixed price (no market link)",
+    "certainty_actual": "B",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 12.6,
+      "actual_index": 1.016,
+      "nowar_eur_mwh": {
+       "low": 12.6,
+       "central": 12.6,
+       "high": 12.6
+      },
+      "nowar_index": {
+       "low": 1.016,
+       "central": 1.016,
+       "high": 1.016
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 13.1,
+      "actual_index": 1.061,
+      "nowar_eur_mwh": {
+       "low": 13.1,
+       "central": 13.1,
+       "high": 13.1
+      },
+      "nowar_index": {
+       "low": 1.061,
+       "central": 1.061,
+       "high": 1.061
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 14.0,
+      "actual_index": 1.13,
+      "nowar_eur_mwh": {
+       "low": 14.0,
+       "central": 14.0,
+       "high": 14.0
+      },
+      "nowar_index": {
+       "low": 1.13,
+       "central": 1.13,
+       "high": 1.13
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 14.8,
+      "actual_index": 1.198,
+      "nowar_eur_mwh": {
+       "low": 14.8,
+       "central": 14.8,
+       "high": 14.8
+      },
+      "nowar_index": {
+       "low": 1.198,
+       "central": 1.198,
+       "high": 1.198
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 14.8,
+      "actual_index": 1.191,
+      "nowar_eur_mwh": {
+       "low": 14.8,
+       "central": 14.8,
+       "high": 14.8
+      },
+      "nowar_index": {
+       "low": 1.191,
+       "central": 1.191,
+       "high": 1.191
+      }
+     }
+    }
+   },
+   "contract_note": "Gazprom Kyrgyzstan (100% Gazprom) imports at a political price (~$150-180/1000 m3)."
+  },
+  "JPN": {
+   "gas_lng": {
+    "formula_weights": {
+     "oil3": 1.0
+    },
+    "certainty_actual": "A",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 46.9,
+      "actual_index": 1.774,
+      "nowar_eur_mwh": {
+       "low": 33.8,
+       "central": 37.7,
+       "high": 42.0
+      },
+      "nowar_index": {
+       "low": 1.279,
+       "central": 1.426,
+       "high": 1.59
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 41.3,
+      "actual_index": 1.564,
+      "nowar_eur_mwh": {
+       "low": 31.4,
+       "central": 34.8,
+       "high": 38.9
+      },
+      "nowar_index": {
+       "low": 1.19,
+       "central": 1.317,
+       "high": 1.472
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 38.7,
+      "actual_index": 1.466,
+      "nowar_eur_mwh": {
+       "low": 31.6,
+       "central": 33.5,
+       "high": 36.4
+      },
+      "nowar_index": {
+       "low": 1.196,
+       "central": 1.269,
+       "high": 1.38
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 33.6,
+      "actual_index": 1.273,
+      "nowar_eur_mwh": {
+       "low": 30.6,
+       "central": 31.9,
+       "high": 34.1
+      },
+      "nowar_index": {
+       "low": 1.161,
+       "central": 1.209,
+       "high": 1.293
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 31.5,
+      "actual_index": 1.192,
+      "nowar_eur_mwh": {
+       "low": 24.1,
+       "central": 24.9,
+       "high": 26.4
+      },
+      "nowar_index": {
+       "low": 0.913,
+       "central": 0.942,
+       "high": 1.0
+      }
+     }
+    }
+   },
+   "contract_note": "Sakhalin-2 long-term LNG contracts (JERA, Tokyo Gas, Kyushu, Hiroshima Gas, Tohoku), oil-indexed (JCC slope ~14-15%), plus some Yamal spot; continued after 2022 under Japanese exemptions."
+  },
+  "KOR": {
+   "gas_lng": {
+    "formula_weights": {
+     "oil3": 1.0
+    },
+    "certainty_actual": "A",
+    "years": {
+     "2022": {
+      "actual_eur_mwh": 47.2,
+      "actual_index": 1.682,
+      "nowar_eur_mwh": {
+       "low": 34.0,
+       "central": 37.9,
+       "high": 42.3
+      },
+      "nowar_index": {
+       "low": 1.213,
+       "central": 1.352,
+       "high": 1.507
+      }
+     },
+     "2023": {
+      "actual_eur_mwh": 38.9,
+      "actual_index": 1.388,
+      "nowar_eur_mwh": {
+       "low": 29.6,
+       "central": 32.8,
+       "high": 36.6
+      },
+      "nowar_index": {
+       "low": 1.056,
+       "central": 1.169,
+       "high": 1.307
+      }
+     },
+     "2024": {
+      "actual_eur_mwh": 35.7,
+      "actual_index": 1.273,
+      "nowar_eur_mwh": {
+       "low": 29.1,
+       "central": 30.9,
+       "high": 33.6
+      },
+      "nowar_index": {
+       "low": 1.038,
+       "central": 1.102,
+       "high": 1.198
+      }
+     },
+     "2025": {
+      "actual_eur_mwh": 31.1,
+      "actual_index": 1.107,
+      "nowar_eur_mwh": {
+       "low": 28.4,
+       "central": 29.5,
+       "high": 31.6
+      },
+      "nowar_index": {
+       "low": 1.009,
+       "central": 1.051,
+       "high": 1.125
+      }
+     },
+     "2026": {
+      "actual_eur_mwh": 35.3,
+      "actual_index": 1.257,
+      "nowar_eur_mwh": {
+       "low": 27.0,
+       "central": 27.9,
+       "high": 29.6
+      },
+      "nowar_index": {
+       "low": 0.962,
+       "central": 0.994,
+       "high": 1.055
+      }
+     }
+    }
+   },
+   "contract_note": "KOGAS Sakhalin-2 term contract (1.5 Mt/yr, oil-indexed, to 2028) plus spot Yamal/Sakhalin cargoes."
+  },
+  "IND": {
+   "crude_cif_usd_bbl": {
+    "2021": {
+     "cif_usd_bbl": 69.35,
+     "brent_usd_bbl": 70.86,
+     "discount_to_brent_usd_bbl": 1.51
+    },
+    "2022": {
+     "cif_usd_bbl": 94.09,
+     "brent_usd_bbl": 100.93,
+     "discount_to_brent_usd_bbl": 6.84,
+     "nowar_cif_usd_bbl": {
+      "low": 66.81,
+      "central": 79.64,
+      "high": 92.55
+     },
+     "paid_minus_nowar_cif_usd_bbl": 14.45
+    },
+    "2023": {
+     "cif_usd_bbl": 74.63,
+     "brent_usd_bbl": 82.49,
+     "discount_to_brent_usd_bbl": 7.86,
+     "nowar_cif_usd_bbl": {
+      "low": 66.91,
+      "central": 75.27,
+      "high": 84.14
+     },
+     "paid_minus_nowar_cif_usd_bbl": -0.64
+    },
+    "2024": {
+     "cif_usd_bbl": 78.19,
+     "brent_usd_bbl": 80.52,
+     "discount_to_brent_usd_bbl": 2.33,
+     "nowar_cif_usd_bbl": {
+      "low": 66.61,
+      "central": 72.25,
+      "high": 78.88
+     },
+     "paid_minus_nowar_cif_usd_bbl": 5.94
+    },
+    "2025": {
+     "cif_usd_bbl": 69.79,
+     "brent_usd_bbl": 69.14,
+     "discount_to_brent_usd_bbl": -0.65,
+     "nowar_cif_usd_bbl": {
+      "low": 66.1,
+      "central": 70.79,
+      "high": 76.25
+     },
+     "paid_minus_nowar_cif_usd_bbl": -1.0
+    },
+    "2026": {
+     "cif_usd_bbl": 96.97,
+     "brent_usd_bbl": 90.38,
+     "discount_to_brent_usd_bbl": -6.59,
+     "nowar_cif_usd_bbl": {
+      "low": 65.6,
+      "central": 69.75,
+      "high": 74.67
+     },
+     "paid_minus_nowar_cif_usd_bbl": 27.22
+    }
+   },
+   "urals_note": "Customs CIF (Comtrade/DGCI&S via prices.json) includes freight, which rose sharply in 2022-2023, so the CIF discount to Brent (6.8 USD in 2022, 7.9 in 2023, 2.3 in 2024) is smaller than the FOB discount (energy.json: Brent minus CREA realised 19.5 / 17.2 / 12.3 USD). India's CIF price above Brent in 2025-2026 should be checked in prices.json (2026 = Jan-Aug, Hormuz spike months weigh heavily)."
+  }
+ },
+ "switching_cost_r7": {
+  "status": "switching premium unchanged (already measured against the same year's Russian realised price, not 2019-2021); only oil_discount_gain is corrected to the no-war discount",
+  "oil_discount_gain_factor": {
+   "2022": 0.731,
+   "2023": 0.751,
+   "2024": 0.659,
+   "2025": 0.557,
+   "2026": 0.788
+  },
+  "countries": {
+   "ARE": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0239,
+      "central": 0.1152,
+      "high": 0.2215
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.1237,
+      "central": 0.1685,
+      "high": 0.251
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0086,
+      "central": 0.0117,
+      "high": 0.0173
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.245,
+    "oil_discount_gain_r7_total_central": 0.18
+   },
+   "ARM": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0001,
+      "central": 0.0002,
+      "high": 0.0003
+     },
+     "2025": {
+      "low": 0.001,
+      "central": 0.002,
+      "high": 0.0034
+     },
+     "2026": {
+      "low": 0.0008,
+      "central": 0.0068,
+      "high": 0.0195
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.064,
+      "central": 0.1453,
+      "high": 0.2814
+     },
+     "2023": {
+      "low": 0.0233,
+      "central": 0.0528,
+      "high": 0.1023
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0076,
+      "central": 0.0173,
+      "high": 0.0334
+     },
+     "2026": {
+      "low": 0.0655,
+      "central": 0.1486,
+      "high": 0.2879
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.489,
+    "oil_discount_gain_r7_total_central": 0.364
+   },
+   "AZE": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0071,
+      "central": 0.0216,
+      "high": 0.0379
+     },
+     "2023": {
+      "low": 0.0096,
+      "central": 0.0321,
+      "high": 0.0576
+     },
+     "2024": {
+      "low": 0.0151,
+      "central": 0.0393,
+      "high": 0.0662
+     },
+     "2025": {
+      "low": 0.0151,
+      "central": 0.0297,
+      "high": 0.0449
+     },
+     "2026": {
+      "low": 0.0258,
+      "central": 0.1006,
+      "high": 0.1863
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.073,
+      "central": 0.0993,
+      "high": 0.148
+     },
+     "2023": {
+      "low": 0.0713,
+      "central": 0.0972,
+      "high": 0.1448
+     },
+     "2024": {
+      "low": 0.0322,
+      "central": 0.0438,
+      "high": 0.0652
+     },
+     "2025": {
+      "low": 0.0204,
+      "central": 0.0279,
+      "high": 0.0414
+     },
+     "2026": {
+      "low": 0.0017,
+      "central": 0.0023,
+      "high": 0.0034
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.385,
+    "oil_discount_gain_r7_total_central": 0.27
+   },
+   "BEL": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0864,
+      "central": 0.1743,
+      "high": 0.2189
+     },
+     "2023": {
+      "low": 0.1817,
+      "central": 0.3259,
+      "high": 0.4672
+     },
+     "2024": {
+      "low": 0.1209,
+      "central": 0.1578,
+      "high": 0.2056
+     },
+     "2025": {
+      "low": 0.1414,
+      "central": 0.2596,
+      "high": 0.4109
+     },
+     "2026": {
+      "low": 0.0997,
+      "central": 0.3964,
+      "high": 0.75
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.4498,
+      "central": 0.6124,
+      "high": 0.9124
+     },
+     "2023": {
+      "low": 0.0429,
+      "central": 0.0584,
+      "high": 0.087
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.916,
+    "oil_discount_gain_r7_total_central": 0.671
+   },
+   "BFA": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.011,
+      "central": 0.0249,
+      "high": 0.0481
+     },
+     "2023": {
+      "low": 0.0046,
+      "central": 0.0104,
+      "high": 0.0202
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0025,
+      "central": 0.0056,
+      "high": 0.0109
+     },
+     "2026": {
+      "low": 0.0214,
+      "central": 0.0485,
+      "high": 0.094
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.12,
+    "oil_discount_gain_r7_total_central": 0.089
+   },
+   "BGR": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.2745,
+      "central": 0.6288,
+      "high": 0.7007
+     },
+     "2023": {
+      "low": 0.095,
+      "central": 0.1556,
+      "high": 0.1964
+     },
+     "2024": {
+      "low": 0.1115,
+      "central": 0.2294,
+      "high": 0.3813
+     },
+     "2025": {
+      "low": 0.1459,
+      "central": 0.2494,
+      "high": 0.407
+     },
+     "2026": {
+      "low": 0.1073,
+      "central": 0.2798,
+      "high": 0.5066
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.3888,
+      "central": 0.5295,
+      "high": 0.7888
+     },
+     "2023": {
+      "low": 0.336,
+      "central": 0.4575,
+      "high": 0.6816
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 1.333,
+    "oil_discount_gain_r7_total_central": 0.987
+   },
+   "BHS": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0214,
+      "central": 0.0581,
+      "high": 0.0989
+     },
+     "2023": {
+      "low": 0.0289,
+      "central": 0.0524,
+      "high": 0.0761
+     },
+     "2024": {
+      "low": 0.0249,
+      "central": 0.0334,
+      "high": 0.0395
+     },
+     "2025": {
+      "low": 0.0204,
+      "central": 0.0416,
+      "high": 0.0639
+     },
+     "2026": {
+      "low": 0.0206,
+      "central": 0.1,
+      "high": 0.192
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0356,
+      "central": 0.0485,
+      "high": 0.0722
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.066,
+    "oil_discount_gain_r7_total_central": 0.048
+   },
+   "BLR": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.4311,
+      "central": 0.9784,
+      "high": 1.8949
+     },
+     "2023": {
+      "low": 0.4021,
+      "central": 0.9125,
+      "high": 1.7672
+     },
+     "2024": {
+      "low": 0.2551,
+      "central": 0.5789,
+      "high": 1.1212
+     },
+     "2025": {
+      "low": 0.136,
+      "central": 0.3086,
+      "high": 0.5976
+     },
+     "2026": {
+      "low": 0.3498,
+      "central": 0.7939,
+      "high": 1.5375
+     }
+    },
+    "oil_discount_gain_old_total_central": 4.993,
+    "oil_discount_gain_r7_total_central": 3.572
+   },
+   "BRA": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0297,
+      "central": 0.2536,
+      "high": 0.4868
+     },
+     "2023": {
+      "low": 0.0143,
+      "central": 0.0739,
+      "high": 0.1683
+     },
+     "2024": {
+      "low": 0.0038,
+      "central": 0.0139,
+      "high": 0.0828
+     },
+     "2025": {
+      "low": 0.003,
+      "central": 0.0066,
+      "high": 0.0283
+     },
+     "2026": {
+      "low": 0.0025,
+      "central": 0.0061,
+      "high": 0.0286
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0788,
+      "central": 0.1073,
+      "high": 0.1599
+     },
+     "2023": {
+      "low": 0.0581,
+      "central": 0.0792,
+      "high": 0.1179
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.3899,
+      "central": 0.531,
+      "high": 0.791
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.926,
+    "oil_discount_gain_r7_total_central": 0.717
+   },
+   "BRN": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0077,
+      "central": 0.0192,
+      "high": 0.0318
+     },
+     "2023": {
+      "low": 0.008,
+      "central": 0.0265,
+      "high": 0.0474
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0001,
+      "high": 0.0001
+     },
+     "2023": {
+      "low": 0.0111,
+      "central": 0.0151,
+      "high": 0.0225
+     },
+     "2024": {
+      "low": 0.1036,
+      "central": 0.141,
+      "high": 0.2102
+     },
+     "2025": {
+      "low": 0.0375,
+      "central": 0.0511,
+      "high": 0.0761
+     },
+     "2026": {
+      "low": 0.2461,
+      "central": 0.3351,
+      "high": 0.4992
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.751,
+    "oil_discount_gain_r7_total_central": 0.542
+   },
+   "CHN": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 3.7573,
+      "central": 5.1164,
+      "high": 7.6223
+     },
+     "2023": {
+      "low": 3.4726,
+      "central": 4.7287,
+      "high": 7.0448
+     },
+     "2024": {
+      "low": 1.8257,
+      "central": 2.4861,
+      "high": 3.7037
+     },
+     "2025": {
+      "low": 0.7774,
+      "central": 1.0586,
+      "high": 1.577
+     },
+     "2026": {
+      "low": 3.4503,
+      "central": 4.6984,
+      "high": 6.9995
+     }
+    },
+    "oil_discount_gain_old_total_central": 24.931,
+    "oil_discount_gain_r7_total_central": 18.088
+   },
+   "CUB": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0098,
+      "central": 0.027,
+      "high": 0.0462
+     },
+     "2024": {
+      "low": 0.0111,
+      "central": 0.0271,
+      "high": 0.0444
+     },
+     "2025": {
+      "low": 0.0072,
+      "central": 0.0158,
+      "high": 0.0249
+     },
+     "2026": {
+      "low": 0.007,
+      "central": 0.0251,
+      "high": 0.0457
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0409,
+      "central": 0.0556,
+      "high": 0.0829
+     },
+     "2023": {
+      "low": 0.0152,
+      "central": 0.0208,
+      "high": 0.0309
+     },
+     "2024": {
+      "low": 0.0025,
+      "central": 0.0034,
+      "high": 0.005
+     },
+     "2025": {
+      "low": 0.0022,
+      "central": 0.003,
+      "high": 0.0044
+     },
+     "2026": {
+      "low": 0.0099,
+      "central": 0.0134,
+      "high": 0.0199
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.131,
+    "oil_discount_gain_r7_total_central": 0.096
+   },
+   "CZE": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.6913,
+      "central": 1.5628,
+      "high": 1.7322
+     },
+     "2023": {
+      "low": 0.1875,
+      "central": 0.3122,
+      "high": 0.3917
+     },
+     "2024": {
+      "low": 0.0525,
+      "central": 0.0917,
+      "high": 0.1574
+     },
+     "2025": {
+      "low": 0.2878,
+      "central": 0.4572,
+      "high": 0.7679
+     },
+     "2026": {
+      "low": 0.3192,
+      "central": 0.6006,
+      "high": 1.059
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.1758,
+      "central": 0.2394,
+      "high": 0.3567
+     },
+     "2023": {
+      "low": 0.1287,
+      "central": 0.1752,
+      "high": 0.261
+     },
+     "2024": {
+      "low": 0.0651,
+      "central": 0.0887,
+      "high": 0.1321
+     },
+     "2025": {
+      "low": 0.012,
+      "central": 0.0163,
+      "high": 0.0243
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.725,
+    "oil_discount_gain_r7_total_central": 0.52
+   },
+   "DEU": {
+    "switching_cost": {
+     "2022": {
+      "low": 6.7325,
+      "central": 15.207,
+      "high": 17.2014
+     },
+     "2023": {
+      "low": 2.9357,
+      "central": 5.7285,
+      "high": 8.165
+     },
+     "2024": {
+      "low": 1.9039,
+      "central": 3.2981,
+      "high": 5.586
+     },
+     "2025": {
+      "low": 2.8547,
+      "central": 4.6148,
+      "high": 7.7841
+     },
+     "2026": {
+      "low": 2.9042,
+      "central": 5.6184,
+      "high": 9.997
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.966,
+      "central": 1.3154,
+      "high": 1.9597
+     },
+     "2023": {
+      "low": 0.0475,
+      "central": 0.0646,
+      "high": 0.0963
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 1.886,
+    "oil_discount_gain_r7_total_central": 1.38
+   },
+   "EGY": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0002,
+      "central": 0.0017,
+      "high": 0.0032
+     },
+     "2023": {
+      "low": 0.0005,
+      "central": 0.0017,
+      "high": 0.0029
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0004,
+      "central": 0.0007,
+      "high": 0.0009
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.1439,
+      "central": 0.1961,
+      "high": 0.292
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.202,
+      "central": 0.275,
+      "high": 0.4098
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.617,
+    "oil_discount_gain_r7_total_central": 0.471
+   },
+   "ESP": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.2186,
+      "central": 0.7228,
+      "high": 1.2546
+     },
+     "2023": {
+      "low": 0.2414,
+      "central": 0.5974,
+      "high": 0.9963
+     },
+     "2024": {
+      "low": 0.2197,
+      "central": 0.3647,
+      "high": 0.5387
+     },
+     "2025": {
+      "low": 0.1872,
+      "central": 0.3724,
+      "high": 0.5811
+     },
+     "2026": {
+      "low": 0.1588,
+      "central": 0.6814,
+      "high": 1.2947
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0362,
+      "central": 0.0493,
+      "high": 0.0734
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.067,
+    "oil_discount_gain_r7_total_central": 0.049
+   },
+   "EST": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0014,
+      "central": 0.003,
+      "high": 0.0046
+     },
+     "2023": {
+      "low": 0.068,
+      "central": 0.1481,
+      "high": 0.2334
+     },
+     "2024": {
+      "low": 0.0664,
+      "central": 0.0833,
+      "high": 0.0936
+     },
+     "2025": {
+      "low": 0.0549,
+      "central": 0.1059,
+      "high": 0.1594
+     },
+     "2026": {
+      "low": 0.0497,
+      "central": 0.2583,
+      "high": 0.5024
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.1629,
+      "central": 0.2217,
+      "high": 0.3303
+     },
+     "2023": {
+      "low": 0.0003,
+      "central": 0.0004,
+      "high": 0.0005
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.304,
+    "oil_discount_gain_r7_total_central": 0.222
+   },
+   "FIN": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.5162,
+      "central": 1.2241,
+      "high": 1.6397
+     },
+     "2023": {
+      "low": 0.3001,
+      "central": 0.7259,
+      "high": 1.1704
+     },
+     "2024": {
+      "low": 0.2197,
+      "central": 0.4679,
+      "high": 0.7697
+     },
+     "2025": {
+      "low": 0.2488,
+      "central": 0.4477,
+      "high": 0.7158
+     },
+     "2026": {
+      "low": 0.215,
+      "central": 0.6006,
+      "high": 1.0929
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0575,
+      "central": 0.0782,
+      "high": 0.1165
+     },
+     "2023": {
+      "low": 0.0011,
+      "central": 0.0015,
+      "high": 0.0022
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.109,
+    "oil_discount_gain_r7_total_central": 0.08
+   },
+   "FRA": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.7303,
+      "central": 1.7319,
+      "high": 2.1365
+     },
+     "2023": {
+      "low": 0.4809,
+      "central": 0.9948,
+      "high": 1.513
+     },
+     "2024": {
+      "low": 0.3504,
+      "central": 0.5535,
+      "high": 0.8272
+     },
+     "2025": {
+      "low": 0.4019,
+      "central": 0.6761,
+      "high": 1.064
+     },
+     "2026": {
+      "low": 0.3514,
+      "central": 1.0829,
+      "high": 2.0136
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.2352,
+      "central": 0.3203,
+      "high": 0.4771
+     },
+     "2023": {
+      "low": 0.0037,
+      "central": 0.005,
+      "high": 0.0074
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.445,
+    "oil_discount_gain_r7_total_central": 0.325
+   },
+   "GBR": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.873,
+      "central": 1.9308,
+      "high": 2.5564
+     },
+     "2023": {
+      "low": 0.3241,
+      "central": 0.7192,
+      "high": 1.0964
+     },
+     "2024": {
+      "low": 0.2581,
+      "central": 0.416,
+      "high": 0.6157
+     },
+     "2025": {
+      "low": 0.2775,
+      "central": 0.5106,
+      "high": 0.8134
+     },
+     "2026": {
+      "low": 0.2209,
+      "central": 0.8099,
+      "high": 1.5243
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.144,
+      "central": 0.1961,
+      "high": 0.2922
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.268,
+    "oil_discount_gain_r7_total_central": 0.196
+   },
+   "GEO": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0004,
+      "central": 0.0011,
+      "high": 0.0018
+     },
+     "2023": {
+      "low": 0.0025,
+      "central": 0.0056,
+      "high": 0.009
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0013,
+      "central": 0.0065,
+      "high": 0.0125
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0051,
+      "central": 0.0069,
+      "high": 0.0104
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0001,
+      "central": 0.0002,
+      "high": 0.0002
+     },
+     "2026": {
+      "low": 0.0597,
+      "central": 0.0813,
+      "high": 0.1212
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.113,
+    "oil_discount_gain_r7_total_central": 0.088
+   },
+   "GHA": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.044,
+      "central": 0.0599,
+      "high": 0.0892
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.076,
+    "oil_discount_gain_r7_total_central": 0.06
+   },
+   "GIN": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0101,
+      "central": 0.0137,
+      "high": 0.0204
+     },
+     "2023": {
+      "low": 0.0117,
+      "central": 0.0159,
+      "high": 0.0237
+     },
+     "2024": {
+      "low": 0.0059,
+      "central": 0.008,
+      "high": 0.0119
+     },
+     "2025": {
+      "low": 0.0059,
+      "central": 0.008,
+      "high": 0.0119
+     },
+     "2026": {
+      "low": 0.0154,
+      "central": 0.021,
+      "high": 0.0313
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.093,
+    "oil_discount_gain_r7_total_central": 0.067
+   },
+   "GRC": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.3378,
+      "central": 0.8386,
+      "high": 1.1077
+     },
+     "2023": {
+      "low": 0.224,
+      "central": 0.5057,
+      "high": 0.7942
+     },
+     "2024": {
+      "low": 0.1793,
+      "central": 0.3246,
+      "high": 0.4833
+     },
+     "2025": {
+      "low": 0.1857,
+      "central": 0.3586,
+      "high": 0.5689
+     },
+     "2026": {
+      "low": 0.1708,
+      "central": 0.5679,
+      "high": 1.0517
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.4419,
+      "central": 0.6018,
+      "high": 0.8965
+     },
+     "2023": {
+      "low": 0.0532,
+      "central": 0.0725,
+      "high": 0.108
+     },
+     "2024": {
+      "low": 0.0019,
+      "central": 0.0026,
+      "high": 0.0038
+     },
+     "2025": {
+      "low": 0.0002,
+      "central": 0.0002,
+      "high": 0.0003
+     },
+     "2026": {
+      "low": 0.0075,
+      "central": 0.0102,
+      "high": 0.0151
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.937,
+    "oil_discount_gain_r7_total_central": 0.687
+   },
+   "HRV": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0885,
+      "central": 0.2143,
+      "high": 0.2892
+     },
+     "2023": {
+      "low": 0.0589,
+      "central": 0.1247,
+      "high": 0.1843
+     },
+     "2024": {
+      "low": 0.0238,
+      "central": 0.0489,
+      "high": 0.0929
+     },
+     "2025": {
+      "low": 0.0445,
+      "central": 0.0778,
+      "high": 0.1338
+     },
+     "2026": {
+      "low": 0.0425,
+      "central": 0.0904,
+      "high": 0.1597
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.1215,
+      "central": 0.1655,
+      "high": 0.2465
+     },
+     "2023": {
+      "low": 0.0245,
+      "central": 0.0333,
+      "high": 0.0497
+     },
+     "2024": {
+      "low": 0.0084,
+      "central": 0.0114,
+      "high": 0.0169
+     },
+     "2025": {
+      "low": 0.0128,
+      "central": 0.0174,
+      "high": 0.026
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.319,
+    "oil_discount_gain_r7_total_central": 0.228
+   },
+   "HUN": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0024,
+      "central": 0.0166,
+      "high": 0.0314
+     },
+     "2023": {
+      "low": 0.0017,
+      "central": 0.0066,
+      "high": 0.0134
+     },
+     "2024": {
+      "low": 0.0233,
+      "central": 0.0349,
+      "high": 0.0629
+     },
+     "2025": {
+      "low": 0.0173,
+      "central": 0.0264,
+      "high": 0.046
+     },
+     "2026": {
+      "low": 0.0347,
+      "central": 0.1285,
+      "high": 0.2386
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.2181,
+      "central": 0.2969,
+      "high": 0.4423
+     },
+     "2023": {
+      "low": 0.1364,
+      "central": 0.1857,
+      "high": 0.2767
+     },
+     "2024": {
+      "low": 0.1179,
+      "central": 0.1606,
+      "high": 0.2392
+     },
+     "2025": {
+      "low": 0.0452,
+      "central": 0.0615,
+      "high": 0.0916
+     },
+     "2026": {
+      "low": 0.016,
+      "central": 0.0218,
+      "high": 0.0325
+     }
+    },
+    "oil_discount_gain_old_total_central": 1.035,
+    "oil_discount_gain_r7_total_central": 0.727
+   },
+   "IDN": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0003,
+      "central": 0.0004,
+      "high": 0.0005
+     },
+     "2024": {
+      "low": 0.0004,
+      "central": 0.0005,
+      "high": 0.0009
+     },
+     "2025": {
+      "low": 0.0002,
+      "central": 0.0003,
+      "high": 0.0005
+     },
+     "2026": {
+      "low": 0.0018,
+      "central": 0.0027,
+      "high": 0.0046
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0029,
+      "central": 0.0039,
+      "high": 0.0057
+     },
+     "2023": {
+      "low": 0.0129,
+      "central": 0.0176,
+      "high": 0.0262
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.1834,
+      "central": 0.2498,
+      "high": 0.3721
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.346,
+    "oil_discount_gain_r7_total_central": 0.271
+   },
+   "IND": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.014,
+      "central": 0.0264,
+      "high": 0.029
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0101,
+      "central": 0.0149,
+      "high": 0.0258
+     },
+     "2025": {
+      "low": 0.004,
+      "central": 0.0061,
+      "high": 0.0106
+     },
+     "2026": {
+      "low": 0.0175,
+      "central": 0.0259,
+      "high": 0.0449
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 2.3322,
+      "central": 3.1758,
+      "high": 4.7312
+     },
+     "2023": {
+      "low": 5.3564,
+      "central": 7.2939,
+      "high": 10.8663
+     },
+     "2024": {
+      "low": 3.2764,
+      "central": 4.4616,
+      "high": 6.6467
+     },
+     "2025": {
+      "low": 1.8704,
+      "central": 2.5468,
+      "high": 3.7942
+     },
+     "2026": {
+      "low": 4.8601,
+      "central": 6.618,
+      "high": 9.8593
+     }
+    },
+    "oil_discount_gain_old_total_central": 33.798,
+    "oil_discount_gain_r7_total_central": 24.096
+   },
+   "ISR": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0039,
+      "central": 0.0307,
+      "high": 0.0583
+     },
+     "2023": {
+      "low": 0.011,
+      "central": 0.0381,
+      "high": 0.0744
+     },
+     "2024": {
+      "low": 0.0088,
+      "central": 0.0218,
+      "high": 0.0511
+     },
+     "2025": {
+      "low": 0.0109,
+      "central": 0.0239,
+      "high": 0.0456
+     },
+     "2026": {
+      "low": 0.013,
+      "central": 0.0619,
+      "high": 0.126
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0681,
+      "central": 0.0927,
+      "high": 0.1381
+     },
+     "2023": {
+      "low": 0.0303,
+      "central": 0.0413,
+      "high": 0.0616
+     },
+     "2024": {
+      "low": 0.0021,
+      "central": 0.0029,
+      "high": 0.0043
+     },
+     "2025": {
+      "low": 0.011,
+      "central": 0.0149,
+      "high": 0.0222
+     },
+     "2026": {
+      "low": 0.014,
+      "central": 0.0191,
+      "high": 0.0284
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.237,
+    "oil_discount_gain_r7_total_central": 0.171
+   },
+   "ITA": {
+    "switching_cost": {
+     "2022": {
+      "low": 3.9792,
+      "central": 9.0124,
+      "high": 9.9941
+     },
+     "2023": {
+      "low": 1.4801,
+      "central": 2.7987,
+      "high": 3.9406
+     },
+     "2024": {
+      "low": 0.851,
+      "central": 1.4568,
+      "high": 2.4807
+     },
+     "2025": {
+      "low": 1.4829,
+      "central": 2.3724,
+      "high": 4.0262
+     },
+     "2026": {
+      "low": 1.5565,
+      "central": 2.9029,
+      "high": 5.1431
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.9566,
+      "central": 1.3026,
+      "high": 1.9406
+     },
+     "2023": {
+      "low": 0.0125,
+      "central": 0.0171,
+      "high": 0.0255
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 1.805,
+    "oil_discount_gain_r7_total_central": 1.32
+   },
+   "JPN": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.187,
+      "central": 1.1771,
+      "high": 2.2259
+     },
+     "2023": {
+      "low": 0.1875,
+      "central": 0.6296,
+      "high": 1.2108
+     },
+     "2024": {
+      "low": 0.1529,
+      "central": 0.3567,
+      "high": 0.8489
+     },
+     "2025": {
+      "low": 0.1205,
+      "central": 0.2314,
+      "high": 0.4315
+     },
+     "2026": {
+      "low": 0.1672,
+      "central": 0.4571,
+      "high": 0.9073
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0724,
+      "central": 0.0986,
+      "high": 0.1469
+     },
+     "2023": {
+      "low": 0.0028,
+      "central": 0.0038,
+      "high": 0.0056
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0016,
+      "central": 0.0022,
+      "high": 0.0032
+     },
+     "2026": {
+      "low": 0.0036,
+      "central": 0.005,
+      "high": 0.0074
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.15,
+    "oil_discount_gain_r7_total_central": 0.11
+   },
+   "KGZ": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0024,
+      "central": 0.0124,
+      "high": 0.0328
+     },
+     "2023": {
+      "low": 0.0031,
+      "central": 0.009,
+      "high": 0.0192
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0344,
+      "central": 0.0781,
+      "high": 0.1512
+     },
+     "2023": {
+      "low": 0.0125,
+      "central": 0.0285,
+      "high": 0.0551
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0052,
+      "central": 0.0118,
+      "high": 0.0229
+     },
+     "2026": {
+      "low": 0.0448,
+      "central": 0.1017,
+      "high": 0.1968
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.295,
+    "oil_discount_gain_r7_total_central": 0.22
+   },
+   "KOR": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.6298,
+      "central": 1.6514,
+      "high": 2.4124
+     },
+     "2023": {
+      "low": 0.4127,
+      "central": 1.0669,
+      "high": 1.778
+     },
+     "2024": {
+      "low": 0.3725,
+      "central": 0.723,
+      "high": 1.1852
+     },
+     "2025": {
+      "low": 0.3037,
+      "central": 0.5933,
+      "high": 0.8991
+     },
+     "2026": {
+      "low": 0.2944,
+      "central": 1.1514,
+      "high": 2.1518
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.2999,
+      "central": 0.4083,
+      "high": 0.6083
+     },
+     "2023": {
+      "low": 0.0443,
+      "central": 0.0603,
+      "high": 0.0898
+     },
+     "2024": {
+      "low": 0.0639,
+      "central": 0.087,
+      "high": 0.1296
+     },
+     "2025": {
+      "low": 0.055,
+      "central": 0.0749,
+      "high": 0.1116
+     },
+     "2026": {
+      "low": 0.0537,
+      "central": 0.0732,
+      "high": 0.1091
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.998,
+    "oil_discount_gain_r7_total_central": 0.704
+   },
+   "LCA": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0163,
+      "central": 0.0369,
+      "high": 0.0716
+     },
+     "2023": {
+      "low": 0.0153,
+      "central": 0.0348,
+      "high": 0.0674
+     },
+     "2024": {
+      "low": 0.0098,
+      "central": 0.0222,
+      "high": 0.043
+     },
+     "2025": {
+      "low": 0.0052,
+      "central": 0.0118,
+      "high": 0.0228
+     },
+     "2026": {
+      "low": 0.0131,
+      "central": 0.0298,
+      "high": 0.0576
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.189,
+    "oil_discount_gain_r7_total_central": 0.135
+   },
+   "LKA": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0011,
+      "central": 0.009,
+      "high": 0.0172
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0003,
+      "central": 0.0007,
+      "high": 0.0031
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.017,
+      "central": 0.0232,
+      "high": 0.0346
+     },
+     "2023": {
+      "low": 0.0152,
+      "central": 0.0208,
+      "high": 0.031
+     },
+     "2024": {
+      "low": 0.0024,
+      "central": 0.0032,
+      "high": 0.0048
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.064,
+    "oil_discount_gain_r7_total_central": 0.047
+   },
+   "LTU": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.2506,
+      "central": 0.7196,
+      "high": 1.1513
+     },
+     "2023": {
+      "low": 0.1736,
+      "central": 0.4927,
+      "high": 0.8484
+     },
+     "2024": {
+      "low": 0.1652,
+      "central": 0.3707,
+      "high": 0.6083
+     },
+     "2025": {
+      "low": 0.1348,
+      "central": 0.2688,
+      "high": 0.4151
+     },
+     "2026": {
+      "low": 0.1222,
+      "central": 0.4097,
+      "high": 0.7451
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.027,
+      "central": 0.0367,
+      "high": 0.0547
+     },
+     "2023": {
+      "low": 0.0053,
+      "central": 0.0071,
+      "high": 0.0107
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.06,
+    "oil_discount_gain_r7_total_central": 0.044
+   },
+   "LVA": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.1596,
+      "central": 0.371,
+      "high": 0.4081
+     },
+     "2023": {
+      "low": 0.0505,
+      "central": 0.0967,
+      "high": 0.1364
+     },
+     "2024": {
+      "low": 0.0471,
+      "central": 0.0627,
+      "high": 0.0857
+     },
+     "2025": {
+      "low": 0.0642,
+      "central": 0.1062,
+      "high": 0.1725
+     },
+     "2026": {
+      "low": 0.0755,
+      "central": 0.1936,
+      "high": 0.359
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.2422,
+      "central": 0.3298,
+      "high": 0.4912
+     },
+     "2023": {
+      "low": 0.0162,
+      "central": 0.0221,
+      "high": 0.033
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.48,
+    "oil_discount_gain_r7_total_central": 0.352
+   },
+   "MMR": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.1346,
+      "central": 0.1833,
+      "high": 0.2731
+     },
+     "2024": {
+      "low": 0.1226,
+      "central": 0.167,
+      "high": 0.2488
+     },
+     "2025": {
+      "low": 0.0226,
+      "central": 0.0307,
+      "high": 0.0458
+     },
+     "2026": {
+      "low": 0.0039,
+      "central": 0.0054,
+      "high": 0.008
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.559,
+    "oil_discount_gain_r7_total_central": 0.386
+   },
+   "MNG": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0482,
+      "central": 0.1094,
+      "high": 0.2118
+     },
+     "2023": {
+      "low": 0.0236,
+      "central": 0.0535,
+      "high": 0.1037
+     },
+     "2024": {
+      "low": 0.0001,
+      "central": 0.0003,
+      "high": 0.0005
+     },
+     "2025": {
+      "low": 0.0082,
+      "central": 0.0185,
+      "high": 0.036
+     },
+     "2026": {
+      "low": 0.0701,
+      "central": 0.1589,
+      "high": 0.3079
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.456,
+    "oil_discount_gain_r7_total_central": 0.341
+   },
+   "MYS": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0158,
+      "central": 0.0536,
+      "high": 0.0965
+     },
+     "2023": {
+      "low": 0.0158,
+      "central": 0.0538,
+      "high": 0.0968
+     },
+     "2024": {
+      "low": 0.0164,
+      "central": 0.0429,
+      "high": 0.0722
+     },
+     "2025": {
+      "low": 0.0128,
+      "central": 0.0255,
+      "high": 0.0387
+     },
+     "2026": {
+      "low": 0.0121,
+      "central": 0.0396,
+      "high": 0.0707
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.1781,
+      "central": 0.2425,
+      "high": 0.3613
+     },
+     "2023": {
+      "low": 0.0798,
+      "central": 0.1086,
+      "high": 0.1618
+     },
+     "2024": {
+      "low": 0.0032,
+      "central": 0.0043,
+      "high": 0.0064
+     },
+     "2025": {
+      "low": 0.0074,
+      "central": 0.01,
+      "high": 0.0149
+     },
+     "2026": {
+      "low": 0.0499,
+      "central": 0.068,
+      "high": 0.1013
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.587,
+    "oil_discount_gain_r7_total_central": 0.433
+   },
+   "NLD": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.5677,
+      "central": 2.0957,
+      "high": 3.6365
+     },
+     "2023": {
+      "low": 1.0357,
+      "central": 2.9133,
+      "high": 5.0578
+     },
+     "2024": {
+      "low": 0.9665,
+      "central": 1.9397,
+      "high": 3.1923
+     },
+     "2025": {
+      "low": 0.7807,
+      "central": 1.571,
+      "high": 2.4636
+     },
+     "2026": {
+      "low": 0.6767,
+      "central": 2.787,
+      "high": 5.2863
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 1.1382,
+      "central": 1.5499,
+      "high": 2.3091
+     },
+     "2023": {
+      "low": 0.0391,
+      "central": 0.0533,
+      "high": 0.0795
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 2.191,
+    "oil_discount_gain_r7_total_central": 1.603
+   },
+   "OMN": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0003
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0001
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0099,
+      "central": 0.0135,
+      "high": 0.0201
+     },
+     "2023": {
+      "low": 0.0008,
+      "central": 0.0011,
+      "high": 0.0017
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0013,
+      "central": 0.0017,
+      "high": 0.0026
+     },
+     "2026": {
+      "low": 0.019,
+      "central": 0.0258,
+      "high": 0.0385
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.056,
+    "oil_discount_gain_r7_total_central": 0.042
+   },
+   "PAK": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0056,
+      "central": 0.0493,
+      "high": 0.0947
+     },
+     "2023": {
+      "low": 0.0019,
+      "central": 0.0072,
+      "high": 0.0149
+     },
+     "2024": {
+      "low": 0.0006,
+      "central": 0.0023,
+      "high": 0.0142
+     },
+     "2025": {
+      "low": 0.0004,
+      "central": 0.001,
+      "high": 0.0041
+     },
+     "2026": {
+      "low": 0.0004,
+      "central": 0.001,
+      "high": 0.0052
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0182,
+      "central": 0.0247,
+      "high": 0.0369
+     },
+     "2024": {
+      "low": 0.0402,
+      "central": 0.0548,
+      "high": 0.0816
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.01,
+      "central": 0.0137,
+      "high": 0.0204
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.133,
+    "oil_discount_gain_r7_total_central": 0.093
+   },
+   "PHL": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0045,
+      "central": 0.0247,
+      "high": 0.046
+     },
+     "2023": {
+      "low": 0.0055,
+      "central": 0.0198,
+      "high": 0.0415
+     },
+     "2024": {
+      "low": 0.0047,
+      "central": 0.0095,
+      "high": 0.0233
+     },
+     "2025": {
+      "low": 0.0037,
+      "central": 0.0076,
+      "high": 0.0138
+     },
+     "2026": {
+      "low": 0.0016,
+      "central": 0.0021,
+      "high": 0.0038
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0021,
+      "central": 0.0029,
+      "high": 0.0042
+     },
+     "2023": {
+      "low": 0.002,
+      "central": 0.0028,
+      "high": 0.0042
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0266,
+      "central": 0.0362,
+      "high": 0.0538
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.054,
+    "oil_discount_gain_r7_total_central": 0.042
+   },
+   "POL": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.2066,
+      "central": 0.9477,
+      "high": 1.7372
+     },
+     "2023": {
+      "low": 0.4742,
+      "central": 1.4032,
+      "high": 2.4901
+     },
+     "2024": {
+      "low": 0.4676,
+      "central": 1.0443,
+      "high": 1.7819
+     },
+     "2025": {
+      "low": 0.4069,
+      "central": 0.8089,
+      "high": 1.2754
+     },
+     "2026": {
+      "low": 0.3687,
+      "central": 1.2476,
+      "high": 2.3109
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.6888,
+      "central": 0.9379,
+      "high": 1.3974
+     },
+     "2023": {
+      "low": 0.0557,
+      "central": 0.0759,
+      "high": 0.113
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 1.384,
+    "oil_discount_gain_r7_total_central": 1.014
+   },
+   "ROU": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.3354,
+      "central": 0.7956,
+      "high": 0.9885
+     },
+     "2023": {
+      "low": 0.2804,
+      "central": 0.6896,
+      "high": 1.1246
+     },
+     "2024": {
+      "low": 0.236,
+      "central": 0.4768,
+      "high": 0.7765
+     },
+     "2025": {
+      "low": 0.2338,
+      "central": 0.4292,
+      "high": 0.6878
+     },
+     "2026": {
+      "low": 0.255,
+      "central": 0.7147,
+      "high": 1.314
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.2803,
+      "central": 0.3818,
+      "high": 0.5688
+     },
+     "2023": {
+      "low": 0.0074,
+      "central": 0.0101,
+      "high": 0.0152
+     },
+     "2024": {
+      "low": 0.002,
+      "central": 0.0027,
+      "high": 0.004
+     },
+     "2025": {
+      "low": 0.0008,
+      "central": 0.0012,
+      "high": 0.0017
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.542,
+    "oil_discount_gain_r7_total_central": 0.396
+   },
+   "SAU": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.1121,
+      "central": 0.1526,
+      "high": 0.2273
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0096,
+      "central": 0.013,
+      "high": 0.0194
+     },
+     "2025": {
+      "low": 0.1792,
+      "central": 0.244,
+      "high": 0.3636
+     },
+     "2026": {
+      "low": 0.6823,
+      "central": 0.9291,
+      "high": 1.3842
+     }
+    },
+    "oil_discount_gain_old_total_central": 1.846,
+    "oil_discount_gain_r7_total_central": 1.339
+   },
+   "SDN": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0096,
+      "central": 0.0131,
+      "high": 0.0194
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0526,
+      "central": 0.0717,
+      "high": 0.1068
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.109,
+    "oil_discount_gain_r7_total_central": 0.085
+   },
+   "SEN": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0265,
+      "central": 0.036,
+      "high": 0.0537
+     },
+     "2023": {
+      "low": 0.0495,
+      "central": 0.0674,
+      "high": 0.1003
+     },
+     "2024": {
+      "low": 0.0181,
+      "central": 0.0246,
+      "high": 0.0366
+     },
+     "2025": {
+      "low": 0.0233,
+      "central": 0.0318,
+      "high": 0.0473
+     },
+     "2026": {
+      "low": 0.0965,
+      "central": 0.1314,
+      "high": 0.1957
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.4,
+    "oil_discount_gain_r7_total_central": 0.291
+   },
+   "SGP": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0696,
+      "central": 0.1938,
+      "high": 0.299
+     },
+     "2023": {
+      "low": 0.009,
+      "central": 0.0293,
+      "high": 0.0523
+     },
+     "2024": {
+      "low": 0.0103,
+      "central": 0.0256,
+      "high": 0.0428
+     },
+     "2025": {
+      "low": 0.0079,
+      "central": 0.0175,
+      "high": 0.028
+     },
+     "2026": {
+      "low": 0.0063,
+      "central": 0.0134,
+      "high": 0.0229
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0466,
+      "central": 0.0635,
+      "high": 0.0945
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0194,
+      "central": 0.0265,
+      "high": 0.0394
+     },
+     "2026": {
+      "low": 0.3784,
+      "central": 0.5152,
+      "high": 0.7676
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.788,
+    "oil_discount_gain_r7_total_central": 0.605
+   },
+   "SVK": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0082,
+      "central": 0.067,
+      "high": 0.1281
+     },
+     "2023": {
+      "low": 0.017,
+      "central": 0.0598,
+      "high": 0.114
+     },
+     "2024": {
+      "low": 0.0243,
+      "central": 0.0631,
+      "high": 0.1199
+     },
+     "2025": {
+      "low": 0.0704,
+      "central": 0.1086,
+      "high": 0.1903
+     },
+     "2026": {
+      "low": 0.1038,
+      "central": 0.2592,
+      "high": 0.4778
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.2149,
+      "central": 0.2927,
+      "high": 0.436
+     },
+     "2023": {
+      "low": 0.14,
+      "central": 0.1906,
+      "high": 0.284
+     },
+     "2024": {
+      "low": 0.0985,
+      "central": 0.1341,
+      "high": 0.1997
+     },
+     "2025": {
+      "low": 0.0471,
+      "central": 0.0642,
+      "high": 0.0956
+     },
+     "2026": {
+      "low": 0.0313,
+      "central": 0.0426,
+      "high": 0.0635
+     }
+    },
+    "oil_discount_gain_old_total_central": 1.027,
+    "oil_discount_gain_r7_total_central": 0.724
+   },
+   "SYR": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0627,
+      "central": 0.0853,
+      "high": 0.1271
+     },
+     "2026": {
+      "low": 0.2013,
+      "central": 0.2741,
+      "high": 0.4084
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.501,
+    "oil_discount_gain_r7_total_central": 0.359
+   },
+   "TJK": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0035,
+      "central": 0.0101,
+      "high": 0.0216
+     },
+     "2024": {
+      "low": 0.0034,
+      "central": 0.007,
+      "high": 0.0116
+     },
+     "2025": {
+      "low": 0.0028,
+      "central": 0.0059,
+      "high": 0.01
+     },
+     "2026": {
+      "low": 0.0024,
+      "central": 0.0199,
+      "high": 0.0576
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0176,
+      "central": 0.04,
+      "high": 0.0774
+     },
+     "2023": {
+      "low": 0.0009,
+      "central": 0.002,
+      "high": 0.0039
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0003,
+      "central": 0.0007,
+      "high": 0.0013
+     },
+     "2026": {
+      "low": 0.0027,
+      "central": 0.006,
+      "high": 0.0117
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.066,
+    "oil_discount_gain_r7_total_central": 0.049
+   },
+   "TUN": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0346,
+      "central": 0.0472,
+      "high": 0.0703
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0222,
+      "central": 0.0303,
+      "high": 0.0451
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.103,
+    "oil_discount_gain_r7_total_central": 0.077
+   },
+   "TUR": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.9651,
+      "central": 2.2205,
+      "high": 2.4425
+     },
+     "2023": {
+      "low": 0.3189,
+      "central": 0.5503,
+      "high": 0.6837
+     },
+     "2024": {
+      "low": 0.0945,
+      "central": 0.1401,
+      "high": 0.2425
+     },
+     "2025": {
+      "low": 0.2781,
+      "central": 0.4129,
+      "high": 0.7147
+     },
+     "2026": {
+      "low": 0.4927,
+      "central": 0.739,
+      "high": 1.2793
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 1.1836,
+      "central": 1.6117,
+      "high": 2.401
+     },
+     "2023": {
+      "low": 1.0148,
+      "central": 1.3818,
+      "high": 2.0585
+     },
+     "2024": {
+      "low": 0.2292,
+      "central": 0.312,
+      "high": 0.4649
+     },
+     "2025": {
+      "low": 0.4922,
+      "central": 0.6702,
+      "high": 0.9985
+     },
+     "2026": {
+      "low": 1.1554,
+      "central": 1.5732,
+      "high": 2.3437
+     }
+    },
+    "oil_discount_gain_old_total_central": 7.718,
+    "oil_discount_gain_r7_total_central": 5.549
+   },
+   "TWN": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.2348,
+      "central": 0.6957,
+      "high": 1.0005
+     },
+     "2023": {
+      "low": 0.0628,
+      "central": 0.1512,
+      "high": 0.2476
+     },
+     "2024": {
+      "low": 0.0536,
+      "central": 0.0845,
+      "high": 0.1829
+     },
+     "2025": {
+      "low": 0.0315,
+      "central": 0.0545,
+      "high": 0.1239
+     },
+     "2026": {
+      "low": 0.0673,
+      "central": 0.173,
+      "high": 0.3438
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0249,
+      "central": 0.0338,
+      "high": 0.0504
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0057,
+      "central": 0.0077,
+      "high": 0.0115
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.056,
+    "oil_discount_gain_r7_total_central": 0.042
+   },
+   "USA": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.6639,
+      "central": 2.2196,
+      "high": 3.9665
+     },
+     "2023": {
+      "low": 0.6594,
+      "central": 1.5887,
+      "high": 2.6041
+     },
+     "2024": {
+      "low": 0.6501,
+      "central": 1.0156,
+      "high": 1.3754
+     },
+     "2025": {
+      "low": 0.5329,
+      "central": 1.009,
+      "high": 1.5029
+     },
+     "2026": {
+      "low": 0.4551,
+      "central": 1.9911,
+      "high": 3.7691
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.2607,
+      "central": 0.355,
+      "high": 0.5288
+     },
+     "2023": {
+      "low": 0.0004,
+      "central": 0.0005,
+      "high": 0.0008
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.486,
+    "oil_discount_gain_r7_total_central": 0.355
+   },
+   "UZB": {
+    "switching_cost": {
+     "2022": {
+      "low": 0.0001,
+      "central": 0.0003,
+      "high": 0.0008
+     },
+     "2023": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     }
+    },
+    "oil_discount_gain_r7": {
+     "2022": {
+      "low": 0.0229,
+      "central": 0.0518,
+      "high": 0.1004
+     },
+     "2023": {
+      "low": 0.0302,
+      "central": 0.0685,
+      "high": 0.1326
+     },
+     "2024": {
+      "low": 0.0078,
+      "central": 0.0177,
+      "high": 0.0343
+     },
+     "2025": {
+      "low": 0.019,
+      "central": 0.0431,
+      "high": 0.0835
+     },
+     "2026": {
+      "low": 0.1384,
+      "central": 0.314,
+      "high": 0.6082
+     }
+    },
+    "oil_discount_gain_old_total_central": 0.665,
+    "oil_discount_gain_r7_total_central": 0.495
+   }
+  }
+ },
+ "windfall_impact": {
+  "note": "central p (actual) with low/central/high no-war n; builder ranges will be wider once p bands are combined. EUR bn, 2022-2026 (2026 = Jan-Aug). Ranked by fuel paid to Russia 2022-2026.",
+  "countries": {
+   "CHN": {
+    "fuel_paid_2022_2026_eur_bn": 383.61,
+    "windfall_old_central": 116.59,
+    "windfall_new": {
+     "low": -1.16,
+     "central": 44.55,
+     "high": 79.03
+    },
+    "change_central": -72.04,
+    "by_year": {
+     "2022": {
+      "old": 34.685,
+      "new_central": 13.431,
+      "n_over_p": 0.828
+     },
+     "2023": {
+      "old": 27.354,
+      "new_central": 8.068,
+      "n_over_p": 0.906
+     },
+     "2024": {
+      "old": 24.601,
+      "new_central": 8.678,
+      "n_over_p": 0.899
+     },
+     "2025": {
+      "old": 10.671,
+      "new_central": -0.891,
+      "n_over_p": 1.013
+     },
+     "2026": {
+      "old": 19.277,
+      "new_central": 15.264,
+      "n_over_p": 0.762
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "IND": {
+    "fuel_paid_2022_2026_eur_bn": 199.87,
+    "windfall_old_central": 54.71,
+    "windfall_new": {
+     "low": -1.65,
+     "central": 19.54,
+     "high": 36.55
+    },
+    "change_central": -35.18,
+    "by_year": {
+     "2022": {
+      "old": 11.708,
+      "new_central": 4.348,
+      "n_over_p": 0.845
+     },
+     "2023": {
+      "old": 11.284,
+      "new_central": 0.724,
+      "n_over_p": 0.984
+     },
+     "2024": {
+      "old": 12.539,
+      "new_central": 3.855,
+      "n_over_p": 0.919
+     },
+     "2025": {
+      "old": 6.051,
+      "new_central": 0.156,
+      "n_over_p": 0.996
+     },
+     "2026": {
+      "old": 13.132,
+      "new_central": 10.453,
+      "n_over_p": 0.718
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "TUR": {
+    "fuel_paid_2022_2026_eur_bn": 127.25,
+    "windfall_old_central": 53.75,
+    "windfall_new": {
+     "low": 5.31,
+     "central": 24.81,
+     "high": 38.74
+    },
+    "change_central": -28.94,
+    "by_year": {
+     "2022": {
+      "old": 23.941,
+      "new_central": 12.803,
+      "n_over_p": 0.65
+     },
+     "2023": {
+      "old": 9.116,
+      "new_central": 2.491,
+      "n_over_p": 0.899
+     },
+     "2024": {
+      "old": 8.617,
+      "new_central": 2.893,
+      "n_over_p": 0.89
+     },
+     "2025": {
+      "old": 5.705,
+      "new_central": 1.733,
+      "n_over_p": 0.926
+     },
+     "2026": {
+      "old": 6.372,
+      "new_central": 4.893,
+      "n_over_p": 0.699
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "DEU": {
+    "fuel_paid_2022_2026_eur_bn": 44.95,
+    "windfall_old_central": 29.22,
+    "windfall_new": {
+     "low": 8.24,
+     "central": 15.76,
+     "high": 22.69
+    },
+    "change_central": -13.46,
+    "by_year": {
+     "2022": {
+      "old": 28.494,
+      "new_central": 15.287,
+      "n_over_p": 0.646
+     },
+     "2023": {
+      "old": 0.404,
+      "new_central": 0.232,
+      "n_over_p": 0.758
+     },
+     "2024": {
+      "old": 0.026,
+      "new_central": 0.017,
+      "n_over_p": 0.796
+     },
+     "2025": {
+      "old": 0.001,
+      "new_central": 0.001,
+      "n_over_p": 0.604
+     },
+     "2026": {
+      "old": 0.297,
+      "new_central": 0.223,
+      "n_over_p": 0.681
+     }
+    },
+    "basis": "pre-war fuel mix"
+   },
+   "HUN": {
+    "fuel_paid_2022_2026_eur_bn": 29.77,
+    "windfall_old_central": 17.05,
+    "windfall_new": {
+     "low": 2.2,
+     "central": 7.6,
+     "high": 12.11
+    },
+    "change_central": -9.45,
+    "by_year": {
+     "2022": {
+      "old": 10.701,
+      "new_central": 5.89,
+      "n_over_p": 0.582
+     },
+     "2023": {
+      "old": 2.491,
+      "new_central": 0.094,
+      "n_over_p": 0.983
+     },
+     "2024": {
+      "old": 1.272,
+      "new_central": 0.26,
+      "n_over_p": 0.934
+     },
+     "2025": {
+      "old": 1.53,
+      "new_central": 0.563,
+      "n_over_p": 0.867
+     },
+     "2026": {
+      "old": 1.055,
+      "new_central": 0.793,
+      "n_over_p": 0.617
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "NLD": {
+    "fuel_paid_2022_2026_eur_bn": 28.37,
+    "windfall_old_central": 12.03,
+    "windfall_new": {
+     "low": 1.92,
+     "central": 6.49,
+     "high": 10.22
+    },
+    "change_central": -5.54,
+    "by_year": {
+     "2022": {
+      "old": 9.609,
+      "new_central": 5.386,
+      "n_over_p": 0.729
+     },
+     "2023": {
+      "old": 1.966,
+      "new_central": 0.32,
+      "n_over_p": 0.926
+     },
+     "2024": {
+      "old": 0.268,
+      "new_central": 0.192,
+      "n_over_p": 0.881
+     },
+     "2025": {
+      "old": 0.168,
+      "new_central": 0.246,
+      "n_over_p": 0.841
+     },
+     "2026": {
+      "old": 0.017,
+      "new_central": 0.345,
+      "n_over_p": 0.665
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "ITA": {
+    "fuel_paid_2022_2026_eur_bn": 28.26,
+    "windfall_old_central": 17.46,
+    "windfall_new": {
+     "low": 4.51,
+     "central": 9.73,
+     "high": 14.24
+    },
+    "change_central": -7.73,
+    "by_year": {
+     "2022": {
+      "old": 15.477,
+      "new_central": 9.184,
+      "n_over_p": 0.619
+     },
+     "2023": {
+      "old": 0.954,
+      "new_central": 0.143,
+      "n_over_p": 0.914
+     },
+     "2024": {
+      "old": 0.802,
+      "new_central": 0.257,
+      "n_over_p": 0.872
+     },
+     "2025": {
+      "old": 0.154,
+      "new_central": 0.088,
+      "n_over_p": 0.73
+     },
+     "2026": {
+      "old": 0.07,
+      "new_central": 0.054,
+      "n_over_p": 0.557
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "FRA": {
+    "fuel_paid_2022_2026_eur_bn": 27.31,
+    "windfall_old_central": 11.8,
+    "windfall_new": {
+     "low": 4.21,
+     "central": 9.43,
+     "high": 13.66
+    },
+    "change_central": -2.36,
+    "by_year": {
+     "2022": {
+      "old": 10.416,
+      "new_central": 6.971,
+      "n_over_p": 0.576
+     },
+     "2023": {
+      "old": 0.723,
+      "new_central": 0.232,
+      "n_over_p": 0.908
+     },
+     "2024": {
+      "old": 0.136,
+      "new_central": 0.376,
+      "n_over_p": 0.872
+     },
+     "2025": {
+      "old": 0.263,
+      "new_central": 0.849,
+      "n_over_p": 0.73
+     },
+     "2026": {
+      "old": 0.261,
+      "new_central": 1.006,
+      "n_over_p": 0.557
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "BLR": {
+    "fuel_paid_2022_2026_eur_bn": 26.73,
+    "windfall_old_central": 3.69,
+    "windfall_new": {
+     "low": -1.98,
+     "central": -0.02,
+     "high": 1.73
+    },
+    "change_central": -3.71,
+    "by_year": {
+     "2022": {
+      "old": 1.713,
+      "new_central": 0.436,
+      "n_over_p": 0.936
+     },
+     "2023": {
+      "old": 0.675,
+      "new_central": -0.354,
+      "n_over_p": 1.061
+     },
+     "2024": {
+      "old": 0.92,
+      "new_central": 0.108,
+      "n_over_p": 0.982
+     },
+     "2025": {
+      "old": -0.023,
+      "new_central": -0.406,
+      "n_over_p": 1.083
+     },
+     "2026": {
+      "old": 0.4,
+      "new_central": 0.191,
+      "n_over_p": 0.942
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "KOR": {
+    "fuel_paid_2022_2026_eur_bn": 23.68,
+    "windfall_old_central": 8.94,
+    "windfall_new": {
+     "low": 1.04,
+     "central": 5.25,
+     "high": 7.58
+    },
+    "change_central": -3.7,
+    "by_year": {
+     "2022": {
+      "old": 5.134,
+      "new_central": 2.507,
+      "n_over_p": 0.753
+     },
+     "2023": {
+      "old": 2.086,
+      "new_central": 1.328,
+      "n_over_p": 0.73
+     },
+     "2024": {
+      "old": 0.806,
+      "new_central": 0.496,
+      "n_over_p": 0.841
+     },
+     "2025": {
+      "old": 0.239,
+      "new_central": 0.177,
+      "n_over_p": 0.94
+     },
+     "2026": {
+      "old": 0.679,
+      "new_central": 0.738,
+      "n_over_p": 0.709
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "JPN": {
+    "fuel_paid_2022_2026_eur_bn": 22.27,
+    "windfall_old_central": 8.75,
+    "windfall_new": {
+     "low": 2.15,
+     "central": 4.55,
+     "high": 6.14
+    },
+    "change_central": -4.2,
+    "by_year": {
+     "2022": {
+      "old": 4.729,
+      "new_central": 2.517,
+      "n_over_p": 0.727
+     },
+     "2023": {
+      "old": 1.803,
+      "new_central": 0.903,
+      "n_over_p": 0.799
+     },
+     "2024": {
+      "old": 1.117,
+      "new_central": 0.476,
+      "n_over_p": 0.859
+     },
+     "2025": {
+      "old": 0.672,
+      "new_central": 0.165,
+      "n_over_p": 0.945
+     },
+     "2026": {
+      "old": 0.428,
+      "new_central": 0.488,
+      "n_over_p": 0.78
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "BRA": {
+    "fuel_paid_2022_2026_eur_bn": 22.06,
+    "windfall_old_central": 7.61,
+    "windfall_new": {
+     "low": 1.28,
+     "central": 4.11,
+     "high": 5.71
+    },
+    "change_central": -3.5,
+    "by_year": {
+     "2022": {
+      "old": 0.792,
+      "new_central": 0.325,
+      "n_over_p": 0.809
+     },
+     "2023": {
+      "old": 2.043,
+      "new_central": 0.96,
+      "n_over_p": 0.827
+     },
+     "2024": {
+      "old": 2.031,
+      "new_central": 0.968,
+      "n_over_p": 0.846
+     },
+     "2025": {
+      "old": 1.064,
+      "new_central": 0.445,
+      "n_over_p": 0.904
+     },
+     "2026": {
+      "old": 1.677,
+      "new_central": 1.411,
+      "n_over_p": 0.636
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "SVK": {
+    "fuel_paid_2022_2026_eur_bn": 19.02,
+    "windfall_old_central": 8.11,
+    "windfall_new": {
+     "low": -0.32,
+     "central": 2.93,
+     "high": 5.45
+    },
+    "change_central": -5.18,
+    "by_year": {
+     "2022": {
+      "old": 4.245,
+      "new_central": 2.112,
+      "n_over_p": 0.708
+     },
+     "2023": {
+      "old": 1.383,
+      "new_central": 0.006,
+      "n_over_p": 0.998
+     },
+     "2024": {
+      "old": 1.165,
+      "new_central": 0.271,
+      "n_over_p": 0.921
+     },
+     "2025": {
+      "old": 0.779,
+      "new_central": 0.161,
+      "n_over_p": 0.949
+     },
+     "2026": {
+      "old": 0.533,
+      "new_central": 0.375,
+      "n_over_p": 0.724
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "BEL": {
+    "fuel_paid_2022_2026_eur_bn": 13.98,
+    "windfall_old_central": 7.38,
+    "windfall_new": {
+     "low": 0.78,
+     "central": 3.75,
+     "high": 5.85
+    },
+    "change_central": -3.62,
+    "by_year": {
+     "2022": {
+      "old": 4.223,
+      "new_central": 2.258,
+      "n_over_p": 0.694
+     },
+     "2023": {
+      "old": 1.239,
+      "new_central": 0.275,
+      "n_over_p": 0.884
+     },
+     "2024": {
+      "old": 0.432,
+      "new_central": 0.148,
+      "n_over_p": 0.867
+     },
+     "2025": {
+      "old": 0.815,
+      "new_central": 0.464,
+      "n_over_p": 0.73
+     },
+     "2026": {
+      "old": 0.668,
+      "new_central": 0.609,
+      "n_over_p": 0.557
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "SGP": {
+    "fuel_paid_2022_2026_eur_bn": 13.77,
+    "windfall_old_central": 4.25,
+    "windfall_new": {
+     "low": -0.02,
+     "central": 1.82,
+     "high": 2.89
+    },
+    "change_central": -2.44,
+    "by_year": {
+     "2022": {
+      "old": 0.61,
+      "new_central": 0.256,
+      "n_over_p": 0.817
+     },
+     "2023": {
+      "old": 1.094,
+      "new_central": 0.445,
+      "n_over_p": 0.86
+     },
+     "2024": {
+      "old": 1.383,
+      "new_central": 0.68,
+      "n_over_p": 0.83
+     },
+     "2025": {
+      "old": 0.586,
+      "new_central": 0.057,
+      "n_over_p": 0.981
+     },
+     "2026": {
+      "old": 0.583,
+      "new_central": 0.379,
+      "n_over_p": 0.823
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "CZE": {
+    "fuel_paid_2022_2026_eur_bn": 13.74,
+    "windfall_old_central": 8.53,
+    "windfall_new": {
+     "low": 1.62,
+     "central": 3.79,
+     "high": 5.84
+    },
+    "change_central": -4.74,
+    "by_year": {
+     "2022": {
+      "old": 6.254,
+      "new_central": 3.428,
+      "n_over_p": 0.613
+     },
+     "2023": {
+      "old": 1.059,
+      "new_central": -0.094,
+      "n_over_p": 1.044
+     },
+     "2024": {
+      "old": 0.979,
+      "new_central": 0.305,
+      "n_over_p": 0.862
+     },
+     "2025": {
+      "old": 0.1,
+      "new_central": 0.054,
+      "n_over_p": 0.8
+     },
+     "2026": {
+      "old": 0.134,
+      "new_central": 0.094,
+      "n_over_p": 0.656
+     }
+    },
+    "basis": "pre-war fuel mix"
+   },
+   "ESP": {
+    "fuel_paid_2022_2026_eur_bn": 13.65,
+    "windfall_old_central": 7.69,
+    "windfall_new": {
+     "low": 1.09,
+     "central": 4.15,
+     "high": 6.33
+    },
+    "change_central": -3.54,
+    "by_year": {
+     "2022": {
+      "old": 4.25,
+      "new_central": 2.726,
+      "n_over_p": 0.572
+     },
+     "2023": {
+      "old": 1.402,
+      "new_central": 0.275,
+      "n_over_p": 0.896
+     },
+     "2024": {
+      "old": 0.914,
+      "new_central": 0.276,
+      "n_over_p": 0.872
+     },
+     "2025": {
+      "old": 0.554,
+      "new_central": 0.344,
+      "n_over_p": 0.73
+     },
+     "2026": {
+      "old": 0.569,
+      "new_central": 0.525,
+      "n_over_p": 0.557
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "GRC": {
+    "fuel_paid_2022_2026_eur_bn": 12.89,
+    "windfall_old_central": 5.79,
+    "windfall_new": {
+     "low": 0.45,
+     "central": 2.84,
+     "high": 4.52
+    },
+    "change_central": -2.95,
+    "by_year": {
+     "2022": {
+      "old": 4.087,
+      "new_central": 1.994,
+      "n_over_p": 0.746
+     },
+     "2023": {
+      "old": 0.661,
+      "new_central": 0.219,
+      "n_over_p": 0.874
+     },
+     "2024": {
+      "old": 0.377,
+      "new_central": 0.194,
+      "n_over_p": 0.87
+     },
+     "2025": {
+      "old": 0.37,
+      "new_central": 0.207,
+      "n_over_p": 0.815
+     },
+     "2026": {
+      "old": 0.297,
+      "new_central": 0.229,
+      "n_over_p": 0.676
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "POL": {
+    "fuel_paid_2022_2026_eur_bn": 11.84,
+    "windfall_old_central": 5.18,
+    "windfall_new": {
+     "low": -0.02,
+     "central": 1.9,
+     "high": 3.6
+    },
+    "change_central": -3.28,
+    "by_year": {
+     "2022": {
+      "old": 4.724,
+      "new_central": 1.973,
+      "n_over_p": 0.802
+     },
+     "2023": {
+      "old": 0.252,
+      "new_central": -0.118,
+      "n_over_p": 1.149
+     },
+     "2024": {
+      "old": 0.012,
+      "new_central": 0.003,
+      "n_over_p": 0.934
+     },
+     "2025": {
+      "old": 0.136,
+      "new_central": 0.004,
+      "n_over_p": 0.996
+     },
+     "2026": {
+      "old": 0.06,
+      "new_central": 0.042,
+      "n_over_p": 0.765
+     }
+    },
+    "basis": "pre-war fuel mix"
+   },
+   "AUT": {
+    "fuel_paid_2022_2026_eur_bn": 11.54,
+    "windfall_old_central": 7.57,
+    "windfall_new": {
+     "low": 1.23,
+     "central": 3.98,
+     "high": 6.04
+    },
+    "change_central": -3.59,
+    "by_year": {
+     "2022": {
+      "old": 5.401,
+      "new_central": 3.51,
+      "n_over_p": 0.503
+     },
+     "2023": {
+      "old": 1.305,
+      "new_central": 0.208,
+      "n_over_p": 0.913
+     },
+     "2024": {
+      "old": 0.85,
+      "new_central": 0.257,
+      "n_over_p": 0.874
+     },
+     "2025": {
+      "old": 0.005,
+      "new_central": 0.002,
+      "n_over_p": 0.853
+     },
+     "2026": {
+      "old": 0.01,
+      "new_central": 0.007,
+      "n_over_p": 0.59
+     }
+    },
+    "basis": "pre-war fuel mix"
+   },
+   "TWN": {
+    "fuel_paid_2022_2026_eur_bn": 10.33,
+    "windfall_old_central": 1.99,
+    "windfall_new": {
+     "low": -1.97,
+     "central": 0.05,
+     "high": 1.2
+    },
+    "change_central": -1.93,
+    "by_year": {
+     "2022": {
+      "old": 1.521,
+      "new_central": 0.818,
+      "n_over_p": 0.69
+     },
+     "2023": {
+      "old": 0.436,
+      "new_central": 0.017,
+      "n_over_p": 0.992
+     },
+     "2024": {
+      "old": 0.168,
+      "new_central": -0.361,
+      "n_over_p": 1.125
+     },
+     "2025": {
+      "old": -0.25,
+      "new_central": -0.537,
+      "n_over_p": 1.263
+     },
+     "2026": {
+      "old": 0.112,
+      "new_central": 0.115,
+      "n_over_p": 0.802
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "USA": {
+    "fuel_paid_2022_2026_eur_bn": 9.94,
+    "windfall_old_central": 2.9,
+    "windfall_new": {
+     "low": -0.65,
+     "central": 0.96,
+     "high": 2.02
+    },
+    "change_central": -1.94,
+    "by_year": {
+     "2022": {
+      "old": 1.898,
+      "new_central": 0.741,
+      "n_over_p": 0.847
+     },
+     "2023": {
+      "old": 0.025,
+      "new_central": 0.005,
+      "n_over_p": 0.948
+     },
+     "2024": {
+      "old": 0.437,
+      "new_central": 0.092,
+      "n_over_p": 0.949
+     },
+     "2025": {
+      "old": 0.19,
+      "new_central": -0.128,
+      "n_over_p": 1.064
+     },
+     "2026": {
+      "old": 0.352,
+      "new_central": 0.247,
+      "n_over_p": 0.791
+     }
+    },
+    "basis": "pre-war fuel mix"
+   },
+   "DZA": {
+    "fuel_paid_2022_2026_eur_bn": 9.64,
+    "windfall_old_central": 2.93,
+    "windfall_new": {
+     "low": -0.15,
+     "central": 1.63,
+     "high": 2.51
+    },
+    "change_central": -1.3,
+    "by_year": {
+     "2022": {
+      "old": 1.174,
+      "new_central": 0.641,
+      "n_over_p": 0.755
+     },
+     "2023": {
+      "old": 0.755,
+      "new_central": 0.394,
+      "n_over_p": 0.847
+     },
+     "2024": {
+      "old": 0.459,
+      "new_central": 0.156,
+      "n_over_p": 0.911
+     },
+     "2025": {
+      "old": 0.289,
+      "new_central": 0.222,
+      "n_over_p": 0.886
+     },
+     "2026": {
+      "old": 0.254,
+      "new_central": 0.215,
+      "n_over_p": 0.716
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "BGR": {
+    "fuel_paid_2022_2026_eur_bn": 7.93,
+    "windfall_old_central": 2.87,
+    "windfall_new": {
+     "low": -0.21,
+     "central": 0.95,
+     "high": 1.99
+    },
+    "change_central": -1.92,
+    "by_year": {
+     "2022": {
+      "old": 2.222,
+      "new_central": 0.896,
+      "n_over_p": 0.821
+     },
+     "2023": {
+      "old": 0.547,
+      "new_central": -0.012,
+      "n_over_p": 1.004
+     },
+     "2024": {
+      "old": 0.026,
+      "new_central": 0.017,
+      "n_over_p": 0.713
+     },
+     "2025": {
+      "old": 0.029,
+      "new_central": 0.011,
+      "n_over_p": 0.862
+     },
+     "2026": {
+      "old": 0.044,
+      "new_central": 0.034,
+      "n_over_p": 0.674
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   },
+   "SAU": {
+    "fuel_paid_2022_2026_eur_bn": 7.22,
+    "windfall_old_central": 1.36,
+    "windfall_new": {
+     "low": -0.99,
+     "central": 0.06,
+     "high": 0.64
+    },
+    "change_central": -1.3,
+    "by_year": {
+     "2022": {
+      "old": 0.039,
+      "new_central": 0.025,
+      "n_over_p": 0.62
+     },
+     "2023": {
+      "old": 0.487,
+      "new_central": -0.005,
+      "n_over_p": 1.002
+     },
+     "2024": {
+      "old": 0.37,
+      "new_central": 0.019,
+      "n_over_p": 0.989
+     },
+     "2025": {
+      "old": 0.185,
+      "new_central": -0.17,
+      "n_over_p": 1.077
+     },
+     "2026": {
+      "old": 0.282,
+      "new_central": 0.188,
+      "n_over_p": 0.828
+     }
+    },
+    "basis": "per-fuel payments (prices.json)"
+   }
+  },
+  "all_countries": {
+   "windfall_old_central": 455.1,
+   "windfall_new": {
+    "low": 24.1,
+    "central": 199.1,
+    "high": 329.5
+   },
+   "countries": 231
+  }
+ },
+ "formula": {
+  "identity": "actual payment - expected payment = (actual volume - expected volume) x no-war price + actual volume x (actual price - no-war price)",
+  "symbols": {
+   "A_i": "to_rus.years[i] x fsy_i: fuel paid in year i (fsy_i from fuel_share_year(), else the pre-war share moved to the year's prices, as now)",
+   "p_i": "fuel_index(iso3)[i]: actual fuel price level, 2019-2021 = 1 (unchanged)",
+   "n_i": "no-war fuel price level, 2019-2021 = 1 (new: nowar_fuel_index(iso3), below)",
+   "V_i": "A_i / p_i: actual fuel volume at 2019-2021 prices",
+   "E_i": "base x FRAC_i x bmul_i x fs: expected fuel volume at 2019-2021 prices (fs = fossil_share(iso3))"
+  },
+  "parts": {
+   "volume_part_fuel": "(E_i - V_i) x n_i  -> 'less (or more) paid to Russia', fuel volumes now valued at no-war prices",
+   "windfall_new": "A_i x (1 - n_i / p_i) = V_i x (p_i - n_i)  -> 'extra paid because of war-time prices'; replaces A_i x (1 - 1/p_i)",
+   "check": "E_i x n_i - A_i = (E_i - V_i) x n_i - V_i x (p_i - n_i): exact, no residual",
+   "non_fuel": "unchanged: non-fuel volumes keep 2019-2021 prices and no windfall (their price rise is general inflation)"
+  },
+  "nowar_fuel_index": [
+   "where prices.json windfall_parts has fuel payments for the year: n_i / p_i = sum over fuels f of s_f x (N_f / p_f), with s_f the fuel's share of that year's fuel payments; p_f = own customs index (own_index, crude/products/coal) or the benchmark idx(); N_f = nowar_index (crude -> urals, products and other_fossil -> diesel_gasoil_products, coal -> russian_coal)",
+   "pipeline gas and LNG use the ratio method: N_gas / p_gas = F(no-war inputs) / F(actual inputs) for the country's contract formula (contract_prices.*.formula_weights: hub = TTF, oil9 = 9-month oil formula, oil3 = 3-month oil formula for Asian LNG, jkm = spot; fixed-price buyers BLR, ARM, KGZ, UZB, KAZ, AZE, GEO get 1, i.e. no windfall)",
+   "otherwise the pre-war mix: n_i = sum m_f N_f / sum m_f with the same weights as fuel_index(); gas N = gas_index(iso3) x F0/F",
+   "n_i = p_i x (n_i / p_i); 2019-2021 keep n = 1 (no windfall before the war, as now)"
+  ],
+  "builder_steps": [
+   "add NOWAR = load(GAPS / 'energy_nowar.json') and nowar_fuel_index(iso3, band) as above",
+   "war_windfall(): vals.append(tr['years'][i] x fsy x (1 - n[i] / fuel[i])) instead of (1 - 1 / fuel[i]); low = low p with high n, high = high p with low n; keep the re-sorting; ALLOW NEGATIVE values (years where Russia sold below the no-war price, e.g. China 2025) or floor at 0 - owner decision",
+   "price_indices(): to_rus keeps its pidx for actual values but the fuel part must be valued at n: pidx_r7 = 1 / (fsy x n / fuel + (1 - fsy) / nonfuel), so value / pidx_r7 = V_fuel x n + V_nonfuel",
+   "expected side: add a per-series multiplier nmul_i = fs x n_i + (1 - fs) (1 in 2021) and either (a) write bmul x nmul into bmul/bmul_lo/bmul_hi (no site change), or (b) keep nmul as its own field and multiply it in exV() in calc() (one line in site/index.html, clearer); (b) is recommended",
+   "check_data.py check 12 still holds (2019-2021 unchanged); add a check that windfall + fuel volume part = E x n - A for every country-year"
+  ],
+  "fuel_share_note": "fsy is the share of the year's payments that was fuel at actual prices; fs (pre-war) weights the expected side. Using fsy for the actual side and fs for the expected side keeps the identity exact for the fuel part, because only V (from A and p) and E (from base and bmul) enter it.",
+  "currency": "All indices EUR-based at actual ECB USD/EUR, like energy2.json, so the windfall measures commodity prices, not the euro's fall in 2022. Converting the no-war USD paths at the pre-war expected rate (1.13 in ECB Dec 2021 and EC Winter 2022 assumptions) would lower n by 7% in 2022 and 4% in 2023-2024 and raise the windfall correspondingly."
+ },
+ "sources": [
+  {
+   "id": "imf_weo_oct2021",
+   "name": "IMF World Economic Outlook, October 2021: oil (avg Brent/Dubai/WTI) USD 65.68 (2021), 64.52 (2022), from secondary reports (report.az, derechos.org); IMF text PDF blocked (HTTP 403/429)",
+   "url": "https://www.imf.org/en/publications/weo/issues/2021/10/12/world-economic-outlook-october-2021",
+   "date": "2021-10-12"
+  },
+  {
+   "id": "imf_weo_jan2022",
+   "name": "IMF WEO Update January 2022: oil USD 69.07 (2021), 77.31 (2022), 71.29 (2023); futures: oil +12%, natural gas +58% in 2022, retreating in 2023",
+   "url": "https://www.imf.org/-/media/files/publications/weo/2022/update/january/english/text.pdf.md",
+   "date": "2022-01-25"
+  },
+  {
+   "id": "wb_cmo_oct2021",
+   "name": "World Bank Commodity Markets Outlook October 2021, forecast table (nominal USD): crude avg 70/74/65/65.4/65.8; Europe gas 14.6/12.6/9.2/8.9/8.7 USD/MMBtu; Japan LNG 11.9/11.4/10.0/9.8/9.5; Australian coal 140/120/90/86.4/82.9 USD/t (2021-2025)",
+   "url": "https://thedocs.worldbank.org/en/doc/ff5bad98f52ffa2457136bbef5703ddb-0350012021/related/CMO-October-2021-forecasts.pdf",
+   "date": "2021-10-21"
+  },
+  {
+   "id": "eia_steo_jan2022",
+   "name": "EIA Short-Term Energy Outlook January 2022 (jan22_base.xlsx table 2): Brent 75.00 (2022), 67.50 (2023); diesel refiner price to resellers 225.4 / 205.6 c/gal. Also Dec 2021 (Brent 2022 70.08) and Feb 2022 (82.96 / 68.50, includes some war risk)",
+   "url": "https://www.eia.gov/outlooks/steo/archives/jan22_base.xlsx",
+   "date": "2022-01-11"
+  },
+  {
+   "id": "ecb_dec2021",
+   "name": "Eurosystem staff projections December 2021, Box 1 (futures 11-25 Nov 2021): Brent 71.8 / 77.5 / 72.3 / 69.4 USD (2021-2024), USD/EUR 1.13",
+   "url": "https://www.ecb.europa.eu/pub/pdf/other/ecb.projections202112_eurosystemstaff~32e481d712.en.pdf",
+   "date": "2021-12-09"
+  },
+  {
+   "id": "ecb_mar2022",
+   "name": "ECB staff projections March 2022 (cut-off 28 Feb 2022, after the invasion, used only as the war-time comparison): Brent 92.6 (2022) to 77.2 (2024)",
+   "url": "https://www.ecb.europa.eu/pub/projections/html/ecb.projections202203_ecbstaff~44f998dfd7.en.html",
+   "date": "2022-03-10"
+  },
+  {
+   "id": "ec_autumn2021_spring2022",
+   "name": "European Commission Spring 2022 forecast, Table 1 with Autumn 2021 assumptions: TTF 49.49 (2022), 30.61 (2023) EUR/MWh; Brent 78.9 / 72.3 USD; USD/EUR 1.16",
+   "url": "https://economy-finance.ec.europa.eu/system/files/2022-05/ip173_en.pdf",
+   "date": "2022-05-16"
+  },
+  {
+   "id": "ec_winter2022",
+   "name": "European Commission Winter 2022 interim forecast (oil futures 14-27 Jan 2022): Brent 84.4 (2022), 77.4 (2023); gas futures point to a retreat 'more substantially in the spring of 2023'",
+   "url": "https://economy-finance.ec.europa.eu/system/files/2022-02/ip169_en.pdf",
+   "date": "2022-02-10"
+  },
+  {
+   "id": "engie_energyscan",
+   "name": "ENGIE EnergyScan daily gas notes (ICE TTF settlements): Cal-22 56.9 (6 Dec 2021) to 139.6 (22 Dec 2021); Cal-23 44.8 (3 Jan 2022), 42.5 (19 Jan), 53.8 (27 Jan), 53.9 / 55.8 / 51.9 / 50.4 / 51.9 / 51.7 / 51.6 (11-21 Feb), 57.0 (22 Feb), 62.6 (23 Feb); March-22 contract 70-81 in mid-Feb; 'Growing risk premium at the TTF beyond WIN22' (31 Jan 2022)",
+   "url": "https://energyscan.engie.com/daily-news/gas/",
+   "date": "2021-12 to 2022-02"
+  },
+  {
+   "id": "platts_espo",
+   "name": "S&P Global Platts: ESPO Blend premiums +4.5-6 USD/bbl to Dubai (Sep-Oct 2021); -9 USD/bbl to Dubai after Jan 2025 sanctions",
+   "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/011625-russias-espo-blend-crude-value-plunges-as-buyers-vanish-freight-rates-surge",
+   "date": "2021-11-12 / 2025-01-16"
+  },
+  {
+   "id": "fred",
+   "name": "FRED (IMF primary commodity prices): PCOALAUUSDM, PNGASJPUSDM, PNGASEUUSDM, POILBREUSDM, DEXUSEU",
+   "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=PCOALAUUSDM",
+   "date": "2026-10-18"
+  },
+  {
+   "id": "repo",
+   "name": "This repository: energy2.json price_index and levels, gas_prices.json, prices.json, turkey_prices.json, energy.json, site/data.json (to_rus, windfall), pipeline/build_data.py functions",
+   "url": null,
+   "date": "2026-10-18"
+  }
+ ],
+ "notes": [
+  "Not yet reviewed by a person. Generated 2026-10-18 by scratchpad scripts nowar.py and assemble.py (round 7, energy_nowar).",
+  "Choice: central = the median of the institutional forecasts and futures dated October 2021 to January 2022 (oil), or the mean of the institutional forecasts and the early/mid-January 2022 futures (gas, coal); low = the lowest pre-war source (mostly October 2021 forecasts, before the Q4-2021 gas squeeze); high = the mid-February 2022 futures, which already held a war-risk premium (TTF Cal-23 rose from ~43 in mid-January to ~52-56 in mid-February and 57-63 on 22-23 February; Brent rose ~10 USD).",
+  "2025-2026 lie beyond most pre-war horizons: oil from the World Bank October 2021 path and the Nov 2021 / Jan 2022 futures curves extended at their slope; gas from World Bank and curve extrapolation; certainty D.",
+  "Coal futures (Newcastle, API2) for early 2022 are approximate (no free archive found); certainty D. API2 is derived from Newcastle with the pre-war ratio.",
+  "2026 actual prices include the Hormuz-crisis spike (Brent > 100 USD in Mar-May 2026), which is not caused by Russia's war but counts as windfall against an ex-ante no-war path; see the owner decisions in the notes file.",
+  "Gas contract no-war prices use the ratio method: the country's actual price x (formula at no-war inputs / formula at actual inputs), so contract levels, premiums and discounts that are not war-related are kept.",
+  "energy.json's low gas switching premium uses FRED PNGASJPUSDM as 'Japan LNG (oil-indexed long-term contracts)', but that series averages 33.3 USD/MMBtu in 2022 (TTF 37.5), i.e. it behaves like spot JKM, not an oil-indexed contract price (World Bank Japan LNG was about half that). Worth checking separately."
+ ]
+}
