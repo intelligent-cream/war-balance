@@ -38,7 +38,7 @@ function howHtml() {
     </div>
     <p class="sub" style="max-width:80ch">${story}</p>
     <div class="how-wf">${waterfall(parts, k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}</div>
-    <p class="note-small">${t("Each bar is one part, building up to the net total; the thin line is its likely range (about 90%). Click a part's source number in the country panel for where it comes from.")} <button class="chipbtn" id="how-open">${t("Open {name} on the map", { name: c.name })}</button></p>
+    <p class="note-small">${t("Each bar is one part; the line with end marks is its likely range (about 90%). The net total is at the bottom. Click a part's source number in the country panel for where it comes from.")} <button class="chipbtn" id="how-open">${t("Open {name} on the map", { name: c.name })}</button></p>
     <h3 class="how-h">${t("What this map does not do")}</h3>
     <ul class="how-limits">
       <li>${t("It does not count political support, votes or sanctions as money.")}</li>

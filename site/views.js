@@ -153,17 +153,21 @@ function renderBubbles(root) {
   const sel = state.selected;
   const unit = t(measure === "gdp" ? "% of one year's GDP" : "€ per person");
   const order = all.slice().sort((a, b) => b.c.gdp - a.c.gdp);   // big bubbles first, small ones on top
+  const fv = v => (measure === "gdp" ? num(v, v >= 1 ? 1 : 2) + "%" : money(num(v)));
+  const tk = v => (measure === "gdp" ? num(v) + "%" : money(compact(v)));
   // labels for the largest economies (and the selected one), skipped where they would overlap a label already placed
   // the two zone labels are placed first, so country labels keep clear of them
   const zw = s => s.length * 9;
   const zU = t("Net toward Ukraine"), zR = t("Net toward Russia");
   const labels = [{ x: x(d) - 8 - zw(zU) / 2, y: y(0) - 12, w: zw(zU), zone: true }, { x: x(0) + 10 + zw(zR) / 2, y: y(d) + 18, w: zw(zR), zone: true }];
+  // the axis numbers are obstacles too (country labels near the axes covered them on phones)
+  const tkw = v => tk(v).length * 7;
+  for (const v of ticks) labels.push({ x: m.l - 8 - tkw(v) / 2, y: y(v) + 4, w: tkw(v), zone: true }, { x: x(v), y: H - m.b + 16, w: tkw(v), zone: true });
   for (const s of [...order.filter(s => s.c.n === sel), ...order.filter(s => big.includes(s.c.n) && s.c.n !== sel)]) {
-    const t = fitName(s.c.name, 14), w = t.length * 6.6, lx = x(sx(s)), ly = y(sy(s)) - r(s.c.gdp) - 4;
+    const t = fitName(s.c.name, 14), w = t.length * 6.6, ly = y(sy(s)) - r(s.c.gdp) - 4;
+    const lx = Math.min(W - m.r - w / 2, Math.max(m.l + w / 2 + 2, x(sx(s))));   // kept inside the plot area
     if (labels.every(l => Math.abs(l.x - lx) > (l.w + w) / 2 + 2 || Math.abs(l.y - ly) > (l.zone ? 17 : 13))) labels.push({ x: lx, y: ly, w, t });
   }
-  const fv = v => (measure === "gdp" ? num(v, v >= 1 ? 1 : 2) + "%" : money(num(v)));
-  const tk = v => (measure === "gdp" ? num(v) + "%" : money(compact(v)));
   const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("Each country: money moved toward Ukraine against money moved toward Russia")}">
     <path class="zone-ukr" d="M${x(0)},${y(0)} L${x(d)},${y(0)} L${x(d)},${y(d)} Z"/>
     <path class="zone-rus" d="M${x(0)},${y(0)} L${x(0)},${y(d)} L${x(d)},${y(d)} Z"/>

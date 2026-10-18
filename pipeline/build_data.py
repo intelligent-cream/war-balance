@@ -2018,6 +2018,9 @@ def write_gaps_report(data: dict) -> None:
 
 if __name__ == "__main__":
     data = build()
-    OUT.write_text(json.dumps(data, separators=(",", ":")) + "\n")
     write_gaps_report(data)
+    # the data-coverage notes (a sixth of the file) load after the map, from detail.json, so phones start faster
+    detail = {"coverage": {c["iso3"]: c.pop("coverage") for c in data["countries"].values() if "coverage" in c}}
+    OUT.write_text(json.dumps(data, separators=(",", ":")) + "\n")
+    (OUT.parent / "detail.json").write_text(json.dumps(detail, separators=(",", ":")) + "\n")
     print(f"wrote {OUT} with {len(data['countries'])} entries and {len(data['sources'])} sources")

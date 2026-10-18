@@ -36,6 +36,18 @@ function t(str, vars) {
   const s = (LANG !== "en" && I18N[LANG] && I18N[LANG][str]) || str;
   return vars ? s.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m)) : s;
 }
+// Text that comes from data.json (source names, notes, the status line): looked up like t(); numbers inside it are
+// matched as {n0}, {n1}... so one translation covers "only the paid share (90%) counts" and "(30%)". Untranslated text
+// stays English and is marked lang="en".
+function tData(str) {
+  if (!str || LANG === "en" || !I18N[LANG]) return { s: str, en: LANG !== "en" };
+  if (I18N[LANG][str]) return { s: I18N[LANG][str], en: false };
+  const nums = [];
+  const key = str.replace(/\d+(?:[.,]\d+)*/g, m => `{n${nums.push(m) - 1}}`);
+  const tr = nums.length && I18N[LANG][key];
+  return tr ? { s: tr.replace(/\{n(\d+)\}/g, (m, i) => nums[i] ?? m), en: false } : { s: str, en: true };
+}
+const dataText = (str, tag = "span") => { const r = tData(str); return r.en ? `<${tag} lang="en">${r.s}</${tag}>` : r.s; };
 const regionNames = {};
 // the browser's name for a country in the chosen language; English (and any failure) keeps the name given
 function regionName(iso2, fallback) {
