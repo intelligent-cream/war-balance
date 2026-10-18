@@ -46,6 +46,16 @@ range = [mid − lo, mid + hi]
 - **Price and counterfactual terms are independent** of the others.
 - **Errors are summed over the years first**, then combined: the same baseline applies every year, so its error does not average out over time.
 
+**The expected total's own band (round 6).** For flows with a back-tested counterfactual, the trend term no longer adds
+up the yearly bands. The back-tests measured the error of the *sum* over 1–5 years directly (per flow, size class and
+model, calibrated so that two tests' bands cover 90% of the third), and `spread()` uses
+`ql = (1 − low) × Σe` and `qh = (high − 1) × Σe`, where `Σe` is the expected total and `[low, high]` the measured band
+for that number of years (`cb` in `data.json`; 2026 counted at 8 of 12 months). Because one flow's yearly errors are
+strongly correlated (0.6–0.7 between years), the measured bands are about as wide as the old sum (×0.8–1.2), so most
+ranges barely move. The yearly view and the "only the rise" parts keep the yearly bands. Belarus's imports from Russia
+keep their own yearly band. Source: [`cf_bands.json`](../../research/2026-10/gaps/cf_bands.json)
+([notes](../../research/2026-10/gaps/cf_bands-notes.md)).
+
 Before round 4 the low end took the low baseline, the high actual value and the low price level all at once (stacked worst cases), which made ranges too wide in one way and ignored forecast error in another.
 
 Variants:

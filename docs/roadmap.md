@@ -41,9 +41,9 @@ services to Russia and shipping. The profit-only figures stay in the docs as a c
 
 | # | step | kind |
 |---|---|---|
-| B1 | Measure the 90% range of the 2022–2026 total prediction error directly from the back-tests, instead of adding up yearly ranges | code |
-| B2 | Own error bands for Russia's neighbours (Moldova, Kyrgyzstan, Tajikistan, Armenia, Georgia, Mongolia, Kazakhstan, Uzbekistan, Turkmenistan), tested on their own history | research |
-| B3 | Moldova: Transnistria gas and whether 2021 is a fair starting point | research |
+| B1 | Measure the 90% range of the 2022–2026 total prediction error directly from the back-tests, instead of adding up yearly ranges | done: about as wide as before (×0.8–1.2), now measured ([ranges.md](method/ranges.md#quadrature-for-traded-flows-spread)) |
+| B2 | Own error bands for Russia's neighbours (Moldova, Kyrgyzstan, Tajikistan, Armenia, Georgia, Mongolia, Kazakhstan, Uzbekistan, Turkmenistan), tested on their own history | done: own bands for Mongolia, Yemen, Tajikistan, Moldova ([counterfactual.md](method/counterfactual.md#russias-neighbours-and-moldova-round-6)) |
+| B3 | Moldova: Transnistria gas and whether 2021 is a fair starting point | done: Transnistria's unpaid gas left out; range −5…+35% |
 | B4 | Phone display: range as a pale band in the part's colour behind the bar; checked for readability in dark mode at phone width | code: done |
 
 ### C. Data gaps

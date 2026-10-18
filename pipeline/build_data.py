@@ -496,7 +496,9 @@ def build() -> dict:
             share = non_gas_share(d.get("fossil_from_russia_by_fuel_mt") or {}, e2["price_index"])
             for k in ("years", "years_lo", "years_hi"):
                 fossil[k] = [round(f * s + g, 5) for f, s, g in zip(fossil[k], share, gas[k])]
-            if tr:
+            # Moldova: its own customs data hold the gas right-bank Moldova paid for; the gas research adds
+            # Transnistria's unpaid Gazprom gas, which is support for Transnistria, not money to Russia (cf_bands.json)
+            if tr and iso3 != "MDA":
                 # customs data record gas where it crosses the border too: that gas is swapped for final-use gas
                 if iso3 in GAS_IN_CUSTOMS:
                     # customs already hold this gas under another heading (Turkey, Poland; part of it for Germany)
@@ -1305,6 +1307,21 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
         cf.get("generated"),
         "exports to Russia and trade with Ukraine follow a nowcast; imports from Russia and services keep 2021; see research/2026-10/gaps/counterfactual-notes.md",
     )
+    # round 6: the range of the 2022-2026 total is measured on the back-tests' cumulative errors (per flow, size class,
+    # model and number of years), and some of Russia's neighbours get bands tested on their own history (cf_bands.json)
+    bands = load(GAPS / "cf_bands.json")
+    for iso3, flows in bands["countries"].items():
+        for key, d in flows.items():
+            cf["countries"].setdefault(iso3, {}).setdefault(key, {}).update(
+                {k: d[k] for k in ("multiplier_vs_2021", "cumulative_band", "method", "size_class") if k in d}
+            )
+    bid = src.add(
+        "cf_bands",
+        "Ranges of the 2022-2026 total measured on the back-tests' cumulative errors; own bands for Mongolia, Yemen, Tajikistan and Moldova",
+        None,
+        bands.get("generated"),
+        "see research/2026-10/gaps/cf_bands-notes.md",
+    )
     for iso3, flows in cf["countries"].items():
         c = countries.get(iso3)
         if not c:
@@ -1339,6 +1356,21 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
             meth = d.get("method", "")
             obj["cf"] = "lin" if meth.startswith("linear") else "rf" if meth.startswith("random-forest") else "rw"
             obj["src"] = [x for x in obj.get("src", []) if x not in ("trend", "trend2")] + [sid]
+            # cumulative band per number of years summed (index 1-5; 5 = 2026 at 8 of 12 months), as [low, high]
+            # multipliers on the sum of the expected levels
+            cb = d.get("cumulative_band")
+            if not cb and not (iso3 == "BLR" and key == "to_rus"):  # Belarus keeps its own yearly band (round 5)
+                table = bands["cumulative_bands"]
+                cell = f"{key}/{d.get('size_class', 'M')}"
+                cb = (table["rw"] if obj["cf"] == "rw" and cell in table["rw"] else table["chosen"]).get(cell)
+            if cb:
+                hs = ["H1", "H2", "H3", "H4", "H5_2026_8of12"]
+                obj["cb"] = [None] + [[cb[h]["low"], cb[h]["high"]] for h in hs]
+                obj["src"].append(bid)
+            if iso3 == "MDA" and key == "to_rus":
+                # right-bank gas and other goods at 2019-2021 prices; the 2019-2021 average as the low alternative
+                m = bands["countries"]["MDA"]["to_rus"]["base_range_recommended_eur_bn_at_2019_2021_prices"]
+                obj["base"], obj["base_range"] = m["central"], [m["low"], m["high"]]
 
 
 LAUNDERED_PREWAR = json.loads(

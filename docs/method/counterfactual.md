@@ -194,6 +194,31 @@ Belarus's GDP failed the 2013 test with forecasts available at the time). Its ex
 which rests on far more errors. Belarus's range narrows from −79% to +51% of GDP to −58% to +19%; it still crosses
 zero. [`belarus.json`](../../research/2026-10/gaps/belarus.json) ([notes](../../research/2026-10/gaps/belarus-notes.md)).
 
+### Russia's neighbours and Moldova (round 6)
+
+Each of Russia's neighbours was tested on its own 2005–2020 history (the counterfactual's series and Russia's mirror
+report, 1–5 years ahead). An own band is used only where it is at least 10% narrower than the generic one and still
+covers its held-out years:
+
+| country, flow | 2022–2026 band of the expected total | generic band |
+|---|---|---|
+| Mongolia, payments to Russia | ×0.85–1.85 | ×0.61–1.74 (same width, moved up) |
+| Mongolia, sales to Russia | ×0.66–2.62 | ×0.21–3.48 |
+| Yemen, payments to Russia | ×0.58–2.19 | ×0.42–3.51 |
+| Tajikistan, sales to Russia | ×0.41–2.59 | ×0.21–3.48 |
+| Moldova, payments to Russia | ×0.85–1.44 | ×0.42–3.51 |
+
+Kyrgyzstan, Armenia, Kazakhstan, Uzbekistan and Georgia, and Tajikistan's payments to Russia, keep the generic band:
+their own history was no steadier, or too short to test.
+
+**Moldova.** Its customs data hold the gas right-bank Moldova bought from Gazprom until December 2022. The gas research
+added Transnistria's Gazprom gas in the high case. Transnistria never paid for that gas, and it ended on 1 January
+2025, so it is support for Transnistria, not money to Russia. It is now left out of the baseline and the actual values
+alike. The pre-war level is EUR 0.76bn at 2019–2021 prices (gas 0.25, other goods 0.51; 2019–2021 average as the low
+alternative, 0.64). The expected path is 0.97 × 2021: right-bank gas at its 2019–2021 average volume. Moldova's
+headline barely moves (+17.2% to +16.9% of GDP), but its range narrows from −14…+74% to −5…+35%.
+[`cf_bands.json`](../../research/2026-10/gaps/cf_bands.json) ([notes](../../research/2026-10/gaps/cf_bands-notes.md)).
+
 ### Deliberate choices
 
 - **Actual figures as inputs.** The models use each country's actual 2022–2026 GDP and trade with others, although the war affected them too. The map asks how far a country went out of its way: if its economy shrank because of the war, it would have traded less with Russia anyway, and that is not a choice to credit or blame. (Decided in round 5; pre-war forecasts were considered and rejected.)
