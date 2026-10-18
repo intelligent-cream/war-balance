@@ -36,7 +36,24 @@ Data: [`companies_all.json`](../../research/2026-10/gaps/companies_all.json) ([n
 - **What counts** (round 4): **profit tax in full plus half of other taxes**. VAT, excise and payroll taxes are largely paid by Russian customers and staff. This "owner measure" is about 0.6 of all taxes (EUR 13.2bn in 2021, 8.5bn in 2025 across all home countries).
 - **Pre-war level**: the 2018–2021 average. No tax series by home country exists before 2021, so 2018–2020 are carried back from 2021 with Bank of Russia FDI income and Russian GDP indices, adjusted by each country's FDI position (`history_2018_2020_split`); `base_2018_2021 = true` in `data.json`.
 - **Expected level**: foreign companies' pre-war growth in Russia (`trend2.json`: the country's own trend where reliable, else the global +4.5% a year), applied by `pre_war_trends()`; no back-tested model covers this flow.
-- **2026** is the 2025 rate × 8/12 (marked `*`).
+- **2026** is January–August (marked `*`): estimated from 2025 and the first company reports for 2026.
+
+**Round 6: checked against company reports.** [`company_taxes_r6.json`](../../research/2026-10/gaps/company_taxes_r6.json)
+([notes](../../research/2026-10/gaps/company_taxes_r6-notes.md)) replaces the KSE split and the carried-back history
+above. The company reports that could be reached show KSE is accurate where companies filed accounts; the errors are
+elsewhere:
+
+- **Interpolated and carried-forward years.** Only 43 of the 100 largest foreign firms filed 2024 accounts, so KSE
+  carried many forward from 2023, and its 2025 applies 2024 shares to a preliminary total. Austria now rests on
+  Raiffeisen's own country-by-country tax for Russia (EUR 559m in 2022, 464m in 2023, 399m in 2024); KSE's 2022 Austria
+  figure was below Raiffeisen alone. UniCredit (Italy), OTP (Hungary) and PepsiCo (US) reports were used the same way,
+  and Bundesbank reinvested earnings for Germany.
+- **Seized companies.** Unipro (Germany) and Fortum (Finland) have been under Russian state management since April
+  2023; their taxes no longer count for the old owners from May 2023.
+- **Wrong home country.** JTI was filed under Switzerland; its owner is Japan Tobacco, so it moves to Japan.
+
+The effects are small: Austria +2.3bn toward Russia (was +2.0), Finland −0.75 (was −0.49), most others within
+EUR 0.1–0.3bn. Bank figures are accounting tax (including deferred tax), not cash.
 - Compared in **money**, without a price index.
 
 On the map: "Less / more tax paid in Russia by companies". Cross-check: the audit found US 15.5 against a check of 12.5–17 and Germany 8.6 against 7.5–11 (EUR bn, [audit-notes.md](../../research/2026-10/gaps/audit-notes.md)).

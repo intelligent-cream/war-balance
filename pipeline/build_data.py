@@ -636,6 +636,31 @@ def build() -> dict:
         co["base_range"] = [round(sum(pre_lo) / 4, 5), round(sum(pre_hi) / 4, 5)]
         co["base_2018_2021"] = True
 
+    # round 6: KSE's series checked against company reports (Raiffeisen's country-by-country tax, UniCredit, OTP,
+    # PepsiCo) and the Bundesbank; carried-forward and interpolated years revised, seized Unipro and Fortum removed from
+    # May 2023, JTI moved to Japan. Same measure (profit tax + half the other taxes); 2026 is January-August already
+    r6 = load(GAPS / "company_taxes_r6.json")
+    rid = src.add(
+        "company_taxes_r6",
+        "Company taxes in Russia: KSE checked against company reports (Raiffeisen, UniCredit, OTP, PepsiCo) and Bundesbank reinvested earnings",
+        "https://leavingrussia.org/",
+        r6.get("generated"),
+        "replaces the KSE split; see research/2026-10/gaps/company_taxes_r6-notes.md",
+    )
+    for iso3, d in r6["countries"].items():
+        c = countries.get(iso3)
+        om = d.get("owner_measure")
+        if not c or not om or not any((om.get(str(y)) or {}).get("high") for y in YEARS):
+            continue
+        co = c.setdefault("company", {"cert": "C", "src": []})
+        for k, b in (("taxes", "central"), ("taxes_lo", "low"), ("taxes_hi", "high")):
+            co[k] = [round((om.get(str(y)) or {}).get(b, 0.0), 5) for y in YEARS]
+        bb = d["base_2018_2021"]
+        co["base"], co["base_range"], co["base_2018_2021"] = bb["central"], [bb["low"], bb["high"]], True
+        co["cert"] = d.get("certainty") or co["cert"]
+        co["src"] = [x for x in co["src"] if x != kse] + [rid]
+        co["est26"] = True
+
     # ---- flows researched last: services trade, gold and hidden channels, undisclosed aid, private donations ----
     unc = load(GAPS / "uncovered.json")
     svc = src.add(

@@ -84,7 +84,7 @@ Rankings use these totals: countries whose likely range crosses zero are left ou
 
 2026 counts January to August (`FRAC[5] = 8/12`, `DATA_TO = 2026-08-31`). Where no 2026 figures exist yet, the research files estimate them from the 2025 monthly rate, and the part's label carries a `*`. In `data.json` this is the `est26` flag:
 
-- `company` (company taxes; 2026 is always the 2025 rate × 8/12);
+- `company` (company taxes; 2026 estimated from 2025 and the first 2026 company reports);
 - `from_rus` where the residual gap is added (its 2026 is estimated from 2025);
 - `to_rus`, `from_rus`, `buy_ukr`, `sell_ukr` where the 2026 trade value itself is an estimate (`basis = estimated` in [`trade_full.json`](../../research/2026-10/gaps/trade_full.json), for example Belarus and Uzbekistan).
 
