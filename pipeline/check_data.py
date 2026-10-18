@@ -27,7 +27,7 @@ def total(series: list[float] | None) -> float:
 
 
 # 1. EU-level aid is split once: members' EU shares add up to the EU institutions' total
-eu_total = kiel["donors"]["EU_INST"]["total_allocated"]
+eu_total = kiel["donors"]["EU_INST"]["total_allocated"] - (kiel["donors"]["EU_INST"].get("era_allocated") or 0)
 eu_split = sum(total((c.get("aid") or {}).get("eu_years")) for c in countries.values())
 check(
     "EU aid split adds up",
@@ -45,7 +45,9 @@ ours = sum(
     for c in countries.values()
     if "kiel" in (c.get("aid") or {}).get("src", [])
 )
-kiel_total = kiel["aggregates"]["kiel_total_bilateral_allocated_incl_EU"]
+# loans repaid from Russia's frozen assets (ERA) are left out of donors' aid
+era_all = sum(d.get("era_allocated") or 0 for d in kiel["donors"].values())
+kiel_total = kiel["aggregates"]["kiel_total_bilateral_allocated_incl_EU"] - era_all
 check(
     "aid total matches Kiel",
     abs(ours - kiel_total) / kiel_total < 0.03,
@@ -177,6 +179,12 @@ off = [
     if d.get(k) and abs(sum(v["central"] for v in d[k].values()) - 1) > 0.03
 ]
 check("re-export shares add up", not off, f"not summing to 1: {off or 'none'}", warn_only=True)
+
+# 15. refiners: Russian crude in exported fuel is counted once, at the buyers, not also at Turkey or India
+miss = [
+    i for i in ("TUR", "IND") if i in countries and "refining" not in (countries[i].get("to_rus") or {}).get("src", [])
+]
+check("refined exports counted once", not miss, f"refiner still counts exported crude: {miss or 'none'}")
 
 width = max(len(n) for _, n, _ in results)
 for status, name, detail in results:

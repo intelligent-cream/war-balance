@@ -1,4 +1,4 @@
-# Follow the Money: Ukraine
+# Follow the Money: Ukrainian Aid
 
 An interactive map of how much each country has shifted money and support towards Ukraine or towards Russia since the full-scale invasion, and what that has cost it.
 
@@ -37,11 +37,12 @@ Run it yourself:
 uv run python pipeline/build_data.py        # rebuild site/data.json from research/
 uv run python pipeline/check_data.py        # checks
 cd site && python3 -m http.server 8000      # open http://localhost:8000
+node pipeline/share_cards.mjs              # optional: share images and a page per country (needs Node and Playwright; the Pages deploy runs it)
 ```
 
 ## Corrections
 
-Found a wrong number, a better source or a missing flow? Open an issue with the country, the figure and a link to the source, or email `CORRECTIONS-EMAIL-PLACEHOLDER`. Corrections are listed in the commit history.
+Found a wrong number, a better source or a missing flow? Open an issue with the country, the figure and a link to the source, or send a message to [u/Intelligent-Cream-14 on Reddit](https://www.reddit.com/user/Intelligent-Cream-14/). Corrections are listed in the commit history.
 
 ## Licence
 

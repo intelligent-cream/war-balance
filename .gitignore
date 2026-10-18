@@ -5,3 +5,6 @@ __pycache__/
 data/
 site/node_modules/
 site/dist/
+site/share/
+site/c/
+node_modules/

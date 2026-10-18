@@ -1,0 +1,1596 @@
+{
+ "generated": "2026-10-18",
+ "label": "AI guesses, no real data",
+ "method": "Every number here is an AI model's judgement, written down without searching for data. It is not measured, sourced or reviewed, and should be read as an informed vibe, not evidence. For each economy in the map the model guessed two incentives to support Ukraine: how far the country's political direction is from Russia's, and how likely it feels a Russian attack or serious coercion is within about ten years. Scales were kept consistent with a fixed set of anchor countries (e.g. Estonia 10/85, Poland 9/70, Germany 8/30, USA 8/15, India 4/5, China 2/2, Belarus 1/15). Overseas territories and associated states are scored like the country they follow. Ukraine and Russia are excluded. Uninhabited territories are left out. 'confidence' is the model's own sense of how sure it is of both numbers.",
+ "scales": {
+  "direction": "0-10: how far the country's political direction (values, alliances, governing model, foreign policy, 2022-2026) is from Russia's; how badly a Russian win would hurt what the country is trying to be. 0 = aligned with Russia (Belarus, North Korea), 10 = opposite (the Baltic states).",
+  "threat": "0-100: perceived likelihood, from the country's own point of view, that Russia attacks, invades or seriously coerces it within about 10 years. 1 = practically none, 85 = Estonia.",
+  "capacity_note": "optional short phrase on something that specially limits or enables support",
+  "confidence": "low / medium / high: how sure the model is of the two numbers",
+  "skipped": {
+   "ATA": "uninhabited",
+   "BVT": "uninhabited",
+   "UMI": "uninhabited US outlying islands",
+   "SGS": "no permanent population",
+   "ATF": "no permanent population",
+   "IOT": "military base only, no permanent population"
+  }
+ },
+ "countries": {
+  "ABW": {
+   "direction": 7,
+   "threat": 1,
+   "capacity_note": "Dutch territory",
+   "confidence": "low",
+   "why": "Dutch Caribbean territory following Dutch policy."
+  },
+  "AFG": {
+   "direction": 3,
+   "threat": 3,
+   "capacity_note": "Taliban government under sanctions",
+   "confidence": "low",
+   "why": "Taliban regime recognised by Russia, with no interest in Western causes."
+  },
+  "AGO": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Former Soviet partner that abstains."
+  },
+  "AIA": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "British territory",
+   "confidence": "low",
+   "why": "British territory following UK policy."
+  },
+  "ALB": {
+   "direction": 7,
+   "threat": 10,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Strongly pro-Western NATO member and EU candidate."
+  },
+  "AND": {
+   "direction": 7,
+   "threat": 5,
+   "capacity_note": "neutral",
+   "confidence": "low",
+   "why": "Tiny Western microstate that follows EU policy."
+  },
+  "ARE": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "hub for Russian money and trade",
+   "confidence": "medium",
+   "why": "Hedging monarchy that became a major hub for Russian capital and trade."
+  },
+  "ARG": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Government under Milei is openly pro-Western and pro-Ukraine."
+  },
+  "ARM": {
+   "direction": 5,
+   "threat": 30,
+   "capacity_note": "depends on Russian trade; re-export hub",
+   "confidence": "high",
+   "why": "CSTO member drifting away from Russia after it failed to protect Armenia, but still economically tied."
+  },
+  "ASM": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "US territory",
+   "confidence": "low",
+   "why": "US territory following US policy."
+  },
+  "ATG": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small Commonwealth democracy."
+  },
+  "AUS": {
+   "direction": 8,
+   "threat": 5,
+   "capacity_note": "",
+   "confidence": "high",
+   "why": "Western ally that sees the war as part of a wider fight over the rules-based order."
+  },
+  "AUT": {
+   "direction": 7,
+   "threat": 15,
+   "capacity_note": "neutral by constitution; long gas ties to Russia",
+   "confidence": "medium",
+   "why": "Western EU democracy constrained by constitutional neutrality and long-standing economic ties with Moscow."
+  },
+  "AZE": {
+   "direction": 4,
+   "threat": 30,
+   "capacity_note": "own oil and gas exporter",
+   "confidence": "medium",
+   "why": "Authoritarian state that balances Russia, Turkey and the West, with relations with Moscow souring since 2024."
+  },
+  "BDI": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Authoritarian state that abstains."
+  },
+  "BEL": {
+   "direction": 8,
+   "threat": 20,
+   "capacity_note": "hosts frozen Russian central-bank assets",
+   "confidence": "high",
+   "why": "EU and NATO host country, firmly Western but geographically buffered."
+  },
+  "BEN": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Democracy facing jihadist spillover that leans West."
+  },
+  "BES": {
+   "direction": 7,
+   "threat": 1,
+   "capacity_note": "Dutch territory",
+   "confidence": "low",
+   "why": "Dutch Caribbean territory following Dutch policy."
+  },
+  "BFA": {
+   "direction": 1,
+   "threat": 2,
+   "capacity_note": "Russian forces on its soil",
+   "confidence": "high",
+   "why": "Military junta that has swapped France for Russia as security partner."
+  },
+  "BGD": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Non-aligned state with a Russian-built nuclear plant and little stake in Europe."
+  },
+  "BGR": {
+   "direction": 6,
+   "threat": 40,
+   "capacity_note": "historic energy dependence on Russia",
+   "confidence": "medium",
+   "why": "NATO Black Sea member with strong cultural ties to Russia and divided politics."
+  },
+  "BHR": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "hosts US Fifth Fleet",
+   "confidence": "medium",
+   "why": "US-aligned monarchy that keeps out of the war."
+  },
+  "BHS": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "US-aligned democracy."
+  },
+  "BIH": {
+   "direction": 5,
+   "threat": 12,
+   "capacity_note": "Republika Srpska is pro-Russian",
+   "confidence": "medium",
+   "why": "Divided state where one entity is openly pro-Russian while the rest seeks EU and NATO entry."
+  },
+  "BLM": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "French territory",
+   "confidence": "low",
+   "why": "French territory following French policy."
+  },
+  "BLR": {
+   "direction": 1,
+   "threat": 15,
+   "capacity_note": "co-belligerent territory; under sanctions",
+   "confidence": "high",
+   "why": "Russia's closest ally, which let its territory be used for the invasion, though some fear absorption."
+  },
+  "BLZ": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Democracy that recognises Taiwan."
+  },
+  "BMU": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "British territory",
+   "confidence": "low",
+   "why": "British territory following UK policy."
+  },
+  "BOL": {
+   "direction": 2,
+   "threat": 1,
+   "capacity_note": "Russian lithium and nuclear deals",
+   "confidence": "medium",
+   "why": "Left-wing government friendly to Moscow; a 2025 change of government may soften this."
+  },
+  "BRA": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "BRICS member; fertiliser imports from Russia",
+   "confidence": "high",
+   "why": "BRICS democracy that condemns the invasion in principle but opposes sanctions and arming Ukraine."
+  },
+  "BRB": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Democracy with little stake."
+  },
+  "BRN": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small non-aligned monarchy far from the conflict."
+  },
+  "BTN": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small non-aligned Himalayan state far from the conflict."
+  },
+  "BWA": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Stable democracy that condemned the invasion."
+  },
+  "CAF": {
+   "direction": 1,
+   "threat": 3,
+   "capacity_note": "Wagner presence",
+   "confidence": "high",
+   "why": "Government kept in power with the help of Russian mercenaries."
+  },
+  "CAN": {
+   "direction": 9,
+   "threat": 20,
+   "capacity_note": "Arctic neighbour of Russia",
+   "confidence": "high",
+   "why": "Liberal NATO democracy with a large Ukrainian diaspora and Arctic exposure."
+  },
+  "CCK": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "Australian territory",
+   "confidence": "low",
+   "why": "Australian territory."
+  },
+  "CHE": {
+   "direction": 7,
+   "threat": 8,
+   "capacity_note": "neutral by constitution; arms re-export limits",
+   "confidence": "medium",
+   "why": "Liberal democracy with Western values but strict neutrality and a big role in commodity trading."
+  },
+  "CHL": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Democracy that has spoken out strongly for Ukraine."
+  },
+  "CHN": {
+   "direction": 2,
+   "threat": 2,
+   "capacity_note": "largest buyer of Russian energy",
+   "confidence": "high",
+   "why": "Strategic partner of Russia that shares its aim of weakening Western influence."
+  },
+  "CIV": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Western-leaning state close to France."
+  },
+  "CMR": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Authoritarian state with a defence pact with Russia."
+  },
+  "COD": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "at war itself in the east",
+   "confidence": "low",
+   "why": "State absorbed by its own war in the east."
+  },
+  "COG": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Authoritarian state friendly to Russia."
+  },
+  "COK": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "in free association with New Zealand",
+   "confidence": "low",
+   "why": "Self-governing state associated with New Zealand."
+  },
+  "COL": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Democracy whose left-wing government keeps distance."
+  },
+  "COM": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small state with little stake."
+  },
+  "CPV": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Stable democracy close to Europe."
+  },
+  "CRI": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Stable democracy committed to international law."
+  },
+  "CUB": {
+   "direction": 1,
+   "threat": 1,
+   "capacity_note": "under US embargo",
+   "confidence": "high",
+   "why": "Communist state and old Soviet ally that backs Russia's narrative."
+  },
+  "CUW": {
+   "direction": 7,
+   "threat": 1,
+   "capacity_note": "Dutch territory",
+   "confidence": "low",
+   "why": "Dutch Caribbean territory following Dutch policy."
+  },
+  "CXR": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "Australian territory",
+   "confidence": "low",
+   "why": "Australian territory."
+  },
+  "CYM": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "British territory; financial centre",
+   "confidence": "low",
+   "why": "British territory following UK policy."
+  },
+  "CYP": {
+   "direction": 6,
+   "threat": 8,
+   "capacity_note": "Russian capital and banking ties",
+   "confidence": "medium",
+   "why": "EU member with deep Russian financial links and a focus on Turkey rather than Russia."
+  },
+  "CZE": {
+   "direction": 8,
+   "threat": 45,
+   "capacity_note": "",
+   "confidence": "high",
+   "why": "Central European NATO democracy with the 1968 invasion in living memory."
+  },
+  "DEU": {
+   "direction": 8,
+   "threat": 30,
+   "capacity_note": "formerly energy-dependent on Russia",
+   "confidence": "high",
+   "why": "Core Western democracy within missile range and target of sabotage, but buffered by Poland and the Baltics."
+  },
+  "DJI": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "hosts foreign bases",
+   "confidence": "low",
+   "why": "Hosts many foreign bases and stays neutral."
+  },
+  "DMA": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small Commonwealth democracy."
+  },
+  "DNK": {
+   "direction": 9,
+   "threat": 35,
+   "capacity_note": "",
+   "confidence": "high",
+   "why": "Liberal NATO democracy guarding the Baltic straits, with Greenland adding an Arctic exposure."
+  },
+  "DOM": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "US-aligned democracy."
+  },
+  "DZA": {
+   "direction": 2,
+   "threat": 1,
+   "capacity_note": "relies on Russian arms",
+   "confidence": "medium",
+   "why": "Long-standing Russian arms partner with a non-aligned foreign policy."
+  },
+  "ECU": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "US-leaning government that offered old Russian-made kit to the US for Ukraine."
+  },
+  "EGY": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "dependent on Russian wheat and nuclear plant",
+   "confidence": "medium",
+   "why": "Authoritarian state balancing the US and Russia, reliant on Russian wheat."
+  },
+  "ERI": {
+   "direction": 1,
+   "threat": 1,
+   "capacity_note": "closed regime",
+   "confidence": "medium",
+   "why": "Closed regime that votes with Russia at the UN."
+  },
+  "ESH": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "disputed territory",
+   "confidence": "low",
+   "why": "Disputed territory without its own foreign policy."
+  },
+  "ESP": {
+   "direction": 7,
+   "threat": 8,
+   "capacity_note": "",
+   "confidence": "high",
+   "why": "Western EU and NATO democracy far from Russia, more focused on its southern neighbourhood."
+  },
+  "EST": {
+   "direction": 10,
+   "threat": 85,
+   "capacity_note": "",
+   "confidence": "high",
+   "why": "Small NATO frontline state with a large Russian minority and a long border; a Russian win is close to an existential threat."
+  },
+  "ETH": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Large state that abstains and leans on BRICS ties."
+  },
+  "FIN": {
+   "direction": 9,
+   "threat": 60,
+   "capacity_note": "",
+   "confidence": "high",
+   "why": "Joined NATO because of the invasion and shares a 1,300 km border with Russia."
+  },
+  "FJI": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Pacific state that leans towards Western partners."
+  },
+  "FLK": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "British territory",
+   "confidence": "low",
+   "why": "British territory following UK policy."
+  },
+  "FRA": {
+   "direction": 8,
+   "threat": 20,
+   "capacity_note": "nuclear power",
+   "confidence": "high",
+   "why": "Liberal democracy and EU heavyweight with strategic autonomy instincts, far from Russia."
+  },
+  "FRO": {
+   "direction": 8,
+   "threat": 15,
+   "capacity_note": "follows Denmark; fishing ties with Russia",
+   "confidence": "medium",
+   "why": "Danish self-governing territory with Western orientation and some fishing links to Russia."
+  },
+  "FSM": {
+   "direction": 7,
+   "threat": 1,
+   "capacity_note": "in free association with the US",
+   "confidence": "low",
+   "why": "Freely associated with the US and votes with it at the UN."
+  },
+  "GAB": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "military-led transition",
+   "confidence": "low",
+   "why": "Post-coup state keeping balanced ties."
+  },
+  "GBR": {
+   "direction": 9,
+   "threat": 20,
+   "capacity_note": "nuclear power",
+   "confidence": "high",
+   "why": "Strongly Atlanticist democracy that treats Russia as its main state adversary but is geographically distant."
+  },
+  "GEO": {
+   "direction": 6,
+   "threat": 60,
+   "capacity_note": "20% of territory occupied by Russia",
+   "confidence": "high",
+   "why": "Partly occupied by Russia since 2008; society is pro-Western while the government has tilted towards Moscow."
+  },
+  "GHA": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Stable democracy that condemned the invasion."
+  },
+  "GIB": {
+   "direction": 9,
+   "threat": 10,
+   "capacity_note": "British territory",
+   "confidence": "low",
+   "why": "British territory that follows UK foreign policy."
+  },
+  "GIN": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "military junta",
+   "confidence": "low",
+   "why": "Military junta friendly to Russia, which owns its main bauxite interests."
+  },
+  "GMB": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small democracy that condemned the invasion."
+  },
+  "GNB": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "unstable",
+   "confidence": "low",
+   "why": "Unstable state with little stake."
+  },
+  "GNQ": {
+   "direction": 2,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Authoritarian regime friendly to Russia."
+  },
+  "GRC": {
+   "direction": 6,
+   "threat": 10,
+   "capacity_note": "large shipping sector carrying Russian oil",
+   "confidence": "medium",
+   "why": "NATO and EU member with Orthodox and historical ties to Russia, more worried about Turkey."
+  },
+  "GRD": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small Commonwealth democracy."
+  },
+  "GRL": {
+   "direction": 8,
+   "threat": 20,
+   "capacity_note": "Arctic location",
+   "confidence": "medium",
+   "why": "Danish self-governing Arctic territory exposed to Arctic rivalry."
+  },
+  "GTM": {
+   "direction": 7,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Government that has been one of Latin America's clearest backers of Ukraine and recognises Taiwan."
+  },
+  "GUM": {
+   "direction": 8,
+   "threat": 5,
+   "capacity_note": "US territory with major bases",
+   "confidence": "low",
+   "why": "US territory hosting major military bases."
+  },
+  "GUY": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "own border threat from Venezuela",
+   "confidence": "low",
+   "why": "Democracy that sees parallels with Venezuela's claim on its territory."
+  },
+  "HKG": {
+   "direction": 2,
+   "threat": 2,
+   "capacity_note": "follows Beijing; trade transit hub",
+   "confidence": "medium",
+   "why": "Follows Beijing's foreign policy and serves as a transit hub."
+  },
+  "HND": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Left-leaning government that keeps distance."
+  },
+  "HRV": {
+   "direction": 7,
+   "threat": 25,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Western-oriented EU and NATO member with its own memory of territorial war."
+  },
+  "HTI": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "state collapse",
+   "confidence": "low",
+   "why": "Collapsed state with no capacity."
+  },
+  "HUN": {
+   "direction": 5,
+   "threat": 25,
+   "capacity_note": "energy-dependent on Russia",
+   "confidence": "high",
+   "why": "EU and NATO member whose government cultivates Moscow and blocks EU measures, despite 1956 memories."
+  },
+  "IDN": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "non-aligned",
+   "confidence": "medium",
+   "why": "Large non-aligned democracy that avoids taking sides between great powers."
+  },
+  "IND": {
+   "direction": 4,
+   "threat": 5,
+   "capacity_note": "major buyer of Russian oil and arms",
+   "confidence": "high",
+   "why": "Democracy with a long strategic partnership with Russia that refuses to take sides."
+  },
+  "IRL": {
+   "direction": 7,
+   "threat": 8,
+   "capacity_note": "militarily neutral",
+   "confidence": "medium",
+   "why": "Liberal EU democracy that is militarily neutral and far from Russia."
+  },
+  "IRN": {
+   "direction": 1,
+   "threat": 3,
+   "capacity_note": "under sanctions; arms supplier to Russia",
+   "confidence": "high",
+   "why": "Supplies Russia with drones and shares its hostility to the US-led order."
+  },
+  "IRQ": {
+   "direction": 3,
+   "threat": 2,
+   "capacity_note": "fragile; Iranian influence",
+   "confidence": "medium",
+   "why": "Fragile state under strong Iranian influence that abstains on Ukraine."
+  },
+  "ISL": {
+   "direction": 8,
+   "threat": 10,
+   "capacity_note": "no armed forces",
+   "confidence": "medium",
+   "why": "Western NATO democracy with little direct exposure beyond North Atlantic sea lanes."
+  },
+  "ISR": {
+   "direction": 6,
+   "threat": 3,
+   "capacity_note": "at war itself",
+   "confidence": "high",
+   "why": "Western-style democracy close to the US that avoided arming Ukraine to keep its deconfliction with Russia in Syria."
+  },
+  "ITA": {
+   "direction": 7,
+   "threat": 12,
+   "capacity_note": "formerly energy-dependent on Russia",
+   "confidence": "high",
+   "why": "Western EU and NATO member with a history of warmer ties to Moscow but a firmly Atlanticist government."
+  },
+  "JAM": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Democracy that condemned the invasion."
+  },
+  "JOR": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "US-aligned monarchy that keeps out of the war."
+  },
+  "JPN": {
+   "direction": 7,
+   "threat": 20,
+   "capacity_note": "own territorial dispute with Russia",
+   "confidence": "high",
+   "why": "US ally that sees a Russian win as encouraging China, with its own dispute over the Kuril Islands."
+  },
+  "KAZ": {
+   "direction": 4,
+   "threat": 35,
+   "capacity_note": "large Russian minority; trade route for Russia",
+   "confidence": "high",
+   "why": "CSTO member with a long border and a large Russian minority, quietly hedging away from Moscow."
+  },
+  "KEN": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Democracy whose UN ambassador condemned the invasion as a colonial-style border grab."
+  },
+  "KGZ": {
+   "direction": 2,
+   "threat": 15,
+   "capacity_note": "CSTO member; remittance-dependent; re-export hub",
+   "confidence": "medium",
+   "why": "Hosts a Russian base and depends heavily on Russia for jobs and trade."
+  },
+  "KHM": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Authoritarian state close to China that nevertheless voted to condemn the invasion."
+  },
+  "KIR": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "close to China",
+   "confidence": "low",
+   "why": "Small Pacific state that has tilted towards China."
+  },
+  "KNA": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small Commonwealth democracy that recognises Taiwan."
+  },
+  "KOR": {
+   "direction": 7,
+   "threat": 10,
+   "capacity_note": "North Korea fights for Russia",
+   "confidence": "high",
+   "why": "US ally whose main concern is Russia's military cooperation with North Korea."
+  },
+  "KWT": {
+   "direction": 5,
+   "threat": 2,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "US-protected monarchy that values sovereignty after its own invasion in 1990."
+  },
+  "LAO": {
+   "direction": 2,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "One-party state closely aligned with China and friendly to Russia."
+  },
+  "LBN": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "economic collapse",
+   "confidence": "low",
+   "why": "Weak state in crisis with little capacity or interest."
+  },
+  "LBR": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Democracy with close US ties."
+  },
+  "LBY": {
+   "direction": 3,
+   "threat": 5,
+   "capacity_note": "divided; Russian forces in the east",
+   "confidence": "low",
+   "why": "Divided state where the eastern authority hosts Russian forces."
+  },
+  "LCA": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small Commonwealth democracy."
+  },
+  "LKA": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "debt crisis",
+   "confidence": "medium",
+   "why": "Non-aligned state focused on its own economic recovery."
+  },
+  "LSO": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small state close to South Africa."
+  },
+  "LTU": {
+   "direction": 10,
+   "threat": 80,
+   "capacity_note": "",
+   "confidence": "high",
+   "why": "Borders Kaliningrad and Belarus and sees Ukraine's fight as its own first line of defence."
+  },
+  "LUX": {
+   "direction": 8,
+   "threat": 15,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Small, rich founding EU and NATO member with fully Western orientation and little direct exposure."
+  },
+  "LVA": {
+   "direction": 10,
+   "threat": 85,
+   "capacity_note": "large Russian-speaking minority",
+   "confidence": "high",
+   "why": "Frontline NATO state whose politics are defined against Russia and which fears it would be next."
+  },
+  "MAC": {
+   "direction": 2,
+   "threat": 1,
+   "capacity_note": "follows Beijing",
+   "confidence": "medium",
+   "why": "Follows Beijing's foreign policy."
+  },
+  "MAR": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Western-leaning monarchy that avoids taking sides."
+  },
+  "MDA": {
+   "direction": 7,
+   "threat": 60,
+   "capacity_note": "energy-dependent on Russia; Russian troops in Transnistria",
+   "confidence": "high",
+   "why": "Pro-EU government that faces Russian troops on its territory and constant interference."
+  },
+  "MDG": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Non-aligned state that abstains."
+  },
+  "MDV": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small non-aligned island state far from the conflict."
+  },
+  "MEX": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "non-aligned tradition",
+   "confidence": "medium",
+   "why": "Democracy with a strong non-intervention tradition and little stake in Europe."
+  },
+  "MHL": {
+   "direction": 7,
+   "threat": 1,
+   "capacity_note": "in free association with the US",
+   "confidence": "low",
+   "why": "Freely associated with the US and votes with it at the UN."
+  },
+  "MKD": {
+   "direction": 7,
+   "threat": 12,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Small NATO member on an EU path, with some pro-Russian currents."
+  },
+  "MLI": {
+   "direction": 1,
+   "threat": 2,
+   "capacity_note": "Russian Africa Corps on its soil",
+   "confidence": "high",
+   "why": "Military junta that relies on Russian mercenaries for regime security."
+  },
+  "MLT": {
+   "direction": 6,
+   "threat": 5,
+   "capacity_note": "neutral by constitution; ship registry",
+   "confidence": "medium",
+   "why": "Small EU democracy, constitutionally neutral and far away."
+  },
+  "MMR": {
+   "direction": 1,
+   "threat": 1,
+   "capacity_note": "military junta under sanctions",
+   "confidence": "high",
+   "why": "Military junta that openly backs Russia and buys its arms."
+  },
+  "MNE": {
+   "direction": 7,
+   "threat": 12,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "NATO member with Serbian and Russian cultural influence but a Western foreign policy."
+  },
+  "MNG": {
+   "direction": 4,
+   "threat": 25,
+   "capacity_note": "fuel-dependent on Russia; landlocked between Russia and China",
+   "confidence": "medium",
+   "why": "Democracy squeezed between Russia and China that cannot afford to antagonise either."
+  },
+  "MNP": {
+   "direction": 8,
+   "threat": 2,
+   "capacity_note": "US territory",
+   "confidence": "low",
+   "why": "US territory following US policy."
+  },
+  "MOZ": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "insurgency in the north",
+   "confidence": "low",
+   "why": "Former Soviet-aligned state that abstains."
+  },
+  "MRT": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Non-aligned state with little stake."
+  },
+  "MSR": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "British territory",
+   "confidence": "low",
+   "why": "British territory following UK policy."
+  },
+  "MUS": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Stable democracy with little stake."
+  },
+  "MWI": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Democracy that condemned the invasion."
+  },
+  "MYS": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "non-aligned",
+   "confidence": "medium",
+   "why": "Non-aligned democracy with little stake in the war."
+  },
+  "NAM": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Abstains out of liberation-era ties to Moscow."
+  },
+  "NCL": {
+   "direction": 6,
+   "threat": 2,
+   "capacity_note": "French territory",
+   "confidence": "low",
+   "why": "French territory following French policy, with an independence debate."
+  },
+  "NER": {
+   "direction": 1,
+   "threat": 2,
+   "capacity_note": "Russian forces on its soil",
+   "confidence": "high",
+   "why": "Military junta that expelled Western troops and turned to Russia."
+  },
+  "NFK": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "Australian territory",
+   "confidence": "low",
+   "why": "Australian territory."
+  },
+  "NGA": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "high",
+   "why": "Large non-aligned democracy with little direct stake in Europe."
+  },
+  "NIC": {
+   "direction": 1,
+   "threat": 1,
+   "capacity_note": "under sanctions",
+   "confidence": "high",
+   "why": "Authoritarian government that backs Russia at the UN."
+  },
+  "NIU": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "in free association with New Zealand",
+   "confidence": "low",
+   "why": "Self-governing state associated with New Zealand."
+  },
+  "NLD": {
+   "direction": 8,
+   "threat": 25,
+   "capacity_note": "",
+   "confidence": "high",
+   "why": "Liberal Atlanticist democracy whose view of Russia hardened after MH17 and sabotage threats in the North Sea."
+  },
+  "NOR": {
+   "direction": 9,
+   "threat": 40,
+   "capacity_note": "large oil and gas windfall",
+   "confidence": "high",
+   "why": "NATO founder with an Arctic border with Russia, firmly Western but historically pragmatic with Moscow."
+  },
+  "NPL": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Non-aligned state that voted to condemn the invasion but stays out of it."
+  },
+  "NRU": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small Pacific state dependent on Australia."
+  },
+  "NZL": {
+   "direction": 8,
+   "threat": 3,
+   "capacity_note": "",
+   "confidence": "high",
+   "why": "Western democracy committed to international law but far away."
+  },
+  "OMN": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "neutral mediator tradition",
+   "confidence": "medium",
+   "why": "Neutral mediator state with little stake."
+  },
+  "PAK": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "financial crisis",
+   "confidence": "medium",
+   "why": "Non-aligned state balancing the US, China and Russia, more focused on India."
+  },
+  "PAN": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "ship registry",
+   "confidence": "low",
+   "why": "Democracy with a large ship registry."
+  },
+  "PCN": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "British territory",
+   "confidence": "low",
+   "why": "Tiny British territory."
+  },
+  "PER": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Democracy with Western leanings and little stake."
+  },
+  "PHL": {
+   "direction": 6,
+   "threat": 2,
+   "capacity_note": "own maritime dispute with China",
+   "confidence": "medium",
+   "why": "US ally that links the war to its own sovereignty disputes with China."
+  },
+  "PLW": {
+   "direction": 7,
+   "threat": 1,
+   "capacity_note": "in free association with the US",
+   "confidence": "low",
+   "why": "Freely associated with the US and close to Taiwan."
+  },
+  "PNG": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Pacific democracy with close ties to Australia."
+  },
+  "POL": {
+   "direction": 9,
+   "threat": 70,
+   "capacity_note": "frontline logistics hub",
+   "confidence": "high",
+   "why": "Large NATO frontline state with deep historical fear of Russia and a border with Belarus and Kaliningrad."
+  },
+  "PRK": {
+   "direction": 0,
+   "threat": 1,
+   "capacity_note": "at war on Russia's side; under sanctions",
+   "confidence": "high",
+   "why": "Sends troops and shells to Russia; the closest ally Moscow has."
+  },
+  "PRT": {
+   "direction": 7,
+   "threat": 7,
+   "capacity_note": "",
+   "confidence": "high",
+   "why": "Atlanticist EU and NATO democracy at Europe's far western edge."
+  },
+  "PRY": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Pro-US government that recognises Taiwan."
+  },
+  "PSE": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "at war itself",
+   "confidence": "low",
+   "why": "Occupied territory at war, which sees Western double standards over Ukraine and Gaza."
+  },
+  "PYF": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "French territory",
+   "confidence": "low",
+   "why": "French territory following French policy."
+  },
+  "QAT": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "mediator role",
+   "confidence": "medium",
+   "why": "Wealthy monarchy close to the US that mediates on Ukrainian children."
+  },
+  "ROU": {
+   "direction": 8,
+   "threat": 55,
+   "capacity_note": "",
+   "confidence": "high",
+   "why": "NATO frontline state on the Black Sea next to Moldova and Ukraine, with drone debris landing on its soil."
+  },
+  "RWA": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Authoritarian state that balances partners."
+  },
+  "SAU": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "OPEC+ partner of Russia",
+   "confidence": "medium",
+   "why": "Authoritarian monarchy that coordinates oil output with Russia and seeks mediator status."
+  },
+  "SDN": {
+   "direction": 3,
+   "threat": 3,
+   "capacity_note": "at war itself",
+   "confidence": "low",
+   "why": "Country in civil war where both sides have dealt with Russia."
+  },
+  "SEN": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Democracy whose new government is more sceptical of the West."
+  },
+  "SGP": {
+   "direction": 6,
+   "threat": 2,
+   "capacity_note": "trade hub",
+   "confidence": "medium",
+   "why": "Small state that sanctioned Russia on the principle that borders must not change by force."
+  },
+  "SHN": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "British territory",
+   "confidence": "low",
+   "why": "British territory following UK policy."
+  },
+  "SLB": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "close security ties with China",
+   "confidence": "low",
+   "why": "Pacific state that has moved closer to China."
+  },
+  "SLE": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Democracy that condemned the invasion."
+  },
+  "SLV": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Authoritarian-leaning government close to the US."
+  },
+  "SMR": {
+   "direction": 7,
+   "threat": 3,
+   "capacity_note": "neutral",
+   "confidence": "low",
+   "why": "Tiny Western microstate that follows Italian and EU policy."
+  },
+  "SOM": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "fragile state",
+   "confidence": "low",
+   "why": "Fragile state that condemned the invasion."
+  },
+  "SPM": {
+   "direction": 8,
+   "threat": 2,
+   "capacity_note": "French territory",
+   "confidence": "low",
+   "why": "French territory following French policy."
+  },
+  "SRB": {
+   "direction": 3,
+   "threat": 5,
+   "capacity_note": "energy-dependent on Russia",
+   "confidence": "high",
+   "why": "EU candidate that refuses sanctions and keeps close ties to Moscow over Kosovo and gas."
+  },
+  "SSD": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "fragile state",
+   "confidence": "low",
+   "why": "Fragile state with little stake in the war."
+  },
+  "STP": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small democracy close to Portugal."
+  },
+  "SUR": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small democracy with little stake."
+  },
+  "SVK": {
+   "direction": 6,
+   "threat": 35,
+   "capacity_note": "energy-dependent on Russia; Russia-friendly government",
+   "confidence": "medium",
+   "why": "NATO and EU member whose current government is openly sceptical of aid to Ukraine, though it borders Ukraine."
+  },
+  "SVN": {
+   "direction": 7,
+   "threat": 20,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Small Western EU and NATO democracy at some distance from Russia."
+  },
+  "SWE": {
+   "direction": 9,
+   "threat": 45,
+   "capacity_note": "",
+   "confidence": "high",
+   "why": "Dropped two centuries of non-alignment to join NATO and sees the Baltic Sea as directly exposed."
+  },
+  "SWZ": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Absolute monarchy that recognises Taiwan."
+  },
+  "SXM": {
+   "direction": 7,
+   "threat": 1,
+   "capacity_note": "Dutch territory",
+   "confidence": "low",
+   "why": "Dutch Caribbean territory following Dutch policy."
+  },
+  "SYC": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small democracy with little stake."
+  },
+  "SYR": {
+   "direction": 4,
+   "threat": 5,
+   "capacity_note": "post-Assad transition; Russian bases",
+   "confidence": "low",
+   "why": "Post-2024 government distrusts Russia, which backed Assad, but still negotiates over Russian bases."
+  },
+  "TCA": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "British territory",
+   "confidence": "low",
+   "why": "British territory following UK policy."
+  },
+  "TCD": {
+   "direction": 3,
+   "threat": 3,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Military-led state that expelled French troops and is courted by Russia."
+  },
+  "TGO": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Authoritarian state that has drifted towards Russia."
+  },
+  "THA": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Hedging state with close ties to both the West and China."
+  },
+  "TJK": {
+   "direction": 2,
+   "threat": 15,
+   "capacity_note": "Russian military base; remittance-dependent",
+   "confidence": "medium",
+   "why": "Authoritarian CSTO member that relies on Russia for security and remittances."
+  },
+  "TKL": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "New Zealand territory",
+   "confidence": "low",
+   "why": "New Zealand territory."
+  },
+  "TKM": {
+   "direction": 2,
+   "threat": 10,
+   "capacity_note": "neutral by constitution",
+   "confidence": "low",
+   "why": "Closed, permanently neutral regime with little interest in either side."
+  },
+  "TLS": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small democracy that values self-determination after its own independence struggle."
+  },
+  "TON": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small Pacific monarchy close to New Zealand and Australia."
+  },
+  "TTO": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Democracy with little stake."
+  },
+  "TUN": {
+   "direction": 4,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "medium",
+   "why": "Increasingly authoritarian state that keeps out of the war."
+  },
+  "TUR": {
+   "direction": 5,
+   "threat": 15,
+   "capacity_note": "Bosphorus gatekeeper; trade hub with Russia",
+   "confidence": "high",
+   "why": "NATO member that arms Ukraine with drones but keeps trade and energy ties with Russia and avoids sanctions."
+  },
+  "TUV": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small Pacific democracy close to Taiwan and Australia."
+  },
+  "TWN": {
+   "direction": 8,
+   "threat": 5,
+   "capacity_note": "own security threat from China",
+   "confidence": "medium",
+   "why": "Democracy that reads Ukraine as a test case for its own situation with China."
+  },
+  "TZA": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Non-aligned state that abstains."
+  },
+  "UGA": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Authoritarian state that abstains and courts Moscow."
+  },
+  "URY": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Stable democracy that condemns the invasion."
+  },
+  "USA": {
+   "direction": 8,
+   "threat": 15,
+   "capacity_note": "largest military power; policy shifting under the second Trump administration",
+   "confidence": "high",
+   "why": "Leading Western power and NATO anchor, though its 2025-26 government is more ambivalent about Ukraine."
+  },
+  "UZB": {
+   "direction": 3,
+   "threat": 15,
+   "capacity_note": "labour migration to Russia",
+   "confidence": "medium",
+   "why": "Authoritarian state that keeps distance from both sides and depends on Russian remittances."
+  },
+  "VAT": {
+   "direction": 6,
+   "threat": 2,
+   "capacity_note": "neutral by doctrine",
+   "confidence": "low",
+   "why": "Holy See seeks mediation rather than alignment, but rejects aggression."
+  },
+  "VCT": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small democracy with little stake."
+  },
+  "VEN": {
+   "direction": 2,
+   "threat": 1,
+   "capacity_note": "under sanctions; leadership in flux",
+   "confidence": "low",
+   "why": "Long Moscow ally whose regime has been in turmoil under US pressure."
+  },
+  "VGB": {
+   "direction": 8,
+   "threat": 1,
+   "capacity_note": "British territory; financial centre",
+   "confidence": "low",
+   "why": "British territory following UK policy."
+  },
+  "VNM": {
+   "direction": 3,
+   "threat": 2,
+   "capacity_note": "relies on Russian arms",
+   "confidence": "medium",
+   "why": "One-party state with old ties to Moscow and Russian weapons, but pragmatic towards the West."
+  },
+  "VUT": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small Pacific democracy, non-aligned."
+  },
+  "WLF": {
+   "direction": 6,
+   "threat": 1,
+   "capacity_note": "French territory",
+   "confidence": "low",
+   "why": "French territory following French policy."
+  },
+  "WSM": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Small Pacific democracy close to New Zealand."
+  },
+  "YEM": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "at war itself",
+   "confidence": "low",
+   "why": "Fractured country at war whose Houthi side is hostile to the West."
+  },
+  "ZAF": {
+   "direction": 3,
+   "threat": 1,
+   "capacity_note": "BRICS member",
+   "confidence": "high",
+   "why": "BRICS member with ANC-era ties to Moscow that claims non-alignment."
+  },
+  "ZMB": {
+   "direction": 5,
+   "threat": 1,
+   "capacity_note": "",
+   "confidence": "low",
+   "why": "Democracy that condemned the invasion."
+  },
+  "ZWE": {
+   "direction": 2,
+   "threat": 1,
+   "capacity_note": "under Western sanctions",
+   "confidence": "medium",
+   "why": "Authoritarian state close to Moscow."
+  }
+ }
+}

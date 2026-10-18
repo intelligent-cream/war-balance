@@ -1,0 +1,1955 @@
+{
+ "generated": "2026-10-18",
+ "currency": "EUR bn nominal (ECB annual average EUR/USD: 2022 1.053, 2023 1.0813, 2024 1.0824, 2025 1.13, 2026 1.1616)",
+ "hubs": {
+  "ARE": {
+   "destination_shares": {
+    "KOR": {
+     "low": 0.046,
+     "central": 0.0845,
+     "high": 0.1282
+    },
+    "IRQ": {
+     "low": 0.0487,
+     "central": 0.0699,
+     "high": 0.0948
+    },
+    "SGP": {
+     "low": 0.0377,
+     "central": 0.0599,
+     "high": 0.088
+    },
+    "JPN": {
+     "low": 0.0363,
+     "central": 0.0588,
+     "high": 0.0915
+    },
+    "PAK": {
+     "low": 0.0283,
+     "central": 0.0503,
+     "high": 0.0808
+    },
+    "ZAF": {
+     "low": 0.0299,
+     "central": 0.0476,
+     "high": 0.073
+    },
+    "CHN": {
+     "low": 0.0248,
+     "central": 0.0453,
+     "high": 0.0791
+    },
+    "KEN": {
+     "low": 0.0276,
+     "central": 0.0435,
+     "high": 0.0667
+    },
+    "SAU": {
+     "low": 0.0186,
+     "central": 0.0401,
+     "high": 0.0778
+    },
+    "GBR": {
+     "low": 0.0213,
+     "central": 0.0342,
+     "high": 0.0532
+    },
+    "FRA": {
+     "low": 0.0191,
+     "central": 0.0322,
+     "high": 0.0616
+    },
+    "IND": {
+     "low": 0.0163,
+     "central": 0.0273,
+     "high": 0.0439
+    },
+    "TZA": {
+     "low": 0.0122,
+     "central": 0.0237,
+     "high": 0.0391
+    },
+    "MYS": {
+     "low": 0.0126,
+     "central": 0.0217,
+     "high": 0.0382
+    },
+    "UGA": {
+     "low": 0.0121,
+     "central": 0.0191,
+     "high": 0.0272
+    },
+    "TWN": {
+     "low": 0.0004,
+     "central": 0.0183,
+     "high": 0.0559
+    },
+    "NGA": {
+     "low": 0.0036,
+     "central": 0.0172,
+     "high": 0.0389
+    },
+    "BRA": {
+     "low": 0.0064,
+     "central": 0.0171,
+     "high": 0.0444
+    },
+    "THA": {
+     "low": 0.0105,
+     "central": 0.0167,
+     "high": 0.0265
+    },
+    "COD": {
+     "low": 0.0004,
+     "central": 0.0155,
+     "high": 0.0503
+    },
+    "OMN": {
+     "low": 0.0085,
+     "central": 0.0153,
+     "high": 0.0269
+    },
+    "USA": {
+     "low": 0.0062,
+     "central": 0.0128,
+     "high": 0.0258
+    },
+    "MRT": {
+     "low": 0.0079,
+     "central": 0.0126,
+     "high": 0.019
+    },
+    "NLD": {
+     "low": 0.0069,
+     "central": 0.0126,
+     "high": 0.022
+    },
+    "MOZ": {
+     "low": 0.0041,
+     "central": 0.0125,
+     "high": 0.0252
+    },
+    "other": {
+     "low": 0.1219,
+     "central": 0.1914,
+     "high": 0.2915
+    }
+   },
+   "years_used": [
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "sources": [
+    {
+     "name": "UN Comtrade (public preview API): importers' HS 2710 imports from the UAE (mirror), 2022-2025",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=784&cmdCode=2710&flowCode=M&period=2022,2023,2024,2025",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "UN Comtrade (public preview API): UAE-reported HS 2710 exports by partner, 2022-2023 (2024-2025 not published)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=784&cmdCode=2710&flowCode=X&period=2022,2023",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "This repository: research/2026-10/gaps/energy2.json hub_resale (resale shares of imported products)",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "The UAE reports 70% (2022) and 84% (2023) of its product exports to \"areas not specified\" and has not published 2024-2025, so its own data cannot give a customer split. Basis: importers' reported imports from the UAE (mirror data, USD 64/56/50/40 bn in 2022-2025, CIF). Importers that hardly report (Iraq, Djibouti for Ethiopia, Yemen, Sudan, Somalia, Afghanistan) are added from the UAE's own named flows (2022-23 average, moved with the mirror total): the larger of mirror and own figure is used. Iraq adds about USD 4 bn a year (7% of the total). Shares are the mean of the four yearly shares; low/high = the lowest/highest yearly share x0.7/x1.35. Not covered: Fujairah bunker sales to ships (no buyer country, about 7 Mt/yr) and cargoes declared to free zones; \"other\" holds 19%. Several customers are themselves hubs (Singapore, India, Saudi Arabia, Oman); passing their share on again is left to the pipeline.",
+   "diagnostics": {
+    "non_reporters_usd_bn_per_year": {
+     "IRQ": 4.032,
+     "DJI": 0.561,
+     "YEM": 0.11,
+     "SDN": 0.1,
+     "BHR": 0.095,
+     "TGO": 0.092,
+     "SOM": 0.075,
+     "AFG": 0.058,
+     "BGD": 0.052,
+     "QAT": 0.052,
+     "AZE": 0.041,
+     "ETH": 0.036
+    },
+    "mirror_total_usd_bn": {
+     "2022": 63.95,
+     "2023": 55.73,
+     "2024": 49.69,
+     "2025": 39.7
+    },
+    "own_report_nes_share": {
+     "2022": 0.701,
+     "2023": 0.844
+    }
+   }
+  },
+  "IND": {
+   "destination_shares": {
+    "NLD": {
+     "low": 0.0152,
+     "central": 0.1684,
+     "high": 0.28
+    },
+    "ARE": {
+     "low": 0.0439,
+     "central": 0.0918,
+     "high": 0.1399
+    },
+    "SGP": {
+     "low": 0.0422,
+     "central": 0.0704,
+     "high": 0.131
+    },
+    "USA": {
+     "low": 0.0447,
+     "central": 0.0671,
+     "high": 0.1485
+    },
+    "AUS": {
+     "low": 0.026,
+     "central": 0.0499,
+     "high": 0.1037
+    },
+    "ZAF": {
+     "low": 0.0273,
+     "central": 0.0417,
+     "high": 0.0859
+    },
+    "TGO": {
+     "low": 0.0,
+     "central": 0.0381,
+     "high": 0.0663
+    },
+    "TZA": {
+     "low": 0.0089,
+     "central": 0.036,
+     "high": 0.063
+    },
+    "OMN": {
+     "low": 0.0123,
+     "central": 0.0244,
+     "high": 0.0454
+    },
+    "CHN": {
+     "low": 0.0044,
+     "central": 0.0236,
+     "high": 0.0589
+    },
+    "MYS": {
+     "low": 0.012,
+     "central": 0.0236,
+     "high": 0.0745
+    },
+    "ISR": {
+     "low": 0.0,
+     "central": 0.0232,
+     "high": 0.0629
+    },
+    "NPL": {
+     "low": 0.0146,
+     "central": 0.0232,
+     "high": 0.0546
+    },
+    "BRA": {
+     "low": 0.0085,
+     "central": 0.0221,
+     "high": 0.0659
+    },
+    "IDN": {
+     "low": 0.0026,
+     "central": 0.019,
+     "high": 0.0529
+    },
+    "KOR": {
+     "low": 0.011,
+     "central": 0.0188,
+     "high": 0.0648
+    },
+    "BGD": {
+     "low": 0.0064,
+     "central": 0.0145,
+     "high": 0.0242
+    },
+    "TUR": {
+     "low": 0.0011,
+     "central": 0.0145,
+     "high": 0.0775
+    },
+    "MOZ": {
+     "low": 0.0015,
+     "central": 0.0145,
+     "high": 0.0231
+    },
+    "LKA": {
+     "low": 0.0032,
+     "central": 0.0141,
+     "high": 0.0327
+    },
+    "GBR": {
+     "low": 0.0059,
+     "central": 0.0141,
+     "high": 0.0679
+    },
+    "FRA": {
+     "low": 0.0036,
+     "central": 0.013,
+     "high": 0.0787
+    },
+    "KEN": {
+     "low": 0.0032,
+     "central": 0.0119,
+     "high": 0.0224
+    },
+    "NGA": {
+     "low": 0.0002,
+     "central": 0.011,
+     "high": 0.0858
+    },
+    "SAU": {
+     "low": 0.004,
+     "central": 0.0108,
+     "high": 0.0307
+    },
+    "other": {
+     "low": 0.0849,
+     "central": 0.1403,
+     "high": 0.2322
+    }
+   },
+   "years_used": [
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "sources": [
+    {
+     "name": "UN Comtrade (public preview API): India-reported HS 2710 exports by partner, 2022-2025",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&cmdCode=2710&flowCode=X&period=2022,2023,2024,2025",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "UN Comtrade (public preview API): importers' HS 2710 imports from India (mirror, used for ranges)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=699&cmdCode=2710&flowCode=M&period=2022,2023,2024,2025",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "This repository: research/2026-10/gaps/energy2.json hub_resale (resale shares of imported products)",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "India reports its exports by destination for all four years (USD 94/85/69/56 bn); only 3-4% goes to \"areas not specified\" (kept in \"other\"). Central = mean of the four yearly shares of India's own report, sales to Russia excluded. Low/high = lowest/highest of the yearly shares and of the importers' (mirror) shares where the importer reports, x0.75/x1.3. The mirror data cover only about 55-60% of India's reported exports and miss the UAE and Togo; the Netherlands records far less from India (2-7%) than India records to it (10-22%), which is why its low bound is wide. Important: this split is for India's resale of IMPORTED products (resale share 0.05/0.15/0.36). India's exports of fuel it refined from Russian crude are already in the laundered_oil series of its customers (see india_overlap).",
+   "diagnostics": {
+    "mirror_central": {
+     "USA": 0.095,
+     "SGP": 0.0797,
+     "ZAF": 0.0634,
+     "AUS": 0.0577,
+     "NGA": 0.0545,
+     "FRA": 0.0529,
+     "GBR": 0.0481,
+     "KOR": 0.0419,
+     "MYS": 0.0402,
+     "NLD": 0.0364,
+     "BRA": 0.0303,
+     "TUR": 0.0293,
+     "ARE": 0.0293,
+     "OMN": 0.0257,
+     "ITA": 0.0225
+    }
+   }
+  },
+  "TUR": {
+   "destination_shares": {
+    "GRC": {
+     "low": 0.0195,
+     "central": 0.0933,
+     "high": 0.1818
+    },
+    "NLD": {
+     "low": 0.0145,
+     "central": 0.0855,
+     "high": 0.136
+    },
+    "CYP": {
+     "low": 0.0007,
+     "central": 0.0759,
+     "high": 0.1013
+    },
+    "ROU": {
+     "low": 0.0259,
+     "central": 0.0688,
+     "high": 0.1275
+    },
+    "ITA": {
+     "low": 0.034,
+     "central": 0.0522,
+     "high": 0.1844
+    },
+    "GBR": {
+     "low": 0.0008,
+     "central": 0.0501,
+     "high": 0.1401
+    },
+    "LBN": {
+     "low": 0.0139,
+     "central": 0.0487,
+     "high": 0.2356
+    },
+    "SGP": {
+     "low": 0.0055,
+     "central": 0.0391,
+     "high": 0.075
+    },
+    "MLT": {
+     "low": 0.0,
+     "central": 0.0355,
+     "high": 0.0506
+    },
+    "USA": {
+     "low": 0.0069,
+     "central": 0.0355,
+     "high": 0.2202
+    },
+    "UKR": {
+     "low": 0.0129,
+     "central": 0.0308,
+     "high": 0.1173
+    },
+    "ESP": {
+     "low": 0.0056,
+     "central": 0.0281,
+     "high": 0.0884
+    },
+    "ARE": {
+     "low": 0.0005,
+     "central": 0.028,
+     "high": 0.0632
+    },
+    "CHE": {
+     "low": 0.0,
+     "central": 0.0278,
+     "high": 0.0616
+    },
+    "DEU": {
+     "low": 0.006,
+     "central": 0.0258,
+     "high": 0.0513
+    },
+    "ZAF": {
+     "low": 0.0,
+     "central": 0.0242,
+     "high": 0.2169
+    },
+    "MAR": {
+     "low": 0.0046,
+     "central": 0.0194,
+     "high": 0.0589
+    },
+    "SVN": {
+     "low": 0.0081,
+     "central": 0.0182,
+     "high": 0.0605
+    },
+    "EGY": {
+     "low": 0.0063,
+     "central": 0.0165,
+     "high": 0.1829
+    },
+    "BGR": {
+     "low": 0.0018,
+     "central": 0.0164,
+     "high": 0.042
+    },
+    "LBY": {
+     "low": 0.0038,
+     "central": 0.016,
+     "high": 0.0514
+    },
+    "FRA": {
+     "low": 0.0059,
+     "central": 0.0137,
+     "high": 0.0421
+    },
+    "MDA": {
+     "low": 0.0036,
+     "central": 0.0081,
+     "high": 0.0262
+    },
+    "BEL": {
+     "low": 0.0029,
+     "central": 0.0078,
+     "high": 0.0214
+    },
+    "SYR": {
+     "low": 0.005,
+     "central": 0.0072,
+     "high": 0.0107
+    },
+    "other": {
+     "low": 0.0824,
+     "central": 0.1272,
+     "high": 0.1943
+    }
+   },
+   "years_used": [
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "sources": [
+    {
+     "name": "UN Comtrade (public preview API): Turkey-reported HS 2710 exports by partner, 2022-2025",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=792&cmdCode=2710&flowCode=X&period=2022,2023,2024,2025",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "UN Comtrade (public preview API): importers' HS 2710 imports from Turkey (mirror, used for ranges)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=792&cmdCode=2710&flowCode=M&period=2022,2023,2024,2025",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "CREA and CSD, \"A Kremlin pit stop: The EU imported EUR 3 bn of oil products from Turkish ports handling Russian oil\" (June 2024)",
+     "url": "https://energyandcleanair.org/wp/wp-content/uploads/2024/06/CREA_CSD_A-Kremlin-pit-stop_The-EU-imported-EUR-3-bn-of-oil-products-from-Turkish-ports-handling-Russian-oil_Final.pdf",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "This repository: research/2026-10/gaps/energy2.json hub_resale (resale shares of imported products)",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Turkey reports its exports by destination (USD 13-14 bn a year, 14-22 Mt). Central = mean of the yearly shares of Turkey's own report, sales to Russia (2% in 2022) excluded; ranges from yearly spread and mirror shares x0.75/x1.3. EU members took 50-57% a year (Greece, Netherlands, Cyprus, Romania, Italy, Malta, Spain, Bulgaria); the UK rose to 11% in 2025; Lebanon, Ukraine, Egypt, Morocco and Libya are the main non-EU buyers. Applies to Turkey's resale of imported products (resale share 0.1/0.2/0.45). The same split is used for Turkey's exports of fuel refined from Russian crude in turkey_refining.",
+   "diagnostics": {
+    "mirror_central": {
+     "USA": 0.1304,
+     "ITA": 0.0888,
+     "LBN": 0.0844,
+     "ROU": 0.0733,
+     "GRC": 0.0624,
+     "UKR": 0.0573,
+     "ZAF": 0.0527,
+     "EGY": 0.0477,
+     "ESP": 0.0431,
+     "MAR": 0.0352,
+     "SVN": 0.0334,
+     "NLD": 0.0323,
+     "FRA": 0.0291,
+     "SGP": 0.0203,
+     "DEU": 0.0191
+    }
+   }
+  },
+  "TGO": {
+   "destination_shares": {
+    "NGA": {
+     "low": 0.0318,
+     "central": 0.1785,
+     "high": 0.42
+    },
+    "AGO": {
+     "low": 0.03,
+     "central": 0.1711,
+     "high": 0.4277
+    },
+    "CIV": {
+     "low": 0.0143,
+     "central": 0.1,
+     "high": 0.25
+    },
+    "GHA": {
+     "low": 0.0117,
+     "central": 0.0911,
+     "high": 0.2277
+    },
+    "ZAF": {
+     "low": 0.0,
+     "central": 0.0537,
+     "high": 0.1537
+    },
+    "BEN": {
+     "low": 0.0,
+     "central": 0.0517,
+     "high": 0.1517
+    },
+    "BFA": {
+     "low": 0.0,
+     "central": 0.0412,
+     "high": 0.12
+    },
+    "COG": {
+     "low": 0.0,
+     "central": 0.0385,
+     "high": 0.1385
+    },
+    "COD": {
+     "low": 0.0,
+     "central": 0.0365,
+     "high": 0.1365
+    },
+    "MLI": {
+     "low": 0.0,
+     "central": 0.0339,
+     "high": 0.075
+    },
+    "NER": {
+     "low": 0.0,
+     "central": 0.025,
+     "high": 0.075
+    },
+    "NAM": {
+     "low": 0.0,
+     "central": 0.0237,
+     "high": 0.1237
+    },
+    "CMR": {
+     "low": 0.0,
+     "central": 0.0212,
+     "high": 0.06
+    },
+    "STP": {
+     "low": 0.005,
+     "central": 0.0188,
+     "high": 0.0678
+    },
+    "BRA": {
+     "low": 0.0,
+     "central": 0.0159,
+     "high": 0.1159
+    },
+    "MRT": {
+     "low": 0.0,
+     "central": 0.014,
+     "high": 0.0622
+    },
+    "GMB": {
+     "low": 0.0,
+     "central": 0.0128,
+     "high": 0.0364
+    },
+    "CPV": {
+     "low": 0.0,
+     "central": 0.0128,
+     "high": 0.0545
+    },
+    "GAB": {
+     "low": 0.0,
+     "central": 0.0116,
+     "high": 0.03
+    },
+    "SEN": {
+     "low": 0.0006,
+     "central": 0.0108,
+     "high": 0.03
+    },
+    "SGP": {
+     "low": 0.0,
+     "central": 0.0074,
+     "high": 0.089
+    },
+    "LBR": {
+     "low": 0.0,
+     "central": 0.005,
+     "high": 0.015
+    },
+    "SLE": {
+     "low": 0.0,
+     "central": 0.005,
+     "high": 0.015
+    },
+    "GIN": {
+     "low": 0.0,
+     "central": 0.005,
+     "high": 0.015
+    },
+    "IDN": {
+     "low": 0.0,
+     "central": 0.0046,
+     "high": 0.0554
+    },
+    "other": {
+     "low": 0.0,
+     "central": 0.0102,
+     "high": 0.0533
+    }
+   },
+   "years_used": [
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "sources": [
+    {
+     "name": "UN Comtrade (public preview API): importers' HS 2710 imports from Togo (mirror), 2022-2025",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=768&cmdCode=2710&flowCode=M&period=2022,2023,2024,2025",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "UN Comtrade (public preview API): Togo-reported HS 2710 exports and re-exports by partner",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=768&cmdCode=2710&flowCode=X,RX&period=2022,2023,2024,2025",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "This repository: research/2026-10/gaps/energy2.json hub_resale (resale shares of imported products)",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Togo reports only USD 0.1-0.2 bn of product exports and 0.15-0.21 bn of imports, while India alone reports USD 2-5 bn a year of exports \"to Togo\": most of this fuel is moved ship-to-ship off Lomé and never clears Togolese customs. Importers report USD 0.7-1.8 bn a year from Togo (Côte d'Ivoire, Angola, Nigeria, Ghana, South Africa, Benin, Congo, DR Congo, Namibia). Togo's own small exports go mostly to France (likely aviation fuel or misrecording) and are not used. Central = 50% mirror average + 50% a best-guess prior built from shipping-tracker reporting on Lomé STS trade: Nigeria the largest buyer before the Dangote refinery (2022-24), then Ghana, Benin, road supply to Burkina Faso, Niger and Mali, Côte d'Ivoire, Cameroon and Angola. Low/high = yearly mirror and prior extremes x0.5/x1.5, capped at 2.5x central. Certainty D: the real buyers of STS cargoes are not in any customs data.",
+   "diagnostics": {
+    "mirror_total_usd_bn": {
+     "2022": 1.31,
+     "2023": 1.8,
+     "2024": 0.69,
+     "2025": 0.89
+    },
+    "own_exports_usd_bn": {
+     "2022": 0.094,
+     "2023": 0.184,
+     "2024": 0.114,
+     "2025": 0.111
+    },
+    "own_report_central": {
+     "FRA": 0.593,
+     "GHA": 0.162,
+     "IND": 0.11,
+     "MLI": 0.037,
+     "BFA": 0.03
+    }
+   }
+  },
+  "GIB": {
+   "destination_shares": {
+    "MAR": {
+     "low": 0.0,
+     "central": 0.2232,
+     "high": 0.5579
+    },
+    "ESP": {
+     "low": 0.0,
+     "central": 0.1545,
+     "high": 0.3861
+    },
+    "FRA": {
+     "low": 0.0,
+     "central": 0.1034,
+     "high": 0.2585
+    },
+    "SAU": {
+     "low": 0.0,
+     "central": 0.1011,
+     "high": 0.2526
+    },
+    "PRT": {
+     "low": 0.0,
+     "central": 0.0706,
+     "high": 0.1765
+    },
+    "NLD": {
+     "low": 0.0017,
+     "central": 0.0685,
+     "high": 0.1713
+    },
+    "BRA": {
+     "low": 0.0,
+     "central": 0.0569,
+     "high": 0.1569
+    },
+    "ITA": {
+     "low": 0.0,
+     "central": 0.0543,
+     "high": 0.1543
+    },
+    "KOR": {
+     "low": 0.0,
+     "central": 0.0397,
+     "high": 0.1397
+    },
+    "SWE": {
+     "low": 0.0,
+     "central": 0.0243,
+     "high": 0.1243
+    },
+    "GBR": {
+     "low": 0.0,
+     "central": 0.02,
+     "high": 0.08
+    },
+    "SGP": {
+     "low": 0.0,
+     "central": 0.0174,
+     "high": 0.1174
+    },
+    "BEL": {
+     "low": 0.0,
+     "central": 0.015,
+     "high": 0.115
+    },
+    "MYS": {
+     "low": 0.0,
+     "central": 0.0124,
+     "high": 0.1124
+    },
+    "DZA": {
+     "low": 0.0,
+     "central": 0.012,
+     "high": 0.048
+    },
+    "other": {
+     "low": 0.0,
+     "central": 0.0269,
+     "high": 0.0804
+    }
+   },
+   "years_used": [
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "sources": [
+    {
+     "name": "UN Comtrade (public preview API): importers' HS 2710 imports from Gibraltar (mirror), 2022-2025; Gibraltar does not report",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=292&cmdCode=2710&flowCode=M&period=2022,2023,2024,2025",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "This repository: research/2026-10/gaps/energy2.json hub_resale (resale shares of imported products)",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Gibraltar does not report to Comtrade. Importers record only USD 0.08-0.17 bn a year from it, with a different leading buyer each year (Brazil/Korea 2022, France 2023, Saudi Arabia/Morocco 2024, Morocco/Portugal/Italy 2025): single cargoes, not a stable pattern. Gibraltar is a bunkering port (~4 Mt/yr to ships); its resale share is only 0/0.02/0.1, so this split matters little. Central = 60% mirror average + 40% a best-guess prior (Spain by road and barge, Morocco, Portugal, Mediterranean traders). Ranges are very wide (x0.4/x1.6, capped at 2.5x central). Certainty D.",
+   "diagnostics": {
+    "mirror_total_usd_bn": {
+     "2022": 0.145,
+     "2023": 0.1,
+     "2024": 0.084,
+     "2025": 0.173
+    }
+   }
+  },
+  "PAN": {
+   "destination_shares": {
+    "GHA": {
+     "low": 0.0,
+     "central": 0.1162,
+     "high": 0.2906
+    },
+    "CRI": {
+     "low": 0.0,
+     "central": 0.1125,
+     "high": 0.2814
+    },
+    "VEN": {
+     "low": 0.0,
+     "central": 0.1113,
+     "high": 0.2784
+    },
+    "ECU": {
+     "low": 0.0081,
+     "central": 0.0947,
+     "high": 0.2367
+    },
+    "NIC": {
+     "low": 0.0003,
+     "central": 0.0623,
+     "high": 0.1623
+    },
+    "DOM": {
+     "low": 0.0,
+     "central": 0.0476,
+     "high": 0.1476
+    },
+    "COL": {
+     "low": 0.002,
+     "central": 0.0472,
+     "high": 0.1472
+    },
+    "CUW": {
+     "low": 0.0,
+     "central": 0.043,
+     "high": 0.143
+    },
+    "GTM": {
+     "low": 0.0003,
+     "central": 0.0394,
+     "high": 0.1394
+    },
+    "HND": {
+     "low": 0.0,
+     "central": 0.0374,
+     "high": 0.1374
+    },
+    "SLV": {
+     "low": 0.0022,
+     "central": 0.0332,
+     "high": 0.1332
+    },
+    "RWA": {
+     "low": 0.0014,
+     "central": 0.0285,
+     "high": 0.1208
+    },
+    "IND": {
+     "low": 0.0001,
+     "central": 0.0274,
+     "high": 0.1274
+    },
+    "CHL": {
+     "low": 0.0,
+     "central": 0.0245,
+     "high": 0.1245
+    },
+    "ZAF": {
+     "low": 0.0005,
+     "central": 0.0244,
+     "high": 0.1244
+    },
+    "BOL": {
+     "low": 0.0,
+     "central": 0.0172,
+     "high": 0.1172
+    },
+    "TZA": {
+     "low": 0.0024,
+     "central": 0.0166,
+     "high": 0.0643
+    },
+    "GUY": {
+     "low": 0.0002,
+     "central": 0.016,
+     "high": 0.0799
+    },
+    "USA": {
+     "low": 0.0001,
+     "central": 0.0103,
+     "high": 0.0466
+    },
+    "CUB": {
+     "low": 0.0,
+     "central": 0.0088,
+     "high": 0.1088
+    },
+    "PER": {
+     "low": 0.0,
+     "central": 0.0085,
+     "high": 0.1085
+    },
+    "JAM": {
+     "low": 0.0002,
+     "central": 0.0083,
+     "high": 0.031
+    },
+    "COD": {
+     "low": 0.0,
+     "central": 0.0079,
+     "high": 0.0377
+    },
+    "SUR": {
+     "low": 0.0,
+     "central": 0.007,
+     "high": 0.097
+    },
+    "BES": {
+     "low": 0.0,
+     "central": 0.0058,
+     "high": 0.0583
+    },
+    "other": {
+     "low": 0.0038,
+     "central": 0.044,
+     "high": 0.066
+    }
+   },
+   "years_used": [
+    2022,
+    2023,
+    2024,
+    2025
+   ],
+   "sources": [
+    {
+     "name": "UN Comtrade (public preview API): importers' HS 2710 imports from Panama (mirror), 2022-2025",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=591&cmdCode=2710&flowCode=M&period=2022,2023,2024,2025",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "UN Comtrade (public preview API): Panama-reported HS 2710 exports and re-exports by partner",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=591&cmdCode=2710&flowCode=X,RX&period=2022,2023,2024,2025",
+     "date": "2026-10-18"
+    },
+    {
+     "name": "This repository: research/2026-10/gaps/energy2.json hub_resale (resale shares of imported products)",
+     "url": "research/2026-10/gaps/energy2.json",
+     "date": "2026-10-17"
+    }
+   ],
+   "reasoning": "Panama's own product exports are about USD 0.01 bn a year (Venezuela, Curaçao, Colombia, India); importers report USD 0.14-0.48 bn from Panama, mainly Central America and the Caribbean (Costa Rica, Ecuador, Dominican Republic, Nicaragua, Guatemala, Honduras, El Salvador) plus single large entries for Ghana (2022, 2025). Most Panamanian fuel goes to ships in the Canal (bunkers, no buyer country); the resale share is 0/0.01/0.1. Central = 70% mirror average + 30% own exports and re-exports; ranges x0.5/x1.5, capped at 2.5x central. Venezuela (11%) rests on Panama's own records only. Certainty D.",
+   "diagnostics": {
+    "mirror_total_usd_bn": {
+     "2022": 0.478,
+     "2023": 0.314,
+     "2024": 0.24,
+     "2025": 0.144
+    },
+    "own_exports_usd_bn": {
+     "2022": 0.008,
+     "2023": 0.0099,
+     "2024": 0.0114,
+     "2025": 0.0122
+    }
+   }
+  }
+ },
+ "turkey_refining": {
+  "unit": "EUR bn, nominal, ECB annual average EUR/USD",
+  "by_year": {
+   "2022": {
+    "russian_crude_mt": 12.9,
+    "russian_crude_eur_bn": {
+     "low": 6.32,
+     "central": 6.869,
+     "high": 7.419
+    },
+    "product_value_eur_bn": {
+     "low": 10.249,
+     "central": 10.591,
+     "high": 10.933
+    },
+    "exported_product_value_eur_bn": {
+     "low": 2.255,
+     "central": 3.601,
+     "high": 5.466
+    },
+    "exported_crude_value_eur_bn": {
+     "low": 1.511,
+     "central": 2.335,
+     "high": 3.435
+    },
+    "domestic_share": {
+     "low": 0.5,
+     "central": 0.66,
+     "high": 0.78
+    },
+    "domestic_crude_value_eur_bn": {
+     "low": 3.435,
+     "central": 4.534,
+     "high": 5.358
+    },
+    "exported_product_value_mar_dec_eur_bn": {
+     "low": 1.879,
+     "central": 3.001,
+     "high": 4.555
+    },
+    "period": "calendar year",
+    "product_unit_value_usd_t": 930
+   },
+   "2023": {
+    "russian_crude_mt": 10.89,
+    "russian_crude_eur_bn": {
+     "low": 3.981,
+     "central": 4.327,
+     "high": 4.673
+    },
+    "product_value_eur_bn": {
+     "low": 6.239,
+     "central": 6.447,
+     "high": 6.655
+    },
+    "exported_product_value_eur_bn": {
+     "low": 1.373,
+     "central": 2.256,
+     "high": 3.327
+    },
+    "exported_crude_value_eur_bn": {
+     "low": 0.952,
+     "central": 1.515,
+     "high": 2.164
+    },
+    "domestic_share": {
+     "low": 0.5,
+     "central": 0.65,
+     "high": 0.78
+    },
+    "domestic_crude_value_eur_bn": {
+     "low": 2.164,
+     "central": 2.813,
+     "high": 3.375
+    },
+    "period": "calendar year",
+    "product_unit_value_usd_t": 689
+   },
+   "2024": {
+    "russian_crude_mt": 16.75,
+    "russian_crude_eur_bn": {
+     "low": 6.562,
+     "central": 7.132,
+     "high": 7.703
+    },
+    "product_value_eur_bn": {
+     "low": 8.78,
+     "central": 9.072,
+     "high": 9.365
+    },
+    "exported_product_value_eur_bn": {
+     "low": 1.844,
+     "central": 2.994,
+     "high": 4.495
+    },
+    "exported_crude_value_eur_bn": {
+     "low": 1.498,
+     "central": 2.354,
+     "high": 3.424
+    },
+    "domestic_share": {
+     "low": 0.52,
+     "central": 0.67,
+     "high": 0.79
+    },
+    "domestic_crude_value_eur_bn": {
+     "low": 3.709,
+     "central": 4.779,
+     "high": 5.635
+    },
+    "period": "calendar year",
+    "product_unit_value_usd_t": 630
+   },
+   "2025": {
+    "russian_crude_mt": 15.06,
+    "russian_crude_eur_bn": {
+     "low": 4.935,
+     "central": 5.364,
+     "high": 5.793
+    },
+    "product_value_eur_bn": {
+     "low": 7.065,
+     "central": 7.301,
+     "high": 7.536
+    },
+    "exported_product_value_eur_bn": {
+     "low": 1.272,
+     "central": 2.117,
+     "high": 3.391
+    },
+    "exported_crude_value_eur_bn": {
+     "low": 0.966,
+     "central": 1.556,
+     "high": 2.414
+    },
+    "domestic_share": {
+     "low": 0.55,
+     "central": 0.71,
+     "high": 0.82
+    },
+    "domestic_crude_value_eur_bn": {
+     "low": 2.95,
+     "central": 3.809,
+     "high": 4.399
+    },
+    "period": "calendar year",
+    "product_unit_value_usd_t": 589
+   },
+   "2026": {
+    "russian_crude_mt": 6.24,
+    "russian_crude_eur_bn": {
+     "low": 1.889,
+     "central": 2.053,
+     "high": 2.218
+    },
+    "product_value_eur_bn": {
+     "low": 4.309,
+     "central": 4.453,
+     "high": 4.597
+    },
+    "exported_product_value_eur_bn": {
+     "low": 0.172,
+     "central": 0.445,
+     "high": 1.149
+    },
+    "exported_crude_value_eur_bn": {
+     "low": 0.082,
+     "central": 0.205,
+     "high": 0.513
+    },
+    "domestic_share": {
+     "low": 0.75,
+     "central": 0.9,
+     "high": 0.96
+    },
+    "domestic_crude_value_eur_bn": {
+     "low": 1.54,
+     "central": 1.848,
+     "high": 1.971
+    },
+    "period": "Jan-Aug",
+    "product_unit_value_usd_t": 892
+   }
+  },
+  "export_share": {
+   "2022": {
+    "low": 0.22,
+    "central": 0.34,
+    "high": 0.5
+   },
+   "2023": {
+    "low": 0.22,
+    "central": 0.35,
+    "high": 0.5
+   },
+   "2024": {
+    "low": 0.21,
+    "central": 0.33,
+    "high": 0.48
+   },
+   "2025": {
+    "low": 0.18,
+    "central": 0.29,
+    "high": 0.45
+   },
+   "2026": {
+    "low": 0.04,
+    "central": 0.1,
+    "high": 0.25
+   }
+  },
+  "destinations": {
+   "2022_2025": {
+    "GRC": {
+     "low": 0.0203,
+     "central": 0.0933,
+     "high": 0.1818
+    },
+    "NLD": {
+     "low": 0.0391,
+     "central": 0.0855,
+     "high": 0.136
+    },
+    "CYP": {
+     "low": 0.0546,
+     "central": 0.0759,
+     "high": 0.1013
+    },
+    "ROU": {
+     "low": 0.0414,
+     "central": 0.0688,
+     "high": 0.0982
+    },
+    "ITA": {
+     "low": 0.034,
+     "central": 0.0522,
+     "high": 0.0855
+    },
+    "GBR": {
+     "low": 0.0096,
+     "central": 0.0501,
+     "high": 0.1401
+    },
+    "LBN": {
+     "low": 0.0139,
+     "central": 0.0487,
+     "high": 0.1237
+    },
+    "SGP": {
+     "low": 0.0236,
+     "central": 0.0391,
+     "high": 0.075
+    },
+    "MLT": {
+     "low": 0.0239,
+     "central": 0.0355,
+     "high": 0.0506
+    },
+    "USA": {
+     "low": 0.0069,
+     "central": 0.0355,
+     "high": 0.0819
+    },
+    "UKR": {
+     "low": 0.0129,
+     "central": 0.0308,
+     "high": 0.0507
+    },
+    "ESP": {
+     "low": 0.0056,
+     "central": 0.0281,
+     "high": 0.053
+    },
+    "ARE": {
+     "low": 0.0134,
+     "central": 0.028,
+     "high": 0.0632
+    },
+    "CHE": {
+     "low": 0.0056,
+     "central": 0.0278,
+     "high": 0.0616
+    },
+    "DEU": {
+     "low": 0.006,
+     "central": 0.0258,
+     "high": 0.0513
+    },
+    "ZAF": {
+     "low": 0.0,
+     "central": 0.0242,
+     "high": 0.1085
+    },
+    "MAR": {
+     "low": 0.0046,
+     "central": 0.0194,
+     "high": 0.0539
+    },
+    "SVN": {
+     "low": 0.0081,
+     "central": 0.0182,
+     "high": 0.0392
+    },
+    "EGY": {
+     "low": 0.0063,
+     "central": 0.0165,
+     "high": 0.0393
+    },
+    "BGR": {
+     "low": 0.0035,
+     "central": 0.0164,
+     "high": 0.042
+    },
+    "LBY": {
+     "low": 0.0038,
+     "central": 0.016,
+     "high": 0.0514
+    },
+    "FRA": {
+     "low": 0.0059,
+     "central": 0.0137,
+     "high": 0.0245
+    },
+    "MDA": {
+     "low": 0.0036,
+     "central": 0.0081,
+     "high": 0.0165
+    },
+    "BEL": {
+     "low": 0.0033,
+     "central": 0.0078,
+     "high": 0.0214
+    },
+    "SYR": {
+     "low": 0.005,
+     "central": 0.0072,
+     "high": 0.0107
+    },
+    "other": {
+     "low": 0.0824,
+     "central": 0.1272,
+     "high": 0.1943
+    }
+   },
+   "2026_non_eu": {
+    "GBR": {
+     "low": 0.0193,
+     "central": 0.1071,
+     "high": 0.2933
+    },
+    "LBN": {
+     "low": 0.0299,
+     "central": 0.1041,
+     "high": 0.2473
+    },
+    "SGP": {
+     "low": 0.0471,
+     "central": 0.0836,
+     "high": 0.1619
+    },
+    "USA": {
+     "low": 0.0159,
+     "central": 0.0757,
+     "high": 0.1767
+    },
+    "UKR": {
+     "low": 0.0279,
+     "central": 0.0659,
+     "high": 0.117
+    },
+    "ARE": {
+     "low": 0.0281,
+     "central": 0.0598,
+     "high": 0.1364
+    },
+    "CHE": {
+     "low": 0.0112,
+     "central": 0.0595,
+     "high": 0.1426
+    },
+    "ZAF": {
+     "low": 0.0,
+     "central": 0.0517,
+     "high": 0.2169
+    },
+    "MAR": {
+     "low": 0.0092,
+     "central": 0.0415,
+     "high": 0.1128
+    },
+    "EGY": {
+     "low": 0.0145,
+     "central": 0.0353,
+     "high": 0.0849
+    },
+    "LBY": {
+     "low": 0.0075,
+     "central": 0.0342,
+     "high": 0.1191
+    },
+    "MDA": {
+     "low": 0.0075,
+     "central": 0.0172,
+     "high": 0.033
+    },
+    "SYR": {
+     "low": 0.0108,
+     "central": 0.0154,
+     "high": 0.0213
+    },
+    "MHL": {
+     "low": 0.0093,
+     "central": 0.0151,
+     "high": 0.0231
+    },
+    "LBR": {
+     "low": 0.007,
+     "central": 0.014,
+     "high": 0.0284
+    },
+    "other": {
+     "low": 0.142,
+     "central": 0.22,
+     "high": 0.3177
+    }
+   },
+   "eu27_share_by_year": {
+    "2022": 0.5,
+    "2023": 0.568,
+    "2024": 0.537,
+    "2025": 0.522
+   },
+   "note": "Turkey-reported HS 2710 exports by partner (mean of yearly shares, Russia excluded). From 21 Jan 2026 the EU bans products refined from Russian crude, so 2026 uses the non-EU split."
+  },
+  "already_in_laundered": {
+   "2022": {
+    "laundered_counted_eur_bn": {
+     "low": 2.211,
+     "central": 2.916,
+     "high": 4.172
+    },
+    "share_of_exports_already_counted": {
+     "low": 0.485,
+     "central": 0.972,
+     "high": 1.0
+    },
+    "counted_minus_estimate_eur_bn": -0.084,
+    "top_destinations_counted_central_eur_bn": {
+     "NLD": 0.308,
+     "LBN": 0.28,
+     "ZAF": 0.246,
+     "CYP": 0.221,
+     "ROU": 0.221,
+     "ITA": 0.135,
+     "MLT": 0.115,
+     "UKR": 0.115,
+     "DEU": 0.103,
+     "ESP": 0.102
+    }
+   },
+   "2023": {
+    "laundered_counted_eur_bn": {
+     "low": 2.298,
+     "central": 3.03,
+     "high": 4.335
+    },
+    "share_of_exports_already_counted": {
+     "low": 0.691,
+     "central": 1.0,
+     "high": 1.0
+    },
+    "counted_minus_estimate_eur_bn": 0.774,
+    "top_destinations_counted_central_eur_bn": {
+     "GRC": 0.321,
+     "NLD": 0.305,
+     "CYP": 0.239,
+     "ITA": 0.202,
+     "ROU": 0.17,
+     "CHE": 0.146,
+     "LBN": 0.141,
+     "ESP": 0.125,
+     "LBY": 0.122,
+     "DEU": 0.121
+    }
+   },
+   "2024": {
+    "laundered_counted_eur_bn": {
+     "low": 3.618,
+     "central": 4.772,
+     "high": 6.826
+    },
+    "share_of_exports_already_counted": {
+     "low": 0.805,
+     "central": 1.0,
+     "high": 1.0
+    },
+    "counted_minus_estimate_eur_bn": 1.778,
+    "top_destinations_counted_central_eur_bn": {
+     "GRC": 0.492,
+     "NLD": 0.416,
+     "CYP": 0.377,
+     "ROU": 0.366,
+     "USA": 0.305,
+     "SGP": 0.28,
+     "GBR": 0.272,
+     "ITA": 0.252,
+     "ARE": 0.235,
+     "MLT": 0.166
+    }
+   },
+   "2025": {
+    "laundered_counted_eur_bn": {
+     "low": 2.757,
+     "central": 3.636,
+     "high": 5.201
+    },
+    "share_of_exports_already_counted": {
+     "low": 0.813,
+     "central": 1.0,
+     "high": 1.0
+    },
+    "counted_minus_estimate_eur_bn": 1.519,
+    "top_destinations_counted_central_eur_bn": {
+     "GRC": 0.519,
+     "GBR": 0.4,
+     "CYP": 0.271,
+     "ROU": 0.257,
+     "NLD": 0.193,
+     "ITA": 0.168,
+     "USA": 0.158,
+     "MAR": 0.154,
+     "LBN": 0.132,
+     "BGR": 0.12
+    }
+   },
+   "2026": {
+    "laundered_counted_eur_bn": {
+     "low": 0.698,
+     "central": 1.427,
+     "high": 2.899
+    },
+    "share_of_exports_already_counted": {
+     "low": 0.607,
+     "central": 1.0,
+     "high": 1.0
+    },
+    "counted_minus_estimate_eur_bn": 0.981,
+    "top_destinations_counted_central_eur_bn": {
+     "GBR": 0.244,
+     "GRC": 0.105,
+     "USA": 0.096,
+     "MAR": 0.094,
+     "LBN": 0.08,
+     "SGP": 0.073,
+     "CHE": 0.066,
+     "UKR": 0.064,
+     "CYP": 0.055,
+     "ROU": 0.052
+    }
+   }
+  },
+  "new_uncounted": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.084,
+    "high": 2.344
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 1.03
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.877
+   },
+   "2025": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.635
+   },
+   "2026": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.451
+   }
+  },
+  "double_count_at_turkey": {
+   "2022": {
+    "low": 1.511,
+    "central": 2.335,
+    "high": 3.435
+   },
+   "2023": {
+    "low": 0.952,
+    "central": 1.515,
+    "high": 2.164
+   },
+   "2024": {
+    "low": 1.498,
+    "central": 2.354,
+    "high": 3.424
+   },
+   "2025": {
+    "low": 0.966,
+    "central": 1.556,
+    "high": 2.414
+   },
+   "2026": {
+    "low": 0.082,
+    "central": 0.205,
+    "high": 0.513
+   }
+  },
+  "double_count_note": "Turkey's own fossil fuel payments to Russia (energy.json fossil_from_russia) include ALL Russian crude it bought. The exported part (this field, crude value) is also counted at the buyers through laundered_oil (valued in the pipeline at the crude content, 60-75% of product value). To count it once, deduct this from Turkey's crude payments, or accept a double count of EUR 1.5-2.4 bn a year (central, 2022-2025).",
+  "reexport_of_russian_products": {
+   "by_year": {
+    "2022": {
+     "russian_products_imported_eur_bn": 8.334,
+     "reexported_eur_bn": {
+      "low": 0.833,
+      "central": 1.667,
+      "high": 3.75
+     }
+    },
+    "2023": {
+     "russian_products_imported_eur_bn": 16.088,
+     "reexported_eur_bn": {
+      "low": 1.609,
+      "central": 3.218,
+      "high": 7.24
+     }
+    },
+    "2024": {
+     "russian_products_imported_eur_bn": 16.659,
+     "reexported_eur_bn": {
+      "low": 1.666,
+      "central": 3.332,
+      "high": 7.496
+     }
+    },
+    "2025": {
+     "russian_products_imported_eur_bn": 12.16,
+     "reexported_eur_bn": {
+      "low": 1.216,
+      "central": 2.432,
+      "high": 5.472
+     }
+    },
+    "2026": {
+     "russian_products_imported_eur_bn": 7.343,
+     "reexported_eur_bn": {
+      "low": 0.734,
+      "central": 1.469,
+      "high": 3.305
+     }
+    }
+   },
+   "note": "Related channel, not refining: Turkey imported EUR 12-17 bn a year of Russian oil products (CREA) and re-exports part of them (resale share 0.1/0.2/0.45 from energy2.json). CREA/CSD found the EU imported 5.16 Mt worth EUR 3.1 bn (Feb 2023-Feb 2024) from three Turkish ports whose imports were 86% Russian. The laundered series' Turkey component exceeds the refining estimate by EUR 0.8-1.8 bn a year (2023-2025), which covers roughly half of this re-export channel at the central resale share. Not added to new_uncounted."
+  },
+  "sources": [
+   {
+    "name": "CREA Russia Fossil Tracker API v0/counter, yearly by destination and commodity (Russian crude and products to Turkey and India), 2021 to Aug 2026",
+    "url": "https://api.russiafossiltracker.com/v0/counter?format=csv&aggregate_by=year,destination_iso2,commodity",
+    "date": "2026-10-17"
+   },
+   {
+    "name": "UN Comtrade (public preview API): Turkey-reported HS 2710 exports by partner, value and net weight, 2022-2025",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=792&cmdCode=2710&flowCode=X&period=2022,2023,2024,2025",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "This repository: research/2026-10/gaps/energy.json (laundered_oil model, calibration factors 0.53/0.699/1.0, refiner Russian crude shares)",
+    "url": "research/2026-10/gaps/energy.json",
+    "date": "2026-10-17"
+   },
+   {
+    "name": "Global Witness (Kpler data): STAR refinery took >60 mn bbl Russian crude in 2022 (>73% of its imports), sold ~17 mn bbl products into the EU",
+    "url": "https://globalwitness.org/en/campaigns/fossil-fuels/shell-vitol-bring-russian-origin-diesel-into-europe-despite-swearing-off-russian-oil/",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "Global Witness (Kpler data): >90% of STAR crude Russian in Q1 2024; EU took >75% of STAR seaborne product exports",
+    "url": "https://globalwitness.org/en/campaigns/fossil-fuels/eu-importing-more-russian-origin-fuel-from-azeri-refinery/",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "Tüpraş Q4 2024 earnings presentation: refining production 24.9 Mt (2023), 26.7 Mt (2024); sales 30.4 Mt; quarterly international sales 1.3-2.0 Mt",
+    "url": "https://www.tupras.com.tr/assets/uploads/investor-relations/presentation/tupras-q424-results-webcast-presentation.pdf",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "Reuters via Novaya Gazeta Europe / Turkish Minute (Nov 2025): Turkey imported ~669 kb/d crude Jan-Oct 2025, 47% Russian; STAR ~210 kb/d nearly all Russian in Sep-Oct 2025, switching to non-Russian cargoes from December; Tüpraş to stop Russian crude at one refinery to keep exporting to the EU",
+    "url": "https://novayagazeta.eu/en/articles/2025/11/03/turkiye-begins-reducing-russian-oil-imports-following-imposition-of-fresh-us-sanctions-en-news",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "OC Media: EU confirms STAR is covered by the 18th-package ban on products refined from Russian crude (applies from 21 Jan 2026)",
+    "url": "https://oc-media.org/eu-sanctions-quietly-extend-to-azerbaijani-refinery-for-processing-russian-petrol",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "Bloomberg (Vortexa data, March 2025): Tüpraş shifts away from Russian crude, buying from Brazil",
+    "url": "https://bnnbloomberg.ca/markets/oil/2025/03/18/turkey-shifts-away-from-russian-crude-as-tupras-buys-from-brazil",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "CREA and CSD, \"A Kremlin pit stop: The EU imported EUR 3 bn of oil products from Turkish ports handling Russian oil\" (June 2024)",
+    "url": "https://energyandcleanair.org/wp/wp-content/uploads/2024/06/CREA_CSD_A-Kremlin-pit-stop_The-EU-imported-EUR-3-bn-of-oil-products-from-Turkish-ports-handling-Russian-oil_Final.pdf",
+    "date": "2026-10-18"
+   },
+   {
+    "name": "This repository: research/2026-10/gaps/energy2.json hub_resale (resale shares of imported products)",
+    "url": "research/2026-10/gaps/energy2.json",
+    "date": "2026-10-17"
+   }
+  ],
+  "reasoning": "(a) Russian crude refined = CREA tonnes and value of Russian crude delivered to Turkey (12.9/10.9/16.8/15.1 Mt in 2022-2025, 6.2 Mt Jan-Aug 2026), converted with ECB rates; stocks are assumed unchanged, so imports = runs. Range +-8%. Cross-check: Reuters/Kpler put Turkey's crude imports at ~669 kb/d (33 Mt/yr) in Jan-Oct 2025, 47% Russian (15.7 Mt), matching CREA. Product value = crude tonnes x 0.90/0.93/0.96 t product per t crude x Turkey's own export unit value (USD 930/689/630/589 per t in 2022-2025; 2026 = 2025 x the NY Harbor diesel price ratio 1.51). (b) Export share of products made from Russian crude: Russian crude went mainly to STAR (~8 Mt in 2022, >90% of its crude in 2024-25, ~10 Mt/yr) and the rest to Tüpraş (İzmit, İzmir). STAR exported roughly 35-45% of its ~10 Mt output (2.3 Mt to the EU alone in 2022, EU >75% of its seaborne exports in 2024); Tüpraş international sales were ~20-27% of 30 Mt sales. Weighted by Russian intake: 0.34 (2022), 0.35 (2023), 0.33 (2024), 0.29 (2025, Tüpraş cut Russian crude from early 2025); cross-check with the national balance: exports 14-22 Mt / (refinery output ~37 Mt + product imports 20-33 Mt) = 0.25-0.31. Range about x0.65/x1.45. 2026: STAR switched to non-Russian crude from December 2025 and Tüpraş kept Russian crude at one refinery for the home market, to keep EU access under the 21 Jan 2026 ban; export share 0.04/0.10/0.25, to non-EU buyers. (c) Domestic share = 1 - export share (65-71% in 2022-2025, ~90% in 2026). Overlap: energy.json laundered_oil already contains a Turkey component for every destination: Turkey's HS 2710 exports to it x Turkey's national Russian crude share (35-54%) x the CREA calibration factor (0.53/0.699/1.0); 2022 x10/12; 2026 with the EU ban factor. Rebuilt here per destination: EUR 2.9/3.0/4.8/3.6 bn (2022-2025) and 1.4 bn (2026 Jan-Aug), central. This is at least as large as the refining estimate in every year (central 3.0 Mar-Dec 2022, 2.3, 3.0, 2.1, 0.4), because the model applies the national Russian share to all of Turkey's fuel exports, including re-exports of imported (largely Russian) products. Destinations match by construction (both use Turkey's own export split). So central: 97-100% of Turkey's exports refined from Russian crude are already counted; new uncounted = ~0 (0.08 in 2022), high case 0.45-2.3 bn a year only when the export share is high and the calibration factor low. What is NOT handled is the other side: Turkey's own crude payments still include the exported part (double_count_at_turkey)."
+ },
+ "india_overlap": "India refines Russian crude (CREA: 34.8/88.9/89.4/86.3 Mt in 2022-2025, 64.4 Mt Jan-Aug 2026; EUR 18.5/35.5/38.4/31.8/25.1 bn) and exports part of the products. Export share of products made from Russian crude: 0.28/0.30/0.30/0.28 (2022-2025, range about 0.20-0.42), from India's product exports of ~62 Mt against ~265-275 Mt refinery runs (PPAC, ~23%), weighted up because Russian crude went disproportionately to the export refineries of Reliance (Jamnagar SEZ) and Nayara (Vadinar); 2026: 0.22 (0.14-0.34), as Reliance stopped Russian crude at its export refinery ahead of the EU ban. Exported products from Russian crude, central EUR bn: 2022 7.993 (Mar-Dec 6.66), 2023 15.793, 2024 14.52, 2025 11.712, 2026 10.119. The India component of energy.json laundered_oil (India's HS 2710 exports to each destination x India's Russian crude share x 0.699) is 7.702/20.062/16.274/11.098/10.326. Share already counted (central): 1.0, 1.0, 1.0, 0.948, 1.0; new uncounted (central): 0.614 in 2025 and 0 in the other years (high case up to EUR 4-11 bn a year when the export share is at its high end and the calibration factor at its low end). So India's refined exports are covered at the buyers: CREA's refining-loophole figures and this model are the same channel and nothing should be added. As for Turkey, the open issue is the double count on India's side: its fossil fuel payments include the exported part, crude value EUR 5.187/10.637/11.531/8.891/5.525 bn (2022-2026, central), which is also counted at the buyers. Caveat: Comtrade records India's product exports at 83-104 Mt a year, well above PPAC's ~62 Mt (SEZ and re-export recording), so the model may overstate the India component; this makes the \"already counted\" conclusion safer, not weaker. India's HS 2710 destination split in hubs.IND is for its resale of imported products only.",
+ "india_refining": {
+  "2022": {
+   "russian_crude_mt": 34.76,
+   "russian_crude_eur_bn": {
+    "low": 17.044,
+    "central": 18.526,
+    "high": 20.009
+   },
+   "product_value_eur_bn": {
+    "low": 27.626,
+    "central": 28.547,
+    "high": 29.467
+   },
+   "export_share": {
+    "low": 0.2,
+    "central": 0.28,
+    "high": 0.4
+   },
+   "exported_product_value_eur_bn": {
+    "low": 5.525,
+    "central": 7.993,
+    "high": 11.787
+   },
+   "exported_crude_value_eur_bn": {
+    "low": 3.705,
+    "central": 5.187,
+    "high": 7.411
+   },
+   "laundered_counted_eur_bn": {
+    "low": 5.84,
+    "central": 7.702,
+    "high": 11.019
+   },
+   "share_already_counted": {
+    "low": 0.595,
+    "central": 1.0,
+    "high": 1.0
+   },
+   "new_uncounted_eur_bn": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 3.982
+   }
+  },
+  "2023": {
+   "russian_crude_mt": 88.89,
+   "russian_crude_eur_bn": {
+    "low": 32.619,
+    "central": 35.455,
+    "high": 38.292
+   },
+   "product_value_eur_bn": {
+    "low": 50.944,
+    "central": 52.642,
+    "high": 54.34
+   },
+   "export_share": {
+    "low": 0.22,
+    "central": 0.3,
+    "high": 0.42
+   },
+   "exported_product_value_eur_bn": {
+    "low": 11.208,
+    "central": 15.793,
+    "high": 22.823
+   },
+   "exported_crude_value_eur_bn": {
+    "low": 7.8,
+    "central": 10.637,
+    "high": 14.891
+   },
+   "laundered_counted_eur_bn": {
+    "low": 15.212,
+    "central": 20.062,
+    "high": 28.701
+   },
+   "share_already_counted": {
+    "low": 0.667,
+    "central": 1.0,
+    "high": 1.0
+   },
+   "new_uncounted_eur_bn": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 7.611
+   }
+  },
+  "2024": {
+   "russian_crude_mt": 89.38,
+   "russian_crude_eur_bn": {
+    "low": 35.362,
+    "central": 38.437,
+    "high": 41.512
+   },
+   "product_value_eur_bn": {
+    "low": 46.839,
+    "central": 48.4,
+    "high": 49.961
+   },
+   "export_share": {
+    "low": 0.22,
+    "central": 0.3,
+    "high": 0.42
+   },
+   "exported_product_value_eur_bn": {
+    "low": 10.305,
+    "central": 14.52,
+    "high": 20.984
+   },
+   "exported_crude_value_eur_bn": {
+    "low": 8.456,
+    "central": 11.531,
+    "high": 16.143
+   },
+   "laundered_counted_eur_bn": {
+    "low": 12.339,
+    "central": 16.274,
+    "high": 23.282
+   },
+   "share_already_counted": {
+    "low": 0.588,
+    "central": 1.0,
+    "high": 1.0
+   },
+   "new_uncounted_eur_bn": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 8.644
+   }
+  },
+  "2025": {
+   "russian_crude_mt": 86.28,
+   "russian_crude_eur_bn": {
+    "low": 29.214,
+    "central": 31.754,
+    "high": 34.294
+   },
+   "product_value_eur_bn": {
+    "low": 40.48,
+    "central": 41.83,
+    "high": 43.179
+   },
+   "export_share": {
+    "low": 0.2,
+    "central": 0.28,
+    "high": 0.4
+   },
+   "exported_product_value_eur_bn": {
+    "low": 8.096,
+    "central": 11.712,
+    "high": 17.272
+   },
+   "exported_crude_value_eur_bn": {
+    "low": 6.351,
+    "central": 8.891,
+    "high": 12.702
+   },
+   "laundered_counted_eur_bn": {
+    "low": 8.415,
+    "central": 11.098,
+    "high": 15.878
+   },
+   "share_already_counted": {
+    "low": 0.487,
+    "central": 0.948,
+    "high": 1.0
+   },
+   "new_uncounted_eur_bn": {
+    "low": 0.0,
+    "central": 0.614,
+    "high": 8.856
+   }
+  },
+  "2026": {
+   "russian_crude_mt": 64.43,
+   "russian_crude_eur_bn": {
+    "low": 23.103,
+    "central": 25.112,
+    "high": 27.121
+   },
+   "product_value_eur_bn": {
+    "low": 44.511,
+    "central": 45.994,
+    "high": 47.478
+   },
+   "export_share": {
+    "low": 0.14,
+    "central": 0.22,
+    "high": 0.34
+   },
+   "exported_product_value_eur_bn": {
+    "low": 6.231,
+    "central": 10.119,
+    "high": 16.143
+   },
+   "exported_crude_value_eur_bn": {
+    "low": 3.516,
+    "central": 5.525,
+    "high": 8.538
+   },
+   "laundered_counted_eur_bn": {
+    "low": 5.339,
+    "central": 10.326,
+    "high": 18.795
+   },
+   "share_already_counted": {
+    "low": 0.331,
+    "central": 1.0,
+    "high": 1.0
+   },
+   "new_uncounted_eur_bn": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 10.803
+   }
+  }
+ },
+ "notes": [
+  "Destination shares are shares of the hub's refined-product (HS 2710) exports by value; central shares plus \"other\" sum to 1; low/high are per-destination bounds and do not sum to 1.",
+  "Russia is removed as a destination (round trip).",
+  "Destinations that are themselves hubs (NLD, SGP, ARE, IND, TGO) are listed as they are; chaining them is left to the pipeline.",
+  "Scripts and downloads: working/hubbuyers/ (build.py, assemble.py, raw/)."
+ ]
+}

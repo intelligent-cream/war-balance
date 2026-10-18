@@ -1,0 +1,2617 @@
+{
+ "generated": "2026-10-18",
+ "countries": {
+  "BLR": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 17.9539,
+      "central": 18.9094,
+      "high": 19.8888
+     },
+     "2022": {
+      "low": 18.7108,
+      "central": 20.1026,
+      "high": 21.2612
+     },
+     "2023": {
+      "low": 18.3922,
+      "central": 20.1008,
+      "high": 21.8649
+     },
+     "2024": {
+      "low": 19.2281,
+      "central": 20.9534,
+      "high": 22.7342
+     },
+     "2025": {
+      "low": 19.2368,
+      "central": 20.9071,
+      "high": 22.6305
+     },
+     "2026": {
+      "low": 13.5222,
+      "central": 14.7085,
+      "high": 15.9325
+     }
+    },
+    "base": {
+     "low": 16.193,
+     "central": 17.0549,
+     "high": 19.8888
+    },
+    "certainty": "B",
+    "sources": [
+     {
+      "name": "Eurasian Economic Commission, mutual trade time series: geographic structure of exports and imports by member pair, 2015-2021",
+      "url": "https://eec.eaeunion.org/comission/department/dep_stat/tradestat/time_series/vzaimnaya-torgovlya-tovarami-dinamicheskie-ryady",
+      "date": "2023-12-08"
+     },
+     {
+      "name": "Eurasian Economic Commission, express information on mutual trade (last issue: January 2022; publication by member pair suspended since)",
+      "url": "https://eec.eaeunion.org/comission/department/dep_stat/union_stat/current_stat/tradestat/express/",
+      "date": "2026-10-17"
+     },
+     {
+      "name": "Kommersant: Union State Council of Ministers, 2022 Russia-Belarus trade USD 43.4bn; Russian exports to Belarus USD 21.3bn, Belarusian exports to Russia USD 22.0bn",
+      "url": "https://www.kommersant.ru/doc/5900590",
+      "date": "2023-03"
+     },
+     {
+      "name": "Belarus-Russia goods turnover Jan-Oct 2023 USD 39.8bn; Belarusian exports to Russia Jan-Aug 2023 USD 16.7bn (+24.9%); full-year 2023 exports expected at about USD 25bn",
+      "url": "https://myfin.by/article/rynki/cem-torgovali-belarus-i-rossia-v-2023-godu-top-klucevyh-tovarov",
+      "date": "2024-01"
+     },
+     {
+      "name": "TASS: Russia-Belarus trade above USD 37bn in Jan-Sep 2024 (+8.4%), Putin",
+      "url": "https://tass.com/politics/1883663/amp",
+      "date": "2024-11"
+     },
+     {
+      "name": "Interfax: Belarus-Russia trade in goods and services USD 57.6bn in 2024 (+7.4%), Belarusian Ministry of Economy",
+      "url": "https://interfax.com/newsroom/top-stories/109945/",
+      "date": "2025-02-21"
+     },
+     {
+      "name": "TKS/TASS: Russia-Belarus goods turnover USD 51.9bn in 2025 vs USD 38.4bn in 2021 (Ambassador Gryzlov); Russian embassy: USD 50.9bn record",
+      "url": "https://www.tks.ru/news/nearby/2026/04/03/0007/eksport-belorusskih-tovarov-v-rossiyu-vyiros-na-40-procent-posle-sanktsij-2022-goda/",
+      "date": "2026-04-03"
+     },
+     {
+      "name": "Rossiyskaya Gazeta: goods trade +37% 2021-2025 and Belarus-Russia services trade up from USD 4bn (2021) to USD 9bn (2025), First Deputy PM Snopkov; goods and services USD 62bn in 2025 (Krutoy)",
+      "url": "https://rg.ru/2026/07/15/vziali-delo-v-oborot.html",
+      "date": "2026-07-15"
+     },
+     {
+      "name": "TKS: Belarus-Russia trade +12.5% in H1 2026 (Manturov), 2025 record USD 50.9bn",
+      "url": "https://www.tks.ru/news/nearby/2026/08/30/0001/minsk-i-moskva-naraschivayut-vzaimnuyu-torgovlyu---rost-uzhe-prevyisil-12-procent/",
+      "date": "2026-08-30"
+     },
+     {
+      "name": "National Bank of Belarus: monthly foreign trade in goods and services, totals 2000-2025",
+      "url": "https://www.nbrb.by/statistics/foreigntrade/dynamics.xls",
+      "date": "2026-08-10"
+     }
+    ],
+    "reasoning": "2019-2021 are Belstat's own figures (EEC pair tables), identical to trade_full's central values, so the IMF +-40% margin on them is replaced by +-3%. The base range keeps the 2021 level and the 2019-2021 trend as alternatives (trend_2022 from trade_full). Belstat stopped publishing trade by country in 2022 and the EEC stopped its pair tables after January 2022, so 2022-2026 are pinned by official totals: 2022 Union State figures (Russian exports to Belarus USD 21.3bn, Belarusian exports to Russia USD 22.0bn, Russian basis, scaled to Belstat basis by the 2021 ratio of 1.03-1.05); 2023 Jan-Oct goods turnover USD 39.8bn and exports to Russia about USD 25bn; 2024 Jan-Sep turnover >USD 37bn and goods+services USD 57.6bn less about USD 7bn of services; 2025 goods turnover USD 50.9-51.9bn (Russian side), +37% on 2021 (Belarusian side, ~USD 54.9bn) and goods+services USD 62bn less USD 9bn services; 2026 Jan-Aug = Jan-Aug 2025 x 1.10-1.125 (H1 +12.5%). The split between directions after 2022 is the main remaining uncertainty (+-1.5bn USD a year). Central values change little; the range shrinks because the base now uses Belstat data and the base_range min() bug no longer pulls the low base down to the fossil-fuel value.",
+    "trade_layer": {
+     "2021": {
+      "low": 19.4096,
+      "central": 20.0099,
+      "high": 20.6102
+     },
+     "2022": {
+      "low": 20.2279,
+      "central": 21.2726,
+      "high": 22.0323
+     },
+     "2023": {
+      "low": 19.8835,
+      "central": 21.2707,
+      "high": 22.6579
+     },
+     "2024": {
+      "low": 20.7871,
+      "central": 22.1729,
+      "high": 23.5588
+     },
+     "2025": {
+      "low": 20.7965,
+      "central": 22.1239,
+      "high": 23.4513
+     },
+     "2026": {
+      "low": 14.6186,
+      "central": 15.5645,
+      "high": 16.5104
+     }
+    }
+   },
+   "from_rus": {
+    "years": {
+     "2021": {
+      "low": 13.4304,
+      "central": 13.8458,
+      "high": 14.2611
+     },
+     "2022": {
+      "low": 20.8927,
+      "central": 22.2222,
+      "high": 23.192
+     },
+     "2023": {
+      "low": 22.1955,
+      "central": 23.1203,
+      "high": 24.4451
+     },
+     "2024": {
+      "low": 23.0968,
+      "central": 24.2979,
+      "high": 25.8065
+     },
+     "2025": {
+      "low": 22.5664,
+      "central": 23.8938,
+      "high": 25.6212
+     },
+     "2026": {
+      "low": 15.7365,
+      "central": 16.7684,
+      "high": 17.8983
+     }
+    },
+    "base": {
+     "low": 12.1568,
+     "central": 12.5328,
+     "high": 14.65
+    },
+    "certainty": "B",
+    "sources": [
+     {
+      "name": "Eurasian Economic Commission, mutual trade time series: geographic structure of exports and imports by member pair, 2015-2021",
+      "url": "https://eec.eaeunion.org/comission/department/dep_stat/tradestat/time_series/vzaimnaya-torgovlya-tovarami-dinamicheskie-ryady",
+      "date": "2023-12-08"
+     },
+     {
+      "name": "Eurasian Economic Commission, express information on mutual trade (last issue: January 2022; publication by member pair suspended since)",
+      "url": "https://eec.eaeunion.org/comission/department/dep_stat/union_stat/current_stat/tradestat/express/",
+      "date": "2026-10-17"
+     },
+     {
+      "name": "Kommersant: Union State Council of Ministers, 2022 Russia-Belarus trade USD 43.4bn; Russian exports to Belarus USD 21.3bn, Belarusian exports to Russia USD 22.0bn",
+      "url": "https://www.kommersant.ru/doc/5900590",
+      "date": "2023-03"
+     },
+     {
+      "name": "Belarus-Russia goods turnover Jan-Oct 2023 USD 39.8bn; Belarusian exports to Russia Jan-Aug 2023 USD 16.7bn (+24.9%); full-year 2023 exports expected at about USD 25bn",
+      "url": "https://myfin.by/article/rynki/cem-torgovali-belarus-i-rossia-v-2023-godu-top-klucevyh-tovarov",
+      "date": "2024-01"
+     },
+     {
+      "name": "TASS: Russia-Belarus trade above USD 37bn in Jan-Sep 2024 (+8.4%), Putin",
+      "url": "https://tass.com/politics/1883663/amp",
+      "date": "2024-11"
+     },
+     {
+      "name": "Interfax: Belarus-Russia trade in goods and services USD 57.6bn in 2024 (+7.4%), Belarusian Ministry of Economy",
+      "url": "https://interfax.com/newsroom/top-stories/109945/",
+      "date": "2025-02-21"
+     },
+     {
+      "name": "TKS/TASS: Russia-Belarus goods turnover USD 51.9bn in 2025 vs USD 38.4bn in 2021 (Ambassador Gryzlov); Russian embassy: USD 50.9bn record",
+      "url": "https://www.tks.ru/news/nearby/2026/04/03/0007/eksport-belorusskih-tovarov-v-rossiyu-vyiros-na-40-procent-posle-sanktsij-2022-goda/",
+      "date": "2026-04-03"
+     },
+     {
+      "name": "Rossiyskaya Gazeta: goods trade +37% 2021-2025 and Belarus-Russia services trade up from USD 4bn (2021) to USD 9bn (2025), First Deputy PM Snopkov; goods and services USD 62bn in 2025 (Krutoy)",
+      "url": "https://rg.ru/2026/07/15/vziali-delo-v-oborot.html",
+      "date": "2026-07-15"
+     },
+     {
+      "name": "TKS: Belarus-Russia trade +12.5% in H1 2026 (Manturov), 2025 record USD 50.9bn",
+      "url": "https://www.tks.ru/news/nearby/2026/08/30/0001/minsk-i-moskva-naraschivayut-vzaimnuyu-torgovlyu---rost-uzhe-prevyisil-12-procent/",
+      "date": "2026-08-30"
+     },
+     {
+      "name": "National Bank of Belarus: monthly foreign trade in goods and services, totals 2000-2025",
+      "url": "https://www.nbrb.by/statistics/foreigntrade/dynamics.xls",
+      "date": "2026-08-10"
+     }
+    ],
+    "reasoning": "2019-2021 are Belstat's own figures (EEC pair tables), identical to trade_full's central values, so the IMF +-40% margin on them is replaced by +-3%. The base range keeps the 2021 level and the 2019-2021 trend as alternatives (trend_2022 from trade_full). Belstat stopped publishing trade by country in 2022 and the EEC stopped its pair tables after January 2022, so 2022-2026 are pinned by official totals: 2022 Union State figures (Russian exports to Belarus USD 21.3bn, Belarusian exports to Russia USD 22.0bn, Russian basis, scaled to Belstat basis by the 2021 ratio of 1.03-1.05); 2023 Jan-Oct goods turnover USD 39.8bn and exports to Russia about USD 25bn; 2024 Jan-Sep turnover >USD 37bn and goods+services USD 57.6bn less about USD 7bn of services; 2025 goods turnover USD 50.9-51.9bn (Russian side), +37% on 2021 (Belarusian side, ~USD 54.9bn) and goods+services USD 62bn less USD 9bn services; 2026 Jan-Aug = Jan-Aug 2025 x 1.10-1.125 (H1 +12.5%). The split between directions after 2022 is the main remaining uncertainty (+-1.5bn USD a year). For sales to Russia the residual 'missing partner exports' allocation (EUR 1.7-3.2bn a year) is dropped: Russia's own figure for imports from Belarus (USD 22.0bn in 2022) is below Belarus's reported exports, so nothing is missing; a EUR 0.4bn high margin is kept. trade_full's 2022 central (USD 25.1bn) was about USD 1.7bn too high.",
+    "trade_layer": {
+     "2021": {
+      "low": 13.4304,
+      "central": 13.8458,
+      "high": 14.2611
+     },
+     "2022": {
+      "low": 20.8927,
+      "central": 22.2222,
+      "high": 23.192
+     },
+     "2023": {
+      "low": 22.1955,
+      "central": 23.1203,
+      "high": 24.4451
+     },
+     "2024": {
+      "low": 23.0968,
+      "central": 24.2979,
+      "high": 25.8065
+     },
+     "2025": {
+      "low": 22.5664,
+      "central": 23.8938,
+      "high": 25.6212
+     },
+     "2026": {
+      "low": 15.7365,
+      "central": 16.7684,
+      "high": 17.8983
+     }
+    }
+   },
+   "svc_sold": {
+    "years": {
+     "2021": {
+      "low": 2.2958,
+      "central": 2.3668,
+      "high": 2.4378
+     },
+     "2022": {
+      "low": 2.3134,
+      "central": 2.8851,
+      "high": 3.51
+     },
+     "2023": {
+      "low": 2.521,
+      "central": 3.1536,
+      "high": 3.8454
+     },
+     "2024": {
+      "low": 3.2687,
+      "central": 4.0669,
+      "high": 4.939
+     },
+     "2025": {
+      "low": 4.1062,
+      "central": 4.9381,
+      "high": 5.5487
+     },
+     "2026": {
+      "low": 2.527,
+      "central": 3.3588,
+      "high": 4.1336
+     }
+    },
+    "base": {
+     "low": 2.2485,
+     "central": 2.3715,
+     "high": 2.4901
+    },
+    "certainty": "B",
+    "sources": [
+     {
+      "name": "Belstat: exports and imports of services by country, 2000-2021 (ExImS2-2021)",
+      "url": "https://www.belstat.gov.by/upload-belstat/upload-belstat-excel/Oficial_statistika/Godovwe/ExImS2-2021.xlsx",
+      "date": "2022"
+     },
+     {
+      "name": "National Bank of Belarus: monthly foreign trade in goods and services, totals 2000-2025",
+      "url": "https://www.nbrb.by/statistics/foreigntrade/dynamics.xls",
+      "date": "2026-08-10"
+     },
+     {
+      "name": "Rossiyskaya Gazeta: goods trade +37% 2021-2025 and Belarus-Russia services trade up from USD 4bn (2021) to USD 9bn (2025), First Deputy PM Snopkov; goods and services USD 62bn in 2025 (Krutoy)",
+      "url": "https://rg.ru/2026/07/15/vziali-delo-v-oborot.html",
+      "date": "2026-07-15"
+     },
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Belarus's own figures (Belstat) replace the BaTiS/Russian-mirror values: 2019-2021 by country from Belstat (exports to Russia USD 2.95/2.41/2.80bn, imports 1.67/1.44/1.66bn). 2025 total Belarus-Russia services trade USD 9bn (First Deputy PM Snopkov, up from USD 4bn in 2021), split 62/38 as in 2019-2021 (58-66%). 2022-2024 interpolated by Russia's share of Belarus's total services trade (28% in 2021, 46% in 2025; NBRB totals), +-15%. 2026 = 8/12 of 2025 x 1.05 (0.95-1.15). Our central was wrong: 2025 sales of services to Russia were about EUR 4.9bn, not 2.2bn, and purchases about EUR 3.0bn, not 1.5bn; the old high bounds were close to the true level. Base = 2019-2021 average (the old base was 2021 alone)."
+   },
+   "svc_bought": {
+    "years": {
+     "2021": {
+      "low": 1.3608,
+      "central": 1.4029,
+      "high": 1.445
+     },
+     "2022": {
+      "low": 1.3561,
+      "central": 1.7683,
+      "high": 2.2336
+     },
+     "2023": {
+      "low": 1.4779,
+      "central": 1.9329,
+      "high": 2.4471
+     },
+     "2024": {
+      "low": 1.9161,
+      "central": 2.4926,
+      "high": 3.143
+     },
+     "2025": {
+      "low": 2.4071,
+      "central": 3.0265,
+      "high": 3.531
+     },
+     "2026": {
+      "low": 1.4814,
+      "central": 2.0586,
+      "high": 2.6305
+     }
+    },
+    "base": {
+     "low": 1.3156,
+     "central": 1.3848,
+     "high": 1.4731
+    },
+    "certainty": "B",
+    "sources": [
+     {
+      "name": "Belstat: exports and imports of services by country, 2000-2021 (ExImS2-2021)",
+      "url": "https://www.belstat.gov.by/upload-belstat/upload-belstat-excel/Oficial_statistika/Godovwe/ExImS2-2021.xlsx",
+      "date": "2022"
+     },
+     {
+      "name": "National Bank of Belarus: monthly foreign trade in goods and services, totals 2000-2025",
+      "url": "https://www.nbrb.by/statistics/foreigntrade/dynamics.xls",
+      "date": "2026-08-10"
+     },
+     {
+      "name": "Rossiyskaya Gazeta: goods trade +37% 2021-2025 and Belarus-Russia services trade up from USD 4bn (2021) to USD 9bn (2025), First Deputy PM Snopkov; goods and services USD 62bn in 2025 (Krutoy)",
+      "url": "https://rg.ru/2026/07/15/vziali-delo-v-oborot.html",
+      "date": "2026-07-15"
+     },
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Belarus's own figures (Belstat) replace the BaTiS/Russian-mirror values: 2019-2021 by country from Belstat (exports to Russia USD 2.95/2.41/2.80bn, imports 1.67/1.44/1.66bn). 2025 total Belarus-Russia services trade USD 9bn (First Deputy PM Snopkov, up from USD 4bn in 2021), split 62/38 as in 2019-2021 (58-66%). 2022-2024 interpolated by Russia's share of Belarus's total services trade (28% in 2021, 46% in 2025; NBRB totals), +-15%. 2026 = 8/12 of 2025 x 1.05 (0.95-1.15). Our central was wrong: 2025 sales of services to Russia were about EUR 4.9bn, not 2.2bn, and purchases about EUR 3.0bn, not 1.5bn; the old high bounds were close to the true level. Base = 2019-2021 average (the old base was 2021 alone)."
+   }
+  },
+  "UZB": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 3.8612,
+      "central": 4.275,
+      "high": 4.7031
+     },
+     "2022": {
+      "low": 4.9356,
+      "central": 5.4328,
+      "high": 5.9784
+     },
+     "2023": {
+      "low": 5.1941,
+      "central": 5.7172,
+      "high": 6.2916
+     },
+     "2024": {
+      "low": 6.1122,
+      "central": 6.7278,
+      "high": 7.4031
+     },
+     "2025": {
+      "low": 6.3134,
+      "central": 6.6661,
+      "high": 7.0504
+     },
+     "2026": {
+      "low": 4.5634,
+      "central": 4.6957,
+      "high": 4.8789
+     }
+    },
+    "base": {
+     "low": 3.5924,
+     "central": 3.6701,
+     "high": 4.8353
+    },
+    "certainty": "B",
+    "sources": [
+     {
+      "name": "Uzbekistan National Statistics Committee press release, foreign trade Jan-Dec 2025 (goods and services by partner: turnover with Russia USD 12,985.7m, imports USD 8,644.2m, exports USD 4,341.5m)",
+      "url": "https://stat.uz/img/news/press-reliz-rus_p38034.pdf",
+      "date": "2026-01-21"
+     },
+     {
+      "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     }
+    ],
+    "reasoning": "2021-2024 are Uzbekistan's own customs reports (unchanged). 2025: trade_full used the national statistics committee's partner table, which covers goods AND services (exports to Russia USD 4,341.5m, imports USD 8,644.2m), while services are also counted separately in svc_sold/svc_bought. Goods only: imports USD 7.7-8.3bn, exports USD 3.45-3.85bn (services removed, cross-checked with monthly Comtrade data). trade_full's 2025 central for sales to Russia (EUR 3.98bn) was about EUR 0.75bn too high. 2026 Jan-Aug = Jan-Jul 2026 monthly customs data x 8/7, +-6% (was EUR 1.35-10.98bn for purchases). Pipeline additions (re-exports, residual) kept as they are. Base from the builder run with the base_range fix.",
+    "trade_layer": {
+     "2021": {
+      "low": 4.1743,
+      "central": 4.5238,
+      "high": 4.8737
+     },
+     "2022": {
+      "low": 5.3357,
+      "central": 5.7484,
+      "high": 6.193
+     },
+     "2023": {
+      "low": 5.6151,
+      "central": 6.0494,
+      "high": 6.5173
+     },
+     "2024": {
+      "low": 6.6077,
+      "central": 7.1188,
+      "high": 7.6695
+     },
+     "2025": {
+      "low": 6.8142,
+      "central": 7.0796,
+      "high": 7.3451
+     },
+     "2026": {
+      "low": 4.6649,
+      "central": 4.9627,
+      "high": 5.2605
+     }
+    }
+   },
+   "from_rus": {
+    "years": {
+     "2021": {
+      "low": 1.122,
+      "central": 1.4407,
+      "high": 1.8499
+     },
+     "2022": {
+      "low": 1.7804,
+      "central": 2.8362,
+      "high": 4.8779
+     },
+     "2023": {
+      "low": 1.9961,
+      "central": 3.2166,
+      "high": 5.8789
+     },
+     "2024": {
+      "low": 1.9947,
+      "central": 3.18,
+      "high": 5.8501
+     },
+     "2025": {
+      "low": 2.9065,
+      "central": 3.8163,
+      "high": 5.6298
+     },
+     "2026": {
+      "low": 1.6861,
+      "central": 2.5791,
+      "high": 4.1713
+     }
+    },
+    "base": {
+     "low": 1.0877,
+     "central": 1.6055,
+     "high": 2.0255
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Uzbekistan National Statistics Committee press release, foreign trade Jan-Dec 2025 (goods and services by partner: turnover with Russia USD 12,985.7m, imports USD 8,644.2m, exports USD 4,341.5m)",
+      "url": "https://stat.uz/img/news/press-reliz-rus_p38034.pdf",
+      "date": "2026-01-21"
+     },
+     {
+      "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     }
+    ],
+    "reasoning": "2021-2024 are Uzbekistan's own customs reports (unchanged). 2025: trade_full used the national statistics committee's partner table, which covers goods AND services (exports to Russia USD 4,341.5m, imports USD 8,644.2m), while services are also counted separately in svc_sold/svc_bought. Goods only: imports USD 7.7-8.3bn, exports USD 3.45-3.85bn (services removed, cross-checked with monthly Comtrade data). trade_full's 2025 central for sales to Russia (EUR 3.98bn) was about EUR 0.75bn too high. 2026 Jan-Aug = Jan-Jul 2026 monthly customs data x 8/7, +-6% (was EUR 1.35-10.98bn for purchases). Pipeline additions (re-exports, residual) kept as they are. Base from the builder run with the base_range fix.",
+    "trade_layer": {
+     "2021": {
+      "low": 1.122,
+      "central": 1.4407,
+      "high": 1.8499
+     },
+     "2022": {
+      "low": 1.8598,
+      "central": 2.4689,
+      "high": 3.1701
+     },
+     "2023": {
+      "low": 2.1774,
+      "central": 2.7959,
+      "high": 3.59
+     },
+     "2024": {
+      "low": 2.1476,
+      "central": 2.7576,
+      "high": 3.5408
+     },
+     "2025": {
+      "low": 3.0531,
+      "central": 3.2301,
+      "high": 3.4071
+     },
+     "2026": {
+      "low": 2.0582,
+      "central": 2.1896,
+      "high": 2.321
+     }
+    }
+   },
+   "svc_bought": {
+    "years": {
+     "2021": {
+      "low": 0.7103,
+      "central": 0.7721,
+      "high": 1.0347
+     },
+     "2022": {
+      "low": 0.3457,
+      "central": 0.5761,
+      "high": 1.016
+     },
+     "2023": {
+      "low": 0.3053,
+      "central": 0.5088,
+      "high": 0.9082
+     },
+     "2024": {
+      "low": 0.3358,
+      "central": 0.5596,
+      "high": 1.0085
+     },
+     "2025": {
+      "low": 0.2812,
+      "central": 0.5858,
+      "high": 1.2861
+     },
+     "2026": {
+      "low": 0.15,
+      "central": 0.3906,
+      "high": 1.0407
+     }
+    },
+    "base": {
+     "low": 0.5591,
+     "central": 0.6078,
+     "high": 0.8145
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 0.772bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 0.686, 0.618, 0.958bn), range spanning that level and the Bank of Russia average (EUR 0.754bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   },
+   "svc_sold": {
+    "years": {
+     "2021": {
+      "low": 0.2652,
+      "central": 0.2883,
+      "high": 0.3481
+     },
+     "2022": {
+      "low": 0.2038,
+      "central": 0.3397,
+      "high": 0.6791
+     },
+     "2023": {
+      "low": 0.23,
+      "central": 0.3834,
+      "high": 0.8552
+     },
+     "2024": {
+      "low": 0.2604,
+      "central": 0.434,
+      "high": 0.9892
+     },
+     "2025": {
+      "low": 0.2325,
+      "central": 0.4844,
+      "high": 1.3134
+     },
+     "2026": {
+      "low": 0.123,
+      "central": 0.3203,
+      "high": 1.0199
+     }
+    },
+    "base": {
+     "low": 0.2602,
+     "central": 0.2828,
+     "high": 0.3414
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 0.288bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 0.374, 0.252, 0.322bn), range spanning that level and the Bank of Russia average (EUR 0.316bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   }
+  },
+  "KAZ": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 12.545,
+      "central": 14.0666,
+      "high": 15.7658
+     },
+     "2022": {
+      "low": 13.8799,
+      "central": 15.5637,
+      "high": 17.4447
+     },
+     "2023": {
+      "low": 12.6214,
+      "central": 14.1537,
+      "high": 15.871
+     },
+     "2024": {
+      "low": 14.0312,
+      "central": 15.8492,
+      "high": 17.8582
+     },
+     "2025": {
+      "low": 14.2109,
+      "central": 16.1235,
+      "high": 18.2446
+     },
+     "2026": {
+      "low": 10.3043,
+      "central": 10.9104,
+      "high": 11.4956
+     }
+    },
+    "base": {
+     "low": 12.2483,
+     "central": 12.5131,
+     "high": 15.7658
+    },
+    "certainty": "A",
+    "sources": [
+     {
+      "name": "Inbusiness.kz / Bureau of National Statistics: Kazakhstan-Russia turnover USD 13.2bn in H1 2026, imports from Russia USD 9.7bn (+14%)",
+      "url": "https://inbusiness.kz/ru/last/tovarooborot-kazahstana-i-rossii-vyros-na-16-s-nachala-2026-goda",
+      "date": "2026-08"
+     },
+     {
+      "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     }
+    ],
+    "reasoning": "2021-2025 are Kazakhstan's own reports (unchanged). The base low was 0 because the builder took min(customs low, fossil-fuel value) for pipeline-gas countries; Kazakhstan's imports from Russia include its fuel, so the base low is now the customs low (EUR 13.2bn, from the fixed builder run). 2026 Jan-Aug = official H1 2026 imports USD 9.7bn + Jul-Aug 2025 x 1.14 (monthly customs), +-3%.",
+    "trade_layer": {
+     "2021": {
+      "low": 13.5622,
+      "central": 14.8853,
+      "high": 16.3376
+     },
+     "2022": {
+      "low": 15.0052,
+      "central": 16.4692,
+      "high": 18.0759
+     },
+     "2023": {
+      "low": 13.6441,
+      "central": 14.9753,
+      "high": 16.4363
+     },
+     "2024": {
+      "low": 15.3639,
+      "central": 16.8629,
+      "high": 18.5081
+     },
+     "2025": {
+      "low": 15.7545,
+      "central": 17.2916,
+      "high": 18.9786
+     },
+     "2026": {
+      "low": 11.3022,
+      "central": 11.6517,
+      "high": 12.0013
+     }
+    }
+   },
+   "from_rus": {
+    "years": {
+     "2021": {
+      "low": 5.1895,
+      "central": 5.9343,
+      "high": 6.786
+     },
+     "2022": {
+      "low": 4.4379,
+      "central": 7.3465,
+      "high": 9.7552
+     },
+     "2023": {
+      "low": 4.0888,
+      "central": 7.6606,
+      "high": 10.4609
+     },
+     "2024": {
+      "low": 4.2671,
+      "central": 8.0426,
+      "high": 10.8106
+     },
+     "2025": {
+      "low": 4.2552,
+      "central": 7.0009,
+      "high": 9.3009
+     },
+     "2026": {
+      "low": 1.8681,
+      "central": 4.1155,
+      "high": 5.3426
+     }
+    },
+    "base": {
+     "low": 4.7985,
+     "central": 4.9092,
+     "high": 6.6723
+    },
+    "certainty": "B",
+    "sources": [
+     {
+      "name": "Inbusiness.kz / Bureau of National Statistics: Kazakhstan-Russia turnover USD 13.2bn in H1 2026, imports from Russia USD 9.7bn (+14%)",
+      "url": "https://inbusiness.kz/ru/last/tovarooborot-kazahstana-i-rossii-vyros-na-16-s-nachala-2026-goda",
+      "date": "2026-08"
+     },
+     {
+      "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     }
+    ],
+    "reasoning": "2026 Jan-Aug = H1 2026 exports (USD 13.2bn turnover less 9.7bn imports) + Jul-Aug 2025 x 0.92, +-5%. Other years and the re-export and residual adjustments unchanged.",
+    "trade_layer": {
+     "2021": {
+      "low": 5.1895,
+      "central": 5.9343,
+      "high": 6.786
+     },
+     "2022": {
+      "low": 7.2919,
+      "central": 8.3385,
+      "high": 9.5352
+     },
+     "2023": {
+      "low": 7.9164,
+      "central": 9.0526,
+      "high": 10.3519
+     },
+     "2024": {
+      "low": 7.7129,
+      "central": 8.8199,
+      "high": 10.0858
+     },
+     "2025": {
+      "low": 6.3834,
+      "central": 7.2995,
+      "high": 8.3472
+     },
+     "2026": {
+      "low": 4.0482,
+      "central": 4.2613,
+      "high": 4.4743
+     }
+    }
+   },
+   "svc_bought": {
+    "years": {
+     "2021": {
+      "low": 1.5553,
+      "central": 1.6905,
+      "high": 2.1519
+     },
+     "2022": {
+      "low": 0.953,
+      "central": 1.5883,
+      "high": 2.7742
+     },
+     "2023": {
+      "low": 0.8367,
+      "central": 1.3944,
+      "high": 2.4653
+     },
+     "2024": {
+      "low": 0.8658,
+      "central": 1.443,
+      "high": 2.6004
+     },
+     "2025": {
+      "low": 0.7251,
+      "central": 1.5106,
+      "high": 3.3161
+     },
+     "2026": {
+      "low": 0.3868,
+      "central": 1.0073,
+      "high": 2.6835
+     }
+    },
+    "base": {
+     "low": 1.5578,
+     "central": 1.6933,
+     "high": 2.1554
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 1.690bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 2.274, 1.720, 1.992bn), range spanning that level and the Bank of Russia average (EUR 1.996bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   },
+   "svc_sold": {
+    "years": {
+     "2021": {
+      "low": 1.0351,
+      "central": 1.1251,
+      "high": 1.4205
+     },
+     "2022": {
+      "low": 0.6563,
+      "central": 1.0938,
+      "high": 1.8381
+     },
+     "2023": {
+      "low": 0.752,
+      "central": 1.2534,
+      "high": 2.2062
+     },
+     "2024": {
+      "low": 0.7766,
+      "central": 1.2943,
+      "high": 2.3353
+     },
+     "2025": {
+      "low": 0.6596,
+      "central": 1.374,
+      "high": 3.048
+     },
+     "2026": {
+      "low": 0.341,
+      "central": 0.8878,
+      "high": 2.3943
+     }
+    },
+    "base": {
+     "low": 0.9977,
+     "central": 1.0845,
+     "high": 1.3693
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 1.125bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 1.269, 1.220, 1.315bn), range spanning that level and the Bank of Russia average (EUR 1.268bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   }
+  },
+  "KGZ": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 1.2953,
+      "central": 1.527,
+      "high": 1.7993
+     },
+     "2022": {
+      "low": 1.8308,
+      "central": 2.1583,
+      "high": 2.5433
+     },
+     "2023": {
+      "low": 1.6844,
+      "central": 1.987,
+      "high": 2.3416
+     },
+     "2024": {
+      "low": 1.7172,
+      "central": 2.0519,
+      "high": 2.4593
+     },
+     "2025": {
+      "low": 1.8592,
+      "central": 2.2566,
+      "high": 2.7232
+     },
+     "2026": {
+      "low": 1.5311,
+      "central": 1.6481,
+      "high": 1.8297
+     }
+    },
+    "base": {
+     "low": 1.1792,
+     "central": 1.2047,
+     "high": 1.7994
+    },
+    "certainty": "A",
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     }
+    ],
+    "reasoning": "Kyrgyzstan's own reports. Base low fixed (min() bug, see notes). 2026 Jan-Aug = Jan-May 2026 monthly customs data (USD 1,221m, +17.6% y/y) + Jun-Aug 2025 x 1.176, +-4%. trade_full's 2026 central (EUR 1.15bn) was too low: five months alone are EUR 1.05bn.",
+    "trade_layer": {
+     "2021": {
+      "low": 1.4003,
+      "central": 1.6159,
+      "high": 1.8646
+     },
+     "2022": {
+      "low": 1.9792,
+      "central": 2.2839,
+      "high": 2.6355
+     },
+     "2023": {
+      "low": 1.823,
+      "central": 2.1036,
+      "high": 2.4275
+     },
+     "2024": {
+      "low": 1.8493,
+      "central": 2.1339,
+      "high": 2.4625
+     },
+     "2025": {
+      "low": 1.9908,
+      "central": 2.2972,
+      "high": 2.6509
+     },
+     "2026": {
+      "low": 1.5906,
+      "central": 1.6569,
+      "high": 1.7231
+     }
+    }
+   },
+   "svc_bought": {
+    "years": {
+     "2021": {
+      "low": 0.4128,
+      "central": 0.4487,
+      "high": 0.5684
+     },
+     "2022": {
+      "low": 0.2205,
+      "central": 0.3676,
+      "high": 0.6399
+     },
+     "2023": {
+      "low": 0.18,
+      "central": 0.3,
+      "high": 0.5344
+     },
+     "2024": {
+      "low": 0.1958,
+      "central": 0.3263,
+      "high": 0.5879
+     },
+     "2025": {
+      "low": 0.164,
+      "central": 0.3416,
+      "high": 0.7498
+     },
+     "2026": {
+      "low": 0.0875,
+      "central": 0.2278,
+      "high": 0.6067
+     }
+    },
+    "base": {
+     "low": 0.3775,
+     "central": 0.4103,
+     "high": 0.5198
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 0.449bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 0.556, 0.362, 0.526bn), range spanning that level and the Bank of Russia average (EUR 0.481bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   },
+   "svc_sold": {
+    "years": {
+     "2021": {
+      "low": 0.2292,
+      "central": 0.2491,
+      "high": 0.3235
+     },
+     "2022": {
+      "low": 0.1373,
+      "central": 0.2289,
+      "high": 0.515
+     },
+     "2023": {
+      "low": 0.1593,
+      "central": 0.2654,
+      "high": 0.6635
+     },
+     "2024": {
+      "low": 0.2117,
+      "central": 0.3529,
+      "high": 0.8718
+     },
+     "2025": {
+      "low": 0.1928,
+      "central": 0.4017,
+      "high": 1.1548
+     },
+     "2026": {
+      "low": 0.1029,
+      "central": 0.2681,
+      "high": 0.8963
+     }
+    },
+    "base": {
+     "low": 0.1787,
+     "central": 0.1942,
+     "high": 0.2523
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 0.249bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 0.234, 0.167, 0.300bn), range spanning that level and the Bank of Russia average (EUR 0.234bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   }
+  },
+  "GEO": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 0.7765,
+      "central": 0.8175,
+      "high": 0.8602
+     },
+     "2022": {
+      "low": 1.4229,
+      "central": 1.5849,
+      "high": 1.7112
+     },
+     "2023": {
+      "low": 1.2939,
+      "central": 1.4571,
+      "high": 1.5796
+     },
+     "2024": {
+      "low": 1.4024,
+      "central": 1.5585,
+      "high": 1.6803
+     },
+     "2025": {
+      "low": 1.3828,
+      "central": 1.5526,
+      "high": 1.6821
+     },
+     "2026": {
+      "low": 1.021,
+      "central": 1.1936,
+      "high": 1.2884
+     }
+    },
+    "base": {
+     "low": 0.7757,
+     "central": 0.7925,
+     "high": 0.8602
+    },
+    "certainty": "A",
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     }
+    ],
+    "reasoning": "Geostat via Comtrade: 2026 Jan-Aug complete (USD 1,532m), +-3%. Base low fixed (min() bug).",
+    "trade_layer": {
+     "2021": {
+      "low": 0.8395,
+      "central": 0.8651,
+      "high": 0.8914
+     },
+     "2022": {
+      "low": 1.6915,
+      "central": 1.743,
+      "high": 1.7961
+     },
+     "2023": {
+      "low": 1.5656,
+      "central": 1.6133,
+      "high": 1.6624
+     },
+     "2024": {
+      "low": 1.6606,
+      "central": 1.7112,
+      "high": 1.7633
+     },
+     "2025": {
+      "low": 1.6656,
+      "central": 1.7163,
+      "high": 1.7686
+     },
+     "2026": {
+      "low": 1.2777,
+      "central": 1.3173,
+      "high": 1.3568
+     }
+    }
+   },
+   "svc_sold": {
+    "years": {
+     "2021": {
+      "low": 0.1536,
+      "central": 0.248,
+      "high": 0.3424
+     },
+     "2022": {
+      "low": 0.8538,
+      "central": 0.9462,
+      "high": 1.0385
+     },
+     "2023": {
+      "low": 0.8741,
+      "central": 0.9675,
+      "high": 1.0608
+     },
+     "2024": {
+      "low": 0.7568,
+      "central": 0.8853,
+      "high": 1.0138
+     },
+     "2025": {
+      "low": 0.6335,
+      "central": 0.7142,
+      "high": 0.7949
+     },
+     "2026": {
+      "low": 0.3493,
+      "central": 0.4398,
+      "high": 0.5302
+     }
+    },
+    "base": {
+     "low": 0.3429,
+     "central": 0.4034,
+     "high": 0.4639
+    },
+    "certainty": "B",
+    "sources": [
+     {
+      "name": "GBC / 1TV (National Bank of Georgia): travel revenue from Russia 2025 by quarter USD 141.8m, 166.0m, 252.5m, 133.7m with y/y changes",
+      "url": "https://1tv.ge/lang/en/news/nbg-georgias-travel-income-reaches-usd-1052-4-million-in-q4-2025-up-9-2-year-on-year/",
+      "date": "2026-01"
+     },
+     {
+      "name": "Transparency International Georgia (NBG data): Russian visitors spent USD 891m in 2022 and USD 938m in 2023; Russia 23.7% of travel revenue in 2019",
+      "url": "https://transparency.ge/en/blog/georgias-economic-dependence-russia-summary-2023",
+      "date": "2024"
+     }
+    ],
+    "reasoning": "Our central was too low (BaTiS EUR 0.26-0.34bn a year). The National Bank of Georgia publishes travel revenue by visitor country: Russia USD 891m (2022), 938m (2023), ~850m (2024, from 2025's quarterly y/y changes), 694m (2025: 141.8 + 166.0 + 252.5 + 133.7); 2019 ~USD 775m (23.7% of 3.27bn). 2020-2021 estimated (land border only, flights banned since 2019). 2026 Jan-Aug: Jan-Aug 2025 (~USD 476m) x 0.9, as the decline continued. Plus non-travel services EUR 0.10bn (0.05-0.15bn), mostly road transport. Base = 2019-2021 average."
+   },
+   "svc_bought": {
+    "years": {
+     "2021": {
+      "low": 0.042,
+      "central": 0.0456,
+      "high": 0.0497
+     },
+     "2022": {
+      "low": 0.0356,
+      "central": 0.0593,
+      "high": 0.1058
+     },
+     "2023": {
+      "low": 0.0349,
+      "central": 0.0581,
+      "high": 0.1031
+     },
+     "2024": {
+      "low": 0.0371,
+      "central": 0.0618,
+      "high": 0.1114
+     },
+     "2025": {
+      "low": 0.0311,
+      "central": 0.0647,
+      "high": 0.142
+     },
+     "2026": {
+      "low": 0.0166,
+      "central": 0.0431,
+      "high": 0.1149
+     }
+    },
+    "base": {
+     "low": 0.0463,
+     "central": 0.0503,
+     "high": 0.0548
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 0.046bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 0.064, 0.043, 0.046bn), range spanning that level and the Bank of Russia average (EUR 0.051bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   }
+  },
+  "MNG": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 1.4151,
+      "central": 1.5621,
+      "high": 1.7236
+     },
+     "2022": {
+      "low": 2.1566,
+      "central": 2.381,
+      "high": 2.628
+     },
+     "2023": {
+      "low": 1.8894,
+      "central": 2.0859,
+      "high": 2.3027
+     },
+     "2024": {
+      "low": 2.0675,
+      "central": 2.246,
+      "high": 2.4926
+     },
+     "2025": {
+      "low": 1.8016,
+      "central": 2.061,
+      "high": 2.342
+     },
+     "2026": {
+      "low": 1.7914,
+      "central": 1.9453,
+      "high": 2.1148
+     }
+    },
+    "base": {
+     "low": 1.3641,
+     "central": 1.3936,
+     "high": 1.7236
+    },
+    "certainty": "B",
+    "sources": [
+     {
+      "name": "Trading Economics (Mongolia NSO/customs): Jan-Sep 2026 imports USD 9,725m, Russia 27.6%; Expert.ru: Russia-Mongolia trade USD 2.2bn in 2023, >USD 1.4bn Jan-Jul 2024",
+      "url": "https://tradingeconomics.com/mongolia/imports",
+      "date": "2026-10"
+     }
+    ],
+    "reasoning": "Mongolia stopped reporting to Comtrade after 2023 and IMF estimates gave EUR 2.0-4.1bn. 2024: Russian-side turnover >USD 1.4bn in Jan-Jul, about USD 2.4bn for the year, Mongolian (CIF) basis ~8% higher; 2025: total imports -2.6% with a similar Russian share; 2026 Jan-Aug: Russia 27.6% of USD 9,725m Jan-Sep imports x 8/9 (fuel switched from China to Russia after March 2026). Central 2024 lowered from EUR 2.84bn to 2.40bn.",
+    "trade_layer": {
+     "2021": {
+      "low": 1.5298,
+      "central": 1.653,
+      "high": 1.7861
+     },
+     "2022": {
+      "low": 2.3314,
+      "central": 2.5192,
+      "high": 2.722
+     },
+     "2023": {
+      "low": 2.0425,
+      "central": 2.2069,
+      "high": 2.3847
+     },
+     "2024": {
+      "low": 2.2173,
+      "central": 2.4021,
+      "high": 2.633
+     },
+     "2025": {
+      "low": 1.9469,
+      "central": 2.2124,
+      "high": 2.4779
+     },
+     "2026": {
+      "low": 1.8875,
+      "central": 2.0517,
+      "high": 2.2158
+     }
+    }
+   },
+   "svc_bought": {
+    "years": {
+     "2021": {
+      "low": 0.0671,
+      "central": 0.078,
+      "high": 0.0842
+     },
+     "2022": {
+      "low": 0.0688,
+      "central": 0.1146,
+      "high": 0.2019
+     },
+     "2023": {
+      "low": 0.0615,
+      "central": 0.1025,
+      "high": 0.1823
+     },
+     "2024": {
+      "low": 0.066,
+      "central": 0.1101,
+      "high": 0.1983
+     },
+     "2025": {
+      "low": 0.0553,
+      "central": 0.1153,
+      "high": 0.2529
+     },
+     "2026": {
+      "low": 0.0295,
+      "central": 0.0769,
+      "high": 0.2046
+     }
+    },
+    "base": {
+     "low": 0.0992,
+     "central": 0.1154,
+     "high": 0.1246
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 0.078bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 0.163, 0.088, 0.073bn), range spanning that level and the Bank of Russia average (EUR 0.108bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   },
+   "svc_sold": {
+    "years": {
+     "2021": {
+      "low": 0.0539,
+      "central": 0.0586,
+      "high": 0.0752
+     },
+     "2022": {
+      "low": 0.0385,
+      "central": 0.0641,
+      "high": 0.1155
+     },
+     "2023": {
+      "low": 0.0416,
+      "central": 0.0694,
+      "high": 0.1359
+     },
+     "2024": {
+      "low": 0.0407,
+      "central": 0.0678,
+      "high": 0.1403
+     },
+     "2025": {
+      "low": 0.0355,
+      "central": 0.074,
+      "high": 0.185
+     },
+     "2026": {
+      "low": 0.0186,
+      "central": 0.0484,
+      "high": 0.1442
+     }
+    },
+    "base": {
+     "low": 0.0625,
+     "central": 0.068,
+     "high": 0.0872
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 0.059bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 0.095, 0.077, 0.070bn), range spanning that level and the Bank of Russia average (EUR 0.081bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   }
+  },
+  "ARM": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 1.2854,
+      "central": 1.3556,
+      "high": 1.431
+     },
+     "2022": {
+      "low": 1.9105,
+      "central": 2.0211,
+      "high": 2.1509
+     },
+     "2023": {
+      "low": 1.7635,
+      "central": 1.9065,
+      "high": 2.145
+     },
+     "2024": {
+      "low": 1.8911,
+      "central": 2.1434,
+      "high": 2.6854
+     },
+     "2025": {
+      "low": 1.8425,
+      "central": 1.9903,
+      "high": 2.2343
+     },
+     "2026": {
+      "low": 1.0754,
+      "central": 1.1645,
+      "high": 1.2713
+     }
+    },
+    "base": {
+     "low": 1.1639,
+     "central": 1.2259,
+     "high": 1.4259
+    },
+    "certainty": "A",
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     }
+    ],
+    "reasoning": "Armstat's own data by HS chapter replace the separate re-export estimate: purchases from Russia = all imports from Russia minus Russian gold and diamonds (HS 71), of which 90-100% is passed on (Armenia's HS 71 exports exceed these imports every year: USD 8.05bn exported vs 6.99bn imported from Russia in 2024). The retained share (0.5-10%, central 3%) is the margin plus domestic use. 2024: USD 2.25bn non-gold + 7.0bn gold; old range EUR 1.03-6.06bn came from netting a +-8% customs margin against an independently ranged gold estimate. 2026: Jan-May and Aug reported, Jun-Jul imputed (+-5%). The gold passed on stays assigned to the buyers (UAE, Hong Kong) as in reexports.json; HS 71 imports from Russia are USD 0.40bn (2022), 2.26bn (2023), 6.99bn (2024), 2.39bn (2025). Base applies the same netting to 2019-2021 (HS 71 USD 0.06-0.11bn).",
+    "trade_layer": {
+     "2021": {
+      "low": 1.464,
+      "central": 1.5093,
+      "high": 1.5545
+     },
+     "2022": {
+      "low": 2.4291,
+      "central": 2.5042,
+      "high": 2.5793
+     },
+     "2023": {
+      "low": 3.9277,
+      "central": 4.0492,
+      "high": 4.1707
+     },
+     "2024": {
+      "low": 8.2798,
+      "central": 8.5358,
+      "high": 8.7919
+     },
+     "2025": {
+      "low": 4.0319,
+      "central": 4.1565,
+      "high": 4.2812
+     },
+     "2026": {
+      "low": 1.4876,
+      "central": 1.5659,
+      "high": 1.6442
+     }
+    }
+   },
+   "from_rus": {
+    "years": {
+     "2021": {
+      "low": 0.6009,
+      "central": 0.6712,
+      "high": 0.7497
+     },
+     "2022": {
+      "low": 0.8975,
+      "central": 1.4752,
+      "high": 2.1891
+     },
+     "2023": {
+      "low": 0.9649,
+      "central": 1.7939,
+      "high": 2.8344
+     },
+     "2024": {
+      "low": 1.0574,
+      "central": 1.7891,
+      "high": 2.6798
+     },
+     "2025": {
+      "low": 1.1165,
+      "central": 1.5811,
+      "high": 2.1458
+     },
+     "2026": {
+      "low": 0.746,
+      "central": 0.9091,
+      "high": 1.1965
+     }
+    },
+    "base": {
+     "low": 0.5105,
+     "central": 0.5485,
+     "high": 0.7137
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     }
+    ],
+    "reasoning": "Armstat's monthly data give 2025 exactly (USD 2,916m; trade_full had EUR 2.31-3.87bn) and 2026 Jan-Aug (Jan-May and Aug reported, Jun-Jul imputed; USD 1.70bn, +-5%). The 2026 re-export removal (reexports.json EUR 0.28-2.8bn, more than Armenia's whole exports' plausible re-export share) is bounded by the 2025 re-export share of exports to Russia (38-59%). 2022-2024 unchanged: the re-export share itself remains the main uncertainty.",
+    "trade_layer": {
+     "2021": {
+      "low": 0.6009,
+      "central": 0.6712,
+      "high": 0.7497
+     },
+     "2022": {
+      "low": 2.0548,
+      "central": 2.2953,
+      "high": 2.5638
+     },
+     "2023": {
+      "low": 2.9024,
+      "central": 3.242,
+      "high": 3.6213
+     },
+     "2024": {
+      "low": 2.5945,
+      "central": 2.898,
+      "high": 3.2371
+     },
+     "2025": {
+      "low": 2.5029,
+      "central": 2.5803,
+      "high": 2.6577
+     },
+     "2026": {
+      "low": 1.3886,
+      "central": 1.4617,
+      "high": 1.5348
+     }
+    }
+   },
+   "svc_bought": {
+    "years": {
+     "2021": {
+      "low": 0.2447,
+      "central": 0.266,
+      "high": 0.3651
+     },
+     "2022": {
+      "low": 0.1352,
+      "central": 0.2254,
+      "high": 0.3959
+     },
+     "2023": {
+      "low": 0.1169,
+      "central": 0.1948,
+      "high": 0.3473
+     },
+     "2024": {
+      "low": 0.1277,
+      "central": 0.2128,
+      "high": 0.3835
+     },
+     "2025": {
+      "low": 0.1069,
+      "central": 0.2228,
+      "high": 0.489
+     },
+     "2026": {
+      "low": 0.057,
+      "central": 0.1486,
+      "high": 0.3958
+     }
+    },
+    "base": {
+     "low": 0.2216,
+     "central": 0.2409,
+     "high": 0.3307
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 0.266bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 0.362, 0.218, 0.338bn), range spanning that level and the Bank of Russia average (EUR 0.306bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   },
+   "svc_sold": {
+    "years": {
+     "2021": {
+      "low": 0.2288,
+      "central": 0.2487,
+      "high": 0.2957
+     },
+     "2022": {
+      "low": 0.2104,
+      "central": 0.3506,
+      "high": 0.7255
+     },
+     "2023": {
+      "low": 0.2225,
+      "central": 0.3708,
+      "high": 0.8859
+     },
+     "2024": {
+      "low": 0.2361,
+      "central": 0.3935,
+      "high": 0.9838
+     },
+     "2025": {
+      "low": 0.2159,
+      "central": 0.4498,
+      "high": 1.2932
+     },
+     "2026": {
+      "low": 0.1155,
+      "central": 0.3007,
+      "high": 1.0056
+     }
+    },
+    "base": {
+     "low": 0.2286,
+     "central": 0.2485,
+     "high": 0.2954
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 0.249bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 0.336, 0.211, 0.274bn), range spanning that level and the Bank of Russia average (EUR 0.274bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   }
+  },
+  "MDA": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 0.642,
+      "central": 0.8421,
+      "high": 1.1042
+     },
+     "2022": {
+      "low": 0.7835,
+      "central": 1.0278,
+      "high": 1.3476
+     },
+     "2023": {
+      "low": 0.2143,
+      "central": 0.2811,
+      "high": 0.3686
+     },
+     "2024": {
+      "low": 0.1388,
+      "central": 0.182,
+      "high": 0.2386
+     },
+     "2025": {
+      "low": 0.1404,
+      "central": 0.1842,
+      "high": 0.2414
+     },
+     "2026": {
+      "low": 0.1255,
+      "central": 0.1379,
+      "high": 0.1506
+     }
+    },
+    "base": {
+     "low": 0.597,
+     "central": 0.642,
+     "high": 1.1042
+    },
+    "certainty": "A",
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     },
+     {
+      "name": "research/2026-10/gaps/gas_prices.json and energy2.json transit_gas: Transnistria's Gazprom gas unpaid, ended 1 Jan 2025; right-bank Moldova stopped buying Gazprom gas Dec 2022",
+      "url": "research/2026-10/gaps/gas_prices-notes.md",
+      "date": "2026-10-17"
+     }
+    ],
+    "reasoning": "Moldova's customs data (which include the gas right-bank Moldova bought from Gazprom until Dec 2022 and exclude Transnistria) replace the transit-gas swap. That swap's high bound counted Transnistria's 2.6-2.9 bcm a year of Gazprom gas (EUR 2.6-3.1bn in 2022-2023, up to 1.2bn after), which was never paid for (debt) and ended on 1 Jan 2025: it is Russian support for Transnistria, not money to Russia. The base high (EUR 1.6bn) also came from that gas. 2026 Jan-Aug = Jan-Jun monthly customs + Jul-Aug 2025 x 1.35 (trade_full's EUR 0.22bn was too high). Laundered oil is a separate field and unchanged.",
+    "trade_layer": {
+     "2021": {
+      "low": 0.694,
+      "central": 0.8911,
+      "high": 1.1442
+     },
+     "2022": {
+      "low": 0.847,
+      "central": 1.0876,
+      "high": 1.3965
+     },
+     "2023": {
+      "low": 0.2317,
+      "central": 0.2975,
+      "high": 0.382
+     },
+     "2024": {
+      "low": 0.15,
+      "central": 0.1926,
+      "high": 0.2473
+     },
+     "2025": {
+      "low": 0.1518,
+      "central": 0.1949,
+      "high": 0.2502
+     },
+     "2026": {
+      "low": 0.1357,
+      "central": 0.1459,
+      "high": 0.1561
+     }
+    }
+   }
+  },
+  "BRN": {
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 0.6661,
+      "central": 0.7569,
+      "high": 0.8477
+     },
+     "2022": {
+      "low": 0.1486,
+      "central": 0.1688,
+      "high": 0.1891
+     },
+     "2023": {
+      "low": 0.1262,
+      "central": 0.1435,
+      "high": 0.1607
+     },
+     "2024": {
+      "low": 0.545,
+      "central": 0.6193,
+      "high": 0.6937
+     },
+     "2025": {
+      "low": 0.3479,
+      "central": 0.3953,
+      "high": 0.4428
+     },
+     "2026": {
+      "low": 0.18,
+      "central": 0.3108,
+      "high": 0.47
+     }
+    },
+    "base": {
+     "low": 0.2698,
+     "central": 0.2998,
+     "high": 0.8326
+    },
+    "certainty": "B",
+    "sources": [
+     {
+      "name": "UN Comtrade: Brunei imports from Russia by HS code (100% HS 2709 crude, 0.29-1.74 Mt a year); Russia's own exports to Brunei near zero",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=96&partnerCode=643&flowCode=M&period=2024&cmdCode=2709",
+      "date": "2026-10-17"
+     },
+     {
+      "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     }
+    ],
+    "reasoning": "Real, not an artefact: 100% of what Brunei records from Russia is crude oil (HS 2709) for the Hengyi refinery at Pulau Muara Besar, which started in late 2019 (0 in 2019, 0.52 Mt in 2020, 1.74 Mt in 2021, 0.29 Mt in 2022-2023, 1.22 Mt in 2024, 0.95 Mt in 2025). Russia's own statistics show almost nothing because Russian ESPO cargoes are sold to traders and booked to other destinations; Brunei records origin. But Brunei's declared values (USD 102-113/bbl in 2021-2023, 20-40% above market) overstate what Russia was paid: values here are tonnes x 7.33 bbl/t x ESPO FOB Kozmino annual average (USD 43, 70, 85, 73, 75, 64), +-12%. The trend baseline (EUR 1.66bn, a line through 0, 0.18 and 1.11) is dropped: base = 2019-2021 average, high = the 2021 level (first full refinery year). 2026: no monthly data; trade_full estimate x 0.84 (value ratio of 2025)."
+   }
+  },
+  "PRK": {
+   "military_rus": {
+    "years": {
+     "2021": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "2022": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "2023": {
+      "low": 1.1,
+      "central": 1.7,
+      "high": 2.3
+     },
+     "2024": {
+      "low": 2.0,
+      "central": 3.05,
+      "high": 4.1
+     },
+     "2025": {
+      "low": 3.8,
+      "central": 5.1,
+      "high": 6.6
+     },
+     "2026": {
+      "low": 0.3,
+      "central": 1.0,
+      "high": 2.0
+     }
+    },
+    "base": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "NK News: INSS estimates North Korea's revenue from military cooperation with Russia at USD 7.7-14.4bn (artillery etc. USD 7.05-13.78bn, troops USD 0.62bn, Oct 2024-Dec 2025)",
+      "url": "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/",
+      "date": "2026-03"
+     },
+     {
+      "name": "Militarnyi / Reuters-Open Source Centre: 64 voyages, 15,809 containers Sep 2023-Mar 2025 (4-6m shells); Shin Won-sik: ~5,000 containers by end-2023, 6,700 by Feb 2024",
+      "url": "https://militarnyi.com/en/news/dprk-transferred-4-6-million-shells-to-russia-over-20-months/",
+      "date": "2025-04"
+     }
+    ],
+    "reasoning": "Narrowest well-sourced estimate: INSS (March 2026), USD 7.7-14.4bn for Aug 2023-Dec 2025 = EUR 6.9-13.0bn (artillery shells, rockets, missiles and systems USD 7.05-13.78bn valued from intelligence shell counts; troops USD 0.62bn Oct 2024-Dec 2025). Higher figures (KIDA >USD 20bn, Bloomberg up to 22bn) use higher unit prices or add other revenue. Split by containers shipped: ~5,000 by end-2023 (Shin Won-sik), 15,809 by Mar 2025 (OSC, 64 voyages), ~30,000 by early 2026 (IStories/OSC, 112 voyages): 18% / 31% / 51%, troops in 2024-2025. Year lows and highs add up to the INSS range. Our old 2025 central (EUR 2.0bn) was too low: deliveries continued at a faster pace in 2025. 2026 kept as before (no estimate yet). These are valuations of transfers, not cash."
+   }
+  },
+  "CYP": {
+   "svc_sold": {
+    "years": {
+     "2021": {
+      "low": 1.9991,
+      "central": 2.2212,
+      "high": 2.9986
+     },
+     "2022": {
+      "low": 1.2575,
+      "central": 1.3972,
+      "high": 1.8862
+     },
+     "2023": {
+      "low": 0.5501,
+      "central": 0.6112,
+      "high": 0.8251
+     },
+     "2024": {
+      "low": 0.4724,
+      "central": 0.5249,
+      "high": 0.7086
+     },
+     "2025": {
+      "low": 0.463,
+      "central": 0.5144,
+      "high": 0.6944
+     },
+     "2026": {
+      "low": 0.2716,
+      "central": 0.3395,
+      "high": 0.5093
+     }
+    },
+    "base": {
+     "low": 2.1114,
+     "central": 2.346,
+     "high": 3.1671
+    },
+    "certainty": "A",
+    "sources": [
+     {
+      "name": "Eurostat bop_its6_det, partner RU, services by item (S, SD travel, SC transport), credits and debits, 2019-2025",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/bop_its6_det?geo=CY&partner=RU&currency=MIO_EUR&bop_item=S",
+      "date": "2026-10-17"
+     },
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Cyprus's own balance-of-payments figures (Eurostat, partner Russia, 2019-2025), A-grade for the level Cyprus records. Range 0.9-1.35x for base and years alike: the Bank of Russia records about 1.5x more services imports from Cyprus (USD 3.9bn in 2021, mostly business and financial services to Russian-owned holdings), so the high end allows part of that asymmetry. The old high bounds (up to 3x) added BaTiS and a share of Russia's unallocated travel spending, but EU airspace has been closed to Russian flights since Feb 2022 and Cyprus's travel credits from Russia fell from EUR 550m (2019) to EUR 54-78m (2022-2025). Base = 2019-2021 average (old base: 2021 alone). 2026 = 8/12-weighted 2025 (x0.66)."
+   },
+   "svc_bought": {
+    "years": {
+     "2021": {
+      "low": 0.4001,
+      "central": 0.4445,
+      "high": 0.6001
+     },
+     "2022": {
+      "low": 0.3468,
+      "central": 0.3853,
+      "high": 0.5202
+     },
+     "2023": {
+      "low": 0.2502,
+      "central": 0.278,
+      "high": 0.3753
+     },
+     "2024": {
+      "low": 0.2669,
+      "central": 0.2966,
+      "high": 0.4004
+     },
+     "2025": {
+      "low": 0.2435,
+      "central": 0.2706,
+      "high": 0.3653
+     },
+     "2026": {
+      "low": 0.1429,
+      "central": 0.1786,
+      "high": 0.2679
+     }
+    },
+    "base": {
+     "low": 0.3312,
+     "central": 0.368,
+     "high": 0.4968
+    },
+    "certainty": "A",
+    "sources": [
+     {
+      "name": "Eurostat bop_its6_det, partner RU, services by item (S, SD travel, SC transport), credits and debits, 2019-2025",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/bop_its6_det?geo=CY&partner=RU&currency=MIO_EUR&bop_item=S",
+      "date": "2026-10-17"
+     },
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Cyprus's own balance-of-payments figures (Eurostat, partner Russia, 2019-2025), A-grade for the level Cyprus records. Range 0.9-1.35x for base and years alike: the Bank of Russia records about 1.5x more services imports from Cyprus (USD 3.9bn in 2021, mostly business and financial services to Russian-owned holdings), so the high end allows part of that asymmetry. The old high bounds (up to 3x) added BaTiS and a share of Russia's unallocated travel spending, but EU airspace has been closed to Russian flights since Feb 2022 and Cyprus's travel credits from Russia fell from EUR 550m (2019) to EUR 54-78m (2022-2025). Base = 2019-2021 average (old base: 2021 alone). 2026 = 8/12-weighted 2025 (x0.66)."
+   }
+  },
+  "MNE": {
+   "svc_sold": {
+    "years": {
+     "2021": {
+      "low": 0.1296,
+      "central": 0.144,
+      "high": 0.18
+     },
+     "2022": {
+      "low": 0.171,
+      "central": 0.19,
+      "high": 0.2375
+     },
+     "2023": {
+      "low": 0.315,
+      "central": 0.35,
+      "high": 0.4375
+     },
+     "2024": {
+      "low": 0.2367,
+      "central": 0.263,
+      "high": 0.3287
+     },
+     "2025": {
+      "low": 0.1894,
+      "central": 0.2367,
+      "high": 0.3314
+     },
+     "2026": {
+      "low": 0.1363,
+      "central": 0.1704,
+      "high": 0.2386
+     }
+    },
+    "base": {
+     "low": 0.1473,
+     "central": 0.1637,
+     "high": 0.2046
+    },
+    "certainty": "B",
+    "sources": [
+     {
+      "name": "Eurostat bop_its6_det, partner RU, services by item (S, SD travel, SC transport), credits and debits, 2019-2025",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/bop_its6_det?geo=CY&partner=RU&currency=MIO_EUR&bop_item=S",
+      "date": "2026-10-17"
+     },
+     {
+      "name": "MONSTAT: arrivals and overnights of tourists 2023 and 2024 (Russia 23.6% and 18.3% of foreign overnights)",
+      "url": "https://monstat.org/uploads/files/TURIZAM/ukupno/2024/Arrivals%20and%20overnights%20of%20tourists%20total%202024.pdf",
+      "date": "2025"
+     }
+    ],
+    "reasoning": "Montenegro's own figures (Central Bank of Montenegro via Eurostat), 90% of it travel by Russians (EUR 271m in 2019, 338m in 2023, 255m in 2024). Range 0.9-1.25x (old: up to 3x with the travel residual). 2025 has no report yet: 2024 x 0.9 (Russia's share of foreign overnights fell from 23.6% to 18.3% in 2024), wider range. 2026 Jan-Aug = 72% of the year (summer season inside the window). Base = 2019-2021 average (EUR 0.16bn) instead of 2021 alone."
+   }
+  },
+  "TUN": {
+   "svc_sold": {
+    "years": {
+     "2021": {
+      "low": 0.035,
+      "central": 0.099,
+      "high": 0.22
+     },
+     "2022": {
+      "low": 0.008,
+      "central": 0.0192,
+      "high": 0.046
+     },
+     "2023": {
+      "low": 0.0095,
+      "central": 0.0213,
+      "high": 0.049
+     },
+     "2024": {
+      "low": 0.0101,
+      "central": 0.0221,
+      "high": 0.0502
+     },
+     "2025": {
+      "low": 0.02,
+      "central": 0.036,
+      "high": 0.07
+     },
+     "2026": {
+      "low": 0.0185,
+      "central": 0.0339,
+      "high": 0.067
+     }
+    },
+    "base": {
+     "low": 0.0842,
+     "central": 0.1403,
+     "high": 0.1964
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Kapitalis (ONTT data): 632,000 Russian tourists Jan-Nov 2019, about 635,000 for the year",
+      "url": "https://kapitalis.com/tunisie/?p=267191",
+      "date": "2019-12"
+     },
+     {
+      "name": "Dispatch Risk / African Manager: about 10,000 Russians among ~6m visitors in 2022",
+      "url": "https://dispatchrisk.com/?p=15709",
+      "date": "2023"
+     },
+     {
+      "name": "AllAfrica/La Presse: about 50,000 Russian tourists in Tunisia in 2025, nearly triple 2024 (TASS)",
+      "url": "https://fr.allafrica.com/stories/202606300595.html",
+      "date": "2026-06-30"
+     }
+    ],
+    "reasoning": "Our central was wrong by an order of magnitude. It was the BaTiS model value (EUR 0.63bn in 2021 rising to 1.07bn in 2025), but Russian tourists, nearly all of Tunisia's services sales to Russia, collapsed after Feb 2022: about 635,000 in 2019, about 10,000 in 2022, ~17,000 in 2024 and ~50,000 in 2025 (two to six flights a week). Value = arrivals x EUR 420 (300-600) per package stay spent in Tunisia + EUR 15m (5-40m) non-travel services. 2020-2021 arrivals are uncertain (0.06m and 0.2m with wide ranges). This flips the part from 'extra services sold to Russia' to 'services given up'."
+   }
+  },
+  "TUR": {
+   "svc_sold": {
+    "years": {
+     "2021": {
+      "low": 3.0733,
+      "central": 3.3615,
+      "high": 4.1777
+     },
+     "2022": {
+      "low": 5.0347,
+      "central": 5.833,
+      "high": 7.9818
+     },
+     "2023": {
+      "low": 6.1708,
+      "central": 7.1498,
+      "high": 9.7823
+     },
+     "2024": {
+      "low": 6.3321,
+      "central": 7.3761,
+      "high": 10.0013
+     },
+     "2025": {
+      "low": 6.1218,
+      "central": 7.3109,
+      "high": 9.8656
+     },
+     "2026": {
+      "low": 3.6353,
+      "central": 4.3187,
+      "high": 5.9035
+     }
+    },
+    "base": {
+     "low": 2.986,
+     "central": 3.3931,
+     "high": 4.4233
+    },
+    "certainty": "B",
+    "sources": [
+     {
+      "name": "Eurostat bop_its6_det, partner RU, services by item (S, SD travel, SC transport), credits and debits, 2019-2025",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/bop_its6_det?geo=CY&partner=RU&currency=MIO_EUR&bop_item=S",
+      "date": "2026-10-17"
+     },
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     },
+     {
+      "name": "GoTurkiye: 2025 tourism results, Russia top market with 6.90m visitors",
+      "url": "https://goturkiye.com/branding/press-releases/turkiye-announced-its-2025-tourism-results",
+      "date": "2026-01"
+     },
+     {
+      "name": "TASS/ATOR: summer 2026 Russian tourist flow to Turkey forecast cut to 2.7m",
+      "url": "https://tass.com/economy/1997143/amp",
+      "date": "2026"
+     }
+    ],
+    "reasoning": "Our central was too low. Turkey's partner breakdown (Eurostat, partner RU: EUR 2.5-3.0bn in 2022-2024) has no travel line at all (SD empty): Turkey does not allocate tourism receipts to countries, so Russian tourists were missing; uncovered.json's mean with BaTiS only partly offset this. Now: Turkey's reported non-travel services + Russian travel spending = arrivals (7.02m 2019, 4.69m 2021, 5.23m, 6.31m, 6.72m, 6.90m in 2022-2025, ~3.8m Jan-Aug 2026 after ATOR's cut) x spend per trip anchored on the Bank of Russia's 2021 figure (USD 2,840m = USD 605 a trip, 2020 USD 1,680m), indexed to Turkey's average spend per visitor (USD 680-770). Ranges: travel +-20%, non-travel 0.95-1.6x (the Bank of Russia records ~1.6x more non-travel imports from Turkey). Base high = the Bank of Russia mirror average (EUR 4.4bn)."
+   },
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 19.1348,
+      "central": 23.1383,
+      "high": 27.1416
+     },
+     "2022": {
+      "low": 42.1099,
+      "central": 51.5864,
+      "high": 62.7621
+     },
+     "2023": {
+      "low": 33.2602,
+      "central": 39.0896,
+      "high": 47.0829
+     },
+     "2024": {
+      "low": 30.9122,
+      "central": 36.8906,
+      "high": 46.6225
+     },
+     "2025": {
+      "low": 29.4818,
+      "central": 34.7689,
+      "high": 42.7732
+     },
+     "2026": {
+      "low": 15.1325,
+      "central": 22.1655,
+      "high": 32.5374
+     }
+    },
+    "base": {
+     "low": 17.9632,
+     "central": 19.1341,
+     "high": 26.3583
+    },
+    "certainty": "A",
+    "sources": [
+     {
+      "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     }
+    ],
+    "reasoning": "Values unchanged; base range from the builder run with the min() fix (the base low was the fossil-fuel value alone, EUR 8.5bn, far below Turkey's reported imports from Russia). Price index (extra fields pidx, pidx_lo, pidx_hi): coal and oil products now use Turkey's own unit values for imports from Russia (Comtrade quantities; in EUR, 2019-2021 = 1: coal 2.44 / 1.47 / 1.25 / 1.08 and products 2.03 / 1.60 / 1.55 / 1.33 in 2022-2025, +-7% for product mix) instead of the generic bands (coal 2022: 2.16-4.52). Crude and pipeline gas stay modelled: Turkey suppresses HS 2709 and 2711 by partner, and its Russian gas index band (1.01-2.93 in 2022) is now the largest single source of width for Turkey.",
+    "pidx": [
+     1.0666,
+     1.5401,
+     1.3082,
+     1.2677,
+     1.1652,
+     1.2892
+    ],
+    "pidx_lo": [
+     0.94,
+     1.2748,
+     1.1475,
+     1.1261,
+     1.0326,
+     1.1081
+    ],
+    "pidx_hi": [
+     1.1726,
+     1.8726,
+     1.5367,
+     1.4744,
+     1.3498,
+     1.494
+    ]
+   }
+  },
+  "ARE": {
+   "hidden": {
+    "years": {
+     "2021": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "2022": {
+      "low": 0,
+      "central": 0,
+      "high": 1.0
+     },
+     "2023": {
+      "low": 0,
+      "central": 0,
+      "high": 1.0
+     },
+     "2024": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.5
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.5
+     },
+     "2026": {
+      "low": 0,
+      "central": 1.8,
+      "high": 5.5
+     }
+    },
+    "base": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Gulf Business / UAE government: UAE-Russia non-oil trade USD 20.4bn in 2025 (+77.7%), USD 10.8bn in 2022; Dhs 42.23bn (USD 11.5bn) in 2024, +4.9% on 2023",
+      "url": "https://gulfbusiness.com/en/2025/trade/uae-russia-ink-trade-services-and-investment-pact/",
+      "date": "2026"
+     },
+     {
+      "name": "Swissaid (via uncovered.json): 66 t of Russian gold (USD 5.4bn) to the UAE in 2024",
+      "url": "https://www.swissaid.ch/en/",
+      "date": "2025"
+     },
+     {
+      "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     }
+    ],
+    "reasoning": "The UAE gold item (EUR 2.5bn a year, up to 7bn) was added because the IMF estimate of UAE imports from Russia seemed too small to hold 66 t (USD 5.4bn) of Russian gold. The UAE's official non-oil trade with Russia, which includes gold, is USD 11.5bn in 2024 and 20.4bn in 2025; trade_full's 2024 imports + exports (USD 10.5bn) already match it, with room for the gold (2023: USD 4.36bn of HS 71 inside USD 6.45bn of imports). So for 2024-2025 the gold is inside recorded trade and the hidden item double-counts it: central 0, high EUR 0.5bn. 2026 unchanged (no official 2026 total yet)."
+   },
+   "to_rus": {
+    "years": {
+     "2021": {
+      "low": 2.2817,
+      "central": 2.964,
+      "high": 3.8487
+     },
+     "2022": {
+      "low": 0.8142,
+      "central": 3.5375,
+      "high": 7.3705
+     },
+     "2023": {
+      "low": 2.3931,
+      "central": 4.9058,
+      "high": 8.0442
+     },
+     "2024": {
+      "low": 3.4465,
+      "central": 8.4913,
+      "high": 12.4643
+     },
+     "2025": {
+      "low": 0.0,
+      "central": 5.6878,
+      "high": 12.363
+     },
+     "2026": {
+      "low": 0.0,
+      "central": 2.9513,
+      "high": 8.9987
+     }
+    },
+    "base": {
+     "low": 2.2612,
+     "central": 2.3101,
+     "high": 3.8487
+    },
+    "certainty": "B",
+    "sources": [
+     {
+      "name": "Gulf Business / UAE government: UAE-Russia non-oil trade USD 20.4bn in 2025 (+77.7%), USD 10.8bn in 2022; Dhs 42.23bn (USD 11.5bn) in 2024, +4.9% on 2023",
+      "url": "https://gulfbusiness.com/en/2025/trade/uae-russia-ink-trade-services-and-investment-pact/",
+      "date": "2026"
+     },
+     {
+      "name": "Swissaid (via uncovered.json): 66 t of Russian gold (USD 5.4bn) to the UAE in 2024",
+      "url": "https://www.swissaid.ch/en/",
+      "date": "2025"
+     },
+     {
+      "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+      "date": "2026-10-17"
+     }
+    ],
+    "reasoning": "2024 trade-layer imports pinned by the UAE's official non-oil total (USD 11.5bn = imports + exports + re-exports): non-gold imports ~USD 2.0bn (2023 level) + 66 t of gold (USD 5.4bn) = USD 7.4bn (6.8-8.0), against the IMF's EUR 3.7-9.8bn. Other years unchanged here, but see notes: the 2025 official total (USD 20.4bn, +77.7%) implies imports of about USD 15-16bn, mostly gold that is passed on, and Russian oil products to the UAE (CREA EUR 5.6bn in 2022, 6.1bn in 2023) are missing from UAE customs and from the map. Pipeline pass-through adjustments kept.",
+    "trade_layer": {
+     "2021": {
+      "low": 2.4667,
+      "central": 3.1365,
+      "high": 3.9883
+     },
+     "2022": {
+      "low": 6.1162,
+      "central": 7.7771,
+      "high": 9.8891
+     },
+     "2023": {
+      "low": 4.6892,
+      "central": 5.9627,
+      "high": 7.5819
+     },
+     "2024": {
+      "low": 6.2823,
+      "central": 6.8367,
+      "high": 7.391
+     },
+     "2025": {
+      "low": 4.452,
+      "central": 7.1983,
+      "high": 11.6388
+     },
+     "2026": {
+      "low": 2.5342,
+      "central": 4.2932,
+      "high": 7.2732
+     }
+    }
+   },
+   "svc_bought": {
+    "years": {
+     "2021": {
+      "low": 0.8685,
+      "central": 0.944,
+      "high": 1.0895
+     },
+     "2022": {
+      "low": 0.6157,
+      "central": 1.0262,
+      "high": 1.7962
+     },
+     "2023": {
+      "low": 0.5563,
+      "central": 0.9272,
+      "high": 1.6359
+     },
+     "2024": {
+      "low": 0.568,
+      "central": 0.9466,
+      "high": 1.7058
+     },
+     "2025": {
+      "low": 0.4757,
+      "central": 0.9909,
+      "high": 2.1752
+     },
+     "2026": {
+      "low": 0.2538,
+      "central": 0.6608,
+      "high": 1.7602
+     }
+    },
+    "base": {
+     "low": 0.8833,
+     "central": 0.9602,
+     "high": 1.1081
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 0.944bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 1.201, 0.868, 1.009bn), range spanning that level and the Bank of Russia average (EUR 1.026bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   },
+   "svc_sold": {
+    "years": {
+     "2021": {
+      "low": 0.9221,
+      "central": 1.1429,
+      "high": 1.2343
+     },
+     "2022": {
+      "low": 0.9482,
+      "central": 1.5804,
+      "high": 3.3916
+     },
+     "2023": {
+      "low": 0.9441,
+      "central": 1.5735,
+      "high": 3.9337
+     },
+     "2024": {
+      "low": 1.0454,
+      "central": 1.7424,
+      "high": 4.356
+     },
+     "2025": {
+      "low": 0.9711,
+      "central": 2.0231,
+      "high": 5.8164
+     },
+     "2026": {
+      "low": 0.5233,
+      "central": 1.3628,
+      "high": 4.5568
+     }
+    },
+    "base": {
+     "low": 1.0664,
+     "central": 1.3217,
+     "high": 1.4275
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 1.143bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 1.726, 0.749, 1.002bn), range spanning that level and the Bank of Russia average (EUR 1.159bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   }
+  },
+  "TJK": {
+   "svc_bought": {
+    "years": {
+     "2021": {
+      "low": 0.3695,
+      "central": 0.4016,
+      "high": 0.4975
+     },
+     "2022": {
+      "low": 0.1888,
+      "central": 0.3146,
+      "high": 0.543
+     },
+     "2023": {
+      "low": 0.1494,
+      "central": 0.249,
+      "high": 0.4412
+     },
+     "2024": {
+      "low": 0.157,
+      "central": 0.2617,
+      "high": 0.4715
+     },
+     "2025": {
+      "low": 0.1315,
+      "central": 0.274,
+      "high": 0.6013
+     },
+     "2026": {
+      "low": 0.0702,
+      "central": 0.1827,
+      "high": 0.4866
+     }
+    },
+    "base": {
+     "low": 0.328,
+     "central": 0.3565,
+     "high": 0.4416
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 0.402bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 0.461, 0.305, 0.461bn), range spanning that level and the Bank of Russia average (EUR 0.409bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   },
+   "svc_sold": {
+    "years": {
+     "2021": {
+      "low": 0.0961,
+      "central": 0.1045,
+      "high": 0.116
+     },
+     "2022": {
+      "low": 0.0639,
+      "central": 0.1065,
+      "high": 0.207
+     },
+     "2023": {
+      "low": 0.0595,
+      "central": 0.0992,
+      "high": 0.227
+     },
+     "2024": {
+      "low": 0.0649,
+      "central": 0.1081,
+      "high": 0.2566
+     },
+     "2025": {
+      "low": 0.0585,
+      "central": 0.1218,
+      "high": 0.3416
+     },
+     "2026": {
+      "low": 0.0311,
+      "central": 0.0809,
+      "high": 0.2649
+     }
+    },
+    "base": {
+     "low": 0.1116,
+     "central": 0.1213,
+     "high": 0.1346
+    },
+    "certainty": "C",
+    "sources": [
+     {
+      "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
+      "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+      "date": "2022"
+     }
+    ],
+    "reasoning": "Years unchanged. Base = the 2021 level used for the years (EUR 0.104bn) brought to a 2019-2021 average with the Bank of Russia's own partner profile (Table 3: EUR 0.194, 0.072, 0.107bn), range spanning that level and the Bank of Russia average (EUR 0.125bn) +-8%. The old base range (0.6-1.5x the BaTiS model value) is replaced by official 2019-2021 data; the 2021 year is bounded the same way."
+   }
+  }
+ }
+}
