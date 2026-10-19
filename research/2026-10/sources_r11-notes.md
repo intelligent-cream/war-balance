@@ -60,3 +60,17 @@ The figures above describe the file when it was first written. After the traceab
 - **Superseded ids.** `flowback_model`, `csis`, `purl`, `flowback_default`, `flowback_kiel`, `eu_industry`, `ua_arms`, `other_mil` and `other_mil2` no longer produce a number. Each has a `superseded` field, and `prune_sources()` keeps them out of `site/data.json`. `flowback_default`'s link title and note now give the round-11 share (0/10/30%).
 - **Ids now cited where they feed a number.** `gas_prices` (payments to Russia and the windfall of 50 countries) and `shadow_fleet` (the shipping part) are now cited by the parts they feed. `value_kept` and `net_gain_russia` are cited on every part they weight.
 - **Still without a primary link:** `military_rus_r6` and `people`. The audit tried to confirm the Multilateral Sanctions Monitoring Team's first report (29 May 2025) and the joint statements of its member states, but their pages blocked automated access. They are listed as open in `docs/limitations.md`.
+
+## Update in round 12: the North Korea primary report (2026-10-19)
+
+- **`military_rus_r6` now has a primary link.** The Multilateral Sanctions Monitoring Team's first report,
+  MSMT/2025/1, "Unlawful Military Cooperation including Arms Transfers between North Korea and Russia" (29 May 2025,
+  also UN document S/2025/340), was downloaded from [msmt.info](https://msmt.info/api/file/download/18858) (listed at
+  [msmt.info/Publications/Reports](https://msmt.info/Publications/Reports)) and read. It is the first link of
+  `military_rus_r6`, kind `primary`, confirmed. The PDF is kept as `raw/msmt/msmt_2025_1.pdf`; like all PDFs it is
+  not in the repository, only listed with its checksum in `raw/MANIFEST.json`.
+- **What it confirms:** North Korea's volumes (rounds, containers, missiles, artillery vehicles, troops). **What it
+  does not give:** prices. The valuation in euros stays our judgement, so the certainty stays C. The comparison with
+  the model's quantities is in [`gaps/military_rus_r6-notes.md`](gaps/military_rus_r6-notes.md).
+- **Still without a primary link:** `people` only. Iran, Belarus and China inside `military_rus_r6` and
+  `china_military` still rest on press reports.

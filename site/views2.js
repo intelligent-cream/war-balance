@@ -57,4 +57,4 @@ function renderHow(root) {
   if (open) open.onclick = () => { window.setView("map"); select(byIso[exampleIso].n, true); };
 }
 
-window.EXTRA_VIEWS = { how: renderHow };
+window.EXTRA_VIEWS = { ...(window.EXTRA_VIEWS || {}), how: renderHow };

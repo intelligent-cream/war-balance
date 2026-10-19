@@ -41,10 +41,10 @@ shrinks over time as aid moved from stocks to new production.
 
 A loan that is repaid is worth less to Ukraine than a grant. Since round 12 each loan and guarantee counts at its gift:
 cheaper interest, discounted at Ukraine's normal 2021 rate (6.7%), plus the default risk the lender really carries (the
-measured expected loss of its creditor class: 0 for the IMF and World Bank, 9% for EU loans, the bilateral standstill
+measured expected loss of its creditor class: 0 for the IMF and World Bank, for EU loans the provisioning rate the EU set for each loan (70% for the 2022 exceptional MFA and the repurposed EIB loans, 9% for the rest), the bilateral standstill
 for G7 and Paris Club lenders, about 95% for the 2026 Support Loan). The high end discounts at the promised war yield
 of the year of payout (38% in 2022, 40% in 2023, 15–24% after). Round 5 used a flat 10% (6–15%), a judgement. Over
-2022–2026 face value EUR 96.5bn becomes about 53bn (42–85); it was 64bn (40–77). The full method, the measured rates,
+2022–2026 face value EUR 96.5bn becomes about 55bn (42–85); it was 64bn (40–77). The full method, the measured rates,
 a worked example and the evidence are on the [loans page](loans.md). Code: [`loan_rates.py`](../../pipeline/loan_rates.py)
 and `apply_loans_value()`; data: [`loans_value.json`](../../research/2026-10/gaps/loans_value.json)
 ([notes](../../research/2026-10/gaps/loans_value-notes.md)). The cost view uses the lender's cost: the same terms and
@@ -102,6 +102,11 @@ North Korea, Iran and Belarus are revalued from more sources ([`military_rus_r6.
 | Iran | 3.5 (1.5–5.5) | C | ready drones 2022–23, the Alabuga licence (leaked USD 1.75bn), over 400 ballistic missiles; nothing in 2026 |
 | Belarus | 1.3 (0.55–2.7) | D | ammunition from army stocks; components sold by companies are already in trade |
 | China | 1.3 (1.0–3.0) | D | unchanged (`china_military.json`) |
+
+North Korea's volumes are checked against a primary report since round 12: the Multilateral Sanctions Monitoring Team's
+MSMT/2025/1 (29 May 2025, UN document S/2025/340). It confirms the rounds, containers, missiles, artillery and troops,
+but gives no prices, so the value stays our judgement and the letter stays C
+([comparison](../../research/2026-10/gaps/military_rus_r6-notes.md#checked-against-the-primary-report-round-12)).
 
 ## Flowback
 

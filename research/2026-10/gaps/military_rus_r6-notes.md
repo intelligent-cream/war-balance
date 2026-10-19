@@ -32,7 +32,7 @@ Previous centrals were PRK 9.5 (flowback2) or 10.85 (narrow), IRN 4.3, BLR 1.2, 
 |---|---|
 | [Open Source Centre via IStories](https://istories.media/en/stories/2026/03/16/how-north-korea-armed-russia/) | 29,488 containers, Sep 2023–Jan 2026, so **8–11m** shells and rockets |
 | [ROK Defense Intelligence Agency](https://www.koreatimes.co.kr/amp/foreignaffairs/northkorea/20260301/n-korea-ships-33000-containers-of-weapons-to-russia-seoul) | about 33,000 containers (Mar 2026), earlier [>12m 152mm-equivalent](https://kyivindependent.com/north-korea-supplied-russia-with-12-million-rounds-of-152mm-shells-south-korean-intelligence-estimates/), and 220 artillery pieces |
-| [MSMT 2025-1](https://www.yahoo.com/news/north-korea-supplied-russia-9-142135873.html) (11-state monitoring team) | up to 9m rounds and at least 100 ballistic missiles in 2024 alone |
+| [MSMT/2025/1](https://msmt.info/api/file/download/18858) (11-state monitoring team; primary report, read in round 12, see below; first seen [via the press](https://www.yahoo.com/news/north-korea-supplied-russia-9-142135873.html)) | up to 9m rounds and at least 100 ballistic missiles in 2024 alone |
 | [Ukrainian HUR](https://prm.ua/en/intelligence-shipments-of-shells-from-north-korea-to-russia-have-halved/) (belligerent) | about 6.5m since 2023; 2025 half of 2024; about half the shells outdated |
 | [INSS via Nikkei](https://hromadske.ua/en/economy/263814-pivnichna-koreia-zarobyla-blyzko-polovyny-svoho-vvp-za-try-roky-viyny-na-botsi-rosiyi-proty-ukrayiny-nikkei) | about 250 KN-23 missiles; [CAR](https://storymaps.arcgis.com/stories/3a4e9d713f59426d9d1ea3881abecbf3) documented KN-23/24 debris in Kharkiv |
 | [Maritime Executive](https://maritime-executive.com/article/north-korean-shipments-of-shells-to-russia-tail-off) | only two shipments seen Jan–Mar 2026 |
@@ -59,6 +59,28 @@ EUR 8.3bn, against INSS's EUR 6.9–13.0bn (USD 7.7–14.4bn).
 **Not counted.** The wages of 15–25k North Korean workers in Russia (a labour transaction). Payment form does not change the value:
 INSS says 80–96% of Russia's payment is technology and components, so Pyongyang's cash income is far smaller than the
 market value of what it sent.
+
+### Checked against the primary report (round 12)
+
+The Multilateral Sanctions Monitoring Team's first report is now read in full: **MSMT/2025/1, "Unlawful Military
+Cooperation including Arms Transfers between North Korea and Russia"**, 29 May 2025, also UN document S/2025/340.
+[Download](https://msmt.info/api/file/download/18858), [list of reports](https://msmt.info/Publications/Reports).
+The PDF is kept as `research/2026-10/raw/msmt/msmt_2025_1.pdf` (listed with its checksum in `raw/MANIFEST.json`;
+PDFs are not stored in the repository).
+
+| item | MSMT/2025/1 says | paragraph | the model uses | fits? |
+|---|---|---|---|---|
+| Shells and rockets, 2024 | up to 9m rounds of mixed artillery and rocket ammunition in 49 shipments, Jan to mid-Dec 2024, per one participating state | 8, 11 | 42% of 10m (central) in 2024, so about 4.2m; 6.3m at the high end | yes: the model is below this upper figure; the high end (15m in all) leaves room for it |
+| Shells and rockets, Aug 2023 to Mar 2025 | 4.2 to 5.8m rounds of 122mm and 152mm (Open Source Centre's estimate) | 8, 12 | 6.5m / 10m / 15m to early 2026 | yes: the low end (6.5m to 2026) is above OSC's count to March 2025, as later shipments continued |
+| Containers | over 20,000 since early September 2023 | 11 | timing follows the container counts (29,488 to Jan 2026, OSC; about 33,000 to Mar 2026, ROK DIA) | yes: consistent with the later, higher counts |
+| Ballistic missiles | at least 100 in 2024 alone | 13 | 150 / 220 / 280 KN-23/24, 2023 to 2026 | yes: the low end is above the 2024 minimum |
+| Heavy artillery | elements of three brigade sets: 170mm self-propelled guns, 240mm rocket launchers, more than 200 vehicles in all (guns, launchers, reload vehicles) | 13 | 220 artillery systems | yes |
+| Troops | over 11,000 in late 2024; over 3,000 more Jan to Mar 2025 | 9, 25, 26 | troops' pay from INSS (USD 0.62bn Oct 2024 to Dec 2025) | yes: counts only; the report gives no pay |
+| Prices | none | | USD 400 / 800 / 1,100 per round, missiles USD 1.5m / 2.5m / 3.5m | **not checked**: the report gives no values |
+
+**Result.** The report confirms the volumes from a primary, multi-state source. It gives no prices, so the value in
+euros is still our judgement on Russian procurement prices, and the certainty stays **C**. No number on the map
+changes.
 
 ## Iran: about EUR 3.5bn (C)
 

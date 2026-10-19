@@ -14,6 +14,9 @@ checked line by line by a person.** The verification status of each input is in
 [`sources_r11.json`](../research/2026-10/sources_r11.json). Corrections are welcome as a GitHub issue or on Reddit
 (u/Intelligent-Cream-14).
 
+To follow one money flow (loans, oil, refugees, weapons...) from its sources through these decisions to the map, see
+[trace.md](trace.md): one entry per flow, with links to the rows below.
+
 ## 1. The question and the unit
 
 | decision | why | alternative | evidence and detail |
@@ -210,6 +213,7 @@ August 2026, central), measured with the site's own `calc()` before and after ea
 | Germany's gas already in customs | 0.07 (judgement) | 0.14 (2021) and 0.15 (2022), from EUR 2.3bn and 3.5bn ÷ German final-use Russian gas of EUR 16.6bn and 23.7bn | [audit-notes](../research/2026-10/gaps/audit-notes.md) item 2, [`audit.json`](../research/2026-10/gaps/audit.json) | Germany −0.04 points (EUR −1.7bn): payments to Russia fall by EUR 1.1bn (2021) and 1.8bn (2022), but the pre-war baseline falls more, so less was avoided |
 | Belarus gas price band | ±2% every year (judgement) | ±2% to 2022, ±8% 2023–2025, ±15% 2026 | [gas_prices-notes](../research/2026-10/gaps/gas_prices-notes.md) | none visible: Belarus's range moves by 0.01 points |
 | `HK_METALS_SHARE` | 0.98 (not traced) | 1.0 in every year: precious metals rose by more than all imports from Russia | [UN Comtrade](https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=344&partnerCode=643&period=2023&flowCode=M&cmdCode=TOTAL,71) (2019–2025, [raw/comtrade_hkg](../research/2026-10/raw/comtrade_hkg/)) | Hong Kong +0.08 points (EUR +0.3bn), China −0.002 |
+| EU loans: expected loss (Decision B) | 9% for every EU loan (the usual MFA provisioning rate) | the provisioning rate the EU set for each loan: 70% for the exceptional MFA of 2022 (EUR 1bn and 5bn) and the EUR 1.59bn of repurposed EIB ELM loans; 9% for the emergency MFA (Regulation 2021/947 applies); 9% kept for MFA+ and the Ukraine Facility, whose regulations set no provisioning rate (budget headroom). The owner chose the EU's own rate as the lender's expected loss; the EU judged 9% not adequate for Ukraine in 2022 | [2022/313](https://eur-lex.europa.eu/eli/dec/2022/313/oj), [2021/947](https://eur-lex.europa.eu/eli/reg/2021/947/oj), [2022/1201](https://eur-lex.europa.eu/eli/dec/2022/1201/oj), [2022/1628](https://eur-lex.europa.eu/eli/dec/2022/1628/oj), [2022/2463](https://eur-lex.europa.eu/eli/reg/2022/2463/oj), [2024/792](https://eur-lex.europa.eu/eli/reg/2024/792/oj), [Legislative Observatory 2022/0213(COD)](https://oeil.europarl.europa.eu/oeil/en/document-summary?id=1710888) | EU-level loans worth EUR 49.4bn to Ukraine instead of 47.3bn (lender's cost 32.4bn instead of 28.6bn). All 27 EU members up by 0.007 to 0.014 points (Finland, France +0.014, Italy, Belgium, Sweden, Denmark +0.013); cost view +0.013 to +0.026 |
 
 ## What is data and what is estimated
 

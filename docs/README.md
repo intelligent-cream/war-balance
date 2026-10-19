@@ -30,7 +30,8 @@ Suppose the map shows **Poland: +4.1% of a year's GDP, likely range 2.2% to 7.0%
 The address in the browser keeps what you see, so you can copy it and share it.
 
 - **The view and the buttons on top**: for example `#view=rank&lens=ukr&m=total` opens the ranking, toward Ukraine, in total euros.
-  - `view`: `map`, `rank`, `bubbles`, `table` or `how`.
+  - `view`: `map`, `rank`, `bubbles`, `table`, `how` or `sources`.
+  - `flow`: with `view=sources`, one money flow, e.g. `#view=sources&flow=loans` opens the Sources view at loans ([trace](trace.md)).
   - `lens`: `change` (change since before the war), `cost` (cost carried), `ukr` (to Ukraine) or `rus` (to Russia).
   - `m`: `gdp` (% of GDP), `pp` (per person) or `total` (total euros).
   - `y`: a year, 2021 to 2026.
@@ -63,6 +64,14 @@ The address in the browser keeps what you see, so you can copy it and share it.
 | [reference/pipeline.md](reference/pipeline.md) | how to build, the 51 build steps in order, the `data.json` schema, the checks |
 | [reference/research-files.md](reference/research-files.md) | every research file, its notes, and which step and page use it |
 | [reference/sources.md](reference/sources.md) | the main external sources by topic, with addresses |
+
+### Tracing every number
+
+| page | what it covers |
+|---|---|
+| [trace.md](trace.md) | every money flow on the map (loans, oil, refugees, weapons...) with its method, the decisions behind it, its sources and exact links, research files, raw data, code and what is judgement |
+| [decisions.md](decisions.md) | every modelling choice, with its reasons and evidence |
+| [decision-log.md](decision-log.md) | every decision in the order it was made |
 
 ### Status
 

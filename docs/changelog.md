@@ -254,6 +254,24 @@ Sweden +2.98 → +2.92, Finland +9.06 → +9.00, France +1.60 → +1.55, Spain +
 +0.47 → +0.43, the UK +1.15 → +1.12. The US, Türkiye, India, China, Belarus, the UAE and Australia move by less than 0.01
 points. Cost view: Finland +0.07, France and Italy +0.06, Germany +0.05; Japan −0.07, Canada −0.04, the UK −0.03.
 
+- **Decision B: the EU's own provisioning rate per loan** (the owner's choice). Each EU loan's central expected loss is
+  now the provisioning rate the EU set for it in its legal text: 70% for the exceptional MFA of 2022 (EUR 1bn and 5bn,
+  Decisions 2022/1201 and 2022/1628) and the EUR 1.59bn of repurposed EIB ELM loans (2022/1628); 9% for the emergency
+  MFA (2022/313, under Regulation 2021/947). MFA+ (2022/2463) and the Ukraine Facility (2024/792) set no provisioning
+  rate, because they rest on budget headroom, so the usual 9% is kept. The low (0) and the high (the war yield) do not
+  change. EU-level loans are worth EUR 49.4bn to Ukraine instead of 47.3bn, all loans 55bn instead of 53bn (lender's
+  cost 34bn instead of 30bn). All 27 EU members move toward Ukraine by 0.007 to 0.014 points (Finland and France
+  +0.014); in the cost view by 0.013 to 0.026 ([loans](method/loans.md#by-loan-type)).
+- **Trace by money flow** ([trace](trace.md), new page). Every part on the map is grouped into one of 26 money flows.
+  Each flow has one entry: what it is, the method section, the decisions behind it, its sources with their exact links,
+  the research files and raw data, the code, and which values are data or judgement. The map has a new **Sources** view
+  with the same groups, and a § link next to each part in a country's panel opens its flow
+  (`#view=sources&flow=loans`). No number changes.
+- **North Korea's primary source**: the Multilateral Sanctions Monitoring Team's report MSMT/2025/1 (29 May 2025, UN
+  document S/2025/340) is now read and linked as a primary source of `military_rus_r6`. It confirms the volumes (rounds,
+  containers, missiles, artillery, troops) but gives no prices, so the certainty stays C and no number changes
+  ([comparison](../research/2026-10/gaps/military_rus_r6-notes.md#checked-against-the-primary-report-round-12)).
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open

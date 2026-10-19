@@ -61,6 +61,31 @@ EXPECTED_LOSS = {
     # (Government of Ukraine, 4 Sep 2024), which the GCU's comparability principle points to
     "bilateral": (0.0, 0.0, 0.60),
 }
+# Decision B (round 12, the owner's choice): for each EU loan the central expected loss is the provisioning rate the EU
+# itself set for that loan in its legal text, where it set one; the low stays 0 and the high gain the war yield. In
+# 2022 the EU judged the usual 9% "not adequate" for Ukraine and set 70% (Legislative Observatory 2022/0213(COD)).
+#   eu_mfa_2022_emergency  Decision (EU) 2022/313: provisioned "in accordance with Regulation (EU) 2021/947", whose
+#                          Article 31(5) sets 9% for macro-financial assistance -> 9%
+#   eu_mfa_2022_exc1       Decision (EU) 2022/1201: "the provisioning rate of 70 % shall apply" -> 70%
+#   eu_mfa_2022_exc5       Decision (EU) 2022/1628, Article 11: "a provisioning rate of 70 % shall apply" (9% paid
+#                          in, the rest backed by member states' guarantees of up to 61% of the loans) -> 70%
+#   eu_mfa_plus            Regulation (EU) 2022/2463: "No provisioning ... no provisioning rate ... shall
+#                          be set" (backed by budget headroom) -> no rate of its own: 9% kept
+#   eu_ukraine_facility    Regulation (EU) 2024/792: the same wording for its loans -> 9% kept
+#   eib                    the EUR 1.59bn of repurposed ELM loans (Kiel EIF3_1): Decision (EU) 2022/1628 "applies a 70 %
+#                          provisioning rate to the repurposed ELM loans of EUR 1,59 billion" -> 70%; other EIB items,
+#                          no rate identified -> 9% kept
+#   eu_usl                 the 2026 Ukraine Support Loan, repaid only from Russian reparations (Council doc 5738/26):
+#                          no provisioning rate; it keeps its fixed values
+EU_PROVISIONING = {
+    "eu_mfa_2022_emergency": 0.09,
+    "eu_mfa_2022_exc1": 0.70,
+    "eu_mfa_2022_exc5": 0.70,
+    "eu_mfa_plus": 0.09,
+    "eu_ukraine_facility": 0.09,
+    "eib": 0.09,
+}
+EU_PROVISIONING_ITEM = {"EIF3_1": 0.70}
 CREDITOR = {
     "eu_mfa_2022_emergency": "eu",
     "eu_mfa_2022_exc1": "eu",
@@ -171,6 +196,37 @@ ROUND12_SOURCES = [
         "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01DEM156N&cosd=2021-01-01",
         "date": "2026-10-19",
     },
+    # Decision B: the EU's own provisioning rate per loan (EU_PROVISIONING above)
+    {
+        "name": "Decision (EU) 2022/313: emergency MFA, provisioned under Regulation 2021/947",
+        "url": "https://eur-lex.europa.eu/eli/dec/2022/313/oj",
+        "date": "2022-02-24",
+    },
+    {
+        "name": "Regulation (EU) 2021/947 (NDICI), Article 31(5): 9% provisioning rate for macro-financial assistance",
+        "url": "https://eur-lex.europa.eu/eli/reg/2021/947/oj",
+        "date": "2021-06-09",
+    },
+    {
+        "name": "Decision (EU) 2022/1201: exceptional MFA EUR 1bn, provisioning rate 70%",
+        "url": "https://eur-lex.europa.eu/eli/dec/2022/1201/oj",
+        "date": "2022-07-12",
+    },
+    {
+        "name": "Decision (EU) 2022/1628: exceptional MFA EUR 5bn and repurposed EIB ELM loans EUR 1.59bn, provisioning rate 70%",
+        "url": "https://eur-lex.europa.eu/eli/dec/2022/1628/oj",
+        "date": "2022-09-20",
+    },
+    {
+        "name": "Regulation (EU) 2022/2463 (MFA+ 2023): no provisioning, no provisioning rate set",
+        "url": "https://eur-lex.europa.eu/eli/reg/2022/2463/oj",
+        "date": "2022-12-14",
+    },
+    {
+        "name": "Regulation (EU) 2024/792 (Ukraine Facility): no provisioning for its loans, no provisioning rate set",
+        "url": "https://eur-lex.europa.eu/eli/reg/2024/792/oj",
+        "date": "2024-02-29",
+    },
 ]
 
 
@@ -265,13 +321,19 @@ def pv(fl: list[tuple[int, float]], rate: float) -> float:
     return sum(p / (1 + rate) ** t for t, p in fl)
 
 
-def values(cls: str, c: dict, year: int, lender: str | None, rates: dict, funding: dict, sub: dict) -> dict:
-    """Ukraine's gain (ge) and the lender's cost (cost), low / central / high, for 1 lent."""
+def values(
+    cls: str, c: dict, year: int, lender: str | None, rates: dict, funding: dict, sub: dict, item: str | None = None
+) -> dict:
+    """Ukraine's gain (ge) and the lender's cost (cost), low / central / high, for 1 lent. item: the Kiel id, for a
+    provisioning rate set for one loan only (EU_PROVISIONING_ITEM)."""
     if "fixed" in c:
         f = c["fixed"]
         return {"ge": dict(f), "cost": dict(f), "el": None}
     group = CREDITOR[cls]
     el = EXPECTED_LOSS[group]
+    if group == "eu":
+        mid = EU_PROVISIONING_ITEM.get(item, EU_PROVISIONING.get(cls, el[1]))
+        el = (el[0], mid, max(el[2], mid))
     gcu = group == "bilateral" and lender in GCU_MEMBERS and year <= GCU_LAST_LOAN_YEAR
     y, normal = str(year), rates["normal"]
     sl = {b: sub[b] for b in BANDS}
@@ -331,7 +393,7 @@ def main() -> None:
 
     def revalue(items: list, lender: str | None) -> None:
         for it in items:
-            v = values(it["class"], classes[it["class"]], it["year"], lender, rates, funding, sub)
+            v = values(it["class"], classes[it["class"]], it["year"], lender, rates, funding, sub, it.get("kiel_id"))
             it.setdefault("ge_round5", it["ge"])
             it["ge"], it["cost"] = v["ge"], v["cost"]
             if v.get("gcu_npv_loss"):
@@ -455,6 +517,12 @@ def main() -> None:
     meta["expected_loss"] = {
         "by_creditor_class_low_central_high": {k: list(v) for k, v in EXPECTED_LOSS.items()},
         "class_of_each_loan_class": CREDITOR,
+        "eu_provisioning_rate_by_class": EU_PROVISIONING,
+        "eu_provisioning_rate_by_item": EU_PROVISIONING_ITEM,
+        "eu_note": "Decision B (round 12): the central expected loss of each EU loan is the provisioning rate the EU set "
+        "for it: 70% for the exceptional MFA of 2022 (Decisions 2022/1201 and 2022/1628) and the EUR 1.59bn of "
+        "repurposed EIB ELM loans (2022/1628); 9% for the emergency MFA (2022/313, by Regulation 2021/947 Art. 31(5)); "
+        "MFA+ (2022/2463) and the Ukraine Facility (2024/792) set no provisioning rate (budget headroom), so 9% is kept.",
         "fixed_classes": "eu_usl (repaid only from Russian reparations), guarantee_private, dfi_commercial, contribution "
         "and swap_line keep fixed values (meta.loan_classes)",
         "gcu": {
@@ -470,7 +538,8 @@ def main() -> None:
     meta["method"] = (
         "Round 12. Ukraine's gain per loan item = 1 - PV of Ukraine's repayments under the loan's terms x (1 - expected "
         "loss of the creditor class). low: discounted at Ukraine's normal (2021) rate, no expected loss for official "
-        "lenders. central: the normal rate and the measured expected loss (IMF and IBRD 0; EU 9%; bilateral lenders of "
+        "lenders. central: the normal rate and the measured expected loss (IMF and IBRD 0; EU: the provisioning rate the EU set "
+        "for each loan, 70% for the 2022 exceptional MFA and the repurposed EIB ELM loans, 9% otherwise; bilateral lenders of "
         "the Group of Creditors of Ukraine: the debt-service suspension in the cash flows). high: the promised war "
         "yield of the payout year. Fixed classes (Ukraine Support Loan, guarantees for firms, swap line) keep their "
         "values. Lender's cost (cost view): the same terms and losses discounted at the lender's own funding rate. See "

@@ -35,10 +35,12 @@ Central values for a loan paid out in the year shown. "Gift" is the share of fac
 
 | loan type | creditor class | expected loss | evidence | gift (round 5, 10%) | gift now (central) |
 |---|---|---|---|---|---|
-| EU MFA+ 2023 (35 years, interest paid by members to 2027) | EU | 9% | not restructured; serviced; the EU's own provisioning rate for MFA loans | 0.80 | 0.67 |
-| EU Ukraine Facility loans 2024–2026 | EU | 9% | as above | 0.79 | 0.66 (2024) |
-| EU exceptional MFA 2022 | EU | 9% | as above | 0.64–0.77 | 0.52–0.65 |
-| EIB loans | EU | 9% | as above | 0.52 | 0.40 |
+| EU MFA+ 2023 (35 years, interest paid by members to 2027) | EU | 9% | not restructured; serviced. Its regulation sets no provisioning rate (budget headroom, [2022/2463](https://eur-lex.europa.eu/eli/reg/2022/2463/oj)), so the EU's usual 9% is kept | 0.80 | 0.67 |
+| EU Ukraine Facility loans 2024–2026 | EU | 9% | as above: no provisioning rate set ([2024/792](https://eur-lex.europa.eu/eli/reg/2024/792/oj)) | 0.79 | 0.66 (2024) |
+| EU emergency MFA 2022 (EUR 1.2bn) | EU | 9% | provisioned under [Regulation 2021/947](https://eur-lex.europa.eu/eli/reg/2021/947/oj), Article 31(5): 9% ([2022/313](https://eur-lex.europa.eu/eli/dec/2022/313/oj)) | 0.67 | 0.55 |
+| EU exceptional MFA 2022 (EUR 1bn and EUR 5bn) | EU | **70%** | the EU set a 70% provisioning rate for these loans ([2022/1201](https://eur-lex.europa.eu/eli/dec/2022/1201/oj), [2022/1628](https://eur-lex.europa.eu/eli/dec/2022/1628/oj)); it judged 9% "not adequate" | 0.64–0.77 | 0.84–0.89 (was 0.52–0.65 at 9%) |
+| EIB loans: the EUR 1.59bn of repurposed ELM loans, 2022 | EU | **70%** | [2022/1628](https://eur-lex.europa.eu/eli/dec/2022/1628/oj) "applies a 70 % provisioning rate to the repurposed ELM loans of EUR 1,59 billion" | 0.52 | 0.80 (was 0.40) |
+| other EIB loans | EU | 9% | no provisioning rate of their own was found | 0.52 | 0.40 |
 | EU Ukraine Support Loan 2026 | repaid only from reparations | about 0.95 | the legal text: "to be repaid by reparations due by Russia" | 0.95 | 0.95 (0.80–1.00) |
 | IBRD loans backed by Japan, the UK, Sweden, Spain, Denmark, the Netherlands, Lithuania | World Bank | 0 | the World Bank is a senior creditor; it is paid first | 0.41 | 0.20 |
 | Canada's loans through the IMF Administered Account | IMF | 0 | the IMF is a senior creditor; Ukraine keeps paying it | 0.44–0.45 | 0.30–0.31 |
@@ -105,13 +107,14 @@ the **lender's own funding rate** instead of Ukraine's:
 - **National loans:** the lender's 10-year government bond yield in the year of payout (OECD, through FRED).
 - **IBRD guarantees:** the guarantor pays only if Ukraine stops paying the World Bank, which has not happened: 0.
 
-The range uses the same expected losses at 0 (low), central and high: EU 9% central and 70% high (the share the
-Commission set aside for Ukraine's 2022 loan, because 9% was "not adequate in this case"); bilateral lenders 60% high
+The range uses the same expected losses at 0 (low), central and high: for EU loans the central is the provisioning
+rate the EU set for that loan (70% for the 2022 exceptional MFA and the repurposed EIB loans, 9% otherwise) and the
+high is 70%; bilateral lenders 60% high
 (a final treatment like the bondholders' 60% present-value cut). This replaces the flat 26% of face
 (`LOAN_GRANT_ELEMENT`) and its half-to-one-and-a-half band.
 
-Over 2022–2026 the lender's cost of EUR 96.5bn of loans is about EUR 30bn (15–62); at 26% it was EUR 25bn. EU members
-carry more (their EU loans cost about 39% of face, the Support Loan 95%); Japan, the UK and Canada carry less, because
+Over 2022–2026 the lender's cost of EUR 96.5bn of loans is about EUR 34bn (15–62); at 26% it was EUR 25bn. EU members
+carry more (their EU loans cost about 45% of face, the Support Loan 95%); Japan, the UK and Canada carry less, because
 IBRD guarantees and IMF-account loans cost the lender almost nothing.
 
 ## A worked example: EU MFA+ 2023, EUR 18bn
@@ -171,7 +174,10 @@ Every number above has a fetched source, also listed under `loans_value` in
 
 ## What is still judgement
 
-- The EU's expected loss (9%) uses the EU's own provisioning rate as a stand-in: no loss has happened.
+- The EU's expected loss uses the provisioning rate the EU set for each loan as a stand-in (70% for the 2022
+  exceptional MFA and the repurposed EIB loans, 9% for the rest): no loss has happened. MFA+ and the Ukraine Facility
+  have no provisioning rate of their own (they rest on budget headroom), so they keep the usual 9%. Decision B,
+  round 12, the owner's choice ([decision log](../decision-log.md#round-12-data-precision-19-october)).
 - The Ukraine Support Loan's 0.80 / 0.95 / 1.00: whether reparations, or the frozen Russian assets, ever repay it.
 - Guarantees for lending to firms (10% / 25% / 40%), the swap line, near-market DFI loans.
 - How the standstill repays (equal yearly instalments over 2035–2039, interest at the loan's rate in between).

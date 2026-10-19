@@ -30,6 +30,7 @@ Start at the [documentation index](docs/README.md), which explains in plain lang
 - [Prices and the war-time windfall](docs/method/prices.md) · [Ranges and certainty](docs/method/ranges.md)
 - [Trade](docs/method/trade.md) · [Energy and laundered oil](docs/method/energy-and-laundered-oil.md) · [Services, shipping, company taxes](docs/method/services-shipping-companies.md) · [Aid, refugees, military, flowback](docs/method/aid-refugees-military.md)
 - [Pipeline and data.json](docs/reference/pipeline.md) · [Research files](docs/reference/research-files.md) · [Sources](docs/reference/sources.md)
+- [Trace every money flow](docs/trace.md): for loans, oil, refugees, weapons and every other flow, its sources with exact links, how it is calculated and why · [Decisions](docs/decisions.md)
 - [Limitations](docs/limitations.md) · [Changelog](docs/changelog.md)
 
 ## Repository
