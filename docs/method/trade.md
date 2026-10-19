@@ -197,7 +197,7 @@ money is already inside trade with Russia (`apply_chpl()`, [`chpl.json`](../../r
 
 ## Freight: CIF to FOB
 
-Import values include freight and insurance (CIF). That part is paid to shippers and insurers, and is counted for them in [shipping](services-shipping-companies.md#shipping) and services, not for Russia. [build_data.py `remove_freight()`](../../pipeline/build_data.py) takes `CIF_SHARE = 3.5% / 5.5% / 7.5%` (low/middle/high) out of every country's payments to Russia, yearly values and baseline alike, except for the share priced at the Russian border (pipeline gas and crude, electricity, overland trade; `BORDER_PRICED` from audit 2, question 7).
+Import values include freight and insurance (CIF). That part is paid to shippers and insurers, and is counted for them in [shipping](services-shipping-companies.md#shipping) and services, not for Russia. [build_data.py `remove_freight()`](../../pipeline/build_data.py) takes the importer's own freight margin from OECD ITIC out of every country's payments to Russia (round 11: the 25 largest buyers by name, e.g. China 6.4%, India 7.2%, Türkiye 8.6%, Germany 4.9%, low ×0.7, high ×1.4; others `CIF_SHARE = 4.5% / 6.5% / 9%`, was 3.5% / 5.5% / 7.5%; gold 0.1% / 0.5% / 2%), yearly values and baseline alike, except for the share priced at the Russian border (pipeline gas and crude, electricity, overland trade; `BORDER_PRICED` from audit 2, question 7).
 
 ## 2026 refresh (round 5)
 

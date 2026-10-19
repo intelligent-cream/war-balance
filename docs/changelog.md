@@ -183,6 +183,21 @@ customs correction was taken off at full value; that gold and hidden payments ha
 fuel refined in China before the war was subtracted twice; and that relabelled Russian products counted at the crude
 gain. All are fixed. Shared links: Back keeps the current filters, and invalid values are tidied out of the address.
 
+## Round 11
+
+**Assumptions backed by data.** Judgement values were checked against data and replaced where data exists
+([decisions.md](decisions.md#assumptions-backed-by-data-round-11)). Russia's net gain on services and arms now comes
+from official sector profits: 0.08 → about 0.04 and 0.12 → about 0.045. Fewer lost sales to Russia count as lost
+income. Partners' records of bunkers sold to ships of Liberia, Panama and the Marshall Islands no longer count as their
+laundered oil. Refugee costs, remittances, donations and freight margins use budget and statistical figures. EU-level
+military aid now counts where Kiel's items say it was spent: Sweden's Gripen and Ukraine's own drones, not French or
+German industry. In the cost view, loans cost the lender 26% of face (was 30%) and waived duties about 0.2% (was 4%).
+
+Headline effects (% of GDP, round 10 → round 11): Hong Kong −5.0 → −4.3, Estonia +9.6 → +9.3, Lithuania +14.8 → +14.6,
+Finland +9.3 → +9.1, Belarus −17.8 → −17.6, Tajikistan −38.0 → −38.2, Malta +0.6 → +0.9, Hungary −3.9 → −4.1,
+Latvia +4.2 → +4.0. Moldova stays at +5.8. Germany, Poland, the United States, the United Kingdom, France, Italy and
+Sweden move by less than 0.03 points. The median range stays at about 1.9 points of GDP.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open

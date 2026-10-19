@@ -93,10 +93,12 @@ rule above), now applied to the other side of each trade. The suggestion came fr
 | pipeline gas | 0.60 | 0.84 | 0.69 | 0.60 | 0.54 | 0.57 |
 | LNG (Russian owners' part) | 0.35 | 0.54 | 0.47 | 0.36 | 0.37 | 0.35 |
 | coal | 0.30 | 0.44 | 0.20 | 0.06 | 0.02 | 0.04 |
-| all other goods (weighted) | 0.20 | 0.18 | 0.14 | 0.12 | 0.11 | 0.13 |
-| services | 0.08 | 0.08 | 0.08 | 0.08 | 0.08 | 0.08 |
-| arms | 0.12 | 0.12 | 0.12 | 0.12 | 0.12 | 0.12 |
+| all other goods (weighted) | 0.20 | 0.17 | 0.13 | 0.12 | 0.11 | 0.13 |
+| services | 0.032 | 0.035 | 0.043 | 0.034 | 0.044 | 0.044 |
+| arms | 0.043 | 0.039 | 0.045 | 0.050 | 0.050 | 0.050 |
 | gold | 0.39 | 0.33 | 0.40 | 0.49 | 0.58 | 0.66 |
+
+Since round 11, services, arms and the other goods use official sector profitability (Rosstat by activity), export duties collected and company results instead of judgement ([decisions](../decisions.md#assumptions-backed-by-data-round-11)).
 
 Crude in 2023, for example: Russia sold at 64.2 USD a barrel FOB; real costs were 23 USD (lifting 4, pipelines and
 ports 5, depreciation 6.5, overhead 1.5, normal return 6), so the net gain is 0.64, of which the state took 0.47 in
@@ -145,7 +147,7 @@ gold outline (threshold EUR 10m and 0.05% of GDP).
 
 ## The cost view
 
-"Cost carried" is a second lens: what the country gave up, not where money went. Parts (`costParts` in `calc()`): aid with loans at the lender's grant equivalent (30% of face value, `LOAN_GRANT_ELEMENT`; the net shift uses their value to Ukraine instead), donated weapons at their recorded value, refugee hosting at net cost, refugee hosting, undisclosed aid, private donations, the extra price paid to replace Russian energy, profit lost on sales to Russia (goods and services, 20%), import tariffs dropped for Ukraine (4% of purchases from Ukraine, EU, UK and Canada only), minus discounts gained on Russian oil, and minus flowback profit.
+"Cost carried" is a second lens: what the country gave up, not where money went. Parts (`costParts` in `calc()`): aid with loans at the lender's grant equivalent (26% of face value since round 11, `LOAN_GRANT_ELEMENT`; the net shift uses their value to Ukraine instead), donated weapons at their recorded value, refugee hosting at net cost, refugee hosting, undisclosed aid, private donations, the extra price paid to replace Russian energy, profit lost on sales to Russia (goods and services, 20%), import tariffs dropped for Ukraine (EU, UK and Canada only: about 0.2% of purchases from Ukraine since round 11, the average of the EU's 0.3% in June 2022 to June 2025, the UK's 0.2% and Canada's 1%; was 4%), minus discounts gained on Russian oil, and minus flowback profit.
 
 ## The other lenses
 
