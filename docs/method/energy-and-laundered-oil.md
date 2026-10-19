@@ -181,7 +181,26 @@ Of the 202 buyers of EU-refined fuel, 74 are measured both ways and 128 are held
 | North Macedonia, Albania, Montenegro, Bosnia and Herzegovina | | −0.5 to −0.75 each | supplied by Greek and other EU refiners before the war |
 | EU members | | unchanged | both routes measured |
 
-Lebanon (+2.94), Nigeria (+1.51), Libya (−5.20) and Moldova (+7.77) keep their credit: Türkiye's own records name
+### Round 14: growth, hubs and Nigeria (audit H2, H3)
+
+- **Growth only on the base it was measured on (H2).** The pre-war growth of laundered oil (`round4a.json`, about 10%
+  a year) was measured on fuel refined from Russian crude in China, India and Türkiye before the war. Round 13 applied
+  it to the whole pre-war base, including the EU-refined part added in `eu_refiner_exports()`, so the expected level
+  rose by up to 86% by 2026 for no measured reason. Since round 14 the expected path is re-weighted so the EU-refined
+  part is flat (its pre-war level × the no-war crude price), and the held route (above) is flat too. Effect: Lebanon
+  3.71 → 2.73, Nigeria 1.32 → 0.68, Malta 1.43 → 1.04, Belgium 3.49 → 3.14, Libya −6.18 → −7.08.
+- **Hubs pass EU-refined fuel on (H3).** EU-refined fuel bought by trading hubs (Rotterdam, Antwerp, Malta, Singapore,
+  Greece, the UAE, Togo) is now passed on to the hubs' customers through the same resale shares and chains as other
+  laundered oil (`_hub_chain()`); fuel that comes back to the refiner through a hub (the Netherlands–Belgium–Germany
+  circle) is the refiner's own use and stays with it; bunker fuel sold to ships at a hub is charged to no country.
+  Effect: Belgium 3.14 → 2.81, Malta 1.04 → 0.75, the Netherlands −0.10, Nigeria +0.21 (as an Antwerp customer).
+- **Nigeria (H2).** Its products price index was a data error (0.53 of the benchmark in 2023), now screened
+  ([prices.md](prices.md#fuel-price-screen-round-14)), and its credit for less fuel bought from EU refiners is labelled
+  structural on the map: the EU banned Russian-made fuel (2023) and Nigeria's Dangote refinery started production in
+  January 2024 ([VOA](https://www.voaafrica.com/a/nigeria-s-dangote-refinery-starts-diesel-aviation-fuel-production/7438591.html)).
+  Nigeria: +1.51 (round 13) → +0.93 (round 14), likely range +0.14 to +1.75, method band +0.01 to +0.93.
+
+Round 13b's figures: Lebanon (+2.94), Nigeria (+1.51), Libya (−5.20) and Moldova (+7.77) kept their credit: Türkiye's own records name
 Lebanon, Libya and Moldova, and India's, the UAE's and Togo's buyers' records name Nigeria. If only EU members and the
 G7 and Australia counted as measured, Moldova would move −2.46, Lebanon −2.22, Libya −2.06 and Nigeria −1.04 points
 ([limitations](../limitations.md#open-issues-in-the-numbers)).

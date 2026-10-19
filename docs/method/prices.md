@@ -8,7 +8,7 @@ Russian gas cost Hungary 7.6 times its pre-war price in 2022. A country that kep
 change_i = base × FRAC_i × bmul_i − value_i / pidx_i
 ```
 
-If `pidx` were left out, a price spike would look like a rise in purchases (more paid to Russia) and a later price fall like a cut. With it, the comparison is between the expected volume and the actual volume, both valued at pre-war prices. The site applies it in `actV = (i, v, p) => v / p` inside `calc()` in [`site/index.html`](../../site/index.html). Up to round 3 this was the whole story, and price spikes simply did not count; since round 4 the windfall part puts the price effect on Russian fuel back in, separately and visibly.
+If `pidx` were left out, a price spike would look like a rise in purchases (more paid to Russia) and a later price fall like a cut. With it, the comparison is between the expected volume and the actual volume. **Round 14 (audit M5):** that change in volume is then valued at the year's prices, `change_i × cur_i`, so every trade part is in the same current euros as aid: other goods at their own price level (`cur = pidx`), fuel at the price a no-war market expected (already that year's euros, so its factor is 1), the gold share at the gold price. Until round 13 the change stayed at 2019–2021 prices for goods other than fuel, which understated trade parts against aid by about the rise in prices (15–40% by 2026). The site applies it in `actV = (i, v, p) => v / p` inside `calc()` in [`site/index.html`](../../site/index.html). Up to round 3 this was the whole story, and price spikes simply did not count; since round 4 the windfall part puts the price effect on Russian fuel back in, separately and visibly.
 
 ## Which index each flow uses
 
@@ -20,7 +20,7 @@ Set by [build_data.py `price_indices()`](../../pipeline/build_data.py), with low
 | `from_rus`, `buy_ukr`, `sell_ukr` | Eurostat non-fuel goods import price index | `energy2.json` `price_index.non_fuel_goods` |
 | `svc_bought`, `svc_sold`, `shipping` | euro-area services HICP | `energy2.json` `price_index.services` |
 | `company` (taxes) | none: compared in money | |
-| laundered oil | none: compared in money (higher prices count) | |
+| laundered oil | since round 13 volumes: the Urals price paid over the no-war crude price (`laundered_volumes()`) | `energy2.json` `price_index.urals`, `energy_nowar.json` |
 
 Exceptions: [`narrow.json`](../../research/2026-10/gaps/narrow.json) can set its own `pidx`, applied by `apply_narrow()` (no longer for Turkey's `to_rus`, which uses `turkey_prices.json` since round 5). [`check_data.py`](../../pipeline/check_data.py) check 12 verifies that every benchmark index averages 1 over 2019–2021 and that every `to_rus` series has a price level.
 
@@ -29,7 +29,7 @@ Exceptions: [`narrow.json`](../../research/2026-10/gaps/narrow.json) can set its
 For `to_rus`, a country's price level mixes what it bought before the war:
 
 1. **Fuel price level**, `fuel_index()`:
-   - its **own customs unit values** (value ÷ quantity of imports from Russia, 2018–2021 = 1) where measured, from [`prices.json`](../../research/2026-10/gaps/prices.json) (`index.fossil_all`, 102 countries; Eurostat Comext monthly for EU members, UN Comtrade elsewhere);
+   - its **own customs unit values** (value ÷ quantity of imports from Russia, 2018–2021 = 1) where measured, from [`prices.json`](../../research/2026-10/gaps/prices.json) (`index.fossil_all`, 102 countries; Eurostat Comext monthly for EU members, UN Comtrade elsewhere); since round 14 oil at the Russian port (below) and screened for outliers;
    - otherwise its pre-war fuel mix (crude, products, gas, coal; `energy2.json` `fuel_mix_2019_2021`, or the import-weighted average outside the 60 largest buyers, `import_mix()`) weighted over benchmark indices: Urals, Russian oil products, the country's own gas index (`gas_index()`, below) and coal.
 2. **Non-fuel price level**: the country's own non-fuel index from `prices.json` where measured, else the Eurostat non-fuel index.
 3. **Weights**: fuel's share of pre-war imports from Russia (`fossil_share()`: the measured 2018–2021 mix in `prices.json`, else the `energy2.json` mix). Where `prices.json` measures what share of each year's payments was fuel (`fuel_share_year()`), that yearly share is used instead, as a harmonic mean: `pidx = 1 / (s/fuel + (1 − s)/nonfuel)`. India is the reason: it bought mostly crude after 2022, so its pre-war mix (43% fuel) understated both its price level and its windfall (India −4.6% → −5.1% of GDP after this fix).
@@ -45,6 +45,30 @@ The effect of own prices on band width (composite index, 2022, from `prices.json
 | Korea | 52% | 10% |
 | Germany | 45% | 36% (gas prices confidential) |
 | Turkey | 41% | own index from contract terms (round 5) |
+
+## One price basis: FOB (round 14)
+
+Customs values and unit values are CIF: they include sea freight and insurance. The no-war benchmarks (Urals, Russian products) are FOB, at the Russian port. Until round 13 the windfall compared a buyer's CIF unit values with the FOB no-war price, so the war-time freight surge on longer routes counted as Russia's windfall (India: +EUR 10.7bn "extra paid", although Urals sold in 2022 at almost exactly its no-war price), and the same freight was credited again to tanker owners in the shipping part (audit C3).
+
+Since round 14 oil is on one basis, FOB (`fob_factor()`, `payments_fob_factor()` in [`build_data.py`](../../pipeline/build_data.py)):
+
+- **Measured freight.** The project's gross freight pool on Russian seaborne crude and products (USD bn per year, [`shipping-notes.md`](../../research/2026-10/gaps/shipping-notes.md) section 1: crude 3.0, 3.6, 2.2 in 2019–2021; 8.5, 11.0, 8.1, 7.2 in 2022–2025; 9.7 in January–August 2026) over the seaborne volumes the same notes use (crude 3.4 mb/d, products 2.25 mb/d) gives freight per barrel; against the Urals price and the Russian product price (`energy2.json` levels) it gives freight's share of the CIF value: crude about 3.9% in 2019–2021, 8–12% in 2022–2025, 14% in 2026.
+- **Each importer.** Its pre-war freight share is its OECD ITIC margin (`CIF_BY_IMPORTER`, already taken off by `remove_freight()`); in each war year it is that margin times the change in the measured freight share (at most 35%). The excess comes off the oil part of its payments and off its own oil price index, so the volume is unchanged and the windfall compares FOB with the FOB no-war price. Border-priced supplies (`BORDER_PRICED`) and buyers supplied overland (Belarus, Kazakhstan, Kyrgyzstan, Tajikistan, Uzbekistan, Turkmenistan, Mongolia, Armenia, Azerbaijan, Afghanistan; a geographic judgement) have no sea freight. Coal and LNG keep CIF: there is no measured freight series for them.
+- **Check.** Across the 61 buyers with their own crude prices, the median ratio of own crude price to Urals FOB, war years against 2021, is 0.98 after the change (on CIF values the notes measured 1.12): `check_data.py` check 23.
+- **Effect.** India's windfall goes from +EUR 10.7bn extra paid to EUR 11.0bn paid below the no-war price (net −2.92% → −2.29% of GDP at that step), Türkiye −2.90 → −2.51, China −0.75 → −0.65. The method band keeps the CIF basis as an alternative ("freight").
+- **What it leaves out.** Part of the freight went to Russia-linked traders and Sovcomflot. No evidence on that margin by buyer was found, so it is not shown separately.
+
+## The mix of what was bought (round 14)
+
+Russia's gain on what a country bought (`to_rus.gain`, `apply_net_gain()`) depends on how much of it was fuel. Two errors were found by the audit (C1, C2):
+
+- **The fuel share before the war** came from `import_mix()`, which for 172 economies outside the 60 largest buyers is the 60-country average (57% fuel). Yemen's imports from Russia were 95% wheat. Since round 14 the step uses the measured 2018–2021 share, `fossil_share()`, the same as the price index and the windfall (`check_data.py` check 22), and the measured split over fuels from customs where it exists (`pre_war_fuel_split()`).
+- **What was bought each year** came from the fuel tracker's tonnes, which for some buyers contradict customs (Uzbekistan's 2024 products 13 times 2021) and for 25 economies repeat the year before (2025 = 2024; Belarus 2021–2025 constant). Since round 14 the fuel share of what was bought comes from the country's own customs values per fuel, each deflated by its own price level (`customs_fuel_volumes()`), moved in odds against the pooled 2018–2021 share, so nothing is capped at 100% fuel. The tracker's tonnes only split the fuel share over fuels, except in copied years (`tracker_copied_years()`, published as `gain.tracker_copied`), where the customs split is used. How each year was measured is in `to_rus.gain.basis`.
+- **Effect** (this step alone): Uzbekistan −6.3 → −3.2% of GDP, Belarus −5.0 → −2.0, Tunisia −7.5 → −5.1, Libya −3.7 → −6.6, Yemen −4.1 → −6.9 (its customs show mostly fuel bought in 2024–2025, against wheat before the war).
+
+## Fuel price screen (round 14)
+
+Round 13 screened non-fuel unit values (Yemen's 2023 wheat). Since round 14 fuel unit values are screened too (`fuel_outliers()`): an own crude, products, diesel, fuel-oil or coal index more than 1/0.6 times off its benchmark (both 2019–2021 = 1, oil at FOB) in a war year is a data error and is replaced by the benchmark for that year; years filled from the country's own post-war ratio inherit the error and are replaced with it; the composite fuel index is rebuilt from the screened parts. Flagged: Nigeria's products 2023–2026 (customs value over CREA tonnes: 0.53 of the benchmark), coal for Hong Kong, Croatia, Morocco, Oman and Slovenia, Brazil's 2022 crude, Spain's 2023–2026 products, Hungary's diesel. The 0.6 band is a judgement.
 
 ## Gas prices per country
 
@@ -81,7 +105,7 @@ Rules:
 
 - **Fuel only.** The price rise of non-fuel goods is mostly general inflation, so it is left out.
 - **Only money flowing to Russia.** Higher prices on goods *sold to* Russia do not count in the seller's favour.
-- **On top of volume.** A country that cut volumes still gets the windfall on what it kept buying. Germany: −15.5bn (−23.5 to −7.3), almost all in 2022 (−29.2bn against 2019–2021 prices).
+- **On top of volume.** A country that cut volumes still gets the windfall on what it kept buying. Germany (round 14): −16.5bn (−24.3 to −10.1), almost all in 2022.
 
 `prices.json` computes its own windfall too (all 102 countries EUR 601bn for 2022–2026, 486–716, including non-fuel goods); the map's part uses fuel only and the map's own payments series, so the two differ.
 

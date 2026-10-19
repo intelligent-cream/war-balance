@@ -51,7 +51,7 @@ Two things apply to every step:
 | 20 | `fix_artefacts()` | Lebanon, Mauritania, Saint Lucia, Bonaire, Botswana, Seychelles, Malta | [trade](../method/trade.md#smaller-corrections) |
 | 21 | `baltic_transit()` | Baltic and Finnish pass-through out; re-exports to EU makers | [trade](../method/trade.md#baltic-and-finnish-pass-through) |
 | 22 | sanctions labels (inline) | `sanctions` shares from `sanctions_share.json` and its source `sanctions_share`; `incentives.json` is no longer copied (round 11 audit) | [incentives](../method/incentives.md), [trade](../method/trade.md#sanctions-mandated-or-own-choice) |
-| 23 | `remove_freight()` | CIF to FOB on payments to Russia, except border-priced shares | [trade](../method/trade.md#freight-cif-to-fob) |
+| 23 | `remove_freight()` | CIF to FOB on payments to Russia, except border-priced shares; since round 14 also the war-time freight surge on the oil part (`payments_fob_factor()`) | [trade](../method/trade.md#freight-cif-to-fob), [prices](../method/prices.md#one-price-basis-fob-round-14) |
 | 24 | `price_indices()` | `pidx` per flow | [prices](../method/prices.md) |
 | 25 | `apply_narrow()` | narrow.json values, bases and price levels not entered at step 1; Türkiye priced from `turkey_prices.json` | [trade](../method/trade.md) |
 | 26 | `apply_brunei_r6()` | Brunei's payments to Russia = its true crude intake minus the crude passed on to its buyers (after step 25 sets its customs values) | [energy](../method/energy-and-laundered-oil.md#per-country-values-for-the-eu-usa-uk-and-australia-round-5) |
@@ -73,10 +73,11 @@ Two things apply to every step:
 | 42 | `apply_frozen_reserves()` | the return Russia's frozen central-bank reserves would have earned (`frozen_assets.json`) | [Russia](../method/russia-state-and-companies.md#frozen-central-bank-reserves-round-7) |
 | 43 | `apply_remittances()` | migrant workers' remittances from Russia against the expected level, as a marker only since round 13b (`remittances.json`) | [trade](../method/trade.md#remittances-and-relocants-round-7) |
 | 44 | `apply_chpl()` | sales of goods Russia's weapons need, as a marker only (`chpl.json`) | [trade](../method/trade.md#goods-russias-weapons-need-the-critical-goods-marker-round-7) |
-| 45 | `apply_value_kept()` | value kept x genuinely extra, per kind of earning, in place of the flat 20% profit (`value_kept.json`) | [overview](../method/overview.md#the-money-rule-round-6) |
+| 45 | `apply_value_kept()` | since round 13 the seller's net gain (`net_gain_sellers.json`; round 14: 5% real normal return plus the country's risk premium) x genuinely extra, per kind of earning (`value_kept.json`); value kept x extra kept as `vk_old` | [overview](../method/overview.md#the-net-gain-rule-round-10) |
 | 46 | `apply_audit2(..., "trends")` | audit-2 trend-window fixes, only for flows without a counterfactual | [counterfactual](../method/counterfactual.md) |
 | 47 | `apply_nowar_prices()` | fuel volume change valued at no-war prices, so it and the windfall add up (`energy_nowar.json`) | [prices](../method/prices.md#no-war-prices-round-7) |
-| 48 | `apply_net_gain()` | trade counts at the seller's net gain: weights per year for Russia's and Ukraine's gain (`net_gain_russia.json`, `net_gain_ukraine.json`) | [overview](../method/overview.md#the-net-gain-rule-round-10) |
+| 47b | `laundered_volumes()`, `current_euros()`, `deflate_gold()` | laundered oil as volumes; round 14: each flow's factor to current euros (`cur`); gold at the gold price | [prices](../method/prices.md#why-volumes) |
+| 48 | `apply_net_gain()` | trade counts at the seller's net gain: weights per year for Russia's and Ukraine's gain (`net_gain_russia.json`, `net_gain_ukraine.json`); round 14: the measured fuel share and customs values per fuel for what was bought | [overview](../method/overview.md#the-net-gain-rule-round-10), [prices](../method/prices.md#the-mix-of-what-was-bought-round-14) |
 | 49 | `attach_r11_sources()` | one source per round-11 proposals file, added to the series each file changed | [decisions](../decisions.md#assumptions-backed-by-data-round-11) |
 | 50 | `attach_input_sources()` | inputs that feed a part but were not cited by it: gas prices on payments to Russia and the windfall, tanker control on shipping (round 11 audit) | [sources](sources.md) |
 | 51 | final pass (inline) | every baseline inside its range; `coverage()` per part; the exact primary links from `sources_r11.json` (`links`); `prune_sources()` drops sources no part cites; status banner | [ranges](../method/ranges.md) |
@@ -105,7 +106,10 @@ Per country: `n` (numeric ISO for the map shapes), `iso3`, `name`, `kind`, `pop`
 | `windfall` | price windfall on Russian fuel against no-war prices, yearly triple, at Russia's net gain on the extra price (`gain` per year; `alt` the full value) |
 | `military_rus`, `hidden`, `undisclosed`, `private` | yearly triples, in money (`hidden.gain`: Russia's gain on gold per year, applied in the map); `military_rus` since round 13 paid deliveries at the seller's net gain, `alt` the full value |
 | `flowback` | from the all-money ledger: `own*`, `purl_in*`, `arms*`, `othsp*` (other spending), `purl_out`, `cert_own`, `arms_cert`, and sources `src`, `purl_src`, `arms_src` |
-| `people`, `sanctions` | counts, sanctions labels (`mandated`, `gas`, and since round 13 `cut`: gas Russia cut off itself or that stopped with the end of transit) (the AI-guessed `incentive` scores were dropped in round 11) |
+| `people`, `sanctions` | counts, sanctions labels (`mandated`, `gas`, and since round 13 `cut`: gas Russia cut off itself or that stopped with the end of transit; since round 14 `cut_from`, the date of the cut) (the AI-guessed `incentive` scores were dropped in round 11) |
+| `to_rus.gain` | Russia's gain per euro, `e` (expected) and `a` (bought), `[low, central, high]` per year; since round 14 `fossil_share` (the measured pre-war fuel share used), `basis` (customs, tracker or pre-war mix, per year) and `tracker_copied` (tracker years that repeat the year before) |
+| `extra` | parts without a series: `frozen`, `rusfirms`, `statefin`, `rusarms`, `agents`... as yearly shifts toward Ukraine `c`, `l`, `h` (`exits` until round 14, `seized` in round 14) |
+| `taken` | round 14b: what Russia took from the country's companies, `exits` (forced discount and exit fee) and `seized`, yearly `c`, `l`, `h`, positive = taken; in the cost view only, not in the net or either headline number |
 
 Common fields inside a series:
 
@@ -119,7 +123,10 @@ Common fields inside a series:
 | `cf` | which counterfactual model: `lin`, `rf` or `rw` |
 | `cb` | cumulative no-war band per number of years summed, `[low, high]` multipliers ([counterfactual](../method/counterfactual.md)) |
 | `est26` | 2026 estimated from 2025 (shown with `*`) |
+| `cur` | round 14: the factor that values each year's change in volume at that year's prices (current euros, like aid) |
 | `cert`, `src` | certainty letter, source ids (keys of `sources`) |
+
+`site/detail.json` holds the data-coverage notes (`coverage`) and, since round 14, the method band's rebuilt alternatives (`alts`: per country and alternative, the fields that change; `alt_labels`), built by `method_alternatives()`, which reruns `build()` once per entry of `METHOD_ALTERNATIVES`.
 
 ## Checks
 
@@ -144,9 +151,12 @@ Common fields inside a series:
 | 16 | every baseline inside its range, no range bound from a projected trend | FAIL |
 | 17 | aid categories add up to aid (within 5%) | WARN |
 | 18 | no negative laundered oil | FAIL |
-| 19 | fuel mix at constant prices (round 13) | FAIL |
+| 19 | fuel mix at constant prices (round 13; since round 14 the copy buys the same customs volumes too) | FAIL |
 | 20 | remittances only as a marker, in no total (round 13b) | FAIL |
 | 21 | EU refiners' route measured for EU members: none held (round 13b) | FAIL |
+| 22 | the net-gain step uses the measured fuel share, `fossil_share()` (round 14, audit C1) | FAIL |
+| 23 | the windfall compares FOB with FOB: the median war/pre-war ratio of own crude prices to Urals FOB is within 0.94–1.06, and no FOB factor exceeds 1 (round 14, audit C3) | FAIL |
+| 24 | share cards say "cut off by Russia" only where Russia cut the country's gas, and North Korea's never says "more paid" (round 14, audit C4); WARN when `site/c/` has not been generated | FAIL |
 
 ## See also
 

@@ -1,6 +1,6 @@
 # Ranges and certainty letters
 
-Every number on the map has a middle value, a likely range (meant as about 90%) and a certainty letter from A (reported) to D (rough indication). This page explains where each part's range comes from, how the site combines four sources of uncertainty for every traded flow without stacking worst cases, how parts add up to a total, how 2026 estimates are marked, and, just as important, what the ranges do not cover.
+Every number on the map has a middle value, a likely range and a certainty letter from A (reported) to D (rough indication). The likely range covers the uncertainty of the data and the models **given the method**; it is calibrated by judgement to about 90% (it mixes measured back-test bands with default widths per letter, combined as errors), not measured. How much the method choices move a result is the separate [method band](#the-method-band-round-13-widened-in-round-14). This page explains where each part's range comes from, how the site combines four sources of uncertainty for every traded flow without stacking worst cases, how parts add up to a total, how 2026 estimates are marked, and, just as important, what the ranges do not cover.
 
 ## Certainty letters
 
@@ -11,7 +11,18 @@ Every number on the map has a middle value, a likely range (meant as about 90%) 
 | C | modelled estimate | ±35% |
 | D | rough indication | ±70% |
 
-Defaults are `RANGE` in [`site/index.html`](../../site/index.html); they are applied in `part()` only when a part's own low and high coincide. The four widths (±5%, ±15%, ±35%, ±70%) are a judgement, not a measured error ([decisions](../decisions.md#constants-and-rules-written-down-in-round-11)). Each research file assigns letters per value ([`gaps.md`](../../research/2026-10/gaps.md) shows per country which parts are reported or estimated). A total takes the **weakest** letter of its parts (`weakest()`).
+Defaults are `RANGE` in [`site/index.html`](../../site/index.html); they are applied in `part()` only when a part's own low and high coincide. The four widths (±5%, ±15%, ±35%, ±70%) are a judgement, not a measured error ([decisions](../decisions.md#constants-and-rules-written-down-in-round-11)). Each research file assigns letters per value ([`gaps.md`](../../research/2026-10/gaps.md) shows per country which parts are reported or estimated).
+
+**A total's letter (round 14, audit H4).** Until round 13 a total took the **weakest** letter of its parts, which made every total D or C and no longer separated Lithuania from Yemen. Since round 14 it says how much of the total rests on primary data (`gradeTotal()` in `site/index.html`), weighting each part by its absolute value:
+
+| total | rule |
+|---|---|
+| A | at least 80% of it in parts graded A |
+| B | at least half in parts graded A or B (primary data) |
+| C | at least 75% in parts graded A to C |
+| D | otherwise: more than a quarter rests on rough indications (D) |
+
+In the round-14 build: 1 economy A, 5 B (the US, Canada, Denmark, Norway, Sweden), 209 C, 16 D (among them Belarus, Iran, Armenia and Montenegro). The rule is a judgement, raised by the audit and approved by the owner; the thresholds are in [decisions](../decisions.md#round-14-independent-audit-3).
 
 **Stacked models are at best C (round 13 audit).** A part built from a modelled no-war level *and* a modelled share (Russia's or Ukraine's net gain, a seller's net gain, genuinely extra, a price index) stacks two models, so it is at best C, a modelled estimate: less paid to Russia, extra purchases from Ukraine, sales to Russia, services bought and sold (`cRus`, `cTrade` and the `weakest([.., "C"])` calls in `calc()`). Until round 12 these were at best B. "Less paid to Russia" is the largest part for most top-ranked countries, so most headline letters are now C or D. Inputs quoted from memory and not fetched again are D (the 2021 fertiliser margin in `net_gain_russia-notes.md`; PhosAgro's 2022–2023 margins were fetched in round 13 and its 2023 share corrected from 0.20 to 0.27).
 
@@ -73,7 +84,8 @@ Before round 4 the low end took the low baseline, the high actual value and the 
 Variants:
 
 - **"Only the rise"** parts (extra purchases from Ukraine, extra sales to Ukraine, laundered oil) use `above3()`: `spread()` on each year alone, counting only the positive part of each bound.
-- **Income parts** (sales and services to Russia) are multiplied by the money rule's factor, value kept × genuinely extra (`c.vk` in `data.json`, from [`value_kept.json`](../../research/2026-10/gaps/value_kept.json)): `earned3()` uses the factor's low on the low side and its high on the high side. Money flowing back uses the same factors (weapons `fw`, other spending `fo`, extra sales to Ukraine `ux`) ([overview](overview.md#the-money-rule-round-6)). The flat 20% margin with a 0.5–1.5× band is only a fallback for a country without `vk`; every country in the current data has `vk`.
+- **Income parts** (sales and services to Russia) are multiplied by the money rule's factor, the seller's net gain (taxes plus profit above a normal return, [`net_gain_sellers.json`](../../research/2026-10/gaps/net_gain_sellers.json)) × genuinely extra (`c.vk` in `data.json`; until round 12 value kept × genuinely extra, kept as `vk_old`): `earned3()` uses the factor's low on the low side and its high on the high side. Money flowing back uses the same factors (weapons `fw`, other spending `fo`, extra sales to Ukraine `ux`); for US weapons that is about 3.6% of the money in round 14 ([overview](overview.md#the-net-gain-rule-round-10)).
+- **Current euros (round 14).** Each year's change in volume is multiplied by that year's price level (`cur`), so trade parts are in the same euros as aid ([overview](overview.md#round-14-changes-to-the-rules)). The flat 20% margin with a 0.5–1.5× band is only a fallback for a country without `vk`; every country in the current data has `vk`.
 - **Parts with no pre-war comparison** (aid, refugees, windfall, weapons, hidden channels) sum their yearly triples (`sum3()`).
 
 ## From parts to a total
@@ -93,19 +105,29 @@ Variants:
 | paid to Russia and sales to Russia (Russia-side shocks) | 0.2 |
 | all other pairs | 0 |
 
-The effect is small. In the current build Germany's range is +2.55% to +5.23% with these correlations and +2.57% to +5.20% without them. The country panel shows each part's range as a thin line in the waterfall and the total's range in the headline ("Likely range ... to ...").
+**Signs (round 14, audit M3).** The correlations are between the sizes of two parts (a common input such as Russia's gain share makes both larger). Where two parts have opposite signs (paid > 0 and laundered oil < 0 for the US, France, Australia, Romania and China), that moves the total in opposite directions, so `total()` multiplies the correlation by the product of the parts' signs.
+
+The effect is small. In the current build (round 14) Germany's range is +2.11% to +4.60%. The country panel shows each part's range as a thin line in the waterfall and the total's range in the headline ("Likely range ... to ...").
 
 Rankings use these totals: countries whose likely range crosses zero are left out of top lists, as are economies under EUR 5bn GDP (`rankList()`, `MIN_GDP_RANK`).
 
-## The method band (round 13)
+## The method band (round 13, widened in round 14)
 
-The likely range is **parameter uncertainty, given the method**. The audit showed that method choices move some countries by a factor of two, outside that range. So the panel also shows a **method sensitivity** band: the net under the main alternative method choices (`methodBand()` in `site/index.html`, from `calc(c, y, opt)`):
+The likely range is **data and model uncertainty, given the method**. Method choices move some countries by more than that range, so the panel also shows a **method band**: the net under each alternative method choice, one at a time (`methodBand()` in `site/index.html`). Round 14 (audit H4) added the choices that moved results in rounds 13 and 14:
 
-- the valuation rule until round 12 (value kept, including wages, for sellers; paid weapons in full; `vk_old`, the `alt` series in `data.json`). Remittances left the band in round 13b: they are a marker, in no total;
-- the war-time windfall at 100% instead of Russia's net gain on it (`windfall.alt`);
-- loans discounted at the war-time yield instead of Ukraine's 2021 rate (the high end of `loan_adj_own` and `loan_adj_eu`).
+| alternative | how it is computed | what it shows |
+|---|---|---|
+| valuation rule until round 12 (value kept, incl. wages; paid weapons in full) | `calc(c, y, {rule: "old"})`, `vk_old` and the `alt` series | the round-13 rule change |
+| war-time windfall at 100% | `calc(c, y, {windfall: "full"})`, `windfall.alt` | Russia's gain on the extra price |
+| loans at the war-time yield | `calc(c, y, {loans: "war"})` | the loan discount rate |
+| EU refiners keep the Russian crude in their fuel exports (until round 13) | data rebuilt with `refiner` (`METHOD_ALTERNATIVES` in `build_data.py`) | EU refiner treatment |
+| laundered oil without the round-13b route rule | rebuilt with `laund_route` | the laundered-oil rule |
+| laundered oil not counted | rebuilt with `laund_off` | the laundered-oil coverage |
+| the mix of what was bought from tracker tonnes (until round 14) | rebuilt with `fuelmix` | the fuel-mix basis |
+| fuel prices as customs (CIF) values, freight included (until round 14) | rebuilt with `freight` | the freight basis |
+| sellers' normal return 9% nominal, services with real estate (round 13) | rebuilt with `normal_return` (`net_gain_sellers_r13.json`) | the normal return |
 
-The band is the lowest and highest of the four results. It is not a probability range.
+The rebuilt alternatives store, per country, only the fields they change (`detail.json` `alts`, loaded after the map); the site applies them to a copy of the country and recomputes. The band is the lowest and highest of the base and all alternatives; the panel lists the choices that move the net by at least 0.005% of GDP. It is not a probability range. Examples (round 14): Moldova 4.4% to 7.1% (EU refiners), North Korea −30.0% to −10.2% (old valuation rule), India −3.0% to −2.0% (freight, fuel mix), Yemen −7.2% to −3.9% (fuel mix).
 
 ## Average year
 
@@ -124,7 +146,7 @@ The site marks the parts "paid to Russia", "sold to Russia" and "company taxes" 
 ## What the ranges do not cover
 
 - **Russia-side shocks.** The counterfactual intervals cover about 90% of outcomes in normal periods but only 77–79% in the 2013 back-test, when Russia's own economy moved ([counterfactual.md](counterfactual.md#7-how-the-predictions-error-enters-the-ranges)).
-- **The method itself**: what counts as a shift, the valuation rule, the choice of 2024 GDP, counting gas where it is burned. These are choices, not uncertainties ([decisions](../decisions.md)); the method band shows three of them.
+- **The method itself**: what counts as a shift, the valuation rule, the choice of 2024 GDP, counting gas where it is burned. These are choices, not uncertainties ([decisions](../decisions.md)); the method band shows nine of them, one at a time (not combined).
 - **Other correlated errors across parts.** Only the correlations listed above are included; a shared source error (one KSE report behind all company taxes) is still treated as independent.
 - **Correlated errors across countries.** Moving value between countries (re-exports, hub resale, the residual gap) shifts error from one country to another; each country's range is computed alone.
 - **Unknown unknowns**: flows nobody has measured are not on the map. Crypto and payment agents appear only as the agents' fees; the trade they settle is already in customs ([trade.md](trade.md#payment-agents-round-6)).

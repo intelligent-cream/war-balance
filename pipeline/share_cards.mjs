@@ -59,7 +59,9 @@ const cards = await page.evaluate(() => {
       .filter(p => Math.abs(p.v) > 1e-3).sort((a, b) => Math.abs(b.v) - Math.abs(a.v)).slice(0, 4);
     out.push({
       iso3: c.iso3, name: c.name, toUkr: k.shift >= 0,
-      ua: fmtMeasure(c, k.uaBal, "gdp", true), ru: fmtMeasure(c, k.rusBal, "gdp", true), ruLess: k.rusBal >= 0,
+      // round 14 (audit C4): the same words as the panel (rusWords in index.html): "cut off by Russia" only where it
+      // did, "earned from Russia" for earners, and the largest part named when it is not payments
+      ua: fmtMeasure(c, k.uaBal, "gdp", true), ru: fmtMeasure(c, k.rusBal, "gdp", true), ruLess: k.rusBal >= 0, ruWhat: rusWords(c, k).en,
       pct: fmtMeasure(c, k.shift, "gdp", true), eur: eur(k.shift, true), pp: c.pop ? perPerson(c, k.shift) : "",
       lo: fmtMeasure(c, k.shiftLo, "gdp", true), hi: fmtMeasure(c, k.shiftHi, "gdp", true),
       parts: parts.map(p => ({ label: p.label, v: eur(p.v, true), pos: p.v >= 0 })),
@@ -86,7 +88,7 @@ for (const d of cards) {
         <span style="font-family:Archivo,sans-serif;font-weight:800;font-size:112px;letter-spacing:-.03em;line-height:1;color:${col}">${d.pct}</span>
         <span style="font-size:30px;font-weight:600;color:#15212b;line-height:1.15">net, 2022–2026 total<br>against one year's GDP</span>
       </div>
-      <div style="margin-top:12px;font-size:25px;color:#15212b">= support for Ukraine <b style="color:#2a6fb0">${d.ua}</b> + change in payments to Russia <b style="color:${d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ru}</b> (${d.ruLess ? "less paid, incl. supplies Russia cut off" : "more paid"})</div>
+      <div style="margin-top:12px;font-size:25px;color:#15212b">= support for Ukraine <b style="color:#2a6fb0">${d.ua}</b> + change in payments to Russia <b style="color:${d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ru}</b> (${d.ruWhat})</div>
       <div style="margin-top:8px;font-size:21px;color:#55636e">since before the war · ${d.eur}${d.pp ? " · " + d.pp : ""} · likely ${d.lo} to ${d.hi} · not a yearly rate</div>
       <div style="margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:6px 40px;font-size:21px">
         ${d.parts.map(p => `<div style="display:flex;justify-content:space-between;border-top:1px solid #d6dde2;padding-top:6px"><span>${p.label}</span><b style="font-family:'IBM Plex Mono',monospace;font-weight:500;color:${p.pos ? "#2a6fb0" : "#c9520f"}">${p.v}</b></div>`).join("")}
@@ -96,8 +98,8 @@ for (const d of cards) {
   await page.waitForTimeout(30);
   const iso = d.iso3.toLowerCase();
   await page.screenshot({ path: join(SITE, "share", iso + ".png") });
-  const title = `${d.name}: support for Ukraine ${d.ua}, payments to Russia ${d.ru} of GDP | Follow the Money: Ukrainian Aid`;
-  const desc = `2022–2026 totals against one year's GDP: support for Ukraine ${d.ua}; change in payments to Russia ${d.ru} (${d.ruLess ? "less paid, incl. supplies Russia cut off" : "more paid"}); net ${d.pct} (${d.eur}). Likely range ${d.lo} to ${d.hi}. Every number with a source.`;
+  const title = `${d.name}: support for Ukraine ${d.ua}, change in payments to Russia ${d.ru} of GDP | Follow the Money: Ukrainian Aid`;
+  const desc = `2022–2026 totals against one year's GDP: support for Ukraine ${d.ua}; change in payments to Russia ${d.ru} (${d.ruWhat}); net ${d.pct} (${d.eur}). Likely range ${d.lo} to ${d.hi}. Every number with a source.`;
   await writeFile(join(SITE, "c", iso + ".html"), `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

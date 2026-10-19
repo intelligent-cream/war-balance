@@ -57,10 +57,10 @@ How the four flows enter the net shift (`calc()` in [`site/index.html`](../../si
 
 | flow | part | counted as |
 |---|---|---|
-| `to_rus` | Less / more paid to Russia | change in volume at pre-war prices, × Russia's net gain per euro (round 10) |
-| `from_rus` | Income lost on sales given up / income from extra sales | change × value kept × genuinely extra ([the money rule](overview.md#the-money-rule-round-6)) |
+| `to_rus` | Less / more paid to Russia | change in volume, valued at each year's prices (round 14), × Russia's net gain per euro (round 10); the mix of what was bought from customs values per fuel (round 14) |
+| `from_rus` | Income lost on sales given up / income from extra sales | change in volume at each year's prices × the seller's net gain (taxes plus profit above a normal return of 5% a year above inflation plus the country's risk premium, round 14) × genuinely extra ([the net-gain rule](overview.md#the-net-gain-rule-round-10)) |
 | `buy_ukr` | Extra purchases from Ukraine | rise above expected, each year, × Ukraine's net gain per euro (round 10); a fall is not held against a country |
-| `sell_ukr` | Extra sales to Ukraine | rise above expected, × the money rule, subtracted as flowback |
+| `sell_ukr` | Extra sales to Ukraine | rise above expected, × the seller's net gain × genuinely extra, subtracted as flowback |
 
 ## Profit, not revenue
 
@@ -124,7 +124,7 @@ Russia's own customs record more imports than its partners report selling: EUR 2
 
 ## Hong Kong gold
 
-**Round 13 (audit): gold at the gold price.** Gold in a country's payments to Russia (tagged where the UAE and Hong Kong pass it on, and Hong Kong's own rise) is deflated with the gold price index (the customs panel of Russian gold, HS 7108, and the NBP gold fixing for 2026; [`prices.json`](../../research/2026-10/gaps/prices.json) benchmarks, rebased to 2019–2021 = 1: 1.08 in 2022, 1.16 in 2023, 1.50 in 2024, 2.05 in 2025, 2.66 in 2026), not with the country's pre-war mix. Hong Kong's pre-war imports from Russia were half palladium and platinum, whose price fell, so its index (0.90 in 2023–2026) made the volume of gold 1.3–3 times too large. Each year's index is the value-weighted mix of the gold index on the gold share and the old index on the rest (`deflate_gold()`). Hong Kong: −4.2% → −1.9% of GDP. The gold price rise itself is not counted, like any other non-fuel price rise.
+**Round 13 (audit): gold at the gold price.** Gold in a country's payments to Russia (tagged where the UAE and Hong Kong pass it on, and Hong Kong's own rise) is deflated with the gold price index (the customs panel of Russian gold, HS 7108, and the NBP gold fixing for 2026; [`prices.json`](../../research/2026-10/gaps/prices.json) benchmarks, rebased to 2019–2021 = 1: 1.08 in 2022, 1.16 in 2023, 1.50 in 2024, 2.05 in 2025, 2.66 in 2026), not with the country's pre-war mix. Hong Kong's pre-war imports from Russia were half palladium and platinum, whose price fell, so its index (0.90 in 2023–2026) made the volume of gold 1.3–3 times too large. Each year's index is the value-weighted mix of the gold index on the gold share and the old index on the rest (`deflate_gold()`). Hong Kong: −4.2% → −1.9% of GDP. The gold price rise itself is not counted as a change, like any other non-fuel price rise. **Round 14 (current euros):** the change in the volume of gold is then valued at each year's gold price, like every other part (`cur`), so Hong Kong's extra gold bought from Russia counts at today's prices: −2.36% → −4.16% of GDP.
 
 The rise in Hong Kong's imports from Russia since before the war is taken to be precious metals (`HK_METALS_SHARE`, per year). Round 12 measured it from Hong Kong's own import records in UN Comtrade ([raw/comtrade_hkg](../../research/2026-10/raw/comtrade_hkg/)): precious metals (HS 71) were 56–67% of its imports from Russia in 2019–2021 and 85%, 99%, 98% and 99% in 2022–2025. Against the 2019–2021 average, HS 71 rose by more than the total in every year (other goods fell), so the share of the rise is 1.0 (capped; 2026 takes 2025's). It was a flat 0.98 that no research file explained. The share passed on to mainland China (0.57 in 2022 falling to 0.37 in 2025, from Hong Kong's own gold trade in `refine.json`) counts for China; only the rise above the pre-war level is treated as gold in transit. Hong Kong is labelled a gold transit hub. Code: the end of `apply_residual()`.
 

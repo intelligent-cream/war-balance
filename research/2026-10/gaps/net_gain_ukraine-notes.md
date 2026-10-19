@@ -18,8 +18,11 @@ normal return on capital) ÷ the FOB export price.
   and profit above a normal return.
 - **Not counted:** wages and the taxes on wages, materials, fuel, energy, logistics, depreciation, land lease
   paid to landowners, VAT (exports are zero-rated), and a normal return on capital.
-- **Normal return:** 10% a year before tax, in nominal US dollars, on capital employed. The low case uses 12%,
-  the high case 8%.
+- **Normal return:** since round 14b, **23.0% a year after tax, in nominal US dollars on book capital** (22.0% in the
+  high case, 24.0% in the low case): the sellers' rule, 5% real (4–6%) plus Ukraine's country risk premium (15.54%,
+  Damodaran, January 2026), plus 2.5% expected USD inflation, because the capital measures are book values. The stage
+  formula subtracts it from the pre-tax margin as r / (1 − profit tax). Until round 14: 10% before tax, 8.2% after
+  tax, about 15 points too little ([round 14b](#round-14b-the-sellers-normal-return-and-measured-capital)).
 - **Whole Ukrainian chain.** Materials made in Ukraine carry Ukrainian taxes and profit. So grain counts the
   farm and the trader. Sunflower oil counts the farm, the crusher and the duty. Steel counts the mill and the
   Ukrainian iron ore it uses.
@@ -29,26 +32,29 @@ normal return on capital) ÷ the FOB export price.
 
 ## Central values (share of FOB)
 
+Since round 14b, with the round-14 value in brackets (the round-11 groups as the map used them):
+
 | group | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 Jan–Aug |
 |---|---|---|---|---|---|---|
-| grain | 0.19 | 0.03 | 0.025 | 0.055 | 0.12 | 0.08 |
-| oilseeds & oil | 0.24 | 0.06 | 0.05 | 0.12 | 0.22 | 0.17 |
-| other food | 0.09 | 0.06 | 0.07 | 0.08 | 0.08 | 0.08 |
-| iron ore | 0.43 | 0.24 | 0.09 | 0.08 | 0.07 | 0.07 |
-| iron & steel | 0.18 | 0.07 | 0.03 | 0.03 | 0.03 | 0.03 |
-| other metals | 0.10 | 0.05 | 0.04 | 0.05 | 0.05 | 0.05 |
-| wood & furniture | 0.08 | 0.05 | 0.05 | 0.06 | 0.06 | 0.06 |
-| machinery & electrical | 0.04 | 0.03 | 0.03 | 0.035 | 0.035 | 0.035 |
-| chemicals | 0.10 | 0.04 | 0.03 | 0.04 | 0.04 | 0.04 |
-| other goods | 0.08 | 0.05 | 0.05 | 0.05 | 0.05 | 0.05 |
-| **average (export mix)** | **0.18** | **0.06** | **0.045** | **0.07** | **0.105** | **0.09** |
+| grain | 0.089 (0.190) | 0.016 (0.031) | 0.015 (0.025) | 0.025 (0.055) | 0.047 (0.118) | 0.032 (0.078) |
+| oilseeds & oil | 0.132 (0.240) | 0.035 (0.061) | 0.026 (0.051) | 0.052 (0.119) | 0.117 (0.216) | 0.083 (0.169) |
+| other food | 0.034 (0.075) | 0.025 (0.042) | 0.029 (0.048) | 0.033 (0.065) | 0.033 (0.065) | 0.033 (0.065) |
+| iron ore | 0.298 (0.432) | 0.135 (0.242) | 0.074 (0.093) | 0.069 (0.080) | 0.064 (0.068) | 0.063 (0.066) |
+| iron & steel | 0.098 (0.184) | 0.043 (0.069) | 0.028 (0.032) | 0.028 (0.032) | 0.029 (0.034) | 0.028 (0.031) |
+| other metals | 0.022 (0.034) | 0.016 (0.020) | 0.021 (0.033) | 0.023 (0.037) | 0.023 (0.037) | 0.023 (0.037) |
+| wood & furniture | 0.031 (0.058) | 0.020 (0.026) | 0.026 (0.044) | 0.028 (0.050) | 0.028 (0.050) | 0.028 (0.050) |
+| machinery & electrical | 0.018 (0.030) | 0.016 (0.023) | 0.021 (0.039) | 0.023 (0.044) | 0.023 (0.044) | 0.023 (0.044) |
+| chemicals | 0.032 (0.071) | 0.016 (0.019) | 0.019 (0.027) | 0.020 (0.030) | 0.020 (0.030) | 0.020 (0.030) |
+| other goods | 0.025 (0.050) | 0.017 (0.022) | 0.024 (0.045) | 0.026 (0.052) | 0.026 (0.052) | 0.026 (0.052) |
+| **average (export mix)** | 0.098 (0.175) | 0.033 (0.055) | 0.025 (0.042) | 0.036 (0.069) | 0.055 (0.102) | 0.043 (0.084) |
 
-Low–high ranges for the average: 2021 0.11–0.25; 2022 0.03–0.12; 2023 0.02–0.09; 2024 0.03–0.13;
-2025 0.06–0.17; 2026 0.04–0.15. The low and high cases move all inputs together, so they are wide.
+Low–high ranges for the average are in the JSON (`average`). The low and high cases move all inputs together, so they are wide.
 
-**Main message.** Before the war, about a fifth of each export euro was a net gain. In 2022–2023 it fell to about
-5%. Farm and steel profits disappeared, and logistics costs took most of the price. It recovered to about 10% in
-2025, when farm prices rose. Even then, 90% of the price paid for extra purchases covers real costs. It is not a gift.
+**Main message.** Since round 14b, before the war about a tenth of each export euro was a net gain (a fifth until
+round 14). In 2022–2023 it fell to about 3%: farm and steel profits disappeared, and logistics costs took most of the
+price. It recovered to about 5% in 2025, when farm prices rose. With Ukraine's country risk premium in the normal
+return, what is left is mostly taxes: investors in Ukraine need a high return, so profit above it is rare. About 95%
+of the price paid for extra purchases covers real costs, including that return. It is not a gift.
 
 ## Export mix (share of goods exports)
 
@@ -128,7 +134,7 @@ The average farm margin is 0%: wheat was −1.8% (UkrAgroConsult) and Ukrstat ag
 
 ## What is estimated
 
-- **Capital intensity.** Farms 0.9 × sales, traders 0.3, crushers 0.35, mines 1.2, mills 0.8. These are judgement.
+- **Capital intensity.** Until round 14 farms 0.9 × sales, traders 0.3, crushers 0.35, mines 1.2, mills 0.8, all judgement; measured since round 14b (below).
 - **Farm/FOB ratios after 2021** are taken from USDA. 2026 is a guess.
 - **Effective farm profit tax of 10%.** This reflects the mix of profit-tax payers and single-tax farms.
 - **Six groups are judgement values:** other food, other metals, wood, machinery, chemicals, other. They are
@@ -138,3 +144,37 @@ The average farm margin is 0%: wheat was −1.8% (UkrAgroConsult) and Ukrstat ag
 - **Labour taxes are left out on purpose** because they are part of wages. Counting them would add roughly
   3–6 points in most groups.
 - Certainty: **C** overall. The 2021–24 mix and the Ukrstat anchors are B. The six judgement groups are C/D.
+
+## Round 14b: the sellers' normal return and measured capital
+
+Raised by the owner after the round-14 consistency check. The sellers' rule (5% real after tax, 4–6%, plus the
+country risk premium, [`net_gain_sellers-notes.md`](net_gain_sellers-notes.md) section 6) now applies to Ukraine too.
+
+- **Rate.** Ukraine's premium is 15.54% (Damodaran, January 2026; fetched, `country_risk_r14.json`). The capital
+  measures are **book values**, so the real rate gets 2.5% expected USD inflation: **23.0% after tax** (22.0–24.0%),
+  applied in the stage formula as r / (1 − profit tax) on the pre-tax margin (farms with the 10% effective tax: 25.6%;
+  firms paying 18%: 28.1%). The January 2026 premium applies to every year, as the sellers' premiums do; a pre-war
+  premium for 2021 is not in the research.
+- **How each group was recomputed.** The four modelled groups (grain, oilseeds, iron ore, steel) and the six round-11
+  groups were rerun with their own inputs (Ukrstat profitability, USDA prices, company margins) at the new rate and
+  the measured capital below. Scripts (outside the repository, like the originals):
+  `/tmp/claude-0/-home-user/71ac834a-35d2-5698-a36d-858806a141e1/scratchpad/r14b/ng/` (`ua_model.py`, `ua.py`,
+  `write_r14b.py`; `NG_MODE=r11` reproduces the round-14 values exactly).
+- **Capital per unit of stage revenue (book), low-share case / central / high-share case:**
+
+  | stage or group | capital | source |
+  |---|---|---|
+  | farm (grain, oilseeds, other food, forestry) | 1.08 / 0.92 / 0.63 | Astarta 2024 (farming and sugar): PP&E 213 + right-of-use 120 + biological assets 67 + inventories 221 + receivables 76 − payables 29 = EUR 669m over revenue 612m = 1.08; Damodaran emerging-market farming 0.77 (central = the mean); Ukrstat agriculture fixed assets / sales 0.63 (2021), 0.87 (2020) |
+  | grain trader | 0.47 / 0.38 / 0.30 | Damodaran emerging-market food wholesalers 0.38; Kernel FY2025 (whole group) 0.47; high case the round-10 judgement |
+  | oilseed crusher | 0.64 / 0.47 / 0.35 | Kernel FY2025: PP&E 946 + right-of-use 246 + intangibles and goodwill 48 + inventories 363 + biological assets 231 + receivables and prepayments 470 − payables and advances 366 = USD 1,939m over revenue 4,115m = 0.47; Damodaran emerging-market food processing 0.64 |
+  | iron ore mine | 1.41 / 1.01 / 0.70 | Ukrstat mining fixed assets / sales 1.01 (2021), 1.41 (2020); Ferrexpo PP&E / revenue 0.70 (2025), 0.78 (2024) |
+  | steel mill | 0.87 / 0.85 / 0.62 | **industry ratio**: Damodaran emerging-market steel 0.85 (Metinvest's and ArcelorMittal Kryvyi Rih's balance sheets were not in the fetched documents); Ukrstat manufacturing fixed assets / sales 0.62 (2021), 0.87 (2020) |
+  | other food, other metals, wood, machinery, chemicals, other | 0.64, 0.71, 1.05, 0.76, 0.93, 0.83 (× 1.25 / 1 / 0.75 in the cases) | **industry ratios**: Damodaran emerging-market invested capital / sales, weighted like the round-11 margins (food processing; metals and mining; paper and forest products, furniture; electrical equipment, machinery, electronics, auto parts, aerospace; basic chemicals, pharmaceuticals, rubber; apparel, shoes, building materials, paper, furniture). Replace the judgement 0.6–0.8 |
+  | IT services | 0.34 (not used) | Damodaran emerging-market computer services 0.34; Ukrstat information and telecommunications fixed assets / sales 0.31 (2021). The file has no services group: purchases from Ukraine are goods |
+
+  Ukrstat figures: *Statistical Yearbook of Ukraine 2022*, tables 14.1 (fixed assets by activity, book value at the end
+  of the year), 15.8 (industrial sales) and 23.5 (sales by activity). Fixed assets leave out working capital, so they
+  are the low end.
+- **Effect.** Ukraine's average falls from 0.069 to 0.036 in 2024 and from 0.175 to 0.098 in 2021. On the map: Moldova
+  −0.99 (support for Ukraine 0.41 → 0.22), Lebanon −0.56, Bulgaria −0.30, Slovakia −0.27 (with Russia's file). The
+  method band's "normal return" alternative loads `net_gain_ukraine_r14.json`, the round-14 file kept unchanged.

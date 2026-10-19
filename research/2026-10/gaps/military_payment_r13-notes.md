@@ -39,6 +39,7 @@ North Korea keeps −10%: its shells were mostly old stock sold at a good price,
 
 - The leaked Alabuga files' gold payment (lb.ua, cited in `military_rus_r6-notes.md`) was not opened again and is not used.
 - The INSS report itself was not opened: its figures come from Bloomberg's account as carried by The Insider.
+- **Round 14 (audit L5):** the INSS report itself was searched for again and could not be fetched: the institute's site (inss.re.kr) returned no publication list to an automated request (HTTP 500), and no copy of the report was found. Secondary coverage ([Global Defense Corp, 18 March 2026](https://www.globaldefensecorp.com/2026/03/18/north-korea-made-14-4-billion-in-revenue-through-troop-deployments-and-military-equipment-exports-to-russia/), fetched) names the report ("Economic Effects of North Korea's Troop Deployment to Russia and Military Equipment Exports", Lim Soo-ho, released 13 March 2026) and gives USD 7.67–14.4bn for **August 2023 to December 2024**; the table above says to December 2025. Which period is right is **not verified**; the paid share (0.8–1.0) does not depend on it. The label (press account of INSS) and this limitation stay.
 
 ## Sources (fetched 2026-10-19)
 

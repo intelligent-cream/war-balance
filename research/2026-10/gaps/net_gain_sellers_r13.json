@@ -1,0 +1,8061 @@
+{
+ "generated": "2026-10-19",
+ "meta": {
+  "what": "Net gain per euro of sales for every seller other than Russia and Ukraine: other taxes on production plus profit above a normal return, as a share of output, by industry group (round 13 audit: one valuation rule for every seller)",
+  "formula": "(D29X39 + B2A3N - SELF x D1/SAL - r x N11NA) / P1; B2A3N = B2A3G - P51C where only gross surplus is published",
+  "normal_return": {
+   "central": 0.09,
+   "low": 0.1,
+   "high": 0.08
+  },
+  "normal_return_basis": "round 13 (method band only): 9% nominal, no country premium, services incl. real estate",
+  "country_risk_premium": {},
+  "services_aggregate": "GTN",
+  "years": {
+   "central": [
+    2021,
+    2022,
+    2023
+   ],
+   "range": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023
+   ]
+  },
+  "groups": {
+   "goods": [
+    "C"
+   ],
+   "weapons": [
+    "C252",
+    "C303",
+    "C304",
+    "C26"
+   ],
+   "weapons_fallback": [
+    "C25",
+    "C26",
+    "C28",
+    "C30"
+   ],
+   "fuel": [
+    "C19"
+   ],
+   "services": [
+    "I",
+    "GTN"
+   ],
+   "shipping": [
+    "H50"
+   ],
+   "insurance": [
+    "K65"
+   ],
+   "finance": [
+    "K"
+   ]
+  },
+  "use": "multiply a gross sale by the group share and by value_kept.json's 'genuinely extra' factor; economies outside STAN take oecd_median",
+  "script": "research/2026-10/scripts/net_gain_sellers.py"
+ },
+ "oecd_median": {
+  "goods": {
+   "low": 0.0,
+   "central": 0.0128,
+   "high": 0.0401,
+   "n": 31
+  },
+  "weapons": {
+   "low": 0.0201,
+   "central": 0.0366,
+   "high": 0.0786,
+   "n": 28
+  },
+  "fuel": {
+   "low": 0.0,
+   "central": 0.0182,
+   "high": 0.0491,
+   "n": 25
+  },
+  "services": {
+   "low": 0.0,
+   "central": 0.0018,
+   "high": 0.0258,
+   "n": 30
+  },
+  "shipping": {
+   "low": 0.0,
+   "central": 0.0,
+   "high": 0.0453,
+   "n": 24
+  },
+  "insurance": {
+   "low": 0.1044,
+   "central": 0.1552,
+   "high": 0.2651,
+   "n": 28
+  },
+  "finance": {
+   "low": 0.1336,
+   "central": 0.1961,
+   "high": 0.2809,
+   "n": 31
+  }
+ },
+ "countries": {
+  "AUS": {
+   "groups": {
+    "goods": {
+     "low": 0.0016,
+     "central": 0.0232,
+     "high": 0.0298,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0389,
+     "central": 0.0586,
+     "high": 0.079,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.2911,
+     "central": 0.3014,
+     "high": 0.3105,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0016,
+     "central": 0.0232,
+     "high": 0.0298,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0066,
+      "surplus": 0.0663,
+      "mixed_labour": 0.0103,
+      "capital": 0.4371
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "GTN": {
+     "low": 0.0778,
+     "central": 0.091,
+     "high": 0.1046,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0256,
+      "surplus": 0.1665,
+      "mixed_labour": 0.0231,
+      "capital": 0.8674
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0262,
+     "high": 0.0534,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0125,
+      "surplus": 0.103,
+      "mixed_labour": 0.0162,
+      "capital": 0.8115
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.2911,
+     "central": 0.3014,
+     "high": 0.3105,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0297,
+      "surplus": 0.3189,
+      "mixed_labour": 0.0061,
+      "capital": 0.4571
+     },
+     "basis": "net operating surplus; own net capital stock"
+    }
+   }
+  },
+  "AUT": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0228,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0285,
+     "central": 0.0489,
+     "high": 0.1337,
+     "industries": [
+      "C252",
+      "C303",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0223,
+     "high": 0.0715,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0297,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.051,
+     "central": 0.1001,
+     "high": 0.1274,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.0,
+     "central": 0.0636,
+     "high": 0.1212,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0228,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0007,
+      "surplus": 0.0568,
+      "mixed_labour": 0.0056,
+      "capital": 0.6109
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0223,
+     "high": 0.0715,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0033,
+      "surplus": 0.0515,
+      "mixed_labour": 0.0,
+      "capital": 0.2871
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0193,
+     "high": 0.0314,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0009,
+      "surplus": 0.0799,
+      "mixed_labour": 0.0072,
+      "capital": 0.5832
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C252": {
+     "low": 0.0856,
+     "central": 0.1442,
+     "high": 0.172,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0187,
+      "surplus": 0.2225,
+      "mixed_labour": 0.0005,
+      "capital": 0.6559
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0408,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0017,
+      "surplus": 0.0769,
+      "mixed_labour": 0.0024,
+      "capital": 0.9113
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.0087,
+     "high": 0.0336,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0046,
+      "surplus": 0.0536,
+      "mixed_labour": 0.0011,
+      "capital": 0.5387
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0121,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.008,
+      "surplus": 0.0046,
+      "mixed_labour": 0.0009,
+      "capital": 0.4831
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0024,
+     "high": 0.1882,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.1059,
+      "surplus": -0.0617,
+      "mixed_labour": 0.0003,
+      "capital": 0.4613
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0032,
+      "surplus": 0.1339,
+      "mixed_labour": 0.0388,
+      "capital": 3.6265
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0836,
+      "surplus": 0.0114,
+      "mixed_labour": 0.0174,
+      "capital": 1.6784
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0594,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0972,
+      "surplus": 0.1789,
+      "mixed_labour": 0.0494,
+      "capital": 1.0458
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.0,
+     "central": 0.0636,
+     "high": 0.1212,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0413,
+      "surplus": 0.1423,
+      "mixed_labour": 0.0312,
+      "capital": 0.9858
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.051,
+     "central": 0.1001,
+     "high": 0.1274,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.017,
+      "surplus": 0.1579,
+      "mixed_labour": 0.0,
+      "capital": 0.8311
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "BEL": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0071,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0137,
+     "central": 0.0151,
+     "high": 0.0644,
+     "industries": [
+      "C252",
+      "C303",
+      "C304",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0097,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0479,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.1504,
+     "central": 0.1555,
+     "high": 0.1703,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.1205,
+     "central": 0.1381,
+     "high": 0.1621,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0071,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0056,
+      "surplus": 0.0383,
+      "mixed_labour": 0.005,
+      "capital": 0.4705
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0097,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0008,
+      "surplus": 0.0072,
+      "mixed_labour": 0.0,
+      "capital": 0.1554
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.012,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0075,
+      "surplus": 0.0514,
+      "mixed_labour": 0.0124,
+      "capital": 0.429
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C252": {
+     "low": 0.0549,
+     "central": 0.0603,
+     "high": 0.1974,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": -0.005,
+      "surplus": 0.0915,
+      "mixed_labour": -0.0143,
+      "capital": 0.4496
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0442,
+      "surplus": 0.0299,
+      "mixed_labour": 0.0018,
+      "capital": 0.7581
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0195,
+     "central": 0.0358,
+     "high": 0.048,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0083,
+      "surplus": 0.0794,
+      "mixed_labour": 0.0017,
+      "capital": 0.3739
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0213,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0392,
+      "surplus": -0.0495,
+      "mixed_labour": 0.004,
+      "capital": 0.5818
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0601,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0472,
+      "surplus": -0.0823,
+      "mixed_labour": 0.002,
+      "capital": 0.5907
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C304": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": -0.1954,
+      "surplus": 0.0398,
+      "mixed_labour": 0.0,
+      "capital": 0.5907
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0028,
+      "surplus": 0.1642,
+      "mixed_labour": 0.0683,
+      "capital": 2.2712
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0479,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0314,
+      "surplus": 0.0296,
+      "mixed_labour": 0.0299,
+      "capital": 1.3693
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0119,
+      "surplus": 0.0915,
+      "mixed_labour": 0.0494,
+      "capital": 0.7585
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.1205,
+     "central": 0.1381,
+     "high": 0.1621,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0308,
+      "surplus": 0.1619,
+      "mixed_labour": 0.0038,
+      "capital": 0.565
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.1504,
+     "central": 0.1555,
+     "high": 0.1703,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0126,
+      "surplus": 0.1692,
+      "mixed_labour": 0.0,
+      "capital": 0.2933
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "CAN": {
+   "groups": {},
+   "industries": {}
+  },
+  "CHE": {
+   "groups": {},
+   "industries": {}
+  },
+  "CHL": {
+   "groups": {},
+   "industries": {}
+  },
+  "COL": {
+   "groups": {},
+   "industries": {}
+  },
+  "CRI": {
+   "groups": {
+    "goods": {
+     "low": 0.1014,
+     "central": 0.1403,
+     "high": 0.1518,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0724,
+     "central": 0.1472,
+     "high": 0.1614,
+     "industries": [
+      "C25",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0176,
+     "high": 0.0771,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.1243,
+     "central": 0.1548,
+     "high": 0.196,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.2135,
+     "central": 0.2337,
+     "high": 0.2422,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.1014,
+     "central": 0.1403,
+     "high": 0.1518,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.2189,
+      "mixed_labour": 0.0367,
+      "capital": 0.465
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C25": {
+     "low": 0.0858,
+     "central": 0.1295,
+     "high": 0.151,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0061,
+      "surplus": 0.2066,
+      "mixed_labour": 0.0446,
+      "capital": 0.429
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C26": {
+     "low": 0.059,
+     "central": 0.165,
+     "high": 0.1718,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.01,
+      "surplus": 0.2164,
+      "mixed_labour": 0.0,
+      "capital": 0.6827
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0146,
+     "high": 0.0563,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.3354,
+      "mixed_labour": 0.1151,
+      "capital": 2.285
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0206,
+     "high": 0.0979,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0083,
+      "surplus": 0.1949,
+      "mixed_labour": 0.1164,
+      "capital": 0.7357
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K": {
+     "low": 0.2135,
+     "central": 0.2337,
+     "high": 0.2422,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.2939,
+      "mixed_labour": 0.0091,
+      "capital": 0.5675
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K65": {
+     "low": 0.1243,
+     "central": 0.1548,
+     "high": 0.196,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0159,
+      "surplus": 0.166,
+      "mixed_labour": 0.0008,
+      "capital": 0.2933
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "CZE": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0224,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.006,
+     "central": 0.0355,
+     "high": 0.0796,
+     "industries": [
+      "C252",
+      "C303",
+      "C304",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0196,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.1472,
+     "central": 0.2281,
+     "high": 0.2914,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.0879,
+     "central": 0.1109,
+     "high": 0.1418,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0224,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0024,
+      "surplus": 0.0531,
+      "mixed_labour": 0.0123,
+      "capital": 0.4508
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0001,
+      "surplus": -0.0912,
+      "mixed_labour": 0.0,
+      "capital": 1.2515
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0181,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.002,
+      "surplus": 0.0841,
+      "mixed_labour": 0.0361,
+      "capital": 0.5562
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C252": {
+     "low": 0.0242,
+     "central": 0.0851,
+     "high": 0.1605,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0021,
+      "surplus": 0.1314,
+      "mixed_labour": -0.0056,
+      "capital": 0.5533
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0093,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0012,
+      "surplus": 0.0107,
+      "mixed_labour": 0.0017,
+      "capital": 0.4204
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0002,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0029,
+      "surplus": 0.0308,
+      "mixed_labour": 0.0024,
+      "capital": 0.5453
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0268,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0048,
+      "surplus": 0.0315,
+      "mixed_labour": 0.0027,
+      "capital": 0.6063
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0061,
+      "surplus": -0.0156,
+      "mixed_labour": 0.0031,
+      "capital": 0.6461
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "C304": {
+     "low": 0.0,
+     "central": 0.0568,
+     "high": 0.1488,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0402,
+      "surplus": 0.1572,
+      "mixed_labour": 0.0021,
+      "capital": 0.6461
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0027,
+      "surplus": 0.1799,
+      "mixed_labour": 0.04,
+      "capital": 2.6508
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.113,
+      "surplus": 0.0177,
+      "mixed_labour": 0.0126,
+      "capital": 1.2933
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0391,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0193,
+      "surplus": 0.1255,
+      "mixed_labour": 0.0675,
+      "capital": 0.9256
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.0879,
+     "central": 0.1109,
+     "high": 0.1418,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0162,
+      "surplus": 0.1857,
+      "mixed_labour": 0.0396,
+      "capital": 0.5702
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.1472,
+     "central": 0.2281,
+     "high": 0.2914,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0081,
+      "surplus": 0.2379,
+      "mixed_labour": 0.0,
+      "capital": 0.1989
+     },
+     "basis": "net operating surplus; own net capital stock"
+    }
+   }
+  },
+  "DEU": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0128,
+     "high": 0.0262,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0117,
+     "central": 0.0374,
+     "high": 0.1494,
+     "industries": [
+      "C252",
+      "C303",
+      "C304",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0476,
+     "high": 0.0814,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0312,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0604,
+     "high": 0.2034,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.0781,
+     "central": 0.1172,
+     "high": 0.161,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.0183,
+     "central": 0.0432,
+     "high": 0.0698,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0128,
+     "high": 0.0262,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0001,
+      "surplus": 0.0584,
+      "mixed_labour": 0.0064,
+      "capital": 0.437
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0476,
+     "high": 0.0814,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0199,
+      "surplus": 0.0372,
+      "mixed_labour": 0.0,
+      "capital": 0.1052
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0167,
+     "high": 0.0354,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0024,
+      "surplus": 0.0634,
+      "mixed_labour": 0.0165,
+      "capital": 0.3089
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C252": {
+     "low": 0.0126,
+     "central": 0.0487,
+     "high": 0.1015,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0025,
+      "surplus": 0.0889,
+      "mixed_labour": 0.0099,
+      "capital": 0.3089
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0035,
+     "central": 0.0496,
+     "high": 0.0994,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0021,
+      "surplus": 0.1171,
+      "mixed_labour": 0.0052,
+      "capital": 0.6691
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.0222,
+     "high": 0.0364,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0018,
+      "surplus": 0.0637,
+      "mixed_labour": 0.0038,
+      "capital": 0.3988
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0095,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0012,
+      "surplus": 0.0031,
+      "mixed_labour": 0.0016,
+      "capital": 0.3063
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0312,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.001,
+      "surplus": 0.0179,
+      "mixed_labour": 0.0009,
+      "capital": 0.3063
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "C304": {
+     "low": 0.0305,
+     "central": 0.0515,
+     "high": 0.3657,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0162,
+      "surplus": 0.0636,
+      "mixed_labour": 0.0007,
+      "capital": 0.3063
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.002,
+      "surplus": 0.1291,
+      "mixed_labour": 0.028,
+      "capital": 3.0276
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0604,
+     "high": 0.2034,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.003,
+      "surplus": 0.1867,
+      "mixed_labour": 0.0045,
+      "capital": 1.319
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0624,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0863,
+      "surplus": 0.1931,
+      "mixed_labour": 0.0479,
+      "capital": 0.6909
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.0183,
+     "central": 0.0432,
+     "high": 0.0698,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0153,
+      "surplus": 0.125,
+      "mixed_labour": 0.0347,
+      "capital": 0.6928
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.0781,
+     "central": 0.1172,
+     "high": 0.161,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0012,
+      "surplus": 0.1709,
+      "mixed_labour": 0.0,
+      "capital": 0.6105
+     },
+     "basis": "net operating surplus; own net capital stock"
+    }
+   }
+  },
+  "DNK": {
+   "groups": {
+    "goods": {
+     "low": 0.0332,
+     "central": 0.0702,
+     "high": 0.1142,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0257,
+     "central": 0.0962,
+     "high": 0.1505,
+     "industries": [
+      "C252",
+      "C303",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0408,
+     "high": 0.1005,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0083,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.1895,
+     "high": 0.3459,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.0039,
+     "central": 0.041,
+     "high": 0.0764,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.1146,
+     "central": 0.1438,
+     "high": 0.1735,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0332,
+     "central": 0.0702,
+     "high": 0.1142,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0016,
+      "surplus": 0.1349,
+      "mixed_labour": 0.0039,
+      "capital": 0.6943
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0408,
+     "high": 0.1005,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0023,
+      "surplus": 0.0626,
+      "mixed_labour": 0.0,
+      "capital": 0.267
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0195,
+     "high": 0.0552,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0011,
+      "surplus": 0.0654,
+      "mixed_labour": 0.0081,
+      "capital": 0.4326
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C252": {
+     "low": 0.0771,
+     "central": 0.1003,
+     "high": 0.1211,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0203,
+      "surplus": 0.188,
+      "mixed_labour": 0.0285,
+      "capital": 0.4326
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0837,
+     "high": 0.1346,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0006,
+      "surplus": 0.1593,
+      "mixed_labour": 0.0012,
+      "capital": 0.8335
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0667,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0008,
+      "surplus": 0.0404,
+      "mixed_labour": 0.0013,
+      "capital": 0.5618
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0154,
+     "high": 0.0494,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0014,
+      "surplus": 0.0684,
+      "mixed_labour": 0.0035,
+      "capital": 0.5657
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.1046,
+     "high": 0.1958,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0002,
+      "surplus": 0.1576,
+      "mixed_labour": 0.0019,
+      "capital": 0.5657
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0097,
+      "surplus": 0.1466,
+      "mixed_labour": 0.0161,
+      "capital": 2.378
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.1895,
+     "high": 0.3459,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0004,
+      "surplus": 0.2392,
+      "mixed_labour": 0.0,
+      "capital": 0.5478
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0167,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0562,
+      "surplus": 0.0797,
+      "mixed_labour": 0.0172,
+      "capital": 0.517
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.1146,
+     "central": 0.1438,
+     "high": 0.1735,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.044,
+      "surplus": 0.1541,
+      "mixed_labour": 0.0,
+      "capital": 0.6033
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.0039,
+     "central": 0.041,
+     "high": 0.0764,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0476,
+      "surplus": 0.0155,
+      "mixed_labour": 0.0,
+      "capital": 0.2469
+     },
+     "basis": "net operating surplus; own net capital stock"
+    }
+   }
+  },
+  "ESP": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0051,
+     "high": 0.0164,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0063,
+     "central": 0.0326,
+     "high": 0.0507,
+     "industries": [
+      "C252",
+      "C303",
+      "C304",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.02,
+     "high": 0.0701,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0861,
+     "high": 0.1105,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.1633,
+     "central": 0.2236,
+     "high": 0.2921,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.1526,
+     "central": 0.2426,
+     "high": 0.34,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0051,
+     "high": 0.0164,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0006,
+      "surplus": 0.0651,
+      "mixed_labour": 0.007,
+      "capital": 0.5948
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.02,
+     "high": 0.0701,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0032,
+      "surplus": 0.0379,
+      "mixed_labour": 0.0,
+      "capital": 0.2346
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C25": {
+     "low": 0.0075,
+     "central": 0.0272,
+     "high": 0.0441,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0001,
+      "surplus": 0.0809,
+      "mixed_labour": 0.015,
+      "capital": 0.4319
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C252": {
+     "low": 0.0251,
+     "central": 0.1302,
+     "high": 0.169,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0279,
+      "surplus": 0.1983,
+      "mixed_labour": 0.0014,
+      "capital": 0.4319
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0029,
+      "surplus": 0.029,
+      "mixed_labour": 0.0134,
+      "capital": 0.6648
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0178,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0014,
+      "surplus": 0.0445,
+      "mixed_labour": 0.0032,
+      "capital": 0.4698
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0044,
+      "surplus": 0.025,
+      "mixed_labour": 0.0011,
+      "capital": 0.5635
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0336,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0114,
+      "surplus": 0.0484,
+      "mixed_labour": 0.0001,
+      "capital": 0.5635
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C304": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0635,
+      "surplus": -0.0576,
+      "mixed_labour": 0.0044,
+      "capital": 0.5635
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0118,
+      "surplus": 0.2045,
+      "mixed_labour": 0.0564,
+      "capital": 2.7175
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0219,
+      "surplus": 0.0314,
+      "mixed_labour": 0.0051,
+      "capital": 1.2724
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.1721,
+     "high": 0.2209,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0026,
+      "surplus": 0.2753,
+      "mixed_labour": 0.0471,
+      "capital": 0.652
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.1526,
+     "central": 0.2426,
+     "high": 0.34,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0334,
+      "surplus": 0.287,
+      "mixed_labour": 0.0215,
+      "capital": 0.6253
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.1633,
+     "central": 0.2236,
+     "high": 0.2921,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0043,
+      "surplus": 0.2464,
+      "mixed_labour": 0.0,
+      "capital": 0.3012
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "EST": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0068,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0037,
+     "industries": [
+      "C252",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0917,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.2122,
+     "central": 0.3621,
+     "high": 0.3981,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.2942,
+     "central": 0.3392,
+     "high": 0.3955,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0068,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0,
+      "surplus": 0.0453,
+      "mixed_labour": 0.0099,
+      "capital": 0.5128
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0917,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0207,
+      "surplus": -0.026,
+      "mixed_labour": 0.0,
+      "capital": 0.2346
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.014,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0004,
+      "surplus": 0.0515,
+      "mixed_labour": 0.0218,
+      "capital": 0.4319
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C252": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": -0.0316,
+      "mixed_labour": 0.0,
+      "capital": 0.4083
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0074,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0003,
+      "surplus": 0.0232,
+      "mixed_labour": 0.0029,
+      "capital": 0.6648
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.0152,
+     "high": 0.0257,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0002,
+      "surplus": 0.0662,
+      "mixed_labour": 0.0086,
+      "capital": 0.4698
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0039,
+      "surplus": 0.0099,
+      "mixed_labour": 0.0086,
+      "capital": 0.5635
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0004,
+      "surplus": 0.172,
+      "mixed_labour": 0.0341,
+      "capital": 1.9057
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0,
+      "surplus": -0.0099,
+      "mixed_labour": 0.0002,
+      "capital": 1.2724
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0178,
+      "surplus": 0.0315,
+      "mixed_labour": 0.0243,
+      "capital": 0.721
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.2942,
+     "central": 0.3392,
+     "high": 0.3955,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0155,
+      "surplus": 0.3568,
+      "mixed_labour": 0.0081,
+      "capital": 0.2785
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.2122,
+     "central": 0.3621,
+     "high": 0.3981,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.3928,
+      "mixed_labour": 0.0037,
+      "capital": 0.3012
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "FIN": {
+   "groups": {
+    "goods": {
+     "low": 0.008,
+     "central": 0.0269,
+     "high": 0.0436,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0177,
+     "central": 0.0261,
+     "high": 0.0385,
+     "industries": [
+      "C25",
+      "C26",
+      "C28",
+      "C30"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0383,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.01,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.1957,
+     "central": 0.3881,
+     "high": 0.4518,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.1485,
+     "central": 0.2433,
+     "high": 0.3028,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.008,
+     "central": 0.0269,
+     "high": 0.0436,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0017,
+      "surplus": 0.0747,
+      "mixed_labour": 0.0066,
+      "capital": 0.4392
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0383,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0028,
+      "surplus": 0.0255,
+      "mixed_labour": 0.0,
+      "capital": 0.3657
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0241,
+     "central": 0.0327,
+     "high": 0.0456,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0022,
+      "surplus": 0.0796,
+      "mixed_labour": 0.0154,
+      "capital": 0.3259
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0197,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0028,
+      "surplus": 0.0338,
+      "mixed_labour": 0.0012,
+      "capital": 0.8333
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0469,
+     "central": 0.0717,
+     "high": 0.0886,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0022,
+      "surplus": 0.1049,
+      "mixed_labour": 0.0031,
+      "capital": 0.3101
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0169,
+      "surplus": 0.0009,
+      "mixed_labour": 0.0038,
+      "capital": 0.2386
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0071,
+      "surplus": 0.1321,
+      "mixed_labour": 0.0345,
+      "capital": 3.2005
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0349,
+      "surplus": 0.0599,
+      "mixed_labour": 0.0021,
+      "capital": 0.9299
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.02,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0166,
+      "surplus": 0.0743,
+      "mixed_labour": 0.0529,
+      "capital": 0.3721
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.1485,
+     "central": 0.2433,
+     "high": 0.3028,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.022,
+      "surplus": 0.2399,
+      "mixed_labour": 0.0076,
+      "capital": 0.1224
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.1957,
+     "central": 0.3881,
+     "high": 0.4518,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0003,
+      "surplus": 0.402,
+      "mixed_labour": 0.0,
+      "capital": 0.1579
+     },
+     "basis": "net operating surplus; own net capital stock"
+    }
+   }
+  },
+  "FRA": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0083,
+     "high": 0.0219,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0565,
+     "central": 0.0626,
+     "high": 0.0853,
+     "industries": [
+      "C252",
+      "C303",
+      "C304",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0127,
+     "high": 0.0576,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.2621,
+     "high": 0.3018,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0083,
+     "high": 0.0219,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0085,
+      "surplus": 0.0442,
+      "mixed_labour": 0.0102,
+      "capital": 0.3805
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0127,
+     "high": 0.0576,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0032,
+      "surplus": 0.0191,
+      "mixed_labour": 0.0,
+      "capital": 0.1065
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0119,
+     "high": 0.0386,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0139,
+      "surplus": 0.047,
+      "mixed_labour": 0.0103,
+      "capital": 0.429
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C252": {
+     "low": 0.0885,
+     "central": 0.098,
+     "high": 0.1079,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0023,
+      "surplus": 0.0639,
+      "mixed_labour": -0.0704,
+      "capital": 0.429
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0082,
+      "surplus": -0.0755,
+      "mixed_labour": 0.0025,
+      "capital": 1.0207
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0113,
+     "central": 0.0159,
+     "high": 0.0448,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0107,
+      "surplus": 0.0357,
+      "mixed_labour": 0.0027,
+      "capital": 0.3095
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0172,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0034,
+      "surplus": 0.0252,
+      "mixed_labour": 0.0005,
+      "capital": 0.5818
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0111,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.001,
+      "surplus": 0.0241,
+      "mixed_labour": 0.0002,
+      "capital": 0.5818
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C304": {
+     "low": 0.1377,
+     "central": 0.1524,
+     "high": 0.2223,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0379,
+      "surplus": 0.1861,
+      "mixed_labour": -0.0565,
+      "capital": 0.5818
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0234,
+      "surplus": 0.1091,
+      "mixed_labour": 0.032,
+      "capital": 2.9804
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.2621,
+     "high": 0.3018,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0014,
+      "surplus": 0.3883,
+      "mixed_labour": 0.0016,
+      "capital": 1.3693
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0326,
+      "surplus": 0.0149,
+      "mixed_labour": 0.043,
+      "capital": 0.4545
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.045,
+      "surplus": -0.0443,
+      "mixed_labour": 0.0125,
+      "capital": 0.5348
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0224,
+      "surplus": -0.0812,
+      "mixed_labour": 0.0001,
+      "capital": 0.2933
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "GBR": {
+   "groups": {
+    "goods": {
+     "low": 0.0196,
+     "central": 0.0348,
+     "high": 0.0485,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0057,
+     "central": 0.0213,
+     "high": 0.0638,
+     "industries": [
+      "C252",
+      "C303",
+      "C304",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0068,
+     "central": 0.0182,
+     "high": 0.045,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0174,
+     "high": 0.0398,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.2528,
+     "central": 0.3294,
+     "high": 0.3419,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.147,
+     "central": 0.1873,
+     "high": 0.2032,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0196,
+     "central": 0.0348,
+     "high": 0.0485,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.0851,
+      "mixed_labour": 0.0162,
+      "capital": 0.3795
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0068,
+     "central": 0.0182,
+     "high": 0.045,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0064,
+      "surplus": 0.0306,
+      "mixed_labour": 0.0018,
+      "capital": 0.1886
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0218,
+     "central": 0.0353,
+     "high": 0.0502,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0034,
+      "surplus": 0.0906,
+      "mixed_labour": 0.0168,
+      "capital": 0.4659
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C252": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0951,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0175,
+      "surplus": 0.0509,
+      "mixed_labour": 0.0,
+      "capital": 0.4659
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0165,
+     "central": 0.0439,
+     "high": 0.0858,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0021,
+      "surplus": 0.1017,
+      "mixed_labour": 0.0189,
+      "capital": 0.4568
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.014,
+     "central": 0.0241,
+     "high": 0.0457,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0017,
+      "surplus": 0.0674,
+      "mixed_labour": 0.0155,
+      "capital": 0.328
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0088,
+     "high": 0.0354,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0034,
+      "surplus": 0.0706,
+      "mixed_labour": 0.0072,
+      "capital": 0.5686
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C303": {
+     "low": 0.0063,
+     "central": 0.0412,
+     "high": 0.0743,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0003,
+      "surplus": 0.0926,
+      "mixed_labour": 0.0,
+      "capital": 0.5686
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "C304": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.1325,
+      "surplus": 0.0022,
+      "mixed_labour": 0.0,
+      "capital": 0.5686
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.021,
+     "high": 0.0374,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.1913,
+      "mixed_labour": 0.0359,
+      "capital": 1.493
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0084,
+      "surplus": -0.0472,
+      "mixed_labour": 0.0298,
+      "capital": 2.7279
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0138,
+     "high": 0.0421,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0112,
+      "surplus": 0.0763,
+      "mixed_labour": 0.0269,
+      "capital": 0.5205
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.147,
+     "central": 0.1873,
+     "high": 0.2032,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.2296,
+      "mixed_labour": 0.0167,
+      "capital": 0.2839
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.2528,
+     "central": 0.3294,
+     "high": 0.3419,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0064,
+      "surplus": 0.3573,
+      "mixed_labour": 0.0073,
+      "capital": 0.2996
+     },
+     "basis": "net operating surplus; own net capital stock"
+    }
+   }
+  },
+  "GRC": {
+   "groups": {
+    "goods": {
+     "low": 0.0521,
+     "central": 0.0687,
+     "high": 0.0848,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.1046,
+     "central": 0.1459,
+     "high": 0.1824,
+     "industries": [
+      "C25",
+      "C26",
+      "C28",
+      "C30"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0276,
+     "high": 0.0571,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0581,
+     "central": 0.1191,
+     "high": 0.1536,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.0356,
+     "central": 0.08,
+     "high": 0.2015,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.2594,
+     "central": 0.3202,
+     "high": 0.3766,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0521,
+     "central": 0.0687,
+     "high": 0.0848,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0043,
+      "surplus": 0.1243,
+      "mixed_labour": 0.0207,
+      "capital": 0.3405
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0276,
+     "high": 0.0571,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0053,
+      "surplus": 0.0481,
+      "mixed_labour": 0.0002,
+      "capital": 0.1677
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0167,
+     "high": 0.0232,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0027,
+      "surplus": 0.1195,
+      "mixed_labour": 0.0716,
+      "capital": 0.376
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0878,
+     "central": 0.2029,
+     "high": 0.2236,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0034,
+      "surplus": 0.251,
+      "mixed_labour": 0.0122,
+      "capital": 0.3607
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C28": {
+     "low": 0.0528,
+     "central": 0.0664,
+     "high": 0.0778,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0034,
+      "surplus": 0.1407,
+      "mixed_labour": 0.0372,
+      "capital": 0.3734
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C30": {
+     "low": 0.2776,
+     "central": 0.2977,
+     "high": 0.4051,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0087,
+      "surplus": 0.351,
+      "mixed_labour": 0.015,
+      "capital": 0.3284
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0301,
+     "high": 0.0674,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0093,
+      "surplus": 0.2776,
+      "mixed_labour": 0.0652,
+      "capital": 2.129
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0044,
+      "surplus": -0.0293,
+      "mixed_labour": 0.0036,
+      "capital": 0.745
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.1162,
+     "central": 0.2081,
+     "high": 0.2398,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0088,
+      "surplus": 0.3049,
+      "mixed_labour": 0.0395,
+      "capital": 0.5387
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K": {
+     "low": 0.2594,
+     "central": 0.3202,
+     "high": 0.3766,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0349,
+      "surplus": 0.3762,
+      "mixed_labour": 0.0503,
+      "capital": 0.4514
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K65": {
+     "low": 0.0356,
+     "central": 0.08,
+     "high": 0.2015,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0013,
+      "surplus": 0.0994,
+      "mixed_labour": 0.0,
+      "capital": 0.2012
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "HUN": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0365,
+     "industries": [
+      "C252",
+      "C303",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0945,
+     "high": 0.1352,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0171,
+     "high": 0.0325,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.0427,
+     "central": 0.1182,
+     "high": 0.2344,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.1383,
+     "central": 0.1774,
+     "high": 0.2046,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.0423,
+      "mixed_labour": 0.0038,
+      "capital": 0.8458
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0945,
+     "high": 0.1352,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0671,
+      "surplus": 0.0484,
+      "mixed_labour": 0.0,
+      "capital": 0.2346
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C25": {
+     "low": 0.0202,
+     "central": 0.0427,
+     "high": 0.0552,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0043,
+      "surplus": 0.0904,
+      "mixed_labour": 0.0131,
+      "capital": 0.4319
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C252": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0755,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0064,
+      "surplus": 0.021,
+      "mixed_labour": 0.0,
+      "capital": 0.4319
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0037,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0015,
+      "surplus": 0.044,
+      "mixed_labour": 0.0006,
+      "capital": 0.6648
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.0013,
+     "high": 0.025,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0021,
+      "surplus": 0.0447,
+      "mixed_labour": 0.0033,
+      "capital": 0.4698
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0141,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0019,
+      "surplus": 0.0191,
+      "mixed_labour": 0.0,
+      "capital": 0.5635
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0304,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0001,
+      "surplus": 0.0049,
+      "mixed_labour": 0.0,
+      "capital": 0.5635
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.2174,
+      "mixed_labour": 0.022,
+      "capital": 2.771
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0017,
+      "surplus": -0.0395,
+      "mixed_labour": 0.0,
+      "capital": 1.2724
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0342,
+     "high": 0.065,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0054,
+      "surplus": 0.1352,
+      "mixed_labour": 0.0138,
+      "capital": 0.9095
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.1383,
+     "central": 0.1774,
+     "high": 0.2046,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.271,
+      "mixed_labour": 0.033,
+      "capital": 0.6737
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.0427,
+     "central": 0.1182,
+     "high": 0.2344,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0031,
+      "surplus": 0.1422,
+      "mixed_labour": 0.0,
+      "capital": 0.3012
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "IRL": {
+   "groups": {
+    "goods": {
+     "low": 0.1264,
+     "central": 0.2349,
+     "high": 0.297,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0248,
+     "central": 0.04,
+     "high": 0.1315,
+     "industries": [
+      "C25",
+      "C28"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0274,
+     "high": 0.0788,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.0586,
+     "central": 0.1379,
+     "high": 0.1835,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.057,
+     "central": 0.1029,
+     "high": 0.1327,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.1264,
+     "central": 0.2349,
+     "high": 0.297,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.001,
+      "surplus": 0.3179,
+      "mixed_labour": 0.0036,
+      "capital": 0.8934
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0131,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0014,
+      "surplus": 0.0827,
+      "mixed_labour": 0.046,
+      "capital": 0.4319
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C28": {
+     "low": 0.0496,
+     "central": 0.08,
+     "high": 0.2498,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0021,
+      "surplus": 0.1356,
+      "mixed_labour": 0.0154,
+      "capital": 0.4698
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0548,
+     "high": 0.0898,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0014,
+      "surplus": 0.2118,
+      "mixed_labour": 0.0187,
+      "capital": 1.5532
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0175,
+      "surplus": -0.0359,
+      "mixed_labour": 0.0096,
+      "capital": 1.2724
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0677,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0659,
+      "surplus": 0.1595,
+      "mixed_labour": 0.046,
+      "capital": 0.6599
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.057,
+     "central": 0.1029,
+     "high": 0.1327,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0119,
+      "surplus": 0.1394,
+      "mixed_labour": 0.0087,
+      "capital": 0.4406
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.0586,
+     "central": 0.1379,
+     "high": 0.1835,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0068,
+      "surplus": 0.1599,
+      "mixed_labour": 0.0018,
+      "capital": 0.3012
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "ISL": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.025,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0,
+     "central": 0.0166,
+     "high": 0.1231,
+     "industries": [
+      "C252",
+      "C303",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1108,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0083,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.2861,
+     "central": 0.2968,
+     "high": 0.3211,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.1941,
+     "central": 0.2809,
+     "high": 0.3067,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.025,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0034,
+      "surplus": 0.0377,
+      "mixed_labour": 0.002,
+      "capital": 0.4845
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1108,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0146,
+      "surplus": -0.6429,
+      "mixed_labour": 0.0,
+      "capital": 0.2346
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0276,
+     "high": 0.0622,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0066,
+      "surplus": 0.064,
+      "mixed_labour": 0.0102,
+      "capital": 0.3632
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C252": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1714,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.012,
+      "surplus": 0.0358,
+      "mixed_labour": 0.027,
+      "capital": 0.3632
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0095,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0025,
+      "surplus": 0.0002,
+      "mixed_labour": 0.0005,
+      "capital": 0.6648
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0354,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0034,
+      "surplus": 0.0316,
+      "mixed_labour": 0.0016,
+      "capital": 0.4698
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0319,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0007,
+      "surplus": -0.0849,
+      "mixed_labour": 0.0105,
+      "capital": 0.5635
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0498,
+     "high": 0.1883,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.137,
+      "surplus": -0.0394,
+      "mixed_labour": -0.0046,
+      "capital": 0.5818
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0114,
+      "surplus": 0.1414,
+      "mixed_labour": 0.0112,
+      "capital": 2.3215
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0165,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0084,
+      "surplus": 0.029,
+      "mixed_labour": 0.0055,
+      "capital": 0.559
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.1941,
+     "central": 0.2809,
+     "high": 0.3067,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0467,
+      "surplus": 0.2875,
+      "mixed_labour": 0.0027,
+      "capital": 0.5629
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K65": {
+     "low": 0.2861,
+     "central": 0.2968,
+     "high": 0.3211,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0159,
+      "surplus": 0.3073,
+      "mixed_labour": 0.0,
+      "capital": 0.2933
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "ISR": {
+   "groups": {},
+   "industries": {}
+  },
+  "ITA": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0098,
+     "high": 0.0214,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0238,
+     "central": 0.035,
+     "high": 0.0611,
+     "industries": [
+      "C252",
+      "C303",
+      "C304",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0102,
+     "high": 0.0653,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0118,
+     "high": 0.0341,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.1789,
+     "central": 0.2475,
+     "high": 0.342,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.082,
+     "central": 0.1399,
+     "high": 0.1976,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0098,
+     "high": 0.0214,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.0631,
+      "mixed_labour": 0.0162,
+      "capital": 0.4119
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0102,
+     "high": 0.0653,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0042,
+      "surplus": 0.0265,
+      "mixed_labour": 0.0001,
+      "capital": 0.2264
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C25": {
+     "low": 0.014,
+     "central": 0.0457,
+     "high": 0.0644,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.001,
+      "surplus": 0.114,
+      "mixed_labour": 0.0285,
+      "capital": 0.4319
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C252": {
+     "low": 0.0951,
+     "central": 0.1036,
+     "high": 0.1221,
+     "years": [
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0043,
+      "surplus": 0.1463,
+      "mixed_labour": 0.0004,
+      "capital": 0.423
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0002,
+      "surplus": 0.0497,
+      "mixed_labour": 0.0082,
+      "capital": 0.7796
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C28": {
+     "low": 0.0116,
+     "central": 0.0239,
+     "high": 0.0331,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0008,
+      "surplus": 0.0645,
+      "mixed_labour": 0.0062,
+      "capital": 0.374
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0012,
+      "surplus": 0.0265,
+      "mixed_labour": 0.0031,
+      "capital": 0.5635
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0046,
+     "high": 0.0245,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0001,
+      "surplus": 0.0562,
+      "mixed_labour": 0.001,
+      "capital": 0.5635
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C304": {
+     "low": 0.0,
+     "central": 0.0316,
+     "high": 0.0978,
+     "years": [
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0682,
+      "surplus": -0.0389,
+      "mixed_labour": -0.0518,
+      "capital": 0.5499
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.236,
+      "mixed_labour": 0.0826,
+      "capital": 2.7622
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0393,
+      "surplus": -0.2014,
+      "mixed_labour": 0.0054,
+      "capital": 1.2724
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0235,
+     "high": 0.0682,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0048,
+      "surplus": 0.1775,
+      "mixed_labour": 0.0873,
+      "capital": 0.7943
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.082,
+     "central": 0.1399,
+     "high": 0.1976,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.2542,
+      "mixed_labour": 0.0589,
+      "capital": 0.6159
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.1789,
+     "central": 0.2475,
+     "high": 0.342,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0096,
+      "surplus": 0.2649,
+      "mixed_labour": 0.0,
+      "capital": 0.3012
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "JPN": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0083,
+     "central": 0.0146,
+     "high": 0.0194,
+     "industries": [
+      "C25",
+      "C26",
+      "C28",
+      "C30"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0399,
+     "central": 0.1225,
+     "high": 0.3186,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0065,
+     "high": 0.0891,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.1754,
+     "central": 0.2054,
+     "high": 0.233,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0112,
+      "surplus": 0.0506,
+      "mixed_labour": 0.008,
+      "capital": 0.8777
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0399,
+     "central": 0.1225,
+     "high": 0.3186,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0148,
+      "surplus": 0.1584,
+      "mixed_labour": 0.0001,
+      "capital": 0.2346
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0334,
+     "central": 0.0582,
+     "high": 0.0775,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.05,
+      "surplus": 0.0782,
+      "mixed_labour": 0.0211,
+      "capital": 0.5443
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0028,
+      "surplus": 0.0202,
+      "mixed_labour": 0.0012,
+      "capital": 1.4162
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.003,
+      "surplus": 0.0638,
+      "mixed_labour": 0.0079,
+      "capital": 0.9028
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": -0.6066,
+      "mixed_labour": -0.0151,
+      "capital": 0.5635
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0039,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0691,
+      "surplus": 0.1136,
+      "mixed_labour": 0.0324,
+      "capital": 2.0582
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.013,
+     "high": 0.1744,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0513,
+      "surplus": 0.0528,
+      "mixed_labour": 0.0321,
+      "capital": 0.6558
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.1754,
+     "central": 0.2054,
+     "high": 0.233,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0155,
+      "surplus": 0.263,
+      "mixed_labour": 0.006,
+      "capital": 0.4008
+     },
+     "basis": "net operating surplus; own net capital stock"
+    }
+   }
+  },
+  "KOR": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.3911,
+     "high": 0.5223,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.1388,
+     "central": 0.1538,
+     "high": 0.1664,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.1989,
+     "central": 0.2392,
+     "high": 0.2621,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.0546,
+      "mixed_labour": 0.0125,
+      "capital": 0.7887
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.3911,
+     "high": 0.5223,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.5056,
+      "mixed_labour": 0.0,
+      "capital": 1.2724
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K": {
+     "low": 0.1989,
+     "central": 0.2392,
+     "high": 0.2621,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.3067,
+      "mixed_labour": 0.0093,
+      "capital": 0.6473
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.1388,
+     "central": 0.1538,
+     "high": 0.1664,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.1809,
+      "mixed_labour": 0.0,
+      "capital": 0.3012
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "LTU": {
+   "groups": {
+    "goods": {
+     "low": 0.0479,
+     "central": 0.0626,
+     "high": 0.0815,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.1312,
+     "central": 0.1845,
+     "high": 0.376,
+     "industries": [
+      "C252",
+      "C303",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0656,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0415,
+     "central": 0.0786,
+     "high": 0.1755,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.1762,
+     "central": 0.239,
+     "high": 0.2564,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.2071,
+     "central": 0.3018,
+     "high": 0.409,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0479,
+     "central": 0.0626,
+     "high": 0.0815,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0012,
+      "surplus": 0.1179,
+      "mixed_labour": 0.0103,
+      "capital": 0.4858
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C25": {
+     "low": 0.0187,
+     "central": 0.0498,
+     "high": 0.0659,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0022,
+      "surplus": 0.0981,
+      "mixed_labour": 0.0075,
+      "capital": 0.429
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C252": {
+     "low": 0.0735,
+     "central": 0.1346,
+     "high": 0.1722,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0115,
+      "surplus": 0.1582,
+      "mixed_labour": -0.0035,
+      "capital": 0.429
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0149,
+     "central": 0.0476,
+     "high": 0.0715,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0006,
+      "surplus": 0.1148,
+      "mixed_labour": 0.0063,
+      "capital": 0.6702
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C28": {
+     "low": 0.0442,
+     "central": 0.0661,
+     "high": 0.089,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0029,
+      "surplus": 0.1153,
+      "mixed_labour": 0.0046,
+      "capital": 0.463
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C30": {
+     "low": 0.0699,
+     "central": 0.1115,
+     "high": 0.204,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0031,
+      "surplus": 0.1762,
+      "mixed_labour": 0.0092,
+      "capital": 0.5818
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C303": {
+     "low": 0.3053,
+     "central": 0.3713,
+     "high": 0.8844,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.2167,
+      "surplus": 0.207,
+      "mixed_labour": 0.0,
+      "capital": 0.5818
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.073,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0004,
+      "surplus": 0.2113,
+      "mixed_labour": 0.0316,
+      "capital": 2.0148
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "H50": {
+     "low": 0.0415,
+     "central": 0.0786,
+     "high": 0.1755,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0004,
+      "surplus": 0.2127,
+      "mixed_labour": 0.0113,
+      "capital": 1.3693
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0582,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0231,
+      "surplus": 0.102,
+      "mixed_labour": 0.0367,
+      "capital": 0.6951
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K": {
+     "low": 0.2071,
+     "central": 0.3018,
+     "high": 0.409,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.018,
+      "surplus": 0.3409,
+      "mixed_labour": 0.0156,
+      "capital": 0.4611
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K65": {
+     "low": 0.1762,
+     "central": 0.239,
+     "high": 0.2564,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0054,
+      "surplus": 0.26,
+      "mixed_labour": 0.0,
+      "capital": 0.2933
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "LUX": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0094,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0251,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.0,
+     "central": 0.0057,
+     "high": 0.1598,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.0179,
+     "central": 0.0404,
+     "high": 0.0766,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0094,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0014,
+      "surplus": 0.0177,
+      "mixed_labour": 0.0008,
+      "capital": 0.4516
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0503,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0056,
+      "surplus": 0.0805,
+      "mixed_labour": 0.0052,
+      "capital": 1.6987
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0799,
+      "surplus": -0.0414,
+      "mixed_labour": 0.0145,
+      "capital": 0.7095
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K": {
+     "low": 0.0179,
+     "central": 0.0404,
+     "high": 0.0766,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0121,
+      "surplus": 0.064,
+      "mixed_labour": 0.0001,
+      "capital": 0.3958
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K65": {
+     "low": 0.0,
+     "central": 0.0057,
+     "high": 0.1598,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.0265,
+      "mixed_labour": 0.0,
+      "capital": 0.2317
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "LVA": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0265,
+     "high": 0.0609,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0192,
+     "central": 0.0713,
+     "high": 0.0898,
+     "industries": [
+      "C25",
+      "C26",
+      "C28",
+      "C30"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.1022,
+     "central": 0.2487,
+     "high": 0.2668,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.0677,
+     "central": 0.1961,
+     "high": 0.2591,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0265,
+     "high": 0.0609,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0011,
+      "surplus": 0.0863,
+      "mixed_labour": 0.0126,
+      "capital": 0.5122
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0032,
+      "surplus": -0.237,
+      "mixed_labour": 0.0,
+      "capital": 2.5585
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0188,
+     "high": 0.0574,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0038,
+      "surplus": 0.0698,
+      "mixed_labour": 0.015,
+      "capital": 0.3584
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C26": {
+     "low": 0.0767,
+     "central": 0.2464,
+     "high": 0.2607,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.003,
+      "surplus": 0.2722,
+      "mixed_labour": 0.0027,
+      "capital": 0.2239
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.0198,
+     "high": 0.0413,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0043,
+      "surplus": 0.0776,
+      "mixed_labour": 0.0146,
+      "capital": 0.4321
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0028,
+      "surplus": 0.0245,
+      "mixed_labour": 0.0302,
+      "capital": 0.725
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.003,
+      "surplus": 0.1272,
+      "mixed_labour": 0.0345,
+      "capital": 2.0696
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0053,
+      "surplus": 0.0352,
+      "mixed_labour": 0.0518,
+      "capital": 1.7785
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0544,
+      "surplus": 0.0569,
+      "mixed_labour": 0.022,
+      "capital": 1.1294
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K": {
+     "low": 0.0677,
+     "central": 0.1961,
+     "high": 0.2591,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.019,
+      "surplus": 0.2346,
+      "mixed_labour": 0.0115,
+      "capital": 0.5107
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K65": {
+     "low": 0.1022,
+     "central": 0.2487,
+     "high": 0.2668,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0019,
+      "surplus": 0.2607,
+      "mixed_labour": 0.0,
+      "capital": 0.1544
+     },
+     "basis": "net operating surplus; own net capital stock"
+    }
+   }
+  },
+  "MEX": {
+   "groups": {},
+   "industries": {}
+  },
+  "NLD": {
+   "groups": {
+    "goods": {
+     "low": 0.0184,
+     "central": 0.0401,
+     "high": 0.0457,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0084,
+     "central": 0.0358,
+     "high": 0.088,
+     "industries": [
+      "C303",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0059,
+     "high": 0.029,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0253,
+     "high": 0.064,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0544,
+     "high": 0.1158,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.1019,
+     "central": 0.1236,
+     "high": 0.1602,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.1558,
+     "central": 0.1951,
+     "high": 0.2725,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0184,
+     "central": 0.0401,
+     "high": 0.0457,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.002,
+      "surplus": 0.0881,
+      "mixed_labour": 0.0082,
+      "capital": 0.419
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0059,
+     "high": 0.029,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0015,
+      "surplus": 0.0228,
+      "mixed_labour": 0.0,
+      "capital": 0.2044
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0223,
+     "central": 0.048,
+     "high": 0.066,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0021,
+      "surplus": 0.1091,
+      "mixed_labour": 0.0201,
+      "capital": 0.4319
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0169,
+     "central": 0.0716,
+     "high": 0.1123,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0109,
+      "surplus": 0.1319,
+      "mixed_labour": 0.0,
+      "capital": 0.5486
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0971,
+     "central": 0.1473,
+     "high": 0.1692,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.008,
+      "surplus": 0.2027,
+      "mixed_labour": 0.0017,
+      "capital": 0.508
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0059,
+      "surplus": 0.0282,
+      "mixed_labour": 0.0078,
+      "capital": 0.5635
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0637,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0108,
+      "surplus": 0.0293,
+      "mixed_labour": 0.006,
+      "capital": 0.5635
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0021,
+      "surplus": 0.1817,
+      "mixed_labour": 0.0461,
+      "capital": 1.8983
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0544,
+     "high": 0.1158,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0093,
+      "surplus": 0.2045,
+      "mixed_labour": 0.0263,
+      "capital": 1.2724
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0505,
+     "high": 0.1279,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0614,
+      "surplus": 0.1873,
+      "mixed_labour": 0.0462,
+      "capital": 0.3242
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.1558,
+     "central": 0.1951,
+     "high": 0.2725,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0237,
+      "surplus": 0.23,
+      "mixed_labour": 0.0059,
+      "capital": 0.5861
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.1019,
+     "central": 0.1236,
+     "high": 0.1602,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0028,
+      "surplus": 0.1478,
+      "mixed_labour": 0.0,
+      "capital": 0.3012
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "NOR": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0089,
+     "high": 0.0214,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0115,
+     "central": 0.0916,
+     "high": 0.1565,
+     "industries": [
+      "C252",
+      "C303",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0036,
+     "high": 0.0237,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.2797,
+     "central": 0.2907,
+     "high": 0.3678,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0089,
+     "high": 0.0214,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.0522,
+      "mixed_labour": 0.0022,
+      "capital": 0.457
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": -0.0231,
+      "mixed_labour": -0.0,
+      "capital": 0.2712
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0005,
+     "central": 0.0396,
+     "high": 0.0533,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0023,
+      "surplus": 0.0783,
+      "mixed_labour": 0.0041,
+      "capital": 0.3601
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C252": {
+     "low": 0.0113,
+     "central": 0.06,
+     "high": 0.0818,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.1038,
+      "surplus": 0.1954,
+      "mixed_labour": -0.0008,
+      "capital": 0.3601
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0314,
+     "high": 0.0586,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0041,
+      "surplus": 0.0799,
+      "mixed_labour": 0.0,
+      "capital": 0.4926
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.006,
+     "high": 0.0166,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0065,
+      "surplus": 0.05,
+      "mixed_labour": 0.0022,
+      "capital": 0.3924
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0534,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.0213,
+      "mixed_labour": 0.0,
+      "capital": 0.3218
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C303": {
+     "low": 0.0231,
+     "central": 0.1834,
+     "high": 0.3292,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.1038,
+      "surplus": 0.3463,
+      "mixed_labour": 0.0301,
+      "capital": 0.3218
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.1687,
+      "mixed_labour": 0.009,
+      "capital": 2.714
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0476,
+      "surplus": 0.0677,
+      "mixed_labour": 0.0003,
+      "capital": 1.3131
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0071,
+     "high": 0.0474,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0084,
+      "surplus": 0.0777,
+      "mixed_labour": 0.0053,
+      "capital": 0.631
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.2797,
+     "central": 0.2907,
+     "high": 0.3678,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.3453,
+      "mixed_labour": 0.0,
+      "capital": 0.6072
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0182,
+      "surplus": 0.0132,
+      "mixed_labour": 0.0,
+      "capital": 2.5572
+     },
+     "basis": "net operating surplus; own net capital stock"
+    }
+   }
+  },
+  "NZL": {
+   "groups": {
+    "goods": {
+     "low": 0.0231,
+     "central": 0.0268,
+     "high": 0.0429,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0454,
+     "central": 0.0476,
+     "high": 0.0718,
+     "industries": [
+      "C25"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.2126,
+     "central": 0.2503,
+     "high": 0.2505,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.2949,
+     "central": 0.3257,
+     "high": 0.3269,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.1314,
+     "central": 0.144,
+     "high": 0.1735,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0231,
+     "central": 0.0268,
+     "high": 0.0429,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.025,
+      "surplus": 0.0549,
+      "mixed_labour": 0.02,
+      "capital": 0.3671
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.2126,
+     "central": 0.2503,
+     "high": 0.2505,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.2421,
+      "surplus": 0.0102,
+      "mixed_labour": 0.0,
+      "capital": 0.0221
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0454,
+     "central": 0.0476,
+     "high": 0.0718,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0137,
+      "surplus": 0.1214,
+      "mixed_labour": 0.0402,
+      "capital": 0.221
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0142,
+      "surplus": 0.2975,
+      "mixed_labour": 0.0713,
+      "capital": 5.0263
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": -0.1118,
+      "surplus": 0.1851,
+      "mixed_labour": 0.0637,
+      "capital": 1.9056
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.1314,
+     "central": 0.144,
+     "high": 0.1735,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0389,
+      "surplus": 0.2508,
+      "mixed_labour": 0.0321,
+      "capital": 1.2622
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.2949,
+     "central": 0.3257,
+     "high": 0.3269,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.1098,
+      "surplus": 0.2323,
+      "mixed_labour": 0.006,
+      "capital": 0.1156
+     },
+     "basis": "net operating surplus; own net capital stock"
+    }
+   }
+  },
+  "POL": {
+   "groups": {
+    "goods": {
+     "low": 0.0378,
+     "central": 0.0656,
+     "high": 0.0737,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0608,
+     "central": 0.1115,
+     "high": 0.1602,
+     "industries": [
+      "C252",
+      "C303",
+      "C304",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0099,
+     "central": 0.1162,
+     "high": 0.1599,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.09,
+     "central": 0.1608,
+     "high": 0.1862,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1811,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.225,
+     "central": 0.3211,
+     "high": 0.3904,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0378,
+     "central": 0.0656,
+     "high": 0.0737,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0049,
+      "surplus": 0.0936,
+      "mixed_labour": 0.0087,
+      "capital": 0.268
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0099,
+     "central": 0.1162,
+     "high": 0.1599,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0196,
+      "surplus": 0.1185,
+      "mixed_labour": 0.0,
+      "capital": 0.2439
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C25": {
+     "low": 0.0746,
+     "central": 0.0889,
+     "high": 0.0972,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0015,
+      "surplus": 0.1455,
+      "mixed_labour": 0.0193,
+      "capital": 0.4319
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C252": {
+     "low": 0.1891,
+     "central": 0.2617,
+     "high": 0.2675,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0879,
+      "surplus": 0.3869,
+      "mixed_labour": -0.0016,
+      "capital": 0.4319
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0216,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0003,
+      "surplus": 0.0543,
+      "mixed_labour": 0.0046,
+      "capital": 0.6648
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C28": {
+     "low": 0.0308,
+     "central": 0.0543,
+     "high": 0.0654,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0023,
+      "surplus": 0.1003,
+      "mixed_labour": 0.006,
+      "capital": 0.4698
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0228,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.001,
+      "surplus": 0.0416,
+      "mixed_labour": 0.0092,
+      "capital": 0.5635
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C303": {
+     "low": 0.0034,
+     "central": 0.0394,
+     "high": 0.1148,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0042,
+      "surplus": 0.0914,
+      "mixed_labour": 0.0055,
+      "capital": 0.5635
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C304": {
+     "low": 0.0506,
+     "central": 0.145,
+     "high": 0.2368,
+     "years": [
+      2021,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0178,
+      "surplus": 0.1879,
+      "mixed_labour": 0.0104,
+      "capital": 0.5587
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.127,
+     "central": 0.1522,
+     "high": 0.1711,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0101,
+      "surplus": 0.2672,
+      "mixed_labour": 0.0413,
+      "capital": 0.9316
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.053,
+     "central": 0.1695,
+     "high": 0.2013,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0152,
+      "surplus": 0.2714,
+      "mixed_labour": 0.0371,
+      "capital": 0.5523
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.225,
+     "central": 0.3211,
+     "high": 0.3904,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0462,
+      "surplus": 0.3328,
+      "mixed_labour": 0.0302,
+      "capital": 0.3076
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1811,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0343,
+      "surplus": 0.0463,
+      "mixed_labour": 0.0579,
+      "capital": 0.3012
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "PRT": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0134,
+     "high": 0.0223,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0,
+     "central": 0.0004,
+     "high": 0.0191,
+     "industries": [
+      "C252",
+      "C303",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0185,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0169,
+     "high": 0.0538,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.2158,
+     "central": 0.2836,
+     "high": 0.3145,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.1654,
+     "central": 0.2812,
+     "high": 0.3946,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0134,
+     "high": 0.0223,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.003,
+      "surplus": 0.0658,
+      "mixed_labour": 0.0076,
+      "capital": 0.5305
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0185,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0124,
+      "surplus": 0.0137,
+      "mixed_labour": 0.0,
+      "capital": 0.4456
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0164,
+     "high": 0.0279,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0001,
+      "surplus": 0.0677,
+      "mixed_labour": 0.0126,
+      "capital": 0.4319
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C252": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0284,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0016,
+      "surplus": 0.0186,
+      "mixed_labour": -0.0058,
+      "capital": 0.4319
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0002,
+      "surplus": 0.0054,
+      "mixed_labour": 0.001,
+      "capital": 0.6387
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0097,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0001,
+      "surplus": 0.0397,
+      "mixed_labour": 0.0023,
+      "capital": 0.7594
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0094,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.001,
+      "surplus": 0.0376,
+      "mixed_labour": 0.0012,
+      "capital": 0.5635
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0011,
+     "high": 0.0288,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0047,
+      "surplus": 0.0382,
+      "mixed_labour": -0.0089,
+      "capital": 0.5635
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.004,
+      "surplus": 0.1685,
+      "mixed_labour": 0.0511,
+      "capital": 2.5207
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0013,
+      "surplus": 0.0383,
+      "mixed_labour": 0.0044,
+      "capital": 1.2724
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0337,
+     "high": 0.1076,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.024,
+      "surplus": 0.2068,
+      "mixed_labour": 0.0606,
+      "capital": 0.9834
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.1654,
+     "central": 0.2812,
+     "high": 0.3946,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0261,
+      "surplus": 0.3274,
+      "mixed_labour": 0.0121,
+      "capital": 0.6682
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.2158,
+     "central": 0.2836,
+     "high": 0.3145,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0021,
+      "surplus": 0.3085,
+      "mixed_labour": 0.0,
+      "capital": 0.3012
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "SVK": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0443,
+     "central": 0.0584,
+     "high": 0.0995,
+     "industries": [
+      "C252",
+      "C303",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0506,
+     "high": 0.1083,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0352,
+     "high": 0.0735,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.0246,
+     "central": 0.1542,
+     "high": 0.211,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.0417,
+     "central": 0.0862,
+     "high": 0.1254,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0023,
+      "surplus": 0.0415,
+      "mixed_labour": 0.0131,
+      "capital": 0.5931
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0506,
+     "high": 0.1083,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0018,
+      "surplus": 0.0995,
+      "mixed_labour": 0.0,
+      "capital": 0.5637
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0004,
+     "high": 0.0201,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0002,
+      "surplus": 0.1252,
+      "mixed_labour": 0.0738,
+      "capital": 0.5674
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C252": {
+     "low": 0.133,
+     "central": 0.1751,
+     "high": 0.2985,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0773,
+      "surplus": 0.386,
+      "mixed_labour": 0.0826,
+      "capital": 0.5674
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0003,
+      "surplus": 0.0146,
+      "mixed_labour": 0.0028,
+      "capital": 0.5134
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0006,
+      "surplus": 0.0154,
+      "mixed_labour": 0.0024,
+      "capital": 0.6583
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0136,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0074,
+      "surplus": 0.0576,
+      "mixed_labour": 0.0003,
+      "capital": 0.5782
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0686,
+      "surplus": -0.0555,
+      "mixed_labour": -0.0061,
+      "capital": 0.6095
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0019,
+      "surplus": 0.2169,
+      "mixed_labour": 0.0394,
+      "capital": 2.6779
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0233,
+      "surplus": 0.0006,
+      "mixed_labour": 0.0059,
+      "capital": 2.4085
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0705,
+     "high": 0.147,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0266,
+      "surplus": 0.2414,
+      "mixed_labour": 0.035,
+      "capital": 1.2142
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.0417,
+     "central": 0.0862,
+     "high": 0.1254,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0091,
+      "surplus": 0.2226,
+      "mixed_labour": 0.0806,
+      "capital": 0.72
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.0246,
+     "central": 0.1542,
+     "high": 0.211,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0119,
+      "surplus": 0.1709,
+      "mixed_labour": 0.0001,
+      "capital": 0.3159
+     },
+     "basis": "net operating surplus; own net capital stock"
+    }
+   }
+  },
+  "SVN": {
+   "groups": {
+    "goods": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.004,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.008,
+     "central": 0.0197,
+     "high": 0.0752,
+     "industries": [
+      "C252",
+      "C303",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0827,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0693,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.138,
+     "central": 0.2141,
+     "high": 0.2243,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.0851,
+     "central": 0.2132,
+     "high": 0.3005,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.004,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0026,
+      "surplus": 0.0541,
+      "mixed_labour": 0.0122,
+      "capital": 0.5836
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0827,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": -0.2846,
+      "mixed_labour": 0.0,
+      "capital": 0.2346
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C25": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.011,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0045,
+      "surplus": 0.0585,
+      "mixed_labour": 0.0215,
+      "capital": 0.4319
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C252": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2022
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0815,
+      "surplus": 0.1295,
+      "mixed_labour": 0.385,
+      "capital": 0.4083
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0241,
+     "central": 0.0591,
+     "high": 0.0902,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0049,
+      "surplus": 0.1273,
+      "mixed_labour": 0.0034,
+      "capital": 0.6648
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C28": {
+     "low": 0.0,
+     "central": 0.0129,
+     "high": 0.0273,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0041,
+      "surplus": 0.0619,
+      "mixed_labour": 0.0025,
+      "capital": 0.4698
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0167,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.008,
+      "surplus": 0.0189,
+      "mixed_labour": 0.017,
+      "capital": 0.5635
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.1355,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0042,
+      "surplus": -0.0771,
+      "mixed_labour": 0.0116,
+      "capital": 0.5635
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; OECD median capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0013,
+      "surplus": 0.1429,
+      "mixed_labour": 0.0667,
+      "capital": 2.314
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0693,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0016,
+      "surplus": 0.1069,
+      "mixed_labour": 0.0566,
+      "capital": 1.2724
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0363,
+      "surplus": 0.0724,
+      "mixed_labour": 0.1136,
+      "capital": 1.2917
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K": {
+     "low": 0.0851,
+     "central": 0.2132,
+     "high": 0.3005,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0135,
+      "surplus": 0.2826,
+      "mixed_labour": 0.0147,
+      "capital": 0.757
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    },
+    "K65": {
+     "low": 0.138,
+     "central": 0.2141,
+     "high": 0.2243,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0028,
+      "surplus": 0.2385,
+      "mixed_labour": 0.0,
+      "capital": 0.3012
+     },
+     "basis": "net operating surplus; OECD median capital per unit of output"
+    }
+   }
+  },
+  "SWE": {
+   "groups": {
+    "goods": {
+     "low": 0.0167,
+     "central": 0.0416,
+     "high": 0.0562,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0,
+     "central": 0.0811,
+     "high": 0.1266,
+     "industries": [
+      "C252",
+      "C303",
+      "C26"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0254,
+     "high": 0.0457,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0149,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.018,
+     "high": 0.0777,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "insurance": {
+     "low": 0.1901,
+     "central": 0.2706,
+     "high": 0.3276,
+     "industries": [
+      "K65"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.2079,
+     "central": 0.2519,
+     "high": 0.2655,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0167,
+     "central": 0.0416,
+     "high": 0.0562,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0232,
+      "surplus": 0.0735,
+      "mixed_labour": 0.0026,
+      "capital": 0.5823
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0254,
+     "high": 0.0457,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0044,
+      "surplus": 0.0341,
+      "mixed_labour": 0.0,
+      "capital": 0.1457
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0025,
+     "central": 0.0473,
+     "high": 0.0873,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0356,
+      "surplus": 0.0612,
+      "mixed_labour": 0.006,
+      "capital": 0.483
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C252": {
+     "low": 0.0,
+     "central": 0.1672,
+     "high": 0.2722,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.1534,
+      "surplus": 0.0548,
+      "mixed_labour": -0.0024,
+      "capital": 0.483
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0681,
+     "high": 0.0875,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0347,
+      "surplus": 0.0908,
+      "mixed_labour": 0.0,
+      "capital": 0.6366
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0576,
+     "central": 0.1238,
+     "high": 0.1444,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0296,
+      "surplus": 0.1385,
+      "mixed_labour": 0.0,
+      "capital": 0.4919
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0687,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0342,
+      "surplus": 0.0704,
+      "mixed_labour": 0.0,
+      "capital": 1.1697
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C303": {
+     "low": 0.0,
+     "central": 0.0079,
+     "high": 0.0202,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": -0.01,
+      "surplus": 0.1323,
+      "mixed_labour": 0.0035,
+      "capital": 1.2329
+     },
+     "basis": "gross surplus less parent industry's depreciation ratio; parent industry's capital per unit of output"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0459,
+      "surplus": 0.0982,
+      "mixed_labour": 0.0115,
+      "capital": 2.4242
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.018,
+     "high": 0.0777,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": -0.0329,
+      "surplus": 0.1299,
+      "mixed_labour": 0.0,
+      "capital": 0.8781
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0298,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0438,
+      "surplus": -0.0053,
+      "mixed_labour": 0.0111,
+      "capital": 0.5815
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.2079,
+     "central": 0.2519,
+     "high": 0.2655,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0826,
+      "surplus": 0.2229,
+      "mixed_labour": 0.0018,
+      "capital": 0.5745
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K65": {
+     "low": 0.1901,
+     "central": 0.2706,
+     "high": 0.3276,
+     "years": [
+      2021,
+      2022,
+      2023
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0484,
+      "surplus": 0.3147,
+      "mixed_labour": 0.0,
+      "capital": 1.0279
+     },
+     "basis": "net operating surplus; own net capital stock"
+    }
+   }
+  },
+  "TUR": {
+   "groups": {},
+   "industries": {}
+  },
+  "USA": {
+   "groups": {
+    "goods": {
+     "low": 0.0197,
+     "central": 0.0384,
+     "high": 0.0491,
+     "industries": [
+      "C"
+     ],
+     "basis": "own"
+    },
+    "weapons": {
+     "low": 0.0215,
+     "central": 0.0316,
+     "high": 0.0462,
+     "industries": [
+      "C25",
+      "C26",
+      "C28",
+      "C30"
+     ],
+     "basis": "own"
+    },
+    "fuel": {
+     "low": 0.0,
+     "central": 0.0849,
+     "high": 0.1335,
+     "industries": [
+      "C19"
+     ],
+     "basis": "own"
+    },
+    "services": {
+     "low": 0.0115,
+     "central": 0.0496,
+     "high": 0.067,
+     "industries": [
+      "I",
+      "GTN"
+     ],
+     "basis": "own"
+    },
+    "shipping": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "industries": [
+      "H50"
+     ],
+     "basis": "own"
+    },
+    "finance": {
+     "low": 0.123,
+     "central": 0.1336,
+     "high": 0.1413,
+     "industries": [
+      "K"
+     ],
+     "basis": "own"
+    }
+   },
+   "industries": {
+    "C": {
+     "low": 0.0197,
+     "central": 0.0384,
+     "high": 0.0491,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.1114,
+      "mixed_labour": 0.0042,
+      "capital": 0.7643
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C19": {
+     "low": 0.0,
+     "central": 0.0849,
+     "high": 0.1335,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.1333,
+      "mixed_labour": 0.0,
+      "capital": 0.5379
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C25": {
+     "low": 0.0077,
+     "central": 0.0138,
+     "high": 0.032,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.0729,
+      "mixed_labour": 0.0047,
+      "capital": 0.6043
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C26": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.0434,
+      "mixed_labour": 0.004,
+      "capital": 1.6223
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C28": {
+     "low": 0.0387,
+     "central": 0.0471,
+     "high": 0.0558,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.1149,
+      "mixed_labour": 0.0017,
+      "capital": 0.7357
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "C30": {
+     "low": 0.0397,
+     "central": 0.0654,
+     "high": 0.097,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.1317,
+      "mixed_labour": 0.0017,
+      "capital": 0.718
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "GTN": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0272,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.1891,
+      "mixed_labour": 0.0188,
+      "capital": 1.9792
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "H50": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.0099,
+      "mixed_labour": 0.0191,
+      "capital": 1.7208
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "I": {
+     "low": 0.0229,
+     "central": 0.0992,
+     "high": 0.1068,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.1736,
+      "mixed_labour": 0.006,
+      "capital": 0.76
+     },
+     "basis": "net operating surplus; own net capital stock"
+    },
+    "K": {
+     "low": 0.123,
+     "central": 0.1336,
+     "high": 0.1413,
+     "years": [
+      2021
+     ],
+     "per_unit_of_output": {
+      "tax": 0.0,
+      "surplus": 0.1949,
+      "mixed_labour": 0.0119,
+      "capital": 0.5503
+     },
+     "basis": "net operating surplus; own net capital stock"
+    }
+   }
+  }
+ },
+ "sources": [
+  {
+   "name": "OECD STAN Database for Structural Analysis, 2025 edition (DSD_STAN@DF_STAN_2025): output, other taxes less subsidies on production, operating surplus and mixed income, consumption of fixed capital, compensation of employees, net capital stock, employees and self-employed by industry",
+   "url": "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_STAN@DF_STAN_2025,1.0/A..C+C19+C25+C252+C26+C28+C30+C303+C304+H50+I+GTN+K+K65+_T.P1+D29X39+B2A3N+B2A3G+P51C+D1.V.XDC?startPeriod=2017&endPeriod=2024&format=csv",
+   "date": "retrieved 2026-10-19"
+  },
+  {
+   "name": "OECD STAN 2025: services of the business economy excluding real estate (GTNXL) and real estate (L), the same measures (round 14)",
+   "url": "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_STAN@DF_STAN_2025,1.0/A..GTNXL+L.P1+D29X39+B2A3N+B2A3G+P51C+D1.V.XDC?startPeriod=2017&endPeriod=2024&format=csv",
+   "date": "retrieved 2026-10-19"
+  },
+  {
+   "name": "Damodaran, Country Default Spreads and Risk Premiums, January 2026 (round 14)",
+   "url": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ctryprem.html",
+   "date": "retrieved 2026-10-19"
+  }
+ ]
+}

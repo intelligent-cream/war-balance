@@ -48,7 +48,6 @@ The parts below are what the country panel's waterfall shows (`shiftParts` and `
 | Private donations | national donation totals, GDP model elsewhere | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#undisclosed-aid-and-private-donations) |
 | Weapons bought from Russia | payments against the expected level, outside customs data, × Russia's net gain on arms (round 10) | either | [russia-state-and-companies.md](russia-state-and-companies.md#weapons-bought-from-russia) |
 | Nuclear projects and state loans from Russia | own payments for Rosatom construction, loan repayments against schedule, customs over-counts removed | either | [russia-state-and-companies.md](russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia) |
-| Paid to Russia by companies leaving it | exit contribution and forced discount, by home country | Russia | [russia-state-and-companies.md](russia-state-and-companies.md#companies-leaving-russia) |
 | Profits sent to Russia by Russian-owned companies here | oil, gas, banks and telecoms (round 5) and metals, mining and chemicals plants such as Aughinish Alumina in Ireland (round 10), against 2019–2021; trusteeships count the other way | either | [russia-state-and-companies.md](russia-state-and-companies.md#russian-owned-companies-abroad) |
 | Return denied to Russia on its frozen reserves | yearly return the frozen central-bank reserves would have earned (rates per currency and year); Euroclear and Clearstream a third to the host, two thirds to all EU members | Ukraine | [russia-state-and-companies.md](russia-state-and-companies.md#frozen-central-bank-reserves-round-7) |
 | Fees earned settling Russia's trade (payment agents) | fees kept by residents of the agent's country, against 2021, × the financial industry's net gain × genuinely extra (round 13) | Russia | [trade.md](trade.md#payment-agents-round-6) |
@@ -58,11 +57,12 @@ The parts below are what the country panel's waterfall shows (`shiftParts` and `
 Not a part of its own, but built into the parts above:
 
 - **Energy premium and oil discount** belong to the *cost* view (below), not the net shift ([energy-and-laundered-oil.md](energy-and-laundered-oil.md#energy-premium-and-oil-discount)).
+- **Taken by Russia** (round 14b, raised by the owner): assets Russia seized and forced exit costs (the forced discount and the exit fee) are a sacrifice, not money the country chose to move. They are in the *cost* view only, not in the net shift or either headline number ([russia-state-and-companies.md](russia-state-and-companies.md#round-14b-taken-by-russia-not-in-the-totals)).
 - **Residual gap**: sales to Russia missing from partners' data are added to the country of origin inside "sold to Russia" ([trade.md](trade.md#residual-gap)).
 - **Re-export hubs, transit gas, hub resale, Baltic pass-through, freight**: these move value between countries before the parts are computed ([trade.md](trade.md), [energy-and-laundered-oil.md](energy-and-laundered-oil.md)).
 - **Sanctions label**: which share of a cut was required by sanctions is shown as a label and does not change totals ([trade.md](trade.md#sanctions-mandated-or-own-choice)).
 - **Markers outside the totals**: see [below](#markers-outside-the-totals).
-- **Cut by Russia label** (round 13): the part of "less paid to Russia" that is gas Russia cut off itself (Poland, Bulgaria, Finland, the Netherlands, Denmark and Germany from 2022) or that stopped when Ukraine ended gas transit on 1 January 2025 (Austria, Slovakia, Italy, Moldova). A label inside the second number; totals do not change. Data: `sanctions_share.json` `gas_part` in those years (`RUSSIA_GAS_CUT` in `build_data.py`).
+- **Cut by Russia label** (round 13; completed in round 14): the part of "less paid to Russia" that is gas Russia cut off itself (Poland and Bulgaria from 27 April 2022, Finland 21 May, the Netherlands 31 May, Denmark 1 June, Germany from June, Latvia 30 July, France's Engie 1 September and Moldova from October 2022, Austria's OMV 16 November 2024) or that stopped when Ukraine ended gas transit on 1 January 2025 (Slovakia, Italy). The first year counts from the cut date. A label inside the second number; totals do not change. Data: `sanctions_share.json` `gas_part` in those years (Poland's from final-use volumes, as its customs book the gas under other headings), dates in `RUSSIA_GAS_CUT` in `build_data.py`, evidence in `sources_r11.json` `gas_cuts`. It is printed only where Russia cut the country's gas.
 
 ## Markers outside the totals
 
@@ -76,7 +76,7 @@ or is not a country's choice:
   round 13 this was a part of the net ("wages earned working in Russia"); the owner took it out after the round-13
   audit: they are individuals' wages, not a country's choice; the money flows from Russia to the migrant's home; the
   real gain over the alternatives is small and hard to measure; and they would dominate the bottom of the ranking
-  (Tajikistan −39.6% of GDP, almost all remittances). Tajikistan is now −0.8%, Uzbekistan −6.2%
+  (Tajikistan −39.6% of GDP, almost all remittances). Tajikistan was then −0.8%, Uzbekistan −6.2% (round 14: −0.1% and −3.5%)
   ([trade.md](trade.md#remittances-and-relocants-round-7), [decisions](../decisions.md#remittances-from-russia)). The
   table, CSV and JSON carry it in columns marked "not in totals".
 
@@ -126,7 +126,7 @@ is genuinely extra**:
   output up from 14,000 to about 40,000 rounds a month; sales lost to Russia 0.20–0.45 because many firms found other
   buyers; extra sales to Russia 0.40–0.60; extra fuel sales to Ukraine 0.20; tourism lost 0.30; shadow shipping 0.65).
 
-So US weapons sold for Ukraine count at 0.63 (0.45–0.77), Germany's at 0.47, lost sales to Russia at 0.17–0.32,
+(Superseded: since round 13 the first factor is the seller's net gain, not value kept; see [the net-gain rule](#the-net-gain-rule-round-10) and [round 14](#round-14-changes-to-the-rules). In round 14 US weapons flowback counts at about 3.6% of the money, not 63%.) Until round 12, US weapons sold for Ukraine counted at 0.63 (0.45–0.77), Germany's at 0.47, lost sales to Russia at 0.17–0.32,
 Greek shipping at 0.17. This replaces the flat 20% profit used before for flowback, sales and services to Russia and
 shipping. Factors per country and kind of earning: [`value_kept.json`](../../research/2026-10/gaps/value_kept.json)
 ([notes](../../research/2026-10/gaps/value_kept-notes.md)); `c.vk` in `data.json`; applied in `calc()`.
@@ -146,21 +146,22 @@ it was not (sales to Russia counted at value kept, which includes wages). Since 
 
 | what Russia sells | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
 |---|---|---|---|---|---|---|
-| crude oil | 0.69 | 0.68 | 0.64 | 0.65 | 0.53 | 0.61 |
-| oil products | 0.61 | 0.65 | 0.62 | 0.59 | 0.47 | 0.59 |
-| pipeline gas | 0.60 | 0.84 | 0.69 | 0.60 | 0.54 | 0.57 |
-| LNG (Russian owners' part) | 0.35 | 0.54 | 0.47 | 0.36 | 0.37 | 0.35 |
-| coal | 0.30 | 0.44 | 0.20 | 0.06 | 0.02 | 0.04 |
-| all other goods (weighted) | 0.20 | 0.17 | 0.13 | 0.12 | 0.11 | 0.13 |
-| services | 0.032 | 0.035 | 0.043 | 0.034 | 0.044 | 0.044 |
-| arms | 0.043 | 0.039 | 0.045 | 0.050 | 0.050 | 0.050 |
-| gold | 0.39 | 0.33 | 0.40 | 0.49 | 0.58 | 0.66 |
+| crude oil | 0.62 | 0.62 | 0.57 | 0.58 | 0.45 | 0.55 |
+| oil products | 0.52 | 0.58 | 0.54 | 0.51 | 0.38 | 0.52 |
+| pipeline gas | 0.55 | 0.82 | 0.66 | 0.56 | 0.50 | 0.53 |
+| LNG (Russian owners' part) | 0.31 | 0.52 | 0.44 | 0.31 | 0.33 | 0.31 |
+| coal | 0.27 | 0.41 | 0.17 | 0.03 | 0.02 | 0.02 |
+| all other goods (weighted) | 0.17 | 0.14 | 0.12 | 0.10 | 0.10 | 0.11 |
+| services | 0.026 | 0.029 | 0.032 | 0.030 | 0.036 | 0.036 |
+| arms | 0.043 | 0.039 | 0.045 | 0.049 | 0.050 | 0.050 |
+| gold | 0.37 | 0.31 | 0.38 | 0.47 | 0.56 | 0.64 |
 
 Since round 11, services, arms and the other goods use official sector profitability (Rosstat by activity), export duties collected and company results instead of judgement ([decisions](../decisions.md#assumptions-backed-by-data-round-11)).
 
-Crude in 2023, for example: Russia sold at 64.2 USD a barrel FOB; real costs were 23 USD (lifting 4, pipelines and
-ports 5, depreciation 6.5, overhead 1.5, normal return 6), so the net gain is 0.64, of which the state took 0.47 in
-taxes (Finance Ministry totals). Each country's payments get the gain of what it bought (`apply_net_gain()`):
+Crude in 2023, for example: Russia sold at 64.2 USD a barrel FOB; real costs were 27.4 USD (lifting 4, pipelines and
+ports 5, depreciation 6.5, overhead 1.5, and since round 14b a normal return of 10.4: 11.4% on 91 USD of capital per
+barrel, from Rosneft's balance sheet), so the net gain is 0.57, of which the state took 0.47 in taxes (Finance
+Ministry totals). Each country's payments get the gain of what it bought (`apply_net_gain()`):
 
 - **expected without the war**: the 2019–2021 customs share of fuel in its purchases from Russia, split over crude,
   products, pipeline gas, LNG and coal as the fuel tracker records them in 2021;
@@ -185,11 +186,14 @@ Gold and hidden payments stay in money in `data.json` (for the *To Russia* view 
 in the map; weapons bought from Russia are stored already at Russia's gain on arms.
 
 **Ukraine's net gain per euro** ([`net_gain_ukraine.json`](../../research/2026-10/gaps/net_gain_ukraine.json),
-[notes](../../research/2026-10/gaps/net_gain_ukraine-notes.md)): about 0.18 before the war, 0.06 in 2022, 0.045 in
-2023, 0.07 in 2024 and 0.105 in 2025, weighted by the buyer's own mix of goods for its 12 largest buyers. It is low
-because war-time logistics (Danube ports, rail, insurance) took much of the price; grain was 0.025 in 2023.
+[notes](../../research/2026-10/gaps/net_gain_ukraine-notes.md)): since round 14b about 0.10 before the war, 0.033 in 2022,
+0.025 in 2023, 0.036 in 2024 and 0.055 in 2025 (until round 14: 0.18, 0.06, 0.045, 0.07, 0.105), weighted by the
+buyer's own mix of goods for its 12 largest buyers. It is low because war-time logistics (Danube ports, rail,
+insurance) took much of the price, and because investors in Ukraine need a high return: since round 14b the normal
+return is 5% real plus Ukraine's country risk premium (15.5%), 23% nominal after tax, so what is left is mostly taxes;
+grain was 0.015 in 2023.
 
-**What counts in full:** aid, refugee hosting, taxes companies pay in Russia, profits sent to Russia, exit payments,
+**What counts in full:** aid, refugee hosting, taxes companies pay in Russia, profits sent to Russia,
 unpaid weapons and the return on frozen reserves. The extra paid because of war-time fuel prices counts at Russia's
 net gain on it since round 13, which is all of it for oil and pipeline gas. The *cost* view and the *To Ukraine* and *To Russia* views (money, not gain) do not change.
 
@@ -241,19 +245,33 @@ gold outline (threshold EUR 10m and 0.05% of GDP).
 
 ## A worked reading
 
-Germany, 2022–August 2026 (round 13 build): **+3.2%** of a year's GDP net (likely range 2.2% to 4.5%; EUR 140bn on a 2024 GDP of EUR 4,329bn). It is the sum of **support for Ukraine +1.8%** (EUR 76bn: gave 76.3, earned back 0.4) and **change in payments to Russia +1.5%** (EUR 65bn, less paid; of which EUR 24bn is gas Russia cut off itself). An average year is about 0.7%. In EUR bn, the largest parts are:
+Germany, 2022–August 2026 (round 14b build): **+3.3%** of a year's GDP net (likely range 2.2% to 4.6%, certainty C; EUR 145bn on a 2024 GDP of EUR 4,329bn). It is the sum of **support for Ukraine +1.75%** (EUR 76bn: gave 76.3, earned back 0.6) and **change in payments to Russia +1.6%** (EUR 69bn, less paid; of which EUR 22bn is gas Russia cut off itself). An average year is about 0.7%. What Russia took from German companies (seizures EUR 9.5bn, forced exits EUR 2.4bn) is not in either number since round 14b; it is a cost carried. In EUR bn, the largest parts are:
 
 | part | middle (range) |
 |---|---|
-| Less paid to Russia (volume at pre-war prices, against the expected level, at Russia's net gain) | +70.5 (31.5 to 121.2) |
+| Less paid to Russia (volume against the expected level, valued at each year's prices, at Russia's net gain) | +69.9 (28.3 to 121.3) |
 | Aid to Ukraine (Kiel, adjusted) | +30.2 (28.6 to 32.6) |
 | Hosting refugees (net cost) | +29.5 (11.7 to 42.6) |
 | Share of EU-level aid | +13.4 (10.3 to 17.3) |
 | Less tax paid in Russia by companies | +5.4 (1.9 to 10.5) |
-| Extra paid to Russia because of war-time prices (mostly 2022 gas) | −16.5 (−24.4 to −10.1) |
-| Paid to Russia by companies leaving it | −2.4 (−7.2 to −0.7) |
+| Russian oil bought via other countries | +4.3 (2.3 to 6.4) |
+| Russian money frozen (return Russia lost on its reserves) | +3.2 (2.1 to 3.8) |
+| Extra paid to Russia because of war-time prices (mostly 2022 gas) | −16.5 (−24.3 to −10.1) |
 
-Income lost on sales to Russia given up is now +0.4 (was +21.7 under value kept): German manufacturing earned about 1% above a normal return. The wide range comes almost entirely from "less paid to Russia": the expected no-war level of Germany's purchases is uncertain (see [counterfactual.md](counterfactual.md)), and the total takes the weakest certainty letter of its parts (D). The method band (the net under the round-12 valuation rule, the windfall in full or loans at the war-time yield) is shown next to the range. The "How it works" view on the map ([`views2.js`](../../site/views2.js)) builds this waterfall live for Germany, Poland, the US, Hungary, India and China.
+Income lost on sales to Russia given up is +1.1 (was +21.7 under value kept): German manufacturing earned about 3% above a normal return of 5% a year above inflation. The wide range comes almost entirely from "less paid to Russia": the expected no-war level of Germany's purchases is uncertain (see [counterfactual.md](counterfactual.md)). The total is graded C: most of it rests on modelled parts (C), little on rough indications (D) ([ranges.md](ranges.md#certainty-letters)). The method band (3.2% to 3.8%: the net under the round-12 valuation rule, the windfall in full, loans at the war-time yield, EU refiners' exports, laundered oil, the fuel mix, freight and the normal return) is shown next to the range. The "How it works" view on the map ([`views2.js`](../../site/views2.js)) builds this waterfall live for Germany, Poland, the US, Hungary, India and China.
+
+## Round 14 changes to the rules
+
+- **Current euros (audit M5).** Every trade part is now in the same euros as aid. Changes are still measured in volumes, so that price swings are not counted as changes, but each year's change is valued at that year's prices (`cur` per flow in `data.json`, applied in `spread()`): other goods at their own price level, fuel at the price a no-war market expected (already that year's euros since round 7).
+- **One price basis (audit C3).** Fuel prices and payments are at the Russian port (FOB). The war-time rise in sea freight is taken out of customs (CIF) values with the project's measured freight on Russian oil, so it is not counted as Russia's windfall; it went to shipowners, whom the shipping part already credits ([prices.md](prices.md#one-price-basis-fob-round-14)).
+- **What was bought (audit C1, C2).** Russia's gain on what a country bought uses its own measured fuel share and its customs values per fuel, not a 60-country average or the fuel tracker's tonnes ([prices.md](prices.md#the-mix-of-what-was-bought-round-14)).
+- **Normal return (audit M2).** Sellers' net gain subtracts 5% a year above inflation, after company tax, plus the country's risk premium (4–6% in the high and low cases), instead of 9% nominal ([net_gain_sellers-notes.md](../../research/2026-10/gaps/net_gain_sellers-notes.md), section 6).
+- **Seizures (audit M4)** counted as money taken by Russia, on their own line (moved to the cost view in round 14b); **frozen reserves (M6)** are their own line, "Russian money frozen" ([russia-state-and-companies.md](russia-state-and-companies.md#assets-seized-by-russia-round-14)).
+
+## Round 14b changes to the rules
+
+- **Taken by Russia, not in the totals** (raised by the owner). Seizures (round 14, M4) and forced exit costs (round 5: the forced discount and the exit fee paid to Russia's budget) leave the net shift and both headline numbers and are counted in the cost view as a sacrifice, like the energy switching cost. The panel, table, CSV, JSON and a map marker show them apart ([russia-state-and-companies.md](russia-state-and-companies.md#round-14b-taken-by-russia-not-in-the-totals)).
+- **Russia's and Ukraine's normal return** (raised by the owner, after the round-14 consistency check). Their net-gain shares now subtract the sellers' rule: 5% a year above inflation after tax (4–6%) plus the country's risk premium (Russia 3.9%, Ukraine 15.5%), on book capital as a nominal US dollar rate (+2.5% expected inflation): 11.4% for Russia (was 9%) and 23.0% for Ukraine (was 8.2% after tax). Capital per unit of revenue is now measured for every product group (company balance sheets, Rosstat and Ukrstat, Damodaran's emerging-market industry data). Russia's non-fuel average falls from about 0.13 to 0.11 in 2024, crude oil from 0.65 to 0.58; Ukraine's average from 0.07 to 0.04 ([net_gain_russia-notes.md](../../research/2026-10/gaps/net_gain_russia-notes.md), [net_gain_ukraine-notes.md](../../research/2026-10/gaps/net_gain_ukraine-notes.md)).
 
 ## See also
 
