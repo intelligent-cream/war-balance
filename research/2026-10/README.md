@@ -14,6 +14,8 @@ First real data for the map, gathered on 2026-10-17 by six research agents. **No
 
 Each `*-notes.md` file has the method, caveats and gaps.
 
+**Round 13 (2026-10-19):** after an independent economist and journalist audit, three new files ([`gaps/net_gain_sellers.json`](gaps/net_gain_sellers.json), [`gaps/remittances_r13.json`](gaps/remittances_r13.json), [`gaps/military_payment_r13.json`](gaps/military_payment_r13.json)), a corrected 2023 fertiliser share in `gaps/net_gain_russia.json`, research scripts in [`scripts/`](scripts/) and raw downloads in `raw/oecd_stan/`, `raw/oecd_tiva/` and `raw/comtrade_2710/`. What changed and why: [`docs/changelog.md`](../../docs/changelog.md#round-13) and [`docs/decisions.md`](../../docs/decisions.md#round-13-one-valuation-rule-for-every-seller).
+
 ## Known gaps and caveats (round 1, superseded)
 
 > These were the gaps after round 1. Later rounds closed most of them: missing parts no longer count as zero (round 2), own-industry shares were replaced by the all-money ledger (round 6), refugee costs come from budgets and net of refugees' taxes (rounds 4–5). The current open issues are in [docs/limitations.md](../../docs/limitations.md).

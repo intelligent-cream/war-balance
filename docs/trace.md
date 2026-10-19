@@ -52,7 +52,7 @@ volumes at pre-war prices ([prices](method/prices.md)) and the likely ranges ([r
 | [Companies leaving Russia](#companies-leaving-russia) | `exits` | `#view=sources&flow=exits` |
 | [Russian-owned companies abroad](#russian-owned-companies-abroad) | `rusfirms` | `#view=sources&flow=rusfirms` |
 | [Frozen Russian reserves](#frozen-russian-reserves) | `frozen` | `#view=sources&flow=frozen` |
-| [Remittances from Russia](#remittances-from-russia) | `remit` | `#view=sources&flow=remit` |
+| [Remittances from Russia (marker)](#remittances-from-russia-marker) | none: a marker, not in the totals (`remit` in `data.json`) | `#view=sources&flow=remit` |
 | [Rosatom and Russian state loans](#rosatom-and-russian-state-loans) | `statefin` | `#view=sources&flow=statefin` |
 | [Weapons bought from Russia](#weapons-bought-from-russia) | `rusarms` | `#view=sources&flow=rusarms` |
 | [Weapons and troops sent to Russia](#weapons-and-troops-sent-to-russia) | `mil` | `#view=sources&flow=mil` |
@@ -61,6 +61,8 @@ volumes at pre-war prices ([prices](method/prices.md)) and the likely ranges ([r
 | [Labels and counts outside the totals](#labels-and-counts-outside-the-totals) | none (labels and counts) | `#view=sources&flow=markers` |
 
 ## Aid to Ukraine
+
+**Round 13 (audit):** The part is labelled "Kiel, adjusted: weapons at market value, loans as gifts"; the panel shows Kiel's own figure next to it (Poland EUR 5.89bn in Kiel, 3.24bn on the map). The source links to the Release 31 workbook.
 
 **What it is:** Military, financial and humanitarian aid from governments, with donated weapons at their market value.
 
@@ -222,7 +224,10 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Undisclosed military aid](decisions.md#undisclosed-military-aid): what is counted, why, what is left out, data or judgement
 - [decisions § What is data and what is estimated](decisions.md#what-is-data-and-what-is-estimated): Estimates and models: undisclosed aid
+- [decision log § Round 1–2: the question and the first map (17 October)](decision-log.md#round-12-the-question-and-the-first-map-17-october): Undisclosed military aid estimated beyond the Kiel tracker
+- [decision log § Round 3–4: profit, windfall and a tested baseline (17–18 October)](decision-log.md#round-34-profit-windfall-and-a-tested-baseline-1718-october): France's undisclosed aid for 2022–23 taken out
 
 **Data sources:**
 
@@ -243,7 +248,7 @@ Known gaps:
 
 Known gaps:
 
-- No row in decisions.md explains why this part is counted or how; only the method section does.
+- No recorded reason for check 8's threshold (half of a country's Kiel military aid) ([decisions](decisions.md#undisclosed-military-aid)).
 
 ## Private donations
 
@@ -329,7 +334,9 @@ Known gaps:
 
 ## Flowing back from Ukraine
 
-**What it is:** Aid money spent in the giver's own economy, and extra sales to Ukraine, subtracted at the income they bring.
+**Round 13 (audit):** Money flowing back counts at the seller's net gain (taxes plus profit above a normal return, OECD STAN by country and industry; [`net_gain_sellers.json`](../research/2026-10/gaps/net_gain_sellers.json)) × genuinely extra, no longer at value kept. US flowback earned back falls from EUR 44bn to 1.5bn ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
+
+**What it is:** Aid money spent in the giver's own economy, and extra sales to Ukraine, subtracted at the seller's net gain times the share that is genuinely extra.
 
 **Parts on the map:** Own aid spent in its own economy (incl. replacing donated stock) (`own`, flowing back); Other countries' aid spent here (incl. their stock replacement) (`purl`, flowing back); Aid spent here on energy, relief and rebuilding (`othsp`, flowing back); Arms Ukraine bought here (`arms`, flowing back); Extra sales to Ukraine above the pre-war level (`sell`, flowing back).
 
@@ -377,7 +384,7 @@ Known gaps:
 
 **Code:** `apply_money_ledger()`, `apply_ua_arms_purchases()`, `apply_value_kept()`, `calc()` (`backParts`, `vk()`) in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: where aid was spent (Kiel item coding, DSCA notifications, replacement purchases). Judgement: the value kept in the economy and the share that is genuinely extra, where no study exists. Letters across all country parts: B 175, C 86, D 56.
+**Certainty and judgement calls:** Data: where aid was spent (Kiel item coding, DSCA notifications, replacement purchases). Judgement: the value kept in the economy and the share that is genuinely extra, where no study exists. Letters across all country parts: B 17, C 220, D 56.
 
 Known gaps:
 
@@ -385,7 +392,9 @@ Known gaps:
 
 ## Payments to Russia for fuel and goods
 
-**What it is:** Oil, gas, coal, LNG and other goods bought from Russia, against the level expected without the war, counted at Russia's net gain.
+**Round 13 (audit):** The fuel mix now uses volumes at 2019–2021 prices (a bug had used no-war prices: Hungary −4.1 → −5.5% of GDP); gold is deflated with the gold price (Hong Kong −4.2 → −1.9%); EU refiners' exported Russian crude is charged to their buyers; the part is at best C; gas Russia cut off itself is labelled inside the second headline number ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
+
+**What it is:** Oil, gas, coal, LNG and other goods bought from Russia, against the level expected without the war, counted at Russia's net gain. Gas that Russia cut off itself is labelled.
 
 **Parts on the map:** Less paid to Russia / More paid to Russia (`paid`, net shift).
 
@@ -476,7 +485,7 @@ Known gaps:
 
 **Code:** `build()` steps 1, 3, 4, 7, 11 (inline), `remove_freight()`, `price_indices()`, `apply_reexports()`, `apply_residual()`, `baltic_transit()`, `counterfactual()`, `apply_nowar_prices()`, `apply_net_gain()` in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: customs trade (UN Comtrade, Eurostat), CREA fuel payments, price indices. Model: the level expected without the war (back-tested). Judgement: Russia's net gain for some goods groups, hub margins. Letters across all country parts: B 146, C 78, D 2.
+**Certainty and judgement calls:** Data: customs trade (UN Comtrade, Eurostat), CREA fuel payments, price indices. Model: the level expected without the war (back-tested). Judgement: Russia's net gain for some goods groups, hub margins. Letters across all country parts: C 224, D 2.
 
 Known gaps:
 
@@ -486,7 +495,9 @@ Known gaps:
 
 ## War-time price windfall
 
-**What it is:** The extra Russia earned because fuel prices rose with the war, counted in full.
+**Round 13 (audit):** Counted at Russia's net gain on the extra price (1 for oil and pipeline gas, 0.68–0.74 for LNG, at most the coal rent for coal), not at 100%; the full value is kept for the method band. Türkiye's 0.7/0.3 gas weights: sensitivity −3.18 to −2.98 ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
+
+**What it is:** The extra Russia earned because fuel prices rose with the war, at Russia's net gain on that extra price (all of it for oil and pipeline gas, less for LNG and coal).
 
 **Parts on the map:** Extra paid to Russia because of war-time prices / Paid Russia less than no-war prices (discounts, price cap) (`windfall`, net shift).
 
@@ -530,7 +541,11 @@ Known gaps:
 
 ## Refined and laundered Russian oil
 
-**What it is:** Fuel made from Russian crude in other countries, or passed on by trading hubs, charged to the final buyer.
+**Round 13b (owner):** a change in the EU-refined route counts for a buyer only where both the pre-war and the post-war route are measured for it (EU members' customs; buyers named in India's, Türkiye's and the UAE's post-war export records or among Togo's buyers, unless a cap sets their value). Elsewhere the route's 2023–2026 values are held at the expected level and labelled "route not measured after 2022" ([energy](method/energy-and-laundered-oil.md#eu-refined-fuel-measured-both-ways-round-13b), [decisions](decisions.md#round-13b-remittances-as-a-marker-laundered-oil-routes)). Togo +6.61 → −0.05, Tunisia −5.51 → −7.09; EU members unchanged.
+
+**Round 13 (audit):** EU refiners (Lithuania, Finland, the Netherlands and 13 others) are treated like India's: their buyers are charged, before and after the war (buyers from each refiner's UN Comtrade HS 2710 exports, [raw/comtrade_2710](../research/2026-10/raw/comtrade_2710/)). Laundered oil is in volumes at the no-war crude price and counts both ways ([decisions](decisions.md#round-13-refiners-and-laundered-oil)).
+
+**What it is:** Fuel made from Russian crude in other countries, EU refiners included, or passed on by trading hubs, charged to the final buyer, in volumes against its pre-war level.
 
 **Parts on the map:** Russian oil bought via other countries (`laund`, net shift).
 
@@ -573,7 +588,7 @@ Known gaps:
 
 **Code:** `reassign_laundered_oil()`, `apply_laundered_eu()`, `apply_laundered_r6()`, `apply_assumptions_r11_laundered()`, `crude_k()`, `apply_net_gain()` (`laund_gain`) in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: fuel imports by origin (Eurostat Comext, UN Comtrade), crude share per refiner and year. Judgement: hub resale and bunker shares, the cap per territory where fuel use is not measured. Fixed at C. Letters across all country parts: C 196.
+**Certainty and judgement calls:** Data: fuel imports by origin (Eurostat Comext, UN Comtrade), crude share per refiner and year. Judgement: hub resale and bunker shares, the cap per territory where fuel use is not measured. Fixed at C. Letters across all country parts: C 214.
 
 Known gaps:
 
@@ -589,7 +604,9 @@ Known gaps:
 
 **Why it's done this way:**
 
-- [decisions § 4. Energy](decisions.md#4-energy): (no row for this part; the section covers energy in general)
+- [decisions § Why each money flow is counted: Energy switching cost and oil discount](decisions.md#energy-switching-cost-and-oil-discount): what is counted, why, what is left out, data or judgement
+- [decision log § Round 1–2: the question and the first map (17 October)](decision-log.md#round-12-the-question-and-the-first-map-17-october): Energy switching cost; Discount gained on Russian oil
+- [decision log § Round 7: what the owner asked to add (18 October)](decision-log.md#round-7-what-the-owner-asked-to-add-18-october): Oil discount gain without Russia's normal pre-war discount
 
 **Data sources:**
 
@@ -611,11 +628,13 @@ Known gaps:
 
 Known gaps:
 
-- No decision row in decisions.md or decision-log.md; only the method section explains it.
+- No recorded reason for leaving out new infrastructure such as floating LNG terminals ([decisions](decisions.md#energy-switching-cost-and-oil-discount)).
 
 ## Sales to Russia
 
-**What it is:** Goods sold to Russia, counted at the seller's income: the value kept in its economy times the share that is genuinely extra.
+**Round 13 (audit):** At the seller's net gain × genuinely extra (manufacturing: OECD median 0.013), not value kept × genuinely extra; China's extra sales now count at 0.008 instead of 0.485 ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
+
+**What it is:** Goods sold to Russia, counted at the seller's net gain (taxes plus profit above a normal return) times the share that is genuinely extra.
 
 **Parts on the map:** Income from extra sales to Russia / Income lost on sales to Russia given up (`sold`, net shift); Income lost on sales to Russia (goods and services) (`margin`, cost view).
 
@@ -679,13 +698,15 @@ Known gaps:
 
 **Code:** `build()` step 3 (inline), `apply_reexports()`, `apply_residual()`, `counterfactual()`, `apply_value_kept()`, `calc()` (`earned3`) in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: customs exports to Russia. Model: the expected level without the war. Judgement: value kept × genuinely extra where no study exists, and hub margins. Letters across all country parts: B 16, C 387, D 7.
+**Certainty and judgement calls:** Data: customs exports to Russia. Model: the expected level without the war. Data: OECD STAN net gain by industry (OECD median outside STAN). Judgement: genuinely extra where no study exists, and hub margins. Letters across all country parts: C 390, D 7.
 
 Known gaps:
 
 - Hub margins and re-export shares are educated guesses ([limitations](limitations.md#open-issues-in-the-numbers)).
 
 ## Purchases from Ukraine
+
+**Round 13 (audit):** At best C (a modelled no-war level × a modelled gain); yearly changes summed with their signs, only the total floored at zero.
 
 **What it is:** Extra goods bought from Ukraine, counted at Ukraine's net gain; the cost view adds the import duties dropped.
 
@@ -734,13 +755,15 @@ Known gaps:
 
 **Code:** `build()` step 3 (inline), `counterfactual()`, `apply_net_gain()`, `tariff_rate()` in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: customs imports from Ukraine; Ukraine's 2021 net gain from division profits. Judgement: Ukraine's 2022-2026 net gain (a proxy) and the single duty rate. Letters across all country parts: B 171, C 71.
+**Certainty and judgement calls:** Data: customs imports from Ukraine; Ukraine's 2021 net gain from division profits. Judgement: Ukraine's 2022-2026 net gain (a proxy) and the single duty rate. Letters across all country parts: C 228.
 
 Known gaps:
 
 - Ukraine's 2025-2026 net-gain shares have no official profitability figures yet; the single duty rate is still a proposal ([decisions](decisions.md#proposals-that-would-change-numbers-not-applied)).
 
 ## Services and tourism
+
+**Round 13 (audit):** Services sold to Russia at the seller's net gain × genuinely extra (OECD median 0.002); at best C.
 
 **What it is:** Services bought from and sold to Russia, such as transport, business services and tourism.
 
@@ -750,8 +773,10 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Services and tourism](decisions.md#services-and-tourism): what is counted, why, what is left out, data or judgement
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Russia's net gain on services
 - [decisions § Constants in the code](decisions.md#constants-in-the-code): services trend bounds kept within ×2.5 of the middle
+- [decision log § Round 1–2: the question and the first map (17 October)](decision-log.md#round-12-the-question-and-the-first-map-17-october): Services trade with Russia, both ways, against the pre-war level
 
 **Data sources:**
 
@@ -772,15 +797,17 @@ Known gaps:
 
 **Code:** `build()` step 13 (inline), `pre_war_trends()`, `apply_relocants()`, `apply_narrow()`, `apply_net_gain()`, `apply_value_kept()` in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: services trade (Eurostat, OECD-WTO BaTiS, Bank of Russia) and tourism counts. Judgement: the expected level (2021 held) and the share of travel spent by relocants. Letters across all country parts: A 2, B 90, C 299.
+**Certainty and judgement calls:** Data: services trade (Eurostat, OECD-WTO BaTiS, Bank of Russia) and tourism counts. Judgement: the expected level (2021 held) and the share of travel spent by relocants. Letters across all country parts: C 385.
 
 Known gaps:
 
-- No decision row on counting services itself; only the net-gain value is written down.
+- Russia's services imports that BaTiS does not assign to a country only widen the high ends; who earns them is open ([decisions](decisions.md#services-and-tourism)).
 
 ## Shipping Russian oil
 
-**What it is:** Income from shipping and insuring Russian oil, counted for the country that really controls the tankers.
+**Round 13 (audit):** Freight and insurance at the shipper's and insurer's net gain (OECD STAN H50, K65) × genuinely extra; Greek shipping about 0.
+
+**What it is:** Income from shipping and insuring Russian oil, counted for the country that really controls the tankers, at the shippers' and insurers' net gain.
 
 **Parts on the map:** Income from shipping and insuring Russian oil / Less income from shipping Russian oil (`ship`, net shift).
 
@@ -788,6 +815,7 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Shipping Russian oil](decisions.md#shipping-russian-oil): what is counted, why, what is left out, data or judgement
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Left out, and why: Greek shadow-fleet freight and shadow-shipping factors confirmed and kept
 - [decision log § Round 1–2: the question and the first map (17 October)](decision-log.md#round-12-the-question-and-the-first-map-17-october): Count shipping and insuring Russian oil, by owner country
 
@@ -816,7 +844,7 @@ Known gaps:
 
 Known gaps:
 
-- No row in decisions.md explains counting shipping; the reason is only in the decision log.
+- Who really controls each tanker rests mostly on press and tracker reporting (certainty D) ([decisions](decisions.md#shipping-russian-oil)).
 
 ## Company taxes in Russia
 
@@ -869,6 +897,7 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Companies leaving Russia](decisions.md#companies-leaving-russia): what is counted, why, what is left out, data or judgement
 - [decisions § Constants in the code](decisions.md#constants-in-the-code): conduit Kazakhstan 3.5, Netherlands 4.7
 - [decision log § Round 5: values at their real worth (18 October)](decision-log.md#round-5-values-at-their-real-worth-18-october): Rosatom projects, Russian state loans, company exits, Russian-owned firms abroad counted
 
@@ -891,7 +920,7 @@ Known gaps:
 
 Known gaps:
 
-- No row in decisions.md; the reason is only in the decision log.
+- No recorded reason why the forced discount is counted, although the research suggested counting only the exit contribution ([decisions](decisions.md#companies-leaving-russia)).
 
 ## Russian-owned companies abroad
 
@@ -971,19 +1000,25 @@ Known gaps:
 
 - Holdings outside Euroclear and Clearstream are less well reported.
 
-## Remittances from Russia
+## Remittances from Russia (marker)
 
-**What it is:** Wages migrants earned in Russia and sent home, against the level expected without the war.
+**Round 13b (owner, after the audit): a marker, not in the totals.** Migrants' wages sent home from Russia are no longer a part of the net shift, the cost view or either headline number: they are individuals' wages, not a country's choice; the money flows from Russia to the migrant's home; the real gain over the alternatives is small and hard to measure; and they dominated the bottom of the ranking (Tajikistan −39.6% of GDP). The panel, the map layer "Wages from Russia" (△) and the table, CSV and JSON show the change in what migrants sent against the expected level, marked "not in the totals". Tajikistan −39.61 → −0.81, Uzbekistan −14.46 → −6.11.
 
-**Parts on the map:** Wages earned working in Russia (migrants' remittances) (`remit`, net shift).
+**Round 13 (audit), replaced in round 13b:** At the migrant's net gain: the war wage premium (Russian wages above their pre-war trend) in full as far as it shows in euros, the rest of the change × the premium over the home wage × genuinely extra ([remittances_r13-notes](../research/2026-10/gaps/remittances_r13-notes.md)). Tajikistan's 2025 total checked against EFSD (within 6%).
+
+**What it is:** Shown as a marker, not in the totals: the change in what migrants working in Russia sent home, against the level expected without the war.
+
+**Parts on the map:** none. Marker: "Depends on wages earned in Russia" in the panel (△, `remitNote()`), the map layer "Wages from Russia" (`drawRemit()`), and the table, CSV and JSON columns `remittances_from_russia_change_*_not_in_totals` (`remit` in `data.json`). Until round 13 it was the part "Wages earned working in Russia (migrants' remittances)" (`remit`, net shift).
 
 **How it's calculated:** [trade.md § Remittances and relocants (round 7)](method/trade.md#remittances-and-relocants-round-7).
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Remittances from Russia](decisions.md#remittances-from-russia): what is counted, why, what is left out, data or judgement
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Russia's share of remittances, Tajikistan and Belarus
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Moldova's transfers from Russia 2024–2026
 - [decision log § Round 7: what the owner asked to add (18 October)](decision-log.md#round-7-what-the-owner-asked-to-add-18-october): Remittances from Russia counted; relocants' transfers and spending left out
+- [decision log § Round 13: one rule, two numbers (19 October)](decision-log.md#round-13-one-rule-two-numbers-19-october): Remittances out of the totals, shown as a marker (raised by audit, owner decided)
 
 **Data sources:**
 
@@ -1000,11 +1035,11 @@ Known gaps:
 
 **Code:** `apply_remittances()`, `apply_assumptions_r11_people()` in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: receiving central banks' transfers by origin, World Bank totals, Russia's 2019-2021 mirror share. Judgement: the same share applied to all years. Letters across all country parts: B 2, C 4, D 3.
+**Certainty and judgement calls:** Data: receiving central banks' transfers by origin, World Bank totals, Russia's 2019-2021 mirror share. Judgement: the same share applied to all years. Letters on the markers: B 2, C 4, D 3.
 
 Known gaps:
 
-- Tajikistan's headline rests on this part (D); the share is applied to all years ([limitations](limitations.md#open-issues-in-the-numbers)).
+- Tajikistan's marker rests on World Bank totals (D); the share is applied to all years ([limitations](limitations.md#open-issues-in-the-numbers)).
 
 ## Rosatom and Russian state loans
 
@@ -1016,7 +1051,9 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Rosatom and Russian state loans](decisions.md#rosatom-and-russian-state-loans): what is counted, why, what is left out, data or judgement
 - [decision log § Round 5: values at their real worth (18 October)](decision-log.md#round-5-values-at-their-real-worth-18-october): Rosatom projects, Russian state loans, company exits, Russian-owned firms abroad counted
+- [decision log § Round 6: one rule for money, two balances (18 October)](decision-log.md#round-6-one-rule-for-money-two-balances-18-october): Belarus's Russia-granted loan deferrals left out; sanction-blocked arrears labelled
 
 **Data sources:**
 
@@ -1038,7 +1075,7 @@ Known gaps:
 
 Known gaps:
 
-- No row in decisions.md; the reason is only in the decision log.
+- No recorded reason why loan payments count in full rather than at Russia's net gain ([decisions](decisions.md#rosatom-and-russian-state-loans)).
 
 ## Weapons bought from Russia
 
@@ -1050,7 +1087,9 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Weapons bought from Russia](decisions.md#weapons-bought-from-russia): what is counted, why, what is left out, data or judgement
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Russia's net gain on arms
+- [decision log § Round 5: values at their real worth (18 October)](decision-log.md#round-5-values-at-their-real-worth-18-october): Russian arms sales to other countries counted, against the expected level
 
 **Data sources:**
 
@@ -1072,11 +1111,13 @@ Known gaps:
 
 Known gaps:
 
-- No row in decisions.md on counting arms purchases; Russian Wikipedia is cited in `assumptions_r11_gain.json` ([limitations](limitations.md#open-issues-in-the-numbers)).
+- Russian Wikipedia is cited in `assumptions_r11_gain.json` ([limitations](limitations.md#open-issues-in-the-numbers)).
 
 ## Weapons and troops sent to Russia
 
-**What it is:** Shells, missiles, drones and troops from North Korea, Iran, Belarus and China, at market value.
+**Round 13 (audit):** Paid deliveries, also in kind, count as sales at the seller's net gain; unpaid ones in full ([military_payment_r13-notes](../research/2026-10/gaps/military_payment_r13-notes.md)). North Korea −30.0 → −10.2% of GDP.
+
+**What it is:** Shells, missiles, drones and troops from North Korea, Iran, Belarus and China: what Russia paid for (also in kind) as a sale, at the seller's net gain; what it did not pay for at market value.
 
 **Parts on the map:** Weapons and troops sent to Russia (`mil`, net shift).
 
@@ -1118,7 +1159,9 @@ Known gaps:
 
 ## Payment agents
 
-**What it is:** Fees earned by firms that settle Russia's trade payments.
+**Round 13 (audit):** Fees at the financial industry's net gain × genuinely extra (about a tenth of the fees).
+
+**What it is:** Fees earned by firms that settle Russia's trade payments, at the financial industry's net gain.
 
 **Parts on the map:** Fees earned settling Russia's trade (payment agents) (`agents`, net shift).
 
@@ -1126,6 +1169,7 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Payment agents](decisions.md#payment-agents): what is counted, why, what is left out, data or judgement
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Left out, and why: payment-agent fees confirmed and kept
 - [decision log § Round 6: one rule for money, two balances (18 October)](decision-log.md#round-6-one-rule-for-money-two-balances-18-october): Payment agents' fees and revalued military support to Russia
 
@@ -1147,7 +1191,7 @@ Known gaps:
 
 Known gaps:
 
-- No row in decisions.md on counting the fees; mostly press reports.
+- The fee rates and the split by country rest mostly on press reports.
 
 ## Gold and hidden payments to Russia
 
@@ -1340,7 +1384,9 @@ These sources feed three flows or more. Their confirmed exact links:
 
 ## What is still missing
 
-Every flow has a method section. These flows have **no row in [decisions.md](decisions.md) that says why the flow is counted this way** (decisions.md has at most a row on one of their values; the reason is in the method page or the decision log): [Undisclosed military aid (estimate)](#undisclosed-military-aid-estimate), [Energy switching cost and oil discount](#energy-switching-cost-and-oil-discount), [Services and tourism](#services-and-tourism), [Shipping Russian oil](#shipping-russian-oil), [Companies leaving Russia](#companies-leaving-russia), [Remittances from Russia](#remittances-from-russia), [Rosatom and Russian state loans](#rosatom-and-russian-state-loans), [Weapons bought from Russia](#weapons-bought-from-russia), [Payment agents](#payment-agents).
+Every flow has a method section. Every flow now also has a row in [decisions.md](decisions.md) that says why it is counted
+and why this way; the nine that had none are under [Why each money flow is counted](decisions.md#why-each-money-flow-is-counted),
+where aspects with no reason on record are marked "reason not recorded".
 
 These flows have **no confirmed primary link among their own sources** (press reports or this project's models only): none.
 

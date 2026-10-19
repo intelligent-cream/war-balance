@@ -733,6 +733,102 @@
    "in_repository": true
   },
   {
+   "path": "comtrade_2710/BGR_2021_X_2710.json",
+   "bytes": 75043,
+   "sha256": "72aac0c57cccf960bf7dc4072c8d1d03c80c677a4e0c3f437532091a05e7c7e7",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/CZE_2021_X_2710.json",
+   "bytes": 96529,
+   "sha256": "7b7de78f02f72c4661d01f2a188806a6dbfb5d51c57016ab7f7aecf32848bda3",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/DEU_2021_X_2710.json",
+   "bytes": 151209,
+   "sha256": "385f4cb192f87b677b1a7106713304467a14c6b8737382e7511d3d230903010c",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/ESP_2021_X_2710.json",
+   "bytes": 128024,
+   "sha256": "b9fdd96c1452d638f83c4a1b31c5fb1484a4c62d872bb86d904616d3daf8a19f",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/FIN_2021_X_2710.json",
+   "bytes": 71929,
+   "sha256": "364507afca0f288984784eed5b235c664d873c4d59af71ccc25a2de127b46060",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/FRA_2021_X_2710.json",
+   "bytes": 167249,
+   "sha256": "df8a0c6f0e7c271c01c4fb18c47bbd0bfebec5fad70c4ed51889385f04077cd7",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/GRC_2021_X_2710.json",
+   "bytes": 125378,
+   "sha256": "ffd8fc4ae7b64685ef7769697f88a101574cd128c81df0a95d0c5d187d4f5ab9",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/HRV_2021_X_2710.json",
+   "bytes": 37821,
+   "sha256": "77f5dff48ee50e8f5b7e6439b60f68568f912afe995463ed91c4e768e407c73a",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/HUN_2021_X_2710.json",
+   "bytes": 84441,
+   "sha256": "b08987569454aedeefffbf275fcd1d6c4daad302573a1971c4a46a9d32f015b8",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/ITA_2021_X_2710.json",
+   "bytes": 137853,
+   "sha256": "50b69debb572bfe4247ed24d8847d9810ff4bb92561ff42fb76cfcd683315979",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/LTU_2021_X_2710.json",
+   "bytes": 98299,
+   "sha256": "27dc2472dbfeb49f1e81cff45c384f0a593bca8a7f4bd924f78da758925e3755",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/NLD_2021_X_2710.json",
+   "bytes": 168447,
+   "sha256": "2d021add0a7b929b65fb5b22a41988d1133a4bcaeb251458f3f6d6ef8db65b5f",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/POL_2021_X_2710.json",
+   "bytes": 127617,
+   "sha256": "44e1d365e1f0baa54cedcd6e75e62efd577f8b222c4d6a15f5ab9584959cc241",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/ROU_2021_X_2710.json",
+   "bytes": 70293,
+   "sha256": "23657e1e25ce650518a712d21dbed88eb30ff8b2b74d6535484340f4418d9bfb",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/SVK_2021_X_2710.json",
+   "bytes": 52245,
+   "sha256": "8b587bbf5fbd48730b6a9229caf261fa8f92fd17c5fe4e111a092a32e1c5700a",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_2710/SWE_2021_X_2710.json",
+   "bytes": 127997,
+   "sha256": "ffe1123c1558412f358b546576fe03020c74f101ffa0d8aec7d30d58bd1e8790",
+   "in_repository": true
+  },
+  {
    "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2019.json",
    "bytes": 1850,
    "sha256": "773dec8e5f1e5d5d325536aeaa3155b5910c187a4f83b9f15918d22564baedb9",
@@ -995,6 +1091,54 @@
    "bytes": 2114086,
    "sha256": "0c0893c2e864a22bb39a6f02afbf42136065332440d5842224b47117035d386f",
    "in_repository": false
+  },
+  {
+   "path": "oecd_stan/stan_capital.csv",
+   "bytes": 164312,
+   "sha256": "bc2740f5932eb9f7e30d9d55fb600f3457592fecc966ef74c5b77a699dac790c",
+   "in_repository": true
+  },
+  {
+   "path": "oecd_stan/stan_flows.csv",
+   "bytes": 1565843,
+   "sha256": "690da489f87c8ca41294017121fb19d809486b515c70e0be3de433b0adffad0c",
+   "in_repository": true
+  },
+  {
+   "path": "oecd_stan/stan_persons.csv",
+   "bytes": 908353,
+   "sha256": "1eb575df079a404bddbd6d0c6450f08dd4e27ab814e463e718eba6f68f1ce6d0",
+   "in_repository": true
+  },
+  {
+   "path": "oecd_tiva/dva.csv",
+   "bytes": 905852,
+   "sha256": "96fedbddd19e660be79dda16641165d8bcfa7d0fc9baf8b7dfe6958252cccdcc",
+   "in_repository": true
+  },
+  {
+   "path": "oecd_tiva/dva2.csv",
+   "bytes": 216437,
+   "sha256": "52203124d0eb3fb3be39a3afdeda333bea1544fc9cd6584e7cf4332d80f3d4af",
+   "in_repository": true
+  },
+  {
+   "path": "oecd_tiva/ua_m_2021.json",
+   "bytes": 253835,
+   "sha256": "79f57e85e31a4f77eaff0eefae765a90215d82ebc21fa402ed7acbb1f622cc09",
+   "in_repository": true
+  },
+  {
+   "path": "oecd_tiva/ua_m_2023.json",
+   "bytes": 256810,
+   "sha256": "dac485664b19a6443155d0625ef29b5dd7f5296526cf59382e884566f360bd18",
+   "in_repository": true
+  },
+  {
+   "path": "oecd_tiva/ua_m_2024.json",
+   "bytes": 254159,
+   "sha256": "37d8ee6eba3c35903a55c75a99f9a01a45442453405389840726640c6f10d38a",
+   "in_repository": true
   },
   {
    "path": "refugee_budgets/2013346.pdf",

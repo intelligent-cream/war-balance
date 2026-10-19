@@ -64,9 +64,11 @@ How the four flows enter the net shift (`calc()` in [`site/index.html`](../../si
 
 ## Profit, not revenue
 
-Selling EUR 10bn less to Russia does not cost the seller EUR 10bn: the goods would have cost money to make. Two rules apply today.
+Selling EUR 10bn less to Russia does not cost the seller EUR 10bn: the goods would have cost money to make. Since round 13 **one rule** applies to every seller ([overview](overview.md#one-rule-for-every-seller-round-13)).
 
-**The money rule (round 6): income counts at value kept × genuinely extra.** Income from sales to Russia counts at the value kept in the seller's economy (domestic value added, OECD TiVA) times the share that is genuinely extra business (not sold elsewhere instead). There are separate factors for sales lost and extra sales, and for goods and services (`c.vk` in `data.json`, from [`value_kept.json`](../../research/2026-10/gaps/value_kept.json); `earned3()` in `calc()`). For example, Germany's lost sales to Russia count at 0.25 (0.14–0.39) and Finland's at 0.15 (0.06–0.28). In the cost view this is "Income lost on sales to Russia". Money flowing back follows the same rule ([overview.md](overview.md#the-money-rule-round-6)).
+**One rule (round 13): every sale counts at the seller's net gain × genuinely extra.** Income from sales to Russia counts at the seller's net gain (taxes on production plus profit above a 9% return on capital, as a share of output, by country and industry, from OECD STAN: [`net_gain_sellers.json`](../../research/2026-10/gaps/net_gain_sellers.json), [notes](../../research/2026-10/gaps/net_gain_sellers-notes.md)) times the share that is genuinely extra business (`value_kept.json`). Manufacturing earns about 1% of output above a normal return (OECD median; Germany 1.3%, the US 3.8%, Poland 6.6%), so Germany's lost sales to Russia now count at about 0.004 and China's extra sales at 0.008 (were 0.25 and 0.485). Economies outside STAN use the OECD median of the industry. This is the same rule as for purchases from Russia and Ukraine (next paragraph).
+
+**The money rule (round 6, superseded in round 13): income counted at value kept × genuinely extra.** Income from sales to Russia counts at the value kept in the seller's economy (domestic value added, OECD TiVA) times the share that is genuinely extra business (not sold elsewhere instead). There are separate factors for sales lost and extra sales, and for goods and services (`c.vk` in `data.json`, from [`value_kept.json`](../../research/2026-10/gaps/value_kept.json); `earned3()` in `calc()`). For example, Germany's lost sales to Russia count at 0.25 (0.14–0.39) and Finland's at 0.15 (0.06–0.28). In the cost view this is "Income lost on sales to Russia". Money flowing back followed the same rule ([overview.md](overview.md#the-money-rule-round-6)). Kept as `vk_old` for the method band.
 
 **The net-gain rule (round 10): purchases count at the seller's net gain.** A purchase from Russia counts at Russia's net gain on that mix of goods (about 0.6 of the price for oil and gas, 0.1–0.2 for other goods), and an extra purchase from Ukraine at Ukraine's (0.042–0.175), so that trade and aid are on the same scale ([overview.md](overview.md#the-net-gain-rule-round-10)).
 
@@ -122,6 +124,8 @@ Russia's own customs record more imports than its partners report selling: EUR 2
 
 ## Hong Kong gold
 
+**Round 13 (audit): gold at the gold price.** Gold in a country's payments to Russia (tagged where the UAE and Hong Kong pass it on, and Hong Kong's own rise) is deflated with the gold price index (the customs panel of Russian gold, HS 7108, and the NBP gold fixing for 2026; [`prices.json`](../../research/2026-10/gaps/prices.json) benchmarks, rebased to 2019–2021 = 1: 1.08 in 2022, 1.16 in 2023, 1.50 in 2024, 2.05 in 2025, 2.66 in 2026), not with the country's pre-war mix. Hong Kong's pre-war imports from Russia were half palladium and platinum, whose price fell, so its index (0.90 in 2023–2026) made the volume of gold 1.3–3 times too large. Each year's index is the value-weighted mix of the gold index on the gold share and the old index on the rest (`deflate_gold()`). Hong Kong: −4.2% → −1.9% of GDP. The gold price rise itself is not counted, like any other non-fuel price rise.
+
 The rise in Hong Kong's imports from Russia since before the war is taken to be precious metals (`HK_METALS_SHARE`, per year). Round 12 measured it from Hong Kong's own import records in UN Comtrade ([raw/comtrade_hkg](../../research/2026-10/raw/comtrade_hkg/)): precious metals (HS 71) were 56–67% of its imports from Russia in 2019–2021 and 85%, 99%, 98% and 99% in 2022–2025. Against the 2019–2021 average, HS 71 rose by more than the total in every year (other goods fell), so the share of the rise is 1.0 (capped; 2026 takes 2025's). It was a flat 0.98 that no research file explained. The share passed on to mainland China (0.57 in 2022 falling to 0.37 in 2025, from Hong Kong's own gold trade in `refine.json`) counts for China; only the rise above the pre-war level is treated as gold in transit. Hong Kong is labelled a gold transit hub. Code: the end of `apply_residual()`.
 
 ## Gold and hidden channels
@@ -138,10 +142,49 @@ about EUR 7bn over 2022–2026: China 1.7bn, Kazakhstan 1.1, the UAE 1.0, Hong K
 Kyrgyzstan). Crypto volumes (Garantex, the A7A5 rouble stablecoin) and the 2022 transfers of people leaving Russia have
 no country split or are not payments to Russia, and are not counted
 ([`payment_channels.json`](../../research/2026-10/gaps/payment_channels.json), [notes](../../research/2026-10/gaps/payment_channels-notes.md)).
+**Round 13:** the fees are a sale of financial services to Russia, so they count at the financial industry's net gain
+(OECD median 0.20) × genuinely extra (0.5), about a tenth of the fees (were counted in full).
 
 ## Remittances and relocants (round 7)
 
-**Migrant workers' remittances** from Russia are wages for labour sold to Russia's economy, so they count like
+**Round 13b (owner, after the audit): a marker, not in the totals.** Migrant workers' remittances from Russia are no
+longer in the net shift, the cost view, either headline number, the method band or the share cards. This reverses the
+owner's round-7 decision to count them ([decisions](../decisions.md#remittances-from-russia)): they are individuals'
+wages, not a country's choice; the money flows from Russia to the migrant's home; the real gain over what the migrant
+could earn elsewhere is small and hard to measure; and they would dominate the bottom of the ranking (Tajikistan
+−39.6% of GDP, almost all of it remittances).
+
+They are shown as a **marker** (△), like the [critical-goods marker](#goods-russias-weapons-need-the-critical-goods-marker-round-7):
+
+- **What it shows**: the change in labour remittances from Russia against the expected no-war level, summed from 2022
+  to the chosen year, in euros and as % of one year's GDP (2024), with its likely range (the reported range of what
+  was sent and of the expected level, combined as independent errors), and the total migrants sent from Russia in that
+  time (`apply_remittances()`, `remit` in `data.json`). Relocants' transfers stay out, as below.
+- **Where**: a line in every country panel with data ("Depends on wages earned in Russia: remittances from Russia
+  changed by X% of GDP since 2022 (not in the totals)" where migrants sent at least 1% of GDP a year from Russia over
+  the period; without "depends" elsewhere), a map layer ("Wages from Russia": a triangle beside the critical-goods
+  diamond, its size following the change), and columns marked "not in totals" in the table, the CSV
+  (`remittances_from_russia_change_*_not_in_totals`) and the JSON (`remittances_from_russia_change_not_in_totals`).
+- **2022 to August 2026**: Tajikistan +EUR 9.4bn (+70% of GDP; likely +35 to +114%; EUR 20.9bn sent in all),
+  Uzbekistan +18.9bn (+17%), Kyrgyzstan +0.3bn (+2.0%, likely −12 to +14%), Armenia +1.5%, Belarus +1.0%, Georgia
+  −0.3%, Azerbaijan −0.6%, Moldova −2.4%, Kazakhstan 0. The triangle shows for Tajikistan, Uzbekistan, Kyrgyzstan,
+  Armenia, Georgia and Belarus.
+- **Effect of taking them out** (net, % of GDP): Tajikistan −39.61 → −0.81, Uzbekistan −14.46 → −6.11, Kyrgyzstan
+  −7.48 → −4.94, Armenia −2.91 → −1.62, Belarus −5.63 → −4.96, Moldova +7.96 → +7.77.
+
+The paragraphs below describe how remittances were counted before round 13b. The research files stay as they are.
+
+**Round 13 (audit): at the migrant's net gain.** Wages pay for real work, so only the pay above what the same work
+earns elsewhere counts, and only its war-driven change: the war wage premium in what migrants sent (Russian wages
+above their 9% pre-war trend: 5% of pay in 2022, 19% in 2025), as far as it shows in euros, plus the rest of the
+change × the premium over the home wage (Tajikistan 0.62, Uzbekistan and Kyrgyzstan 0.41, others 0.2) × genuinely
+extra ([`remittances_r13.json`](../../research/2026-10/gaps/remittances_r13.json),
+[notes](../../research/2026-10/gaps/remittances_r13-notes.md)). Tajikistan −38.3 → −39.6% of GDP, Uzbekistan −15.1 →
+−14.5, Kyrgyzstan −6.1 → −7.5, Moldova +6.1 → +5.4. Tajikistan's total from Russia was checked against EFSD's 2025
+share of GDP (within 6%); Uzbekistan's against its central bank. The text below describes rounds 7–12. Replaced in
+round 13b by the marker above.
+
+**Migrant workers' remittances** from Russia are wages for labour sold to Russia's economy, so they counted like
 services sold to Russia: the change against the expected no-war level, at value kept (0.97) × genuinely extra (0.55
 when above expected, 0.40 when below) (`apply_remittances()`,
 [`remittances.json`](../../research/2026-10/gaps/remittances.json),

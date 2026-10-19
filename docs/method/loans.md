@@ -183,6 +183,13 @@ Every number above has a fetched source, also listed under `loans_value` in
 - How the standstill repays (equal yearly instalments over 2035–2039, interest at the loan's rate in between).
 - The USD normal rate for euro and yen loans.
 
+**The audit's critique (round 13, documented, not changed).** An independent audit (19 October 2026) argues two points:
+
+1. Ukraine's 2021 USD yield of 6.7% already contains a default premium of about 5 points over US Treasuries, so adding the creditor class's expected loss on top partly counts the same risk twice; for senior IMF and World Bank loans, discounting at 6.7% creates a gift the lender does not bear. The audit suggests a risk-free rate plus a normal spread in the loan's currency, with expected-loss scenarios on top.
+2. The EU's provisioning rates (70%) are budget prudence, not loss forecasts; they should be the high case, not the central.
+
+Effect on the headline is small (EU members +0.007 to +0.014 points of GDP). The owner kept decision B (provisioning rates as expected losses) and the 6.7% normal rate; both critiques are recorded in [decisions](../decisions.md#round-13-one-valuation-rule-for-every-seller). The method band on the map shows the result with loans at the war-time yield instead.
+
 ## See also
 
 - [Aid, refugees, military support and flowback](aid-refugees-military.md#loans-at-their-economic-value-round-5)

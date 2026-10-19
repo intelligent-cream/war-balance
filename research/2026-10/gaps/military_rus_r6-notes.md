@@ -8,7 +8,7 @@ Round 6 revision of `flowback2.json` `military_to_russia`. It replaces that bloc
 Weapons, ammunition, troops and intelligence that foreign states sent to Russia for its war. Russia mostly paid in kind:
 technology, oil, food, gold, and some cash. Following the method, each item is valued at **market value** (what Russia
 pays its own industry for the same item, or what it paid the supplier). It counts **in full** and always **toward
-Russia**. None of it shows up in customs data, so no profit margin applies.
+Russia**. None of it shows up in customs data, so no profit margin applies. **Round 13:** what Russia paid for, also in kind, now counts as a sale at the seller's net gain; only unpaid deliveries count in full ([`military_payment_r13-notes.md`](military_payment_r13-notes.md)).
 
 Units: EUR bn nominal. 2026 covers January–August only. USD is converted with ECB yearly averages (1.053, 1.081, 1.082, 1.13, 1.16).
 Ranges are about 90%. A country's low, central and high are the sums of its items' lows, centrals and highs.
