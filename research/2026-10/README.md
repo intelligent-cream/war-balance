@@ -14,7 +14,10 @@ First real data for the map, gathered on 2026-10-17 by six research agents. **No
 
 Each `*-notes.md` file has the method, caveats and gaps.
 
-## Known gaps and caveats
+## Known gaps and caveats (round 1, superseded)
+
+> These were the gaps after round 1. Later rounds closed most of them: missing parts no longer count as zero (round 2), own-industry shares were replaced by the all-money ledger (round 6), refugee costs come from budgets and net of refugees' taxes (rounds 4–5). The current open issues are in [docs/limitations.md](../../docs/limitations.md).
+
 - EU-level aid (Commission, Council, EIB) is added to each member's aid by its share of EU budget contributions, as Kiel imputes it.
 - Refugee hosting costs are modelled for every host country (C): Kiel's EU-wide total of EUR 163.1bn for 2022-2025 is split
   by refugees hosted x income per person (capped at 0.35-1.6x the EU average), and the same cost per refugee (about EUR 9,700

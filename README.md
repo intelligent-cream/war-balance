@@ -14,7 +14,7 @@ Status: **research preview**. All figures come from public sources or are estima
 
 ## Method in short
 
-- **Expected without the war**: trade and services start from 2021 at pre-war prices (company taxes from the 2018-2021 average). Exports to Russia and trade with Ukraine then follow each country's other trade and GDP, the rest stays at the 2021 level: the models that predicted past years best in back-tests from 2008, 2013 and 2016. Changes compare volumes at pre-war prices; the extra Russia earned from war-time fuel prices counts as a separate part.
+- **Expected without the war**: trade and services start from 2021 at pre-war prices (company taxes from the 2018-2021 average). Exports to Russia then follow each country's other trade and GDP; the rest, including trade with Ukraine, stays at the 2021 level. These are the models that predicted past years best in back-tests from 2008, 2013 and 2016. Changes compare volumes at pre-war prices; the extra Russia earned from war-time fuel prices counts as a separate part.
 - **Counted where used**: transit gas for the country that burns it, fuel resold by trading hubs for the hub's customers, goods re-exported to Russia by hubs (UAE, Armenia, Kazakhstan, Turkey, Kyrgyzstan and others) for the countries that made them, Hong Kong's gold for mainland China.
 - **No country is rewarded for missing data**: gaps are filled with estimates that carry wide ranges, never left at zero.
 - **Margins of error**: each part has a low and high value (about a 90% range) from the data, or from its certainty letter (A ±5%, B ±15%, C ±35%, D ±70%). The tested error of the no-war prediction is part of every range. Totals combine parts' errors in quadrature, with the correlations measured between flows ([ranges](docs/method/ranges.md)).
@@ -30,6 +30,7 @@ Start at the [documentation index](docs/README.md), which explains in plain lang
 - [Prices and the war-time windfall](docs/method/prices.md) · [Ranges and certainty](docs/method/ranges.md)
 - [Trade](docs/method/trade.md) · [Energy and laundered oil](docs/method/energy-and-laundered-oil.md) · [Services, shipping, company taxes](docs/method/services-shipping-companies.md) · [Aid, refugees, military, flowback](docs/method/aid-refugees-military.md)
 - [Pipeline and data.json](docs/reference/pipeline.md) · [Research files](docs/reference/research-files.md) · [Sources](docs/reference/sources.md)
+- [Trace every money flow](docs/trace.md): for loans, oil, refugees, weapons and every other flow, its sources with exact links, how it is calculated and why · [Decisions](docs/decisions.md)
 - [Limitations](docs/limitations.md) · [Changelog](docs/changelog.md)
 
 ## Repository

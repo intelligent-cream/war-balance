@@ -292,18 +292,18 @@ Effect on the total ranges (% of GDP): Germany 3.0…8.6 → 3.5…7.7, Hungary 
 
 ## 9. Effect on the headline numbers
 
-Middle values change little; ranges become about 1.5–2 times wider. Shift toward Ukraine, 2022–August 2026, % of one year's GDP. "Before" is a build of the committed round-4 code with `counterfactual()` switched off (so `trend.json` / `trend2.json` and the audit-2 window fixes apply); "after" is the current `site/data.json`, which also contains the round-4 review fixes (windfall from yearly fuel shares, services cap, UAE customs order and others, see the [research log](../../research/2026-10/README.md)). Both computed with the site's own `calc()`.
+Middle values change little; ranges become about 1.5–2 times wider. Shift toward Ukraine, 2022–August 2026, % of one year's GDP. "Before" is a build of the committed round-4 code with `counterfactual()` switched off (so `trend.json` / `trend2.json` and the audit-2 window fixes apply). "Round 4 (historical)" is the round-4 build with the counterfactual switched on and the round-4 review fixes (windfall from yearly fuel shares, services cap, UAE customs order and others, see the [research log](../../research/2026-10/README.md)). Both were computed with the site's own `calc()`. They show the counterfactual's own effect at the time. The last column is the current build (round 11), for comparison. It also holds every later change: the money rule (round 6), no-war prices (round 7), the net-gain rule (round 10) and the round-11 data, so the gap between the last two columns is not the counterfactual's effect.
 
-| country | before (trend.json / trend2.json) | after (counterfactual.json, current data) |
-|---|---|---|
-| Germany | +4.9% (3.9 to 6.2) | +4.8% (3.1 to 7.3) |
-| China | −1.2% (−1.8 to −0.7) | −1.6% (−2.4 to −0.5) |
-| Hungary | −5.7% (−8.1 to −3.1) | −6.7% (−10.4 to −1.7) |
-| Poland | +9.5% (7.7 to 12.2) | +10.0% (5.9 to 15.5) |
+| country | before (trend.json / trend2.json) | round 4 (historical, counterfactual.json) | current build (round 11) |
+|---|---|---|---|
+| Germany | +4.9% (3.9 to 6.2) | +4.8% (3.1 to 7.3) | +3.7% (2.5 to 5.2) |
+| China | −1.2% (−1.8 to −0.7) | −1.6% (−2.4 to −0.5) | −1.6% (−2.3 to −0.9) |
+| Hungary | −5.7% (−8.1 to −3.1) | −6.7% (−10.4 to −1.7) | −4.1% (−6.4 to −1.4) |
+| Poland | +9.5% (7.7 to 12.2) | +10.0% (5.9 to 15.5) | +4.1% (2.2 to 7.0) |
 
 The round-4 log in [`research/2026-10/README.md`](../../research/2026-10/README.md) gives the counterfactual's own effect as Germany +4.8% → +4.7%, China −1.1% → −1.6%, Hungary −5.6% → −6.7%; the small differences to the table come from the review fixes made afterwards.
 
-The widest case is Belarus: −24% of GDP with a range of −76% to +49%. Its 2021 imports from Russia (about EUR 18bn a year) are held flat, and the honest random-walk error on a flow that large is wide enough to cross zero ([limitations.md](../limitations.md)).
+The widest case is Belarus. In round 4 it was −24% of GDP with a range of −76% to +49%. In the current build it is −17.6% with a range of −38.6% to +3.6%. Its 2021 imports from Russia (about EUR 18bn a year) are held flat, and the honest random-walk error on a flow that large is still wide enough to cross zero ([limitations.md](../limitations.md)).
 
 ## See also
 

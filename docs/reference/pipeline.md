@@ -6,6 +6,7 @@ Everything the map shows comes from one file, `site/data.json`, built by one scr
 
 ```sh
 ./setup.sh                                  # uv sync + pre-commit hooks (run once, first)
+uv run python pipeline/loan_rates.py        # only after changing a loan input: rewrites loans_value.json (round 12)
 uv run python pipeline/build_data.py        # research/ -> site/data.json and research/2026-10/gaps.md
 uv run python pipeline/check_data.py        # checks; exits non-zero on any FAIL
 cd site && python3 -m http.server 8000      # open http://localhost:8000
@@ -13,7 +14,7 @@ node pipeline/share_cards.mjs               # optional: share images and a page 
 ```
 
 - [`setup.sh`](../../setup.sh) runs `uv sync` and `uv run pre-commit install`. The hooks ([`.pre-commit-config.yaml`](../../.pre-commit-config.yaml)) check whitespace, YAML and JSON, file size (2 MB) and run `ruff` and `ruff-format` (line length 120, [`pyproject.toml`](../../pyproject.toml)). Python 3.12+, one dependency: `pycountry`.
-- `build_data.py` writes `site/data.json` (compact JSON, about 1.4 MB) and regenerates [`research/2026-10/gaps.md`](../../research/2026-10/gaps.md) (`write_gaps_report()`), and prints the number of entries and sources.
+- `build_data.py` writes `site/data.json` (compact JSON, about 1.4 MB) and `site/detail.json` (the per-part coverage notes, loaded after the map), regenerates [`research/2026-10/gaps.md`](../../research/2026-10/gaps.md) (`write_gaps_report()`), and prints the number of entries and sources.
 - [`share_cards.mjs`](../../pipeline/share_cards.mjs) needs Node 18+ and Playwright. It serves `site/`, opens the map in Chromium and renders one 1200×630 preview card per country (`site/share/<iso>.png`), a page per country (`site/c/<iso>.html`) whose link preview shows that card, and a world card. It uses the map's own calculations, so cards always match the map. Both output folders are git-ignored.
 - **Deploy**: [`.github/workflows/pages.yml`](../../.github/workflows/pages.yml) runs on pushes to `main`: installs Playwright 1.48.2, runs `share_cards.mjs` and publishes `site/` to GitHub Pages. It does not rebuild `data.json`; the committed file is what goes live.
 
@@ -41,7 +42,7 @@ Two things apply to every step:
 | 11 | refiners (inline) | exported crude of Turkey, India, China out of their own payments, at each refiner's `crude_k()` | [energy](../method/energy-and-laundered-oil.md#refiners-counted-once) |
 | 12 | company taxes (inline) | `companies_all.json`, then profit tax + half of other taxes and the 2018–2021 base (`round4a.json`); round-6 revision (`company_taxes_r6.json`) | [companies](../method/services-shipping-companies.md#company-taxes) |
 | 13 | services, hidden, undisclosed, private (inline) | `uncovered.json`; Kyrgyz hidden gold passed to its buyers (`kgz_gold.json`) | [services](../method/services-shipping-companies.md#services), [trade](../method/trade.md#gold-and-hidden-channels) |
-| 14 | flowback (inline) | own-industry shares, PURL, EU-level military aid by SIPRI share (later replaced by step 39) | [flowback](../method/aid-refugees-military.md#flowback) |
+| 14 | flowback (inline) | own-industry shares, PURL, EU-level military aid (later replaced by step 39, which also clears these steps' sources) | [flowback](../method/aid-refugees-military.md#flowback) |
 | 15 | military support to Russia (inline) | North Korea, Iran, Belarus revalued (`military_rus_r6.json`); China's unrecorded part; people counts | [military](../method/aid-refugees-military.md#round-6-revision) |
 | 16 | `apply_shipping()` | tanker income as profit, by who really controls each tanker (`shadow_fleet_r6.json`); overlap with services removed | [shipping](../method/services-shipping-companies.md#shipping) |
 | 17 | `apply_reexports()` | hub re-exports to origin countries, Russian goods to final buyers; Belarus re-exports (`belarus.json`) | [trade](../method/trade.md#re-export-hubs) |
@@ -49,7 +50,7 @@ Two things apply to every step:
 | 19 | `apply_audit()` | EU Support Loan guarantors, Denmark, refugee budgets for 27 hosts | [aid](../method/aid-refugees-military.md) |
 | 20 | `fix_artefacts()` | Lebanon, Mauritania, Saint Lucia, Bonaire, Botswana, Seychelles, Malta | [trade](../method/trade.md#smaller-corrections) |
 | 21 | `baltic_transit()` | Baltic and Finnish pass-through out; re-exports to EU makers | [trade](../method/trade.md#baltic-and-finnish-pass-through) |
-| 22 | incentives, sanctions labels (inline) | copy `incentives.json`; `sanctions` shares from `sanctions_share.json` | [incentives](../method/incentives.md), [trade](../method/trade.md#sanctions-mandated-or-own-choice) |
+| 22 | sanctions labels (inline) | `sanctions` shares from `sanctions_share.json` and its source `sanctions_share`; `incentives.json` is no longer copied (round 11 audit) | [incentives](../method/incentives.md), [trade](../method/trade.md#sanctions-mandated-or-own-choice) |
 | 23 | `remove_freight()` | CIF to FOB on payments to Russia, except border-priced shares | [trade](../method/trade.md#freight-cif-to-fob) |
 | 24 | `price_indices()` | `pidx` per flow | [prices](../method/prices.md) |
 | 25 | `apply_narrow()` | narrow.json values, bases and price levels not entered at step 1; Türkiye priced from `turkey_prices.json` | [trade](../method/trade.md) |
@@ -65,7 +66,7 @@ Two things apply to every step:
 | 35 | `apply_company_flows()` | exit payments to Russia and profits sent home by Russian-owned companies abroad (`company_flows.json`; metals, mining and chemicals plants from `russian_owned_r10.json`) | [Russia](../method/russia-state-and-companies.md#companies-leaving-russia) |
 | 36 | `apply_refugees_net()` | refugee hosting at net cost: cost minus the taxes refugees pay (`refugees_net.json`) | [refugees](../method/aid-refugees-military.md#refugees) |
 | 37 | `apply_ua_arms_purchases()` | arms Ukraine bought abroad, as flowback to the seller (`ua_arms_purchases.json`) | [flowback](../method/aid-refugees-military.md#arms-ukraine-bought-abroad-round-5) |
-| 38 | `apply_loans_value()` | loans and guarantees at their grant element (`loans_value.json`) | [aid](../method/aid-refugees-military.md#loans-at-their-economic-value-round-5) |
+| 38 | `apply_loans_value()` | loans and guarantees at their value to Ukraine and, for the cost view, at the lender's cost (`loans_value.json`, values per loan item from `loan_rates.py`, round 12) | [loans](../method/loans.md) |
 | 39 | `apply_money_ledger()` | every euro that reached Ukraine assigned to the economy where it was spent; replaces the earlier flowback (`money_ledger.json`) | [flowback](../method/aid-refugees-military.md#round-6-the-all-money-ledger) |
 | 40 | `apply_russian_arms()` | payments to Russia for Russian weapons against the no-war level (`russian_arms_exports.json`, `arms_r6.json`) | [Russia](../method/russia-state-and-companies.md#weapons-bought-from-russia) |
 | 41 | `apply_payment_agents()` | fees kept by payment agents settling Russia's trade (`payment_channels.json`) | [trade](../method/trade.md#payment-agents-round-6) |
@@ -76,13 +77,15 @@ Two things apply to every step:
 | 46 | `apply_audit2(..., "trends")` | audit-2 trend-window fixes, only for flows without a counterfactual | [counterfactual](../method/counterfactual.md) |
 | 47 | `apply_nowar_prices()` | fuel volume change valued at no-war prices, so it and the windfall add up (`energy_nowar.json`) | [prices](../method/prices.md#no-war-prices-round-7) |
 | 48 | `apply_net_gain()` | trade counts at the seller's net gain: weights per year for Russia's and Ukraine's gain (`net_gain_russia.json`, `net_gain_ukraine.json`) | [overview](../method/overview.md#the-net-gain-rule-round-10) |
-| 49 | final pass (inline) | every baseline inside its range; `coverage()` per part; status banner; sources | [ranges](../method/ranges.md) |
+| 49 | `attach_r11_sources()` | one source per round-11 proposals file, added to the series each file changed | [decisions](../decisions.md#assumptions-backed-by-data-round-11) |
+| 50 | `attach_input_sources()` | inputs that feed a part but were not cited by it: gas prices on payments to Russia and the windfall, tanker control on shipping (round 11 audit) | [sources](sources.md) |
+| 51 | final pass (inline) | every baseline inside its range; `coverage()` per part; the exact primary links from `sources_r11.json` (`links`); `prune_sources()` drops sources no part cites; status banner | [ranges](../method/ranges.md) |
 
 ## data.json in brief
 
-Top level: `generated`, `data_to` (2026-08-31), `years` (2021–2026), `frac` (`[1, 1, 1, 1, 1, 0.6667]`), `meta` (`tariff_rate` 0.04, `lost_margin` 0.2), `status_html`, `sources` (id → name, url, date, note), `countries` (by ISO3), `included_in` (territories shown with another country's figures: Liechtenstein, Monaco, Isle of Man, Puerto Rico, US Virgin Islands, Saint Martin).
+Top level: `generated`, `data_to` (2026-08-31), `years` (2021–2026), `frac` (`[1, 1, 1, 1, 1, 0.6667]`), `meta` (`tariff_rate` 0.002, the round-11 weighted duty rate; `lost_margin` 0.2, only a fallback), `status_html`, `sources` (id → name, url, date, note, and `links`: the exact primary or secondary links from [`sources_r11.json`](../../research/2026-10/sources_r11.json), each `{title, url, kind}`; only sources that a part cites), `countries` (by ISO3), `included_in` (territories shown with another country's figures: Liechtenstein, Monaco, Isle of Man, Puerto Rico, US Virgin Islands, Saint Martin).
 
-Per country: `n` (numeric ISO for the map shapes), `iso3`, `name`, `kind`, `pop`, `gdp`, optional `hub`, `tariff_waiver`, `eu_share` and `dual_use_note` (China), `coverage`, and series objects:
+Per country: `n` (numeric ISO for the map shapes), `iso3`, `name`, `kind`, `pop`, `gdp`, optional `hub`, `tariff_waiver`, `eu_share` and `dual_use_note` (China), and series objects. The coverage notes per part are in `site/detail.json` (`coverage` by ISO3), not in `data.json`.
 
 | key | content |
 |---|---|
@@ -90,7 +93,7 @@ Per country: `n` (numeric ISO for the map shapes), `iso3`, `name`, `kind`, `pop`
 | `to_rus.gain`, `buy_ukr.gain` | the seller's net gain per euro (round 10): weights per year as `[low, central, high]`; in `to_rus.gain`, `e` is for what was expected without the war (the 2019–2021 mix) and `a` for what was bought (that year's mix) |
 | `to_rus.laund_gain`, `svc_bought.gain` | Russia's gain on crude in laundered fuel (`e` for the pre-war level, `a` for what was bought, with relabelled Russian products at the products gain) and on services, per year `[low, central, high]` |
 | `svc_bought`, `svc_sold`, `shipping` | services and tanker income; `svc_sold.relocants_out` marks that relocants' spending was taken out |
-| `aid` | `years`, `cats`, `loans_face`, `loans_grant_eq`, `loans_value_ukraine`, `loan_adj_own`, `loan_adj_eu`, `weapons_mv`, `era_excluded`, `pledged_open`, `eu_years`, `eu_share`, `refugee_years*`, `refugee_gross`, `refugee_donor_share`, `refugee_cert` |
+| `aid` | `years`, `cats`, `loans_face`, `loans_grant_eq` (with `loans_grant_eq_lo`, `loans_grant_eq_hi` since round 12), `loans_value_ukraine`, `loan_adj_own`, `loan_adj_eu`, `weapons_mv`, `era_excluded`, `pledged_open`, `eu_years`, `eu_share`, `eu_src` (sources of the EU-level aid part), `refugee_years*`, `refugee_gross`, `refugee_donor_share`, `refugee_cert`, `refugee_src` |
 | `energy` | `premium*`, `discount*` |
 | `laund` | laundered oil with its pre-war level and growth |
 | `extra` | parts with no series of their own, each `{k, label, c, l, h, cert, src}` as yearly shifts toward Ukraine: `statefin`, `exits`, `rusfirms`, `multilat`, `rusarms`, `agents`, `frozen`, `remit` |
@@ -99,14 +102,14 @@ Per country: `n` (numeric ISO for the map shapes), `iso3`, `name`, `kind`, `pop`
 | `company` | `taxes*`, `staying`, `left`, `base_2018_2021` |
 | `windfall` | price windfall on Russian fuel against no-war prices, yearly triple |
 | `military_rus`, `hidden`, `undisclosed`, `private` | yearly triples, in money (`hidden.gain`: Russia's gain on gold per year, applied in the map) |
-| `flowback` | from the all-money ledger: `own*`, `purl_in*`, `arms*`, `othsp*` (other spending), `purl_out`, `cert_own`, `arms_cert` |
-| `people`, `incentive`, `sanctions` | counts, AI scores, sanctions labels |
+| `flowback` | from the all-money ledger: `own*`, `purl_in*`, `arms*`, `othsp*` (other spending), `purl_out`, `cert_own`, `arms_cert`, and sources `src`, `purl_src`, `arms_src` |
+| `people`, `sanctions` | counts, sanctions labels (the AI-guessed `incentive` scores were dropped in round 11) |
 
 Common fields inside a series:
 
 | field | meaning |
 |---|---|
-| `years`, `years_lo`, `years_hi` | middle, low, high per year 2021–2026, EUR bn (2026 = January–August) |
+| `years`, `years_lo`, `years_hi` | middle, low, high per year 2021–2026, EUR bn (2026 = January–August). Refugee hosting (`refugee_years*`) is floored on running totals, so in a single year the low can be above the middle (42 cases); every running total is ordered, which is what check 4 tests |
 | `base`, `base_range` | pre-war level at pre-war prices, and its range |
 | `base_2019_2021_avg` | the old 2019–2021 average, kept where `counterfactual()` reset `base` to 2021 |
 | `pidx`, `pidx_lo`, `pidx_hi` | price level per year, 2019–2021 = 1 ([prices](../method/prices.md)) |

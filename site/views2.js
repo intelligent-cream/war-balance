@@ -1,4 +1,4 @@
-// ===== Views: how the map works (with worked examples), and doing more or less than expected =====
+// ===== Views: how the map works (with worked examples) =====
 /* global state, DATA, byIso, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, waterfall, chip, MIN_GDP_RANK, FRAC, t, viewState, filtersHtml, wireFilters, eligible, periodText,
    num, fitName, activateOnKey, minGdp */
 
@@ -27,9 +27,9 @@ function howHtml() {
       <li><b>${t("More ways of helping Ukraine.")}</b> ${t("Not only government aid (Kiel Institute), but also the country's share of EU-level aid and of new IMF and World Bank lending, undisclosed military aid, private donations, hosting refugees (net of the taxes refugees pay) and buying more from Ukraine. Loans count at their value to Ukraine (what it saves against borrowing elsewhere), donated weapons at their market value.")}</li>
       <li><b>${t("Both sides of the ledger.")}</b> ${t("Payments to Russia for fuel, goods, services and weapons; Russian oil bought refined in other countries; goods re-exported to Russia through trade hubs, counted for the country that made them; shipping and insuring Russian oil; gold and hidden payment channels; payments for Russian nuclear projects and loans; exit payments of companies leaving Russia; profits of Russian-owned companies abroad; weapons and troops sent to Russia.")}</li>
       <li><b>${t("Money flowing back from Ukraine.")}</b> ${t("Every euro that reached Ukraine is followed to the economy where it was spent: weapons, energy, relief and rebuilding, including stock bought to replace donated weapons. What a country earns this way is subtracted from what it gave.")}</li>
-      <li><b>${t("One rule for all money.")}</b> ${t("Aid counts in full: it is a gift. Trade is an exchange, so it counts at what the seller really gains. A euro paid to Russia counts at Russia's net gain on it: its taxes plus profit above a normal return (about 60 cents for oil and gas, 20 for fertiliser, 10 or less for steel, wood and most other goods). Extra purchases from Ukraine count at Ukraine's net gain (5 to 18 cents). Money earned from the war effort, from sales to Russia or from shipping its oil counts as the value kept in the economy times the share that is genuinely extra business. The extra Russia earned from war-time fuel prices counts in full: it cost Russia nothing more to produce.")}</li>
+      <li><b>${t("One rule for all money.")}</b> ${t("Aid counts in full: it is a gift. Trade is an exchange, so it counts at what the seller really gains. A euro paid to Russia counts at Russia's net gain on it: its taxes plus profit above a normal return (about 60 cents for oil and gas, 20 for fertiliser, 10 or less for steel, wood and most other goods). Extra purchases from Ukraine count at Ukraine's net gain (4 to 18 cents). Money earned from the war effort, from sales to Russia or from shipping its oil counts as the value kept in the economy times the share that is genuinely extra business. The extra Russia earned from war-time fuel prices counts in full: it cost Russia nothing more to produce.")}</li>
       <li><b>${t("Two balances.")}</b> ${t("Each country has a balance with Ukraine (what it gave minus what it earned from the war effort) and one with Russia. The headline adds them. Earning more from the war effort than a country gave is not money toward Russia: such a country gets a gold outline, and is filled gold when that is what makes its total negative.")}</li>
-      <li><b>${t("Change since before the war, not totals.")}</b> ${t("Every flow is compared with what was expected without the war, in volumes (fuel at the prices a no-war market expected, other goods at pre-war prices); the extra Russia earned from war-time fuel prices is counted as a separate part. The expected level starts from 2021 and follows the model that predicted past years best (tested on 2008, 2013 and 2016): exports to Russia and trade with Ukraine grow or shrink with the country's other trade and GDP, the rest stays at 2021. That prediction is never exact, so its tested error widens every range.")}</li>
+      <li><b>${t("Change since before the war, not totals.")}</b> ${t("Every flow is compared with what was expected without the war, in volumes (fuel at the prices a no-war market expected, other goods at pre-war prices); the extra Russia earned from war-time fuel prices is counted as a separate part. The expected level starts from 2021 and follows the model that predicted past years best (tested on 2008, 2013 and 2016): exports to Russia grow or shrink with the country's other trade and GDP; the rest, including trade with Ukraine, stays at 2021. That prediction is never exact, so its tested error widens every range.")}</li>
       <li><b>${t("Counted where the money ends up.")}</b> ${t("Gas is counted where it is burned, not where it crosses a border; fuel resold by trading hubs for their customers; freight inside import values for the shipowners, not for Russia.")}</li>
       <li><b>${t("Fair across sizes.")}</b> ${t("The headline is the total since 2022 as a share of one year's GDP, so a small country that gave a lot is not hidden behind a big one that gave a little. Per person and total euros are one click away.")}</li>
       <li><b>${t("Nothing missing counts as zero.")}</b> ${t("Where data are missing, we estimate, with a wide likely range and a certainty letter (A reported to D rough indication). No country is rewarded for having no data.")}</li>
@@ -57,21 +57,4 @@ function renderHow(root) {
   if (open) open.onclick = () => { window.setView("map"); select(byIso[exampleIso].n, true); };
 }
 
-// ----- Doing more or less than expected (AI-guessed incentives) -----
-// expected shift (% of a year's GDP) from two AI-guessed scores: direction away from Russia (0-10) and threat (0-100),
-// by least squares over the economies on the ranking; shifts are clipped at ±30% so a few extremes don't set the line
-function fitExpectation(rows) {
-  const X = rows.map(r => [1, r.dir, r.thr]), Y = rows.map(r => Math.max(-30, Math.min(30, r.y)));
-  const XtX = [0, 1, 2].map(i => [0, 1, 2].map(j => X.reduce((s, x) => s + x[i] * x[j], 0)));
-  const XtY = [0, 1, 2].map(i => X.reduce((s, x, n) => s + x[i] * Y[n], 0));
-  // solve the 3x3 system by Gaussian elimination
-  const A = XtX.map((row, i) => [...row, XtY[i]]);
-  for (let i = 0; i < 3; i++) {
-    let p = i; for (let r = i + 1; r < 3; r++) if (Math.abs(A[r][i]) > Math.abs(A[p][i])) p = r;
-    [A[i], A[p]] = [A[p], A[i]];
-    for (let r = 0; r < 3; r++) if (r !== i) { const f = A[r][i] / A[i][i]; for (let cc = i; cc < 4; cc++) A[r][cc] -= f * A[i][cc]; }
-  }
-  return [0, 1, 2].map(i => A[i][3] / A[i][i]);
-}
-// small economies have noisy trade data that dominate a ranking of differences, so only economies above €20bn
-window.EXTRA_VIEWS = { how: renderHow };
+window.EXTRA_VIEWS = { ...(window.EXTRA_VIEWS || {}), how: renderHow };

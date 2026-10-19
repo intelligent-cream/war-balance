@@ -169,6 +169,12 @@ button, input, select { font: inherit; color: inherit; }
 .people .n { font-family: var(--font-display); font-weight: 700; font-size: 20px; font-variant-numeric: tabular-nums; }
 .people .l { font-size: 12px; color: var(--ink-soft); }
 .sources { font-size: 12.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; padding-left: 18px; }
+.src-more summary { cursor: pointer; color: var(--ink-soft); font-size: 12px; }
+.src-links { margin: 2px 0 6px; padding-left: 16px; list-style: disc; }
+.src-kind { font-size: 11px; opacity: 0.8; }
+.how { font-size: 11px; margin-left: 4px; text-decoration: none; opacity: 0.75; }
+.trace { font-size: 11.5px; margin-left: 5px; text-decoration: none; opacity: 0.75; font-weight: 600; }
+.trace:hover, .how:hover { opacity: 1; }
 .key { font-size: 12px; color: var(--ink-soft); line-height: 1.5; }
 .empty { color: var(--ink-soft); font-size: 13.5px; }
 
@@ -347,6 +353,21 @@ details.more[open] summary { margin-bottom: 10px; }
 .how-limits { padding-left: 20px; max-width: 80ch; line-height: 1.5; color: var(--ink-soft); }
 .how-h { font-family: var(--font-display); font-weight: 700; font-size: 17px; margin: 26px 0 8px; }
 .how-wf { max-width: 640px; }
+/* Sources view: one group per money flow */
+.sources-view { max-width: 900px; }
+.flow-nav .chipbtn { text-decoration: none; color: var(--ink); }
+.flow-nav .chipbtn[aria-current="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.flow { border-top: 1px solid var(--line); padding: 14px 0 10px 12px; margin: 0 0 2px -12px; border-left: 3px solid transparent; scroll-margin-top: 8px; overflow-wrap: anywhere; }
+.flow.hit { border-left-color: var(--ukr); }
+.flow h3 { font-family: var(--font-display); font-weight: 700; font-size: 17px; margin: 0 0 4px; }
+.flow h3:focus { outline: none; }
+.flow h3:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.flow-self { font-size: 13px; color: var(--ink-soft); text-decoration: none; margin-left: 4px; }
+.flow-what { margin: 0 0 6px; font-size: 14.5px; line-height: 1.5; max-width: 75ch; }
+.flow .key { margin: 0 0 6px; }
+.flow-links { font-size: 13.5px; margin: 6px 0 8px; line-height: 1.7; }
+.flow .sources { margin-bottom: 6px; }
+.flow-files a { color: inherit; }
 .ai-note { background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px; padding: 10px 14px; margin: 6px 0 12px; max-width: 80ch; font-size: 14px; line-height: 1.45; }
 .views { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
 .views button { border: 0; background: transparent; padding: 6px 12px; cursor: pointer; font-weight: 600; font-size: 13.5px; color: var(--ink-soft); }
@@ -442,6 +463,7 @@ body[data-panel="open"] .view-inner { margin-right: 420px; margin-left: 0; }
       <button data-view="bubbles" aria-pressed="false" data-i18n="Ukraine vs Russia">Ukraine vs Russia</button>
       <button data-view="table" aria-pressed="false" data-i18n="Table &amp; data">Table &amp; data</button>
       <button data-view="how" aria-pressed="false" data-i18n="How it works">How it works</button>
+      <button data-view="sources" aria-pressed="false" data-i18n="Sources">Sources</button>
     </div>
     <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="controls">Options</button>
     <div class="controls" id="controls">
@@ -561,7 +583,7 @@ function normalise(c) {
 }
 
 const state = { lens: "change", measure: "gdp", year: 2026, selected: null, compare: null, panel: null,
-  flows: true, netBack: true, chpl: true, rankMetric: "shift", rankMeasure: "gdp", tableSort: "shiftGdp" };
+  flows: true, netBack: true, chpl: true, rankMetric: "shift", rankMeasure: "gdp", tableSort: "shiftGdp", flow: null };
 
 
 // Every number is a part with a middle value, a low and a high (a ~90% range) and a certainty letter.
@@ -638,13 +660,18 @@ function calc(c, y) {
   const aidAll = T.aid.c.reduce((a, b) => a + b, 0) || 1;
   const loanShare = c.aid && c.aid.loans_face ? Math.min(1, aid3[0] / aidAll) : 0;
   const loansFace = (c.aid?.loans_face || 0) * loanShare;
-  const loansGE = (c.aid?.loans_grant_eq ?? (c.aid?.loans_face || 0) * 0.3) * loanShare;
+  // fallback only: every country with loans has loans_grant_eq in data.json (LOAN_GRANT_ELEMENT, docs/decisions.md)
+  const loansGE = (c.aid?.loans_grant_eq ?? (c.aid?.loans_face || 0) * 0.26) * loanShare;
+  // the lender's cost per loan, low and high (round 12, docs/method/loans.md); half and one and a half times otherwise
+  const loansGELo = c.aid?.loans_grant_eq_lo != null ? c.aid.loans_grant_eq_lo * loanShare : loansGE * 0.5;
+  const loansGEHi = c.aid?.loans_grant_eq_hi != null ? c.aid.loans_grant_eq_hi * loanShare : loansGE * 1.5;
   const lessTax3 = T.tax.m ? delta3(T.tax) : [0, 0, 0];
   const lessSold3 = delta3(T.soldRus), lessSvcSold3 = delta3(T.svcSold), lessSvcPaid3 = delta3(T.svcBought), lessShip3 = c.shipping ? delta3(T.ship) : [0, 0, 0];
   const margin = META.lost_margin ?? 0.2;
-  // profit lost on goods and services no longer sold to Russia
+  // income lost on goods and services no longer sold to Russia
   // money earned counts at the value kept in the economy x how much of it is genuinely extra (round 6), per country and
-  // kind of earning (c.vk: [low, central, high]); the flat 20% profit margin is the fallback
+  // kind of earning (c.vk: [low, central, high]); the flat 20% margin (META.lost_margin) is only a fallback for a
+  // country without c.vk, and every country in the current data has one
   const vk = key => (c.vk && c.vk[key]) || [margin * 0.5, margin, margin * 1.5];
   const earned3 = (r, kPos, kNeg) => {
     const f = vk(r[0] >= 0 ? kPos : kNeg);
@@ -652,10 +679,10 @@ function calc(c, y) {
   };
   const lostS = earned3(lessSold3.map(v => Math.max(0, v)), "rl", "rl"), lostV = earned3(lessSvcSold3.map(v => Math.max(0, v)), "sl", "sl");
   const lostMargin3 = [lostS[0] + lostV[0], lostS[1] + lostV[1], lostS[2] + lostV[2]];
-  // selling to Russia (or giving it up) moves the seller's profit, not the whole sales value: the goods still cost
-  // money to make. The profit share ranges from half to one and a half times the margin
+  // selling to Russia (or giving it up) moves the seller's income, not the whole sales value: only the value kept in
+  // the economy x the share that is genuinely extra counts (c.vk above; docs/method/overview.md, the money rule)
 
-  const tariff3 = c.tariff_waiver ? scale(sum3(T.buyUkr), META.tariff_rate ?? 0.04) : [0, 0, 0];
+  const tariff3 = c.tariff_waiver ? scale(sum3(T.buyUkr), META.tariff_rate ?? 0.002) : [0, 0, 0];
   // comparing with 2021 assumes trade would otherwise have stayed at that level, so these parts are at best B
   const cAid = c.aid?.cert || "B", cRus = weakest([c.to_rus?.cert, "B"]), cTrade = weakest([c.buy_ukr?.cert, "B"]);
   const src = k => (c[k]?.src || []);
@@ -671,7 +698,7 @@ function calc(c, y) {
   const lessPaid3 = delta3(T.paid);
   const shiftParts = [
     part("aid", "Aid to Ukraine", ownAid3, cAid, src("aid")),
-    part("euaid", "Share of EU-level aid", eu3, "B", ["kiel_eu_share"]),
+    part("euaid", "Share of EU-level aid", eu3, "B", c.aid?.eu_src || ["kiel_eu_share"]),
     part("ref", "Hosting refugees", ref3, c.aid?.refugee_cert || "B", c.aid?.refugee_src || []),
     part("buy", "Extra purchases from Ukraine", above3(T.buyUkr), cTrade, src("buy_ukr")),
     part("paid", lessPaid3[0] >= 0 ? "Less paid to Russia" : "More paid to Russia", lessPaid3, cRus, src("to_rus")),
@@ -702,7 +729,7 @@ function calc(c, y) {
     part("othsp", "Aid spent here on energy, relief and rebuilding", sum3(T.othsp), c.flowback?.cert_own || "C", c.flowback?.src || []),
   ];
   const costParts = [
-    part("aidge", "Aid given (loans at grant equivalent)", [aid3[0] - loansFace + loansGE, aid3[1] - loansFace + loansGE * 0.5, aid3[2] - loansFace + Math.min(loansFace, loansGE * 1.5)], loansFace ? weakest([cAid, "C"]) : cAid, src("aid")),
+    part("aidge", "Aid given (loans at grant equivalent)", [aid3[0] - loansFace + loansGE, aid3[1] - loansFace + loansGELo, aid3[2] - loansFace + Math.min(loansFace, loansGEHi)], loansFace ? weakest([cAid, "C"]) : cAid, src("aid")),
     part("ref", "Hosting refugees", ref3, c.aid?.refugee_cert || "B", c.aid?.refugee_src || []),
     part("undisc", "Undisclosed military aid (estimate)", sum3(T.undisc), c.undisclosed?.cert || "D", src("undisclosed")),
     part("priv", "Private donations", sum3(T.priv), c.private?.cert || "D", src("private")),
@@ -726,8 +753,6 @@ function calc(c, y) {
     return [v, v - spreadOf(p => p.v - p.lo), v + spreadOf(p => p.hi - p.v)];
   };
   const negPart = p => ({ ...p, v: -p.v, lo: -p.hi, hi: -p.lo });
-  // money flowing back counts only as profit (the same share as profit lost on sales to Russia): the goods sold to
-  // or for Ukraine still cost money to make. The range runs from half to one and a half times that margin
   // money flowing back to this economy from the war effort: weapons and aid spent here at the weapons factor, extra sales
   // to Ukraine at the ordinary-goods factor (value kept x genuinely extra)
   const back = state.netBack ? live(backParts.map(negPart).map(p => { const f = vk(p.k === "sell" ? "ux" : p.k === "othsp" ? "fo" : "fw"); return { ...p, v: p.v * f[1], lo: p.lo * f[2], hi: p.hi * f[0] }; })) : [];
@@ -824,15 +849,175 @@ function ref(ids) {
   const nums = [...new Set(list.map(id => { let k = refs.indexOf(id); if (k < 0) { refs.push(id); k = refs.length - 1; } return k + 1; }))].sort((a, b) => a - b);
   return `<span class="ref">[${nums.map(n => `<a href="#src-${n}" data-ref="${n}">${n}</a>`).join(",")}]</span>`;
 }
+// research notes named in a source note open on GitHub, where the method, inputs and their sources are written out
+const REPO = "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/";
+const esc = x => String(x).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const linkNotes = html => html.replace(/research\/[\w./-]+?\.(?:md|json)/g, m => `<a href="${REPO}${m}" target="_blank" rel="noopener">${m}</a>`);
+// the exact primary links behind a source (round 11, research/2026-10/sources_r11.json): the table, dataset query or
+// report page each figure comes from; press reports and this project's own models are marked as such
+function srcLinks(s) {
+  if (!s.links || !s.links.length) return "";
+  return `<details class="src-more"><summary>${t("Exact tables and reports ({n})", { n: s.links.length })}</summary><ul class="src-links">${s.links.map(l => `<li><a href="${l.url}" target="_blank" rel="noopener" lang="en">${esc(l.title)}</a>${l.kind === "secondary" ? ` <span class="src-kind">${t("press report")}</span>` : ""}${l.kind === "model" || l.kind === "method" ? ` <span class="src-kind">${t("this project's method")}</span>` : ""}</li>`).join("")}</ul></details>`;
+}
+// where each part's calculation is written out (docs/method), linked from its name in the waterfall
+const PART_DOC = {
+  aid: "aid-refugees-military.md#aid", aidge: "loans.md#the-cost-view", euaid: "aid-refugees-military.md#eu-level-aid",
+  ref: "aid-refugees-military.md#refugees", buy: "overview.md#the-net-gain-rule-round-10", paid: "overview.md#the-net-gain-rule-round-10",
+  windfall: "prices.md#war-time-windfall", laund: "energy-and-laundered-oil.md#laundered-oil", sold: "trade.md#profit-not-revenue",
+  tax: "services-shipping-companies.md#company-taxes", mil: "aid-refugees-military.md#military-support-to-russia",
+  svcpaid: "services-shipping-companies.md#services", svcsold: "services-shipping-companies.md#services", ship: "services-shipping-companies.md#shipping",
+  hidden: "trade.md#gold-and-hidden-channels", undisc: "aid-refugees-military.md#undisclosed-aid-and-private-donations", priv: "aid-refugees-military.md#undisclosed-aid-and-private-donations",
+  statefin: "russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia", rusarms: "russia-state-and-companies.md#weapons-bought-from-russia",
+  exits: "russia-state-and-companies.md#companies-leaving-russia", rusfirms: "russia-state-and-companies.md#russian-owned-companies-abroad",
+  frozen: "russia-state-and-companies.md#frozen-central-bank-reserves-round-7", remit: "trade.md#remittances-and-relocants-round-7",
+  agents: "trade.md#payment-agents-round-6", multilat: "loans.md#new-lending-by-the-imf-and-world-bank",
+  own: "aid-refugees-military.md#flowback", purl: "aid-refugees-military.md#flowback", sell: "aid-refugees-military.md#flowback", arms: "aid-refugees-military.md#arms-ukraine-bought-abroad-round-5", othsp: "aid-refugees-military.md#flowback",
+  prem: "energy-and-laundered-oil.md#energy-premium-and-oil-discount", disc: "energy-and-laundered-oil.md#energy-premium-and-oil-discount", margin: "trade.md#profit-not-revenue", tariff: "overview.md#the-cost-view",
+};
+const howLink = k => (PART_DOC[k] ? `<a class="how" href="${REPO}docs/method/${PART_DOC[k]}" target="_blank" rel="noopener" title="${t("How this part is calculated")}" aria-label="${t("How this part is calculated")}">ⓘ</a>` : "");
 function sourcesHtml() {
   if (!refs.length) return "";
-  return `<section class="section"><h3>${t("Sources")}</h3><ol class="sources">${refs.map((id, i) => {
+  return `<section class="section"><h3>${t("Sources")}</h3><p class="key">${t("Figures were compiled with AI assistance from these sources and have not yet been checked line by line by a person. Each source lists the exact tables and reports used; the research notes give every input with its own source.")}</p><ol class="sources">${refs.map((id, i) => {
     const s = SRC[id];
     // names and notes come from data.json in English; where no translation exists, lang="en" lets screen readers and hyphenation treat them as English
     const nm = tData(s.name);
-    return `<li id="src-${i + 1}">${s.url ? `<a href="${s.url}" target="_blank" rel="noopener"${nm.en ? ' lang="en"' : ""}>${nm.s}</a>` : dataText(s.name)}${s.date ? t(", data to {date}", { date: s.date }) : ""}${s.note ? ` · ${dataText(s.note)}` : ""}</li>`;
-  }).join("")}</ol></section>`;
+    return `<li id="src-${i + 1}">${s.url ? `<a href="${s.url}" target="_blank" rel="noopener"${nm.en ? ' lang="en"' : ""}>${nm.s}</a>` : dataText(s.name)}${s.date ? t(", data to {date}", { date: s.date }) : ""}${s.note ? ` · ${linkNotes(dataText(s.note))}` : ""}${srcLinks(s)}</li>`;
+  }).join("")}</ol><p class="key"><a href="${REPO}docs/decisions.md" target="_blank" rel="noopener">${t("Every modelling choice, with its reasons and evidence")}</a></p></section>`;
 }
+
+// ===== Sources by money flow (round 12) =====
+// Every part on the map belongs to one money flow. One definition drives the Sources view, the § link next to each part
+// in the panel and the shareable address "#view=sources&flow=loans"; docs/trace.md has the same flows written out.
+// name and what are English keys for t(); method is in docs/method/, why and log in docs/, files and raw in
+// research/2026-10/; src adds sources that no part cites (labels, counts); doc is the flow's heading in docs/trace.md
+const FLOWS = [
+  { "id": "aid", "name": "Aid to Ukraine", "what": "Military, financial and humanitarian aid from governments, with donated weapons at their market value.", "parts": ["aid", "aidge"], "method": "aid-refugees-military.md#aid", "why": "decisions.md#2-aid-and-the-cost-of-hosting-refugees", "log": "decision-log.md#round-5-values-at-their-real-worth-18-october", "files": ["kiel-notes.md", "gaps/aid_gaps-notes.md", "gaps/weapons_value-notes.md", "gaps/refresh_2026-notes.md", "gaps/audit-notes.md", "verify_r11_aid-notes.md"], "raw": ["kiel"], "doc": "aid-to-ukraine" },
+  { "id": "loans", "name": "Loans and guarantees", "what": "Loans count at their gift to Ukraine: the interest it saves and the default risk the lender carries, not the full amount.", "parts": ["multilat"], "also": ["aid", "euaid", "aidge"], "method": "loans.md#the-two-parts-of-the-gift", "why": "decisions.md#applied-in-round-12-data-precision", "log": "decision-log.md#round-12-data-precision-19-october", "files": ["gaps/loans_value-notes.md", "kiel-notes.md"], "raw": ["loan_rates", "kiel"], "doc": "loans-and-guarantees" },
+  { "id": "euaid", "name": "Share of EU-level aid", "what": "Aid paid by the EU itself, split over member states by their share of the EU budget.", "parts": ["euaid"], "method": "aid-refugees-military.md#eu-level-aid", "why": "decisions.md#2-aid-and-the-cost-of-hosting-refugees", "log": "decision-log.md#round-12-the-question-and-the-first-map-17-october", "files": ["kiel-notes.md", "gaps/assumptions_r11_rules-notes.md", "gaps/loans_value-notes.md"], "raw": ["kiel"], "doc": "share-of-eu-level-aid" },
+  { "id": "undisc", "name": "Undisclosed military aid (estimate)", "what": "Military aid that governments did not publish, estimated from policy briefs and national reports.", "parts": ["undisc"], "method": "aid-refugees-military.md#undisclosed-aid-and-private-donations", "why": "decisions.md#what-is-data-and-what-is-estimated", "files": ["gaps/uncovered-notes.md", "gaps/audit2-notes.md"], "doc": "undisclosed-military-aid-estimate" },
+  { "id": "priv", "name": "Private donations", "what": "Money given to Ukraine by people and companies, from national donation totals or a model based on GDP.", "parts": ["priv"], "method": "aid-refugees-military.md#undisclosed-aid-and-private-donations", "why": "decisions.md#decisions-that-were-not-written-down", "files": ["gaps/uncovered-notes.md", "gaps/assumptions_r11_people-notes.md"], "doc": "private-donations" },
+  { "id": "ref", "name": "Hosting refugees", "what": "The cost of hosting refugees from Ukraine, minus the taxes working refugees pay.", "parts": ["ref"], "method": "aid-refugees-military.md#refugees", "why": "decisions.md#2-aid-and-the-cost-of-hosting-refugees", "log": "decision-log.md#round-5-values-at-their-real-worth-18-october", "files": ["gaps/refugees-notes.md", "gaps/refugees_net-notes.md", "gaps/flowback2-notes.md", "gaps/round4b-notes.md", "gaps/assumptions_r11_people-notes.md", "verify_r11_aid-notes.md"], "raw": ["eurostat_tp", "unhcr_verify", "refugee_budgets"], "doc": "hosting-refugees" },
+  { "id": "flowback", "name": "Flowing back from Ukraine", "what": "Aid money spent in the giver's own economy, and extra sales to Ukraine, subtracted at the income they bring.", "parts": ["own", "purl", "othsp", "arms", "sell"], "method": "aid-refugees-military.md#flowback", "why": "decisions.md#5-money-flowing-back-and-russias-state-and-companies", "log": "decision-log.md#round-6-one-rule-for-money-two-balances-18-october", "files": ["gaps/money_ledger-notes.md", "gaps/value_kept-notes.md", "gaps/ua_arms_purchases-notes.md", "flowback-notes.md", "gaps/flowback2-notes.md"], "doc": "flowing-back-from-ukraine" },
+  { "id": "paid", "name": "Payments to Russia for fuel and goods", "what": "Oil, gas, coal, LNG and other goods bought from Russia, against the level expected without the war, counted at Russia's net gain.", "parts": ["paid"], "method": "overview.md#the-net-gain-rule-round-10", "why": "decisions.md#3-trade-with-russia-and-ukraine", "log": "decision-log.md#round-910-what-readers-asked-18-october", "files": ["gaps/trade_full-notes.md", "crea-notes.md", "gaps/energy2-notes.md", "gaps/gas_prices-notes.md", "gaps/prices-notes.md", "gaps/net_gain_russia-notes.md", "gaps/counterfactual-notes.md", "gaps/to_rus_cf-notes.md", "gaps/nonreport-notes.md", "gaps/reexports-notes.md", "verify_r11_trade-notes.md"], "raw": ["comtrade", "crea", "eurostat"], "doc": "payments-to-russia-for-fuel-and-goods" },
+  { "id": "windfall", "name": "War-time price windfall", "what": "The extra Russia earned because fuel prices rose with the war, counted in full.", "parts": ["windfall"], "method": "prices.md#war-time-windfall", "why": "decisions.md#4-energy", "log": "decision-log.md#round-34-profit-windfall-and-a-tested-baseline-1718-october", "files": ["gaps/energy_nowar-notes.md", "gaps/prices-notes.md", "gaps/gas_prices-notes.md"], "raw": ["crea"], "doc": "war-time-price-windfall" },
+  { "id": "laund", "name": "Refined and laundered Russian oil", "what": "Fuel made from Russian crude in other countries, or passed on by trading hubs, charged to the final buyer.", "parts": ["laund"], "method": "energy-and-laundered-oil.md#laundered-oil", "why": "decisions.md#4-energy", "log": "decision-log.md#round-910-what-readers-asked-18-october", "files": ["gaps/laundered_eu-notes.md", "gaps/hub_buyers-notes.md", "gaps/crude_content-notes.md", "gaps/laundered_r6-notes.md", "gaps/assumptions_r11_hubs-notes.md", "gaps/energy-notes.md", "gaps/round4a-notes.md"], "raw": ["comtrade"], "src": ["laundered_eu"], "doc": "refined-and-laundered-russian-oil" },
+  { "id": "energy", "name": "Energy switching cost and oil discount", "what": "Cost view only: the extra paid to replace Russian energy, and the discount gained on Russian oil.", "parts": ["prem", "disc"], "method": "energy-and-laundered-oil.md#energy-premium-and-oil-discount", "why": "decisions.md#4-energy", "files": ["gaps/energy-notes.md", "crea-notes.md"], "raw": ["crea"], "doc": "energy-switching-cost-and-oil-discount" },
+  { "id": "sold", "name": "Sales to Russia", "what": "Goods sold to Russia, counted at the seller's income: the value kept in its economy times the share that is genuinely extra.", "parts": ["sold", "margin"], "method": "trade.md#profit-not-revenue", "why": "decisions.md#3-trade-with-russia-and-ukraine", "log": "decision-log.md#round-34-profit-windfall-and-a-tested-baseline-1718-october", "files": ["gaps/trade_full-notes.md", "gaps/value_kept-notes.md", "gaps/reexports-notes.md", "gaps/residual-notes.md", "gaps/counterfactual-notes.md", "gaps/assumptions_r11_rules-notes.md"], "raw": ["comtrade", "eurostat"], "doc": "sales-to-russia" },
+  { "id": "buy", "name": "Purchases from Ukraine", "what": "Extra goods bought from Ukraine, counted at Ukraine's net gain; the cost view adds the import duties dropped.", "parts": ["buy", "tariff"], "method": "overview.md#the-net-gain-rule-round-10", "why": "decisions.md#3-trade-with-russia-and-ukraine", "log": "decision-log.md#round-910-what-readers-asked-18-october", "files": ["gaps/trade_full-notes.md", "gaps/net_gain_ukraine-notes.md", "gaps/ua_trade_cf-notes.md", "gaps/counterfactual-notes.md", "gaps/assumptions_r11_gain-notes.md"], "raw": ["comtrade", "eurostat"], "doc": "purchases-from-ukraine" },
+  { "id": "services", "name": "Services and tourism", "what": "Services bought from and sold to Russia, such as transport, business services and tourism.", "parts": ["svcpaid", "svcsold"], "method": "services-shipping-companies.md#services", "why": "decisions.md#assumptions-backed-by-data-round-11", "files": ["gaps/uncovered-notes.md", "gaps/trend2-notes.md", "gaps/narrow-notes.md", "gaps/relocants-notes.md"], "doc": "services-and-tourism" },
+  { "id": "shipping", "name": "Shipping Russian oil", "what": "Income from shipping and insuring Russian oil, counted for the country that really controls the tankers.", "parts": ["ship"], "method": "services-shipping-companies.md#shipping", "why": "decisions.md#assumptions-backed-by-data-round-11", "log": "decision-log.md#round-12-the-question-and-the-first-map-17-october", "files": ["gaps/shipping-notes.md", "gaps/shadow_fleet_r6-notes.md", "gaps/shadow_fleet-notes.md"], "doc": "shipping-russian-oil" },
+  { "id": "companytax", "name": "Company taxes in Russia", "what": "Taxes that foreign-owned companies still pay in Russia: profit tax plus half of other taxes.", "parts": ["tax"], "method": "services-shipping-companies.md#company-taxes", "why": "decisions.md#5-money-flowing-back-and-russias-state-and-companies", "files": ["companies-notes.md", "gaps/companies_all-notes.md", "gaps/company_taxes_r6-notes.md", "gaps/round4a-notes.md", "gaps/trend2-notes.md"], "src": ["companies"], "doc": "company-taxes-in-russia" },
+  { "id": "exits", "name": "Companies leaving Russia", "what": "Exit fees and forced discounts paid to Russia by companies that sold their Russian business.", "parts": ["exits"], "method": "russia-state-and-companies.md#companies-leaving-russia", "why": "decision-log.md#round-5-values-at-their-real-worth-18-october", "files": ["gaps/company_flows-notes.md"], "doc": "companies-leaving-russia" },
+  { "id": "rusfirms", "name": "Russian-owned companies abroad", "what": "Profits that Russian-owned companies in this country send to their Russian owners.", "parts": ["rusfirms"], "method": "russia-state-and-companies.md#russian-owned-companies-abroad", "why": "decisions.md#5-money-flowing-back-and-russias-state-and-companies", "log": "decision-log.md#round-910-what-readers-asked-18-october", "files": ["gaps/company_flows-notes.md", "gaps/russian_owned_r10-notes.md"], "doc": "russian-owned-companies-abroad" },
+  { "id": "frozen", "name": "Frozen Russian reserves", "what": "The return Russia lost on its central-bank reserves frozen in this country.", "parts": ["frozen"], "method": "russia-state-and-companies.md#frozen-central-bank-reserves-round-7", "why": "decisions.md#5-money-flowing-back-and-russias-state-and-companies", "log": "decision-log.md#round-7-what-the-owner-asked-to-add-18-october", "files": ["gaps/frozen_assets-notes.md"], "doc": "frozen-russian-reserves" },
+  { "id": "remit", "name": "Remittances from Russia", "what": "Wages migrants earned in Russia and sent home, against the level expected without the war.", "parts": ["remit"], "method": "trade.md#remittances-and-relocants-round-7", "why": "decisions.md#assumptions-backed-by-data-round-11", "log": "decision-log.md#round-7-what-the-owner-asked-to-add-18-october", "files": ["gaps/remittances-notes.md", "gaps/relocants-notes.md", "gaps/assumptions_r11_people-notes.md"], "doc": "remittances-from-russia" },
+  { "id": "statefin", "name": "Rosatom and Russian state loans", "what": "Payments for Russian nuclear projects and repayments of Russian state loans.", "parts": ["statefin"], "method": "russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia", "why": "decision-log.md#round-5-values-at-their-real-worth-18-october", "files": ["gaps/russia_state_finance-notes.md"], "doc": "rosatom-and-russian-state-loans" },
+  { "id": "rusarms", "name": "Weapons bought from Russia", "what": "Payments for Russian weapons, against the level expected without the war, at Russia's net gain.", "parts": ["rusarms"], "method": "russia-state-and-companies.md#weapons-bought-from-russia", "why": "decisions.md#assumptions-backed-by-data-round-11", "files": ["gaps/russian_arms_exports-notes.md", "gaps/arms_r6-notes.md", "gaps/assumptions_r11_gain-notes.md"], "doc": "weapons-bought-from-russia" },
+  { "id": "mil", "name": "Weapons and troops sent to Russia", "what": "Shells, missiles, drones and troops from North Korea, Iran, Belarus and China, at market value.", "parts": ["mil"], "method": "aid-refugees-military.md#military-support-to-russia", "why": "decisions.md#5-money-flowing-back-and-russias-state-and-companies", "log": "decision-log.md#round-6-one-rule-for-money-two-balances-18-october", "files": ["gaps/military_rus_r6-notes.md", "gaps/china_military-notes.md", "other-notes.md", "gaps/flowback2-notes.md"], "raw": ["msmt"], "doc": "weapons-and-troops-sent-to-russia" },
+  { "id": "agents", "name": "Payment agents", "what": "Fees earned by firms that settle Russia's trade payments.", "parts": ["agents"], "method": "trade.md#payment-agents-round-6", "why": "decision-log.md#round-6-one-rule-for-money-two-balances-18-october", "files": ["gaps/payment_channels-notes.md"], "doc": "payment-agents" },
+  { "id": "gold", "name": "Gold and hidden payments to Russia", "what": "Gold and other payments that do not show in customs data, at Russia's gain on them.", "parts": ["hidden"], "method": "trade.md#gold-and-hidden-channels", "why": "decisions.md#decisions-that-were-not-written-down", "log": "decision-log.md#round-910-what-readers-asked-18-october", "files": ["gaps/uncovered-notes.md", "gaps/residual-notes.md", "gaps/audit2-notes.md", "gaps/net_gain_russia-notes.md"], "raw": ["comtrade_hkg"], "doc": "gold-and-hidden-payments-to-russia" },
+  { "id": "markers", "name": "Labels and counts outside the totals", "what": "The critical-goods marker, the sanctions label and counts of volunteers and fighters. They add nothing to the totals.", "parts": [], "method": "trade.md#goods-russias-weapons-need-the-critical-goods-marker-round-7", "why": "decisions.md#5-money-flowing-back-and-russias-state-and-companies", "log": "decision-log.md#round-7-what-the-owner-asked-to-add-18-october", "files": ["gaps/chpl-notes.md", "gaps/sanctions_share-notes.md", "other-notes.md", "gaps/flowback2-notes.md"], "src": ["chpl", "sanctions_share", "people"], "doc": "labels-and-counts-outside-the-totals" },
+];
+const FLOW_OF = {};
+FLOWS.forEach(f => f.parts.forEach(k => (FLOW_OF[k] = f.id)));
+const TREE = REPO.replace("/blob/", "/tree/");
+// raw downloads kept only as a listing (PDFs, the Kiel workbook): their folders are not in the repository
+const RAW_LISTED = new Set(["kiel", "refugee_budgets", "msmt"]);
+// a part's names as the panel shows them (the sign decides between two); the panel's own keys for t()
+const PART_NAMES = {
+  aid: ["Aid to Ukraine"], aidge: ["Aid given (loans at grant equivalent)"], euaid: ["Share of EU-level aid"], ref: ["Hosting refugees"],
+  buy: ["Extra purchases from Ukraine"], paid: ["Less paid to Russia", "More paid to Russia"],
+  windfall: ["Extra paid to Russia because of war-time prices", "Paid Russia less than no-war prices (discounts, price cap)"],
+  laund: ["Russian oil bought via other countries"], sold: ["Income lost on sales to Russia given up", "Income from extra sales to Russia"],
+  tax: ["Less tax paid in Russia by companies", "More tax paid in Russia by companies"], mil: ["Weapons and troops sent to Russia"],
+  svcpaid: ["Less paid to Russia for services", "More paid to Russia for services"],
+  svcsold: ["Income lost on services to Russia given up (e.g. tourism)", "Income from extra services sold to Russia (e.g. tourism)"],
+  ship: ["Income from shipping and insuring Russian oil", "Less income from shipping Russian oil"], hidden: ["Gold and hidden payments to Russia"],
+  undisc: ["Undisclosed military aid (estimate)"], priv: ["Private donations"], statefin: ["Nuclear projects and state loans from Russia"],
+  rusarms: ["Weapons bought from Russia"], exits: ["Paid to Russia by companies leaving it"], rusfirms: ["Profits sent to Russia by Russian-owned companies here"],
+  frozen: ["Return denied to Russia on its frozen reserves"], remit: ["Wages earned working in Russia (migrants' remittances)"],
+  agents: ["Fees earned settling Russia's trade (payment agents)"], multilat: ["Share of new IMF, World Bank and EBRD lending"],
+  own: ["Own aid spent in its own economy (incl. replacing donated stock)"], purl: ["Other countries' aid spent here (incl. their stock replacement)"],
+  sell: ["Extra sales to Ukraine above the pre-war level"], arms: ["Arms Ukraine bought here"], othsp: ["Aid spent here on energy, relief and rebuilding"],
+  prem: ["Extra paid to replace Russian energy"], disc: ["Discount gained on Russian oil"], margin: ["Income lost on sales to Russia (goods and services)"],
+  tariff: ["Import tariffs dropped for Ukraine"],
+};
+// the § link after a part's ⓘ: that part's flow in the Sources view
+const traceLink = k => (FLOW_OF[k] ? `<a class="trace" href="#view=sources&amp;flow=${FLOW_OF[k]}" data-flow="${FLOW_OF[k]}" title="${t("Sources, method and reasons for this part")}" aria-label="${t("Sources, method and reasons for this part")}">§</a>` : "");
+// the sources each flow's parts cite, over all countries, most cited first (worked out once, from the data)
+let flowSrc = null;
+function flowSources() {
+  if (flowSrc) return flowSrc;
+  const n = {};
+  for (const c of Object.values(DATA)) {
+    const k = calc(c, YEARS[YEARS.length - 1]);
+    for (const p of k.shiftParts.concat(k.backParts, k.costParts)) {
+      const f = FLOW_OF[p.k];
+      if (!f) continue;
+      n[f] = n[f] || {};
+      for (const id of new Set(p.src || [])) if (SRC[id]) n[f][id] = (n[f][id] || 0) + 1;
+    }
+  }
+  flowSrc = {};
+  for (const f of FLOWS) flowSrc[f.id] = Object.keys(n[f.id] || {}).sort((a, b) => n[f.id][b] - n[f.id][a]).concat((f.src || []).filter(id => SRC[id] && !(n[f.id] || {})[id]));
+  return flowSrc;
+}
+const ext = (href, text, en) => `<a href="${href}" target="_blank" rel="noopener"${en ? ' lang="en"' : ""}>${text}</a>`;
+function sourceItem(id) {
+  const s = SRC[id], nm = tData(s.name);
+  return `<li>${s.url ? ext(s.url, nm.s, nm.en) : dataText(s.name)}${s.date ? t(", data to {date}", { date: s.date }) : ""}${s.note ? ` · ${linkNotes(dataText(s.note))}` : ""}${srcLinks(s)}</li>`;
+}
+function flowHtml(f, srcs) {
+  const names = ks => ks.map(k => (PART_NAMES[k] || [k]).map(x => t(x)).join(" / ")).join("; ");
+  const files = f.files.map(x => ext(REPO + "research/2026-10/" + x, x.replace(/^gaps\//, ""), true))
+    .concat((f.raw || []).map(r => (RAW_LISTED.has(r) ? ext(REPO + "research/2026-10/raw/MANIFEST.json", "raw/" + r, true) : ext(TREE + "research/2026-10/raw/" + r, "raw/" + r, true))));
+  return `<section class="flow" id="flow-${f.id}" aria-labelledby="flow-h-${f.id}">
+    <h3 id="flow-h-${f.id}" tabindex="-1">${t(f.name)} <a class="flow-self" href="#view=sources&amp;flow=${f.id}" data-flow="${f.id}" title="${t("Link to this flow")}" aria-label="${t("Link to this flow")}">#</a></h3>
+    <p class="flow-what">${t(f.what)}</p>
+    ${f.parts.length ? `<p class="key">${t("Parts on the map: {parts}", { parts: names(f.parts) })}</p>` : ""}
+    ${f.also ? `<p class="key">${t("Also changes: {parts}", { parts: names(f.also) })}</p>` : ""}
+    <p class="flow-links">${ext(REPO + "docs/method/" + f.method, t("How it's calculated"))} · ${ext(REPO + "docs/" + f.why, t("Why it's done this way"))}${f.log ? ` · ${ext(REPO + "docs/" + f.log, t("Decision log"))}` : ""} · ${ext(REPO + "docs/trace.md#" + f.doc, t("Full trace"))}</p>
+    ${srcs.length ? `<ol class="sources">${srcs.map(sourceItem).join("")}</ol>` : ""}
+    <p class="key flow-files">${ext(TREE + "research/2026-10", t("Research files"))}: ${files.join(", ")}</p>
+  </section>`;
+}
+let flowScroll = false;   // set when an address or a § link asks for a flow; the next render scrolls to it
+function scrollToFlow() {
+  const root = document.getElementById("view"), el = state.flow && root && root.querySelector("#flow-" + state.flow);
+  root && root.querySelectorAll(".flow.hit").forEach(x => x.classList.remove("hit"));
+  if (!el) return;
+  el.classList.add("hit");
+  root.scrollTop += el.getBoundingClientRect().top - root.getBoundingClientRect().top - 8;
+  const h = el.querySelector("h3");
+  if (h) h.focus({ preventScroll: true });
+}
+function renderSources(root) {
+  const srcs = flowSources();
+  root.innerHTML = `<div class="view-inner sources-view">
+    <h2>${t("Sources by money flow")}</h2>
+    <p class="sub">${t("Every part of the map belongs to one money flow. Each flow shows what it is, how it is calculated, why it is done this way, its sources and the research files behind it.")}</p>
+    <p class="key">${t("Figures were compiled with AI assistance from these sources and have not yet been checked line by line by a person. Each source lists the exact tables and reports used; the research notes give every input with its own source.")}</p>
+    <nav class="filters flow-nav" aria-label="${t("Jump to a flow")}">${FLOWS.map(f => `<a class="chipbtn" href="#view=sources&amp;flow=${f.id}" data-flow="${f.id}"${f.id === state.flow ? ' aria-current="true"' : ""}>${t(f.name)}</a>`).join("")}</nav>
+    ${FLOWS.map(f => flowHtml(f, srcs[f.id] || [])).join("")}
+    <p class="key"><a href="${REPO}docs/decisions.md" target="_blank" rel="noopener">${t("Every modelling choice, with its reasons and evidence")}</a></p>
+  </div>`;
+  if (flowScroll) { flowScroll = false; requestAnimationFrame(scrollToFlow); }
+}
+// a § link, a flow chip or a "#" link: open that flow in the Sources view (the address stays shareable)
+function traceFlow(id) {
+  if (!FLOWS.some(f => f.id === id)) return;
+  state.flow = id; flowScroll = true;
+  // on phones the panel covers the view: close it first (Back reopens it)
+  if (state.panel && narrow()) closePanel();
+  if (state.view !== "sources") window.setView("sources");
+  else { writeHash(false); flowScroll = false; scrollToFlow(); document.querySelectorAll(".flow-nav [data-flow]").forEach(a => (a.dataset.flow === id ? a.setAttribute("aria-current", "true") : a.removeAttribute("aria-current"))); }
+}
+document.addEventListener("click", e => {
+  const a = e.target.closest && e.target.closest("a[data-flow]");
+  if (!a || e.ctrlKey || e.metaKey || e.shiftKey || e.button) return;
+  e.preventDefault(); traceFlow(a.dataset.flow);
+});
+window.EXTRA_VIEWS = Object.assign(window.EXTRA_VIEWS || {}, { sources: renderSources });
 
 // ===== Colours =====
 let C = {};
@@ -1092,7 +1277,9 @@ function parseHash() {
   const h = decodeURIComponent(location.hash.slice(1));
   if (!h.includes("=")) return { view: "map", c: h.toUpperCase() };
   const p = new URLSearchParams(h);
-  return { view: p.get("view") || "map", c: (p.get("c") || "").toUpperCase(), lens: p.get("lens"), m: p.get("m"), y: p.get("y") };
+  // flow: a money flow in the Sources view ("#view=sources&flow=loans"); unknown ones are dropped
+  const fl = p.get("flow"), flow = typeof FLOWS !== "undefined" && FLOWS.some(f => f.id === fl) ? fl : null;
+  return { view: p.get("view") || "map", c: (p.get("c") || "").toUpperCase(), lens: p.get("lens"), m: p.get("m"), y: p.get("y"), flow };
 }
 function panelCode() {
   const c = DATA[state.selected];
@@ -1107,6 +1294,7 @@ function hashFor() {
   const v = state.view && state.view !== "map" ? state.view : "", c = panelCode();
   const p = new URLSearchParams();
   if (v) p.set("view", v);
+  if (v === "sources" && state.flow) p.set("flow", state.flow);
   if (c) p.set("c", c);
   if (state.lens !== START.lens) p.set("lens", state.lens);
   if (state.measure !== START.measure) p.set("m", state.measure);
@@ -1163,6 +1351,7 @@ function route(how) {
   // the buttons on top come from the address when it names them (a shared or edited link) or on loading; an address
   // without them (Back to an earlier panel) keeps the current ones, as closing with × does
   if (how === "load" || h.lens || h.m || h.y) setFilters(h);
+  if (h.view === "sources" && h.flow && (h.flow !== state.flow || how === "load")) { state.flow = h.flow; flowScroll = true; if (state.view === "sources" && how !== "load") { flowScroll = false; scrollToFlow(); } }
   if (window.setView && VIEWS.includes(h.view) && h.view !== (state.view || "map")) window.setView(h.view, true);
   if (h.c === "UKR") { if (state.panel !== "ukraine") select("804", false, how); }
   else if (h.c === "RUS") { if (state.panel !== "russia") select("643", false, how); }
@@ -1170,7 +1359,7 @@ function route(how) {
   else if (byIso[h.c]) { if (state.panel !== "country" || state.selected !== byIso[h.c].n) select(byIso[h.c].n, true, how); }
   else if (state.panel) closePanel("history");
 }
-const VIEWS = ["map", "rank", "bubbles", "table", "how"];
+const VIEWS = ["map", "rank", "bubbles", "table", "how", "sources"];
 window.addEventListener("popstate", () => {
   // the entry left by closing the panel: keep the view chosen meanwhile in the address
   if (backing) { backing = false; writeHash(false); return; }
@@ -1249,7 +1438,7 @@ function waterfall(parts, total, totalLabel, totalLo, totalHi) {
   const band = (l, h, col) => l == null ? "" : `<div class="band" style="left:${x(Math.min(l, h))}%;width:${Math.max(0.8, Math.abs(x(h) - x(l)))}%;background:${col}"></div>`;
   const colOf = s => ["own", "purl", "sell", "arms", "othsp"].includes(s.k) ? "var(--back)" : s.v >= 0 ? "var(--ukr)" : "var(--rus)";
   const upto = Math.max(2022, state.year);
-  return `<div class="wf"><div class="key">${t("Totals for 2022–{y}{ytd}, all years added up. Bar: each part; pale band: its likely range.", { y: upto, ytd: upto === 2026 && FRAC[5] < 1 ? t(" (2026 year to date, Jan–Aug)") : "" })}</div>${parts.map(s => `<div class="wf-row"><span>${s.label}${chip(s.cert)}${ref(s.src)}</span><span class="val">${eur(s.v, true)}${s.lo != null ? rng(s.lo, s.hi) : ""}</span>
+  return `<div class="wf"><div class="key">${t("Totals for 2022–{y}{ytd}, all years added up. Bar: each part; pale band: its likely range.", { y: upto, ytd: upto === 2026 && FRAC[5] < 1 ? t(" (2026 year to date, Jan–Aug)") : "" })}</div>${parts.map(s => `<div class="wf-row"><span>${s.label}${howLink(s.k)}${traceLink(s.k)}${chip(s.cert)}${ref(s.src)}</span><span class="val">${eur(s.v, true)}${s.lo != null ? rng(s.lo, s.hi) : ""}</span>
       <div class="track">${band(s.lo, s.hi, colOf(s))}${axis}${bar(0, s.v, colOf(s), s.cert === "C" || s.cert === "D" ? 0.75 : 1)}</div></div>`).join("")}
     <div class="wf-row total"><span>${totalLabel}</span><span class="val">${eur(total, true)}${totalLo != null ? `<small>${rangeTxt(totalLo, totalHi)}</small>` : ""}</span>
       <div class="track">${band(totalLo, totalHi, total >= 0 ? "var(--ukr)" : "var(--rus)")}${axis}${bar(0, total, total >= 0 ? "var(--ukr)" : "var(--rus)")}</div></div></div>`;
@@ -1300,8 +1489,6 @@ Object.entries({
   am: "ABW AIA ARG ATG BES BHS BLM BLZ BMU BOL BRA BRB BVT CAN CHL COL CRI CUB CUW CYM DMA DOM ECU FLK GRD GRL GTM GUY HND HTI JAM KNA LCA MAF MEX MSR NIC PAN PER PRI PRY SGS SLV SPM SUR SXM TCA TTO UMI URY USA VCT VEN VGB VIR",
   mea: "AGO ARE ATF BDI BEN BFA BHR BWA CAF CIV CMR COD COG COM CPV DJI DZA EGY ERI ESH ETH GAB GHA GIN GMB GNB GNQ IRN IRQ ISR JOR KEN KWT LBN LBR LBY LSO MAR MDG MLI MOZ MRT MUS MWI MYT NAM NER NGA OMN PSE QAT REU RWA SAU SDN SEN SHN SLE SOM SSD STP SWZ SYC SYR TCD TGO TUN TZA UGA YEM ZAF ZMB ZWE",
 }).forEach(([r, list]) => list.split(" ").forEach(i => (REGION_OF[i] = r)));
-// How much of the shift away from Russian trade was required by sanctions, gas cut by Russia or stopped with
-// transit, and own choice (research/2026-10/gaps/sanctions_share.json). Only parts toward Ukraine are split.
 // the two balances behind the headline: with Ukraine (gave minus earned from the war effort) and with Russia
 function balanceCards(c, k) {
   if (!state.netBack) return "";
@@ -1327,14 +1514,16 @@ function chplNote(c) {
 function armsNote(c, k) {
   const x = (c.extra || []).find(e => e.k === "rusarms"), p = k.shiftParts.find(q => q.k === "rusarms");
   if (!x || !p || p.v <= 0 || !x.not_choice) return "";
-  return `<p class="note">${t("About {p}% of the drop in weapons bought from Russia came from Russia keeping its output for its own army, not from the buyer's choice.", { p: Math.round(x.not_choice * 100) })}</p>`;
+  return `<p class="note">${t("About {p}% of the drop in weapons bought from Russia came from Russia keeping its output for its own army, not from the buyer's choice.", { p: Math.round(x.not_choice * 100) })}${ref(["russian_arms"])}</p>`;
 }
 // repayments to Russia that stopped because sanctions blocked the payment channels (Viet Nam, Iraq, Bangladesh's escrow)
 function blockedNote(c, k) {
   const x = (c.extra || []).find(e => e.k === "statefin" && e.blocked), p = k.shiftParts.find(q => q.k === "statefin");
   if (!x || !p || p.v <= 0) return "";
-  return `<p class="note">${t("Payments to Russia on its state loans stopped because sanctions blocked the payment channels, not by the borrower's choice.")}</p>`;
+  return `<p class="note">${t("Payments to Russia on its state loans stopped because sanctions blocked the payment channels, not by the borrower's choice.")}${ref(x.src)}</p>`;
 }
+// How much of the shift away from Russian trade was required by sanctions, gas cut by Russia or stopped with
+// transit, and own choice (research/2026-10/gaps/sanctions_share.json). Only parts toward Ukraine are split.
 function sanctionNote(c, k) {
   if (!c.sanctions) return "";
   const flows = { paid: "to_rus", sold: "from_rus", svcpaid: "svc_bought", svcsold: "svc_sold" };
@@ -1350,7 +1539,7 @@ function sanctionNote(c, k) {
   const v = { m: pc(mand), g: pc(gas), o: pc(tot - mand - gas) };
   return `<p class="note">${gas / tot >= 0.005
     ? t("Of the move away from Russian trade: {m} required by sanctions, {g} gas (mostly cut by Russia or ended with Ukrainian transit), {o} own choice.", v)
-    : t("Of the move away from Russian trade: {m} required by sanctions, {o} own choice.", v)}</p>`;
+    : t("Of the move away from Russian trade: {m} required by sanctions, {o} own choice.", v)}${ref(["sanctions_share"])}</p>`;
 }
 
 function countryPanel(c) {
@@ -1363,7 +1552,7 @@ function countryPanel(c) {
   const backSec = k.backParts.length ? `<section class="section">
       <h3>${t("Money flowing back to {name}", { name: c.name })}</h3>
       <div class="big" style="font-size:24px;color:var(--back)">${eur(k.flowback)} <span style="font-size:13px;font-weight:500;font-family:var(--font-data)">(${rangeTxt(k.flowbackLo, k.flowbackHi)})</span></div>
-      <div class="big-cap">${t("spent by or for Ukraine here, above the pre-war level. This is revenue for companies here; only the profit on it (about 20%) is subtracted, because the goods still cost money to make.")}${state.netBack ? "" : " " + t("Not subtracted (switch is off).")}</div>
+      <div class="big-cap">${t("spent by or for Ukraine here, above the pre-war level. This is revenue for companies here, so only part of it is subtracted: the value kept in this economy × the share that is genuinely extra business (for US weapons, about 63%). Imported parts and sales that would have happened anyway are not a gain.")}${state.netBack ? "" : " " + t("Not subtracted (switch is off).")}</div>
       <div class="kv" style="margin-top:10px">${k.backParts.map(p => `<span>${p.label}${chip(p.cert)}${ref(p.src)}</span><span class="v">${eur(p.v)}<small>${rangeTxt(p.lo, p.hi)}</small></span>`).join("")}</div>
     </section>` : "";
   const aidCats = c.aid?.cats ? Object.entries(c.aid.cats).filter(([, v]) => v) : [];
@@ -1383,7 +1572,7 @@ function countryPanel(c) {
   if (people.vol) pp.push(`<div><div class="n">~${count(people.vol.central)}</div><div class="l">${t("volunteers for Ukraine")} ${chip("D")}${ref(people.vol.src)}</div></div>`);
   if (people.fighters) pp.push(`<div><div class="n">~${count(people.fighters.central)}</div><div class="l">${t("fighters for Russia")} ${chip("D")}${ref(people.fighters.src)}</div></div>`);
   const details = [];
-  if (c.aid?.loans_face) details.push(`<span>${t("Loans, full amount")}${ref(c.aid.src)}</span><span class="v">${eur(c.aid.loans_face)}</span><span>${t("Loans, grant equivalent")} ${chip("C")}</span><span class="v">${eur(c.aid.loans_grant_eq ?? c.aid.loans_face * 0.3)}</span>`);
+  if (c.aid?.loans_face) details.push(`<span>${t("Loans, full amount")}${ref(c.aid.src)}</span><span class="v">${eur(c.aid.loans_face)}</span><span>${t("Loans, grant equivalent")} ${chip("C")}</span><span class="v">${eur(c.aid.loans_grant_eq ?? c.aid.loans_face * 0.26)}</span>`);
   if (c.aid?.pledged_open != null) details.push(`<span>${t("Promised but not yet delivered")}${ref(c.aid.src)}</span><span class="v">${eur(c.aid.pledged_open)}</span>`);
   if (people.refugees) details.push(`<span>${t("Refugees from Ukraine hosted ({date})", { date: people.refugees.as_of })}${ref(people.refugees.src)}</span><span class="v">${Math.round(people.refugees.count).toLocaleString(LANG)}</span>`);
   const lv = lensValue(c), sv = scaled(c, lv);
@@ -1407,6 +1596,7 @@ function countryPanel(c) {
       ${waterfall(k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label[0].toLowerCase() + p.label.slice(1) }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
       <p class="note">${t("Trade counts at the seller's net gain: a euro paid to Russia counts only for what Russia keeps after its real costs (its taxes plus profit above a normal return), and extra purchases from Ukraine for what Ukraine keeps. Aid counts in full.")}</p>
       ${sanctionNote(c, k)}
+      ${c.aid?.eu_share ? `<p class="note">${t("Trade figures are this country's own customs data (UN Comtrade). EU statistics (Eurostat) can show different figures for a single member, because they book goods where they enter the EU, such as Rotterdam or Antwerp.")} <a href="${REPO}docs/method/trade.md#why-un-comtrade-and-not-eurostat-for-eu-members" target="_blank" rel="noopener">${t("Why")}</a></p>` : ""}
       ${armsNote(c, k)}
       ${blockedNote(c, k)}
       ${share}
@@ -1436,10 +1626,10 @@ function countryPanel(c) {
     ${pp.length ? `<section class="section"><h3>${t("People")}</h3><div class="people">${pp.join("")}</div></section>` : ""}
     ${details.length ? `<details class="more"><summary>${t("More details")}</summary><div class="kv">${details.join("")}</div></details>` : ""}
     <details class="more"><summary>${t("How this is calculated")}</summary><ul class="how">
-      <li>${t("<b>Pre-war level</b> = 2021 at pre-war prices for trade and services (company taxes: the 2018–2021 average). What would have happened without the war is predicted from it: imports from Russia and services keep the 2021 level (services with the travel recovery after COVID); exports to Russia and trade with Ukraine follow each country's other trade and GDP, which predicted better than holding 2021 flat in back-tests from 2008, 2013 and 2016. The tested error of that prediction is part of every range. Trade that already existed before the war does not count; a fall in trade with Ukraine caused by the war is not held against a country.")}</li>
-      <li>${t("<b>Change since before the war</b> (the main map) = aid (incl. undisclosed estimates and EU-level aid by budget share) + private donations + refugee hosting + purchases from Ukraine above the pre-war level + the drop in payments to Russia for goods and services + the profit (about 20%) on sales to Russia given up + less tax paid in Russia by companies based here, minus gold and hidden payments, weapons sent to Russia, anything bought from Russia above the expected level, the profit on sales to Russia above it, fuel made from Russian crude bought via third countries, and the extra paid for Russian fuel because of war-time prices{back}.", { back: state.netBack ? t(", minus money flowing back from Ukraine") : "" })}</li>
+      <li>${t("<b>Pre-war level</b> = 2021 at pre-war prices for trade and services (company taxes: the 2018–2021 average). What would have happened without the war is predicted from it: exports to Russia follow each country's other trade and GDP, which predicted better than holding 2021 flat in back-tests from 2008, 2013 and 2016; the rest, including trade with Ukraine, stays at the 2021 level (services with the travel recovery after COVID). The tested error of that prediction is part of every range. Trade that already existed before the war does not count; a fall in trade with Ukraine caused by the war is not held against a country.")}</li>
+      <li>${t("<b>Change since before the war</b> (the main map) = aid (incl. undisclosed estimates and EU-level aid by budget share) + private donations + refugee hosting + purchases from Ukraine above the pre-war level + the drop in payments to Russia for goods and services + the income given up on sales to Russia (value kept × genuinely extra) + less tax paid in Russia by companies based here, minus gold and hidden payments, weapons sent to Russia, anything bought from Russia above the expected level, the income from sales to Russia above it, fuel made from Russian crude bought via third countries, and the extra paid for Russian fuel because of war-time prices{back}.", { back: state.netBack ? t(", minus money flowing back from Ukraine") : "" })}</li>
       <li>${t("<b>Trade at the seller's net gain</b>: in the change view, payments to Russia, fuel made from Russian crude, services and weapons bought from Russia count at Russia's net gain per euro (its taxes plus profit above a normal return), and purchases from Ukraine at Ukraine's. The extra paid because of war-time prices, taxes paid in Russia, profits sent to Russia and aid count in full.")}</li>
-      <li>${t("<b>Cost carried</b> = only what the country gave up: aid (loans at grant equivalent; loans repaid from frozen Russian assets cost nothing) + undisclosed aid + private donations + refugee hosting + extra price for replacing Russian energy + profit lost on goods and services no longer sold to Russia + tariffs dropped for Ukraine − discounts gained on Russian oil{back}. Buying less from Russia is not a cost in itself.", { back: state.netBack ? t(" − profit on money flowing back (20%, the same profit share as lost sales)") : "" })}</li>
+      <li>${t("<b>Cost carried</b> = only what the country gave up: aid (loans at grant equivalent; loans repaid from frozen Russian assets cost nothing) + undisclosed aid + private donations + refugee hosting + extra price for replacing Russian energy + income lost on goods and services no longer sold to Russia (value kept × genuinely extra) + tariffs dropped for Ukraine − discounts gained on Russian oil{back}. Buying less from Russia is not a cost in itself.", { back: state.netBack ? t(" − money flowing back, at value kept × genuinely extra (the same rule as lost sales)") : "" })}</li>
       <li>${t("<b>% of GDP</b> is the total for the whole period (2022 up to the chosen year; 2026 is January to August) against one year's GDP (2024). Example: 10% means the country moved, over the whole war, as much as a tenth of one year's output.")}</li>
       <li>${t("<b>Middlemen</b>: fuel refined from Russian crude counts for the final buyer, at the value of the Russian crude in it; Russian gold passed on through Hong Kong counts for China; goods reaching Russia through Kyrgyzstan and Kazakhstan count for the country that made them. Liechtenstein, Monaco, the Isle of Man, Puerto Rico, the US Virgin Islands and Saint Martin are counted in the figures of the country that reports for them.")}</li>
       <li>${t("<b>Prices</b>: changes against the pre-war level compare volumes, not price swings. What was bought from or sold to Russia (and Ukraine) each year is divided by its price level against 2019–2021, from the country's own pre-war mix of oil, oil products, gas, coal and other goods. A country that cut its purchases is credited with the drop in volume: fuel at the prices a no-war market expected (forecasts and futures from before the invasion), other goods at pre-war prices. What it paid for Russian fuel above those no-war prices counts on its own, as money toward Russia (the war-time price windfall); paying below them (discounts, the price cap) counts as less money to Russia.")}</li>
@@ -1521,7 +1711,7 @@ function targetPanel(side) {
         const costSec = (first) => `<section class="section"><h3>${first ? t("As on the map: ") : ""}${t("Cost carried")}${state.netBack ? t(", after money flowing back") : ""}</h3>
           ${first ? measureTabs() : ""}
           ${rankList(list, c => K.get(c).cost, state.rankMeasure, () => "var(--ukr)", first ? 20 : 10, c => [K.get(c).costLo, K.get(c).costHi])}
-          <p class="key" style="margin-top:8px">${t("Only what the country gave up: aid (loans at grant equivalent), refugee hosting, extra energy cost, profit lost on sales to Russia, tariffs dropped, minus oil discounts{back}. Buying less from Russia is not a cost in itself, so it is not in here.", { back: state.netBack ? t(" and profit on money flowing back") : "" })}</p></section>`;
+          <p class="key" style="margin-top:8px">${t("Only what the country gave up: aid (loans at grant equivalent), refugee hosting, extra energy cost, income lost on sales to Russia, tariffs dropped, minus oil discounts{back}. Buying less from Russia is not a cost in itself, so it is not in here.", { back: state.netBack ? t(" and money flowing back") : "" })}</p></section>`;
         return state.lens === "cost" ? costSec(true) + shiftSec(false) : shiftSec(true) + costSec(false);
       })()}
     </div>`;
@@ -1536,7 +1726,7 @@ function targetPanel(side) {
     <section class="section"><h3>${t("As on the map: change since before the war, toward Russia")}</h3>
       ${measureTabs()}
       ${rankList(list, c => -K.get(c).shift, state.rankMeasure, () => "var(--rus)", 20, c => [-K.get(c).shiftHi, -K.get(c).shiftLo])}
-      <p class="key" style="margin-top:8px">${t("More paid to Russia and more sold to Russia than before the war (2021), plus weapons and troops sent, minus any aid to Ukraine. Trade hubs (Armenia, Kyrgyzstan, Georgia) rank high because re-exports to Russia passed through them.")}</p>
+      <p class="key" style="margin-top:8px">${t("More paid to Russia and more sold to Russia than before the war (2021), plus weapons and troops sent, minus any aid to Ukraine. Countries rank high mainly through migrants' wages earned in Russia (Tajikistan, Uzbekistan), weapons sent (North Korea) and more bought from or sold to Russia. Goods re-exported through trade hubs count for the country that made them, not for the hub.")}</p>
     </section>
     <section class="section"><h3>${t("Most money still reaching Russia")}</h3>
       ${rankList(list, c => K.get(c).paidRussia, state.rankMeasure, () => "var(--rus)", 10)}

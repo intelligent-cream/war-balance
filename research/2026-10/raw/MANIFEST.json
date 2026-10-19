@@ -1,0 +1,1090 @@
+{
+ "files": [
+  {
+   "path": "comtrade/ARE_2021.json",
+   "bytes": 3649,
+   "sha256": "7a6b9b024d54dba8432a8cdba3ce108c0fa8aea6664624cea6eadf6e019b23e1",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/ARE_2023.json",
+   "bytes": 3653,
+   "sha256": "e13090c3215aa873005aabd0c8cd7f74e6acd74d3c0fb90c16949a1656fb4e5a",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/ARE_2024.json",
+   "bytes": 58,
+   "sha256": "74fb9e013d2918f975bfabd9d7de6ec6c766547ddfcbaed48bfea66fe1eb2e96",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/AUS_2021.json",
+   "bytes": 3656,
+   "sha256": "ac7866c200bae4e5cc9343d8b699d0fefdf0e47a6ab68a6062bf1989caa1a5cc",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/AUS_2023.json",
+   "bytes": 3648,
+   "sha256": "d01c0940fbddf73f1200e93acabc7225517455e9f1764a0913e699f0288ef189",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/AUS_2024.json",
+   "bytes": 3648,
+   "sha256": "a6bbe42f01ee031ff66ec3640a315816b95bcda48d8a8a7463cb7fad2dacb826",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/AUT_2021.json",
+   "bytes": 3649,
+   "sha256": "20f2a0893b249a948b8a18eb3bd6ea4459a99c4545b8d647ce47433b682ce0cf",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/AUT_2023.json",
+   "bytes": 3649,
+   "sha256": "73c3723af8436924397d5666e2a6a1a33fe4496018bbe773671d2369ddffc320",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/AUT_2024.json",
+   "bytes": 3647,
+   "sha256": "d01402ed02620dec3e5145e89a57d29dcbc55e48a666f5868b0461fe0d697e29",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/BEL_2021.json",
+   "bytes": 3647,
+   "sha256": "c826acbff62f63abdeebf417ecb4beb44f6383c114ba89b8e1cd55f3a2fb458e",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/BEL_2023.json",
+   "bytes": 3647,
+   "sha256": "9919ebaf46e5eb1e63ce740c2ab4a76bf06c26cd4cc7c3358c8131f416f574f5",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/BEL_2024.json",
+   "bytes": 3649,
+   "sha256": "47d7348667ea82ff869fd2842bcb48993c9155b5c632f400f55da4e00455da83",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/BGR_2021.json",
+   "bytes": 3645,
+   "sha256": "a9f6e81e40c854ad4939a6128ad944b290aadffc03298fa414e3b64d66fc2311",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/BGR_2023.json",
+   "bytes": 3649,
+   "sha256": "9b2310942c9e7ce6ec45806fe26619574a8a0c5526b4fddfe08ef38c3ad9ab61",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/BGR_2024.json",
+   "bytes": 3651,
+   "sha256": "256e3a4d816c3eaf0854d957c89f339649968657461b26e2ae8df1ae6001b7e5",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/BRA_2021.json",
+   "bytes": 3647,
+   "sha256": "2ae4ff29033baf554c2e84f94b0e358b03d3bd044d3cd271bf96c73269a40366",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/BRA_2023.json",
+   "bytes": 3646,
+   "sha256": "dbb5d8cb2838dcb9902822a8530a157e9abe4e81e0aa6dec1c8fee3876c5316d",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/BRA_2024.json",
+   "bytes": 3646,
+   "sha256": "29c0cb7df5c5ca1806660ab1f5d8e3dd83f52af5a8a828cc056c5fae1d294dfe",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/CHE_2021.json",
+   "bytes": 3644,
+   "sha256": "e8d0ae80daa0a3e2ba909448e55684b22f78912995f015401a83f9412d516984",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/CHE_2023.json",
+   "bytes": 3653,
+   "sha256": "174114dfcc3d8e0c5830b124b7c04e28463b6599625cbd78340338e0880602c3",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/CHE_2024.json",
+   "bytes": 3651,
+   "sha256": "8ad3c9557e93e9568db37ecc8be6bf8d573070c8485f4408547223dc2b329e5c",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/CHN_2021.json",
+   "bytes": 3645,
+   "sha256": "7db459a95cfac8eff7d9cd3c29cf52b2c83d45f8107f7aea4d7ae82c5b7dae88",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/CHN_2023.json",
+   "bytes": 3649,
+   "sha256": "813a3628f98849c74391c84ca4d0d2f109829d810c3f834216654d26f984f8d2",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/CHN_2024.json",
+   "bytes": 3648,
+   "sha256": "1b2db7402d38fe9874cb10e94ce78bf220a6cd9ac36025fb2d118499522ed6a7",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/CZE_2021.json",
+   "bytes": 3656,
+   "sha256": "c0332d24afc1022ce4906a58ea1246e7ab578d6b119b8373b9d6f13577dd0263",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/CZE_2023.json",
+   "bytes": 3655,
+   "sha256": "210ac46019b82e270b42ca3dfa22171291dcb6b02397ea4af63be9768b041106",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/CZE_2024.json",
+   "bytes": 3655,
+   "sha256": "a0f660a361af8fea28aa20fb33e81bc5b64be45cc47e718af8c0693f1129257c",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/DEU_2021.json",
+   "bytes": 3658,
+   "sha256": "87cac84067d365b4a68f01623a4238d38399de2265a6fe0b9046d93bf9044155",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/DEU_2023.json",
+   "bytes": 3657,
+   "sha256": "78d269ded763de81f600172d16ff5e2ba25b11a4468b76af2d677eac90bc627a",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/DEU_2024.json",
+   "bytes": 3657,
+   "sha256": "0b260a945091146cf3b245b701f69d234efa7c4ef4194febd577afa4d2e0b46e",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/DNK_2021.json",
+   "bytes": 3652,
+   "sha256": "ca7af698aaba3e89b3c596447c2d6e0fb28583177d5f94b44ba395e5f8c5ece4",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/DNK_2023.json",
+   "bytes": 3652,
+   "sha256": "2a6028f2a8eebaa678ee7b6317f4259c22f98fa1b042539e39cd5609073f68b5",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/DNK_2024.json",
+   "bytes": 3647,
+   "sha256": "89bd21e0b528b92dc4859dde384e429a204b0151e604cc4d2dadb4a669aa5e62",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/ESP_2021.json",
+   "bytes": 3651,
+   "sha256": "88472d35e262404e099f5b98820acb942aba8fbbb951a2ca4e06de5b1898bddc",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/ESP_2023.json",
+   "bytes": 3653,
+   "sha256": "0fd212075914e909253ab4eac311801dda1e9c08e0422f5e7acd47bee3eae7f1",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/ESP_2024.json",
+   "bytes": 3650,
+   "sha256": "87227232fc7edf9110414d872e58523e4fc0a2d0494bea2b15adf7ad6aff13df",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/EST_2021.json",
+   "bytes": 3645,
+   "sha256": "88a456f1b9b243b1a24d0c786a1823532f92051201eaa98bba78d09127953706",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/EST_2023.json",
+   "bytes": 3641,
+   "sha256": "3e974f050eccc593d0bca198198321989c90a8bfd8231e4f06c186766d74ac42",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/EST_2024.json",
+   "bytes": 3642,
+   "sha256": "f51aec02fde9f5bf4d418150896e689b3e012be5d40c6784fe376b6288311360",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/FIN_2021.json",
+   "bytes": 3651,
+   "sha256": "53a2a4ae7609f16fe6a75504b0372e56b568f36482fbf53ad42d3ce52ace400c",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/FIN_2023.json",
+   "bytes": 3647,
+   "sha256": "fd44e9b3611b465f74036c60ee0caee5027b777a3db0532c380c9d5abeec0293",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/FIN_2024.json",
+   "bytes": 3649,
+   "sha256": "2a353a438d0a26293c255e2cb9c8828068069419c3c61479f4b159e67fc204b7",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/FRA_2021.json",
+   "bytes": 3655,
+   "sha256": "84df1ead9d28c83da963b7c31c9b6d80f3925c5b99bb5f5f6e2afbc875050060",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/FRA_2023.json",
+   "bytes": 3654,
+   "sha256": "b818d33f8ba0e38468eae1f96bf5777b1b347fd635842e719153fbab6db838a2",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/FRA_2024.json",
+   "bytes": 3655,
+   "sha256": "c382cf5ab25e6a92f14aa681e5db7862e4b0ce9d8f950e2d2611ba45f4ceda59",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/GBR_2021.json",
+   "bytes": 3651,
+   "sha256": "d09aece5652bfc8a9ee205aaa17e30d680719593512245feb15226123f91d7d3",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/GBR_2023.json",
+   "bytes": 3651,
+   "sha256": "412cd2b135661a243b1047fd100cfc1caef255a1b1439efad5c7b72e1bbe6cdc",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/GBR_2024.json",
+   "bytes": 3649,
+   "sha256": "313b163b8546c624aab61bf5a5af0ad8e85bcf1f72b29f22c8cb9d59fea2eeee",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/GRC_2021.json",
+   "bytes": 3643,
+   "sha256": "897582ff783ed3fa7d67f8819a69648f2cb7548cc37b877eb1c78d36e761121e",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/GRC_2023.json",
+   "bytes": 3650,
+   "sha256": "ab6f080829dc255140ff0ed9a96e9b814ca00aba2e1ac067855a157d534fb136",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/GRC_2024.json",
+   "bytes": 3653,
+   "sha256": "0525cb94a0cef3b18ebf7b12fce617dc5a53cde630186925e8b4ca9d7807de8d",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HKG_2021.json",
+   "bytes": 3648,
+   "sha256": "d356b8d72bdfa4db0344e5c828118a6ae11f109b0dc65a07b126634dbb993a37",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HKG_2023.json",
+   "bytes": 3647,
+   "sha256": "bf131940dfec4614c7a1c24618f45af558717f6937d9ec9798e17ce4eea4c7ea",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HKG_2024.json",
+   "bytes": 3646,
+   "sha256": "8105cc41488d1460365ef184a311c74439436797d9971d15c26ec9385935ee8c",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HRV_2021.json",
+   "bytes": 3625,
+   "sha256": "d3d63723cad36d3cefee9784b7493aa7913ea378cc9412412eb6b58336c08ef5",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HRV_2023.json",
+   "bytes": 3631,
+   "sha256": "d41638b0b79a27c09041c54eca69332f13612c3c30744a32e3340ae4ee334731",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HRV_2024.json",
+   "bytes": 3635,
+   "sha256": "c53f83e3216710a3c6f7b7ba6b606f5314617806c05dbe5f80e469d099b74979",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_BRA_2023.json",
+   "bytes": 958,
+   "sha256": "faa6b28a1073bb1bf7f3c00b0627c9fedb18d1cef8aaf83b4da22d26f33b109c",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_CHN_2023.json",
+   "bytes": 952,
+   "sha256": "dcb8f633101fe250149b4b423d7320153404392b8bb598cf396205633079ca97",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_HUN_2023.json",
+   "bytes": 955,
+   "sha256": "4ac47e17d23baa0952eabd725a6a721f88df792cdd14fe2e240813cda8f4dda8",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_IND_2023.json",
+   "bytes": 957,
+   "sha256": "2b1194c058e39079f47905498745494fa818a23e1f37b1100c7a5867aa910cec",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_JPN_2023.json",
+   "bytes": 955,
+   "sha256": "6ef93597b14c02ae0f3a5ecc0274c3aebd86da9d161b2a5de4a0f35a22bc0c4f",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_KOR_2023.json",
+   "bytes": 950,
+   "sha256": "3203f9df26320783364c7935cd3414ce16ff293eb50c1c6bfb5b2d2a2cd14e0e",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_SVK_2023.json",
+   "bytes": 965,
+   "sha256": "d34f0eaf9d9c37297c95c985fed8e4afd12e9e3fa022f9fcaf265c3c25a5f4e2",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_TUR_2023.json",
+   "bytes": 964,
+   "sha256": "269a8de50dec3fea2036a5f9fdc7534eca63c907d3bed41e1c569b5b3b5ad5c8",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HUN_2021.json",
+   "bytes": 3637,
+   "sha256": "3ce0a5b5f28e89dbb9d4442b1b7d3da129bd39d9bcf437432477c83fbbe379e8",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HUN_2023.json",
+   "bytes": 3656,
+   "sha256": "a2c6bd16ba367bda6cca89844b6bfb3b2f23cce85111d777fc59b8d52f805170",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HUN_2024.json",
+   "bytes": 3651,
+   "sha256": "a0f958ae7e6c0571fdc9390663d1eb9d5c7cdc895559a7ac4018fdc6c9b41016",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/IND_2021.json",
+   "bytes": 3648,
+   "sha256": "cb87b50688ba76cdfaa0097d3fe116845153f9fd8f0d6d3978ba0dcf3a91d2ab",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/IND_2023.json",
+   "bytes": 3659,
+   "sha256": "422d6a663931aec211da5005e2302e31f3831518ee3e136a27b816d8b37fd946",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/IND_2024.json",
+   "bytes": 3659,
+   "sha256": "ca49aee7e554d58f8d6c07b0810086aecd7627306d75a4d998bd25008b7b97ed",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/IRL_2021.json",
+   "bytes": 3643,
+   "sha256": "85ba62044600fa8e364c01c608078e8a478043e8bb066745fbe70b0d47f35fa1",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/IRL_2023.json",
+   "bytes": 3643,
+   "sha256": "aa448272602096dba6ebf59567b17eea322b95f1ef3da65dbc3eac3c4ff167be",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/IRL_2024.json",
+   "bytes": 3643,
+   "sha256": "e594ad627fdd73981b84bd021aed831abb0d5d6ca803e7b4daff9ebdbf277f51",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/ITA_2021.json",
+   "bytes": 3659,
+   "sha256": "06677817f8f9dfdc32f3a11e74add273c4d14a4f680595e41caaf83b94022879",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/ITA_2023.json",
+   "bytes": 3657,
+   "sha256": "74e8444d78318a5c87c43400df95a9d74ab0cefb5fcfef4966481149ecb35f55",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/ITA_2024.json",
+   "bytes": 3659,
+   "sha256": "3ba6026fbde0a1248502fde9a9daf23e8d95e9c087d536f01c093bed7af24cf7",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/JPN_2021.json",
+   "bytes": 3649,
+   "sha256": "92542e61c3455939e4abf7c18723efad39371845c7e72147a4c225b816eaae8d",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/JPN_2023.json",
+   "bytes": 3649,
+   "sha256": "2904b0b8fa90a0504e9076c44e4e7db964835d2909ebae1427d667594feeebec",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/JPN_2024.json",
+   "bytes": 3649,
+   "sha256": "6e113c3708739bae4770f229ea7752a1739831f99ea677f3d053b1063f834040",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/KAZ_2021.json",
+   "bytes": 3655,
+   "sha256": "648c90822478097898d347d4adb51102dbfc76d792e04f131903436c2ce730ad",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/KAZ_2023.json",
+   "bytes": 3646,
+   "sha256": "b54217a6f5343feefed4a845b68fdcfcbcc32f26147931c1ac7039e66d719091",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/KAZ_2024.json",
+   "bytes": 3644,
+   "sha256": "692db91b21a05f6b201dbcf541dcbceebe1c939fb016ebe6a5c22c866f3f85d8",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/KOR_2021.json",
+   "bytes": 3639,
+   "sha256": "f96830e90984df3277c0518012a2bddae767c2588f3a223605c6bb39b4e070d2",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/KOR_2023.json",
+   "bytes": 3637,
+   "sha256": "786dc9fc6cfe16c7553d91f920a1f0717310d131066227e77ce9fa1eb54b2f6d",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/KOR_2024.json",
+   "bytes": 3637,
+   "sha256": "8936238ab444ad169694127c8156a0b16522b8cffc461668b3677bd4b9318c3c",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/LTU_2021.json",
+   "bytes": 3643,
+   "sha256": "00d2443677b3b16a213d34a62228b2815845758bc26452e7a58c9e0feb7a7dcb",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/LTU_2023.json",
+   "bytes": 3638,
+   "sha256": "60ff744a1a1484f0b416454361a17bbbfb9a39afa9582b9449876d3f68fd17ad",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/LTU_2024.json",
+   "bytes": 3639,
+   "sha256": "1f0ad80f66112b90518448121ea47f5b8c8e6cd95a80a3369b783236c5e848c4",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/LVA_2021.json",
+   "bytes": 3657,
+   "sha256": "d2074da534ccb2ceac54947d344f5e5cefba9d72bd8833ab4f4800e6f64ca51a",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/LVA_2023.json",
+   "bytes": 3653,
+   "sha256": "36f5b741b902b6356e06da2bfafa761c18dd97b965ed75eb0302e1e3af2cdca0",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/LVA_2024.json",
+   "bytes": 3655,
+   "sha256": "2404801104dcb77b9c20bf777afbc6725e19f99c410e57a4f8c1ff81ef8a4457",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/NLD_2021.json",
+   "bytes": 3652,
+   "sha256": "fbcbf7de4d3755b662b2d153cbaf6e26171624f1d5b2e3e4a35189c862d5444c",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/NLD_2023.json",
+   "bytes": 3655,
+   "sha256": "ef7959b48f5edf4c1fbbfcef31d6e4688a60ca880d79ce7b014d0fea8179ff48",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/NLD_2024.json",
+   "bytes": 3657,
+   "sha256": "bf769bfa07ea14d7ab7cb2407e3424811117b0647f8707a0dc6eaaa2a048ff04",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/NOR_2021.json",
+   "bytes": 3651,
+   "sha256": "82aa7b66d8d735d260b980348ae0c5cdb0e9eff29cfe8b21ab3a9ffd88af3942",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/NOR_2023.json",
+   "bytes": 3653,
+   "sha256": "5c6a87ee4c919d6dc3223449e408a6c3b4a7ddaa5e1f99a97950e84efd79732b",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/NOR_2024.json",
+   "bytes": 3650,
+   "sha256": "b752f7d647fe6f236a569425cbd7cc3827baf4a2319051d4122d06e283bc3220",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/POL_2021.json",
+   "bytes": 3639,
+   "sha256": "6b55d41b9accc2899d364719ded59eb174f85b5823967b4182d1891e982442ed",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/POL_2023.json",
+   "bytes": 3643,
+   "sha256": "6778239038f0d5f5a5ca0d6c3cab5b54f208740f246e665704704e39c250f895",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/POL_2024.json",
+   "bytes": 3642,
+   "sha256": "4eeb2a676eea1d1b38235f753c90a6210b4287a90080ba906ef6a87559004558",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/PRT_2021.json",
+   "bytes": 3647,
+   "sha256": "e4719acdee472afee844fa89a5a4feae961f2ac53a580df5bee50cb1a0766a38",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/PRT_2023.json",
+   "bytes": 3647,
+   "sha256": "f0edf3dc237b41d7c4638825504ec0fc709a927b8c2090da5c423f15522d5734",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/PRT_2024.json",
+   "bytes": 3645,
+   "sha256": "0ebba4592503c70dbbbd4247a2febf4a63ef6b88262bbbcb62f148134191e1e8",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/ROU_2021.json",
+   "bytes": 3643,
+   "sha256": "ee0c1b705705cf3dd203fe57aa3cd6b05c761dd6b50cbab58ceb8ea24616aa48",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/ROU_2023.json",
+   "bytes": 3666,
+   "sha256": "a117a02a2620441e8eafad9fea38335560e126f100caa8235120d91709923f4a",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/ROU_2024.json",
+   "bytes": 3668,
+   "sha256": "c6e69b1d105d84f073a14e2da176a02e6b163e77e1a9834d02c6fecae9b96dde",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/SVK_2021.json",
+   "bytes": 3672,
+   "sha256": "ce53c9efaee88f12f6b3991166f9b285447a4dae7d945de0d2256095ab82d7e2",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/SVK_2023.json",
+   "bytes": 3675,
+   "sha256": "d3745b4c97fc7ec0beaf9e2a7ade36146d7c2dfe45730aec3002041b154dd2fc",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/SVK_2024.json",
+   "bytes": 3677,
+   "sha256": "bb1b575079368d8fb65d46b1fd83f389a305c66782b09069597583ce9adc7d6b",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/SVN_2021.json",
+   "bytes": 3651,
+   "sha256": "c646911a06182adfd29124657a613f9c789adc10f1d4f911d48ec0a062418caf",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/SVN_2023.json",
+   "bytes": 3650,
+   "sha256": "84d3c8fe01cf2f59bb4fa181b72eaf504508c5839092c5b8807df77c73625658",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/SVN_2024.json",
+   "bytes": 3653,
+   "sha256": "c370dacef9ae2787a29a1748ec63b7781db5760951f8576da4643706cc2bddb9",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/SWE_2021.json",
+   "bytes": 3653,
+   "sha256": "e46964bc336440a66968c495d14f63fff2d736a25a18abe98dd77fb19fb42e81",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/SWE_2023.json",
+   "bytes": 3647,
+   "sha256": "f4b663aa9998a55425b1422ba30badfd41ae7e6d5c3d4977a5804273554729b6",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/SWE_2024.json",
+   "bytes": 3647,
+   "sha256": "af2a078b6845daa44af641e40dcd639aac39f5118c4c2133213ae92312a4d909",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/TUR_2021.json",
+   "bytes": 3664,
+   "sha256": "57e9680e9501575c86810c74e0b9a6f77ffff94e8cffadfacd398e35238ef938",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/TUR_2023.json",
+   "bytes": 3666,
+   "sha256": "6c644655bf54502854eb97198955650ca9560f4684ff66331404224685e61463",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/TUR_2024.json",
+   "bytes": 3665,
+   "sha256": "e3992529a3d222c5999dbb34f7cb5d0e5dc8b1cb6897ec73ceb65e6dc802a503",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/USA_2021.json",
+   "bytes": 3639,
+   "sha256": "33200bde834f0d1033e4f148cb9236921270a5f68c6155b549f400c57184e7bb",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/USA_2023.json",
+   "bytes": 3655,
+   "sha256": "8c0783100f5174b86fa2f78af8f4676a502936f180ce5c869403fc4cbfe0230d",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/USA_2024.json",
+   "bytes": 3655,
+   "sha256": "a7b266f8875e34928f2e6746cfe344629e5e34dabadc75caecd09beae6fe946a",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2019.json",
+   "bytes": 1850,
+   "sha256": "773dec8e5f1e5d5d325536aeaa3155b5910c187a4f83b9f15918d22564baedb9",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2020.json",
+   "bytes": 1852,
+   "sha256": "2666e64db662e8fd6c2be6e0abfd3ed88d28b83dcde3cb8d3e4012265af2c2ce",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2021.json",
+   "bytes": 1850,
+   "sha256": "2aee3722db53530992e26a758a4234ec135b6b8eb06b87466b361fa760daa783",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2022.json",
+   "bytes": 1852,
+   "sha256": "90a692d5b429a5ae025746560a95634496d0e5607840f9f702f4478abb9eb354",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2023.json",
+   "bytes": 1854,
+   "sha256": "01c8c6ea46ccd15b8773db0c67ae91d74dc8e708869252d5758b17a95af5399d",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2024.json",
+   "bytes": 1851,
+   "sha256": "98faf70353bd7208a6b45e4ef268c6d3c59d8597c3b29a7f53d97eb79fd4b816",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2025.json",
+   "bytes": 1858,
+   "sha256": "2d30c2b91188b230992360068ab0e3f1a68763dbc84f85ead4100435a360d7c0",
+   "in_repository": true
+  },
+  {
+   "path": "crea/counter_2022-2024_by_dest_commoditygroup_year.json",
+   "bytes": 227395,
+   "sha256": "705e3d71a6c6ff49a063154d5bb6db4202e20c1b6e563bc30f05df1198042b61",
+   "in_repository": true
+  },
+  {
+   "path": "crea/minfin_press/https___1prime.ru_20250109_neft-854101685.html.html",
+   "bytes": 130167,
+   "sha256": "7e76f74ac5812308fe888ce0b85c87109d60cadf3c8c02ea9da68c02829e5120",
+   "in_repository": false
+  },
+  {
+   "path": "crea/minfin_press/https___interfax.com_newsroom_top-stories_96189_.html",
+   "bytes": 30153,
+   "sha256": "6c96b4ab5bedda8a59def4404ebdb40d1ed16cabe982773a12bd107cd833548b",
+   "in_repository": false
+  },
+  {
+   "path": "crea/minfin_press/investfuture_cbr_urals.html",
+   "bytes": 155123,
+   "sha256": "7f86417adac75a2fa00b9cbdcbbf6f0a058d6fbfafc47c688385405dca0eb610",
+   "in_repository": false
+  },
+  {
+   "path": "crea/minfin_press/tass_1730001.html",
+   "bytes": 154856,
+   "sha256": "2d6c504763d6228d6ca5ac37692ccca7c4f817a37f81a2bc87f9a9db1958be4d",
+   "in_repository": false
+  },
+  {
+   "path": "crea/price_2021-2025_default.csv",
+   "bytes": 6002949,
+   "sha256": "fe9bebe0aad88d9bf7c715bb4c9017769adb47d5ed1f39dd636d2919912ce3de",
+   "in_repository": true
+  },
+  {
+   "path": "eurostat/DS-045409_annual_RU_UA_TOTAL.json",
+   "bytes": 9690,
+   "sha256": "31b429737edce3a7bd3807147570d90102ab9414f7a9708d93b0e748e4801127",
+   "in_repository": true
+  },
+  {
+   "path": "eurostat_tp/migr_asytpsm_UA.json",
+   "bytes": 30014,
+   "sha256": "6ddf23c8d187c2d69af656df63e51e3125af88c8e42c2e278f8f48ca2c72bbc7",
+   "in_repository": true
+  },
+  {
+   "path": "imf/weo_NGDPD_2024.json",
+   "bytes": 157611,
+   "sha256": "7294ac0b3013e39b131f50f3aeb23eb31bfa30a3b77199538b1e05518ecb491c",
+   "in_repository": true
+  },
+  {
+   "path": "kiel/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+   "bytes": 13328605,
+   "sha256": "e7120ae8df25c918bc0666708f5ef1098e0d88bc637b44abd43ca8bd80424ecc",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/eavex_weekly_eurobond_ytm.json",
+   "bytes": 54557,
+   "sha256": "f3e387f6076ec73396d44672559ad0c3579ad940839429c613ab5b53e122eb4b",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01CAM156N.csv",
+   "bytes": 2034,
+   "sha256": "5cd170c8cd1ca087a38b124371cb8e137d520b85c53bf29926c66ff88165993e",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01DEM156N.csv",
+   "bytes": 2047,
+   "sha256": "1c1802a4ee4b43c55b3a11893b01e229fe35b2597816b63ca18c916e007438f1",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01ESM156N.csv",
+   "bytes": 2103,
+   "sha256": "bb035ed25beece1483bb469c18c71b47e65e4b495d5bc2349ea9cbbf683eea91",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01EZM156N.csv",
+   "bytes": 1864,
+   "sha256": "6d9d55ff730d9e15d56ec0e76bdd551570b1509ddf5bbec89761e6f9762a6e1a",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01FIM156N.csv",
+   "bytes": 1629,
+   "sha256": "9387a619c8e0167f0431832261ca59ee17fdde0e4d5ece7a7c95349f0e03e4d9",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01FRM156N.csv",
+   "bytes": 1281,
+   "sha256": "8796ca0b93f38d5ce6fe085f07dc2810f6104007f6f9e2003d26bc97d7f91c41",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01GBM156N.csv",
+   "bytes": 1275,
+   "sha256": "3f42c35e881ab353ee37ace2a0072c8ef8070e679d8f0e85bc9cf6f57e454a22",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01ITM156N.csv",
+   "bytes": 1189,
+   "sha256": "01e4bddc3b4c696469bd3464fcf03dba11a4583514a4b65c45e91212f8e60cce",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01JPM156N.csv",
+   "bytes": 1206,
+   "sha256": "2459e39bcacd93a67518a046e9a3ce80b4f20aa08fde1410be44f8068afefada",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01KRM156N.csv",
+   "bytes": 1206,
+   "sha256": "3911b67199599bd11bfab6c6268a2329cc11b6e802f42d7ad7b7dd7e4438526c",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01NLM156N.csv",
+   "bytes": 1202,
+   "sha256": "88071c26ad2605e5a6528c0973469070510f301c25d35a4cf09148822d7cf036",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01SKM156N.csv",
+   "bytes": 1877,
+   "sha256": "1cd1032c2533d4a9aec5b9092b7265dc1a5f4f63f59e8285c064c662447b2b66",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01USM156N.csv",
+   "bytes": 1137,
+   "sha256": "f182bfd1a648795ab0f22f37add6db9bf595ed6b26f068a60559632c9a7cb263",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/icu_weekly_eurobond_prices.json",
+   "bytes": 29621,
+   "sha256": "b8937de9c12ee8eac36cd85a0dbeabcfbdb1361c94804311b4343c52a53ffc7f",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/pages/ST-5738-2026.pdf",
+   "bytes": 224656,
+   "sha256": "9767ff222b321029e0fd8f59aecd4c229011d1aa9ae2d93615b3d5820265b71c",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/eavex_media_index.json",
+   "bytes": 13185,
+   "sha256": "1ef37b1c2792dde9e1e7fde30d4e128ceb5c2c9fd969b974d4bb6b59065d9a3b",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/pages/interfax_2021-07-22_eurobond_tap.html",
+   "bytes": 172426,
+   "sha256": "564801a88f0701d09c9391442f7a5d13204d4bbd1e0878ceb067dc1875f3ce79",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/interfax_2026-03-06_imf_repayment.html",
+   "bytes": 29241,
+   "sha256": "92e7bc69d083dadee383b01eba90ed451017a3cd0092123d264819b102ceb0ec",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/kmu_2023-12-21_gcu_mou.html",
+   "bytes": 104097,
+   "sha256": "65b942ec01f3470b92c6df84a736da29da819302b129fb0166a499b6ddf2ca34",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/kmu_2024-09-04_restructuring.html",
+   "bytes": 104163,
+   "sha256": "d29ad2a92858f04b4ab966d36cfaa1c93d9de58b427b4b2bba5649139379f873",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/kmu_2026-04-17_gcu_mou.html",
+   "bytes": 103294,
+   "sha256": "e7604f0f1ce40791eec955b32a574a946e14631b14c9d9a1cd46e8d70acb8ff7",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/nber_w25793_seniority.html",
+   "bytes": 90003,
+   "sha256": "8c82afd3aab69cd0791ec6c08bd3dc4273df408b413589966b9fa68a1446d739",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/oeil_2022-07-07_mfa_provisioning.html",
+   "bytes": 52947,
+   "sha256": "c05b3a9be4f94a3246e56676b11891845a7ce701031eba6e3ae6e384aeb96659",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/tresor_2026-04-17_gcu_statement.html",
+   "bytes": 28885,
+   "sha256": "708dff9fe8ffb4209b61ca672bd65d42d7a143b426fd849258e474c8b1287895",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/ukrinform_2021-04-27_eurobond.html",
+   "bytes": 51893,
+   "sha256": "aa9fabcad36bb09a9f38983bffec1017e042c718df8c384439a802027beee192",
+   "in_repository": false
+  },
+  {
+   "path": "msmt/msmt_2025_1.pdf",
+   "bytes": 2114086,
+   "sha256": "0c0893c2e864a22bb39a6f02afbf42136065332440d5842224b47117035d386f",
+   "in_repository": false
+  },
+  {
+   "path": "refugee_budgets/2013346.pdf",
+   "bytes": 520639,
+   "sha256": "32ed99292c2844876afccf5a60eb42d9a817c43b3592b199143823553c1fb883",
+   "in_repository": false
+  },
+  {
+   "path": "refugee_budgets/90dddd5c-4f92-429a-95f0-a81bc8a04f61-KPB_217.pdf",
+   "bytes": 2376718,
+   "sha256": "b8594ec8a2aaf6376fc2bb8f5994ef6279aecdff2f083e5adbee6c0ec1477fe7",
+   "in_repository": false
+  },
+  {
+   "path": "refugee_budgets/cz_brnodaily_2025-05.html",
+   "bytes": 200063,
+   "sha256": "060e34cb6a6afc81513f51ca3af03c1e757705da4890c507527f461d2ed6f115",
+   "in_repository": false
+  },
+  {
+   "path": "refugee_budgets/nik.html",
+   "bytes": 959,
+   "sha256": "c5800fe12583134e53763c3f12f13347ffc24223ab9357a4379f141ea502014a",
+   "in_repository": false
+  },
+  {
+   "path": "refugee_budgets/nl_jv2024_VI.html",
+   "bytes": 2075725,
+   "sha256": "18b6b5a3a61111c589ab712c3ea92374022e058e65b39e812b44fd5f90fd1b8b",
+   "in_repository": false
+  },
+  {
+   "path": "refugee_budgets/nl_mn2024.html",
+   "bytes": 561860,
+   "sha256": "24d78ef51d37ab2d73068dcb3cd3bb433a63fb168406faaac6fbbb5744085e9f",
+   "in_repository": false
+  },
+  {
+   "path": "refugee_budgets/nl_najaarsnota_2022.html",
+   "bytes": 605983,
+   "sha256": "25a6a71ab04827757820e357b48f30931313fb8ccc293ebdeb72228cb1db80c1",
+   "in_repository": false
+  },
+  {
+   "path": "refugee_budgets/radiospacja.html",
+   "bytes": 92858,
+   "sha256": "aaad55f4d41dcef341b661407a63d5fa5012f8d728a2ea142f0a4c4273bf69c5",
+   "in_repository": false
+  },
+  {
+   "path": "refugee_budgets/rapport-programm-s-2024-d.pdf",
+   "bytes": 533467,
+   "sha256": "25e42c748a49febe7003640d71eb75a3c326d4a1d1374bca34b0772007911ae0",
+   "in_repository": false
+  },
+  {
+   "path": "refugee_budgets/uk_nao_homes_for_ukraine.html",
+   "bytes": 102237,
+   "sha256": "c4ca87c0ab26cc79eced9d32545d4d6f7daea8fa5e1d0773e54558f0fe2a2824",
+   "in_repository": false
+  },
+  {
+   "path": "unhcr_verify/population_coo_UKR_2022.json",
+   "bytes": 22316,
+   "sha256": "6860da2a656f0088bf6de538a53eabae75ed449100168fa61c19932dac4b61a5",
+   "in_repository": true
+  },
+  {
+   "path": "unhcr_verify/population_coo_UKR_2023.json",
+   "bytes": 22579,
+   "sha256": "36065eddd6c8cad7ee246cdbe37b04f96c48d35105c2b375169d6fa5055b10cf",
+   "in_repository": true
+  },
+  {
+   "path": "unhcr_verify/population_coo_UKR_2024.json",
+   "bytes": 23124,
+   "sha256": "b6e769010a582e7e6557015efbdc9757cd13a3346e02a5f7f7177c15dee2e290",
+   "in_repository": true
+  },
+  {
+   "path": "unhcr_verify/population_coo_UKR_2025.json",
+   "bytes": 22307,
+   "sha256": "6e383b7682e5a60d7defa8770b93faaed565155f19948e3779e3de0a43d97c3c",
+   "in_repository": true
+  },
+  {
+   "path": "worldbank/NY.GDP.MKTP.CD_2024.json",
+   "bytes": 56316,
+   "sha256": "2cb08dd1b259b1ecabd0264013d22d09b7e3b05fd6c7ab9c57f5345830a6d5e2",
+   "in_repository": true
+  }
+ ]
+}

@@ -8,7 +8,7 @@ Base file: [`trade_full.json`](../../research/2026-10/gaps/trade_full.json) ([no
 
 Values are taken in this order, and the `basis` field records which was used:
 
-1. **reported**: the country's own customs report (UN Comtrade; Eurostat Comext for EU 2024–2026), certainty A;
+1. **reported**: the country's own customs report (UN Comtrade, 2019–2025; for EU members in 2026, Eurostat Comext January–August, scaled to the Comtrade level), certainty A;
 2. **mirror**: Russia's or Ukraine's report on the same flow, divided by the median mirror/reported ratio (imports from Russia 0.847, exports to Russia 1.320, imports from Ukraine 0.810, exports to Ukraine 1.388; these reflect CIF/FOB valuation and origin attribution), certainty B;
 3. **imf**: IMF IMTS, spliced to the Comtrade level; rejected when its implied growth is outside the 5–95th percentile of reporters (65 values rejected), certainty B;
 4. **estimated**: interpolation or the median growth of reporting countries, certainty C.
@@ -22,6 +22,33 @@ In the pipeline ([build_data.py `build()`](../../pipeline/build_data.py), first 
 
 **Non-reporters.** [`nonreport.json`](../../research/2026-10/gaps/nonreport.json) ([notes](../../research/2026-10/gaps/nonreport-notes.md)) corrects 21 partners that do not report (Libya, Venezuela, Syria, Turkmenistan, Tajikistan, Afghanistan, Cuba, Sudan, Yemen, North Korea, Iran, Lebanon and others) with tanker tracking (CREA, Kpler), official statements and partner customs. Only the **paid share** of Russian supplies counts as money to Russia (`paid_share`); supplies on credit, as aid or barter are Russian support, not payments.
 
+### Why UN Comtrade and not Eurostat for EU members
+
+EU members' trade with Russia is published twice, and the two can differ a lot for a single country while agreeing for
+the EU as a whole (imports from Russia, EUR bn):
+
+| | this map (UN Comtrade) | Eurostat Comext |
+|---|---|---|
+| EU total, 2021 | 152.0 | 163.6 |
+| EU total, 2023 | 49.3 | 50.8 |
+| Netherlands, 2021 | 18.5 | 26.5 |
+| Belgium, 2021 | 6.3 | 7.8 |
+| Austria, 2023 | 0.36 | 3.67 |
+
+They count different things:
+
+- **UN Comtrade** holds each country's own customs figures (the *national concept*): goods bought for that country's
+  economy.
+- **Eurostat Comext** uses the EU's *community concept*: goods are booked where they cross the EU border or are cleared.
+  Russian goods landing in Rotterdam or Antwerp and going on to Germany or Czechia count for the Netherlands or Belgium
+  ("quasi-transit"), and goods cleared in one member for another count for the first.
+- Austria's own statistics hide the origin of its gas, so its imports from Russia look small in Comtrade; the map counts
+  gas separately, where it is burned ([energy](energy-and-laundered-oil.md#transit-gas)), so that gas is not missed.
+
+For the question "who paid Russia", the national concept is the better measure, and Comtrade uses the same definition
+for every country in the world. The full comparison, 843 checks against UN Comtrade, Eurostat and CREA, is in
+[`verify_r11_trade-notes.md`](../../research/2026-10/verify_r11_trade-notes.md).
+
 ## The pre-war level and the comparison
 
 The trade loop stores `base` (initially the 2019–2021 average) and `base_range` (the extremes of the 2019–2021 average and the low/high baselines). For every flow in [`counterfactual.json`](../../research/2026-10/gaps/counterfactual.json), [build_data.py `counterfactual()`](../../pipeline/build_data.py) then resets `base` to 2021 at pre-war prices and sets the expected path `bmul`. Details: [counterfactual.md](counterfactual.md).
@@ -30,18 +57,20 @@ How the four flows enter the net shift (`calc()` in [`site/index.html`](../../si
 
 | flow | part | counted as |
 |---|---|---|
-| `to_rus` | Less / more paid to Russia | full change in volume at pre-war prices |
+| `to_rus` | Less / more paid to Russia | change in volume at pre-war prices, × Russia's net gain per euro (round 10) |
 | `from_rus` | Income lost on sales given up / income from extra sales | change × value kept × genuinely extra ([the money rule](overview.md#the-money-rule-round-6)) |
-| `buy_ukr` | Extra purchases from Ukraine | rise above expected, each year, full value; a fall is not held against a country |
+| `buy_ukr` | Extra purchases from Ukraine | rise above expected, each year, × Ukraine's net gain per euro (round 10); a fall is not held against a country |
 | `sell_ukr` | Extra sales to Ukraine | rise above expected, × the money rule, subtracted as flowback |
 
 ## Profit, not revenue
 
-Selling EUR 10bn less to Russia does not cost the seller EUR 10bn: the goods would have cost money to make. Since round 4, sales given up and extra sales (goods and services) count as the seller's **profit**, `META.lost_margin = 0.2` (about 20%), the same share used for flowback. `profit3()` in `calc()` applies it with a range of 0.5× to 1.5× the margin. The audit had shown why this matters: Cyprus at +30% of GDP and Lithuania at +45% came from sales and services counted at gross revenue ([audit2-notes.md §5](../../research/2026-10/gaps/audit2-notes.md)). In the cost view, the same 20% is the "profit lost on sales to Russia".
+Selling EUR 10bn less to Russia does not cost the seller EUR 10bn: the goods would have cost money to make. Two rules apply today.
 
-**Round 10: purchases count at the seller's net gain.** A purchase from Russia counts at Russia's net gain on that mix of goods (about 0.6 of the price for oil and gas, 0.1–0.2 for other goods), and an extra purchase from Ukraine at Ukraine's (0.045–0.18), so that trade and aid are on the same scale ([overview.md](overview.md#the-net-gain-rule-round-10)).
+**The money rule (round 6): income counts at value kept × genuinely extra.** Income from sales to Russia counts at the value kept in the seller's economy (domestic value added, OECD TiVA) times the share that is genuinely extra business (not sold elsewhere instead). There are separate factors for sales lost and extra sales, and for goods and services (`c.vk` in `data.json`, from [`value_kept.json`](../../research/2026-10/gaps/value_kept.json); `earned3()` in `calc()`). For example, Germany's lost sales to Russia count at 0.25 (0.14–0.39) and Finland's at 0.15 (0.06–0.28). In the cost view this is "Income lost on sales to Russia". Money flowing back follows the same rule ([overview.md](overview.md#the-money-rule-round-6)).
 
-**Round 6: the money rule replaces the flat 20%.** Income from sales to Russia now counts at the value kept in the seller's economy (OECD TiVA) times the share that is genuinely extra, with separate factors for sales lost and extra sales, and for goods and services ([overview.md](overview.md#the-money-rule-round-6)). The 20% figures above stay as a check. Labels now read "income" rather than "profit".
+**The net-gain rule (round 10): purchases count at the seller's net gain.** A purchase from Russia counts at Russia's net gain on that mix of goods (about 0.6 of the price for oil and gas, 0.1–0.2 for other goods), and an extra purchase from Ukraine at Ukraine's (0.042–0.175), so that trade and aid are on the same scale ([overview.md](overview.md#the-net-gain-rule-round-10)).
+
+**History: the flat 20% margin (rounds 4–5).** From round 4 to round 5, sales given up and extra sales counted as the seller's profit, `META.lost_margin = 0.2`, with a range of 0.5× to 1.5× the margin; flowback used the same share. The audit had shown why a margin was needed: Cyprus at +30% of GDP and Lithuania at +45% came from sales and services counted at gross revenue ([audit2-notes.md §5](../../research/2026-10/gaps/audit2-notes.md)). The money rule replaced the flat margin in round 6. `META.lost_margin` is still written to `data.json`, but `calc()` uses it only for a country without `vk`, and every country has one.
 
 ## Re-export hubs
 
@@ -93,7 +122,7 @@ Russia's own customs record more imports than its partners report selling: EUR 2
 
 ## Hong Kong gold
 
-98% of Hong Kong's imports from Russia are precious metals. The share passed on to mainland China (0.57 in 2022 falling to 0.37 in 2025, from Hong Kong's own gold trade in `refine.json`) counts for China; only the rise above the pre-war level is treated as gold in transit. Hong Kong is labelled a gold transit hub. Code: the end of `apply_residual()`.
+The rise in Hong Kong's imports from Russia since before the war is taken to be precious metals (`HK_METALS_SHARE`, per year). Round 12 measured it from Hong Kong's own import records in UN Comtrade ([raw/comtrade_hkg](../../research/2026-10/raw/comtrade_hkg/)): precious metals (HS 71) were 56–67% of its imports from Russia in 2019–2021 and 85%, 99%, 98% and 99% in 2022–2025. Against the 2019–2021 average, HS 71 rose by more than the total in every year (other goods fell), so the share of the rise is 1.0 (capped; 2026 takes 2025's). It was a flat 0.98 that no research file explained. The share passed on to mainland China (0.57 in 2022 falling to 0.37 in 2025, from Hong Kong's own gold trade in `refine.json`) counts for China; only the rise above the pre-war level is treated as gold in transit. Hong Kong is labelled a gold transit hub. Code: the end of `apply_residual()`.
 
 ## Gold and hidden channels
 
@@ -170,7 +199,7 @@ money is already inside trade with Russia (`apply_chpl()`, [`chpl.json`](../../r
 
 ## Freight: CIF to FOB
 
-Import values include freight and insurance (CIF). That part is paid to shippers and insurers, and is counted for them in [shipping](services-shipping-companies.md#shipping) and services, not for Russia. [build_data.py `remove_freight()`](../../pipeline/build_data.py) takes `CIF_SHARE = 3.5% / 5.5% / 7.5%` (low/middle/high) out of every country's payments to Russia, yearly values and baseline alike, except for the share priced at the Russian border (pipeline gas and crude, electricity, overland trade; `BORDER_PRICED` from audit 2, question 7).
+Import values include freight and insurance (CIF). That part is paid to shippers and insurers, and is counted for them in [shipping](services-shipping-companies.md#shipping) and services, not for Russia. [build_data.py `remove_freight()`](../../pipeline/build_data.py) takes the importer's own freight margin from OECD ITIC out of every country's payments to Russia (round 11: the 25 largest buyers by name, e.g. China 6.4%, India 7.2%, Türkiye 8.6%, Germany 4.9%, low ×0.7, high ×1.4; others `CIF_SHARE = 4.5% / 6.5% / 9%`, was 3.5% / 5.5% / 7.5%; gold 0.1% / 0.5% / 2%), yearly values and baseline alike, except for the share priced at the Russian border (pipeline gas and crude, electricity, overland trade; `BORDER_PRICED` from audit 2, question 7).
 
 ## 2026 refresh (round 5)
 

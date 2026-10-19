@@ -1,0 +1,140 @@
+{
+  "generated": "2026-10-19",
+  "meta": {
+    "what": "Round 11 check of five assumption sets in the money rule and the cost view: (1) 'genuinely extra' shares in value_kept.json, (2) OWN_SHARE_DEFAULT, (3) LOAN_GRANT_ELEMENT, (4) META.tariff_rate, (5) EU_ARMS_SLICE. Each proposal gives old and new values, whether the new value rests on data or on judgement, and exact sources. Nothing here is applied yet; pipeline/build_data.py and value_kept.json are unchanged.",
+    "scripts": "/tmp/claude-0/-home-user/71ac834a-35d2-5698-a36d-858806a141e1/scratchpad/r11/scripts/lender.py (lender's-cost grant elements from loans_value.json loan classes); Kiel R31 item queries were run on research/2026-10/raw/kiel/...Release_31.xlsx (sheet 'Bilateral Assistance, MAIN DATA', cached values)",
+    "status": "AI-compiled, not yet reviewed by a person"
+  },
+  "proposals": [
+    {
+      "constant": "value_kept.json sector_factors.sales_to_russia_lost.extra (share of lost Russia sales NOT redirected)",
+      "where": "research/2026-10/gaps/value_kept.json (sector_factors and countries.*.sales_to_russia_lost.extra)",
+      "old": {"default": "0.25/0.40/0.60", "large diversified exporters": "0.20/0.35/0.55", "Finland": "0.15/0.30/0.50", "Baltics": "0.25/0.45/0.65", "commodity exporters": "0.10/0.20/0.40"},
+      "new": {"default": "0.20/0.35/0.55", "large diversified exporters": "0.20/0.35/0.55 (unchanged)", "Finland": "0.10/0.25/0.45", "Baltics": "0.20/0.40/0.60", "commodity exporters": "0.10/0.20/0.40 (unchanged)", "optional time profile": "multiply 2025-2026 by about 0.7: German firm-level effects of the 2014 sanctions faded after about three years"},
+      "basis": "judgement",
+      "sources": [
+        {"title": "Görg, Jacobs, Meuchelböck (2023), Who Is to Suffer? Quantifying the Impact of Sanctions on German Firms, IZA DP 16146 (Kiel Institute)", "url": "https://repec.iza.org/dp16146.pdf", "what": "German firm-level data on the 2014 sanctions. Total sales fell only for firms with more than 5% of sales in Russia (283 of about 8,000 exporters), by 4.8% at the 2015 peak, and the gap was no longer significant by 2017. Firms with less than 2% of sales in Russia showed no drop in total sales, which the authors read as 'able to divert their sales destined for Russia either to other destination countries or to the domestic market' (pp. 25-28, Figure 1)"},
+        {"title": "VATT Data Room report 3/2023 (Toikka, Laasonen, Toivanen): Russian invasion of Ukraine has had only minor economic effects on Finnish firms that used to trade with Russia", "url": "https://vatt.fi/en/-/vatt-data-room-russian-invasion-of-ukraine-has-had-only-minor-economic-effects-on-finnish-firms-that-used-to-trade-with-russia", "what": "Former Russia exporters: total exports fell relative to controls right after February 2022, but turnover was almost unaffected; no effect on employment or the wage bill"},
+        {"title": "Bank of Finland Bulletin 2024/3 (Simola): The collapse of trade with Russia has had a limited effect on Finnish manufacturing", "url": "https://www.bofbulletin.fi/en/2024/3/the-collapse-of-trade-with-russia-has-had-a-limited-effect-on-finnish-manufacturing/", "what": "'most the loss in Russian exports has been compensated for by penetration of new markets'; Russia was 5% of Finnish goods exports in 2021; Finnish exporters to Russia fell from over 2,000 (2019) to about 100 (end-2023)"},
+        {"title": "Gavoille (Latvijas Banka), How did Latvian firms exposed to Russia adapt to trade sanctions? (LSM, 10 June 2025), summarising the Latvijas Banka working paper 'Short drop or sudden stop?'", "url": "https://eng.lsm.lv/article/features/commentary/10.06.2025-how-did-latvian-firms-exposed-to-russia-adapt-to-trade-sanctions.a602623/", "what": "Low-exposure exporters 'generally maintained (or even increased) turnover levels'; surviving firms with more than 25% of turnover from Russia cut employment by about 10%, and closures rose for that group"},
+        {"title": "de Lucio, Mínguez, Minondo, Requena, Reducing trade with Russia: Sanctions vs. firms' voluntary suspension of activities (Journal of International Economics, 2026), summary", "url": "https://sanctionsrussia.org/publication/reducing-trade-with-russia/", "what": "Spanish customs data: rerouting through neighbouring countries was only about 5% of exports lost in Russia. This covers rerouting to Russia, not sales to new buyers, so it does not measure redirection"}
+      ],
+      "note": "No study gives the share of lost 2022 Russia sales that was redirected, either economy-wide or per country. I checked ECB, Bundesbank, Banca d'Italia and CEPR/VoxEU (the CEPR pages blocked access) and found none. The firm-level evidence points one way: losses were concentrated in the few firms that depended on Russia, and other exporters found other buyers or the home market. That supports a slightly lower default and Finland. Large diversified exporters stay at 0.35 because the German 2014 evidence shows real but small and temporary losses. The product (value kept × extra) for the default moves from about 0.27 to about 0.23 at a value kept of 0.67."
+    },
+    {
+      "constant": "value_kept.json sector_factors.sales_to_russia_extra.extra",
+      "where": "research/2026-10/gaps/value_kept.json",
+      "old": {"China": "0.40/0.60/0.80", "Türkiye": "0.25/0.45/0.65", "Belarus": "0.20/0.40/0.60", "Central Asia/Caucasus": "0.40/0.60/0.80", "default": "0.30/0.50/0.70"},
+      "new": "unchanged",
+      "basis": "data",
+      "sources": [
+        {"title": "NBS China, The Utilization Rate of National Industrial Capacity in the First Quarter of 2023", "url": "https://www.stats.gov.cn/english/PressRelease/202304/t20230420_1938877.html", "what": "Automobile manufacturing ran at 72.0% of capacity (national industry 74.3%)"},
+        {"title": "NBS China, The Utilization Rate of National Industrial Capacity in the Third Quarter of 2023", "url": "https://www.stats.gov.cn/english/PressRelease/202310/t20231026_1943931.html", "what": "Automobile manufacturing ran at 75.6%. Spare capacity supports a high extra share for China's car exports to Russia"},
+        {"title": "CarNewsChina: Chinese auto exports to Russia plummet 58% (Nov 2025)", "url": "https://carnewschina.com/2025/11/17/chinese-auto-exports-to-russia-plummet-58-amid-policy-squeeze-and-market-cool-down/", "what": "When Russia raised fees, exports fell 58% and the cars went to other markets, which caps the extra share for 2025"},
+        {"title": "Anadolu Agency: Turkish manufacturing capacity up in September (2022)", "url": "https://aa.com.tr/en/economy/turkish-manufacturing-capacity-up-in-september/2694690", "what": "CBRT capacity utilisation was 77.4% in Sept 2022; the 2022 monthly readings found were 75.9-77.6%, so the economy ran close to capacity and a lower Turkish extra share fits"}
+      ],
+      "note": "The capacity data back the existing split: China has slack, while Türkiye ran near capacity in 2022. No per-country measure of displacement exists, so the ranges stay wide."
+    },
+    {
+      "constant": "value_kept.json sector_factors.flowback_weapons.extra",
+      "where": "research/2026-10/gaps/value_kept.json",
+      "old": {"default": "0.40/0.60/0.80", "US": "0.50/0.70/0.85", "DEU": "0.45/0.65/0.85", "CZE": "0.55/0.75/0.90", "BGR": "0.50/0.70/0.85"},
+      "new": "unchanged",
+      "basis": "data",
+      "sources": [
+        {"title": "Latvian Ministry of Defence: European Commission will invest in additional artillery ammunition production capacities (15 March 2024)", "url": "https://www.mod.gov.lv/en/news/european-commission-will-invest-additional-artillery-ammunition-production-capacities", "what": "Commission: EU 155mm capacity reached 1 million a year in January 2024; ASAP funding aims at 2 million a year by end-2025. That is war-driven capacity growth, which supports an extra share well above 0.5 for European ammunition"},
+        {"title": "Commission Implementing Decision C(2024) 3928 (ASAP award decisions, 7 June 2024)", "url": "https://defence-industry-space.ec.europa.eu/document/download/9d7b317f-5220-4e37-8f87-982f43b668b1_en?filename=07%2006%202024%20ASAP%20Award%20Decisions.pdf", "what": "31 capacity-expansion grants, EUR 512.8m in total, with total project costs of about EUR 1.4bn"}
+      ],
+      "note": "The capacity evidence is consistent with the current values. I found no new data that would measure crowding-out at full employment, which sets the low end."
+    },
+    {
+      "constant": "value_kept.json sector_factors.services_to_russia.extra when lost (tourism default)",
+      "where": "research/2026-10/gaps/value_kept.json",
+      "old": "0.15/0.30/0.50",
+      "new": "unchanged (0.15/0.30/0.50)",
+      "basis": "data",
+      "sources": [
+        {"title": "Eurostat news 16 Jan 2024: nights spent in EU tourist accommodation 2023 (early estimate)", "url": "https://ec.europa.eu/eurostat/fr/web/products-eurostat-news/w/ddn-20240116-1", "what": "EU nights in 2023 were 2.92bn, about 1.6% above 2019 (2.87bn), even though Russian visitors had largely disappeared"}
+      ],
+      "note": "Across the EU, lost Russian tourism was more than replaced by 2023. Country exceptions (border shopping in Finland and the Baltics, Cyprus business services) keep their higher factors. No country-level redirection study was found."
+    },
+    {
+      "constant": "value_kept.json sector_factors.shipping.extra (shadow-fleet controllers)",
+      "where": "research/2026-10/gaps/value_kept.json",
+      "old": "0.45/0.65/0.85",
+      "new": "unchanged",
+      "basis": "judgement",
+      "sources": [
+        {"title": "BIMCO: Product tanker recycling drops 82% year-on-year to lowest on record (17 Jan 2024)", "url": "https://www.bimco.org/news-and-trends/market-reports/shipping-number-of-the-week/20240117-snow", "what": "Only 7 product tankers (265,000 dwt) were recycled in 2023, against 27 in 2022, the lowest since 1996, and fleet average age reached its highest since 2005. This fits old tankers being kept trading instead of scrapped, but BIMCO names strong earnings in general as the cause, not the shadow fleet"}
+      ],
+      "note": "There is no direct measure of the share of shadow-fleet tonnage that would otherwise have been scrapped. The value stays a judgement."
+    },
+    {
+      "constant": "OWN_SHARE_DEFAULT",
+      "where": "pipeline/build_data.py line 31",
+      "old": [0.2, 0.4, 0.7],
+      "new": [0.0, 0.1, 0.3],
+      "basis": "judgement",
+      "sources": [
+        {"title": "Kiel Ukraine Support Tracker Release 31, item-level sheet (local copy research/2026-10/raw/kiel/)", "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx", "what": "Item coding (source_of_weapon, stock_location, procurement_location, procurement_contractor) already gives own-industry shares for 35 donors, including the Netherlands, Denmark, Norway, Canada and Sweden, in flowback2.json. The default now applies only to donors with no Kiel item rows: Albania, North Macedonia and Montenegro (EUR 0.09bn of military aid in total)"},
+        {"title": "Eurasian Times: Macedonia hands over four Su-25 fighter jets to Ukraine", "url": "https://www.eurasiantimes.com/macedonia-hands-over-four-su-25-fighter-jets-to-ukraine", "what": "North Macedonia gave Soviet-era Su-25s, and its T-72s, from old stock (title and search snippet; the page refused automated access). A search summary said the US would supply JLTVs to North Macedonia; I could not open a page to confirm this, so treat it as unverified"}
+      ],
+      "note": "In Release 31, per-donor evidence for NL (0.17), DK (0.20), NO (0.28), CA (0.43) and SE (0.64) already replaces the default (flowback2.json own_industry). The remaining default donors gave Soviet-era stock and have almost no arms industry of their own, so a central of 0.4 is too high. Effect: under EUR 0.03bn in total. No national procurement report gives these three countries' own-industry share; there is no public data."
+    },
+    {
+      "constant": "LOAN_GRANT_ELEMENT",
+      "where": "pipeline/build_data.py line 34 (cost view: loans at the lender's cost; also move_loan() and loans_grant_eq)",
+      "old": 0.3,
+      "new": {"scalar": {"low": 0.09, "central": 0.26, "high": 0.47}, "better": "per loan class (lender's cost, central): EU Ukraine Facility 0.29, EU MFA+ 0.37, EU exceptional MFA 5bn (2022) 0.35, EU MFA 2022 without subsidy and EIB 0.10, Ukraine Support Loan 0.95, IBRD loans enabled by guarantees (Japan, UK, Sweden, Spain...) 0.05, guarantees for lending to firms 0.15, Canada via IMF account 0.18-0.19, Canada Sovereignty Bond 0.10, France Treasury 0.22, Germany KfW 0.14, Italy 0% 0.40, Japan JICA 0.01, Netherlands 0.06, Poland swap line 0.00, unknown bilateral concessional terms 0.29 (0.21-0.41)"},
+      "basis": "data",
+      "sources": [
+        {"title": "Council doc 8202/26: Commission half-yearly report on borrowing and lending, H2 2025", "url": "https://data.consilium.europa.eu/doc/document/ST-8202-2026-INIT/en/pdf", "what": "Cost of funding at end-2025: Ukraine Facility 2.76%, MFA+ 3.15%, MFA (G7 ERA) 2.54% (p. 8-9, Chart 6). Used as the lender's discount rate for EU loans"},
+        {"title": "Council doc 13237/25: Commission half-yearly report H1 2025", "url": "https://data.consilium.europa.eu/doc/document/ST-13237-2025-INIT/en/pdf", "what": "Ukraine Facility 2.72%, MFA (G7 ERA) 2.53% at end-June 2025"},
+        {"title": "Kiel Ukraine Support Tracker Release 31 (loan_mat, loan_int, loan_gra columns), via loans_value.json loan_classes", "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx", "what": "Maturity, grace and interest for each lender and loan class, and the face value of 140 items (EUR 96.5bn)"},
+        {"title": "Regulation (EU) 2024/792 Ukraine Facility, Art. 22-23", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32024R0792", "what": "Loans of up to 35 years; borrowing-cost subsidy from the EU budget to 2027"},
+        {"title": "Council ST-15232-2022-ADD-1 (MFA+ declaration: member states pay the interest, by GNI key, to end-2027)", "url": "https://data.consilium.europa.eu/doc/document/ST-15232-2022-ADD-1/en/pdf", "what": "Who pays the MFA+ interest"}
+      ],
+      "note": "Lender's cost = 1 - PV of Ukraine's interest and principal payments × (1 - expected loss), discounted at the lender's own funding rate: the EU's reported cost of funding; about 3% for other G7 lenders and 0.5% for Japan (judgement, not sourced). Scenarios: low = interest subsidy ends 2027 and expected loss 0; central = subsidy to 2034 and expected loss 10%; high = subsidy for the loan's life and expected loss 25%. The expected loss is judgement: Ukraine cut the face value of its private Eurobonds by 37% in 2024 but has kept paying official creditors. Weighted by face over all 140 loan items: 0.15/0.32/0.52. Without the 8.37bn Ukraine Support Loan defence window, which Kiel books as military and not under loans_face: 0.09/0.26/0.47. Without the whole Support Loan: 0.06/0.23/0.45. So the old 0.3 sits inside the range and close to the central value; the data mainly add the range and a per-class split. Japan's IBRD guarantees (9.6bn) cost Japan almost nothing unless Ukraine defaults on the IBRD, so a single scalar overstates Japan's cost (about 0.05 instead of 0.3)."
+    },
+    {
+      "constant": "META.tariff_rate",
+      "where": "pipeline/build_data.py line 1137 (cost view: 'import tariffs dropped for Ukraine' = rate × purchases from Ukraine, for TARIFF_WAIVER = EU27, GBR, CAN)",
+      "old": 0.04,
+      "new": {
+        "EU27": {"low": 0.002, "central": 0.003, "high": 0.01, "years": "4 Jun 2022 to 5 Jun 2025 only (2022 7/12, 2025 5/12); 0 from June 2025 (DCFTA quotas back, revised DCFTA from 29 Oct 2025 is a permanent agreement, not a war waiver)"},
+        "GBR": {"low": 0.001, "central": 0.002, "high": 0.005, "years": "May 2022 onward (extended to 31 Mar 2029)"},
+        "CAN": {"low": 0.003, "central": 0.01, "high": 0.03, "years": "9 Jun 2022 onward; about 3% in the first year, about 0.3% after poultry/dairy over-access was excluded in June 2023"}
+      },
+      "basis": "data",
+      "sources": [
+        {"title": "European Parliament OEIL summary of COM(2022) 195 (2022/0138(COD), proposal for Regulation (EU) 2022/870), Budgetary implication", "url": "https://oeil.europarl.europa.eu/oeil/en/procedure-document-summary/pdf?id=1702126", "what": "Customs revenue loss 'less than EUR 31 million annually' at 2021 import levels, plus anti-dumping duties of EUR 34.6m"},
+        {"title": "European Parliament OEIL summary of 2023/0051(COD) legislative proposal of 23 Feb 2023 (ATM renewal), Budgetary implications", "url": "https://oeil.europarl.europa.eu/oeil/en/procedure-document-summary/pdf?id=1734705", "what": "'the European Union would see a loss of EUR 33.4 million of customs revenue annually', based on 2021 above-quota volumes; anti-dumping under EUR 15m; total EUR 48.4m"},
+        {"title": "Explanatory Memorandum to SI 2022/525, Customs Tariff (Preferential Trade Arrangements and Tariff Quotas) (Ukraine) (Amendment) Regulations 2022, para 12.4", "url": "https://www.legislation.gov.uk/uksi/2022/525/pdfs/uksiem_20220525_en.pdf", "what": "UK imports from Ukraine not already fully liberalised averaged about GBP 8m a year in 2018-2020, 1.4% of UK goods imports from Ukraine (wheat, honey, processed tomatoes, poultry, cereals)"},
+        {"title": "Ukraine Goods Remission Order SOR/2022-127, RIAS", "url": "https://gazette.gc.ca/rp-pr/p2/2022/2022-06-22/html/sor-dors127-eng.html", "what": "Maximum about CAD 2.6m a year of duties remitted, at 2019-2021 trade"},
+        {"title": "Order Amending the Ukraine Goods Remission Order SOR/2023-121, RIAS", "url": "https://gazette.gc.ca/rp-pr/p2/2023/2023-06-21/html/sor-dors121-eng.html", "what": "About CAD 7.5m remitted June 2022 to May 2023 (appliances, wood flooring, vegetable oils, frozen chicken)"},
+        {"title": "Order Amending the Ukraine Goods Remission Order SOR/2026-95, RIAS", "url": "https://gazette.gc.ca/rp-pr/p2/2026/2026-06-17/html/sor-dors95-eng.html", "what": "About CAD 9.5m remitted June 2022 to February 2026 in total; about CAD 1.2m expected per year"}
+      ],
+      "note": "Arithmetic. EU: the Commission's estimates are EUR 65.6m (2022) and EUR 48.4m (2023) a year, against EU27 purchases from Ukraine in 2021 of EUR 25.07bn (site/data.json buy_ukr). That gives 0.26% and 0.19%. The central value of 0.3% adds a little because 2022-24 above-quota volumes (sugar, wheat, poultry) were far above 2021. The high value of 1% is a judgement: duties on the actual surge volumes would be much higher, but at those duties the volumes would not have come, so it is not revenue given up. UK: 1.4% of imports carried duty × an assumed 10-30% duty on those goods (not sourced) = 0.14-0.42%, so 0.2% central. Canada: CAD 9.5m (about EUR 6.6m at roughly 1.45 CAD/EUR) over EUR 0.62bn of purchases from Ukraine in June 2022 to February 2026 = 1.1%. The first year was about 3.3% (CAD 7.5m against about EUR 0.16bn) and the later years about 0.3%. At the old 4%, the EU's cost was about EUR 1.0bn a year. The Commission's own estimate is EUR 0.05-0.07bn. About 75% of EU customs duties go to the EU budget (25% is kept for collection costs), so the EU part could be split by EU budget share instead of by each member's imports. Not found: the Commission's ex-post figure for duties actually waived in 2022-2025, and a UK figure after 2022."
+    },
+    {
+      "constant": "EU_ARMS_SLICE (with flowback2.json EU_INST.own_share_eu_eea_industry 0.70/0.78/0.88)",
+      "where": "pipeline/build_data.py line 33 and the loop at about line 923",
+      "old": {"FRA": 0.39, "DEU": 0.24, "ITA": 0.19, "SWE": 0.06, "CZE": 0.04, "ESP": 0.035, "POL": 0.03, "applied as": "0.78 × slice × EU-level military aid: FRA 0.30, DEU 0.19, ITA 0.15, SWE 0.05, CZE 0.03, ESP 0.03, POL 0.02"},
+      "new": {
+        "applied directly as the share of EU-level military aid (set the 0.78 factor to 1)": {"SWE": 0.28, "DEU": 0.009, "FRA": 0.006, "ITA": 0.003, "GRC": 0.002, "FIN": 0.002, "HUN": 0.002, "ESP": 0.002, "CZE": 0.001, "BEL": 0.001},
+        "range": "SWE 0.28 (0.25-0.30, data); all other members together 0.03 (0-0.10, judgement), split by ASAP grant shares; Ukraine's own industry about 0.66-0.72 (not a map member's flowback)",
+        "years": "all of it in 2026: Kiel dates every EU-level military item 2026; the code currently spreads it over 2022-2026 by the EU's total aid profile"
+      },
+      "basis": "data",
+      "sources": [
+        {"title": "Kiel Ukraine Support Tracker Release 31, donor 'EU (Commission and Council)', aid_type_general = Military, allocations (local copy)", "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx", "what": "EUR 8.874bn: Ukraine Support Loan defence window: drones 3.90 + 1.00 + 0.97 (procurement_location 'EEA; EFTA; Ukraine'), JAS 39 Gripen 2.50 (procurement_location Sweden, contractor Saab AB, 30 Jul 2026); Ukraine Investment Framework dual-use/defence industry 0.021 + 0.059 + 0.140 + 0.284. EPF rows are commitments only: Kiel credits EPF-reimbursed donations to the member states that gave them"},
+        {"title": "Government of Ukraine: Yulia Svyrydenko: Ukraine receives EUR 3.9 billion in defense support from the EU (30 Jun 2026)", "url": "https://www.kmu.gov.ua/en/news/yuliia-svyrydenko-ukraina-otrymala-vid-ies-38-mlrd-ievro-na-oboronnu-pidtrymku", "what": "The EUR 3.9bn goes to 'the production of Ukrainian drones', defence-industry capacity and urgent frontline deliveries"},
+        {"title": "Euromaidan Press: EU borrowed Danish model and supersized it. Now, EUR 3.9 billion flows into Ukrainian drone production (30 Jun 2026)", "url": "https://euromaidanpress.com/2026/06/30/eu-borrowed-danish-model-and-supersized-it-now-e3-9-billion-flows-into-ukrainian-drone-production/", "what": "The tranche is branded 'drones from Ukraine, for Ukraine' and is restricted to Ukrainian drone production, defence-industrial capacity and urgent supplies"},
+        {"title": "Commission Implementing Decision C(2024) 3928, ASAP award decisions, Annex 2", "url": "https://defence-industry-space.ec.europa.eu/document/download/9d7b317f-5220-4e37-8f87-982f43b668b1_en?filename=07%2006%202024%20ASAP%20Award%20Decisions.pdf", "what": "31 grants, EUR 512.8m, by coordinator country: DEU 131.5, NOR 86.7, FRA 85.2, ITA 45.1, GRC 33.1, FIN 32.5, HUN 27.1, ESP 23.8, SWE 19.1, CZE 15.0, BEL 9.6, POL 2.1, SVK 2.0 (EUR m). EU-only shares: DEU 0.31, FRA 0.20, ITA 0.11, GRC 0.08, FIN 0.08, HUN 0.06, ESP 0.06, SWE 0.045, CZE 0.035, BEL 0.02, POL 0.005, SVK 0.005"},
+        {"title": "European Peace Facility (overview)", "url": "https://en.wikipedia.org/wiki/European_Peace_Facility", "what": "EPF Ukraine money reimburses member states for weapons they donated from stock, and funds joint procurement (EUR 1bn in May 2023). It flows to member treasuries by their donations, not to industry by production shares"},
+        {"title": "Breaking Defense: European Defence Agency signs first set of joint ammunition procurement contracts (Sep 2023)", "url": "https://breakingdefense.com/2023/09/european-defence-agency-signs-first-set-of-joint-ammunition-procurement-contracts/", "what": "The EDA did not publish the contractors or values of its 155mm framework contracts, so there is no public split of EPF joint procurement by member"}
+      ],
+      "note": "Arithmetic: Gripen 2.50 / 8.874 = 0.282 to Sweden. Drones 5.87 + UIF 0.504 = 6.374 / 8.874 = 0.718, mostly Ukrainian industry. The Commission names the 3.9bn tranche as Ukrainian drones; the 1.0bn and 0.97bn tranches allow EEA/EFTA/Ukraine. The remaining 0.03 (0-0.10, judgement) for EU components or EU-made drones is split by ASAP 2024 grant shares, a proxy for where EU munitions capacity was added. Effect (central, EUR bn): FRA 2.70 → about 0.05, DEU 1.66 → about 0.08, ITA 1.32 → about 0.03, SWE 0.42 → about 2.50. This matches money_ledger.json (FRA 2.7 → 0.7, ITA 1.3 → 0.35, SWE 0.4 → 2.6, where some EU money is assigned differently). SIPRI production shares describe where arms are made, but no Kiel EU-level military item went to French, German or Italian firms. EPF reimbursements by member state and EPF/EDA joint-procurement contractors are not public (the EDA withheld them). ASAP and EDIRPA are not aid to Ukraine in Kiel, so they should not enter flowback; they appear here only as a proxy split."
+    }
+  ]
+}

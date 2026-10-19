@@ -53,7 +53,7 @@ Gas was priced very differently from country to country. [`gas_prices.json`](../
 - **Customs unit values** (A): Eurostat Comext and UN Comtrade, HS 271121 (pipeline) and 271111 (LNG).
 - **Customs value ÷ external volume** (B): China's Power of Siberia, French LNG.
 - **Peer customs** (B): Germany, Austria, Finland, Switzerland and others hide Russian gas in customs; they get the volume-weighted price of Czechia, Slovakia and Italy, whose contracts were also hub-indexed.
-- **Published contract prices** (B): Belarus (USD 127–128.5 per 1,000 m³), Moldova, Armenia.
+- **Published contract prices** (B): Belarus (USD 127–128.5 per 1,000 m³), Moldova, Armenia. Belarus's band is ±2% where the price is published (2019–2022) and, since round 12, the research's ±8% for 2023–2025 and ±15% for 2026, when the price is settled in roubles and its continuation is assumed (was ±2% for every year).
 - **Oil-formula models** (C): price = k × 9-month Brent average lagged one month, k calibrated on Serbian and Bosnian customs (0.418 EUR/MWh per EUR/bbl); used for Turkey and Poland 2019–2022.
 
 Examples of the 2022 index: Hungary about 7 (hub prices), Austria 4.85, Bulgaria 3.92, Serbia and Turkey about 1.8–1.9 (oil-linked), Armenia 1.13, Belarus 1.1 (fixed dollar price). `gas_index()` uses the country's own series where researched and the Europe-wide index otherwise. The same prices value **final-use gas** in the transit-gas swap ([energy-and-laundered-oil.md](energy-and-laundered-oil.md#transit-gas)).
@@ -99,8 +99,14 @@ dated before the invasion only ([`energy_nowar.json`](../../research/2026-10/gap
   Greece, Bulgaria, North Macedonia, Moldova 50/50) both; fixed-price buyers (Belarus, Armenia, Kyrgyzstan, Uzbekistan,
   Kazakhstan, Azerbaijan, Georgia) get no windfall on gas. Per-country customs prices per fuel where `prices.json`
   measures them, else the pre-war fuel mix.
-- **2026**: the Strait of Hormuz closure was not caused by this war, so the no-war price in 2026 is the actual world
-  price (Brent, diesel, TTF, JKM, Newcastle). Only Russia-specific price gaps count that year.
+- **2026**: the 2026 price spike came from the closure of the Strait of Hormuz, which Iran shut to tanker traffic. The
+  IEA's August 2026 Oil Market Report names the closure as the main cause of the supply loss (as reported by
+  [Kuwait Times, 12 August 2026](https://kuwaittimes.com/article/47998/world/iea-cuts-2026-oil-demand-forecast-again-as-hormuz-remains-shut/);
+  the IEA's own page blocked automated access, so the primary report is not linked). Russia's war did not cause it, so
+  the no-war price in 2026 is the actual world price (Brent, diesel, TTF, JKM, Newcastle), and only Russia-specific
+  price gaps count that year. This is a decision, not a measured value: the research left open whether to keep the
+  pre-invasion path instead, which would count the spike as windfall ([energy_nowar-notes.md](../../research/2026-10/gaps/energy_nowar-notes.md),
+  open question 2; [decisions](../decisions.md#constants-and-rules-written-down-in-round-11)).
 - **The change in volume** is valued at the same no-war prices, so the two parts add up exactly:
   `actual − expected payment = (volume change × no-war price) + (actual volume × (actual price − no-war price))`.
   In the builder (`apply_nowar_prices()`) the expected path takes the no-war price on its fuel share

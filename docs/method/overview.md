@@ -46,7 +46,7 @@ The parts below are what the country panel's waterfall shows (`shiftParts` and `
 | Return denied to Russia on its frozen reserves | yearly return the frozen central-bank reserves would have earned (rates per currency and year); Euroclear and Clearstream a third to the host, two thirds to all EU members | Ukraine | [russia-state-and-companies.md](russia-state-and-companies.md#frozen-central-bank-reserves-round-7) |
 | Wages earned working in Russia (migrants' remittances) | labour remittances against the expected level, × the money rule; relocants' transfers left out | either | [trade.md](trade.md#remittances-and-relocants-round-7) |
 | Fees earned settling Russia's trade (payment agents) | fees kept by residents of the agent's country, against 2021 | Russia | [trade.md](trade.md#payment-agents-round-6) |
-| Share of new IMF, World Bank and EBRD lending | rise over pre-war own-risk lending, at economic value, by shareholding | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#loans-at-their-economic-value-round-5) |
+| Share of new IMF, World Bank and EBRD lending | rise over pre-war own-risk lending, at economic value, by shareholding | Ukraine | [loans.md](loans.md#new-lending-by-the-imf-and-world-bank) |
 | Flowing back (optional, on by default) | every euro for Ukraine followed to the economy where it was spent (own and others' aid incl. stock replacement, arms Ukraine bought, energy, relief and rebuilding) and extra sales to Ukraine, × the money rule | subtracted from the balance with Ukraine | [aid-refugees-military.md](aid-refugees-military.md#flowback) |
 
 Not a part of its own, but built into the parts above:
@@ -93,10 +93,12 @@ rule above), now applied to the other side of each trade. The suggestion came fr
 | pipeline gas | 0.60 | 0.84 | 0.69 | 0.60 | 0.54 | 0.57 |
 | LNG (Russian owners' part) | 0.35 | 0.54 | 0.47 | 0.36 | 0.37 | 0.35 |
 | coal | 0.30 | 0.44 | 0.20 | 0.06 | 0.02 | 0.04 |
-| all other goods (weighted) | 0.20 | 0.18 | 0.14 | 0.12 | 0.11 | 0.13 |
-| services | 0.08 | 0.08 | 0.08 | 0.08 | 0.08 | 0.08 |
-| arms | 0.12 | 0.12 | 0.12 | 0.12 | 0.12 | 0.12 |
+| all other goods (weighted) | 0.20 | 0.17 | 0.13 | 0.12 | 0.11 | 0.13 |
+| services | 0.032 | 0.035 | 0.043 | 0.034 | 0.044 | 0.044 |
+| arms | 0.043 | 0.039 | 0.045 | 0.050 | 0.050 | 0.050 |
 | gold | 0.39 | 0.33 | 0.40 | 0.49 | 0.58 | 0.66 |
+
+Since round 11, services, arms and the other goods use official sector profitability (Rosstat by activity), export duties collected and company results instead of judgement ([decisions](../decisions.md#assumptions-backed-by-data-round-11)).
 
 Crude in 2023, for example: Russia sold at 64.2 USD a barrel FOB; real costs were 23 USD (lifting 4, pipelines and
 ports 5, depreciation 6.5, overhead 1.5, normal return 6), so the net gain is 0.64, of which the state took 0.47 in
@@ -109,7 +111,9 @@ taxes (Finance Ministry totals). Each country's payments get the gain of what it
   the war-time premium) do not move the mix, and 2021 matches the expected mix exactly;
 - **fuel a refiner passed on** (India, Türkiye, China) counts at the gain on crude, the same as for its buyers;
 - **gold** counts at the gain on gold: gold the UAE and Hong Kong pass on to their buyers, and Hong Kong's own rise
-  since before the war (98% precious metals); everything the UAE passes on is treated as gold;
+  since before the war (all of it precious metals: UN Comtrade shows Hong Kong's HS 71 imports from Russia rising more
+  than its total in every year, round 12; see [trade](trade.md#hong-kong-gold)); everything the UAE passes on is
+  treated as gold;
 - **Moldova's gas** comes from its own customs, since Transnistria's unpaid gas is not counted;
 - the Rosatom customs over-count taken out of Türkiye's and Egypt's payments is rescaled to the same gain.
 
@@ -145,7 +149,17 @@ gold outline (threshold EUR 10m and 0.05% of GDP).
 
 ## The cost view
 
-"Cost carried" is a second lens: what the country gave up, not where money went. Parts (`costParts` in `calc()`): aid with loans at the lender's grant equivalent (30% of face value, `LOAN_GRANT_ELEMENT`; the net shift uses their value to Ukraine instead), donated weapons at their recorded value, refugee hosting at net cost, refugee hosting, undisclosed aid, private donations, the extra price paid to replace Russian energy, profit lost on sales to Russia (goods and services, 20%), import tariffs dropped for Ukraine (4% of purchases from Ukraine, EU, UK and Canada only), minus discounts gained on Russian oil, and minus flowback profit.
+"Cost carried" is a second lens: what the country gave up, not where money went. Parts (`costParts` in `calc()`):
+
+- aid with loans at the lender's cost: per loan item, the loan's terms and the expected loss of its creditor class, discounted at the lender's own funding rate, with a low and high value per country (round 12; was 26% of face, `LOAN_GRANT_ELEMENT`, with a half-to-one-and-a-half band). The net shift uses the value to Ukraine instead ([loans](loans.md#the-cost-view));
+- donated weapons at their recorded value;
+- refugee hosting at net cost;
+- undisclosed aid and private donations;
+- the extra price paid to replace Russian energy;
+- income lost on sales to Russia, goods and services, at value kept × genuinely extra ([the money rule](#the-money-rule-round-6));
+- import tariffs dropped for Ukraine (EU, UK and Canada only: about 0.2% of purchases from Ukraine since round 11, the average of the EU's 0.3% in June 2022 to June 2025, the UK's 0.2% and Canada's 1%; was 4%);
+- minus discounts gained on Russian oil;
+- minus money flowing back, at the money rule.
 
 ## The other lenses
 
@@ -161,22 +175,23 @@ gold outline (threshold EUR 10m and 0.05% of GDP).
 
 ## A worked reading
 
-Germany, 2022–August 2026: about +3.7% of a year's GDP toward Ukraine (likely range 2.5% to 5.2%, EUR 161bn on a 2024 GDP of EUR 4,329bn). Its balance with Ukraine is +67bn (gave 77.5, earned back 10.3) and its balance with Russia +93bn. In EUR bn, the largest parts are:
+Germany, 2022–August 2026: about +3.7% of a year's GDP toward Ukraine (likely range 2.5% to 5.2%, EUR 161bn on a 2024 GDP of EUR 4,329bn). Its balance with Ukraine is +67bn (gave 77.5, earned back 10.1) and its balance with Russia +93bn. In EUR bn, the largest parts are:
 
 | part | middle (range) |
 |---|---|
-| Less paid to Russia (volume at pre-war prices, against the expected level, at Russia's net gain) | +79.1 (38.4 to 131.2) |
+| Less paid to Russia (volume at pre-war prices, against the expected level, at Russia's net gain) | +79.3 (38.7 to 131.2) |
 | Aid to Ukraine (bilateral, Kiel) | +30.2 (28.6 to 32.5) |
 | Hosting refugees (net cost) | +29.5 (11.7 to 42.6) |
 | Income lost on sales to Russia given up (money rule) | +21.7 (5.8 to 54.6) |
 | Share of EU-level aid | +14.4 (10.1 to 16.5) |
-| Extra paid to Russia because of war-time prices (mostly 2022 gas) | −17.5 (−25.8 to −10.7) |
+| Extra paid to Russia because of war-time prices (mostly 2022 gas) | −17.6 (−25.9 to −10.7) |
 | Own aid spent in its own economy, incl. replacing donated stock (money rule) | −5.6 (−10.8 to −2.5) |
 
 The wide range comes almost entirely from "less paid to Russia": the expected no-war level of Germany's purchases is uncertain (see [counterfactual.md](counterfactual.md)), and the total takes the weakest certainty letter of its parts (D). The "How it works" view on the map ([`views2.js`](../../site/views2.js)) builds this waterfall live for Germany, Poland, the US, Hungary, India and China.
 
 ## See also
 
+- [loans.md](loans.md): loans at their value to Ukraine and at the lender's cost (round 12)
 - [counterfactual.md](counterfactual.md), [prices.md](prices.md), [ranges.md](ranges.md): the three ingredients of every trade part
 - [reference/pipeline.md](../reference/pipeline.md): how the parts are built into `site/data.json`
 - [limitations.md](../limitations.md): what the method does not capture
