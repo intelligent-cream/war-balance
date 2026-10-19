@@ -1009,7 +1009,8 @@
      "checked": "fetched"
     }
    ],
-   "note": "Modelled range; superseded in the current build by flowback_kiel and money_ledger (not referenced by any country in site/data.json)."
+   "note": "Modelled range; superseded in the current build by flowback_kiel and money_ledger (not referenced by any country in site/data.json).",
+   "superseded": "Round 11 audit: own-industry shares (round 2) no longer produce a number on the map. The all-money ledger (money_ledger, round 6) or military_rus_r6 replaced them, so build_data.py no longer publishes this id in site/data.json."
   },
   "csis": {
    "model": false,
@@ -1031,7 +1032,8 @@
      "checked": "fetched"
     }
    ],
-   "note": ""
+   "note": "",
+   "superseded": "Round 11 audit: the US own-industry share no longer produce a number on the map. The all-money ledger (money_ledger, round 6) or military_rus_r6 replaced them, so build_data.py no longer publishes this id in site/data.json."
   },
   "purl": {
    "model": false,
@@ -1069,13 +1071,14 @@
      "checked": "exists in research file; site blocked automated fetch (403)"
     }
    ],
-   "note": "Registered but not referenced by any country in the current site/data.json (PURL now flows through money_ledger)."
+   "note": "Registered but not referenced by any country in the current site/data.json (PURL now flows through money_ledger).",
+   "superseded": "Round 11 audit: PURL purchases no longer produce a number on the map. The all-money ledger (money_ledger, round 6) or military_rus_r6 replaced them, so build_data.py no longer publishes this id in site/data.json."
   },
   "flowback_default": {
    "model": true,
    "links": [
     {
-     "title": "Method: Flowback (OWN_SHARE_DEFAULT 20/40/70%)",
+     "title": "Method: Flowback (OWN_SHARE_DEFAULT, 0/10/30% since round 11; was 20/40/70%)",
      "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/aid-refugees-military.md#flowback",
      "kind": "method",
      "what": "assumed own-industry share where no evidence exists",
@@ -1091,7 +1094,8 @@
      "checked": "anchor checked on GitHub"
     }
    ],
-   "note": "Pure assumption of this project (20/40/70% own-industry share, certainty D) for donors with no evidence; no external source exists."
+   "note": "Pure assumption of this project (own-industry share 0/10/30% since round 11, was 20/40/70%; certainty D) for donors with no evidence (now only Albania, North Macedonia and Montenegro); no external source exists. Replaced by the all-money ledger since round 6.",
+   "superseded": "Round 11 audit: the assumed own-industry share no longer produce a number on the map. The all-money ledger (money_ledger, round 6) or military_rus_r6 replaced them, so build_data.py no longer publishes this id in site/data.json."
   },
   "flowback_kiel": {
    "model": false,
@@ -1121,7 +1125,8 @@
      "checked": "anchor checked on GitHub"
     }
    ],
-   "note": ""
+   "note": "",
+   "superseded": "Round 11 audit: Kiel's item-level own-industry shares no longer produce a number on the map. The all-money ledger (money_ledger, round 6) or military_rus_r6 replaced them, so build_data.py no longer publishes this id in site/data.json."
   },
   "eu_industry": {
    "model": false,
@@ -1151,7 +1156,8 @@
      "checked": "anchor checked on GitHub"
     }
    ],
-   "note": "Registered but not referenced by any country in the current site/data.json (EU arms slice now inside money_ledger)."
+   "note": "Registered but not referenced by any country in the current site/data.json (EU arms slice now inside money_ledger).",
+   "superseded": "Round 11 audit: the split of EU-level military aid no longer produce a number on the map. The all-money ledger (money_ledger, round 6) or military_rus_r6 replaced them, so build_data.py no longer publishes this id in site/data.json."
   },
   "other_mil": {
    "model": false,
@@ -1189,7 +1195,8 @@
      "checked": "anchor checked on GitHub"
     }
    ],
-   "note": "Superseded: not referenced by any country in site/data.json (Belarus, Iran, North Korea now use military_rus_r6)."
+   "note": "Superseded: not referenced by any country in site/data.json (Belarus, Iran, North Korea now use military_rus_r6).",
+   "superseded": "Round 11 audit: the first military-support estimates no longer produce a number on the map. The all-money ledger (money_ledger, round 6) or military_rus_r6 replaced them, so build_data.py no longer publishes this id in site/data.json."
   },
   "other_mil2": {
    "model": false,
@@ -1219,7 +1226,8 @@
      "checked": "anchor checked on GitHub"
     }
    ],
-   "note": "Superseded: not referenced by any country in site/data.json (Belarus, Iran, North Korea now use military_rus_r6)."
+   "note": "Superseded: not referenced by any country in site/data.json (Belarus, Iran, North Korea now use military_rus_r6).",
+   "superseded": "Round 11 audit: the round-2 military-support estimates no longer produce a number on the map. The all-money ledger (money_ledger, round 6) or military_rus_r6 replaced them, so build_data.py no longer publishes this id in site/data.json."
   },
   "military_rus_r6": {
    "model": false,
@@ -2509,7 +2517,8 @@
      "checked": "fetched"
     }
    ],
-   "note": "Not referenced directly in site/data.json; feeds money_ledger flowback. Czech ministry (MPO) licence reports themselves were not linked in the research files; figures come via press reports."
+   "note": "Not referenced directly in site/data.json; feeds money_ledger flowback. Czech ministry (MPO) licence reports themselves were not linked in the research files; figures come via press reports.",
+   "superseded": "Round 11 audit: arms Ukraine bought abroad no longer produce a number on the map. The all-money ledger (money_ledger, round 6) or military_rus_r6 replaced them, so build_data.py no longer publishes this id in site/data.json."
   },
   "loans_value": {
    "model": false,
@@ -3114,6 +3123,40 @@
     }
    ],
    "note": ""
+  },
+  "assumptions_r11_gain": {
+   "model": false,
+   "links": [],
+   "note": "Round 11 audit: listed so that this file covers every id in site/data.json. The links of this id are built by build_data.py attach_r11_sources() from the sources of each applied proposal in research/2026-10/gaps/assumptions_r11_gain.json; an empty list here keeps them."
+  },
+  "assumptions_r11_rules": {
+   "model": false,
+   "links": [],
+   "note": "Round 11 audit: listed so that this file covers every id in site/data.json. The links of this id are built by build_data.py attach_r11_sources() from the sources of each applied proposal in research/2026-10/gaps/assumptions_r11_rules.json; an empty list here keeps them."
+  },
+  "assumptions_r11_hubs": {
+   "model": false,
+   "links": [],
+   "note": "Round 11 audit: listed so that this file covers every id in site/data.json. The links of this id are built by build_data.py attach_r11_sources() from the sources of each applied proposal in research/2026-10/gaps/assumptions_r11_hubs.json; an empty list here keeps them."
+  },
+  "assumptions_r11_people": {
+   "model": false,
+   "links": [],
+   "note": "Round 11 audit: listed so that this file covers every id in site/data.json. The links of this id are built by build_data.py attach_r11_sources() from the sources of each applied proposal in research/2026-10/gaps/assumptions_r11_people.json; an empty list here keeps them."
+  },
+  "sanctions_share": {
+   "model": false,
+   "links": [
+    {
+     "title": "EUR-Lex: Council Regulation (EU) No 833/2014, all consolidated versions",
+     "url": "https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:32014R0833",
+     "kind": "primary",
+     "what": "EU bans and the date each annex entered into force",
+     "confirmed": false,
+     "checked": "exists in research file; the page returned no readable content to an automated fetch in the round-11 audit"
+    }
+   ],
+   "note": "Added in the round-11 audit, when the sanctions note in each panel got a source footnote. Other inputs (Eurostat Comext, UN Comtrade, national sanctions acts) are listed in research/2026-10/gaps/sanctions_share.json sources."
   }
  }
 }

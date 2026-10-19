@@ -98,3 +98,15 @@ reconstructed from the commit history and may be imprecise; corrections by the o
 | **Verify** aid, GDP, refugees, trade and fuel against primary data | owner | trust needs checks, not assurances | [verify_r11_aid](../research/2026-10/verify_r11_aid-notes.md), [verify_r11_trade](../research/2026-10/verify_r11_trade-notes.md) |
 | Back every **assumption** with data where it exists, and say where it does not | owner | separate data from judgement | assumptions_r11_*.json |
 | Every decision written down with reasons and evidence | owner | this page and [decisions.md](decisions.md) | |
+
+## Round 11 audit: traceability (19 October)
+
+| decision | raised by | why | effect |
+|---|---|---|---|
+| Fix every stale figure and claim in the documentation and on the site, but **change no number on the map** | owner | the text had drifted from the data; changing values needs its own decision | no total or range changes |
+| Cite the money-rule factors and Russia's net gain on **every part they weight**; stop showing sources that no longer produce a number | audit | a reader could not see where a factor came from | source lists only |
+| Write down **eleven missing decisions** and every untraced constant, labelled data or judgement | audit | [decisions.md](decisions.md#constants-and-rules-written-down-in-round-11) claimed to list every choice | new section |
+| Keep China's crude ratio 0.70, the loan cost band, the 10% discount rate, the single duty rate, Belarus's ±2% gas band, Hong Kong's 98% and Germany's 7% gas share as they are, and list them as **proposals** | audit, owner | each would change a number | [proposals](decisions.md#proposals-that-would-change-numbers-not-applied) |
+| A refugee grade such as "A-B" counts at its **weaker letter**; Poland's refugee cost at most C | audit | the letters overstated how much was checked | four part letters; no total letter |
+| Call the 10% loan discount rate a **judgement** | audit | it is not a current IMF or OECD standard | text only |
+| Stop publishing the AI-guessed **incentive scores** | audit | the view was removed in round 8 and nothing reads them | smaller `data.json` |

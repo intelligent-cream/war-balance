@@ -57,18 +57,20 @@ How the four flows enter the net shift (`calc()` in [`site/index.html`](../../si
 
 | flow | part | counted as |
 |---|---|---|
-| `to_rus` | Less / more paid to Russia | full change in volume at pre-war prices |
+| `to_rus` | Less / more paid to Russia | change in volume at pre-war prices, × Russia's net gain per euro (round 10) |
 | `from_rus` | Income lost on sales given up / income from extra sales | change × value kept × genuinely extra ([the money rule](overview.md#the-money-rule-round-6)) |
-| `buy_ukr` | Extra purchases from Ukraine | rise above expected, each year, full value; a fall is not held against a country |
+| `buy_ukr` | Extra purchases from Ukraine | rise above expected, each year, × Ukraine's net gain per euro (round 10); a fall is not held against a country |
 | `sell_ukr` | Extra sales to Ukraine | rise above expected, × the money rule, subtracted as flowback |
 
 ## Profit, not revenue
 
-Selling EUR 10bn less to Russia does not cost the seller EUR 10bn: the goods would have cost money to make. Since round 4, sales given up and extra sales (goods and services) count as the seller's **profit**, `META.lost_margin = 0.2` (about 20%), the same share used for flowback. `profit3()` in `calc()` applies it with a range of 0.5× to 1.5× the margin. The audit had shown why this matters: Cyprus at +30% of GDP and Lithuania at +45% came from sales and services counted at gross revenue ([audit2-notes.md §5](../../research/2026-10/gaps/audit2-notes.md)). In the cost view, the same 20% is the "profit lost on sales to Russia".
+Selling EUR 10bn less to Russia does not cost the seller EUR 10bn: the goods would have cost money to make. Two rules apply today.
 
-**Round 10: purchases count at the seller's net gain.** A purchase from Russia counts at Russia's net gain on that mix of goods (about 0.6 of the price for oil and gas, 0.1–0.2 for other goods), and an extra purchase from Ukraine at Ukraine's (0.045–0.18), so that trade and aid are on the same scale ([overview.md](overview.md#the-net-gain-rule-round-10)).
+**The money rule (round 6): income counts at value kept × genuinely extra.** Income from sales to Russia counts at the value kept in the seller's economy (domestic value added, OECD TiVA) times the share that is genuinely extra business (not sold elsewhere instead). There are separate factors for sales lost and extra sales, and for goods and services (`c.vk` in `data.json`, from [`value_kept.json`](../../research/2026-10/gaps/value_kept.json); `earned3()` in `calc()`). For example, Germany's lost sales to Russia count at 0.25 (0.14–0.39) and Finland's at 0.15 (0.06–0.28). In the cost view this is "Income lost on sales to Russia". Money flowing back follows the same rule ([overview.md](overview.md#the-money-rule-round-6)).
 
-**Round 6: the money rule replaces the flat 20%.** Income from sales to Russia now counts at the value kept in the seller's economy (OECD TiVA) times the share that is genuinely extra, with separate factors for sales lost and extra sales, and for goods and services ([overview.md](overview.md#the-money-rule-round-6)). The 20% figures above stay as a check. Labels now read "income" rather than "profit".
+**The net-gain rule (round 10): purchases count at the seller's net gain.** A purchase from Russia counts at Russia's net gain on that mix of goods (about 0.6 of the price for oil and gas, 0.1–0.2 for other goods), and an extra purchase from Ukraine at Ukraine's (0.042–0.175), so that trade and aid are on the same scale ([overview.md](overview.md#the-net-gain-rule-round-10)).
+
+**History: the flat 20% margin (rounds 4–5).** From round 4 to round 5, sales given up and extra sales counted as the seller's profit, `META.lost_margin = 0.2`, with a range of 0.5× to 1.5× the margin; flowback used the same share. The audit had shown why a margin was needed: Cyprus at +30% of GDP and Lithuania at +45% came from sales and services counted at gross revenue ([audit2-notes.md §5](../../research/2026-10/gaps/audit2-notes.md)). The money rule replaced the flat margin in round 6. `META.lost_margin` is still written to `data.json`, but `calc()` uses it only for a country without `vk`, and every country has one.
 
 ## Re-export hubs
 
@@ -120,7 +122,7 @@ Russia's own customs record more imports than its partners report selling: EUR 2
 
 ## Hong Kong gold
 
-98% of Hong Kong's imports from Russia are precious metals. The share passed on to mainland China (0.57 in 2022 falling to 0.37 in 2025, from Hong Kong's own gold trade in `refine.json`) counts for China; only the rise above the pre-war level is treated as gold in transit. Hong Kong is labelled a gold transit hub. Code: the end of `apply_residual()`.
+98% of Hong Kong's imports from Russia are taken to be precious metals (`HK_METALS_SHARE`; this figure is not yet traced to a research file, see [decisions](../decisions.md#constants-and-rules-written-down-in-round-11)). The share passed on to mainland China (0.57 in 2022 falling to 0.37 in 2025, from Hong Kong's own gold trade in `refine.json`) counts for China; only the rise above the pre-war level is treated as gold in transit. Hong Kong is labelled a gold transit hub. Code: the end of `apply_residual()`.
 
 ## Gold and hidden channels
 

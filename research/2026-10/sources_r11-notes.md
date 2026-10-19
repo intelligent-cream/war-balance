@@ -49,4 +49,14 @@ This round answers a reader's criticism: many source entries in `site/data.json`
   A person opening these in a browser should confirm them.
 - **`ua_arms`:** the Czech trade ministry's own licence reports are not linked in the research files. The figures come from press summaries of them. Linking the MPO annual export-control reports directly would make this primary.
 - **Press-only figures.** `nonreport`, `hidden`, `undisclosed`, `private`, `china_military` and `payment_agents` still rest largely on press reports. That is the nature of these flows, and their certainty letters (C-D) already say so.
-- **Not wired into the map yet.** Showing these links on the site needs a change to `pipeline/build_data.py` or `site/`. No such change was made in this round.
+- **Wired into the map (update).** This item is out of date: the build now copies the confirmed links into `site/data.json` (`links`, the final pass of `build()` in `pipeline/build_data.py`), and the site shows them under each source (`srcLinks()` in `site/index.html`).
+
+## Update after the round-11 audit (2026-10-19)
+
+The figures above describe the file when it was first written. After the traceability audit:
+
+- **Count.** The file now has 64 ids. `site/data.json` lists 55. The 4 `assumptions_r11_*` ids were added with an empty `links` list: their links are built by `attach_r11_sources()` from the proposals' own sources, and an empty list here keeps them. `sanctions_share` was added because the sanctions note in each panel now cites it; its EUR-Lex link is unconfirmed (no readable page for an automated fetch).
+- **`refugees_net` is used.** It is cited on the refugee part of 66 countries; the list of unused ids above was wrong about it.
+- **Superseded ids.** `flowback_model`, `csis`, `purl`, `flowback_default`, `flowback_kiel`, `eu_industry`, `ua_arms`, `other_mil` and `other_mil2` no longer produce a number. Each has a `superseded` field, and `prune_sources()` keeps them out of `site/data.json`. `flowback_default`'s link title and note now give the round-11 share (0/10/30%).
+- **Ids now cited where they feed a number.** `gas_prices` (payments to Russia and the windfall of 50 countries) and `shadow_fleet` (the shipping part) are now cited by the parts they feed. `value_kept` and `net_gain_russia` are cited on every part they weight.
+- **Still without a primary link:** `military_rus_r6` and `people`. The audit tried to confirm the Multilateral Sanctions Monitoring Team's first report (29 May 2025) and the joint statements of its member states, but their pages blocked automated access. They are listed as open in `docs/limitations.md`.

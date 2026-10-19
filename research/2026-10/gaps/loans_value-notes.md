@@ -27,7 +27,7 @@ Two things decide the answer:
 | Scenario | 2022 | 2023 | 2024 | 2025 | 2026 | Basis |
 |---|---|---|---|---|---|---|
 | low | 7% | 7% | 6% | 6% | 6% | "Normal" peacetime rate: the 2021 Eurobonds; OECD DAC rates for lower-middle income (7%) and, from 2024, upper-middle income (6%) countries ([OECD](https://www.oecd.org/en/topics/sub-issues/oda-eligibility-and-conditions/official-development-assistance-definition.html)) |
-| central | 10% | 10% | 10% | 10% | 10% | The classic IMF/OECD 10% convention, at the bottom of the post-restructuring yields |
+| central | 10% | 10% | 10% | 10% | 10% | A judgement at the bottom of the post-restructuring yields. 10% was the OECD DAC's old flat rate for its grant-element test; it is not a current IMF or OECD standard (round 11 audit: the IMF's debt-limits policy uses a unified 5% rate, [IMF](https://www.imf.org/en/Topics/sovereign-debt/debt-limits-policy); the DAC uses 6–9% by income group since the 2018 data) |
 | high | 15% | 15% | 14% | 13% | 13% | Post-restructuring yields of 11–16% |
 
 The low end is the owner's question "at what rate to Ukraine normally". The high end treats the loan as money nobody else would have lent.

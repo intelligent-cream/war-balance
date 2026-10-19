@@ -28,7 +28,7 @@ checked line by line by a person.** The verification status of each input is in
 |---|---|---|---|
 | Aid from the **Kiel Institute Ukraine Support Tracker** (bilateral allocations) | The most complete, item-level, peer-reviewed aid database | Pledges (overstate), national press releases (inconsistent) | [aid](method/aid-refugees-military.md#aid) |
 | **EU-level aid** split over members by their share of the EU budget | Members pay for it; Kiel uses the same split | Leave it with "the EU" (hides members' share) | [EU-level aid](method/aid-refugees-military.md#eu-level-aid) |
-| **Loans at their grant element** (10% discount rate, 6–15% range) | A loan that is repaid costs the lender less than a grant | Face value (overstates loans) | [loans](method/aid-refugees-military.md#loans-at-their-economic-value-round-5) |
+| **Loans at their grant element** (10% discount rate, 6–15% range; the 10% is a judgement, [below](#constants-and-rules-written-down-in-round-11)) | A loan that is repaid costs the lender less than a grant | Face value (overstates loans) | [loans](method/aid-refugees-military.md#loans-at-their-economic-value-round-5) |
 | **Donated weapons at market value** (what they are worth to Ukraine), not the donor's book value | Old stock is often booked low or high; the value to Ukraine is what matters for the shift | Book value as reported | [weapons](method/aid-refugees-military.md#donated-weapons-at-market-value-round-5) |
 | **Refugees at net cost**: hosting cost minus the taxes working refugees pay, floored at zero | Hosting is real support, but working refugees also pay taxes | Gross cost (overstates hosts with high employment) | [refugees](method/aid-refugees-military.md#refugees) |
 
@@ -131,6 +131,76 @@ Effects are on the headline (% of GDP, 2022 to August 2026, central), unless the
   Togo and Gibraltar; payment-agent fees; Greek shadow-fleet freight; other company taxes; extra sales to Russia, weapons,
   tourism and shadow-shipping factors; refugee costs of Ireland, the UK and Moldova; Canadian and US donations; Hong
   Kong's 2022–2025 onward shares; the Marshall Islands' and Gibraltar's caps.
+
+## Constants and rules written down in round 11
+
+A traceability audit in round 11 found choices that change a number but were not on this page, and constants in the
+code that no research file explains. They are listed here, labelled **data** (traced to a file or a source) or
+**judgement** (a choice someone made, which can be argued with). None of the values was changed by the audit. Line
+numbers are those of the round-11 audit version of [`build_data.py`](../pipeline/build_data.py) and
+[`site/index.html`](../site/index.html).
+
+### Decisions that were not written down
+
+| decision | data or judgement | why | where |
+|---|---|---|---|
+| **Euroclear and Clearstream**: a third of the return denied on reserves they hold goes to the host (Belgium, Luxembourg), two thirds to all EU members by their share of EU-level aid | judgement (owner, round 7) | the freeze is an EU decision, but the host carries the legal risk. It moves Belgium by about 0.8 points of GDP | `HOST_SHARE`, build_data.py:2530; [frozen reserves](method/russia-state-and-companies.md#frozen-central-bank-reserves-round-7) |
+| **Default ranges per certainty letter**: A ±5%, B ±15%, C ±35%, D ±70% | judgement | a part with no range of its own still needs one; the widths grow with how little was checked | `RANGE`, index.html:518; [ranges](method/ranges.md#certainty-letters) |
+| **Baseline and actual values correlated 0.5** inside `spread()` | judgement | both come from the same statistics office, so their errors partly cancel; not measured | index.html:615; [ranges](method/ranges.md#quadrature-for-traded-flows-spread) |
+| **Letters fixed in `calc()`**: gold and hidden payments always D, Russian oil bought via other countries always C, the share of EU-level aid always B | judgement | every buyer's value in these parts is modelled the same way | index.html:680, :687, :695; [ranges](method/ranges.md#certainty-letters) |
+| **Laundered-oil cap of 1% (middle) and 2% (high) of GDP a year**, where fuel use is not measured | judgement | ship registries and storage points cannot use the fuel the model assigns them. Still applies to the Marshall Islands and Gibraltar | `LAUNDERED_CAP`, build_data.py:366; [energy](method/energy-and-laundered-oil.md#valuing-and-capping) |
+| **Hub trading margins**: goods 5–20%, UAE 3–15%, gold 0.3–6%, Belarus 10%, Baltic states 7% | judgement ("an educated guess" in the research) | a hub that passes goods on keeps only its margin | [trade](method/trade.md#re-export-hubs), [reexports-notes](../research/2026-10/gaps/reexports-notes.md) |
+| **Non-reporting partners: only the paid share counts** | data per country, judgement in the rule | Russian supplies given on credit or as aid are Russian support, not money to Russia | build_data.py:616; [nonreport-notes](../research/2026-10/gaps/nonreport-notes.md) |
+| **Private donations where no national total exists**: 0.015% of GDP (Western donors), 0.03% (Central and Eastern Europe), 0.06% (Baltic states) for 2022 | judgement | scaled on the countries with national totals | [uncovered-notes](../research/2026-10/gaps/uncovered-notes.md); [aid](method/aid-refugees-military.md#undisclosed-aid-and-private-donations) |
+| **Countries with no aid record**: 0, with an upper bound of 0.002% of 2022 GDP (less in later years) | judgement | nobody is assumed to have given nothing for certain | [aid_gaps-notes](../research/2026-10/gaps/aid_gaps-notes.md) item 4 |
+| **2026 no-war price = the actual world price** (the Hormuz closure) | judgement | the 2026 price spike came from the closure of the Strait of Hormuz, not from Russia's war. The research left this open: keeping the pre-invasion path would count the spike as windfall (over half of India's) | `NW_WORLD_2026`, build_data.py:1747; [prices](method/prices.md#no-war-prices-round-7), [energy_nowar-notes](../research/2026-10/gaps/energy_nowar-notes.md) open question 2 |
+| **Gold colour and outline**: a country is gold when its total is negative mainly because it earned from the war effort; the outline needs at least EUR 10m and 0.05% of GDP | judgement (owner, round 6) | earning from supplying Ukraine is not money toward Russia; the threshold hides rounding noise | index.html:761–762; [overview](method/overview.md#two-balances-round-6) |
+| **Rankings leave out economies under EUR 5bn GDP** | judgement | small economies' trade data are noisy and would fill the top of a % of GDP list | `MIN_GDP_RANK`, index.html:1530 |
+| **Loan cost range in the cost view**: half to one and a half times the grant equivalent (13%–39% of face) | judgement | a symmetric band around the middle; the round-11 research measured 9%–47% | index.html:711 |
+| **10% discount rate for loans** | judgement | the bottom of Ukraine's post-restructuring Eurobond yields. It is not a current international standard: the IMF's debt-limits policy uses a unified 5% ([IMF](https://www.imf.org/en/Topics/sovereign-debt/debt-limits-policy)); 10% was the OECD DAC's old flat rate | [loans](method/aid-refugees-military.md#loans-at-their-economic-value-round-5), [loans_value-notes](../research/2026-10/gaps/loans_value-notes.md) |
+| **One duty rate for all three waivers** (EU, UK, Canada), weighted by purchases | judgement | the map holds one rate (`META.tariff_rate`); see "Left out" above | `TARIFF_RATE_YEARS`, build_data.py:61 |
+| **Refugee letters**: a grade such as "A-B" counts at its weaker letter; Poland's refugee part at most C | judgement (round 11 audit) | Poland's and Czechia's costs were checked only against press articles ([verify_r11_aid-notes](../research/2026-10/verify_r11_aid-notes.md)). Czechia A → B, Poland, Germany and Lithuania B → C; no total's letter or value changes | `REFUGEE_CERT_CAP`, build_data.py:2350 |
+
+### Constants in the code
+
+| file:line | constant | status | basis |
+|---|---|---|---|
+| build_data.py:323 | `EUR_PER_MT_2021`: crude 0.414, products 0.549, gas and LNG 0.583, coal 0.130 EUR bn per Mt | data | CREA's 2021 value for Germany by fuel ([`crea.json`](../research/2026-10/crea.json)) ÷ the tracker's 2021 tonnes ([`energy.json`](../research/2026-10/gaps/energy.json)): 9.065/21.935, 4.057/7.393, 18.177/31.167, 0.831/6.37 |
+| build_data.py:343, :952 | China's fuel = crude value ÷ **0.70** | judgement | called "India's measured crude-to-fuel ratio", but India measures 0.64–0.75 by year (mean 0.67, [crude_content](../research/2026-10/gaps/crude_content-notes.md)). See proposals below |
+| build_data.py:3046 | `HK_METALS_SHARE = 0.98` | **not traced** | no research file holds Hong Kong's HS 71 imports from Russia; the raw Comtrade downloads have totals only |
+| build_data.py:1615 | `GAS_IN_CUSTOMS`: Türkiye 1.0, Poland 1.0, Germany 0.07 | Türkiye and Poland: data; Germany: judgement | [audit-notes](../research/2026-10/gaps/audit-notes.md) items 1 and 8 (Türkiye, Poland's Yamal gas in chapter 99); item 2 gives EUR 2.3–3.5bn of unlabelled German gas, but not the 7% |
+| build_data.py:3103 | Gibraltar keeps 10% (5–30%) of its Russian fuel | judgement | a reseller's margin, as for other hubs; bunkers are paid by shipowners elsewhere |
+| build_data.py:3124 | Malta's services bought from Russia 0.127, 0.133 (2021–2022), ±35% | data, band judgement | the map's own 2021–2022 values and the 2023–2026 fix in [`round4b.json`](../research/2026-10/gaps/round4b.json) `artefacts.MLT`; ±35% is the width of letter C |
+| build_data.py:180 | Malta's own fuel imports, low ×0.76, high ×1.43 | judgement | the band of the model's laundered-oil values, applied to Malta's own customs figure |
+| build_data.py:222 | Hungary's refugee cost, low ×0.6, high ×1.5 | data (proposal) | `range_factor` in [`assumptions_r11_people.json`](../research/2026-10/gaps/assumptions_r11_people.json) |
+| build_data.py:2527 | `BEL_EUROCLEAR_TAX`: 2024 1.7, 2025 1.0, 2026 0.5 | 2024–2025 data, 2026 judgement | [frozen_assets-notes](../research/2026-10/gaps/frozen_assets-notes.md) item 3 (Belga); 2026 is "a guess" |
+| build_data.py:2563 | frozen-reserve return, low end ×0.8 | judgement | Russia would have spent part of the reserves; the notes guess 10–30% |
+| build_data.py:918 | EU laundered oil ×0.62 (0.5–0.8) | middle data, band judgement | 0.62 = 1 ÷ 1.6, Global Witness's 35m barrels against the model ([audit-notes](../research/2026-10/gaps/audit-notes.md) item 4); the Global Witness report itself is not linked |
+| build_data.py:1752–1786 | `GAS_FORMULA`, `LNG_FORMULA` weights (Türkiye 0.7/0.3, Greece, Bulgaria, North Macedonia, Moldova 0.5/0.5, default 0.75/0.25, Taiwan and China LNG 0.5/0.5) | contract types data, mixed weights judgement | [energy_nowar-notes](../research/2026-10/gaps/energy_nowar-notes.md) section 2 and its note that the hub shares are "judgement calls"; Türkiye from [turkey_prices-notes](../research/2026-10/gaps/turkey_prices-notes.md) |
+| build_data.py:1979 | services trend bounds kept within ×2.5 of the middle | judgement | tiny or noisy series give extreme fitted bounds |
+| build_data.py:1991 | company-tax trend fallback 1.045 | data | `trend2.json` global central ([trend2-notes](../research/2026-10/gaps/trend2-notes.md)) |
+| build_data.py:1645 | Belarus gas price ±2% | judgement | a dollar contract price; [`gas_prices.json`](../research/2026-10/gaps/gas_prices.json) itself gives ±8% (2023–2025) and ±15% (2026) |
+| build_data.py:1673 | Tajikistan's 2021 price band ±3% | judgement | its 2021 band came from a fixed ratio that cancels in the index |
+| build_data.py:2239 | `conduit` Kazakhstan 3.5, Netherlands 4.7 | data | Polymetal's transfer, EUR 3.5bn (1.7–6.0), and Yandex in [company_flows-notes](../research/2026-10/gaps/company_flows-notes.md); the notes' table rounds Kazakhstan to 3.6 |
+| build_data.py:3062 | freight share per importer, low ×0.7, high ×1.4 | judgement (in the proposal) | the rule in [`assumptions_r11_people.json`](../research/2026-10/gaps/assumptions_r11_people.json) `CIF_SHARE` |
+| build_data.py:76 | `USD_PER_EUR` 2022–2024 | data | ECB annual averages ([trade-notes](../research/2026-10/trade-notes.md)) |
+| build_data.py:1611 | `MWH_PER_BCM = 10.55e6` | data | 10.55 kWh per m3, gross calorific value, as in `energy2.json` and `gas_prices.json` |
+| build_data.py:3481 | UAE customs fuel taken off CREA's: 0.37, 0.62, 0.19 (2024–2026) | data | [round4b-notes](../research/2026-10/gaps/round4b-notes.md); 2026 is 0.19, not 0.26, because the addition cannot fall below zero |
+
+### Proposals that would change numbers (not applied)
+
+The audit found these values questionable. Changing them would move figures on the map, so they are left as they are
+until someone decides. The expected effect is a rough estimate.
+
+| value | proposal | expected effect |
+|---|---|---|
+| China's crude-to-fuel ratio 0.70 | use India's measured ratio per year (`crude_k(y, "IND")`, mean 0.67) | about EUR 0.7bn more crude money moved from China to its fuel buyers over 2022–2026, about EUR 0.4bn at Russia's net gain on crude: China's headline moves by less than 0.01 points; its buyers move toward Russia by the same amount in total |
+| loan cost range in the cost view (13%–39% of face) | use the measured 9%–47% (`loans_grant_eq_lo/hi` in `data.json`) | cost view only: wider ranges for loan-heavy donors (Japan, Germany, France, Canada); middle values unchanged |
+| 10% discount rate | test 5% (IMF) or Ukraine's 2021 yields (6–7%) | loans would count for less: the research's low end already does this (EUR 96.5bn face → about 40bn instead of 64bn); Japan, Germany, France, Canada, Italy and the UK move down |
+| one duty rate for the EU, UK and Canada (0.2%) | one rate per waiver | cost view only, tiny: the EU's purchases dominate the average, so EU members barely move (the split by year changes); the UK about the same; Canada's very small part about five times larger |
+| Belarus gas price ±2% | the research's ±8% / ±15% | Belarus's range a little wider; middle unchanged |
+| `HK_METALS_SHARE` 0.98 | measure HS 71 ÷ all Hong Kong imports from Russia (UN Comtrade) | unknown until measured; it sets how much of Hong Kong's rise counts at the gain on gold |
+| Germany's `GAS_IN_CUSTOMS` 0.07 | derive it from EUR 2.3–3.5bn of unlabelled gas against German final-use gas | small: Germany's payments to Russia move by at most about EUR 1bn |
 
 ## What is data and what is estimated
 
