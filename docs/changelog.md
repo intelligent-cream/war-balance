@@ -1,6 +1,6 @@
 # Changelog: research rounds
 
-The map's data were built in thirteen research rounds in October 2026, each followed by changes to the pipeline and the site. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
+The map's data were built in fourteen research rounds in October 2026, each followed by changes to the pipeline and the site. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
 
 ## Round 1
 
@@ -319,6 +319,70 @@ after the round-13 report, both raised by the audit; [decisions](decisions.md#ro
 Ranking (GDP at least EUR 5bn, range not crossing zero): Lithuania +10.50, Estonia +9.57, Moldova +7.77, Finland +7.26,
 Latvia +5.52 at the top; North Korea −10.16, Yemen −7.86, Tunisia −7.09, Uzbekistan −6.15, Hungary −5.30 at the
 bottom. Togo, Tajikistan, Montenegro and Argentina left the ranking (their ranges cross zero).
+
+## Round 14
+
+**Independent audit 3, 19 October 2026** (every change raised by the audit and approved by the owner;
+[decisions](decisions.md#round-14-independent-audit-3), [decision log](decision-log.md#round-14-independent-audit-3-19-october)).
+Steps in the order applied, net % of a year's GDP, each step alone:
+
+1. **C1, measured fuel share** in Russia's gain on what was bought: Yemen −7.86 → −4.06, Moldova 7.77 → 6.06, Libya
+   −5.20 → −3.72, Nigeria 1.51 → 1.06, Brunei −1.27 → +1.75 ([prices](method/prices.md#the-mix-of-what-was-bought-round-14)).
+2. **C2, customs values for what was bought**, tracker tonnes only to split fuels, copied tracker years flagged:
+   Uzbekistan −6.32 → −3.16, Belarus −5.00 → −2.02, Tunisia −7.54 → −5.06, Libya −3.72 → −6.63, Yemen −4.06 → −6.87,
+   Armenia −1.65 → +0.36.
+3. **C3, FOB on both sides**: the freight surge out of customs values: India −2.92 → −2.29, Türkiye −2.90 → −2.51,
+   Tunisia +0.39, Bulgaria +0.43, China −0.75 → −0.65 ([prices](method/prices.md#one-price-basis-fob-round-14)).
+4. **H2, laundered-oil growth on its own base, fuel price screen, Nigeria labelled**: Lebanon 3.71 → 2.73, Libya
+   −6.18 → −7.08, Nigeria 1.32 → 0.68, Malta 1.43 → 1.04, Belgium 3.49 → 3.14.
+5. **H3, hubs pass EU-refined fuel on**: Belgium 3.14 → 2.81, Malta 1.04 → 0.75, Nigeria 0.68 → 0.89.
+6. **M2, normal return 5% real after tax + country risk premium, services without real estate**: Cyprus 0.39 → 0.79,
+   Belarus −2.02 → −2.40, Lithuania +0.10; US weapons flowback 2.2% → 3.6% of the money flowing back.
+7. **M5, current euros** for every trade part: Lithuania 10.67 → 11.91, Estonia 9.99 → 11.17, Moldova 5.97 → 6.98,
+   Hong Kong −2.34 → −4.16 (its gold at today's gold price).
+8. **M4, seizures counted** ("Seized by Russia"): Austria 0.26 → −0.43, Finland 8.16 → 7.54, Ireland 1.42 → 0.93,
+   Germany 3.45 → 3.23.
+9. **M6** frozen reserves on their own line; **H5** cut label completed (labels only); **M3** sign-aware correlations
+   (ranges only); **H4** method band with nine alternatives, range wording and grades by primary-data share; **C4**
+   share cards and texts; **H1** flowback text; **M1** fairness note; **L1–L5** docs, legend, notes and sources.
+
+Combined, round 13 → round 14 (ranking: GDP at least EUR 5bn, range not crossing zero): Lithuania +10.50 → +11.91,
+Estonia +9.57 → +11.17, Finland +7.26 → +7.54, Moldova +7.77 → +6.98, Latvia +5.52 → +5.49, the Netherlands +4.88 →
++4.80, Poland +3.62 → +4.08, Denmark +4.05 → +3.88, Germany +3.25 → +3.23, Belgium +3.15 → +2.69, the US +0.48 →
++0.48; at the bottom North Korea −10.16 → −10.29, Libya −5.20 → −7.03, Yemen −7.86 → −6.86, Hungary −5.30 → −5.31,
+Tunisia −7.09 → −4.92, Hong Kong −2.36 → −4.16, Uzbekistan −6.15 → −3.53, India −2.74 → −2.38, China −1.03 → −0.72.
+Nigeria (+0.93, range +0.14 to +1.75), Malta and Ireland leave the top 20; Montenegro, Britain and Portugal enter it. Totals' letters: 1 A, 5 B, 209 C, 16 D (were 208 D, 23 C). Four new checks in
+`check_data.py` (22 measured fuel share, 23 FOB price basis, 24 share-card qualifier; check 19 adapted to customs).
+
+## Round 14b
+
+**Two owner changes, 19 October 2026** ([decisions](decisions.md#round-14b-taken-by-russia-not-in-the-totals),
+[decision log](decision-log.md#round-14b-taken-by-russia-and-one-normal-return-19-october)). Net % of a year's GDP,
+each step alone:
+
+1. **Taken by Russia, not in the totals.** Seizures (round 14, M4) and forced exit costs (round 5: the forced discount
+   and the exit fee paid to Russia's budget) leave the net shift and both headline numbers and count in the cost view
+   as a sacrifice ("Seized by Russia (companies' assets)"; "Forced sales: discount and exit fee taken by Russia").
+   The panel says "Russia took €X from companies of this country (seizures and forced sales); not in the totals,
+   counted as a cost carried"; the table, CSV and JSON have a "not in totals" column; the map has a square marker
+   (layer "Taken by Russia") where it is at least 0.1% of GDP. New check 25. Net: Finland 7.54 → 8.43, Austria −0.43 →
+   +0.29, Ireland 0.93 → 1.47, Denmark 3.88 → 4.40, Norway 3.06 → 3.43, the Netherlands 4.80 → 5.16, Germany 3.23 →
+   3.50, France 1.33 → 1.56, the UK 1.27 → 1.50. Cost view: Finland 3.23 → 4.11, Austria 0.71 → 1.43, Ireland 1.22 →
+   1.76, Germany 2.46 → 2.73 ([Russia's state and companies](method/russia-state-and-companies.md#round-14b-taken-by-russia-not-in-the-totals)).
+2. **Russia's and Ukraine's normal return.** Both files now subtract 5% real (4–6%) + the country risk premium (Russia
+   3.90%, Ukraine 15.54%), on book capital as a nominal USD rate: Russia 11.4% (was 9%), Ukraine 23.0% (was 8.2% after
+   tax). Capital per unit of revenue is measured per group (Rosneft, Novatek, PhosAgro, Nornickel, Kernel, Astarta,
+   Ferrexpo, Rosstat, Ukrstat, Damodaran's emerging-market industries). Russia's crude gain 2023 0.64 → 0.57, non-fuel
+   average 2024 0.118 → 0.103; Ukraine's export average 2024 0.069 → 0.036. Net: Estonia 11.17 → 9.90, Lithuania 12.09
+   → 10.98, Moldova 6.98 → 5.99, Libya −7.03 → −6.16, Yemen −6.86 → −6.11, Finland 8.43 → 7.76, Tunisia −4.92 →
+   −4.26, Latvia 5.49 → 4.94, Poland 4.11 → 3.74, India −2.38 → −2.08 ([net_gain_russia-notes](../research/2026-10/gaps/net_gain_russia-notes.md),
+   [net_gain_ukraine-notes](../research/2026-10/gaps/net_gain_ukraine-notes.md)).
+
+Combined, round 14 → round 14b: Lithuania +11.91 → +10.98, Estonia +11.17 → +9.90, Finland +7.54 → +7.76, Moldova
++6.98 → +5.99, Latvia +5.49 → +4.94, Denmark +3.88 → +4.32, Poland +4.08 → +3.74, Germany +3.23 → +3.34, Austria
+−0.43 → +0.20, Ireland +0.93 → +1.45, the US +0.48 → +0.49; at the bottom North Korea −10.29 → −10.28, Libya −7.03 →
+−6.16, Yemen −6.86 → −6.11, Hungary −5.31 → −5.33, Tunisia −4.92 → −4.26, India −2.38 → −2.08. Ireland enters the
+top 20, Portugal leaves it. Totals' letters: 1 A, 6 B, 205 C, 19 D.
 
 ## See also
 

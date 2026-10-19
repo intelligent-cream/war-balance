@@ -15,7 +15,7 @@ Sources: Eurostat `bop_its6_det` (EU, EFTA, candidates, Turkey), OECD-WTO BaTiS 
 
 **Narrower data** for Georgia (National Bank travel revenue), Turkey (TÜİK and Russian arrivals × spend), Tunisia, Cyprus and others come from [`narrow.json`](../../research/2026-10/gaps/narrow.json). **Malta's** suppressed post-2022 services data are filled (`fix_artefacts()`). Price level: euro-area services HICP ([prices.md](prices.md)).
 
-**Round 13 (audit): services sold to Russia count at the seller's net gain** (accommodation and food, business services; OECD median 0.002, Poland 0.16, the US 0.05) × genuinely extra, instead of value kept × genuinely extra. Cyprus: +6.1% → −0.3% of GDP, because the business services it sold Russia before the war earned about a normal return.
+**Round 13 (audit): services sold to Russia count at the seller's net gain** (accommodation and food, business services; OECD median 0.002, Poland 0.16, the US 0.05 in round 13; round 14, with a 5% real normal return plus the country's risk premium and business services without real estate: OECD median 0.040, Poland 0.18, the US 0.11) × genuinely extra, instead of value kept × genuinely extra. Cyprus: +6.1% → −0.3% of GDP, because the business services it sold Russia before the war earned about a normal return.
 
 ## Shipping
 

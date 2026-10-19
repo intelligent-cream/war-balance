@@ -1,4 +1,6 @@
-"""Net gain per euro of sales for sellers other than Russia and Ukraine (round 13): research/2026-10/gaps/net_gain_sellers.json.
+"""Net gain per euro of sales for sellers other than Russia and Ukraine (round 13; normal return revised in round 14):
+research/2026-10/gaps/net_gain_sellers.json, and the round-13 method kept for the method band in
+research/2026-10/gaps/net_gain_sellers_r13.json.
 
 The same concept as net_gain_russia.json and net_gain_ukraine.json: taxes on production plus profit above a normal
 return, as a share of output. From the OECD STAN database (2025 edition), by country and industry:
@@ -7,10 +9,20 @@ return, as a share of output. From the OECD STAN database (2025 edition), by cou
             - the labour part of mixed income (self-employed x compensation per employee)
             - normal return x net capital stock at current replacement cost N11NA) / output P1
 
-Profit tax is paid out of the operating surplus, so it is inside the gain. Central: the mean of 2021-2023 (the years
-STAN has during the war) at a 9% normal return, as for Russia; low: the lowest year of 2019-2023 at 10%; high: the
-highest at 8%. Each share is kept between 0 and 1. Economies outside STAN take the OECD median of the same industry
-group (marked "oecd_median"). Raw downloads: research/2026-10/raw/oecd_stan/ (fetched 2026-10-19 from
+Profit tax is paid out of the operating surplus, so it is inside the gain, and the normal return is an after-tax rate.
+Round 14 (audit M2, approved by the owner): the normal return is 5% a year above inflation (real), after company tax,
+plus the country's risk premium (Damodaran, January 2026: research/2026-10/gaps/country_risk_r14.json); low case 6%,
+high case 4% (plus the same premium). A real rate, because N11NA is valued at current replacement cost and operating
+surplus excludes holding gains: the inflation part of investors' return comes from the rising value of the capital,
+so a nominal rate would take inflation out twice (OECD, Measuring Capital 2009, sections 8 and 16.1.2). Services are
+the business economy without real estate (STAN GTNXL, sections G-N less L): real estate's dwelling stock made the
+capital of "G-N" two to three times output. Round 13 used 9% (8-10%) nominal and G-N with real estate: that method is
+written to net_gain_sellers_r13.json for the method band.
+
+Central: the mean of 2021-2023 (the years STAN has during the war); low: the lowest year of 2019-2023 at the low-case
+rate; high: the highest at the high-case rate. Each share is kept between 0 and 1. Economies outside STAN take the
+OECD median of the same industry group (marked "oecd_median"): they have no capital stock to apply their own rate to.
+Raw downloads: research/2026-10/raw/oecd_stan/ (fetched 2026-10-19 from
 https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_STAN@DF_STAN_2025,1.0/...).
 
 Run from the repository root: python3 research/2026-10/scripts/net_gain_sellers.py
@@ -20,6 +32,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 import statistics
 from collections import defaultdict
 from pathlib import Path
@@ -27,7 +40,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 RAW = ROOT / "research/2026-10/raw/oecd_stan"
 OUT = ROOT / "research/2026-10/gaps/net_gain_sellers.json"
-R = {"central": 0.09, "low": 0.10, "high": 0.08}  # normal return before tax, as in net_gain_russia.json
+OUT_R13 = ROOT / "research/2026-10/gaps/net_gain_sellers_r13.json"
+# round 14: real, after company tax, before the country premium (round 13: 9% nominal, 10% low case, 8% high case)
+R_NEW = {"central": 0.05, "low": 0.06, "high": 0.04}
+R_OLD = {"central": 0.09, "low": 0.10, "high": 0.08}
+CRP = {
+    k: v["crp"]
+    for k, v in json.loads((ROOT / "research/2026-10/gaps/country_risk_r14.json").read_text())["countries"].items()
+}
+METHOD = os.environ.get("NG_METHOD", "r14")  # "r13": the round-13 rate and services aggregate, for the method band
+R = R_OLD if METHOD == "r13" else R_NEW
+SERVICES = "GTN" if METHOD == "r13" else "GTNXL"
 CENTRAL_YEARS, RANGE_YEARS = (2021, 2022, 2023), (2019, 2020, 2021, 2022, 2023)
 # industry groups per kind of earning (the same industries value_kept.json used, but the seller's own industry only)
 GROUPS = {
@@ -35,7 +58,7 @@ GROUPS = {
     "weapons": ["C252", "C303", "C304", "C26"],  # weapons and ammunition, aircraft, military vehicles, electronics
     "weapons_fallback": ["C25", "C26", "C28", "C30"],  # where STAN has no 3-digit defence industries
     "fuel": ["C19"],  # refined petroleum (fuel sold to Ukraine)
-    "services": ["I", "GTN"],  # accommodation and food; business services
+    "services": ["I", SERVICES],  # accommodation and food; business services (round 14: without real estate)
     "shipping": ["H50"],  # water transport
     "insurance": ["K65"],
     "finance": ["K"],  # payment agents' fees
@@ -43,7 +66,14 @@ GROUPS = {
 PARENT = {"C252": "C25", "C303": "C30", "C304": "C30"}
 
 data: dict[tuple[str, str], dict[tuple[str, int], float]] = defaultdict(dict)
-for name in ("stan_flows.csv", "stan_capital.csv", "stan_persons.csv"):
+for name in (
+    "stan_flows.csv",
+    "stan_capital.csv",
+    "stan_persons.csv",
+    "stan_gtnxl_flows.csv",
+    "stan_gtnxl_capital.csv",
+    "stan_gtnxl_persons.csv",
+):
     with open(RAW / name) as fh:
         rows = list(csv.DictReader(fh))
     for x in rows:
@@ -100,6 +130,8 @@ def share(c: str, a: str, y: int, r: float) -> tuple[float, dict] | None:
     # tiny 3-digit industries with implausible accounts (taxes or surplus larger than output) are left out
     if abs(tax) > 0.5 * p or abs(nos) > p or mixed > p:
         return None
+    # round 14: the country's risk premium on top of the normal return (not in the round-13 method)
+    r = r + (CRP.get(c, 0.0) if METHOD != "r13" else 0.0)
     g = (tax + nos - mixed - r * k) / p
     return g, {
         "tax": tax / p,
@@ -164,6 +196,13 @@ res = {
         "what": "Net gain per euro of sales for every seller other than Russia and Ukraine: other taxes on production plus profit above a normal return, as a share of output, by industry group (round 13 audit: one valuation rule for every seller)",
         "formula": "(D29X39 + B2A3N - SELF x D1/SAL - r x N11NA) / P1; B2A3N = B2A3G - P51C where only gross surplus is published",
         "normal_return": R,
+        "normal_return_basis": "real, after company tax, on capital at current replacement cost (STAN N11NA), plus the country risk premium (country_risk_r14.json)"
+        if METHOD != "r13"
+        else "round 13 (method band only): 9% nominal, no country premium, services incl. real estate",
+        "country_risk_premium": {c: CRP[c] for c in sorted({k[0] for k in data}) if c in CRP}
+        if METHOD != "r13"
+        else {},
+        "services_aggregate": SERVICES,
         "years": {"central": list(CENTRAL_YEARS), "range": list(RANGE_YEARS)},
         "groups": {k: v for k, v in GROUPS.items()},
         "use": "multiply a gross sale by the group share and by value_kept.json's 'genuinely extra' factor; economies outside STAN take oecd_median",
@@ -176,10 +215,20 @@ res = {
             "name": "OECD STAN Database for Structural Analysis, 2025 edition (DSD_STAN@DF_STAN_2025): output, other taxes less subsidies on production, operating surplus and mixed income, consumption of fixed capital, compensation of employees, net capital stock, employees and self-employed by industry",
             "url": "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_STAN@DF_STAN_2025,1.0/A..C+C19+C25+C252+C26+C28+C30+C303+C304+H50+I+GTN+K+K65+_T.P1+D29X39+B2A3N+B2A3G+P51C+D1.V.XDC?startPeriod=2017&endPeriod=2024&format=csv",
             "date": "retrieved 2026-10-19",
-        }
+        },
+        {
+            "name": "OECD STAN 2025: services of the business economy excluding real estate (GTNXL) and real estate (L), the same measures (round 14)",
+            "url": "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_STAN@DF_STAN_2025,1.0/A..GTNXL+L.P1+D29X39+B2A3N+B2A3G+P51C+D1.V.XDC?startPeriod=2017&endPeriod=2024&format=csv",
+            "date": "retrieved 2026-10-19",
+        },
+        {
+            "name": "Damodaran, Country Default Spreads and Risk Premiums, January 2026 (round 14)",
+            "url": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ctryprem.html",
+            "date": "retrieved 2026-10-19",
+        },
     ],
 }
-OUT.write_text(json.dumps(res, indent=1) + "\n")
+(OUT_R13 if METHOD == "r13" else OUT).write_text(json.dumps(res, indent=1) + "\n")
 print("countries", len(out))
 for g, m in median.items():
     print(g, m)

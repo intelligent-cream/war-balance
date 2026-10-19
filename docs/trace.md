@@ -49,9 +49,10 @@ volumes at pre-war prices ([prices](method/prices.md)) and the likely ranges ([r
 | [Services and tourism](#services-and-tourism) | `svcpaid`, `svcsold` | `#view=sources&flow=services` |
 | [Shipping Russian oil](#shipping-russian-oil) | `ship` | `#view=sources&flow=shipping` |
 | [Company taxes in Russia](#company-taxes-in-russia) | `tax` | `#view=sources&flow=companytax` |
-| [Companies leaving Russia](#companies-leaving-russia) | `exits` | `#view=sources&flow=exits` |
+| [Companies leaving Russia](#companies-leaving-russia) (cost view, not in the totals, round 14b) | `exits` | `#view=sources&flow=exits` |
 | [Russian-owned companies abroad](#russian-owned-companies-abroad) | `rusfirms` | `#view=sources&flow=rusfirms` |
-| [Frozen Russian reserves](#frozen-russian-reserves) | `frozen` | `#view=sources&flow=frozen` |
+| [Assets seized by Russia](#assets-seized-by-russia) (cost view, not in the totals, round 14b) | `seized` | `#view=sources&flow=seized` |
+| [Frozen Russian reserves](#frozen-russian-reserves) (on the map: "Russian money frozen") | `frozen` | `#view=sources&flow=frozen` |
 | [Remittances from Russia (marker)](#remittances-from-russia-marker) | none: a marker, not in the totals (`remit` in `data.json`) | `#view=sources&flow=remit` |
 | [Rosatom and Russian state loans](#rosatom-and-russian-state-loans) | `statefin` | `#view=sources&flow=statefin` |
 | [Weapons bought from Russia](#weapons-bought-from-russia) | `rusarms` | `#view=sources&flow=rusarms` |
@@ -392,6 +393,8 @@ Known gaps:
 
 ## Payments to Russia for fuel and goods
 
+**Round 14 (audit 3):** Russia's gain on what was bought uses the measured fuel share (`fossil_share()`, check 22) and the country's customs values per fuel, not tracker tonnes (copied tracker years flagged in `to_rus.gain.tracker_copied`); the oil part of payments is at the Russian port (FOB), without the war-time freight surge (check 23); each year's change is valued at that year's prices (`cur`); the price levels cite the `prices` source; the cut label counts only from each cut's date and cites its evidence (`gas_cuts`) ([decisions](decisions.md#round-14-independent-audit-3)).
+
 **Round 13 (audit):** The fuel mix now uses volumes at 2019–2021 prices (a bug had used no-war prices: Hungary −4.1 → −5.5% of GDP); gold is deflated with the gold price (Hong Kong −4.2 → −1.9%); EU refiners' exported Russian crude is charged to their buyers; the part is at best C; gas Russia cut off itself is labelled inside the second headline number ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
 
 **What it is:** Oil, gas, coal, LNG and other goods bought from Russia, against the level expected without the war, counted at Russia's net gain. Gas that Russia cut off itself is labelled.
@@ -402,6 +405,7 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Round 14b: Russia's and Ukraine's normal return](decisions.md#round-14b-russias-and-ukraines-normal-return): the net-gain shares subtract 5% real + the country risk premium on measured capital (raised by the owner)
 - [decisions § 3. Trade with Russia and Ukraine](decisions.md#3-trade-with-russia-and-ukraine): Trade from customs data
 - [decisions § 3. Trade with Russia and Ukraine](decisions.md#3-trade-with-russia-and-ukraine): Purchases count at the seller's net gain
 - [decisions § 3. Trade with Russia and Ukraine](decisions.md#3-trade-with-russia-and-ukraine): Freight taken out
@@ -494,6 +498,8 @@ Known gaps:
 - Net-gain shares rest on tax totals and margins ([limitations](limitations.md#open-issues-in-the-numbers)).
 
 ## War-time price windfall
+
+**Round 14 (audit 3, C3):** FOB against FOB: the freight surge is taken out of customs unit values with the project's measured freight on Russian oil ([prices § One price basis](method/prices.md#one-price-basis-fob-round-14)); the windfall cites `shipping` for the freight. India's windfall moves from EUR 10.7bn extra paid to EUR 11.0bn paid below the no-war price.
 
 **Round 13 (audit):** Counted at Russia's net gain on the extra price (1 for oil and pipeline gas, 0.68–0.74 for LNG, at most the coal rent for coal), not at 100%; the full value is kept for the method band. Türkiye's 0.7/0.3 gas weights: sensitivity −3.18 to −2.98 ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
 
@@ -632,7 +638,7 @@ Known gaps:
 
 ## Sales to Russia
 
-**Round 13 (audit):** At the seller's net gain × genuinely extra (manufacturing: OECD median 0.013), not value kept × genuinely extra; China's extra sales now count at 0.008 instead of 0.485 ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
+**Round 13 (audit):** At the seller's net gain × genuinely extra (manufacturing: OECD median 0.013 in round 13, 0.027 in round 14 with a 5% real normal return), not value kept × genuinely extra; China's extra sales now count at 0.008 instead of 0.485 ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
 
 **What it is:** Goods sold to Russia, counted at the seller's net gain (taxes plus profit above a normal return) times the share that is genuinely extra.
 
@@ -716,6 +722,7 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Round 14b: Russia's and Ukraine's normal return](decisions.md#round-14b-russias-and-ukraines-normal-return): the net-gain shares subtract 5% real + the country risk premium on measured capital (raised by the owner)
 - [decisions § 3. Trade with Russia and Ukraine](decisions.md#3-trade-with-russia-and-ukraine): Purchases count at the seller's net gain
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Ukraine's net gain on other food, other metals, wood, machinery, chemicals, other
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Import duties waived for Ukraine (cost view)
@@ -889,9 +896,9 @@ Known gaps:
 
 ## Companies leaving Russia
 
-**What it is:** Exit fees and forced discounts paid to Russia by companies that sold their Russian business.
+**What it is:** The forced discount and the exit fee Russia took from companies that sold their Russian business. Since round 14b not in the totals, counted as a cost carried.
 
-**Parts on the map:** Paid to Russia by companies leaving it (`exits`, net shift).
+**Parts on the map:** Forced sales: discount and exit fee taken by Russia (`exits`, cost view only; `taken` in `data.json`). Rounds 5–14: "Paid to Russia by companies leaving it", in the net shift.
 
 **How it's calculated:** [russia-state-and-companies.md § Companies leaving Russia](method/russia-state-and-companies.md#companies-leaving-russia).
 
@@ -900,6 +907,8 @@ Known gaps:
 - [decisions § Why each money flow is counted: Companies leaving Russia](decisions.md#companies-leaving-russia): what is counted, why, what is left out, data or judgement
 - [decisions § Constants in the code](decisions.md#constants-in-the-code): conduit Kazakhstan 3.5, Netherlands 4.7
 - [decision log § Round 5: values at their real worth (18 October)](decision-log.md#round-5-values-at-their-real-worth-18-october): Rosatom projects, Russian state loans, company exits, Russian-owned firms abroad counted
+- [decisions § Round 14b: taken by Russia, not in the totals](decisions.md#round-14b-taken-by-russia-not-in-the-totals): out of the totals, a cost carried (raised by the owner; reverses round 5)
+- [decision log § Round 14b](decision-log.md#round-14b-taken-by-russia-and-one-normal-return-19-october)
 
 **Data sources:**
 
@@ -920,7 +929,41 @@ Known gaps:
 
 Known gaps:
 
-- No recorded reason why the forced discount is counted, although the research suggested counting only the exit contribution ([decisions](decisions.md#companies-leaving-russia)).
+- Rounds 5–14 counted the forced discount toward Russia with no recorded reason, although the research suggested counting only the exit contribution ([decisions](decisions.md#companies-leaving-russia)). Since round 14b (raised by the owner) both the discount and the contribution, like seizures ([below](#assets-seized-by-russia)), are out of the totals and counted as a cost carried.
+
+## Assets seized by Russia
+
+**What it is:** Company assets Russia seized (temporary management by decree, expropriation, court seizures, leased aircraft kept), at the owners' write-downs, by the company's home country. Round 14; since round 14b not in the totals, counted as a cost carried.
+
+**Parts on the map:** Seized by Russia (companies' assets) (`seized`, cost view only; `taken` in `data.json`). Round 14: in the net shift, toward Russia, in the change in payments to Russia.
+
+**How it's calculated:** [russia-state-and-companies.md § Assets seized by Russia (round 14)](method/russia-state-and-companies.md#assets-seized-by-russia-round-14).
+
+**Why it's done this way:**
+
+- [decisions § Round 14: independent audit 3](decisions.md#round-14-independent-audit-3): M4, a seizure is as coerced as a forced discount (raised by audit, approved by owner)
+- [decisions § Round 14b: taken by Russia, not in the totals](decisions.md#round-14b-taken-by-russia-not-in-the-totals): out of the totals, a cost carried (raised by the owner; reverses M4)
+- [decision log § Round 14](decision-log.md#round-14-independent-audit-3-19-october)
+
+**Data sources:**
+
+- `seizures`: Company assets seized by Russia: owners' write-downs and book values, KSE Institute loss study and company reports
+  - [KSE Institute: Assessing Foreign Companies' Direct Losses in Russia, Annex 1](https://kse.ua/wp-content/uploads/2025/03/KSE_Assessing-Foreign-Companies-Losses-in-Russia.pdf) (secondary, fetched in round 14)
+  - [Fortum: inside information, full write-down of its Russian assets (EUR 1.7bn)](https://www.fortum.com/media/2023/05/inside-information-fortum-fully-write-down-its-russian-assets-and-deconsolidate-russia-segment-publishes-restated-comparison-figures) (primary)
+  - [OSW: Wintershall Dea withdraws from Russia (EUR 5.3bn write-down)](https://www.osw.waw.pl/en/publikacje/analyses/2023-01-27/wintershall-dea-withdraws-russia) (secondary)
+  - [Interfax: Carlsberg's DKK 7bn impairment](https://interfax.com/newsroom/top-stories/99188/) (press report)
+  - [Interfax: Danone's write-down after temporary management](https://interfax.com/newsroom/top-stories/93000/) (press report)
+- `company_flows`: the seizure series by home country and year (and the sources listed under [Companies leaving Russia](#companies-leaving-russia))
+
+**Research files and raw data:** [`gaps/company_flows.json`](../research/2026-10/gaps/company_flows.json) (`seizure`), [`gaps/company_flows-notes.md`](../research/2026-10/gaps/company_flows-notes.md); no raw download is kept for this flow.
+
+**Code:** `apply_company_flows()` in [`pipeline/build_data.py`](../pipeline/build_data.py).
+
+**Certainty and judgement calls:** Data: the owners' write-downs. Judgement: book value as the value to Russia; aircraft net of insurance settlements; the split of leased aircraft by lessor country. B for named write-downs, C for court seizures and aircraft.
+
+Known gaps:
+
+- Wintershall Dea's EUR 5.3bn also covers Nord Stream and WIGA impairments; Uniper's, OMV's and ExxonMobil's values rest on the KSE annex.
 
 ## Russian-owned companies abroad
 
@@ -968,7 +1011,7 @@ Known gaps:
 
 **What it is:** The return Russia lost on its central-bank reserves frozen in this country.
 
-**Parts on the map:** Return denied to Russia on its frozen reserves (`frozen`, net shift).
+**Parts on the map:** Russian money frozen (return Russia lost on its reserves) (`frozen`, net shift; its own line since round 14, never called "less paid to Russia").
 
 **How it's calculated:** [russia-state-and-companies.md § Frozen central-bank reserves (round 7)](method/russia-state-and-companies.md#frozen-central-bank-reserves-round-7).
 

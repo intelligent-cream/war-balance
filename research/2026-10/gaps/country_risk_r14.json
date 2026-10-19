@@ -1,0 +1,336 @@
+{
+ "generated": "2026-10-19",
+ "what": "Damodaran country risk premiums (rating-based), January 2026 update: the extra equity return investors require in a country over a mature market (mature-market ERP 4.23%). Round 14 (M2): added to the 5% real normal return for each seller with its own OECD STAN data (net_gain_sellers.py); Russia's and Ukraine's are recorded for the consistency check of net_gain_russia.json and net_gain_ukraine.json",
+ "source": {
+  "title": "Aswath Damodaran, Country Default Spreads and Risk Premiums (last updated January 5, 2026)",
+  "url": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/ctryprem.html",
+  "xlsx": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/ctryprem.xlsx",
+  "retrieved": "2026-10-19",
+  "raw": "research/2026-10/raw/damodaran/ctryprem.html (listed in raw/MANIFEST.json; third-party page, not kept in the repository)"
+ },
+ "columns": "moodys = Moody's sovereign rating; default_spread = adjusted default spread; crp = country risk premium (the column used); erp = total equity risk premium. Fractions (0.0078 = 0.78%). Russia and North Korea are unrated: Damodaran's premium for them comes from PRS scores",
+ "countries": {
+  "AUS": {
+   "name": "Australia",
+   "moodys": "Aaa",
+   "default_spread": 0.0,
+   "crp": 0.0,
+   "erp": 0.0423
+  },
+  "AUT": {
+   "name": "Austria",
+   "moodys": "Aa1",
+   "default_spread": 0.0023,
+   "crp": 0.0036,
+   "erp": 0.0459
+  },
+  "BEL": {
+   "name": "Belgium",
+   "moodys": "Aa3",
+   "default_spread": 0.0051,
+   "crp": 0.0078,
+   "erp": 0.0501
+  },
+  "BLR": {
+   "name": "Belarus",
+   "moodys": "C",
+   "default_spread": 0.175,
+   "crp": 0.2666,
+   "erp": 0.3089
+  },
+  "CAN": {
+   "name": "Canada",
+   "moodys": "Aaa",
+   "default_spread": 0.0,
+   "crp": 0.0,
+   "erp": 0.0423
+  },
+  "CHE": {
+   "name": "Switzerland",
+   "moodys": "Aaa",
+   "default_spread": 0.0,
+   "crp": 0.0,
+   "erp": 0.0423
+  },
+  "CHL": {
+   "name": "Chile",
+   "moodys": "A2",
+   "default_spread": 0.0072,
+   "crp": 0.011,
+   "erp": 0.0533
+  },
+  "CHN": {
+   "name": "China",
+   "moodys": "A1",
+   "default_spread": 0.006,
+   "crp": 0.0091,
+   "erp": 0.0514
+  },
+  "COL": {
+   "name": "Colombia",
+   "moodys": "Baa3",
+   "default_spread": 0.0187,
+   "crp": 0.0285,
+   "erp": 0.0708
+  },
+  "CRI": {
+   "name": "Costa Rica",
+   "moodys": "Ba2",
+   "default_spread": 0.0256,
+   "crp": 0.039,
+   "erp": 0.0813
+  },
+  "CYP": {
+   "name": "Cyprus",
+   "moodys": "A3",
+   "default_spread": 0.0102,
+   "crp": 0.0155,
+   "erp": 0.0578
+  },
+  "CZE": {
+   "name": "Czech Republic",
+   "moodys": "Aa3",
+   "default_spread": 0.0051,
+   "crp": 0.0078,
+   "erp": 0.0501
+  },
+  "DEU": {
+   "name": "Germany",
+   "moodys": "Aaa",
+   "default_spread": 0.0,
+   "crp": 0.0,
+   "erp": 0.0423
+  },
+  "DNK": {
+   "name": "Denmark",
+   "moodys": "Aaa",
+   "default_spread": 0.0,
+   "crp": 0.0,
+   "erp": 0.0423
+  },
+  "ESP": {
+   "name": "Spain",
+   "moodys": "A3",
+   "default_spread": 0.0102,
+   "crp": 0.0155,
+   "erp": 0.0578
+  },
+  "EST": {
+   "name": "Estonia",
+   "moodys": "A1",
+   "default_spread": 0.006,
+   "crp": 0.0091,
+   "erp": 0.0514
+  },
+  "FIN": {
+   "name": "Finland",
+   "moodys": "Aa1",
+   "default_spread": 0.0023,
+   "crp": 0.0036,
+   "erp": 0.0459
+  },
+  "FRA": {
+   "name": "France",
+   "moodys": "Aa3",
+   "default_spread": 0.0051,
+   "crp": 0.0078,
+   "erp": 0.0501
+  },
+  "GBR": {
+   "name": "United Kingdom",
+   "moodys": "Aa3",
+   "default_spread": 0.0051,
+   "crp": 0.0078,
+   "erp": 0.0501
+  },
+  "GRC": {
+   "name": "Greece",
+   "moodys": "Baa3",
+   "default_spread": 0.0187,
+   "crp": 0.0285,
+   "erp": 0.0708
+  },
+  "HUN": {
+   "name": "Hungary",
+   "moodys": "Baa2",
+   "default_spread": 0.0162,
+   "crp": 0.0246,
+   "erp": 0.0669
+  },
+  "IND": {
+   "name": "India",
+   "moodys": "Baa3",
+   "default_spread": 0.0187,
+   "crp": 0.0285,
+   "erp": 0.0708
+  },
+  "IRL": {
+   "name": "Ireland",
+   "moodys": "Aa3",
+   "default_spread": 0.0051,
+   "crp": 0.0078,
+   "erp": 0.0501
+  },
+  "ISL": {
+   "name": "Iceland",
+   "moodys": "A1",
+   "default_spread": 0.006,
+   "crp": 0.0091,
+   "erp": 0.0514
+  },
+  "ISR": {
+   "name": "Israel",
+   "moodys": "Baa1",
+   "default_spread": 0.0136,
+   "crp": 0.0207,
+   "erp": 0.063
+  },
+  "ITA": {
+   "name": "Italy",
+   "moodys": "Baa2",
+   "default_spread": 0.0162,
+   "crp": 0.0246,
+   "erp": 0.0669
+  },
+  "JPN": {
+   "name": "Japan",
+   "moodys": "A1",
+   "default_spread": 0.006,
+   "crp": 0.0091,
+   "erp": 0.0514
+  },
+  "KAZ": {
+   "name": "Kazakhstan",
+   "moodys": "Baa1",
+   "default_spread": 0.0136,
+   "crp": 0.0207,
+   "erp": 0.063
+  },
+  "KOR": {
+   "name": "Korea",
+   "moodys": "Aa2",
+   "default_spread": 0.0042,
+   "crp": 0.0064,
+   "erp": 0.0487
+  },
+  "LTU": {
+   "name": "Lithuania",
+   "moodys": "A2",
+   "default_spread": 0.0072,
+   "crp": 0.011,
+   "erp": 0.0533
+  },
+  "LUX": {
+   "name": "Luxembourg",
+   "moodys": "Aaa",
+   "default_spread": 0.0,
+   "crp": 0.0,
+   "erp": 0.0423
+  },
+  "LVA": {
+   "name": "Latvia",
+   "moodys": "A3",
+   "default_spread": 0.0102,
+   "crp": 0.0155,
+   "erp": 0.0578
+  },
+  "MEX": {
+   "name": "Mexico",
+   "moodys": "Baa2",
+   "default_spread": 0.0162,
+   "crp": 0.0246,
+   "erp": 0.0669
+  },
+  "NLD": {
+   "name": "Netherlands",
+   "moodys": "Aaa",
+   "default_spread": 0.0,
+   "crp": 0.0,
+   "erp": 0.0423
+  },
+  "NOR": {
+   "name": "Norway",
+   "moodys": "Aaa",
+   "default_spread": 0.0,
+   "crp": 0.0,
+   "erp": 0.0423
+  },
+  "NZL": {
+   "name": "New Zealand",
+   "moodys": "Aaa",
+   "default_spread": 0.0,
+   "crp": 0.0,
+   "erp": 0.0423
+  },
+  "POL": {
+   "name": "Poland",
+   "moodys": "A2",
+   "default_spread": 0.0072,
+   "crp": 0.011,
+   "erp": 0.0533
+  },
+  "PRK": {
+   "name": "Korea, D.P.R.",
+   "moodys": "NR",
+   "default_spread": 0.102,
+   "crp": 0.1554,
+   "erp": 0.1977
+  },
+  "PRT": {
+   "name": "Portugal",
+   "moodys": "A3",
+   "default_spread": 0.0102,
+   "crp": 0.0155,
+   "erp": 0.0578
+  },
+  "RUS": {
+   "name": "Russia",
+   "moodys": "NR",
+   "default_spread": 0.0256,
+   "crp": 0.039,
+   "erp": 0.0813
+  },
+  "SVK": {
+   "name": "Slovakia",
+   "moodys": "A3",
+   "default_spread": 0.0102,
+   "crp": 0.0155,
+   "erp": 0.0578
+  },
+  "SVN": {
+   "name": "Slovenia",
+   "moodys": "A3",
+   "default_spread": 0.0102,
+   "crp": 0.0155,
+   "erp": 0.0578
+  },
+  "SWE": {
+   "name": "Sweden",
+   "moodys": "Aaa",
+   "default_spread": 0.0,
+   "crp": 0.0,
+   "erp": 0.0423
+  },
+  "TUR": {
+   "name": "Turkey",
+   "moodys": "Ba3",
+   "default_spread": 0.0306,
+   "crp": 0.0466,
+   "erp": 0.0889
+  },
+  "UKR": {
+   "name": "Ukraine",
+   "moodys": "Ca",
+   "default_spread": 0.102,
+   "crp": 0.1554,
+   "erp": 0.1977
+  },
+  "USA": {
+   "name": "United States",
+   "moodys": "Aa1",
+   "default_spread": 0.0023,
+   "crp": 0.0023,
+   "erp": 0.0446
+  }
+ }
+}

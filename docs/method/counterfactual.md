@@ -303,7 +303,7 @@ Middle values change little; ranges become about 1.5–2 times wider. Shift towa
 
 The round-4 log in [`research/2026-10/README.md`](../../research/2026-10/README.md) gives the counterfactual's own effect as Germany +4.8% → +4.7%, China −1.1% → −1.6%, Hungary −5.6% → −6.7%; the small differences to the table come from the review fixes made afterwards.
 
-The widest case is Belarus. In round 4 it was −24% of GDP with a range of −76% to +49%. In the current build it is −17.6% with a range of −38.6% to +3.6%. Its 2021 imports from Russia (about EUR 18bn a year) are held flat, and the honest random-walk error on a flow that large is still wide enough to cross zero ([limitations.md](../limitations.md)).
+The widest case is Belarus. In round 4 it was −24% of GDP with a range of −76% to +49%. In the round-11 build it was −17.6% with a range of −38.6% to +3.6% (round 14: −2.1%, range −10.8% to +9.7%, after the one valuation rule and the customs basis for what it bought). Its 2021 imports from Russia (about EUR 18bn a year) are held flat, and the honest random-walk error on a flow that large is still wide enough to cross zero ([limitations.md](../limitations.md)).
 
 ## See also
 
