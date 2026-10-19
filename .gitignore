@@ -8,3 +8,11 @@ site/dist/
 site/share/
 site/c/
 node_modules/
+
+# raw downloads: small open-data API responses are kept; large files and third-party documents (reports, press
+# pages, the Kiel workbook) are listed in research/2026-10/raw/MANIFEST.json with their address and checksum instead
+research/2026-10/raw/**/*.xlsx
+research/2026-10/raw/**/*.pdf
+research/2026-10/raw/**/*.html
+research/2026-10/raw/**/*.htm
+research/2026-10/raw/**/*.csv.gz
