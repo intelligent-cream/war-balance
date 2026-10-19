@@ -343,6 +343,54 @@
    "in_repository": true
   },
   {
+   "path": "comtrade/HS27_BRA_2023.json",
+   "bytes": 958,
+   "sha256": "faa6b28a1073bb1bf7f3c00b0627c9fedb18d1cef8aaf83b4da22d26f33b109c",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_CHN_2023.json",
+   "bytes": 952,
+   "sha256": "dcb8f633101fe250149b4b423d7320153404392b8bb598cf396205633079ca97",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_HUN_2023.json",
+   "bytes": 955,
+   "sha256": "4ac47e17d23baa0952eabd725a6a721f88df792cdd14fe2e240813cda8f4dda8",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_IND_2023.json",
+   "bytes": 957,
+   "sha256": "2b1194c058e39079f47905498745494fa818a23e1f37b1100c7a5867aa910cec",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_JPN_2023.json",
+   "bytes": 955,
+   "sha256": "6ef93597b14c02ae0f3a5ecc0274c3aebd86da9d161b2a5de4a0f35a22bc0c4f",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_KOR_2023.json",
+   "bytes": 950,
+   "sha256": "3203f9df26320783364c7935cd3414ce16ff293eb50c1c6bfb5b2d2a2cd14e0e",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_SVK_2023.json",
+   "bytes": 965,
+   "sha256": "d34f0eaf9d9c37297c95c985fed8e4afd12e9e3fa022f9fcaf265c3c25a5f4e2",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade/HS27_TUR_2023.json",
+   "bytes": 964,
+   "sha256": "269a8de50dec3fea2036a5f9fdc7534eca63c907d3bed41e1c569b5b3b5ad5c8",
+   "in_repository": true
+  },
+  {
    "path": "comtrade/HUN_2021.json",
    "bytes": 3637,
    "sha256": "3ce0a5b5f28e89dbb9d4442b1b7d3da129bd39d9bcf437432477c83fbbe379e8",
@@ -689,6 +737,24 @@
    "bytes": 227395,
    "sha256": "705e3d71a6c6ff49a063154d5bb6db4202e20c1b6e563bc30f05df1198042b61",
    "in_repository": true
+  },
+  {
+   "path": "crea/minfin_press/https___1prime.ru_20250109_neft-854101685.html.html",
+   "bytes": 130167,
+   "sha256": "7e76f74ac5812308fe888ce0b85c87109d60cadf3c8c02ea9da68c02829e5120",
+   "in_repository": false
+  },
+  {
+   "path": "crea/minfin_press/https___interfax.com_newsroom_top-stories_96189_.html",
+   "bytes": 30153,
+   "sha256": "6c96b4ab5bedda8a59def4404ebdb40d1ed16cabe982773a12bd107cd833548b",
+   "in_repository": false
+  },
+  {
+   "path": "crea/minfin_press/investfuture_cbr_urals.html",
+   "bytes": 155123,
+   "sha256": "7f86417adac75a2fa00b9cbdcbbf6f0a058d6fbfafc47c688385405dca0eb610",
+   "in_repository": false
   },
   {
    "path": "crea/minfin_press/tass_1730001.html",
