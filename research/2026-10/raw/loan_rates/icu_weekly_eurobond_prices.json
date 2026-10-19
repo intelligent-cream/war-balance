@@ -1,0 +1,689 @@
+{
+ "what": "Weekly price ranges of Ukraine's USD sovereign Eurobonds (cents per dollar of face value) as stated in the text of ICU Weekly Insight, 7 Mar 2022 to 25 Mar 2024, and ICU's own price-to-yield statements used to calibrate the price-to-yield conversion. The low end of each range is the cheapest bond, which ICU's statements show to be the longest one. Extracted by research/2026-10/raw/loan_rates (round 12) from the PDFs at the urls; sha256 is of the PDF as downloaded on 2026-10-19.",
+ "source": "ICU (Investment Capital Ukraine), Weekly Insight, https://icu.ua/en/research/weekly-insight",
+ "calibration_pairs": [
+  {
+   "report": "2022-03-28",
+   "price": 0.21,
+   "ytm": 0.37,
+   "price_date": "2022-03-07"
+  },
+  {
+   "report": "2022-04-18",
+   "price": 0.35,
+   "ytm": 0.24
+  },
+  {
+   "report": "2022-04-25",
+   "price": 0.33,
+   "ytm": 0.26
+  }
+ ],
+ "calibration_quotes": [
+  {
+   "report": "2022-03-28",
+   "url": "https://icu.ua/download/4058/ICUWeeklyInsight-20220328-Eng.pdf",
+   "quote": "They reached the lowest values on 7 March of 21-34 cents on the dollar, which corresponded to yields of 37-427%, depending on the maturity."
+  },
+  {
+   "report": "2022-04-18",
+   "url": "https://icu.ua/download/4072/ICUWeeklyInsight-20220418-Eng.pdf",
+   "quote": "But for Eurobonds maturing in the next 10 years, or from 2023 to 2033, prices fell during last week by 3-4 cents to 35-46 cents per dollar, which corresponds to a yield of 24- 80%."
+  },
+  {
+   "report": "2022-04-25",
+   "url": "https://icu.ua/download/4076/ICUWeeklyInsight-20220425-Eng.pdf",
+   "quote": "For Eurobonds maturing from 2023 to 2033, prices fell by 2-3 cents to 33-43 cents per dollar, corresponding to 26-88% YTM."
+  }
+ ],
+ "weeks": [
+  {
+   "price_date": "2022-03-07",
+   "report": "2022-03-28",
+   "url": "https://icu.ua/download/4058/ICUWeeklyInsight-20220328-Eng.pdf",
+   "sha256": "b9cfa33a2be90155a473ceb66308ef690fb896d735c22ba62f88c5df83e67ac6",
+   "low": 21,
+   "high": 34,
+   "quote": "They reached the lowest values on 7 March of 21-34 cents on the dollar, which corresponded to yields of 37-427%, depending on the maturity."
+  },
+  {
+   "price_date": "2022-03-28",
+   "report": "2022-03-28",
+   "url": "https://icu.ua/download/4058/ICUWeeklyInsight-20220328-Eng.pdf",
+   "sha256": "b9cfa33a2be90155a473ceb66308ef690fb896d735c22ba62f88c5df83e67ac6",
+   "low": 35,
+   "high": 50,
+   "quote": "But the next day, prices rose gradually, and last week fluctuated at 35-50 cents per dollar, which corresponds to yields of 24-250%."
+  },
+  {
+   "price_date": "2022-04-05",
+   "report": "2022-04-05",
+   "url": "https://icu.ua/download/4062/ICUWeeklyInsight-20220405-Eng.pdf",
+   "sha256": "63a0dc5efb31cb87b758454752c63c9657b501ef31c390e4b9586c67b057d7a1",
+   "low": 42,
+   "high": 62,
+   "quote": "Over the past week, prices rose another 5-10 cents per dollar to 42-62."
+  },
+  {
+   "price_date": "2022-04-11",
+   "report": "2022-04-11",
+   "url": "https://icu.ua/download/4068/ICUWeeklyInsight-20220411-Eng.pdf",
+   "sha256": "b970f71cd4c7106f9e94b25d6ec45d51ff270d82609a4f4f20e6ad3a76863405",
+   "low": 39,
+   "high": 49,
+   "quote": "Investors continue to price Ukrainian Eurobonds maturing in 2023-2033 at 39-49 cents per dollar, which is 2-4 cents less than a week earlier."
+  },
+  {
+   "price_date": "2022-04-18",
+   "report": "2022-04-18",
+   "url": "https://icu.ua/download/4072/ICUWeeklyInsight-20220418-Eng.pdf",
+   "sha256": "d5bed256505ccd6023f0b9c49e93eef7ddf3eb1c9420995a7d0ef93d60315ff1",
+   "low": 35,
+   "high": 46,
+   "quote": "But for Eurobonds maturing in the next 10 years, or from 2023 to 2033, prices fell during last week by 3-4 cents to 35-46 cents per dollar, which corresponds to a yield of 24- 80%."
+  },
+  {
+   "price_date": "2022-04-25",
+   "report": "2022-04-25",
+   "url": "https://icu.ua/download/4076/ICUWeeklyInsight-20220425-Eng.pdf",
+   "sha256": "9e7b98e5a70995e9dbf5e1fd439fcf51ec69b08ed76738d3dbcdf9fd90e05418",
+   "low": 33,
+   "high": 43,
+   "quote": "For Eurobonds maturing from 2023 to 2033, prices fell by 2-3 cents to 33-43 cents per dollar, corresponding to 26-88% YTM."
+  },
+  {
+   "price_date": "2022-05-16",
+   "report": "2022-05-16",
+   "url": "https://icu.ua/download/4088/ICUWeeklyInsight-20220516-Eng.pdf",
+   "sha256": "7685cd025986a24fc894aef9d6f4383f6d4bbb46cd720b31c0a6144dfb6a4b45",
+   "low": 35,
+   "high": 44,
+   "quote": "Other Eurobonds rose mostly by two cents to 35-44 cents per dollar."
+  },
+  {
+   "price_date": "2022-07-11",
+   "report": "2022-07-11",
+   "url": "https://icu.ua/download/4127/ICUWeeklyInsight-20220711-Eng.pdf",
+   "sha256": "3086c626f0c94fbcf6379c700f6d0243e746ab570e9b91b973e5352b2720b708",
+   "low": 21,
+   "high": 23,
+   "quote": "By the end of the week, prices mostly fell to 21‒23 cents per dollar, close to their lows recorded in early March after the full-scale russian invasion."
+  },
+  {
+   "price_date": "2022-08-01",
+   "report": "2022-08-01",
+   "url": "https://icu.ua/download/4140/ICUWeeklyInsight-20220801-Eng.pdf",
+   "sha256": "46333cb8cffb508b8c0c6dffae9c8e0fb9e4e749f5f1e7799a5a5056d6e0b683",
+   "low": 20,
+   "high": 22,
+   "quote": "Nearly all Eurobonds are trading in the range of 20‒22 cents per dollar."
+  },
+  {
+   "price_date": "2022-08-08",
+   "report": "2022-08-08",
+   "url": "https://icu.ua/download/4144/ICUWeeklyInsight-20220808-Eng.pdf",
+   "sha256": "2cf072924766dab1090febb0d5e35a2c83e2b43b9b8f2b416b41482d826be984",
+   "low": 18,
+   "high": 32,
+   "quote": "Consequently, trading activity was minimal, and prices slid slightly from 20- 34 cents to 18-32 cents per dollar."
+  },
+  {
+   "price_date": "2022-08-15",
+   "report": "2022-08-15",
+   "url": "https://icu.ua/download/4149/ICUWeeklyInsight-20220815-Eng.pdf",
+   "sha256": "388977d288144c573f97414dbb779337f593799d72a6df365d6004027bfb96a7",
+   "low": 20,
+   "high": 35,
+   "quote": "As a result, on the week, Eurobonds prices increased by 2-7 cents to 20-35 cents."
+  },
+  {
+   "price_date": "2022-08-22",
+   "report": "2022-08-22",
+   "url": "https://icu.ua/download/4153/ICUWeeklyInsight-20220822-Eng.pdf",
+   "sha256": "b23d5ca56252fbb2ccdca6827d7717065bfad8a57e10f4281cb20d4fb10422da",
+   "low": 23,
+   "high": 30,
+   "quote": "Eurobonds rose in price by a few cents over the past week, mostly up to 23-30 cents per dollar."
+  },
+  {
+   "price_date": "2022-09-05",
+   "report": "2022-09-05",
+   "url": "https://icu.ua/download/4162/ICUWeeklyInsight-20220905-Eng.pdf",
+   "sha256": "5bc692a74ca0863478d2d06ed5b6b6b4064a1ba15f7eea024a6fc81bde6f7d53",
+   "low": 18,
+   "high": 28,
+   "quote": "Most Eurobonds of Ukraine were priced last Friday at 18-28 cents."
+  },
+  {
+   "price_date": "2022-09-12",
+   "report": "2022-09-12",
+   "url": "https://icu.ua/download/4168/ICUWeeklyInsight-20220912-Eng.pdf",
+   "sha256": "5f478f317b96482533f50addf482a135f1c51f19c6ccb5330e109e7354b4af3f",
+   "low": 18,
+   "high": 28,
+   "quote": "Prices remained at the level of 18‒28 cents."
+  },
+  {
+   "price_date": "2022-09-26",
+   "report": "2022-09-26",
+   "url": "https://icu.ua/download/4177/ICUWeeklyInsight-20220926-Eng.pdf",
+   "sha256": "a3b69ec882be3197b010fc576f59549f5666cb77910835c14e6279ead4235d60",
+   "low": 20,
+   "high": 29,
+   "quote": "Overall, prices were down 1‒3 cents after rising 2‒4 cents during the previous week and ended last week at 20‒29 cents on the dollar."
+  },
+  {
+   "price_date": "2022-10-10",
+   "report": "2022-10-10",
+   "url": "https://icu.ua/download/4185/ICUWeeklyInsight-20221010-Eng.pdf",
+   "sha256": "7c0f92e4c95261ac0770962b07325cffe4e47b363660675cf74cf42b5d146053",
+   "low": 18,
+   "high": 29,
+   "quote": "Ukrainian Eurobonds at the level of 18‒29 cents."
+  },
+  {
+   "price_date": "2022-10-17",
+   "report": "2022-10-17",
+   "url": "https://icu.ua/download/4189/ICUWeeklyInsight-20221017-Eng.pdf",
+   "sha256": "ede4fc6177852a3ef2bca56c04a4547f72e784b51c7f8ca65570f43158640d78",
+   "low": 17,
+   "high": 26,
+   "quote": "Over the past week, prices decreased by 1-2 cents, or 3-10%, to 17-26 cents."
+  },
+  {
+   "price_date": "2022-10-31",
+   "report": "2022-10-31",
+   "url": "https://icu.ua/download/4197/ICUWeeklyInsight-20221031-Eng.pdf",
+   "sha256": "4db5cc4e6069ea13d3b25d55c53638d0b6dc39520bda56771861422daa287310",
+   "low": 16,
+   "high": 25,
+   "quote": "So, even against the backdrop of declining YTMs on US Treasuries, the YTMs on Ukrainian Eurobonds increased, resulting in prices declining by up to one cent or 1-5% to the range of 16-25 cents."
+  },
+  {
+   "price_date": "2022-11-07",
+   "report": "2022-11-07",
+   "url": "https://icu.ua/download/4201/ICUWeeklyInsight-20221107-Eng.pdf",
+   "sha256": "259ea00b6676409f8de128b861a0cd624e48301d7d3ced165d1a7eb1fd227538",
+   "low": 15,
+   "high": 24,
+   "quote": "As a result, the prices of Ukrainian Eurobonds fell last week by 5‒8% to 15‒24 cents, and many of them reached a new low since the full-scale invasion."
+  },
+  {
+   "price_date": "2022-11-14",
+   "report": "2022-11-14",
+   "url": "https://icu.ua/download/4205/ICUWeeklyInsight-20221114-Eng.pdf",
+   "sha256": "3c946daccfbd9c89686dbbcb5ac39d601035336e315a8331501fb15062687f17",
+   "low": 20,
+   "high": 27,
+   "quote": "During the week, the prices of Ukrainian Eurobonds increased by 10‒29% to 20‒27 cents."
+  },
+  {
+   "price_date": "2022-11-21",
+   "report": "2022-11-21",
+   "url": "https://icu.ua/download/4211/ICUWeeklyInsight-20221121-Eng.pdf",
+   "sha256": "0717c0d2f4076e5b76f0ac7d25c7d3de31be2148b2d4c680541e31e6815dddb9",
+   "low": 22,
+   "high": 28,
+   "quote": "Spreads of Ukrainian Eurobonds to the benchmark narrowed by 211-465bp, and prices increased by 4-16% or 1-3 cents to 22-28 cents."
+  },
+  {
+   "price_date": "2022-11-28",
+   "report": "2022-11-28",
+   "url": "https://icu.ua/download/4216/ICUWeeklyInsight-20221128-Eng.pdf",
+   "sha256": "d845753f2a6bdced7a50b705c8f5302c7f6ea9ffba6c096944a40f82de23e48e",
+   "low": 22,
+   "high": 28,
+   "quote": "Last week's price change was less than 2% or no more than half of a cent, so prices remained in the range of 22‒28 cents on the dollar."
+  },
+  {
+   "price_date": "2022-12-12",
+   "report": "2022-12-12",
+   "url": "https://icu.ua/download/4225/ICUWeeklyInsight-20221212-Eng.pdf",
+   "sha256": "5ab128dee570c9847312d92733a4356fc18ac7ba542209723243272e0d0c88a8",
+   "low": 20,
+   "high": 26,
+   "quote": "Generally, the price range shifted from 21‒27 cents to 20‒26 cents."
+  },
+  {
+   "price_date": "2022-12-20",
+   "report": "2022-12-20",
+   "url": "https://icu.ua/download/4230/ICUWeeklyInsight-20221220-Eng.pdf",
+   "sha256": "f4818fb8d773f02d63bc3b87aa972353a7ebfe0cde1f5ca013d4302894e32051",
+   "low": 20,
+   "high": 26,
+   "quote": "Prices ranged remained between 20‒26 cents."
+  },
+  {
+   "price_date": "2023-01-16",
+   "report": "2023-01-16",
+   "url": "https://icu.ua/download/4237/ICUWeeklyInsight-20230116-Eng.pdf",
+   "sha256": "ecc61afbafd1e77b7dae7d4deb0952f5f7b67a395939dca42f5d30cd544efdac",
+   "low": 19,
+   "high": 25,
+   "quote": "Over a few weeks, the prices fell by 1‒1.5 cents or 4‒7%, depending on the issue of Eurobonds, from 21‒26 cents per dollar to 19‒25 cents."
+  },
+  {
+   "price_date": "2023-01-23",
+   "report": "2023-01-23",
+   "url": "https://icu.ua/download/4241/ICUWeeklyInsight-20230123-Eng.pdf",
+   "sha256": "7ba6ebad96efdb4f51e0c0058ad636023121562bbad61c575441397b7812bb1e",
+   "low": 19,
+   "high": 25,
+   "quote": "So, Ukrainian Eurobonds mostly rose in price, but by no more than 1%, and remained almost at the same level of about 19‒25 cents."
+  },
+  {
+   "price_date": "2023-01-30",
+   "report": "2023-01-30",
+   "url": "https://icu.ua/download/4245/ICUWeeklyInsight-20230130-Eng.pdf",
+   "sha256": "a1d80640f2dad1d1b0c674cc6996f6970ea56792bebcad1e61d15ac17a57661e",
+   "low": 20,
+   "high": 25,
+   "quote": "While there were minor price fluctuations across the board, prices remained in the range of 20‒25 cents."
+  },
+  {
+   "price_date": "2023-02-27",
+   "report": "2023-02-27",
+   "url": "https://icu.ua/download/4263/ICUWeeklyInsight-20230227-Eng.pdf",
+   "sha256": "b5b7a5427cb527ab7b23c63c8bc715f228d3520eddd6f090af7a46b3367e4639",
+   "low": 17,
+   "high": 23,
+   "quote": "Over the past week, Ukrainian Eurobonds fell in price by another 2-4%, or almost one cent, to 17-23 cents."
+  },
+  {
+   "price_date": "2023-03-06",
+   "report": "2023-03-06",
+   "url": "https://icu.ua/download/4267/ICUWeeklyInsight-20230306-Eng.pdf",
+   "sha256": "4e67089be223712c5378a6383edaba027b4ef2734194dae030391cdd6d58d8e1",
+   "low": 17,
+   "high": 23,
+   "quote": "They continued to trade in the range of 17‒23 cents."
+  },
+  {
+   "price_date": "2023-03-13",
+   "report": "2023-03-13",
+   "url": "https://icu.ua/download/4271/ICUWeeklyInsight-20230313-Eng.pdf",
+   "sha256": "1bcd78c788d3510f6441886e778d7d7ac9ff7d677c14b18cea374fc088498c73",
+   "low": 17,
+   "high": 24,
+   "quote": "Prices were little changed last week, with a slight increase from 17‒23 cents to 17‒24 cents on the back of a small price increase at the short end of the curve of about half a percent."
+  },
+  {
+   "price_date": "2023-03-20",
+   "report": "2023-03-20",
+   "url": "https://icu.ua/download/4275/ICUWeeklyInsight-20230320-Eng.pdf",
+   "sha256": "2e9983978d11836b0fb1a97833a774afe40ebcf410c2d2708b120259108ac914",
+   "low": 17,
+   "high": 23,
+   "quote": "Over the past week, Ukrainian Eurobonds fell in price by 1‒2% and traded mainly in the range of 17‒23 cents."
+  },
+  {
+   "price_date": "2023-04-03",
+   "report": "2023-04-03",
+   "url": "https://icu.ua/download/4285/ICUWeeklyInsight-20230403-Eng.pdf",
+   "sha256": "11933c20c98425fd615df393489de117e4c458330831d2ca38756ab2ef49f8bc",
+   "low": 17,
+   "high": 23,
+   "quote": "During the past week, Ukrainian Eurobonds traded in the usual range of 17‒23 cents per dollar."
+  },
+  {
+   "price_date": "2023-04-11",
+   "report": "2023-04-11",
+   "url": "https://icu.ua/download/4289/ICUWeeklyInsight-20230411-Eng.pdf",
+   "sha256": "0250d3fa425dcf34369226bc843666e5ee09b119b0d166b97a9c57f99bbb128c",
+   "low": 17,
+   "high": 23,
+   "quote": "Prices of Ukrainian Eurobonds are almost unchanged and remain in the range of 17‒23 cents, with a gradual levelling off due to lower prices for shorter instruments and a slight increase for longer mat"
+  },
+  {
+   "price_date": "2023-04-24",
+   "report": "2023-04-24",
+   "url": "https://icu.ua/download/4298/ICUWeeklyInsight-20230424-Eng.pdf",
+   "sha256": "2638a9b39095a0d5254267b3a4d0817108a05dd1197415475c8dd7ba28e521d5",
+   "low": 17,
+   "high": 22,
+   "quote": "During the past week, sovereign Eurobond quotes were off slightly, generally by 1-3%, and they ended the week within 17‒22 cents."
+  },
+  {
+   "price_date": "2023-05-02",
+   "report": "2023-05-02",
+   "url": "https://icu.ua/download/4302/ICUWeeklyInsight-20230502-Eng.pdf",
+   "sha256": "b20fb90248501f195b6e528a06689a532d9e9146109d7c29be29937774278165",
+   "low": 16,
+   "high": 20,
+   "quote": "Sovereign Eurobond quotes gradually declined, settling mainly in the range of 16-20 cents on the dollar, except for the UKRAIN'24, which was still trading above 22 cents."
+  },
+  {
+   "price_date": "2023-05-08",
+   "report": "2023-05-08",
+   "url": "https://icu.ua/download/4306/ICUWeeklyInsight-20230508-Eng.pdf",
+   "sha256": "b7bb9b610f862129d90994a4c3ee63608b0b3462e1e2a1b8ccda58bb19c6127c",
+   "low": 16,
+   "high": 22,
+   "quote": "Eurobond prices have shifted to 16‒22 cents, with most of them below 18 cents."
+  },
+  {
+   "price_date": "2023-05-15",
+   "report": "2023-05-15",
+   "url": "https://icu.ua/download/4310/ICUWeeklyInsight-20230515-Eng.pdf",
+   "sha256": "4f53825bcbed4c44eea2c30e3aca960b0a500e7c9ca2104ff626b2cc6e5fc491",
+   "low": 16,
+   "high": 18,
+   "quote": "Most Eurobonds were down about one percent last week, staying in the range of 16‒18 cents on the dollar."
+  },
+  {
+   "price_date": "2023-05-22",
+   "report": "2023-05-22",
+   "url": "https://icu.ua/download/4314/ICUWeeklyInsight-20230522-Eng.pdf",
+   "sha256": "04983a58301a0b373ba1e2370d65503091e6faeb8fadc0885c11fa2781ce2124",
+   "low": 18,
+   "high": 23,
+   "quote": "At the end of last week, Ukrainian Eurobonds were quoted in the range of 18‒23 cents per dollar."
+  },
+  {
+   "price_date": "2023-05-29",
+   "report": "2023-05-29",
+   "url": "https://icu.ua/download/4318/ICUWeeklyInsight-20230529-Eng.pdf",
+   "sha256": "2fef441b10514e7e3803a8ae599ac8ac101aa6a662c241e9c29f30fda5f85e36",
+   "low": 19,
+   "high": 23,
+   "quote": "Last Tuesday, Eurobond prices reached a local maximum of 19‒23 cents and the range of prices for different maturities narrowed to 8% vs the mid-price."
+  },
+  {
+   "price_date": "2023-06-12",
+   "report": "2023-06-12",
+   "url": "https://icu.ua/download/4326/ICUWeeklyInsight-20230612-Eng.pdf",
+   "sha256": "ca9db088754684092729558bb8059a7f05dcfc117d53c76a0e0ed004ed4d9be9",
+   "low": 18,
+   "high": 22,
+   "quote": "Over the past week, the prices of Ukrainian Eurobonds decreased by approximately 1% and remained in the range of 18‒22 cents, with the price range slightly widening to almost 11%."
+  },
+  {
+   "price_date": "2023-06-19",
+   "report": "2023-06-19",
+   "url": "https://icu.ua/download/4330/ICUWeeklyInsight-20230619-Eng.pdf",
+   "sha256": "bc906c8c5d4a006eac064abbb6ca5dac60e4246e9ac8cf2d7cc8dfbb74838c1a",
+   "low": 18,
+   "high": 22,
+   "quote": "For most of the last week, Eurobonds were quoted in a range close to those of the previous weeks: 18‒22 cents."
+  },
+  {
+   "price_date": "2023-06-26",
+   "report": "2023-06-26",
+   "url": "https://icu.ua/download/4334/ICUWeeklyInsight-20230626-Eng.pdf",
+   "sha256": "84027fb21f7b56e43ff4a6294e517e009991273c947cc62ad8770f9881f397e2",
+   "low": 22,
+   "high": 25,
+   "quote": "Over the past week, Ukrainian Eurobonds added another 3‒10% in price and shifted mainly to 22‒25 cents per dollar, narrowing the price range to 7.4%."
+  },
+  {
+   "price_date": "2023-07-03",
+   "report": "2023-07-03",
+   "url": "https://icu.ua/download/4339/ICUWeeklyInsight-20230703-Eng.pdf",
+   "sha256": "ac0cedd81e2363b84b40889f6f47880779a3a80666788ec810a498e11fd389e3",
+   "low": 23,
+   "high": 26,
+   "quote": "Over the past week, sovereign Eurobonds rose in price mostly by 5-8% and shifted to 23‒26 cents."
+  },
+  {
+   "price_date": "2023-07-17",
+   "report": "2023-07-17",
+   "url": "https://icu.ua/download/4347/ICUWeeklyInsight-20230717-Eng.pdf",
+   "sha256": "f07a3757b1c925945eef89f21528f9058ee2b117f3178631e3a0526e412d0d3f",
+   "low": 28,
+   "high": 33,
+   "quote": "Over the past week, Ukrainian USD Eurobonds prices rose by about 26% to 28-33 cents per dollar."
+  },
+  {
+   "price_date": "2023-07-31",
+   "report": "2023-07-31",
+   "url": "https://icu.ua/download/4357/ICUWeeklyInsight-20230731-Eng.pdf",
+   "sha256": "2ca8834f1a6aea88e23601d950caf8d3d3c9f47bbd09000a4b233586c3277b57",
+   "low": 30,
+   "high": 34,
+   "quote": "Last week, USD-denominated Ukrainian Eurobond prices added an average 5%, moving to 30‒34 cents per dollar."
+  },
+  {
+   "price_date": "2023-08-07",
+   "report": "2023-08-07",
+   "url": "https://icu.ua/download/4362/ICUWeeklyInsight-20230807-Eng.pdf",
+   "sha256": "1ed199b15bb77473809dd94fc90dcbdb70c7649b2f504c4725cdf93aa3414ace",
+   "low": 27,
+   "high": 32,
+   "quote": "Ukrainian Eurobond prices over the past week declined by an average of almost 7% to 27- 32 cents per dollar, with the widening of the price range for instruments with different maturities from 6.2% to"
+  },
+  {
+   "price_date": "2023-08-21",
+   "report": "2023-08-21",
+   "url": "https://icu.ua/download/4369/ICUWeeklyInsight-20230821-Eng.pdf",
+   "sha256": "1517a191734fccba8fd4385268d60047f16fb24148e89a7411436da917b2d06b",
+   "low": 28,
+   "high": 35,
+   "quote": "Ukrainian Eurobond prices declined over the past week by an average of almost 5% to 28- 35 cents, with the widening of the price range for instruments with different maturities from 8.9% to almost 11%"
+  },
+  {
+   "price_date": "2023-08-28",
+   "report": "2023-08-28",
+   "url": "https://icu.ua/download/4374/ICUWeeklyInsight-20230828-Eng.pdf",
+   "sha256": "6e990fa347533139960a3a651ea314f69236180eefce146ae769f2968df12af7",
+   "low": 27,
+   "high": 34,
+   "quote": "Eurobond prices declined over the past week by an average of almost 2% to 27‒34 cents."
+  },
+  {
+   "price_date": "2023-09-04",
+   "report": "2023-09-04",
+   "url": "https://icu.ua/download/4378/ICUWeeklyInsight-20230904-Eng.pdf",
+   "sha256": "8b93b18e858ec978732d712d8548a7032e2c3794d0c255f2349ac3c93a5218a0",
+   "low": 27,
+   "high": 33,
+   "quote": "Eurobond prices closed in the range of 27‒33 cents, close to mid-July levels."
+  },
+  {
+   "price_date": "2023-09-11",
+   "report": "2023-09-11",
+   "url": "https://icu.ua/download/4384/ICUWeeklyInsight-20230911-Eng.pdf",
+   "sha256": "ede1c3c60c992ca8d4ea9a4bb3d98cbfe697720d629da077e143c589df78f9f5",
+   "low": 28,
+   "high": 34,
+   "quote": "Prices of Ukrainian Eurobonds rose by an average of almost 4% to 28‒34 cents."
+  },
+  {
+   "price_date": "2023-09-18",
+   "report": "2023-09-18",
+   "url": "https://icu.ua/download/4389/ICUWeeklyInsight-20230918-Eng.pdf",
+   "sha256": "5e0c79be1168a2c26c3c98789ac1f6c21edc27c73c11fe75f3d53eaffca7a5b8",
+   "low": 29,
+   "high": 35,
+   "quote": "Over the past week, Eurobond prices rose by about 4% to 29‒35 cents, but remain about 3‒ 5%, or on average one cent below the peak after the summer rally."
+  },
+  {
+   "price_date": "2023-10-02",
+   "report": "2023-10-02",
+   "url": "https://icu.ua/download/4397/ICUWeeklyInsight-20231002-Eng.pdf",
+   "sha256": "bca4f830dd1d8749fd1ee54f72a21e68079619828fe8cd7fde98811bb2d35475",
+   "low": 26,
+   "high": 34,
+   "quote": "So, at the end of the week, Eurobonds were quoted in the range of 26‒34 cents per dollar."
+  },
+  {
+   "price_date": "2023-10-09",
+   "report": "2023-10-09",
+   "url": "https://icu.ua/download/4403/ICUWeeklyInsight-20231009-Eng.pdf",
+   "sha256": "f138e7f9b2066a3652a031bd5a1596087be54267fb899a07da2f0ac8b993e533",
+   "low": 24,
+   "high": 32,
+   "quote": "Eurobond prices fell last week by an average of 10%, to 24‒32 cents per dollar."
+  },
+  {
+   "price_date": "2023-10-16",
+   "report": "2023-10-16",
+   "url": "https://icu.ua/download/4407/ICUWeeklyInsight-20231016-Eng.pdf",
+   "sha256": "ef7ae44e572807ddb6055bfc67739462805ddc491cafc2f76c4f45efcba24e44",
+   "low": 25,
+   "high": 32,
+   "quote": "Last week, Eurobond prices increased by an average of 3%, mostly by 25‒32 cents, narrowing the price range for instruments with different maturities to 12.6%."
+  },
+  {
+   "price_date": "2023-10-23",
+   "report": "2023-10-23",
+   "url": "https://icu.ua/download/4411/ICUWeeklyInsight-20231023-Eng.pdf",
+   "sha256": "07cc9bb844b734457d35b0785e3701631b23a01a238e569de702a19786863ccf",
+   "low": 23,
+   "high": 31,
+   "quote": "Last week, Eurobond prices lost an average of 5%, falling to 23‒31 cents per dollar, with the price range for instruments with different maturities widening to 14%."
+  },
+  {
+   "price_date": "2023-10-30",
+   "report": "2023-10-30",
+   "url": "https://icu.ua/download/4415/ICUWeeklyInsight-20231030-Eng.pdf",
+   "sha256": "66b0dac96a726b801539b90a69afd49886255fa605b0d1da856926bbfb2184c2",
+   "low": 24,
+   "high": 31,
+   "quote": "Last week, prices increased by an average of 3% to 24‒31 cents."
+  },
+  {
+   "price_date": "2023-11-06",
+   "report": "2023-11-06",
+   "url": "https://icu.ua/download/4419/ICUWeeklyInsight-20231106-Eng.pdf",
+   "sha256": "f50c220506cba9547c34d2546329acd2192db16eb471324bbc5c9d8c318bab81",
+   "low": 26,
+   "high": 33,
+   "quote": "Eurobond prices rose, on average, slightly more than two cents to 26‒33 cents on the dollar."
+  },
+  {
+   "price_date": "2023-11-13",
+   "report": "2023-11-13",
+   "url": "https://icu.ua/download/4424/ICUWeeklyInsight-20231113-Eng.pdf",
+   "sha256": "90d1703a43b22cb54cffa720040b1c131e8ad8e3a2110843115a0065212f029f",
+   "low": 26,
+   "high": 32,
+   "quote": "Eurobond prices fell slightly last week, by about two per cent, mainly remaining in the range of 26‒32 cents per dollar."
+  },
+  {
+   "price_date": "2023-11-20",
+   "report": "2023-11-20",
+   "url": "https://icu.ua/download/4428/ICUWeeklyInsight-20231120-Eng.pdf",
+   "sha256": "50795c49961362ed56d31c53623bed0dedbc3581c508740472356d191411fbc3",
+   "low": 25,
+   "high": 32,
+   "quote": "While the EMBI index increased by 1.5%, Eurobond prices fell again last week by 2% on average, remaining mainly in the range of 25‒32 cents on the dollar."
+  },
+  {
+   "price_date": "2023-11-27",
+   "report": "2023-11-27",
+   "url": "https://icu.ua/download/4432/ICUWeeklyInsight-20231127-Eng.pdf",
+   "sha256": "c084a47639f6c5cea54b87d6f462ca2125080adc7311ac3253119b7e4101c70b",
+   "low": 25,
+   "high": 32,
+   "quote": "Eurobond prices remained mainly in the range of 25‒32 cents per dollar, slightly widening the price range for instruments with different maturities to 12.8%."
+  },
+  {
+   "price_date": "2023-12-04",
+   "report": "2023-12-04",
+   "url": "https://icu.ua/download/4437/ICUWeeklyInsight-20231204-Eng.pdf",
+   "sha256": "b4ea83c4ca386e147ac7d66ded8722b422e2625572ea39d1da7f5ff221cdf06f",
+   "low": 24,
+   "high": 32,
+   "quote": "The prices of Eurobonds shifted to the range of 24‒32 cents per dollar, decreasing by almost 3% on average during last week."
+  },
+  {
+   "price_date": "2023-12-11",
+   "report": "2023-12-11",
+   "url": "https://icu.ua/download/4442/ICUWeeklyInsight-20231211-Eng.pdf",
+   "sha256": "b56979e86144302b044ad367c4f8697f760f70749d1a4f5e204f5142be0c9249",
+   "low": 25,
+   "high": 32,
+   "quote": "Ukrainian Eurobond prices rose over the past week by an average of almost 4% to 25‒32 cents per dollar."
+  },
+  {
+   "price_date": "2023-12-18",
+   "report": "2023-12-18",
+   "url": "https://icu.ua/download/4446/ICUWeeklyInsight-20231218-Eng.pdf",
+   "sha256": "718008cebeaaa6ca09c2e5e6e7abf6a523af9bf2d068ca79685cae5547cc19ae",
+   "low": 24,
+   "high": 31,
+   "quote": "Ukrainian Eurobonds lost an average of 2.5% over the past week, declining to 24‒31 cents per dollar."
+  },
+  {
+   "price_date": "2024-01-08",
+   "report": "2024-01-08",
+   "url": "https://icu.ua/download/4451/ICUWeeklyInsight-20240108-Eng.pdf",
+   "sha256": "c575602c57f4f79d10f9e779b8669fd08b1f1d66a303f9ec26f9f792fa4c7032",
+   "low": 22,
+   "high": 31,
+   "quote": "During the last two weeks of December, Eurobonds lost about 2.2% on average, moving to 22‒31 cents, with the price range of bonds with different maturities widening to 14.6%."
+  },
+  {
+   "price_date": "2024-01-15",
+   "report": "2024-01-15",
+   "url": "https://icu.ua/download/4456/ICUWeeklyInsight-20240115-Eng.pdf",
+   "sha256": "14f51f921cc69f2fd6abc79ebcd521edf29fe0f00bc4a5a165138a10f88b91d7",
+   "low": 24,
+   "high": 32,
+   "quote": "Over the past week, Ukrainian Eurobond prices rose by an average of 9%, shifting to the range of 24‒32 cents per dollar, with the price range for Eurobonds with different maturities narrowing to 13.5%"
+  },
+  {
+   "price_date": "2024-02-05",
+   "report": "2024-02-05",
+   "url": "https://icu.ua/download/4472/ICUWeeklyInsight-20240205-Eng.pdf",
+   "sha256": "5a949da572569b962cd3a14c03ab99206be1384567a219b887e10c08decece49",
+   "low": 23,
+   "high": 30,
+   "quote": "Last week, the prices of Ukrainian Eurobonds declined by 4% on average to 23‒30 cents."
+  },
+  {
+   "price_date": "2024-02-19",
+   "report": "2024-02-19",
+   "url": "https://icu.ua/download/4480/ICUWeeklyInsight-20240219-Eng.pdf",
+   "sha256": "fa37aef098c2594a31282f45664e96fbe8c59c278aa37ad76de1057afbed0efa",
+   "low": 22,
+   "high": 30,
+   "quote": "Prices shifted during the week to 22‒30 cents per dollar, and the range of prices for Ukrainian Eurobonds with different maturities remained at 13.3%."
+  },
+  {
+   "price_date": "2024-02-26",
+   "report": "2024-02-26",
+   "url": "https://icu.ua/download/4484/ICUWeeklyInsight-20240226-Eng.pdf",
+   "sha256": "0e088c997b75ca4b923fb2fdb018dfd1d195ef53d35091a5a2a0a1488c565cf7",
+   "low": 23,
+   "high": 30,
+   "quote": "All in, last week, Ukrainian Eurobond prices rose by an average of 2.7% to the range of 23‒ 30 cents per dollar."
+  },
+  {
+   "price_date": "2024-03-05",
+   "report": "2024-03-05",
+   "url": "https://icu.ua/download/4489/ICUWeeklyInsight-20240305-Eng.pdf",
+   "sha256": "e7ccb81ca5d40b1b572a341fa8c429cc7d67dcd22b2be432970fc857bc39da00",
+   "low": 26,
+   "high": 32,
+   "quote": "The prices shifted to 26‒ 32 cents per dollar, and the price range for Ukrainian Eurobonds with different maturities narrowed to 11.3%."
+  },
+  {
+   "price_date": "2024-03-11",
+   "report": "2024-03-11",
+   "url": "https://icu.ua/download/4493/ICUWeeklyInsight-20240311-Eng.pdf",
+   "sha256": "067b3961f1631581e14620d3fe6df8ed77062c033e18c7f9b1f5f1919298a70b",
+   "low": 29,
+   "high": 35,
+   "quote": "The price range shifted during the week to 29‒35 cents, and it narrowed to 9.1%."
+  },
+  {
+   "price_date": "2024-03-18",
+   "report": "2024-03-18",
+   "url": "https://icu.ua/download/4497/ICUWeeklyInsight-20240318-Eng.pdf",
+   "sha256": "21403dea81a58a70d2ca628a43bfb9da4010f513ae4c659e9d934f51d10c6bb4",
+   "low": 27,
+   "high": 34,
+   "quote": "Eurobond prices declined by an average of 2.5% to 27‒34 cents, with the price range widening to 11.2%."
+  },
+  {
+   "price_date": "2024-03-25",
+   "report": "2024-03-25",
+   "url": "https://icu.ua/download/4502/ICUWeeklyInsight-20240325-Eng.pdf",
+   "sha256": "891af01652d163f16149377b90fdee1feb28a28eee754097921034b69d789a89",
+   "low": 30,
+   "high": 38,
+   "quote": "Eurobond prices sharply rose last week by an average 10% to 30‒38 cents, with the price range widening to 12.2%."
+  }
+ ]
+}

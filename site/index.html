@@ -644,6 +644,9 @@ function calc(c, y) {
   const loansFace = (c.aid?.loans_face || 0) * loanShare;
   // fallback only: every country with loans has loans_grant_eq in data.json (LOAN_GRANT_ELEMENT, docs/decisions.md)
   const loansGE = (c.aid?.loans_grant_eq ?? (c.aid?.loans_face || 0) * 0.26) * loanShare;
+  // the lender's cost per loan, low and high (round 12, docs/method/loans.md); half and one and a half times otherwise
+  const loansGELo = c.aid?.loans_grant_eq_lo != null ? c.aid.loans_grant_eq_lo * loanShare : loansGE * 0.5;
+  const loansGEHi = c.aid?.loans_grant_eq_hi != null ? c.aid.loans_grant_eq_hi * loanShare : loansGE * 1.5;
   const lessTax3 = T.tax.m ? delta3(T.tax) : [0, 0, 0];
   const lessSold3 = delta3(T.soldRus), lessSvcSold3 = delta3(T.svcSold), lessSvcPaid3 = delta3(T.svcBought), lessShip3 = c.shipping ? delta3(T.ship) : [0, 0, 0];
   const margin = META.lost_margin ?? 0.2;
@@ -708,7 +711,7 @@ function calc(c, y) {
     part("othsp", "Aid spent here on energy, relief and rebuilding", sum3(T.othsp), c.flowback?.cert_own || "C", c.flowback?.src || []),
   ];
   const costParts = [
-    part("aidge", "Aid given (loans at grant equivalent)", [aid3[0] - loansFace + loansGE, aid3[1] - loansFace + loansGE * 0.5, aid3[2] - loansFace + Math.min(loansFace, loansGE * 1.5)], loansFace ? weakest([cAid, "C"]) : cAid, src("aid")),
+    part("aidge", "Aid given (loans at grant equivalent)", [aid3[0] - loansFace + loansGE, aid3[1] - loansFace + loansGELo, aid3[2] - loansFace + Math.min(loansFace, loansGEHi)], loansFace ? weakest([cAid, "C"]) : cAid, src("aid")),
     part("ref", "Hosting refugees", ref3, c.aid?.refugee_cert || "B", c.aid?.refugee_src || []),
     part("undisc", "Undisclosed military aid (estimate)", sum3(T.undisc), c.undisclosed?.cert || "D", src("undisclosed")),
     part("priv", "Private donations", sum3(T.priv), c.private?.cert || "D", src("private")),
@@ -840,7 +843,7 @@ function srcLinks(s) {
 }
 // where each part's calculation is written out (docs/method), linked from its name in the waterfall
 const PART_DOC = {
-  aid: "aid-refugees-military.md#aid", aidge: "aid-refugees-military.md#loans-at-their-economic-value-round-5", euaid: "aid-refugees-military.md#eu-level-aid",
+  aid: "aid-refugees-military.md#aid", aidge: "loans.md#the-cost-view", euaid: "aid-refugees-military.md#eu-level-aid",
   ref: "aid-refugees-military.md#refugees", buy: "overview.md#the-net-gain-rule-round-10", paid: "overview.md#the-net-gain-rule-round-10",
   windfall: "prices.md#war-time-windfall", laund: "energy-and-laundered-oil.md#laundered-oil", sold: "trade.md#profit-not-revenue",
   tax: "services-shipping-companies.md#company-taxes", mil: "aid-refugees-military.md#military-support-to-russia",
@@ -849,7 +852,7 @@ const PART_DOC = {
   statefin: "russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia", rusarms: "russia-state-and-companies.md#weapons-bought-from-russia",
   exits: "russia-state-and-companies.md#companies-leaving-russia", rusfirms: "russia-state-and-companies.md#russian-owned-companies-abroad",
   frozen: "russia-state-and-companies.md#frozen-central-bank-reserves-round-7", remit: "trade.md#remittances-and-relocants-round-7",
-  agents: "trade.md#payment-agents-round-6", multilat: "aid-refugees-military.md#loans-at-their-economic-value-round-5",
+  agents: "trade.md#payment-agents-round-6", multilat: "loans.md#new-lending-by-the-imf-and-world-bank",
   own: "aid-refugees-military.md#flowback", purl: "aid-refugees-military.md#flowback", sell: "aid-refugees-military.md#flowback", arms: "aid-refugees-military.md#arms-ukraine-bought-abroad-round-5", othsp: "aid-refugees-military.md#flowback",
   prem: "energy-and-laundered-oil.md#energy-premium-and-oil-discount", disc: "energy-and-laundered-oil.md#energy-premium-and-oil-discount", margin: "trade.md#profit-not-revenue", tariff: "overview.md#the-cost-view",
 };

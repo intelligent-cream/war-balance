@@ -733,6 +733,48 @@
    "in_repository": true
   },
   {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2019.json",
+   "bytes": 1850,
+   "sha256": "773dec8e5f1e5d5d325536aeaa3155b5910c187a4f83b9f15918d22564baedb9",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2020.json",
+   "bytes": 1852,
+   "sha256": "2666e64db662e8fd6c2be6e0abfd3ed88d28b83dcde3cb8d3e4012265af2c2ce",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2021.json",
+   "bytes": 1850,
+   "sha256": "2aee3722db53530992e26a758a4234ec135b6b8eb06b87466b361fa760daa783",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2022.json",
+   "bytes": 1852,
+   "sha256": "90a692d5b429a5ae025746560a95634496d0e5607840f9f702f4478abb9eb354",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2023.json",
+   "bytes": 1854,
+   "sha256": "01c8c6ea46ccd15b8773db0c67ae91d74dc8e708869252d5758b17a95af5399d",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2024.json",
+   "bytes": 1851,
+   "sha256": "98faf70353bd7208a6b45e4ef268c6d3c59d8597c3b29a7f53d97eb79fd4b816",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2025.json",
+   "bytes": 1858,
+   "sha256": "2d30c2b91188b230992360068ab0e3f1a68763dbc84f85ead4100435a360d7c0",
+   "in_repository": true
+  },
+  {
    "path": "crea/counter_2022-2024_by_dest_commoditygroup_year.json",
    "bytes": 227395,
    "sha256": "705e3d71a6c6ff49a063154d5bb6db4202e20c1b6e563bc30f05df1198042b61",
@@ -790,6 +832,162 @@
    "path": "kiel/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
    "bytes": 13328605,
    "sha256": "e7120ae8df25c918bc0666708f5ef1098e0d88bc637b44abd43ca8bd80424ecc",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/eavex_weekly_eurobond_ytm.json",
+   "bytes": 54557,
+   "sha256": "f3e387f6076ec73396d44672559ad0c3579ad940839429c613ab5b53e122eb4b",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01CAM156N.csv",
+   "bytes": 2034,
+   "sha256": "5cd170c8cd1ca087a38b124371cb8e137d520b85c53bf29926c66ff88165993e",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01DEM156N.csv",
+   "bytes": 2047,
+   "sha256": "1c1802a4ee4b43c55b3a11893b01e229fe35b2597816b63ca18c916e007438f1",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01ESM156N.csv",
+   "bytes": 2103,
+   "sha256": "bb035ed25beece1483bb469c18c71b47e65e4b495d5bc2349ea9cbbf683eea91",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01EZM156N.csv",
+   "bytes": 1864,
+   "sha256": "6d9d55ff730d9e15d56ec0e76bdd551570b1509ddf5bbec89761e6f9762a6e1a",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01FIM156N.csv",
+   "bytes": 1629,
+   "sha256": "9387a619c8e0167f0431832261ca59ee17fdde0e4d5ece7a7c95349f0e03e4d9",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01FRM156N.csv",
+   "bytes": 1281,
+   "sha256": "8796ca0b93f38d5ce6fe085f07dc2810f6104007f6f9e2003d26bc97d7f91c41",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01GBM156N.csv",
+   "bytes": 1275,
+   "sha256": "3f42c35e881ab353ee37ace2a0072c8ef8070e679d8f0e85bc9cf6f57e454a22",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01ITM156N.csv",
+   "bytes": 1189,
+   "sha256": "01e4bddc3b4c696469bd3464fcf03dba11a4583514a4b65c45e91212f8e60cce",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01JPM156N.csv",
+   "bytes": 1206,
+   "sha256": "2459e39bcacd93a67518a046e9a3ce80b4f20aa08fde1410be44f8068afefada",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01KRM156N.csv",
+   "bytes": 1206,
+   "sha256": "3911b67199599bd11bfab6c6268a2329cc11b6e802f42d7ad7b7dd7e4438526c",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01NLM156N.csv",
+   "bytes": 1202,
+   "sha256": "88071c26ad2605e5a6528c0973469070510f301c25d35a4cf09148822d7cf036",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01SKM156N.csv",
+   "bytes": 1877,
+   "sha256": "1cd1032c2533d4a9aec5b9092b7265dc1a5f4f63f59e8285c064c662447b2b66",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/fred/IRLTLT01USM156N.csv",
+   "bytes": 1137,
+   "sha256": "f182bfd1a648795ab0f22f37add6db9bf595ed6b26f068a60559632c9a7cb263",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/icu_weekly_eurobond_prices.json",
+   "bytes": 29621,
+   "sha256": "b8937de9c12ee8eac36cd85a0dbeabcfbdb1361c94804311b4343c52a53ffc7f",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/pages/ST-5738-2026.pdf",
+   "bytes": 224656,
+   "sha256": "9767ff222b321029e0fd8f59aecd4c229011d1aa9ae2d93615b3d5820265b71c",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/eavex_media_index.json",
+   "bytes": 13185,
+   "sha256": "1ef37b1c2792dde9e1e7fde30d4e128ceb5c2c9fd969b974d4bb6b59065d9a3b",
+   "in_repository": true
+  },
+  {
+   "path": "loan_rates/pages/interfax_2021-07-22_eurobond_tap.html",
+   "bytes": 172426,
+   "sha256": "564801a88f0701d09c9391442f7a5d13204d4bbd1e0878ceb067dc1875f3ce79",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/interfax_2026-03-06_imf_repayment.html",
+   "bytes": 29241,
+   "sha256": "92e7bc69d083dadee383b01eba90ed451017a3cd0092123d264819b102ceb0ec",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/kmu_2023-12-21_gcu_mou.html",
+   "bytes": 104097,
+   "sha256": "65b942ec01f3470b92c6df84a736da29da819302b129fb0166a499b6ddf2ca34",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/kmu_2024-09-04_restructuring.html",
+   "bytes": 104163,
+   "sha256": "d29ad2a92858f04b4ab966d36cfaa1c93d9de58b427b4b2bba5649139379f873",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/kmu_2026-04-17_gcu_mou.html",
+   "bytes": 103294,
+   "sha256": "e7604f0f1ce40791eec955b32a574a946e14631b14c9d9a1cd46e8d70acb8ff7",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/nber_w25793_seniority.html",
+   "bytes": 90003,
+   "sha256": "8c82afd3aab69cd0791ec6c08bd3dc4273df408b413589966b9fa68a1446d739",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/oeil_2022-07-07_mfa_provisioning.html",
+   "bytes": 52947,
+   "sha256": "c05b3a9be4f94a3246e56676b11891845a7ce701031eba6e3ae6e384aeb96659",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/tresor_2026-04-17_gcu_statement.html",
+   "bytes": 28885,
+   "sha256": "708dff9fe8ffb4209b61ca672bd65d42d7a143b426fd849258e474c8b1287895",
+   "in_repository": false
+  },
+  {
+   "path": "loan_rates/pages/ukrinform_2021-04-27_eurobond.html",
+   "bytes": 51893,
+   "sha256": "aa9fabcad36bb09a9f38983bffec1017e042c718df8c384439a802027beee192",
    "in_repository": false
   },
   {

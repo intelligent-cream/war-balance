@@ -52,7 +52,9 @@ EU_ARMS_SLICE = next(p for p in R11["rules"]["proposals"] if p["constant"].start
 EU_ARMS_RANGE = {"SWE": (0.25 / 0.28, 0.30 / 0.28), "other": (0.0, 0.10 / 0.03)}
 # what a loan costs the lender (cost view only), as a share of face value. Round 11 (rules): Kiel's loan terms
 # discounted at the lender's own funding rate, with an expected loss, weighted by face value over the loan items
-# outside the Ukraine Support Loan defence window: 0.09 / 0.26 / 0.47 (was 0.3, judgement); the middle is used
+# outside the Ukraine Support Loan defence window: 0.09 / 0.26 / 0.47 (was 0.3, judgement); the middle is used.
+# Round 12: every loan in loans_value.json now has its own lender's cost (loan_rates.py, docs/method/loans.md); this
+# average is only used for loan amounts moved by later corrections (move_loan)
 LOAN_GRANT_ELEMENT = 0.26
 # import duties given up on purchases from Ukraine (cost view only), share of purchases, per year 2021-2026. Round 11
 # (rules, Commission and government estimates): the EU waiver ran from 4 June 2022 to 5 June 2025 only, at about
@@ -339,8 +341,8 @@ def _refiner_exports() -> dict[str, dict[int, float]]:
     return {
         "TUR": pv(hb["turkey_refining"]["by_year"]),
         "IND": pv(hb["india_refining"]),
-        # 0.70 is a judgement, not India's measured ratio (0.64-0.75 by year): docs/decisions.md, constants
-        "CHN": {int(y): v.get("central", 0.0) / 0.70 for y, v in china.items()},
+        # round 12: China's own measured crude share per year (crude_content.json), was a flat 0.70 (judgement)
+        "CHN": {int(y): v.get("central", 0.0) / CRUDE_K["CHN"][int(y)][1] for y, v in china.items()},
     }
 
 
@@ -879,9 +881,10 @@ def build() -> dict:
             # Transnistria's unpaid Gazprom gas, which is support for Transnistria, not money to Russia (cf_bands.json)
             if tr and iso3 != "MDA":
                 # customs data record gas where it crosses the border too: that gas is swapped for final-use gas
-                if iso3 in GAS_IN_CUSTOMS:
+                gic = gas_in_customs(iso3, gas["years"])
+                if gic:
                     # customs already hold this gas under another heading (Turkey, Poland; part of it for Germany)
-                    cyears = [max(cv, g * GAS_IN_CUSTOMS[iso3]) for cv, g in zip(cyears, gas["years"])]
+                    cyears = [max(cv, g * sh) for cv, g, sh in zip(cyears, gas["years"], gic)]
                 for k in ("years", "years_lo", "years_hi"):
                     tr[k] = [round(max(0.0, t - cgv) + g, 5) for t, cgv, g in zip(tr[k], cyears, gas[k])]
                 pre = {
@@ -889,8 +892,8 @@ def build() -> dict:
                     for b in ("low", "central", "high")
                 }
                 cpre = sum(cg.get(str(y), 0.0) for y in (2019, 2020, 2021)) / 3
-                if iso3 in GAS_IN_CUSTOMS:
-                    cpre = max(cpre, pre["central"] * GAS_IN_CUSTOMS[iso3])
+                if gic:
+                    cpre = max(cpre, pre["central"] * gic[0])
                 tr["base"] = round(max(0.0, tr["base"] - cpre) + pre["central"], 5)
                 tr["base_range"] = [
                     round(max(0.0, tr["base_range"][0] - cpre) + pre["low"], 5),
@@ -946,10 +949,11 @@ def build() -> dict:
     exported = {
         "TUR": as_crude(hb["turkey_refining"]["by_year"], "exported_product_value_eur_bn", "TUR"),
         "IND": as_crude(hb["india_refining"], "exported_product_value_eur_bn", "IND"),
-        # China reports crude values only: fuel = crude / 0.70 (described as India's measured crude-to-fuel ratio, but
-        # India measures 0.64-0.75 by year, mean 0.67: a judgement, docs/decisions.md, constants)
+        # China reports crude values only: fuel = crude / China's measured crude share of its fuel exports for the
+        # year (crude_content.json, central 0.72-0.82 in 2022-2026). Round 12, was a flat / 0.70 (judgement)
         "CHN": {
-            y: {b: v.get(b, 0.0) / 0.70 * crude_k(int(y), "CHN")[i] for b, i in bands.items()} for y, v in china.items()
+            y: {b: v.get(b, 0.0) / crude_k(int(y), "CHN")[1] * crude_k(int(y), "CHN")[i] for b, i in bands.items()}
+            for y, v in china.items()
         },
     }
     rid = src.add(
@@ -1614,9 +1618,25 @@ GAS_PRICES = json.loads((Path(__file__).resolve().parent.parent / "research/2026
 # gas_prices.json "energy_basis")
 MWH_PER_BCM = 10.55e6
 # share of final-use Russian gas that customs already record as imports from Russia under another heading (audit):
-# Turkey and Poland book it under confidential or general fuel codes; Germany part of it. Turkey and Poland: audit-notes
-# items 1 and 8; Germany's 0.07 is a judgement on EUR 2.3-3.5bn of unlabelled gas (audit-notes item 2; docs/decisions.md)
-GAS_IN_CUSTOMS = {"TUR": 1.0, "POL": 1.0, "DEU": 0.07}
+# Turkey and Poland book it under confidential or general fuel codes (audit-notes items 1 and 8)
+GAS_IN_CUSTOMS = {"TUR": 1.0, "POL": 1.0}
+# Germany books part of it: EUR 2.3bn (2021) and 3.5bn (2022) of Russian HS 27 without a sub-heading (audit-notes item 2,
+# audit.json flags). Round 12: the share is derived per year from these amounts, as amount / German final-use Russian
+# gas that year (2021: 2.3 / 16.6 = 0.14; 2022: 3.5 / 23.7 = 0.15; the 2019-2021 baseline uses 2021's share). Was a flat
+# 0.07 (judgement). From 2023 Germany had no Russian pipeline gas, so the share does not matter
+GAS_UNLABELLED = {"DEU": {2021: 2.3, 2022: 3.5}}
+
+
+def gas_in_customs(iso3: str, gas_years: list[float]) -> list[float] | None:
+    """Per year, the share of final-use gas already in customs (None if none is)."""
+    if iso3 in GAS_IN_CUSTOMS:
+        return [GAS_IN_CUSTOMS[iso3]] * len(YEARS)
+    unl = GAS_UNLABELLED.get(iso3)
+    if not unl:
+        return None
+    share = {y: v / gas_years[YEARS.index(y)] for y, v in unl.items() if gas_years[YEARS.index(y)]}
+    # years without an audit figure take the nearest measured year's share
+    return [share.get(y, share[max(share)] if y > max(share) else share[min(share)]) for y in YEARS]
 
 
 def gas_index(iso3: str, band: str) -> list[float]:
@@ -1643,10 +1663,13 @@ PRICES["TUR"] = _TUR["countries"]["TUR"]
 GAS_PRICES["countries"].setdefault("TUR", {}).setdefault("index_vs_2019_2021", {})["pipeline"] = _TUR[
     "gas_prices_tur_replacement"
 ]["index_vs_2019_2021"]
-# Belarus: fixed dollar contract price, so only the exchange rate moves it (round 7). The +-2% band is a judgement:
-# gas_prices.json gives +-8% (2023-2025) and +-15% (2026); see docs/decisions.md (constants)
-for _v in GAS_PRICES["countries"]["BLR"]["index_vs_2019_2021"]["pipeline"].values():
-    _v["low"], _v["high"] = round(_v["central"] * 0.98, 4), round(_v["central"] * 1.02, 4)
+# Belarus: fixed dollar contract price, so only the exchange rate moves it (round 7). Where the price is published
+# (2019-2022) the band is +-2%. Round 12: from 2023 the price is settled in roubles and its continuation is assumed, so
+# the research's own ranges apply (gas_prices-notes.md: +-8% for 2023-2025, +-15% for 2026); was +-2% for every year
+BLR_GAS_BAND = {"2023": 0.08, "2024": 0.08, "2025": 0.08, "2026": 0.15}
+for _y, _v in GAS_PRICES["countries"]["BLR"]["index_vs_2019_2021"]["pipeline"].items():
+    _w = BLR_GAS_BAND.get(_y, 0.02)
+    _v["low"], _v["high"] = round(_v["central"] * (1 - _w), 4), round(_v["central"] * (1 + _w), 4)
 PRICES_SKIP: set[str] = set()
 
 
@@ -2387,17 +2410,20 @@ def apply_ua_arms_purchases(countries: dict[str, dict], src: Sources) -> None:
 
 
 def apply_loans_value(countries: dict[str, dict], src: Sources) -> None:
-    """Loans and guarantees at their economic value to Ukraine (loans_value.json, round 5): the grant element, face value
-    minus the present value of Ukraine's repayments at the rate it would otherwise pay (10%, range 6-7% to 13-15%).
-    Stored as yearly changes against face value, for the country's own aid and its share of EU-level aid; the cost view
-    uses the same economic value. New multilateral lending (IMF, World Bank, EBRD, CEB) is credited by shareholding."""
+    """Loans and guarantees at their economic value to Ukraine (loans_value.json, round 5; rates and losses measured in
+    round 12 by loan_rates.py): face value minus the present value of Ukraine's repayments at its normal 2021 rate
+    (6.7%), times one minus the expected loss of the lender's creditor class; high: the promised war yield of the payout
+    year. Stored as yearly changes against face value, for the country's own aid and its share of EU-level aid. The cost
+    view uses the lender's cost: the same terms and losses at the lender's own funding rate (round 12, was 26% of face).
+    New multilateral lending (IMF, World Bank, EBRD, CEB) is credited by shareholding. docs/method/loans.md"""
     lv = load(GAPS / "loans_value.json")
     sid = src.add(
         "loans_value",
         "Loans at economic value: Kiel loan terms (maturity, interest, grace), EU regulations, Ukraine's Eurobond yields; IMF, World Bank, EBRD and CEB lending by shareholding",
         "https://www.ifw-kiel.de/topics/war-against-ukraine/ukraine-support-tracker/",
         lv.get("generated"),
-        "grant element at a 10% discount rate (6-15%); see research/2026-10/gaps/loans_value-notes.md",
+        "gift = cheaper interest at Ukraine's 2021 rate (6.7%) plus the lender's measured expected loss; high: the war"
+        " yield of the payout year (15-40%); see docs/method/loans.md",
     )
     bands = (("c", "central"), ("l", "low"), ("h", "high"))
     for iso3, d in lv["countries"].items():
@@ -2420,14 +2446,18 @@ def apply_loans_value(countries: dict[str, dict], src: Sources) -> None:
                 a["eu_src"].append(sid)
             face = sum((d.get("loans_guarantees_face_in_map") or {}).values())
             ev = sum((v or {}).get("central", 0.0) for v in (d.get("loans_guarantees_economic_value") or {}).values())
-            # the cost view keeps the lender's cost (LOAN_GRANT_ELEMENT, 26% of face since round 11): the economic value
-            # is Ukraine's gain, discounted at Ukraine's borrowing rate, not what the lender gave up
+            # the cost view uses the lender's cost (round 12): the same terms and expected losses, discounted at the
+            # lender's own funding rate, per loan item; it replaces LOAN_GRANT_ELEMENT (26% of face for every loan)
+            lc = d.get("loans_guarantees_lender_cost") or {}
+            cost = {b: sum((v or {}).get(b, 0.0) for v in lc.values()) for b in ("low", "central", "high")}
             if face:
                 a["loans_face"], a["loans_grant_eq"], a["loans_value_ukraine"] = (
                     round(face, 3),
-                    round(face * LOAN_GRANT_ELEMENT, 3),
+                    round(cost["central"] if lc else face * LOAN_GRANT_ELEMENT, 3),
                     round(ev, 3),
                 )
+                if lc:
+                    a["loans_grant_eq_lo"], a["loans_grant_eq_hi"] = round(cost["low"], 3), round(cost["high"], 3)
             if sid not in a.setdefault("src", []):
                 a["src"].append(sid)
         ml = (d.get("multilateral_new") or {}).get("economic_value") or {}
@@ -3047,9 +3077,29 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
 
 
 # Hong Kong: share of its Russian imports that is precious metals, and the share of that passed on to mainland China
-# share of Hong Kong's imports from Russia that are precious metals (HS 71). Not traced to a research file: the raw
-# Comtrade downloads hold totals only (round 11 audit; docs/decisions.md, constants)
-HK_METALS_SHARE = 0.98
+# share of the rise in Hong Kong's imports from Russia (over 2019-2021) that is precious metals (HS 71), per year.
+# Round 12: measured from UN Comtrade (Hong Kong's own import records, raw/comtrade_hkg): the HS 71 rise / the total
+# rise, at most 1. HS 71 rose more than the total in every year (other goods fell), so it is 1.0 in 2022-2025; 2026
+# takes 2025's. Was a flat 0.98, not traced to a source
+
+
+def _hk_metals_share() -> list[float]:
+    raw = Path(__file__).resolve().parent.parent / "research/2026-10/raw/comtrade_hkg"
+    val: dict[int, dict[str, float]] = {}
+    for f in sorted(raw.glob("HKG_from_RUS_M_TOTAL_71_*.json")):
+        for r in json.loads(f.read_text())["data"]:
+            val.setdefault(int(r["period"]), {})[r["cmdCode"]] = r["primaryValue"]
+    base = {k: sum(val[y][k] for y in (2019, 2020, 2021)) / 3 for k in ("TOTAL", "71")}
+    share = {
+        y: min(1.0, max(0.0, (v["71"] - base["71"]) / (v["TOTAL"] - base["TOTAL"])))
+        for y, v in val.items()
+        if y >= 2022 and v["TOTAL"] > base["TOTAL"]
+    }
+    last = max(share)
+    return [0.0] + [round(share.get(y, share[last]), 4) for y in YEARS[1:]]
+
+
+HK_METALS_SHARE = _hk_metals_share()
 HK_ONWARD = (0.3, 0.55, 0.85)
 TRANSIT_HUBS = {"HKG": "gold transit hub: the share of Russian gold passed on to mainland China is counted for China"}  # fmt: skip
 
@@ -3291,7 +3341,7 @@ def apply_net_gain(countries: dict[str, dict], src: Sources) -> None:
         if iso3 == "HKG":
             hb = tr.get("base") or tr["years"][0]
             tagged = [
-                t + max(0.0, gp - hb * FRAC[i] * pidx[i]) * HK_METALS_SHARE if i else t
+                t + max(0.0, gp - hb * FRAC[i] * pidx[i]) * HK_METALS_SHARE[i] if i else t
                 for i, (t, gp) in enumerate(zip(tagged, gross))
             ]
         gold_a = [min(1.0, t / gp) if gp > 0 else 0.0 for t, gp in zip(tagged, gross)]
@@ -3597,7 +3647,7 @@ def remove_freight(countries: dict[str, dict]) -> None:
         gold = list(tr.get("_gold") or [0.0] * 6)
         if c["iso3"] == "HKG":
             hb = tr.get("base") or tr["years"][0]
-            gold = [g + (max(0.0, v - hb * FRAC[i]) * HK_METALS_SHARE if i else 0.0) for i, (g, v) in enumerate(zip(gold, tr["years"]))]  # fmt: skip
+            gold = [g + (max(0.0, v - hb * FRAC[i]) * HK_METALS_SHARE[i] if i else 0.0) for i, (g, v) in enumerate(zip(gold, tr["years"]))]  # fmt: skip
         for k, n in (("years", 1), ("years_lo", 2), ("years_hi", 0)):
             out = []
             for i, (v, y) in enumerate(zip(tr[k], YEARS)):
@@ -3926,17 +3976,17 @@ def apply_residual(countries: dict[str, dict], src: Sources, note) -> None:
             # only the change since before the war is gold in transit; 2021 stays as it was
             rise = [0.0] + [max(0.0, base[key][i] - hk_base * FRAC[i]) for i in range(1, len(YEARS))]
             hk["to_rus"][key] = [
-                v if i == 0 else round(v - rise[i] * HK_METALS_SHARE * on[i][keep_b], 5)
+                v if i == 0 else round(v - rise[i] * HK_METALS_SHARE[i] * on[i][keep_b], 5)
                 for i, v in enumerate(base[key])
             ]
             cn["to_rus"][key] = [
-                v if i == 0 else round(v + rise[i] * HK_METALS_SHARE * on[i][give_b], 5)
+                v if i == 0 else round(v + rise[i] * HK_METALS_SHARE[i] * on[i][give_b], 5)
                 for i, v in enumerate(cn["to_rus"][key])
             ]
             if key == "years":
                 g0 = cn["to_rus"].get("_gold", [0.0] * 6)
                 cn["to_rus"]["_gold"] = [
-                    x + rise[i] * HK_METALS_SHARE * on[i]["central"] if i else x for i, x in enumerate(g0)
+                    x + rise[i] * HK_METALS_SHARE[i] * on[i]["central"] if i else x for i, x in enumerate(g0)
                 ]
         cn["to_rus"]["src"] = cn["to_rus"]["src"] + [rid]
     for iso3, text in TRANSIT_HUBS.items():

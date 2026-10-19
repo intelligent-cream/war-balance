@@ -66,7 +66,8 @@ for c in countries.values():
                 mid_k = k[:-3]
                 hi_k = mid_k + "_hi"
                 if mid_k in obj and hi_k in obj:
-                    rows = zip(v, obj[mid_k], obj[hi_k])
+                    # a single value (loans_grant_eq_lo) is checked as a range of one
+                    rows = zip(*(x if isinstance(x, list) else [x] for x in (v, obj[mid_k], obj[hi_k])))
                     if mid_k == "refugee_years":  # floored on the running total: the running totals are ordered
                         run = [0.0, 0.0, 0.0]
                         rows = [tuple(run.__setitem__(i, run[i] + x) or run[i] for i, x in enumerate(t)) for t in rows]

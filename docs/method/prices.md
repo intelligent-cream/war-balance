@@ -53,7 +53,7 @@ Gas was priced very differently from country to country. [`gas_prices.json`](../
 - **Customs unit values** (A): Eurostat Comext and UN Comtrade, HS 271121 (pipeline) and 271111 (LNG).
 - **Customs value ÷ external volume** (B): China's Power of Siberia, French LNG.
 - **Peer customs** (B): Germany, Austria, Finland, Switzerland and others hide Russian gas in customs; they get the volume-weighted price of Czechia, Slovakia and Italy, whose contracts were also hub-indexed.
-- **Published contract prices** (B): Belarus (USD 127–128.5 per 1,000 m³), Moldova, Armenia.
+- **Published contract prices** (B): Belarus (USD 127–128.5 per 1,000 m³), Moldova, Armenia. Belarus's band is ±2% where the price is published (2019–2022) and, since round 12, the research's ±8% for 2023–2025 and ±15% for 2026, when the price is settled in roubles and its continuation is assumed (was ±2% for every year).
 - **Oil-formula models** (C): price = k × 9-month Brent average lagged one month, k calibrated on Serbian and Bosnian customs (0.418 EUR/MWh per EUR/bbl); used for Turkey and Poland 2019–2022.
 
 Examples of the 2022 index: Hungary about 7 (hub prices), Austria 4.85, Bulgaria 3.92, Serbia and Turkey about 1.8–1.9 (oil-linked), Armenia 1.13, Belarus 1.1 (fixed dollar price). `gas_index()` uses the country's own series where researched and the Europe-wide index otherwise. The same prices value **final-use gas** in the transit-gas swap ([energy-and-laundered-oil.md](energy-and-laundered-oil.md#transit-gas)).

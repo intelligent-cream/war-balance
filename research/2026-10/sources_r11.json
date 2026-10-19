@@ -853,6 +853,14 @@
      "what": "crypto payment channel volumes",
      "confirmed": true,
      "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: Hong Kong's imports from Russia, all goods and HS 71, 2023",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=344&partnerCode=643&period=2023&flowCode=M&cmdCode=TOTAL,71",
+     "kind": "primary",
+     "what": "round 12: HK_METALS_SHARE, the precious-metals share of Hong Kong's rise (same query for 2019-2025, raw/comtrade_hkg)",
+     "confirmed": true,
+     "checked": "fetched"
     }
    ],
    "note": "Rough indication (D); gold flows from UN Comtrade (primary), the rest from NGO and press reports."
@@ -2586,9 +2594,113 @@
      "what": "EBRD shareholding",
      "confirmed": true,
      "checked": "fetched"
+    },
+    {
+     "title": "Ukrinform: Ukraine prices USD 1.25bn 8-year Eurobond at 6.875% (27 Apr 2021)",
+     "url": "https://www.ukrinform.net/rubric-economy/3235891-ukraine-to-issue-eurobonds-worth-125b-finance-ministry.html",
+     "kind": "primary",
+     "what": "round 12: Ukraine's normal (pre-war) rate, part of the 2021 mean",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Interfax-Ukraine: USD 500m tap of the 2029 Eurobond at 6.30% (22 Jul 2021)",
+     "url": "https://en.interfax.com.ua/news/economic/758134.html",
+     "kind": "primary",
+     "what": "round 12: Ukraine's normal (pre-war) rate, part of the 2021 mean",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "ICU Weekly Insight 28 Mar 2022: Eurobond lows of 21-34 cents = yields of 37-427%",
+     "url": "https://icu.ua/download/4058/ICUWeeklyInsight-20220328-Eng.pdf",
+     "kind": "primary",
+     "what": "round 12: price-to-yield calibration; one of 72 weekly price ranges 2022-2024 in raw/loan_rates/icu_weekly_eurobond_prices.json",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "ICU Weekly Insight 18 Dec 2023: Eurobonds at 24-31 cents",
+     "url": "https://icu.ua/download/4446/ICUWeeklyInsight-20231218-Eng.pdf",
+     "kind": "primary",
+     "what": "round 12: promised war yield 2023 (one of the weekly prices)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eavex Capital Fixed Income Weekly 22 Dec 2025: yields of the restructured Eurobonds",
+     "url": "https://www.eavex.com.ua/wp-content/uploads/2025/12/eavex-fi-weekly-dec-22.pdf",
+     "kind": "primary",
+     "what": "round 12: post-restructuring yields 2024-2026 (one of 106 weekly tables in raw/loan_rates/eavex_weekly_eurobond_ytm.json)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Government of Ukraine: restructuring of USD 20.5bn Eurobonds completed (4 Sep 2024)",
+     "url": "https://www.kmu.gov.ua/en/news/ukraina-zavershyla-restrukturyzatsiiu-derzhavnykh-oblihatsii-ta-harantovanykh-derzhavoiu-ievrooblihatsii-na-sumu-205-mlrd-dolariv-ssha",
+     "kind": "primary",
+     "what": "round 12: bondholders' loss: 37% face cut, about 60% present-value cut at 14%",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Government of Ukraine: memorandum with the Group of Creditors of Ukraine, debt service suspended to Feb 2030 (17 Apr 2026)",
+     "url": "https://www.kmu.gov.ua/en/news/serhii-marchenko-ta-hrupa-ofitsiinykh-kredytoriv-z-krain-g7-ta-paryzkoho-klubu-pidpysaly-memorandum-pro-vidterminuvannia-platezhiv-z-pohashennia-i-obsluhovuvannia-borhu-ukrainy",
+     "kind": "primary",
+     "what": "round 12: bilateral lenders' loss: deferred interest capitalised, repaid 2035-2039",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "French Treasury: Group of Creditors of Ukraine statement (17 Apr 2026)",
+     "url": "https://www.tresor.economie.gouv.fr/Articles/2026/04/17/group-of-creditors-of-ukraine-statement",
+     "kind": "primary",
+     "what": "round 12: debt covered (paid out before 26 Nov 2025), GCU members",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "IMF press release 26/66: EFF arrangement for Ukraine (26 Feb 2026)",
+     "url": "https://www.imf.org/en/news/articles/2026/02/26/pr-26066-ukraine-imf-executive-board-approves-usd-8point1-billion-under-an-eff-arrangement",
+     "kind": "primary",
+     "what": "round 12: GCU to extend the standstill and complete a definitive debt treatment",
+     "confirmed": true,
+     "checked": "confirmed by web fetch (site blocks curl)"
+    },
+    {
+     "title": "European Parliament Legislative Observatory 2022/0213(COD): exceptional MFA, provisioning 70% instead of 9%",
+     "url": "https://oeil.europarl.europa.eu/oeil/en/document-summary?id=1710888",
+     "kind": "primary",
+     "what": "round 12: expected loss for EU loans (9% central, 70% high)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Schlegl, Trebesch and Wright: The Seniority Structure of Sovereign Debt (NBER w25793)",
+     "url": "https://www.nber.org/papers/w25793",
+     "kind": "primary",
+     "what": "round 12: IMF and World Bank are senior creditors",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Interfax: Ukraine repaid USD 279.7m to the IMF in February 2026 (6 Mar 2026)",
+     "url": "https://interfax.com/newsroom/top-stories/116503/",
+     "kind": "primary",
+     "what": "round 12: servicing record to the IMF",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "FRED (OECD): long-term government bond yields, 10-year, Germany (IRLTLT01DEM156N)",
+     "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01DEM156N&cosd=2021-01-01",
+     "kind": "primary",
+     "what": "round 12: lenders' funding rates for the cost view (same series for CA, FR, IT, JP, KR, NL, ES, FI, SK, GB, US, euro area)",
+     "confirmed": true,
+     "checked": "fetched"
     }
    ],
-   "note": ""
+   "note": "Round 12: loans at measured rates and expected losses (docs/method/loans.md); every rate and loss has a link here"
   },
   "money_ledger": {
    "model": false,

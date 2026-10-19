@@ -1,0 +1,2696 @@
+{
+ "what": "Indicative prices and yields to maturity of Ukraine's restructured USD sovereign Eurobonds (Series A 2029, 2034, 2035, 2036; Series B 2030) from the 'Selected Ukrainian Eurobonds' table of Eavex Capital's weekly fixed-income report, 28 Oct 2024 to 19 Oct 2026. sha256 is of the PDF as downloaded on 2026-10-19.",
+ "source": "Eavex Capital, Fixed Income Weekly, list of reports: https://www.eavex.com.ua/wp-json/wp/v2/media?search=fi-weekly&per_page=100",
+ "weeks": [
+  {
+   "date": "2024-10-28",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2024/10/eavex-fi-weekly-oct-28.pdf",
+   "sha256": "8d5d112ec8e9ceb5ce526da3c5fdbcdcaf354cbe69009420cd8dfc7e656e20b1",
+   "bonds": {
+    "2029": {
+     "price": 75.6,
+     "ytm_pct": 15.0
+    },
+    "2034": {
+     "price": 47.6,
+     "ytm_pct": 11.3
+    },
+    "2035": {
+     "price": 46.8,
+     "ytm_pct": 10.7
+    },
+    "2036": {
+     "price": 46.6,
+     "ytm_pct": 9.9
+    }
+   }
+  },
+  {
+   "date": "2024-11-04",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2024/11/eavex-fi-weekly-nov-4.pdf",
+   "sha256": "c514da96628c7a4309be993af17cc5fe3d424a166ea25860277c14180c27bd50",
+   "bonds": {
+    "2029": {
+     "price": 59.8,
+     "ytm_pct": 15.3
+    },
+    "2034": {
+     "price": 46.8,
+     "ytm_pct": 11.2
+    },
+    "2035": {
+     "price": 45.7,
+     "ytm_pct": 10.7
+    },
+    "2036": {
+     "price": 45.2,
+     "ytm_pct": 10.0
+    }
+   }
+  },
+  {
+   "date": "2024-11-11",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2024/11/eavex-fi-weekly-nov-11.pdf",
+   "sha256": "bb0b614db6e94e10797edb2dbd8ca4ae5f119d6e159bf3d4e9bcd6f9bb4fc42d",
+   "bonds": {
+    "2029": {
+     "price": 62.4,
+     "ytm_pct": 14.3
+    },
+    "2034": {
+     "price": 49.1,
+     "ytm_pct": 10.8
+    },
+    "2035": {
+     "price": 48.8,
+     "ytm_pct": 10.0
+    },
+    "2036": {
+     "price": 47.9,
+     "ytm_pct": 9.6
+    }
+   }
+  },
+  {
+   "date": "2024-11-18",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2024/11/eavex-fi-weekly-nov-18.pdf",
+   "sha256": "153c84799a17b2963987e00a07e32cc42ab8a77aeb0820412c8068933fc407db",
+   "bonds": {
+    "2029": {
+     "price": 64.3,
+     "ytm_pct": 13.3
+    },
+    "2034": {
+     "price": 51.7,
+     "ytm_pct": 10.0
+    },
+    "2035": {
+     "price": 51.0,
+     "ytm_pct": 9.3
+    },
+    "2036": {
+     "price": 50.1,
+     "ytm_pct": 8.9
+    }
+   }
+  },
+  {
+   "date": "2024-11-25",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2024/11/eavex-fi-weekly-nov-25.pdf",
+   "sha256": "7a0532f75be7653bd94ce30a53158d7d4358fdae3fbe29b5356b81b975820ec5",
+   "bonds": {
+    "2029": {
+     "price": 63.5,
+     "ytm_pct": 13.9
+    },
+    "2034": {
+     "price": 51.6,
+     "ytm_pct": 10.3
+    },
+    "2035": {
+     "price": 50.8,
+     "ytm_pct": 9.6
+    },
+    "2036": {
+     "price": 49.5,
+     "ytm_pct": 9.2
+    }
+   }
+  },
+  {
+   "date": "2024-12-02",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2024/12/eavex-fi-weekly-dec-2.pdf",
+   "sha256": "036b79d915e0a818e2013a1bb8a2738cfc86afb2dcce0d5e230c9699f7002856",
+   "bonds": {
+    "2029": {
+     "price": 63.7,
+     "ytm_pct": 13.8
+    },
+    "2034": {
+     "price": 51.7,
+     "ytm_pct": 10.1
+    },
+    "2035": {
+     "price": 50.9,
+     "ytm_pct": 9.5
+    },
+    "2036": {
+     "price": 50.0,
+     "ytm_pct": 9.1
+    }
+   }
+  },
+  {
+   "date": "2024-12-09",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2024/12/eavex-fi-weekly-dec-9.pdf",
+   "sha256": "4f64ee067294b3c8c1fd605735322de6d5f9b78c6c0b2d95634d524b35d79f57",
+   "bonds": {
+    "2029": {
+     "price": 65.3,
+     "ytm_pct": 13.2
+    },
+    "2034": {
+     "price": 53.4,
+     "ytm_pct": 9.7
+    },
+    "2035": {
+     "price": 52.5,
+     "ytm_pct": 9.1
+    },
+    "2036": {
+     "price": 52.0,
+     "ytm_pct": 8.8
+    }
+   }
+  },
+  {
+   "date": "2024-12-16",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2024/12/eavex-fi-weekly-dec-16.pdf",
+   "sha256": "0928ed2c551d6653afc8ab7524ebe6b83e0aef7e7867a4ade80eda5b6370a3cf",
+   "bonds": {
+    "2029": {
+     "price": 67.4,
+     "ytm_pct": 16.5
+    },
+    "2034": {
+     "price": 54.8,
+     "ytm_pct": 14.9
+    },
+    "2035": {
+     "price": 53.8,
+     "ytm_pct": 14.7
+    },
+    "2036": {
+     "price": 53.0,
+     "ytm_pct": 14.6
+    }
+   }
+  },
+  {
+   "date": "2024-12-23",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2024/12/eavex-fi-weekly-dec-23.pdf",
+   "sha256": "4bddd51b2f225f1eea6ab314f3b0af957ccd1933c9db907522860f3884cfe78e",
+   "bonds": {
+    "2029": {
+     "price": 68.7,
+     "ytm_pct": 16.0
+    },
+    "2034": {
+     "price": 55.6,
+     "ytm_pct": 14.7
+    },
+    "2035": {
+     "price": 54.4,
+     "ytm_pct": 14.6
+    },
+    "2036": {
+     "price": 53.5,
+     "ytm_pct": 14.5
+    }
+   }
+  },
+  {
+   "date": "2024-12-30",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2024/12/eavex-fi-weekly-dec-30.pdf",
+   "sha256": "7516f4d43d120e49d1f16c2a09d650851b05ba9950aa8aa2c4a088a19e68dd23",
+   "bonds": {
+    "2029": {
+     "price": 68.9,
+     "ytm_pct": 15.9
+    },
+    "2034": {
+     "price": 56.0,
+     "ytm_pct": 14.7
+    },
+    "2035": {
+     "price": 54.6,
+     "ytm_pct": 14.6
+    },
+    "2036": {
+     "price": 53.7,
+     "ytm_pct": 14.4
+    }
+   }
+  },
+  {
+   "date": "2025-01-06",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/01/eavex-fi-weekly-jan-6.pdf",
+   "sha256": "aa93f4aeffea01abd846d230b81498be916b873620ce9e225bed25ab37f4b12f",
+   "bonds": {
+    "2029": {
+     "price": 70.8,
+     "ytm_pct": 15.2
+    },
+    "2034": {
+     "price": 56.9,
+     "ytm_pct": 14.5
+    },
+    "2035": {
+     "price": 56.0,
+     "ytm_pct": 14.2
+    },
+    "2036": {
+     "price": 55.0,
+     "ytm_pct": 14.1
+    }
+   }
+  },
+  {
+   "date": "2025-01-13",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/01/eavex-fi-weekly-jan-13.pdf",
+   "sha256": "ede63b6c6910cd4d2775bf9801e5f3b2f498693beadc6502cbdee55c01c2f78e",
+   "bonds": {
+    "2029": {
+     "price": 67.9,
+     "ytm_pct": 16.6
+    },
+    "2034": {
+     "price": 55.2,
+     "ytm_pct": 15.0
+    },
+    "2035": {
+     "price": 54.1,
+     "ytm_pct": 14.8
+    },
+    "2036": {
+     "price": 53.4,
+     "ytm_pct": 14.6
+    }
+   }
+  },
+  {
+   "date": "2025-01-20",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/01/eavex-fi-weekly-jan-20.pdf",
+   "sha256": "3a07fb1585facd7d96cb313f8036474cb2908e60023a69d8caf57468e9008260",
+   "bonds": {
+    "2029": {
+     "price": 67.6,
+     "ytm_pct": 16.8
+    },
+    "2034": {
+     "price": 55.2,
+     "ytm_pct": 15.0
+    },
+    "2035": {
+     "price": 53.5,
+     "ytm_pct": 15.0
+    },
+    "2036": {
+     "price": 53.8,
+     "ytm_pct": 14.5
+    }
+   }
+  },
+  {
+   "date": "2025-01-27",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/01/eavex-fi-weekly-jan-27.pdf",
+   "sha256": "ab3fb39b906dee0c3f94d0d4312bb767a139e9c597721b28809f427f950aba34",
+   "bonds": {
+    "2029": {
+     "price": 70.6,
+     "ytm_pct": 15.5
+    },
+    "2034": {
+     "price": 56.5,
+     "ytm_pct": 14.4
+    },
+    "2035": {
+     "price": 56.0,
+     "ytm_pct": 14.1
+    },
+    "2036": {
+     "price": 56.0,
+     "ytm_pct": 13.7
+    }
+   }
+  },
+  {
+   "date": "2025-02-03",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/02/eavex-fi-weekly-feb-3.pdf",
+   "sha256": "6fc9139416ab8e5ac95a39a94221bfe2e7fb155aff8901079fbdbc6ebc5ac4e3",
+   "bonds": {
+    "2029": {
+     "price": 70.1,
+     "ytm_pct": 15.5
+    },
+    "2034": {
+     "price": 56.2,
+     "ytm_pct": 14.3
+    },
+    "2035": {
+     "price": 55.5,
+     "ytm_pct": 14.0
+    },
+    "2036": {
+     "price": 56.0,
+     "ytm_pct": 13.5
+    }
+   }
+  },
+  {
+   "date": "2025-02-10",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/02/eavex-fi-weekly-feb-10.pdf",
+   "sha256": "c049a34e0b1f9426a246703443209bef85544aa9ac2b4e83c8532bf892f09e22",
+   "bonds": {
+    "2029": {
+     "price": 71.1,
+     "ytm_pct": 15.1
+    },
+    "2034": {
+     "price": 59.3,
+     "ytm_pct": 13.4
+    },
+    "2035": {
+     "price": 59.1,
+     "ytm_pct": 13.1
+    },
+    "2036": {
+     "price": 58.6,
+     "ytm_pct": 12.9
+    }
+   }
+  },
+  {
+   "date": "2025-02-17",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/02/eavex-fi-weekly-feb-17.pdf",
+   "sha256": "a99f6c0cddde91cc22abfd1f99d6700ddfbe9eac412d8c7d36837d140f4501bc",
+   "bonds": {
+    "2029": {
+     "price": 73.9,
+     "ytm_pct": 14.0
+    },
+    "2034": {
+     "price": 61.3,
+     "ytm_pct": 12.9
+    },
+    "2035": {
+     "price": 59.8,
+     "ytm_pct": 12.9
+    },
+    "2036": {
+     "price": 59.8,
+     "ytm_pct": 12.6
+    }
+   }
+  },
+  {
+   "date": "2025-02-24",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/02/eavex-fi-weekly-feb-24.pdf",
+   "sha256": "b7fb36900a568aaa9c931a41ef42b52caa201ed3320183aaf4e92321619e7fbe",
+   "bonds": {
+    "2029": {
+     "price": 71.7,
+     "ytm_pct": 15.0
+    },
+    "2034": {
+     "price": 59.5,
+     "ytm_pct": 13.4
+    },
+    "2035": {
+     "price": 58.3,
+     "ytm_pct": 13.3
+    },
+    "2036": {
+     "price": 57.4,
+     "ytm_pct": 13.2
+    }
+   }
+  },
+  {
+   "date": "2025-03-03",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/03/eavex-fi-weekly-mar-3.pdf",
+   "sha256": "4346bbce5ddb04ee76d123c275f878a19554a2583cd9c016e9e844e152ceb966",
+   "bonds": {
+    "2029": {
+     "price": 71.8,
+     "ytm_pct": 15.0
+    },
+    "2034": {
+     "price": 59.8,
+     "ytm_pct": 13.4
+    },
+    "2035": {
+     "price": 58.7,
+     "ytm_pct": 13.3
+    },
+    "2036": {
+     "price": 56.6,
+     "ytm_pct": 13.5
+    }
+   }
+  },
+  {
+   "date": "2025-03-11",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/03/eavex-fi-weekly-mar-10.pdf",
+   "sha256": "2889d53d3ec2381a312ce232cee863559b4aca7a1aaf2fd39f14bf48c56c47d6",
+   "bonds": {
+    "2029": {
+     "price": 69.3,
+     "ytm_pct": 16.3
+    },
+    "2034": {
+     "price": 58.1,
+     "ytm_pct": 13.9
+    },
+    "2035": {
+     "price": 57.2,
+     "ytm_pct": 13.7
+    },
+    "2036": {
+     "price": 56.2,
+     "ytm_pct": 13.6
+    }
+   }
+  },
+  {
+   "date": "2025-03-17",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/03/eavex-fi-weekly-mar-17.pdf",
+   "sha256": "7dc747ff93372b2ec5747387f6c7958bb4f477e948c420fa779999af255aac35",
+   "bonds": {
+    "2029": {
+     "price": 70.7,
+     "ytm_pct": 15.7
+    },
+    "2034": {
+     "price": 58.7,
+     "ytm_pct": 13.8
+    },
+    "2035": {
+     "price": 57.9,
+     "ytm_pct": 13.6
+    },
+    "2036": {
+     "price": 56.6,
+     "ytm_pct": 13.5
+    }
+   }
+  },
+  {
+   "date": "2025-03-24",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/03/eavex-fi-weekly-mar-24.pdf",
+   "sha256": "e345d6d17800793736223f07022d1c4d44621cc06df83587fc6cddb703859494",
+   "bonds": {
+    "2029": {
+     "price": 68.4,
+     "ytm_pct": 16.9
+    },
+    "2034": {
+     "price": 57.2,
+     "ytm_pct": 14.3
+    },
+    "2035": {
+     "price": 56.2,
+     "ytm_pct": 14.1
+    },
+    "2036": {
+     "price": 55.1,
+     "ytm_pct": 14.0
+    }
+   }
+  },
+  {
+   "date": "2025-03-31",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/03/eavex-fi-weekly-mar-31.pdf",
+   "sha256": "b3d537074e09568f53c51c04c5047bd4ba148564f13cb540199ad04a021918b1",
+   "bonds": {
+    "2029": {
+     "price": 66.9,
+     "ytm_pct": 17.7
+    },
+    "2034": {
+     "price": 54.2,
+     "ytm_pct": 15.3
+    },
+    "2035": {
+     "price": 52.8,
+     "ytm_pct": 15.1
+    },
+    "2036": {
+     "price": 52.8,
+     "ytm_pct": 14.7
+    }
+   }
+  },
+  {
+   "date": "2025-04-07",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/04/eavex-fi-weekly-apr-7.pdf",
+   "sha256": "083aaef6590ee8c51cb022924a7788d3d7b979ae85d1d9ff5fe1875153cc2361",
+   "bonds": {
+    "2029": {
+     "price": 61.4,
+     "ytm_pct": 20.8
+    },
+    "2034": {
+     "price": 48.0,
+     "ytm_pct": 17.5
+    },
+    "2035": {
+     "price": 48.0,
+     "ytm_pct": 16.8
+    },
+    "2036": {
+     "price": 47.5,
+     "ytm_pct": 16.4
+    }
+   }
+  },
+  {
+   "date": "2025-04-14",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/04/eavex-fi-weekly-apr-14.pdf",
+   "sha256": "d71262626531937907e3317d1f8b48c4a2e9477d550350c34aabc1a5ff12ae80",
+   "bonds": {
+    "2029": {
+     "price": 58.7,
+     "ytm_pct": 22.5
+    },
+    "2034": {
+     "price": 46.6,
+     "ytm_pct": 18.1
+    },
+    "2035": {
+     "price": 46.3,
+     "ytm_pct": 17.5
+    },
+    "2036": {
+     "price": 44.7,
+     "ytm_pct": 17.4
+    }
+   }
+  },
+  {
+   "date": "2025-04-21",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/04/eavex-fi-weekly-apr-21.pdf",
+   "sha256": "87be38e94161aba255ee5a62449fae0ee55171e83525c6a7ddc2fb4f12c63270",
+   "bonds": {
+    "2029": {
+     "price": 63.3,
+     "ytm_pct": 19.9
+    },
+    "2034": {
+     "price": 49.2,
+     "ytm_pct": 17.1
+    },
+    "2035": {
+     "price": 51.0,
+     "ytm_pct": 15.8
+    },
+    "2036": {
+     "price": 50.6,
+     "ytm_pct": 15.5
+    }
+   }
+  },
+  {
+   "date": "2025-04-28",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/04/eavex-fi-weekly-apr-28.pdf",
+   "sha256": "863ab91cceb3a2866521bb707cc3b3f41fffb34769ef5feaff9a887de2e63e5d",
+   "bonds": {
+    "2029": {
+     "price": 64.0,
+     "ytm_pct": 19.7
+    },
+    "2034": {
+     "price": 50.6,
+     "ytm_pct": 16.7
+    },
+    "2035": {
+     "price": 51.7,
+     "ytm_pct": 15.7
+    },
+    "2036": {
+     "price": 50.7,
+     "ytm_pct": 15.5
+    }
+   }
+  },
+  {
+   "date": "2025-05-05",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/05/eavex-fi-weekly-may-5.pdf",
+   "sha256": "61368600507718496cfcdd16ca0dc83b03e02df4399c03a625e0fc86d012dbbc",
+   "bonds": {
+    "2029": {
+     "price": 61.9,
+     "ytm_pct": 21.0
+    },
+    "2034": {
+     "price": 49.5,
+     "ytm_pct": 17.2
+    },
+    "2035": {
+     "price": 50.3,
+     "ytm_pct": 16.2
+    },
+    "2036": {
+     "price": 49.4,
+     "ytm_pct": 15.9
+    }
+   }
+  },
+  {
+   "date": "2025-05-12",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/05/eavex-fi-weekly-may-12.pdf",
+   "sha256": "48702b3aa0ab9d9b59056073980e1f0ec82289f97beb436c588aa2c7b4e6d0cd",
+   "bonds": {
+    "2029": {
+     "price": 61.7,
+     "ytm_pct": 21.2
+    },
+    "2034": {
+     "price": 49.1,
+     "ytm_pct": 17.3
+    },
+    "2035": {
+     "price": 50.2,
+     "ytm_pct": 16.3
+    },
+    "2036": {
+     "price": 49.0,
+     "ytm_pct": 16.1
+    }
+   }
+  },
+  {
+   "date": "2025-05-19",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/05/eavex-fi-weekly-may-19.pdf",
+   "sha256": "034080b8f0ccf87014b00dc7d500b52bf528df035d60b811d1d15e5b5008eabd",
+   "bonds": {
+    "2029": {
+     "price": 64.2,
+     "ytm_pct": 19.9
+    },
+    "2034": {
+     "price": 51.5,
+     "ytm_pct": 16.5
+    },
+    "2035": {
+     "price": 52.1,
+     "ytm_pct": 15.7
+    },
+    "2036": {
+     "price": 51.0,
+     "ytm_pct": 15.5
+    }
+   }
+  },
+  {
+   "date": "2025-05-26",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/05/eavex-fi-weekly-may-26.pdf",
+   "sha256": "ee8f0d2554e812fd103d78ab8a5307b0ec7bd45cc7df68fb62f3ff8bef8f96e7",
+   "bonds": {
+    "2029": {
+     "price": 61.9,
+     "ytm_pct": 21.4
+    },
+    "2034": {
+     "price": 52.2,
+     "ytm_pct": 16.3
+    },
+    "2035": {
+     "price": 48.9,
+     "ytm_pct": 16.8
+    },
+    "2036": {
+     "price": 46.9,
+     "ytm_pct": 16.9
+    }
+   }
+  },
+  {
+   "date": "2025-06-02",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/06/eavex-fi-weekly-jun-2.pdf",
+   "sha256": "f46c9fc576613b80a6fe3c7e36fd2700ba6aac38fc6cdfea7dd8cbd14526eba8",
+   "bonds": {
+    "2029": {
+     "price": 61.0,
+     "ytm_pct": 22.1
+    },
+    "2034": {
+     "price": 47.6,
+     "ytm_pct": 18.1
+    },
+    "2035": {
+     "price": 48.2,
+     "ytm_pct": 17.1
+    },
+    "2036": {
+     "price": 47.0,
+     "ytm_pct": 17.0
+    }
+   }
+  },
+  {
+   "date": "2025-06-09",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/06/eavex-fi-weekly-jun-9.pdf",
+   "sha256": "9bcb31784bf5ea91ebfe464d3d4030bfbb3df880fb7ab2b7a71eaed80ca32b31",
+   "bonds": {
+    "2029": {
+     "price": 58.1,
+     "ytm_pct": 24.0
+    },
+    "2034": {
+     "price": 45.1,
+     "ytm_pct": 19.2
+    },
+    "2035": {
+     "price": 46.0,
+     "ytm_pct": 18.0
+    },
+    "2036": {
+     "price": 44.1,
+     "ytm_pct": 18.1
+    }
+   }
+  },
+  {
+   "date": "2025-06-16",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/06/eavex-fi-weekly-jun-16.pdf",
+   "sha256": "59d712c112bafe61e04804de0b81ffe87656a23fa5581312c2bd9079e6ca967f",
+   "bonds": {
+    "2029": {
+     "price": 59.5,
+     "ytm_pct": 23.3
+    },
+    "2034": {
+     "price": 47.2,
+     "ytm_pct": 18.4
+    },
+    "2035": {
+     "price": 48.3,
+     "ytm_pct": 17.2
+    },
+    "2036": {
+     "price": 46.3,
+     "ytm_pct": 17.3
+    }
+   }
+  },
+  {
+   "date": "2025-06-23",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/06/eavex-fi-weekly-jun-23.pdf",
+   "sha256": "de7321f8f9f37e019626eab6273b65440e11b2bf0e5b98d580b7857bf5d3c8c6",
+   "bonds": {
+    "2029": {
+     "price": 58.5,
+     "ytm_pct": 24.1
+    },
+    "2034": {
+     "price": 46.5,
+     "ytm_pct": 18.8
+    },
+    "2035": {
+     "price": 47.4,
+     "ytm_pct": 17.6
+    },
+    "2036": {
+     "price": 47.5,
+     "ytm_pct": 16.9
+    }
+   }
+  },
+  {
+   "date": "2025-06-30",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/06/eavex-fi-weekly-jun-30.pdf",
+   "sha256": "1f667d953a57b3ae3c3398ab81b113519ce7e123331bb298110a609daa3872bb",
+   "bonds": {
+    "2029": {
+     "price": 60.9,
+     "ytm_pct": 22.7
+    },
+    "2034": {
+     "price": 49.5,
+     "ytm_pct": 17.6
+    },
+    "2035": {
+     "price": 50.2,
+     "ytm_pct": 16.6
+    },
+    "2036": {
+     "price": 48.5,
+     "ytm_pct": 16.6
+    }
+   }
+  },
+  {
+   "date": "2025-07-07",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/07/eavex-fi-weekly-jul-7.pdf",
+   "sha256": "98751400c0da8c6f79f60bbf1484f5516b1dbd5d07cbec9c8557f0f0b7b3d392",
+   "bonds": {
+    "2029": {
+     "price": 61.9,
+     "ytm_pct": 22.2
+    },
+    "2034": {
+     "price": 50.8,
+     "ytm_pct": 17.2
+    },
+    "2035": {
+     "price": 50.5,
+     "ytm_pct": 16.5
+    },
+    "2036": {
+     "price": 48.6,
+     "ytm_pct": 16.6
+    }
+   }
+  },
+  {
+   "date": "2025-07-14",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/07/eavex-fi-weekly-jul-14.pdf",
+   "sha256": "5f5913a1d3fc60577278f7fefd8d704a918c4b833787a4f2991e5b1dee4c2fba",
+   "bonds": {
+    "2029": {
+     "price": 61.3,
+     "ytm_pct": 22.7
+    },
+    "2034": {
+     "price": 49.5,
+     "ytm_pct": 17.7
+    },
+    "2035": {
+     "price": 50.5,
+     "ytm_pct": 16.6
+    },
+    "2036": {
+     "price": 48.7,
+     "ytm_pct": 16.6
+    }
+   }
+  },
+  {
+   "date": "2025-07-21",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/07/eavex-fi-weekly-jul-21.pdf",
+   "sha256": "61d188ac36bcd60b03a238ed8de4e0d71198c92b1348d42ff3244bd82f8c8b65",
+   "bonds": {
+    "2029": {
+     "price": 61.0,
+     "ytm_pct": 23.1
+    },
+    "2034": {
+     "price": 50.0,
+     "ytm_pct": 17.6
+    },
+    "2035": {
+     "price": 50.1,
+     "ytm_pct": 16.8
+    },
+    "2036": {
+     "price": 48.5,
+     "ytm_pct": 16.8
+    }
+   }
+  },
+  {
+   "date": "2025-07-28",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/07/eavex-fi-weekly-jul-28.pdf",
+   "sha256": "bd19ab899ebeb4626ec5c3c7a284401bc6410643f80040353b4a1ecb6064ecf5",
+   "bonds": {
+    "2029": {
+     "price": 59.4,
+     "ytm_pct": 24.3
+    },
+    "2034": {
+     "price": 48.1,
+     "ytm_pct": 18.4
+    },
+    "2035": {
+     "price": 49.1,
+     "ytm_pct": 17.2
+    },
+    "2036": {
+     "price": 47.5,
+     "ytm_pct": 17.2
+    }
+   }
+  },
+  {
+   "date": "2025-08-04",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/08/eavex-fi-weekly-aug-4.pdf",
+   "sha256": "e30524d3d259fca117d904e89420528bbc1ee1fbd3324701f92401039f2d3ebe",
+   "bonds": {
+    "2029": {
+     "price": 61.0,
+     "ytm_pct": 22.9
+    },
+    "2034": {
+     "price": 51.4,
+     "ytm_pct": 16.9
+    },
+    "2035": {
+     "price": 51.5,
+     "ytm_pct": 16.1
+    },
+    "2036": {
+     "price": 50.2,
+     "ytm_pct": 16.0
+    }
+   }
+  },
+  {
+   "date": "2025-08-11",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/08/eavex-fi-weekly-aug-11.pdf",
+   "sha256": "034caa59d88632bc67cb8c048b7056f635b1c587f35035bb2bdce8989494ff90",
+   "bonds": {
+    "2029": {
+     "price": 66.3,
+     "ytm_pct": 19.8
+    },
+    "2034": {
+     "price": 56.2,
+     "ytm_pct": 15.3
+    },
+    "2035": {
+     "price": 56.0,
+     "ytm_pct": 14.7
+    },
+    "2036": {
+     "price": 56.0,
+     "ytm_pct": 14.3
+    }
+   }
+  },
+  {
+   "date": "2025-08-18",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/08/eavex-fi-weekly-aug-18.pdf",
+   "sha256": "94a6b6956abdefaebbcf41c9866c2f2c449ad4396d1416d086e272042e778074",
+   "bonds": {
+    "2029": {
+     "price": 66.2,
+     "ytm_pct": 20.0
+    },
+    "2034": {
+     "price": 55.7,
+     "ytm_pct": 15.5
+    },
+    "2035": {
+     "price": 55.3,
+     "ytm_pct": 15.0
+    },
+    "2036": {
+     "price": 56.0,
+     "ytm_pct": 14.3
+    }
+   }
+  },
+  {
+   "date": "2025-08-25",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/08/eavex-fi-weekly-aug-25.pdf",
+   "sha256": "84e8175d8b54ee00fb199f19e980a8deab6f3f4d458c4fce3b30613454465a39",
+   "bonds": {
+    "2029": {
+     "price": 65.3,
+     "ytm_pct": 20.7
+    },
+    "2030B": {
+     "price": 53.3,
+     "ytm_pct": 15.2
+    },
+    "2034": {
+     "price": 54.5,
+     "ytm_pct": 15.9
+    },
+    "2035": {
+     "price": 53.9,
+     "ytm_pct": 15.5
+    },
+    "2036": {
+     "price": 54.2,
+     "ytm_pct": 14.9
+    }
+   }
+  },
+  {
+   "date": "2025-09-01",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/09/eavex-fi-weekly-sept-1.pdf",
+   "sha256": "389bfb0765aedcb96584c731dc6b24b9e759bf441eb42335d47d2691d4c31058",
+   "bonds": {
+    "2029": {
+     "price": 64.7,
+     "ytm_pct": 21.2
+    },
+    "2030B": {
+     "price": 50.3,
+     "ytm_pct": 16.8
+    },
+    "2034": {
+     "price": 53.6,
+     "ytm_pct": 16.3
+    },
+    "2035": {
+     "price": 53.2,
+     "ytm_pct": 15.8
+    },
+    "2036": {
+     "price": 51.9,
+     "ytm_pct": 15.6
+    }
+   }
+  },
+  {
+   "date": "2025-09-08",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/09/eavex-fi-weekly-sept-8.pdf",
+   "sha256": "6ced667f93c7e3f48a25b050c79424a62f6dfcd64b7f6f657a557c9ca7ba7cb2",
+   "bonds": {
+    "2029": {
+     "price": 64.5,
+     "ytm_pct": 21.4
+    },
+    "2030B": {
+     "price": 50.2,
+     "ytm_pct": 16.9
+    },
+    "2034": {
+     "price": 52.7,
+     "ytm_pct": 16.7
+    },
+    "2035": {
+     "price": 53.2,
+     "ytm_pct": 15.8
+    },
+    "2036": {
+     "price": 51.8,
+     "ytm_pct": 15.7
+    }
+   }
+  },
+  {
+   "date": "2025-09-15",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/09/eavex-fi-weekly-sept-15.pdf",
+   "sha256": "777301944fab1bca324998e48d7f45b24ef15bc641efc4af310bd67cebeded78",
+   "bonds": {
+    "2029": {
+     "price": 63.1,
+     "ytm_pct": 22.5
+    },
+    "2030B": {
+     "price": 48.1,
+     "ytm_pct": 18.2
+    },
+    "2034": {
+     "price": 51.0,
+     "ytm_pct": 17.4
+    },
+    "2035": {
+     "price": 51.3,
+     "ytm_pct": 16.5
+    },
+    "2036": {
+     "price": 49.8,
+     "ytm_pct": 16.4
+    }
+   }
+  },
+  {
+   "date": "2025-09-22",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/09/eavex-fi-weekly-sept-22.pdf",
+   "sha256": "eacd2d2b260e9bb9dbbd76c6377a25a1cb50ef6c1efefa4e6ed6ebeca89991b3",
+   "bonds": {
+    "2029": {
+     "price": 68.4,
+     "ytm_pct": 19.4
+    },
+    "2030B": {
+     "price": 50.9,
+     "ytm_pct": 16.7
+    },
+    "2034": {
+     "price": 55.9,
+     "ytm_pct": 15.6
+    },
+    "2035": {
+     "price": 54.6,
+     "ytm_pct": 15.4
+    },
+    "2036": {
+     "price": 53.3,
+     "ytm_pct": 15.3
+    }
+   }
+  },
+  {
+   "date": "2025-09-29",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/09/eavex-fi-weekly-sept-29.pdf",
+   "sha256": "2e84f02286ba38cf271cc26b389b21b1bc820fb7e087e21087b2958f82972d18",
+   "bonds": {
+    "2029": {
+     "price": 69.2,
+     "ytm_pct": 19.1
+    },
+    "2030B": {
+     "price": 52.2,
+     "ytm_pct": 16.1
+    },
+    "2034": {
+     "price": 56.1,
+     "ytm_pct": 15.6
+    },
+    "2035": {
+     "price": 55.7,
+     "ytm_pct": 15.1
+    },
+    "2036": {
+     "price": 54.2,
+     "ytm_pct": 15.1
+    }
+   }
+  },
+  {
+   "date": "2025-10-06",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/10/eavex-fi-weekly-oct-6.pdf",
+   "sha256": "280db9f012dfa9e5c1efa8b1b4143edb00791da582b3ad1d6d6f8657ba1cc958",
+   "bonds": {
+    "2029": {
+     "price": 70.3,
+     "ytm_pct": 18.6
+    },
+    "2030B": {
+     "price": 53.6,
+     "ytm_pct": 15.5
+    },
+    "2034": {
+     "price": 56.7,
+     "ytm_pct": 15.5
+    },
+    "2035": {
+     "price": 56.8,
+     "ytm_pct": 14.8
+    },
+    "2036": {
+     "price": 55.6,
+     "ytm_pct": 14.7
+    }
+   }
+  },
+  {
+   "date": "2025-10-13",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/10/eavex-fi-weekly-oct-13.pdf",
+   "sha256": "cfa71352bcffce82c893d1c195da6692d629f461b95c1835d29c09decc848fec",
+   "bonds": {
+    "2029": {
+     "price": 66.8,
+     "ytm_pct": 20.8
+    },
+    "2030B": {
+     "price": 51.4,
+     "ytm_pct": 16.7
+    },
+    "2034": {
+     "price": 54.3,
+     "ytm_pct": 16.4
+    },
+    "2035": {
+     "price": 53.9,
+     "ytm_pct": 15.8
+    },
+    "2036": {
+     "price": 54.0,
+     "ytm_pct": 15.2
+    }
+   }
+  },
+  {
+   "date": "2025-10-20",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/10/eavex-fi-weekly-oct-20.pdf",
+   "sha256": "ad9fa7732c8bd1bf81b8267df190732aa47f2faa4c0ecf922c38594bbfe7d041",
+   "bonds": {
+    "2029": {
+     "price": 69.9,
+     "ytm_pct": 19.1
+    },
+    "2030B": {
+     "price": 54.8,
+     "ytm_pct": 15.1
+    },
+    "2034": {
+     "price": 57.8,
+     "ytm_pct": 15.2
+    },
+    "2035": {
+     "price": 56.4,
+     "ytm_pct": 15.1
+    },
+    "2036": {
+     "price": 56.5,
+     "ytm_pct": 14.6
+    }
+   }
+  },
+  {
+   "date": "2025-10-27",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/10/eavex-fi-weekly-oct-27.pdf",
+   "sha256": "d1dadb2d0614ddc7efb921b82100d1f7b7b83a1460d3f44badc06f2257484823",
+   "bonds": {
+    "2029": {
+     "price": 69.2,
+     "ytm_pct": 19.6
+    },
+    "2030B": {
+     "price": 52.4,
+     "ytm_pct": 16.3
+    },
+    "2034": {
+     "price": 55.5,
+     "ytm_pct": 16.1
+    },
+    "2035": {
+     "price": 55.3,
+     "ytm_pct": 15.5
+    },
+    "2036": {
+     "price": 54.1,
+     "ytm_pct": 15.3
+    }
+   }
+  },
+  {
+   "date": "2025-11-03",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/11/eavex-fi-weekly-nov-3.pdf",
+   "sha256": "fc2bb4bf1f4a2e1f4c475c4fab16163ae5d7222209910d59af1267ef615dd606",
+   "bonds": {
+    "2029": {
+     "price": 68.0,
+     "ytm_pct": 20.5
+    },
+    "2030B": {
+     "price": 52.5,
+     "ytm_pct": 16.4
+    },
+    "2034": {
+     "price": 55.4,
+     "ytm_pct": 16.1
+    },
+    "2035": {
+     "price": 55.2,
+     "ytm_pct": 15.5
+    },
+    "2036": {
+     "price": 54.0,
+     "ytm_pct": 15.4
+    }
+   }
+  },
+  {
+   "date": "2025-11-10",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/11/eavex-fi-weekly-nov-10.pdf",
+   "sha256": "344bcce75bd568d1ff1e8864d7ebb97b653c39009bcf07aebc633a540873a7fd",
+   "bonds": {
+    "2029": {
+     "price": 68.9,
+     "ytm_pct": 20.1
+    },
+    "2030B": {
+     "price": 53.6,
+     "ytm_pct": 15.9
+    },
+    "2034": {
+     "price": 55.3,
+     "ytm_pct": 16.3
+    },
+    "2035": {
+     "price": 55.1,
+     "ytm_pct": 15.6
+    },
+    "2036": {
+     "price": 53.8,
+     "ytm_pct": 15.5
+    }
+   }
+  },
+  {
+   "date": "2025-11-17",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/11/eavex-fi-weekly-nov-17.pdf",
+   "sha256": "5e4bf3a76a379c17468e1f802287390f2986e7e2c9526463c162da7a65670fc2",
+   "bonds": {
+    "2029": {
+     "price": 68.6,
+     "ytm_pct": 20.4
+    },
+    "2030B": {
+     "price": 51.5,
+     "ytm_pct": 17.0
+    },
+    "2034": {
+     "price": 55.4,
+     "ytm_pct": 16.3
+    },
+    "2035": {
+     "price": 54.7,
+     "ytm_pct": 15.8
+    },
+    "2036": {
+     "price": 54.6,
+     "ytm_pct": 15.3
+    }
+   }
+  },
+  {
+   "date": "2025-11-24",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/11/eavex-fi-weekly-nov-24.pdf",
+   "sha256": "0c37f3dbb7430d647bd0d5d1b82b7da7de45667c35d6d624d07772dc25a6c61d",
+   "bonds": {
+    "2029": {
+     "price": 69.5,
+     "ytm_pct": 20.0
+    },
+    "2030B": {
+     "price": 53.0,
+     "ytm_pct": 16.3
+    },
+    "2034": {
+     "price": 55.8,
+     "ytm_pct": 16.2
+    },
+    "2035": {
+     "price": 55.7,
+     "ytm_pct": 15.5
+    },
+    "2036": {
+     "price": 54.8,
+     "ytm_pct": 15.3
+    }
+   }
+  },
+  {
+   "date": "2025-12-01",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/12/eavex-fi-weekly-dec-1.pdf",
+   "sha256": "4413d4cfb51c0c6e0e2c382d7dca883d38fbd545802a07b44babac2ac24d6464",
+   "bonds": {
+    "2029": {
+     "price": 71.1,
+     "ytm_pct": 19.2
+    },
+    "2030B": {
+     "price": 54.6,
+     "ytm_pct": 15.6
+    },
+    "2034": {
+     "price": 57.7,
+     "ytm_pct": 15.6
+    },
+    "2035": {
+     "price": 56.8,
+     "ytm_pct": 15.2
+    },
+    "2036": {
+     "price": 56.0,
+     "ytm_pct": 15.0
+    }
+   }
+  },
+  {
+   "date": "2025-12-08",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/12/eavex-fi-weekly-dec-8.pdf",
+   "sha256": "3e2dc30dad5d7d5f3f935e6653802d166418a6de31d9a96cb18c099d7ebdba81",
+   "bonds": {
+    "2029": {
+     "price": 68.3,
+     "ytm_pct": 21.0
+    },
+    "2030B": {
+     "price": 53.6,
+     "ytm_pct": 16.2
+    },
+    "2034": {
+     "price": 54.9,
+     "ytm_pct": 16.6
+    },
+    "2035": {
+     "price": 54.1,
+     "ytm_pct": 16.2
+    },
+    "2036": {
+     "price": 53.2,
+     "ytm_pct": 15.9
+    }
+   }
+  },
+  {
+   "date": "2025-12-15",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/12/eavex-fi-weekly-dec-15.pdf",
+   "sha256": "d61f4b978ca851674c306e62f1e24965d6dc5afa1cd6b9ae61c4b404af73a0e2",
+   "bonds": {
+    "2029": {
+     "price": 72.6,
+     "ytm_pct": 18.6
+    },
+    "2030B": {
+     "price": 57.1,
+     "ytm_pct": 14.5
+    },
+    "2034": {
+     "price": 58.8,
+     "ytm_pct": 15.3
+    },
+    "2035": {
+     "price": 57.8,
+     "ytm_pct": 15.0
+    },
+    "2036": {
+     "price": 56.8,
+     "ytm_pct": 14.8
+    }
+   }
+  },
+  {
+   "date": "2025-12-22",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/12/eavex-fi-weekly-dec-22.pdf",
+   "sha256": "99ef2b98fd5b91a954e882c4007d05b4469ab40a2facc0214f4f7257d8dd23f6",
+   "bonds": {
+    "2029": {
+     "price": 75.0,
+     "ytm_pct": 17.4
+    },
+    "2030B": {
+     "price": 58.0,
+     "ytm_pct": 14.1
+    },
+    "2034": {
+     "price": 59.9,
+     "ytm_pct": 15.0
+    },
+    "2035": {
+     "price": 58.9,
+     "ytm_pct": 14.7
+    },
+    "2036": {
+     "price": 58.1,
+     "ytm_pct": 14.5
+    }
+   }
+  },
+  {
+   "date": "2025-12-29",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2025/12/eavex-fi-weekly-dec-29.pdf",
+   "sha256": "7a3e914ab0a6327dfa7a0c8a68e028dfb5d965cefeee0ebabf3180ecc1f09939",
+   "bonds": {
+    "2029": {
+     "price": 74.2,
+     "ytm_pct": 18.0
+    },
+    "2030B": {
+     "price": 58.4,
+     "ytm_pct": 14.0
+    },
+    "2034": {
+     "price": 60.0,
+     "ytm_pct": 15.0
+    },
+    "2035": {
+     "price": 58.9,
+     "ytm_pct": 14.8
+    },
+    "2036": {
+     "price": 58.0,
+     "ytm_pct": 14.5
+    }
+   }
+  },
+  {
+   "date": "2026-01-05",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/01/eavex-fi-weekly-jan-5.pdf",
+   "sha256": "6bf6d4c43c169852c3b99164d8bf9df314a267989f733538213a8b8f2c64bc19",
+   "bonds": {
+    "2029": {
+     "price": 72.1,
+     "ytm_pct": 19.3
+    },
+    "2030B": {
+     "price": 57.5,
+     "ytm_pct": 14.5
+    },
+    "2034": {
+     "price": 58.6,
+     "ytm_pct": 15.5
+    },
+    "2035": {
+     "price": 57.5,
+     "ytm_pct": 15.2
+    },
+    "2036": {
+     "price": 56.3,
+     "ytm_pct": 15.1
+    }
+   }
+  },
+  {
+   "date": "2026-01-12",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/01/eavex-fi-weekly-jan-12-1.pdf",
+   "sha256": "7c4d3383650deaec96abb6064d7d75fdea262ccb8293a81fab7dd73063cb046d",
+   "bonds": {
+    "2029": {
+     "price": 73.4,
+     "ytm_pct": 18.7
+    },
+    "2030B": {
+     "price": 59.6,
+     "ytm_pct": 13.6
+    },
+    "2034": {
+     "price": 59.2,
+     "ytm_pct": 15.4
+    },
+    "2035": {
+     "price": 58.3,
+     "ytm_pct": 15.0
+    },
+    "2036": {
+     "price": 57.2,
+     "ytm_pct": 14.9
+    }
+   }
+  },
+  {
+   "date": "2026-01-12",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/01/eavex-fi-weekly-jan-12-1.pdf",
+   "sha256": "7c4d3383650deaec96abb6064d7d75fdea262ccb8293a81fab7dd73063cb046d",
+   "bonds": {
+    "2029": {
+     "price": 73.4,
+     "ytm_pct": 18.7
+    },
+    "2030B": {
+     "price": 59.6,
+     "ytm_pct": 13.6
+    },
+    "2034": {
+     "price": 59.2,
+     "ytm_pct": 15.4
+    },
+    "2035": {
+     "price": 58.3,
+     "ytm_pct": 15.0
+    },
+    "2036": {
+     "price": 57.2,
+     "ytm_pct": 14.9
+    }
+   }
+  },
+  {
+   "date": "2026-01-19",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/01/eavex-fi-weekly-jan-19-1.pdf",
+   "sha256": "1565ae14672fb7f982cd7db22dbcb3b2bb35987403501ba8934f74910e648501",
+   "bonds": {
+    "2029": {
+     "price": 72.8,
+     "ytm_pct": 19.2
+    },
+    "2030B": {
+     "price": 58.9,
+     "ytm_pct": 14.0
+    },
+    "2034": {
+     "price": 59.0,
+     "ytm_pct": 15.5
+    },
+    "2035": {
+     "price": 57.6,
+     "ytm_pct": 15.3
+    },
+    "2036": {
+     "price": 56.2,
+     "ytm_pct": 15.2
+    }
+   }
+  },
+  {
+   "date": "2026-01-19",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/01/eavex-fi-weekly-jan-19-1.pdf",
+   "sha256": "1565ae14672fb7f982cd7db22dbcb3b2bb35987403501ba8934f74910e648501",
+   "bonds": {
+    "2029": {
+     "price": 72.8,
+     "ytm_pct": 19.2
+    },
+    "2030B": {
+     "price": 58.9,
+     "ytm_pct": 14.0
+    },
+    "2034": {
+     "price": 59.0,
+     "ytm_pct": 15.5
+    },
+    "2035": {
+     "price": 57.6,
+     "ytm_pct": 15.3
+    },
+    "2036": {
+     "price": 56.2,
+     "ytm_pct": 15.2
+    }
+   }
+  },
+  {
+   "date": "2026-01-26",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/01/eavex-fi-weekly-jan-26.pdf",
+   "sha256": "19e65e8f5904af3af9b6c11c00ab20daedf553cae7127fd411154080cab65a46",
+   "bonds": {
+    "2029": {
+     "price": 74.9,
+     "ytm_pct": 18.1
+    },
+    "2030B": {
+     "price": 60.9,
+     "ytm_pct": 13.1
+    },
+    "2034": {
+     "price": 61.2,
+     "ytm_pct": 14.9
+    },
+    "2035": {
+     "price": 60.0,
+     "ytm_pct": 14.6
+    },
+    "2036": {
+     "price": 58.9,
+     "ytm_pct": 14.5
+    }
+   }
+  },
+  {
+   "date": "2026-02-02",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/02/eavex-fi-weekly-feb-2.pdf",
+   "sha256": "1544d57e0e73657a4fe9083cecc9253150bbec20444064215dc51814a0030e65",
+   "bonds": {
+    "2029": {
+     "price": 77.4,
+     "ytm_pct": 16.8
+    },
+    "2030B": {
+     "price": 63.0,
+     "ytm_pct": 12.2
+    },
+    "2034": {
+     "price": 62.3,
+     "ytm_pct": 14.6
+    },
+    "2035": {
+     "price": 61.4,
+     "ytm_pct": 14.3
+    },
+    "2036": {
+     "price": 60.2,
+     "ytm_pct": 14.1
+    }
+   }
+  },
+  {
+   "date": "2026-02-09",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/02/eavex-fi-weekly-feb-9.pdf",
+   "sha256": "b231ad39d513d9cebcff71ef741744134ad9fdb6ea95c173bfdf8cf242b5a067",
+   "bonds": {
+    "2029": {
+     "price": 77.1,
+     "ytm_pct": 17.2
+    },
+    "2030B": {
+     "price": 62.9,
+     "ytm_pct": 12.4
+    },
+    "2034": {
+     "price": 62.4,
+     "ytm_pct": 14.6
+    },
+    "2035": {
+     "price": 61.2,
+     "ytm_pct": 14.4
+    },
+    "2036": {
+     "price": 60.2,
+     "ytm_pct": 14.2
+    }
+   }
+  },
+  {
+   "date": "2026-02-16",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/02/eavex-fi-weekly-feb-16.pdf",
+   "sha256": "a01adef53532aec681443380f49aec9a782ae0f352b07ee7fd039f87f54ee628",
+   "bonds": {
+    "2029": {
+     "price": 79.6,
+     "ytm_pct": 15.9
+    },
+    "2030B": {
+     "price": 65.7,
+     "ytm_pct": 11.2
+    },
+    "2034": {
+     "price": 65.6,
+     "ytm_pct": 13.7
+    },
+    "2035": {
+     "price": 64.6,
+     "ytm_pct": 13.4
+    },
+    "2036": {
+     "price": 63.5,
+     "ytm_pct": 13.3
+    }
+   }
+  },
+  {
+   "date": "2026-02-23",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/02/eavex-fi-weekly-feb-23.pdf",
+   "sha256": "a1d40992892c9b38a0d72b62442ea1cfcc3ad40874a3f68a78105f3affbda2a6",
+   "bonds": {
+    "2029": {
+     "price": 77.9,
+     "ytm_pct": 16.9
+    },
+    "2030B": {
+     "price": 64.8,
+     "ytm_pct": 11.6
+    },
+    "2034": {
+     "price": 63.3,
+     "ytm_pct": 14.4
+    },
+    "2035": {
+     "price": 62.2,
+     "ytm_pct": 14.2
+    },
+    "2036": {
+     "price": 61.3,
+     "ytm_pct": 13.9
+    }
+   }
+  },
+  {
+   "date": "2026-03-02",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/03/eavex-fi-weekly-mar-2.pdf",
+   "sha256": "8cd6004768015da65ef109e5a73841a14b00d5c28516a2df71ea6be8bd9b2b47",
+   "bonds": {
+    "2029": {
+     "price": 76.6,
+     "ytm_pct": 17.8
+    },
+    "2030B": {
+     "price": 64.1,
+     "ytm_pct": 12.0
+    },
+    "2034": {
+     "price": 61.7,
+     "ytm_pct": 15.0
+    },
+    "2035": {
+     "price": 60.6,
+     "ytm_pct": 14.7
+    },
+    "2036": {
+     "price": 61.0,
+     "ytm_pct": 14.1
+    }
+   }
+  },
+  {
+   "date": "2026-03-09",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/03/eavex-fi-weekly-mar-9.pdf",
+   "sha256": "a43aa96a5bff9bcb4ea368799a051f0084b9ef69ea1673028dfce7d8041e95c4",
+   "bonds": {
+    "2029": {
+     "price": 76.6,
+     "ytm_pct": 16.6
+    },
+    "2030B": {
+     "price": 64.0,
+     "ytm_pct": 12.1
+    },
+    "2034": {
+     "price": 61.4,
+     "ytm_pct": 14.4
+    },
+    "2035": {
+     "price": 60.2,
+     "ytm_pct": 14.2
+    },
+    "2036": {
+     "price": 59.4,
+     "ytm_pct": 13.9
+    }
+   }
+  },
+  {
+   "date": "2026-03-16",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/03/eavex-fi-weekly-mar-16.pdf",
+   "sha256": "339b129ef1e63f8da4ac96aaf85b69ff3e395eea54e4cdc4737ade2e789fb1b2",
+   "bonds": {
+    "2029": {
+     "price": 75.0,
+     "ytm_pct": 17.7
+    },
+    "2030B": {
+     "price": 62.6,
+     "ytm_pct": 12.8
+    },
+    "2034": {
+     "price": 59.6,
+     "ytm_pct": 15.0
+    },
+    "2035": {
+     "price": 58.2,
+     "ytm_pct": 14.8
+    },
+    "2036": {
+     "price": 57.4,
+     "ytm_pct": 14.6
+    }
+   }
+  },
+  {
+   "date": "2026-03-23",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/03/eavex-fi-weekly-mar-23.pdf",
+   "sha256": "e260796290509779b8c0a27f7904982d24cdeb2c0a7e8b0ce189bdaec835b21f",
+   "bonds": {
+    "2029": {
+     "price": 74.3,
+     "ytm_pct": 18.3
+    },
+    "2030B": {
+     "price": 59.9,
+     "ytm_pct": 14.2
+    },
+    "2034": {
+     "price": 55.3,
+     "ytm_pct": 16.5
+    },
+    "2035": {
+     "price": 54.5,
+     "ytm_pct": 16.1
+    },
+    "2036": {
+     "price": 53.4,
+     "ytm_pct": 15.8
+    }
+   }
+  },
+  {
+   "date": "2026-03-30",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/03/eavex-fi-weekly-mar-30.pdf",
+   "sha256": "fb515b1f117056b18ef2d30baa81cc783a021a996f536478a9a40459fe77d42c",
+   "bonds": {
+    "2029": {
+     "price": 69.8,
+     "ytm_pct": 21.3
+    },
+    "2030B": {
+     "price": 57.8,
+     "ytm_pct": 15.3
+    },
+    "2034": {
+     "price": 52.6,
+     "ytm_pct": 17.6
+    },
+    "2035": {
+     "price": 51.4,
+     "ytm_pct": 17.2
+    },
+    "2036": {
+     "price": 50.5,
+     "ytm_pct": 16.8
+    }
+   }
+  },
+  {
+   "date": "2026-04-06",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/04/eavex-fi-weekly-apr-6.pdf",
+   "sha256": "f3ade5de2cfd83be891b371e3e7221f7bfff8c5f68237d8213fe84ac67e8a81f",
+   "bonds": {
+    "2029": {
+     "price": 70.3,
+     "ytm_pct": 21.1
+    },
+    "2030B": {
+     "price": 59.3,
+     "ytm_pct": 14.6
+    },
+    "2034": {
+     "price": 54.0,
+     "ytm_pct": 17.1
+    },
+    "2035": {
+     "price": 53.0,
+     "ytm_pct": 16.7
+    },
+    "2036": {
+     "price": 52.0,
+     "ytm_pct": 16.4
+    }
+   }
+  },
+  {
+   "date": "2026-04-13",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/04/eavex-fi-weekly-apr-13.pdf",
+   "sha256": "68b6b72c4f418a711e88f55afbe39de02e4ab1cda2ad6590643870295553ad93",
+   "bonds": {
+    "2029": {
+     "price": 75.7,
+     "ytm_pct": 17.9
+    },
+    "2030B": {
+     "price": 63.4,
+     "ytm_pct": 12.7
+    },
+    "2034": {
+     "price": 60.2,
+     "ytm_pct": 15.0
+    },
+    "2035": {
+     "price": 59.4,
+     "ytm_pct": 14.6
+    },
+    "2036": {
+     "price": 58.3,
+     "ytm_pct": 14.5
+    }
+   }
+  },
+  {
+   "date": "2026-04-20",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/04/eavex-fi-weekly-apr-20.pdf",
+   "sha256": "8e1f3e0220611116efe7d69546633f3ea35b57ef64ababb78ac130d8cb38079a",
+   "bonds": {
+    "2029": {
+     "price": 77.7,
+     "ytm_pct": 16.8
+    },
+    "2030B": {
+     "price": 64.8,
+     "ytm_pct": 12.1
+    },
+    "2034": {
+     "price": 62.6,
+     "ytm_pct": 14.3
+    },
+    "2035": {
+     "price": 62.0,
+     "ytm_pct": 13.9
+    },
+    "2036": {
+     "price": 61.0,
+     "ytm_pct": 13.7
+    }
+   }
+  },
+  {
+   "date": "2026-04-27",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/04/eavex-fi-weekly-apr-27.pdf",
+   "sha256": "fdf2218fe98fe8fb674ae5a8cb289cf6739c9133b09a01761679ce00fa567b9e",
+   "bonds": {
+    "2029": {
+     "price": 77.6,
+     "ytm_pct": 17.0
+    },
+    "2030B": {
+     "price": 64.2,
+     "ytm_pct": 12.5
+    },
+    "2034": {
+     "price": 62.0,
+     "ytm_pct": 14.5
+    },
+    "2035": {
+     "price": 61.1,
+     "ytm_pct": 14.2
+    },
+    "2036": {
+     "price": 59.9,
+     "ytm_pct": 14.1
+    }
+   }
+  },
+  {
+   "date": "2026-05-04",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/05/eavex-fi-weekly-may-4.pdf",
+   "sha256": "9cd7d8b1d9fe0a196449235c0859263b5b2f8ddc50f7632d59c2690475719547",
+   "bonds": {
+    "2029": {
+     "price": 77.4,
+     "ytm_pct": 17.3
+    },
+    "2030B": {
+     "price": 63.4,
+     "ytm_pct": 12.9
+    },
+    "2034": {
+     "price": 60.7,
+     "ytm_pct": 15.0
+    },
+    "2035": {
+     "price": 59.8,
+     "ytm_pct": 14.7
+    },
+    "2036": {
+     "price": 58.7,
+     "ytm_pct": 14.5
+    }
+   }
+  },
+  {
+   "date": "2026-05-11",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/05/eavex-fi-weekly-may-11.pdf",
+   "sha256": "d361760806d7194f808a6bf7653f5953cb1e0caa36023922351ef3b728c1ee59",
+   "bonds": {
+    "2029": {
+     "price": 79.3,
+     "ytm_pct": 16.3
+    },
+    "2030B": {
+     "price": 65.0,
+     "ytm_pct": 12.2
+    },
+    "2034": {
+     "price": 62.8,
+     "ytm_pct": 14.4
+    },
+    "2035": {
+     "price": 62.1,
+     "ytm_pct": 14.0
+    },
+    "2036": {
+     "price": 60.8,
+     "ytm_pct": 13.9
+    }
+   }
+  },
+  {
+   "date": "2026-05-18",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/05/eavex-fi-weekly-may-18.pdf",
+   "sha256": "d866b1c462f7a8dd2976e65d23c3e2302b3c92c0f906fb8e48a201d5dcb5e70c",
+   "bonds": {
+    "2029": {
+     "price": 81.4,
+     "ytm_pct": 15.3
+    },
+    "2030B": {
+     "price": 68.1,
+     "ytm_pct": 10.9
+    },
+    "2034": {
+     "price": 65.3,
+     "ytm_pct": 13.7
+    },
+    "2035": {
+     "price": 64.0,
+     "ytm_pct": 13.5
+    },
+    "2036": {
+     "price": 63.4,
+     "ytm_pct": 13.3
+    }
+   }
+  },
+  {
+   "date": "2026-05-25",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/05/eavex-fi-weekly-may-25.pdf",
+   "sha256": "bd9a5a486d32b74dbbe9df2a21fcaabda20f0e53dc230bccfdf99fff6bf9511d",
+   "bonds": {
+    "2029": {
+     "price": 83.3,
+     "ytm_pct": 14.3
+    },
+    "2030B": {
+     "price": 69.7,
+     "ytm_pct": 10.3
+    },
+    "2034": {
+     "price": 67.8,
+     "ytm_pct": 13.0
+    },
+    "2035": {
+     "price": 66.7,
+     "ytm_pct": 12.8
+    },
+    "2036": {
+     "price": 65.8,
+     "ytm_pct": 12.7
+    }
+   }
+  },
+  {
+   "date": "2026-06-01",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/06/eavex-fi-weekly-jun-1.pdf",
+   "sha256": "72d59d7d6d0b03a9c068127995c3035c22eeab8fc844707dbd0b54654310cabb",
+   "bonds": {
+    "2029": {
+     "price": 83.3,
+     "ytm_pct": 14.4
+    },
+    "2030B": {
+     "price": 69.6,
+     "ytm_pct": 10.4
+    },
+    "2034": {
+     "price": 68.0,
+     "ytm_pct": 13.0
+    },
+    "2035": {
+     "price": 68.3,
+     "ytm_pct": 12.5
+    },
+    "2036": {
+     "price": 66.1,
+     "ytm_pct": 12.7
+    }
+   }
+  },
+  {
+   "date": "2026-06-08",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/06/eavex-fi-weekly-jun-8.pdf",
+   "sha256": "48bc42f005f5db4f2f9fc327d23b0fb31f6b399d8fb08b1a01fdf4c5bb5c4918",
+   "bonds": {
+    "2029": {
+     "price": 82.6,
+     "ytm_pct": 14.9
+    },
+    "2030B": {
+     "price": 69.0,
+     "ytm_pct": 10.7
+    },
+    "2034": {
+     "price": 66.9,
+     "ytm_pct": 13.4
+    },
+    "2035": {
+     "price": 65.9,
+     "ytm_pct": 13.1
+    },
+    "2036": {
+     "price": 64.9,
+     "ytm_pct": 13.0
+    }
+   }
+  },
+  {
+   "date": "2026-06-15",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/06/eavex-fi-weekly-jun-15.pdf",
+   "sha256": "f0596bed0592ad8a2b778832f70165ee8e9a27620eb79b86361a9c5009ec1228",
+   "bonds": {
+    "2029": {
+     "price": 83.7,
+     "ytm_pct": 14.4
+    },
+    "2030B": {
+     "price": 70.3,
+     "ytm_pct": 10.2
+    },
+    "2034": {
+     "price": 69.1,
+     "ytm_pct": 12.8
+    },
+    "2035": {
+     "price": 68.1,
+     "ytm_pct": 12.6
+    },
+    "2036": {
+     "price": 67.1,
+     "ytm_pct": 12.5
+    }
+   }
+  },
+  {
+   "date": "2026-06-22",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/06/eavex-fi-weekly-jun-22.pdf",
+   "sha256": "20a45c5c6fae01f4e4e2d9e8f685bb91cc0774cff3dbbf08be9ba9423d8bd5a3",
+   "bonds": {
+    "2029": {
+     "price": 84.5,
+     "ytm_pct": 14.1
+    },
+    "2030B": {
+     "price": 71.8,
+     "ytm_pct": 9.6
+    },
+    "2034": {
+     "price": 70.8,
+     "ytm_pct": 12.3
+    },
+    "2035": {
+     "price": 69.8,
+     "ytm_pct": 12.2
+    },
+    "2036": {
+     "price": 68.9,
+     "ytm_pct": 12.1
+    }
+   }
+  },
+  {
+   "date": "2026-06-29",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/06/eavex-fi-weekly-jun-29.pdf",
+   "sha256": "98536e4185c0b1a12e8903fb95c1cefde47b3be4d5b13189b9faad400ca6177c",
+   "bonds": {
+    "2029": {
+     "price": 83.4,
+     "ytm_pct": 14.9
+    },
+    "2030B": {
+     "price": 70.3,
+     "ytm_pct": 10.3
+    },
+    "2034": {
+     "price": 68.8,
+     "ytm_pct": 13.0
+    },
+    "2035": {
+     "price": 67.8,
+     "ytm_pct": 12.8
+    },
+    "2036": {
+     "price": 66.9,
+     "ytm_pct": 12.6
+    }
+   }
+  },
+  {
+   "date": "2026-07-06",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/07/eavex-fi-weekly-jul-6.pdf",
+   "sha256": "8bcafa9220cd9e27c41c11fb60bdf3705ea21893d2d0a56e91b1ae005f44646f",
+   "bonds": {
+    "2029": {
+     "price": 84.6,
+     "ytm_pct": 14.3
+    },
+    "2030B": {
+     "price": 71.7,
+     "ytm_pct": 9.7
+    },
+    "2034": {
+     "price": 70.5,
+     "ytm_pct": 12.5
+    },
+    "2035": {
+     "price": 69.7,
+     "ytm_pct": 12.3
+    },
+    "2036": {
+     "price": 68.7,
+     "ytm_pct": 12.2
+    }
+   }
+  },
+  {
+   "date": "2026-07-13",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/07/eavex-fi-weekly-jul-13.pdf",
+   "sha256": "d30643dcd2c626157350d24d4e3ea3bb9db110540c6b7198ed4ebd48acde2746",
+   "bonds": {
+    "2029": {
+     "price": 85.1,
+     "ytm_pct": 14.1
+    },
+    "2030B": {
+     "price": 73.0,
+     "ytm_pct": 9.2
+    },
+    "2034": {
+     "price": 71.7,
+     "ytm_pct": 12.2
+    },
+    "2035": {
+     "price": 70.6,
+     "ytm_pct": 12.1
+    },
+    "2036": {
+     "price": 69.9,
+     "ytm_pct": 11.9
+    }
+   }
+  },
+  {
+   "date": "2026-07-20",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/07/eavex-fi-weekly-jul-20.pdf",
+   "sha256": "541e6fcf1a0f5aaa9e2c22d9a9332a3b9e968cd996a2425765cb9bf501ad4996",
+   "bonds": {
+    "2029": {
+     "price": 85.6,
+     "ytm_pct": 14.0
+    },
+    "2030B": {
+     "price": 73.2,
+     "ytm_pct": 9.2
+    },
+    "2034": {
+     "price": 71.7,
+     "ytm_pct": 12.3
+    },
+    "2035": {
+     "price": 70.7,
+     "ytm_pct": 12.1
+    },
+    "2036": {
+     "price": 70.1,
+     "ytm_pct": 11.9
+    }
+   }
+  },
+  {
+   "date": "2026-07-27",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/07/eavex-fi-weekly-jul-27.pdf",
+   "sha256": "aa63129dd401d8c4653e31453a5757a707d147a0e04e3a3174a233082496d273",
+   "bonds": {
+    "2029": {
+     "price": 83.8,
+     "ytm_pct": 15.1
+    },
+    "2030B": {
+     "price": 72.1,
+     "ytm_pct": 9.7
+    },
+    "2034": {
+     "price": 69.3,
+     "ytm_pct": 13.0
+    },
+    "2035": {
+     "price": 68.3,
+     "ytm_pct": 12.8
+    },
+    "2036": {
+     "price": 67.4,
+     "ytm_pct": 12.6
+    }
+   }
+  },
+  {
+   "date": "2026-08-03",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/08/eavex-fi-weekly-aug-3.pdf",
+   "sha256": "8cefcb122050e39f0bc13998f68efdc5b27ac874ab0ddb652b58673a746c447b",
+   "bonds": {
+    "2029": {
+     "price": 84.3,
+     "ytm_pct": 15.0
+    },
+    "2030B": {
+     "price": 72.8,
+     "ytm_pct": 9.5
+    },
+    "2034": {
+     "price": 69.4,
+     "ytm_pct": 13.0
+    },
+    "2035": {
+     "price": 68.2,
+     "ytm_pct": 12.9
+    },
+    "2036": {
+     "price": 67.5,
+     "ytm_pct": 12.6
+    }
+   }
+  },
+  {
+   "date": "2026-08-10",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/08/eavex-fi-weekly-aug-10.pdf",
+   "sha256": "035f50f44fd2d2d97e7a196724cc5722e722a4d1508d298c1eb9cf36895bf090",
+   "bonds": {
+    "2029": {
+     "price": 85.7,
+     "ytm_pct": 14.3
+    },
+    "2030B": {
+     "price": 72.7,
+     "ytm_pct": 9.6
+    },
+    "2034": {
+     "price": 69.9,
+     "ytm_pct": 12.9
+    },
+    "2035": {
+     "price": 68.5,
+     "ytm_pct": 12.8
+    },
+    "2036": {
+     "price": 67.7,
+     "ytm_pct": 12.6
+    }
+   }
+  },
+  {
+   "date": "2026-08-17",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/08/eavex-fi-weekly-aug-17.pdf",
+   "sha256": "503cf98878f4b9f6eb02558eff33590dca0356e4f6436c655b416e83102214b6",
+   "bonds": {
+    "2029": {
+     "price": 84.7,
+     "ytm_pct": 15.0
+    },
+    "2030B": {
+     "price": 71.7,
+     "ytm_pct": 10.1
+    },
+    "2034": {
+     "price": 68.7,
+     "ytm_pct": 13.3
+    },
+    "2035": {
+     "price": 67.8,
+     "ytm_pct": 13.0
+    },
+    "2036": {
+     "price": 66.5,
+     "ytm_pct": 13.0
+    }
+   }
+  },
+  {
+   "date": "2026-08-24",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/08/eavex-fi-weekly-aug-24.pdf",
+   "sha256": "2354e5d829233a668ed16b7a1ad48d9b44f54559629151d2965a44ad614d005d",
+   "bonds": {
+    "2029": {
+     "price": 83.6,
+     "ytm_pct": 14.4
+    },
+    "2030B": {
+     "price": 70.2,
+     "ytm_pct": 10.8
+    },
+    "2034": {
+     "price": 66.7,
+     "ytm_pct": 13.3
+    },
+    "2035": {
+     "price": 65.0,
+     "ytm_pct": 13.2
+    },
+    "2036": {
+     "price": 64.3,
+     "ytm_pct": 13.0
+    }
+   }
+  },
+  {
+   "date": "2026-08-31",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/08/eavex-fi-weekly-aug-31.pdf",
+   "sha256": "485232c2a8d249f42d556b6e3da11a672ec5385fc102ee432bc1d6bc6ea8af79",
+   "bonds": {
+    "2029": {
+     "price": 85.2,
+     "ytm_pct": 13.6
+    },
+    "2030B": {
+     "price": 71.5,
+     "ytm_pct": 10.3
+    },
+    "2034": {
+     "price": 68.5,
+     "ytm_pct": 12.8
+    },
+    "2035": {
+     "price": 67.0,
+     "ytm_pct": 12.7
+    },
+    "2036": {
+     "price": 66.0,
+     "ytm_pct": 12.6
+    }
+   }
+  },
+  {
+   "date": "2026-09-07",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/09/eavex-fi-weekly-sept-7.pdf",
+   "sha256": "df3775f65644cb3202055b5de88c1c009f4f886c3a84a59dc6efbcccfb6db652",
+   "bonds": {
+    "2029": {
+     "price": 85.7,
+     "ytm_pct": 13.4
+    },
+    "2030B": {
+     "price": 72.3,
+     "ytm_pct": 10.0
+    },
+    "2034": {
+     "price": 69.1,
+     "ytm_pct": 12.7
+    },
+    "2035": {
+     "price": 67.8,
+     "ytm_pct": 12.6
+    },
+    "2036": {
+     "price": 66.8,
+     "ytm_pct": 12.4
+    }
+   }
+  },
+  {
+   "date": "2026-09-14",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/09/eavex-fi-weekly-sept-14.pdf",
+   "sha256": "515359dc2ca39c0c313c6c0f6df9dc9cd11c9d69617383ebce92de5a8ccc2565",
+   "bonds": {
+    "2029": {
+     "price": 84.1,
+     "ytm_pct": 14.5
+    },
+    "2030B": {
+     "price": 71.5,
+     "ytm_pct": 10.4
+    },
+    "2034": {
+     "price": 68.4,
+     "ytm_pct": 12.9
+    },
+    "2035": {
+     "price": 67.0,
+     "ytm_pct": 12.8
+    },
+    "2036": {
+     "price": 67.2,
+     "ytm_pct": 12.4
+    }
+   }
+  },
+  {
+   "date": "2026-09-22",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/09/eavex-fi-weekly-sept-21.pdf",
+   "sha256": "2e715669fcb05fb00e359cef0873a96d9f922eab94e00f3143f89a5f35b81495",
+   "bonds": {
+    "2029": {
+     "price": 82.4,
+     "ytm_pct": 15.7
+    },
+    "2030B": {
+     "price": 70.6,
+     "ytm_pct": 10.9
+    },
+    "2034": {
+     "price": 66.7,
+     "ytm_pct": 13.5
+    },
+    "2035": {
+     "price": 65.1,
+     "ytm_pct": 13.4
+    },
+    "2036": {
+     "price": 64.1,
+     "ytm_pct": 13.2
+    }
+   }
+  },
+  {
+   "date": "2026-09-28",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/09/eavex-fi-weekly-sept-28.pdf",
+   "sha256": "37a460d3ac3b019e3a3aa17f4a7808e5125d6814e9bf6a566eec680dcdb8bbfa",
+   "bonds": {
+    "2029": {
+     "price": 80.4,
+     "ytm_pct": 17.2
+    },
+    "2030B": {
+     "price": 69.2,
+     "ytm_pct": 11.6
+    },
+    "2034": {
+     "price": 64.5,
+     "ytm_pct": 14.2
+    },
+    "2035": {
+     "price": 63.4,
+     "ytm_pct": 13.9
+    },
+    "2036": {
+     "price": 62.5,
+     "ytm_pct": 13.7
+    }
+   }
+  },
+  {
+   "date": "2026-10-05",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/10/eavex-fi-weekly-oct-5.pdf",
+   "sha256": "e8a64dee7b69dffbebd9fb5d5fa51b64c64146cb9d1ebf83eb60a675ef6a4a53",
+   "bonds": {
+    "2029": {
+     "price": 75.6,
+     "ytm_pct": 20.7
+    },
+    "2030B": {
+     "price": 65.6,
+     "ytm_pct": 13.5
+    },
+    "2034": {
+     "price": 60.0,
+     "ytm_pct": 15.7
+    },
+    "2035": {
+     "price": 58.9,
+     "ytm_pct": 15.3
+    },
+    "2036": {
+     "price": 57.8,
+     "ytm_pct": 15.1
+    }
+   }
+  },
+  {
+   "date": "2026-10-12",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/10/eavex-fi-weekly-oct-12.pdf",
+   "sha256": "01605ecb8c0ca9ea798ff9c2a0d0fa8b93b4d6d826781f40a16af3d22637463a",
+   "bonds": {
+    "2029": {
+     "price": 76.8,
+     "ytm_pct": 20.0
+    },
+    "2030B": {
+     "price": 67.8,
+     "ytm_pct": 12.4
+    },
+    "2034": {
+     "price": 62.0,
+     "ytm_pct": 15.1
+    },
+    "2035": {
+     "price": 60.6,
+     "ytm_pct": 14.9
+    },
+    "2036": {
+     "price": 59.7,
+     "ytm_pct": 14.6
+    }
+   }
+  },
+  {
+   "date": "2026-10-19",
+   "url": "https://www.eavex.com.ua/wp-content/uploads/2026/10/eavex-fi-weekly-oct-19.pdf",
+   "sha256": "f55f8b5a74bdd4b81b0435d62e00f6a1f5b2f1bb2747f68f2d88c13ea6447895",
+   "bonds": {
+    "2029": {
+     "price": 72.1,
+     "ytm_pct": 23.8
+    },
+    "2030B": {
+     "price": 62.5,
+     "ytm_pct": 15.4
+    },
+    "2034": {
+     "price": 58.4,
+     "ytm_pct": 16.4
+    },
+    "2035": {
+     "price": 57.0,
+     "ytm_pct": 16.1
+    },
+    "2036": {
+     "price": 56.1,
+     "ytm_pct": 15.7
+    }
+   }
+  }
+ ]
+}
