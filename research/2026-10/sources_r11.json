@@ -3210,6 +3210,14 @@
      "what": "taxes plus profit above a normal return",
      "confirmed": true,
      "checked": "anchor checked on GitHub"
+    },
+    {
+     "title": "PhosAgro annual report 2023: revenue RUB 440.3bn, EBITDA RUB 183.0bn (41.6%), adjusted 38.2%; 2022 adjusted 46.9%",
+     "url": "https://ar2023.phosagro.com/operational-performance/financial-performance",
+     "kind": "primary",
+     "what": "fertiliser margins 2022-2023 (round 13: the 2023 share corrected from 0.20 to 0.27)",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
     }
    ],
    "note": ""
@@ -3309,6 +3317,162 @@
     }
    ],
    "note": "Added in the round-11 audit, when the sanctions note in each panel got a source footnote. Other inputs (Eurostat Comext, UN Comtrade, national sanctions acts) are listed in research/2026-10/gaps/sanctions_share.json sources."
+  },
+  "net_gain_sellers": {
+   "model": false,
+   "links": [
+    {
+     "title": "OECD STAN 2025: output, taxes on production, operating surplus and depreciation by industry (SDMX)",
+     "url": "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_STAN@DF_STAN_2025,1.0/A..C+C19+C25+C252+C26+C28+C30+C303+C304+H50+I+GTN+K+K65+_T.P1+D29X39+B2A3N+B2A3G+P51C+D1.V.XDC?startPeriod=2017&endPeriod=2024&format=csv",
+     "kind": "primary",
+     "what": "sellers' net gain by country and industry",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    },
+    {
+     "title": "OECD STAN 2025: net capital stock at current replacement cost by industry (SDMX)",
+     "url": "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_STAN@DF_STAN_2025,1.0/A..C+C19+C25+C252+C26+C28+C30+C303+C304+H50+I+GTN+K+K65+_T.N11NA.U.XDC?startPeriod=2017&endPeriod=2024&format=csv",
+     "kind": "primary",
+     "what": "capital for the normal return",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    },
+    {
+     "title": "OECD STAN 2025: employees and self-employed by industry (SDMX)",
+     "url": "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_STAN@DF_STAN_2025,1.0/A..C+C19+C25+C252+C26+C28+C30+C303+C304+H50+I+GTN+K+K65+_T.SAL+SELF+EMP._Z.PS?startPeriod=2017&endPeriod=2024&format=csv",
+     "kind": "primary",
+     "what": "labour part of mixed income",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    },
+    {
+     "title": "Net gain of sellers: method and script",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/net_gain_sellers-notes.md",
+     "kind": "method",
+     "what": "how the shares are built",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    }
+   ]
+  },
+  "remittances_r13": {
+   "model": false,
+   "links": [
+    {
+     "title": "World Bank WDI: personal remittances received, Tajikistan, Uzbekistan, Kyrgyzstan",
+     "url": "https://api.worldbank.org/v2/country/TJK;UZB;KGZ/indicator/BX.TRF.PWKR.CD.DT?format=json&date=2017:2025",
+     "kind": "primary",
+     "what": "remittance totals",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    },
+    {
+     "title": "World Bank WDI: GDP in current USD, Tajikistan",
+     "url": "https://api.worldbank.org/v2/country/TJK/indicator/NY.GDP.MKTP.CD?format=json&date=2023:2025",
+     "kind": "primary",
+     "what": "checks the 2025 total against EFSD's share of GDP",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    },
+    {
+     "title": "Interfax: EFSD Regional Economic Outlook, Tajikistan remittances 54.5% of GDP in 2025",
+     "url": "https://interfax.com/newsroom/top-stories/119513/",
+     "kind": "secondary",
+     "what": "2025 check",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    },
+    {
+     "title": "Times of Central Asia: average wages in Tajikistan, Uzbekistan, Kyrgyzstan, Kazakhstan and Russia, mid-2025",
+     "url": "https://timesca.com/tajikistan-average-salary-rises-but-trails-behind-central-asia/",
+     "kind": "secondary",
+     "what": "home and alternative wages",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    },
+    {
+     "title": "24.kg: average salary of migrants in Russia, 2021 survey",
+     "url": "https://24.kg/english/216641__Average_salary_of_migrants_in_Russia_voiced/",
+     "kind": "secondary",
+     "what": "migrant wage against the average",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    },
+    {
+     "title": "nalog-nalog.ru: average wage in Russia by year (Rosstat)",
+     "url": "https://nalog-nalog.ru/zarplaty_i_kadry/srednyaya-zarabotnaya-plata-po-rossii-v-2023-godu/",
+     "kind": "secondary",
+     "what": "Russian wages 2021-2025",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    },
+    {
+     "title": "BFM: Rosstat preliminary average wage 2020",
+     "url": "https://www.bfm.ru/news/465422",
+     "kind": "secondary",
+     "what": "pre-war wage trend",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    },
+    {
+     "title": "Kun.uz: remittances to Uzbekistan reached nearly $15 billion in 2024 (Central Bank of Uzbekistan)",
+     "url": "https://kun.uz/en/news/2025/01/20/remittances-to-uzbekistan-reached-nearly-15-billion-in-2024",
+     "kind": "secondary",
+     "what": "Uzbekistan totals",
+     "confirmed": true,
+     "checked": "search result 2026-10-19 quoting the article"
+    }
+   ]
+  },
+  "military_payment": {
+   "model": false,
+   "links": [
+    {
+     "title": "The Insider: INSS report via Bloomberg, technology and components 80-96% of Russia's compensation to North Korea",
+     "url": "https://theins.press/en/news/290450",
+     "kind": "secondary",
+     "what": "payment in kind",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    },
+    {
+     "title": "NK News: North Korea likely earned $14.4B from military deals with Russia",
+     "url": "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/",
+     "kind": "secondary",
+     "what": "cash a limited part; troop pay",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    },
+    {
+     "title": "Militarnyi: Iran sent Russia $2.7 billion worth of missiles alone (Bloomberg)",
+     "url": "https://militarnyi.com/en/blogs/iran-sent-russia-2-7-billion-worth-of-missiles-alone/",
+     "kind": "secondary",
+     "what": "Iranian contracts",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    },
+    {
+     "title": "PRM.ua: half of a North Korean shell shipment outdated (Ukraine's military intelligence to Reuters)",
+     "url": "https://prm.ua/en/intelligence-shipments-of-shells-from-north-korea-to-russia-have-halved/",
+     "kind": "secondary",
+     "what": "outdated stock",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    }
+   ]
+  },
+  "eu_refiners": {
+   "model": false,
+   "links": [
+    {
+     "title": "UN Comtrade: Lithuania's HS 2710 exports by partner, 2021 (one of 16 refiners' queries; raw/comtrade_2710)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=440&period=2021&cmdCode=2710&flowCode=X",
+     "kind": "primary",
+     "what": "buyers of EU refiners' fuel",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19"
+    }
+   ]
   }
  }
 }

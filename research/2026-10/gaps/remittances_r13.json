@@ -1,0 +1,225 @@
+{
+ "generated": "2026-10-19",
+ "meta": {
+  "what": "Round 13: remittances from Russia at the migrant's net gain. Wages pay for real work, so only the part above the migrant's alternative wage is a gain, and only the war-driven change above the no-war baseline counts.",
+  "formula": "counted (toward Russia) = L x w + p x extra x (L x (1 - w) - E). L = labour remittances, E = expected without the war (remittances.json); w = the war wage premium, the share of the Russian wage above its pre-war trend; p = the premium over the alternative wage, 1 - alternative / migrant wage in Russia without the war; extra = remittances.json's genuinely extra share (channel shift from cash to cards, other destinations)",
+  "why": "the war wage premium (L x w) is pay above what the same work earned before the war, a gain to the migrant's country; the rest of the change (more or fewer migrants, at no-war wages) is a gain only by the margin over what those workers earn elsewhere"
+ },
+ "russian_average_wage_rub": {
+  "2019": {
+   "value": 48191,
+   "basis": "derived: 2020 average 51,083 roubles (Rosstat preliminary, via TASS/BFM) / 1.06, the 6% growth on 2019 given in the same report"
+  },
+  "2021": {
+   "value": 57244,
+   "basis": "Rosstat annual average, as listed by nalog-nalog.ru (secondary); consistent with Rosstat's monthly 2021 releases"
+  },
+  "2022": {
+   "value": 65338,
+   "basis": "Rosstat annual average, as listed by nalog-nalog.ru (secondary)"
+  },
+  "2023": {
+   "value": 74854,
+   "basis": "Rosstat annual average (RBC and nalog-nalog.ru agree)"
+  },
+  "2024": {
+   "value": 87952,
+   "basis": "Rosstat annual average, reported by RBC"
+  },
+  "2025": {
+   "value": 100360,
+   "basis": "annual average as given by brobank.ru (secondary); nalog-nalog.ru gives 101,784 and TASS 96,772 for January-November"
+  }
+ },
+ "prewar_wage_trend": {
+  "low": 0.07,
+  "central": 0.09,
+  "high": 0.1,
+  "basis": "2019-2021 growth of the Rosstat average wage, 9.0% a year (central); 7% and 10% are judgement"
+ },
+ "war_wage_premium": {
+  "2022": {
+   "low": 0.0363,
+   "central": 0.045,
+   "high": 0.0626
+  },
+  "2023": {
+   "low": 0.0747,
+   "central": 0.0914,
+   "high": 0.1244
+  },
+  "2024": {
+   "low": 0.1337,
+   "central": 0.1571,
+   "high": 0.2027
+  },
+  "2025": {
+   "low": 0.1649,
+   "central": 0.1949,
+   "high": 0.2523
+  },
+  "2026": {
+   "low": 0.1649,
+   "central": 0.1949,
+   "high": 0.2523,
+   "basis": "no 2026 annual wage yet: 2025's premium"
+  }
+ },
+ "migrant_to_average_wage": {
+  "value": 0.823,
+  "basis": "survey of 4,739 migrants from Kyrgyzstan, Uzbekistan and Tajikistan, 47,100 roubles a month in 2021 (Federation of Migrants of Russia, via 24.kg, 9 Dec 2021), against Rosstat's 2021 average of 57,244"
+ },
+ "russia_average_wage_usd_may_2025": {
+  "value": 1231,
+  "basis": "99,422 roubles in May 2025 (Times of Central Asia)"
+ },
+ "alternative_wage_usd_mid_2025": {
+  "TJK": {
+   "value": 314,
+   "basis": "Statistics Agency under the President of Tajikistan, June 2025, 3,136 somoni (via Times of Central Asia)"
+  },
+  "UZB": {
+   "value": 484,
+   "basis": "5.98m soums, mid-2025 (Times of Central Asia, source not named)"
+  },
+  "KGZ": {
+   "value": 481,
+   "basis": "42,020 soms, January-June 2025 (Times of Central Asia, source not named)"
+  },
+  "KAZ": {
+   "value": 790,
+   "basis": "423,133 tenge, Q1 2025 (Times of Central Asia, source not named); also the low case's alternative destination for Central Asian migrants, at the migrant ratio (650 USD)"
+  }
+ },
+ "premium_share": {
+  "TJK": {
+   "low": 0.203,
+   "central": 0.615,
+   "high": 0.715,
+   "home_wage_usd_mid_2025": 314
+  },
+  "UZB": {
+   "low": 0.203,
+   "central": 0.407,
+   "high": 0.507,
+   "home_wage_usd_mid_2025": 484
+  },
+  "KGZ": {
+   "low": 0.203,
+   "central": 0.41,
+   "high": 0.51,
+   "home_wage_usd_mid_2025": 481
+  },
+  "KAZ": {
+   "low": 0.031,
+   "central": 0.031,
+   "high": 0.131,
+   "home_wage_usd_mid_2025": 790
+  },
+  "ARM": {
+   "low": 0.0,
+   "central": 0.2,
+   "high": 0.4,
+   "basis": "judgement: no home wage fetched; the wage gap to Russia is smaller than for Central Asia"
+  },
+  "GEO": {
+   "low": 0.0,
+   "central": 0.2,
+   "high": 0.4,
+   "basis": "judgement: no home wage fetched; the wage gap to Russia is smaller than for Central Asia"
+  },
+  "AZE": {
+   "low": 0.0,
+   "central": 0.2,
+   "high": 0.4,
+   "basis": "judgement: no home wage fetched; the wage gap to Russia is smaller than for Central Asia"
+  },
+  "BLR": {
+   "low": 0.0,
+   "central": 0.2,
+   "high": 0.4,
+   "basis": "judgement: no home wage fetched; the wage gap to Russia is smaller than for Central Asia"
+  },
+  "MDA": {
+   "low": 0.0,
+   "central": 0.2,
+   "high": 0.4,
+   "basis": "judgement: no home wage fetched; the wage gap to Russia is smaller than for Central Asia"
+  }
+ },
+ "verification": {
+  "TJK": {
+   "world_bank_2025_usd_bn": 10.18,
+   "world_bank_2024_usd_bn": 6.8,
+   "efsd_share_of_gdp_2025": 0.545,
+   "world_bank_gdp_2025_usd_bn": 17.66,
+   "efsd_implied_2025_usd_bn": 9.62,
+   "note": "The World Bank total (10.18) is 6% above what EFSD's 54.5% of GDP implies (9.62). The audit's 'about 8.6bn' is not in the article it cites (Times of Central Asia gives 45% of GDP for 2024 and an ADB forecast of 37% for 2025). The research keeps the World Bank total with its range; the low end of 2025 labour (4.6bn EUR) already covers EFSD's figure. The Bank of Russia publishes no country split since 2021."
+  },
+  "UZB": {
+   "cbu_2024_total_usd_bn": 14.8,
+   "cbu_2024_from_russia_usd_bn": 11.5,
+   "from_russia_share": 0.77,
+   "note": "Central Bank of Uzbekistan, brief review of individuals' currency operations, via Kun.uz and Times of Central Asia (20 Jan 2025): matches remittances.json. Uzbeks working abroad fell by a third in 2024 to 1.14m (about 1m in Russia), so the rise is pay per worker and channel shift, not more workers."
+  }
+ },
+ "sources": [
+  {
+   "name": "World Bank WDI, personal remittances received (BX.TRF.PWKR.CD.DT), Tajikistan, Uzbekistan, Kyrgyzstan",
+   "url": "https://api.worldbank.org/v2/country/TJK;UZB;KGZ/indicator/BX.TRF.PWKR.CD.DT?format=json&date=2017:2025",
+   "date": "retrieved 2026-10-19"
+  },
+  {
+   "name": "World Bank WDI, GDP in current USD (NY.GDP.MKTP.CD), Tajikistan",
+   "url": "https://api.worldbank.org/v2/country/TJK/indicator/NY.GDP.MKTP.CD?format=json&date=2023:2025",
+   "date": "retrieved 2026-10-19"
+  },
+  {
+   "name": "Interfax: EFSD Regional Economic Outlook, Tajikistan remittances 54.5% of GDP in 2025",
+   "url": "https://interfax.com/newsroom/top-stories/119513/",
+   "date": "2026-10-12",
+   "kind": "secondary"
+  },
+  {
+   "name": "Times of Central Asia: Tajikistan predicts economic slowdown amid declining remittances (45% of GDP in 2024, ADB 37% for 2025)",
+   "url": "https://timesca.com/tajikistan-predicts-economic-slowdown-amid-declining-remittances/",
+   "kind": "secondary"
+  },
+  {
+   "name": "Times of Central Asia: Uzbekistan receives $14.8 billion in remittances in 2024 (Central Bank of Uzbekistan)",
+   "url": "https://timesca.com/uzbekistan-receives-14-8-billion-in-remittances-in-2024/",
+   "kind": "secondary"
+  },
+  {
+   "name": "Kun.uz: Remittances to Uzbekistan reached nearly $15 billion in 2024",
+   "url": "https://kun.uz/en/news/2025/01/20/remittances-to-uzbekistan-reached-nearly-15-billion-in-2024",
+   "kind": "secondary"
+  },
+  {
+   "name": "Times of Central Asia: Tajikistan's average salary rises but trails behind Central Asia (wages in Tajikistan, Uzbekistan, Kyrgyzstan, Kazakhstan, Russia, mid-2025)",
+   "url": "https://timesca.com/tajikistan-average-salary-rises-but-trails-behind-central-asia/",
+   "kind": "secondary"
+  },
+  {
+   "name": "24.kg: Average salary of migrants in Russia voiced (47,100 roubles, 2021 survey of 4,739 migrants)",
+   "url": "https://24.kg/english/216641__Average_salary_of_migrants_in_Russia_voiced/",
+   "date": "2021-12-09",
+   "kind": "secondary"
+  },
+  {
+   "name": "nalog-nalog.ru: average wage in Russia by year, 2021-2025 (Rosstat figures)",
+   "url": "https://nalog-nalog.ru/zarplaty_i_kadry/srednyaya-zarabotnaya-plata-po-rossii-v-2023-godu/",
+   "kind": "secondary"
+  },
+  {
+   "name": "BFM/TASS: Rosstat preliminary average wage 2020, 51,083 roubles, +6%",
+   "url": "https://www.bfm.ru/news/465422",
+   "kind": "secondary",
+   "date": "retrieved 2026-10-19"
+  }
+ ],
+ "not_verified": [
+  "Rosstat's own tables could not be opened (its certificate is not trusted by this environment's proxy); the wage series come from press and tax-advice sites that cite Rosstat",
+  "Daryo's 'nearly $600 a month' migrant wage (2024) returned HTTP 403 and is not used"
+ ]
+}

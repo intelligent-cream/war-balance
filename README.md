@@ -1,6 +1,6 @@
 # Follow the Money: Ukrainian Aid
 
-An interactive map of how much each country has shifted money and support towards Ukraine or towards Russia since the full-scale invasion, and what that has cost it.
+An interactive map of two numbers for every country since the full-scale invasion: its support for Ukraine, and the change in what it pays Russia (and earns from it), with their sum and what it cost.
 
 **Map:** https://intelligent-cream.github.io/follow-the-money-ukraine/
 
@@ -8,18 +8,18 @@ Status: **research preview**. All figures come from public sources or are estima
 
 ## What the map shows
 
-- **Change since before the war** (the main view): aid to Ukraine (EU-level aid split over member states by their EU budget contribution), undisclosed military aid and private donations (estimates), refugee hosting, purchases from Ukraine above the pre-war level, the drop in payments to Russia for goods and services, sales to Russia given up and less tax paid in Russia by companies based in the country. Subtracted: anything bought from or sold to Russia above the pre-war level, Russian oil bought via other countries, gold and hidden payment channels, weapons sent to Russia and, optionally, money flowing back from Ukraine (every euro for Ukraine followed to the economy where it was spent). Each country shows two balances, with Ukraine (gave minus earned from the war effort) and with Russia; the headline adds them. A country that earned more from the war effort than it gave is shown in gold, not as money toward Russia. Money earned counts at the value kept in the economy × the share that is genuinely extra.
-- **Cost carried**: aid with loans at grant equivalent, refugee hosting, the extra price paid to replace Russian energy, income lost on sales to Russia (value kept × genuinely extra) and tariffs dropped for Ukraine, minus discounts gained on Russian oil.
-- **% of GDP** (the headline measure): the total for 2022 up to the chosen year, as a share of one year's GDP (2024). Rankings leave out economies under EUR 5bn GDP and countries whose likely range crosses zero.
+- **Change since before the war** (the main view): aid to Ukraine (EU-level aid split over member states by their EU budget contribution), undisclosed military aid and private donations (estimates), refugee hosting, purchases from Ukraine above the pre-war level, the drop in payments to Russia for goods and services, sales to Russia given up and less tax paid in Russia by companies based in the country. Subtracted: anything bought from or sold to Russia above the pre-war level, Russian oil bought via other countries, gold and hidden payment channels, weapons sent to Russia and, optionally, money flowing back from Ukraine (every euro for Ukraine followed to the economy where it was spent). The headline is two numbers, **support for Ukraine** (gave minus earned back from the war effort) and the **change in payments to Russia** (including gas Russia cut off itself, labelled), and the map colours their sum. A country that earned more from the war effort than it gave is shown in gold, not as money toward Russia. Since round 13 every sale counts by one rule: the seller's net gain (taxes plus profit above a normal return) × the share that is genuinely extra.
+- **Cost carried**: aid with loans at grant equivalent, refugee hosting, the extra price paid to replace Russian energy, income lost on sales to Russia (net gain × genuinely extra) and tariffs dropped for Ukraine, minus discounts gained on Russian oil.
+- **% of GDP** (the headline measure): the total for 2022 up to the chosen year, as a share of one year's GDP (2024); a period total, not a yearly rate. Rankings (by the net or by either number) leave out economies under EUR 5bn GDP and countries whose likely range crosses zero.
 
 ## Method in short
 
 - **Expected without the war**: trade and services start from 2021 at pre-war prices (company taxes from the 2018-2021 average). Exports to Russia then follow each country's other trade and GDP; the rest, including trade with Ukraine, stays at the 2021 level. These are the models that predicted past years best in back-tests from 2008, 2013 and 2016. Changes compare volumes at pre-war prices; the extra Russia earned from war-time fuel prices counts as a separate part.
 - **Counted where used**: transit gas for the country that burns it, fuel resold by trading hubs for the hub's customers, goods re-exported to Russia by hubs (UAE, Armenia, Kazakhstan, Turkey, Kyrgyzstan and others) for the countries that made them, Hong Kong's gold for mainland China.
 - **No country is rewarded for missing data**: gaps are filled with estimates that carry wide ranges, never left at zero.
-- **Margins of error**: each part has a low and high value (about a 90% range) from the data, or from its certainty letter (A ±5%, B ±15%, C ±35%, D ±70%). The tested error of the no-war prediction is part of every range. Totals combine parts' errors in quadrature, with the correlations measured between flows ([ranges](docs/method/ranges.md)).
+- **Margins of error**: each part has a low and high value (about a 90% range) from the data, or from its certainty letter (A ±5%, B ±15%, C ±35%, D ±70%). The tested error of the no-war prediction is part of every range. Totals combine parts' errors in quadrature, correlated where parts share inputs ([ranges](docs/method/ranges.md)). A method band shows the result under other method choices.
 
-The full method is documented in [`docs/`](docs/README.md) (see below); the log by data round is in [`research/2026-10/README.md`](research/2026-10/README.md). Every research file has a notes file next to it with sources, retrieval dates and the reasoning behind each educated guess. Paths like `working/...` in the notes refer to the research scripts and raw downloads, which are not published here.
+The full method is documented in [`docs/`](docs/README.md) (see below); the log by data round is in [`research/2026-10/README.md`](research/2026-10/README.md). Every research file has a notes file next to it with sources, retrieval dates and the reasoning behind each educated guess. Paths like `working/...` in older notes refer to research scripts and raw downloads that are not published here; scripts added since round 13 are in [`research/2026-10/scripts/`](research/2026-10/scripts/).
 
 ## Documentation
 

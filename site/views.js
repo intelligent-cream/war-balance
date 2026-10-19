@@ -1,7 +1,7 @@
 // ===== Views: ranking, Ukraine vs Russia bubbles, table and data download =====
 // Same numbers as the map: the current view (change, cost, to Ukraine, to Russia), measure and year.
 /* global state, DATA, calc, lensValue, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, closeMenu, t, LANG,
-   num, money, tight, compact, parseHash, writeHash */
+   num, money, tight, compact, parseHash, writeHash, yi, remitSum */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
 const GROUPS = {
@@ -12,7 +12,8 @@ const GROUPS = {
   brics: { label: "BRICS", list: "BRA IND CHN ZAF EGY ETH IRN ARE IDN" },
   ussr: { label: "Former Soviet Union", list: "ARM AZE BLR EST GEO KAZ KGZ LVA LTU MDA TJK TKM UZB" },
 };
-const viewState = { group: "all", small: false, sortKey: "metric", sortDir: -1 };
+// part: on the change view, rank the net or one of its two numbers (round 13)
+const viewState = { group: "all", small: false, sortKey: "metric", sortDir: -1, part: "net" };
 
 function inGroup(c) {
   const g = GROUPS[viewState.group];
@@ -25,19 +26,26 @@ function eligible(c) {
 // the headline number of the current view, with its likely range, in the current measure
 function metricOf(c) {
   const k = calc(c, state.year);
-  const pick = { change: [k.shift, k.shiftLo, k.shiftHi], cost: [k.cost, k.costLo, k.costHi] }[state.lens];
+  const net = { net: [k.shift, k.shiftLo, k.shiftHi], ua: [k.uaBal, k.uaLo, k.uaHi], rus: [k.rusBal, k.rusLo, k.rusHi] }[viewState.part];
+  const pick = { change: net, cost: [k.cost, k.costLo, k.costHi] }[state.lens];
   const [v, lo, hi] = pick || [lensValue(c), null, null];
   const s = x => (x == null ? null : scaled(c, x));
   return { c, k, bn: v, loBn: lo, hiBn: hi, v: s(v), lo: s(lo), hi: s(hi) };
 }
 const LENS_TITLE = {
-  change: "Shift toward Ukraine or Russia since before the war",
+  change: "Support for Ukraine plus the change in payments to Russia, since before the war",
   cost: "What supporting Ukraine cost",
   ukr: "Money sent to Ukraine (aid and purchases)",
   rus: "Money and support reaching Russia",
 };
 function measureText() {
-  return t({ gdp: "total as % of one year's GDP", pp: "€ per person", total: "€ billion" }[state.measure]);
+  return t({ gdp: "total as % of one year's GDP (2024), not a yearly rate", pp: "€ per person", total: "€ billion" }[state.measure]);
+}
+// which number of the change view to rank: the net, or one of the two numbers it adds up (round 13)
+const PART_TITLE = { net: "Support for Ukraine plus the change in payments to Russia, since before the war", ua: "Support for Ukraine since before the war", rus: "Change in payments to Russia since before the war" };
+function partsHtml() {
+  if (state.lens !== "change") return "";
+  return `<div class="filters" role="group" aria-label="${t("Number to rank")}">${[["net", "Net (the sum)"], ["ua", "Support for Ukraine"], ["rus", "Change in payments to Russia"]].map(([k, l]) => `<button class="chipbtn" data-part="${k}" aria-pressed="${viewState.part === k}">${t(l)}</button>`).join("")}</div>`;
 }
 function periodText() {
   if (state.year === 2021) return t("2021 (before the war)");
@@ -63,6 +71,7 @@ function filtersHtml() {
   </div>`;
 }
 function wireFilters(root) {
+  root.querySelectorAll("[data-part]").forEach(b => (b.onclick = () => { viewState.part = b.dataset.part; renderView(); }));
   root.querySelectorAll("[data-group]").forEach(b => (b.onclick = () => { viewState.group = b.dataset.group; renderView(); }));
   root.querySelectorAll("[data-small]").forEach(b => (b.onclick = () => { viewState.small = !viewState.small; renderView(); }));
 }
@@ -91,7 +100,8 @@ function renderRanking(root) {
   for (const t of cand) if (ticks.every(u => Math.abs(x(u) - x(t)) >= (narrowScreen ? 38 : 46))) ticks.push(t);
   const col = v => (v >= 0 ? (state.lens === "rus" ? "var(--rus)" : "var(--ukr)") : "var(--rus)");
   // a group, not an image: its rows are buttons that keyboard and screen reader users reach one by one
-  const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("{title}, {n} countries, ranked", { title: t(LENS_TITLE[state.lens]), n: rows.length })}">
+  const title = t(state.lens === "change" ? PART_TITLE[viewState.part] : LENS_TITLE[state.lens]);
+  const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("{title}, {n} countries, ranked", { title, n: rows.length })}">
     <g class="grid">${ticks.map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="${top - 6}" y2="${H - 6}"/><text x="${x(t)}" y="${top - 12}" text-anchor="middle">${tick(t)}</text>`).join("")}</g>
     ${diverging ? `<line class="zero" x1="${x(0)}" x2="${x(0)}" y1="${top - 6}" y2="${H - 6}"/>` : ""}
     ${rows.map((m, i) => {
@@ -106,8 +116,9 @@ function renderRanking(root) {
     }).join("")}
   </svg>`;
   root.innerHTML = `<div class="view-inner">
-    <h2>${t(LENS_TITLE[state.lens])}</h2>
+    <h2>${title}</h2>
     <p class="sub">${t("{measure}, {period}. Dot: middle estimate; line: likely range (about 90%). {n} countries; switch view and measure at the top. Click a country for the breakdown.", { measure: measureText(), period: periodText(), n: rows.length })}</p>
+    ${partsHtml()}
     ${filtersHtml()}
     <div class="chart">${svg}</div>
     <p class="note-small">${t("Scale is compressed (symmetric log) so small and large countries both stay readable; the axis labels give the true values.")}</p>
@@ -158,7 +169,7 @@ function renderBubbles(root) {
   // labels for the largest economies (and the selected one), skipped where they would overlap a label already placed
   // the two zone labels are placed first, so country labels keep clear of them
   const zw = s => s.length * 9;
-  const zU = t("Net toward Ukraine"), zR = t("Net toward Russia");
+  const zU = t("Net positive"), zR = t("Net negative");
   const labels = [{ x: x(d) - 8 - zw(zU) / 2, y: y(0) - 12, w: zw(zU), zone: true }, { x: x(0) + 10 + zw(zR) / 2, y: y(d) + 18, w: zw(zR), zone: true }];
   // the axis numbers are obstacles too (country labels near the axes covered them on phones)
   const tkw = v => tk(v).length * 7;
@@ -168,7 +179,7 @@ function renderBubbles(root) {
     const lx = Math.min(W - m.r - w / 2, Math.max(m.l + w / 2 + 2, x(sx(s))));   // kept inside the plot area
     if (labels.every(l => Math.abs(l.x - lx) > (l.w + w) / 2 + 2 || Math.abs(l.y - ly) > (l.zone ? 17 : 13))) labels.push({ x: lx, y: ly, w, t });
   }
-  const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("Each country: money moved toward Ukraine against money moved toward Russia")}">
+  const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("Each country: its positive parts against its negative parts")}">
     <path class="zone-ukr" d="M${x(0)},${y(0)} L${x(d)},${y(0)} L${x(d)},${y(d)} Z"/>
     <path class="zone-rus" d="M${x(0)},${y(0)} L${x(0)},${y(d)} L${x(d)},${y(d)} Z"/>
     <g class="grid">${ticks.map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="${m.t}" y2="${H - m.b}"/><line x1="${m.l}" x2="${W - m.r}" y1="${y(t)}" y2="${y(t)}"/>
@@ -177,14 +188,14 @@ function renderBubbles(root) {
     <line class="diag" x1="${x(0)}" y1="${y(0)}" x2="${x(d)}" y2="${y(d)}"/>
     <text class="zone-lbl" x="${x(d) - 8}" y="${y(0) - 12}" text-anchor="end" style="fill:var(--ukr)">${zU}</text>
     <text class="zone-lbl" x="${x(0) + 10}" y="${y(d) + 18}" style="fill:var(--rus-text);paint-order:stroke;stroke:var(--surface);stroke-width:4px">${zR}</text>
-    <text x="${(m.l + W - m.r) / 2}" y="${H - 8}" text-anchor="middle" style="fill:var(--ink)">${t("Moved toward Ukraine → ({unit})", { unit })}</text>
-    <text transform="translate(14 ${(m.t + H - m.b) / 2}) rotate(-90)" text-anchor="middle" style="fill:var(--ink)">${t("Moved toward Russia → ({unit})", { unit })}</text>
-    ${order.map(s => `<circle class="bubble${s.c.n === sel ? " sel" : ""}" data-n="${s.c.n}" tabindex="0" role="button" aria-label="${s.c.name}: ${t("toward Ukraine")} ${fv(sx(s))}, ${t("toward Russia")} ${fv(sy(s))}" cx="${x(sx(s))}" cy="${y(sy(s))}" r="${r(s.c.gdp)}" fill="${s.net >= 0 ? "var(--ukr)" : "var(--rus)"}"/>`).join("")}
+    <text x="${(m.l + W - m.r) / 2}" y="${H - 8}" text-anchor="middle" style="fill:var(--ink)">${t("Support for Ukraine, less paid to Russia → ({unit})", { unit })}</text>
+    <text transform="translate(14 ${(m.t + H - m.b) / 2}) rotate(-90)" text-anchor="middle" style="fill:var(--ink)">${t("More paid to or earned from Russia, money flowing back → ({unit})", { unit })}</text>
+    ${order.map(s => `<circle class="bubble${s.c.n === sel ? " sel" : ""}" data-n="${s.c.n}" tabindex="0" role="button" aria-label="${s.c.name}: ${t("positive parts")} ${fv(sx(s))}, ${t("negative parts")} ${fv(sy(s))}" cx="${x(sx(s))}" cy="${y(sy(s))}" r="${r(s.c.gdp)}" fill="${s.net >= 0 ? "var(--ukr)" : "var(--rus)"}"/>`).join("")}
     ${labels.filter(l => !l.zone).map(l => `<text x="${l.x}" y="${l.y}" text-anchor="middle" style="fill:var(--ink);font-size:11.5px;font-weight:600;paint-order:stroke;stroke:var(--surface);stroke-width:3px;pointer-events:none">${l.t}</text>`).join("")}
   </svg>`;
   root.innerHTML = `<div class="view-inner">
-    <h2>${t("What each country moved toward Ukraine, and toward Russia")}</h2>
-    <p class="sub">${t("{period}, {unit}. Right: aid, refugees, Russian trade given up. Up: trade with Russia above the pre-war level, oil bought via other countries, hidden channels, weapons{back}. Below the diagonal a country is net toward Ukraine. Bubble size: size of the economy.", { period: periodText(), unit, back: state.netBack ? t(", money flowing back from Ukraine") : "" })}</p>
+    <h2>${t("Each country's positive and negative parts")}</h2>
+    <p class="sub">${t("{period}, {unit}. Right: aid, refugees, purchases from Ukraine and less paid to Russia (including supplies Russia cut off). Up: more paid to Russia, earnings from sales to Russia, oil bought via other countries, hidden channels, weapons{back}. Below the diagonal the net is positive. Bubble size: size of the economy.", { period: periodText(), unit, back: state.netBack ? t(", money flowing back from Ukraine") : "" })}</p>
     ${filtersHtml()}
     <div class="chart">${svg}</div>
     <p class="note-small">${t("Log-like axes so that small and large shifts both stay visible.")} ${state.measure === "total" ? t("Shown in % of GDP: totals in € would put every small country in one corner.") + " " : ""}${t("Middle estimates only; each country's range is in its breakdown.")}</p>
@@ -199,6 +210,11 @@ const COLS = [
   { k: "shiftRange", label: "Likely range", fmt: r => t("{lo} to {hi}", { lo: pct(r.shiftLoGdp), hi: pct(r.shiftHiGdp) }), nosort: true },
   { k: "shift", label: "Net shift, €", fmt: r => eur(r.shift, true), sign: true },
   { k: "shiftPp", label: "Per person", fmt: r => (r.shiftPp == null ? "–" : (r.shiftPp < 0 ? "−" : "") + money(num(Math.abs(r.shiftPp)))), sign: true },
+  { k: "uaGdp", label: "Support for Ukraine, % of a year's GDP", fmt: r => pct(r.uaGdp), sign: true },
+  { k: "rusGdp", label: "Change in payments to Russia, % of a year's GDP", fmt: r => pct(r.rusGdp), sign: true },
+  { k: "rusCut", label: "Of which gas Russia cut off, €", fmt: r => (r.rusCut > 0.005 ? eur(r.rusCut) : "–") },
+  // round 13b: a marker, in no total
+  { k: "remitGdp", label: "Remittances from Russia, change, % of a year's GDP (not in totals)", fmt: r => (r.remitGdp == null ? "–" : pct(r.remitGdp)) },
   { k: "costGdp", label: "Cost, % of a year's GDP", fmt: r => pct(r.costGdp) },
   { k: "aid", label: "Aid incl. EU share, €", fmt: r => eur(r.aid) },
   { k: "paidRus", label: "Paid to Russia, €", fmt: r => eur(r.paidRus) },
@@ -208,11 +224,16 @@ const pct = v => (v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + num(M
 function tableRows() {
   const y = state.year;
   return Object.values(DATA).filter(eligible).map(c => {
-    const k = calc(c, y), g = c.gdp ? 100 / c.gdp : null, pp = c.pop ? 1e9 / (c.pop * 1e6) : null;
+    const k = calc(c, y), g = c.gdp ? 100 / c.gdp : null, pp = c.pop ? 1e9 / (c.pop * 1e6) : null, N = yi(y);
+    // migrants' remittances from Russia against the expected level: a marker, not in any total (round 13b)
+    const rm = c.remit && N > 0 ? [remitSum(c, N), remitSum(c, N, "years_lo"), remitSum(c, N, "years_hi")] : [null, null, null];
     return {
       c, name: c.name, iso3: c.iso3, gdp: c.gdp, pop: c.pop,
       shift: k.shift, shiftLo: k.shiftLo, shiftHi: k.shiftHi,
       shiftGdp: g && k.shift * g, shiftLoGdp: g && k.shiftLo * g, shiftHiGdp: g && k.shiftHi * g, shiftPp: pp && k.shift * pp,
+      ua: k.uaBal, uaLo: k.uaLo, uaHi: k.uaHi, rus: k.rusBal, rusLo: k.rusLo, rusHi: k.rusHi, rusCut: k.rusCut,
+      uaGdp: g && k.uaBal * g, rusGdp: g && k.rusBal * g,
+      remit: rm[0], remitLo: rm[1], remitHi: rm[2], remitGdp: rm[0] == null ? null : g && rm[0] * g,
       cost: k.cost, costGdp: g && k.cost * g, aid: k.aid, refugees: k.refugees, paidRus: k.paidRussia, cert: k.shiftCert,
       parts: k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, k: "back_" + p.k })) : []),
     };
@@ -229,6 +250,7 @@ function renderTable(root) {
       <div class="dl">
         <button id="dl-csv">${t("Download CSV")}</button>
         <button id="dl-parts">${t("CSV with every part")}</button>
+        <button id="dl-json">${t("Table as JSON")}</button>
         <a href="data.json" download="follow-the-money-ukrainian-aid.json">${t("Full data (JSON)")}</a>
       </div>
     </div>
@@ -252,13 +274,21 @@ function renderTable(root) {
   const tag = `${state.year === 2021 ? "2021" : "2022-" + state.year}_${viewState.group}${viewState.small ? "-with-small" : ""}`;
   root.querySelector("#dl-csv").onclick = () => download(csvSummary(rows), `follow-the-money-ukrainian-aid_${tag}.csv`);
   root.querySelector("#dl-parts").onclick = () => download(csvParts(rows), `follow-the-money-ukrainian-aid-parts_${tag}.csv`);
+  root.querySelector("#dl-json").onclick = () => download(jsonRows(rows), `follow-the-money-ukrainian-aid_${tag}.json`, "application/json");
   wireFilters(root);
 }
 const q = v => (v == null || Number.isNaN(v) ? "" : typeof v === "number" ? +v.toFixed(4) : /[",\n]/.test(v) ? `"${String(v).replace(/"/g, '""')}"` : v);
 function csvSummary(rows) {
   // every column name carries its unit; net_of_flowback says whether money flowing back was subtracted
-  const head = ["iso3", "country", "period", "net_of_flowback", "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person", "cost_eur_bn", "cost_pct_gdp", "aid_eur_bn", "refugees_eur_bn", "paid_to_russia_eur_bn", "certainty", "gdp_eur_bn_2024", "population_m"];
-  const lines = rows.map(r => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, r.shift, r.shiftLo, r.shiftHi, r.shiftGdp, r.shiftPp, r.cost, r.costGdp, r.aid, r.refugees, r.paidRus, r.cert, r.gdp, r.pop].map(q).join(","));
+  // round 13: the net is the sum of two numbers, each with its own range; % of GDP is the period total against 2024 GDP
+  const head = ["iso3", "country", "period", "net_of_flowback", "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person",
+    "support_ukraine_eur_bn", "support_ukraine_low_eur_bn", "support_ukraine_high_eur_bn", "support_ukraine_pct_gdp",
+    "payments_russia_change_eur_bn", "payments_russia_change_low_eur_bn", "payments_russia_change_high_eur_bn", "payments_russia_change_pct_gdp", "of_which_gas_cut_by_russia_eur_bn",
+    "remittances_from_russia_change_eur_bn_not_in_totals", "remittances_from_russia_change_low_eur_bn_not_in_totals", "remittances_from_russia_change_high_eur_bn_not_in_totals", "remittances_from_russia_change_pct_gdp_not_in_totals",
+    "cost_eur_bn", "cost_pct_gdp", "aid_eur_bn", "refugees_eur_bn", "paid_to_russia_eur_bn", "certainty", "gdp_eur_bn_2024", "population_m"];
+  const lines = rows.map(r => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, r.shift, r.shiftLo, r.shiftHi, r.shiftGdp, r.shiftPp,
+    r.ua, r.uaLo, r.uaHi, r.uaGdp, r.rus, r.rusLo, r.rusHi, r.rusGdp, r.rusCut, r.remit, r.remitLo, r.remitHi, r.remitGdp,
+    r.cost, r.costGdp, r.aid, r.refugees, r.paidRus, r.cert, r.gdp, r.pop].map(q).join(","));
   return [head.join(","), ...lines].join("\n");
 }
 function csvParts(rows) {
@@ -266,16 +296,28 @@ function csvParts(rows) {
   const lines = rows.flatMap(r => r.parts.map(p => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, p.k, p.en, p.v, p.lo, p.hi, p.cert, (p.src || []).join(" ")].map(q).join(",")));
   return [head.join(","), ...lines].join("\n");
 }
+// the same rows as JSON, with the two numbers and their parts
+function jsonRows(rows) {
+  const r4 = v => (v == null || Number.isNaN(v) ? null : +v.toFixed(4));
+  return JSON.stringify({ period: periodTextEn(), net_of_flowback: state.netBack, unit: "EUR bn; pct_gdp = period total / 2024 GDP x 100, not a yearly rate",
+    countries: rows.map(r => ({ iso3: r.iso3, country: r.c.name_en, gdp_eur_bn_2024: r.gdp,
+      net: { eur_bn: r4(r.shift), low: r4(r.shiftLo), high: r4(r.shiftHi), pct_gdp: r4(r.shiftGdp) },
+      support_for_ukraine: { eur_bn: r4(r.ua), low: r4(r.uaLo), high: r4(r.uaHi), pct_gdp: r4(r.uaGdp) },
+      change_in_payments_to_russia: { eur_bn: r4(r.rus), low: r4(r.rusLo), high: r4(r.rusHi), pct_gdp: r4(r.rusGdp), of_which_gas_cut_by_russia: r4(r.rusCut) },
+      remittances_from_russia_change_not_in_totals: r.remit == null ? null : { eur_bn: r4(r.remit), low: r4(r.remitLo), high: r4(r.remitHi), pct_gdp: r4(r.remitGdp),
+        note: "marker only: migrants' wages sent home from Russia against the level expected without the war; not in the net or either number" },
+      certainty: r.cert, parts: r.parts.map(p => ({ part: p.k, label: p.en, eur_bn: r4(p.v), low: r4(p.lo), high: r4(p.hi), certainty: p.cert })) })) }, null, 1);
+}
 function periodTextEn() {
   if (state.year === 2021) return "2021 (before the war)";
   const y = state.year;
   // a plain hyphen: spreadsheets and scripts handle it everywhere
   return `2022-${y}${y === 2026 && FRAC[5] < 1 ? " (2026 year to date, Jan–Aug)" : ""}`;
 }
-function download(text, name) {
+function download(text, name, type = "text/csv") {
   const a = document.createElement("a");
-  // the byte order mark makes Excel read the file as UTF-8 (country names, €)
-  a.href = URL.createObjectURL(new Blob(["\ufeff" + text], { type: "text/csv;charset=utf-8" }));
+  // the byte order mark makes Excel read the file as UTF-8 (country names, €); JSON goes without it
+  a.href = URL.createObjectURL(new Blob([type === "text/csv" ? "\ufeff" + text : text], { type: type + ";charset=utf-8" }));
   a.download = name; document.body.appendChild(a); a.click();
   setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
 }
