@@ -117,7 +117,7 @@ function renderRanking(root) {
   </svg>`;
   root.innerHTML = `<div class="view-inner">
     <h2>${title}</h2>
-    <p class="sub">${t("{measure}, {period}. Dot: middle estimate; line: likely range (about 90%). {n} countries; switch view and measure at the top. Click a country for the breakdown.", { measure: measureText(), period: periodText(), n: rows.length })}</p>
+    <p class="sub">${t("{measure}, {period}. Dot: middle estimate; line: likely range (data and model uncertainty given the method, about 90% by judgement). {n} countries; switch view and measure at the top. Click a country for the breakdown.", { measure: measureText(), period: periodText(), n: rows.length })}</p>
     ${partsHtml()}
     ${filtersHtml()}
     <div class="chart">${svg}</div>
@@ -195,7 +195,7 @@ function renderBubbles(root) {
   </svg>`;
   root.innerHTML = `<div class="view-inner">
     <h2>${t("Each country's positive and negative parts")}</h2>
-    <p class="sub">${t("{period}, {unit}. Right: aid, refugees, purchases from Ukraine and less paid to Russia (including supplies Russia cut off). Up: more paid to Russia, earnings from sales to Russia, oil bought via other countries, hidden channels, weapons{back}. Below the diagonal the net is positive. Bubble size: size of the economy.", { period: periodText(), unit, back: state.netBack ? t(", money flowing back from Ukraine") : "" })}</p>
+    <p class="sub">${t("{period}, {unit}. Right: aid, refugees, purchases from Ukraine, less paid to Russia (including gas Russia cut off, where it did) and Russian money frozen. Up: more paid to Russia, earnings from sales to Russia, oil bought via other countries, hidden channels, assets Russia seized, weapons{back}. Below the diagonal the net is positive. Bubble size: size of the economy.", { period: periodText(), unit, back: state.netBack ? t(", money flowing back from Ukraine") : "" })}</p>
     ${filtersHtml()}
     <div class="chart">${svg}</div>
     <p class="note-small">${t("Log-like axes so that small and large shifts both stay visible.")} ${state.measure === "total" ? t("Shown in % of GDP: totals in € would put every small country in one corner.") + " " : ""}${t("Middle estimates only; each country's range is in its breakdown.")}</p>

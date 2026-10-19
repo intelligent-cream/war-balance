@@ -71,11 +71,40 @@ Code: `apply_company_flows()`; data: [`company_flows.json`](../../research/2026-
 - **Forced discount**: sales at least 50–60% below valuation hand the difference to Russian buyers (2022 case list:
   Renault, Société Générale, McDonald's, Nissan, Equinor, Shell; later years from the contribution). Yandex (Netherlands)
   and Polymetal (Kazakhstan) are left out: their shareholders were mostly international, not Dutch or Kazakh.
-- **Not counted: seizures** without payment (Wintershall Dea, Uniper's Unipro, Fortum, Carlsberg, Danone, leased
-  aircraft; about EUR 33bn). Russia took these; the owners had no choice. They are in the research file.
+- **Seizures** without payment were not counted until round 13; since round 14 they are, on their own line
+  ([below](#assets-seized-by-russia-round-14)).
 
 Counting exit payments toward Russia means a company's exit costs its country on this part, while the taxes it no
 longer pays in Russia count toward Ukraine (company taxes, [services-shipping-companies.md](services-shipping-companies.md#company-taxes)).
+
+## Assets seized by Russia (round 14)
+
+Raised by the third audit (M4) and approved by the owner: a seizure is as coerced as a forced-sale discount, and both
+hand value to Russia (its state or Russian firms). Until round 13 discounts counted and seizures did not, so leaving
+Russia lowered a country's score while having one's company seized did not. Since round 14 seizures count as money
+taken by Russia, on their own line, "Seized by Russia (companies' assets)" (`seized` in `data.json` `extra`, toward
+Russia, in the change in payments to Russia).
+
+- **Data**: `seizure` in [`company_flows.json`](../../research/2026-10/gaps/company_flows.json): asset value lost by the
+  foreign owner minus anything received abroad, in the year control was lost, by the company's home country. Cases:
+  temporary management by decree 302 and later decrees (Uniper's Unipro and Fortum in April 2023, Danone and Carlsberg
+  in July 2023, AB InBev's stake in December 2024), expropriation by decree (Wintershall Dea's and OMV's gas joint
+  ventures, ExxonMobil's Sakhalin-1, Shell's Sakhalin-2 stake), court seizures (Raiffeisen EUR 1.87bn, UniCredit,
+  Deutsche Bank, Linde), and leased aircraft kept by Russian airlines (net of insurance settlements). Total about
+  EUR 33bn (22–47).
+- **Values** are the owners' own write-downs or book values: Fortum's EUR 1.7bn impairment
+  ([Fortum](https://www.fortum.com/media/2023/05/inside-information-fortum-fully-write-down-its-russian-assets-and-deconsolidate-russia-segment-publishes-restated-comparison-figures)),
+  Wintershall Dea's EUR 5.3bn write-down, which also covers Nord Stream and WIGA impairments
+  ([OSW](https://www.osw.waw.pl/en/publikacje/analyses/2023-01-27/wintershall-dea-withdraws-russia)), Carlsberg's
+  DKK 7bn ([Interfax](https://interfax.com/newsroom/top-stories/99188/)), Danone's EUR 0.2bn plus about 0.5bn of
+  currency adjustments ([Interfax](https://interfax.com/newsroom/top-stories/93000/)), and the KSE Institute's case
+  list ([Annex 1](https://kse.ua/wp-content/uploads/2025/03/KSE_Assessing-Foreign-Companies-Losses-in-Russia.pdf)),
+  all fetched in round 14. Certainty B for named company write-downs, C for court seizures and aircraft.
+- **Largest** (EUR bn, 2022–2026): Germany 9.5, the US 4.9, the UK 3.9, Austria 3.4, Ireland 2.8 (aircraft lessors),
+  Finland 1.7, Belgium 1.0, Denmark 1.0. Effect on the net (% of GDP): Austria +0.26 → −0.43, Finland −0.62, Ireland
+  −0.49, Denmark −0.25, Germany −0.22, Belgium −0.16.
+- **What it does not include**: write-downs of businesses that were sold (their loss is in the forced discount) and
+  frozen dividends; a book value can differ from what Russia gained.
 
 ## Russian-owned companies abroad
 
@@ -106,6 +135,13 @@ home: about EUR 0.1–0.2bn a year in total, before and after the war, and the c
 - **USA and Canada, Evraz North America:** zero after the UK sanctions of May 2022; sold in August 2025.
 
 ## Frozen central-bank reserves (round 7)
+
+**Round 14 (audit M6, approved by the owner):** this is its own line, "Russian money frozen (return Russia lost on its
+reserves)", and the share cards and panel no longer call it "less paid to Russia"; when it is the largest part of a
+country's positive second number, they say so ("mostly the return Russia lost on its frozen reserves", Belgium). It
+stays inside the change in payments to Russia: it is money Russia did not get because of a decision by the host
+country and the EU, which is what that number measures; it is not something the country gave Ukraine (what Ukraine
+receives from this return, the G7 ERA loans, is already left out of donors' aid).
 
 About EUR 260bn of the Bank of Russia's reserves have been immobilised since 28 February 2022, about 185bn at
 Euroclear in Belgium. The frozen amount itself is not counted. What counts is the yearly return those reserves would

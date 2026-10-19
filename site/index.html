@@ -562,7 +562,9 @@ function triple(obj, key) {
   const cb = key === "years" && obj && obj.cb ? obj.cb : null;
   // range of the no-war fuel price, as factors on the expected path (payments to Russia, round 7)
   const nr = key === "years" && obj && obj.nrl ? [obj.nrl, obj.nrh] : null;
-  return { c, l, h, m, b: [Math.min(b[0], l[0] / ph[0], m), Math.max(b[1], h[0] / pl[0], m)], p, pl, ph, q, ql, qh, cb, nr };
+  // round 14 (M5): each year's change in volume is valued at that year's prices (current euros, like aid)
+  const cur = key === "years" && obj && obj.cur ? obj.cur : null;
+  return { c, l, h, m, b: [Math.min(b[0], l[0] / ph[0], m), Math.max(b[1], h[0] / pl[0], m)], p, pl, ph, q, ql, qh, cb, nr, cur };
 }
 function normalise(c) {
   c.T = {
@@ -617,7 +619,9 @@ function calc(c, y, opt = {}) {
   // the baseline level and the actual values (from the same sources, so their errors partly cancel: correlation 0.5),
   // the price level and the pre-war trend. Errors are summed over the years first (the same baseline every year).
   const spread = (t, ex, act) => {
-    // ex(i, base, trend) and act(i, value, price) give one year's expected and actual volume
+    // ex(i, base, trend) and act(i, value, price) give one year's expected and actual volume; round 14 (M5): both
+    // valued at that year's prices (t.cur), so every trade part is in current euros like aid
+    if (t.cur) { const ex1 = ex, act1 = act, k = t.cur; ex = (i, b, q) => ex1(i, b, q) * k[i]; act = (i, v, p) => act1(i, v, p) * k[i]; }
     let mid = 0, bl = 0, bh = 0, al = 0, ah = 0, pl = 0, ph = 0, ql = 0, qh = 0, se = 0, nl = 0, nh = 0;
     // trade counts at the seller's net gain (round 10): t.g = { e, a } weights per year, [low, central, high] each, for
     // what was expected (the pre-war mix of goods) and what was bought; their range is one more term in quadrature
@@ -766,7 +770,9 @@ function calc(c, y, opt = {}) {
       let s2 = 0;
       for (let i = 0; i < parts.length; i++) {
         s2 += d(parts[i]) ** 2;
-        for (let j = i + 1; j < parts.length; j++) s2 += 2 * (RHO[parts[i].k + "|" + parts[j].k] || RHO[parts[j].k + "|" + parts[i].k] || 0) * d(parts[i]) * d(parts[j]);
+        // round 14 (audit M3): the correlations are between the parts' sizes (a common input such as Russia's gain share
+        // makes both larger); where the two parts have opposite signs, that moves the total in opposite directions
+        for (let j = i + 1; j < parts.length; j++) s2 += 2 * (RHO[parts[i].k + "|" + parts[j].k] || RHO[parts[j].k + "|" + parts[i].k] || 0) * Math.sign(parts[i].v || 1) * Math.sign(parts[j].v || 1) * d(parts[i]) * d(parts[j]);
       }
       return Math.sqrt(Math.max(0, s2));
     };
@@ -800,22 +806,51 @@ function calc(c, y, opt = {}) {
     paidRussia: sum3(T.paid)[0] + sum3(T.laundered)[0] + sum3(T.tax)[0] + sum3(T.mil)[0] + sum3(T.svcBought)[0] + sum3(T.hidden)[0],
     shiftParts: live(shiftParts), backParts: live(backParts), costParts: live(costParts),
     flowbackProfit: back.length ? -total(back)[0] : 0,
-    shift, shiftLo, shiftHi, shiftCert: weakest(shiftAll.map(p => p.cert)),
+    shift, shiftLo, shiftHi, shiftCert: gradeTotal(shiftAll),
     uaBal, uaLo, uaHi, uaGave, uaBack, rusBal, rusLo, rusHi,
     // negative overall mainly because it earned from the war effort, not because of money toward Russia
     // (only when it matters: at least EUR 10m and 0.05% of a year's GDP)
     earnerUa: uaBal < -Math.max(0.01, (c.gdp || 0) * 0.0005),
     earner: shift < 0 && uaBal < -Math.max(0.01, (c.gdp || 0) * 0.0005) && (rusBal >= 0 || -uaBal > -rusBal),
-    cost, costLo, costHi, costCert: weakest(costAll.map(p => p.cert)),
+    cost, costLo, costHi, costCert: gradeTotal(costAll),
   };
 }
 
-// Method sensitivity (round 13): the net under the main alternative method choices, as a band next to the 90% range.
-// The 90% range is parameter uncertainty given the method; this band shows how much the method itself moves the result
+// Round 14 (audit H4, approved by the owner): a total's certainty letter from how much of it rests on primary data, not
+// the weakest part (which made every total D). Weights are the parts' absolute values: A when at least 80% is in parts
+// graded A; B when at least half is in A-B (primary data); C when at least 75% is in A-C (at most a quarter rests on
+// rough indications, D); else D (docs/method/ranges.md)
+function gradeTotal(parts) {
+  const tot = parts.reduce((a, p) => a + Math.abs(p.v), 0);
+  if (!tot) return weakest(parts.map(p => p.cert));
+  const share = l => parts.filter(p => CERT_ORDER.indexOf(p.cert) <= CERT_ORDER.indexOf(l)).reduce((a, p) => a + Math.abs(p.v), 0) / tot;
+  return share("A") >= 0.8 ? "A" : share("B") >= 0.5 ? "B" : share("C") >= 0.75 ? "C" : "D";
+}
+// Method sensitivity (round 13; widened in round 14, audit H4): the net under the alternative method choices, as a band
+// next to the likely range. The likely range is data and model uncertainty given the method; this band shows how much
+// the method choices themselves move the result. Three alternatives are switches in calc() (opt); the others are
+// rebuilds of the data with one choice changed (build_data.py METHOD_ALTERNATIVES), whose changed fields come in
+// detail.json "alts" and are applied to a copy of the country
 const METHOD_ALTS = [["rule", "old"], ["windfall", "full"], ["loans", "war"]];
+function withAlt(c, name) {
+  c._alt = c._alt || {};
+  if (c._alt[name]) return c._alt[name];
+  const c2 = { ...c }, diff = c.alts[name];
+  for (const [k, v] of Object.entries(diff)) {
+    if (v === null) delete c2[k];
+    else if (v && typeof v === "object" && !Array.isArray(v) && c[k] && typeof c[k] === "object" && !Array.isArray(c[k])) {
+      const o = { ...c[k] };
+      for (const [sk, x] of Object.entries(v)) { if (x === null) delete o[sk]; else o[sk] = x; }
+      c2[k] = o;
+    } else c2[k] = v;
+  }
+  delete c2._alt;
+  return (c._alt[name] = normalise(c2));
+}
 function methodBand(c, y) {
   const base = calc(c, y);
   const alts = METHOD_ALTS.map(([k, v]) => ({ k, v: calc(c, y, { [k]: v }).shift }));
+  for (const name of Object.keys(c.alts || {})) alts.push({ k: name, v: calc(withAlt(c, name), y).shift });
   const all = [base.shift, ...alts.map(a => a.v)];
   return { lo: Math.min(...all), hi: Math.max(...all), alts };
 }
@@ -903,7 +938,7 @@ const PART_DOC = {
   hidden: "trade.md#gold-and-hidden-channels", undisc: "aid-refugees-military.md#undisclosed-aid-and-private-donations", priv: "aid-refugees-military.md#undisclosed-aid-and-private-donations",
   statefin: "russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia", rusarms: "russia-state-and-companies.md#weapons-bought-from-russia",
   exits: "russia-state-and-companies.md#companies-leaving-russia", rusfirms: "russia-state-and-companies.md#russian-owned-companies-abroad",
-  frozen: "russia-state-and-companies.md#frozen-central-bank-reserves-round-7", remit: "trade.md#remittances-and-relocants-round-7",
+  frozen: "russia-state-and-companies.md#frozen-central-bank-reserves-round-7", seized: "russia-state-and-companies.md#assets-seized-by-russia-round-14", remit: "trade.md#remittances-and-relocants-round-7",
   agents: "trade.md#payment-agents-round-6", multilat: "loans.md#new-lending-by-the-imf-and-world-bank",
   own: "aid-refugees-military.md#flowback", purl: "aid-refugees-military.md#flowback", sell: "aid-refugees-military.md#flowback", arms: "aid-refugees-military.md#arms-ukraine-bought-abroad-round-5", othsp: "aid-refugees-military.md#flowback",
   prem: "energy-and-laundered-oil.md#energy-premium-and-oil-discount", disc: "energy-and-laundered-oil.md#energy-premium-and-oil-discount", margin: "trade.md#profit-not-revenue", tariff: "overview.md#the-cost-view",
@@ -943,7 +978,8 @@ const FLOWS = [
   { "id": "companytax", "name": "Company taxes in Russia", "what": "Taxes that foreign-owned companies still pay in Russia: profit tax plus half of other taxes.", "parts": ["tax"], "method": "services-shipping-companies.md#company-taxes", "why": "decisions.md#5-money-flowing-back-and-russias-state-and-companies", "files": ["companies-notes.md", "gaps/companies_all-notes.md", "gaps/company_taxes_r6-notes.md", "gaps/round4a-notes.md", "gaps/trend2-notes.md"], "src": ["companies"], "doc": "company-taxes-in-russia" },
   { "id": "exits", "name": "Companies leaving Russia", "what": "Exit fees and forced discounts paid to Russia by companies that sold their Russian business.", "parts": ["exits"], "method": "russia-state-and-companies.md#companies-leaving-russia", "why": "decisions.md#companies-leaving-russia", "log": "decision-log.md#round-5-values-at-their-real-worth-18-october", "files": ["gaps/company_flows-notes.md"], "doc": "companies-leaving-russia" },
   { "id": "rusfirms", "name": "Russian-owned companies abroad", "what": "Profits that Russian-owned companies in this country send to their Russian owners.", "parts": ["rusfirms"], "method": "russia-state-and-companies.md#russian-owned-companies-abroad", "why": "decisions.md#5-money-flowing-back-and-russias-state-and-companies", "log": "decision-log.md#round-910-what-readers-asked-18-october", "files": ["gaps/company_flows-notes.md", "gaps/russian_owned_r10-notes.md"], "doc": "russian-owned-companies-abroad" },
-  { "id": "frozen", "name": "Frozen Russian reserves", "what": "The return Russia lost on its central-bank reserves frozen in this country.", "parts": ["frozen"], "method": "russia-state-and-companies.md#frozen-central-bank-reserves-round-7", "why": "decisions.md#5-money-flowing-back-and-russias-state-and-companies", "log": "decision-log.md#round-7-what-the-owner-asked-to-add-18-october", "files": ["gaps/frozen_assets-notes.md"], "doc": "frozen-russian-reserves" },
+  { "id": "frozen", "name": "Russian money frozen", "what": "The return Russia lost on its central-bank reserves frozen in this country, on its own line in the change in payments to Russia.", "parts": ["frozen"], "method": "russia-state-and-companies.md#frozen-central-bank-reserves-round-7", "why": "decisions.md#5-money-flowing-back-and-russias-state-and-companies", "log": "decision-log.md#round-7-what-the-owner-asked-to-add-18-october", "files": ["gaps/frozen_assets-notes.md"], "doc": "frozen-russian-reserves" },
+  { "id": "seized", "name": "Assets seized by Russia", "what": "Company assets Russia seized (temporary management by decree, expropriation, court seizures, leased aircraft kept), at the owners' write-downs, by the company's home country.", "parts": ["seized"], "method": "russia-state-and-companies.md#assets-seized-by-russia-round-14", "why": "decisions.md#round-14-independent-audit-3", "log": "decision-log.md#round-14-independent-audit-3-19-october", "files": ["gaps/company_flows-notes.md"], "doc": "assets-seized-by-russia" },
   { "id": "remit", "name": "Remittances from Russia (marker)", "what": "Shown as a marker, not in the totals: the change in what migrants working in Russia sent home, against the level expected without the war.", "parts": [], "method": "trade.md#remittances-and-relocants-round-7", "why": "decisions.md#remittances-from-russia", "log": "decision-log.md#round-13-one-rule-two-numbers-19-october", "files": ["gaps/remittances-notes.md", "gaps/remittances_r13-notes.md", "gaps/relocants-notes.md", "gaps/assumptions_r11_people-notes.md"], "src": ["remittances", "assumptions_r11_people"], "doc": "remittances-from-russia-marker" },
   { "id": "statefin", "name": "Rosatom and Russian state loans", "what": "Payments for Russian nuclear projects and repayments of Russian state loans.", "parts": ["statefin"], "method": "russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia", "why": "decisions.md#rosatom-and-russian-state-loans", "log": "decision-log.md#round-5-values-at-their-real-worth-18-october", "files": ["gaps/russia_state_finance-notes.md"], "doc": "rosatom-and-russian-state-loans" },
   { "id": "rusarms", "name": "Weapons bought from Russia", "what": "Payments for Russian weapons, against the level expected without the war, at Russia's net gain.", "parts": ["rusarms"], "method": "russia-state-and-companies.md#weapons-bought-from-russia", "why": "decisions.md#weapons-bought-from-russia", "files": ["gaps/russian_arms_exports-notes.md", "gaps/arms_r6-notes.md", "gaps/assumptions_r11_gain-notes.md"], "doc": "weapons-bought-from-russia" },
@@ -969,7 +1005,7 @@ const PART_NAMES = {
   ship: ["Income from shipping and insuring Russian oil", "Less income from shipping Russian oil"], hidden: ["Gold and hidden payments to Russia"],
   undisc: ["Undisclosed military aid (estimate)"], priv: ["Private donations"], statefin: ["Nuclear projects and state loans from Russia"],
   rusarms: ["Weapons bought from Russia"], exits: ["Paid to Russia by companies leaving it"], rusfirms: ["Profits sent to Russia by Russian-owned companies here"],
-  frozen: ["Return denied to Russia on its frozen reserves"],
+  frozen: ["Russian money frozen (return Russia lost on its reserves)"], seized: ["Seized by Russia (companies' assets)"],
   agents: ["Fees earned settling Russia's trade (payment agents)"], multilat: ["Share of new IMF, World Bank and EBRD lending"],
   own: ["Own aid spent in its own economy (incl. replacing donated stock)"], purl: ["Other countries' aid spent here (incl. their stock replacement)"],
   sell: ["Extra sales to Ukraine above the pre-war level"], arms: ["Arms Ukraine bought here"], othsp: ["Aid spent here on energy, relief and rebuilding"],
@@ -1095,7 +1131,7 @@ function scaleFor() {
     const bounds = [...st.slice().reverse().map(x => -x), ...st];                 // -10,-3,-1,-0.1,0.1,1,3,10
     const f = d3.scaleThreshold().domain(bounds).range(colors);
     const labels = bounds.map(x => (x > 0 ? "+" : x < 0 ? "−" : "") + stepLabel(Math.abs(x)));
-    const ends = state.lens === "change" ? [t("more paid to Russia"), t("for Ukraine, or less paid to Russia")] : [t("gained"), t("carried most")];
+    const ends = state.lens === "change" ? [t("more paid to or earned from Russia"), t("for Ukraine, or less paid to Russia")] : [t("gained"), t("carried most")];
     return { color: v => f(v), colors, labels, ends };
   }
   const ramp = state.lens === "rus" ? ORANGES : BLUES;
@@ -1174,7 +1210,7 @@ function paint() {
   const measure = t({ total: "total", pp: "per person", gdp: "2022–2026 total as % of one year's GDP (2024)" }[state.measure]);
   const period = periodText();
   const what = {
-    change: ["Support for Ukraine plus the change in payments to Russia, since before the war", "for Ukraine, or less paid to Russia", "more paid to Russia"],
+    change: ["Support for Ukraine plus the change in payments to Russia, since before the war", "for Ukraine, or less paid to Russia", "more paid to or earned from Russia"],
     cost: ["What supporting Ukraine cost each country", "cost", "net gain"],
     ukr: ["Money each country sent to Ukraine (aid and purchases)", "more", null],
     rus: ["Money and support each country sent to Russia", null, "more"],
@@ -1464,11 +1500,35 @@ function wirePanel() {
 // each country has its own page with a preview image, so a shared link shows that country's number
 const SITE_URL = "https://intelligent-cream.github.io/follow-the-money-ukraine/";
 // the one-line summary of a country: shared, and read out when its panel opens
+// Round 14 (audit C4, approved by the owner): what the second number is, in words, for the panel, the share text and the
+// share cards. "Cut off by Russia" only where Russia actually cut the country's gas (k.rusCut); earners (weapons, troops,
+// sales) are "earned from Russia", not "more paid"; when the largest part of "less paid" is not payments, it is named
+const EARNED_PARTS = new Set(["mil", "sold", "svcsold", "ship", "agents"]);
+const LESS_MOSTLY = { frozen: "mostly the return Russia lost on its frozen reserves", laund: "mostly less Russian crude in fuel bought from refiners elsewhere",
+  windfall: "mostly paying Russia less than no-war prices", tax: "mostly less tax paid in Russia by companies", sold: "mostly sales to Russia given up",
+  svcpaid: "mostly less paid for Russian services", svcsold: "mostly services to Russia given up", ship: "mostly less income from shipping Russian oil",
+  hidden: "mostly less gold and hidden payments", rusarms: "mostly fewer Russian weapons bought" };
+function rusWords(c, k) {
+  const parts = k.shiftParts.filter(p => !UA_PARTS.has(p.k));
+  if (k.rusBal >= 0) {
+    const pos = parts.filter(p => p.v > 0).sort((a, b) => b.v - a.v);
+    const top = pos[0], mostly = top && top.k !== "paid" && LESS_MOSTLY[top.k] && top.v >= 0.4 * k.rusBal ? LESS_MOSTLY[top.k] : null;
+    const cut = k.rusCut > 0.005 ? eur(k.rusCut) : null;
+    const en0 = "less paid to Russia" + (mostly ? ", " + mostly : ""), tr0 = t("less paid to Russia") + (mostly ? ", " + t(mostly) : "");
+    const en = en0 + (cut ? `, of which ${cut} gas cut off by Russia` : "");
+    const tr = tr0 + (cut ? t(", of which {v} gas cut off by Russia", { v: cut }) : "");
+    return { en, tr, tr0, less: true };
+  }
+  const neg = parts.filter(p => p.v < 0), tot = -neg.reduce((a, p) => a + p.v, 0) || 1;
+  const earned = -neg.filter(p => EARNED_PARTS.has(p.k)).reduce((a, p) => a + p.v, 0) / tot;
+  const en = earned >= 0.5 ? "earned from Russia" : earned >= 0.1 ? "more paid to or earned from Russia" : "more paid to Russia";
+  return { en, tr: t(en), tr0: t(en), less: false };
+}
 function shareText(c) {
-  const k = calc(c, Math.max(2022, state.year));
+  const k = calc(c, Math.max(2022, state.year)), w = rusWords(c, k);
   // two numbers and their sum (round 13): what it did for Ukraine, and how its payments to Russia changed
-  return t(k.rusBal >= 0 ? "{name}, 2022–2026 total against one year's GDP: support for Ukraine {ua}; {ru} less paid to Russia (incl. supplies Russia cut off); net {pct} ({eur})." : "{name}, 2022–2026 total against one year's GDP: support for Ukraine {ua}; {ru} more paid to or earned from Russia; net {pct} ({eur}).",
-    { name: c.name, ua: fmtMeasure(c, k.uaBal, "gdp", true), ru: fmtMeasure(c, Math.abs(k.rusBal), "gdp"), pct: fmtMeasure(c, k.shift, "gdp", true), eur: eur(k.shift, true) });
+  return t("{name}, 2022–2026 total against one year's GDP: support for Ukraine {ua}; change in payments to Russia {ru} ({what}); net {pct} ({eur}).",
+    { name: c.name, ua: fmtMeasure(c, k.uaBal, "gdp", true), ru: fmtMeasure(c, k.rusBal, "gdp", true), what: w.tr, pct: fmtMeasure(c, k.shift, "gdp", true), eur: eur(k.shift, true) });
 }
 async function shareCountry(c, btn) {
   if (!c) return;
@@ -1536,15 +1596,21 @@ function miniChart(tr, colour, title, srcIds) {
     </svg></div>`;
 }
 function rangeLine(c, lo, hi, cert) {
-  return `<div class="range-txt">${t("Likely range {lo} to {hi} of a year's GDP ({elo} to {ehi})", { lo: fmtMeasure(c, lo, "gdp", true), hi: fmtMeasure(c, hi, "gdp", true), elo: eur(lo, true), ehi: eur(hi, true) })} ${chip(cert)} <span title="${t("About a 90% range of the parameters, given the method. Each part has its own low and high value from the data or method; the parts' margins are combined as errors, correlated where parts share inputs.")}">ⓘ</span></div>`;
+  return `<div class="range-txt">${t("Likely range {lo} to {hi} of a year's GDP ({elo} to {ehi})", { lo: fmtMeasure(c, lo, "gdp", true), hi: fmtMeasure(c, hi, "gdp", true), elo: eur(lo, true), ehi: eur(hi, true) })} ${chip(cert)} <span title="${t("The likely range covers the uncertainty of the data and the models given the method: each part's low and high value, combined as errors, correlated where parts share inputs. It is calibrated by judgement to about 90%, not measured. How much the method choices themselves move the result is the method band below.")}">ⓘ</span></div>`;
 }
 // the method band and the average year, below the range (round 13)
 function methodLine(c, y) {
   const m = methodBand(c, y), g = v => fmtMeasure(c, v, "gdp", true);
   const yrs = yi(y) - 1 + FRAC[yi(y)];
   const k = calc(c, y);
-  const what = { rule: t("the valuation rule until round 12 (value kept, incl. wages, for sellers; paid weapons in full)"), windfall: t("the war-time windfall at 100%"), loans: t("loans discounted at the war-time yield") };
-  return `<div class="range-txt">${t("Method sensitivity {lo} to {hi}: the net under other method choices ({what}).", { lo: g(m.lo), hi: g(m.hi), what: m.alts.map(a => `${what[a.k]}: ${g(a.v)}`).join("; ") })}</div>
+  const what = { rule: t("the valuation rule until round 12 (value kept, incl. wages, for sellers; paid weapons in full)"), windfall: t("the war-time windfall at 100%"), loans: t("loans discounted at the war-time yield"),
+    refiner: t("EU refiners keep the Russian crude in the fuel they export (until round 13)"), laund_route: t("laundered oil: every buyer's change counted, without the round-13b route rule"),
+    laund_off: t("laundered oil (fuel made from Russian crude elsewhere) not counted"), fuelmix: t("the mix of what was bought from the fuel tracker's tonnes (until round 14), not customs values"),
+    freight: t("fuel prices as customs (CIF) values, freight included (until round 14)"), normal_return: t("sellers' normal return 9% nominal, services incl. real estate (round 13)") };
+  // the choices that move the net by at least 0.005% of GDP, largest first; the band covers all of them
+  const k0 = calc(c, y).shift, gdp = c.gdp || 1;
+  const shown = m.alts.filter(a => Math.abs(a.v - k0) >= 0.00005 * gdp).sort((a, b) => Math.abs(b.v - k0) - Math.abs(a.v - k0));
+  return `<div class="range-txt">${shown.length ? t("Method band {lo} to {hi}: the net under other method choices ({what}).", { lo: g(m.lo), hi: g(m.hi), what: shown.map(a => `${what[a.k] || a.k}: ${g(a.v)}`).join("; ") }) : t("Method band: the other method choices do not move this net.")}</div>
     <div class="range-txt">${t("A total for {n} years, not a yearly rate: about {v} of GDP in an average year.", { n: num(yrs, 1), v: g(k.shift / yrs) })}</div>`;
 }
 
@@ -1567,8 +1633,9 @@ function balanceCards(c, k) {
     : !k.earnerUa
     ? t("Net contributing: gave {gave}, earned back {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) })
     : t("Net earning from the war effort: gave {gave}, earned {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) });
-  const ru = k.rusBal >= 0 ? t("less paid to Russia (incl. supplies Russia cut off)") : t("more paid to Russia, or earned from it, than expected without the war");
-  const cut = k.rusCut > 0.005 ? `<div class="s">${t("of which gas Russia cut off itself or that stopped with the end of transit: {v}", { v: eur(k.rusCut) })}${ref(["sanctions_share"])}</div>` : "";
+  const w = rusWords(c, k);
+  const ru = w.less ? w.tr0 : t("{what}, against what was expected without the war", { what: w.tr });
+  const cut = k.rusCut > 0.005 ? `<div class="s">${t("of which gas Russia cut off itself or that stopped with the end of transit: {v}", { v: eur(k.rusCut) })}${ref(["gas_cuts"])}</div>` : "";
   return `<div class="balances">
     <div class="bal ${k.earnerUa ? "earn" : "pos"}"><div class="lbl">${t("Support for Ukraine")}</div><div class="num">${g(k.uaBal)}</div><div class="s">${ua}</div><div class="s">${t("Likely range {lo} to {hi}", { lo: g(k.uaLo), hi: g(k.uaHi) })}</div></div>
     <div class="bal ${k.rusBal >= 0 ? "pos" : "neg"}"><div class="lbl">${t("Change in payments to Russia")}</div><div class="num">${g(k.rusBal)}</div><div class="s">${ru}</div>${cut}<div class="s">${t("Likely range {lo} to {hi}", { lo: g(k.rusLo), hi: g(k.rusHi) })}</div></div>
@@ -1611,6 +1678,32 @@ function blockedNote(c, k) {
   if (!x || !p || p.v <= 0) return "";
   return `<p class="note">${t("Payments to Russia on its state loans stopped because sanctions blocked the payment channels, not by the borrower's choice.")}${ref(x.src)}</p>`;
 }
+// round 14 (audit M1): poorer economies at the "more paid to Russia" end are there mostly for fuel and food bought from
+// Russia; fuel is fungible and sold through many traders, so the figure reflects what was bought, not a policy
+const PAYMENT_PARTS = new Set(["paid", "windfall", "laund", "svcpaid", "hidden"]);
+function fairnessNote(c, k) {
+  if (k.rusBal >= 0 || !c.gdp || !c.pop || c.gdp / c.pop >= 15) return "";
+  const neg = k.shiftParts.filter(p => !UA_PARTS.has(p.k) && p.v < 0), tot = -neg.reduce((a, p) => a + p.v, 0);
+  const pay = -neg.filter(p => PAYMENT_PARTS.has(p.k)).reduce((a, p) => a + p.v, 0);
+  if (!tot || pay < 0.6 * tot) return "";
+  return `<p class="note">${t("Most of this is fuel and food bought from Russia. Fuel is fungible and sold through many traders: the figure reflects what this economy bought, not a policy toward Russia or Ukraine.")}</p>`;
+}
+// round 14 (audit L3): weapons Russia paid for count at the seller's real gain, so a large paid supplier can look small
+function paidArmsNote(c, k) {
+  const p = k.shiftParts.find(q => q.k === "mil");
+  if (!p || !(c.military_rus?.src || []).includes("military_payment")) return "";
+  return `<p class="note">${t("Weapons and supplies Russia paid for count at the seller's real gain (taxes plus profit above a normal return, a few cents per euro), like any sale; what Russia did not pay for, and troops' pay, count in full. A large paid supplier can therefore show a small number.")}${ref(["military_payment"])}</p>`;
+}
+// round 14 (audit H2): Nigeria's credit for less fuel from EU refiners is structural (domestic refining)
+function structuralNote(c, k) {
+  if (!c.laund?.structural || !k.shiftParts.some(p => p.k === "laund" && p.v > 0)) return "";
+  return `<p class="note">${t("Less fuel made from Russian crude bought from EU refiners: this fell when the EU banned Russian-made fuel (2023) and the country's own Dangote refinery started production (2024). A structural change in supply, not a policy.")}${ref(c.laund.structural.src)}</p>`;
+}
+// round 14 (audit L4): China's dual-use goods inside its recorded exports to Russia, already counted there
+function dualUseNote(c) {
+  if (!c.dual_use_note) return "";
+  return `<p class="note">${t("Dual-use goods (machine tools, electronics, components) in recorded exports to Russia, 2022–2026: {v}. They are counted in the sales to Russia above, not again as military support.", { v: eur(c.dual_use_note) })}${ref(["china_military"])}</p>`;
+}
 // How much of the shift away from Russian trade was required by sanctions, gas cut by Russia or stopped with
 // transit, and own choice (research/2026-10/gaps/sanctions_share.json). Only parts toward Ukraine are split.
 function sanctionNote(c, k) {
@@ -1632,6 +1725,14 @@ function sanctionNote(c, k) {
     : t("Of the move away from Russian trade: {m} required by sanctions, {o} own choice.", v)}${ref(["sanctions_share"])}</p>`;
 }
 
+// round 14 (audit H1): the share of the money flowing back that is subtracted (the seller's real gain x genuinely extra),
+// from the data, with the switch on
+function backFactor(c, y) {
+  const sv = state.netBack; state.netBack = true;
+  const kk = calc(c, y); state.netBack = sv;
+  return kk.flowback > 0 ? kk.flowbackProfit / kk.flowback : 0;
+}
+const pct1 = x => (x * 100 >= 10 ? Math.round(x * 100) : x * 100 < 0.05 ? 0 : num(x * 100, 1)) + "%";
 function countryPanel(c) {
   if (!c) return head(t("Unknown")) + `<div class="panel-body"><p class="empty">${t("No data for this country yet.")}</p></div>`;
   const y = Math.max(2022, state.year), k = calc(c, y);
@@ -1642,7 +1743,7 @@ function countryPanel(c) {
   const backSec = k.backParts.length ? `<section class="section">
       <h3>${t("Money flowing back to {name}", { name: c.name })}</h3>
       <div class="big" style="font-size:24px;color:var(--back)">${eur(k.flowback)} <span style="font-size:13px;font-weight:500;font-family:var(--font-data)">(${rangeTxt(k.flowbackLo, k.flowbackHi)})</span></div>
-      <div class="big-cap">${t("spent by or for Ukraine here, above the pre-war level. This is revenue for companies here, so only part of it is subtracted: the value kept in this economy × the share that is genuinely extra business (for US weapons, about 63%). Imported parts and sales that would have happened anyway are not a gain.")}${state.netBack ? "" : " " + t("Not subtracted (switch is off).")}</div>
+      <div class="big-cap">${t("spent by or for Ukraine here, above the pre-war level. This is revenue for companies here, so only part of it is subtracted: the seller's real gain (taxes plus profit above a normal return) × the share that is genuinely extra business. Here that is {own} of the money flowing back; for US weapons about {us}. Wages, materials, imported parts and sales that would have happened anyway are not a gain.", { own: pct1(backFactor(c, y)), us: pct1(byIso.USA ? backFactor(byIso.USA, 2026) : 0) })}${state.netBack ? "" : " " + t("Not subtracted (switch is off).")}</div>
       <div class="kv" style="margin-top:10px">${k.backParts.map(p => `<span>${p.label}${chip(p.cert)}${ref(p.src)}</span><span class="v">${eur(p.v)}<small>${rangeTxt(p.lo, p.hi)}</small></span>`).join("")}</div>
     </section>` : "";
   const aidCats = c.aid?.cats ? Object.entries(c.aid.cats).filter(([, v]) => v) : [];
@@ -1690,6 +1791,7 @@ function countryPanel(c) {
       ${launderedNote(c, k)}
       ${armsNote(c, k)}
       ${blockedNote(c, k)}
+      ${fairnessNote(c, k)}${paidArmsNote(c, k)}${structuralNote(c, k)}${dualUseNote(c)}
       ${share}
       ${c.hub ? `<p class="key" style="margin-top:8px"><b>${t("Transit hub:")}</b> ${dataText(c.hub)}.</p>` : ""}
     </section>
@@ -1699,7 +1801,7 @@ function countryPanel(c) {
       <div class="big-cap">${k.cost >= 0 ? eur(k.cost) : t("{v} gain", { v: eur(-k.cost) })} · ${perPerson(c, k.cost)}${state.netBack ? " · " + t("after money flowing back") : ""}</div>
       ${rangeLine(c, k.costLo, k.costHi, k.costCert)}
       <div class="kv" style="margin-top:10px">${k.costParts.map(p => `<span>${p.label}${chip(p.cert)}${ref(p.src)}</span><span class="v">${eur(p.v, p.v < 0)}<small>${rangeTxt(p.lo, p.hi)}</small></span>`).join("")}
-        ${state.netBack && k.flowback ? `<span>${t("Earned back from the war effort (value kept × genuinely extra)")}</span><span class="v">${eur(-k.flowbackProfit, true)}</span>` : ""}</div>
+        ${state.netBack && k.flowback ? `<span>${t("Earned back from the war effort (real gain × genuinely extra)")}</span><span class="v">${eur(-k.flowbackProfit, true)}</span>` : ""}</div>
     </section>
     ${backSec}
     ${c.coverage ? `<section class="section"><h3>${t("Data coverage")}</h3><div class="cov">${c.coverage.map(p => `<div class="cov-row"><span class="dot ${p.status}" title="${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}"></span><span>${t(p.part)}: <span class="${p.status === "missing" ? "miss" : ""}">${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}</span></span><span class="n">${dataText(p.note)}</span></div>`).join("")}</div>
@@ -1718,14 +1820,14 @@ function countryPanel(c) {
     ${details.length ? `<details class="more"><summary>${t("More details")}</summary><div class="kv">${details.join("")}</div></details>` : ""}
     <details class="more"><summary>${t("How this is calculated")}</summary><ul class="how">
       <li>${t("<b>Pre-war level</b> = 2021 at pre-war prices for trade and services (company taxes: the 2018–2021 average). What would have happened without the war is predicted from it: exports to Russia follow each country's other trade and GDP, which predicted better than holding 2021 flat in back-tests from 2008, 2013 and 2016; the rest, including trade with Ukraine, stays at the 2021 level (services with the travel recovery after COVID). The tested error of that prediction is part of every range. Trade that already existed before the war does not count; a fall in trade with Ukraine caused by the war is not held against a country.")}</li>
-      <li>${t("<b>Two numbers, and their sum</b> (the main map). <b>Support for Ukraine</b> = aid (loans counted as gifts at their value to Ukraine, incl. undisclosed estimates, EU-level aid by budget share and new IMF and World Bank lending) + private donations + refugee hosting + extra purchases from Ukraine at Ukraine's net gain{back}. <b>Change in payments to Russia</b> = the drop or rise in what the country paid Russia for fuel, goods, services and weapons (at Russia's net gain), fuel made from Russian crude bought via other countries, the extra paid for Russian fuel because of war-time prices, taxes paid in Russia by its companies, gold and hidden payments, what its sellers earned from Russia (at their net gain) and weapons sent to Russia unpaid. Migrants' wages sent home from Russia are not in it: they are shown as a marker. Gas that Russia cut off itself is inside this number and labelled. The map colours the sum.", { back: state.netBack ? t(", minus money flowing back from Ukraine at the seller's net gain") : "" })}</li>
-      <li>${t("<b>One rule for every seller</b> (round 13): a sale counts at what the seller really gains, its taxes plus profit above a normal return, for every country alike: Russia's sales, Ukraine's sales, sales to Russia, money flowing back, services, shipping and paid weapons. For manufactured goods that is only 0–7 cents per euro; for Russian oil and gas about 60. A second factor keeps only the part that is genuinely extra business. Migrants' wages sent home from Russia are not counted: they are individuals' wages, not a country's choice, and are shown as a marker. Aid, refugee hosting, unpaid weapons and money not paid count in full.")}</li>
-      <li>${t("<b>Cost carried</b> = only what the country gave up: aid (loans at grant equivalent; loans repaid from frozen Russian assets cost nothing) + undisclosed aid + private donations + refugee hosting + extra price for replacing Russian energy + income lost on goods and services no longer sold to Russia (value kept × genuinely extra) + tariffs dropped for Ukraine − discounts gained on Russian oil{back}. Buying less from Russia is not a cost in itself.", { back: state.netBack ? t(" − money flowing back, at value kept × genuinely extra (the same rule as lost sales)") : "" })}</li>
-      <li>${t("<b>% of GDP</b> is the total for the whole period (2022 up to the chosen year; 2026 is January to August) against one year's GDP (2024). It is not a yearly rate: over 2022 to August 2026, divide by about 4.7 for an average year. Example: 10% means the country moved, over the whole war, as much as a tenth of one year's output. Trade is measured in volumes at pre-war or no-war prices, aid and refugee costs in money of each year, so trade parts are slightly understated against aid when prices rose.")}</li>
+      <li>${t("<b>Two numbers, and their sum</b> (the main map). <b>Support for Ukraine</b> = aid (loans counted as gifts at their value to Ukraine, incl. undisclosed estimates, EU-level aid by budget share and new IMF and World Bank lending) + private donations + refugee hosting + extra purchases from Ukraine at Ukraine's net gain{back}. <b>Change in payments to Russia</b> = the drop or rise in what the country paid Russia for fuel, goods, services and weapons (at Russia's net gain), fuel made from Russian crude bought via other countries, the extra paid for Russian fuel because of war-time prices, taxes paid in Russia by its companies, gold and hidden payments, what its sellers earned from Russia (at their net gain), weapons sent to Russia unpaid, its companies' assets that Russia seized, and, on its own line, the return Russia lost on its reserves frozen here (Russian money frozen). Migrants' wages sent home from Russia are not in it: they are shown as a marker. Gas that Russia cut off itself is inside this number and labelled where Russia cut it. The map colours the sum.", { back: state.netBack ? t(", minus money flowing back from Ukraine at the seller's net gain") : "" })}</li>
+      <li>${t("<b>One rule for every seller</b> (round 13): a sale counts at what the seller really gains, its taxes plus profit above a normal return, for every country alike: Russia's sales, Ukraine's sales, sales to Russia, money flowing back, services, shipping and paid weapons. The normal return is 5% a year above inflation after company tax, plus the country's risk premium. For manufactured goods that leaves 0–10 cents per euro; for Russian oil and gas about 60. A second factor keeps only the part that is genuinely extra business. Migrants' wages sent home from Russia are not counted: they are individuals' wages, not a country's choice, and are shown as a marker. Aid, refugee hosting, unpaid weapons and money not paid count in full.")}</li>
+      <li>${t("<b>Cost carried</b> = only what the country gave up: aid (loans at grant equivalent; loans repaid from frozen Russian assets cost nothing) + undisclosed aid + private donations + refugee hosting + extra price for replacing Russian energy + income lost on goods and services no longer sold to Russia (the seller's real gain × genuinely extra) + tariffs dropped for Ukraine − discounts gained on Russian oil{back}. Buying less from Russia is not a cost in itself.", { back: state.netBack ? t(" − money flowing back, at the seller's real gain × genuinely extra (the same rule as lost sales)") : "" })}</li>
+      <li>${t("<b>% of GDP</b> is the total for the whole period (2022 up to the chosen year; 2026 is January to August) against one year's GDP (2024). It is not a yearly rate: over 2022 to August 2026, divide by about 4.7 for an average year. Example: 10% means the country moved, over the whole war, as much as a tenth of one year's output. Every part is in euros of each year, like aid: changes in trade are measured in volumes and then valued at that year's prices (fuel at the prices a no-war market expected).")}</li>
       <li>${t("<b>Middlemen</b>: fuel refined from Russian crude counts for the final buyer, at the value of the Russian crude in it; Russian gold passed on through Hong Kong counts for China; goods reaching Russia through Kyrgyzstan and Kazakhstan count for the country that made them. Liechtenstein, Monaco, the Isle of Man, Puerto Rico, the US Virgin Islands and Saint Martin are counted in the figures of the country that reports for them.")}</li>
-      <li>${t("<b>Prices</b>: changes against the pre-war level compare volumes, not price swings. What was bought from or sold to Russia (and Ukraine) each year is divided by its price level against 2019–2021, from the country's own pre-war mix of oil, oil products, gas, coal and other goods. A country that cut its purchases is credited with the drop in volume: fuel at the prices a no-war market expected (forecasts and futures from before the invasion), other goods at pre-war prices. What it paid for Russian fuel above those no-war prices counts on its own, as money toward Russia (the war-time price windfall); paying below them (discounts, the price cap) counts as less money to Russia.")}</li>
+      <li>${t("<b>Prices</b>: changes against the pre-war level compare volumes, not price swings. What was bought from or sold to Russia (and Ukraine) each year is divided by its price level against 2019–2021, from the country's own pre-war mix of oil, oil products, gas, coal and other goods. A country that cut its purchases is credited with the drop in volume, valued at that year's prices: fuel at the prices a no-war market expected (forecasts and futures from before the invasion), other goods at their actual prices. What it paid for Russian fuel above those no-war prices counts on its own, as money toward Russia (the war-time price windfall); paying below them (discounts, the price cap) counts as less money to Russia. Both sides are at the Russian port (FOB): the war-time rise in sea freight is taken out of customs values, as it went to shipowners.")}</li>
       <li>${t("<b>Transit</b>: gas, oil and goods are counted where they are used, not where they cross the border. Gas passing through Slovakia, Austria, Germany or Bulgaria is counted for the country that burns it; fuel resold by trading hubs (Singapore, the Netherlands, Belgium, Greece, Malta) for the hub's customers; gold passed through Hong Kong for mainland China.")}</li>
-      <li>${t("<b>Margins of error</b>: every part has a middle value and a low–high range of about 90%, given the method. The range comes from the data where the sources give one (alternative pre-war baselines, reporting differences, spread between methods); otherwise from the certainty letter (A ±5%, B ±15%, C ±35%, D ±70%). Totals combine the parts' margins as errors, correlated where parts share inputs. A part that rests on the modelled no-war level and a modelled share is at best C. The method band shows the net under other method choices.")}</li>
+      <li>${t("<b>Margins of error</b>: every part has a middle value and a likely range for the data and model uncertainty given the method, calibrated by judgement to about 90% (not measured). The range comes from the data where the sources give one (alternative pre-war baselines, reporting differences, spread between methods); otherwise from the certainty letter (A ±5%, B ±15%, C ±35%, D ±70%). Totals combine the parts' margins as errors, correlated where parts share inputs (with the sign of each part). A part that rests on the modelled no-war level and a modelled share is at best C. A total's letter says how much of it rests on primary data: A when 80% of it is in parts graded A, B when half is in A–B, C when 75% is in A–C, else D (more than a quarter rests on rough indications). The method band shows the net under other method choices: the old valuation rule, the windfall in full, loans at the war-time yield, EU refiners' exports, laundered oil, the fuel mix, freight and the normal return.")}</li>
       <li>${t("<b>Top lists</b> leave out economies under {min} GDP and countries whose likely range crosses zero.", { min: tight(money(num(MIN_GDP_RANK), "bn")) })}</li>
     </ul></details>
     ${sourcesHtml()}
@@ -1852,6 +1954,7 @@ function overviewPanel() {
       <div class="tabs">${[["shift", "Net, highest"], ["rus", "Net, lowest"], ["ua", "Support for Ukraine"], ["rusless", "Less paid to Russia"], ["rusmore", "More paid to Russia"], ["cost", "Cost carried"]].map(([m, l]) => `<button data-rank-metric="${m}" aria-pressed="${state.rankMetric === m}">${t(l)}</button>`).join("")}</div>
       ${measureTabs()}
       ${rankList(list, metricFns[state.rankMetric], state.rankMeasure, () => (state.rankMetric === "rus" || state.rankMetric === "rusmore" ? "var(--rus)" : "var(--ukr)"), 20, rangeFns[state.rankMetric])}
+      ${state.rankMetric === "rus" || state.rankMetric === "rusmore" ? `<p class="key">${t("Many economies at this end are poorer fuel and food importers. Fuel is fungible and sold through many traders: their figures reflect what they bought from Russia, not a policy, and depend more on the model (open a country for its method band).")}</p>` : ""}
     </section>
     <details class="more"><summary>${t("Data gaps by country")}</summary>
       <p class="key">${t("● reported · ○ estimated with a range · ✕ missing. Hover a mark for details. Scroll the table sideways for all parts.")}</p>
@@ -2046,6 +2149,8 @@ Promise.all([fetch(narrow() || matchMedia("(pointer: coarse)").matches ? "countr
   // data-coverage notes come separately, after the map is up
   fetch("detail.json").then(r => r.json()).then(d => {
     for (const [iso3, cov] of Object.entries(d.coverage || {})) if (byIso[iso3]) byIso[iso3].coverage = cov;
+    // round 14 (H4): the method band's rebuilt alternatives
+    for (const [iso3, a] of Object.entries(d.alts || {})) if (byIso[iso3]) byIso[iso3].alts = a;
     if (state.panel) renderPanel();
   }).catch(() => {});
 }).catch(err => {

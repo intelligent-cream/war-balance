@@ -18,8 +18,11 @@ normal return on capital) ÷ the FOB export price.
   and profit above a normal return.
 - **Not counted:** wages and the taxes on wages, materials, fuel, energy, logistics, depreciation, land lease
   paid to landowners, VAT (exports are zero-rated), and a normal return on capital.
-- **Normal return:** 10% a year before tax, in nominal US dollars, on capital employed. The low case uses 12%,
-  the high case 8%.
+- **Normal return:** 10% a year before profit tax, in nominal US dollars, on capital employed. The low case uses 12%,
+  the high case 8%. **Round 14 label:** the formula applies (1 − 18%) to the profit above it, so the rate actually
+  subtracted is **8.2% after tax** (6.6–9.8%), on book capital, about 5.8% real. Damodaran's country risk premium for
+  Ukraine (15.5%, January 2026) on top of the sellers' 5% real would mean about 20.5% real: this file's gain shares are
+  high on that rule. Not recomputed in round 14 (see `net_gain_sellers-notes.md`, section 6).
 - **Whole Ukrainian chain.** Materials made in Ukraine carry Ukrainian taxes and profit. So grain counts the
   farm and the trader. Sunflower oil counts the farm, the crusher and the duty. Steel counts the mill and the
   Ukrainian iron ore it uses.

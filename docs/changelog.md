@@ -1,6 +1,6 @@
 # Changelog: research rounds
 
-The map's data were built in thirteen research rounds in October 2026, each followed by changes to the pipeline and the site. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
+The map's data were built in fourteen research rounds in October 2026, each followed by changes to the pipeline and the site. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
 
 ## Round 1
 
@@ -319,6 +319,40 @@ after the round-13 report, both raised by the audit; [decisions](decisions.md#ro
 Ranking (GDP at least EUR 5bn, range not crossing zero): Lithuania +10.50, Estonia +9.57, Moldova +7.77, Finland +7.26,
 Latvia +5.52 at the top; North Korea −10.16, Yemen −7.86, Tunisia −7.09, Uzbekistan −6.15, Hungary −5.30 at the
 bottom. Togo, Tajikistan, Montenegro and Argentina left the ranking (their ranges cross zero).
+
+## Round 14
+
+**Independent audit 3, 19 October 2026** (every change raised by the audit and approved by the owner;
+[decisions](decisions.md#round-14-independent-audit-3), [decision log](decision-log.md#round-14-independent-audit-3-19-october)).
+Steps in the order applied, net % of a year's GDP, each step alone:
+
+1. **C1, measured fuel share** in Russia's gain on what was bought: Yemen −7.86 → −4.06, Moldova 7.77 → 6.06, Libya
+   −5.20 → −3.72, Nigeria 1.51 → 1.06, Brunei −1.27 → +1.75 ([prices](method/prices.md#the-mix-of-what-was-bought-round-14)).
+2. **C2, customs values for what was bought**, tracker tonnes only to split fuels, copied tracker years flagged:
+   Uzbekistan −6.32 → −3.16, Belarus −5.00 → −2.02, Tunisia −7.54 → −5.06, Libya −3.72 → −6.63, Yemen −4.06 → −6.87,
+   Armenia −1.65 → +0.36.
+3. **C3, FOB on both sides**: the freight surge out of customs values: India −2.92 → −2.29, Türkiye −2.90 → −2.51,
+   Tunisia +0.39, Bulgaria +0.43, China −0.75 → −0.65 ([prices](method/prices.md#one-price-basis-fob-round-14)).
+4. **H2, laundered-oil growth on its own base, fuel price screen, Nigeria labelled**: Lebanon 3.71 → 2.73, Libya
+   −6.18 → −7.08, Nigeria 1.32 → 0.68, Malta 1.43 → 1.04, Belgium 3.49 → 3.14.
+5. **H3, hubs pass EU-refined fuel on**: Belgium 3.14 → 2.81, Malta 1.04 → 0.75, Nigeria 0.68 → 0.89.
+6. **M2, normal return 5% real after tax + country risk premium, services without real estate**: Cyprus 0.39 → 0.79,
+   Belarus −2.02 → −2.40, Lithuania +0.10; US weapons flowback 2.2% → 3.6% of the money flowing back.
+7. **M5, current euros** for every trade part: Lithuania 10.67 → 11.91, Estonia 9.99 → 11.17, Moldova 5.97 → 6.98,
+   Hong Kong −2.34 → −4.16 (its gold at today's gold price).
+8. **M4, seizures counted** ("Seized by Russia"): Austria 0.26 → −0.43, Finland 8.16 → 7.54, Ireland 1.42 → 0.93,
+   Germany 3.45 → 3.23.
+9. **M6** frozen reserves on their own line; **H5** cut label completed (labels only); **M3** sign-aware correlations
+   (ranges only); **H4** method band with nine alternatives, range wording and grades by primary-data share; **C4**
+   share cards and texts; **H1** flowback text; **M1** fairness note; **L1–L5** docs, legend, notes and sources.
+
+Combined, round 13 → round 14 (ranking: GDP at least EUR 5bn, range not crossing zero): Lithuania +10.50 → +11.91,
+Estonia +9.57 → +11.17, Finland +7.26 → +7.54, Moldova +7.77 → +6.98, Latvia +5.52 → +5.49, the Netherlands +4.88 →
++4.80, Poland +3.62 → +4.08, Denmark +4.05 → +3.88, Germany +3.25 → +3.23, Belgium +3.15 → +2.69, the US +0.48 →
++0.48; at the bottom North Korea −10.16 → −10.29, Libya −5.20 → −7.03, Yemen −7.86 → −6.86, Hungary −5.30 → −5.31,
+Tunisia −7.09 → −4.92, Hong Kong −2.36 → −4.16, Uzbekistan −6.15 → −3.53, India −2.74 → −2.38, China −1.03 → −0.72.
+Nigeria (+0.93, range +0.14 to +1.75), Malta and Ireland leave the top 20; Montenegro, Britain and Portugal enter it. Totals' letters: 1 A, 5 B, 209 C, 16 D (were 208 D, 23 C). Four new checks in
+`check_data.py` (22 measured fuel share, 23 FOB price basis, 24 share-card qualifier; check 19 adapted to customs).
 
 ## See also
 

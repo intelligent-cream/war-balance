@@ -9,7 +9,7 @@ Gathered on 2026-10-18. The output is [`net_gain_russia.json`](net_gain_russia.j
 - **Net gain share** = (taxes the Russian state collects on the good + operating profit above a normal return) ÷ FOB price.
 - The same thing, put another way: (FOB price − real costs − normal return) ÷ FOB price.
 - Real costs are wages, materials, transport inside Russia and depreciation. They are not counted as gain.
-- The normal return is **9% a year on capital employed** (range 8–10%). It is also not counted as gain.
+- The normal return is **9% a year on capital employed** (range 8–10%). It is also not counted as gain. **Round 14 label:** it is an **after-tax** rate (profit tax is counted as gain) in **nominal US dollars on book capital** (capital employed), about 6.5% real. Book capital pairs with a nominal rate; the sellers' file (OECD STAN, replacement-cost capital) uses a real rate. Damodaran's country risk premium for Russia (3.9%, January 2026) on top of the sellers' 5% real would mean about 8.9% real, about 11.4% nominal: this file subtracts about 2.4 points less, so its shares are slightly high (about 0.02–0.03 of the price for crude). Not recomputed in round 14 (see `net_gain_sellers-notes.md`, section 6).
 - Every share lies between 0 and 1. When profits fall below a normal return, the share is set at or near 0.
 - LNG profit that goes to foreign partners (Total, CNPC, Silk Road Fund, Japanese stakes) is left out.
 - The shares are taken at **actual prices**. The project counts the wartime price premium separately at 100%. Do not apply these shares to that premium a second time.
