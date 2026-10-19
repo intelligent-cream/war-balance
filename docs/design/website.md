@@ -18,14 +18,14 @@ A working prototype with sample values is in `site/index.html`.
 
 | control | options |
 |---------|---------|
-| **View** | **Change since 2021** (default) · Cost carried · To Ukraine · To Russia |
+| **View** | **Net (the sum)** (default) · Support for Ukraine · Change in payments to Russia · Cost to the country (since round 15; the first design had Change since 2021 · Cost carried · To Ukraine · To Russia) |
 | **Measure** | **% of GDP** (default, the fairest comparison of sacrifice) · Per person · Total € |
 | **Period** | from 2022 up to a chosen year, using the yearly values in `world.json` |
 | **Find your country** | search box; zooms to the country and opens its panel |
 
 - **Change since 2021** is the main view: net shift = aid + purchases from Ukraine above the 2021 level + the drop in payments
   to Russia below the 2021 level (paying Russia more counts negative). Diverging colours: copper = shifted toward Russia, teal = toward Ukraine.
-- **Cost carried** is the opportunity cost: aid + extra price of replacing Russian energy + lost sales to Russia + tariffs dropped for Ukraine.
+- **Cost to the country** ("Cost carried" before round 15) is the opportunity cost, after gains: aid + extra price of replacing Russian energy + lost sales to Russia + tariffs dropped for Ukraine.
 - **Flow layer**: animated arcs from every country to Kyiv (teal) and Moscow (copper); width and number of moving dots follow the yearly amount
   in the selected year. A wide faint line under each Russia arc shows the 2021 level, so a shrinking or growing flow is visible at a glance.
   Selecting a country highlights its arcs and dims the rest. With reduced motion the arcs are drawn without moving dots.

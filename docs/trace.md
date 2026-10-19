@@ -15,7 +15,8 @@ person ([decisions](decisions.md)).
 
 - **Parts on the map**: the names in a country's panel, with the key used in `calc()` in
   [`site/index.html`](../site/index.html). A part is in the net shift, in the money flowing back, or in the cost view
-  ([overview](method/overview.md#every-part-of-the-net-shift)).
+  (the "Cost to the country" button, called "Cost carried" before round 15;
+  [overview](method/overview.md#every-part-of-the-net-shift)).
 - **How it's calculated**: the method section that writes the calculation out.
 - **Why it's done this way**: the rows of [decisions.md](decisions.md) (by section, with the row's name) and of the
   [decision log](decision-log.md) (by round).
@@ -902,9 +903,9 @@ Known gaps:
 
 ## Companies leaving Russia
 
-**What it is:** The forced discount and the exit fee Russia took from companies that sold their Russian business. Since round 14b not in the totals, counted as a cost carried.
+**What it is:** The forced discount and the exit fee Russia took from companies that sold their Russian business. Since round 14b not in the totals, counted in the cost to the country.
 
-**Parts on the map:** Forced sales: discount and exit fee taken by Russia (`exits`, cost view only; `taken` in `data.json`). Rounds 5–14: "Paid to Russia by companies leaving it", in the net shift.
+**Parts on the map:** Forced sales: discount and exit fee taken by Russia (`exits`, cost to the country only; `taken` in `data.json`). Rounds 5–14: "Paid to Russia by companies leaving it", in the net shift.
 
 **How it's calculated:** [russia-state-and-companies.md § Companies leaving Russia](method/russia-state-and-companies.md#companies-leaving-russia).
 
@@ -913,7 +914,7 @@ Known gaps:
 - [decisions § Why each money flow is counted: Companies leaving Russia](decisions.md#companies-leaving-russia): what is counted, why, what is left out, data or judgement
 - [decisions § Constants in the code](decisions.md#constants-in-the-code): conduit Kazakhstan 3.5, Netherlands 4.7
 - [decision log § Round 5: values at their real worth (18 October)](decision-log.md#round-5-values-at-their-real-worth-18-october): Rosatom projects, Russian state loans, company exits, Russian-owned firms abroad counted
-- [decisions § Round 14b: taken by Russia, not in the totals](decisions.md#round-14b-taken-by-russia-not-in-the-totals): out of the totals, a cost carried (raised by the owner; reverses round 5)
+- [decisions § Round 14b: taken by Russia, not in the totals](decisions.md#round-14b-taken-by-russia-not-in-the-totals): out of the totals, in the cost to the country (raised by the owner; reverses round 5)
 - [decision log § Round 14b](decision-log.md#round-14b-taken-by-russia-and-one-normal-return-19-october)
 
 **Data sources:**
@@ -935,20 +936,20 @@ Known gaps:
 
 Known gaps:
 
-- Rounds 5–14 counted the forced discount toward Russia with no recorded reason, although the research suggested counting only the exit contribution ([decisions](decisions.md#companies-leaving-russia)). Since round 14b (raised by the owner) both the discount and the contribution, like seizures ([below](#assets-seized-by-russia)), are out of the totals and counted as a cost carried.
+- Rounds 5–14 counted the forced discount toward Russia with no recorded reason, although the research suggested counting only the exit contribution ([decisions](decisions.md#companies-leaving-russia)). Since round 14b (raised by the owner) both the discount and the contribution, like seizures ([below](#assets-seized-by-russia)), are out of the totals and counted in the cost to the country.
 
 ## Assets seized by Russia
 
-**What it is:** Company assets Russia seized (temporary management by decree, expropriation, court seizures, leased aircraft kept), at the owners' write-downs, by the company's home country. Round 14; since round 14b not in the totals, counted as a cost carried.
+**What it is:** Company assets Russia seized (temporary management by decree, expropriation, court seizures, leased aircraft kept), at the owners' write-downs, by the company's home country. Round 14; since round 14b not in the totals, counted in the cost to the country.
 
-**Parts on the map:** Seized by Russia (companies' assets) (`seized`, cost view only; `taken` in `data.json`). Round 14: in the net shift, toward Russia, in the change in payments to Russia.
+**Parts on the map:** Seized by Russia (companies' assets) (`seized`, cost to the country only; `taken` in `data.json`). Round 14: in the net shift, toward Russia, in the change in payments to Russia.
 
 **How it's calculated:** [russia-state-and-companies.md § Assets seized by Russia (round 14)](method/russia-state-and-companies.md#assets-seized-by-russia-round-14).
 
 **Why it's done this way:**
 
 - [decisions § Round 14: independent audit 3](decisions.md#round-14-independent-audit-3): M4, a seizure is as coerced as a forced discount (raised by audit, approved by owner)
-- [decisions § Round 14b: taken by Russia, not in the totals](decisions.md#round-14b-taken-by-russia-not-in-the-totals): out of the totals, a cost carried (raised by the owner; reverses M4)
+- [decisions § Round 14b: taken by Russia, not in the totals](decisions.md#round-14b-taken-by-russia-not-in-the-totals): out of the totals, in the cost to the country (raised by the owner; reverses M4)
 - [decision log § Round 14](decision-log.md#round-14-independent-audit-3-19-october)
 
 **Data sources:**

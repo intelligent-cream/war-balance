@@ -1,6 +1,6 @@
 // ===== Views: ranking, Ukraine vs Russia bubbles, table and data download =====
 // Same numbers as the map: the current view (change, cost, to Ukraine, to Russia), measure and year.
-/* global state, DATA, calc, lensValue, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, closeMenu, t, LANG,
+/* global state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, closeMenu, t, LANG,
    num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
@@ -12,7 +12,7 @@ const GROUPS = {
   brics: { label: "BRICS", list: "BRA IND CHN ZAF EGY ETH IRN ARE IDN" },
   ussr: { label: "Former Soviet Union", list: "ARM AZE BLR EST GEO KAZ KGZ LVA LTU MDA TJK TKM UZB" },
 };
-// round 15: the three headline numbers are lenses of their own (support, payments, net), so no part switch is needed
+// round 15: the net and its two parts are views of their own (net, support, payments), so no part switch is needed
 const viewState = { group: "all", small: false, sortKey: "metric", sortDir: -1 };
 
 function inGroup(c) {
@@ -26,8 +26,7 @@ function eligible(c) {
 // the headline number of the current view, with its likely range, in the current measure
 function metricOf(c) {
   const k = calc(c, state.year);
-  const pick = { net: [k.shift, k.shiftLo, k.shiftHi], support: [k.uaBal, k.uaLo, k.uaHi], payments: [k.rusBal, k.rusLo, k.rusHi], cost: [k.cost, k.costLo, k.costHi] }[state.lens];
-  const [v, lo, hi] = pick || [lensValue(c), null, null];
+  const [v, lo, hi] = { net: [k.shift, k.shiftLo, k.shiftHi], support: [k.uaBal, k.uaLo, k.uaHi], payments: [k.rusBal, k.rusLo, k.rusHi], cost: [k.cost, k.costLo, k.costHi] }[state.lens];
   const s = x => (x == null ? null : scaled(c, x));
   return { c, k, bn: v, loBn: lo, hiBn: hi, v: s(v), lo: s(lo), hi: s(hi) };
 }
@@ -36,8 +35,6 @@ const LENS_TITLE = {
   payments: "Change in payments to Russia since before the war",
   net: "Support for Ukraine plus the change in payments to Russia, since before the war",
   cost: "What supporting Ukraine cost",
-  ukr: "Money sent to Ukraine (aid and purchases)",
-  rus: "Money and support reaching Russia",
 };
 function measureText() {
   return t({ gdp: "total as % of one year's GDP (average 2022–2024), not a yearly rate", pp: "€ per person", total: "€ billion" }[state.measure]);
@@ -82,7 +79,7 @@ function renderRanking(root) {
   const all = Object.values(DATA).filter(eligible).map(metricOf).filter(m => m.v != null).sort((a, b) => b.v - a.v);
   const unc = hq && y > 2021 ? all.filter(m => uncertain(m.c, y, hq)) : [];
   const rows = all.filter(m => !unc.includes(m));
-  const diverging = !!hq || state.lens === "cost";
+  const diverging = true;   // every view can go either way around zero
   const narrowScreen = root.clientWidth < 600;
   const W = Math.min(1040, root.clientWidth - 32), rowH = 22, labelW = narrowScreen ? 104 : 150, valW = narrowScreen ? 58 : 76;
   const top = 30, H = top + rows.length * rowH + 10;
@@ -97,7 +94,7 @@ function renderRanking(root) {
   const cand = [0, ...base.flatMap(b => [b, -b])].filter(t => t >= x.domain()[0] && t <= x.domain()[1]).sort((a, b) => Math.abs(a) - Math.abs(b));
   const ticks = [];
   for (const t of cand) if (ticks.every(u => Math.abs(x(u) - x(t)) >= (narrowScreen ? 38 : 46))) ticks.push(t);
-  const col = v => (v >= 0 ? (state.lens === "rus" ? "var(--rus)" : "var(--ukr)") : "var(--rus)");
+  const col = v => (v >= 0 ? "var(--ukr)" : "var(--rus)");
   // a group, not an image: its rows are buttons that keyboard and screen reader users reach one by one
   const title = t(LENS_TITLE[state.lens]);
   const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("{title}, {n} countries, ranked", { title, n: rows.length })}">
@@ -204,19 +201,19 @@ function renderBubbles(root) {
 }
 
 // ----- Table and data download -----
-// round 15: support for Ukraine first, then the change in payments to Russia, then their sum; each with its letter, and
-// "?" where its direction is uncertain (not ranked)
+// round 15: the net first (with its range, euros and per person), then its two parts, support for Ukraine and the change in
+// payments to Russia; each with its letter, and "?" where its direction is uncertain (not ranked)
 const unq = (r, q) => (r.unc[q] ? " ?" : "");
 const COLS = [
   { k: "name", label: "Country", fmt: (r) => r.name },
-  { k: "uaGdp", label: "Support for Ukraine, % of a year's GDP", fmt: r => pct(r.uaGdp) + unq(r, "ua"), sign: true },
-  { k: "uaCert", label: "Certainty", fmt: r => r.grades.ua },
-  { k: "rusGdp", label: "Change in payments to Russia, % of a year's GDP", fmt: r => pct(r.rusGdp) + unq(r, "rus"), sign: true },
-  { k: "rusCert", label: "Certainty", fmt: r => r.grades.rus },
   { k: "shiftGdp", label: "Net shift, % of a year's GDP", fmt: r => pct(r.shiftGdp) + unq(r, "net"), sign: true },
   { k: "shiftRange", label: "Likely range", fmt: r => t("{lo} to {hi}", { lo: pct(r.shiftLoGdp), hi: pct(r.shiftHiGdp) }), nosort: true },
   { k: "shift", label: "Net shift, €", fmt: r => eur(r.shift, true), sign: true },
   { k: "shiftPp", label: "Per person", fmt: r => (r.shiftPp == null ? "–" : (r.shiftPp < 0 ? "−" : "") + money(num(Math.abs(r.shiftPp)))), sign: true },
+  { k: "uaGdp", label: "Support for Ukraine, % of a year's GDP", fmt: r => pct(r.uaGdp) + unq(r, "ua"), sign: true },
+  { k: "uaCert", label: "Certainty", fmt: r => r.grades.ua },
+  { k: "rusGdp", label: "Change in payments to Russia, % of a year's GDP", fmt: r => pct(r.rusGdp) + unq(r, "rus"), sign: true },
+  { k: "rusCert", label: "Certainty", fmt: r => r.grades.rus },
   { k: "rusCut", label: "Of which gas Russia cut off, €", fmt: r => (r.rusCut > 0.005 ? eur(r.rusCut) : "–") },
   // round 13b: a marker, in no total
   { k: "remitGdp", label: "Remittances from Russia, change, % of a year's GDP (not in totals)", fmt: r => (r.remitGdp == null ? "–" : pct(r.remitGdp)) },
@@ -227,8 +224,8 @@ const COLS = [
   { k: "paidRus", label: "Paid to Russia, €", fmt: r => eur(r.paidRus) },
   { k: "cert", label: "Certainty", fmt: r => r.cert },
 ];
-// the table's first column after the name sorts first (support for Ukraine)
-const FIRST_SORT = "uaGdp";
+// the table's first column after the name sorts first (the net)
+const FIRST_SORT = "shiftGdp";
 const pct = v => (v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + num(Math.abs(v), Math.abs(v) >= 1 ? 1 : 2) + "%");
 function tableRows() {
   const y = state.year;

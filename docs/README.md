@@ -1,6 +1,6 @@
 # Follow the Money: Ukrainian Aid — documentation
 
-[The map](https://intelligent-cream.github.io/follow-the-money-ukraine/) shows two numbers for every country since before the full-scale invasion: its **support for Ukraine**, and the **change in its payments to Russia** (less or more paid to Russia, and what it earned from Russia), and their sum. Each number is a total over 2022 to 2026 (2026 counts January to August, the latest data), as a percentage of one year's GDP (the average of 2022–2024; not a yearly rate), with a likely range and a source behind every part. This documentation explains how those numbers are made: the idea, the models that predict what would have happened without the war, every part of the calculation, the data pipeline, the sources and the known weaknesses. It is written for curious readers who are not economists, but it gives the formulas and links to the code for those who want to check.
+[The map](https://intelligent-cream.github.io/follow-the-money-ukraine/) shows the net for every country since before the full-scale invasion, and its two parts: its **support for Ukraine**, and the **change in its payments to Russia** (less or more paid to Russia, and what it earned from Russia). Each number is a total over 2022 to 2026 (2026 counts January to August, the latest data), as a percentage of one year's GDP (the average of 2022–2024; not a yearly rate), with a likely range and a source behind every part. This documentation explains how those numbers are made: the idea, the models that predict what would have happened without the war, every part of the calculation, the data pipeline, the sources and the known weaknesses. It is written for curious readers who are not economists, but it gives the formulas and links to the code for those who want to check.
 
 Status: research preview. The research was compiled with AI assistance and has not yet been reviewed line by line by a person.
 
@@ -8,11 +8,14 @@ Status: research preview. The research was compiled with AI assistance and has n
 
 Think of each country as having two ledgers: money and support going toward Ukraine (aid, refugee hosting, buying Ukrainian goods) and money going toward Russia (buying its oil, gas and goods, selling it goods, taxes paid there, weapons). Before the war, most countries already traded with both. So the map does not count totals. It asks: **compared with what the country would have done without the war, how much more did it do for Ukraine, and how much less (or more) did it pay Russia?** The two are kept apart because paying Russia less, including when Russia itself cut off the gas, is not money given to Ukraine.
 
-Since round 15 the map shows them as separate maps:
+Since round 15 the map opens with their sum, and shows each part as a map of its own:
 
-- **Support for Ukraine** (the default map, ranking and share card): aid, refugee hosting, buying Ukrainian goods, minus what the country earned back from the war effort. Belarus, a co-belligerent, hosted Ukrainian refugees too; that cost is shown as a label, not as support.
-- **Change in payments to Russia** (the second map): blue where the country **paid Russia less than before the war**, orange where it **paid Russia more than before the war** (bought more, paid war-time prices for Russian fuel, bought Russian oil refined elsewhere, sold Russia goods, sent weapons). The map title gives the world total: buyers who cut paid Russia EUR 358.8bn<!-- n:WORLD.less --> less for goods and fuel, others paid EUR 226.7bn<!-- n:WORLD.more --> more, so much of what one country stopped paying, Russia sold to others.
-- **Net (the sum)**, a third option, with a warning: it adds two different things, aid given and payments to Russia avoided.
+- **Net (the sum)** (the default map, ranking and share card), always with a warning: it adds two different things, aid given and payments to Russia avoided.
+- **Support for Ukraine**: aid, refugee hosting, buying Ukrainian goods, minus what the country earned back from the war effort. Belarus, a co-belligerent, hosted Ukrainian refugees too; that cost is shown as a label, not as support.
+- **Change in payments to Russia**: blue where the country **paid Russia less than before the war**, orange where it **paid Russia more than before the war** (bought more, paid war-time prices for Russian fuel, bought Russian oil refined elsewhere, sold Russia goods, sent weapons). The map title gives the world total: buyers who cut paid Russia EUR 358.8bn<!-- n:WORLD.less --> less for goods and fuel, others paid EUR 226.7bn<!-- n:WORLD.more --> more, so much of what one country stopped paying, Russia sold to others.
+- **Cost to the country**: what it cost the country itself, after gains such as cheaper Russian oil or business won back.
+
+The gross views "To Ukraine" and "To Russia" were removed in round 15: they include normal trade and measure something different. The gross flows are still in each country's panel (the small charts, such as "Bought from Ukraine"), in the table and downloads, and in the flow lines on the map.
 
 Each number is a share of one year's GDP (the average of 2022–2024), so a small country that did a lot is not hidden behind a large one that did a little. A number whose likely range or method band crosses zero is marked "direction uncertain" and left out of the rankings. Per person and total euros are one click away.
 
@@ -36,7 +39,7 @@ The address in the browser keeps what you see, so you can copy it and share it.
 - **The view and the buttons on top**: for example `#view=rank&lens=payments&m=total` opens the ranking of the change in payments to Russia, in total euros.
   - `view`: `map`, `rank`, `bubbles`, `table`, `how` or `sources`.
   - `flow`: with `view=sources`, one money flow, e.g. `#view=sources&flow=loans` opens the Sources view at loans ([trace](trace.md)).
-  - `lens`: `support` (support for Ukraine, the start), `payments` (change in payments to Russia), `net` (their sum), `cost` (cost carried), `ukr` (to Ukraine) or `rus` (to Russia). Links made before round 15 keep working: `lens=change` (the old net view) opens `net`.
+  - `lens`: `net` (the sum, the start: an address without `lens` opens it), `support` (support for Ukraine), `payments` (change in payments to Russia) or `cost` (cost to the country). Older links keep working: `lens=change` (the old net view) opens `net`, `lens=ukr` (the removed To Ukraine view) opens `support` and `lens=rus` (To Russia) opens `payments`.
   - `m`: `gdp` (% of GDP), `pp` (per person) or `total` (total euros).
   - `y`: a year, 2021 to 2026.
 - **A country**: `#AUS` opens Australia's panel. With a view it becomes `c=AUS`, e.g. `#view=rank&c=AUS`. `UKR` and `RUS` open the Ukraine and Russia panels.
@@ -49,7 +52,7 @@ The address in the browser keeps what you see, so you can copy it and share it.
 
 | page | what it covers |
 |---|---|
-| [method/overview.md](method/overview.md) | the core idea and the full list of parts, each linked to its page; the cost view and other lenses |
+| [method/overview.md](method/overview.md) | the core idea and the full list of parts, each linked to its page; the cost to the country and the removed gross views |
 | [method/counterfactual.md](method/counterfactual.md) | **the models**: what "expected without the war" means, four generations of approaches, 16 models, three back-tests, the decision rule, which model is used for which flow, how its error widens the ranges, what was rejected, effect on headlines |
 | [method/prices.md](method/prices.md) | why the map compares volumes; price indices per flow, own customs prices, gas prices per country, the war-time windfall |
 | [method/ranges.md](method/ranges.md) | certainty letters, where ranges come from, the quadrature in `spread()`, 2026 `*` marks, what ranges do not cover |

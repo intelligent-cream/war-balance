@@ -1,11 +1,11 @@
 # Method overview: one scale for every flow
 
-The map gives every country **two numbers** for the time since the full-scale invasion, compared with what it would have done without the war:
+The map gives every country **two numbers** for the time since the full-scale invasion, compared with what it would have done without the war, and their sum, the **net**:
 
 - **Support for Ukraine**: aid (loans counted as gifts), refugee hosting, purchases from Ukraine at Ukraine's net gain, minus money flowing back from the war effort. These are things done for Ukraine.
 - **Change in payments to Russia**: less or more paid to Russia, the war-time price windfall, fuel made from Russian crude elsewhere, sales to Russia, company taxes, weapons sent and the rest. This includes cuts Russia made itself (gas Gazprom cut off, the end of gas transit through Ukraine), which the panel labels. It is not money moved to Ukraine. Migrants' wages sent home from Russia are in neither number: since round 13b they are a marker ([below](#markers-outside-the-totals)).
 
-Since round 15 (review 4, approved by the owner) the two are separate maps: **support for Ukraine** is the default map colour, ranking and share-card headline; the **change in payments to Russia** is a second map ("Paid Russia less than before the war" / "Paid Russia more than before the war"), with the world total in its title; their sum, the **net**, is a third, with a warning that it adds two different things, aid given and payments to Russia avoided, and that much of what one country stopped paying, Russia sold to others. Worldwide, buyers who cut paid Russia EUR 358.8bn<!-- n:WORLD.less --> less for goods and fuel over 2022–August 2026, at Russia's net gain, and others paid EUR 226.7bn<!-- n:WORLD.more --> more: a world net of EUR 132.1bn<!-- n:WORLD.net -->. (Round 13 to 14b coloured the map by the net; before round 13 only the net was shown, called "toward Ukraine" or "toward Russia".) Every flow we can find (aid, refugee hosting, trade, energy, services, shipping, company taxes, weapons, hidden channels) is turned into the same unit: a change against the expected no-war level, measured in volumes and valued at each year's prices, summed over 2022 to the chosen year (2026 = January–August), as a percentage of **one** year's GDP (since round 15 the average of 2022–2024). It is a total for the whole period, not a yearly rate. This page defines that scale and lists every part, each with a link to the page that explains it in detail.
+Since round 15 (approved by the owner) the map opens with the **net** (the default map colour, ranking and share-card headline), always with a warning that it adds two different things, aid given and payments to Russia avoided, and that much of what one country stopped paying, Russia sold to others. Its two parts are maps of their own: **support for Ukraine**, and the **change in payments to Russia** ("Paid Russia less than before the war" / "Paid Russia more than before the war"), with the world total in its title. A fourth view is the [cost to the country](#the-cost-view). Worldwide, buyers who cut paid Russia EUR 358.8bn<!-- n:WORLD.less --> less for goods and fuel over 2022–August 2026, at Russia's net gain, and others paid EUR 226.7bn<!-- n:WORLD.more --> more: a world net of EUR 132.1bn<!-- n:WORLD.net -->. (Round 13 to 14b coloured the map by the net; review 4 in round 15 briefly made support for Ukraine the default, before the owner chose the net with its two parts; before round 13 only the net was shown, called "toward Ukraine" or "toward Russia".) Every flow we can find (aid, refugee hosting, trade, energy, services, shipping, company taxes, weapons, hidden channels) is turned into the same unit: a change against the expected no-war level, measured in volumes and valued at each year's prices, summed over 2022 to the chosen year (2026 = January–August), as a percentage of **one** year's GDP (since round 15 the average of 2022–2024). It is a total for the whole period, not a yearly rate. This page defines that scale and lists every part, each with a link to the page that explains it in detail.
 
 ## The core idea in four steps
 
@@ -197,7 +197,7 @@ grain was 0.015 in 2023.
 
 **What counts in full:** aid, refugee hosting, taxes companies pay in Russia, profits sent to Russia,
 unpaid weapons and the return on frozen reserves. The extra paid because of war-time fuel prices counts at Russia's
-net gain on it since round 13, which is all of it for oil and pipeline gas. The *cost* view and the *To Ukraine* and *To Russia* views (money, not gain) do not change.
+net gain on it since round 13, which is all of it for oil and pipeline gas. The *cost* view and the *To Ukraine* and *To Russia* views (money, not gain; removed in round 15) do not change.
 
 **Effect:** both sides shrink toward zero, most for countries whose score came from buying less from Russia: Lithuania
 +27.8 → +14.8% of GDP, Estonia +23.2 → +9.6, Finland +16.3 → +9.3, Moldova +22.7 → +5.8, Germany +5.2 → +3.7, India
@@ -221,7 +221,7 @@ gold outline (threshold EUR 10m and 0.05% of GDP).
 
 ## The cost view
 
-"Cost carried" is a second lens: what the country gave up, not where money went. Parts (`costParts` in `calc()`):
+"Cost to the country" (called "cost carried" before round 15) is a fourth view: what it cost the country itself, after gains such as cheaper Russian oil or business won back; what the country gave up, not where money went. Parts (`costParts` in `calc()`):
 
 - aid with loans at the lender's cost: per loan item, the loan's terms and the expected loss of its creditor class, discounted at the lender's own funding rate, with a low and high value per country (round 12; was 26% of face, `LOAN_GRANT_ELEMENT`, with a half-to-one-and-a-half band). The net shift uses the value to Ukraine instead ([loans](loans.md#the-cost-view));
 - donated weapons at their recorded value;
@@ -235,8 +235,7 @@ gold outline (threshold EUR 10m and 0.05% of GDP).
 
 ## The other lenses
 
-- **To Ukraine**: aid + refugees + purchases from Ukraine (totals, not changes).
-- **To Russia**: payments for goods, laundered oil, company taxes, weapons, services and hidden channels (totals).
+Until round 15 the map had two more views, **To Ukraine** (aid + refugees + purchases from Ukraine) and **To Russia** (payments for goods, laundered oil, company taxes, weapons, services and hidden channels). They were removed (owner, round 15): they are gross totals, not changes, so they include normal trade and measure something different from the four views. The gross flows are still shown in each country's panel (the small charts, such as "Paid to Russia" and "Bought from Ukraine"), in the table and downloads (aid, refugees, paid to Russia) and in the flow lines on the map. Old links with `lens=ukr` open support for Ukraine, `lens=rus` the change in payments to Russia.
 
 ## Rules that apply everywhere
 
@@ -247,7 +246,7 @@ gold outline (threshold EUR 10m and 0.05% of GDP).
 
 ## A worked reading
 
-Germany, 2022–August 2026 (round 15 build): **support for Ukraine +1.70%<!-- n:DEU.ua -->** of a year's GDP (EUR 71bn: gave 71.9, earned back 0.6; certainty B) and **change in payments to Russia +1.65%<!-- n:DEU.rus -->** (EUR 69bn, less paid; of which EUR 22bn is gas Russia cut off itself; certainty C). Their sum, the net, is **+3.35%<!-- n:DEU.net -->** (likely range 2.25%<!-- n:DEU.netLo --> to 4.72%<!-- n:DEU.netHi -->, certainty C; EUR 140bn on an average 2022–2024 GDP of EUR 4,179bn). An average year is about 0.7%. For 2022–2025 alone the net is +2.69%<!-- n:DEU.net2025 -->: 2026 adds a lot because fuel prices rose with the Hormuz crisis; valued at 2025 prices, 2026's change in payments to Russia makes it +1.53%<!-- n:DEU.alt_p26.rus --> instead of +1.65% ([prices](prices.md#2026-and-the-hormuz-crisis-round-15)). What Russia took from German companies (seizures EUR 9.5bn, forced exits EUR 2.4bn) is not in either number since round 14b; it is a cost carried. In EUR bn, the largest parts are:
+Germany, 2022–August 2026 (round 15 build): **support for Ukraine +1.70%<!-- n:DEU.ua -->** of a year's GDP (EUR 71bn: gave 71.9, earned back 0.6; certainty B) and **change in payments to Russia +1.65%<!-- n:DEU.rus -->** (EUR 69bn, less paid; of which EUR 22bn is gas Russia cut off itself; certainty C). Their sum, the net, is **+3.35%<!-- n:DEU.net -->** (likely range 2.25%<!-- n:DEU.netLo --> to 4.72%<!-- n:DEU.netHi -->, certainty C; EUR 140bn on an average 2022–2024 GDP of EUR 4,179bn). An average year is about 0.7%. For 2022–2025 alone the net is +2.69%<!-- n:DEU.net2025 -->: 2026 adds a lot because fuel prices rose with the Hormuz crisis; valued at 2025 prices, 2026's change in payments to Russia makes it +1.53%<!-- n:DEU.alt_p26.rus --> instead of +1.65% ([prices](prices.md#2026-and-the-hormuz-crisis-round-15)). What Russia took from German companies (seizures EUR 9.5bn, forced exits EUR 2.4bn) is not in either number since round 14b; it is in the cost to the country. In EUR bn, the largest parts are:
 
 | part | middle (range) |
 |---|---|
@@ -272,12 +271,12 @@ Income lost on sales to Russia given up is +1.1 (was +21.7 under value kept): Ge
 
 ## Round 14b changes to the rules
 
-- **Taken by Russia, not in the totals** (raised by the owner). Seizures (round 14, M4) and forced exit costs (round 5: the forced discount and the exit fee paid to Russia's budget) leave the net shift and both headline numbers and are counted in the cost view as a sacrifice, like the energy switching cost. The panel, table, CSV, JSON and a map marker show them apart ([russia-state-and-companies.md](russia-state-and-companies.md#round-14b-taken-by-russia-not-in-the-totals)).
+- **Taken by Russia, not in the totals** (raised by the owner). Seizures (round 14, M4) and forced exit costs (round 5: the forced discount and the exit fee paid to Russia's budget) leave the net shift and both headline numbers and are counted in the cost to the country as a sacrifice, like the energy switching cost. The panel, table, CSV, JSON and a map marker show them apart ([russia-state-and-companies.md](russia-state-and-companies.md#round-14b-taken-by-russia-not-in-the-totals)).
 - **Russia's and Ukraine's normal return** (raised by the owner, after the round-14 consistency check). Their net-gain shares now subtract the sellers' rule: 5% a year above inflation after tax (4–6%) plus the country's risk premium (Russia 3.9%, Ukraine 15.5%), on book capital as a nominal US dollar rate (+2.5% expected inflation): 11.4% for Russia (was 9%) and 23.0% for Ukraine (was 8.2% after tax). Capital per unit of revenue is now measured for every product group (company balance sheets, Rosstat and Ukrstat, Damodaran's emerging-market industry data). Russia's non-fuel average falls from about 0.13 to 0.11 in 2024, crude oil from 0.65 to 0.58; Ukraine's average from 0.07 to 0.04 ([net_gain_russia-notes.md](../../research/2026-10/gaps/net_gain_russia-notes.md), [net_gain_ukraine-notes.md](../../research/2026-10/gaps/net_gain_ukraine-notes.md)).
 
 ## Round 15 changes (review 4, approved by the owner)
 
-- **Three maps** (C1): support for Ukraine is the default map, ranking and share card; the change in payments to Russia is a second map with the world total; the net is a third, with a warning. Old links with `lens=change` open the net.
+- **Three maps** (C1): support for Ukraine and the change in payments to Russia (with the world total) are separate maps, and the net, their sum, carries a warning. Review 4 made support for Ukraine the default; the owner then chose to **start with the net, then its two parts** (net, support for Ukraine, change in payments to Russia, cost to the country), and removed the gross To Ukraine and To Russia views ([above](#the-other-lenses)). "Cost carried" was renamed "Cost to the country". Old links with `lens=change` open the net, `lens=ukr` support for Ukraine, `lens=rus` the change in payments to Russia ([decisions](../decisions.md#round-15-the-net-first-then-its-two-parts)).
 - **Two named lists** (C2) replace "Who helps Russia the most": "Paid Russia more than before the war" (the payments map's negative end, with the note that fuel is fungible) and "Armed Russia" (weapons and troops at their full value, as information; [aid-refugees-military.md](aid-refugees-military.md#military-support-to-russia)).
 - **Method band and ranking rule** (H3): six more alternatives (redirected trade, without the gas Russia cut off, refugees at gross cost, without the windfall, 2026 at 2025 prices, 2024 GDP); a country is ranked only if neither its likely range nor any alternative changes the sign ([ranges.md](ranges.md#the-method-band-round-13-widened-in-round-14)).
 - **Grades** (H3): each headline number is graded by its share on A–B and D parts and by its spread ([ranges.md](ranges.md#certainty-letters)).

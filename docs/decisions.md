@@ -160,7 +160,7 @@ Research: [shipping-notes](../research/2026-10/gaps/shipping-notes.md),
 
 ### Companies leaving Russia
 
-**Since round 14b: not in the totals, counted as a cost carried** ([below](#round-14b-taken-by-russia-not-in-the-totals)).
+**Since round 14b: not in the totals, counted in the cost to the country** ([below](#round-14b-taken-by-russia-not-in-the-totals)).
 Rounds 5 to 14: toward Russia, in the net shift, by the company's home country. Added in round 5 (commit `650e1ff`). Method:
 [companies leaving Russia](method/russia-state-and-companies.md#companies-leaving-russia). Research:
 [company_flows-notes](../research/2026-10/gaps/company_flows-notes.md) §1. Log:
@@ -187,7 +187,7 @@ is a sacrifice, and a gain for Russia. The country did not choose to move that m
 |---|---|---|---|---|
 | **Out of the totals**: seizures and forced exit costs are in neither the net shift nor either headline number (support for Ukraine; change in payments to Russia) | rule (owner) | Russia took the money; the country did not choose to move it | Finland +0.88, Austria +0.72 (−0.43 → +0.29), Ireland +0.54, Denmark +0.52, Norway +0.37, the Netherlands +0.35, Germany +0.27, France +0.23, the UK +0.23 (net, % of GDP) | `apply_company_flows()` |
 | **A cost carried**: both count in the cost view, positive, like the energy switching cost ("Seized by Russia (companies' assets)"; "Forced sales: discount and exit fee taken by Russia") | rule (owner) | what Russia took is what the country's companies lost: a sacrifice | cost view: Finland +0.88, Austria +0.72 of GDP | `taken` in `data.json`, `calc()` |
-| **Shown apart**: the panel line "Russia took €X from companies of this country (seizures and forced sales); not in the totals, counted as a cost carried"; a table, CSV and JSON column marked "not in totals"; a square map marker (layer "Taken by Russia") where it is at least 0.1% of a year's GDP | display | the same pattern as remittances (round 13b) | display | `takenNote()`, `drawTaken()`, `views.js` |
+| **Shown apart**: the panel line "Russia took €X from companies of this country (seizures and forced sales); not in the totals, counted in the cost to the country" ("counted as a cost carried" before round 15); a table, CSV and JSON column marked "not in totals"; a square map marker (layer "Taken by Russia") where it is at least 0.1% of a year's GDP | display | the same pattern as remittances (round 13b) | display | `takenNote()`, `drawTaken()`, `views.js` |
 | **Method band**: no alternative includes them | rule | the alternatives are rebuilt with the same rule | none | `METHOD_ALTERNATIVES` |
 | **Check**: `check_data.py` check 25 (no `exits` or `seized` part in the net; every home country with a seizure or exit payment has it in the cost view; `calc()` adds `taken` to the cost only) | test | keeps the rule from coming back by mistake | none | `pipeline/check_data.py` |
 
@@ -540,6 +540,18 @@ steps and effects: [changelog](changelog.md#round-15).
 | **Nigeria's structural label** on its card and share text (L2) | display | review, approved by owner | in the data, not on the card | display | `driverText()` |
 | **Ukraine's country risk premium per year**: each January's Damodaran value (6.43%, 17.26%, 17.55%, 16.01%, 15.54% for 2022–2026; 2021 takes January 2022) | data (Damodaran archives) | review, approved by owner | the January 2026 premium was applied to every year | below 0.02 points everywhere (Slovakia +0.01) | `net_gain_ukraine.json` `normal_return_r15` |
 | **Docs checked against the data**: headline figures in the docs carry a tag and `check_docs_numbers.py` (run by check 30) flags any that differ from `data.json` | test | review (H4), approved by owner | the docs had drifted after round 14b | none | `pipeline/check_docs_numbers.py`, `pipeline/site_numbers.mjs` |
+
+### Round 15: the net first, then its two parts
+
+After review 4, the owner changed the order of the views. Owner: **start with the net, then its two parts; removed the
+gross To Ukraine/To Russia views because they include normal trade and measure something different; renamed Cost carried
+to Cost to the country.** No number changed. Log: [round 15](decision-log.md#round-15-separate-maps-named-lists-and-a-stricter-ranking-19-october).
+
+| decision | data or judgement | raised by | why | effect | where |
+|---|---|---|---|---|---|
+| **The net first** (replaces the default in "Three maps" above): four views in this order, "Net (the sum)" (the default map colour, ranking, top lists, share-card headline and OG text, always with its warning), "Support for Ukraine", "Change in payments to Russia" (with the world total) and "Cost to the country"; share cards lead with the net and still show both parts and the main-part qualifiers | judgement (presentation) | owner | the net is the map's question; the warning and the two parts keep it from being read as aid alone | display; an address without `lens` opens the net | `state`, `LENS_RANK`, `OLD_LENS` in `index.html`; `share_cards.mjs`; check 31 |
+| **Gross views removed**: "To Ukraine" (aid + refugees + purchases from Ukraine) and "To Russia" (payments, laundered oil, taxes, weapons, services, hidden channels) | judgement | owner | gross totals include trade that existed before the war, so they measure something different from the change since before the war | display; the gross flows stay in the panel's small charts, the table and downloads and the flow lines; old links with `lens=ukr` open support for Ukraine, `lens=rus` the change in payments to Russia | `OLD_LENS`; [overview](method/overview.md#the-other-lenses) |
+| **"Cost carried" renamed "Cost to the country"**, with one line where the view is explained: "what it cost the country itself, after gains such as cheaper Russian oil or business won back" | judgement (wording) | owner | the cost is already net of gains; the old name read as a gross burden | display | `titleNote()`, the panel's "How this is calculated", How it works |
 
 ## What is data and what is estimated
 

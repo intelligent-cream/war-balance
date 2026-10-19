@@ -423,6 +423,26 @@ else:
     _bad, _n = cdn.check(_m)
     check("docs figures match data.json", not _bad and _n > 0, f"{_n} tagged figures; differing: {_bad[:4] or 'none'}")
 
+# 31. round 15 (approved by the owner): the net is the view the map opens with, then its two parts and the cost to the
+# country; the gross "To Ukraine" and "To Russia" views are gone, and links to them open the nearest view
+_buttons = re.findall(r'<button data-lens="(\w+)"', _html)
+_start = re.search(r'const state = \{ lens: "(\w+)"', _html)
+_old = re.search(r"const OLD_LENS = \{([^}]*)\}", _html)
+_old_map = dict(re.findall(r'(\w+): "(\w+)"', _old.group(1))) if _old else {}
+_rank = re.search(r"const LENS_RANK = \{([^}]*)\}", _html)
+_rank_keys = re.findall(r"(\w+):", _rank.group(1)) if _rank else []
+check(
+    "the net is the default view; old views open the nearest one",
+    _buttons == ["net", "support", "payments", "cost"]
+    and bool(_start)
+    and _start.group(1) == "net"
+    and _old_map == {"change": "net", "ukr": "support", "rus": "payments"}
+    and sorted(_rank_keys) == sorted(_buttons)
+    and 'data-lens="ukr"' not in _html
+    and 'data-lens="rus"' not in _html,
+    f"buttons {_buttons}; start {_start.group(1) if _start else None}; old links {_old_map}; rankings for {_rank_keys}",
+)
+
 width = max(len(n) for _, n, _ in results)
 for status, name, detail in results:
     print(f"{status:4}  {name:<{width}}  {detail}")

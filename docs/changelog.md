@@ -421,6 +421,20 @@ Combined, round 14b → round 15 (support for Ukraine; net): Denmark +3.40 → +
 Estonia +1.99 → +2.07; +9.90 → +10.33; at the other end Hungary −5.33 → −5.77, Libya −6.16 → −6.54, Yemen −6.11 →
 −5.13, India −2.08 → −2.21, China −0.66 → −0.63, Nigeria +0.81 → +0.44, Belarus −2.52 → −2.78 (net).
 
+Then, at the owner's request (the net first, then its two parts; [decisions](decisions.md#round-15-the-net-first-then-its-two-parts)):
+
+10. **Four views, the net first**: "Net (the sum)" is the default map, ranking, top lists, share-card headline and
+    OG text, always with its warning; then "Support for Ukraine", "Change in payments to Russia" (with the world
+    total) and "Cost to the country". The table puts the net first; the CSV and JSON columns are unchanged. Share
+    cards and pages regenerated: they lead with the net and still show both parts and the main-part qualifiers.
+11. **The gross views "To Ukraine" and "To Russia" removed** (buttons, code paths, colours and rankings): they
+    include normal trade and measure something different. The gross flows stay in the panel's small charts, the
+    table and downloads and the flow lines. Old links: `lens=ukr` opens support for Ukraine, `lens=rus` the change in
+    payments to Russia, `lens=change` the net; an address without `lens` opens the net (check 31).
+12. **"Cost carried" renamed "Cost to the country"** on the site, in the panel, How it works and the docs, with one
+    line where it is explained: "what it cost the country itself, after gains such as cheaper Russian oil or business
+    won back". All six translations updated; strings only the removed views used are gone. No number changed.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open
