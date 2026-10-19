@@ -776,14 +776,14 @@
   },
   {
    "path": "eurostat_tp/migr_asytpsm_UA.json",
-   "bytes": 30015,
-   "sha256": "4b4ea7a0600dc992fb130fe8423b312b08000bc964e2c2524e597606374edce0",
+   "bytes": 30014,
+   "sha256": "6ddf23c8d187c2d69af656df63e51e3125af88c8e42c2e278f8f48ca2c72bbc7",
    "in_repository": true
   },
   {
    "path": "imf/weo_NGDPD_2024.json",
-   "bytes": 157612,
-   "sha256": "e0573c7169b8274a2693f7d6139b8a89381950849ddafac56a2b054a088e4387",
+   "bytes": 157611,
+   "sha256": "7294ac0b3013e39b131f50f3aeb23eb31bfa30a3b77199538b1e05518ecb491c",
    "in_repository": true
   },
   {
@@ -854,32 +854,32 @@
   },
   {
    "path": "unhcr_verify/population_coo_UKR_2022.json",
-   "bytes": 22317,
-   "sha256": "cf0b3fffa6dd8710fb219d13f3bb28d81cadc9871ea4f7e1f4dae38cb6640dc7",
+   "bytes": 22316,
+   "sha256": "6860da2a656f0088bf6de538a53eabae75ed449100168fa61c19932dac4b61a5",
    "in_repository": true
   },
   {
    "path": "unhcr_verify/population_coo_UKR_2023.json",
-   "bytes": 22580,
-   "sha256": "e652f8a0aa3a7dea09df90e4c016e19a9c511818215560651906ac62b6b1439f",
+   "bytes": 22579,
+   "sha256": "36065eddd6c8cad7ee246cdbe37b04f96c48d35105c2b375169d6fa5055b10cf",
    "in_repository": true
   },
   {
    "path": "unhcr_verify/population_coo_UKR_2024.json",
-   "bytes": 23125,
-   "sha256": "1054e9653fba0acad8810e478e78e0ca344fdbcd4d430a67873bad402b156898",
+   "bytes": 23124,
+   "sha256": "b6e769010a582e7e6557015efbdc9757cd13a3346e02a5f7f7177c15dee2e290",
    "in_repository": true
   },
   {
    "path": "unhcr_verify/population_coo_UKR_2025.json",
-   "bytes": 22308,
-   "sha256": "ed9edc4c27ee211cd5acaee2d2527a8dc132ecf2c4e64caf65ddb732af201cff",
+   "bytes": 22307,
+   "sha256": "6e383b7682e5a60d7defa8770b93faaed565155f19948e3779e3de0a43d97c3c",
    "in_repository": true
   },
   {
    "path": "worldbank/NY.GDP.MKTP.CD_2024.json",
-   "bytes": 56317,
-   "sha256": "ecb722841af32c2c39a07508a8a00e21332b1575c6c2ac2804a10ba35fe01855",
+   "bytes": 56316,
+   "sha256": "2cb08dd1b259b1ecabd0264013d22d09b7e3b05fd6c7ab9c57f5345830a6d5e2",
    "in_repository": true
   }
  ]
