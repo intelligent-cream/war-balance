@@ -45,8 +45,7 @@
 ## Not found / gaps
 - **Per-country refugee costs**: not in Release 31, because Kiel excludes them from the dataset.
   - DEU = EUR 34.6bn. This is federal spending only, as of June 2026, from KPB 217. Certainty A, but partial in scope.
-  - POL ≈ 29.3bn and CZE ≈ 8.0bn come only from a search snippet of a Komersant UA article that cites Kiel data to Aug 2025. The page is behind Cloudflare and could not be verified, so they are graded B. Please verify them.
-  - All other countries are null.
+  - Poland and Czechia: the figures that came only from a search snippet of a press article (EUR 29.3bn and 8.0bn) could not be verified and were removed in round 15; they are null like all other countries. The map never used them (refugee costs come from `gaps/refugees_net.json`).
   - The Kiel Feb 2026 per-country refugee chart (EPRS Fig. 6) exists only as an image. The Wayback Machine (older releases) was unreachable.
 - **Not in Kiel's donor sample**: MDA, GEO, ISR, ARE, SAU, KAZ, ARM, AZE, BRA, MEX. Their aid fields are null; refugees hosted are included where UNHCR has them.
 - **IMF and World Bank**: Kiel does not track them as donors, so they are null.

@@ -7,6 +7,7 @@ Prints PASS / WARN / FAIL per check and exits non-zero on any FAIL.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -363,6 +364,64 @@ check(
     f"in the net: {_in_tot[:6] or 'none'}; missing from the cost view: {_missing[:6] or 'none'}; "
     f"{sum(len(c.get('taken') or []) for c in countries.values())} taken parts, all in the cost view",
 )
+
+# 26. round 15 (raised by the owner): refugees hosted on the aggressor side are not support for Ukraine. Russia has no
+# entry at all; Belarus's hosting cost is a label (ref_excluded), with no refugee part in any total
+_blr = countries.get("BLR") or {}
+_blr_ref = sum((_blr.get("aid") or {}).get("refugee_years") or [])
+check(
+    "no refugee credit for Russia or Belarus",
+    "RUS" not in countries and abs(_blr_ref) < 1e-9 and bool(_blr.get("ref_excluded")),
+    f"RUS entry: {'RUS' in countries}; Belarus refugee part {_blr_ref:.4f}; label: {bool(_blr.get('ref_excluded'))}",
+)
+
+# 27. round 15 (review 4, M1): % of GDP divides by the average 2022-2024 GDP (gdp_avg_r15.json); 2024 is kept for the
+# method band
+_avg = json.loads((RESEARCH / "gaps" / "gdp_avg_r15.json").read_text())["countries"]
+_off = [
+    k for k, d in _avg.items() if k in countries and abs(countries[k]["gdp"] - d["gdp_eur_bn_avg_2022_2024"]) > 1e-6
+]
+check(
+    "GDP denominator is the 2022-2024 average",
+    not _off and all(countries[k].get("gdp_2024") for k in _avg if k in countries),
+    f"{len(_avg)} countries with the average; differing: {_off[:6] or 'none'}",
+)
+
+# 28. round 15 (review 4, M2): China's no-war path carries the contracted Power of Siberia ramp-up
+_pos = ((countries.get("CHN") or {}).get("to_rus") or {}).get("pos_contracted_bmul_add") or []
+check(
+    "Power of Siberia contracted path in China's no-war imports", len(_pos) == 6 and _pos[4] > 0, f"bmul added: {_pos}"
+)
+
+# 29 and 30 use the map's own model (node): the ranking rule and the figures quoted in the docs
+import check_docs_numbers as cdn  # noqa: E402
+
+_m = cdn.model()
+if _m is None:
+    check("ranking leaves out uncertain directions", True, "node not found: not checked", warn_only=True)
+    check("docs figures match data.json", True, "node not found: not checked", warn_only=True)
+else:
+    # 29. round 15 (review 4, H3; approved by the owner): a country is ranked on a headline number only if neither its
+    # likely range nor any method-band alternative changes the sign; uncertain() must agree with that rule written out
+    # again (site_numbers.mjs), and every headline ranking must pass its number to rankList()
+    _wrong = [
+        f"{k}.{q}"
+        for k, c in _m["countries"].items()
+        for q in ("ua", "rus", "net")
+        if c[q + "Unc"] == c[q + "SameSign"]
+    ]
+    _calls = re.findall(r'rankList\([^\n]*?"(ua|rus|net)"\)', _html) + re.findall(r"headOf\[state\.rankMetric\]", _html)
+    _unc_n = {
+        q: sum(1 for c in _m["countries"].values() if c[q + "Unc"] and c["gdp"] >= 5) for q in ("ua", "rus", "net")
+    }
+    check(
+        "ranking leaves out uncertain directions",
+        not _wrong and len(_calls) >= 3 and "uncertain(r.c, y, q)" in _html,
+        f"rule mismatches: {_wrong[:6] or 'none'}; direction uncertain (GDP >= EUR 5bn): {_unc_n}",
+    )
+    # 30. round 15 (review 4, H4): every figure tagged in the docs matches the map (check_docs_numbers.py)
+    _bad, _n = cdn.check(_m)
+    check("docs figures match data.json", not _bad and _n > 0, f"{_n} tagged figures; differing: {_bad[:4] or 'none'}")
 
 width = max(len(n) for _, n, _ in results)
 for status, name, detail in results:

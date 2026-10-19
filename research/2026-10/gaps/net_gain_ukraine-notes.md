@@ -178,3 +178,7 @@ country risk premium, [`net_gain_sellers-notes.md`](net_gain_sellers-notes.md) s
 - **Effect.** Ukraine's average falls from 0.069 to 0.036 in 2024 and from 0.175 to 0.098 in 2021. On the map: Moldova
   −0.99 (support for Ukraine 0.41 → 0.22), Lebanon −0.56, Bulgaria −0.30, Slovakia −0.27 (with Russia's file). The
   method band's "normal return" alternative loads `net_gain_ukraine_r14.json`, the round-14 file kept unchanged.
+
+## Round 15: the country risk premium per year
+
+Raised by review 4, approved by the owner. Ukraine's premium is now each year's January value from Damodaran's tables, not January 2026 for every year: 6.43% (January 2022, `ctryprem21.xlsx`), 17.26% (January 2023, `ctryprem22.xlsx`), 17.55% (January 2024, `ctryprem23.xlsx`), 16.01% (January 2025, `ctryprem24.xlsx`) and 15.54% (January 2026). 2021 takes January 2022, the last table before the invasion. Archive index: [dataarchived.html](https://pages.stern.nyu.edu/~adamodar/New_Home_Page/dataarchived.html) (file `ctryprem21` is dated 1/22); the files are in `raw/damodaran/` (listed in the manifest). The groups were rerun with the round-14b scripts and the yearly rate (outside the repository: `/tmp/claude-0/-home-user/71ac834a-35d2-5698-a36d-858806a141e1/scratchpad/r15/ng/`; `normal_return_r15` in the JSON). Ukraine's average gain share: 2021 0.098 → 0.138, 2022 0.033 → 0.043, 2023–2026 within 0.002. Effect on the map below 0.02 points of GDP everywhere (Slovakia +0.01, Bulgaria +0.01).

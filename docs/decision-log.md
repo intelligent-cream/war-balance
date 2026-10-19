@@ -184,4 +184,20 @@ and [decisions](decisions.md#round-14b-russias-and-ukraines-normal-return); step
 | decision | raised by | why | effect |
 |---|---|---|---|
 | **Seizures and forced exit costs out of the totals, counted as a cost carried** (reverses round 5's forced discounts and exit fees and round 14's M4 seizures); shown in the panel, table, CSV, JSON and as a map marker; check 25 | owner | a loss imposed on the country's companies and a gain for Russia; the country did not choose to move that money | Finland +0.88, Austria +0.72, Ireland +0.54, Denmark +0.52; cost view up by the same amounts |
-| **Russia's and Ukraine's normal return as for every seller**: 5% real + the country risk premium, on book capital as a nominal USD rate (Russia 11.4%, Ukraine 23.0%); capital per unit of revenue measured for every product group | owner (after the round-14 check) | one rule for every seller; the files subtracted 2.4 and 15 points too little | Estonia −1.27, Lithuania −1.12, Moldova −0.99, Libya +0.86, Yemen +0.75 |
+| **Russia's and Ukraine's normal return as for every seller**: 5% real + the country risk premium, on book capital as a nominal USD rate (Russia 11.4%, Ukraine 23.0%); capital per unit of revenue measured for every product group | owner (after the round-14 check) | one rule for every seller; the files subtracted 2.4 and 15 points too little | Estonia −1.27, Lithuania −1.12 (from Russia's lower gain shares, not Ukraine's normal return), Moldova −0.99, Libya +0.86, Yemen +0.75 |
+
+## Round 15: separate maps, named lists and a stricter ranking (19 October)
+
+A fourth independent review (economist and data journalist) raised every point below except two, which the **owner
+raised**; the owner approved each. Details, data and effects: [decisions](decisions.md#round-15-separate-maps-named-lists-and-comparable-numbers);
+all steps: [changelog](changelog.md#round-15).
+
+| decision | raised by | why | effect |
+|---|---|---|---|
+| **Support for Ukraine is the default map**; the change in payments to Russia a second map with the world total; the net a third, with a warning (C1) | review, owner | the net adds two different things and credits each buyer with a market-wide effect | display |
+| **"Paid Russia more than before the war" and "Armed Russia"** replace "Who helps Russia the most" (C2) | review, owner | poor fuel importers ranked above Iran | display |
+| **Main part named** on cards, OG text, share text and panel (H2); **period and average year** on every shared figure (L3); Nigeria's structural label (L2) | review, owner | windfall-driven numbers read as behaviour; totals read as yearly rates | display |
+| **Russia never credited for hosting; Belarus's hosting a label** | owner | the aggressor and a co-belligerent | Belarus support +0.16 → 0 |
+| **Six more method-band alternatives**, a band per number, **ranking only where no alternative or range changes the sign**, **new grades** (H3) | review, owner | the band, the ranking and the letters did not inform | 104 economies ≥ EUR 5bn uncertain on the net; net letters 6 B, 51 C, 106 D |
+| **Average 2022–2024 GDP** (M1); **Power of Siberia** in China's no-war path (M2); **Hormuz** note and "2026 at 2025 prices" (owner; M4); **one refugee definition** (M5); Ukraine's premium per year | review, owner (Hormuz) | denominator, contracted gas, unrelated price shock, comparability | Nigeria +0.81 → +0.44; China −0.66 → −0.63; Poland support +1.11 → +1.95 |
+| **Docs figures checked** by `check_docs_numbers.py` (H4) | review, owner | stale docs | none |

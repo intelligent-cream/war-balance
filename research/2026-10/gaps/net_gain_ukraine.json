@@ -5,29 +5,29 @@
  "groups": {
   "grain": {
    "2021": {
-    "low": 0.034,
-    "central": 0.089,
-    "high": 0.181
+    "low": 0.069,
+    "central": 0.147,
+    "high": 0.231
    },
    "2022": {
     "low": 0.01,
-    "central": 0.016,
-    "high": 0.036
+    "central": 0.02,
+    "high": 0.06
    },
    "2023": {
     "low": 0.011,
     "central": 0.015,
-    "high": 0.031
+    "high": 0.029
    },
    "2024": {
     "low": 0.015,
-    "central": 0.025,
-    "high": 0.058
+    "central": 0.024,
+    "high": 0.053
    },
    "2025": {
     "low": 0.021,
-    "central": 0.047,
-    "high": 0.11
+    "central": 0.046,
+    "high": 0.108
    },
    "2026": {
     "low": 0.017,
@@ -37,29 +37,29 @@
   },
   "oilseeds": {
    "2021": {
-    "low": 0.058,
-    "central": 0.132,
-    "high": 0.231
+    "low": 0.109,
+    "central": 0.191,
+    "high": 0.286
    },
    "2022": {
-    "low": 0.024,
-    "central": 0.035,
-    "high": 0.081
+    "low": 0.025,
+    "central": 0.046,
+    "high": 0.11
    },
    "2023": {
     "low": 0.016,
-    "central": 0.026,
-    "high": 0.069
+    "central": 0.025,
+    "high": 0.065
    },
    "2024": {
-    "low": 0.021,
-    "central": 0.052,
-    "high": 0.132
+    "low": 0.02,
+    "central": 0.047,
+    "high": 0.124
    },
    "2025": {
-    "low": 0.051,
-    "central": 0.117,
-    "high": 0.259
+    "low": 0.049,
+    "central": 0.115,
+    "high": 0.256
    },
    "2026": {
     "low": 0.032,
@@ -69,29 +69,29 @@
   },
   "food_other": {
    "2021": {
-    "low": 0.03,
-    "central": 0.034,
-    "high": 0.056
+    "low": 0.031,
+    "central": 0.05,
+    "high": 0.088
    },
    "2022": {
     "low": 0.022,
-    "central": 0.025,
-    "high": 0.035
+    "central": 0.03,
+    "high": 0.054
    },
    "2023": {
     "low": 0.026,
     "central": 0.029,
-    "high": 0.041
+    "high": 0.039
    },
    "2024": {
     "low": 0.029,
-    "central": 0.033,
-    "high": 0.05
+    "central": 0.032,
+    "high": 0.047
    },
    "2025": {
     "low": 0.029,
     "central": 0.033,
-    "high": 0.05
+    "high": 0.049
    },
    "2026": {
     "low": 0.029,
@@ -101,24 +101,24 @@
   },
   "iron_ore": {
    "2021": {
-    "low": 0.153,
-    "central": 0.298,
-    "high": 0.456
+    "low": 0.241,
+    "central": 0.389,
+    "high": 0.519
    },
    "2022": {
-    "low": 0.077,
-    "central": 0.135,
-    "high": 0.316
+    "low": 0.08,
+    "central": 0.202,
+    "high": 0.379
    },
    "2023": {
     "low": 0.051,
     "central": 0.074,
-    "high": 0.132
+    "high": 0.126
    },
    "2024": {
     "low": 0.051,
     "central": 0.069,
-    "high": 0.106
+    "high": 0.102
    },
    "2025": {
     "low": 0.047,
@@ -133,24 +133,24 @@
   },
   "steel": {
    "2021": {
-    "low": 0.059,
-    "central": 0.098,
-    "high": 0.173
+    "low": 0.081,
+    "central": 0.137,
+    "high": 0.235
    },
    "2022": {
     "low": 0.027,
-    "central": 0.043,
-    "high": 0.09
+    "central": 0.057,
+    "high": 0.114
    },
    "2023": {
     "low": 0.021,
     "central": 0.028,
-    "high": 0.044
+    "high": 0.043
    },
    "2024": {
     "low": 0.021,
     "central": 0.028,
-    "high": 0.04
+    "high": 0.039
    },
    "2025": {
     "low": 0.022,
@@ -166,23 +166,23 @@
   "metals_other": {
    "2021": {
     "low": 0.019,
-    "central": 0.022,
-    "high": 0.031
+    "central": 0.026,
+    "high": 0.045
    },
    "2022": {
     "low": 0.013,
-    "central": 0.016,
-    "high": 0.021
+    "central": 0.017,
+    "high": 0.028
    },
    "2023": {
     "low": 0.019,
     "central": 0.021,
-    "high": 0.03
+    "high": 0.028
    },
    "2024": {
     "low": 0.02,
     "central": 0.023,
-    "high": 0.032
+    "high": 0.03
    },
    "2025": {
     "low": 0.02,
@@ -198,28 +198,28 @@
   "wood": {
    "2021": {
     "low": 0.028,
-    "central": 0.031,
-    "high": 0.036
+    "central": 0.032,
+    "high": 0.052
    },
    "2022": {
     "low": 0.017,
     "central": 0.02,
-    "high": 0.023
+    "high": 0.028
    },
    "2023": {
     "low": 0.023,
     "central": 0.026,
-    "high": 0.031
+    "high": 0.03
    },
    "2024": {
     "low": 0.025,
     "central": 0.028,
-    "high": 0.033
+    "high": 0.032
    },
    "2025": {
     "low": 0.025,
     "central": 0.028,
-    "high": 0.033
+    "high": 0.032
    },
    "2026": {
     "low": 0.025,
@@ -230,27 +230,27 @@
   "machinery": {
    "2021": {
     "low": 0.016,
-    "central": 0.018,
-    "high": 0.023
+    "central": 0.02,
+    "high": 0.033
    },
    "2022": {
     "low": 0.013,
     "central": 0.016,
-    "high": 0.02
+    "high": 0.026
    },
    "2023": {
     "low": 0.019,
     "central": 0.021,
-    "high": 0.028
+    "high": 0.027
    },
    "2024": {
     "low": 0.02,
-    "central": 0.023,
-    "high": 0.03
+    "central": 0.022,
+    "high": 0.029
    },
    "2025": {
     "low": 0.02,
-    "central": 0.023,
+    "central": 0.022,
     "high": 0.03
    },
    "2026": {
@@ -262,13 +262,13 @@
   "chemicals": {
    "2021": {
     "low": 0.03,
-    "central": 0.032,
-    "high": 0.042
+    "central": 0.039,
+    "high": 0.068
    },
    "2022": {
     "low": 0.013,
     "central": 0.016,
-    "high": 0.018
+    "high": 0.023
    },
    "2023": {
     "low": 0.017,
@@ -278,7 +278,7 @@
    "2024": {
     "low": 0.018,
     "central": 0.02,
-    "high": 0.024
+    "high": 0.023
    },
    "2025": {
     "low": 0.018,
@@ -294,28 +294,28 @@
   "other": {
    "2021": {
     "low": 0.023,
-    "central": 0.025,
-    "high": 0.034
+    "central": 0.03,
+    "high": 0.051
    },
    "2022": {
     "low": 0.014,
     "central": 0.017,
-    "high": 0.02
+    "high": 0.026
    },
    "2023": {
     "low": 0.022,
     "central": 0.024,
-    "high": 0.031
+    "high": 0.03
    },
    "2024": {
     "low": 0.024,
     "central": 0.026,
-    "high": 0.035
+    "high": 0.033
    },
    "2025": {
     "low": 0.024,
     "central": 0.026,
-    "high": 0.035
+    "high": 0.034
    },
    "2026": {
     "low": 0.024,
@@ -325,29 +325,29 @@
   },
   "average": {
    "2021": {
-    "low": 0.0522,
-    "central": 0.098,
-    "high": 0.1662
+    "low": 0.0804,
+    "central": 0.1377,
+    "high": 0.2104
    },
    "2022": {
-    "low": 0.022,
-    "central": 0.0328,
-    "high": 0.0674
+    "low": 0.0225,
+    "central": 0.0429,
+    "high": 0.0897
    },
    "2023": {
     "low": 0.0193,
-    "central": 0.0255,
-    "high": 0.0477
+    "central": 0.0253,
+    "high": 0.0454
    },
    "2024": {
-    "low": 0.0228,
-    "central": 0.0357,
-    "high": 0.07
+    "low": 0.0226,
+    "central": 0.034,
+    "high": 0.0659
    },
    "2025": {
-    "low": 0.0312,
-    "central": 0.0548,
-    "high": 0.1069
+    "low": 0.0307,
+    "central": 0.054,
+    "high": 0.1055
    },
    "2026": {
     "low": 0.0254,
@@ -595,61 +595,61 @@
  "buyer_central_average": {
   "POL": {
    "2023": 0.03,
-   "2024": 0.036,
-   "2025": 0.049
+   "2024": 0.035,
+   "2025": 0.048
   },
   "ROU": {
-   "2023": 0.026,
-   "2024": 0.038,
-   "2025": 0.066
+   "2023": 0.025,
+   "2024": 0.036,
+   "2025": 0.065
   },
   "TUR": {
-   "2023": 0.024,
-   "2024": 0.038,
-   "2025": 0.073
+   "2023": 0.023,
+   "2024": 0.036,
+   "2025": 0.071
   },
   "CHN": {
-   "2023": 0.033,
-   "2024": 0.044,
-   "2025": 0.071
+   "2023": 0.032,
+   "2024": 0.042,
+   "2025": 0.07
   },
   "ESP": {
    "2023": 0.018,
-   "2024": 0.031,
-   "2025": 0.059
+   "2024": 0.029,
+   "2025": 0.058
   },
   "DEU": {
    "2023": 0.025,
-   "2024": 0.034,
-   "2025": 0.054
+   "2024": 0.032,
+   "2025": 0.053
   },
   "ITA": {
    "2023": 0.023,
-   "2024": 0.034,
-   "2025": 0.058
+   "2024": 0.032,
+   "2025": 0.057
   },
   "NLD": {
    "2023": 0.023,
-   "2024": 0.038,
-   "2025": 0.073
+   "2024": 0.036,
+   "2025": 0.072
   },
   "HUN": {
    "2023": 0.023,
-   "2024": 0.028,
-   "2025": 0.035
+   "2024": 0.027,
+   "2025": 0.034
   },
   "SVK": {
    "2023": 0.048,
-   "2024": 0.048,
+   "2024": 0.047,
    "2025": 0.048
   },
   "EGY": {
    "2023": 0.02,
-   "2024": 0.035,
-   "2025": 0.068
+   "2024": 0.032,
+   "2025": 0.067
   },
   "MDA": {
-   "2023": 0.026,
+   "2023": 0.025,
    "2024": 0.029,
    "2025": 0.033
   }
@@ -1453,5 +1453,33 @@
    "other": 0.7
   },
   "supersedes": "the round-11 proposals in assumptions_r11_gain.json for Ukraine (same inputs, new rate and measured capital); net_gain_ukraine_r14.json keeps the round-14 values for the method band"
+ },
+ "normal_return_r15": {
+  "rule": "Round 15 (raised by review 4, approved by the owner): Ukraine's country risk premium is each year's January value from Damodaran's tables (January 2022 6.43%, 2023 17.26%, 2024 17.55%, 2025 16.01%, 2026 15.54%; 2021 takes January 2022, the last pre-war table), not January 2026 for every year. The rate is 5% real (4-6%) + that premium + 2.5% expected USD inflation, as in round 14b.",
+  "crp_by_year": {
+   "2021": 0.0643,
+   "2022": 0.0643,
+   "2023": 0.1726,
+   "2024": 0.1755,
+   "2025": 0.1601,
+   "2026": 0.1554
+  },
+  "after_tax_rate_central_by_year": {
+   "2021": 0.1393,
+   "2022": 0.1393,
+   "2023": 0.2476,
+   "2024": 0.2505,
+   "2025": 0.2351,
+   "2026": 0.2304
+  },
+  "sources": [
+   "https://pages.stern.nyu.edu/~adamodar/pc/archives/ctryprem21.xlsx (January 2022)",
+   "https://pages.stern.nyu.edu/~adamodar/pc/archives/ctryprem22.xlsx (January 2023)",
+   "https://pages.stern.nyu.edu/~adamodar/pc/archives/ctryprem23.xlsx (January 2024)",
+   "https://pages.stern.nyu.edu/~adamodar/pc/archives/ctryprem24.xlsx (January 2025)",
+   "https://pages.stern.nyu.edu/~adamodar/pc/datasets/ctryprem.xlsx (January 2026)"
+  ],
+  "archive_index": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/dataarchived.html (file ctryprem21 = 1/22, ... ctryprem24 = 1/25)",
+  "scripts": "ua_model.py and ua.py of round 14b with the yearly premium (outside the repository, like the originals): /tmp/claude-0/-home-user/71ac834a-35d2-5698-a36d-858806a141e1/scratchpad/r15/ng/"
  }
 }

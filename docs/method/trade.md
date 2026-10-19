@@ -157,7 +157,7 @@ could earn elsewhere is small and hard to measure; and they would dominate the b
 They are shown as a **marker** (△), like the [critical-goods marker](#goods-russias-weapons-need-the-critical-goods-marker-round-7):
 
 - **What it shows**: the change in labour remittances from Russia against the expected no-war level, summed from 2022
-  to the chosen year, in euros and as % of one year's GDP (2024), with its likely range (the reported range of what
+  to the chosen year, in euros and as % of one year's GDP (the average of 2022–2024 since round 15), with its likely range (the reported range of what
   was sent and of the expected level, combined as independent errors), and the total migrants sent from Russia in that
   time (`apply_remittances()`, `remit` in `data.json`). Relocants' transfers stay out, as below.
 - **Where**: a line in every country panel with data ("Depends on wages earned in Russia: remittances from Russia
@@ -165,11 +165,11 @@ They are shown as a **marker** (△), like the [critical-goods marker](#goods-ru
   the period; without "depends" elsewhere), a map layer ("Wages from Russia": a triangle beside the critical-goods
   diamond, its size following the change), and columns marked "not in totals" in the table, the CSV
   (`remittances_from_russia_change_*_not_in_totals`) and the JSON (`remittances_from_russia_change_not_in_totals`).
-- **2022 to August 2026**: Tajikistan +EUR 9.4bn (+70% of GDP; likely +35 to +114%; EUR 20.9bn sent in all),
-  Uzbekistan +18.9bn (+17%), Kyrgyzstan +0.3bn (+2.0%, likely −12 to +14%), Armenia +1.5%, Belarus +1.0%, Georgia
-  −0.3%, Azerbaijan −0.6%, Moldova −2.4%, Kazakhstan 0. The triangle shows for Tajikistan, Uzbekistan, Kyrgyzstan,
+- **2022 to August 2026** (round 15, against average 2022–2024 GDP): Tajikistan +EUR 9.4bn (+81% of GDP; likely +40 to +131%; EUR 20.9bn sent in all),
+  Uzbekistan +18.9bn (+19%), Kyrgyzstan +0.3bn (+2.4%, likely −14 to +16%), Armenia +1.6%, Belarus +1.1%, Georgia
+  −0.3%, Azerbaijan −0.6%, Moldova −2.6%, Kazakhstan 0. The triangle shows for Tajikistan, Uzbekistan, Kyrgyzstan,
   Armenia, Georgia and Belarus.
-- **Effect of taking them out** (net, % of GDP): Tajikistan −39.61 → −0.81, Uzbekistan −14.46 → −6.11, Kyrgyzstan
+- **Effect of taking them out** (net, % of 2024 GDP, round 13b): Tajikistan −39.61 → −0.81, Uzbekistan −14.46 → −6.11, Kyrgyzstan
   −7.48 → −4.94, Armenia −2.91 → −1.62, Belarus −5.63 → −4.96, Moldova +7.96 → +7.77.
 
 The paragraphs below describe how remittances were counted before round 13b. The research files stay as they are.

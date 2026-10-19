@@ -147,6 +147,15 @@ about 10, Türkiye 54 → about 20, Germany 29 → about 16). Urals sold in 2022
 than twice its no-war level. Countries that cut Russian gas and oil gain most: a no-war market would have paid Russia
 more for the same fuel.
 
+## 2026 and the Hormuz crisis (round 15)
+
+Raised by the owner. Fuel prices in 2026 are high partly because of the Hormuz crisis: after the strikes on Iran at the start of March 2026 the Strait of Hormuz was shut to tanker traffic, and Brent averaged 35% above its pre-crisis futures from March to August 2026, diesel about 59% and Asian LNG about 75% ([CREA, *What the Hormuz crisis has cost fossil-fuel importers, March to August 2026*](https://energyandcleanair.org/what-the-hormuz-crisis-has-cost-fossil-fuel-importers-march-to-august-2026/), fetched 19 October 2026; the IEA's August report names the closure as the main cause of the supply loss, [Kuwait Times](https://kuwaittimes.com/article/47998/world/iea-cuts-2026-oil-demand-forecast-again-as-hormuz-remains-shut/); an S&P Global factbox of 20 April 2026 on the strait being closed again was found but could not be fetched: not verified). This war did not cause it.
+
+- **The money stays in.** It really reached Russia, and buyers who stopped buying would have paid those prices, so 2026's changes are valued at 2026's prices like every other year (and the 2026 no-war price is the actual world price, [above](#no-war-prices-round-7)).
+- **It is made visible.** The panel shows a note on 2026 wherever valuing 2026 at 2025 prices would move the change in payments to Russia by at least 0.01% of GDP, with that value and the 2022–2025 figure (`hormuzNote()`); the cited source is CREA's analysis.
+- **Method band "2026 at 2025 prices".** `calc(c, y, {p26: true})` values 2026's change in payments to Russia at 2025's no-war fuel price level (`to_rus.p26` = 2025 ÷ 2026 of the country's fuel price multiplier), the Russian crude in fuel bought elsewhere at 2025's Brent (`laund.p26` = 1.191 ÷ 1.515 = 0.786) and 2026's windfall at the same factor as payments. Built in `apply_nowar_prices()` and `current_euros()`.
+- **Germany as an example**: its net is +3.35%<!-- n:DEU.net --> for 2022–August 2026 and +2.69%<!-- n:DEU.net2025 --> for 2022–2025 alone (round-15 GDP average; the review measured 3.34% and 2.68% against 2024 GDP). With 2026 at 2025 prices its change in payments to Russia is +1.53%<!-- n:DEU.alt_p26.rus --> instead of +1.65%<!-- n:DEU.rus -->.
+
 ## A note on index bases
 
 Every price index on the map is 2019–2021 = 1. `energy2.json` and `gas_prices.json` are on that base already; the own customs indices in `prices.json` are measured against 2018–2021 and rebased in `own_index()` (round 5). For flows that use the counterfactual the base cancels (the pre-war level is `years[0] / pidx[0]`), but the war-time windfall depends on it: measured against 2019–2021 prices it is about 5–7% larger than against 2018–2021, because 2018 had higher oil prices (Hungary −6.7% → −7.0% of GDP).

@@ -30,7 +30,7 @@ Two things apply to every step:
 | # | function | what it does | explained in |
 |---|---|---|---|
 | 1 | customs layer (inline) | loads `trade_full.json`; puts `narrow.json` official data, actual January–August 2026 trade (`refresh_2026.json`) and the UAE's own customs totals (`round4b.json`) in at customs level | [trade](../method/trade.md#sources-and-filling-order) |
-| 2 | population and GDP (inline) | `other.json`: 2024 GDP and population | [overview](../method/overview.md) |
+| 2 | population and GDP (inline) | `other.json`: 2024 GDP and population; at the end of the build `gdp_average()` replaces GDP with the 2022–2024 average (`gaps/gdp_avg_r15.json`, round 15) and keeps `gdp_2024` | [overview](../method/overview.md) |
 | 3 | trade (inline) | four flows per country with ranges, certainty from `basis`, `base` (2019–2021 average) and `base_range`; `est26` where 2026 is estimated | [trade](../method/trade.md) |
 | 4 | non-reporters (inline) | `nonreport.json`; only the paid share of Russian supplies counts | [trade](../method/trade.md#sources-and-filling-order) |
 | 5 | aid (inline) | Kiel donors, ERA loans out, EU-level aid split by budget share, `aid_gaps.json` for the rest | [aid](../method/aid-refugees-military.md#aid) |
@@ -60,11 +60,11 @@ Two things apply to every step:
 | 29 | `uae_fuel_net()` | UAE fuel addition net of what UAE customs record | [energy](../method/energy-and-laundered-oil.md#payments-to-russia-for-fuel) |
 | 30 | `war_windfall()` | price windfall on Russian fuel, against no-war prices (`energy_nowar.json`) | [prices](../method/prices.md#war-time-windfall) |
 | 31 | `pre_war_trends()` | `trend.json` and `trend2.json` multipliers (all flows) | [counterfactual](../method/counterfactual.md) |
-| 32 | `counterfactual()` | back-tested multipliers and 2021 base for covered flows, cumulative bands (`cf_bands.json`, `ua_trade_cf.json`, `to_rus_cf.json`, `fuel_volume_cf.json`, `belarus.json`); replaces step 31 there | [counterfactual](../method/counterfactual.md) |
+| 32 | `counterfactual()`, `power_of_siberia()` (round 15: China's contracted pipeline ramp-up) | back-tested multipliers and 2021 base for covered flows, cumulative bands (`cf_bands.json`, `ua_trade_cf.json`, `to_rus_cf.json`, `fuel_volume_cf.json`, `belarus.json`); replaces step 31 there | [counterfactual](../method/counterfactual.md) |
 | 33 | `apply_weapons_value()` | donated weapons at market value, stored as yearly corrections (`weapons_value.json`) | [aid](../method/aid-refugees-military.md#donated-weapons-at-market-value-round-5) |
 | 34 | `apply_state_finance()` | Rosatom nuclear projects and Russia's state loans (`russia_state_finance.json`) | [Russia](../method/russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia) |
 | 35 | `apply_company_flows()` | exit payments to Russia and profits sent home by Russian-owned companies abroad (`company_flows.json`; metals, mining and chemicals plants from `russian_owned_r10.json`) | [Russia](../method/russia-state-and-companies.md#companies-leaving-russia) |
-| 36 | `apply_refugees_net()` | refugee hosting at net cost: cost minus the taxes refugees pay (`refugees_net.json`) | [refugees](../method/aid-refugees-military.md#refugees) |
+| 36 | `apply_refugees_net()`, `aggressor_refugees()` | refugee hosting at net cost: cost minus the taxes refugees pay (`refugees_net.json`); since round 15 every host on the all-government definition (`REFUGEE_SCOPE`) and Belarus's cost moved to the label `ref_excluded` | [refugees](../method/aid-refugees-military.md#refugees) |
 | 37 | `apply_ua_arms_purchases()` | arms Ukraine bought abroad, as flowback to the seller (`ua_arms_purchases.json`) | [flowback](../method/aid-refugees-military.md#arms-ukraine-bought-abroad-round-5) |
 | 38 | `apply_loans_value()` | loans and guarantees at their value to Ukraine and, for the cost view, at the lender's cost (`loans_value.json`, values per loan item from `loan_rates.py`, round 12) | [loans](../method/loans.md) |
 | 39 | `apply_money_ledger()` | every euro that reached Ukraine assigned to the economy where it was spent; replaces the earlier flowback (`money_ledger.json`) | [flowback](../method/aid-refugees-military.md#round-6-the-all-money-ledger) |
@@ -157,6 +157,14 @@ Common fields inside a series:
 | 22 | the net-gain step uses the measured fuel share, `fossil_share()` (round 14, audit C1) | FAIL |
 | 23 | the windfall compares FOB with FOB: the median war/pre-war ratio of own crude prices to Urals FOB is within 0.94–1.06, and no FOB factor exceeds 1 (round 14, audit C3) | FAIL |
 | 24 | share cards say "cut off by Russia" only where Russia cut the country's gas, and North Korea's never says "more paid" (round 14, audit C4); WARN when `site/c/` has not been generated | FAIL |
+| 25 | seizures and forced exits not in the totals, only in the cost view (round 14b) | FAIL |
+| 26 | no refugee credit for Russia (no entry) or Belarus (its hosting only as the label `ref_excluded`) (round 15) | FAIL |
+| 27 | % of GDP divides by the average 2022–2024 GDP (`gdp_avg_r15.json`); `gdp_2024` kept (round 15) | FAIL |
+| 28 | China's no-war imports carry the contracted Power of Siberia ramp-up (round 15) | FAIL |
+| 29 | ranking rule: `uncertain()` agrees with the rule written out again in `site_numbers.mjs` (range and every method-band alternative keep the sign) for every country and number, and every headline ranking passes its number to `rankList()` (round 15); WARN without node | FAIL |
+| 30 | figures tagged in the docs (`<!-- n:ISO.quantity -->`) match the map's model on `data.json` (`check_docs_numbers.py`, round 15); WARN without node | FAIL |
+
+**Figures in the docs (round 15).** A headline figure quoted in a Markdown file under `docs/` or in `README.md` is followed by a tag naming the country and quantity, for example `+1.95%<!-- n:POL.ua -->` (support for Ukraine), `n:DEU.net2025` (the net for 2022–2025), `n:DEU.alt_p26.rus` (a method-band alternative) or `n:WORLD.less`. [`pipeline/check_docs_numbers.py`](../../pipeline/check_docs_numbers.py) computes every quantity with the map's own model ([`pipeline/site_numbers.mjs`](../../pipeline/site_numbers.mjs), which runs the "Model" section of `site/index.html` in node) and fails when a tagged figure differs by more than half a unit of its last digit. Run it on its own with `uv run python pipeline/check_docs_numbers.py`; `check_data.py` runs it as check 30. Tag every new headline figure you write.
 
 ## See also
 
