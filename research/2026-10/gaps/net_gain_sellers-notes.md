@@ -108,6 +108,8 @@ On the map (net, % of a year's GDP, this step alone): Belarus −18.5 → −5.6
 
 Book capital pairs with a nominal rate, replacement-cost capital with a real rate; the labels "before tax" (Russia) and "pre-tax" (Ukraine) are corrected to "after tax" in their notes. **Finding:** both files subtract less than "5% real + their country premium" implies: Russia by about 2.4 points (its gain on crude would fall by about 0.02–0.03 of the price at 1.0× revenue of capital), Ukraine by about 15 points (its gain on farm, steel and ore exports would fall to little more than taxes). **Not changed in round 14:** both files were built by hand per product group, and the capital per unit of revenue is recorded for only some groups (crude, fertilisers), so a recomputation would need inputs that are not in the research; the direction is stated here and in `docs/decisions.md`.
 
+**Recomputed in round 14b** (raised by the owner): both files now subtract 5% real + their premium on book capital as a nominal USD rate (Russia 11.4%, Ukraine 23.0%), with capital per unit of revenue measured for every group from company balance sheets, Rosstat, Ukrstat and Damodaran's emerging-market industry ratios ([`net_gain_russia-notes.md`](net_gain_russia-notes.md#round-14b-the-sellers-normal-return-and-measured-capital), [`net_gain_ukraine-notes.md`](net_gain_ukraine-notes.md#round-14b-the-sellers-normal-return-and-measured-capital)). The round-14 files are kept as `net_gain_russia_r14.json` and `net_gain_ukraine_r14.json` for the method band.
+
 ## What is guessed
 
 - The normal return (round 14: 5% real after tax, 4–6%, plus the country premium): a judgement anchored on market data (section 6); round 13's 9% nominal is kept as the method band's old-method bound.

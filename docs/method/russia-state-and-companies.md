@@ -63,6 +63,8 @@ Russian arms were settled in drones and missiles that are already counted as wea
 
 ## Companies leaving Russia
 
+**Since round 14b: not in the totals, counted as a cost carried** ([below](#round-14b-taken-by-russia-not-in-the-totals)).
+
 Code: `apply_company_flows()`; data: [`company_flows.json`](../../research/2026-10/gaps/company_flows.json)
 ([notes](../../research/2026-10/gaps/company_flows-notes.md)). By the company's home country:
 
@@ -71,19 +73,22 @@ Code: `apply_company_flows()`; data: [`company_flows.json`](../../research/2026-
 - **Forced discount**: sales at least 50–60% below valuation hand the difference to Russian buyers (2022 case list:
   Renault, Société Générale, McDonald's, Nissan, Equinor, Shell; later years from the contribution). Yandex (Netherlands)
   and Polymetal (Kazakhstan) are left out: their shareholders were mostly international, not Dutch or Kazakh.
-- **Seizures** without payment were not counted until round 13; since round 14 they are, on their own line
-  ([below](#assets-seized-by-russia-round-14)).
+- **Seizures** without payment were not counted until round 13; in round 14 they were, on their own line
+  ([below](#assets-seized-by-russia-round-14)); since round 14b they are, like the exit costs, a cost carried.
 
-Counting exit payments toward Russia means a company's exit costs its country on this part, while the taxes it no
-longer pays in Russia count toward Ukraine (company taxes, [services-shipping-companies.md](services-shipping-companies.md#company-taxes)).
+Rounds 5 to 14 counted exit payments toward Russia, so a company's exit cost its country on this part. Since round 14b
+they are a sacrifice instead: the taxes the company no longer pays in Russia still count toward Ukraine (company taxes,
+[services-shipping-companies.md](services-shipping-companies.md#company-taxes)), and what Russia took on the way out is a
+cost the country carried.
 
 ## Assets seized by Russia (round 14)
 
 Raised by the third audit (M4) and approved by the owner: a seizure is as coerced as a forced-sale discount, and both
 hand value to Russia (its state or Russian firms). Until round 13 discounts counted and seizures did not, so leaving
-Russia lowered a country's score while having one's company seized did not. Since round 14 seizures count as money
-taken by Russia, on their own line, "Seized by Russia (companies' assets)" (`seized` in `data.json` `extra`, toward
-Russia, in the change in payments to Russia).
+Russia lowered a country's score while having one's company seized did not. In round 14 seizures counted as money
+taken by Russia, on their own line, "Seized by Russia (companies' assets)", toward Russia in the change in payments to
+Russia. **Since round 14b** (raised by the owner) seizures and forced exit costs are both out of the totals and
+counted as a cost carried (`taken` in `data.json`; [above](#round-14b-taken-by-russia-not-in-the-totals)).
 
 - **Data**: `seizure` in [`company_flows.json`](../../research/2026-10/gaps/company_flows.json): asset value lost by the
   foreign owner minus anything received abroad, in the year control was lost, by the company's home country. Cases:
@@ -101,10 +106,41 @@ Russia, in the change in payments to Russia).
   list ([Annex 1](https://kse.ua/wp-content/uploads/2025/03/KSE_Assessing-Foreign-Companies-Losses-in-Russia.pdf)),
   all fetched in round 14. Certainty B for named company write-downs, C for court seizures and aircraft.
 - **Largest** (EUR bn, 2022–2026): Germany 9.5, the US 4.9, the UK 3.9, Austria 3.4, Ireland 2.8 (aircraft lessors),
-  Finland 1.7, Belgium 1.0, Denmark 1.0. Effect on the net (% of GDP): Austria +0.26 → −0.43, Finland −0.62, Ireland
-  −0.49, Denmark −0.25, Germany −0.22, Belgium −0.16.
+  Finland 1.7, Belgium 1.0, Denmark 1.0. Effect on the net in round 14 (% of GDP): Austria +0.26 → −0.43, Finland
+  −0.62, Ireland −0.49, Denmark −0.25, Germany −0.22, Belgium −0.16; undone in round 14b, when seizures moved to the
+  cost view.
 - **What it does not include**: write-downs of businesses that were sold (their loss is in the forced discount) and
   frozen dividends; a book value can differ from what Russia gained.
+
+## Round 14b: taken by Russia, not in the totals
+
+Raised by the owner. Assets seized by Russia (decree 302 temporary management, expropriation, court seizures, leased
+aircraft) and forced exit costs (the forced discount when companies sold out, and the "voluntary contribution" or exit
+fee paid to Russia's budget) are:
+
+- a loss imposed on the country's companies, that is a sacrifice; and
+- a gain for Russia.
+
+The country did not choose to move that money; Russia took it. So:
+
+- **Totals:** neither is in the net shift or in either headline number (support for Ukraine; change in payments to
+  Russia). This reverses round 5, which counted forced discounts and exit fees, and round 14 (audit M4), which counted
+  seizures.
+- **Cost view:** both count as a cost carried, like the energy switching cost: "Seized by Russia (companies' assets)"
+  and "Forced sales: discount and exit fee taken by Russia", positive (`taken` in `data.json`, by home country, with the
+  same values, ranges and certainty letters as before).
+- **Shown apart:** the panel says "Russia took €X from companies of this country (seizures and forced sales); not in
+  the totals, counted as a cost carried"; the table, CSV and JSON have a column marked "not in totals"; the map shows a
+  square marker (layer "Taken by Russia") where Russia took at least 0.1% of a year's GDP.
+- **Method band:** no alternative includes them (the alternatives are rebuilt with the same rule).
+- **Check:** `check_data.py` check 25 fails if a country carries `exits` or `seized` among the parts of the net, if a
+  home country with a seizure or exit payment lacks it in the cost view, or if `calc()` adds `taken` to anything but
+  the cost.
+
+Largest amounts, 2022 to August 2026 (EUR bn, seizures + forced exits): Germany 9.5 + 2.4, the US 5.0 + 5.2, the UK
+3.9 + 3.9, France 0.7 + 6.1, the Netherlands 0.6 + 3.4, Austria 3.4 + 0.2, Ireland 2.8 + 0.3, Finland 1.7 + 0.7,
+Denmark 1.0 + 1.0, Japan 1.0 + 1.1. Effect on the net (% of a year's GDP): Finland +0.88, Austria +0.72, Ireland
++0.54, Denmark +0.52, Norway +0.37, the Netherlands +0.35, Germany +0.27, France +0.23, the UK +0.23.
 
 ## Russian-owned companies abroad
 

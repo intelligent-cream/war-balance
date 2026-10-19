@@ -1,0 +1,1077 @@
+{
+ "generated": "2026-10-18",
+ "definition": "Net gain share = (taxes the Russian state collects on producing/exporting the good - MET, NDD, export duties, profit tax and similar - PLUS operating profit above a normal return on capital) / export price (FOB). Equivalently: (FOB price - real unit costs - normal return) / FOB price, i.e. the economic rent captured inside Russia. Not counted: wages, materials, transport inside Russia, depreciation, and a normal return of 9% (range 8-10%) on capital employed. Rent paid out to foreign shareholders is excluded where material (LNG). Bounded to [0,1]: where profits fall below a normal return (coal 2024-26, aluminium, wood, steel 2025-26) the share is floored near 0. Shares apply to ACTUAL prices including the 2022 and 2026 price spikes; the project separately counts the wartime windfall price premium at 100%, so do not apply these shares to that premium.",
+ "units": "share of FOB export value (0-1); years 2021-2025 calendar, 2026 = Jan-Aug",
+ "groups": {
+  "crude": {
+   "2021": {
+    "low": 0.61,
+    "central": 0.69,
+    "high": 0.74
+   },
+   "2022": {
+    "low": 0.61,
+    "central": 0.68,
+    "high": 0.74
+   },
+   "2023": {
+    "low": 0.53,
+    "central": 0.64,
+    "high": 0.71
+   },
+   "2024": {
+    "low": 0.55,
+    "central": 0.65,
+    "high": 0.71
+   },
+   "2025": {
+    "low": 0.41,
+    "central": 0.53,
+    "high": 0.61
+   },
+   "2026": {
+    "low": 0.5,
+    "central": 0.61,
+    "high": 0.68
+   }
+  },
+  "products": {
+   "2021": {
+    "low": 0.46,
+    "central": 0.61,
+    "high": 0.72
+   },
+   "2022": {
+    "low": 0.52,
+    "central": 0.65,
+    "high": 0.74
+   },
+   "2023": {
+    "low": 0.47,
+    "central": 0.62,
+    "high": 0.72
+   },
+   "2024": {
+    "low": 0.43,
+    "central": 0.59,
+    "high": 0.7
+   },
+   "2025": {
+    "low": 0.29,
+    "central": 0.47,
+    "high": 0.6
+   },
+   "2026": {
+    "low": 0.45,
+    "central": 0.59,
+    "high": 0.69
+   }
+  },
+  "gas": {
+   "2021": {
+    "low": 0.39,
+    "central": 0.6,
+    "high": 0.68
+   },
+   "2022": {
+    "low": 0.75,
+    "central": 0.84,
+    "high": 0.87
+   },
+   "2023": {
+    "low": 0.52,
+    "central": 0.69,
+    "high": 0.75
+   },
+   "2024": {
+    "low": 0.38,
+    "central": 0.6,
+    "high": 0.69
+   },
+   "2025": {
+    "low": 0.32,
+    "central": 0.54,
+    "high": 0.64
+   },
+   "2026": {
+    "low": 0.37,
+    "central": 0.57,
+    "high": 0.66
+   }
+  },
+  "lng": {
+   "2021": {
+    "low": 0.23,
+    "central": 0.35,
+    "high": 0.46
+   },
+   "2022": {
+    "low": 0.45,
+    "central": 0.54,
+    "high": 0.64
+   },
+   "2023": {
+    "low": 0.37,
+    "central": 0.47,
+    "high": 0.57
+   },
+   "2024": {
+    "low": 0.24,
+    "central": 0.36,
+    "high": 0.47
+   },
+   "2025": {
+    "low": 0.26,
+    "central": 0.37,
+    "high": 0.47
+   },
+   "2026": {
+    "low": 0.24,
+    "central": 0.35,
+    "high": 0.45
+   }
+  },
+  "coal": {
+   "2021": {
+    "low": 0.2,
+    "central": 0.3,
+    "high": 0.4
+   },
+   "2022": {
+    "low": 0.37,
+    "central": 0.44,
+    "high": 0.52
+   },
+   "2023": {
+    "low": 0.1,
+    "central": 0.2,
+    "high": 0.32
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.06,
+    "high": 0.2
+   },
+   "2025": {
+    "low": 0.0,
+    "central": 0.02,
+    "high": 0.11
+   },
+   "2026": {
+    "low": 0.0,
+    "central": 0.04,
+    "high": 0.18
+   }
+  },
+  "fertilisers": {
+   "2021": {
+    "low": 0.2,
+    "central": 0.28,
+    "high": 0.36
+   },
+   "2022": {
+    "low": 0.25,
+    "central": 0.34,
+    "high": 0.42
+   },
+   "2023": {
+    "low": 0.2,
+    "central": 0.27,
+    "high": 0.34
+   },
+   "2024": {
+    "low": 0.14,
+    "central": 0.21,
+    "high": 0.28
+   },
+   "2025": {
+    "low": 0.17,
+    "central": 0.24,
+    "high": 0.31
+   },
+   "2026": {
+    "low": 0.2,
+    "central": 0.29,
+    "high": 0.37
+   }
+  },
+  "steel": {
+   "2021": {
+    "low": 0.2,
+    "central": 0.28,
+    "high": 0.36
+   },
+   "2022": {
+    "low": 0.05,
+    "central": 0.12,
+    "high": 0.2
+   },
+   "2023": {
+    "low": 0.03,
+    "central": 0.09,
+    "high": 0.16
+   },
+   "2024": {
+    "low": 0.01,
+    "central": 0.05,
+    "high": 0.11
+   },
+   "2025": {
+    "low": 0.0,
+    "central": 0.02,
+    "high": 0.07
+   },
+   "2026": {
+    "low": 0.0,
+    "central": 0.02,
+    "high": 0.07
+   }
+  },
+  "aluminium": {
+   "2021": {
+    "low": 0.07,
+    "central": 0.14,
+    "high": 0.21
+   },
+   "2022": {
+    "low": 0.0,
+    "central": 0.05,
+    "high": 0.12
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.02,
+    "high": 0.07
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.04,
+    "high": 0.1
+   },
+   "2025": {
+    "low": 0.0,
+    "central": 0.02,
+    "high": 0.06
+   },
+   "2026": {
+    "low": 0.02,
+    "central": 0.07,
+    "high": 0.13
+   }
+  },
+  "nonferrous": {
+   "2021": {
+    "low": 0.33,
+    "central": 0.43,
+    "high": 0.52
+   },
+   "2022": {
+    "low": 0.28,
+    "central": 0.37,
+    "high": 0.46
+   },
+   "2023": {
+    "low": 0.21,
+    "central": 0.29,
+    "high": 0.37
+   },
+   "2024": {
+    "low": 0.17,
+    "central": 0.24,
+    "high": 0.32
+   },
+   "2025": {
+    "low": 0.19,
+    "central": 0.26,
+    "high": 0.34
+   },
+   "2026": {
+    "low": 0.23,
+    "central": 0.31,
+    "high": 0.39
+   }
+  },
+  "wood": {
+   "2021": {
+    "low": 0.06,
+    "central": 0.12,
+    "high": 0.18
+   },
+   "2022": {
+    "low": 0.02,
+    "central": 0.06,
+    "high": 0.1
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.03,
+    "high": 0.07
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.03,
+    "high": 0.07
+   },
+   "2025": {
+    "low": 0.0,
+    "central": 0.03,
+    "high": 0.06
+   },
+   "2026": {
+    "low": 0.0,
+    "central": 0.03,
+    "high": 0.06
+   }
+  },
+  "food": {
+   "2021": {
+    "low": 0.11,
+    "central": 0.18,
+    "high": 0.25
+   },
+   "2022": {
+    "low": 0.15,
+    "central": 0.22,
+    "high": 0.3
+   },
+   "2023": {
+    "low": 0.11,
+    "central": 0.18,
+    "high": 0.25
+   },
+   "2024": {
+    "low": 0.08,
+    "central": 0.14,
+    "high": 0.21
+   },
+   "2025": {
+    "low": 0.06,
+    "central": 0.12,
+    "high": 0.19
+   },
+   "2026": {
+    "low": 0.06,
+    "central": 0.12,
+    "high": 0.19
+   }
+  },
+  "chemicals": {
+   "2021": {
+    "low": 0.1,
+    "central": 0.17,
+    "high": 0.25
+   },
+   "2022": {
+    "low": 0.08,
+    "central": 0.15,
+    "high": 0.22
+   },
+   "2023": {
+    "low": 0.04,
+    "central": 0.1,
+    "high": 0.16
+   },
+   "2024": {
+    "low": 0.04,
+    "central": 0.1,
+    "high": 0.16
+   },
+   "2025": {
+    "low": 0.03,
+    "central": 0.08,
+    "high": 0.14
+   },
+   "2026": {
+    "low": 0.04,
+    "central": 0.09,
+    "high": 0.15
+   }
+  },
+  "manufactured": {
+   "2021": {
+    "low": 0.01,
+    "central": 0.05,
+    "high": 0.1
+   },
+   "2022": {
+    "low": 0.01,
+    "central": 0.05,
+    "high": 0.1
+   },
+   "2023": {
+    "low": 0.01,
+    "central": 0.05,
+    "high": 0.1
+   },
+   "2024": {
+    "low": 0.01,
+    "central": 0.05,
+    "high": 0.1
+   },
+   "2025": {
+    "low": 0.01,
+    "central": 0.05,
+    "high": 0.1
+   },
+   "2026": {
+    "low": 0.01,
+    "central": 0.05,
+    "high": 0.1
+   }
+  },
+  "non_fuel_average": {
+   "2021": {
+    "low": 0.131,
+    "central": 0.2,
+    "high": 0.271
+   },
+   "2022": {
+    "low": 0.117,
+    "central": 0.185,
+    "high": 0.257
+   },
+   "2023": {
+    "low": 0.079,
+    "central": 0.138,
+    "high": 0.202
+   },
+   "2024": {
+    "low": 0.063,
+    "central": 0.116,
+    "high": 0.179
+   },
+   "2025": {
+    "low": 0.064,
+    "central": 0.112,
+    "high": 0.173
+   },
+   "2026": {
+    "low": 0.078,
+    "central": 0.133,
+    "high": 0.195
+   }
+  },
+  "services": {
+   "2021": {
+    "low": 0.03,
+    "central": 0.08,
+    "high": 0.15
+   },
+   "2022": {
+    "low": 0.03,
+    "central": 0.08,
+    "high": 0.15
+   },
+   "2023": {
+    "low": 0.03,
+    "central": 0.08,
+    "high": 0.15
+   },
+   "2024": {
+    "low": 0.03,
+    "central": 0.08,
+    "high": 0.15
+   },
+   "2025": {
+    "low": 0.03,
+    "central": 0.08,
+    "high": 0.15
+   },
+   "2026": {
+    "low": 0.03,
+    "central": 0.08,
+    "high": 0.15
+   }
+  },
+  "arms": {
+   "2021": {
+    "low": 0.05,
+    "central": 0.12,
+    "high": 0.22
+   },
+   "2022": {
+    "low": 0.05,
+    "central": 0.12,
+    "high": 0.22
+   },
+   "2023": {
+    "low": 0.05,
+    "central": 0.12,
+    "high": 0.22
+   },
+   "2024": {
+    "low": 0.05,
+    "central": 0.12,
+    "high": 0.22
+   },
+   "2025": {
+    "low": 0.05,
+    "central": 0.12,
+    "high": 0.22
+   },
+   "2026": {
+    "low": 0.05,
+    "central": 0.12,
+    "high": 0.22
+   }
+  },
+  "gold": {
+   "2021": {
+    "low": 0.24,
+    "central": 0.39,
+    "high": 0.51
+   },
+   "2022": {
+    "low": 0.18,
+    "central": 0.33,
+    "high": 0.47
+   },
+   "2023": {
+    "low": 0.26,
+    "central": 0.4,
+    "high": 0.52
+   },
+   "2024": {
+    "low": 0.37,
+    "central": 0.49,
+    "high": 0.59
+   },
+   "2025": {
+    "low": 0.48,
+    "central": 0.58,
+    "high": 0.66
+   },
+   "2026": {
+    "low": 0.58,
+    "central": 0.66,
+    "high": 0.73
+   }
+  }
+ },
+ "non_fuel_mix": {
+  "2021": {
+   "fertilisers": 0.06,
+   "steel": 0.168,
+   "aluminium": 0.043,
+   "nonferrous": 0.135,
+   "wood": 0.082,
+   "food": 0.172,
+   "chemicals": 0.121,
+   "manufactured": 0.218
+  },
+  "2022": {
+   "fertilisers": 0.094,
+   "steel": 0.154,
+   "aluminium": 0.048,
+   "nonferrous": 0.152,
+   "wood": 0.063,
+   "food": 0.2,
+   "chemicals": 0.135,
+   "manufactured": 0.154
+  },
+  "2023": {
+   "fertilisers": 0.08,
+   "steel": 0.149,
+   "aluminium": 0.051,
+   "nonferrous": 0.143,
+   "wood": 0.066,
+   "food": 0.259,
+   "chemicals": 0.089,
+   "manufactured": 0.163
+  },
+  "2024": {
+   "fertilisers": 0.087,
+   "steel": 0.15,
+   "aluminium": 0.054,
+   "nonferrous": 0.141,
+   "wood": 0.061,
+   "food": 0.256,
+   "chemicals": 0.079,
+   "manufactured": 0.173
+  },
+  "2025": {
+   "fertilisers": 0.097,
+   "steel": 0.119,
+   "aluminium": 0.061,
+   "nonferrous": 0.152,
+   "wood": 0.058,
+   "food": 0.226,
+   "chemicals": 0.089,
+   "manufactured": 0.2
+  },
+  "2026": {
+   "fertilisers": 0.108,
+   "steel": 0.108,
+   "aluminium": 0.065,
+   "nonferrous": 0.157,
+   "wood": 0.054,
+   "food": 0.216,
+   "chemicals": 0.092,
+   "manufactured": 0.2
+  }
+ },
+ "inputs": {
+  "crude_prices": {
+   "2021": {
+    "urals_fob_usd_bbl": 67.4,
+    "mix_fob_usd_bbl": 68.3
+   },
+   "2022": {
+    "urals_fob_usd_bbl": 76.3,
+    "mix_fob_usd_bbl": 77.6
+   },
+   "2023": {
+    "urals_fob_usd_bbl": 59.4,
+    "mix_fob_usd_bbl": 64.2
+   },
+   "2024": {
+    "urals_fob_usd_bbl": 64.8,
+    "mix_fob_usd_bbl": 68.0
+   },
+   "2025": {
+    "urals_fob_usd_bbl": 53.9,
+    "mix_fob_usd_bbl": 57.6
+   },
+   "2026": {
+    "urals_fob_usd_bbl": 66.6,
+    "mix_fob_usd_bbl": 72.3
+   }
+  },
+  "crude_real_cost_usd_bbl_low_central_high": {
+   "2021": [
+    18,
+    21.5,
+    26
+   ],
+   "2022": [
+    21,
+    25,
+    30
+   ],
+   "2023": [
+    19,
+    23,
+    28
+   ],
+   "2024": [
+    20,
+    24,
+    29
+   ],
+   "2025": [
+    23,
+    27,
+    32
+   ],
+   "2026": [
+    24,
+    28,
+    33
+   ]
+  },
+  "products_fob_usd_t": {
+   "2021": 570.0,
+   "2022": 749.0,
+   "2023": 624.0,
+   "2024": 610.0,
+   "2025": 544.0,
+   "2026": 729.0
+  },
+  "gas_real_cost_eur_mwh": {
+   "2021": [
+    9.5,
+    11.5,
+    16
+   ],
+   "2022": [
+    11,
+    13.5,
+    19
+   ],
+   "2023": [
+    11,
+    13,
+    18.5
+   ],
+   "2024": [
+    11,
+    13.5,
+    19
+   ],
+   "2025": [
+    12,
+    14.5,
+    20
+   ],
+   "2026": [
+    12.5,
+    15,
+    20.5
+   ]
+  },
+  "lng_fob_eur_mwh": {
+   "2021": 29.3,
+   "2022": 75.0,
+   "2023": 40.6,
+   "2024": 29.5,
+   "2025": 31.4,
+   "2026": 32.2
+  },
+  "lng_real_cost_eur_mwh": {
+   "2021": [
+    12,
+    15,
+    19
+   ],
+   "2022": [
+    12.5,
+    15.5,
+    19.5
+   ],
+   "2023": [
+    12.5,
+    15.5,
+    19.5
+   ],
+   "2024": [
+    13,
+    16,
+    20
+   ],
+   "2025": [
+    13.5,
+    16.5,
+    20.5
+   ],
+   "2026": [
+    14,
+    17,
+    21
+   ]
+  },
+  "lng_profit_tax_rate": {
+   "2021": 0.2,
+   "2022": 0.2,
+   "2023": 0.34,
+   "2024": 0.34,
+   "2025": 0.34,
+   "2026": 0.25
+  },
+  "coal_fob_usd_t": {
+   "2021": 135.0,
+   "2022": 213.0,
+   "2023": 143.0,
+   "2024": 124.0,
+   "2025": 118.0,
+   "2026": 130.0
+  },
+  "coal_real_cost_usd_t": {
+   "2021": [
+    85,
+    95,
+    108
+   ],
+   "2022": [
+    108,
+    120,
+    135
+   ],
+   "2023": [
+    102,
+    115,
+    128
+   ],
+   "2024": [
+    105,
+    117,
+    130
+   ],
+   "2025": [
+    110,
+    123,
+    137
+   ],
+   "2026": [
+    112,
+    125,
+    140
+   ]
+  },
+  "gold_price_usd_oz": {
+   "2021": 1799,
+   "2022": 1800,
+   "2023": 1943,
+   "2024": 2386,
+   "2025": 3413,
+   "2026": 4550
+  },
+  "gold_cost_incl_normal_return_usd_oz_central": {
+   "2021": 1100,
+   "2022": 1200,
+   "2023": 1160,
+   "2024": 1220,
+   "2025": 1440,
+   "2026": 1550
+  },
+  "non_fuel_export_values_usd_bn": {
+   "2021": {
+    "fertilisers": 12.5,
+    "steel": 35,
+    "aluminium": 9,
+    "nonferrous": 28.2,
+    "wood": 17.0,
+    "food": 35.9,
+    "chemicals": 25.3,
+    "manufactured": 45.5
+   },
+   "2022": {
+    "fertilisers": 19.5,
+    "steel": 32,
+    "aluminium": 10,
+    "nonferrous": 31.5,
+    "wood": 13.0,
+    "food": 41.6,
+    "chemicals": 28.0,
+    "manufactured": 32.0
+   },
+   "2023": {
+    "fertilisers": 13.5,
+    "steel": 25,
+    "aluminium": 8.5,
+    "nonferrous": 24.0,
+    "wood": 11.0,
+    "food": 43.5,
+    "chemicals": 15.0,
+    "manufactured": 27.3
+   },
+   "2024": {
+    "fertilisers": 14.5,
+    "steel": 25,
+    "aluminium": 9,
+    "nonferrous": 23.5,
+    "wood": 10.1,
+    "food": 42.6,
+    "chemicals": 13.1,
+    "manufactured": 28.9
+   },
+   "2025": {
+    "fertilisers": 17.5,
+    "steel": 21.5,
+    "aluminium": 11,
+    "nonferrous": 27.5,
+    "wood": 10.6,
+    "food": 40.9,
+    "chemicals": 16.1,
+    "manufactured": 36.2
+   },
+   "2026": {
+    "fertilisers": 20,
+    "steel": 20,
+    "aluminium": 12,
+    "nonferrous": 29,
+    "wood": 10,
+    "food": 40,
+    "chemicals": 17,
+    "manufactured": 37
+   }
+  },
+  "normal_return": "9% a year on capital employed (range 8-10%), taken as a real cost alongside wages, materials, transport inside Russia and depreciation.",
+  "method": "net gain share = (price - real unit cost incl. normal return) / FOB price = taxes collected by the Russian state + operating profit above a normal return, both per unit, over FOB. Clipped to [0,1]. Fuels: bottom-up per unit costs vs CREA/project prices. Non-fuel goods: company EBITDA margin + taxes booked inside EBITDA (MET uplifts, export duties) - D&A - normal return.",
+  "prices_basis": "Actual (windfall-inclusive) prices. The project counts the wartime price premium separately at 100%; these shares apply to the actual price and must not be applied to that premium again.",
+  "crude_tax_check_2023": {
+   "met_oil_rub_trn": 7.79,
+   "rub_per_usd": 85.2,
+   "production_bn_bbl": 3.85,
+   "met_usd_bbl": 23.7,
+   "ndd_usd_bbl_est": 4.3,
+   "export_duty_usd_bbl_est": 1.9,
+   "state_take_usd_bbl": 29.9,
+   "mix_fob_usd_bbl": 64.2,
+   "state_take_share": 0.47,
+   "company_excess_usd_bbl": 11.3,
+   "company_excess_share": 0.18
+  },
+  "crude_mix": "65% Urals FOB + 35% ESPO FOB (CREA, via prices.json benchmarks); low case uses Urals only and high real costs.",
+  "products": "per tonne: 1.08 t crude input at upstream real cost (crude cost less 5 USD/bbl port transport) + refining 55 USD/t + logistics 40 USD/t (2023, scaled with crude cost), vs CREA product basket price.",
+  "lng": "FOB = delivered Russian LNG unit value (gas_prices.json) - 2.5 EUR/MWh; Russian share = profit tax (20%; 34% 2023-25; 25% 2026) + 60% of after-tax surplus (Total, CNPC, Silk Road Fund ~40-50% of Yamal LNG; Japanese stakes in Sakhalin-2). No MET or export duty on LNG.",
+  "gas": "Realised Russian pipeline gas unit value, all buyers (gas_prices.json volume-weighted) vs real cost at the border 11.5-15 EUR/MWh (production opex+D&A ~4.5, long-distance transport ~3.5, normal return on Gazprom capital ~5). Low case: +5 EUR/MWh for idle export capacity and Power of Siberia capital and 8% lower price.",
+  "coal": "CREA coal FOB vs mining ~40 + rail/port 45-60 + D&A and normal return ~16 USD/t; matches Rosstat industry loss of RUB 112.6 bn in 2024 and Energy Ministry projection of RUB 350 bn loss in 2025. Central floored at 0.02 (MET and duties).",
+  "company_margins": {
+   "PhosAgro_EBITDA_margin": {
+    "2021": 0.42,
+    "2022": 0.44,
+    "2023": 0.31,
+    "2024": 0.35,
+    "2025": 0.35,
+    "note": "2025 = RUB 198.3 bn on 573.6 bn (aggregator; 9M official 33.0%)"
+   },
+   "Nornickel_EBITDA_margin": {
+    "2021": 0.55,
+    "2022": 0.5,
+    "2023": 0.44,
+    "2024": 0.41,
+    "2025": 0.41,
+    "note": "2025 = USD 5.67 bn on 13.76 bn"
+   },
+   "Rusal_adj_EBITDA_margin": {
+    "2021": 0.27,
+    "2022": 0.15,
+    "2023": 0.06,
+    "2024": 0.124,
+    "2025": 0.071,
+    "2026H1": "USD 1.23 bn EBITDA (recovery)"
+   },
+   "Severstal_EBITDA_margin": {
+    "2021": 0.5,
+    "2023": 0.34,
+    "2025": 0.19,
+    "note": "2025 lowest since 2009; Q4 2025 14%"
+   },
+   "Polyus_adj_EBITDA_usd_bn": {
+    "2024": 5.68,
+    "2025": 6.35
+   },
+   "Rosneft": {
+    "2025_EBITDA_rub_bn": 2173,
+    "2024_EBITDA_rub_bn": 3029,
+    "2025_net_income_rub_bn": 293,
+    "lifting_cost_usd_boe_Q1_2025": 3
+   },
+   "note": "2021-2023 margins for PhosAgro, Nornickel, Rusal, Severstal are from company annual releases as remembered/approximate (+-2 pp); not re-fetched."
+  },
+  "budget_oil_gas_revenue_rub_trn": {
+   "2021": 9.06,
+   "2022": 11.59,
+   "2023": 8.82,
+   "2024": 11.13,
+   "2025": 8.48,
+   "2026_JanAug": 5.0
+  },
+  "damper_2023_rub_trn": 1.59,
+  "damper_2026_JanAug_usd_bn": 10.58,
+  "non_fuel_mix_basis": "FTS group totals (HS 01-24 food, 28-40 chemicals incl. fertilisers, 44-49 wood, 71-83 metals, 84-97 machinery) for 2021, 2024, 2025 from IEP Monitoring 2026-3; 2022-2023 and 2026 and all within-group splits (fertilisers inside chemicals; gold, PGMs/diamonds, steel, Al, Cu, Ni inside metals; iron ore and concentrates moved from HS 26 to steel/nonferrous) are estimates. Gold and arms excluded. Diamonds and PGMs are in nonferrous."
+ },
+ "sources": [
+  {
+   "id": "crea_prices",
+   "title": "CREA Russia Fossil Tracker: modelled Russian export prices (Urals, ESPO, products, coal), via project prices.json benchmarks",
+   "url": "https://api.russiafossiltracker.com/v0/price",
+   "note": "FOB price denominators 2021-2026 (2026 Jan-Aug)."
+  },
+  {
+   "id": "project_gas_prices",
+   "title": "Project file research/2026-10/gaps/gas_prices.json (europe_reference volume-weighted Russian pipeline and LNG unit values)",
+   "url": "research/2026-10/gaps/gas_prices.json",
+   "note": "Gas/LNG price denominators."
+  },
+  {
+   "id": "neftegaz_2023",
+   "title": "Neftegaz.ru: Russian oil and gas budget revenue 2023 fell 23.9% (MET oil RUB 7.7866 trn, MET gas 1.2193 trn, damper 1.5886 trn)",
+   "url": "https://neftegaz.ru/news/finance/811330-neftegazovye-dokhody-rossiyskogo-byudzheta-v-2023-g-sokratilis-na-23-9/",
+   "note": "Crude 2023 tax-take arithmetic (via search snippet; page blocked to fetch)."
+  },
+  {
+   "id": "reuters_2024",
+   "title": "Reuters via Sweet Crude Reports: Russian oil and gas revenues jump 26% in 2024 to RUB 11.13 trn",
+   "url": "https://sweetcrudereports.com/russian-oil-and-gas-revenues-jump-26-in-2024-to-108-billion/",
+   "note": "2023 = 8.82 trn."
+  },
+  {
+   "id": "reuters_2025",
+   "title": "Reuters via BOE Report: Russia oil and gas budget revenue falls 24% to lowest since 2020 (RUB 8.48 trn in 2025)",
+   "url": "https://boereport.com/2026/01/15/russias-oil-and-gas-budget-revenue-falls-24-to-lowest-since-2020/amp/",
+   "note": ""
+  },
+  {
+   "id": "te_2026",
+   "title": "Trading Economics: Russia budget Jan-Aug 2026 (oil and gas revenue RUB 5.0 trn, -16.7%)",
+   "url": "https://tradingeconomics.com/russia/government-budget-value/news/582355",
+   "note": "Plus SZRU: damper USD 10.58 bn Jan-Aug 2026."
+  },
+  {
+   "id": "szru_2026",
+   "title": "SZRU: In August Russia oil and gas revenues fell to lowest level since start of 2026",
+   "url": "https://www.szru.gov.ua/en/news-media/news/in-august-russias-oil-and-gas-revenues-fell-to-their-lowest-level-since-the-beginning-of-2026",
+   "note": "USD 57.97 bn Jan-Aug 2026; damper USD 10.58 bn."
+  },
+  {
+   "id": "bloomberg_apr2026",
+   "title": "Bloomberg via Hellenic Shipping News: Russia oil tax revenues hit six-month high in April 2026 amid Iran war",
+   "url": "https://www.hellenicshippingnews.com/russias-oil-tax-revenues-hit-six-month-high-in-april-amid-iran-war/",
+   "note": "RUB 707 bn oil taxes at USD 77 Urals tax price; ~USD 32/bbl state take."
+  },
+  {
+   "id": "meduza_ndd",
+   "title": "Meduza: The price is right (NDD Q1 2023 RUB 211 bn vs Q1 2024 587 bn)",
+   "url": "https://meduza.io/en/feature/2024/04/15/the-price-is-right",
+   "note": "NDD scale."
+  },
+  {
+   "id": "interfax_met_base",
+   "title": "Interfax: Urals tax base price, discount caps 2023 and 78/22 Urals-ESPO mix from 2025",
+   "url": "https://interfax.com/newsroom/top-stories/87871/",
+   "note": "Why MinFin tax price exceeds actual Urals FOB in 2023."
+  },
+  {
+   "id": "rosneft_2025",
+   "title": "Rosneft 12M 2025 IFRS results",
+   "url": "https://rosneft.com/press/releases/item/223842/",
+   "note": "EBITDA RUB 2,173 bn, net income 293 bn; lifting cost USD 3/boe (Q1 2025 release item 222714)."
+  },
+  {
+   "id": "phosagro",
+   "title": "PhosAgro operating and financial results 9M 2025 / FY 2024",
+   "url": "https://www.phosagro.com/press/company/phosagro-reports-operating-and-financial-results-for-9m-2025/",
+   "note": "EBITDA margin 33.0% 9M 2025; FY2025 34.6% (stockanalysis.com)."
+  },
+  {
+   "id": "nornickel_2025",
+   "title": "Kitco/Reuters: Nornickel reports 36% rise in 2025 net profit",
+   "url": "https://www.kitco.com/news/off-the-wire/2026-02-11/nornickel-reports-36-rise-net-profit",
+   "note": "Revenue USD 13.76 bn, EBITDA 5.67 bn."
+  },
+  {
+   "id": "rusal_2025",
+   "title": "Rusal 2025 results: revenue USD 14.81 bn, adj. EBITDA 1.053 bn (7.1%), net loss 455 m",
+   "url": "https://www.itiger.com/news/1124699335",
+   "note": "H1 2026 adj. EBITDA USD 1.23 bn (HKEX interim, https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0819/2026081900105.pdf)."
+  },
+  {
+   "id": "severstal_2025",
+   "title": "Bloomberg: Severstal margins drop to 16-year low (EBITDA RUB 137.6 bn, 19%)",
+   "url": "https://www.bloomberg.com/news/articles/2026-02-03/russian-steelmaker-severstal-posts-lowest-margins-in-16-years",
+   "note": ""
+  },
+  {
+   "id": "polyus_2025",
+   "title": "Polyus H2 2025 and FY 2025 results",
+   "url": "https://polyus.com/en/media/press-releases/proizvodstvennye-i-finansovye-rezultaty-za-2-polugodie-2025-i-2025-god/",
+   "note": "Adj. EBITDA USD 6.35 bn; TCC 525-575 USD/oz."
+  },
+  {
+   "id": "coal_losses",
+   "title": "The Coal Hub / CCA: Russian coal industry losses 2024-2025",
+   "url": "https://thecoalhub.com/losses-of-russian-coal-companies-hit-1-7-billion-usd-in-jan-may-2025.html",
+   "note": "Rosstat 2024 loss RUB 112.6 bn; MinEnergo 2025 projection RUB 350 bn; 65% of firms loss-making."
+  },
+  {
+   "id": "iep_2026",
+   "title": "IEP Monitoring of Russia's economic outlook 2026-3: Russian foreign trade in 2025 (Table 1, commodity structure)",
+   "url": "https://www.iep.ru/files/RePEc/gai/mreoen/mreoen-2026-3-1492.pdf",
+   "note": "Group export values 2021/2024/2025 for non_fuel_mix."
+  },
+  {
+   "id": "project_prices",
+   "title": "Project file research/2026-10/gaps/prices.json (non-fuel world price indices, gold, fertiliser, metals)",
+   "url": "research/2026-10/gaps/prices.json",
+   "note": "Price trend for 2026 non-fuel and gold."
+  },
+  {
+   "id": "wb_cwon",
+   "title": "World Bank, The Changing Wealth of Nations / WDI natural resource rents (method: rent = (price - unit cost incl. normal return) x volume)",
+   "url": "https://www.worldbank.org/en/publication/changing-wealth-of-nations",
+   "note": "Method reference only; values not used directly."
+  }
+ ],
+ "certainty": "B for crude, oil products, pipeline gas (tax take anchored on MinFin MET totals and company results; cost side +-25%). C for LNG, coal, all non-fuel groups, services, arms and gold: shares built from a few listed companies' margins with assumed D&A and capital intensity; within-group export splits and 2022/2023/2026 mix are estimates; services and arms have no direct evidence (judgement). Not reviewed by a person."
+}

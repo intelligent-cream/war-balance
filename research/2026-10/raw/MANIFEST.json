@@ -1,6 +1,36 @@
 {
  "files": [
   {
+   "path": "capital_r14b/astarta_ar2024.pdf",
+   "bytes": 17913189,
+   "sha256": "b22ceade283dd2b61feb36202cbe934d56cadc86859a8a9ff83ed6782376a2db",
+   "in_repository": false
+  },
+  {
+   "path": "capital_r14b/nornickel_ar2023_ifrs.pdf",
+   "bytes": 750696,
+   "sha256": "554485a7e4f1c26bc58d6a671de3c484faf8c048b239d7e8543bdaa9933934cc",
+   "in_repository": false
+  },
+  {
+   "path": "capital_r14b/novatek_fy2023_release.html",
+   "bytes": 26110,
+   "sha256": "03dc1b16d889df20a64d885c0c9cf7e715b402a7313da53f31114920af043a0b",
+   "in_repository": false
+  },
+  {
+   "path": "capital_r14b/phosagro_2023_financial_position.pdf",
+   "bytes": 420603,
+   "sha256": "32a38cbdc1d7776bfb64ae7f083f4da6a833b3aef87d7920ce01e1a65e0a0613",
+   "in_repository": false
+  },
+  {
+   "path": "capital_r14b/rosneft_12m2024.pdf",
+   "bytes": 824064,
+   "sha256": "9c9d09d4ea72a262fbed71e26a4c1f80266f18743327e598210b44446ed04341",
+   "in_repository": false
+  },
+  {
    "path": "comtrade/ARE_2021.json",
    "bytes": 3649,
    "sha256": "7a6b9b024d54dba8432a8cdba3ce108c0fa8aea6664624cea6eadf6e019b23e1",
@@ -905,6 +935,12 @@
    "bytes": 6002949,
    "sha256": "fe9bebe0aad88d9bf7c715bb4c9017769adb47d5ed1f39dd636d2919912ce3de",
    "in_repository": true
+  },
+  {
+   "path": "damodaran/capexemerg.xls",
+   "bytes": 59904,
+   "sha256": "be35e4afd4c4eba24f7ec45e7bad28e79cff7aa0b56e7a9eb3c179544bf80ffb",
+   "in_repository": false
   },
   {
    "path": "damodaran/ctryprem.html",

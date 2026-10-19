@@ -104,7 +104,10 @@ def apply_assumptions_r11_gain(name: str, d: dict) -> dict:
     averages are recomputed from the files' own export mix (they reproduce the old averages exactly)."""
     if name not in ("net_gain_russia.json", "net_gain_ukraine.json"):
         return d
-    for p in R11["gain"]["proposals"]:
+    # round 14b: the files carry these groups recomputed from the same round-11 inputs at the sellers' normal return
+    # (5% real + the country risk premium, on book capital as a nominal USD rate); the round-11 values then stand only
+    # in the round-14 copies (net_gain_*_r14.json) that the method band's old-method alternative loads
+    for p in [] if d.get("normal_return_r14b") else R11["gain"]["proposals"]:
         if p["file"].endswith("/" + name):
             d["groups"][p["group"]][str(p["year"])] = {b: p["new"][b] for b in _B3}
     mix, avg = (d["non_fuel_mix"], "non_fuel_average") if name == "net_gain_russia.json" else (d["mix"], "average")
@@ -460,10 +463,15 @@ def _actuals_r7(name: str, d: dict) -> dict:
 
 
 def load(path: Path) -> dict | None:
+    # round 14b: the method band's "normal_return" alternative (round 13's 9% for sellers) keeps Russia's and Ukraine's
+    # round-14 net-gain shares (their builders' 9% and 8.2% after tax) as well
+    name = path.name
+    if "normal_return" in ALT and name in ("net_gain_russia.json", "net_gain_ukraine.json"):
+        path = path.with_name(path.stem + "_r14.json")
     if not path.exists():
         return None
     # round 7 actuals first, then the round-11 assumptions backed by data
-    return apply_assumptions_r11(path.name, _actuals_r7(path.name, json.loads(path.read_text())))
+    return apply_assumptions_r11(name, _actuals_r7(name, json.loads(path.read_text())))
 
 
 def iso_numeric(iso3: str) -> str | None:
@@ -1953,7 +1961,7 @@ METHOD_ALTERNATIVES = {
     "laund_off": "laundered oil (fuel made from Russian crude elsewhere) not counted",
     "fuelmix": "the mix of what was bought from the fuel tracker's tonnes (until round 14), not customs values",
     "freight": "fuel prices as customs (CIF) values, freight included (until round 14)",
-    "normal_return": "sellers' normal return 9% nominal, services incl. real estate (round 13)",
+    "normal_return": "sellers' normal return 9% nominal, services incl. real estate (round 13); Russia's and Ukraine's shares as in round 14",
 }
 
 
@@ -2590,6 +2598,16 @@ def add_extra(c: dict, k: str, label: str, to_russia: dict[str, list[float]], ce
     c.setdefault("extra", []).append(part)
 
 
+def add_taken(c: dict, k: str, label: str, taken: dict[str, list[float]], cert: str, srcs: list[str]) -> None:
+    """Round 14b: money Russia took from the country's companies (seizures, forced sales), yearly, positive = taken
+    (low, central, high). Not in the net or either headline number; a cost carried in the cost view."""
+    part = {"k": k, "label": label, "cert": cert, "src": list(srcs),
+            "c": [round(v, 5) for v in taken["central"]],
+            "l": [round(v, 5) for v in taken["low"]],
+            "h": [round(v, 5) for v in taken["high"]]}  # fmt: skip
+    c.setdefault("taken", []).append(part)
+
+
 SANCTION_BLOCKED_LOANS = {"VNM", "IRQ", "BGD"}
 
 
@@ -2660,7 +2678,9 @@ def apply_company_flows(countries: dict[str, dict], src: Sources) -> None:
     """Company money to Russia (company_flows.json, round 5), by the company's home country: the exit contribution to
     Russia's budget and the forced discount to Russian buyers when foreign companies sell out, and the profits that
     Russian-owned companies abroad send home, against the pre-war level (trusteeships that stopped them count the other
-    way). Round 14: seizures without payment count too, on their own line ("seized by Russia")."""
+    way). Round 14: seizures without payment are recorded too. Round 14b (raised by the owner): seizures and forced exit
+    costs (the forced discount and the exit contribution) are taken by Russia, not moved by the country's choice, so they
+    are not in the totals; they are stored in c["taken"] and counted as a cost carried (a sacrifice)."""
     cf = load(GAPS / "company_flows.json")
     sid = src.add(
         "company_flows",
@@ -2715,21 +2735,30 @@ def apply_company_flows(countries: dict[str, dict], src: Sources) -> None:
                 if y == 2024 and iso3 in conduit and dt.get("central"):
                     disc *= max(0.0, 1 - conduit[iso3] / dt["central"])
                 ex[b].append(v + disc)
+        # round 14b (raised by the owner): what Russia took from the country's companies is a loss imposed on them and a
+        # gain for Russia, not money the country chose to move. It leaves both headline numbers and the net (it reverses
+        # round 5, which counted forced discounts and exit fees, and round 14 M4, which counted seizures) and is counted
+        # in the cost view as a sacrifice, like the energy switching cost: c["taken"], positive = taken by Russia
         if any(ex["high"]):
             cert = weakest([d.get("exit_contribution_certainty"), d.get("discount_transfer_certainty")])
-            add_extra(c, "exits", "Paid to Russia by companies leaving it", ex, cert or "C", sid)
-        # round 14 (audit M4, approved by the owner): assets Russia seized from the country's companies (decree 302
-        # temporary management, expropriation by decree, court seizures, leased aircraft kept), valued at the owners'
-        # write-downs or book value less anything received abroad, in the year control was lost: money taken by Russia,
-        # like the forced-sale discount, on its own labelled line. Until round 13 recorded but not counted
+            add_taken(c, "exits", "Forced sales: discount and exit fee taken by Russia", ex, cert or "C", [sid])
+        # assets Russia seized from the country's companies (decree 302 temporary management, expropriation by decree,
+        # court seizures, leased aircraft kept), valued at the owners' write-downs or book value less anything received
+        # abroad, in the year control was lost (round 14, audit M4)
         sz = d.get("seizure") or {}
         sz_y = {
             b: [(sz.get(str(y)) or {}).get(b, 0.0) if y >= 2022 else 0.0 for y in YEARS]
             for b in ("low", "central", "high")
         }
         if any(sz_y["high"]):
-            add_extra(c, "seized", "Seized by Russia (companies' assets)", sz_y, d.get("seizure_certainty") or "C", sid)
-            c["extra"][-1]["src"].append("seizures")
+            add_taken(
+                c,
+                "seized",
+                "Seized by Russia (companies' assets)",
+                sz_y,
+                d.get("seizure_certainty") or "C",
+                [sid, "seizures"],
+            )
         pr = d.get("profits_change_vs_prewar") or {}
         if pr:
             out = {

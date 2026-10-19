@@ -108,7 +108,8 @@ Per country: `n` (numeric ISO for the map shapes), `iso3`, `name`, `kind`, `pop`
 | `flowback` | from the all-money ledger: `own*`, `purl_in*`, `arms*`, `othsp*` (other spending), `purl_out`, `cert_own`, `arms_cert`, and sources `src`, `purl_src`, `arms_src` |
 | `people`, `sanctions` | counts, sanctions labels (`mandated`, `gas`, and since round 13 `cut`: gas Russia cut off itself or that stopped with the end of transit; since round 14 `cut_from`, the date of the cut) (the AI-guessed `incentive` scores were dropped in round 11) |
 | `to_rus.gain` | Russia's gain per euro, `e` (expected) and `a` (bought), `[low, central, high]` per year; since round 14 `fossil_share` (the measured pre-war fuel share used), `basis` (customs, tracker or pre-war mix, per year) and `tracker_copied` (tracker years that repeat the year before) |
-| `extra` | parts without a series: `exits`, `seized` (round 14), `frozen`, `rusfirms`, `statefin`, `rusarms`, `agents`... as yearly shifts toward Ukraine `c`, `l`, `h` |
+| `extra` | parts without a series: `frozen`, `rusfirms`, `statefin`, `rusarms`, `agents`... as yearly shifts toward Ukraine `c`, `l`, `h` (`exits` until round 14, `seized` in round 14) |
+| `taken` | round 14b: what Russia took from the country's companies, `exits` (forced discount and exit fee) and `seized`, yearly `c`, `l`, `h`, positive = taken; in the cost view only, not in the net or either headline number |
 
 Common fields inside a series:
 

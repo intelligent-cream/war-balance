@@ -195,7 +195,7 @@ function renderBubbles(root) {
   </svg>`;
   root.innerHTML = `<div class="view-inner">
     <h2>${t("Each country's positive and negative parts")}</h2>
-    <p class="sub">${t("{period}, {unit}. Right: aid, refugees, purchases from Ukraine, less paid to Russia (including gas Russia cut off, where it did) and Russian money frozen. Up: more paid to Russia, earnings from sales to Russia, oil bought via other countries, hidden channels, assets Russia seized, weapons{back}. Below the diagonal the net is positive. Bubble size: size of the economy.", { period: periodText(), unit, back: state.netBack ? t(", money flowing back from Ukraine") : "" })}</p>
+    <p class="sub">${t("{period}, {unit}. Right: aid, refugees, purchases from Ukraine, less paid to Russia (including gas Russia cut off, where it did) and Russian money frozen. Up: more paid to Russia, earnings from sales to Russia, oil bought via other countries, hidden channels, weapons{back}. Below the diagonal the net is positive. Bubble size: size of the economy.", { period: periodText(), unit, back: state.netBack ? t(", money flowing back from Ukraine") : "" })}</p>
     ${filtersHtml()}
     <div class="chart">${svg}</div>
     <p class="note-small">${t("Log-like axes so that small and large shifts both stay visible.")} ${state.measure === "total" ? t("Shown in % of GDP: totals in € would put every small country in one corner.") + " " : ""}${t("Middle estimates only; each country's range is in its breakdown.")}</p>
@@ -215,6 +215,8 @@ const COLS = [
   { k: "rusCut", label: "Of which gas Russia cut off, €", fmt: r => (r.rusCut > 0.005 ? eur(r.rusCut) : "–") },
   // round 13b: a marker, in no total
   { k: "remitGdp", label: "Remittances from Russia, change, % of a year's GDP (not in totals)", fmt: r => (r.remitGdp == null ? "–" : pct(r.remitGdp)) },
+  // round 14b: what Russia took from the country's companies, in the cost only
+  { k: "takenGdp", label: "Taken by Russia from companies, % of a year's GDP (not in totals; in the cost)", fmt: r => (r.takenGdp ? pct(r.takenGdp) : "–") },
   { k: "costGdp", label: "Cost, % of a year's GDP", fmt: r => pct(r.costGdp) },
   { k: "aid", label: "Aid incl. EU share, €", fmt: r => eur(r.aid) },
   { k: "paidRus", label: "Paid to Russia, €", fmt: r => eur(r.paidRus) },
@@ -234,6 +236,8 @@ function tableRows() {
       ua: k.uaBal, uaLo: k.uaLo, uaHi: k.uaHi, rus: k.rusBal, rusLo: k.rusLo, rusHi: k.rusHi, rusCut: k.rusCut,
       uaGdp: g && k.uaBal * g, rusGdp: g && k.rusBal * g,
       remit: rm[0], remitLo: rm[1], remitHi: rm[2], remitGdp: rm[0] == null ? null : g && rm[0] * g,
+      // round 14b: seizures and forced sales, not in the net or either number; part of the cost
+      taken: k.taken, takenLo: k.takenLo, takenHi: k.takenHi, takenGdp: g && k.taken * g, takenParts: k.takenParts,
       cost: k.cost, costGdp: g && k.cost * g, aid: k.aid, refugees: k.refugees, paidRus: k.paidRussia, cert: k.shiftCert,
       parts: k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, k: "back_" + p.k })) : []),
     };
@@ -285,15 +289,19 @@ function csvSummary(rows) {
     "support_ukraine_eur_bn", "support_ukraine_low_eur_bn", "support_ukraine_high_eur_bn", "support_ukraine_pct_gdp",
     "payments_russia_change_eur_bn", "payments_russia_change_low_eur_bn", "payments_russia_change_high_eur_bn", "payments_russia_change_pct_gdp", "of_which_gas_cut_by_russia_eur_bn",
     "remittances_from_russia_change_eur_bn_not_in_totals", "remittances_from_russia_change_low_eur_bn_not_in_totals", "remittances_from_russia_change_high_eur_bn_not_in_totals", "remittances_from_russia_change_pct_gdp_not_in_totals",
+    "taken_by_russia_from_companies_eur_bn_not_in_totals", "taken_by_russia_from_companies_low_eur_bn_not_in_totals", "taken_by_russia_from_companies_high_eur_bn_not_in_totals", "taken_by_russia_from_companies_pct_gdp_not_in_totals",
     "cost_eur_bn", "cost_pct_gdp", "aid_eur_bn", "refugees_eur_bn", "paid_to_russia_eur_bn", "certainty", "gdp_eur_bn_2024", "population_m"];
   const lines = rows.map(r => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, r.shift, r.shiftLo, r.shiftHi, r.shiftGdp, r.shiftPp,
     r.ua, r.uaLo, r.uaHi, r.uaGdp, r.rus, r.rusLo, r.rusHi, r.rusGdp, r.rusCut, r.remit, r.remitLo, r.remitHi, r.remitGdp,
+    r.taken, r.takenLo, r.takenHi, r.takenGdp,
     r.cost, r.costGdp, r.aid, r.refugees, r.paidRus, r.cert, r.gdp, r.pop].map(q).join(","));
   return [head.join(","), ...lines].join("\n");
 }
 function csvParts(rows) {
   const head = ["iso3", "country", "period", "net_of_flowback", "part", "label", "eur_bn", "low_eur_bn", "high_eur_bn", "certainty", "sources"];
-  const lines = rows.flatMap(r => r.parts.map(p => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, p.k, p.en, p.v, p.lo, p.hi, p.cert, (p.src || []).join(" ")].map(q).join(",")));
+  // round 14b: what Russia took from companies comes last, marked: it is not in the net (only in the cost)
+  const all = r => r.parts.concat((r.takenParts || []).map(p => ({ ...p, k: "taken_" + p.k, en: p.en + " (not in totals; in the cost)" })));
+  const lines = rows.flatMap(r => all(r).map(p => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, p.k, p.en, p.v, p.lo, p.hi, p.cert, (p.src || []).join(" ")].map(q).join(",")));
   return [head.join(","), ...lines].join("\n");
 }
 // the same rows as JSON, with the two numbers and their parts
@@ -306,6 +314,9 @@ function jsonRows(rows) {
       change_in_payments_to_russia: { eur_bn: r4(r.rus), low: r4(r.rusLo), high: r4(r.rusHi), pct_gdp: r4(r.rusGdp), of_which_gas_cut_by_russia: r4(r.rusCut) },
       remittances_from_russia_change_not_in_totals: r.remit == null ? null : { eur_bn: r4(r.remit), low: r4(r.remitLo), high: r4(r.remitHi), pct_gdp: r4(r.remitGdp),
         note: "marker only: migrants' wages sent home from Russia against the level expected without the war; not in the net or either number" },
+      taken_by_russia_from_companies_not_in_totals: r.taken ? { eur_bn: r4(r.taken), low: r4(r.takenLo), high: r4(r.takenHi), pct_gdp: r4(r.takenGdp),
+        parts: r.takenParts.map(p => ({ part: p.k, label: p.en, eur_bn: r4(p.v), low: r4(p.lo), high: r4(p.hi), certainty: p.cert })),
+        note: "seized assets and forced exit costs (discount and exit fee): taken by Russia, not moved by the country's choice; not in the net or either number, counted in the cost" } : null,
       certainty: r.cert, parts: r.parts.map(p => ({ part: p.k, label: p.en, eur_bn: r4(p.v), low: r4(p.lo), high: r4(p.hi), certainty: p.cert })) })) }, null, 1);
 }
 function periodTextEn() {

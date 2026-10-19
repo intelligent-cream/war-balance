@@ -326,6 +326,44 @@ check(
     warn_only=not _pages,
 )
 
+# 25. round 14b (raised by the owner): what Russia took from companies (seizures, forced discounts and exit fees) is not
+# in the totals. No country carries an "exits" or "seized" part among the parts of the net; every home country with a
+# seizure or exit payment in company_flows.json has it in "taken" (the cost view), and calc() in index.html adds "taken"
+# to the cost parts only, never to the parts of the net or either headline number
+_cf = json.loads((ROOT / "research" / "2026-10" / "gaps" / "company_flows.json").read_text())["countries"]
+_in_tot = [
+    f"{c['iso3']} {x['k']}"
+    for c in countries.values()
+    for x in c.get("extra") or []
+    if x.get("k") in ("exits", "seized")
+]
+_missing = []
+for _iso, _d in _cf.items():
+    if _iso not in countries:
+        continue
+    _has = {x["k"] for x in countries[_iso].get("taken") or []}
+    _sz = any((v or {}).get("high") for v in (_d.get("seizure") or {}).values())
+    _ex = any(
+        (v or {}).get("high") for f in ("exit_contribution", "discount_transfer") for v in (_d.get(f) or {}).values()
+    )
+    if (_sz and "seized" not in _has) or (_ex and "exits" not in _has):
+        _missing.append(_iso)
+_html = (ROOT / "site" / "index.html").read_text()
+_shift_block = _html[_html.index("const shiftParts = [") : _html.index("const sell3")]
+_cost_block = _html[_html.index("const takenParts = ") : _html.index("const live = parts")]
+_neg = [x["c"] for c in countries.values() for x in c.get("taken") or [] if sum(x["c"]) < 0]
+check(
+    "seizures and forced exits not in the totals",
+    not _in_tot
+    and not _missing
+    and "taken" not in _shift_block
+    and "c.taken" in _cost_block
+    and "...takenParts" in _cost_block
+    and not _neg,
+    f"in the net: {_in_tot[:6] or 'none'}; missing from the cost view: {_missing[:6] or 'none'}; "
+    f"{sum(len(c.get('taken') or []) for c in countries.values())} taken parts, all in the cost view",
+)
+
 width = max(len(n) for _, n, _ in results)
 for status, name, detail in results:
     print(f"{status:4}  {name:<{width}}  {detail}")

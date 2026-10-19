@@ -174,3 +174,14 @@ A third independent review ("audit 3", economist and data journalist) raised eve
 | **Current euros** for every trade part (M5); **seizures** counted (M4); **frozen reserves** on their own line (M6); sign-aware correlations (M3); fairness note (M1) | audit, owner | units, coerced transfers and wording | Lithuania +10.50 → +11.91, Estonia +9.57 → +11.17, Austria +0.20 → −0.43, Hong Kong −2.36 → −4.16 |
 | Russia's and Ukraine's normal returns checked against 5% real + their premium, relabelled after tax, **not recomputed** | audit (check), owner (instruction to check) | per-group capital bases are not all recorded | none; recorded as an open issue |
 | Docs, legend, Iran note, price source, China's dual-use note, INSS search (L1–L5) | audit, owner | stale or missing text | display |
+
+## Round 14b: taken by Russia, and one normal return (19 October)
+
+Two changes, both **raised by the owner**. Details: [decisions](decisions.md#round-14b-taken-by-russia-not-in-the-totals)
+and [decisions](decisions.md#round-14b-russias-and-ukraines-normal-return); steps and effects in the
+[changelog](changelog.md#round-14b).
+
+| decision | raised by | why | effect |
+|---|---|---|---|
+| **Seizures and forced exit costs out of the totals, counted as a cost carried** (reverses round 5's forced discounts and exit fees and round 14's M4 seizures); shown in the panel, table, CSV, JSON and as a map marker; check 25 | owner | a loss imposed on the country's companies and a gain for Russia; the country did not choose to move that money | Finland +0.88, Austria +0.72, Ireland +0.54, Denmark +0.52; cost view up by the same amounts |
+| **Russia's and Ukraine's normal return as for every seller**: 5% real + the country risk premium, on book capital as a nominal USD rate (Russia 11.4%, Ukraine 23.0%); capital per unit of revenue measured for every product group | owner (after the round-14 check) | one rule for every seller; the files subtracted 2.4 and 15 points too little | Estonia −1.27, Lithuania −1.12, Moldova −0.99, Libya +0.86, Yemen +0.75 |
