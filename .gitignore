@@ -16,3 +16,6 @@ research/2026-10/raw/**/*.pdf
 research/2026-10/raw/**/*.html
 research/2026-10/raw/**/*.htm
 research/2026-10/raw/**/*.csv.gz
+
+# local check output
+/headline.json

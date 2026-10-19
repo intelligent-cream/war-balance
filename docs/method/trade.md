@@ -122,7 +122,7 @@ Russia's own customs record more imports than its partners report selling: EUR 2
 
 ## Hong Kong gold
 
-98% of Hong Kong's imports from Russia are taken to be precious metals (`HK_METALS_SHARE`; this figure is not yet traced to a research file, see [decisions](../decisions.md#constants-and-rules-written-down-in-round-11)). The share passed on to mainland China (0.57 in 2022 falling to 0.37 in 2025, from Hong Kong's own gold trade in `refine.json`) counts for China; only the rise above the pre-war level is treated as gold in transit. Hong Kong is labelled a gold transit hub. Code: the end of `apply_residual()`.
+The rise in Hong Kong's imports from Russia since before the war is taken to be precious metals (`HK_METALS_SHARE`, per year). Round 12 measured it from Hong Kong's own import records in UN Comtrade ([raw/comtrade_hkg](../../research/2026-10/raw/comtrade_hkg/)): precious metals (HS 71) were 56–67% of its imports from Russia in 2019–2021 and 85%, 99%, 98% and 99% in 2022–2025. Against the 2019–2021 average, HS 71 rose by more than the total in every year (other goods fell), so the share of the rise is 1.0 (capped; 2026 takes 2025's). It was a flat 0.98 that no research file explained. The share passed on to mainland China (0.57 in 2022 falling to 0.37 in 2025, from Hong Kong's own gold trade in `refine.json`) counts for China; only the rise above the pre-war level is treated as gold in transit. Hong Kong is labelled a gold transit hub. Code: the end of `apply_residual()`.
 
 ## Gold and hidden channels
 

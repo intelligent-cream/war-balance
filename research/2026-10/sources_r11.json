@@ -853,6 +853,14 @@
      "what": "crypto payment channel volumes",
      "confirmed": true,
      "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: Hong Kong's imports from Russia, all goods and HS 71, 2023",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=344&partnerCode=643&period=2023&flowCode=M&cmdCode=TOTAL,71",
+     "kind": "primary",
+     "what": "round 12: HK_METALS_SHARE, the precious-metals share of Hong Kong's rise (same query for 2019-2025, raw/comtrade_hkg)",
+     "confirmed": true,
+     "checked": "fetched"
     }
    ],
    "note": "Rough indication (D); gold flows from UN Comtrade (primary), the rest from NGO and press reports."
@@ -1233,6 +1241,14 @@
    "model": false,
    "links": [
     {
+     "title": "Multilateral Sanctions Monitoring Team, MSMT/2025/1: Unlawful Military Cooperation including Arms Transfers between North Korea and Russia (29 May 2025, UN document S/2025/340)",
+     "url": "https://msmt.info/api/file/download/18858",
+     "kind": "primary",
+     "what": "North Korea volumes: up to 9m rounds in 2024 per a participating state, Open Source Centre 4.2-5.8m rounds Aug 2023-Mar 2025 (paras 8, 11, 12); over 20,000 containers (para 11); at least 100 ballistic missiles in 2024 and more than 200 heavy-artillery vehicles (para 13); over 11,000 troops in late 2024 and over 3,000 more Jan-Mar 2025 (paras 9, 25, 26). No prices: the valuation stays our judgement. Listed at https://msmt.info/Publications/Reports; PDF kept as research/2026-10/raw/msmt/msmt_2025_1.pdf (listed in raw/MANIFEST.json)",
+     "confirmed": true,
+     "checked": "fetched; PDF downloaded and read (2026-10-19)"
+    },
+    {
      "title": "NK News on INSS: North Korea likely earned USD 14.4bn from military deals with Russia",
      "url": "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/",
      "kind": "secondary",
@@ -1297,7 +1313,7 @@
      "checked": "exists in research file; site blocked automated fetch (403)"
     }
    ],
-   "note": "No official statistics; intelligence estimates reported by press (INSS, ROK NIS/DIA, MSMT, HUR)."
+   "note": "No official statistics. One primary report is linked: the Multilateral Sanctions Monitoring Team's MSMT/2025/1 (volumes only, no prices). The rest are intelligence estimates reported by press (INSS, ROK NIS/DIA, HUR)."
   },
   "china_military": {
    "model": false,
@@ -2532,26 +2548,26 @@
      "checked": "fetched"
     },
     {
-     "title": "Regulation (EU) 2024/792 (Ukraine Facility)",
+     "title": "Regulation (EU) 2024/792 (Ukraine Facility): no provisioning and no provisioning rate set for its loans",
      "url": "https://eur-lex.europa.eu/eli/reg/2024/792/oj",
      "kind": "primary",
-     "what": "maturity and interest subsidy",
+     "what": "maturity and interest subsidy; Decision B: Ukraine Facility loans backed by budget headroom, 9% kept",
      "confirmed": true,
-     "checked": "confirmed by web search (site blocks automated fetch)"
+     "checked": "fetched 2026-10-19 from the Publications Office (publications.europa.eu/resource/celex/32024R0792, the same Official Journal text; eur-lex.europa.eu blocks automated access) and read"
     },
     {
-     "title": "Decision (EU) 2022/1628 (exceptional MFA)",
+     "title": "Decision (EU) 2022/1628 (exceptional MFA EUR 5bn; repurposed EIB ELM loans EUR 1.59bn): provisioning rate 70%",
      "url": "https://eur-lex.europa.eu/eli/dec/2022/1628/oj",
      "kind": "primary",
-     "what": "interest rate subsidy",
+     "what": "interest rate subsidy; Decision B: exceptional MFA EUR 5bn and the EUR 1.59bn ELM loans, central expected loss 70% (Articles 11 and 12; 9% paid in plus member states' guarantees)",
      "confirmed": true,
-     "checked": "confirmed by web search (site blocks automated fetch)"
+     "checked": "fetched 2026-10-19 from the Publications Office (publications.europa.eu/resource/celex/32022D1628, the same Official Journal text; eur-lex.europa.eu blocks automated access) and read"
     },
     {
      "title": "Council ST-5738-2026: Ukraine Support Loan",
      "url": "https://data.consilium.europa.eu/doc/document/ST-5738-2026-INIT/en/pdf",
      "kind": "primary",
-     "what": "repaid from reparations",
+     "what": "repaid from reparations; Decision B: the Ukraine Support Loan is repaid only from Russian reparations and has no provisioning rate, so it keeps its fixed values",
      "confirmed": true,
      "checked": "fetched"
     },
@@ -2586,9 +2602,145 @@
      "what": "EBRD shareholding",
      "confirmed": true,
      "checked": "fetched"
+    },
+    {
+     "title": "Ukrinform: Ukraine prices USD 1.25bn 8-year Eurobond at 6.875% (27 Apr 2021)",
+     "url": "https://www.ukrinform.net/rubric-economy/3235891-ukraine-to-issue-eurobonds-worth-125b-finance-ministry.html",
+     "kind": "primary",
+     "what": "round 12: Ukraine's normal (pre-war) rate, part of the 2021 mean",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Interfax-Ukraine: USD 500m tap of the 2029 Eurobond at 6.30% (22 Jul 2021)",
+     "url": "https://en.interfax.com.ua/news/economic/758134.html",
+     "kind": "primary",
+     "what": "round 12: Ukraine's normal (pre-war) rate, part of the 2021 mean",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "ICU Weekly Insight 28 Mar 2022: Eurobond lows of 21-34 cents = yields of 37-427%",
+     "url": "https://icu.ua/download/4058/ICUWeeklyInsight-20220328-Eng.pdf",
+     "kind": "primary",
+     "what": "round 12: price-to-yield calibration; one of 72 weekly price ranges 2022-2024 in raw/loan_rates/icu_weekly_eurobond_prices.json",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "ICU Weekly Insight 18 Dec 2023: Eurobonds at 24-31 cents",
+     "url": "https://icu.ua/download/4446/ICUWeeklyInsight-20231218-Eng.pdf",
+     "kind": "primary",
+     "what": "round 12: promised war yield 2023 (one of the weekly prices)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eavex Capital Fixed Income Weekly 22 Dec 2025: yields of the restructured Eurobonds",
+     "url": "https://www.eavex.com.ua/wp-content/uploads/2025/12/eavex-fi-weekly-dec-22.pdf",
+     "kind": "primary",
+     "what": "round 12: post-restructuring yields 2024-2026 (one of 106 weekly tables in raw/loan_rates/eavex_weekly_eurobond_ytm.json)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Government of Ukraine: restructuring of USD 20.5bn Eurobonds completed (4 Sep 2024)",
+     "url": "https://www.kmu.gov.ua/en/news/ukraina-zavershyla-restrukturyzatsiiu-derzhavnykh-oblihatsii-ta-harantovanykh-derzhavoiu-ievrooblihatsii-na-sumu-205-mlrd-dolariv-ssha",
+     "kind": "primary",
+     "what": "round 12: bondholders' loss: 37% face cut, about 60% present-value cut at 14%",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Government of Ukraine: memorandum with the Group of Creditors of Ukraine, debt service suspended to Feb 2030 (17 Apr 2026)",
+     "url": "https://www.kmu.gov.ua/en/news/serhii-marchenko-ta-hrupa-ofitsiinykh-kredytoriv-z-krain-g7-ta-paryzkoho-klubu-pidpysaly-memorandum-pro-vidterminuvannia-platezhiv-z-pohashennia-i-obsluhovuvannia-borhu-ukrainy",
+     "kind": "primary",
+     "what": "round 12: bilateral lenders' loss: deferred interest capitalised, repaid 2035-2039",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "French Treasury: Group of Creditors of Ukraine statement (17 Apr 2026)",
+     "url": "https://www.tresor.economie.gouv.fr/Articles/2026/04/17/group-of-creditors-of-ukraine-statement",
+     "kind": "primary",
+     "what": "round 12: debt covered (paid out before 26 Nov 2025), GCU members",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "IMF press release 26/66: EFF arrangement for Ukraine (26 Feb 2026)",
+     "url": "https://www.imf.org/en/news/articles/2026/02/26/pr-26066-ukraine-imf-executive-board-approves-usd-8point1-billion-under-an-eff-arrangement",
+     "kind": "primary",
+     "what": "round 12: GCU to extend the standstill and complete a definitive debt treatment",
+     "confirmed": true,
+     "checked": "confirmed by web fetch (site blocks curl)"
+    },
+    {
+     "title": "European Parliament Legislative Observatory 2022/0213(COD): exceptional MFA, provisioning 70% instead of 9%",
+     "url": "https://oeil.europarl.europa.eu/oeil/en/document-summary?id=1710888",
+     "kind": "primary",
+     "what": "round 12: expected loss for EU loans (9% central, 70% high)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Schlegl, Trebesch and Wright: The Seniority Structure of Sovereign Debt (NBER w25793)",
+     "url": "https://www.nber.org/papers/w25793",
+     "kind": "primary",
+     "what": "round 12: IMF and World Bank are senior creditors",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Interfax: Ukraine repaid USD 279.7m to the IMF in February 2026 (6 Mar 2026)",
+     "url": "https://interfax.com/newsroom/top-stories/116503/",
+     "kind": "primary",
+     "what": "round 12: servicing record to the IMF",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "FRED (OECD): long-term government bond yields, 10-year, Germany (IRLTLT01DEM156N)",
+     "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01DEM156N&cosd=2021-01-01",
+     "kind": "primary",
+     "what": "round 12: lenders' funding rates for the cost view (same series for CA, FR, IT, JP, KR, NL, ES, FI, SK, GB, US, euro area)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Decision (EU) 2022/313 (emergency MFA EUR 1.2bn): loans provisioned under Regulation 2021/947",
+     "url": "https://eur-lex.europa.eu/eli/dec/2022/313/oj",
+     "kind": "primary",
+     "what": "Decision B: emergency MFA, central expected loss 9% (no rate of its own; Regulation 2021/947 applies)",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19 from the Publications Office (publications.europa.eu/resource/celex/32022D0313, the same Official Journal text; eur-lex.europa.eu blocks automated access) and read"
+    },
+    {
+     "title": "Regulation (EU) 2021/947 (NDICI), Article 31(5): provisioning rate 9% for macro-financial assistance",
+     "url": "https://eur-lex.europa.eu/eli/reg/2021/947/oj",
+     "kind": "primary",
+     "what": "Decision B: the general 9% rate",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19 from the Publications Office (publications.europa.eu/resource/celex/32021R0947, the same Official Journal text; eur-lex.europa.eu blocks automated access) and read"
+    },
+    {
+     "title": "Decision (EU) 2022/1201 (exceptional MFA EUR 1bn): provisioning rate 70%",
+     "url": "https://eur-lex.europa.eu/eli/dec/2022/1201/oj",
+     "kind": "primary",
+     "what": "Decision B: exceptional MFA EUR 1bn, central expected loss 70% (Article 1, recital 13)",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19 from the Publications Office (publications.europa.eu/resource/celex/32022D1201, the same Official Journal text; eur-lex.europa.eu blocks automated access) and read"
+    },
+    {
+     "title": "Regulation (EU) 2022/2463 (MFA+ 2023, EUR 18bn): no provisioning and no provisioning rate set",
+     "url": "https://eur-lex.europa.eu/eli/reg/2022/2463/oj",
+     "kind": "primary",
+     "what": "Decision B: MFA+ backed by budget headroom, 9% kept",
+     "confirmed": true,
+     "checked": "fetched 2026-10-19 from the Publications Office (publications.europa.eu/resource/celex/32022R2463, the same Official Journal text; eur-lex.europa.eu blocks automated access) and read"
     }
    ],
-   "note": ""
+   "note": "Round 12: loans at measured rates and expected losses (docs/method/loans.md); every rate and loss has a link here"
   },
   "money_ledger": {
    "model": false,

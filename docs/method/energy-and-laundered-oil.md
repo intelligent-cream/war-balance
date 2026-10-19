@@ -23,7 +23,7 @@ For these countries the pipeline:
 2. replaces the gas share in the CREA value with final-use gas (`non_gas_share()`);
 3. takes the gas recorded in customs (HS 2711, [`customs_gas.json`](../../research/2026-10/gaps/customs_gas.json)) out of `to_rus` and adds final-use gas, yearly values and 2019–2021 baseline alike;
 4. for **non-transit** countries keeps whichever is larger, customs gas or final-use gas (Greece's customs record more);
-5. handles **gas booked under other customs headings** (`GAS_IN_CUSTOMS`: Turkey 100%, Poland 100%, Germany 7%) so it is not added twice. This audit fix cut Turkey's payments to Russia from EUR 220bn to 184.5bn ([audit-notes.md](../../research/2026-10/gaps/audit-notes.md)).
+5. handles **gas booked under other customs headings** (`GAS_IN_CUSTOMS`: Turkey 100%, Poland 100%; Germany 14% in 2021 and 15% in 2022, derived in round 12 from the EUR 2.3bn and 3.5bn of unlabelled gas the audit found in German customs, divided by German final-use Russian gas of EUR 16.6bn and 23.7bn; was 7%, a judgement) so it is not added twice. This audit fix cut Turkey's payments to Russia from EUR 220bn to 184.5bn ([audit-notes.md](../../research/2026-10/gaps/audit-notes.md)).
 
 [`check_data.py`](../../pipeline/check_data.py) check 13 verifies that every gas user's 2021 payments include at least its final-use gas.
 
@@ -118,7 +118,7 @@ had left about EUR 14bn uncounted):
 |---|---|---|
 | Turkey | EUR 0.4–3.6bn a year in 2022–2026 | `hub_buyers.json` `turkey_refining.by_year` |
 | India | EUR 8–16bn a year | `hub_buyers.json` `india_refining` |
-| China | crude value ÷ 0.70 (India's measured crude-to-fuel ratio) | `round4a.json` `china_refining` |
+| China | crude value ÷ China's own measured crude share of its fuel exports (0.72–0.82 in 2022–2026, [`crude_content.json`](../../research/2026-10/gaps/crude_content.json); round 12, was a flat 0.70) | `round4a.json` `china_refining` |
 
 [`check_data.py`](../../pipeline/check_data.py) check 15 verifies the refining source on Turkey and India. **EU refiners' exports** (Lithuania, Finland, others) are not counted as laundered oil anywhere and stay with the refiner country (`round4a.json` `eu_refiners`).
 

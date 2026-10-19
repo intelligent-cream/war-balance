@@ -7,7 +7,7 @@ The Ukraine side of the ledger: government aid (Kiel Institute and, for the 190 
 Data: [`kiel.json`](../../research/2026-10/kiel.json) ([notes](../../research/2026-10/kiel-notes.md)), the [Kiel Institute Ukraine Support Tracker](https://www.kielinstitut.de/research/topics/war-against-ukraine/ukraine-support-tracker/), Release 31 (data 24 January 2022 to 31 August 2026), allocations by month (`Allocations per Month`), categories military, financial and humanitarian. Code: aid section of [build_data.py `build()`](../../pipeline/build_data.py).
 
 - **Allocated, not pledged.** "Allocated" means delivered or contracted. Commitments not yet allocated are shown as `pledged_open` in "More details", not counted.
-- **Loans** count at their **economic value to Ukraine** in the net shift (round 5, see below) and at the lender's **grant equivalent** (26%, `LOAN_GRANT_ELEMENT`: Kiel's loan terms at the lender's own funding rate, round 11; cost-to-lender view, certainty C) in the cost view.
+- **Loans** count at their **economic value to Ukraine** in the net shift and at the **lender's cost** in the cost view, both per loan item from measured rates and expected losses (round 12, [loans](loans.md); certainty C).
 - **ERA loans excluded.** G7 loans repaid from immobilised Russian assets (ERA: US 18.3, EU 18.1, Canada 3.3, UK 2.6, Japan 1.6 EUR bn) are Russia's money, not the donor's. They are taken out of the donor's years (in the year paid: US 2024, Japan 2026, UK 2025–2026, the others 2025), loans and financial category (`era_excluded` in `data.json`); [`check_data.py`](../../pipeline/check_data.py) check 5 verifies this.
 - **Amounts without a month** (Italy 1.3bn) are spread over the years in proportion.
 
@@ -39,24 +39,21 @@ shrinks over time as aid moved from stocks to new production.
 
 ### Loans at their economic value (round 5)
 
-A loan that is repaid is worth less to Ukraine than a grant. Each loan and guarantee counts at its **grant element**:
-face value minus the present value of Ukraine's repayments, discounted at the rate Ukraine would otherwise pay for
-long-term money (central 10%; low 6–7%, its 2021 yields; high 13–15%, current yields). The 10% is a judgement: it is
-the bottom of Ukraine's post-restructuring Eurobond yields, and the flat rate the OECD's aid committee (DAC) once used
-for its grant-element test. It is not a current international standard. The IMF's debt-limits policy uses a unified
-5% rate ([IMF](https://www.imf.org/en/Topics/sovereign-debt/debt-limits-policy)), and since the 2018 data the DAC uses
-rates that differ by the borrower's income group. Because the map measures the loan's value to Ukraine, Ukraine's own
-borrowing cost is the closer guide ([decisions](../decisions.md#constants-and-rules-written-down-in-round-11)). Terms come from Kiel's own loan columns and the legal texts (EU MFA+ and
-Ukraine Facility: 35 years with an interest subsidy; JICA 30 years at 1%; Canada via the IMF account). Guarantees on
-World Bank loans count at the grant element of the loan they make possible; guarantees for lending to Ukrainian firms
-at 10 / 25 / 40% of face. Over 2022–2026 face value EUR 96.5bn becomes about 64bn (40–77): Japan −5.8bn, Germany −4.4
-(mostly its EU share), France −4.1, Canada −2.9, Italy −2.7, UK −2.7. The US is unchanged (its only loan is ERA, already
-left out). Code: `apply_loans_value()`; data: [`loans_value.json`](../../research/2026-10/gaps/loans_value.json)
-([notes](../../research/2026-10/gaps/loans_value-notes.md)). The cost view keeps the lender's cost (26% of face since round 11, was 30%): the economic value is what Ukraine gains, discounted at Ukraine's borrowing rate, not what the lender gave up.
+A loan that is repaid is worth less to Ukraine than a grant. Since round 12 each loan and guarantee counts at its gift:
+cheaper interest, discounted at Ukraine's normal 2021 rate (6.7%), plus the default risk the lender really carries (the
+measured expected loss of its creditor class: 0 for the IMF and World Bank, for EU loans the provisioning rate the EU set for each loan (70% for the 2022 exceptional MFA and the repurposed EIB loans, 9% for the rest), the bilateral standstill
+for G7 and Paris Club lenders, about 95% for the 2026 Support Loan). The high end discounts at the promised war yield
+of the year of payout (38% in 2022, 40% in 2023, 15–24% after). Round 5 used a flat 10% (6–15%), a judgement. Over
+2022–2026 face value EUR 96.5bn becomes about 55bn (42–85); it was 64bn (40–77). The full method, the measured rates,
+a worked example and the evidence are on the [loans page](loans.md). Code: [`loan_rates.py`](../../pipeline/loan_rates.py)
+and `apply_loans_value()`; data: [`loans_value.json`](../../research/2026-10/gaps/loans_value.json)
+([notes](../../research/2026-10/gaps/loans_value-notes.md)). The cost view uses the lender's cost: the same terms and
+losses at the lender's own funding rate ([loans](loans.md#the-cost-view)).
 
 **Multilateral lending** (IMF, World Bank, EBRD, CEB): only the rise over each institution's 2019–2021 own-risk lending
 counts (donor-guaranteed and trust-fund lending is already in Kiel), valued the same way and credited by shareholding,
-as its own part. Biggest: US 0.66bn, Japan 0.27, Germany 0.25, China 0.23, France 0.21.
+as its own part ([loans](loans.md#new-lending-by-the-imf-and-world-bank)). Biggest: US 0.28bn, Germany 0.13, Japan
+0.12, France 0.11, Italy 0.10, China 0.09 (round 5: US 0.66, Japan 0.27).
 
 **ERA years** (round 5): the ERA loans (repaid from frozen Russian assets, left out) are removed in the years they were
 paid: the US in 2024, Japan in 2026, the UK 1.78bn in 2025 and the rest in 2026, the others in 2025; the UK's is coded
@@ -106,6 +103,11 @@ North Korea, Iran and Belarus are revalued from more sources ([`military_rus_r6.
 | Belarus | 1.3 (0.55–2.7) | D | ammunition from army stocks; components sold by companies are already in trade |
 | China | 1.3 (1.0–3.0) | D | unchanged (`china_military.json`) |
 
+North Korea's volumes are checked against a primary report since round 12: the Multilateral Sanctions Monitoring Team's
+MSMT/2025/1 (29 May 2025, UN document S/2025/340). It confirms the rounds, containers, missiles, artillery and troops,
+but gives no prices, so the value stays our judgement and the letter stays C
+([comparison](../../research/2026-10/gaps/military_rus_r6-notes.md#checked-against-the-primary-report-round-12)).
+
 ## Flowback
 
 Part of military aid comes back to the donor as orders for its own industry. Counting the full aid as a shift toward Ukraine while ignoring this would flatter big arms producers. Code: flowback section of `build()`; data: [`flowback.json`](../../research/2026-10/flowback.json) ([notes](../../research/2026-10/flowback-notes.md)) and [`flowback2.json`](../../research/2026-10/gaps/flowback2.json) ([notes](../../research/2026-10/gaps/flowback2-notes.md)).
@@ -150,6 +152,7 @@ its balance with Ukraine is +50bn.
 ## See also
 
 - [overview.md](overview.md): where these parts sit in the net shift and the cost view
+- [loans.md](loans.md): what a loan is worth to Ukraine and what it costs the lender (round 12)
 - [ranges.md](ranges.md): certainty letters and default ranges
 - [reference/sources.md](../reference/sources.md#aid-refugees-and-military)
 - Research notes: [kiel-notes.md](../../research/2026-10/kiel-notes.md), [aid_gaps-notes.md](../../research/2026-10/gaps/aid_gaps-notes.md), [refugees-notes.md](../../research/2026-10/gaps/refugees-notes.md), [round4b-notes.md](../../research/2026-10/gaps/round4b-notes.md), [flowback-notes.md](../../research/2026-10/flowback-notes.md), [flowback2-notes.md](../../research/2026-10/gaps/flowback2-notes.md), [china_military-notes.md](../../research/2026-10/gaps/china_military-notes.md), [other-notes.md](../../research/2026-10/other-notes.md)

@@ -6,6 +6,7 @@ Everything the map shows comes from one file, `site/data.json`, built by one scr
 
 ```sh
 ./setup.sh                                  # uv sync + pre-commit hooks (run once, first)
+uv run python pipeline/loan_rates.py        # only after changing a loan input: rewrites loans_value.json (round 12)
 uv run python pipeline/build_data.py        # research/ -> site/data.json and research/2026-10/gaps.md
 uv run python pipeline/check_data.py        # checks; exits non-zero on any FAIL
 cd site && python3 -m http.server 8000      # open http://localhost:8000
@@ -65,7 +66,7 @@ Two things apply to every step:
 | 35 | `apply_company_flows()` | exit payments to Russia and profits sent home by Russian-owned companies abroad (`company_flows.json`; metals, mining and chemicals plants from `russian_owned_r10.json`) | [Russia](../method/russia-state-and-companies.md#companies-leaving-russia) |
 | 36 | `apply_refugees_net()` | refugee hosting at net cost: cost minus the taxes refugees pay (`refugees_net.json`) | [refugees](../method/aid-refugees-military.md#refugees) |
 | 37 | `apply_ua_arms_purchases()` | arms Ukraine bought abroad, as flowback to the seller (`ua_arms_purchases.json`) | [flowback](../method/aid-refugees-military.md#arms-ukraine-bought-abroad-round-5) |
-| 38 | `apply_loans_value()` | loans and guarantees at their grant element (`loans_value.json`) | [aid](../method/aid-refugees-military.md#loans-at-their-economic-value-round-5) |
+| 38 | `apply_loans_value()` | loans and guarantees at their value to Ukraine and, for the cost view, at the lender's cost (`loans_value.json`, values per loan item from `loan_rates.py`, round 12) | [loans](../method/loans.md) |
 | 39 | `apply_money_ledger()` | every euro that reached Ukraine assigned to the economy where it was spent; replaces the earlier flowback (`money_ledger.json`) | [flowback](../method/aid-refugees-military.md#round-6-the-all-money-ledger) |
 | 40 | `apply_russian_arms()` | payments to Russia for Russian weapons against the no-war level (`russian_arms_exports.json`, `arms_r6.json`) | [Russia](../method/russia-state-and-companies.md#weapons-bought-from-russia) |
 | 41 | `apply_payment_agents()` | fees kept by payment agents settling Russia's trade (`payment_channels.json`) | [trade](../method/trade.md#payment-agents-round-6) |
@@ -92,7 +93,7 @@ Per country: `n` (numeric ISO for the map shapes), `iso3`, `name`, `kind`, `pop`
 | `to_rus.gain`, `buy_ukr.gain` | the seller's net gain per euro (round 10): weights per year as `[low, central, high]`; in `to_rus.gain`, `e` is for what was expected without the war (the 2019–2021 mix) and `a` for what was bought (that year's mix) |
 | `to_rus.laund_gain`, `svc_bought.gain` | Russia's gain on crude in laundered fuel (`e` for the pre-war level, `a` for what was bought, with relabelled Russian products at the products gain) and on services, per year `[low, central, high]` |
 | `svc_bought`, `svc_sold`, `shipping` | services and tanker income; `svc_sold.relocants_out` marks that relocants' spending was taken out |
-| `aid` | `years`, `cats`, `loans_face`, `loans_grant_eq`, `loans_value_ukraine`, `loan_adj_own`, `loan_adj_eu`, `weapons_mv`, `era_excluded`, `pledged_open`, `eu_years`, `eu_share`, `eu_src` (sources of the EU-level aid part), `refugee_years*`, `refugee_gross`, `refugee_donor_share`, `refugee_cert`, `refugee_src` |
+| `aid` | `years`, `cats`, `loans_face`, `loans_grant_eq` (with `loans_grant_eq_lo`, `loans_grant_eq_hi` since round 12), `loans_value_ukraine`, `loan_adj_own`, `loan_adj_eu`, `weapons_mv`, `era_excluded`, `pledged_open`, `eu_years`, `eu_share`, `eu_src` (sources of the EU-level aid part), `refugee_years*`, `refugee_gross`, `refugee_donor_share`, `refugee_cert`, `refugee_src` |
 | `energy` | `premium*`, `discount*` |
 | `laund` | laundered oil with its pre-war level and growth |
 | `extra` | parts with no series of their own, each `{k, label, c, l, h, cert, src}` as yearly shifts toward Ukraine: `statefin`, `exits`, `rusfirms`, `multilat`, `rusarms`, `agents`, `frozen`, `remit` |

@@ -46,7 +46,7 @@ The parts below are what the country panel's waterfall shows (`shiftParts` and `
 | Return denied to Russia on its frozen reserves | yearly return the frozen central-bank reserves would have earned (rates per currency and year); Euroclear and Clearstream a third to the host, two thirds to all EU members | Ukraine | [russia-state-and-companies.md](russia-state-and-companies.md#frozen-central-bank-reserves-round-7) |
 | Wages earned working in Russia (migrants' remittances) | labour remittances against the expected level, × the money rule; relocants' transfers left out | either | [trade.md](trade.md#remittances-and-relocants-round-7) |
 | Fees earned settling Russia's trade (payment agents) | fees kept by residents of the agent's country, against 2021 | Russia | [trade.md](trade.md#payment-agents-round-6) |
-| Share of new IMF, World Bank and EBRD lending | rise over pre-war own-risk lending, at economic value, by shareholding | Ukraine | [aid-refugees-military.md](aid-refugees-military.md#loans-at-their-economic-value-round-5) |
+| Share of new IMF, World Bank and EBRD lending | rise over pre-war own-risk lending, at economic value, by shareholding | Ukraine | [loans.md](loans.md#new-lending-by-the-imf-and-world-bank) |
 | Flowing back (optional, on by default) | every euro for Ukraine followed to the economy where it was spent (own and others' aid incl. stock replacement, arms Ukraine bought, energy, relief and rebuilding) and extra sales to Ukraine, × the money rule | subtracted from the balance with Ukraine | [aid-refugees-military.md](aid-refugees-military.md#flowback) |
 
 Not a part of its own, but built into the parts above:
@@ -111,8 +111,9 @@ taxes (Finance Ministry totals). Each country's payments get the gain of what it
   the war-time premium) do not move the mix, and 2021 matches the expected mix exactly;
 - **fuel a refiner passed on** (India, Türkiye, China) counts at the gain on crude, the same as for its buyers;
 - **gold** counts at the gain on gold: gold the UAE and Hong Kong pass on to their buyers, and Hong Kong's own rise
-  since before the war (98% precious metals, a figure not yet traced to a research file: see
-  [decisions](../decisions.md#constants-and-rules-written-down-in-round-11)); everything the UAE passes on is treated as gold;
+  since before the war (all of it precious metals: UN Comtrade shows Hong Kong's HS 71 imports from Russia rising more
+  than its total in every year, round 12; see [trade](trade.md#hong-kong-gold)); everything the UAE passes on is
+  treated as gold;
 - **Moldova's gas** comes from its own customs, since Transnistria's unpaid gas is not counted;
 - the Rosatom customs over-count taken out of Türkiye's and Egypt's payments is rescaled to the same gain.
 
@@ -150,7 +151,7 @@ gold outline (threshold EUR 10m and 0.05% of GDP).
 
 "Cost carried" is a second lens: what the country gave up, not where money went. Parts (`costParts` in `calc()`):
 
-- aid with loans at the lender's grant equivalent (26% of face value since round 11, `LOAN_GRANT_ELEMENT`; the net shift uses their value to Ukraine instead). The loan part's range is half to one and a half times that value (13% to 39% of face, capped at face value), set in `calc()`. The round-11 research measured 9% to 47%; the narrower band is a judgement ([decisions](../decisions.md#constants-and-rules-written-down-in-round-11));
+- aid with loans at the lender's cost: per loan item, the loan's terms and the expected loss of its creditor class, discounted at the lender's own funding rate, with a low and high value per country (round 12; was 26% of face, `LOAN_GRANT_ELEMENT`, with a half-to-one-and-a-half band). The net shift uses the value to Ukraine instead ([loans](loans.md#the-cost-view));
 - donated weapons at their recorded value;
 - refugee hosting at net cost;
 - undisclosed aid and private donations;
@@ -190,6 +191,7 @@ The wide range comes almost entirely from "less paid to Russia": the expected no
 
 ## See also
 
+- [loans.md](loans.md): loans at their value to Ukraine and at the lender's cost (round 12)
 - [counterfactual.md](counterfactual.md), [prices.md](prices.md), [ranges.md](ranges.md): the three ingredients of every trade part
 - [reference/pipeline.md](../reference/pipeline.md): how the parts are built into `site/data.json`
 - [limitations.md](../limitations.md): what the method does not capture

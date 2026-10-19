@@ -1,6 +1,6 @@
 # Changelog: research rounds
 
-The map's data were built in eleven research rounds in October 2026, each followed by changes to the pipeline and the site. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
+The map's data were built in twelve research rounds in October 2026, each followed by changes to the pipeline and the site. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
 
 ## Round 1
 
@@ -226,6 +226,51 @@ every country are the same before and after (checked with the site's own `calc()
   total's letter changes.
 - **Clean-up.** The AI-guessed incentive scores are no longer in `data.json`, and their dead code is gone. Research and
   pipeline reference pages list the round-11 files, `detail.json` and the new build steps.
+
+## Round 12: data precision
+
+**Measured values for six judgements, 19 October 2026.** The round-11 audit listed values that were judgements or not
+traced. Round 12 replaced six of them with measured ones, one at a time, recording each change's effect with the site's
+own `calc()` ([decisions](decisions.md#applied-in-round-12-data-precision), [decision log](decision-log.md#round-12-data-precision-19-october)).
+
+- **Loans** ([loans](method/loans.md), new page). The gift in a loan is now cheaper interest, discounted at Ukraine's
+  2021 bond rate (6.7%), plus the default risk the lender really carries: the measured expected loss of its creditor
+  class (IMF and World Bank 0, EU 9%, the bilateral standstill for G7 and Paris Club lenders, about 95% for the 2026
+  Support Loan). The high end uses the promised war yield of the year of payout (38% in 2022, 40% in 2023, 24%, 17% and
+  15% after), measured from 72 weekly ICU price reports and 106 weekly Eavex yield tables. It was a flat 10%. Loans now
+  count EUR 53bn (42–85) of 96.5bn face, instead of 64bn (40–77). New script:
+  [`pipeline/loan_rates.py`](../pipeline/loan_rates.py); raw downloads in
+  [`raw/loan_rates`](../research/2026-10/raw/loan_rates/).
+- **Loans in the cost view**: each loan item's cost to its lender, with the same terms and losses at the lender's own
+  funding rate, and each country's own low and high (`loans_grant_eq_lo`, `loans_grant_eq_hi`). It was 26% of face,
+  with a half-to-one-and-a-half band. Japan's IBRD guarantees now cost it almost nothing; EU members carry more.
+- **China's crude-to-fuel ratio**: China's own measured share per year (0.72–0.82), was 0.70. What is taken off China's payments for the crude in its fuel exports now equals that crude's value (China −0.005 points).
+- **Germany's gas already in customs**: 0.14 (2021) and 0.15 (2022), derived from the audit's EUR 2.3bn and 3.5bn, was 0.07.
+- **Belarus's gas price band**: ±8% (2023–2025) and ±15% (2026) from the research, was ±2%.
+- **Hong Kong's precious-metals share**: 1.0, measured from UN Comtrade, was 0.98 (not traced).
+
+Headline effects (% of GDP, round 11 → round 12): Hong Kong −4.29 → −4.20, Germany +3.71 → +3.64, Japan +0.48 → +0.42,
+Sweden +2.98 → +2.92, Finland +9.06 → +9.00, France +1.60 → +1.55, Spain +1.13 → +1.08, Italy +2.00 → +1.95, Canada
++0.47 → +0.43, the UK +1.15 → +1.12. The US, Türkiye, India, China, Belarus, the UAE and Australia move by less than 0.01
+points. Cost view: Finland +0.07, France and Italy +0.06, Germany +0.05; Japan −0.07, Canada −0.04, the UK −0.03.
+
+- **Decision B: the EU's own provisioning rate per loan** (the owner's choice). Each EU loan's central expected loss is
+  now the provisioning rate the EU set for it in its legal text: 70% for the exceptional MFA of 2022 (EUR 1bn and 5bn,
+  Decisions 2022/1201 and 2022/1628) and the EUR 1.59bn of repurposed EIB ELM loans (2022/1628); 9% for the emergency
+  MFA (2022/313, under Regulation 2021/947). MFA+ (2022/2463) and the Ukraine Facility (2024/792) set no provisioning
+  rate, because they rest on budget headroom, so the usual 9% is kept. The low (0) and the high (the war yield) do not
+  change. EU-level loans are worth EUR 49.4bn to Ukraine instead of 47.3bn, all loans 55bn instead of 53bn (lender's
+  cost 34bn instead of 30bn). All 27 EU members move toward Ukraine by 0.007 to 0.014 points (Finland and France
+  +0.014); in the cost view by 0.013 to 0.026 ([loans](method/loans.md#by-loan-type)).
+- **Trace by money flow** ([trace](trace.md), new page). Every part on the map is grouped into one of 26 money flows.
+  Each flow has one entry: what it is, the method section, the decisions behind it, its sources with their exact links,
+  the research files and raw data, the code, and which values are data or judgement. The map has a new **Sources** view
+  with the same groups, and a § link next to each part in a country's panel opens its flow
+  (`#view=sources&flow=loans`). No number changes.
+- **North Korea's primary source**: the Multilateral Sanctions Monitoring Team's report MSMT/2025/1 (29 May 2025, UN
+  document S/2025/340) is now read and linked as a primary source of `military_rus_r6`. It confirms the volumes (rounds,
+  containers, missiles, artillery, troops) but gives no prices, so the certainty stays C and no number changes
+  ([comparison](../research/2026-10/gaps/military_rus_r6-notes.md#checked-against-the-primary-report-round-12)).
 
 ## See also
 

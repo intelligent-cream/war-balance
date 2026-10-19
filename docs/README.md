@@ -30,7 +30,8 @@ Suppose the map shows **Poland: +4.1% of a year's GDP, likely range 2.2% to 7.0%
 The address in the browser keeps what you see, so you can copy it and share it.
 
 - **The view and the buttons on top**: for example `#view=rank&lens=ukr&m=total` opens the ranking, toward Ukraine, in total euros.
-  - `view`: `map`, `rank`, `bubbles`, `table` or `how`.
+  - `view`: `map`, `rank`, `bubbles`, `table`, `how` or `sources`.
+  - `flow`: with `view=sources`, one money flow, e.g. `#view=sources&flow=loans` opens the Sources view at loans ([trace](trace.md)).
   - `lens`: `change` (change since before the war), `cost` (cost carried), `ukr` (to Ukraine) or `rus` (to Russia).
   - `m`: `gdp` (% of GDP), `pp` (per person) or `total` (total euros).
   - `y`: a year, 2021 to 2026.
@@ -53,6 +54,7 @@ The address in the browser keeps what you see, so you can copy it and share it.
 | [method/services-shipping-companies.md](method/services-shipping-companies.md) | services and tourism, tanker shipping as profit, company taxes in Russia |
 | [method/russia-state-and-companies.md](method/russia-state-and-companies.md) | nuclear projects and state loans from Russia, Russian arms sales, company exits and Russian companies abroad (round 5) |
 | [method/aid-refugees-military.md](method/aid-refugees-military.md) | Kiel aid, EU-level aid, ERA loans, undisclosed aid, private donations, refugees, military support to Russia, flowback |
+| [method/loans.md](method/loans.md) | loans and guarantees: the two parts of the gift (cheaper interest, default risk the lender carries), measured rates and expected losses by creditor class, the range, the cost view, a worked example (round 12) |
 | [method/incentives.md](method/incentives.md) | the AI-guessed "above or below expectation" view (removed from the map) |
 
 ### Data and pipeline (`reference/`)
@@ -63,12 +65,20 @@ The address in the browser keeps what you see, so you can copy it and share it.
 | [reference/research-files.md](reference/research-files.md) | every research file, its notes, and which step and page use it |
 | [reference/sources.md](reference/sources.md) | the main external sources by topic, with addresses |
 
+### Tracing every number
+
+| page | what it covers |
+|---|---|
+| [trace.md](trace.md) | every money flow on the map (loans, oil, refugees, weapons...) with its method, the decisions behind it, its sources and exact links, research files, raw data, code and what is judgement |
+| [decisions.md](decisions.md) | every modelling choice, with its reasons and evidence |
+| [decision-log.md](decision-log.md) | every decision in the order it was made |
+
 ### Status
 
 | page | what it covers |
 |---|---|
 | [limitations.md](limitations.md) | known open issues and how to report corrections |
-| [changelog.md](changelog.md) | research rounds 1–11 and the review fixes |
+| [changelog.md](changelog.md) | research rounds 1–12 and the review fixes |
 
 ## Research notes, data and code
 
@@ -76,7 +86,7 @@ The address in the browser keeps what you see, so you can copy it and share it.
 - **Per-country coverage** (reported, estimated, missing): [`research/2026-10/gaps.md`](../research/2026-10/gaps.md)
 - **Key research notes**: [counterfactual](../research/2026-10/gaps/counterfactual-notes.md), [trend](../research/2026-10/gaps/trend-notes.md), [trend2](../research/2026-10/gaps/trend2-notes.md), [trend3](../research/2026-10/gaps/trend3-notes.md), [prices](../research/2026-10/gaps/prices-notes.md), [trade_full](../research/2026-10/gaps/trade_full-notes.md), [energy](../research/2026-10/gaps/energy-notes.md), [energy2](../research/2026-10/gaps/energy2-notes.md), [audit](../research/2026-10/gaps/audit-notes.md), [audit2](../research/2026-10/gaps/audit2-notes.md), [round4a](../research/2026-10/gaps/round4a-notes.md), [round4b](../research/2026-10/gaps/round4b-notes.md); all others in [research-files.md](reference/research-files.md)
 - **The data the map reads**: [`site/data.json`](../site/data.json)
-- **Code**: [`pipeline/build_data.py`](../pipeline/build_data.py) (build), [`pipeline/check_data.py`](../pipeline/check_data.py) (checks), [`pipeline/share_cards.mjs`](../pipeline/share_cards.mjs) (share images), [`site/index.html`](../site/index.html) (map and `calc()`), [`site/views.js`](../site/views.js) (ranking, bubbles, table, downloads), [`site/views2.js`](../site/views2.js) (How it works), [`site/i18n.js`](../site/i18n.js) (seven languages)
+- **Code**: [`pipeline/build_data.py`](../pipeline/build_data.py) (build), [`pipeline/check_data.py`](../pipeline/check_data.py) (checks), [`pipeline/loan_rates.py`](../pipeline/loan_rates.py) (loan values from measured rates, round 12), [`pipeline/share_cards.mjs`](../pipeline/share_cards.mjs) (share images), [`site/index.html`](../site/index.html) (map and `calc()`), [`site/views.js`](../site/views.js) (ranking, bubbles, table, downloads), [`site/views2.js`](../site/views2.js) (How it works), [`site/i18n.js`](../site/i18n.js) (seven languages)
 - **Older design notes** (partly superseded): [architecture](design/architecture.md), [concept](design/concept.md), [data ingestion](design/data-ingestion.md), [data model](design/data-model.md), [research process](design/research-process.md), [roadmap](design/roadmap.md), [website](design/website.md)
 
 ## Corrections and licence

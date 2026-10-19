@@ -110,3 +110,21 @@ reconstructed from the commit history and may be imprecise; corrections by the o
 | A refugee grade such as "A-B" counts at its **weaker letter**; Poland's refugee cost at most C | audit | the letters overstated how much was checked | four part letters; no total letter |
 | Call the 10% loan discount rate a **judgement** | audit | it is not a current IMF or OECD standard | text only |
 | Stop publishing the AI-guessed **incentive scores** | audit | the view was removed in round 8 and nothing reads them | smaller `data.json` |
+
+## Round 12: data precision (19 October)
+
+| decision | raised by | why | effect |
+|---|---|---|---|
+| Replace the six questionable values of the round-11 proposals with **measured** ones, one at a time, and record each change's effect | owner | a judgement should give way to data where data exist | [decisions](decisions.md#applied-in-round-12-data-precision) |
+| Value loans at **opportunity cost: the real market rate Ukraine faced in the year of payout**, wartime included | owner | what the market would have charged is the consistent price of the money | first method; kept as the **high** end |
+| Do not use the promised war yield (30–60%) as the central value: it is mostly **compensation for expected default**, which official lenders did not bear | owner | the IMF and World Bank are paid first; EU loans were left out of both debt deals; bilateral lenders only deferred. At the war yield, long loans become near-full gifts | central value split into two parts |
+| **Gift = cheaper interest** (at Ukraine's 2021 rate, 6.7%) **+ the default risk the lender really carries** (the measured expected loss of its creditor class) | owner | separates the price of time from the price of risk, each measured | net shift: loans EUR 53bn instead of 64bn; Japan −0.06 points, EU members −0.04 to −0.05 ([loans](method/loans.md)) |
+| Expected loss by class: IMF and World Bank 0; EU 9% (the EU's own provisioning rate for MFA loans); bilateral lenders the Group of Creditors' standstill in the cash flows; the 2026 Support Loan about 95% (repaid only from reparations) | owner, proposed | each from a fetched source; nothing judged where a measure exists | [loans](method/loans.md#by-loan-type) |
+| Range: **low** = the 2021 rate, no loss for official lenders; **high** = the promised war yield of the year | owner | the low strips out all war risk; the high is the owner's first idea | [loans](method/loans.md#the-range) |
+| **Cost view**: the same terms and expected losses at the lender's own funding rate, per loan item, with its own low and high; replaces the flat 26% | owner | the two views should share one set of numbers | Japan −0.07 points, EU members up to +0.07 ([loans](method/loans.md#the-cost-view)) |
+| Every loan number has a **fetched source**; what could not be fetched is marked "not verified" and not used | owner | the same standard as round 11 | [loans evidence](method/loans.md#evidence), [sources_r11.json](../research/2026-10/sources_r11.json) |
+| China's crude-to-fuel ratio from **China's own measured share** per year (not India's) | proposed | the research file has China's own value; it is closer than India's | China −0.005 points |
+| Germany's gas already in customs **derived** from the audit's EUR 2.3bn and 3.5bn | audit, owner | 0.07 had no derivation | Germany −0.04 points |
+| Belarus's gas band from the research (±8%, ±15%) where the price is assumed | audit, owner | ±2% was a judgement | none visible |
+| Hong Kong's precious-metals share **measured** from UN Comtrade | audit, owner | 0.98 was not traced | Hong Kong +0.08 points |
+| Decision B: each EU loan's expected loss is **the EU's own provisioning rate** for that loan (70% for the 2022 exceptional MFA and the repurposed EIB loans; 9% where the law sets 9% or no rate) | owner | the EU judged 9% not adequate for Ukraine in 2022 and set 70% (Decisions 2022/1201 and 2022/1628); MFA+ and the Ukraine Facility rest on budget headroom with no rate, so 9% stays | EU members +0.007 to +0.014 points; loans EUR 55bn instead of 53bn ([decisions](decisions.md#applied-in-round-12-data-precision), [loans](method/loans.md#by-loan-type)) |
