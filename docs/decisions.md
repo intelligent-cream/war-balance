@@ -15,7 +15,8 @@ checked line by line by a person.** The verification status of each input is in
 (u/Intelligent-Cream-14).
 
 To follow one money flow (loans, oil, refugees, weapons...) from its sources through these decisions to the map, see
-[trace.md](trace.md): one entry per flow, with links to the rows below.
+[trace.md](trace.md): one entry per flow, with links to the rows below. Why each flow is counted at all, and why this
+way, is under [Why each money flow is counted](#why-each-money-flow-is-counted).
 
 ## 1. The question and the unit
 
@@ -72,6 +73,173 @@ To follow one money flow (loans, oil, refugees, weapons...) from its sources thr
 | A total takes the **weakest certainty letter** of its parts (A reported to D rough) | A total is only as reliable as its weakest part | Average letters | [certainty](method/ranges.md#certainty-letters) |
 | Countries whose range crosses zero are **left out of top lists** | Even the direction is uncertain | Rank them anyway | [ranges](method/ranges.md) |
 | **Nothing missing counts as zero**: gaps are estimated, with wide ranges | No country should rank well for having no data | Treat missing as zero | [README](README.md) |
+
+## Why each money flow is counted
+
+Nine money flows on the map had no row here saying why they are counted, and why this way. The reasons below were
+written down from what was actually said when each flow was added: in the method pages, the research notes, the code
+comments, the commit history and the project conversation. Who raised each point follows the
+[decision log](decision-log.md): **(owner)** is the project's author, **(proposed, accepted)** means Claude suggested it
+and the owner agreed, **(audit)** an independent review, **(reader)** a Reddit commenter. Where no reason was given
+for a choice, the row says **reason not recorded**; nothing has been filled in after the fact.
+
+### Undisclosed military aid
+
+Toward Ukraine, in the net shift and the cost view. Added in round 1–2 (commit `532eb77`); France corrected by the
+second audit in round 3–4 (`3888f03`). Method: [undisclosed aid](method/aid-refugees-military.md#undisclosed-aid-and-private-donations).
+Research: [uncovered-notes](../research/2026-10/gaps/uncovered-notes.md) §3,
+[audit2-notes](../research/2026-10/gaps/audit2-notes.md) §3. Log:
+[round 1–2](decision-log.md#round-12-the-question-and-the-first-map-17-october),
+[round 3–4](decision-log.md#round-34-profit-windfall-and-a-tested-baseline-1718-october).
+
+| decision | data or judgement | why | where |
+|---|---|---|---|
+| **Count military aid that governments did not publish**, beyond what the Kiel tracker records | judgement: the values are estimates (certainty C–D) | Hidden help to Russia is estimated, so undisclosed weapons for Ukraine need the same treatment: "without both, the picture leans one way" (proposed, accepted). A known gap left at zero would reward missing data: "no country gets rewarded for no data" (owner) | [uncovered-notes](../research/2026-10/gaps/uncovered-notes.md) §3 |
+| **Only amounts beyond Kiel Release 31**: Germany's 2025–2026 appropriations above what Kiel records, Italy's later decrees, France's 2024 gap, small Greek amounts | data where a budget or official total exists (Germany's EUR 11.6bn appropriated for 2026, France's official totals); judgement in the yearly split and the ranges | Anything Kiel already holds would count twice. France's 2022–23 gap was already in Kiel, which adopted France's official EUR 2.6bn in Release 16, so it was taken out (France −1.3bn); Germany's estimate was checked and does not overlap (audit) | [audit2-notes](../research/2026-10/gaps/audit2-notes.md) §3, `apply_audit2()` |
+| **Left out**: US intelligence and covert support; Bulgaria's secret 2022 deliveries; Türkiye's deliveries; the frozen-asset part of France's 2024 total (about EUR 0.3bn) | judgement | Intelligence and covert support have no value to put on them; Bulgaria's and Türkiye's deliveries were commercial sales (Bulgaria's reportedly paid by the US and UK), not their aid; the map leaves Russia's own money out elsewhere | [uncovered-notes](../research/2026-10/gaps/uncovered-notes.md) §3, [audit2-notes](../research/2026-10/gaps/audit2-notes.md) §3 |
+| **Check 8** warns when undisclosed aid exceeds half of a country's Kiel military aid | judgement | reason not recorded | [method](method/aid-refugees-military.md#undisclosed-aid-and-private-donations) |
+
+### Energy switching cost and oil discount
+
+Cost view only. Both added in round 1–2 (commit `532eb77`, research `energy.json`); the oil discount was corrected in
+round 7 (`c765e84`). Method: [energy premium and oil discount](method/energy-and-laundered-oil.md#energy-premium-and-oil-discount),
+[the cost view](method/overview.md#the-cost-view). Research: [energy-notes](../research/2026-10/gaps/energy-notes.md),
+[energy_nowar-notes](../research/2026-10/gaps/energy_nowar-notes.md) §3. Log:
+[round 1–2](decision-log.md#round-12-the-question-and-the-first-map-17-october),
+[round 7](decision-log.md#round-7-what-the-owner-asked-to-add-18-october).
+
+| decision | data or judgement | why | where |
+|---|---|---|---|
+| **The extra price paid to replace Russian energy counts as a cost the country carried** | judgement (the rule) | Without it, a country that stopped buying Russian gas shows only "less money to Russia", not the price it paid (proposed). The owner asked for "how much does it cost the country to not buy Russian oil and buy alternatives ... the cost of sanctions ... the opportunity cost" (owner) | [log](decision-log.md#round-12-the-question-and-the-first-map-17-october) |
+| **In the cost view only**, not in the net shift | judgement | The cost view is "what the country gave up, not where money went" | [overview](method/overview.md#the-cost-view) |
+| **Displaced volume × replacement share × price gap**, per fuel and month: gas at TTF minus Russia's contract price; crude and coal at the midpoint of the pre-war price gap and the full discount forgone | data: CREA volumes and realised prices, Eurostat replacement shares, TTF, Brent and coal prices; judgement: the midpoint for crude and coal, the low-case replacement shares | Replaces a flat 25% of the value no longer bought; the owner asked for real values with margins of error (owner). Weighting by month catches the 2022 gas cut-off at peak prices. For oil the "Russian price" is ambiguous: the full discount forgone overstates the cost, the pre-war gap understates it, so the middle is the midpoint | [energy-notes](../research/2026-10/gaps/energy-notes.md), method and caveats |
+| **The price gap is against the same year's Russian price, not the no-war price** (checked and kept in round 7) | judgement | That is the cost of choosing another supplier. Against the no-war price it would add the war-time price spike, which was paid to other suppliers and would have been paid without switching | [energy_nowar-notes](../research/2026-10/gaps/energy_nowar-notes.md) §3 |
+| **The discount gained on Russian oil is subtracted** in the cost view | judgement (the rule) | India, China and Türkiye save money by buying cheap Russian oil: "a gain for them, the reverse of the switching cost Europe pays, so it belongs in their cost view" (proposed, accepted) | [log](decision-log.md#round-12-the-question-and-the-first-map-17-october) |
+| **Discount = tonnes × (Brent − Russia's realised price) × 0.671**, from March 2022 | data: CREA realised prices, Brent; 0.671 is the median of published estimates (ICRA, Banque de France, Reuters) | Published estimates come out at 0.49–0.84 of the gross price gap, because they are net of freight and compare with other suppliers' delivered prices | [energy-notes](../research/2026-10/gaps/energy-notes.md), method §2 |
+| **Without Russia's normal pre-war discount** (factors 0.56–0.79 a year) | data: Russian crude sold at 0.948 of Brent in 2021 | About 5% of the discount existed before the war and would have existed without it (proposed; the owner left the remaining energy questions to Claude's recommendation). India 33.8 → 24.1bn, China 24.9 → 18.1bn | [energy_nowar-notes](../research/2026-10/gaps/energy_nowar-notes.md) §3, `apply_nowar_prices()` |
+| **Not counted twice with the windfall** | rule | The windfall covers what was still bought from Russia, the switching premium what was replaced. The discount gain and the windfall see the same discount in different views | [energy_nowar-notes](../research/2026-10/gaps/energy_nowar-notes.md) §3 |
+| **Left out**: households' and industry's energy subsidies; new infrastructure such as floating LNG terminals | judgement | Subsidies "are costs of the war, not money toward Ukraine or Russia" (proposed, accepted, round 7). Infrastructure: reason not recorded | [energy-notes](../research/2026-10/gaps/energy-notes.md), caveats |
+
+### Services and tourism
+
+Both directions, in the net shift; income lost on services also in the cost view. Added in round 1–2 (commit
+`532eb77`, research `uncovered.json`); pre-war trends in round 3 (`105f35e`); the money rule in round 6 (`eef967d`);
+relocants' spending out in round 7 (`bca0255`); Russia's net gain in round 10 (`109b8eb`), measured in round 11
+(`7079676`). Method: [services](method/services-shipping-companies.md#services). Research:
+[uncovered-notes](../research/2026-10/gaps/uncovered-notes.md) §1,
+[relocants-notes](../research/2026-10/gaps/relocants-notes.md),
+[narrow-notes](../research/2026-10/gaps/narrow-notes.md). Log:
+[round 1–2](decision-log.md#round-12-the-question-and-the-first-map-17-october).
+
+| decision | data or judgement | why | where |
+|---|---|---|---|
+| **Count services traded with Russia** (transport, business services, tourism) both ways, against the expected no-war level, like goods | data: Eurostat, OECD-WTO BaTiS, Bank of Russia | Only goods were counted, so tourism and services sold to Russia were missing (proposed, accepted); gaps are estimated rather than left out (owner). Countries that stopped selling services to Russia move toward Ukraine; those that sell more, mainly to Russian tourists, move toward Russia | [uncovered-notes](../research/2026-10/gaps/uncovered-notes.md) §1 |
+| **Bought from Russia: at Russia's net gain on services** (0.032–0.044 since round 11) | data: Rosstat profit and return on assets by activity | The rule for every purchase: aid is a gift, trade an exchange, so only the seller's gain compares with aid (reader, owner, round 10) | [net-gain rule](method/overview.md#the-net-gain-rule-round-10), [assumptions](#assumptions-backed-by-data-round-11) |
+| **Sold to Russia: at value kept × genuinely extra** (tourism lost: genuinely extra 0.30) | data: OECD TiVA for value kept; judgement for genuinely extra | Gross sales had inflated Cyprus and Lithuania (audit, round 3–4); a flat 20% profit was arbitrary (proposed, round 6) | [money rule](method/overview.md#the-money-rule-round-6) |
+| **Expected level: 2021 held, plus the travel recovery from COVID** at the UNWTO world pace, capped at the model's recovered level | judgement, tested | 2021 was a COVID year for travel; no model beat this in all three back-tests | [counterfactual](method/counterfactual.md#6-which-model-is-used-for-which-flow) |
+| **Countries that do not report** (China, the UAE, India, Kazakhstan, Belarus) at BaTiS balanced values ×0.6–1.5; **Türkiye** at the mean of its own report and BaTiS | judgement | BaTiS from 2022 rests on modelled Russian figures. Türkiye's 6.3 million Russian visitors imply more travel income than it reports | [uncovered-notes](../research/2026-10/gaps/uncovered-notes.md) §1 |
+| **Left out**: relocants' living spending (round 7); Russia's travel imports that BaTiS does not assign to a country, which only widen the high ends | judgement | Relocants' spending is money leaving Russia, not income from it (proposed; the owner left it to Claude's recommendation). The unassigned travel spending has no country split | [relocants-notes](../research/2026-10/gaps/relocants-notes.md), [uncovered-notes](../research/2026-10/gaps/uncovered-notes.md) caveats |
+
+### Shipping Russian oil
+
+Toward Russia when income rose, in the net shift. Research in round 1–2 (`1337385`), counted from `43f1c38`; profit
+instead of revenue in `5734a4b`; freight by the real controller in round 5 (`308560d`); Russian shares from evidence
+and freight at the money rule in round 6 (`eef967d`). Method: [shipping](method/services-shipping-companies.md#shipping).
+Research: [shipping-notes](../research/2026-10/gaps/shipping-notes.md),
+[shadow_fleet-notes](../research/2026-10/gaps/shadow_fleet-notes.md),
+[shadow_fleet_r6-notes](../research/2026-10/gaps/shadow_fleet_r6-notes.md). Log:
+[round 1–2](decision-log.md#round-12-the-question-and-the-first-map-17-october).
+
+| decision | data or judgement | why | where |
+|---|---|---|---|
+| **Count income from carrying, insuring, financing and registering Russia's seaborne crude, product and LNG exports, and from selling tankers to the shadow fleet**, against 2019–2021 | judgement (the rule) | Money earned serving Russia's exports; Greek, Maltese and Cypriot owners earned large freight income and it was "probably the largest real flow still missing" (proposed, accepted). It is compared with its pre-war level like other services sold to Russia | [shipping-notes](../research/2026-10/gaps/shipping-notes.md) |
+| **Counted for the country of the company that earns it** (owner or manager, insurer, lender, registry), never the flag; **freight by the real controller** since round 5; Russian-controlled tankers count for no country | data: KSE, CREA, S&P and Windward volumes by manager; judgement: the split by controller (opaque managers 60–65% Russian, 45–85%) | The money goes to the company, not the flag state. Who controls the tankers was "the biggest guess in shipping", so it was researched from sanctions lists and investigations (proposed, accepted) | `apply_shipping()`, [shadow_fleet_r6-notes](../research/2026-10/gaps/shadow_fleet_r6-notes.md) |
+| **Profit, not revenue**: freight 20/35/50%, insurance and finance 10/25/40%, registry 30–70%, ship sales at their price premium; since round 6 freight at value kept × genuinely extra (Greek shipping 0.17) | judgement, based on tanker operating margins of 30–50% in the 2022–23 boom | "A Greek shipowner's €5bn of freight isn't €5bn gained" (proposed); "fix shipping and flowback as profit" (owner). Freight pays for fuel, port fees, crew and the ship itself | `SHIPPING_PROFIT` in [build_data.py](../pipeline/build_data.py), [money rule](method/overview.md#the-money-rule-round-6) |
+| **Expected level**: 2019–2021 × Russia's seaborne export growth before the war (+3.9% a year) | data: `trend2.json` | A growing pre-war trend would have kept growing, and trends were to cover more flows than goods (owner) | [trend2-notes](../research/2026-10/gaps/trend2-notes.md) |
+| **Left out**: the part already inside services sold to Russia (freight 5%, insurance and finance 10–20%); Greek tanker earnings in `uncovered.json`; freight inside import values | rule | Each would count the same money twice ("remove the shipping double count", owner); freight is paid to shippers, not to Russia (audit) | [shipping](method/services-shipping-companies.md#shipping), [freight](method/trade.md#freight-cif-to-fob) |
+
+### Companies leaving Russia
+
+Toward Russia, in the net shift, by the company's home country. Added in round 5 (commit `650e1ff`). Method:
+[companies leaving Russia](method/russia-state-and-companies.md#companies-leaving-russia). Research:
+[company_flows-notes](../research/2026-10/gaps/company_flows-notes.md) §1. Log:
+[round 5](decision-log.md#round-5-values-at-their-real-worth-18-october).
+
+| decision | data or judgement | why | where |
+|---|---|---|---|
+| **Count the exit contribution** paid to Russia's budget by foreign companies that sell out, by home country | data: Russia's budget line (RUB 116bn in 2023, 160bn in 2024); judgement: the split by home country, by the size of the businesses sold (certainty D for most) | Russia makes foreign companies pay an "exit contribution" to its budget to be allowed to sell: "that's money to Russia, by company home country" (proposed, accepted) | [company_flows-notes](../research/2026-10/gaps/company_flows-notes.md) §1 |
+| **Count the forced discount**: the value handed to Russian buyers by sales at least 50–60% below valuation | judgement: a 2022 case list, later years from the contribution | Proposed together with the contribution as money to Russia and accepted (proposed, accepted). The research suggested counting only the contribution, since a discount goes to Russian buyers, not the state; why the discount was kept anyway: reason not recorded | [company_flows-notes](../research/2026-10/gaps/company_flows-notes.md) §1 and "Things the builder must decide or watch" |
+| **No pre-war level**: each payment is its own change | data | None of these payments existed before the war | [company_flows-notes](../research/2026-10/gaps/company_flows-notes.md) §1 |
+| **Left out: seizures** without payment (Wintershall Dea, Unipro, Fortum, Carlsberg, Danone, leased aircraft; about EUR 33bn) | judgement | Russia took these; "the owners had no choice" (proposed) | `apply_company_flows()` |
+| **Left out: the Yandex (Netherlands) and Polymetal (Kazakhstan) discounts** | judgement | Their shareholders were mostly international, not Dutch or Kazakh | [method](method/russia-state-and-companies.md#companies-leaving-russia) |
+
+### Remittances from Russia
+
+Toward Russia when wages earned in Russia rose above the expected level, in the net shift. Research in round 7
+(`ec6e00a`), on the map in `9a46dd5`; relocants' spending out in `bca0255`; Russia's share measured in round 11
+(`7079676`). Method: [remittances and relocants](method/trade.md#remittances-and-relocants-round-7). Research:
+[remittances-notes](../research/2026-10/gaps/remittances-notes.md),
+[relocants-notes](../research/2026-10/gaps/relocants-notes.md). Log:
+[round 7](decision-log.md#round-7-what-the-owner-asked-to-add-18-october).
+
+| decision | data or judgement | why | where |
+|---|---|---|---|
+| **Count migrant workers' wages sent home from Russia**, against the expected no-war level | data: receiving central banks' transfers by origin, World Bank totals | They are "wages for labour sold to Russia's economy, so they work like services sold to Russia" (proposed); "should be taken into account" (owner). Most of the rise came from Russia's war economy pushing wages up | [remittances-notes](../research/2026-10/gaps/remittances-notes.md) §1 |
+| **At value kept (0.97) × genuinely extra (0.55 when above expected, 0.40 when below)** | data for value kept; judgement for genuinely extra | Migrants "would mostly have worked there anyway", so only part of the money is new income (proposed) | [money rule](method/overview.md#the-money-rule-round-6) |
+| **Expected level**: the 2019 and 2021 average, grown at each country's pre-war trend | data and judgement | 2020 is left out because of COVID | [remittances-notes](../research/2026-10/gaps/remittances-notes.md) §4 |
+| **Russia's share where no split by origin exists** (Tajikistan, Belarus): the mirror ratio of 2019–2021, the same in every year | data for the share; judgement in applying it to every year | Tajikistan's central bank does not publish transfers by country; why the same share holds every year: reason not recorded | [assumptions](#assumptions-backed-by-data-round-11), [limitations](limitations.md#open-issues-in-the-numbers) |
+| **Left out: relocants' transfers** (about EUR 30bn of the 2022 surge) **and their living spending** | rule | It is money leaving Russia: counting it toward Russia would be the wrong sign, and counting it toward Ukraine would credit countries for something unrelated to Ukraine (proposed; the owner had asked whether counting it was "doing too much") | [remittances-notes](../research/2026-10/gaps/remittances-notes.md), [relocants-notes](../research/2026-10/gaps/relocants-notes.md) |
+| **Russians working remotely for Russian employers left out; family support from long-settled communities counted as labour** | judgement | Family support "is still income from Russia's economy" (proposed). Remote workers: Claude suggested counting them as labour where data exist; why the research left them out: reason not recorded | [remittances-notes](../research/2026-10/gaps/remittances-notes.md) §8 |
+
+### Rosatom and Russian state loans
+
+Either direction, in the net shift. Added in round 5 (commit `650e1ff`); Belarus's deferrals left out in round 6
+(`c8a69b8`). Method: [nuclear projects and state loans](method/russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia).
+Research: [russia_state_finance-notes](../research/2026-10/gaps/russia_state_finance-notes.md). Log:
+[round 5](decision-log.md#round-5-values-at-their-real-worth-18-october),
+[round 6](decision-log.md#round-6-one-rule-for-money-two-balances-18-october).
+
+| decision | data or judgement | why | where |
+|---|---|---|---|
+| **Count the buyer's own payments for Rosatom construction** (Egypt, Bangladesh, Hungary's Paks II, India, Iran, Uzbekistan) | data where projects report; judgement where they do not (certainty D) | Countries pay Rosatom to build nuclear plants, and that money goes to Russia but is "probably not in trade data" (proposed, accepted: "check that and if not it should be included"). The check found construction in neither goods nor services data | [russia_state_finance-notes](../research/2026-10/gaps/russia_state_finance-notes.md), step 1 |
+| **Only the buyer's own share**; the loan-financed part and new drawdowns are left out | rule | A Russian state loan paying Rosatom is Russian money paying a Russian company; drawdowns pay for work that is not counted | `apply_state_finance()` |
+| **Count interest and repayments on Russia's state loans, as the deviation from the pre-war schedule** | data: World Bank International Debt Statistics (Russia as creditor), actuals to 2024, contractual schedule after | Repayments are money to Russia (proposed, accepted). "A loan ending on schedule is not a war-time choice"; deferrals, stops, escrow and prepayments are. Arrears caused by sanctions on payment channels (Viet Nam, Iraq, Bangladesh) count, because the money did not reach Russia, with a note | [method](method/russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia) |
+| **Loan payments count in full**; the customs correction is rescaled to Russia's net gain | rule | The correction comes out of payments the map counts at Russia's net gain (round 10). Why loan payments are not at a net gain: reason not recorded | [method](method/russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia) |
+| **Customs over-counts removed**: Akkuyu equipment imported by Rosatom's own Turkish company; El Dabaa equipment, 85% loan-financed | data | They were paid with Russian money, not by the buyer | [russia_state_finance-notes](../research/2026-10/gaps/russia_state_finance-notes.md) |
+| **Left out**: nuclear fuel and enrichment; Belarus's loan repayments; Rosatom's capital transfers into Türkiye | rule | Fuel is already in goods trade; Belarus's deferrals were granted by Russia and refinanced with new Russian loans, so they were not its choice (proposed, round 6); Rosatom's transfers into Türkiye are money from Russia, not to it | [method](method/russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia), [russia_state_finance-notes](../research/2026-10/gaps/russia_state_finance-notes.md) |
+
+### Weapons bought from Russia
+
+Either direction, in the net shift. Added in round 5 (commit `93716b5`); 18 more buyers and Iran counted once in
+round 6 (`eef967d`); at Russia's net gain in round 10 (`109b8eb`), measured in round 11 (`7079676`). Method:
+[weapons bought from Russia](method/russia-state-and-companies.md#weapons-bought-from-russia). Research:
+[russian_arms_exports-notes](../research/2026-10/gaps/russian_arms_exports-notes.md),
+[arms_r6-notes](../research/2026-10/gaps/arms_r6-notes.md),
+[assumptions_r11_gain-notes](../research/2026-10/gaps/assumptions_r11_gain-notes.md). Log:
+[round 5](decision-log.md#round-5-values-at-their-real-worth-18-october).
+
+| decision | data or judgement | why | where |
+|---|---|---|---|
+| **Count payments to Russia for weapons, parts, licence kits, repairs and training**, against what the buyer would have paid without the war | data: SIPRI, Rosoboronexport and FSVTS statements, contract reporting; judgement: payment timing and the split by buyer (mostly D) | Buyers paid Russia billions for weapons that "often don't appear in customs data"; "buyers who cut purchases moved toward Ukraine, and those who kept buying sent money to Russia. This is probably the biggest missing piece" (proposed, accepted) | [russian_arms_exports-notes](../research/2026-10/gaps/russian_arms_exports-notes.md) |
+| **Expected level without one-off contracts** (Türkiye's 2019 S-400) | judgement | One-off contracts inflate the 2019–2021 average: Türkiye would get +2.2bn instead of +0.3bn | [russian_arms_exports-notes](../research/2026-10/gaps/russian_arms_exports-notes.md) |
+| **At Russia's net gain on arms** (0.039–0.050; high end 0.12) | data since round 11 (arms makers' margins, Rostec, Rosoboronexport); the high end is judgement | The rule for every purchase from Russia (reader, owner, round 10) | [assumptions](#assumptions-backed-by-data-round-11) |
+| **Russia's own supply limits shown as a note, not taken off** (about 50% of the fall for India, 70% for China, 20% for Egypt) | judgement: the share is a guess from SIPRI and Rostec | Handled like the sanctions split, as a note (proposed). Subtracting the share was offered; why it was not taken: reason not recorded | [method](method/russia-state-and-companies.md#weapons-bought-from-russia) |
+| **Russia's later claims of USD 14–15bn a year used only as the high end** | judgement | reason not recorded | [method](method/russia-state-and-companies.md#weapons-bought-from-russia) |
+| **Taken off**: the small part inside customs (Algeria's 2024 radars); Iran's payments settled in drones and missiles (about 35%) | rule | Both are already counted, in trade or as weapons sent to Russia | [round 6](method/russia-state-and-companies.md#round-6) |
+
+### Payment agents
+
+Toward Russia, in the net shift. Added in round 6 (commit `27e2d37`); checked against data in round 11 (`26735a2`)
+and kept. Method: [payment agents](method/trade.md#payment-agents-round-6). Research:
+[payment_channels-notes](../research/2026-10/gaps/payment_channels-notes.md). Log:
+[round 6](decision-log.md#round-6-one-rule-for-money-two-balances-18-october).
+
+| decision | data or judgement | why | where |
+|---|---|---|---|
+| **Count the fees that agents in third countries earn for settling Russia's trade** outside normal banking | data: Bank of Russia balance of payments, Kyrgyz banks' extra profits; judgement: fee rates and the split by country (certainty D; C for Kyrgyzstan) | The fee is income earned by helping Russia trade around sanctions, like the profit on sales to Russia, and it is in neither customs values (Russian Finance Ministry and customs letters) nor services data (proposed; the owner asked to "dig deeper" after agents had been listed as not measurable) | [payment_channels-notes](../research/2026-10/gaps/payment_channels-notes.md) §1–2 |
+| **Only the share kept by residents** (35–60%), **against 2021** | judgement | The rest belongs to Russian-owned networks | `apply_payment_agents()` |
+| **Counted as it is**, not multiplied by a profit share | rule | A fee is already a margin | [payment_channels-notes](../research/2026-10/gaps/payment_channels-notes.md) §7 |
+| **Left out**: payment volumes; crypto volumes; the 2022 transfers of people leaving Russia; Russia's export receipts held abroad; crypto mining and ransomware proceeds | rule | Volumes only route trade already counted; crypto has no country split; relocants' money is leaving Russia; held receipts are Russia's own claims; nobody chose to pay crime proceeds and they existed before the war. In round 1–2 agents were left out because they "mostly pay for trade that customs already record" (proposed) | [payment_channels-notes](../research/2026-10/gaps/payment_channels-notes.md) §1, §8 |
 
 ## Assumptions backed by data (round 11)
 

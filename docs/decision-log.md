@@ -16,7 +16,11 @@ reconstructed from the commit history and may be imprecise; corrections by the o
 | Mark 2026 as January–August; show the data date | proposed | partial year must not look complete | `*` marks on estimated parts |
 | Ranking, Ukraine-vs-Russia and table views; CSV and JSON download; share card per country | owner | let readers find and share their country | views and share pages |
 | Corrections via Reddit and GitHub | owner | an anonymous project still needs a way to be corrected | link in the status line |
-| Count **shipping and insuring Russian oil**, by owner country | proposed | money earned serving Russia's exports | new part |
+| Count **shipping and insuring Russian oil**, by owner country | proposed | money earned serving Russia's exports | new part ([why](decisions.md#shipping-russian-oil)) |
+| **Services trade with Russia** (tourism, transport, business services), both ways, against the pre-war level | proposed | only goods were counted; a gap is estimated, never left at zero | new part: Cyprus toward Ukraine (gave up services sold to Russia), Tunisia and Georgia toward Russia (Russian tourists) ([why](decisions.md#services-and-tourism)) |
+| **Undisclosed military aid** estimated beyond the Kiel tracker | proposed | hidden help to Russia was estimated, so hidden help to Ukraine needed the same treatment, or the picture leans one way | new part, about EUR 0.5–1.8bn a year ([why](decisions.md#undisclosed-military-aid)) |
+| **Energy switching cost**: the extra price paid to replace Russian energy, in the cost view | owner, proposed | stopping Russian energy has a price; the owner asked for this "opportunity cost" | cost-view part, EUR 133bn (59–205) in total; Germany 34.5bn, Italy 18.5bn ([why](decisions.md#energy-switching-cost-and-oil-discount)) |
+| **Discount gained on Russian oil** subtracted in the cost view | proposed | buyers of cheap Russian oil gain from it, the reverse of Europe's switching cost | cost-view part: India EUR 34bn, China 25bn at first ([why](decisions.md#energy-switching-cost-and-oil-discount)) |
 | Count **refined fuel once**, at the buyer, not at the refiner and the buyer | audit | it had been counted twice | refiners' exports taken off |
 | **Take freight out** of payments to Russia (CIF to FOB) | audit | freight goes to shippers, not Russia | payments lower by 3.5–7.5% |
 | Gas priced **per country**; gas counted where burned | proposed | Hungary and Serbia paid different prices; transit countries do not burn the gas | gas price index per country |
@@ -32,6 +36,7 @@ reconstructed from the commit history and may be imprecise; corrections by the o
 | **Expected trade without the war** from models back-tested on 2008, 2013 and 2016 | proposed | holding 2021 flat had no tested error | counterfactual with measured error |
 | **Sanctions label**: how much of the move away from Russian trade was required | owner | buying less because it is banned is different from choosing to | label only, totals unchanged |
 | **Baltic and Finnish transit** removed | audit | goods passing through are not those countries' purchases | Baltic figures corrected |
+| **France's undisclosed aid** for 2022–23 taken out | audit | Kiel already holds it (it adopted France's official figure in Release 16), so it counted twice | France −1.3bn ([why](decisions.md#undisclosed-military-aid)) |
 | Linked **documentation** for every method | owner | readers must be able to check the method | docs/ folder |
 
 ## Round 5: values at their real worth (18 October)
@@ -41,7 +46,8 @@ reconstructed from the commit history and may be imprecise; corrections by the o
 | **Donated weapons at market value** | proposed | book values of old stock are arbitrary | donors' aid revalued |
 | **Loans at their grant element** (10% discount rate) | proposed | a repaid loan costs less than a grant | loan-heavy donors lower |
 | **Refugees at net cost** (minus refugees' taxes) | proposed | working refugees pay taxes | hosts with high employment lower |
-| **Rosatom projects, Russian state loans, company exits, Russian-owned firms abroad** counted | proposed | money reaching Russia outside trade | new parts |
+| **Rosatom projects, Russian state loans, company exits, Russian-owned firms abroad** counted | proposed | money reaching Russia outside trade | new parts ([why: Rosatom and state loans](decisions.md#rosatom-and-russian-state-loans), [company exits](decisions.md#companies-leaving-russia)) |
+| **Russian arms sales** to other countries counted, against the expected level | proposed | arms are almost wholly outside customs data; buyers who cut purchases moved toward Ukraine, those who kept buying paid Russia | new part: India, China, Egypt, Algeria toward Ukraine, Iran toward Russia ([why](decisions.md#weapons-bought-from-russia)) |
 | **Laundered oil per EU member** from customs data | audit | the EU-wide split was wrong per member | EU members corrected |
 | **Arms Ukraine bought abroad** counted as money flowing back | proposed | a seller earns from them | Czechia, Bulgaria earn back |
 
@@ -52,8 +58,8 @@ reconstructed from the commit history and may be imprecise; corrections by the o
 | **The money rule**: money earned counts at value kept × genuinely extra | proposed | a flat 20% profit was arbitrary | flowback and sales revalued |
 | **Two balances**: with Ukraine and with Russia; earning from the war effort is never "toward Russia" | owner | a donor whose industry earned more than it gave is not pro-Russian | gold colour for net earners |
 | **All-money ledger**: every euro for Ukraine followed to where it was spent | proposed | the US spends much of its aid at home | US earns back about half |
-| **Payment agents' fees** and revalued **military support to Russia** | proposed | money and arms reaching Russia | new parts |
-| Belarus's Russia-granted **loan deferrals left out**; sanction-blocked arrears labelled | proposed | not the borrower's choice | Belarus, Viet Nam corrected |
+| **Payment agents' fees** and revalued **military support to Russia** | proposed | money and arms reaching Russia | new parts ([why: payment agents](decisions.md#payment-agents)) |
+| Belarus's Russia-granted **loan deferrals left out**; sanction-blocked arrears labelled | proposed | not the borrower's choice | Belarus, Viet Nam corrected ([why](decisions.md#rosatom-and-russian-state-loans)) |
 | Moldova **without Transnistria's unpaid gas** | proposed | it is support for Transnistria, not money to Russia | Moldova higher |
 
 ## Round 7: what the owner asked to add (18 October)
@@ -64,7 +70,8 @@ reconstructed from the commit history and may be imprecise; corrections by the o
 | **Frozen Russian reserves**: the yearly return Russia lost (3–4% a year), credited to holders | owner | holding them denies Russia income | Belgium, EU members up |
 | **Critical goods** (chips, machine tools) as a **marker**, not in the totals | owner | already inside trade; a marker shows it without double counting | ◆ on the map |
 | **No-war energy prices** (pre-invasion forecasts and futures), not 2019–2021 prices | owner | market prices were already rising before the war | windfall about a third of before |
-| **Remittances** from Russia counted; **relocants'** transfers and spending left out | owner, proposed | migrants' wages are money from Russia; relocants spend their own money | Tajikistan, Uzbekistan toward Russia |
+| **Remittances** from Russia counted; **relocants'** transfers and spending left out | owner, proposed | migrants' wages are money from Russia; relocants spend their own money | Tajikistan, Uzbekistan toward Russia ([why](decisions.md#remittances-from-russia)) |
+| **Oil discount gain without Russia's normal pre-war discount** (about 5% below Brent) | proposed | that part of the discount existed before the war | India 34 → 24bn, China 25 → 18bn in the cost view ([why](decisions.md#energy-switching-cost-and-oil-discount)) |
 | Narrower actual values for nine countries from national statistics | owner | ranges were too wide | narrower ranges |
 
 ## Round 8: narrower ranges and the interface (18 October)

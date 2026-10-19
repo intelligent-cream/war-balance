@@ -271,6 +271,11 @@ points. Cost view: Finland +0.07, France and Italy +0.06, Germany +0.05; Japan â
   document S/2025/340) is now read and linked as a primary source of `military_rus_r6`. It confirms the volumes (rounds,
   containers, missiles, artillery, troops) but gives no prices, so the certainty stays C and no number changes
   ([comparison](../research/2026-10/gaps/military_rus_r6-notes.md#checked-against-the-primary-report-round-12)).
+- **Why each money flow is counted** ([decisions](decisions.md#why-each-money-flow-is-counted)). The nine flows with
+  no written reason (undisclosed aid, energy switching cost and oil discount, services, shipping, company exits,
+  remittances, Rosatom and state loans, arms bought from Russia, payment agents) now have one, taken from what was said
+  when each was added. Choices with no reason on record are marked "reason not recorded". The decision log gains rows
+  for undisclosed aid, the switching cost and oil discount, services and arms bought from Russia. No number changes.
 
 ## See also
 

@@ -222,7 +222,10 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Undisclosed military aid](decisions.md#undisclosed-military-aid): what is counted, why, what is left out, data or judgement
 - [decisions § What is data and what is estimated](decisions.md#what-is-data-and-what-is-estimated): Estimates and models: undisclosed aid
+- [decision log § Round 1–2: the question and the first map (17 October)](decision-log.md#round-12-the-question-and-the-first-map-17-october): Undisclosed military aid estimated beyond the Kiel tracker
+- [decision log § Round 3–4: profit, windfall and a tested baseline (17–18 October)](decision-log.md#round-34-profit-windfall-and-a-tested-baseline-1718-october): France's undisclosed aid for 2022–23 taken out
 
 **Data sources:**
 
@@ -243,7 +246,7 @@ Known gaps:
 
 Known gaps:
 
-- No row in decisions.md explains why this part is counted or how; only the method section does.
+- No recorded reason for check 8's threshold (half of a country's Kiel military aid) ([decisions](decisions.md#undisclosed-military-aid)).
 
 ## Private donations
 
@@ -589,7 +592,9 @@ Known gaps:
 
 **Why it's done this way:**
 
-- [decisions § 4. Energy](decisions.md#4-energy): (no row for this part; the section covers energy in general)
+- [decisions § Why each money flow is counted: Energy switching cost and oil discount](decisions.md#energy-switching-cost-and-oil-discount): what is counted, why, what is left out, data or judgement
+- [decision log § Round 1–2: the question and the first map (17 October)](decision-log.md#round-12-the-question-and-the-first-map-17-october): Energy switching cost; Discount gained on Russian oil
+- [decision log § Round 7: what the owner asked to add (18 October)](decision-log.md#round-7-what-the-owner-asked-to-add-18-october): Oil discount gain without Russia's normal pre-war discount
 
 **Data sources:**
 
@@ -611,7 +616,7 @@ Known gaps:
 
 Known gaps:
 
-- No decision row in decisions.md or decision-log.md; only the method section explains it.
+- No recorded reason for leaving out new infrastructure such as floating LNG terminals ([decisions](decisions.md#energy-switching-cost-and-oil-discount)).
 
 ## Sales to Russia
 
@@ -750,8 +755,10 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Services and tourism](decisions.md#services-and-tourism): what is counted, why, what is left out, data or judgement
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Russia's net gain on services
 - [decisions § Constants in the code](decisions.md#constants-in-the-code): services trend bounds kept within ×2.5 of the middle
+- [decision log § Round 1–2: the question and the first map (17 October)](decision-log.md#round-12-the-question-and-the-first-map-17-october): Services trade with Russia, both ways, against the pre-war level
 
 **Data sources:**
 
@@ -776,7 +783,7 @@ Known gaps:
 
 Known gaps:
 
-- No decision row on counting services itself; only the net-gain value is written down.
+- Russia's services imports that BaTiS does not assign to a country only widen the high ends; who earns them is open ([decisions](decisions.md#services-and-tourism)).
 
 ## Shipping Russian oil
 
@@ -788,6 +795,7 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Shipping Russian oil](decisions.md#shipping-russian-oil): what is counted, why, what is left out, data or judgement
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Left out, and why: Greek shadow-fleet freight and shadow-shipping factors confirmed and kept
 - [decision log § Round 1–2: the question and the first map (17 October)](decision-log.md#round-12-the-question-and-the-first-map-17-october): Count shipping and insuring Russian oil, by owner country
 
@@ -816,7 +824,7 @@ Known gaps:
 
 Known gaps:
 
-- No row in decisions.md explains counting shipping; the reason is only in the decision log.
+- Who really controls each tanker rests mostly on press and tracker reporting (certainty D) ([decisions](decisions.md#shipping-russian-oil)).
 
 ## Company taxes in Russia
 
@@ -869,6 +877,7 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Companies leaving Russia](decisions.md#companies-leaving-russia): what is counted, why, what is left out, data or judgement
 - [decisions § Constants in the code](decisions.md#constants-in-the-code): conduit Kazakhstan 3.5, Netherlands 4.7
 - [decision log § Round 5: values at their real worth (18 October)](decision-log.md#round-5-values-at-their-real-worth-18-october): Rosatom projects, Russian state loans, company exits, Russian-owned firms abroad counted
 
@@ -891,7 +900,7 @@ Known gaps:
 
 Known gaps:
 
-- No row in decisions.md; the reason is only in the decision log.
+- No recorded reason why the forced discount is counted, although the research suggested counting only the exit contribution ([decisions](decisions.md#companies-leaving-russia)).
 
 ## Russian-owned companies abroad
 
@@ -981,6 +990,7 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Remittances from Russia](decisions.md#remittances-from-russia): what is counted, why, what is left out, data or judgement
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Russia's share of remittances, Tajikistan and Belarus
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Moldova's transfers from Russia 2024–2026
 - [decision log § Round 7: what the owner asked to add (18 October)](decision-log.md#round-7-what-the-owner-asked-to-add-18-october): Remittances from Russia counted; relocants' transfers and spending left out
@@ -1016,7 +1026,9 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Rosatom and Russian state loans](decisions.md#rosatom-and-russian-state-loans): what is counted, why, what is left out, data or judgement
 - [decision log § Round 5: values at their real worth (18 October)](decision-log.md#round-5-values-at-their-real-worth-18-october): Rosatom projects, Russian state loans, company exits, Russian-owned firms abroad counted
+- [decision log § Round 6: one rule for money, two balances (18 October)](decision-log.md#round-6-one-rule-for-money-two-balances-18-october): Belarus's Russia-granted loan deferrals left out; sanction-blocked arrears labelled
 
 **Data sources:**
 
@@ -1038,7 +1050,7 @@ Known gaps:
 
 Known gaps:
 
-- No row in decisions.md; the reason is only in the decision log.
+- No recorded reason why loan payments count in full rather than at Russia's net gain ([decisions](decisions.md#rosatom-and-russian-state-loans)).
 
 ## Weapons bought from Russia
 
@@ -1050,7 +1062,9 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Weapons bought from Russia](decisions.md#weapons-bought-from-russia): what is counted, why, what is left out, data or judgement
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Russia's net gain on arms
+- [decision log § Round 5: values at their real worth (18 October)](decision-log.md#round-5-values-at-their-real-worth-18-october): Russian arms sales to other countries counted, against the expected level
 
 **Data sources:**
 
@@ -1072,7 +1086,7 @@ Known gaps:
 
 Known gaps:
 
-- No row in decisions.md on counting arms purchases; Russian Wikipedia is cited in `assumptions_r11_gain.json` ([limitations](limitations.md#open-issues-in-the-numbers)).
+- Russian Wikipedia is cited in `assumptions_r11_gain.json` ([limitations](limitations.md#open-issues-in-the-numbers)).
 
 ## Weapons and troops sent to Russia
 
@@ -1126,6 +1140,7 @@ Known gaps:
 
 **Why it's done this way:**
 
+- [decisions § Why each money flow is counted: Payment agents](decisions.md#payment-agents): what is counted, why, what is left out, data or judgement
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Left out, and why: payment-agent fees confirmed and kept
 - [decision log § Round 6: one rule for money, two balances (18 October)](decision-log.md#round-6-one-rule-for-money-two-balances-18-october): Payment agents' fees and revalued military support to Russia
 
@@ -1147,7 +1162,7 @@ Known gaps:
 
 Known gaps:
 
-- No row in decisions.md on counting the fees; mostly press reports.
+- The fee rates and the split by country rest mostly on press reports.
 
 ## Gold and hidden payments to Russia
 
@@ -1340,7 +1355,9 @@ These sources feed three flows or more. Their confirmed exact links:
 
 ## What is still missing
 
-Every flow has a method section. These flows have **no row in [decisions.md](decisions.md) that says why the flow is counted this way** (decisions.md has at most a row on one of their values; the reason is in the method page or the decision log): [Undisclosed military aid (estimate)](#undisclosed-military-aid-estimate), [Energy switching cost and oil discount](#energy-switching-cost-and-oil-discount), [Services and tourism](#services-and-tourism), [Shipping Russian oil](#shipping-russian-oil), [Companies leaving Russia](#companies-leaving-russia), [Remittances from Russia](#remittances-from-russia), [Rosatom and Russian state loans](#rosatom-and-russian-state-loans), [Weapons bought from Russia](#weapons-bought-from-russia), [Payment agents](#payment-agents).
+Every flow has a method section. Every flow now also has a row in [decisions.md](decisions.md) that says why it is counted
+and why this way; the nine that had none are under [Why each money flow is counted](decisions.md#why-each-money-flow-is-counted),
+where aspects with no reason on record are marked "reason not recorded".
 
 These flows have **no confirmed primary link among their own sources** (press reports or this project's models only): none.
 
