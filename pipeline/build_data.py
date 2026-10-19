@@ -1105,10 +1105,28 @@ def build() -> dict:
                     obj["base_range"] = [round(min(br[0], obj["base"]), 5), round(max(br[1], obj["base"]), 5)]
     for iso3, c in countries.items():
         c["coverage"] = coverage(c, notes.get(iso3, {}))
+    # the exact primary links behind each source (round 11): the table, dataset query or report page each figure comes
+    # from, checked to exist; press reports and this project's own models marked as such
+    r11 = (load(RESEARCH / "sources_r11.json") or {}).get("sources") or {}
+    for sid, item in src.items.items():
+        links = [
+            {
+                "title": lk["title"],
+                "url": lk["url"],
+                "kind": "model"
+                if (r11[sid].get("model") and lk["url"].startswith("https://github.com/"))
+                else lk.get("kind", "primary"),
+            }
+            for lk in (r11.get(sid) or {}).get("links") or []
+            if lk.get("url") and lk.get("confirmed", True)
+        ]
+        if links:
+            item["links"] = links
     status = (
         f"<b>Research preview</b> · figures to {DATA_TO_TEXT}, updated {UPDATED_TEXT}. "
-        "Real figures and estimates from public sources, not yet reviewed by a person. "
-        "Every number has a likely range and a source; gaps are filled with estimates, never left at zero. "
+        "Compiled with AI assistance from public sources and not yet checked line by line against them by a person: treat the figures as unverified estimates. "
+        "Every number has a likely range and sources; gaps are filled with estimates, never left at zero. "
+        'Every choice and its evidence: <a href="https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/decisions.md">decisions</a>. '
         'Method and data: <a href="https://github.com/intelligent-cream/follow-the-money-ukraine">GitHub</a>. Corrections: <a href="https://www.reddit.com/user/Intelligent-Cream-14/">Reddit</a> or a GitHub issue.'
     )
     return {

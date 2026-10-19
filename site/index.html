@@ -169,6 +169,9 @@ button, input, select { font: inherit; color: inherit; }
 .people .n { font-family: var(--font-display); font-weight: 700; font-size: 20px; font-variant-numeric: tabular-nums; }
 .people .l { font-size: 12px; color: var(--ink-soft); }
 .sources { font-size: 12.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; padding-left: 18px; }
+.src-links { margin: 2px 0 6px; padding-left: 16px; list-style: disc; }
+.src-kind { font-size: 11px; opacity: 0.8; }
+.how { font-size: 11px; margin-left: 4px; text-decoration: none; opacity: 0.75; }
 .key { font-size: 12px; color: var(--ink-soft); line-height: 1.5; }
 .empty { color: var(--ink-soft); font-size: 13.5px; }
 
@@ -824,14 +827,40 @@ function ref(ids) {
   const nums = [...new Set(list.map(id => { let k = refs.indexOf(id); if (k < 0) { refs.push(id); k = refs.length - 1; } return k + 1; }))].sort((a, b) => a - b);
   return `<span class="ref">[${nums.map(n => `<a href="#src-${n}" data-ref="${n}">${n}</a>`).join(",")}]</span>`;
 }
+// research notes named in a source note open on GitHub, where the method, inputs and their sources are written out
+const REPO = "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/";
+const esc = x => String(x).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const linkNotes = html => html.replace(/research\/[\w./-]+?\.(?:md|json)/g, m => `<a href="${REPO}${m}" target="_blank" rel="noopener">${m}</a>`);
+// the exact primary links behind a source (round 11, research/2026-10/sources_r11.json): the table, dataset query or
+// report page each figure comes from; press reports and this project's own models are marked as such
+function srcLinks(s) {
+  if (!s.links || !s.links.length) return "";
+  return `<ul class="src-links">${s.links.map(l => `<li><a href="${l.url}" target="_blank" rel="noopener" lang="en">${esc(l.title)}</a>${l.kind === "secondary" ? ` <span class="src-kind">${t("press report")}</span>` : ""}${l.kind === "model" ? ` <span class="src-kind">${t("this project's method")}</span>` : ""}</li>`).join("")}</ul>`;
+}
+// where each part's calculation is written out (docs/method), linked from its name in the waterfall
+const PART_DOC = {
+  aid: "aid-refugees-military.md#aid", aidge: "aid-refugees-military.md#loans-at-their-economic-value-round-5", euaid: "aid-refugees-military.md#eu-level-aid",
+  ref: "aid-refugees-military.md#refugees", buy: "overview.md#the-net-gain-rule-round-10", paid: "overview.md#the-net-gain-rule-round-10",
+  windfall: "prices.md#war-time-windfall", laund: "energy-and-laundered-oil.md#laundered-oil", sold: "trade.md#profit-not-revenue",
+  tax: "services-shipping-companies.md#company-taxes", mil: "aid-refugees-military.md#military-support-to-russia",
+  svcpaid: "services-shipping-companies.md#services", svcsold: "services-shipping-companies.md#services", ship: "services-shipping-companies.md#shipping",
+  hidden: "trade.md#gold-and-hidden-channels", undisc: "aid-refugees-military.md#undisclosed-aid-and-private-donations", priv: "aid-refugees-military.md#undisclosed-aid-and-private-donations",
+  statefin: "russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia", rusarms: "russia-state-and-companies.md#weapons-bought-from-russia",
+  exits: "russia-state-and-companies.md#companies-leaving-russia", rusfirms: "russia-state-and-companies.md#russian-owned-companies-abroad",
+  frozen: "russia-state-and-companies.md#frozen-central-bank-reserves-round-7", remit: "trade.md#remittances-and-relocants-round-7",
+  agents: "trade.md#payment-agents-round-6", multilat: "aid-refugees-military.md#loans-at-their-economic-value-round-5",
+  own: "aid-refugees-military.md#flowback", purl: "aid-refugees-military.md#flowback", sell: "aid-refugees-military.md#flowback", arms: "aid-refugees-military.md#arms-ukraine-bought-abroad-round-5", othsp: "aid-refugees-military.md#flowback",
+  prem: "energy-and-laundered-oil.md#energy-premium-and-oil-discount", disc: "energy-and-laundered-oil.md#energy-premium-and-oil-discount", margin: "trade.md#profit-not-revenue", tariff: "overview.md#the-cost-view",
+};
+const howLink = k => (PART_DOC[k] ? `<a class="how" href="${REPO}docs/method/${PART_DOC[k]}" target="_blank" rel="noopener" title="${t("How this part is calculated")}" aria-label="${t("How this part is calculated")}">ⓘ</a>` : "");
 function sourcesHtml() {
   if (!refs.length) return "";
-  return `<section class="section"><h3>${t("Sources")}</h3><ol class="sources">${refs.map((id, i) => {
+  return `<section class="section"><h3>${t("Sources")}</h3><p class="key">${t("Figures were compiled with AI assistance from these sources and have not yet been checked line by line by a person. Each source lists the exact tables and reports used; the research notes give every input with its own source.")}</p><ol class="sources">${refs.map((id, i) => {
     const s = SRC[id];
     // names and notes come from data.json in English; where no translation exists, lang="en" lets screen readers and hyphenation treat them as English
     const nm = tData(s.name);
-    return `<li id="src-${i + 1}">${s.url ? `<a href="${s.url}" target="_blank" rel="noopener"${nm.en ? ' lang="en"' : ""}>${nm.s}</a>` : dataText(s.name)}${s.date ? t(", data to {date}", { date: s.date }) : ""}${s.note ? ` · ${dataText(s.note)}` : ""}</li>`;
-  }).join("")}</ol></section>`;
+    return `<li id="src-${i + 1}">${s.url ? `<a href="${s.url}" target="_blank" rel="noopener"${nm.en ? ' lang="en"' : ""}>${nm.s}</a>` : dataText(s.name)}${s.date ? t(", data to {date}", { date: s.date }) : ""}${s.note ? ` · ${linkNotes(dataText(s.note))}` : ""}${srcLinks(s)}</li>`;
+  }).join("")}</ol><p class="key"><a href="${REPO}docs/decisions.md" target="_blank" rel="noopener">${t("Every modelling choice, with its reasons and evidence")}</a></p></section>`;
 }
 
 // ===== Colours =====
@@ -1249,7 +1278,7 @@ function waterfall(parts, total, totalLabel, totalLo, totalHi) {
   const band = (l, h, col) => l == null ? "" : `<div class="band" style="left:${x(Math.min(l, h))}%;width:${Math.max(0.8, Math.abs(x(h) - x(l)))}%;background:${col}"></div>`;
   const colOf = s => ["own", "purl", "sell", "arms", "othsp"].includes(s.k) ? "var(--back)" : s.v >= 0 ? "var(--ukr)" : "var(--rus)";
   const upto = Math.max(2022, state.year);
-  return `<div class="wf"><div class="key">${t("Totals for 2022–{y}{ytd}, all years added up. Bar: each part; pale band: its likely range.", { y: upto, ytd: upto === 2026 && FRAC[5] < 1 ? t(" (2026 year to date, Jan–Aug)") : "" })}</div>${parts.map(s => `<div class="wf-row"><span>${s.label}${chip(s.cert)}${ref(s.src)}</span><span class="val">${eur(s.v, true)}${s.lo != null ? rng(s.lo, s.hi) : ""}</span>
+  return `<div class="wf"><div class="key">${t("Totals for 2022–{y}{ytd}, all years added up. Bar: each part; pale band: its likely range.", { y: upto, ytd: upto === 2026 && FRAC[5] < 1 ? t(" (2026 year to date, Jan–Aug)") : "" })}</div>${parts.map(s => `<div class="wf-row"><span>${s.label}${howLink(s.k)}${chip(s.cert)}${ref(s.src)}</span><span class="val">${eur(s.v, true)}${s.lo != null ? rng(s.lo, s.hi) : ""}</span>
       <div class="track">${band(s.lo, s.hi, colOf(s))}${axis}${bar(0, s.v, colOf(s), s.cert === "C" || s.cert === "D" ? 0.75 : 1)}</div></div>`).join("")}
     <div class="wf-row total"><span>${totalLabel}</span><span class="val">${eur(total, true)}${totalLo != null ? `<small>${rangeTxt(totalLo, totalHi)}</small>` : ""}</span>
       <div class="track">${band(totalLo, totalHi, total >= 0 ? "var(--ukr)" : "var(--rus)")}${axis}${bar(0, total, total >= 0 ? "var(--ukr)" : "var(--rus)")}</div></div></div>`;
