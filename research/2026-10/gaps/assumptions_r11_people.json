@@ -1,0 +1,1110 @@
+{
+ "generated": "2026-10-19",
+ "scope": "Round 11 'people' assumptions: refugee hosting costs, remittance shares, private donations, Hong Kong gold onward share, CIF share. Amounts EUR bn unless stated; 2026 = Jan-Aug. Not yet reviewed by a person.",
+ "proposals": [
+  {
+   "item": "refugee_gross_cost_cross_check",
+   "country": "European OECD hosts (27)",
+   "years": "2022",
+   "old": "round4b/refugees_net 2022 gross centrals, EUR bn: AUT 0.35, BEL 0.28, HRV 0.07, DNK 0.29, EST 0.05, FIN 0.18, FRA 0.63, GRC 0.046, IRL 1.0, ITA 0.6, LVA 0.05, LTU 0.05, LUX 0.059, NLD 1.53, NOR 0.65, PRT 0.05, SVN 0.023, ESP 0.62, SWE 0.3, CHE 0.93, GBR 1.64, HUN 0.059, SVK 0.15, ROU 0.15",
+   "new": {
+    "rule": "keep budget-based centrals where a national outturn exists; for rate x caseload (C) hosts set the 2022 high bound at least at the OECD figure",
+    "oecd_2022_eur_bn": {
+     "AUT": 0.592,
+     "BEL": 0.589,
+     "HRV": 0.084,
+     "DNK": 0.257,
+     "EST": 0.166,
+     "FIN": 0.166,
+     "FRA": 0.706,
+     "GRC": 0.078,
+     "IRL": 0.297,
+     "ITA": 0.737,
+     "LVA": 0.107,
+     "LTU": 0.223,
+     "LUX": 0.063,
+     "NLD": 0.488,
+     "NOR": 0.236,
+     "PRT": 0.168,
+     "SVN": 0.053,
+     "ESP": 1.359,
+     "SWE": 0.325,
+     "CHE": 0.714,
+     "GBR": 0.207,
+     "HUN": 0.372,
+     "SVK": 0.642,
+     "ROU": 1.002
+    }
+   },
+   "basis": "judgement",
+   "sources": [
+    {
+     "title": "OECD International Migration Outlook 2022, Box 4.1 and Table 4.1 (first-year cost of hosting Ukrainian refugees, European OECD countries, 10 months of 2022, modelled)",
+     "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2022/10/international-migration-outlook-2022_140ace0e/30fe16d2-en.pdf",
+     "what": "Table 4.1 total cost, EUR m: AUT 592, BEL 589, HRV 84, CZE 1957, DNK 257, EST 166, FIN 166, FRA 706, DEU 6808, GRC 78, IRL 297, ITA 737, LVA 107, LTU 223, LUX 63, NLD 488, NOR 236, PRT 168, SVN 53, ESP 1359, SWE 325, CHE 714, GBR 207, POL 8360, HUN 372, SVK 642, ROU 1002; total 26756. OECD notes HUN, SVK and ROU caseloads are overestimates."
+    }
+   ],
+   "note": "The OECD figures are a standard-cost model (living costs + marginal education + health) on end-April 2022 stocks, not budgets. They are above our 2022 centrals for AUT, BEL, EST, LTU, LVA, PRT, SVN, ITA and far above for SVK and ROU (OECD itself says those caseloads are overstated). They are below our budget-based values for IRL, NLD, NOR, CHE, GBR. Use them only as a scale check and as a floor for the high bound of C-rated hosts."
+  },
+  {
+   "item": "refugee_gross_cost",
+   "country": "ROU",
+   "years": "2022, 2023",
+   "old": {
+    "2022": 0.15,
+    "2023": 0.16
+   },
+   "new": {
+    "2022": {
+     "low": 0.12,
+     "central": 0.15,
+     "high": 0.25
+    },
+    "2023": {
+     "low": 0.2,
+     "central": 0.24,
+     "high": 0.32
+    }
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "PressHub, 16 Aug 2023: Romania owes Ukrainian refugees RON 300m (figures on 50/20 payments)",
+     "url": "https://www.presshub.ro/exclusiv-romania-datoreaza-refugiatilor-ucraineni-300-de-milioane-de-lei-in-schimb-ii-trimite-la-munca-282164/",
+     "what": "RON 1,251,823,627 paid in total for food and accommodation; RON 660,578,758 transferred in 2023 alone; IGSU: arrears for Apr-Jul 2023 EUR 63.7m (headline RON 312.2m)"
+    },
+    {
+     "title": "Juridice.ro, 28 Jul 2023: EUR 400m from POCU 2014-2020 to reimburse refugee support costs (OG 25/2023)",
+     "url": "https://www.juridice.ro/697895/400-de-milioane-de-euro-pentru-decontarea-cheltuielilor-privind-sprijinirea-refugiatilor-ucraineni.html",
+     "what": "EU funds earmarked to reimburse Romania's refugee costs"
+    }
+   ],
+   "note": "2022: 1,251.8 - 660.6 = RON 591.2m paid for 2022 (matches the RON 592m in round4b) = EUR 0.120bn at 4.931 RON/EUR; health and schooling come on top, so 0.15 is kept. 2023: 660.6 + 312.2 (Apr-Jul arrears) = RON 972.8m for activity up to July 2023 (a small part may be Dec 2022 arrears) = EUR 0.197bn at 4.947; Aug-Dec 2023 under the lower lump sums (750/2000 lei a month) adds an estimated EUR 0.03-0.08bn. Up to EUR 0.4bn of this is reimbursed from EU POCU funds (flag as eu_funded)."
+  },
+  {
+   "item": "refugee_gross_cost",
+   "country": "BGR",
+   "years": "2022",
+   "old": 0.22,
+   "new": {
+    "low": 0.27,
+    "central": 0.3,
+    "high": 0.4
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Sofia Globe, 31 Oct 2022: Bulgaria to move Ukrainian refugees from hotels to state facilities",
+     "url": "https://sofiaglobe.com/?p=109602",
+     "what": "Caretaker Tourism Minister Ilin Dimitrov: close to BGN 523m (EUR 267m) paid to hoteliers so far, BGN 200m from the national budget and about BGN 300m from EU programmes and funds"
+    }
+   ],
+   "note": "BGN 523m / 1.95583 = EUR 0.267bn, accommodation only, to the end of October 2022. Nov-Dec 2022 accommodation, health and schooling come on top, so central 0.30. About EUR 0.15bn of it (BGN 300m) was EU-funded: flag as eu_funded. 2023-26 unchanged (no outturn found)."
+  },
+  {
+   "item": "refugee_gross_cost",
+   "country": "HUN",
+   "years": "2022-2026",
+   "old": {
+    "2022": 0.059,
+    "2023": 0.104,
+    "2024": 0.119,
+    "2025": 0.134,
+    "2026": 0.096,
+    "sum": 0.512
+   },
+   "new": {
+    "2022": 0.05,
+    "2023": 0.045,
+    "2024": 0.035,
+    "2025": 0.03,
+    "2026": 0.02,
+    "sum": 0.18,
+    "range_factor": "low x0.6, high x1.5"
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Budapest Times, 25 Nov 2024: The biggest relief operation of Hungary",
+     "url": "https://www.budapesttimes.hu/hungary/the-biggest-relief-operation-of-hungary/",
+     "what": "State Secretary Miklos Soltesz: nearly HUF 100bn in aid to Ukraine AND incoming refugees over the 1,000 days of the war; charities shipped goods to Ukraine worth about HUF 13bn"
+    }
+   ],
+   "note": "HUF 100bn / ~390 HUF/EUR = about EUR 0.25bn for everything (aid inside Ukraine plus refugees) Feb 2022 - Nov 2024. Our current refugee-only gross for 2022-24 is 0.282, already above the government's own all-in total. Taking 50-80% of the HUF 100bn as refugee cost gives EUR 0.13-0.20bn for 2022-24; the proposed path (0.13 for 2022-24, 0.18 for 2022-26) sits in that band. Split across years is judgement (front-loaded, Hungary's protected population fell after 2022)."
+  },
+  {
+   "item": "refugee_gross_cost",
+   "country": "BEL",
+   "years": "2022, 2023",
+   "old": {
+    "2022": 0.28,
+    "2023": 0.42
+   },
+   "new": {
+    "2022": {
+     "low": 0.28,
+     "central": 0.4,
+     "high": 0.59
+    },
+    "2023": {
+     "low": 0.42,
+     "central": 0.55,
+     "high": 0.75
+    }
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Brussels Times, 26 Apr 2023: Belgian MP condemns 'colossal' Ukrainian refugee aid",
+     "url": "https://www.brusselstimes.com/474292/we-cannot-afford-this-belgian-mp-condemns-colossal-ukrainian-refugee-aid",
+     "what": "Theo Francken (N-VA), quoting the budget: EUR 372m for this (living-wage equivalent) aid in 2023 alone"
+    },
+    {
+     "title": "OECD International Migration Outlook 2022, Box 4.1 and Table 4.1 (first-year cost of hosting Ukrainian refugees, European OECD countries, 10 months of 2022, modelled)",
+     "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2022/10/international-migration-outlook-2022_140ace0e/30fe16d2-en.pdf",
+     "what": "Table 4.1 total cost, EUR m: AUT 592, BEL 589, HRV 84, CZE 1957, DNK 257, EST 166, FIN 166, FRA 706, DEU 6808, GRC 78, IRL 297, ITA 737, LVA 107, LTU 223, LUX 63, NLD 488, NOR 236, PRT 168, SVN 53, ESP 1359, SWE 325, CHE 714, GBR 207, POL 8360, HUN 372, SVK 642, ROU 1002; total 26756. OECD notes HUN, SVK and ROU caseloads are overestimates."
+    }
+   ],
+   "note": "The federal budget for the social-integration income paid to temporary-protection holders was EUR 372m in 2023 (an MP quoting the budget, not an outturn). That one line is 89% of our total 2023 gross (0.42), which must also cover Fedasil reception, schooling and health. Central 0.55 = 0.372 + about 0.18 for the rest (judgement). 2022: OECD model 0.589; central 0.40 between our 0.28 and OECD."
+  },
+  {
+   "item": "refugee_gross_cost",
+   "country": "LVA",
+   "years": "2023-2026",
+   "old": {
+    "2023": 0.05,
+    "2024": 0.04,
+    "2025": 0.03,
+    "2026": 0.015
+   },
+   "new": {
+    "2023": {
+     "low": 0.045,
+     "central": 0.06,
+     "high": 0.08
+    },
+    "2024": {
+     "low": 0.045,
+     "central": 0.06,
+     "high": 0.08
+    },
+    "2025": {
+     "low": 0.05,
+     "central": 0.065,
+     "high": 0.08
+    },
+    "2026": {
+     "low": 0.025,
+     "central": 0.04,
+     "high": 0.05
+    }
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "LSM, 21 Nov 2024: support for Ukrainian refugees in Latvia extended by a year",
+     "url": "https://www.lsm.lv/raksts/zinas/latvija/21.11.2024-vel-uz-gadu-pagarina-atbalstu-ukrainas-begliem-latvija.a577249/",
+     "what": "State budget 2025: EUR 65m for support of Ukrainian civilians in Latvia"
+    },
+    {
+     "title": "LV portals, 23 Feb 2026: Welfare Minister: support for Ukrainian civilians continues in 2026",
+     "url": "https://lvportals.lv/dienaskartiba/386456-labklajibas-ministrs-r-uzulnieks-atbalsts-ukrainas-civiliedzivotajiem-latvija-tiks-turpinats-2026",
+     "what": "Welfare sector support about EUR 125m since Feb 2022; EUR 48.4m of municipal social benefits to 52,000 people; about EUR 19m of state social benefits"
+    }
+   ],
+   "note": "2025 = the EUR 65m budget line of the Ukrainian Civilians Support Law. Welfare sector alone averaged EUR 125m / 4 years = 0.031 a year, before schooling, health, language courses and accommodation, so 2023-24 at about 0.06 is consistent. 2026 Jan-Aug = 8/12 x about 0.06. Current values are about half of this."
+  },
+  {
+   "item": "refugee_gross_cost",
+   "country": "EST",
+   "years": "2022",
+   "old": 0.05,
+   "new": {
+    "low": 0.045,
+    "central": 0.06,
+    "high": 0.1
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "ERR: Riisalo: refugee flow to Estonia starting to stabilise (2022 budget for war refugees)",
+     "url": "https://www.err.ee/1608579985/riisalo-pogenikevoog-eestisse-hakkab-stabiliseeruma",
+     "what": "Planned 2022 state money: EUR 44.3m for housing about 30,000 war refugees, EUR 17m initial rent support, EUR 1.4m basic goods and prescription medicines"
+    },
+    {
+     "title": "OECD International Migration Outlook 2022, Box 4.1 and Table 4.1 (first-year cost of hosting Ukrainian refugees, European OECD countries, 10 months of 2022, modelled)",
+     "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2022/10/international-migration-outlook-2022_140ace0e/30fe16d2-en.pdf",
+     "what": "Table 4.1 total cost, EUR m: AUT 592, BEL 589, HRV 84, CZE 1957, DNK 257, EST 166, FIN 166, FRA 706, DEU 6808, GRC 78, IRL 297, ITA 737, LVA 107, LTU 223, LUX 63, NLD 488, NOR 236, PRT 168, SVN 53, ESP 1359, SWE 325, CHE 714, GBR 207, POL 8360, HUN 372, SVK 642, ROU 1002; total 26756. OECD notes HUN, SVK and ROU caseloads are overestimates."
+    }
+   ],
+   "note": "44.3 + 17 + 1.4 = EUR 62.7m planned (not an outturn), before schooling and health. OECD model: 0.166. Central 0.06, high 0.10."
+  },
+  {
+   "item": "refugee_gross_cost_floor",
+   "country": "IRL",
+   "years": "2022, 2023",
+   "old": {
+    "2022": 0.448,
+    "2023": "n/a (accommodation)"
+   },
+   "new": {
+    "2022": {
+     "accommodation_floor": 0.515
+    },
+    "2023": {
+     "accommodation_floor": 1.49,
+     "central_unchanged": 2.0
+    }
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Search snippet of press report on Public Accounts Committee figures (Tipperary Live / Iconic Media), 2024; page itself blocked by a bot wall",
+     "url": "https://www.tipperarylive.ie/national/government-spent-almost-eu15-billion-on-accommodation-for-ukrainian-refugees-last-year-7165026",
+     "what": "Department of Integration spent EUR 515m on BOTP accommodation in 2022 and EUR 1.49bn in 2023 (figures given to the PAC)"
+    },
+    {
+     "title": "Business Post: State spending on housing asylum seekers and Ukrainians in 2023 totals EUR 1.8bn",
+     "url": "https://www.businesspost.ie/news/state-spending-on-housing-asylum-seekers-and-ukrainians-in-2023-totals-e1-8bn/",
+     "what": "IP applicants + Ukrainians together, 2023 [search-result snippet; page not opened]"
+    }
+   ],
+   "note": "Confirms the 2023 central (2.0) is plausible: accommodation alone 1.49. Raise the 2022 floor from 0.448 to 0.515 and set the 2023 low to at least 1.49. Not verified on the PAC page itself."
+  },
+  {
+   "item": "refugee_gross_cost_floor",
+   "country": "GBR",
+   "years": "2022, 2023",
+   "old": {
+    "2022": 1.64,
+    "2023": 1.95
+   },
+   "new": {
+    "2022": {
+     "oda_floor": 0.87
+    },
+    "2023": {
+     "oda_floor": 0.742
+    },
+    "central": "unchanged"
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "ICAI follow-up: UK aid to refugees in the UK",
+     "url": "https://icai.independent.gov.uk/html-version/icai-follow-up-uk-aid-to-refugees-in-the-uk-html/",
+     "what": "ODA in-donor refugee costs: DLUHC (all Homes for Ukraine) GBP 524m (2022), 466m (2023); DfE GBP 218m (2022), 179m (2023, Ukraine and Afghan schemes)"
+    },
+    {
+     "title": "NAO, Investigation into the Homes for Ukraine scheme (Oct 2023)",
+     "url": "https://www.nao.org.uk/wp-content/uploads/2023/10/investigation-into-the-homes-for-ukraine-scheme.pdf",
+     "what": "GBP 2.1bn central funding by end-Sep 2023: GBP 1.14bn tariff, GBP 100m thank-you payments to Mar 2023 (+177m expected), GBP 650m LAHF/homelessness, DfE GBP 171m; only about GBP 1.1bn to Mar 2023 counted as ODA"
+    }
+   ],
+   "note": "ODA-eligible (first-year) costs: (524+218)/0.8528 = EUR 0.870bn (2022), (466+179)/0.8698 = EUR 0.742bn (2023). Floors only; the NAO total and benefits/NHS costs support the current centrals. No national outturn for 2024-26 found."
+  },
+  {
+   "item": "refugee_gross_cost",
+   "country": "MDA",
+   "years": "2022-2023",
+   "old": {
+    "2022": 0.02,
+    "2023": 0.015
+   },
+   "new": "unchanged",
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Moldova Ministry of Finance: report on funds accumulated and distributed for the Ukrainian refugee crisis, Jan-Nov 2023",
+     "url": "https://www.mf.gov.md/sites/default/files/30.11.2023_Raport%20_criza%20refugiati_Ucraina.docx",
+     "what": "2023 government emergency funds MDL 62.2m (MDL 36.6m for temporary placement centres, MDL 16.3m 2022 medical costs); donations to the budget MDL 81.1m (UNICEF 58.5m, UNHCR 20.7m)"
+    },
+    {
+     "title": "Moldova Ministry of Finance: refugee crisis report 30.04.2022",
+     "url": "https://mf.gov.md/sites/default/files/30.04.2022_Raport%20_criza%20refugiati.pdf",
+     "what": "early 2022 allocations"
+    }
+   ],
+   "note": "Own-budget emergency allocations are small (MDL 62.2m, about EUR 3m, in 2023). The current 0.015-0.02 also covers schooling and health and is kept. Most hosting is donor-funded through the UNHCR plan; no Moldovan budget outturn for all refugee costs was found."
+  },
+  {
+   "item": "refugee_gross_cost",
+   "country": "GEO",
+   "years": "2022",
+   "old": 0.02,
+   "new": {
+    "low": 0.006,
+    "central": 0.02,
+    "high": 0.03
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "FrontNews Georgia: state programme ensuring shelter and food for Ukrainian refugees ends",
+     "url": "https://frontnews.ge/en/news/details/28741",
+     "what": "Tbilisi City Hall: GEL 14m spent on hotel accommodation and meals, March - 1 Aug 2022 [search-result snippet; page not opened]"
+    },
+    {
+     "title": "1TV Georgia: Agency for IDPs reports on assistance to Ukrainian refugees",
+     "url": "https://1tv.ge/lang/en/news/agency-for-idps-reports-on-assistance-to-ukrainian-refugees/",
+     "what": "since 15 Jul 2022: GEL 1.8m social aid and accommodation, GEL 0.2m temporary housing, GEL 0.8m medical treatment; programme pays GEL 300 per family + GEL 45 per member a month [search-result snippet; page not opened]"
+    }
+   ],
+   "note": "Documented 2022 spending is about GEL 17m (EUR 0.006bn), a floor. The monthly cash programme (extended to Oct 2025) can reach GEL 30-50m a year at the UNHCR caseload, so central kept."
+  },
+  {
+   "item": "refugee_gross_cost",
+   "country": "TUR, SVK, AUT, SWE, DNK, FIN, NOR, PRT, ITA, ESP, NLD, CHE, CAN, USA, LTU",
+   "years": "2022-2026",
+   "old": "as in refugees_net.json",
+   "new": "unchanged",
+   "basis": "judgement",
+   "sources": [
+    {
+     "title": "Migrationsverket: Fragor och svar om massflyktsdirektivet (rules for state reimbursement to municipalities)",
+     "url": "https://www.migrationsverket.se/andra-aktorer/kommuner/om-skyddsbehovande-enligt-massflyktsdirektivet/fragor-och-svar-om-massflyktsdirektivet.html",
+     "what": "reimbursement rules only, no totals"
+    },
+    {
+     "title": "Bundeskanzleramt, 8 Jun 2022: Grundversorgung (Ukraine) briefing",
+     "url": "https://www.Bundeskanzleramt.gv.at/dam/jcr:2095f7ab-69eb-419a-b92d-494a26fcc4f6/20220608_grundversorgung.pdf",
+     "what": "about 55,000 people in federal and Laender basic care on 2 Jun 2022; cost-sharing rules, no totals"
+    }
+   ],
+   "note": "No Ukrainian-specific outturn was found for Türkiye, Austria (only the 60/40 Bund-Laender rule and EUR 190 first-reception lump sum), Sweden (a 2023 forecast of SEK 7bn more for municipalities, regions and protected persons was reported by SVT, page blocked), Denmark, Finland or Norway. Slovakia's ~EUR 130m accommodation contributions (round4b) is the only Slovak figure. Use the OECD 2022 figures (first item) as the high-bound check."
+  },
+  {
+   "item": "remittance_russia_share",
+   "country": "TJK",
+   "years": "2019-2026",
+   "old": {
+    "low": 0.8,
+    "central": 0.88,
+    "high": 0.93
+   },
+   "new": {
+    "low": 0.8,
+    "central": 0.88,
+    "high": 0.97
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Bank of Russia: cross-border transfers of individuals (statistics page, last updated 07.11.2024)",
+     "url": "https://www.cbr.ru/statistics/macro_itm/external_sector/cbti/",
+     "what": "Country splits ('по основным странам-контрагентам', territorial breakdown, payment systems by country) end with 2021; 2022 file has Q1 totals only"
+    },
+    {
+     "title": "Bank of Russia: personal remittances from Russia to CIS countries (Personal_Remittances_CIS.xlsx)",
+     "url": "https://www.cbr.ru/vfs/statistics/CrossBorder/Personal_Remittances_CIS.xlsx",
+     "what": "USD m, BoP personal remittances Russia -> Tajikistan 2014-2021: 3662, 2092, 1872, 2477, 2718, 2960, 1873, 1705; -> Belarus 2019-2021: 607, 420, 485; -> Moldova 2019-2021: 600, 378, 286"
+    },
+    {
+     "title": "World Bank WDI BX.TRF.PWKR.CD.DT (personal remittances received)",
+     "url": "https://api.worldbank.org/v2/country/TJK;BLR;MDA/indicator/BX.TRF.PWKR.CD.DT?date=2014:2025&format=json&per_page=100",
+     "what": "TJK 2014-2021 USD m: 3384, 2259, 1867, 2237, 2183, 2322, 2187, 2922; BLR 2019-2021: 1418.8, 1013.7, 1364.4"
+    },
+    {
+     "title": "Bank of Russia: bilateral BoP / detailed components (Personal_Remittances_CIS_dc.xlsx)",
+     "url": "https://www.cbr.ru/vfs/statistics/crossborder/Personal_Remittances_CIS_dc.xlsx",
+     "what": "Russia-Tajikistan detailed components 2020-2021 (net personal remittances -1852, -1680 USD m)"
+    }
+   ],
+   "note": "Mirror check: Bank of Russia outflows to Tajikistan / Tajik WDI inflows = 1.08, 0.93, 1.00, 1.11, 1.24, 1.27, 0.86, 0.58 (2014-2021). Pooled 2019-2021 = 6538/7431 = 0.88 (the current central, now data-backed); pooled 2014-2021 = 19359/19361 = 1.00. Single years swing because the two sides record different channels. Keep 0.88, raise the high to 0.97. No country split exists after 2021: the Bank of Russia stopped country data after 2021, and the National Bank of Tajikistan publishes none."
+  },
+  {
+   "item": "remittance_russia_share",
+   "country": "BLR",
+   "years": "2019-2026",
+   "old": {
+    "low": 0.3,
+    "central": 0.45,
+    "high": 0.6
+   },
+   "new": {
+    "low": 0.3,
+    "central": 0.4,
+    "high": 0.5
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Bank of Russia: cross-border transfers of individuals (statistics page, last updated 07.11.2024)",
+     "url": "https://www.cbr.ru/statistics/macro_itm/external_sector/cbti/",
+     "what": "Country splits ('по основным странам-контрагентам', territorial breakdown, payment systems by country) end with 2021; 2022 file has Q1 totals only"
+    },
+    {
+     "title": "Bank of Russia: personal remittances from Russia to CIS countries (Personal_Remittances_CIS.xlsx)",
+     "url": "https://www.cbr.ru/vfs/statistics/CrossBorder/Personal_Remittances_CIS.xlsx",
+     "what": "USD m, BoP personal remittances Russia -> Tajikistan 2014-2021: 3662, 2092, 1872, 2477, 2718, 2960, 1873, 1705; -> Belarus 2019-2021: 607, 420, 485; -> Moldova 2019-2021: 600, 378, 286"
+    },
+    {
+     "title": "World Bank WDI BX.TRF.PWKR.CD.DT (personal remittances received)",
+     "url": "https://api.worldbank.org/v2/country/TJK;BLR;MDA/indicator/BX.TRF.PWKR.CD.DT?date=2014:2025&format=json&per_page=100",
+     "what": "TJK 2014-2021 USD m: 3384, 2259, 1867, 2237, 2183, 2322, 2187, 2922; BLR 2019-2021: 1418.8, 1013.7, 1364.4"
+    },
+    {
+     "title": "Bank of Russia: bilateral balance of payments Russia - Belarus 2017-2021 (Belarus_pb.xlsx)",
+     "url": "https://www.cbr.ru/Content/Document/File/164888/Belarus_pb.xlsx",
+     "what": "compensation of employees paid by Russia to Belarus: USD 478, 721, 690, 514, 527m (2017-2021); last update 23 Dec 2022, no later years"
+    }
+   ],
+   "note": "Bank of Russia personal remittances to Belarus / Belarus WDI: 607/1418.8 = 0.43 (2019), 420/1013.7 = 0.41 (2020), 485/1364.4 = 0.36 (2021); pooled 1512/3797 = 0.40. Every Belarus total from Russia scales by 0.40/0.45 = 0.889 (2022-26 change +0.84 -> about +0.74 EUR bn). NBRB country data could not be reached (site timed out); no post-2021 split found."
+  },
+  {
+   "item": "remittance_total_from_russia",
+   "country": "MDA",
+   "years": "2022-2026",
+   "old": {
+    "2022": 0.152,
+    "2023": 0.111,
+    "2024": 0.092,
+    "2025": 0.08,
+    "2026": 0.043
+   },
+   "new": {
+    "2022": {
+     "low": 0.114,
+     "central": 0.152,
+     "high": 0.24
+    },
+    "2023": {
+     "low": 0.074,
+     "central": 0.111,
+     "high": 0.15
+    },
+    "2024": {
+     "low": 0.05,
+     "central": 0.07,
+     "high": 0.085
+    },
+    "2025": {
+     "low": 0.014,
+     "central": 0.018,
+     "high": 0.022
+    },
+    "2026": {
+     "low": 0.004,
+     "central": 0.008,
+     "high": 0.012
+    }
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "BNM, Conturile internationale ale Republicii Moldova, anuar statistic 2023 (Diagrama 36)",
+     "url": "https://bnm.md/files/Anuar_CI_2023.pdf",
+     "what": "BoP personal remittances from CIS, USD m: 513.57 (2019), 339.91 (2020), 293.50 (2021), 443.00 (2022), 253.22 (2023); EU and other countries shown separately"
+    },
+    {
+     "title": "BNM, Conturile internationale, trimestrul IV 2024",
+     "url": "https://bnm.md/files/01_CI_q4_2024_.pdf",
+     "what": "Q4 2024 remittances 468.27 USD m, CIS share 2.4% (Q4 2023 CIS 51.38 -> Q4 2024 11.32); Ukraine no longer counted in CIS from Q4 2024"
+    },
+    {
+     "title": "BNM quarterly reports Q1-Q3 2024",
+     "url": "https://bnm.md/files/01_CI_q2_2024.pdf",
+     "what": "CIS shares 8.9% (Q1), 11.3% (Q2), 8.1% (Q3) of quarterly remittances 433.17, 479.47, 477.31 USD m"
+    },
+    {
+     "title": "BNM Raport anual 2025",
+     "url": "https://bnm.md/files/Raport_anual_BNM_2025.pdf",
+     "what": "2025 remittances EUR 1,665.5m; CIS share 1.9%; CIS inflows fell 4.1-fold (-EUR 99.1m)"
+    },
+    {
+     "title": "BNM release on 2020 bank transfers",
+     "url": "https://www.bnm.md/ro/content/evolutia-transferurilor-de-mijloace-banesti-din-strainatate-efectuate-favoarea-33",
+     "what": "Russia = 92.4% of CIS bank transfers (2020)"
+    },
+    {
+     "title": "Bank of Russia: personal remittances from Russia to CIS countries (Personal_Remittances_CIS.xlsx)",
+     "url": "https://www.cbr.ru/vfs/statistics/CrossBorder/Personal_Remittances_CIS.xlsx",
+     "what": "USD m, BoP personal remittances Russia -> Tajikistan 2014-2021: 3662, 2092, 1872, 2477, 2718, 2960, 1873, 1705; -> Belarus 2019-2021: 607, 420, 485; -> Moldova 2019-2021: 600, 378, 286"
+    }
+   ],
+   "note": "CIS remittances (BoP basis, Russia >90%): 2024 = EUR 31.6m + 99.1m = EUR 130.7m (USD 142.7m from the quarterly shares); 2025 = 1.9% x 1665.5 = EUR 31.6m. The model uses bank transfers, which are about half the BoP level: scale factor 0.2287/(513.57/1.1195) = 0.50 (2019) and 0.1606/(293.5/1.1827) = 0.65 (2021), mean 0.57. Proposed = BoP CIS in EUR x 0.57: 2024 0.075, 2025 0.018. 2022 and 2023 BoP CIS (0.24, 0.13 after scaling) still include transfers from Ukraine, which rose with the refugee inflow, so the central stays and only the high moves. 2026 Jan-Aug = 2025 x 8/12 with further decline. The 2022-26 change becomes more negative (Moldova earns less from Russia); it stays a small number."
+  },
+  {
+   "item": "private_donations",
+   "country": "AUT",
+   "years": "2022",
+   "old": {
+    "low": 0.0395,
+    "central": 0.0741,
+    "high": 0.1976
+   },
+   "new": {
+    "low": 0.1,
+    "central": 0.11,
+    "high": 0.16
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "vienna.at, 30 Nov 2022: Rueckgang an Spenden in Oesterreich befuerchtet (Fundraising Verband Austria)",
+     "url": "https://www.vienna.at/rueckgang-an-spenden-in-oesterreich-befuerchtet/7774852",
+     "what": "EUR 100m given for Ukraine aid in the first two months of the war; Nachbar in Not over EUR 50m by end-October 2022"
+    },
+    {
+     "title": "ORF, 9 Aug 2023: Nachbar in Not: bisher 98 Mio. Euro gespendet",
+     "url": "https://orf.at/stories/3326898/",
+     "what": "EUR 56m private donations to Nachbar in Not since 24 Feb 2022; government doubling about EUR 42m (government money, not private)"
+    }
+   ],
+   "note": "EUR 100m in two months is already above the model's 2022 high-centre; central 0.11, low 0.10."
+  },
+  {
+   "item": "private_donations",
+   "country": "CZE",
+   "years": "2022",
+   "old": {
+    "low": 0.0321,
+    "central": 0.0962,
+    "high": 0.2565
+   },
+   "new": {
+    "low": 0.16,
+    "central": 0.19,
+    "high": 0.22
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Seznam Zpravy, 24 Feb 2023: how the war changed Czechia",
+     "url": "https://www.seznamzpravy.cz/clanek/fakta-jak-valka-na-ukrajine-zmenila-cesko-cesi-jsou-nejsolidarnejsi-v-historii-226309",
+     "what": "almost CZK 5bn collected for Ukraine in the first year, mostly People in Need and the Ukrainian embassy account; material aid excluded"
+    },
+    {
+     "title": "Seznam Zpravy, 17 Mar 2022",
+     "url": "https://www.seznamzpravy.cz/clanek/fakta-pomoc-jaka-nema-obdoby-cesi-uz-darovali-ukrajine-temer-27-miliardy-194018",
+     "what": "almost CZK 2.7bn in three weeks: People in Need 1.46bn, embassy (defence materiel) 0.66bn, Post Bellum 0.18bn, Red Cross 0.178bn, Charita 0.101bn"
+    }
+   ],
+   "note": "CZK 5bn / 24.566 = EUR 0.204bn for Feb 2022 - Feb 2023, most of it in 2022. Includes about CZK 1.2bn to the embassy's defence account (private money for military aid); drop that if the map counts only humanitarian giving (then about 0.15)."
+  },
+  {
+   "item": "private_donations",
+   "country": "DNK",
+   "years": "2022",
+   "old": {
+    "low": 0.0314,
+    "central": 0.0588,
+    "high": 0.1569
+   },
+   "new": {
+    "low": 0.125,
+    "central": 0.13,
+    "high": 0.17
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "The Copenhagen Post (citing TV2), 23 Feb 2023: Danish donations to Ukraine exceed all expectations",
+     "url": "https://test.cphpost.dk/2023-02-23/news/danish-donations-to-ukraine-exceed-all-expectations",
+     "what": "well over DKK 1bn; Red Cross DKK 693m, UNICEF DKK 195m (155m from companies), Save the Children DKK 40m"
+    }
+   ],
+   "note": "DKK 1bn / 7.4396 = EUR 0.134bn in the first year (companies included, as in the other anchors). Model central was 0.059."
+  },
+  {
+   "item": "private_donations",
+   "country": "FIN",
+   "years": "2022, 2023",
+   "old": {
+    "2022": 0.0414,
+    "2023": 0.0054
+   },
+   "new": {
+    "2022": {
+     "low": 0.039,
+     "central": 0.06,
+     "high": 0.09
+    },
+    "2023": {
+     "low": 0.005,
+     "central": 0.008,
+     "high": 0.02
+    }
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "MTV Uutiset, 24 Feb 2024",
+     "url": "https://www.mtvuutiset.fi/artikkeli/vasyivatko-suomalaiset-jo-ukrainan-tukemiseen-nain-lahjoituksien-maara-hiipui-kahdessa-vuodessa/8884946",
+     "what": "Finnish Red Cross Ukraine appeal: about EUR 39m in 2022, about EUR 5m in 2023, EUR 44m in total"
+    }
+   ],
+   "note": "Red Cross alone = the model's whole 2022 central; other NGOs and drone crowdfunding come on top. Floors from the Red Cross; central x1.5 judgement."
+  },
+  {
+   "item": "private_donations",
+   "country": "LTU",
+   "years": "2022, 2023, 2025",
+   "old": {
+    "2022": 0.0474,
+    "2023": 0.0062,
+    "2025": 0.0038
+   },
+   "new": {
+    "2022": "unchanged (floor 0.005)",
+    "2023": {
+     "low": 0.014,
+     "central": 0.02,
+     "high": 0.03
+    },
+    "2025": {
+     "low": 0.0044,
+     "central": 0.006,
+     "high": 0.01
+    }
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Novaya Gazeta Europe, 25 Feb 2023: Lithuania raises EUR 14 million for Ukraine army radars",
+     "url": "https://novayagazeta.eu/en/articles/2023/02/25/lithuania-raises-eur14-million-for-ukraine-army-radars-en-news",
+     "what": "Radarom campaign: EUR 14m in four weeks (LRT, Blue/Yellow, Laisves TV, 1K fondas, Stiprus kartu)"
+    },
+    {
+     "title": "Al Jazeera, 30 May 2022: Lithuanians crowdfund $5.4m for combat drone",
+     "url": "https://www.aljazeera.com/amp/news/2022/5/30/lithuanians-crowdfund-5-4-million-for-combat-drone-to-ukraine",
+     "what": "EUR 5m Bayraktar campaign in 3.5 days [search-result snippet; page not opened]"
+    },
+    {
+     "title": "Censor.NET (citing LRT): Radarom drones 2025",
+     "url": "https://censor.net/en/news/3564638/lithuania-acquires-2609-drones-for-the-armed-forces-of-ukraine-under-radarom",
+     "what": "Feb 2025 Radarom campaign over EUR 4.4m in its early stage [search-result snippet; page not opened]"
+    }
+   ],
+   "note": "One 2023 campaign (EUR 14m) is 2.3x the model's whole 2023 central; the model's decay factor (0.13 of 2022) is too steep for the Baltics, where anniversary campaigns recur."
+  },
+  {
+   "item": "private_donations",
+   "country": "LVA",
+   "years": "2022",
+   "old": {
+    "low": 0.0081,
+    "central": 0.0244,
+    "high": 0.061
+   },
+   "new": {
+    "low": 0.0125,
+    "central": 0.0244,
+    "high": 0.045
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Ziedot.lv, 11 Oct 2022: Ukraine has already received support of EUR 12.5m",
+     "url": "https://www.ziedot.lv/en/news/ukraine-has-already-received-support-in-the-amount-of-12-5-million-euros-4773",
+     "what": "EUR 12.48m delivered: defence 5.94m, humanitarian 3.06m, medicines 1.84m, refugees in Latvia 1.64m"
+    }
+   ],
+   "note": "One platform's delivered total sets the low; the model central is consistent."
+  },
+  {
+   "item": "private_donations",
+   "country": "EST",
+   "years": "2022",
+   "old": {
+    "low": 0.008,
+    "central": 0.0239,
+    "high": 0.0598
+   },
+   "new": {
+    "low": 0.0146,
+    "central": 0.025,
+    "high": 0.045
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "ERR News: Huge rise in Estonian developmental aid and charitable donations in 2022",
+     "url": "https://news.err.ee/1609187389/huge-rise-in-estonian-developmental-aid-and-charitable-donations-in-2022",
+     "what": "Estonian Refugee Council EUR 6.4m, MTU Slava Ukraini EUR 4.7m, Ukrainian Cultural Centre EUR 3.5m"
+    },
+    {
+     "title": "ERR News: Estonians donated almost EUR 96 million to NGOs in 2022",
+     "url": "https://news.err.ee/1609178377/estonians-donated-almost-96-million-to-ngos-in-2022",
+     "what": "EUR 95.7m in 2022 vs 55.8m in 2021 (+EUR 40m); Ukraine aid the most popular cause"
+    }
+   ],
+   "note": "Floor = 6.4+4.7+3.5 = EUR 14.6m; the +EUR 40m rise in all giving is an upper guide. Central about unchanged."
+  },
+  {
+   "item": "private_donations",
+   "country": "JPN",
+   "years": "2022",
+   "old": {
+    "low": 0.3097,
+    "central": 0.5807,
+    "high": 1.5484
+   },
+   "new": {
+    "low": 0.09,
+    "central": 0.15,
+    "high": 0.3
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Japanese Red Cross, Red Cross NEWS 7 Feb 2023",
+     "url": "https://www.jrc.or.jp/about/publication/news/20230207_030624.html",
+     "what": "JPY 7,935,070,000 (79.35 oku yen) of Ukraine humanitarian crisis relief donations received by end-December 2022"
+    },
+    {
+     "title": "WFP Japan (Japan Association for WFP), 22 Feb 2023",
+     "url": "https://ja.wfp.org/stories/ukurainajinjizhiyuanmujin-kaishikara1niante19yiyuantupo",
+     "what": "Ukraine emergency appeal passed JPY 1.9bn in its first year (from 1 Mar 2022), over 15,000 gifts"
+    },
+    {
+     "title": "AEON 1% Club release, 23 May 2022",
+     "url": "https://aeon1p.or.jp/1p/wp-content/uploads/2022/05/220523_ウクライナ贈呈式リリース第2回修正.pdf",
+     "what": "customer donations JPY 466.65m + AEON match = JPY 933.31m to the Japan Committee for UNICEF [search-result snippet; page not opened]"
+    }
+   ],
+   "note": "Documented: 7.94 + 1.9 + 0.93 = JPY 10.8bn = EUR 0.078bn at 138.03 JPY/EUR (the embassy account, reported at about JPY 2bn in early March 2022 in the press, and UNICEF/UNHCR Japan's own totals are not verified). Central 0.15 allows roughly as much again for unrecorded channels; the GDP model (0.58) is 4-7x the documented flows."
+  },
+  {
+   "item": "private_donations",
+   "country": "CAN",
+   "years": "2022",
+   "old": {
+    "low": 0.1678,
+    "central": 0.3146,
+    "high": 0.8389
+   },
+   "new": "unchanged",
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Red Deer Advocate (Canadian Press), Apr 2022: Canadians help Red Cross raise millions to support Ukrainians",
+     "url": "https://www.reddeeradvocate.com/news/canadians-help-red-cross-raise-millions-to-support-ukrainians/",
+     "what": "Canadian Red Cross Ukraine appeal CAD 151m by 11 April 2022, including CAD 30m federal matching [search-result snippet; page not opened]"
+    }
+   ],
+   "note": "Private part (151 - 30) = CAD 121m / 1.3695 = EUR 0.088bn in six weeks through one charity. That is below the model's low (0.168), so it confirms the range without changing it. Scale check only."
+  },
+  {
+   "item": "private_donations",
+   "country": "USA",
+   "years": "2022-2025",
+   "old": "as in uncovered.json",
+   "new": "unchanged",
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Council on Foundations: Philanthropy for Ukraine (Candid data)",
+     "url": "https://cof.org/node/16047",
+     "what": "as of 30 Apr 2025 Candid tracked 7,748 grants worth USD 2.138bn and 190 pledges worth USD 1.204bn, worldwide, no split by funder country"
+    }
+   ],
+   "note": "Candid's tracker is worldwide and institutional; no US national total exists. Model kept."
+  },
+  {
+   "item": "private_donations",
+   "country": "POL, SWE, NOR, KOR, ITA, ESP, FRA",
+   "years": "2022-2026",
+   "old": "as in uncovered.json",
+   "new": "unchanged",
+   "basis": "judgement",
+   "sources": [
+    {
+     "title": "TV4: TV4 programme collected over SEK 40 million for those affected (Sverige samlas och hjalper, 2022)",
+     "url": "https://www.tv4.se/artikel/67SX9uaIA4DiNMcfzSZWL1/tv4-programmet-samlade-in-oever-40-miljoner-kronor-till-de-drabbade-i",
+     "what": "single Swedish campaign, SEK 40m; no national total"
+    }
+   ],
+   "note": "No national total found. Note the Japanese and Danish results: the GDP model can be off by 2-5x either way, so ranges should stay wide."
+  },
+  {
+   "item": "hk_onward",
+   "country": "HKG",
+   "years": "2022-2025",
+   "old": {
+    "2022": 0.566,
+    "2023": 0.546,
+    "2024": 0.476,
+    "2025": 0.372
+   },
+   "new": "unchanged (verified)",
+   "basis": "data",
+   "sources": [
+    {
+     "title": "UN Comtrade public API, Hong Kong (344) HS 7108, annual",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=344&period=2025&partnerCode=0,643,156&flowCode=M,X&cmdCode=7108",
+     "what": "USD bn imports world/China/Russia; exports world/China: 2022 38.01/2.73/0.58, 30.13/22.12; 2023 59.85/3.64/5.21, 40.24/33.54; 2024 65.38/10.82/4.64, 56.54/34.17; 2025 101.77/23.58/10.45, 80.37/46.29"
+    },
+    {
+     "title": "C&SD Interactive Data Dissemination Service for Trade Statistics",
+     "url": "https://tradeidds.censtatd.gov.hk/",
+     "what": "The service states: 'By CO and by HKHS / SITC commodity classifications are invalid for Re-exports trade type' - re-exports of gold by country of ORIGIN (Russia) are not published"
+    }
+   ],
+   "note": "Re-checked all inputs; refine.json values reproduce. C&SD does not publish re-exports of Russian-origin HS 7108 to the mainland (origin x commodity is blocked for re-exports), so a Russian-specific onward share does not exist in public data; the fungible pass-through method stays."
+  },
+  {
+   "item": "hk_onward",
+   "country": "HKG",
+   "years": "2026 (Jan-Aug)",
+   "old": {
+    "low": 0.12,
+    "central": 0.372,
+    "high": 0.616
+   },
+   "new": {
+    "low": 0.52,
+    "central": 0.675,
+    "high": 0.878
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "UN Comtrade public API, Hong Kong HS 7108, monthly 2026-01 to 2026-05",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=344&period=202605&partnerCode=0,643,156&flowCode=M,X&cmdCode=7108",
+     "what": "Jan-May 2026 sums, USD bn: imports world 74.77, from mainland 13.95, from Russia 9.47; exports world 60.31, to mainland 52.97 (June-August not yet in Comtrade)"
+    }
+   ],
+   "note": "Gross onward = 52.97/74.77 = 0.708; net = (52.97-13.95)/(74.77-13.95) = 0.641; central = mean = 0.675; low = net - 0.12 = 0.52; high = China share of exports 52.97/60.31 = 0.878. 2026 reverses the 2024-25 fall: re-imports from the mainland shrank and 88% of HK gold exports went to the mainland. Carrying 2025 forward understates China for 2026. Russian gold into HK Jan-May 2026: USD 9.47bn (already 90% of full-year 2025)."
+  },
+  {
+   "item": "CIF_SHARE",
+   "country": "all importers (constant)",
+   "years": "2022-2026",
+   "old": {
+    "low": 0.035,
+    "central": 0.055,
+    "high": 0.075
+   },
+   "new": {
+    "low": 0.045,
+    "central": 0.065,
+    "high": 0.09
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "OECD ITIC database (International transport and insurance costs of merchandise trade), dataflow OECD.SDD.TPS DSD_ITIC@DF_ITIC 1.1, partner = Russia, measure C_F, unit = % of CIF import value",
+     "url": "https://sdmx.oecd.org/sti-public/rest/data/OECD.SDD.TPS,DSD_ITIC@DF_ITIC,1.1/.RUS.C_F..HS17_27+HS17_2709+HS17_2710+HS17_2711+HS17_7108+_T.A.?startPeriod=2015",
+     "what": "CIF/FOB margins by importer for imports from Russia, 2015-2024; mostly gravity-model estimates (status I), a few reported (status A: e.g. TUR, USA, CZE, SVK, ROU)"
+    }
+   ],
+   "note": "Trade-weighted ITIC margin on imports from Russia (weights = map to_rus 2022-2024, EUR 1,353bn covered, 11bn without ITIC data): 6.77% (2022), 6.80% (2023), 6.85% (2024), 6.28% (2021). The constant central 5.5% is about 1.3 points low because the big buyers are far away (China 6.4%, India 7.2%, Türkiye 8.6%, Korea 9.3%, Japan 8.7%, Brazil 9.7%). ITIC ends in 2024; carry 2024 forward. ITIC is a model and does not see the 2022-23 shadow-fleet freight spike, so the high is kept wide."
+  },
+  {
+   "item": "CIF_SHARE",
+   "country": "per importer (preferred)",
+   "years": "2022-2026",
+   "old": "constant 0.055",
+   "new": {
+    "rule": "central = importer's ITIC total (_T) margin, mean 2022-2024; low = 0.7 x; high = 1.4 x",
+    "values_top25": {
+     "CHN": {
+      "to_rus_2022_24_eur_bn": 335.9,
+      "itic_total_2022": 6.57,
+      "itic_total_2023": 6.47,
+      "itic_total_2024": 6.28,
+      "avg_share": 0.0644
+     },
+     "IND": {
+      "to_rus_2022_24_eur_bn": 132.1,
+      "itic_total_2022": 7.76,
+      "itic_total_2023": 7.09,
+      "itic_total_2024": 6.8,
+      "avg_share": 0.0722
+     },
+     "TUR": {
+      "to_rus_2022_24_eur_bn": 123.2,
+      "itic_total_2022": 8.17,
+      "itic_total_2023": 8.43,
+      "itic_total_2024": 9.24,
+      "avg_share": 0.0861
+     },
+     "BLR": {
+      "to_rus_2022_24_eur_bn": 61.2,
+      "itic_total_2022": 6.49,
+      "itic_total_2023": 5.33,
+      "itic_total_2024": 5.26,
+      "avg_share": 0.0569
+     },
+     "DEU": {
+      "to_rus_2022_24_eur_bn": 56.3,
+      "itic_total_2022": 5.46,
+      "itic_total_2023": 4.73,
+      "itic_total_2024": 4.39,
+      "avg_share": 0.0486
+     },
+     "KAZ": {
+      "to_rus_2022_24_eur_bn": 45.6,
+      "itic_total_2022": 6.51,
+      "itic_total_2023": 6.09,
+      "itic_total_2024": 7.03,
+      "avg_share": 0.0654
+     },
+     "ITA": {
+      "to_rus_2022_24_eur_bn": 35.3,
+      "itic_total_2022": 6.87,
+      "itic_total_2023": 5.74,
+      "itic_total_2024": 6.24,
+      "avg_share": 0.0628
+     },
+     "NLD": {
+      "to_rus_2022_24_eur_bn": 29.2,
+      "itic_total_2022": 5.23,
+      "itic_total_2023": 5.47,
+      "itic_total_2024": 4.96,
+      "avg_share": 0.0522
+     },
+     "BRA": {
+      "to_rus_2022_24_eur_bn": 28.2,
+      "itic_total_2022": 8.97,
+      "itic_total_2023": 10.03,
+      "itic_total_2024": 10.14,
+      "avg_share": 0.0971
+     },
+     "KOR": {
+      "to_rus_2022_24_eur_bn": 27.5,
+      "itic_total_2022": 9.14,
+      "itic_total_2023": 9.78,
+      "itic_total_2024": 9.04,
+      "avg_share": 0.0932
+     },
+     "FRA": {
+      "to_rus_2022_24_eur_bn": 25.9,
+      "itic_total_2022": 7.07,
+      "itic_total_2023": 6.48,
+      "itic_total_2024": 6.6,
+      "avg_share": 0.0671
+     },
+     "JPN": {
+      "to_rus_2022_24_eur_bn": 25.1,
+      "itic_total_2022": 8.8,
+      "itic_total_2023": 8.7,
+      "itic_total_2024": 8.51,
+      "avg_share": 0.0867
+     },
+     "HUN": {
+      "to_rus_2022_24_eur_bn": 24.4,
+      "itic_total_2022": 7.18,
+      "itic_total_2023": 5.58,
+      "itic_total_2024": 5.28,
+      "avg_share": 0.0601
+     },
+     "USA": {
+      "to_rus_2022_24_eur_bn": 20.9,
+      "itic_total_2022": 5.21,
+      "itic_total_2023": 4.14,
+      "itic_total_2024": 6.36,
+      "avg_share": 0.0524
+     },
+     "POL": {
+      "to_rus_2022_24_eur_bn": 19.4,
+      "itic_total_2022": 4.84,
+      "itic_total_2023": 4.72,
+      "itic_total_2024": 5.47,
+      "avg_share": 0.0501
+     },
+     "UZB": {
+      "to_rus_2022_24_eur_bn": 17.9,
+      "itic_total_2022": 8.62,
+      "itic_total_2023": 8.14,
+      "itic_total_2024": 7.79,
+      "avg_share": 0.0818
+     },
+     "ARE": {
+      "to_rus_2022_24_eur_bn": 16.5,
+      "itic_total_2022": 3.63,
+      "itic_total_2023": 3.97,
+      "itic_total_2024": 3.59,
+      "avg_share": 0.0373
+     },
+     "BEL": {
+      "to_rus_2022_24_eur_bn": 16.3,
+      "itic_total_2022": 6.56,
+      "itic_total_2023": 5.95,
+      "itic_total_2024": 6.47,
+      "avg_share": 0.0632
+     },
+     "CZE": {
+      "to_rus_2022_24_eur_bn": 16.0,
+      "itic_total_2022": 4.48,
+      "itic_total_2023": 2.95,
+      "itic_total_2024": 3.03,
+      "avg_share": 0.0349
+     },
+     "SVK": {
+      "to_rus_2022_24_eur_bn": 15.3,
+      "itic_total_2022": 0.42,
+      "itic_total_2023": 0.37,
+      "itic_total_2024": 0.35,
+      "avg_share": 0.0038
+     },
+     "EGY": {
+      "to_rus_2022_24_eur_bn": 13.5,
+      "itic_total_2022": 10.11,
+      "itic_total_2023": 7.78,
+      "itic_total_2024": 7.86,
+      "avg_share": 0.0858
+     },
+     "ESP": {
+      "to_rus_2022_24_eur_bn": 13.2,
+      "itic_total_2022": 8.14,
+      "itic_total_2023": 7.12,
+      "itic_total_2024": 7.0,
+      "avg_share": 0.0742
+     },
+     "GRC": {
+      "to_rus_2022_24_eur_bn": 13.0,
+      "itic_total_2022": 7.43,
+      "itic_total_2023": 6.5,
+      "itic_total_2024": 7.05,
+      "avg_share": 0.0699
+     },
+     "HKG": {
+      "to_rus_2022_24_eur_bn": 12.7,
+      "itic_total_2022": 4.62,
+      "itic_total_2023": 3.82,
+      "itic_total_2024": 3.78,
+      "avg_share": 0.0407
+     },
+     "AUT": {
+      "to_rus_2022_24_eur_bn": 12.4,
+      "itic_total_2022": 6.93,
+      "itic_total_2023": 5.81,
+      "itic_total_2024": 4.21,
+      "avg_share": 0.0565
+     }
+    }
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "OECD ITIC database (International transport and insurance costs of merchandise trade), dataflow OECD.SDD.TPS DSD_ITIC@DF_ITIC 1.1, partner = Russia, measure C_F, unit = % of CIF import value",
+     "url": "https://sdmx.oecd.org/sti-public/rest/data/OECD.SDD.TPS,DSD_ITIC@DF_ITIC,1.1/.RUS.C_F..HS17_27+HS17_2709+HS17_2710+HS17_2711+HS17_7108+_T.A.?startPeriod=2015",
+     "what": "CIF/FOB margins by importer for imports from Russia, 2015-2024; mostly gravity-model estimates (status I), a few reported (status A: e.g. TUR, USA, CZE, SVK, ROU)"
+    }
+   ],
+   "note": "Per-importer ITIC replaces one number for all. Pipeline/land border-priced trade stays exempt through BORDER_PRICED (ITIC confirms: Slovakia, which buys by pipeline, reports 0.4%). Belarus 5.7% and Kazakhstan 6.5% are model values for land trade."
+  },
+  {
+   "item": "CIF_SHARE",
+   "country": "gold imports (HS 7108; HKG, ARE, TUR, CHE, IND)",
+   "years": "2022-2026",
+   "old": "0.055 (constant applied to all goods)",
+   "new": {
+    "low": 0.001,
+    "central": 0.005,
+    "high": 0.02
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "OECD ITIC database (International transport and insurance costs of merchandise trade), dataflow OECD.SDD.TPS DSD_ITIC@DF_ITIC 1.1, partner = Russia, measure C_F, unit = % of CIF import value",
+     "url": "https://sdmx.oecd.org/sti-public/rest/data/OECD.SDD.TPS,DSD_ITIC@DF_ITIC,1.1/.RUS.C_F..HS17_27+HS17_2709+HS17_2710+HS17_2711+HS17_7108+_T.A.?startPeriod=2015",
+     "what": "CIF/FOB margins by importer for imports from Russia, 2015-2024; mostly gravity-model estimates (status I), a few reported (status A: e.g. TUR, USA, CZE, SVK, ROU)"
+    }
+   ],
+   "note": "Türkiye's reported (status A, not modelled) CIF/FOB margin on gold from Russia is 0.1-0.2% every year 2019-2024. ITIC's model gives gold 1.5-4% (HKG 3.8-4.3, ARE 3.0-3.4), which is not credible for air-freighted bars worth ~USD 80-100k/kg. Applying 5.5% to gold removes about 5% of the UAE's and Hong Kong's gold value as 'freight' that was never paid."
+  }
+ ]
+}
