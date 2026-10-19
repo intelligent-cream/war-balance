@@ -1436,6 +1436,7 @@ function countryPanel(c) {
       ${waterfall(k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label[0].toLowerCase() + p.label.slice(1) }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
       <p class="note">${t("Trade counts at the seller's net gain: a euro paid to Russia counts only for what Russia keeps after its real costs (its taxes plus profit above a normal return), and extra purchases from Ukraine for what Ukraine keeps. Aid counts in full.")}</p>
       ${sanctionNote(c, k)}
+      ${c.aid?.eu_share ? `<p class="note">${t("Trade figures are this country's own customs data (UN Comtrade). EU statistics (Eurostat) can show different figures for a single member, because they book goods where they enter the EU, such as Rotterdam or Antwerp.")} <a href="${REPO}docs/method/trade.md#why-un-comtrade-and-not-eurostat-for-eu-members" target="_blank" rel="noopener">${t("Why")}</a></p>` : ""}
       ${armsNote(c, k)}
       ${blockedNote(c, k)}
       ${share}

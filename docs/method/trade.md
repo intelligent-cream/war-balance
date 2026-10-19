@@ -8,7 +8,7 @@ Base file: [`trade_full.json`](../../research/2026-10/gaps/trade_full.json) ([no
 
 Values are taken in this order, and the `basis` field records which was used:
 
-1. **reported**: the country's own customs report (UN Comtrade; Eurostat Comext for EU 2024–2026), certainty A;
+1. **reported**: the country's own customs report (UN Comtrade, 2019–2025; for EU members in 2026, Eurostat Comext January–August, scaled to the Comtrade level), certainty A;
 2. **mirror**: Russia's or Ukraine's report on the same flow, divided by the median mirror/reported ratio (imports from Russia 0.847, exports to Russia 1.320, imports from Ukraine 0.810, exports to Ukraine 1.388; these reflect CIF/FOB valuation and origin attribution), certainty B;
 3. **imf**: IMF IMTS, spliced to the Comtrade level; rejected when its implied growth is outside the 5–95th percentile of reporters (65 values rejected), certainty B;
 4. **estimated**: interpolation or the median growth of reporting countries, certainty C.
@@ -21,6 +21,33 @@ In the pipeline ([build_data.py `build()`](../../pipeline/build_data.py), first 
 - [`round4b.json`](../../research/2026-10/gaps/round4b.json) ([notes](../../research/2026-10/gaps/round4b-notes.md)) for the UAE: its customs totals, which equal the official non-oil trade with Russia (USD 20.4bn in 2025); applied after `narrow.json`.
 
 **Non-reporters.** [`nonreport.json`](../../research/2026-10/gaps/nonreport.json) ([notes](../../research/2026-10/gaps/nonreport-notes.md)) corrects 21 partners that do not report (Libya, Venezuela, Syria, Turkmenistan, Tajikistan, Afghanistan, Cuba, Sudan, Yemen, North Korea, Iran, Lebanon and others) with tanker tracking (CREA, Kpler), official statements and partner customs. Only the **paid share** of Russian supplies counts as money to Russia (`paid_share`); supplies on credit, as aid or barter are Russian support, not payments.
+
+### Why UN Comtrade and not Eurostat for EU members
+
+EU members' trade with Russia is published twice, and the two can differ a lot for a single country while agreeing for
+the EU as a whole (imports from Russia, EUR bn):
+
+| | this map (UN Comtrade) | Eurostat Comext |
+|---|---|---|
+| EU total, 2021 | 152.0 | 163.6 |
+| EU total, 2023 | 49.3 | 50.8 |
+| Netherlands, 2021 | 18.5 | 26.5 |
+| Belgium, 2021 | 6.3 | 7.8 |
+| Austria, 2023 | 0.36 | 3.67 |
+
+They count different things:
+
+- **UN Comtrade** holds each country's own customs figures (the *national concept*): goods bought for that country's
+  economy.
+- **Eurostat Comext** uses the EU's *community concept*: goods are booked where they cross the EU border or are cleared.
+  Russian goods landing in Rotterdam or Antwerp and going on to Germany or Czechia count for the Netherlands or Belgium
+  ("quasi-transit"), and goods cleared in one member for another count for the first.
+- Austria's own statistics hide the origin of its gas, so its imports from Russia look small in Comtrade; the map counts
+  gas separately, where it is burned ([energy](energy-and-laundered-oil.md#transit-gas)), so that gas is not missed.
+
+For the question "who paid Russia", the national concept is the better measure, and Comtrade uses the same definition
+for every country in the world. The full comparison, 843 checks against UN Comtrade, Eurostat and CREA, is in
+[`verify_r11_trade-notes.md`](../../research/2026-10/verify_r11_trade-notes.md).
 
 ## The pre-war level and the comparison
 
