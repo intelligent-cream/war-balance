@@ -77,6 +77,7 @@ For Jan-Aug 2026, Russian gold moved to Hong Kong (99.7 t by July), so UAE gold 
   - CREA's fuel delivered to the UAE (0.8/5.6/6.1/2.1/1.6/0.2) is the total.
   - The audit2 addition must be CREA minus the customs-recorded fuel above, floored at zero: 0.73/5.35/4.98/1.77/0.98/0.00.
   - audit2 assumed no customs fuel for 2024-2026, so its addition falls by 0.37, 0.62 and 0.19 in those years.
+  - Note (round 11 audit): for 2026 the fall is 0.19, not the 0.26 of customs-recorded fuel in the table above. CREA's 2026 fuel (0.2) is below 0.26, so the floored addition is zero and the addition can fall only by what it was (about 0.19). `uae_fuel_net()` in `build_data.py` uses 0.19.
 - **Hidden UAE gold** stays at zero for 2022-2026. The gold is now in the trade layer.
 - **Not checked:** Armenia's 2025-2026 Russian gold in the map, given the collapse of the Armenian route.
 

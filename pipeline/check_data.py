@@ -88,11 +88,12 @@ for iso3, d in kiel["donors"].items():
     eu_ge = (
         ((c.get("aid") or {}).get("eu_share") or 0)
         * (kiel["donors"]["EU_INST"].get("loans_face_value", 0) - kiel["donors"]["EU_INST"].get("era_allocated", 0))
-        * 0.3
+        * 0.26
     )
-    # loans valued at their grant element (loans_value.json, round 5, which leaves ERA out) replace the flat 0.3
+    # loans valued at their grant element (loans_value.json, round 5, which leaves ERA out) replace the flat factor;
+    # 0.26 is LOAN_GRANT_ELEMENT in build_data.py (round 11, was 0.3)
     lv = (LOANS.get(iso3) or {}).get("loans_guarantees_economic_value")
-    limit = sum((v or {}).get("central", 0) for v in lv.values()) if lv else max(0, own_loans) * 0.3 + eu_ge
+    limit = sum((v or {}).get("central", 0) for v in lv.values()) if lv else max(0, own_loans) * 0.26 + eu_ge
     if ge > limit + 0.01:
         era_bad.append(iso3)
 check("ERA loans not counted as a cost", not era_bad, f"too high: {era_bad or 'none'}")

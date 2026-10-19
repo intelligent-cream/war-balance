@@ -1,6 +1,6 @@
 # Changelog: research rounds
 
-The map's data were built in four research rounds in October 2026, each followed by changes to the pipeline and the site. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
+The map's data were built in eleven research rounds in October 2026, each followed by changes to the pipeline and the site. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
 
 ## Round 1
 
@@ -182,6 +182,50 @@ used the pipeline-gas gain; that refiners were relieved at a lower gain than the
 customs correction was taken off at full value; that gold and hidden payments had changed the *To Russia* view; that
 fuel refined in China before the war was subtracted twice; and that relabelled Russian products counted at the crude
 gain. All are fixed. Shared links: Back keeps the current filters, and invalid values are tidied out of the address.
+
+## Round 11
+
+**Assumptions backed by data.** Judgement values were checked against data and replaced where data exists
+([decisions.md](decisions.md#assumptions-backed-by-data-round-11)). Russia's net gain on services and arms now comes
+from official sector profits: 0.08 → about 0.04 and 0.12 → about 0.045. Fewer lost sales to Russia count as lost
+income. Partners' records of bunkers sold to ships of Liberia, Panama and the Marshall Islands no longer count as their
+laundered oil. Refugee costs, remittances, donations and freight margins use budget and statistical figures. EU-level
+military aid now counts where Kiel's items say it was spent: Sweden's Gripen and Ukraine's own drones, not French or
+German industry. In the cost view, loans cost the lender 26% of face (was 30%) and waived duties about 0.2% (was 4%).
+
+Headline effects (% of GDP, round 10 → round 11): Hong Kong −5.0 → −4.3, Estonia +9.6 → +9.3, Lithuania +14.8 → +14.6,
+Finland +9.3 → +9.1, Belarus −17.8 → −17.6, Tajikistan −38.0 → −38.2, Malta +0.6 → +0.9, Hungary −3.9 → −4.1,
+Latvia +4.2 → +4.0. Moldova stays at +5.8. Germany, Poland, the United States, the United Kingdom, France, Italy and
+Sweden move by less than 0.03 points. The median range stays at about 1.9 points of GDP.
+
+## Round 11 audit
+
+**Traceability, 19 October 2026.** An audit checked whether every number can be traced to a source or a written
+decision. It found 41 problems (11 high, 20 medium, 10 low). **No number on the map changed**: the totals and ranges of
+every country are the same before and after (checked with the site's own `calc()`). What changed:
+
+- **Stale text corrected.** The worked example in the documentation (Poland is now +4.1%, not +10.0%), the counterfactual
+  effect table, the limitations, the ranges page and the oil discount figures use the current build. The site no longer
+  says that money flowing back and lost sales count at "about 20%" profit: they count at the value kept in the economy ×
+  the share that is genuinely extra (US weapons 63%). It now says that trade with Ukraine is held at the 2021 level, and
+  the Russia panel names the real drivers (migrants' wages, North Korea's weapons) instead of trade hubs. All six
+  translations follow.
+- **Sources attached where they produce the number.** The money-rule factors (`value_kept`) and Russia's net gain
+  (`net_gain_russia`) are now cited on every part they weight; gas prices and tanker control on the parts they feed.
+  Sources of steps the all-money ledger replaced (CSIS, the assumed and modelled own-industry shares, PURL, the EU arms
+  split, arms bought abroad, the first military-support estimates) are no longer shown, because they no longer produce a
+  number. The sanctions, arms and blocked-loan notes in each panel now have a source footnote. Russia's Finance Ministry
+  link uses the working Russian address.
+- **Decisions and constants written down.** Eleven missing decisions and every untraced constant in the code are in
+  [decisions.md](decisions.md#constants-and-rules-written-down-in-round-11), each labelled data or judgement. Values that
+  look wrong (for example China's crude-to-fuel ratio of 0.70) are listed as proposals, not changed.
+- **Claims softened.** The 10% loan discount rate is a judgement, not "the IMF/OECD convention" (the IMF uses 5%). The 2026
+  Hormuz decision is cited. The services and arms net-gain shares are now data, not judgement.
+- **Certainty letters.** A refugee grade such as "A-B" now counts at its weaker letter, and Poland's refugee cost is at
+  most C, because it was checked only against a press article. Czechia A → B; Germany, Lithuania, Poland B → C. No
+  total's letter changes.
+- **Clean-up.** The AI-guessed incentive scores are no longer in `data.json`, and their dead code is gone. Research and
+  pipeline reference pages list the round-11 files, `detail.json` and the new build steps.
 
 ## See also
 

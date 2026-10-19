@@ -1,0 +1,946 @@
+{
+ "generated": "2026-10-19",
+ "scope": "Round 11 check of rough inputs: hub resale shares (energy2.json hub_resale), payment-agent fees (payment_channels.json), shadow-fleet freight by controller (shadow_fleet_r6.json), company taxes for allocated countries (company_taxes_r6.json), LAUNDERED_CAP (pipeline/build_data.py). Not yet reviewed by a person. Comtrade and Eurostat values were fetched on 2026-10-19; Comtrade preview URLs take one period per call, and the URL shown is one of the calls.",
+ "proposals": [
+  {
+   "item": "hub_resale",
+   "country": "NLD",
+   "years": "2022-2026",
+   "old": {
+    "low": 0.6,
+    "central": 0.74,
+    "high": 0.9,
+    "bunker_share": [
+     0.06,
+     0.08,
+     0.14
+    ]
+   },
+   "new": {
+    "low": 0.6,
+    "central": 0.74,
+    "high": 0.9,
+    "bunker_share": [
+     0.06,
+     0.08,
+     0.14
+    ]
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Eurostat nrg_cb_oil, oil products O4600, NL, 2019-2024 (updated 2026-10-09)",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_cb_oil?format=JSON&siec=O4600&geo=NL&unit=THS_T&nrg_bal=IMP&nrg_bal=EXP&nrg_bal=INTMARB&nrg_bal=GID_OBS&nrg_bal=TO_RPI_RO&nrg_bal=FC_E",
+     "what": "IMP 85.39/77.83/81.68 Mt, refinery output 58.42/61.05/55.74, EXP 106.39/104.66/100.36, INTMARB 11.66/10.58/11.24 (2022/23/24)"
+    },
+    {
+     "title": "UN Comtrade HS 2710, NLD as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=528&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "HS 2710 by weight M 42.1/39.9/41.7 Mt, X 86.0/86.8/77.0 Mt (X/M 1.84-2.18)"
+    },
+    {
+     "title": "Port of Rotterdam via PortsEurope: 9.8 Mt bunkers 2024, 9.9 Mt 2023, 10.6 Mt 2022",
+     "url": "https://www.portseurope.com/port-of-rotterdam-supplied-9-8-million-tonnes-of-bunker-fuel-in-2024/",
+     "what": "port bunker totals, consistent with Eurostat INTMARB"
+    }
+   ],
+   "note": "Confirmed. Proportional re-export EXP/(IMP+refinery output) = 106.39/143.81=0.740 (2022), 104.66/138.88=0.754 (2023), 100.36/137.42=0.730 (2024). Bunkers/(IMP+output) 0.081/0.076/0.082. No change."
+  },
+  {
+   "item": "hub_resale",
+   "country": "BEL",
+   "years": "2022-2026",
+   "old": {
+    "low": 0.35,
+    "central": 0.48,
+    "high": 0.75,
+    "bunker_share": [
+     0.12,
+     0.14,
+     0.3
+    ]
+   },
+   "new": {
+    "low": 0.35,
+    "central": 0.48,
+    "high": 0.75,
+    "bunker_share": [
+     0.12,
+     0.14,
+     0.3
+    ]
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Eurostat nrg_cb_oil, oil products O4600, BE, 2019-2024 (updated 2026-10-09)",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_cb_oil?format=JSON&siec=O4600&geo=BE&unit=THS_T&nrg_bal=IMP&nrg_bal=EXP&nrg_bal=INTMARB&nrg_bal=GID_OBS&nrg_bal=TO_RPI_RO&nrg_bal=FC_E",
+     "what": "IMP 25.39/23.93/23.77, output 28.66/30.79/31.41, EXP 24.64/26.51/26.67, INTMARB 7.83/7.06/6.89 Mt"
+    },
+    {
+     "title": "UN Comtrade HS 2710, BEL as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=56&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "HS 2710 M 20.9/17.2/18.5 Mt, X 34.6/36.8/37.2 Mt"
+    }
+   ],
+   "note": "Confirmed. 24.64/54.05=0.456, 26.51/54.72=0.484, 26.67/55.18=0.483; bunkers 0.145/0.129/0.125 of supply. No change."
+  },
+  {
+   "item": "hub_resale",
+   "country": "GRC",
+   "years": "2022-2026",
+   "old": {
+    "low": 0.3,
+    "central": 0.5,
+    "high": 0.75,
+    "bunker_share": [
+     0.05,
+     0.06,
+     0.5
+    ]
+   },
+   "new": {
+    "low": 0.3,
+    "central": 0.5,
+    "high": 0.75,
+    "bunker_share": [
+     0.05,
+     0.06,
+     0.5
+    ]
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Eurostat nrg_cb_oil, oil products O4600, EL, 2019-2024 (updated 2026-10-09)",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_cb_oil?format=JSON&siec=O4600&geo=EL&unit=THS_T&nrg_bal=IMP&nrg_bal=EXP&nrg_bal=INTMARB&nrg_bal=GID_OBS&nrg_bal=TO_RPI_RO&nrg_bal=FC_E",
+     "what": "IMP 4.46/4.19/3.46, output 30.57/30.77/31.03, EXP 17.69/17.72/16.94, INTMARB 2.01/2.07/2.09 Mt"
+    },
+    {
+     "title": "UN Comtrade HS 2710, GRC as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=300&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "HS 2710 M 6.9 Mt (2023), 5.8 (2024); X 18.4/18.3 Mt"
+    }
+   ],
+   "note": "Confirmed. 17.69/35.03=0.505, 17.72/34.96=0.507, 16.94/34.49=0.491. Bunkers 0.06 of supply, 0.45-0.60 of imports. No change."
+  },
+  {
+   "item": "hub_resale",
+   "country": "MLT",
+   "years": "2022-2026",
+   "old": {
+    "low": 0.01,
+    "central": 0.03,
+    "high": 0.25,
+    "bunker_share": [
+     0.75,
+     0.81,
+     0.83
+    ]
+   },
+   "new": {
+    "low": 0.01,
+    "central": 0.03,
+    "high": 0.25,
+    "bunker_share": [
+     0.75,
+     0.81,
+     0.83
+    ]
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Eurostat nrg_cb_oil, oil products O4600, MT, 2019-2024 (updated 2026-10-09)",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_cb_oil?format=JSON&siec=O4600&geo=MT&unit=THS_T&nrg_bal=IMP&nrg_bal=EXP&nrg_bal=INTMARB&nrg_bal=GID_OBS&nrg_bal=TO_RPI_RO&nrg_bal=FC_E",
+     "what": "IMP 2.71/2.88/2.69 Mt, EXP 0.03/0.09/0.04, INTMARB 2.19/2.32/2.17, gross inland deliveries 0.47/0.48/0.50, no refinery"
+    },
+    {
+     "title": "UN Comtrade HS 2710, MLT as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=470&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "Malta's own imports from India USD 0 (2022), 39.4m (2023), 0 (2024); UAE 0/17.6m/0; Turkiye 0.3/2.3/1.6m; 2024 suppliers Italy 551m, Spain 312m, Greece 103m, Croatia 83m"
+    }
+   ],
+   "note": "Confirmed: EXP/IMP 0.011/0.031/0.015; INTMARB/IMP 0.81/0.81/0.81. But see item hub_bunker_in_central: in the central case the builder keeps 97% at the hub although 81% leaves as bunkers."
+  },
+  {
+   "item": "hub_resale",
+   "country": "SGP",
+   "years": "2022-2026",
+   "old": {
+    "low": 0.45,
+    "central": 0.56,
+    "high": 0.87,
+    "bunker_share": [
+     0.3,
+     0.38,
+     0.5
+    ]
+   },
+   "new": {
+    "low": 0.45,
+    "central": 0.56,
+    "high": 0.87,
+    "bunker_share": [
+     0.3,
+     0.38,
+     0.5
+    ]
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "UN Comtrade HS 2710, SGP as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=702&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "HS 2710 by weight M 83.7 (2023)/84.9 (2024) Mt, X 69.4/71.3 Mt: X/M 0.83/0.84; by value X/M 1.07/1.04"
+    },
+    {
+     "title": "Engine: Singapore 51.27 Mt bunkers in 2023 (conventional)",
+     "url": "https://engine.online/news/rotterdam-conventional-bunker-sales-dipped-by-9-pc-in-2023-5712",
+     "what": "2023 bunker total"
+    }
+   ],
+   "note": "Confirmed. Comtrade X/M by weight 0.83-0.84 sits just under the 0.87 high taken from EMA data; 51.3-54.9 Mt bunkers keep the 0.38 bunker share. No change."
+  },
+  {
+   "item": "hub_resale",
+   "country": "ARE",
+   "years": "2022-2026",
+   "old": {
+    "low": 0.3,
+    "central": 0.42,
+    "high": 0.65,
+    "bunker_share": [
+     0.15,
+     0.3,
+     0.45
+    ]
+   },
+   "new": {
+    "low": 0.3,
+    "central": 0.42,
+    "high": 0.65,
+    "bunker_share": [
+     0.2,
+     0.3,
+     0.4
+    ]
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "UN Comtrade HS 2710, ARE as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=784&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "re-exports RX 9.69 Mt (2022), 9.11 (2023) vs imports 21.32/24.20 Mt; 2019 RX 10.0 vs M 37.1; 2024 not reported"
+    },
+    {
+     "title": "Engine (FOIZ / S&P Global data): Fujairah bunker sales 7.49 Mt in 2024, +2%",
+     "url": "https://engine.online/news/fujairah-bunker-sales-grew-2-pc-in-2024-despite-weaker-vlsfo-demand-672b",
+     "what": "annual bunker volume, verifies the previously unverified ~7 Mt"
+    },
+    {
+     "title": "Ship & Bunker: Fujairah November 2024 sales 606,042 m3",
+     "url": "https://shipandbunker.com/news/emea/799458-fujairah-november-bunker-sales-drop-to-17-month-low",
+     "what": "monthly level ~0.6-0.67 Mm3"
+    }
+   ],
+   "note": "Resale share confirmed: RX/M 0.45 (2022), 0.38 (2023). Bunker share now verified: Fujairah ~7.4-7.5 Mt/yr against 21-24 Mt imports = 0.31-0.35; part of Fujairah bunkers comes from domestic refinery output (Ruwais, ENOC), so central stays 0.30 and the range narrows to 0.20-0.40."
+  },
+  {
+   "item": "hub_resale",
+   "country": "TUR",
+   "years": "2022-2026",
+   "old": {
+    "low": 0.1,
+    "central": 0.2,
+    "high": 0.45,
+    "bunker_share": [
+     0.01,
+     0.02,
+     0.04
+    ]
+   },
+   "new": {
+    "low": 0.1,
+    "central": 0.2,
+    "high": 0.45,
+    "bunker_share": [
+     0.01,
+     0.02,
+     0.04
+    ]
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Eurostat nrg_cb_oil, oil products O4600, TR, 2019-2024 (updated 2026-10-09)",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_cb_oil?format=JSON&siec=O4600&geo=TR&unit=THS_T&nrg_bal=IMP&nrg_bal=EXP&nrg_bal=INTMARB&nrg_bal=GID_OBS&nrg_bal=TO_RPI_RO&nrg_bal=FC_E",
+     "what": "IMP 20.34/25.22/27.68, output 40.82/40.22/39.33, EXP 8.89/9.00/9.10, INTMARB 0.64/0.54/0.65 Mt"
+    },
+    {
+     "title": "UN Comtrade HS 2710, TUR as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=792&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "HS 2710 M 20.0/30.1/32.9 Mt, X 14.1/20.0/22.2 Mt (X/M 0.71/0.66/0.68)"
+    }
+   ],
+   "note": "Confirmed. Proportional 0.145/0.138/0.136; EXP/IMP 0.44/0.36/0.33; Comtrade HS 2710 X/M 0.66-0.71 is the upper bound. No change."
+  },
+  {
+   "item": "hub_resale",
+   "country": "IND",
+   "years": "2022-2026",
+   "old": {
+    "low": 0.05,
+    "central": 0.15,
+    "high": 0.36,
+    "bunker_share": [
+     0.0,
+     0.02,
+     0.05
+    ]
+   },
+   "new": {
+    "low": 0.05,
+    "central": 0.15,
+    "high": 0.36,
+    "bunker_share": [
+     0.0,
+     0.02,
+     0.05
+    ]
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "UN Comtrade HS 2710, IND as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "HS 2710 M 22.0 Mt (2022), 13.9 (2024); X 94.8/103.7/95.9 Mt"
+    }
+   ],
+   "note": "Confirmed; product imports are 6-9% of product exports. No change."
+  },
+  {
+   "item": "hub_resale",
+   "country": "TGO",
+   "years": "2022-2026",
+   "old": {
+    "low": 0.45,
+    "central": 0.65,
+    "high": 0.9,
+    "bunker_share": [
+     0.0,
+     0.02,
+     0.1
+    ]
+   },
+   "new": {
+    "low": 0.45,
+    "central": 0.65,
+    "high": 0.9,
+    "bunker_share": [
+     0.0,
+     0.02,
+     0.1
+    ]
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "UN Comtrade HS 2710, TGO as reporter, world partner, 2019-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=768&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "RX/M 0.60 (2019, weight), 0.50 (2020), 0.67 (2021), 0.50 (2022, value), 0.94 (2023), 0.46 (2024); M 0.20-0.24 Mt; 2024 suppliers Belgium 82 kt, India 41 kt, Nigeria 37 kt, Russia 19 kt"
+    },
+    {
+     "title": "UN Comtrade mirror: all reporters' HS 2710 exports to Togo",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=768&period=2024&flowCode=X&cmdCode=2710",
+     "what": "partners report 9.9 Mt (2022), 8.5 (2023), 5.2 (2024) to Togo, India 2.9-4.5 Mt, against Togo's own 0.2 Mt imports: offshore ship-to-ship, not Togolese imports"
+    }
+   ],
+   "note": "Confirmed. 2019-2024 mean RX/M 0.61. No change."
+  },
+  {
+   "item": "hub_resale",
+   "country": "GIB",
+   "years": "2022-2026",
+   "old": {
+    "low": 0.0,
+    "central": 0.02,
+    "high": 0.1,
+    "bunker_share": [
+     0.8,
+     0.9,
+     0.97
+    ]
+   },
+   "new": {
+    "low": 0.0,
+    "central": 0.02,
+    "high": 0.1,
+    "bunker_share": [
+     0.8,
+     0.9,
+     0.97
+    ]
+   },
+   "basis": "judgement",
+   "sources": [
+    {
+     "title": "Gibraltar Port Authority, GPA.4 Activity 2024",
+     "url": "https://www.gibraltar.gov.gi/uploads/statistics/2024/port/GPA.4.pdf",
+     "what": "5,084 bunker calls and 49 commercial STS operations in 2024; no tonnes published"
+    },
+    {
+     "title": "UN Comtrade mirror: exports to Gibraltar",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=292&period=2024&flowCode=X&cmdCode=2710",
+     "what": "partners report 9.4-11.1 Mt/yr (USD 5.7-7.8bn) to Gibraltar 2019-2024, Italy, Greece, Spain, Bulgaria, Portugal, USA largest"
+    }
+   ],
+   "note": "No tonnage data: Gibraltar publishes bunker calls, not volumes, and does not report to Comtrade. Keep."
+  },
+  {
+   "item": "hub_resale",
+   "country": "PAN",
+   "years": "2022-2026",
+   "old": {
+    "low": 0.0,
+    "central": 0.01,
+    "high": 0.1,
+    "bunker_share": [
+     0.05,
+     0.2,
+     0.5
+    ]
+   },
+   "new": {
+    "low": 0.0,
+    "central": 0.05,
+    "high": 0.35,
+    "bunker_share": [
+     0.3,
+     0.4,
+     0.5
+    ]
+   },
+   "basis": "judgement",
+   "sources": [
+    {
+     "title": "UN Comtrade HS 2710, PAN as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=591&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "customs imports 2.72/2.74/2.72 Mt (USD 3.17/2.69/2.48bn), 94% consigned from Panama's own free zones (partner 838); exports 0.005-0.010 Mt"
+    },
+    {
+     "title": "UN Comtrade mirror: exports to Panama",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=591&period=2024&flowCode=X&cmdCode=2710",
+     "what": "partners report 16.2 Mt (2022), 13.7 (2023), 13.5 (2024): USA 6.4-8.1 Mt, China 3.0-3.4 Mt, Ecuador 1.0-1.9 Mt, Brazil, Peru, Canada"
+    },
+    {
+     "title": "Seatrade Maritime: Panama bunker sales 4.9 Mt in 2023, 5.24 Mt in 2022 (AMP data)",
+     "url": "https://www.seatrade-maritime.com/bunkering/panama-bunkering-bouncing-back-from-drought-restrictions",
+     "what": "bunker volumes"
+    },
+    {
+     "title": "Ship & Bunker: Panama 2024 bunker sales about 5.1 Mt, +3.9%",
+     "url": "https://shipandbunker.com/news/am/124578-strong-december-takes-panama-2024-bunker-sales-up-39-on-year",
+     "what": "2024 bunker volume"
+    }
+   ],
+   "note": "The old shares were set on the customs basis, but the fuel reaching Panama in the model comes from partners' records (the free-zone basis). On that basis, excluding China's ~3 Mt (flag-of-ship bunker records, see LAUNDERED_CAP items), supply is ~10.5-12.8 Mt. Bunkers are 4.9-5.2 Mt (0.40-0.50 of it) and domestic use 2.7 Mt (0.21-0.26). The remaining 0.25-0.40 is free-zone re-export or storage, which no source splits. So bunker 0.3/0.4/0.5 and resale 0/0.05/0.35. Small effect if the PAN cap below is adopted."
+  },
+  {
+   "item": "hub_bunker_in_central",
+   "country": "MLT, GIB",
+   "years": "2022-2026",
+   "old": {
+    "central_kept_at_hub": "1 - central resale (MLT 0.97, GIB 0.98); bunker share only lowers the hub's low end"
+   },
+   "new": {
+    "central_kept_at_hub": "1 - central resale - 0.5 x central bunker share (MLT 0.97 -> 0.565, GIB 0.98 -> 0.53)"
+   },
+   "basis": "judgement",
+   "sources": [
+    {
+     "title": "Eurostat nrg_cb_oil, oil products O4600, MT, 2019-2024 (updated 2026-10-09)",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_cb_oil?format=JSON&siec=O4600&geo=MT&unit=THS_T&nrg_bal=IMP&nrg_bal=EXP&nrg_bal=INTMARB&nrg_bal=GID_OBS&nrg_bal=TO_RPI_RO&nrg_bal=FC_E",
+     "what": "INTMARB/IMP = 0.81 in 2022, 2023 and 2024; gross inland deliveries only 0.47-0.50 Mt of 2.7-2.9 Mt imports"
+    }
+   ],
+   "note": "Data show that 81% of Malta's imported products leave as bunkers for foreign ships. The builder still keeps 97% at the hub in the central case and subtracts bunkers only from the low end (years_lo uses hi+bunker). Proposal: in the central case also take off half of the central bunker share. Bunkers are fuel bought by foreign shipowners, not the hub's economy. 'Half' is a judgement between the current treatment (0) and full removal (1). The change applies only where bunkers are more than 75% of imports (MLT, GIB)."
+  },
+  {
+   "item": "payment_agents_fee_x_share",
+   "country": "all agent countries",
+   "years": "2025",
+   "old": {
+    "share_via_agents": 0.55,
+    "fee": 0.025,
+    "product": 0.01375
+   },
+   "new": {
+    "share_via_agents": 0.7,
+    "fee": 0.02,
+    "product": 0.014,
+    "change": "+2%, keep current values"
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Izvestia, 26 Jun 2025: fees for cross-border payments from Russia dropped 2-3 times",
+     "url": "https://iz.ru/en/node/1910577",
+     "what": "average agency fee 5% -> 2% in 2025, 1.5% for large batches; 2024 4-5% (Impaya) and 5-7% (First Group); 2025 2-3% (Novasmart); intermediaries 70-80% of the payment market"
+    }
+   ],
+   "note": "A higher share via agents (0.70 vs 0.55) and a lower fee (2% vs 2.5%) offset: 0.70x0.02=0.0140 vs 0.55x0.025=0.01375 (+2%). Keep the current 2025 values. The 2024 central fee 4% sits inside the quoted 4-7%. No source splits fees or volumes by country, and Bank of Russia BoP has no counterparty-country table for this."
+  },
+  {
+   "item": "payment_agents",
+   "country": "KGZ",
+   "years": "2022-2024",
+   "old": {
+    "2022": 0.07,
+    "2023": 0.122,
+    "2024": 0.252
+   },
+   "new": {
+    "2022": 0.07,
+    "2023": 0.122,
+    "2024": 0.252,
+    "cross_check_bank_excess_profit_eur_bn": {
+     "2022": 0.221,
+     "2023": 0.216,
+     "2024": 0.29
+    }
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "NBKR Annual Report 2024, table 3.1.8 (bank income and expenses)",
+     "url": "https://www.nbkr.kg/DOC/29042025/000000000064447.pdf",
+     "what": "net profit KGS 24.2bn (2023), 31.1bn (2024); non-interest income 74.1/93.4, non-interest expense 50.5/55.3"
+    },
+    {
+     "title": "NBKR Annual Report 2022, table 3.1.1.6",
+     "url": "https://www.nbkr.kg/DOC/29042023/000000000060471.pdf",
+     "what": "net profit KGS 3.6bn (2021), 23.2bn (2022); non-interest income 17.5/80.3, non-interest expense 10.4/47.5"
+    }
+   ],
+   "note": "Bank profit above 2021: (23.2-3.6)=19.6, 20.6 and 27.5 KGS bn, i.e. EUR 0.22, 0.22 and 0.29bn at about 84-88 KGS/USD. Net non-interest income rose from 7.1 (2021) to 32.8, 23.6 and 38.1 KGS bn. That increase also contains FX conversion and remittance margins, so it is an upper-side check for the bank part of agent fees. The current central (0.07-0.25) sits below it and the high (0.19-0.63) above it, which leaves room for non-bank agents. No change."
+  },
+  {
+   "item": "payment_agents",
+   "country": "ARM",
+   "years": "2022-2024",
+   "old": {
+    "2022": 0.067,
+    "2023": 0.118,
+    "2024": 0.136
+   },
+   "new": {
+    "2022": 0.067,
+    "2023": 0.118,
+    "2024": 0.136,
+    "cross_check_bank_excess_profit_eur_bn": {
+     "2022": 0.389,
+     "2023": 0.384,
+     "2024": 0.695
+    }
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "bne IntelliNews: Armenian banks net profit about USD 586m in 2023 (UBA: 171m 2021, 581m 2022)",
+     "url": "https://www.intellinews.com/in-2023-ra-banks-recorded-a-net-profit-of-approximately-586mn-309088/",
+     "what": "bank profit series"
+    },
+    {
+     "title": "CivilNet: Armenian banks' 2024 profit just under USD 923m",
+     "url": "https://civilnet.am/en/news/999474",
+     "what": "2024 bank profit (search snippet; page not opened)"
+    }
+   ],
+   "note": "Bank profit above 2021: USD 410m, 415m and 752m, i.e. EUR 0.39, 0.38 and 0.70bn. The agent-fee central is 15-30% of that excess. Most of the excess comes from relocant deposits, FX conversion and the 2024 gold/re-export boom. No change, but the 2024 jump means the 2024 high (0.34) should not be cut."
+  },
+  {
+   "item": "payment_agents",
+   "country": "ARE, TUR, KAZ, HKG, CHN",
+   "years": "2022-2026",
+   "old": "country split of agent volumes (educated guess)",
+   "new": "no change",
+   "basis": "judgement",
+   "sources": [
+    {
+     "title": "Izvestia, 26 Jun 2025",
+     "url": "https://iz.ru/en/node/1910577",
+     "what": "names CIS (Armenia, Kazakhstan, Kyrgyzstan, Uzbekistan), Turkiye, UAE and China as main directions, no shares"
+    }
+   ],
+   "note": "No source gives agent volumes, fees or commissions by country: Bank of Russia BoP, the Russian Finance Ministry and press were checked. The split stays a judgement."
+  },
+  {
+   "item": "shadow_fleet_freight",
+   "country": "GRC",
+   "years": "mid-2023 to mid-2026",
+   "old": {
+    "freight_gross_eur_bn_window": 9.01,
+    "share_crude": {
+     "2023": 0.28,
+     "2024": 0.13,
+     "2025": 0.22,
+     "2026": 0.09
+    }
+   },
+   "new": {
+    "freight_gross_eur_bn_window": 9.01,
+    "share_crude": "no change"
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "USM (FT, 7 Jul 2026): Greek companies earned almost USD 4bn transporting Russian oil in three years",
+     "url": "https://en.usm.media/?p=195381",
+     "what": "FT estimate: at least USD 3.8bn on 389m bbl priced, out of 542m bbl tracked"
+    },
+    {
+     "title": "Ground News summary of FT, Jul 2026",
+     "url": "https://ground.news/article/ft-greek-shipowners-earn-nearly-4-billion-from-transporting-russian-oil",
+     "what": "Dynacom at least USD 915m, Olympic USD 404m; freight premium 30-40%"
+    },
+    {
+     "title": "Windward: Greece-owned tankers exit Russia crude trades ahead of US sanctions deadline",
+     "url": "https://windward.ai/blog/greece-owned-tankers-exit-russia-crude-trades-ahead-of-u-s-sanctions-deadline/",
+     "what": "Greek tonnage up to 40% of Russian crude Jan-Jul 2025; 3 of 65 cargoes 1-16 Nov 2025"
+    }
+   ],
+   "note": "FT crude-only: USD 3.8bn/389m bbl = USD 9.8/bbl; scaled to 542m bbl = USD 5.3bn = EUR ~4.9bn gross. The r6 Greek freight for the same window (half 2023 + 2024 + 2025 + 6/8 of Jan-Aug 2026) is EUR 9.0bn, crude and products together; the products part is not split in r6. The two agree if products are about 45% of Greek freight. 542m bbl over 36 months is ~15m bbl a month. Taking Russian seaborne crude at about 100m bbl a month (a round figure, not from a source checked here), that is ~15% of crude, against an r6 window average of ~18%. Both are inside the r6 ranges, so no change."
+  },
+  {
+   "item": "shadow_fleet_control",
+   "country": "ARE, CHN, HKG, IND, AZE, opaque",
+   "years": "2022-2026",
+   "old": "r6 shares (opaque group 65% Russian, UAE 72-85%)",
+   "new": "no change",
+   "basis": "judgement",
+   "sources": [
+    {
+     "title": "KSE Shadow Fleet Tracker Sep 2026 (already used in r6)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/10/KSE_Shadow_Fleer_Tracker_SEP26.pdf",
+     "what": "no newer issue found"
+    }
+   ],
+   "note": "No vessel-level beneficial-owner data (Lloyd's List Intelligence, S&P) was reachable. Nothing newer than the September 2026 KSE tracker and the 1 Oct 2026 Windward note already used in r6 was found."
+  },
+  {
+   "item": "company_profit_tax",
+   "country": "BEL",
+   "years": "2022",
+   "old": {
+    "low": 0.002,
+    "central": 0.0118,
+    "high": 0.0767
+   },
+   "new": {
+    "low": 0.012,
+    "central": 0.016,
+    "high": 0.035
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Brussels Times, 7 Jul 2023: Global corporations pay $3.5 billion in taxes to Kremlin (B4Ukraine/KSE, 2022 data)",
+     "url": "https://www.brusselstimes.com/590174/global-corporations-pay-3-5-billion-in-taxes-to-kremlin",
+     "what": "Belgian-HQ companies: 54% remained, USD 595m revenue, USD 17m profit tax in 2022"
+    },
+    {
+     "title": "B4Ukraine, The Business of Staying (2023), the report behind it",
+     "url": "https://b4ukraine.org/pdf/BusinessOfStaying.pdf",
+     "what": "country chart is an image; total non-exited profit tax USD 2.9bn (preliminary)"
+    }
+   ],
+   "note": "USD 17m / 1.053 = EUR 16.1m, set as central. The current central (11.8m) is an allocation. High 0.035 allows B4U22's incomplete coverage (non-exited total 2.9bn then vs 6.27bn now, x2.2). Low 0.012 allows for some of the 17m being exited firms. Other years unchanged."
+  },
+  {
+   "item": "company_profit_tax",
+   "country": "ESP, IRL, CAN, NOR, CZE, CYP, LUX, ARE, AUS, KAZ, HKG, SGP and other allocated",
+   "years": "2021-2026",
+   "old": "allocated by leave-russia counts x FDI key",
+   "new": "no change",
+   "basis": "judgement",
+   "sources": [
+    {
+     "title": "KSE, What are the financial results of foreign business in Russia in 2023 (Sep 2024)",
+     "url": "https://kse-ua-prod-media.fra1.digitaloceanspaces.com/wp-content/uploads/2024/09/ENG_What-are-the-financial-results-of-foreign-business-in-Russia-in-2023_final.pdf",
+     "what": "country charts are images; text names no further countries"
+    },
+    {
+     "title": "leave-russia.org",
+     "url": "https://leave-russia.org/",
+     "what": "home page shows per-company 'Taxes(RF)' for about 89 cards; country-filtered views still return HTTP 500 (2026-10-19)"
+    },
+    {
+     "title": "Kyiv Independent on Follow the Money investigation, 10 Jun 2025",
+     "url": "https://kyivindependent.com/western-firms-paid-at-least-46-billion-in-taxes-to-russia-amid-full-scale-war-in-ukraine-investigation-says/",
+     "what": "EUR 40bn total; only the Raiffeisen figure by country"
+    }
+   ],
+   "note": "No published per-country figures were found for the allocated countries. Euronews has country pieces for Germany, Italy and France only (all already reported). Belgium 2022 is the one new data point."
+  },
+  {
+   "item": "LAUNDERED_CAP",
+   "country": "LBR",
+   "years": "2022-2026",
+   "old": {
+    "mid": 0.01,
+    "high": 0.02,
+    "eur_bn_per_year": [
+     0.044,
+     0.088
+    ]
+   },
+   "new": {
+    "mid": 0.0025,
+    "high": 0.0085,
+    "eur_bn_per_year": [
+     0.011,
+     0.037
+    ]
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "UN Comtrade HS 2710, LBR as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=430&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "Liberia's own imports USD 581m (2022), 669m (2023), 527m (2024), 0.27-0.33 Mt; 95-98% consigned from Cote d'Ivoire; India, UAE, Turkiye under USD 6m a year together"
+    },
+    {
+     "title": "UN Comtrade, Cote d'Ivoire HS 2710 and 2709 imports by partner 2022-2024",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=384&period=2023&flowCode=M&cmdCode=2710",
+     "what": "CIV product imports 1.6-2.1 Mt: Belgium 0.54-0.83, Russia 0.12/0.50/0.51 (direct Russian, not laundered), India 0.05 (2023), Turkiye 0.08; crude 86-88% Nigeria, rest Colombia/Ecuador, no Russian crude"
+    },
+    {
+     "title": "UN Comtrade mirror: exports to Liberia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=430&period=2024&flowCode=X&cmdCode=2710",
+     "what": "partners report 4.9-5.3 Mt a year 'to Liberia' (China 3.6-4.1 Mt, Brazil, Greece): bunkers for Liberian-flag ships, 15-20x Liberia's own imports"
+    },
+    {
+     "title": "Worldometers (EIA data): Liberia oil consumption 4,853 b/d in 2024",
+     "url": "https://www.worldometers.info/ca/petroli/liberia-petroli/",
+     "what": "about 0.24 Mt a year, consistent with customs"
+    }
+   ],
+   "note": "Laundered oil Liberia can actually use = fuel imports x share made from Russian crude elsewhere x crude content. Central: EUR 553m (2022-24 average, ECB averages 1.053/1.081/1.082) x 0.04 x 0.5 = EUR 11m = 0.25% of GDP 4.42bn. High: EUR 619m (2023) x 0.10 x 0.6 = EUR 37m = 0.84%. The 4%/10% shares are a judgement from CIV's India+Turkiye share (4-8%) plus Belgian blends. The current cap binds every year at EUR 44m."
+  },
+  {
+   "item": "LAUNDERED_CAP",
+   "country": "TGO",
+   "years": "2022-2026",
+   "old": {
+    "mid": 0.01,
+    "high": 0.02,
+    "eur_bn_per_year": [
+     0.098,
+     0.197
+    ]
+   },
+   "new": {
+    "mid": 0.0027,
+    "high": 0.0089,
+    "eur_bn_per_year": [
+     0.027,
+     0.088
+    ]
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "Worldometers (EIA data): Togo oil consumption 15,690 b/d in 2024",
+     "url": "https://www.worldometers.info/fr/petrole/togo-petrole/",
+     "what": "5.73m bbl a year, secondary source"
+    },
+    {
+     "title": "UN Comtrade HS 2710, TGO as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=768&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "own imports 0.20-0.24 Mt, India 17-26% of tonnes, Belgium 34% (2024), Russia 8-10%"
+    },
+    {
+     "title": "UN Comtrade mirror: exports to Togo",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=768&period=2024&flowCode=X&cmdCode=2710",
+     "what": "5.2-9.9 Mt a year reported to Togo: ship-to-ship transfers, not consumption"
+    }
+   ],
+   "note": "Applies to what Togo keeps after hub pass-on. Use is 5.73m bbl x USD 100 / 1.08 = EUR 530m. Central share 0.10 (India ~20% of supply x ~40% Russian crude in Indian runs, plus Turkish and Belgian bits) x k 0.5 = EUR 26.5m = 0.27% of GDP 9.83bn. High at USD 110/bbl x 0.25 x 0.6 = EUR 87.5m = 0.89%. Prices and shares are judgement; volumes are data. The current cap binds in 2022-2026."
+  },
+  {
+   "item": "LAUNDERED_CAP",
+   "country": "MLT",
+   "years": "2022-2026",
+   "old": {
+    "mid": 0.01,
+    "high": 0.02,
+    "eur_bn_per_year": [
+     0.231,
+     0.463
+    ],
+    "current_values_eur_bn": {
+     "2022": 0.076,
+     "2023": 0.081,
+     "2024": 0.128,
+     "2025": 0.077
+    }
+   },
+   "new": {
+    "mid": 0.0015,
+    "high": 0.004,
+    "eur_bn_per_year": [
+     0.035,
+     0.093
+    ]
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "UN Comtrade HS 2710, MLT as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=470&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "Malta's own imports from India 0 / USD 39.4m / 0, UAE 0 / 17.6m / 0, Turkiye 0.3/2.3/1.6m (2022/23/24); main suppliers Italy, Spain, Greece, Croatia"
+    },
+    {
+     "title": "Eurostat nrg_cb_oil, oil products O4600, MT, 2019-2024 (updated 2026-10-09)",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_cb_oil?format=JSON&siec=O4600&geo=MT&unit=THS_T&nrg_bal=IMP&nrg_bal=EXP&nrg_bal=INTMARB&nrg_bal=GID_OBS&nrg_bal=TO_RPI_RO&nrg_bal=FC_E",
+     "what": "gross inland deliveries 0.47-0.50 Mt; INTMARB 2.2-2.3 Mt = 81% of imports"
+    },
+    {
+     "title": "UN Comtrade mirror: exports to Malta",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=470&period=2024&flowCode=X&cmdCode=2710",
+     "what": "partners report 3.9-4.6 Mt (2022-24) 'to Malta', including Turkiye 0.78-0.82 Mt, China 0.69-0.91 Mt, India 0.17-0.21 Mt, none of it in Malta's customs: STS at Hurd's Bank or flag-of-ship bunkers"
+    }
+   ],
+   "note": "The cap does not bind now (0.3-0.55% of GDP), but the values are too high. From Malta's own customs, Russian-crude-type supply x k 0.5 is EUR 0.1m (2022), 27.4m (2023) and 0.7m (2024). Proposed central cap 0.15% of GDP = EUR 35m: the 2023 value plus margin. High 0.4% = EUR 93m, about 0.30 x 0.6 of EUR 0.4bn domestic fuel use. That is a judgement high that also allows some STS cargo to be consumed. 2022 Italian (ISAB Priolo) Russian crude content belongs to laundered_eu, not this cap."
+  },
+  {
+   "item": "LAUNDERED_CAP",
+   "country": "PAN",
+   "years": "2022-2026",
+   "old": {
+    "mid": 0.01,
+    "high": 0.02,
+    "eur_bn_per_year": [
+     0.799,
+     1.599
+    ],
+    "current_values_eur_bn": {
+     "2022": 0.174,
+     "2023": 0.164,
+     "2024": 0.19,
+     "2025": 0.13
+    }
+   },
+   "new": {
+    "mid": 0.0002,
+    "high": 0.0009,
+    "eur_bn_per_year": [
+     0.013,
+     0.072
+    ]
+   },
+   "basis": "data",
+   "sources": [
+    {
+     "title": "UN Comtrade HS 2710, PAN as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=591&period=2023&partnerCode=0&flowCode=M,X,RX,RM&cmdCode=2710",
+     "what": "customs imports USD 3.17/2.69/2.48bn, 2.7 Mt a year; from India USD 0.4-1.3m, Russia 1.9m (2022) only"
+    },
+    {
+     "title": "UN Comtrade mirror: exports to Panama",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=591&period=2024&flowCode=X&cmdCode=2710",
+     "what": "USA 6.4-8.1 Mt (no Russian crude in US refineries after the March 2022 ban), China 3.0-3.4 Mt (flag-of-ship bunkers), Ecuador, Peru, Brazil, Canada"
+    }
+   ],
+   "note": "Panama's domestic fuel comes through its free zones, mainly of US origin. Central: EUR 2,597m (2022-24 average) x 0.01 x 0.5 = EUR 13m = 0.016% of GDP 79.9bn (rounded to 0.02%). High: EUR 3,010m (2022) x 0.04 x 0.6 = EUR 72m = 0.09%. The current values (EUR 0.13-0.19bn a year) exceed even this high. They most likely come from China's bunker records for Panama-flag ships; see the structural item."
+  },
+  {
+   "item": "LAUNDERED_CAP",
+   "country": "MHL",
+   "years": "2022-2026",
+   "old": {
+    "mid": 0.01,
+    "high": 0.02,
+    "eur_bn_per_year": [
+     0.0026,
+     0.0053
+    ]
+   },
+   "new": {
+    "mid": 0.01,
+    "high": 0.02,
+    "eur_bn_per_year": [
+     0.0026,
+     0.0053
+    ],
+    "data_implied": [
+     0.0017,
+     0.0074
+    ]
+   },
+   "basis": "judgement",
+   "sources": [
+    {
+     "title": "IndexMundi (CIA World Factbook): Marshall Islands refined products consumption 2,000 bbl/day (2014 est.)",
+     "url": "https://www.indexmundi.com/marshall_islands/refined_petroleum_products_production.html",
+     "what": "only consumption figure found; seen in search result, page not opened"
+    },
+    {
+     "title": "UN Comtrade mirror: exports to Marshall Islands",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=584&period=2024&flowCode=X&cmdCode=2710",
+     "what": "partners report 2.9-4.0 Mt a year (China 1.8-2.4 Mt, Brazil, Singapore, Greece), ~30-40x the islands' use: flag-of-ship bunkers; the Marshall Islands does not report to Comtrade"
+    }
+   ],
+   "note": "Consumption 0.73m bbl a year x USD 100 / 1.08 = EUR 68m. Central: x 0.05 x 0.5 = EUR 1.7m (0.64% of GDP). High: USD 120 x 0.15 x 0.6 = EUR 7.4m (2.8%). The current 1%/2% sits inside that band, so keep. The share of Russian-crude fuel in Pacific supply (mainly Singapore and Korea) is a judgement."
+  },
+  {
+   "item": "LAUNDERED_CAP",
+   "country": "GIB",
+   "years": "2022-2026",
+   "old": {
+    "mid": 0.01,
+    "high": 0.02
+   },
+   "new": {
+    "mid": 0.01,
+    "high": 0.02
+   },
+   "basis": "judgement",
+   "sources": [
+    {
+     "title": "Gibraltar Port Authority GPA.4 2024",
+     "url": "https://www.gibraltar.gov.gi/uploads/statistics/2024/port/GPA.4.pdf",
+     "what": "bunker calls only"
+    }
+   ],
+   "note": "No inland fuel consumption figure was found; the power station runs on LNG. The current values (0.1% of GDP central, 0.6% high) do not reach the cap. Keep."
+  },
+  {
+   "item": "LAUNDERED_CAP_structural",
+   "country": "LBR, MHL, PAN, MLT (also check other flag states)",
+   "years": "2022-2026",
+   "old": "GDP cap only",
+   "new": "exclude partner-reported HS 2710 exports to flag registries that the registry's own customs (or consumption) do not show, at least China's",
+   "basis": "data",
+   "sources": [
+    {
+     "title": "UN Comtrade mirror, partner Liberia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=430&period=2024&flowCode=X&cmdCode=2710",
+     "what": "China reports 3.6-4.1 Mt a year 'to Liberia'; Liberia imports 0.27-0.33 Mt, 95-98% from Cote d'Ivoire"
+    },
+    {
+     "title": "UN Comtrade mirror, partner Marshall Islands",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=584&period=2024&flowCode=X&cmdCode=2710",
+     "what": "China 1.78 Mt (2022), 2.37 Mt (2024), USD 1.4-1.5bn, for a country of ~40k people"
+    },
+    {
+     "title": "UN Comtrade mirror, partner Panama",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=591&period=2024&flowCode=X&cmdCode=2710",
+     "what": "China 3.0-3.4 Mt"
+    }
+   ],
+   "note": "China (and Brazil, Greece, Singapore) record bunker fuel sold to foreign-flag ships as exports to the flag state. Since China refines Russian crude, these records carry laundered oil to the three largest flag registries. Dropping those partner records, or treating them as bunkers with no country buyer, removes the cause; the per-country caps above then become a backstop. The flows and the explanation are data: own vs mirror customs show the mismatch."
+  }
+ ]
+}

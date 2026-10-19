@@ -1,3 +1,5 @@
+# raw downloads are kept exactly as downloaded: no hook may change them
+exclude: ^research/2026-10/raw/
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0

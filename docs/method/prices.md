@@ -99,8 +99,14 @@ dated before the invasion only ([`energy_nowar.json`](../../research/2026-10/gap
   Greece, Bulgaria, North Macedonia, Moldova 50/50) both; fixed-price buyers (Belarus, Armenia, Kyrgyzstan, Uzbekistan,
   Kazakhstan, Azerbaijan, Georgia) get no windfall on gas. Per-country customs prices per fuel where `prices.json`
   measures them, else the pre-war fuel mix.
-- **2026**: the Strait of Hormuz closure was not caused by this war, so the no-war price in 2026 is the actual world
-  price (Brent, diesel, TTF, JKM, Newcastle). Only Russia-specific price gaps count that year.
+- **2026**: the 2026 price spike came from the closure of the Strait of Hormuz, which Iran shut to tanker traffic. The
+  IEA's August 2026 Oil Market Report names the closure as the main cause of the supply loss (as reported by
+  [Kuwait Times, 12 August 2026](https://kuwaittimes.com/article/47998/world/iea-cuts-2026-oil-demand-forecast-again-as-hormuz-remains-shut/);
+  the IEA's own page blocked automated access, so the primary report is not linked). Russia's war did not cause it, so
+  the no-war price in 2026 is the actual world price (Brent, diesel, TTF, JKM, Newcastle), and only Russia-specific
+  price gaps count that year. This is a decision, not a measured value: the research left open whether to keep the
+  pre-invasion path instead, which would count the spike as windfall ([energy_nowar-notes.md](../../research/2026-10/gaps/energy_nowar-notes.md),
+  open question 2; [decisions](../decisions.md#constants-and-rules-written-down-in-round-11)).
 - **The change in volume** is valued at the same no-war prices, so the two parts add up exactly:
   `actual − expected payment = (volume change × no-war price) + (actual volume × (actual price − no-war price))`.
   In the builder (`apply_nowar_prices()`) the expected path takes the no-war price on its fuel share

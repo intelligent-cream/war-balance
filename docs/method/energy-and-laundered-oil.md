@@ -77,7 +77,8 @@ Trading hubs buy fuel and resell part of it. `reassign_laundered_oil()` passes e
 | UAE | 0.30 / 0.42 / 0.65 | 0.30 |
 | Turkey | 0.10 / 0.20 / 0.45 | 0.02 |
 | India | 0.05 / 0.15 / 0.36 | 0.02 |
-| Malta, Gibraltar, Panama | ≤ 0.03 middle | mostly bunkers |
+| Malta, Gibraltar | ≤ 0.03 middle | mostly bunkers (Malta 0.81, Gibraltar 0.90) |
+| Panama (round 11) | 0 / 0.05 / 0.35 | 0.40 |
 
 Fuel passed from one hub to another (India to the Netherlands, Belgium to the Netherlands) is passed on again until nothing is left in transit (`pass_on()`, up to 20 rounds). Fuel sold to ships in port (bunkers) has no buyer country and stays with the hub, except at the hub's low end. **Gibraltar** buys fuel to sell as bunkers to passing ships, paid for by shipowners elsewhere; like other resellers it keeps a margin of 10% (5–30%) of its Russian fuel and laundered oil (Gibraltar: −18.9% → −1.4% of GDP).
 
@@ -96,6 +97,7 @@ Fuel passed from one hub to another (India to the Netherlands, Belgium to the Ne
 
   Fuel whose refiner is no longer known after trading hubs mixed it uses the refiners' average, weighted by their exports. India's measured share matches its own refinery data (EUR 18.5bn of Russian crude in EUR 28.5bn of fuel in 2022, 0.65). The buyer whose demand creates the sale is charged this part; the rest of the fuel price is the refiner's income, and its profit from the Russian discount is counted for the refiner ("discount gained" in the cost view). Earlier rounds used one ratio, 0.42 / 0.50 / 0.60, from CREA's "EUR 4.2bn of crude in EUR 8.5bn of fuel"; that figure prices diesel alone, without refining losses or the cheaper products in the export mix. The round-5 EU figures (`laundered_eu.json`) and the round-6 Brunei channel are rescaled from their ratios to these.
 - Laundered oil cannot exceed what an economy can use: capped at 1% (middle) and 2% (high) of GDP per year (`LAUNDERED_CAP`), so ship registries and storage points (Marshall Islands, Liberia) do not absorb fuel. GDP from `residual.json` is loaded before the cap so it applies to small territories too.
+- Round 11 ([decisions](../decisions.md#assumptions-backed-by-data-round-11)): refiners' and Greece's records of fuel "exports" to Liberia, the Marshall Islands and Panama are bunkers sold to ships under those flags, which the registries' own customs do not show; they are dropped, and Malta keeps only what its own customs record. Where fuel use is known the cap is fuel use × the share made from Russian crude × crude content (`LAUNDERED_CAP_BY`: Liberia 0.25% / 0.85%, Togo 0.27% / 0.89%, Malta 0.15% / 0.4%, Panama 0.02% / 0.09% of GDP), applied to the final values. Malta keeps half its bunker share less in the middle case (81% of its fuel imports leave as bunkers).
 
 ### Pre-war laundered oil
 
@@ -129,7 +131,9 @@ Turkey appears in almost every energy step: a TurkStream transit and final-use g
 These are in the **cost** view only ([overview.md](overview.md#the-cost-view)), from `energy.json`:
 
 - **Extra paid to replace Russian energy** (switching cost) = displaced volume × replacement share × per-tonne premium, by fuel and month. Displaced volume is 2021 minus the year, when positive; replacement shares come from Eurostat (gas 1.0 in 2022, 0.885 in 2023, 0.635 later); the premium is TTF minus the Russian contract price for gas, and between the pre-war structural gap and the full discount forgone for crude and coal. Largest: Germany 34.5bn (17.3–48.7), Italy 18.5bn, Netherlands 11.3bn.
-- **Discount gained on Russian oil** = crude tonnes × (Brent − CREA realised price) + products likewise, from March 2022, × 0.671 (median of published estimates: ICRA for India, Banque de France for China, Reuters for Turkey). Largest: India 33.8bn, China 24.9bn, Turkey 7.7bn.
+- **Discount gained on Russian oil** = crude tonnes × (Brent − CREA realised price) + products likewise, from March 2022, × 0.671 (median of published estimates: ICRA for India, Banque de France for China, Reuters for Turkey).
+  - **Round 7 step:** Russian crude already sold about 5% below Brent before the war, and that part of the discount would have existed without the war. `apply_nowar_prices()` in `build_data.py` therefore multiplies the discount by `oil_discount_gain_factor` from [`energy_nowar.json`](../../research/2026-10/gaps/energy_nowar.json) `switching_cost_r7`: 0.731, 0.751, 0.659, 0.557 and 0.788 for 2022–2026 ([notes §3](../../research/2026-10/gaps/energy_nowar-notes.md)).
+  - Largest, 2022 to August 2026, after that step: India EUR 24.1bn (17.7–35.9), China 18.1bn (13.3–26.9), Türkiye 5.5bn (4.1–8.3). Before the step they were 33.8bn, 24.9bn and 7.7bn.
 
 ## See also
 

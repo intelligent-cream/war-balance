@@ -23,13 +23,14 @@ Code: `apply_state_finance()`; data: [`russia_state_finance.json`](../../researc
 - **Customs over-counts removed**: equipment for Akkuyu is imported by Rosatom's own Turkish company (Türkiye about
   EUR −2.5bn over 2022–2026), El Dabaa equipment is 85% loan-financed (Egypt −1.1).
 
-| country | 2022–2026, EUR bn (toward Russia +) | why |
-|---|---|---|
-| Türkiye | −2.5 | customs over-count of Akkuyu equipment removed |
-| Belarus | −1.1 | payments deferred |
-| Hungary | +0.8 | Paks II payments and loan prepayments (certainty D) |
-| Viet Nam | −0.7 | stopped paying in 2023 (blocked payment channels) |
-| Iraq | −0.4 | stopped paying |
+| country | 2022–2026, EUR bn, money (toward Russia +) | shown on the map, EUR bn (toward Ukraine +) | why |
+|---|---|---|---|
+| Türkiye | −2.5 | +0.61 | customs over-count of Akkuyu equipment removed; on the map at Russia's net gain on the goods it replaces (round 10) |
+| Hungary | +0.8 | −0.78 | Paks II payments and loan prepayments (certainty D) |
+| Viet Nam | −0.7 | +0.71 | stopped paying in 2023 (blocked payment channels) |
+| Iraq | −0.4 | +0.37 | stopped paying |
+
+The two columns have opposite signs because the research counts money toward Russia and the map counts the shift toward Ukraine. Loan payments count in full. The customs correction (Türkiye, Egypt) comes out of payments that the map counts at Russia's net gain, so it is rescaled to that gain ([overview](overview.md#the-net-gain-rule-round-10)). Belarus's deferrals (EUR −1.1bn) are not on the map (below).
 
 Arrears in Viet Nam, Iraq and Bangladesh were caused by sanctions on payment channels, not by choice: they count (the money did not reach Russia) and the country panel says so in a note. **Belarus's** deferrals were granted by Russia and refinanced with new Russian loans, so its loan repayments are left out (round 6); only its nuclear-plant part counts.
 
@@ -43,8 +44,10 @@ almost none), so this is a new part; the small part inside customs (Algeria's 20
 from contracts (India's S-400, Iran's Su-35, Algeria's Su-57, Egypt's cancelled Su-35), SIPRI buyer shares and payment
 timing, against an expected level without the war that leaves out one-off contracts (Türkiye's 2019 S-400).
 
-Biggest changes over 2022–2026 (toward Ukraine = paid less): India +4.3bn, China +3.7, Egypt +2.8, Algeria +2.3, Iraq,
-Viet Nam, Myanmar about +0.5 each; Iran −2.5 (paid more), Saudi Arabia −0.5. A large part of the fall was not the
+Biggest changes over 2022–2026 (toward Ukraine = paid less), in money: India +4.3bn, China +3.7, Egypt +2.8, Algeria
++2.3, Iraq, Viet Nam, Myanmar about +0.5 each; Iran −2.5 (paid more), Saudi Arabia −0.5. The map counts these at
+Russia's net gain on arms (round 10; 0.039–0.050 since round 11), so it shows much smaller values: India +0.19bn, China
++0.18, Egypt +0.13, Algeria +0.10, Iran −0.07. A large part of the fall was not the
 buyer's choice: Russia kept its output for its own army and sanctions hit its production (India about 50%, China 70%,
 Egypt 20%, about 60% elsewhere). The country panel says so in a note, like the sanctions split; the number is not
 reduced. Most buyer values after 2021 are educated guesses (certainty D; India and China C).

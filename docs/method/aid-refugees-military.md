@@ -7,11 +7,11 @@ The Ukraine side of the ledger: government aid (Kiel Institute and, for the 190 
 Data: [`kiel.json`](../../research/2026-10/kiel.json) ([notes](../../research/2026-10/kiel-notes.md)), the [Kiel Institute Ukraine Support Tracker](https://www.kielinstitut.de/research/topics/war-against-ukraine/ukraine-support-tracker/), Release 31 (data 24 January 2022 to 31 August 2026), allocations by month (`Allocations per Month`), categories military, financial and humanitarian. Code: aid section of [build_data.py `build()`](../../pipeline/build_data.py).
 
 - **Allocated, not pledged.** "Allocated" means delivered or contracted. Commitments not yet allocated are shown as `pledged_open` in "More details", not counted.
-- **Loans** count at their **economic value to Ukraine** in the net shift (round 5, see below) and at the lender's **grant equivalent** (30%, `LOAN_GRANT_ELEMENT`, cost-to-lender view, certainty C) in the cost view.
+- **Loans** count at their **economic value to Ukraine** in the net shift (round 5, see below) and at the lender's **grant equivalent** (26%, `LOAN_GRANT_ELEMENT`: Kiel's loan terms at the lender's own funding rate, round 11; cost-to-lender view, certainty C) in the cost view.
 - **ERA loans excluded.** G7 loans repaid from immobilised Russian assets (ERA: US 18.3, EU 18.1, Canada 3.3, UK 2.6, Japan 1.6 EUR bn) are Russia's money, not the donor's. They are taken out of the donor's years (in the year paid: US 2024, Japan 2026, UK 2025–2026, the others 2025), loans and financial category (`era_excluded` in `data.json`); [`check_data.py`](../../pipeline/check_data.py) check 5 verifies this.
 - **Amounts without a month** (Italy 1.3bn) are spread over the years in proportion.
 
-**Outside Kiel** (190 countries): [`aid_gaps.json`](../../research/2026-10/gaps/aid_gaps.json) ([notes](../../research/2026-10/gaps/aid_gaps-notes.md)) from the [UN OCHA Financial Tracking Service](https://fts.unocha.org/countries/234/summary/2026) and official statements. Largest: Saudi Arabia 0.37bn, UAE, Qatar, North Macedonia (military), Azerbaijan. 163 countries with no record anywhere get 0 with a small upper bound (0.002% of 2022 GDP), so no one is assumed to have given nothing for certain. Check 2 verifies no country takes aid from both Kiel and the gap research.
+**Outside Kiel** (190 countries): [`aid_gaps.json`](../../research/2026-10/gaps/aid_gaps.json) ([notes](../../research/2026-10/gaps/aid_gaps-notes.md)) from the [UN OCHA Financial Tracking Service](https://fts.unocha.org/countries/234/summary/2026) and official statements. Largest: Saudi Arabia 0.37bn, UAE, Qatar, North Macedonia (military), Azerbaijan. 163 countries with no record anywhere get 0 with a small upper bound (0.002% of 2022 GDP, a judgement: [decisions](../decisions.md#constants-and-rules-written-down-in-round-11)), so no one is assumed to have given nothing for certain. Check 2 verifies no country takes aid from both Kiel and the gap research.
 
 ### EU-level aid
 
@@ -41,14 +41,18 @@ shrinks over time as aid moved from stocks to new production.
 
 A loan that is repaid is worth less to Ukraine than a grant. Each loan and guarantee counts at its **grant element**:
 face value minus the present value of Ukraine's repayments, discounted at the rate Ukraine would otherwise pay for
-long-term money (central 10%, the IMF/OECD convention and the bottom of post-restructuring Eurobond yields; low 6–7%,
-its 2021 yields; high 13–15%, current yields). Terms come from Kiel's own loan columns and the legal texts (EU MFA+ and
+long-term money (central 10%; low 6–7%, its 2021 yields; high 13–15%, current yields). The 10% is a judgement: it is
+the bottom of Ukraine's post-restructuring Eurobond yields, and the flat rate the OECD's aid committee (DAC) once used
+for its grant-element test. It is not a current international standard. The IMF's debt-limits policy uses a unified
+5% rate ([IMF](https://www.imf.org/en/Topics/sovereign-debt/debt-limits-policy)), and since the 2018 data the DAC uses
+rates that differ by the borrower's income group. Because the map measures the loan's value to Ukraine, Ukraine's own
+borrowing cost is the closer guide ([decisions](../decisions.md#constants-and-rules-written-down-in-round-11)). Terms come from Kiel's own loan columns and the legal texts (EU MFA+ and
 Ukraine Facility: 35 years with an interest subsidy; JICA 30 years at 1%; Canada via the IMF account). Guarantees on
 World Bank loans count at the grant element of the loan they make possible; guarantees for lending to Ukrainian firms
 at 10 / 25 / 40% of face. Over 2022–2026 face value EUR 96.5bn becomes about 64bn (40–77): Japan −5.8bn, Germany −4.4
 (mostly its EU share), France −4.1, Canada −2.9, Italy −2.7, UK −2.7. The US is unchanged (its only loan is ERA, already
 left out). Code: `apply_loans_value()`; data: [`loans_value.json`](../../research/2026-10/gaps/loans_value.json)
-([notes](../../research/2026-10/gaps/loans_value-notes.md)). The cost view keeps the lender's cost (30% of face): the economic value is what Ukraine gains, discounted at Ukraine's borrowing rate, not what the lender gave up.
+([notes](../../research/2026-10/gaps/loans_value-notes.md)). The cost view keeps the lender's cost (26% of face since round 11, was 30%): the economic value is what Ukraine gains, discounted at Ukraine's borrowing rate, not what the lender gave up.
 
 **Multilateral lending** (IMF, World Bank, EBRD, CEB): only the rise over each institution's 2019–2021 own-risk lending
 counts (donor-guaranteed and trust-fund lending is already in Kiel), valued the same way and credited by shareholding,
@@ -63,7 +67,7 @@ as military in Kiel ([refresh_2026-notes.md](../../research/2026-10/gaps/refresh
 From [`uncovered.json`](../../research/2026-10/gaps/uncovered.json) ([notes §3–4](../../research/2026-10/gaps/uncovered-notes.md)):
 
 - **Undisclosed military aid** beyond Kiel (certainty C–D): Germany's 2026 appropriations above what Kiel records (0 / 1.5 / 4.0), Italy's later classified decrees, France's 2024 gap, small Greek amounts. France's 2022–23 gap was taken out because Kiel adopted France's official figure in Release 16 (audit 2, question 3). Check 8 warns if undisclosed aid exceeds half of a country's Kiel military aid.
-- **Private donations**: national totals for 2022 (Germany DZI, UK DEC, Netherlands Giro555, Switzerland Zewo, US Candid), a GDP share elsewhere (Western donors 0.015%, Central and Eastern Europe 0.03%, Baltic states 0.06%), falling to about 5–13% of the 2022 level later. Largest 2022–2026: US 2.6, Germany 1.3, UK 0.8 EUR bn.
+- **Private donations**: national totals for 2022 (Germany DZI, UK DEC, Netherlands Giro555, Switzerland Zewo, US Candid), a GDP share elsewhere (Western donors 0.015%, Central and Eastern Europe 0.03%, Baltic states 0.06%; a judgement, [decisions](../decisions.md#constants-and-rules-written-down-in-round-11)), falling to about 5–13% of the 2022 level later. Largest 2022–2026: US 2.6, Germany 1.3, UK 0.8 EUR bn.
 
 ## Refugees
 
@@ -74,7 +78,7 @@ Hosting refugees from Ukraine counts toward Ukraine in both the net shift and th
 3. **Donor-paid costs** are taken off the host ([`flowback2.json`](../../research/2026-10/gaps/flowback2.json) `refugee_donor_funding`): UN refugee plans and EU grants paid for part of the cost in Moldova and others. Moldova's `round4b.json` figures are already its own cost, net of donors. Check 11 verifies this for Moldova.
 
 4. **Net cost** (round 5, `apply_refugees_net()`, [`refugees_net.json`](../../research/2026-10/gaps/refugees_net.json), [notes](../../research/2026-10/gaps/refugees_net-notes.md)): the cost minus the taxes and social contributions working refugees pay. Official revenue figures for Czechia (Labour Ministry: CZK 11 / 19 / 25bn in 2022–2024), Poland (Ministry of Finance, only the increase over a no-war path for Ukrainians already working there), Lithuania and Moldova; Germany from official job counts × wages × tax rate; elsewhere modelled (working-age share × employment rate × half the average wage × tax wedge, plus VAT). Across all hosts revenue offsets about half the cost over 2022–2026 (about 20% in 2022, over 60% in 2025). **Floored at zero on each country's 2022–2026 total**: where refugees paid more than they cost (Czechia, Canada, Slovakia, Romania, the Baltic states), hosting counts as zero, not as a shift toward Russia. Used in both the shift and the cost view.
-5. **Poland** (round 5): the cost is refugee spending from the Aid Fund at BGK (PLN 11.3bn in 2022, 8.9bn in 2023, 8.1bn in 2024; NIK confirms 2022), not the Fund's total, which also pays for tasks outside Poland. Poland's 2022–2026 hosting falls from EUR 24bn gross to about 3bn net; Poland +10.0% → +7.1% of GDP. Bulgaria and Croatia also have new budget figures.
+5. **Poland** (round 5): the cost is refugee spending from the Aid Fund at BGK (PLN 11.3bn in 2022, 8.9bn in 2023, 8.1bn in 2024; NIK confirms 2022), not the Fund's total, which also pays for tasks outside Poland. Poland's 2022–2026 gross hosting cost falls from the Fund's total of EUR 24bn to EUR 10.8bn of refugee spending (`refugee_gross` in `data.json`), and to about EUR 3.2bn net of refugees' taxes. At the time this moved Poland from +10.0% to +7.1% of GDP; the current build shows +4.1%. Bulgaria and Croatia also have new budget figures. Round 11 audit: these PLN figures were checked only against a press article, because the BGK and NIK pages blocked automated access ([verify_r11_aid-notes](../../research/2026-10/verify_r11_aid-notes.md)), so Poland's refugee part is certainty C.
 
 The panel also shows the latest refugee count (`people.refugees`).
 
@@ -106,8 +110,10 @@ North Korea, Iran and Belarus are revalued from more sources ([`military_rus_r6.
 
 Part of military aid comes back to the donor as orders for its own industry. Counting the full aid as a shift toward Ukraine while ignoring this would flatter big arms producers. Code: flowback section of `build()`; data: [`flowback.json`](../../research/2026-10/flowback.json) ([notes](../../research/2026-10/flowback-notes.md)) and [`flowback2.json`](../../research/2026-10/gaps/flowback2.json) ([notes](../../research/2026-10/gaps/flowback2-notes.md)).
 
-- **Own aid spent with its own defence industry**: the own-industry share of bilateral military aid. US 0.86–0.90 (CSIS, certainty B); other donors from Kiel's item-level coding (domestic procurement + own stocks refilled at home + a share of uncoded value; Germany 0.40–0.59, UK 0.44–0.74, France 0.70–0.90, Netherlands 0.11–0.27); no evidence: 20% / 40% / 70% (`OWN_SHARE_DEFAULT`, certainty D).
-- **Other countries' aid spent here**: NATO PURL purchases from US stocks (US receives EUR 3.7bn in 2025 and more in 2026), and EU-level military aid credited to member arms industries by SIPRI production share (`EU_ARMS_SLICE`: France 39%, Germany 24%, Italy 19%, Sweden 6%, Czechia 4%, Spain 3.5%, Poland 3%), × 70–88% spent with EU/EEA industry.
+The first three bullets describe the estimates used up to round 5. **Since round 6 the all-money ledger below replaces all of them** (`apply_money_ledger()` deletes their values), so `OWN_SHARE_DEFAULT`, the PURL estimate and the EU arms slice no longer change any number on the map; they are kept as history.
+
+- **Own aid spent with its own defence industry** (history): the own-industry share of bilateral military aid. US 0.86–0.90 (CSIS, certainty B); other donors from Kiel's item-level coding (domestic procurement + own stocks refilled at home + a share of uncoded value; Germany 0.40–0.59, UK 0.44–0.74, France 0.70–0.90, Netherlands 0.11–0.27); no evidence: 0% / 10% / 30% (`OWN_SHARE_DEFAULT`, round 11; it now applies only to Albania, North Macedonia and Montenegro, certainty D).
+- **Other countries' aid spent here** (history; the EU arms split still feeds the ledger): NATO PURL purchases from US stocks (US receives EUR 3.7bn in 2025 and more in 2026), and EU-level military aid credited where Kiel's items say it was spent (round 11, `EU_ARMS_SLICE`): Sweden 28% (the Gripen contract), all other members together 3% (0–10%, split by the ASAP 2024 grants), and about 70% to Ukraine's own drone industry, which is no member's flowback. All of it is dated 2026, as in Kiel. Before round 11 the split followed SIPRI production shares (France 39%, Germany 24%, Italy 19%...).
 - **Extra sales to Ukraine** above the expected level ([trade.md](trade.md)).
 
 Until round 5 all three counted only as **profit** (20%, range 0.5–1.5×), the same share as profit lost on sales to Russia. Since round 6 they come from the all-money ledger below and count at value kept × genuinely extra ([the money rule](overview.md#the-money-rule-round-6)). They are subtracted from both the net shift and the cost. The "money flowing back" switch on the map (on by default, `state.netBack`) turns them off. Check 6 compares PURL paid with PURL received by the US.
@@ -118,8 +124,9 @@ Weapons Ukraine bought from foreign sellers, with its own budget or donors' cash
 too: the Czech ammunition initiative (paid by Germany, the Netherlands, Denmark and others; Czech export licences to
 Ukraine CZK 47–51bn a year in 2024–25), Bulgarian and Serbian shells via third countries, German money for Patriots from
 the US, Danish money for Swedish CV90s. Only sales not already in customs (sales to Ukraine) or in a donor's own-industry
-share count; the seller keeps the profit (20%, like other flowback). Over 2022–2026 about EUR 21bn of sales, so 4.2bn of
-profit: Czechia 5.7bn gross, Bulgaria 5.0, the US 4.1, Türkiye 1.5, Serbia 1.1. Code: `apply_ua_arms_purchases()`; data:
+share count. Round 5 counted the seller's profit at 20%, like other flowback; since round 6 these sales are part of the
+all-money ledger below and count at value kept × genuinely extra. Over 2022–2026 about EUR 21bn of sales (4.2bn of profit
+at the old 20%): Czechia 5.7bn gross, Bulgaria 5.0, the US 4.1, Türkiye 1.5, Serbia 1.1. Code: `apply_ua_arms_purchases()`; data:
 [`ua_arms_purchases.json`](../../research/2026-10/gaps/ua_arms_purchases.json)
 ([notes](../../research/2026-10/gaps/ua_arms_purchases-notes.md)).
 
