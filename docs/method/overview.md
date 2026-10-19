@@ -86,10 +86,12 @@ Until round 12 the map used two different rules for sales: Russia's and Ukraine'
 
 > **every sale counts at the seller's net gain × the share that is genuinely extra**
 
-- **Net gain** = (other taxes on production − subsidies + net operating surplus − the labour part of mixed income − a normal return of 9% (8–10%) on the net capital stock) ÷ output, by country and industry, from the OECD STAN database (2025 edition), 2021–2023 ([`net_gain_sellers.json`](../../research/2026-10/gaps/net_gain_sellers.json), [notes](../../research/2026-10/gaps/net_gain_sellers-notes.md), script [`net_gain_sellers.py`](../../research/2026-10/scripts/net_gain_sellers.py)). Profit tax is paid out of the surplus, so it is inside. The normal return is the same as Russia's. The 38 economies in STAN use their own figures; every other economy uses the OECD median of the industry, labelled as such.
+- **Net gain** = (other taxes on production − subsidies + net operating surplus − the labour part of mixed income − a normal return on the net capital stock: 9% nominal (8–10%) in round 13; since [round 14](#round-14-changes-to-the-rules) 5% a year above inflation after tax plus the country's risk premium (4–6%)) ÷ output, by country and industry, from the OECD STAN database (2025 edition), 2021–2023 ([`net_gain_sellers.json`](../../research/2026-10/gaps/net_gain_sellers.json), [notes](../../research/2026-10/gaps/net_gain_sellers-notes.md), script [`net_gain_sellers.py`](../../research/2026-10/scripts/net_gain_sellers.py)). Profit tax is paid out of the surplus, so it is inside. The normal return is the same as Russia's. The 38 economies in STAN use their own figures; every other economy uses the OECD median of the industry, labelled as such.
 - **Genuinely extra** stays as in round 6 ([`value_kept.json`](../../research/2026-10/gaps/value_kept.json)): it measures additionality, not value.
 - It applies to sales to Russia and to Ukraine, money flowing back (own and others' aid spent at home, arms Ukraine bought), services, shipping and insurance, payment agents and paid weapons sent to Russia. Migrants' pay followed the same idea until round 13b (below); it is now a marker.
 - Aid, refugee hosting, money not paid (unpaid weapons), taxes and profits paid to Russia, and the return denied on frozen reserves keep their full value.
+
+Round 13 values (at 9%); the current values (5% real plus risk premium, services without real estate) are in [`net_gain_sellers.json`](../../research/2026-10/gaps/net_gain_sellers.json) and [round 14](#round-14-changes-to-the-rules).
 
 | what the seller sells | industry | OECD median net gain (25th–75th percentile) |
 |---|---|---|
@@ -101,7 +103,7 @@ Until round 12 the map used two different rules for sales: Russia's and Ukraine'
 | insurance | K65 | 0.155 (0.104–0.265) |
 | payment agents | finance (K) | 0.196 (0.134–0.281) |
 
-Manufacturing earns little above a normal return on its capital, as Russia's "other manufactured goods" (0.05) do. So US weapons sold for Ukraine now count at 0.032 × 0.70 = 0.02 of their value (was 0.63), China's extra sales to Russia at 0.013 × 0.60 = 0.008 (was 0.485), Greek shipping at 0 (was 0.17). **Russia's own payments are unchanged**: they were already at net gain.
+Manufacturing earns little above a normal return on its capital, as Russia's "other manufactured goods" (0.05) do. So in round 13 US weapons sold for Ukraine counted at 0.032 × 0.70 = 0.02 of their value (was 0.63; about 0.036 since round 14), China's extra sales to Russia at 0.013 × 0.60 = 0.008 (was 0.485), Greek shipping at 0 (was 0.17). **Russia's own payments are unchanged**: they were already at net gain.
 
 **Migrants' pay** (round 13 only; a [marker](#markers-outside-the-totals) since round 13b) ([`remittances_r13.json`](../../research/2026-10/gaps/remittances_r13.json), [notes](../../research/2026-10/gaps/remittances_r13-notes.md)): wages pay for real work, so only the pay above what the same work earns elsewhere is a gain, and only its war-driven change counts. The war wage premium (Russian wages above their pre-war trend: 5% in 2022 rising to 19% in 2025) counts in full as far as it shows in euros; the rest of the change counts × the premium over the home wage (Tajikistan 0.62, Uzbekistan and Kyrgyzstan 0.41) × genuinely extra. Tajikistan stays about −40% of GDP: its migrants' pay rose far above the no-war level, and a 2022–2026 total against one year's GDP adds up five years of that.
 
