@@ -3,7 +3,7 @@
 The map gives every country **two numbers** for the time since the full-scale invasion, compared with what it would have done without the war:
 
 - **Support for Ukraine**: aid (loans counted as gifts), refugee hosting, purchases from Ukraine at Ukraine's net gain, minus money flowing back from the war effort. These are things done for Ukraine.
-- **Change in payments to Russia**: less or more paid to Russia, the war-time price windfall, fuel made from Russian crude elsewhere, sales to Russia, company taxes, migrants' war-driven pay, weapons sent and the rest. This includes cuts Russia made itself (gas Gazprom cut off, the end of gas transit through Ukraine), which the panel labels. It is not money moved to Ukraine.
+- **Change in payments to Russia**: less or more paid to Russia, the war-time price windfall, fuel made from Russian crude elsewhere, sales to Russia, company taxes, weapons sent and the rest. This includes cuts Russia made itself (gas Gazprom cut off, the end of gas transit through Ukraine), which the panel labels. It is not money moved to Ukraine. Migrants' wages sent home from Russia are in neither number: since round 13b they are a marker ([below](#markers-outside-the-totals)).
 
 The map colours their sum, the net (round 13; before, only the net was shown and it was called "toward Ukraine" or "toward Russia"). Every flow we can find (aid, refugee hosting, trade, energy, services, shipping, company taxes, weapons, hidden channels) is turned into the same unit: a change against the expected no-war level, in volumes at pre-war or no-war prices, summed over 2022 to the chosen year (2026 = January–August), as a percentage of **one** year's GDP (2024). It is a total for the whole period, not a yearly rate. This page defines that scale and lists every part, each with a link to the page that explains it in detail.
 
@@ -51,7 +51,6 @@ The parts below are what the country panel's waterfall shows (`shiftParts` and `
 | Paid to Russia by companies leaving it | exit contribution and forced discount, by home country | Russia | [russia-state-and-companies.md](russia-state-and-companies.md#companies-leaving-russia) |
 | Profits sent to Russia by Russian-owned companies here | oil, gas, banks and telecoms (round 5) and metals, mining and chemicals plants such as Aughinish Alumina in Ireland (round 10), against 2019–2021; trusteeships count the other way | either | [russia-state-and-companies.md](russia-state-and-companies.md#russian-owned-companies-abroad) |
 | Return denied to Russia on its frozen reserves | yearly return the frozen central-bank reserves would have earned (rates per currency and year); Euroclear and Clearstream a third to the host, two thirds to all EU members | Ukraine | [russia-state-and-companies.md](russia-state-and-companies.md#frozen-central-bank-reserves-round-7) |
-| Wages earned working in Russia (migrants' remittances) | round 13: the war wage premium in what migrants sent, plus the rest of the change × the premium over the alternative wage × genuinely extra; relocants' transfers left out | either | [trade.md](trade.md#remittances-and-relocants-round-7) |
 | Fees earned settling Russia's trade (payment agents) | fees kept by residents of the agent's country, against 2021, × the financial industry's net gain × genuinely extra (round 13) | Russia | [trade.md](trade.md#payment-agents-round-6) |
 | Share of new IMF, World Bank and EBRD lending | rise over pre-war own-risk lending, at economic value, by shareholding | Ukraine | [loans.md](loans.md#new-lending-by-the-imf-and-world-bank) |
 | Flowing back (U; optional, on by default) | every euro for Ukraine followed to the economy where it was spent (own and others' aid incl. stock replacement, arms Ukraine bought, energy, relief and rebuilding) and extra sales to Ukraine, × the seller's net gain × genuinely extra | subtracted from support for Ukraine | [aid-refugees-military.md](aid-refugees-military.md#flowback) |
@@ -62,7 +61,24 @@ Not a part of its own, but built into the parts above:
 - **Residual gap**: sales to Russia missing from partners' data are added to the country of origin inside "sold to Russia" ([trade.md](trade.md#residual-gap)).
 - **Re-export hubs, transit gas, hub resale, Baltic pass-through, freight**: these move value between countries before the parts are computed ([trade.md](trade.md), [energy-and-laundered-oil.md](energy-and-laundered-oil.md)).
 - **Sanctions label**: which share of a cut was required by sanctions is shown as a label and does not change totals ([trade.md](trade.md#sanctions-mandated-or-own-choice)).
+- **Markers outside the totals**: see [below](#markers-outside-the-totals).
 - **Cut by Russia label** (round 13): the part of "less paid to Russia" that is gas Russia cut off itself (Poland, Bulgaria, Finland, the Netherlands, Denmark and Germany from 2022) or that stopped when Ukraine ended gas transit on 1 January 2025 (Austria, Slovakia, Italy, Moldova). A label inside the second number; totals do not change. Data: `sanctions_share.json` `gas_part` in those years (`RUSSIA_GAS_CUT` in `build_data.py`).
+
+## Markers outside the totals
+
+Two things are shown on the map and in the panel but added to no total, because the money is already counted elsewhere
+or is not a country's choice:
+
+- **Critical goods** (◆, round 7): sales to Russia of goods its weapons need; the money is already inside trade with
+  Russia ([trade.md](trade.md#goods-russias-weapons-need-the-critical-goods-marker-round-7)).
+- **Wages from Russia** (△, round 13b): the change in migrants' remittances from Russia against the expected level, as
+  % of GDP since 2022, with "depends on wages earned in Russia" where migrants sent at least 1% of GDP a year. Until
+  round 13 this was a part of the net ("wages earned working in Russia"); the owner took it out after the round-13
+  audit: they are individuals' wages, not a country's choice; the money flows from Russia to the migrant's home; the
+  real gain over the alternatives is small and hard to measure; and they would dominate the bottom of the ranking
+  (Tajikistan −39.6% of GDP, almost all remittances). Tajikistan is now −0.8%, Uzbekistan −6.2%
+  ([trade.md](trade.md#remittances-and-relocants-round-7), [decisions](../decisions.md#remittances-from-russia)). The
+  table, CSV and JSON carry it in columns marked "not in totals".
 
 ## One rule for every seller (round 13)
 
@@ -72,7 +88,7 @@ Until round 12 the map used two different rules for sales: Russia's and Ukraine'
 
 - **Net gain** = (other taxes on production − subsidies + net operating surplus − the labour part of mixed income − a normal return of 9% (8–10%) on the net capital stock) ÷ output, by country and industry, from the OECD STAN database (2025 edition), 2021–2023 ([`net_gain_sellers.json`](../../research/2026-10/gaps/net_gain_sellers.json), [notes](../../research/2026-10/gaps/net_gain_sellers-notes.md), script [`net_gain_sellers.py`](../../research/2026-10/scripts/net_gain_sellers.py)). Profit tax is paid out of the surplus, so it is inside. The normal return is the same as Russia's. The 38 economies in STAN use their own figures; every other economy uses the OECD median of the industry, labelled as such.
 - **Genuinely extra** stays as in round 6 ([`value_kept.json`](../../research/2026-10/gaps/value_kept.json)): it measures additionality, not value.
-- It applies to sales to Russia and to Ukraine, money flowing back (own and others' aid spent at home, arms Ukraine bought), services, shipping and insurance, payment agents and paid weapons sent to Russia. Migrants' pay follows the same idea (below).
+- It applies to sales to Russia and to Ukraine, money flowing back (own and others' aid spent at home, arms Ukraine bought), services, shipping and insurance, payment agents and paid weapons sent to Russia. Migrants' pay followed the same idea until round 13b (below); it is now a marker.
 - Aid, refugee hosting, money not paid (unpaid weapons), taxes and profits paid to Russia, and the return denied on frozen reserves keep their full value.
 
 | what the seller sells | industry | OECD median net gain (25th–75th percentile) |
@@ -87,13 +103,13 @@ Until round 12 the map used two different rules for sales: Russia's and Ukraine'
 
 Manufacturing earns little above a normal return on its capital, as Russia's "other manufactured goods" (0.05) do. So US weapons sold for Ukraine now count at 0.032 × 0.70 = 0.02 of their value (was 0.63), China's extra sales to Russia at 0.013 × 0.60 = 0.008 (was 0.485), Greek shipping at 0 (was 0.17). **Russia's own payments are unchanged**: they were already at net gain.
 
-**Migrants' pay** ([`remittances_r13.json`](../../research/2026-10/gaps/remittances_r13.json), [notes](../../research/2026-10/gaps/remittances_r13-notes.md)): wages pay for real work, so only the pay above what the same work earns elsewhere is a gain, and only its war-driven change counts. The war wage premium (Russian wages above their pre-war trend: 5% in 2022 rising to 19% in 2025) counts in full as far as it shows in euros; the rest of the change counts × the premium over the home wage (Tajikistan 0.62, Uzbekistan and Kyrgyzstan 0.41) × genuinely extra. Tajikistan stays about −40% of GDP: its migrants' pay rose far above the no-war level, and a 2022–2026 total against one year's GDP adds up five years of that.
+**Migrants' pay** (round 13 only; a [marker](#markers-outside-the-totals) since round 13b) ([`remittances_r13.json`](../../research/2026-10/gaps/remittances_r13.json), [notes](../../research/2026-10/gaps/remittances_r13-notes.md)): wages pay for real work, so only the pay above what the same work earns elsewhere is a gain, and only its war-driven change counts. The war wage premium (Russian wages above their pre-war trend: 5% in 2022 rising to 19% in 2025) counts in full as far as it shows in euros; the rest of the change counts × the premium over the home wage (Tajikistan 0.62, Uzbekistan and Kyrgyzstan 0.41) × genuinely extra. Tajikistan stays about −40% of GDP: its migrants' pay rose far above the no-war level, and a 2022–2026 total against one year's GDP adds up five years of that.
 
-**Weapons sent to Russia** ([`military_payment_r13.json`](../../research/2026-10/gaps/military_payment_r13.json), [notes](../../research/2026-10/gaps/military_payment_r13-notes.md)): paid deliveries are sales, also when Russia paid in kind (technology, components, fuel, food: INSS puts in-kind payment at 80–96% of North Korea's compensation). They count at the seller's net gain × genuinely extra; North Korea's outdated stock (about half, per Ukraine's intelligence) at 0.9 of its price, since it had no other use. Unpaid deliveries (Belarus's army stocks, no payment found) count in full. Troops' pay counts in full (the soldiers' alternative pay is close to nothing). North Korea: −30.0% → −10.2% of GDP.
+**Weapons sent to Russia** ([`military_payment_r13.json`](../../research/2026-10/gaps/military_payment_r13.json), [notes](../../research/2026-10/gaps/military_payment_r13-notes.md)): paid deliveries are sales, also when Russia paid in kind (technology, components, fuel, food: INSS puts in-kind payment at 80–96% of North Korea's compensation). They count at the seller's net gain × genuinely extra; North Korea's outdated stock (about half, per Ukraine's intelligence) at 0.9 of its price, since it had no other use. Unpaid deliveries (Belarus's army stocks, no payment found) count in full. Troops' pay counts in full (it goes to the North Korean state, and the soldiers' alternative pay is close to nothing). North Korea: −30.0% → −10.2% of GDP.
 
 **The windfall** counts at Russia's net gain on the extra price: costs do not rise with the price, so that is all of it for crude, products and pipeline gas, the profit tax plus Russia's 60% of the profit after tax for LNG (0.68–0.74), and at most the coal rent for coal.
 
-**Effect of the rule on its own** (round 13, net % of GDP, before the other round-13 steps): Belarus −18.5 → −5.6, Kyrgyzstan −16.7 → −6.1, Armenia −10.1 → −2.4, Cyprus +6.1 → −0.3, Georgia −7.2 → −2.3, Uzbekistan −18.1 → −15.1, China −1.56 → −1.05, the US +0.36 → +0.48; Lithuania (−1.8), Estonia (−1.7) and Finland (−1.2) lose credit for sales to Russia given up. The paid-weapons split then moved North Korea −30.0 → −10.2 and the remittance rule Kyrgyzstan −6.1 → −7.5. All steps: [changelog](../changelog.md).
+**Effect of the rule on its own** (round 13, net % of GDP, before the other round-13 steps): Belarus −18.5 → −5.6, Kyrgyzstan −16.7 → −6.1, Armenia −10.1 → −2.4, Cyprus +6.1 → −0.3, Georgia −7.2 → −2.3, Uzbekistan −18.1 → −15.1, China −1.56 → −1.05, the US +0.36 → +0.48; Lithuania (−1.8), Estonia (−1.7) and Finland (−1.2) lose credit for sales to Russia given up. The paid-weapons split then moved North Korea −30.0 → −10.2 and the remittance rule Kyrgyzstan −6.1 → −7.5 (undone in round 13b, when remittances became a marker). All steps: [changelog](../changelog.md).
 
 ## The money rule (round 6)
 

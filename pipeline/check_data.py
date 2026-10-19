@@ -247,6 +247,17 @@ check(
     "fuel mix at constant prices", _off < 1e-3, f"gain on what was bought vs expected, same volumes: off by {_off:.4f}"
 )
 
+# 20. remittances are a marker, not a part (round 13b): no country carries a "remit" part in its totals
+in_totals = [c["iso3"] for c in countries.values() if any(x.get("k") == "remit" for x in c.get("extra") or [])]
+check("remittances only as a marker", not in_totals, f"remittance part in the totals: {in_totals[:8] or 'none'}")
+
+# 21. laundered oil through EU refiners (round 13b): every EU member's post-war route is measured (its own customs), so
+# none is held at the expected level
+held_eu = [
+    c["iso3"] for c in countries.values() if (c.get("laund") or {}).get("eu_route_held") and c["iso3"] in bd.EU27
+]
+check("EU refiners' route measured for EU members", not held_eu, f"EU members held: {held_eu[:8] or 'none'}")
+
 width = max(len(n) for _, n, _ in results)
 for status, name, detail in results:
     print(f"{status:4}  {name:<{width}}  {detail}")

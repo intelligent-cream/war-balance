@@ -39,7 +39,7 @@ Two things apply to every step:
 | 8 | `reassign_laundered_oil()` | hub resale chain (`pass_on()`), crude share (`crude_k()`), GDP cap, pre-war laundered level through the same chain, Gibraltar margin | [energy](../method/energy-and-laundered-oil.md#hub-resale-chain) |
 | 9 | `apply_laundered_eu()` | laundered oil of EU members, the USA, the UK and Australia from customs records of fuel by origin (`laundered_eu.json`) | [energy](../method/energy-and-laundered-oil.md#per-country-values-for-the-eu-usa-uk-and-australia-round-5) |
 | 10 | `apply_laundered_r6()` | fuel from Brunei's refinery and fuel relabelled in Turkish ports added to the buyers, taken off Türkiye and Brunei (`laundered_r6.json`) | [energy](../method/energy-and-laundered-oil.md#per-country-values-for-the-eu-usa-uk-and-australia-round-5) |
-| 11 | refiners (inline) | exported crude of Turkey, India, China out of their own payments, at each refiner's `crude_k()` | [energy](../method/energy-and-laundered-oil.md#refiners-counted-once) |
+| 11 | refiners (inline), `eu_refiner_exports()` | exported crude of Turkey, India, China out of their own payments, at each refiner's `crude_k()`; EU refiners' exported crude charged to their 2021 buyers (round 13), held at the expected level from 2023 where the buyer's post-war route is not measured (round 13b) | [energy](../method/energy-and-laundered-oil.md#refiners-counted-once) |
 | 12 | company taxes (inline) | `companies_all.json`, then profit tax + half of other taxes and the 2018–2021 base (`round4a.json`); round-6 revision (`company_taxes_r6.json`) | [companies](../method/services-shipping-companies.md#company-taxes) |
 | 13 | services, hidden, undisclosed, private (inline) | `uncovered.json`; Kyrgyz hidden gold passed to its buyers (`kgz_gold.json`) | [services](../method/services-shipping-companies.md#services), [trade](../method/trade.md#gold-and-hidden-channels) |
 | 14 | flowback (inline) | own-industry shares, PURL, EU-level military aid (later replaced by step 39, which also clears these steps' sources) | [flowback](../method/aid-refugees-military.md#flowback) |
@@ -71,7 +71,7 @@ Two things apply to every step:
 | 40 | `apply_russian_arms()` | payments to Russia for Russian weapons against the no-war level (`russian_arms_exports.json`, `arms_r6.json`) | [Russia](../method/russia-state-and-companies.md#weapons-bought-from-russia) |
 | 41 | `apply_payment_agents()` | fees kept by payment agents settling Russia's trade (`payment_channels.json`) | [trade](../method/trade.md#payment-agents-round-6) |
 | 42 | `apply_frozen_reserves()` | the return Russia's frozen central-bank reserves would have earned (`frozen_assets.json`) | [Russia](../method/russia-state-and-companies.md#frozen-central-bank-reserves-round-7) |
-| 43 | `apply_remittances()` | migrant workers' remittances from Russia, counted like services sold to Russia (`remittances.json`) | [trade](../method/trade.md#remittances-and-relocants-round-7) |
+| 43 | `apply_remittances()` | migrant workers' remittances from Russia against the expected level, as a marker only since round 13b (`remittances.json`) | [trade](../method/trade.md#remittances-and-relocants-round-7) |
 | 44 | `apply_chpl()` | sales of goods Russia's weapons need, as a marker only (`chpl.json`) | [trade](../method/trade.md#goods-russias-weapons-need-the-critical-goods-marker-round-7) |
 | 45 | `apply_value_kept()` | value kept x genuinely extra, per kind of earning, in place of the flat 20% profit (`value_kept.json`) | [overview](../method/overview.md#the-money-rule-round-6) |
 | 46 | `apply_audit2(..., "trends")` | audit-2 trend-window fixes, only for flows without a counterfactual | [counterfactual](../method/counterfactual.md) |
@@ -95,9 +95,10 @@ Per country: `n` (numeric ISO for the map shapes), `iso3`, `name`, `kind`, `pop`
 | `svc_bought`, `svc_sold`, `shipping` | services and tanker income; `svc_sold.relocants_out` marks that relocants' spending was taken out |
 | `aid` | `years`, `cats`, `loans_face`, `loans_grant_eq` (with `loans_grant_eq_lo`, `loans_grant_eq_hi` since round 12), `loans_value_ukraine`, `loan_adj_own`, `loan_adj_eu`, `weapons_mv`, `era_excluded`, `pledged_open`, `eu_years`, `eu_share`, `eu_src` (sources of the EU-level aid part), `refugee_years*`, `refugee_gross`, `refugee_donor_share`, `refugee_cert`, `refugee_src` |
 | `energy` | `premium*`, `discount*` |
-| `laund` | laundered oil with its pre-war level and growth; since round 13 in volumes (`pidx`: the Urals price over the no-war crude price; `bmul` includes the no-war crude price), and `eu_refined` lists the EU refiners whose fuel it bought |
+| `laund` | laundered oil with its pre-war level and growth; since round 13 in volumes (`pidx`: the Urals price over the no-war crude price; `bmul` includes the no-war crude price), and `eu_refined` lists the EU refiners whose fuel it bought; `eu_route_held` (round 13b) marks a buyer whose post-war route is not measured, so the EU-refined route's 2023–2026 values are held at the expected level |
 | `extra` | parts with no series of their own, each `{k, label, c, l, h, cert, src}` as yearly shifts toward Ukraine: `statefin`, `exits`, `rusfirms`, `multilat`, `rusarms`, `agents`, `frozen`, `remit`; `alt` (round 13) holds the central series under the old rule for `agents` and `remit` |
 | `chpl` | sales to Russia of goods its weapons need: a marker, not in the totals |
+| `remit` | migrants' remittances from Russia (round 13b): a marker, not in the totals; `years*` the change against the expected level, `sent` what migrants sent from Russia, per year |
 | `vk` | net gain x genuinely extra (round 13; value kept x genuinely extra before), `[low, central, high]` per kind of earning (`fw`, `fo`, `rl`, `rx`, `ux`, `sl`, `sx`, `sh`, `ag` payment agents, `in` insurance) |
 | `vk_old`, `ng_own` | the round-6 products (value kept x genuinely extra), for the method band; whether the country has its own OECD STAN figures |
 | `company` | `taxes*`, `staying`, `left`, `base_2018_2021` |
@@ -143,6 +144,9 @@ Common fields inside a series:
 | 16 | every baseline inside its range, no range bound from a projected trend | FAIL |
 | 17 | aid categories add up to aid (within 5%) | WARN |
 | 18 | no negative laundered oil | FAIL |
+| 19 | fuel mix at constant prices (round 13) | FAIL |
+| 20 | remittances only as a marker, in no total (round 13b) | FAIL |
+| 21 | EU refiners' route measured for EU members: none held (round 13b) | FAIL |
 
 ## See also
 

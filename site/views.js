@@ -1,7 +1,7 @@
 // ===== Views: ranking, Ukraine vs Russia bubbles, table and data download =====
 // Same numbers as the map: the current view (change, cost, to Ukraine, to Russia), measure and year.
 /* global state, DATA, calc, lensValue, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, closeMenu, t, LANG,
-   num, money, tight, compact, parseHash, writeHash */
+   num, money, tight, compact, parseHash, writeHash, yi, remitSum */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
 const GROUPS = {
@@ -213,6 +213,8 @@ const COLS = [
   { k: "uaGdp", label: "Support for Ukraine, % of a year's GDP", fmt: r => pct(r.uaGdp), sign: true },
   { k: "rusGdp", label: "Change in payments to Russia, % of a year's GDP", fmt: r => pct(r.rusGdp), sign: true },
   { k: "rusCut", label: "Of which gas Russia cut off, €", fmt: r => (r.rusCut > 0.005 ? eur(r.rusCut) : "–") },
+  // round 13b: a marker, in no total
+  { k: "remitGdp", label: "Remittances from Russia, change, % of a year's GDP (not in totals)", fmt: r => (r.remitGdp == null ? "–" : pct(r.remitGdp)) },
   { k: "costGdp", label: "Cost, % of a year's GDP", fmt: r => pct(r.costGdp) },
   { k: "aid", label: "Aid incl. EU share, €", fmt: r => eur(r.aid) },
   { k: "paidRus", label: "Paid to Russia, €", fmt: r => eur(r.paidRus) },
@@ -222,13 +224,16 @@ const pct = v => (v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + num(M
 function tableRows() {
   const y = state.year;
   return Object.values(DATA).filter(eligible).map(c => {
-    const k = calc(c, y), g = c.gdp ? 100 / c.gdp : null, pp = c.pop ? 1e9 / (c.pop * 1e6) : null;
+    const k = calc(c, y), g = c.gdp ? 100 / c.gdp : null, pp = c.pop ? 1e9 / (c.pop * 1e6) : null, N = yi(y);
+    // migrants' remittances from Russia against the expected level: a marker, not in any total (round 13b)
+    const rm = c.remit && N > 0 ? [remitSum(c, N), remitSum(c, N, "years_lo"), remitSum(c, N, "years_hi")] : [null, null, null];
     return {
       c, name: c.name, iso3: c.iso3, gdp: c.gdp, pop: c.pop,
       shift: k.shift, shiftLo: k.shiftLo, shiftHi: k.shiftHi,
       shiftGdp: g && k.shift * g, shiftLoGdp: g && k.shiftLo * g, shiftHiGdp: g && k.shiftHi * g, shiftPp: pp && k.shift * pp,
       ua: k.uaBal, uaLo: k.uaLo, uaHi: k.uaHi, rus: k.rusBal, rusLo: k.rusLo, rusHi: k.rusHi, rusCut: k.rusCut,
       uaGdp: g && k.uaBal * g, rusGdp: g && k.rusBal * g,
+      remit: rm[0], remitLo: rm[1], remitHi: rm[2], remitGdp: rm[0] == null ? null : g && rm[0] * g,
       cost: k.cost, costGdp: g && k.cost * g, aid: k.aid, refugees: k.refugees, paidRus: k.paidRussia, cert: k.shiftCert,
       parts: k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, k: "back_" + p.k })) : []),
     };
@@ -279,9 +284,10 @@ function csvSummary(rows) {
   const head = ["iso3", "country", "period", "net_of_flowback", "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person",
     "support_ukraine_eur_bn", "support_ukraine_low_eur_bn", "support_ukraine_high_eur_bn", "support_ukraine_pct_gdp",
     "payments_russia_change_eur_bn", "payments_russia_change_low_eur_bn", "payments_russia_change_high_eur_bn", "payments_russia_change_pct_gdp", "of_which_gas_cut_by_russia_eur_bn",
+    "remittances_from_russia_change_eur_bn_not_in_totals", "remittances_from_russia_change_low_eur_bn_not_in_totals", "remittances_from_russia_change_high_eur_bn_not_in_totals", "remittances_from_russia_change_pct_gdp_not_in_totals",
     "cost_eur_bn", "cost_pct_gdp", "aid_eur_bn", "refugees_eur_bn", "paid_to_russia_eur_bn", "certainty", "gdp_eur_bn_2024", "population_m"];
   const lines = rows.map(r => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, r.shift, r.shiftLo, r.shiftHi, r.shiftGdp, r.shiftPp,
-    r.ua, r.uaLo, r.uaHi, r.uaGdp, r.rus, r.rusLo, r.rusHi, r.rusGdp, r.rusCut,
+    r.ua, r.uaLo, r.uaHi, r.uaGdp, r.rus, r.rusLo, r.rusHi, r.rusGdp, r.rusCut, r.remit, r.remitLo, r.remitHi, r.remitGdp,
     r.cost, r.costGdp, r.aid, r.refugees, r.paidRus, r.cert, r.gdp, r.pop].map(q).join(","));
   return [head.join(","), ...lines].join("\n");
 }
@@ -298,6 +304,8 @@ function jsonRows(rows) {
       net: { eur_bn: r4(r.shift), low: r4(r.shiftLo), high: r4(r.shiftHi), pct_gdp: r4(r.shiftGdp) },
       support_for_ukraine: { eur_bn: r4(r.ua), low: r4(r.uaLo), high: r4(r.uaHi), pct_gdp: r4(r.uaGdp) },
       change_in_payments_to_russia: { eur_bn: r4(r.rus), low: r4(r.rusLo), high: r4(r.rusHi), pct_gdp: r4(r.rusGdp), of_which_gas_cut_by_russia: r4(r.rusCut) },
+      remittances_from_russia_change_not_in_totals: r.remit == null ? null : { eur_bn: r4(r.remit), low: r4(r.remitLo), high: r4(r.remitHi), pct_gdp: r4(r.remitGdp),
+        note: "marker only: migrants' wages sent home from Russia against the level expected without the war; not in the net or either number" },
       certainty: r.cert, parts: r.parts.map(p => ({ part: p.k, label: p.en, eur_bn: r4(p.v), low: r4(p.lo), high: r4(p.hi), certainty: p.cert })) })) }, null, 1);
 }
 function periodTextEn() {

@@ -147,6 +147,33 @@ no country split or are not payments to Russia, and are not counted
 
 ## Remittances and relocants (round 7)
 
+**Round 13b (owner, after the audit): a marker, not in the totals.** Migrant workers' remittances from Russia are no
+longer in the net shift, the cost view, either headline number, the method band or the share cards. This reverses the
+owner's round-7 decision to count them ([decisions](../decisions.md#remittances-from-russia)): they are individuals'
+wages, not a country's choice; the money flows from Russia to the migrant's home; the real gain over what the migrant
+could earn elsewhere is small and hard to measure; and they would dominate the bottom of the ranking (Tajikistan
+−39.6% of GDP, almost all of it remittances).
+
+They are shown as a **marker** (△), like the [critical-goods marker](#goods-russias-weapons-need-the-critical-goods-marker-round-7):
+
+- **What it shows**: the change in labour remittances from Russia against the expected no-war level, summed from 2022
+  to the chosen year, in euros and as % of one year's GDP (2024), with its likely range (the reported range of what
+  was sent and of the expected level, combined as independent errors), and the total migrants sent from Russia in that
+  time (`apply_remittances()`, `remit` in `data.json`). Relocants' transfers stay out, as below.
+- **Where**: a line in every country panel with data ("Depends on wages earned in Russia: remittances from Russia
+  changed by X% of GDP since 2022 (not in the totals)" where migrants sent at least 1% of GDP a year from Russia over
+  the period; without "depends" elsewhere), a map layer ("Wages from Russia": a triangle beside the critical-goods
+  diamond, its size following the change), and columns marked "not in totals" in the table, the CSV
+  (`remittances_from_russia_change_*_not_in_totals`) and the JSON (`remittances_from_russia_change_not_in_totals`).
+- **2022 to August 2026**: Tajikistan +EUR 9.4bn (+70% of GDP; likely +35 to +114%; EUR 20.9bn sent in all),
+  Uzbekistan +18.9bn (+17%), Kyrgyzstan +0.3bn (+2.0%, likely −12 to +14%), Armenia +1.5%, Belarus +1.0%, Georgia
+  −0.3%, Azerbaijan −0.6%, Moldova −2.4%, Kazakhstan 0. The triangle shows for Tajikistan, Uzbekistan, Kyrgyzstan,
+  Armenia, Georgia and Belarus.
+- **Effect of taking them out** (net, % of GDP): Tajikistan −39.61 → −0.81, Uzbekistan −14.46 → −6.11, Kyrgyzstan
+  −7.48 → −4.94, Armenia −2.91 → −1.62, Belarus −5.63 → −4.96, Moldova +7.96 → +7.77.
+
+The paragraphs below describe how remittances were counted before round 13b. The research files stay as they are.
+
 **Round 13 (audit): at the migrant's net gain.** Wages pay for real work, so only the pay above what the same work
 earns elsewhere counts, and only its war-driven change: the war wage premium in what migrants sent (Russian wages
 above their 9% pre-war trend: 5% of pay in 2022, 19% in 2025), as far as it shows in euros, plus the rest of the
@@ -154,7 +181,8 @@ change × the premium over the home wage (Tajikistan 0.62, Uzbekistan and Kyrgyz
 extra ([`remittances_r13.json`](../../research/2026-10/gaps/remittances_r13.json),
 [notes](../../research/2026-10/gaps/remittances_r13-notes.md)). Tajikistan −38.3 → −39.6% of GDP, Uzbekistan −15.1 →
 −14.5, Kyrgyzstan −6.1 → −7.5, Moldova +6.1 → +5.4. Tajikistan's total from Russia was checked against EFSD's 2025
-share of GDP (within 6%); Uzbekistan's against its central bank. The text below describes rounds 7–12.
+share of GDP (within 6%); Uzbekistan's against its central bank. The text below describes rounds 7–12. Replaced in
+round 13b by the marker above.
 
 **Migrant workers' remittances** from Russia are wages for labour sold to Russia's economy, so they counted like
 services sold to Russia: the change against the expected no-war level, at value kept (0.97) × genuinely extra (0.55

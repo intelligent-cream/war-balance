@@ -101,7 +101,7 @@ Rankings use these totals: countries whose likely range crosses zero are left ou
 
 The likely range is **parameter uncertainty, given the method**. The audit showed that method choices move some countries by a factor of two, outside that range. So the panel also shows a **method sensitivity** band: the net under the main alternative method choices (`methodBand()` in `site/index.html`, from `calc(c, y, opt)`):
 
-- the valuation rule until round 12 (value kept, including wages, for sellers; remittances and paid weapons in full; `vk_old`, the `alt` series in `data.json`);
+- the valuation rule until round 12 (value kept, including wages, for sellers; paid weapons in full; `vk_old`, the `alt` series in `data.json`). Remittances left the band in round 13b: they are a marker, in no total;
 - the war-time windfall at 100% instead of Russia's net gain on it (`windfall.alt`);
 - loans discounted at the war-time yield instead of Ukraine's 2021 rate (the high end of `loan_adj_own` and `loan_adj_eu`).
 

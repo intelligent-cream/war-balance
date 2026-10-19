@@ -52,7 +52,7 @@ volumes at pre-war prices ([prices](method/prices.md)) and the likely ranges ([r
 | [Companies leaving Russia](#companies-leaving-russia) | `exits` | `#view=sources&flow=exits` |
 | [Russian-owned companies abroad](#russian-owned-companies-abroad) | `rusfirms` | `#view=sources&flow=rusfirms` |
 | [Frozen Russian reserves](#frozen-russian-reserves) | `frozen` | `#view=sources&flow=frozen` |
-| [Remittances from Russia](#remittances-from-russia) | `remit` | `#view=sources&flow=remit` |
+| [Remittances from Russia (marker)](#remittances-from-russia-marker) | none: a marker, not in the totals (`remit` in `data.json`) | `#view=sources&flow=remit` |
 | [Rosatom and Russian state loans](#rosatom-and-russian-state-loans) | `statefin` | `#view=sources&flow=statefin` |
 | [Weapons bought from Russia](#weapons-bought-from-russia) | `rusarms` | `#view=sources&flow=rusarms` |
 | [Weapons and troops sent to Russia](#weapons-and-troops-sent-to-russia) | `mil` | `#view=sources&flow=mil` |
@@ -541,6 +541,8 @@ Known gaps:
 
 ## Refined and laundered Russian oil
 
+**Round 13b (owner):** a change in the EU-refined route counts for a buyer only where both the pre-war and the post-war route are measured for it (EU members' customs; buyers named in India's, Türkiye's and the UAE's post-war export records or among Togo's buyers, unless a cap sets their value). Elsewhere the route's 2023–2026 values are held at the expected level and labelled "route not measured after 2022" ([energy](method/energy-and-laundered-oil.md#eu-refined-fuel-measured-both-ways-round-13b), [decisions](decisions.md#round-13b-remittances-as-a-marker-laundered-oil-routes)). Togo +6.61 → −0.05, Tunisia −5.51 → −7.09; EU members unchanged.
+
 **Round 13 (audit):** EU refiners (Lithuania, Finland, the Netherlands and 13 others) are treated like India's: their buyers are charged, before and after the war (buyers from each refiner's UN Comtrade HS 2710 exports, [raw/comtrade_2710](../research/2026-10/raw/comtrade_2710/)). Laundered oil is in volumes at the no-war crude price and counts both ways ([decisions](decisions.md#round-13-refiners-and-laundered-oil)).
 
 **What it is:** Fuel made from Russian crude in other countries, EU refiners included, or passed on by trading hubs, charged to the final buyer, in volumes against its pre-war level.
@@ -998,13 +1000,15 @@ Known gaps:
 
 - Holdings outside Euroclear and Clearstream are less well reported.
 
-## Remittances from Russia
+## Remittances from Russia (marker)
 
-**Round 13 (audit):** At the migrant's net gain: the war wage premium (Russian wages above their pre-war trend) in full as far as it shows in euros, the rest of the change × the premium over the home wage × genuinely extra ([remittances_r13-notes](../research/2026-10/gaps/remittances_r13-notes.md)). Tajikistan's 2025 total checked against EFSD (within 6%).
+**Round 13b (owner, after the audit): a marker, not in the totals.** Migrants' wages sent home from Russia are no longer a part of the net shift, the cost view or either headline number: they are individuals' wages, not a country's choice; the money flows from Russia to the migrant's home; the real gain over the alternatives is small and hard to measure; and they dominated the bottom of the ranking (Tajikistan −39.6% of GDP). The panel, the map layer "Wages from Russia" (△) and the table, CSV and JSON show the change in what migrants sent against the expected level, marked "not in the totals". Tajikistan −39.61 → −0.81, Uzbekistan −14.46 → −6.11.
 
-**What it is:** What migrants earned in Russia and sent home, counted only for the pay above what the same work earns elsewhere and only for its war-driven change.
+**Round 13 (audit), replaced in round 13b:** At the migrant's net gain: the war wage premium (Russian wages above their pre-war trend) in full as far as it shows in euros, the rest of the change × the premium over the home wage × genuinely extra ([remittances_r13-notes](../research/2026-10/gaps/remittances_r13-notes.md)). Tajikistan's 2025 total checked against EFSD (within 6%).
 
-**Parts on the map:** Wages earned working in Russia (migrants' remittances) (`remit`, net shift).
+**What it is:** Shown as a marker, not in the totals: the change in what migrants working in Russia sent home, against the level expected without the war.
+
+**Parts on the map:** none. Marker: "Depends on wages earned in Russia" in the panel (△, `remitNote()`), the map layer "Wages from Russia" (`drawRemit()`), and the table, CSV and JSON columns `remittances_from_russia_change_*_not_in_totals` (`remit` in `data.json`). Until round 13 it was the part "Wages earned working in Russia (migrants' remittances)" (`remit`, net shift).
 
 **How it's calculated:** [trade.md § Remittances and relocants (round 7)](method/trade.md#remittances-and-relocants-round-7).
 
@@ -1014,6 +1018,7 @@ Known gaps:
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Russia's share of remittances, Tajikistan and Belarus
 - [decisions § Assumptions backed by data (round 11)](decisions.md#assumptions-backed-by-data-round-11): Moldova's transfers from Russia 2024–2026
 - [decision log § Round 7: what the owner asked to add (18 October)](decision-log.md#round-7-what-the-owner-asked-to-add-18-october): Remittances from Russia counted; relocants' transfers and spending left out
+- [decision log § Round 13: one rule, two numbers (19 October)](decision-log.md#round-13-one-rule-two-numbers-19-october): Remittances out of the totals, shown as a marker (raised by audit, owner decided)
 
 **Data sources:**
 
@@ -1030,11 +1035,11 @@ Known gaps:
 
 **Code:** `apply_remittances()`, `apply_assumptions_r11_people()` in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: receiving central banks' transfers by origin, World Bank totals, Russia's 2019-2021 mirror share. Judgement: the same share applied to all years. Letters across all country parts: B 2, C 4, D 3.
+**Certainty and judgement calls:** Data: receiving central banks' transfers by origin, World Bank totals, Russia's 2019-2021 mirror share. Judgement: the same share applied to all years. Letters on the markers: B 2, C 4, D 3.
 
 Known gaps:
 
-- Tajikistan's headline rests on this part (D); the share is applied to all years ([limitations](limitations.md#open-issues-in-the-numbers)).
+- Tajikistan's marker rests on World Bank totals (D); the share is applied to all years ([limitations](limitations.md#open-issues-in-the-numbers)).
 
 ## Rosatom and Russian state loans
 

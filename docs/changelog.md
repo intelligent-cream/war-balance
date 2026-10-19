@@ -285,16 +285,40 @@ points. Cost view: Finland +0.07, France and Italy +0.06, Germany +0.05; Japan �
 2. **Gold deflator**: Hong Kong −4.20 → −1.90; small changes for China, Oman, Switzerland.
 3. **Text**: MSMT troop figures (11,000 + 3,000), "Aid to Ukraine (Kiel, adjusted ...)" with Kiel's own figure in the panel, Yemen's 2023 price index (−9.64 → −7.80, applied in step 12).
 4. **One valuation rule** (OECD STAN net gain × genuinely extra; [`net_gain_sellers.json`](../research/2026-10/gaps/net_gain_sellers.json)): Belarus −18.48 → −5.55, Kyrgyzstan −16.71 → −6.09, Armenia −10.11 → −2.42, Cyprus +6.12 → −0.30, Georgia −7.22 → −2.31, Uzbekistan −18.12 → −15.13, Montenegro +4.60 → +2.24, Lithuania 14.45 → 12.69, Estonia 9.01 → 7.33, China −1.56 → −1.05, the US +0.36 → +0.48.
-5. **Remittances** at the migrant's net gain ([`remittances_r13.json`](../research/2026-10/gaps/remittances_r13.json)): Kyrgyzstan −6.09 → −7.48, Tajikistan −38.28 → −39.63, Moldova +6.11 → +5.38, Uzbekistan −15.13 → −14.50.
+5. **Remittances** at the migrant's net gain ([`remittances_r13.json`](../research/2026-10/gaps/remittances_r13.json)): Kyrgyzstan −6.09 → −7.48, Tajikistan −38.28 → −39.63, Moldova +6.11 → +5.38, Uzbekistan −15.13 → −14.50. Replaced in [round 13b](#round-13b): remittances are now a marker, in no total.
 6. **Weapons to Russia, paid or unpaid** ([`military_payment_r13.json`](../research/2026-10/gaps/military_payment_r13.json)): North Korea −29.95 → −10.16, Iran −0.79 → −0.01.
 7. **EU refiners** charged to their buyers: Lithuania 12.69 → 10.15, the Netherlands 5.56 → 4.62, Finland 7.78 → 7.17, Greece −0.65.
-8. **Laundered oil in volumes, both ways**: Togo +6.82, Latvia +2.71, Moldova +2.38, Estonia +2.22, Libya +1.65, Tunisia +1.60; Nepal −1.61 → −1.80.
+8. **Laundered oil in volumes, both ways**: Togo +6.82, Latvia +2.71, Moldova +2.38, Estonia +2.22, Libya +1.65, Tunisia +1.60; Nepal −1.61 → −1.80. Togo's credit was a data gap, removed in [round 13b](#round-13b).
 9. **Two headline numbers** everywhere (map, panel, ranking, share cards, table and downloads, How it works), with gas Russia cut off itself labelled. No number changes.
 10. **Certainty and ranges**: stacked models at best C (parts at B 665 → 84); correlated errors; a method band in the panel; PhosAgro's margins fetched (Russia's 2023 fertiliser gain 0.20 → 0.27). The windfall at Russia's net gain (step 12) came in this build: Japan +0.02, Spain +0.05, Belgium +0.09.
 11. **Units**: "2022–2026 total as % of one year's GDP (2024), not a yearly rate" on the map, with an average-year line in the panel.
 12. **Other findings**: Yemen's price index (Yemen −9.64 → −7.80); extra purchases from and sales to Ukraine summed with their signs; exact source links; the round-6 value-kept scripts in [`research/2026-10/scripts/`](../research/2026-10/scripts/value_kept/); the audit's loan critique recorded.
 
 All steps together (base → round 13): Lithuania 14.55 → 10.50, Finland 9.02 → 7.26, Estonia 9.25 → 9.57, the Netherlands 6.35 → 4.88, Germany 3.65 → 3.25, Poland 4.06 → 3.62, the US 0.36 → 0.48, Hungary −4.09 → −5.30, Slovakia +1.33 → −0.24, Hong Kong −4.20 → −2.35, China −1.56 → −1.03, North Korea −29.98 → −10.16, Belarus −17.55 → −5.63, Tajikistan −38.20 → −39.61, Uzbekistan −17.87 → −14.46.
+
+## Round 13b
+
+**Remittances as a marker; laundered oil only where both routes are measured, 19 October 2026** (two owner decisions
+after the round-13 report, both raised by the audit; [decisions](decisions.md#round-13b-remittances-as-a-marker-laundered-oil-routes),
+[decision log](decision-log.md#round-13-one-rule-two-numbers-19-october)). Net % of a year's GDP:
+
+1. **Remittances out of the totals, shown as a marker** (△ in the panel, map layer "Wages from Russia", columns marked
+   "not in totals" in the table, CSV and JSON): no longer in the net, the cost view, either headline number, the method
+   band or the share cards. Reverses the owner's round-7 decision: individuals' wages, not a country's choice; the
+   money flows from Russia to the migrant's home; the real gain over the alternatives is small and hard to measure; they
+   dominated the bottom of the ranking ([trade](method/trade.md#remittances-and-relocants-round-7)). Tajikistan −39.61 →
+   −0.81, Uzbekistan −14.46 → −6.11, Kyrgyzstan −7.48 → −4.94, Armenia −2.91 → −1.62, Belarus −5.63 → −4.96, Moldova
+   +7.96 → +7.77. The marker for Tajikistan: +70% of GDP since 2022 (+EUR 9.4bn against the expected level).
+2. **Laundered oil through EU refiners counted only where both routes are measured**: where the route that replaced
+   EU-refined fuel after the EU ban is not in the post-war records for a buyer, its 2023–2026 values are held at the
+   expected level and labelled "route not measured after 2022" ([energy](method/energy-and-laundered-oil.md#eu-refined-fuel-measured-both-ways-round-13b)).
+   Togo +6.61 → −0.05 (was 5th in the ranking; its range now crosses zero), Marshall Islands +6.17 → +0.91, Gibraltar
+   +2.88 → −0.10, Tunisia −5.51 → −7.09, Georgia −1.11 → −2.48, Aruba +0.96 → −0.33, North Macedonia −0.78 → −1.53,
+   Albania +0.84 → +0.17, Montenegro +2.67 → +2.12; no EU member moves. Two new checks in `check_data.py`.
+
+Ranking (GDP at least EUR 5bn, range not crossing zero): Lithuania +10.50, Estonia +9.57, Moldova +7.77, Finland +7.26,
+Latvia +5.52 at the top; North Korea −10.16, Yemen −7.86, Tunisia −7.09, Uzbekistan −6.15, Hungary −5.30 at the
+bottom. Togo, Tajikistan, Montenegro and Argentina left the ranking (their ranges cross zero).
 
 ## See also
 
