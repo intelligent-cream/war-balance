@@ -11,7 +11,9 @@ Every number on the map has a middle value, a likely range (meant as about 90%) 
 | C | modelled estimate | ±35% |
 | D | rough indication | ±70% |
 
-Defaults are `RANGE` in [`site/index.html`](../../site/index.html); they are applied in `part()` only when a part's own low and high coincide. The four widths (±5%, ±15%, ±35%, ±70%) are a judgement, not a measured error ([decisions](../decisions.md#constants-and-rules-written-down-in-round-11)). Each research file assigns letters per value ([`gaps.md`](../../research/2026-10/gaps.md) shows per country which parts are reported or estimated). A total takes the **weakest** letter of its parts (`weakest()`). Trade parts compared with a pre-war level are at best B, because the comparison itself assumes a no-war path (`cRus`, `cTrade` in `calc()`).
+Defaults are `RANGE` in [`site/index.html`](../../site/index.html); they are applied in `part()` only when a part's own low and high coincide. The four widths (±5%, ±15%, ±35%, ±70%) are a judgement, not a measured error ([decisions](../decisions.md#constants-and-rules-written-down-in-round-11)). Each research file assigns letters per value ([`gaps.md`](../../research/2026-10/gaps.md) shows per country which parts are reported or estimated). A total takes the **weakest** letter of its parts (`weakest()`).
+
+**Stacked models are at best C (round 13 audit).** A part built from a modelled no-war level *and* a modelled share (Russia's or Ukraine's net gain, a seller's net gain, genuinely extra, a price index) stacks two models, so it is at best C, a modelled estimate: less paid to Russia, extra purchases from Ukraine, sales to Russia, services bought and sold (`cRus`, `cTrade` and the `weakest([.., "C"])` calls in `calc()`). Until round 12 these were at best B. "Less paid to Russia" is the largest part for most top-ranked countries, so most headline letters are now C or D. Inputs quoted from memory and not fetched again are D (the 2021 fertiliser margin in `net_gain_russia-notes.md`; PhosAgro's 2022–2023 margins were fetched in round 13 and its 2023 share corrected from 0.20 to 0.27).
 
 **Letters fixed in `calc()`.** Three parts do not take their letter from the data:
 
@@ -76,7 +78,7 @@ Variants:
 
 ## From parts to a total
 
-`total(parts)` in `calc()` adds middle values and combines the parts' distances to their low and high ends as errors in quadrature (square root of the sum of squares), with one exception: where the counterfactual's back-tests show the expected levels of two flows missing together, their errors are correlated (`RHO` in `site/index.html`, the median Spearman correlation of the back-test errors over the 2008, 2013 and 2016 tests, medium and large flows):
+`total(parts)` in `calc()` adds middle values and combines the parts' distances to their low and high ends as errors in quadrature (square root of the sum of squares), with correlations where errors are shared (`RHO` in `site/index.html`). Where the counterfactual's back-tests show the expected levels of two flows missing together, the correlation is measured (the median Spearman correlation of the back-test errors over the 2008, 2013 and 2016 tests, medium and large flows). Round 13 (audit) adds correlations for parts that share inputs, as judgements:
 
 | parts | correlation |
 |---|---|
@@ -84,11 +86,30 @@ Variants:
 | paid to Russia (goods) and services bought | 0.25 |
 | sales to Russia and services bought / sold | 0.20 |
 | paid to Russia and services sold | 0.15 |
-| all other pairs (e.g. goods bought vs sold: about 0) | 0 |
+| own aid and the share of EU-level aid (the EU share takes the aid's relative range by construction) | 1 |
+| own aid and own aid spent at home (more aid, more flowback: the two errors offset in the total) | −0.5 |
+| parts weighted by Russia's net-gain shares: paid, laundered oil, gold and hidden payments, weapons bought from Russia | 0.5 |
+| flowback parts weighted by the same weapons gain: own aid spent at home, others' aid spent here, arms Ukraine bought | 0.5 |
+| paid to Russia and sales to Russia (Russia-side shocks) | 0.2 |
+| all other pairs | 0 |
 
 The effect is small. In the current build Germany's range is +2.55% to +5.23% with these correlations and +2.57% to +5.20% without them. The country panel shows each part's range as a thin line in the waterfall and the total's range in the headline ("Likely range ... to ...").
 
 Rankings use these totals: countries whose likely range crosses zero are left out of top lists, as are economies under EUR 5bn GDP (`rankList()`, `MIN_GDP_RANK`).
+
+## The method band (round 13)
+
+The likely range is **parameter uncertainty, given the method**. The audit showed that method choices move some countries by a factor of two, outside that range. So the panel also shows a **method sensitivity** band: the net under the main alternative method choices (`methodBand()` in `site/index.html`, from `calc(c, y, opt)`):
+
+- the valuation rule until round 12 (value kept, including wages, for sellers; remittances and paid weapons in full; `vk_old`, the `alt` series in `data.json`);
+- the war-time windfall at 100% instead of Russia's net gain on it (`windfall.alt`);
+- loans discounted at the war-time yield instead of Ukraine's 2021 rate (the high end of `loan_adj_own` and `loan_adj_eu`).
+
+The band is the lowest and highest of the four results. It is not a probability range.
+
+## Average year
+
+The headline is a total for 2022 to the chosen year against one year's GDP. The panel adds "about X of GDP in an average year": the total divided by the number of years (4.7 for 2022 to August 2026).
 
 ## 2026 and the * mark
 
@@ -103,8 +124,8 @@ The site marks the parts "paid to Russia", "sold to Russia" and "company taxes" 
 ## What the ranges do not cover
 
 - **Russia-side shocks.** The counterfactual intervals cover about 90% of outcomes in normal periods but only 77–79% in the 2013 back-test, when Russia's own economy moved ([counterfactual.md](counterfactual.md#7-how-the-predictions-error-enters-the-ranges)).
-- **The method itself**: what counts as a shift, the money rule's factors, the net-gain rule, the choice of 2024 GDP, counting gas where it is burned. These are choices, not uncertainties ([decisions](../decisions.md)).
-- **Other correlated errors across parts.** Only the measured counterfactual correlations are included; a shared source error (one KSE report behind all company taxes) is still treated as independent.
+- **The method itself**: what counts as a shift, the valuation rule, the choice of 2024 GDP, counting gas where it is burned. These are choices, not uncertainties ([decisions](../decisions.md)); the method band shows three of them.
+- **Other correlated errors across parts.** Only the correlations listed above are included; a shared source error (one KSE report behind all company taxes) is still treated as independent.
 - **Correlated errors across countries.** Moving value between countries (re-exports, hub resale, the residual gap) shifts error from one country to another; each country's range is computed alone.
 - **Unknown unknowns**: flows nobody has measured are not on the map. Crypto and payment agents appear only as the agents' fees; the trade they settle is already in customs ([trade.md](trade.md#payment-agents-round-6)).
 - **Inputs touched by the war** in the counterfactual (realised trade and GDP in 2022–2026).

@@ -1,0 +1,107 @@
+{
+ "generated": "2026-10-19",
+ "meta": {
+  "what": "Round 13: weapons and troops sent to Russia split into paid (a sale, counted at the seller's net gain, like any sale to Russia) and unpaid (support, counted in full). Payment in kind (technology, components, oil, food, gold) is payment: it is a sale.",
+  "formula": "toward Russia = value x (paid x gain x extra + (1 - paid)); troops' pay counts in full (see troops)",
+  "gain": "the seller's net gain on weapons: net_gain_sellers.json oecd_median 'weapons' (none of these economies is in OECD STAN), except where stated",
+  "extra": "value_kept.json flowback_weapons 'genuinely extra' of the seller (default 0.4 / 0.6 / 0.8)"
+ },
+ "countries": {
+  "PRK": {
+   "paid": {
+    "low": 0.8,
+    "central": 1.0,
+    "high": 1.0
+   },
+   "paid_basis": "INSS (South Korea's Institute for National Security Strategy, report by Lim Soo Ho, via Bloomberg and The Insider): transfers of military technology and precision components were 80-96% of Russia's total compensation, the rest cash; NK News adds confirmed deliveries of fuel, weapons and food worth USD 0.58-1.5bn. Payment in kind is payment, so the deliveries are sales. The 0.8 end allows a fifth to be unpaid support",
+   "items": {
+    "artillery_ammunition": "stock",
+    "artillery_systems": "stock",
+    "ballistic_missiles": "new",
+    "troops": "pay"
+   },
+   "stock_gain": {
+    "outdated_share": {
+     "low": 0.3,
+     "central": 0.5,
+     "high": 0.6
+    },
+    "gain_on_outdated": {
+     "low": 0.7,
+     "central": 0.9,
+     "high": 1.0
+    },
+    "basis": "Ukraine's intelligence (Vadym Skibitsky to Reuters, via PRM.ua; a belligerent source): about half the ammunition in one shipment was so outdated that Russian factories had to rework it. Outdated stock has almost no other use, so nearly all of its price is a gain (judgement: 0.7-1.0). The other half at the weapons gain of new production"
+   },
+   "troops": "the pay Russia gives North Korea for its troops (INSS) goes to the state; the soldiers' alternative is conscript service at almost no pay, so the premium over the alternative wage is the whole pay and all of it is war-driven (remittances rule, step 5): counted in full, as before"
+  },
+  "IRN": {
+   "paid": {
+    "low": 0.8,
+    "central": 1.0,
+    "high": 1.0
+   },
+   "paid_basis": "contracts: about USD 2.7bn for ballistic and air-defence missiles from October 2021 and a USD 1.75bn contract for Shahed drones and their production (Bloomberg, via Militarnyi); Russia spent 'more than the equivalent of USD 4bn' on Iranian weapons. Treated as sales; 0.8 allows a fifth unpaid",
+   "items": {
+    "drones_direct_2022_23": "new",
+    "alabuga_contract_drones_licence": "new",
+    "missiles_ballistic_and_sam": "new",
+    "ammunition": "new"
+   }
+  },
+  "BLR": {
+   "paid": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.5
+   },
+   "paid_basis": "no evidence of payment was found for the ammunition and vehicles taken from the Belarusian army's stocks: counted as support in full; the other end assumes half was paid",
+   "items": {
+    "ammunition_from_stocks": "stock",
+    "armour_from_storage": "stock",
+    "production_outside_trade": "new"
+   }
+  },
+  "CHN": {
+   "paid": {
+    "low": 0.8,
+    "central": 1.0,
+    "high": 1.0
+   },
+   "paid_basis": "what is counted for China (unrecorded military items, smuggled dual-use goods, satellite imagery and training) is sold by Chinese firms; no grant from the Chinese state is documented (china_military-notes.md)",
+   "items": {
+    "uncounted_total": "new"
+   }
+  }
+ },
+ "sources": [
+  {
+   "name": "The Insider: North Korea received up to $14.6 billion from Russia (INSS report via Bloomberg: technology and components 80-96% of compensation)",
+   "url": "https://theins.press/en/news/290450",
+   "kind": "secondary",
+   "date": "retrieved 2026-10-19"
+  },
+  {
+   "name": "NK News: North Korea likely earned $14.4B from military deals with Russia (cash a limited portion; fuel, weapons and food deliveries USD 0.58-1.5bn; troop pay)",
+   "url": "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/",
+   "kind": "secondary",
+   "date": "retrieved 2026-10-19"
+  },
+  {
+   "name": "Militarnyi: Iran sent Russia $2.7 billion worth of missiles alone (Bloomberg)",
+   "url": "https://militarnyi.com/en/blogs/iran-sent-russia-2-7-billion-worth-of-missiles-alone/",
+   "kind": "secondary",
+   "date": "retrieved 2026-10-19"
+  },
+  {
+   "name": "PRM.ua: intelligence, shipments of shells from North Korea to Russia have halved (about half of one shipment outdated)",
+   "url": "https://prm.ua/en/intelligence-shipments-of-shells-from-north-korea-to-russia-have-halved/",
+   "kind": "secondary",
+   "date": "retrieved 2026-10-19"
+  }
+ ],
+ "not_verified": [
+  "The leaked Alabuga files' gold payment (lb.ua, cited in military_rus_r6-notes.md) was not opened again in round 13 and is not used",
+  "No source on payment for Belarus's ammunition was found"
+ ]
+}

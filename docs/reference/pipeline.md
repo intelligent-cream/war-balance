@@ -95,15 +95,16 @@ Per country: `n` (numeric ISO for the map shapes), `iso3`, `name`, `kind`, `pop`
 | `svc_bought`, `svc_sold`, `shipping` | services and tanker income; `svc_sold.relocants_out` marks that relocants' spending was taken out |
 | `aid` | `years`, `cats`, `loans_face`, `loans_grant_eq` (with `loans_grant_eq_lo`, `loans_grant_eq_hi` since round 12), `loans_value_ukraine`, `loan_adj_own`, `loan_adj_eu`, `weapons_mv`, `era_excluded`, `pledged_open`, `eu_years`, `eu_share`, `eu_src` (sources of the EU-level aid part), `refugee_years*`, `refugee_gross`, `refugee_donor_share`, `refugee_cert`, `refugee_src` |
 | `energy` | `premium*`, `discount*` |
-| `laund` | laundered oil with its pre-war level and growth |
-| `extra` | parts with no series of their own, each `{k, label, c, l, h, cert, src}` as yearly shifts toward Ukraine: `statefin`, `exits`, `rusfirms`, `multilat`, `rusarms`, `agents`, `frozen`, `remit` |
+| `laund` | laundered oil with its pre-war level and growth; since round 13 in volumes (`pidx`: the Urals price over the no-war crude price; `bmul` includes the no-war crude price), and `eu_refined` lists the EU refiners whose fuel it bought |
+| `extra` | parts with no series of their own, each `{k, label, c, l, h, cert, src}` as yearly shifts toward Ukraine: `statefin`, `exits`, `rusfirms`, `multilat`, `rusarms`, `agents`, `frozen`, `remit`; `alt` (round 13) holds the central series under the old rule for `agents` and `remit` |
 | `chpl` | sales to Russia of goods its weapons need: a marker, not in the totals |
-| `vk` | value kept x genuinely extra, `[low, central, high]` per kind of earning (`fw`, `fo`, `rl`, `rx`, `ux`, `sl`, `sx`, `sh`) |
+| `vk` | net gain x genuinely extra (round 13; value kept x genuinely extra before), `[low, central, high]` per kind of earning (`fw`, `fo`, `rl`, `rx`, `ux`, `sl`, `sx`, `sh`, `ag` payment agents, `in` insurance) |
+| `vk_old`, `ng_own` | the round-6 products (value kept x genuinely extra), for the method band; whether the country has its own OECD STAN figures |
 | `company` | `taxes*`, `staying`, `left`, `base_2018_2021` |
-| `windfall` | price windfall on Russian fuel against no-war prices, yearly triple |
-| `military_rus`, `hidden`, `undisclosed`, `private` | yearly triples, in money (`hidden.gain`: Russia's gain on gold per year, applied in the map) |
+| `windfall` | price windfall on Russian fuel against no-war prices, yearly triple, at Russia's net gain on the extra price (`gain` per year; `alt` the full value) |
+| `military_rus`, `hidden`, `undisclosed`, `private` | yearly triples, in money (`hidden.gain`: Russia's gain on gold per year, applied in the map); `military_rus` since round 13 paid deliveries at the seller's net gain, `alt` the full value |
 | `flowback` | from the all-money ledger: `own*`, `purl_in*`, `arms*`, `othsp*` (other spending), `purl_out`, `cert_own`, `arms_cert`, and sources `src`, `purl_src`, `arms_src` |
-| `people`, `sanctions` | counts, sanctions labels (the AI-guessed `incentive` scores were dropped in round 11) |
+| `people`, `sanctions` | counts, sanctions labels (`mandated`, `gas`, and since round 13 `cut`: gas Russia cut off itself or that stopped with the end of transit) (the AI-guessed `incentive` scores were dropped in round 11) |
 
 Common fields inside a series:
 

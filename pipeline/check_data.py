@@ -226,6 +226,27 @@ check(
     "laundered oil >= 0 everywhere",
 )
 
+# 19. the fuel mix compares like with like (round 13 audit): a country that buys the same fuel volumes and the same
+# other goods every year, at any prices, gets the same gain share on what it bought as on what was expected. Run on a
+# synthetic copy of Hungary through the pipeline's own apply_net_gain, with a payments index unlike the no-war one
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import build_data as bd  # noqa: E402
+
+_energy = json.loads((RESEARCH / "gaps" / "energy.json").read_text())
+_t21 = _energy["countries"]["HUN"]["fossil_from_russia_by_fuel_mt"]["2021"]
+_energy["countries"]["HUN"]["fossil_from_russia_by_fuel_mt"] = {str(y): dict(_t21) for y in bd.YEARS}
+_load = bd.load
+bd.load = lambda path: _energy if path.name == "energy.json" else _load(path)
+_pre = [1.0, 2.1, 1.3, 1.2, 1.3, 1.1]
+_syn = {"HUN": {"iso3": "HUN", "to_rus": {"years": [4.0 * p for p in _pre], "_pidx_pre": _pre, "pidx": [1.0] * 6}}}
+bd.apply_net_gain(_syn, bd.Sources())
+bd.load = _load
+_g = _syn["HUN"]["to_rus"]["gain"]
+_off = max(abs(a - e) for a, e in zip(_g["a"][1], _g["e"][1]))
+check(
+    "fuel mix at constant prices", _off < 1e-3, f"gain on what was bought vs expected, same volumes: off by {_off:.4f}"
+)
+
 width = max(len(n) for _, n, _ in results)
 for status, name, detail in results:
     print(f"{status:4}  {name:<{width}}  {detail}")

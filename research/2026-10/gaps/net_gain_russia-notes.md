@@ -115,11 +115,13 @@ Low and high values are in the JSON. They are roughly ±0.07–0.15 around the c
 ## What is estimated (not looked up)
 - NDD totals for each year. Only quarterly hints were found (Q1 2023 RUB 211 bn, Q1 2024 RUB 587 bn).
 - The cost structure per barrel, per MWh and per tonne. Each item is ±25%.
-- Company margins for 2021–2023 (PhosAgro, Nornickel, Rusal, Severstal, MMK, NLMK, Acron) are from memory of annual releases, ±2 pp. They were not fetched again.
+- Company margins for 2021–2023 (PhosAgro, Nornickel, Rusal, Severstal, MMK, NLMK, Acron) were from memory of annual releases, ±2 pp. **Round 13 (audit):** PhosAgro's were fetched from its 2023 annual report: revenue RUB 440.3bn and EBITDA RUB 183.0bn in 2023 (41.6%; adjusted 38.2%), adjusted 46.9% in 2022, depreciation 6.7% of revenue. The 2023 "about 31%" above was wrong: with the adjusted margin the 2023 fertiliser share is 38.2 + 5 − 6.7 − 9 = **0.27 (0.20–0.34)**, not 0.20, now in the JSON; 2022 (0.34) is confirmed. Nornickel's 52% (2022) and 48% (2023) EBITDA margins were found by search, quoting its 2023 annual report, but the page was not opened. Rusal, Severstal, MMK and NLMK margins no longer matter: steel and aluminium use official sector data since round 11. Acron's (part of fertilisers in 2021) remain unverified, so the 2021 fertiliser share is a rough indication (D).
 - The non-fuel mix for 2022, 2023 and 2026, and every split within a group. Examples are fertilisers inside chemicals, and gold, PGMs/diamonds, steel, aluminium, copper and nickel inside metals. Diamonds are included in nonferrous.
 - The foreign-ownership cut applies only to LNG. Foreign stakes in crude (ONGC/Indian partners at Vankor, BP's frozen Rosneft stake) are small and are ignored.
 - Services, arms and other manufactured goods are judgement, with wide bands.
 
 ## Certainty
 - **B** for crude, products and pipeline gas. The tax side rests on Finance Ministry MET totals and company results.
-- **C** for everything else.
+- **C** for everything else; fertilisers 2021 **D** (Acron's margin not verified).
+- On the map, every part that multiplies the modelled no-war level by these shares is at best **C** (round 13, `docs/method/ranges.md`).
+- The audit notes that the oil "state take" check (0.47 in 2023) uses gross MET and leaves out the damper netted from budget revenue (oil and gas revenue RUB 8.82trn in 2023). The net take is nearer 0.39. The rent share itself is cost-based and does not change.

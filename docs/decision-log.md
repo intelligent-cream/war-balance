@@ -135,3 +135,23 @@ reconstructed from the commit history and may be imprecise; corrections by the o
 | Belarus's gas band from the research (±8%, ±15%) where the price is assumed | audit, owner | ±2% was a judgement | none visible |
 | Hong Kong's precious-metals share **measured** from UN Comtrade | audit, owner | 0.98 was not traced | Hong Kong +0.08 points |
 | Decision B: each EU loan's expected loss is **the EU's own provisioning rate** for that loan (70% for the 2022 exceptional MFA and the repurposed EIB loans; 9% where the law sets 9% or no rate) | owner | the EU judged 9% not adequate for Ukraine in 2022 and set 70% (Decisions 2022/1201 and 2022/1628); MFA+ and the Ukraine Facility rest on budget headroom with no rate, so 9% stays | EU members +0.007 to +0.014 points; loans EUR 55bn instead of 53bn ([decisions](decisions.md#applied-in-round-12-data-precision), [loans](method/loans.md#by-loan-type)) |
+
+## Round 13: one rule, two numbers (19 October)
+
+An independent review by an economist and a data journalist ("audit") raised every point below; the owner approved each. Details, data and effects: [decisions](decisions.md#round-13-one-valuation-rule-for-every-seller).
+
+| decision | raised by | why | effect |
+|---|---|---|---|
+| Fix the **fuel-mix bug** (volumes at 2019–2021 prices, not no-war prices) and add a check | audit | the fuel share of what was bought was understated from 2022 | Hungary −4.1 → −5.5, Slovakia +1.3 → −0.1, India −2.3 → −2.8 |
+| Deflate **gold** with the gold price | audit | Hong Kong's palladium-heavy mix inflated its volume of gold 1.3–3 times | Hong Kong −4.2 → −1.9 |
+| **One valuation rule** for every seller: net gain (taxes plus profit above a normal return, OECD STAN) × genuinely extra, for sales to Russia and Ukraine, flowback, services, shipping, payment agents and paid weapons | audit, owner | the rules for Russia and for everyone else differed tenfold | Belarus −18.5 → −5.6, Cyprus +6.1 → −0.3, US +0.36 → +0.48 |
+| **Remittances** at the migrant's net gain: the war wage premium and the premium over the home wage | audit, owner | wages pay for real work | Tajikistan −38.3 → −39.6 (its war wage premium is real), Kyrgyzstan −6.1 → −7.5 |
+| **Weapons to Russia**: paid (also in kind) as a sale at the seller's net gain; unpaid in full | audit, owner | payment in kind is payment | North Korea −30.0 → −10.2 |
+| **EU refiners** charged to their buyers, like India's and Türkiye's | audit | the same crude was treated two ways | Lithuania −2.5, the Netherlands −0.9, Finland −0.6 |
+| **Laundered oil** in volumes, both ways | audit | the only trade part in money and rises only | Estonia +2.2, Latvia +2.7, Togo +6.8 |
+| **Two headline numbers**: support for Ukraine and the change in payments to Russia, the net as their sum, everywhere; gas Russia cut off itself labelled | audit, owner | "less paid to Russia" is not money moved to Ukraine | wording, ranking by either number, exports |
+| **Certainty**: stacked models at best C; correlated errors; a **method band** next to the 90% range | audit | letters and ranges overstated the evidence | letters and ranges only |
+| **Windfall** at Russia's net gain on the extra price | audit, owner | the same rule as volumes | Japan and Spain lose about a fifth of their windfall |
+| **Units**: the period total against one year's GDP, with an average-year line | audit | the total was read as a yearly rate | display |
+| Text: MSMT troops 11,000 + 3,000; "Aid (Kiel, adjusted)"; Yemen's 2023 price index; exact source links; research scripts in the repository; PhosAgro margins fetched | audit | errors and untraced inputs | Yemen −9.7 → −7.8 |
+| Loans (6.7% plus expected loss; EU provisioning rates) kept, the critique recorded | audit, owner | decision B is the owner's choice | none |

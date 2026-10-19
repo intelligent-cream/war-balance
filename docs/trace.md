@@ -62,6 +62,8 @@ volumes at pre-war prices ([prices](method/prices.md)) and the likely ranges ([r
 
 ## Aid to Ukraine
 
+**Round 13 (audit):** The part is labelled "Kiel, adjusted: weapons at market value, loans as gifts"; the panel shows Kiel's own figure next to it (Poland EUR 5.89bn in Kiel, 3.24bn on the map). The source links to the Release 31 workbook.
+
 **What it is:** Military, financial and humanitarian aid from governments, with donated weapons at their market value.
 
 **Parts on the map:** Aid to Ukraine (`aid`, net shift); Aid given (loans at grant equivalent) (`aidge`, cost view).
@@ -332,7 +334,9 @@ Known gaps:
 
 ## Flowing back from Ukraine
 
-**What it is:** Aid money spent in the giver's own economy, and extra sales to Ukraine, subtracted at the income they bring.
+**Round 13 (audit):** Money flowing back counts at the seller's net gain (taxes plus profit above a normal return, OECD STAN by country and industry; [`net_gain_sellers.json`](../research/2026-10/gaps/net_gain_sellers.json)) × genuinely extra, no longer at value kept. US flowback earned back falls from EUR 44bn to 1.5bn ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
+
+**What it is:** Aid money spent in the giver's own economy, and extra sales to Ukraine, subtracted at the seller's net gain times the share that is genuinely extra.
 
 **Parts on the map:** Own aid spent in its own economy (incl. replacing donated stock) (`own`, flowing back); Other countries' aid spent here (incl. their stock replacement) (`purl`, flowing back); Aid spent here on energy, relief and rebuilding (`othsp`, flowing back); Arms Ukraine bought here (`arms`, flowing back); Extra sales to Ukraine above the pre-war level (`sell`, flowing back).
 
@@ -380,7 +384,7 @@ Known gaps:
 
 **Code:** `apply_money_ledger()`, `apply_ua_arms_purchases()`, `apply_value_kept()`, `calc()` (`backParts`, `vk()`) in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: where aid was spent (Kiel item coding, DSCA notifications, replacement purchases). Judgement: the value kept in the economy and the share that is genuinely extra, where no study exists. Letters across all country parts: B 175, C 86, D 56.
+**Certainty and judgement calls:** Data: where aid was spent (Kiel item coding, DSCA notifications, replacement purchases). Judgement: the value kept in the economy and the share that is genuinely extra, where no study exists. Letters across all country parts: B 17, C 220, D 56.
 
 Known gaps:
 
@@ -388,7 +392,9 @@ Known gaps:
 
 ## Payments to Russia for fuel and goods
 
-**What it is:** Oil, gas, coal, LNG and other goods bought from Russia, against the level expected without the war, counted at Russia's net gain.
+**Round 13 (audit):** The fuel mix now uses volumes at 2019–2021 prices (a bug had used no-war prices: Hungary −4.1 → −5.5% of GDP); gold is deflated with the gold price (Hong Kong −4.2 → −1.9%); EU refiners' exported Russian crude is charged to their buyers; the part is at best C; gas Russia cut off itself is labelled inside the second headline number ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
+
+**What it is:** Oil, gas, coal, LNG and other goods bought from Russia, against the level expected without the war, counted at Russia's net gain. Gas that Russia cut off itself is labelled.
 
 **Parts on the map:** Less paid to Russia / More paid to Russia (`paid`, net shift).
 
@@ -479,7 +485,7 @@ Known gaps:
 
 **Code:** `build()` steps 1, 3, 4, 7, 11 (inline), `remove_freight()`, `price_indices()`, `apply_reexports()`, `apply_residual()`, `baltic_transit()`, `counterfactual()`, `apply_nowar_prices()`, `apply_net_gain()` in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: customs trade (UN Comtrade, Eurostat), CREA fuel payments, price indices. Model: the level expected without the war (back-tested). Judgement: Russia's net gain for some goods groups, hub margins. Letters across all country parts: B 146, C 78, D 2.
+**Certainty and judgement calls:** Data: customs trade (UN Comtrade, Eurostat), CREA fuel payments, price indices. Model: the level expected without the war (back-tested). Judgement: Russia's net gain for some goods groups, hub margins. Letters across all country parts: C 224, D 2.
 
 Known gaps:
 
@@ -489,7 +495,9 @@ Known gaps:
 
 ## War-time price windfall
 
-**What it is:** The extra Russia earned because fuel prices rose with the war, counted in full.
+**Round 13 (audit):** Counted at Russia's net gain on the extra price (1 for oil and pipeline gas, 0.68–0.74 for LNG, at most the coal rent for coal), not at 100%; the full value is kept for the method band. Türkiye's 0.7/0.3 gas weights: sensitivity −3.18 to −2.98 ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
+
+**What it is:** The extra Russia earned because fuel prices rose with the war, at Russia's net gain on that extra price (all of it for oil and pipeline gas, less for LNG and coal).
 
 **Parts on the map:** Extra paid to Russia because of war-time prices / Paid Russia less than no-war prices (discounts, price cap) (`windfall`, net shift).
 
@@ -533,7 +541,9 @@ Known gaps:
 
 ## Refined and laundered Russian oil
 
-**What it is:** Fuel made from Russian crude in other countries, or passed on by trading hubs, charged to the final buyer.
+**Round 13 (audit):** EU refiners (Lithuania, Finland, the Netherlands and 13 others) are treated like India's: their buyers are charged, before and after the war (buyers from each refiner's UN Comtrade HS 2710 exports, [raw/comtrade_2710](../research/2026-10/raw/comtrade_2710/)). Laundered oil is in volumes at the no-war crude price and counts both ways ([decisions](decisions.md#round-13-refiners-and-laundered-oil)).
+
+**What it is:** Fuel made from Russian crude in other countries, EU refiners included, or passed on by trading hubs, charged to the final buyer, in volumes against its pre-war level.
 
 **Parts on the map:** Russian oil bought via other countries (`laund`, net shift).
 
@@ -576,7 +586,7 @@ Known gaps:
 
 **Code:** `reassign_laundered_oil()`, `apply_laundered_eu()`, `apply_laundered_r6()`, `apply_assumptions_r11_laundered()`, `crude_k()`, `apply_net_gain()` (`laund_gain`) in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: fuel imports by origin (Eurostat Comext, UN Comtrade), crude share per refiner and year. Judgement: hub resale and bunker shares, the cap per territory where fuel use is not measured. Fixed at C. Letters across all country parts: C 196.
+**Certainty and judgement calls:** Data: fuel imports by origin (Eurostat Comext, UN Comtrade), crude share per refiner and year. Judgement: hub resale and bunker shares, the cap per territory where fuel use is not measured. Fixed at C. Letters across all country parts: C 214.
 
 Known gaps:
 
@@ -620,7 +630,9 @@ Known gaps:
 
 ## Sales to Russia
 
-**What it is:** Goods sold to Russia, counted at the seller's income: the value kept in its economy times the share that is genuinely extra.
+**Round 13 (audit):** At the seller's net gain × genuinely extra (manufacturing: OECD median 0.013), not value kept × genuinely extra; China's extra sales now count at 0.008 instead of 0.485 ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
+
+**What it is:** Goods sold to Russia, counted at the seller's net gain (taxes plus profit above a normal return) times the share that is genuinely extra.
 
 **Parts on the map:** Income from extra sales to Russia / Income lost on sales to Russia given up (`sold`, net shift); Income lost on sales to Russia (goods and services) (`margin`, cost view).
 
@@ -684,13 +696,15 @@ Known gaps:
 
 **Code:** `build()` step 3 (inline), `apply_reexports()`, `apply_residual()`, `counterfactual()`, `apply_value_kept()`, `calc()` (`earned3`) in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: customs exports to Russia. Model: the expected level without the war. Judgement: value kept × genuinely extra where no study exists, and hub margins. Letters across all country parts: B 16, C 387, D 7.
+**Certainty and judgement calls:** Data: customs exports to Russia. Model: the expected level without the war. Data: OECD STAN net gain by industry (OECD median outside STAN). Judgement: genuinely extra where no study exists, and hub margins. Letters across all country parts: C 390, D 7.
 
 Known gaps:
 
 - Hub margins and re-export shares are educated guesses ([limitations](limitations.md#open-issues-in-the-numbers)).
 
 ## Purchases from Ukraine
+
+**Round 13 (audit):** At best C (a modelled no-war level × a modelled gain); yearly changes summed with their signs, only the total floored at zero.
 
 **What it is:** Extra goods bought from Ukraine, counted at Ukraine's net gain; the cost view adds the import duties dropped.
 
@@ -739,13 +753,15 @@ Known gaps:
 
 **Code:** `build()` step 3 (inline), `counterfactual()`, `apply_net_gain()`, `tariff_rate()` in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: customs imports from Ukraine; Ukraine's 2021 net gain from division profits. Judgement: Ukraine's 2022-2026 net gain (a proxy) and the single duty rate. Letters across all country parts: B 171, C 71.
+**Certainty and judgement calls:** Data: customs imports from Ukraine; Ukraine's 2021 net gain from division profits. Judgement: Ukraine's 2022-2026 net gain (a proxy) and the single duty rate. Letters across all country parts: C 228.
 
 Known gaps:
 
 - Ukraine's 2025-2026 net-gain shares have no official profitability figures yet; the single duty rate is still a proposal ([decisions](decisions.md#proposals-that-would-change-numbers-not-applied)).
 
 ## Services and tourism
+
+**Round 13 (audit):** Services sold to Russia at the seller's net gain × genuinely extra (OECD median 0.002); at best C.
 
 **What it is:** Services bought from and sold to Russia, such as transport, business services and tourism.
 
@@ -779,7 +795,7 @@ Known gaps:
 
 **Code:** `build()` step 13 (inline), `pre_war_trends()`, `apply_relocants()`, `apply_narrow()`, `apply_net_gain()`, `apply_value_kept()` in [`pipeline/build_data.py`](../pipeline/build_data.py) unless named otherwise.
 
-**Certainty and judgement calls:** Data: services trade (Eurostat, OECD-WTO BaTiS, Bank of Russia) and tourism counts. Judgement: the expected level (2021 held) and the share of travel spent by relocants. Letters across all country parts: A 2, B 90, C 299.
+**Certainty and judgement calls:** Data: services trade (Eurostat, OECD-WTO BaTiS, Bank of Russia) and tourism counts. Judgement: the expected level (2021 held) and the share of travel spent by relocants. Letters across all country parts: C 385.
 
 Known gaps:
 
@@ -787,7 +803,9 @@ Known gaps:
 
 ## Shipping Russian oil
 
-**What it is:** Income from shipping and insuring Russian oil, counted for the country that really controls the tankers.
+**Round 13 (audit):** Freight and insurance at the shipper's and insurer's net gain (OECD STAN H50, K65) × genuinely extra; Greek shipping about 0.
+
+**What it is:** Income from shipping and insuring Russian oil, counted for the country that really controls the tankers, at the shippers' and insurers' net gain.
 
 **Parts on the map:** Income from shipping and insuring Russian oil / Less income from shipping Russian oil (`ship`, net shift).
 
@@ -982,7 +1000,9 @@ Known gaps:
 
 ## Remittances from Russia
 
-**What it is:** Wages migrants earned in Russia and sent home, against the level expected without the war.
+**Round 13 (audit):** At the migrant's net gain: the war wage premium (Russian wages above their pre-war trend) in full as far as it shows in euros, the rest of the change × the premium over the home wage × genuinely extra ([remittances_r13-notes](../research/2026-10/gaps/remittances_r13-notes.md)). Tajikistan's 2025 total checked against EFSD (within 6%).
+
+**What it is:** What migrants earned in Russia and sent home, counted only for the pay above what the same work earns elsewhere and only for its war-driven change.
 
 **Parts on the map:** Wages earned working in Russia (migrants' remittances) (`remit`, net shift).
 
@@ -1090,7 +1110,9 @@ Known gaps:
 
 ## Weapons and troops sent to Russia
 
-**What it is:** Shells, missiles, drones and troops from North Korea, Iran, Belarus and China, at market value.
+**Round 13 (audit):** Paid deliveries, also in kind, count as sales at the seller's net gain; unpaid ones in full ([military_payment_r13-notes](../research/2026-10/gaps/military_payment_r13-notes.md)). North Korea −30.0 → −10.2% of GDP.
+
+**What it is:** Shells, missiles, drones and troops from North Korea, Iran, Belarus and China: what Russia paid for (also in kind) as a sale, at the seller's net gain; what it did not pay for at market value.
 
 **Parts on the map:** Weapons and troops sent to Russia (`mil`, net shift).
 
@@ -1132,7 +1154,9 @@ Known gaps:
 
 ## Payment agents
 
-**What it is:** Fees earned by firms that settle Russia's trade payments.
+**Round 13 (audit):** Fees at the financial industry's net gain × genuinely extra (about a tenth of the fees).
+
+**What it is:** Fees earned by firms that settle Russia's trade payments, at the financial industry's net gain.
 
 **Parts on the map:** Fees earned settling Russia's trade (payment agents) (`agents`, net shift).
 

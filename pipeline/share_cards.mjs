@@ -44,7 +44,7 @@ await page.evaluate(() => {
   const el = document.createElement("div");
   el.style.cssText = "position:fixed;left:48px;bottom:44px;z-index:99;background:#fbfcfcee;padding:22px 28px;border-radius:10px;max-width:640px;font-family:'Source Sans 3',sans-serif;color:#15212b";
   el.innerHTML = `<div style="font-family:Archivo,sans-serif;font-weight:800;font-stretch:115%;font-size:40px;letter-spacing:-.02em;line-height:1.05">Follow the Money:<br>Ukrainian Aid</div>
-    <div style="margin-top:10px;font-size:22px;color:#55636e">Who shifted money toward <b style="color:#2a6fb0">Ukraine</b>, and who toward <b style="color:#c9520f">Russia</b>? Every country, as a share of its economy, since before the war.</div>`;
+    <div style="margin-top:10px;font-size:22px;color:#55636e">Every country's <b style="color:#2a6fb0">support for Ukraine</b>, and the <b style="color:#c9520f">change in its payments to Russia</b>, as a share of its economy, since before the war.</div>`;
   document.body.appendChild(el);
 });
 await page.waitForTimeout(800);
@@ -59,6 +59,7 @@ const cards = await page.evaluate(() => {
       .filter(p => Math.abs(p.v) > 1e-3).sort((a, b) => Math.abs(b.v) - Math.abs(a.v)).slice(0, 4);
     out.push({
       iso3: c.iso3, name: c.name, toUkr: k.shift >= 0,
+      ua: fmtMeasure(c, k.uaBal, "gdp", true), ru: fmtMeasure(c, k.rusBal, "gdp", true), ruLess: k.rusBal >= 0,
       pct: fmtMeasure(c, k.shift, "gdp", true), eur: eur(k.shift, true), pp: c.pop ? perPerson(c, k.shift) : "",
       lo: fmtMeasure(c, k.shiftLo, "gdp", true), hi: fmtMeasure(c, k.shiftHi, "gdp", true),
       parts: parts.map(p => ({ label: p.label, v: eur(p.v, true), pos: p.v >= 0 })),
@@ -83,9 +84,10 @@ for (const d of cards) {
       <div style="margin-top:34px;font-family:Archivo,sans-serif;font-weight:800;font-stretch:112%;font-size:64px;letter-spacing:-.02em;line-height:1">${d.name}</div>
       <div style="display:flex;align-items:baseline;gap:18px;margin-top:16px">
         <span style="font-family:Archivo,sans-serif;font-weight:800;font-size:112px;letter-spacing:-.03em;line-height:1;color:${col}">${d.pct}</span>
-        <span style="font-size:30px;font-weight:600;color:#15212b;line-height:1.15">of a year's GDP<br>toward ${d.toUkr ? "Ukraine" : "Russia"}</span>
+        <span style="font-size:30px;font-weight:600;color:#15212b;line-height:1.15">net, 2022–2026 total<br>against one year's GDP</span>
       </div>
-      <div style="margin-top:12px;font-size:23px;color:#55636e">since before the war, 2022–2026 · ${d.eur}${d.pp ? " · " + d.pp : ""} · likely ${d.lo} to ${d.hi}</div>
+      <div style="margin-top:12px;font-size:25px;color:#15212b">= support for Ukraine <b style="color:#2a6fb0">${d.ua}</b> + change in payments to Russia <b style="color:${d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ru}</b> (${d.ruLess ? "less paid, incl. supplies Russia cut off" : "more paid"})</div>
+      <div style="margin-top:8px;font-size:21px;color:#55636e">since before the war · ${d.eur}${d.pp ? " · " + d.pp : ""} · likely ${d.lo} to ${d.hi} · not a yearly rate</div>
       <div style="margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:6px 40px;font-size:21px">
         ${d.parts.map(p => `<div style="display:flex;justify-content:space-between;border-top:1px solid #d6dde2;padding-top:6px"><span>${p.label}</span><b style="font-family:'IBM Plex Mono',monospace;font-weight:500;color:${p.pos ? "#2a6fb0" : "#c9520f"}">${p.v}</b></div>`).join("")}
       </div>
@@ -94,8 +96,8 @@ for (const d of cards) {
   await page.waitForTimeout(30);
   const iso = d.iso3.toLowerCase();
   await page.screenshot({ path: join(SITE, "share", iso + ".png") });
-  const title = `${d.name}: ${d.pct} of GDP toward ${d.toUkr ? "Ukraine" : "Russia"} | Follow the Money: Ukrainian Aid`;
-  const desc = `Since before the war, 2022–2026: ${d.eur}${d.pp ? ", " + d.pp : ""}. Likely range ${d.lo} to ${d.hi} of a year's GDP. Every number with a source.`;
+  const title = `${d.name}: support for Ukraine ${d.ua}, payments to Russia ${d.ru} of GDP | Follow the Money: Ukrainian Aid`;
+  const desc = `2022–2026 totals against one year's GDP: support for Ukraine ${d.ua}; change in payments to Russia ${d.ru} (${d.ruLess ? "less paid, incl. supplies Russia cut off" : "more paid"}); net ${d.pct} (${d.eur}). Likely range ${d.lo} to ${d.hi}. Every number with a source.`;
   await writeFile(join(SITE, "c", iso + ".html"), `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

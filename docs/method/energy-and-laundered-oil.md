@@ -29,7 +29,7 @@ For these countries the pipeline:
 
 ## Laundered oil
 
-"Russian oil bought via other countries" is fuel refined from Russian crude in India, Turkey, China or the UAE and bought by someone else. Russia earned money on the crude, so the final buyer's purchase counts toward Russia.
+"Russian oil bought via other countries" is fuel refined from Russian crude in India, Turkey, China, the UAE or (since round 13) EU refineries and bought by someone else. Russia earned money on the crude, so the final buyer's purchase counts toward Russia.
 
 **Starting values** (`energy.json` `laundered_oil`): each refiner's HS 2710 exports to a destination × the Russian share of that refiner's crude (India 15% in 2022, 38% in 2023–24, 34% in 2025; China 17–20%; Turkey 35–54%), calibrated to CREA's named-refinery figures (central × 0.699). **EU members** are scaled to Global Witness's figure for Russian crude in EU imports (× 0.62, range 0.5–0.8; [audit-notes.md](../../research/2026-10/gaps/audit-notes.md) item 4).
 
@@ -105,7 +105,17 @@ Fuel refined from Russian crude reached buyers before 2022 too: EUR 3–5bn a ye
 
 - the pre-war level goes through the same EU correction and the same hub pass-on chain as the yearly values, then × crude content;
 - `bmul = (1 + g)^(year − 2019.5)`, and the range always includes no growth;
-- on the map, `above3()` counts only the rise, in money (no price index), so higher fuel prices count too.
+- until round 12, `above3()` counted only the rise, in money (no price index), so higher fuel prices counted too.
+
+**Round 13 (audit): in volumes, both ways.** Laundered oil is now measured like every other trade part
+(`laundered_volumes()` in `build_data.py`, `delta3()` in `calc()`): the Russian crude in the fuel at the crude price a
+no-war market expected (its price index is the Urals price paid over the no-war crude price), against its pre-war level
+at 2019–2021 prices grown with `g` and the no-war crude price; falls count as well as rises, at Russia's net gain on
+crude. Nepal and Tanzania change little (−1.6 → −1.8 and −2.0 → −2.2% of GDP): Urals sold below the no-war price, so
+the same volume is worth more at no-war prices. The fungibility point (a small buyer of Indian diesel barely changes
+Russia's revenue) is not built in; see [limitations](../limitations.md). Buyers of fuel from EU refiners now get credit
+for the Russian crude that left that fuel after the EU's 2022 embargo (Estonia +2.2, Latvia +2.7 points), and Togo, a
+fuel hub with a pre-war level of Russian crude in its fuel, +6.8 points.
 
 ## Refiners: counted once
 
@@ -120,7 +130,9 @@ had left about EUR 14bn uncounted):
 | India | EUR 8–16bn a year | `hub_buyers.json` `india_refining` |
 | China | crude value ÷ China's own measured crude share of its fuel exports (0.72–0.82 in 2022–2026, [`crude_content.json`](../../research/2026-10/gaps/crude_content.json); round 12, was a flat 0.70) | `round4a.json` `china_refining` |
 
-[`check_data.py`](../../pipeline/check_data.py) check 15 verifies the refining source on Turkey and India. **EU refiners' exports** (Lithuania, Finland, others) are not counted as laundered oil anywhere and stay with the refiner country (`round4a.json` `eu_refiners`).
+[`check_data.py`](../../pipeline/check_data.py) check 15 verifies the refining source on Turkey and India.
+
+**EU refiners (round 13 audit): treated the same way.** Until round 12 the Russian crude in fuel that EU refiners (Lithuania, Finland, the Netherlands and 13 others) exported stayed with the refiner, while India's, Türkiye's and China's was charged to the buyers. Now the refiner keeps only what it used itself, before and after the war (`eu_refiner_exports()`): the exported share of its Russian crude (`round4a.json` `eu_refiners`: Lithuania 0.70, the Netherlands 0.70, Slovakia 0.65, Finland 0.45 and so on; 2021 from the CREA tracker's crude tonnes at 2021 prices; later years from the same file) comes out of its payments and its pre-war level, and is charged to its buyers by each refiner's own HS 2710 exports by partner in 2021 (UN Comtrade, [raw/comtrade_2710](../../research/2026-10/raw/comtrade_2710/)). Fuel exported to Ukraine, to ships' bunkers or to places not on the map stays with the refiner. The part taken off counts at Russia's gain on crude, as for India. Effect (this step, % of GDP): Lithuania −2.5, the Netherlands −0.9, Finland −0.6; with the laundered-oil volumes (above), their buyers gain.
 
 ## Turkey, a special case
 

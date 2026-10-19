@@ -1,6 +1,6 @@
 # Changelog: research rounds
 
-The map's data were built in twelve research rounds in October 2026, each followed by changes to the pipeline and the site. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
+The map's data were built in thirteen research rounds in October 2026, each followed by changes to the pipeline and the site. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
 
 ## Round 1
 
@@ -276,6 +276,25 @@ points. Cost view: Finland +0.07, France and Italy +0.06, Germany +0.05; Japan �
   remittances, Rosatom and state loans, arms bought from Russia, payment agents) now have one, taken from what was said
   when each was added. Choices with no reason on record are marked "reason not recorded". The decision log gains rows
   for undisclosed aid, the switching cost and oil discount, services and arms bought from Russia. No number changes.
+
+## Round 13
+
+**One rule, two numbers, 19 October 2026** (an independent economist and journalist audit, all fixes approved by the owner; [decisions](decisions.md#round-13-one-valuation-rule-for-every-seller), [decision log](decision-log.md#round-13-one-rule-two-numbers-19-october)). Each step was made on its own; net % of a year's GDP:
+
+1. **Fuel-mix bug**: the volume of all payments now uses 2019–2021 prices. Hungary −4.09 → −5.53, Mongolia −4.68 → −6.53, Slovakia +1.33 → −0.07, Belarus −17.55 → −18.48, Libya −6.45 → −7.34, Türkiye −3.30 → −3.91, India −2.32 → −2.83. New check in `check_data.py`.
+2. **Gold deflator**: Hong Kong −4.20 → −1.90; small changes for China, Oman, Switzerland.
+3. **Text**: MSMT troop figures (11,000 + 3,000), "Aid to Ukraine (Kiel, adjusted ...)" with Kiel's own figure in the panel, Yemen's 2023 price index (−9.64 → −7.80, applied in step 12).
+4. **One valuation rule** (OECD STAN net gain × genuinely extra; [`net_gain_sellers.json`](../research/2026-10/gaps/net_gain_sellers.json)): Belarus −18.48 → −5.55, Kyrgyzstan −16.71 → −6.09, Armenia −10.11 → −2.42, Cyprus +6.12 → −0.30, Georgia −7.22 → −2.31, Uzbekistan −18.12 → −15.13, Montenegro +4.60 → +2.24, Lithuania 14.45 → 12.69, Estonia 9.01 → 7.33, China −1.56 → −1.05, the US +0.36 → +0.48.
+5. **Remittances** at the migrant's net gain ([`remittances_r13.json`](../research/2026-10/gaps/remittances_r13.json)): Kyrgyzstan −6.09 → −7.48, Tajikistan −38.28 → −39.63, Moldova +6.11 → +5.38, Uzbekistan −15.13 → −14.50.
+6. **Weapons to Russia, paid or unpaid** ([`military_payment_r13.json`](../research/2026-10/gaps/military_payment_r13.json)): North Korea −29.95 → −10.16, Iran −0.79 → −0.01.
+7. **EU refiners** charged to their buyers: Lithuania 12.69 → 10.15, the Netherlands 5.56 → 4.62, Finland 7.78 → 7.17, Greece −0.65.
+8. **Laundered oil in volumes, both ways**: Togo +6.82, Latvia +2.71, Moldova +2.38, Estonia +2.22, Libya +1.65, Tunisia +1.60; Nepal −1.61 → −1.80.
+9. **Two headline numbers** everywhere (map, panel, ranking, share cards, table and downloads, How it works), with gas Russia cut off itself labelled. No number changes.
+10. **Certainty and ranges**: stacked models at best C (parts at B 665 → 84); correlated errors; a method band in the panel; PhosAgro's margins fetched (Russia's 2023 fertiliser gain 0.20 → 0.27). The windfall at Russia's net gain (step 12) came in this build: Japan +0.02, Spain +0.05, Belgium +0.09.
+11. **Units**: "2022–2026 total as % of one year's GDP (2024), not a yearly rate" on the map, with an average-year line in the panel.
+12. **Other findings**: Yemen's price index (Yemen −9.64 → −7.80); extra purchases from and sales to Ukraine summed with their signs; exact source links; the round-6 value-kept scripts in [`research/2026-10/scripts/`](../research/2026-10/scripts/value_kept/); the audit's loan critique recorded.
+
+All steps together (base → round 13): Lithuania 14.55 → 10.50, Finland 9.02 → 7.26, Estonia 9.25 → 9.57, the Netherlands 6.35 → 4.88, Germany 3.65 → 3.25, Poland 4.06 → 3.62, the US 0.36 → 0.48, Hungary −4.09 → −5.30, Slovakia +1.33 → −0.24, Hong Kong −4.20 → −2.35, China −1.56 → −1.03, North Korea −29.98 → −10.16, Belarus −17.55 → −5.63, Tajikistan −38.20 → −39.61, Uzbekistan −17.87 → −14.46.
 
 ## See also
 
