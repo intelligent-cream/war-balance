@@ -169,6 +169,7 @@ button, input, select { font: inherit; color: inherit; }
 .people .n { font-family: var(--font-display); font-weight: 700; font-size: 20px; font-variant-numeric: tabular-nums; }
 .people .l { font-size: 12px; color: var(--ink-soft); }
 .sources { font-size: 12.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; padding-left: 18px; }
+.src-more summary { cursor: pointer; color: var(--ink-soft); font-size: 12px; }
 .src-links { margin: 2px 0 6px; padding-left: 16px; list-style: disc; }
 .src-kind { font-size: 11px; opacity: 0.8; }
 .how { font-size: 11px; margin-left: 4px; text-decoration: none; opacity: 0.75; }
@@ -835,7 +836,7 @@ const linkNotes = html => html.replace(/research\/[\w./-]+?\.(?:md|json)/g, m =>
 // report page each figure comes from; press reports and this project's own models are marked as such
 function srcLinks(s) {
   if (!s.links || !s.links.length) return "";
-  return `<ul class="src-links">${s.links.map(l => `<li><a href="${l.url}" target="_blank" rel="noopener" lang="en">${esc(l.title)}</a>${l.kind === "secondary" ? ` <span class="src-kind">${t("press report")}</span>` : ""}${l.kind === "model" ? ` <span class="src-kind">${t("this project's method")}</span>` : ""}</li>`).join("")}</ul>`;
+  return `<details class="src-more"><summary>${t("Exact tables and reports ({n})", { n: s.links.length })}</summary><ul class="src-links">${s.links.map(l => `<li><a href="${l.url}" target="_blank" rel="noopener" lang="en">${esc(l.title)}</a>${l.kind === "secondary" ? ` <span class="src-kind">${t("press report")}</span>` : ""}${l.kind === "model" || l.kind === "method" ? ` <span class="src-kind">${t("this project's method")}</span>` : ""}</li>`).join("")}</ul></details>`;
 }
 // where each part's calculation is written out (docs/method), linked from its name in the waterfall
 const PART_DOC = {

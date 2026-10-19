@@ -1110,13 +1110,7 @@ def build() -> dict:
     r11 = (load(RESEARCH / "sources_r11.json") or {}).get("sources") or {}
     for sid, item in src.items.items():
         links = [
-            {
-                "title": lk["title"],
-                "url": lk["url"],
-                "kind": "model"
-                if (r11[sid].get("model") and lk["url"].startswith("https://github.com/"))
-                else lk.get("kind", "primary"),
-            }
+            {"title": lk["title"], "url": lk["url"], "kind": lk.get("kind", "primary")}
             for lk in (r11.get(sid) or {}).get("links") or []
             if lk.get("url") and lk.get("confirmed", True)
         ]

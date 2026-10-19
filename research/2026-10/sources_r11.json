@@ -1,0 +1,3119 @@
+{
+ "generated": "2026-10-19",
+ "sources": {
+  "trade": {
+   "model": false,
+   "links": [
+    {
+     "title": "UN Comtrade API: all reporters' imports from Russia (partner 643), HS TOTAL, 2024",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2024&partnerCode=643&flowCode=M&cmdCode=TOTAL&customsCode=C00&motCode=0&partner2Code=0",
+     "kind": "primary",
+     "what": "imports_from_RUS per reporter (same query with period 2021-2025 and flowCode X for exports_to_RUS)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: all reporters' exports to Russia (partner 643), HS TOTAL, 2024",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2024&partnerCode=643&flowCode=X&cmdCode=TOTAL&customsCode=C00&motCode=0&partner2Code=0",
+     "kind": "primary",
+     "what": "exports_to_RUS per reporter",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: all reporters' imports from Ukraine (partner 804), HS TOTAL, 2024",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2024&partnerCode=804&flowCode=M&cmdCode=TOTAL&customsCode=C00&motCode=0&partner2Code=0",
+     "kind": "primary",
+     "what": "imports_from_UKR per reporter",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: all reporters' exports to Ukraine (partner 804), HS TOTAL, 2024",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2024&partnerCode=804&flowCode=X&cmdCode=TOTAL&customsCode=C00&motCode=0&partner2Code=0",
+     "kind": "primary",
+     "what": "exports_to_UKR per reporter",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: Ukraine's own report by partner (mirror fallback), imports 2024",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=804&period=2024&flowCode=M&cmdCode=TOTAL&customsCode=C00&motCode=0&partner2Code=0",
+     "kind": "primary",
+     "what": "mirror values where the partner did not report (Ukraine 2021-2024)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: Russia's own 2021 report by partner (mirror fallback), exports",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=643&period=2021&flowCode=X&cmdCode=TOTAL&customsCode=C00&motCode=0&partner2Code=0",
+     "kind": "primary",
+     "what": "mirror values for 2021 trade with Russia",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "ECB Data Portal: USD/EUR annual average exchange rate (EXR.A.USD.EUR.SP00.A)",
+     "url": "https://data-api.ecb.europa.eu/service/data/EXR/A.USD.EUR.SP00.A?startPeriod=2021&format=csvdata",
+     "kind": "primary",
+     "what": "USD to EUR conversion, annual averages 2021-2025",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "nonreport": {
+   "model": false,
+   "links": [
+    {
+     "title": "CREA Russia Fossil Tracker API: Russian fossil-fuel exports by destination",
+     "url": "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR",
+     "kind": "primary",
+     "what": "tanker-tracked Russian oil/fuel deliveries to Cuba, Venezuela, Syria, Libya, Sudan, Myanmar, Yemen, Lebanon",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Turkmenistan state oil and gas portal: trade turnover with Russia up 13% in 2023",
+     "url": "https://oilgas.gov.tm/en/posts/news/10897/trade-turnover-between-turkmenistan-and-russia-increased-by-13-in-2023",
+     "kind": "primary",
+     "what": "Turkmenistan-Russia trade turnover (official statement)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "TASS: Russia-Iran trade figures",
+     "url": "https://tass.com/economy/1949413",
+     "kind": "secondary",
+     "what": "Russia-Iran trade turnover (official Russian statements)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eghtesad Online citing IRICA (Iran customs): Iran's exports to Russia up 14% in 9 months",
+     "url": "https://www.eghtesadonline.com/en/news/2000632/irans-exports-to-russia-up-14-in-9-months-irica",
+     "kind": "secondary",
+     "what": "Iranian customs figures for trade with Russia",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (0)"
+    },
+    {
+     "title": "Interfax: Russia-Cuba trade",
+     "url": "https://interfax.com/newsroom/top-stories/91271/",
+     "kind": "secondary",
+     "what": "Russia-Cuba trade turnover",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Interfax: Russia-Tajikistan trade",
+     "url": "https://interfax.com/newsroom/top-stories/114209/",
+     "kind": "secondary",
+     "what": "Russia-Tajikistan trade turnover",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "NK News: Russia-North Korea trade hit record USD 34m in 2024 (official)",
+     "url": "https://www.nknews.org/2025/06/russia-north-korea-trade-hit-record-34m-in-2024-on-food-and-fuel-official",
+     "kind": "secondary",
+     "what": "Russia-North Korea recorded trade",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "The EastAfrican: Russia completes shipping of free grain to six African states",
+     "url": "https://www.theeastafrican.co.ke/tea/business/russia-completes-shipping-of-free-grains-to-six-african-states-4532416",
+     "kind": "secondary",
+     "what": "Russian supplies given as aid (excluded as not paid): Eritrea, Mali, Burkina Faso, CAR",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    }
+   ],
+   "note": "These partners publish no usable customs data; figures rest on tanker tracking (CREA API, primary) and official statements reported by press."
+  },
+  "kiel": {
+   "model": false,
+   "links": [
+    {
+     "title": "Kiel Institute, Ukraine Support Tracker Release 31 workbook (xlsx)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "kind": "primary",
+     "what": "sheet 'Country Summary (€)' (allocated/committed by type), 'Fig 8. Financial Aid by type' (loans/grants), 'Allocations per Month' (by year)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kiel Institute, Ukraine Support Tracker page",
+     "url": "https://www.kielinstitut.de/research/topics/war-against-ukraine/ukraine-support-tracker/",
+     "kind": "primary",
+     "what": "release notes and documentation for Release 31",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kiel Policy Brief 217: How much aid has Germany given to Ukraine?",
+     "url": "https://www.kielinstitut.de/publications/how-much-aid-has-germany-given-to-ukraine-20290/",
+     "kind": "primary",
+     "what": "German official vs Kiel figures; German refugee spending",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "kiel_eu_share": {
+   "model": false,
+   "links": [
+    {
+     "title": "Kiel Institute, Ukraine Support Tracker Release 31 workbook (xlsx)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "kind": "primary",
+     "what": "sheet 'Country Summary (€)': EU-share columns per member (eu_share_allocated, eu_share_committed)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kiel Working Paper 2218, The Ukraine Support Tracker: which countries help Ukraine and how?",
+     "url": "https://www.kielinstitut.de/publications/the-ukraine-support-tracker-which-countries-help-ukraine-and-how-20852/",
+     "kind": "primary",
+     "what": "method for splitting EU-level aid by members' EU budget contributions",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: EU-level aid",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/aid-refugees-military.md#eu-level-aid",
+     "kind": "method",
+     "what": "how the EU share is attributed in this project",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": ""
+  },
+  "aid_gaps": {
+   "model": false,
+   "links": [
+    {
+     "title": "UN OCHA FTS API: all funding flows to Ukraine, 2022",
+     "url": "https://api.hpc.tools/v1/public/fts/flow?countryISO3=UKR&year=2022",
+     "kind": "primary",
+     "what": "government humanitarian flows per donor (same query for 2023-2026)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Qatar MoFA: Qatar pledges USD 100 million for humanitarian assistance to Ukraine",
+     "url": "https://mofa.gov.qa/en/qatar/latest-articles/latest-news/details/1445/01/10/qatar-pledges-usd-100-million-for-humanitarian-assistance-to-ukraine",
+     "kind": "primary",
+     "what": "Qatar government aid",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UAE MoFA: relief flight to Ukraine",
+     "url": "https://www.mofa.gov.ae/en/mediahub/news/2024/2/13/13-2-2024-uae-ukrain",
+     "kind": "primary",
+     "what": "UAE government aid",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Interfax: UAE allots USD 100 million for humanitarian aid to Ukraine",
+     "url": "https://interfax.com/newsroom/top-stories/84198/",
+     "kind": "secondary",
+     "what": "UAE government aid amount",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Azerbaijan embassy: presidential decree allocating funds for humanitarian assistance to Ukraine",
+     "url": "https://kiev.mfa.gov.az/en/news/3481/decree-of-the-president-of-the-republic-of-azerbaijan-on-allocating-funds-for-providing-humanitarian-assistance-to-ukraine",
+     "kind": "primary",
+     "what": "Azerbaijan government aid",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (0)"
+    },
+    {
+     "title": "Singapore MFA: contribution to Ukraine (28 Feb 2022)",
+     "url": "https://www.mfa.gov.sg/Newsroom/Press-Statements-Transcripts-and-Photos/2022/02/20220228-contribution-to-Ukraine",
+     "kind": "primary",
+     "what": "Singapore government aid",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "refugees": {
+   "model": false,
+   "links": [
+    {
+     "title": "Eurostat migr_asytpsm: beneficiaries of temporary protection, Ukrainian citizens (API query)",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/migr_asytpsm?citizen=UA&sex=T&age=TOTAL&unit=PER",
+     "kind": "primary",
+     "what": "refugees hosted per EU/EFTA country per month",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UNHCR Refugee Data Finder API: Ukrainian refugees by host country, end-2025",
+     "url": "https://api.unhcr.org/population/v1/population/?year=2025&coo=UKR&coa_all=true",
+     "kind": "primary",
+     "what": "refugees hosted outside Eurostat coverage",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "EPRS briefing 775834 (Kiel estimate of EU member-state refugee spending)",
+     "url": "https://www.europarl.europa.eu/RegData/etudes/BRIE/2025/775834/EPRS_BRI(2025)775834_EN.pdf",
+     "kind": "primary",
+     "what": "EUR 163.1bn EU member-state refugee spending 2022-2025 (aggregate calibration)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Bundestag Drucksache 20/13346",
+     "url": "https://dserver.bundestag.de/btd/20/133/2013346.pdf",
+     "kind": "primary",
+     "what": "Germany: federal refugee-related burden 5.5bn (2022), 8.8bn (2023)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Rijksfinancien: Jaarverslag JenV 2024 (art. 37 reception)",
+     "url": "https://www.rijksfinancien.nl/jaarverslag/2024/VI",
+     "kind": "primary",
+     "what": "Netherlands: realised reception spending EUR 2,639m in 2024",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "NIK audit: actions to help Ukrainian citizens",
+     "url": "https://www.nik.gov.pl/najnowsze-informacje-o-wynikach-kontroli/dzialania-na-rzecz-pomocy-obywatelom-ukrainy.html",
+     "kind": "primary",
+     "what": "Poland: Aid Fund spending >PLN 11bn (2022)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "NAO: Investigation into the Homes for Ukraine scheme",
+     "url": "https://www.nao.org.uk/press-releases/investigation-into-homes-for-ukraine/",
+     "kind": "primary",
+     "what": "UK: GBP 2.1bn by end-Sep 2023, 131,000 arrivals",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "SEM: Fachbericht Programm S 2024",
+     "url": "https://www.sem.admin.ch/dam/sem/de/data/integration/foerderung/programm-s/rapport-programm-s-2024.pdf.download.pdf/rapport-programm-s-2024-d.pdf",
+     "kind": "primary",
+     "what": "Switzerland: federal lump sum per person",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "energy": {
+   "model": false,
+   "links": [
+    {
+     "title": "CREA Russia Fossil Tracker API: monthly exports by destination and commodity (EUR, USD)",
+     "url": "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-08-31&aggregate_by=month,destination_iso2,destination_country,commodity&currency=EUR,USD",
+     "kind": "primary",
+     "what": "volumes and values of Russian fossil fuels per buyer",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA Russia Fossil Tracker API: modelled Russian export prices",
+     "url": "https://api.russiafossiltracker.com/v0/price?format=csv&date_from=2021-01-01&date_to=2026-08-31&scenario=default",
+     "kind": "primary",
+     "what": "Urals/ESPO/product prices for the oil discount",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "FRED: Brent crude price (DCOILBRENTEU)",
+     "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
+     "kind": "primary",
+     "what": "Brent benchmark for the discount",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat nrg_ti_gas API: EU27 gas imports from Russia and total (TJ GCV)",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ti_gas?format=JSON&geo=EU27_2020&partner=RU&partner=TOTAL&siec=G3000&unit=TJ_GCV",
+     "kind": "primary",
+     "what": "gas volumes for the switching cost",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: imports of crude oil (HS 2709) from Russia, 2023",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2023&partnerCode=643&flowCode=M&cmdCode=2709",
+     "kind": "primary",
+     "what": "crude imports from Russia per buyer",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA: Four years of invasion (24 Feb 2026)",
+     "url": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf",
+     "kind": "primary",
+     "what": "fossil-fuel revenue and laundered-oil totals 2025-2026",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA: Third year of invasion (revised 10 Apr 2025)",
+     "url": "https://energyandcleanair.org/wp/wp-content/uploads/2025/04/CREA_Analysis_Third-year-of-invasion_24.02.2025_REVISED_10.04.2025.pdf",
+     "kind": "primary",
+     "what": "fossil-fuel revenue and laundered-oil totals 2024",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA Russia Fossil Tracker methodology",
+     "url": "https://www.russiafossiltracker.com/methodology/",
+     "kind": "primary",
+     "what": "how the tracker values shipments",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "transit_gas": {
+   "model": false,
+   "links": [
+    {
+     "title": "Eurostat nrg_ti_gas: imports of natural gas by partner (table view)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/nrg_ti_gas/default/table",
+     "kind": "primary",
+     "what": "annual gas imports by origin per country",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat nrg_ti_gasm API: monthly gas imports from Russia (million m3)",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ti_gasm?format=JSON&partner=RU&siec=G3000&unit=MIO_M3",
+     "kind": "primary",
+     "what": "monthly gas imports from Russia",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat nrg_te_gas API: gas exports by partner",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_te_gas",
+     "kind": "primary",
+     "what": "re-exports by transit countries",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat nrg_cb_gas API: gas supply balance",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_cb_gas",
+     "kind": "primary",
+     "what": "inland consumption for the final-use split",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: imports of HS 2711 (gas) from Russia",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2024&partnerCode=643&flowCode=M&cmdCode=2711,271111,271121",
+     "kind": "primary",
+     "what": "customs gas imports that this source replaces",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "S&P Global: Russian gas flows to Europe via TurkStream (Feb 2026)",
+     "url": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/020226-russian-gas-flows-to-europe-via-turkstream-remain-at-sustained-high-in-jan",
+     "kind": "secondary",
+     "what": "TurkStream transit volumes to Hungary, Serbia, Slovakia",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    }
+   ],
+   "note": ""
+  },
+  "laundered": {
+   "model": false,
+   "links": [
+    {
+     "title": "CREA: Refined oil analysis, price-cap coalition imports of products from Russian crude (Feb 2024, rev. Apr 2024)",
+     "url": "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf",
+     "kind": "primary",
+     "what": "refiners' Russian-crude shares and coalition imports of their products",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA: Four years of invasion (24 Feb 2026)",
+     "url": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf",
+     "kind": "primary",
+     "what": "laundromat refiners' exports 2025",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA: The Laundromat (Apr 2023)",
+     "url": "https://energyandcleanair.org/wp/wp-content/uploads/2023/04/CREA_The-Laundromat_How-the-price-cap-coalition-whitewashes-Russian-oil-in-third-countries.pdf",
+     "kind": "primary",
+     "what": "laundromat method and countries",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: India's exports of refined products (HS 2710), 2024",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2024&flowCode=X&cmdCode=2710",
+     "kind": "primary",
+     "what": "hub customers: who buys the fuel",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: Turkey's exports of HS 2710, 2022-2025",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=792&cmdCode=2710&flowCode=X&period=2024",
+     "kind": "primary",
+     "what": "Turkish fuel buyers",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Global Witness: EU purchases of laundered Russian oil worth an estimated EUR 1.1bn to the Kremlin in 2023",
+     "url": "https://globalwitness.org/en/campaigns/fossil-fuels/eu-purchases-of-laundered-russian-oil-worth-an-estimated-11-billion-to-the-kremlin-in-2023/",
+     "kind": "secondary",
+     "what": "cross-check of EU laundered-oil value",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Laundered oil",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/energy-and-laundered-oil.md#laundered-oil",
+     "kind": "method",
+     "what": "hub resale chain and crude-content valuation",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": ""
+  },
+  "laundered_eu": {
+   "model": false,
+   "links": [
+    {
+     "title": "Eurostat Comext DS-045409 API (EU trade by HS, partner, reporter)",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=A&reporter=DE&partner=IN&product=2710&flow=1&indicators=VALUE_IN_EUROS&time=2024",
+     "kind": "primary",
+     "what": "HS 2710 imports by origin per EU member (example: Germany from India 2024)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA: Refined oil analysis (Feb 2024, rev. Apr 2024)",
+     "url": "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf",
+     "kind": "primary",
+     "what": "Russian-crude shares of the refiners",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA/CSD: Turkish refineries analysis (Sep 2024)",
+     "url": "https://csd.eu/fileadmin/user_upload/publications_library/files/2024_9/FINAL_CREA_CSD_Analysis_Turkish-Refineries_09.2024.pdf",
+     "kind": "primary",
+     "what": "Russian crude in Turkish refinery output",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "KSE Institute: the refining loophole (June 2026)",
+     "url": "https://institute.kse.ua/wp-content/uploads/2026/06/kse_refining_loophole_eng_june_2026.pdf",
+     "kind": "primary",
+     "what": "per-country checks of fuel from Russian crude",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA: Four years of invasion (24 Feb 2026)",
+     "url": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf",
+     "kind": "primary",
+     "what": "per-country EU laundered-oil checks",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Global Witness: EU purchases of laundered Russian oil (2023)",
+     "url": "https://www.globalwitness.org/en/campaigns/fossil-gas/eu-purchases-of-laundered-russian-oil-worth-an-estimated-11-billion-to-the-kremlin-in-2023/",
+     "kind": "secondary",
+     "what": "EU-level cross-check",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "laundered_r6": {
+   "model": false,
+   "links": [
+    {
+     "title": "CREA/CSD: A Kremlin pit stop - EU imported EUR 3bn of oil products from Turkish ports handling Russian oil",
+     "url": "https://energyandcleanair.org/wp/wp-content/uploads/2024/05/CREA_CSD_A-Kremlin-pit-stop_The-EU-imported-EUR-3-bn-of-oil-products-from-Turkish-ports-handling-Russian-oil.pdf",
+     "kind": "primary",
+     "what": "Turkish ports relabelling Russian fuel",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA/CSD: Turkish refineries analysis (Sep 2024)",
+     "url": "https://csd.eu/fileadmin/user_upload/publications_library/files/2024_9/FINAL_CREA_CSD_Analysis_Turkish-Refineries_09.2024.pdf",
+     "kind": "primary",
+     "what": "Russian crude in Turkish refinery output",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA Russia Fossil Tracker API: Russian exports to Brunei by commodity and month",
+     "url": "https://api.russiafossiltracker.com/v0/counter?destination_iso2=BN&aggregate_by=destination_iso2,commodity,month",
+     "kind": "primary",
+     "what": "Russian crude to Brunei's Hengyi refinery",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: Brunei's exports of HS 2710",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=96&cmdCode=2710&flowCode=X&period=2024",
+     "kind": "primary",
+     "what": "Hengyi fuel buyers",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA: August 2026 monthly analysis of Russian fossil fuel exports",
+     "url": "https://energyandcleanair.org/august-2026-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/",
+     "kind": "primary",
+     "what": "latest refiner and Brunei figures",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "KSE Institute: the refining loophole (June 2026)",
+     "url": "https://institute.kse.ua/wp-content/uploads/2026/06/kse_refining_loophole_eng_june_2026.pdf",
+     "kind": "primary",
+     "what": "cross-check",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "refining": {
+   "model": false,
+   "links": [
+    {
+     "title": "UN Comtrade API: Turkey's exports of HS 2710, 2022-2025",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=792&cmdCode=2710&flowCode=X&period=2024",
+     "kind": "primary",
+     "what": "Turkish fuel exports",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: India's exports of HS 2710, 2022-2025",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&cmdCode=2710&flowCode=X&period=2024",
+     "kind": "primary",
+     "what": "Indian fuel exports",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Tüpraş Q4 2024 results webcast presentation",
+     "url": "https://www.tupras.com.tr/assets/uploads/investor-relations/presentation/tupras-q424-results-webcast-presentation.pdf",
+     "kind": "primary",
+     "what": "Tüpraş crude slate and exports",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA/CSD: A Kremlin pit stop (Turkish ports)",
+     "url": "https://energyandcleanair.org/wp/wp-content/uploads/2024/06/CREA_CSD_A-Kremlin-pit-stop_The-EU-imported-EUR-3-bn-of-oil-products-from-Turkish-ports-handling-Russian-oil_Final.pdf",
+     "kind": "primary",
+     "what": "Russian crude refined in Turkey and exported",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CREA: Refined oil analysis (Feb 2024, rev. Apr 2024)",
+     "url": "https://energyandcleanair.org/wp/wp-content/uploads/2024/04/CREA_PCC_Refined-Oil-Analysis_19.02.2024_Rev_15.04.2024.pdf",
+     "kind": "primary",
+     "what": "Russian crude refined in India",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Global Witness: Shell and Vitol bring Russian-origin diesel into Europe",
+     "url": "https://globalwitness.org/en/campaigns/fossil-fuels/shell-vitol-bring-russian-origin-diesel-into-europe-despite-swearing-off-russian-oil/",
+     "kind": "secondary",
+     "what": "cross-check",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "companies": {
+   "model": false,
+   "links": [
+    {
+     "title": "KSE Institute, Leave Russia regular digest (July 2026)",
+     "url": "https://institute.kse.ua/wp-content/uploads/2026/07/leave-russia_regular-digest_09_07_26_eng_july_2026.pdf",
+     "kind": "primary",
+     "what": "taxes paid in Russia by foreign companies, by home country",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "B4Ukraine report 2025 (How global firms bankrolled Russia's war chest in 2024)",
+     "url": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+     "kind": "primary",
+     "what": "profit taxes paid in Russia by home country, 2024",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "B4Ukraine: The Business of Staying",
+     "url": "https://b4ukraine.org/pdf/BusinessOfStaying.pdf",
+     "kind": "primary",
+     "what": "taxes 2022-2023 by home country",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "KSE Institute: financial results of foreign business in Russia in 2023",
+     "url": "https://kse.ua/wp-content/uploads/2024/09/ENG_What-are-the-financial-results-of-foreign-business-in-Russia-in-2023_final.pdf",
+     "kind": "primary",
+     "what": "revenue, profit and taxes 2023",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Leave Russia company database (KSE)",
+     "url": "https://leave-russia.org/companies-that-exited",
+     "kind": "primary",
+     "what": "company counts used to allocate the rest",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "company_taxes_r6": {
+   "model": false,
+   "links": [
+    {
+     "title": "RBI Annual Financial Report 2024",
+     "url": "https://www.rbinternational.com/content/dam/rbi/ho/investors/results-reports/annual-reports/rbi/2025-02-25%202024%20RBI%20Annual%20Financial%20Report.pdf.coredownload.pdf",
+     "kind": "primary",
+     "what": "Raiffeisen's Russian segment tax and profit",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "OTP Bank investor presentation 4Q 2025",
+     "url": "https://www.otpbank.hu/static/portal/sw/file/OTP_Bank_Inv_Pres_4Q2025.pdf",
+     "kind": "primary",
+     "what": "OTP Russia profit",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Deutsche Bundesbank: direct investment statistics (May 2025)",
+     "url": "https://www.bundesbank.de/resource/blob/957944/3f44e3b0af199f69ebcd49ea5887bc01/472B63F073F071307366337C94F8C870/2025-05-16-14-13-59-direktinvestitionsstatistiken-data.pdf",
+     "kind": "primary",
+     "what": "German reinvested earnings in Russia",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "KSE Institute, Leave Russia regular digest (July 2026)",
+     "url": "https://institute.kse.ua/wp-content/uploads/2026/07/leave-russia_regular-digest_09_07_26_eng_july_2026.pdf",
+     "kind": "primary",
+     "what": "KSE tax split checked against these reports",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "B4Ukraine report 2025",
+     "url": "https://b4ukraine.org/pdf/B4Ukraine_Report_2025.pdf",
+     "kind": "primary",
+     "what": "taxes by company",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "bne IntelliNews: UniCredit doubles profit in Russia",
+     "url": "https://intellinews.com/unicredit-doubles-profit-to-213mn-in-russia-as-exit-pressure-mounts-324365",
+     "kind": "secondary",
+     "what": "UniCredit Russia profit",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    }
+   ],
+   "note": ""
+  },
+  "services": {
+   "model": false,
+   "links": [
+    {
+     "title": "OECD-WTO BaTiS SDMX API: services trade with Russia, all partners",
+     "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_BATIS@DF_BATIS,1.0/.RUS...S...?startPeriod=2010&endPeriod=2021",
+     "kind": "primary",
+     "what": "services exports to and imports from Russia per country (pre-2022 and modelled)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat bop_its6_det API: EU services trade with Russia",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/bop_its6_det?partner=RU&bop_item=S&currency=MIO_EUR",
+     "kind": "primary",
+     "what": "EU members' services credits and debits with Russia",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat bop_its6_det (table view)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/bop_its6_det/default/table",
+     "kind": "primary",
+     "what": "same, browsable",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Bank of Russia: balance of payments standard components (xlsx)",
+     "url": "https://www.cbr.ru/vfs/eng/statistics/credit_statistics/bop/bal_of_payments_standart_e.xlsx",
+     "kind": "primary",
+     "what": "Russia's total services trade (control total)",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "hidden": {
+   "model": false,
+   "links": [
+    {
+     "title": "SWISSAID: United Arab Emirates more than ever a hub for conflict gold",
+     "url": "https://www.swissaid.ch/en/media/united-arab-emirates-more-than-ever-a-hub-for-conflict-gold/",
+     "kind": "primary",
+     "what": "Russian gold to the UAE",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: Hong Kong gold (HS 7108) and total trade with Russia and hubs",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=344&period=2025&partnerCode=643&flowCode=M&cmdCode=7108,TOTAL",
+     "kind": "primary",
+     "what": "Hong Kong imports of Russian gold",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: all reporters' imports of gold (HS 7108) from the UAE, 2024",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2024&partnerCode=784&flowCode=M&cmdCode=7108",
+     "kind": "primary",
+     "what": "UAE gold re-exports",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Akchabar: lost gold - why the sale of 50 tonnes is not in Kyrgyz statistics",
+     "url": "http://www.akchabar.kg/en/article/nedvizhimost-mvcszetffpwgppcz/poteryannoe-zoloto-pochemu-v-naczstatistike-ne-otrazilas-prodazha-50-tonn-dragmetalla",
+     "kind": "secondary",
+     "what": "Kyrgyz gold gap",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Mining.com (Reuters): From Russia with gold - UAE cashes in as sanctions bite",
+     "url": "https://www.mining.com/web/from-russia-with-gold-uae-cashes-in-as-sanctions-bite/",
+     "kind": "secondary",
+     "what": "Russian gold to the UAE",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Elliptic: A7A5, the ruble-backed stablecoin",
+     "url": "https://www.elliptic.co/insights/a7a5-the-ruble-backed-stablecoin-100-billion-in-transactions/",
+     "kind": "secondary",
+     "what": "crypto payment channel volumes",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": "Rough indication (D); gold flows from UN Comtrade (primary), the rest from NGO and press reports."
+  },
+  "undisclosed": {
+   "model": false,
+   "links": [
+    {
+     "title": "Kiel Institute: Ukraine Support Tracker research note",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/Subject_Dossiers_Topics/Ukraine/Ukraine_Support_Tracker/Ukraine_Support_Tracker_-_Research_Note.pdf",
+     "kind": "primary",
+     "what": "what Kiel cannot see (undisclosed military aid)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kiel Institute: only EUR 41.7bn of Germany's EUR 100bn went to Ukraine",
+     "url": "https://www.kielinstitut.de/media/news/ukraine-support-tracker-only-eur-417-billion-of-germanys-eur-100-billion-went-to-ukraine/",
+     "kind": "primary",
+     "what": "Germany: undisclosed vs disclosed",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Public Sénat: France granted nearly EUR 3bn in aid in 2024 (Lecornu)",
+     "url": "https://www.publicsenat.fr/actualites/international/ukraine-avec-le-degel-des-avoirs-russes-la-france-aura-accorde-pres-de-3-milliards-deuros-daides-en-2024-annonce-sebastien-lecornu",
+     "kind": "secondary",
+     "what": "France: government total above Kiel",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "bne IntelliNews: Bulgaria secretly provided fuel and ammunition to Ukraine",
+     "url": "https://www.intellinews.com/bulgaria-secretly-provided-fuel-and-ammunition-to-ukraine-at-start-of-russian-invasion-267304/",
+     "kind": "secondary",
+     "what": "Bulgaria: undisclosed supplies",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    },
+    {
+     "title": "Militarnyi (Welt): a third of Ukrainian ammunition supplied from Bulgaria",
+     "url": "https://militarnyi.com/en/news/at-the-beginning-of-the-war-a-third-of-ukrainian-ammunition-was-supplied-from-bulgaria-welt/",
+     "kind": "secondary",
+     "what": "Bulgaria",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "IAI: Italy's military aid to Ukraine",
+     "url": "https://www.iai.it/en/node/22399",
+     "kind": "secondary",
+     "what": "Italy: classified packages",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Al Jazeera: Greece prepares a military deal with Ukraine",
+     "url": "https://www.aljazeera.com/news/2024/7/16/russian-anger-builds-as-greece-prepares-a-military-deal-with-ukraine",
+     "kind": "secondary",
+     "what": "Greece",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "private": {
+   "model": false,
+   "links": [
+    {
+     "title": "DZI press release 16 Apr 2025 (German donations for Ukraine)",
+     "url": "https://www.dzi.de/wp-content/uploads/2025/04/DZI_PM_16Apr2025.pdf",
+     "kind": "primary",
+     "what": "Germany: private donations",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Candid: Update - philanthropy's response to the Ukraine crisis",
+     "url": "https://candid.org/blogs/update-philanthropys-response-to-ukraine-crisis/",
+     "kind": "primary",
+     "what": "USA: foundation and corporate giving",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Civil Society / Fundraising: DEC Ukraine humanitarian appeal raised over GBP 400m",
+     "url": "https://fundraising.co.uk/2023/02/02/dec-ukraine-humanitarian-appeal-has-raised-over-400mn/",
+     "kind": "secondary",
+     "what": "UK: DEC appeal",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Hart van Nederland: Giro555 action closes with over EUR 184m for Ukraine",
+     "url": "https://www.hartvannederland.nl/oekraine/langstlopende-giro555-actie-ooit-is-klaar-ruim-184-miljoen-voor-oekraine",
+     "kind": "secondary",
+     "what": "Netherlands: Giro555",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Fondation de France: four years after the start of the war",
+     "url": "https://www.carenews.com/fondation-de-france/news/quatre-ans-apres-le-debut-de-la-guerre-la-fondation-de-france-reste",
+     "kind": "secondary",
+     "what": "France: Fondation de France",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Interfax-Ukraine: United24 totals",
+     "url": "https://interfax.com.ua/news/general/1069153.html",
+     "kind": "secondary",
+     "what": "donations to Ukrainian platforms by country",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Undisclosed aid and private donations",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/aid-refugees-military.md#undisclosed-aid-and-private-donations",
+     "kind": "method",
+     "what": "GDP-based model for countries without a national total",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": ""
+  },
+  "flowback_model": {
+   "model": true,
+   "links": [
+    {
+     "title": "Method: Flowback",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/aid-refugees-military.md#flowback",
+     "kind": "method",
+     "what": "own-industry share ranges and how they are applied",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    },
+    {
+     "title": "CSIS: How supporting Ukraine is revitalizing the US defense industrial base",
+     "url": "https://www.csis.org/analysis/how-supporting-ukraine-revitalizing-us-defense-industrial-base",
+     "kind": "secondary",
+     "what": "procurement evidence for the US share",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kiel Institute: Europe now leading spender on weapons production for Ukraine",
+     "url": "https://www.kielinstitut.de/media/news/ukraine-support-tracker-europe-now-leading-spender-on-weapons-production-for-ukraine/",
+     "kind": "primary",
+     "what": "procurement vs stocks evidence",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": "Modelled range; superseded in the current build by flowback_kiel and money_ledger (not referenced by any country in site/data.json)."
+  },
+  "csis": {
+   "model": false,
+   "links": [
+    {
+     "title": "CSIS: Where is the missing $100 billion in US aid for Ukraine? (Cancian, 11 Feb 2025)",
+     "url": "https://www.csis.org/analysis/where-missing-100-billion-us-aid-ukraine",
+     "kind": "primary",
+     "what": "about 86-90% of US military aid spent in the US",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CRS IF12040: U.S. Security Assistance to Ukraine Since 2022 (Aug 2026)",
+     "url": "https://www.everycrsreport.com/files/2026-08-31_IF12040_b732b458ee1fe7527c3424284c4b36137ae2ee3f.html",
+     "kind": "primary",
+     "what": "US funding lines (PDA, USAI, replenishment)",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "purl": {
+   "model": false,
+   "links": [
+    {
+     "title": "Government of Ukraine: a year of PURL - almost USD 7bn for critical weapons",
+     "url": "https://www.kmu.gov.ua/en/news/rik-purl-maizhe-7-mlrd-dlia-postavok-krytychnoho-ozbroiennia-dlia-ukrainy",
+     "kind": "primary",
+     "what": "PURL purchases from the US by year",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "NATO: Nordic and Baltic allies to fund joint USD 500m PURL package",
+     "url": "https://www.nato.int/en/news-and-events/articles/news/2025/11/13/nordic-and-baltic-allies-to-fund-joint-500m-purl-package-for-ukraine",
+     "kind": "primary",
+     "what": "PURL contributions by country",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kiel Policy Brief (Ukraine Support Tracker)",
+     "url": "https://assets.ctfassets.net/mj324dykhxwi/4lI3lGjlJWbRhgU4T8QoQR/b594ceaf1b7472a674917fbf8c8ca7c9/Kiel_Institute_KPB_Ukraine_Support_Tracker.pdf",
+     "kind": "primary",
+     "what": "PURL coding in the tracker",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Euromaidan Press: US envoy names Norway, Netherlands, Germany as PURL leaders",
+     "url": "https://euromaidanpress.com/2026/02/11/us-envoy-names-norway-netherlands-germany-as-purl-program-leaders-with-4-5-billion-in-weapons-commitments/",
+     "kind": "secondary",
+     "what": "PURL commitments by country",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    }
+   ],
+   "note": "Registered but not referenced by any country in the current site/data.json (PURL now flows through money_ledger)."
+  },
+  "flowback_default": {
+   "model": true,
+   "links": [
+    {
+     "title": "Method: Flowback (OWN_SHARE_DEFAULT 20/40/70%)",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/aid-refugees-military.md#flowback",
+     "kind": "method",
+     "what": "assumed own-industry share where no evidence exists",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    },
+    {
+     "title": "Method: Ranges and certainty letters",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/ranges.md#where-a-parts-range-comes-from",
+     "kind": "method",
+     "what": "how assumed ranges enter the totals",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": "Pure assumption of this project (20/40/70% own-industry share, certainty D) for donors with no evidence; no external source exists."
+  },
+  "flowback_kiel": {
+   "model": false,
+   "links": [
+    {
+     "title": "Kiel Institute, Ukraine Support Tracker Release 31 workbook (xlsx)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "kind": "primary",
+     "what": "sheet 'Bilateral Assistance, MAIN DATA': source_of_weapon, stock_location, procurement_location per item",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kiel Institute: Europe now leading spender on weapons production for Ukraine",
+     "url": "https://www.kielinstitut.de/media/news/ukraine-support-tracker-europe-now-leading-spender-on-weapons-production-for-ukraine/",
+     "kind": "primary",
+     "what": "procurement vs stocks",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Flowback",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/aid-refugees-military.md#flowback",
+     "kind": "method",
+     "what": "how coded shares become own-industry shares",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": ""
+  },
+  "eu_industry": {
+   "model": false,
+   "links": [
+    {
+     "title": "SIPRI fact sheet: The SIPRI Top 100 arms-producing companies, 2024 (Dec 2025)",
+     "url": "https://www.sipri.org/sites/default/files/2025-11/fs_2512_top_100_2024.pdf",
+     "kind": "primary",
+     "what": "arms production shares of EU members",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kiel Institute, Ukraine Support Tracker Release 31 workbook (xlsx)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "kind": "primary",
+     "what": "EU-level military aid items",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Flowback",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/aid-refugees-military.md#flowback",
+     "kind": "method",
+     "what": "EU arms slice by production share",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": "Registered but not referenced by any country in the current site/data.json (EU arms slice now inside money_ledger)."
+  },
+  "other_mil": {
+   "model": false,
+   "links": [
+    {
+     "title": "RUSI: Brothers in arms - assessing North Korea's contribution to Russia's war",
+     "url": "https://www.rusi.org/explore-our-research/publications/commentary/brothers-arms-assessing-north-koreas-contribution-russias-war-ukraine",
+     "kind": "primary",
+     "what": "North Korean munitions",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Anewz: Iran sold Russia USD 2.7bn in missiles, Western official says",
+     "url": "https://anewz.tv/region/middle-east/17155/iran-sold-russia-27bn-in-missiles-western-official-says/news",
+     "kind": "secondary",
+     "what": "Iranian missiles",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kyiv Independent: Belarus sent over 130,000 tons of munitions to Russia",
+     "url": "https://kyivindependent.com/investigation-belarus-sent-over-130-000-tons-of-munitions-to-russia-in-first-year-of-full-scale-war/",
+     "kind": "secondary",
+     "what": "Belarus munitions",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Military support to Russia",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/aid-refugees-military.md#military-support-to-russia",
+     "kind": "method",
+     "what": "superseded by military_rus_r6 for BLR, IRN, PRK",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": "Superseded: not referenced by any country in site/data.json (Belarus, Iran, North Korea now use military_rus_r6)."
+  },
+  "other_mil2": {
+   "model": false,
+   "links": [
+    {
+     "title": "Bloomberg: North Korea gave Russia up to USD 14 billion in military aid (INSS report)",
+     "url": "https://www.bloomberg.com/news/articles/2026-03-18/n-korea-gave-russia-up-to-14-billion-in-military-aid-report",
+     "kind": "secondary",
+     "what": "North Korea total",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    },
+    {
+     "title": "RFE/RL: Iran's role in Russia's war",
+     "url": "https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html",
+     "kind": "secondary",
+     "what": "Iran deliveries",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Military support to Russia",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/aid-refugees-military.md#military-support-to-russia",
+     "kind": "method",
+     "what": "superseded by military_rus_r6 for BLR, IRN, PRK",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": "Superseded: not referenced by any country in site/data.json (Belarus, Iran, North Korea now use military_rus_r6)."
+  },
+  "military_rus_r6": {
+   "model": false,
+   "links": [
+    {
+     "title": "NK News on INSS: North Korea likely earned USD 14.4bn from military deals with Russia",
+     "url": "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/",
+     "kind": "secondary",
+     "what": "North Korea: USD 7.7-14.4bn Aug 2023-Dec 2025",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "IStories with Open Source Centre: how North Korea armed Russia",
+     "url": "https://istories.media/en/stories/2026/03/16/how-north-korea-armed-russia/",
+     "kind": "secondary",
+     "what": "North Korea: 29,488 containers, 8-11m rounds",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kyiv Independent: ROK intelligence - >12m 152mm rounds",
+     "url": "https://kyivindependent.com/north-korea-supplied-russia-with-12-million-rounds-of-152mm-shells-south-korean-intel-estimates/",
+     "kind": "secondary",
+     "what": "North Korea volumes",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "The War Zone: what does a Shahed-136 really cost (leaked Alabuga contracts)",
+     "url": "https://twz.com/news-features/what-does-a-shahed-136-really-cost",
+     "kind": "secondary",
+     "what": "Iran: Shahed unit price",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Militarnyi: Iran sent Russia USD 2.7bn worth of missiles alone",
+     "url": "https://militarnyi.com/en/blogs/iran-sent-russia-2-7-billion-worth-of-missiles-alone/",
+     "kind": "secondary",
+     "what": "Iran: missile contracts",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Militarnyi: role of the Belarusian defence industry in Russian aggression",
+     "url": "https://militarnyi.com/en/articles/role-of-defense-industry-of-belarus-in-russian-aggression-against-ukraine/",
+     "kind": "secondary",
+     "what": "Belarus: >130,000 t from stocks",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "OCCRP: Belarus ramps up arms pipeline to Russia",
+     "url": "https://www.occrp.org/en/news/belarus-ramps-up-arms-pipeline-to-russia-amid-sanctions-gaps",
+     "kind": "secondary",
+     "what": "Belarus: USD 1.2bn components",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Euromaidan Press: Russia now pays more per shell (procurement prices)",
+     "url": "https://euromaidanpress.com/2026/01/27/ukrainian-drones-forced-a-change-russia-now-pays-more-per-shell-to-fire-from-farther-away/",
+     "kind": "secondary",
+     "what": "Russian 152mm unit prices for valuation",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    }
+   ],
+   "note": "No official statistics; intelligence estimates reported by press (INSS, ROK NIS/DIA, MSMT, HUR)."
+  },
+  "china_military": {
+   "model": false,
+   "links": [
+    {
+     "title": "KSE Institute sanctions: China and Russia (CHP)",
+     "url": "https://sanctions.kse.ua/?p=13285",
+     "kind": "primary",
+     "what": "Chinese dual-use goods",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "PBS/AP: US intelligence shows China surging equipment sales to Russia",
+     "url": "https://www.pbs.org/newshour/world/u-s-intelligence-shows-china-is-surging-equipment-sales-to-russia-to-help-war-effort-in-ukraine-ap-says",
+     "kind": "secondary",
+     "what": "US findings",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Brussels Times: EU sanctions Chinese companies including satellite firm",
+     "url": "https://www.brusselstimes.com/business/1109130/eu-sanctions-chinese-companies-including-global-satellite-giant",
+     "kind": "secondary",
+     "what": "satellite imagery",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "FDD: Ukraine alleges China provides satellite imagery to support Russian strikes",
+     "url": "https://www.fdd.org/analysis/2025/10/15/ukraine-alleges-china-provides-satellite-imagery-to-support-russian-strikes/",
+     "kind": "secondary",
+     "what": "satellite imagery",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    },
+    {
+     "title": "CP24/Reuters: Russians covertly trained by China return to fight",
+     "url": "https://www.cp24.com/news/world/2026/05/19/russians-covertly-trained-by-china-return-to-fight-in-ukraine-reuters-sources-say/",
+     "kind": "secondary",
+     "what": "training",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kathmandu Post/Reuters: Russia has secret war drones project in China",
+     "url": "https://kathmandupost.com/world/2024/09/25/russia-has-secret-war-drones-project-in-china-intel-sources-say",
+     "kind": "secondary",
+     "what": "drone project",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": "Rough indication (D); no official totals exist, only press reports of intelligence findings."
+  },
+  "people": {
+   "model": false,
+   "links": [
+    {
+     "title": "Kyiv Independent (South Korea NIS): nearly 11,000 North Korean troops in Kursk",
+     "url": "https://kyivindependent.com/nearly-11-000-north-korean-troops-stationed-in-russias-kursk-oblast-at-start-of-2026-media-reports/",
+     "kind": "secondary",
+     "what": "North Korean troops",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kyiv Independent (iStories, leaked Moscow EMIAS data): >1,500 foreign recruits from 48 countries",
+     "url": "https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+     "kind": "secondary",
+     "what": "Central Asian and other recruits",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "RBC-Ukraine: Russia's top source of foreign mercenaries (GUR/'I Want to Live')",
+     "url": "https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html",
+     "kind": "secondary",
+     "what": "recruits by country (belligerent source)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "NPR: Kenyans recruited by Russia",
+     "url": "https://www.npr.org/2026/02/19/g-s1-110724/russia-ukraine-war-kenyans-recruited",
+     "kind": "secondary",
+     "what": "Kenya",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kontan (Russian MoD list): foreign mercenaries fighting in Ukraine",
+     "url": "https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
+     "kind": "secondary",
+     "what": "volunteers for Ukraine by country (belligerent source)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "The Insider (Czech Radio): Czech volunteers approved",
+     "url": "https://theins.press/en/politics/281953",
+     "kind": "secondary",
+     "what": "Czech volunteers",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Responsible Statecraft: foreign fighters in Ukraine",
+     "url": "https://responsiblestatecraft.org/foreign-fighters-ukraine/",
+     "kind": "secondary",
+     "what": "total volunteers",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": "No official statistics exist; all figures are press reports of intelligence or belligerent claims (certainty D)."
+  },
+  "shipping": {
+   "model": false,
+   "links": [
+    {
+     "title": "KSE Institute: Russian oil tracker, July 2026",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/08/ROT_July-2026.pdf",
+     "kind": "primary",
+     "what": "tanker shares by flag/owner, freight",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Bank of Russia: balance of payments standard components (xlsx)",
+     "url": "https://www.cbr.ru/vfs/eng/statistics/credit_statistics/bop/bal_of_payments_standart_e.xlsx",
+     "kind": "primary",
+     "what": "Russia's transport services imports",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Baird Maritime: April shipping costs decline for Russian Urals crude to India",
+     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
+     "kind": "secondary",
+     "what": "freight rates",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "S&P Global: Russian shadow shipping - emerging new owners",
+     "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/russian-shadow-shipping-emerging-new-owners",
+     "kind": "secondary",
+     "what": "owners by country",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    },
+    {
+     "title": "CREA: July 2025 monthly analysis of Russian fossil fuel exports and sanctions",
+     "url": "https://energyandcleanair.org/july-2025-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/",
+     "kind": "primary",
+     "what": "shares carried by G7/EU vs shadow tankers",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Shipping",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/services-shipping-companies.md#shipping",
+     "kind": "method",
+     "what": "freight = barrels x freight rates, split by owner country",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": ""
+  },
+  "shadow_fleet": {
+   "model": false,
+   "links": [
+    {
+     "title": "KSE Institute: Shadow fleet tracker, September 2026",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2026/10/KSE_Shadow_Fleer_Tracker_SEP26.pdf",
+     "kind": "primary",
+     "what": "tankers by beneficial owner / commercial controller country",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "KSE Institute: Russian oil tracker, September 2026",
+     "url": "https://institute.kse.ua/wp-content/uploads/2026/10/rot_eng_september_2026.pdf",
+     "kind": "primary",
+     "what": "shadow vs G7 tanker shares",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "KSE Institute: Global shadow fleet (June 2024)",
+     "url": "https://sanctions.kse.ua/wp-content/uploads/2024/06/Global-Shadow-Fleet-June-2024.pdf",
+     "kind": "primary",
+     "what": "earlier owner breakdown",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Lloyd's List: Greeks shipping half of Russian crude",
+     "url": "https://www.lloydslist.com/LL1142145/Greeks-shipping-half-of-Russian-crude",
+     "kind": "secondary",
+     "what": "Greek share",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    },
+    {
+     "title": "US Treasury press release jy2121 (shadow fleet designations)",
+     "url": "https://home.treasury.gov/news/press-releases/jy2121",
+     "kind": "primary",
+     "what": "sanctions designations",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "EEAS: Council sanctions 9 shadow fleet enablers",
+     "url": "https://www.eeas.europa.eu/delegations/ukraine/russias-war-aggression-against-ukraine-council-sanctions-9-shadow-fleet-enablers_en",
+     "kind": "primary",
+     "what": "EU designations",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": "Registered but not referenced in site/data.json; its owner-country shares feed the shipping figures."
+  },
+  "reexports": {
+   "model": false,
+   "links": [
+    {
+     "title": "UN Comtrade API: UAE (784) trade with World and Russia by HS chapter, 2023",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=784&period=2023&partnerCode=643&flowCode=RX&cmdCode=AG2",
+     "kind": "primary",
+     "what": "UAE re-export records",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: Armenia (51) trade with World and Russia by HS chapter, 2023",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=51&period=2023&partnerCode=0,643&flowCode=X,M&cmdCode=AG2",
+     "kind": "primary",
+     "what": "Armenia hub flows",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: Kazakhstan (398) trade with World and Russia by HS chapter, 2023",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=398&period=2023&partnerCode=0,643&flowCode=X,M&cmdCode=AG2",
+     "kind": "primary",
+     "what": "Kazakhstan hub flows",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: Kyrgyzstan (417) trade with World and Russia by HS chapter, 2023",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=417&period=2023&partnerCode=0,643&flowCode=X,M&cmdCode=AG2",
+     "kind": "primary",
+     "what": "Kyrgyzstan hub flows",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: Turkey (792) trade with World and Russia by HS chapter, 2023",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=792&period=2023&partnerCode=0,643&flowCode=X,M&cmdCode=AG2",
+     "kind": "primary",
+     "what": "Turkey hub flows",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "EBRD: trade flows between Russia, the Caucasus and Central Asia",
+     "url": "https://www.ebrd.com/home/news-and-events/news/2023/ebrd-analyses-trade-flows-between-russia-caucasus-and-central-asia.html",
+     "kind": "primary",
+     "what": "hub shares cross-check",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Brookings: transshipments from the EU to Russia",
+     "url": "https://www.brookings.edu/articles/transshipments-from-the-eu-to-russia",
+     "kind": "secondary",
+     "what": "hub shares cross-check",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "residual": {
+   "model": false,
+   "links": [
+    {
+     "title": "UN WPP 2024: population indicators (standard projections, Excel)",
+     "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/EXCEL_FILES/1_General/WPP2024_GEN_F01_DEMOGRAPHIC_INDICATORS_COMPACT.xlsx",
+     "kind": "primary",
+     "what": "population for GDP gaps",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UNSD National Accounts - Analysis of Main Aggregates (AMA) file",
+     "url": "https://unstats.un.org/unsd/amaapi/api/file/2",
+     "kind": "primary",
+     "what": "GDP for countries missing in World Bank",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "World Bank API: GDP (NY.GDP.MKTP.CD) for Cuba, Eritrea, Syria and others",
+     "url": "https://api.worldbank.org/v2/country/CUB;ERI;SYR;GUM;ASM;MNP/indicator/NY.GDP.MKTP.CD",
+     "kind": "primary",
+     "what": "GDP gaps",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Residual gap",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/trade.md#residual-gap",
+     "kind": "method",
+     "what": "Russia's import gap by country of origin",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": "One example Comtrade query (Liechtenstein) returned no rows and was dropped."
+  },
+  "audit": {
+   "model": false,
+   "links": [
+    {
+     "title": "Kiel Institute, Ukraine Support Tracker Release 31 workbook (xlsx)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "kind": "primary",
+     "what": "aid per country checked",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat bop_its6_det (table view)",
+     "url": "https://ec.europa.eu/eurostat/databrowser/view/bop_its6_det/default/table",
+     "kind": "primary",
+     "what": "services checked",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "B4Ukraine: how global firms bankrolled Russia's war chest in 2024",
+     "url": "https://b4ukraine.org/whats-new/how-global-firms-bankrolled-russias-war-chest-in-2024",
+     "kind": "primary",
+     "what": "company taxes checked",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UNHCR Refugee Data Finder API (Ukrainian refugees)",
+     "url": "https://api.unhcr.org/population/v1/population/?coo=UKR&coa_all=true",
+     "kind": "primary",
+     "what": "refugees checked",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat Comext DS-045409 API",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=A&reporter=HU&partner=RU&product=27&flow=1&indicators=VALUE_IN_EUROS&time=2024",
+     "kind": "primary",
+     "what": "imports from Russia checked (example: Hungary HS 27, 2024)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Poland MFA: Poland's support 1000 days after Russia's aggression",
+     "url": "https://www.gov.pl/web/japonia/polands-support-1000-days-after-russias-aggression-against-ukraine",
+     "kind": "primary",
+     "what": "Poland aid total",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "narrow": {
+   "model": false,
+   "links": [
+    {
+     "title": "Bank of Russia: External trade in services 2021 (PDF)",
+     "url": "https://cbr.ru/Collection/Collection/File/43429/External_Trade_in_Services_2021.pdf",
+     "kind": "primary",
+     "what": "services with CIS partners, pre-war base",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "National Bank of Belarus: foreign trade dynamics (xls)",
+     "url": "https://www.nbrb.by/statistics/foreigntrade/dynamics.xls",
+     "kind": "primary",
+     "what": "Belarus trade with Russia",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Belstat: exports/imports by country 2021 (xlsx)",
+     "url": "https://www.belstat.gov.by/upload-belstat/upload-belstat-excel/Oficial_statistika/Godovwe/ExImS2-2021.xlsx",
+     "kind": "primary",
+     "what": "Belarus trade with Russia, 2021",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: Armenia monthly imports from Russia, Aug 2026",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=51&partnerCode=643&flowCode=M&period=202608&cmdCode=TOTAL",
+     "kind": "primary",
+     "what": "Armenia 2026",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat bop_its6_det API: Cyprus services with Russia",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/bop_its6_det?geo=CY&partner=RU&currency=MIO_EUR&bop_item=S",
+     "kind": "primary",
+     "what": "Cyprus services",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Statistics Agency of Uzbekistan press release",
+     "url": "https://stat.uz/img/news/press-reliz-rus_p38034.pdf",
+     "kind": "primary",
+     "what": "Uzbekistan trade with Russia",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "EAEU Commission: mutual trade statistics, time series",
+     "url": "https://eec.eaeunion.org/comission/department/dep_stat/tradestat/time_series/vzaimnaya-torgovlya-tovarami-dinamicheskie-ryady",
+     "kind": "primary",
+     "what": "intra-EAEU trade",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Go Türkiye: Türkiye's 2025 tourism results",
+     "url": "https://goturkiye.com/branding/press-releases/turkiye-announced-its-2025-tourism-results",
+     "kind": "primary",
+     "what": "Russian tourist arrivals in Turkey",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "audit2": {
+   "model": false,
+   "links": [
+    {
+     "title": "SWISSAID: UAE more than ever a hub for conflict gold",
+     "url": "https://www.swissaid.ch/en/media/united-arab-emirates-more-than-ever-a-hub-for-conflict-gold/",
+     "kind": "primary",
+     "what": "UAE gold",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: UAE imports from Russia and Armenia (TOTAL, 71, 7108, 27), 2023",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=784&period=2023&partnerCode=643,51&flowCode=M&cmdCode=TOTAL,71,7108,27",
+     "kind": "primary",
+     "what": "UAE gold and fuel",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: Armenia gold exports (7108) to UAE, HK, China, Russia, 2024",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=51&period=2024&partnerCode=784,344,156,643&flowCode=X&cmdCode=7108",
+     "kind": "primary",
+     "what": "gold route via Armenia",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat nrg_ti_oil API: Baltic/Finnish oil imports 2021",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ti_oil?format=JSON&geo=EE&geo=LV&geo=LT&geo=FI&time=2021&siec=O4100_TOT&siec=O4600&unit=THS_T",
+     "kind": "primary",
+     "what": "border-priced imports",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Statistics Lithuania: Business in Lithuania 2022 - trade",
+     "url": "https://osp.stat.gov.lt/verslas-lietuvoje-2022/prekyba",
+     "kind": "primary",
+     "what": "Lithuanian re-exports to Russia",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    },
+    {
+     "title": "Kiel Institute: Ukraine Support Tracker research note",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/Subject_Dossiers_Topics/Ukraine/Ukraine_Support_Tracker/Ukraine_Support_Tracker_-_Research_Note.pdf",
+     "kind": "primary",
+     "what": "undisclosed aid",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Mining.com: Hong Kong ousts Dubai as biggest hub for Russian gold trade",
+     "url": "https://www.mining.com/web/hong-kong-ousts-dubai-as-biggest-hub-for-russian-gold-trade/",
+     "kind": "secondary",
+     "what": "gold hubs",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "windfall": {
+   "model": false,
+   "links": [
+    {
+     "title": "IMF WEO Update January 2022 (text)",
+     "url": "https://www.imf.org/-/media/files/publications/weo/2022/update/january/english/text.pdf",
+     "kind": "primary",
+     "what": "pre-invasion oil price assumptions",
+     "confirmed": true,
+     "checked": "confirmed by web search (site blocks automated fetch)"
+    },
+    {
+     "title": "World Bank Commodity Markets Outlook October 2021, forecasts",
+     "url": "https://thedocs.worldbank.org/en/doc/ff5bad98f52ffa2457136bbef5703ddb-0350012021/related/CMO-October-2021-forecasts.pdf",
+     "kind": "primary",
+     "what": "pre-invasion oil, gas, coal forecasts",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "EIA Short-Term Energy Outlook January 2022 (base xlsx)",
+     "url": "https://www.eia.gov/outlooks/steo/archives/jan22_base.xlsx",
+     "kind": "primary",
+     "what": "Brent and diesel forecasts",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurosystem staff projections December 2021 (PDF)",
+     "url": "https://www.ecb.europa.eu/pub/pdf/other/ecb.projections202112_eurosystemstaff~32e481d712.en.pdf",
+     "kind": "primary",
+     "what": "futures-based oil assumptions",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "European Commission Winter 2022 interim forecast (ip169)",
+     "url": "https://economy-finance.ec.europa.eu/system/files/2022-02/ip169_en.pdf",
+     "kind": "primary",
+     "what": "oil and gas futures",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "European Commission Spring 2022 forecast (ip173)",
+     "url": "https://economy-finance.ec.europa.eu/system/files/2022-05/ip173_en.pdf",
+     "kind": "primary",
+     "what": "Autumn 2021 TTF assumptions",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "FRED: Australian coal price (PCOALAUUSDM)",
+     "url": "https://fred.stlouisfed.org/series/PCOALAUUSDM",
+     "kind": "primary",
+     "what": "actual coal prices",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: War-time windfall",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/prices.md#war-time-windfall",
+     "kind": "method",
+     "what": "windfall = payments minus volume at no-war prices",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": "Computed by this project from pre-invasion forecasts (primary) and actual prices; method doc linked."
+  },
+  "trend": {
+   "model": false,
+   "links": [
+    {
+     "title": "UN Comtrade API (annual HS, all reporters vs Russia, 2012)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2012&partnerCode=643&flowCode=M&cmdCode=TOTAL",
+     "kind": "primary",
+     "what": "pre-war trade levels 2012-2021 (one query per year and flow)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat sts_inpi_a API: euro-area import price index",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sts_inpi_a?format=JSON&geo=EA20&unit=I21&indic_bt=PRC_IMP",
+     "kind": "primary",
+     "what": "deflator for real terms",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "FRED: Brent crude (DCOILBRENTEU)",
+     "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
+     "kind": "primary",
+     "what": "oil deflator",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: the counterfactual models",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/counterfactual.md#3-the-16-models-of-generation-4",
+     "kind": "method",
+     "what": "trend model with 3-year half-life",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": "Model output (trend continued with 3-year half-life) built on UN Comtrade data."
+  },
+  "gas_prices": {
+   "model": false,
+   "links": [
+    {
+     "title": "Eurostat Comext DS-045409 API: monthly gas imports from Russia (HS 271121, 271111), value and quantity",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=M&partner=RU&product=271121&product=271111&flow=1&indicators=VALUE_IN_EUROS&indicators=QUANTITY_IN_100KG&sinceTimePeriod=2021-01",
+     "kind": "primary",
+     "what": "unit values per EU member",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: imports of HS 2711 from Russia, 2024",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2024&partnerCode=643&flowCode=M&cmdCode=2711,271111,271121",
+     "kind": "primary",
+     "what": "unit values outside the EU",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "FRED: Brent (POILBREUSDM)",
+     "url": "https://fred.stlouisfed.org/series/POILBREUSDM",
+     "kind": "primary",
+     "what": "oil-formula estimates",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "OSW: new Hungarian-Russian gas agreement",
+     "url": "https://www.osw.waw.pl/en/publikacje/analyses/2021-09-29/new-hungarian-russian-gas-agreement",
+     "kind": "secondary",
+     "what": "Hungary contract",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Prime Press: price of Russian gas for Belarus in 2021",
+     "url": "https://primepress.by/news/ekonomika/price_of_russia_s_gas_for_belarus_up_1_2_to_128_5_per_1_000_cubic_meters_in_2021-28396/",
+     "kind": "secondary",
+     "what": "Belarus contract price",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Gas prices per country",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/prices.md#gas-prices-per-country",
+     "kind": "method",
+     "what": "how per-country prices are set",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": "Not referenced directly in site/data.json; feeds the price indices behind windfall and trend."
+  },
+  "trend2": {
+   "model": false,
+   "links": [
+    {
+     "title": "OECD-WTO BaTiS SDMX API: services trade with Russia 2010-2021",
+     "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_BATIS@DF_BATIS,1.0/.RUS...S...?startPeriod=2010&endPeriod=2021",
+     "kind": "primary",
+     "what": "pre-war services trend",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat bop_its6_det API: services and travel with Russia",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/bop_its6_det?partner=RU&bop_item=S&bop_item=SD&currency=MIO_EUR",
+     "kind": "primary",
+     "what": "travel series",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Bank of Russia: balance of payments standard components (xlsx)",
+     "url": "https://www.cbr.ru/vfs/statistics/credit_statistics/bop/bal_of_payments_standart.xlsx",
+     "kind": "primary",
+     "what": "Russian services totals",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "IMF DIP SDMX: inward direct investment in Russia",
+     "url": "https://api.imf.org/external/sdmx/2.1/data/IMF.STA,DIP/RUS..INWD_D_NETLA_FALL_ALL..A",
+     "kind": "primary",
+     "what": "foreign companies in Russia trend",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Morport: Russian seaports cargo turnover 2021",
+     "url": "https://www.morport.com/rus/news/gruzooborot-morskih-portov-rossii-za-12-mesyacev-2021-g",
+     "kind": "primary",
+     "what": "seaborne exports trend",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "World Bank API: Russia GDP (current USD)",
+     "url": "https://api.worldbank.org/v2/country/RUS/indicator/NY.GDP.MKTP.CD",
+     "kind": "primary",
+     "what": "scaling",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "counterfactual": {
+   "model": false,
+   "links": [
+    {
+     "title": "UN Comtrade API (annual HS, all reporters vs Russia, 2021)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2021&partnerCode=643&flowCode=X&cmdCode=TOTAL",
+     "kind": "primary",
+     "what": "history used for the back-tests (one query per year/flow)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "World Bank Commodity Markets (Pink Sheet)",
+     "url": "https://www.worldbank.org/en/research/commodity-markets",
+     "kind": "primary",
+     "what": "commodity prices",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "World Bank API: GDP (NY.GDP.MKTP.KD)",
+     "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.KD",
+     "kind": "primary",
+     "what": "WDI covariates",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Voeten et al., United Nations General Assembly Voting Data (Harvard Dataverse)",
+     "url": "https://doi.org/10.7910/DVN/LEJUQZ",
+     "kind": "primary",
+     "what": "UN voting covariate",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (202)"
+    },
+    {
+     "title": "Method: the counterfactual models",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/counterfactual.md#6-which-model-is-used-for-which-flow",
+     "kind": "method",
+     "what": "which model is used for each flow",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": "Model output built on primary data; per-flow model choice is in the method doc."
+  },
+  "ua_trade_cf": {
+   "model": false,
+   "links": [
+    {
+     "title": "DBnomics: IMF Direction of Trade Statistics (DOT)",
+     "url": "https://db.nomics.world/IMF/DOT",
+     "kind": "primary",
+     "what": "Ukraine's trade by partner, history",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "DBnomics: IMF World Economic Outlook (WEO) vintages",
+     "url": "https://db.nomics.world/IMF/WEO:2021-10",
+     "kind": "primary",
+     "what": "pre-war forecasts",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "World Bank: GDP constant USD (NY.GDP.MKTP.KD)",
+     "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD",
+     "kind": "primary",
+     "what": "covariate",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Trade with Ukraine (round 6)",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/counterfactual.md#trade-with-ukraine-round-6",
+     "kind": "method",
+     "what": "2021 held flat for both flows",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": ""
+  },
+  "cf_bands": {
+   "model": true,
+   "links": [
+    {
+     "title": "Method: How the prediction's error enters the ranges",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/counterfactual.md#7-how-the-predictions-error-enters-the-ranges",
+     "kind": "method",
+     "what": "cumulative bands from back-test errors",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    },
+    {
+     "title": "Method: Russia's neighbours and Moldova (round 6)",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/counterfactual.md#russias-neighbours-and-moldova-round-6",
+     "kind": "method",
+     "what": "own bands for Mongolia, Yemen, Tajikistan, Moldova",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    },
+    {
+     "title": "UN Comtrade API: Moldova imports from Russia by product, 2019",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=498&period=2019&flowCode=M&partnerCode=643&cmdCode=99,2711,27,31,TOTAL",
+     "kind": "primary",
+     "what": "Moldova gas recording break (input to B3)",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": "Ranges derived by this project from back-test errors of the counterfactual models (research/2026-10/gaps/cf_bands.json); the only external input is UN Comtrade history."
+  },
+  "weapons_value": {
+   "model": false,
+   "links": [
+    {
+     "title": "GAO-24-106934: Ukraine assistance - actions needed to properly value defense articles (PDF)",
+     "url": "https://www.gao.gov/products/gao-24-106934",
+     "kind": "primary",
+     "what": "US drawdown valuation",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "DoD OIG DODIG-2024-095: revaluation of PDA support to Ukraine",
+     "url": "https://www.dodig.mil/reports.html/Article/3805413/audit-of-the-dods-revaluation-of-the-support-provided-to-ukraine-through-presid/",
+     "kind": "primary",
+     "what": "USD 8.1bn total overvaluation",
+     "confirmed": true,
+     "checked": "confirmed by web search (site blocks automated fetch)"
+    },
+    {
+     "title": "UK NAO: Investigation into military support for Ukraine (summary)",
+     "url": "https://nao.org.uk/wp-content/uploads/2024/09/Investigation-into-military-support-for-Ukraine-Summary-1.pdf",
+     "kind": "primary",
+     "what": "stock book value GBP 171.5m vs replacement GBP 2.71bn",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "NKÚ Slovakia: donating military property to Ukraine",
+     "url": "https://www.nku.gov.sk/web/nku-en/-/slovakia-has-actively-helped-ukraine-by-donating-military-property",
+     "kind": "primary",
+     "what": "S-300 residual value vs EPF claim",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "DSCA: Excess Defense Articles",
+     "url": "https://www.dsca.mil/Programs/Defense-Trade-and-Arms-Transfers/Excess-Defense-Articles",
+     "kind": "primary",
+     "what": "used-equipment price 5-50% of acquisition value",
+     "confirmed": true,
+     "checked": "confirmed by web search (site blocks automated fetch)"
+    },
+    {
+     "title": "ERR/Politico: Estonia using EPF to modernise its military",
+     "url": "https://news.err.ee/1608928883/politico-estonia-using-epf-to-modernize-its-military",
+     "kind": "secondary",
+     "what": "EPF claims at new price",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kiel Institute, Ukraine Support Tracker Release 31 workbook (xlsx)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "kind": "primary",
+     "what": "recorded value per row (MAIN DATA, Price List)",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "state_finance": {
+   "model": false,
+   "links": [
+    {
+     "title": "World Bank IDS API: interest paid to Russia as bilateral creditor (counterpart 087)",
+     "url": "https://api.worldbank.org/v2/sources/6/country/all/series/DT.INT.BLAT.CD/counterpart-area/087",
+     "kind": "primary",
+     "what": "Russia's state loans by borrower",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "TBS News: Rooppur plant payment hurdle",
+     "url": "https://www.tbsnews.net/economy/rooppur-plant-payment-hurdle-sticks-it-1097121",
+     "kind": "secondary",
+     "what": "Bangladesh Rooppur loan",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "World Nuclear News: Hungary delays Paks II loan repayment",
+     "url": "https://www.world-nuclear-news.org/Articles/Hungary-gets-agreement-to-delay-Paks-II-loan-repay",
+     "kind": "secondary",
+     "what": "Hungary Paks II",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Paks II Ltd: Hungary begins early repayment of the loan",
+     "url": "https://www.paks2.hu/en/web/paks-2-en/w/hungary-begins-the-early-repayment-of-the-loan",
+     "kind": "primary",
+     "what": "Hungary Paks II",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Egypt Independent: USD 25bn Russian loan for Dabaa",
+     "url": "https://www.egyptindependent.com/25-bn-russian-funds-egypt-s-first-nuclear-plant-newspaper/",
+     "kind": "secondary",
+     "what": "Egypt Dabaa loan terms",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: imports from Russia of nuclear goods (HS 2844, 8401), 2024",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2024&partnerCode=643&flowCode=M&cmdCode=2844,8401",
+     "kind": "primary",
+     "what": "Rosatom deliveries in customs",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Nuclear projects and state loans from Russia",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia",
+     "kind": "method",
+     "what": "drawdowns left out",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": ""
+  },
+  "company_flows": {
+   "model": false,
+   "links": [
+    {
+     "title": "KSE Institute: assessing foreign companies' direct losses in Russia (Mar 2025)",
+     "url": "https://kse.ua/wp-content/uploads/2025/03/KSE_Assessing-Foreign-Companies-Losses-in-Russia.pdf",
+     "kind": "primary",
+     "what": "write-offs and seizures by home country",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Bank of Russia: balance of payments standard components (xlsx)",
+     "url": "https://www.cbr.ru/vfs/eng/statistics/credit_statistics/bop/bal_of_payments_standart_e.xlsx",
+     "kind": "primary",
+     "what": "income paid abroad",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Bank of Russia: outward direct investment by country 2021 (CDIS)",
+     "url": "https://www.cbr.ru/vfs/eng/statistics/credit_statistics/direct_investment/CDIS_Out_e_2021.xlsx",
+     "kind": "primary",
+     "what": "Russian-owned firms abroad by host",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Izvestia: exit contributions RUB 155.8bn Jan-Nov 2024",
+     "url": "https://iz.ru/en/node/1802960",
+     "kind": "secondary",
+     "what": "exit contributions to the Russian budget",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    },
+    {
+     "title": "Meduza: voluntary contributions 2025 RUB 251.3bn; 2026 forecast",
+     "url": "https://meduza.io/en/news/2026/10/01/putin-reportedly-asked-russian-business-leaders-to-help-fund-the-war-moscow-expects-471-billion-rubles-in-voluntary-contributions-from-companies-this-year",
+     "kind": "secondary",
+     "what": "budget line for exit payments",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "RBI: Rasperia second-instance verdict (IR release)",
+     "url": "https://www.rbinternational.com/content/dam/rbi/ho/investors/news/ir-releases/rasperia-verdict/2025-04-24%20Rasperia%20second%20instance%20verdict%20IR%20release%20RBI.pdf.coredownload.pdf",
+     "kind": "primary",
+     "what": "EUR 2.044bn forced debit",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat bop_fdi6_inc API: FDI income",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/bop_fdi6_inc",
+     "kind": "primary",
+     "what": "profits of Russian-owned firms in the EU",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Companies leaving Russia",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/russia-state-and-companies.md#companies-leaving-russia",
+     "kind": "method",
+     "what": "exit contribution and forced discount",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": ""
+  },
+  "russian_owned_r10": {
+   "model": false,
+   "links": [
+    {
+     "title": "Irish Times: Aughinish Alumina records profits of EUR 103m",
+     "url": "https://www.irishtimes.com/business/2026/04/03/russian-owned-aughinish-alumina-plant-in-limerick-records-profits-of-103m/",
+     "kind": "secondary",
+     "what": "Ireland: Aughinish (Rusal) profit",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "RTE: Limerick alumina refining results",
+     "url": "https://www.rte.ie/news/business/2024/1212/1486128-limerick-alumina-refining-ltd-results/",
+     "kind": "secondary",
+     "what": "Ireland: losses and parent support",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat Comext API: Irish alumina (HS 281820) exports to Russia",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=A&reporter=IE&partner=RU&product=281820&flow=2&indicators=VALUE_IN_EUROS",
+     "kind": "primary",
+     "what": "Aughinish sales to Russia",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Largest Companies: Kubikenborg Aluminium AB key figures",
+     "url": "https://largestcompanies.com/company/Kubikenborg-Aluminium-AB-21997/closing-figures-and-key-ratios",
+     "kind": "secondary",
+     "what": "Sweden: Kubal",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Companyweb: EuroChem Antwerpen NV accounts",
+     "url": "https://www.companyweb.be/en/0837473452/euro-chem-antwerpen",
+     "kind": "secondary",
+     "what": "Belgium: EuroChem",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "NLMK: NLMK Group and SOGEPA equalise holdings in NBH",
+     "url": "https://eu.nlmk.com/en/media-center/news-groups/nlmk-group-and-sogepa-equalize-their-holdings-in-nlmk-belgium-holdings-sa/",
+     "kind": "primary",
+     "what": "Belgium/Denmark/Italy: NLMK Europe",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "tax.lt: Lifosa AB profit table",
+     "url": "https://tax.lt/imones/6109-lifosa-ab",
+     "kind": "secondary",
+     "what": "Lithuania: Lifosa (EuroChem)",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    }
+   ],
+   "note": "Company accounts were read via press reports and company registers; the Irish CRO register search page is not a specific filing and was left out."
+  },
+  "refugees_net": {
+   "model": false,
+   "links": [
+    {
+     "title": "MPSV press release 24 Feb 2025: balance of Ukrainian refugees",
+     "url": "https://mpsv.gov.cz/cms/documents/960141c9-77fe-a2a0-08eb-0935789a6a7e/TZ_bilance_UA_24022025.pdf",
+     "kind": "primary",
+     "what": "Czechia: revenue vs expenditure",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "MPSV press release 23 Feb 2024",
+     "url": "https://mpsv.gov.cz/documents/20142/7095934/TZ_bilance_UA_23022024_final.pdf",
+     "kind": "primary",
+     "what": "Czechia 2022-2023",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Polish Ministry of Finance answer to interpellation 15498",
+     "url": "https://api.sejm.gov.pl/sejm/term10/interpellations/attachment/ATTDTDHQD/i15498-o1.pdf",
+     "kind": "primary",
+     "what": "Poland: revenue from Ukrainian citizens PLN 15.57/21.49/26.69bn",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Council for Cooperation with Ukraine: Polska Pomoc Ukrainie 2022-2023",
+     "url": "https://www.gov.pl/attachment/d423e7e2-300b-480b-9dc2-208572392236",
+     "kind": "primary",
+     "what": "Poland: Aid Fund spending",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Bundestag hib: Ukrainians in employment",
+     "url": "https://www.bundestag.de/presse/hib/kurzmeldungen-1166450",
+     "kind": "primary",
+     "what": "Germany: employment",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "OECD/EMN Finland: employment of temporary protection holders",
+     "url": "https://emn.fi/wp-content/uploads/Ave-Lauren_OECD_EMNFinland_2024_v2.pdf",
+     "kind": "primary",
+     "what": "employment rates by country",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "OECD Taxing Wages 2025",
+     "url": "https://www.oecd.org/en/publications/2025/04/taxing-wages-2025_20d1a01d.html",
+     "kind": "primary",
+     "what": "tax wedges",
+     "confirmed": true,
+     "checked": "confirmed by web search (site blocks automated fetch)"
+    }
+   ],
+   "note": "Not referenced directly in site/data.json; feeds refugee net cost."
+  },
+  "ua_arms": {
+   "model": false,
+   "links": [
+    {
+     "title": "Ekonomický deník: Czech MIT report 2025 - arms exports CZK 112.6bn, Ukraine 50.7bn",
+     "url": "https://ekonomickydenik.cz/ceske-firmy-vojensky-material-112-miliard/",
+     "kind": "secondary",
+     "what": "Czech exports to Ukraine 2025",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Seznam Zprávy: Czech MIT report 2024",
+     "url": "https://www.seznamzpravy.cz/clanek/domaci-zivot-v-cesku-vyvoz-vojenskeho-materialu-z-cr-loni-mezirocne-stoupl-o-86-procent-282612",
+     "kind": "secondary",
+     "what": "Czech exports to Ukraine 2024",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Radio Prague: Czech military exports 2023",
+     "url": "https://english.radio.cz/node/8821924",
+     "kind": "secondary",
+     "what": "Czech exports to Ukraine 2023",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    },
+    {
+     "title": "LIGA.net: CSG on Czech initiative shells and cost",
+     "url": "https://news.liga.net/en/politics/news/the-arms-giant-disclosed-how-many-shells-ukraine-received-under-the-czech-initiative-and-their-cost",
+     "kind": "secondary",
+     "what": "Czech ammunition initiative value",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Novinite: Bulgarian defence exports",
+     "url": "https://www.novinite.com/articles/239281/Bulgaria",
+     "kind": "secondary",
+     "what": "Bulgaria",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: exports to Ukraine of arms (HS 93, 8710, 8806)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?partnerCode=804&flowCode=X&cmdCode=93,8710,8806&period=2024",
+     "kind": "primary",
+     "what": "arms sales already in customs (removed)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kiel Institute, Ukraine Support Tracker Release 31 workbook (xlsx)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "kind": "primary",
+     "what": "procurement_location, source_of_weapon",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": "Not referenced directly in site/data.json; feeds money_ledger flowback. Czech ministry (MPO) licence reports themselves were not linked in the research files; figures come via press reports."
+  },
+  "loans_value": {
+   "model": false,
+   "links": [
+    {
+     "title": "Kiel Institute, Ukraine Support Tracker Release 31 workbook (xlsx)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "kind": "primary",
+     "what": "MAIN DATA: loan_mat, loan_int, loan_gra",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Regulation (EU) 2024/792 (Ukraine Facility)",
+     "url": "https://eur-lex.europa.eu/eli/reg/2024/792/oj",
+     "kind": "primary",
+     "what": "maturity and interest subsidy",
+     "confirmed": true,
+     "checked": "confirmed by web search (site blocks automated fetch)"
+    },
+    {
+     "title": "Decision (EU) 2022/1628 (exceptional MFA)",
+     "url": "https://eur-lex.europa.eu/eli/dec/2022/1628/oj",
+     "kind": "primary",
+     "what": "interest rate subsidy",
+     "confirmed": true,
+     "checked": "confirmed by web search (site blocks automated fetch)"
+    },
+    {
+     "title": "Council ST-5738-2026: Ukraine Support Loan",
+     "url": "https://data.consilium.europa.eu/doc/document/ST-5738-2026-INIT/en/pdf",
+     "kind": "primary",
+     "what": "repaid from reparations",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "ICU Weekly Insight 26 Jan 2026 (Eurobond yields)",
+     "url": "https://icu.ua/download/8460/ICUWeeklyInsight-20260126-Eng.pdf",
+     "kind": "primary",
+     "what": "discount-rate evidence: Ukraine's Eurobond yields",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "IMF: members' quotas and voting power",
+     "url": "https://www.imf.org/en/About/executive-board/members-quotas",
+     "kind": "primary",
+     "what": "IMF lending by shareholding",
+     "confirmed": true,
+     "checked": "confirmed by web search (site blocks automated fetch)"
+    },
+    {
+     "title": "World Bank: IBRD country voting table",
+     "url": "https://thedocs.worldbank.org/en/doc/a16374a6cee037e274c5e932bf9f88c6-0330032021/original/IBRDCountryVotingTable.pdf",
+     "kind": "primary",
+     "what": "World Bank shareholding",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "EBRD: shareholders and board of governors",
+     "url": "https://www.ebrd.com/shareholders-and-board-of-governors.html",
+     "kind": "primary",
+     "what": "EBRD shareholding",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "money_ledger": {
+   "model": false,
+   "links": [
+    {
+     "title": "Kiel Institute, Ukraine Support Tracker Release 31 workbook (xlsx)",
+     "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+     "kind": "primary",
+     "what": "item-level source_of_weapon, stock_location",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CSIS: Where is the missing $100 billion in US aid for Ukraine?",
+     "url": "https://www.csis.org/analysis/where-missing-100-billion-us-aid-ukraine",
+     "kind": "primary",
+     "what": "US share spent at home",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CRS IF12040: U.S. Security Assistance to Ukraine Since 2022",
+     "url": "https://www.everycrsreport.com/files/2026-08-31_IF12040_b732b458ee1fe7527c3424284c4b36137ae2ee3f.html",
+     "kind": "primary",
+     "what": "US funding lines",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "DoD OIG DODIG-2025-137: replenishment funds",
+     "url": "https://www.dodig.mil/reports.html/Article/4274648/audit-of-controls-over-funds-provided-for-the-replenishment-of-defense-articles/",
+     "kind": "primary",
+     "what": "USD 39.3bn replenishment",
+     "confirmed": true,
+     "checked": "confirmed by web search (site blocks automated fetch)"
+    },
+    {
+     "title": "Special IG Operation Atlantic Resolve, quarterly report to 30 Jun 2026",
+     "url": "https://www.oversight.gov/sites/default/files/documents/reports/2026-08/OAR_Q3_Jun2026_Final_508%20SECURE_0.pdf",
+     "kind": "primary",
+     "what": "US obligated/disbursed",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Bundesregierung: military deliveries to Ukraine",
+     "url": "https://www.bundesregierung.de/breg-de/themen/krieg-in-der-ukraine/lieferungen-ukraine-2054514",
+     "kind": "primary",
+     "what": "Germany replacement value",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Ukraine Ministry of Finance (KMU): PEACE project financing",
+     "url": "https://www.kmu.gov.ua/en/news/minfin-43-mlrd-dol-ssha-profinansovano-na-priorytetni-vydatky-i-kvartalu-2023-roku-v-ramkakh-proektu-svitovoho-banku-peace",
+     "kind": "primary",
+     "what": "budget support spent in Ukraine",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "DSCA: Ukraine Patriot air defense system sustainment",
+     "url": "https://www.dsca.mil/Press-Media/Major-Arms-Sales/Article-Display/Article/4290514/ukraine-patriot-air-defense-system-sustainment",
+     "kind": "primary",
+     "what": "DSCA notification",
+     "confirmed": true,
+     "checked": "confirmed by web search (site blocks automated fetch)"
+    }
+   ],
+   "note": ""
+  },
+  "russian_arms": {
+   "model": false,
+   "links": [
+    {
+     "title": "SIPRI fact sheet: Trends in international arms transfers, 2025",
+     "url": "https://www.sipri.org/sites/default/files/2026-03/fs_2603_at_2025.pdf",
+     "kind": "primary",
+     "what": "Russian arms exports by recipient",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "SIPRI fact sheet: Trends in international arms transfers, 2024",
+     "url": "https://www.sipri.org/sites/default/files/2025-03/fs_2503_at_2024.pdf",
+     "kind": "primary",
+     "what": "same, 2024",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "SIPRI fact sheet: Trends in international arms transfers, 2021",
+     "url": "https://www.sipri.org/sites/default/files/2022-03/fs_2203_at_2021.pdf",
+     "kind": "primary",
+     "what": "pre-war baseline",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Defense News: Russia claims USD 15bn in 2025 arms exports",
+     "url": "https://www.defensenews.com/global/europe/2026/02/02/russia-claims-15-billion-in-2025-arms-exports-with-focus-on-africa/",
+     "kind": "secondary",
+     "what": "FSVTS/Rosoboronexport statement",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "CRS R46937: Russian arms sales and defense industry",
+     "url": "https://www.everycrsreport.com/reports/R46937.html",
+     "kind": "primary",
+     "what": "baseline export values",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "SIPRI Arms Transfers Database",
+     "url": "https://www.sipri.org/databases/armstransfers",
+     "kind": "primary",
+     "what": "database (query interface)",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "payment_agents": {
+   "model": false,
+   "links": [
+    {
+     "title": "Bank of Russia: balance of payments standard components (xlsx)",
+     "url": "https://www.cbr.ru/vfs/eng/statistics/credit_statistics/bop/bal_of_payments_standart_e.xlsx",
+     "kind": "primary",
+     "what": "Russia's trade settlement and services",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "The Bell: the rise of Russia's foreign trade middlemen",
+     "url": "https://en.thebell.io/the-rise-of-russias-foreign-trade-middlemen/",
+     "kind": "secondary",
+     "what": "share of payments via agents, fees",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "TKS.RU: agent remuneration and customs value (Minfin letter 27-01-21/106988)",
+     "url": "https://www.tks.ru/columns/vasiliev/2025/03/11/0001/",
+     "kind": "secondary",
+     "what": "agent commissions",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "US Treasury jy2785: Keremet Bank designated",
+     "url": "https://home.treasury.gov/news/press-releases/jy2785",
+     "kind": "primary",
+     "what": "Kyrgyz payment channel",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Elliptic: A7A5 stablecoin",
+     "url": "https://www.elliptic.co/insights/a7a5-the-ruble-backed-stablecoin-100-billion-in-transactions/",
+     "kind": "secondary",
+     "what": "crypto channel volumes",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Payment agents (round 6)",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/trade.md#payment-agents-round-6",
+     "kind": "method",
+     "what": "fees kept by residents of the agent's country",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": ""
+  },
+  "frozen_reserves": {
+   "model": false,
+   "links": [
+    {
+     "title": "Euroclear 2025 results press release",
+     "url": "https://www.euroclear.com/newsandinsights/en/press/2026/mr-06-euroclear-delivers-strong-2025-results.html",
+     "kind": "primary",
+     "what": "interest on sanctioned Russian cash, 2025",
+     "confirmed": true,
+     "checked": "confirmed by web search (site blocks automated fetch)"
+    },
+    {
+     "title": "Euroclear 2024 results press release",
+     "url": "https://www.euroclear.com/newsandinsights/en/press/2026/mr-12-euroclear-delivers-q1-2026-results.html",
+     "kind": "primary",
+     "what": "2024",
+     "confirmed": true,
+     "checked": "confirmed by web search (site blocks automated fetch)"
+    },
+    {
+     "title": "Euroclear H1 2026 results press release",
+     "url": "https://www.euroclear.com/newsandinsights/en/press/2026/mr-20-euroclear-h1-2026-results.html",
+     "kind": "primary",
+     "what": "2026",
+     "confirmed": true,
+     "checked": "confirmed by web search (site blocks automated fetch)"
+    },
+    {
+     "title": "Bank of Russia Annual Report 2021",
+     "url": "https://www.cbr.ru/Collection/Collection/File/43443/ar_2021_e.pdf",
+     "kind": "primary",
+     "what": "reserves by country and currency, 1 Jan 2022",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Bank of Russia FX and gold asset management report 2022-1",
+     "url": "https://www.cbr.ru/Collection/Collection/File/39685/2022-01_res_en.pdf",
+     "kind": "primary",
+     "what": "reserve composition",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "EPRS briefing 775908",
+     "url": "https://eprs.europarl.europa.eu/contents/publications/EPRS/2025/09/EPRS_BRI(2025)775908.html",
+     "kind": "primary",
+     "what": "immobilised assets by holding country",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: Frozen central-bank reserves (round 7)",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/russia-state-and-companies.md#frozen-central-bank-reserves-round-7",
+     "kind": "method",
+     "what": "rates per currency and year",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": ""
+  },
+  "remittances": {
+   "model": false,
+   "links": [
+    {
+     "title": "World Bank API: personal remittances received (BX.TRF.PWKR.CD.DT)",
+     "url": "https://api.worldbank.org/v2/country/TJK;KGZ;UZB;ARM;GEO;MDA;AZE;KAZ;BLR/indicator/BX.TRF.PWKR.CD.DT",
+     "kind": "primary",
+     "what": "totals per receiving country",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Bank of Russia: cross-border operations survey 2020",
+     "url": "https://www.cbr.ru/collection/collection/file/39301/cross-borderopssurvey%202020_e.pdf",
+     "kind": "primary",
+     "what": "pre-war outflows by country",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "ADB Asian Development Outlook April 2026: Tajikistan",
+     "url": "https://www.adb.org/sites/default/files/publication/1135881/taj-ado-april-2026.pdf",
+     "kind": "primary",
+     "what": "Tajikistan remittances",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "National Bank of Kazakhstan information release",
+     "url": "https://nationalbank.kz/en/news/informacionnye-soobshcheniya/16492",
+     "kind": "primary",
+     "what": "Kazakhstan",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "24.kg (NBKR): transfers from Russia to Kyrgyzstan +12%",
+     "url": "https://24.kg/english/318729_Money_transfers_from_Russia_to_Kyrgyzstan_increase_by_12_percent_for_year/",
+     "kind": "secondary",
+     "what": "Kyrgyzstan",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Times of Central Asia (CBU): Uzbekistan received USD 14.8bn in 2024",
+     "url": "https://timesca.com/uzbekistan-receives-14-8-billion-in-remittances-in-2024/",
+     "kind": "secondary",
+     "what": "Uzbekistan",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "1TV Georgia (NBG): transfers from Russia -64.6% in 2024",
+     "url": "https://1tv.ge/lang/en/news/nbg-money-transfers-from-russia-decreased-by-64-6-in-2024/",
+     "kind": "secondary",
+     "what": "Georgia",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    }
+   ],
+   "note": ""
+  },
+  "chpl": {
+   "model": false,
+   "links": [
+    {
+     "title": "BIS: Common High Priority Items List (CHPL)",
+     "url": "https://www.bis.gov/licensing/country-guidance/common-high-priority-items-list-chpl",
+     "kind": "primary",
+     "what": "HS-6 code list",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "EU: List of Common High Priority Items (PDF)",
+     "url": "https://finance.ec.europa.eu/system/files/2023-09/list-common-high-priority-items_en.pdf",
+     "kind": "primary",
+     "what": "code list",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Eurostat Comext DS-045409 SDMX: EU exports to Russia by HS-6",
+     "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&freq=A&reporter=DE&partner=RU&product=854231&flow=2&indicators=VALUE_IN_EUROS&time=2024",
+     "kind": "primary",
+     "what": "EU members' CHP exports",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "UN Comtrade API: exports to Russia of CHP HS-6 codes (example 854231), 2024",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?period=2024&partnerCode=643&flowCode=X&cmdCode=854231,854232,854239",
+     "kind": "primary",
+     "what": "non-EU CHP exports",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "KSE Institute: Russian CHP imports tracker Q2 2026",
+     "url": "https://institute.kse.ua/wp-content/uploads/2026/07/russian_chp_tracker_eng_q2_2026.pdf",
+     "kind": "primary",
+     "what": "Russian dispatch records adjustment",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "KSE Institute: challenges of export controls enforcement (Jan 2024)",
+     "url": "https://kse.ua/wp-content/uploads/2024/01/Challenges-of-Export-Controls-Enforcement.pdf",
+     "kind": "primary",
+     "what": "Russian customs data on CHP imports",
+     "confirmed": true,
+     "checked": "fetched"
+    }
+   ],
+   "note": ""
+  },
+  "value_kept": {
+   "model": false,
+   "links": [
+    {
+     "title": "OECD TiVA 2025: domestic value added share of gross exports (SDMX)",
+     "url": "https://sdmx.oecd.org/sti-public/rest/data/OECD.STI.PIE,DSD_TIVA_MAINSH@DF_MAINSH,1.1/EXGR_DVA..BTE+C+C19+C25+C26+C28+C302T309+GTN+H50+I.W.PT_EXGR.A?startPeriod=2018&format=csv",
+     "kind": "primary",
+     "what": "value kept per country and sector",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Federal Register 2024-01220: DFARS domestic content rule",
+     "url": "https://www.govinfo.gov/content/pkg/FR-2024-02-15/html/2024-01220.htm",
+     "kind": "primary",
+     "what": "US defence domestic content",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Bank of Finland Bulletin: collapse of trade with Russia had a limited effect on Finnish manufacturing",
+     "url": "https://www.bofbulletin.fi/en/2024/3/the-collapse-of-trade-with-russia-has-had-a-limited-effect-on-finnish-manufacturing/",
+     "kind": "primary",
+     "what": "trade redirection (genuinely extra)",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "VATT Data Room: minor effects on Finnish firms",
+     "url": "https://vatt.fi/en/-/vatt-data-room-russian-invasion-of-ukraine-has-had-only-minor-economic-effects-on-finnish-firms-that-used-to-trade-with-russia",
+     "kind": "primary",
+     "what": "trade redirection",
+     "confirmed": false,
+     "checked": "exists in research file; site blocked automated fetch (403)"
+    },
+    {
+     "title": "Hürriyet Daily News: Turkish defence local content 83%",
+     "url": "https://www.hurriyetdailynews.com/defense-industrys-local-content-at-83-pct-gorgun-227711",
+     "kind": "secondary",
+     "what": "Turkey defence content",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: The money rule (round 6)",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/overview.md#the-money-rule-round-6",
+     "kind": "method",
+     "what": "value kept x genuinely extra",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": ""
+  },
+  "net_gain_russia": {
+   "model": false,
+   "links": [
+    {
+     "title": "Russian Finance Ministry: oil and gas revenues of the federal budget",
+     "url": "https://minfin.gov.ru/ru/statistics/fedbud/oil",
+     "kind": "primary",
+     "what": "taxes per euro of exports",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Rosneft 12M 2025 IFRS results",
+     "url": "https://rosneft.com/press/releases/item/223842/",
+     "kind": "primary",
+     "what": "oil company margin",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "PhosAgro 9M 2025 results",
+     "url": "https://www.phosagro.com/press/company/phosagro-reports-operating-and-financial-results-for-9m-2025/",
+     "kind": "primary",
+     "what": "fertiliser margin",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Polyus FY 2025 results",
+     "url": "https://polyus.com/en/media/press-releases/proizvodstvennye-i-finansovye-rezultaty-za-2-polugodie-2025-i-2025-god/",
+     "kind": "primary",
+     "what": "gold margin",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Rusal interim results H1 2026 (HKEX)",
+     "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0819/2026081900105.pdf",
+     "kind": "primary",
+     "what": "aluminium margin",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "IEP: Monitoring of Russia's economic outlook 2026-3",
+     "url": "https://www.iep.ru/files/RePEc/gai/mreoen/mreoen-2026-3-1492.pdf",
+     "kind": "primary",
+     "what": "export structure 2025",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: The net-gain rule (round 10)",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/overview.md#the-net-gain-rule-round-10",
+     "kind": "method",
+     "what": "taxes plus profit above a normal return",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": ""
+  },
+  "net_gain_ukraine": {
+   "model": false,
+   "links": [
+    {
+     "title": "Ukrstat: Statistical Yearbook of Ukraine 2024 (table 22.12 profitability)",
+     "url": "https://stat.gov.ua/sites/default/files/2026-09/yearbook_24e.pdf",
+     "kind": "primary",
+     "what": "profitability by activity",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "data.gov.ua: profitability of operating activity by economic activity (Derzhstat)",
+     "url": "https://data.gov.ua/dataset/afb3d64f-7346-47bf-a9e2-0671629fc1d3",
+     "kind": "primary",
+     "what": "profitability series",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Kernel Holding annual report FY2025",
+     "url": "https://www.annualreports.com/HostedData/AnnualReports/PDF/kernel_2025.pdf",
+     "kind": "primary",
+     "what": "agri export margin",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Metinvest annual report 2025, financial review",
+     "url": "https://metinvestholding.com/ar2025/uploads/en/financial-review.pdf",
+     "kind": "primary",
+     "what": "steel margin",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Ferrexpo full-year results 2025",
+     "url": "https://www.ferrexpo.com/media/yo2jxkc3/ferrexpo-full-year-financial-results-for-2025-combined-for-website.pdf",
+     "kind": "primary",
+     "what": "iron ore margin",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Export Promotion Office: how Ukraine's goods exports changed in 2025",
+     "url": "https://export.gov.ua/news/how-ukraines-goods-exports-changed-in-2025",
+     "kind": "primary",
+     "what": "export structure",
+     "confirmed": true,
+     "checked": "fetched"
+    },
+    {
+     "title": "Method: The net-gain rule (round 10)",
+     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/method/overview.md#the-net-gain-rule-round-10",
+     "kind": "method",
+     "what": "taxes plus profit above a normal return",
+     "confirmed": true,
+     "checked": "anchor checked on GitHub"
+    }
+   ],
+   "note": ""
+  }
+ }
+}
