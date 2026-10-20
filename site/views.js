@@ -1,7 +1,7 @@
 // ===== Views: ranking, Ukraine vs Russia bubbles, table and data download =====
 // Same numbers as the map: the current view (change, cost, to Ukraine, to Russia), measure and year.
-/* global state, DATA, calc, lensValue, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, closeMenu, t, LANG,
-   num, money, tight, compact, parseHash, writeHash, yi, remitSum */
+/* global state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, closeMenu, t, LANG,
+   num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
 const GROUPS = {
@@ -12,8 +12,8 @@ const GROUPS = {
   brics: { label: "BRICS", list: "BRA IND CHN ZAF EGY ETH IRN ARE IDN" },
   ussr: { label: "Former Soviet Union", list: "ARM AZE BLR EST GEO KAZ KGZ LVA LTU MDA TJK TKM UZB" },
 };
-// part: on the change view, rank the net or one of its two numbers (round 13)
-const viewState = { group: "all", small: false, sortKey: "metric", sortDir: -1, part: "net" };
+// round 15: the net and its two parts are views of their own (net, support, payments), so no part switch is needed
+const viewState = { group: "all", small: false, sortKey: "metric", sortDir: -1 };
 
 function inGroup(c) {
   const g = GROUPS[viewState.group];
@@ -26,26 +26,18 @@ function eligible(c) {
 // the headline number of the current view, with its likely range, in the current measure
 function metricOf(c) {
   const k = calc(c, state.year);
-  const net = { net: [k.shift, k.shiftLo, k.shiftHi], ua: [k.uaBal, k.uaLo, k.uaHi], rus: [k.rusBal, k.rusLo, k.rusHi] }[viewState.part];
-  const pick = { change: net, cost: [k.cost, k.costLo, k.costHi] }[state.lens];
-  const [v, lo, hi] = pick || [lensValue(c), null, null];
+  const [v, lo, hi] = { net: [k.shift, k.shiftLo, k.shiftHi], support: [k.uaBal, k.uaLo, k.uaHi], payments: [k.rusBal, k.rusLo, k.rusHi], cost: [k.cost, k.costLo, k.costHi] }[state.lens];
   const s = x => (x == null ? null : scaled(c, x));
   return { c, k, bn: v, loBn: lo, hiBn: hi, v: s(v), lo: s(lo), hi: s(hi) };
 }
 const LENS_TITLE = {
-  change: "Support for Ukraine plus the change in payments to Russia, since before the war",
+  support: "Support for Ukraine since before the war",
+  payments: "Change in payments to Russia since before the war",
+  net: "Support for Ukraine plus the change in payments to Russia, since before the war",
   cost: "What supporting Ukraine cost",
-  ukr: "Money sent to Ukraine (aid and purchases)",
-  rus: "Money and support reaching Russia",
 };
 function measureText() {
-  return t({ gdp: "total as % of one year's GDP (2024), not a yearly rate", pp: "€ per person", total: "€ billion" }[state.measure]);
-}
-// which number of the change view to rank: the net, or one of the two numbers it adds up (round 13)
-const PART_TITLE = { net: "Support for Ukraine plus the change in payments to Russia, since before the war", ua: "Support for Ukraine since before the war", rus: "Change in payments to Russia since before the war" };
-function partsHtml() {
-  if (state.lens !== "change") return "";
-  return `<div class="filters" role="group" aria-label="${t("Number to rank")}">${[["net", "Net (the sum)"], ["ua", "Support for Ukraine"], ["rus", "Change in payments to Russia"]].map(([k, l]) => `<button class="chipbtn" data-part="${k}" aria-pressed="${viewState.part === k}">${t(l)}</button>`).join("")}</div>`;
+  return t({ gdp: "total as % of one year's GDP (average 2022–2024), not a yearly rate", pp: "€ per person", total: "€ billion" }[state.measure]);
 }
 function periodText() {
   if (state.year === 2021) return t("2021 (before the war)");
@@ -71,7 +63,6 @@ function filtersHtml() {
   </div>`;
 }
 function wireFilters(root) {
-  root.querySelectorAll("[data-part]").forEach(b => (b.onclick = () => { viewState.part = b.dataset.part; renderView(); }));
   root.querySelectorAll("[data-group]").forEach(b => (b.onclick = () => { viewState.group = b.dataset.group; renderView(); }));
   root.querySelectorAll("[data-small]").forEach(b => (b.onclick = () => { viewState.small = !viewState.small; renderView(); }));
 }
@@ -82,8 +73,13 @@ function tipFor(m) {
 
 // ----- Ranking: every country as a dot with its likely range, sorted -----
 function renderRanking(root) {
-  const rows = Object.values(DATA).filter(eligible).map(metricOf).filter(m => m.v != null).sort((a, b) => b.v - a.v);
-  const diverging = state.lens === "change" || state.lens === "cost";
+  // round 15: a headline number whose direction is uncertain (its likely range or a method-band alternative crosses
+  // zero) is not ranked; those countries are named below the chart
+  const hq = HEAD_LENS[state.lens], y = state.year;
+  const all = Object.values(DATA).filter(eligible).map(metricOf).filter(m => m.v != null).sort((a, b) => b.v - a.v);
+  const unc = hq && y > 2021 ? all.filter(m => uncertain(m.c, y, hq)) : [];
+  const rows = all.filter(m => !unc.includes(m));
+  const diverging = true;   // every view can go either way around zero
   const narrowScreen = root.clientWidth < 600;
   const W = Math.min(1040, root.clientWidth - 32), rowH = 22, labelW = narrowScreen ? 104 : 150, valW = narrowScreen ? 58 : 76;
   const top = 30, H = top + rows.length * rowH + 10;
@@ -98,9 +94,9 @@ function renderRanking(root) {
   const cand = [0, ...base.flatMap(b => [b, -b])].filter(t => t >= x.domain()[0] && t <= x.domain()[1]).sort((a, b) => Math.abs(a) - Math.abs(b));
   const ticks = [];
   for (const t of cand) if (ticks.every(u => Math.abs(x(u) - x(t)) >= (narrowScreen ? 38 : 46))) ticks.push(t);
-  const col = v => (v >= 0 ? (state.lens === "rus" ? "var(--rus)" : "var(--ukr)") : "var(--rus)");
+  const col = v => (v >= 0 ? "var(--ukr)" : "var(--rus)");
   // a group, not an image: its rows are buttons that keyboard and screen reader users reach one by one
-  const title = t(state.lens === "change" ? PART_TITLE[viewState.part] : LENS_TITLE[state.lens]);
+  const title = t(LENS_TITLE[state.lens]);
   const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("{title}, {n} countries, ranked", { title, n: rows.length })}">
     <g class="grid">${ticks.map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="${top - 6}" y2="${H - 6}"/><text x="${x(t)}" y="${top - 12}" text-anchor="middle">${tick(t)}</text>`).join("")}</g>
     ${diverging ? `<line class="zero" x1="${x(0)}" x2="${x(0)}" y1="${top - 6}" y2="${H - 6}"/>` : ""}
@@ -118,9 +114,10 @@ function renderRanking(root) {
   root.innerHTML = `<div class="view-inner">
     <h2>${title}</h2>
     <p class="sub">${t("{measure}, {period}. Dot: middle estimate; line: likely range (data and model uncertainty given the method, about 90% by judgement). {n} countries; switch view and measure at the top. Click a country for the breakdown.", { measure: measureText(), period: periodText(), n: rows.length })}</p>
-    ${partsHtml()}
+    ${state.lens === "net" ? `<p class="sub"><b>${t("This adds two different things: aid given and payments to Russia avoided; much of what one country stopped paying, Russia sold to others.")}</b></p>` : ""}
     ${filtersHtml()}
     <div class="chart">${svg}</div>
+    ${unc.length ? `<p class="note-small">${t("Not ranked, direction uncertain (the likely range or a method-band alternative crosses zero), {n} countries: {list}.", { n: unc.length, list: unc.map(m => `${m.c.name} ${fmtMeasure(m.c, m.bn, state.measure, true)}`).join(", ") })}</p>` : ""}
     <p class="note-small">${t("Scale is compressed (symmetric log) so small and large countries both stay readable; the axis labels give the true values.")}</p>
   </div>`;
   wireRows(root, rows);
@@ -204,14 +201,19 @@ function renderBubbles(root) {
 }
 
 // ----- Table and data download -----
+// round 15: the net first (with its range, euros and per person), then its two parts, support for Ukraine and the change in
+// payments to Russia; each with its letter, and "?" where its direction is uncertain (not ranked)
+const unq = (r, q) => (r.unc[q] ? " ?" : "");
 const COLS = [
   { k: "name", label: "Country", fmt: (r) => r.name },
-  { k: "shiftGdp", label: "Net shift, % of a year's GDP", fmt: r => pct(r.shiftGdp), sign: true },
+  { k: "shiftGdp", label: "Net shift, % of a year's GDP", fmt: r => pct(r.shiftGdp) + unq(r, "net"), sign: true },
   { k: "shiftRange", label: "Likely range", fmt: r => t("{lo} to {hi}", { lo: pct(r.shiftLoGdp), hi: pct(r.shiftHiGdp) }), nosort: true },
   { k: "shift", label: "Net shift, €", fmt: r => eur(r.shift, true), sign: true },
   { k: "shiftPp", label: "Per person", fmt: r => (r.shiftPp == null ? "–" : (r.shiftPp < 0 ? "−" : "") + money(num(Math.abs(r.shiftPp)))), sign: true },
-  { k: "uaGdp", label: "Support for Ukraine, % of a year's GDP", fmt: r => pct(r.uaGdp), sign: true },
-  { k: "rusGdp", label: "Change in payments to Russia, % of a year's GDP", fmt: r => pct(r.rusGdp), sign: true },
+  { k: "uaGdp", label: "Support for Ukraine, % of a year's GDP", fmt: r => pct(r.uaGdp) + unq(r, "ua"), sign: true },
+  { k: "uaCert", label: "Certainty", fmt: r => r.grades.ua },
+  { k: "rusGdp", label: "Change in payments to Russia, % of a year's GDP", fmt: r => pct(r.rusGdp) + unq(r, "rus"), sign: true },
+  { k: "rusCert", label: "Certainty", fmt: r => r.grades.rus },
   { k: "rusCut", label: "Of which gas Russia cut off, €", fmt: r => (r.rusCut > 0.005 ? eur(r.rusCut) : "–") },
   // round 13b: a marker, in no total
   { k: "remitGdp", label: "Remittances from Russia, change, % of a year's GDP (not in totals)", fmt: r => (r.remitGdp == null ? "–" : pct(r.remitGdp)) },
@@ -222,6 +224,8 @@ const COLS = [
   { k: "paidRus", label: "Paid to Russia, €", fmt: r => eur(r.paidRus) },
   { k: "cert", label: "Certainty", fmt: r => r.cert },
 ];
+// the table's first column after the name sorts first (the net)
+const FIRST_SORT = "shiftGdp";
 const pct = v => (v == null ? "–" : (v > 0 ? "+" : v < 0 ? "−" : "") + num(Math.abs(v), Math.abs(v) >= 1 ? 1 : 2) + "%");
 function tableRows() {
   const y = state.year;
@@ -229,6 +233,8 @@ function tableRows() {
     const k = calc(c, y), g = c.gdp ? 100 / c.gdp : null, pp = c.pop ? 1e9 / (c.pop * 1e6) : null, N = yi(y);
     // migrants' remittances from Russia against the expected level: a marker, not in any total (round 13b)
     const rm = c.remit && N > 0 ? [remitSum(c, N), remitSum(c, N, "years_lo"), remitSum(c, N, "years_hi")] : [null, null, null];
+    const gr = y > 2021 ? grades(c, y) : { ua: "D", rus: "D", net: "D" };
+    const unc = { ua: y > 2021 && uncertain(c, y, "ua"), rus: y > 2021 && uncertain(c, y, "rus"), net: y > 2021 && uncertain(c, y, "net") };
     return {
       c, name: c.name, iso3: c.iso3, gdp: c.gdp, pop: c.pop,
       shift: k.shift, shiftLo: k.shiftLo, shiftHi: k.shiftHi,
@@ -238,15 +244,16 @@ function tableRows() {
       remit: rm[0], remitLo: rm[1], remitHi: rm[2], remitGdp: rm[0] == null ? null : g && rm[0] * g,
       // round 14b: seizures and forced sales, not in the net or either number; part of the cost
       taken: k.taken, takenLo: k.takenLo, takenHi: k.takenHi, takenGdp: g && k.taken * g, takenParts: k.takenParts,
-      cost: k.cost, costGdp: g && k.cost * g, aid: k.aid, refugees: k.refugees, paidRus: k.paidRussia, cert: k.shiftCert,
+      cost: k.cost, costGdp: g && k.cost * g, aid: k.aid, refugees: k.refugees, paidRus: k.paidRussia, cert: gr.net, grades: gr, unc, uaCert: gr.ua, rusCert: gr.rus,
+      refExcluded: c.ref_excluded ? c.ref_excluded.years.slice(1, N + 1).reduce((a, b) => a + b, 0) : null,
       parts: k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, k: "back_" + p.k })) : []),
     };
   });
 }
 function renderTable(root) {
   const rows = tableRows();
-  const key = viewState.sortKey === "metric" ? "shiftGdp" : viewState.sortKey;
-  rows.sort((a, b) => (key === "name" || key === "cert" ? String(a[key]).localeCompare(String(b[key]), LANG) : (a[key] ?? -Infinity) - (b[key] ?? -Infinity)) * viewState.sortDir);
+  const key = viewState.sortKey === "metric" ? FIRST_SORT : viewState.sortKey;
+  rows.sort((a, b) => (key === "name" || /[cC]ert$/.test(key) ? String(a[key]).localeCompare(String(b[key]), LANG) : (a[key] ?? -Infinity) - (b[key] ?? -Infinity)) * viewState.sortDir);
   root.innerHTML = `<div class="view-inner">
     <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end">
       <div><h2>${t("All countries, all numbers")}</h2>
@@ -268,7 +275,7 @@ function renderTable(root) {
   // sorting buttons in the header row; the re-render replaces them, so focus goes to the same column's new button
   root.querySelectorAll("th button[data-k]").forEach(b => (b.onclick = () => {
     const k = b.dataset.k;
-    viewState.sortDir = viewState.sortKey === k || (viewState.sortKey === "metric" && k === "shiftGdp") ? -viewState.sortDir : k === "name" ? 1 : -1;
+    viewState.sortDir = viewState.sortKey === k || (viewState.sortKey === "metric" && k === FIRST_SORT) ? -viewState.sortDir : k === "name" ? 1 : -1;
     viewState.sortKey = k; renderView();
     const again = root.querySelector(`th button[data-k="${k}"]`); if (again) again.focus();
   }));
@@ -281,20 +288,25 @@ function renderTable(root) {
   root.querySelector("#dl-json").onclick = () => download(jsonRows(rows), `follow-the-money-ukrainian-aid_${tag}.json`, "application/json");
   wireFilters(root);
 }
-const q = v => (v == null || Number.isNaN(v) ? "" : typeof v === "number" ? +v.toFixed(4) : /[",\n]/.test(v) ? `"${String(v).replace(/"/g, '""')}"` : v);
+const q = v => (v == null || Number.isNaN(v) ? "" : typeof v === "number" ? +v.toFixed(4) : typeof v === "boolean" ? String(v) : /[",\n]/.test(v) ? `"${String(v).replace(/"/g, '""')}"` : v);
 function csvSummary(rows) {
   // every column name carries its unit; net_of_flowback says whether money flowing back was subtracted
-  // round 13: the net is the sum of two numbers, each with its own range; % of GDP is the period total against 2024 GDP
-  const head = ["iso3", "country", "period", "net_of_flowback", "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person",
-    "support_ukraine_eur_bn", "support_ukraine_low_eur_bn", "support_ukraine_high_eur_bn", "support_ukraine_pct_gdp",
-    "payments_russia_change_eur_bn", "payments_russia_change_low_eur_bn", "payments_russia_change_high_eur_bn", "payments_russia_change_pct_gdp", "of_which_gas_cut_by_russia_eur_bn",
+  // round 13: the net is the sum of two numbers, each with its own range; round 15: % of GDP is the period total against
+  // the average 2022-2024 GDP; support first, then payments, then the net; each with its letter and direction flag
+  const head = ["iso3", "country", "period", "net_of_flowback",
+    "support_ukraine_eur_bn", "support_ukraine_low_eur_bn", "support_ukraine_high_eur_bn", "support_ukraine_pct_gdp", "support_ukraine_certainty", "support_ukraine_direction_uncertain",
+    "payments_russia_change_eur_bn", "payments_russia_change_low_eur_bn", "payments_russia_change_high_eur_bn", "payments_russia_change_pct_gdp", "payments_russia_change_certainty", "payments_russia_change_direction_uncertain", "of_which_gas_cut_by_russia_eur_bn",
+    "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person", "net_shift_certainty", "net_shift_direction_uncertain",
+    "refugees_hosted_not_counted_co_belligerent_eur_bn",
     "remittances_from_russia_change_eur_bn_not_in_totals", "remittances_from_russia_change_low_eur_bn_not_in_totals", "remittances_from_russia_change_high_eur_bn_not_in_totals", "remittances_from_russia_change_pct_gdp_not_in_totals",
     "taken_by_russia_from_companies_eur_bn_not_in_totals", "taken_by_russia_from_companies_low_eur_bn_not_in_totals", "taken_by_russia_from_companies_high_eur_bn_not_in_totals", "taken_by_russia_from_companies_pct_gdp_not_in_totals",
-    "cost_eur_bn", "cost_pct_gdp", "aid_eur_bn", "refugees_eur_bn", "paid_to_russia_eur_bn", "certainty", "gdp_eur_bn_2024", "population_m"];
-  const lines = rows.map(r => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, r.shift, r.shiftLo, r.shiftHi, r.shiftGdp, r.shiftPp,
-    r.ua, r.uaLo, r.uaHi, r.uaGdp, r.rus, r.rusLo, r.rusHi, r.rusGdp, r.rusCut, r.remit, r.remitLo, r.remitHi, r.remitGdp,
+    "cost_eur_bn", "cost_pct_gdp", "aid_eur_bn", "refugees_eur_bn", "paid_to_russia_eur_bn", "gdp_eur_bn_avg_2022_2024", "population_m"];
+  const lines = rows.map(r => [r.iso3, r.c.name_en, periodTextEn(), state.netBack,
+    r.ua, r.uaLo, r.uaHi, r.uaGdp, r.grades.ua, r.unc.ua, r.rus, r.rusLo, r.rusHi, r.rusGdp, r.grades.rus, r.unc.rus, r.rusCut,
+    r.shift, r.shiftLo, r.shiftHi, r.shiftGdp, r.shiftPp, r.grades.net, r.unc.net, r.refExcluded,
+    r.remit, r.remitLo, r.remitHi, r.remitGdp,
     r.taken, r.takenLo, r.takenHi, r.takenGdp,
-    r.cost, r.costGdp, r.aid, r.refugees, r.paidRus, r.cert, r.gdp, r.pop].map(q).join(","));
+    r.cost, r.costGdp, r.aid, r.refugees, r.paidRus, r.gdp, r.pop].map(q).join(","));
   return [head.join(","), ...lines].join("\n");
 }
 function csvParts(rows) {
@@ -307,17 +319,19 @@ function csvParts(rows) {
 // the same rows as JSON, with the two numbers and their parts
 function jsonRows(rows) {
   const r4 = v => (v == null || Number.isNaN(v) ? null : +v.toFixed(4));
-  return JSON.stringify({ period: periodTextEn(), net_of_flowback: state.netBack, unit: "EUR bn; pct_gdp = period total / 2024 GDP x 100, not a yearly rate",
-    countries: rows.map(r => ({ iso3: r.iso3, country: r.c.name_en, gdp_eur_bn_2024: r.gdp,
-      net: { eur_bn: r4(r.shift), low: r4(r.shiftLo), high: r4(r.shiftHi), pct_gdp: r4(r.shiftGdp) },
-      support_for_ukraine: { eur_bn: r4(r.ua), low: r4(r.uaLo), high: r4(r.uaHi), pct_gdp: r4(r.uaGdp) },
-      change_in_payments_to_russia: { eur_bn: r4(r.rus), low: r4(r.rusLo), high: r4(r.rusHi), pct_gdp: r4(r.rusGdp), of_which_gas_cut_by_russia: r4(r.rusCut) },
+  return JSON.stringify({ period: periodTextEn(), net_of_flowback: state.netBack, unit: "EUR bn; pct_gdp = period total / average 2022-2024 GDP x 100, not a yearly rate",
+    note: "the net adds two different things: aid given and payments to Russia avoided; much of what one country stopped paying, Russia sold to others. direction_uncertain: the likely range or a method-band alternative crosses zero (not ranked)",
+    countries: rows.map(r => ({ iso3: r.iso3, country: r.c.name_en, gdp_eur_bn_avg_2022_2024: r.gdp,
+      support_for_ukraine: { eur_bn: r4(r.ua), low: r4(r.uaLo), high: r4(r.uaHi), pct_gdp: r4(r.uaGdp), certainty: r.grades.ua, direction_uncertain: r.unc.ua,
+        refugees_hosted_not_counted_co_belligerent_eur_bn: r.refExcluded == null ? undefined : r4(r.refExcluded) },
+      change_in_payments_to_russia: { eur_bn: r4(r.rus), low: r4(r.rusLo), high: r4(r.rusHi), pct_gdp: r4(r.rusGdp), of_which_gas_cut_by_russia: r4(r.rusCut), certainty: r.grades.rus, direction_uncertain: r.unc.rus },
+      net: { eur_bn: r4(r.shift), low: r4(r.shiftLo), high: r4(r.shiftHi), pct_gdp: r4(r.shiftGdp), certainty: r.grades.net, direction_uncertain: r.unc.net },
       remittances_from_russia_change_not_in_totals: r.remit == null ? null : { eur_bn: r4(r.remit), low: r4(r.remitLo), high: r4(r.remitHi), pct_gdp: r4(r.remitGdp),
         note: "marker only: migrants' wages sent home from Russia against the level expected without the war; not in the net or either number" },
       taken_by_russia_from_companies_not_in_totals: r.taken ? { eur_bn: r4(r.taken), low: r4(r.takenLo), high: r4(r.takenHi), pct_gdp: r4(r.takenGdp),
         parts: r.takenParts.map(p => ({ part: p.k, label: p.en, eur_bn: r4(p.v), low: r4(p.lo), high: r4(p.hi), certainty: p.cert })),
         note: "seized assets and forced exit costs (discount and exit fee): taken by Russia, not moved by the country's choice; not in the net or either number, counted in the cost" } : null,
-      certainty: r.cert, parts: r.parts.map(p => ({ part: p.k, label: p.en, eur_bn: r4(p.v), low: r4(p.lo), high: r4(p.hi), certainty: p.cert })) })) }, null, 1);
+      parts: r.parts.map(p => ({ part: p.k, label: p.en, eur_bn: r4(p.v), low: r4(p.lo), high: r4(p.hi), certainty: p.cert })) })) }, null, 1);
 }
 function periodTextEn() {
   if (state.year === 2021) return "2021 (before the war)";

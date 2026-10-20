@@ -143,3 +143,16 @@ The yearly values for every country are in the JSON. Examples:
 - Pull the BA Migrationsmonitor monthly series and IAB earnings for Ukrainians, which would make Germany B.
 - Get the MPSV Feb 2026 release (full 2025), MF Poland's 2025 analysis (not yet done, per the MF), Irish CSO earnings of arrivals from Ukraine, and Dutch CBS figures on working Ukrainians.
 - Re-run the k calibration in refugees.json with Poland's refugee-only Fund figures.
+
+## Round 15: one definition for every host
+
+Raised by review 4 (M5), approved by the owner. Every host's cost is now the cost to **all levels of government** minus the taxes and contributions refugees pay. Germany's reported figure is federal spending and Poland's the Aid Fund's refugee spending; both are scaled by the gap broad all-government estimates show for 2022 (`REFUGEE_SCOPE` in `build_data.py`):
+
+| host | reported (2022) | broad estimates (ratio to reported) | median | central factor = √median | high |
+|---|---|---|---|---|---|
+| Germany | federal EUR 5.5bn | OECD IMO 2022 EUR 6.8bn (1.24); Kiel (1.53) | 1.385 | 1.18 | 1.53 |
+| Poland | Aid Fund PLN 11.3bn = EUR 2.41bn | OECD IMO 2022 EUR 8.36bn (3.47); Kiel (3.68); Council for Cooperation with Ukraine (3.81) | 3.68 | 1.92 | 3.81 |
+
+The OECD figures are as reported in the press ([Notes from Poland, 14 October 2022](https://notesfrompoland.com/2022/10/14/poland-to-spend-e8-4bn-supporting-ukraine-refugees-in-2022-highest-in-oecd/)); the OECD page and table returned HTTP 403 to automated access (**not verified**). Kiel's and the Council's ratios are those recorded above against the Fund total (3.0 and 3.1 × EUR 2.96bn), restated against the refugee-only spending. The geometric mean is the rule round 5 used for Germany and Switzerland (a judgement); the low end stays the reported figure alone. Effect: Poland's gross 2022–2026 EUR 10.8bn → 17.2bn, net 3.2 → 9.6bn; Germany's gross 46.7 → 42.2bn, net 29.5 → 25.1bn. Switzerland keeps its round-5 judgement; the modelled hosts keep the round-5 calibration of k (re-running it with the scaled figures is open).
+
+**Belarus** (raised by the owner): its hosting cost (EUR 0.11bn net) is moved out of the totals to a label (`ref_excluded`): it is a co-belligerent (UN General Assembly resolution ES-11/1). **Russia** has no entry: it is the aggressor, and UNHCR's counts for it rest on Russian data and include deported children (ICC warrants of 17 March 2023).

@@ -1,0 +1,22 @@
+{
+ "generated": "2026-10-19",
+ "what": "Round 15 (review 4, M2; approved by the owner): Power of Siberia gas to China, actual and contracted, in bcm a year. The pipeline was agreed in 2014 (CNPC-Gazprom 30-year contract, 38 bcm/yr plateau) and has flowed since December 2019, so its contracted ramp-up was expected without the war: China's no-war imports from Russia include the contracted volumes above the 2021 level. Only deliveries beyond the contracted path count as war-driven.",
+ "unit": "bcm per year (2026: the 38 bcm/yr annual rate; the map takes January-August)",
+ "actual": {"2021": 10.39, "2022": 15.4, "2023": 22.7, "2024": 31.12, "2025": 38.84},
+ "contracted": {"2022": 15.4, "2023": 22.0, "2024": 30.0, "2025": 38.0, "2026": 38.0},
+ "basis": {
+  "2021": "Gazprom, 10.39 bcm (gas_prices.json records 10.4 from Gazprom's project page; the figure 10.39 is the one approved by the owner; not re-fetched in round 15)",
+  "2022": "actual 15.4 bcm (Gazprom via Reuters, 3 January 2024); the 2022 contractual quantity was not found, so the actual delivery is taken as contracted (not verified)",
+  "2023": "22.0 = 22.7 / 1.032: Gazprom said 2023 deliveries were 0.7 bcm (3.2%) above its contractual obligation (Reuters via BusinessDay, 3 January 2024; fetched)",
+  "2024": "30.0: the initial plan for 2024 as reported by Interfax (31.12 bcm delivered against a plan of 30 bcm; seen in a search summary, page not fetched: not verified)",
+  "2025": "38.0: the contractual plateau, reached from 1 December 2024 (Interfax, 13 January 2026; fetched); 38.84 bcm delivered, 0.84 bcm above plan (Interfax, 28 April 2026; fetched)",
+  "2026": "38.0: the plateau; the later agreement to raise it to 44 bcm/yr (autumn 2025) was made during the war and is not in the no-war path"
+ },
+ "price_prewar_eur_mwh": "2019-2021 average of China's pipeline-gas unit value (gas_prices.json CHN pipeline: 18.0, 16.1, 11.6 EUR/MWh = 15.23); 10.55 TWh per bcm (MWH_PER_BCM in build_data.py)",
+ "sources": [
+  {"name": "Interfax: Gazprom supplies 38.8 bcm of gas to China in 2025 (31.12 bcm in 2024; maximum contractual level of 38 bcm/yr from 1 December 2024)", "url": "https://interfax.com/newsroom/top-stories/115552/", "date": "2026-01-13"},
+  {"name": "Interfax: Power of Siberia at the planned contractual level of 38 bcm; 38.8 bcm in 2025 exceeded the contractual obligations", "url": "https://interfax.com/newsroom/top-stories/117354/", "date": "2026-04-28"},
+  {"name": "Reuters via BusinessDay: Russian gas supply to China reaches record daily level (22.7 bcm in 2023, 15.4 in 2022; 0.7 bcm above the contractual obligation)", "url": "https://www.businessday.co.za/bd/world/europe/2024-01-03-russian-gas-supply-to-china-reaches-record-daily-level/", "date": "2024-01-03"},
+  {"name": "TASS: Gazprom to supply over 38 bcm of gas via Power of Siberia to China in 2025; agreement to raise supplies to 44 bcm/yr", "url": "https://tass.com/economy/2032425", "date": "2025-10-20"}
+ ]
+}

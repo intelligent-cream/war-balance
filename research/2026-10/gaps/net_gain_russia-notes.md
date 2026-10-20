@@ -162,7 +162,7 @@ country risk premium, [`net_gain_sellers-notes.md`](net_gain_sellers-notes.md) s
   | aluminium | 1.1 | Rusal 2024 balance sheet (round 11, unchanged) |
   | services, arms, manufactured, wood, food, chemicals, steel (sector method) | margin / return on assets per activity, 0.3–3 | FNS/Rosstat by OKVED-2 activity, 2021–2025 (round 11, unchanged) |
 
-- **Effect on the map** (this step, together with Ukraine's file): Estonia −1.27, Lithuania −1.12, Libya +0.86, Yemen
+- **Effect on the map** (this step, together with Ukraine's file): Estonia −1.27, Lithuania −1.12 (both from Russia's lower gain shares on what they stopped buying; Ukraine's file barely touches them: round 15 correction), Libya +0.86, Yemen
   +0.75, Finland −0.67, Tunisia +0.66 (net, % of a year's GDP). The method band's "normal return" alternative loads
   `net_gain_russia_r14.json`, the round-14 file kept unchanged.
 - **Scripts** (outside the repository, like the round-11 ones):

@@ -22,7 +22,30 @@ Defaults are `RANGE` in [`site/index.html`](../../site/index.html); they are app
 | C | at least 75% in parts graded A to C |
 | D | otherwise: more than a quarter rests on rough indications (D) |
 
-In the round-14 build: 1 economy A, 5 B (the US, Canada, Denmark, Norway, Sweden), 209 C, 16 D (among them Belarus, Iran, Armenia and Montenegro). The rule is a judgement, raised by the audit and approved by the owner; the thresholds are in [decisions](../decisions.md#round-14-independent-audit-3).
+In the round-14b build: 1 economy A, 6 B, 205 C, 19 D; among economies above EUR 5bn GDP 6 B, 149 C and 7 D. The letters no longer separated countries (review 4, H3), so round 15 replaced the rule for the headline numbers (below). `gradeTotal()` is kept for the cost view.
+
+**Each headline number's letter (round 15, review 4 H3, approved by the owner).** Support for Ukraine, the change in payments to Russia and the net each get a letter from two things (`grade()` and `grades()` in `site/index.html`):
+
+- **data**: the share of the number's absolute size (parts weighted by their absolute values) that rests on parts graded A or B (primary data), and the share on parts graded D (judgement); C parts (modelled from data) are the rest;
+- **spread**: the width of the likely range and the method band together, from the lowest to the highest end, divided by the number's absolute value.
+
+| letter | A–B share at least | D share at most | spread at most |
+|---|---|---|---|
+| A | 75% | 5% | 0.5 × the value |
+| B | 50% | 15% | 1 × the value |
+| C | – | 35% | 2.5 × the value |
+| D | otherwise | | |
+
+The thresholds are a judgement, chosen so that the letters separate countries. Trade parts built on the modelled no-war level are C by rule (below), so the change in payments to Russia is at best C. Distribution in the round-15 build (all 231 entries; economies above EUR 5bn GDP; those ranked):
+
+| number | all | GDP ≥ EUR 5bn | ranked (direction certain) |
+|---|---|---|---|
+| support for Ukraine | 3 A, 19 B, 19 C, 190 D | 2 A, 19 B, 14 C, 128 D | 2 A, 19 B, 13 C, 29 D |
+| change in payments to Russia | 64 C, 167 D | 55 C, 108 D | 45 C, 8 D |
+| net | 1 A, 6 B, 59 C, 165 D | 6 B, 51 C, 106 D | 6 B, 42 C, 11 D |
+| before (round 14b, the net) | 1 A, 6 B, 205 C, 19 D | 6 B, 149 C, 7 D | |
+
+Most D letters belong to numbers close to zero, whose range is wide against their size (a country with almost no support for Ukraine, or almost no change in what it pays Russia). Examples: Germany B (support), C (payments), C (net); France A, C, C; Hungary B, C, C; North Korea D on its payments (weapons valued by judgement, a wide method band).
 
 **Stacked models are at best C (round 13 audit).** A part built from a modelled no-war level *and* a modelled share (Russia's or Ukraine's net gain, a seller's net gain, genuinely extra, a price index) stacks two models, so it is at best C, a modelled estimate: less paid to Russia, extra purchases from Ukraine, sales to Russia, services bought and sold (`cRus`, `cTrade` and the `weakest([.., "C"])` calls in `calc()`). Until round 12 these were at best B. "Less paid to Russia" is the largest part for most top-ranked countries, so most headline letters are now C or D. Inputs quoted from memory and not fetched again are D (the 2021 fertiliser margin in `net_gain_russia-notes.md`; PhosAgro's 2022–2023 margins were fetched in round 13 and its 2023 share corrected from 0.20 to 0.27).
 
@@ -107,13 +130,13 @@ Variants:
 
 **Signs (round 14, audit M3).** The correlations are between the sizes of two parts (a common input such as Russia's gain share makes both larger). Where two parts have opposite signs (paid > 0 and laundered oil < 0 for the US, France, Australia, Romania and China), that moves the total in opposite directions, so `total()` multiplies the correlation by the product of the parts' signs.
 
-The effect is small. In the current build (round 14) Germany's range is +2.11% to +4.60%. The country panel shows each part's range as a thin line in the waterfall and the total's range in the headline ("Likely range ... to ...").
+The effect is small. In the current build (round 15) Germany's net range is +2.25%<!-- n:DEU.netLo --> to +4.72%<!-- n:DEU.netHi -->. The country panel shows each part's range as a thin line in the waterfall and the total's range in the headline ("Likely range ... to ...").
 
-Rankings use these totals: countries whose likely range crosses zero are left out of top lists, as are economies under EUR 5bn GDP (`rankList()`, `MIN_GDP_RANK`).
+Rankings use these totals. Since round 15 (review 4, H3; approved by the owner) a country is ranked on a number only if **neither its likely range nor any method-band alternative changes that number's sign** (`uncertain()` in `site/index.html`); otherwise it is "direction uncertain": left out of that ranking, dotted on the map and marked in the panel, table, CSV and JSON. Economies under EUR 5bn GDP are left out too (`rankList()`, `MIN_GDP_RANK`). `check_data.py` recomputes the rule independently. Among economies above EUR 5bn, 100 are uncertain on support for Ukraine (nearly all with almost no support), 110 on the change in payments to Russia and 104 on the net; the list is in the round-15 log ([decision log](../decision-log.md#round-15-separate-maps-named-lists-and-a-stricter-ranking-19-october)).
 
 ## The method band (round 13, widened in round 14)
 
-The likely range is **data and model uncertainty, given the method**. Method choices move some countries by more than that range, so the panel also shows a **method band**: the net under each alternative method choice, one at a time (`methodBand()` in `site/index.html`). Round 14 (audit H4) added the choices that moved results in rounds 13 and 14:
+The likely range is **data and model uncertainty, given the method**. Method choices move some countries by more than that range, so the panel also shows a **method band**: each of the three headline numbers under each alternative method choice, one at a time (`methodBands()` in `site/index.html`; round 15 extends it from the net to all three numbers). Round 14 (audit H4) added the choices that moved results in rounds 13 and 14, and round 15 (review 4, H3, C1, M1, M4, M5) six more:
 
 | alternative | how it is computed | what it shows |
 |---|---|---|
@@ -126,12 +149,18 @@ The likely range is **data and model uncertainty, given the method**. Method cho
 | the mix of what was bought from tracker tonnes (until round 14) | rebuilt with `fuelmix` | the fuel-mix basis |
 | fuel prices as customs (CIF) values, freight included (until round 14) | rebuilt with `freight` | the freight basis |
 | sellers' normal return 9% nominal, services with real estate (round 13) | rebuilt with `normal_return` (`net_gain_sellers_r13.json`) | the normal return |
+| **redirected trade** (round 15): "less paid to Russia" × the world's net-to-gross ratio of payments for goods and fuel (0.37<!-- n:WORLD.ratio --> for 2022–August 2026: EUR 358.8bn less paid by buyers who cut, 226.7bn more paid by others) | `calc(c, y, {attrib: worldPaid(y).ratio})` | much of what one buyer stopped paying, Russia sold to others; every country's figure otherwise assumes everyone else stayed unchanged (review 4, C1) |
+| **without the gas Russia cut off itself** (round 15) | `calc(c, y, {nocut: true})`: "less paid to Russia" without its cut share (`sanctions.to_rus.cut`) | the labelled cut taken out of the number |
+| **without the war-time windfall** (round 15) | `calc(c, y, {windfall: "off"})` | the windfall counts at gain 1 on prices, not volumes (Hungary −0.86% instead of −6.07%) |
+| **refugees at gross cost** (round 15) | `calc(c, y, {refGross: true})`, `aid.refugee_gross_years` | the host's cost before the taxes refugees pay |
+| **2026 at 2025 prices** (round 15) | `calc(c, y, {p26: true})`: 2026's change in payments, laundered oil and windfall valued at 2025's fuel prices (`to_rus.p26`, `laund.p26`) | the Hormuz-crisis prices of 2026 ([prices](prices.md#2026-and-the-hormuz-crisis-round-15)) |
+| **2024 GDP** (round 15) | the number × average 2022–2024 GDP / 2024 GDP | the denominator (the default is the average since round 15) |
 
-The rebuilt alternatives store, per country, only the fields they change (`detail.json` `alts`, loaded after the map); the site applies them to a copy of the country and recomputes. The band is the lowest and highest of the base and all alternatives; the panel lists the choices that move the net by at least 0.005% of GDP. It is not a probability range. Examples (round 14): Moldova 4.4% to 7.1% (EU refiners), North Korea −30.0% to −10.2% (old valuation rule), India −3.0% to −2.0% (freight, fuel mix), Yemen −7.2% to −3.9% (fuel mix).
+The rebuilt alternatives store, per country, only the fields they change (`detail.json` `alts`, loaded after the map); the site applies them to a copy of the country and recomputes. The band is the lowest and highest of the base and all alternatives; the panel lists the choices that move the net by at least 0.005% of GDP. It is not a probability range. Examples (round 15, the net): Germany 2.30%<!-- n:DEU.netBandLo --> to 3.78%<!-- n:DEU.netBandHi --> (redirected trade at the low end), Moldova 2.42%<!-- n:MDA.netBandLo --> to 9.05%<!-- n:MDA.netBandHi --> (redirected trade; without the windfall), Hungary −6.33%<!-- n:HUN.netBandLo --> to −0.55%<!-- n:HUN.netBandHi --> (without the windfall), North Korea −29.97%<!-- n:PRK.netBandLo --> to −10.16%<!-- n:PRK.netBandHi --> (old valuation rule), Yemen −6.11%<!-- n:YEM.netBandLo --> to −3.04%<!-- n:YEM.netBandHi -->.
 
 ## Average year
 
-The headline is a total for 2022 to the chosen year against one year's GDP. The panel adds "about X of GDP in an average year": the total divided by the number of years (4.7 for 2022 to August 2026).
+The headline is a total for 2022 to the chosen year against one year's GDP (the average of 2022–2024 since round 15). The panel adds "about X of GDP in an average year": the total divided by the number of years (4.7 for 2022 to August 2026). Since round 15 (review 4, L3) each of the two numbers shows its average year in the panel, and the share text, share-card titles and OG descriptions say "in total since 2022 (about X a year)", so they are not read as yearly figures like Kiel's.
 
 ## 2026 and the * mark
 
@@ -146,7 +175,7 @@ The site marks the parts "paid to Russia", "sold to Russia" and "company taxes" 
 ## What the ranges do not cover
 
 - **Russia-side shocks.** The counterfactual intervals cover about 90% of outcomes in normal periods but only 77–79% in the 2013 back-test, when Russia's own economy moved ([counterfactual.md](counterfactual.md#7-how-the-predictions-error-enters-the-ranges)).
-- **The method itself**: what counts as a shift, the valuation rule, the choice of 2024 GDP, counting gas where it is burned. These are choices, not uncertainties ([decisions](../decisions.md)); the method band shows nine of them, one at a time (not combined).
+- **The method itself**: what counts as a shift, the valuation rule, the choice of GDP year (the average of 2022–2024 since round 15; 2024 is in the method band), counting gas where it is burned. These are choices, not uncertainties ([decisions](../decisions.md)); the method band shows nine of them, one at a time (not combined).
 - **Other correlated errors across parts.** Only the correlations listed above are included; a shared source error (one KSE report behind all company taxes) is still treated as independent.
 - **Correlated errors across countries.** Moving value between countries (re-exports, hub resale, the residual gap) shifts error from one country to another; each country's range is computed alone.
 - **Unknown unknowns**: flows nobody has measured are not on the map. Crypto and payment agents appear only as the agents' fees; the trade they settle is already in customs ([trade.md](trade.md#payment-agents-round-6)).
