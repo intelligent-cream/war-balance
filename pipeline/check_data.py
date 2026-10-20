@@ -426,23 +426,34 @@ else:
     check("docs figures match data.json", not _bad and _n > 0, f"{_n} tagged figures; differing: {_bad[:4] or 'none'}")
 
 # 31. round 15 (approved by the owner): the net is the view the map opens with, then its two parts and the cost to the
-# country; the gross "To Ukraine" and "To Russia" views are gone, and links to them open the nearest view
+# country; the gross "To Ukraine" and "To Russia" views are gone, and links to them open the nearest view. Round 17
+# (redesign, approved by the owner): the four views sit in the Filters drawer, which is closed on load (the page opens
+# with the map, one header line, the legend and the Highlights and Filters buttons); the second number is "Kept from
+# Russia" everywhere ("lens=kept" opens it too), and no page text says "change in payments to Russia" any more
 _buttons = re.findall(r'<button data-lens="(\w+)"', _html)
 _start = re.search(r'const state = \{ lens: "(\w+)"', _html)
 _old = re.search(r"const OLD_LENS = \{([^}]*)\}", _html)
 _old_map = dict(re.findall(r'(\w+): "(\w+)"', _old.group(1))) if _old else {}
 _rank = re.search(r"const LENS_RANK = \{([^}]*)\}", _html)
 _rank_keys = re.findall(r"(\w+):", _rank.group(1)) if _rank else []
+_site_text = _html + "".join((ROOT / "site" / f).read_text() for f in ("views.js", "views2.js")) + _sc
+_old_name = re.findall(r"[Cc]hange in (?:its )?payments to Russia", re.sub(r"(?m)^\s*//.*$", "", _site_text))
 check(
-    "the net is the default view; old views open the nearest one",
+    "the map opens with the net; old views open the nearest one; 'Kept from Russia'",
     _buttons == ["net", "support", "payments", "cost"]
     and bool(_start)
     and _start.group(1) == "net"
-    and _old_map == {"change": "net", "ukr": "support", "rus": "payments"}
+    and _old_map == {"change": "net", "ukr": "support", "rus": "payments", "kept": "payments"}
     and sorted(_rank_keys) == sorted(_buttons)
     and 'data-lens="ukr"' not in _html
-    and 'data-lens="rus"' not in _html,
-    f"buttons {_buttons}; start {_start.group(1) if _start else None}; old links {_old_map}; rankings for {_rank_keys}",
+    and 'data-lens="rus"' not in _html
+    and '<button data-lens="payments" aria-pressed="false" data-i18n="Kept from Russia">' in _html
+    and re.search(r'<aside class="drawer" id="drawer"[^>]*\bhidden>', _html) is not None
+    and 'id="hlbtn"' in _html
+    and 'id="fbtn"' in _html
+    and not _old_name,
+    f"buttons {_buttons}; start {_start.group(1) if _start else None}; old links {_old_map}; rankings for {_rank_keys}; "
+    f"old name 'change in payments to Russia' left in the site's text: {len(_old_name)}",
 )
 
 # 32. round 16 (review 5, C2; approved by the owner): the page in a real browser shows the same bands, "direction

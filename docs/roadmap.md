@@ -72,7 +72,7 @@ services to Russia and shipping. The profit-only figures stay in the docs as a c
 | A3 | **Value kept**: domestic value-added share per seller and kind of good (OECD TiVA; defence industry studies) | research: done |
 | A4 | **Genuinely extra**: for weapons (capacity built for the war, backlogs) and for sales to and from Russia (redirection to other buyers), per sector, with ranges | research: done |
 | A5 | Builder: flowback from the ledger at value kept × extra; the same rule for sales to Russia, services to Russia and shipping; the Ukraine and Russia balances, computed on the map (`calc()`) | done |
-| A6 | Map: blue when the total is positive; orange when negative mainly because of Russia; **gold** when negative mainly because of earning from the war effort; a thin gold outline on any other country whose Ukraine balance is negative; ochre flow lines from the war effort to earners (all ledger money) | done |
+| A6 | Map (replaced in round 17 by one colour rule, blue, orange and grey: earners are grey, see [decisions](decisions.md#round-17-redesign)): blue when the total is positive; orange when negative mainly because of Russia; **gold** when negative mainly because of earning from the war effort; a thin gold outline on any other country whose Ukraine balance is negative; ochre flow lines from the war effort to earners (all ledger money) | done |
 | A7 | Country panel: two balance cards ("With Ukraine: gave X, earned back Y" and "With Russia"), then the total; How it works and docs explain the rule | done |
 | A8 | Comparison of every country before and after, shown to the owner before merging | check |
 

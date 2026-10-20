@@ -86,8 +86,8 @@ cost the country carried.
 Raised by the third audit (M4) and approved by the owner: a seizure is as coerced as a forced-sale discount, and both
 hand value to Russia (its state or Russian firms). Until round 13 discounts counted and seizures did not, so leaving
 Russia lowered a country's score while having one's company seized did not. In round 14 seizures counted as money
-taken by Russia, on their own line, "Seized by Russia (companies' assets)", toward Russia in the change in payments to
-Russia. **Since round 14b** (raised by the owner) seizures and forced exit costs are both out of the totals and
+taken by Russia, on their own line, "Seized by Russia (companies' assets)", toward Russia in the money kept
+from Russia. **Since round 14b** (raised by the owner) seizures and forced exit costs are both out of the totals and
 counted in the cost to the country (`taken` in `data.json`; [above](#round-14b-taken-by-russia-not-in-the-totals)).
 
 - **Data**: `seizure` in [`company_flows.json`](../../research/2026-10/gaps/company_flows.json): asset value lost by the
@@ -123,8 +123,8 @@ fee paid to Russia's budget) are:
 
 The country did not choose to move that money; Russia took it. So:
 
-- **Totals:** neither is in the net shift or in either headline number (support for Ukraine; change in payments to
-  Russia). This reverses round 5, which counted forced discounts and exit fees, and round 14 (audit M4), which counted
+- **Totals:** neither is in the net shift or in either headline number (support for Ukraine; kept
+from Russia). This reverses round 5, which counted forced discounts and exit fees, and round 14 (audit M4), which counted
   seizures.
 - **Cost view:** both count in the cost to the country, like the energy switching cost: "Seized by Russia (companies' assets)"
   and "Forced sales: discount and exit fee taken by Russia", positive (`taken` in `data.json`, by home country, with the
@@ -173,13 +173,13 @@ home: about EUR 0.1–0.2bn a year in total, before and after the war, and the c
 ## Frozen central-bank reserves (round 7)
 
 **Round 16 (review 5 H4, approved by the owner): a line of its own, added to the net only.** The return Russia lost
-on its frozen reserves is not a payment, so it is no longer inside the change in payments to Russia: not on that map,
+on its frozen reserves is not a payment, so it is no longer inside the money kept from Russia: not on that map,
 in its ranking or in its world total. It is a third line, **"Russian money frozen"**, shown in the panel under the two
 numbers, in the table, the CSV and JSON downloads and [trace](../trace.md#frozen-russian-reserves), and added to the
 net only (`OWN_LINE` and `frozenLine()` in `index.html`; check 34). The net is therefore support for Ukraine plus the
-change in payments to Russia plus Russian money frozen. It is still not something the country gave Ukraine (what
+kept from Russia plus Russian money frozen. It is still not something the country gave Ukraine (what
 Ukraine receives from this return, the G7 ERA loans, is already left out of donors' aid), so it is not in support for
-Ukraine either. Before (round 14, audit M6) it was its own line inside the change in payments; it made up two-thirds of
+Ukraine either. Before (round 14, audit M6) it was its own line inside the money kept from Russia; it made up two-thirds of
 Belgium's payments number (+1.86% → +0.62%; its net is unchanged at +2.81%).
 
 **The one-third host share (a judgement).** The freeze is an EU decision, taken by all members and renewed by

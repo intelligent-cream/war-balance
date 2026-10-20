@@ -2,8 +2,9 @@
 // Node with every method-band alternative loaded (site_numbers.mjs). Review 5 found that the page worked out the
 // "direction uncertain" marks, the rankings and the grades before detail.json (the alternatives) had loaded, and kept
 // them. This check loads the page as a reader does, waits until it says it is ready, and compares, for every economy:
-// the method band and the "direction uncertain" flag of each headline number, the dotted countries on each map, and
-// the countries ranked in the Ranking view of each headline number.
+// the method band and the "direction uncertain" flag of each headline number, the countries marked uncertain on each map
+// (round 17: grey, "too close to call", no longer dotted), and the countries ranked in the Ranking view of each headline
+// number.
 //
 // Run after build_data.py:  node pipeline/browser_check.mjs      (check_data.py runs it too, check 32)
 // Needs Node 18+ and Playwright (npm i -g playwright, or PLAYWRIGHT_CHROMIUM=/path/to/chromium). Exit code 1 on a mismatch.
@@ -76,7 +77,7 @@ for (const [iso, o] of Object.entries(inPage)) {
   }
 }
 
-// 2. each headline view: the countries ranked in the Ranking view, and the countries dotted on the map
+// 2. each headline view: the countries ranked in the Ranking view, and the countries marked uncertain on the map
 const LENS = { net: "net", support: "ua", payments: "rus" };
 const ranked = {};
 for (const [lens, q] of Object.entries(LENS)) {
@@ -93,11 +94,13 @@ for (const [lens, q] of Object.entries(LENS)) {
   const extra = have.filter(k => !want.includes(k)), missing = want.filter(k => !have.includes(k));
   if (extra.length || missing.length) problems.push(`${lens} ranking: ranked in the page but not in Node ${extra.join(" ") || "none"}; missing ${missing.join(" ") || "none"}`);
   const wrongDots = got.dotted.filter(k => !node.countries[k]?.[q + "Unc"]);
-  if (wrongDots.length) problems.push(`${lens} map: dotted although Node says the direction is clear: ${wrongDots.join(" ")}`);
+  if (wrongDots.length) problems.push(`${lens} map: marked uncertain (grey) although Node says the direction is clear: ${wrongDots.join(" ")}`);
   ranked[lens] = have.length;
 }
 // 3. round 16b (check 16, B2): small economies with a clear direction take the lightest colour of that direction, never
-// the neutral "no change" colour (the clamp used to send negatives to the neutral bucket)
+// the neutral "no change" colour (the clamp used to send negatives to the neutral bucket). Round 17 (approved by the
+// owner): one colour rule, so a small economy whose direction is uncertain is the neutral grey, as every such country is
+// (it was dotted until round 17); the check expects exactly that
 const SMALL = ["TUV", "PLW", "BTN", "DJI"];
 let nSmall = 0;
 for (const lens of ["net", "payments"]) {
@@ -109,7 +112,7 @@ for (const lens of ["net", "payments"]) {
       if (!c) { out.push({ iso, missing: true }); continue; }
       const v = scaled(c, lensValue(c));
       const paths = [...document.querySelectorAll("path.country")].filter(p => p.__data__ && (DATA[p.__data__.id] || DATA[INCLUDED[p.__data__.id]]) === c);
-      out.push({ iso, v, color: sc.colorFor(c, v), fills: paths.map(p => p.style.fill), neutral: sc.colors[4], want: sc.colors[v > 0 ? 5 : 3] });
+      out.push({ iso, v, color: sc.colorFor(c, v), fills: paths.map(p => p.style.fill), neutral: sc.colors[4], want: sc.colors[v > 0 ? 5 : 3], unc: uncertain(c, 2026, HEAD_LENS[state.lens]) });
     }
     return out;
   }, SMALL);
@@ -119,7 +122,11 @@ for (const lens of ["net", "payments"]) {
     nSmall++;
     if (o.missing) { problems.push(`${lens} map: ${o.iso} missing from the data`); continue; }
     if (o.color === o.neutral || o.color !== o.want) problems.push(`${lens} map: ${o.iso} (${o.v.toFixed(2)}) coloured ${o.color}, want ${o.want}`);
-    for (const f of o.fills) if (norm(f) === norm(rgb(o.neutral)) || norm(f) === norm(o.neutral)) problems.push(`${lens} map: ${o.iso} painted in the neutral colour`);
+    const isNeutral = f => norm(f) === norm(rgb(o.neutral)) || norm(f) === norm(o.neutral);
+    for (const f of o.fills) {
+      if (o.unc && !isNeutral(f)) problems.push(`${lens} map: ${o.iso} is too close to call but painted ${f}, not the neutral grey`);
+      if (!o.unc && isNeutral(f)) problems.push(`${lens} map: ${o.iso} painted in the neutral colour`);
+    }
   }
 }
 
@@ -128,7 +135,7 @@ await browser.close();
 server.close();
 
 const unc = q => Object.values(node.countries).filter(c => c.gdp >= MIN_GDP && c[q + "Unc"]).length;
-console.log(`browser check: ${Object.keys(inPage).length} economies; ranked net ${ranked.net}, support ${ranked.support}, payments ${ranked.payments}; direction uncertain (GDP >= EUR 5bn) ua ${unc("ua")}, rus ${unc("rus")}, net ${unc("net")}; small economies not neutral: ${nSmall} checked`);
+console.log(`browser check: ${Object.keys(inPage).length} economies; ranked net ${ranked.net}, support ${ranked.support}, payments ${ranked.payments}; direction uncertain (GDP >= EUR 5bn) ua ${unc("ua")}, rus ${unc("rus")}, net ${unc("net")}; small economies' colours: ${nSmall} checked`);
 if (problems.length) {
   console.log(`MISMATCH: ${problems.length} (bands ${nBand}, flags ${nFlag}, grades ${nGrade})`);
   for (const p of problems.slice(0, 25)) console.log("  " + p);
