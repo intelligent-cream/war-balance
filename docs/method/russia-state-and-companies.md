@@ -172,12 +172,24 @@ home: about EUR 0.1–0.2bn a year in total, before and after the war, and the c
 
 ## Frozen central-bank reserves (round 7)
 
-**Round 14 (audit M6, approved by the owner):** this is its own line, "Russian money frozen (return Russia lost on its
-reserves)", and the share cards and panel no longer call it "less paid to Russia"; when it is the largest part of a
-country's positive second number, they say so ("mostly the return Russia lost on its frozen reserves", Belgium). It
-stays inside the change in payments to Russia: it is money Russia did not get because of a decision by the host
-country and the EU, which is what that number measures; it is not something the country gave Ukraine (what Ukraine
-receives from this return, the G7 ERA loans, is already left out of donors' aid).
+**Round 16 (review 5 H4, approved by the owner): a line of its own, added to the net only.** The return Russia lost
+on its frozen reserves is not a payment, so it is no longer inside the change in payments to Russia: not on that map,
+in its ranking or in its world total. It is a third line, **"Russian money frozen"**, shown in the panel under the two
+numbers, in the table, the CSV and JSON downloads and [trace](../trace.md#frozen-russian-reserves), and added to the
+net only (`OWN_LINE` and `frozenLine()` in `index.html`; check 34). The net is therefore support for Ukraine plus the
+change in payments to Russia plus Russian money frozen. It is still not something the country gave Ukraine (what
+Ukraine receives from this return, the G7 ERA loans, is already left out of donors' aid), so it is not in support for
+Ukraine either. Before (round 14, audit M6) it was its own line inside the change in payments; it made up two-thirds of
+Belgium's payments number (+1.86% → +0.62%; its net is unchanged at +2.81%).
+
+**The one-third host share (a judgement).** The freeze is an EU decision, taken by all members and renewed by
+unanimity, so most of the return Russia lost is credited to all EU members by their share of EU-level aid. The host
+gets one third on top of that share for Euroclear (Belgium) and Clearstream (Luxembourg): it carries the legal risk
+(arbitration and court claims by Russia), the political exposure and the custody, which the other members do not. One
+third is a round judgement between the two corners: 0 (the freeze as purely collective) and 1 (custody alone decides,
+which would give Belgium the whole of a decision all members took). It is worth about 1.2 points of Belgium's GDP at
+the central value (review 5's estimate; the decisions page said about 0.8 until round 16). It is not in the method
+band: it moves where the credit lands between EU members, not its total or sign for the EU.
 
 About EUR 260bn of the Bank of Russia's reserves have been immobilised since 28 February 2022, about 185bn at
 Euroclear in Belgium. The frozen amount itself is not counted. What counts is the yearly return those reserves would
@@ -193,8 +205,8 @@ have earned for Russia without the freeze: money Russia did not get, so toward U
   Ukraine and already in Belgium's aid, so it is taken off the return first.
 - **The low end** allows for Russia having spent part of the reserves without a freeze (× 0.8).
 - **No double count** with the G7 ERA loans, which are repaid from this return and already left out of donors' aid.
-  One small possible overlap remains: most of the July 2024 windfall tranche went to the European Peace Facility, and
-  if the Kiel data count it as EU aid it also sits in members' EU shares (EUR 1.4–3bn across the EU).
+  Most of the July 2024 windfall tranche went to the European Peace Facility; Kiel has not counted the EPF since
+  tracker version 16 (round 16 check), so none of it sits in members' EU shares and there is no overlap.
 - **Left out**: private sanctioned assets (about EUR 28bn in the EU): private money, much of it yachts and property
   that earn nothing. Reserves held in China (about USD 103bn) and gold held in Russia were not frozen.
 

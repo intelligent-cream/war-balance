@@ -35,8 +35,11 @@ Profit tax is paid out of the operating surplus, so it is inside the gain, and r
 | shipping Russian oil | water transport (H50) | sh |
 | insuring Russian oil | insurance (K65) | in |
 | payment agents' fees | finance (K) | ag |
+| refugee hosting spent in the host economy (round 16b) | mean of retail trade (G47; all of G where G47 is missing), accommodation and food (I) and renting of real estate without owner-occupiers' imputed rent (L less L68A; left out where STAN publishes no L68A: Germany, Italy, Ireland, Iceland, New Zealand, Costa Rica) | `aid.refugee_back_f` |
 
 Manufacturing (C) replaces the industry excluding construction (BTE) that `value_kept.json` used for sales to Russia: what Europe, China, Türkiye and Belarus sell to Russia is mostly machinery, vehicles, chemicals and food, not mining or electricity.
+
+Round 16b (check 16, N4; approved by the owner): group `refugee_spending`. Raw downloads `raw/oecd_stan/stan_retail_rent_*.csv` (G, G47, L, L68A; fetched 20 October 2026 from the same STAN 2025 dataflow). The rent industry is computed as L minus L68A for every measure L68A publishes; L68A has no employees, so persons are L's own. Central values: Poland 0.161 (G47 0.292, I 0.186, rent 0.006), Germany 0.048 (G47, I), the Netherlands 0.067, the OECD median 0.047 (30 economies). Round 16 used the `services` group (I and GTNXL, Poland 0.181), which includes finance and ICT.
 
 ## Results (central, round 14)
 

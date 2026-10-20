@@ -3,7 +3,7 @@
 [decisions.md](decisions.md) explains the method as it stands. This page records **how it got there**: each decision,
 who raised it, why, and what it changed. "Owner" is the project's author; "reader" a Reddit commenter; "audit" an
 independent review run on the project; "proposed" means suggested by Claude and accepted by the owner. Dates are
-2026-10-17 to 2026-10-19; every decision is in the git history. Who raised each decision in rounds 1–6 is
+2026-10-17 to 2026-10-20; every decision is in the git history. Who raised each decision in rounds 1–6 is
 reconstructed from the commit history and may be imprecise; corrections by the owner are welcome.
 
 ## Round 1–2: the question and the first map (17 October)
@@ -202,3 +202,46 @@ all steps: [changelog](changelog.md#round-15).
 | **Average 2022–2024 GDP** (M1); **Power of Siberia** in China's no-war path (M2); **Hormuz** note and "2026 at 2025 prices" (owner; M4); **one refugee definition** (M5); Ukraine's premium per year | review, owner (Hormuz) | denominator, contracted gas, unrelated price shock, comparability | Nigeria +0.81 → +0.44; China −0.66 → −0.63; Poland support +1.11 → +1.95 |
 | **Docs figures checked** by `check_docs_numbers.py` (H4) | review, owner | stale docs | none |
 | **The net first, then its two parts** (replaces support for Ukraine as the default); the gross **To Ukraine** and **To Russia** views removed; **"Cost carried" renamed "Cost to the country"** | owner | the gross views include normal trade and measure something different; the cost is already net of gains | display; old links open the nearest view |
+
+## Round 16: review 5 (20 October)
+
+A fifth independent review (economist and data journalist) raised the points below; the **owner approved** each and
+**kept the net as the default view and ranking** (the review asked to stop ranking it). Two points were the owner's
+own additions to the brief: the "Russia's net gain" wording and refugee spending flowing back. Details, data and
+effects: [decisions](decisions.md#round-16-review-5); all steps: [changelog](changelog.md#round-16).
+
+| decision | raised by | why | effect |
+|---|---|---|---|
+| **The method band's alternatives load before anything is drawn**, and a real-browser check compares the page with the Node model (C2) | review, owner | the page ranked countries its own rule leaves out | the browser shows what the checks report |
+| **Poland's refugee scope factor in 2022 only**; Germany's later years at the reported federal figure (H1) | review, owner | a 2022 projection applied to every year | Poland support +1.95 → +1.28 (with step 13) |
+| **The superseded valuation rule leaves the method band** (H5) | review, owner | it is no longer a reasonable alternative | Bulgaria, Czechia, India, Kuwait, Nigeria ranked on support |
+| **Redirected trade on both sides**, half against each (H6) | review, owner | the world total of the alternative had the wrong sign | bands |
+| **"Russia's net gain"**, not "paid", for the world totals | owner (from review H3) | they are net gains | wording |
+| **EU-level aid text**: the EPF not in it, and why; text and bar the same figure (L1) | review, owner | the text contradicted Kiel and the bar | wording |
+| **Adjusted aid graded by its adjusted share**; stale metadata marked (L4, L2) | review, owner | modelled adjustments were graded A | Estonia, Latvia support B → C |
+| **Colour scale set by economies of at least EUR 5bn** (L3) | review, owner | micro-states looked darker than India | display |
+| **The net stays the default and ranked** | owner | simplicity, with the warning line | none |
+| **"Russia's gain from this country rose"** with each entry's cause; arms suppliers on "Armed Russia" only (H3) | review, owner | North Korea headed a list of payments | display |
+| **Russian money frozen on its own line**, in the net only (H4) | review, owner | it is not a payment | Belgium payments +1.86 → +0.62 |
+| **One common cost per refugee** in the method band (H2) | review, owner (actual cost kept on the map) | the same refugee was worth 0 to 20,000 euros | bands |
+| **Refugee spending flows back** at the host's real gain (M3) | owner (from review M3) | weapons bought at home were netted, refugee spending was not | 2.7% of hosting cost |
+| **Small flows from the 2019–2021 average** (M2; the median since round 16b) | review, owner | single-year noise in small flows | Cameroon +0.80 → +0.36 |
+| **Hong Kong keeps only the gold that stays there; gold volume at the no-war gold price** (M1, M6) | review, owner | gold passed on and the gold price were charged to Hong Kong | Hong Kong −4.27 → −1.59 |
+| **"Required by sanctions" from each country's actual stop date** (M4) | review, owner | Lithuania stopped Russian crude before the ban | Lithuania 87% → 21% (the panel's note over all its trade with Russia: 86% → 23%) required (label) |
+
+### Round 16b: check 16 (20 October)
+
+A pre-release check of round 16 found that Brunei's rise came from a mislabelled field (B1) and that the new colour
+clamp painted negative micro-states as "no change" (B2), with ten smaller points. The **owner approved** the fixes.
+Details: [decisions](decisions.md#round-16b-fixes-after-check-16); steps: [changelog](changelog.md#round-16b).
+
+| decision | raised by | why | effect |
+|---|---|---|---|
+| **Small-flow baseline: the median of 2019–2021 at pre-war prices, from the yearly series**; refinery openings and closures (Brunei, New Zealand) and mirror-only data (Syria) keep 2021 (B1, N1) | check, owner | the "average" was 2021 at 2021 prices for 28 flows; one-off years decided the mean | Brunei +5.04 → +2.35, Malta +0.79 → +0.28 (payments) |
+| **Lightest colour of each direction for small economies** (B2) | check, owner | negatives fell into the neutral colour | display |
+| **Site text, share text and the net map's legend** (N2, N3, N10) | check, owner | the text said 2021 for every flow; "−<0.01% to +<0.01%"; frozen money unnamed | wording |
+| **Refugee spending through retail, accommodation and food, and rent** (N4) | check, owner | finance and ICT were in the services group | Poland's factor 8.2% → 7.3% |
+| **"Gold at its actual price" in the method band** (N5) | check, owner | part of the gold price rise may be the war's | bands |
+| **Poland's pipeline crude "cut off by Russia"** (N6) | check, owner | Russia halted Druzhba | label |
+| **The page works without `detail.json`** (N7) | check, owner | a failed file blocked the page | display |
+| **Ranges and the warning in shared text and on the cards** (M5) | review, owner | shared figures dropped the uncertainty | display |

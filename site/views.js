@@ -215,6 +215,8 @@ const COLS = [
   { k: "rusGdp", label: "Change in payments to Russia, % of a year's GDP", fmt: r => pct(r.rusGdp) + unq(r, "rus"), sign: true },
   { k: "rusCert", label: "Certainty", fmt: r => r.grades.rus },
   { k: "rusCut", label: "Of which gas Russia cut off, €", fmt: r => (r.rusCut > 0.005 ? eur(r.rusCut) : "–") },
+  // round 16 (review 5, H4): its own line, in the net only
+  { k: "frozenGdp", label: "Russian money frozen, % of a year's GDP (in the net only)", fmt: r => (r.frozen ? pct(r.frozenGdp) : "–"), sign: true },
   // round 13b: a marker, in no total
   { k: "remitGdp", label: "Remittances from Russia, change, % of a year's GDP (not in totals)", fmt: r => (r.remitGdp == null ? "–" : pct(r.remitGdp)) },
   // round 14b: what Russia took from the country's companies, in the cost only
@@ -240,6 +242,7 @@ function tableRows() {
       shift: k.shift, shiftLo: k.shiftLo, shiftHi: k.shiftHi,
       shiftGdp: g && k.shift * g, shiftLoGdp: g && k.shiftLo * g, shiftHiGdp: g && k.shiftHi * g, shiftPp: pp && k.shift * pp,
       ua: k.uaBal, uaLo: k.uaLo, uaHi: k.uaHi, rus: k.rusBal, rusLo: k.rusLo, rusHi: k.rusHi, rusCut: k.rusCut,
+      frozen: k.frozen, frozenLo: k.frozenLo, frozenHi: k.frozenHi, frozenGdp: g && k.frozen * g,
       uaGdp: g && k.uaBal * g, rusGdp: g && k.rusBal * g,
       remit: rm[0], remitLo: rm[1], remitHi: rm[2], remitGdp: rm[0] == null ? null : g && rm[0] * g,
       // round 14b: seizures and forced sales, not in the net or either number; part of the cost
@@ -296,6 +299,7 @@ function csvSummary(rows) {
   const head = ["iso3", "country", "period", "net_of_flowback",
     "support_ukraine_eur_bn", "support_ukraine_low_eur_bn", "support_ukraine_high_eur_bn", "support_ukraine_pct_gdp", "support_ukraine_certainty", "support_ukraine_direction_uncertain",
     "payments_russia_change_eur_bn", "payments_russia_change_low_eur_bn", "payments_russia_change_high_eur_bn", "payments_russia_change_pct_gdp", "payments_russia_change_certainty", "payments_russia_change_direction_uncertain", "of_which_gas_cut_by_russia_eur_bn",
+    "russian_money_frozen_eur_bn_net_only", "russian_money_frozen_low_eur_bn_net_only", "russian_money_frozen_high_eur_bn_net_only", "russian_money_frozen_pct_gdp_net_only",
     "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person", "net_shift_certainty", "net_shift_direction_uncertain",
     "refugees_hosted_not_counted_co_belligerent_eur_bn",
     "remittances_from_russia_change_eur_bn_not_in_totals", "remittances_from_russia_change_low_eur_bn_not_in_totals", "remittances_from_russia_change_high_eur_bn_not_in_totals", "remittances_from_russia_change_pct_gdp_not_in_totals",
@@ -303,6 +307,7 @@ function csvSummary(rows) {
     "cost_eur_bn", "cost_pct_gdp", "aid_eur_bn", "refugees_eur_bn", "paid_to_russia_eur_bn", "gdp_eur_bn_avg_2022_2024", "population_m"];
   const lines = rows.map(r => [r.iso3, r.c.name_en, periodTextEn(), state.netBack,
     r.ua, r.uaLo, r.uaHi, r.uaGdp, r.grades.ua, r.unc.ua, r.rus, r.rusLo, r.rusHi, r.rusGdp, r.grades.rus, r.unc.rus, r.rusCut,
+    r.frozen, r.frozenLo, r.frozenHi, r.frozenGdp,
     r.shift, r.shiftLo, r.shiftHi, r.shiftGdp, r.shiftPp, r.grades.net, r.unc.net, r.refExcluded,
     r.remit, r.remitLo, r.remitHi, r.remitGdp,
     r.taken, r.takenLo, r.takenHi, r.takenGdp,
@@ -320,11 +325,13 @@ function csvParts(rows) {
 function jsonRows(rows) {
   const r4 = v => (v == null || Number.isNaN(v) ? null : +v.toFixed(4));
   return JSON.stringify({ period: periodTextEn(), net_of_flowback: state.netBack, unit: "EUR bn; pct_gdp = period total / average 2022-2024 GDP x 100, not a yearly rate",
-    note: "the net adds two different things: aid given and payments to Russia avoided; much of what one country stopped paying, Russia sold to others. direction_uncertain: the likely range or a method-band alternative crosses zero (not ranked)",
+    note: "the net = support for Ukraine + change in payments to Russia + Russian money frozen; it adds different things: aid given and payments to Russia avoided; much of what one country stopped paying, Russia sold to others. direction_uncertain: the likely range or a method-band alternative crosses zero (not ranked)",
     countries: rows.map(r => ({ iso3: r.iso3, country: r.c.name_en, gdp_eur_bn_avg_2022_2024: r.gdp,
       support_for_ukraine: { eur_bn: r4(r.ua), low: r4(r.uaLo), high: r4(r.uaHi), pct_gdp: r4(r.uaGdp), certainty: r.grades.ua, direction_uncertain: r.unc.ua,
         refugees_hosted_not_counted_co_belligerent_eur_bn: r.refExcluded == null ? undefined : r4(r.refExcluded) },
       change_in_payments_to_russia: { eur_bn: r4(r.rus), low: r4(r.rusLo), high: r4(r.rusHi), pct_gdp: r4(r.rusGdp), of_which_gas_cut_by_russia: r4(r.rusCut), certainty: r.grades.rus, direction_uncertain: r.unc.rus },
+      russian_money_frozen: { eur_bn: r4(r.frozen), low: r4(r.frozenLo), high: r4(r.frozenHi), pct_gdp: r4(r.frozenGdp),
+        note: "the return Russia lost on its central-bank reserves frozen here: not a payment, on its own line, added to the net only" },
       net: { eur_bn: r4(r.shift), low: r4(r.shiftLo), high: r4(r.shiftHi), pct_gdp: r4(r.shiftGdp), certainty: r.grades.net, direction_uncertain: r.unc.net },
       remittances_from_russia_change_not_in_totals: r.remit == null ? null : { eur_bn: r4(r.remit), low: r4(r.remitLo), high: r4(r.remitHi), pct_gdp: r4(r.remitGdp),
         note: "marker only: migrants' wages sent home from Russia against the level expected without the war; not in the net or either number" },
