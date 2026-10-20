@@ -3394,6 +3394,38 @@
      "what": "EU bans and the date each annex entered into force",
      "confirmed": false,
      "checked": "exists in research file; the page returned no readable content to an automated fetch in the round-11 audit"
+    },
+    {
+     "title": "Neste: Neste's response to the war in Ukraine (the last crude cargo of Russian origin arrived at Porvoo on 20 July 2022)",
+     "url": "https://www.neste.com/nestes-response-to-the-war-in-ukraine",
+     "kind": "primary",
+     "what": "Finland's stop date for Russian crude (stop_dates_r16.json)",
+     "confirmed": true,
+     "checked": "fetched 2026-10-20 (check 16): \"The last of the crude oil cargoes from Russian origin arrived at the Porvoo refinery on Wednesday 20 July 2022\""
+    },
+    {
+     "title": "Neste, 6 April 2022: One of the last remaining crude oil cargoes from Russia will arrive at Neste tonight",
+     "url": "https://neste.com/news/one-of-the-last-remaining-crude-oil-cargoes-from-russia-will-arrive-at-neste-tonight",
+     "kind": "primary",
+     "what": "Finland: 85% replaced; contracts end in July 2022",
+     "confirmed": true,
+     "checked": "fetched 2026-10-20"
+    },
+    {
+     "title": "The Baltic Times (BNS), 25 March 2022: Orlen Lithuania plans to refine Saudi oil only",
+     "url": "https://www.baltictimes.com/orlen_lithuania_plans_to_refine_saudi_oil_only___minister/",
+     "kind": "secondary",
+     "what": "Lithuania's crude (a plan; the stop itself is confirmed by monthly customs data: nil from April 2022)",
+     "confirmed": true,
+     "checked": "fetched 2026-10-20"
+    },
+    {
+     "title": "Stars and Stripes (dpa), 20 December 2022: Germany says it won't be buying Russian oil at all in 2023",
+     "url": "https://www.stripes.com/theaters/europe/2022-12-20/germany-russian-oil-2023-8490978.html",
+     "kind": "secondary",
+     "what": "Germany's pipeline crude (Leuna and Schwedt) from 1 January 2023",
+     "confirmed": true,
+     "checked": "fetched 2026-10-20"
     }
    ],
    "note": "Added in the round-11 audit, when the sanctions note in each panel got a source footnote. Other inputs (Eurostat Comext, UN Comtrade, national sanctions acts) are listed in research/2026-10/gaps/sanctions_share.json sources."
@@ -3842,6 +3874,14 @@
      "what": "end of transit through Ukraine, 1 January 2025",
      "confirmed": true,
      "checked": "fetched 2026-10-19 (round 14)"
+    },
+    {
+     "title": "WION, 26 February 2023: Polish energy group says Russia halted oil pipeline deliveries (Druzhba to Poland)",
+     "url": "https://www.wionews.com/world/polish-energy-group-says-russia-halted-oil-pipeline-deliveries-565942/amp",
+     "kind": "secondary",
+     "what": "Poland's pipeline crude, stopped by Russia on 25 February 2023 (round 16b: labelled stopped by Russia, like the gas)",
+     "confirmed": true,
+     "checked": "fetched 2026-10-20 (round 16); HTTP 403 in check 16, where monthly customs data (UN Comtrade) confirmed the stop: 0.50 Mt in February 2023, nil from March"
     }
    ],
    "note": "Round 14 (audit H5): evidence of each gas cut that the 'cut off by Russia' label counts, replacing the EU sanctions regulation link for that label. Each page was opened in round 14 (Ørsted's through a fetch tool, the others directly)."

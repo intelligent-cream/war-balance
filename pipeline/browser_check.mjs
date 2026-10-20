@@ -96,12 +96,39 @@ for (const [lens, q] of Object.entries(LENS)) {
   if (wrongDots.length) problems.push(`${lens} map: dotted although Node says the direction is clear: ${wrongDots.join(" ")}`);
   ranked[lens] = have.length;
 }
+// 3. round 16b (check 16, B2): small economies with a clear direction take the lightest colour of that direction, never
+// the neutral "no change" colour (the clamp used to send negatives to the neutral bucket)
+const SMALL = ["TUV", "PLW", "BTN", "DJI"];
+let nSmall = 0;
+for (const lens of ["net", "payments"]) {
+  await ready(`#lens=${lens}`);
+  const got = await page.evaluate(small => {
+    const sc = scaleFor(), out = [];
+    for (const iso of small) {
+      const c = byIso[iso];
+      if (!c) { out.push({ iso, missing: true }); continue; }
+      const v = scaled(c, lensValue(c));
+      const paths = [...document.querySelectorAll("path.country")].filter(p => p.__data__ && (DATA[p.__data__.id] || DATA[INCLUDED[p.__data__.id]]) === c);
+      out.push({ iso, v, color: sc.colorFor(c, v), fills: paths.map(p => p.style.fill), neutral: sc.colors[4], want: sc.colors[v > 0 ? 5 : 3] });
+    }
+    return out;
+  }, SMALL);
+  const norm = x => (x || "").replace(/\s/g, "").toLowerCase();
+  const rgb = h => `rgb(${parseInt(h.slice(1, 3), 16)},${parseInt(h.slice(3, 5), 16)},${parseInt(h.slice(5, 7), 16)})`;
+  for (const o of got) {
+    nSmall++;
+    if (o.missing) { problems.push(`${lens} map: ${o.iso} missing from the data`); continue; }
+    if (o.color === o.neutral || o.color !== o.want) problems.push(`${lens} map: ${o.iso} (${o.v.toFixed(2)}) coloured ${o.color}, want ${o.want}`);
+    for (const f of o.fills) if (norm(f) === norm(rgb(o.neutral)) || norm(f) === norm(o.neutral)) problems.push(`${lens} map: ${o.iso} painted in the neutral colour`);
+  }
+}
+
 if (errors.length) problems.push("page errors: " + errors.slice(0, 3).join(" | "));
 await browser.close();
 server.close();
 
 const unc = q => Object.values(node.countries).filter(c => c.gdp >= MIN_GDP && c[q + "Unc"]).length;
-console.log(`browser check: ${Object.keys(inPage).length} economies; ranked net ${ranked.net}, support ${ranked.support}, payments ${ranked.payments}; direction uncertain (GDP >= EUR 5bn) ua ${unc("ua")}, rus ${unc("rus")}, net ${unc("net")}`);
+console.log(`browser check: ${Object.keys(inPage).length} economies; ranked net ${ranked.net}, support ${ranked.support}, payments ${ranked.payments}; direction uncertain (GDP >= EUR 5bn) ua ${unc("ua")}, rus ${unc("rus")}, net ${unc("net")}; small economies not neutral: ${nSmall} checked`);
 if (problems.length) {
   console.log(`MISMATCH: ${problems.length} (bands ${nBand}, flags ${nFlag}, grades ${nGrade})`);
   for (const p of problems.slice(0, 25)) console.log("  " + p);

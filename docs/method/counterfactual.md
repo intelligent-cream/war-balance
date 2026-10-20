@@ -14,7 +14,7 @@ actual_i   = value_i / pidx_i                (the year's money, divided by its p
 change_i   = expected_i − actual_i           (positive = less than expected)
 ```
 
-- `base` is the pre-war level at pre-war prices. For the flows covered by `counterfactual.json` it is **the 2021 value divided by the 2021 price level** (`years[0] / pidx[0]`); the older 2019–2021 average is kept in `data.json` as `base_2019_2021_avg`. For flows not covered (company taxes, shipping, laundered oil) see [section 6](#6-which-model-is-used-for-which-flow).
+- `base` is the pre-war level at pre-war prices. For the flows covered by `counterfactual.json` it is **the 2021 value divided by the 2021 price level** (`years[0] / pidx[0]`); for small purchases from Russia (under EUR 1bn a year) it is the median of 2019, 2020 and 2021 at pre-war prices ([small flows](#small-flows-start-from-the-2019-to-2021-median-round-16-corrected-in-16b)), with 2021 alone kept as `base_2021`. For flows not covered (company taxes, shipping, laundered oil) see [section 6](#6-which-model-is-used-for-which-flow).
 - `FRAC_i` is 1 for full years and 8/12 for 2026 (January–August).
 - `bmul_i` is the counterfactual multiplier against the base (1 = flat), with `bmul_lo` and `bmul_hi` as its 90% interval.
 - `pidx_i` is the flow's price level against 2019–2021 (see [prices.md](prices.md)).
@@ -249,21 +249,52 @@ suggests the high side may be a little short (10 of 12 own windows covered). Spl
 is as large as the total's, and the two errors are almost uncorrelated. For Russia's neighbours as a group, the fuel
 model predicts better (+26–32%) but raises the expected level by ×1.08–1.28 without narrowing the band; it is not used.
 
-### Small flows start from the 2019 to 2021 average (round 16)
+### Small flows start from the 2019 to 2021 median (round 16, corrected in 16b)
 
-Raised by review 5 (M2), approved by the owner. A small flow from Russia swings from year to year (one cargo more or
-less), so a single year is a noisy starting point. Cameroon's 2021 purchases from Russia (EUR 0.35bn at pre-war
-prices) were 64% above its 2019–2021 average (0.21bn), and the "less paid" that followed put it above Switzerland, the
-US and Japan on the net. **Rule:** where purchases from Russia averaged less than EUR 1bn a year in 2019–2021, the no-war
-path starts from that average instead of 2021 alone; 2021 stays inside the range (`base_range`). The threshold is the
-upper limit of the back-tests' small and medium size classes (S below EUR 0.1bn, M 0.1–1bn), the flows whose
-back-tested errors are widest; the same models and bands then apply (`SMALL_FLOW_EUR_BN`, `small_flow` in
-`data.json`). It is one rule, with no test on how far 2021 departs from the average, so no country is singled out.
-148 flows are under it. Cameroon +0.80% → +0.36% (likely −0.01% to +1.94%, direction uncertain); the largest movers
-among economies of at least EUR 5bn: Brunei +2.35 → +5.04, Syria −0.92 → −1.87, Burkina Faso −3.55 → −2.79,
-Afghanistan −1.53 → −0.96, Malta +0.28 → +0.79, Senegal −1.82 → −2.26, Bosnia and Herzegovina +0.55 → +0.16, Tajikistan
-−0.38 → −0.76, Latvia +3.54 → +3.22 (payments to Russia, % of a year's GDP); all movers are in the
-[changelog](../changelog.md#round-16).
+Raised by review 5 (M2), approved by the owner; corrected after check 16 (B1, N1), approved by the owner. A small flow
+from Russia swings from year to year (one cargo more or less), so a single year is a noisy starting point. Cameroon's
+2021 purchases from Russia (EUR 0.35bn at pre-war prices) were more than twice its 2019–2021 median (0.16bn), and the
+"less paid" that followed put it above Switzerland, the US and Japan on the net.
+
+**Rule.** Where purchases from Russia were under EUR 1bn a year in 2019–2021 (at 2019–2021 prices), the no-war path
+starts from the **median** of 2019, 2020 and 2021, each at 2019–2021 prices, instead of 2021 alone; 2021 stays inside
+the range (`base_range`). The median, not the mean, so that a single one-off year cannot set the level: Malta's own
+customs record EUR 0.29bn of Russian fuel in 2019 and almost none after (it records hardly any of its bunker fuel), and
+Israel's 2019 holds EUR 1.1bn of Russian crude while 2020–2021 hold none. 2021 is the map's own value (`years[0] /
+pidx[0]`, as for every other flow); 2019 and 2020 are the yearly customs values brought to the build's adjusted level
+(freight taken out, transit gas swapped for gas used, resale margins) and to 2021's price level of the flow
+(`pre_price_levels()`). The three values are in `data.json` as `to_rus.base_years`, 2021 alone as `to_rus.base_2021`.
+The threshold is the upper limit of the back-tests' small and medium size classes (S below EUR 0.1bn, M 0.1–1bn), the
+flows whose back-tested errors are widest; the same models and bands then apply (`SMALL_FLOW_EUR_BN`, `small_flow`,
+`small_flow_base()` in `build_data.py`). It is one rule, with no test on how far 2021 departs from the others, so no
+country is singled out. 140 flows are under it.
+
+**Exceptions: 2021 is kept** (2021 at 2019–2021 prices, as before round 16), each listed in `build_data.py`:
+
+| flow | why | source |
+|---|---|---|
+| Brunei (`SMALL_FLOW_EXCLUDE`) | refinery opening: the Hengyi refinery at Pulau Muara Besar began operations in November 2019, so 2019 (EUR 0.6m) and 2020 are start-up years, not the pre-war level | [Brunei Ministry of Finance and Economy](https://www.business.gov.bn/mofe-expansion-of-hengyi-complex-will-be-significant-boost-to-brunei-economy/), fetched 20 October 2026 |
+| New Zealand (`SMALL_FLOW_EXCLUDE`) | refinery closure: Marsden Point stopped refining on 31 March 2022 (closure voted in August 2021); its Russian crude and fuel of 2019–2020 (EUR 0.37bn and 0.22bn) fed a refinery that closed for reasons of its own, so the median would credit New Zealand for the closure | [Marsden Point Oil Refinery](https://en.wikipedia.org/wiki/Marsden_Point_Oil_Refinery), fetched 20 October 2026 |
+| Syria (`SMALL_FLOW_MIRROR`) | pre-war figures are only Russia's own export reports, coded 100% as confidential (HS 99, which may include arms) in 2020 and 2021; the panel says the number is less reliable | UN Comtrade, Russia as reporter (check 16) |
+| Mauritania, Botswana (`fix_artefacts()`) | the pre-war level is a single researched value (traders' origin labels; diamonds bought for resale), set as 2021 | [`round4b.json`](../../research/2026-10/gaps/round4b.json) |
+| EU pipeline-gas buyers whose baseline is the 2021 fossil-fuel value | the fuel tracker's value is known from 2021 only, so there is no yearly series behind it | `PIPELINE_GAS` in `build_data.py` |
+
+Lebanon keeps its researched pre-war level (the mean of 2018, 2020 and 2021, leaving out 2019's fuel bought for
+smuggling into Syria), as in round 16. Moldova keeps its own researched baseline (below).
+
+**What round 16 got wrong.** Round 16 took the "average" from `base` at the moment `counterfactual()` ran. For 28 flows
+that field already held 2021 at 2021 prices (Brunei's refinery residual, set by `apply_brunei_r6()`, and the
+single-value fixes), so the rule replaced 2021 at 2019–2021 prices with 2021 at 2021 prices: Brunei's no-war level was
+inflated by exactly its 2021 oil price index (×1.35), with no averaging at all, and its payments went from +2.35% to
++5.04% of GDP. Only Brunei was material (Mauritania 0.05 points, the rest under 0.04). A properly averaged Brunei would
+have been wrong the other way, because of the refinery's start-up years; hence the exception. Check 36 verifies that
+every small-flow baseline is the median of its three yearly values and never equals 2021 at 2021 prices by
+construction.
+
+**Effect** (payments to Russia, % of a year's GDP; round 16 → round 16b): Brunei +5.04 → +2.35 (direction
+uncertain), Malta +0.79 → +0.28, Syria −1.87 → −0.92, New Zealand +0.27 → +0.02, Israel +0.13 → −0.03, Cameroon
++0.36 → +0.19 (likely −0.12% to +1.52% on the net, direction uncertain), Latvia +3.22 → +3.07, Afghanistan −0.96 →
+−0.82, Senegal −2.26 → −2.39, Tajikistan −0.76 → −0.87; all movers are in the [changelog](../changelog.md#round-16b).
 
 ### Pipeline fuel buyers (round 8)
 

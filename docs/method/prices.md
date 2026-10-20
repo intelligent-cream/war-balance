@@ -155,8 +155,11 @@ until round 15 a change in the volume of gold was valued at each year's actual g
 is still measured in volumes with the actual gold price, and the change is then valued at the **2021 gold price held
 flat** (`GOLD_NOWAR` in `build_data.py`; `deflate_gold()` re-weights `cur`). That is a judgement: for an asset price
 the expectation is no change, and gold futures price only the cost of carry. The gold price rise itself is not counted
-as a windfall, unlike fuel: no measurable share of it was caused by this war (central-bank buying, interest rates).
-Hong Kong's change is in [trade](trade.md#hong-kong-gold).
+as a windfall in the central figure. That too is a judgement, not a finding: the rise has several causes (interest
+rates, demand for safe assets), and **central banks' gold buying after Russia's reserves were frozen in 2022 is widely
+linked to the war**, so some share of the rise may be the war's. Because that share cannot be measured, the method band
+has an alternative, **gold at its actual price** (`gold_actual`, round 16b, raised by check 16, N5): the change in the
+volume of gold valued at each year's gold price. Hong Kong's change is in [trade](trade.md#hong-kong-gold).
 
 ## 2026 and the Hormuz crisis (round 15)
 

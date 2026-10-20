@@ -1,7 +1,7 @@
 {
  "generated": "2026-10-20",
  "what": "Round 16 (review 5, M4; approved by the owner): the part of each country's fall in purchases from Russia that sanctions_share.json counted as required by sanctions but that stopped before the ban took effect, moved to own choice. EUR bn at pre-war prices, as sanctions_share.json mandated_eurbn; [low, central, high].",
- "rule": "A banned fuel whose imports a country stopped before every applicable ban date counts as its own choice in every year; pipeline crude stopped before the exemption ended (23 June 2023: Germany and Poland) is not required either. Gas was never banned by the EU (LNG only from 25 April 2026), so stops of gas do not change the required share.",
+ "rule": "A banned fuel whose imports a country stopped before every applicable ban date counts as its own choice in every year; pipeline crude stopped before the exemption ended (23 June 2023: Germany and Poland) is not required either. Gas was never banned by the EU (LNG only from 25 April 2026), so stops of gas do not change the required share. Round 16b (check 16, N6): Poland's pipeline crude was stopped by Russia (Transneft halted Druzhba deliveries, 25 February 2023), so its part (moved_stopped_by_russia) is labelled stopped by Russia, like the gas Russia cut off, not the country's own choice.",
  "stops": {
   "LTU": [
    {
@@ -36,6 +36,9 @@
   "DEU": "2023-01-01",
   "POL": "2023-02-25"
  },
+ "pipeline_stopped_by_russia": [
+  "POL"
+ ],
  "countries": {
   "DEU": {
    "2022": {
@@ -51,6 +54,11 @@
      2.7161
     ],
     "moved_to_own_choice": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "moved_stopped_by_russia": [
      0.0,
      0.0,
      0.0
@@ -72,6 +80,11 @@
      4.1406,
      3.6231,
      3.1055
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "2024": {
@@ -90,6 +103,11 @@
      7.8636,
      6.8797,
      5.8957
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "2025": {
@@ -108,6 +126,11 @@
      7.8715,
      6.8876,
      5.9037
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "2026": {
@@ -126,6 +149,11 @@
      5.2477,
      4.5917,
      3.9358
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    }
   },
@@ -146,6 +174,11 @@
      0.2605,
      0.7141,
      1.158
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "2023": {
@@ -164,6 +197,11 @@
      3.5222,
      3.5222,
      3.5222
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "2024": {
@@ -182,6 +220,11 @@
      3.5222,
      3.5222,
      3.5222
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "2025": {
@@ -200,6 +243,11 @@
      3.5222,
      3.5222,
      3.5222
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "2026": {
@@ -218,6 +266,11 @@
      2.3482,
      2.3482,
      2.3482
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    }
   },
@@ -238,6 +291,11 @@
      0.1742,
      0.4774,
      0.7741
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "2023": {
@@ -256,6 +314,11 @@
      2.3546,
      2.3546,
      2.3546
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "2024": {
@@ -274,6 +337,11 @@
      2.3546,
      2.3546,
      2.3546
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "2025": {
@@ -292,6 +360,11 @@
      2.3546,
      2.3546,
      2.3546
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "2026": {
@@ -310,6 +383,11 @@
      1.5697,
      1.5697,
      1.5697
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    }
   },
@@ -330,6 +408,11 @@
      0.3009,
      0.4248,
      0.0
+    ],
+    "moved_stopped_by_russia": [
+     0.0,
+     0.0,
+     0.0
     ]
    },
    "2023": {
@@ -347,6 +430,11 @@
     "moved_to_own_choice": [
      3.6294,
      3.3118,
+     2.2234
+    ],
+    "moved_stopped_by_russia": [
+     2.8587,
+     2.5411,
      2.2234
     ]
    },
@@ -366,6 +454,11 @@
      6.2052,
      5.6014,
      4.2268
+    ],
+    "moved_stopped_by_russia": [
+     5.4345,
+     4.8307,
+     4.2268
     ]
    },
    "2025": {
@@ -384,6 +477,11 @@
      6.2052,
      5.6014,
      4.2268
+    ],
+    "moved_stopped_by_russia": [
+     5.4345,
+     4.8307,
+     4.2268
     ]
    },
    "2026": {
@@ -401,6 +499,11 @@
     "moved_to_own_choice": [
      4.1368,
      3.7342,
+     2.8179
+    ],
+    "moved_stopped_by_russia": [
+     3.623,
+     3.2204,
      2.8179
     ]
    }
@@ -438,7 +541,7 @@
     "name": "Neste: Neste's response to the war in Ukraine (last Russian crude cargo on 20 July 2022)",
     "url": "https://www.neste.com/nestes-response-to-the-war-in-ukraine",
     "date": "2022",
-    "checked": "not verified (search result only); the July end is confirmed by the 6 April 2022 release"
+    "checked": "fetched 2026-10-20 (check 16): \"The last of the crude oil cargoes from Russian origin arrived at the Porvoo refinery on Wednesday 20 July 2022\""
    }
   ],
   "POL": [

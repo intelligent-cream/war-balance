@@ -859,6 +859,30 @@
    "in_repository": true
   },
   {
+   "path": "comtrade_hkg/HKG_7108_XMRX_2022.json",
+   "bytes": 65810,
+   "sha256": "b87e862f798c48c5070558e031140c0644667f3a46f84093b1afaf92d324fd05",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_7108_XMRX_2023.json",
+   "bytes": 64936,
+   "sha256": "f47640a950c63a76b080a3f6aeafaa36c1b25a7844a0eb991b55f9cf2550820c",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_7108_XMRX_2024.json",
+   "bytes": 64996,
+   "sha256": "cdab79783d42a76c70523b66e9214a87ae2d02a6446f5e15ed9d21d8fd0acfcc",
+   "in_repository": true
+  },
+  {
+   "path": "comtrade_hkg/HKG_7108_XMRX_2025.json",
+   "bytes": 78314,
+   "sha256": "fb4f992f88eb306ee3e12c831ba16013f72925bc0600e29e3ece0ff360b0df7c",
+   "in_repository": true
+  },
+  {
    "path": "comtrade_hkg/HKG_from_RUS_M_TOTAL_71_2019.json",
    "bytes": 1850,
    "sha256": "773dec8e5f1e5d5d325536aeaa3155b5910c187a4f83b9f15918d22564baedb9",
@@ -1198,6 +1222,24 @@
    "path": "oecd_stan/stan_persons.csv",
    "bytes": 908353,
    "sha256": "1eb575df079a404bddbd6d0c6450f08dd4e27ab814e463e718eba6f68f1ce6d0",
+   "in_repository": true
+  },
+  {
+   "path": "oecd_stan/stan_retail_rent_capital.csv",
+   "bytes": 54542,
+   "sha256": "89ca3dc5c132f966396e059f14d71595feaa6a90b88941732b40512fac9e1531",
+   "in_repository": true
+  },
+  {
+   "path": "oecd_stan/stan_retail_rent_flows.csv",
+   "bytes": 444655,
+   "sha256": "3c11b4448a0f5a6b71bb5fc3bfee87f75f4dd0374aff4a18aa970b9793bf0c70",
+   "in_repository": true
+  },
+  {
+   "path": "oecd_stan/stan_retail_rent_persons.csv",
+   "bytes": 236987,
+   "sha256": "5a882ed270588b3cdaf9d01252785b7e583a797cbfe8f57c090a68cb3a600afc",
    "in_repository": true
   },
   {

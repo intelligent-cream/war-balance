@@ -126,7 +126,7 @@ Method choices made in this round:
 
 `counterfactual()` in `build_data.py` applies this. For these flows:
 
-- The pre-war level is 2021 at 2019–2021 prices. The old 2019–2021 average is kept as `base_2019_2021_avg`.
+- The pre-war level is 2021 at 2019–2021 prices (round 16b: small purchases from Russia start from the 2019–2021 median at those prices, `base_years`; see docs/method/counterfactual.md).
 - `bmul` carries the back-tested 90% interval, so the expected path is never treated as exact.
 - It replaces the trend.json and trend2.json trends, and the audit-2 Q5 trend corrections, for these flows.
 - Company taxes, shipping and the few countries without a model keep their trends.

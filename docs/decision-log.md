@@ -225,7 +225,23 @@ effects: [decisions](decisions.md#round-16-review-5); all steps: [changelog](cha
 | **Russian money frozen on its own line**, in the net only (H4) | review, owner | it is not a payment | Belgium payments +1.86 → +0.62 |
 | **One common cost per refugee** in the method band (H2) | review, owner (actual cost kept on the map) | the same refugee was worth 0 to 20,000 euros | bands |
 | **Refugee spending flows back** at the host's real gain (M3) | owner (from review M3) | weapons bought at home were netted, refugee spending was not | 2.7% of hosting cost |
-| **Small flows from the 2019–2021 average** (M2) | review, owner | single-year noise in small flows | Cameroon +0.80 → +0.36 |
+| **Small flows from the 2019–2021 average** (M2; the median since round 16b) | review, owner | single-year noise in small flows | Cameroon +0.80 → +0.36 |
 | **Hong Kong keeps only the gold that stays there; gold volume at the no-war gold price** (M1, M6) | review, owner | gold passed on and the gold price were charged to Hong Kong | Hong Kong −4.27 → −1.59 |
 | **"Required by sanctions" from each country's actual stop date** (M4) | review, owner | Lithuania stopped Russian crude before the ban | Lithuania 87% → 21% (the panel's note over all its trade with Russia: 86% → 23%) required (label) |
+
+### Round 16b: check 16 (20 October)
+
+A pre-release check of round 16 found that Brunei's rise came from a mislabelled field (B1) and that the new colour
+clamp painted negative micro-states as "no change" (B2), with ten smaller points. The **owner approved** the fixes.
+Details: [decisions](decisions.md#round-16b-fixes-after-check-16); steps: [changelog](changelog.md#round-16b).
+
+| decision | raised by | why | effect |
+|---|---|---|---|
+| **Small-flow baseline: the median of 2019–2021 at pre-war prices, from the yearly series**; refinery openings and closures (Brunei, New Zealand) and mirror-only data (Syria) keep 2021 (B1, N1) | check, owner | the "average" was 2021 at 2021 prices for 28 flows; one-off years decided the mean | Brunei +5.04 → +2.35, Malta +0.79 → +0.28 (payments) |
+| **Lightest colour of each direction for small economies** (B2) | check, owner | negatives fell into the neutral colour | display |
+| **Site text, share text and the net map's legend** (N2, N3, N10) | check, owner | the text said 2021 for every flow; "−<0.01% to +<0.01%"; frozen money unnamed | wording |
+| **Refugee spending through retail, accommodation and food, and rent** (N4) | check, owner | finance and ICT were in the services group | Poland's factor 8.2% → 7.3% |
+| **"Gold at its actual price" in the method band** (N5) | check, owner | part of the gold price rise may be the war's | bands |
+| **Poland's pipeline crude "cut off by Russia"** (N6) | check, owner | Russia halted Druzhba | label |
+| **The page works without `detail.json`** (N7) | check, owner | a failed file blocked the page | display |
 | **Ranges and the warning in shared text and on the cards** (M5) | review, owner | shared figures dropped the uncertainty | display |

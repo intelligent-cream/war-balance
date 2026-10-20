@@ -505,6 +505,38 @@ for c in countries.values():
 _rf = _num / _den if _den else 0.0
 check("refugee spending flowing back is small", 0.01 <= _rf <= 0.05, f"weighted factor {_rf:.3f} of the hosting cost")
 
+# 36. round 16b (check 16, B1): a small flow's no-war baseline is the median of its 2019, 2020 and 2021 values at
+# 2019-2021 prices (base_years), never a 2021 value at 2021 prices by construction (round 16 copied that into the
+# "average" for 28 flows, Brunei among them); the exceptions keep 2021 at 2019-2021 prices and are labelled
+import build_data as _bd  # noqa: E402
+
+_sf_bad, _sf_n = [], 0
+for _iso, _c in countries.items():
+    _t = _c.get("to_rus") or {}
+    if _t.get("small_flow"):
+        _sf_n += 1
+        _by = _t.get("base_years") or []
+        _p0 = (_t.get("pidx") or [1.0])[0]
+        if (
+            len(_by) != 3
+            or abs(_t["base"] - sorted(_by)[1]) > 1e-5
+            or abs(_by[2] - _t.get("base_2021", -1)) > 1e-5
+            or (abs(_p0 - 1) > 0.01 and abs(_t["years"][0]) > 1e-3 and abs(_t["base"] - _t["years"][0]) < 1e-5)
+            or _iso in _bd.SMALL_FLOW_EXCLUDE
+            or _iso in _bd.SMALL_FLOW_MIRROR
+        ):
+            _sf_bad.append(_iso)
+_kept = {
+    k: (countries.get(k, {}).get("to_rus") or {}).get("small_flow_kept_2021")
+    for k in (*_bd.SMALL_FLOW_EXCLUDE, *_bd.SMALL_FLOW_MIRROR)
+}
+check(
+    "small-flow baselines are the 2019-2021 median at pre-war prices",
+    _sf_n > 0 and not _sf_bad and all(_kept.values()),
+    f"{_sf_n} small flows; not a median of base_years or equal to 2021 at 2021 prices: {_sf_bad[:6] or 'none'}; "
+    f"2021 kept: {_kept}",
+)
+
 width = max(len(n) for _, n, _ in results)
 for status, name, detail in results:
     print(f"{status:4}  {name:<{width}}  {detail}")

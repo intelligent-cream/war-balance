@@ -36,20 +36,23 @@ STOPS = {
         (("2701", "2704"), "2022-04-16", "Poland's national coal embargo (Act of 13 April 2022) in force 16 April 2022")
     ],
 }
-# pipeline crude that stopped before the exemption ended (23 June 2023): not required by the ban
+# pipeline crude that stopped before the exemption ended (23 June 2023): not required by the ban. Round 16b (check 16,
+# N6): who stopped it. Germany's refineries stopped ordering (own choice); Russia (Transneft) halted Druzhba deliveries
+# to Poland (Orlen, 25 February 2023), so Poland's part is written apart as stopped by Russia, like the gas Russia cut off
 PIPE_STOP = {"DEU": "2023-01-01", "POL": "2023-02-25"}
+PIPE_STOPPED_BY_RUSSIA = {"POL"}
 rules_imp, quota = cg.eu_import_rules(os.path.join(W, "annex_codes.json"))
 qb = cg.eu_quota_base("1")
 cov = cg.Coverage(rules_imp + [cg.LNG_RULE], quota, qb)
 
 
-def cov_stop(iso, c, y, s):
+def cov_stop(iso, c, y, s, pipe=True):
     for pref, d, _ in STOPS.get(iso, []):
         if c.startswith(pref):
             # stopped before every applicable ban date: the whole fall is the country's own choice
             if all(cg.D(cg.rule_date(r, s)) > cg.D(d) for r in cov.matches(c)):
                 return 0.0
-    if iso in PIPE_STOP and c.startswith("2709"):
+    if pipe and iso in PIPE_STOP and c.startswith("2709"):
         pipe, end = cg.PIPELINE[iso]
         cg.PIPELINE[iso] = (pipe, None)
         try:
@@ -63,18 +66,27 @@ EU = {v: k for k, v in cg.EU2ISO.items()}
 out = {
     "stops": {k: [{"hs": list(p), "stopped": d, "why": w} for p, d, w in v] for k, v in STOPS.items()},
     "pipeline_stopped": PIPE_STOP,
+    "pipeline_stopped_by_russia": sorted(PIPE_STOPPED_BY_RUSSIA),
     "countries": {},
 }
 for iso in sorted(set(STOPS) | set(PIPE_STOP)):
     data = cg.load_comext(EU[iso], "1")
     base = cg.compute(data, lambda c, y, s: cov.cov(c, y, s, iso=iso), iso=iso)
     new = cg.compute(data, lambda c, y, s: cov_stop(iso, c, y, s), iso=iso)
+    # without the pipeline stop: what moves for the other stops only; the rest is the pipeline crude
+    nop = (
+        cg.compute(data, lambda c, y, s: cov_stop(iso, c, y, s, pipe=False), iso=iso)
+        if iso in PIPE_STOPPED_BY_RUSSIA
+        else new
+    )
     out["countries"][iso] = {
         str(y): {
             "fall_eurbn": round(base[y]["fall"] / 1e9, 4),
             "mandated_before": [round(v / 1e9, 4) for v in base[y]["m"]],
             "mandated_after": [round(v / 1e9, 4) for v in new[y]["m"]],
             "moved_to_own_choice": [round((a - b) / 1e9, 4) for a, b in zip(base[y]["m"], new[y]["m"])],
+            # round 16b: the part of moved_to_own_choice that Russia stopped (pipeline crude), not the country's choice
+            "moved_stopped_by_russia": [round((a - b) / 1e9, 4) for a, b in zip(nop[y]["m"], new[y]["m"])],
         }
         for y in cg.YEARS
     }

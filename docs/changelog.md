@@ -467,8 +467,9 @@ Steps, in the order applied, with the main movers (% of a year's GDP, 2022 to Au
 12. **One common cost per refugee** in the method band (H2). Bands only.
 13. **Refugee spending flowing back** (M3): 2.7% of hosting cost; Poland support −0.06, Netherlands −0.04, Montenegro
     −0.05, Ireland −0.02.
-14. **Small flows from the 2019–2021 average** (M2; 148 flows under EUR 1bn a year): Cameroon +0.80 → +0.36 (direction
-    uncertain), Brunei +2.35 → +5.04, Syria −0.92 → −1.87, Burkina Faso −3.55 → −2.79, Afghanistan −1.53 → −0.96,
+14. **Small flows from the 2019–2021 average** (M2; 148 flows under EUR 1bn a year; corrected in round 16b below):
+    Cameroon +0.80 → +0.36 (direction uncertain), Brunei +2.35 → +5.04 (an artefact: the "average" was 2021 at 2021
+    prices for 28 flows, check 16 B1), Syria −0.92 → −1.87, Burkina Faso −3.55 → −2.79, Afghanistan −1.53 → −0.96,
     Malta +0.28 → +0.79, Senegal −1.82 → −2.26, Bosnia +0.55 → +0.16, Tajikistan −0.38 → −0.76, Latvia +3.54 → +3.22,
     Libya −6.54 → −6.79, Yemen −5.13 → −4.86 (payments); 70 economies of at least EUR 5bn moved by 0.02 points or more.
 15. **Hong Kong's gold** (M1, M6): Hong Kong −4.30 → −1.59 (direction uncertain), Thailand +0.42 → +0.10, UAE
@@ -483,6 +484,39 @@ net): Poland +1.95 → +1.28; +3.11 → +3.03; +5.06 → +4.39, Germany +1.70 �
 Belgium +0.94; +1.86 → +0.62; +2.81, Lithuania +1.84; +9.96 → +9.89; +11.80, Hong Kong −4.27 → −1.59 (both),
 Cameroon +0.80 → +0.36, Latvia net +5.19 → +4.87. Among economies of at least EUR 5bn: 103 moved by 0.02 points or
 more; direction uncertain on support 96, on payments 123 and on the net 114 (round 15: 100, 110, 104).
+
+## Round 16b
+
+Check 16 (economist and data journalist, 20 October 2026), approved by the owner. Decisions:
+[decisions](decisions.md#round-16b-fixes-after-check-16), [log](decision-log.md#round-16b-check-16-20-october). Movers
+are % of a year's GDP, 2022 to August 2026, round 16 → round 16b.
+
+1. **Small-flow baseline** (B1, N1): the median of 2019, 2020 and 2021 at 2019–2021 prices, computed from the yearly
+   series (`small_flow_base()`, `to_rus.base_years`), instead of a field that for 28 flows held 2021 at 2021 prices.
+   Exceptions keep 2021: Brunei (Hengyi refinery from November 2019) and New Zealand (Marsden Point closed March 2022)
+   in `SMALL_FLOW_EXCLUDE`; Syria (mirror-only, confidential pre-war data) in `SMALL_FLOW_MIRROR`, labelled in the
+   panel; Mauritania and Botswana (single researched values); Lebanon keeps its researched level. 140 flows use the
+   median. New check 36. Payments: Brunei +5.04 → +2.35 (direction uncertain), Marshall Islands +3.01 → +0.59,
+   Syria −1.87 → −0.92, Curaçao +0.84 → −0.02, Gibraltar +0.70 → −0.08, Faroe Islands +0.31 → −0.22, Malta +0.79 →
+   +0.28, New Zealand +0.27 → +0.02, Slovenia −0.01 → −0.19, Cameroon +0.36 → +0.19, Israel +0.13 → −0.03, Latvia
+   +3.22 → +3.07, Yemen −4.86 → −4.72, Togo −0.78 → −0.63, Afghanistan −0.96 → −0.82, Libya −6.79 → −6.93, Senegal
+   −2.26 → −2.39, Tajikistan −0.76 → −0.87. 60 economies moved by 0.02 points or more on a headline number, all
+   through this step except Ireland's support (step 5).
+2. **Colours of small economies** (B2): the lightest colour of their direction (`colors[3]` or `colors[5]`), no
+   longer the neutral colour for negatives (check 16 counted 22 on the net map and 23 on payments: Tuvalu, Palau,
+   Bhutan, Djibouti...). The browser check asserts it for those four.
+3. **Site text** (N2, N10): the panel's "Pre-war level" and How it works describe the small-flow rule; the net map's
+   legend title names Russian money frozen. All six languages.
+4. **Share text and cards** (N3): "about 0" where both ends of a range round to zero. Cards regenerated.
+5. **Refugee spending flowing back** (N4): retail (G47), accommodation and food (I) and rent without imputed rent
+   (L less L68A), from OECD STAN; Poland's factor 8.2% → 7.3% (support +1.28 → +1.29), Germany 1.7% → 2.2%, the
+   Netherlands 3.7% → 3.0%; 2.7% overall.
+6. **Gold at its actual price** (N5) in the method band; the gold docs no longer claim the war caused no measurable
+   share of the gold price rise.
+7. **Poland's pipeline crude cut off by Russia** (N6; label): 38% required, 50% cut off by Russia, 12% own choice
+   (was 38%, 18%, 43%); the "without what Russia cut off itself" band takes the crude out too (Poland's payments
+   band 2.14 → 1.56 at the low end). Finland's last cargo (20 July 2022) confirmed on Neste's page.
+8. **`detail.json` failure** (N7): the page draws without the rebuilt alternatives and says so, instead of failing.
 
 ## See also
 
