@@ -147,6 +147,20 @@ about 10, Türkiye 54 → about 20, Germany 29 → about 16). Urals sold in 2022
 than twice its no-war level. Countries that cut Russian gas and oil gain most: a no-war market would have paid Russia
 more for the same fuel.
 
+### Gold at its no-war price (round 16)
+
+Raised by review 5 (M6), approved by the owner. Fuel volumes are valued at the prices a no-war market expected, but
+until round 15 a change in the volume of gold was valued at each year's actual gold price (index 2.86 in 2026 against
+2019–2021), so a buyer's number grew with the gold price alone. Since round 16 the gold share of a country's payments
+is still measured in volumes with the actual gold price, and the change is then valued at the **2021 gold price held
+flat** (`GOLD_NOWAR` in `build_data.py`; `deflate_gold()` re-weights `cur`). That is a judgement: for an asset price
+the expectation is no change, and gold futures price only the cost of carry. The gold price rise itself is not counted
+as a windfall in the central figure. That too is a judgement, not a finding: the rise has several causes (interest
+rates, demand for safe assets), and **central banks' gold buying after Russia's reserves were frozen in 2022 is widely
+linked to the war**, so some share of the rise may be the war's. Because that share cannot be measured, the method band
+has an alternative, **gold at its actual price** (`gold_actual`, round 16b, raised by check 16, N5): the change in the
+volume of gold valued at each year's gold price. Hong Kong's change is in [trade](trade.md#hong-kong-gold).
+
 ## 2026 and the Hormuz crisis (round 15)
 
 Raised by the owner. Fuel prices in 2026 are high partly because of the Hormuz crisis: after the strikes on Iran at the start of March 2026 the Strait of Hormuz was shut to tanker traffic, and Brent averaged 35% above its pre-crisis futures from March to August 2026, diesel about 59% and Asian LNG about 75% ([CREA, *What the Hormuz crisis has cost fossil-fuel importers, March to August 2026*](https://energyandcleanair.org/what-the-hormuz-crisis-has-cost-fossil-fuel-importers-march-to-august-2026/), fetched 19 October 2026; the IEA's August report names the closure as the main cause of the supply loss, [Kuwait Times](https://kuwaittimes.com/article/47998/world/iea-cuts-2026-oil-demand-forecast-again-as-hormuz-remains-shut/); an S&P Global factbox of 20 April 2026 on the strait being closed again was found but could not be fetched: not verified). This war did not cause it.
@@ -154,7 +168,7 @@ Raised by the owner. Fuel prices in 2026 are high partly because of the Hormuz c
 - **The money stays in.** It really reached Russia, and buyers who stopped buying would have paid those prices, so 2026's changes are valued at 2026's prices like every other year (and the 2026 no-war price is the actual world price, [above](#no-war-prices-round-7)).
 - **It is made visible.** The panel shows a note on 2026 wherever valuing 2026 at 2025 prices would move the change in payments to Russia by at least 0.01% of GDP, with that value and the 2022–2025 figure (`hormuzNote()`); the cited source is CREA's analysis.
 - **Method band "2026 at 2025 prices".** `calc(c, y, {p26: true})` values 2026's change in payments to Russia at 2025's no-war fuel price level (`to_rus.p26` = 2025 ÷ 2026 of the country's fuel price multiplier), the Russian crude in fuel bought elsewhere at 2025's Brent (`laund.p26` = 1.191 ÷ 1.515 = 0.786) and 2026's windfall at the same factor as payments. Built in `apply_nowar_prices()` and `current_euros()`.
-- **Germany as an example**: its net is +3.35%<!-- n:DEU.net --> for 2022–August 2026 and +2.69%<!-- n:DEU.net2025 --> for 2022–2025 alone (round-15 GDP average; the review measured 3.34% and 2.68% against 2024 GDP). With 2026 at 2025 prices its change in payments to Russia is +1.53%<!-- n:DEU.alt_p26.rus --> instead of +1.65%<!-- n:DEU.rus -->.
+- **Germany as an example**: its net is +3.22%<!-- n:DEU.net --> for 2022–August 2026 and +2.57%<!-- n:DEU.net2025 --> for 2022–2025 alone (round-15 GDP average; the review measured 3.34% and 2.68% against 2024 GDP). With 2026 at 2025 prices its change in payments to Russia is +1.46%<!-- n:DEU.alt_p26.rus --> instead of +1.57%<!-- n:DEU.rus -->.
 
 ## A note on index bases
 

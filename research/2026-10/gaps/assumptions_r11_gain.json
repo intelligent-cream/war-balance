@@ -1,5 +1,6 @@
 {
  "generated": "2026-10-19",
+ "status": "Historical (round 16 note, review 5 L2): the round-11 check, written when Russia's normal return was 9% pre-tax. Since round 14b net_gain_russia.json and net_gain_ukraine.json carry these groups recomputed at the sellers' normal return (normal_return_r14b), so its proposals now stand only in the round-14 copies used by the method band (build_data.py apply_assumptions_r11_gain).",
  "scope": "Round 11 check of judgement and thinly sourced net-gain shares: Russia services, arms, manufactured, wood, food, chemicals, steel, aluminium; Ukraine food_other, metals_other, wood, machinery, chemicals, other. Proposals only; the source files are unchanged.",
  "method": "Net gain share = taxes collected on producing/exporting + operating profit above a normal return, over FOB. Built from official sector profitability (Russia: FNS/Rosstat profitability of sold goods and return on assets by OKVED-2, 2021-2025; Ukraine: Derzhstat operating profitability by KVED division, 2019-2021) plus export duties actually collected and company results. Russia: normal return 9% pre-tax, capital/revenue k = margin/ROA. Ukraine: 10% pre-tax, k by judgement (0.6-0.8), as in net_gain_ukraine.json.",
  "russia_non_fuel_average_effect": {

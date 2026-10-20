@@ -1,0 +1,133 @@
+{
+ "generated": "2026-10-20",
+ "unit": "shares of Hong Kong's gold imports (HS 7108) in the year",
+ "years": {
+  "2022": {
+   "imports_usd_bn": 38.01,
+   "exports_usd_bn": 30.13,
+   "exports_to_china_usd_bn": 22.12,
+   "exported_elsewhere_share": 0.2106,
+   "retained_share_gross": 0.2075,
+   "destination_shares": {
+    "THA": 0.3485,
+    "SGP": 0.2159,
+    "IDN": 0.1356,
+    "IND": 0.0808,
+    "TWN": 0.0603,
+    "USA": 0.0371,
+    "CHE": 0.031,
+    "MYS": 0.0162,
+    "ARE": 0.0146,
+    "VNM": 0.0135,
+    "KOR": 0.0112,
+    "KHM": 0.0106,
+    "AUS": 0.0097,
+    "TUR": 0.0081,
+    "GBR": 0.004,
+    "MAC": 0.0023
+   }
+  },
+  "2023": {
+   "imports_usd_bn": 59.85,
+   "exports_usd_bn": 40.24,
+   "exports_to_china_usd_bn": 33.54,
+   "exported_elsewhere_share": 0.1119,
+   "retained_share_gross": 0.3277,
+   "destination_shares": {
+    "THA": 0.3295,
+    "ARE": 0.2387,
+    "IDN": 0.1348,
+    "SGP": 0.0719,
+    "IND": 0.0579,
+    "CHE": 0.0351,
+    "TWN": 0.0351,
+    "VNM": 0.0218,
+    "GBR": 0.0214,
+    "KOR": 0.0198,
+    "MYS": 0.0182,
+    "TUR": 0.0084,
+    "AUS": 0.0057
+   }
+  },
+  "2024": {
+   "imports_usd_bn": 65.38,
+   "exports_usd_bn": 56.54,
+   "exports_to_china_usd_bn": 34.17,
+   "exported_elsewhere_share": 0.3421,
+   "retained_share_gross": 0.1353,
+   "destination_shares": {
+    "THA": 0.3908,
+    "ARE": 0.0932,
+    "SGP": 0.0838,
+    "IND": 0.0824,
+    "IDN": 0.068,
+    "VNM": 0.0627,
+    "GBR": 0.0508,
+    "USA": 0.0498,
+    "KOR": 0.0315,
+    "CHE": 0.024,
+    "MYS": 0.0195,
+    "TWN": 0.0188,
+    "OMN": 0.0181,
+    "SAU": 0.0039,
+    "TUR": 0.0018
+   }
+  },
+  "2025": {
+   "imports_usd_bn": 101.77,
+   "exports_usd_bn": 80.37,
+   "exports_to_china_usd_bn": 46.29,
+   "exported_elsewhere_share": 0.3349,
+   "retained_share_gross": 0.2102,
+   "destination_shares": {
+    "THA": 0.3152,
+    "ARE": 0.1068,
+    "IND": 0.0949,
+    "SGP": 0.0922,
+    "KOR": 0.076,
+    "IDN": 0.0728,
+    "GBR": 0.0672,
+    "USA": 0.0619,
+    "CHE": 0.0495,
+    "TWN": 0.0255,
+    "MYS": 0.021,
+    "JPN": 0.0072,
+    "VNM": 0.0035,
+    "AUS": 0.0031,
+    "SAU": 0.002
+   }
+  },
+  "2026": {
+   "imports_usd_bn": 101.77,
+   "exports_usd_bn": 80.37,
+   "exports_to_china_usd_bn": 46.29,
+   "exported_elsewhere_share": 0.3349,
+   "retained_share_gross": 0.2102,
+   "destination_shares": {
+    "THA": 0.3152,
+    "ARE": 0.1068,
+    "IND": 0.0949,
+    "SGP": 0.0922,
+    "KOR": 0.076,
+    "IDN": 0.0728,
+    "GBR": 0.0672,
+    "USA": 0.0619,
+    "CHE": 0.0495,
+    "TWN": 0.0255,
+    "MYS": 0.021,
+    "JPN": 0.0072,
+    "VNM": 0.0035,
+    "AUS": 0.0031,
+    "SAU": 0.002
+   },
+   "note": "2025 carried forward"
+  }
+ },
+ "sources": [
+  {
+   "name": "UN Comtrade public preview: Hong Kong HS 7108 imports and exports by partner, 2022-2025",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=344&period=2025&flowCode=X,M,RX&cmdCode=7108",
+   "date": "2026-10-20"
+  }
+ ]
+}

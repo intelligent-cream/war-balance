@@ -40,7 +40,7 @@ volumes at pre-war prices ([prices](method/prices.md)) and the likely ranges ([r
 | [Undisclosed military aid (estimate)](#undisclosed-military-aid-estimate) | `undisc` | `#view=sources&flow=undisc` |
 | [Private donations](#private-donations) | `priv` | `#view=sources&flow=priv` |
 | [Hosting refugees](#hosting-refugees) | `ref` | `#view=sources&flow=ref` |
-| [Flowing back from Ukraine](#flowing-back-from-ukraine) | `own`, `purl`, `othsp`, `arms`, `sell` | `#view=sources&flow=flowback` |
+| [Flowing back from Ukraine](#flowing-back-from-ukraine) | `own`, `purl`, `othsp`, `arms`, `sell`, `refsp` (round 16) | `#view=sources&flow=flowback` |
 | [Payments to Russia for fuel and goods](#payments-to-russia-for-fuel-and-goods) | `paid` | `#view=sources&flow=paid` |
 | [War-time price windfall](#war-time-price-windfall) | `windfall` | `#view=sources&flow=windfall` |
 | [Refined and laundered Russian oil](#refined-and-laundered-russian-oil) | `laund` | `#view=sources&flow=laund` |
@@ -53,7 +53,7 @@ volumes at pre-war prices ([prices](method/prices.md)) and the likely ranges ([r
 | [Companies leaving Russia](#companies-leaving-russia) (cost view, not in the totals, round 14b) | `exits` | `#view=sources&flow=exits` |
 | [Russian-owned companies abroad](#russian-owned-companies-abroad) | `rusfirms` | `#view=sources&flow=rusfirms` |
 | [Assets seized by Russia](#assets-seized-by-russia) (cost view, not in the totals, round 14b) | `seized` | `#view=sources&flow=seized` |
-| [Frozen Russian reserves](#frozen-russian-reserves) (on the map: "Russian money frozen") | `frozen` | `#view=sources&flow=frozen` |
+| [Frozen Russian reserves](#frozen-russian-reserves) (on the map: "Russian money frozen"; in the net only since round 16) | `frozen` | `#view=sources&flow=frozen` |
 | [Remittances from Russia (marker)](#remittances-from-russia-marker) | none: a marker, not in the totals (`remit` in `data.json`) | `#view=sources&flow=remit` |
 | [Rosatom and Russian state loans](#rosatom-and-russian-state-loans) | `statefin` | `#view=sources&flow=statefin` |
 | [Weapons bought from Russia](#weapons-bought-from-russia) | `rusarms` | `#view=sources&flow=rusarms` |
@@ -63,6 +63,8 @@ volumes at pre-war prices ([prices](method/prices.md)) and the likely ranges ([r
 | [Labels and counts outside the totals](#labels-and-counts-outside-the-totals) | none (labels and counts) | `#view=sources&flow=markers` |
 
 ## Aid to Ukraine
+
+**Round 16 (review 5):** the adjusted aid part takes Kiel's letter only where the modelled adjustments (weapons at market value, loans as gifts) are under 5% of it, B under 25%, else C (`aidCert`; [decisions](decisions.md#round-16-review-5)).
 
 **Round 13 (audit):** The part is labelled "Kiel, adjusted: weapons at market value, loans as gifts"; the panel shows Kiel's own figure next to it (Poland EUR 5.89bn in Kiel, 3.24bn on the map). The source links to the Release 31 workbook.
 
@@ -184,6 +186,8 @@ Known gaps:
 
 ## Share of EU-level aid
 
+**Round 16 (review 5):** the panel's text gives the same figure as the bar (loans at their gift to Ukraine) with the face value beside it, and says why the European Peace Facility is not in it (Kiel has not counted it since version 16: it reimburses members for weapons already in their own aid). The EPF's GNI-key burden shift is not modelled ([limitations](limitations.md)).
+
 **What it is:** Aid paid by the EU itself, split over member states by their share of the EU budget.
 
 **Parts on the map:** Share of EU-level aid (`euaid`, net shift).
@@ -289,6 +293,8 @@ Known gaps:
 
 ## Hosting refugees
 
+**Round 16 (review 5):** the scope factor for Germany and Poland applies to 2022 only (`REFUGEE_SCOPE_YEARS`, `SCOPE_IN_CENTRAL`; Poland's hosting EUR 9.6bn → 4.9bn); the method band adds one common net cost per refugee person-year (`aid.refugee_common_years`, `meta.refugee_common_cost_eur_per_person_year`); the host's gain on refugee spending in its own economy is subtracted under [Flowing back](#flowing-back-from-ukraine) ([refugees_net-notes](../research/2026-10/gaps/refugees_net-notes.md#round-16-the-scope-gap-in-2022-only-a-common-cost-alternative-and-spending-that-flows-back)).
+
 **What it is:** The cost of hosting refugees from Ukraine, minus the taxes working refugees pay.
 
 **Parts on the map:** Hosting refugees (`ref`, net shift, cost view).
@@ -338,11 +344,13 @@ Known gaps:
 
 ## Flowing back from Ukraine
 
+**Round 16 (review 5, M3):** a new part, "Refugee hosting spent in its own economy (rent, food, services)" (`refsp`, money flowing back): the hosting cost counted × the host's net gain on services × genuinely extra (`aid.refugee_back_f`, from `net_gain_sellers.json` and `value_kept.json`), 2.7% of hosting cost overall. It is not part of the money that reached Ukraine, so it is not in the flowback total or the flow lines ([refugee spending](method/aid-refugees-military.md#refugee-spending-flowing-back-round-16)).
+
 **Round 13 (audit):** Money flowing back counts at the seller's net gain (taxes plus profit above a normal return, OECD STAN by country and industry; [`net_gain_sellers.json`](../research/2026-10/gaps/net_gain_sellers.json)) × genuinely extra, no longer at value kept. US flowback earned back falls from EUR 44bn to 1.5bn ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
 
 **What it is:** Aid money spent in the giver's own economy, and extra sales to Ukraine, subtracted at the seller's net gain times the share that is genuinely extra.
 
-**Parts on the map:** Own aid spent in its own economy (incl. replacing donated stock) (`own`, flowing back); Other countries' aid spent here (incl. their stock replacement) (`purl`, flowing back); Aid spent here on energy, relief and rebuilding (`othsp`, flowing back); Arms Ukraine bought here (`arms`, flowing back); Extra sales to Ukraine above the pre-war level (`sell`, flowing back).
+**Parts on the map:** Own aid spent in its own economy (incl. replacing donated stock) (`own`, flowing back); Other countries' aid spent here (incl. their stock replacement) (`purl`, flowing back); Aid spent here on energy, relief and rebuilding (`othsp`, flowing back); Arms Ukraine bought here (`arms`, flowing back); Extra sales to Ukraine above the pre-war level (`sell`, flowing back); Refugee hosting spent in its own economy (rent, food, services) (`refsp`, flowing back, round 16).
 
 **How it's calculated:** [aid-refugees-military.md § Flowback](method/aid-refugees-military.md#flowback); [Round 6: the all-money ledger](method/aid-refugees-military.md#round-6-the-all-money-ledger); [Arms Ukraine bought abroad (round 5)](method/aid-refugees-military.md#arms-ukraine-bought-abroad-round-5); [The money rule (round 6)](method/overview.md#the-money-rule-round-6).
 
@@ -396,6 +404,8 @@ Known gaps:
 
 ## Payments to Russia for fuel and goods
 
+**Round 16 (review 5):** purchases from Russia under EUR 1bn a year in 2019–2021 start their no-war path from the 2019–2021 median at pre-war prices (round 16b; `SMALL_FLOW_EUR_BN`, `to_rus.small_flow`, `to_rus.base_years`, `to_rus.base_2021`; exceptions `SMALL_FLOW_EXCLUDE`, `SMALL_FLOW_MIRROR`, `to_rus.small_flow_kept_2021`; [counterfactual](method/counterfactual.md#small-flows-start-from-the-2019-to-2021-median-round-16-corrected-in-16b)); the world totals are worded as Russia's net gain; the redirected-trade alternative scales both sides; "required by sanctions" follows each country's actual stop date (`stop_dates_r16.json`; a label).
+
 **Round 14 (audit 3):** Russia's gain on what was bought uses the measured fuel share (`fossil_share()`, check 22) and the country's customs values per fuel, not tracker tonnes (copied tracker years flagged in `to_rus.gain.tracker_copied`); the oil part of payments is at the Russian port (FOB), without the war-time freight surge (check 23); each year's change is valued at that year's prices (`cur`); the price levels cite the `prices` source; the cut label counts only from each cut's date and cites its evidence (`gas_cuts`) ([decisions](decisions.md#round-14-independent-audit-3)).
 
 **Round 13 (audit):** The fuel mix now uses volumes at 2019–2021 prices (a bug had used no-war prices: Hungary −4.1 → −5.5% of GDP); gold is deflated with the gold price (Hong Kong −4.2 → −1.9%); EU refiners' exported Russian crude is charged to their buyers; the part is at best C; gas Russia cut off itself is labelled inside the second headline number ([decisions](decisions.md#round-13-one-valuation-rule-for-every-seller)).
@@ -406,7 +416,7 @@ Known gaps:
 
 **How it's calculated:** [overview.md § The net-gain rule (round 10)](method/overview.md#the-net-gain-rule-round-10); [Payments to Russia for fuel](method/energy-and-laundered-oil.md#payments-to-russia-for-fuel); [Transit gas](method/energy-and-laundered-oil.md#transit-gas); [The pre-war level and the comparison](method/trade.md#the-pre-war-level-and-the-comparison); [Why volumes](method/prices.md#why-volumes); [6. Which model is used for which flow](method/counterfactual.md#6-which-model-is-used-for-which-flow).
 
-**Round 15:** the change in payments to Russia is its own map; its title gives the world total (EUR 358.8bn<!-- n:WORLD.less --> less paid by buyers who cut, EUR 226.7bn<!-- n:WORLD.more --> more by others, at Russia's net gain; `worldPaid()`). China's no-war path includes the contracted Power of Siberia ramp-up (source `power_of_siberia`, [`power_of_siberia_r15.json`](../research/2026-10/gaps/power_of_siberia_r15.json)). Method-band alternatives: redirected trade (less paid × the world net-to-gross ratio, 0.37<!-- n:WORLD.ratio -->), without the gas Russia cut off, and 2026 at 2025 prices (`to_rus.p26`). Countries whose range or band crosses zero are not ranked.
+**Round 15:** the change in payments to Russia is its own map; its title gives the world total, which is Russia's net gain, not payments (round 16 wording): from buyers who cut −EUR 352.0bn<!-- n:WORLD.less -->, from buyers who bought more +EUR 215.4bn<!-- n:WORLD.more --> (`worldPaid()`). China's no-war path includes the contracted Power of Siberia ramp-up (source `power_of_siberia`, [`power_of_siberia_r15.json`](../research/2026-10/gaps/power_of_siberia_r15.json)). Method-band alternatives: redirected trade (round 16: both sides, "less paid" × 0.70<!-- n:WORLD.ratio --> and "more paid" × 0.50, so the world total stays the world's net change), without the gas Russia cut off, and 2026 at 2025 prices (`to_rus.p26`). Countries whose range or band crosses zero are not ranked.
 
 **Why it's done this way:**
 
@@ -1016,9 +1026,11 @@ Known gaps:
 
 ## Frozen Russian reserves
 
+**Round 16 (review 5, H4):** a line of its own, added to the net only: not in the change in payments to Russia (its map, ranking and world total) or in support for Ukraine; shown in the panel, the table ("Russian money frozen, % of a year's GDP (in the net only)"), the CSV (`russian_money_frozen_*_net_only`) and the JSON (`russian_money_frozen`). The one-third host share is explained in the [method](method/russia-state-and-companies.md#frozen-central-bank-reserves-round-7); check 34.
+
 **What it is:** The return Russia lost on its central-bank reserves frozen in this country.
 
-**Parts on the map:** Russian money frozen (return Russia lost on its reserves) (`frozen`, net shift; its own line since round 14, never called "less paid to Russia").
+**Parts on the map:** Russian money frozen (return Russia lost on its reserves) (`frozen`, net shift; its own line since round 14, never called "less paid to Russia"; since round 16 added to the net only).
 
 **How it's calculated:** [russia-state-and-companies.md § Frozen central-bank reserves (round 7)](method/russia-state-and-companies.md#frozen-central-bank-reserves-round-7).
 
@@ -1247,6 +1259,8 @@ Known gaps:
 
 ## Gold and hidden payments to Russia
 
+**Round 16 (review 5, M1, M6):** only the gold that stays in Hong Kong counts for Hong Kong; the share it exported to buyers other than mainland China is charged to them (source `hk_gold_r16`, [`gaps/hk_gold_r16.json`](../research/2026-10/gaps/hk_gold_r16.json), [notes](../research/2026-10/gaps/hk_gold-notes.md), raw `raw/comtrade_hkg/HKG_7108_XMRX_*.json`); gold volume changes are valued at the 2021 gold price held flat (`GOLD_NOWAR`). These are inside "Less (or more) paid to Russia" (`paid`), tagged as gold (`to_rus.gold_share`); check 33.
+
 **What it is:** Gold and other payments that do not show in customs data, at Russia's gain on them.
 
 **Parts on the map:** Gold and hidden payments to Russia (`hidden`, net shift).
@@ -1288,6 +1302,8 @@ Known gaps:
 - Rough indication (D) for every country.
 
 ## Labels and counts outside the totals
+
+**Round 16 (review 5, M4):** the sanctions label counts a fuel a country stopped before the ban took effect as its own choice (Lithuania's and Finland's crude, Poland's coal and pipeline crude, Germany's pipeline crude; [`gaps/stop_dates_r16.json`](../research/2026-10/gaps/stop_dates_r16.json), [notes](../research/2026-10/gaps/stop_dates_r16-notes.md), `apply_stop_dates()`).
 
 **What it is:** The critical-goods marker, the sanctions label and counts of volunteers and fighters. They add nothing to the totals.
 

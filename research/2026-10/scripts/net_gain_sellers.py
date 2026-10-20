@@ -62,6 +62,11 @@ GROUPS = {
     "shipping": ["H50"],  # water transport
     "insurance": ["K65"],
     "finance": ["K"],  # payment agents' fees
+    # round 16b (check 16, N4): where refugees' money is spent: retail trade (G47; all of G where G47 is missing),
+    # accommodation and food (I), and renting of real estate without the imputed rent of owner-occupiers (L less L68A;
+    # left out where STAN has no L68A). Not GTNXL, which holds finance and ICT, where refugees spend little
+    "refugee_spending": ["G47", "I", "LXIMP"],
+    "refugee_spending_fallback": ["G", "I", "LXIMP"],
 }
 PARENT = {"C252": "C25", "C303": "C30", "C304": "C30"}
 
@@ -73,6 +78,9 @@ for name in (
     "stan_gtnxl_flows.csv",
     "stan_gtnxl_capital.csv",
     "stan_gtnxl_persons.csv",
+    "stan_retail_rent_flows.csv",  # round 16b: G, G47, L and L68A (imputed rent)
+    "stan_retail_rent_capital.csv",
+    "stan_retail_rent_persons.csv",
 ):
     with open(RAW / name) as fh:
         rows = list(csv.DictReader(fh))
@@ -82,6 +90,23 @@ for name in (
         # UNIT_MULT differs between measures (persons in thousands, money in millions)
         v = float(x["OBS_VALUE"]) * 10 ** int(x["UNIT_MULT"] or 0)
         data[(x["REF_AREA"], x["ACTIVITY"])][(x["MEASURE"], int(x["TIME_PERIOD"]))] = v
+
+# round 16b: real estate without imputed rent (LXIMP = L - L68A), where STAN publishes L68A's output; L68A has no
+# employees, so persons are L's own
+for (c, a), d in list(data.items()):
+    if a != "L":
+        continue
+    imp = data.get((c, "L68A"), {})
+    out_x = {}
+    for (m, y), v in d.items():
+        if m in ("EMP", "SAL", "SELF"):
+            out_x[(m, y)] = v
+        elif ("P1", y) in imp and (m, y) in imp:
+            out_x[(m, y)] = v - imp[(m, y)]
+        elif ("P1", y) in imp and m in ("D29X39", "D1", "P51C", "N11NA"):
+            out_x[(m, y)] = v  # L68A does not publish this measure: none of it is assumed to be imputed rent
+    if any(m == "P1" for m, _ in out_x):
+        data[(c, "LXIMP")] = out_x
 
 
 def clamp(v: float) -> float:
@@ -167,11 +192,13 @@ for c in countries:
     ind = {a: v for a in sorted({a for g in GROUPS.values() for a in g}) if (v := industry(c, a))}
     grp = {}
     for g, acts in GROUPS.items():
-        if g == "weapons_fallback":
+        if g in ("weapons_fallback", "refugee_spending_fallback"):
             continue
         use = [a for a in acts if a in ind]
         if g == "weapons" and len([a for a in use if a != "C26"]) == 0:
             use = [a for a in GROUPS["weapons_fallback"] if a in ind]
+        if g == "refugee_spending" and "G47" not in use and "G" in ind:
+            use = ["G"] + use
         if not use:
             continue
         grp[g] = {b: round(statistics.mean(ind[a][b] for a in use), 4) for b in ("low", "central", "high")}
@@ -180,7 +207,7 @@ for c in countries:
     out[c] = {"groups": grp, "industries": ind}
 median = {}
 for g in GROUPS:
-    if g == "weapons_fallback":
+    if g in ("weapons_fallback", "refugee_spending_fallback"):
         continue
     v = sorted(out[c]["groups"][g]["central"] for c in countries if g in out[c]["groups"])
     q = statistics.quantiles(v, n=4) if len(v) >= 4 else [min(v), statistics.median(v), max(v)]
@@ -220,6 +247,11 @@ res = {
             "name": "OECD STAN 2025: services of the business economy excluding real estate (GTNXL) and real estate (L), the same measures (round 14)",
             "url": "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_STAN@DF_STAN_2025,1.0/A..GTNXL+L.P1+D29X39+B2A3N+B2A3G+P51C+D1.V.XDC?startPeriod=2017&endPeriod=2024&format=csv",
             "date": "retrieved 2026-10-19",
+        },
+        {
+            "name": "OECD STAN 2025: wholesale and retail trade (G), retail trade (G47), real estate (L) and imputed rent of owner-occupied dwellings (L68A), the same measures (round 16b)",
+            "url": "https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_STAN@DF_STAN_2025,1.0/A..G+G47+L+L68A.P1+D29X39+B2A3N+B2A3G+P51C+D1.V.XDC?startPeriod=2017&endPeriod=2024&format=csv",
+            "date": "retrieved 2026-10-20",
         },
         {
             "name": "Damodaran, Country Default Spreads and Risk Premiums, January 2026 (round 14)",

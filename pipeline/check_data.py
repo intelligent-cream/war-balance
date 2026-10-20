@@ -410,7 +410,9 @@ else:
         for q in ("ua", "rus", "net")
         if c[q + "Unc"] == c[q + "SameSign"]
     ]
-    _calls = re.findall(r'rankList\([^\n]*?"(ua|rus|net)"\)', _html) + re.findall(r"headOf\[state\.rankMetric\]", _html)
+    _calls = re.findall(r'rankList\([^\n]*?"(ua|rus|net)"(?:\)|, \{)', _html) + re.findall(
+        r"headOf\[state\.rankMetric\]", _html
+    )
     _unc_n = {
         q: sum(1 for c in _m["countries"].values() if c[q + "Unc"] and c["gdp"] >= 5) for q in ("ua", "rus", "net")
     }
@@ -441,6 +443,98 @@ check(
     and 'data-lens="ukr"' not in _html
     and 'data-lens="rus"' not in _html,
     f"buttons {_buttons}; start {_start.group(1) if _start else None}; old links {_old_map}; rankings for {_rank_keys}",
+)
+
+# 32. round 16 (review 5, C2; approved by the owner): the page in a real browser shows the same bands, "direction
+# uncertain" marks, rankings and grades as the model run in Node with every method-band alternative loaded (29 and 30
+# run in Node only, where the alternatives are always there). pipeline/browser_check.mjs; needs Playwright
+import shutil  # noqa: E402
+import subprocess  # noqa: E402
+
+_node = shutil.which("node")
+_pw = (
+    _node
+    and subprocess.run([_node, "-e", "require('playwright')"], capture_output=True, cwd=ROOT / "pipeline").returncode
+    == 0
+)
+if not _pw:
+    check("browser shows the same numbers as Node", True, "node or Playwright not found: not checked", warn_only=True)
+else:
+    _r = subprocess.run([_node, str(ROOT / "pipeline" / "browser_check.mjs")], capture_output=True, text=True)
+    _out = (_r.stdout or _r.stderr).strip().splitlines()
+    check(
+        "browser shows the same numbers as Node",
+        _r.returncode == 0,
+        "; ".join(x.strip() for x in _out[:3]) if _out else "no output",
+    )
+
+# 33. round 16 (review 5, M1): Hong Kong's Russian gold is counted once. Each year the share passed on to mainland
+# China (refine.json hk_onward, charged to China) and the share exported elsewhere (hk_gold_r16.json, charged to those
+# buyers) leave Hong Kong at most what it imported, and the destination shares add up to one
+_hk = json.loads((RESEARCH / "gaps" / "hk_gold_r16.json").read_text())["years"]
+_on = json.loads((RESEARCH / "gaps" / "refine.json").read_text())["hk_onward"]
+_over = [y for y, d in _hk.items() if y in _on and _on[y]["central"] + d["exported_elsewhere_share"] > 1 + 1e-9]
+_sums = [y for y, d in _hk.items() if abs(sum(d["destination_shares"].values()) - 1) > 0.01]
+check(
+    "Hong Kong gold counted once (China, other buyers, Hong Kong)",
+    not _over and not _sums,
+    f"years where onward + elsewhere > 1: {_over or 'none'}; destination shares not adding up: {_sums or 'none'}",
+)
+
+# 34. round 16 (review 5, H4): Russian money frozen is its own line, in the net only: not in the change in payments to
+# Russia (its map, ranking and world total) or in support for Ukraine
+_own = re.search(r"const OWN_LINE = new Set\(\[([^\]]*)\]\)", _html)
+check(
+    "Russian money frozen only in the net",
+    bool(_own)
+    and '"frozen"' in _own.group(1)
+    and "shiftParts.filter(RUS_PART)" in _html
+    and 'find(q => q.k === "paid")' in _html
+    and not any(x.get("k") == "frozen" for c in countries.values() for x in c.get("taken") or []),
+    f"own line: {_own.group(1) if _own else 'missing'}",
+)
+
+# 35. round 16 (raised by review 5, M3): the real gain subtracted from refugee spending in the host economy stays small
+# (the owner's expectation: about 2-4% of the hosting cost counted)
+_num = _den = 0.0
+for c in countries.values():
+    a = c.get("aid") or {}
+    if a.get("refugee_back_f"):
+        r = sum((a.get("refugee_years") or [0])[1:])
+        _num, _den = _num + r * a["refugee_back_f"][1], _den + r
+_rf = _num / _den if _den else 0.0
+check("refugee spending flowing back is small", 0.01 <= _rf <= 0.05, f"weighted factor {_rf:.3f} of the hosting cost")
+
+# 36. round 16b (check 16, B1): a small flow's no-war baseline is the median of its 2019, 2020 and 2021 values at
+# 2019-2021 prices (base_years), never a 2021 value at 2021 prices by construction (round 16 copied that into the
+# "average" for 28 flows, Brunei among them); the exceptions keep 2021 at 2019-2021 prices and are labelled
+import build_data as _bd  # noqa: E402
+
+_sf_bad, _sf_n = [], 0
+for _iso, _c in countries.items():
+    _t = _c.get("to_rus") or {}
+    if _t.get("small_flow"):
+        _sf_n += 1
+        _by = _t.get("base_years") or []
+        _p0 = (_t.get("pidx") or [1.0])[0]
+        if (
+            len(_by) != 3
+            or abs(_t["base"] - sorted(_by)[1]) > 1e-5
+            or abs(_by[2] - _t.get("base_2021", -1)) > 1e-5
+            or (abs(_p0 - 1) > 0.01 and abs(_t["years"][0]) > 1e-3 and abs(_t["base"] - _t["years"][0]) < 1e-5)
+            or _iso in _bd.SMALL_FLOW_EXCLUDE
+            or _iso in _bd.SMALL_FLOW_MIRROR
+        ):
+            _sf_bad.append(_iso)
+_kept = {
+    k: (countries.get(k, {}).get("to_rus") or {}).get("small_flow_kept_2021")
+    for k in (*_bd.SMALL_FLOW_EXCLUDE, *_bd.SMALL_FLOW_MIRROR)
+}
+check(
+    "small-flow baselines are the 2019-2021 median at pre-war prices",
+    _sf_n > 0 and not _sf_bad and all(_kept.values()),
+    f"{_sf_n} small flows; not a median of base_years or equal to 2021 at 2021 prices: {_sf_bad[:6] or 'none'}; "
+    f"2021 kept: {_kept}",
 )
 
 width = max(len(n) for _, n, _ in results)

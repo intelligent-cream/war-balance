@@ -22,6 +22,8 @@ Each `*-notes.md` file has the method, caveats and gaps.
 
 **Round 15 (2026-10-19):** after a fourth independent review, two new files ([`gaps/gdp_avg_r15.json`](gaps/gdp_avg_r15.json): GDP 2022–2024 and its average, built by [`scripts/gdp_avg_r15.py`](scripts/gdp_avg_r15.py) from `raw/worldbank/NY.GDP.MKTP.CD_2022_2024.json` and `raw/imf/`; [`gaps/power_of_siberia_r15.json`](gaps/power_of_siberia_r15.json): contracted gas deliveries to China), Ukraine's net-gain shares rerun with each year's country risk premium ([`gaps/net_gain_ukraine.json`](gaps/net_gain_ukraine.json) `normal_return_r15`; Damodaran's January 2022–2025 tables in `raw/damodaran/`, listed), a round-15 section in `gaps/refugees_net-notes.md` (one definition for every host), and the unverified Poland and Czechia refugee-cost snippets removed from `kiel.json`. What changed and why: [`docs/changelog.md`](../../docs/changelog.md#round-15) and [`docs/decisions.md`](../../docs/decisions.md#round-15-separate-maps-named-lists-and-comparable-numbers).
 
+**Round 16 (2026-10-20):** after a fifth independent review, three new files: [`gaps/hk_gold_r16.json`](gaps/hk_gold_r16.json) (Hong Kong's gold exports by destination, built by [`scripts/hk_gold_r16.py`](scripts/hk_gold_r16.py) from `raw/comtrade_hkg/HKG_7108_XMRX_*.json`; notes in [`gaps/hk_gold-notes.md`](gaps/hk_gold-notes.md)), [`gaps/stop_dates_r16.json`](gaps/stop_dates_r16.json) (the part of the "required by sanctions" share that stopped before a ban took effect, built by [`scripts/stop_dates_r16.py`](scripts/stop_dates_r16.py); evidence in [`gaps/stop_dates_r16-notes.md`](gaps/stop_dates_r16-notes.md)); round-16 sections in `gaps/refugees_net-notes.md` and `gaps/frozen_assets-notes.md`; a status line on the superseded metadata of `gaps/net_gain_russia_r14.json`, `gaps/net_gain_ukraine_r14.json`, `gaps/net_gain_sellers_r13.json` and `gaps/assumptions_r11_gain.json`. What changed and why: [`docs/changelog.md`](../../docs/changelog.md#round-16) and [`docs/decisions.md`](../../docs/decisions.md#round-16-review-5).
+
 ## Known gaps and caveats (round 1, superseded)
 
 > These were the gaps after round 1. Later rounds closed most of them: missing parts no longer count as zero (round 2), own-industry shares were replaced by the all-money ledger (round 6), refugee costs come from budgets and net of refugees' taxes (rounds 4–5). The current open issues are in [docs/limitations.md](../../docs/limitations.md).
@@ -124,7 +126,7 @@ Method choices made in this round:
 
 `counterfactual()` in `build_data.py` applies this. For these flows:
 
-- The pre-war level is 2021 at 2019–2021 prices. The old 2019–2021 average is kept as `base_2019_2021_avg`.
+- The pre-war level is 2021 at 2019–2021 prices (round 16b: small purchases from Russia start from the 2019–2021 median at those prices, `base_years`; see docs/method/counterfactual.md).
 - `bmul` carries the back-tested 90% interval, so the expected path is never treated as exact.
 - It replaces the trend.json and trend2.json trends, and the audit-2 Q5 trend corrections, for these flows.
 - Company taxes, shipping and the few countries without a model keep their trends.
