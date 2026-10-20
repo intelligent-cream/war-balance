@@ -14,7 +14,7 @@ const code = html.slice(html.indexOf("// ===== Model ====="), html.indexOf("func
 const D = JSON.parse(readFileSync(join(SITE, "data.json"), "utf8"));
 const det = JSON.parse(readFileSync(join(SITE, "detail.json"), "utf8"));
 const M = new Function("D", "t", `let YEARS = D.years, FRAC = D.frac, SRC = D.sources, META = D.meta; let DATA = {}, byIso = {}, INCLUDED = {};
-  ${code}; return { calc, normalise, methodBands, uncertain, grades, worldPaid, setData: (d, b) => { DATA = d; byIso = b; } };`)(D, s => s);
+  ${code}; return { calc, normalise, methodBands, uncertain, grades, worldPaid, setData: (d, b) => { DATA = d; byIso = b; ALTS_READY = true; } };`)(D, s => s);
 const data = {}, by = {};
 for (const [k, c] of Object.entries(D.countries)) { c.alts = det.alts[k] || {}; M.normalise(c); data[c.n] = c; by[k] = c; }
 M.setData(data, by);

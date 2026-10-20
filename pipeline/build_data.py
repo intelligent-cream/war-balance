@@ -12,6 +12,7 @@ from __future__ import annotations
 import datetime
 import json
 import math
+import statistics
 from pathlib import Path
 
 import pycountry
@@ -543,7 +544,7 @@ def gas_part_r14(iso3: str, y: int, v: dict) -> float:
     bcm, val = tg["gas_from_rus_bcm"], tg["gas_from_rus_eur_bn"]
     pre_bcm = sum(bcm[str(x)]["central"] for x in (2019, 2020, 2021)) / 3
     per_bcm = sum(val[str(x)]["central"] for x in (2019, 2020, 2021)) / 3 / pre_bcm
-    fall = v["mandated_eurbn"]["central"] / v["mandated_share_map"]["central"]
+    fall = v.get("fall_map") or v["mandated_eurbn"]["central"] / v["mandated_share_map"]["central"]
     gas_fall = max(0.0, pre_bcm * FRAC[YEARS.index(y)] - bcm[str(y)]["central"]) * per_bcm
     return min(1.0, gas_fall / fall) if fall > 0 else 0.0
 
@@ -560,6 +561,34 @@ def cut_fraction(iso3: str, y: int) -> float:
         return 1.0
     start, end = datetime.date(cy, cm, cd), datetime.date(cy + 1, 1, 1)
     return (end - start).days / (end - datetime.date(cy, 1, 1)).days
+
+
+def fall_of(v: dict) -> float:
+    """Round 16: the map's fall in one year of sanctions_share.json, kept as fall_map where stop dates moved the
+    required part (apply_stop_dates), else the required euros over the required share."""
+    m = v["mandated_share_map"]["central"]
+    return v.get("fall_map") or (v["mandated_eurbn"]["central"] / m if m else 0.0)
+
+
+def apply_stop_dates(sanc: dict) -> None:
+    """Round 16 (review 5, M4; approved by the owner): "required by sanctions" follows the date each country actually
+    stopped. What stopped before a ban took effect (Lithuania's and Finland's crude, Poland's coal and pipeline crude,
+    Germany's pipeline crude; stop_dates_r16.json) moves from the required part to own choice; the fall itself is kept
+    (fall_map), so only the split changes. A label only: the totals do not change."""
+    sd = load(GAPS / "stop_dates_r16.json")
+    for iso3, years in sd["countries"].items():
+        flow = (sanc["countries"].get(iso3) or {}).get("to_rus") or {}
+        for y, m in years.items():
+            v = flow.get(y)
+            if not v or not v.get("mandated_share_map") or not v["mandated_share_map"]["central"]:
+                continue
+            v["fall_map"] = v["mandated_eurbn"]["central"] / v["mandated_share_map"]["central"]
+            for j, b in enumerate(_B3):
+                old = v["mandated_eurbn"][b]
+                new = max(0.0, old - m["moved_to_own_choice"][j])
+                v["mandated_eurbn"][b] = round(new, 4)
+                v["mandated_share_map"][b] = round(v["mandated_share_map"][b] * new / old, 4) if old else 0.0
+            v["stop_dates_r16"] = True
 
 
 def build() -> dict:
@@ -1393,6 +1422,7 @@ def build() -> dict:
     # label only, the totals do not change: which part of each cut was required by sanctions, and which part of the fall
     # in purchases was gas that Russia cut off or that stopped with Ukrainian transit (sanctions_share.json)
     sanc = load(GAPS / "sanctions_share.json")
+    apply_stop_dates(sanc)
     # cited by the sanctions note in each panel (index.html sanctionNote(); round 11 audit)
     src.add(
         "sanctions_share",
@@ -1417,27 +1447,21 @@ def build() -> dict:
         for flow in ("to_rus", "from_rus", "svc_bought", "svc_sold"):
             ys = [v for y, v in (d.get(flow) or {}).items() if y.isdigit() and v.get("mandated_share_map")]
             mand = sum(v["mandated_eurbn"]["central"] for v in ys)
-            fall = sum(
-                v["mandated_eurbn"]["central"] / v["mandated_share_map"]["central"]
-                for v in ys
-                if v["mandated_share_map"]["central"]
-            )
+            # round 16: the map's fall in each year (kept as fall_map where stop dates moved the required part)
+            fall = sum(fall_of(v) for v in ys)
             if fall > 0:
                 gas = sum(
-                    (gas_part_r14(iso3, int(y), v) if flow == "to_rus" else v.get("gas_part") or 0)
-                    * v["mandated_eurbn"]["central"]
-                    / v["mandated_share_map"]["central"]
+                    (gas_part_r14(iso3, int(y), v) if flow == "to_rus" else v.get("gas_part") or 0) * fall_of(v)
                     for y, v in (d.get(flow) or {}).items()
-                    if y.isdigit() and v.get("mandated_share_map") and v["mandated_share_map"]["central"]
+                    if y.isdigit() and v.get("mandated_share_map") and fall_of(v)
                 )
                 # round 13 (audit): the gas part of years when Russia itself cut the supply or Ukraine's transit
                 # ended (RUSSIA_GAS_CUT), shown as "cut off by Russia or by the end of transit"; a label only. Round 14:
                 # from the cut date (the first year in part), and Poland's gas part from volumes
                 cut = sum(
-                    gas_part_r14(iso3, int(y), v) * cut_fraction(iso3, int(y))
-                    * v["mandated_eurbn"]["central"] / v["mandated_share_map"]["central"]
+                    gas_part_r14(iso3, int(y), v) * cut_fraction(iso3, int(y)) * fall_of(v)
                     for y, v in (d.get(flow) or {}).items()
-                    if y.isdigit() and v.get("mandated_share_map") and v["mandated_share_map"]["central"] and flow == "to_rus"
+                    if y.isdigit() and v.get("mandated_share_map") and fall_of(v) and flow == "to_rus"
                 )  # fmt: skip
                 lab[flow] = {"mandated": round(min(1.0, mand / fall), 3), "gas": round(min(1.0, gas / fall), 3),
                              "cut": round(min(1.0, cut / fall), 3)}  # fmt: skip
@@ -1468,6 +1492,8 @@ def build() -> dict:
     apply_company_flows(countries, src)
     apply_refugees_net(countries, src)
     aggressor_refugees(countries, src)
+    refugee_common_cost(countries)
+    refugee_flowback(countries)
     apply_ua_arms_purchases(countries, src)
     apply_loans_value(countries, src)
     apply_money_ledger(countries, src)
@@ -1555,7 +1581,7 @@ def build() -> dict:
         "data_to": DATA_TO,
         "years": YEARS,
         "frac": FRAC,
-        "meta": {"tariff_rate": tariff_rate(countries), "lost_margin": 0.2},
+        "meta": {"tariff_rate": tariff_rate(countries), "lost_margin": 0.2, **META_R16},
         "status_html": status,
         "sources": src.items,
         "countries": {k: v for k, v in sorted(countries.items())},
@@ -2255,12 +2281,35 @@ def war_windfall(countries: dict[str, dict], src: Sources) -> None:
         # gas; for LNG only the profit tax and Russia's 60% of the profit after tax; for coal at most the rent Russia
         # still made at the actual price (net_gain_russia.json). The full-value series is kept for the method band
         m = windfall_gain(iso3)
+        # round 16: the gas share (pipeline and LNG) of the pre-war fuel bought from Russia, for the cause named in the
+        # "Russia's gain rose" list ("the 2022 price spike on gas contracts")
         c["windfall"] = {k: [round(v * f, 5) for v, f in zip(vals, m)] for k, vals in out.items()} | {
             "alt": out["years"],
             "gain": m,
+            "gas_share": windfall_gas_share(iso3),
             "cert": "C",
             "src": [wid, "net_gain_russia", "shipping"],
         }
+
+
+def windfall_gas_share(iso3: str) -> float:
+    """Round 16: the gas share (pipeline and LNG) of a country's 2022 windfall, for the cause named in the "Russia's gain
+    rose" list: each fuel's pre-war share of purchases from Russia x how far its 2022 price rose above the no-war price
+    (both against 2019-2021). A label only."""
+    mix, i, y = pre_war_fuel_split(iso3), 1, 2022
+    pipe = GAS_FORMULA.get(iso3, {"ttf": 0.75, "oil9": 0.25})
+    key = {"ttf": "ttf", "oil9": "oil_formula_9m", "jkm": "jkm"}
+    gas_nw = sum(w * nw(key[k], y, "central") for k, w in pipe.items()) / sum(pipe.values()) if pipe else None
+    gas_pa = gas_index(iso3, "central")[i]
+    gap = {"crude": idx("urals", "central")[i] - nw("urals", y, "central"),
+           "products": idx("products", "central")[i] - nw("diesel_gasoil_products", y, "central"),
+           "other_fossil": idx("products", "central")[i] - nw("diesel_gasoil_products", y, "central"),
+           "coal": idx("coal", "central")[i] - nw("russian_coal", y, "central"),
+           "gas": gas_pa - (gas_nw if gas_nw is not None else gas_pa)}  # fmt: skip
+    gap["lng"] = gap["gas"]
+    w = {f: max(0.0, (mix.get(f) or 0) * gap[f]) for f in gap}
+    tot = sum(w.values())
+    return round((w["gas"] + w["lng"]) / tot, 3) if tot > 0 else 0.0
 
 
 def laundered_volumes(countries: dict[str, dict]) -> None:
@@ -2485,6 +2534,12 @@ def pre_war_trends(countries: dict[str, dict], src: Sources) -> None:
             )
 
 
+# Round 16 (review 5, M2; approved by the owner): purchases from Russia below this average a year in 2019-2021 (EUR bn,
+# at 2019-2021 prices; the upper limit of the back-tests' small and medium size classes, counterfactual-notes.md) start
+# their no-war path from the 2019-2021 average, not from 2021 alone
+SMALL_FLOW_EUR_BN = 1.0
+
+
 def counterfactual(countries: dict[str, dict], src: Sources) -> None:
     """Expected trade without the war (research/2026-10/gaps/counterfactual.json): per flow type, the model that beat
     holding 2021 flat in back-tests from 2008, 2013 and 2016, else 2021 held flat (services with the travel recovery).
@@ -2580,6 +2635,16 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
                 round(min(obj["years_lo"][0] / ph[0], obj["base"]), 5),
                 round(max(obj["years_hi"][0] / pl[0], obj["base"]), 5),
             ]
+            # Round 16 (review 5, M2; approved by the owner): a small flow from Russia swings from year to year (one
+            # cargo more or less), so a single year is a noisy starting point. Where purchases from Russia averaged less
+            # than SMALL_FLOW_EUR_BN a year in 2019-2021, the no-war path starts from that average; 2021 alone stays
+            # inside the range
+            avg = obj["base_2019_2021_avg"]
+            if key == "to_rus" and avg is not None and 0 < avg < SMALL_FLOW_EUR_BN:
+                obj["base_2021"] = obj["base"]
+                obj["base"] = round(avg, 5)
+                obj["base_range"] = [round(min(obj["base_range"][0], avg), 5), round(max(obj["base_range"][1], avg), 5)]
+                obj["small_flow"] = True
             ms = [d["multiplier_vs_2021"][str(y)] for y in YEARS[1:]]
             # services: the travel recovery is sized on the model's own 2021 level. Where the map's 2021 is higher
             # (another source, little COVID dip), the expected level stops at the model's recovered level in euros
@@ -2862,9 +2927,13 @@ def apply_refugees_net(countries: dict[str, dict], src: Sources) -> None:
         gross = d["gross"]
         if iso3 in REFUGEE_SCOPE:
             # round 15: one definition, all levels of government; the reported partial figure (the low end) scaled by
-            # the scope gap the broad estimates show for this host (central: the geometric mean, high: the largest)
+            # the scope gap the broad estimates show for this host (central: the geometric mean, high: the largest).
+            # Round 16 (review 5, H1; approved by the owner): the gap was measured on 2022 alone (the OECD figure is a
+            # projection for 2022), so it scales 2022 only; later years keep the reported figure and its own range
             med, top = REFUGEE_SCOPE[iso3]
-            gross = {y: {"low": v["low"], "central": v["low"] * med**0.5, "high": max(v["high"], v["low"] * top)}
+            gross = {y: ({"low": v["low"], "central": v["low"] * med**0.5, "high": max(v["high"], v["low"] * top)}
+                         if y in REFUGEE_SCOPE_YEARS
+                         else {**v, "central": v["low"]} if iso3 in SCOPE_IN_CENTRAL else dict(v))
                      for y, v in gross.items()}  # fmt: skip
         g = lambda y, b: (gross.get(str(y)) or {}).get(b, 0.0)  # noqa: E731
         r = lambda y, b: (d["revenue"].get(str(y)) or {}).get(b, 0.0)  # noqa: E731
@@ -2929,6 +2998,62 @@ def aggressor_refugees(countries: dict[str, dict], src: Sources) -> None:
         a.pop("refugee_gross_years", None)
 
 
+def refugee_common_cost(countries: dict[str, dict]) -> None:
+    """Round 16 (review 5, H2; approved by the owner): a method-band alternative that values hosting at one common net
+    cost per refugee person-year for every host, instead of what each host actually spent (the map keeps each host's
+    actual net cost). Each year's common cost is the hosts' total net cost over their total person-years (refugees.json
+    person_years; Belarus, a co-belligerent, left out of both); a host whose costs donors paid keeps that share off
+    (refugee_donor_share). Written as aid.refugee_common_years; index.html calc(c, y, {refCommon: true})."""
+    py = {i: d.get("person_years") or {} for i, d in load(GAPS / "refugees.json")["countries"].items()}
+    hosts = [
+        i
+        for i, c in countries.items()
+        if py.get(i) and i not in CO_BELLIGERENT and (c.get("aid") or {}).get("refugee_years")
+    ]
+    common = [0.0] * len(YEARS)
+    for j, y in enumerate(YEARS):
+        if y < 2022:
+            continue
+        cost = sum(countries[i]["aid"]["refugee_years"][j] for i in hosts)
+        people = sum(py[i].get(str(y), 0) for i in hosts)
+        common[j] = cost / people if people else 0.0
+    META_R16["refugee_common_cost_eur_per_person_year"] = {
+        str(y): round(v * 1e9) for y, v in zip(YEARS, common) if y > 2021
+    }
+    for i in hosts:
+        a = countries[i]["aid"]
+        sh = (a.get("refugee_donor_share") or {}).get("central", 0.0)
+        a["refugee_common_years"] = [round(py[i].get(str(y), 0) * common[j] * (1 - sh), 5) for j, y in enumerate(YEARS)]
+
+
+def refugee_flowback(countries: dict[str, dict]) -> None:
+    """Round 16 (raised by review 5, M3; approved by the owner): refugee hosting money is spent in the host economy
+    (rent, food, retail and other services), like weapons bought at home, so its real gain to the host is subtracted
+    under the same rule as other money flowing back: the host's net gain per euro of services (taxes on production plus
+    profit above a normal return; net_gain_sellers.json group "services": accommodation and food, I, and business
+    services without real estate, GTNXL; the OECD median where the host is not in STAN) x the genuinely extra share of
+    civilian spending (value_kept.json flowback_other; the median where missing). Real-estate rental is not measured on
+    its own (STAN real estate is dominated by imputed rent and the dwelling stock, the reason round 14 left it out), so
+    rent counts at the services share. Stored as aid.refugee_back_f (low, central, high); calc() applies it to the hosting
+    cost counted (net of refugees' taxes)."""
+    ng, vk = load(GAPS / "net_gain_sellers.json"), load(GAPS / "value_kept.json")["countries"]
+    med = statistics.median(v["flowback_other"]["extra"]["central"] for v in vk.values() if v.get("flowback_other"))
+    for iso3, c in countries.items():
+        a = c.get("aid") or {}
+        if not any(a.get("refugee_years") or []):
+            continue
+        g = ((ng["countries"].get(iso3) or {}).get("groups") or {}).get("services") or ng["oecd_median"]["services"]
+        e = ((vk.get(iso3) or {}).get("flowback_other") or {}).get("extra") or {
+            "low": med * 0.5,
+            "central": med,
+            "high": min(1.0, med * 1.5),
+        }
+        a["refugee_back_f"] = _gain_x_extra(g, e)
+
+
+# filled during the build, written to data.json meta (round 16)
+META_R16: dict = {}
+
 # refugee costs whose figures were checked only against secondary sources (verify_r11_aid-notes.md): letter at most C
 REFUGEE_CERT_CAP = {"POL": "C"}
 # Round 15 (review 4, M5; approved by the owner): refugee hosting at one definition for every host, the total cost to
@@ -2940,6 +3065,16 @@ REFUGEE_CERT_CAP = {"POL": "C"}
 # Council for Cooperation with Ukraine (3.81); the first two as reported in the press, the OECD table itself was not
 # reached. Central = reported x sqrt(median), the rule round 5 used for Germany and Switzerland; low = reported only
 REFUGEE_SCOPE = {"DEU": (1.385, 1.53), "POL": (3.68, 3.81)}
+# Round 16 (review 5, H1; approved by the owner): the years the scope gap applies to. It was measured on 2022 alone (the
+# OECD figure is a projection for 2022 with a fixed refugee population; Poland ended most free accommodation and host
+# payments in 2023, and Germany moved Ukrainians to federal Bürgergeld from June 2022), so it says nothing about later
+# years: 2023-2026 keep the reported figure with its own range (refugees_net.json)
+REFUGEE_SCOPE_YEARS = {"2022"}
+# Germany's central values in refugees_net.json already carry the same 2022 gap in every year (round 5's rule: the
+# geometric mean of federal spending and federal x 1.55), so from 2023 its central is the reported federal figure; the
+# high end keeps the gap as the possible Länder and municipal share. Poland's later central values are the Aid Fund's own
+# refugee spending (Ministry of Finance) with their own range, and stay
+SCOPE_IN_CENTRAL = {"DEU"}
 
 
 def apply_ua_arms_purchases(countries: dict[str, dict], src: Sources) -> None:
@@ -3320,7 +3455,8 @@ def apply_value_kept(countries: dict[str, dict], src: Sources) -> None:
                 g = gain(iso3, grp)
             out[k] = _gain_x_extra(g, e)
         c["vk"] = out
-        c["vk_old"] = old
+        # round 16 (review 5, H5; approved by the owner): the superseded pre-round-13 rule (value kept x extra, "old")
+        # is no longer a method-band alternative, so it is not written to data.json
         c["ng_own"] = iso3 in ng["countries"] and bool(ng["countries"][iso3].get("groups"))
     # freight earned carrying Russian oil: gross freight x net gain x genuinely extra, in place of its profit share;
     # insurance and finance too (round 13); ship sales (their price premium) and registry fees keep their shares
@@ -3330,22 +3466,14 @@ def apply_value_kept(countries: dict[str, dict], src: Sources) -> None:
         fr = sh.pop("_fr", None) if sh else None
         ins = sh.pop("_ins", None) if sh else None
         f, fi = (c.get("vk") or {}).get("sh"), (c.get("vk") or {}).get("in")
-        fo = (c.get("vk_old") or {}).get("sh")
         if not fr or not f:
             continue
-        # the old rule (value kept x extra), kept for the method-sensitivity band
-        sh["years_old"] = (
-            [round(max(0.0, v - g * pf[1]) + g * fo[1], 5) for v, g in zip(sh["years"], fr["years"])] if fo else None
-        )
         for k, n in (("years", 1), ("years_lo", 0), ("years_hi", 2)):
             sh[k] = [
                 round(max(0.0, v - g * pf[n] - h * pi[n]) + g * f[n] + h * fi[n], 5)
                 for v, g, h in zip(sh[k], fr[k], ins[k] if ins and fi else [0.0] * 6)
             ]
-        if sh["years_old"] is None:
-            sh.pop("years_old")
         sh["base"] = round(fr["base"] * f[1], 5)
-        sh["base_old"] = round(fr["base"] * fo[1], 5) if fo else sh["base"]
         sh["base_range"] = [round(fr["base_range"][0] * f[0], 5), round(fr["base_range"][1] * f[2], 5)]
         for x in (sid, gid):
             if x not in sh["src"]:
@@ -3361,7 +3489,6 @@ def apply_value_kept(countries: dict[str, dict], src: Sources) -> None:
         for x in c.get("extra") or []:
             if x["k"] != "agents" or not f:
                 continue
-            x["alt"] = list(x["c"])  # the old rule: in full
             x["c"] = [round(v * f[1], 5) for v in x["c"]]
             x["l"] = [round(v * f[2], 5) for v in x["l"]]
             x["h"] = [round(v * f[0], 5) for v in x["h"]]
@@ -3837,7 +3964,7 @@ def _hk_metals_share() -> list[float]:
 
 HK_METALS_SHARE = _hk_metals_share()
 HK_ONWARD = (0.3, 0.55, 0.85)
-TRANSIT_HUBS = {"HKG": "gold transit hub: the share of Russian gold passed on to mainland China is counted for China"}  # fmt: skip
+TRANSIT_HUBS = {"HKG": "gold transit hub: only the Russian gold that stays in Hong Kong counts here; the share passed on to mainland China is counted for China, and the share exported elsewhere for those buyers"}  # fmt: skip
 
 
 # share of shipping income that is profit (low, middle, high): freight pays for fuel, port fees, crew and the ship itself
@@ -4119,6 +4246,11 @@ _GOLD = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/g
 ]["non_fuel_products_index_vs_2018_2021"]["gold"]
 _GOLD_R = sum(_GOLD[str(y)]["central"] for y in (2019, 2020, 2021)) / 3
 GOLD_INDEX = {b: [round(_GOLD[str(y)][b] / _GOLD_R, 4) for y in YEARS] for b in BANDS}
+# Round 16 (review 5, M1/M6; approved by the owner): a change in the volume of gold is valued at the price a no-war market
+# expected, like fuel, not at the war-time gold price. For an asset price the expectation is no change: the 2021 level
+# held flat (a judgement; gold futures price only the cost of carry). The rise of the gold price itself is not counted
+# as a windfall: unlike fuel, it was not caused by this war in any measurable share (central-bank buying, interest rates)
+GOLD_NOWAR = [GOLD_INDEX["central"][0]] * len(YEARS)
 
 
 def gold_in_payments(iso3: str, tr: dict) -> list[float]:
@@ -4154,11 +4286,15 @@ def deflate_gold(countries: dict[str, dict]) -> None:
         gross = [(p or 0.0) + o for p, o in zip(tr["years"], out)]
         gs = [min(1.0, t / gp) if gp > 0 and i else 0.0 for i, (t, gp) in enumerate(zip(tagged, gross))]
         tr["_gold_a"] = gs
+        # round 16: gold's share of the 2022-2026 payments, for the cause named in the "Russia's gain rose" list
+        tr["gold_share"] = round(min(1.0, sum(tagged[1:]) / (sum(gross[1:]) or 1)), 3)
         if tr.get("cur") and tr.get("pidx"):
-            # round 14 (M5): the gold share is re-inflated by the gold price, the rest as before
-            gi = GOLD_INDEX["central"]
+            # round 14 (M5): the gold share is re-inflated by the gold price, the rest as before. Round 16: by the no-war
+            # gold price (GOLD_NOWAR), as fuel is valued at no-war prices
+            # volumes: the gold share at the actual gold price; valued: at the no-war gold price
+            ga, gn = GOLD_INDEX["central"], GOLD_NOWAR
             tr["cur"] = [
-                round(((1 - s) / p * k + s) / ((1 - s) / p + s / gi[i]), 4) if s > 0 and p > 0 else k
+                round(((1 - s) / p * k + s / ga[i] * gn[i]) / ((1 - s) / p + s / ga[i]), 4) if s > 0 and p > 0 else k
                 for i, (s, p, k) in enumerate(zip(gs, tr["pidx"], tr["cur"]))
             ]
         for key, band in (("pidx", "central"), ("pidx_lo", "low"), ("pidx_hi", "high"), ("_pidx_pre", "central")):
@@ -5099,6 +5235,41 @@ def apply_residual(countries: dict[str, dict], src: Sources, note) -> None:
                     x + rise[i] * HK_METALS_SHARE[i] * on[i]["central"] if i else x for i, x in enumerate(g0)
                 ]
         cn["to_rus"]["src"] = cn["to_rus"]["src"] + [rid]
+        # Round 16 (review 5, M1; approved by the owner): only the gold that stays in Hong Kong counts for Hong Kong. The
+        # share it exported to other destinations (hk_gold_r16.json, Hong Kong's own HS 7108 exports) goes to those
+        # buyers, tagged as gold like the UAE's; China keeps the onward share above, so nothing is counted twice
+        hg = load(GAPS / "hk_gold_r16.json")["years"]
+        gid = src.add(
+            "hk_gold_r16",
+            "Hong Kong's gold exports by destination (HS 7108): UN Comtrade, 2022-2025",
+            "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=344&period=2025&flowCode=X,M,RX&cmdCode=7108",
+            "2026-10-20",
+            "the Russian gold Hong Kong passed on to buyers other than mainland China, by their share of its gold exports; see research/2026-10/gaps/hk_gold-notes.md",
+        )
+        es = [0.0] + [
+            min((hg.get(str(y)) or hg["2025"])["exported_elsewhere_share"], 1 - on[i]["high"])
+            for i, y in enumerate(YEARS)
+            if i
+        ]
+        dest = [None] + [(hg.get(str(y)) or hg["2025"])["destination_shares"] for y in YEARS[1:]]
+        rise = {k: [0.0] + [max(0.0, base[k][i] - hk_base * FRAC[i]) for i in range(1, len(YEARS))] for k in base}
+        moved = {k: [rise[k][i] * HK_METALS_SHARE[i] * es[i] for i in range(len(YEARS))] for k in base}
+        for k, gk in (("years", "years"), ("years_lo", "years_hi"), ("years_hi", "years_lo")):
+            hk["to_rus"][k] = [round(v - moved[gk][i], 5) for i, v in enumerate(hk["to_rus"][k])]
+        for i in range(1, len(YEARS)):
+            buyers = {
+                d: w for d, w in dest[i].items() if d in countries and (countries[d].get("to_rus") or {}).get("years")
+            }
+            wt = sum(buyers.values()) or 1.0
+            for d, w in buyers.items():
+                o = countries[d]["to_rus"]
+                for k in ("years", "years_lo", "years_hi"):
+                    o[k][i] = round(o[k][i] + moved[k][i] * w / wt, 5)
+                g0 = o.get("_gold", [0.0] * 6)
+                o["_gold"] = [x + (moved["years"][i] * w / wt if j == i else 0.0) for j, x in enumerate(g0)]
+                if gid not in o.setdefault("src", []):
+                    o["src"].append(gid)
+        hk["to_rus"]["src"] = hk["to_rus"]["src"] + [gid]
     for iso3, text in TRANSIT_HUBS.items():
         if iso3 in countries:
             countries[iso3]["hub"] = text

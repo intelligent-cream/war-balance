@@ -249,6 +249,22 @@ suggests the high side may be a little short (10 of 12 own windows covered). Spl
 is as large as the total's, and the two errors are almost uncorrelated. For Russia's neighbours as a group, the fuel
 model predicts better (+26–32%) but raises the expected level by ×1.08–1.28 without narrowing the band; it is not used.
 
+### Small flows start from the 2019 to 2021 average (round 16)
+
+Raised by review 5 (M2), approved by the owner. A small flow from Russia swings from year to year (one cargo more or
+less), so a single year is a noisy starting point. Cameroon's 2021 purchases from Russia (EUR 0.35bn at pre-war
+prices) were 64% above its 2019–2021 average (0.21bn), and the "less paid" that followed put it above Switzerland, the
+US and Japan on the net. **Rule:** where purchases from Russia averaged less than EUR 1bn a year in 2019–2021, the no-war
+path starts from that average instead of 2021 alone; 2021 stays inside the range (`base_range`). The threshold is the
+upper limit of the back-tests' small and medium size classes (S below EUR 0.1bn, M 0.1–1bn), the flows whose
+back-tested errors are widest; the same models and bands then apply (`SMALL_FLOW_EUR_BN`, `small_flow` in
+`data.json`). It is one rule, with no test on how far 2021 departs from the average, so no country is singled out.
+148 flows are under it. Cameroon +0.80% → +0.36% (likely −0.01% to +1.94%, direction uncertain); the largest movers
+among economies of at least EUR 5bn: Brunei +2.35 → +5.04, Syria −0.92 → −1.87, Burkina Faso −3.55 → −2.79,
+Afghanistan −1.53 → −0.96, Malta +0.28 → +0.79, Senegal −1.82 → −2.26, Bosnia and Herzegovina +0.55 → +0.16, Tajikistan
+−0.38 → −0.76, Latvia +3.54 → +3.22 (payments to Russia, % of a year's GDP); all movers are in the
+[changelog](../changelog.md#round-16).
+
 ### Pipeline fuel buyers (round 8)
 
 Most of the width of "less paid to Russia" comes from not knowing what a country would have bought from Russia
@@ -274,7 +290,7 @@ Effect on the total ranges (% of GDP): Germany 3.0…8.6 → 3.5…7.7, Hungary 
 
 ### Power of Siberia (round 15)
 
-Review 4 (M2), approved by the owner. China's imports from Russia keep 2021 flat (`cf: "rw"`), but the Power of Siberia pipeline was agreed in 2014 (a 30-year CNPC–Gazprom contract with a 38 bcm a year plateau) and has flowed since December 2019, so its ramp-up was expected without the war. China's no-war path now includes the **contracted** volume above the 2021 level (10.39 bcm): 15.4 bcm in 2022 (the actual delivery: the 2022 contractual quantity was not found, not verified), 22.0 in 2023 (Gazprom said the 22.7 delivered was 0.7 bcm above its obligation), 30.0 in 2024 (the initial plan; 31.12 delivered; the plan figure is from a search summary of an Interfax report, not verified), and the 38 bcm plateau in 2025 (38.84 delivered) and 2026 ([`power_of_siberia_r15.json`](../../research/2026-10/gaps/power_of_siberia_r15.json), with Interfax, TASS and Reuters sources). Only deliveries beyond that path, and the 44 bcm a year agreed in autumn 2025, count as war-driven. The extra volume is added to China's expected path at 2019–2021 prices (its pipeline-gas unit value, 15.2 EUR/MWh) before the no-war fuel price is applied (`power_of_siberia()` in `build_data.py`). Effect: China's change in payments to Russia −0.66% → −0.63%<!-- n:CHN.rus --> (the review estimated about −0.60%; the contracted path leaves out the deliveries above contract). TurkStream deliveries contracted in 2020–2021, which the review also named, are not yet treated this way.
+Review 4 (M2), approved by the owner. China's imports from Russia keep 2021 flat (`cf: "rw"`), but the Power of Siberia pipeline was agreed in 2014 (a 30-year CNPC–Gazprom contract with a 38 bcm a year plateau) and has flowed since December 2019, so its ramp-up was expected without the war. China's no-war path now includes the **contracted** volume above the 2021 level (10.39 bcm): 15.4 bcm in 2022 (the actual delivery: the 2022 contractual quantity was not found, not verified), 22.0 in 2023 (Gazprom said the 22.7 delivered was 0.7 bcm above its obligation), 30.0 in 2024 (the initial plan; 31.12 delivered; the plan figure is from a search summary of an Interfax report, not verified), and the 38 bcm plateau in 2025 (38.84 delivered) and 2026 ([`power_of_siberia_r15.json`](../../research/2026-10/gaps/power_of_siberia_r15.json), with Interfax, TASS and Reuters sources). Only deliveries beyond that path, and the 44 bcm a year agreed in autumn 2025, count as war-driven. The extra volume is added to China's expected path at 2019–2021 prices (its pipeline-gas unit value, 15.2 EUR/MWh) before the no-war fuel price is applied (`power_of_siberia()` in `build_data.py`). Effect: China's change in payments to Russia −0.66% → −0.62%<!-- n:CHN.rus --> (the review estimated about −0.60%; the contracted path leaves out the deliveries above contract). TurkStream deliveries contracted in 2020–2021, which the review also named, are not yet treated this way.
 
 ### Deliberate choices
 
@@ -300,10 +316,10 @@ Middle values change little; ranges become about 1.5–2 times wider. Shift towa
 
 | country | before (trend.json / trend2.json) | round 4 (historical, counterfactual.json) | round 11 build | current build (round 15, the net) |
 |---|---|---|---|---|
-| Germany | +4.9% (3.9 to 6.2) | +4.8% (3.1 to 7.3) | +3.7% (2.5 to 5.2) | +3.35%<!-- n:DEU.net --> |
-| China | −1.2% (−1.8 to −0.7) | −1.6% (−2.4 to −0.5) | −1.6% (−2.3 to −0.9) | −0.63%<!-- n:CHN.net --> |
+| Germany | +4.9% (3.9 to 6.2) | +4.8% (3.1 to 7.3) | +3.7% (2.5 to 5.2) | +3.22%<!-- n:DEU.net --> |
+| China | −1.2% (−1.8 to −0.7) | −1.6% (−2.4 to −0.5) | −1.6% (−2.3 to −0.9) | −0.62%<!-- n:CHN.net --> |
 | Hungary | −5.7% (−8.1 to −3.1) | −6.7% (−10.4 to −1.7) | −4.1% (−6.4 to −1.4) | −5.77%<!-- n:HUN.net --> |
-| Poland | +9.5% (7.7 to 12.2) | +10.0% (5.9 to 15.5) | +4.1% (2.2 to 7.0) | +5.06%<!-- n:POL.net --> |
+| Poland | +9.5% (7.7 to 12.2) | +10.0% (5.9 to 15.5) | +4.1% (2.2 to 7.0) | +4.39%<!-- n:POL.net --> |
 
 Round 15 divides by the average 2022–2024 GDP; the earlier columns divide by 2024 GDP.
 

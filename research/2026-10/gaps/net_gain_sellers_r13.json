@@ -1,5 +1,6 @@
 {
  "generated": "2026-10-19",
+ "status": "Superseded (round 16 note, review 5 L2): the round-13 sellers' shares with a 9% nominal normal return and services incl. real estate. The map uses net_gain_sellers.json (5% a year above inflation after company tax plus the country's risk premium, round 14); this copy is loaded only for the method band's normal_return alternative.",
  "meta": {
   "what": "Net gain per euro of sales for every seller other than Russia and Ukraine: other taxes on production plus profit above a normal return, as a share of output, by industry group (round 13 audit: one valuation rule for every seller)",
   "formula": "(D29X39 + B2A3N - SELF x D1/SAL - r x N11NA) / P1; B2A3N = B2A3G - P51C where only gross surplus is published",

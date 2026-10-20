@@ -410,7 +410,9 @@ else:
         for q in ("ua", "rus", "net")
         if c[q + "Unc"] == c[q + "SameSign"]
     ]
-    _calls = re.findall(r'rankList\([^\n]*?"(ua|rus|net)"\)', _html) + re.findall(r"headOf\[state\.rankMetric\]", _html)
+    _calls = re.findall(r'rankList\([^\n]*?"(ua|rus|net)"(?:\)|, \{)', _html) + re.findall(
+        r"headOf\[state\.rankMetric\]", _html
+    )
     _unc_n = {
         q: sum(1 for c in _m["countries"].values() if c[q + "Unc"] and c["gdp"] >= 5) for q in ("ua", "rus", "net")
     }
@@ -442,6 +444,66 @@ check(
     and 'data-lens="rus"' not in _html,
     f"buttons {_buttons}; start {_start.group(1) if _start else None}; old links {_old_map}; rankings for {_rank_keys}",
 )
+
+# 32. round 16 (review 5, C2; approved by the owner): the page in a real browser shows the same bands, "direction
+# uncertain" marks, rankings and grades as the model run in Node with every method-band alternative loaded (29 and 30
+# run in Node only, where the alternatives are always there). pipeline/browser_check.mjs; needs Playwright
+import shutil  # noqa: E402
+import subprocess  # noqa: E402
+
+_node = shutil.which("node")
+_pw = (
+    _node
+    and subprocess.run([_node, "-e", "require('playwright')"], capture_output=True, cwd=ROOT / "pipeline").returncode
+    == 0
+)
+if not _pw:
+    check("browser shows the same numbers as Node", True, "node or Playwright not found: not checked", warn_only=True)
+else:
+    _r = subprocess.run([_node, str(ROOT / "pipeline" / "browser_check.mjs")], capture_output=True, text=True)
+    _out = (_r.stdout or _r.stderr).strip().splitlines()
+    check(
+        "browser shows the same numbers as Node",
+        _r.returncode == 0,
+        "; ".join(x.strip() for x in _out[:3]) if _out else "no output",
+    )
+
+# 33. round 16 (review 5, M1): Hong Kong's Russian gold is counted once. Each year the share passed on to mainland
+# China (refine.json hk_onward, charged to China) and the share exported elsewhere (hk_gold_r16.json, charged to those
+# buyers) leave Hong Kong at most what it imported, and the destination shares add up to one
+_hk = json.loads((RESEARCH / "gaps" / "hk_gold_r16.json").read_text())["years"]
+_on = json.loads((RESEARCH / "gaps" / "refine.json").read_text())["hk_onward"]
+_over = [y for y, d in _hk.items() if y in _on and _on[y]["central"] + d["exported_elsewhere_share"] > 1 + 1e-9]
+_sums = [y for y, d in _hk.items() if abs(sum(d["destination_shares"].values()) - 1) > 0.01]
+check(
+    "Hong Kong gold counted once (China, other buyers, Hong Kong)",
+    not _over and not _sums,
+    f"years where onward + elsewhere > 1: {_over or 'none'}; destination shares not adding up: {_sums or 'none'}",
+)
+
+# 34. round 16 (review 5, H4): Russian money frozen is its own line, in the net only: not in the change in payments to
+# Russia (its map, ranking and world total) or in support for Ukraine
+_own = re.search(r"const OWN_LINE = new Set\(\[([^\]]*)\]\)", _html)
+check(
+    "Russian money frozen only in the net",
+    bool(_own)
+    and '"frozen"' in _own.group(1)
+    and "shiftParts.filter(RUS_PART)" in _html
+    and 'find(q => q.k === "paid")' in _html
+    and not any(x.get("k") == "frozen" for c in countries.values() for x in c.get("taken") or []),
+    f"own line: {_own.group(1) if _own else 'missing'}",
+)
+
+# 35. round 16 (raised by review 5, M3): the real gain subtracted from refugee spending in the host economy stays small
+# (the owner's expectation: about 2-4% of the hosting cost counted)
+_num = _den = 0.0
+for c in countries.values():
+    a = c.get("aid") or {}
+    if a.get("refugee_back_f"):
+        r = sum((a.get("refugee_years") or [0])[1:])
+        _num, _den = _num + r * a["refugee_back_f"][1], _den + r
+_rf = _num / _den if _den else 0.0
+check("refugee spending flowing back is small", 0.01 <= _rf <= 0.05, f"weighted factor {_rf:.3f} of the hosting cost")
 
 width = max(len(n) for _, n, _ in results)
 for status, name, detail in results:

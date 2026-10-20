@@ -1,6 +1,6 @@
 # Changelog: research rounds
 
-The map's data were built in fourteen research rounds in October 2026, each followed by changes to the pipeline and the site. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
+The map's data were built in sixteen research rounds in October 2026, each followed by changes to the pipeline and the site. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
 
 ## Round 1
 
@@ -434,6 +434,55 @@ Then, at the owner's request (the net first, then its two parts; [decisions](dec
 12. **"Cost carried" renamed "Cost to the country"** on the site, in the panel, How it works and the docs, with one
     line where it is explained: "what it cost the country itself, after gains such as cheaper Russian oil or business
     won back". All six translations updated; strings only the removed views used are gone. No number changed.
+
+## Round 16
+
+Review 5 (economist and data journalist), approved by the owner; the owner kept the net as the default view and
+ranking. Decisions: [decisions](decisions.md#round-16-review-5), [log](decision-log.md#round-16-review-5-20-october).
+Steps, in the order applied, with the main movers (% of a year's GDP, 2022 to August 2026):
+
+1. **Bands, rankings and grades in the browser** (C2): `detail.json` (the method band's alternatives) loads with the
+   data, before anything is drawn; caches fill only after it. New real-browser check `pipeline/browser_check.mjs`
+   (check 32): the page's bands, "direction uncertain" flags, grades, Ranking view and map dots must match the Node
+   model. On the round-15 code it finds 115 mismatches (Nepal's payments band −1.67 to −1.55 instead of −1.84 to
+   +0.05; net ranked 61 countries instead of 59, payments 56 instead of 53). No number changed.
+2. **Refugee scope factor in 2022 only** (H1): Poland support +1.95 → +1.34, net +5.06 → +4.44; Germany +1.70 →
+   +1.58, net +3.35 → +3.23.
+3. **The pre-round-13 valuation rule leaves the method band** (H5): support "direction uncertain" 100 → 95
+   (Bulgaria, Czechia, India, Kuwait, Nigeria ranked again). No central value moved.
+4. **Redirected trade on both sides** (H6): the alternative scales "less paid" by 0.70 and "more paid" by 0.50, so
+   the world total stays the world's net change. Bands only.
+5. **Wording**: the world totals are Russia's net gain ("from buyers who cut −€355bn; from buyers who bought more
+   +€215bn"), not payments.
+6. **EU-level aid text** (L1): the European Peace Facility is not in it, and why; the text shows the bar's figure
+   (Lithuania €211m, not €294m) with the face value beside it.
+7. **Grades and metadata** (L4, L2): adjusted aid graded by its adjusted share (Estonia, Latvia support B → C);
+   status lines on four superseded research files.
+8. **Colour scale** (L3): economies under EUR 5bn GDP are clamped to the lightest step of their direction.
+9. (The net stays the default and ranked: the owner's decision.)
+10. **"Russia's gain from this country rose"**, with each entry's main cause; arms suppliers on "Armed Russia" only.
+11. **Russian money frozen on its own line**, in the net only (H4): Belgium payments +1.86 → +0.62 (net unchanged
+    +2.81), France +0.86 → +0.68, Luxembourg +0.77 → +0.61; payments for Belgium, Italy and Spain become direction
+    uncertain.
+12. **One common cost per refugee** in the method band (H2). Bands only.
+13. **Refugee spending flowing back** (M3): 2.7% of hosting cost; Poland support −0.06, Netherlands −0.04, Montenegro
+    −0.05, Ireland −0.02.
+14. **Small flows from the 2019–2021 average** (M2; 148 flows under EUR 1bn a year): Cameroon +0.80 → +0.36 (direction
+    uncertain), Brunei +2.35 → +5.04, Syria −0.92 → −1.87, Burkina Faso −3.55 → −2.79, Afghanistan −1.53 → −0.96,
+    Malta +0.28 → +0.79, Senegal −1.82 → −2.26, Bosnia +0.55 → +0.16, Tajikistan −0.38 → −0.76, Latvia +3.54 → +3.22,
+    Libya −6.54 → −6.79, Yemen −5.13 → −4.86 (payments); 70 economies of at least EUR 5bn moved by 0.02 points or more.
+15. **Hong Kong's gold** (M1, M6): Hong Kong −4.30 → −1.59 (direction uncertain), Thailand +0.42 → +0.10, UAE
+    −0.72 → −0.84, Singapore −0.29 → −0.36, United Kingdom +0.88 → +0.83 (payments).
+16. **"Required by sanctions" from actual stop dates** (M4; label only): Lithuania 87% → 21% (the panel's note over all its trade with Russia: 86% → 23%), Finland 71% → 27%,
+    Poland 76% → 38%, Germany 49% → 30%.
+17. **Share text and cards** (M5): ranges and "in total since 2022" in the share text and OG descriptions; the
+    card's range and warning in large dark type. Cards regenerated.
+
+All six translations updated. Combined, round 15 → round 16 (support for Ukraine; change in payments to Russia;
+net): Poland +1.95 → +1.28; +3.11 → +3.03; +5.06 → +4.39, Germany +1.70 → +1.57; +1.65 → +1.57; +3.35 → +3.22,
+Belgium +0.94; +1.86 → +0.62; +2.81, Lithuania +1.84; +9.96 → +9.89; +11.80, Hong Kong −4.27 → −1.59 (both),
+Cameroon +0.80 → +0.36, Latvia net +5.19 → +4.87. Among economies of at least EUR 5bn: 103 moved by 0.02 points or
+more; direction uncertain on support 96, on payments 123 and on the net 114 (round 15: 100, 110, 104).
 
 ## See also
 

@@ -32,7 +32,8 @@ const base = `http://localhost:${server.address().port}/`;
 const browser = await chromium.launch(process.env.PLAYWRIGHT_CHROMIUM ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM } : {});
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, colorScheme: "light" });
 await page.goto(base + "index.html");
-await page.waitForFunction(() => typeof DATA !== "undefined" && Object.keys(DATA).length > 100);
+// round 16 (review 5, C2): the page says when it is ready, with the method band's alternatives loaded
+await page.waitForFunction(() => document.body.dataset.ready === "true" && typeof DATA !== "undefined" && Object.keys(DATA).length > 100);
 await page.waitForTimeout(1500);
 await mkdir(join(SITE, "share"), { recursive: true });
 await mkdir(join(SITE, "c"), { recursive: true });
@@ -55,8 +56,6 @@ const cards = await page.evaluate(() => {
   const out = [];
   for (const c of Object.values(DATA)) {
     const k = calc(c, 2026);
-    const parts = k.shiftParts.concat(state.netBack ? k.backShift : [])
-      .filter(p => Math.abs(p.v) > 1e-3).sort((a, b) => Math.abs(b.v) - Math.abs(a.v)).slice(0, 4);
     const yrs = yearsOf(2026);
     out.push({
       iso3: c.iso3, name: c.name, uaPos: k.uaBal >= 0,
@@ -70,7 +69,9 @@ const cards = await page.evaluate(() => {
       netPos: k.shift >= 0, earner: !!k.earner,
       pct: fmtMeasure(c, k.shift, "gdp", true), pctY: perYear(c, k.shift, 2026), eur: eur(k.shift, true), pp: c.pop ? perPerson(c, k.shift) : "", netWhat: netWords(c, k, "en"),
       lo: fmtMeasure(c, k.shiftLo, "gdp", true), hi: fmtMeasure(c, k.shiftHi, "gdp", true),
-      parts: parts.map(p => ({ label: p.label, v: eur(p.v, true), pos: p.v >= 0 })),
+      // round 16 (review 5, M5): every number with its likely range; Russian money frozen on its own line (net only)
+      uaLo: fmtMeasure(c, k.uaLo, "gdp", true), uaHi: fmtMeasure(c, k.uaHi, "gdp", true), ruLo: fmtMeasure(c, k.rusLo, "gdp", true), ruHi: fmtMeasure(c, k.rusHi, "gdp", true),
+      fz: Math.abs(k.frozen) >= 0.0005 ? fmtMeasure(c, k.frozen, "gdp", true) : "",
       dataTo: document.body.dataset.dataTo || "",
     });
   }
@@ -90,24 +91,24 @@ for (const d of cards) {
         <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#2a6fb0"></span>
         <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#d4601a;margin-left:-10px"></span>
         Follow the Money: Ukrainian Aid</div>
-      <div style="margin-top:24px;font-family:Archivo,sans-serif;font-weight:800;font-stretch:112%;font-size:60px;letter-spacing:-.02em;line-height:1">${d.name}</div>
-      <div style="display:flex;align-items:baseline;gap:18px;margin-top:14px">
-        <span style="font-family:Archivo,sans-serif;font-weight:800;font-size:96px;letter-spacing:-.03em;line-height:1;color:${col}">${d.pct}</span>
+      <div style="margin-top:18px;font-family:Archivo,sans-serif;font-weight:800;font-stretch:112%;font-size:54px;letter-spacing:-.02em;line-height:1">${d.name}</div>
+      <div style="display:flex;align-items:baseline;gap:18px;margin-top:12px">
+        <span style="font-family:Archivo,sans-serif;font-weight:800;font-size:88px;letter-spacing:-.03em;line-height:1;color:${col}">${d.pct}</span>
         <span style="font-size:27px;font-weight:600;color:#15212b;line-height:1.15">net: of a year's GDP in total<br>since 2022 (about ${d.pctY} a year)</span>
       </div>
-      <div style="margin-top:8px;font-size:20px;color:#55636e">${d.eur}${d.pp ? " · " + d.pp : ""} · 2022 to August 2026, about ${d.years} years · likely ${d.lo} to ${d.hi}${d.netUnc ? " · direction uncertain" : ""}${d.netWhat ? " · " + d.netWhat : ""} · it adds aid given and payments to Russia avoided</div>
-      <div style="margin-top:12px;font-size:23px;color:#15212b;line-height:1.3">Support for Ukraine <b style="color:${d.uaPos ? "#2a6fb0" : "#8f7417"}">${d.ua}</b> (about ${d.uaY} a year)${d.uaUnc ? " · direction uncertain" : ""}${d.refX ? ` · hosted Ukrainian refugees (${d.refX}), not counted as support: co-belligerent` : ""}</div>
-      <div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3">Change in payments to Russia <b style="color:${d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ru}</b> (about ${d.ruY} a year): ${d.ruWhat}${d.ruUnc ? " · direction uncertain" : ""}</div>
-      <div style="margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:4px 40px;font-size:19px">
-        ${d.parts.map(p => `<div style="display:flex;justify-content:space-between;border-top:1px solid #d6dde2;padding-top:6px"><span>${p.label}</span><b style="font-family:'IBM Plex Mono',monospace;font-weight:500;white-space:nowrap;margin-left:12px;color:${p.pos ? "#2a6fb0" : "#c9520f"}">${p.v}</b></div>`).join("")}
-      </div>
-      <div style="margin-top:12px;font-size:16px;color:#55636e">Figures to ${d.dataTo} · research preview, every number with a range and a source · intelligent-cream.github.io/follow-the-money-ukraine</div>`;
+      <div style="margin-top:10px;font-size:26px;font-weight:600;color:#15212b;line-height:1.25">Likely ${d.lo} to ${d.hi}${d.netUnc ? " · direction uncertain" : ""} · ${d.eur}${d.pp ? " · " + d.pp : ""}</div>
+      <div style="margin-top:8px;font-size:24px;color:#15212b;line-height:1.25;border-left:5px solid #d4601a;padding-left:12px">It adds two different things: aid given and payments to Russia avoided.${d.netWhat ? " " + d.netWhat[0].toUpperCase() + d.netWhat.slice(1) + "." : ""}</div>
+      <div style="margin-top:12px;font-size:23px;color:#15212b;line-height:1.3">Support for Ukraine <b style="color:${d.uaPos ? "#2a6fb0" : "#8f7417"}">${d.ua}</b> (likely ${d.uaLo} to ${d.uaHi})${d.uaUnc ? " · direction uncertain" : ""}${d.refX ? ` · hosted Ukrainian refugees (${d.refX}), not counted as support: co-belligerent` : ""}</div>
+      <div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3">Change in payments to Russia <b style="color:${d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ru}</b> (likely ${d.ruLo} to ${d.ruHi}): ${d.ruWhat}${d.ruUnc ? " · direction uncertain" : ""}</div>
+      ${d.fz ? `<div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3">Russian money frozen <b style="color:#2a6fb0">${d.fz}</b>: the return Russia lost on its reserves frozen here, in the net only</div>` : ""}
+      <div style="margin-top:auto;font-size:17px;color:#55636e;line-height:1.35">2022 to August 2026 (about ${d.years} years) · figures to ${d.dataTo} · research preview, every number with a range and a source<br>intelligent-cream.github.io/follow-the-money-ukraine</div>
+`;
   }, d);
   await page.waitForTimeout(30);
   const iso = d.iso3.toLowerCase();
   await page.screenshot({ path: join(SITE, "share", iso + ".png") });
-  const title = `${d.name}: net ${d.pct} of a year's GDP in total since 2022 (support for Ukraine ${d.ua}; change in payments to Russia ${d.ru}) | Follow the Money: Ukrainian Aid`;
-  const desc = `Totals for 2022 to August 2026 (about ${d.years} years) against one year's GDP: net ${d.pct} (${d.eur}; about ${d.pctY} a year)${d.netWhat ? ", " + d.netWhat : ""}, the sum of two parts: support for Ukraine ${d.ua} (about ${d.uaY} a year) and change in payments to Russia ${d.ru} (about ${d.ruY} a year; ${d.ruWhat}). The net adds aid given and payments to Russia avoided. Every number with a range and a source.`;
+  const title = `${d.name}: net ${d.pct} of a year's GDP in total since 2022 (likely ${d.lo} to ${d.hi}; support for Ukraine ${d.ua}; change in payments to Russia ${d.ru}) | Follow the Money: Ukrainian Aid`;
+  const desc = `In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: net ${d.pct} (likely ${d.lo} to ${d.hi}; ${d.eur}; about ${d.pctY} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.netUnc ? ", direction uncertain" : ""}, the sum of support for Ukraine ${d.ua} (likely ${d.uaLo} to ${d.uaHi}) and change in payments to Russia ${d.ru} (likely ${d.ruLo} to ${d.ruHi}; ${d.ruWhat})${d.fz ? `, plus Russian money frozen ${d.fz}` : ""}. The net adds two different things: aid given and payments to Russia avoided. Every number with a range and a source.`;
   await writeFile(join(SITE, "c", iso + ".html"), `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

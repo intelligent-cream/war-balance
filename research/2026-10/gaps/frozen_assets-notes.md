@@ -166,3 +166,7 @@ The main ones are listed below. All of them are in `sources` in the JSON.
 - [Belga: Belgian tax EUR 1.7bn](https://www.belganewsagency.eu/frozen-russian-assets-at-euroclear-earn-belgium-17-billion-euros-in-tax-revenue).
 
 Scripts: `/tmp/claude-0/-home-user/71ac834a-35d2-5698-a36d-858806a141e1/scratchpad/r7/frozen_assets/scripts/` (`build.py` for the calculation, `assemble.py` for the JSON).
+
+## Round 16: its own line, in the net only
+
+Raised by review 5 (H4), approved by the owner. The return Russia lost on its frozen reserves is not a payment, so it is no longer part of "change in payments to Russia" (its map, ranking and world total). It is a line of its own, "Russian money frozen", added to the net only, and shown in the panel, the table, the CSV and JSON downloads and `docs/trace.md`. The one-third host share for Euroclear and Clearstream is unchanged and explained in `docs/method/russia-state-and-companies.md`. The possible overlap with the European Peace Facility noted above does not arise: Kiel has not counted the EPF since tracker version 16 (`kiel-notes.md`), so none of the 2024 windfall tranche sits in members' EU shares.
