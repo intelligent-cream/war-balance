@@ -15,7 +15,8 @@ person ([decisions](decisions.md)).
 
 - **Parts on the map**: the names in a country's panel, with the key used in `calc()` in
   [`site/index.html`](../site/index.html). A part is in the net shift, in the money flowing back, or in the cost view
-  ([overview](method/overview.md#every-part-of-the-net-shift)).
+  (the "Cost to the country" button, called "Cost carried" before round 15;
+  [overview](method/overview.md#every-part-of-the-net-shift)).
 - **How it's calculated**: the method section that writes the calculation out.
 - **Why it's done this way**: the rows of [decisions.md](decisions.md) (by section, with the row's name) and of the
   [decision log](decision-log.md) (by round).
@@ -294,6 +295,8 @@ Known gaps:
 
 **How it's calculated:** [aid-refugees-military.md § Refugees](method/aid-refugees-military.md#refugees).
 
+**Round 15:** one definition for every host, the cost to all levels of government minus refugees' taxes and contributions: Germany's federal figure and Poland's Aid Fund figure are scaled by the 2022 gap to broad estimates (OECD International Migration Outlook 2022 via the press, Kiel, Poland's Council for Cooperation with Ukraine; `REFUGEE_SCOPE` in `build_data.py`). Russia is never credited (the aggressor; ICC warrants of 17 March 2023 for the deportation of children); Belarus's hosting cost is a label, not support for Ukraine (co-belligerent, UN General Assembly resolution ES-11/1; source `co_belligerent`, field `ref_excluded`). Refugees at gross cost are a method-band alternative (`aid.refugee_gross_years`). [decisions § Round 15](decisions.md#round-15-separate-maps-named-lists-and-comparable-numbers).
+
 **Why it's done this way:**
 
 - [decisions § 2. Aid and the cost of hosting refugees](decisions.md#2-aid-and-the-cost-of-hosting-refugees): Refugees at net cost
@@ -403,6 +406,8 @@ Known gaps:
 
 **How it's calculated:** [overview.md § The net-gain rule (round 10)](method/overview.md#the-net-gain-rule-round-10); [Payments to Russia for fuel](method/energy-and-laundered-oil.md#payments-to-russia-for-fuel); [Transit gas](method/energy-and-laundered-oil.md#transit-gas); [The pre-war level and the comparison](method/trade.md#the-pre-war-level-and-the-comparison); [Why volumes](method/prices.md#why-volumes); [6. Which model is used for which flow](method/counterfactual.md#6-which-model-is-used-for-which-flow).
 
+**Round 15:** the change in payments to Russia is its own map; its title gives the world total (EUR 358.8bn<!-- n:WORLD.less --> less paid by buyers who cut, EUR 226.7bn<!-- n:WORLD.more --> more by others, at Russia's net gain; `worldPaid()`). China's no-war path includes the contracted Power of Siberia ramp-up (source `power_of_siberia`, [`power_of_siberia_r15.json`](../research/2026-10/gaps/power_of_siberia_r15.json)). Method-band alternatives: redirected trade (less paid × the world net-to-gross ratio, 0.37<!-- n:WORLD.ratio -->), without the gas Russia cut off, and 2026 at 2025 prices (`to_rus.p26`). Countries whose range or band crosses zero are not ranked.
+
 **Why it's done this way:**
 
 - [decisions § Round 14b: Russia's and Ukraine's normal return](decisions.md#round-14b-russias-and-ukraines-normal-return): the net-gain shares subtract 5% real + the country risk premium on measured capital (raised by the owner)
@@ -508,6 +513,8 @@ Known gaps:
 **Parts on the map:** Extra paid to Russia because of war-time prices / Paid Russia less than no-war prices (discounts, price cap) (`windfall`, net shift).
 
 **How it's calculated:** [prices.md § War-time windfall](method/prices.md#war-time-windfall); [No-war prices (round 7)](method/prices.md#no-war-prices-round-7); [Gas prices per country](method/prices.md#gas-prices-per-country).
+
+**Round 15:** the windfall is named on cards and panels when it is more than half of the change in payments to Russia (Hungary: EUR 9.9bn of 11.6bn, mostly 2022). Method-band alternatives: without the windfall, and 2026 at 2025 prices (the Hormuz crisis, source `hormuz`; [prices § 2026 and the Hormuz crisis](method/prices.md#2026-and-the-hormuz-crisis-round-15)).
 
 **Why it's done this way:**
 
@@ -896,9 +903,9 @@ Known gaps:
 
 ## Companies leaving Russia
 
-**What it is:** The forced discount and the exit fee Russia took from companies that sold their Russian business. Since round 14b not in the totals, counted as a cost carried.
+**What it is:** The forced discount and the exit fee Russia took from companies that sold their Russian business. Since round 14b not in the totals, counted in the cost to the country.
 
-**Parts on the map:** Forced sales: discount and exit fee taken by Russia (`exits`, cost view only; `taken` in `data.json`). Rounds 5–14: "Paid to Russia by companies leaving it", in the net shift.
+**Parts on the map:** Forced sales: discount and exit fee taken by Russia (`exits`, cost to the country only; `taken` in `data.json`). Rounds 5–14: "Paid to Russia by companies leaving it", in the net shift.
 
 **How it's calculated:** [russia-state-and-companies.md § Companies leaving Russia](method/russia-state-and-companies.md#companies-leaving-russia).
 
@@ -907,7 +914,7 @@ Known gaps:
 - [decisions § Why each money flow is counted: Companies leaving Russia](decisions.md#companies-leaving-russia): what is counted, why, what is left out, data or judgement
 - [decisions § Constants in the code](decisions.md#constants-in-the-code): conduit Kazakhstan 3.5, Netherlands 4.7
 - [decision log § Round 5: values at their real worth (18 October)](decision-log.md#round-5-values-at-their-real-worth-18-october): Rosatom projects, Russian state loans, company exits, Russian-owned firms abroad counted
-- [decisions § Round 14b: taken by Russia, not in the totals](decisions.md#round-14b-taken-by-russia-not-in-the-totals): out of the totals, a cost carried (raised by the owner; reverses round 5)
+- [decisions § Round 14b: taken by Russia, not in the totals](decisions.md#round-14b-taken-by-russia-not-in-the-totals): out of the totals, in the cost to the country (raised by the owner; reverses round 5)
 - [decision log § Round 14b](decision-log.md#round-14b-taken-by-russia-and-one-normal-return-19-october)
 
 **Data sources:**
@@ -929,20 +936,20 @@ Known gaps:
 
 Known gaps:
 
-- Rounds 5–14 counted the forced discount toward Russia with no recorded reason, although the research suggested counting only the exit contribution ([decisions](decisions.md#companies-leaving-russia)). Since round 14b (raised by the owner) both the discount and the contribution, like seizures ([below](#assets-seized-by-russia)), are out of the totals and counted as a cost carried.
+- Rounds 5–14 counted the forced discount toward Russia with no recorded reason, although the research suggested counting only the exit contribution ([decisions](decisions.md#companies-leaving-russia)). Since round 14b (raised by the owner) both the discount and the contribution, like seizures ([below](#assets-seized-by-russia)), are out of the totals and counted in the cost to the country.
 
 ## Assets seized by Russia
 
-**What it is:** Company assets Russia seized (temporary management by decree, expropriation, court seizures, leased aircraft kept), at the owners' write-downs, by the company's home country. Round 14; since round 14b not in the totals, counted as a cost carried.
+**What it is:** Company assets Russia seized (temporary management by decree, expropriation, court seizures, leased aircraft kept), at the owners' write-downs, by the company's home country. Round 14; since round 14b not in the totals, counted in the cost to the country.
 
-**Parts on the map:** Seized by Russia (companies' assets) (`seized`, cost view only; `taken` in `data.json`). Round 14: in the net shift, toward Russia, in the change in payments to Russia.
+**Parts on the map:** Seized by Russia (companies' assets) (`seized`, cost to the country only; `taken` in `data.json`). Round 14: in the net shift, toward Russia, in the change in payments to Russia.
 
 **How it's calculated:** [russia-state-and-companies.md § Assets seized by Russia (round 14)](method/russia-state-and-companies.md#assets-seized-by-russia-round-14).
 
 **Why it's done this way:**
 
 - [decisions § Round 14: independent audit 3](decisions.md#round-14-independent-audit-3): M4, a seizure is as coerced as a forced discount (raised by audit, approved by owner)
-- [decisions § Round 14b: taken by Russia, not in the totals](decisions.md#round-14b-taken-by-russia-not-in-the-totals): out of the totals, a cost carried (raised by the owner; reverses M4)
+- [decisions § Round 14b: taken by Russia, not in the totals](decisions.md#round-14b-taken-by-russia-not-in-the-totals): out of the totals, in the cost to the country (raised by the owner; reverses M4)
 - [decision log § Round 14](decision-log.md#round-14-independent-audit-3-19-october)
 
 **Data sources:**
@@ -1165,6 +1172,8 @@ Known gaps:
 **Parts on the map:** Weapons and troops sent to Russia (`mil`, net shift).
 
 **How it's calculated:** [aid-refugees-military.md § Military support to Russia](method/aid-refugees-military.md#military-support-to-russia); [Round 6 revision](method/aid-refugees-military.md#round-6-revision).
+
+**Round 15:** the Russia panel's list "Armed Russia" shows these deliveries at their full value (`military_rus.alt`: North Korea EUR 8.8bn, Iran 3.5bn, China 1.3bn, Belarus 1.3bn), next to what counts in the totals (paid deliveries at the seller's net gain, round 13). Information only; the totals do not change.
 
 **Why it's done this way:**
 

@@ -272,6 +272,10 @@ Comtrade, 2005–2021), with rolling back-tests calibrated by era as before
 Effect on the total ranges (% of GDP): Germany 3.0…8.6 → 3.5…7.7, Hungary −9.8…+2.5 → −8.2…−0.1, Slovakia
 −6.5…+16.0 → −3.8…+11.6, Czechia −1.4…+10.5 → −0.4…+9.6, North Macedonia −4.7…+11.4 → −4.7…+4.1.
 
+### Power of Siberia (round 15)
+
+Review 4 (M2), approved by the owner. China's imports from Russia keep 2021 flat (`cf: "rw"`), but the Power of Siberia pipeline was agreed in 2014 (a 30-year CNPC–Gazprom contract with a 38 bcm a year plateau) and has flowed since December 2019, so its ramp-up was expected without the war. China's no-war path now includes the **contracted** volume above the 2021 level (10.39 bcm): 15.4 bcm in 2022 (the actual delivery: the 2022 contractual quantity was not found, not verified), 22.0 in 2023 (Gazprom said the 22.7 delivered was 0.7 bcm above its obligation), 30.0 in 2024 (the initial plan; 31.12 delivered; the plan figure is from a search summary of an Interfax report, not verified), and the 38 bcm plateau in 2025 (38.84 delivered) and 2026 ([`power_of_siberia_r15.json`](../../research/2026-10/gaps/power_of_siberia_r15.json), with Interfax, TASS and Reuters sources). Only deliveries beyond that path, and the 44 bcm a year agreed in autumn 2025, count as war-driven. The extra volume is added to China's expected path at 2019–2021 prices (its pipeline-gas unit value, 15.2 EUR/MWh) before the no-war fuel price is applied (`power_of_siberia()` in `build_data.py`). Effect: China's change in payments to Russia −0.66% → −0.63%<!-- n:CHN.rus --> (the review estimated about −0.60%; the contracted path leaves out the deliveries above contract). TurkStream deliveries contracted in 2020–2021, which the review also named, are not yet treated this way.
+
 ### Deliberate choices
 
 - **Actual figures as inputs.** The models use each country's actual 2022–2026 GDP and trade with others, although the war affected them too. The map asks how far a country went out of its way: if its economy shrank because of the war, it would have traded less with Russia anyway, and that is not a choice to credit or blame. (Decided in round 5; pre-war forecasts were considered and rejected.)
@@ -292,18 +296,20 @@ Effect on the total ranges (% of GDP): Germany 3.0…8.6 → 3.5…7.7, Hungary 
 
 ## 9. Effect on the headline numbers
 
-Middle values change little; ranges become about 1.5–2 times wider. Shift toward Ukraine, 2022–August 2026, % of one year's GDP. "Before" is a build of the committed round-4 code with `counterfactual()` switched off (so `trend.json` / `trend2.json` and the audit-2 window fixes apply). "Round 4 (historical)" is the round-4 build with the counterfactual switched on and the round-4 review fixes (windfall from yearly fuel shares, services cap, UAE customs order and others, see the [research log](../../research/2026-10/README.md)). Both were computed with the site's own `calc()`. They show the counterfactual's own effect at the time. The last column is the current build (round 11), for comparison. It also holds every later change: the money rule (round 6), no-war prices (round 7), the net-gain rule (round 10) and the round-11 data, so the gap between the last two columns is not the counterfactual's effect.
+Middle values change little; ranges become about 1.5–2 times wider. Shift toward Ukraine, 2022–August 2026, % of one year's GDP. "Before" is a build of the committed round-4 code with `counterfactual()` switched off (so `trend.json` / `trend2.json` and the audit-2 window fixes apply). "Round 4 (historical)" is the round-4 build with the counterfactual switched on and the round-4 review fixes (windfall from yearly fuel shares, services cap, UAE customs order and others, see the [research log](../../research/2026-10/README.md)). Both were computed with the site's own `calc()`. They show the counterfactual's own effect at the time. The round-11 column is that build, and the last column the current one, for comparison. It also holds every later change: the money rule (round 6), no-war prices (round 7), the net-gain rule (round 10) and the round-11 data, so the gap between the last two columns is not the counterfactual's effect.
 
-| country | before (trend.json / trend2.json) | round 4 (historical, counterfactual.json) | current build (round 11) |
-|---|---|---|---|
-| Germany | +4.9% (3.9 to 6.2) | +4.8% (3.1 to 7.3) | +3.7% (2.5 to 5.2) |
-| China | −1.2% (−1.8 to −0.7) | −1.6% (−2.4 to −0.5) | −1.6% (−2.3 to −0.9) |
-| Hungary | −5.7% (−8.1 to −3.1) | −6.7% (−10.4 to −1.7) | −4.1% (−6.4 to −1.4) |
-| Poland | +9.5% (7.7 to 12.2) | +10.0% (5.9 to 15.5) | +4.1% (2.2 to 7.0) |
+| country | before (trend.json / trend2.json) | round 4 (historical, counterfactual.json) | round 11 build | current build (round 15, the net) |
+|---|---|---|---|---|
+| Germany | +4.9% (3.9 to 6.2) | +4.8% (3.1 to 7.3) | +3.7% (2.5 to 5.2) | +3.35%<!-- n:DEU.net --> |
+| China | −1.2% (−1.8 to −0.7) | −1.6% (−2.4 to −0.5) | −1.6% (−2.3 to −0.9) | −0.63%<!-- n:CHN.net --> |
+| Hungary | −5.7% (−8.1 to −3.1) | −6.7% (−10.4 to −1.7) | −4.1% (−6.4 to −1.4) | −5.77%<!-- n:HUN.net --> |
+| Poland | +9.5% (7.7 to 12.2) | +10.0% (5.9 to 15.5) | +4.1% (2.2 to 7.0) | +5.06%<!-- n:POL.net --> |
+
+Round 15 divides by the average 2022–2024 GDP; the earlier columns divide by 2024 GDP.
 
 The round-4 log in [`research/2026-10/README.md`](../../research/2026-10/README.md) gives the counterfactual's own effect as Germany +4.8% → +4.7%, China −1.1% → −1.6%, Hungary −5.6% → −6.7%; the small differences to the table come from the review fixes made afterwards.
 
-The widest case is Belarus. In round 4 it was −24% of GDP with a range of −76% to +49%. In the round-11 build it was −17.6% with a range of −38.6% to +3.6% (round 14: −2.1%, range −10.8% to +9.7%, after the one valuation rule and the customs basis for what it bought). Its 2021 imports from Russia (about EUR 18bn a year) are held flat, and the honest random-walk error on a flow that large is still wide enough to cross zero ([limitations.md](../limitations.md)).
+The widest case is Belarus. In round 4 it was −24% of GDP with a range of −76% to +49%. In the round-11 build it was −17.6% with a range of −38.6% to +3.6% (round 15: −2.78%<!-- n:BLR.net -->, range −10.90%<!-- n:BLR.netLo --> to +8.13%<!-- n:BLR.netHi -->, after the one valuation rule, the customs basis for what it bought and the average-GDP denominator). Its 2021 imports from Russia (about EUR 18bn a year) are held flat, and the honest random-walk error on a flow that large is still wide enough to cross zero ([limitations.md](../limitations.md)).
 
 ## See also
 

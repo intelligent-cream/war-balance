@@ -375,7 +375,7 @@ each step alone:
    Ferrexpo, Rosstat, Ukrstat, Damodaran's emerging-market industries). Russia's crude gain 2023 0.64 → 0.57, non-fuel
    average 2024 0.118 → 0.103; Ukraine's export average 2024 0.069 → 0.036. Net: Estonia 11.17 → 9.90, Lithuania 12.09
    → 10.98, Moldova 6.98 → 5.99, Libya −7.03 → −6.16, Yemen −6.86 → −6.11, Finland 8.43 → 7.76, Tunisia −4.92 →
-   −4.26, Latvia 5.49 → 4.94, Poland 4.11 → 3.74, India −2.38 → −2.08 ([net_gain_russia-notes](../research/2026-10/gaps/net_gain_russia-notes.md),
+   −4.26, Latvia 5.49 → 4.94, Poland 4.11 → 3.74, India −2.38 → −2.08. Estonia's and Lithuania's moves come from Russia's lower gain shares on what they stopped buying from Russia, not from Ukraine's normal return (corrected in round 15) ([net_gain_russia-notes](../research/2026-10/gaps/net_gain_russia-notes.md),
    [net_gain_ukraine-notes](../research/2026-10/gaps/net_gain_ukraine-notes.md)).
 
 Combined, round 14 → round 14b: Lithuania +11.91 → +10.98, Estonia +11.17 → +9.90, Finland +7.54 → +7.76, Moldova
@@ -383,6 +383,57 @@ Combined, round 14 → round 14b: Lithuania +11.91 → +10.98, Estonia +11.17 �
 −0.43 → +0.20, Ireland +0.93 → +1.45, the US +0.48 → +0.49; at the bottom North Korea −10.29 → −10.28, Libya −7.03 →
 −6.16, Yemen −6.86 → −6.11, Hungary −5.31 → −5.33, Tunisia −4.92 → −4.26, India −2.38 → −2.08. Ireland enters the
 top 20, Portugal leaves it. Totals' letters: 1 A, 6 B, 205 C, 19 D.
+
+## Round 15
+
+Review 4 (economist and data journalist), approved by the owner; two points raised by the owner. Decisions:
+[decisions](decisions.md#round-15-separate-maps-named-lists-and-comparable-numbers),
+[log](decision-log.md#round-15-separate-maps-named-lists-and-a-stricter-ranking-19-october).
+
+1. **Docs brought up to date** (H4): Poland's reading guide, the limitations table, the overview's units (current
+   euros since round 14) and every round-15 figure; headline figures in the docs now carry a tag
+   (`<!-- n:POL.ua -->`) and `pipeline/check_docs_numbers.py` (run by `check_data.py`) fails when one differs from
+   `data.json`. The text claiming Estonia's and Lithuania's round-14b move came from Ukraine's normal return is
+   corrected: it came from Russia's lower gain shares.
+2. **Average 2022–2024 GDP** as the denominator (M1; `gdp_avg_r15.json`, World Bank WDI and IMF WEO fetched
+   19 October 2026): Nigeria +0.81 → +0.44, Kyrgyzstan −5.68 → −6.75, Yemen −6.11 → −5.13, Norway's support
+   +2.96 → +2.71; most European figures rise by 4–12% (Lithuania's net +10.98 → +11.80).
+3. **Power of Siberia** (M2): China's no-war path includes the contracted ramp-up; China −0.66 → −0.63.
+4. **Ukraine's country risk premium per year** (January 2022–2026 Damodaran tables): below 0.02 points everywhere.
+5. **Refugees** (M5 and the owner): one all-government definition (Poland's support +1.11 → +1.95, Germany's
+   +1.81 → +1.70); Belarus's hosting moved to a label (support +0.16 → 0); Russia never credited (check 26); the
+   unverified Poland and Czechia snippets removed from `kiel.json`.
+6. **Three maps** (C1): support for Ukraine is the default; the change in payments to Russia a second map with the
+   world total (EUR 358.8bn less paid by buyers who cut, 226.7bn more by others); the net a third with a warning.
+   Hash `lens=support|payments|net`; `lens=change` opens the net. Table, CSV and JSON put support first, each number
+   with its letter and a direction flag.
+7. **Russia panel** (C2): "Paid Russia more than before the war" and "Armed Russia" (full military value).
+8. **Words** (H2, L2, L3): the main part named on cards, OG text, share text and panel when it is more than half of
+   the number (Hungary: "mostly the 2022 war-time price spike (€9.9bn of €11.6bn; its volumes barely changed)";
+   Belgium: the frozen-reserve return; Moldova: gas Russia cut off; Nigeria: structural); every shared figure says
+   "in total since 2022 (about X a year)". Share cards regenerated.
+9. **Method band, ranking and grades** (H3): six more alternatives, a band for each number, the sign rule for every
+   ranking (check 29), the new letters. Hormuz note and "2026 at 2025 prices" (owner, M4).
+
+Combined, round 14b → round 15 (support for Ukraine; net): Denmark +3.40 → +3.49; +4.32 → +4.44, Norway +2.96 →
++2.71; +3.37 → +3.09, the Netherlands +2.02 → +2.15; +4.76 → +5.06, Poland +0.98 → +1.95; +3.74 → +5.06, Germany
++1.75 → +1.70; +3.34 → +3.35, the US +0.34 → +0.35; +0.49 → +0.52, Lithuania +1.71 → +1.84; +10.98 → +11.80,
+Estonia +1.99 → +2.07; +9.90 → +10.33; at the other end Hungary −5.33 → −5.77, Libya −6.16 → −6.54, Yemen −6.11 →
+−5.13, India −2.08 → −2.21, China −0.66 → −0.63, Nigeria +0.81 → +0.44, Belarus −2.52 → −2.78 (net).
+
+Then, at the owner's request (the net first, then its two parts; [decisions](decisions.md#round-15-the-net-first-then-its-two-parts)):
+
+10. **Four views, the net first**: "Net (the sum)" is the default map, ranking, top lists, share-card headline and
+    OG text, always with its warning; then "Support for Ukraine", "Change in payments to Russia" (with the world
+    total) and "Cost to the country". The table puts the net first; the CSV and JSON columns are unchanged. Share
+    cards and pages regenerated: they lead with the net and still show both parts and the main-part qualifiers.
+11. **The gross views "To Ukraine" and "To Russia" removed** (buttons, code paths, colours and rankings): they
+    include normal trade and measure something different. The gross flows stay in the panel's small charts, the
+    table and downloads and the flow lines. Old links: `lens=ukr` opens support for Ukraine, `lens=rus` the change in
+    payments to Russia, `lens=change` the net; an address without `lens` opens the net (check 31).
+12. **"Cost carried" renamed "Cost to the country"** on the site, in the panel, How it works and the docs, with one
+    line where it is explained: "what it cost the country itself, after gains such as cheaper Russian oil or business
+    won back". All six translations updated; strings only the removed views used are gone. No number changed.
 
 ## See also
 

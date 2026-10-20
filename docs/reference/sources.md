@@ -75,7 +75,7 @@ Used in [services-shipping-companies.md](../method/services-shipping-companies.m
 
 | source | address | used for |
 |---|---|---|
-| World Bank WDI | https://api.worldbank.org/v2/ | GDP (2024) and population; counterfactual GDP and volumes |
+| World Bank WDI | https://api.worldbank.org/v2/ | GDP (2022–2024; the average is the denominator since round 15, `gaps/gdp_avg_r15.json`) and population; counterfactual GDP and volumes |
 | UNSD, UN WPP, national accounts of territories | see [residual-notes.md](../../research/2026-10/gaps/residual-notes.md) §1 | GDP for 31 economies missing in WDI |
 | ECB reference rates | https://data.ecb.europa.eu/data/datasets/EXR | USD/EUR, annual and monthly |
 | IMF World Economic Outlook, October 2021 (via DBnomics) | see [trend3-notes.md](../../research/2026-10/gaps/trend3-notes.md) | pre-war commodity price paths for the counterfactual |

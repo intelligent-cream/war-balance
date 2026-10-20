@@ -63,7 +63,7 @@ Russian arms were settled in drones and missiles that are already counted as wea
 
 ## Companies leaving Russia
 
-**Since round 14b: not in the totals, counted as a cost carried** ([below](#round-14b-taken-by-russia-not-in-the-totals)).
+**Since round 14b: not in the totals, counted in the cost to the country** ([below](#round-14b-taken-by-russia-not-in-the-totals)).
 
 Code: `apply_company_flows()`; data: [`company_flows.json`](../../research/2026-10/gaps/company_flows.json)
 ([notes](../../research/2026-10/gaps/company_flows-notes.md)). By the company's home country:
@@ -74,7 +74,7 @@ Code: `apply_company_flows()`; data: [`company_flows.json`](../../research/2026-
   Renault, Société Générale, McDonald's, Nissan, Equinor, Shell; later years from the contribution). Yandex (Netherlands)
   and Polymetal (Kazakhstan) are left out: their shareholders were mostly international, not Dutch or Kazakh.
 - **Seizures** without payment were not counted until round 13; in round 14 they were, on their own line
-  ([below](#assets-seized-by-russia-round-14)); since round 14b they are, like the exit costs, a cost carried.
+  ([below](#assets-seized-by-russia-round-14)); since round 14b they are, like the exit costs, in the cost to the country.
 
 Rounds 5 to 14 counted exit payments toward Russia, so a company's exit cost its country on this part. Since round 14b
 they are a sacrifice instead: the taxes the company no longer pays in Russia still count toward Ukraine (company taxes,
@@ -88,7 +88,7 @@ hand value to Russia (its state or Russian firms). Until round 13 discounts coun
 Russia lowered a country's score while having one's company seized did not. In round 14 seizures counted as money
 taken by Russia, on their own line, "Seized by Russia (companies' assets)", toward Russia in the change in payments to
 Russia. **Since round 14b** (raised by the owner) seizures and forced exit costs are both out of the totals and
-counted as a cost carried (`taken` in `data.json`; [above](#round-14b-taken-by-russia-not-in-the-totals)).
+counted in the cost to the country (`taken` in `data.json`; [above](#round-14b-taken-by-russia-not-in-the-totals)).
 
 - **Data**: `seizure` in [`company_flows.json`](../../research/2026-10/gaps/company_flows.json): asset value lost by the
   foreign owner minus anything received abroad, in the year control was lost, by the company's home country. Cases:
@@ -126,11 +126,11 @@ The country did not choose to move that money; Russia took it. So:
 - **Totals:** neither is in the net shift or in either headline number (support for Ukraine; change in payments to
   Russia). This reverses round 5, which counted forced discounts and exit fees, and round 14 (audit M4), which counted
   seizures.
-- **Cost view:** both count as a cost carried, like the energy switching cost: "Seized by Russia (companies' assets)"
+- **Cost view:** both count in the cost to the country, like the energy switching cost: "Seized by Russia (companies' assets)"
   and "Forced sales: discount and exit fee taken by Russia", positive (`taken` in `data.json`, by home country, with the
   same values, ranges and certainty letters as before).
 - **Shown apart:** the panel says "Russia took €X from companies of this country (seizures and forced sales); not in
-  the totals, counted as a cost carried"; the table, CSV and JSON have a column marked "not in totals"; the map shows a
+  the totals, counted in the cost to the country"; the table, CSV and JSON have a column marked "not in totals"; the map shows a
   square marker (layer "Taken by Russia") where Russia took at least 0.1% of a year's GDP.
 - **Method band:** no alternative includes them (the alternatives are rebuilt with the same rule).
 - **Check:** `check_data.py` check 25 fails if a country carries `exits` or `seized` among the parts of the net, if a

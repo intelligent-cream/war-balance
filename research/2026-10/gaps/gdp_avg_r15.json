@@ -1,0 +1,3294 @@
+{
+ "generated": "2026-10-19",
+ "what": "Nominal GDP 2022-2024 in EUR bn and its average, the denominator of every % of GDP on the map since round 15 (review 4, M1). The numerator is a 2022-August 2026 total in each year's euros; one trough year (2024) as the denominator inflated economies whose currency collapsed (Nigeria, Egypt).",
+ "fx_usd_per_eur": {
+  "2022": 1.053,
+  "2023": 1.0813,
+  "2024": 1.0824
+ },
+ "raw": [
+  "research/2026-10/raw/worldbank/NY.GDP.MKTP.CD_2022_2024.json (api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD?date=2022:2024, last updated 2026-10-08, fetched 2026-10-19)",
+  "research/2026-10/raw/imf/weo_NGDPD_2024.json (imf.org/external/datamapper/api/v1/NGDPD, full series)"
+ ],
+ "kept_single_year": [
+  "ASM",
+  "CUB",
+  "ERI",
+  "GIB",
+  "GRL",
+  "GUM",
+  "IMN",
+  "MAF",
+  "MNP",
+  "PRK",
+  "SYR",
+  "VGB",
+  "VIR"
+ ],
+ "countries": {
+  "ABW": {
+   "name": "Aruba",
+   "gdp_usd_bn": {
+    "2022": 3.327,
+    "2023": 3.747,
+    "2024": 4.168
+   },
+   "gdp_eur_bn": {
+    "2022": 3.159,
+    "2023": 3.465,
+    "2024": 3.85
+   },
+   "gdp_eur_bn_avg_2022_2024": 3.491,
+   "gdp_eur_bn_2024": 3.85,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "AFG": {
+   "name": "Afghanistan",
+   "gdp_usd_bn": {
+    "2022": 14.497,
+    "2023": 17.152,
+    "2024": 17.779
+   },
+   "gdp_eur_bn": {
+    "2022": 13.768,
+    "2023": 15.863,
+    "2024": 16.425
+   },
+   "gdp_eur_bn_avg_2022_2024": 15.352,
+   "gdp_eur_bn_2024": 16.425,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "AGO": {
+   "name": "Angola",
+   "gdp_usd_bn": {
+    "2022": 128.234,
+    "2023": 106.042,
+    "2024": 103.081
+   },
+   "gdp_eur_bn": {
+    "2022": 121.78,
+    "2023": 98.069,
+    "2024": 95.233
+   },
+   "gdp_eur_bn_avg_2022_2024": 105.027,
+   "gdp_eur_bn_2024": 95.235,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ALB": {
+   "name": "Albania",
+   "gdp_usd_bn": {
+    "2022": 19.017,
+    "2023": 23.491,
+    "2024": 27.037
+   },
+   "gdp_eur_bn": {
+    "2022": 18.06,
+    "2023": 21.725,
+    "2024": 24.979
+   },
+   "gdp_eur_bn_avg_2022_2024": 21.588,
+   "gdp_eur_bn_2024": 24.98,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "AND": {
+   "name": "Andorra",
+   "gdp_usd_bn": {
+    "2022": 3.381,
+    "2023": 3.785,
+    "2024": 4.044
+   },
+   "gdp_eur_bn": {
+    "2022": 3.21,
+    "2023": 3.5,
+    "2024": 3.736
+   },
+   "gdp_eur_bn_avg_2022_2024": 3.482,
+   "gdp_eur_bn_2024": 3.736,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ARE": {
+   "name": "United Arab Emirates",
+   "gdp_usd_bn": {
+    "2022": 511.403,
+    "2023": 522.622,
+    "2024": 552.325
+   },
+   "gdp_eur_bn": {
+    "2022": 485.663,
+    "2023": 483.328,
+    "2024": 510.278
+   },
+   "gdp_eur_bn_avg_2022_2024": 493.09,
+   "gdp_eur_bn_2024": 510.287,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ARG": {
+   "name": "Argentina",
+   "gdp_usd_bn": {
+    "2022": 633.994,
+    "2023": 649.462,
+    "2024": 638.365
+   },
+   "gdp_eur_bn": {
+    "2022": 602.083,
+    "2023": 600.63,
+    "2024": 589.769
+   },
+   "gdp_eur_bn_avg_2022_2024": 597.494,
+   "gdp_eur_bn_2024": 589.779,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ARM": {
+   "name": "Armenia",
+   "gdp_usd_bn": {
+    "2022": 19.514,
+    "2023": 24.186,
+    "2024": 25.955
+   },
+   "gdp_eur_bn": {
+    "2022": 18.531,
+    "2023": 22.368,
+    "2024": 23.979
+   },
+   "gdp_eur_bn_avg_2022_2024": 21.626,
+   "gdp_eur_bn_2024": 23.98,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ATG": {
+   "name": "Antigua and Barbuda",
+   "gdp_usd_bn": {
+    "2022": 1.857,
+    "2023": 2.054,
+    "2024": 2.162
+   },
+   "gdp_eur_bn": {
+    "2022": 1.764,
+    "2023": 1.9,
+    "2024": 1.998
+   },
+   "gdp_eur_bn_avg_2022_2024": 1.887,
+   "gdp_eur_bn_2024": 1.998,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "AUS": {
+   "name": "Australia",
+   "gdp_usd_bn": {
+    "2022": 1695.628,
+    "2023": 1734.451,
+    "2024": 1757.022
+   },
+   "gdp_eur_bn": {
+    "2022": 1610.283,
+    "2023": 1604.043,
+    "2024": 1623.265
+   },
+   "gdp_eur_bn_avg_2022_2024": 1612.53,
+   "gdp_eur_bn_2024": 1623.295,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "AUT": {
+   "name": "Austria",
+   "gdp_usd_bn": {
+    "2022": 473.221,
+    "2023": 516.671,
+    "2024": 534.791
+   },
+   "gdp_eur_bn": {
+    "2022": 449.403,
+    "2023": 477.823,
+    "2024": 494.079
+   },
+   "gdp_eur_bn_avg_2022_2024": 473.768,
+   "gdp_eur_bn_2024": 494.088,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "AZE": {
+   "name": "Azerbaijan",
+   "gdp_usd_bn": {
+    "2022": 78.807,
+    "2023": 72.428,
+    "2024": 74.426
+   },
+   "gdp_eur_bn": {
+    "2022": 74.841,
+    "2023": 66.983,
+    "2024": 68.76
+   },
+   "gdp_eur_bn_avg_2022_2024": 70.195,
+   "gdp_eur_bn_2024": 68.761,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BDI": {
+   "name": "Burundi",
+   "gdp_usd_bn": {
+    "2022": 4.021,
+    "2023": 3.42,
+    "2024": 3.038
+   },
+   "gdp_eur_bn": {
+    "2022": 3.818,
+    "2023": 3.162,
+    "2024": 2.806
+   },
+   "gdp_eur_bn_avg_2022_2024": 3.262,
+   "gdp_eur_bn_2024": 2.806,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BEL": {
+   "name": "Belgium",
+   "gdp_usd_bn": {
+    "2022": 591.474,
+    "2023": 650.779,
+    "2024": 670.983
+   },
+   "gdp_eur_bn": {
+    "2022": 561.704,
+    "2023": 601.849,
+    "2024": 619.903
+   },
+   "gdp_eur_bn_avg_2022_2024": 594.485,
+   "gdp_eur_bn_2024": 619.914,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BEN": {
+   "name": "Benin",
+   "gdp_usd_bn": {
+    "2022": 17.425,
+    "2023": 19.673,
+    "2024": 21.483
+   },
+   "gdp_eur_bn": {
+    "2022": 16.548,
+    "2023": 18.194,
+    "2024": 19.847
+   },
+   "gdp_eur_bn_avg_2022_2024": 18.197,
+   "gdp_eur_bn_2024": 19.848,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BFA": {
+   "name": "Burkina Faso",
+   "gdp_usd_bn": {
+    "2022": 18.622,
+    "2023": 20.106,
+    "2024": 23.137
+   },
+   "gdp_eur_bn": {
+    "2022": 17.685,
+    "2023": 18.594,
+    "2024": 21.375
+   },
+   "gdp_eur_bn_avg_2022_2024": 19.218,
+   "gdp_eur_bn_2024": 21.376,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BGD": {
+   "name": "Bangladesh",
+   "gdp_usd_bn": {
+    "2022": 460.132,
+    "2023": 437.415,
+    "2024": 450.119
+   },
+   "gdp_eur_bn": {
+    "2022": 436.972,
+    "2023": 404.527,
+    "2024": 415.853
+   },
+   "gdp_eur_bn_avg_2022_2024": 419.118,
+   "gdp_eur_bn_2024": 415.861,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BGR": {
+   "name": "Bulgaria",
+   "gdp_usd_bn": {
+    "2022": 90.511,
+    "2023": 102.204,
+    "2024": 113.349
+   },
+   "gdp_eur_bn": {
+    "2022": 85.955,
+    "2023": 94.52,
+    "2024": 104.72
+   },
+   "gdp_eur_bn_avg_2022_2024": 95.065,
+   "gdp_eur_bn_2024": 104.722,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BHR": {
+   "name": "Bahrain",
+   "gdp_usd_bn": {
+    "2022": 46.458,
+    "2023": 46.192,
+    "2024": 47.211
+   },
+   "gdp_eur_bn": {
+    "2022": 44.12,
+    "2023": 42.719,
+    "2024": 43.617
+   },
+   "gdp_eur_bn_avg_2022_2024": 43.485,
+   "gdp_eur_bn_2024": 43.618,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BHS": {
+   "name": "Bahamas",
+   "gdp_usd_bn": {
+    "2022": 13.897,
+    "2023": 15.271,
+    "2024": 15.833
+   },
+   "gdp_eur_bn": {
+    "2022": 13.197,
+    "2023": 14.123,
+    "2024": 14.627
+   },
+   "gdp_eur_bn_avg_2022_2024": 13.983,
+   "gdp_eur_bn_2024": 14.628,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BIH": {
+   "name": "Bosnia and Herzegovina",
+   "gdp_usd_bn": {
+    "2022": 24.535,
+    "2023": 27.592,
+    "2024": 29.737
+   },
+   "gdp_eur_bn": {
+    "2022": 23.3,
+    "2023": 25.518,
+    "2024": 27.474
+   },
+   "gdp_eur_bn_avg_2022_2024": 25.43,
+   "gdp_eur_bn_2024": 27.474,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BLR": {
+   "name": "Belarus",
+   "gdp_usd_bn": {
+    "2022": 73.775,
+    "2023": 72.479,
+    "2024": 78.592
+   },
+   "gdp_eur_bn": {
+    "2022": 70.062,
+    "2023": 67.029,
+    "2024": 72.609
+   },
+   "gdp_eur_bn_avg_2022_2024": 69.9,
+   "gdp_eur_bn_2024": 72.61,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BLZ": {
+   "name": "Belize",
+   "gdp_usd_bn": {
+    "2022": 2.847,
+    "2023": 3.052,
+    "2024": 3.204
+   },
+   "gdp_eur_bn": {
+    "2022": 2.703,
+    "2023": 2.823,
+    "2024": 2.96
+   },
+   "gdp_eur_bn_avg_2022_2024": 2.829,
+   "gdp_eur_bn_2024": 2.96,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BMU": {
+   "name": "Bermuda",
+   "gdp_usd_bn": {
+    "2022": 7.768,
+    "2023": 8.602,
+    "2024": 9.194
+   },
+   "gdp_eur_bn": {
+    "2022": 7.377,
+    "2023": 7.956,
+    "2024": 8.495
+   },
+   "gdp_eur_bn_avg_2022_2024": 7.942,
+   "gdp_eur_bn_2024": 8.495,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BOL": {
+   "name": "Bolivia (Plurinational State of)",
+   "gdp_usd_bn": {
+    "2022": 50.959,
+    "2023": 52.34,
+    "2024": 54.881
+   },
+   "gdp_eur_bn": {
+    "2022": 48.394,
+    "2023": 48.405,
+    "2024": 50.703
+   },
+   "gdp_eur_bn_avg_2022_2024": 49.167,
+   "gdp_eur_bn_2024": 50.704,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BRA": {
+   "name": "Brazil",
+   "gdp_usd_bn": {
+    "2022": 1951.924,
+    "2023": 2191.132,
+    "2024": 2185.822
+   },
+   "gdp_eur_bn": {
+    "2022": 1853.679,
+    "2023": 2026.387,
+    "2024": 2019.421
+   },
+   "gdp_eur_bn_avg_2022_2024": 1966.496,
+   "gdp_eur_bn_2024": 2019.458,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BRB": {
+   "name": "Barbados",
+   "gdp_usd_bn": {
+    "2022": 6.887,
+    "2023": 7.223,
+    "2024": 7.598
+   },
+   "gdp_eur_bn": {
+    "2022": 6.54,
+    "2023": 6.68,
+    "2024": 7.019
+   },
+   "gdp_eur_bn_avg_2022_2024": 6.746,
+   "gdp_eur_bn_2024": 7.019,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BRN": {
+   "name": "Brunei Darussalam",
+   "gdp_usd_bn": {
+    "2022": 16.682,
+    "2023": 15.095,
+    "2024": 15.341
+   },
+   "gdp_eur_bn": {
+    "2022": 15.842,
+    "2023": 13.96,
+    "2024": 14.173
+   },
+   "gdp_eur_bn_avg_2022_2024": 14.658,
+   "gdp_eur_bn_2024": 14.173,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BTN": {
+   "name": "Bhutan",
+   "gdp_usd_bn": {
+    "2022": 2.898,
+    "2023": 3.013,
+    "2024": 3.347
+   },
+   "gdp_eur_bn": {
+    "2022": 2.752,
+    "2023": 2.786,
+    "2024": 3.092
+   },
+   "gdp_eur_bn_avg_2022_2024": 2.877,
+   "gdp_eur_bn_2024": 3.092,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "BWA": {
+   "name": "Botswana",
+   "gdp_usd_bn": {
+    "2022": 20.321,
+    "2023": 19.414,
+    "2024": 19.286
+   },
+   "gdp_eur_bn": {
+    "2022": 19.298,
+    "2023": 17.954,
+    "2024": 17.818
+   },
+   "gdp_eur_bn_avg_2022_2024": 18.357,
+   "gdp_eur_bn_2024": 17.818,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "CAF": {
+   "name": "Central African Republic",
+   "gdp_usd_bn": {
+    "2022": 2.383,
+    "2023": 2.555,
+    "2024": 2.751
+   },
+   "gdp_eur_bn": {
+    "2022": 2.263,
+    "2023": 2.363,
+    "2024": 2.542
+   },
+   "gdp_eur_bn_avg_2022_2024": 2.389,
+   "gdp_eur_bn_2024": 2.542,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "CAN": {
+   "name": "Canada",
+   "gdp_usd_bn": {
+    "2022": 2200.563,
+    "2023": 2196.594,
+    "2024": 2270.076
+   },
+   "gdp_eur_bn": {
+    "2022": 2089.803,
+    "2023": 2031.438,
+    "2024": 2097.262
+   },
+   "gdp_eur_bn_avg_2022_2024": 2072.834,
+   "gdp_eur_bn_2024": 2097.3,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "CHE": {
+   "name": "Switzerland",
+   "gdp_usd_bn": {
+    "2022": 858.479,
+    "2023": 928.435,
+    "2024": 969.92
+   },
+   "gdp_eur_bn": {
+    "2022": 815.27,
+    "2023": 858.629,
+    "2024": 896.083
+   },
+   "gdp_eur_bn_avg_2022_2024": 856.66,
+   "gdp_eur_bn_2024": 896.099,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "CHL": {
+   "name": "Chile",
+   "gdp_usd_bn": {
+    "2022": 301.099,
+    "2023": 335.803,
+    "2024": 329.261
+   },
+   "gdp_eur_bn": {
+    "2022": 285.944,
+    "2023": 310.555,
+    "2024": 304.195
+   },
+   "gdp_eur_bn_avg_2022_2024": 300.231,
+   "gdp_eur_bn_2024": 304.2,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "CHN": {
+   "name": "China",
+   "gdp_usd_bn": {
+    "2022": 18316.765,
+    "2023": 18270.357,
+    "2024": 18729.668
+   },
+   "gdp_eur_bn": {
+    "2022": 17394.839,
+    "2023": 16896.658,
+    "2024": 17303.833
+   },
+   "gdp_eur_bn_avg_2022_2024": 17198.443,
+   "gdp_eur_bn_2024": 17304.145,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "CIV": {
+   "name": "Côte d’Ivoire",
+   "gdp_usd_bn": {
+    "2022": 70.923,
+    "2023": 80.78,
+    "2024": 87.113
+   },
+   "gdp_eur_bn": {
+    "2022": 67.353,
+    "2023": 74.707,
+    "2024": 80.482
+   },
+   "gdp_eur_bn_avg_2022_2024": 74.18,
+   "gdp_eur_bn_2024": 80.483,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "CMR": {
+   "name": "Cameroon",
+   "gdp_usd_bn": {
+    "2022": 44.347,
+    "2023": 48.815,
+    "2024": 53.297
+   },
+   "gdp_eur_bn": {
+    "2022": 42.115,
+    "2023": 45.144,
+    "2024": 49.239
+   },
+   "gdp_eur_bn_avg_2022_2024": 45.5,
+   "gdp_eur_bn_2024": 49.24,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "COD": {
+   "name": "Democratic Republic of the Congo",
+   "gdp_usd_bn": {
+    "2022": 70.422,
+    "2023": 69.844,
+    "2024": 75.716
+   },
+   "gdp_eur_bn": {
+    "2022": 66.878,
+    "2023": 64.592,
+    "2024": 69.952
+   },
+   "gdp_eur_bn_avg_2022_2024": 67.141,
+   "gdp_eur_bn_2024": 69.953,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "COG": {
+   "name": "Congo",
+   "gdp_usd_bn": {
+    "2022": 15.817,
+    "2023": 15.321,
+    "2024": 15.72
+   },
+   "gdp_eur_bn": {
+    "2022": 15.021,
+    "2023": 14.169,
+    "2024": 14.523
+   },
+   "gdp_eur_bn_avg_2022_2024": 14.571,
+   "gdp_eur_bn_2024": 14.524,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "COL": {
+   "name": "Colombia",
+   "gdp_usd_bn": {
+    "2022": 345.632,
+    "2023": 366.902,
+    "2024": 420.504
+   },
+   "gdp_eur_bn": {
+    "2022": 328.236,
+    "2023": 339.315,
+    "2024": 388.492
+   },
+   "gdp_eur_bn_avg_2022_2024": 352.015,
+   "gdp_eur_bn_2024": 388.499,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "COM": {
+   "name": "Comoros",
+   "gdp_usd_bn": {
+    "2022": 1.28,
+    "2023": 1.466,
+    "2024": 1.61
+   },
+   "gdp_eur_bn": {
+    "2022": 1.215,
+    "2023": 1.356,
+    "2024": 1.488
+   },
+   "gdp_eur_bn_avg_2022_2024": 1.353,
+   "gdp_eur_bn_2024": 1.488,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "CPV": {
+   "name": "Cabo Verde",
+   "gdp_usd_bn": {
+    "2022": 2.247,
+    "2023": 2.505,
+    "2024": 2.714
+   },
+   "gdp_eur_bn": {
+    "2022": 2.134,
+    "2023": 2.316,
+    "2024": 2.507
+   },
+   "gdp_eur_bn_avg_2022_2024": 2.319,
+   "gdp_eur_bn_2024": 2.507,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "CRI": {
+   "name": "Costa Rica",
+   "gdp_usd_bn": {
+    "2022": 71.001,
+    "2023": 87.513,
+    "2024": 96.716
+   },
+   "gdp_eur_bn": {
+    "2022": 67.428,
+    "2023": 80.933,
+    "2024": 89.353
+   },
+   "gdp_eur_bn_avg_2022_2024": 79.238,
+   "gdp_eur_bn_2024": 89.355,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "CUW": {
+   "name": "Curaçao",
+   "gdp_usd_bn": {
+    "2022": 3.075,
+    "2023": 3.281,
+    "2024": 3.561
+   },
+   "gdp_eur_bn": {
+    "2022": 2.92,
+    "2023": 3.035,
+    "2024": 3.29
+   },
+   "gdp_eur_bn_avg_2022_2024": 3.082,
+   "gdp_eur_bn_2024": 3.29,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "CYM": {
+   "name": "Cayman Islands",
+   "gdp_usd_bn": {
+    "2022": 6.654,
+    "2023": 7.309,
+    "2024": 7.765
+   },
+   "gdp_eur_bn": {
+    "2022": 6.319,
+    "2023": 6.759,
+    "2024": 7.174
+   },
+   "gdp_eur_bn_avg_2022_2024": 6.751,
+   "gdp_eur_bn_2024": 7.174,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "CYP": {
+   "name": "Cyprus",
+   "gdp_usd_bn": {
+    "2022": 31.218,
+    "2023": 35.075,
+    "2024": 37.635
+   },
+   "gdp_eur_bn": {
+    "2022": 29.647,
+    "2023": 32.438,
+    "2024": 34.77
+   },
+   "gdp_eur_bn_avg_2022_2024": 32.285,
+   "gdp_eur_bn_2024": 34.77,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "CZE": {
+   "name": "Czechia",
+   "gdp_usd_bn": {
+    "2022": 301.831,
+    "2023": 345.059,
+    "2024": 347.083
+   },
+   "gdp_eur_bn": {
+    "2022": 286.639,
+    "2023": 319.115,
+    "2024": 320.66
+   },
+   "gdp_eur_bn_avg_2022_2024": 308.805,
+   "gdp_eur_bn_2024": 320.666,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "DEU": {
+   "name": "Germany",
+   "gdp_usd_bn": {
+    "2022": 4201.022,
+    "2023": 4562.208,
+    "2024": 4685.593
+   },
+   "gdp_eur_bn": {
+    "2022": 3989.574,
+    "2023": 4219.188,
+    "2024": 4328.892
+   },
+   "gdp_eur_bn_avg_2022_2024": 4179.218,
+   "gdp_eur_bn_2024": 4328.97,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "DJI": {
+   "name": "Djibouti",
+   "gdp_usd_bn": {
+    "2022": 3.563,
+    "2023": 3.898,
+    "2024": 4.152
+   },
+   "gdp_eur_bn": {
+    "2022": 3.383,
+    "2023": 3.605,
+    "2024": 3.836
+   },
+   "gdp_eur_bn_avg_2022_2024": 3.608,
+   "gdp_eur_bn_2024": 3.836,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "DMA": {
+   "name": "Dominica",
+   "gdp_usd_bn": {
+    "2022": 0.623,
+    "2023": 0.659,
+    "2024": 0.689
+   },
+   "gdp_eur_bn": {
+    "2022": 0.592,
+    "2023": 0.61,
+    "2024": 0.636
+   },
+   "gdp_eur_bn_avg_2022_2024": 0.613,
+   "gdp_eur_bn_2024": 0.636,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "DNK": {
+   "name": "Denmark",
+   "gdp_usd_bn": {
+    "2022": 400.114,
+    "2023": 404.652,
+    "2024": 424.525
+   },
+   "gdp_eur_bn": {
+    "2022": 379.976,
+    "2023": 374.227,
+    "2024": 392.207
+   },
+   "gdp_eur_bn_avg_2022_2024": 382.137,
+   "gdp_eur_bn_2024": 392.214,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "DOM": {
+   "name": "Dominican Republic",
+   "gdp_usd_bn": {
+    "2022": 113.478,
+    "2023": 120.456,
+    "2024": 124.282
+   },
+   "gdp_eur_bn": {
+    "2022": 107.766,
+    "2023": 111.399,
+    "2024": 114.821
+   },
+   "gdp_eur_bn_avg_2022_2024": 111.329,
+   "gdp_eur_bn_2024": 114.823,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "DZA": {
+   "name": "Algeria",
+   "gdp_usd_bn": {
+    "2022": 225.582,
+    "2023": 247.924,
+    "2024": 269.322
+   },
+   "gdp_eur_bn": {
+    "2022": 214.228,
+    "2023": 229.283,
+    "2024": 248.82
+   },
+   "gdp_eur_bn_avg_2022_2024": 230.777,
+   "gdp_eur_bn_2024": 248.824,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ECU": {
+   "name": "Ecuador",
+   "gdp_usd_bn": {
+    "2022": 116.133,
+    "2023": 120.793,
+    "2024": 123.802
+   },
+   "gdp_eur_bn": {
+    "2022": 110.288,
+    "2023": 111.711,
+    "2024": 114.378
+   },
+   "gdp_eur_bn_avg_2022_2024": 112.125,
+   "gdp_eur_bn_2024": 114.38,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "EGY": {
+   "name": "Egypt",
+   "gdp_usd_bn": {
+    "2022": 476.748,
+    "2023": 395.926,
+    "2024": 389.06
+   },
+   "gdp_eur_bn": {
+    "2022": 452.752,
+    "2023": 366.157,
+    "2024": 359.442
+   },
+   "gdp_eur_bn_avg_2022_2024": 392.784,
+   "gdp_eur_bn_2024": 359.448,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ESP": {
+   "name": "Spain",
+   "gdp_usd_bn": {
+    "2022": 1448.851,
+    "2023": 1619.482,
+    "2024": 1725.672
+   },
+   "gdp_eur_bn": {
+    "2022": 1375.927,
+    "2023": 1497.718,
+    "2024": 1594.301
+   },
+   "gdp_eur_bn_avg_2022_2024": 1489.315,
+   "gdp_eur_bn_2024": 1594.33,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "EST": {
+   "name": "Estonia",
+   "gdp_usd_bn": {
+    "2022": 38.227,
+    "2023": 41.47,
+    "2024": 43.13
+   },
+   "gdp_eur_bn": {
+    "2022": 36.303,
+    "2023": 38.352,
+    "2024": 39.847
+   },
+   "gdp_eur_bn_avg_2022_2024": 38.167,
+   "gdp_eur_bn_2024": 39.848,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ETH": {
+   "name": "Ethiopia",
+   "gdp_usd_bn": {
+    "2022": 123.14,
+    "2023": 135.874,
+    "2024": 149.74
+   },
+   "gdp_eur_bn": {
+    "2022": 116.942,
+    "2023": 125.658,
+    "2024": 138.341
+   },
+   "gdp_eur_bn_avg_2022_2024": 126.98,
+   "gdp_eur_bn_2024": 138.343,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "FIN": {
+   "name": "Finland",
+   "gdp_usd_bn": {
+    "2022": 280.253,
+    "2023": 295.192,
+    "2024": 298.729
+   },
+   "gdp_eur_bn": {
+    "2022": 266.147,
+    "2023": 272.997,
+    "2024": 275.988
+   },
+   "gdp_eur_bn_avg_2022_2024": 271.711,
+   "gdp_eur_bn_2024": 275.993,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "FJI": {
+   "name": "Fiji",
+   "gdp_usd_bn": {
+    "2022": 4.978,
+    "2023": 5.477,
+    "2024": 5.968
+   },
+   "gdp_eur_bn": {
+    "2022": 4.727,
+    "2023": 5.065,
+    "2024": 5.514
+   },
+   "gdp_eur_bn_avg_2022_2024": 5.102,
+   "gdp_eur_bn_2024": 5.514,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "FRA": {
+   "name": "France",
+   "gdp_usd_bn": {
+    "2022": 2794.788,
+    "2023": 3056.251,
+    "2024": 3160.443
+   },
+   "gdp_eur_bn": {
+    "2022": 2654.12,
+    "2023": 2826.459,
+    "2024": 2919.847
+   },
+   "gdp_eur_bn_avg_2022_2024": 2800.142,
+   "gdp_eur_bn_2024": 2919.9,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "FRO": {
+   "name": "Faroe Islands",
+   "gdp_usd_bn": {
+    "2022": 3.615,
+    "2023": 3.943,
+    "2024": 4.053
+   },
+   "gdp_eur_bn": {
+    "2022": 3.433,
+    "2023": 3.647,
+    "2024": 3.744
+   },
+   "gdp_eur_bn_avg_2022_2024": 3.608,
+   "gdp_eur_bn_2024": 3.744,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "FSM": {
+   "name": "Micronesia (Federated States of)",
+   "gdp_usd_bn": {
+    "2022": 0.415,
+    "2023": 0.443,
+    "2024": 0.481
+   },
+   "gdp_eur_bn": {
+    "2022": 0.394,
+    "2023": 0.41,
+    "2024": 0.444
+   },
+   "gdp_eur_bn_avg_2022_2024": 0.416,
+   "gdp_eur_bn_2024": 0.445,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "GAB": {
+   "name": "Gabon",
+   "gdp_usd_bn": {
+    "2022": 20.441,
+    "2023": 19.388,
+    "2024": 20.896
+   },
+   "gdp_eur_bn": {
+    "2022": 19.412,
+    "2023": 17.931,
+    "2024": 19.305
+   },
+   "gdp_eur_bn_avg_2022_2024": 18.882,
+   "gdp_eur_bn_2024": 19.305,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "GBR": {
+   "name": "United Kingdom of Great Britain and Northern Ireland",
+   "gdp_usd_bn": {
+    "2022": 3181.244,
+    "2023": 3420.797,
+    "2024": 3695.54
+   },
+   "gdp_eur_bn": {
+    "2022": 3021.125,
+    "2023": 3163.596,
+    "2024": 3414.209
+   },
+   "gdp_eur_bn_avg_2022_2024": 3199.643,
+   "gdp_eur_bn_2024": 3414.27,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "GEO": {
+   "name": "Georgia",
+   "gdp_usd_bn": {
+    "2022": 24.985,
+    "2023": 30.778,
+    "2024": 34.189
+   },
+   "gdp_eur_bn": {
+    "2022": 23.727,
+    "2023": 28.464,
+    "2024": 31.587
+   },
+   "gdp_eur_bn_avg_2022_2024": 27.926,
+   "gdp_eur_bn_2024": 31.587,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "GHA": {
+   "name": "Ghana",
+   "gdp_usd_bn": {
+    "2022": 73.919,
+    "2023": 80.547,
+    "2024": 83.289
+   },
+   "gdp_eur_bn": {
+    "2022": 70.198,
+    "2023": 74.491,
+    "2024": 76.948
+   },
+   "gdp_eur_bn_avg_2022_2024": 73.879,
+   "gdp_eur_bn_2024": 76.949,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "GIN": {
+   "name": "Guinea",
+   "gdp_usd_bn": {
+    "2022": 19.91,
+    "2023": 22.408,
+    "2024": 25.009
+   },
+   "gdp_eur_bn": {
+    "2022": 18.908,
+    "2023": 20.723,
+    "2024": 23.105
+   },
+   "gdp_eur_bn_avg_2022_2024": 20.912,
+   "gdp_eur_bn_2024": 23.105,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "GMB": {
+   "name": "Gambia",
+   "gdp_usd_bn": {
+    "2022": 2.205,
+    "2023": 2.382,
+    "2024": 2.405
+   },
+   "gdp_eur_bn": {
+    "2022": 2.094,
+    "2023": 2.203,
+    "2024": 2.222
+   },
+   "gdp_eur_bn_avg_2022_2024": 2.173,
+   "gdp_eur_bn_2024": 2.222,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "GNB": {
+   "name": "Guinea-Bissau",
+   "gdp_usd_bn": {
+    "2022": 1.856,
+    "2023": 2.077,
+    "2024": 2.198
+   },
+   "gdp_eur_bn": {
+    "2022": 1.763,
+    "2023": 1.921,
+    "2024": 2.03
+   },
+   "gdp_eur_bn_avg_2022_2024": 1.905,
+   "gdp_eur_bn_2024": 2.031,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "GNQ": {
+   "name": "Equatorial Guinea",
+   "gdp_usd_bn": {
+    "2022": 13.688,
+    "2023": 12.542,
+    "2024": 13.254
+   },
+   "gdp_eur_bn": {
+    "2022": 12.999,
+    "2023": 11.599,
+    "2024": 12.245
+   },
+   "gdp_eur_bn_avg_2022_2024": 12.281,
+   "gdp_eur_bn_2024": 12.246,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "GRC": {
+   "name": "Greece",
+   "gdp_usd_bn": {
+    "2022": 217.99,
+    "2023": 242.946,
+    "2024": 256.238
+   },
+   "gdp_eur_bn": {
+    "2022": 207.018,
+    "2023": 224.68,
+    "2024": 236.732
+   },
+   "gdp_eur_bn_avg_2022_2024": 222.81,
+   "gdp_eur_bn_2024": 236.736,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "GRD": {
+   "name": "Grenada",
+   "gdp_usd_bn": {
+    "2022": 1.224,
+    "2023": 1.336,
+    "2024": 1.351
+   },
+   "gdp_eur_bn": {
+    "2022": 1.162,
+    "2023": 1.236,
+    "2024": 1.248
+   },
+   "gdp_eur_bn_avg_2022_2024": 1.216,
+   "gdp_eur_bn_2024": 1.248,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "GTM": {
+   "name": "Guatemala",
+   "gdp_usd_bn": {
+    "2022": 95.61,
+    "2023": 104.298,
+    "2024": 113.216
+   },
+   "gdp_eur_bn": {
+    "2022": 90.797,
+    "2023": 96.456,
+    "2024": 104.597
+   },
+   "gdp_eur_bn_avg_2022_2024": 97.283,
+   "gdp_eur_bn_2024": 104.599,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "GUY": {
+   "name": "Guyana",
+   "gdp_usd_bn": {
+    "2022": 14.718,
+    "2023": 16.919,
+    "2024": 24.663
+   },
+   "gdp_eur_bn": {
+    "2022": 13.978,
+    "2023": 15.646,
+    "2024": 22.785
+   },
+   "gdp_eur_bn_avg_2022_2024": 17.47,
+   "gdp_eur_bn_2024": 22.786,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "HKG": {
+   "name": "China, Hong Kong Special Administrative Region",
+   "gdp_usd_bn": {
+    "2022": 358.674,
+    "2023": 380.762,
+    "2024": 408.369
+   },
+   "gdp_eur_bn": {
+    "2022": 340.621,
+    "2023": 352.134,
+    "2024": 377.281
+   },
+   "gdp_eur_bn_avg_2022_2024": 356.678,
+   "gdp_eur_bn_2024": 377.288,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "HND": {
+   "name": "Honduras",
+   "gdp_usd_bn": {
+    "2022": 31.426,
+    "2023": 34.356,
+    "2024": 36.98
+   },
+   "gdp_eur_bn": {
+    "2022": 29.844,
+    "2023": 31.773,
+    "2024": 34.165
+   },
+   "gdp_eur_bn_avg_2022_2024": 31.927,
+   "gdp_eur_bn_2024": 34.166,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "HRV": {
+   "name": "Croatia",
+   "gdp_usd_bn": {
+    "2022": 71.196,
+    "2023": 85.621,
+    "2024": 92.982
+   },
+   "gdp_eur_bn": {
+    "2022": 67.613,
+    "2023": 79.184,
+    "2024": 85.903
+   },
+   "gdp_eur_bn_avg_2022_2024": 77.567,
+   "gdp_eur_bn_2024": 85.905,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "HTI": {
+   "name": "Haiti",
+   "gdp_usd_bn": {
+    "2022": 20.113,
+    "2023": 19.572,
+    "2024": 24.256
+   },
+   "gdp_eur_bn": {
+    "2022": 19.101,
+    "2023": 18.101,
+    "2024": 22.409
+   },
+   "gdp_eur_bn_avg_2022_2024": 19.87,
+   "gdp_eur_bn_2024": 22.41,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "HUN": {
+   "name": "Hungary",
+   "gdp_usd_bn": {
+    "2022": 177.003,
+    "2023": 213.03,
+    "2024": 222.848
+   },
+   "gdp_eur_bn": {
+    "2022": 168.094,
+    "2023": 197.012,
+    "2024": 205.883
+   },
+   "gdp_eur_bn_avg_2022_2024": 190.33,
+   "gdp_eur_bn_2024": 205.887,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "IDN": {
+   "name": "Indonesia",
+   "gdp_usd_bn": {
+    "2022": 1319.101,
+    "2023": 1371.167,
+    "2024": 1396.302
+   },
+   "gdp_eur_bn": {
+    "2022": 1252.708,
+    "2023": 1268.073,
+    "2024": 1290.005
+   },
+   "gdp_eur_bn_avg_2022_2024": 1270.262,
+   "gdp_eur_bn_2024": 1290.029,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "IND": {
+   "name": "India",
+   "gdp_usd_bn": {
+    "2022": 3249.938,
+    "2023": 3500.906,
+    "2024": 3760.813
+   },
+   "gdp_eur_bn": {
+    "2022": 3086.361,
+    "2023": 3237.682,
+    "2024": 3474.514
+   },
+   "gdp_eur_bn_avg_2022_2024": 3266.186,
+   "gdp_eur_bn_2024": 3474.576,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "IRL": {
+   "name": "Ireland",
+   "gdp_usd_bn": {
+    "2022": 548.342,
+    "2023": 567.373,
+    "2024": 609.157
+   },
+   "gdp_eur_bn": {
+    "2022": 520.742,
+    "2023": 524.714,
+    "2024": 562.784
+   },
+   "gdp_eur_bn_avg_2022_2024": 536.08,
+   "gdp_eur_bn_2024": 562.794,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "IRN": {
+   "name": "Iran (Islamic Republic of)",
+   "gdp_usd_bn": {
+    "2022": 422.662,
+    "2023": 457.51,
+    "2024": 475.252
+   },
+   "gdp_eur_bn": {
+    "2022": 401.389,
+    "2023": 423.112,
+    "2024": 439.073
+   },
+   "gdp_eur_bn_avg_2022_2024": 421.191,
+   "gdp_eur_bn_2024": 439.08,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "IRQ": {
+   "name": "Iraq",
+   "gdp_usd_bn": {
+    "2022": 287.372,
+    "2023": 268.881,
+    "2024": 279.641
+   },
+   "gdp_eur_bn": {
+    "2022": 272.908,
+    "2023": 248.665,
+    "2024": 258.353
+   },
+   "gdp_eur_bn_avg_2022_2024": 259.975,
+   "gdp_eur_bn_2024": 258.358,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ISL": {
+   "name": "Iceland",
+   "gdp_usd_bn": {
+    "2022": 29.176,
+    "2023": 31.702,
+    "2024": 33.187
+   },
+   "gdp_eur_bn": {
+    "2022": 27.708,
+    "2023": 29.318,
+    "2024": 30.66
+   },
+   "gdp_eur_bn_avg_2022_2024": 29.229,
+   "gdp_eur_bn_2024": 30.661,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ISR": {
+   "name": "Israel",
+   "gdp_usd_bn": {
+    "2022": 525.158,
+    "2023": 513.393,
+    "2024": 542.284
+   },
+   "gdp_eur_bn": {
+    "2022": 498.725,
+    "2023": 474.793,
+    "2024": 501.002
+   },
+   "gdp_eur_bn_avg_2022_2024": 491.507,
+   "gdp_eur_bn_2024": 501.011,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ITA": {
+   "name": "Italy",
+   "gdp_usd_bn": {
+    "2022": 2104.068,
+    "2023": 2316.882,
+    "2024": 2383.436
+   },
+   "gdp_eur_bn": {
+    "2022": 1998.165,
+    "2023": 2142.682,
+    "2024": 2201.991
+   },
+   "gdp_eur_bn_avg_2022_2024": 2114.28,
+   "gdp_eur_bn_2024": 2202.031,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "JAM": {
+   "name": "Jamaica",
+   "gdp_usd_bn": {
+    "2022": 18.814,
+    "2023": 21.419,
+    "2024": 22.014
+   },
+   "gdp_eur_bn": {
+    "2022": 17.867,
+    "2023": 19.808,
+    "2024": 20.339
+   },
+   "gdp_eur_bn_avg_2022_2024": 19.338,
+   "gdp_eur_bn_2024": 20.339,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "JOR": {
+   "name": "Jordan",
+   "gdp_usd_bn": {
+    "2022": 53.517,
+    "2023": 56.123,
+    "2024": 58.618
+   },
+   "gdp_eur_bn": {
+    "2022": 50.823,
+    "2023": 51.904,
+    "2024": 54.156
+   },
+   "gdp_eur_bn_avg_2022_2024": 52.294,
+   "gdp_eur_bn_2024": 54.157,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "JPN": {
+   "name": "Japan",
+   "gdp_usd_bn": {
+    "2022": 4447.976,
+    "2023": 4384.854,
+    "2024": 4190.008
+   },
+   "gdp_eur_bn": {
+    "2022": 4224.099,
+    "2023": 4055.169,
+    "2024": 3871.035
+   },
+   "gdp_eur_bn_avg_2022_2024": 4050.101,
+   "gdp_eur_bn_2024": 3871.105,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "KAZ": {
+   "name": "Kazakhstan",
+   "gdp_usd_bn": {
+    "2022": 225.496,
+    "2023": 261.84,
+    "2024": 291.48
+   },
+   "gdp_eur_bn": {
+    "2022": 214.147,
+    "2023": 242.153,
+    "2024": 269.291
+   },
+   "gdp_eur_bn_avg_2022_2024": 241.863,
+   "gdp_eur_bn_2024": 269.296,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "KEN": {
+   "name": "Kenya",
+   "gdp_usd_bn": {
+    "2022": 114.449,
+    "2023": 107.501,
+    "2024": 120.398
+   },
+   "gdp_eur_bn": {
+    "2022": 108.688,
+    "2023": 99.418,
+    "2024": 111.232
+   },
+   "gdp_eur_bn_avg_2022_2024": 106.446,
+   "gdp_eur_bn_2024": 111.234,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "KGZ": {
+   "name": "Kyrgyzstan",
+   "gdp_usd_bn": {
+    "2022": 12.135,
+    "2023": 15.181,
+    "2024": 18.162
+   },
+   "gdp_eur_bn": {
+    "2022": 11.524,
+    "2023": 14.039,
+    "2024": 16.779
+   },
+   "gdp_eur_bn_avg_2022_2024": 14.114,
+   "gdp_eur_bn_2024": 16.779,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "KHM": {
+   "name": "Cambodia",
+   "gdp_usd_bn": {
+    "2022": 39.995,
+    "2023": 42.336,
+    "2024": 46.353
+   },
+   "gdp_eur_bn": {
+    "2022": 37.982,
+    "2023": 39.153,
+    "2024": 42.824
+   },
+   "gdp_eur_bn_avg_2022_2024": 39.986,
+   "gdp_eur_bn_2024": 42.825,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "KIR": {
+   "name": "Kiribati",
+   "gdp_usd_bn": {
+    "2022": 0.271,
+    "2023": 0.292,
+    "2024": 0.343
+   },
+   "gdp_eur_bn": {
+    "2022": 0.258,
+    "2023": 0.27,
+    "2024": 0.317
+   },
+   "gdp_eur_bn_avg_2022_2024": 0.281,
+   "gdp_eur_bn_2024": 0.317,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "KNA": {
+   "name": "Saint Kitts and Nevis",
+   "gdp_usd_bn": {
+    "2022": 0.981,
+    "2023": 1.056,
+    "2024": 1.122
+   },
+   "gdp_eur_bn": {
+    "2022": 0.932,
+    "2023": 0.976,
+    "2024": 1.037
+   },
+   "gdp_eur_bn_avg_2022_2024": 0.982,
+   "gdp_eur_bn_2024": 1.037,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "KOR": {
+   "name": "Republic of Korea",
+   "gdp_usd_bn": {
+    "2022": 1799.363,
+    "2023": 1844.801,
+    "2024": 1875.388
+   },
+   "gdp_eur_bn": {
+    "2022": 1708.797,
+    "2023": 1706.095,
+    "2024": 1732.62
+   },
+   "gdp_eur_bn_avg_2022_2024": 1715.838,
+   "gdp_eur_bn_2024": 1732.652,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "KWT": {
+   "name": "Kuwait",
+   "gdp_usd_bn": {
+    "2022": 183.502,
+    "2023": 165.463,
+    "2024": 160.903
+   },
+   "gdp_eur_bn": {
+    "2022": 174.266,
+    "2023": 153.022,
+    "2024": 148.654
+   },
+   "gdp_eur_bn_avg_2022_2024": 158.647,
+   "gdp_eur_bn_2024": 148.657,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "LAO": {
+   "name": "Lao People's Democratic Republic",
+   "gdp_usd_bn": {
+    "2022": 15.469,
+    "2023": 15.843,
+    "2024": 16.503
+   },
+   "gdp_eur_bn": {
+    "2022": 14.69,
+    "2023": 14.652,
+    "2024": 15.247
+   },
+   "gdp_eur_bn_avg_2022_2024": 14.863,
+   "gdp_eur_bn_2024": 15.247,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "LBN": {
+   "name": "Lebanon",
+   "gdp_usd_bn": {
+    "2022": 20.992,
+    "2023": 20.079,
+    "2024": 25.972
+   },
+   "gdp_eur_bn": {
+    "2022": 19.936,
+    "2023": 18.569,
+    "2024": 23.994
+   },
+   "gdp_eur_bn_avg_2022_2024": 20.833,
+   "gdp_eur_bn_2024": 23.995,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "LBR": {
+   "name": "Liberia",
+   "gdp_usd_bn": {
+    "2022": 4.001,
+    "2023": 4.39,
+    "2024": 4.779
+   },
+   "gdp_eur_bn": {
+    "2022": 3.8,
+    "2023": 4.06,
+    "2024": 4.415
+   },
+   "gdp_eur_bn_avg_2022_2024": 4.092,
+   "gdp_eur_bn_2024": 4.416,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "LBY": {
+   "name": "Libya",
+   "gdp_usd_bn": {
+    "2022": 43.246,
+    "2023": 44.028,
+    "2024": 48.487
+   },
+   "gdp_eur_bn": {
+    "2022": 41.07,
+    "2023": 40.717,
+    "2024": 44.796
+   },
+   "gdp_eur_bn_avg_2022_2024": 42.194,
+   "gdp_eur_bn_2024": 44.797,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "LCA": {
+   "name": "Saint Lucia",
+   "gdp_usd_bn": {
+    "2022": 2.32,
+    "2023": 2.441,
+    "2024": 2.605
+   },
+   "gdp_eur_bn": {
+    "2022": 2.203,
+    "2023": 2.258,
+    "2024": 2.407
+   },
+   "gdp_eur_bn_avg_2022_2024": 2.289,
+   "gdp_eur_bn_2024": 2.407,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "LIE": {
+   "name": "Liechtenstein",
+   "gdp_usd_bn": {
+    "2022": 7.427,
+    "2023": 8.239,
+    "2024": 8.906
+   },
+   "gdp_eur_bn": {
+    "2022": 7.053,
+    "2023": 7.62,
+    "2024": 8.228
+   },
+   "gdp_eur_bn_avg_2022_2024": 7.634,
+   "gdp_eur_bn_2024": 8.228,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "LKA": {
+   "name": "Sri Lanka",
+   "gdp_usd_bn": {
+    "2022": 74.143,
+    "2023": 84.08,
+    "2024": 99.616
+   },
+   "gdp_eur_bn": {
+    "2022": 70.411,
+    "2023": 77.759,
+    "2024": 92.033
+   },
+   "gdp_eur_bn_avg_2022_2024": 80.067,
+   "gdp_eur_bn_2024": 92.034,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "LSO": {
+   "name": "Lesotho",
+   "gdp_usd_bn": {
+    "2022": 2.355,
+    "2023": 2.13,
+    "2024": 2.391
+   },
+   "gdp_eur_bn": {
+    "2022": 2.236,
+    "2023": 1.97,
+    "2024": 2.209
+   },
+   "gdp_eur_bn_avg_2022_2024": 2.138,
+   "gdp_eur_bn_2024": 2.209,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "LTU": {
+   "name": "Lithuania",
+   "gdp_usd_bn": {
+    "2022": 70.64,
+    "2023": 80.357,
+    "2024": 85.504
+   },
+   "gdp_eur_bn": {
+    "2022": 67.084,
+    "2023": 74.315,
+    "2024": 78.995
+   },
+   "gdp_eur_bn_avg_2022_2024": 73.465,
+   "gdp_eur_bn_2024": 78.996,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "LUX": {
+   "name": "Luxembourg",
+   "gdp_usd_bn": {
+    "2022": 80.802,
+    "2023": 88.789,
+    "2024": 93.28
+   },
+   "gdp_eur_bn": {
+    "2022": 76.735,
+    "2023": 82.113,
+    "2024": 86.179
+   },
+   "gdp_eur_bn_avg_2022_2024": 81.676,
+   "gdp_eur_bn_2024": 86.18,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "LVA": {
+   "name": "Latvia",
+   "gdp_usd_bn": {
+    "2022": 38.003,
+    "2023": 42.78,
+    "2024": 44.001
+   },
+   "gdp_eur_bn": {
+    "2022": 36.09,
+    "2023": 39.563,
+    "2024": 40.652
+   },
+   "gdp_eur_bn_avg_2022_2024": 38.768,
+   "gdp_eur_bn_2024": 40.652,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MAC": {
+   "name": "China, Macao Special Administrative Region",
+   "gdp_usd_bn": {
+    "2022": 24.929,
+    "2023": 45.626,
+    "2024": 49.467
+   },
+   "gdp_eur_bn": {
+    "2022": 23.675,
+    "2023": 42.196,
+    "2024": 45.701
+   },
+   "gdp_eur_bn_avg_2022_2024": 37.191,
+   "gdp_eur_bn_2024": 45.702,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MAR": {
+   "name": "Morocco",
+   "gdp_usd_bn": {
+    "2022": 131.245,
+    "2023": 146.036,
+    "2024": 160.611
+   },
+   "gdp_eur_bn": {
+    "2022": 124.639,
+    "2023": 135.056,
+    "2024": 148.384
+   },
+   "gdp_eur_bn_avg_2022_2024": 136.027,
+   "gdp_eur_bn_2024": 148.387,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MCO": {
+   "name": "Monaco",
+   "gdp_usd_bn": {
+    "2022": 8.8,
+    "2023": 10.004,
+    "2024": 11.126
+   },
+   "gdp_eur_bn": {
+    "2022": 8.357,
+    "2023": 9.252,
+    "2024": 10.279
+   },
+   "gdp_eur_bn_avg_2022_2024": 9.296,
+   "gdp_eur_bn_2024": 10.279,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MDA": {
+   "name": "Republic of Moldova",
+   "gdp_usd_bn": {
+    "2022": 14.525,
+    "2023": 16.712,
+    "2024": 18.207
+   },
+   "gdp_eur_bn": {
+    "2022": 13.794,
+    "2023": 15.455,
+    "2024": 16.821
+   },
+   "gdp_eur_bn_avg_2022_2024": 15.357,
+   "gdp_eur_bn_2024": 16.821,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MDG": {
+   "name": "Madagascar",
+   "gdp_usd_bn": {
+    "2022": 15.342,
+    "2023": 16.037,
+    "2024": 17.593
+   },
+   "gdp_eur_bn": {
+    "2022": 14.57,
+    "2023": 14.831,
+    "2024": 16.254
+   },
+   "gdp_eur_bn_avg_2022_2024": 15.218,
+   "gdp_eur_bn_2024": 16.254,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MDV": {
+   "name": "Maldives",
+   "gdp_usd_bn": {
+    "2022": 6.177,
+    "2023": 6.621,
+    "2024": 7.062
+   },
+   "gdp_eur_bn": {
+    "2022": 5.866,
+    "2023": 6.123,
+    "2024": 6.524
+   },
+   "gdp_eur_bn_avg_2022_2024": 6.171,
+   "gdp_eur_bn_2024": 6.524,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MEX": {
+   "name": "Mexico",
+   "gdp_usd_bn": {
+    "2022": 1466.935,
+    "2023": 1794.41,
+    "2024": 1830.489
+   },
+   "gdp_eur_bn": {
+    "2022": 1393.1,
+    "2023": 1659.494,
+    "2024": 1691.139
+   },
+   "gdp_eur_bn_avg_2022_2024": 1581.244,
+   "gdp_eur_bn_2024": 1691.17,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MHL": {
+   "name": "Marshall Islands",
+   "gdp_usd_bn": {
+    "2022": 0.259,
+    "2023": 0.264,
+    "2024": 0.285
+   },
+   "gdp_eur_bn": {
+    "2022": 0.246,
+    "2023": 0.244,
+    "2024": 0.263
+   },
+   "gdp_eur_bn_avg_2022_2024": 0.251,
+   "gdp_eur_bn_2024": 0.263,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MKD": {
+   "name": "North Macedonia",
+   "gdp_usd_bn": {
+    "2022": 13.932,
+    "2023": 15.855,
+    "2024": 16.952
+   },
+   "gdp_eur_bn": {
+    "2022": 13.231,
+    "2023": 14.663,
+    "2024": 15.661
+   },
+   "gdp_eur_bn_avg_2022_2024": 14.518,
+   "gdp_eur_bn_2024": 15.661,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MLI": {
+   "name": "Mali",
+   "gdp_usd_bn": {
+    "2022": 22.54,
+    "2023": 24.778,
+    "2024": 26.761
+   },
+   "gdp_eur_bn": {
+    "2022": 21.405,
+    "2023": 22.915,
+    "2024": 24.724
+   },
+   "gdp_eur_bn_avg_2022_2024": 23.015,
+   "gdp_eur_bn_2024": 24.724,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MLT": {
+   "name": "Malta",
+   "gdp_usd_bn": {
+    "2022": 18.939,
+    "2023": 22.625,
+    "2024": 25.043
+   },
+   "gdp_eur_bn": {
+    "2022": 17.986,
+    "2023": 20.924,
+    "2024": 23.136
+   },
+   "gdp_eur_bn_avg_2022_2024": 20.682,
+   "gdp_eur_bn_2024": 23.137,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MMR": {
+   "name": "Myanmar",
+   "gdp_usd_bn": {
+    "2022": 62.253,
+    "2023": 66.758,
+    "2024": 74.068
+   },
+   "gdp_eur_bn": {
+    "2022": 59.12,
+    "2023": 61.738,
+    "2024": 68.43
+   },
+   "gdp_eur_bn_avg_2022_2024": 63.096,
+   "gdp_eur_bn_2024": 68.431,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MNE": {
+   "name": "Montenegro",
+   "gdp_usd_bn": {
+    "2022": 6.26,
+    "2023": 7.643,
+    "2024": 8.274
+   },
+   "gdp_eur_bn": {
+    "2022": 5.945,
+    "2023": 7.069,
+    "2024": 7.644
+   },
+   "gdp_eur_bn_avg_2022_2024": 6.886,
+   "gdp_eur_bn_2024": 7.645,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MNG": {
+   "name": "Mongolia",
+   "gdp_usd_bn": {
+    "2022": 17.146,
+    "2023": 20.325,
+    "2024": 23.795
+   },
+   "gdp_eur_bn": {
+    "2022": 16.283,
+    "2023": 18.797,
+    "2024": 21.983
+   },
+   "gdp_eur_bn_avg_2022_2024": 19.021,
+   "gdp_eur_bn_2024": 21.984,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MOZ": {
+   "name": "Mozambique",
+   "gdp_usd_bn": {
+    "2022": 18.884,
+    "2023": 20.927,
+    "2024": 22.752
+   },
+   "gdp_eur_bn": {
+    "2022": 17.934,
+    "2023": 19.354,
+    "2024": 21.02
+   },
+   "gdp_eur_bn_avg_2022_2024": 19.436,
+   "gdp_eur_bn_2024": 21.021,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MRT": {
+   "name": "Mauritania",
+   "gdp_usd_bn": {
+    "2022": 9.562,
+    "2023": 10.688,
+    "2024": 10.879
+   },
+   "gdp_eur_bn": {
+    "2022": 9.081,
+    "2023": 9.884,
+    "2024": 10.051
+   },
+   "gdp_eur_bn_avg_2022_2024": 9.672,
+   "gdp_eur_bn_2024": 10.051,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MUS": {
+   "name": "Mauritius",
+   "gdp_usd_bn": {
+    "2022": 12.936,
+    "2023": 14.072,
+    "2024": 14.938
+   },
+   "gdp_eur_bn": {
+    "2022": 12.285,
+    "2023": 13.014,
+    "2024": 13.801
+   },
+   "gdp_eur_bn_avg_2022_2024": 13.033,
+   "gdp_eur_bn_2024": 13.801,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MWI": {
+   "name": "Malawi",
+   "gdp_usd_bn": {
+    "2022": 12.429,
+    "2023": 13.364,
+    "2024": 11.312
+   },
+   "gdp_eur_bn": {
+    "2022": 11.803,
+    "2023": 12.359,
+    "2024": 10.451
+   },
+   "gdp_eur_bn_avg_2022_2024": 11.538,
+   "gdp_eur_bn_2024": 10.451,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "MYS": {
+   "name": "Malaysia",
+   "gdp_usd_bn": {
+    "2022": 407.831,
+    "2023": 399.949,
+    "2024": 422.227
+   },
+   "gdp_eur_bn": {
+    "2022": 387.303,
+    "2023": 369.878,
+    "2024": 390.084
+   },
+   "gdp_eur_bn_avg_2022_2024": 382.422,
+   "gdp_eur_bn_2024": 390.091,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "NAM": {
+   "name": "Namibia",
+   "gdp_usd_bn": {
+    "2022": 12.569,
+    "2023": 12.522,
+    "2024": 13.641
+   },
+   "gdp_eur_bn": {
+    "2022": 11.937,
+    "2023": 11.581,
+    "2024": 12.603
+   },
+   "gdp_eur_bn_avg_2022_2024": 12.04,
+   "gdp_eur_bn_2024": 12.603,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "NCL": {
+   "name": "New Caledonia",
+   "gdp_usd_bn": {
+    "2022": 9.623,
+    "2023": 9.769,
+    "2024": 8.549
+   },
+   "gdp_eur_bn": {
+    "2022": 9.139,
+    "2023": 9.035,
+    "2024": 7.898
+   },
+   "gdp_eur_bn_avg_2022_2024": 8.691,
+   "gdp_eur_bn_2024": 7.898,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "NER": {
+   "name": "Niger",
+   "gdp_usd_bn": {
+    "2022": 15.532,
+    "2023": 16.95,
+    "2024": 19.73
+   },
+   "gdp_eur_bn": {
+    "2022": 14.75,
+    "2023": 15.675,
+    "2024": 18.228
+   },
+   "gdp_eur_bn_avg_2022_2024": 16.218,
+   "gdp_eur_bn_2024": 18.228,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "NGA": {
+   "name": "Nigeria",
+   "gdp_usd_bn": {
+    "2022": 646.95,
+    "2023": 487.388,
+    "2024": 252.262
+   },
+   "gdp_eur_bn": {
+    "2022": 614.388,
+    "2023": 450.742,
+    "2024": 233.058
+   },
+   "gdp_eur_bn_avg_2022_2024": 432.729,
+   "gdp_eur_bn_2024": 233.062,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "NIC": {
+   "name": "Nicaragua",
+   "gdp_usd_bn": {
+    "2022": 15.635,
+    "2023": 17.806,
+    "2024": 19.696
+   },
+   "gdp_eur_bn": {
+    "2022": 14.848,
+    "2023": 16.467,
+    "2024": 18.197
+   },
+   "gdp_eur_bn_avg_2022_2024": 16.504,
+   "gdp_eur_bn_2024": 18.197,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "NLD": {
+   "name": "Netherlands (Kingdom of the)",
+   "gdp_usd_bn": {
+    "2022": 1046.541,
+    "2023": 1135.476,
+    "2024": 1213.936
+   },
+   "gdp_eur_bn": {
+    "2022": 993.866,
+    "2023": 1050.103,
+    "2024": 1121.523
+   },
+   "gdp_eur_bn_avg_2022_2024": 1055.164,
+   "gdp_eur_bn_2024": 1121.543,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "NOR": {
+   "name": "Norway",
+   "gdp_usd_bn": {
+    "2022": 617.322,
+    "2023": 502.198,
+    "2024": 500.886
+   },
+   "gdp_eur_bn": {
+    "2022": 586.251,
+    "2023": 464.439,
+    "2024": 462.755
+   },
+   "gdp_eur_bn_avg_2022_2024": 504.482,
+   "gdp_eur_bn_2024": 462.764,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "NPL": {
+   "name": "Nepal",
+   "gdp_usd_bn": {
+    "2022": 41.183,
+    "2023": 41.049,
+    "2024": 43.299
+   },
+   "gdp_eur_bn": {
+    "2022": 39.11,
+    "2023": 37.963,
+    "2024": 40.003
+   },
+   "gdp_eur_bn_avg_2022_2024": 39.025,
+   "gdp_eur_bn_2024": 40.003,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "NRU": {
+   "name": "Naoero",
+   "gdp_usd_bn": {
+    "2022": 0.181,
+    "2023": 0.162,
+    "2024": 0.168
+   },
+   "gdp_eur_bn": {
+    "2022": 0.172,
+    "2023": 0.149,
+    "2024": 0.155
+   },
+   "gdp_eur_bn_avg_2022_2024": 0.159,
+   "gdp_eur_bn_2024": 0.155,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "NZL": {
+   "name": "New Zealand",
+   "gdp_usd_bn": {
+    "2022": 249.723,
+    "2023": 256.372,
+    "2024": 261.497
+   },
+   "gdp_eur_bn": {
+    "2022": 237.154,
+    "2023": 237.096,
+    "2024": 241.59
+   },
+   "gdp_eur_bn_avg_2022_2024": 238.613,
+   "gdp_eur_bn_2024": 241.595,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "OMN": {
+   "name": "Oman",
+   "gdp_usd_bn": {
+    "2022": 109.853,
+    "2023": 106.175,
+    "2024": 107.137
+   },
+   "gdp_eur_bn": {
+    "2022": 104.324,
+    "2023": 98.192,
+    "2024": 98.981
+   },
+   "gdp_eur_bn_avg_2022_2024": 100.499,
+   "gdp_eur_bn_2024": 98.983,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "PAK": {
+   "name": "Pakistan",
+   "gdp_usd_bn": {
+    "2022": 374.89,
+    "2023": 336.686,
+    "2024": 371.747
+   },
+   "gdp_eur_bn": {
+    "2022": 356.021,
+    "2023": 311.372,
+    "2024": 343.447
+   },
+   "gdp_eur_bn_avg_2022_2024": 336.947,
+   "gdp_eur_bn_2024": 343.453,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "PAN": {
+   "name": "Panama",
+   "gdp_usd_bn": {
+    "2022": 76.479,
+    "2023": 83.812,
+    "2024": 86.524
+   },
+   "gdp_eur_bn": {
+    "2022": 72.63,
+    "2023": 77.511,
+    "2024": 79.937
+   },
+   "gdp_eur_bn_avg_2022_2024": 76.693,
+   "gdp_eur_bn_2024": 79.939,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "PER": {
+   "name": "Peru",
+   "gdp_usd_bn": {
+    "2022": 246.17,
+    "2023": 268.025,
+    "2024": 291.752
+   },
+   "gdp_eur_bn": {
+    "2022": 233.78,
+    "2023": 247.873,
+    "2024": 269.541
+   },
+   "gdp_eur_bn_avg_2022_2024": 250.398,
+   "gdp_eur_bn_2024": 269.546,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "PHL": {
+   "name": "Philippines",
+   "gdp_usd_bn": {
+    "2022": 404.353,
+    "2023": 437.056,
+    "2024": 461.671
+   },
+   "gdp_eur_bn": {
+    "2022": 384.001,
+    "2023": 404.195,
+    "2024": 426.525
+   },
+   "gdp_eur_bn_avg_2022_2024": 404.907,
+   "gdp_eur_bn_2024": 426.533,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "PLW": {
+   "name": "Palau",
+   "gdp_usd_bn": {
+    "2022": 0.247,
+    "2023": 0.276,
+    "2024": 0.322
+   },
+   "gdp_eur_bn": {
+    "2022": 0.235,
+    "2023": 0.255,
+    "2024": 0.297
+   },
+   "gdp_eur_bn_avg_2022_2024": 0.262,
+   "gdp_eur_bn_2024": 0.297,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "PNG": {
+   "name": "Papua New Guinea",
+   "gdp_usd_bn": {
+    "2022": 31.653,
+    "2023": 30.816,
+    "2024": 30.804
+   },
+   "gdp_eur_bn": {
+    "2022": 30.06,
+    "2023": 28.499,
+    "2024": 28.459
+   },
+   "gdp_eur_bn_avg_2022_2024": 29.006,
+   "gdp_eur_bn_2024": 28.459,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "POL": {
+   "name": "Poland",
+   "gdp_usd_bn": {
+    "2022": 695.607,
+    "2023": 812.451,
+    "2024": 917.767
+   },
+   "gdp_eur_bn": {
+    "2022": 660.596,
+    "2023": 751.365,
+    "2024": 847.9
+   },
+   "gdp_eur_bn_avg_2022_2024": 753.287,
+   "gdp_eur_bn_2024": 847.915,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "PRI": {
+   "name": "Puerto Rico",
+   "gdp_usd_bn": {
+    "2022": 113.844,
+    "2023": 118.479,
+    "2024": 126.03
+   },
+   "gdp_eur_bn": {
+    "2022": 108.114,
+    "2023": 109.571,
+    "2024": 116.435
+   },
+   "gdp_eur_bn_avg_2022_2024": 111.373,
+   "gdp_eur_bn_2024": 116.437,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "PRT": {
+   "name": "Portugal",
+   "gdp_usd_bn": {
+    "2022": 256.899,
+    "2023": 292.324,
+    "2024": 313.657
+   },
+   "gdp_eur_bn": {
+    "2022": 243.968,
+    "2023": 270.345,
+    "2024": 289.779
+   },
+   "gdp_eur_bn_avg_2022_2024": 268.031,
+   "gdp_eur_bn_2024": 289.784,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "PRY": {
+   "name": "Paraguay",
+   "gdp_usd_bn": {
+    "2022": 41.841,
+    "2023": 43.14,
+    "2024": 44.739
+   },
+   "gdp_eur_bn": {
+    "2022": 39.735,
+    "2023": 39.897,
+    "2024": 41.333
+   },
+   "gdp_eur_bn_avg_2022_2024": 40.322,
+   "gdp_eur_bn_2024": 41.334,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "PSE": {
+   "name": "State of Palestine",
+   "gdp_usd_bn": {
+    "2022": 19.166,
+    "2023": 18.635,
+    "2024": 16.017
+   },
+   "gdp_eur_bn": {
+    "2022": 18.201,
+    "2023": 17.234,
+    "2024": 14.798
+   },
+   "gdp_eur_bn_avg_2022_2024": 16.744,
+   "gdp_eur_bn_2024": 14.798,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "PYF": {
+   "name": "French Polynesia",
+   "gdp_usd_bn": {
+    "2022": 5.623,
+    "2023": 6.137,
+    "2024": 6.324
+   },
+   "gdp_eur_bn": {
+    "2022": 5.34,
+    "2023": 5.676,
+    "2024": 5.842
+   },
+   "gdp_eur_bn_avg_2022_2024": 5.619,
+   "gdp_eur_bn_2024": 5.842,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "QAT": {
+   "name": "Qatar",
+   "gdp_usd_bn": {
+    "2022": 235.709,
+    "2023": 213.003,
+    "2024": 216.295
+   },
+   "gdp_eur_bn": {
+    "2022": 223.846,
+    "2023": 196.988,
+    "2024": 199.829
+   },
+   "gdp_eur_bn_avg_2022_2024": 206.887,
+   "gdp_eur_bn_2024": 199.832,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ROU": {
+   "name": "Romania",
+   "gdp_usd_bn": {
+    "2022": 295.318,
+    "2023": 347.758,
+    "2024": 382.564
+   },
+   "gdp_eur_bn": {
+    "2022": 280.454,
+    "2023": 321.611,
+    "2024": 353.441
+   },
+   "gdp_eur_bn_avg_2022_2024": 318.502,
+   "gdp_eur_bn_2024": 353.447,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "RUS": {
+   "name": "Russian Federation",
+   "gdp_usd_bn": {
+    "2022": 2292.495,
+    "2023": 2046.285,
+    "2024": 2186.462
+   },
+   "gdp_eur_bn": {
+    "2022": 2177.108,
+    "2023": 1892.43,
+    "2024": 2020.013
+   },
+   "gdp_eur_bn_avg_2022_2024": 2029.851,
+   "gdp_eur_bn_2024": 2020.05,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "RWA": {
+   "name": "Rwanda",
+   "gdp_usd_bn": {
+    "2022": 13.747,
+    "2023": 14.807,
+    "2024": 15.111
+   },
+   "gdp_eur_bn": {
+    "2022": 13.055,
+    "2023": 13.693,
+    "2024": 13.961
+   },
+   "gdp_eur_bn_avg_2022_2024": 13.57,
+   "gdp_eur_bn_2024": 13.961,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SAU": {
+   "name": "Saudi Arabia",
+   "gdp_usd_bn": {
+    "2022": 1239.075,
+    "2023": 1218.585,
+    "2024": 1254.141
+   },
+   "gdp_eur_bn": {
+    "2022": 1176.71,
+    "2023": 1126.963,
+    "2024": 1158.667
+   },
+   "gdp_eur_bn_avg_2022_2024": 1154.113,
+   "gdp_eur_bn_2024": 1158.688,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SDN": {
+   "name": "Sudan",
+   "gdp_usd_bn": {
+    "2022": 51.667,
+    "2023": 39.898,
+    "2024": 49.672
+   },
+   "gdp_eur_bn": {
+    "2022": 49.066,
+    "2023": 36.898,
+    "2024": 45.891
+   },
+   "gdp_eur_bn_avg_2022_2024": 43.952,
+   "gdp_eur_bn_2024": 45.892,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SEN": {
+   "name": "Senegal",
+   "gdp_usd_bn": {
+    "2022": 27.783,
+    "2023": 30.696,
+    "2024": 32.17
+   },
+   "gdp_eur_bn": {
+    "2022": 26.385,
+    "2023": 28.388,
+    "2024": 29.721
+   },
+   "gdp_eur_bn_avg_2022_2024": 28.165,
+   "gdp_eur_bn_2024": 29.722,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SGP": {
+   "name": "Singapore",
+   "gdp_usd_bn": {
+    "2022": 514.253,
+    "2023": 511.182,
+    "2024": 572.877
+   },
+   "gdp_eur_bn": {
+    "2022": 488.369,
+    "2023": 472.747,
+    "2024": 529.266
+   },
+   "gdp_eur_bn_avg_2022_2024": 496.794,
+   "gdp_eur_bn_2024": 529.275,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SLB": {
+   "name": "Solomon Islands",
+   "gdp_usd_bn": {
+    "2022": 1.467,
+    "2023": 1.506,
+    "2024": 1.584
+   },
+   "gdp_eur_bn": {
+    "2022": 1.393,
+    "2023": 1.393,
+    "2024": 1.463
+   },
+   "gdp_eur_bn_avg_2022_2024": 1.416,
+   "gdp_eur_bn_2024": 1.463,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SLE": {
+   "name": "Sierra Leone",
+   "gdp_usd_bn": {
+    "2022": 7.121,
+    "2023": 6.416,
+    "2024": 6.971
+   },
+   "gdp_eur_bn": {
+    "2022": 6.763,
+    "2023": 5.933,
+    "2024": 6.44
+   },
+   "gdp_eur_bn_avg_2022_2024": 6.379,
+   "gdp_eur_bn_2024": 6.441,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SLV": {
+   "name": "El Salvador",
+   "gdp_usd_bn": {
+    "2022": 31.87,
+    "2023": 33.565,
+    "2024": 34.88
+   },
+   "gdp_eur_bn": {
+    "2022": 30.266,
+    "2023": 31.042,
+    "2024": 32.224
+   },
+   "gdp_eur_bn_avg_2022_2024": 31.177,
+   "gdp_eur_bn_2024": 32.225,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SMR": {
+   "name": "San Marino",
+   "gdp_usd_bn": {
+    "2022": 1.833,
+    "2023": 2.028,
+    "2024": 2.087
+   },
+   "gdp_eur_bn": {
+    "2022": 1.741,
+    "2023": 1.876,
+    "2024": 1.928
+   },
+   "gdp_eur_bn_avg_2022_2024": 1.848,
+   "gdp_eur_bn_2024": 1.928,
+   "source": "IMF WEO (DataMapper NGDPD), 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SOM": {
+   "name": "Somalia",
+   "gdp_usd_bn": {
+    "2022": 10.203,
+    "2023": 10.958,
+    "2024": 11.967
+   },
+   "gdp_eur_bn": {
+    "2022": 9.689,
+    "2023": 10.134,
+    "2024": 11.056
+   },
+   "gdp_eur_bn_avg_2022_2024": 10.293,
+   "gdp_eur_bn_2024": 11.056,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SRB": {
+   "name": "Serbia",
+   "gdp_usd_bn": {
+    "2022": 66.81,
+    "2023": 81.344,
+    "2024": 90.088
+   },
+   "gdp_eur_bn": {
+    "2022": 63.447,
+    "2023": 75.228,
+    "2024": 83.23
+   },
+   "gdp_eur_bn_avg_2022_2024": 73.968,
+   "gdp_eur_bn_2024": 83.232,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SSD": {
+   "name": "South Sudan",
+   "gdp_usd_bn": {
+    "2022": 7.533,
+    "2023": 7.564,
+    "2024": 4.616
+   },
+   "gdp_eur_bn": {
+    "2022": 7.154,
+    "2023": 6.995,
+    "2024": 4.265
+   },
+   "gdp_eur_bn_avg_2022_2024": 6.138,
+   "gdp_eur_bn_2024": 4.265,
+   "source": "IMF WEO (DataMapper NGDPD), 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "STP": {
+   "name": "Sao Tome and Principe",
+   "gdp_usd_bn": {
+    "2022": 0.541,
+    "2023": 0.69,
+    "2024": 0.825
+   },
+   "gdp_eur_bn": {
+    "2022": 0.514,
+    "2023": 0.639,
+    "2024": 0.762
+   },
+   "gdp_eur_bn_avg_2022_2024": 0.638,
+   "gdp_eur_bn_2024": 0.762,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SUR": {
+   "name": "Suriname",
+   "gdp_usd_bn": {
+    "2022": 3.792,
+    "2023": 3.473,
+    "2024": 4.417
+   },
+   "gdp_eur_bn": {
+    "2022": 3.601,
+    "2023": 3.212,
+    "2024": 4.081
+   },
+   "gdp_eur_bn_avg_2022_2024": 3.631,
+   "gdp_eur_bn_2024": 4.081,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SVK": {
+   "name": "Slovakia",
+   "gdp_usd_bn": {
+    "2022": 115.793,
+    "2023": 133.579,
+    "2024": 140.934
+   },
+   "gdp_eur_bn": {
+    "2022": 109.965,
+    "2023": 123.535,
+    "2024": 130.205
+   },
+   "gdp_eur_bn_avg_2022_2024": 121.235,
+   "gdp_eur_bn_2024": 130.208,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SVN": {
+   "name": "Slovenia",
+   "gdp_usd_bn": {
+    "2022": 59.899,
+    "2023": 69.255,
+    "2024": 72.972
+   },
+   "gdp_eur_bn": {
+    "2022": 56.884,
+    "2023": 64.048,
+    "2024": 67.417
+   },
+   "gdp_eur_bn_avg_2022_2024": 62.783,
+   "gdp_eur_bn_2024": 67.418,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SWE": {
+   "name": "Sweden",
+   "gdp_usd_bn": {
+    "2022": 575.071,
+    "2023": 578.991,
+    "2024": 604.827
+   },
+   "gdp_eur_bn": {
+    "2022": 546.127,
+    "2023": 535.458,
+    "2024": 558.784
+   },
+   "gdp_eur_bn_avg_2022_2024": 546.789,
+   "gdp_eur_bn_2024": 558.794,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SWZ": {
+   "name": "Eswatini",
+   "gdp_usd_bn": {
+    "2022": 4.747,
+    "2023": 4.621,
+    "2024": 4.859
+   },
+   "gdp_eur_bn": {
+    "2022": 4.508,
+    "2023": 4.274,
+    "2024": 4.489
+   },
+   "gdp_eur_bn_avg_2022_2024": 4.423,
+   "gdp_eur_bn_2024": 4.489,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SXM": {
+   "name": "Sint Maarten (Dutch part)",
+   "gdp_usd_bn": {
+    "2022": 1.593,
+    "2023": 1.687,
+    "2024": 1.798
+   },
+   "gdp_eur_bn": {
+    "2022": 1.512,
+    "2023": 1.56,
+    "2024": 1.661
+   },
+   "gdp_eur_bn_avg_2022_2024": 1.578,
+   "gdp_eur_bn_2024": 1.661,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "SYC": {
+   "name": "Seychelles",
+   "gdp_usd_bn": {
+    "2022": 2.0,
+    "2023": 2.172,
+    "2024": 2.229
+   },
+   "gdp_eur_bn": {
+    "2022": 1.899,
+    "2023": 2.008,
+    "2024": 2.059
+   },
+   "gdp_eur_bn_avg_2022_2024": 1.989,
+   "gdp_eur_bn_2024": 2.059,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "TCA": {
+   "name": "Turks and Caicos Islands",
+   "gdp_usd_bn": {
+    "2022": 1.434,
+    "2023": 1.639,
+    "2024": 1.745
+   },
+   "gdp_eur_bn": {
+    "2022": 1.362,
+    "2023": 1.515,
+    "2024": 1.613
+   },
+   "gdp_eur_bn_avg_2022_2024": 1.497,
+   "gdp_eur_bn_2024": 1.613,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "TCD": {
+   "name": "Chad",
+   "gdp_usd_bn": {
+    "2022": 17.829,
+    "2023": 18.353,
+    "2024": 19.907
+   },
+   "gdp_eur_bn": {
+    "2022": 16.931,
+    "2023": 16.973,
+    "2024": 18.391
+   },
+   "gdp_eur_bn_avg_2022_2024": 17.432,
+   "gdp_eur_bn_2024": 18.392,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "TGO": {
+   "name": "Togo",
+   "gdp_usd_bn": {
+    "2022": 8.646,
+    "2023": 9.723,
+    "2024": 10.643
+   },
+   "gdp_eur_bn": {
+    "2022": 8.211,
+    "2023": 8.992,
+    "2024": 9.833
+   },
+   "gdp_eur_bn_avg_2022_2024": 9.012,
+   "gdp_eur_bn_2024": 9.833,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "THA": {
+   "name": "Thailand",
+   "gdp_usd_bn": {
+    "2022": 495.692,
+    "2023": 517.013,
+    "2024": 529.386
+   },
+   "gdp_eur_bn": {
+    "2022": 470.742,
+    "2023": 478.141,
+    "2024": 489.085
+   },
+   "gdp_eur_bn_avg_2022_2024": 479.323,
+   "gdp_eur_bn_2024": 489.094,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "TJK": {
+   "name": "Tajikistan",
+   "gdp_usd_bn": {
+    "2022": 10.714,
+    "2023": 12.244,
+    "2024": 14.425
+   },
+   "gdp_eur_bn": {
+    "2022": 10.174,
+    "2023": 11.324,
+    "2024": 13.327
+   },
+   "gdp_eur_bn_avg_2022_2024": 11.608,
+   "gdp_eur_bn_2024": 13.327,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "TKM": {
+   "name": "Turkmenistan",
+   "gdp_usd_bn": {
+    "2022": 37.584,
+    "2023": 39.02,
+    "2024": 44.249
+   },
+   "gdp_eur_bn": {
+    "2022": 35.692,
+    "2023": 36.086,
+    "2024": 40.881
+   },
+   "gdp_eur_bn_avg_2022_2024": 37.553,
+   "gdp_eur_bn_2024": 40.882,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "TLS": {
+   "name": "Timor-Leste",
+   "gdp_usd_bn": {
+    "2022": 3.209,
+    "2023": 2.08,
+    "2024": 1.866
+   },
+   "gdp_eur_bn": {
+    "2022": 3.047,
+    "2023": 1.923,
+    "2024": 1.724
+   },
+   "gdp_eur_bn_avg_2022_2024": 2.231,
+   "gdp_eur_bn_2024": 1.724,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "TON": {
+   "name": "Tonga",
+   "gdp_usd_bn": {
+    "2022": 0.557,
+    "2023": 0.591,
+    "2024": 0.647
+   },
+   "gdp_eur_bn": {
+    "2022": 0.529,
+    "2023": 0.547,
+    "2024": 0.598
+   },
+   "gdp_eur_bn_avg_2022_2024": 0.558,
+   "gdp_eur_bn_2024": 0.598,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "TTO": {
+   "name": "Trinidad and Tobago",
+   "gdp_usd_bn": {
+    "2022": 28.341,
+    "2023": 25.037,
+    "2024": 25.634
+   },
+   "gdp_eur_bn": {
+    "2022": 26.915,
+    "2023": 23.155,
+    "2024": 23.682
+   },
+   "gdp_eur_bn_avg_2022_2024": 24.584,
+   "gdp_eur_bn_2024": 23.683,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "TUN": {
+   "name": "Tunisia",
+   "gdp_usd_bn": {
+    "2022": 44.93,
+    "2023": 48.205,
+    "2024": 51.412
+   },
+   "gdp_eur_bn": {
+    "2022": 42.668,
+    "2023": 44.581,
+    "2024": 47.498
+   },
+   "gdp_eur_bn_avg_2022_2024": 44.916,
+   "gdp_eur_bn_2024": 47.499,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "TUR": {
+   "name": "Türkiye",
+   "gdp_usd_bn": {
+    "2022": 926.097,
+    "2023": 1141.243,
+    "2024": 1359.124
+   },
+   "gdp_eur_bn": {
+    "2022": 879.485,
+    "2023": 1055.436,
+    "2024": 1255.658
+   },
+   "gdp_eur_bn_avg_2022_2024": 1063.526,
+   "gdp_eur_bn_2024": 1255.68,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "TUV": {
+   "name": "Tuvalu",
+   "gdp_usd_bn": {
+    "2022": 0.054,
+    "2023": 0.05,
+    "2024": 0.057
+   },
+   "gdp_eur_bn": {
+    "2022": 0.051,
+    "2023": 0.047,
+    "2024": 0.052
+   },
+   "gdp_eur_bn_avg_2022_2024": 0.05,
+   "gdp_eur_bn_2024": 0.052,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "TWN": {
+   "name": "Taiwan",
+   "gdp_usd_bn": {
+    "2022": 765.624,
+    "2023": 757.387,
+    "2024": 801.495
+   },
+   "gdp_eur_bn": {
+    "2022": 727.088,
+    "2023": 700.441,
+    "2024": 740.479
+   },
+   "gdp_eur_bn_avg_2022_2024": 722.67,
+   "gdp_eur_bn_2024": 740.493,
+   "source": "IMF WEO (DataMapper NGDPD), 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "TZA": {
+   "name": "United Republic of Tanzania",
+   "gdp_usd_bn": {
+    "2022": 75.749,
+    "2023": 79.031,
+    "2024": 79.236
+   },
+   "gdp_eur_bn": {
+    "2022": 71.936,
+    "2023": 73.089,
+    "2024": 73.204
+   },
+   "gdp_eur_bn_avg_2022_2024": 72.743,
+   "gdp_eur_bn_2024": 73.205,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "UGA": {
+   "name": "Uganda",
+   "gdp_usd_bn": {
+    "2022": 45.565,
+    "2023": 48.769,
+    "2024": 53.912
+   },
+   "gdp_eur_bn": {
+    "2022": 43.272,
+    "2023": 45.102,
+    "2024": 49.808
+   },
+   "gdp_eur_bn_avg_2022_2024": 46.061,
+   "gdp_eur_bn_2024": 49.809,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "UKR": {
+   "name": "Ukraine",
+   "gdp_usd_bn": {
+    "2022": 161.99,
+    "2023": 181.222,
+    "2024": 190.834
+   },
+   "gdp_eur_bn": {
+    "2022": 153.836,
+    "2023": 167.596,
+    "2024": 176.306
+   },
+   "gdp_eur_bn_avg_2022_2024": 165.913,
+   "gdp_eur_bn_2024": 176.309,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "URY": {
+   "name": "Uruguay",
+   "gdp_usd_bn": {
+    "2022": 71.241,
+    "2023": 79.209,
+    "2024": 82.323
+   },
+   "gdp_eur_bn": {
+    "2022": 67.655,
+    "2023": 73.253,
+    "2024": 76.056
+   },
+   "gdp_eur_bn_avg_2022_2024": 72.321,
+   "gdp_eur_bn_2024": 76.057,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "USA": {
+   "name": "United States of America",
+   "gdp_usd_bn": {
+    "2022": 26054.614,
+    "2023": 27811.517,
+    "2024": 29298.013
+   },
+   "gdp_eur_bn": {
+    "2022": 24743.223,
+    "2023": 25720.445,
+    "2024": 27067.64
+   },
+   "gdp_eur_bn_avg_2022_2024": 25843.769,
+   "gdp_eur_bn_2024": 27068.128,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "UZB": {
+   "name": "Uzbekistan",
+   "gdp_usd_bn": {
+    "2022": 94.286,
+    "2023": 107.527,
+    "2024": 121.356
+   },
+   "gdp_eur_bn": {
+    "2022": 89.541,
+    "2023": 99.442,
+    "2024": 112.118
+   },
+   "gdp_eur_bn_avg_2022_2024": 100.367,
+   "gdp_eur_bn_2024": 112.12,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "VCT": {
+   "name": "Saint Vincent and the Grenadines",
+   "gdp_usd_bn": {
+    "2022": 0.989,
+    "2023": 1.072,
+    "2024": 1.157
+   },
+   "gdp_eur_bn": {
+    "2022": 0.939,
+    "2023": 0.992,
+    "2024": 1.069
+   },
+   "gdp_eur_bn_avg_2022_2024": 1.0,
+   "gdp_eur_bn_2024": 1.069,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "VEN": {
+   "name": "Venezuela (Bolivarian Republic of)",
+   "gdp_usd_bn": {
+    "2022": 89.013,
+    "2023": 102.378,
+    "2024": 120.566
+   },
+   "gdp_eur_bn": {
+    "2022": 84.533,
+    "2023": 94.68,
+    "2024": 111.388
+   },
+   "gdp_eur_bn_avg_2022_2024": 96.867,
+   "gdp_eur_bn_2024": 111.39,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "VNM": {
+   "name": "Viet Nam",
+   "gdp_usd_bn": {
+    "2022": 413.445,
+    "2023": 433.805,
+    "2024": 476.325
+   },
+   "gdp_eur_bn": {
+    "2022": 392.636,
+    "2023": 401.188,
+    "2024": 440.063
+   },
+   "gdp_eur_bn_avg_2022_2024": 411.296,
+   "gdp_eur_bn_2024": 440.071,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "VUT": {
+   "name": "Vanuatu",
+   "gdp_usd_bn": {
+    "2022": 1.152,
+    "2023": 1.188,
+    "2024": 1.298
+   },
+   "gdp_eur_bn": {
+    "2022": 1.094,
+    "2023": 1.099,
+    "2024": 1.199
+   },
+   "gdp_eur_bn_avg_2022_2024": 1.131,
+   "gdp_eur_bn_2024": 1.199,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "WSM": {
+   "name": "Samoa",
+   "gdp_usd_bn": {
+    "2022": 0.89,
+    "2023": 1.045,
+    "2024": 1.176
+   },
+   "gdp_eur_bn": {
+    "2022": 0.845,
+    "2023": 0.966,
+    "2024": 1.086
+   },
+   "gdp_eur_bn_avg_2022_2024": 0.966,
+   "gdp_eur_bn_2024": 1.086,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "XKX": {
+   "name": "Kosovo",
+   "gdp_usd_bn": {
+    "2022": 9.368,
+    "2023": 10.467,
+    "2024": 11.203
+   },
+   "gdp_eur_bn": {
+    "2022": 8.896,
+    "2023": 9.68,
+    "2024": 10.35
+   },
+   "gdp_eur_bn_avg_2022_2024": 9.642,
+   "gdp_eur_bn_2024": 10.35,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "YEM": {
+   "name": "Yemen",
+   "gdp_usd_bn": {
+    "2022": 11.107,
+    "2023": 9.364,
+    "2024": 8.069
+   },
+   "gdp_eur_bn": {
+    "2022": 10.548,
+    "2023": 8.66,
+    "2024": 7.455
+   },
+   "gdp_eur_bn_avg_2022_2024": 8.888,
+   "gdp_eur_bn_2024": 7.455,
+   "source": "IMF WEO (DataMapper NGDPD), 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ZAF": {
+   "name": "South Africa",
+   "gdp_usd_bn": {
+    "2022": 407.596,
+    "2023": 381.441,
+    "2024": 401.145
+   },
+   "gdp_eur_bn": {
+    "2022": 387.081,
+    "2023": 352.761,
+    "2024": 370.607
+   },
+   "gdp_eur_bn_avg_2022_2024": 370.15,
+   "gdp_eur_bn_2024": 370.614,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ZMB": {
+   "name": "Zambia",
+   "gdp_usd_bn": {
+    "2022": 29.164,
+    "2023": 27.578,
+    "2024": 25.303
+   },
+   "gdp_eur_bn": {
+    "2022": 27.696,
+    "2023": 25.504,
+    "2024": 23.377
+   },
+   "gdp_eur_bn_avg_2022_2024": 25.526,
+   "gdp_eur_bn_2024": 23.377,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  },
+  "ZWE": {
+   "name": "Zimbabwe",
+   "gdp_usd_bn": {
+    "2022": 40.758,
+    "2023": 35.872,
+    "2024": 41.522
+   },
+   "gdp_eur_bn": {
+    "2022": 38.706,
+    "2023": 33.175,
+    "2024": 38.361
+   },
+   "gdp_eur_bn_avg_2022_2024": 36.747,
+   "gdp_eur_bn_2024": 38.362,
+   "source": "World Bank WDI NY.GDP.MKTP.CD, 2022-2024, each year at the ECB average USD per EUR"
+  }
+ }
+}

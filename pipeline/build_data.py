@@ -1462,10 +1462,12 @@ def build() -> dict:
     war_windfall(countries, src)
     pre_war_trends(countries, src)
     counterfactual(countries, src)
+    power_of_siberia(countries, src)
     apply_weapons_value(countries, src)
     apply_state_finance(countries, src)
     apply_company_flows(countries, src)
     apply_refugees_net(countries, src)
+    aggressor_refugees(countries, src)
     apply_ua_arms_purchases(countries, src)
     apply_loans_value(countries, src)
     apply_money_ledger(countries, src)
@@ -1494,6 +1496,14 @@ def build() -> dict:
             "label only: Nigeria's fall in fuel bought from EU refiners is structural (EU fuel ban, domestic refining)",
         )
         countries["NGA"]["laund"]["structural"] = {"why": "domestic_refining", "src": ["dangote"]}
+    # round 15 (raised by the owner): cited by the 2026 note in each panel (index.html hormuzNote())
+    src.add(
+        "hormuz",
+        "CREA: What the Hormuz crisis has cost fossil-fuel importers, March to August 2026 (Brent 35% above pre-crisis futures; diesel 59%, Asian LNG 75%)",
+        "https://energyandcleanair.org/what-the-hormuz-crisis-has-cost-fossil-fuel-importers-march-to-august-2026/",
+        "2026-10-19",
+        "the 2026 price spike came from the Hormuz crisis, not from this war; the money stays in, and the method band values 2026 at 2025 prices (docs/method/prices.md)",
+    )
     if "laund_off" in ALT:
         for c in countries.values():
             c.pop("laund", None)
@@ -1532,6 +1542,7 @@ def build() -> dict:
         if links:
             item["links"] = links
     prune_sources(countries, src)
+    gdp_average(countries)
     status = (
         f"<b>Research preview</b> · figures to {DATA_TO_TEXT}, updated {UPDATED_TEXT}. "
         "Compiled with AI assistance from public sources and not yet checked line by line against them by a person: treat the figures as unverified estimates. "
@@ -1553,6 +1564,19 @@ def build() -> dict:
             iso_numeric(t): countries[p]["n"] for t, p in INCLUDED_IN.items() if iso_numeric(t) and p in countries
         },
     }
+
+
+def gdp_average(countries: dict[str, dict]) -> None:
+    """Round 15 (review 4, M1; approved by the owner): every % of GDP on the map divides by the average of 2022-2024
+    nominal GDP in euros (gdp_avg_r15.json: World Bank WDI, or IMF WEO where the 2024 figure came from it), not by 2024
+    alone, which was a trough year for economies whose currency collapsed (Nigeria). Set last, so the steps above that
+    cap a flow at a share of GDP keep the GDP they were calibrated on. gdp_2024 stays for the method band."""
+    avg = load(GAPS / "gdp_avg_r15.json")["countries"]
+    for iso3, c in countries.items():
+        d = avg.get(iso3)
+        if d and c.get("gdp"):
+            c["gdp_2024"] = c["gdp"]
+            c["gdp"] = d["gdp_eur_bn_avg_2022_2024"]
 
 
 HUB_BUNKER = {hub: d["bunker_share"]["low"] for hub, d in E2["hub_resale"].items() if hub in HUB_RESALE}
@@ -1662,7 +1686,7 @@ def attach_input_sources(countries: dict[str, dict]) -> None:
 
 
 # source ids the site cites by name, not through a part's src list (index.html)
-SITE_SOURCE_IDS = {"kiel_eu_share", "sanctions_share", "russian_arms", "gas_cuts"}
+SITE_SOURCE_IDS = {"kiel_eu_share", "sanctions_share", "russian_arms", "gas_cuts", "hormuz"}
 
 
 def prune_sources(countries: dict[str, dict], src: Sources) -> None:
@@ -2294,6 +2318,9 @@ def apply_nowar_prices(countries: dict[str, dict], src: Sources) -> None:
         # the no-war fuel price level per year (2019-2021 = 1)
         n = [nowar_ratio(iso3, i, "central", "central") * fuel_c[i] if y >= 2022 else 1.0 for i, y in enumerate(YEARS)]
         mul = [fs * v + (1 - fs) for v in n]
+        # round 15 (method band, "2026 at 2025 prices"): the factor that values 2026's change at 2025's fuel prices
+        # instead of the Hormuz-crisis prices of 2026 (docs/method/prices.md)
+        tr["p26"] = round(mul[4] / mul[5], 4) if mul[5] else 1.0
         # the no-war price's own range, as factors on the expected path (the site adds it to the range of the change)
         for suf, b in (("nrl", "low"), ("nrh", "high")):
             nb = [nowar_ratio(iso3, i, b, "central") * fuel_c[i] if y >= 2022 else 1.0 for i, y in enumerate(YEARS)]
@@ -2330,6 +2357,9 @@ def apply_nowar_prices(countries: dict[str, dict], src: Sources) -> None:
         tr["nowar_prices"] = True
 
 
+P26_CRUDE = round(NW_IDX["brent"]["2025"]["actual"] / NW_IDX["brent"]["2026"]["actual"], 4)
+
+
 def current_euros(countries: dict[str, dict]) -> None:
     """Round 14 (audit M5, approved by the owner): every trade part in the same euros as aid, current prices. The map
     compares volumes (each year's value over its price level) so that price swings are not counted as changes; the
@@ -2346,6 +2376,8 @@ def current_euros(countries: dict[str, dict]) -> None:
             tr["cur"] = [round(v, 4) for v in tr["pidx"]]
         if c.get("laund"):
             c["laund"]["cur"] = [1.0] * len(YEARS)
+            # round 15 (method band): crude at 2025's price instead of 2026's (Brent, actual)
+            c["laund"]["p26"] = P26_CRUDE
 
 
 def pre_war_trends(countries: dict[str, dict], src: Sources) -> None:
@@ -2583,6 +2615,33 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
                 obj["base"], obj["base_range"] = m["central"], [m["low"], m["high"]]
 
 
+def power_of_siberia(countries: dict[str, dict], src: Sources) -> None:
+    """Round 15 (review 4, M2; approved by the owner): China's no-war imports from Russia include the contracted ramp-up
+    of the Power of Siberia pipeline (agreed 2014, flowing since December 2019): the contracted volume above the 2021
+    level (power_of_siberia_r15.json) is added to the expected path at 2019-2021 prices, before the no-war fuel price
+    is applied (apply_nowar_prices). Only deliveries beyond the contracted path count as war-driven."""
+    ps = load(GAPS / "power_of_siberia_r15.json")
+    tr = (countries.get("CHN") or {}).get("to_rus")
+    if not tr or not tr.get("bmul") or not tr.get("base"):
+        return
+    pipe = GAS_PRICES["countries"]["CHN"]["pipeline"]
+    price = sum(pipe[str(y)]["central"] for y in (2019, 2020, 2021)) / 3  # EUR/MWh at 2019-2021 prices
+    v21 = ps["actual"]["2021"]
+    add = [0.0] + [(ps["contracted"][str(y)] - v21) * MWH_PER_BCM * price / 1e9 / tr["base"] for y in YEARS[1:]]
+    for k in ("bmul", "bmul_lo", "bmul_hi"):
+        if tr.get(k):
+            tr[k] = [round(b + a, 4) for b, a in zip(tr[k], add)]
+    sid = src.add(
+        "power_of_siberia",
+        "Power of Siberia: contracted gas deliveries to China (Gazprom via Interfax, TASS and Reuters)",
+        "https://interfax.com/newsroom/top-stories/115552/",
+        ps.get("generated"),
+        "the contracted ramp-up (2014 contract, 38 bcm/yr plateau) is in China's no-war path; see research/2026-10/gaps/power_of_siberia_r15.json",
+    )
+    tr["src"] = list(dict.fromkeys((tr.get("src") or []) + [sid]))
+    tr["pos_contracted_bmul_add"] = [round(a, 4) for a in add]
+
+
 LAUNDERED_PREWAR = json.loads(
     (Path(__file__).resolve().parent.parent / "research/2026-10/gaps/round4a.json").read_text()
 )["laundered_prewar"]
@@ -2800,7 +2859,14 @@ def apply_refugees_net(countries: dict[str, dict], src: Sources) -> None:
         # already the host's own
         sh = (donors.get(iso3) or {}).get("donor_share") if iso3 not in ("MDA", "POL", "BGR", "GEO", "ARM") else None
         sh = sh or {"low": 0, "central": 0, "high": 0}
-        g = lambda y, b: (d["gross"].get(str(y)) or {}).get(b, 0.0)  # noqa: E731
+        gross = d["gross"]
+        if iso3 in REFUGEE_SCOPE:
+            # round 15: one definition, all levels of government; the reported partial figure (the low end) scaled by
+            # the scope gap the broad estimates show for this host (central: the geometric mean, high: the largest)
+            med, top = REFUGEE_SCOPE[iso3]
+            gross = {y: {"low": v["low"], "central": v["low"] * med**0.5, "high": max(v["high"], v["low"] * top)}
+                     for y, v in gross.items()}  # fmt: skip
+        g = lambda y, b: (gross.get(str(y)) or {}).get(b, 0.0)  # noqa: E731
         r = lambda y, b: (d["revenue"].get(str(y)) or {}).get(b, 0.0)  # noqa: E731
         mid = [g(y, "central") * (1 - sh["central"]) - r(y, "central") for y in YEARS]
         lo = [g(y, "low") * (1 - sh["high"]) - r(y, "high") for y in YEARS]
@@ -2822,6 +2888,8 @@ def apply_refugees_net(countries: dict[str, dict], src: Sources) -> None:
         a["refugee_years_lo"] = [round(v, 5) for v in lo]
         a["refugee_years_hi"] = [round(v, 5) for v in hi]
         a["refugee_gross"] = round(sum(g(y, "central") for y in YEARS[1:]), 4)
+        # round 15 (method band): the host's own gross cost per year, before refugees' taxes ("refugees at gross cost")
+        a["refugee_gross_years"] = [round(g(y, "central") * (1 - sh["central"]), 5) for y in YEARS]
         # a range such as "A-B" counts at its weaker letter (round 11 audit: "A-B" was read as A); Poland's costs are
         # checked only against a press article, the primary pages being blocked (verify_r11_aid-notes.md), so C
         grades = (d.get("gross_certainty") or "C", d.get("revenue_certainty") or "C")
@@ -2830,8 +2898,48 @@ def apply_refugees_net(countries: dict[str, dict], src: Sources) -> None:
         a["refugee_src"] = list(dict.fromkeys((a.get("refugee_src") or []) + [sid]))
 
 
+# Round 15 (raised by the owner): refugees hosted on the aggressor side are not support for Ukraine. Russia is not on
+# the map at all (a destination; UNHCR's counts there rest on Russian data and include people the ICC and the UN
+# Commission of Inquiry found were deported); Belarus, which the UN General Assembly deplored for its involvement in the
+# invasion (A/RES/ES-11/1), keeps its hosting cost only as a label (c["ref_excluded"]), out of every total
+CO_BELLIGERENT = {"BLR": "co-belligerent: its territory was used for the invasion (UN General Assembly A/RES/ES-11/1)"}
+
+
+def aggressor_refugees(countries: dict[str, dict], src: Sources) -> None:
+    """Round 15 (raised by the owner): Belarus's refugee hosting is shown as a label, not counted as support for
+    Ukraine; Russia never has an entry (checked in check_data.py)."""
+    sid = src.add(
+        "co_belligerent",
+        "UN General Assembly resolution ES-11/1 (2 March 2022): deplores the involvement of Belarus in this unlawful use of force against Ukraine",
+        "https://documents.un.org/api/symbol/access?s=A/RES/ES-11/1&l=en&t=pdf",
+        "2022-03-02",
+        "Belarus's refugee hosting is shown as a label, not as support for Ukraine (round 15, raised by the owner)",
+    )
+    for iso3, why in CO_BELLIGERENT.items():
+        a = (countries.get(iso3) or {}).get("aid")
+        if not a or not any(a.get("refugee_years") or []):
+            continue
+        countries[iso3]["ref_excluded"] = {
+            "years": a["refugee_years"], "years_lo": a.get("refugee_years_lo"), "years_hi": a.get("refugee_years_hi"),
+            "cert": a.get("refugee_cert"), "src": list(a.get("refugee_src") or []) + [sid], "why": why,
+        }  # fmt: skip
+        for k in ("refugee_years", "refugee_years_lo", "refugee_years_hi"):
+            if a.get(k):
+                a[k] = [0.0] * len(a[k])
+        a.pop("refugee_gross_years", None)
+
+
 # refugee costs whose figures were checked only against secondary sources (verify_r11_aid-notes.md): letter at most C
 REFUGEE_CERT_CAP = {"POL": "C"}
+# Round 15 (review 4, M5; approved by the owner): refugee hosting at one definition for every host, the total cost to
+# all levels of government minus the taxes and contributions refugees pay. Hosts whose reported figure covers part of
+# government only are scaled by the gap between broad all-government estimates and that figure in 2022 (refugees-notes.md
+# and refugees_net-notes.md): (median ratio, largest ratio). Germany: federal spending (Drs. 20/13346, KPB 217) against
+# the OECD International Migration Outlook 2022 estimate (EUR 6.8bn, 1.24) and Kiel's estimate (1.53). Poland: the Aid
+# Fund's refugee spending (PLN 11.3bn in 2022, Ministry of Finance) against OECD (EUR 8.36bn, 3.47), Kiel (3.68) and the
+# Council for Cooperation with Ukraine (3.81); the first two as reported in the press, the OECD table itself was not
+# reached. Central = reported x sqrt(median), the rule round 5 used for Germany and Switzerland; low = reported only
+REFUGEE_SCOPE = {"DEU": (1.385, 1.53), "POL": (3.68, 3.81)}
 
 
 def apply_ua_arms_purchases(countries: dict[str, dict], src: Sources) -> None:
