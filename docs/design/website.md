@@ -22,8 +22,12 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   neutral grey, with no dots or outline ([decisions](../decisions.md#round-17-redesign)).
 - **Money streams** (SVG): blue to Kyiv sized by support for Ukraine in €, orange to Moscow sized by how much more the
   country paid Russia than without the war in € (the map's numbers, not gross trade); the 12 largest each way; a
-  country's own streams on hover or when picked; a highlight's countries' streams; moving dashes, static arrows with
-  reduced motion; off by default on phones. The old gross flow lines (canvas) are an option, "Gross trade flows".
+  country's own streams on hover, tap or when picked; a highlight's countries' streams; moving dashes, static arrows
+  with reduced motion. On by default on phones too since round 18, calmer there: the 7 largest each way and thinner
+  lines; a tapped country's streams move into view above the bottom sheet (beside a side sheet on a phone held
+  sideways). The dashes are drawn on a layer of their own (`#streamfx`), so the map is not repainted every frame, and
+  pause while the page is hidden or the map is dragged. The old gross flow lines (canvas) are an option, "Gross trade
+  flows"; their animation loop runs only while they are on.
 - **Hover card**: support for Ukraine and kept from Russia as two bars, each with its sentence ("paid Russia €65.8bn
   (1.6% of GDP) less than without the war"), the net with its range, and the orange caveat for orange countries.
 - **Filters drawer** (right side; a bottom sheet on phones, with the map visible above it), collapsed by default, a dot
@@ -40,14 +44,21 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   language.
 - **Highlights**: seven chips; one highlights its countries (others dimmed) and shows a small closable fact card with
   its caveat.
-- **Country panel**: side panel on desktop, bottom sheet on phones; each number once (owner: "all the information
-  (some duplicated)"). 1. The header: name, a one-sentence lead in words (which part the net mostly is and why), and
-  the net with €, likely range, certainty and average year. 2. **The two parts**, side by side (stacked on phones):
-  support for Ukraine and kept from Russia, each with its value in % and €, a bar, what it is in words, likely range,
-  grade and average year; Russian money frozen on its own line. 3. **What changes the meaning here**: at most four
-  notes. 4. **The five biggest parts**, each opening its method in place (how, why with its decisions, the country's
-  sources with exact tables, method page, trace), and "Show the other N parts" (only the rest). 5. Folded sections:
-  what it cost the country (with money flowing back), method band and alternatives (with the method notes, coverage,
+- **Country panel**: side panel on desktop, bottom sheet on phones (a side sheet on a phone held sideways); each
+  number once (round 17), numbers and bars first (round 18, owner: "less text-heavy, more visual and structured ...
+  keep all the explanations, but hide them"). It opens with no sentences: 1. The country's **name only**. 2. **The
+  net** as one big number with a small label ("of a year's GDP since 2022"), its certainty letter and one compact line
+  (€, likely range, ≈ average year); a tap opens the lead in words, what the net adds, the certainty in words and what
+  the likely range is. 3. **The two parts as two tiles** side by side (support for Ukraine and kept from Russia: label,
+  letter, value in %, € and a small bar on a shared zero line), and Russian money frozen as a slim third tile where
+  it exists; a tap opens the words, the likely range, the average year, the gas Russia cut off and the refugees not
+  counted. 4. **What changes the meaning here** as small flags with an icon ("≈ too close to call", "⚠ fuel buying, not
+  policy", "✂ gas cut off by Russia", "§ mostly sanctions", "+ two different things added", ...), each opening its
+  one-line meaning. 5. **The biggest parts** as a diverging bar chart: the 7 largest, each row a short label and value
+  over a full-width bar (blue toward Ukraine, orange toward Russia, grey earned back; the likely range as an outline),
+  all on one zero line; a tap opens the part's method in place (how, why with its decisions, the country's sources
+  with exact tables, method page, trace); "Show the other N parts". 6. Folded sections: about the country (code,
+  people, GDP), what it cost the country (with money flowing back), method band and alternatives (with the method notes, coverage,
   "How this is calculated" and a link to the waterfall in How it works), markers (critical goods, wages, taken by
   Russia), sanctions or own choice, per year against the pre-war level, aid, companies and people, share and compare
   (with the map value in € per person or total €), and the numbered sources.
