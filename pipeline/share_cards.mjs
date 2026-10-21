@@ -91,7 +91,9 @@ for (const d of cards) {
     if (!el) { el = document.createElement("div"); el.id = "card"; document.body.appendChild(el); }
     // the map's one colour rule (round 17): blue toward Ukraine, orange toward Russia, grey for no clear change (too close
     // to call) and for earning from the war effort, which is not money toward Russia
-    const grey = "#55636e", col = d.netUnc || d.earner ? grey : d.netPos ? "#2a6fb0" : "#c9520f";
+    // too close to call: the faded colour of the way it leans, half way to the grey (round 17, as on the map)
+    const grey = "#55636e", fadeB = "#3f698f", fadeO = "#8f5a3e";
+    const col = d.earner ? grey : d.netUnc ? (d.netPos ? fadeB : fadeO) : d.netPos ? "#2a6fb0" : "#c9520f";
     el.style.cssText = "position:fixed;inset:0;z-index:99;background:#fbfcfc;color:#15212b;font-family:'Source Sans 3',system-ui,sans-serif;padding:40px 64px 34px;display:flex;flex-direction:column";
     el.innerHTML = `
       <div style="display:flex;align-items:center;gap:14px;font-family:Archivo,sans-serif;font-weight:800;font-stretch:115%;font-size:26px;letter-spacing:-.01em">
@@ -103,10 +105,10 @@ for (const d of cards) {
         <span style="font-family:Archivo,sans-serif;font-weight:800;font-size:88px;letter-spacing:-.03em;line-height:1;color:${col}">${d.pct}</span>
         <span style="font-size:27px;font-weight:600;color:#15212b;line-height:1.15">net: of a year's GDP in total<br>since 2022 (about ${d.pctY} a year)</span>
       </div>
-      <div style="margin-top:10px;font-size:26px;font-weight:600;color:#15212b;line-height:1.25">${d.netRange[0].toUpperCase() + d.netRange.slice(1)}${d.netUnc ? " · direction uncertain" : ""} · ${d.eur}${d.pp ? " · " + d.pp : ""}</div>
+      <div style="margin-top:10px;font-size:26px;font-weight:600;color:#15212b;line-height:1.25">${d.netRange[0].toUpperCase() + d.netRange.slice(1)}${d.netUnc ? " · too close to call" : ""} · ${d.eur}${d.pp ? " · " + d.pp : ""}</div>
       <div style="margin-top:8px;font-size:24px;color:#15212b;line-height:1.25;border-left:5px solid #d4601a;padding-left:12px">It adds two different things: help given to Ukraine and money kept from Russia.${d.netWhat ? " " + d.netWhat[0].toUpperCase() + d.netWhat.slice(1) + "." : ""}</div>
-      <div style="margin-top:12px;font-size:23px;color:#15212b;line-height:1.3">Support for Ukraine <b style="color:${d.uaPos && !d.uaUnc ? "#2a6fb0" : grey}">${d.ua}</b> (${d.uaRange})${d.uaUnc ? " · direction uncertain" : ""}${d.refX ? ` · hosted Ukrainian refugees (${d.refX}), not counted as support: co-belligerent` : ""}</div>
-      <div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3">Kept from Russia <b style="color:${d.ruUnc ? grey : d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ru}</b> (${d.ruRange}): ${d.ruWhat}${d.ruUnc ? " · direction uncertain" : ""}</div>
+      <div style="margin-top:12px;font-size:23px;color:#15212b;line-height:1.3">Support for Ukraine <b style="color:${!d.uaPos ? grey : d.uaUnc ? fadeB : "#2a6fb0"}">${d.ua}</b> (${d.uaRange})${d.uaUnc ? " · too close to call" : ""}${d.refX ? ` · hosted Ukrainian refugees (${d.refX}), not counted as support: co-belligerent` : ""}</div>
+      <div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3">Kept from Russia <b style="color:${d.ruUnc ? (d.ruLess ? fadeB : fadeO) : d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ru}</b> (${d.ruRange}): ${d.ruWhat}${d.ruUnc ? " · too close to call" : ""}</div>
       ${d.fz ? `<div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3">Russian money frozen <b style="color:#2a6fb0">${d.fz}</b>: the return Russia lost on its reserves frozen here, in the net only</div>` : ""}
       <div style="margin-top:auto;font-size:17px;color:#55636e;line-height:1.35">2022 to August 2026 (about ${d.years} years) · figures to ${d.dataTo} · research preview, every number with a range and a source<br>intelligent-cream.github.io/follow-the-money-ukraine</div>
 `;
@@ -115,7 +117,7 @@ for (const d of cards) {
   const iso = d.iso3.toLowerCase();
   await page.screenshot({ path: join(SITE, "share", iso + ".png") });
   const title = `${d.name}: net ${d.pct} of a year's GDP in total since 2022 (${d.netRange}; support for Ukraine ${d.ua}; kept from Russia ${d.ru}) | Follow the Money: Ukrainian Aid`;
-  const desc = `In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: net ${d.pct} (${d.netRange}; ${d.eur}; about ${d.pctY} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.netUnc ? ", direction uncertain" : ""}, the sum of support for Ukraine ${d.ua} (${d.uaRange}) and kept from Russia ${d.ru} (${d.ruRange}): it ${d.ruWhat}${d.fz ? `; plus Russian money frozen ${d.fz}` : ""}. The net adds two different things: help given to Ukraine and money kept from Russia. Every number with a range and a source.`;
+  const desc = `In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: net ${d.pct} (${d.netRange}; ${d.eur}; about ${d.pctY} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.netUnc ? ", too close to call" : ""}, the sum of support for Ukraine ${d.ua} (${d.uaRange}) and kept from Russia ${d.ru} (${d.ruRange}): it ${d.ruWhat}${d.fz ? `; plus Russian money frozen ${d.fz}` : ""}. The net adds two different things: help given to Ukraine and money kept from Russia. Every number with a range and a source.`;
   await writeFile(join(SITE, "c", iso + ".html"), `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
