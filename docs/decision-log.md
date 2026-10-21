@@ -308,3 +308,4 @@ The owner asked for a cleaner, more professional look. **No number changed.** De
 | **More options** folds the rarely used filters | owner | a long drawer | display |
 | **The map opens on Europe and western Asia** | owner | it cut through Africa | display |
 | **The country panel without boxes inside its box** | owner | boxes inside boxes | display |
+| **Crimea is Ukraine** on the map: the map data drew it inside Russia; it is now part of Ukraine's shape | owner | Crimea is Ukraine | display |

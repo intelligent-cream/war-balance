@@ -694,6 +694,12 @@ for all 231 entries identical). Decisions: [round 21](decisions.md#round-21-poli
 10. **Strings**: 5 new in all six languages ("Research preview", "estimates not yet checked by a person", "About",
     "More options", "Where"); "Where and when" removed.
 
+### Round 21b: Crimea is Ukraine
+
+The owner: Crimea is not Russia. The map data (Natural Earth, de facto control) drew it inside Russia; on load the site
+now moves its polygon to Ukraine and merges the two into one shape (`googleBorders` in `index.html`), on the desktop
+and phone maps and the share cards. No number changed.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open

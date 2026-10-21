@@ -3515,6 +3515,19 @@ document.addEventListener("keydown", e => { if (e.key === "Escape" && !status.hi
 // the "direction uncertain" marks, the rankings and the grades. It loads with the data, before anything is drawn, so no
 // number is ever worked out (and cached) without them; pipeline/browser_check.mjs checks this in a real browser
 const json = u => fetch(u).then(r => { if (!r.ok) throw new Error(u + " " + r.status); return r.json(); });
+// Crimea is Ukraine (owner, round 21). The map data (Natural Earth) follow de facto control and wrongly draw Crimea
+// inside Russia; on load its polygon moves to Ukraine, which is then one merged shape (topojson.merge), with no line at
+// the isthmus.
+function googleBorders(world) {
+  const geoms = world.objects.countries.geometries, byId = id => geoms.find(x => x.id === id);
+  const extra = {};
+  const ru = byId("643");
+  if (ru && ru.type === "MultiPolygon") {
+    const crimea = ru.arcs.filter(arcs => d3.geoContains(topojson.feature(world, { type: "Polygon", arcs }), [34.1, 45.0]));
+    if (crimea.length) { ru.arcs = ru.arcs.filter(a => !crimea.includes(a)); extra["804"] = [{ type: "MultiPolygon", arcs: crimea }]; }
+  }
+  return f => (extra[f.id] ? { ...f, geometry: topojson.merge(world, [byId(f.id), ...extra[f.id]]) } : f);
+}
 Promise.all([json(narrow() || matchMedia("(pointer: coarse)").matches ? "countries-lite.json" : "countries-50m.json"), json("data.json"), json("detail.json").catch(() => { DETAIL_FAILED = true; return {}; }), I18N_READY]).then(([world, data, detail]) => {
   YEARS = data.years; FRAC = data.frac; SRC = data.sources || {}; META = data.meta || {};
   if (data.data_to) DATA_TO = new Date(data.data_to);
@@ -3525,7 +3538,8 @@ Promise.all([json(narrow() || matchMedia("(pointer: coarse)").matches ? "countri
   ALTS_READY = !DETAIL_FAILED;
   INCLUDED = data.included_in || {};
   STATUS_HTML = data.status_html || "";
-  features = topojson.feature(world, world.objects.countries).features.filter(f => f.id !== "010");
+  const merged = googleBorders(world);
+  features = topojson.feature(world, world.objects.countries).features.filter(f => f.id !== "010").map(merged);
   layout();
   countryPaths = g.selectAll("path.country").data(features).join("path")
     .attr("class", f => "country" + (f.id === "804" ? " target-ukr" : f.id === "643" ? " target-rus" : ""))
