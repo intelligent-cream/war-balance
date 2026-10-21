@@ -664,6 +664,42 @@ Owner request after round 19 went live; no number changed. Decisions: [round 20]
 6. **Checks**: check 31 now asserts the three views and the old links to the removed ones, no `renderBubbles` or
    `renderTable`, `rankInfo` and the downloads in place.
 
+## Round 21: polish
+
+Owner request ("clean it up even more, make it look even more professional"); no number changed (`audit_tmp/calc.js`
+for all 231 entries identical). Decisions: [round 21](decisions.md#round-21-polish).
+
+1. **Header bar** (`#bar`): the slim banner, the boxed header line on the map and the two buttons are one bar above the
+   map. "Research preview · estimates not yet checked by a person · About"; About (`setAbout`) opens the full
+   research-preview text below the bar (Escape or a click outside closes it); a data load error opens it too. The
+   view below no longer needs the header's height (`--hdr-b` gone; `placeView` now sets `--bar-h` for the ⓘ popover
+   on phones).
+2. **Capital labels** (`placeLabels`): Ukraine's name below the Kyiv dot, Russia's right of the Moscow dot, at a fixed
+   distance on screen at every zoom.
+3. **Colours**: three blues, three oranges and one grey (`BLUES`, `ORANGES`, `STEPS` with three boundaries each; the
+   first unchanged). `scaleFor().fade` makes a pale tint of the same hue (HCL: chroma ×0.6, lightness half way to 92
+   in the light theme, 72 in the dark); the map's 72% shading under the streams is gone. `scaleFor()` now also returns
+   `neutral` and `lightest`, which `pipeline/browser_check.mjs` uses instead of palette positions. Share cards: the
+   faded text colours are a softer blue and orange (`#5b88b5`, `#cc7a40`, 3:1 or more on the card), not a brown.
+4. **Streams** (`drawStreams`): thin solid lines (up to 6 px, 3.5 on phones) that fade in; 8 each way (5 on phones);
+   the moving-dash layer `#streamfx`, its pause on drag and the arrowhead markers are removed.
+5. **Typography**: `--font-data` is the body font; `font-variant-numeric: tabular-nums` on the page; IBM Plex Mono is
+   no longer loaded; section labels in sentence case without letter-spacing.
+6. **Filters**: views, the map shows, measure, "Up to" (the year) and find a country on top; **More options**
+   (`#more-fold`) folds what's counted, where (region, group, size) and the map layers; display last.
+7. **Opening frame** (`openView`): Europe and western Asia (desktop centred on 40°E 45°N, phones on 26°E 44°N).
+8. **Country panel**: tiles and the frozen-money row without borders or backgrounds, hairlines between them, more
+   padding; the "what changes the meaning" box is a left rule.
+9. **Share cards**: the world card's title box moved to the right, clear of Europe.
+10. **Strings**: 5 new in all six languages ("Research preview", "estimates not yet checked by a person", "About",
+    "More options", "Where"); "Where and when" removed.
+
+### Round 21b: Crimea is Ukraine
+
+The owner: Crimea is not Russia. The map data (Natural Earth, de facto control) drew it inside Russia; on load the site
+now moves its polygon to Ukraine and merges the two into one shape (`googleBorders` in `index.html`), on the desktop
+and phone maps and the share cards. No number changed.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open
