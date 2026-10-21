@@ -440,7 +440,9 @@ else:
 #   longer a view (#view=how opens Sources) and the Top lists panel is gone (#c=RANKINGS opens the Ranking view);
 # - the drawer is persistent: only its own controls close it (the Filters button, × and Escape), never a view switch, a
 #   filter or a country, and its open state is kept in sessionStorage;
-# - no view has filter controls of its own: every view reads the drawer
+# - no view has filter controls of its own: every view reads the drawer.
+# Round 20 (owner): only Map, Ranking and Sources remain (#view=bubbles opens Ranking, #view=table opens Sources, where
+# the downloads now are); the ranking has no text of its own above the chart: the header line names it and its ⓘ explains it
 _buttons = re.findall(r'<button data-lens="(\w+)"', _html)
 _start = re.search(r'const state = \{ lens: "(\w+)"', _html)
 _old = re.search(r"const OLD_LENS = \{([^}]*)\}", _html)
@@ -466,7 +468,7 @@ _views_const = re.search(r"const VIEWS = \[([^\]]*)\]", _html)
 _views_list = re.findall(r'"(\w+)"', _views_const.group(1)) if _views_const else []
 _old_view = re.search(r"const OLD_VIEW = \{([^}]*)\}", _html)
 _old_view_map = dict(re.findall(r'(\w+): "(\w+)"', _old_view.group(1))) if _old_view else {}
-_want_views = ["map", "rank", "bubbles", "table", "sources"]
+_want_views = ["map", "rank", "sources"]
 _closers = [
     ln.strip()
     for ln in _site_text.splitlines()
@@ -494,6 +496,12 @@ check(
     and _views_list == _want_views
     and 'data-view="how"' not in _html
     and _old_view_map.get("how") == "sources"
+    and _old_view_map.get("bubbles") == "rank"
+    and _old_view_map.get("table") == "sources"
+    and "renderBubbles" not in _views_src
+    and "renderTable" not in _views_src
+    and "function rankInfo" in _views_src
+    and "dl-full" in _views_src
     and '"RANKINGS"' in _html
     and "renderHow" not in _views_src
     and "closeMenu" not in _site_text

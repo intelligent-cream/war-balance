@@ -1,10 +1,11 @@
-// ===== Views: ranking and Ukraine vs Russia bubbles (the table and data download are in views2.js) =====
+// ===== Views: the ranking (the data downloads are in views2.js, shown in Sources) =====
 // Same numbers as the map: the current view (the net, support for Ukraine, kept from Russia), measure and year.
 // Round 19 (owner): every filter is in the Filters drawer. The views have none of their own: each reads the drawer's
-// state (view, measure, what's counted, region, group, size, year), says it in one line (filterSummary) and re-renders
-// whenever it changes (paint() calls renderView())
+// state (view, measure, what's counted, region, group, size, year) and re-renders whenever it changes (paint() calls
+// renderView()). Round 20 (owner): only Map, Ranking and Sources remain, and the ranking is as clean as the map: the
+// header line names it and its explanation is in the header's ⓘ (rankInfo)
 /* global state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
-   num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades, filterSummary, renderDrawer */
+   num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades, renderDrawer, renderInfo */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
 const GROUPS = {
@@ -56,7 +57,7 @@ function tick(v) {
 }
 // long names are cut with an ellipsis; the full name is in a <title> (and in the row's label and tooltip)
 const fitName = (name, max) => (name.length > max ? name.slice(0, max - 1).trimEnd() + "…" : name);
-// chart rows and bubbles act like buttons: Enter and Space open the country, as a click does
+// chart rows act like buttons: Enter and Space open the country, as a click does
 function activateOnKey(el, fn) { el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } }); }
 function tipFor(m) {
   const range = m.loBn != null ? "<br>" + t("Likely range {lo} to {hi}", { lo: fmtMeasure(m.c, m.loBn, state.measure, true), hi: fmtMeasure(m.c, m.hiBn, state.measure, true) }) : "";
@@ -64,6 +65,15 @@ function tipFor(m) {
 }
 
 // ----- Ranking: every country as a dot with its likely range, sorted -----
+// what the ⓘ in the header says while the ranking is open
+function rankInfo() {
+  const n = Object.values(DATA).filter(eligible).length;
+  return `<p><b>${t(LENS_TITLE[state.lens])}</b></p>
+    <p>${t("{measure}, {period}. Dot: middle estimate; line: likely range (data and model uncertainty given the method, about 90% by judgement). {n} countries; switch view and measure in Filters. Click a country for the breakdown.", { measure: measureText(), period: periodText(), n })}</p>
+    ${state.lens === "net" ? `<p>${t("The net adds two different things: help given to Ukraine and money kept from Russia. Much of what one country stopped paying, Russia sold to others.")}</p>` : ""}
+    <p class="sub">${t("Scale is compressed (symmetric log) so small and large countries both stay readable; the axis labels give the true values.")}</p>
+    <p class="sub"><button class="linkbtn" data-goview="map">${t("Map")}</button> · <button class="linkbtn" data-goview="sources">${t("Sources and method")}</button></p>`;
+}
 function renderRanking(root) {
   // round 15: a headline number whose direction is uncertain (its likely range or a method-band alternative crosses
   // zero) is not ranked; those countries are named below the chart
@@ -105,91 +115,20 @@ function renderRanking(root) {
     }).join("")}
   </svg>`;
   root.innerHTML = `<div class="view-inner">
-    <h2>${title}</h2>
-    ${filterSummary()}
-    <p class="sub">${t("{measure}, {period}. Dot: middle estimate; line: likely range (data and model uncertainty given the method, about 90% by judgement). {n} countries; switch view and measure in Filters. Click a country for the breakdown.", { measure: measureText(), period: periodText(), n: rows.length })}</p>
-    ${state.lens === "net" ? `<p class="sub"><b>${t("The net adds two different things: help given to Ukraine and money kept from Russia. Much of what one country stopped paying, Russia sold to others.")}</b></p>` : ""}
     <div class="chart">${svg}</div>
     ${unc.length ? `<p class="note-small">${t("Not ranked, direction uncertain (the likely range or a method-band alternative crosses zero), {n} countries: {list}.", { n: unc.length, list: unc.map(m => `${m.c.name} ${fmtMeasure(m.c, m.bn, state.measure, true)}`).join(", ") })}</p>` : ""}
-    <p class="note-small">${t("Scale is compressed (symmetric log) so small and large countries both stay readable; the axis labels give the true values.")}</p>
   </div>`;
   wireRows(root, rows);
 }
 function wireRows(root, rows) {
   const by = Object.fromEntries(rows.map(m => [m.c.n, m]));
-  root.querySelectorAll(".row, .bubble").forEach(el => {
+  root.querySelectorAll(".row").forEach(el => {
     const m = by[el.dataset.n];
     el.addEventListener("pointermove", e => showTip(e, tipFor(m)));
     el.addEventListener("pointerleave", () => (tip.hidden = true));
     el.addEventListener("click", () => { tip.hidden = true; select(m.c.n, false); });
     activateOnKey(el, () => select(m.c.n, false));
   });
-}
-
-// ----- Ukraine vs Russia: what each country moved toward Ukraine against what it moved toward Russia -----
-function sides(c) {
-  const k = calc(c, state.year);
-  const parts = k.shiftParts.concat(state.netBack ? k.backShift : []);
-  const ukr = parts.reduce((s, p) => s + Math.max(0, p.v), 0), rus = parts.reduce((s, p) => s + Math.max(0, -p.v), 0);
-  return { c, k, ukr, rus, net: ukr - rus, bn: k.shift, v: scaled(c, k.shift), lo: scaled(c, k.shiftLo), hi: scaled(c, k.shiftHi) };
-}
-function renderBubbles(root) {
-  const measure = state.measure === "total" ? "gdp" : state.measure;
-  const all = Object.values(DATA).filter(eligible).map(sides).filter(s => s.c.gdp);
-  const sx = s => scaled(s.c, s.ukr, measure), sy = s => scaled(s.c, s.rus, measure);
-  const W = Math.min(1040, root.clientWidth - 32), H = Math.round(Math.min(720, Math.max(380, W * 0.68)));
-  const m = { l: 56, r: 18, t: 18, b: 46 };
-  const maxV = d3.max(all.flatMap(s => [sx(s), sy(s)])) || 1;
-  // log-like axes (symmetric log): spreads the many small shifts and still fits the few very large ones
-  const k0 = measure === "gdp" ? 0.5 : 50;
-  const x = d3.scaleSymlog().constant(k0).domain([0, maxV * 1.08]).range([m.l, W - m.r]);
-  const y = d3.scaleSymlog().constant(k0).domain([0, maxV * 1.08]).range([H - m.b, m.t]);
-  const r = d3.scaleSqrt().domain([0, d3.max(all, s => s.c.gdp)]).range([2.5, Math.max(18, W / 28)]);
-  const d = x.domain()[1];
-  const steps = measure === "gdp" ? [1, 2, 5, 10, 20, 50, 100] : [100, 500, 1000, 5000, 10000, 50000];
-  const ticks = steps.filter(t => t <= d);
-  const big = all.slice().sort((a, b) => b.c.gdp - a.c.gdp).slice(0, W < 600 ? 10 : 22).map(s => s.c.n)
-    .concat(all.slice().sort((a, b) => Math.max(sx(b), sy(b)) - Math.max(sx(a), sy(a))).slice(0, W < 600 ? 4 : 8).map(s => s.c.n));
-  const sel = state.selected;
-  const unit = t(measure === "gdp" ? "% of one year's GDP" : "€ per person");
-  const order = all.slice().sort((a, b) => b.c.gdp - a.c.gdp);   // big bubbles first, small ones on top
-  const fv = v => (measure === "gdp" ? num(v, v >= 1 ? 1 : 2) + "%" : money(num(v)));
-  const tk = v => (measure === "gdp" ? num(v) + "%" : money(compact(v)));
-  // labels for the largest economies (and the selected one), skipped where they would overlap a label already placed
-  // the two zone labels are placed first, so country labels keep clear of them
-  const zw = s => s.length * 9;
-  const zU = t("Net positive"), zR = t("Net negative");
-  const labels = [{ x: x(d) - 8 - zw(zU) / 2, y: y(0) - 12, w: zw(zU), zone: true }, { x: x(0) + 10 + zw(zR) / 2, y: y(d) + 18, w: zw(zR), zone: true }];
-  // the axis numbers are obstacles too (country labels near the axes covered them on phones)
-  const tkw = v => tk(v).length * 7;
-  for (const v of ticks) labels.push({ x: m.l - 8 - tkw(v) / 2, y: y(v) + 4, w: tkw(v), zone: true }, { x: x(v), y: H - m.b + 16, w: tkw(v), zone: true });
-  for (const s of [...order.filter(s => s.c.n === sel), ...order.filter(s => big.includes(s.c.n) && s.c.n !== sel)]) {
-    const t = fitName(s.c.name, 14), w = t.length * 6.6, ly = y(sy(s)) - r(s.c.gdp) - 4;
-    const lx = Math.min(W - m.r - w / 2, Math.max(m.l + w / 2 + 2, x(sx(s))));   // kept inside the plot area
-    if (labels.every(l => Math.abs(l.x - lx) > (l.w + w) / 2 + 2 || Math.abs(l.y - ly) > (l.zone ? 17 : 13))) labels.push({ x: lx, y: ly, w, t });
-  }
-  const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("Each country: its positive parts against its negative parts")}">
-    <path class="zone-ukr" d="M${x(0)},${y(0)} L${x(d)},${y(0)} L${x(d)},${y(d)} Z"/>
-    <path class="zone-rus" d="M${x(0)},${y(0)} L${x(0)},${y(d)} L${x(d)},${y(d)} Z"/>
-    <g class="grid">${ticks.map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="${m.t}" y2="${H - m.b}"/><line x1="${m.l}" x2="${W - m.r}" y1="${y(t)}" y2="${y(t)}"/>
-      <text x="${x(t)}" y="${H - m.b + 16}" text-anchor="middle">${tk(t)}</text>
-      <text x="${m.l - 8}" y="${y(t) + 4}" text-anchor="end">${tk(t)}</text>`).join("")}</g>
-    <line class="diag" x1="${x(0)}" y1="${y(0)}" x2="${x(d)}" y2="${y(d)}"/>
-    <text class="zone-lbl" x="${x(d) - 8}" y="${y(0) - 12}" text-anchor="end" style="fill:var(--ukr)">${zU}</text>
-    <text class="zone-lbl" x="${x(0) + 10}" y="${y(d) + 18}" style="fill:var(--rus-text);paint-order:stroke;stroke:var(--surface);stroke-width:4px">${zR}</text>
-    <text x="${(m.l + W - m.r) / 2}" y="${H - 8}" text-anchor="middle" style="fill:var(--ink)">${t("Support for Ukraine, less paid to Russia → ({unit})", { unit })}</text>
-    <text transform="translate(14 ${(m.t + H - m.b) / 2}) rotate(-90)" text-anchor="middle" style="fill:var(--ink)">${t("More paid to or earned from Russia, money flowing back → ({unit})", { unit })}</text>
-    ${order.map(s => `<circle class="bubble${s.c.n === sel ? " sel" : ""}" data-n="${s.c.n}" tabindex="0" role="button" aria-label="${s.c.name}: ${t("positive parts")} ${fv(sx(s))}, ${t("negative parts")} ${fv(sy(s))}" cx="${x(sx(s))}" cy="${y(sy(s))}" r="${r(s.c.gdp)}" fill="${s.net >= 0 ? "var(--ukr)" : "var(--rus)"}"/>`).join("")}
-    ${labels.filter(l => !l.zone).map(l => `<text x="${l.x}" y="${l.y}" text-anchor="middle" style="fill:var(--ink);font-size:11.5px;font-weight:600;paint-order:stroke;stroke:var(--surface);stroke-width:3px;pointer-events:none">${l.t}</text>`).join("")}
-  </svg>`;
-  root.innerHTML = `<div class="view-inner">
-    <h2>${t("Each country's positive and negative parts")}</h2>
-    ${filterSummary({ lens: false })}
-    <p class="sub">${t("{period}, {unit}. Right: aid, refugees, purchases from Ukraine, less paid to Russia (including gas Russia cut off, where it did) and Russian money frozen. Up: more paid to Russia, earnings from sales to Russia, oil bought via other countries, hidden channels, weapons{back}. Below the diagonal the net is positive. Bubble size: size of the economy.", { period: periodText(), unit, back: state.netBack ? t(", money flowing back from Ukraine") : "" })}</p>
-    <div class="chart">${svg}</div>
-    <p class="note-small">${t("Log-like axes so that small and large shifts both stay visible.")} ${state.measure === "total" ? t("Shown in % of GDP: totals in € would put every small country in one corner.") + " " : ""}${t("Middle estimates only; each country's range is in its breakdown.")}</p>
-  </div>`;
-  wireRows(root, all.map(s => ({ c: s.c, bn: s.k.shift, loBn: s.k.shiftLo, hiBn: s.k.shiftHi })));
 }
 
 // ----- switching -----
@@ -200,7 +139,7 @@ function renderView() {
   root.hidden = v === "map";
   if (v === "map") return;
   const scroll = root.scrollTop;
-  ({ rank: renderRanking, bubbles: renderBubbles, ...(window.EXTRA_VIEWS || {}) })[v](root);
+  ({ rank: renderRanking, ...(window.EXTRA_VIEWS || {}) })[v](root);
   root.scrollTop = scroll;
 }
 // quiet: the address already says this view (Back/Forward)
@@ -214,6 +153,8 @@ function setView(v, quiet) {
   renderView();
   // the drawer's map layers apply to the map only (round 19)
   if (typeof renderDrawer === "function") renderDrawer();
+  // the header line and its ⓘ say which view is open (round 20)
+  if (typeof renderInfo === "function") renderInfo();
   // round 17: a view starts below the header line, which shows the page tabs outside the map
   if (typeof placeView === "function") placeView();
   if (!quiet) writeHash(false);
@@ -223,8 +164,8 @@ document.querySelectorAll(".views [data-view]").forEach(b => (b.onclick = () => 
 window.addEventListener("resize", () => state.view && state.view !== "map" && renderView());
 window.renderView = renderView;
 window.setView = setView;
-// "#view=rank", also combined with a country: "#view=rank&c=POL"; "#view=how" (gone in round 19) opens Sources (parseHash)
+// "#view=rank", also combined with a country: "#view=rank&c=POL"; views that are gone open the nearest one (parseHash)
 const startView = parseHash().view;
-if (["rank", "bubbles", "table", "sources"].includes(startView)) {
+if (["rank", "sources"].includes(startView)) {
   const wait = setInterval(() => { if (Object.keys(DATA).length) { clearInterval(wait); setView(startView); } }, 100);
 }

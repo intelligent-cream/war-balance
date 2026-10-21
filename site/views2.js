@@ -1,14 +1,8 @@
-// ===== Table & data (round 19, rebuilt; the owner: the table "needs a lot of work") =====
-// One row per country in the Filters drawer's filter (no filters of its own), every number in the drawer's measure: the
-// net, support for Ukraine, kept from Russia and Russian money frozen, each with its likely range and its certainty
-// letter, then GDP, population and the main parts. Columns are grouped and sort on a click; the header row and the
-// country column stay in view while the table scrolls inside its own box. "Download CSV" and "Download JSON" give exactly
-// the rows and columns shown; the full data (every country, every number in € and % of GDP, every part) is below them.
-// How it works was a view here until round 19: the owner removed it; its content is in the docs, and each part's method
-// is one tap away in the country panel and in Sources.
-/* global state, DATA, calc, scaled, fmtMeasure, eur, select, MIN_GDP_RANK, FRAC, t, LANG, viewState, eligible, periodText,
-   measureText, num, yi, remitSum, uncertain, grades, chip, filterSummary, plainName, custom, COUNTED, isOn, esc, tData,
-   LETTERS_KEY, renderView */
+// ===== Data downloads, shown in the Sources view =====
+// Round 20 (owner): Table & data is no longer a view (its old links open Sources). Its downloads stay, in Sources: every
+// country, every number (CSV), every part (CSV) and the whole data file (JSON), plus the data gaps by country. They
+// follow the Filters drawer's period, what's counted and money flowing back; every country is in them.
+/* global state, DATA, calc, scaled, t, viewState, uncertain, grades, custom, COUNTED, isOn, esc, tData, FRAC, yi, remitSum, select */
 
 // the four numbers, each a group of three columns: the value, its likely range and its certainty letter
 const TGROUPS = [
@@ -17,8 +11,6 @@ const TGROUPS = [
   { id: "rus", label: "Kept from Russia", v: k => [k.rusBal, k.rusLo, k.rusHi], en: "kept_from_russia" },
   { id: "frozen", label: "Russian money frozen", v: k => [k.frozen, k.frozenLo, k.frozenHi], en: "russian_money_frozen" },
 ];
-const MEASURE_EN = { gdp: "pct_gdp", pp: "eur_per_person", total: "eur_bn" };
-const MAIN_PARTS = 3;
 
 function tableRows(pool) {
   const y = state.year;
@@ -33,83 +25,28 @@ function tableRows(pool) {
         cert: gp.id === "frozen" ? (fz ? fz.cert : null) : y > 2021 ? gr[gp.id] : null,
         unc: gp.id !== "frozen" && y > 2021 && uncertain(c, y, gp.id) } : null;
     }
-    // the largest parts, either way, with plain names
-    row.main = k.shiftParts.concat(k.backShift).filter(p => Math.abs(p.v) > 1e-6).sort((a, b) => Math.abs(b.v) - Math.abs(a.v)).slice(0, MAIN_PARTS);
     return row;
   });
 }
-// the value a column sorts by: numbers in the measure shown, letters in order (A first), the name alphabetically
-function sortVal(r, key) {
-  if (key === "name") return r.name;
-  if (key === "gdp" || key === "pop") return r[key] ?? -Infinity;
-  const [id, part] = key.split(".");
-  const x = r[id];
-  if (!x) return part === "cert" ? "Z" : -Infinity;
-  return part === "cert" ? x.cert || "Z" : x.s ?? -Infinity;
-}
-const signCls = (gp, v) => (v == null || Math.abs(v) < 1e-9 ? "" : v > 0 ? "pos" : gp === "ua" ? "" : "neg");
-const fmtV = (c, v) => fmtMeasure(c, v, state.measure, true, false);
-const partsTxt = r => r.main.map(p => `${plainName(p)} ${fmtV(r.c, p.v)}`).join("; ");
-
-function renderTable(root) {
-  const rows = tableRows(Object.values(DATA).filter(eligible));
-  const key = viewState.sortKey, dir = viewState.sortDir;
-  rows.sort((a, b) => {
-    const x = sortVal(a, key), z = sortVal(b, key);
-    return ((typeof x === "string" ? x.localeCompare(z, LANG) * (key === "name" ? 1 : -1) : x - z) || 0) * dir;
-  });
-  const unit = t({ gdp: "% of GDP", pp: "Per person", total: "Total €" }[state.measure]);
-  const th = (k, label, cls = "") => `<th scope="col" class="${cls}" aria-sort="${key === k ? (dir < 0 ? "descending" : "ascending") : "none"}"><button data-k="${k}">${label}</button></th>`;
-  const cell = (r, gp) => {
-    const x = r[gp.id];
-    if (!x) return `<td class="gs">–</td><td class="rg">–</td><td class="gr">–</td>`;
-    const q = x.unc ? `<span class="unc" title="${t("direction uncertain")}">?</span>` : "";
-    return `<td class="gs ${signCls(gp.id, x.v)}">${fmtV(r.c, x.v)}${q}</td><td class="rg">${t("{lo} to {hi}", { lo: fmtV(r.c, x.lo), hi: fmtV(r.c, x.hi) })}</td><td class="gr">${x.cert ? chip(x.cert) : "–"}</td>`;
-  };
-  root.innerHTML = `<div class="view-inner table-view">
-    <h2>${t("All countries, all numbers")}</h2>
-    ${filterSummary({ lens: false })}
-    <p class="sub">${measureText()}, ${periodText()}${state.netBack ? t(", after money flowing back") : ""}. ${t("Click a column to sort, a row for the breakdown.")} ${t("{n} countries", { n: rows.length })}.</p>
+// the Download the data section at the end of Sources
+function dataHtml() {
+  const rows = tableRows(Object.values(DATA).filter(c => c.gdp)).sort((a, b) => (b.gdp || 0) - (a.gdp || 0));
+  return `<h2 style="font-size:20px" id="data">${t("Download the data")}</h2>
+    <p class="sub">${t("Every country, every number, for the period and parts chosen in Filters.")}</p>
     <div class="dl" role="group" aria-label="${t("Downloads")}">
-      <span class="dl-h">${t("This table:")}</span>
-      <button id="dl-csv">${t("Download CSV")}</button>
-      <button id="dl-json">${t("Download JSON")}</button>
-      <span class="dl-h">${t("Every country, every number:")}</span>
       <button id="dl-full">${t("Full data (CSV)")}</button>
       <button id="dl-parts">${t("CSV with every part")}</button>
       <a href="data.json" download="follow-the-money-ukrainian-aid.json">${t("Full data (JSON)")}</a>
     </div>
-    <div class="tablewrap" tabindex="0" role="region" aria-label="${t("All countries, all numbers")}"><table class="dtable">
-      <thead>
-        <tr class="g"><th scope="col" rowspan="2" class="cname" aria-sort="${key === "name" ? (dir < 0 ? "descending" : "ascending") : "none"}"><button data-k="name">${t("Country")}</button></th>
-          ${TGROUPS.map(gp => `<th scope="colgroup" colspan="3" class="grp grp-${gp.id}">${t(gp.label)}</th>`).join("")}
-          <th scope="colgroup" colspan="2" class="grp">${t("Economy")}</th><th scope="col" rowspan="2" class="mp">${t("Main parts")}</th></tr>
-        <tr class="c">${TGROUPS.map(gp => th(gp.id + ".v", unit, "gs") + `<th scope="col" class="rg">${t("Likely range")}</th>` + th(gp.id + ".cert", t("Certainty"), "gr")).join("")}
-          ${th("gdp", t("GDP, € bn"), "gs")}${th("pop", t("People, m"))}</tr>
-      </thead>
-      <tbody>${rows.map(r => `<tr data-n="${r.c.n}"><th scope="row" class="cname"><button>${esc(r.name)}</button></th>${TGROUPS.map(gp => cell(r, gp)).join("")}
-        <td class="gs">${r.gdp ? num(r.gdp, r.gdp >= 100 ? 0 : 1) : "–"}</td><td>${r.pop ? num(r.pop, r.pop >= 10 ? 0 : 1) : "–"}</td><td class="mp">${esc(partsTxt(r))}</td></tr>`).join("")}</tbody>
-    </table></div>
-    <p class="note-small">${t("? direction uncertain: the likely range or a method-band alternative crosses zero (not ranked).")} ${LETTERS_KEY()} ${t("GDP is the 2022–2024 average.")}</p>
     ${coverageHtml(rows)}
-    <p class="note-small">${t("Data and text: CC BY 4.0, credit \"Follow the Money: Ukrainian Aid\". Every figure has its sources in the country breakdown and in the research files on GitHub. Figures to {date}.", { date: document.body.dataset.dataTo || t("the end of August 2026") })}</p>
-  </div>`;
-  // sorting buttons in the header rows; the re-render replaces them, so focus goes to the same column's new button
-  root.querySelectorAll("thead button[data-k]").forEach(b => (b.onclick = () => {
-    const k = b.dataset.k;
-    viewState.sortDir = viewState.sortKey === k ? -viewState.sortDir : k === "name" ? 1 : -1;
-    viewState.sortKey = k; renderView();
-    const again = root.querySelector(`thead button[data-k="${k}"]`); if (again) again.focus();
-  }));
-  // a click anywhere on a row opens the country; the button in the country cell (Enter, Space) gets there by keyboard
-  root.querySelectorAll("tbody tr[data-n]").forEach(tr => (tr.onclick = () => select(tr.dataset.n, false)));
-  // file names say which period, measure and filter they hold
-  const tag = `${state.year === 2021 ? "2021" : "2022-" + state.year}_${viewState.group}${state.region !== "all" ? "-" + state.region : ""}${state.size === 0 ? "-with-small" : state.size > MIN_GDP_RANK ? "-over-" + state.size + "bn" : ""}${custom() ? "_custom-mix" : ""}`;
+    <p class="note-small">${t("Data and text: CC BY 4.0, credit \"Follow the Money: Ukrainian Aid\". Every figure has its sources in the country breakdown and in the research files on GitHub. Figures to {date}.", { date: document.body.dataset.dataTo || t("the end of August 2026") })}</p>`;
+}
+function wireData(root) {
   const all = () => tableRows(Object.values(DATA)).sort((a, b) => a.iso3.localeCompare(b.iso3));
-  root.querySelector("#dl-csv").onclick = () => download(csvShown(rows), `follow-the-money-ukrainian-aid_table_${MEASURE_EN[state.measure]}_${tag}.csv`);
-  root.querySelector("#dl-json").onclick = () => download(jsonShown(rows), `follow-the-money-ukrainian-aid_table_${MEASURE_EN[state.measure]}_${tag}.json`, "application/json");
-  root.querySelector("#dl-full").onclick = () => download(csvFull(all()), `follow-the-money-ukrainian-aid_full_${state.year === 2021 ? "2021" : "2022-" + state.year}${custom() ? "_custom-mix" : ""}.csv`);
-  root.querySelector("#dl-parts").onclick = () => download(csvParts(all()), `follow-the-money-ukrainian-aid_parts_${state.year === 2021 ? "2021" : "2022-" + state.year}${custom() ? "_custom-mix" : ""}.csv`);
+  const tag = `${state.year === 2021 ? "2021" : "2022-" + state.year}${custom() ? "_custom-mix" : ""}`;
+  const f = root.querySelector("#dl-full"), p = root.querySelector("#dl-parts");
+  if (f) f.onclick = () => download(csvFull(all()), `follow-the-money-ukrainian-aid_full_${tag}.csv`);
+  if (p) p.onclick = () => download(csvParts(all()), `follow-the-money-ukrainian-aid_parts_${tag}.csv`);
 }
 // which parts of each country rest on reported, estimated or missing data (moved here from the old Top lists panel)
 function coverageHtml(rows) {
@@ -130,28 +67,6 @@ document.addEventListener("click", e => {
 // ----- downloads -----
 const q = v => (v == null || Number.isNaN(v) ? "" : typeof v === "number" ? +v.toFixed(4) : typeof v === "boolean" ? String(v) : /[",\n]/.test(v) ? `"${String(v).replace(/"/g, '""')}"` : v);
 const r4 = v => (v == null || Number.isNaN(v) ? null : +v.toFixed(4));
-const partsEn = r => r.main.map(p => `${p.en}: ${r4(scaled(r.c, p.v))}`).join("; ");
-// exactly the table shown: its rows in its order, its columns, in its measure
-function csvShown(rows) {
-  const u = MEASURE_EN[state.measure];
-  const head = ["iso3", "country", "period", "measure", "figures",
-    ...TGROUPS.flatMap(gp => [`${gp.en}_${u}`, `${gp.en}_low_${u}`, `${gp.en}_high_${u}`, `${gp.en}_certainty`, ...(gp.id === "frozen" ? [] : [`${gp.en}_direction_uncertain`])]),
-    "gdp_eur_bn_avg_2022_2024", "population_m", `main_parts_${u}`];
-  const lines = rows.map(r => [r.iso3, r.c.name_en, periodTextEn(), measureEn(), figuresEn(),
-    ...TGROUPS.flatMap(gp => { const x = r[gp.id]; return [x && x.s, x && x.slo, x && x.shi, x && x.cert, ...(gp.id === "frozen" ? [] : [x ? x.unc : ""])]; }),
-    r.gdp, r.pop, partsEn(r)].map(q).join(","));
-  return [head.join(","), ...lines].join("\n");
-}
-function jsonShown(rows) {
-  return JSON.stringify({ period: periodTextEn(), measure: measureEn(), figures: figuresEn(), net_of_flowback: state.netBack, filter: filterEn(),
-    note: "the net = support for Ukraine + kept from Russia + Russian money frozen; kept from Russia is positive when the country paid Russia less than without the war, negative when it paid more; direction_uncertain: the likely range or a method-band alternative crosses zero (not ranked)",
-    countries: rows.map(r => ({ iso3: r.iso3, country: r.c.name_en,
-      ...Object.fromEntries(TGROUPS.map(gp => { const x = r[gp.id]; return [gp.en, x ? { value: r4(x.s), low: r4(x.slo), high: r4(x.shi), certainty: x.cert, ...(gp.id === "frozen" ? {} : { direction_uncertain: x.unc }) } : null]; })),
-      gdp_eur_bn_avg_2022_2024: r.gdp, population_m: r.pop,
-      main_parts: r.main.map(p => ({ part: p.k, label: p.en, value: r4(scaled(r.c, p.v)) })) })) }, null, 1);
-}
-const measureEn = () => ({ gdp: "% of one year's GDP (average 2022-2024), total for the period", pp: "EUR per person, total for the period", total: "EUR billion, total for the period" }[state.measure]);
-const filterEn = () => ({ region: state.region, group: viewState.group, min_gdp_eur_bn: state.size });
 // every country, every number in € bn and % of GDP. Round 19: the cost to the country is no longer shown on the site; it
 // stays here, labelled
 function csvFull(rows) {
@@ -204,4 +119,5 @@ function download(text, name, type = "text/csv") {
   setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
 }
 
-window.EXTRA_VIEWS = { ...(window.EXTRA_VIEWS || {}), table: renderTable };
+window.dataHtml = dataHtml;
+window.wireData = wireData;

@@ -222,7 +222,7 @@ grey on the support map too.
 
 ## The cost view
 
-**Since round 19 the site no longer shows this view** (the owner removed it to simplify): `calc()` still works it out, and the full data download (Table & data → "Full data (CSV)") keeps it as `cost_to_the_country_eur_bn_not_shown_on_the_site` ([decisions](../decisions.md#round-19-one-place-for-every-filter)). What follows describes the model.
+**Since round 19 the site no longer shows this view** (the owner removed it to simplify): `calc()` still works it out, and the full data download (Sources → Download the data → "Full data (CSV)") keeps it as `cost_to_the_country_eur_bn_not_shown_on_the_site` ([decisions](../decisions.md#round-19-one-place-for-every-filter)). What follows describes the model.
 
 "Cost to the country" (called "cost carried" before round 15) was a fourth view from round 15 to round 18: what it cost the country itself, after gains such as cheaper Russian oil or business won back; what the country gave up, not where money went. Parts (`costParts` in `calc()`):
 
