@@ -151,6 +151,7 @@ button, input, select { font: inherit; color: inherit; }
 /* v2: flow layer, change view */
 #flows { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
 #labels { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
+#streamfx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; will-change: transform; contain: strict; }
 /* the light blues and oranges of dark mode take dark text; light mode's orange is darkened for white text (4.5:1 either way) */
 .seg button[data-lens="support"][aria-pressed="true"] { background: var(--ukr); color: var(--on-accent); }
 .seg button[data-lens="payments"][aria-pressed="true"], .seg button[data-lens="net"][aria-pressed="true"] { background: linear-gradient(90deg, var(--rus-text), var(--ukr)); color: var(--on-accent); }
@@ -332,7 +333,7 @@ details.more[open] summary { margin-bottom: 10px; }
 .views { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
 .views button { border: 0; background: transparent; padding: 6px 12px; cursor: pointer; font-weight: 600; font-size: 13.5px; color: var(--ink-soft); }
 .views button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
-.app[data-view]:not([data-view="map"]) #map, .app[data-view]:not([data-view="map"]) #flows, .app[data-view]:not([data-view="map"]) #labels,
+.app[data-view]:not([data-view="map"]) #map, .app[data-view]:not([data-view="map"]) #flows, .app[data-view]:not([data-view="map"]) #labels, .app[data-view]:not([data-view="map"]) #streamfx,
 .app[data-view]:not([data-view="map"]) .legend, .app[data-view]:not([data-view="map"]) .fact, .app[data-view]:not([data-view="map"]) .hlpanel { display: none !important; }
 .view { position: absolute; inset: 0; overflow: auto; background: var(--surface); z-index: 1; -webkit-overflow-scrolling: touch; }
 .view-inner { max-width: 1080px; margin: 0 auto; padding: 22px max(16px, env(safe-area-inset-left, 0px)) 48px; }
@@ -456,6 +457,8 @@ details.info > summary::-webkit-details-marker { display: none; }
 .stream-base { fill: none; stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: 0.26; cursor: pointer; }
 .stream-flow { fill: none; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1 16; opacity: 0.65; animation: stream 7s linear infinite; pointer-events: none; }
 @keyframes stream { to { stroke-dashoffset: -150; } }
+/* round 18: no animation while the page is hidden, or while the map is dragged or zoomed */
+:root[data-hidden="true"] .stream-flow, .stage[data-moving="true"] .stream-flow { animation-play-state: paused; }
 .stream-arrow { display: none; }
 @media (prefers-reduced-motion: reduce) { .stream-flow { display: none; } .stream-arrow { display: inline; } .stream-base { opacity: 0.6; } }
 .stream-target { fill: var(--ink); stroke: var(--sea); stroke-width: 1.5; vector-effect: non-scaling-stroke; pointer-events: none; }
@@ -565,17 +568,18 @@ details.info > summary::-webkit-details-marker { display: none; }
 .meaning ul { margin: 0; padding-left: 18px; display: grid; gap: 5px; font-size: 13.5px; line-height: 1.4; }
 .meaning li.orange { list-style: none; margin-left: -18px; border-left: 3px solid var(--rus); padding-left: 8px; }
 .parts { display: grid; gap: 2px; }
-details.part > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) 96px auto; gap: 4px 10px; align-items: center; padding: 5px 4px; border-radius: 6px; font-size: 13.5px; }
+details.part > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 5px 10px; align-items: baseline; padding: 7px 6px 9px; border-radius: 8px; font-size: 13.5px; line-height: 1.3; }
 details.part > summary::-webkit-details-marker { display: none; }
 details.part > summary:hover { background: var(--sea); }
 details.part > summary .nm::before { content: "▸ "; color: var(--ink-soft); font-size: 11px; }
 details.part[open] > summary .nm::before { content: "▾ "; }
-details.part .pv { font-family: var(--font-data); font-size: 12.5px; text-align: right; white-space: nowrap; }
-details.part .pv small { display: block; font-size: 10.5px; color: var(--ink-soft); }
-.pbar { position: relative; height: 8px; background: var(--sea); border-radius: 2px; }
-.pbar span { position: absolute; top: 0; bottom: 0; border-radius: 2px; }
-.pbar .z { left: 50%; width: 1px; background: var(--ink-soft); }
-.pbar i { position: absolute; top: -2px; bottom: -2px; border: 1px solid var(--ink-soft); border-radius: 2px; opacity: 0.6; }
+details.part .pv { font-family: var(--font-data); font-size: 13px; font-weight: 600; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+details.part .pv small { font-size: 11px; font-weight: 400; color: var(--ink-soft); margin-left: 8px; }
+/* round 18: every bar on one shared zero line, full width under its label */
+.pbar { grid-column: 1 / -1; position: relative; display: block; height: 10px; background: color-mix(in srgb, var(--sea) 70%, var(--surface)); border-radius: 3px; }
+.pbar span { position: absolute; top: 0; bottom: 0; border-radius: 3px; }
+.pbar .z { width: 1.5px; margin-left: -0.75px; background: var(--ink-soft); border-radius: 0; z-index: 1; }
+.pbar i { position: absolute; top: -2px; bottom: -2px; border: 1px solid var(--ink-soft); border-radius: 3px; opacity: 0.45; }
 .mcard { margin: 2px 0 10px 12px; padding: 8px 10px; border-left: 3px solid var(--line); font-size: 13px; line-height: 1.45; }
 .mcard p { margin: 0 0 6px; }
 .mcard .lbl2 { font: 500 10.5px var(--font-data); text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); margin: 8px 0 3px; }
@@ -584,6 +588,71 @@ details.part .pv small { display: block; font-size: 10.5px; color: var(--ink-sof
 details.allparts > summary { cursor: pointer; font-weight: 600; font-size: 13.5px; color: var(--ukr); padding: 6px 0; }
 .grp { font: 500 11px var(--font-data); text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); margin: 12px 0 4px; }
 .share-off { font-size: 12.5px; color: var(--ink-soft); }
+.about-line { font: 12.5px var(--font-data); color: var(--ink-soft); margin: 0; font-variant-numeric: tabular-nums; }
+/* ===== round 18 (owner): the country panel, numbers first. One big number, medium tile numbers, small labels; every
+   explanation one tap away (details.xp) ===== */
+.panel-body:has(.pv-top) { gap: 18px; }
+details.xp > summary { list-style: none; cursor: pointer; }
+details.xp > summary::-webkit-details-marker { display: none; }
+details.xp > summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 8px; }
+.xp-body { font-size: 13px; line-height: 1.45; color: var(--ink-soft); padding: 8px 0 0; }
+.xp-body p { margin: 0 0 6px; }
+.xp-body p:last-child { margin-bottom: 0; }
+.xp-body b { color: var(--ink); font-weight: 600; }
+.xp-body .lead { color: var(--ink); font-size: 14px; }
+.xp-body .note { margin: 0; font-size: 13px; }
+/* the small "more" mark: a chevron that turns when open */
+.xi { margin-left: auto; width: 16px; height: 16px; flex: none; display: inline-grid; place-items: center; color: var(--ink-soft); }
+.xi::before { content: "▾"; font-size: 11px; line-height: 1; transition: transform .15s; }
+details[open] > summary .xi::before { transform: rotate(180deg); }
+.pv-top { display: grid; gap: 12px; }
+.pnet > summary { display: grid; gap: 0; }
+.pnet .nlbl { display: flex; align-items: center; gap: 2px; font: 700 11px var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+.pnet .nlbl .chip { margin-left: 8px; }
+.pnet .nbig { font-family: var(--font-display); font-weight: 800; font-stretch: 108%; font-size: 48px; line-height: 1; letter-spacing: -0.015em; font-variant-numeric: tabular-nums; margin-top: 6px; }
+.nbig.pos { color: var(--ukr); } .nbig.neg { color: var(--rus); } .nbig.mid { color: var(--ink); }
+.nbig.fpos { color: color-mix(in srgb, var(--ukr) 50%, var(--ink-soft)); } .nbig.fneg { color: color-mix(in srgb, var(--rus) 50%, var(--ink-soft)); }
+.pnet .nunit { font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; }
+.pnet .nline { font: 12.5px var(--font-data); color: var(--ink-soft); margin-top: 8px; font-variant-numeric: tabular-nums; }
+.pnet .nline > span { white-space: nowrap; }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+details.tile { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px 12px; min-width: 0; background: var(--surface); }
+details.tile[open] { grid-column: 1 / -1; }
+details.tile > summary { display: grid; gap: 0; }
+.tile .tl { display: flex; align-items: flex-start; gap: 0; min-width: 0; line-height: 1.3; font: 600 10.5px var(--font-display); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+.tile .tl .tn { min-width: 0; }
+.tile .tl .chip { margin-left: 6px; text-transform: none; letter-spacing: 0; }
+.tile .tv { font-family: var(--font-display); font-weight: 800; font-size: 26px; line-height: 1.05; margin-top: 8px; font-variant-numeric: tabular-nums; }
+.tile .te { font: 12px var(--font-data); color: var(--ink-soft); margin-top: 2px; font-variant-numeric: tabular-nums; }
+.tile .tbar { position: relative; display: block; height: 6px; margin-top: 10px; background: color-mix(in srgb, var(--sea) 70%, var(--surface)); border-radius: 3px; }
+.tile .tbar span { position: absolute; top: 0; bottom: 0; border-radius: 3px; }
+.tile .tbar .z { width: 1.5px; margin-left: -0.75px; background: var(--ink-soft); z-index: 1; border-radius: 0; }
+details.tile.mini { padding: 8px 12px; }
+details.tile.mini > summary { display: flex; align-items: baseline; gap: 10px; }
+details.tile.mini .tl { flex: 1; }
+details.tile.mini .tv { font-size: 16px; margin: 0; color: var(--ink); }
+details.tile.mini .te { margin: 0; }
+details.tile.mini .xi { align-self: center; }
+.flags { display: flex; flex-wrap: wrap; gap: 6px; }
+details.flag { max-width: 100%; }
+details.flag[open] { flex-basis: 100%; }
+details.flag > summary { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px 4px 8px; font-size: 12.5px; line-height: 1.3; color: var(--ink); background: var(--warn-bg); }
+details.flag > summary:hover { border-color: var(--ink-soft); }
+details.flag .fi { flex: none; display: inline-grid; place-items: center; min-width: 16px; height: 16px; border-radius: 8px; font: 700 11px var(--font-display); color: var(--ink-soft); }
+details.flag.orange > summary { border-color: color-mix(in srgb, var(--rus) 60%, var(--line)); }
+details.flag.orange .fi { color: var(--rus-text, var(--rus)); }
+details.flag .xp-body { padding: 6px 4px 2px 10px; margin-left: 8px; border-left: 2px solid var(--line); }
+details.flag.orange .xp-body { border-left-color: var(--rus); }
+.pv-chart h3 { margin: 0; }
+.pc-h { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.pc-hint { font-size: 11.5px; color: var(--ink-soft); }
+.pc-axis { display: flex; justify-content: space-between; font: 10.5px var(--font-data); color: var(--ink-soft); padding: 0 6px; margin-bottom: 2px; }
+.pv-chart .parts { gap: 0; }
+.pv-chart details.part + details.part { border-top: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+.pv-chart details.part > summary .nm { font-weight: 500; }
+.pv-chart details.part > summary .nm::before { content: none; }
+.pv-chart details.part[open] > summary { background: var(--sea); }
+.pv-chart .mcard { margin: 4px 0 12px 6px; }
 /* Sources view: the method in four lines on top, and how and why for each flow */
 .method-top { border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; margin: 0 0 16px; max-width: 80ch; }
 .method-top ul { margin: 6px 0; padding-left: 20px; line-height: 1.5; font-size: 14.5px; }
@@ -618,7 +687,14 @@ details.allparts > summary { cursor: pointer; font-weight: 600; font-size: 13.5p
   .legend .ls { white-space: normal; }
   .view-inner { padding-bottom: 84px; }
   .pop { position: fixed; top: 64px; left: 8px; width: calc(100vw - 16px); max-height: calc(100dvh - 140px); }
-  details.part > summary { grid-template-columns: minmax(0, 1fr) 70px auto; }
+}
+/* round 18: a phone held sideways has too little height for a bottom sheet: the panel is a side sheet there, and the map
+   (with the country's own streams) stays visible beside it */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
+  .panel { top: 0; bottom: 0; left: auto; right: 0; width: min(380px, 52%); max-height: none; border-radius: 14px 0 0 14px; padding-bottom: 0; }
+  .panel[data-open="false"] { transform: translateX(105%); }
+  .panel[data-full="true"] { max-height: none; }
+  .sheet-handle { display: none; }
 }
 </style>
 
@@ -634,6 +710,8 @@ details.allparts > summary { cursor: pointer; font-weight: 600; font-size: 13.5p
     <!-- the label (with how to get at countries by keyboard) is set in applyLang -->
     <svg id="map" role="img" aria-label="World map coloured by the change in money flows since before the war. With a keyboard, use “Find your country” or the Ranking view."></svg>
     <canvas id="flows" aria-hidden="true"></canvas>
+    <!-- round 18: the moving dashes of the money streams, on a layer of their own so the map is not repainted every frame -->
+    <svg id="streamfx" aria-hidden="true"></svg>
     <!-- names of Ukraine and Russia, above the flow lines so they stay readable -->
     <svg id="labels" aria-hidden="true"></svg>
     <div class="view" id="view" hidden></div>
@@ -1548,6 +1626,7 @@ const mapEntities = () => Object.values(DATA);
 const svg = d3.select("#map");
 const g = svg.append("g");
 const lg = d3.select("#labels").append("g");   // country names, drawn above the flow canvas
+const sg = d3.select("#streamfx").append("g"); // round 18: the streams' moving dashes, a layer of their own
 const defs = svg.append("defs");
 const hatch = defs.append("pattern").attr("id", "hatch").attr("patternUnits", "userSpaceOnUse").attr("width", 6).attr("height", 6).attr("patternTransform", "rotate(45)");
 hatch.append("rect").attr("class", "hatch-bg").attr("width", 6).attr("height", 6);
@@ -1560,23 +1639,30 @@ const projection = d3.geoEqualEarth();
 const path = d3.geoPath(projection);
 let features = [], countryPaths, W = 0, H = 0, transform = d3.zoomIdentity;
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const stageEl = document.querySelector(".stage");
 const narrow = () => window.innerWidth <= 900;   // same breakpoint as the CSS: phones and tablets get the compact layout
-// round 17 (approved by the owner): the money streams are on by default, except on phones (a switch in Filters)
-const STREAMS_DEFAULT = !narrow();
+// round 17 (approved by the owner): the money streams are on by default; round 18 (owner: "the money flows are not
+// working on mobile"): on phones too, calmer there (fewer and thinner streams, see streamTop and drawStreams)
+const STREAMS_DEFAULT = true;
 state.streams = STREAMS_DEFAULT;
 
 const zoom = d3.zoom().scaleExtent([1, 14]).on("zoom", e => {
   transform = e.transform;
   g.attr("transform", e.transform);
   lg.attr("transform", e.transform);
+  sg.attr("transform", e.transform);
   lg.selectAll(".target-label").style("font-size", 11 / e.transform.k + "px").style("stroke-width", 2 / e.transform.k + "px");
   g.selectAll(".chpl").attr("transform", d => `translate(${d.x},${d.y}) scale(${1 / e.transform.k})`);
   g.selectAll(".remitm").attr("transform", d => `translate(${d.x},${d.y}) scale(${1 / e.transform.k}) translate(${REMIT_OFF},0)`);
   g.selectAll(".takenm").attr("transform", d => `translate(${d.x},${d.y}) scale(${1 / e.transform.k}) translate(${TAKEN_OFF},0)`);
   g.selectAll(".stream-target").attr("r", 3.5 / e.transform.k);
+  // round 18: the arrowheads (reduced motion) keep one size on screen; at a phone's zoom they had grown into blobs
+  defs.selectAll("marker.sarrow").attr("markerWidth", 8 / e.transform.k).attr("markerHeight", 8 / e.transform.k);
   if (reduceMotion) drawFlows(0);
 });
 svg.call(zoom).on("dblclick.zoom", null);
+// round 18: the streams' dashes pause while the map is dragged or zoomed, so panning stays smooth on phones
+zoom.on("start.fx", () => { stageEl.dataset.moving = "true"; }).on("end.fx", () => { stageEl.dataset.moving = "false"; });
 // fixed points: the middle of each country, clear of Crimea, the Black Sea and the flow bubbles around the capitals
 function labelPos(f) { return projection(f.id === "643" ? [45, 57] : [31.5, 49.3]); }
 
@@ -1586,8 +1672,9 @@ function layout() {
   projection.fitExtent([[10, 10], [W - 10, H - 10]], { type: "Sphere" });
   svg.attr("viewBox", [0, 0, W, H]);
   d3.select("#labels").attr("viewBox", [0, 0, W, H]);
+  d3.select("#streamfx").attr("viewBox", [0, 0, W, H]);
   zoom.translateExtent([[-W * 0.25, -H * 0.25], [W * 1.25, H * 1.25]]).extent([[0, 0], [W, H]]);
-  const cv = document.getElementById("flows"), dpr = window.devicePixelRatio || 1;
+  const cv = document.getElementById("flows"), dpr = Math.min(2, window.devicePixelRatio || 1);
   cv.width = W * dpr; cv.height = H * dpr;
   cv.getContext("2d").setTransform(dpr, 0, 0, dpr, 0, 0);
   if (countryPaths) {
@@ -1717,7 +1804,7 @@ function renderInfo() {
       <li class="orange">${t("<b>Orange is mostly fuel buying, not siding with Russia.</b>")}</li>
     </ol>
     <p>${t("Grey is no clear change. Faded colours lean one way but are too close to call: the likely range, or another reasonable method choice, crosses zero ({n} of {all} economies over {min} GDP). They are not ranked, and a number too close to call gets no stream.", { n: unc, all: big.length, min: tight(money(num(MIN_GDP_RANK), "bn")) })}</p>
-    <p>${t("The streams show the same two numbers in euros, not gross trade: blue to Kyiv, support for Ukraine; orange to Moscow, how much more a country paid Russia than without the war. The 12 largest each way; hover or pick a country for its own.")}</p>
+    <p>${t("The streams show the same two numbers in euros, not gross trade: blue to Kyiv, support for Ukraine; orange to Moscow, how much more a country paid Russia than without the war. The {n} largest each way; hover or tap a country for its own.", { n: streamTop() })}</p>
     ${state.lens !== "net" && titleNote() ? `<p class="sub">${titleNote()}</p>` : ""}
     <p class="sub">${t("Hover or tap a country for its two numbers; click it for everything behind them. Filters holds the views, the measure, what's counted, countries and years, the rankings and the pages. Drag to move, scroll to zoom.")}</p>
     <p class="sub"><button class="linkbtn" data-goview="how">${t("How it works")}</button> · <button class="linkbtn" data-goview="sources">${t("Sources and method")}</button> · <button class="linkbtn" data-goview="table">${t("Table and downloads")}</button></p>`;
@@ -1810,11 +1897,12 @@ function anchorOf(f) {
 // it paid Russia than without the war in € (the negative side of "kept from Russia"). The map's own two numbers, from
 // calc(), never gross trade; a direction that is too close to call has no stream. By default the 12 largest each way;
 // hovering or picking a country shows its own, a highlight shows those of its countries. Slow moving dashes; static
-// arrows under prefers-reduced-motion. Off by default on phones (STREAMS_DEFAULT), switched in Filters
-const STREAM_TOP = 12;
+// arrows under prefers-reduced-motion. Switched in Filters. Round 18 (owner): on by default on phones too, but calmer:
+// the 7 largest each way and thinner lines on a small screen
+const streamTop = () => (narrow() ? 7 : 12);
 let gStreams = null, hoverN = null, streamCache = null;
 function streamLists() {
-  const key = [state.year, state.netBack, offKey(), state.lens, state.region, state.size, typeof viewState !== "undefined" ? viewState.group : ""].join("|");
+  const key = [state.year, state.netBack, offKey(), state.lens, state.region, state.size, typeof viewState !== "undefined" ? viewState.group : "", streamTop()].join("|");
   if (streamCache && streamCache.key === key) return streamCache;
   const y = state.year, pool = Object.values(DATA).filter(c => c.gdp && c.n && featureOf[c.n] && inFilter(c));
   const showUa = state.lens === "net" || state.lens === "support", showRu = state.lens === "net" || state.lens === "payments";
@@ -1826,7 +1914,8 @@ function streamLists() {
   }
   ua.sort((a, b) => b.v - a.v); ru.sort((a, b) => b.v - a.v);
   const max = Math.max(1e-9, ...ua.map(r => r.v), ...ru.map(r => r.v));
-  return (streamCache = { key, ua, ru, max, top: new Set(ua.slice(0, STREAM_TOP).concat(ru.slice(0, STREAM_TOP))) });
+  const n = streamTop();
+  return (streamCache = { key, ua, ru, max, top: new Set(ua.slice(0, n).concat(ru.slice(0, n))) });
 }
 function streamsData() {
   const L = streamLists(), focus = state.selected || hoverN, hs = highlightSet();
@@ -1842,27 +1931,50 @@ function drawStreams() {
   if (!countryPaths) return;
   if (!gStreams) {
     gStreams = g.append("g").attr("class", "streams");
-    for (const [id, col] of [["ua", "var(--ukr)"], ["ru", "var(--rus)"]]) defs.append("marker").attr("id", "arrow-" + id).attr("viewBox", "0 0 10 10").attr("refX", 9).attr("refY", 5)
-      .attr("markerWidth", 7).attr("markerHeight", 7).attr("markerUnits", "userSpaceOnUse").attr("orient", "auto").append("path").attr("d", "M0,0 L10,5 L0,10 z").style("fill", col);
+    for (const [id, col] of [["ua", "var(--ukr)"], ["ru", "var(--rus)"]]) defs.append("marker").attr("id", "arrow-" + id).attr("class", "sarrow").attr("viewBox", "0 0 10 10").attr("refX", 9).attr("refY", 5)
+      .attr("markerWidth", 8 / (transform ? transform.k : 1)).attr("markerHeight", 8 / (transform ? transform.k : 1)).attr("markerUnits", "userSpaceOnUse").attr("orient", "auto").append("path").attr("d", "M0,0 L10,5 L0,10 z").style("fill", col);
   }
   const on = state.streams && state.year > 2021;
   const { list, max } = on ? streamsData() : { list: [], max: 1 };
-  const w = v => Math.max(1, Math.sqrt(v / max) * 11);
+  const small = narrow(), w = v => Math.max(small ? 0.8 : 1, Math.sqrt(v / max) * (small ? 5.5 : 11));
   const end = r => projection(r.to === "ua" ? KYIV : MOSCOW), from = r => projection(featureOf[r.c.n]._anchor || (featureOf[r.c.n]._anchor = anchorOf(featureOf[r.c.n])));
   const col = r => (r.to === "ua" ? "var(--ukr)" : "var(--rus)");
   const sel = gStreams.selectAll("g.stream").data(list, r => r.c.n + r.to);
   sel.exit().remove();
   const en = sel.enter().append("g").attr("class", "stream");
-  en.append("path").attr("class", "stream-base"); en.append("path").attr("class", "stream-flow"); en.append("path").attr("class", "stream-arrow");
+  en.append("path").attr("class", "stream-base"); en.append("path").attr("class", "stream-arrow");
   const all = en.merge(sel);
+  // the moving dashes on the overlay layer, keyed like the streams
+  const fx = sg.selectAll("path.stream-flow").data(list, r => r.c.n + r.to);
+  fx.exit().remove();
+  const fxAll = fx.enter().append("path").attr("class", "stream-flow").merge(fx);
   all.select(".stream-base").attr("d", r => streamArc(from(r), end(r))).style("stroke", col).style("stroke-width", r => w(r.v) + "px")
-    .on("pointermove", (e, r) => showTip(e, tipHtml(r.c, r.c.name))).on("pointerleave", () => (tip.hidden = true)).on("click", (e, r) => select(r.c.n, false));
-  all.select(".stream-flow").attr("d", r => streamArc(from(r), end(r))).style("stroke", col).style("stroke-width", r => Math.max(1.2, w(r.v) * 0.55) + "px").style("animation-duration", r => 6 + (+r.c.n % 5) + "s");
+    .on("pointermove", (e, r) => showTip(e, tipHtml(r.c, r.c.name))).on("pointerleave", () => (tip.hidden = true)).on("click", (e, r) => { select(r.c.n, false); frameStreams(r.c.n); });
+  fxAll.attr("d", r => streamArc(from(r), end(r))).style("stroke", col).style("stroke-width", r => Math.max(small ? 1 : 1.2, w(r.v) * 0.55) + "px").style("animation-duration", r => 6 + (+r.c.n % 5) + "s");
   all.select(".stream-arrow").attr("d", r => streamArc(from(r), end(r))).style("fill", "none").style("stroke", "none").attr("marker-end", r => `url(#arrow-${r.to})`);
   const k = transform ? transform.k : 1;
   gStreams.selectAll("circle.stream-target").data(list.length ? [KYIV, MOSCOW] : []).join("circle").attr("class", "stream-target")
     .attr("cx", d => projection(d)[0]).attr("cy", d => projection(d)[1]).attr("r", 3.5 / k);
   gStreams.raise();
+}
+// round 18 (owner: the streams did not work on phones): the country panel is a bottom sheet there (a side sheet on a
+// phone held sideways) and covered a tapped country's own streams. On a small screen, when the country, Kyiv or Moscow
+// is not in the part of the map still visible, the map moves (and zooms out if needed) to show them
+function frameStreams(id) {
+  if (!narrow() || !state.streams || state.year < 2022 || !featureOf[id] || !DATA[id]) return;
+  const f = featureOf[id], a = projection(f._anchor || (f._anchor = anchorOf(f)));
+  const L = streamLists(), ends = L.ua.concat(L.ru).filter(r => r.c.n === id).map(r => projection(r.to === "ua" ? KYIV : MOSCOW));
+  if (!ends.length) return;
+  const side = matchMedia("(orientation: landscape) and (max-height: 500px)").matches;
+  const hdr = document.querySelector(".hdr"), top = hdr ? hdr.getBoundingClientRect().bottom - svg.node().getBoundingClientRect().top + 8 : 8;
+  const box = side ? [8, top, W - panel.offsetWidth - 8, H - 8] : [8, top, W - 8, H - panel.offsetHeight - 8];
+  const pts = [a, ...ends].map(p => transform.apply(p));
+  if (pts.every(([x, y]) => x >= box[0] + 12 && x <= box[2] - 12 && y >= box[1] + 12 && y <= box[3] - 12)) return;
+  const xs = [a, ...ends].map(p => p[0]), ys = [a, ...ends].map(p => p[1]);
+  const vw = Math.max(40, box[2] - box[0]), vh = Math.max(40, box[3] - box[1]);
+  const k = Math.max(1, Math.min(6, 0.75 / Math.max((Math.max(...xs) - Math.min(...xs)) / vw, (Math.max(...ys) - Math.min(...ys)) / vh, 1e-6)));
+  const cx = (Math.max(...xs) + Math.min(...xs)) / 2, cy = (Math.max(...ys) + Math.min(...ys)) / 2;
+  svg.transition().duration(reduceMotion ? 0 : 600).call(zoom.transform, d3.zoomIdentity.translate((box[0] + box[2]) / 2, (box[1] + box[3]) / 2).scale(k).translate(-cx, -cy));
 }
 function hoverStreams(n) {
   if (n === hoverN) return;
@@ -1919,10 +2031,12 @@ function drawFlows(time) {
     }
   }
 }
+// round 18: the canvas loop runs only while the gross trade flows are on and the page is visible (it used to clear an
+// empty canvas every frame); the streams' CSS dashes pause while the page is hidden
 let running = false;
-function loop(t) { drawFlows(t); if (running) requestAnimationFrame(loop); }
-function startLoop() { if (reduceMotion || running) return; running = true; requestAnimationFrame(loop); }
-document.addEventListener("visibilitychange", () => { if (document.hidden) running = false; else startLoop(); });
+function loop(t) { if (!running) return; if (!state.flows || document.hidden) { running = false; return; } drawFlows(t); requestAnimationFrame(loop); }
+function startLoop() { if (reduceMotion || running || !state.flows || document.hidden) return; running = true; requestAnimationFrame(loop); }
+document.addEventListener("visibilitychange", () => { document.documentElement.dataset.hidden = String(document.hidden); if (document.hidden) running = false; else startLoop(); });
 
 // ===== Tooltip =====
 const tip = document.getElementById("tip");
@@ -2121,7 +2235,7 @@ function wirePanel() {
   if (cmp) cmp.onchange = () => { if (cmp.value) { state.compare = cmp.value; state.panel = "compare"; renderPanel(); } };
   const back = q("#compare-back");
   if (back) back.onclick = () => { state.panel = "country"; state.compare = null; renderPanel(); };
-  panel.querySelectorAll("details.part, #allparts, #showmore, details.pfold").forEach(d => d.addEventListener("toggle", () => { const id = d.dataset.part ? "part-" + d.dataset.part : d.id; if (d.open) panelOpen.add(id); else panelOpen.delete(id); }));
+  panel.querySelectorAll("details.part, #allparts, #showmore, details.pfold, details.xp").forEach(d => d.addEventListener("toggle", () => { const id = d.dataset.part ? "part-" + d.dataset.part : d.id; if (d.open) panelOpen.add(id); else panelOpen.delete(id); }));
   const sh = q("#share-btn");
   if (sh) sh.onclick = () => shareCountry(DATA[state.selected], sh);
 }
@@ -2575,100 +2689,140 @@ function methodCard(c, p) {
     ${f ? `<div class="links">${ext(DOCS + "method/" + (PART_DOC[p.k] || f.method), t("Method page"))}${ext(DOCS + "trace.md#" + f.doc, t("Full trace"))}<a href="#view=sources&amp;flow=${f.id}" data-flow="${f.id}">${t("All sources for this flow")}</a></div>` : ""}
   </div>`;
 }
-function partRow(c, p, max, plain) {
-  const g = v => scaled(c, v, "gdp") ?? 0, x = a => 50 + Math.max(-50, Math.min(50, (a / max) * 50));
-  const v = g(p.v), lo = g(p.lo), hi = g(p.hi), id = "part-" + p.k;
+// one row of the parts chart (round 18, owner: "the biggest parts ... that visual stuff is way more interesting"): a short
+// label and its value on one line, then a full-width bar on one shared zero line, blue toward Ukraine and orange toward
+// Russia, with the likely range as a thin outline. Tapping the row opens how / why / sources in place
+// a shared zero line placed so that the largest value each way just fits: all-positive parts use the full width
+function barAxis(vals) {
+  const neg = Math.max(0, ...vals.map(v => -v)), pos = Math.max(0, ...vals.map(v => v)), tot = neg + pos || 1;
+  const x = v => Math.max(0, Math.min(100, ((neg + v) / tot) * 100));
+  return { z: x(0), x };
+}
+const barHtml = (ax, v, col, lo, hi) => `<span class="z" style="left:${ax.z}%"></span><span class="b" style="left:${Math.min(ax.z, ax.x(v))}%;width:${Math.max(0.8, Math.abs(ax.x(v) - ax.z))}%;background:${col}"></span>${lo == null ? "" : `<i style="left:${ax.x(Math.min(lo, hi))}%;width:${Math.max(0.5, Math.abs(ax.x(hi) - ax.x(lo)))}%"></i>`}`;
+function partRow(c, p, ax, plain) {
+  const g = v => scaled(c, v, "gdp") ?? 0, id = "part-" + p.k;
   return `<details class="part" data-part="${p.k}"${panelOpen.has(id) ? " open" : ""}><summary><span class="nm">${plain ? plainName(p) : p.label + chip(p.cert)}</span>
-    <span class="pbar" aria-hidden="true"><span class="z"></span><span style="left:${Math.min(50, x(v))}%;width:${Math.abs(x(v) - 50)}%;background:${partCol(p)}"></span><i style="left:${x(Math.min(lo, hi))}%;width:${Math.max(0.5, Math.abs(x(hi) - x(lo)))}%"></i></span>
-    <span class="pv">${fmtMeasure(c, p.v, "gdp", true)}<small>${eur(p.v, true)}</small></span></summary>${methodCard(c, p)}</details>`;
+    <span class="pv">${fmtMeasure(c, p.v, "gdp", true)}<small>${eur(p.v, true)}</small></span>
+    <span class="pbar" aria-hidden="true">${barHtml(ax, g(p.v), partCol(p), g(p.lo), g(p.hi))}</span></summary>${methodCard(c, p)}</details>`;
 }
 // Round 17 (owner: the panel "has all the information (some duplicated)"): one hierarchy, each number once.
-// 1 the header: the name, a one-sentence lead in words and the net with its range; 2 the two parts, each with its value,
-// range and grade (and Russian money frozen); 3 at most four notes on what changes the meaning; 4 the five biggest parts,
-// each opening its method, and the other parts; 5 the rest in folded sections. The lead says which part the net mostly
-// is in words only: the numbers are in the blocks below it
+// Round 18 (owner: "a lot of text ... I like just numbers. Make it less text-heavy, more visual and structured, very easy
+// on the eyes at first. Keep all the explanations, but hide them: click to expand"): the panel opens with numbers and
+// bars only. 1 the net as one big number with one compact line; 2 the two parts as two tiles (and Russian money frozen
+// as a slim third one where it exists); 3 what changes the meaning, as small flags; 4 the biggest parts as a diverging
+// bar chart. Every sentence (the lead, the parts in words, the ranges, the gas Russia cut off, each flag's meaning, each
+// part's method) is one tap away, in place; the rest stays in folded sections at the bottom
+const xp = (cls, id, summary, body) => `<details class="xp ${cls}" id="${id}"${panelOpen.has(id) ? " open" : ""}><summary>${summary}</summary><div class="xp-body">${body}</div></details>`;
+const LETTERS_KEY = () => t("Letters: A reported, B measured estimate, C modelled estimate, D rough indication. A * marks a 2026 value estimated from the 2025 rate.");
+// the lead in words (round 17), kept for the net's explanation; the flags below carry its parts as short labels
 function leadLine(c, k) {
   const ua = k.uaBal, ru = k.rusBal, tot = Math.abs(ua) + Math.abs(ru) || 1;
   const kind = Math.abs(ua) / tot >= 0.35 && Math.abs(ru) / tot >= 0.35 && Math.sign(ua) === Math.sign(ru) ? "About half support for Ukraine, half kept from Russia."
     : Math.abs(ru) >= Math.abs(ua) ? (ru >= 0 ? "Mostly kept from Russia." : "Mostly toward Russia.") : "Mostly support for Ukraine.";
+  const L = leadParts(c, k);
+  if (L.cause && kind === "Mostly toward Russia.") return t("Mostly toward Russia ({cause}).", { cause: L.cause }) + (L.flat ? " " + t("Its volumes barely changed: it is the price.") : "") + (L.fz ? " " + t("Much of the net is Russian money frozen here: the return Russia lost on its reserves, not a payment.") : "");
+  const why = L.cause ? t("Toward Russia: {cause}.", { cause: L.cause }) : L.why ? t(L.why) : "";
+  return t(kind) + (why ? " " + why : "") + (L.flat ? " " + t("Its volumes barely changed: it is the price.") : "") + (L.fz ? " " + t("Much of the net is Russian money frozen here: the return Russia lost on its reserves, not a payment.") : "");
+}
+// what the lead says beyond the numbers, as data: the gas Russia cut off, sanctions or own choice, the cause toward
+// Russia, "it is the price", and Russian money frozen
+function leadParts(c, k) {
+  const ua = k.uaBal, ru = k.rusBal, out = { why: "", whyKey: "", cause: "", flat: false, fz: false };
   const top = mainPart(k.shiftParts.filter(RUS_PART), ru), paid = k.shiftParts.find(p => p.k === "paid");
-  const flat = top && top.k === "windfall" && ru < 0 && (!paid || Math.abs(paid.v) < 0.1 * Math.abs(ru)) ? " " + t("Its volumes barely changed: it is the price.") : "";
-  const fz = Math.abs(k.frozen) >= 0.2 * (Math.abs(ua) + Math.abs(ru) + Math.abs(k.frozen)) && Math.abs(k.frozen) >= 0.0005 ? " " + t("Much of the net is Russian money frozen here: the return Russia lost on its reserves, not a payment.") : "";
-  // what the money kept from Russia mostly is, or what moved money toward Russia, in words (the numbers are in the parts)
+  out.flat = !!(top && top.k === "windfall" && ru < 0 && (!paid || Math.abs(paid.v) < 0.1 * Math.abs(ru)));
+  out.fz = Math.abs(k.frozen) >= 0.2 * (Math.abs(ua) + Math.abs(ru) + Math.abs(k.frozen)) && Math.abs(k.frozen) >= 0.0005;
   const sp = sanctionSplit(c, k);
-  let why = "";
-  if (ru > 0 && sp) why = k.rusCut >= 0.25 * ru ? t(oilCut(c) ? "Much of the money kept from Russia is gas and oil Russia cut off itself." : "Much of the money kept from Russia is gas Russia cut off itself.")
-    : sp.mand >= 0.5 ? t("Most of the money kept from Russia was required by sanctions.") : sp.own >= 0.5 ? t("Most of the money kept from Russia was its own choice.") : "";
-  if (ru < 0 && rusWords(c, k).tr0.startsWith(t("more paid to Russia"))) {
-    const g = gainCause(c, k);
-    if (g && kind === "Mostly toward Russia.") return t("Mostly toward Russia ({cause}).", { cause: g }) + flat + fz;
-    if (g) why = t("Toward Russia: {cause}.", { cause: g });
+  if (ru > 0 && sp) {
+    if (k.rusCut >= 0.25 * ru) { out.whyKey = "gascut"; out.why = oilCut(c) ? "Much of the money kept from Russia is gas and oil Russia cut off itself." : "Much of the money kept from Russia is gas Russia cut off itself."; }
+    else if (sp.mand >= 0.5) { out.whyKey = "sanct"; out.why = "Most of the money kept from Russia was required by sanctions."; }
+    else if (sp.own >= 0.5) { out.whyKey = "own"; out.why = "Most of the money kept from Russia was its own choice."; }
   }
-  return t(kind) + (why ? " " + why : "") + flat + fz;
+  if (ru < 0 && rusWords(c, k).tr0.startsWith(t("more paid to Russia"))) out.cause = gainCause(c, k);
+  return out;
 }
-// "What changes the meaning here": at most four short notes, the orange caveat in orange. The sanctions split and the
-// critical goods have their own folded sections below
-function meaningNotes(c, k, y) {
-  const out = [];
-  if ((c.gdp || 0) < MIN_GDP_RANK) out.push(["", t("A small economy (GDP {v}): small sums move its % a lot. Not ranked, and drawn in the lightest shade only.", { v: eur(c.gdp) })]);
-  if (uncertain(c, y, "net")) out.push(["", t("Too close to call: its likely range, or another reasonable method choice, crosses zero. Not ranked, and shown faded on the map.")]);
-  if (isOrange(c, k, y)) out.push(["orange", orangeCaveat(c, k)]);
-  if (k.earner) out.push(["", t("It earned more supplying Ukraine's war effort than it gave: grey on the map, not money toward Russia.")]);
-  if (fairnessNote(c, k)) out.push(["fair", t("Most of this is fuel and food bought from Russia. Fuel is fungible and sold through many traders: the figure reflects what this economy bought, not a policy toward Russia or Ukraine.")]);
-  if (k.rusBal > 0 && Math.abs(k.uaBal) > 0) out.push(["", t("The net adds two different things: help given to Ukraine and money kept from Russia. Much of what one country stopped paying, Russia sold to others.")]);
-  return out.slice(0, 4);
+// "What changes the meaning here" (round 18): small flags, an icon and a few words; each opens its one-line meaning
+const ICON = { warn: "⚠︎", near: "≈", small: "◔", cut: "✂︎", law: "§", own: "✓︎", price: "€", ice: "❄︎", plus: "+", info: "i" };
+function meaningFlags(c, k, y) {
+  const out = [], L = leadParts(c, k);
+  const add = (key, icon, label, body, cls = "", fair = false) => out.push({ key, icon, label, body, cls, fair });
+  if (uncertain(c, y, "net")) add("unc", ICON.near, t("too close to call"), t("Too close to call: its likely range, or another reasonable method choice, crosses zero. Not ranked, and shown faded on the map."));
+  if ((c.gdp || 0) < MIN_GDP_RANK) add("small", ICON.small, t("small economy"), t("A small economy (GDP {v}): small sums move its % a lot. Not ranked, and drawn in the lightest shade only.", { v: eur(c.gdp) }));
+  const fair = fairnessNote(c, k) ? t("Most of this is fuel and food bought from Russia. Fuel is fungible and sold through many traders: the figure reflects what this economy bought, not a policy toward Russia or Ukraine.") : "";
+  let fairUsed = false;
+  if (isOrange(c, k, y)) {
+    const cav = orangeCaveat(c, k), armed = armedMostly(k), sales = !armed && cav === t("Orange here is mostly earnings from sales to Russia, not siding with Russia.");
+    const label = armed ? t("weapons and troops for Russia") : sales ? t("sales to Russia, not siding with it") : t("fuel buying, not policy");
+    if (!armed && !sales && fair) fairUsed = true;
+    add("orange", ICON.warn, label, cav + (fairUsed ? " " + fair : ""), "orange", fairUsed);
+  }
+  if (L.cause) add("cause", ICON.warn, L.cause, keptWords(c, k, "gdp", true).replace(/^./, m => m.toUpperCase()) + ".", "orange");
+  if (L.whyKey === "gascut") add("gascut", ICON.cut, t(oilCut(c) ? "gas and oil cut off by Russia" : "gas cut off by Russia"), t(L.why) + " " + t(oilCut(c) ? "of which gas and pipeline oil Russia cut off itself, or gas that stopped with the end of transit: {v}" : "of which gas Russia cut off itself or that stopped with the end of transit: {v}", { v: eur(k.rusCut) }) + ref(["gas_cuts"]));
+  if (L.whyKey === "sanct") add("sanct", ICON.law, t("mostly sanctions"), t(L.why) + " " + sanctionNote(c, k).replace(/^<p class="note">|<\/p>$/g, ""));
+  if (L.whyKey === "own") add("own", ICON.own, t("mostly its own choice"), t(L.why) + " " + sanctionNote(c, k).replace(/^<p class="note">|<\/p>$/g, ""));
+  if (L.flat) add("price", ICON.price, t("the price, not the volumes"), t("Its volumes barely changed: it is the price."));
+  if (L.fz) add("frozen", ICON.ice, t("mostly frozen Russian money"), t("Much of the net is Russian money frozen here: the return Russia lost on its reserves, not a payment."));
+  if (k.earner) add("earner", ICON.warn, t("earned from the war effort"), t("It earned more supplying Ukraine's war effort than it gave: grey on the map, not money toward Russia."));
+  if (fair && !fairUsed) add("fair", ICON.info, t("fuel and food, not policy"), fair, "", true);
+  if (k.rusBal > 0 && Math.abs(k.uaBal) > 0) add("two", ICON.plus, t("two different things added"), t("The net adds two different things: help given to Ukraine and money kept from Russia. Much of what one country stopped paying, Russia sold to others."));
+  return out;
 }
-// the two parts, each once: value (% of GDP and €), bar, what it is in words, likely range, grade and the average year
-function twoParts(c, k, y) {
+// the net: one big number, its unit, one compact line; the lead, what the net adds, the certainty and the range behind a tap
+function netBlock(c, k, y) {
+  const gr = grades(c, y), g = v => fmtMeasure(c, v, "gdp", true), unc = uncertain(c, y, "net");
+  const cls = k.earner ? "mid" : unc ? (k.shift >= 0 ? "fpos" : "fneg") : k.shift >= 0 ? "pos" : "neg";
+  const totalName = Math.abs(k.frozen) >= 0.0005 ? t("Net: support for Ukraine plus kept from Russia plus Russian money frozen") : t("Net: support for Ukraine plus kept from Russia");
+  const rangeInfo = t("The likely range covers the uncertainty of the data and the models given the method: each part's low and high value, combined as errors, correlated where parts share inputs. It is calibrated by judgement to about 90%, not measured. How much the method choices themselves move the result is the method band below.");
+  const sum = `<span class="nlbl">${t("Net")}${chip(gr.net)}${unc ? `<span class="unc-tag">${t("too close to call")}</span>` : ""}<span class="xi" aria-hidden="true"></span></span>
+    <span class="nbig ${cls}">${g(k.shift)}</span><span class="nunit">${t("of a year's GDP since 2022")}</span>
+    <span class="nline"><span>${eur(k.shift, true)}</span> · <span>${t("likely {lo} to {hi}", { lo: g(k.shiftLo), hi: g(k.shiftHi) })}</span> · <span>${t("≈ {v}/yr", { v: perYear(c, k.shift, y) })}</span></span>`;
+  const body = `<p class="lead">${leadLine(c, k)}</p><p><b>${totalName}</b>: ${g(k.shift)} ${t("of one year's GDP, in total since 2022")} (${eur(k.shift, true)}).</p>
+    <p>${t("certainty: {what}", { what: certWords(gr.net) })} · ${t("about {v} a year", { v: perYear(c, k.shift, y) })}</p><p class="key">${rangeInfo}</p><p class="key">${LETTERS_KEY()}</p>`;
+  return xp("pnet", "x-net", sum, body);
+}
+// the two parts as two tiles (round 18): the label with its grade, the number, the euros and a small bar; the words,
+// the likely range, the average year, the gas Russia cut off and the refugees not counted are behind a tap
+function partTiles(c, k, y) {
   const g = v => fmtMeasure(c, v, "gdp", true), gr = grades(c, y);
-  const m = Math.max(Math.abs(k.uaBal), Math.abs(k.rusBal), 1e-9), x = v => 50 + Math.max(-50, Math.min(50, (v / m) * 50));
+  const ax = barAxis([k.uaBal, k.rusBal]);
   const unc = q => (uncertain(c, y, q) ? `<span class="unc-tag" title="${t("The likely range or the method band crosses zero: this number is not ranked.")}">${t("direction uncertain")}</span>` : "");
   const col = (v, q, neg) => { const z = v >= 0 ? "var(--ukr)" : neg; return uncertain(c, y, q) ? `color-mix(in srgb, ${z} 50%, var(--mid))` : z; };
-  const bar = (v, cl) => `<span class="tbar" aria-hidden="true"><span class="z"></span><span style="left:${Math.min(50, x(v))}%;width:${Math.abs(x(v) - 50)}%;background:${cl}"></span></span>`;
+  const bar = (v, cl) => `<span class="tbar" aria-hidden="true">${barHtml(ax, v, cl)}</span>`;
   const ua = !state.netBack ? t("aid, refugees, loans as gifts and purchases from Ukraine (money flowing back not subtracted)")
     : !k.earnerUa ? t("Net contributing: gave {gave}, earned back {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) })
     : t("Net earning from the war effort: gave {gave}, earned {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) });
-  // in words only: the amounts in brackets are the part's own number (in the breakdown) and this total (shown above it)
-  // the lead names the cause in words; the card keeps only what the lead does not say
   const w = rusWords(c, k), ru = w.tr0.startsWith(t("more paid to Russia")) ? t("more paid to Russia")
     : k.rusBal > 0 && k.rusCut >= 0.4 * k.rusBal ? t("less paid to Russia") : w.tr0.replace(/\s*\([^()]*\)\s*$/, "");
-  const cut = k.rusCut > 0.005 ? `<div class="s">${t(oilCut(c) ? "of which gas and pipeline oil Russia cut off itself, or gas that stopped with the end of transit: {v}" : "of which gas Russia cut off itself or that stopped with the end of transit: {v}", { v: eur(k.rusCut) })}${ref(["gas_cuts"])}</div>` : "";
-  const rx = c.ref_excluded ? (() => { const v = c.ref_excluded.years.slice(1, yi(y) + 1).reduce((a, b) => a + b, 0); return v > 0.0005 ? `<div class="s">${t("Hosted Ukrainian refugees ({v}), not counted as support: co-belligerent.")}${ref(c.ref_excluded.src)}</div>` : ""; })() : "";
-  const card = (name, q, v, lo, hi, cls, cl, words, extra) => `<div class="p2 ${cls}">
-      <div class="p2h"><span class="lbl">${name}</span>${chip(gr[q])}${unc(q)}</div>
-      <div class="p2v"><span class="num" style="color:${cl}">${g(v)}</span><span class="eur">${eur(v, true)}</span></div>${bar(v, cl)}
-      <div class="s">${words}</div>${extra}
-      <div class="s rng">${t("Likely range {lo} to {hi}", { lo: g(lo), hi: g(hi) })} · ${t("about {v} a year", { v: perYear(c, v, y) })}</div></div>`;
-  return `<div class="parts2">
-    ${card(t("Support for Ukraine"), "ua", k.uaBal, k.uaLo, k.uaHi, k.earnerUa ? "earn" : "", col(k.uaBal, "ua", "var(--ink-soft)"), ua, rx)}
-    ${card(t("Kept from Russia"), "rus", k.rusBal, k.rusLo, k.rusHi, "", col(k.rusBal, "rus", "var(--rus-text, var(--rus))"), ru, cut)}
-  </div>${frozenLine(c, k)}`;
+  const cutTxt = k.rusCut > 0.005 ? `<p>${t(oilCut(c) ? "of which gas and pipeline oil Russia cut off itself, or gas that stopped with the end of transit: {v}" : "of which gas Russia cut off itself or that stopped with the end of transit: {v}", { v: eur(k.rusCut) })}${ref(["gas_cuts"])}</p>` : "";
+  const rx = c.ref_excluded ? (() => { const v = c.ref_excluded.years.slice(1, yi(y) + 1).reduce((a, b) => a + b, 0); return v > 0.0005 ? `<p>${t("Hosted Ukrainian refugees ({v}), not counted as support: co-belligerent.")}${ref(c.ref_excluded.src)}</p>` : ""; })() : "";
+  const tile = (id, name, q, v, lo, hi, cls, cl, words, extra) => xp("tile " + cls, "x-" + id,
+    `<span class="tl"><span class="tn">${name}</span>${chip(gr[q])}<span class="xi" aria-hidden="true"></span></span><span class="tv" style="color:${cl}">${g(v)}</span><span class="te">${eur(v, true)}</span>${bar(v, cl)}`,
+    `${unc(q) ? `<p>${unc(q)}</p>` : ""}<p>${words}</p>${extra}<p>${t("Likely range {lo} to {hi}", { lo: g(lo), hi: g(hi) })} · ${t("about {v} a year", { v: perYear(c, v, y) })}</p>`);
+  let frozen = "";
+  if (Math.abs(k.frozen) >= 0.0005) frozen = xp("tile mini", "x-frozen", `<span class="tl"><span class="tn">${t("Russian money frozen")}</span><span class="xi" aria-hidden="true"></span></span><span class="tv">${g(k.frozen)}</span><span class="te">${eur(k.frozen, true)}</span>`, frozenLine(c, k));
+  return `<div class="tiles">
+    ${tile("ua", t("Support for Ukraine"), "ua", k.uaBal, k.uaLo, k.uaHi, k.earnerUa ? "earn" : "", col(k.uaBal, "ua", "var(--ink-soft)"), ua, rx)}
+    ${tile("rus", t("Kept from Russia"), "rus", k.rusBal, k.rusLo, k.rusHi, "", col(k.rusBal, "rus", "var(--rus-text, var(--rus))"), ru, cutTxt)}
+  </div>${frozen}`;
 }
+const PARTS_SHOWN = 7;
 function firstLayer(c, k, y) {
-  const gr = grades(c, y), g = v => fmtMeasure(c, v, "gdp", true), unc = uncertain(c, y, "net");
   const parts = k.shiftParts.concat(k.backShift);
-  const max = Math.max(0.01, ...parts.map(p => Math.max(Math.abs(scaled(c, p.lo, "gdp") ?? 0), Math.abs(scaled(c, p.hi, "gdp") ?? 0))));
-  const top5 = parts.filter(p => Math.abs(scaled(c, p.v, "gdp") ?? 0) >= 0.005).sort((a, b) => Math.abs(b.v) - Math.abs(a.v)).slice(0, 5);
-  const rest = parts.filter(p => !top5.includes(p));
-  const group = (title, list) => (list.length ? `<p class="grp">${title}</p>${list.map(p => partRow(c, p, max, false)).join("")}` : "");
-  const notes = meaningNotes(c, k, y);
-  const totalName = Math.abs(k.frozen) >= 0.0005 ? t("Net: support for Ukraine plus kept from Russia plus Russian money frozen") : t("Net: support for Ukraine plus kept from Russia");
-  const rangeInfo = t("The likely range covers the uncertainty of the data and the models given the method: each part's low and high value, combined as errors, correlated where parts share inputs. It is calibrated by judgement to about 90%, not measured. How much the method choices themselves move the result is the method band below.");
+  const ax = barAxis(parts.map(p => scaled(c, p.v, "gdp") ?? 0).concat([0.01]));
+  const top = parts.filter(p => Math.abs(scaled(c, p.v, "gdp") ?? 0) >= 0.005).sort((a, b) => Math.abs(b.v) - Math.abs(a.v)).slice(0, PARTS_SHOWN);
+  const rest = parts.filter(p => !top.includes(p));
+  const group = (title, list) => (list.length ? `<p class="grp">${title}</p>${list.map(p => partRow(c, p, ax, false)).join("")}` : "");
+  const flags = meaningFlags(c, k, y);
   return `${custom() ? `<div class="custom">${customNote()}</div>` : ""}
-    <section class="section total"><p class="lead">${leadLine(c, k)}</p><h3>${totalName}</h3>
-      <div><span class="n ${k.earner ? "mid" : unc ? (k.shift >= 0 ? "fpos" : "fneg") : k.shift >= 0 ? "pos" : "neg"}">${g(k.shift)}</span><span class="u">${t("of one year's GDP, in total since 2022")}</span>${unc ? `<span class="unc-tag">${t("too close to call")}</span>` : ""}</div>
-      <div class="big-cap">${eur(k.shift, true)} · ${t("likely {lo} to {hi}", { lo: g(k.shiftLo), hi: g(k.shiftHi) })} <span class="info-i" title="${rangeInfo}">ⓘ</span> · ${t("certainty: {what}", { what: certWords(gr.net) })} · ${t("about {v} a year", { v: perYear(c, k.shift, y) })}</div>
-    </section>
-    <section class="section"><h3>${t("The two parts")}</h3>${twoParts(c, k, y)}</section>
-    ${notes.length ? `<section class="section meaning"><h3>${t("What changes the meaning here")}</h3><ul>${notes.map(([cl, x]) => `<li class="${cl}">${x}</li>`).join("")}</ul></section>` : ""}
-    <section class="section"><h3>${t("The biggest parts · open one for how it is calculated")}</h3>
-      <div class="parts">${top5.map(p => partRow(c, p, max, true)).join("")}</div>
+    <section class="pv-top">${netBlock(c, k, y)}${partTiles(c, k, y)}</section>
+    ${flags.length ? `<section class="pv-flags" aria-label="${t("What changes the meaning here")}"><div class="flags">${flags.map(f => xp("flag " + f.cls, "x-flag-" + f.key, `<span class="fi" aria-hidden="true">${f.icon}</span><span>${f.label}</span>`, f.body)).join("")}</div></section>` : ""}
+    <section class="pv-chart"><div class="pc-h"><h3>${t("The biggest parts")}</h3><span class="pc-hint">${t("tap a bar for how it is calculated")}</span></div>
+      ${ax.z > 0 ? `<div class="pc-axis" aria-hidden="true"><span>← ${t("toward Russia")}</span><span>${t("toward Ukraine")} →</span></div>` : ""}
+      <div class="parts">${top.map(p => partRow(c, p, ax, true)).join("")}</div>
       ${rest.length ? `<details class="allparts" id="allparts"${panelOpen.has("allparts") ? " open" : ""}><summary>${t("Show the other {n} parts", { n: rest.length })}</summary>
         ${group(t("Support for Ukraine"), rest.filter(p => sideOf(p) === "ua"))}
         ${group(t("Kept from Russia"), rest.filter(p => sideOf(p) === "rus"))}
         ${group(t("Russian money frozen"), rest.filter(p => sideOf(p) === "own"))}
       </details>` : ""}
-      <p class="key">${t("Letters: A reported, B measured estimate, C modelled estimate, D rough indication. A * marks a 2026 value estimated from the 2025 rate.")}</p>
     </section>`;
 }
 // which parts and sections are open, kept when the panel re-renders (a new year, another language); cleared for a new country
@@ -2679,7 +2833,6 @@ const fold = (id, title, body) => (body && body.replace(/\s+/g, "") ? `<details 
 function countryPanel(c) {
   if (!c) return head(t("Unknown")) + `<div class="panel-body"><p class="empty">${t("No data for this country yet.")}</p></div>`;
   const y = Math.max(2022, state.year), k = calc(c, y);
-  const meta = `${c.iso3} · ${c.pop ? t("{n} m people", { n: num(c.pop, c.pop >= 10 ? 0 : 1) }) : t("population n/a")} · ${c.gdp ? t("GDP {eur}", { eur: money(num(c.gdp), "bn") }) : t("GDP n/a")}`;
   const others = Object.values(DATA).filter(o => o !== c).sort((a, b) => a.name.localeCompare(b.name, LANG));
   // round 17: a custom mix is not shared (the link and its card carry the official figures)
   const tools = `<div class="panel-tools">${custom() ? `<span class="share-off">${t("Sharing shows the official figures only: reset to the official numbers to share.")}</span>` : `<button class="btn" id="share-btn" aria-label="${t("Share {name}'s numbers", { name: c.name })}">${t("Share")}</button>`}<select id="compare-select" aria-label="${t("Compare with another country")}"><option value="">${t("Compare with…")}</option>${REGIONS.map(([r, label]) => `<optgroup label="${t(label)}">${others.filter(o => (REGION_OF[o.iso3] || "asia") === r).map(o => `<option value="${o.n}">${o.name}</option>`).join("")}</optgroup>`).join("")}</select></div>`;
@@ -2720,7 +2873,7 @@ function countryPanel(c) {
       <div class="v">${fmtMeasure(c, lv, state.measure, !!hq, false)}${state.measure === "pp" ? ` <span style="font-size:14px">${t("per person")}</span>` : ""}</div></div>
       <div class="s">${kk ? t("Likely range {lo} to {hi}", { lo: fmtMeasure(c, rlo, state.measure, !!hq, false), hi: fmtMeasure(c, rhi, state.measure, !!hq, false) }) + " · " : ""}${periodText()}. ${t("Change the view or measure in Filters to see other numbers.")}</div></div>`;
   if (panelOpenFor !== c.n) { panelOpen.clear(); panelOpenFor = c.n; }
-  const notes = meaningNotes(c, k, y), fairShown = notes.some(([cl]) => cl === "fair");
+  const fairShown = meaningFlags(c, k, y).some(f => f.fair);
   const first = firstLayer(c, k, y);
   const cost = `<div class="big ${k.cost >= 0 ? "pos" : "neg"}" style="font-size:24px">${k.cost >= 0 ? fmtMeasure(c, k.cost, "gdp") : t("{v} gain", { v: fmtMeasure(c, -k.cost, "gdp") })} <span style="font-size:14px;font-weight:600">${t("of a year's GDP")}</span></div>
       <div class="big-cap">${k.cost >= 0 ? eur(k.cost) : t("{v} gain", { v: eur(-k.cost) })} · ${perPerson(c, k.cost)}${state.netBack ? " · " + t("after money flowing back") : ""}</div>
@@ -2736,6 +2889,7 @@ function countryPanel(c) {
       ${c.hub ? `<p class="key" style="margin-top:8px"><b>${t("Transit hub:")}</b> ${dataText(c.hub)}.</p>` : ""}
       ${c.coverage ? `<div class="sub-sec"><h4>${t("Data coverage")}</h4><div class="cov">${c.coverage.map(p => `<div class="cov-row"><span class="dot ${p.status}" title="${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}"></span><span>${t(p.part)}: <span class="${p.status === "missing" ? "miss" : ""}">${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}</span></span><span class="n">${dataText(p.note)}</span></div>`).join("")}</div>
       <p class="key" style="margin-top:8px">${t("Estimated parts carry a wider range. Nothing is left at zero because data is missing.")}</p></div>` : ""}
+      <p class="key">${LETTERS_KEY()}</p>
       <p class="key"><button class="linkbtn" data-goview="how">${t("See all parts as a waterfall chart")}</button></p>
       <details class="more"><summary>${t("How this is calculated")}</summary><ul class="how">
       <li>${t("<b>Pre-war level</b> = 2021 at pre-war prices for trade and services (company taxes: the 2018–2021 average). Purchases from Russia under €1bn a year start instead from the median of 2019, 2020 and 2021 at pre-war prices, so one odd year does not set them; 2021 is kept where a refinery opened or closed, or where the pre-war figures are only partner reports. What would have happened without the war is predicted from it: exports to Russia follow each country's other trade and GDP, which predicted better than holding 2021 flat in back-tests from 2008, 2013 and 2016; the rest, including trade with Ukraine, stays at the 2021 level (services with the travel recovery after COVID). The tested error of that prediction is part of every range. Trade that already existed before the war does not count; a fall in trade with Ukraine caused by the war is not held against a country.")}</li>
@@ -2761,7 +2915,10 @@ function countryPanel(c) {
       ${pp.length ? `<div class="sub-sec"><h4>${t("People")}</h4><div class="people">${pp.join("")}</div></div>` : ""}
       ${details.length ? `<div class="sub-sec"><h4>${t("More details")}</h4><div class="kv">${details.join("")}</div></div>` : ""}`;
   // the folds are built first (ref() numbers the sources as they are cited); the sources come last
+  // round 18 (owner): the code, people and GDP are no longer under the name; they are here
+  const about = `<p class="about-line">${c.iso3} · ${c.pop ? t("{n} m people", { n: num(c.pop, c.pop >= 10 ? 0 : 1) }) : t("population n/a")} · ${c.gdp ? t("GDP {eur}", { eur: money(num(c.gdp), "bn") }) : t("GDP n/a")}</p>`;
   const folds = [
+    fold("f-about", t("About {name}", { name: c.name }), about),
     fold("f-cost", t("What it cost {name}", { name: c.name }), cost),
     fold("f-band", t("Method band and alternatives"), band),
     fold("f-markers", t("Markers: critical goods, wages, taken by Russia"), markers),
@@ -2770,7 +2927,7 @@ function countryPanel(c) {
     fold("f-bg", t("Aid, companies and people"), background),
     fold("f-share", t("Share and compare"), figCard + tools),
   ].join("");
-  return head(c.name, meta) + `<div class="panel-body">
+  return head(c.name) + `<div class="panel-body">
     ${first}
     <div class="pfolds">${folds}${fold("f-src", t("Sources"), sourcesHtml().replace(/<h3>[^<]*<\/h3>/, ""))}</div></div>`;
 }
@@ -3007,7 +3164,7 @@ document.getElementById("theme").onclick = () => {
 };
 // ----- round 17: the layers on the map (all in the Filters drawer) -----
 document.getElementById("show-streams").onchange = e => { state.streams = e.target.checked; paint(); };
-document.getElementById("show-flows").onchange = e => { state.flows = e.target.checked; paint(); drawFlows(0); };
+document.getElementById("show-flows").onchange = e => { state.flows = e.target.checked; paint(); drawFlows(0); startLoop(); };
 document.getElementById("show-chpl").onchange = e => { state.chpl = e.target.checked; drawChpl(); paint(); };
 document.getElementById("show-remit").onchange = e => { state.remit = e.target.checked; drawRemit(); paint(); };
 document.getElementById("show-taken").onchange = e => { state.taken = e.target.checked; drawTaken(); paint(); };
@@ -3278,7 +3435,7 @@ Promise.all([json(narrow() || matchMedia("(pointer: coarse)").matches ? "countri
     .on("pointermove", (e, f) => showTip(e, f.id === "804" ? `<b>${regionName("UA", "Ukraine")}</b>${t("Click for who carries the most")}` : f.id === "643" ? `<b>${regionName("RU", "Russia")}</b>${t("Click for whom Russia gained more from, and who armed it")}` : (INCLUDED[f.id] && DATA[INCLUDED[f.id]] ? `<b>${featureName(f)}</b>${t("Counted in {name}'s figures", { name: DATA[INCLUDED[f.id]].name })}` : tipHtml(DATA[f.id], featureName(f)))))
     .on("pointerleave", () => { tip.hidden = true; hoverStreams(null); })
     .on("pointerenter", (e, f) => hoverStreams(DATA[f.id] ? f.id : DATA[INCLUDED[f.id]] ? INCLUDED[f.id] : null))
-    .on("click", (e, f) => { select(INCLUDED[f.id] || f.id, false); });
+    .on("click", (e, f) => { select(INCLUDED[f.id] || f.id, false); frameStreams(INCLUDED[f.id] || f.id); });
   for (const f of features) if (DATA[f.id]) featureOf[f.id] = f;
   g.selectAll(".target-ukr, .target-rus").style("cursor", "pointer");
   lg.selectAll("text.target-label").data(features.filter(f => f.id === "804" || f.id === "643")).join("text").attr("class", "target-label").attr("text-anchor", "middle")
