@@ -3517,14 +3517,20 @@ document.addEventListener("keydown", e => { if (e.key === "Escape" && !status.hi
 const json = u => fetch(u).then(r => { if (!r.ok) throw new Error(u + " " + r.status); return r.json(); });
 // Crimea is Ukraine (owner, round 21). The map data (Natural Earth) follow de facto control and wrongly draw Crimea
 // inside Russia; on load its polygon moves to Ukraine, which is then one merged shape (topojson.merge), with no line at
-// the isthmus.
+// the isthmus. The other borders follow Google Maps as most of the world sees it: Somaliland is part of Somalia and
+// Northern Cyprus part of Cyprus (merged the same way); Kosovo, Western Sahara, Taiwan and Palestine stay as drawn.
 function googleBorders(world) {
   const geoms = world.objects.countries.geometries, byId = id => geoms.find(x => x.id === id);
+  const byName = n => geoms.find(x => !x.id && x.properties && x.properties.name === n);
   const extra = {};
   const ru = byId("643");
   if (ru && ru.type === "MultiPolygon") {
     const crimea = ru.arcs.filter(arcs => d3.geoContains(topojson.feature(world, { type: "Polygon", arcs }), [34.1, 45.0]));
     if (crimea.length) { ru.arcs = ru.arcs.filter(a => !crimea.includes(a)); extra["804"] = [{ type: "MultiPolygon", arcs: crimea }]; }
+  }
+  for (const [name, id] of [["Somaliland", "706"], ["N. Cyprus", "196"]]) {
+    const part = byName(name);
+    if (part && byId(id)) { (extra[id] = extra[id] || []).push(part); geoms.splice(geoms.indexOf(part), 1); }
   }
   return f => (extra[f.id] ? { ...f, geometry: topojson.merge(world, [byId(f.id), ...extra[f.id]]) } : f);
 }
