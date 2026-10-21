@@ -1646,6 +1646,15 @@ const narrow = () => window.innerWidth <= 900;   // same breakpoint as the CSS: 
 const STREAMS_DEFAULT = true;
 state.streams = STREAMS_DEFAULT;
 
+// a tap on a touch screen selects at once. iPhone Safari treats the first tap on an element that reacts to hover (the
+// tooltip, a country's own streams) as hovering and sends no click, so a tap is taken from the pointer events themselves:
+// a touch that ends close to where it started, quickly, is a tap; the click that may follow is then ignored
+let tapStart = null, tapAt = 0;
+const isTouch = e => e.pointerType === "touch" || e.pointerType === "pen";
+const tapDown = e => { tapStart = isTouch(e) ? { x: e.clientX, y: e.clientY, t: e.timeStamp } : null; };
+const isTap = e => isTouch(e) && tapStart && Math.hypot(e.clientX - tapStart.x, e.clientY - tapStart.y) < 10 && e.timeStamp - tapStart.t < 600;
+const tapped = (e, go) => { if (isTap(e)) { tapAt = Date.now(); tapStart = null; go(); } };
+const clicked = go => { if (Date.now() - tapAt > 800) go(); };
 const zoom = d3.zoom().scaleExtent([1, 14]).on("zoom", e => {
   transform = e.transform;
   g.attr("transform", e.transform);
@@ -1949,7 +1958,8 @@ function drawStreams() {
   fx.exit().remove();
   const fxAll = fx.enter().append("path").attr("class", "stream-flow").merge(fx);
   all.select(".stream-base").attr("d", r => streamArc(from(r), end(r))).style("stroke", col).style("stroke-width", r => w(r.v) + "px")
-    .on("pointermove", (e, r) => showTip(e, tipHtml(r.c, r.c.name))).on("pointerleave", () => (tip.hidden = true)).on("click", (e, r) => { select(r.c.n, false); frameStreams(r.c.n); });
+    .on("pointerdown", tapDown).on("pointerup", (e, r) => tapped(e, () => { select(r.c.n, false); frameStreams(r.c.n); }))
+    .on("pointermove", (e, r) => isTouch(e) ? null : showTip(e, tipHtml(r.c, r.c.name))).on("pointerleave", () => (tip.hidden = true)).on("click", (e, r) => clicked(() => { select(r.c.n, false); frameStreams(r.c.n); }));
   fxAll.attr("d", r => streamArc(from(r), end(r))).style("stroke", col).style("stroke-width", r => Math.max(small ? 1 : 1.2, w(r.v) * 0.55) + "px").style("animation-duration", r => 6 + (+r.c.n % 5) + "s");
   all.select(".stream-arrow").attr("d", r => streamArc(from(r), end(r))).style("fill", "none").style("stroke", "none").attr("marker-end", r => `url(#arrow-${r.to})`);
   const k = transform ? transform.k : 1;
@@ -3432,10 +3442,12 @@ Promise.all([json(narrow() || matchMedia("(pointer: coarse)").matches ? "countri
   countryPaths = g.selectAll("path.country").data(features).join("path")
     .attr("class", f => "country" + (f.id === "804" ? " target-ukr" : f.id === "643" ? " target-rus" : ""))
     .attr("d", path)
-    .on("pointermove", (e, f) => showTip(e, f.id === "804" ? `<b>${regionName("UA", "Ukraine")}</b>${t("Click for who carries the most")}` : f.id === "643" ? `<b>${regionName("RU", "Russia")}</b>${t("Click for whom Russia gained more from, and who armed it")}` : (INCLUDED[f.id] && DATA[INCLUDED[f.id]] ? `<b>${featureName(f)}</b>${t("Counted in {name}'s figures", { name: DATA[INCLUDED[f.id]].name })}` : tipHtml(DATA[f.id], featureName(f)))))
+    .on("pointerdown", tapDown)
+    .on("pointerup", (e, f) => tapped(e, () => { select(INCLUDED[f.id] || f.id, false); frameStreams(INCLUDED[f.id] || f.id); }))
+    .on("pointermove", (e, f) => isTouch(e) ? null : showTip(e, f.id === "804" ? `<b>${regionName("UA", "Ukraine")}</b>${t("Click for who carries the most")}` : f.id === "643" ? `<b>${regionName("RU", "Russia")}</b>${t("Click for whom Russia gained more from, and who armed it")}` : (INCLUDED[f.id] && DATA[INCLUDED[f.id]] ? `<b>${featureName(f)}</b>${t("Counted in {name}'s figures", { name: DATA[INCLUDED[f.id]].name })}` : tipHtml(DATA[f.id], featureName(f)))))
     .on("pointerleave", () => { tip.hidden = true; hoverStreams(null); })
-    .on("pointerenter", (e, f) => hoverStreams(DATA[f.id] ? f.id : DATA[INCLUDED[f.id]] ? INCLUDED[f.id] : null))
-    .on("click", (e, f) => { select(INCLUDED[f.id] || f.id, false); frameStreams(INCLUDED[f.id] || f.id); });
+    .on("pointerenter", (e, f) => isTouch(e) ? null : hoverStreams(DATA[f.id] ? f.id : DATA[INCLUDED[f.id]] ? INCLUDED[f.id] : null))
+    .on("click", (e, f) => clicked(() => { select(INCLUDED[f.id] || f.id, false); frameStreams(INCLUDED[f.id] || f.id); }));
   for (const f of features) if (DATA[f.id]) featureOf[f.id] = f;
   g.selectAll(".target-ukr, .target-rus").style("cursor", "pointer");
   lg.selectAll("text.target-label").data(features.filter(f => f.id === "804" || f.id === "643")).join("text").attr("class", "target-label").attr("text-anchor", "middle")
