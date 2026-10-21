@@ -700,6 +700,12 @@ The owner: Crimea is not Russia. The map data (Natural Earth, de facto control) 
 now moves its polygon to Ukraine and merges the two into one shape (`googleBorders` in `index.html`), on the desktop
 and phone maps and the share cards. No number changed.
 
+### Round 21c: borders as on Google Maps
+
+The owner: the other borders as Google Maps shows them for most of the world. Somaliland is now part of Somalia and
+Northern Cyprus part of Cyprus, merged into one shape on load (`googleBorders`). Kosovo, Western Sahara, Taiwan and
+Palestine stay as drawn, as on Google Maps. No number changed.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open
