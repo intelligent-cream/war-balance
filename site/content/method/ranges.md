@@ -1,6 +1,6 @@
 # Ranges and certainty letters
 
-Every number on the map has a middle value, a likely range and a certainty letter from A (reported) to D (rough indication). The likely range covers the uncertainty of the data and the models **given the method**; it is calibrated by judgement to about 90% (it mixes measured back-test bands with default widths per letter, combined as errors), not measured. How much the method choices move a result is the separate [method band](#the-method-band-round-13-widened-in-round-14). This page explains where each part's range comes from, how the site combines four sources of uncertainty for every traded flow without stacking worst cases, how parts add up to a total, how 2026 estimates are marked, and, just as important, what the ranges do not cover.
+Every number on the map has a middle value, a likely range and a certainty letter from A (reported) to D (rough indication). The likely range covers the uncertainty of the data and the models **given the method**; it is calibrated by judgement to about 90% (it mixes measured back-test bands with default widths per letter, combined as errors), not measured. How much the method choices move a result is the separate [method band](#view=how&sec=m-ranges-the-method-band-round-13-widened-in-round-14). This page explains where each part's range comes from, how the site combines four sources of uncertainty for every traded flow without stacking worst cases, how parts add up to a total, how 2026 estimates are marked, and, just as important, what the ranges do not cover.
 
 ## Certainty letters
 
@@ -11,7 +11,7 @@ Every number on the map has a middle value, a likely range and a certainty lette
 | C | modelled estimate | ±35% |
 | D | rough indication | ±70% |
 
-Defaults are `RANGE` in [`site/index.html`](../../site/index.html); they are applied in `part()` only when a part's own low and high coincide. The four widths (±5%, ±15%, ±35%, ±70%) are a judgement, not a measured error ([decisions](../decisions.md#constants-and-rules-written-down-in-round-11)). Each research file assigns letters per value ([`gaps.md`](../../research/2026-10/gaps.md) shows per country which parts are reported or estimated).
+Defaults are `RANGE` in [`site/index.html`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/site/index.html); they are applied in `part()` only when a part's own low and high coincide. The four widths (±5%, ±15%, ±35%, ±70%) are a judgement, not a measured error ([decisions](#view=how&sec=cl-r11)). Each research file assigns letters per value ([`gaps.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps.md) shows per country which parts are reported or estimated).
 
 **A total's letter (round 14, audit H4).** Until round 13 a total took the **weakest** letter of its parts, which made every total D or C and no longer separated Lithuania from Yemen. Since round 14 it says how much of the total rests on primary data (`gradeTotal()` in `site/index.html`), weighting each part by its absolute value:
 
@@ -56,17 +56,17 @@ Most D letters belong to numbers close to zero, whose range is wide against thei
 - **Aid to Ukraine (Kiel, adjusted)** (round 16, review 5 L4): Kiel's figure is reported, but the part is adjusted by modelled factors (weapons at market value, loans as gifts). It takes Kiel's letter only where the adjustments are under 5% of it; under 25% at most B; otherwise at most C (`aidCert` in `calc()`).
 - **Share of EU-level aid** is always B. The EU's own aid is reported (Kiel), but the split over members by budget share and the loans' economic value are estimates.
 
-These are judgements; they change letters, not values ([decisions](../decisions.md#constants-and-rules-written-down-in-round-11)).
+These are judgements; they change letters, not values ([decisions](#view=how&sec=cl-r11)).
 
 ## Where a part's range comes from
 
-Each series in `data.json` is a triple per year: `years`, `years_lo`, `years_hi`. The pipeline ([`build_data.py`](../../pipeline/build_data.py)) takes them from the research files, which build them from:
+Each series in `data.json` is a triple per year: `years`, `years_lo`, `years_hi`. The pipeline ([`build_data.py`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/build_data.py)) takes them from the research files, which build them from:
 
-- **disagreement between sources**: a country's own customs report against its partner's mirror report ([`trade_full-notes.md`](../../research/2026-10/gaps/trade_full-notes.md): half the mirror gap, 3–25%, for reported values; 10–60% for mirror values);
+- **disagreement between sources**: a country's own customs report against its partner's mirror report ([`trade_full-notes.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/trade_full-notes.md): half the mirror gap, 3–25%, for reported values; 10–60% for mirror values);
 - **Monte Carlo or percentile ranges** of a model (China's military support, the residual gap, gap-filled trade);
 - **alternative assumptions** (resale shares, margins, own-industry shares, refugee cost per person).
 
-Flows compared with a pre-war level carry three more triples: `base` with `base_range`, `pidx` with `pidx_lo`/`pidx_hi` ([prices.md](prices.md)), and `bmul` with `bmul_lo`/`bmul_hi` ([counterfactual.md](counterfactual.md)). `triple()` widens `base_range` to include 2021 alone at pre-war prices (`l[0]/ph[0]`, `h[0]/pl[0]`) and the middle base.
+Flows compared with a pre-war level carry three more triples: `base` with `base_range`, `pidx` with `pidx_lo`/`pidx_hi` ([prices.md](#view=how&sec=m-prices)), and `bmul` with `bmul_lo`/`bmul_hi` ([counterfactual.md](#view=how&sec=m-counterfactual)). `triple()` widens `base_range` to include 2021 alone at pre-war prices (`l[0]/ph[0]`, `h[0]/pl[0]`) and the middle base.
 
 ## Quadrature for traded flows: `spread()`
 
@@ -89,7 +89,7 @@ hi = sqrt(bh² + ah² − bh·ah + ph² + qh² + nh² + gh²)
 range = [mid − lo, mid + hi]
 ```
 
-- **Baseline and actual values are correlated 0.5** (a judgement, not measured; [decisions](../decisions.md#constants-and-rules-written-down-in-round-11)), because they come from the same sources (the same customs office reports both 2021 and 2024). For a difference of two errors with correlation ρ, the variance is `σb² + σa² − 2ρ·σb·σa`; with ρ = 0.5 that is the `− bl·al` term.
+- **Baseline and actual values are correlated 0.5** (a judgement, not measured; [decisions](#view=how&sec=cl-r11)), because they come from the same sources (the same customs office reports both 2021 and 2024). For a difference of two errors with correlation ρ, the variance is `σb² + σa² − 2ρ·σb·σa`; with ρ = 0.5 that is the `− bl·al` term.
 - **Price, counterfactual, no-war price and net-gain terms are independent** of the others.
 - **Errors are summed over the years first**, then combined: the same baseline applies every year, so its error does not average out over time.
 
@@ -100,16 +100,16 @@ model, calibrated so that two tests' bands cover 90% of the third), and `spread(
 for that number of years (`cb` in `data.json`; 2026 counted at 8 of 12 months). Because one flow's yearly errors are
 strongly correlated (0.6–0.7 between years), the measured bands are about as wide as the old sum (×0.8–1.2), so most
 ranges barely move. The yearly view and the "only the rise" parts keep the yearly bands. Belarus's imports from Russia
-keep their own yearly band. Source: [`cf_bands.json`](../../research/2026-10/gaps/cf_bands.json)
-([notes](../../research/2026-10/gaps/cf_bands-notes.md)).
+keep their own yearly band. Source: [`cf_bands.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/cf_bands.json)
+([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/cf_bands-notes.md)).
 
 Before round 4 the low end took the low baseline, the high actual value and the low price level all at once (stacked worst cases), which made ranges too wide in one way and ignored forecast error in another.
 
 Variants:
 
 - **"Only the rise"** parts (extra purchases from Ukraine, extra sales to Ukraine, laundered oil) use `above3()`: `spread()` on each year alone, counting only the positive part of each bound.
-- **Income parts** (sales and services to Russia) are multiplied by the money rule's factor, the seller's net gain (taxes plus profit above a normal return, [`net_gain_sellers.json`](../../research/2026-10/gaps/net_gain_sellers.json)) × genuinely extra (`c.vk` in `data.json`; until round 12 value kept × genuinely extra, kept as `vk_old`): `earned3()` uses the factor's low on the low side and its high on the high side. Money flowing back uses the same factors (weapons `fw`, other spending `fo`, extra sales to Ukraine `ux`); for US weapons that is about 3.6% of the money in round 14 ([overview](overview.md#the-net-gain-rule-round-10)).
-- **Current euros (round 14).** Each year's change in volume is multiplied by that year's price level (`cur`), so trade parts are in the same euros as aid ([overview](overview.md#round-14-changes-to-the-rules)). The flat 20% margin with a 0.5–1.5× band is only a fallback for a country without `vk`; every country in the current data has `vk`.
+- **Income parts** (sales and services to Russia) are multiplied by the money rule's factor, the seller's net gain (taxes plus profit above a normal return, [`net_gain_sellers.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/net_gain_sellers.json)) × genuinely extra (`c.vk` in `data.json`; until round 12 value kept × genuinely extra, kept as `vk_old`): `earned3()` uses the factor's low on the low side and its high on the high side. Money flowing back uses the same factors (weapons `fw`, other spending `fo`, extra sales to Ukraine `ux`); for US weapons that is about 3.6% of the money in round 14 ([overview](#view=how&sec=m-overview-the-net-gain-rule-round-10)).
+- **Current euros (round 14).** Each year's change in volume is multiplied by that year's price level (`cur`), so trade parts are in the same euros as aid ([overview](#view=how&sec=m-overview-round-14-changes-to-the-rules)). The flat 20% margin with a 0.5–1.5× band is only a fallback for a country without `vk`; every country in the current data has `vk`.
 - **Parts with no pre-war comparison** (aid, refugees, windfall, weapons, hidden channels) sum their yearly triples (`sum3()`).
 
 ## From parts to a total
@@ -133,7 +133,7 @@ Variants:
 
 The effect is small. In the current build (round 15) Germany's net range is +2.14%<!-- n:DEU.netLo --> to +4.63%<!-- n:DEU.netHi -->. The country panel shows each part's range as a thin line in the waterfall and the total's range in the headline ("Likely range ... to ...").
 
-Rankings use these totals. Since round 15 (review 4, H3; approved by the owner) a country is ranked on a number only if **neither its likely range nor any method-band alternative changes that number's sign** (`uncertain()` in `site/index.html`); otherwise it is "direction uncertain": left out of that ranking, dotted on the map and marked in the panel, table, CSV and JSON. Economies under EUR 5bn GDP are left out too (`rankList()`, `MIN_GDP_RANK`). `check_data.py` recomputes the rule independently. Among economies above EUR 5bn, 100 are uncertain on support for Ukraine (nearly all with almost no support), 110 on business with Russia and 104 on the net; the list is in the round-15 log ([decision log](../decision-log.md#round-15-separate-maps-named-lists-and-a-stricter-ranking-19-october)).
+Rankings use these totals. Since round 15 (review 4, H3; approved by the owner) a country is ranked on a number only if **neither its likely range nor any method-band alternative changes that number's sign** (`uncertain()` in `site/index.html`); otherwise it is "direction uncertain": left out of that ranking, dotted on the map and marked in the panel, table, CSV and JSON. Economies under EUR 5bn GDP are left out too (`rankList()`, `MIN_GDP_RANK`). `check_data.py` recomputes the rule independently. Among economies above EUR 5bn, 100 are uncertain on support for Ukraine (nearly all with almost no support), 110 on business with Russia and 104 on the net; the list is in the round-15 log ([decision log](#view=how&sec=cl-r15)).
 
 ## The method band (round 13, widened in round 14)
 
@@ -153,9 +153,9 @@ The likely range is **data and model uncertainty, given the method**. Method cho
 | **without the gas Russia cut off itself** (round 15) | `calc(c, y, {nocut: true})`: "less paid to Russia" without its cut share (`sanctions.to_rus.cut`) | the labelled cut taken out of the number |
 | **without the war-time windfall** (round 15) | `calc(c, y, {windfall: "off"})` | the windfall counts at gain 1 on prices, not volumes (Hungary −0.86% instead of −6.07%) |
 | **refugees at gross cost** (round 15) | `calc(c, y, {refGross: true})`, `aid.refugee_gross_years` | the host's cost before the taxes refugees pay |
-| **refugees at one common cost** (round 16) | `calc(c, y, {refCommon: true})`, `aid.refugee_common_years`: each host's person-years × the hosts' average net cost per person-year | each host's actual cost against a common value per refugee ([refugees](aid-refugees-military.md#refugees)) |
-| **2026 at 2025 prices** (round 15) | `calc(c, y, {p26: true})`: 2026's business with Russia, laundered oil and windfall valued at 2025's fuel prices (`to_rus.p26`, `laund.p26`) | the Hormuz-crisis prices of 2026 ([prices](prices.md#2026-and-the-hormuz-crisis-round-15)) |
-| **gold at its actual price** (round 16b, check 16 N5) | rebuilt with `gold_actual`: the change in the volume of gold valued at each year's gold price instead of the 2021 price held flat (`deflate_gold()`) | central banks' gold buying after Russia's reserves were frozen is widely linked to the war, so part of the gold price rise may be the war's ([prices](prices.md#gold-at-its-no-war-price-round-16)) |
+| **refugees at one common cost** (round 16) | `calc(c, y, {refCommon: true})`, `aid.refugee_common_years`: each host's person-years × the hosts' average net cost per person-year | each host's actual cost against a common value per refugee ([refugees](#view=how&sec=m-aid-refugees-military-refugees)) |
+| **2026 at 2025 prices** (round 15) | `calc(c, y, {p26: true})`: 2026's business with Russia, laundered oil and windfall valued at 2025's fuel prices (`to_rus.p26`, `laund.p26`) | the Hormuz-crisis prices of 2026 ([prices](#view=how&sec=m-prices-2026-and-the-hormuz-crisis-round-15)) |
+| **gold at its actual price** (round 16b, check 16 N5) | rebuilt with `gold_actual`: the change in the volume of gold valued at each year's gold price instead of the 2021 price held flat (`deflate_gold()`) | central banks' gold buying after Russia's reserves were frozen is widely linked to the war, so part of the gold price rise may be the war's ([prices](#view=how&sec=m-prices-gold-at-its-no-war-price-round-16)) |
 | **2024 GDP** (round 15) | the number × average 2022–2024 GDP / 2024 GDP | the denominator (the default is the average since round 15) |
 
 The rebuilt alternatives store, per country, only the fields they change (`detail.json` `alts`; since round 16 loaded with the data, before anything is drawn, and checked in a real browser by `pipeline/browser_check.mjs`); the site applies them to a copy of the country and recomputes. The band is the lowest and highest of the base and all alternatives; the panel lists the choices that move the net by at least 0.005% of GDP. It is not a probability range. Examples (round 16, the net): Germany 2.69%<!-- n:DEU.netBandLo --> to 3.62%<!-- n:DEU.netBandHi --> (redirected trade at the low end), Moldova 3.80%<!-- n:MDA.netBandLo --> to 9.05%<!-- n:MDA.netBandHi --> (redirected trade; without the windfall), Hungary −6.33%<!-- n:HUN.netBandLo --> to −0.55%<!-- n:HUN.netBandHi --> (without the windfall), North Korea −10.28%<!-- n:PRK.netBandLo --> to −10.16%<!-- n:PRK.netBandHi --> (round 15: to −29.97% under the old valuation rule, now removed), Yemen −5.62%<!-- n:YEM.netBandLo --> to −2.63%<!-- n:YEM.netBandHi -->.
@@ -170,23 +170,15 @@ The headline is a total for 2022 to the chosen year against one year's GDP (the 
 
 - `company` (company taxes; 2026 estimated from 2025 and the first 2026 company reports);
 - `from_rus` where the residual gap is added (its 2026 is estimated from 2025);
-- `to_rus`, `from_rus`, `buy_ukr`, `sell_ukr` where the 2026 trade value itself is an estimate (`basis = estimated` in [`trade_full.json`](../../research/2026-10/gaps/trade_full.json), for example Belarus and Uzbekistan).
+- `to_rus`, `from_rus`, `buy_ukr`, `sell_ukr` where the 2026 trade value itself is an estimate (`basis = estimated` in [`trade_full.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/trade_full.json), for example Belarus and Uzbekistan).
 
 The site marks the parts "paid to Russia", "sold to Russia" and "company taxes" (`est` map in `part()`). Every period label reads "2026 year to date".
 
 ## What the ranges do not cover
 
-- **Russia-side shocks.** The counterfactual intervals cover about 90% of outcomes in normal periods but only 77–79% in the 2013 back-test, when Russia's own economy moved ([counterfactual.md](counterfactual.md#7-how-the-predictions-error-enters-the-ranges)).
-- **The method itself**: what counts as a shift, the valuation rule, the choice of GDP year (the average of 2022–2024 since round 15; 2024 is in the method band), counting gas where it is burned. These are choices, not uncertainties ([decisions](../decisions.md)); the method band shows the main ones, one at a time (not combined).
+- **Russia-side shocks.** The counterfactual intervals cover about 90% of outcomes in normal periods but only 77–79% in the 2013 back-test, when Russia's own economy moved ([counterfactual.md](#view=how&sec=m-counterfactual-7-how-the-predictions-error-enters-the-ranges)).
+- **The method itself**: what counts as a shift, the valuation rule, the choice of GDP year (the average of 2022–2024 since round 15; 2024 is in the method band), counting gas where it is burned. These are choices, not uncertainties ([decisions](#view=how&sec=changelog)); the method band shows the main ones, one at a time (not combined).
 - **Other correlated errors across parts.** Only the correlations listed above are included; a shared source error (one KSE report behind all company taxes) is still treated as independent.
 - **Correlated errors across countries.** Moving value between countries (re-exports, hub resale, the residual gap) shifts error from one country to another; each country's range is computed alone.
-- **Unknown unknowns**: flows nobody has measured are not on the map. Crypto and payment agents appear only as the agents' fees; the trade they settle is already in customs ([trade.md](trade.md#payment-agents-round-6)).
+- **Unknown unknowns**: flows nobody has measured are not on the map. Crypto and payment agents appear only as the agents' fees; the trade they settle is already in customs ([trade.md](#view=how&sec=m-trade-payment-agents-round-6)).
 - **Inputs touched by the war** in the counterfactual (realised trade and GDP in 2022–2026).
-
-## See also
-
-- [counterfactual.md](counterfactual.md): the `bmul` intervals
-- [prices.md](prices.md): the `pidx` bands
-- [overview.md](overview.md): the parts these ranges belong to
-- [limitations.md](../limitations.md)
-- [Documentation index](../README.md)

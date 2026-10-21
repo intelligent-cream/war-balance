@@ -4,13 +4,13 @@ About EUR 96.5bn of the aid in the Kiel tracker is loans and loan guarantees (20
 loans repaid from frozen Russian assets). A loan has to be paid back, so EUR 1 lent is worth less than EUR 1 given.
 This page explains how the map values each loan, for Ukraine's gain (the net shift) and for the lender's cost (the
 cost view). Round 12 replaced the flat 10% discount rate of round 5 with measured rates and measured expected losses,
-on the owner's decision ([decision log](../decision-log.md#round-12-data-precision-19-october)).
+on the owner's decision ([decision log](#view=how&sec=cl-r12)).
 
-Code: [`pipeline/loan_rates.py`](../../pipeline/loan_rates.py) (rates, losses, values per loan item) and
-`apply_loans_value()` in [`build_data.py`](../../pipeline/build_data.py). Data:
-[`loans_value.json`](../../research/2026-10/gaps/loans_value.json)
-([notes](../../research/2026-10/gaps/loans_value-notes.md)); raw downloads in
-[`raw/loan_rates`](../../research/2026-10/raw/loan_rates/).
+Code: [`pipeline/loan_rates.py`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/loan_rates.py) (rates, losses, values per loan item) and
+`apply_loans_value()` in [`build_data.py`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/build_data.py). Data:
+[`loans_value.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/loans_value.json)
+([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/loans_value-notes.md)); raw downloads in
+[`raw/loan_rates`](https://github.com/intelligent-cream/follow-the-money-ukraine/tree/main/research/2026-10/raw/loan_rates).
 
 ## The two parts of the gift
 
@@ -142,9 +142,9 @@ and CEB parts use fixed factors that do not depend on the rate and are unchanged
 ## Evidence
 
 Every number above has a fetched source, also listed under `loans_value` in
-[`sources_r11.json`](../../research/2026-10/sources_r11.json). Pages and small files are saved in
-[`raw/loan_rates`](../../research/2026-10/raw/loan_rates/) (large PDFs are listed with their checksum in
-[`MANIFEST.json`](../../research/2026-10/raw/MANIFEST.json)).
+[`sources_r11.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/sources_r11.json). Pages and small files are saved in
+[`raw/loan_rates`](https://github.com/intelligent-cream/follow-the-money-ukraine/tree/main/research/2026-10/raw/loan_rates) (large PDFs are listed with their checksum in
+[`MANIFEST.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/raw/MANIFEST.json)).
 
 | what | number | source |
 |---|---|---|
@@ -177,7 +177,7 @@ Every number above has a fetched source, also listed under `loans_value` in
 - The EU's expected loss uses the provisioning rate the EU set for each loan as a stand-in (70% for the 2022
   exceptional MFA and the repurposed EIB loans, 9% for the rest): no loss has happened. MFA+ and the Ukraine Facility
   have no provisioning rate of their own (they rest on budget headroom), so they keep the usual 9%. Decision B,
-  round 12, the owner's choice ([decision log](../decision-log.md#round-12-data-precision-19-october)).
+  round 12, the owner's choice ([decision log](#view=how&sec=cl-r12)).
 - The Ukraine Support Loan's 0.80 / 0.95 / 1.00: whether reparations, or the frozen Russian assets, ever repay it.
 - Guarantees for lending to firms (10% / 25% / 40%), the swap line, near-market DFI loans.
 - How the standstill repays (equal yearly instalments over 2035–2039, interest at the loan's rate in between).
@@ -188,11 +188,4 @@ Every number above has a fetched source, also listed under `loans_value` in
 1. Ukraine's 2021 USD yield of 6.7% already contains a default premium of about 5 points over US Treasuries, so adding the creditor class's expected loss on top partly counts the same risk twice; for senior IMF and World Bank loans, discounting at 6.7% creates a gift the lender does not bear. The audit suggests a risk-free rate plus a normal spread in the loan's currency, with expected-loss scenarios on top.
 2. The EU's provisioning rates (70%) are budget prudence, not loss forecasts; they should be the high case, not the central.
 
-Effect on the headline is small (EU members +0.007 to +0.014 points of GDP). The owner kept decision B (provisioning rates as expected losses) and the 6.7% normal rate; both critiques are recorded in [decisions](../decisions.md#round-13-one-valuation-rule-for-every-seller). The method band on the map shows the result with loans at the war-time yield instead.
-
-## See also
-
-- [Aid, refugees, military support and flowback](aid-refugees-military.md#loans-at-their-economic-value-round-5)
-- [Method overview: the cost view](overview.md#the-cost-view)
-- [Decisions](../decisions.md#2-aid-and-the-cost-of-hosting-refugees)
-- [Documentation index](../README.md)
+Effect on the headline is small (EU members +0.007 to +0.014 points of GDP). The owner kept decision B (provisioning rates as expected losses) and the 6.7% normal rate; both critiques are recorded in [decisions](#view=how&sec=cl-r13). The method band on the map shows the result with loans at the war-time yield instead.

@@ -425,7 +425,8 @@ else:
         not _wrong and len(_calls) >= 3 and "uncertain(r.c, y, q)" in _html,
         f"rule mismatches: {_wrong[:6] or 'none'}; direction uncertain (GDP >= EUR 5bn): {_unc_n}",
     )
-    # 30. round 15 (review 4, H4): every figure tagged in the docs matches the map (check_docs_numbers.py)
+    # 30. round 15 (review 4, H4): every figure tagged in the docs matches the map (check_docs_numbers.py); since round 23
+    # the docs are the site's own text, site/content/
     _bad, _n = cdn.check(_m)
     check("docs figures match data.json", not _bad and _n > 0, f"{_n} tagged figures; differing: {_bad[:4] or 'none'}")
 
@@ -444,7 +445,10 @@ else:
 # Round 20 (owner): only Map, Ranking and Sources remain (#view=bubbles opens Ranking, #view=table opens Sources, where
 # the downloads now are); the ranking has no text of its own above the chart: the header line names it and its ⓘ explains it.
 # Round 22 (owner): the views are tabs in the header bar (role="tablist"), not in the drawer
-# and the second number is named "Business with Russia" (positive: reduced); lens=kept and lens=business open it too
+# and the second number is named "Business with Russia" (positive: reduced); lens=kept and lens=business open it too.
+# Round 23 (owner): Sources is How it works again (view "how"; #view=sources and #view=table open it), and its
+# long-form text comes from site/content/ (the method pages, the limitations and the changelog, which every flow's
+# "Changes to this flow" reads); no link points at the documentation that used to be in docs/
 _buttons = re.findall(r'<button data-lens="(\w+)"', _html)
 _start = re.search(r'const state = \{ lens: "(\w+)"', _html)
 _old = re.search(r"const OLD_LENS = \{([^}]*)\}", _html)
@@ -467,7 +471,7 @@ _views_const = re.search(r"const VIEWS = \[([^\]]*)\]", _html)
 _views_list = re.findall(r'"(\w+)"', _views_const.group(1)) if _views_const else []
 _old_view = re.search(r"const OLD_VIEW = \{([^}]*)\}", _html)
 _old_view_map = dict(re.findall(r'(\w+): "(\w+)"', _old_view.group(1))) if _old_view else {}
-_want_views = ["map", "rank", "sources"]
+_want_views = ["map", "rank", "how"]
 _closers = [
     ln.strip()
     for ln in _site_text.splitlines()
@@ -495,16 +499,17 @@ check(
     and _dviews == _want_views
     and not _views_in_drawer
     and _views_list == _want_views
-    and 'data-view="how"' not in _html
-    and _old_view_map.get("how") == "sources"
+    and _old_view_map.get("sources") == "how"
     and _old_view_map.get("bubbles") == "rank"
-    and _old_view_map.get("table") == "sources"
+    and _old_view_map.get("table") == "how"
+    and "function renderHow" in _html
+    and all((ROOT / "site" / "content" / f).is_file() for f in ("changelog.md", "limitations.md", "method/overview.md"))
+    and not re.search(r"blob/main/docs/(?:method|decisions|decision-log|trace|limitations|changelog)", _site_text)
     and "renderBubbles" not in _views_src
     and "renderTable" not in _views_src
     and "function rankInfo" in _views_src
     and "dl-full" in _views_src
     and '"RANKINGS"' in _html
-    and "renderHow" not in _views_src
     and "closeMenu" not in _site_text
     and "sessionStorage" in _html
     and not _bad_close

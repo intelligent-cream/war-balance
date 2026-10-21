@@ -2,7 +2,7 @@
 expected losses, and write the result back into research/2026-10/gaps/loans_value.json. Run it after changing an input
 in research/2026-10/raw/loan_rates/ or a constant below, then rebuild: `uv run loan_rates.py && uv run build_data.py`.
 
-The gift in a loan has two parts (docs/method/loans.md):
+The gift in a loan has two parts (site/content/method/loans.md):
   A. cheaper interest: Ukraine's repayments are worth less than the face value at the rate Ukraine normally pays;
   B. default risk the lender really carries: the expected loss of its creditor class.
 Ukraine's gain = 1 - PV(repayments at the normal rate) x (1 - expected loss), per loan item.
@@ -42,7 +42,7 @@ BOND_COUPON, BOND_MATURITY = 0.0675, dt.date(2033, 3, 15)
 LONG_BONDS = ("2034", "2035", "2036")
 
 # B. expected loss by creditor class: low / central / high (high is used in the cost view only; the high gain uses
-# the war yield instead). Evidence in loans_value-notes.md and docs/method/loans.md.
+# the war yield instead). Evidence in loans_value-notes.md and site/content/method/loans.md.
 EXPECTED_LOSS = {
     # IMF and World Bank are senior creditors (Schlegl, Trebesch and Wright, NBER w25793); Ukraine kept paying the IMF
     # through the war (Interfax, 6 Mar 2026: USD 279.7m repaid in February 2026). Canada's and the Netherlands'
