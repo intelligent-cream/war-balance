@@ -329,8 +329,9 @@ check(
 
 # 25. round 14b (raised by the owner): what Russia took from companies (seizures, forced discounts and exit fees) is not
 # in the totals. No country carries an "exits" or "seized" part among the parts of the net; every home country with a
-# seizure or exit payment in company_flows.json has it in "taken" (the cost view), and calc() in index.html adds "taken"
-# to the cost parts only, never to the parts of the net or either headline number
+# seizure or exit payment in company_flows.json has it in "taken", and calc() in index.html adds "taken" to the cost
+# parts only, never to the parts of the net or either headline number. Round 19: the site no longer shows a cost view
+# (the owner removed it); "taken" is a marker, and the cost parts feed only the full data download
 _cf = json.loads((ROOT / "research" / "2026-10" / "gaps" / "company_flows.json").read_text())["countries"]
 _in_tot = [
     f"{c['iso3']} {x['k']}"
@@ -361,8 +362,8 @@ check(
     and "c.taken" in _cost_block
     and "...takenParts" in _cost_block
     and not _neg,
-    f"in the net: {_in_tot[:6] or 'none'}; missing from the cost view: {_missing[:6] or 'none'}; "
-    f"{sum(len(c.get('taken') or []) for c in countries.values())} taken parts, all in the cost view",
+    f"in the net: {_in_tot[:6] or 'none'}; missing from 'taken': {_missing[:6] or 'none'}; "
+    f"{sum(len(c.get('taken') or []) for c in countries.values())} taken parts, none in the totals",
 )
 
 # 26. round 15 (raised by the owner): refugees hosted on the aggressor side are not support for Ukraine. Russia has no
@@ -403,15 +404,18 @@ if _m is None:
 else:
     # 29. round 15 (review 4, H3; approved by the owner): a country is ranked on a headline number only if neither its
     # likely range nor any method-band alternative changes the sign; uncertain() must agree with that rule written out
-    # again (site_numbers.mjs), and every headline ranking must pass its number to rankList()
+    # again (site_numbers.mjs), and every headline ranking must pass its number to rankList(). Round 19 (owner): the
+    # "Top lists" panel is gone; its net ranking is the Ranking view (views.js), which must leave out the same countries
+    # (uncertain(m.c, y, hq) for the number the drawer shows), and the Ukraine and Russia panels keep their lists
     _wrong = [
         f"{k}.{q}"
         for k, c in _m["countries"].items()
         for q in ("ua", "rus", "net")
         if c[q + "Unc"] == c[q + "SameSign"]
     ]
+    _views_js = (ROOT / "site" / "views.js").read_text()
     _calls = re.findall(r'rankList\([^\n]*?"(ua|rus|net)"(?:\)|, \{)', _html) + re.findall(
-        r"headOf\[state\.rankMetric\]", _html
+        r"uncertain\(m\.c, y, hq\)", _views_js
     )
     _unc_n = {
         q: sum(1 for c in _m["countries"].values() if c[q + "Unc"] and c["gdp"] >= 5) for q in ("ua", "rus", "net")
@@ -425,35 +429,82 @@ else:
     _bad, _n = cdn.check(_m)
     check("docs figures match data.json", not _bad and _n > 0, f"{_n} tagged figures; differing: {_bad[:4] or 'none'}")
 
-# 31. round 15 (approved by the owner): the net is the view the map opens with, then its two parts and the cost to the
-# country; the gross "To Ukraine" and "To Russia" views are gone, and links to them open the nearest view. Round 17
-# (redesign, approved by the owner): the four views sit in the Filters drawer, which is closed on load (the page opens
-# with the map, one header line, the legend and the Highlights and Filters buttons); the second number is "Kept from
-# Russia" everywhere ("lens=kept" opens it too), and no page text says "change in payments to Russia" any more
+# 31. round 15 (approved by the owner): the net is the view the map opens with, then its two parts; the gross "To
+# Ukraine" and "To Russia" views are gone, and links to them open the nearest view. Round 17 (redesign, approved by the
+# owner): the Filters drawer is closed on load (the page opens with the map, one header line, the legend and the
+# Highlights and Filters buttons); the second number is "Kept from Russia" everywhere ("lens=kept" opens it too), and no
+# page text says "change in payments to Russia" any more. Round 19 (the owner's interface changes):
+# - three views of the map: the cost to the country is gone (lens=cost opens the net), with no cost wording left in the
+#   page's text, and the quick buttons are gone;
+# - the drawer opens with a Views list (Map, Ranking, Ukraine vs Russia, Table & data, Sources); How it works is no
+#   longer a view (#view=how opens Sources) and the Top lists panel is gone (#c=RANKINGS opens the Ranking view);
+# - the drawer is persistent: only its own controls close it (the Filters button, × and Escape), never a view switch, a
+#   filter or a country, and its open state is kept in sessionStorage;
+# - no view has filter controls of its own: every view reads the drawer
 _buttons = re.findall(r'<button data-lens="(\w+)"', _html)
 _start = re.search(r'const state = \{ lens: "(\w+)"', _html)
 _old = re.search(r"const OLD_LENS = \{([^}]*)\}", _html)
 _old_map = dict(re.findall(r'(\w+): "(\w+)"', _old.group(1))) if _old else {}
-_rank = re.search(r"const LENS_RANK = \{([^}]*)\}", _html)
-_rank_keys = re.findall(r"(\w+):", _rank.group(1)) if _rank else []
-_site_text = _html + "".join((ROOT / "site" / f).read_text() for f in ("views.js", "views2.js")) + _sc
-_old_name = re.findall(r"[Cc]hange in (?:its )?payments to Russia", re.sub(r"(?m)^\s*//.*$", "", _site_text))
+_lenses = re.search(r"const LENSES = \[([^\]]*)\]", _html)
+_lens_keys = re.findall(r'"(\w+)"', _lenses.group(1)) if _lenses else []
+_views_src = "".join((ROOT / "site" / f).read_text() for f in ("views.js", "views2.js"))
+_site_text = _html + _views_src + _sc
+_code_only = re.sub(r"(?m)^\s*//.*$", "", _site_text)
+_old_name = re.findall(r"[Cc]hange in (?:its )?payments to Russia", _code_only)
+_cost_words = re.findall(
+    r"[Cc]ost to the country|cost view|Cost carried", re.sub(r"<!--[\s\S]*?-->|/\*[\s\S]*?\*/", "", _code_only)
+)
+_drawer = re.search(r'<aside class="drawer" id="drawer"[\s\S]*?</aside>', _html)
+_dviews = (
+    re.findall(
+        r'<button data-view="(\w+)"', re.search(r'class="views dviews"[\s\S]*?</div>', _drawer.group(0)).group(0)
+    )
+    if _drawer
+    else []
+)
+_views_const = re.search(r"const VIEWS = \[([^\]]*)\]", _html)
+_views_list = re.findall(r'"(\w+)"', _views_const.group(1)) if _views_const else []
+_old_view = re.search(r"const OLD_VIEW = \{([^}]*)\}", _html)
+_old_view_map = dict(re.findall(r'(\w+): "(\w+)"', _old_view.group(1))) if _old_view else {}
+_want_views = ["map", "rank", "bubbles", "table", "sources"]
+_closers = [
+    ln.strip()
+    for ln in _site_text.splitlines()
+    if re.search(r"\bcloseDrawer\(\)", ln) and not ln.strip().startswith("function")
+]
+_bad_close = [ln[:60] for ln in _closers if "fbtn" not in ln]
+_view_filters = re.findall(r"filtersHtml|data-small|data-group=|data-quick", _views_src + _html)
 check(
-    "the map opens with the net; old views open the nearest one; 'Kept from Russia'",
-    _buttons == ["net", "support", "payments", "cost"]
+    "the map opens with the net; old views open the nearest one; the drawer lists the views and stays open",
+    _buttons == ["net", "support", "payments"]
     and bool(_start)
     and _start.group(1) == "net"
-    and _old_map == {"change": "net", "ukr": "support", "rus": "payments", "kept": "payments"}
-    and sorted(_rank_keys) == sorted(_buttons)
+    and _old_map == {"change": "net", "ukr": "support", "rus": "payments", "kept": "payments", "cost": "net"}
+    and _lens_keys == _buttons
+    and 'data-lens="cost"' not in _html
     and 'data-lens="ukr"' not in _html
     and 'data-lens="rus"' not in _html
     and '<button data-lens="payments" aria-pressed="false" data-i18n="Kept from Russia">' in _html
     and re.search(r'<aside class="drawer" id="drawer"[^>]*\bhidden>', _html) is not None
     and 'id="hlbtn"' in _html
     and 'id="fbtn"' in _html
-    and not _old_name,
-    f"buttons {_buttons}; start {_start.group(1) if _start else None}; old links {_old_map}; rankings for {_rank_keys}; "
-    f"old name 'change in payments to Russia' left in the site's text: {len(_old_name)}",
+    and not _old_name
+    and not _cost_words
+    and _dviews == _want_views
+    and _views_list == _want_views
+    and 'data-view="how"' not in _html
+    and _old_view_map.get("how") == "sources"
+    and '"RANKINGS"' in _html
+    and "renderHow" not in _views_src
+    and "closeMenu" not in _site_text
+    and "sessionStorage" in _html
+    and not _bad_close
+    and len(_closers) >= 3
+    and not _view_filters,
+    f"lens buttons {_buttons}; start {_start.group(1) if _start else None}; old links {_old_map}; views in the drawer "
+    f"{_dviews}; old views {_old_view_map}; drawer closed by {len(_closers)} controls (others: {_bad_close or 'none'}); "
+    f"filter controls in views: {len(_view_filters)}; cost wording left: {len(_cost_words)}; "
+    f"'change in payments to Russia' left: {len(_old_name)}",
 )
 
 # 32. round 16 (review 5, C2; approved by the owner): the page in a real browser shows the same bands, "direction

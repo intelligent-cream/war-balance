@@ -128,9 +128,10 @@ from Russia). This reverses round 5, which counted forced discounts and exit fee
   seizures.
 - **Cost view:** both count in the cost to the country, like the energy switching cost: "Seized by Russia (companies' assets)"
   and "Forced sales: discount and exit fee taken by Russia", positive (`taken` in `data.json`, by home country, with the
-  same values, ranges and certainty letters as before).
+  same values, ranges and certainty letters as before). Since round 19 the site no longer shows the cost view (the
+  owner removed it); the cost stays in the full data download, labelled, and these two are a marker.
 - **Shown apart:** the panel says "Russia took €X from companies of this country (seizures and forced sales); not in
-  the totals, counted in the cost to the country"; the table, CSV and JSON have a column marked "not in totals"; the map shows a
+  the totals" (until round 19 it added "counted in the cost to the country"); the full data CSV and the parts CSV have columns marked "not in totals"; the map shows a
   square marker (layer "Taken by Russia") where Russia took at least 0.1% of a year's GDP.
 - **Method band:** no alternative includes them (the alternatives are rebuilt with the same rule).
 - **Check:** `check_data.py` check 25 fails if a country carries `exits` or `seized` among the parts of the net, if a

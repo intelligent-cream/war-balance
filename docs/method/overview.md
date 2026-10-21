@@ -222,7 +222,9 @@ grey on the support map too.
 
 ## The cost view
 
-"Cost to the country" (called "cost carried" before round 15) is a fourth view: what it cost the country itself, after gains such as cheaper Russian oil or business won back; what the country gave up, not where money went. Parts (`costParts` in `calc()`):
+**Since round 19 the site no longer shows this view** (the owner removed it to simplify): `calc()` still works it out, and the full data download (Table & data → "Full data (CSV)") keeps it as `cost_to_the_country_eur_bn_not_shown_on_the_site` ([decisions](../decisions.md#round-19-one-place-for-every-filter)). What follows describes the model.
+
+"Cost to the country" (called "cost carried" before round 15) was a fourth view from round 15 to round 18: what it cost the country itself, after gains such as cheaper Russian oil or business won back; what the country gave up, not where money went. Parts (`costParts` in `calc()`):
 
 - aid with loans at the lender's cost: per loan item, the loan's terms and the expected loss of its creditor class, discounted at the lender's own funding rate, with a low and high value per country (round 12; was 26% of face, `LOAN_GRANT_ELEMENT`, with a half-to-one-and-a-half band). The net shift uses the value to Ukraine instead ([loans](loans.md#the-cost-view));
 - donated weapons at their recorded value;
