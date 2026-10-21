@@ -109,7 +109,6 @@ I18N.uk = {
   "Table & data": "Таблиця й дані",
   "Measure": "Одиниця",
   "% of GDP": "% ВВП",
-  "Per person": "На особу",
   "Total €": "Усього €",
   "Up to": "До",
   "2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).": "2026 рік — це період з початку року (січень–серпень), а не повний рік. Якщо джерело ще не опублікувало дані за 2026 рік, січень–серпень оцінено за його місячним темпом 2025 року (позначено *).",

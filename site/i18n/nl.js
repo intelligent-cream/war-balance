@@ -109,7 +109,6 @@ I18N.nl = {
   "Table & data": "Tabel & data",
   "Measure": "Maat",
   "% of GDP": "% van bbp",
-  "Per person": "Per inwoner",
   "Total €": "Totaal €",
   "Up to": "Tot",
   "2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).": "2026 is het jaar tot nu toe (januari tot augustus), geen volledig jaar. Waar een bron 2026 nog niet heeft gepubliceerd, is januari tot augustus geschat uit het maandtempo van 2025 (gemarkeerd met *).",

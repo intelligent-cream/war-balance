@@ -18,7 +18,7 @@ Since round 15 the map opens with their sum, and shows each part as a map of its
 
 The gross views "To Ukraine" and "To Russia" were removed in round 15: they include normal trade and measure something different. The gross flows are still in each country's panel (the small charts, such as "Bought from Ukraine"), in the table and downloads, and in the gross trade flows (an option in Filters since round 17).
 
-Each number is a share of one year's GDP (the average of 2022–2024), so a small country that did a lot is not hidden behind a large one that did a little. A number whose likely range or method band crosses zero is too close to call: a faded colour of its leaning direction on the map, marked "direction uncertain" and left out of the rankings. Per person and total euros are one click away in Filters, and since round 19 a country's panel follows that choice: its big number, tiles and bars are then per person or in euros, with % of GDP beside them. With **What's counted** in Filters a reader can leave parts out; every number then recomputes and the page says "Custom mix, not the official figures", with a button back to the official numbers (a custom mix cannot be shared).
+Each number is a share of one year's GDP (the average of 2022–2024), so a small country that did a lot is not hidden behind a large one that did a little. A number whose likely range or method band crosses zero is too close to call: a faded colour of its leaning direction on the map, marked "direction uncertain" and left out of the rankings. Per person and total euros are one click away in Filters, and since round 19 a country's panel follows that choice: its big number, tiles and bars are then in euros, with % of GDP beside them. With **What's counted** in Filters a reader can leave parts out; every number then recomputes and the page says "Custom mix, not the official figures", with a button back to the official numbers (a custom mix cannot be shared).
 
 ## How to read a number
 
@@ -41,7 +41,7 @@ The address in the browser keeps what you see, so you can copy it and share it.
   - `view`: `map`, `rank` or `sources`. How it works was a view until round 19; `view=how` now opens `sources`. Ukraine vs Russia and Table & data were views until round 20; `view=bubbles` opens `rank` and `view=table` opens `sources`. The old Top lists panel (`#c=RANKINGS`) opens `rank`.
   - `flow`: with `view=sources`, one money flow, e.g. `#view=sources&flow=loans` opens the Sources view at loans ([trace](trace.md)).
   - `lens`: `net` (the sum, the start: an address without `lens` opens it), `support` (support for Ukraine), or `payments` (kept from Russia; `lens=kept` opens it too). Older links keep working: `lens=change` (the old net view) opens `net`, `lens=ukr` (the removed To Ukraine view) opens `support`, `lens=rus` (To Russia) opens `payments` and `lens=cost` (the cost to the country, removed in round 19) opens `net`.
-  - `m`: `gdp` (% of GDP), `pp` (per person) or `total` (total euros).
+  - `m`: `gdp` (% of GDP) or `total` (total euros). Per person was a choice until round 20; `m=pp` now opens `gdp`.
   - `y`: a year, 2021 to 2026.
   - `hl`: a highlight on the map (round 17): `world`, `armed`, `baltic`, `hungary`, `support`, `gascut` or `taken`, e.g. `#hl=baltic`.
 - **A country**: `#AUS` opens Australia's panel. With a view it becomes `c=AUS`, e.g. `#view=rank&c=AUS`. `UKR` and `RUS` open the Ukraine and Russia panels.

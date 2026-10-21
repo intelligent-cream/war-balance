@@ -671,6 +671,7 @@ Table & data ... just keep the sources ranking and map to keep it simpler". **No
 | **Three views**: Map, Ranking, Sources. Ukraine vs Russia and Table & data are removed; `#view=bubbles` opens Ranking, `#view=table` opens Sources | judgement | owner | simpler | display | `VIEWS`, `OLD_VIEW` |
 | **The ranking as clean as the map**: no title, filter line or notes above the chart; the header line names it ("Ranking: Net (the sum)") and its ⓘ explains the dots, lines, measure, scale and what the net adds. The list of countries too close to call stays below the chart | judgement | owner | "more clean like the map" | display | `rankInfo`, `renderInfo` |
 | **Downloads move to Sources**: "Full data (CSV)", "CSV with every part", "Full data (JSON)" and the data gaps by country, at the end of the Sources view. The downloads of only the rows shown went with the table | judgement | owner (the table removed) | the data stay downloadable | downloads | `views2.js` |
+| **No per person measure**: the Measure in Filters is % of GDP or Total €; `m=pp` in an old link opens % of GDP. The panel's compare rows and the full data download keep the net per person | judgement | owner | "per person is also not so relevant" | display | `#drawer`, `setFilters` |
 | **The one-line filter summary is gone** from the views; the Filters button's dot still shows when anything differs from the default | judgement | owner | filters live only in Filters | display | `filterSummary` removed |
 
 ## What is data and what is estimated

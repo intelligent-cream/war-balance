@@ -39,7 +39,7 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   shrinks it to its handle so the panel shows above it. Open or closed and the sheet's height are kept for the visit
   (sessionStorage). A dot on the button when anything differs from the default. Sections, in order: 1. **views**
   (Map, Ranking, Sources; round 20 removed Ukraine vs Russia and Table & data) as one segmented control; 2. **the map shows** (Net,
-  Support for Ukraine, Kept from Russia); 3. **measure** (% of GDP, per person, total €); 4. **what's counted**, folded
+  Support for Ukraine, Kept from Russia); 3. **measure** (% of GDP, total €; per person was removed in round 20); 4. **what's counted**, folded
   by default (16 on/off switches with world totals, grouped toward Ukraine, kept from Russia and own line; "Showing
   the official numbers", or "Custom mix, not the official figures" with "Reset to the official numbers", also under
   the title, in the panel and the tooltip); 5. **where and when**: region, group (EU, G7, NATO, BRICS, former Soviet
@@ -103,7 +103,7 @@ A working prototype with sample values is in `site/index.html`.
 | control | options |
 |---------|---------|
 | **View** | **Net (the sum)** (default) · Support for Ukraine · Kept from Russia ("Change in payments to Russia" until round 17); Cost to the country from round 15 to round 18 (the first design had Change since 2021 · Cost carried · To Ukraine · To Russia) |
-| **Measure** | **% of GDP** (default, the fairest comparison of sacrifice) · Per person · Total € |
+| **Measure** | **% of GDP** (default, the fairest comparison of sacrifice) · Total € (per person until round 20) |
 | **Period** | from 2022 up to a chosen year, using the yearly values in `world.json` |
 | **Find a country** ("Find your country" until round 17; in Filters) | search box; zooms to the country and opens its panel |
 
