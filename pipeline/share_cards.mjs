@@ -40,12 +40,13 @@ await mkdir(join(SITE, "c"), { recursive: true });
 
 // world card: the map itself, without panels
 await page.evaluate(() => {
-  for (const sel of ["#status", ".bar", ".legend", ".zoom", ".map-title", "#hint", "#flows"]) document.querySelector(sel).style.display = "none";
+  // round 17: the map as it opens (with its money streams), without the header line, the buttons and the legend
+  for (const sel of [".topline", ".hdr", ".tr", ".legend", "#fact", "#hlpanel", "#flows"]) { const el = document.querySelector(sel); if (el) el.style.display = "none"; }
   window.dispatchEvent(new Event("resize"));
   const el = document.createElement("div");
   el.style.cssText = "position:fixed;left:48px;bottom:44px;z-index:99;background:#fbfcfcee;padding:22px 28px;border-radius:10px;max-width:640px;font-family:'Source Sans 3',sans-serif;color:#15212b";
   el.innerHTML = `<div style="font-family:Archivo,sans-serif;font-weight:800;font-stretch:115%;font-size:40px;letter-spacing:-.02em;line-height:1.05">Follow the Money:<br>Ukrainian Aid</div>
-    <div style="margin-top:10px;font-size:22px;color:#55636e">Every country's net: its <b style="color:#2a6fb0">support for Ukraine</b> plus the <b style="color:#c9520f">change in its payments to Russia</b>, as a share of its economy: totals since 2022 against one year's GDP.</div>`;
+    <div style="margin-top:10px;font-size:22px;color:#55636e">Every country's net: its <b style="color:#2a6fb0">support for Ukraine</b> plus the money it <b style="color:#2a6fb0">kept from Russia</b> (paid Russia <span style="color:#2a6fb0">less</span>, or <span style="color:#c9520f">more</span>, than without the war), as a share of its economy: totals since 2022 against one year's GDP.</div>`;
   document.body.appendChild(el);
 });
 await page.waitForTimeout(800);
@@ -66,7 +67,9 @@ const cards = await page.evaluate(() => {
       // did, "earned from Russia" for earners. Round 15 (approved by the owner): the net leads, as on the map, then its
       // two parts; every figure is a total since 2022 with its average year; the main part of each number is named
       ua: fmtMeasure(c, k.uaBal, "gdp", true), uaY: perYear(c, k.uaBal, 2026), uaEur: eur(k.uaBal, true),
-      ru: fmtMeasure(c, k.rusBal, "gdp", true), ruY: perYear(c, k.rusBal, 2026), ruLess: k.rusBal >= 0, ruWhat: rusWords(c, k).en,
+      // round 17 (approved by the owner): "Kept from Russia", with the sign in words: "paid Russia €65.8bn (1.6% of GDP)
+      // less than without the war", with its main cause or the gas Russia cut off itself (the page is in English here)
+      ru: fmtMeasure(c, k.rusBal, "gdp", true), ruY: perYear(c, k.rusBal, 2026), ruLess: k.rusBal >= 0, ruWhat: keptWords(c, k, "gdp", true),
       uaUnc: uncertain(c, 2026, "ua"), ruUnc: uncertain(c, 2026, "rus"), netUnc: uncertain(c, 2026, "net"), years: yrs.toFixed(1),
       refX: c.ref_excluded ? eur(c.ref_excluded.years.reduce((a, b) => a + b, 0)) : "",
       netPos: k.shift >= 0, earner: !!k.earner,
@@ -86,8 +89,11 @@ for (const d of cards) {
   await page.evaluate(d => {
     let el = document.getElementById("card");
     if (!el) { el = document.createElement("div"); el.id = "card"; document.body.appendChild(el); }
-    // the map's colours: blue toward Ukraine, orange toward Russia, gold for earners from the war effort
-    const col = d.netPos ? "#2a6fb0" : d.earner ? "#8f7417" : "#c9520f";
+    // the map's one colour rule (round 17): blue toward Ukraine, orange toward Russia, grey for no clear change (too close
+    // to call) and for earning from the war effort, which is not money toward Russia
+    // too close to call: the faded colour of the way it leans, half way to the grey (round 17, as on the map)
+    const grey = "#55636e", fadeB = "#3f698f", fadeO = "#8f5a3e";
+    const col = d.earner ? grey : d.netUnc ? (d.netPos ? fadeB : fadeO) : d.netPos ? "#2a6fb0" : "#c9520f";
     el.style.cssText = "position:fixed;inset:0;z-index:99;background:#fbfcfc;color:#15212b;font-family:'Source Sans 3',system-ui,sans-serif;padding:40px 64px 34px;display:flex;flex-direction:column";
     el.innerHTML = `
       <div style="display:flex;align-items:center;gap:14px;font-family:Archivo,sans-serif;font-weight:800;font-stretch:115%;font-size:26px;letter-spacing:-.01em">
@@ -99,10 +105,10 @@ for (const d of cards) {
         <span style="font-family:Archivo,sans-serif;font-weight:800;font-size:88px;letter-spacing:-.03em;line-height:1;color:${col}">${d.pct}</span>
         <span style="font-size:27px;font-weight:600;color:#15212b;line-height:1.15">net: of a year's GDP in total<br>since 2022 (about ${d.pctY} a year)</span>
       </div>
-      <div style="margin-top:10px;font-size:26px;font-weight:600;color:#15212b;line-height:1.25">${d.netRange[0].toUpperCase() + d.netRange.slice(1)}${d.netUnc ? " · direction uncertain" : ""} · ${d.eur}${d.pp ? " · " + d.pp : ""}</div>
-      <div style="margin-top:8px;font-size:24px;color:#15212b;line-height:1.25;border-left:5px solid #d4601a;padding-left:12px">It adds two different things: aid given and payments to Russia avoided.${d.netWhat ? " " + d.netWhat[0].toUpperCase() + d.netWhat.slice(1) + "." : ""}</div>
-      <div style="margin-top:12px;font-size:23px;color:#15212b;line-height:1.3">Support for Ukraine <b style="color:${d.uaPos ? "#2a6fb0" : "#8f7417"}">${d.ua}</b> (${d.uaRange})${d.uaUnc ? " · direction uncertain" : ""}${d.refX ? ` · hosted Ukrainian refugees (${d.refX}), not counted as support: co-belligerent` : ""}</div>
-      <div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3">Change in payments to Russia <b style="color:${d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ru}</b> (${d.ruRange}): ${d.ruWhat}${d.ruUnc ? " · direction uncertain" : ""}</div>
+      <div style="margin-top:10px;font-size:26px;font-weight:600;color:#15212b;line-height:1.25">${d.netRange[0].toUpperCase() + d.netRange.slice(1)}${d.netUnc ? " · too close to call" : ""} · ${d.eur}${d.pp ? " · " + d.pp : ""}</div>
+      <div style="margin-top:8px;font-size:24px;color:#15212b;line-height:1.25;border-left:5px solid #d4601a;padding-left:12px">It adds two different things: help given to Ukraine and money kept from Russia.${d.netWhat ? " " + d.netWhat[0].toUpperCase() + d.netWhat.slice(1) + "." : ""}</div>
+      <div style="margin-top:12px;font-size:23px;color:#15212b;line-height:1.3">Support for Ukraine <b style="color:${!d.uaPos ? grey : d.uaUnc ? fadeB : "#2a6fb0"}">${d.ua}</b> (${d.uaRange})${d.uaUnc ? " · too close to call" : ""}${d.refX ? ` · hosted Ukrainian refugees (${d.refX}), not counted as support: co-belligerent` : ""}</div>
+      <div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3">Kept from Russia <b style="color:${d.ruUnc ? (d.ruLess ? fadeB : fadeO) : d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ru}</b> (${d.ruRange}): ${d.ruWhat}${d.ruUnc ? " · too close to call" : ""}</div>
       ${d.fz ? `<div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3">Russian money frozen <b style="color:#2a6fb0">${d.fz}</b>: the return Russia lost on its reserves frozen here, in the net only</div>` : ""}
       <div style="margin-top:auto;font-size:17px;color:#55636e;line-height:1.35">2022 to August 2026 (about ${d.years} years) · figures to ${d.dataTo} · research preview, every number with a range and a source<br>intelligent-cream.github.io/follow-the-money-ukraine</div>
 `;
@@ -110,8 +116,8 @@ for (const d of cards) {
   await page.waitForTimeout(30);
   const iso = d.iso3.toLowerCase();
   await page.screenshot({ path: join(SITE, "share", iso + ".png") });
-  const title = `${d.name}: net ${d.pct} of a year's GDP in total since 2022 (${d.netRange}; support for Ukraine ${d.ua}; change in payments to Russia ${d.ru}) | Follow the Money: Ukrainian Aid`;
-  const desc = `In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: net ${d.pct} (${d.netRange}; ${d.eur}; about ${d.pctY} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.netUnc ? ", direction uncertain" : ""}, the sum of support for Ukraine ${d.ua} (${d.uaRange}) and change in payments to Russia ${d.ru} (${d.ruRange}; ${d.ruWhat})${d.fz ? `, plus Russian money frozen ${d.fz}` : ""}. The net adds two different things: aid given and payments to Russia avoided. Every number with a range and a source.`;
+  const title = `${d.name}: net ${d.pct} of a year's GDP in total since 2022 (${d.netRange}; support for Ukraine ${d.ua}; kept from Russia ${d.ru}) | Follow the Money: Ukrainian Aid`;
+  const desc = `In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: net ${d.pct} (${d.netRange}; ${d.eur}; about ${d.pctY} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.netUnc ? ", too close to call" : ""}, the sum of support for Ukraine ${d.ua} (${d.uaRange}) and kept from Russia ${d.ru} (${d.ruRange}): it ${d.ruWhat}${d.fz ? `; plus Russian money frozen ${d.fz}` : ""}. The net adds two different things: help given to Ukraine and money kept from Russia. Every number with a range and a source.`;
   await writeFile(join(SITE, "c", iso + ".html"), `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

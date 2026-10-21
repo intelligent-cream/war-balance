@@ -12,16 +12,20 @@ const GROUPS = {
   brics: { label: "BRICS", list: "BRA IND CHN ZAF EGY ETH IRN ARE IDN" },
   ussr: { label: "Former Soviet Union", list: "ARM AZE BLR EST GEO KAZ KGZ LVA LTU MDA TJK TKM UZB" },
 };
-// round 15: the net and its two parts are views of their own (net, support, payments), so no part switch is needed
-const viewState = { group: "all", small: false, sortKey: "metric", sortDir: -1 };
+// round 15: the net and its two parts are views of their own (net, support, payments), so no part switch is needed.
+// Round 17: the group is one of the Filters drawer's filters (with state.region and state.size in index.html), shared by
+// the map, the drawer's ranking and these views; "Small economies" sets the size filter to all economies
+const viewState = { group: "all", sortKey: "metric", sortDir: -1 };
 
 function inGroup(c) {
   const g = GROUPS[viewState.group];
   return !g.list || g.list.split(" ").includes(c.iso3);
 }
 function eligible(c) {
-  return inGroup(c) && (viewState.small || (c.gdp || 0) >= MIN_GDP_RANK);
+  return inGroup(c) && (state.region === "all" || (REGION_OF[c.iso3] || "asia") === state.region) && (c.gdp || 0) >= state.size;
 }
+// a filter changed here: the map, the drawer and this view follow (paint() re-renders the open view)
+function filtersChangedHere() { if (typeof streamCache !== "undefined") streamCache = null; paint(); }
 
 // the headline number of the current view, with its likely range, in the current measure
 function metricOf(c) {
@@ -32,8 +36,8 @@ function metricOf(c) {
 }
 const LENS_TITLE = {
   support: "Support for Ukraine since before the war",
-  payments: "Change in payments to Russia since before the war",
-  net: "Support for Ukraine plus the change in payments to Russia, since before the war",
+  payments: "Kept from Russia since before the war: paid Russia less (+) or more (−) than without the war",
+  net: "Support for Ukraine plus kept from Russia, since before the war",
   cost: "What supporting Ukraine cost",
 };
 function measureText() {
@@ -59,12 +63,12 @@ function filtersHtml() {
   return `<div class="filters" role="group" aria-label="${t("Filter countries")}">
     ${Object.entries(GROUPS).map(([k, g]) => `<button class="chipbtn" data-group="${k}" aria-pressed="${viewState.group === k}">${t(g.label)}</button>`).join("")}
     <span class="sep"></span>
-    <button class="chipbtn" data-small="1" aria-pressed="${viewState.small}" title="${t("Economies under {min} GDP swing a lot in % of GDP", { min: minGdp(MIN_GDP_RANK) })}">${t("Small economies")}</button>
+    <button class="chipbtn" data-small="1" aria-pressed="${state.size === 0}" title="${t("Economies under {min} GDP swing a lot in % of GDP", { min: minGdp(MIN_GDP_RANK) })}">${t("Small economies")}</button>
   </div>`;
 }
 function wireFilters(root) {
-  root.querySelectorAll("[data-group]").forEach(b => (b.onclick = () => { viewState.group = b.dataset.group; renderView(); }));
-  root.querySelectorAll("[data-small]").forEach(b => (b.onclick = () => { viewState.small = !viewState.small; renderView(); }));
+  root.querySelectorAll("[data-group]").forEach(b => (b.onclick = () => { viewState.group = b.dataset.group; filtersChangedHere(); }));
+  root.querySelectorAll("[data-small]").forEach(b => (b.onclick = () => { state.size = state.size === 0 ? MIN_GDP_RANK : 0; filtersChangedHere(); }));
 }
 function tipFor(m) {
   const range = m.loBn != null ? "<br>" + t("Likely range {lo} to {hi}", { lo: fmtMeasure(m.c, m.loBn, state.measure, true), hi: fmtMeasure(m.c, m.hiBn, state.measure, true) }) : "";
@@ -94,7 +98,8 @@ function renderRanking(root) {
   const cand = [0, ...base.flatMap(b => [b, -b])].filter(t => t >= x.domain()[0] && t <= x.domain()[1]).sort((a, b) => Math.abs(a) - Math.abs(b));
   const ticks = [];
   for (const t of cand) if (ticks.every(u => Math.abs(x(u) - x(t)) >= (narrowScreen ? 38 : 46))) ticks.push(t);
-  const col = v => (v >= 0 ? "var(--ukr)" : "var(--rus)");
+  // round 17: one colour rule; below zero is orange only where it is money toward Russia (not support or cost)
+  const col = v => (v >= 0 ? "var(--ukr)" : state.lens === "support" || state.lens === "cost" ? "var(--ink-soft)" : "var(--rus)");
   // a group, not an image: its rows are buttons that keyboard and screen reader users reach one by one
   const title = t(LENS_TITLE[state.lens]);
   const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("{title}, {n} countries, ranked", { title, n: rows.length })}">
@@ -113,8 +118,8 @@ function renderRanking(root) {
   </svg>`;
   root.innerHTML = `<div class="view-inner">
     <h2>${title}</h2>
-    <p class="sub">${t("{measure}, {period}. Dot: middle estimate; line: likely range (data and model uncertainty given the method, about 90% by judgement). {n} countries; switch view and measure at the top. Click a country for the breakdown.", { measure: measureText(), period: periodText(), n: rows.length })}</p>
-    ${state.lens === "net" ? `<p class="sub"><b>${t("This adds two different things: aid given and payments to Russia avoided; much of what one country stopped paying, Russia sold to others.")}</b></p>` : ""}
+    <p class="sub">${t("{measure}, {period}. Dot: middle estimate; line: likely range (data and model uncertainty given the method, about 90% by judgement). {n} countries; switch view and measure in Filters. Click a country for the breakdown.", { measure: measureText(), period: periodText(), n: rows.length })}</p>
+    ${state.lens === "net" ? `<p class="sub"><b>${t("The net adds two different things: help given to Ukraine and money kept from Russia. Much of what one country stopped paying, Russia sold to others.")}</b></p>` : ""}
     ${filtersHtml()}
     <div class="chart">${svg}</div>
     ${unc.length ? `<p class="note-small">${t("Not ranked, direction uncertain (the likely range or a method-band alternative crosses zero), {n} countries: {list}.", { n: unc.length, list: unc.map(m => `${m.c.name} ${fmtMeasure(m.c, m.bn, state.measure, true)}`).join(", ") })}</p>` : ""}
@@ -212,7 +217,7 @@ const COLS = [
   { k: "shiftPp", label: "Per person", fmt: r => (r.shiftPp == null ? "–" : (r.shiftPp < 0 ? "−" : "") + money(num(Math.abs(r.shiftPp)))), sign: true },
   { k: "uaGdp", label: "Support for Ukraine, % of a year's GDP", fmt: r => pct(r.uaGdp) + unq(r, "ua"), sign: true },
   { k: "uaCert", label: "Certainty", fmt: r => r.grades.ua },
-  { k: "rusGdp", label: "Change in payments to Russia, % of a year's GDP", fmt: r => pct(r.rusGdp) + unq(r, "rus"), sign: true },
+  { k: "rusGdp", label: "Kept from Russia, % of a year's GDP", fmt: r => pct(r.rusGdp) + unq(r, "rus"), sign: true },
   { k: "rusCert", label: "Certainty", fmt: r => r.grades.rus },
   { k: "rusCut", label: "Of which gas Russia cut off, €", fmt: r => (r.rusCut > 0.005 ? eur(r.rusCut) : "–") },
   // round 16 (review 5, H4): its own line, in the net only
@@ -271,7 +276,7 @@ function renderTable(root) {
     ${filtersHtml()}
     <div class="tablewrap"><table class="dtable">
       <thead><tr>${COLS.map(col => `<th scope="col" ${col.nosort ? "" : `aria-sort="${key === col.k ? (viewState.sortDir < 0 ? "descending" : "ascending") : "none"}"`}>${col.nosort ? t(col.label) : `<button data-k="${col.k}">${t(col.label)}</button>`}</th>`).join("")}</tr></thead>
-      <tbody>${rows.map(r => `<tr data-n="${r.c.n}">${COLS.map(col => `<td class="${col.sign ? (r[col.k] > 0 ? "pos" : r[col.k] < 0 ? "neg" : "") : ""}">${col.k === "name" ? `<button>${col.fmt(r)}</button>` : col.fmt(r)}</td>`).join("")}</tr>`).join("")}</tbody>
+      <tbody>${rows.map(r => `<tr data-n="${r.c.n}">${COLS.map(col => `<td class="${col.sign ? (r[col.k] > 0 ? "pos" : r[col.k] < 0 && col.k !== "uaGdp" ? "neg" : "") : ""}">${col.k === "name" ? `<button>${col.fmt(r)}</button>` : col.fmt(r)}</td>`).join("")}</tr>`).join("")}</tbody>
     </table></div>
     <p class="note-small">${t("Data and text: CC BY 4.0, credit \"Follow the Money: Ukrainian Aid\". Every figure has its sources in the country breakdown and in the research files on GitHub. Figures to {date}.", { date: document.body.dataset.dataTo || t("the end of August 2026") })}</p>
   </div>`;
@@ -285,7 +290,7 @@ function renderTable(root) {
   // a click anywhere on a row opens the country; the button in the country cell (Enter, Space) gets there by keyboard
   root.querySelectorAll("tbody tr").forEach(tr => (tr.onclick = () => select(tr.dataset.n, false)));
   // file names say which period and filter they hold
-  const tag = `${state.year === 2021 ? "2021" : "2022-" + state.year}_${viewState.group}${viewState.small ? "-with-small" : ""}`;
+  const tag = `${state.year === 2021 ? "2021" : "2022-" + state.year}_${viewState.group}${state.region !== "all" ? "-" + state.region : ""}${state.size === 0 ? "-with-small" : state.size > MIN_GDP_RANK ? "-over-" + state.size + "bn" : ""}${custom() ? "_custom-mix" : ""}`;
   root.querySelector("#dl-csv").onclick = () => download(csvSummary(rows), `follow-the-money-ukrainian-aid_${tag}.csv`);
   root.querySelector("#dl-parts").onclick = () => download(csvParts(rows), `follow-the-money-ukrainian-aid-parts_${tag}.csv`);
   root.querySelector("#dl-json").onclick = () => download(jsonRows(rows), `follow-the-money-ukrainian-aid_${tag}.json`, "application/json");
@@ -298,38 +303,40 @@ function csvSummary(rows) {
   // the average 2022-2024 GDP; support first, then payments, then the net; each with its letter and direction flag
   const head = ["iso3", "country", "period", "net_of_flowback",
     "support_ukraine_eur_bn", "support_ukraine_low_eur_bn", "support_ukraine_high_eur_bn", "support_ukraine_pct_gdp", "support_ukraine_certainty", "support_ukraine_direction_uncertain",
-    "payments_russia_change_eur_bn", "payments_russia_change_low_eur_bn", "payments_russia_change_high_eur_bn", "payments_russia_change_pct_gdp", "payments_russia_change_certainty", "payments_russia_change_direction_uncertain", "of_which_gas_cut_by_russia_eur_bn",
+    "kept_from_russia_eur_bn", "kept_from_russia_low_eur_bn", "kept_from_russia_high_eur_bn", "kept_from_russia_pct_gdp", "kept_from_russia_certainty", "kept_from_russia_direction_uncertain", "of_which_gas_cut_by_russia_eur_bn",
     "russian_money_frozen_eur_bn_net_only", "russian_money_frozen_low_eur_bn_net_only", "russian_money_frozen_high_eur_bn_net_only", "russian_money_frozen_pct_gdp_net_only",
     "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person", "net_shift_certainty", "net_shift_direction_uncertain",
     "refugees_hosted_not_counted_co_belligerent_eur_bn",
     "remittances_from_russia_change_eur_bn_not_in_totals", "remittances_from_russia_change_low_eur_bn_not_in_totals", "remittances_from_russia_change_high_eur_bn_not_in_totals", "remittances_from_russia_change_pct_gdp_not_in_totals",
     "taken_by_russia_from_companies_eur_bn_not_in_totals", "taken_by_russia_from_companies_low_eur_bn_not_in_totals", "taken_by_russia_from_companies_high_eur_bn_not_in_totals", "taken_by_russia_from_companies_pct_gdp_not_in_totals",
-    "cost_eur_bn", "cost_pct_gdp", "aid_eur_bn", "refugees_eur_bn", "paid_to_russia_eur_bn", "gdp_eur_bn_avg_2022_2024", "population_m"];
+    "cost_eur_bn", "cost_pct_gdp", "aid_eur_bn", "refugees_eur_bn", "paid_to_russia_eur_bn", "gdp_eur_bn_avg_2022_2024", "population_m", "figures"];
   const lines = rows.map(r => [r.iso3, r.c.name_en, periodTextEn(), state.netBack,
     r.ua, r.uaLo, r.uaHi, r.uaGdp, r.grades.ua, r.unc.ua, r.rus, r.rusLo, r.rusHi, r.rusGdp, r.grades.rus, r.unc.rus, r.rusCut,
     r.frozen, r.frozenLo, r.frozenHi, r.frozenGdp,
     r.shift, r.shiftLo, r.shiftHi, r.shiftGdp, r.shiftPp, r.grades.net, r.unc.net, r.refExcluded,
     r.remit, r.remitLo, r.remitHi, r.remitGdp,
     r.taken, r.takenLo, r.takenHi, r.takenGdp,
-    r.cost, r.costGdp, r.aid, r.refugees, r.paidRus, r.gdp, r.pop].map(q).join(","));
+    r.cost, r.costGdp, r.aid, r.refugees, r.paidRus, r.gdp, r.pop, figuresEn()].map(q).join(","));
   return [head.join(","), ...lines].join("\n");
 }
+// round 17: "official", or which parts of a custom mix were switched off (in English, like the other columns)
+function figuresEn() { return custom() ? "custom mix, not the official figures: " + COUNTED.filter(gp => !isOn(gp)).map(gp => gp.label).join("; ") + " switched off" : "official"; }
 function csvParts(rows) {
-  const head = ["iso3", "country", "period", "net_of_flowback", "part", "label", "eur_bn", "low_eur_bn", "high_eur_bn", "certainty", "sources"];
+  const head = ["iso3", "country", "period", "net_of_flowback", "part", "label", "eur_bn", "low_eur_bn", "high_eur_bn", "certainty", "sources", "figures"];
   // round 14b: what Russia took from companies comes last, marked: it is not in the net (only in the cost)
   const all = r => r.parts.concat((r.takenParts || []).map(p => ({ ...p, k: "taken_" + p.k, en: p.en + " (not in totals; in the cost)" })));
-  const lines = rows.flatMap(r => all(r).map(p => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, p.k, p.en, p.v, p.lo, p.hi, p.cert, (p.src || []).join(" ")].map(q).join(",")));
+  const lines = rows.flatMap(r => all(r).map(p => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, p.k, p.en, p.v, p.lo, p.hi, p.cert, (p.src || []).join(" "), figuresEn()].map(q).join(",")));
   return [head.join(","), ...lines].join("\n");
 }
 // the same rows as JSON, with the two numbers and their parts
 function jsonRows(rows) {
   const r4 = v => (v == null || Number.isNaN(v) ? null : +v.toFixed(4));
-  return JSON.stringify({ period: periodTextEn(), net_of_flowback: state.netBack, unit: "EUR bn; pct_gdp = period total / average 2022-2024 GDP x 100, not a yearly rate",
-    note: "the net = support for Ukraine + change in payments to Russia + Russian money frozen; it adds different things: aid given and payments to Russia avoided; much of what one country stopped paying, Russia sold to others. direction_uncertain: the likely range or a method-band alternative crosses zero (not ranked)",
+  return JSON.stringify({ period: periodTextEn(), net_of_flowback: state.netBack, figures: figuresEn(), unit: "EUR bn; pct_gdp = period total / average 2022-2024 GDP x 100, not a yearly rate",
+    note: "the net = support for Ukraine + kept from Russia + Russian money frozen; kept from Russia is positive when the country paid Russia less than without the war, negative when it paid more; the net adds different things: help given to Ukraine and money kept from Russia; much of what one country stopped paying, Russia sold to others. direction_uncertain: the likely range or a method-band alternative crosses zero (not ranked)",
     countries: rows.map(r => ({ iso3: r.iso3, country: r.c.name_en, gdp_eur_bn_avg_2022_2024: r.gdp,
       support_for_ukraine: { eur_bn: r4(r.ua), low: r4(r.uaLo), high: r4(r.uaHi), pct_gdp: r4(r.uaGdp), certainty: r.grades.ua, direction_uncertain: r.unc.ua,
         refugees_hosted_not_counted_co_belligerent_eur_bn: r.refExcluded == null ? undefined : r4(r.refExcluded) },
-      change_in_payments_to_russia: { eur_bn: r4(r.rus), low: r4(r.rusLo), high: r4(r.rusHi), pct_gdp: r4(r.rusGdp), of_which_gas_cut_by_russia: r4(r.rusCut), certainty: r.grades.rus, direction_uncertain: r.unc.rus },
+      kept_from_russia: { eur_bn: r4(r.rus), low: r4(r.rusLo), high: r4(r.rusHi), pct_gdp: r4(r.rusGdp), of_which_gas_cut_by_russia: r4(r.rusCut), certainty: r.grades.rus, direction_uncertain: r.unc.rus },
       russian_money_frozen: { eur_bn: r4(r.frozen), low: r4(r.frozenLo), high: r4(r.frozenHi), pct_gdp: r4(r.frozenGdp),
         note: "the return Russia lost on its central-bank reserves frozen here: not a payment, on its own line, added to the net only" },
       net: { eur_bn: r4(r.shift), low: r4(r.shiftLo), high: r4(r.shiftHi), pct_gdp: r4(r.shiftGdp), certainty: r.grades.net, direction_uncertain: r.unc.net },
@@ -374,6 +381,8 @@ function setView(v, quiet) {
   if (row && row.scrollWidth > row.clientWidth) row.scrollLeft += tab.getBoundingClientRect().left - row.getBoundingClientRect().left - (row.clientWidth - tab.offsetWidth) / 2;
   tip.hidden = true;
   renderView();
+  // round 17: a view starts below the header line, which shows the page tabs outside the map
+  if (typeof placeView === "function") placeView();
   if (!quiet) writeHash(false);
 }
 document.querySelectorAll(".views [data-view]").forEach(b => (b.onclick = () => { setView(b.dataset.view); if (typeof closeMenu === "function") closeMenu(); }));
