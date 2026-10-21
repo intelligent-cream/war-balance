@@ -1,11 +1,11 @@
 // ===== Views: the ranking (the data downloads are in views2.js, shown in Sources) =====
-// Same numbers as the map: the current view (the net, support for Ukraine, kept from Russia), measure and year.
+// Same numbers as the map: the current view (the net, support for Ukraine, business with Russia), measure and year.
 // Round 19 (owner): every filter is in the Filters drawer. The views have none of their own: each reads the drawer's
 // state (view, measure, what's counted, region, group, size, year) and re-renders whenever it changes (paint() calls
 // renderView()). Round 20 (owner): only Map, Ranking and Sources remain, and the ranking is as clean as the map: the
 // header line names it and its explanation is in the header's ⓘ (rankInfo)
 /* global state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
-   num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades, renderDrawer, renderInfo */
+   num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades, renderDrawer, renderInfo, verb */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
 const GROUPS = {
@@ -38,8 +38,8 @@ function metricOf(c) {
 }
 const LENS_TITLE = {
   support: "Support for Ukraine since before the war",
-  payments: "Kept from Russia since before the war: paid Russia less (+) or more (−) than without the war",
-  net: "Support for Ukraine plus kept from Russia, since before the war",
+  payments: "Business with Russia since before the war: reduced (+) or increased (−) against a world without the war",
+  net: "Support for Ukraine plus business with Russia, since before the war",
 };
 function measureText() {
   return t({ gdp: "total as % of one year's GDP (average 2022–2024), not a yearly rate", pp: "€ per person", total: "€ billion" }[state.measure]);
@@ -61,7 +61,8 @@ const fitName = (name, max) => (name.length > max ? name.slice(0, max - 1).trimE
 function activateOnKey(el, fn) { el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } }); }
 function tipFor(m) {
   const range = m.loBn != null ? "<br>" + t("Likely range {lo} to {hi}", { lo: fmtMeasure(m.c, m.loBn, state.measure, true), hi: fmtMeasure(m.c, m.hiBn, state.measure, true) }) : "";
-  return `<b>${m.c.name}</b>${fmtMeasure(m.c, m.bn, state.measure, true)}${state.measure !== "total" ? ` · ${eur(m.bn, true)}` : ""}${range}<br><span style="opacity:.75">${t("Click for the full breakdown")}</span>`;
+  // round 22 (owner): a verb and an amount ("Toward Ukraine by 3.2% of GDP · €134 bn"); the chart itself keeps its signed axis
+  return `<b>${m.c.name}</b>${verb(HEAD_LENS[state.lens], m.bn, m.c)}${state.measure !== "total" ? ` · ${eur(Math.abs(m.bn))}` : ""}${range}<br><span style="opacity:.75">${t("Click for the full breakdown")}</span>`;
 }
 
 // ----- Ranking: every country as a dot with its likely range, sorted -----
@@ -70,7 +71,7 @@ function rankInfo() {
   const n = Object.values(DATA).filter(eligible).length;
   return `<p><b>${t(LENS_TITLE[state.lens])}</b></p>
     <p>${t("{measure}, {period}. Dot: middle estimate; line: likely range (data and model uncertainty given the method, about 90% by judgement). {n} countries; switch view and measure in Filters. Click a country for the breakdown.", { measure: measureText(), period: periodText(), n })}</p>
-    ${state.lens === "net" ? `<p>${t("The net adds two different things: help given to Ukraine and money kept from Russia. Much of what one country stopped paying, Russia sold to others.")}</p>` : ""}
+    ${state.lens === "net" ? `<p>${t("The net adds two different things: help given to Ukraine and reduced business with Russia. Much of what one country stopped buying, Russia sold to others.")}</p>` : ""}
     <p class="sub">${t("Scale is compressed (symmetric log) so small and large countries both stay readable; the axis labels give the true values.")}</p>
     <p class="sub"><button class="linkbtn" data-goview="map">${t("Map")}</button> · <button class="linkbtn" data-goview="sources">${t("Sources and method")}</button></p>`;
 }
@@ -106,7 +107,7 @@ function renderRanking(root) {
     ${rows.map((m, i) => {
       const y = top + i * rowH + rowH / 2;
       const w = m.lo != null ? `<line class="whisk" x1="${x(m.lo)}" x2="${x(m.hi)}" y1="${y}" y2="${y}"/>` : `<line class="whisk" x1="${x(0)}" x2="${x(m.v)}" y1="${y}" y2="${y}" style="stroke:${col(m.v)};stroke-opacity:.35;stroke-width:6"/>`;
-      return `<g class="row" tabindex="0" role="button" data-n="${m.c.n}" aria-label="${m.c.name}: ${fmtMeasure(m.c, m.bn, state.measure, true)}">
+      return `<g class="row" tabindex="0" role="button" data-n="${m.c.n}" aria-label="${m.c.name}: ${verb(HEAD_LENS[state.lens], m.bn, m.c)}">
         <rect class="hit" x="0" y="${y - rowH / 2}" width="${W}" height="${rowH}" fill="transparent"/>
         <text class="lbl" x="${labelW - 10}" y="${y + 4}" text-anchor="end">${i + 1}. ${fitName(m.c.name, narrowScreen ? 13 : 22)}<title>${m.c.name}</title></text>
         ${w}<circle class="dot" cx="${x(m.v)}" cy="${y}" r="5.5" fill="${col(m.v)}"/>
@@ -145,10 +146,8 @@ function renderView() {
 // quiet: the address already says this view (Back/Forward)
 function setView(v, quiet) {
   state.view = v;
-  setPressed(".views [data-view]", "view", v);
-  // on phones the tabs are one row that scrolls sideways: bring the chosen one into sight
-  const tab = document.querySelector(`.views [data-view="${v}"]`), row = tab && tab.parentElement;
-  if (row && row.scrollWidth > row.clientWidth) row.scrollLeft += tab.getBoundingClientRect().left - row.getBoundingClientRect().left - (row.clientWidth - tab.offsetWidth) / 2;
+  // round 22: the header tabs (role="tab"): the chosen one is selected and is the one Tab reaches
+  document.querySelectorAll(".vtabs [data-view]").forEach(b => { const on = b.dataset.view === v; b.setAttribute("aria-selected", String(on)); b.tabIndex = on ? 0 : -1; });
   tip.hidden = true;
   renderView();
   // the drawer's map layers apply to the map only (round 19)
@@ -160,7 +159,17 @@ function setView(v, quiet) {
   if (!quiet) writeHash(false);
 }
 // round 19: switching views leaves the Filters drawer open (it closes only when the reader closes it)
-document.querySelectorAll(".views [data-view]").forEach(b => (b.onclick = () => setView(b.dataset.view)));
+document.querySelectorAll(".vtabs [data-view]").forEach(b => (b.onclick = () => setView(b.dataset.view)));
+// arrow keys, Home and End move between the tabs (the ARIA tabs pattern) and open the view
+document.querySelector(".vtabs").addEventListener("keydown", e => {
+  const tabs = [...document.querySelectorAll(".vtabs [data-view]")], i = tabs.indexOf(document.activeElement);
+  if (i < 0) return;
+  const j = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+  if (j == null) return;
+  e.preventDefault();
+  const tab = tabs[(j + tabs.length) % tabs.length];
+  tab.focus(); setView(tab.dataset.view);
+});
 window.addEventListener("resize", () => state.view && state.view !== "map" && renderView());
 window.renderView = renderView;
 window.setView = setView;

@@ -310,3 +310,19 @@ The owner asked for a cleaner, more professional look. **No number changed.** De
 | **The country panel without boxes inside its box** | owner | boxes inside boxes | display |
 | **Crimea is Ukraine** on the map: the map data drew it inside Russia; it is now part of Ukraine's shape | owner | Crimea is Ukraine | display |
 | **Borders as on Google Maps** for most of the world: Somaliland part of Somalia, Northern Cyprus part of Cyprus; Kosovo, Western Sahara, Taiwan and Palestine as drawn | owner | the same pattern as Google Maps | display |
+
+## Round 22: views as tabs, sources and panel reorganised (21 October)
+
+The owner asked for the views out of Filters, easier sources and a better organised country panel, then renamed the
+site and its numbers. **No number changed.** "Kept from Russia" in the rows above is now called **Business with
+Russia**; those rows keep the old name as the record. Details:
+[decisions](decisions.md#round-22-views-as-tabs-sources-and-panel-reorganised); steps:
+[changelog](changelog.md#round-22-views-as-tabs-sources-and-panel-reorganised).
+
+| decision | raised by | why | effect |
+|---|---|---|---|
+| **Views as tabs** in the header bar, not in Filters | owner | "not really filters" | display |
+| **Country panel in three levels**, five named groups, sources grouped by part | owner | "perfect gradual exposure" | display |
+| **Sources view as a guide**: how to trace a number, flow cards, contents and search | owner | "easier to trace the data and method" | display |
+| **"Follow the Money: Ukraine"** and the question "Where did each country's money move: toward Ukraine or toward Russia?" | owner | renaming | display; downloads |
+| **Business with Russia** (was "Kept from Russia"), and every number as a verb and an amount | owner | "by 1.6%" misread; one name everywhere | display; downloads |

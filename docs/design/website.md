@@ -13,7 +13,7 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
 - **First view** (round 21, polish: [decisions](../decisions.md#round-21-polish)): one header bar above the map, then
   the map. The bar has the site's name and the research-preview note on one short line ("Research preview · estimates
   not yet checked by a person · About"; About opens the full text with the dates, how the figures were compiled and how
-  to report an error), the question "Who supported Ukraine, and who paid Russia less, or more? · 2022–Aug 2026" with
+  to report an error), the question "Where did each country's money move: toward Ukraine or toward Russia? · 2022–Aug 2026" with
   an ⓘ popover (the three key points, the per-year example, the orange caveat "mostly fuel buying, not siding with
   Russia", what grey means and what the streams show), and the two buttons, **Highlights** and **Filters** (at the
   bottom of the screen on phones). On the map only a one-row legend ("toward Russia ← no clear change → toward
@@ -35,7 +35,7 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   and Russia sit beside the dots of Kyiv and Moscow, where the streams end, at a fixed distance on screen whatever the
   zoom, so a dot never shows without its name. The old gross flow lines (canvas) are an option, "Gross trade flows";
   their animation loop runs only while they are on.
-- **Hover card**: support for Ukraine and kept from Russia as two bars, each with its sentence ("paid Russia €65.8bn
+- **Hover card**: support for Ukraine and business with Russia as two bars, each with its sentence ("paid Russia €65.8bn
   (1.6% of GDP) less than without the war"), the net with its range, and the orange caveat for orange countries.
 - **Filters drawer** (round 19, the owner's interface changes; [decisions](../decisions.md#round-19-one-place-for-every-filter)):
   a persistent top layer. Filters opens it and it stays open until the reader closes it (the Filters button, × or
@@ -48,8 +48,8 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   layers are folded into one **More options** (with a dot when anything in it differs from the default); display last.
   Before round 21 the sections were, in order: 1. **views**
   (Map, Ranking, Sources; round 20 removed Ukraine vs Russia and Table & data) as one segmented control; 2. **the map shows** (Net,
-  Support for Ukraine, Kept from Russia); 3. **measure** (% of GDP, total €; per person was removed in round 20); 4. **what's counted**, folded
-  by default (16 on/off switches with world totals, grouped toward Ukraine, kept from Russia and own line; "Showing
+  Support for Ukraine, Business with Russia); 3. **measure** (% of GDP, total €; per person was removed in round 20); 4. **what's counted**, folded
+  by default (16 on/off switches with world totals, grouped toward Ukraine, business with Russia and own line; "Showing
   the official numbers", or "Custom mix, not the official figures" with "Reset to the official numbers", also under
   the title, in the panel and the tooltip); 5. **where and when**: region, group (EU, G7, NATO, BRICS, former Soviet
   Union), size and year; 6. **map layers**: streams, gross trade flows, the three markers and zoom, switched off (with
@@ -58,7 +58,7 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   shows plus the measure), How it works and the Top lists (the Ranking view replaces them).
 - **Views read the drawer** (round 19): the views have no filter controls of their own; each follows the drawer's
   view, measure, what's counted, region, group, size and year, live. Round 20 (owner): the Ranking is as clean as the
-  map: no title, summary line or notes above the chart; the header line says "Ranking: Net (the sum)" (or the part
+  map: no title, summary line or notes above the chart; the header line says "Ranking: Net" (or the part
   shown) and its ⓘ holds what the dots, lines, measure and scale mean. Only the list of countries too close to call
   stays, below the chart.
 - **Highlights**: seven chips; one highlights its countries (others dimmed) and shows a small closable fact card with
@@ -70,7 +70,7 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   (€, likely range, ≈ average year); since round 19 in the drawer's measure: per person ("+€1,609", "per person, in
   total since 2022") or total € ("+€134 bn"), with % of GDP as the second line, and the tiles and bars in that
   measure too; a tap opens the lead in words, what the net adds, the certainty in words and what
-  the likely range is. 3. **The two parts as two tiles** side by side (support for Ukraine and kept from Russia: label,
+  the likely range is. 3. **The two parts as two tiles** side by side (support for Ukraine and business with Russia: label,
   letter, value in %, € and a small bar on a shared zero line), and Russian money frozen as a slim third tile where
   it exists; a tap opens the words, the likely range, the average year, the gas Russia cut off and the refugees not
   counted. 4. **What changes the meaning here** as small flags with an icon ("≈ too close to call", "⚠ fuel buying, not
@@ -86,7 +86,7 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   how it is calculated and why → that part's sources → Sources at the end of the panel → the Sources view.
 - **Other views**, from Filters or the tabs in the header line once one is open: **Ranking** (the drawer's number and
   measure, with likely ranges), and until round 20 **Ukraine vs Russia** and **Table & data** (round 19, rebuilt: one row per country in the
-  filter; grouped, sortable columns for the net, support for Ukraine, kept from Russia and Russian money frozen, each
+  filter; grouped, sortable columns for the net, support for Ukraine, business with Russia and Russian money frozen, each
   with its likely range and letter, then GDP, population and the main parts; tabular numbers, a sticky header and
   country column, its own scroll box; "Download CSV" and "Download JSON" export exactly what is shown, and the full data
   (every country and number, every part, data.json) below; the data gaps by country, folded), and **Sources** (the
@@ -94,6 +94,36 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   source in data.json is listed; since round 20 it ends with **Download the data**: "Full data (CSV)", "CSV with every
   part", "Full data (JSON)" and the data gaps by country, folded). How it works was a view until round 19; its content
   is in this documentation.
+
+- **Round 22** (owner: the views "are not really filters and they are kind of big decisions"; sources and the country
+  panel with "perfect gradual exposure and very well organised"; and the renaming;
+  [decisions](../decisions.md#round-22-views-as-tabs-sources-and-panel-reorganised)):
+  - **Views as tabs**: Map · Ranking · Sources are the page's main tabs (role="tablist", arrow keys move between them),
+    a segmented control in the header bar on desktop and a full-width row under the question on phones. Filters no
+    longer lists them.
+  - **Names and wording**: the site is "Follow the Money: Ukraine"; the question is "Where did each country's money
+    move: toward Ukraine or toward Russia?"; the three numbers are **Net**, **Support for Ukraine** and **Business with
+    Russia** (positive: reduced). Every number in a sentence or tile is a verb and an amount, the amount without a sign
+    and a % always "of GDP": "Toward Ukraine by 3.2% of GDP", "Supported Ukraine with 1.6%", "Reduced business with
+    Russia by 1.6%" (or "Increased ..." in orange), "Froze Russian money worth 0.08%"; the net in words is "Supported
+    Ukraine + reduced business with Russia + froze Russian money = 3.2% of GDP toward Ukraine". Charts (the ranking,
+    the parts bars) keep their signed axes. The Russia map's legend reads "increased ← no clear change → reduced".
+  - **Country panel in three levels**: (1) the net, the two tiles, Russian money frozen and the meaning flags, as before;
+    (2) **What makes up the number**: the 7 biggest parts and "Show the other N parts"; a tapped part opens one compact
+    card: the value and range in words, how it is calculated, why, its sources one line each (name and date) with one
+    fold of all their exact tables and reports, then Method page · The decisions behind it · Decision log · Full trace ·
+    All sources for this flow; (3) five closed groups with a one-line preview: **Over time**, **Context** (sanctions or
+    own choice, money flowing back, markers), **How certain** (method band and alternatives, data coverage, how this is
+    calculated), **Facts** (about the country, aid by type, companies, people) and **Share and compare**; last, **All N
+    sources for the country**, closed, grouped by the part that cites them first and numbered in that order (the [n]
+    marks above open it at that source), one fold of exact tables per group.
+  - **Sources view**: "How to trace a number" (source → research note → part on the map → the country's number), the
+    method in four cards, how decisions are made (folded) and the decision links; then the money flows as cards, closed
+    by default (title, one line, the number of sources and research files), in four groups (Support for Ukraine,
+    Business with Russia, Russian money frozen, Not in the totals) with a sticky table of contents and a search on
+    desktop (a search and a "Jump to a flow" list on phones), Expand all and Collapse all. An open flow shows how and
+    why, its parts on the map, its links, its sources one line each with one fold of exact tables, and its research
+    files. `#view=sources&flow=X` opens that flow and scrolls to it. Download the data stays at the end.
 
 The rest of this page is the early plan, kept for the record.
 
@@ -111,7 +141,7 @@ A working prototype with sample values is in `site/index.html`.
 
 | control | options |
 |---------|---------|
-| **View** | **Net (the sum)** (default) · Support for Ukraine · Kept from Russia ("Change in payments to Russia" until round 17); Cost to the country from round 15 to round 18 (the first design had Change since 2021 · Cost carried · To Ukraine · To Russia) |
+| **View** | **Net** (default) · Support for Ukraine · Business with Russia ("Change in payments to Russia" until round 17); Cost to the country from round 15 to round 18 (the first design had Change since 2021 · Cost carried · To Ukraine · To Russia) |
 | **Measure** | **% of GDP** (default, the fairest comparison of sacrifice) · Total € (per person until round 20) |
 | **Period** | from 2022 up to a chosen year, using the yearly values in `world.json` |
 | **Find a country** ("Find your country" until round 17; in Filters) | search box; zooms to the country and opens its panel |

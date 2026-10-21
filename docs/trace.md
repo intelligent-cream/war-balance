@@ -11,8 +11,8 @@ in a country's panel also opens its method in place: how it is calculated in two
 done this way in one line with links to its section in [decisions.md](decisions.md) and the [decision log](decision-log.md),
 that country's sources with their exact links, and links to the method page and to this page's entry for the flow
 ("Full trace"). The Sources view (titled "Method and sources") opens with the method in four lines and how decisions
-are made, and gives each flow the same how and why. The second headline number is called "kept from Russia" since round
-17 ("change in payments to Russia" before); the money streams on the map show the same two numbers in euros.
+are made, and gives each flow the same how and why. The second headline number was called "kept from Russia" from round
+17 to round 21 ("change in payments to Russia" before) and "business with Russia" since round 22; the money streams on the map show the same two numbers in euros.
 
 Status: research preview. The figures were compiled with AI assistance and have not yet been checked line by line by a
 person ([decisions](decisions.md)).
@@ -423,7 +423,7 @@ Known gaps:
 
 **How it's calculated:** [overview.md § The net-gain rule (round 10)](method/overview.md#the-net-gain-rule-round-10); [Payments to Russia for fuel](method/energy-and-laundered-oil.md#payments-to-russia-for-fuel); [Transit gas](method/energy-and-laundered-oil.md#transit-gas); [The pre-war level and the comparison](method/trade.md#the-pre-war-level-and-the-comparison); [Why volumes](method/prices.md#why-volumes); [6. Which model is used for which flow](method/counterfactual.md#6-which-model-is-used-for-which-flow).
 
-**Round 15:** the money kept from Russia is its own map; its title gives the world total, which is Russia's net gain, not payments (round 16 wording): from buyers who cut −EUR 352.0bn<!-- n:WORLD.less -->, from buyers who bought more +EUR 215.4bn<!-- n:WORLD.more --> (`worldPaid()`). China's no-war path includes the contracted Power of Siberia ramp-up (source `power_of_siberia`, [`power_of_siberia_r15.json`](../research/2026-10/gaps/power_of_siberia_r15.json)). Method-band alternatives: redirected trade (round 16: both sides, "less paid" × 0.70<!-- n:WORLD.ratio --> and "more paid" × 0.50, so the world total stays the world's net change), without the gas Russia cut off, and 2026 at 2025 prices (`to_rus.p26`). Countries whose range or band crosses zero are not ranked.
+**Round 15:** business with Russia is its own map; its title gives the world total, which is Russia's net gain, not payments (round 16 wording): from buyers who cut −EUR 352.0bn<!-- n:WORLD.less -->, from buyers who bought more +EUR 215.4bn<!-- n:WORLD.more --> (`worldPaid()`). China's no-war path includes the contracted Power of Siberia ramp-up (source `power_of_siberia`, [`power_of_siberia_r15.json`](../research/2026-10/gaps/power_of_siberia_r15.json)). Method-band alternatives: redirected trade (round 16: both sides, "less paid" × 0.70<!-- n:WORLD.ratio --> and "more paid" × 0.50, so the world total stays the world's net change), without the gas Russia cut off, and 2026 at 2025 prices (`to_rus.p26`). Countries whose range or band crosses zero are not ranked.
 
 **Why it's done this way:**
 
@@ -531,7 +531,7 @@ Known gaps:
 
 **How it's calculated:** [prices.md § War-time windfall](method/prices.md#war-time-windfall); [No-war prices (round 7)](method/prices.md#no-war-prices-round-7); [Gas prices per country](method/prices.md#gas-prices-per-country).
 
-**Round 15:** the windfall is named on cards and panels when it is more than half of the number for kept from Russia (Hungary: EUR 9.9bn of 11.6bn, mostly 2022). Method-band alternatives: without the windfall, and 2026 at 2025 prices (the Hormuz crisis, source `hormuz`; [prices § 2026 and the Hormuz crisis](method/prices.md#2026-and-the-hormuz-crisis-round-15)).
+**Round 15:** the windfall is named on cards and panels when it is more than half of the number for business with Russia (Hungary: EUR 9.9bn of 11.6bn, mostly 2022). Method-band alternatives: without the windfall, and 2026 at 2025 prices (the Hormuz crisis, source `hormuz`; [prices § 2026 and the Hormuz crisis](method/prices.md#2026-and-the-hormuz-crisis-round-15)).
 
 **Why it's done this way:**
 
@@ -959,7 +959,7 @@ Known gaps:
 
 **What it is:** Company assets Russia seized (temporary management by decree, expropriation, court seizures, leased aircraft kept), at the owners' write-downs, by the company's home country. Round 14; since round 14b not in the totals, counted in the cost to the country.
 
-**Parts on the map:** Seized by Russia (companies' assets) (`seized`, cost to the country only; `taken` in `data.json`). Round 14: in the net shift, toward Russia, in the money kept from Russia.
+**Parts on the map:** Seized by Russia (companies' assets) (`seized`, cost to the country only; `taken` in `data.json`). Round 14: in the net shift, toward Russia, in business with Russia.
 
 **How it's calculated:** [russia-state-and-companies.md § Assets seized by Russia (round 14)](method/russia-state-and-companies.md#assets-seized-by-russia-round-14).
 
@@ -1033,7 +1033,7 @@ Known gaps:
 
 ## Frozen Russian reserves
 
-**Round 16 (review 5, H4):** a line of its own, added to the net only: not in the money kept from Russia (its map, ranking and world total) or in support for Ukraine; shown in the panel, the table ("Russian money frozen, % of a year's GDP (in the net only)"), the CSV (`russian_money_frozen_*_net_only`) and the JSON (`russian_money_frozen`). The one-third host share is explained in the [method](method/russia-state-and-companies.md#frozen-central-bank-reserves-round-7); check 34.
+**Round 16 (review 5, H4):** a line of its own, added to the net only: not in business with Russia (its map, ranking and world total) or in support for Ukraine; shown in the panel, the table ("Russian money frozen, % of a year's GDP (in the net only)"), the CSV (`russian_money_frozen_*_net_only`) and the JSON (`russian_money_frozen`). The one-third host share is explained in the [method](method/russia-state-and-companies.md#frozen-central-bank-reserves-round-7); check 34.
 
 **What it is:** The return Russia lost on its central-bank reserves frozen in this country.
 

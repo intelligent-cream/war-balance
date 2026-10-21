@@ -442,7 +442,9 @@ else:
 #   filter or a country, and its open state is kept in sessionStorage;
 # - no view has filter controls of its own: every view reads the drawer.
 # Round 20 (owner): only Map, Ranking and Sources remain (#view=bubbles opens Ranking, #view=table opens Sources, where
-# the downloads now are); the ranking has no text of its own above the chart: the header line names it and its ⓘ explains it
+# the downloads now are); the ranking has no text of its own above the chart: the header line names it and its ⓘ explains it.
+# Round 22 (owner): the views are tabs in the header bar (role="tablist"), not in the drawer
+# and the second number is named "Business with Russia" (positive: reduced); lens=kept and lens=business open it too
 _buttons = re.findall(r'<button data-lens="(\w+)"', _html)
 _start = re.search(r'const state = \{ lens: "(\w+)"', _html)
 _old = re.search(r"const OLD_LENS = \{([^}]*)\}", _html)
@@ -457,13 +459,10 @@ _cost_words = re.findall(
     r"[Cc]ost to the country|cost view|Cost carried", re.sub(r"<!--[\s\S]*?-->|/\*[\s\S]*?\*/", "", _code_only)
 )
 _drawer = re.search(r'<aside class="drawer" id="drawer"[\s\S]*?</aside>', _html)
-_dviews = (
-    re.findall(
-        r'<button data-view="(\w+)"', re.search(r'class="views dviews"[\s\S]*?</div>', _drawer.group(0)).group(0)
-    )
-    if _drawer
-    else []
-)
+# round 22 (owner): the views are the page's main tabs in the header bar, no longer a block in the drawer
+_tabs = re.search(r'<nav class="vtabs" role="tablist"[\s\S]*?</nav>', _html)
+_dviews = re.findall(r'<button role="tab" data-view="(\w+)"', _tabs.group(0)) if _tabs else []
+_views_in_drawer = bool(_drawer and "data-view=" in _drawer.group(0))
 _views_const = re.search(r"const VIEWS = \[([^\]]*)\]", _html)
 _views_list = re.findall(r'"(\w+)"', _views_const.group(1)) if _views_const else []
 _old_view = re.search(r"const OLD_VIEW = \{([^}]*)\}", _html)
@@ -477,22 +476,24 @@ _closers = [
 _bad_close = [ln[:60] for ln in _closers if "fbtn" not in ln]
 _view_filters = re.findall(r"filtersHtml|data-small|data-group=|data-quick", _views_src + _html)
 check(
-    "the map opens with the net; old views open the nearest one; the drawer lists the views and stays open",
+    "the map opens with the net; old views open the nearest one; the views are header tabs; the drawer stays open",
     _buttons == ["net", "support", "payments"]
     and bool(_start)
     and _start.group(1) == "net"
-    and _old_map == {"change": "net", "ukr": "support", "rus": "payments", "kept": "payments", "cost": "net"}
+    and _old_map
+    == {"change": "net", "ukr": "support", "rus": "payments", "kept": "payments", "business": "payments", "cost": "net"}
     and _lens_keys == _buttons
     and 'data-lens="cost"' not in _html
     and 'data-lens="ukr"' not in _html
     and 'data-lens="rus"' not in _html
-    and '<button data-lens="payments" aria-pressed="false" data-i18n="Kept from Russia">' in _html
+    and '<button data-lens="payments" aria-pressed="false" data-i18n="Business with Russia">' in _html
     and re.search(r'<aside class="drawer" id="drawer"[^>]*\bhidden>', _html) is not None
     and 'id="hlbtn"' in _html
     and 'id="fbtn"' in _html
     and not _old_name
     and not _cost_words
     and _dviews == _want_views
+    and not _views_in_drawer
     and _views_list == _want_views
     and 'data-view="how"' not in _html
     and _old_view_map.get("how") == "sources"
@@ -509,8 +510,8 @@ check(
     and not _bad_close
     and len(_closers) >= 3
     and not _view_filters,
-    f"lens buttons {_buttons}; start {_start.group(1) if _start else None}; old links {_old_map}; views in the drawer "
-    f"{_dviews}; old views {_old_view_map}; drawer closed by {len(_closers)} controls (others: {_bad_close or 'none'}); "
+    f"lens buttons {_buttons}; start {_start.group(1) if _start else None}; old links {_old_map}; header tabs "
+    f"{_dviews} (in the drawer too: {_views_in_drawer}); old views {_old_view_map}; drawer closed by {len(_closers)} controls (others: {_bad_close or 'none'}); "
     f"filter controls in views: {len(_view_filters)}; cost wording left: {len(_cost_words)}; "
     f"'change in payments to Russia' left: {len(_old_name)}",
 )

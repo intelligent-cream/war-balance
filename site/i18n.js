@@ -61,13 +61,13 @@ function regionName(iso2, fallback) {
 // static text in the page: data-i18n (text), data-i18n-aria, data-i18n-ph (placeholder) and data-i18n-title hold the English key
 function applyStatic() {
   document.documentElement.lang = LANG;
-  document.title = t("Follow the Money: Ukrainian Aid");
+  document.title = t("Follow the Money: Ukraine");
   document.querySelectorAll("[data-i18n]").forEach(el => (el.textContent = t(el.dataset.i18n)));
   document.querySelectorAll("[data-i18n-aria]").forEach(el => el.setAttribute("aria-label", t(el.dataset.i18nAria)));
   document.querySelectorAll("[data-i18n-ph]").forEach(el => el.setAttribute("placeholder", t(el.dataset.i18nPh)));
   document.querySelectorAll("[data-i18n-title]").forEach(el => el.setAttribute("title", t(el.dataset.i18nTitle)));
   const brand = document.getElementById("brand");
-  if (brand) brand.textContent = t("Follow the Money: Ukrainian Aid");
+  if (brand) brand.textContent = t("Follow the Money: Ukraine");
   const sel = document.getElementById("lang");
   // the picker's label is read out in the chosen language and in English, so it can be found from any language
   if (sel) sel.setAttribute("aria-label", LANG === "en" ? "Language" : `${t("Language")} (Language)`);

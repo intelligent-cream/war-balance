@@ -24,7 +24,7 @@ Defaults are `RANGE` in [`site/index.html`](../../site/index.html); they are app
 
 In the round-14b build: 1 economy A, 6 B, 205 C, 19 D; among economies above EUR 5bn GDP 6 B, 149 C and 7 D. The letters no longer separated countries (review 4, H3), so round 15 replaced the rule for the headline numbers (below). `gradeTotal()` is kept for the cost view.
 
-**Each headline number's letter (round 15, review 4 H3, approved by the owner).** Support for Ukraine, the money kept from Russia and the net each get a letter from two things (`grade()` and `grades()` in `site/index.html`):
+**Each headline number's letter (round 15, review 4 H3, approved by the owner).** Support for Ukraine, business with Russia and the net each get a letter from two things (`grade()` and `grades()` in `site/index.html`):
 
 - **data**: the share of the number's absolute size (parts weighted by their absolute values) that rests on parts graded A or B (primary data), and the share on parts graded D (judgement); C parts (modelled from data) are the rest;
 - **spread**: the width of the likely range and the method band together, from the lowest to the highest end, divided by the number's absolute value.
@@ -36,12 +36,12 @@ In the round-14b build: 1 economy A, 6 B, 205 C, 19 D; among economies above EUR
 | C | – | 35% | 2.5 × the value |
 | D | otherwise | | |
 
-The thresholds are a judgement, chosen so that the letters separate countries. Trade parts built on the modelled no-war level are C by rule (below), so the money kept from Russia is at best C. Distribution in the round-15 build (all 231 entries; economies above EUR 5bn GDP; those ranked):
+The thresholds are a judgement, chosen so that the letters separate countries. Trade parts built on the modelled no-war level are C by rule (below), so business with Russia is at best C. Distribution in the round-15 build (all 231 entries; economies above EUR 5bn GDP; those ranked):
 
 | number | all | GDP ≥ EUR 5bn | ranked (direction certain) |
 |---|---|---|---|
 | support for Ukraine | 3 A, 19 B, 19 C, 190 D | 2 A, 19 B, 14 C, 128 D | 2 A, 19 B, 13 C, 29 D |
-| kept from Russia | 64 C, 167 D | 55 C, 108 D | 45 C, 8 D |
+| business with Russia | 64 C, 167 D | 55 C, 108 D | 45 C, 8 D |
 | net | 1 A, 6 B, 59 C, 165 D | 6 B, 51 C, 106 D | 6 B, 42 C, 11 D |
 | before (round 14b, the net) | 1 A, 6 B, 205 C, 19 D | 6 B, 149 C, 7 D | |
 
@@ -133,7 +133,7 @@ Variants:
 
 The effect is small. In the current build (round 15) Germany's net range is +2.14%<!-- n:DEU.netLo --> to +4.63%<!-- n:DEU.netHi -->. The country panel shows each part's range as a thin line in the waterfall and the total's range in the headline ("Likely range ... to ...").
 
-Rankings use these totals. Since round 15 (review 4, H3; approved by the owner) a country is ranked on a number only if **neither its likely range nor any method-band alternative changes that number's sign** (`uncertain()` in `site/index.html`); otherwise it is "direction uncertain": left out of that ranking, dotted on the map and marked in the panel, table, CSV and JSON. Economies under EUR 5bn GDP are left out too (`rankList()`, `MIN_GDP_RANK`). `check_data.py` recomputes the rule independently. Among economies above EUR 5bn, 100 are uncertain on support for Ukraine (nearly all with almost no support), 110 on the money kept from Russia and 104 on the net; the list is in the round-15 log ([decision log](../decision-log.md#round-15-separate-maps-named-lists-and-a-stricter-ranking-19-october)).
+Rankings use these totals. Since round 15 (review 4, H3; approved by the owner) a country is ranked on a number only if **neither its likely range nor any method-band alternative changes that number's sign** (`uncertain()` in `site/index.html`); otherwise it is "direction uncertain": left out of that ranking, dotted on the map and marked in the panel, table, CSV and JSON. Economies under EUR 5bn GDP are left out too (`rankList()`, `MIN_GDP_RANK`). `check_data.py` recomputes the rule independently. Among economies above EUR 5bn, 100 are uncertain on support for Ukraine (nearly all with almost no support), 110 on business with Russia and 104 on the net; the list is in the round-15 log ([decision log](../decision-log.md#round-15-separate-maps-named-lists-and-a-stricter-ranking-19-october)).
 
 ## The method band (round 13, widened in round 14)
 
@@ -154,7 +154,7 @@ The likely range is **data and model uncertainty, given the method**. Method cho
 | **without the war-time windfall** (round 15) | `calc(c, y, {windfall: "off"})` | the windfall counts at gain 1 on prices, not volumes (Hungary −0.86% instead of −6.07%) |
 | **refugees at gross cost** (round 15) | `calc(c, y, {refGross: true})`, `aid.refugee_gross_years` | the host's cost before the taxes refugees pay |
 | **refugees at one common cost** (round 16) | `calc(c, y, {refCommon: true})`, `aid.refugee_common_years`: each host's person-years × the hosts' average net cost per person-year | each host's actual cost against a common value per refugee ([refugees](aid-refugees-military.md#refugees)) |
-| **2026 at 2025 prices** (round 15) | `calc(c, y, {p26: true})`: 2026's kept from Russia, laundered oil and windfall valued at 2025's fuel prices (`to_rus.p26`, `laund.p26`) | the Hormuz-crisis prices of 2026 ([prices](prices.md#2026-and-the-hormuz-crisis-round-15)) |
+| **2026 at 2025 prices** (round 15) | `calc(c, y, {p26: true})`: 2026's business with Russia, laundered oil and windfall valued at 2025's fuel prices (`to_rus.p26`, `laund.p26`) | the Hormuz-crisis prices of 2026 ([prices](prices.md#2026-and-the-hormuz-crisis-round-15)) |
 | **gold at its actual price** (round 16b, check 16 N5) | rebuilt with `gold_actual`: the change in the volume of gold valued at each year's gold price instead of the 2021 price held flat (`deflate_gold()`) | central banks' gold buying after Russia's reserves were frozen is widely linked to the war, so part of the gold price rise may be the war's ([prices](prices.md#gold-at-its-no-war-price-round-16)) |
 | **2024 GDP** (round 15) | the number × average 2022–2024 GDP / 2024 GDP | the denominator (the default is the average since round 15) |
 
