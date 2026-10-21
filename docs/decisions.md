@@ -674,6 +674,25 @@ Table & data ... just keep the sources ranking and map to keep it simpler". **No
 | **No per person measure**: the Measure in Filters is % of GDP or Total €; `m=pp` in an old link opens % of GDP. The panel's compare rows and the full data download keep the net per person | judgement | owner | "per person is also not so relevant" | display | `#drawer`, `setFilters` |
 | **The one-line filter summary is gone** from the views; the Filters button's dot still shows when anything differs from the default | judgement | owner | filters live only in Filters | display | `filterSummary` removed |
 
+## Round 21: polish
+
+The owner asked to "clean it up even more, make it look even more professional" and approved seven changes. **No
+number changed** (every country's figures identical before and after). Log:
+[round 21](decision-log.md#round-21-polish-21-october); steps: [changelog](changelog.md#round-21-polish).
+
+| decision | data or judgement | raised by | why | effect | where |
+|---|---|---|---|---|---|
+| **One header bar** above the map: the site's name, "Research preview · estimates not yet checked by a person · About" (About opens the full text: dates, how the figures were compiled, how to report an error), the question with its period and ⓘ, and the Highlights and Filters buttons (at the bottom on phones). It replaces the cut-off banner line and the boxed header on the map | judgement | owner | the banner ended mid-sentence; a boxed title on the map looked unfinished | display | `#bar`, `setAbout` |
+| **The names of Ukraine and Russia beside the dots of Kyiv and Moscow**, at a fixed distance on screen at every zoom | judgement | owner | zoomed in on Europe the Moscow dot was left without its name | display | `placeLabels` |
+| **Dark by default stays** (an earlier owner decision: the light theme did not work then); the light theme is one switch away in Filters | — | owner (round 8) | — | none | `ftm-theme` |
+| **Three steps each way and one grey** (four each way before); the darkest orange, a brown, is gone. The first step's boundary, where "no clear change" ends, is unchanged | judgement | owner | fewer, cleaner colours | display | `BLUES`, `ORANGES`, `STEPS` |
+| **Too close to call: a pale tint of the same hue** (chroma cut by 40%, lightness half way to a pale level), not a mix with the grey; the map keeps full colours under the streams (it was shaded to 72%) | judgement | owner | the faded oranges turned muddy brown on the dark map | display | `scaleFor().fade` |
+| **Thin solid streams that fade in**, the 8 largest each way (5 on phones; 12 and 7 before), no moving dashes or arrowheads | judgement | owner | the dotted streams were the busiest part of the screen | display | `drawStreams`, `streamTop` |
+| **One typeface**: Source Sans 3 with tabular figures for numbers (Archivo for headings), sentence-case labels without letter-spacing; the monospace font is gone | judgement | owner | the technical look | display | CSS |
+| **Filters: the everyday choices on top** (views, the map shows, measure, year, find a country); region, group, size, what's counted and the map layers folded into **More options**, with a dot when anything in it differs from the default | judgement | owner | most readers never change them | display | `#more-fold` |
+| **The map opens on Europe and western Asia** (it cut through Africa); the whole world one zoom-out away | judgement | owner | the story is in Europe | display | `openView` |
+| **The country panel without boxes inside its box**: the tiles and the frozen-money row are separated by hairlines, more white space, the same content | judgement | owner | boxes inside boxes | display | CSS |
+
 ## What is data and what is estimated
 
 - **Reported data** (certainty A–B): aid (Kiel), customs trade, fossil fuel payments (CREA), GDP, refugee counts.

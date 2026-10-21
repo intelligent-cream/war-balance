@@ -292,3 +292,19 @@ The owner asked for a simpler site after round 19 went live. **No number changed
 | **The ranking as clean as the map**: its title in the header line, its explanation in the ⓘ | owner | "more clean like the map" | display |
 | **Downloads at the end of Sources**, with the data gaps by country | owner (the table removed) | the data stay downloadable | downloads |
 | **No per person measure**: % of GDP or Total €; old `m=pp` links open % of GDP | owner | "not so relevant" | display |
+
+## Round 21: polish (21 October)
+
+The owner asked for a cleaner, more professional look. **No number changed.** Details:
+[decisions](decisions.md#round-21-polish); steps: [changelog](changelog.md#round-21-polish).
+
+| decision | raised by | why | effect |
+|---|---|---|---|
+| **One header bar** with the site's name, a short research-preview note (About opens the full text), the question and the two buttons | owner | the banner was cut off; the boxed title looked unfinished | display |
+| **Capital names beside the Kyiv and Moscow dots** at every zoom | owner | a dot without its name | display |
+| **Three steps each way and one grey; faded = a pale tint of the same hue**; full colours under the streams | owner | muddy browns | display |
+| **Thin solid streams**, 8 each way (5 on phones) | owner | the busiest part of the screen | display |
+| **One typeface with tabular figures**, sentence-case labels | owner | a technical look | display |
+| **More options** folds the rarely used filters | owner | a long drawer | display |
+| **The map opens on Europe and western Asia** | owner | it cut through Africa | display |
+| **The country panel without boxes inside its box** | owner | boxes inside boxes | display |

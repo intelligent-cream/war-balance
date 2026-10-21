@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: full-screen map as the ground, a control bar on top, the country ledger slides in from the right (bottom sheet on phones). */
 :root {
@@ -42,7 +42,8 @@
   --fa0: 55%; --fa1: 12%; --fx0: 60%; --fx1: 10%;
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
-  --font-data: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  /* round 21 (polish, owner): one typeface; numbers in it with tabular figures (body), no monospace */
+  --font-data: var(--font-body);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -61,7 +62,7 @@
     --fa0: 62%; --fa1: 20%; --fx0: 80%; --fx1: 22%;
 }
 html, body { height: 100%; }
-body { margin: 0; background: var(--sea); color: var(--ink); font-family: var(--font-body); font-size: 15px; overflow: hidden; }
+body { margin: 0; background: var(--sea); color: var(--ink); font-family: var(--font-body); font-size: 15px; overflow: hidden; font-variant-numeric: tabular-nums; }
 * { box-sizing: border-box; }
 button, input, select { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
@@ -155,7 +156,6 @@ button, input, select { font: inherit; color: inherit; }
 /* v2: flow layer, change view */
 #flows { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
 #labels { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
-#streamfx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; will-change: transform; contain: strict; }
 /* the light blues and oranges of dark mode take dark text; light mode's orange is darkened for white text (4.5:1 either way) */
 .seg button[data-lens="support"][aria-pressed="true"] { background: var(--ukr); color: var(--on-accent); }
 .seg button[data-lens="payments"][aria-pressed="true"], .seg button[data-lens="net"][aria-pressed="true"] { background: linear-gradient(90deg, var(--rus-text), var(--ukr)); color: var(--on-accent); }
@@ -321,7 +321,7 @@ details.more[open] summary { margin-bottom: 10px; }
 .views { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
 .views button { border: 0; background: transparent; padding: 6px 12px; cursor: pointer; font-weight: 600; font-size: 13.5px; color: var(--ink-soft); }
 .views button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
-.app[data-view]:not([data-view="map"]) #map, .app[data-view]:not([data-view="map"]) #flows, .app[data-view]:not([data-view="map"]) #labels, .app[data-view]:not([data-view="map"]) #streamfx,
+.app[data-view]:not([data-view="map"]) #map, .app[data-view]:not([data-view="map"]) #flows, .app[data-view]:not([data-view="map"]) #labels,
 .app[data-view]:not([data-view="map"]) .legend, .app[data-view]:not([data-view="map"]) .fact, .app[data-view]:not([data-view="map"]) .hlpanel { display: none !important; }
 .view { position: absolute; inset: 0; overflow: auto; background: var(--surface); z-index: 1; -webkit-overflow-scrolling: touch; }
 .view-inner { max-width: 1080px; margin: 0 auto; padding: 22px max(16px, env(safe-area-inset-left, 0px)) 48px; }
@@ -371,18 +371,6 @@ details.more[open] summary { margin-bottom: 10px; }
 :root[data-theme="dark"] { --custom: #4a3d0c; --custom-ink: #f5e2a0; }
 [hidden] { display: none !important; }
 a { color: var(--ukr); }
-/* the research-preview banner: one slim line that opens on click (an honesty requirement, never hidden) */
-.topline { flex: none; display: flex; align-items: baseline; gap: 10px; min-width: 0; background: var(--warn-bg); color: var(--warn-ink); border-bottom: 1px solid var(--line);
-  font-size: 12px; line-height: 1.45; padding: 2px max(12px, env(safe-area-inset-right, 0px)) 2px max(12px, env(safe-area-inset-left, 0px)); position: relative; z-index: 15; }
-.topline .brand { flex: none; font-family: var(--font-display); font-weight: 800; font-stretch: 110%; font-size: 12px; color: var(--ink); margin: 0; white-space: nowrap; }
-.status { flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
-.status[data-open="true"] { white-space: normal; }
-.status b { color: var(--ink); font-weight: 600; }
-/* the header line over the map */
-.hdr { position: absolute; z-index: 12; top: 10px; left: max(12px, env(safe-area-inset-left, 0px)); max-width: calc(100% - 250px); background: color-mix(in srgb, var(--surface) 90%, transparent);
-  border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; }
-.hed { font-family: var(--font-display); font-weight: 800; font-stretch: 105%; font-size: 15.5px; line-height: 1.25; margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
-.hed .per { font-weight: 600; color: var(--ink-soft); font-size: 13px; white-space: nowrap; }
 details.info { position: relative; display: inline-block; font-family: var(--font-body); font-weight: 400; }
 details.info > summary { cursor: pointer; color: var(--ukr); list-style: none; white-space: nowrap; font-size: 15px; padding: 0 3px; }
 details.info > summary::-webkit-details-marker { display: none; }
@@ -393,15 +381,13 @@ details.info > summary::-webkit-details-marker { display: none; }
 .pop .sub, .drawer .sub { font-size: 12.5px; color: var(--ink-soft); margin: 4px 0; }
 .custom { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; background: var(--custom); color: var(--custom-ink); border-radius: 6px; padding: 5px 9px; font-size: 13px; font-weight: 600; margin-top: 5px; line-height: 1.35; }
 .custom button { border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 6px; padding: 2px 8px; cursor: pointer; font-size: 12.5px; font-weight: 600; }
-.app:not([data-view="map"]) .hdr { max-width: calc(100% - 24px - 230px); }
-.app:not([data-view="map"]) .view { top: var(--hdr-b, 96px); }
 /* the two buttons */
-.tr { position: absolute; z-index: 12; top: 10px; right: max(12px, env(safe-area-inset-right, 0px)); display: flex; gap: 6px; }
+.tr { display: flex; gap: 6px; flex: none; }
 .tr .btn { background: var(--surface); font-size: 13.5px; padding: 6px 11px; }
 .btn[aria-expanded="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
 .btn .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--rus); margin-left: 6px; vertical-align: 1px; }
 /* highlights */
-.hlpanel { position: absolute; z-index: 13; top: 50px; right: max(12px, env(safe-area-inset-right, 0px)); width: min(340px, calc(100% - 24px)); background: var(--surface); border: 1px solid var(--line);
+.hlpanel { position: absolute; z-index: 13; top: 8px; right: max(12px, env(safe-area-inset-right, 0px)); width: min(340px, calc(100% - 24px)); background: var(--surface); border: 1px solid var(--line);
   border-radius: 8px; padding: 8px 10px 10px; box-shadow: 0 8px 24px rgba(0,0,0,.3); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip-btn { border: 1px solid var(--line); background: transparent; border-radius: 14px; padding: 3px 10px; font-size: 13px; cursor: pointer; color: var(--ink); text-align: left; }
@@ -423,16 +409,13 @@ details.info > summary::-webkit-details-marker { display: none; }
 .legend .more { width: min(300px, calc(100vw - 48px)); white-space: normal; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
 .legend .more h2 { font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 8px; color: var(--ink); }
 .legend[data-collapsed="true"] .more { display: none; }
-/* the map: lightly shaded under the money streams */
-.app[data-streams="on"] .country:not(.target-ukr):not(.target-rus) { fill-opacity: 0.72; }
-.app[data-streams="on"] .country.selected, .app[data-streams="on"] .country.hl { fill-opacity: 0.95; }
-.stream-base { fill: none; stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: 0.26; cursor: pointer; }
-.stream-flow { fill: none; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1 16; opacity: 0.65; animation: stream 7s linear infinite; pointer-events: none; }
-@keyframes stream { to { stroke-dashoffset: -150; } }
-/* round 18: no animation while the page is hidden, or while the map is dragged or zoomed */
-:root[data-hidden="true"] .stream-flow, .stage[data-moving="true"] .stream-flow { animation-play-state: paused; }
-.stream-arrow { display: none; }
-@media (prefers-reduced-motion: reduce) { .stream-flow { display: none; } .stream-arrow { display: inline; } .stream-base { opacity: 0.6; } }
+/* round 21 (polish): the map keeps its full colours under the money streams (shading them mixed the oranges with the
+   dark sea into browns); the streams are thin enough to read on top */
+/* round 21 (polish): thin solid lines that fade in, no moving dashes and no arrowheads; Kyiv and Moscow are marked */
+.stream-base { fill: none; stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: 0.6; cursor: pointer; animation: sfade .7s ease-out both; }
+.stream-base:hover { opacity: 0.9; }
+@keyframes sfade { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .stream-base { animation: none; } }
 .stream-target { fill: var(--ink); stroke: var(--sea); stroke-width: 1.5; vector-effect: non-scaling-stroke; pointer-events: none; }
 .stream-label { font-family: var(--font-display); font-weight: 700; font-size: 10px; letter-spacing: 0.08em; fill: var(--ink); paint-order: stroke; stroke: var(--sea); stroke-width: 3px; pointer-events: none; }
 /* the tooltip: two bars in words */
@@ -454,9 +437,7 @@ details.info > summary::-webkit-details-marker { display: none; }
   padding: 0 18px calc(24px + env(safe-area-inset-bottom, 0px)); box-shadow: 8px 0 24px rgba(0,0,0,.25); font-size: 13.5px; overscroll-behavior: contain; }
 .app { --dw: 360px; }
 @media (min-width: 901px) {
-  .app[data-drawer="open"] .hdr, .app[data-drawer="open"] .legend, .app[data-drawer="open"] .fact { left: calc(var(--dw) + 12px); }
-  .app[data-drawer="open"] .hdr { max-width: calc(100% - var(--dw) - 262px); }
-  .app[data-drawer="open"]:not([data-view="map"]) .hdr { max-width: calc(100% - var(--dw) - 254px); }
+  .app[data-drawer="open"] .legend, .app[data-drawer="open"] .fact { left: calc(var(--dw) + 12px); }
   .app[data-drawer="open"] .view { left: var(--dw); }
   body[data-panel="open"] .view { right: 412px; }
 }
@@ -534,13 +515,13 @@ details.info > summary::-webkit-details-marker { display: none; }
 .zoom { display: flex; gap: 6px; margin: 12px 0 0; flex-wrap: wrap; }
 .zoom .btn { min-width: 34px; }
 /* the country panel (round 17): headline, total, the two parts, what changes the meaning, the parts with their method */
-.panel { top: 54px; }
+.panel { top: 12px; }
 .lead { font-size: 15px; line-height: 1.45; margin: 0; }
 .total .n { font-family: var(--font-display); font-weight: 800; font-size: 32px; line-height: 1.05; font-variant-numeric: tabular-nums; }
 .total .n.pos { color: var(--ukr); } .total .n.neg { color: var(--rus); } .total .n.mid { color: var(--ink); }
 /* round 17 (owner): too close to call, in the faded colour of its leaning direction; text fades toward the soft ink, not the
    map's grey, so the big number keeps its contrast */
-.total .n.fpos { color: color-mix(in srgb, var(--ukr) 50%, var(--ink-soft)); } .total .n.fneg { color: color-mix(in srgb, var(--rus) 50%, var(--ink-soft)); }
+.total .n.fpos { color: color-mix(in oklch, var(--ukr) 60%, var(--ink-soft)); } .total .n.fneg { color: color-mix(in oklch, var(--rus) 60%, var(--ink-soft)); }
 .total .u { font-size: 14px; font-weight: 600; margin-left: 6px; }
 .meaning { background: var(--warn-bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
 .meaning h3 { margin: 0 0 6px; }
@@ -602,7 +583,7 @@ details[open] > summary .xi::before { transform: rotate(180deg); }
 .pnet .nlbl .chip { margin-left: 8px; }
 .pnet .nbig { font-family: var(--font-display); font-weight: 800; font-stretch: 108%; font-size: 48px; line-height: 1; letter-spacing: -0.015em; font-variant-numeric: tabular-nums; margin-top: 6px; }
 .nbig.pos { color: var(--ukr); } .nbig.neg { color: var(--rus); } .nbig.mid { color: var(--ink); }
-.nbig.fpos { color: color-mix(in srgb, var(--ukr) 50%, var(--ink-soft)); } .nbig.fneg { color: color-mix(in srgb, var(--rus) 50%, var(--ink-soft)); }
+.nbig.fpos { color: color-mix(in oklch, var(--ukr) 60%, var(--ink-soft)); } .nbig.fneg { color: color-mix(in oklch, var(--rus) 60%, var(--ink-soft)); }
 .pnet .nunit { font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; }
 .pnet .nline { font: 12.5px var(--font-data); color: var(--ink-soft); margin-top: 8px; font-variant-numeric: tabular-nums; }
 .pnet .nline > span { white-space: nowrap; }
@@ -650,13 +631,8 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
 .method-top li { margin-bottom: 4px; }
 .flow-how { margin: 0 0 6px; font-size: 14px; line-height: 1.5; max-width: 75ch; }
 .flow-how b { font-weight: 600; }
-@media (max-width: 1100px) and (min-width: 901px) { .topline .brand { display: none; } }
 @media (max-width: 900px) {
-  .topline .brand { display: none; }
-  .hdr { left: 8px; top: 8px; max-width: calc(100% - 16px); padding: 4px 8px; }
-  .hed { font-size: 14px; }
-  .app:not([data-view="map"]) .hdr { max-width: calc(100% - 16px); }
-  .tr { top: auto; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); right: 8px; }
+  .tr { position: fixed; z-index: 12; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); right: 8px; }
   .legend { left: 8px; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); font-size: 10.5px; padding: 3px 6px; max-width: calc(100% - 190px); }
   .legend .row1 { gap: 5px; }
   .legend .ramp i { width: 8px; }
@@ -689,7 +665,7 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
   .legend .ramp i { width: 6px; }
   .legend .ls { white-space: normal; }
   .view-inner { padding-bottom: 84px; }
-  .pop { position: fixed; top: 64px; left: 8px; width: calc(100vw - 16px); max-height: calc(100dvh - 140px - var(--dh, 0px)); }
+  .pop { position: fixed; top: calc(var(--bar-h, 64px) + 4px); left: 8px; width: calc(100vw - 16px); max-height: calc(100dvh - 140px - var(--dh, 0px)); }
 }
 /* round 18: a phone held sideways has too little height for a bottom sheet: the panel is a side sheet there, and the map
    (with the country's own streams) stays visible beside it */
@@ -699,37 +675,96 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
   .panel[data-full="true"] { max-height: none; }
   .sheet-handle { display: none; }
 }
+/* ===== Round 21 (polish, owner: "clean it up even more, make it look even more professional") =====
+   One header bar above the map; sentence-case labels in one typeface; the drawer's rarely used choices folded; the
+   country panel without boxes inside its box */
+.topbar { flex: none; position: relative; z-index: 50; display: flex; align-items: center; gap: 16px; background: var(--surface); border-bottom: 1px solid var(--line);
+  padding: 8px max(16px, env(safe-area-inset-right, 0px)) 9px max(16px, env(safe-area-inset-left, 0px)); }
+.tb-text { flex: 1 1 auto; min-width: 0; }
+.tb-meta { margin: 0 0 1px; font-size: 12.5px; line-height: 1.4; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 0 14px; }
+.tb-meta .brand { font-weight: 700; color: var(--ink); }
+.tb-note b { font-weight: 600; color: var(--ink-soft); }
+.tb-note .linkbtn { color: var(--ukr); text-decoration: underline; text-underline-offset: 2px; }
+.hed { font-family: var(--font-display); margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
+.hed .per { color: var(--ink-soft); white-space: nowrap; }
+.topbar .hed { font-size: 18px; font-stretch: 100%; font-weight: 700; letter-spacing: -0.005em; line-height: 1.25; }
+.topbar .hed .per { font-family: var(--font-body); font-size: 14px; font-weight: 400; }
+.topbar .custom { display: inline-flex; margin-top: 4px; }
+.topbar .tr .btn { font-size: 13.5px; padding: 7px 13px; border-radius: 6px; background: var(--surface); }
+.topbar .tr .btn[aria-expanded="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.aboutpop { position: absolute; z-index: 60; top: calc(100% + 6px); left: max(16px, env(safe-area-inset-left, 0px)); width: min(620px, calc(100vw - 32px)); max-height: 60vh; overflow: auto;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,.25); padding: 12px 14px; font-size: 13.5px; line-height: 1.5; }
+.aboutpop b { font-weight: 600; }
+/* labels: sentence case, no letter-spacing, one typeface */
+.fig .t, .section h3, .p2h, details.more summary, .legend .more h2, .drawer .dsec, .dsec, .mcard .lbl2, .grp, .pnet .nlbl, .tile .tl {
+  text-transform: none; letter-spacing: 0; font-family: var(--font-body); }
+.drawer .dsec, .dsec { font-size: 13px; font-weight: 600; color: var(--ink); }
+.section h3, details.more summary { font-size: 13.5px; font-weight: 600; }
+.pnet .nlbl, .tile .tl { font-size: 12.5px; font-weight: 600; }
+.mcard .lbl2, .grp, .p2h { font-size: 12px; font-weight: 600; }
+.legend .more h2 { font-size: 13px; font-weight: 600; }
+/* the drawer: the four everyday choices on top, the rest under More options */
+.dmore { border-bottom: 1px solid var(--line); }
+.dmore > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 6px; padding: 14px 0; font-weight: 600; font-size: 13.5px; color: var(--ink); }
+.dmore > summary::-webkit-details-marker { display: none; }
+.dmore > summary::after { content: "▾"; margin-left: auto; color: var(--ink-soft); font-size: 12px; transition: transform .2s; }
+.dmore[open] > summary::after { transform: rotate(180deg); }
+.dmore > .dblock { padding-left: 2px; }
+.dmore > .dblock:last-child { border-bottom: 0; }
+.drawer .dblock { padding: 12px 0 14px; }
+.drawer .seg button[aria-pressed="false"] { color: var(--ink-soft); }
+/* the country panel: no boxes inside its box; hairlines and white space instead */
+.panel-head { padding: 18px 22px 12px; }
+.panel-body { padding: 18px 22px 28px; gap: 28px; }
+.tiles { gap: 0 22px; }
+details.tile { border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 12px 0 4px; background: transparent; }
+details.tile.mini { padding: 10px 0; border-bottom: 1px solid var(--line); }
+details.flag > summary { background: transparent; }
+.meaning { background: transparent; border: 0; border-left: 3px solid var(--line); border-radius: 0; padding: 2px 0 2px 12px; }
+@media (max-width: 900px) {
+  .panel-head { padding: 4px 18px 10px; }
+  .panel-body { padding: 14px 18px 24px; gap: 24px; }
+}
+@media (max-width: 900px) {
+  .topbar { padding: 7px 12px 8px; gap: 10px; }
+  .tb-meta .brand { display: none; }
+  .tb-meta { font-size: 11.5px; }
+  .topbar .hed { font-size: 15.5px; }
+  .topbar .hed .per { font-size: 12.5px; }
+  .aboutpop { left: 8px; width: calc(100vw - 16px); }
+}
 </style>
 
 <div class="app" data-view="map">
-  <!-- round 17: the research-preview banner stays visible as one slim line (it opens on click); a landmark of its own, so
-       screen reader users can find (and skip) it -->
-  <aside class="topline" aria-label="Research preview." data-i18n-aria="Research preview.">
-    <span class="brand" id="brand">Follow the Money: Ukrainian Aid</span>
-    <div class="sample status" role="note" id="status"><b data-i18n="Research preview.">Research preview.</b> <span data-i18n="Loading data…">Loading data…</span></div>
-  </aside>
+  <!-- round 21 (polish, owner): one clean header bar above the map: the site's name and the research-preview note on one
+       short line (an honesty requirement, never hidden; "About" opens the full text), the question with its period and ⓘ,
+       and the Highlights and Filters buttons -->
+  <header class="topbar" id="bar">
+    <div class="tb-text">
+      <p class="tb-meta"><span class="brand" id="brand">Follow the Money: Ukrainian Aid</span>
+        <span class="tb-note" role="note"><b data-i18n="Research preview">Research preview</b> · <span data-i18n="estimates not yet checked by a person">estimates not yet checked by a person</span> · <button class="linkbtn" id="about-btn" type="button" aria-expanded="false" aria-controls="status" data-i18n="About">About</button></span></p>
+      <h1 class="hed"><span id="hed-title" data-i18n="Who supported Ukraine, and who paid Russia less, or more?">Who supported Ukraine, and who paid Russia less, or more?</span>
+        <span class="per" id="per"></span>
+        <details class="info" id="info"><summary aria-label="What this map shows" data-i18n-aria="What this map shows" title="What this map shows" data-i18n-title="What this map shows">ⓘ</summary><div class="pop" id="infopop"></div></details></h1>
+      <div class="custom" id="custom" role="status" hidden></div>
+    </div>
+    <div class="tr">
+      <button class="btn" id="hlbtn" aria-expanded="false" aria-controls="hlpanel"><span data-i18n="Highlights">Highlights</span><span class="dot" hidden></span></button>
+      <button class="btn" id="fbtn" aria-expanded="false" aria-controls="drawer"><span data-i18n="Filters">Filters</span><span class="dot" hidden></span></button>
+    </div>
+    <div class="aboutpop sample" id="status" role="note" aria-label="Research preview." data-i18n-aria="Research preview." hidden><span data-i18n="Loading data…">Loading data…</span></div>
+  </header>
 
   <main class="stage">
     <!-- the label (with how to get at countries by keyboard) is set in applyLang -->
     <svg id="map" role="img" aria-label="World map coloured by the change in money flows since before the war. With a keyboard, use “Find your country” or the Ranking view."></svg>
     <canvas id="flows" aria-hidden="true"></canvas>
-    <!-- round 18: the moving dashes of the money streams, on a layer of their own so the map is not repainted every frame -->
-    <svg id="streamfx" aria-hidden="true"></svg>
     <!-- names of Ukraine and Russia, above the flow lines so they stay readable -->
     <svg id="labels" aria-hidden="true"></svg>
     <div class="view" id="view" hidden></div>
 
-    <!-- round 17 (redesign B, approved by the owner): on load only this header line, the legend row and two buttons sit on the map -->
-    <header class="hdr" id="bar">
-      <h1 class="hed"><span id="hed-title" data-i18n="Who supported Ukraine, and who paid Russia less, or more?">Who supported Ukraine, and who paid Russia less, or more?</span>
-        <span class="per" id="per"></span>
-        <details class="info" id="info"><summary aria-label="What this map shows" data-i18n-aria="What this map shows" title="What this map shows" data-i18n-title="What this map shows">ⓘ</summary><div class="pop" id="infopop"></div></details></h1>
-      <div class="custom" id="custom" role="status" hidden></div>
-    </header>
-    <div class="tr">
-      <button class="btn" id="hlbtn" aria-expanded="false" aria-controls="hlpanel"><span data-i18n="Highlights">Highlights</span><span class="dot" hidden></span></button>
-      <button class="btn" id="fbtn" aria-expanded="false" aria-controls="drawer"><span data-i18n="Filters">Filters</span><span class="dot" hidden></span></button>
-    </div>
+    <!-- round 17 (redesign B): on load only the legend row sits on the map; round 21: the header line and the two buttons
+         moved into the header bar above it -->
     <div class="hlpanel" id="hlpanel" hidden><p class="dsec" data-i18n="Highlights: pick one to see it on the map">Highlights: pick one to see it on the map</p><div class="chips" id="chips" role="group" aria-label="Highlights" data-i18n-aria="Highlights"></div></div>
     <div class="fact" id="fact" hidden aria-live="polite"></div>
     <div class="tooltip" id="tip" hidden></div>
@@ -768,6 +803,25 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
         </div>
       </section>
       <section class="dblock">
+        <h3 class="dsec"><label for="year" data-i18n="Up to">Up to</label></h3>
+        <div class="year">
+          <button class="btn play" id="play" aria-label="Play 2022 to 2026">▶</button>
+          <input id="year" type="range" min="2021" max="2026" step="1" value="2026">
+          <output id="year-out" for="year" title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *)." data-i18n-title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).">2026 YTD</output>
+        </div>
+      </section>
+      <section class="dblock">
+        <h3 class="dsec"><label for="search" data-i18n="Find a country">Find a country</label></h3>
+        <div class="search">
+          <input id="search" list="country-list" placeholder="Find a country" aria-label="Find a country" data-i18n-ph="Find a country" data-i18n-aria="Find a country" autocomplete="off">
+          <datalist id="country-list"></datalist>
+          <span class="search-msg" id="search-msg" role="status"></span>
+        </div>
+      </section>
+      <!-- round 21 (polish, owner): what most readers never change is folded into one "More options" -->
+      <details class="dmore" id="more-fold">
+        <summary><span data-i18n="More options">More options</span><span class="dot" hidden></span></summary>
+      <section class="dblock">
         <details class="dfold" id="counted-fold">
           <summary><span class="dsec" data-i18n="What's counted">What's counted</span></summary>
           <div id="counted"></div>
@@ -775,17 +829,11 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
         <div id="dcustom"></div>
       </section>
       <section class="dblock">
-        <h3 class="dsec" data-i18n="Where and when">Where and when</h3>
+        <h3 class="dsec" data-i18n="Where">Where</h3>
         <div class="flt">
           <label for="f-region" data-i18n="Region">Region</label><select id="f-region"></select>
           <label for="f-group" data-i18n="Group">Group</label><select id="f-group"></select>
           <label for="f-size" data-i18n="Size">Size</label><select id="f-size"></select>
-          <label for="year" data-i18n="Up to">Up to</label>
-          <div class="year">
-            <button class="btn play" id="play" aria-label="Play 2022 to 2026">▶</button>
-            <input id="year" type="range" min="2021" max="2026" step="1" value="2026">
-            <output id="year-out" for="year" title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *)." data-i18n-title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).">2026 YTD</output>
-          </div>
         </div>
       </section>
       <!-- only the map uses these: disabled (with a note) in the other views -->
@@ -812,14 +860,7 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
         <p class="sub" data-i18n="Drag to move, scroll to zoom, click a country, Ukraine or Russia">Drag to move, scroll to zoom, click a country, Ukraine or Russia</p>
         </fieldset>
       </section>
-      <section class="dblock">
-        <h3 class="dsec"><label for="search" data-i18n="Find a country">Find a country</label></h3>
-        <div class="search">
-          <input id="search" list="country-list" placeholder="Find a country" aria-label="Find a country" data-i18n-ph="Find a country" data-i18n-aria="Find a country" autocomplete="off">
-          <datalist id="country-list"></datalist>
-          <span class="search-msg" id="search-msg" role="status"></span>
-        </div>
-      </section>
+      </details>
       <section class="dblock">
         <h3 class="dsec" data-i18n="Display">Display</h3>
         <div class="drow">
@@ -1579,13 +1620,15 @@ let currentScale = null;
 // map, card and bar: blue = toward Ukraine, orange = toward Russia, grey = no clear change. Earning more from the war
 // effort than a country gave (support below zero, and a net below zero that is mainly that)
 // are not money toward Russia: they are grey, not orange. The site's colour-blind-safe blue and orange, in both themes
-const BLUES = ["#d6e6f4", "#9cc5e3", "#5a9fd0", "#2a6fb0", "#0b3d79"];
-const ORANGES = ["#fde2c6", "#f9b277", "#f07c2f", "#c9520f", "#7f2a04"];
+// Round 21 (polish, owner): three steps each way and one neutral grey (it was four each way); the darkest orange, a
+// brown, is gone. The first boundary (where "no clear change" ends) is unchanged
+const BLUES = ["#9cc5e3", "#5a9fd0", "#2a6fb0"];
+const ORANGES = ["#f9b277", "#f07c2f", "#c9520f"];
 // step boundaries per view and measure (% of GDP, € per person, € billion)
 const STEPS = {
-  support: { gdp: [0.1, 0.5, 1.5, 3], pp: [5, 50, 200, 800], total: [0.05, 0.5, 5, 30] },
-  payments: { gdp: [0.25, 1, 3, 8], pp: [10, 100, 500, 2000], total: [0.1, 1, 10, 50] },
-  net: { gdp: [0.25, 1, 4, 12], pp: [10, 100, 500, 2000], total: [0.1, 1, 10, 50] },
+  support: { gdp: [0.1, 0.5, 1.5], pp: [5, 50, 400], total: [0.05, 1, 10] },
+  payments: { gdp: [0.25, 1, 3], pp: [10, 100, 1000], total: [0.1, 2, 20] },
+  net: { gdp: [0.25, 1, 4], pp: [10, 100, 1000], total: [0.1, 2, 20] },
 };
 function stepLabel(v) {
   if (state.measure === "gdp") return num(v, 2, 0) + "%";
@@ -1601,9 +1644,9 @@ function scaleFor() {
   // every view is a change or a cost that can go either way: it diverges around zero
   const st = STEPS[state.lens][state.measure];
   const neutral = C.mid;
-  const negs = ONE_SIDED.has(state.lens) ? [neutral, neutral, neutral, neutral, neutral] : ORANGES;
-  const colors = [...negs.slice(1).reverse(), neutral, ...BLUES.slice(1)];   // 4 orange (grey in support), neutral, 4 blue
-  const bounds = [...st.slice().reverse().map(x => -x), ...st];                 // -10,-3,-1,-0.1,0.1,1,3,10
+  const negs = ONE_SIDED.has(state.lens) ? [neutral, neutral, neutral] : ORANGES;
+  const colors = [...negs.slice().reverse(), neutral, ...BLUES];   // 3 orange (grey in support), neutral, 3 blue
+  const bounds = [...st.slice().reverse().map(x => -x), ...st];    // -4,-1,-0.25,0.25,1,4
   const f = d3.scaleThreshold().domain(bounds).range(colors);
   const labels = bounds.map(x => (x > 0 ? "+" : x < 0 ? "−" : "") + stepLabel(Math.abs(x)));
   const ends = { support: [t("none, or earned more from the war effort than it gave"), t("support for Ukraine")], payments: [t("paid Russia more"), t("paid Russia less")],
@@ -1612,13 +1655,21 @@ function scaleFor() {
   // (EUR 5bn, as in the rankings). A smaller economy is coloured within that scale, clamped to the lightest step of its
   // direction, so a few million euros in a micro-state never look darker than India; its full number is in its panel.
   // Round 16b (check 16, B2): the lightest colour of each side is taken from the palette, not from f(±st[0]): a value
-  // exactly on the threshold goes to the bucket above it, so f(-st[0]) was the neutral colour. colors[3] is the
-  // lightest orange (grey in the support view), colors[4] the neutral, colors[5] the lightest blue
-  const colorFor = (c, v) => (c && (c.gdp || 0) < MIN_GDP_RANK && Math.abs(v) >= st[0] ? colors[v > 0 ? 5 : 3] : f(v));
-  // round 17 (owner): a number too close to call is not grey but a faded colour of the way it leans: the colour its value
-  // would get, mixed halfway toward the neutral grey. It stays lighter and greyer than the same step when certain
-  const fade = col => d3.interpolateRgb(col, neutral)(0.5);
-  return { color: v => f(v), colorFor, fadedFor: (c, v) => fade(colorFor(c, v)), fade, colors, labels, ends, neutralAt: st[0] };
+  // exactly on the threshold goes to the bucket above it, so f(-st[0]) was the neutral colour. Round 21: colors[2] is
+  // the lightest orange (grey in the support view), colors[3] the neutral, colors[4] the lightest blue (NEUTRAL_AT)
+  const N0 = colors.length >> 1;
+  const colorFor = (c, v) => (c && (c.gdp || 0) < MIN_GDP_RANK && Math.abs(v) >= st[0] ? colors[v > 0 ? N0 + 1 : N0 - 1] : f(v));
+  // round 17 (owner): a number too close to call is not grey but a faded colour of the way it leans. Round 21 (polish,
+  // owner): a pale tint of the same hue (chroma cut by 40%, lightness half way to a pale level), not a mix with the grey,
+  // which turned the oranges into muddy browns on the dark map. The grey itself stays grey
+  const paleL = d3.hcl(C.sea).l < 50 ? 72 : 92;
+  const fade = col => {
+    if (col === neutral) return col;
+    const h = d3.hcl(col);
+    return d3.hcl(h.h, h.c * 0.6, h.l + (paleL - h.l) * 0.5).formatHex();
+  };
+  return { color: v => f(v), colorFor, fadedFor: (c, v) => fade(colorFor(c, v)), fade, colors, labels, ends, neutralAt: st[0],
+    neutral, lightest: { pos: colors[N0 + 1], neg: colors[N0 - 1] } };
 }
 const mapEntities = () => Object.values(DATA);
 
@@ -1626,7 +1677,6 @@ const mapEntities = () => Object.values(DATA);
 const svg = d3.select("#map");
 const g = svg.append("g");
 const lg = d3.select("#labels").append("g");   // country names, drawn above the flow canvas
-const sg = d3.select("#streamfx").append("g"); // round 18: the streams' moving dashes, a layer of their own
 const defs = svg.append("defs");
 const hatch = defs.append("pattern").attr("id", "hatch").attr("patternUnits", "userSpaceOnUse").attr("width", 6).attr("height", 6).attr("patternTransform", "rotate(45)");
 hatch.append("rect").attr("class", "hatch-bg").attr("width", 6).attr("height", 6);
@@ -1639,7 +1689,6 @@ const projection = d3.geoEqualEarth();
 const path = d3.geoPath(projection);
 let features = [], countryPaths, W = 0, H = 0, transform = d3.zoomIdentity;
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const stageEl = document.querySelector(".stage");
 const narrow = () => window.innerWidth <= 900;   // same breakpoint as the CSS: phones and tablets get the compact layout
 // round 17 (approved by the owner): the money streams are on by default; round 18 (owner: "the money flows are not
 // working on mobile"): on phones too, calmer there (fewer and thinner streams, see streamTop and drawStreams)
@@ -1659,21 +1708,23 @@ const zoom = d3.zoom().scaleExtent([1, 14]).on("zoom", e => {
   transform = e.transform;
   g.attr("transform", e.transform);
   lg.attr("transform", e.transform);
-  sg.attr("transform", e.transform);
   lg.selectAll(".target-label").style("font-size", 11 / e.transform.k + "px").style("stroke-width", 2 / e.transform.k + "px");
+  placeLabels(e.transform.k);
   g.selectAll(".chpl").attr("transform", d => `translate(${d.x},${d.y}) scale(${1 / e.transform.k})`);
   g.selectAll(".remitm").attr("transform", d => `translate(${d.x},${d.y}) scale(${1 / e.transform.k}) translate(${REMIT_OFF},0)`);
   g.selectAll(".takenm").attr("transform", d => `translate(${d.x},${d.y}) scale(${1 / e.transform.k}) translate(${TAKEN_OFF},0)`);
   g.selectAll(".stream-target").attr("r", 3.5 / e.transform.k);
-  // round 18: the arrowheads (reduced motion) keep one size on screen; at a phone's zoom they had grown into blobs
-  defs.selectAll("marker.sarrow").attr("markerWidth", 8 / e.transform.k).attr("markerHeight", 8 / e.transform.k);
   if (reduceMotion) drawFlows(0);
 });
 svg.call(zoom).on("dblclick.zoom", null);
-// round 18: the streams' dashes pause while the map is dragged or zoomed, so panning stays smooth on phones
-zoom.on("start.fx", () => { stageEl.dataset.moving = "true"; }).on("end.fx", () => { stageEl.dataset.moving = "false"; });
-// fixed points: the middle of each country, clear of Crimea, the Black Sea and the flow bubbles around the capitals
-function labelPos(f) { return projection(f.id === "643" ? [45, 57] : [31.5, 49.3]); }
+// Round 21 (polish): the names of Ukraine and Russia sit beside the dots of Kyiv and Moscow, where the streams end, at a
+// fixed distance on screen whatever the zoom: below Kyiv, right of Moscow. The dot never shows without its name (they
+// used to sit at the middle of each country, so zoomed in on Europe the Moscow dot was left alone)
+function labelPos(f) { return projection(f.id === "643" ? MOSCOW : KYIV); }
+function placeLabels(k = transform ? transform.k : 1) {
+  lg.selectAll(".target-label").attr("text-anchor", f => (f.id === "643" ? "start" : "middle"))
+    .attr("x", f => labelPos(f)[0] + (f.id === "643" ? 8 / k : 0)).attr("y", f => labelPos(f)[1] + (f.id === "643" ? 4 : 16) / k);
+}
 
 function layout() {
   const box = svg.node().getBoundingClientRect();
@@ -1681,14 +1732,13 @@ function layout() {
   projection.fitExtent([[10, 10], [W - 10, H - 10]], { type: "Sphere" });
   svg.attr("viewBox", [0, 0, W, H]);
   d3.select("#labels").attr("viewBox", [0, 0, W, H]);
-  d3.select("#streamfx").attr("viewBox", [0, 0, W, H]);
   zoom.translateExtent([[-W * 0.25, -H * 0.25], [W * 1.25, H * 1.25]]).extent([[0, 0], [W, H]]);
   const cv = document.getElementById("flows"), dpr = Math.min(2, window.devicePixelRatio || 1);
   cv.width = W * dpr; cv.height = H * dpr;
   cv.getContext("2d").setTransform(dpr, 0, 0, dpr, 0, 0);
   if (countryPaths) {
     countryPaths.attr("d", path);
-    lg.selectAll(".target-label").attr("x", f => labelPos(f)[0]).attr("y", f => labelPos(f)[1] + 4);
+    placeLabels();
     drawChpl();
     drawRemit();
     drawTaken();
@@ -1763,7 +1813,7 @@ const periodShort = () => (state.year === 2021 ? t("2021 (before the war)") : st
 // the one-row legend: the ramp and what its ends mean; "More" opens the steps, the keys and the markers
 function renderLegend(sc) {
   const leg = document.getElementById("legend"), open = leg.dataset.collapsed === "false";
-  const cols = ONE_SIDED.has(state.lens) ? sc.colors.slice(4) : sc.colors;
+  const cols = ONE_SIDED.has(state.lens) ? sc.colors.slice(sc.colors.length >> 1) : sc.colors;
   const name = state.lens === "net" ? "" : `<span class="lname">${t({ support: "Support for Ukraine", payments: "Kept from Russia" }[state.lens])}:</span>`;
   const unit = state.measure === "gdp" ? "" : ` · ${t(state.measure === "pp" ? "€ per person" : "€ billion")}`;
   const words = { net: ["toward Russia ← no clear change → toward Ukraine", "Russia ← no change → Ukraine"], support: ["none ← → more support for Ukraine", "none ← → more support"],
@@ -1777,11 +1827,11 @@ function renderLegend(sc) {
     <div class="more">
     <h2>${titles[state.lens]}</h2>
     <div class="steps">${sc.colors.map(col => `<span style="background:${col}"></span>`).join("")}</div>
-    <div class="step-labels">${sc.labels.map((l, i) => (![0, 2, 5, 7].includes(i) ? "" : `<span style="left:${((i + 1) / sc.colors.length) * 100}%">${l}</span>`)).join("")}<span style="left:50%">0</span></div>
+    <div class="step-labels">${sc.labels.map((l, i) => (![0, 1, 4, 5].includes(i) ? "" : `<span style="left:${((i + 1) / sc.colors.length) * 100}%">${l}</span>`)).join("")}<span style="left:50%">0</span></div>
     <div class="ticks" style="font-family:var(--font-body);margin-top:2px"><span>← ${sc.ends[0]}</span><span>${sc.ends[1]} →</span></div>
     <div class="keys"><span>${periodText()}, ${LANG !== "en" && state.measure !== "gdp" ? t(state.measure === "pp" ? "€ per person" : "€ billion") : measure}</span>
       <span>${sw(`<rect width="10" height="10" fill="${C.mid}"/>`)}${t("Grey: no clear change")}</span>
-      <span>${sw(`<rect width="${ONE_SIDED.has(state.lens) ? 10 : 5}" height="10" fill="${sc.fade(sc.colors[6])}"/>${ONE_SIDED.has(state.lens) ? "" : `<rect x="5" width="5" height="10" fill="${sc.fade(sc.colors[2])}"/>`}`)}${t("Faded: leans this way, but too close to call (the likely range or the method band crosses zero; not ranked)")}</span>
+      <span>${sw(`<rect width="${ONE_SIDED.has(state.lens) ? 10 : 5}" height="10" fill="${sc.fade(sc.colors[5])}"/>${ONE_SIDED.has(state.lens) ? "" : `<rect x="5" width="5" height="10" fill="${sc.fade(sc.colors[1])}"/>`}`)}${t("Faded: leans this way, but too close to call (the likely range or the method band crosses zero; not ranked)")}</span>
       <span>${sw(`<rect width="10" height="10" fill="url(#hatch)"/>`)}${t("No data yet")}</span>
       <span>${t("Economies under {min} GDP: lightest shade of their direction only", { min: tight(money(num(MIN_GDP_RANK), "bn")) })}</span>
       ${state.lens === "net" ? `<span>${t("A country that earned more from the war effort for Ukraine than it gave is grey: that is not money toward Russia.")}</span>` : ""}
@@ -1844,11 +1894,20 @@ function updateDots() {
   const f = document.querySelector("#fbtn .dot"), h = document.querySelector("#hlbtn .dot");
   if (f) { f.hidden = !filtersChanged(); f.title = t("Changed from the default"); }
   if (h) { h.hidden = !state.hl; h.title = t("One is shown"); }
+  // round 21: a dot on "More options" when something folded in it differs from the default
+  const m = document.querySelector("#more-fold .dot");
+  if (m) { m.hidden = !(custom() || state.region !== "all" || state.size !== MIN_GDP_RANK || (typeof viewState !== "undefined" && viewState.group !== "all")
+    || state.streams !== STREAMS_DEFAULT || state.flows || state.chpl || state.remit || state.taken); m.title = t("Changed from the default"); }
 }
-// with a view open (ranking, sources), the view starts below the header line
+// the opening frame (round 21): Europe and western Asia, Kyiv and Moscow near the middle
+function openView() {
+  const [cx, cy] = projection(narrow() ? [26, 44] : [40, 45]);
+  svg.call(zoom.transform, d3.zoomIdentity.translate(W / 2, H / 2).scale(narrow() ? Math.min(9.5, Math.max(6.5, 4.4 * H / W)) : W > 1300 ? 3.2 : 2.9).translate(-cx, -cy));
+}
+// round 21: the header bar's height, for the popovers that are fixed to the screen on phones
 function placeView() {
   const hd = document.getElementById("bar");
-  if (hd) document.querySelector(".stage").style.setProperty("--hdr-b", hd.offsetTop + hd.offsetHeight + 8 + "px");
+  if (hd) document.documentElement.style.setProperty("--bar-h", hd.offsetHeight + "px");
 }
 
 // ===== Flow layer =====
@@ -1911,11 +1970,11 @@ function anchorOf(f) {
 // ===== Money streams (round 17, redesign B, approved by the owner) =====
 // Blue streams to Kyiv, sized by each country's support for Ukraine in €; orange streams to Moscow, sized by how much more
 // it paid Russia than without the war in € (the negative side of "kept from Russia"). The map's own two numbers, from
-// calc(), never gross trade; a direction that is too close to call has no stream. By default the 12 largest each way;
-// hovering or picking a country shows its own, a highlight shows those of its countries. Slow moving dashes; static
-// arrows under prefers-reduced-motion. Switched in Filters. Round 18 (owner): on by default on phones too, but calmer:
-// the 7 largest each way and thinner lines on a small screen
-const streamTop = () => (narrow() ? 7 : 12);
+// calc(), never gross trade; a direction that is too close to call has no stream. Hovering or picking a country shows its
+// own, a highlight shows those of its countries. Switched in Filters. Round 18 (owner): on by default on phones too, but
+// calmer there. Round 21 (polish, owner): thin solid lines that fade in, no moving dashes; the 8 largest each way (5 on
+// a small screen)
+const streamTop = () => (narrow() ? 5 : 8);
 let gStreams = null, hoverN = null, streamCache = null;
 function streamLists() {
   const key = [state.year, state.netBack, offKey(), state.lens, state.region, state.size, typeof viewState !== "undefined" ? viewState.group : "", streamTop()].join("|");
@@ -1945,30 +2004,20 @@ function streamArc(from, to) {
 const featureOf = {};
 function drawStreams() {
   if (!countryPaths) return;
-  if (!gStreams) {
-    gStreams = g.append("g").attr("class", "streams");
-    for (const [id, col] of [["ua", "var(--ukr)"], ["ru", "var(--rus)"]]) defs.append("marker").attr("id", "arrow-" + id).attr("class", "sarrow").attr("viewBox", "0 0 10 10").attr("refX", 9).attr("refY", 5)
-      .attr("markerWidth", 8 / (transform ? transform.k : 1)).attr("markerHeight", 8 / (transform ? transform.k : 1)).attr("markerUnits", "userSpaceOnUse").attr("orient", "auto").append("path").attr("d", "M0,0 L10,5 L0,10 z").style("fill", col);
-  }
+  if (!gStreams) gStreams = g.append("g").attr("class", "streams");
   const on = state.streams && state.year > 2021;
   const { list, max } = on ? streamsData() : { list: [], max: 1 };
-  const small = narrow(), w = v => Math.max(small ? 0.8 : 1, Math.sqrt(v / max) * (small ? 5.5 : 11));
+  const small = narrow(), w = v => Math.max(small ? 0.8 : 1, Math.sqrt(v / max) * (small ? 3.5 : 6));
   const end = r => projection(r.to === "ua" ? KYIV : MOSCOW), from = r => projection(featureOf[r.c.n]._anchor || (featureOf[r.c.n]._anchor = anchorOf(featureOf[r.c.n])));
   const col = r => (r.to === "ua" ? "var(--ukr)" : "var(--rus)");
   const sel = gStreams.selectAll("g.stream").data(list, r => r.c.n + r.to);
   sel.exit().remove();
   const en = sel.enter().append("g").attr("class", "stream");
-  en.append("path").attr("class", "stream-base"); en.append("path").attr("class", "stream-arrow");
+  en.append("path").attr("class", "stream-base");
   const all = en.merge(sel);
-  // the moving dashes on the overlay layer, keyed like the streams
-  const fx = sg.selectAll("path.stream-flow").data(list, r => r.c.n + r.to);
-  fx.exit().remove();
-  const fxAll = fx.enter().append("path").attr("class", "stream-flow").merge(fx);
   all.select(".stream-base").attr("d", r => streamArc(from(r), end(r))).style("stroke", col).style("stroke-width", r => w(r.v) + "px")
     .on("pointerdown", tapDown).on("pointerup", (e, r) => tapped(e, () => { select(r.c.n, false); frameStreams(r.c.n); }))
     .on("pointermove", (e, r) => isTouch(e) ? null : showTip(e, tipHtml(r.c, r.c.name))).on("pointerleave", () => (tip.hidden = true)).on("click", (e, r) => clicked(() => { select(r.c.n, false); frameStreams(r.c.n); }));
-  fxAll.attr("d", r => streamArc(from(r), end(r))).style("stroke", col).style("stroke-width", r => Math.max(small ? 1 : 1.2, w(r.v) * 0.55) + "px").style("animation-duration", r => 6 + (+r.c.n % 5) + "s");
-  all.select(".stream-arrow").attr("d", r => streamArc(from(r), end(r))).style("fill", "none").style("stroke", "none").attr("marker-end", r => `url(#arrow-${r.to})`);
   const k = transform ? transform.k : 1;
   gStreams.selectAll("circle.stream-target").data(list.length ? [KYIV, MOSCOW] : []).join("circle").attr("class", "stream-target")
     .attr("cx", d => projection(d)[0]).attr("cy", d => projection(d)[1]).attr("r", 3.5 / k);
@@ -1983,7 +2032,7 @@ function frameStreams(id) {
   const L = streamLists(), ends = L.ua.concat(L.ru).filter(r => r.c.n === id).map(r => projection(r.to === "ua" ? KYIV : MOSCOW));
   if (!ends.length) return;
   const side = matchMedia("(orientation: landscape) and (max-height: 500px)").matches;
-  const hdr = document.querySelector(".hdr"), top = hdr ? hdr.getBoundingClientRect().bottom - svg.node().getBoundingClientRect().top + 8 : 8;
+  const top = 8;   // round 21: the header bar sits above the map, not on it
   const box = side ? [8, top, W - panel.offsetWidth - 8, H - 8] : [8, top, W - 8, H - panel.offsetHeight - 8];
   const pts = [a, ...ends].map(p => transform.apply(p));
   if (pts.every(([x, y]) => x >= box[0] + 12 && x <= box[2] - 12 && y >= box[1] + 12 && y <= box[3] - 12)) return;
@@ -3441,7 +3490,6 @@ function applyLang() {
   for (const c of Object.values(DATA)) c.name = regionName(ISO2[c.iso3], c.name_en);
   if (DATA_TO) document.body.dataset.dataTo = fmtDate(DATA_TO);
   status.innerHTML = statusHtml();
-  syncStatus();
   const names = Object.values(DATA).map(c => c.name);
   document.getElementById("country-list").innerHTML = [regionName("UA", "Ukraine"), regionName("RU", "Russia"), ...(LANG === "en" ? names.sort() : names.sort((a, b) => a.localeCompare(b, LANG)))].map(n => `<option value="${n}"></option>`).join("");
   lg.selectAll("text.target-label").text(f => (f.id === "804" ? regionName("UA", "Ukraine") : regionName("RU", "Russia")));
@@ -3450,22 +3498,15 @@ function applyLang() {
 }
 window.onLangChange = applyLang;
 
-// ===== Status banner =====
-// The banner is one line that opens on click, tap or Enter (round 9: on computers too). While closed it is a button (its links, cut off in the line,
-// are inert); open, it is plain text again so its links work.
-const status = document.getElementById("status");
-function syncStatus() {
-  const phone = true, open = status.dataset.open === "true";
-  status.tabIndex = phone ? 0 : -1;
-  if (!phone) status.removeAttribute("tabindex");
-  if (phone && !open) { status.setAttribute("role", "button"); status.setAttribute("aria-expanded", "false"); }
-  else { status.setAttribute("role", "note"); status.removeAttribute("aria-expanded"); }
-  status.querySelectorAll("a").forEach(a => (a.inert = phone && !open));
-}
-function toggleStatus() { status.dataset.open = status.dataset.open === "true" ? "false" : "true"; syncStatus(); }
-status.addEventListener("click", e => { if (!e.target.closest("a")) toggleStatus(); });
-status.addEventListener("keydown", e => { if (e.target === status && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); toggleStatus(); } });
-window.addEventListener("resize", syncStatus);
+// ===== Research preview =====
+// Round 21 (polish, owner): the header bar says "Research preview · estimates not yet checked by a person · About" (an
+// honesty requirement, always visible); About opens the full text (dates, how it was compiled, how to report an error)
+// below the bar. It closes with About again, Escape or a click outside it
+const status = document.getElementById("status"), aboutBtn = document.getElementById("about-btn");
+function setAbout(open) { status.hidden = !open; aboutBtn.setAttribute("aria-expanded", String(open)); }
+aboutBtn.addEventListener("click", () => setAbout(status.hidden));
+document.addEventListener("click", e => { if (!status.hidden && !status.contains(e.target) && e.target !== aboutBtn) setAbout(false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !status.hidden) { setAbout(false); aboutBtn.focus(); } });
 
 // ===== Load =====
 // the chosen language's dictionary (i18n.js) loads alongside the data, so the first render is already translated
@@ -3497,8 +3538,8 @@ Promise.all([json(narrow() || matchMedia("(pointer: coarse)").matches ? "countri
     .on("click", (e, f) => clicked(() => { select(INCLUDED[f.id] || f.id, false); frameStreams(INCLUDED[f.id] || f.id); }));
   for (const f of features) if (DATA[f.id]) featureOf[f.id] = f;
   g.selectAll(".target-ukr, .target-rus").style("cursor", "pointer");
-  lg.selectAll("text.target-label").data(features.filter(f => f.id === "804" || f.id === "643")).join("text").attr("class", "target-label").attr("text-anchor", "middle")
-    .attr("x", f => labelPos(f)[0]).attr("y", f => labelPos(f)[1] + 4);
+  lg.selectAll("text.target-label").data(features.filter(f => f.id === "804" || f.id === "643")).join("text").attr("class", "target-label");
+  placeLabels();
   applyLang();
   // round 19: the Filters drawer as it was left in this visit (open or closed, and the sheet's height on phones)
   const dsize = stored(DKEY + "-size") || "half";
@@ -3509,14 +3550,15 @@ Promise.all([json(narrow() || matchMedia("(pointer: coarse)").matches ? "countri
   if (VIEWS.includes(start.view) && !state.view) state.view = start.view;
   route("load");
   tidyHash();
-  // round 17: the map fills the screen; it opens on Europe, Africa and Asia, with the streams' ends in view
-  if (!state.panel) { const [cx, cy] = projection(narrow() ? [24, 40] : [32, 33]); svg.call(zoom.transform, d3.zoomIdentity.translate(W / 2, H / 2).scale(narrow() ? Math.min(6, Math.max(3.5, 2.2 * H / W)) : W > 1300 ? 1.85 : 1.7).translate(-cx, -cy)); }
+  // round 17: the map fills the screen. Round 21 (polish, owner): it opens on Europe and western Asia (OPEN_VIEW), not
+  // cut through Africa; the whole world is one zoom-out away
+  if (!state.panel) openView();
   startLoop();
   if (reduceMotion) drawFlows(0);
   document.body.dataset.ready = "true";
 }).catch(err => {
   const msg = t("The data could not load: {msg}", { msg: err.message });
   console.error(err);
-  status.textContent = msg; status.dataset.open = "true";
+  status.textContent = msg; setAbout(true);
 });
 </script>

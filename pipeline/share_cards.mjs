@@ -40,11 +40,12 @@ await mkdir(join(SITE, "c"), { recursive: true });
 
 // world card: the map itself, without panels
 await page.evaluate(() => {
-  // round 17: the map as it opens (with its money streams), without the header line, the buttons and the legend
-  for (const sel of [".topline", ".hdr", ".tr", ".legend", "#fact", "#hlpanel", "#flows"]) { const el = document.querySelector(sel); if (el) el.style.display = "none"; }
+  // round 17: the map as it opens (with its money streams), without the header line, the buttons and the legend (round 21:
+  // all three are in the header bar; the map opens on Europe, so the title box sits on the right)
+  for (const sel of [".topbar", ".legend", "#fact", "#hlpanel", "#flows"]) { const el = document.querySelector(sel); if (el) el.style.display = "none"; }
   window.dispatchEvent(new Event("resize"));
   const el = document.createElement("div");
-  el.style.cssText = "position:fixed;left:48px;bottom:44px;z-index:99;background:#fbfcfcee;padding:22px 28px;border-radius:10px;max-width:640px;font-family:'Source Sans 3',sans-serif;color:#15212b";
+  el.style.cssText = "position:fixed;right:40px;bottom:40px;z-index:99;background:#fbfcfcee;padding:22px 28px;border-radius:10px;max-width:560px;font-family:'Source Sans 3',sans-serif;color:#15212b";
   el.innerHTML = `<div style="font-family:Archivo,sans-serif;font-weight:800;font-stretch:115%;font-size:40px;letter-spacing:-.02em;line-height:1.05">Follow the Money:<br>Ukrainian Aid</div>
     <div style="margin-top:10px;font-size:22px;color:#55636e">Every country's net: its <b style="color:#2a6fb0">support for Ukraine</b> plus the money it <b style="color:#2a6fb0">kept from Russia</b> (paid Russia <span style="color:#2a6fb0">less</span>, or <span style="color:#c9520f">more</span>, than without the war), as a share of its economy: totals since 2022 against one year's GDP.</div>`;
   document.body.appendChild(el);
@@ -91,8 +92,9 @@ for (const d of cards) {
     if (!el) { el = document.createElement("div"); el.id = "card"; document.body.appendChild(el); }
     // the map's one colour rule (round 17): blue toward Ukraine, orange toward Russia, grey for no clear change (too close
     // to call) and for earning from the war effort, which is not money toward Russia
-    // too close to call: the faded colour of the way it leans, half way to the grey (round 17, as on the map)
-    const grey = "#55636e", fadeB = "#3f698f", fadeO = "#8f5a3e";
+    // too close to call: the faded colour of the way it leans (round 17, as on the map). Round 21 (polish): a softer tint
+    // of the same hue, not a mix with the grey (the orange one was a brown); still 3:1 on the card for large text
+    const grey = "#55636e", fadeB = "#5b88b5", fadeO = "#cc7a40";
     const col = d.earner ? grey : d.netUnc ? (d.netPos ? fadeB : fadeO) : d.netPos ? "#2a6fb0" : "#c9520f";
     el.style.cssText = "position:fixed;inset:0;z-index:99;background:#fbfcfc;color:#15212b;font-family:'Source Sans 3',system-ui,sans-serif;padding:40px 64px 34px;display:flex;flex-direction:column";
     el.innerHTML = `
