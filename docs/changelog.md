@@ -645,6 +645,22 @@ Owner requests (the interface); no number changed for the net, support for Ukrai
     controls in the views and no cost wording in the site's text; check 29 counts the Ranking view's rule
     (`uncertain(m.c, y, hq)`) where the Top lists' ranking used to be; check 25's wording no longer names a cost view.
 
+## Round 20: three views
+
+Owner request after round 19 went live; no number changed. Decisions: [round 20](decisions.md#round-20-three-views).
+
+1. **Three views**: Map, Ranking, Sources. Ukraine vs Russia (`renderBubbles`) and Table & data (`renderTable`) are
+   removed; `#view=bubbles` opens Ranking and `#view=table` opens Sources (`OLD_VIEW`).
+2. **A clean ranking**: only the chart and, below it, the countries too close to call. The header line says
+   "Ranking: Net (the sum)" (or the part shown); its ⓘ (`rankInfo` in `views.js`) holds the explanation that sat above
+   the chart. The one-line filter summary (`filterSummary`) is gone from every view.
+3. **Download the data** at the end of Sources (`dataHtml`, `wireData` in `views2.js`): "Full data (CSV)", "CSV with
+   every part", "Full data (JSON)" and the data gaps by country.
+4. **Strings**: 2 new in all six languages, 1 changed, 28 no longer used removed. CSS for the bubbles, the table and the
+   filter summary removed.
+5. **Checks**: check 31 now asserts the three views and the old links to the removed ones, no `renderBubbles` or
+   `renderTable`, `rankInfo` and the downloads in place.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open
