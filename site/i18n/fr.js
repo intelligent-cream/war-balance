@@ -108,7 +108,6 @@ I18N.fr = {
   "Table & data": "Tableau et données",
   "Measure": "Unité",
   "% of GDP": "% du PIB",
-  "Per person": "Par habitant",
   "Total €": "Total en €",
   "Up to": "Jusqu'à",
   "2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).": "2026 couvre l'année à ce jour (janvier à août), pas une année complète. Quand une source n'a pas encore publié 2026, janvier à août est estimé à partir de son rythme mensuel de 2025 (marqué *).",

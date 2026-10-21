@@ -658,7 +658,10 @@ Owner request after round 19 went live; no number changed. Decisions: [round 20]
    every part", "Full data (JSON)" and the data gaps by country.
 4. **Strings**: 2 new in all six languages, 1 changed, 28 no longer used removed. CSS for the bubbles, the table and the
    filter summary removed.
-5. **Checks**: check 31 now asserts the three views and the old links to the removed ones, no `renderBubbles` or
+5. **No per person measure** (the owner, after the three views went live): Measure is % of GDP or Total €; `m=pp`
+   opens % of GDP. The compare rows and the full data CSV keep the net per person. "Per person" removed from the
+   dictionaries.
+6. **Checks**: check 31 now asserts the three views and the old links to the removed ones, no `renderBubbles` or
    `renderTable`, `rankInfo` and the downloads in place.
 
 ## See also

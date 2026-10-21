@@ -109,7 +109,6 @@ I18N.es = {
   "Table & data": "Tabla y datos",
   "Measure": "Medida",
   "% of GDP": "% del PIB",
-  "Per person": "Por habitante",
   "Total €": "Total en €",
   "Up to": "Hasta",
   "2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).": "2026 es el año hasta la fecha (de enero a agosto), no un año completo. Si una fuente aún no ha publicado 2026, de enero a agosto se estima a partir de su ritmo mensual de 2025 (marcado con *).",

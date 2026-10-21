@@ -481,6 +481,7 @@ details.info > summary::-webkit-details-marker { display: none; }
 .seg.seg-grid { display: grid; width: 100%; }
 .seg-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .seg-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.seg-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .drawer .seg.seg-grid button { white-space: normal; line-height: 1.2; padding: 7px 4px; text-align: center; min-height: 36px; }
 .drawer .search input { width: 100%; padding: 8px 11px; border: 1px solid var(--line); border-radius: 6px; background: var(--sea); color: var(--ink); font-size: 14px; }
 .dfold > summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
@@ -760,9 +761,9 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
       </section>
       <section class="dblock">
         <h3 class="dsec" id="measure-h" data-i18n="Measure">Measure</h3>
-        <div class="seg seg-grid seg-3" role="group" aria-labelledby="measure-h">
+        <!-- round 20 (owner): per person is no longer a choice; an old link with m=pp opens % of GDP (setFilters) -->
+        <div class="seg seg-grid seg-2" role="group" aria-labelledby="measure-h">
           <button data-measure="gdp" aria-pressed="true" data-i18n="% of GDP">% of GDP</button>
-          <button data-measure="pp" aria-pressed="false" data-i18n="Per person">Per person</button>
           <button data-measure="total" aria-pressed="false" data-i18n="Total €">Total €</button>
         </div>
       </section>
@@ -3137,7 +3138,7 @@ function setYear(y) { state.year = y; yearInput.value = y; showYear(y); paint();
 yearInput.oninput = () => { stopPlay(); setYear(+yearInput.value); writeHash(false); };
 // the buttons on top as the address gives them (a shared link); anything not given goes back to the start
 function setFilters(h) {
-  const lens = LENSES.includes(h.lens) ? h.lens : START.lens, measure = ["gdp", "pp", "total"].includes(h.m) ? h.m : START.measure;
+  const lens = LENSES.includes(h.lens) ? h.lens : START.lens, measure = ["gdp", "total"].includes(h.m) ? h.m : START.measure;
   const y = +h.y >= +yearInput.min && +h.y <= +yearInput.max ? +h.y : START.year;
   if (lens === state.lens && measure === state.measure && y === state.year) return;
   state.lens = lens; state.measure = measure;

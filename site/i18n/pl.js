@@ -109,7 +109,6 @@ I18N.pl = {
   "Table & data": "Tabela i dane",
   "Measure": "Miara",
   "% of GDP": "% PKB",
-  "Per person": "Na osobę",
   "Total €": "Razem €",
   "Up to": "Do",
   "2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).": "Rok 2026 to okres od początku roku (styczeń–sierpień), a nie pełny rok. Jeśli źródło nie opublikowało jeszcze danych za 2026, styczeń–sierpień oszacowano na podstawie jego miesięcznego tempa z 2025 (oznaczone *).",
