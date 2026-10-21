@@ -1127,4 +1127,8 @@ I18N.es = {
   "earned from the war effort": "ganó con el esfuerzo bélico",
   "fuel and food, not policy": "combustible y alimentos, no política",
   "two different things added": "dos cosas distintas sumadas",
+  // round 18: the key above the parts bars (gradient plot)
+  "at least": "al menos",
+  "could be up to": "podría llegar hasta aquí",
+  "best estimate": "mejor estimación",
 };

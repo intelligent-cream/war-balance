@@ -1125,4 +1125,8 @@ I18N.de = {
   "earned from the war effort": "verdiente an den Kriegsanstrengungen",
   "fuel and food, not policy": "Brennstoff und Lebensmittel, keine Politik",
   "two different things added": "zwei verschiedene Dinge addiert",
+  // round 18: the key above the parts bars (gradient plot)
+  "at least": "mindestens",
+  "could be up to": "könnte bis hierhin gehen",
+  "best estimate": "beste Schätzung",
 };

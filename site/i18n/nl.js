@@ -1126,4 +1126,8 @@ I18N.nl = {
   "earned from the war effort": "verdiende aan de oorlogsinspanning",
   "fuel and food, not policy": "brandstof en voedsel, geen beleid",
   "two different things added": "twee verschillende dingen opgeteld",
+  // round 18: the key above the parts bars (gradient plot)
+  "at least": "minstens",
+  "could be up to": "kan oplopen tot hier",
+  "best estimate": "beste schatting",
 };

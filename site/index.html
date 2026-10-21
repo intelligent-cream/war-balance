@@ -38,6 +38,8 @@
   --warn-ink: #55636e;
   --rus-text: #b4500f;     /* orange for text and for pressed buttons with white text: 4.5:1 on the surface */
   --on-accent: #fff;       /* text on a pressed blue or orange button */
+  /* round 18: the strength of the range fade on the parts bars (start, end), and of the fade across zero */
+  --fa0: 55%; --fa1: 12%; --fx0: 60%; --fx1: 10%;
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
   --font-data: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -48,6 +50,7 @@
     --line: #2b3944; --ukr: #6aa8e0; --ukr-lo: #1b3350; --rus: #f39a52; --rus-lo: #4a2a14; --back: #97a6b1; --target: #6b7782; --mid: #4f5962;
     --focus: #8fd3ea; --warn-bg: #141f28; --warn-ink: #c9d2d9; color-scheme: dark;
     --rus-text: #f39a52; --on-accent: #141f28;
+    --fa0: 62%; --fa1: 20%; --fx0: 80%; --fx1: 22%;
   }
 }
 :root[data-theme="dark"] {
@@ -55,6 +58,7 @@
   --line: #2b3944; --ukr: #6aa8e0; --ukr-lo: #1b3350; --rus: #f39a52; --rus-lo: #4a2a14; --back: #97a6b1; --target: #6b7782; --mid: #4f5962;
   --focus: #8fd3ea; --warn-bg: #141f28; --warn-ink: #c9d2d9; color-scheme: dark;
     --rus-text: #f39a52; --on-accent: #141f28;
+    --fa0: 62%; --fa1: 20%; --fx0: 80%; --fx1: 22%;
 }
 html, body { height: 100%; }
 body { margin: 0; background: var(--sea); color: var(--ink); font-family: var(--font-body); font-size: 15px; overflow: hidden; }
@@ -579,7 +583,19 @@ details.part .pv small { font-size: 11px; font-weight: 400; color: var(--ink-sof
 .pbar { grid-column: 1 / -1; position: relative; display: block; height: 10px; background: color-mix(in srgb, var(--sea) 70%, var(--surface)); border-radius: 3px; }
 .pbar span { position: absolute; top: 0; bottom: 0; border-radius: 3px; }
 .pbar .z { width: 1.5px; margin-left: -0.75px; background: var(--ink-soft); border-radius: 0; z-index: 1; }
-.pbar i { position: absolute; top: -2px; bottom: -2px; border: 1px solid var(--ink-soft); border-radius: 3px; opacity: 0.45; }
+/* the likely range as a gradient plot (round 18): solid to the low end, a fade to the high end, a tick at the best estimate.
+   The tick is the page ink with a hairline of the surface around it, so it reads on the solid colour, the fade and the
+   track in light and dark */
+.pbar .b, .tile .tbar .b { border-radius: 0; }
+.pbar .f, .tile .tbar .f { border-radius: 0; }
+.pbar .t, .tile .tbar .t { width: 2px; margin-left: -1px; top: -3px; bottom: -3px; background: var(--ink); box-shadow: 0 0 0 1px var(--surface); border-radius: 1px; z-index: 2; }
+.pc-key { display: flex; flex-wrap: wrap; gap: 2px 14px; margin: -2px 0 8px; font: 11px var(--font-data); color: var(--ink-soft); }
+.pc-key > span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.pc-key .ks { position: relative; display: inline-block; width: 18px; height: 8px; }
+.pc-key .ks-s { background: var(--ukr); }
+.pc-key .ks-f { background: linear-gradient(to right, color-mix(in srgb, var(--ukr) var(--fa0), transparent), color-mix(in srgb, var(--ukr) var(--fa1), transparent)); }
+.pc-key .ks-t { width: 8px; }
+.pc-key .ks-t::before { content: ""; position: absolute; left: 3px; top: -3px; bottom: -3px; width: 2px; background: var(--ink); border-radius: 1px; }
 .mcard { margin: 2px 0 10px 12px; padding: 8px 10px; border-left: 3px solid var(--line); font-size: 13px; line-height: 1.45; }
 .mcard p { margin: 0 0 6px; }
 .mcard .lbl2 { font: 500 10.5px var(--font-data); text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); margin: 8px 0 3px; }
@@ -2689,9 +2705,9 @@ const flowById = id => FLOWS.find(f => f.id === id);
 function methodCard(c, p) {
   const f = flowById(FLOW_OF[p.k]);
   const srcs = [...new Set(p.src || [])].filter(id => SRC[id]);
-  const DOCS = REPO + "docs/";
+  const DOCS = REPO + "docs/", pg = v => fmtMeasure(c, v, "gdp", true);
   return `<div class="mcard">
-    <p><b>${p.label}</b>: ${eur(p.v, true)}, ${t("likely {lo} to {hi}", { lo: eur(p.lo, true), hi: eur(p.hi, true) })}; ${certWords(p.cert)}.${p.en.endsWith("*") ? " " + t("* 2026 estimated from the 2025 monthly rate.") : ""}</p>
+    <p><b>${p.label}</b>: ${pg(p.v)} (${eur(p.v, true)}), ${t("likely {lo} to {hi}", { lo: pg(p.lo), hi: pg(p.hi) })} (${t("{lo} to {hi}", { lo: eur(p.lo, true), hi: eur(p.hi, true) })})${p.lo < 0 && p.hi > 0 ? "; " + t("too close to call") : ""}; ${certWords(p.cert)}.${p.en.endsWith("*") ? " " + t("* 2026 estimated from the 2025 monthly rate.") : ""}</p>
     ${f ? `<p class="lbl2">${t("How it is calculated")}</p><p>${t(HOW[f.id] || f.what)}</p>
     <p class="lbl2">${t("Why it's done this way")}</p><p>${WHY[f.id] ? t(WHY[f.id]) : ""}</p>
     <div class="links">${ext(DOCS + f.why, t("The decisions behind it"))}${f.log ? ext(DOCS + f.log, t("Decision log")) : ""}</div>` : ""}
@@ -2701,14 +2717,53 @@ function methodCard(c, p) {
 }
 // one row of the parts chart (round 18, owner: "the biggest parts ... that visual stuff is way more interesting"): a short
 // label and its value on one line, then a full-width bar on one shared zero line, blue toward Ukraine and orange toward
-// Russia, with the likely range as a thin outline. Tapping the row opens how / why / sources in place
-// a shared zero line placed so that the largest value each way just fits: all-positive parts use the full width
-function barAxis(vals) {
-  const neg = Math.max(0, ...vals.map(v => -v)), pos = Math.max(0, ...vals.map(v => v)), tot = neg + pos || 1;
-  const x = v => Math.max(0, Math.min(100, ((neg + v) / tot) * 100));
+// Russia. Tapping the row opens how / why / sources in place.
+// Round 18 (owner: the range outline was "so vague to understand" and "not always there"): each bar is a gradient plot
+// (Correll & Gleicher 2014, "Error Bars Considered Harmful"; Newman & Scholl 2012 on the within-the-bar bias): solid from
+// zero to the low end of the likely range (what we are fairly sure of), a fade from there to the high end (what it could
+// be up to), and a thin dark tick at the best estimate. A range that crosses zero has no solid part: a faint fade in the
+// faded colour of its leaning direction (as on the map) spreads both ways from zero, the tick at the best estimate
+// a shared zero line placed so that the largest value each way just fits, with room for the likely ranges: each side may
+// grow by up to RANGE_ROOM of the central values' span, so one very wide range does not squash every other bar (beyond
+// that the fade is cut at the edge, at the strength it has there)
+const RANGE_ROOM = 0.5;
+function barAxis(vals, ranges = []) {
+  const ext = vs => [Math.max(0, ...vs.map(v => -v)), Math.max(0, ...vs.map(v => v))];
+  const [n0, p0] = ext(vals), [nr, pr] = ext(ranges.flat().filter(Number.isFinite)), t0 = n0 + p0 || 1;
+  const neg = Math.max(n0, Math.min(nr, n0 + RANGE_ROOM * t0)), pos = Math.max(p0, Math.min(pr, p0 + RANGE_ROOM * t0)), tot = neg + pos || 1;
+  const x = v => ((neg + v) / tot) * 100;
   return { z: x(0), x };
 }
-const barHtml = (ax, v, col, lo, hi) => `<span class="z" style="left:${ax.z}%"></span><span class="b" style="left:${Math.min(ax.z, ax.x(v))}%;width:${Math.max(0.8, Math.abs(ax.x(v) - ax.z))}%;background:${col}"></span>${lo == null ? "" : `<i style="left:${ax.x(Math.min(lo, hi))}%;width:${Math.max(0.5, Math.abs(ax.x(hi) - ax.x(lo)))}%"></i>`}`;
+// the faded colour of a leaning direction, as the map draws "too close to call"
+const fadedCol = col => `color-mix(in srgb, ${col} 50%, var(--mid))`;
+// a colour at a strength; the strengths are CSS variables (--fa0/--fa1 along the range, --fx0/--fx1 across zero) so dark
+// mode can draw them stronger
+const alpha = (col, a) => `color-mix(in srgb, ${col} ${a}, transparent)`;
+// a fade from position x0 (strength s0) toward x1 (strength s1), cut at the chart edge at the strength it has there; at
+// least FADE_MIN px wide so a narrow range still shows
+const FADE_MIN = 6;
+function fadeHtml(ax, x0, x1, col, s0, s1) {
+  const X = v => Math.max(0, Math.min(100, v)), e = X(x1), f = x1 === x0 ? 1 : (e - x0) / (x1 - x0);
+  const sE = f >= 0.999 ? `var(${s1})` : `calc(var(${s0}) + (var(${s1}) - var(${s0})) * ${+f.toFixed(3)})`;
+  const right = x1 >= x0, w = Math.abs(e - x0);
+  const pos = right ? `left:${X(x0)}%` : `right:${100 - X(x0)}%`;
+  return `<span class="f" style="${pos};width:max(${FADE_MIN}px, ${+w.toFixed(3)}%);background:linear-gradient(to ${right ? "right" : "left"}, ${alpha(col, `var(${s0})`)}, ${alpha(col, sE)})"></span>`;
+}
+function barHtml(ax, v, col, lo, hi) {
+  const X = u => Math.max(0, Math.min(100, ax.x(u))), z = ax.z;
+  const tick = `<span class="t" style="left:${X(v)}%"></span>`, zero = `<span class="z" style="left:${z}%"></span>`;
+  if (lo == null || hi == null) return zero + `<span class="b" style="left:${Math.min(z, X(v))}%;width:${Math.abs(X(v) - z)}%;background:${col}"></span>` + tick;
+  const a = Math.min(lo, hi, v), b = Math.max(lo, hi, v);
+  if (a < 0 && b > 0) {
+    // too close to call: no solid part, a faint fade both ways from zero
+    const fc = fadedCol(col);
+    return zero + fadeHtml(ax, z, ax.x(a), fc, "--fx0", "--fx1") + fadeHtml(ax, z, ax.x(b), fc, "--fx0", "--fx1") + tick;
+  }
+  const up = v >= 0, near = up ? a : b, far = up ? b : a, xn = X(near);
+  return zero + `<span class="b" style="left:${Math.min(z, xn)}%;width:${Math.abs(xn - z)}%;background:${col}"></span>` + fadeHtml(ax, ax.x(near), ax.x(far), col, "--fa0", "--fa1") + tick;
+}
+// the key above the bars: what solid, faded and the line mean
+const barKey = () => `<p class="pc-key" aria-hidden="true"><span><i class="ks ks-s"></i>${t("at least")}</span><span><i class="ks ks-f"></i>${t("could be up to")}</span><span><i class="ks ks-t"></i>${t("best estimate")}</span></p>`;
 function partRow(c, p, ax, plain) {
   const g = v => scaled(c, v, "gdp") ?? 0, id = "part-" + p.k;
   return `<details class="part" data-part="${p.k}"${panelOpen.has(id) ? " open" : ""}><summary><span class="nm">${plain ? plainName(p) : p.label + chip(p.cert)}</span>
@@ -2793,10 +2848,12 @@ function netBlock(c, k, y) {
 // the likely range, the average year, the gas Russia cut off and the refugees not counted are behind a tap
 function partTiles(c, k, y) {
   const g = v => fmtMeasure(c, v, "gdp", true), gr = grades(c, y);
-  const ax = barAxis([k.uaBal, k.rusBal]);
+  const G = v => scaled(c, v, "gdp") ?? 0;
+  const ax = barAxis([G(k.uaBal), G(k.rusBal)], [[G(k.uaLo), G(k.uaHi)], [G(k.rusLo), G(k.rusHi)]]);
   const unc = q => (uncertain(c, y, q) ? `<span class="unc-tag" title="${t("The likely range or the method band crosses zero: this number is not ranked.")}">${t("direction uncertain")}</span>` : "");
   const col = (v, q, neg) => { const z = v >= 0 ? "var(--ukr)" : neg; return uncertain(c, y, q) ? `color-mix(in srgb, ${z} 50%, var(--mid))` : z; };
-  const bar = (v, cl) => `<span class="tbar" aria-hidden="true">${barHtml(ax, v, cl)}</span>`;
+  // the same gradient bar as the parts, in the bar colour of its direction (the fade for a range across zero is barHtml's)
+  const bar = (v, lo, hi, neg) => `<span class="tbar" aria-hidden="true">${barHtml(ax, G(v), v >= 0 ? "var(--ukr)" : neg, G(lo), G(hi))}</span>`;
   const ua = !state.netBack ? t("aid, refugees, loans as gifts and purchases from Ukraine (money flowing back not subtracted)")
     : !k.earnerUa ? t("Net contributing: gave {gave}, earned back {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) })
     : t("Net earning from the war effort: gave {gave}, earned {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) });
@@ -2804,20 +2861,21 @@ function partTiles(c, k, y) {
     : k.rusBal > 0 && k.rusCut >= 0.4 * k.rusBal ? t("less paid to Russia") : w.tr0.replace(/\s*\([^()]*\)\s*$/, "");
   const cutTxt = k.rusCut > 0.005 ? `<p>${t(oilCut(c) ? "of which gas and pipeline oil Russia cut off itself, or gas that stopped with the end of transit: {v}" : "of which gas Russia cut off itself or that stopped with the end of transit: {v}", { v: eur(k.rusCut) })}${ref(["gas_cuts"])}</p>` : "";
   const rx = c.ref_excluded ? (() => { const v = c.ref_excluded.years.slice(1, yi(y) + 1).reduce((a, b) => a + b, 0); return v > 0.0005 ? `<p>${t("Hosted Ukrainian refugees ({v}), not counted as support: co-belligerent.")}${ref(c.ref_excluded.src)}</p>` : ""; })() : "";
-  const tile = (id, name, q, v, lo, hi, cls, cl, words, extra) => xp("tile " + cls, "x-" + id,
-    `<span class="tl"><span class="tn">${name}</span>${chip(gr[q])}<span class="xi" aria-hidden="true"></span></span><span class="tv" style="color:${cl}">${g(v)}</span><span class="te">${eur(v, true)}</span>${bar(v, cl)}`,
+  const tile = (id, name, q, v, lo, hi, cls, cl, words, extra, bneg) => xp("tile " + cls, "x-" + id,
+    `<span class="tl"><span class="tn">${name}</span>${chip(gr[q])}<span class="xi" aria-hidden="true"></span></span><span class="tv" style="color:${cl}">${g(v)}</span><span class="te">${eur(v, true)}</span>${bar(v, lo, hi, bneg)}`,
     `${unc(q) ? `<p>${unc(q)}</p>` : ""}<p>${words}</p>${extra}<p>${t("Likely range {lo} to {hi}", { lo: g(lo), hi: g(hi) })} · ${t("about {v} a year", { v: perYear(c, v, y) })}</p>`);
   let frozen = "";
   if (Math.abs(k.frozen) >= 0.0005) frozen = xp("tile mini", "x-frozen", `<span class="tl"><span class="tn">${t("Russian money frozen")}</span><span class="xi" aria-hidden="true"></span></span><span class="tv">${g(k.frozen)}</span><span class="te">${eur(k.frozen, true)}</span>`, frozenLine(c, k));
   return `<div class="tiles">
-    ${tile("ua", t("Support for Ukraine"), "ua", k.uaBal, k.uaLo, k.uaHi, k.earnerUa ? "earn" : "", col(k.uaBal, "ua", "var(--ink-soft)"), ua, rx)}
-    ${tile("rus", t("Kept from Russia"), "rus", k.rusBal, k.rusLo, k.rusHi, "", col(k.rusBal, "rus", "var(--rus-text, var(--rus))"), ru, cutTxt)}
+    ${tile("ua", t("Support for Ukraine"), "ua", k.uaBal, k.uaLo, k.uaHi, k.earnerUa ? "earn" : "", col(k.uaBal, "ua", "var(--ink-soft)"), ua, rx, "var(--ink-soft)")}
+    ${tile("rus", t("Kept from Russia"), "rus", k.rusBal, k.rusLo, k.rusHi, "", col(k.rusBal, "rus", "var(--rus-text, var(--rus))"), ru, cutTxt, "var(--rus)")}
   </div>${frozen}`;
 }
 const PARTS_SHOWN = 7;
 function firstLayer(c, k, y) {
   const parts = k.shiftParts.concat(k.backShift);
-  const ax = barAxis(parts.map(p => scaled(c, p.v, "gdp") ?? 0).concat([0.01]));
+  const G = v => scaled(c, v, "gdp") ?? 0;
+  const ax = barAxis(parts.map(p => G(p.v)).concat([0.01]), parts.map(p => [G(p.lo), G(p.hi)]));
   const top = parts.filter(p => Math.abs(scaled(c, p.v, "gdp") ?? 0) >= 0.005).sort((a, b) => Math.abs(b.v) - Math.abs(a.v)).slice(0, PARTS_SHOWN);
   const rest = parts.filter(p => !top.includes(p));
   const group = (title, list) => (list.length ? `<p class="grp">${title}</p>${list.map(p => partRow(c, p, ax, false)).join("")}` : "");
@@ -2825,7 +2883,7 @@ function firstLayer(c, k, y) {
   return `${custom() ? `<div class="custom">${customNote()}</div>` : ""}
     <section class="pv-top">${netBlock(c, k, y)}${partTiles(c, k, y)}</section>
     ${flags.length ? `<section class="pv-flags" aria-label="${t("What changes the meaning here")}"><div class="flags">${flags.map(f => xp("flag " + f.cls, "x-flag-" + f.key, `<span class="fi" aria-hidden="true">${f.icon}</span><span>${f.label}</span>`, f.body)).join("")}</div></section>` : ""}
-    <section class="pv-chart"><div class="pc-h"><h3>${t("The biggest parts")}</h3><span class="pc-hint">${t("tap a bar for how it is calculated")}</span></div>
+    <section class="pv-chart"><div class="pc-h"><h3>${t("The biggest parts")}</h3><span class="pc-hint">${t("tap a bar for how it is calculated")}</span></div>${barKey()}
       ${ax.z > 0 ? `<div class="pc-axis" aria-hidden="true"><span>← ${t("toward Russia")}</span><span>${t("toward Ukraine")} →</span></div>` : ""}
       <div class="parts">${top.map(p => partRow(c, p, ax, true)).join("")}</div>
       ${rest.length ? `<details class="allparts" id="allparts"${panelOpen.has("allparts") ? " open" : ""}><summary>${t("Show the other {n} parts", { n: rest.length })}</summary>

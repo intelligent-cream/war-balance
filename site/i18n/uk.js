@@ -1128,4 +1128,8 @@ I18N.uk = {
   "earned from the war effort": "заробила на воєнних зусиллях",
   "fuel and food, not policy": "паливо і продукти, а не політика",
   "two different things added": "дві різні речі разом",
+  // round 18: the key above the parts bars (gradient plot)
+  "at least": "щонайменше",
+  "could be up to": "може сягати аж сюди",
+  "best estimate": "найкраща оцінка",
 };
