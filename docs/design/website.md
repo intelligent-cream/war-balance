@@ -30,25 +30,35 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   flows"; their animation loop runs only while they are on.
 - **Hover card**: support for Ukraine and kept from Russia as two bars, each with its sentence ("paid Russia €65.8bn
   (1.6% of GDP) less than without the war"), the net with its range, and the orange caveat for orange countries.
-- **Filters drawer** (right side; a bottom sheet on phones, with the map visible above it), collapsed by default, a dot
-  on the button when anything differs from the default. Seven sections with the same heading, spacing and left edge
-  (owner: the drawer "can look better"): 1. **the map shows** (Net, Support for Ukraine, Kept from Russia, Cost to the
-  country) and the **measure** (% of GDP, per person, total €) as full-width segmented controls, with the quick views
-  "€ to Ukraine" and "Change in € to Russia"; 2. **find a country**; 3. **what's counted**, folded by default (16
-  on/off switches with world totals, grouped toward Ukraine, kept from Russia and own line; "Showing the official
-  numbers" under the heading, or "Custom mix, not the official figures" with "Reset to the official numbers", also
-  under the title, in the panel and the tooltip); 4. **where and when**: region, group (EU, G7, NATO, BRICS, former
-  Soviet Union), size and year; 5. **map layers**: streams, gross trade flows, the three markers (on/off switches) and
-  zoom; 6. **rankings and top lists**: the pages (Map, Ranking, Ukraine vs Russia, Table & data, How it works,
-  Sources), Top lists, and the top ten and bottom five of the current view, folded; 7. **display**: light or dark,
-  language.
+- **Filters drawer** (round 19, the owner's interface changes; [decisions](../decisions.md#round-19-one-place-for-every-filter)):
+  a persistent top layer. Filters opens it and it stays open until the reader closes it (the Filters button, × or
+  Escape inside it): panning or zooming the map, switching views, changing a filter or clicking a country leave it
+  open. On desktop it sits on the left, above everything, and the header line, legend, highlight card and views move
+  right; the country panel stays on the right, so both show at once. On phones it is a bottom sheet that keeps the
+  height chosen (half the screen, nearly all of it, or just its handle; drag or tap the handle); opening a country
+  shrinks it to its handle so the panel shows above it. Open or closed and the sheet's height are kept for the visit
+  (sessionStorage). A dot on the button when anything differs from the default. Sections, in order: 1. **views**
+  (Map, Ranking, Ukraine vs Russia, Table & data, Sources) as one segmented control; 2. **the map shows** (Net,
+  Support for Ukraine, Kept from Russia); 3. **measure** (% of GDP, per person, total €); 4. **what's counted**, folded
+  by default (16 on/off switches with world totals, grouped toward Ukraine, kept from Russia and own line; "Showing
+  the official numbers", or "Custom mix, not the official figures" with "Reset to the official numbers", also under
+  the title, in the panel and the tooltip); 5. **where and when**: region, group (EU, G7, NATO, BRICS, former Soviet
+  Union), size and year; 6. **map layers**: streams, gross trade flows, the three markers and zoom, switched off (with
+  a note and "Show the map") in the other views; 7. **find a country**; 8. **display**: light or dark, language.
+  Removed in round 19: the cost view, the quick views "€ to Ukraine" and "Change in € to Russia" (the same as the map
+  shows plus the measure), How it works and the Top lists (the Ranking view replaces them).
+- **Views read the drawer** (round 19): the Ranking, Ukraine vs Russia and Table & data views have no filter
+  controls of their own; each follows the drawer's view, measure, what's counted, region, group, size and year, live,
+  and says in one line what it shows ("Net (the sum) · % of GDP · EU · 2022–Aug 2026"), with a link to the drawer.
 - **Highlights**: seven chips; one highlights its countries (others dimmed) and shows a small closable fact card with
   its caveat.
 - **Country panel**: side panel on desktop, bottom sheet on phones (a side sheet on a phone held sideways); each
   number once (round 17), numbers and bars first (round 18, owner: "less text-heavy, more visual and structured ...
   keep all the explanations, but hide them"). It opens with no sentences: 1. The country's **name only**. 2. **The
   net** as one big number with a small label ("of a year's GDP since 2022"), its certainty letter and one compact line
-  (€, likely range, ≈ average year); a tap opens the lead in words, what the net adds, the certainty in words and what
+  (€, likely range, ≈ average year); since round 19 in the drawer's measure: per person ("+€1,609", "per person, in
+  total since 2022") or total € ("+€134 bn"), with % of GDP as the second line, and the tiles and bars in that
+  measure too; a tap opens the lead in words, what the net adds, the certainty in words and what
   the likely range is. 3. **The two parts as two tiles** side by side (support for Ukraine and kept from Russia: label,
   letter, value in %, € and a small bar on a shared zero line), and Russian money frozen as a slim third tile where
   it exists; a tap opens the words, the likely range, the average year, the gas Russia cut off and the refugees not
@@ -58,13 +68,19 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   over a full-width bar (blue toward Ukraine, orange toward Russia, grey earned back; the likely range as an outline),
   all on one zero line; a tap opens the part's method in place (how, why with its decisions, the country's sources
   with exact tables, method page, trace); "Show the other N parts". 6. Folded sections: about the country (code,
-  people, GDP), what it cost the country (with money flowing back), method band and alternatives (with the method notes, coverage,
-  "How this is calculated" and a link to the waterfall in How it works), markers (critical goods, wages, taken by
-  Russia), sanctions or own choice, per year against the pre-war level, aid, companies and people, share and compare
-  (with the map value in € per person or total €), and the numbered sources.
-- **Other pages**, from Filters or the page tabs in the header line once one is open: Ranking, Ukraine vs Russia,
-  Table & data (CSV, CSV with every part, JSON), How it works, and Sources (the method in four lines, how decisions are
-  made, then every money flow with how, why, sources and research files).
+  people, GDP), money flowing back, method band and alternatives (with the method notes, coverage and "How this is
+  calculated"), markers (critical goods, wages, taken by Russia), sanctions or own choice, per year against the
+  pre-war level, aid, companies and people, share and compare. 7. **Sources** (round 19, not folded): every source
+  used for the country's figures, numbered, with exact tables and links. The method flow is: panel → a part's bar →
+  how it is calculated and why → that part's sources → Sources at the end of the panel → the Sources view.
+- **Other views**, from Filters or the tabs in the header line once one is open: **Ranking** (the drawer's number and
+  measure, with likely ranges), **Ukraine vs Russia**, **Table & data** (round 19, rebuilt: one row per country in the
+  filter; grouped, sortable columns for the net, support for Ukraine, kept from Russia and Russian money frozen, each
+  with its likely range and letter, then GDP, population and the main parts; tabular numbers, a sticky header and
+  country column, its own scroll box; "Download CSV" and "Download JSON" export exactly what is shown, and the full data
+  (every country and number, every part, data.json) below; the data gaps by country, folded), and **Sources** (the
+  method in four lines, how decisions are made, then every money flow with how, why, sources and research files; every
+  source in data.json is listed). How it works was a view until round 19; its content is in this documentation.
 
 The rest of this page is the early plan, kept for the record.
 
@@ -82,14 +98,14 @@ A working prototype with sample values is in `site/index.html`.
 
 | control | options |
 |---------|---------|
-| **View** | **Net (the sum)** (default) · Support for Ukraine · Kept from Russia ("Change in payments to Russia" until round 17) · Cost to the country (since round 15; the first design had Change since 2021 · Cost carried · To Ukraine · To Russia) |
+| **View** | **Net (the sum)** (default) · Support for Ukraine · Kept from Russia ("Change in payments to Russia" until round 17); Cost to the country from round 15 to round 18 (the first design had Change since 2021 · Cost carried · To Ukraine · To Russia) |
 | **Measure** | **% of GDP** (default, the fairest comparison of sacrifice) · Per person · Total € |
 | **Period** | from 2022 up to a chosen year, using the yearly values in `world.json` |
 | **Find a country** ("Find your country" until round 17; in Filters) | search box; zooms to the country and opens its panel |
 
 - **Change since 2021** is the main view: net shift = aid + purchases from Ukraine above the 2021 level + the drop in payments
   to Russia below the 2021 level (paying Russia more counts negative). Diverging colours: copper = shifted toward Russia, teal = toward Ukraine.
-- **Cost to the country** ("Cost carried" before round 15) is the opportunity cost, after gains: aid + extra price of replacing Russian energy + lost sales to Russia + tariffs dropped for Ukraine.
+- **Cost to the country** ("Cost carried" before round 15; removed from the site in round 19) is the opportunity cost, after gains: aid + extra price of replacing Russian energy + lost sales to Russia + tariffs dropped for Ukraine.
 - **Flow layer**: animated arcs from every country to Kyiv (teal) and Moscow (copper); width and number of moving dots follow the yearly amount
   in the selected year. A wide faint line under each Russia arc shows the 2021 level, so a shrinking or growing flow is visible at a glance.
   Selecting a country highlights its arcs and dims the rest. With reduced motion the arcs are drawn without moving dots.

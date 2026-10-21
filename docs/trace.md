@@ -21,7 +21,8 @@ person ([decisions](decisions.md)).
 
 - **Parts on the map**: the names in a country's panel, with the key used in `calc()` in
   [`site/index.html`](../site/index.html). A part is in the net shift, in the money flowing back, or in the cost view
-  (the "Cost to the country" button, called "Cost carried" before round 15;
+  (the "Cost to the country" button, called "Cost carried" before round 15; since round 19 the site no longer shows the
+  cost view, and its parts are only in the full data download, labelled;
   [overview](method/overview.md#every-part-of-the-net-shift)).
 - **How it's calculated**: the method section that writes the calculation out.
 - **Why it's done this way**: the rows of [decisions.md](decisions.md) (by section, with the row's name) and of the

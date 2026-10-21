@@ -262,3 +262,21 @@ country panel and highlights, and concept 2's "what's counted" switches. **No nu
 | **What's counted**: switches that recompute everything through `calc()`, with a "Custom mix, not the official figures" note and reset; custom mixes are not shared | owner | readers asked for it; the note keeps it honest | none by default |
 | **Highlights** with the corrected Baltic chip (Lithuania's cut mostly its own choice) | owner | stories one click from the map | display |
 | **Method on the bars**: each part of a country opens its how, why, sources and links | owner | the method sits on the number | display |
+
+## Round 19: one place for every filter (21 October)
+
+The owner asked for a simpler interface: every filter in one drawer that stays open, the views listed at its top, and
+no cost view. **No number changed** for the net, support for Ukraine or kept from Russia. Details:
+[decisions](decisions.md#round-19-one-place-for-every-filter); steps:
+[changelog](changelog.md#round-19-one-place-for-every-filter).
+
+| decision | raised by | why | effect |
+|---|---|---|---|
+| **Views at the top of Filters** (Map, Ranking, Ukraine vs Russia, Table & data, Sources); How it works and the Top lists removed, their old links open Sources and the Ranking view | owner | one list of the ways to look at the data | display |
+| **Filters only in the drawer**: the views have no filters of their own and say in one line what they show | owner | two sets of filters disagreed | display |
+| **A persistent drawer**: open until closed, on the left on desktop beside the country panel, a bottom sheet with a chosen height on phones; kept for the visit | owner | it closed on every change | display |
+| **No cost view**: "The map shows" is Net, Support for Ukraine or Kept from Russia; `lens=cost` opens the net; the cost stays in the full data download, labelled | owner (to simplify) | a different kind of number | display; downloads |
+| **No quick buttons** ("€ to Ukraine", "Change in € to Russia") | owner | they repeated the map shows plus the measure | display |
+| **The measure in the country panel**: per person or total € for the big number, tiles and bars, % of GDP beside them | owner | the panel ignored the measure | display |
+| **Table & data rebuilt**, with downloads of exactly what is shown and the full data | owner | "needs a lot of work" | display; downloads |
+| **Every source listed**, in the Sources view and at the end of each country panel | owner | the method flow ends at the sources | display |
