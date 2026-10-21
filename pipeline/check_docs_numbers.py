@@ -1,7 +1,8 @@
 """Round 15 (review 4, H4; approved by the owner): flag headline figures in the documentation that no longer match
 site/data.json, so the docs cannot drift from the map again.
 
-A figure in a Markdown file under docs/ (or README.md) is checked when a tag follows it:
+A figure in the site's long-form text (site/content/, round 23; docs/ and README.md until then) is checked when a tag
+follows it:
 
     Germany's support for Ukraine is +1.7%<!-- n:DEU.ua -->
 
@@ -60,7 +61,9 @@ def value(m: dict, who: str, what: str) -> float | None:
 
 def check(m: dict) -> tuple[list[str], int]:
     bad, n = [], 0
-    files = sorted((ROOT / "docs").rglob("*.md")) + [ROOT / "README.md"]
+    files = (
+        sorted((ROOT / "site" / "content").rglob("*.md")) + sorted((ROOT / "docs").rglob("*.md")) + [ROOT / "README.md"]
+    )
     for f in files:
         for i, line in enumerate(f.read_text().splitlines(), 1):
             for mt in TAG.finditer(line):
