@@ -6,9 +6,9 @@
 
 // the four numbers, each a group of three columns: the value, its likely range and its certainty letter
 const TGROUPS = [
-  { id: "net", label: "Net (the sum)", v: k => [k.shift, k.shiftLo, k.shiftHi], en: "net" },
+  { id: "net", label: "Net", v: k => [k.shift, k.shiftLo, k.shiftHi], en: "net" },
   { id: "ua", label: "Support for Ukraine", v: k => [k.uaBal, k.uaLo, k.uaHi], en: "support_for_ukraine" },
-  { id: "rus", label: "Kept from Russia", v: k => [k.rusBal, k.rusLo, k.rusHi], en: "kept_from_russia" },
+  { id: "rus", label: "Business with Russia", v: k => [k.rusBal, k.rusLo, k.rusHi], en: "business_with_russia_reduced" },
   { id: "frozen", label: "Russian money frozen", v: k => [k.frozen, k.frozenLo, k.frozenHi], en: "russian_money_frozen" },
 ];
 
@@ -36,17 +36,17 @@ function dataHtml() {
     <div class="dl" role="group" aria-label="${t("Downloads")}">
       <button id="dl-full">${t("Full data (CSV)")}</button>
       <button id="dl-parts">${t("CSV with every part")}</button>
-      <a href="data.json" download="follow-the-money-ukrainian-aid.json">${t("Full data (JSON)")}</a>
+      <a href="data.json" download="follow-the-money-ukraine.json">${t("Full data (JSON)")}</a>
     </div>
     ${coverageHtml(rows)}
-    <p class="note-small">${t("Data and text: CC BY 4.0, credit \"Follow the Money: Ukrainian Aid\". Every figure has its sources in the country breakdown and in the research files on GitHub. Figures to {date}.", { date: document.body.dataset.dataTo || t("the end of August 2026") })}</p>`;
+    <p class="note-small">${t("Data and text: CC BY 4.0, credit \"Follow the Money: Ukraine\". Every figure has its sources in the country breakdown and in the research files on GitHub. Figures to {date}.", { date: document.body.dataset.dataTo || t("the end of August 2026") })}</p>`;
 }
 function wireData(root) {
   const all = () => tableRows(Object.values(DATA)).sort((a, b) => a.iso3.localeCompare(b.iso3));
   const tag = `${state.year === 2021 ? "2021" : "2022-" + state.year}${custom() ? "_custom-mix" : ""}`;
   const f = root.querySelector("#dl-full"), p = root.querySelector("#dl-parts");
-  if (f) f.onclick = () => download(csvFull(all()), `follow-the-money-ukrainian-aid_full_${tag}.csv`);
-  if (p) p.onclick = () => download(csvParts(all()), `follow-the-money-ukrainian-aid_parts_${tag}.csv`);
+  if (f) f.onclick = () => download(csvFull(all()), `follow-the-money-ukraine_full_${tag}.csv`);
+  if (p) p.onclick = () => download(csvParts(all()), `follow-the-money-ukraine_parts_${tag}.csv`);
 }
 // which parts of each country rest on reported, estimated or missing data (moved here from the old Top lists panel)
 function coverageHtml(rows) {
@@ -72,7 +72,7 @@ const r4 = v => (v == null || Number.isNaN(v) ? null : +v.toFixed(4));
 function csvFull(rows) {
   const head = ["iso3", "country", "period", "net_of_flowback",
     "support_ukraine_eur_bn", "support_ukraine_low_eur_bn", "support_ukraine_high_eur_bn", "support_ukraine_pct_gdp", "support_ukraine_certainty", "support_ukraine_direction_uncertain",
-    "kept_from_russia_eur_bn", "kept_from_russia_low_eur_bn", "kept_from_russia_high_eur_bn", "kept_from_russia_pct_gdp", "kept_from_russia_certainty", "kept_from_russia_direction_uncertain", "of_which_gas_cut_by_russia_eur_bn",
+    "business_with_russia_reduced_eur_bn", "business_with_russia_reduced_low_eur_bn", "business_with_russia_reduced_high_eur_bn", "business_with_russia_reduced_pct_gdp", "business_with_russia_reduced_certainty", "business_with_russia_reduced_direction_uncertain", "of_which_gas_cut_by_russia_eur_bn",
     "russian_money_frozen_eur_bn_net_only", "russian_money_frozen_low_eur_bn_net_only", "russian_money_frozen_high_eur_bn_net_only", "russian_money_frozen_pct_gdp_net_only",
     "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person", "net_shift_certainty", "net_shift_direction_uncertain",
     "refugees_hosted_not_counted_co_belligerent_eur_bn",

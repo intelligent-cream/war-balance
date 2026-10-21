@@ -174,13 +174,13 @@ home: about EUR 0.1–0.2bn a year in total, before and after the war, and the c
 ## Frozen central-bank reserves (round 7)
 
 **Round 16 (review 5 H4, approved by the owner): a line of its own, added to the net only.** The return Russia lost
-on its frozen reserves is not a payment, so it is no longer inside the money kept from Russia: not on that map,
+on its frozen reserves is not a payment, so it is no longer inside business with Russia: not on that map,
 in its ranking or in its world total. It is a third line, **"Russian money frozen"**, shown in the panel under the two
 numbers, in the table, the CSV and JSON downloads and [trace](../trace.md#frozen-russian-reserves), and added to the
 net only (`OWN_LINE` and `frozenLine()` in `index.html`; check 34). The net is therefore support for Ukraine plus the
-kept from Russia plus Russian money frozen. It is still not something the country gave Ukraine (what
+business with Russia plus Russian money frozen. It is still not something the country gave Ukraine (what
 Ukraine receives from this return, the G7 ERA loans, is already left out of donors' aid), so it is not in support for
-Ukraine either. Before (round 14, audit M6) it was its own line inside the money kept from Russia; it made up two-thirds of
+Ukraine either. Before (round 14, audit M6) it was its own line inside business with Russia; it made up two-thirds of
 Belgium's payments number (+1.86% → +0.62%; its net is unchanged at +2.81%).
 
 **The one-third host share (a judgement).** The freeze is an EU decision, taken by all members and renewed by
