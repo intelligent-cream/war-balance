@@ -602,6 +602,49 @@ Owner requests; no number changed (`audit_tmp/calc.js` for all 231 entries ident
    Same bar on the two tiles; a one-line key; each opened part gives its range in words. 3 new strings in all six
    languages.
 
+## Round 19: one place for every filter
+
+Owner requests (the interface); no number changed for the net, support for Ukraine or kept from Russia
+(`audit_tmp/calc.js` for all 231 entries identical before and after). Decisions:
+[round 19](decisions.md#round-19-one-place-for-every-filter).
+
+1. **Views in the Filters drawer.** A "Views" control at the top of the drawer: Map, Ranking, Ukraine vs Russia,
+   Table & data, Sources. How it works is no longer a view (`#view=how` opens Sources; the panel's link to its
+   waterfall now points to the method on the bars and to Sources); `views2.js` now holds the table. The Top lists
+   (the drawer's section, its button and the "Top lists" panel) are gone: `#c=RANKINGS` opens the Ranking view.
+2. **Filters only in the drawer.** The group and "small economies" chips are gone from the Ranking, Ukraine vs Russia
+   and Table & data views; each view follows the drawer live and shows a one-line summary with a link to it.
+3. **A persistent drawer.** It stays open until it is closed: map moves, view switches, filter changes and country
+   clicks leave it open. Desktop: on the left, above everything, beside the country panel on the right. Phones: a
+   bottom sheet at a chosen height (half, nearly full, or its handle; drag or tap the handle), shrinking to its handle
+   when a country opens. Open state and height kept in sessionStorage. The map layers are switched off, with a note,
+   outside the Map view.
+4. **No cost view.** "The map shows": Net, Support for Ukraine, Kept from Russia. Removed: the cost button, colours,
+   legend words, ranking lists, compare rows, the panel's "What it cost" fold (money flowing back has its own fold),
+   the hover card's cost, the highlight caveat's and the Sources flows' cost wording. `lens=cost` opens the net. The
+   cost stays in the full data CSV, labelled. The taken-by-Russia note: "Russia took €X from companies of this country
+   (seizures and forced sales); not in the totals".
+5. **No quick buttons** "€ to Ukraine" and "Change in € to Russia".
+6. **The measure in the country panel.** Per person or total €: the big number, tiles and bars in that measure, with
+   % of GDP as the second line.
+7. **The drawer's order**: views; the map shows; measure; what's counted; where and when; map layers; find a country;
+   display.
+8. **Table & data rebuilt** (`views2.js`): one row per country in the filter; grouped, sortable columns (net, support
+   for Ukraine, kept from Russia, Russian money frozen, each with likely range and letter; GDP; population; main
+   parts) in the drawer's measure; sticky header and country column; its own scroll box. "Download CSV" and "Download
+   JSON" export exactly what is shown; "Full data (CSV)", "CSV with every part" and data.json give everything. The data
+   gaps by country moved here from the old Top lists panel.
+9. **Sources.** Four sources cited only in panel notes are now in the Sources view (gas cut-offs, the UN resolution on
+   Belarus, the Dangote refinery, the Hormuz crisis), so it lists all 66. Each country panel ends with an unfolded
+   Sources section of every source used for its figures.
+10. **Highlights** unchanged, apart from the taken-by-Russia caveat's wording.
+11. **Strings**: 40 new strings in all six languages; 271 entries no longer used anywhere in the site removed from each
+    dictionary.
+12. **Checks**: check 31 now asserts the three views, `lens=cost` → net, the Views list in the drawer, no How it works
+    view, `#c=RANKINGS` → Ranking, a drawer closed only by its own controls and kept in sessionStorage, no filter
+    controls in the views and no cost wording in the site's text; check 29 counts the Ranking view's rule
+    (`uncertain(m.c, y, hq)`) where the Top lists' ranking used to be; check 25's wording no longer names a cost view.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open
