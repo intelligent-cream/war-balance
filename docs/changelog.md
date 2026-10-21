@@ -579,6 +579,29 @@ v2's separate Rankings page (the Ranking view and the drawer's top ten cover it)
 proposed "poorer importer" rule (not approved; the round-14 fairness note stays) and the full per-flow decision lists
 (each part links to its decisions section and the log).
 
+## Round 18: the streams on phones and a visual country panel
+
+Owner requests; no number changed (`audit_tmp/calc.js` for all 231 entries identical before and after). Decisions:
+[round 18](decisions.md#round-18-the-streams-on-phones-and-a-country-panel-of-numbers-and-bars).
+
+1. **Streams on phones.** The cause: off by default under 900px with the switch below the fold of the Filters sheet; a
+   tapped country's streams drawn behind the bottom sheet; the moving dashes repainting the whole map SVG each frame.
+   Now on by default on phones too, with the 7 largest each way and thinner lines; a tapped country's streams move
+   into view above the sheet; a phone held sideways gets a side sheet; the dashes have their own layer and pause while
+   the page is hidden or the map is dragged; the idle canvas loop is gone; the reduced-motion arrowheads keep their
+   size when zoomed.
+2. **The country panel, numbers first.** The name only on top; the net as one big number with one compact line; the
+   two parts as two tiles (and Russian money frozen as a slim third); small flags for what changes the meaning; the 7
+   biggest parts as a diverging bar chart. Every sentence opens in place on a tap; the code, people and GDP are in a
+   folded "About" section. 20 new strings in all six languages; 3 obsolete ones removed.
+3. **The likely range on the bars.** The cause of the "not always there" range: the chart's scale ignored the ranges,
+   so 65% of the shown parts had their range outline cut off at the chart edge; 20 ranges were under 4 px wide; the
+   tiles drew none. Each bar is now a gradient plot ([Correll & Gleicher 2014](https://graphics.cs.wisc.edu/Papers/2014/CG14/Error%20Bars%20Considered%20Harmful%20Exploring%20Alternate%20Encodings%20for%20Mean%20and%20Error.pdf);
+   Newman & Scholl 2012, *Psychonomic Bulletin & Review* 19(4):601–607): solid to the low end ("at least"), a fade to
+   the high end ("could be up to"), a dark tick at the best estimate; a range across zero is a faint fade both ways.
+   Same bar on the two tiles; a one-line key; each opened part gives its range in words. 3 new strings in all six
+   languages.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open
