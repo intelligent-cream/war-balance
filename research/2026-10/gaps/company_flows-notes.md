@@ -12,7 +12,7 @@ Units are EUR bn, nominal, as low / central / high (~90% range). 2026 means Janu
 
 Scripts are in the round-5 scratch folder `company_flows/scripts/build.py`. Downloads (Bank of Russia BoP files, the KSE PDF) are in `company_flows/dl/`.
 
-**How the map uses the exit payments and seizures (round 14b, raised by the owner):** the exit contribution, the forced discount and the seizures are **not in the totals**. They are a loss imposed on the country's companies and a gain for Russia, not money the country chose to move, so the map counts them in the cost view as a cost carried (`taken` in `site/data.json`) and shows them apart in the panel, the table and as a map marker. Rounds 5–14 counted the contribution and the discount in the net (round 14 added seizures). See [`docs/decisions.md`](../../../docs/decisions.md#round-14b-taken-by-russia-not-in-the-totals).
+**How the map uses the exit payments and seizures (round 14b, raised by the owner):** the exit contribution, the forced discount and the seizures are **not in the totals**. They are a loss imposed on the country's companies and a gain for Russia, not money the country chose to move, so the map counts them in the cost view as a cost carried (`taken` in `site/data.json`) and shows them apart in the panel, the table and as a map marker. Rounds 5–14 counted the contribution and the discount in the net (round 14 added seizures). See [`docs/decisions.md`](https://intelligent-cream.github.io/follow-the-money-ukraine/#view=how&sec=cl-why).
 
 ## 1. Exit payments (item 18)
 

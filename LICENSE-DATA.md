@@ -1,6 +1,6 @@
 # Data licence
 
-The data and text in this repository (`site/data.json`, everything in `research/` and `docs/`) are licensed under the
+The data and text in this repository (`site/data.json`, `site/content/`, everything in `research/` and `docs/`) are licensed under the
 **Creative Commons Attribution 4.0 International licence (CC BY 4.0)**: https://creativecommons.org/licenses/by/4.0/
 
 You may share and adapt them for any purpose, including commercially, as long as you give credit

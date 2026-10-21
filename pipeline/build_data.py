@@ -35,7 +35,7 @@ TARIFF_WAIVER = EU27 | {"GBR", "CAN"}
 # and their -notes.md; not yet reviewed by a person). The research files keep their old values: each proposals file is
 # applied by one overlay, apply_assumptions_r11_<file>(), when the research file it changes is loaded (load(), the same
 # way as the round-7 actuals), or by a commented constant below. Proposals that were left out, and why, are listed in
-# docs/decisions.md (assumptions backed by data, round 11)
+# site/content/changelog.md (assumptions backed by data, round 11)
 R11 = {k: json.loads((GAPS / f"assumptions_r11_{k}.json").read_text()) for k in ("gain", "rules", "hubs", "people")}
 _B3 = ("low", "central", "high")
 # which countries each proposals file changed: their series get the round-11 source (attach_r11_sources)
@@ -56,7 +56,7 @@ EU_ARMS_RANGE = {"SWE": (0.25 / 0.28, 0.30 / 0.28), "other": (0.0, 0.10 / 0.03)}
 # what a loan costs the lender (cost view only), as a share of face value. Round 11 (rules): Kiel's loan terms
 # discounted at the lender's own funding rate, with an expected loss, weighted by face value over the loan items
 # outside the Ukraine Support Loan defence window: 0.09 / 0.26 / 0.47 (was 0.3, judgement); the middle is used.
-# Round 12: every loan in loans_value.json now has its own lender's cost (loan_rates.py, docs/method/loans.md); this
+# Round 12: every loan in loans_value.json now has its own lender's cost (loan_rates.py, site/content/method/loans.md); this
 # average is only used for loan amounts moved by later corrections (move_loan)
 LOAN_GRANT_ELEMENT = 0.26
 # import duties given up on purchases from Ukraine (cost view only), share of purchases, per year 2021-2026. Round 11
@@ -174,7 +174,7 @@ def apply_assumptions_r11_hubs(name: str, d: dict) -> dict:
     elif name == "energy.json":
         # the model's laundered oil for these registries is refiners' (India, Türkiye, China, UAE) HS 2710 exports to
         # them, as the refiners report them: bunkers sold to ships under their flag. Malta keeps what its own customs
-        # record from those refiners (in the model's band, x0.76 / x1.43; judgement, docs/decisions.md, constants)
+        # record from those refiners (in the model's band, x0.76 / x1.43; judgement, site/content/changelog.md, constants)
         for iso3 in R11_FLAG_REGISTRIES:
             lo = (d["countries"].get(iso3) or {}).get("laundered_oil")
             if not lo:
@@ -370,7 +370,7 @@ EU_K_OLD = {2021: 0.70, 2022: 0.47, 2023: 0.494, 2024: 0.60, 2025: 0.56, 2026: 0
 # and the single ratio the round-6 Brunei research used (laundered_r6.json), low, central, high
 R6_K_OLD = (0.42, 0.5, 0.6)
 # laundered oil can not exceed what an economy can use: capped at a share of GDP per year (middle, high); the fuel model
-# otherwise assigns fuel to ship registries and storage points (Marshall Islands, Liberia). Judgement (docs/decisions.md)
+# otherwise assigns fuel to ship registries and storage points (Marshall Islands, Liberia). Judgement (site/content/changelog.md)
 LAUNDERED_CAP = (0.01, 0.02)
 # round 11 (hubs): where the research measured what a territory can use, the cap is fuel use x the share made from
 # Russian crude elsewhere x crude content (Liberia, Togo, Malta, Panama; the Marshall Islands and Gibraltar keep 1%/2%)
@@ -1019,7 +1019,7 @@ def build() -> dict:
             if iso3 in EU27:
                 # the model's laundered oil for EU members is about 1.6 times the Russian crude Global Witness finds in
                 # EU imports (audit); corrected before resale, so what EU hubs pass on is corrected too
-                # 0.62 = 1 / 1.6 (audit-notes item 4); the 0.5-0.8 band is a judgement (docs/decisions.md, constants)
+                # 0.62 = 1 / 1.6 (audit-notes item 4); the 0.5-0.8 band is a judgement (site/content/changelog.md, constants)
                 for k, m in (("years", 0.62), ("years_lo", 0.5), ("years_hi", 0.8)):
                     laund[k] = [v * m for v in laund[k]]
             laundered[iso3] = laund
@@ -1439,7 +1439,7 @@ def build() -> dict:
     fix_artefacts(countries)
     baltic_transit(countries)
     # incentives.json (AI-guessed direction and threat scores) is no longer copied into data.json: its view was removed
-    # in round 8 and the site does not read the scores (round 11 audit; docs/method/incentives.md)
+    # in round 8 and the site does not read the scores (round 11 audit; site/content/method/incentives.md)
     # label only, the totals do not change: which part of each cut was required by sanctions, and which part of the fall
     # in purchases was gas that Russia cut off or that stopped with Ukrainian transit (sanctions_share.json)
     sanc = load(GAPS / "sanctions_share.json")
@@ -1500,7 +1500,7 @@ def build() -> dict:
         "Price levels of what was traded with Russia and Ukraine (2019-2021 = 1): each buyer's own customs unit values per fuel and for other goods, benchmark indices (CREA, World Bank, Eurostat), gas contract prices; oil at the Russian port (FOB), outliers screened",
         "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/prices-notes.md",
         "2026-10-19",
-        "prices.json, energy2.json price_index, gas_prices.json; freight from shipping-notes.md; see docs/method/prices.md",
+        "prices.json, energy2.json price_index, gas_prices.json; freight from shipping-notes.md; see How it works",
     )
     price_indices(countries)
     apply_narrow(countries, src)
@@ -1553,7 +1553,7 @@ def build() -> dict:
         "CREA: What the Hormuz crisis has cost fossil-fuel importers, March to August 2026 (Brent 35% above pre-crisis futures; diesel 59%, Asian LNG 75%)",
         "https://energyandcleanair.org/what-the-hormuz-crisis-has-cost-fossil-fuel-importers-march-to-august-2026/",
         "2026-10-19",
-        "the 2026 price spike came from the Hormuz crisis, not from this war; the money stays in, and the method band values 2026 at 2025 prices (docs/method/prices.md)",
+        "the 2026 price spike came from the Hormuz crisis, not from this war; the money stays in, and the method band values 2026 at 2025 prices (How it works)",
     )
     if "laund_off" in ALT:
         for c in countries.values():
@@ -1600,7 +1600,7 @@ def build() -> dict:
         f"<b>Research preview</b> · figures to {DATA_TO_TEXT}, updated {UPDATED_TEXT}. "
         "Compiled with AI assistance from public sources and not yet checked line by line against them by a person: treat the figures as unverified estimates. "
         "Every number has a likely range and sources; gaps are filled with estimates, never left at zero. "
-        'Every choice and its evidence: <a href="https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/docs/decisions.md">decisions</a>. '
+        'Every choice and its evidence: <a href="#view=how&sec=changelog">changelog</a>. '
         'Method and data: <a href="https://github.com/intelligent-cream/follow-the-money-ukraine">GitHub</a>. Corrections: <a href="https://www.reddit.com/user/Intelligent-Cream-14/">Reddit</a> or a GitHub issue.'
     )
     return {
@@ -1668,7 +1668,7 @@ def attach_r11_sources(countries: dict[str, dict], src: Sources) -> None:
             name,
             props[p]["sources"][s]["url"],
             R11[k].get("generated"),
-            f"proposals applied as listed in docs/decisions.md; see research/2026-10/gaps/assumptions_r11_{k}-notes.md",
+            f"proposals applied as listed in the changelog; see research/2026-10/gaps/assumptions_r11_{k}-notes.md",
         )
         links, seen = [], set()
         for q in props:
@@ -1933,7 +1933,7 @@ def own_index(iso3: str, name: str, band: str) -> list[float] | None:
                 out[i] = _fuel_composite(iso3, i, y, band)
     if iso3 == "TJK" and name == "fossil_all" and band != "central":
         # its 2021 band came from a fixed own-price ratio that cancels in the 2021 index (actuals_r7.json); +-3% is a
-        # judgement (docs/decisions.md, constants)
+        # judgement (site/content/changelog.md, constants)
         out[0] = s["2021"]["central"] / r * (0.97 if band == "low" else 1.03)
     return out
 
@@ -2155,12 +2155,12 @@ PRICE_SRC: list[str] = []
 NOWAR = json.loads((Path(__file__).resolve().parent.parent / "research/2026-10/gaps/energy_nowar.json").read_text())
 NW_IDX = NOWAR["nowar_index"]
 # 2026: the Strait of Hormuz closure was not caused by this war, so the no-war price is the actual world price
-# (decision, not a measured value: energy_nowar-notes.md left it open; docs/decisions.md, energy)
+# (decision, not a measured value: energy_nowar-notes.md left it open; site/content/changelog.md, energy)
 NW_WORLD_2026 = {"urals": "brent", "diesel_gasoil_products": "diesel_gasoil_products", "russian_coal": "newcastle",
                  "ttf": "ttf", "jkm": "jkm", "oil_formula_9m": "oil_formula_9m"}  # fmt: skip
 # gas contract formulas (weights on hub TTF, a 9-month oil formula and spot JKM); empty = fixed price, no windfall.
 # Contract types from energy_nowar-notes.md section 2 (Türkiye 70/30 from turkey_prices-notes.md); the mixed weights
-# (0.5, 0.7) and the default 0.75/0.25 are judgement calls, as the notes say (docs/decisions.md, constants)
+# (0.5, 0.7) and the default 0.75/0.25 are judgement calls, as the notes say (site/content/changelog.md, constants)
 GAS_FORMULA = {**{i: {"ttf": 1.0} for i in ("HUN", "SVK", "AUT", "DEU", "ITA", "CZE", "FRA", "NLD", "BEL", "CHE", "FIN",
                                             "POL", "SVN", "HRV", "ROU", "LVA", "LTU", "EST", "LUX", "GBR", "ESP", "PRT",
                                             "SWE")},
@@ -2396,7 +2396,7 @@ def apply_nowar_prices(countries: dict[str, dict], src: Sources) -> None:
         n = [nowar_ratio(iso3, i, "central", "central") * fuel_c[i] if y >= 2022 else 1.0 for i, y in enumerate(YEARS)]
         mul = [fs * v + (1 - fs) for v in n]
         # round 15 (method band, "2026 at 2025 prices"): the factor that values 2026's change at 2025's fuel prices
-        # instead of the Hormuz-crisis prices of 2026 (docs/method/prices.md)
+        # instead of the Hormuz-crisis prices of 2026 (site/content/method/prices.md)
         tr["p26"] = round(mul[4] / mul[5], 4) if mul[5] else 1.0
         # the no-war price's own range, as factors on the expected path (the site adds it to the range of the change)
         for suf, b in (("nrl", "low"), ("nrh", "high")):
@@ -2528,7 +2528,7 @@ def pre_war_trends(countries: dict[str, dict], src: Sources) -> None:
                 cen = (m["central"] if d.get("reliable") or not d.get("multiplier_ex_covid") else rebound) / r
                 mid.append(round(cen, 4))
                 # tiny or noisy series can give extreme fitted bounds: kept within 2.5 times the middle value (judgement,
-                # docs/decisions.md, constants)
+                # site/content/changelog.md, constants)
                 lo.append(round(max(cen / 2.5, min(m["low"] / r, cen, rebound / r)), 4))
                 hi.append(round(min(cen * 2.5, max(m["high"] / r, cen, rebound / r)), 4))
             put(obj, mid, lo, hi)
@@ -3238,7 +3238,7 @@ def apply_loans_value(countries: dict[str, dict], src: Sources) -> None:
     (6.7%), times one minus the expected loss of the lender's creditor class; high: the promised war yield of the payout
     year. Stored as yearly changes against face value, for the country's own aid and its share of EU-level aid. The cost
     view uses the lender's cost: the same terms and losses at the lender's own funding rate (round 12, was 26% of face).
-    New multilateral lending (IMF, World Bank, EBRD, CEB) is credited by shareholding. docs/method/loans.md"""
+    New multilateral lending (IMF, World Bank, EBRD, CEB) is credited by shareholding. site/content/method/loans.md"""
     lv = load(GAPS / "loans_value.json")
     sid = src.add(
         "loans_value",
@@ -3246,7 +3246,7 @@ def apply_loans_value(countries: dict[str, dict], src: Sources) -> None:
         "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
         lv.get("generated"),
         "gift = cheaper interest at Ukraine's 2021 rate (6.7%) plus the lender's measured expected loss; high: the war"
-        " yield of the payout year (15-40%); see docs/method/loans.md",
+        " yield of the payout year (15-40%); see How it works",
     )
     bands = (("c", "central"), ("l", "low"), ("h", "high"))
     for iso3, d in lv["countries"].items():
@@ -3382,10 +3382,10 @@ def apply_payment_agents(countries: dict[str, dict], src: Sources) -> None:
 
 # Belgian corporate tax on Euroclear's Russian-asset income, pledged to Ukraine and so already in Belgium's aid
 # (frozen_assets.json overlaps; 2024 and 2025 from frozen_assets-notes.md item 3; 2026 less than 2025, a guess:
-# docs/decisions.md, constants)
+# site/content/changelog.md, constants)
 BEL_EUROCLEAR_TAX = {2024: 1.7, 2025: 1.0, 2026: 0.5}
 # share of a clearing house's frozen-reserve return credited to its host; the rest goes to all EU members by their
-# share of EU-level aid, because the freeze is an EU decision (owner, round 7; judgement, docs/decisions.md)
+# share of EU-level aid, because the freeze is an EU decision (owner, round 7; judgement, site/content/changelog.md)
 HOST_SHARE = 1 / 3
 
 
@@ -3395,7 +3395,7 @@ def apply_frozen_reserves(countries: dict[str, dict], src: Sources) -> None:
     Money Russia did not get, so it counts toward Ukraine on the Russia balance. Euroclear (Belgium) and Clearstream
     (Luxembourg): a third to the host, two thirds to all EU members; Belgium's tax on that income, already in its aid,
     is taken off first. The low end allows for Russia having spent part of the reserves without a freeze (x0.8; the
-    notes guess 10-30%, frozen_assets-notes.md; judgement, docs/decisions.md).
+    notes guess 10-30%, frozen_assets-notes.md; judgement, site/content/changelog.md).
     Private sanctioned assets are left out (private money, much of it earning nothing)."""
     fa = load(GAPS / "frozen_assets.json")
     sid = src.add(
@@ -3446,7 +3446,7 @@ def apply_frozen_reserves(countries: dict[str, dict], src: Sources) -> None:
 
 def apply_remittances(countries: dict[str, dict], src: Sources) -> None:
     """Migrant workers' remittances from Russia (remittances.json, round 7): a marker, not in the totals (round 13b,
-    owner's decision after the round-13 audit; docs/decisions.md). They are individuals' wages, not a country's choice;
+    owner's decision after the round-13 audit; site/content/changelog.md). They are individuals' wages, not a country's choice;
     the money flows from Russia to the migrant's home; and the real gain over the migrant's alternatives is small and
     hard to measure. The marker is the change in what migrants sent from Russia against the level expected without the
     war (labour remittances; relocants' transfers stay out), per year, with its range: the reported range of what was
@@ -4235,7 +4235,7 @@ def fix_artefacts(countries: dict[str, dict]) -> None:
             t.pop("laundered", None)
     # Gibraltar: fuel bought to sell as bunkers to passing ships; the money comes from shipowners elsewhere. Like the
     # other resellers, it keeps a margin: 10% (5-30%) of its Russian fuel and of the fuel made from Russian crude
-    # (judgement, docs/decisions.md, constants)
+    # (judgement, site/content/changelog.md, constants)
     c_gib = countries.get("GIB") or {}
     for key, ks in (("to_rus", ("years", "years_lo", "years_hi")), ("laund", ("years", "years_lo", "years_hi"))):
         if t := c_gib.get(key):
@@ -4403,7 +4403,7 @@ def deflate_gold(countries: dict[str, dict]) -> None:
     bought since is gold, whose price rose to 2.7 times its 2019-2021 level by 2026: its mix index made the volume of
     gold look 1.3-3 times larger than it was. Each year's index becomes the value-weighted (harmonic) mix of the gold
     index on the gold share and the old index on the rest. The gold price rise itself is not counted, like any other
-    non-fuel price rise (docs/method/prices.md). The gold share is kept for apply_net_gain()."""
+    non-fuel price rise (site/content/method/prices.md). The gold share is kept for apply_net_gain()."""
     for iso3, c in countries.items():
         tr = c.get("to_rus")
         if not tr:
@@ -4850,7 +4850,7 @@ def eu_refiner_exports(countries: dict[str, dict], src: Sources, rid: str) -> No
         "EU refiners' fuel exports made from Russian crude: refinery export shares (round4a.json), CREA tracker crude volumes, each refiner's UN Comtrade HS 2710 exports by partner (2021)",
         "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=440&period=2021&cmdCode=2710&flowCode=X",
         "2026-10-19",
-        "the Russian crude in exported fuel is charged to the buyers, as for India and Türkiye; see docs/method/energy-and-laundered-oil.md",
+        "the Russian crude in exported fuel is charged to the buyers, as for India and Türkiye; see How it works",
     )
     hb = load(GAPS / "hub_buyers.json")["hubs"]
     named = {b for h in ("IND", "TUR", "ARE") for b in hb[h]["destination_shares"] if b != "other"}

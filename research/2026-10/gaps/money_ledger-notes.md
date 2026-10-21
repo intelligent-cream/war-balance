@@ -5,7 +5,7 @@ Scripts and downloads: `scratchpad/r6/money_ledger/` (`scripts/dump.py`, `build.
 
 ## 1. What this is
 
-The map's new rule ([roadmap Round 6 A](../../../docs/roadmap.md)) gives every country a balance **with Ukraine**: what it gave,
+The map's new rule ([roadmap Round 6 A](https://intelligent-cream.github.io/follow-the-money-ukraine/#view=how)) gives every country a balance **with Ukraine**: what it gave,
 minus what it earned from the war effort. To know what a country earned we first need to know **where every euro that reached
 Ukraine was actually spent**. This file is that ledger.
 

@@ -73,7 +73,7 @@ function rankInfo() {
     <p>${t("{measure}, {period}. Dot: middle estimate; line: likely range (data and model uncertainty given the method, about 90% by judgement). {n} countries; switch view and measure in Filters. Click a country for the breakdown.", { measure: measureText(), period: periodText(), n })}</p>
     ${state.lens === "net" ? `<p>${t("The net adds two different things: help given to Ukraine and reduced business with Russia. Much of what one country stopped buying, Russia sold to others.")}</p>` : ""}
     <p class="sub">${t("Scale is compressed (symmetric log) so small and large countries both stay readable; the axis labels give the true values.")}</p>
-    <p class="sub"><button class="linkbtn" data-goview="map">${t("Map")}</button> · <button class="linkbtn" data-goview="sources">${t("Sources and method")}</button></p>`;
+    <p class="sub"><button class="linkbtn" data-goview="map">${t("Map")}</button> · <button class="linkbtn" data-goview="how">${t("How it works")}</button></p>`;
 }
 function renderRanking(root) {
   // round 15: a headline number whose direction is uncertain (its likely range or a method-band alternative crosses
@@ -175,6 +175,6 @@ window.renderView = renderView;
 window.setView = setView;
 // "#view=rank", also combined with a country: "#view=rank&c=POL"; views that are gone open the nearest one (parseHash)
 const startView = parseHash().view;
-if (["rank", "sources"].includes(startView)) {
+if (["rank", "how"].includes(startView)) {
   const wait = setInterval(() => { if (Object.keys(DATA).length) { clearInterval(wait); setView(startView); } }, 100);
 }
