@@ -38,7 +38,7 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   height chosen (half the screen, nearly all of it, or just its handle; drag or tap the handle); opening a country
   shrinks it to its handle so the panel shows above it. Open or closed and the sheet's height are kept for the visit
   (sessionStorage). A dot on the button when anything differs from the default. Sections, in order: 1. **views**
-  (Map, Ranking, Ukraine vs Russia, Table & data, Sources) as one segmented control; 2. **the map shows** (Net,
+  (Map, Ranking, Sources; round 20 removed Ukraine vs Russia and Table & data) as one segmented control; 2. **the map shows** (Net,
   Support for Ukraine, Kept from Russia); 3. **measure** (% of GDP, per person, total €); 4. **what's counted**, folded
   by default (16 on/off switches with world totals, grouped toward Ukraine, kept from Russia and own line; "Showing
   the official numbers", or "Custom mix, not the official figures" with "Reset to the official numbers", also under
@@ -47,9 +47,11 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   a note and "Show the map") in the other views; 7. **find a country**; 8. **display**: light or dark, language.
   Removed in round 19: the cost view, the quick views "€ to Ukraine" and "Change in € to Russia" (the same as the map
   shows plus the measure), How it works and the Top lists (the Ranking view replaces them).
-- **Views read the drawer** (round 19): the Ranking, Ukraine vs Russia and Table & data views have no filter
-  controls of their own; each follows the drawer's view, measure, what's counted, region, group, size and year, live,
-  and says in one line what it shows ("Net (the sum) · % of GDP · EU · 2022–Aug 2026"), with a link to the drawer.
+- **Views read the drawer** (round 19): the views have no filter controls of their own; each follows the drawer's
+  view, measure, what's counted, region, group, size and year, live. Round 20 (owner): the Ranking is as clean as the
+  map: no title, summary line or notes above the chart; the header line says "Ranking: Net (the sum)" (or the part
+  shown) and its ⓘ holds what the dots, lines, measure and scale mean. Only the list of countries too close to call
+  stays, below the chart.
 - **Highlights**: seven chips; one highlights its countries (others dimmed) and shows a small closable fact card with
   its caveat.
 - **Country panel**: side panel on desktop, bottom sheet on phones (a side sheet on a phone held sideways); each
@@ -74,13 +76,15 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   used for the country's figures, numbered, with exact tables and links. The method flow is: panel → a part's bar →
   how it is calculated and why → that part's sources → Sources at the end of the panel → the Sources view.
 - **Other views**, from Filters or the tabs in the header line once one is open: **Ranking** (the drawer's number and
-  measure, with likely ranges), **Ukraine vs Russia**, **Table & data** (round 19, rebuilt: one row per country in the
+  measure, with likely ranges), and until round 20 **Ukraine vs Russia** and **Table & data** (round 19, rebuilt: one row per country in the
   filter; grouped, sortable columns for the net, support for Ukraine, kept from Russia and Russian money frozen, each
   with its likely range and letter, then GDP, population and the main parts; tabular numbers, a sticky header and
   country column, its own scroll box; "Download CSV" and "Download JSON" export exactly what is shown, and the full data
   (every country and number, every part, data.json) below; the data gaps by country, folded), and **Sources** (the
   method in four lines, how decisions are made, then every money flow with how, why, sources and research files; every
-  source in data.json is listed). How it works was a view until round 19; its content is in this documentation.
+  source in data.json is listed; since round 20 it ends with **Download the data**: "Full data (CSV)", "CSV with every
+  part", "Full data (JSON)" and the data gaps by country, folded). How it works was a view until round 19; its content
+  is in this documentation.
 
 The rest of this page is the early plan, kept for the record.
 

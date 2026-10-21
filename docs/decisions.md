@@ -659,6 +659,20 @@ then. Log: [round 19](decision-log.md#round-19-one-place-for-every-filter-21-oct
 | **Sources complete; a Sources section in every panel**: the Sources view now lists every source in data.json (four were only cited in panel notes: the gas cut-offs, the UN resolution on Belarus, the Dangote refinery and the Hormuz crisis); each country panel ends with a Sources section listing every source used for that country's figures, with links. The flow is: a part's bar → how it is calculated and why → that part's sources → the panel's Sources → the Sources view | data (the list) and judgement | owner | a reader should find every source from the number it is behind | display | `FLOWS` (`src`, `costParts`), `countryPanel()` |
 | **Highlights kept as they are** (the "taken by Russia" caveat now says the countries did not choose to move that money, instead of naming the cost view) | — | owner | the owner likes them | none | `HL` |
 
+## Round 20: three views
+
+The owner, after round 19 went live: "the ranking pages should be more clean like the map where you just click the (i)
+at the top to get the more information besides that you use the filter, remove the Ukraine vs Russia thing and the
+Table & data ... just keep the sources ranking and map to keep it simpler". **No number changed.** Log:
+[round 20](decision-log.md#round-20-three-views-21-october); steps: [changelog](changelog.md#round-20-three-views).
+
+| decision | data or judgement | raised by | why | effect | where |
+|---|---|---|---|---|---|
+| **Three views**: Map, Ranking, Sources. Ukraine vs Russia and Table & data are removed; `#view=bubbles` opens Ranking, `#view=table` opens Sources | judgement | owner | simpler | display | `VIEWS`, `OLD_VIEW` |
+| **The ranking as clean as the map**: no title, filter line or notes above the chart; the header line names it ("Ranking: Net (the sum)") and its ⓘ explains the dots, lines, measure, scale and what the net adds. The list of countries too close to call stays below the chart | judgement | owner | "more clean like the map" | display | `rankInfo`, `renderInfo` |
+| **Downloads move to Sources**: "Full data (CSV)", "CSV with every part", "Full data (JSON)" and the data gaps by country, at the end of the Sources view. The downloads of only the rows shown went with the table | judgement | owner (the table removed) | the data stay downloadable | downloads | `views2.js` |
+| **The one-line filter summary is gone** from the views; the Filters button's dot still shows when anything differs from the default | judgement | owner | filters live only in Filters | display | `filterSummary` removed |
+
 ## What is data and what is estimated
 
 - **Reported data** (certainty A–B): aid (Kiel), customs trade, fossil fuel payments (CREA), GDP, refugee counts.

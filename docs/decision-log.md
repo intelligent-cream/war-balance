@@ -280,3 +280,14 @@ no cost view. **No number changed** for the net, support for Ukraine or kept fro
 | **The measure in the country panel**: per person or total € for the big number, tiles and bars, % of GDP beside them | owner | the panel ignored the measure | display |
 | **Table & data rebuilt**, with downloads of exactly what is shown and the full data | owner | "needs a lot of work" | display; downloads |
 | **Every source listed**, in the Sources view and at the end of each country panel | owner | the method flow ends at the sources | display |
+
+## Round 20: three views (21 October)
+
+The owner asked for a simpler site after round 19 went live. **No number changed.** Details:
+[decisions](decisions.md#round-20-three-views); steps: [changelog](changelog.md#round-20-three-views).
+
+| decision | raised by | why | effect |
+|---|---|---|---|
+| **Three views**: Map, Ranking, Sources; Ukraine vs Russia and Table & data removed, their old links open Ranking and Sources | owner | simpler | display |
+| **The ranking as clean as the map**: its title in the header line, its explanation in the ⓘ | owner | "more clean like the map" | display |
+| **Downloads at the end of Sources**, with the data gaps by country | owner (the table removed) | the data stay downloadable | downloads |
