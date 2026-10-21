@@ -1,6 +1,6 @@
 # Changelog: research rounds
 
-The map's data were built in sixteen research rounds in October 2026, each followed by changes to the pipeline and the site. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
+The map's data were built in sixteen research rounds in October 2026, each followed by changes to the pipeline and the site; round 17 redesigned the site without changing a number. This page summarises what each round added or corrected and links to the method page that now explains it. The detailed log, with every file and decision, is [`research/2026-10/README.md`](../research/2026-10/README.md); individual corrections are in the commit history.
 
 ## Round 1
 
@@ -517,6 +517,67 @@ are % of a year's GDP, 2022 to August 2026, round 16 → round 16b.
    (was 38%, 18%, 43%); the "without what Russia cut off itself" band takes the crude out too (Poland's payments
    band 2.14 → 1.56 at the low end). Finland's last cargo (20 July 2022) confirmed on Neste's page.
 8. **`detail.json` failure** (N7): the page draws without the rebuilt alternatives and says so, instead of failing.
+
+
+## Round 17
+
+**Redesign: the map first (option B), 20 October 2026.** The owner chose option B of the first-view prototypes, with
+the country panel and highlights of prototype v2 and the "what's counted" switches of concept 2. Decisions:
+[decisions](decisions.md#round-17-redesign), [log](decision-log.md#round-17-redesign-the-map-first-20-october).
+**No number changed**: `calc()` with every part counted is the same code, and the model's output for all 231 entries
+is byte-identical before and after (check 32 still matches the browser with Node).
+
+1. **The first view**: the map fills the screen; on top only the research-preview banner as one slim line, one header
+   line with an ⓘ popover, a one-row legend ("More" opens the steps and keys) and two buttons, Highlights and Filters.
+   The control bar, the map title box, the hint and the zoom buttons are gone from the first view (zoom is in Filters).
+2. **The Filters drawer**, collapsed by default, holds everything that was in the bar, plus region, group and size
+   filters (shared by the map, the drawer's ranking and the Ranking, bubbles and table views), "€ to Ukraine" and
+   "Change in € to Russia", the rankings and top lists, the pages, the map layers, theme and language. A dot on the
+   button shows a change from the default.
+3. **One colour rule**: blue toward Ukraine, orange toward Russia, grey no clear change. "Direction uncertain" is grey
+   without dots; support below zero, the net of a country that mainly earned from the war effort, and a gain in the
+   cost view are grey (gold and the gold outline are gone); money flowing back is grey in the panel's bars.
+4. **"Kept from Russia"**, positive when the country paid Russia less than without the war, in every text, list,
+   download (`kept_from_russia_*` columns, a `kept_from_russia` object in the JSON, a `figures` column), share text,
+   card and OG description, and in all six languages; sentences say "paid Russia X less (or more) than without the
+   war". `lens=kept` opens the view. Check 31 now also checks the closed drawer, the two buttons and that no page text
+   says "change in payments to Russia".
+5. **Money streams** replace the gross flow lines as the default layer: blue to Kyiv sized by support for Ukraine in
+   €, orange to Moscow sized by how much more the country paid Russia than without the war in €, the map's own numbers;
+   the 12 largest each way; a country's own streams on hover or when picked; static arrows with reduced motion; off by
+   default on phones. The gross flow lines remain in Filters as "Gross trade flows", off by default. The map markers
+   (critical goods, wages from Russia, taken by Russia) are off by default too.
+6. **What's counted**: 16 switches in the drawer, with world totals. Every number recomputes; a yellow "Custom mix, not
+   the official figures" note with "Reset to the official numbers" shows wherever numbers do; custom mixes cannot be
+   shared and downloads name the parts switched off.
+7. **Highlights**: seven chips from prototype v2, worked out from the data, each with a fact card and its caveat;
+   `#hl=…` links to one.
+8. **The country panel**: headline sentence, total with range and certainty in words, the two parts in words, "What
+   changes the meaning here", the five biggest parts and all parts, each opening its method in place (how, why with
+   its decisions, this country's sources, method page, trace); everything else behind "Show more".
+9. **Sources view**: the method in four lines and how decisions are made on top; how and why for each flow.
+10. **Hover card**: two bars in words (support for Ukraine and kept from Russia), the net with its range, and the
+    orange caveat for orange countries ("mostly fuel buying, not siding with Russia"; weapons and troops, or sales to
+    Russia, where those are the main part).
+11. **Share cards and pages regenerated** (`pipeline/share_cards.mjs`) with the new name, the sign in words and the
+    one colour rule; check 24 passes on all 231 pages.
+12. **Too close to call is faded, not grey** (owner): a number whose likely range or method band crosses zero takes the
+    colour of its leaning direction mixed halfway toward the neutral grey, on the map, in the hover card's bars and in
+    the panel's big number; no dots, no outline; still not ranked and without a stream. Grey is now only no clear
+    change and the net of a country that mainly earned from the war effort. Legend, ⓘ and the panel's note say so in
+    all six languages; check 32 expects the faded colour. 61 countries on the default map change from grey to faded.
+13. **The Filters drawer in seven calm sections** (owner): the map shows and measure, find a country, what's counted
+    (folded), where and when, map layers, rankings and top lists, display; on/off switches, full-width segmented
+    controls, a sticky header and a bottom sheet on phones. No control removed.
+14. **The country panel, each number once** (owner): header with a lead in words and the net with its range; the two
+    parts once, with value, range and grade; at most four notes; the five biggest parts and the other parts; then
+    folded sections for cost, method band, markers, sanctions or own choice, per year, aid and companies, share and
+    sources. The net had appeared four times, each part up to six times; the duplicates are gone.
+
+**Not ported from the prototypes**: the bivariate map (replaced by the one colour rule), concept 2's workbench layout,
+v2's separate Rankings page (the Ranking view and the drawer's top ten cover it), option C's two maps, the prototypes'
+proposed "poorer importer" rule (not approved; the round-14 fairness note stays) and the full per-flow decision lists
+(each part links to its decisions section and the log).
 
 ## See also
 

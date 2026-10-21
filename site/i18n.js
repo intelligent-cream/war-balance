@@ -67,7 +67,7 @@ function applyStatic() {
   document.querySelectorAll("[data-i18n-ph]").forEach(el => el.setAttribute("placeholder", t(el.dataset.i18nPh)));
   document.querySelectorAll("[data-i18n-title]").forEach(el => el.setAttribute("title", t(el.dataset.i18nTitle)));
   const brand = document.getElementById("brand");
-  if (brand) brand.innerHTML = `${t("Follow the Money: Ukrainian Aid")}<span>${t("change since before the war")}</span>`;
+  if (brand) brand.textContent = t("Follow the Money: Ukrainian Aid");
   const sel = document.getElementById("lang");
   // the picker's label is read out in the chosen language and in English, so it can be found from any language
   if (sel) sel.setAttribute("aria-label", LANG === "en" ? "Language" : `${t("Language")} (Language)`);
