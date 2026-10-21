@@ -154,10 +154,10 @@ button, input, select { font: inherit; color: inherit; }
 /* the light blues and oranges of dark mode take dark text; light mode's orange is darkened for white text (4.5:1 either way) */
 .seg button[data-lens="support"][aria-pressed="true"] { background: var(--ukr); color: var(--on-accent); }
 .seg button[data-lens="payments"][aria-pressed="true"], .seg button[data-lens="net"][aria-pressed="true"] { background: linear-gradient(90deg, var(--rus-text), var(--ukr)); color: var(--on-accent); }
-/* round 15: direction uncertain (the likely range or the method band crosses zero): a dotted fill, not ranked */
+/* round 15: direction uncertain (the likely range or the method band crosses zero): a dotted fill, not ranked. Round 17
+   (owner): no dots and no outline; the map paints it a faded colour of its leaning direction (scaleFor().fadedFor) */
 .unc-dot { fill: var(--ink-soft); fill-opacity: 0.55; }
 .unc-bg { fill: var(--mid); }
-.country.uncertain { stroke-dasharray: 2 2; }
 .warn-line { display: block; margin-top: 4px; color: var(--ink); }
 .unc-tag { display: inline-block; font-size: 11px; border: 1px dashed var(--ink-soft); border-radius: 4px; padding: 0 4px; margin-left: 6px; color: var(--ink-soft); vertical-align: 1px; white-space: nowrap; }
 .seg button[data-lens="cost"][aria-pressed="true"] { background: var(--ukr); color: var(--on-accent); }
@@ -184,12 +184,35 @@ button, input, select { font: inherit; color: inherit; }
 .wf-row .track .axis { position: absolute; top: -2px; bottom: -2px; width: 1px; background: var(--ink-soft); opacity: 0.6; }
 .wf-row .track .seg2 { position: absolute; top: 4px; bottom: 4px; border-radius: 2px; }
 .country.earner-line { stroke: #bfa233; stroke-width: 1.6px; vector-effect: non-scaling-stroke; }
-.balances { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0 4px; }
-.balances .bal { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
-.balances .bal .lbl { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); }
-.balances .bal .num { font-family: var(--font-data); font-size: 19px; font-weight: 600; margin: 2px 0; }
-.balances .bal.pos .num { color: var(--ukr); } .balances .bal.neg .num { color: var(--rus-text, var(--rus)); } .balances .bal.earn .num { color: var(--back); }
-.balances .bal .s { font-size: 11.5px; color: var(--ink-soft); line-height: 1.35; }
+/* round 17 (owner: a cleaner panel): the two parts, each once, side by side (stacked on phones) */
+.parts2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.p2 { border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; min-width: 0; }
+.p2h { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-soft); }
+.p2v { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin: 3px 0 2px; }
+.p2v .num { font-family: var(--font-data); font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.p2v .eur { font: 12px var(--font-data); color: var(--ink-soft); }
+.p2 .tbar { position: relative; height: 6px; background: var(--sea); border-radius: 2px; margin: 4px 0 6px; display: block; }
+.p2 .tbar span { position: absolute; top: 0; bottom: 0; border-radius: 2px; }
+.p2 .tbar .z { left: 50%; width: 1px; background: var(--ink-soft); }
+.p2 .s { font-size: 12px; color: var(--ink-soft); line-height: 1.38; }
+.p2 .s + .s { margin-top: 3px; }
+.p2 .rng { font-size: 11.5px; margin-top: 5px; }
+.total .lead { margin-bottom: 14px; }
+.parts2 + .note { margin-top: 10px; }
+.info-i { cursor: help; }
+/* the second layer: one folded section per subject, the same row style */
+.pfolds { margin-top: 6px; }
+details.pfold { border-top: 1px solid var(--line); padding: 0; }
+details.pfold > summary { list-style: none; display: flex; justify-content: space-between; align-items: center; padding: 11px 0; }
+details.pfold > summary::-webkit-details-marker { display: none; }
+details.pfold > summary::after { content: "▾"; font-size: 12px; transition: transform .2s; }
+details.pfold[open] > summary::after { transform: rotate(180deg); }
+details.pfold[open] > summary { margin-bottom: 0; }
+.pfold-body { padding: 0 0 14px; }
+.pfold-body > .note:first-child, .pfold-body > .range-txt:first-child { margin-top: 0; }
+.sub-sec { margin-top: 14px; }
+.sub-sec h4 { font-size: 13px; font-weight: 600; margin: 0 0 6px; }
+@media (max-width: 560px) { .parts2 { grid-template-columns: 1fr; } }
 .wf-row.total { font-weight: 600; padding-top: 6px; border-top: 1px solid var(--line); }
 .costs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
 .costs > div { border: 1px solid var(--line); border-radius: 8px; padding: 8px 9px; min-width: 0; }
@@ -450,10 +473,41 @@ details.info > summary::-webkit-details-marker { display: none; }
 .tooltip .r { color: var(--ink-soft); font-size: 12px; margin-top: 3px; }
 .tooltip .cav { font-size: 12px; border-left: 3px solid var(--rus); padding-left: 6px; margin-top: 4px; }
 /* the Filters drawer */
-.drawer { position: absolute; z-index: 30; top: 0; right: 0; bottom: 0; width: 390px; max-width: 100%; background: var(--surface); border-left: 1px solid var(--line); overflow: auto;
-  padding: 12px 16px calc(24px + env(safe-area-inset-bottom, 0px)); box-shadow: -8px 0 24px rgba(0,0,0,.25); font-size: 13.5px; }
-.dhead { position: relative; }
-.dhead h2 { font-family: var(--font-display); font-size: 17px; margin: 0 0 8px; }
+.drawer { position: absolute; z-index: 30; top: 0; right: 0; bottom: 0; width: 380px; max-width: 100%; background: var(--surface); border-left: 1px solid var(--line); overflow: auto;
+  padding: 0 18px calc(24px + env(safe-area-inset-bottom, 0px)); box-shadow: -8px 0 24px rgba(0,0,0,.25); font-size: 13.5px; overscroll-behavior: contain; }
+.dhead { position: sticky; top: 0; z-index: 2; background: var(--surface); margin: 0 -18px; padding: 14px 18px 10px; border-bottom: 1px solid var(--line); }
+.dhead h2 { font-family: var(--font-display); font-size: 17px; margin: 0; }
+.drawer .dhead .close { top: 10px; right: 12px; }
+.dhead .grab { display: none; }
+/* round 17 (owner: the drawer "can look better"): one section per job, the same heading, spacing and left edge */
+.dblock { padding: 14px 0 16px; border-bottom: 1px solid var(--line); }
+.dblock:last-child { border-bottom: 0; }
+.drawer .dsec { font: 600 11px var(--font-data); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); margin: 0 0 10px; }
+.dsec label { cursor: pointer; }
+.dlbl { font-size: 12px; font-weight: 600; color: var(--ink-soft); margin: 12px 0 6px; }
+.drawer .sub { margin: 8px 0 0; line-height: 1.45; }
+.seg.seg-grid { display: grid; width: 100%; }
+.seg-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.seg-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.drawer .seg.seg-grid button { white-space: normal; line-height: 1.2; padding: 7px 4px; text-align: center; min-height: 36px; }
+.drawer .search input { width: 100%; padding: 8px 11px; border: 1px solid var(--line); border-radius: 6px; background: var(--sea); color: var(--ink); font-size: 14px; }
+.dfold > summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.dfold > summary::-webkit-details-marker { display: none; }
+.dfold > summary::after { content: "▾"; color: var(--ink-soft); font-size: 12px; transition: transform .2s; }
+.dfold[open] > summary::after { transform: rotate(180deg); }
+.dfold > summary .dsec { margin: 0; }
+.dfold[open] > summary { margin-bottom: 8px; }
+.dblock > .dfold:not(:first-child) { margin-top: 10px; }
+.dblock > .dfold:not(:first-child) > summary { font-size: 13px; color: var(--ink); }
+#dcustom .sub { margin-top: 6px; }
+/* on/off switches for what's counted and the map layers */
+.drawer .tog input, .drawer .toggle input { appearance: none; -webkit-appearance: none; width: 30px; height: 18px; border-radius: 9px; background: var(--mid); position: relative; cursor: pointer; flex: none; margin: 0; transition: background .15s; }
+.drawer .tog input::after, .drawer .toggle input::after { content: ""; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: var(--surface); box-shadow: 0 1px 2px rgba(0,0,0,.3); transition: left .15s; }
+.drawer .tog input:checked, .drawer .toggle input:checked { background: var(--ukr); }
+.drawer .tog input:checked::after, .drawer .toggle input:checked::after { left: 14px; }
+.drawer .tog input:focus-visible, .drawer .toggle input:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.drawer .tog { grid-template-columns: 30px minmax(0, 1fr) auto; gap: 10px; padding: 6px 0; }
+.drawer .theme-btn { width: auto; padding: 0 10px; gap: 6px; display: inline-flex; align-items: center; font-size: 13px; }
 .drow { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
 .drow .search { flex: 1 1 160px; }
 .drow .search input { width: 100%; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--sea); font-size: 13px; }
@@ -481,24 +535,30 @@ details.info > summary::-webkit-details-marker { display: none; }
 .tog input { margin: 0; accent-color: var(--ukr); width: 16px; height: 16px; }
 .tog .v { font: 12px var(--font-data); text-align: right; white-space: nowrap; }
 .tog.off > span:not(.v) { text-decoration: line-through; opacity: .55; }
-.tog-h { font-size: 12.5px; font-weight: 600; margin: 10px 0 2px; }
+.tog-h { font-size: 12.5px; font-weight: 600; margin: 14px 0 2px; }
 .drk { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 2px 8px; font-size: 13px; margin-top: 6px; }
 .drk .i { font: 11.5px var(--font-data); color: var(--ink-soft); text-align: right; }
 .drk .v { font: 12px var(--font-data); text-align: right; white-space: nowrap; }
 .drk button { border: 0; background: transparent; padding: 0; text-align: left; cursor: pointer; color: var(--ink); font: inherit; }
 .drk button:hover { text-decoration: underline; }
 .dbtns { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0 6px; }
-.views.pages { display: flex; flex-wrap: wrap; border-radius: 8px; }
-.toggles { display: grid; gap: 6px; }
-.toggle { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink); cursor: pointer; white-space: normal; min-height: 26px; }
+.views.pages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-radius: 6px; width: 100%; }
+.views.pages button { white-space: normal; line-height: 1.2; padding: 7px 4px; font-size: 12.5px; text-align: center; border-top: 1px solid var(--line); }
+.views.pages button:nth-child(-n+3) { border-top: 0; }
+.views.pages button:not(:nth-child(3n+1)) { border-left: 1px solid var(--line); }
+.toggles { display: grid; gap: 4px; }
+.toggle { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink); cursor: pointer; white-space: normal; min-height: 30px; }
 .toggle input { accent-color: var(--ukr); width: 16px; height: 16px; flex: none; }
-.zoom { display: flex; gap: 6px; margin: 10px 0 4px; flex-wrap: wrap; }
+.zoom { display: flex; gap: 6px; margin: 12px 0 0; flex-wrap: wrap; }
 .zoom .btn { min-width: 34px; }
 /* the country panel (round 17): headline, total, the two parts, what changes the meaning, the parts with their method */
 .panel { top: 54px; }
 .lead { font-size: 15px; line-height: 1.45; margin: 0; }
 .total .n { font-family: var(--font-display); font-weight: 800; font-size: 32px; line-height: 1.05; font-variant-numeric: tabular-nums; }
 .total .n.pos { color: var(--ukr); } .total .n.neg { color: var(--rus); } .total .n.mid { color: var(--ink); }
+/* round 17 (owner): too close to call, in the faded colour of its leaning direction; text fades toward the soft ink, not the
+   map's grey, so the big number keeps its contrast */
+.total .n.fpos { color: color-mix(in srgb, var(--ukr) 50%, var(--ink-soft)); } .total .n.fneg { color: color-mix(in srgb, var(--rus) 50%, var(--ink-soft)); }
 .total .u { font-size: 14px; font-weight: 600; margin-left: 6px; }
 .meaning { background: var(--warn-bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
 .meaning h3 { margin: 0 0 6px; }
@@ -521,10 +581,7 @@ details.part .pv small { display: block; font-size: 10.5px; color: var(--ink-sof
 .mcard .lbl2 { font: 500 10.5px var(--font-data); text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); margin: 8px 0 3px; }
 .mcard ol { margin: 0 0 6px; padding-left: 18px; }
 .mcard .links, .method-top .links { display: flex; flex-wrap: wrap; gap: 4px 14px; }
-details.allparts > summary, details.showmore > summary { cursor: pointer; font-weight: 600; font-size: 13.5px; color: var(--ukr); padding: 6px 0; }
-details.showmore { border-top: 1px solid var(--line); padding-top: 6px; }
-details.showmore[open] > summary { margin-bottom: 12px; }
-details.showmore .panel-body { padding: 0; }
+details.allparts > summary { cursor: pointer; font-weight: 600; font-size: 13.5px; color: var(--ukr); padding: 6px 0; }
 .grp { font: 500 11px var(--font-data); text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); margin: 12px 0 4px; }
 .share-off { font-size: 12.5px; color: var(--ink-soft); }
 /* Sources view: the method in four lines on top, and how and why for each flow */
@@ -548,7 +605,10 @@ details.showmore .panel-body { padding: 0; }
   .legend .legend-toggle, .legend .more { display: none; }
   .hlpanel { top: auto; bottom: calc(52px + env(safe-area-inset-bottom, 0px)); right: 8px; }
   .fact { left: 8px; right: 8px; max-width: none; bottom: calc(52px + env(safe-area-inset-bottom, 0px)); }
-  .drawer { position: fixed; inset: 0; width: 100%; z-index: 60; }
+  /* a bottom sheet on phones: the map stays visible above it; the header with the close button stays put */
+  .drawer { position: fixed; inset: auto 0 0 0; top: 7vh; width: 100%; z-index: 60; border-left: 0; border-radius: 14px 14px 0 0; box-shadow: 0 -10px 30px rgba(0,0,0,.35); padding: 0 16px calc(24px + env(safe-area-inset-bottom, 0px)); }
+  .dhead { margin: 0 -16px; padding: 18px 16px 10px; }
+  .dhead .grab { display: block; position: absolute; top: 6px; left: 50%; width: 36px; height: 4px; margin-left: -18px; border-radius: 2px; background: var(--line); }
   /* the bottom sheet covers the legend and the two buttons while it is open */
   .panel { top: auto; z-index: 25; }
   .tr .btn { font-size: 13px; padding: 5px 9px; }
@@ -604,71 +664,96 @@ details.showmore .panel-body { padding: 0; }
 
     <!-- the Filters drawer, collapsed by default: everything that used to sit in the bar above the map -->
     <aside class="drawer" id="drawer" aria-labelledby="drawer-h" hidden>
-      <div class="dhead"><h2 id="drawer-h" data-i18n="Filters">Filters</h2><button class="close" id="dclose" aria-label="Close filters" data-i18n-aria="Close filters">×</button></div>
-      <div class="drow">
+      <!-- round 17 (owner: "can look better"): seven calm sections, most used first; what's counted and the top list fold -->
+      <div class="dhead"><span class="grab" aria-hidden="true"></span><h2 id="drawer-h" data-i18n="Filters">Filters</h2><button class="close" id="dclose" aria-label="Close filters" data-i18n-aria="Close filters">×</button></div>
+      <section class="dblock">
+        <h3 class="dsec" id="lens-h" data-i18n="The map shows">The map shows</h3>
+        <div class="seg seg-grid seg-4" role="group" aria-labelledby="lens-h">
+          <button data-lens="net" aria-pressed="true" data-i18n="Net (the sum)">Net (the sum)</button>
+          <button data-lens="support" aria-pressed="false" data-i18n="Support for Ukraine">Support for Ukraine</button>
+          <button data-lens="payments" aria-pressed="false" data-i18n="Kept from Russia">Kept from Russia</button>
+          <button data-lens="cost" aria-pressed="false" data-i18n="Cost to the country">Cost to the country</button>
+        </div>
+        <p class="sub" id="lens-note"></p>
+        <p class="dlbl" id="measure-h" data-i18n="Measure">Measure</p>
+        <div class="seg seg-grid seg-3" role="group" aria-labelledby="measure-h">
+          <button data-measure="gdp" aria-pressed="true" data-i18n="% of GDP">% of GDP</button>
+          <button data-measure="pp" aria-pressed="false" data-i18n="Per person">Per person</button>
+          <button data-measure="total" aria-pressed="false" data-i18n="Total €">Total €</button>
+        </div>
+        <div class="quick"><button class="chipbtn" data-quick="ua" aria-pressed="false" data-i18n="€ to Ukraine">€ to Ukraine</button><button class="chipbtn" data-quick="ru" aria-pressed="false" data-i18n="Change in € to Russia">Change in € to Russia</button></div>
+      </section>
+      <section class="dblock">
+        <h3 class="dsec"><label for="search" data-i18n="Find a country">Find a country</label></h3>
         <div class="search">
           <input id="search" list="country-list" placeholder="Find a country" aria-label="Find a country" data-i18n-ph="Find a country" data-i18n-aria="Find a country" autocomplete="off">
           <datalist id="country-list"></datalist>
           <span class="search-msg" id="search-msg" role="status"></span>
         </div>
-        <button class="btn theme-btn" id="theme" type="button" aria-label="Light or dark" data-i18n-aria="Light or dark" title="Light or dark" data-i18n-title="Light or dark"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button>
-        <label class="lang" title="Language" data-i18n-title="Language">🌐<select id="lang" aria-label="Language"></select></label>
-      </div>
-      <div id="dcustom"></div>
-      <p class="dsec" id="lens-h" data-i18n="The map shows">The map shows</p>
-      <div class="seg wrap" role="group" aria-labelledby="lens-h">
-        <button data-lens="net" aria-pressed="true" data-i18n="Net (the sum)">Net (the sum)</button>
-        <button data-lens="support" aria-pressed="false" data-i18n="Support for Ukraine">Support for Ukraine</button>
-        <button data-lens="payments" aria-pressed="false" data-i18n="Kept from Russia">Kept from Russia</button>
-        <button data-lens="cost" aria-pressed="false" data-i18n="Cost to the country">Cost to the country</button>
-      </div>
-      <p class="sub" id="lens-note"></p>
-      <p class="dsec" id="measure-h" data-i18n="Measure">Measure</p>
-      <div class="seg" role="group" aria-labelledby="measure-h">
-        <button data-measure="gdp" aria-pressed="true" data-i18n="% of GDP">% of GDP</button>
-        <button data-measure="pp" aria-pressed="false" data-i18n="Per person">Per person</button>
-        <button data-measure="total" aria-pressed="false" data-i18n="Total €">Total €</button>
-      </div>
-      <div class="quick"><button class="chipbtn" data-quick="ua" aria-pressed="false" data-i18n="€ to Ukraine">€ to Ukraine</button><button class="chipbtn" data-quick="ru" aria-pressed="false" data-i18n="Change in € to Russia">Change in € to Russia</button></div>
-      <p class="dsec" data-i18n="What's counted">What's counted</p>
-      <div id="counted"></div>
-      <p class="dsec" data-i18n="Countries and years">Countries and years</p>
-      <div class="flt">
-        <label for="f-region" data-i18n="Region">Region</label><select id="f-region"></select>
-        <label for="f-group" data-i18n="Group">Group</label><select id="f-group"></select>
-        <label for="f-size" data-i18n="Size">Size</label><select id="f-size"></select>
-        <label for="year" data-i18n="Up to">Up to</label>
-        <div class="year">
-          <button class="btn play" id="play" aria-label="Play 2022 to 2026">▶</button>
-          <input id="year" type="range" min="2021" max="2026" step="1" value="2026">
-          <output id="year-out" for="year" title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *)." data-i18n-title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).">2026 YTD</output>
+      </section>
+      <section class="dblock">
+        <details class="dfold" id="counted-fold">
+          <summary><span class="dsec" data-i18n="What's counted">What's counted</span></summary>
+          <div id="counted"></div>
+        </details>
+        <div id="dcustom"></div>
+      </section>
+      <section class="dblock">
+        <h3 class="dsec" data-i18n="Where and when">Where and when</h3>
+        <div class="flt">
+          <label for="f-region" data-i18n="Region">Region</label><select id="f-region"></select>
+          <label for="f-group" data-i18n="Group">Group</label><select id="f-group"></select>
+          <label for="f-size" data-i18n="Size">Size</label><select id="f-size"></select>
+          <label for="year" data-i18n="Up to">Up to</label>
+          <div class="year">
+            <button class="btn play" id="play" aria-label="Play 2022 to 2026">▶</button>
+            <input id="year" type="range" min="2021" max="2026" step="1" value="2026">
+            <output id="year-out" for="year" title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *)." data-i18n-title="2026 is year to date (January to August), not a full year. Where a source has not published 2026 yet, January to August is estimated from its 2025 monthly rate (marked *).">2026 YTD</output>
+          </div>
         </div>
-      </div>
-      <p class="dsec" data-i18n="Rankings and top lists">Rankings and top lists</p>
-      <div id="drank"></div>
-      <div class="dbtns"><button class="btn" id="open-rank" data-i18n="Top lists">Top lists</button></div>
-      <div class="views pages" role="group" aria-label="Pages" data-i18n-aria="Pages">
-        <button data-view="map" aria-pressed="true" data-i18n="Map">Map</button>
-        <button data-view="rank" aria-pressed="false" data-i18n="Ranking">Ranking</button>
-        <button data-view="bubbles" aria-pressed="false" data-i18n="Ukraine vs Russia">Ukraine vs Russia</button>
-        <button data-view="table" aria-pressed="false" data-i18n="Table &amp; data">Table &amp; data</button>
-        <button data-view="how" aria-pressed="false" data-i18n="How it works">How it works</button>
-        <button data-view="sources" aria-pressed="false" data-i18n="Sources">Sources</button>
-      </div>
-      <p class="dsec" data-i18n="On the map">On the map</p>
-      <div class="toggles">
-        <label class="toggle" for="show-streams"><input id="show-streams" type="checkbox" checked> <span data-i18n="Money streams (the two numbers in €)">Money streams (the two numbers in €)</span></label>
-        <label class="toggle" for="show-flows"><input id="show-flows" type="checkbox"> <span data-i18n="Gross trade flows (all money to Ukraine and Russia, each year)">Gross trade flows (all money to Ukraine and Russia, each year)</span></label>
-        <label class="toggle" for="show-chpl"><input id="show-chpl" type="checkbox"> <span data-i18n="Critical goods">Critical goods</span></label>
-        <label class="toggle" for="show-remit"><input id="show-remit" type="checkbox"> <span data-i18n="Wages from Russia">Wages from Russia</span></label>
-        <label class="toggle" for="show-taken"><input id="show-taken" type="checkbox"> <span data-i18n="Taken by Russia">Taken by Russia</span></label>
-      </div>
-      <div class="zoom" role="group" aria-label="Zoom" data-i18n-aria="Zoom">
-        <button class="btn" id="zin" aria-label="Zoom in" data-i18n-aria="Zoom in">+</button>
-        <button class="btn" id="zout" aria-label="Zoom out" data-i18n-aria="Zoom out">−</button>
-        <button class="btn" id="zreset" data-i18n="Show whole world">Show whole world</button>
-      </div>
-      <p class="sub" data-i18n="Drag to move, scroll to zoom, click a country, Ukraine or Russia">Drag to move, scroll to zoom, click a country, Ukraine or Russia</p>
+      </section>
+      <section class="dblock">
+        <h3 class="dsec" data-i18n="Map layers">Map layers</h3>
+        <div class="toggles">
+          <label class="toggle" for="show-streams"><input id="show-streams" type="checkbox" checked> <span data-i18n="Money streams (the two numbers in €)">Money streams (the two numbers in €)</span></label>
+          <label class="toggle" for="show-flows"><input id="show-flows" type="checkbox"> <span data-i18n="Gross trade flows (all money to Ukraine and Russia, each year)">Gross trade flows (all money to Ukraine and Russia, each year)</span></label>
+        </div>
+        <p class="dlbl" data-i18n="Markers">Markers</p>
+        <div class="toggles">
+          <label class="toggle" for="show-chpl"><input id="show-chpl" type="checkbox"> <span data-i18n="Critical goods">Critical goods</span></label>
+          <label class="toggle" for="show-remit"><input id="show-remit" type="checkbox"> <span data-i18n="Wages from Russia">Wages from Russia</span></label>
+          <label class="toggle" for="show-taken"><input id="show-taken" type="checkbox"> <span data-i18n="Taken by Russia">Taken by Russia</span></label>
+        </div>
+        <div class="zoom" role="group" aria-label="Zoom" data-i18n-aria="Zoom">
+          <button class="btn" id="zin" aria-label="Zoom in" data-i18n-aria="Zoom in">+</button>
+          <button class="btn" id="zout" aria-label="Zoom out" data-i18n-aria="Zoom out">−</button>
+          <button class="btn" id="zreset" data-i18n="Show whole world">Show whole world</button>
+        </div>
+        <p class="sub" data-i18n="Drag to move, scroll to zoom, click a country, Ukraine or Russia">Drag to move, scroll to zoom, click a country, Ukraine or Russia</p>
+      </section>
+      <section class="dblock">
+        <h3 class="dsec" data-i18n="Rankings and top lists">Rankings and top lists</h3>
+        <div class="views pages" role="group" aria-label="Pages" data-i18n-aria="Pages">
+          <button data-view="map" aria-pressed="true" data-i18n="Map">Map</button>
+          <button data-view="rank" aria-pressed="false" data-i18n="Ranking">Ranking</button>
+          <button data-view="bubbles" aria-pressed="false" data-i18n="Ukraine vs Russia">Ukraine vs Russia</button>
+          <button data-view="table" aria-pressed="false" data-i18n="Table &amp; data">Table &amp; data</button>
+          <button data-view="how" aria-pressed="false" data-i18n="How it works">How it works</button>
+          <button data-view="sources" aria-pressed="false" data-i18n="Sources">Sources</button>
+        </div>
+        <div class="dbtns"><button class="btn" id="open-rank" data-i18n="Top lists">Top lists</button></div>
+        <details class="dfold">
+          <summary data-i18n="Top ten and bottom five in this view">Top ten and bottom five in this view</summary>
+          <div id="drank"></div>
+        </details>
+      </section>
+      <section class="dblock">
+        <h3 class="dsec" data-i18n="Display">Display</h3>
+        <div class="drow">
+          <button class="btn theme-btn" id="theme" type="button" aria-label="Light or dark" data-i18n-aria="Light or dark" title="Light or dark" data-i18n-title="Light or dark"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg><span data-i18n="Light or dark">Light or dark</span></button>
+          <label class="lang" title="Language" data-i18n-title="Language">🌐<select id="lang" aria-label="Language"></select></label>
+        </div>
+      </section>
     </aside>
     <!-- inert while closed, so Tab cannot reach its hidden controls; named by its heading (see head()) -->
     <aside class="panel" id="panel" data-open="false" data-full="false" role="region" aria-labelledby="panel-title" inert></aside>
@@ -1452,7 +1537,10 @@ function scaleFor() {
   // exactly on the threshold goes to the bucket above it, so f(-st[0]) was the neutral colour. colors[3] is the
   // lightest orange (grey in the support and cost views), colors[4] the neutral, colors[5] the lightest blue
   const colorFor = (c, v) => (c && (c.gdp || 0) < MIN_GDP_RANK && Math.abs(v) >= st[0] ? colors[v > 0 ? 5 : 3] : f(v));
-  return { color: v => f(v), colorFor, colors, labels, ends, neutralAt: st[0] };
+  // round 17 (owner): a number too close to call is not grey but a faded colour of the way it leans: the colour its value
+  // would get, mixed halfway toward the neutral grey. It stays lighter and greyer than the same step when certain
+  const fade = col => d3.interpolateRgb(col, neutral)(0.5);
+  return { color: v => f(v), colorFor, fadedFor: (c, v) => fade(colorFor(c, v)), fade, colors, labels, ends, neutralAt: st[0] };
 }
 const mapEntities = () => Object.values(DATA);
 
@@ -1548,10 +1636,11 @@ function paint() {
     const q = HEAD_LENS[state.lens];
     const k = c && v != null && state.lens === "net" && state.year > 2021 && state.netBack ? calc(c, state.year) : null;
     // round 15: a number whose likely range or method band crosses zero is "direction uncertain"; round 17 (approved by
-    // the owner): grey like "no clear change", with no dot pattern (the tooltip and the panel say "too close to call")
+    // the owner): no dot pattern, and a faded colour of its leaning direction, not grey (the tooltip and the panel say
+    // "too close to call")
     const unc = !!(c && v != null && q && state.year > 2021 && Math.abs(v) >= (state.measure === "gdp" ? sc.neutralAt : 0) && uncertain(c, state.year, q));
     // a net below zero that is mainly earning from the war effort for Ukraine is not money toward Russia: grey (round 17)
-    const fill = unc || k?.earner ? C.mid : c && v != null ? sc.colorFor(c, v) : null;
+    const fill = k?.earner ? C.mid : unc ? sc.fadedFor(c, v) : c && v != null ? sc.colorFor(c, v) : null;
     d3.select(this).classed("nodata", !c || v == null).classed("uncertain", unc).style("fill", fill)
       .classed("dim", hs ? !(c && hs.has(c.n)) : !!(c && dimmedOut(c))).classed("hl", !!(hs && c && hs.has(c.n)));
   });
@@ -1596,7 +1685,8 @@ function renderLegend(sc) {
     <div class="step-labels">${sc.labels.map((l, i) => (![0, 2, 5, 7].includes(i) ? "" : `<span style="left:${((i + 1) / sc.colors.length) * 100}%">${l}</span>`)).join("")}<span style="left:50%">0</span></div>
     <div class="ticks" style="font-family:var(--font-body);margin-top:2px"><span>← ${sc.ends[0]}</span><span>${sc.ends[1]} →</span></div>
     <div class="keys"><span>${periodText()}, ${LANG !== "en" && state.measure !== "gdp" ? t(state.measure === "pp" ? "€ per person" : "€ billion") : measure}</span>
-      <span>${sw(`<rect width="10" height="10" fill="${C.mid}"/>`)}${t("Grey: no clear change, or too close to call (the likely range or the method band crosses zero; not ranked)")}</span>
+      <span>${sw(`<rect width="10" height="10" fill="${C.mid}"/>`)}${t("Grey: no clear change")}</span>
+      <span>${sw(`<rect width="${ONE_SIDED.has(state.lens) ? 10 : 5}" height="10" fill="${sc.fade(sc.colors[6])}"/>${ONE_SIDED.has(state.lens) ? "" : `<rect x="5" width="5" height="10" fill="${sc.fade(sc.colors[2])}"/>`}`)}${t("Faded: leans this way, but too close to call (the likely range or the method band crosses zero; not ranked)")}</span>
       <span>${sw(`<rect width="10" height="10" fill="url(#hatch)"/>`)}${t("No data yet")}</span>
       <span>${t("Economies under {min} GDP: lightest shade of their direction only", { min: tight(money(num(MIN_GDP_RANK), "bn")) })}</span>
       ${state.lens === "net" ? `<span>${t("A country that earned more from the war effort for Ukraine than it gave is grey: that is not money toward Russia.")}</span>` : ""}
@@ -1626,7 +1716,7 @@ function renderInfo() {
       <li>${kl ? t("<b>Totals for {n} years</b> against one year's GDP, not a yearly rate: Lithuania's net {v} is about {pa} a year.", { n: num(yearsOf(y), 1), v: g(lit, kl.shift), pa: perYear(lit, kl.shift, y) }) : ""}</li>
       <li class="orange">${t("<b>Orange is mostly fuel buying, not siding with Russia.</b>")}</li>
     </ol>
-    <p>${t("Grey is no clear change, or too close to call: the likely range, or another reasonable method choice, crosses zero ({n} of {all} economies over {min} GDP).", { n: unc, all: big.length, min: tight(money(num(MIN_GDP_RANK), "bn")) })}</p>
+    <p>${t("Grey is no clear change. Faded colours lean one way but are too close to call: the likely range, or another reasonable method choice, crosses zero ({n} of {all} economies over {min} GDP). They are not ranked, and a number too close to call gets no stream.", { n: unc, all: big.length, min: tight(money(num(MIN_GDP_RANK), "bn")) })}</p>
     <p>${t("The streams show the same two numbers in euros, not gross trade: blue to Kyiv, support for Ukraine; orange to Moscow, how much more a country paid Russia than without the war. The 12 largest each way; hover or pick a country for its own.")}</p>
     ${state.lens !== "net" && titleNote() ? `<p class="sub">${titleNote()}</p>` : ""}
     <p class="sub">${t("Hover or tap a country for its two numbers; click it for everything behind them. Filters holds the views, the measure, what's counted, countries and years, the rankings and the pages. Drag to move, scroll to zoom.")}</p>
@@ -1866,7 +1956,8 @@ function twoBars(c, k, y) {
   const m = Math.max(Math.abs(k.uaBal), Math.abs(k.rusBal), 1e-9), x = v => 50 + Math.max(-50, Math.min(50, (v / m) * 50));
   const bar = (v, col) => `<span class="tbar" aria-hidden="true"><span class="z"></span><span style="left:${Math.min(50, x(v))}%;width:${Math.abs(x(v) - 50)}%;background:${col}"></span></span>`;
   const unc = q => (uncertain(c, y, q) ? " · " + t("too close to call") : "");
-  const col = (v, q, neg) => (uncertain(c, y, q) ? "var(--mid)" : v >= 0 ? "var(--ukr)" : neg);
+  // round 17 (owner): too close to call is the faded colour of its direction (halfway toward the neutral grey, as on the map)
+  const col = (v, q, neg) => { const x = v >= 0 ? "var(--ukr)" : neg; return uncertain(c, y, q) ? `color-mix(in srgb, ${x} 50%, var(--mid))` : x; };
   return `<div class="twobars">
     <div class="tb"><div class="t">${t("Support for Ukraine")}<span>${fmtMeasure(c, k.uaBal, state.measure, true)}</span></div>${bar(k.uaBal, col(k.uaBal, "ua", "var(--ink-soft)"))}<div class="w">${supportWords(c, k)}${unc("ua")}</div></div>
     <div class="tb"><div class="t">${t("Kept from Russia")}<span>${fmtMeasure(c, k.rusBal, state.measure, true)}</span></div>${bar(k.rusBal, col(k.rusBal, "rus", "var(--rus)"))}<div class="w">${keptWords(c, k)}${unc("rus")}</div></div>
@@ -2030,7 +2121,7 @@ function wirePanel() {
   if (cmp) cmp.onchange = () => { if (cmp.value) { state.compare = cmp.value; state.panel = "compare"; renderPanel(); } };
   const back = q("#compare-back");
   if (back) back.onclick = () => { state.panel = "country"; state.compare = null; renderPanel(); };
-  panel.querySelectorAll("details.part, #allparts, #showmore").forEach(d => d.addEventListener("toggle", () => { const id = d.dataset.part ? "part-" + d.dataset.part : d.id; if (d.open) panelOpen.add(id); else panelOpen.delete(id); }));
+  panel.querySelectorAll("details.part, #allparts, #showmore, details.pfold").forEach(d => d.addEventListener("toggle", () => { const id = d.dataset.part ? "part-" + d.dataset.part : d.id; if (d.open) panelOpen.add(id); else panelOpen.delete(id); }));
   const sh = q("#share-btn");
   if (sh) sh.onclick = () => shareCountry(DATA[state.selected], sh);
 }
@@ -2234,7 +2325,7 @@ const ALT_WHAT = {
   windfall_off: "without the war-time windfall", nocut: "without the gas Russia cut off itself", nocut_oil: "without the gas and pipeline oil Russia cut off itself", attrib: "redirected trade: much of what buyers who cut stopped paying, Russia sold to others; counted half against each side (less paid × {r}, more paid × {m})",
   refGross: "refugees at gross cost (before the taxes they pay)", refCommon: "refugees at one common net cost per person-year for every host (the hosts' average), not each host's actual cost", p26: "2026 at 2025 prices (without the Hormuz-crisis prices)", gold_actual: "gold valued at its actual price, not at its 2021 price (central banks' buying after Russia's reserves were frozen is linked to the war)", gdp2024: "2024 GDP as the denominator (until round 14), not the 2022–2024 average",
 };
-function methodLine(c, y) {
+function methodLine(c, y, noYear) {
   const m = methodBands(c, y), g = v => fmtMeasure(c, v, "gdp", true), gdp = c.gdp || 1;
   const k = calc(c, y), base = HEAD3(k), yrs = yearsOf(y);
   const altKey = a => (a === "nocut" && oilCut(c) ? "nocut_oil" : a);
@@ -2247,7 +2338,7 @@ function methodLine(c, y) {
   const partial = DETAIL_FAILED ? `<div class="range-txt">${t("The rebuilt method choices could not load: this band covers only the choices worked out in the page.")}</div>` : "";
   return `${partial}<div class="range-txt">${shown.length ? bands : t("Method band: the other method choices do not move this net.")}</div>
     ${shown.length ? `<details class="src-more"><summary>${t("Which choices move the numbers ({n})", { n: shown.length })}</summary><ul class="src-links">${shown.map(a => `<li>${what(a.k)}: ${t("support {ua}, kept from Russia {ru}, net {net}", { ua: g(a.ua), ru: g(a.rus), net: g(a.net) })}</li>`).join("")}</ul></details>` : ""}
-    <div class="range-txt">${t("A total for {n} years, not a yearly rate: about {v} of GDP in an average year.", { n: num(yrs, 1), v: g(k.shift / yrs) })}</div>`;
+    ${noYear ? "" : `<div class="range-txt">${t("A total for {n} years, not a yearly rate: about {v} of GDP in an average year.", { n: num(yrs, 1), v: g(k.shift / yrs) })}</div>`}`;
 }
 // Round 15 (raised by the owner): 2026 prices include the Hormuz crisis, which this war did not cause. The money really
 // reached Russia (and buyers who stopped would have paid those prices), so it stays in; the panel says how much 2026 at
@@ -2268,28 +2359,6 @@ Object.entries({
   am: "ABW AIA ARG ATG BES BHS BLM BLZ BMU BOL BRA BRB BVT CAN CHL COL CRI CUB CUW CYM DMA DOM ECU FLK GRD GRL GTM GUY HND HTI JAM KNA LCA MAF MEX MSR NIC PAN PER PRI PRY SGS SLV SPM SUR SXM TCA TTO UMI URY USA VCT VEN VGB VIR",
   mea: "AGO ARE ATF BDI BEN BFA BHR BWA CAF CIV CMR COD COG COM CPV DJI DZA EGY ERI ESH ETH GAB GHA GIN GMB GNB GNQ IRN IRQ ISR JOR KEN KWT LBN LBR LBY LSO MAR MDG MLI MOZ MRT MUS MWI MYT NAM NER NGA OMN PSE QAT REU RWA SAU SDN SEN SHN SLE SOM SSD STP SWZ SYC SYR TCD TGO TUN TZA UGA YEM ZAF ZMB ZWE",
 }).forEach(([r, list]) => list.split(" ").forEach(i => (REGION_OF[i] = r)));
-// the two balances behind the headline: with Ukraine (gave minus earned from the war effort) and with Russia
-// the headline as two numbers (round 13): support for Ukraine (what it did for Ukraine, minus what it earned back from
-// the war effort) and the change in payments to Russia (less or more paid to Russia, sales to it, and the rest); the
-// net is their sum. Gas Russia cut off itself is labelled inside the second number
-function balanceCards(c, k) {
-  const g = v => fmtMeasure(c, v, "gdp", true), y = Math.max(2022, state.year), gr = grades(c, y);
-  const ua = !state.netBack ? t("aid, refugees, loans as gifts and purchases from Ukraine (money flowing back not subtracted)")
-    : !k.earnerUa
-    ? t("Net contributing: gave {gave}, earned back {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) })
-    : t("Net earning from the war effort: gave {gave}, earned {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) });
-  const w = rusWords(c, k);
-  const ru = w.less ? w.tr0 : t("{what}, against what was expected without the war", { what: w.tr });
-  const cut = k.rusCut > 0.005 ? `<div class="s">${t(oilCut(c) ? "of which gas and pipeline oil Russia cut off itself, or gas that stopped with the end of transit: {v}" : "of which gas Russia cut off itself or that stopped with the end of transit: {v}", { v: eur(k.rusCut) })}${ref(["gas_cuts"])}</div>` : "";
-  const unc = q => (uncertain(c, y, q) ? `<span class="unc-tag" title="${t("The likely range or the method band crosses zero: this number is not ranked.")}">${t("direction uncertain")}</span>` : "");
-  // round 15 (raised by the owner): refugees hosted by a co-belligerent are a label, not support for Ukraine
-  const rx = c.ref_excluded ? (() => { const v = c.ref_excluded.years.slice(1, yi(y) + 1).reduce((a, b) => a + b, 0); return v > 0.0005 ? `<div class="s">${t("Hosted Ukrainian refugees ({v}), not counted as support: co-belligerent.")}${ref(c.ref_excluded.src)}</div>` : ""; })() : "";
-  const avg = v => `<div class="s">${t("about {v} a year", { v: perYear(c, v, y) })}</div>`;
-  return `<div class="balances">
-    <div class="bal ${k.earnerUa ? "earn" : "pos"}"><div class="lbl">${t("Support for Ukraine")}${chip(gr.ua)}${unc("ua")}</div><div class="num">${g(k.uaBal)}</div>${avg(k.uaBal)}<div class="s">${ua}</div>${rx}<div class="s">${t("Likely range {lo} to {hi}", { lo: g(k.uaLo), hi: g(k.uaHi) })}</div></div>
-    <div class="bal ${k.rusBal >= 0 ? "pos" : "neg"}"><div class="lbl">${t("Kept from Russia")}${chip(gr.rus)}${unc("rus")}</div><div class="num">${g(k.rusBal)}</div>${avg(k.rusBal)}<div class="s">${ru}</div>${cut}<div class="s">${t("Likely range {lo} to {hi}", { lo: g(k.rusLo), hi: g(k.rusHi) })}</div></div>
-  </div>${frozenLine(c, k)}${k.earner ? `<p class="note">${t("This country earned more from supplying the war effort for Ukraine than it gave. That is shown in grey on the map: it is not money toward Russia.")}</p>` : ""}`;
-}
 // round 16 (review 5, H4; approved by the owner): the return Russia lost on reserves frozen here, its own line, in the net only
 function frozenLine(c, k) {
   if (Math.abs(k.frozen) < 0.0005) return "";
@@ -2513,97 +2582,126 @@ function partRow(c, p, max, plain) {
     <span class="pbar" aria-hidden="true"><span class="z"></span><span style="left:${Math.min(50, x(v))}%;width:${Math.abs(x(v) - 50)}%;background:${partCol(p)}"></span><i style="left:${x(Math.min(lo, hi))}%;width:${Math.max(0.5, Math.abs(x(hi) - x(lo)))}%"></i></span>
     <span class="pv">${fmtMeasure(c, p.v, "gdp", true)}<small>${eur(p.v, true)}</small></span></summary>${methodCard(c, p)}</details>`;
 }
-// the one-sentence headline (round 17): the net, then which of the two parts it mostly is, in words
-function headline(c, k, y) {
-  const ua = k.uaBal, ru = k.rusBal, tot = Math.abs(ua) + Math.abs(ru) || 1, sp = sanctionSplit(c, k), g = v => fmtMeasure(c, v, "gdp", true);
-  let qual = "";
-  if (ru > 0 && sp) qual = k.rusCut >= 0.25 * ru ? t(oilCut(c) ? "{v} of it is gas and oil Russia cut off itself" : "{v} of it is gas Russia cut off itself", { v: eur(k.rusCut) }) : sp.mand >= 0.5 ? t("{p} of it was required by sanctions", { p: pc0(sp.mand) }) : sp.own >= 0.5 ? t("mostly by its own choice") : "";
-  // a payer's main cause; an earner's sentence already names it (keptWords)
-  if (ru < 0 && rusWords(c, k).tr0.startsWith(t("more paid to Russia"))) qual = gainCause(c, k);
-  const kept = keptWords(c, k) + (qual ? "; " + qual : ""), sup = supportWords(c, k);
-  let body;
-  if (Math.abs(ua) / tot >= 0.35 && Math.abs(ru) / tot >= 0.35 && Math.sign(ua) === Math.sign(ru)) body = t("About half support for Ukraine: it {sup}. Half kept from Russia: it {kept}.", { sup, kept });
-  else if (Math.abs(ru) >= Math.abs(ua)) body = t(ru >= 0 ? "Mostly kept from Russia: it {kept}." : "Mostly toward Russia: it {kept}.", { kept }) + (Math.abs(ua) / tot > 0.03 ? " " + t("Support for Ukraine: it {sup}.", { sup }) : "");
-  else body = t("Mostly support for Ukraine: it {sup}.", { sup }) + (Math.abs(ru) / tot > 0.03 ? " " + t("Kept from Russia: it {kept}.", { kept }) : "");
+// Round 17 (owner: the panel "has all the information (some duplicated)"): one hierarchy, each number once.
+// 1 the header: the name, a one-sentence lead in words and the net with its range; 2 the two parts, each with its value,
+// range and grade (and Russian money frozen); 3 at most four notes on what changes the meaning; 4 the five biggest parts,
+// each opening its method, and the other parts; 5 the rest in folded sections. The lead says which part the net mostly
+// is in words only: the numbers are in the blocks below it
+function leadLine(c, k) {
+  const ua = k.uaBal, ru = k.rusBal, tot = Math.abs(ua) + Math.abs(ru) || 1;
+  const kind = Math.abs(ua) / tot >= 0.35 && Math.abs(ru) / tot >= 0.35 && Math.sign(ua) === Math.sign(ru) ? "About half support for Ukraine, half kept from Russia."
+    : Math.abs(ru) >= Math.abs(ua) ? (ru >= 0 ? "Mostly kept from Russia." : "Mostly toward Russia.") : "Mostly support for Ukraine.";
   const top = mainPart(k.shiftParts.filter(RUS_PART), ru), paid = k.shiftParts.find(p => p.k === "paid");
   const flat = top && top.k === "windfall" && ru < 0 && (!paid || Math.abs(paid.v) < 0.1 * Math.abs(ru)) ? " " + t("Its volumes barely changed: it is the price.") : "";
-  // Russian money frozen, named when it is a large share of the net (Belgium: Euroclear)
-  const fz = Math.abs(k.frozen) >= 0.2 * (Math.abs(ua) + Math.abs(ru) + Math.abs(k.frozen)) && Math.abs(k.frozen) >= 0.0005 ? " " + t("Russian money frozen here adds {v}: the return Russia lost on its reserves, not a payment.", { v: g(k.frozen) }) : "";
-  return `<b>${t("{name}: net {net} of one year's GDP, {period}", { name: c.name, net: g(k.shift), period: periodShort() })}</b>${t(", about {pa} a year.", { pa: perYear(c, k.shift, y) })} ${body}${flat}${fz}`;
+  const fz = Math.abs(k.frozen) >= 0.2 * (Math.abs(ua) + Math.abs(ru) + Math.abs(k.frozen)) && Math.abs(k.frozen) >= 0.0005 ? " " + t("Much of the net is Russian money frozen here: the return Russia lost on its reserves, not a payment.") : "";
+  // what the money kept from Russia mostly is, or what moved money toward Russia, in words (the numbers are in the parts)
+  const sp = sanctionSplit(c, k);
+  let why = "";
+  if (ru > 0 && sp) why = k.rusCut >= 0.25 * ru ? t(oilCut(c) ? "Much of the money kept from Russia is gas and oil Russia cut off itself." : "Much of the money kept from Russia is gas Russia cut off itself.")
+    : sp.mand >= 0.5 ? t("Most of the money kept from Russia was required by sanctions.") : sp.own >= 0.5 ? t("Most of the money kept from Russia was its own choice.") : "";
+  if (ru < 0 && rusWords(c, k).tr0.startsWith(t("more paid to Russia"))) {
+    const g = gainCause(c, k);
+    if (g && kind === "Mostly toward Russia.") return t("Mostly toward Russia ({cause}).", { cause: g }) + flat + fz;
+    if (g) why = t("Toward Russia: {cause}.", { cause: g });
+  }
+  return t(kind) + (why ? " " + why : "") + flat + fz;
 }
-// "What changes the meaning here": at most five notes, the orange caveat in orange
+// "What changes the meaning here": at most four short notes, the orange caveat in orange. The sanctions split and the
+// critical goods have their own folded sections below
 function meaningNotes(c, k, y) {
-  const out = [], sp = sanctionSplit(c, k);
+  const out = [];
   if ((c.gdp || 0) < MIN_GDP_RANK) out.push(["", t("A small economy (GDP {v}): small sums move its % a lot. Not ranked, and drawn in the lightest shade only.", { v: eur(c.gdp) })]);
-  if (uncertain(c, y, "net")) out.push(["", t("Too close to call: its likely range, or another reasonable method choice, crosses zero. Not ranked, and grey on the map.")]);
-  if (k.rusBal > 0 && Math.abs(k.uaBal) > 0) out.push(["", t("The net adds two different things: help given to Ukraine and money kept from Russia. Much of what one country stopped paying, Russia sold to others.")]);
-  if (sp && k.rusBal > 0 && (sp.mand >= 0.25 || sp.cut >= 0.1)) out.push(["", sp.cut >= 0.005
-    ? t(oilCut(c) ? "Of the money kept from Russia, {m} was required by sanctions, {g} was gas and oil Russia cut off itself and {o} was the country's own choice." : "Of the money kept from Russia, {m} was required by sanctions, {g} was gas Russia cut off itself and {o} was the country's own choice.", { m: pc0(sp.mand), g: pc0(sp.cut), o: pc0(sp.own) })
-    : t("Of the money kept from Russia, {m} was required by sanctions and {o} was the country's own choice.", { m: pc0(sp.mand), o: pc0(sp.own) })]);
-  const ch = chplSum(c, yi(y));
-  if (ch >= 0.001 * (c.gdp || Infinity)) out.push(["", t("It also sold Russia {v} of goods its weapons need (chips, machine tools). Not in the totals.", { v: eur(ch) })]);
+  if (uncertain(c, y, "net")) out.push(["", t("Too close to call: its likely range, or another reasonable method choice, crosses zero. Not ranked, and shown faded on the map.")]);
   if (isOrange(c, k, y)) out.push(["orange", orangeCaveat(c, k)]);
-  if (fairnessNote(c, k)) out.push(["", t("Most of this is fuel and food bought from Russia. Fuel is fungible and sold through many traders: the figure reflects what this economy bought, not a policy toward Russia or Ukraine.")]);
   if (k.earner) out.push(["", t("It earned more supplying Ukraine's war effort than it gave: grey on the map, not money toward Russia.")]);
-  return out.slice(0, 5);
+  if (fairnessNote(c, k)) out.push(["fair", t("Most of this is fuel and food bought from Russia. Fuel is fungible and sold through many traders: the figure reflects what this economy bought, not a policy toward Russia or Ukraine.")]);
+  if (k.rusBal > 0 && Math.abs(k.uaBal) > 0) out.push(["", t("The net adds two different things: help given to Ukraine and money kept from Russia. Much of what one country stopped paying, Russia sold to others.")]);
+  return out.slice(0, 4);
+}
+// the two parts, each once: value (% of GDP and €), bar, what it is in words, likely range, grade and the average year
+function twoParts(c, k, y) {
+  const g = v => fmtMeasure(c, v, "gdp", true), gr = grades(c, y);
+  const m = Math.max(Math.abs(k.uaBal), Math.abs(k.rusBal), 1e-9), x = v => 50 + Math.max(-50, Math.min(50, (v / m) * 50));
+  const unc = q => (uncertain(c, y, q) ? `<span class="unc-tag" title="${t("The likely range or the method band crosses zero: this number is not ranked.")}">${t("direction uncertain")}</span>` : "");
+  const col = (v, q, neg) => { const z = v >= 0 ? "var(--ukr)" : neg; return uncertain(c, y, q) ? `color-mix(in srgb, ${z} 50%, var(--mid))` : z; };
+  const bar = (v, cl) => `<span class="tbar" aria-hidden="true"><span class="z"></span><span style="left:${Math.min(50, x(v))}%;width:${Math.abs(x(v) - 50)}%;background:${cl}"></span></span>`;
+  const ua = !state.netBack ? t("aid, refugees, loans as gifts and purchases from Ukraine (money flowing back not subtracted)")
+    : !k.earnerUa ? t("Net contributing: gave {gave}, earned back {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) })
+    : t("Net earning from the war effort: gave {gave}, earned {back}", { gave: eur(k.uaGave, true), back: eur(-k.uaBack) });
+  // in words only: the amounts in brackets are the part's own number (in the breakdown) and this total (shown above it)
+  // the lead names the cause in words; the card keeps only what the lead does not say
+  const w = rusWords(c, k), ru = w.tr0.startsWith(t("more paid to Russia")) ? t("more paid to Russia")
+    : k.rusBal > 0 && k.rusCut >= 0.4 * k.rusBal ? t("less paid to Russia") : w.tr0.replace(/\s*\([^()]*\)\s*$/, "");
+  const cut = k.rusCut > 0.005 ? `<div class="s">${t(oilCut(c) ? "of which gas and pipeline oil Russia cut off itself, or gas that stopped with the end of transit: {v}" : "of which gas Russia cut off itself or that stopped with the end of transit: {v}", { v: eur(k.rusCut) })}${ref(["gas_cuts"])}</div>` : "";
+  const rx = c.ref_excluded ? (() => { const v = c.ref_excluded.years.slice(1, yi(y) + 1).reduce((a, b) => a + b, 0); return v > 0.0005 ? `<div class="s">${t("Hosted Ukrainian refugees ({v}), not counted as support: co-belligerent.")}${ref(c.ref_excluded.src)}</div>` : ""; })() : "";
+  const card = (name, q, v, lo, hi, cls, cl, words, extra) => `<div class="p2 ${cls}">
+      <div class="p2h"><span class="lbl">${name}</span>${chip(gr[q])}${unc(q)}</div>
+      <div class="p2v"><span class="num" style="color:${cl}">${g(v)}</span><span class="eur">${eur(v, true)}</span></div>${bar(v, cl)}
+      <div class="s">${words}</div>${extra}
+      <div class="s rng">${t("Likely range {lo} to {hi}", { lo: g(lo), hi: g(hi) })} · ${t("about {v} a year", { v: perYear(c, v, y) })}</div></div>`;
+  return `<div class="parts2">
+    ${card(t("Support for Ukraine"), "ua", k.uaBal, k.uaLo, k.uaHi, k.earnerUa ? "earn" : "", col(k.uaBal, "ua", "var(--ink-soft)"), ua, rx)}
+    ${card(t("Kept from Russia"), "rus", k.rusBal, k.rusLo, k.rusHi, "", col(k.rusBal, "rus", "var(--rus-text, var(--rus))"), ru, cut)}
+  </div>${frozenLine(c, k)}`;
 }
 function firstLayer(c, k, y) {
   const gr = grades(c, y), g = v => fmtMeasure(c, v, "gdp", true), unc = uncertain(c, y, "net");
   const parts = k.shiftParts.concat(k.backShift);
   const max = Math.max(0.01, ...parts.map(p => Math.max(Math.abs(scaled(c, p.lo, "gdp") ?? 0), Math.abs(scaled(c, p.hi, "gdp") ?? 0))));
   const top5 = parts.filter(p => Math.abs(scaled(c, p.v, "gdp") ?? 0) >= 0.005).sort((a, b) => Math.abs(b.v) - Math.abs(a.v)).slice(0, 5);
+  const rest = parts.filter(p => !top5.includes(p));
   const group = (title, list) => (list.length ? `<p class="grp">${title}</p>${list.map(p => partRow(c, p, max, false)).join("")}` : "");
   const notes = meaningNotes(c, k, y);
   const totalName = Math.abs(k.frozen) >= 0.0005 ? t("Net: support for Ukraine plus kept from Russia plus Russian money frozen") : t("Net: support for Ukraine plus kept from Russia");
+  const rangeInfo = t("The likely range covers the uncertainty of the data and the models given the method: each part's low and high value, combined as errors, correlated where parts share inputs. It is calibrated by judgement to about 90%, not measured. How much the method choices themselves move the result is the method band below.");
   return `${custom() ? `<div class="custom">${customNote()}</div>` : ""}
-    <p class="lead">${headline(c, k, y)}</p>
-    <section class="section total"><h3>${totalName}</h3>
-      <div><span class="n ${unc || k.earner ? "mid" : k.shift >= 0 ? "pos" : "neg"}">${g(k.shift)}</span><span class="u">${t("of one year's GDP, in total since 2022")}</span>${unc ? `<span class="unc-tag">${t("too close to call")}</span>` : ""}</div>
-      <div class="big-cap">${eur(k.shift, true)} · ${t("likely {lo} to {hi}", { lo: g(k.shiftLo), hi: g(k.shiftHi) })} · ${t("certainty: {what}", { what: certWords(gr.net) })} · ${t("about {v} a year", { v: perYear(c, k.shift, y) })}</div>
+    <section class="section total"><p class="lead">${leadLine(c, k)}</p><h3>${totalName}</h3>
+      <div><span class="n ${k.earner ? "mid" : unc ? (k.shift >= 0 ? "fpos" : "fneg") : k.shift >= 0 ? "pos" : "neg"}">${g(k.shift)}</span><span class="u">${t("of one year's GDP, in total since 2022")}</span>${unc ? `<span class="unc-tag">${t("too close to call")}</span>` : ""}</div>
+      <div class="big-cap">${eur(k.shift, true)} · ${t("likely {lo} to {hi}", { lo: g(k.shiftLo), hi: g(k.shiftHi) })} <span class="info-i" title="${rangeInfo}">ⓘ</span> · ${t("certainty: {what}", { what: certWords(gr.net) })} · ${t("about {v} a year", { v: perYear(c, k.shift, y) })}</div>
     </section>
-    <section class="section"><h3>${t("The two parts")}</h3>${twoBars(c, k, y)}
-      ${Math.abs(k.frozen) >= 0.0005 ? `<p class="key">${t("Plus Russian money frozen here: {v} (not a payment; its own line, in the net only).", { v: g(k.frozen) })}</p>` : ""}</section>
+    <section class="section"><h3>${t("The two parts")}</h3>${twoParts(c, k, y)}</section>
     ${notes.length ? `<section class="section meaning"><h3>${t("What changes the meaning here")}</h3><ul>${notes.map(([cl, x]) => `<li class="${cl}">${x}</li>`).join("")}</ul></section>` : ""}
     <section class="section"><h3>${t("The biggest parts · open one for how it is calculated")}</h3>
       <div class="parts">${top5.map(p => partRow(c, p, max, true)).join("")}</div>
-      <details class="allparts" id="allparts"${panelOpen.has("allparts") ? " open" : ""}><summary>${t("Show all {n} parts, with ranges and sources", { n: parts.length })}</summary>
-        ${group(t("Support for Ukraine {v}", { v: g(k.uaBal) }), parts.filter(p => sideOf(p) === "ua"))}
-        ${group(t("Kept from Russia {v}", { v: g(k.rusBal) }), parts.filter(p => sideOf(p) === "rus"))}
-        ${group(t("Russian money frozen {v}", { v: g(k.frozen) }), parts.filter(p => sideOf(p) === "own"))}
-        <p class="key">${t("Letters: A reported, B measured estimate, C modelled estimate, D rough indication. A * marks a 2026 value estimated from the 2025 rate.")}</p>
-      </details>
+      ${rest.length ? `<details class="allparts" id="allparts"${panelOpen.has("allparts") ? " open" : ""}><summary>${t("Show the other {n} parts", { n: rest.length })}</summary>
+        ${group(t("Support for Ukraine"), rest.filter(p => sideOf(p) === "ua"))}
+        ${group(t("Kept from Russia"), rest.filter(p => sideOf(p) === "rus"))}
+        ${group(t("Russian money frozen"), rest.filter(p => sideOf(p) === "own"))}
+      </details>` : ""}
+      <p class="key">${t("Letters: A reported, B measured estimate, C modelled estimate, D rough indication. A * marks a 2026 value estimated from the 2025 rate.")}</p>
     </section>`;
 }
 // which parts and sections are open, kept when the panel re-renders (a new year, another language); cleared for a new country
 const panelOpen = new Set();
 let panelOpenFor = null;
+// a folded section of the panel's second layer
+const fold = (id, title, body) => (body && body.replace(/\s+/g, "") ? `<details class="more pfold" id="${id}"${panelOpen.has(id) ? " open" : ""}><summary>${title}</summary><div class="pfold-body">${body}</div></details>` : "");
 function countryPanel(c) {
   if (!c) return head(t("Unknown")) + `<div class="panel-body"><p class="empty">${t("No data for this country yet.")}</p></div>`;
   const y = Math.max(2022, state.year), k = calc(c, y);
-  const pos = k.shift >= 0, ytd = y === 2026 && FRAC[5] < 1 ? t(" (2026 year to date, Jan–Aug)") : "";
   const meta = `${c.iso3} · ${c.pop ? t("{n} m people", { n: num(c.pop, c.pop >= 10 ? 0 : 1) }) : t("population n/a")} · ${c.gdp ? t("GDP {eur}", { eur: money(num(c.gdp), "bn") }) : t("GDP n/a")}`;
   const others = Object.values(DATA).filter(o => o !== c).sort((a, b) => a.name.localeCompare(b.name, LANG));
   // round 17: a custom mix is not shared (the link and its card carry the official figures)
   const tools = `<div class="panel-tools">${custom() ? `<span class="share-off">${t("Sharing shows the official figures only: reset to the official numbers to share.")}</span>` : `<button class="btn" id="share-btn" aria-label="${t("Share {name}'s numbers", { name: c.name })}">${t("Share")}</button>`}<select id="compare-select" aria-label="${t("Compare with another country")}"><option value="">${t("Compare with…")}</option>${REGIONS.map(([r, label]) => `<optgroup label="${t(label)}">${others.filter(o => (REGION_OF[o.iso3] || "asia") === r).map(o => `<option value="${o.n}">${o.name}</option>`).join("")}</optgroup>`).join("")}</select></div>`;
-  const backSec = k.backParts.length ? `<section class="section">
-      <h3>${t("Money flowing back to {name}", { name: c.name })}</h3>
-      <div class="big" style="font-size:24px;color:var(--back)">${eur(k.flowback)} <span style="font-size:13px;font-weight:500;font-family:var(--font-data)">(${rangeTxt(k.flowbackLo, k.flowbackHi)})</span></div>
+  const backSec = k.backParts.length ? `<div class="sub-sec">
+      <h4>${t("Money flowing back to {name}", { name: c.name })}</h4>
+      <div class="big" style="font-size:22px;color:var(--back)">${eur(k.flowback)} <span style="font-size:13px;font-weight:500;font-family:var(--font-data)">(${rangeTxt(k.flowbackLo, k.flowbackHi)})</span></div>
       <div class="big-cap">${t("spent by or for Ukraine here, above the pre-war level. This is revenue for companies here, so only part of it is subtracted: the seller's real gain (taxes plus profit above a normal return) × the share that is genuinely extra business. Here that is {own} of the money flowing back; for US weapons about {us}. Wages, materials, imported parts and sales that would have happened anyway are not a gain.", { own: pct1(backFactor(c, y)), us: pct1(byIso.USA ? backFactor(byIso.USA, 2026) : 0) })}${state.netBack ? "" : " " + t("Not subtracted (switch is off).")}</div>
       <div class="kv" style="margin-top:10px">${k.backParts.map(p => `<span>${p.label}${chip(p.cert)}${ref(p.src)}</span><span class="v">${eur(p.v)}<small>${rangeTxt(p.lo, p.hi)}</small></span>`).join("")}</div>
-    </section>` : "";
+    </div>` : "";
   const aidCats = c.aid?.cats ? Object.entries(c.aid.cats).filter(([, v]) => v) : [];
   // round 16 (review 5, L1; approved by the owner): the same figure as the bar (loans at their gift to Ukraine), with the
   // face value beside it; the European Peace Facility is not in it (Kiel left it out since version 16)
   const share = k.euFace ? `<p class="key" style="margin-top:8px">${t("<b>Share of EU-level aid</b>: {eur} (loans at their gift to Ukraine, as on the bar; {face} with loans at full value). The EU itself gives aid to Ukraine (the Ukraine Facility and macro-financial loans), paid from or guaranteed by the EU budget that members fund. Each member is counted for its share of that budget: {pct}% for {name}. This applies to every member, also those that opposed the aid, because their contributions paid for it. The European Peace Facility is not in it: it pays members back for weapons they gave Ukraine themselves, which are already in their own aid, so counting it too would count them twice", { eur: eur(k.euAdj), face: eur(k.euFace), pct: num(c.aid.eu_share * 100, 1), name: c.name })}${ref(["kiel_eu_share"])}.</p>` : "";
-  const companies = c.company ? `<section class="section">
-      <h3>${t("Companies based here, operating in Russia")}</h3>
+  const companies = c.company ? `<div class="sub-sec">
+      <h4>${t("Companies based here, operating in Russia")}</h4>
       <div class="kv">
         ${c.company.staying != null ? `<span>${t("Still operating in Russia")}</span><span class="v">${c.company.staying}</span>` : ""}
         ${c.company.left != null ? `<span>${t("Left Russia")}</span><span class="v">${c.company.left}</span>` : ""}
         ${YEARS.map((yr, i) => (c.taxY[i] ? `<span>${t("Taxes paid in Russia, {y}", { y: yr })}${chip("B")}${i === 0 ? ref(c.company.src) : ""}</span><span class="v">${eur(c.taxY[i])}</span>` : "")).join("")}
       </div>
       ${c.company.top?.length ? `<p class="key" style="margin-top:8px">${t("Largest taxpayers:")} ${c.company.top.map(t => `${t.name} (${eur(t.eur)}, ${t.year})`).join(", ")}${ref(c.company.src)}</p>` : ""}
-    </section>` : "";
+    </div>` : "";
   const people = c.people || {};
   const pp = [];
   if (people.vol) pp.push(`<div><div class="n">~${count(people.vol.central)}</div><div class="l">${t("volunteers for Ukraine")} ${chip("D")}${ref(people.vol.src)}</div></div>`);
@@ -2612,64 +2710,34 @@ function countryPanel(c) {
   if (c.aid?.loans_face) details.push(`<span>${t("Loans, full amount")}${ref(c.aid.src)}</span><span class="v">${eur(c.aid.loans_face)}</span><span>${t("Loans, grant equivalent")} ${chip("C")}</span><span class="v">${eur(c.aid.loans_grant_eq ?? c.aid.loans_face * 0.26)}</span>`);
   if (c.aid?.pledged_open != null) details.push(`<span>${t("Promised but not yet delivered")}${ref(c.aid.src)}</span><span class="v">${eur(c.aid.pledged_open)}</span>`);
   if (people.refugees) details.push(`<span>${t("Refugees from Ukraine hosted ({date})", { date: people.refugees.as_of })}${ref(people.refugees.src)}</span><span class="v">${Math.round(people.refugees.count).toLocaleString(LANG)}</span>`);
-  const lv = lensValue(c), sv = scaled(c, lv);
+  // the map's own number, only when it is not already above: per person or in total euros
+  const lv = lensValue(c);
   const lensName = t({ support: "Support for Ukraine", payments: "Kept from Russia", net: "Net (the sum)", cost: "Cost to the country" }[state.lens]);
-  const hq = HEAD_LENS[state.lens];
-  const kk = state.year > 2021 ? calc(c, state.year) : null;
+  const hq = HEAD_LENS[state.lens], kk = state.year > 2021 ? calc(c, state.year) : null;
   const [rlo, rhi] = kk ? ({ ua: [kk.uaLo, kk.uaHi], rus: [kk.rusLo, kk.rusHi], net: [kk.shiftLo, kk.shiftHi] }[hq] || [kk.costLo, kk.costHi]) : [null, null];
-  const signed = !!hq;
-  const figCard = `<div class="fig"><span class="sw" style="background:${sv == null || !currentScale ? "transparent" : currentScale.colorFor(c, sv)}"></span>
-      <div><div class="t">${t("On the map: {what}", { what: lensName + (state.netBack && kk && state.lens !== "payments" ? t(", after money flowing back") : "") })}${hq && kk && uncertain(c, state.year, hq) ? `<span class="unc-tag">${t("direction uncertain")}</span>` : ""}</div>
-      <div class="v">${fmtMeasure(c, lv, state.measure, signed, false)}${state.measure === "pp" ? ` <span style="font-size:14px">${t("per person")}</span>` : state.measure === "gdp" ? ` <span style="font-size:14px">${t("of a year's GDP")}</span>` : ""}</div></div>
-      <div class="s">${kk ? t("Likely range {lo} to {hi}", { lo: fmtMeasure(c, rlo, state.measure, signed, false), hi: fmtMeasure(c, rhi, state.measure, signed, false) }) + " · " : ""}${periodText()}${state.measure !== "total" ? " · " + eur(lv, signed) : ""}. ${t("Change the view or measure in Filters to see other numbers.")}</div></div>`;
+  const figCard = state.measure === "gdp" ? "" : `<div class="fig"><span class="sw" style="background:${!currentScale ? "transparent" : currentScale.colorFor(c, scaled(c, lv))}"></span>
+      <div><div class="t">${t("On the map: {what}", { what: lensName + (state.netBack && kk && state.lens !== "payments" ? t(", after money flowing back") : "") })}</div>
+      <div class="v">${fmtMeasure(c, lv, state.measure, !!hq, false)}${state.measure === "pp" ? ` <span style="font-size:14px">${t("per person")}</span>` : ""}</div></div>
+      <div class="s">${kk ? t("Likely range {lo} to {hi}", { lo: fmtMeasure(c, rlo, state.measure, !!hq, false), hi: fmtMeasure(c, rhi, state.measure, !!hq, false) }) + " · " : ""}${periodText()}. ${t("Change the view or measure in Filters to see other numbers.")}</div></div>`;
   if (panelOpenFor !== c.n) { panelOpen.clear(); panelOpenFor = c.n; }
-  return head(c.name, meta) + `<div class="panel-body">
-    ${firstLayer(c, k, y)}
-    <details class="showmore" id="showmore"${panelOpen.has("showmore") ? " open" : ""}><summary>${t("Show more: the map value, method band, grades, markers, cost to the country, share, compare, per year and all sources")}</summary><div class="panel-body">
-    ${figCard}
-    ${tools}
-    <section class="section">
-      <h3>${t("Change since before the war")} · 2022–${y}${ytd}</h3>
-      <div class="big-cap">${t("Two numbers, each a total for the whole period against one year's GDP (average 2022–2024):")}</div>
-      ${balanceCards(c, k)}
-      <div class="net-line"><div class="big-cap"><b>${t("Net (the sum)")}: ${fmtMeasure(c, k.shift, "gdp", true)}</b>${chip(grades(c, y).net)}${uncertain(c, y, "net") ? `<span class="unc-tag">${t("direction uncertain")}</span>` : ""} · ${eur(k.shift, true)} · ${perPerson(c, k.shift)}${state.netBack ? " · " + t("after money flowing back") : ""}${netWords(c, k) ? " · " + netWords(c, k) : ""}</div>
-      <div class="key">${t("The net adds two different things: help given to Ukraine and money kept from Russia. Much of what one country stopped paying, Russia sold to others.")}</div></div>
-      ${rangeLine(c, k.shiftLo, k.shiftHi, grades(c, y).net)}${methodLine(c, y)}${hormuzNote(c, y)}${chplNote(c)}${remitNote(c)}${takenNote(c, k)}
-      ${waterfall(k.shiftParts.concat(state.netBack ? k.backShift.map(p => ({ ...p, label: t("Flowing back: {part}", { part: LANG === "de" ? p.label : p.label[0].toLowerCase() + p.label.slice(1) }) })) : []), k.shift, t("Net shift"), k.shiftLo, k.shiftHi)}
-      <p class="note">${t("Trade counts at the seller's net gain: a euro paid to Russia counts only for what Russia keeps after its real costs (its taxes plus profit above a normal return), and extra purchases from Ukraine for what Ukraine keeps. Aid counts in full.")}</p>
-      ${sanctionNote(c, k)}${baseNote(c)}
-      ${c.aid?.eu_share ? `<p class="note">${t("Trade figures are this country's own customs data (UN Comtrade). EU statistics (Eurostat) can show different figures for a single member, because they book goods where they enter the EU, such as Rotterdam or Antwerp.")} <a href="${REPO}docs/method/trade.md#why-un-comtrade-and-not-eurostat-for-eu-members" target="_blank" rel="noopener">${t("Why")}</a></p>` : ""}
-      ${launderedNote(c, k)}
-      ${armsNote(c, k)}
-      ${blockedNote(c, k)}
-      ${fairnessNote(c, k)}${paidArmsNote(c, k)}${structuralNote(c, k)}${dualUseNote(c)}
-      ${share}
-      ${c.hub ? `<p class="key" style="margin-top:8px"><b>${t("Transit hub:")}</b> ${dataText(c.hub)}.</p>` : ""}
-    </section>
-    <section class="section">
-      <h3>${t("What it cost {name}", { name: c.name })}</h3>
-      <div class="big ${k.cost >= 0 ? "pos" : "neg"}" style="font-size:26px">${k.cost >= 0 ? fmtMeasure(c, k.cost, "gdp") : t("{v} gain", { v: fmtMeasure(c, -k.cost, "gdp") })} <span style="font-size:14px;font-weight:600">${t("of a year's GDP")}</span></div>
+  const notes = meaningNotes(c, k, y), fairShown = notes.some(([cl]) => cl === "fair");
+  const first = firstLayer(c, k, y);
+  const cost = `<div class="big ${k.cost >= 0 ? "pos" : "neg"}" style="font-size:24px">${k.cost >= 0 ? fmtMeasure(c, k.cost, "gdp") : t("{v} gain", { v: fmtMeasure(c, -k.cost, "gdp") })} <span style="font-size:14px;font-weight:600">${t("of a year's GDP")}</span></div>
       <div class="big-cap">${k.cost >= 0 ? eur(k.cost) : t("{v} gain", { v: eur(-k.cost) })} · ${perPerson(c, k.cost)}${state.netBack ? " · " + t("after money flowing back") : ""}</div>
       ${rangeLine(c, k.costLo, k.costHi, k.costCert)}
       <div class="kv" style="margin-top:10px">${k.costParts.map(p => `<span>${p.label}${chip(p.cert)}${ref(p.src)}</span><span class="v">${eur(p.v, p.v < 0)}<small>${rangeTxt(p.lo, p.hi)}</small></span>`).join("")}
-        ${state.netBack && k.flowback ? `<span>${t("Earned back from the war effort (real gain × genuinely extra)")}</span><span class="v">${eur(-k.flowbackProfit, true)}</span>` : ""}</div>
-    </section>
-    ${backSec}
-    ${c.coverage ? `<section class="section"><h3>${t("Data coverage")}</h3><div class="cov">${c.coverage.map(p => `<div class="cov-row"><span class="dot ${p.status}" title="${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}"></span><span>${t(p.part)}: <span class="${p.status === "missing" ? "miss" : ""}">${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}</span></span><span class="n">${dataText(p.note)}</span></div>`).join("")}</div>
-      <p class="key" style="margin-top:8px">${t("Estimated parts carry a wider range. Nothing is left at zero because data is missing.")}</p></section>` : ""}
-    <section class="section">
-      <h3>${t("Per year against the pre-war level")}</h3>
-      ${miniChart(c.T.paid, "rus", t("Paid to Russia"), c.to_rus?.src)}
-      ${miniChart(c.T.soldRus, "sold", t("Sold to Russia"), c.from_rus?.src)}
-      ${miniChart(c.T.buyUkr, "ukr", t("Bought from Ukraine"), c.buy_ukr?.src)}
-      ${miniChart(c.T.sellUkr, "back", t("Sold to Ukraine"), c.sell_ukr?.src)}
-      <div class="key" style="margin-top:8px">${t("Dashed line: the level expected without the war (from 2021, by the best back-tested model). Blue shading helps Ukraine, orange helps Russia, grey is a drop caused by the war (not counted), ochre is extra sales to Ukraine (money flowing back). 2026 (open dot) is January to August shown as a yearly rate; where a source has not published 2026 yet, it is projected from 2025.")}</div>
-    </section>
-    ${aidCats.length ? `<section class="section"><h3>${t("Aid to Ukraine by type")}</h3><p class="key">${t("Kiel Institute's own figure for this country's bilateral aid: {kiel}. On the map, adjusted: {adj} (donated weapons at their market value, loans at their gift to Ukraine).", { kiel: eur(k.kielOwn), adj: eur(k.aidAdj) })}</p><div class="kv">${aidCats.map(([k2, v]) => `<span>${t({ military: "Military", financial: "Financial", humanitarian: "Humanitarian" }[k2] || k2)}${chip(c.aid.cert || "A")}${ref(c.aid.src)}</span><span class="v">${eur(v)}</span>`).join("")}</div></section>` : ""}
-    ${companies}
-    ${pp.length ? `<section class="section"><h3>${t("People")}</h3><div class="people">${pp.join("")}</div></section>` : ""}
-    ${details.length ? `<details class="more"><summary>${t("More details")}</summary><div class="kv">${details.join("")}</div></details>` : ""}
-    <details class="more"><summary>${t("How this is calculated")}</summary><ul class="how">
+        ${state.netBack && k.flowback ? `<span>${t("Earned back from the war effort (real gain × genuinely extra)")}</span><span class="v">${eur(-k.flowbackProfit, true)}</span>` : ""}</div>${backSec}`;
+  const band = `${methodLine(c, y, true)}${hormuzNote(c, y)}
+      <p class="note">${t("Trade counts at the seller's net gain: a euro paid to Russia counts only for what Russia keeps after its real costs (its taxes plus profit above a normal return), and extra purchases from Ukraine for what Ukraine keeps. Aid counts in full.")}</p>
+      ${baseNote(c)}
+      ${c.aid?.eu_share ? `<p class="note">${t("Trade figures are this country's own customs data (UN Comtrade). EU statistics (Eurostat) can show different figures for a single member, because they book goods where they enter the EU, such as Rotterdam or Antwerp.")} <a href="${REPO}docs/method/trade.md#why-un-comtrade-and-not-eurostat-for-eu-members" target="_blank" rel="noopener">${t("Why")}</a></p>` : ""}
+      ${launderedNote(c, k)}${fairShown ? "" : fairnessNote(c, k)}${paidArmsNote(c, k)}${structuralNote(c, k)}${dualUseNote(c)}
+      ${share}
+      ${c.hub ? `<p class="key" style="margin-top:8px"><b>${t("Transit hub:")}</b> ${dataText(c.hub)}.</p>` : ""}
+      ${c.coverage ? `<div class="sub-sec"><h4>${t("Data coverage")}</h4><div class="cov">${c.coverage.map(p => `<div class="cov-row"><span class="dot ${p.status}" title="${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}"></span><span>${t(p.part)}: <span class="${p.status === "missing" ? "miss" : ""}">${t({ ok: "reported", est: "estimated", missing: "missing" }[p.status])}</span></span><span class="n">${dataText(p.note)}</span></div>`).join("")}</div>
+      <p class="key" style="margin-top:8px">${t("Estimated parts carry a wider range. Nothing is left at zero because data is missing.")}</p></div>` : ""}
+      <p class="key"><button class="linkbtn" data-goview="how">${t("See all parts as a waterfall chart")}</button></p>
+      <details class="more"><summary>${t("How this is calculated")}</summary><ul class="how">
       <li>${t("<b>Pre-war level</b> = 2021 at pre-war prices for trade and services (company taxes: the 2018–2021 average). Purchases from Russia under €1bn a year start instead from the median of 2019, 2020 and 2021 at pre-war prices, so one odd year does not set them; 2021 is kept where a refinery opened or closed, or where the pre-war figures are only partner reports. What would have happened without the war is predicted from it: exports to Russia follow each country's other trade and GDP, which predicted better than holding 2021 flat in back-tests from 2008, 2013 and 2016; the rest, including trade with Ukraine, stays at the 2021 level (services with the travel recovery after COVID). The tested error of that prediction is part of every range. Trade that already existed before the war does not count; a fall in trade with Ukraine caused by the war is not held against a country.")}</li>
       <li>${t("<b>Two numbers, and their sum</b>. <b>Support for Ukraine</b> = aid (loans counted as gifts at their value to Ukraine, incl. undisclosed estimates, EU-level aid by budget share and new IMF and World Bank lending) + private donations + refugee hosting + extra purchases from Ukraine at Ukraine's net gain{back}. <b>Kept from Russia</b> = how much less the country paid Russia than without the war (below zero: how much more), from the drop or rise in what it paid Russia for fuel, goods, services and weapons (at Russia's net gain), fuel made from Russian crude bought via other countries, the extra paid for Russian fuel because of war-time prices, taxes paid in Russia by its companies, gold and hidden payments, what its sellers earned from Russia (at their net gain), and weapons sent to Russia unpaid. <b>Russian money frozen</b>, the return Russia lost on its reserves frozen here, is not a payment: it is a line of its own, added to the net only. Migrants' wages sent home from Russia are not in it: they are shown as a marker. What Russia took from the country's companies (seized assets, the forced discount and exit fee when they sold out) is not in it either: the country did not choose to move that money, so it is counted in the cost to the country. Gas that Russia cut off itself is inside this number and labelled where Russia cut it. Each of the two numbers has a map of its own. The net, their sum plus Russian money frozen, is the main map: it adds two different things, help given to Ukraine and money kept from Russia, and much of what one country stopped paying, Russia sold to others. Hosting refugees counts for every host except Belarus, a co-belligerent: its hosting cost is shown as a label only.", { back: state.netBack ? t(", minus money flowing back from Ukraine at the seller's net gain") : "" })}</li>
       <li>${t("<b>One rule for every seller</b> (round 13): a sale counts at what the seller really gains, its taxes plus profit above a normal return, for every country alike: Russia's sales, Ukraine's sales, sales to Russia, money flowing back, services, shipping and paid weapons. The normal return is 5% a year above inflation after company tax, plus the country's risk premium. For manufactured goods that leaves 0–10 cents per euro; for Russian oil and gas about 60. A second factor keeps only the part that is genuinely extra business. Migrants' wages sent home from Russia are not counted: they are individuals' wages, not a country's choice, and are shown as a marker. Aid, refugee hosting, unpaid weapons and money not paid count in full.")}</li>
@@ -2680,9 +2748,31 @@ function countryPanel(c) {
       <li>${t("<b>Transit</b>: gas, oil and goods are counted where they are used, not where they cross the border. Gas passing through Slovakia, Austria, Germany or Bulgaria is counted for the country that burns it; fuel resold by trading hubs (Singapore, the Netherlands, Belgium, Greece, Malta) for the hub's customers; gold passed through Hong Kong for mainland China and its other buyers.")}</li>
       <li>${t("<b>Margins of error</b>: every part has a middle value and a likely range for the data and model uncertainty given the method, calibrated by judgement to about 90% (not measured). The range comes from the data where the sources give one (alternative pre-war baselines, reporting differences, spread between methods); otherwise from the certainty letter (A ±5%, B ±15%, C ±35%, D ±70%). Totals combine the parts' margins as errors, correlated where parts share inputs (with the sign of each part). A part that rests on the modelled no-war level and a modelled share is at best C. Each headline number's letter weighs two things: how much of it rests on parts graded A or B (primary data) and on D (judgement), and how wide its likely range and method band are against the value. A: at least 75% on A–B, at most 5% on D, spread at most half the value. B: at least half on A–B, at most 15% on D, spread at most the value. C: at most 35% on D, spread at most 2.5 times the value. Else D. The method band shows each number under other method choices: the windfall in full or left out, loans at the war-time yield, EU refiners' exports, laundered oil, the fuel mix, freight, the normal return, the gas Russia cut off left out, redirected trade (counted half against the buyers who cut and half against those who bought more), refugees at gross cost or at one common cost per refugee, 2026 at 2025 prices and 2024 GDP as the denominator. Russian money frozen is a line of its own, added to the net only.")}</li>
       <li>${t("<b>Top lists</b> leave out economies under {min} GDP, and countries whose direction is uncertain: the likely range or any method-band alternative crosses zero.", { min: tight(money(num(MIN_GDP_RANK), "bn")) })}</li>
-    </ul></details>
-    ${sourcesHtml()}
-  </div></details></div>`;
+    </ul></details>`;
+  const markers = `${chplNote(c)}${remitNote(c)}${takenNote(c, k)}`;
+  const choice = `${sanctionNote(c, k)}${armsNote(c, k)}${blockedNote(c, k)}`;
+  const time = `${miniChart(c.T.paid, "rus", t("Paid to Russia"), c.to_rus?.src)}
+      ${miniChart(c.T.soldRus, "sold", t("Sold to Russia"), c.from_rus?.src)}
+      ${miniChart(c.T.buyUkr, "ukr", t("Bought from Ukraine"), c.buy_ukr?.src)}
+      ${miniChart(c.T.sellUkr, "back", t("Sold to Ukraine"), c.sell_ukr?.src)}
+      <div class="key" style="margin-top:8px">${t("Dashed line: the level expected without the war (from 2021, by the best back-tested model). Blue shading helps Ukraine, orange helps Russia, grey is a drop caused by the war (not counted), ochre is extra sales to Ukraine (money flowing back). 2026 (open dot) is January to August shown as a yearly rate; where a source has not published 2026 yet, it is projected from 2025.")}</div>`;
+  const background = `${aidCats.length ? `<div class="sub-sec"><h4>${t("Aid to Ukraine by type")}</h4><p class="key">${t("Kiel Institute's own figure for this country's bilateral aid: {kiel}. On the map, adjusted: {adj} (donated weapons at their market value, loans at their gift to Ukraine).", { kiel: eur(k.kielOwn), adj: eur(k.aidAdj) })}</p><div class="kv">${aidCats.map(([k2, v]) => `<span>${t({ military: "Military", financial: "Financial", humanitarian: "Humanitarian" }[k2] || k2)}${chip(c.aid.cert || "A")}${ref(c.aid.src)}</span><span class="v">${eur(v)}</span>`).join("")}</div></div>` : ""}
+      ${companies}
+      ${pp.length ? `<div class="sub-sec"><h4>${t("People")}</h4><div class="people">${pp.join("")}</div></div>` : ""}
+      ${details.length ? `<div class="sub-sec"><h4>${t("More details")}</h4><div class="kv">${details.join("")}</div></div>` : ""}`;
+  // the folds are built first (ref() numbers the sources as they are cited); the sources come last
+  const folds = [
+    fold("f-cost", t("What it cost {name}", { name: c.name }), cost),
+    fold("f-band", t("Method band and alternatives"), band),
+    fold("f-markers", t("Markers: critical goods, wages, taken by Russia"), markers),
+    fold("f-choice", t("Sanctions or own choice"), choice),
+    fold("f-time", t("Per year against the pre-war level"), time),
+    fold("f-bg", t("Aid, companies and people"), background),
+    fold("f-share", t("Share and compare"), figCard + tools),
+  ].join("");
+  return head(c.name, meta) + `<div class="panel-body">
+    ${first}
+    <div class="pfolds">${folds}${fold("f-src", t("Sources"), sourcesHtml().replace(/<h3>[^<]*<\/h3>/, ""))}</div></div>`;
 }
 
 function comparePanel(a, b) {

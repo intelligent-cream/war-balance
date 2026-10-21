@@ -16,30 +16,41 @@ counted" switches ([decisions](../decisions.md#round-17-redesign)).
   grey means and what the streams show), a one-row legend ("toward Russia ← no clear change → toward Ukraine"; "Russia
   ← no change → Ukraine" on phones; "More" opens the steps and keys) and two buttons, **Highlights** and **Filters**.
   Nothing else: no control bar, title box or zoom buttons.
-- **One colour rule**: blue toward Ukraine, orange toward Russia, grey no clear change (including "too close to call",
-  without dots), with the site's colour-blind-safe stepped blues and oranges in dark and light themes. Economies under
-  EUR 5bn GDP take the lightest step of their direction.
+- **One colour rule**: blue toward Ukraine, orange toward Russia, grey no clear change, with the site's colour-blind-safe stepped blues and oranges in dark and light themes. Economies under
+  EUR 5bn GDP take the lightest step of their direction. A number that is "too close to call" (its likely range or
+  method band crosses zero) takes a faded colour of its leaning direction: its own colour mixed halfway toward the
+  neutral grey, with no dots or outline ([decisions](../decisions.md#round-17-redesign)).
 - **Money streams** (SVG): blue to Kyiv sized by support for Ukraine in €, orange to Moscow sized by how much more the
   country paid Russia than without the war in € (the map's numbers, not gross trade); the 12 largest each way; a
   country's own streams on hover or when picked; a highlight's countries' streams; moving dashes, static arrows with
   reduced motion; off by default on phones. The old gross flow lines (canvas) are an option, "Gross trade flows".
 - **Hover card**: support for Ukraine and kept from Russia as two bars, each with its sentence ("paid Russia €65.8bn
   (1.6% of GDP) less than without the war"), the net with its range, and the orange caveat for orange countries.
-- **Filters drawer** (right side; full screen on phones), collapsed by default, a dot on the button when anything
-  differs from the default: find a country, theme, language; the views (Net, Support for Ukraine, Kept from Russia,
-  Cost to the country); the measure (% of GDP, per person, total €) and the quick views "€ to Ukraine" and "Change in €
-  to Russia"; **what's counted** (16 switches with world totals; any switch off shows "Custom mix, not the official
-  figures" with "Reset to the official numbers" under the title, in the drawer, panel and tooltip); region, group (EU,
-  G7, NATO, BRICS, former Soviet Union), size and year; the top ten of the current view, Top lists and the pages
-  (Ranking, Ukraine vs Russia, Table & data, How it works, Sources); the map layers (streams, gross trade flows, the
-  three markers) and zoom.
+- **Filters drawer** (right side; a bottom sheet on phones, with the map visible above it), collapsed by default, a dot
+  on the button when anything differs from the default. Seven sections with the same heading, spacing and left edge
+  (owner: the drawer "can look better"): 1. **the map shows** (Net, Support for Ukraine, Kept from Russia, Cost to the
+  country) and the **measure** (% of GDP, per person, total €) as full-width segmented controls, with the quick views
+  "€ to Ukraine" and "Change in € to Russia"; 2. **find a country**; 3. **what's counted**, folded by default (16
+  on/off switches with world totals, grouped toward Ukraine, kept from Russia and own line; "Showing the official
+  numbers" under the heading, or "Custom mix, not the official figures" with "Reset to the official numbers", also
+  under the title, in the panel and the tooltip); 4. **where and when**: region, group (EU, G7, NATO, BRICS, former
+  Soviet Union), size and year; 5. **map layers**: streams, gross trade flows, the three markers (on/off switches) and
+  zoom; 6. **rankings and top lists**: the pages (Map, Ranking, Ukraine vs Russia, Table & data, How it works,
+  Sources), Top lists, and the top ten and bottom five of the current view, folded; 7. **display**: light or dark,
+  language.
 - **Highlights**: seven chips; one highlights its countries (others dimmed) and shows a small closable fact card with
   its caveat.
-- **Country panel**: side panel on desktop, bottom sheet on phones. A one-sentence headline; the total with its range
-  and certainty in words; the two parts; "What changes the meaning here"; the five biggest parts and "Show all parts",
-  each opening its method in place (how, why with its decisions, the country's sources with exact tables, method page,
-  trace); everything else (map value, share, compare, method band, grades, markers, cost, money flowing back, per year,
-  coverage, numbered sources) behind "Show more".
+- **Country panel**: side panel on desktop, bottom sheet on phones; each number once (owner: "all the information
+  (some duplicated)"). 1. The header: name, a one-sentence lead in words (which part the net mostly is and why), and
+  the net with €, likely range, certainty and average year. 2. **The two parts**, side by side (stacked on phones):
+  support for Ukraine and kept from Russia, each with its value in % and €, a bar, what it is in words, likely range,
+  grade and average year; Russian money frozen on its own line. 3. **What changes the meaning here**: at most four
+  notes. 4. **The five biggest parts**, each opening its method in place (how, why with its decisions, the country's
+  sources with exact tables, method page, trace), and "Show the other N parts" (only the rest). 5. Folded sections:
+  what it cost the country (with money flowing back), method band and alternatives (with the method notes, coverage,
+  "How this is calculated" and a link to the waterfall in How it works), markers (critical goods, wages, taken by
+  Russia), sanctions or own choice, per year against the pre-war level, aid, companies and people, share and compare
+  (with the map value in € per person or total €), and the numbered sources.
 - **Other pages**, from Filters or the page tabs in the header line once one is open: Ranking, Ukraine vs Russia,
   Table & data (CSV, CSV with every part, JSON), How it works, and Sources (the method in four lines, how decisions are
   made, then every money flow with how, why, sources and research files).

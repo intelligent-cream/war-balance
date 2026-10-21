@@ -561,6 +561,18 @@ is byte-identical before and after (check 32 still matches the browser with Node
     Russia, where those are the main part).
 11. **Share cards and pages regenerated** (`pipeline/share_cards.mjs`) with the new name, the sign in words and the
     one colour rule; check 24 passes on all 231 pages.
+12. **Too close to call is faded, not grey** (owner): a number whose likely range or method band crosses zero takes the
+    colour of its leaning direction mixed halfway toward the neutral grey, on the map, in the hover card's bars and in
+    the panel's big number; no dots, no outline; still not ranked and without a stream. Grey is now only no clear
+    change and the net of a country that mainly earned from the war effort. Legend, ⓘ and the panel's note say so in
+    all six languages; check 32 expects the faded colour. 61 countries on the default map change from grey to faded.
+13. **The Filters drawer in seven calm sections** (owner): the map shows and measure, find a country, what's counted
+    (folded), where and when, map layers, rankings and top lists, display; on/off switches, full-width segmented
+    controls, a sticky header and a bottom sheet on phones. No control removed.
+14. **The country panel, each number once** (owner): header with a lead in words and the net with its range; the two
+    parts once, with value, range and grade; at most four notes; the five biggest parts and the other parts; then
+    folded sections for cost, method band, markers, sanctions or own choice, per year, aid and companies, share and
+    sources. The net had appeared four times, each part up to six times; the duplicates are gone.
 
 **Not ported from the prototypes**: the bivariate map (replaced by the one colour rule), concept 2's workbench layout,
 v2's separate Rankings page (the Ranking view and the drawer's top ten cover it), option C's two maps, the prototypes'

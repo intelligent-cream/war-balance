@@ -256,7 +256,7 @@ country panel and highlights, and concept 2's "what's counted" switches. **No nu
 |---|---|---|---|
 | **Map first**: on load only the slim research-preview banner, one header line with ⓘ, a one-row legend and two buttons (Highlights, Filters) | owner | the controls covered the map | display |
 | **Filters collapsed by default**, with a dot when anything differs | owner | one place for every control | display |
-| **One colour rule**: blue toward Ukraine, orange toward Russia, grey no clear change; no teal, no bivariate map; "too close to call" grey without dots; gold gone; the EUR 5bn colour clamp kept | owner | two directions, two hues | display |
+| **One colour rule**: blue toward Ukraine, orange toward Russia, grey no clear change; no teal, no bivariate map; "too close to call" grey without dots (later in round 17, at the owner's request, a faded colour of its leaning direction instead); gold gone; the EUR 5bn colour clamp kept | owner | two directions, two hues | display |
 | **"Kept from Russia"** replaces "Change in payments to Russia" everywhere, with the sign in words ("paid Russia €65.8bn (1.6% of GDP) less than without the war") | owner | the old name read as "paid more" next to a plus | wording; CSV and JSON fields renamed |
 | **Streams = the map's numbers**: support to Kyiv, how much more was paid to Moscow, in €; top 12 each way; off on phones; the gross flow lines optional | owner | one story on one map | display |
 | **What's counted**: switches that recompute everything through `calc()`, with a "Custom mix, not the official figures" note and reset; custom mixes are not shared | owner | readers asked for it; the note keeps it honest | none by default |

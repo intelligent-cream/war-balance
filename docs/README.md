@@ -18,7 +18,7 @@ Since round 15 the map opens with their sum, and shows each part as a map of its
 
 The gross views "To Ukraine" and "To Russia" were removed in round 15: they include normal trade and measure something different. The gross flows are still in each country's panel (the small charts, such as "Bought from Ukraine"), in the table and downloads, and in the gross trade flows (an option in Filters since round 17).
 
-Each number is a share of one year's GDP (the average of 2022–2024), so a small country that did a lot is not hidden behind a large one that did a little. A number whose likely range or method band crosses zero is too close to call: grey on the map, marked "direction uncertain" and left out of the rankings. Per person and total euros are one click away in Filters. With **What's counted** in Filters a reader can leave parts out; every number then recomputes and the page says "Custom mix, not the official figures", with a button back to the official numbers (a custom mix cannot be shared).
+Each number is a share of one year's GDP (the average of 2022–2024), so a small country that did a lot is not hidden behind a large one that did a little. A number whose likely range or method band crosses zero is too close to call: a faded colour of its leaning direction on the map, marked "direction uncertain" and left out of the rankings. Per person and total euros are one click away in Filters. With **What's counted** in Filters a reader can leave parts out; every number then recomputes and the page says "Custom mix, not the official figures", with a button back to the official numbers (a custom mix cannot be shared).
 
 ## How to read a number
 

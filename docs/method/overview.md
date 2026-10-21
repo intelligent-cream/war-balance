@@ -243,7 +243,7 @@ Until round 15 the map had two more views, **To Ukraine** (aid + refugees + purc
 - **No country is rewarded for missing data.** Gaps are filled with estimates with wide ranges, never left at zero ([`gaps.md`](../../research/2026-10/gaps.md) lists per country what is reported or estimated).
 - **Counted where used.** Gas where it is burned, fuel resold by hubs at the final buyer, goods re-exported by hubs at the country that made them, Hong Kong's Russian gold partly at mainland China.
 - **Counted once.** [`check_data.py`](../../pipeline/check_data.py) tests for double counting ([pipeline.md](../reference/pipeline.md#checks)).
-- **Rankings** leave out economies under EUR 5bn GDP and, since round 15, countries whose direction is uncertain: the likely range **or any method-band alternative** gives the number the other sign (`MIN_GDP_RANK`, `uncertain()` and `rankList()` in [`site/index.html`](../../site/index.html)). The rule applies to all three rankings; the map shows such countries in grey, "too close to call" (dotted until round 17), and the panel marks them "direction uncertain". Among economies above EUR 5bn, 110 are uncertain on kept from Russia and 104 on the net (most of them small amounts near zero), among them Belarus, Türkiye, Kyrgyzstan, Georgia, Nepal and the UAE: that means the sign is uncertain, not that they are neutral. Each of the three numbers has its own map and ranking (round 15).
+- **Rankings** leave out economies under EUR 5bn GDP and, since round 15, countries whose direction is uncertain: the likely range **or any method-band alternative** gives the number the other sign (`MIN_GDP_RANK`, `uncertain()` and `rankList()` in [`site/index.html`](../../site/index.html)). The rule applies to all three rankings; the map shows such countries in a faded colour of their leaning direction, "too close to call" (dotted until round 17, then grey, faded since the owner's later round-17 change), and the panel marks them "direction uncertain". Among economies above EUR 5bn, 110 are uncertain on kept from Russia and 104 on the net (most of them small amounts near zero), among them Belarus, Türkiye, Kyrgyzstan, Georgia, Nepal and the UAE: that means the sign is uncertain, not that they are neutral. Each of the three numbers has its own map and ranking (round 15).
 
 ## A worked reading
 
@@ -296,9 +296,9 @@ Income lost on sales to Russia given up is +1.1 (was +21.7 under value kept): Ge
 
 Round 17 (redesign, the owner's choice of prototype B) changed how the numbers are shown, not the numbers. The map
 opens with only a header line, a one-row legend, the research-preview banner and two buttons (Highlights, Filters).
-**One colour rule** applies everywhere: blue toward Ukraine, orange toward Russia, grey no clear change, including "too
-close to call" (no dots), support below zero, a net that is mainly earning from the war effort and a gain in the cost
-view. The second number is called **kept from Russia**. **Money streams** show the map's two numbers in euros (support
+**One colour rule** applies everywhere: blue toward Ukraine, orange toward Russia, grey no clear change, support below zero, a net that is mainly earning from the war effort and a gain in the cost
+view. A number that is "too close to call" takes a faded colour of its leaning direction (its colour mixed halfway
+toward the grey; no dots, no outline). The second number is called **kept from Russia**. **Money streams** show the map's two numbers in euros (support
 for Ukraine to Kyiv; how much more a country paid Russia than without the war, that is minus kept from Russia, to
 Moscow), never gross trade. **What's counted** lets a reader switch parts off: `calc()` drops the parts in `OFF` in
 `live()`, so every total, band and grade follows, and the page says "Custom mix, not the official figures"; with every
