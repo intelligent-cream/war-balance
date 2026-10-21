@@ -291,3 +291,4 @@ The owner asked for a simpler site after round 19 went live. **No number changed
 | **Three views**: Map, Ranking, Sources; Ukraine vs Russia and Table & data removed, their old links open Ranking and Sources | owner | simpler | display |
 | **The ranking as clean as the map**: its title in the header line, its explanation in the ⓘ | owner | "more clean like the map" | display |
 | **Downloads at the end of Sources**, with the data gaps by country | owner (the table removed) | the data stay downloadable | downloads |
+| **No per person measure**: % of GDP or Total €; old `m=pp` links open % of GDP | owner | "not so relevant" | display |
