@@ -101,8 +101,8 @@ for (const [lens, q] of Object.entries(LENS)) {
 // the neutral "no change" colour (the clamp used to send negatives to the neutral bucket). Round 17 (approved by the
 // owner): one colour rule. A small economy whose direction is uncertain was the neutral grey until round 17; the owner
 // then asked for uncertain countries to show the faded colour of their leaning direction (its clamped colour mixed halfway
-// toward the neutral grey, scaleFor().fadedFor), so the check expects that faded lean colour, never the neutral grey and
-// never the full colour
+// toward the neutral grey, scaleFor().fadedFor; round 21: a pale tint of the same hue), so the check expects that faded
+// lean colour, never the neutral grey and never the full colour
 const SMALL = ["TUV", "PLW", "BTN", "DJI"];
 let nSmall = 0, nFaded = 0;
 for (const lens of ["net", "payments"]) {
@@ -114,7 +114,7 @@ for (const lens of ["net", "payments"]) {
       if (!c) { out.push({ iso, missing: true }); continue; }
       const v = scaled(c, lensValue(c));
       const paths = [...document.querySelectorAll("path.country")].filter(p => p.__data__ && (DATA[p.__data__.id] || DATA[INCLUDED[p.__data__.id]]) === c);
-      out.push({ iso, v, color: sc.colorFor(c, v), faded: sc.fadedFor(c, v), fills: paths.map(p => p.style.fill), neutral: sc.colors[4], want: sc.colors[v > 0 ? 5 : 3], unc: uncertain(c, 2026, HEAD_LENS[state.lens]) });
+      out.push({ iso, v, color: sc.colorFor(c, v), faded: sc.fadedFor(c, v), fills: paths.map(p => p.style.fill), neutral: sc.neutral, want: v > 0 ? sc.lightest.pos : sc.lightest.neg, unc: uncertain(c, 2026, HEAD_LENS[state.lens]) });
     }
     return out;
   }, SMALL);
