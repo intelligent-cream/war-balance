@@ -693,6 +693,27 @@ number changed** (every country's figures identical before and after). Log:
 | **The map opens on Europe and western Asia** (it cut through Africa); the whole world one zoom-out away | judgement | owner | the story is in Europe | display | `openView` |
 | **The country panel without boxes inside its box**: the tiles and the frozen-money row are separated by hairlines, more white space, the same content | judgement | owner | boxes inside boxes | display | CSS |
 
+## Round 22: views as tabs, sources and panel reorganised
+
+The owner: the views "are not really filters and they are kind of big decisions"; "make the sources easier to read,
+and easier to trace the data and method in the sources. Same for the single country view ... perfect gradual exposure
+and very well organised"; then a renaming, "do all of this renaming and make sure to do that everywhere". **No number
+changed** (every country's figures identical before and after). The second number, "Kept from Russia" from round 17 to
+round 21, is now **Business with Russia**: the rows of earlier rounds keep the old name as the record of what was
+decided then. Log: [round 22](decision-log.md#round-22-views-as-tabs-sources-and-panel-reorganised-21-october); steps:
+[changelog](changelog.md#round-22-views-as-tabs-sources-and-panel-reorganised).
+
+| decision | data or judgement | raised by | why | effect | where |
+|---|---|---|---|---|---|
+| **The views are the page's main tabs**: Map · Ranking · Sources in the header bar (a full-width row on phones), keyboard tabs; not in Filters any more | judgement | owner | they change the page, they do not filter it | display | `.vtabs`, `setView` |
+| **The country panel in three levels**: numbers first; then what makes up the number, one compact card per part (how, why, its sources one line each, one fold of exact tables, the links); then five closed groups with a preview (over time, context, how certain, facts, share and compare) replacing eight loose folds; last all the country's sources, closed, grouped by part and numbered in that order | judgement | owner | gradual exposure: each level only when asked | display | `methodCard`, `group`, `panelSources`, `renumber` |
+| **The Sources view as a guide**: how to trace a number (source → research note → part on the map → the country's number), the method in four cards, then the money flows as closed cards in four groups with a table of contents and a search; one fold of exact tables per flow | judgement | owner | 16,800 px of open text before; now each flow opens on demand | display | `renderSources`, `FLOW_GROUPS`, `wireSources` |
+| **Site name "Follow the Money: Ukraine"** (was "Follow the Money: Ukrainian Aid") in the page, its tags, the share cards and pages, the credit line, the downloads (`follow-the-money-ukraine_*`) and the docs; the address stays | judgement | owner | the site is about money in both directions, not only aid | display; downloads | `index.html`, `share_cards.mjs`, `views2.js` |
+| **The question "Where did each country's money move: toward Ukraine or toward Russia?"** (was "Who supported Ukraine, and who paid Russia less, or more?") | judgement | owner | one question for the one map | display | header, tags |
+| **Business with Russia** replaces "Kept from Russia" as the second number's name (positive: reduced; `lens=payments`, `lens=kept` and now `lens=business` open it); the panel says what it holds: buying from and selling to Russia, services, shipping and company taxes paid there, each compared with no war | judgement | owner | "kept from" read as money held back; business is what changed | display | `OLD_LENS`, tiles |
+| **Every number in a sentence or tile is a verb and an amount**: "Toward Ukraine by 3.2% of GDP", "Supported Ukraine with …", "Reduced (or Increased) business with Russia by …", "Froze Russian money worth …"; the amount has no sign and a % always says "of GDP"; the net in words adds the three. Charts keep their signed axes | judgement | owner | "by 1.6%" must not read as a 1.6% fall in trade, and a sign in a sentence was misread | display | `VERBS`, `verb`, `netSentence` |
+| **CSV columns `business_with_russia_reduced_*`** (were `kept_from_russia_*`), same sign: positive = reduced | judgement | owner | the same name everywhere | downloads | `views2.js` |
+
 ## What is data and what is estimated
 
 - **Reported data** (certainty A–B): aid (Kiel), customs trade, fossil fuel payments (CREA), GDP, refugee counts.

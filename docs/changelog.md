@@ -706,6 +706,31 @@ The owner: the other borders as Google Maps shows them for most of the world. So
 Northern Cyprus part of Cyprus, merged into one shape on load (`googleBorders`). Kosovo, Western Sahara, Taiwan and
 Palestine stay as drawn, as on Google Maps. No number changed.
 
+## Round 22: views as tabs, sources and panel reorganised
+
+Owner requests; no number changed (all 231 entries identical before and after). Decisions:
+[round 22](decisions.md#round-22-views-as-tabs-sources-and-panel-reorganised).
+
+1. **Views as tabs**: Map · Ranking · Sources in the header bar (`.vtabs`, role="tablist", arrow keys, Home and End);
+   a full-width row under the question on phones. The Views block is gone from Filters; check 31 now asserts the
+   header tabs and that the drawer has no view buttons.
+2. **Country panel in three levels**: "What makes up the number" (was "The biggest parts"); one compact card per part
+   (`methodCard`: value and range in words, how, why, sources one line each with one `linksFold` of exact tables,
+   links); five groups replace eight folds (`group`: Over time, Context, How certain, Facts, Share and compare, each
+   with a one-line preview); all sources last, closed, grouped by part and renumbered in that order (`panelSources`,
+   `renumber`; a [n] mark opens it at that source). The panel header now stays above the bars' ticks.
+3. **Sources view**: how to trace a number, the method in four cards, decisions folded; flows as closed cards in four
+   groups (`FLOW_GROUPS`) with a sticky table of contents, a search (`wireSources`), Expand all and Collapse all; on
+   phones a search and a "Jump to a flow" list. `#view=sources&flow=X` opens that flow.
+4. **Renaming** (owner: "do all of this renaming and make sure to do that everywhere"): "Follow the Money: Ukraine";
+   the question "Where did each country's money move: toward Ukraine or toward Russia?"; **Business with Russia** for
+   the second number (was "Kept from Russia"); `lens=business` opens it too. Every number in a sentence or tile is a
+   verb and an amount (`VERBS`, `verb`, `verbAround`, `netSentence`): the net block, the tiles, the hover card, the
+   ranking's hover card and row labels for screen readers, the share text, the share cards and pages. Legend of the
+   Russia map: "increased ← no clear change → reduced". CSV columns `business_with_russia_reduced_*`; download names
+   `follow-the-money-ukraine_*`. Docs, README and licences use the new names; earlier rounds' records keep the old ones.
+5. **Strings**: about 75 new or changed strings in all six languages; the ones no longer used are removed.
+
 ## See also
 
 - [limitations.md](limitations.md): what is still open
