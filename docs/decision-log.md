@@ -309,3 +309,4 @@ The owner asked for a cleaner, more professional look. **No number changed.** De
 | **The map opens on Europe and western Asia** | owner | it cut through Africa | display |
 | **The country panel without boxes inside its box** | owner | boxes inside boxes | display |
 | **Crimea is Ukraine** on the map: the map data drew it inside Russia; it is now part of Ukraine's shape | owner | Crimea is Ukraine | display |
+| **Borders as on Google Maps** for most of the world: Somaliland part of Somalia, Northern Cyprus part of Cyprus; Kosovo, Western Sahara, Taiwan and Palestine as drawn | owner | the same pattern as Google Maps | display |
