@@ -423,9 +423,7 @@ details.info > summary::-webkit-details-marker { display: none; }
 .pop .sub, .drawer .sub { font-size: 12.5px; color: var(--ink-soft); margin: 4px 0; }
 .custom { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; background: var(--custom); color: var(--custom-ink); border-radius: 6px; padding: 5px 9px; font-size: 13px; font-weight: 600; margin-top: 5px; line-height: 1.35; }
 .custom button { border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 6px; padding: 2px 8px; cursor: pointer; font-size: 12.5px; font-weight: 600; }
-.hdr .views { display: none; margin-top: 6px; }
 .app:not([data-view="map"]) .hdr { max-width: calc(100% - 24px - 230px); }
-.app:not([data-view="map"]) .hdr .views { display: inline-flex; }
 .app:not([data-view="map"]) .view { top: var(--hdr-b, 96px); }
 /* the two buttons */
 .tr { position: absolute; z-index: 12; top: 10px; right: max(12px, env(safe-area-inset-right, 0px)); display: flex; gap: 6px; }
@@ -687,7 +685,6 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
   .hdr { left: 8px; top: 8px; max-width: calc(100% - 16px); padding: 4px 8px; }
   .hed { font-size: 14px; }
   .app:not([data-view="map"]) .hdr { max-width: calc(100% - 16px); }
-  .app:not([data-view="map"]) .hdr .views { display: flex; flex-wrap: nowrap; overflow-x: auto; max-width: 100%; }
   .tr { top: auto; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); right: 8px; }
   .legend { left: 8px; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); font-size: 10.5px; padding: 3px 6px; max-width: calc(100% - 190px); }
   .legend .row1 { gap: 5px; }
@@ -758,13 +755,6 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
         <span class="per" id="per"></span>
         <details class="info" id="info"><summary aria-label="What this map shows" data-i18n-aria="What this map shows" title="What this map shows" data-i18n-title="What this map shows">ⓘ</summary><div class="pop" id="infopop"></div></details></h1>
       <div class="custom" id="custom" role="status" hidden></div>
-      <div class="views" role="group" aria-label="Show as" data-i18n-aria="Show as">
-        <button data-view="map" aria-pressed="true" data-i18n="Map">Map</button>
-        <button data-view="rank" aria-pressed="false" data-i18n="Ranking">Ranking</button>
-        <button data-view="bubbles" aria-pressed="false" data-i18n="Ukraine vs Russia">Ukraine vs Russia</button>
-        <button data-view="table" aria-pressed="false" data-i18n="Table &amp; data">Table &amp; data</button>
-        <button data-view="sources" aria-pressed="false" data-i18n="Sources">Sources</button>
-      </div>
     </header>
     <div class="tr">
       <button class="btn" id="hlbtn" aria-expanded="false" aria-controls="hlpanel"><span data-i18n="Highlights">Highlights</span><span class="dot" hidden></span></button>

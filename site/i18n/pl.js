@@ -110,7 +110,6 @@ I18N.pl = {
   "Language": "Język",
   "Research preview.": "Wersja badawcza.",
   "Loading data…": "Wczytywanie danych…",
-  "Show as": "Pokaż jako",
   "Map": "Mapa",
   "Ranking": "Ranking",
   "Ukraine vs Russia": "Ukraina vs Rosja",

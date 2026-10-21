@@ -110,7 +110,6 @@ I18N.nl = {
   "Language": "Taal",
   "Research preview.": "Onderzoeksversie.",
   "Loading data…": "Gegevens laden…",
-  "Show as": "Toon als",
   "Map": "Kaart",
   "Ranking": "Ranglijst",
   "Ukraine vs Russia": "Oekraïne vs Rusland",

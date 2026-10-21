@@ -110,7 +110,6 @@ I18N.uk = {
   "Language": "Мова",
   "Research preview.": "Попередня версія дослідження.",
   "Loading data…": "Завантаження даних…",
-  "Show as": "Показати як",
   "Map": "Мапа",
   "Ranking": "Рейтинг",
   "Ukraine vs Russia": "Україна проти Росії",
