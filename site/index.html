@@ -629,6 +629,10 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
 .psec-h { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 2px; padding: 4px 6px; border-bottom: 2px solid currentColor; font-weight: 700; font-size: 13.5px; }
 .psec-ru .psec-h { color: var(--rus-text, var(--rus)); }
 .psec-ua .psec-h { color: var(--ukr); }
+.psec-mid .psec-h { color: var(--ink-soft); }
+.psec-h small { font-weight: 400; font-family: var(--font-body); }
+.nodata-big { margin: 8px 0; padding: 10px 12px; border-radius: 8px; background: var(--sea); }
+.nodata-line { margin: 6px 6px 0; font-size: 12.5px; color: var(--ink-soft); }
 .psec-h b { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
 .psec details.allparts > summary { font-size: 12.5px; padding: 6px; }
 .psec-sum { margin: 10px 0 0; padding: 8px 10px; border-radius: 8px; background: var(--sea); font-size: 13px; font-variant-numeric: tabular-nums; }
@@ -1288,7 +1292,11 @@ function calc(c, y, opt = {}) {
   const aidCert = weakest([cAid, adjShare >= 0.25 ? "C" : adjShare >= 0.05 ? "B" : "A"]);
   const cRus = weakest([c.to_rus?.cert, "C"]), cTrade = weakest([c.buy_ukr?.cert, "C"]);
   const src = k => (c[k]?.src || []);
+  // round 26 (the owner: "if I don't have any data, we shouldn't put anything there"): a trade part with no observation
+  // of the country's own for the war years (c.no_data, build_data.py mark_no_data) counts as zero, marked "no data"
+  const noData = new Set(c.no_data || []);
   const part = (k, label, r, cert, srcs) => {
+    if (noData.has(k)) return { k, label: t(label), en: label, v: 0, lo: 0, hi: 0, cert, src: srcs, nodata: true };
     let [v, lo, hi] = r;
     lo = Math.min(lo, v); hi = Math.max(hi, v);
     if (Math.abs(hi - lo) < 1e-9) { lo = v - Math.abs(v) * RANGE[cert]; hi = v + Math.abs(v) * RANGE[cert]; }
@@ -1443,6 +1451,8 @@ function calc(c, y, opt = {}) {
     shiftParts: live(shiftParts), backParts: live(backParts), costParts: live(costParts),
     flowbackProfit: back.length ? -total(back)[0] : 0,
     shift, shiftLo, shiftHi, shiftCert: gradeTotal(shiftAll),
+    // round 26: nothing observed of its own at all (every part is "no data" or zero): "No data" on the map, unranked
+    noData: !!(c.no_data && c.no_data.length) && shiftAll.length === 0,
     uaBal, uaLo, uaHi, uaGave, uaBack, rusBal, rusLo, rusHi, frozen, frozenLo, frozenHi, frozenParts,
     rusPaid, rusPaidLo, rusPaidHi, rusEarned, rusEarnedLo, rusEarnedHi, milPaidShare: fPaid, undelivered: -(und3[0] + undEu3[0]),
     // negative overall mainly because it earned from the war effort, not because of money toward Russia
@@ -1564,12 +1574,14 @@ function pSameSign(v, lo, hi) {
 // { side: "ukraine" | "russia" | null (uncertain direction), p: the chance of the middle value's sign, alts: the share of
 // method-band alternatives with that sign } for a number that is not certain; null when it is certain (or a party to the war)
 function leanInfo(c, y, q) {
-  if (y < 2022 || !c.gdp || PARTY_TO_WAR.has(c.iso3) || !uncertain(c, y, q)) return null;
+  if (y < 2022 || !c.gdp || PARTY_TO_WAR.has(c.iso3) || noDataAt(c, y) || !uncertain(c, y, q)) return null;
   const k = calc(c, y), v = HEAD3(k)[q], [lo, hi] = { ua: [k.uaLo, k.uaHi], rus: [k.rusLo, k.rusHi], net: [k.shiftLo, k.shiftHi] }[q];
   const alts = methodBands(c, y).alts, p = v ? pSameSign(v, lo, hi) : 0.5;
   return { side: v && p >= LEAN.p ? (v > 0 ? "ukraine" : "russia") : null, p, alts: alts.length ? alts.filter(a => a[q] * v > 0).length / alts.length : 1 };
 }
 function leaning(c, y, q) { const i = leanInfo(c, y, q); return i ? i.side : null; }
+// round 26 (owner: "if I don't have any data, we shouldn't put anything there"): no observation of its own at all
+const noDataAt = (c, y) => !!(c && c.no_data && y > 2021 && calc(c, y).noData);
 // Round 15 (review 4, H3; approved by the owner): each headline number gets a letter from two things. Data: the share of
 // its absolute value that rests on parts graded A or B (primary data) and on D (judgement). Spread: the width of its
 // likely range and method band together, against the value. A: at least 75% on A-B, at most 5% on D, spread at most
@@ -2339,11 +2351,11 @@ function paint() {
     // round 15: a number whose likely range or method band crosses zero is "direction uncertain"; round 17 (approved by
     // the owner): no dot pattern, and a faded colour of its leaning direction, not grey (the tooltip and the panel say
     // "leaning toward ..." or "uncertain direction", round 24b)
-    const party = !!(c && PARTY_TO_WAR.has(c.iso3) && state.year > 2021);
-    const unc = !party && !!(c && v != null && q && state.year > 2021 && Math.abs(v) >= (state.measure === "gdp" ? sc.neutralAt : 0) && uncertain(c, state.year, q));
+    const party = !!(c && PARTY_TO_WAR.has(c.iso3) && state.year > 2021), nd = noDataAt(c, state.year);
+    const unc = !party && !nd && !!(c && v != null && q && state.year > 2021 && Math.abs(v) >= (state.measure === "gdp" ? sc.neutralAt : 0) && uncertain(c, state.year, q));
     // a net below zero that is mainly earning from the war effort for Ukraine is not money toward Russia: grey (round 17)
-    const fill = party ? "url(#party)" : k?.earner ? C.mid : unc ? sc.fadedFor(c, v) : c && v != null ? sc.colorFor(c, v) : null;
-    d3.select(this).classed("nodata", !c || v == null).classed("uncertain", unc).style("fill", fill)
+    const fill = nd ? null : party ? "url(#party)" : k?.earner ? C.mid : unc ? sc.fadedFor(c, v) : c && v != null ? sc.colorFor(c, v) : null;
+    d3.select(this).classed("nodata", !c || v == null || nd).classed("uncertain", unc).style("fill", fill)
       .classed("dim", hs ? !(c && hs.has(c.n)) : !!(c && dimmedOut(c))).classed("hl", !!(hs && c && hs.has(c.n)));
   });
   // with a highlight on, Ukraine and Russia step back too
@@ -2389,7 +2401,7 @@ function renderLegend(sc) {
     <div class="keys"><span>${periodText()}, ${LANG !== "en" && state.measure !== "gdp" ? t(state.measure === "pp" ? "€ per person" : "€ billion") : measure}</span>
       <span>${sw(`<rect width="10" height="10" fill="${C.mid}"/>`)}${t("Grey: no clear change")}</span>
       <span>${sw(`<rect width="${ONE_SIDED.has(state.lens) ? 10 : 5}" height="10" fill="${sc.fade(sc.colors[5])}"/>${ONE_SIDED.has(state.lens) ? "" : `<rect x="5" width="5" height="10" fill="${sc.fade(sc.colors[1])}"/>`}`)}${t("Faded: leaning this way, or uncertain direction (the likely range or the method band crosses zero; not ranked)")}</span>
-      <span>${sw(`<rect width="10" height="10" fill="url(#hatch)"/>`)}${t("No data yet")}</span>
+      <span>${sw(`<rect width="10" height="10" fill="url(#hatch)"/>`)}${t("No data")}</span>
       <span>${sw(`<rect width="10" height="10" fill="url(#party)"/>`)}${t("Party to the war (with Russia): not ranked")}</span>
       <span>${t("Economies under {min} GDP: lightest shade of their direction only", { min: tight(money(num(MIN_GDP_RANK), "bn")) })}</span>
       ${state.lens === "net" ? `<span>${t("A country that earned more from the war effort for Ukraine than it gave is grey: that is not money toward Russia.")}</span>` : ""}
@@ -2735,6 +2747,7 @@ function tipHtml(c, name) {
   if (!c) return `<b>${name}</b>${t("No data yet")}`;
   if (state.year < 2022) return `<b>${c.name}</b>${t("2021 is the year before the war, the comparison year: every number is zero by definition.")}`;
   const y = state.year, k = calc(c, y);
+  if (k.noData) return `<b>${c.name}</b>${t("No data: there is no observation of its own for the war years, so nothing is counted.")}`;
   const net = `<b>${verb("net", k.shift, c)}</b> (${t("likely {lo} to {hi}", { lo: fmtMeasure(c, k.shiftLo, state.measure, true), hi: fmtMeasure(c, k.shiftHi, state.measure, true) })})`;
   // round 25: the country's top three story tags, as on its panel
   const tg = PARTY_TO_WAR.has(c.iso3) || !y ? [] : storyTags(c, k, y).slice(0, 3);
@@ -3242,6 +3255,15 @@ function baseNote(c) {
     ? t("Pre-war level of purchases from Russia: 2021, not the 2019–2021 median. The pre-war figures are only Russia's own export reports, mostly confidential (they may include arms), so this number is less reliable.")
     : t("Pre-war level of purchases from Russia: 2021, not the 2019–2021 median, because a refinery opened or closed: 2019–2020 do not describe the pre-war trade.")}</p>`;
 }
+// Round 26 (the owner, 22 October 2026: "these tags are weird, the US gets mostly sanctions which is not true at all if
+// you look at the breakdown"): sanctions a country set or agreed to are its own choice too, so the words say who set them.
+// The countries with a sanctions regime of their own (research/2026-10/gaps/sanctions_share.json "bans"); EU members
+// agreed to the EU's (Council Regulation 833/2014, adopted unanimously); others adopted the EU's measures themselves
+const EU27 = new Set("AUT BEL BGR HRV CYP CZE DNK EST FIN FRA DEU GRC HUN IRL ITA LVA LTU LUX MLT NLD POL PRT ROU SVK SVN ESP SWE".split(" "));
+const OWN_REGIME = { USA: "oil import ban of March 2022, EO 14066", GBR: "oil import ban from December 2022 and other import bans", JPN: "import bans of April 2022 and later, the G7 oil phase-out", CAN: "petroleum import ban of March 2022", AUS: "oil, gas and coal import ban of April 2022", NZL: "oil and gold import ban of June 2022", KOR: "export controls" };
+const ALIGNED = new Set("CHE LIE NOR ISL MNE ALB MKD BIH MDA".split(" "));
+const regimeOf = iso => (EU27.has(iso) ? "eu" : OWN_REGIME[iso] ? "own" : ALIGNED.has(iso) ? "aligned" : null);
+const REGIME_WORDS = { eu: "EU sanctions it agreed to as a member", own: "sanctions it set itself", aligned: "the EU's sanctions, which it adopted itself", null: "sanctions" };
 function sanctionNote(c, k) {
   if (!c.sanctions) return "";
   const flows = { paid: "to_rus", sold: "from_rus", svcpaid: "svc_bought", svcsold: "svc_sold" };
@@ -3256,9 +3278,10 @@ function sanctionNote(c, k) {
   if (tot < 1e-3) return "";
   const pc = x => Math.round(100 * x / tot) + "%";
   const v = { m: pc(mand), g: pc(gas), o: pc(tot - mand - gas) };
+  const who = t(REGIME_WORDS[regimeOf(c.iso3)]);
   return `<p class="note">${gas / tot >= 0.005
-    ? t(oilCut(c) ? "Of the move away from Russian trade: {m} required by sanctions, {g} gas and pipeline oil that Russia cut off itself, or gas that stopped with the end of Ukraine's gas transit, {o} the country's own choice." : "Of the move away from Russian trade: {m} required by sanctions, {g} gas that Russia cut off itself or that stopped with the end of Ukraine's gas transit, {o} the country's own choice.", v)
-    : t("Of the move away from Russian trade: {m} required by sanctions, {o} own choice.", v)}${ref(["sanctions_share"])}</p>`;
+    ? t(oilCut(c) ? "Of what Russia kept less from its trade: {m} required by {who}, {g} gas and pipeline oil that Russia cut off itself, or gas that stopped with the end of Ukraine's gas transit, {o} beyond what sanctions required." : "Of what Russia kept less from its trade: {m} required by {who}, {g} gas that Russia cut off itself or that stopped with the end of Ukraine's gas transit, {o} beyond what sanctions required.", { ...v, who })
+    : t("Of what Russia kept less from its trade: {m} required by {who}, {o} beyond what sanctions required.", { ...v, who })}${ref(["sanctions_share"])}</p>`;
 }
 
 // round 14 (audit H1): the share of the money flowing back that is subtracted (the seller's real gain x genuinely extra),
@@ -3439,8 +3462,15 @@ function partNote(c, p) {
     const all = sum(c.military_rus.years), paid = sum(c.military_rus.years_paid);
     if (all > 0.0005) out.push(t("Of what is counted, {s} is the gain on what Russia paid for; the rest was given.", { s: Math.round(Math.max(0, Math.min(1, paid / all)) * 100) + "%" }));
   }
-  const cap = c.captive;
-  if (cap && (p.k === "paid" || p.k === "windfall") && p.v < 0 && y >= cap.years[0]) out.push(t(cap.status === "partly" ? "Partly no alternative to Russian {what}: a label, the number does not change." : "No real alternative to Russian {what}: a label, the number does not change.", { what: t(cap.commodity) }));
+  // round 26 (owner): the part backs up the sanctions tag: how much of this part's cut its sanctions required
+  const sf = { paid: "to_rus", sold: "from_rus", svcpaid: "svc_bought", svcsold: "svc_sold" }[p.k], ss = sf && c.sanctions?.[sf];
+  if (ss && p.v > 0) {
+    const g = Math.max(0, Math.min(ss.cut || 0, 1 - ss.mandated)), reg = regimeOf(c.iso3);
+    // whole percentages that add up to 100
+    const mP = Math.round(ss.mandated * 100), gP = Math.round(g * 100), oP = Math.max(0, 100 - mP - gP);
+    out.push(t("Required by {who}: {m} · beyond them: {o}", { who: t(REGIME_WORDS[reg]), m: mP + "%", o: oP + "%" }) + (gP >= 1 ? " · " + t("gas or oil Russia cut off itself: {g}", { g: gP + "%" }) : "") + ".");
+  }
+  if (c.pipeline_exempt && p.k === "paid" && y >= c.pipeline_exempt.years[0]) out.push(t("It kept buying Russian pipeline crude under the EU exemption: a label, the number does not change."));
   return out.length ? `<p class="mc-note">${out.join(" ")}</p>` : "";
 }
 function methodCard(c, p) {
@@ -3555,15 +3585,16 @@ function leadParts(c, k) {
   const sp = sanctionSplit(c, k);
   if (ru > 0 && sp) {
     if (k.rusCut >= 0.25 * ru) { out.whyKey = "gascut"; out.why = oilCut(c) ? "Much of what Russia kept less is gas and oil Russia cut off itself." : "Much of what Russia kept less is gas Russia cut off itself."; }
-    else if (sp.mand >= 0.6) { out.whyKey = "sanct"; out.why = "Most of what Russia kept less was required by sanctions."; }
-    else if (sp.own >= 0.6) { out.whyKey = "own"; out.why = "Most of what Russia kept less was the country's own choice."; }
-    else if (ru >= 0.001 * (c.gdp || 0)) { out.whyKey = "mixed"; out.why = "What Russia kept less was partly required by sanctions, partly the country's own choice."; }
+    // round 26 (owner): who set the sanctions; going beyond them is kept apart (it is the buyer's own further choice)
+    else if (sp.mand >= 0.6) { out.whyKey = "sanct"; out.why = { eu: "Most of what Russia kept less was required by EU sanctions it agreed to.", own: "Most of what Russia kept less was required by sanctions it set itself.", aligned: "Most of what Russia kept less was required by the EU's sanctions, which it adopted itself." }[regimeOf(c.iso3)] || "Most of what Russia kept less was required by sanctions."; }
+    else if (sp.own >= 0.6) { out.whyKey = "own"; out.why = "Most of what Russia kept less went beyond what sanctions required."; }
+    else if (ru >= 0.001 * (c.gdp || 0)) { out.whyKey = "mixed"; out.why = "What Russia kept less was partly required by sanctions, partly beyond them."; }
   }
   if (ru < 0 && rusWords(c, k).kind === "paid") out.cause = gainCause(c, k);
   return out;
 }
 // "What changes the meaning here" (round 18): small flags, an icon and a few words; each opens its one-line meaning
-const ICON = { warn: "⚠︎", near: "≈", small: "◔", cut: "✂︎", law: "§", own: "✓︎", price: "€", ice: "❄︎", plus: "+", info: "i", chain: "⛓︎",
+const ICON = { warn: "⚠︎", near: "≈", small: "◔", cut: "✂︎", law: "§", own: "✓︎", price: "€", ice: "❄︎", plus: "+", info: "i",
   war: "⚔︎", trade: "⇄", hub: "⇆", aid: "♥︎", home: "⌂", firm: "▣", ship: "⚓︎", one: "①" };
 // round 24b (owner, 22 October 2026): a direction that is not certain is "leaning toward Ukraine / Russia" or, near the
 // middle, "uncertain direction" ("too close to call" is retired)
@@ -3598,21 +3629,29 @@ function storyTags(c, k, y) {
   const out = [], L = leadParts(c, k), MAT = 0.001 * (c.gdp || 0), part = key => k.shiftParts.find(p => p.k === key);
   const add = (pri, key, icon, label, body, cls = "") => out.push({ pri, key, icon, label, body, cls });
   const pg = v => ofGdp(c, v), money = v => eur(Math.abs(v));
-  if (y < 2022) return out;
+  if (y < 2022 || k.noData) return out;
   if (PARTY_TO_WAR.has(c.iso3)) add(100, "party", ICON.war, t("Party to the war"), t("Russia invaded Ukraine from its territory in February 2022; UN General Assembly resolution ES-11/1 deplores its involvement. Its money numbers are shown, but it is not ranked.") + ref((c.party_to_war || {}).src || ["co_belligerent", "belarus_party"]), "orange");
   if (L.whyKey === "gascut") add(90, "gascut", ICON.cut, t(oilCut(c) ? "Gas and oil cut off by Russia" : "Gas cut off by Russia"), t(L.why) + " " + t(oilCut(c) ? "of which gas and pipeline oil Russia cut off itself, or gas that stopped with the end of transit: {v}" : "of which gas Russia cut off itself or that stopped with the end of transit: {v}", { v: eur(k.rusCut) }) + ref(["gas_cuts"]));
-  const cap = c.captive;
-  if (cap && y >= cap.years[0]) add(88, "captive", ICON.chain, t(cap.status === "partly" ? "Partly no alternative to Russian fuel" : "No real alternative to Russian fuel"),
-    t(cap.status === "partly" ? "An alternative to Russian {what} exists on paper, but its capacity is officially contested. A label only: the numbers do not change." : "It had no real alternative to Russian {what}: Russia supplied at least three quarters of it in 2021, and no other route could carry half of its needs. A label only: the numbers do not change.", { what: t(cap.commodity) })
-    + (cap.years[1] < y ? " " + t("Until {y}.", { y: cap.years[1] }) : "") + ` <span class="key" lang="en">${esc(cap.why)}</span>` + ref(cap.src), "orange");
-  const sanct = sanctionNote(c, k).replace(/^<p class="note">|<\/p>$/g, "");
-  if (L.whyKey === "sanct") add(85, "sanct", ICON.law, t("Mostly required by sanctions"), t(L.why) + " " + sanct);
-  if (L.whyKey === "own") add(85, "own", ICON.own, t("Mostly its own choice"), t(L.why) + " " + sanct);
-  if (L.whyKey === "mixed") add(84, "mixed", ICON.law, t("Partly sanctions, partly own choice"), t(L.why) + " " + sanct);
+  // round 26 (owner: "everybody has alternatives... there's always a way"): no "no real alternative" label any more;
+  // Hungary and Slovakia kept buying Russian pipeline crude under the EU exemption although an alternative existed
+  const pe = c.pipeline_exempt;
+  if (pe && y >= pe.years[0]) add(88, "exempt", ICON.law, t("Kept buying Russian pipeline oil (EU exemption)"),
+    t("The EU's crude embargo exempted crude delivered by pipeline, and it kept buying Russian crude through the Druzhba pipeline. An alternative existed: the Adria pipeline from Croatia; Czechia, on the same pipeline, switched fully to crude via Italy and Germany (TAL/IKL) by 2025. A label only: the numbers do not change.") + ref(pe.src), "orange");
+  const sanct = sanctionNote(c, k).replace(/^<p class="note">|<\/p>$/g, ""), sp = sanctionSplit(c, k), reg = regimeOf(c.iso3);
+  const sanctBody = r => {
+    if (!sp) return sanct;
+    const ex = reg === "own" ? " (" + t(OWN_REGIME[c.iso3]) + ")" : reg === "eu" ? " (" + t("Council Regulation 833/2014") + ")" : "";
+    const mP = Math.round(sp.mand * 100), gP = Math.round(sp.cut * 100), oP = Math.max(0, 100 - mP - gP);
+    return t("Of the {v} less that Russia kept from its trade, about {m} was required by {who}{ex}, {o} went beyond them.", { v: eur(sp.tot), m: mP + "%", who: t(REGIME_WORDS[reg]), ex, o: oP + "%" })
+      + (gP >= 1 ? " " + t("The other {g} was gas or oil Russia cut off itself.", { g: gP + "%" }) : "") + r;
+  };
+  if (L.whyKey === "sanct") add(85, "sanct", ICON.law, t(reg === "eu" ? "Cut through EU sanctions it agreed to" : reg === "own" ? "Cut through its own sanctions" : reg === "aligned" ? "Cut through sanctions it adopted" : "Cut through sanctions"), sanctBody(ref(["sanctions_share"])));
+  if (L.whyKey === "own") add(85, "own", ICON.own, t("Cut beyond what sanctions required"), sanctBody(ref(["sanctions_share"])));
+  if (L.whyKey === "mixed") add(84, "mixed", ICON.law, t("Partly its sanctions, partly beyond them"), sanctBody(ref(["sanctions_share"])));
   const wf = part("windfall");
   if (wf && wf.v <= -MAT) add(80, "windfall", ICON.price, t("War-time fuel prices"), t("Russia kept {v} more because fuel prices rose with the war.", { v: money(wf.v) + " (" + pg(wf.v) + ")" }) + (L.flat ? " " + t("Its volumes barely changed: it is the price.") : "") + ref(wf.src), "orange");
   const disc = c.energy && c.energy.discount ? c.energy.discount.slice(1, yi(y) + 1).reduce((a, b) => a + b, 0) : 0;
-  if (disc >= MAT) add(78, "discount", ICON.price, t("Russian oil at a war-time discount"), t("After the sanctions, Russia sold it oil below world prices: about {v} over 2022–{y}. Russia kept less: the sanctions working on prices, not a choice to buy less.", { v: eur(disc), y }) + ref(c.energy.discount_src || c.energy.src || ["energy"]));
+  if (disc >= MAT) add(78, "discount", ICON.price, t("Russian oil at a war-time discount"), t("After the sanctions, Russia sold it oil below world prices: about {v} over 2022–{y}. What Russia kept on that oil is counted at those lower prices, in the part on fuel and goods it sold here: the sanctions working on prices, not a choice to buy less.", { v: eur(disc), y }) + ref(c.energy.discount_src || c.energy.src || ["energy"]));
   if (TRADE_HIDDEN[c.iso3]) add(72, "hidden", ICON.info, t("Trade data hidden since 2022"), t(TRADE_HIDDEN[c.iso3].why) + ref(TRADE_HIDDEN[c.iso3].src));
   const bch = tradeChange(c.to_rus, y), sch = tradeChange(c.from_rus, y);
   const bigChange = ch => ch && Math.abs(ch.pct) >= 50 && Math.abs(ch.b - ch.a) >= 0.5;
@@ -3637,7 +3676,9 @@ function storyTags(c, k, y) {
   if (Math.abs(k.frozen) >= MAT || L.fz) add(62, "frozen", ICON.ice, t("Froze Russian money"), (L.fz ? t("Much of the net is Russian money frozen here: the return Russia lost on its reserves, not a payment.") + " " : "") + frozenLine(c, k).replace(/^<p[^>]*>|<\/p>$/g, ""));
   if (isOrange(c, k, y) && !PARTY_TO_WAR.has(c.iso3)) {
     const cav = orangeCaveat(c, k), armed = armedMostly(k), sales = !armed && cav === t("Orange here is mostly earnings from sales to Russia, not siding with Russia.");
-    if (!armed) add(60, "orange", ICON.warn, sales ? t("Sales to Russia, not siding with it") : t("Fuel buying, not policy"), cav + (fairnessNote(c, k) ? " " + t("Most of this is fuel and food bought from Russia. Fuel is fungible and sold through many traders: the figure reflects what this economy bought, not a policy toward Russia or Ukraine.") : ""), "orange");
+    // round 26 (tag audit): "not policy" was a claim the numbers do not back (keeping on buying can be a choice): the tag
+    // says what the orange is made of, the tap says the rest
+    if (!armed) add(60, "orange", ICON.warn, sales ? t("Mostly from sales to Russia") : t("Mostly from fuel buying"), cav + (fairnessNote(c, k) ? " " + t("Most of this is fuel and food bought from Russia. Fuel is fungible and sold through many traders: the figure reflects what this economy bought, not a policy toward Russia or Ukraine.") : ""), "orange");
   }
   if (k.earner) add(58, "earner", ICON.warn, t("Earned from the war effort"), t("It earned more supplying Ukraine's war effort than it gave: grey on the map, not money toward Russia."));
   const rf = part("rusfirms");
@@ -3730,42 +3771,68 @@ function partTiles(c, k, y) {
   </div>${lines}${frozen}`;
 }
 const PARTS_SHOWN = 5;   // per section (round 25)
-// the parts split by direction: toward Russia (negative) and toward Ukraine (positive), largest first, with subtotals
+// Round 26 (the owner, 22 October 2026, Moldova: "the breakdown doesn't seem to match the numbers at the top"): the parts
+// follow the tiles exactly. One section per tile (support for Ukraine, trade with Russia, Russian money frozen), each
+// with the tile's own words and amount as its subtotal; inside, rows by size, each saying its direction in words and
+// colour (blue toward Ukraine, orange toward Russia, grey for money flowing back within support), with no + or − sign
 function partSections(c, k) {
   const parts = k.shiftParts.concat(k.backShift).filter(p => Math.abs(p.v) >= 1e-9);
-  const ru = parts.filter(p => p.v < 0).sort((a, b) => a.v - b.v), ua = parts.filter(p => p.v > 0).sort((a, b) => b.v - a.v);
+  const bySize = l => l.sort((a, b) => Math.abs(b.v) - Math.abs(a.v));
+  const ua = bySize(parts.filter(p => UA_PARTS.has(p.k) || k.backShift.includes(p))), fz = bySize(parts.filter(p => OWN_LINE.has(p.k)));
+  const ru = bySize(parts.filter(p => !ua.includes(p) && !fz.includes(p)));
   const sum = l => l.reduce((a, p) => a + p.v, 0);
-  return { ru, ua, ruSum: -sum(ru), uaSum: sum(ua) };
+  return [{ q: "ua", parts: ua, total: sum(ua), tile: k.uaBal }, { q: "rus", parts: ru, total: sum(ru), tile: k.rusBal }, { q: "frozen", parts: fz, total: sum(fz), tile: k.frozen }];
+}
+// round 26: the parts with no observation of the country's own (c.no_data), named under the trade section
+function noDataLine(c) {
+  const nd = (c.no_data || []).filter(key => !OFF.has(key));
+  if (!nd.length) return "";
+  // neutral names: with no observation there is no direction to say
+  const NAMES = { paid: "Fuel and goods bought from Russia", windfall: "War-time fuel prices", sold: "Sales to Russia", buy: "Purchases from Ukraine", sell: "Sales to Ukraine", laund: "Russian oil bought via other countries" };
+  const names = [...new Set(nd.map(key => t(NAMES[key] || key)))];
+  return `<p class="nodata-line"><b>${t("No data")}:</b> ${t("{parts}. There is no observation of its own for the war years, so these count as zero.", { parts: names.join(" · ") })} <a href="#view=how&amp;sec=m-overview-no-data-round-26">${t("Why")}</a></p>`;
 }
 function firstLayer(c, k, y) {
+  // round 26 (owner): with no observation of its own at all, the panel says so and shows no number
+  if (k.noData) return `<section class="pv-top"><p class="nodata-big"><b>${t("No data")}</b> ${t("There is no observation of its own for the war years: no customs or partner records of its trade with Russia or Ukraine, no aid, no refugees counted. Nothing is counted, it is not ranked, and it is drawn hatched on the map.")}</p>${noDataLine(c)}</section>`;
   const G = mBar(c), S = partSections(c, k);
-  const mag = p => G(Math.abs(p.v)), farEnd = p => G(p.v >= 0 ? (p.hi ?? p.v) : -(p.lo ?? p.v));
-  const all = S.ru.concat(S.ua), ax = sideAxis(all.map(mag), all.map(farEnd));
+  const all = S.flatMap(x => x.parts), mag = p => G(Math.abs(p.v)), farEnd = p => G(p.v >= 0 ? (p.hi ?? p.v) : -(p.lo ?? p.v));
+  const ax = sideAxis(all.map(mag), all.map(farEnd));
   const big = p => Math.abs(scaled(c, p.v, "gdp") ?? 0) >= 0.005;
   const amt = v => fmtMeasure(c, Math.abs(v), state.measure, false, true);
   const unc = uncertain(c, y, "net") && !PARTY_TO_WAR.has(c.iso3), lean = unc && leaning(c, y, "net");
-  const section = (side, list, total) => {
-    if (!list.length) return "";
-    const top = list.filter(big).slice(0, PARTS_SHOWN), rest = list.filter(p => !top.includes(p)), id = "allparts-" + side;
-    const title = t(side === "ru" ? "Toward Russia" : "Toward Ukraine");
-    return `<div class="psec psec-${side}" role="group" aria-label="${title}: ${amt(total)}">
-      <p class="psec-h"><span>${title}</span><b>${amt(total)}</b></p>
+  const q2 = q => (q === "rus" && uncertain(c, y, "rus") && !PARTY_TO_WAR.has(c.iso3) && leaning(c, y, "rus") ? "rusLean" : q);
+  const section = sec => {
+    if (!sec.parts.length && Math.abs(sec.tile) < 0.0005) return sec.q === "rus" ? noDataLine(c) : "";
+    const [pre, post] = verbAround(q2(sec.q), sec.tile);
+    const side = sec.q === "rus" && sec.tile < 0 ? "ru" : sec.q === "ua" && sec.tile < 0 ? "mid" : "ua";
+    const top = sec.parts.filter(big).slice(0, PARTS_SHOWN), rest = sec.parts.filter(p => !top.includes(p)), id = "allparts-" + sec.q;
+    const head = `${pre} ${amt(sec.tile)}${post ? " " + post : ""}`;
+    return `<div class="psec psec-${side}" role="group" aria-label="${esc(head)}">
+      <p class="psec-h"><span>${pre}</span><b>${amt(sec.tile)}${post ? ` <small>${post}</small>` : ""}</b></p>
       <div class="parts">${top.map(p => partRow(c, p, ax)).join("")}</div>
       ${rest.length ? `<details class="allparts" id="${id}"${panelOpen.has(id) ? " open" : ""}><summary>${t(rest.length === 1 ? "Show the other part" : "Show the other {n} parts", { n: rest.length })}</summary><div class="parts">${rest.map(p => partRow(c, p, ax)).join("")}</div></details>` : ""}
+      ${sec.q === "rus" ? noDataLine(c) : ""}
     </div>`;
   };
-  const order = k.shift < 0 ? [["ru", S.ru, S.ruSum], ["ua", S.ua, S.uaSum]] : [["ua", S.ua, S.uaSum], ["ru", S.ru, S.ruSum]];
-  // the closing line: the two subtotals and how they make the headline, in the headline's own words
+  // the closing line: the tiles, with their own words, and how they make the headline
   const [pre] = verbAround(lean ? "netLean" : "net", k.shift);
-  const head = (pre.charAt(0).toLowerCase() + pre.slice(1)) + " " + amt(k.shift) + (unc && !lean ? " (" + t("uncertain direction") + ")" : "");
-  const closing = `<p class="psec-sum">${t("Toward Russia {r} − toward Ukraine {u} = {net}", { r: amt(S.ruSum), u: amt(S.uaSum), net: head })}</p>`;
+  const headline = (pre.charAt(0).toLowerCase() + pre.slice(1)) + " " + amt(k.shift) + (unc && !lean ? " (" + t("uncertain direction") + ")" : "");
+  const terms = [];
+  const term = (v, pos, neg) => terms.push({ s: v >= 0 ? 1 : -1, w: t(v >= 0 ? pos : neg, { x: amt(v) }) });
+  term(k.uaBal, "supported Ukraine {x}", "gave Ukraine less {x}");
+  // a tile with nothing in it (no parts, or only "no data") adds nothing to the sum
+  if (S[1].parts.length || Math.abs(k.rusBal) >= 0.0005) term(k.rusBal, "trade toward Ukraine {x}", "trade toward Russia {x}");
+  if (Math.abs(k.frozen) >= 0.0005) term(k.frozen, "Russia lost {x} on frozen money", "Russia lost {x} on frozen money");
+  const sumTxt = terms.map((x, i) => (i === 0 ? (x.s < 0 ? "− " : "") : x.s < 0 ? " − " : " + ") + x.w).join("");
+  const closing = `<p class="psec-sum">${sumTxt.charAt(0).toUpperCase() + sumTxt.slice(1)} = ${headline}</p>`;
   const tags = storyTags(c, k, y);
   return `${custom() ? `<div class="custom">${customNote()}</div>` : ""}
     ${partyLine(c)}
     <section class="pv-top">${netBlock(c, k, y)}${partTiles(c, k, y)}${backedLine(k)}</section>
     ${tagsHtml(tags)}
     <section class="pv-chart"><div class="pc-h"><h3>${t("What makes up the number")}</h3><span class="pc-hint">${t("tap a part for how it is calculated")}</span></div>${barKey()}
-      ${order.map(([side, list, tot]) => section(side, list, tot)).join("")}
+      ${S.map(section).join("")}
       ${closing}
     </section>`;
 }

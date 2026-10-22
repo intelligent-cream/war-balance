@@ -6,8 +6,10 @@ Under each country's numbers, a few short tags tell its story in a line each: wh
 |---|---|---|
 | Party to the war (`party`) | the country is a party to the war on Russia's side (Belarus) | UN General Assembly resolution ES-11/1; EU Regulation 2022/355 (`co_belligerent`, `belarus_party`) |
 | Gas (and oil) cut off by Russia (`gascut`) | gas or pipeline oil that Russia cut off itself, or that stopped with the end of transit, is at least a quarter of what Russia kept less | gas cut-offs (`gas_cuts`) |
-| No real alternative to Russian fuel / partly (`captive`) | Russia supplied at least three quarters of the fuel in 2021 and no other route could carry half of the needs (round 24b) | captive buyers (`captive_buyers`) |
-| Mostly required by sanctions (`sanct`) / Mostly its own choice (`own`) / Partly sanctions, partly own choice (`mixed`) | what Russia kept less is positive and at least MAT: sanctions required at least 60% of it, at most 40% of it, or in between | share required by sanctions (`sanctions_share`) |
+| Kept buying Russian pipeline oil (EU exemption) (`exempt`) | Hungary and Slovakia: they kept buying Russian crude through the Druzhba pipeline under the EU embargo's pipeline exemption, although an alternative existed (round 26) | Council Regulation (EU) 2022/879; Czechia's switch via TAL (OSW, April 2025); Adria pipeline tests (`pipeline_exemption`) |
+| Cut through EU sanctions it agreed to / Cut through its own sanctions / Cut through sanctions it adopted (`sanct`) | what Russia kept less is positive and at least MAT and sanctions required at least 60% of it. The words say who set the sanctions (round 26): EU members agreed to the EU's (Council Regulation 833/2014); the US, the UK, Japan, Canada, Australia, New Zealand and South Korea set their own; Switzerland, Liechtenstein, Norway, Iceland, Montenegro, Albania, North Macedonia, Bosnia and Herzegovina and Moldova adopted the EU's themselves | share required by sanctions (`sanctions_share`) |
+| Cut beyond what sanctions required (`own`) | sanctions required at most 40% of what Russia kept less | share required by sanctions (`sanctions_share`) |
+| Partly its sanctions, partly beyond them (`mixed`) | sanctions required between 40% and 60% of it | share required by sanctions (`sanctions_share`) |
 | War-time fuel prices (`windfall`) | the war-time price part moved at least MAT toward Russia | war-time prices (`windfall`, `gas_prices`) |
 | Russian oil at a war-time discount (`discount`) | the discount on Russian oil after the sanctions, 2022 to the chosen year, is at least MAT | energy (`energy`) |
 | Trade data hidden since 2022 (`hidden`) | the country and Russia stopped publishing trade by partner and product (Belarus) | counterfactual and trade (`counterfactual`, `trade`) |
@@ -18,7 +20,7 @@ Under each country's numbers, a few short tags tell its story in a line each: wh
 | Top-10 aid giver for its size / Major aid giver (`aid`) | its aid to Ukraine against its GDP ranks in the top 10 of economies over €5bn, or is at least 0.5% of GDP | Kiel Institute and EU-level aid (`kiel`, `kiel_eu_share`, `aid_gaps`) |
 | Hosts many refugees (`refugees`) | at least 10 refugees from Ukraine per 1,000 residents | UNHCR and national counts (`refugees`) |
 | Froze Russian money (`frozen`) | the return Russia lost on reserves frozen here is at least MAT, or a fifth of the numbers | frozen reserves (`frozen_reserves`) |
-| Fuel buying, not policy / Sales to Russia, not siding with it (`orange`) | the country is orange on the map and that is mostly fuel buying or sales, not weapons | our model: the parts and their sizes |
+| Mostly from fuel buying / Mostly from sales to Russia (`orange`) | the country is orange on the map and that is mostly fuel buying or sales, not weapons | our model: the parts and their sizes |
 | Earned from the war effort (`earner`) | it earned more supplying Ukraine's war effort than it gave | our model: money flowing back from the war effort |
 | Russian-owned firms here (`rusfirms`) | profits kept by Russian owners of firms here moved at least MAT toward Russia | Russian-owned companies (`russian_owned_r10`) |
 | Its firms still pay tax in Russia (`tax`) | taxes its firms paid in Russia moved at least MAT toward Russia | company taxes (`company_taxes_r6`) |
