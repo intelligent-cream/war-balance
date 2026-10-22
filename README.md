@@ -1,8 +1,9 @@
 # Follow the Money: Ukraine
 
 Where did each country's money move since the full-scale invasion: toward Ukraine or toward Russia? An interactive
-map of every country's support for Ukraine and its business with Russia, each against what it would have done without
-the war, with sources, ranges and certainty for every number.
+map of every country's support for Ukraine and its trade with Russia (how much less, or more, Russia kept from it: taxes
+and profit, not the full price), each against what it would have done without the war, with sources, ranges and
+certainty for every number.
 
 **Website: https://intelligent-cream.github.io/follow-the-money-ukraine/**
 

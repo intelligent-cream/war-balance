@@ -1,0 +1,90 @@
+{
+ "_about": "Round 24 (audit C, approved by the owner on 22 October 2026): source links that no longer open, replaced at build time (pipeline/build_data.py classify_sources). Archived copies are from the Internet Archive's Wayback Machine and are labelled as such on the site.",
+ "fixes": {
+  "https://eec.eaeunion.org/comission/department/dep_stat/tradestat/time_series/vzaimnaya-torgovlya-tovarami-dinamicheskie-ryady": {
+   "url": "https://web.archive.org/web/20260616085436/https://eec.eaeunion.org/comission/department/dep_stat/tradestat/time_series/vzaimnaya-torgovlya-tovarami-dinamicheskie-ryady/",
+   "why": "the page no longer opens (dead, expired certificate or timeout, checked 21-22 October 2026); an archived copy",
+   "archived": true
+  },
+  "https://lvportals.lv/dienaskartiba/386456-labklajibas-ministrs-r-uzulnieks-atbalsts-ukrainas-civiliedzivotajiem-latvija-tiks-turpinats-2026": {
+   "url": "https://web.archive.org/web/20260410151600/https://lvportals.lv/dienaskartiba/386456-labklajibas-ministrs-r-uzulnieks-atbalsts-ukrainas-civiliedzivotajiem-latvija-tiks-turpinats-2026",
+   "why": "the page no longer opens (dead, expired certificate or timeout, checked 21-22 October 2026); an archived copy",
+   "archived": true
+  },
+  "https://www.ukrstat.gov.ua/": {
+   "url": "https://stat.gov.ua/en",
+   "why": "the page moved; its working address",
+   "archived": false
+  },
+  "https://leavingrussia.org/": {
+   "url": "https://leave-russia.org/",
+   "why": "the page moved; its working address",
+   "archived": false
+  },
+  "https://repec.iza.org/dp16146.pdf": {
+   "url": "https://web.archive.org/web/20230606033537/https://repec.iza.org/dp16146.pdf",
+   "why": "the page no longer opens (dead, expired certificate or timeout, checked 21-22 October 2026); an archived copy",
+   "archived": true
+  },
+  "https://comtradeapi.un.org/": {
+   "url": "https://comtradeplus.un.org/",
+   "why": "the page moved; its working address",
+   "archived": false
+  },
+  "https://ec.europa.eu/eurostat/web/international-trade-in-goods/data/database": {
+   "url": "https://ec.europa.eu/eurostat/web/international-trade-in-goods/database",
+   "why": "the page moved; its working address",
+   "archived": false
+  },
+  "https://frontnews.ge/en/news/details/28741": {
+   "url": "https://web.archive.org/web/20220804130153/http://frontnews.ge/en/news/details/28741",
+   "why": "the page no longer opens (dead, expired certificate or timeout, checked 21-22 October 2026); an archived copy",
+   "archived": true
+  },
+  "https://www.bimco.org/news-and-trends/market-reports/shipping-number-of-the-week/20240117-snow": {
+   "url": "https://web.archive.org/web/20241004031408/https://www.bimco.org/news-and-trends/market-reports/shipping-number-of-the-week/20240117-snow",
+   "why": "the page no longer opens (dead, expired certificate or timeout, checked 21-22 October 2026); an archived copy",
+   "archived": true
+  },
+  "https://leave-russia.org/companies-that-exited": {
+   "url": "https://leave-russia.org/",
+   "why": "the page moved; its working address",
+   "archived": false
+  },
+  "https://aeon1p.or.jp/1p/wp-content/uploads/2022/05/220523_ウクライナ贈呈式リリース第2回修正.pdf": {
+   "url": "https://web.archive.org/web/20250503044134/https://aeon1p.or.jp/1p/wp-content/uploads/2022/05/220523_%E3%82%A6%E3%82%AF%E3%83%A9%E3%82%A4%E3%83%8A%E8%B4%88%E5%91%88%E5%BC%8F%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E7%AC%AC2%E5%9B%9E%E4%BF%AE%E6%AD%A3.pdf",
+   "why": "the page no longer opens (dead, expired certificate or timeout, checked 21-22 October 2026); an archived copy",
+   "archived": true
+  },
+  "https://shipandbunker.com/news/am/124578-strong-december-takes-panama-2024-bunker-sales-up-39-on-year": {
+   "url": "https://web.archive.org/web/20260310061656/https://shipandbunker.com/news/am/124578-strong-december-takes-panama-2024-bunker-sales-up-39-on-year",
+   "why": "the page no longer opens (dead, expired certificate or timeout, checked 21-22 October 2026); an archived copy",
+   "archived": true
+  },
+  "https://shipandbunker.com/news/emea/799458-fujairah-november-bunker-sales-drop-to-17-month-low": {
+   "url": "https://web.archive.org/web/20250815180959/https://shipandbunker.com/news/emea/799458-fujairah-november-bunker-sales-drop-to-17-month-low",
+   "why": "the page no longer opens (dead, expired certificate or timeout, checked 21-22 October 2026); an archived copy",
+   "archived": true
+  },
+  "https://www.belstat.gov.by/upload-belstat/upload-belstat-excel/Oficial_statistika/Godovwe/ExImS2-2021.xlsx": {
+   "url": "https://web.archive.org/web/20250502203719/https://www.belstat.gov.by/upload-belstat/upload-belstat-excel/Oficial_statistika/Godovwe/ExImS2-2021.xlsx",
+   "why": "the page no longer opens (dead, expired certificate or timeout, checked 21-22 October 2026); an archived copy",
+   "archived": true
+  },
+  "https://www.cbr.ru/eng/statistics/macro_itm/svs/": {
+   "url": "https://web.archive.org/web/20241014223429/https://cbr.ru/eng/statistics/macro_itm/svs/",
+   "why": "gone (404) on cbr.ru; an archived copy",
+   "archived": true
+  },
+  "https://www.reddeeradvocate.com/news/canadians-help-red-cross-raise-millions-to-support-ukrainians/": {
+   "url": "https://web.archive.org/web/20230511074804/https://www.reddeeradvocate.com/news/canadians-help-red-cross-raise-millions-to-support-ukrainians/",
+   "why": "the article now redirects to a generic page; an archived copy",
+   "archived": true
+  },
+  "https://www.zerno.ru/node/29146": {
+   "url": "https://web.archive.org/web/20260419173917/https://www.zerno.ru/node/29146",
+   "why": "the server refuses connections from outside Russia; an archived copy",
+   "archived": true
+  }
+ }
+}

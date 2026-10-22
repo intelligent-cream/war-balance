@@ -6,7 +6,9 @@ Code: the energy section of [build_data.py `build()`](https://github.com/intelli
 
 ## Payments to Russia for fuel
 
-Customs data (`trade_full.json`) are the base for "paid to Russia". Two additions handle fuel that customs miss:
+**Round 24b (audit 24, D M2 and M5; approved by the owner).** (1) The war-time price windfall's line now carries the uncertainty of the no-war price itself (October-2021 forecasts to February-2022 futures): it was carried on the expected path of "paid", so the business total barely moves, but the windfall line used to show only the uncertainty of the actual prices (Hungary EUR 9.1-10.7bn). Where the windfall was worked out under each pre-war no-war gas path (16 gas-contract buyers, [`windfall_band_r24.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/windfall_band_r24.json)), the line takes the wider of that and the moved band: Hungary EUR 0.5-16.2bn. (2) A method-band alternative values no-war gas at early-2021 forward prices (TTF EUR 17.5/MWh; Cal-22 traded at 16.7-18.1 in January-March 2021), the view that the late-2021 squeeze was war preparation. (3) **No real alternative to Russian fuel**, a label only (the mirror of "gas cut off by Russia"): Russia supplied at least three quarters of the country's 2021 imports of the fuel, imports are at least half of its use, and no other route can carry half of them (or a Russian state company owns the network). Captive: Mongolia and Kyrgyzstan (refined fuels), Armenia (gas), Moldova (gas, 2022), Serbia (gas, 2022-2023), Bosnia and Herzegovina (gas); partly captive: Hungary and Slovakia (pipeline crude; the Adria pipeline's capacity is officially contested). [`captive_buyers.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/captive_buyers.json), [notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/captive_buyers-notes.md).
+
+Customs data are the base for "paid to Russia". Two additions handle fuel that customs miss: <span class="incode">In the code: `trade_full.json`</span>
 
 - **Pipeline-gas countries** (`PIPELINE_GAS`: the EU plus Turkey, Serbia, North Macedonia, Bosnia, Moldova, Switzerland, Georgia, Armenia, Kazakhstan, Kyrgyzstan, Uzbekistan, Belarus): each year takes the larger of all customs imports from Russia and the CREA fossil-fuel value, because customs often do not label pipeline gas as Russian. The CREA 2021 value enters the baseline at pre-war prices; the low base is the larger of the two lows (imports are at least the fuel value; this fixed a bug found in [narrow-notes.md](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/narrow-notes.md)).
 - **UAE**: Russian fuel delivered to the UAE that UAE customs do not record (CREA 5.6bn in 2022, 6.1bn in 2023) is added, net of its resale (audit 2, question 2); `uae_fuel_net()` takes out what UAE customs already record for 2024–2026.
@@ -19,8 +21,8 @@ CREA assigns pipeline gas to the country where it enters: Germany for Nord Strea
 
 For these countries the pipeline:
 
-1. values final-use gas at the country's **own Russian gas price** (`gas_prices.json`, `MWH_PER_BCM = 10.55e6`), see [prices.md](#view=how&sec=m-prices-gas-prices-per-country);
-2. replaces the gas share in the CREA value with final-use gas (`non_gas_share()`);
+1. values final-use gas at the country's **own Russian gas price**, see [prices.md](#view=how&sec=m-prices-gas-prices-per-country); <span class="incode">In the code: `gas_prices.json`, `MWH_PER_BCM = 10.55e6`</span>
+2. replaces the gas share in the CREA value with final-use gas; <span class="incode">In the code: `non_gas_share()`</span>
 3. takes the gas recorded in customs (HS 2711, [`customs_gas.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/customs_gas.json)) out of `to_rus` and adds final-use gas, yearly values and 2019–2021 baseline alike;
 4. for **non-transit** countries keeps whichever is larger, customs gas or final-use gas (Greece's customs record more);
 5. handles **gas booked under other customs headings** (`GAS_IN_CUSTOMS`: Turkey 100%, Poland 100%; Germany 14% in 2021 and 15% in 2022, derived in round 12 from the EUR 2.3bn and 3.5bn of unlabelled gas the audit found in German customs, divided by German final-use Russian gas of EUR 16.6bn and 23.7bn; was 7%, a judgement) so it is not added twice. This audit fix cut Turkey's payments to Russia from EUR 220bn to 184.5bn ([audit-notes.md](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/audit-notes.md)).
@@ -53,7 +55,7 @@ Round 6 adds two channels ([`laundered_r6.json`](https://github.com/intelligent-
   its fuel goes mostly to Australia, then Singapore, Malaysia and Viet Nam (EUR 2.0bn of Russian crude in 2022–2026;
   checked against CREA's 2.6 Mt to Australia). Brunei's customs record only part of this crude, so its payments to
   Russia are its true Russian crude intake (refinery throughput × Russian share) minus what it passed on, plus any
-  other goods (`apply_brunei_r6()`): EUR 0.14–0.97bn a year kept for paraxylene, benzene and home use. Brunei's total
+  other goods: EUR 0.14–0.97bn a year kept for paraxylene, benzene and home use. Brunei's total <span class="incode">In the code: `apply_brunei_r6()`</span>
   moves from +6.6% to −4.8% of GDP (likely range −18% to +11%).
 - **Turkish ports without refineries** (Ceyhan, Marmara Ereğlisi, Mersin): Russian fuel relabelled and sold to the EU,
   EUR 2.6–3.3bn a year in 2023–2025 (CREA/CSD), mostly Greece, which resells half. Counted at 0.76 per euro (Russian
@@ -95,8 +97,8 @@ Fuel passed from one hub to another (India to the Netherlands, Belgium to the Ne
 
   Since round 10 the crude money counts at Russia's net gain on crude in the change view ([overview](#view=how&sec=m-overview-the-net-gain-rule-round-10)).
 
-  Fuel whose refiner is no longer known after trading hubs mixed it uses the refiners' average, weighted by their exports. India's measured share matches its own refinery data (EUR 18.5bn of Russian crude in EUR 28.5bn of fuel in 2022, 0.65). The buyer whose demand creates the sale is charged this part; the rest of the fuel price is the refiner's income, and its profit from the Russian discount is counted for the refiner ("discount gained" in the cost view). Earlier rounds used one ratio, 0.42 / 0.50 / 0.60, from CREA's "EUR 4.2bn of crude in EUR 8.5bn of fuel"; that figure prices diesel alone, without refining losses or the cheaper products in the export mix. The round-5 EU figures (`laundered_eu.json`) and the round-6 Brunei channel are rescaled from their ratios to these.
-- Laundered oil cannot exceed what an economy can use: capped at 1% (middle) and 2% (high) of GDP per year (`LAUNDERED_CAP`), so ship registries and storage points (Marshall Islands, Liberia) do not absorb fuel. GDP from `residual.json` is loaded before the cap so it applies to small territories too.
+  Fuel whose refiner is no longer known after trading hubs mixed it uses the refiners' average, weighted by their exports. India's measured share matches its own refinery data (EUR 18.5bn of Russian crude in EUR 28.5bn of fuel in 2022, 0.65). The buyer whose demand creates the sale is charged this part; the rest of the fuel price is the refiner's income, and its profit from the Russian discount is counted for the refiner ("discount gained" in the cost view, which is in the full data download only since round 19). Earlier rounds used one ratio, 0.42 / 0.50 / 0.60, from CREA's "EUR 4.2bn of crude in EUR 8.5bn of fuel"; that figure prices diesel alone, without refining losses or the cheaper products in the export mix. The round-5 EU figures and the round-6 Brunei channel are rescaled from their ratios to these. <span class="incode">In the code: `laundered_eu.json`</span>
+- Laundered oil cannot exceed what an economy can use: capped at 1% (middle) and 2% (high) of GDP per year, so ship registries and storage points (Marshall Islands, Liberia) do not absorb fuel. GDP from `residual.json` is loaded before the cap so it applies to small territories too. <span class="incode">In the code: `LAUNDERED_CAP`</span>
 - Round 11 ([decisions](#view=how&sec=cl-r11)): refiners' and Greece's records of fuel "exports" to Liberia, the Marshall Islands and Panama are bunkers sold to ships under those flags, which the registries' own customs do not show; they are dropped, and Malta keeps only what its own customs record. Where fuel use is known the cap is fuel use × the share made from Russian crude × crude content (`LAUNDERED_CAP_BY`: Liberia 0.25% / 0.85%, Togo 0.27% / 0.89%, Malta 0.15% / 0.4%, Panama 0.02% / 0.09% of GDP), applied to the final values. Malta keeps half its bunker share less in the middle case (81% of its fuel imports leave as bunkers).
 
 ### Pre-war laundered oil
@@ -108,7 +110,7 @@ Fuel refined from Russian crude reached buyers before 2022 too: EUR 3–5bn a ye
 - until round 12, `above3()` counted only the rise, in money (no price index), so higher fuel prices counted too.
 
 **Round 13 (audit): in volumes, both ways.** Laundered oil is now measured like every other trade part
-(`laundered_volumes()` in `build_data.py`, `delta3()` in `calc()`): the Russian crude in the fuel at the crude price a
+: the Russian crude in the fuel at the crude price a <span class="incode">In the code: `laundered_volumes()` in `build_data.py`, `delta3()` in `calc()`</span>
 no-war market expected (its price index is the Urals price paid over the no-war crude price), against its pre-war level
 at 2019–2021 prices grown with `g` and the no-war crude price; falls count as well as rises, at Russia's net gain on
 crude. Nepal and Tanzania change little (−1.6 → −1.8 and −2.0 → −2.2% of GDP): Urals sold below the no-war price, so
@@ -120,7 +122,7 @@ fuel hub with a pre-war level of Russian crude in its fuel, +6.8 points (undone 
 ## Refiners: counted once
 
 Turkey, India and China refine Russian crude and export part of the fuel. That exported part is already counted at the buyers as laundered oil (95–100% per [`hub_buyers-notes.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/hub_buyers-notes.md)), so it is taken out of the refiner's own payments to Russia. What is taken off the refiner equals what its buyers
-are charged: the **exported fuel value × the refiner's own crude share for that year** (`crude_k()`), which the buyers' average is built from, so
+are charged: the **exported fuel value × the refiner's own crude share for that year**, which the buyers' average is built from, so <span class="incode">In the code: `crude_k()`</span>
 no crude money is lost between them (round 5 review: using the refiners' measured crude values, about 0.67 of the fuel,
 had left about EUR 14bn uncounted):
 
@@ -132,7 +134,7 @@ had left about EUR 14bn uncounted):
 
 [`check_data.py`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/check_data.py) check 15 verifies the refining source on Turkey and India.
 
-**EU refiners (round 13 audit): treated the same way.** Until round 12 the Russian crude in fuel that EU refiners (Lithuania, Finland, the Netherlands and 13 others) exported stayed with the refiner, while India's, Türkiye's and China's was charged to the buyers. Now the refiner keeps only what it used itself, before and after the war (`eu_refiner_exports()`): the exported share of its Russian crude (`round4a.json` `eu_refiners`: Lithuania 0.70, the Netherlands 0.70, Slovakia 0.65, Finland 0.45 and so on; 2021 from the CREA tracker's crude tonnes at 2021 prices; later years from the same file) comes out of its payments and its pre-war level, and is charged to its buyers by each refiner's own HS 2710 exports by partner in 2021 (UN Comtrade, [raw/comtrade_2710](https://github.com/intelligent-cream/follow-the-money-ukraine/tree/main/research/2026-10/raw/comtrade_2710)). Fuel exported to Ukraine, to ships' bunkers or to places not on the map stays with the refiner. The part taken off counts at Russia's gain on crude, as for India. Effect (this step, % of GDP): Lithuania −2.5, the Netherlands −0.9, Finland −0.6; with the laundered-oil volumes (above), their buyers gain.
+**EU refiners (round 13 audit): treated the same way.** Until round 12 the Russian crude in fuel that EU refiners (Lithuania, Finland, the Netherlands and 13 others) exported stayed with the refiner, while India's, Türkiye's and China's was charged to the buyers. Now the refiner keeps only what it used itself, before and after the war: the exported share of its Russian crude (`round4a.json` `eu_refiners`: Lithuania 0.70, the Netherlands 0.70, Slovakia 0.65, Finland 0.45 and so on; 2021 from the CREA tracker's crude tonnes at 2021 prices; later years from the same file) comes out of its payments and its pre-war level, and is charged to its buyers by each refiner's own HS 2710 exports by partner in 2021 (UN Comtrade, [raw/comtrade_2710](https://github.com/intelligent-cream/follow-the-money-ukraine/tree/main/research/2026-10/raw/comtrade_2710)). Fuel exported to Ukraine, to ships' bunkers or to places not on the map stays with the refiner. The part taken off counts at Russia's gain on crude, as for India. Effect (this step, % of GDP): Lithuania −2.5, the Netherlands −0.9, Finland −0.6; with the laundered-oil volumes (above), their buyers gain. <span class="incode">In the code: `eu_refiner_exports()`</span>
 
 ### EU-refined fuel: measured both ways (round 13b)
 
@@ -191,7 +193,7 @@ Of the 202 buyers of EU-refined fuel, 74 are measured both ways and 128 are held
   3.71 → 2.73, Nigeria 1.32 → 0.68, Malta 1.43 → 1.04, Belgium 3.49 → 3.14, Libya −6.18 → −7.08.
 - **Hubs pass EU-refined fuel on (H3).** EU-refined fuel bought by trading hubs (Rotterdam, Antwerp, Malta, Singapore,
   Greece, the UAE, Togo) is now passed on to the hubs' customers through the same resale shares and chains as other
-  laundered oil (`_hub_chain()`); fuel that comes back to the refiner through a hub (the Netherlands–Belgium–Germany
+  laundered oil; fuel that comes back to the refiner through a hub (the Netherlands–Belgium–Germany <span class="incode">In the code: `_hub_chain()`</span>
   circle) is the refiner's own use and stays with it; bunker fuel sold to ships at a hub is charged to no country.
   Effect: Belgium 3.14 → 2.81, Malta 1.04 → 0.75, the Netherlands −0.10, Nigeria +0.21 (as an Antwerp customer).
 - **Nigeria (H2).** Its products price index was a data error (0.53 of the benchmark in 2023), now screened
@@ -211,7 +213,7 @@ Turkey appears in almost every energy step: a TurkStream transit and final-use g
 
 ## Energy premium and oil discount
 
-These are in the **cost** view only ([overview.md](#view=how&sec=m-overview-the-cost-view)), from `energy.json`:
+These are not in the totals. They belonged to the **cost** view ([overview.md](#view=how&sec=m-overview-the-cost-view)), which the site no longer shows (round 19); the full data download keeps them. From `energy.json`:
 
 - **Extra paid to replace Russian energy** (switching cost) = displaced volume × replacement share × per-tonne premium, by fuel and month. Displaced volume is 2021 minus the year, when positive; replacement shares come from Eurostat (gas 1.0 in 2022, 0.885 in 2023, 0.635 later); the premium is TTF minus the Russian contract price for gas, and between the pre-war structural gap and the full discount forgone for crude and coal. Largest: Germany 34.5bn (17.3–48.7), Italy 18.5bn, Netherlands 11.3bn.
 - **Discount gained on Russian oil** = crude tonnes × (Brent − CREA realised price) + products likewise, from March 2022, × 0.671 (median of published estimates: ICRA for India, Banque de France for China, Reuters for Turkey).

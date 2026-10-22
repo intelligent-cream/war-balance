@@ -1,0 +1,194 @@
+{
+ "generated": "2026-10-22",
+ "round": "24b (audit 24, D M3; approved by the owner 22 October 2026)",
+ "rule": "North Korea's full value to Russia (arms, missiles, artillery systems and troops), 2022 - Aug 2026: low = INSS low end, central = INSS midpoint plus 2026, high = KIDA without the technology Russia gave North Korea (which is Russia's payment, not North Korea's delivery). Troops keep military_rus_r6.json's series; the arms items (artillery ammunition, ballistic missiles, artillery systems) are scaled per band so that the total meets the target, keeping their timing. The paid/unpaid factor (military_payment_r13.json) is unchanged.",
+ "full_value_eur_bn": {
+  "low": 6.8,
+  "central": 10.0,
+  "high": 18.6
+ },
+ "build": {
+  "low": "INSS low USD 7.67bn to Dec 2025 + Jan-Aug 2026 troops (0.56 x 8/12 = 0.37) + 2 shipments, at 1.13-1.16 USD/EUR = EUR 6.8bn",
+  "central": "INSS midpoint USD 11.05bn + 2026 (troops 0.37, shells ~0.2) = USD 11.6bn = EUR 10.0bn; cross-check: 10m rounds x USD 800 + 220 missiles x 2.5m + artillery 0.2 + troops 1.0 = USD 10.0bn",
+  "high": "KIDA USD 19.5bn excluding technology transfer to NK (it is Russia's payment, not NK's delivery) = EUR 18.0bn, + troops after Mar 2025 EUR 0.6bn = EUR 18.6bn; equals volumes 12m x USD 1,300 (Russia's own price) + missiles/artillery/troops"
+ },
+ "method_band_alternative": {
+  "key": "nk_paid_observed",
+  "label": "North Korea: Russia paid only what was observed flowing back to Pyongyang (USD 0.5-1.5bn of fuel, food and weapons), so nearly all of the deliveries count at full value",
+  "paid_share": {
+   "low": 0.05,
+   "central": 0.09,
+   "high": 0.13
+  },
+  "basis": "observed payments USD 0.46-1.5bn (FNF 2025: North Korea's gains USD 0.46-1.19bn; INSS: confirmed deliveries to North Korea USD 0.58-1.5bn) over a full value of about USD 11.6bn (EUR 10bn)"
+ },
+ "estimates": [
+  {
+   "id": "kida_2025",
+   "institution": "Korea Institute for Defense Analyses (KIDA)",
+   "date": "2025-04 (press 2025-04-16)",
+   "period": "Aug 2023 - ~Mar 2025",
+   "usd_bn": {
+    "munitions_and_supplies": 19.2,
+    "technology_transfer_to_NK": 0.63,
+    "manpower_troops": 0.28,
+    "total": 20.1
+   },
+   "krw_trn": {
+    "munitions": 27.4,
+    "technology": 0.9,
+    "manpower": 0.4,
+    "total": 28.7
+   },
+   "volumes_cited": "15,800+ containers; 64 voyages; 4.2-5.8m rounds (OSC)",
+   "implied_price_per_round_usd": "3,300-4,600 (19.2bn / 4.2-5.8m)",
+   "sources": [
+    {
+     "title": "North Korea earns over $20 billion aiding Russia's war effort, report says",
+     "publisher": "Kyiv Independent",
+     "date": "2025-04-16",
+     "url": "https://kyivindependent.com/north-korea-earns-over-20-billion-aiding-russias-war-effort-report-says/"
+    },
+    {
+     "title": "(KIDA estimate)",
+     "publisher": "NK News (Jooheon Kim)",
+     "date": "2025-04-16",
+     "url": "https://www.nknews.org/?p=954760"
+    }
+   ]
+  },
+  {
+   "id": "inss_2026",
+   "institution": "Institute for National Security Strategy (INSS), Lim Soo-ho, 'Economic Effects of North Korea's Troop Deployment to Russia and Military Equipment Exports'",
+   "date": "2026-03-16",
+   "period": "Aug 2023 - Dec 2025 (one secondary source says Dec 2024; not verified)",
+   "usd_bn": {
+    "arms_low": 7.05,
+    "arms_high": 13.78,
+    "troops": 0.62,
+    "total_low": 7.67,
+    "total_high": 14.4
+   },
+   "other": "troops USD 2,800/3,000/5,000 a month (soldier/NCO/commander), death compensation USD 6-10k; USD 0.56bn a year from troops if continued; confirmed deliveries to NK of fuel, weapons and food USD 0.58-1.5bn; cash 'only a limited portion'",
+   "sources": [
+    {
+     "title": "North Korea likely earned $14.4B from military deals with Russia: report",
+     "publisher": "NK News",
+     "date": "2026-03-17",
+     "url": "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/"
+    },
+    {
+     "title": "N. Korea estimated to have earned up to $14.4 bil. from Russia-Ukraine war involvement",
+     "publisher": "Korea Times",
+     "date": "2026-03-16",
+     "url": "https://www.koreatimes.co.kr/amp/foreignaffairs/northkorea/20260316/n-korea-estimated-to-have-earned-up-to-144-bil-from-russia-ukraine-war-involvement-report"
+    }
+   ]
+  },
+  {
+   "id": "fnf_2024",
+   "institution": "Friedrich Naumann Foundation, Korea office (Olena Guseinova)",
+   "date": "2024-10",
+   "period": "to Oct 2024",
+   "usd_bn": {
+    "low": 1.7,
+    "high": 5.5
+   },
+   "sources": [
+    {
+     "title": "New research estimates North Korean arms supplies to Russia at $5.5 billion",
+     "publisher": "Euromaidan Press",
+     "date": "2024-10-28",
+     "url": "https://euromaidanpress.com/2024/10/28/new-research-estimates-north-korean-arms-supplies-to-russia-at-5-5-billion/"
+    }
+   ]
+  },
+  {
+   "id": "fnf_2025",
+   "institution": "Friedrich Naumann Foundation, 'Unequal Partnership' (Olena Guseinova)",
+   "date": "2025-09-18",
+   "period": "2023 - mid 2025",
+   "usd_bn": {
+    "delivered_value_high": 9.8,
+    "nk_gains_low": 0.457,
+    "nk_gains_high": 1.19
+   },
+   "note": "no substantial hard-currency inflows observed; Russia paid mainly in food, fuel, air defence, possibly aircraft",
+   "sources": [
+    {
+     "title": "North Korea getting a 'raw deal' on support for Russia's war: Report",
+     "publisher": "Al Jazeera",
+     "date": "2025-09-18",
+     "url": "https://www.aljazeera.com/news/2025/9/18/north-korea-getting-a-raw-deal-on-support-for-russias-war-report"
+    },
+    {
+     "title": "New FNF study: partnership between Russia and North Korea",
+     "publisher": "Friedrich Naumann Foundation",
+     "date": "2025-09",
+     "url": "https://www.freiheit.org/north-and-south-korea/new-fnf-study-partnership-between-russia-and-north-korea"
+    }
+   ]
+  },
+  {
+   "id": "nikkei_rok",
+   "institution": "South Korean estimates via Nikkei Asia",
+   "date": "2025",
+   "period": "three years to 2025",
+   "usd_bn": {
+    "low": 7.0,
+    "high": 13.8
+   },
+   "sources": [
+    {
+     "title": "North Korea earned almost half its GDP over three years of war (Nikkei via Hromadske)",
+     "publisher": "Hromadske",
+     "url": "https://hromadske.ua/en/economy/263814-pivnichna-koreia-zarobyla-blyzko-polovyny-svoho-vvp-za-try-roky-viyny-na-botsi-rosiyi-proty-ukrayiny-nikkei"
+    }
+   ]
+  },
+  {
+   "id": "volumes",
+   "note": "Volume evidence already in military_rus_r6-notes.md: OSC 29,488 containers Sep 2023-Jan 2026 (8-11m rounds); ROK DIA ~33,000 containers to Mar 2026, >12m 152mm-equivalent, 220 artillery pieces; MSMT/2025/1 up to 9m rounds and >=100 ballistic missiles in 2024; HUR ~6.5m since 2023, half outdated; troops >11,000 late 2024 + >3,000 early 2025 (MSMT) / 21,000 in four deployments (INSS)"
+  },
+  {
+   "id": "price_anchor",
+   "note": "Russian state procurement ~USD 1,200 per 152mm round 2024, >1,300 in 2025 (Euromaidan Press, 2026-01-27, https://euromaidanpress.com/2026/01/27/ukrainian-drones-forced-a-change-russia-now-pays-more-per-shell-to-fire-from-farther-away/); Bain cost ~USD 1,000. KIDA's implied 3,300-4,600 per round is above Russia's own price, so KIDA is a price ceiling, not a volume claim."
+  },
+  {
+   "id": "labour",
+   "note": "North Korean workers in Russia (15-25k; KIDA's 0.28bn 'manpower' is troops). Workers stay out under the remittances rule (wages are individuals'); troops' pay goes to the state and is counted."
+  }
+ ],
+ "model_before": {
+  "full_value_eur_bn_2022_aug2026": {
+   "low": 3.3,
+   "central": 8.8,
+   "high": 17.6
+  },
+  "counted_mil_part_eur_bn": {
+   "central": -3.019,
+   "low_end_most_negative": -6.08,
+   "high_end": -0.966
+  },
+  "counted_over_full_factor": {
+   "central": 0.343,
+   "low": 0.293,
+   "high": 0.345
+  },
+  "source_files": [
+   "research/2026-10/gaps/military_rus_r6.json",
+   "research/2026-10/gaps/military_payment_r13.json",
+   "site/data.json countries.PRK.military_rus (years = counted, alt = full value)"
+  ],
+  "prk_shift_pct_gdp": {
+   "central": -10.28,
+   "low": -20.64,
+   "high": -3.34
+  },
+  "gdp_eur_bn": 29.574
+ },
+ "sensitivity_paid_share": {
+  "note": "FNF 2025 puts NK's gains at USD 0.46-1.19bn and INSS confirmed deliveries to NK at USD 0.58-1.5bn: if Russia's payment in kind were only that, the paid share of a USD 11.6bn delivery would be ~5-13% and nearly all would count at full value: PRK would go to about -30% of GDP (the round-12 figure). INSS's statement that technology was 80-96% of 'compensation' implies payment was larger than the observed fuel/food. This choice moves PRK by ~20 points; the full-value change moves it ~1.4."
+ },
+ "press_only": "INSS (Lim Soo-ho, 16 March 2026) and KIDA (April 2025) were read only through press reports (NK News, Korea Times, Kyiv Independent); the primary PDFs were not reachable. INSS's period end (December 2024 or December 2025) is not verified."
+}

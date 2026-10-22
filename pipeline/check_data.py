@@ -6,6 +6,7 @@ Prints PASS / WARN / FAIL per check and exits non-zero on any FAIL.
 
 from __future__ import annotations
 
+import itertools
 import json
 import re
 import sys
@@ -429,6 +430,32 @@ else:
     # the docs are the site's own text, site/content/
     _bad, _n = cdn.check(_m)
     check("docs figures match data.json", not _bad and _n > 0, f"{_n} tagged figures; differing: {_bad[:4] or 'none'}")
+    # 38. round 24b (owner, 22 October 2026): business with Russia is shown in two lines, "Paid Russia less / more by"
+    # and "Earned less / more from Russia by"; they add up to business with Russia in every country
+    _split = [
+        k
+        for k, c in _m["countries"].items()
+        if abs(c["rusPaidEur"] + c["rusEarnedEur"] - c["rusEur"]) > 1e-3 + 1e-4 * abs(c["rusEur"])
+    ]
+    check(
+        "the two business lines add up to business with Russia",
+        not _split,
+        f"{len(_m['countries'])} countries; paid + earned differs: {_split[:6] or 'none'}",
+    )
+    # 39. round 24b (owner, 22 October 2026): Belarus is a party to the war (with Russia): its own map category, never
+    # ranked, and in no leaning or uncertain list; a party has no leaning
+    _party = sorted(k for k, c in _m["countries"].items() if c["party"])
+    _plean = [f"{k}.{q}" for k in _party for q in ("ua", "rus", "net") if _m["countries"][k][q + "Lean"]]
+    _rank_src = _html[_html.index("function rankList") :][:3000]
+    check(
+        "a party to the war is not ranked and in no list",
+        _party == ["BLR"]
+        and not _plean
+        and "PARTY_TO_WAR" in _rank_src
+        and "PARTY_TO_WAR.has" in _views_js
+        and "Party to the war (with Russia)" in _html,
+        f"parties: {_party}; leaning: {_plean or 'none'}",
+    )
 
 # 31. round 15 (approved by the owner): the net is the view the map opens with, then its two parts; the gross "To
 # Ukraine" and "To Russia" views are gone, and links to them open the nearest view. Round 17 (redesign, approved by the
@@ -446,6 +473,7 @@ else:
 # the downloads now are); the ranking has no text of its own above the chart: the header line names it and its ⓘ explains it.
 # Round 22 (owner): the views are tabs in the header bar (role="tablist"), not in the drawer
 # and the second number is named "Business with Russia" (positive: reduced); lens=kept and lens=business open it too.
+# Round 25 (owner, 22 October 2026): it is now "Trade with Russia", said as who kept what; lens=trade opens it too.
 # Round 23 (owner): Sources is How it works again (view "how"; #view=sources and #view=table open it), and its
 # long-form text comes from site/content/ (the method pages, the limitations and the changelog, which every flow's
 # "Changes to this flow" reads); no link points at the documentation that used to be in docs/
@@ -485,12 +513,20 @@ check(
     and bool(_start)
     and _start.group(1) == "net"
     and _old_map
-    == {"change": "net", "ukr": "support", "rus": "payments", "kept": "payments", "business": "payments", "cost": "net"}
+    == {
+        "change": "net",
+        "ukr": "support",
+        "rus": "payments",
+        "kept": "payments",
+        "business": "payments",
+        "trade": "payments",
+        "cost": "net",
+    }
     and _lens_keys == _buttons
     and 'data-lens="cost"' not in _html
     and 'data-lens="ukr"' not in _html
     and 'data-lens="rus"' not in _html
-    and '<button data-lens="payments" aria-pressed="false" data-i18n="Business with Russia">' in _html
+    and '<button data-lens="payments" aria-pressed="false" data-i18n="Trade with Russia">' in _html
     and re.search(r'<aside class="drawer" id="drawer"[^>]*\bhidden>', _html) is not None
     and 'id="hlbtn"' in _html
     and 'id="fbtn"' in _html
@@ -611,6 +647,110 @@ check(
     _sf_n > 0 and not _sf_bad and all(_kept.values()),
     f"{_sf_n} small flows; not a median of base_years or equal to 2021 at 2021 prices: {_sf_bad[:6] or 'none'}; "
     f"2021 kept: {_kept}",
+)
+
+# 37. round 24 (audit C; approved by the owner on 22 October 2026): every source the map cites has a type (its group in
+# How it works) and 1-3 key documents shown under its name, or is this project's own model; the source's own link is
+# never a bare homepage; the dead links audit C found are replaced (research/2026-10/link_fixes.json); the site no
+# longer hides the documents in one "Exact tables and reports" fold
+_types = {"data", "report", "press", "ours", "notes"}
+_fixes = json.loads((ROOT / "research" / "2026-10" / "link_fixes.json").read_text())["fixes"]
+_src_bad, _home, _dead = [], [], []
+for _sid, _s in data["sources"].items():
+    _keys = [lk for lk in _s.get("links") or [] if lk.get("key")]
+    if _s.get("type") not in _types or not (1 <= len(_keys) <= 3 or _s.get("type") == "ours"):
+        _src_bad.append(_sid)
+    _u = _s.get("url") or ""
+    if _u and _u.split("/", 3)[3:] in ([], [""]):
+        _home.append(_sid)
+    _dead += [_sid for lk in _s.get("links") or [] if lk["url"] in _fixes] + ([_sid] if _u in _fixes else [])
+check(
+    "every source has a type and key documents; no homepage or known dead link",
+    not _src_bad
+    and not _home
+    and not _dead
+    and "Exact tables and reports" not in _html
+    and "function srcItem" in _html,
+    f"{len(data['sources'])} sources; untyped or without key documents: {_src_bad[:5] or 'none'}; homepage as main "
+    f"link: {_home[:5] or 'none'}; known dead links left: {sorted(set(_dead))[:5] or 'none'}",
+)
+
+# 40. round 24b (audit 24 D M4; the owner, 22 October 2026): military aid counts as delivered; the undelivered amount
+# is never more than what was allocated, never below zero, and the slow lead times leave more undelivered than the
+# central ones; Kiel's full allocation is the high end (no adjustment there)
+_ud_bad = []
+for _iso, _c in countries.items():
+    _u = (_c.get("aid") or {}).get("undeliv")
+    if not _u:
+        continue
+    _mil = ((_c.get("aid") or {}).get("cats") or {}).get("military", 0)
+    _cc, _cl = list(itertools.accumulate(_u["c"])), list(itertools.accumulate(_u["l"]))
+    if (
+        any(v > 1e-6 or v < -_mil - 1e-6 for v in _cc + _cl)
+        or any(v > 1e-9 for v in _u["h"])
+        or any(lo > cc + 1e-4 for lo, cc in zip(_cl, _cc))
+    ):
+        _ud_bad.append(_iso)
+_ud_n = sum(1 for _c in countries.values() if (_c.get("aid") or {}).get("undeliv"))
+check(
+    "military aid delivered is no more than allocated",
+    _ud_n > 0 and not _ud_bad,
+    f"{_ud_n} donors adjusted; undelivered above allocation, below zero or out of order: {_ud_bad[:6] or 'none'}",
+)
+
+# 41. round 24b (audit 24 D M5; the owner): the captive-buyer label is a label only: no number in the model reads it
+_model_src = _html[_html.index("// ===== Model =====") : _html.index("function lensValue")]
+_cap = sorted(k for k, c in countries.items() if c.get("captive"))
+check(
+    "captive-buyer labels change no numbers",
+    bool(_cap) and ".captive" not in _model_src,
+    f"labelled: {_cap}; read by the model: {'yes' if '.captive' in _model_src else 'no'}",
+)
+
+# 42. round 25 (owner, 22 October 2026: story tags, "then we back that up with the numbers"): every tag rule in
+# storyTags() is in the table of site/content/method/tags.md with a source; a tag that states a figure from a data
+# source links its sources (ref(...)) in its sentence; Belarus's "party" tag comes first (also checked in the browser,
+# check 32)
+_st = _html[_html.index("function storyTags(") :]
+_st = _st[: _st.index("\nfunction tagsHtml(")]
+_keys = sorted(set(re.findall(r'add\(\d+, "(\w+)"', _st)))
+_tags_md = (ROOT / "site" / "content" / "method" / "tags.md").read_text()
+_rows = {
+    k: row for row in _tags_md.splitlines() if row.startswith("|") for k in re.findall(r"`(\w+)`", row.split("|")[1])
+}
+_undoc = [k for k in _keys if k not in _rows or not _rows[k].rstrip("|").split("|")[-1].strip()]
+_data_tags = [
+    "party",
+    "gascut",
+    "captive",
+    "windfall",
+    "discount",
+    "hidden",
+    "bought",
+    "sold",
+    "hub",
+    "mil",
+    "aid",
+    "refugees",
+    "rusfirms",
+    "tax",
+    "ship",
+]
+
+
+def _tag_call(key):
+    # the add(...) statement of a tag, up to its closing ");" at the end of a line, with the line before it (a sentence
+    # built beforehand, as for "aid")
+    i = re.search(r"add\(\d+, \"" + key + '"', _st).start()
+    j = _st.index(");\n", i)
+    return _st[_st.rfind("\n", 0, _st.rfind("\n", 0, i)) : j]
+
+
+_no_ref = [k for k in _data_tags if not re.search(r"add\(\d+, \"" + k + '"', _st) or "ref(" not in _tag_call(k)]
+check(
+    "every story tag is documented with a source, and data tags cite theirs",
+    bool(_keys) and not _undoc and not _no_ref and 'add(100, "party"' in _st,
+    f"{len(_keys)} tag rules; not in tags.md with a source: {_undoc or 'none'}; data tags without sources: {_no_ref or 'none'}",
 )
 
 width = max(len(n) for _, n, _ in results)

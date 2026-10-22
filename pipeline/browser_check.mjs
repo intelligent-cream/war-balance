@@ -3,7 +3,8 @@
 // "direction uncertain" marks, the rankings and the grades before detail.json (the alternatives) had loaded, and kept
 // them. This check loads the page as a reader does, waits until it says it is ready, and compares, for every economy:
 // the method band and the "direction uncertain" flag of each headline number, the countries marked uncertain on each map
-// (round 17: a faded colour of the leaning direction, "too close to call", no longer dotted or grey), and the countries ranked in the Ranking view of each headline
+// (round 17: a faded colour of the leaning direction, no longer dotted or grey; round 24b: "leaning toward ..." or "uncertain
+// direction"), which way each of those leans, and the countries ranked in the Ranking view of each headline
 // number.
 //
 // Run after build_data.py:  node pipeline/browser_check.mjs      (check_data.py runs it too, check 32)
@@ -58,7 +59,7 @@ const inPage = await page.evaluate(() => {
   for (const c of Object.values(byIso)) {
     if (!c.gdp) continue;
     const mb = methodBands(c, 2026), g = 100 / c.gdp, o = { gdp: c.gdp };
-    for (const q of ["ua", "rus", "net"]) Object.assign(o, { [q + "Unc"]: uncertain(c, 2026, q), [q + "BandLo"]: mb[q].lo * g, [q + "BandHi"]: mb[q].hi * g });
+    for (const q of ["ua", "rus", "net"]) Object.assign(o, { [q + "Unc"]: uncertain(c, 2026, q), [q + "Lean"]: leaning(c, 2026, q), [q + "BandLo"]: mb[q].lo * g, [q + "BandHi"]: mb[q].hi * g });
     o.grades = grades(c, 2026);
     out[c.iso3] = o;
   }
@@ -70,6 +71,7 @@ for (const [iso, o] of Object.entries(inPage)) {
   if (!n) continue;
   for (const q of ["ua", "rus", "net"]) {
     if (o[q + "Unc"] !== n[q + "Unc"]) { nFlag++; problems.push(`${iso} ${q}: direction uncertain in the page ${o[q + "Unc"]}, in Node ${n[q + "Unc"]}`); }
+    if (o[q + "Lean"] !== n[q + "Lean"]) { nFlag++; problems.push(`${iso} ${q}: leaning in the page ${o[q + "Lean"]}, in Node ${n[q + "Lean"]}`); }
     for (const e of ["BandLo", "BandHi"]) {
       if (Math.abs(o[q + e] - n[q + e]) > 0.005) { nBand++; problems.push(`${iso} ${q}${e}: page ${o[q + e].toFixed(3)}, Node ${n[q + e].toFixed(3)}`); }
     }
@@ -89,7 +91,8 @@ for (const [lens, q] of Object.entries(LENS)) {
       dotted: [...document.querySelectorAll("path.country.uncertain")].map(p => p.__data__ && DATA[p.__data__.id]).filter(Boolean).map(c => c.iso3),
     };
   });
-  const want = Object.entries(node.countries).filter(([, c]) => c.gdp >= MIN_GDP && !c[q + "Unc"] && c[q] !== null).map(([k]) => k).sort();
+  // round 24b (owner): a party to the war (Belarus) is never ranked
+  const want = Object.entries(node.countries).filter(([, c]) => c.gdp >= MIN_GDP && !c[q + "Unc"] && !c.party && c[q] !== null).map(([k]) => k).sort();
   const have = got.rows.slice().sort();
   const extra = have.filter(k => !want.includes(k)), missing = want.filter(k => !have.includes(k));
   if (extra.length || missing.length) problems.push(`${lens} ranking: ranked in the page but not in Node ${extra.join(" ") || "none"}; missing ${missing.join(" ") || "none"}`);
@@ -128,18 +131,47 @@ for (const lens of ["net", "payments"]) {
     const is = (f, h) => norm(f) === norm(rgb(h)) || norm(f) === norm(h);
     if (o.unc && (is(o.faded, o.neutral) || is(o.faded, o.want))) problems.push(`${lens} map: ${o.iso} faded colour ${o.faded} is not apart from the neutral and the full colour`);
     for (const f of o.fills) {
-      if (o.unc && !is(f, o.faded)) problems.push(`${lens} map: ${o.iso} is too close to call but painted ${f}, not the faded lean colour ${o.faded}`);
+      if (o.unc && !is(f, o.faded)) problems.push(`${lens} map: ${o.iso}'s direction is not certain but it is painted ${f}, not the faded lean colour ${o.faded}`);
       if (!o.unc && !is(f, o.want)) problems.push(`${lens} map: ${o.iso} has a clear direction but is painted ${f}, not ${o.want}`);
       if (is(f, o.neutral)) problems.push(`${lens} map: ${o.iso} painted in the neutral colour`);
     }
   }
 }
 
+// 4. round 25 (owner, 22 October 2026): "What makes up the number" in two sections, toward Russia and toward Ukraine,
+// with no + or − signs; their subtotals make the net in every country; every country gets its story tags, Belarus its
+// "Party to the war" tag first
+await ready("");
+const r25 = await page.evaluate(() => {
+  const bad = [], noTags = [];
+  for (const c of Object.values(DATA)) {
+    if (!c.gdp) continue;
+    const k = calc(c, 2026), S = partSections(c, k);
+    if (Math.abs(S.uaSum - S.ruSum - k.shift) > 1e-6 + 1e-6 * Math.abs(k.shift)) bad.push(`${c.iso3} ${(S.uaSum - S.ruSum).toFixed(4)} vs ${k.shift.toFixed(4)}`);
+    if (!storyTags(c, k, 2026).length && Math.abs(k.shift) >= 0.001 * c.gdp) noTags.push(c.iso3);
+  }
+  const blr = byIso.BLR ? storyTags(byIso.BLR, calc(byIso.BLR, 2026), 2026).map(f => f.key) : [];
+  const signs = [];
+  for (const iso of ["DEU", "HUN", "BLR", "CZE", "MNG", "TUR", "PRK", "POL", "IND", "USA"]) {
+    const c = byIso[iso];
+    if (!c) continue;
+    select(c.n, false);
+    const txt = [...document.querySelectorAll("#panel .psec-h, #panel .psec summary .pv, #panel .psec-sum")].map(e => e.textContent).join(" | ");
+    if (/[+\u2212]\s*[€\d]|(^|\s)-\s*[€\d]/.test(txt)) signs.push(`${iso}: ${txt.slice(0, 120)}`);
+    if (!document.querySelector("#panel .psec")) signs.push(`${iso}: no sections`);
+  }
+  return { bad, noTags, blr, signs };
+});
+if (r25.bad.length) problems.push(`parts sections do not make the net: ${r25.bad.slice(0, 5).join("; ")}`);
+if (r25.blr[0] !== "party") problems.push(`Belarus's first tag is not "party": ${r25.blr.join(", ")}`);
+if (r25.signs.length) problems.push(`signs in the parts sections: ${r25.signs.slice(0, 3).join(" || ")}`);
+
 if (errors.length) problems.push("page errors: " + errors.slice(0, 3).join(" | "));
 await browser.close();
 server.close();
 
 const unc = q => Object.values(node.countries).filter(c => c.gdp >= MIN_GDP && c[q + "Unc"]).length;
+console.log(`two-section parts make the net everywhere; Belarus tags ${r25.blr.slice(0, 3).join(", ")}; ${r25.noTags.length} countries with a material net and no tag`);
 console.log(`browser check: ${Object.keys(inPage).length} economies; ranked net ${ranked.net}, support ${ranked.support}, payments ${ranked.payments}; direction uncertain (GDP >= EUR 5bn) ua ${unc("ua")}, rus ${unc("rus")}, net ${unc("net")}; small economies' colours: ${nSmall} checked (${nFaded} faded)`);
 if (problems.length) {
   console.log(`MISMATCH: ${problems.length} (bands ${nBand}, flags ${nFlag}, grades ${nGrade})`);

@@ -2,13 +2,13 @@
 // Round 20 (owner): Table & data is no longer a view (its old links open Sources). Its downloads stay, in Sources: every
 // country, every number (CSV), every part (CSV) and the whole data file (JSON), plus the data gaps by country. They
 // follow the Filters drawer's period, what's counted and money flowing back; every country is in them.
-/* global state, DATA, calc, scaled, t, viewState, uncertain, grades, custom, COUNTED, isOn, esc, tData, FRAC, yi, remitSum, select */
+/* global leaning, state, DATA, calc, scaled, t, viewState, uncertain, grades, custom, COUNTED, isOn, esc, tData, FRAC, yi, remitSum, select */
 
 // the four numbers, each a group of three columns: the value, its likely range and its certainty letter
 const TGROUPS = [
   { id: "net", label: "Net", v: k => [k.shift, k.shiftLo, k.shiftHi], en: "net" },
   { id: "ua", label: "Support for Ukraine", v: k => [k.uaBal, k.uaLo, k.uaHi], en: "support_for_ukraine" },
-  { id: "rus", label: "Business with Russia", v: k => [k.rusBal, k.rusLo, k.rusHi], en: "business_with_russia_reduced" },
+  { id: "rus", label: "Trade with Russia", v: k => [k.rusBal, k.rusLo, k.rusHi], en: "trade_with_russia_toward_ukraine" },
   { id: "frozen", label: "Russian money frozen", v: k => [k.frozen, k.frozenLo, k.frozenHi], en: "russian_money_frozen" },
 ];
 
@@ -72,9 +72,11 @@ const r4 = v => (v == null || Number.isNaN(v) ? null : +v.toFixed(4));
 function csvFull(rows) {
   const head = ["iso3", "country", "period", "net_of_flowback",
     "support_ukraine_eur_bn", "support_ukraine_low_eur_bn", "support_ukraine_high_eur_bn", "support_ukraine_pct_gdp", "support_ukraine_certainty", "support_ukraine_direction_uncertain",
-    "business_with_russia_reduced_eur_bn", "business_with_russia_reduced_low_eur_bn", "business_with_russia_reduced_high_eur_bn", "business_with_russia_reduced_pct_gdp", "business_with_russia_reduced_certainty", "business_with_russia_reduced_direction_uncertain", "of_which_gas_cut_by_russia_eur_bn",
+    "trade_with_russia_toward_ukraine_eur_bn", "trade_with_russia_toward_ukraine_low_eur_bn", "trade_with_russia_toward_ukraine_high_eur_bn", "trade_with_russia_toward_ukraine_pct_gdp", "trade_with_russia_toward_ukraine_certainty", "trade_with_russia_toward_ukraine_direction_uncertain", "of_which_gas_cut_by_russia_eur_bn",
+    "of_which_russia_kept_less_eur_bn", "of_which_russia_kept_less_low_eur_bn", "of_which_russia_kept_less_high_eur_bn", "of_which_country_kept_less_from_selling_to_russia_eur_bn", "of_which_country_kept_less_from_selling_to_russia_low_eur_bn", "of_which_country_kept_less_from_selling_to_russia_high_eur_bn",
     "russian_money_frozen_eur_bn_net_only", "russian_money_frozen_low_eur_bn_net_only", "russian_money_frozen_high_eur_bn_net_only", "russian_money_frozen_pct_gdp_net_only",
-    "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person", "net_shift_certainty", "net_shift_direction_uncertain",
+    "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person", "net_shift_certainty", "net_shift_direction_uncertain", "net_shift_leaning",
+    "military_aid_allocated_not_yet_delivered_eur_bn",
     "refugees_hosted_not_counted_co_belligerent_eur_bn",
     "remittances_from_russia_change_eur_bn_not_in_totals", "remittances_from_russia_change_low_eur_bn_not_in_totals", "remittances_from_russia_change_high_eur_bn_not_in_totals", "remittances_from_russia_change_pct_gdp_not_in_totals",
     "taken_by_russia_from_companies_eur_bn_not_in_totals", "taken_by_russia_from_companies_low_eur_bn_not_in_totals", "taken_by_russia_from_companies_high_eur_bn_not_in_totals", "taken_by_russia_from_companies_pct_gdp_not_in_totals",
@@ -87,8 +89,9 @@ function csvFull(rows) {
     const cert = id => (r[id] ? r[id].cert : null), unc = id => (r[id] ? r[id].unc : false);
     return [r.iso3, c.name_en, periodTextEn(), state.netBack,
       k.uaBal, k.uaLo, k.uaHi, G(k.uaBal), cert("ua"), unc("ua"), k.rusBal, k.rusLo, k.rusHi, G(k.rusBal), cert("rus"), unc("rus"), k.rusCut,
+      k.rusPaid, k.rusPaidLo, k.rusPaidHi, k.rusEarned, k.rusEarnedLo, k.rusEarnedHi,
       k.frozen, k.frozenLo, k.frozenHi, G(k.frozen),
-      k.shift, k.shiftLo, k.shiftHi, G(k.shift), pp && k.shift * pp, cert("net"), unc("net"), refX,
+      k.shift, k.shiftLo, k.shiftHi, G(k.shift), pp && k.shift * pp, cert("net"), unc("net"), y > 2021 && unc("net") ? leaning(c, y, "net") || "" : "", k.undelivered, refX,
       rm[0], rm[1], rm[2], G(rm[0]),
       k.taken, k.takenLo, k.takenHi, G(k.taken),
       k.cost, G(k.cost), k.aid, k.refugees, k.paidRussia, c.gdp, c.pop, figuresEn()].map(q).join(",");
