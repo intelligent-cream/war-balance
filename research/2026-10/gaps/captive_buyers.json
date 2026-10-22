@@ -1,12 +1,11 @@
 {
  "generated": "2026-10-22",
  "round": "24b (audit 24, D M5; approved by the owner 22 October 2026)",
- "decision": "a label only, no number changes: countries with no real alternative to Russian fuel, the mirror of the 'gas cut off by Russia' label. 'Partly' where an alternative exists on paper but its capacity is officially contested (the Adria pipeline for Hungary and Slovakia).",
+ "decision": "Round 26 (the owner, 22 October 2026): the captive label is removed everywhere ('everybody has alternatives... there's always a way'); 'labels' is kept as background research only and is not shown. Hungary and Slovakia, which kept buying pipeline crude under the EU exemption although an alternative existed (Adria; Czechia switched via TAL), get the plain label 'Kept buying Russian pipeline oil (EU exemption)' (pipeline_exemption).",
  "criteria": {
   "C1_dependence": "Russia >= 75% of the country's 2021 imports of the commodity (Comtrade HS 2709 / 2710 / 2711, or national data where Comtrade books transit countries) AND imports >= 50% of domestic consumption",
   "C2_no_alternative": "landlocked or pipeline-only for that commodity, AND either (a) every non-Russian route's usable capacity is < 50% of the country's imports of it in that year, or (b) the network and import monopoly is owned by a Russian state company (Gazprom-owned grid)",
   "C3_period": "label applies from 2022 until the first year an alternative meeting (a) is in service",
-  "partial": "'partly captive' when C1 holds and an alternative exists on paper but its capacity is officially contested (Adria for Hungary/Slovakia)",
   "scope": "label only; attaches to the negative 'paid' and 'windfall' parts for that commodity (like rusCut for 'cut by Russia'); totals unchanged"
  },
  "labels": {
@@ -93,35 +92,6 @@
    "src": [
     "comtrade"
    ]
-  },
-  "HUN": {
-   "status": "partly",
-   "commodity": "pipeline crude",
-   "years": [
-    2022,
-    2026
-   ],
-   "c1": "Comtrade 2021 HS2709 59% (MOL reports ~80%+ Druzhba in 2023-24)",
-   "c2": "Adria/JANAF: JANAF says 14.4 Mt/yr suffices; MOL disputes; EU embargo exempted pipeline crude for landlocked states",
-   "src": [
-    "comtrade",
-    "adria_euronews",
-    "adria_tests"
-   ]
-  },
-  "SVK": {
-   "status": "partly",
-   "commodity": "pipeline crude",
-   "years": [
-    2022,
-    2026
-   ],
-   "c1": "Comtrade 2021 HS2709 95.4%",
-   "c2": "as Hungary (Adria via Hungary)",
-   "src": [
-    "comtrade",
-    "adria_tests"
-   ]
   }
  },
  "not_captive": {
@@ -164,6 +134,16 @@
    "status": "not captive",
    "c1": "HS2710 16.4% (Comtrade; CREA shows higher 2023-24)",
    "c2": "Black Sea ports"
+  },
+  "HUN": {
+   "status": "not captive (round 26)",
+   "c1": "HS2709 59%",
+   "c2": "Adria pipeline from Croatia; kept buying Druzhba crude under the EU pipeline exemption"
+  },
+  "SVK": {
+   "status": "not captive (round 26)",
+   "c1": "HS2709 95.4%",
+   "c2": "Adria via Hungary; kept buying Druzhba crude under the EU pipeline exemption"
   }
  },
  "sources": {
@@ -230,10 +210,50 @@
    "figures": "from Dec 2022 right-bank Moldova supplied by Energocom (EU market); Gazprom gas earmarked for Transnistria; Gazprom delivered only 43-70% of contracted Oct-Dec 2022"
   },
   "czech_tal": {
-   "title": "Czechia ended Russian crude imports via Druzhba in 2025 (TAL pipeline expansion)",
-   "publisher": "(context; the owner may wish to cite MERO / Czech Ministry of Industry)",
-   "url": "https://www.mero.cz/",
-   "note": "shows a landlocked Druzhba buyer had a practical alternative"
+   "title": "The Czech Republic no longer depends on Russian oil (TAL-PLUS completed; Litvinov refinery adapted to non-Russian crude)",
+   "publisher": "OSW Centre for Eastern Studies",
+   "date": "2025-04-18",
+   "url": "https://www.osw.waw.pl/en/publikacje/analyses/2025-04-18/czech-republic-no-longer-depends-russian-oil"
+  },
+  "eu_2022_879": {
+   "title": "Council Regulation (EU) 2022/879 of 3 June 2022 amending Regulation (EU) No 833/2014 (sixth package: crude embargo with a temporary exemption for crude delivered by pipeline)",
+   "publisher": "Official Journal of the European Union",
+   "date": "2022-06-03",
+   "url": "https://eur-lex.europa.eu/eli/reg/2022/879/oj"
+  }
+ },
+ "pipeline_exemption": {
+  "HUN": {
+   "commodity": "pipeline crude",
+   "years": [
+    2022,
+    2026
+   ],
+   "c1": "Comtrade 2021 HS2709 59% (MOL reports ~80%+ Druzhba in 2023-24)",
+   "c2": "EU embargo on Russian crude exempted pipeline crude (Council Regulation (EU) 2022/879, Article 3m(3)(d) of Regulation 833/2014); an alternative existed: the Adria pipeline from Croatia (JANAF: 14.4 Mt a year confirmed in 2023 tests), and Czechia, on the same Druzhba pipeline, switched fully to the TAL/IKL route by 2025",
+   "src": [
+    "comtrade",
+    "eu_2022_879",
+    "adria_euronews",
+    "adria_tests",
+    "czech_tal"
+   ]
+  },
+  "SVK": {
+   "commodity": "pipeline crude",
+   "years": [
+    2022,
+    2026
+   ],
+   "c1": "Comtrade 2021 HS2709 95.4%",
+   "c2": "EU embargo on Russian crude exempted pipeline crude (Council Regulation (EU) 2022/879, Article 3m(3)(d) of Regulation 833/2014); an alternative existed: the Adria pipeline from Croatia (JANAF: 14.4 Mt a year confirmed in 2023 tests), and Czechia, on the same Druzhba pipeline, switched fully to the TAL/IKL route by 2025",
+   "src": [
+    "comtrade",
+    "eu_2022_879",
+    "adria_euronews",
+    "adria_tests",
+    "czech_tal"
+   ]
   }
  }
 }

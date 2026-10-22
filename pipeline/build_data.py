@@ -1581,6 +1581,7 @@ def build() -> dict:
                 tr.pop(k, None)
     attach_r11_sources(countries, src)
     attach_input_sources(countries)
+    mark_no_data(countries)
     for c in countries.values():
         for x in c.get("extra") or []:
             x.pop("_cc", None)
@@ -1852,7 +1853,7 @@ SOURCE_TYPE = {
     "assumptions_r11_gain": "notes", "assumptions_r11_rules": "notes", "assumptions_r11_hubs": "notes",
     "assumptions_r11_people": "notes",
     "refugees_gain": "data", "north_korea_r24": "press", "military_delivered": "ours", "windfall_band": "ours",
-    "captive_buyers": "data", "belarus_party": "report",
+    "pipeline_exemption": "report", "belarus_party": "report",
 }  # fmt: skip
 # news sites and encyclopedias: a link there is a press report, whatever the research file called it
 PRESS_HOSTS = (
@@ -4319,33 +4320,87 @@ def apply_military_delivered(countries: dict[str, dict], src: Sources) -> None:
             fb["src"].append(sid)
 
 
+# Round 26 (the owner, 22 October 2026: "if I don't have any data, we shouldn't put anything there"): a trade part counts
+# only where the country has its own observation for the war years. Own observation, per flow:
+# - goods trade with Russia or Ukraine: a value the country reports, or its partner reports for it (mirror), in UN
+#   Comtrade/Eurostat for at least one of 2022-2025 (trade.json), or a country-specific post-war record from research:
+#   non-reporters' trade from tanker tracking and official statements (nonreport), hubs' records of what they bought from
+#   the country and sold on to Russia (reexports), national statistics (narrow), gas by country of use (transit_gas), the
+#   Power of Siberia, Hong Kong's gold, refinery-specific research (laundered_r6);
+# - fuel made from Russian crude (laundered oil): the country's own customs records of fuel imports by origin
+#   (laundered_eu), refiners' reported fuel exports to the country (laundered), or refinery-specific research
+#   (laundered_r6). Fuel reached only through EU refiners' 2021 export shares is an allocation, not an observation.
+# Not an observation: the pre-war trend continued (trend), Russia's import gap split by origin shares (residual), audit
+# shares (audit2) and models. A part without its own observation is set to zero in calc() and marked "no data".
+NO_DATA_OBS = {
+    "to_rus": {"nonreport", "reexports", "narrow", "transit_gas", "power_of_siberia", "hk_gold_r16", "laundered_r6"},
+    "from_rus": {"nonreport", "reexports", "narrow"},
+    "buy_ukr": set(),
+    "sell_ukr": set(),
+    "laund": {"laundered", "laundered_r6", "laundered_eu"},
+}
+NO_DATA_TRADE = {
+    "to_rus": "imports_from_RUS",
+    "from_rus": "exports_to_RUS",
+    "buy_ukr": "imports_from_UKR",
+    "sell_ukr": "exports_to_UKR",
+}
+NO_DATA_PARTS = {
+    "to_rus": ["paid", "windfall"],
+    "from_rus": ["sold"],
+    "buy_ukr": ["buy"],
+    "sell_ukr": ["sell"],
+    "laund": ["laund"],
+}
+
+
+def mark_no_data(countries: dict[str, dict]) -> None:
+    trade = load(RESEARCH / "trade.json")["countries"]
+    for iso3, c in countries.items():
+        t = trade.get(iso3) or {}
+        miss = []
+        for flow, obs_src in NO_DATA_OBS.items():
+            obj = c.get(flow)
+            if not obj:
+                continue
+            tf = NO_DATA_TRADE.get(flow)
+            observed = bool(tf and any(v is not None for y, v in (t.get(tf) or {}).items() if 2022 <= int(y) <= 2025))
+            observed = observed or bool(obs_src & set(obj.get("src") or []))
+            if not observed:
+                miss += NO_DATA_PARTS[flow]
+        if miss:
+            c["no_data"] = sorted(set(miss))
+
+
 def apply_captive(countries: dict[str, dict], src: Sources) -> None:
-    """Round 24b (audit 24, D M5; approved by the owner 22 October 2026): a label only, the mirror of "gas cut off by
-    Russia": countries with no real alternative to Russian fuel (captive_buyers.json). Russia supplied at least 75% of
-    the country's 2021 imports of the fuel, imports are at least half of its use, and no non-Russian route can carry half
-    of them (or a Russian state company owns the network). "Partly" where an alternative exists but its capacity is
-    officially contested. No number changes (check_data.py)."""
+    """Round 24b added a "no real alternative to Russian fuel" label (captive_buyers.json). Round 26 (the owner,
+    22 October 2026: "everybody has alternatives ... there's always a way") removed it everywhere; the research file
+    stays as background only. What remains is a plain label for Hungary and Slovakia, which kept buying Russian
+    pipeline crude under the EU exemption although an alternative existed. No number changes (check_data.py)."""
     cb = load(GAPS / "captive_buyers.json")
     if not cb:
         return
-    sid = src.add(
-        "captive_buyers",
-        "Countries with no real alternative to Russian fuel: UN Comtrade 2021 imports of crude, fuels and gas by partner; pipeline and network ownership (Gazprom Armenia, Kyrgyzstan), interconnector openings (Serbia-Bulgaria, December 2023), Adria pipeline tests (JANAF, MOL)",
-        cb["sources"]["comtrade"]["url"],
-        cb.get("generated"),
-        "a label only, no number changes; see research/2026-10/gaps/captive_buyers-notes.md",
-    )
-    src.items[sid]["links"] = [
-        {"title": x["title"] + (f" ({x['publisher']})" if x.get("publisher") else ""), "url": x["url"],
-         "kind": "secondary" if any(h in x["url"] for h in ("wikipedia", "euronews", "marketscreener", "timesca", "indrastra", "themoscowtimes")) else "primary"}
-        for k, x in cb["sources"].items() if x.get("url", "").startswith("http") and k != "czech_tal"
-    ]  # fmt: skip
-    for iso3, lab in cb["labels"].items():
-        c = countries.get(iso3)
-        if not c:
-            continue
-        c["captive"] = {"status": lab["status"], "commodity": lab["commodity"], "years": lab["years"],
-                        "why": "; ".join(x for x in (lab.get("c1"), lab.get("c2")) if x), "src": [sid]}  # fmt: skip
+    # Round 26 (the owner, 22 October 2026): no "partly captive". Hungary and Slovakia had an alternative (Adria; Czechia
+    # switched via TAL) and kept buying pipeline crude under the EU exemption: a plain label, also with no number change
+    ex = cb.get("pipeline_exemption") or {}
+    if ex:
+        eid = src.add(
+            "pipeline_exemption",
+            "Russian pipeline crude kept under the EU exemption: Council Regulation (EU) 2022/879 (crude embargo exempting pipeline deliveries); the Adria pipeline tests (JANAF, MOL); Czechia's switch to the TAL/IKL route (OSW, April 2025); UN Comtrade 2021 crude imports",
+            cb["sources"]["eu_2022_879"]["url"],
+            cb.get("generated"),
+            "a label only, no number changes; see research/2026-10/gaps/captive_buyers-notes.md",
+        )
+        src.items[eid]["links"] = [
+            {"title": cb["sources"][k]["title"] + f" ({cb['sources'][k]['publisher']})", "url": cb["sources"][k]["url"],
+             "kind": "secondary" if k in ("adria_tests", "adria_euronews") else "primary"}
+            for k in ("eu_2022_879", "czech_tal", "adria_euronews", "adria_tests", "comtrade")
+        ]  # fmt: skip
+        for iso3, lab in ex.items():
+            c = countries.get(iso3)
+            if c:
+                c["pipeline_exempt"] = {"commodity": lab["commodity"], "years": lab["years"],
+                                        "why": "; ".join(x for x in (lab.get("c1"), lab.get("c2")) if x), "src": [eid]}  # fmt: skip
 
 
 def source_documents(src: Sources) -> None:
