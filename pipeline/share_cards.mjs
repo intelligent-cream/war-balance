@@ -47,7 +47,7 @@ await page.evaluate(() => {
   const el = document.createElement("div");
   el.style.cssText = "position:fixed;right:40px;bottom:40px;z-index:99;background:#fbfcfcee;padding:22px 28px;border-radius:10px;max-width:560px;font-family:'Source Sans 3',sans-serif;color:#15212b";
   el.innerHTML = `<div style="font-family:Archivo,sans-serif;font-weight:800;font-stretch:115%;font-size:40px;letter-spacing:-.02em;line-height:1.05">Follow the Money:<br>Ukraine</div>
-    <div style="margin-top:10px;font-size:22px;color:#55636e">Where did each country's money move: <b style="color:#2a6fb0">toward Ukraine</b> or <b style="color:#c9520f">toward Russia</b>? Its support for Ukraine plus how much it <span style="color:#2a6fb0">reduced</span>, or <span style="color:#c9520f">increased</span>, its business with Russia, as a share of its economy: totals since 2022 against one year's GDP.</div>`;
+    <div style="margin-top:10px;font-size:22px;color:#55636e">Where did each country's money move: <b style="color:#2a6fb0">toward Ukraine</b> or <b style="color:#c9520f">toward Russia</b>? Its support for Ukraine plus how much <span style="color:#2a6fb0">less</span>, or <span style="color:#c9520f">more</span>, Russia kept from trade with it (taxes and profit, not the full price), as a share of its economy: totals since 2022 against one year's GDP.</div>`;
   document.body.appendChild(el);
 });
 await page.waitForTimeout(800);
@@ -73,6 +73,8 @@ const cards = await page.evaluate(() => {
       // Round 22 (owner): every number as a verb and an amount, from the page's own verb() and netSentence()
       ru: fmtMeasure(c, k.rusBal, "gdp", true), ruY: perYear(c, k.rusBal, 2026), ruLess: k.rusBal >= 0, ruWhat: keptWords(c, k, "gdp", true),
       uaUnc: uncertain(c, 2026, "ua"), ruUnc: uncertain(c, 2026, "rus"), netUnc: uncertain(c, 2026, "net"), years: yrs.toFixed(1),
+      // round 24b (owner): "leaning toward ..." or "uncertain direction" (the page's own words), and a party to the war
+      uaDir: dirWords(c, 2026, "ua"), ruDir: leaning(c, 2026, "rus") ? "" : dirWords(c, 2026, "rus"), netDir: dirWords(c, 2026, "net"), party: PARTY_TO_WAR.has(c.iso3),
       refX: c.ref_excluded ? eur(c.ref_excluded.years.reduce((a, b) => a + b, 0)) : "",
       netPos: k.shift >= 0, earner: !!k.earner,
       pct: fmtMeasure(c, k.shift, "gdp", true), pctY: perYear(c, k.shift, 2026), eur: eur(k.shift, true), pp: c.pop ? perPerson(c, k.shift) : "", netWhat: netWords(c, k, "en"),
@@ -81,9 +83,10 @@ const cards = await page.evaluate(() => {
       uaLo: fmtMeasure(c, k.uaLo, "gdp", true), uaHi: fmtMeasure(c, k.uaHi, "gdp", true), ruLo: fmtMeasure(c, k.rusLo, "gdp", true), ruHi: fmtMeasure(c, k.rusHi, "gdp", true),
       fz: Math.abs(k.frozen) >= 0.0005 ? fmtMeasure(c, k.frozen, "gdp", true) : "",
       dataTo: document.body.dataset.dataTo || "",
-      netVerb: verbAround("net", k.shift)[0], pctU: fmtMeasure(c, Math.abs(k.shift), "gdp"), pctYU: fmtMeasure(c, Math.abs(k.shift) / yrs, "gdp"), eurU: eur(Math.abs(k.shift)),
-      uaV: verb("ua", k.uaBal, c, "gdp"), ruV: verb("rus", k.rusBal, c, "gdp"), fzV: Math.abs(k.frozen) >= 0.0005 ? verb("frozen", k.frozen, c, "gdp") : "",
-      netV: verb("net", k.shift, c, "gdp"), sum: netSentence(c, k, "gdp"),
+      netVerb: verbAround(uncertain(c, 2026, "net") && leaning(c, 2026, "net") ? "netLean" : "net", k.shift)[0], pctU: fmtMeasure(c, Math.abs(k.shift), "gdp"), pctYU: fmtMeasure(c, Math.abs(k.shift) / yrs, "gdp"), eurU: eur(Math.abs(k.shift)),
+      uaV: verb("ua", k.uaBal, c, "gdp"), ruV: verb(uncertain(c, 2026, "rus") && leaning(c, 2026, "rus") ? "rusLean" : "rus", k.rusBal, c, "gdp"), fzV: Math.abs(k.frozen) >= 0.0005 ? verb("frozen", k.frozen, c, "gdp") : "",
+      // round 25: the title says "Leaning toward …" when the net leans, as the card and the panel do
+      netV: verb(uncertain(c, 2026, "net") && leaning(c, 2026, "net") ? "netLean" : "net", k.shift, c, "gdp"), sum: netSentence(c, k, "gdp"),
     });
   }
   return out;
@@ -94,9 +97,9 @@ for (const d of cards) {
   await page.evaluate(d => {
     let el = document.getElementById("card");
     if (!el) { el = document.createElement("div"); el.id = "card"; document.body.appendChild(el); }
-    // the map's one colour rule (round 17): blue toward Ukraine, orange toward Russia, grey for no clear change (too close
-    // to call) and for earning from the war effort, which is not money toward Russia
-    // too close to call: the faded colour of the way it leans (round 17, as on the map). Round 21 (polish): a softer tint
+    // the map's one colour rule (round 17): blue toward Ukraine, orange toward Russia, grey for no clear change and for
+    // earning from the war effort, which is not money toward Russia
+    // a direction that is not certain (round 24b: leaning or uncertain): the faded colour of the way it leans (round 17, as on the map). Round 21 (polish): a softer tint
     // of the same hue, not a mix with the grey (the orange one was a brown); still 3:1 on the card for large text
     const grey = "#55636e", fadeB = "#5b88b5", fadeO = "#cc7a40";
     const col = d.earner ? grey : d.netUnc ? (d.netPos ? fadeB : fadeO) : d.netPos ? "#2a6fb0" : "#c9520f";
@@ -112,10 +115,11 @@ for (const d of cards) {
         <span style="font-family:Archivo,sans-serif;font-weight:800;font-size:88px;letter-spacing:-.03em;line-height:1;color:${col}">${d.pctU}</span>
         <span style="font-size:27px;font-weight:600;color:#15212b;line-height:1.15">of a year's GDP in total<br>since 2022 (about ${d.pctYU} a year)</span>
       </div>
-      <div style="margin-top:10px;font-size:26px;font-weight:600;color:#15212b;line-height:1.25">${d.netRange[0].toUpperCase() + d.netRange.slice(1)}${d.netUnc ? " · too close to call" : ""} · ${d.eurU}</div>
-      <div style="margin-top:8px;font-size:23px;color:#15212b;line-height:1.25;border-left:5px solid #d4601a;padding-left:12px">${d.sum}. It adds two different things: help given to Ukraine and reduced business with Russia.${d.netWhat ? " " + d.netWhat[0].toUpperCase() + d.netWhat.slice(1) + "." : ""}</div>
-      <div style="margin-top:12px;font-size:23px;color:#15212b;line-height:1.3"><b style="color:${!d.uaPos ? grey : d.uaUnc ? fadeB : "#2a6fb0"}">${d.uaV}</b> (${d.uaRange})${d.uaUnc ? " · too close to call" : ""}${d.refX ? ` · hosted Ukrainian refugees (${d.refX}), not counted as support: co-belligerent` : ""}</div>
-      <div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3"><b style="color:${d.ruUnc ? (d.ruLess ? fadeB : fadeO) : d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ruV}</b> (${d.ruRange}): ${d.ruWhat}${d.ruUnc ? " · too close to call" : ""}</div>
+      <div style="margin-top:10px;font-size:26px;font-weight:600;color:#15212b;line-height:1.25">${d.netRange[0].toUpperCase() + d.netRange.slice(1)}${d.netUnc && !d.party ? " · " + d.netDir : ""} · ${d.eurU}</div>
+      ${d.party ? `<div style="margin-top:8px;font-size:23px;font-weight:700;color:#8a2f2f;line-height:1.25">Party to the war (with Russia): Russia invaded Ukraine from its territory in February 2022. Not ranked.</div>` : ""}
+      <div style="margin-top:8px;font-size:23px;color:#15212b;line-height:1.25;border-left:5px solid #d4601a;padding-left:12px">${d.sum}. It adds two different things: help given to Ukraine and the change in what Russia kept from trade.${d.netWhat ? " " + d.netWhat[0].toUpperCase() + d.netWhat.slice(1) + "." : ""}</div>
+      <div style="margin-top:12px;font-size:23px;color:#15212b;line-height:1.3"><b style="color:${!d.uaPos ? grey : d.uaUnc ? fadeB : "#2a6fb0"}">${d.uaV}</b> (${d.uaRange})${d.uaUnc && !d.party ? " · " + d.uaDir : ""}${d.refX ? ` · hosted Ukrainian refugees (${d.refX}), not counted as support: co-belligerent` : ""}</div>
+      <div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3"><b style="color:${d.ruUnc ? (d.ruLess ? fadeB : fadeO) : d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ruV}</b> (${d.ruRange}): ${d.ruWhat}${d.ruUnc && !d.party && d.ruDir ? " · " + d.ruDir : ""}</div>
       ${d.fz ? `<div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3"><b style="color:#2a6fb0">${d.fzV}</b>: the return Russia lost on its reserves frozen here, in the net only</div>` : ""}
       <div style="margin-top:auto;font-size:17px;color:#55636e;line-height:1.35">2022 to August 2026 (about ${d.years} years) · figures to ${d.dataTo} · research preview, every number with a range and a source<br>intelligent-cream.github.io/follow-the-money-ukraine</div>
 `;
@@ -124,7 +128,7 @@ for (const d of cards) {
   const iso = d.iso3.toLowerCase();
   await page.screenshot({ path: join(SITE, "share", iso + ".png") });
   const title = `${d.name}: ${d.netV} in total since 2022 (${d.netRange}) | Follow the Money: Ukraine`;
-  const desc = `In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: ${d.sum} (${d.netRange}; ${d.eurU}; about ${d.pctYU} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.netUnc ? ", too close to call" : ""}. ${d.uaV} (${d.uaRange}). ${d.ruV} (${d.ruRange}): it ${d.ruWhat}${d.fzV ? `. ${d.fzV}` : ""}. The net adds two different things: help given to Ukraine and reduced business with Russia. Every number with a range and a source.`;
+  const desc = `In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: ${d.sum} (${d.netRange}; ${d.eurU}; about ${d.pctYU} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.party ? ", party to the war (with Russia), not ranked" : d.netUnc ? ", " + d.netDir : ""}. ${d.uaV} (${d.uaRange}). ${d.ruV} (${d.ruRange}): ${d.ruWhat}${d.fzV ? `. ${d.fzV}` : ""}. The net adds two different things: help given to Ukraine and the change in what Russia kept from trade. Every number with a range and a source.`;
   await writeFile(join(SITE, "c", iso + ".html"), `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

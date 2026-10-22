@@ -3,7 +3,7 @@
 About EUR 96.5bn of the aid in the Kiel tracker is loans and loan guarantees (2022 to August 2026, not counting the
 loans repaid from frozen Russian assets). A loan has to be paid back, so EUR 1 lent is worth less than EUR 1 given.
 This page explains how the map values each loan, for Ukraine's gain (the net shift) and for the lender's cost (the
-cost view). Round 12 replaced the flat 10% discount rate of round 5 with measured rates and measured expected losses,
+cost view, not shown on the site since round 19 but kept in the full data download). Round 12 replaced the flat 10% discount rate of round 5 with measured rates and measured expected losses,
 on the owner's decision ([decision log](#view=how&sec=cl-r12)).
 
 Code: [`pipeline/loan_rates.py`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/loan_rates.py) (rates, losses, values per loan item) and
@@ -99,7 +99,7 @@ rates.
 
 ## The cost view
 
-The cost view asks what the lender gave up. It now uses the same loan terms and the same expected losses, discounted at
+Not shown on the site since round 19; the full data download keeps it. The cost view asks what the lender gave up. It now uses the same loan terms and the same expected losses, discounted at
 the **lender's own funding rate** instead of Ukraine's:
 
 - **EU loans:** the EU's reported cost of funding (Ukraine Facility 2.76%, MFA+ 3.15%, other MFA 2.54%; Council
@@ -111,7 +111,7 @@ The range uses the same expected losses at 0 (low), central and high: for EU loa
 rate the EU set for that loan (70% for the 2022 exceptional MFA and the repurposed EIB loans, 9% otherwise) and the
 high is 70%; bilateral lenders 60% high
 (a final treatment like the bondholders' 60% present-value cut). This replaces the flat 26% of face
-(`LOAN_GRANT_ELEMENT`) and its half-to-one-and-a-half band.
+ and its half-to-one-and-a-half band. <span class="incode">In the code: `LOAN_GRANT_ELEMENT`</span>
 
 Over 2022–2026 the lender's cost of EUR 96.5bn of loans is about EUR 34bn (15–62); at 26% it was EUR 25bn. EU members
 carry more (their EU loans cost about 45% of face, the Support Loan 95%); Japan, the UK and Canada carry less, because

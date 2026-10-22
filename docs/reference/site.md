@@ -35,10 +35,21 @@ The address keeps what the reader sees.
 - `flow`: with `view=how`, a money flow (`#view=how&flow=loans`); `open=method` also opens its full method.
 - `sec`: with `view=how`, a section or heading: `method-h`, `flows-h`, `method-full`, `limitations`, `changelog`,
   `data`, a method page or one of its headings (`m-trade`, `m-trade-re-export-hubs`) or a round (`cl-r13`).
-- `lens`: `net` (the default), `support`, or `payments` (business with Russia; `business` and `kept` open it too).
+- `lens`: `net` (the default), `support`, or `payments` (trade with Russia; `trade`, `business` and `kept` open it too).
   Older values: `change` opens `net`, `ukr` opens `support`, `rus` opens `payments`, `cost` opens `net`.
 - `m`: `gdp` (the default) or `total`; `pp` (per person until round 20) opens `gdp`.
 - `y`: a year, 2021 to 2026. `hl`: a highlight (`world`, `armed`, `baltic`, `hungary`, `support`, `gascut`, `taken`).
 - A country: `#AUS`, or `c=AUS` with other values; `UKR` and `RUS` open the Ukraine and Russia panels.
 - Values at their default are left out. "What's counted" is never in the address: a link always opens the official
   numbers. `c/aus.html` is a country's own page, whose link preview shows its card.
+- History (round 24): every change of view, flow or section the reader makes is a new history entry (`pushNav()`), so
+  Back retraces their steps inside the site; Back/Forward and edited addresses go through `route()`.
+
+## Sources
+
+`data.json` `sources` holds each source with `type` (`data`, `report`, `press`, `ours`, `notes`), `date_kind` and its
+documents (`links`); 1-3 documents per source are `key`, and the documents of the research-note bundles carry the
+`flows` they belong to. All of this is set at build time by `classify_sources()` in `pipeline/build_data.py`, which
+also swaps links that no longer open for the addresses in `research/2026-10/link_fixes.json`. The site renders a
+source with `srcItem()` (name, date, key documents, the rest folded) and a flow's sources with `flowSourcesHtml()`;
+check 37 in `check_data.py` holds the rules.

@@ -1,0 +1,629 @@
+{
+ "generated": "2026-10-22",
+ "round": "24b (audit 24, D M2; approved by the owner 22 October 2026)",
+ "decision": "(a) the no-war price uncertainty (energy_nowar.json low/high: Oct-2021 forecasts / Feb-2022 futures), which the model carries on the expected path of the 'paid' part, is shown on the war-time fuel price line, where it belongs; the business total barely moves. (b) A method-band alternative values no-war gas at early-2021 forward prices (TTF Cal-22 EUR 16.7-18.1/MWh, 22 Jan - 12 Mar 2021; flat EUR 17.5 for 2022-2025), the view that the late-2021 squeeze was war preparation (the IEA said in January 2022 that Gazprom caused the 2021 tightness). (c) The overview's first step no longer says that a country which still buys shifted nothing.",
+ "ttf_presqueeze_eur_mwh": 17.5,
+ "ttf_avg_2019_2021_eur_mwh": 23.133,
+ "finding": "The windfall line's own range (Hungary 9.12-10.70) carries only the actual-price uncertainty. The no-war price uncertainty (energy_nowar.json low/high: Oct-2021 forecasts / Feb-2022 futures) is carried once, on the expected path of the 'paid' part (build_data.py war_windfall comment; calc() spread() term t.nr). So the business total already includes it (Hungary paid -0.52 [-4.38, +4.12]); the windfall line does not show it, and there is no alternative path for the 'late-2021 squeeze was war preparation' view.",
+ "paths": {
+  "ttf_eur_mwh_2022_2025": {
+   "feb2022_futures": {
+    "2022": 80.0,
+    "2023": 56.0,
+    "2024": 38.0,
+    "2025": 31.0
+   },
+   "central_jan2022": {
+    "2022": 59.405544,
+    "2023": 37.105332000000004,
+    "2024": 30.003500999999996,
+    "2025": 26.510417999999998
+   },
+   "oct2021_forecasts": {
+    "2022": 38.0,
+    "2023": 27.8,
+    "2024": 25.0,
+    "2025": 22.0
+   },
+   "presqueeze_early2021_forwards": {
+    "2022": 17.5,
+    "2023": 17.5,
+    "2024": 17.5,
+    "2025": 17.5
+   },
+   "avg_2019_2021": {
+    "2022": 23.133,
+    "2023": 23.133,
+    "2024": 23.133,
+    "2025": 23.133
+   }
+  },
+  "oil9_band_used": {
+   "feb2022_futures": "high",
+   "central_jan2022": "central",
+   "oct2021_forecasts": "low",
+   "presqueeze_early2021_forwards": "low",
+   "avg_2019_2021": "low"
+  },
+  "sources": {
+   "feb2022_futures": "ICE TTF settlement mid-Feb 2022 (Cal-23 52-56 EUR/MWh; 57-63 on 22-23 Feb) - energy_nowar-notes.md section 1 (contains a war-risk premium: ENGIE 31 Jan 2022)",
+   "central_jan2022": "IMF WEO Update 25 Jan 2022 futures, EIA STEO Jan 2022, ECB Dec 2021 projections - energy_nowar-notes.md",
+   "oct2021_forecasts": "World Bank Commodity Markets Outlook 21 Oct 2021; IMF WEO Oct 2021 - energy_nowar-notes.md",
+   "presqueeze_early2021_forwards": {
+    "value": "TTF Cal-22 16.7-18.1 EUR/MWh (22 Jan - 12 Mar 2021)",
+    "url": "https://k4viewnews-globaltrading-qual.enel.com/spanish-forward-gas-update-21-01-2021",
+    "publisher": "Enel Global Trading, Spanish Forward Gas Update",
+    "dates": [
+     "2021-01-22 Cal-22 16.68",
+     "2021-02-05 17.08",
+     "2021-02-12 16.90",
+     "2021-02-24 16.75",
+     "2021-03-12 18.11"
+    ],
+    "assumption": "flat 17.5 EUR/MWh for 2022-2025 (later calendar years not found; judged)"
+   },
+   "avg_2019_2021": "23.13 EUR/MWh (the pre-round-7 rule)",
+   "why_presqueeze": {
+    "claim": "IEA (Birol, 12 Jan 2022): 'strong elements of tightness in the European gas market due to Russia's behaviour'; Russia could raise deliveries by at least a third; storage deficit 'largely due to Gazprom'; Gazprom cut Q4-2021 exports to Europe 25% y/y",
+    "urls": [
+     "https://www.bloomberg.com/news/articles/2022-01-12/iea-blames-russia-for-gas-squeeze-hurting-european-economies",
+     "https://www.iea.org/news/iea-key-statements-and-communications-on-the-natural-gas-crisis-in-europe",
+     "https://pgjonline.com/news/2022/january/russia-undermining-european-gas-supply-amid-ukraine-standoff-iea-says"
+    ]
+   }
+  }
+ },
+ "method": "per country and year: gas part of the counted windfall W_g = W x gas_share; W_g' = W_g x (p - n')/(p - n_c), p and n_c = the country's actual and central no-war contract price (energy_nowar.json contract_prices), n' = p x formula(no-war path)/formula(actual) with the contract's TTF/oil weights; oil part and 2026 unchanged (2026 no-war = actual by the owner's decision). scripts/t5_windfall_paths.py",
+ "caveat": "The windfall line moves by -V x dn; the business total moves by -E x dn (E = expected no-war volume): the volume part (V-E) x n moves too. For countries that kept their volumes (Hungary, Slovakia, Austria, Türkiye, Serbia) total ~= windfall change; for cutters (Germany, Italy, Czechia, Poland, Finland) the total effect of a lower no-war price is larger than the windfall change (rough Germany estimate under the pre-squeeze path: about -1 point of GDP on business instead of -0.24).",
+ "countries_research_run": {
+  "HUN": {
+   "formula": {
+    "ttf": 1.0
+   },
+   "gas_share": 0.99,
+   "windfall_model_now_eur_bn": {
+    "central": 9.932,
+    "low": 9.118,
+    "high": 10.695
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": 0.605,
+    "central_jan2022": 9.914,
+    "oct2021_forecasts": 16.101,
+    "presqueeze_early2021_forwards": 22.752,
+    "avg_2019_2021": 19.259
+   },
+   "gdp": 190.33,
+   "pts_by_path": {
+    "feb2022_futures": -0.32,
+    "central_jan2022": -5.21,
+    "oct2021_forecasts": -8.46,
+    "presqueeze_early2021_forwards": -11.95,
+    "avg_2019_2021": -10.12
+   },
+   "business_pct_now": -6.14,
+   "net_pct_now": -5.77,
+   "proposed_likely_range_eur_bn": {
+    "low": 0.57,
+    "central": 9.932,
+    "high": 16.15
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 22.752
+  },
+  "SRB": {
+   "formula": {
+    "oil9": 1.0
+   },
+   "gas_share": 0.85,
+   "windfall_model_now_eur_bn": {
+    "central": 1.011,
+    "low": 0.704,
+    "high": 1.274
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": 0.52,
+    "central_jan2022": 1.011,
+    "oct2021_forecasts": 1.389,
+    "presqueeze_early2021_forwards": 1.389,
+    "avg_2019_2021": 1.389
+   },
+   "gdp": 73.968,
+   "pts_by_path": {
+    "feb2022_futures": -0.7,
+    "central_jan2022": -1.37,
+    "oct2021_forecasts": -1.88,
+    "presqueeze_early2021_forwards": -1.88,
+    "avg_2019_2021": -1.88
+   },
+   "business_pct_now": -1.33,
+   "net_pct_now": -1.3,
+   "proposed_likely_range_eur_bn": {
+    "low": 0.43,
+    "central": 1.011,
+    "high": 1.47
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 1.389
+  },
+  "SVK": {
+   "formula": {
+    "ttf": 1.0
+   },
+   "gas_share": 0.979,
+   "windfall_model_now_eur_bn": {
+    "central": 2.545,
+    "low": 0.753,
+    "high": 3.743
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": -0.264,
+    "central_jan2022": 2.541,
+    "oct2021_forecasts": 4.352,
+    "presqueeze_early2021_forwards": 6.426,
+    "avg_2019_2021": 5.234
+   },
+   "gdp": 121.235,
+   "pts_by_path": {
+    "feb2022_futures": 0.22,
+    "central_jan2022": -2.1,
+    "oct2021_forecasts": -3.59,
+    "presqueeze_early2021_forwards": -5.3,
+    "avg_2019_2021": -4.32
+   },
+   "business_pct_now": -0.49,
+   "net_pct_now": 0.12,
+   "proposed_likely_range_eur_bn": {
+    "low": -0.79,
+    "central": 2.545,
+    "high": 4.71
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 6.426
+  },
+  "AUT": {
+   "formula": {
+    "ttf": 1.0
+   },
+   "gas_share": 0.979,
+   "windfall_model_now_eur_bn": {
+    "central": 4.198,
+    "low": 2.658,
+    "high": 5.624
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": -1.12,
+    "central_jan2022": 4.188,
+    "oct2021_forecasts": 7.447,
+    "presqueeze_early2021_forwards": 11.119,
+    "avg_2019_2021": 9.203
+   },
+   "gdp": 473.768,
+   "pts_by_path": {
+    "feb2022_futures": 0.24,
+    "central_jan2022": -0.88,
+    "oct2021_forecasts": -1.57,
+    "presqueeze_early2021_forwards": -2.35,
+    "avg_2019_2021": -1.94
+   },
+   "business_pct_now": -0.41,
+   "net_pct_now": 0.21,
+   "proposed_likely_range_eur_bn": {
+    "low": -1.34,
+    "central": 4.198,
+    "high": 7.75
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 11.119
+  },
+  "TUR": {
+   "formula": {
+    "ttf": 0.7,
+    "oil9": 0.3
+   },
+   "gas_share": 0.906,
+   "windfall_model_now_eur_bn": {
+    "central": 20.495,
+    "low": 6.629,
+    "high": 29.579
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": 5.946,
+    "central_jan2022": 20.491,
+    "oct2021_forecasts": 30.97,
+    "presqueeze_early2021_forwards": 41.539,
+    "avg_2019_2021": 35.734
+   },
+   "gdp": 1063.526,
+   "pts_by_path": {
+    "feb2022_futures": -0.56,
+    "central_jan2022": -1.93,
+    "oct2021_forecasts": -2.91,
+    "presqueeze_early2021_forwards": -3.91,
+    "avg_2019_2021": -3.36
+   },
+   "business_pct_now": -2.85,
+   "net_pct_now": -2.85,
+   "proposed_likely_range_eur_bn": {
+    "low": 0.4,
+    "central": 20.495,
+    "high": 34.36
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 41.539
+  },
+  "CHN": {
+   "formula": {
+    "oil9": 1.0
+   },
+   "gas_share": 0.46,
+   "windfall_model_now_eur_bn": {
+    "central": 15.504,
+    "low": 0.475,
+    "high": 29.201
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": 9.828,
+    "central_jan2022": 15.445,
+    "oct2021_forecasts": 20.109,
+    "presqueeze_early2021_forwards": 20.109,
+    "avg_2019_2021": 20.109
+   },
+   "gdp": 17198.443,
+   "pts_by_path": {
+    "feb2022_futures": -0.06,
+    "central_jan2022": -0.09,
+    "oct2021_forecasts": -0.12,
+    "presqueeze_early2021_forwards": -0.12,
+    "avg_2019_2021": -0.12
+   },
+   "business_pct_now": -0.62,
+   "net_pct_now": -0.62,
+   "proposed_likely_range_eur_bn": {
+    "low": -0.56,
+    "central": 15.504,
+    "high": 29.95
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 20.109
+  },
+  "MDA": {
+   "formula": {
+    "ttf": 0.5,
+    "oil9": 0.5
+   },
+   "gas_share": 0.942,
+   "windfall_model_now_eur_bn": {
+    "central": 0.383,
+    "low": -0.014,
+    "high": 0.516
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": 0.171,
+    "central_jan2022": 0.382,
+    "oct2021_forecasts": 0.548,
+    "presqueeze_early2021_forwards": 0.689,
+    "avg_2019_2021": 0.637
+   },
+   "gdp": 15.357,
+   "pts_by_path": {
+    "feb2022_futures": -1.11,
+    "central_jan2022": -2.49,
+    "oct2021_forecasts": -3.57,
+    "presqueeze_early2021_forwards": -4.49,
+    "avg_2019_2021": -4.15
+   },
+   "business_pct_now": 6.32,
+   "net_pct_now": 6.56,
+   "proposed_likely_range_eur_bn": {
+    "low": -0.07,
+    "central": 0.383,
+    "high": 0.59
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 0.689
+  },
+  "BGR": {
+   "formula": {
+    "ttf": 0.5,
+    "oil9": 0.5
+   },
+   "gas_share": 0.911,
+   "windfall_model_now_eur_bn": {
+    "central": 0.265,
+    "low": -0.07,
+    "high": 0.486
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": 0.733,
+    "central_jan2022": 0.264,
+    "oct2021_forecasts": 0.09,
+    "presqueeze_early2021_forwards": -0.038,
+    "avg_2019_2021": 0.067
+   },
+   "gdp": 95.065,
+   "pts_by_path": {
+    "feb2022_futures": -0.77,
+    "central_jan2022": -0.28,
+    "oct2021_forecasts": -0.09,
+    "presqueeze_early2021_forwards": 0.04,
+    "avg_2019_2021": -0.07
+   },
+   "business_pct_now": 2.48,
+   "net_pct_now": 2.91,
+   "proposed_likely_range_eur_bn": {
+    "low": -0.11,
+    "central": 0.265,
+    "high": 0.78
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": -0.038
+  },
+  "GRC": {
+   "formula": {
+    "ttf": 0.5,
+    "oil9": 0.5
+   },
+   "gas_share": 0.824,
+   "windfall_model_now_eur_bn": {
+    "central": 2.43,
+    "low": 0.367,
+    "high": 3.774
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": 1.443,
+    "central_jan2022": 2.43,
+    "oct2021_forecasts": 3.268,
+    "presqueeze_early2021_forwards": 3.989,
+    "avg_2019_2021": 3.663
+   },
+   "gdp": 222.81,
+   "pts_by_path": {
+    "feb2022_futures": -0.65,
+    "central_jan2022": -1.09,
+    "oct2021_forecasts": -1.47,
+    "presqueeze_early2021_forwards": -1.79,
+    "avg_2019_2021": -1.64
+   },
+   "business_pct_now": -0.75,
+   "net_pct_now": -0.04,
+   "proposed_likely_range_eur_bn": {
+    "low": 0.14,
+    "central": 2.43,
+    "high": 4.01
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 3.989
+  },
+  "BIH": {
+   "formula": {
+    "oil9": 1.0
+   },
+   "gas_share": 0,
+   "windfall_model_now_eur_bn": {
+    "central": 0.005,
+    "low": -0.05,
+    "high": 0.048
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": 0.005,
+    "central_jan2022": 0.005,
+    "oct2021_forecasts": 0.005,
+    "presqueeze_early2021_forwards": 0.005,
+    "avg_2019_2021": 0.005
+   },
+   "gdp": 25.43,
+   "pts_by_path": {
+    "feb2022_futures": -0.02,
+    "central_jan2022": -0.02,
+    "oct2021_forecasts": -0.02,
+    "presqueeze_early2021_forwards": -0.02,
+    "avg_2019_2021": -0.02
+   },
+   "business_pct_now": 0.03,
+   "net_pct_now": 0.03,
+   "proposed_likely_range_eur_bn": {
+    "low": -0.05,
+    "central": 0.005,
+    "high": 0.05
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 0.005
+  },
+  "MKD": {
+   "formula": {
+    "ttf": 0.5,
+    "oil9": 0.5
+   },
+   "gas_share": 0.994,
+   "windfall_model_now_eur_bn": {
+    "central": 0.352,
+    "low": 0.275,
+    "high": 0.407
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": 0.014,
+    "central_jan2022": 0.352,
+    "oct2021_forecasts": 0.578,
+    "presqueeze_early2021_forwards": 0.771,
+    "avg_2019_2021": 0.667
+   },
+   "gdp": 14.518,
+   "pts_by_path": {
+    "feb2022_futures": -0.1,
+    "central_jan2022": -2.42,
+    "oct2021_forecasts": -3.98,
+    "presqueeze_early2021_forwards": -5.31,
+    "avg_2019_2021": -4.59
+   },
+   "business_pct_now": -2.47,
+   "net_pct_now": -1.71,
+   "proposed_likely_range_eur_bn": {
+    "low": 0.01,
+    "central": 0.352,
+    "high": 0.58
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 0.771
+  },
+  "DEU": {
+   "formula": {
+    "ttf": 1.0
+   },
+   "gas_share": 0.928,
+   "windfall_model_now_eur_bn": {
+    "central": 16.488,
+    "low": 10.068,
+    "high": 24.263
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": 11.557,
+    "central_jan2022": 16.471,
+    "oct2021_forecasts": 21.578,
+    "presqueeze_early2021_forwards": 26.469,
+    "avg_2019_2021": 25.125
+   },
+   "gdp": 4179.218,
+   "pts_by_path": {
+    "feb2022_futures": -0.28,
+    "central_jan2022": -0.39,
+    "oct2021_forecasts": -0.52,
+    "presqueeze_early2021_forwards": -0.63,
+    "avg_2019_2021": -0.6
+   },
+   "business_pct_now": 1.57,
+   "net_pct_now": 3.22,
+   "proposed_likely_range_eur_bn": {
+    "low": 8.39,
+    "central": 16.488,
+    "high": 25.78
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 26.469
+  },
+  "ITA": {
+   "formula": {
+    "ttf": 1.0
+   },
+   "gas_share": 0.962,
+   "windfall_model_now_eur_bn": {
+    "central": 8.179,
+    "low": 6.906,
+    "high": 9.279
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": 2.412,
+    "central_jan2022": 8.178,
+    "oct2021_forecasts": 12.36,
+    "presqueeze_early2021_forwards": 16.829,
+    "avg_2019_2021": 14.799
+   },
+   "gdp": 2114.28,
+   "pts_by_path": {
+    "feb2022_futures": -0.11,
+    "central_jan2022": -0.39,
+    "oct2021_forecasts": -0.58,
+    "presqueeze_early2021_forwards": -0.8,
+    "avg_2019_2021": -0.7
+   },
+   "business_pct_now": 0.92,
+   "net_pct_now": 1.6,
+   "proposed_likely_range_eur_bn": {
+    "low": 2.27,
+    "central": 8.179,
+    "high": 12.5
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 16.829
+  },
+  "CZE": {
+   "formula": {
+    "ttf": 1.0
+   },
+   "gas_share": 0.989,
+   "windfall_model_now_eur_bn": {
+    "central": 5.104,
+    "low": 4.08,
+    "high": 6.389
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": -0.702,
+    "central_jan2022": 5.109,
+    "oct2021_forecasts": 8.796,
+    "presqueeze_early2021_forwards": 12.969,
+    "avg_2019_2021": 10.77
+   },
+   "gdp": 308.805,
+   "pts_by_path": {
+    "feb2022_futures": 0.23,
+    "central_jan2022": -1.65,
+    "oct2021_forecasts": -2.85,
+    "presqueeze_early2021_forwards": -4.2,
+    "avg_2019_2021": -3.49
+   },
+   "business_pct_now": 1.13,
+   "net_pct_now": 1.57,
+   "proposed_likely_range_eur_bn": {
+    "low": -0.79,
+    "central": 5.104,
+    "high": 9.01
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 12.969
+  },
+  "POL": {
+   "formula": {
+    "ttf": 1.0
+   },
+   "gas_share": 0.577,
+   "windfall_model_now_eur_bn": {
+    "central": 1.758,
+    "low": -2.227,
+    "high": 5.241
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": 1.446,
+    "central_jan2022": 1.759,
+    "oct2021_forecasts": 2.084,
+    "presqueeze_early2021_forwards": 2.396,
+    "avg_2019_2021": 2.31
+   },
+   "gdp": 753.287,
+   "pts_by_path": {
+    "feb2022_futures": -0.19,
+    "central_jan2022": -0.23,
+    "oct2021_forecasts": -0.28,
+    "presqueeze_early2021_forwards": -0.32,
+    "avg_2019_2021": -0.31
+   },
+   "business_pct_now": 3.03,
+   "net_pct_now": 4.4,
+   "proposed_likely_range_eur_bn": {
+    "low": -2.24,
+    "central": 1.758,
+    "high": 5.26
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 2.396
+  },
+  "FIN": {
+   "formula": {
+    "ttf": 1.0
+   },
+   "gas_share": 0.727,
+   "windfall_model_now_eur_bn": {
+    "central": 0.445,
+    "low": 0.153,
+    "high": 1.199
+   },
+   "windfall_by_path_eur_bn": {
+    "feb2022_futures": 0.327,
+    "central_jan2022": 0.445,
+    "oct2021_forecasts": 0.567,
+    "presqueeze_early2021_forwards": 0.684,
+    "avg_2019_2021": 0.652
+   },
+   "gdp": 271.711,
+   "pts_by_path": {
+    "feb2022_futures": -0.12,
+    "central_jan2022": -0.16,
+    "oct2021_forecasts": -0.21,
+    "presqueeze_early2021_forwards": -0.25,
+    "avg_2019_2021": -0.24
+   },
+   "business_pct_now": 5.99,
+   "net_pct_now": 7.88,
+   "proposed_likely_range_eur_bn": {
+    "low": 0.13,
+    "central": 0.445,
+    "high": 1.21
+   },
+   "proposed_band_alternative_presqueeze_eur_bn": 0.684
+  }
+ }
+}
