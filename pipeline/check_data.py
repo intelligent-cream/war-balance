@@ -6,6 +6,7 @@ Prints PASS / WARN / FAIL per check and exits non-zero on any FAIL.
 
 from __future__ import annotations
 
+import itertools
 import json
 import re
 import sys
@@ -429,6 +430,32 @@ else:
     # the docs are the site's own text, site/content/
     _bad, _n = cdn.check(_m)
     check("docs figures match data.json", not _bad and _n > 0, f"{_n} tagged figures; differing: {_bad[:4] or 'none'}")
+    # 38. round 24b (owner, 22 October 2026): business with Russia is shown in two lines, "Paid Russia less / more by"
+    # and "Earned less / more from Russia by"; they add up to business with Russia in every country
+    _split = [
+        k
+        for k, c in _m["countries"].items()
+        if abs(c["rusPaidEur"] + c["rusEarnedEur"] - c["rusEur"]) > 1e-3 + 1e-4 * abs(c["rusEur"])
+    ]
+    check(
+        "the two business lines add up to business with Russia",
+        not _split,
+        f"{len(_m['countries'])} countries; paid + earned differs: {_split[:6] or 'none'}",
+    )
+    # 39. round 24b (owner, 22 October 2026): Belarus is a party to the war (with Russia): its own map category, never
+    # ranked, and in no leaning or uncertain list; a party has no leaning
+    _party = sorted(k for k, c in _m["countries"].items() if c["party"])
+    _plean = [f"{k}.{q}" for k in _party for q in ("ua", "rus", "net") if _m["countries"][k][q + "Lean"]]
+    _rank_src = _html[_html.index("function rankList") :][:3000]
+    check(
+        "a party to the war is not ranked and in no list",
+        _party == ["BLR"]
+        and not _plean
+        and "PARTY_TO_WAR" in _rank_src
+        and "PARTY_TO_WAR.has" in _views_js
+        and "Party to the war (with Russia)" in _html,
+        f"parties: {_party}; leaning: {_plean or 'none'}",
+    )
 
 # 31. round 15 (approved by the owner): the net is the view the map opens with, then its two parts; the gross "To
 # Ukraine" and "To Russia" views are gone, and links to them open the nearest view. Round 17 (redesign, approved by the
@@ -637,6 +664,38 @@ check(
     and "function srcItem" in _html,
     f"{len(data['sources'])} sources; untyped or without key documents: {_src_bad[:5] or 'none'}; homepage as main "
     f"link: {_home[:5] or 'none'}; known dead links left: {sorted(set(_dead))[:5] or 'none'}",
+)
+
+# 40. round 24b (audit 24 D M4; the owner, 22 October 2026): military aid counts as delivered; the undelivered amount
+# is never more than what was allocated, never below zero, and the slow lead times leave more undelivered than the
+# central ones; Kiel's full allocation is the high end (no adjustment there)
+_ud_bad = []
+for _iso, _c in countries.items():
+    _u = (_c.get("aid") or {}).get("undeliv")
+    if not _u:
+        continue
+    _mil = ((_c.get("aid") or {}).get("cats") or {}).get("military", 0)
+    _cc, _cl = list(itertools.accumulate(_u["c"])), list(itertools.accumulate(_u["l"]))
+    if (
+        any(v > 1e-6 or v < -_mil - 1e-6 for v in _cc + _cl)
+        or any(v > 1e-9 for v in _u["h"])
+        or any(lo > cc + 1e-4 for lo, cc in zip(_cl, _cc))
+    ):
+        _ud_bad.append(_iso)
+_ud_n = sum(1 for _c in countries.values() if (_c.get("aid") or {}).get("undeliv"))
+check(
+    "military aid delivered is no more than allocated",
+    _ud_n > 0 and not _ud_bad,
+    f"{_ud_n} donors adjusted; undelivered above allocation, below zero or out of order: {_ud_bad[:6] or 'none'}",
+)
+
+# 41. round 24b (audit 24 D M5; the owner): the captive-buyer label is a label only: no number in the model reads it
+_model_src = _html[_html.index("// ===== Model =====") : _html.index("function lensValue")]
+_cap = sorted(k for k, c in countries.items() if c.get("captive"))
+check(
+    "captive-buyer labels change no numbers",
+    bool(_cap) and ".captive" not in _model_src,
+    f"labelled: {_cap}; read by the model: {'yes' if '.captive' in _model_src else 'no'}",
 )
 
 width = max(len(n) for _, n, _ in results)

@@ -1,0 +1,2308 @@
+{
+ "generated": "2026-10-22",
+ "round": "24b (audit 24, D M4; approved by the owner 22 October 2026)",
+ "source": "Kiel Institute, Ukraine Support Tracker Release 31 (8 October 2026), sheet 'Bilateral Assistance, MAIN DATA': military allocation rows (measure, aid_type_general, tot_sub_activity_value_EUR_redistr, source_of_weapon, procurement_location, channel, earmarked_year, announcement_date)",
+ "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+ "lead_times_years": {
+  "stock": {
+   "low": 0.1,
+   "central": 0.25,
+   "high": 0.5
+  },
+  "purl": {
+   "low": 0.25,
+   "central": 0.5,
+   "high": 1.0
+  },
+  "ua": {
+   "low": 0.5,
+   "central": 1.0,
+   "high": 2.0
+  },
+  "usai": {
+   "low": 3.75,
+   "central": 4.5,
+   "high": 5.5
+  },
+  "proc": {
+   "low": 2.0,
+   "central": 3.0,
+   "high": 4.5
+  }
+ },
+ "usai_calibration": {
+  "model_delivered_by_2026_03_31": 0.5762,
+  "dod": 0.57,
+  "source": "Lead IG quarterly report 'Operation Atlantic Resolve', Q1 2026 (18 May 2026), as reported by Militarnyi: USD 19.21bn of USD 33.51bn USAI transferred by March 2026; Legis1 (CRS IF12040): 57.3% by August 2026"
+ },
+ "bands": "undelivered low = the fast lead times, central = the central ones, high = the slow ones; the build counts aid at delivered (central), with Kiel's full allocation as the high end of support and the slow lead times as the low end",
+ "donors": {
+  "AUS": {
+   "kiel_name": "Australia",
+   "by_channel": {
+    "proc": 0.1392,
+    "stock": 0.7186,
+    "purl": 0.0539
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.3138,
+     "undelivered": {
+      "low": 0.052,
+      "central": 0.0724,
+      "high": 0.0943
+     },
+     "proc_allocated": 0.0696,
+     "proc_delivered": 0.0117,
+     "proc_delivered_share": 0.1686
+    },
+    "2023": {
+     "allocated": 0.4537,
+     "undelivered": {
+      "low": 0.0281,
+      "central": 0.046,
+      "high": 0.0605
+     },
+     "proc_allocated": 0.0816,
+     "proc_delivered": 0.0357,
+     "proc_delivered_share": 0.437
+    },
+    "2024": {
+     "allocated": 0.8578,
+     "undelivered": {
+      "low": 0.0399,
+      "central": 0.0915,
+      "high": 0.1902
+     },
+     "proc_allocated": 0.1392,
+     "proc_delivered": 0.078,
+     "proc_delivered_share": 0.5601
+    },
+    "2025": {
+     "allocated": 0.9117,
+     "undelivered": {
+      "low": 0.0442,
+      "central": 0.0725,
+      "high": 0.1062
+     },
+     "proc_allocated": 0.1392,
+     "proc_delivered": 0.1126,
+     "proc_delivered_share": 0.8087
+    },
+    "2026": {
+     "allocated": 0.9117,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0112,
+      "high": 0.0498
+     },
+     "proc_allocated": 0.1392,
+     "proc_delivered": 0.128,
+     "proc_delivered_share": 0.9196
+    }
+   }
+  },
+  "AUT": {
+   "kiel_name": "Austria",
+   "by_channel": {
+    "stock": 0.0033
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.0033,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.0033,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 0.0033,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2025": {
+     "allocated": 0.0033,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2026": {
+     "allocated": 0.0033,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    }
+   }
+  },
+  "BEL": {
+   "kiel_name": "Belgium",
+   "by_channel": {
+    "stock": 1.1631,
+    "proc": 1.4732,
+    "purl": 0.2
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.147,
+     "undelivered": {
+      "low": 0.0144,
+      "central": 0.0163,
+      "high": 0.0301
+     },
+     "proc_allocated": 0.0153,
+     "proc_delivered": 0.0012,
+     "proc_delivered_share": 0.0768
+    },
+    "2023": {
+     "allocated": 0.3277,
+     "undelivered": {
+      "low": 0.0193,
+      "central": 0.0282,
+      "high": 0.0322
+     },
+     "proc_allocated": 0.0175,
+     "proc_delivered": 0.0066,
+     "proc_delivered_share": 0.3801
+    },
+    "2024": {
+     "allocated": 1.578,
+     "undelivered": {
+      "low": 0.3644,
+      "central": 0.4515,
+      "high": 0.5109
+     },
+     "proc_allocated": 0.6295,
+     "proc_delivered": 0.1779,
+     "proc_delivered_share": 0.2827
+    },
+    "2025": {
+     "allocated": 2.721,
+     "undelivered": {
+      "low": 0.6509,
+      "central": 0.9516,
+      "high": 1.1693
+     },
+     "proc_allocated": 1.4732,
+     "proc_delivered": 0.5537,
+     "proc_delivered_share": 0.3758
+    },
+    "2026": {
+     "allocated": 2.8362,
+     "undelivered": {
+      "low": 0.3979,
+      "central": 0.6892,
+      "high": 0.9856
+     },
+     "proc_allocated": 1.4732,
+     "proc_delivered": 0.8769,
+     "proc_delivered_share": 0.5952
+    }
+   }
+  },
+  "BGR": {
+   "kiel_name": "Bulgaria",
+   "by_channel": {
+    "stock": 0.2362,
+    "purl": 0.0173
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.2335,
+     "undelivered": {
+      "low": 0.0783,
+      "central": 0.1494,
+      "high": 0.1731
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.2362,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0002
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 0.2362,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2025": {
+     "allocated": 0.2362,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2026": {
+     "allocated": 0.2535,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0027,
+      "high": 0.01
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    }
+   }
+  },
+  "CAN": {
+   "kiel_name": "Canada",
+   "by_channel": {
+    "stock": 1.7632,
+    "proc": 3.1252,
+    "ua": 0.1303,
+    "purl": 0.5472
+   },
+   "asof": {
+    "2022": {
+     "allocated": 1.1522,
+     "undelivered": {
+      "low": 0.531,
+      "central": 0.7407,
+      "high": 0.8687
+     },
+     "proc_allocated": 0.6161,
+     "proc_delivered": 0.0567,
+     "proc_delivered_share": 0.0921
+    },
+    "2023": {
+     "allocated": 1.7364,
+     "undelivered": {
+      "low": 0.5729,
+      "central": 0.7419,
+      "high": 0.8736
+     },
+     "proc_allocated": 1.0623,
+     "proc_delivered": 0.3263,
+     "proc_delivered_share": 0.3072
+    },
+    "2024": {
+     "allocated": 2.2714,
+     "undelivered": {
+      "low": 0.3309,
+      "central": 0.6371,
+      "high": 0.9303
+     },
+     "proc_allocated": 1.42,
+     "proc_delivered": 0.7829,
+     "proc_delivered_share": 0.5513
+    },
+    "2025": {
+     "allocated": 4.4447,
+     "undelivered": {
+      "low": 0.9968,
+      "central": 1.4627,
+      "high": 2.1429
+     },
+     "proc_allocated": 2.6817,
+     "proc_delivered": 1.4933,
+     "proc_delivered_share": 0.5568
+    },
+    "2026": {
+     "allocated": 5.5658,
+     "undelivered": {
+      "low": 0.9766,
+      "central": 1.3117,
+      "high": 1.9079
+     },
+     "proc_allocated": 3.2555,
+     "proc_delivered": 1.9561,
+     "proc_delivered_share": 0.6009
+    }
+   }
+  },
+  "CZE": {
+   "kiel_name": "Czechia",
+   "by_channel": {
+    "stock": 0.2348,
+    "proc": 0.336,
+    "purl": 0.0058
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.1994,
+     "undelivered": {
+      "low": 0.0004,
+      "central": 0.0005,
+      "high": 0.0006
+     },
+     "proc_allocated": 0.0007,
+     "proc_delivered": 0.0002,
+     "proc_delivered_share": 0.272
+    },
+    "2023": {
+     "allocated": 0.2561,
+     "undelivered": {
+      "low": 0.0025,
+      "central": 0.0027,
+      "high": 0.0029
+     },
+     "proc_allocated": 0.0032,
+     "proc_delivered": 0.0005,
+     "proc_delivered_share": 0.1523
+    },
+    "2024": {
+     "allocated": 0.3363,
+     "undelivered": {
+      "low": 0.0286,
+      "central": 0.0321,
+      "high": 0.0346
+     },
+     "proc_allocated": 0.0396,
+     "proc_delivered": 0.0075,
+     "proc_delivered_share": 0.1903
+    },
+    "2025": {
+     "allocated": 0.5707,
+     "undelivered": {
+      "low": 0.1579,
+      "central": 0.217,
+      "high": 0.2565
+     },
+     "proc_allocated": 0.336,
+     "proc_delivered": 0.119,
+     "proc_delivered_share": 0.3542
+    },
+    "2026": {
+     "allocated": 0.5765,
+     "undelivered": {
+      "low": 0.0526,
+      "central": 0.1467,
+      "high": 0.2118
+     },
+     "proc_allocated": 0.336,
+     "proc_delivered": 0.1934,
+     "proc_delivered_share": 0.5755
+    }
+   }
+  },
+  "DEU": {
+   "kiel_name": "Germany",
+   "by_channel": {
+    "stock": 6.658,
+    "proc": 14.7203,
+    "ua": 2.61,
+    "purl": 1.0155
+   },
+   "asof": {
+    "2022": {
+     "allocated": 2.8188,
+     "undelivered": {
+      "low": 0.5623,
+      "central": 0.5966,
+      "high": 1.0221
+     },
+     "proc_allocated": 0.6142,
+     "proc_delivered": 0.0346,
+     "proc_delivered_share": 0.0564
+    },
+    "2023": {
+     "allocated": 6.9742,
+     "undelivered": {
+      "low": 2.7734,
+      "central": 3.2194,
+      "high": 3.6176
+     },
+     "proc_allocated": 4.056,
+     "proc_delivered": 0.8551,
+     "proc_delivered_share": 0.2108
+    },
+    "2024": {
+     "allocated": 11.0004,
+     "undelivered": {
+      "low": 3.4983,
+      "central": 4.96,
+      "high": 5.9913
+     },
+     "proc_allocated": 7.8582,
+     "proc_delivered": 2.9415,
+     "proc_delivered_share": 0.3743
+    },
+    "2025": {
+     "allocated": 20.0139,
+     "undelivered": {
+      "low": 3.3395,
+      "central": 6.6111,
+      "high": 10.4487
+     },
+     "proc_allocated": 13.5583,
+     "proc_delivered": 7.5267,
+     "proc_delivered_share": 0.5551
+    },
+    "2026": {
+     "allocated": 25.0037,
+     "undelivered": {
+      "low": 4.3312,
+      "central": 6.491,
+      "high": 10.3597
+     },
+     "proc_allocated": 17.3303,
+     "proc_delivered": 11.1074,
+     "proc_delivered_share": 0.6409
+    }
+   }
+  },
+  "DNK": {
+   "kiel_name": "Denmark",
+   "by_channel": {
+    "stock": 2.3782,
+    "proc": 6.5809,
+    "ua": 1.452,
+    "purl": 0.1272
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.5706,
+     "undelivered": {
+      "low": 0.1451,
+      "central": 0.1541,
+      "high": 0.2041
+     },
+     "proc_allocated": 0.16,
+     "proc_delivered": 0.0147,
+     "proc_delivered_share": 0.0921
+    },
+    "2023": {
+     "allocated": 2.7035,
+     "undelivered": {
+      "low": 1.6586,
+      "central": 1.7704,
+      "high": 1.8449
+     },
+     "proc_allocated": 1.9938,
+     "proc_delivered": 0.2235,
+     "proc_delivered_share": 0.1121
+    },
+    "2024": {
+     "allocated": 7.1128,
+     "undelivered": {
+      "low": 2.6924,
+      "central": 3.6087,
+      "high": 4.3215
+     },
+     "proc_allocated": 5.2352,
+     "proc_delivered": 1.6914,
+     "proc_delivered_share": 0.3231
+    },
+    "2025": {
+     "allocated": 9.0897,
+     "undelivered": {
+      "low": 1.2462,
+      "central": 2.9019,
+      "high": 4.3921
+     },
+     "proc_allocated": 6.7247,
+     "proc_delivered": 4.0652,
+     "proc_delivered_share": 0.6045
+    },
+    "2026": {
+     "allocated": 10.076,
+     "undelivered": {
+      "low": 0.9171,
+      "central": 1.9807,
+      "high": 3.7785
+     },
+     "proc_allocated": 7.6443,
+     "proc_delivered": 5.6712,
+     "proc_delivered_share": 0.7419
+    }
+   }
+  },
+  "ESP": {
+   "kiel_name": "Spain",
+   "by_channel": {
+    "stock": 0.8421,
+    "purl": 0.665
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.6031,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0521,
+      "high": 0.1661
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.7149,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.004,
+      "high": 0.0465
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 0.7897,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0036
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2025": {
+     "allocated": 1.4047,
+     "undelivered": {
+      "low": 0.3254,
+      "central": 0.4702,
+      "high": 0.5426
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2026": {
+     "allocated": 1.5071,
+     "undelivered": {
+      "low": 0.0199,
+      "central": 0.0349,
+      "high": 0.1882
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    }
+   }
+  },
+  "EST": {
+   "kiel_name": "Estonia",
+   "by_channel": {
+    "stock": 0.7232,
+    "proc": 0.144,
+    "purl": 0.021
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.2931,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0003,
+      "high": 0.0164
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.682,
+     "undelivered": {
+      "low": 0.0428,
+      "central": 0.0651,
+      "high": 0.0726
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 0.7045,
+     "undelivered": {
+      "low": 0.0017,
+      "central": 0.0019,
+      "high": 0.0021
+     },
+     "proc_allocated": 0.0025,
+     "proc_delivered": 0.0006,
+     "proc_delivered_share": 0.2229
+    },
+    "2025": {
+     "allocated": 0.8715,
+     "undelivered": {
+      "low": 0.0859,
+      "central": 0.1122,
+      "high": 0.1284
+     },
+     "proc_allocated": 0.144,
+     "proc_delivered": 0.0388,
+     "proc_delivered_share": 0.2692
+    },
+    "2026": {
+     "allocated": 0.8882,
+     "undelivered": {
+      "low": 0.0384,
+      "central": 0.0733,
+      "high": 0.1047
+     },
+     "proc_allocated": 0.144,
+     "proc_delivered": 0.0707,
+     "proc_delivered_share": 0.4909
+    }
+   }
+  },
+  "EU_INST": {
+   "kiel_name": "EU (Commission and Council)",
+   "by_channel": {
+    "proc": 3.004,
+    "ua": 5.87
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.0,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.0,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 0.0,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2025": {
+     "allocated": 0.0,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2026": {
+     "allocated": 8.874,
+     "undelivered": {
+      "low": 6.953,
+      "central": 7.8852,
+      "high": 8.3608
+     },
+     "proc_allocated": 8.874,
+     "proc_delivered": 0.9888,
+     "proc_delivered_share": 0.1114
+    }
+   }
+  },
+  "FIN": {
+   "kiel_name": "Finland",
+   "by_channel": {
+    "stock": 2.8207,
+    "proc": 0.3761,
+    "purl": 0.14
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.2067,
+     "undelivered": {
+      "low": 0.0217,
+      "central": 0.0634,
+      "high": 0.0917
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 1.6147,
+     "undelivered": {
+      "low": 0.077,
+      "central": 0.1569,
+      "high": 0.2597
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 2.3348,
+     "undelivered": {
+      "low": 0.0324,
+      "central": 0.048,
+      "high": 0.1025
+     },
+     "proc_allocated": 0.0401,
+     "proc_delivered": 0.0099,
+     "proc_delivered_share": 0.248
+    },
+    "2025": {
+     "allocated": 3.0278,
+     "undelivered": {
+      "low": 0.1731,
+      "central": 0.2411,
+      "high": 0.2795
+     },
+     "proc_allocated": 0.2351,
+     "proc_delivered": 0.0518,
+     "proc_delivered_share": 0.2203
+    },
+    "2026": {
+     "allocated": 3.3368,
+     "undelivered": {
+      "low": 0.1964,
+      "central": 0.2691,
+      "high": 0.395
+     },
+     "proc_allocated": 0.3761,
+     "proc_delivered": 0.1324,
+     "proc_delivered_share": 0.3519
+    }
+   }
+  },
+  "FRA": {
+   "kiel_name": "France",
+   "by_channel": {
+    "stock": 2.9968,
+    "proc": 3.1999
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.9669,
+     "undelivered": {
+      "low": 0.3396,
+      "central": 0.4074,
+      "high": 0.4373
+     },
+     "proc_allocated": 0.1785,
+     "proc_delivered": 0.0031,
+     "proc_delivered_share": 0.0173
+    },
+    "2023": {
+     "allocated": 2.7619,
+     "undelivered": {
+      "low": 0.2022,
+      "central": 0.2575,
+      "high": 0.3312
+     },
+     "proc_allocated": 0.368,
+     "proc_delivered": 0.1106,
+     "proc_delivered_share": 0.3005
+    },
+    "2024": {
+     "allocated": 3.4668,
+     "undelivered": {
+      "low": 0.3303,
+      "central": 0.4675,
+      "high": 0.5621
+     },
+     "proc_allocated": 0.7399,
+     "proc_delivered": 0.2762,
+     "proc_delivered_share": 0.3734
+    },
+    "2025": {
+     "allocated": 5.9317,
+     "undelivered": {
+      "low": 1.4708,
+      "central": 1.8512,
+      "high": 2.2103
+     },
+     "proc_allocated": 2.9349,
+     "proc_delivered": 1.0836,
+     "proc_delivered_share": 0.3692
+    },
+    "2026": {
+     "allocated": 6.1967,
+     "undelivered": {
+      "low": 0.8315,
+      "central": 1.4837,
+      "high": 2.0092
+     },
+     "proc_allocated": 3.1999,
+     "proc_delivered": 1.7162,
+     "proc_delivered_share": 0.5363
+    }
+   }
+  },
+  "GBR": {
+   "kiel_name": "United Kingdom",
+   "by_channel": {
+    "stock": 7.3769,
+    "proc": 6.8306,
+    "ua": 1.2806,
+    "purl": 0.6205
+   },
+   "asof": {
+    "2022": {
+     "allocated": 3.5177,
+     "undelivered": {
+      "low": 0.0669,
+      "central": 0.3301,
+      "high": 0.8444
+     },
+     "proc_allocated": 0.0878,
+     "proc_delivered": 0.0139,
+     "proc_delivered_share": 0.1583
+    },
+    "2023": {
+     "allocated": 6.0952,
+     "undelivered": {
+      "low": 0.5623,
+      "central": 0.6788,
+      "high": 0.7635
+     },
+     "proc_allocated": 0.9118,
+     "proc_delivered": 0.233,
+     "proc_delivered_share": 0.2555
+    },
+    "2024": {
+     "allocated": 8.7614,
+     "undelivered": {
+      "low": 1.2443,
+      "central": 1.638,
+      "high": 1.9189
+     },
+     "proc_allocated": 2.4078,
+     "proc_delivered": 0.8107,
+     "proc_delivered_share": 0.3367
+    },
+    "2025": {
+     "allocated": 14.2014,
+     "undelivered": {
+      "low": 3.3408,
+      "central": 4.6108,
+      "high": 5.7026
+     },
+     "proc_allocated": 7.2406,
+     "proc_delivered": 3.043,
+     "proc_delivered_share": 0.4203
+    },
+    "2026": {
+     "allocated": 16.1086,
+     "undelivered": {
+      "low": 1.7861,
+      "central": 3.5301,
+      "high": 5.4097
+     },
+     "proc_allocated": 8.1112,
+     "proc_delivered": 4.73,
+     "proc_delivered_share": 0.5831
+    }
+   }
+  },
+  "GRC": {
+   "kiel_name": "Greece",
+   "by_channel": {
+    "stock": 0.1485,
+    "purl": 0.02
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.1343,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0098
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.1447,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 0.1485,
+     "undelivered": {
+      "low": 0.0034,
+      "central": 0.0036,
+      "high": 0.0037
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2025": {
+     "allocated": 0.1685,
+     "undelivered": {
+      "low": 0.0158,
+      "central": 0.0179,
+      "high": 0.019
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2026": {
+     "allocated": 0.1685,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0057
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    }
+   }
+  },
+  "HRV": {
+   "kiel_name": "Croatia",
+   "by_channel": {
+    "stock": 0.2403,
+    "proc": 0.0005,
+    "purl": 0.035
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.0788,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0316,
+      "high": 0.047
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.2108,
+     "undelivered": {
+      "low": 0.0003,
+      "central": 0.0004,
+      "high": 0.0089
+     },
+     "proc_allocated": 0.0005,
+     "proc_delivered": 0.0001,
+     "proc_delivered_share": 0.2519
+    },
+    "2024": {
+     "allocated": 0.2108,
+     "undelivered": {
+      "low": 0.0001,
+      "central": 0.0002,
+      "high": 0.0003
+     },
+     "proc_allocated": 0.0005,
+     "proc_delivered": 0.0003,
+     "proc_delivered_share": 0.5859
+    },
+    "2025": {
+     "allocated": 0.2558,
+     "undelivered": {
+      "low": 0.015,
+      "central": 0.015,
+      "high": 0.0237
+     },
+     "proc_allocated": 0.0005,
+     "proc_delivered": 0.0005,
+     "proc_delivered_share": 0.919
+    },
+    "2026": {
+     "allocated": 0.2758,
+     "undelivered": {
+      "low": 0.0097,
+      "central": 0.0149,
+      "high": 0.0226
+     },
+     "proc_allocated": 0.0005,
+     "proc_delivered": 0.0005,
+     "proc_delivered_share": 1.0
+    }
+   }
+  },
+  "IRL": {
+   "kiel_name": "Ireland",
+   "by_channel": {
+    "stock": 0.2289,
+    "proc": 0.08
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.0001,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.0039,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 0.0071,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2025": {
+     "allocated": 0.2089,
+     "undelivered": {
+      "low": 0.0648,
+      "central": 0.1251,
+      "high": 0.1497
+     },
+     "proc_allocated": 0.08,
+     "proc_delivered": 0.022,
+     "proc_delivered_share": 0.2756
+    },
+    "2026": {
+     "allocated": 0.3089,
+     "undelivered": {
+      "low": 0.0203,
+      "central": 0.0975,
+      "high": 0.1321
+     },
+     "proc_allocated": 0.08,
+     "proc_delivered": 0.0398,
+     "proc_delivered_share": 0.4974
+    }
+   }
+  },
+  "ISL": {
+   "kiel_name": "Iceland",
+   "by_channel": {
+    "proc": 0.0286,
+    "stock": 0.0149,
+    "ua": 0.0055,
+    "purl": 0.008
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.0009,
+     "undelivered": {
+      "low": 0.0006,
+      "central": 0.0008,
+      "high": 0.0008
+     },
+     "proc_allocated": 0.0002,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 0.2291
+    },
+    "2023": {
+     "allocated": 0.0154,
+     "undelivered": {
+      "low": 0.0088,
+      "central": 0.0108,
+      "high": 0.0121
+     },
+     "proc_allocated": 0.0148,
+     "proc_delivered": 0.004,
+     "proc_delivered_share": 0.2712
+    },
+    "2024": {
+     "allocated": 0.0183,
+     "undelivered": {
+      "low": 0.0031,
+      "central": 0.0079,
+      "high": 0.0111
+     },
+     "proc_allocated": 0.0176,
+     "proc_delivered": 0.0097,
+     "proc_delivered_share": 0.5503
+    },
+    "2025": {
+     "allocated": 0.0569,
+     "undelivered": {
+      "low": 0.0206,
+      "central": 0.0265,
+      "high": 0.0364
+     },
+     "proc_allocated": 0.0341,
+     "proc_delivered": 0.0239,
+     "proc_delivered_share": 0.7014
+    },
+    "2026": {
+     "allocated": 0.0569,
+     "undelivered": {
+      "low": 0.0024,
+      "central": 0.0058,
+      "high": 0.0145
+     },
+     "proc_allocated": 0.0341,
+     "proc_delivered": 0.0283,
+     "proc_delivered_share": 0.8312
+    }
+   }
+  },
+  "ITA": {
+   "kiel_name": "Italy",
+   "by_channel": {
+    "stock": 3.0
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.3247,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0006,
+      "high": 0.0834
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 1.0625,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 1.3801,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2025": {
+     "allocated": 3.0,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2026": {
+     "allocated": 3.0,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    }
+   }
+  },
+  "JPN": {
+   "kiel_name": "Japan",
+   "by_channel": {
+    "stock": 0.0631,
+    "purl": 0.0126
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.0,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.028,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 0.0631,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0007
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2025": {
+     "allocated": 0.0631,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2026": {
+     "allocated": 0.0757,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0061,
+      "high": 0.0093
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    }
+   }
+  },
+  "KOR": {
+   "kiel_name": "South Korea",
+   "by_channel": {
+    "stock": 0.0033,
+    "proc": 0.0112
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.0033,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.0033,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 0.0145,
+     "undelivered": {
+      "low": 0.0071,
+      "central": 0.0084,
+      "high": 0.0093
+     },
+     "proc_allocated": 0.0112,
+     "proc_delivered": 0.0028,
+     "proc_delivered_share": 0.2464
+    },
+    "2025": {
+     "allocated": 0.0145,
+     "undelivered": {
+      "low": 0.0015,
+      "central": 0.0047,
+      "high": 0.0069
+     },
+     "proc_allocated": 0.0112,
+     "proc_delivered": 0.0065,
+     "proc_delivered_share": 0.5795
+    },
+    "2026": {
+     "allocated": 0.0145,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0022,
+      "high": 0.0052
+     },
+     "proc_allocated": 0.0112,
+     "proc_delivered": 0.009,
+     "proc_delivered_share": 0.8013
+    }
+   }
+  },
+  "LTU": {
+   "kiel_name": "Lithuania",
+   "by_channel": {
+    "stock": 0.8367,
+    "proc": 0.3022,
+    "ua": 0.04,
+    "purl": 0.03
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.3735,
+     "undelivered": {
+      "low": 0.0462,
+      "central": 0.1234,
+      "high": 0.1561
+     },
+     "proc_allocated": 0.0289,
+     "proc_delivered": 0.0052,
+     "proc_delivered_share": 0.18
+    },
+    "2023": {
+     "allocated": 0.6804,
+     "undelivered": {
+      "low": 0.0823,
+      "central": 0.1057,
+      "high": 0.136
+     },
+     "proc_allocated": 0.1524,
+     "proc_delivered": 0.0467,
+     "proc_delivered_share": 0.3066
+    },
+    "2024": {
+     "allocated": 0.9169,
+     "undelivered": {
+      "low": 0.1004,
+      "central": 0.1717,
+      "high": 0.2339
+     },
+     "proc_allocated": 0.2612,
+     "proc_delivered": 0.12,
+     "proc_delivered_share": 0.4593
+    },
+    "2025": {
+     "allocated": 1.1409,
+     "undelivered": {
+      "low": 0.0633,
+      "central": 0.1222,
+      "high": 0.219
+     },
+     "proc_allocated": 0.3422,
+     "proc_delivered": 0.2306,
+     "proc_delivered_share": 0.6739
+    },
+    "2026": {
+     "allocated": 1.2089,
+     "undelivered": {
+      "low": 0.048,
+      "central": 0.0913,
+      "high": 0.1706
+     },
+     "proc_allocated": 0.3422,
+     "proc_delivered": 0.2892,
+     "proc_delivered_share": 0.8451
+    }
+   }
+  },
+  "LUX": {
+   "kiel_name": "Luxembourg",
+   "by_channel": {
+    "stock": 0.1236,
+    "proc": 0.0591,
+    "purl": 0.056
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.075,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.1235,
+     "undelivered": {
+      "low": 0.0231,
+      "central": 0.0283,
+      "high": 0.036
+     },
+     "proc_allocated": 0.0385,
+     "proc_delivered": 0.0102,
+     "proc_delivered_share": 0.2657
+    },
+    "2024": {
+     "allocated": 0.1691,
+     "undelivered": {
+      "low": 0.0121,
+      "central": 0.0244,
+      "high": 0.0327
+     },
+     "proc_allocated": 0.0491,
+     "proc_delivered": 0.0247,
+     "proc_delivered_share": 0.5027
+    },
+    "2025": {
+     "allocated": 0.2126,
+     "undelivered": {
+      "low": 0.0223,
+      "central": 0.0372,
+      "high": 0.0566
+     },
+     "proc_allocated": 0.0591,
+     "proc_delivered": 0.0433,
+     "proc_delivered_share": 0.7322
+    },
+    "2026": {
+     "allocated": 0.2387,
+     "undelivered": {
+      "low": 0.0087,
+      "central": 0.0242,
+      "high": 0.048
+     },
+     "proc_allocated": 0.0591,
+     "proc_delivered": 0.0504,
+     "proc_delivered_share": 0.8533
+    }
+   }
+  },
+  "LVA": {
+   "kiel_name": "Latvia",
+   "by_channel": {
+    "stock": 0.4358,
+    "proc": 0.1922,
+    "purl": 0.0242
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.2967,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0117
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.3753,
+     "undelivered": {
+      "low": 0.0014,
+      "central": 0.0016,
+      "high": 0.0017
+     },
+     "proc_allocated": 0.002,
+     "proc_delivered": 0.0004,
+     "proc_delivered_share": 0.1898
+    },
+    "2024": {
+     "allocated": 0.4694,
+     "undelivered": {
+      "low": 0.0204,
+      "central": 0.0249,
+      "high": 0.0436
+     },
+     "proc_allocated": 0.034,
+     "proc_delivered": 0.0091,
+     "proc_delivered_share": 0.2665
+    },
+    "2025": {
+     "allocated": 0.5849,
+     "undelivered": {
+      "low": 0.0645,
+      "central": 0.0929,
+      "high": 0.1124
+     },
+     "proc_allocated": 0.1422,
+     "proc_delivered": 0.0528,
+     "proc_delivered_share": 0.3712
+    },
+    "2026": {
+     "allocated": 0.6522,
+     "undelivered": {
+      "low": 0.0674,
+      "central": 0.1069,
+      "high": 0.1434
+     },
+     "proc_allocated": 0.1922,
+     "proc_delivered": 0.0902,
+     "proc_delivered_share": 0.4694
+    }
+   }
+  },
+  "NLD": {
+   "kiel_name": "Netherlands",
+   "by_channel": {
+    "stock": 4.2325,
+    "proc": 2.5816,
+    "ua": 1.2555,
+    "purl": 1.25
+   },
+   "asof": {
+    "2022": {
+     "allocated": 1.0777,
+     "undelivered": {
+      "low": 0.2603,
+      "central": 0.3704,
+      "high": 0.4512
+     },
+     "proc_allocated": 0.2079,
+     "proc_delivered": 0.0095,
+     "proc_delivered_share": 0.0458
+    },
+    "2023": {
+     "allocated": 2.8599,
+     "undelivered": {
+      "low": 0.5841,
+      "central": 0.7273,
+      "high": 0.8482
+     },
+     "proc_allocated": 0.9295,
+     "proc_delivered": 0.2394,
+     "proc_delivered_share": 0.2575
+    },
+    "2024": {
+     "allocated": 6.0345,
+     "undelivered": {
+      "low": 1.2846,
+      "central": 1.7338,
+      "high": 2.0606
+     },
+     "proc_allocated": 2.5731,
+     "proc_delivered": 0.8548,
+     "proc_delivered_share": 0.3322
+    },
+    "2025": {
+     "allocated": 8.5688,
+     "undelivered": {
+      "low": 0.8003,
+      "central": 1.6123,
+      "high": 2.6841
+     },
+     "proc_allocated": 3.5891,
+     "proc_delivered": 2.3024,
+     "proc_delivered_share": 0.6415
+    },
+    "2026": {
+     "allocated": 9.3196,
+     "undelivered": {
+      "low": 0.2209,
+      "central": 0.9736,
+      "high": 2.0768
+     },
+     "proc_allocated": 3.8371,
+     "proc_delivered": 3.1581,
+     "proc_delivered_share": 0.8231
+    }
+   }
+  },
+  "NOR": {
+   "kiel_name": "Norway",
+   "by_channel": {
+    "stock": 1.8781,
+    "proc": 3.342,
+    "ua": 0.8811,
+    "purl": 1.3595
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.4561,
+     "undelivered": {
+      "low": 0.2453,
+      "central": 0.2668,
+      "high": 0.2856
+     },
+     "proc_allocated": 0.2761,
+     "proc_delivered": 0.0207,
+     "proc_delivered_share": 0.0751
+    },
+    "2023": {
+     "allocated": 0.7673,
+     "undelivered": {
+      "low": 0.1507,
+      "central": 0.2123,
+      "high": 0.2673
+     },
+     "proc_allocated": 0.3224,
+     "proc_delivered": 0.1145,
+     "proc_delivered_share": 0.3551
+    },
+    "2024": {
+     "allocated": 1.7534,
+     "undelivered": {
+      "low": 0.5002,
+      "central": 0.6369,
+      "high": 0.7628
+     },
+     "proc_allocated": 0.9659,
+     "proc_delivered": 0.3298,
+     "proc_delivered_share": 0.3414
+    },
+    "2025": {
+     "allocated": 5.6411,
+     "undelivered": {
+      "low": 2.3161,
+      "central": 3.1412,
+      "high": 3.8033
+     },
+     "proc_allocated": 4.1142,
+     "proc_delivered": 1.4558,
+     "proc_delivered_share": 0.3539
+    },
+    "2026": {
+     "allocated": 7.4607,
+     "undelivered": {
+      "low": 1.2205,
+      "central": 2.0355,
+      "high": 3.2882
+     },
+     "proc_allocated": 4.223,
+     "proc_delivered": 2.4699,
+     "proc_delivered_share": 0.5849
+    }
+   }
+  },
+  "NZL": {
+   "kiel_name": "New Zealand",
+   "by_channel": {
+    "stock": 0.009,
+    "proc": 0.0194,
+    "purl": 0.0074
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.0168,
+     "undelivered": {
+      "low": 0.0076,
+      "central": 0.0088,
+      "high": 0.0096
+     },
+     "proc_allocated": 0.0111,
+     "proc_delivered": 0.0023,
+     "proc_delivered_share": 0.2089
+    },
+    "2023": {
+     "allocated": 0.0172,
+     "undelivered": {
+      "low": 0.0024,
+      "central": 0.0055,
+      "high": 0.0075
+     },
+     "proc_allocated": 0.0116,
+     "proc_delivered": 0.0061,
+     "proc_delivered_share": 0.5279
+    },
+    "2024": {
+     "allocated": 0.0243,
+     "undelivered": {
+      "low": 0.0022,
+      "central": 0.0042,
+      "high": 0.0081
+     },
+     "proc_allocated": 0.0153,
+     "proc_delivered": 0.011,
+     "proc_delivered_share": 0.7225
+    },
+    "2025": {
+     "allocated": 0.0359,
+     "undelivered": {
+      "low": 0.0086,
+      "central": 0.0112,
+      "high": 0.0151
+     },
+     "proc_allocated": 0.0194,
+     "proc_delivered": 0.0145,
+     "proc_delivered_share": 0.746
+    },
+    "2026": {
+     "allocated": 0.0359,
+     "undelivered": {
+      "low": 0.0017,
+      "central": 0.0031,
+      "high": 0.0073
+     },
+     "proc_allocated": 0.0194,
+     "proc_delivered": 0.0163,
+     "proc_delivered_share": 0.8397
+    }
+   }
+  },
+  "POL": {
+   "kiel_name": "Poland",
+   "by_channel": {
+    "stock": 3.577,
+    "proc": 0.7894,
+    "purl": 0.0854
+   },
+   "asof": {
+    "2022": {
+     "allocated": 1.8343,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0044
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 3.0604,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 3.3236,
+     "undelivered": {
+      "low": 0.1601,
+      "central": 0.1945,
+      "high": 0.2173
+     },
+     "proc_allocated": 0.2631,
+     "proc_delivered": 0.0687,
+     "proc_delivered_share": 0.261
+    },
+    "2025": {
+     "allocated": 4.1607,
+     "undelivered": {
+      "low": 0.3519,
+      "central": 0.5329,
+      "high": 0.6614
+     },
+     "proc_allocated": 0.7894,
+     "proc_delivered": 0.3311,
+     "proc_delivered_share": 0.4195
+    },
+    "2026": {
+     "allocated": 4.4518,
+     "undelivered": {
+      "low": 0.089,
+      "central": 0.2832,
+      "high": 0.474
+     },
+     "proc_allocated": 0.7894,
+     "proc_delivered": 0.5062,
+     "proc_delivered_share": 0.6413
+    }
+   }
+  },
+  "PRT": {
+   "kiel_name": "Portugal",
+   "by_channel": {
+    "stock": 0.3221,
+    "purl": 0.05,
+    "proc": 0.01
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.0414,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0052,
+      "high": 0.0205
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.0743,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 0.2276,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0027
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2025": {
+     "allocated": 0.3821,
+     "undelivered": {
+      "low": 0.0168,
+      "central": 0.0382,
+      "high": 0.0493
+     },
+     "proc_allocated": 0.01,
+     "proc_delivered": 0.0007,
+     "proc_delivered_share": 0.0703
+    },
+    "2026": {
+     "allocated": 0.3821,
+     "undelivered": {
+      "low": 0.0056,
+      "central": 0.0071,
+      "high": 0.0142
+     },
+     "proc_allocated": 0.01,
+     "proc_delivered": 0.0029,
+     "proc_delivered_share": 0.292
+    }
+   }
+  },
+  "ROU": {
+   "kiel_name": "Romania",
+   "by_channel": {
+    "stock": 0.3632,
+    "proc": 0.0012,
+    "purl": 0.05
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.0034,
+     "undelivered": {
+      "low": 0.0004,
+      "central": 0.0004,
+      "high": 0.0004
+     },
+     "proc_allocated": 0.0004,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 0.0703
+    },
+    "2023": {
+     "allocated": 0.0042,
+     "undelivered": {
+      "low": 0.0006,
+      "central": 0.0008,
+      "high": 0.0009
+     },
+     "proc_allocated": 0.0012,
+     "proc_delivered": 0.0004,
+     "proc_delivered_share": 0.3013
+    },
+    "2024": {
+     "allocated": 0.3643,
+     "undelivered": {
+      "low": 0.0001,
+      "central": 0.0004,
+      "high": 0.1261
+     },
+     "proc_allocated": 0.0012,
+     "proc_delivered": 0.0007,
+     "proc_delivered_share": 0.6353
+    },
+    "2025": {
+     "allocated": 0.4143,
+     "undelivered": {
+      "low": 0.0495,
+      "central": 0.0498,
+      "high": 0.0503
+     },
+     "proc_allocated": 0.0012,
+     "proc_delivered": 0.0011,
+     "proc_delivered_share": 0.9438
+    },
+    "2026": {
+     "allocated": 0.4143,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0168
+     },
+     "proc_allocated": 0.0012,
+     "proc_delivered": 0.0012,
+     "proc_delivered_share": 1.0
+    }
+   }
+  },
+  "SVK": {
+   "kiel_name": "Slovakia",
+   "by_channel": {
+    "stock": 0.6906
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.2135,
+     "undelivered": {
+      "low": 0.0043,
+      "central": 0.0071,
+      "high": 0.0129
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.6906,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 0.6906,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2025": {
+     "allocated": 0.6906,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2026": {
+     "allocated": 0.6906,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    }
+   }
+  },
+  "SVN": {
+   "kiel_name": "Slovenia",
+   "by_channel": {
+    "stock": 0.0716,
+    "proc": 0.001,
+    "purl": 0.0868
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.0674,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0121
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.0674,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 0.0684,
+     "undelivered": {
+      "low": 0.0006,
+      "central": 0.0007,
+      "high": 0.0008
+     },
+     "proc_allocated": 0.001,
+     "proc_delivered": 0.0003,
+     "proc_delivered_share": 0.2656
+    },
+    "2025": {
+     "allocated": 0.1114,
+     "undelivered": {
+      "low": 0.0059,
+      "central": 0.0248,
+      "high": 0.0343
+     },
+     "proc_allocated": 0.001,
+     "proc_delivered": 0.0006,
+     "proc_delivered_share": 0.5987
+    },
+    "2026": {
+     "allocated": 0.1594,
+     "undelivered": {
+      "low": 0.0184,
+      "central": 0.0313,
+      "high": 0.043
+     },
+     "proc_allocated": 0.001,
+     "proc_delivered": 0.0008,
+     "proc_delivered_share": 0.8204
+    }
+   }
+  },
+  "SWE": {
+   "kiel_name": "Sweden",
+   "by_channel": {
+    "stock": 4.4754,
+    "proc": 3.5711,
+    "ua": 0.3558,
+    "purl": 0.8724
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.5483,
+     "undelivered": {
+      "low": 0.004,
+      "central": 0.1444,
+      "high": 0.2309
+     },
+     "proc_allocated": 0.0057,
+     "proc_delivered": 0.0011,
+     "proc_delivered_share": 0.1935
+    },
+    "2023": {
+     "allocated": 2.0194,
+     "undelivered": {
+      "low": 0.0157,
+      "central": 0.0299,
+      "high": 0.1882
+     },
+     "proc_allocated": 0.0254,
+     "proc_delivered": 0.0064,
+     "proc_delivered_share": 0.2536
+    },
+    "2024": {
+     "allocated": 4.2272,
+     "undelivered": {
+      "low": 0.4258,
+      "central": 0.4749,
+      "high": 0.5418
+     },
+     "proc_allocated": 0.5726,
+     "proc_delivered": 0.0978,
+     "proc_delivered_share": 0.1708
+    },
+    "2025": {
+     "allocated": 7.9387,
+     "undelivered": {
+      "low": 2.036,
+      "central": 2.5494,
+      "high": 3.08
+     },
+     "proc_allocated": 3.6449,
+     "proc_delivered": 1.1405,
+     "proc_delivered_share": 0.3129
+    },
+    "2026": {
+     "allocated": 9.2747,
+     "undelivered": {
+      "low": 1.2542,
+      "central": 2.0355,
+      "high": 2.9226
+     },
+     "proc_allocated": 3.9269,
+     "proc_delivered": 1.9731,
+     "proc_delivered_share": 0.5024
+    }
+   }
+  },
+  "TUR": {
+   "kiel_name": "Turkiye",
+   "by_channel": {
+    "stock": 0.0662
+   },
+   "asof": {
+    "2022": {
+     "allocated": 0.0662,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0187
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2023": {
+     "allocated": 0.0662,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2024": {
+     "allocated": 0.0662,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2025": {
+     "allocated": 0.0662,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    },
+    "2026": {
+     "allocated": 0.0662,
+     "undelivered": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "proc_allocated": 0.0,
+     "proc_delivered": 0.0,
+     "proc_delivered_share": 1.0
+    }
+   }
+  },
+  "USA": {
+   "kiel_name": "United States",
+   "by_channel": {
+    "stock": 33.7858,
+    "usai": 30.8311
+   },
+   "asof": {
+    "2022": {
+     "allocated": 20.7296,
+     "undelivered": {
+      "low": 7.1467,
+      "central": 8.1175,
+      "high": 10.246
+     },
+     "proc_allocated": 6.99,
+     "proc_delivered": 0.5271,
+     "proc_delivered_share": 0.0754
+    },
+    "2023": {
+     "allocated": 43.993,
+     "undelivered": {
+      "low": 14.0428,
+      "central": 15.1013,
+      "high": 16.4186
+     },
+     "proc_allocated": 18.2469,
+     "proc_delivered": 3.7891,
+     "proc_delivered_share": 0.2077
+    },
+    "2024": {
+     "allocated": 64.134,
+     "undelivered": {
+      "low": 21.2863,
+      "central": 24.0571,
+      "high": 26.7329
+     },
+     "proc_allocated": 30.8311,
+     "proc_delivered": 9.2304,
+     "proc_delivered_share": 0.2994
+    },
+    "2025": {
+     "allocated": 64.6169,
+     "undelivered": {
+      "low": 11.5387,
+      "central": 14.754,
+      "high": 17.6771
+     },
+     "proc_allocated": 30.8311,
+     "proc_delivered": 16.0771,
+     "proc_delivered_share": 0.5215
+    },
+    "2026": {
+     "allocated": 64.6169,
+     "undelivered": {
+      "low": 6.5568,
+      "central": 10.1958,
+      "high": 13.9477
+     },
+     "proc_allocated": 30.8311,
+     "proc_delivered": 20.6353,
+     "proc_delivered_share": 0.6693
+    }
+   }
+  }
+ }
+}

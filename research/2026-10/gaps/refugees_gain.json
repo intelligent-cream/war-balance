@@ -1,0 +1,1101 @@
+{
+ "generated": "2026-10-22",
+ "round": "24b (audit 24, D H1; approved by the owner 22 October 2026)",
+ "rule": "counted_y = gross_y x (1 - donor_share) - gain_y; gain_y = wagebill_y x sum over industries s of share_s x net_gain_s x (output per euro of labour cost)_s x extra; refugees' taxes are no longer subtracted and there is no floor at zero",
+ "why": "the subtraction of refugees' income tax, social contributions and VAT (refugees_net.json revenue): under the one-seller rule wages, and the taxes on them, are the worker's income, not the host's gain; contributions buy the refugees' own pensions and care; VAT is paid out of the refugees' own income",
+ "extra": {
+  "low": 0.3,
+  "central": 0.5,
+  "high": 0.8,
+  "basis": "genuinely extra share of refugees' output: 0.5 (0.3-0.8), judgement: record vacancy rates 2022-23 and no measurable displacement of natives (IZA DP16965, Czechia) argue high; part of refugee work replaces no-war labour migration (Poland, Czechia) argues lower"
+ },
+ "wage_ratio_default": {
+  "low": 0.42,
+  "central": 0.5,
+  "high": 0.58,
+  "basis": "refugees' average earnings as a share of the host's average wage (refugees_net.json revenue_model_inputs, round 5)"
+ },
+ "industry_map": {
+  "C": "C",
+  "N": "GTNXL",
+  "M": "GTNXL",
+  "H": "GTNXL",
+  "F": "GTNXL",
+  "J": "GTNXL",
+  "K": "GTNXL",
+  "other": "GTNXL",
+  "A": "C",
+  "G": "G47",
+  "I": "I",
+  "Q": null
+ },
+ "industry_map_basis": "net_gain_sellers.json industry groups: C (manufacturing; agriculture), GTNXL (business services, transport, construction, other), G47 (retail), I (accommodation and food); Q (health and social work) counts 0, it is mostly public",
+ "median_margins_for": {
+  "IRL": "all bands: Irish STAN margins reflect multinational profit booking, not refugees' employers (as Greek shipping)",
+  "POL": "low and central: Poland's own STAN margins put its gain per euro of refugees' wages at 0.72, far above every other host (its retail and hospitality surplus holds the labour income of the self-employed); the owner chose the OECD median as central and Poland's own margins as the range end (22 October 2026)"
+ },
+ "sector_shares": {
+  "NLD": {
+   "shares": {
+    "A": 0.03,
+    "C": 0.07,
+    "F": 0.02,
+    "G": 0.12,
+    "H": 0.07,
+    "I": 0.12,
+    "J": 0.02,
+    "K": 0.01,
+    "N": 0.5,
+    "Q": 0.03,
+    "other": 0.02
+   },
+   "basis": "measured: CBS, Oekraiense vluchtelingen 1 november 2025, Tabel 4 (SBI 1-digit; G-I 31% split G 12 / H 7 / I 12 by judgement)"
+  },
+  "DEU": {
+   "shares": {
+    "N": 0.28,
+    "C": 0.17,
+    "G": 0.13,
+    "Q": 0.1,
+    "I": 0.1,
+    "H": 0.09,
+    "F": 0.06,
+    "other": 0.07
+   },
+   "basis": "ranked by the Bundesagentur fuer Arbeit (Arbeitsmarkt kompakt, 30 Jan 2026: N incl. temporary agency work, C, G, Q); shares judged"
+  },
+  "POL": {
+   "shares": {
+    "C": 0.26,
+    "H": 0.14,
+    "F": 0.12,
+    "N": 0.14,
+    "G": 0.14,
+    "I": 0.08,
+    "Q": 0.03,
+    "other": 0.09
+   },
+   "basis": "ranked by ZUS 2023 (all foreigners: a third in industry, transport and logistics, an eighth in construction); shares judged"
+  },
+  "CZE": {
+   "shares": {
+    "C": 0.36,
+    "N": 0.18,
+    "F": 0.1,
+    "H": 0.09,
+    "G": 0.1,
+    "I": 0.07,
+    "Q": 0.03,
+    "other": 0.07
+   },
+   "basis": "ranked by MPSV (via Interfax and the EC integration portal: manufacturing, construction, services, transport); shares judged"
+  },
+  "default": {
+   "shares": {
+    "N": 0.3,
+    "C": 0.17,
+    "G": 0.13,
+    "I": 0.14,
+    "H": 0.08,
+    "F": 0.05,
+    "Q": 0.06,
+    "A": 0.03,
+    "other": 0.04
+   },
+   "basis": "judged from the Dutch (CBS, measured) and German (BA) patterns"
+  }
+ },
+ "wage_bills": {
+  "DEU": {
+   "employed_above_feb2022": [
+    35000,
+    100000,
+    165000,
+    240000,
+    290000
+   ],
+   "wage_eur_month": {
+    "low": 1900,
+    "central": 2300,
+    "high": 2800
+   },
+   "minijobs": [
+    20000,
+    40000,
+    45000,
+    50000,
+    53000
+   ],
+   "minijob_eur_month": 520,
+   "basis": "Bundesagentur fuer Arbeit counts above the Feb-2022 level (annual averages; 2026 January to August), wage judged from BA pay data for Ukrainians"
+  },
+  "CZE": {
+   "earnings_ratio": [
+    0.09,
+    0.17,
+    0.22,
+    0.24,
+    0.25
+   ],
+   "avg_wage_eur_k": 21.6,
+   "band": {
+    "low": 0.85,
+    "central": 1.0,
+    "high": 1.15
+   },
+   "basis": "MPSV earnings per working-age refugee as a share of the average wage (2022-2024; 2025-2026 extended)"
+  },
+  "POL": {
+   "employment_rate": [
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.78
+   ],
+   "wage_ratio": 0.6,
+   "avg_wage_eur_k": 22.8,
+   "band": {
+    "low": 0.85,
+    "central": 1.0,
+    "high": 1.15
+   },
+   "basis": "employment of working-age Ukrainians rising to ~78% (PAP Biznes, deputy labour minister, Jan 2025) at 60% of the average wage"
+  },
+  "LTU": {
+   "employment_rate": [
+    0.5,
+    0.6,
+    0.66,
+    0.7,
+    0.72
+   ],
+   "wage_ratio": 0.5,
+   "avg_wage_eur_k": 24.0,
+   "band": {
+    "low": 0.85,
+    "central": 1.0,
+    "high": 1.15
+   },
+   "basis": "national employment rates of refugees (OECD-EMN inform: ~66% in 2023)"
+  },
+  "MDA": {
+   "employment_rate": [
+    0.2,
+    0.25,
+    0.3,
+    0.3,
+    0.3
+   ],
+   "wage_ratio": 0.6,
+   "avg_wage_eur_k": 7.0,
+   "band": {
+    "low": 0.85,
+    "central": 1.0,
+    "high": 1.15
+   },
+   "basis": "national estimates (UNHCR Moldova socio-economic surveys), judged"
+  },
+  "other": "refugees_net.json revenue_model_inputs: person-years x working-age share x employment rate x wage ratio x the average wage"
+ },
+ "working_age_share_default": 0.62,
+ "employment_sources": [
+  {
+   "host": "DEU",
+   "value": "321,000 Ukrainians in contributory jobs (Nov 2025), +264,000 vs Feb 2022; 53,000 minijobs (+45,000); employment rate 37%; main sectors: other business services incl. temp agency work, manufacturing, trade, health and social work",
+   "source": {
+    "title": "Auswirkungen der Fluchtmigration aus der Ukraine auf den Arbeitsmarkt und die Grundsicherung fuer Arbeitsuchende (Arbeitsmarkt kompakt)",
+    "publisher": "Bundesagentur fuer Arbeit",
+    "date": "2026-01-30",
+    "url": "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Migration/Personen-nach-Staatsangehoerigkeiten/Generische-Publikationen/AM-kompakt-Auswirkungen-Fluchtmigration-Ukraine-Arbeitsmarkt.pdf",
+    "page": "p. 4 'Beschaeftigung'"
+   }
+  },
+  {
+   "host": "DEU",
+   "value": "398,575 Ukrainians in dependent employment May 2026 (IAB on BA data), employment rate 39.1%",
+   "source": {
+    "title": "hib 315/2026 and IAB",
+    "publisher": "Deutscher Bundestag / IAB",
+    "date": "2026",
+    "url": "https://www.bundestag.de/presse/hib/kurzmeldungen-1166450"
+   }
+  },
+  {
+   "host": "NLD",
+   "value": "62% of refugees 15-64 are employees (1 Nov 2025); by industry: M-N business services 50%, G-I trade/transport/hospitality 31%, B-E industry 7%, A 3%, O-Q 3%, F 2%, J 2%, R-U 2%, K 1%; 37% agency workers, 22% on-call",
+   "source": {
+    "title": "Oekraiense vluchtelingen, 1 november 2025 - werknemers, Tabel 2, 3, 4",
+    "publisher": "CBS",
+    "date": "2026-02-05",
+    "url": "https://www.cbs.nl/-/media/_excel/2026/06/november2025---oekraensevluchtelingen---werknemers.xlsx"
+   }
+  },
+  {
+   "host": "POL",
+   "value": "~78% of working-age Ukrainians employed (Jan 2025, deputy labour minister); ZUS: 1 in 3 foreigners in industry, transport, logistics, 1 in 8 in construction (2023); 862,060 Ukrainians insured Nov 2025 (all, incl. pre-war migrants)",
+   "source": [
+    {
+     "title": "Poland sees approx. 78 pct working-age Ukrainians employed",
+     "publisher": "PAP Biznes",
+     "url": "https://biznes.pap.pl/wiadomosci/gospodarka/poland-sees-approx-78-pct-working-age-ukrainians-employed"
+    },
+    {
+     "title": "Poland: almost 1.3 million foreigners work legally",
+     "publisher": "European Commission, migrant integration portal",
+     "url": "https://migrant-integration.ec.europa.eu/news/poland-almost-13-million-foreigners-work-legally-poland_en"
+    }
+   ]
+  },
+  {
+   "host": "CZE",
+   "value": "150,300 refugees working Jan 2024 (114,900 a year earlier); most frequent: manufacturing, construction, services, transport",
+   "source": [
+    {
+     "title": "Czech Republic: employment and perception of people displaced from Ukraine",
+     "publisher": "European Commission, migrant integration portal",
+     "url": "https://migrant-integration.ec.europa.eu/news/czech-republic-employment-and-perception-people-displaced-ukraine_en"
+    },
+    {
+     "title": "Over 50,000 Ukrainian refugees have found jobs in Czech Republic",
+     "publisher": "Interfax",
+     "url": "https://interfax.com/newsroom/top-stories/79308/"
+    }
+   ]
+  },
+  {
+   "host": "all",
+   "value": "employment rates 2023: ~66% Lithuania to ~17% Belgium (OECD-EMN inform)",
+   "source": {
+    "title": "OECD presentation to EMN Finland 2024",
+    "publisher": "OECD/EMN",
+    "date": "2024-11",
+    "url": "https://emn.fi/wp-content/uploads/Ave-Lauren_OECD_EMNFinland_2024_v2.pdf"
+   }
+  },
+  {
+   "host": "CZE",
+   "value": "no economically meaningful effect of the refugee inflow on natives' employment; small negative effects in sectors with the largest inflows",
+   "source": {
+    "title": "IZA Discussion Paper 16965",
+    "publisher": "IZA",
+    "date": "2024",
+    "url": "https://www.iza.org/publications/dp/16965"
+   }
+  }
+ ],
+ "cross_checks_gross": [
+  {
+   "host": "DEU",
+   "value": "EUR 35.9bn of German civilian support spent in Germany to mid-2026: Buergergeld 27.45bn + Laender/municipal accommodation 7.15bn (+ other)",
+   "vs_model": "gross own 36.87 to Aug 2026 (incl. 2022 scope factor)",
+   "source": {
+    "title": "Deutsche Ukrainehilfe weniger generoes als von Berlin deklariert (Kiel Institute analysis, C. Trebesch)",
+    "publisher": "Boersen-Zeitung",
+    "date": "2026-10-08",
+    "url": "https://www.boersen-zeitung.de/konjunktur-politik/deutsche-ukrainehilfe-weniger-generoes-als-von-berlin-deklariert"
+   }
+  },
+  {
+   "host": "DEU",
+   "value": "Bundesregierung list at 31.03.2025: BMAS EUR 18.64bn (Buergergeld etc.), BMF 7.88bn (Laender/municipal lump sums, BImA housing), BMI 1.06bn (incl. integration courses), BMFSFJ 0.04bn",
+   "source": {
+    "title": "Bilaterale Unterstuetzungsleistungen der Bundesregierung fuer die Ukraine und Menschen aus der Ukraine, Stand 31.03.2025, pp. 2-7",
+    "publisher": "Bundesregierung",
+    "date": "2025-03-31",
+    "url": "https://www.bundesregierung.de/resource/blob/975228/2201464/5f307970470d06878af4f84fff956613e84/liste-ukr-bilaterale-hilfe-data.pdf?download=1"
+   },
+   "note": "federal only; excludes Laender and municipal own spending"
+  },
+  {
+   "host": "CZE",
+   "value": "CZK 62.5bn spent on aid for refugees; tax contributions CZK 55.5bn (MPSV balance, press)",
+   "vs_model": "gross own 3.35 EUR bn (~CZK 82bn incl. education/health)",
+   "source": {
+    "title": "Czechia spent CZK 62.5 billion on aid for Ukrainian refugees, tax contributions reached CZK 55.5 billion",
+    "publisher": "Radio Prague International",
+    "url": "https://english.radio.cz/node/8843622",
+    "note": "page returned 403; figures from the headline only"
+   }
+  },
+  {
+   "host": "EU members",
+   "value": "EUR 163.1bn spent on Ukrainian refugees Jan 2022-Dec 2025 (Kiel estimate, Feb 2026; modelled from refugee counts x per-capita costs)",
+   "vs_model": "model gross, all hosts 2022-Aug 2026 ~EUR 124-140bn",
+   "source": {
+    "title": "State of play: EU support to Ukraine, Figure 6",
+    "publisher": "European Parliamentary Research Service, PE 775834",
+    "date": "2026",
+    "url": "https://www.europarl.europa.eu/RegData/etudes/BRIE/2025/775834/EPRS_BRI(2025)775834_EN.pdf"
+   }
+  },
+  {
+   "host": "7 hosts, first ~16 months",
+   "value": "Kiel (via Ukraine's Reintegration Ministry): POL 12.0, DEU ~11, CZE 2.94, ESP 2.24, FRA 2.04, ROU 1.26, CHE 1.16, ITA 1.15 EUR bn",
+   "vs_model": "model gross 2022+H1 2023 is far lower for ESP, FRA, ROU, ITA (budget-based); Kiel's are modelled per-capita costs",
+   "source": {
+    "title": "EU countries spent over EUR 43 billion on Ukrainian refugees",
+    "publisher": "Gwara Media",
+    "date": "2023-07-04",
+    "url": "https://gwaramedia.com/en/eu-countries-spent-over-e43-billion-on-ukrainian-refugees/"
+   }
+  }
+ ],
+ "research_table_25_hosts": {
+  "DEU": {
+   "gross_own_total": 36.873,
+   "refugee_taxes_total": 17.193,
+   "wagebill_total": {
+    "low": 17.987,
+    "central": 21.428,
+    "high": 25.88
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0438,
+    "central": 0.1315,
+    "high": 0.185
+   },
+   "host_gain_total": {
+    "low": 0.236,
+    "central": 1.409,
+    "high": 3.831
+   },
+   "old_counted_total": {
+    "central": 19.68,
+    "low": 11.656,
+    "high": 42.564
+   },
+   "new_counted_total": {
+    "central": 35.463,
+    "low": 24.54,
+    "high": 42.773
+   },
+   "effect_pts_gdp": 0.369
+  },
+  "POL": {
+   "gross_own_total": 12.532,
+   "refugee_taxes_total": 7.588,
+   "wagebill_total": {
+    "low": 22.266,
+    "central": 26.195,
+    "high": 30.124
+   },
+   "gain_per_euro_wage": {
+    "low": 0.5706,
+    "central": 0.7165,
+    "high": 0.7835
+   },
+   "host_gain_total": {
+    "low": 3.812,
+    "central": 9.385,
+    "high": 18.883
+   },
+   "old_counted_total": {
+    "central": 4.943,
+    "low": 0.0,
+    "high": 14.364
+   },
+   "new_counted_total": {
+    "central": 3.147,
+    "low": -8.49,
+    "high": 12.711
+   },
+   "effect_pts_gdp": -0.221
+  },
+  "CZE": {
+   "gross_own_total": 3.346,
+   "refugee_taxes_total": 4.491,
+   "wagebill_total": {
+    "low": 3.753,
+    "central": 4.415,
+    "high": 5.077
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0252,
+    "central": 0.0965,
+    "high": 0.2002
+   },
+   "host_gain_total": {
+    "low": 0.028,
+    "central": 0.213,
+    "high": 0.813
+   },
+   "old_counted_total": {
+    "central": -0.0,
+    "low": 0.0,
+    "high": 1.048
+   },
+   "new_counted_total": {
+    "central": 3.133,
+    "low": 2.031,
+    "high": 4.489
+   },
+   "effect_pts_gdp": 1.009
+  },
+  "GBR": {
+   "gross_own_total": 6.51,
+   "refugee_taxes_total": 3.947,
+   "wagebill_total": {
+    "low": 8.156,
+    "central": 9.709,
+    "high": 11.263
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0698,
+    "central": 0.1648,
+    "high": 0.2131
+   },
+   "host_gain_total": {
+    "low": 0.171,
+    "central": 0.8,
+    "high": 1.92
+   },
+   "old_counted_total": {
+    "central": 2.563,
+    "low": -0.0,
+    "high": 7.037
+   },
+   "new_counted_total": {
+    "central": 5.71,
+    "low": 2.637,
+    "high": 9.594
+   },
+   "effect_pts_gdp": 0.096
+  },
+  "ESP": {
+   "gross_own_total": 1.9,
+   "refugee_taxes_total": 1.854,
+   "wagebill_total": {
+    "low": 1.834,
+    "central": 2.183,
+    "high": 2.532
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0139,
+    "central": 0.1549,
+    "high": 0.2503
+   },
+   "host_gain_total": {
+    "low": 0.008,
+    "central": 0.169,
+    "high": 0.507
+   },
+   "old_counted_total": {
+    "central": 0.046,
+    "low": 0.0,
+    "high": 2.152
+   },
+   "new_counted_total": {
+    "central": 1.731,
+    "low": 1.109,
+    "high": 3.412
+   },
+   "effect_pts_gdp": 0.109
+  },
+  "ITA": {
+   "gross_own_total": 1.43,
+   "refugee_taxes_total": 1.191,
+   "wagebill_total": {
+    "low": 1.078,
+    "central": 1.283,
+    "high": 1.488
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0367,
+    "central": 0.1387,
+    "high": 0.2091
+   },
+   "host_gain_total": {
+    "low": 0.012,
+    "central": 0.089,
+    "high": 0.249
+   },
+   "old_counted_total": {
+    "central": 0.239,
+    "low": 0.0,
+    "high": 1.475
+   },
+   "new_counted_total": {
+    "central": 1.341,
+    "low": 0.752,
+    "high": 2.276
+   },
+   "effect_pts_gdp": 0.051
+  },
+  "NLD": {
+   "gross_own_total": 12.61,
+   "refugee_taxes_total": 2.717,
+   "wagebill_total": {
+    "low": 4.062,
+    "central": 4.835,
+    "high": 5.609
+   },
+   "gain_per_euro_wage": {
+    "low": 0.2303,
+    "central": 0.3238,
+    "high": 0.3901
+   },
+   "host_gain_total": {
+    "low": 0.281,
+    "central": 0.783,
+    "high": 1.751
+   },
+   "old_counted_total": {
+    "central": 9.893,
+    "low": 7.814,
+    "high": 12.619
+   },
+   "new_counted_total": {
+    "central": 11.827,
+    "low": 9.598,
+    "high": 14.219
+   },
+   "effect_pts_gdp": 0.178
+  },
+  "FRA": {
+   "gross_own_total": 1.83,
+   "refugee_taxes_total": 0.807,
+   "wagebill_total": {
+    "low": 0.963,
+    "central": 1.146,
+    "high": 1.329
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0186,
+    "central": 0.0454,
+    "high": 0.1014
+   },
+   "host_gain_total": {
+    "low": 0.005,
+    "central": 0.026,
+    "high": 0.108
+   },
+   "old_counted_total": {
+    "central": 1.023,
+    "low": 0.409,
+    "high": 2.189
+   },
+   "new_counted_total": {
+    "central": 1.804,
+    "low": 1.356,
+    "high": 2.74
+   },
+   "effect_pts_gdp": 0.028
+  },
+  "ROU": {
+   "gross_own_total": 0.472,
+   "refugee_taxes_total": 0.716,
+   "wagebill_total": {
+    "low": 0.613,
+    "central": 0.73,
+    "high": 0.846
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0441,
+    "central": 0.135,
+    "high": 0.2241
+   },
+   "host_gain_total": {
+    "low": 0.008,
+    "central": 0.049,
+    "high": 0.152
+   },
+   "old_counted_total": {
+    "central": 0.0,
+    "low": 0.0,
+    "high": 0.332
+   },
+   "new_counted_total": {
+    "central": 0.423,
+    "low": 0.179,
+    "high": 0.747
+   },
+   "effect_pts_gdp": 0.13
+  },
+  "SVK": {
+   "gross_own_total": 0.442,
+   "refugee_taxes_total": 0.926,
+   "wagebill_total": {
+    "low": 0.887,
+    "central": 1.057,
+    "high": 1.226
+   },
+   "gain_per_euro_wage": {
+    "low": 0.065,
+    "central": 0.1584,
+    "high": 0.2612
+   },
+   "host_gain_total": {
+    "low": 0.017,
+    "central": 0.084,
+    "high": 0.256
+   },
+   "old_counted_total": {
+    "central": 0.0,
+    "low": 0.0,
+    "high": 0.243
+   },
+   "new_counted_total": {
+    "central": 0.358,
+    "low": 0.053,
+    "high": 0.778
+   },
+   "effect_pts_gdp": 0.291
+  },
+  "MDA": {
+   "gross_own_total": 0.068,
+   "refugee_taxes_total": 0.11,
+   "wagebill_total": {
+    "low": 0.34,
+    "central": 0.4,
+    "high": 0.46
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0441,
+    "central": 0.135,
+    "high": 0.2241
+   },
+   "host_gain_total": {
+    "low": 0.005,
+    "central": 0.027,
+    "high": 0.083
+   },
+   "old_counted_total": {
+    "central": 0.0,
+    "low": 0.0,
+    "high": 0.068
+   },
+   "new_counted_total": {
+    "central": 0.041,
+    "low": -0.042,
+    "high": 0.118
+   },
+   "effect_pts_gdp": 0.261
+  },
+  "LTU": {
+   "gross_own_total": 0.22,
+   "refugee_taxes_total": 0.32,
+   "wagebill_total": {
+    "low": 1.053,
+    "central": 1.239,
+    "high": 1.425
+   },
+   "gain_per_euro_wage": {
+    "low": 0.2419,
+    "central": 0.2853,
+    "high": 0.4169
+   },
+   "host_gain_total": {
+    "low": 0.076,
+    "central": 0.177,
+    "high": 0.475
+   },
+   "old_counted_total": {
+    "central": 0.0,
+    "low": 0.0,
+    "high": 0.301
+   },
+   "new_counted_total": {
+    "central": 0.043,
+    "low": -0.321,
+    "high": 0.474
+   },
+   "effect_pts_gdp": 0.058
+  },
+  "LVA": {
+   "gross_own_total": 0.275,
+   "refugee_taxes_total": 0.274,
+   "wagebill_total": {
+    "low": 0.302,
+    "central": 0.359,
+    "high": 0.417
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0233,
+    "central": 0.084,
+    "high": 0.1927
+   },
+   "host_gain_total": {
+    "low": 0.002,
+    "central": 0.015,
+    "high": 0.064
+   },
+   "old_counted_total": {
+    "central": 0.001,
+    "low": 0.0,
+    "high": 0.226
+   },
+   "new_counted_total": {
+    "central": 0.26,
+    "low": 0.127,
+    "high": 0.684
+   },
+   "effect_pts_gdp": 0.662
+  },
+  "EST": {
+   "gross_own_total": 0.24,
+   "refugee_taxes_total": 0.402,
+   "wagebill_total": {
+    "low": 0.477,
+    "central": 0.568,
+    "high": 0.659
+   },
+   "gain_per_euro_wage": {
+    "low": 0.058,
+    "central": 0.0935,
+    "high": 0.1495
+   },
+   "host_gain_total": {
+    "low": 0.008,
+    "central": 0.027,
+    "high": 0.079
+   },
+   "old_counted_total": {
+    "central": 0.0,
+    "low": 0.0,
+    "high": 0.181
+   },
+   "new_counted_total": {
+    "central": 0.213,
+    "low": 0.089,
+    "high": 0.472
+   },
+   "effect_pts_gdp": 0.555
+  },
+  "IRL": {
+   "gross_own_total": 6.45,
+   "refugee_taxes_total": 1.687,
+   "wagebill_total": {
+    "low": 2.65,
+    "central": 3.155,
+    "high": 3.66
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0441,
+    "central": 0.135,
+    "high": 0.2241
+   },
+   "host_gain_total": {
+    "low": 0.035,
+    "central": 0.213,
+    "high": 0.656
+   },
+   "old_counted_total": {
+    "central": 4.763,
+    "low": 3.275,
+    "high": 6.261
+   },
+   "new_counted_total": {
+    "central": 6.237,
+    "low": 4.827,
+    "high": 7.382
+   },
+   "effect_pts_gdp": 0.265
+  },
+  "AUT": {
+   "gross_own_total": 1.88,
+   "refugee_taxes_total": 1.475,
+   "wagebill_total": {
+    "low": 1.445,
+    "central": 1.72,
+    "high": 1.996
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0037,
+    "central": 0.0541,
+    "high": 0.1545
+   },
+   "host_gain_total": {
+    "low": 0.002,
+    "central": 0.047,
+    "high": 0.247
+   },
+   "old_counted_total": {
+    "central": 0.405,
+    "low": 0.0,
+    "high": 1.87
+   },
+   "new_counted_total": {
+    "central": 1.833,
+    "low": 1.069,
+    "high": 2.818
+   },
+   "effect_pts_gdp": 0.3
+  },
+  "CHE": {
+   "gross_own_total": 6.63,
+   "refugee_taxes_total": 1.046,
+   "wagebill_total": {
+    "low": 1.854,
+    "central": 2.207,
+    "high": 2.56
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0435,
+    "central": 0.1304,
+    "high": 0.2076
+   },
+   "host_gain_total": {
+    "low": 0.024,
+    "central": 0.144,
+    "high": 0.425
+   },
+   "old_counted_total": {
+    "central": 5.584,
+    "low": 4.265,
+    "high": 7.573
+   },
+   "new_counted_total": {
+    "central": 6.486,
+    "low": 5.21,
+    "high": 8.264
+   },
+   "effect_pts_gdp": 0.103
+  },
+  "BEL": {
+   "gross_own_total": 2.03,
+   "refugee_taxes_total": 1.212,
+   "wagebill_total": {
+    "low": 1.084,
+    "central": 1.291,
+    "high": 1.497
+   },
+   "gain_per_euro_wage": {
+    "low": 0.011,
+    "central": 0.0445,
+    "high": 0.1108
+   },
+   "host_gain_total": {
+    "low": 0.004,
+    "central": 0.029,
+    "high": 0.133
+   },
+   "old_counted_total": {
+    "central": 0.818,
+    "low": 0.0,
+    "high": 2.237
+   },
+   "new_counted_total": {
+    "central": 2.001,
+    "low": 1.288,
+    "high": 3.244
+   },
+   "effect_pts_gdp": 0.197
+  },
+  "SWE": {
+   "gross_own_total": 1.57,
+   "refugee_taxes_total": 0.726,
+   "wagebill_total": {
+    "low": 0.713,
+    "central": 0.849,
+    "high": 0.985
+   },
+   "gain_per_euro_wage": {
+    "low": 0.1411,
+    "central": 0.2125,
+    "high": 0.3056
+   },
+   "host_gain_total": {
+    "low": 0.03,
+    "central": 0.09,
+    "high": 0.241
+   },
+   "old_counted_total": {
+    "central": 0.844,
+    "low": 0.15,
+    "high": 1.856
+   },
+   "new_counted_total": {
+    "central": 1.48,
+    "low": 0.858,
+    "high": 2.325
+   },
+   "effect_pts_gdp": 0.115
+  },
+  "NOR": {
+   "gross_own_total": 4.54,
+   "refugee_taxes_total": 1.259,
+   "wagebill_total": {
+    "low": 1.245,
+    "central": 1.482,
+    "high": 1.719
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0977,
+    "central": 0.1696,
+    "high": 0.2483
+   },
+   "host_gain_total": {
+    "low": 0.036,
+    "central": 0.126,
+    "high": 0.341
+   },
+   "old_counted_total": {
+    "central": 3.281,
+    "low": 1.522,
+    "high": 5.5
+   },
+   "new_counted_total": {
+    "central": 4.414,
+    "low": 2.837,
+    "high": 6.32
+   },
+   "effect_pts_gdp": 0.222
+  },
+  "DNK": {
+   "gross_own_total": 1.95,
+   "refugee_taxes_total": 1.031,
+   "wagebill_total": {
+    "low": 1.663,
+    "central": 1.98,
+    "high": 2.297
+   },
+   "gain_per_euro_wage": {
+    "low": 0.1074,
+    "central": 0.2277,
+    "high": 0.3718
+   },
+   "host_gain_total": {
+    "low": 0.054,
+    "central": 0.225,
+    "high": 0.683
+   },
+   "old_counted_total": {
+    "central": 0.919,
+    "low": 0.026,
+    "high": 2.209
+   },
+   "new_counted_total": {
+    "central": 1.725,
+    "low": 0.682,
+    "high": 2.871
+   },
+   "effect_pts_gdp": 0.211
+  },
+  "FIN": {
+   "gross_own_total": 1.59,
+   "refugee_taxes_total": 0.861,
+   "wagebill_total": {
+    "low": 0.876,
+    "central": 1.043,
+    "high": 1.209
+   },
+   "gain_per_euro_wage": {
+    "low": 0.086,
+    "central": 0.1283,
+    "high": 0.1886
+   },
+   "host_gain_total": {
+    "low": 0.023,
+    "central": 0.067,
+    "high": 0.182
+   },
+   "old_counted_total": {
+    "central": 0.729,
+    "low": 0.0,
+    "high": 1.795
+   },
+   "new_counted_total": {
+    "central": 1.523,
+    "low": 0.931,
+    "high": 2.362
+   },
+   "effect_pts_gdp": 0.29
+  },
+  "BGR": {
+   "gross_own_total": 0.352,
+   "refugee_taxes_total": 0.369,
+   "wagebill_total": {
+    "low": 0.399,
+    "central": 0.475,
+    "high": 0.551
+   },
+   "gain_per_euro_wage": {
+    "low": 0.0441,
+    "central": 0.135,
+    "high": 0.2241
+   },
+   "host_gain_total": {
+    "low": 0.005,
+    "central": 0.032,
+    "high": 0.099
+   },
+   "old_counted_total": {
+    "central": -0.0,
+    "low": 0.0,
+    "high": 0.351
+   },
+   "new_counted_total": {
+    "central": 0.32,
+    "low": 0.146,
+    "high": 0.55
+   },
+   "effect_pts_gdp": 0.329
+  },
+  "CAN": {
+   "gross_own_total": 2.38,
+   "refugee_taxes_total": 4.348,
+   "wagebill_total": {
+    "low": 8.099,
+    "central": 9.642,
+    "high": 11.185
+   },
+   "gain_per_euro_wage": {
+    "low": 0.039,
+    "central": 0.1189,
+    "high": 0.1984
+   },
+   "host_gain_total": {
+    "low": 0.095,
+    "central": 0.573,
+    "high": 1.775
+   },
+   "old_counted_total": {
+    "central": 0.0,
+    "low": 0.0,
+    "high": 0.796
+   },
+   "new_counted_total": {
+    "central": 1.807,
+    "low": -0.347,
+    "high": 3.713
+   },
+   "effect_pts_gdp": 0.085
+  },
+  "USA": {
+   "gross_own_total": 3.69,
+   "refugee_taxes_total": 2.836,
+   "wagebill_total": {
+    "low": 10.727,
+    "central": 12.771,
+    "high": 14.814
+   },
+   "gain_per_euro_wage": {
+    "low": 0.1947,
+    "central": 0.2767,
+    "high": 0.3126
+   },
+   "host_gain_total": {
+    "low": 0.627,
+    "central": 1.767,
+    "high": 3.704
+   },
+   "old_counted_total": {
+    "central": 0.854,
+    "low": 0.0,
+    "high": 3.51
+   },
+   "new_counted_total": {
+    "central": 1.923,
+    "low": -1.305,
+    "high": 4.908
+   },
+   "effect_pts_gdp": 0.004
+  }
+ },
+ "research_table_note": "computed by the research run on 22 October 2026 before the build implemented the rule; the build computes the same rule itself (build_data.py apply_refugees_gain), Poland with the OECD median at central",
+ "press_only": [
+  "Czechia's MPSV balance (CZK 62.5bn spent, CZK 55.5bn refugees' taxes): Radio Prague headline only, the page returned 403",
+  "Kiel Institute's 8 October 2026 analysis of German support spent in Germany (EUR 35.9bn): read via Boersen-Zeitung, the paper itself was not reached"
+ ]
+}

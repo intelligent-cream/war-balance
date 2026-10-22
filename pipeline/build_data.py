@@ -1389,8 +1389,9 @@ def build() -> dict:
         "2026-10",
         "rough indication, certainty D; China left out because it overlaps trade data",
     )
-    # round 6: North Korea, Iran and Belarus revalued with more sources (military_rus_r6.json); China below
-    mr6 = load(GAPS / "military_rus_r6.json")
+    # round 6: North Korea, Iran and Belarus revalued with more sources (military_rus_r6.json); China below. Round 24b:
+    # North Korea's full value from north_korea_r24.json (military_rus_scaled)
+    mr6 = military_rus_scaled()
     mid6 = src.add(
         "military_rus_r6",
         "Military support to Russia: Ukrainian and South Korean intelligence, Open Source Centre, the Multilateral Sanctions Monitoring Team, INSS, leaked Alabuga contracts, Russian procurement prices",
@@ -1529,12 +1530,16 @@ def build() -> dict:
     apply_state_finance(countries, src)
     apply_company_flows(countries, src)
     apply_refugees_net(countries, src)
+    apply_refugees_gain(countries, src)
     aggressor_refugees(countries, src)
+    party_to_war(countries, src)
     refugee_common_cost(countries)
     refugee_flowback(countries)
     apply_ua_arms_purchases(countries, src)
     apply_loans_value(countries, src)
     apply_money_ledger(countries, src)
+    apply_military_delivered(countries, src)
+    apply_captive(countries, src)
     apply_russian_arms(countries, src)
     apply_payment_agents(countries, src)
     apply_frozen_reserves(countries, src)
@@ -1608,6 +1613,7 @@ def build() -> dict:
         if links:
             item["links"] = links
     prune_sources(countries, src)
+    source_documents(src)
     classify_sources(src)
     gdp_average(countries)
     status = (
@@ -1845,6 +1851,8 @@ SOURCE_TYPE = {
     "net_gain_russia": "data", "net_gain_ukraine": "data", "dangote": "press", "hormuz": "report",
     "assumptions_r11_gain": "notes", "assumptions_r11_rules": "notes", "assumptions_r11_hubs": "notes",
     "assumptions_r11_people": "notes",
+    "refugees_gain": "data", "north_korea_r24": "press", "military_delivered": "ours", "windfall_band": "ours",
+    "captive_buyers": "data", "belarus_party": "report",
 }  # fmt: skip
 # news sites and encyclopedias: a link there is a press report, whatever the research file called it
 PRESS_HOSTS = (
@@ -2188,6 +2196,8 @@ METHOD_ALTERNATIVES = {
     "freight": "fuel prices as customs (CIF) values, freight included (until round 14)",
     "normal_return": "sellers' normal return 9% nominal, services incl. real estate (round 13); Russia's and Ukraine's shares as in round 14",
     "gold_actual": "gold valued at its actual price, not at its 2021 price (central banks' buying after Russia's reserves were frozen is linked to the war)",
+    "nk_paid_observed": "North Korea: Russia paid only what was observed flowing back (USD 0.5-1.5bn), so nearly all its deliveries count at full value (round 24b)",
+    "gas_early2021": "no-war gas at early-2021 forward prices (TTF EUR 17.5/MWh for 2022-2025), before the late-2021 squeeze (round 24b)",
 }
 
 
@@ -2319,10 +2329,17 @@ LNG_FORMULA = {"JPN": {"oil9": 1.0}, "KOR": {"oil9": 1.0}, "TWN": {"oil9": 0.5, 
                **{i: {"jkm": 1.0} for i in ("IND", "SGP", "THA", "BGD", "PAK", "IDN", "VNM", "KWT", "BRA")}}  # fmt: skip
 
 
+# round 24b (method band, windfall_band_r24.json): no-war TTF at early-2021 forward prices (Cal-22 EUR 16.7-18.1/MWh,
+# January-March 2021), flat EUR 17.5/MWh for 2022-2025, over the 2019-2021 average (EUR 23.133/MWh)
+TTF_PRESQUEEZE = 17.5 / 23.133
+
+
 def nw(name: str, y: int, band: str) -> float:
     """No-war price level of one benchmark (2019-2021 = 1); the actual world price in 2026."""
     if y >= 2026:
         return NW_IDX[NW_WORLD_2026[name]][str(y)]["actual"]
+    if name == "ttf" and "gas_early2021" in ALT:
+        return TTF_PRESQUEEZE
     return NW_IDX[name][str(y)][band]
 
 
@@ -2412,11 +2429,21 @@ def windfall_gain(iso3: str) -> list[float]:
     return out
 
 
+WINDFALL_BAND: dict = json.loads((GAPS / "windfall_band_r24.json").read_text())
+
+
 def war_windfall(countries: dict[str, dict], src: Sources) -> None:
     """Extra money Russia earned because fuel prices were higher during the war: what a country paid for Russian fuel
     minus what the same fuel would have cost at the prices a no-war market expected (round 7: pre-invasion forecasts
     and futures, energy_nowar.json; 2019-2021 prices before). Negative where Russia sold below that price (the
     sanctions discount): less money to Russia. Non-fuel goods are left out (their price rise is general inflation)."""
+    src.add(
+        "windfall_band",
+        "War-time gas price windfall under the pre-war no-war price paths: World Bank and IMF October-2021 forecasts, IMF/EIA/ECB January-2022 views, ICE TTF futures of mid-February 2022 and early 2021 (Enel Global Trading forward updates); each contract's TTF/oil formula",
+        "https://k4viewnews-globaltrading-qual.enel.com/spanish-forward-gas-update-21-01-2021",
+        WINDFALL_BAND.get("generated"),
+        "the windfall line's range under the other no-war paths; see research/2026-10/gaps/windfall_band_r24-notes.md",
+    )
     wid = src.add(
         "windfall",
         "War-time price windfall on Russian fuel: payments minus the same volume at the prices a no-war market expected (pre-invasion forecasts and futures: IMF, World Bank, EIA, ECB, ICE)",
@@ -2466,6 +2493,13 @@ def war_windfall(countries: dict[str, dict], src: Sources) -> None:
             "cert": "C",
             "src": [wid, "net_gain_russia", "shipping"],
         }
+        # round 24b (audit 24, D M2): the windfall under the other pre-war no-war gas price paths (Feb-2022 futures,
+        # Oct-2021 forecasts; windfall_band_r24.json), as factors on the central windfall; calc() widens the line with them
+        wb = (WINDFALL_BAND.get("countries_research_run") or {}).get(iso3)
+        if wb and wb["proposed_likely_range_eur_bn"]["central"]:
+            r = wb["proposed_likely_range_eur_bn"]
+            c["windfall"]["path_band"] = [round(r["low"] / r["central"], 4), round(r["high"] / r["central"], 4)]
+            c["windfall"]["src"].append("windfall_band")
 
 
 def windfall_gas_share(iso3: str) -> float:
@@ -3235,6 +3269,193 @@ def apply_refugees_net(countries: dict[str, dict], src: Sources) -> None:
         a["refugee_src"] = list(dict.fromkeys((a.get("refugee_src") or []) + [sid]))
 
 
+_STAN_RATIO: dict = {}
+
+
+def _stan_output_per_labour() -> dict:
+    """OECD STAN 2021-2023 output per euro of labour cost by (country, industry), labour cost = D1 x EMP/SAL (the
+    self-employed paid as employees are, as in net_gain_sellers.json). Read once."""
+    if _STAN_RATIO:
+        return _STAN_RATIO
+    import csv
+
+    raw = RESEARCH / "raw" / "oecd_stan"
+    vals: dict = {}
+    for f in ("stan_flows.csv", "stan_gtnxl_flows.csv", "stan_retail_rent_flows.csv", "stan_persons.csv",
+              "stan_gtnxl_persons.csv", "stan_retail_rent_persons.csv"):  # fmt: skip
+        with open(raw / f, newline="") as fh:
+            for r in csv.DictReader(fh):
+                if (
+                    r["MEASURE"] in ("P1", "D1", "EMP", "SAL")
+                    and r["TIME_PERIOD"] in ("2021", "2022", "2023")
+                    and r["OBS_VALUE"]
+                ):
+                    vals.setdefault((r["REF_AREA"], r["ACTIVITY"]), {}).setdefault(r["MEASURE"], []).append(
+                        float(r["OBS_VALUE"])
+                    )
+    for key, v in vals.items():
+        if v.get("P1") and v.get("D1"):
+            f = (
+                statistics.mean(v["EMP"]) / statistics.mean(v["SAL"])
+                if v.get("EMP") and v.get("SAL") and statistics.mean(v["SAL"])
+                else 1.0
+            )
+            if statistics.mean(v["D1"]) * f > 0:
+                _STAN_RATIO[key] = statistics.mean(v["P1"]) / (statistics.mean(v["D1"]) * f)
+    return _STAN_RATIO
+
+
+def refugee_work_gain(iso3: str, cfg: dict, ng: dict, own: bool = True) -> dict:
+    """The host's net gain per euro of refugees' wages, [low, central, high] (refugees_gain.json): the industries
+    refugees work in x each industry's net gain per euro of output (net_gain_sellers.json) x its output per euro of labour
+    cost (OECD STAN). own=False uses the OECD median margins and output ratios (Ireland always; Poland at low and central)."""
+    ratio = _stan_output_per_labour()
+    shares = (cfg["sector_shares"].get(iso3) or cfg["sector_shares"]["default"])["shares"]
+
+    def median_ratio(ind: str) -> float:
+        return statistics.median(v for (c, i), v in ratio.items() if i == ind)
+
+    def margin(ind: str, b: str) -> float:
+        i = ((ng["countries"].get(iso3) or {}).get("industries") or {}).get(ind) if own else None
+        if i:
+            return i[b]
+        return statistics.median(
+            v["industries"][ind][b] for v in ng["countries"].values() if (v.get("industries") or {}).get(ind)
+        )
+
+    out = {}
+    for b in ("low", "central", "high"):
+        tot = 0.0
+        for s, w in shares.items():
+            ind = cfg["industry_map"].get(s)
+            if not ind:
+                continue
+            r = (ratio.get((iso3, ind)) if own else None) or median_ratio(ind)
+            tot += w * margin(ind, b) * r
+        out[b] = tot
+    return out
+
+
+def refugee_wage_bill(iso3: str, d: dict, cfg: dict, b: str) -> list[float]:
+    """Refugees' gross earnings in the host, EUR bn per year 2022-2026 (2026 January to August), band b."""
+    py = [(d.get("person_years") or {}).get(str(y), 0) for y in YEARS[1:]]
+    frac = [1, 1, 1, 1, 8 / 12]
+    wb = cfg["wage_bills"]
+    if iso3 == "DEU":
+        s = wb["DEU"]
+        return [
+            (
+                s["employed_above_feb2022"][i] * s["wage_eur_month"][b] * 12
+                + s["minijobs"][i] * s["minijob_eur_month"] * 12
+            )
+            * frac[i]
+            / 1e9
+            for i in range(5)
+        ]
+    if iso3 == "CZE":
+        s = wb["CZE"]
+        return [
+            py[i]
+            * cfg["working_age_share_default"]
+            * s["earnings_ratio"][i]
+            * s["avg_wage_eur_k"]
+            * 1e3
+            * s["band"][b]
+            / 1e9
+            for i in range(5)
+        ]
+    if iso3 in wb and isinstance(wb[iso3], dict):
+        s = wb[iso3]
+        return [
+            py[i]
+            * cfg["working_age_share_default"]
+            * s["employment_rate"][i]
+            * s["wage_ratio"]
+            * s["avg_wage_eur_k"]
+            * 1e3
+            * s["band"][b]
+            / 1e9
+            for i in range(5)
+        ]
+    m = d.get("revenue_model_inputs")
+    if not m:
+        return [0.0] * 5
+    return [
+        py[i]
+        * m.get("working_age_share", cfg["working_age_share_default"])
+        * m["employment_rate"][i]
+        * cfg["wage_ratio_default"][b]
+        * m["avg_wage_2024_eur_k"]
+        * 1e3
+        / 1e9
+        for i in range(5)
+    ]
+
+
+def apply_refugees_gain(countries: dict[str, dict], src: Sources) -> None:
+    """Round 24b (audit 24, D H1; approved by the owner 22 October 2026): refugee hosting at what governments actually
+    spent, minus donor-paid shares, minus only the host's real gain on refugees' work (refugees_gain.json): refugees'
+    wage bill x the host's net gain per euro of their wages x the genuinely extra share (0.5, 0.3-0.8). Under the
+    one-seller rule refugees' wages, and the taxes on them, are their own income, not the host's gain, so their taxes are
+    no longer subtracted (round 5 did), and there is no floor at zero (which made Czechia, Slovakia, Romania and the
+    Baltic states count nothing). Poland: the OECD median margins at central and low, its own STAN margins at the high
+    gain (the low end of hosting). Replaces apply_refugees_net()'s values; the gross series and grades stay from it."""
+    cfg = load(GAPS / "refugees_gain.json")
+    rn = load(GAPS / "refugees_net.json")["countries"]
+    # the current sellers' margins in every build (net_gain_sellers_r13.json, the "normal_return" alternative's file,
+    # has no G47 or GTNXL industries; the refugee rule postdates it)
+    ng = json.loads((GAPS / "net_gain_sellers.json").read_text())
+    donors = load(GAPS / "flowback2.json")["refugee_donor_funding"]
+    sid = src.add(
+        "refugees_gain",
+        "Refugees' work and the industries they work in: Bundesagentur fuer Arbeit (Arbeitsmarkt kompakt, 30 Jan 2026), CBS (Oekraiense vluchtelingen, 1 Nov 2025, Tabel 4), ZUS and PAP (Poland), MPSV (Czechia), OECD-EMN employment rates; OECD STAN output and labour cost",
+        "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Migration/Personen-nach-Staatsangehoerigkeiten/Generische-Publikationen/AM-kompakt-Auswirkungen-Fluchtmigration-Ukraine-Arbeitsmarkt.pdf",
+        cfg.get("generated"),
+        "hosting = actual spending - the host's net gain on refugees' work; see research/2026-10/gaps/refugees_gain-notes.md",
+    )
+    ex = cfg["extra"]
+    for iso3, d in rn.items():
+        a = (countries.get(iso3) or {}).get("aid")
+        if not a or not d.get("gross"):
+            continue
+        sh = (donors.get(iso3) or {}).get("donor_share") if iso3 not in ("MDA", "POL", "BGR", "GEO", "ARM") else None
+        sh = sh or {"low": 0, "central": 0, "high": 0}
+        gross = d["gross"]
+        if iso3 in REFUGEE_SCOPE:
+            med, top = REFUGEE_SCOPE[iso3]
+            gross = {y: ({"low": v["low"], "central": v["low"] * med**0.5, "high": max(v["high"], v["low"] * top)}
+                         if y in REFUGEE_SCOPE_YEARS
+                         else {**v, "central": v["low"]} if iso3 in SCOPE_IN_CENTRAL else dict(v))
+                     for y, v in gross.items()}  # fmt: skip
+        g = lambda y, b: (gross.get(str(y)) or {}).get(b, 0.0)  # noqa: E731
+        own_margins = iso3 not in cfg["median_margins_for"]
+        gpw = refugee_work_gain(iso3, cfg, ng, own=own_margins)
+        wb = {b: [0.0] + refugee_wage_bill(iso3, d, cfg, b) for b in ("low", "central", "high")}
+        gain = {b: [w * gpw[b] * ex[b] for w in wb[b]] for b in wb}
+        if iso3 == "POL":
+            # the owner's choice (option c of refugees_gain-notes.md): the two readings are the range. The OECD median at
+            # central; Poland's own margins (its central case: central wage bill and extra share) as the high gain, the
+            # low end of hosting, where that is larger than the median's high gain
+            own_c = refugee_work_gain(iso3, cfg, ng, own=True)["central"]
+            own_case = [w * own_c * ex["central"] for w in wb["central"]]
+            if sum(own_case) > sum(gain["high"]):
+                gain["high"] = own_case
+        mid = [g(y, "central") * (1 - sh["central"]) - gain["central"][i] for i, y in enumerate(YEARS)]
+        lo = [g(y, "low") * (1 - sh["high"]) - gain["high"][i] for i, y in enumerate(YEARS)]
+        hi = [g(y, "high") * (1 - sh["low"]) - gain["low"][i] for i, y in enumerate(YEARS)]
+        mid[0] = lo[0] = hi[0] = 0.0
+        band = [sorted(t) for t in zip(lo, mid, hi)]
+        a["refugee_years"] = [round(t[1], 5) for t in band]
+        a["refugee_years_lo"] = [round(t[0], 5) for t in band]
+        a["refugee_years_hi"] = [round(t[2], 5) for t in band]
+        # the host's gain on refugees' work, kept for the panel and the check (EUR bn per year, central)
+        a["refugee_work_gain"] = [round(v, 5) for v in gain["central"]]
+        # the gross own spending's range (before the gain), the base of the refugee-spending flowback (refsp)
+        a["refugee_gross_years_lo"] = [round(g(y, "low") * (1 - sh["high"]), 5) for y in YEARS]
+        a["refugee_gross_years_hi"] = [round(g(y, "high") * (1 - sh["low"]), 5) for y in YEARS]
+        a["refugee_src"] = list(dict.fromkeys((a.get("refugee_src") or []) + [sid]))
+
+
 # Round 15 (raised by the owner): refugees hosted on the aggressor side are not support for Ukraine. Russia is not on
 # the map at all (a destination; UNHCR's counts there rest on Russian data and include people the ICC and the UN
 # Commission of Inquiry found were deported); Belarus, which the UN General Assembly deplored for its involvement in the
@@ -3264,6 +3485,36 @@ def aggressor_refugees(countries: dict[str, dict], src: Sources) -> None:
             if a.get(k):
                 a[k] = [0.0] * len(a[k])
         a.pop("refugee_gross_years", None)
+
+
+def party_to_war(countries: dict[str, dict], src: Sources) -> None:
+    """Round 24b (the owner, 22 October 2026: "party to war, yes, for sure"): Belarus is on Russia's side of the war.
+    Russia invaded Ukraine from Belarusian territory in February 2022; the UN General Assembly deplores Belarus's
+    involvement (A/RES/ES-11/1) and the EU sanctioned it for it (Council Regulation 2022/355). Its numbers stay in its
+    panel; the site gives it its own map category and leaves it out of every ranking and list (index.html PARTY_TO_WAR)."""
+    sid = src.add(
+        "belarus_party",
+        "Belarus's involvement in Russia's invasion: Council Regulation (EU) 2022/355 of 2 March 2022 (restrictive measures in view of Belarus's involvement in the Russian aggression against Ukraine) and UN General Assembly resolution ES-11/1",
+        "https://eur-lex.europa.eu/eli/reg/2022/355/oj",
+        "2022-03-02",
+        "Belarus is shown as a party to the war (round 24b, the owner)",
+    )
+    src.items[sid]["links"] = [
+        {
+            "title": "Council Regulation (EU) 2022/355 of 2 March 2022, recitals 1-4: Belarus's involvement in the Russian military aggression against Ukraine, which was launched in part from Belarusian territory",
+            "url": "https://eur-lex.europa.eu/eli/reg/2022/355/oj",
+            "kind": "primary",
+        },
+        {
+            "title": "UN General Assembly resolution A/RES/ES-11/1 (2 March 2022), paragraph 10: deplores the involvement of Belarus in this unlawful use of force against Ukraine",
+            "url": "https://documents.un.org/api/symbol/access?s=A/RES/ES-11/1&l=en&t=pdf",
+            "kind": "primary",
+        },
+    ]
+    for iso3 in ("BLR",):
+        c = countries.get(iso3)
+        if c:
+            c["party_to_war"] = {"side": "russia", "src": ["co_belligerent", sid]}
 
 
 def refugee_common_cost(countries: dict[str, dict]) -> None:
@@ -3789,6 +4040,36 @@ def apply_value_kept(countries: dict[str, dict], src: Sources) -> None:
 VALUE_KEPT_SRC: list[str] = []
 
 
+def military_rus_scaled() -> dict:
+    """military_rus_r6.json with North Korea revalued (round 24b, north_korea_r24.json; approved by the owner): the arms
+    items (artillery ammunition, ballistic missiles, artillery systems) scaled per band so that, with the troops' pay
+    unchanged, the full value 2022-Aug 2026 meets INSS's low end (EUR 6.8bn), INSS's midpoint plus 2026 (10.0) and KIDA
+    without the technology Russia gave North Korea (18.6); their timing is kept. by_year is rebuilt from the items."""
+    mr6 = load(GAPS / "military_rus_r6.json")
+    nk = load(GAPS / "north_korea_r24.json")
+    p = (mr6.get("countries") or {}).get("PRK")
+    if not p or not nk:
+        return mr6
+    items = p["by_item_eur_bn"]
+    arms = [k for k in items if k != "troops"]
+    for b in ("low", "central", "high"):
+        troops = sum((v or {}).get(b, 0) for v in items.get("troops", {}).values() if isinstance(v, dict))
+        now = sum((v or {}).get(b, 0) for k in arms for v in items[k].values() if isinstance(v, dict))
+        f = (nk["full_value_eur_bn"][b] - troops) / now if now else 1.0
+        for k in arms:
+            for v in items[k].values():
+                if isinstance(v, dict) and b in v:
+                    v[b] = round(v[b] * f, 5)
+    p["by_year"] = {
+        str(y): {
+            b: round(sum((items[k].get(str(y)) or {}).get(b, 0) for k in items), 5) for b in ("low", "central", "high")
+        }
+        for y in YEARS
+    }
+    p["total_eur_bn"] = {b: round(sum(v[b] for v in p["by_year"].values()), 3) for b in ("low", "central", "high")}
+    return mr6
+
+
 def apply_military_payment(countries: dict[str, dict], src: Sources) -> None:
     """Round 13 (audit): weapons and troops sent to Russia, split into paid and unpaid (military_payment_r13.json).
     Paid deliveries, including payment in kind (technology, components, fuel, food), are sales: they count at the
@@ -3800,8 +4081,9 @@ def apply_military_payment(countries: dict[str, dict], src: Sources) -> None:
     mp = load(GAPS / "military_payment_r13.json")
     ng = load(GAPS / ("net_gain_sellers_r13.json" if "normal_return" in ALT else "net_gain_sellers.json"))
     vk = load(GAPS / "value_kept.json")
-    mr6 = load(GAPS / "military_rus_r6.json")
+    mr6 = military_rus_scaled()
     cm = load(GAPS / "china_military.json")
+    nk = load(GAPS / "north_korea_r24.json") or {}
     pid = src.add(
         "military_payment",
         "How Russia paid for weapons and troops: INSS (via Bloomberg and The Insider), NK News, Bloomberg via Militarnyi; outdated North Korean stock: Ukraine's military intelligence via Reuters",
@@ -3824,6 +4106,9 @@ def apply_military_payment(countries: dict[str, dict], src: Sources) -> None:
             "high": 0.8,
         }
         paid = m["paid"]
+        # round 24b (method band): Russia paid North Korea only what was observed flowing back (north_korea_r24.json)
+        if iso3 == "PRK" and "nk_paid_observed" in ALT and nk.get("method_band_alternative"):
+            paid = nk["method_band_alternative"]["paid_share"]
         sg = m.get("stock_gain")
 
         def gain(kind: str, b: str, sg: dict | None = sg) -> float:
@@ -3832,14 +4117,15 @@ def apply_military_payment(countries: dict[str, dict], src: Sources) -> None:
                 return s * go + (1 - s) * wg[b]
             return wg[b]
 
-        out = {"years": [], "years_lo": [], "years_hi": []}
+        out = {"years": [], "years_lo": [], "years_hi": [], "years_paid": []}
         for y in YEARS:
-            mid, lo2, hi2 = 0.0, 0.0, 0.0
+            mid, lo2, hi2, sold = 0.0, 0.0, 0.0, 0.0
             for name, kind in m["items"].items():
                 v = (items.get(name) or {}).get(str(y)) or {}
                 vc = v.get("central") or 0.0
                 if kind == "pay":
                     mid += vc
+                    sold += vc
                     lo2 += (vc - (v.get("low") or vc)) ** 2
                     hi2 += ((v.get("high") or vc) - vc) ** 2
                     continue
@@ -3849,6 +4135,9 @@ def apply_military_payment(countries: dict[str, dict], src: Sources) -> None:
 
                 f = val(vc, paid["central"], gain(kind, "central"), ex["central"])
                 mid += f
+                # round 24b: the paid share's gain is the seller's earning from Russia; the unpaid share is a gift to
+                # Russia (business with Russia's two lines, years_paid)
+                sold += vc * paid["central"] * gain(kind, "central") * ex["central"]
                 # inputs moved one at a time, in quadrature: the volume, how much was paid, the gain, the extra share
                 for alt in (
                     val(v.get("low") or vc, paid["central"], gain(kind, "central"), ex["central"]),
@@ -3864,10 +4153,21 @@ def apply_military_payment(countries: dict[str, dict], src: Sources) -> None:
                     else:
                         hi2 += d * d
             out["years"].append(round(mid, 5))
+            out["years_paid"].append(round(sold, 5))
             out["years_lo"].append(round(max(0.0, mid - math.sqrt(lo2)), 5))
             out["years_hi"].append(round(mid + math.sqrt(hi2), 5))
         mr["alt"] = list(mr["years"])
         mr.update(out)
+        if iso3 == "PRK" and nk:
+            mr["src"] = mr["src"] + [
+                src.add(
+                    "north_korea_r24",
+                    "North Korea's military value to Russia, revalued: INSS (Lim Soo-ho, 16 March 2026) and KIDA (April 2025) estimates read via the press, Friedrich Naumann Foundation (2024, 2025)",
+                    "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/",
+                    nk.get("generated"),
+                    "full value EUR 6.8 / 10.0 / 18.6bn; see research/2026-10/gaps/north_korea_r24-notes.md",
+                )
+            ]
         mr["src"] = mr["src"] + [pid, "net_gain_sellers"]
 
 
@@ -3937,6 +4237,222 @@ def apply_money_ledger(countries: dict[str, dict], src: Sources) -> None:
         fb["purl_src"], fb["arms_src"] = [sid], [sid]
         if sid not in fb.setdefault("src", []):
             fb["src"].append(sid)
+
+
+# Round 24b: Germany's own cash payments for military aid (EUR 15.07bn to 31 March 2025, Federal Ministry of Defence
+# via the Bundestag) exceed Kiel's German procurement allocations at that date (EUR 8.32bn), so Kiel's German
+# allocations do not run ahead of the money paid and the central lead times likely overstate what is undelivered: the
+# smaller (fast) cut is central, the central cut the low end of support (military_delivered-notes.md)
+DELIVERED_FAST_CENTRAL = {"DEU"}
+
+
+def apply_military_delivered(countries: dict[str, dict], src: Sources) -> None:
+    """Round 24b (audit 24, D M4; approved by the owner 22 October 2026): military aid counts when delivered, by 31 August
+    2026, not when allocated (military_delivered.json, pipeline/military_delivered.py). Each year's correction is minus
+    the rise in what was allocated but not yet delivered at that year's end, so the total to any year on the slider is
+    the delivered amount; Kiel's full allocation is the high end of support, the slow lead times the low end. The EU's
+    own military aid (the EU Support Loan's military part) is spread to members by their EU share like the rest of EU
+    aid. Stored as aid.undeliv and aid.undeliv_eu ({c, l, h} per year, EUR bn, <= 0); calc() adds them like weapons_mv.
+    The money a donor spends in its own economy (flowback "own") follows delivery: its running total is scaled by the
+    share of the donor's procurement delivered by each year's end."""
+    md = load(GAPS / "military_delivered.json")
+    if not md:
+        return
+    sid = src.add(
+        "military_delivered",
+        "Military aid delivered by 31 August 2026: Kiel Ukraine Support Tracker release 31 allocation rows with delivery lead times by channel; US Department of Defense (Lead IG quarterly report Q1 2026) for USAI",
+        md.get("url"),
+        md.get("generated"),
+        "aid counted when delivered; Kiel's full allocation is the high end; see research/2026-10/gaps/military_delivered-notes.md",
+    )
+    yrs = [str(y) for y in YEARS[1:]]
+
+    def series(d: dict, band: str) -> list[float]:
+        cum = [d["asof"][y]["undelivered"][band] if y in d["asof"] else 0.0 for y in yrs]
+        return [0.0] + [-(cum[i] - (cum[i - 1] if i else 0.0)) for i in range(len(cum))]
+
+    def trip(d: dict, fast_central: bool) -> dict:
+        c = series(d, "low" if fast_central else "central")
+        lo = series(d, "central" if fast_central else "high")
+        return {"c": [round(v, 5) for v in c], "l": [round(v, 5) for v in lo], "h": [0.0] * len(YEARS)}
+
+    eu = md["donors"].get("EU_INST")
+    for iso3, d in md["donors"].items():
+        a = (countries.get(iso3) or {}).get("aid")
+        if iso3 == "EU_INST" or not a:
+            continue
+        a["undeliv"] = trip(d, iso3 in DELIVERED_FAST_CENTRAL)
+        a["undeliv_src"] = [sid]
+    for c in countries.values():
+        a = c.get("aid") or {}
+        if eu and a.get("eu_share"):
+            t = trip(eu, False)
+            a["undeliv_eu"] = {k: [round(v * a["eu_share"], 5) for v in vals] for k, vals in t.items()}
+            a.setdefault("undeliv_src", [sid])
+    # the donor's own procurement spending at home follows delivery
+    for iso3, d in md["donors"].items():
+        fb = (countries.get(iso3) or {}).get("flowback")
+        if iso3 == "EU_INST" or not fb or not fb.get("own"):
+            continue
+        share = [1.0] + [d["asof"][y]["proc_delivered_share"] if y in d["asof"] else 1.0 for y in yrs]
+        scaled_ = {}
+        for suf in ("", "_lo", "_hi"):
+            ser = fb.get("own" + suf)
+            if not ser:
+                continue
+            run, prev, out = 0.0, 0.0, []
+            for i, v in enumerate(ser):
+                run += v
+                now = run * share[i]
+                out.append(now - prev)
+                prev = now
+            scaled_[suf] = out
+        if len(scaled_) == 3:
+            # each year's three values kept in order (scaling the running totals can swap them in a year)
+            trip = [sorted(t) for t in zip(scaled_["_lo"], scaled_[""], scaled_["_hi"])]
+            for n, suf in enumerate(("_lo", "", "_hi")):
+                fb["own" + suf] = [round(t[n], 5) for t in trip]
+        else:
+            for suf, out in scaled_.items():
+                fb["own" + suf] = [round(v, 5) for v in out]
+        if sid not in fb.setdefault("src", []):
+            fb["src"].append(sid)
+
+
+def apply_captive(countries: dict[str, dict], src: Sources) -> None:
+    """Round 24b (audit 24, D M5; approved by the owner 22 October 2026): a label only, the mirror of "gas cut off by
+    Russia": countries with no real alternative to Russian fuel (captive_buyers.json). Russia supplied at least 75% of
+    the country's 2021 imports of the fuel, imports are at least half of its use, and no non-Russian route can carry half
+    of them (or a Russian state company owns the network). "Partly" where an alternative exists but its capacity is
+    officially contested. No number changes (check_data.py)."""
+    cb = load(GAPS / "captive_buyers.json")
+    if not cb:
+        return
+    sid = src.add(
+        "captive_buyers",
+        "Countries with no real alternative to Russian fuel: UN Comtrade 2021 imports of crude, fuels and gas by partner; pipeline and network ownership (Gazprom Armenia, Kyrgyzstan), interconnector openings (Serbia-Bulgaria, December 2023), Adria pipeline tests (JANAF, MOL)",
+        cb["sources"]["comtrade"]["url"],
+        cb.get("generated"),
+        "a label only, no number changes; see research/2026-10/gaps/captive_buyers-notes.md",
+    )
+    src.items[sid]["links"] = [
+        {"title": x["title"] + (f" ({x['publisher']})" if x.get("publisher") else ""), "url": x["url"],
+         "kind": "secondary" if any(h in x["url"] for h in ("wikipedia", "euronews", "marketscreener", "timesca", "indrastra", "themoscowtimes")) else "primary"}
+        for k, x in cb["sources"].items() if x.get("url", "").startswith("http") and k != "czech_tal"
+    ]  # fmt: skip
+    for iso3, lab in cb["labels"].items():
+        c = countries.get(iso3)
+        if not c:
+            continue
+        c["captive"] = {"status": lab["status"], "commodity": lab["commodity"], "years": lab["years"],
+                        "why": "; ".join(x for x in (lab.get("c1"), lab.get("c2")) if x), "src": [sid]}  # fmt: skip
+
+
+def source_documents(src: Sources) -> None:
+    """Round 24b: the key documents of the sources added in this round (classify_sources marks the first primary ones)."""
+    docs = {
+        "refugees_gain": [
+            (
+                "Bundesagentur fuer Arbeit: Auswirkungen der Fluchtmigration aus der Ukraine auf den Arbeitsmarkt (Arbeitsmarkt kompakt, 30 Jan 2026), p. 4",
+                "https://statistik.arbeitsagentur.de/DE/Statischer-Content/Statistiken/Themen-im-Fokus/Migration/Personen-nach-Staatsangehoerigkeiten/Generische-Publikationen/AM-kompakt-Auswirkungen-Fluchtmigration-Ukraine-Arbeitsmarkt.pdf",
+                "primary",
+            ),
+            (
+                "CBS: Oekraiense vluchtelingen, 1 november 2025, werknemers, Tabel 4",
+                "https://www.cbs.nl/-/media/_excel/2026/06/november2025---oekraensevluchtelingen---werknemers.xlsx",
+                "primary",
+            ),
+            (
+                "Bundesregierung: Bilaterale Unterstuetzungsleistungen fuer die Ukraine und Menschen aus der Ukraine, Stand 31.03.2025, pp. 2-7",
+                "https://www.bundesregierung.de/resource/blob/975228/2201464/5f307970470d06878af4f84fff956613e84/liste-ukr-bilaterale-hilfe-data.pdf?download=1",
+                "primary",
+            ),
+            (
+                "PAP Biznes: Poland sees approx. 78 pct working-age Ukrainians employed",
+                "https://biznes.pap.pl/wiadomosci/gospodarka/poland-sees-approx-78-pct-working-age-ukrainians-employed",
+                "secondary",
+            ),
+            (
+                "European Commission, migrant integration portal: Czech Republic, employment of people displaced from Ukraine",
+                "https://migrant-integration.ec.europa.eu/news/czech-republic-employment-and-perception-people-displaced-ukraine_en",
+                "primary",
+            ),
+            (
+                "Boersen-Zeitung: Deutsche Ukrainehilfe weniger generoes als von Berlin deklariert (Kiel Institute analysis, 8 Oct 2026; read via the press)",
+                "https://www.boersen-zeitung.de/konjunktur-politik/deutsche-ukrainehilfe-weniger-generoes-als-von-berlin-deklariert",
+                "secondary",
+            ),
+        ],
+        "north_korea_r24": [
+            (
+                "Korea Times: N. Korea estimated to have earned up to $14.4 bil. from Russia-Ukraine war involvement (INSS report, 16 Mar 2026; read via the press)",
+                "https://www.koreatimes.co.kr/amp/foreignaffairs/northkorea/20260316/n-korea-estimated-to-have-earned-up-to-144-bil-from-russia-ukraine-war-involvement-report",
+                "secondary",
+            ),
+            (
+                "NK News: North Korea likely earned $14.4B from military deals with Russia (INSS)",
+                "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/",
+                "secondary",
+            ),
+            (
+                "Kyiv Independent: North Korea earns over $20 billion aiding Russia's war effort (KIDA, Apr 2025; read via the press)",
+                "https://kyivindependent.com/north-korea-earns-over-20-billion-aiding-russias-war-effort-report-says/",
+                "secondary",
+            ),
+            (
+                "Friedrich Naumann Foundation: New FNF study, partnership between Russia and North Korea (Sep 2025)",
+                "https://www.freiheit.org/north-and-south-korea/new-fnf-study-partnership-between-russia-and-north-korea",
+                "primary",
+            ),
+            (
+                "Al Jazeera: North Korea getting a 'raw deal' on support for Russia's war (FNF report)",
+                "https://www.aljazeera.com/news/2025/9/18/north-korea-getting-a-raw-deal-on-support-for-russias-war-report",
+                "secondary",
+            ),
+        ],
+        "military_delivered": [
+            (
+                "Kiel Institute: Ukraine Support Tracker Release 31 workbook (8 Oct 2026), sheet 'Bilateral Assistance, MAIN DATA', military allocation rows",
+                "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
+                "primary",
+            ),
+            (
+                "Militarnyi: Ukraine received $8.2 billion in U.S. aid under USAI from October through March (Lead IG quarterly report, Q1 2026)",
+                "https://militarnyi.com/en/news/ukraine-8-2-billion-usai-october-march/",
+                "secondary",
+            ),
+            (
+                "Legis1: Ukraine aid delivery, US committed $68.2B, only 57% delivered (CRS IF12040 and DoD)",
+                "https://legis1.com/news/ukraine-aid-delivery-us-committed-682b-to-only-57",
+                "secondary",
+            ),
+            (
+                "Bundesregierung: Bilaterale Unterstuetzungsleistungen, Stand 31.03.2025, p. 6 (BMVg cash payments EUR 15.07bn)",
+                "https://www.bundesregierung.de/resource/blob/975228/2201464/5f307970470d06878af4f84fff956613e84/liste-ukr-bilaterale-hilfe-data.pdf?download=1",
+                "primary",
+            ),
+        ],
+        "windfall_band": [
+            (
+                "Enel Global Trading: Spanish forward gas update, 21 January 2021 (TTF Cal-22 EUR 16.7/MWh)",
+                "https://k4viewnews-globaltrading-qual.enel.com/spanish-forward-gas-update-21-01-2021",
+                "primary",
+            ),
+            (
+                "IEA: Gas Market Report Q1 2022 (Gazprom's role in the 2021 tightness)",
+                "https://www.iea.org/reports/gas-market-report-q1-2022",
+                "primary",
+            ),
+            (
+                "World Bank: Commodity Markets Outlook, October 2021",
+                "https://openknowledge.worldbank.org/handle/10986/36350",
+                "primary",
+            ),
+        ],
+    }
+    for sid, lst in docs.items():
+        if sid in src.items:
+            src.items[sid]["links"] = [{"title": t, "url": u, "kind": k} for t, u, k in lst]
 
 
 def apply_weapons_value(countries: dict[str, dict], src: Sources) -> None:

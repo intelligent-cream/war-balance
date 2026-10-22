@@ -3,7 +3,8 @@
 // "direction uncertain" marks, the rankings and the grades before detail.json (the alternatives) had loaded, and kept
 // them. This check loads the page as a reader does, waits until it says it is ready, and compares, for every economy:
 // the method band and the "direction uncertain" flag of each headline number, the countries marked uncertain on each map
-// (round 17: a faded colour of the leaning direction, "too close to call", no longer dotted or grey), and the countries ranked in the Ranking view of each headline
+// (round 17: a faded colour of the leaning direction, no longer dotted or grey; round 24b: "leaning toward ..." or "uncertain
+// direction"), which way each of those leans, and the countries ranked in the Ranking view of each headline
 // number.
 //
 // Run after build_data.py:  node pipeline/browser_check.mjs      (check_data.py runs it too, check 32)
@@ -58,7 +59,7 @@ const inPage = await page.evaluate(() => {
   for (const c of Object.values(byIso)) {
     if (!c.gdp) continue;
     const mb = methodBands(c, 2026), g = 100 / c.gdp, o = { gdp: c.gdp };
-    for (const q of ["ua", "rus", "net"]) Object.assign(o, { [q + "Unc"]: uncertain(c, 2026, q), [q + "BandLo"]: mb[q].lo * g, [q + "BandHi"]: mb[q].hi * g });
+    for (const q of ["ua", "rus", "net"]) Object.assign(o, { [q + "Unc"]: uncertain(c, 2026, q), [q + "Lean"]: leaning(c, 2026, q), [q + "BandLo"]: mb[q].lo * g, [q + "BandHi"]: mb[q].hi * g });
     o.grades = grades(c, 2026);
     out[c.iso3] = o;
   }
@@ -70,6 +71,7 @@ for (const [iso, o] of Object.entries(inPage)) {
   if (!n) continue;
   for (const q of ["ua", "rus", "net"]) {
     if (o[q + "Unc"] !== n[q + "Unc"]) { nFlag++; problems.push(`${iso} ${q}: direction uncertain in the page ${o[q + "Unc"]}, in Node ${n[q + "Unc"]}`); }
+    if (o[q + "Lean"] !== n[q + "Lean"]) { nFlag++; problems.push(`${iso} ${q}: leaning in the page ${o[q + "Lean"]}, in Node ${n[q + "Lean"]}`); }
     for (const e of ["BandLo", "BandHi"]) {
       if (Math.abs(o[q + e] - n[q + e]) > 0.005) { nBand++; problems.push(`${iso} ${q}${e}: page ${o[q + e].toFixed(3)}, Node ${n[q + e].toFixed(3)}`); }
     }
@@ -89,7 +91,8 @@ for (const [lens, q] of Object.entries(LENS)) {
       dotted: [...document.querySelectorAll("path.country.uncertain")].map(p => p.__data__ && DATA[p.__data__.id]).filter(Boolean).map(c => c.iso3),
     };
   });
-  const want = Object.entries(node.countries).filter(([, c]) => c.gdp >= MIN_GDP && !c[q + "Unc"] && c[q] !== null).map(([k]) => k).sort();
+  // round 24b (owner): a party to the war (Belarus) is never ranked
+  const want = Object.entries(node.countries).filter(([, c]) => c.gdp >= MIN_GDP && !c[q + "Unc"] && !c.party && c[q] !== null).map(([k]) => k).sort();
   const have = got.rows.slice().sort();
   const extra = have.filter(k => !want.includes(k)), missing = want.filter(k => !have.includes(k));
   if (extra.length || missing.length) problems.push(`${lens} ranking: ranked in the page but not in Node ${extra.join(" ") || "none"}; missing ${missing.join(" ") || "none"}`);
@@ -128,7 +131,7 @@ for (const lens of ["net", "payments"]) {
     const is = (f, h) => norm(f) === norm(rgb(h)) || norm(f) === norm(h);
     if (o.unc && (is(o.faded, o.neutral) || is(o.faded, o.want))) problems.push(`${lens} map: ${o.iso} faded colour ${o.faded} is not apart from the neutral and the full colour`);
     for (const f of o.fills) {
-      if (o.unc && !is(f, o.faded)) problems.push(`${lens} map: ${o.iso} is too close to call but painted ${f}, not the faded lean colour ${o.faded}`);
+      if (o.unc && !is(f, o.faded)) problems.push(`${lens} map: ${o.iso}'s direction is not certain but it is painted ${f}, not the faded lean colour ${o.faded}`);
       if (!o.unc && !is(f, o.want)) problems.push(`${lens} map: ${o.iso} has a clear direction but is painted ${f}, not ${o.want}`);
       if (is(f, o.neutral)) problems.push(`${lens} map: ${o.iso} painted in the neutral colour`);
     }

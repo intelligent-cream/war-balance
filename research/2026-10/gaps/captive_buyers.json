@@ -1,0 +1,239 @@
+{
+ "generated": "2026-10-22",
+ "round": "24b (audit 24, D M5; approved by the owner 22 October 2026)",
+ "decision": "a label only, no number changes: countries with no real alternative to Russian fuel, the mirror of the 'gas cut off by Russia' label. 'Partly' where an alternative exists on paper but its capacity is officially contested (the Adria pipeline for Hungary and Slovakia).",
+ "criteria": {
+  "C1_dependence": "Russia >= 75% of the country's 2021 imports of the commodity (Comtrade HS 2709 / 2710 / 2711, or national data where Comtrade books transit countries) AND imports >= 50% of domestic consumption",
+  "C2_no_alternative": "landlocked or pipeline-only for that commodity, AND either (a) every non-Russian route's usable capacity is < 50% of the country's imports of it in that year, or (b) the network and import monopoly is owned by a Russian state company (Gazprom-owned grid)",
+  "C3_period": "label applies from 2022 until the first year an alternative meeting (a) is in service",
+  "partial": "'partly captive' when C1 holds and an alternative exists on paper but its capacity is officially contested (Adria for Hungary/Slovakia)",
+  "scope": "label only; attaches to the negative 'paid' and 'windfall' parts for that commodity (like rusCut for 'cut by Russia'); totals unchanged"
+ },
+ "labels": {
+  "MNG": {
+   "status": "captive",
+   "commodity": "refined fuels",
+   "years": [
+    2022,
+    2026
+   ],
+   "c1": "Comtrade 2021 HS2710 88.6% Russia; ministry 96.8% (2024); no refinery",
+   "c2": "landlocked between Russia and China; Chinese supply small and ~40% dearer; rail only",
+   "src": [
+    "comtrade",
+    "mng_indrastra",
+    "mng_mt2011"
+   ]
+  },
+  "KGZ": {
+   "status": "captive",
+   "commodity": "refined fuels",
+   "years": [
+    2022,
+    2026
+   ],
+   "c1": "Comtrade 2021 HS2710 93.7%; refineries ~5% of demand",
+   "c2": "landlocked; EAEU duty-free Russian fuel; alternatives (Kazakhstan, Turkmenistan, China) small; 2026 shortages when Russia restricted exports; its gas grid is owned by Gazprom Kyrgyzstan",
+   "src": [
+    "comtrade",
+    "kgz_timesca"
+   ]
+  },
+  "ARM": {
+   "status": "captive",
+   "commodity": "natural gas",
+   "years": [
+    2022,
+    2026
+   ],
+   "c1": "Comtrade 2021 HS2711 84.5%",
+   "c2": "single pipeline via Georgia + Iran swap pipeline; Gazprom Armenia owns the network and the Armenian section of the Iran pipeline",
+   "src": [
+    "comtrade",
+    "arm_gazprom"
+   ]
+  },
+  "MDA": {
+   "status": "captive",
+   "commodity": "natural gas",
+   "years": [
+    2022,
+    2022
+   ],
+   "c1": "Comtrade 2021 HS2711 88.7%",
+   "c2": "until Dec 2022 Moldovagaz bought only from Gazprom; from Dec 2022 Energocom buys on EU market via Romania (Iasi-Ungheni-Chisinau)",
+   "src": [
+    "comtrade",
+    "osw_moldova"
+   ]
+  },
+  "SRB": {
+   "status": "captive",
+   "commodity": "natural gas",
+   "years": [
+    2022,
+    2023
+   ],
+   "c1": "Comtrade 2021 HS2711 81.0%; ~80% per WBIF",
+   "c2": "only route TurkStream via Bulgaria until the Bulgaria-Serbia interconnector (10 Dec 2023, 1.8 bcm = 60% of needs)",
+   "src": [
+    "comtrade",
+    "srb_interconnector"
+   ]
+  },
+  "BIH": {
+   "status": "captive",
+   "commodity": "natural gas",
+   "years": [
+    2022,
+    2026
+   ],
+   "c1": "all piped gas Russian via Serbia (Comtrade books 58% to Russia, rest to the transit country)",
+   "c2": "single pipeline via Serbia",
+   "src": [
+    "comtrade"
+   ]
+  },
+  "HUN": {
+   "status": "partly",
+   "commodity": "pipeline crude",
+   "years": [
+    2022,
+    2026
+   ],
+   "c1": "Comtrade 2021 HS2709 59% (MOL reports ~80%+ Druzhba in 2023-24)",
+   "c2": "Adria/JANAF: JANAF says 14.4 Mt/yr suffices; MOL disputes; EU embargo exempted pipeline crude for landlocked states",
+   "src": [
+    "comtrade",
+    "adria_euronews",
+    "adria_tests"
+   ]
+  },
+  "SVK": {
+   "status": "partly",
+   "commodity": "pipeline crude",
+   "years": [
+    2022,
+    2026
+   ],
+   "c1": "Comtrade 2021 HS2709 95.4%",
+   "c2": "as Hungary (Adria via Hungary)",
+   "src": [
+    "comtrade",
+    "adria_tests"
+   ]
+  }
+ },
+ "not_captive": {
+  "TJK": {
+   "status": "not captive (borderline)",
+   "c1": "Comtrade 2021 HS2710 87.2%",
+   "c2": "rail routes via Uzbekistan, Turkmenistan, Kazakhstan exist; no capacity constraint documented"
+  },
+  "KAZ": {
+   "status": "not captive",
+   "c1": "HS2710 76% Russian but imports small vs domestic refining",
+   "c2": "own production"
+  },
+  "BLR": {
+   "status": "n/a (party to the war)",
+   "c1": "~100% Russian",
+   "c2": "Druzhba/Yamal only"
+  },
+  "MKD": {
+   "status": "not captive",
+   "c1": "HS2711 68.9% (<75%)",
+   "c2": "Greek interconnector"
+  },
+  "CZE": {
+   "status": "not captive",
+   "c1": "HS2709 48.6%",
+   "c2": "TAL/IKL; switched fully in 2025"
+  },
+  "AUT": {
+   "status": "not captive",
+   "c1": "Gazprom contract to 2040 (choice)",
+   "c2": "German and Italian routes"
+  },
+  "UZB": {
+   "status": "not captive",
+   "c1": "HS2710 52.8%",
+   "c2": "own production"
+  },
+  "GEO": {
+   "status": "not captive",
+   "c1": "HS2710 16.4% (Comtrade; CREA shows higher 2023-24)",
+   "c2": "Black Sea ports"
+  }
+ },
+ "sources": {
+  "comtrade": {
+   "title": "UN Comtrade, annual 2021, HS 2709 (crude), 2710 (refined), 2711 (gas) imports, partners World (0) and Russia (643)",
+   "publisher": "UN Statistics Division",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=496&period=2021&partnerCode=0,643&cmdCode=2709,2710,2711&flowCode=M",
+   "date": "fetched 2026-10-22",
+   "caveat": "partner = country of origin as reported; gas via transit pipelines is sometimes booked to the transit country (Austria 0% Russian gas is an artefact)",
+   "note": "the preview link is Mongolia's (reporter 496); replace reporterCode with any country's UN M49 code"
+  },
+  "mng_indrastra": {
+   "title": "Mongolia's Fuel Crisis: When Third-Neighbor Diplomacy Meets Supply-Chain Reality",
+   "publisher": "IndraStra",
+   "date": "2026-10",
+   "url": "https://www.indrastra.com/2026/10/mongolias-fuel-crisis-when-third.html",
+   "figures": "Russian share of fuel imports 96.84% (2024), 95% end-2025, ~97% Apr 2026 (Ministry figures); ~3 Mt a year consumed, 97% imported from Russia (PM); 2024 intergovernmental agreement 1.8-1.9 Mt products + 60 kt jet fuel; no functioning domestic refinery"
+  },
+  "mng_mt2011": {
+   "title": "Mongolian dependence a threat",
+   "publisher": "The Moscow Times",
+   "date": "2011-06-23",
+   "url": "https://www.themoscowtimes.com/2011/06/23/mongolian-dependence-a-threat-a7803",
+   "figures": "~90% of petroleum products from Russia; Chinese fuel ~40% dearer"
+  },
+  "kgz_timesca": {
+   "title": "Kyrgyzstan seeks alternative fuel suppliers as Russian export restrictions hit",
+   "publisher": "The Times of Central Asia",
+   "date": "2026",
+   "url": "https://timesca.com/kyrgyzstan-seeks-alternative-fuel-suppliers-as-russian-export-restrictions-hit/",
+   "figures": ">90% of imported petroleum products from Russia; ~1.2 Mt a year imported; domestic refineries ~5% of demand"
+  },
+  "arm_gazprom": {
+   "title": "Gazprom Armenia",
+   "publisher": "Wikipedia (summary of RFE/RL Azatutyun reports)",
+   "url": "https://en.wikipedia.org/wiki/Gazprom_Armenia",
+   "figures": "Gazprom owns 100% of Armenia's gas distribution and the Armenian section of the Iran-Armenia pipeline; Russian gas ~2 bcm vs Iranian ~0.37-0.5 bcm (gas-for-electricity swap)"
+  },
+  "srb_interconnector": {
+   "title": "Serbia - Bulgaria gas pipeline opened to diversify energy supplies",
+   "publisher": "Western Balkans Investment Framework",
+   "date": "2023-12",
+   "url": "https://wbif.eu/news-details/serbia-bulgaria-gas-pipeline-opened-diversify-energy-supplies",
+   "figures": "opened 10 Dec 2023; 1.8 bcm a year = ~60% of Serbia's needs; ~80% of gas from Russia when construction began; 0.4 bcm/yr Azerbaijani contract from 2024"
+  },
+  "adria_euronews": {
+   "title": "Fact check: Does Hungary have alternatives to the Druzhba pipeline?",
+   "publisher": "Euronews",
+   "date": "2026-03-31",
+   "url": "https://euronews.com/my-europe/2026/03/31/fact-check-does-hungary-have-alternatives-to-the-druzhba-pipeline"
+  },
+  "adria_tests": {
+   "title": "Adriatic pipeline tests fail to verify stable oil supply for Hungary, Slovakia, MOL says",
+   "publisher": "MarketScreener (Reuters)",
+   "date": "2026",
+   "url": "https://www.marketscreener.com/news/adriatic-pipeline-tests-fail-to-verify-stable-oil-supply-for-hungary-slovakia-mol-says-ce7d58d2d98afe27",
+   "figures": "JANAF: 1.2 Mt/month = 14.4 Mt/yr confirmed in Feb 2023 tests, enough for MOL's Hungarian and Slovak refineries; MOL: never more than 2.2 Mt moved on the relevant section, tests not verified"
+  },
+  "osw_moldova": {
+   "title": "Moldova diversifies gas import sources",
+   "publisher": "OSW Centre for Eastern Studies",
+   "date": "2022-12-08",
+   "url": "https://osw.waw.pl/en/publikacje/analyses/2022-12-08/moldova-diversifies-gas-import-sources",
+   "figures": "from Dec 2022 right-bank Moldova supplied by Energocom (EU market); Gazprom gas earmarked for Transnistria; Gazprom delivered only 43-70% of contracted Oct-Dec 2022"
+  },
+  "czech_tal": {
+   "title": "Czechia ended Russian crude imports via Druzhba in 2025 (TAL pipeline expansion)",
+   "publisher": "(context; the owner may wish to cite MERO / Czech Ministry of Industry)",
+   "url": "https://www.mero.cz/",
+   "note": "shows a landlocked Druzhba buyer had a practical alternative"
+  }
+ }
+}

@@ -79,6 +79,7 @@ button, input, select { font: inherit; color: inherit; }
 .country:hover { stroke: var(--ink); stroke-width: 1.2; }
 .country.selected { stroke: var(--ink); stroke-width: 2; }
 .country.target-ukr, .country.target-rus { fill: var(--target); cursor: default; }
+.party-bg { fill: #3a3f45; } .party-line { stroke: #8a2f2f; stroke-width: 1.4; }
 .hatch-bg { fill: var(--land); }
 .hatch-line { stroke: var(--ink-soft); stroke-opacity: 0.45; stroke-width: 1.4; }
 .target-label { font-family: var(--font-display); font-weight: 700; font-stretch: 112%; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; fill: #f4f6f8; pointer-events: none; paint-order: stroke; stroke: rgba(0,0,0,0.55); stroke-width: 2.5px; }
@@ -503,7 +504,7 @@ details.info > summary::-webkit-details-marker { display: none; }
 .lead { font-size: 15px; line-height: 1.45; margin: 0; }
 .total .n { font-family: var(--font-display); font-weight: 800; font-size: 32px; line-height: 1.05; font-variant-numeric: tabular-nums; }
 .total .n.pos { color: var(--ukr); } .total .n.neg { color: var(--rus); } .total .n.mid { color: var(--ink); }
-/* round 17 (owner): too close to call, in the faded colour of its leaning direction; text fades toward the soft ink, not the
+/* round 17 (owner): a direction that is not certain (round 24b: leaning or uncertain), in the faded colour of its leaning direction; text fades toward the soft ink, not the
    map's grey, so the big number keeps its contrast */
 .total .n.fpos { color: color-mix(in oklch, var(--ukr) 60%, var(--ink-soft)); } .total .n.fneg { color: color-mix(in oklch, var(--rus) 60%, var(--ink-soft)); }
 .total .u { font-size: 14px; font-weight: 600; margin-left: 6px; }
@@ -572,6 +573,13 @@ details[open] > summary .xi::before { transform: rotate(180deg); }
 .pnet .nline { font: 12.5px var(--font-data); color: var(--ink-soft); margin-top: 8px; font-variant-numeric: tabular-nums; }
 .pnet .nline > span { white-space: nowrap; }
 .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+.party-line-p { margin: 0 0 10px; padding: 8px 10px; border-left: 3px solid #8a2f2f; background: color-mix(in srgb, #8a2f2f 10%, transparent); font-size: 13.5px; }
+.trace-ex { margin: 10px 0 0; padding: 10px 14px; border-left: 3px solid var(--ukr); background: var(--sea); font-size: 13.5px; }
+.trace-ex ol { margin: 4px 0 0 18px; padding: 0; } .trace-ex li { margin: 2px 0; }
+.mc-note { font-size: 13px; margin: 4px 0; }
+.rlines { margin: 4px 0 6px; padding: 4px 0 4px 10px; border-left: 2px solid var(--line); font-size: 12.5px; color: var(--ink-soft); }
+.rlines .rline { display: flex; justify-content: space-between; gap: 10px; margin: 2px 0; }
+.rlines .rl-r { font-variant-numeric: tabular-nums; white-space: nowrap; }
 details.tile { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px 12px; min-width: 0; background: var(--surface); }
 details.tile[open] { grid-column: 1 / -1; }
 details.tile > summary { display: grid; gap: 0; }
@@ -1120,7 +1128,15 @@ const UA_PARTS = new Set(["aid", "euaid", "ref", "buy", "undisc", "priv", "multi
 // its own line, "Russian money frozen", added to the net only: not in support for Ukraine, not in the change in payments
 // to Russia (its map, ranking and world total); site/content/method/russia-state-and-companies.md
 const OWN_LINE = new Set(["frozen"]);
+// Round 24b (owner, 22 October 2026: "party to war, yes, for sure"): Belarus is on Russia's side of the war. Russia
+// invaded Ukraine from its territory in February 2022 (UN General Assembly A/RES/ES-11/1 deplores its involvement; EU
+// Council Regulation 2022/355). Its money numbers are worked out and shown in its panel, but it has its own category on
+// the map and is in no ranking and no leaning or uncertain list
+const PARTY_TO_WAR = new Set(["BLR"]);
 const RUS_PART = p => !UA_PARTS.has(p.k) && !OWN_LINE.has(p.k);
+// round 24b: the parts of business with Russia that are the country's own earning from Russia (the "earned" line); the
+// rest is what it paid Russia. Weapons sent to Russia are split by their paid share in calc()
+const LINE_EARNED = new Set(["sold", "svcsold", "ship", "agents"]);
 // Round 13 (audit): parts that share inputs are correlated too, not only expected trade. EU-level aid takes the
 // country's own aid range by construction (1); aid and its own flowback move together, so their errors offset in the
 // total (-0.5, judgement); parts weighted by Russia's net-gain shares share them (0.5, judgement); flowback parts weighted
@@ -1208,7 +1224,11 @@ function calc(c, y, opt = {}) {
   const war = a => (a && opt.loans === "war" ? { c: a.h, l: a.h, h: a.h } : a);
   const lOwn = adj3(war(c.aid?.loan_adj_own)), lEu = adj3(war(c.aid?.loan_adj_eu));
   for (let j = 0; j < 3; j++) eu3[j] += lEu[j];
-  const ownAid3 = [aid3[0] - (eu3[0] - lEu[0]) + wmv3[0] + lOwn[0], aid3[1] - (eu3[1] - lEu[1]) + wmv3[1] + lOwn[1], aid3[2] - (eu3[2] - lEu[2]) + wmv3[2] + lOwn[2]];
+  // round 24b (audit 24, D M4; approved by the owner): military aid counts when delivered, not when allocated
+  // (aid.undeliv, <= 0; Kiel's full allocation is the high end); the EU's own military aid the same way (aid.undeliv_eu)
+  const und3 = adj3(c.aid?.undeliv), undEu3 = adj3(c.aid?.undeliv_eu);
+  const ownAid3 = [aid3[0] - (eu3[0] - lEu[0]) + wmv3[0] + lOwn[0] + und3[0], aid3[1] - (eu3[1] - lEu[1]) + wmv3[1] + lOwn[1] + und3[1], aid3[2] - (eu3[2] - lEu[2]) + wmv3[2] + lOwn[2] + und3[2]];
+  for (let j = 0; j < 3; j++) eu3[j] += undEu3[j];
   const aidAll = T.aid.c.reduce((a, b) => a + b, 0) || 1;
   const loanShare = c.aid && c.aid.loans_face ? Math.min(1, aid3[0] / aidAll) : 0;
   const loansFace = (c.aid?.loans_face || 0) * loanShare;
@@ -1243,7 +1263,7 @@ function calc(c, y, opt = {}) {
   // round 16 (review 5, L4; approved by the owner): the adjusted aid figure is graded by how much of it rests on the
   // modelled adjustments (weapons at market value, loans as gifts): A only when they are under 5% of it, B under 25%,
   // else C (a modelled estimate). Kiel's own figure keeps its letter in the cost view
-  const kielPart = Math.abs(aid3[0] - (eu3[0] - lEu[0])), adjPart = Math.abs(wmv3[0]) + Math.abs(lOwn[0]);
+  const kielPart = Math.abs(aid3[0] - (eu3[0] - lEu[0] - undEu3[0])), adjPart = Math.abs(wmv3[0]) + Math.abs(lOwn[0]) + Math.abs(und3[0]);
   const adjShare = adjPart / ((kielPart + adjPart) || 1);
   const aidCert = weakest([cAid, adjShare >= 0.25 ? "C" : adjShare >= 0.05 ? "B" : "A"]);
   const cRus = weakest([c.to_rus?.cert, "C"]), cTrade = weakest([c.buy_ukr?.cert, "C"]);
@@ -1257,11 +1277,30 @@ function calc(c, y, opt = {}) {
     const star = est && c[est]?.est26 ? " *" : "";
     return { k, label: t(label) + star, en: label + star, v, lo, hi, cert, src: srcs };
   };
-  let lessPaid3 = delta3(T.paid);
+  // round 24b (audit 24, D M2; approved by the owner): the no-war price band (t.nr: October-2021 forecasts to February-2022
+  // futures) is uncertainty about the war-time price windfall, so it widens that line, not "less paid" (the expected
+  // path of "paid" carries it in spread()); where a country has no windfall line it stays on "paid". The terms add in
+  // quadrature, so the band is the difference of the two ranges
+  const wfOn = opt.windfall !== "off" && T.windfall.c.some(v => Math.abs(v) > 1e-9);
+  let lessPaid3 = delta3(T.paid), nrL = 0, nrH = 0;
+  if (wfOn && T.paid.nr) {
+    const noNr = delta3({ ...T.paid, nr: null });
+    nrL = Math.sqrt(Math.max(0, (lessPaid3[0] - lessPaid3[1]) ** 2 - (noNr[0] - noNr[1]) ** 2));
+    nrH = Math.sqrt(Math.max(0, (lessPaid3[2] - lessPaid3[0]) ** 2 - (noNr[2] - noNr[0]) ** 2));
+    lessPaid3 = noNr;
+  }
   if (opt.nocut && lessPaid3[0] > 0) { const s = c.sanctions?.to_rus; lessPaid3 = scale(lessPaid3, 1 - (s ? Math.max(0, Math.min(s.cut || 0, 1 - s.mandated)) : 0)); }
   // round 16 (review 5, H6; approved by the owner): redirected trade on both sides, so the world total stays the world's
   // net change: the credit of a buyer who cut and the debit of one who bought more are scaled by worldPaid()
   if (opt.attrib) lessPaid3 = scale(lessPaid3, lessPaid3[0] > 0 ? opt.attrib.less : opt.attrib.more);
+  // a lower no-war price makes the windfall larger (more toward Russia): the low end. Where the windfall was worked out
+  // under the other pre-war no-war gas paths (c.windfall.path_band, factors on the windfall; windfall_band_r24.json), the
+  // line takes the wider of that and the band moved from "paid", on each side
+  const pb = c.windfall?.path_band;
+  const withNr = r => {
+    const W = -r[0], dl = pb ? Math.max(nrL, Math.abs(W) * Math.max(0, (W >= 0 ? pb[1] : pb[0]) - 1)) : nrL, dh = pb ? Math.max(nrH, Math.abs(W) * Math.max(0, 1 - (W >= 0 ? pb[0] : pb[1]))) : nrH;
+    return [r[0], r[0] - Math.hypot(r[0] - r[1], dl), r[0] + Math.hypot(r[2] - r[0], dh)];
+  };
   const shiftParts = [
     // Kiel's figure, adjusted (round 13 audit: the label says so): weapons at market value, loans at their gift
     part("aid", "Aid to Ukraine (Kiel, adjusted: weapons at market value, loans as gifts)", ownAid3, aidCert, src("aid")),
@@ -1270,7 +1309,7 @@ function calc(c, y, opt = {}) {
     part("buy", "Extra purchases from Ukraine", above3(T.buyUkr), cTrade, src("buy_ukr")),
     part("paid", lessPaid3[0] >= 0 ? "Less paid to Russia" : "More paid to Russia", lessPaid3, cRus, src("to_rus")),
     // against the prices a no-war market expected; negative where Russia sold below them (price cap, discounts)
-    part("windfall", sum3(T.windfall)[0] >= 0 ? "Extra paid to Russia because of war-time prices" : "Paid Russia less than no-war prices (discounts, price cap)", opt.windfall === "off" ? [0, 0, 0] : neg(sum26(opt.windfall === "full" && c.windfall?.alt ? { c: c.windfall.alt, l: c.windfall.alt, h: c.windfall.alt } : T.windfall, c.to_rus?.p26)), c.windfall?.cert || "C", src("windfall")),
+    part("windfall", sum3(T.windfall)[0] >= 0 ? "Extra paid to Russia because of war-time prices" : "Paid Russia less than no-war prices (discounts, price cap)", opt.windfall === "off" ? [0, 0, 0] : withNr(neg(sum26(opt.windfall === "full" && c.windfall?.alt ? { c: c.windfall.alt, l: c.windfall.alt, h: c.windfall.alt } : T.windfall, c.to_rus?.p26))), c.windfall?.cert || "C", src("windfall")),
     // round 13: in volumes like every other trade part (the crude inside the fuel at no-war crude prices, against its
     // pre-war level), counted both ways, at Russia's net gain on crude
     part("laund", "Russian oil bought via other countries", c.laund ? delta3(T.laundered) : neg(sum3(T.laundered)), "C", c.to_rus?.laundered_src || []),
@@ -1333,7 +1372,11 @@ function calc(c, y, opt = {}) {
   // round 16 (raised by review 5, M3; approved by the owner): refugee hosting money is spent in the host economy (rent,
   // food, retail, services); its real gain to the host (services' net gain x genuinely extra, aid.refugee_back_f) is
   // subtracted like other money flowing back. Not part of the money that reached Ukraine (flowback total, flow lines)
-  const rbf = c.aid?.refugee_back_f, refBack = rbf && ref3[0] > 0 ? [{ ...part("refsp", "Refugee hosting spent in its own economy (rent, food, services)", ref3, "C", c.aid?.refugee_src || []), cert: "C" }] : [];
+  // round 24b: on the money actually spent (gross, after donor shares), not on the hosting counted (which is now net of
+  // the host's gain on refugees' work, a different gain: their production, not the spending of hosting money)
+  const rgs = k => (c.aid?.[k] ? c.aid[k].slice(1, N + 1).reduce((a, b) => a + b, 0) : null);
+  const rg3 = c.aid?.refugee_gross_years ? [rgs("refugee_gross_years"), rgs("refugee_gross_years_lo") ?? rgs("refugee_gross_years"), rgs("refugee_gross_years_hi") ?? rgs("refugee_gross_years")] : ref3;
+  const rbf = c.aid?.refugee_back_f, refBack = rbf && ref3[0] > 0 && rg3[0] > 0 ? [{ ...part("refsp", "Refugee hosting spent in its own economy (rent, food, services)", rg3, "C", c.aid?.refugee_src || []), cert: "C" }] : [];
   const back = state.netBack ? live(backParts.concat(refBack).map(negPart).map(p => { const f = p.k === "refsp" ? rbf : vk(p.k === "sell" ? "ux" : p.k === "othsp" ? "fo" : "fw"); return { ...p, v: p.v * f[1], lo: p.lo * f[2], hi: p.hi * f[0] }; })) : [];
   const backCost = back;
   const shiftAll = live(shiftParts.concat(back)), costAll = live(costParts.concat(backCost));
@@ -1344,6 +1387,21 @@ function calc(c, y, opt = {}) {
   const [uaGave] = total(uaGiveParts), [uaBack] = back.length ? total(back) : [0];
   const [uaBal, uaLo, uaHi] = total(uaGiveParts.concat(back));
   const [rusBal, rusLo, rusHi] = total(live(shiftParts.filter(RUS_PART)));
+  // round 24b (audit 24, D M1; approved by the owner): business with Russia shown as two lines, display subtotals of the
+  // same parts (rusBal and its range stay as they are; the lines' ranges do not add up to it): what the country paid
+  // Russia (Russia's gain: purchases, war-time prices, laundered oil, services bought, taxes, profits of Russian-owned
+  // firms, arms bought, state projects, gold and hidden payments, arms given) and what it earned from Russia (the
+  // seller's own gain: sales, services sold, shipping, payment agents, arms sold). Weapons sent to Russia split by their
+  // paid share (military_rus.years_paid)
+  const rusLive = live(shiftParts.filter(RUS_PART)), milP = rusLive.find(p => p.k === "mil");
+  const milAll = c.military_rus?.years ? c.military_rus.years.slice(1, N + 1).reduce((a, b) => a + b, 0) : 0;
+  const milPaid = c.military_rus?.years_paid ? c.military_rus.years_paid.slice(1, N + 1).reduce((a, b) => a + b, 0) : 0;
+  const fPaid = milAll > 0 ? Math.max(0, Math.min(1, milPaid / milAll)) : 0;
+  const share = (p, f) => ({ ...p, v: p.v * f, lo: p.lo * f, hi: p.hi * f });
+  const linePaid = rusLive.filter(p => !LINE_EARNED.has(p.k) && p.k !== "mil").concat(milP && fPaid < 1 ? [share(milP, 1 - fPaid)] : []);
+  const lineEarned = rusLive.filter(p => LINE_EARNED.has(p.k)).concat(milP && fPaid > 0 ? [share(milP, fPaid)] : []);
+  const [rusPaid, rusPaidLo, rusPaidHi] = linePaid.length ? total(linePaid) : [0, 0, 0];
+  const [rusEarned, rusEarnedLo, rusEarnedHi] = lineEarned.length ? total(lineEarned) : [0, 0, 0];
   const frozenParts = live(shiftParts.filter(p => OWN_LINE.has(p.k)));
   const [frozen, frozenLo, frozenHi] = frozenParts.length ? total(frozenParts) : [0, 0, 0];
   const flow = total(backParts);
@@ -1366,6 +1424,7 @@ function calc(c, y, opt = {}) {
     flowbackProfit: back.length ? -total(back)[0] : 0,
     shift, shiftLo, shiftHi, shiftCert: gradeTotal(shiftAll),
     uaBal, uaLo, uaHi, uaGave, uaBack, rusBal, rusLo, rusHi, frozen, frozenLo, frozenHi, frozenParts,
+    rusPaid, rusPaidLo, rusPaidHi, rusEarned, rusEarnedLo, rusEarnedHi, milPaidShare: fPaid, undelivered: -(und3[0] + undEu3[0]),
     // negative overall mainly because it earned from the war effort, not because of money toward Russia
     // (only when it matters: at least EUR 10m and 0.05% of a year's GDP)
     earnerUa: uaBal < -Math.max(0.01, (c.gdp || 0) * 0.0005),
@@ -1469,6 +1528,28 @@ function uncertain(c, y, q) {
   if (!v || lo * v <= 0 || hi * v <= 0) return true;
   return methodBands(c, y).alts.some(a => a[q] * v <= 0);
 }
+// Round 24b (audit 24, D H3; owner, 22 October 2026: "things like this should just be leaning ... unless it's smack dab
+// in the middle, you can say uncertain"). A number whose likely range or a method-band alternative crosses zero leans the
+// way of its middle value when the chance of that sign is at least 65%, under a two-piece normal on the likely range (mode
+// = the middle value, the range ends its 5th and 95th percentiles); below that its direction is uncertain. Neither is
+// ranked; both are named under the ranking. Belarus, a party to the war, is in neither (PARTY_TO_WAR).
+// research/2026-10/gaps/leaning-notes.md
+const LEAN = { p: 0.65 };
+const normCdf = x => { const t = 1 / (1 + 0.3275911 * Math.abs(x) / Math.SQRT2), e = Math.exp(-x * x / 2); const erf = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * e; return x >= 0 ? (1 + erf) / 2 : (1 - erf) / 2; };
+function pSameSign(v, lo, hi) {
+  const sl = Math.max(1e-12, (v - lo) / 1.645), sh = Math.max(1e-12, (hi - v) / 1.645), wl = sl / (sl + sh), wh = sh / (sl + sh);
+  // the chance of the other sign: the far tail of the side of the range that reaches past zero
+  return 1 - (v > 0 ? wl * 2 * normCdf(-v / sl) : wh * 2 * normCdf(v / sh));
+}
+// { side: "ukraine" | "russia" | null (uncertain direction), p: the chance of the middle value's sign, alts: the share of
+// method-band alternatives with that sign } for a number that is not certain; null when it is certain (or a party to the war)
+function leanInfo(c, y, q) {
+  if (y < 2022 || !c.gdp || PARTY_TO_WAR.has(c.iso3) || !uncertain(c, y, q)) return null;
+  const k = calc(c, y), v = HEAD3(k)[q], [lo, hi] = { ua: [k.uaLo, k.uaHi], rus: [k.rusLo, k.rusHi], net: [k.shiftLo, k.shiftHi] }[q];
+  const alts = methodBands(c, y).alts, p = v ? pSameSign(v, lo, hi) : 0.5;
+  return { side: v && p >= LEAN.p ? (v > 0 ? "ukraine" : "russia") : null, p, alts: alts.length ? alts.filter(a => a[q] * v > 0).length / alts.length : 1 };
+}
+function leaning(c, y, q) { const i = leanInfo(c, y, q); return i ? i.side : null; }
 // Round 15 (review 4, H3; approved by the owner): each headline number gets a letter from two things. Data: the share of
 // its absolute value that rests on parts graded A or B (primary data) and on D (judgement). Spread: the width of its
 // likely range and method band together, against the value. A: at least 75% on A-B, at most 5% on D, spread at most
@@ -1698,7 +1779,10 @@ const ext = (href, text, en) => `<a href="${href}" target="_blank" rel="noopener
 // on the map, its links, its sources (one line each) and one fold with all their exact tables and reports
 const FLOW_GROUPS = [
   ["Support for Ukraine", ["aid", "loans", "euaid", "undisc", "priv", "ref", "buy", "flowback"]],
-  ["Business with Russia", ["paid", "windfall", "laund", "sold", "services", "shipping", "companytax", "rusfirms", "statefin", "rusarms", "mil", "agents", "gold"]],
+  // round 24b (audit 24, D M1; approved by the owner): business with Russia in its two lines. Services (bought and sold)
+  // and weapons sent to Russia (given and sold) count on both; each is listed once, where most of it is
+  ["Business with Russia: paid Russia", ["paid", "windfall", "laund", "services", "companytax", "rusfirms", "statefin", "rusarms", "gold"]],
+  ["Business with Russia: earned from Russia", ["sold", "shipping", "agents", "mil"]],
   ["Russian money frozen", ["frozen"]],
   ["Not in the totals", ["energy", "exits", "seized", "remit", "markers"]],
 ];
@@ -1733,7 +1817,15 @@ function loadContent() {
       MD_PAGES.forEach(p => (pageTitles[p] = method[p].title));
       // the rounds and the flows each one changed, from the changelog's own headings ("<!-- flows: paid sold -->")
       const rounds = [...changelog.matchAll(/<h([23]) id="(cl-[\w-]+)">(.*?)(?: <span class="cl-date">(.*?)<\/span>)?<\/h\1>\n<!-- flows:([^>]*)-->/g)]
-        .map(m => ({ id: m[2], title: m[3], date: m[4] || "", flows: m[5].trim().split(/\s+/).filter(Boolean) }));
+        .map(m => ({ id: m[2], title: m[3], date: m[4] || "", flows: m[5].trim().split(/\s+/).filter(Boolean), at: m.index }));
+      // round 24b (audit A #6): each round's decisions (the top-level bullets under "### Decisions"), with their own
+      // anchors ("cl-r24-d2"), so a flow can link to the exact decision behind it
+      rounds.forEach((r, i) => {
+        const sec = changelog.slice(r.at, i + 1 < rounds.length ? rounds[i + 1].at : undefined), d = sec.indexOf("### Decisions");
+        if (d < 0) { r.decisions = []; return; }
+        const body = sec.slice(d).split(/\n(?=###? )/)[0];
+        r.decisions = [...body.matchAll(/^- (.+(?:\n {2,}.+)*)/gm)].map((m, n) => ({ n: n + 1, text: m[1].replace(/\s+/g, " ") }));
+      });
       return (loaded = { method, limitations, changelog, rounds });
     })
     .catch(e => { content = null; throw e; });
@@ -1852,7 +1944,9 @@ function fillChanges(root, c) {
   root.querySelectorAll("details.fl-changes").forEach(d => {
     const rs = c.rounds.filter(r => r.flows.includes(d.dataset.flow));
     d.querySelector(".fl-n").textContent = ` (${rs.length})`;
-    d.querySelector(".fl-ch").innerHTML = rs.length ? `${enNote()}<ul class="fl-chl" lang="en">${rs.map(r => `<li><a href="#view=how&amp;sec=${r.id}">${r.title.replace(/<[^>]+>/g, "")}</a>${r.date ? ` <span class="sd">${esc(r.date)}</span>` : ""}</li>`).join("")}</ul>`
+    const decs = r => flowDecisions(r, d.dataset.flow).slice(0, 4);
+    const decList = r => (decs(r).length ? `<ul class="fl-dec">${decs(r).map(x => `<li><a href="#view=how&amp;sec=${r.id}-d${x.n}">${esc(x.text.replace(/\*\*/g, "").replace(/<[^>]+>/g, "").split(" — ")[0].slice(0, 140))}</a></li>`).join("")}</ul>` : "");
+    d.querySelector(".fl-ch").innerHTML = rs.length ? `${enNote()}<ul class="fl-chl" lang="en">${rs.map(r => `<li><a href="#view=how&amp;sec=${r.id}">${r.title.replace(/<[^>]+>/g, "")}</a>${r.date ? ` <span class="sd">${esc(r.date)}</span>` : ""}${decList(r)}</li>`).join("")}</ul>`
       : `<p class="key">${t("No change recorded for this flow.")}</p>`;
   });
 }
@@ -1867,13 +1961,46 @@ function changelogHtml(c) {
       cur = document.createElement("details");
       cur.className = "cl-round";
       if (n++ < 3) cur.open = true;
+      cur.dataset.round = node.id || "";
       const sum = document.createElement("summary");
       sum.appendChild(node);
       cur.appendChild(sum);
       out.appendChild(cur);
     } else cur.appendChild(node);
   }
+  // round 24b: each top-level decision gets its own anchor, "<round id>-d<n>"
+  out.querySelectorAll("details.cl-round").forEach(d => {
+    const h = [...d.querySelectorAll("h3")].find(x => /^Decisions/.test(x.textContent.trim()));
+    let ul = h && h.nextElementSibling;
+    while (ul && ul.tagName !== "UL" && ul.tagName !== "H3") ul = ul.nextElementSibling;
+    if (ul && ul.tagName === "UL" && d.dataset.round) [...ul.children].forEach((li, i) => { li.id = `${d.dataset.round}-d${i + 1}`; li.classList.add("cl-dec"); });
+  });
   return finishMd(out).innerHTML;
+}
+// which of a round's decisions concern a flow: the flow's name or its parts' plain names in the decision's own words
+const FLOW_WORDS = { aid: ["aid to ukraine", "military aid", "aid "], loans: ["loan"], euaid: ["eu aid", "eu-level"], undisc: ["undisclosed"], priv: ["private donation"],
+  ref: ["refugee"], buy: ["purchases from ukraine"], flowback: ["flowing back", "flowback", "own economy"], paid: ["paid russia", "purchases from russia", "less paid", "fuel and goods", "gas"],
+  windfall: ["windfall", "war-time price", "war-time fuel"], laund: ["laundered", "refined"], sold: ["sales to russia", "sold to russia", "earned"], services: ["services", "tourism"],
+  shipping: ["shipping", "tanker"], companytax: ["company tax", "taxes paid in russia"], mil: ["weapons", "north korea", "troops"], frozen: ["frozen"], gold: ["gold", "hidden"] };
+function flowDecisions(r, flow) {
+  const f = flowById(flow), words = (FLOW_WORDS[flow] || []).concat(f ? [f.name.toLowerCase()] : []);
+  return (r.decisions || []).filter(d => words.some(w => d.text.toLowerCase().includes(w)));
+}
+// round 24b (audit 24, A #9; approved by the owner): one number traced live, from the country back to its source document
+// and research note: Germany's share of EU aid (worked out from the data on the page, so it never goes stale)
+function traceExample() {
+  const c = byIso.DEU, f = flowById("euaid");
+  if (!c || !f) return "";
+  const p = calc(c, 2026).shiftParts.find(q => q.k === "euaid"), s = SRC.kiel_eu_share || SRC.kiel;
+  if (!p || !s) return "";
+  const doc = (s.links || []).find(l => l.key) || { url: s.url, title: s.name };
+  return `<div class="trace-ex"><p class="lbl2">${t("Example, worked out live")}</p><ol>
+    <li>${t("Germany's number: {v} of a year's GDP toward Ukraine.", { v: fmtMeasure(c, Math.abs(calc(c, 2026).shift), "gdp") })} <a href="#DEU" data-goto="${c.n}">${t("Open Germany")}</a></li>
+    <li>${t("One of its parts: {part}, {v} ({eur}).", { part: plainName(p), v: fmtMeasure(c, p.v, "gdp", true), eur: eur(p.v, true) })}</li>
+    <li>${t("Its money flow:")} <a href="#view=how&amp;flow=${f.id}" data-flow="${f.id}">${t(f.name)}</a></li>
+    <li>${t("Its source:")} <a href="${esc(doc.url)}" target="_blank" rel="noopener" lang="en">${esc(doc.title || s.name)}</a></li>
+    <li>${t("Its research note:")} <a href="${REPO}research/2026-10/kiel-notes.md" target="_blank" rel="noopener">research/2026-10/kiel-notes.md</a></li>
+  </ol></div>`;
 }
 const HOW_SECS = [["trace-h", "How to trace a number"], ["method-h", "The method in four lines"], ["flows-h", "Money flows"],
   ["method-full", "The method in full"], ["limitations", "Limitations"], ["changelog", "Changelog"], ["data", "Download the data"]];
@@ -1892,7 +2019,7 @@ function renderHow(root) {
         ${step(2, t("Research note"), t("Every input with its own source and the exact table, in the research files."))}
         ${step(3, t("Part on the map"), t("Each money flow below turns those inputs into parts, against a world without the war."))}
         ${step(4, t("The country's number"), t("The parts add up to the country's number; in its panel each part links back here."))}
-      </ol></section>
+      </ol>${traceExample()}</section>
     <section class="method-top" aria-labelledby="method-h"><h3 class="how-h" id="method-h">${t("The method in four lines")}</h3>
       <div class="m4">
         ${card(t("<b>What is counted.</b> Every money flow we can find between a country and Ukraine or Russia: aid, refugee hosting, loans, trade, fuel, services, shipping, company taxes, weapons, frozen reserves. Some are shown as markers only."))}
@@ -2062,7 +2189,7 @@ function scaleFor() {
   // the lightest orange (grey in the support view), colors[3] the neutral, colors[4] the lightest blue (NEUTRAL_AT)
   const N0 = colors.length >> 1;
   const colorFor = (c, v) => (c && (c.gdp || 0) < MIN_GDP_RANK && Math.abs(v) >= st[0] ? colors[v > 0 ? N0 + 1 : N0 - 1] : f(v));
-  // round 17 (owner): a number too close to call is not grey but a faded colour of the way it leans. Round 21 (polish,
+  // round 17 (owner): a number whose direction is not certain (round 24b: leaning, or uncertain) is not grey but a faded colour of the way it leans. Round 21 (polish,
   // owner): a pale tint of the same hue (chroma cut by 40%, lightness half way to a pale level), not a mix with the grey,
   // which turned the oranges into muddy browns on the dark map. The grey itself stays grey
   const paleL = d3.hcl(C.sea).l < 50 ? 72 : 92;
@@ -2084,6 +2211,10 @@ const defs = svg.append("defs");
 const hatch = defs.append("pattern").attr("id", "hatch").attr("patternUnits", "userSpaceOnUse").attr("width", 6).attr("height", 6).attr("patternTransform", "rotate(45)");
 hatch.append("rect").attr("class", "hatch-bg").attr("width", 6).attr("height", 6);
 hatch.append("line").attr("class", "hatch-line").attr("x1", 0).attr("y1", 0).attr("x2", 0).attr("y2", 6);
+// round 24b (owner): a party to the war on Russia's side (Belarus): dark, with a fine cross-hatch, its own legend entry
+const partyP = defs.append("pattern").attr("id", "party").attr("patternUnits", "userSpaceOnUse").attr("width", 6).attr("height", 6).attr("patternTransform", "rotate(45)");
+partyP.append("rect").attr("class", "party-bg").attr("width", 6).attr("height", 6);
+partyP.append("line").attr("class", "party-line").attr("x1", 0).attr("y1", 0).attr("x2", 0).attr("y2", 6);
 // round 15: direction uncertain, dots on the neutral grey
 const uncP = defs.append("pattern").attr("id", "unc").attr("patternUnits", "userSpaceOnUse").attr("width", 5).attr("height", 5);
 uncP.append("rect").attr("class", "unc-bg").attr("width", 5).attr("height", 5);
@@ -2117,6 +2248,8 @@ const zoom = d3.zoom().scaleExtent([1, 14]).on("zoom", e => {
   g.selectAll(".remitm").attr("transform", d => `translate(${d.x},${d.y}) scale(${1 / e.transform.k}) translate(${REMIT_OFF},0)`);
   g.selectAll(".takenm").attr("transform", d => `translate(${d.x},${d.y}) scale(${1 / e.transform.k}) translate(${TAKEN_OFF},0)`);
   g.selectAll(".stream-target").attr("r", 3.5 / e.transform.k);
+  // round 24b: the party-to-the-war stripes keep their size on screen at any zoom (on phones the map starts zoomed in)
+  partyP.attr("patternTransform", `rotate(45) scale(${1 / e.transform.k})`);
   if (reduceMotion) drawFlows(0);
 });
 svg.call(zoom).on("dblclick.zoom", null);
@@ -2185,10 +2318,11 @@ function paint() {
     const k = c && v != null && state.lens === "net" && state.year > 2021 && state.netBack ? calc(c, state.year) : null;
     // round 15: a number whose likely range or method band crosses zero is "direction uncertain"; round 17 (approved by
     // the owner): no dot pattern, and a faded colour of its leaning direction, not grey (the tooltip and the panel say
-    // "too close to call")
-    const unc = !!(c && v != null && q && state.year > 2021 && Math.abs(v) >= (state.measure === "gdp" ? sc.neutralAt : 0) && uncertain(c, state.year, q));
+    // "leaning toward ..." or "uncertain direction", round 24b)
+    const party = !!(c && PARTY_TO_WAR.has(c.iso3) && state.year > 2021);
+    const unc = !party && !!(c && v != null && q && state.year > 2021 && Math.abs(v) >= (state.measure === "gdp" ? sc.neutralAt : 0) && uncertain(c, state.year, q));
     // a net below zero that is mainly earning from the war effort for Ukraine is not money toward Russia: grey (round 17)
-    const fill = k?.earner ? C.mid : unc ? sc.fadedFor(c, v) : c && v != null ? sc.colorFor(c, v) : null;
+    const fill = party ? "url(#party)" : k?.earner ? C.mid : unc ? sc.fadedFor(c, v) : c && v != null ? sc.colorFor(c, v) : null;
     d3.select(this).classed("nodata", !c || v == null).classed("uncertain", unc).style("fill", fill)
       .classed("dim", hs ? !(c && hs.has(c.n)) : !!(c && dimmedOut(c))).classed("hl", !!(hs && c && hs.has(c.n)));
   });
@@ -2234,8 +2368,9 @@ function renderLegend(sc) {
     <div class="ticks" style="font-family:var(--font-body);margin-top:2px"><span>← ${sc.ends[0]}</span><span>${sc.ends[1]} →</span></div>
     <div class="keys"><span>${periodText()}, ${LANG !== "en" && state.measure !== "gdp" ? t(state.measure === "pp" ? "€ per person" : "€ billion") : measure}</span>
       <span>${sw(`<rect width="10" height="10" fill="${C.mid}"/>`)}${t("Grey: no clear change")}</span>
-      <span>${sw(`<rect width="${ONE_SIDED.has(state.lens) ? 10 : 5}" height="10" fill="${sc.fade(sc.colors[5])}"/>${ONE_SIDED.has(state.lens) ? "" : `<rect x="5" width="5" height="10" fill="${sc.fade(sc.colors[1])}"/>`}`)}${t("Faded: leans this way, but too close to call (the likely range or the method band crosses zero; not ranked)")}</span>
+      <span>${sw(`<rect width="${ONE_SIDED.has(state.lens) ? 10 : 5}" height="10" fill="${sc.fade(sc.colors[5])}"/>${ONE_SIDED.has(state.lens) ? "" : `<rect x="5" width="5" height="10" fill="${sc.fade(sc.colors[1])}"/>`}`)}${t("Faded: leaning this way, or uncertain direction (the likely range or the method band crosses zero; not ranked)")}</span>
       <span>${sw(`<rect width="10" height="10" fill="url(#hatch)"/>`)}${t("No data yet")}</span>
+      <span>${sw(`<rect width="10" height="10" fill="url(#party)"/>`)}${t("Party to the war (with Russia): not ranked")}</span>
       <span>${t("Economies under {min} GDP: lightest shade of their direction only", { min: tight(money(num(MIN_GDP_RANK), "bn")) })}</span>
       ${state.lens === "net" ? `<span>${t("A country that earned more from the war effort for Ukraine than it gave is grey: that is not money toward Russia.")}</span>` : ""}
       ${state.streams && state.year > 2021 ? `<span><svg width="28" height="8" style="vertical-align:-1px;margin-right:4px"><line x1="0" y1="4" x2="28" y2="4" stroke="${C.ukr}" stroke-width="3" stroke-linecap="round"/></svg>${t("Stream to Kyiv: support for Ukraine, €")}</span>
@@ -2272,7 +2407,7 @@ function renderInfo() {
       <li>${kl ? t("<b>Totals for {n} years</b> against one year's GDP, not a yearly rate: Lithuania's net {v} is about {pa} a year.", { n: num(yearsOf(y), 1), v: g(lit, kl.shift), pa: perYear(lit, kl.shift, y) }) : ""}</li>
       <li class="orange">${t("<b>Orange is mostly fuel buying, not siding with Russia.</b>")}</li>
     </ol>
-    <p>${t("Grey is no clear change. Faded colours lean one way but are too close to call: the likely range, or another reasonable method choice, crosses zero ({n} of {all} economies over {min} GDP). They are not ranked, and a number too close to call gets no stream.", { n: unc, all: big.length, min: tight(money(num(MIN_GDP_RANK), "bn")) })}</p>
+    <p>${t("Grey is no clear change. Faded colours are not certain: the likely range, or another reasonable method choice, crosses zero ({n} of {all} economies over {min} GDP). Most still lean one way (at least a 65% chance of their sign); the rest have an uncertain direction. Neither is ranked or gets a stream.", { n: unc, all: big.length, min: tight(money(num(MIN_GDP_RANK), "bn")) })}</p>
     <p>${t("The streams show the same two numbers in euros, not gross trade: blue to Kyiv, support for Ukraine; orange to Moscow, how much more a country paid Russia than without the war. The {n} largest each way; hover or tap a country for its own.", { n: streamTop() })}</p>
     ${state.lens !== "net" && titleNote() ? `<p class="sub">${titleNote()}</p>` : ""}
     <p class="sub">${t("Hover or tap a country for its two numbers; click it for everything behind them: each part opens how it is calculated and its sources. The tabs at the top switch between the map, the ranking and How it works; Filters holds what the map shows, the measure, what's counted, and countries and years. Drag to move, scroll to zoom.")}</p>
@@ -2373,7 +2508,7 @@ function anchorOf(f) {
 // ===== Money streams (round 17, redesign B, approved by the owner) =====
 // Blue streams to Kyiv, sized by each country's support for Ukraine in €; orange streams to Moscow, sized by how much more
 // it paid Russia than without the war in € (the negative side of business with Russia). The map's own two numbers, from
-// calc(), never gross trade; a direction that is too close to call has no stream. Hovering or picking a country shows its
+// calc(), never gross trade; a direction that is not certain (leaning or uncertain) has no stream. Hovering or picking a country shows its
 // own, a highlight shows those of its countries. Switched in Filters. Round 18 (owner): on by default on phones too, but
 // calmer there. Round 21 (polish, owner): thin solid lines that fade in, no moving dashes; the 8 largest each way (5 on
 // a small screen)
@@ -2517,7 +2652,11 @@ const amtWords = (c, v, measure = state.measure) => t("{eur} ({pct})", { eur: sh
 // Ukraine by 3.2% of GDP". The verb carries the direction, so the amount has no sign, and a % always says "of GDP", so
 // "by 1.6%" is never read as a 1.6% fall in trade. Business with Russia is positive when it was reduced
 const VERBS = { net: ["Toward Ukraine by {x}", "Toward Russia by {x}"], ua: ["Supported Ukraine with {x}", "Gave Ukraine less than without the war, by {x}"],
-  rus: ["Reduced business with Russia by {x}", "Increased business with Russia by {x}"], frozen: ["Froze Russian money worth {x}", "Froze Russian money worth {x}"] };
+  rus: ["Reduced business with Russia by {x}", "Increased business with Russia by {x}"], frozen: ["Froze Russian money worth {x}", "Froze Russian money worth {x}"],
+  // round 24b (audit 24, D M1; approved by the owner): business with Russia's two lines
+  paid: ["Paid Russia less by {x}", "Paid Russia more by {x}"], earned: ["Earned less from Russia by {x}", "Earned more from Russia by {x}"],
+  // round 24b (owner): the net's headline when its direction is not certain but leans
+  netLean: ["Leaning toward Ukraine by {x}", "Leaning toward Russia by {x}"] };
 const verbKey = (q, v) => VERBS[q][v >= 0 ? 0 : 1];
 const ofGdp = (c, v) => t("{v} of GDP", { v: fmtMeasure(c, Math.abs(v), "gdp") });
 const amtX = (c, v, m = state.measure) => (m === "total" ? eur(Math.abs(v)) : ofGdp(c, v));
@@ -2556,8 +2695,8 @@ const isOrange = (c, k, y) => (k.shift < 0 && !k.earner && !uncertain(c, y, "net
 function twoBars(c, k, y) {
   const m = Math.max(Math.abs(k.uaBal), Math.abs(k.rusBal), 1e-9), x = v => 50 + Math.max(-50, Math.min(50, (v / m) * 50));
   const bar = (v, col) => `<span class="tbar" aria-hidden="true"><span class="z"></span><span style="left:${Math.min(50, x(v))}%;width:${Math.abs(x(v) - 50)}%;background:${col}"></span></span>`;
-  const unc = q => (uncertain(c, y, q) ? " · " + t("too close to call") : "");
-  // round 17 (owner): too close to call is the faded colour of its direction (halfway toward the neutral grey, as on the map)
+  const unc = q => (uncertain(c, y, q) ? " · " + dirWords(c, y, q) : "");
+  // round 17 (owner): a direction that is not certain is the faded colour of its direction (halfway toward the neutral grey, as on the map)
   const col = (v, q, neg) => { const x = v >= 0 ? "var(--ukr)" : neg; return uncertain(c, y, q) ? `color-mix(in srgb, ${x} 50%, var(--mid))` : x; };
   return `<div class="twobars">
     <div class="tb"><div class="t">${verb("ua", k.uaBal, c)}</div>${bar(k.uaBal, col(k.uaBal, "ua", "var(--ink-soft)"))}<div class="w">${supportWords(c, k)}${unc("ua")}</div></div>
@@ -2569,7 +2708,7 @@ function tipHtml(c, name) {
   if (state.year < 2022) return `<b>${c.name}</b>${t("2021 is the year before the war, the comparison year: every number is zero by definition.")}`;
   const y = state.year, k = calc(c, y);
   const net = `<b>${verb("net", k.shift, c)}</b> (${t("likely {lo} to {hi}", { lo: fmtMeasure(c, k.shiftLo, state.measure, true), hi: fmtMeasure(c, k.shiftHi, state.measure, true) })})`;
-  return `<b>${c.name}</b>${twoBars(c, k, y)}<div class="r">${net}${uncertain(c, y, "net") ? " · " + t("too close to call") : ""}${custom() ? " · " + t("custom mix") : ""} · ${t("click for more")}</div>${isOrange(c, k, y) ? `<div class="cav">${orangeCaveat(c, k)}</div>` : ""}`;
+  return `<b>${c.name}</b>${twoBars(c, k, y)}<div class="r">${net}${uncertain(c, y, "net") ? " · " + dirWords(c, y, "net") : ""}${custom() ? " · " + t("custom mix") : ""} · ${t("click for more")}</div>${isOrange(c, k, y) ? `<div class="cav">${orangeCaveat(c, k)}</div>` : ""}`;
 }
 function showTip(e, html) {
   tip.innerHTML = html; tip.hidden = false;
@@ -3232,13 +3371,41 @@ function flowSourcesHtml(f, srcs) {
 // calculated, then the way into the flow's page in How it works, where the reasons, the full method and its changes
 // are. Round 24 (audit A and C; approved by the owner): the part's own sources are listed in place, each with its key
 // documents, instead of a second link into How it works
+// Round 24b (audit 24, A #3; approved by the owner): the part's own case for this country, worked out live where the data
+// say more than the general method: when the war-time prices were paid and on what, refugees' work, aid not yet
+// delivered, how much of the weapons Russia paid for, and no real alternative to Russian fuel
+function partNote(c, p) {
+  const y = state.year, N = yi(y), sum = a => (a ? a.slice(1, N + 1).reduce((x, z) => x + z, 0) : 0), out = [];
+  if (p.k === "windfall" && c.windfall?.years) {
+    const ys = c.windfall.years, peak = ys.slice(1, N + 1).reduce((b, v, i) => (Math.abs(v) > Math.abs(ys[b + 1] || 0) ? i : b), 0);
+    const gs = c.windfall.gas_share;
+    out.push(t(p.v < 0 ? "For {c}: {v} paid above no-war prices, most of it in {y}" : "For {c}: {v} paid below no-war prices, most of it in {y}", { c: c.name, v: eur(Math.abs(p.v)), y: YEARS[peak + 1] })
+      + (gs != null && gs >= 0.05 ? t(", {s} of it on gas contracts.", { s: Math.round(gs * 100) + "%" }) : "."));
+  }
+  if (p.k === "ref" && c.aid?.refugee_work_gain) {
+    const g = sum(c.aid.refugee_work_gain), gross = sum(c.aid.refugee_gross_years);
+    if (gross > 0.0005) out.push(t("For {c}: {gross} spent on refugees, less {g}, its gain on the work refugees did here.", { c: c.name, gross: eur(gross), g: eur(g) }));
+  }
+  if (p.k === "aid") {
+    const und = -(sum(c.aid?.undeliv?.c) + sum(c.aid?.undeliv_eu?.c));
+    if (und > 0.005) out.push(t("Military aid allocated but not yet delivered is not counted: {v} (Kiel's full allocation is the high end).", { v: eur(und) }));
+  }
+  if (p.k === "mil" && c.military_rus?.years_paid) {
+    const all = sum(c.military_rus.years), paid = sum(c.military_rus.years_paid);
+    if (all > 0.0005) out.push(t("Of what is counted, {s} is the gain on what Russia paid for; the rest was given.", { s: Math.round(Math.max(0, Math.min(1, paid / all)) * 100) + "%" }));
+  }
+  const cap = c.captive;
+  if (cap && (p.k === "paid" || p.k === "windfall") && p.v < 0 && y >= cap.years[0]) out.push(t(cap.status === "partly" ? "Partly no alternative to Russian {what}: a label, the number does not change." : "No real alternative to Russian {what}: a label, the number does not change.", { what: t(cap.commodity) }));
+  return out.length ? `<p class="mc-note">${out.join(" ")}</p>` : "";
+}
 function methodCard(c, p) {
   const f = flowById(FLOW_OF[p.k]);
   const srcs = [...new Set(p.src || [])].filter(id => SRC[id]);
   const pg = v => fmtMeasure(c, v, "gdp", true);
   const first = s => (s.match(/^.*?[.!?](?=\s|$)/) || [s])[0];
   return `<div class="mcard">
-    <p class="mc-v"><b>${plainName(p)}</b>: ${pg(p.v)} (${eur(p.v, true)}), ${t("likely {lo} to {hi}", { lo: pg(p.lo), hi: pg(p.hi) })} (${t("{lo} to {hi}", { lo: eur(p.lo, true), hi: eur(p.hi, true) })})${p.lo < 0 && p.hi > 0 ? "; " + t("too close to call") : ""}; ${certWords(p.cert)}.${p.en.endsWith("*") ? " " + t("* 2026 estimated from the 2025 monthly rate.") : ""}</p>
+    <p class="mc-v"><b>${plainName(p)}</b>: ${pg(p.v)} (${eur(p.v, true)}), ${t("likely {lo} to {hi}", { lo: pg(p.lo), hi: pg(p.hi) })} (${t("{lo} to {hi}", { lo: eur(p.lo, true), hi: eur(p.hi, true) })})${p.lo < 0 && p.hi > 0 ? "; " + t("the range crosses zero") : ""}; ${certWords(p.cert)}.${p.en.endsWith("*") ? " " + t("* 2026 estimated from the 2025 monthly rate.") : ""}</p>
+    ${partNote(c, p)}
     ${f ? `<p class="mc-how">${first(t(HOW[f.id] || f.what))}</p>
     <div class="portal"><a class="portal-go" href="#view=how&amp;flow=${f.id}" data-flow="${f.id}">${t("How it works: {flow}", { flow: t(f.name) })} <span aria-hidden="true">→</span></a></div>` : ""}
     ${srcs.length ? `<p class="lbl2 mc-src-h">${t(srcs.length === 1 ? "1 source for this part" : "{n} sources for this part", { n: srcs.length })}</p><ul class="sources mc-src">${srcs.map(id => srcItem(id, { flow: f ? f.id : null, keyMax: 2 })).join("")}</ul>` : ""}
@@ -3263,7 +3430,7 @@ function barAxis(vals, ranges = []) {
   const x = v => ((neg + v) / tot) * 100;
   return { z: x(0), x };
 }
-// the faded colour of a leaning direction, as the map draws "too close to call"
+// the faded colour of a leaning direction, as the map draws a direction that is not certain
 const fadedCol = col => `color-mix(in srgb, ${col} 50%, var(--mid))`;
 // a colour at a strength; the strengths are CSS variables (--fa0/--fa1 along the range, --fx0/--fx1 across zero) so dark
 // mode can draw them stronger
@@ -3284,7 +3451,7 @@ function barHtml(ax, v, col, lo, hi) {
   if (lo == null || hi == null) return zero + `<span class="b" style="left:${Math.min(z, X(v))}%;width:${Math.abs(X(v) - z)}%;background:${col}"></span>` + tick;
   const a = Math.min(lo, hi, v), b = Math.max(lo, hi, v);
   if (a < 0 && b > 0) {
-    // too close to call: no solid part, a faint fade both ways from zero
+    // a range across zero: no solid part, a faint fade both ways from zero
     const fc = fadedCol(col);
     return zero + fadeHtml(ax, z, ax.x(a), fc, "--fx0", "--fx1") + fadeHtml(ax, z, ax.x(b), fc, "--fx0", "--fx1") + tick;
   }
@@ -3340,11 +3507,15 @@ function leadParts(c, k) {
   return out;
 }
 // "What changes the meaning here" (round 18): small flags, an icon and a few words; each opens its one-line meaning
-const ICON = { warn: "⚠︎", near: "≈", small: "◔", cut: "✂︎", law: "§", own: "✓︎", price: "€", ice: "❄︎", plus: "+", info: "i" };
+const ICON = { warn: "⚠︎", near: "≈", small: "◔", cut: "✂︎", law: "§", own: "✓︎", price: "€", ice: "❄︎", plus: "+", info: "i", chain: "⛓︎" };
+// round 24b (owner, 22 October 2026): a direction that is not certain is "leaning toward Ukraine / Russia" or, near the
+// middle, "uncertain direction" ("too close to call" is retired)
+const dirWords = (c, y, q) => { const l = leaning(c, y, q); return t(l === "ukraine" ? "leaning toward Ukraine" : l === "russia" ? "leaning toward Russia" : "uncertain direction"); };
+const uncWords = dirWords;
 function meaningFlags(c, k, y) {
   const out = [], L = leadParts(c, k);
   const add = (key, icon, label, body, cls = "", fair = false) => out.push({ key, icon, label, body, cls, fair });
-  if (uncertain(c, y, "net")) add("unc", ICON.near, t("too close to call"), t("Too close to call: its likely range, or another reasonable method choice, crosses zero. Not ranked, and shown faded on the map."));
+  if (uncertain(c, y, "net") && !PARTY_TO_WAR.has(c.iso3)) { const li = leanInfo(c, y, "net"); add("unc", ICON.near, dirWords(c, y, "net"), t("Not certain: its likely range, or another reasonable method choice, crosses zero. Not ranked, and shown faded on the map.") + " " + t(li && li.side ? "It leans this way: a {p} chance of this direction under its likely range; {a} of the other method choices agree." : "Its direction is uncertain: only a {p} chance of this direction under its likely range; {a} of the other method choices agree.", { p: Math.round((li ? li.p : 0.5) * 100) + "%", a: Math.round((li ? li.alts : 1) * 100) + "%" })); }
   if ((c.gdp || 0) < MIN_GDP_RANK) add("small", ICON.small, t("small economy"), t("A small economy (GDP {v}): small sums move its % a lot. Not ranked, and drawn in the lightest shade only.", { v: eur(c.gdp) }));
   const fair = fairnessNote(c, k) ? t("Most of this is fuel and food bought from Russia. Fuel is fungible and sold through many traders: the figure reflects what this economy bought, not a policy toward Russia or Ukraine.") : "";
   let fairUsed = false;
@@ -3356,6 +3527,11 @@ function meaningFlags(c, k, y) {
   }
   if (L.cause) add("cause", ICON.warn, L.cause, keptWords(c, k, "gdp", true).replace(/^./, m => m.toUpperCase()) + ".", "orange");
   if (L.whyKey === "gascut") add("gascut", ICON.cut, t(oilCut(c) ? "gas and oil cut off by Russia" : "gas cut off by Russia"), t(L.why) + " " + t(oilCut(c) ? "of which gas and pipeline oil Russia cut off itself, or gas that stopped with the end of transit: {v}" : "of which gas Russia cut off itself or that stopped with the end of transit: {v}", { v: eur(k.rusCut) }) + ref(["gas_cuts"]));
+  // round 24b (audit 24, D M5; approved by the owner): no real alternative to Russian fuel, a label only (captive_buyers.json)
+  const cap = c.captive;
+  if (cap && y >= cap.years[0]) add("captive", ICON.chain, t(cap.status === "partly" ? "partly no alternative to Russian fuel" : "no real alternative to Russian fuel"),
+    t(cap.status === "partly" ? "An alternative to Russian {what} exists on paper, but its capacity is officially contested. A label only: the numbers do not change." : "It had no real alternative to Russian {what}: Russia supplied at least three quarters of it in 2021, and no other route could carry half of its needs. A label only: the numbers do not change.", { what: t(cap.commodity) })
+    + (cap.years[1] < y ? " " + t("Until {y}.", { y: cap.years[1] }) : "") + ` <span class="key" lang="en">${esc(cap.why)}</span>` + ref(cap.src));
   if (L.whyKey === "sanct") add("sanct", ICON.law, t("mostly sanctions"), t(L.why) + " " + sanctionNote(c, k).replace(/^<p class="note">|<\/p>$/g, ""));
   if (L.whyKey === "own") add("own", ICON.own, t("mostly its own choice"), t(L.why) + " " + sanctionNote(c, k).replace(/^<p class="note">|<\/p>$/g, ""));
   if (L.flat) add("price", ICON.price, t("the price, not the volumes"), t("Its volumes barely changed: it is the price."));
@@ -3367,7 +3543,7 @@ function meaningFlags(c, k, y) {
 }
 // the net: one big number, its unit, one compact line; the lead, what the net adds, the certainty and the range behind a tap
 function netBlock(c, k, y) {
-  const gr = grades(c, y), g = v => fmtMeasure(c, v, "gdp", true), unc = uncertain(c, y, "net");
+  const gr = grades(c, y), g = v => fmtMeasure(c, v, "gdp", true), unc = uncertain(c, y, "net") && !PARTY_TO_WAR.has(c.iso3);
   const cls = k.earner ? "mid" : unc ? (k.shift >= 0 ? "fpos" : "fneg") : k.shift >= 0 ? "pos" : "neg";
   const rangeInfo = t("The likely range covers the uncertainty of the data and the models given the method: each part's low and high value, combined as errors, correlated where parts share inputs. It is calibrated by judgement to about 90%, not measured. How much the method choices themselves move the result is the method band below.");
   // round 19: the big number in the drawer's measure ("+3.2%", "+€1,610" per person, "+€134 bn"); % of GDP is then the
@@ -3375,10 +3551,10 @@ function netBlock(c, k, y) {
   // round 22 (owner): the verb carries the direction ("Toward Ukraine by"), the big number has no sign
   const m = state.measure, mv = v => mVal(c, v, false), mu = v => fmtMeasure(c, Math.abs(v), m, false, false), yrs = yearsOf(y);
   const unit = { gdp: "of a year's GDP since 2022", pp: "per person, in total since 2022", total: "in total since 2022" }[m];
-  const [pre, post] = verbAround("net", k.shift);
+  const [pre, post] = verbAround(unc && leaning(c, y, "net") ? "netLean" : "net", k.shift);
   const line = m === "gdp" ? [eur(Math.abs(k.shift)), t("likely {lo} to {hi}", { lo: g(k.shiftLo), hi: g(k.shiftHi) }), t("≈ {v}/yr", { v: fmtMeasure(c, Math.abs(k.shift) / yrs, "gdp") })]
     : [ofGdp(c, k.shift), t("likely {lo} to {hi}", { lo: mv(k.shiftLo), hi: mv(k.shiftHi) }), t("≈ {v}/yr", { v: mu(k.shift / yrs) })];
-  const sum = `<span class="nlbl">${pre}${chip(gr.net)}${unc ? `<span class="unc-tag">${t("too close to call")}</span>` : ""}<span class="xi" aria-hidden="true"></span></span>
+  const sum = `<span class="nlbl">${pre}${chip(gr.net)}${unc ? `<span class="unc-tag">${uncWords(c, y, "net")}</span>` : ""}<span class="xi" aria-hidden="true"></span></span>
     <span class="nbig ${cls}">${mu(k.shift)}</span><span class="nunit">${post ? post + " " : ""}${t(unit)}</span>
     <span class="nline">${line.map(x => `<span>${x}</span>`).join(" · ")}</span>`;
   const body = `<p class="lead">${leadLine(c, k)}</p><p><b>${netSentence(c, k, "gdp")}</b> (${eur(Math.abs(k.shift))}).</p>
@@ -3393,7 +3569,7 @@ function partTiles(c, k, y) {
   const su = v => (state.measure === "gdp" ? eur(Math.abs(v)) : ofGdp(c, v));
   const G = mBar(c);
   const ax = barAxis([G(k.uaBal), G(k.rusBal)], [[G(k.uaLo), G(k.uaHi)], [G(k.rusLo), G(k.rusHi)]]);
-  const unc = q => (uncertain(c, y, q) ? `<span class="unc-tag" title="${t("The likely range or the method band crosses zero: this number is not ranked.")}">${t("direction uncertain")}</span>` : "");
+  const unc = q => (uncertain(c, y, q) && !PARTY_TO_WAR.has(c.iso3) ? `<span class="unc-tag" title="${t("The likely range or the method band crosses zero: this number is not ranked.")}">${t("direction uncertain")}</span>` : "");
   const col = (v, q, neg) => { const z = v >= 0 ? "var(--ukr)" : neg; return uncertain(c, y, q) ? `color-mix(in srgb, ${z} 50%, var(--mid))` : z; };
   // the same gradient bar as the parts, in the bar colour of its direction (the fade for a range across zero is barHtml's)
   const bar = (v, lo, hi, neg) => `<span class="tbar" aria-hidden="true">${barHtml(ax, G(v), v >= 0 ? "var(--ukr)" : neg, G(lo), G(hi))}</span>`;
@@ -3416,10 +3592,16 @@ function partTiles(c, k, y) {
     const [pre, post] = verbAround("frozen", k.frozen);
     frozen = xp("tile mini", "x-frozen", `<span class="tl"><span class="tn">${pre}</span><span class="xi" aria-hidden="true"></span></span><span class="tv">${gu(k.frozen)}</span><span class="te">${post ? post + " · " : ""}${su(k.frozen)}</span>`, frozenLine(c, k));
   }
+  // round 24b (audit 24, D M1; approved by the owner): business with Russia as two lines under its tile, what the country
+  // paid Russia and what it earned from Russia (display subtotals; their ranges do not add up to the tile's)
+  const lineRow = (q, v, lo, hi) => `<p class="rline"><span>${verb(q, v, c)}</span><span class="rl-r">${t("likely {lo} to {hi}", { lo: g(lo), hi: g(hi) })}</span></p>`;
+  const lineKey = `<p class="key">${t("Paid: purchases from Russia, war-time prices, Russian oil bought via others, services, taxes paid in Russia, arms given to Russia. Earned: sales and services sold to Russia, shipping its oil, arms sold to it. The two ranges do not add up to the total's.")}</p>`;
+  const lines = Math.abs(k.rusPaid) + Math.abs(k.rusEarned) > 0.0005 ? `<div class="rlines" aria-label="${t("Business with Russia in two lines")}">
+    ${lineRow("paid", k.rusPaid, k.rusPaidLo, k.rusPaidHi)}${lineRow("earned", k.rusEarned, k.rusEarnedLo, k.rusEarnedHi)}</div>` : "";
   return `<div class="tiles">
     ${tile("ua", "ua", k.uaBal, k.uaLo, k.uaHi, k.earnerUa ? "earn" : "", col(k.uaBal, "ua", "var(--ink-soft)"), ua, rx, "var(--ink-soft)")}
-    ${tile("rus", "rus", k.rusBal, k.rusLo, k.rusHi, "", col(k.rusBal, "rus", "var(--rus-text, var(--rus))"), ru, cutTxt + busy, "var(--rus)")}
-  </div>${frozen}`;
+    ${tile("rus", "rus", k.rusBal, k.rusLo, k.rusHi, "", col(k.rusBal, "rus", "var(--rus-text, var(--rus))"), ru, cutTxt + busy + (lines ? lineKey : ""), "var(--rus)")}
+  </div>${lines}${frozen}`;
 }
 const PARTS_SHOWN = 7;
 function firstLayer(c, k, y) {
@@ -3432,6 +3614,7 @@ function firstLayer(c, k, y) {
   const group = (title, list) => (list.length ? `<p class="grp">${title}</p>${list.map(p => partRow(c, p, ax, false)).join("")}` : "");
   const flags = meaningFlags(c, k, y);
   return `${custom() ? `<div class="custom">${customNote()}</div>` : ""}
+    ${partyLine(c)}
     <section class="pv-top">${netBlock(c, k, y)}${partTiles(c, k, y)}${backedLine(k)}</section>
     ${flags.length ? `<section class="pv-flags" aria-label="${t("What changes the meaning here")}"><div class="flags">${flags.map(f => xp("flag " + f.cls, "x-flag-" + f.key, `<span class="fi" aria-hidden="true">${f.icon}</span><span>${f.label}</span>`, f.body)).join("")}</div></section>` : ""}
     <section class="pv-chart"><div class="pc-h"><h3>${t("What makes up the number")}</h3><span class="pc-hint">${t("tap a bar for how it is calculated")}</span></div>${barKey()}
@@ -3443,6 +3626,12 @@ function firstLayer(c, k, y) {
         ${group(t("Russian money frozen"), rest.filter(p => sideOf(p) === "own"))}
       </details>` : ""}
     </section>`;
+}
+// round 24b (owner): a party to the war on Russia's side is said first, with its sources; its numbers follow as for any
+// country, but it is in no ranking or list
+function partyLine(c) {
+  if (!PARTY_TO_WAR.has(c.iso3)) return "";
+  return `<p class="party-line-p"><b>${t("Party to the war (with Russia).")}</b> ${t("Russia invaded Ukraine from its territory in February 2022; UN General Assembly resolution ES-11/1 deplores its involvement. Its money numbers are shown, but it is not ranked.")}${ref((c.party_to_war || {}).src || ["co_belligerent", "belarus_party"])}</p>`;
 }
 // round 24 (audit A, the owner: a reader who reads nothing else should still see that every number is backed): one line
 // under the numbers, with the count of sources behind this country's parts, opening the list at the end of the panel
@@ -3628,7 +3817,8 @@ function comparePanel(a, b) {
 // each entry's main cause
 function rankList(list, metricFn, _measure, colourFn, n = 20, rangeFn = null, q = null, opts = {}) {
   const byEur = state.rankMeasure === "total", y = Math.max(2022, state.year);
-  const all0 = list.filter(c => (c.gdp || 0) >= MIN_GDP_RANK).map(c => { const eurV = metricFn(c); return { c, eurV, pct: scaled(c, eurV, "gdp") }; })
+  // round 24b (owner): a party to the war (Belarus) is in no ranking or list
+  const all0 = list.filter(c => (c.gdp || 0) >= MIN_GDP_RANK && !PARTY_TO_WAR.has(c.iso3)).map(c => { const eurV = metricFn(c); return { c, eurV, pct: scaled(c, eurV, "gdp") }; })
     .filter(r => r.pct != null && r.eurV > 0).sort((a, b) => (byEur ? b.eurV - a.eurV : b.pct - a.pct));
   const skipped = opts.skip ? all0.filter(r => opts.skip(r.c)) : [];
   const all = all0.filter(r => !skipped.includes(r));
@@ -3640,14 +3830,14 @@ function rankList(list, metricFn, _measure, colourFn, n = 20, rangeFn = null, q 
       <span class="i">${i + 1}</span><span>${r.c.name}${opts.cause ? `<span class="cause">${opts.cause(r.c)}</span>` : ""}</span><span class="v"><b>${fmtMeasure(r.c, r.eurV, "gdp")}</b> <span class="eur">${eur(r.eurV)}</span></span>
       <span class="track"><span style="width:${((byEur ? r.eurV : r.pct) / max) * 100}%;background:${colourFn(r.c)}"></span></span></button>`).join("")}</div>
     ${skipped.length && opts.skipNote ? `<p class="key" style="margin-top:6px">${opts.skipNote(skipped.map(r => `<a href="#${r.c.iso3}" data-goto="${r.c.n}">${r.c.name}</a>`).join(", "))}</p>` : ""}
-    ${unc.length ? `<p class="key" style="margin-top:6px">${t("Not ranked, direction uncertain (the likely range or a method-band alternative crosses zero): {list}.", { list: unc.map(r => `<a href="#${r.c.iso3}" data-goto="${r.c.n}">${r.c.name}</a> ${fmtMeasure(r.c, r.eurV, "gdp")}`).join(", ") })}</p>` : ""}`;
+    ${unc.length ? `<p class="key" style="margin-top:6px">${t("Not ranked, leaning or uncertain direction (the likely range or a method-band alternative crosses zero): {list}.", { list: unc.map(r => `<a href="#${r.c.iso3}" data-goto="${r.c.n}">${r.c.name}</a> (${dirWords(r.c, y, q)}) ${fmtMeasure(r.c, r.eurV, "gdp")}`).join(", ") })}</p>` : ""}`;
 }
 const MIN_GDP_RANK = 5;   // € billion
 function measureTabs() {
   return `<div class="tabs"><span class="key" style="align-self:center">${t("Sort by")}</span>${[["gdp", "% of GDP"], ["total", "Net €"]].map(([m, l]) => `<button data-rank-measure="${m}" aria-pressed="${(state.rankMeasure === "total") === (m === "total")}">${t(l)}</button>`).join("")}</div>
     <p class="key" style="margin:-4px 0 8px">${t("Each row: the total as % of a year's GDP (as on the map), then the same total in euros, {y}. Left out: economies under {min} GDP, and countries whose direction is uncertain (the likely range or a method-band alternative crosses zero).", { y: state.year === 2021 ? "2022" : periodText(), min: tight(money(num(MIN_GDP_RANK), "bn")) })}</p>`;
 }
-// the "Russia's gain from this country rose" list, with each entry's cause; arms suppliers are on "Armed Russia" only
+// the "Business with Russia rose" list (round 24b: was "Russia's gain from this country rose"; part of it is the seller's own gain), with each entry's cause; arms suppliers are on "Armed Russia" only
 function gainRoseList(list, K, n = 20) {
   return rankList(list, c => -K(c).rusBal, state.rankMeasure, () => "var(--rus)", n, null, "rus", {
     skip: c => armedMostly(K(c)), cause: c => gainCause(c, K(c)),
@@ -3684,7 +3874,7 @@ function targetPanel(side) {
       <div class="head" style="background:var(--sea)"><div class="lbl">${t("Yearly rate {y} vs before the war", { y })}</div><div class="num">${paid21 ? (paidNow >= paid21 ? "+" : "−") + Math.abs(Math.round((paidNow / paid21 - 1) * 100)) + "%" : "–"}</div></div>
     </div>
     <p class="key" style="margin-top:8px">${worldGainText(w)}</p></section>
-    <section class="section"><h3>${t("Russia's gain from this country rose")}</h3>
+    <section class="section"><h3>${t("Business with Russia rose")}</h3>
       ${measureTabs()}
       ${gainRoseList(list, c => K.get(c))}
       <p class="key" style="margin-top:8px">${t("Russia's net gain from this country rose against what was expected without the war: more bought from Russia and the war-time price windfall, at Russia's net gain, plus what sellers earned from Russia at their own net gain. Each entry names its main cause. Aid to Ukraine is not in this list. Goods re-exported through trade hubs count for the country that made them, not for the hub.")}</p>

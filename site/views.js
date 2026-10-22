@@ -4,7 +4,7 @@
 // state (view, measure, what's counted, region, group, size, year) and re-renders whenever it changes (paint() calls
 // renderView()). Round 20 (owner): only Map, Ranking and Sources remain, and the ranking is as clean as the map: the
 // header line names it and its explanation is in the header's ⓘ (rankInfo)
-/* global state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
+/* global leaning, PARTY_TO_WAR, state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
    num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades, renderDrawer, renderInfo, verb */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
@@ -80,8 +80,15 @@ function renderRanking(root) {
   // zero) is not ranked; those countries are named below the chart
   const hq = HEAD_LENS[state.lens], y = state.year;
   const all = Object.values(DATA).filter(eligible).map(metricOf).filter(m => m.v != null).sort((a, b) => b.v - a.v);
-  const unc = hq && y > 2021 ? all.filter(m => uncertain(m.c, y, hq)) : [];
-  const rows = all.filter(m => !unc.includes(m));
+  // round 24b (owner, 22 October 2026): a number whose direction is not certain is "leaning toward Ukraine / Russia" or,
+  // near the middle, "uncertain direction"; neither is ranked, both are named under the chart. Belarus, a party to the
+  // war, is in neither
+  const party = all.filter(m => PARTY_TO_WAR.has(m.c.iso3));
+  const unc0 = hq && y > 2021 ? all.filter(m => !party.includes(m) && uncertain(m.c, y, hq)) : [];
+  const big = (a, b) => Math.abs(b.v) - Math.abs(a.v);   // largest first
+  const lean = side => unc0.filter(m => leaning(m.c, y, hq) === side).sort(big);
+  const leanU = lean("ukraine"), leanR = lean("russia"), unc = unc0.filter(m => !leanU.includes(m) && !leanR.includes(m)).sort(big);
+  const rows = all.filter(m => !unc0.includes(m) && !party.includes(m));
   const diverging = true;   // every view can go either way around zero
   const narrowScreen = root.clientWidth < 600;
   const W = Math.min(1040, root.clientWidth - 32), rowH = 22, labelW = narrowScreen ? 104 : 150, valW = narrowScreen ? 58 : 76;
@@ -117,7 +124,9 @@ function renderRanking(root) {
   </svg>`;
   root.innerHTML = `<div class="view-inner">
     <div class="chart">${svg}</div>
-    ${unc.length ? `<p class="note-small">${t("Not ranked, direction uncertain (the likely range or a method-band alternative crosses zero), {n} countries: {list}.", { n: unc.length, list: unc.map(m => `${m.c.name} ${fmtMeasure(m.c, m.bn, state.measure, true)}`).join(", ") })}</p>` : ""}
+    ${[[leanR, "Leaning toward Russia ({n}):"], [leanU, "Leaning toward Ukraine ({n}):"], [unc, "Uncertain direction ({n}):"]].filter(([l]) => l.length).map(([l, lab]) => `<p class="note-small"><b>${t(lab, { n: l.length })}</b> ${l.map(m => `${m.c.name} ${fmtMeasure(m.c, m.bn, state.measure, true)}`).join(", ")}</p>`).join("")}
+    ${unc0.length ? `<p class="note-small">${t("Not ranked: the likely range or another reasonable method choice crosses zero. Leaning: at least a 65% chance of that direction under the likely range; uncertain: less.")}</p>` : ""}
+    ${party.length ? `<p class="note-small"><b>${t("Party to the war (with Russia), not ranked:")}</b> ${party.map(m => `${m.c.name} ${fmtMeasure(m.c, m.bn, state.measure, true)}`).join(", ")}</p>` : ""}
   </div>`;
   wireRows(root, rows);
 }

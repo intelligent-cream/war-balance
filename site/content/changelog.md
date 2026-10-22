@@ -4,6 +4,86 @@ Every update to the map, newest first: what changed and every decision behind it
 
 The detailed research log, with every file, is [`research/2026-10/README.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/README.md).
 
+<h2 id="cl-r24b">Round 24b: the method changes the owner decided <span class="cl-date">22 October</span></h2>
+<!-- flows: aid euaid ref flowback paid windfall laund sold services shipping companytax rusfirms rusarms statefin mil agents -->
+
+**The changes decided in round 24, and two more decisions of the same day: a number that is not certain now says which
+way it leans, and Belarus is shown as a party to the war. Numbers change for refugee hosts, military donors and North
+Korea; business with Russia changes only for North Korea.** Full before/after per country is in the research log.
+
+### What changed
+
+1. **Refugee hosting** counts what the host spent (minus the share donors paid back) minus only the host's real gain
+   on refugees' work, like any other money flowing back; the subtraction of refugees' taxes and the floor at zero
+   are gone. Poland's middle value uses the OECD median margins, its own margins the range end
+   ([`refugees_gain-notes.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/refugees_gain-notes.md)).
+   Net: Czechia +1.57% → +2.50% of GDP, Poland +4.40% → +5.00%, Bulgaria +2.91% → +3.20%, Slovakia +0.12% → +0.37%,
+   Austria +0.21% → +0.47%, Germany +3.22% → +3.44%.
+2. **Business with Russia in two lines** in the panel and the download: "Paid Russia less / more by" (payments,
+   war-time prices, laundered oil, services bought, company taxes, Russian firms, Russian arms, state finance, hidden
+   flows, and the unpaid part of military support) and "Earned less / more from Russia by" (sales, services sold,
+   shipping, payment agents, and the paid part of military support). They add up to the old number, which does not
+   change; "Russia's gain from this country rose" is now "Business with Russia rose"
+   ([`business_split-notes.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/business_split-notes.md)).
+3. **North Korea** counts the full value of what it supplied, EUR 6.8bn / 10.0bn / 18.6bn (low / middle / high):
+   −10.28% → −11.34% of GDP. A method-band alternative, "Russia paid only what was observed", gives −31.86%
+   ([`north_korea_r24-notes.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/north_korea_r24-notes.md)).
+4. **Military aid counts as delivered**, not as allocated, for every donor: each Kiel allocation is delivered over a
+   lead time by channel (donor stocks 3 months, Ukraine's own industry 1 year, other procurement 3 years, the US USAI
+   4.5 years, calibrated to the Pentagon's 57% delivered by March 2026). Kiel's full allocation is the high end of the
+   range. Not yet delivered by August 2026, middle value: the US EUR 10.2bn, Germany EUR 4.3bn (the
+   fast lead times, the smaller cut: the German government's cash figures suggest Kiel may understate what Germany has
+   paid out; EUR 6.5bn at the slow end), the UK EUR 3.5bn, EU institutions EUR 7.9bn (shared out to members by their EU share). Money
+   flowing back from procurement follows delivery
+   ([`military_delivered-notes.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/military_delivered-notes.md);
+   `pipeline/military_delivered.py`). Net: Denmark +4.44% → +4.09%, Sweden +3.58% → +3.30%, Norway +3.08% → +2.91%.
+5. **War-time fuel prices**: the uncertainty of the no-war price moves from payments to Russia to the war-time prices
+   line, widened to the price-path range the research found per country (Hungary EUR 0.5bn–16.2bn). A method-band
+   alternative uses gas prices from early 2021, before the squeeze. Overview step 1 says this
+   ([`windfall_band_r24-notes.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/windfall_band_r24-notes.md)).
+6. **Captive buyers labelled**: Mongolia, Kyrgyzstan, Armenia, Moldova (2022), Serbia (2022–23), Bosnia and
+   Herzegovina, and partly Hungary and Slovakia carry a label "no practical alternative to Russian …" with its years
+   and source; it changes no number (check 41)
+   ([`captive_buyers-notes.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/captive_buyers-notes.md)).
+7. **Leaning instead of "too close to call"**: a number whose range or method alternatives cross zero leans toward
+   Ukraine or Russia when its middle value's sign has at least a 65% chance; otherwise its direction is uncertain.
+   The panel says "Leaning toward Russia by …", and the ranking lists "Leaning toward Russia", "Leaning toward
+   Ukraine" and "Uncertain direction" under the ranked countries. Net, economies over EUR 5bn: 49 ranked, 26 leaning
+   toward Russia, 38 toward Ukraine, 49 uncertain. Montenegro's net is now ranked
+   ([`leaning-notes.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/leaning-notes.md)).
+8. **Belarus is a party to the war (with Russia)**: its own map pattern and legend entry, a line at the top of its
+   panel with sources (UN General Assembly resolution ES-11/1, which deplores Belarus's involvement, and EU Regulation
+   2022/355 on its role in the invasion), not ranked and in no list (check 39). Its refugee label stays.
+9. **For readers**: each part's method in the panel has a note for this country where the method differs (war-time
+   prices, refugees, undelivered aid, military support, captive buyer); How it works shows one live trace, from
+   Germany's share of EU aid to the document behind it; each flow links to the exact decisions behind it in this
+   changelog.
+10. **Checks**: the two business lines add up (check 38), a party to the war is never ranked or listed (39), delivered
+    military aid is never more than allocated (40), captive labels change no number (41); the browser and Node agree
+    on every leaning (check 32).
+
+### Decisions
+
+- **Refugee hosting at actual spending minus the host's gain on refugees' work, no tax subtraction, no floor; Poland
+  at the OECD median margins, its own margins the range end** — *raised by:* audit (quality); *decided by:* owner,
+  22 October 2026
+- **Business with Russia shown in two lines, paid Russia and earned from Russia; the total, map and ranking
+  unchanged** — *raised by:* audit; *decided by:* owner
+- **North Korea at the full value of what it supplied, with "Russia paid only what was observed" as a method-band
+  alternative** — *raised by:* audit; *decided by:* owner
+- **Military aid counted as delivered for every donor, by lead time; Germany the shorter cut; flowing back follows
+  delivery; Kiel's allocation the high end** — *raised by:* audit (D M4); *decided by:* owner
+- **War-time fuel prices carry the no-war price range, widened to the price-path range; early-2021 gas prices as an
+  alternative** — *raised by:* audit; *decided by:* owner
+- **A captive-buyer label, with no change to any number** — *raised by:* audit; *decided by:* owner
+- **Leaning at a 65% chance, otherwise uncertain direction; "too close to call" retired** — *raised by:* audit;
+  *decided by:* owner: "things like this should just be leaning … the range does cross zero, but it's very unlikely
+  that it will be zero … unless it's smack dab in the middle, you can say uncertain"; the research's other two
+  conditions (0.25% of GDP and 75% of the alternatives) are dropped; the alternatives' share is shown on a tap
+- **Belarus is a party to the war, not ranked** — *raised by:* owner: "party to war, yes, for sure"; its numbers stay
+  in the data and its panel
+- **Not done yet:** richer country tags (only the party tag and the captive label exist; the code takes several)
+
 <h2 id="cl-r24">Round 24: every number backed where you read it <span class="cl-date">22 October</span></h2>
 <!-- flows: aid loans euaid priv ref paid windfall laund sold buy services shipping companytax agents remit gold frozen -->
 

@@ -347,10 +347,10 @@ Middle values change little; ranges become about 1.5–2 times wider. Shift towa
 
 | country | before (trend.json / trend2.json) | round 4 (historical, counterfactual.json) | round 11 build | current build (round 15, the net) |
 |---|---|---|---|---|
-| Germany | +4.9% (3.9 to 6.2) | +4.8% (3.1 to 7.3) | +3.7% (2.5 to 5.2) | +3.22%<!-- n:DEU.net --> |
+| Germany | +4.9% (3.9 to 6.2) | +4.8% (3.1 to 7.3) | +3.7% (2.5 to 5.2) | +3.44%<!-- n:DEU.net --> |
 | China | −1.2% (−1.8 to −0.7) | −1.6% (−2.4 to −0.5) | −1.6% (−2.3 to −0.9) | −0.62%<!-- n:CHN.net --> |
-| Hungary | −5.7% (−8.1 to −3.1) | −6.7% (−10.4 to −1.7) | −4.1% (−6.4 to −1.4) | −5.77%<!-- n:HUN.net --> |
-| Poland | +9.5% (7.7 to 12.2) | +10.0% (5.9 to 15.5) | +4.1% (2.2 to 7.0) | +4.39%<!-- n:POL.net --> |
+| Hungary | −5.7% (−8.1 to −3.1) | −6.7% (−10.4 to −1.7) | −4.1% (−6.4 to −1.4) | −5.72%<!-- n:HUN.net --> |
+| Poland | +9.5% (7.7 to 12.2) | +10.0% (5.9 to 15.5) | +4.1% (2.2 to 7.0) | +5.00%<!-- n:POL.net --> |
 
 Round 15 divides by the average 2022–2024 GDP; the earlier columns divide by 2024 GDP.
 
