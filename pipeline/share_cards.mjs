@@ -113,7 +113,7 @@ for (const d of cards) {
         <span style="font-size:27px;font-weight:600;color:#15212b;line-height:1.15">of a year's GDP in total<br>since 2022 (about ${d.pctYU} a year)</span>
       </div>
       <div style="margin-top:10px;font-size:26px;font-weight:600;color:#15212b;line-height:1.25">${d.netRange[0].toUpperCase() + d.netRange.slice(1)}${d.netUnc ? " · too close to call" : ""} · ${d.eurU}</div>
-      <div style="margin-top:8px;font-size:23px;color:#15212b;line-height:1.25;border-left:5px solid #d4601a;padding-left:12px">${d.sum}. It adds two different things: help given to Ukraine and reduced business with Russia.${d.netWhat ? " " + d.netWhat[0].toUpperCase() + d.netWhat.slice(1) + "." : ""}</div>
+      <div style="margin-top:8px;font-size:23px;color:#15212b;line-height:1.25;border-left:5px solid #d4601a;padding-left:12px">${d.sum}. It adds two different things: help given to Ukraine and the change in business with Russia.${d.netWhat ? " " + d.netWhat[0].toUpperCase() + d.netWhat.slice(1) + "." : ""}</div>
       <div style="margin-top:12px;font-size:23px;color:#15212b;line-height:1.3"><b style="color:${!d.uaPos ? grey : d.uaUnc ? fadeB : "#2a6fb0"}">${d.uaV}</b> (${d.uaRange})${d.uaUnc ? " · too close to call" : ""}${d.refX ? ` · hosted Ukrainian refugees (${d.refX}), not counted as support: co-belligerent` : ""}</div>
       <div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3"><b style="color:${d.ruUnc ? (d.ruLess ? fadeB : fadeO) : d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ruV}</b> (${d.ruRange}): ${d.ruWhat}${d.ruUnc ? " · too close to call" : ""}</div>
       ${d.fz ? `<div style="margin-top:6px;font-size:23px;color:#15212b;line-height:1.3"><b style="color:#2a6fb0">${d.fzV}</b>: the return Russia lost on its reserves frozen here, in the net only</div>` : ""}
@@ -124,7 +124,7 @@ for (const d of cards) {
   const iso = d.iso3.toLowerCase();
   await page.screenshot({ path: join(SITE, "share", iso + ".png") });
   const title = `${d.name}: ${d.netV} in total since 2022 (${d.netRange}) | Follow the Money: Ukraine`;
-  const desc = `In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: ${d.sum} (${d.netRange}; ${d.eurU}; about ${d.pctYU} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.netUnc ? ", too close to call" : ""}. ${d.uaV} (${d.uaRange}). ${d.ruV} (${d.ruRange}): it ${d.ruWhat}${d.fzV ? `. ${d.fzV}` : ""}. The net adds two different things: help given to Ukraine and reduced business with Russia. Every number with a range and a source.`;
+  const desc = `In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: ${d.sum} (${d.netRange}; ${d.eurU}; about ${d.pctYU} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.netUnc ? ", too close to call" : ""}. ${d.uaV} (${d.uaRange}). ${d.ruV} (${d.ruRange}): it ${d.ruWhat}${d.fzV ? `. ${d.fzV}` : ""}. The net adds two different things: help given to Ukraine and the change in business with Russia. Every number with a range and a source.`;
   await writeFile(join(SITE, "c", iso + ".html"), `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

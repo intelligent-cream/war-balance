@@ -14,7 +14,7 @@ actual_i   = value_i / pidx_i                (the year's money, divided by its p
 change_i   = expected_i − actual_i           (positive = less than expected)
 ```
 
-- `base` is the pre-war level at pre-war prices. For the flows covered by `counterfactual.json` it is **the 2021 value divided by the 2021 price level** (`years[0] / pidx[0]`); for small purchases from Russia (under EUR 1bn a year) it is the median of 2019, 2020 and 2021 at pre-war prices ([small flows](#view=how&sec=m-counterfactual-small-flows-start-from-the-2019-to-2021-median-round-16-corrected-in-16b)), with 2021 alone kept as `base_2021`. For flows not covered (company taxes, shipping, laundered oil) see [section 6](#view=how&sec=m-counterfactual-6-which-model-is-used-for-which-flow).
+- `base` is the pre-war level at pre-war prices. For the flows covered by `counterfactual.json` it is **the 2021 value divided by the 2021 price level**; for small purchases from Russia (under EUR 1bn a year) it is the median of 2019, 2020 and 2021 at pre-war prices ([small flows](#view=how&sec=m-counterfactual-small-flows-start-from-the-2019-to-2021-median-round-16-corrected-in-16b)), with 2021 alone kept as `base_2021`. For flows not covered (company taxes, shipping, laundered oil) see [section 6](#view=how&sec=m-counterfactual-6-which-model-is-used-for-which-flow). <span class="incode">In the code: `years[0] / pidx[0]`</span>
 - `FRAC_i` is 1 for full years and 8/12 for 2026 (January–August).
 - `bmul_i` is the counterfactual multiplier against the base (1 = flat), with `bmul_lo` and `bmul_hi` as its 90% interval.
 - `pidx_i` is the flow's price level against 2019–2021 (see [prices.md](#view=how&sec=m-prices)).
@@ -156,13 +156,13 @@ Four adjustments keep war effects out of the model inputs for 2022–2026 ([note
 3. **Hubs and Belarus** keep the 2021 level (above).
 4. **Missing years.** 2026 has no annual partner data; the last available real multiplier is carried forward.
 
-In `data.json` every covered flow carries `cf` (`lin`, `rf` or `rw`): the method `counterfactual.json` used for that country and flow. Flows held at 2021 for lack of rest-of-world data, and the trade hubs, are `rw`.
+In `data.json` every covered flow carries `cf`: the method `counterfactual.json` used for that country and flow. Flows held at 2021 for lack of rest-of-world data, and the trade hubs, are `rw`. <span class="incode">In the code: `lin`, `rf` or `rw`</span>
 
 ## 7. How the prediction's error enters the ranges
 
 The multipliers carry the back-tested 90% interval, so the expected path is never treated as exact.
 
-- **Construction** ([notes §7](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/counterfactual-notes.md)): back-test errors (actual − predicted) of the chosen model are pooled over the three tests, divided by a horizon scale g(h) ∝ h^0.50 (`lin`), h^0.43 (`rf`), h^0.48 (`rw`), and their 5th, 50th and 95th percentiles taken per flow type × size class. Then `low = central × exp(q05 × g(h))` and `high = central × exp(q95 × g(h))`, widened by half the sourcing-switch difference.
+- **Construction** ([notes §7](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/counterfactual-notes.md)): back-test errors (actual − predicted) of the chosen model are pooled over the three tests, divided by a horizon scale g(h) ∝ h^0.50, h^0.43, h^0.48, and their 5th, 50th and 95th percentiles taken per flow type × size class. Then `low = central × exp(q05 × g(h))` and `high = central × exp(q95 × g(h))`, widened by half the sourcing-switch difference. <span class="incode">In the code: `lin`; `rf`; `rw`</span>
 - **In the pipeline**, `counterfactual()` writes `bmul`, `bmul_lo = min(low, central)` and `bmul_hi = max(high, central)` for 2022–2026 (2021 = 1); for services all three are scaled by the same cap factor as the central (section 6).
 - **On the site**, `triple()` reads them as `q`, `ql`, `qh`, and `spread()` adds the trend term `ql`/`qh` in quadrature with the baseline, actual-value and price terms (see [ranges.md](#view=how&sec=m-ranges)).
 
@@ -258,12 +258,12 @@ from Russia swings from year to year (one cargo more or less), so a single year 
 
 **Rule.** Where purchases from Russia were under EUR 1bn a year in 2019–2021 (at 2019–2021 prices), the no-war path
 starts from the **median** of 2019, 2020 and 2021, each at 2019–2021 prices, instead of 2021 alone; 2021 stays inside
-the range (`base_range`). The median, not the mean, so that a single one-off year cannot set the level: Malta's own
+the range. The median, not the mean, so that a single one-off year cannot set the level: Malta's own <span class="incode">In the code: `base_range`</span>
 customs record EUR 0.29bn of Russian fuel in 2019 and almost none after (it records hardly any of its bunker fuel), and
 Israel's 2019 holds EUR 1.1bn of Russian crude while 2020–2021 hold none. 2021 is the map's own value (`years[0] /
 pidx[0]`, as for every other flow); 2019 and 2020 are the yearly customs values brought to the build's adjusted level
 (freight taken out, transit gas swapped for gas used, resale margins) and to 2021's price level of the flow
-(`pre_price_levels()`). The three values are in `data.json` as `to_rus.base_years`, 2021 alone as `to_rus.base_2021`.
+. The three values are in `data.json` as `to_rus.base_years`, 2021 alone as `to_rus.base_2021`. <span class="incode">In the code: `pre_price_levels()`</span>
 The threshold is the upper limit of the back-tests' small and medium size classes (S below EUR 0.1bn, M 0.1–1bn), the
 flows whose back-tested errors are widest; the same models and bands then apply (`SMALL_FLOW_EUR_BN`, `small_flow`,
 `small_flow_base()` in `build_data.py`). It is one rule, with no test on how far 2021 departs from the others, so no
@@ -321,7 +321,7 @@ Effect on the total ranges (% of GDP): Germany 3.0…8.6 → 3.5…7.7, Hungary 
 
 ### Power of Siberia (round 15)
 
-Review 4 (M2), approved by the owner. China's imports from Russia keep 2021 flat (`cf: "rw"`), but the Power of Siberia pipeline was agreed in 2014 (a 30-year CNPC–Gazprom contract with a 38 bcm a year plateau) and has flowed since December 2019, so its ramp-up was expected without the war. China's no-war path now includes the **contracted** volume above the 2021 level (10.39 bcm): 15.4 bcm in 2022 (the actual delivery: the 2022 contractual quantity was not found, not verified), 22.0 in 2023 (Gazprom said the 22.7 delivered was 0.7 bcm above its obligation), 30.0 in 2024 (the initial plan; 31.12 delivered; the plan figure is from a search summary of an Interfax report, not verified), and the 38 bcm plateau in 2025 (38.84 delivered) and 2026 ([`power_of_siberia_r15.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/power_of_siberia_r15.json), with Interfax, TASS and Reuters sources). Only deliveries beyond that path, and the 44 bcm a year agreed in autumn 2025, count as war-driven. The extra volume is added to China's expected path at 2019–2021 prices (its pipeline-gas unit value, 15.2 EUR/MWh) before the no-war fuel price is applied (`power_of_siberia()` in `build_data.py`). Effect: China's business with Russia −0.66% → −0.62%<!-- n:CHN.rus --> (the review estimated about −0.60%; the contracted path leaves out the deliveries above contract). TurkStream deliveries contracted in 2020–2021, which the review also named, are not yet treated this way.
+Review 4 (M2), approved by the owner. China's imports from Russia keep 2021 flat, but the Power of Siberia pipeline was agreed in 2014 (a 30-year CNPC–Gazprom contract with a 38 bcm a year plateau) and has flowed since December 2019, so its ramp-up was expected without the war. China's no-war path now includes the **contracted** volume above the 2021 level (10.39 bcm): 15.4 bcm in 2022 (the actual delivery: the 2022 contractual quantity was not found, not verified), 22.0 in 2023 (Gazprom said the 22.7 delivered was 0.7 bcm above its obligation), 30.0 in 2024 (the initial plan; 31.12 delivered; the plan figure is from a search summary of an Interfax report, not verified), and the 38 bcm plateau in 2025 (38.84 delivered) and 2026 ([`power_of_siberia_r15.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/power_of_siberia_r15.json), with Interfax, TASS and Reuters sources). Only deliveries beyond that path, and the 44 bcm a year agreed in autumn 2025, count as war-driven. The extra volume is added to China's expected path at 2019–2021 prices (its pipeline-gas unit value, 15.2 EUR/MWh) before the no-war fuel price is applied. Effect: China's business with Russia −0.66% → −0.62%<!-- n:CHN.rus --> (the review estimated about −0.60%; the contracted path leaves out the deliveries above contract). TurkStream deliveries contracted in 2020–2021, which the review also named, are not yet treated this way. <span class="incode">In the code: `cf: "rw"`; `power_of_siberia()` in `build_data.py`</span>
 
 ### Deliberate choices
 

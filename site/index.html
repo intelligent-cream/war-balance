@@ -133,6 +133,11 @@ button, input, select { font: inherit; color: inherit; }
 .cat .range { position: absolute; top: 0; bottom: 0; opacity: 0.35; }
 .chip { display: inline-block; font-family: var(--font-data); font-size: 10.5px; border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; margin-left: 6px; color: var(--ink-soft); vertical-align: 1px; }
 .chip.c, .chip.d { border-style: dashed; }
+.chip[data-cert] { cursor: help; }
+.chip[data-cert]:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+#cert-pop { position: fixed; z-index: 60; max-width: 280px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 8px 11px; font-size: 13px; line-height: 1.45; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
+#cert-pop p { margin: 0 0 4px; }
+#cert-pop p:last-child { margin: 0; }
 .people { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .people > div { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
 .people .n { font-family: var(--font-display); font-weight: 700; font-size: 20px; font-variant-numeric: tabular-nums; }
@@ -641,6 +646,10 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
   .legend .ramp i { width: 6px; }
   .legend .ls { white-space: normal; }
   .view-inner { padding-bottom: 84px; }
+  /* round 24 (audit A: on phones the two floating buttons covered text): they hide while a view is scrolled down and
+     while a country's sheet is open, and come back on scrolling up or closing the sheet */
+  .tr { transition: transform .2s ease, opacity .2s ease; }
+  body.tr-away .tr, body[data-panel="open"] .tr { transform: translateY(160%); opacity: 0; pointer-events: none; }
   .pop { position: fixed; top: calc(var(--bar-h, 64px) + 4px); left: 8px; width: calc(100vw - 16px); max-height: calc(100dvh - 140px - var(--dh, 0px)); }
 }
 /* round 18: a phone held sideways has too little height for a bottom sheet: the panel is a side sheet there, and the map
@@ -785,6 +794,7 @@ details.flow[open] > summary::after { transform: rotate(180deg); }
 details.flow > summary:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; border-radius: 8px; }
 .fl-t { grid-column: 1; font: 700 15.5px/1.3 var(--font-display); color: var(--ink); }
 .fl-w { grid-column: 1 / span 2; font-size: 13.5px; line-height: 1.45; color: var(--ink-soft); margin-top: 3px; max-width: 80ch; }
+.fl-p { grid-column: 1 / span 2; font-size: 12.5px; color: var(--ink); margin-top: 4px; }
 .fl-m { grid-column: 1 / span 2; font-size: 12px; color: var(--ink-soft); margin-top: 5px; }
 .fl-b { padding: 2px 14px 12px; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.5; }
 .fl-b > p { margin: 0 0 8px; max-width: 80ch; }
@@ -809,6 +819,10 @@ details.flow > summary:focus-visible { outline: 2px solid var(--focus); outline-
 .md h4, .md h5 { font-size: 14px; margin: 14px 0 4px; }
 .md a { color: var(--link, var(--ukr)); }
 .md code { font-size: 12.5px; background: var(--sea); border-radius: 4px; padding: 0 4px; }
+/* round 24 (audit A: code names in the method text): function and variable names sit in a small note at the end of
+   their paragraph, "In the code: ...", so the sentence reads as words */
+.md .incode { display: block; margin-top: 3px; font-size: 11.5px; color: var(--ink-soft); }
+.md .incode code { font-size: 11px; background: transparent; padding: 0; }
 .md pre { overflow-x: auto; background: var(--sea); border-radius: 6px; padding: 10px 12px; font-size: 12.5px; }
 .md table { border-collapse: collapse; display: block; overflow-x: auto; font-size: 13px; margin: 0 0 12px; }
 .md th, .md td { border: 1px solid var(--line); padding: 4px 8px; text-align: left; vertical-align: top; }
@@ -838,7 +852,21 @@ details.fl-more[open] > summary { margin-bottom: 6px; }
 .mc-how { margin: 4px 0 8px; color: var(--ink-soft); }
 .portal { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; font-size: 13.5px; }
 .portal-go { font-weight: 600; }
-.portal-src { color: var(--ink-soft); }
+/* round 24: a source's key documents under its name, the rest folded; groups by type; the "backed by" line */
+.sname { font-weight: 600; color: var(--ink); }
+.key-docs { list-style: none; padding: 0; margin: 2px 0 2px 0; font-size: 12.5px; line-height: 1.45; }
+.key-docs li { margin: 1px 0; padding-left: 14px; position: relative; overflow-wrap: anywhere; }
+.key-docs li::before { content: "↗"; position: absolute; left: 0; color: var(--ink-soft); font-size: 11px; }
+.more-docs { margin: 0 0 4px 14px; }
+.more-docs > summary, .all-docs > summary { cursor: pointer; color: var(--ink-soft); font-size: 12px; }
+.all-docs { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 6px; }
+.all-docs .src-links, .more-docs .src-links { overflow-wrap: anywhere; }
+.src-h { margin: 10px 0 4px; font-size: 12px; font-weight: 600; color: var(--ink-soft); }
+.mc-src-h { margin-top: 10px; }
+.mc-src { margin-top: 2px; }
+li.src-again { color: var(--ink-soft); }
+.backed { margin: 10px 0 0; font-size: 13.5px; }
+.backed a { font-weight: 600; }
 @media (max-width: 900px) {
   .trace-steps { grid-template-columns: 1fr; }
   .trace-steps li, .trace-steps li + li { padding: 8px 0; border-left: 0; }
@@ -1520,7 +1548,33 @@ const perPerson = (c, bn) => t("{v} per person", { v: fmtMeasure(c, bn, "pp", fa
 // English keeps "12.5k"; other languages get the browser's short form ("12,5 тис.")
 const compact = v => (LANG === "en" ? d3.format("~s")(v).replace("G", "B") : v.toLocaleString(LANG, { notation: "compact", maximumFractionDigits: 1 }));
 const count = n => (n >= 1000 ? (LANG === "en" ? (n / 1000).toFixed(n % 1000 && n < 100000 ? 1 : 0) + "k" : compact(n)) : String(Math.round(n)));
-const chip = cert => `<span class="chip ${cert.toLowerCase()}" title="${t("Certainty {c}: {what}", { c: cert, what: t({ A: "reported", B: "measured estimate", C: "modelled estimate", D: "rough indication" }[cert]) })}">${cert}</span>`;
+// a certainty letter. Round 24 (audit A: the letters explained themselves only on hover, so not on phones): tapping or
+// pressing Enter on one opens a small note with its meaning and a link to how the letters are set (certPop)
+const CERT_WHAT = { A: "reported", B: "measured estimate", C: "modelled estimate", D: "rough indication" };
+const chip = cert => `<span class="chip ${cert.toLowerCase()}" role="button" tabindex="0" data-cert="${cert}" aria-label="${t("Certainty {c}: {what}", { c: cert, what: t(CERT_WHAT[cert]) })}" title="${t("Certainty {c}: {what}", { c: cert, what: t(CERT_WHAT[cert]) })}">${cert}</span>`;
+function certPop(el) {
+  let pop = document.getElementById("cert-pop");
+  if (!pop) { pop = document.createElement("div"); pop.id = "cert-pop"; pop.setAttribute("role", "dialog"); document.body.appendChild(pop); }
+  const c = el.dataset.cert;
+  pop.innerHTML = `<p><b>${t("Certainty {c}: {what}", { c, what: t(CERT_WHAT[c]) })}</b></p><p>${t({ A: "Taken directly from official or reported figures.", B: "Measured from data, with a small estimated step.", C: "Built with a model from data; the likely range shows how far it could be off.", D: "A rough indication where data are thin; read the range more than the number." }[c])}</p><p><a href="#view=how&amp;sec=m-ranges-certainty-letters">${t("How the letters are set")}</a></p>`;
+  const r = el.getBoundingClientRect();
+  pop.hidden = false;
+  pop.style.left = Math.max(8, Math.min(innerWidth - pop.offsetWidth - 8, r.left - 20)) + "px";
+  pop.style.top = (r.bottom + 6 + pop.offsetHeight > innerHeight ? r.top - pop.offsetHeight - 6 : r.bottom + 6) + "px";
+  pop.dataset.for = c;
+}
+document.addEventListener("click", e => {
+  const el = e.target.closest && e.target.closest(".chip[data-cert]");
+  const pop = document.getElementById("cert-pop");
+  if (el) { e.preventDefault(); e.stopPropagation(); certPop(el); return; }
+  if (pop && !pop.hidden && !pop.contains(e.target)) pop.hidden = true;
+  if (pop && e.target.closest && e.target.closest("#cert-pop a")) pop.hidden = true;
+}, true);
+document.addEventListener("keydown", e => {
+  const el = e.target.closest && e.target.closest(".chip[data-cert]");
+  if (el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); e.stopPropagation(); certPop(el); }
+  if (e.key === "Escape") { const pop = document.getElementById("cert-pop"); if (pop && !pop.hidden) pop.hidden = true; }
+}, true);
 
 // footnotes: each panel render numbers its sources
 let refs = [];
@@ -1535,7 +1589,7 @@ const REPO = "https://github.com/intelligent-cream/follow-the-money-ukraine/blob
 const esc = x => String(x).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const linkNotes = html => html.replace(/research\/[\w./-]+?\.(?:md|json)/g, m => `<a href="${REPO}${m}" target="_blank" rel="noopener">${m}</a>`);
 // the exact primary links behind a source (round 11, research/2026-10/sources_r11.json): the table, dataset query or
-// report page each figure comes from; press reports and this project's own models are marked as such (linksFold)
+// report page each figure comes from; press reports and this project's own models are marked as such (docLink)
 // where each part's calculation is written out (site/content/method), linked from each part's method in the panel
 const PART_DOC = {
   aid: "aid-refugees-military.md#aid", aidge: "loans.md#the-cost-view", euaid: "aid-refugees-military.md#eu-level-aid",
@@ -1561,13 +1615,13 @@ const howLink = k => (PART_DOC[k] ? `<a class="how" href="${methodHref(PART_DOC[
 const FLOWS = [
   {"id": "aid", "name": "Aid to Ukraine", "what": "Military, financial and humanitarian aid from governments, with donated weapons at their market value.", "parts": ["aid"], "costParts": ["aidge"], "method": "aid-refugees-military.md#aid", "files": ["kiel-notes.md", "gaps/aid_gaps-notes.md", "gaps/weapons_value-notes.md", "gaps/refresh_2026-notes.md", "gaps/audit-notes.md", "verify_r11_aid-notes.md"], "raw": ["kiel"]},
   {"id": "loans", "name": "Loans and guarantees", "what": "Loans count at their gift to Ukraine: the interest it saves and the default risk the lender carries, not the full amount.", "parts": ["multilat"], "also": ["aid", "euaid"], "method": "loans.md#the-two-parts-of-the-gift", "files": ["gaps/loans_value-notes.md", "kiel-notes.md"], "raw": ["loan_rates", "kiel"]},
-  {"id": "euaid", "name": "Share of EU-level aid", "what": "Aid paid by the EU itself, split over member states by their share of the EU budget.", "parts": ["euaid"], "method": "aid-refugees-military.md#eu-level-aid", "files": ["kiel-notes.md", "gaps/assumptions_r11_rules-notes.md", "gaps/loans_value-notes.md"], "raw": ["kiel"]},
+  {"id": "euaid", "name": "Share of EU aid", "what": "Aid paid by the EU itself, split over member states by their share of the EU budget.", "parts": ["euaid"], "method": "aid-refugees-military.md#eu-level-aid", "files": ["kiel-notes.md", "gaps/assumptions_r11_rules-notes.md", "gaps/loans_value-notes.md"], "raw": ["kiel"]},
   {"id": "undisc", "name": "Undisclosed military aid (estimate)", "what": "Military aid that governments did not publish, estimated from policy briefs and national reports.", "parts": ["undisc"], "method": "aid-refugees-military.md#undisclosed-aid-and-private-donations", "files": ["gaps/uncovered-notes.md", "gaps/audit2-notes.md"]},
   {"id": "priv", "name": "Private donations", "what": "Money given to Ukraine by people and companies, from national donation totals or a model based on GDP.", "parts": ["priv"], "method": "aid-refugees-military.md#undisclosed-aid-and-private-donations", "files": ["gaps/uncovered-notes.md", "gaps/assumptions_r11_people-notes.md"]},
   {"id": "ref", "name": "Hosting refugees", "what": "The cost of hosting refugees from Ukraine, minus the taxes working refugees pay.", "parts": ["ref"], "method": "aid-refugees-military.md#refugees", "files": ["gaps/refugees-notes.md", "gaps/refugees_net-notes.md", "gaps/flowback2-notes.md", "gaps/round4b-notes.md", "gaps/assumptions_r11_people-notes.md", "verify_r11_aid-notes.md"], "raw": ["eurostat_tp", "unhcr_verify", "refugee_budgets"], "src": ["co_belligerent"]},
   {"id": "flowback", "name": "Flowing back from Ukraine", "what": "Aid money spent in the giver's own economy, and extra sales to Ukraine, subtracted at the seller's net gain times the share that is genuinely extra.", "parts": ["own", "purl", "othsp", "arms", "sell", "refsp"], "method": "aid-refugees-military.md#flowback", "files": ["gaps/money_ledger-notes.md", "gaps/net_gain_sellers-notes.md", "gaps/value_kept-notes.md", "gaps/ua_arms_purchases-notes.md", "flowback-notes.md", "gaps/flowback2-notes.md"]},
   {"id": "paid", "name": "Payments to Russia for fuel and goods", "what": "Oil, gas, coal, LNG and other goods bought from Russia, against the level expected without the war, counted at Russia's net gain. Gas that Russia cut off itself is labelled.", "parts": ["paid"], "method": "overview.md#the-net-gain-rule-round-10", "files": ["gaps/trade_full-notes.md", "crea-notes.md", "gaps/energy2-notes.md", "gaps/gas_prices-notes.md", "gaps/prices-notes.md", "gaps/net_gain_russia-notes.md", "gaps/counterfactual-notes.md", "gaps/to_rus_cf-notes.md", "gaps/power_of_siberia_r15-notes.md", "gaps/nonreport-notes.md", "gaps/reexports-notes.md", "verify_r11_trade-notes.md"], "raw": ["comtrade", "crea", "eurostat"], "src": ["gas_cuts"]},
-  {"id": "windfall", "name": "War-time price windfall", "what": "The extra Russia earned because fuel prices rose with the war, at Russia's net gain on that extra price (all of it for oil and pipeline gas, less for LNG and coal).", "parts": ["windfall"], "method": "prices.md#war-time-windfall", "files": ["gaps/energy_nowar-notes.md", "gaps/prices-notes.md", "gaps/gas_prices-notes.md", "gaps/net_gain_russia-notes.md"], "raw": ["crea"], "src": ["hormuz"]},
+  {"id": "windfall", "name": "War-time fuel prices", "what": "The extra Russia earned because fuel prices rose with the war, at Russia's net gain on that extra price (all of it for oil and pipeline gas, less for LNG and coal).", "parts": ["windfall"], "method": "prices.md#war-time-windfall", "files": ["gaps/energy_nowar-notes.md", "gaps/prices-notes.md", "gaps/gas_prices-notes.md", "gaps/net_gain_russia-notes.md"], "raw": ["crea"], "src": ["hormuz"]},
   {"id": "laund", "name": "Refined and laundered Russian oil", "what": "Fuel made from Russian crude in other countries, EU refiners included, or passed on by trading hubs, charged to the final buyer, in volumes against its pre-war level.", "parts": ["laund"], "method": "energy-and-laundered-oil.md#laundered-oil", "files": ["gaps/laundered_eu-notes.md", "gaps/hub_buyers-notes.md", "gaps/crude_content-notes.md", "gaps/laundered_r6-notes.md", "gaps/assumptions_r11_hubs-notes.md", "gaps/energy-notes.md", "gaps/round4a-notes.md"], "raw": ["comtrade", "comtrade_2710"], "src": ["laundered_eu", "eu_refiners", "dangote"]},
   {"id": "energy", "name": "Energy switching cost and oil discount", "what": "Not in the totals or on the map: the extra paid to replace Russian energy, and the discount gained on Russian oil (in the full data download).", "parts": [], "costParts": ["prem", "disc"], "method": "energy-and-laundered-oil.md#energy-premium-and-oil-discount", "files": ["gaps/energy-notes.md", "crea-notes.md"], "raw": ["crea"]},
   {"id": "sold", "name": "Sales to Russia", "what": "Goods sold to Russia, counted at the seller's net gain (taxes plus profit above a normal return) times the share that is genuinely extra.", "parts": ["sold"], "costParts": ["margin"], "method": "trade.md#profit-not-revenue", "files": ["gaps/trade_full-notes.md", "gaps/net_gain_sellers-notes.md", "gaps/value_kept-notes.md", "gaps/reexports-notes.md", "gaps/residual-notes.md", "gaps/counterfactual-notes.md", "gaps/assumptions_r11_rules-notes.md"], "raw": ["comtrade", "eurostat", "oecd_stan"]},
@@ -1594,7 +1648,9 @@ FLOWS.forEach(f => f.parts.concat(f.costParts || []).forEach(k => (FLOW_OF[k] = 
 const TREE = REPO.replace("/blob/", "/tree/");
 // raw downloads kept only as a listing (PDFs, the Kiel workbook): their folders are not in the repository
 const RAW_LISTED = new Set(["kiel", "refugee_budgets", "msmt"]);
-// a part's names as the panel shows them (the sign decides between two); the panel's own keys for t()
+// a part's names as the panel shows them (the sign decides between two); the panel's own keys for t(). Round 24 (audit A,
+// "one thing has three names"): where the panel's bars have a plain name (PLAIN), that name is used everywhere
+const partNames = k => (PLAIN[k] ? (typeof PLAIN[k] === "function" ? [...new Set([PLAIN[k](1), PLAIN[k](-1)])] : [PLAIN[k]]) : PART_NAMES[k] || [k]);
 const PART_NAMES = {
   aid: ["Aid to Ukraine (Kiel, adjusted: weapons at market value, loans as gifts)"], aidge: ["Aid given (loans at grant equivalent)"], euaid: ["Share of EU-level aid"], ref: ["Hosting refugees"],
   buy: ["Extra purchases from Ukraine"], paid: ["Less paid to Russia", "More paid to Russia"],
@@ -1654,7 +1710,7 @@ FLOWS.forEach(f => { if (!FLOW_GROUPS.some(([, ids]) => ids.includes(f.id))) FLO
 // DOMPurify), loading them only when How it works opens. Headings get ids from their text, as GitHub makes them, under
 // a prefix ("m-trade-..." for the method page trade.md), so "#view=how&sec=m-trade-re-export-hubs" opens that heading
 const MD_PAGES = ["reading", "overview", "counterfactual", "prices", "ranges", "trade", "energy-and-laundered-oil", "aid-refugees-military", "loans",
-  "services-shipping-companies", "russia-state-and-companies", "incentives"];
+  "services-shipping-companies", "russia-state-and-companies"];
 const MD_LIBS = ["https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js", "https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"];
 let content = null, mdRender = null, loaded = null;   // loaded: the content once it is in
 const unEntity = s => s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, "&");
@@ -1719,20 +1775,21 @@ function methodPart(c, doc) {
 const enNote = () => (LANG === "en" ? "" : `<p class="key en-note">${t("This section is in English.")}</p>`);
 
 function flowHtml(f, srcs) {
-  const names = ks => ks.map(k => (PART_NAMES[k] || [k]).map(x => t(x)).join(" / ")).join("; ");
+  const names = ks => ks.map(k => partNames(k).map(x => t(x)).join(" / ")).join("; ");
   const files = f.files.map(x => ext(REPO + "research/2026-10/" + x, x.replace(/^gaps\//, ""), true))
     .concat((f.raw || []).map(r => (RAW_LISTED.has(r) ? ext(REPO + "research/2026-10/raw/MANIFEST.json", "raw/" + r, true) : ext(TREE + "research/2026-10/raw/" + r, "raw/" + r, true))));
-  // what the search looks through: the flow's own words and its sources' names
-  const text = [t(f.name), t(f.what), ...srcs.map(id => tData(SRC[id].name).s)].join(" ").toLowerCase().replace(/<[^>]*>|"/g, "");
+  const nSrc = srcs.filter(id => SRC[id].type !== "notes").length, nDocs = allDocs(srcs, f.id).length;
+  // what the search looks through: the flow's own words, its sources' names and their documents' titles
+  const text = [t(f.name), t(f.what), ...srcs.map(id => tData(SRC[id].name).s), ...allDocs(srcs, f.id).map(l => l.title)].join(" ").toLowerCase().replace(/<[^>]*>|"/g, "");
   return `<details class="flow" id="flow-${f.id}" data-text="${esc(text)}"${f.id === state.flow ? " open" : ""}>
     <summary><span class="fl-t" id="flow-h-${f.id}">${t(f.name)}</span><span class="fl-w">${t(f.what)}</span>
-      <span class="fl-m">${t(srcs.length === 1 ? "1 source" : "{n} sources", { n: srcs.length })} · ${t(files.length === 1 ? "1 research file" : "{n} research files", { n: files.length })}</span></summary>
+      ${f.parts.length ? `<span class="fl-p">${t("On the map: {parts}", { parts: names(f.parts) })}</span>` : ""}
+      <span class="fl-m">${t(nSrc === 1 ? "1 source" : "{n} sources", { n: nSrc })} · ${t(nDocs === 1 ? "1 document" : "{n} documents", { n: nDocs })} · ${t(files.length === 1 ? "1 research file" : "{n} research files", { n: files.length })}</span></summary>
     <div class="fl-b">
       ${HOW[f.id] ? `<p class="lbl2">${t("How it is calculated")}</p><p>${t(HOW[f.id])}</p>` : ""}
       ${WHY[f.id] ? `<p class="lbl2">${t("Why it's done this way")}</p><p>${t(WHY[f.id])}</p>` : ""}
-      ${f.parts.length ? `<p class="key">${t("Parts on the map: {parts}", { parts: names(f.parts) })}</p>` : ""}
       ${f.also ? `<p class="key">${t("Also changes: {parts}", { parts: names(f.also) })}</p>` : ""}
-      ${srcs.length ? `<p class="lbl2" id="flow-src-${f.id}">${t("Sources ({n})", { n: srcs.length })}</p><ol class="sources fl-src">${srcs.map(id => srcLine(id, true)).join("")}</ol>${linksFold(srcs)}` : ""}
+      ${srcs.length ? flowSourcesHtml(f, srcs) : ""}
       <p class="key flow-files">${ext(TREE + "research/2026-10", t("Research files"))}: ${files.join(", ")}</p>
       <details class="fl-more fl-method" data-doc="${f.method}"${f.id === state.flow && state.open === "method" ? " open" : ""}><summary>${t("Full method")}</summary><div class="md" lang="en"></div></details>
       <details class="fl-more fl-changes" data-flow="${f.id}"><summary>${t("Changes to this flow")}<span class="fl-n"></span></summary><div class="fl-ch"></div></details>
@@ -1918,11 +1975,12 @@ function wireHow(root) {
 function howGo({ flow = null, sec = null, open = null }) {
   if (flow && !FLOWS.some(f => f.id === flow)) return;
   state.flow = flow; state.sec = sec; state.open = open; flowScroll = true;
-  // on phones the panel covers the view: close it first (Back reopens it)
-  if (state.panel && narrow()) closePanel();
+  // on phones the panel covers the view: close it first. Round 24 (audit A: Back left the site): it closes without going
+  // back in the history, and How it works is a new entry after the panel's own, so Back reopens the panel
+  if (state.panel && narrow()) closePanel("nav");
   if (state.view !== "how") window.setView("how");
   else {
-    writeHash(false); flowScroll = false; howScroll();
+    pushNav(); flowScroll = false; howScroll();
     document.querySelectorAll(".flow-nav [data-flow]").forEach(a => (a.dataset.flow === flow ? a.setAttribute("aria-current", "true") : a.removeAttribute("aria-current")));
   }
 }
@@ -1937,6 +1995,17 @@ document.addEventListener("click", e => {
 });
 window.EXTRA_VIEWS = Object.assign(window.EXTRA_VIEWS || {}, { how: renderHow });
 
+// round 24: on phones the Highlights and Filters buttons step aside while a view is scrolled down (CSS body.tr-away)
+{
+  let lastY = 0;
+  document.getElementById("view").addEventListener("scroll", e => {
+    if (!narrow()) return;
+    const y = e.target.scrollTop;
+    document.body.classList.toggle("tr-away", y > lastY + 4 && y > 80);
+    if (y < lastY - 4) document.body.classList.remove("tr-away");
+    lastY = y;
+  }, { passive: true });
+}
 // ===== Colours =====
 let C = {};
 function readColors() {
@@ -2084,7 +2153,7 @@ function layout() {
 // a note on the view shown (the net's warning, round 15; the world's change on the kept-from-Russia map)
 function titleNote() {
   if (state.year < 2022) return "";
-  if (state.lens === "net") return t("The net adds two different things: help given to Ukraine and reduced business with Russia. Much of what one country stopped buying, Russia sold to others.");
+  if (state.lens === "net") return t("The net adds two different things: help given to Ukraine and the change in business with Russia. Much of what one country stopped buying, Russia sold to others.");
   if (state.lens !== "payments") return "";
   return worldGainText(worldPaid(state.year));
 }
@@ -2564,6 +2633,14 @@ function writeHash(push) {
   const h = hashFor(), c = panelCode();
   try { history[push ? "pushState" : "replaceState"]({ panel: !!c }, "", location.pathname + location.search + h); } catch (e) { /* file:// */ }
 }
+// Round 24 (audit A: on phones Back after "How it works" left the site; on desktop it skipped the flow card): every
+// change of view, flow or section is its own history entry, so Back retraces the reader's steps inside the site. After
+// such a step, closing the panel with × no longer goes back in the history (the entry before is another place)
+function pushNav() {
+  if (location.hash === hashFor()) return;
+  writeHash(true); pushed = false;
+}
+window.pushNav = pushNav;
 // opening a panel adds a history entry, so the phone's Back button closes the sheet; closing it with × or Escape goes back
 // over that entry. how: "history" (Back/Forward: the address is already right) or "load" (first render: no entry, no focus move)
 let pushed = false, backing = false, opener = null;
@@ -2573,6 +2650,7 @@ function openPanel(kind, id, how) {
   if (narrow() && !drawer.hidden && drawer.dataset.size !== "min") setDrawerSize("min", true);
   if (!wasOpen) opener = document.activeElement && document.activeElement !== document.body ? document.activeElement : null;
   document.body.dataset.panel = "open";
+  if (typeof tip !== "undefined") tip.hidden = true;   // round 24 (audit A): the hover card does not linger over the panel
   state.panel = kind; state.selected = kind === "country" ? id : null;
   if (kind !== "compare") state.compare = null;
   countryPaths.classed("selected", f => f.id === state.selected);
@@ -2599,7 +2677,7 @@ function closePanel(how) {
   countryPaths.classed("selected", false);
   drawStreams();
   if (reduceMotion) drawFlows(0);
-  if (how !== "history") { if (pushed) { backing = true; history.back(); } else writeHash(false); }
+  if (how !== "history" && how !== "nav") { if (pushed) { backing = true; history.back(); } else writeHash(false); }
   pushed = false;
   // focus goes back to what opened the panel; a chart row re-rendered since then is found again by its country
   let back = opener;
@@ -2615,9 +2693,11 @@ function route(how) {
   if (how === "load" || h.lens || h.m || h.y) setFilters(h);
   const hl = h.hl && typeof HL !== "undefined" && HL[h.hl] ? h.hl : null;
   if (hl !== state.hl && (how === "load" || hl || state.hl)) { state.hl = hl; if (countryPaths) paint(); }
-  if (h.view === "how" && (h.flow || h.sec) && (h.flow !== state.flow || h.sec !== state.sec || how === "load")) {
-    state.flow = h.flow; state.sec = h.sec; state.open = h.open; flowScroll = true;
-    if (state.view === "how" && how !== "load") { flowScroll = false; howScroll(); }
+  // round 24: Back to How it works without a flow or section clears them (else the address would be rewritten to the
+  // flow the reader left, and a second Back would land there again)
+  if (h.view === "how" && (h.flow !== state.flow || h.sec !== state.sec || how === "load")) {
+    state.flow = h.flow; state.sec = h.sec; state.open = h.open; flowScroll = !!(h.flow || h.sec);
+    if (state.view === "how" && how !== "load" && flowScroll) { flowScroll = false; howScroll(); }
   }
   if (window.setView && VIEWS.includes(h.view) && h.view !== (state.view || "map")) window.setView(h.view, true);
   if (h.c === "UKR") { if (state.panel !== "ukraine") select("804", false, how); }
@@ -2668,6 +2748,15 @@ function wirePanel() {
   panel.querySelectorAll("details.part, #allparts, #showmore, details.pfold, details.xp").forEach(d => d.addEventListener("toggle", () => { const id = d.dataset.part ? "part-" + d.dataset.part : d.id; if (d.open) panelOpen.add(id); else panelOpen.delete(id); }));
   const sh = q("#share-btn");
   if (sh) sh.onclick = () => shareCountry(DATA[state.selected], sh);
+  // round 24: "Backed by n sources" opens the list at the end of the panel
+  panel.querySelectorAll("a[data-open-src]").forEach(a => (a.onclick = e => {
+    const box = q("#f-src");
+    if (!box) return;
+    e.preventDefault();
+    box.open = true; panelOpen.add("f-src");
+    box.scrollIntoView({ block: "start", behavior: reduceMotion ? "auto" : "smooth" });
+    box.querySelector("summary").focus({ preventScroll: true });
+  }));
   // round 22: a [n] mark opens the sources at the end of the panel and brings that source into view
   panel.querySelectorAll("a[data-ref]").forEach(a => (a.onclick = e => {
     const li = q("#src-" + a.dataset.ref), box = q("#f-src");
@@ -2795,7 +2884,7 @@ function shareText(c) {
   // the net first, as on the map, then its parts: support for Ukraine, business with Russia (round 17: the sign in words,
   // "it paid Russia €65.8bn (1.6% of GDP) less than without the war") and, where there is any, Russian money frozen (round
   // 16). Round 22 (owner): each number as a verb and an amount ("Supported Ukraine with 1.6% of GDP")
-  return t("{name}, in total since 2022 ({period}, about {n} years): {sum} ({range}; {eur}){net}. {ua} ({uarange}; about {uay} a year). {ru} ({rurange}): it {kept}{frozen}. The net adds two different things: help given to Ukraine and reduced business with Russia.",
+  return t("{name}, in total since 2022 ({period}, about {n} years): {sum} ({range}; {eur}){net}. {ua} ({uarange}; about {uay} a year). {ru} ({rurange}): it {kept}{frozen}. The net adds two different things: help given to Ukraine and the change in business with Russia.",
     { name: c.name, period: periodText(), n: num(yearsOf(y), 1), sum: netSentence(c, k, "gdp"), ua: verb("ua", k.uaBal, c, "gdp"), uarange: rg(k.uaLo, k.uaHi), uay: fmtMeasure(c, Math.abs(k.uaBal) / yearsOf(y), "gdp"),
       ru: verb("rus", k.rusBal, c, "gdp"), rurange: rg(k.rusLo, k.rusHi), kept: keptWords(c, k, "gdp", true),
       range: rg(k.shiftLo, k.shiftHi), eur: eur(Math.abs(k.shift)), net: nw ? ", " + nw : "",
@@ -3100,25 +3189,49 @@ const flowById = id => FLOWS.find(f => f.id === id);
 // Round 22 (owner: "perfect gradual exposure and very well organised"): one compact card per part. The value in words,
 // how and why in a sentence each, then its sources as one short line each (name and date); the exact tables and
 // reports of all of them sit one level deeper, in a single fold; the links to the method, decisions and trace last
-function srcLine(id, note = false) {
-  const s = SRC[id], nm = tData(s.name);
-  return `<li>${s.url ? ext(s.url, nm.s, nm.en) : dataText(s.name)}${s.date ? `<span class="sd">${t(", data to {date}", { date: s.date })}</span>` : ""}${note && s.note ? `<span class="sn">${linkNotes(dataText(s.note))}</span>` : ""}</li>`;
+// Round 24 (audit C; approved by the owner on 22 October 2026: "sometimes it looks like there's only one source"): a
+// source is a publisher's dataset or report. Its 1-3 key documents are links right under its name, so a reader sees the
+// real documents without opening anything; the rest of its documents are one small fold ("+ 4 more documents").
+// Sources are grouped by type; research notes (bundles of small corrections) are listed apart and, in a flow's card,
+// show only the documents behind that flow (each link's flows, pipeline/build_data.py classify_sources)
+const SRC_TYPES = [["data", "Official statistics and datasets"], ["report", "Reports and studies"], ["press", "Press reports"], ["ours", "Our own models"], ["notes", "Research notes"]];
+const docsOf = (id, flow) => (SRC[id].links || []).filter(l => !flow || !l.flows || l.flows.includes(flow));
+function docLink(l) {
+  // round 23: a link to this site's own How it works opens it in place
+  const own = l.url.startsWith(SITE_URL + "#view=how");
+  const tag = l.archived ? t("archived copy") : l.kind === "secondary" ? t("press report") : l.kind === "model" || l.kind === "method" ? t("this project's method") : "";
+  return `<a href="${esc(own ? l.url.slice(SITE_URL.length) : l.url)}"${own ? "" : ' target="_blank" rel="noopener"'} lang="en">${esc(l.title)}</a>${tag ? ` <span class="src-kind">${tag}</span>` : ""}`;
 }
-// the exact tables and reports behind several sources, in one fold (each link once)
-function linksFold(ids) {
-  const seen = new Set(), items = [];
-  for (const id of ids) for (const l of SRC[id].links || []) {
-    if (seen.has(l.url)) continue;
-    seen.add(l.url);
-    // round 23: a link to this site's own How it works opens it in place
-    const own = l.url.startsWith(SITE_URL + "#view=how");
-    items.push(`<li><a href="${own ? esc(l.url.slice(SITE_URL.length)) : l.url}"${own ? "" : ' target="_blank" rel="noopener"'} lang="en">${esc(l.title)}</a>${l.kind === "secondary" ? ` <span class="src-kind">${t("press report")}</span>` : ""}${l.kind === "model" || l.kind === "method" ? ` <span class="src-kind">${t("this project's method")}</span>` : ""}</li>`);
-  }
-  return items.length ? `<details class="src-more"><summary>${t("Exact tables and reports ({n})", { n: items.length })}</summary><ul class="src-links">${items.join("")}</ul></details>` : "";
+const dateTxt = s => (s.date ? `<span class="sd">${t({ data: ", data to {date}", published: ", published {date}", checked: ", checked {date}" }[s.date_kind] || ", data to {date}", { date: s.date })}</span>` : "");
+// one source: its name, date and (in How it works) note, its key documents, then the others folded
+function srcItem(id, { flow = null, note = false, keyMax = 3, attrs = "" } = {}) {
+  const s = SRC[id], nm = tData(s.name), docs = docsOf(id, flow);
+  let key = docs.filter(l => l.key).slice(0, keyMax);
+  if (!key.length) key = docs.slice(0, keyMax);
+  const more = docs.filter(l => !key.includes(l));
+  const name = docs.length ? `<b class="sname"${nm.en ? ' lang="en"' : ""}>${nm.s}</b>` : s.url ? ext(s.url, nm.s, nm.en) : `<b class="sname">${dataText(s.name)}</b>`;
+  return `<li${attrs}>${name}${dateTxt(s)}${note && s.note ? `<span class="sn">${linkNotes(dataText(s.note))}</span>` : ""}
+    ${key.length ? `<ul class="key-docs">${key.map(l => `<li>${docLink(l)}</li>`).join("")}</ul>` : ""}
+    ${more.length ? `<details class="more-docs"><summary>${t(more.length === 1 ? "+ 1 more document" : "+ {n} more documents", { n: more.length })}</summary><ul class="src-links">${more.map(l => `<li>${docLink(l)}</li>`).join("")}</ul></details>` : ""}</li>`;
+}
+// every document behind some sources, each once (for checking)
+function allDocs(ids, flow) {
+  const seen = new Set(), out = [];
+  for (const id of ids) for (const l of docsOf(id, flow)) if (!seen.has(l.url)) { seen.add(l.url); out.push(l); }
+  return out;
+}
+// a flow's sources in How it works: grouped by type, then every document in one list
+function flowSourcesHtml(f, srcs) {
+  const main = srcs.filter(id => SRC[id].type !== "notes"), docs = allDocs(srcs, f.id);
+  const groups = SRC_TYPES.map(([ty, label]) => [label, srcs.filter(id => (SRC[id].type || "report") === ty && (ty !== "notes" || docsOf(id, f.id).length))]).filter(([, ids]) => ids.length);
+  return `<p class="lbl2" id="flow-src-${f.id}">${t("Sources ({n})", { n: main.length })}</p>
+    ${groups.map(([label, ids]) => `<p class="src-h">${t(label)}</p><ol class="sources fl-src">${ids.map(id => srcItem(id, { flow: f.id, note: true })).join("")}</ol>`).join("")}
+    ${docs.length ? `<details class="all-docs"><summary>${t("All {n} documents in one list (for checking)", { n: docs.length })}</summary><ul class="src-links">${docs.map(l => `<li>${docLink(l)}</li>`).join("")}</ul></details>` : ""}`;
 }
 // Round 23 (owner: the panel is "a portal" into How it works): the value in words, one sentence of how it is
-// calculated, then the way into the flow's page in How it works, where the reasons, every source, the full method and
-// its changes are; the country's own sources stay at the end of the panel
+// calculated, then the way into the flow's page in How it works, where the reasons, the full method and its changes
+// are. Round 24 (audit A and C; approved by the owner): the part's own sources are listed in place, each with its key
+// documents, instead of a second link into How it works
 function methodCard(c, p) {
   const f = flowById(FLOW_OF[p.k]);
   const srcs = [...new Set(p.src || [])].filter(id => SRC[id]);
@@ -3127,8 +3240,8 @@ function methodCard(c, p) {
   return `<div class="mcard">
     <p class="mc-v"><b>${plainName(p)}</b>: ${pg(p.v)} (${eur(p.v, true)}), ${t("likely {lo} to {hi}", { lo: pg(p.lo), hi: pg(p.hi) })} (${t("{lo} to {hi}", { lo: eur(p.lo, true), hi: eur(p.hi, true) })})${p.lo < 0 && p.hi > 0 ? "; " + t("too close to call") : ""}; ${certWords(p.cert)}.${p.en.endsWith("*") ? " " + t("* 2026 estimated from the 2025 monthly rate.") : ""}</p>
     ${f ? `<p class="mc-how">${first(t(HOW[f.id] || f.what))}</p>
-    <div class="portal"><a class="portal-go" href="#view=how&amp;flow=${f.id}" data-flow="${f.id}">${t("How it works: {flow}", { flow: t(f.name) })} <span aria-hidden="true">→</span></a>
-      ${srcs.length ? `<a class="portal-src" href="#view=how&amp;flow=${f.id}" data-flow="${f.id}">${t("Sources for this part ({n})", { n: srcs.length })}</a>` : ""}</div>` : ""}
+    <div class="portal"><a class="portal-go" href="#view=how&amp;flow=${f.id}" data-flow="${f.id}">${t("How it works: {flow}", { flow: t(f.name) })} <span aria-hidden="true">→</span></a></div>` : ""}
+    ${srcs.length ? `<p class="lbl2 mc-src-h">${t(srcs.length === 1 ? "1 source for this part" : "{n} sources for this part", { n: srcs.length })}</p><ul class="sources mc-src">${srcs.map(id => srcItem(id, { flow: f ? f.id : null, keyMax: 2 })).join("")}</ul>` : ""}
   </div>`;
 }
 // one row of the parts chart (round 18, owner: "the biggest parts ... that visual stuff is way more interesting"): a short
@@ -3187,7 +3300,7 @@ const mSec = (c, v) => (state.measure === "gdp" ? eur(v, true) : t("{v} of GDP",
 const mBar = c => v => scaled(c, v, state.measure) ?? 0;
 function partRow(c, p, ax, plain) {
   const g = mBar(c), id = "part-" + p.k;
-  return `<details class="part" data-part="${p.k}"${panelOpen.has(id) ? " open" : ""}><summary><span class="nm">${plain ? plainName(p) : p.label + chip(p.cert)}</span>
+  return `<details class="part" data-part="${p.k}"${panelOpen.has(id) ? " open" : ""}><summary><span class="nm">${plain ? plainName(p) : plainName(p) + chip(p.cert)}</span>
     <span class="pv">${mVal(c, p.v)}<small>${mSec(c, p.v)}</small></span>
     <span class="pbar" aria-hidden="true">${barHtml(ax, g(p.v), partCol(p), g(p.lo), g(p.hi))}</span></summary>${methodCard(c, p)}</details>`;
 }
@@ -3249,7 +3362,7 @@ function meaningFlags(c, k, y) {
   if (L.fz) add("frozen", ICON.ice, t("mostly frozen Russian money"), t("Much of the net is Russian money frozen here: the return Russia lost on its reserves, not a payment."));
   if (k.earner) add("earner", ICON.warn, t("earned from the war effort"), t("It earned more supplying Ukraine's war effort than it gave: grey on the map, not money toward Russia."));
   if (fair && !fairUsed) add("fair", ICON.info, t("fuel and food, not policy"), fair, "", true);
-  if (k.rusBal > 0 && Math.abs(k.uaBal) > 0) add("two", ICON.plus, t("two different things added"), t("The net adds two different things: help given to Ukraine and reduced business with Russia. Much of what one country stopped buying, Russia sold to others."));
+  if (k.rusBal > 0 && Math.abs(k.uaBal) > 0) add("two", ICON.plus, t("two different things added"), t("The net adds two different things: help given to Ukraine and the change in business with Russia. Much of what one country stopped buying, Russia sold to others."));
   return out;
 }
 // the net: one big number, its unit, one compact line; the lead, what the net adds, the certainty and the range behind a tap
@@ -3319,7 +3432,7 @@ function firstLayer(c, k, y) {
   const group = (title, list) => (list.length ? `<p class="grp">${title}</p>${list.map(p => partRow(c, p, ax, false)).join("")}` : "");
   const flags = meaningFlags(c, k, y);
   return `${custom() ? `<div class="custom">${customNote()}</div>` : ""}
-    <section class="pv-top">${netBlock(c, k, y)}${partTiles(c, k, y)}</section>
+    <section class="pv-top">${netBlock(c, k, y)}${partTiles(c, k, y)}${backedLine(k)}</section>
     ${flags.length ? `<section class="pv-flags" aria-label="${t("What changes the meaning here")}"><div class="flags">${flags.map(f => xp("flag " + f.cls, "x-flag-" + f.key, `<span class="fi" aria-hidden="true">${f.icon}</span><span>${f.label}</span>`, f.body)).join("")}</div></section>` : ""}
     <section class="pv-chart"><div class="pc-h"><h3>${t("What makes up the number")}</h3><span class="pc-hint">${t("tap a bar for how it is calculated")}</span></div>${barKey()}
       ${ax.z > 0 ? `<div class="pc-axis" aria-hidden="true"><span>← ${t("toward Russia")}</span><span>${t("toward Ukraine")} →</span></div>` : ""}
@@ -3330,6 +3443,12 @@ function firstLayer(c, k, y) {
         ${group(t("Russian money frozen"), rest.filter(p => sideOf(p) === "own"))}
       </details>` : ""}
     </section>`;
+}
+// round 24 (audit A, the owner: a reader who reads nothing else should still see that every number is backed): one line
+// under the numbers, with the count of sources behind this country's parts, opening the list at the end of the panel
+function backedLine(k) {
+  const n = partSourceIds([...k.shiftParts, ...k.backShift, ...k.backParts, ...k.takenParts]).length;
+  return n ? `<p class="backed"><a href="#f-src" data-open-src>${t(n === 1 ? "Backed by 1 source · see it" : "Backed by {n} sources · see them", { n })}</a></p>` : "";
 }
 // which parts and sections are open, kept when the panel re-renders (a new year, another language); cleared for a new country
 const panelOpen = new Set();
@@ -3343,23 +3462,27 @@ function group(id, title, subs, preview) {
   const body = live.map(([label, h, own]) => (own || live.length === 1 ? h : `<h4 class="g-h">${label}</h4>${h}`)).join("");
   return `<details class="more pfold" id="${id}"${panelOpen.has(id) ? " open" : ""}><summary><span class="g-t">${title}</span><span class="g-p">${preview || live.map(([label]) => label).join(" · ")}</span></summary><div class="pfold-body">${body}</div></details>`;
 }
-// the panel's sources, last: every source used for this country's figures, numbered (the [n] marks above point here),
-// grouped by the part that cites it first; notes and sections that cite others come last. Each group has one fold with
-// the exact tables and reports of its sources
+// the panel's sources, last. Round 24 (audit C; approved by the owner): every source under every part that uses it,
+// largest part first; the parts that round to zero do not count (so a small economy no longer lists 60 sources that
+// feed nothing there). A source is numbered where it first appears (the [n] marks above point there) and named again,
+// with its number, under each later part. Sources cited only in the notes above come last
+const NONZERO = 0.0005;   // €0.5m
+const partSourceIds = parts => [...new Set(parts.filter(p => Math.abs(p.v) >= NONZERO).flatMap(p => (p.src || []).filter(id => SRC[id])))];
 function sourceGroups(parts) {
-  const seen = new Set(), groups = [];
+  const groups = [];
   for (const p of parts) {
-    const ids = [...new Set(p.src || [])].filter(id => SRC[id] && refs.includes(id) && !seen.has(id));
-    ids.forEach(id => seen.add(id));
+    if (Math.abs(p.v) < NONZERO) continue;
+    const ids = [...new Set(p.src || [])].filter(id => SRC[id] && refs.includes(id));
     if (ids.length) groups.push([plainName(p), ids]);
   }
-  const rest = refs.filter(id => !seen.has(id));
-  if (rest.length) groups.push([t("Notes and sections"), rest]);
+  const used = new Set(groups.flatMap(([, ids]) => ids));
+  const rest = refs.filter(id => !used.has(id));
+  if (rest.length) groups.push([t("Cited in the notes above"), rest, true]);
   return groups;
 }
-// the sources are numbered in the order they are listed (by part); the [n] marks already written are renumbered to match
+// the sources are numbered in the order they first appear (by part); the [n] marks already written are renumbered
 function renumber(html, groups) {
-  const order = groups.flatMap(([, ids]) => ids), to = new Map(order.map((id, i) => [refs.indexOf(id) + 1, i + 1]));
+  const order = [...new Set(groups.flatMap(([, ids]) => ids))], to = new Map(order.map((id, i) => [refs.indexOf(id) + 1, i + 1]));
   refs.splice(0, refs.length, ...order);
   return html.replace(/<span class="ref">\[([^\]]*)\]<\/span>/g, (m, inner) => {
     const nums = [...inner.matchAll(/data-ref="(\d+)"/g)].map(x => to.get(+x[1]) || +x[1]).sort((a, b) => a - b);
@@ -3367,13 +3490,17 @@ function renumber(html, groups) {
   });
 }
 function panelSources(c, groups) {
+  const shown = new Set(), n = groups.filter(g => !g[2]).flatMap(([, ids]) => ids);
+  const count = new Set(n).size;
   const li = id => {
-    const s = SRC[id], nm = tData(s.name), n = refs.indexOf(id) + 1;
-    return `<li id="src-${n}" value="${n}">${s.url ? ext(s.url, nm.s, nm.en) : dataText(s.name)}${s.date ? `<span class="sd">${t(", data to {date}", { date: s.date })}</span>` : ""}${s.note ? `<span class="sn">${linkNotes(dataText(s.note))}</span>` : ""}</li>`;
+    const k = refs.indexOf(id) + 1;
+    if (shown.has(id)) return `<li value="${k}" class="src-again"><a href="#src-${k}" data-ref="${k}">${tData(SRC[id].name).s}</a> <span class="sd">${t("(listed above)")}</span></li>`;
+    shown.add(id);
+    return srcItem(id, { keyMax: 2, attrs: ` id="src-${k}" value="${k}"` });
   };
-  return `<details class="more pfold psrc" id="f-src"${panelOpen.has("f-src") ? " open" : ""}><summary><span class="g-t">${t("All {n} sources for {name}", { n: refs.length, name: c.name })}</span><span class="g-p">${t("Grouped by part, with the exact tables and reports")}</span></summary><div class="pfold-body">
-    <p class="key">${t("Figures were compiled with AI assistance from these sources and have not yet been checked line by line by a person. Each source lists the exact tables and reports used; the research notes give every input with its own source.")}</p>
-    ${groups.map(([name, ids]) => `<div class="sgrp"><h4 class="g-h">${name}</h4><ol class="sources">${ids.map(li).join("")}</ol>${linksFold(ids)}</div>`).join("")}
+  return `<details class="more pfold psrc" id="f-src"${panelOpen.has("f-src") ? " open" : ""}><summary><span class="g-t">${t("All {n} sources for {name}", { n: count, name: c.name })}</span><span class="g-p">${t("Grouped by part, each with its key documents")}</span></summary><div class="pfold-body">
+    <p class="key">${t("Figures were compiled with AI assistance from these sources and have not yet been checked line by line by a person. Each source links the documents used; the research notes give every input with its own source.")}</p>
+    ${groups.map(([name, ids]) => `<div class="sgrp"><h4 class="g-h">${name}</h4><ol class="sources">${ids.map(li).join("")}</ol></div>`).join("")}
     <p class="key"><a href="#view=how" data-goview="how">${t("How it works")}</a> · <a href="#view=how&amp;sec=changelog">${t("Every decision, in the changelog")}</a></p></div></details>`;
 }
 function countryPanel(c) {
@@ -3468,9 +3595,8 @@ function comparePanel(a, b) {
   const rows = [
     ["Support for Ukraine, % of a year's GDP", x => x.k.uaBal, "gdp", true],
     ["Business with Russia, % of a year's GDP", x => x.k.rusBal, "gdp", true],
-    ["Net shift, % of a year's GDP", x => x.k.shift, "gdp", true],
-    ["Net shift", x => x.k.shift, "total", true],
-    ["Net shift per person", x => x.k.shift, "pp", true],
+    ["Net (toward Ukraine), % of a year's GDP", x => x.k.shift, "gdp", true],
+    ["Net (toward Ukraine), €", x => x.k.shift, "total", true],
     ["Aid to Ukraine", x => x.k.aid, "total", false],
     ["Money flowing back", x => x.k.flowback, "total", false],
     ["Paid to Russia since 2022", x => x.k.paidRussia, "total", false],
@@ -3710,13 +3836,13 @@ const HL = {
       const s = i => sanctionSplit(byIso[i], HK(byIso[i])) || { mand: 0, own: 0 }, lt = s("LTU");
       // corrected (prototype review): Lithuania's cut was mostly its own choice, not required by sanctions
       return [t("Share of the reduced business with Russia that sanctions required: {a} <b>{x}</b>, {b} <b>{y}</b>, {c} <b>{z}</b>.", { a: named(byIso.EST), x: pc0(s("EST").mand), b: named(byIso.LVA), y: pc0(s("LVA").mand), c: named(byIso.LTU), z: pc0(lt.mand) })
-        + (lt.own >= 0.5 ? " " + t("{name}'s cut was mostly its own choice ({own}).", { name: byIso.LTU.name, own: pc0(lt.own) }) : ""), t("A required cut still keeps money from Russia, but it is not money given to Ukraine.")];
+        + (lt.own >= 0.5 ? " " + t("{name}'s cut was mostly its own choice ({own}).", { name: byIso.LTU.name, own: pc0(lt.own) }) : ""), t("A required cut still reduces business with Russia, but it is not money given to Ukraine.")];
     } },
   hungary: { label: "Hungary: the 2022 price spike", set: () => new Set(byIso.HUN ? [byIso.HUN.n] : []),
     fact: () => {
       const c = byIso.HUN, k = HK(c), w = k.shiftParts.find(p => p.k === "windfall"), ys = c.windfall?.years?.slice(1, yi(hlY()) + 1) || [], tot = ys.reduce((a, b) => a + b, 0);
       const v = { name: c.name, pct: fmtMeasure(c, -k.rusBal, "gdp"), eur: eur(-k.rusBal), w: eur(-(w ? w.v : 0)) };
-      return [t(tot > 0 && ys[0] > 0.5 * tot ? "{name} paid Russia {pct} of a year's GDP more than without the war ({eur} of Russia's gain), of which <b>{w}</b> is war-time prices on its gas contracts, mostly in 2022. Its volumes barely changed." : "{name} paid Russia {pct} of a year's GDP more than without the war ({eur} of Russia's gain), of which <b>{w}</b> is war-time prices on its gas contracts. Its volumes barely changed.", v), t("The money really reached Russia, but it reflects contract prices, not buying more.")];
+      return [t(tot > 0 && ys[0] > 0.5 * tot ? "{name} increased business with Russia by {pct} of a year's GDP ({eur} of Russia's gain), of which <b>{w}</b> is war-time prices on its gas contracts, mostly in 2022. Its volumes barely changed." : "{name} increased business with Russia by {pct} of a year's GDP ({eur} of Russia's gain), of which <b>{w}</b> is war-time prices on its gas contracts. Its volumes barely changed.", v), t("The money really reached Russia, but it reflects contract prices, not buying more.")];
     } },
   support: { label: "Top support relative to GDP", set: () => new Set(topSupport().map(c => c.n)),
     fact: () => [t("Support for Ukraine as % of a year's GDP: {list}.", { list: topSupport().map(c => `${named(c)} ${fmtMeasure(c, Math.abs(HK(c).uaBal), "gdp")}`).join(", ") }),

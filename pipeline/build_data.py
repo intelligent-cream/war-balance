@@ -12,6 +12,7 @@ from __future__ import annotations
 import datetime
 import json
 import math
+import re
 import statistics
 from pathlib import Path
 
@@ -402,7 +403,19 @@ PIPELINE_GAS = EU27 | {
 CERT_ORDER = "ABCD"
 # the latest month in the data (2026 runs January to August) and the date of this build
 DATA_TO, DATA_TO_TEXT = "2026-08-31", "31 August 2026"
-UPDATED, UPDATED_TEXT = "2026-10-19", "19 October 2026"
+
+
+def latest_change() -> tuple[str, str]:
+    """Round 24 (audit A: About said "updated 19 October" while the changelog ran to 21 October): the date the site
+    gives as "updated" is the newest round's date in site/content/changelog.md, not written by hand."""
+    txt = (ROOT / "site" / "content" / "changelog.md").read_text()
+    m = re.search(r'<span class="cl-date">(\d{1,2}) (\w+)(?: (\d{4}))?</span>', txt)
+    day, month, year = int(m.group(1)), m.group(2), int(m.group(3) or DATA_TO[:4])
+    d = datetime.datetime.strptime(f"{day} {month} {year}", "%d %B %Y").date()
+    return d.isoformat(), f"{day} {month} {year}"
+
+
+UPDATED, UPDATED_TEXT = latest_change()
 # territories whose trade and aid statistics are reported by another country (customs unions, dependencies)
 INCLUDED_IN = {"LIE": "CHE", "MCO": "FRA", "IMN": "GBR", "PRI": "USA", "VIR": "USA", "MAF": "FRA"}
 
@@ -1439,7 +1452,7 @@ def build() -> dict:
     fix_artefacts(countries)
     baltic_transit(countries)
     # incentives.json (AI-guessed direction and threat scores) is no longer copied into data.json: its view was removed
-    # in round 8 and the site does not read the scores (round 11 audit; site/content/method/incentives.md)
+    # in round 8 and the site does not read the scores (round 11 audit; the layer was removed, see the changelog, round 24)
     # label only, the totals do not change: which part of each cut was required by sanctions, and which part of the fall
     # in purchases was gas that Russia cut off or that stopped with Ukrainian transit (sanctions_share.json)
     sanc = load(GAPS / "sanctions_share.json")
@@ -1595,6 +1608,7 @@ def build() -> dict:
         if links:
             item["links"] = links
     prune_sources(countries, src)
+    classify_sources(src)
     gdp_average(countries)
     status = (
         f"<b>Research preview</b> · figures to {DATA_TO_TEXT}, updated {UPDATED_TEXT}. "
@@ -1649,6 +1663,46 @@ def tariff_rate(countries: dict[str, dict]) -> float:
     return round(num / den, 5) if den else 0.0
 
 
+def r11_proposal_flows(k: str, q: dict) -> list[str]:
+    """Round 24 (audit C, approved by the owner): the money flows (FLOWS ids in index.html) a round-11 proposal changed,
+    so a flow in How it works shows only the documents behind its own proposals, not the whole bundle."""
+    if k == "gain":
+        if "net_gain_ukraine" in q.get("file", ""):
+            return ["buy"]
+        return {"services": ["services"], "arms": ["rusarms"]}.get(q.get("group"), ["paid", "windfall"])
+    if k == "rules":
+        c = q.get("constant", "")
+        for key, fl in (
+            ("sales_to_russia", ["sold"]),
+            ("flowback_weapons", ["flowback"]),
+            ("services_to_russia", ["services"]),
+            ("shipping", ["shipping"]),
+            ("OWN_SHARE_DEFAULT", ["flowback"]),
+            ("LOAN_GRANT_ELEMENT", ["loans"]),
+            ("tariff_rate", ["buy"]),
+            ("EU_ARMS_SLICE", ["euaid", "flowback"]),
+        ):
+            if key in c:
+                return fl
+        return []
+    item = q.get("item", "")
+    for key, fl in (
+        ("hub_", ["laund"]),
+        ("LAUNDERED_CAP", ["laund"]),
+        ("payment_agents", ["agents"]),
+        ("company_profit_tax", ["companytax"]),
+        ("shadow_fleet", ["shipping"]),
+        ("private_donations", ["priv"]),
+        ("refugee_", ["ref"]),
+        ("CIF_SHARE", ["paid"]),
+        ("remittance_", ["remit"]),
+        ("hk_onward", ["gold"]),
+    ):
+        if item.startswith(key):
+            return fl
+    return []
+
+
 def attach_r11_sources(countries: dict[str, dict], src: Sources) -> None:
     """Round 11: one source per proposals file, with the primary links its applied proposals cite, added to the series
     each file changed."""
@@ -1670,13 +1724,19 @@ def attach_r11_sources(countries: dict[str, dict], src: Sources) -> None:
             R11[k].get("generated"),
             f"proposals applied as listed in the changelog; see research/2026-10/gaps/assumptions_r11_{k}-notes.md",
         )
-        links, seen = [], set()
+        links, seen = [], {}
         for q in props:
+            fl = r11_proposal_flows(k, q)
             for x in q.get("sources") or []:
                 u = x.get("url") or ""
-                if u.startswith("http") and u not in seen:
-                    seen.add(u)
-                    links.append({"title": x.get("title") or u, "url": u, "kind": "primary"})
+                if not u.startswith("http"):
+                    continue
+                if u in seen:
+                    # round 24: a link cited by several proposals belongs to each of their flows
+                    seen[u]["flows"] = sorted(set(seen[u]["flows"]) | set(fl))
+                    continue
+                seen[u] = {"title": x.get("title") or u, "url": u, "kind": "primary", "flows": fl}
+                links.append(seen[u])
         src.items[sid]["links"] = links
         ids[k] = sid
 
@@ -1762,6 +1822,94 @@ def prune_sources(countries: dict[str, dict], src: Sources) -> None:
     walk(countries)
     for sid in [k for k in src.items if k not in used]:
         del src.items[sid]
+
+
+# Round 24 (audit C, approved by the owner on 22 October 2026): what kind of source each one is, the group it is listed
+# under in How it works: official statistics and datasets ("data"), reports and studies, including laws and official
+# reports ("report"), press reports ("press"), this project's own models ("ours"), and research notes that bundle the
+# documents behind several small corrections ("notes")
+SOURCE_TYPE = {
+    "trade": "data", "nonreport": "report", "kiel": "data", "kiel_eu_share": "report", "aid_gaps": "data",
+    "refugees": "data", "energy": "ours", "transit_gas": "data", "laundered": "ours", "laundered_eu": "data",
+    "laundered_r6": "report", "refining": "report", "eu_refiners": "ours", "companies": "report",
+    "company_taxes_r6": "report", "services": "data", "hidden": "report", "undisclosed": "report", "private": "report",
+    "military_rus_r6": "report", "china_military": "report", "people": "report", "shipping": "report",
+    "shadow_fleet": "report", "reexports": "data", "residual": "data", "hk_gold_r16": "data", "audit": "notes",
+    "sanctions_share": "report", "gas_cuts": "press", "prices": "ours", "narrow": "data", "audit2": "notes",
+    "windfall": "ours", "trend": "ours", "gas_prices": "data", "trend2": "ours", "counterfactual": "ours",
+    "ua_trade_cf": "ours", "cf_bands": "ours", "power_of_siberia": "press", "weapons_value": "report",
+    "state_finance": "data", "company_flows": "report", "russian_owned_r10": "report", "seizures": "report",
+    "refugees_net": "data", "co_belligerent": "report", "loans_value": "report", "money_ledger": "data",
+    "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "remittances": "data",
+    "chpl": "data", "value_kept": "report", "net_gain_sellers": "data", "military_payment": "press",
+    "net_gain_russia": "data", "net_gain_ukraine": "data", "dangote": "press", "hormuz": "report",
+    "assumptions_r11_gain": "notes", "assumptions_r11_rules": "notes", "assumptions_r11_hubs": "notes",
+    "assumptions_r11_people": "notes",
+}  # fmt: skip
+# news sites and encyclopedias: a link there is a press report, whatever the research file called it
+PRESS_HOSTS = (
+    "themoscowtimes", "vedomosti", "kommersant", "wikipedia", "reuters", "bloomberg", "bnnbloomberg", "interfax",
+    "tass.", "ft.com", "wsj.com", "nytimes", "theguardian", "kyivindependent", "rferl", "voaafrica", "voanews",
+    "thebell", "theins", "nknews", "yonhap", "euractiv", "politico", "dw.com", "bbc.", "rbc.ru", "meduza",
+    "novayagazeta", "notesfrompoland", "hellenicshippingnews", "shipandbunker", "oilprice", "ukrinform", "unian",
+    "pravda", "ria.ru", "frontnews", "lvportals", "reddeeradvocate", "belganewsagency", "europeannewsroom",
+    "tehrantimes", "eghtesadonline", "intellinews", "dailysabah", "hurriyet", "trend.az", "azernews", "akipress",
+    "kun.uz", "gazeta.uz", "eurasianet", "jiji.com", "kyodo", "japantimes", "nikkei", "scmp", "caixin",
+    "globaltimes", "xinhua", "sofiaglobe", "globalnews", "usm.media", "hartvannederland", "kathimerini",
+    "lemonde", "lefigaro", "spiegel", "handelsblatt", "faz.net", "zeit.de", "corriere", "ansa.it", "elpais",
+    "kyivpost", "euronews", "apnews", "cnbc", "forbes", "insider", "occrp", "pozirk", "alta.ru", "zerno.ru",
+    "infomarket.md", "newsmaker.md", "rtp.pt", "aa.com.tr", "argusmedia", "lloydslist", "tradewinds", "splash247",
+)  # fmt: skip
+LINK_FIXES = json.loads((RESEARCH / "link_fixes.json").read_text())["fixes"]
+
+
+def is_homepage(url: str) -> bool:
+    from urllib.parse import urlparse
+
+    u = urlparse(url)
+    return u.path in ("", "/") and not u.query
+
+
+def classify_sources(src: Sources) -> None:
+    """Round 24 (audit C, approved by the owner on 22 October 2026). Each source gets its type; its documents get a press
+    label where they are news reports, a working address where the old one no longer opens (link_fixes.json, archived
+    copies labelled), and 1-3 of them are marked key documents, shown under the source's name without opening anything.
+    The source's own link is never a bare homepage: it is its first key document instead. Names lose the internal
+    "Round 11:" prefix; the date says what it is ("data to" for data, "published" for older reports, otherwise "checked")."""
+    for sid, s in src.items.items():
+        typ = SOURCE_TYPE.get(sid, "report")
+        s["type"] = typ
+        s["name"] = re.sub(r"^Round 11(?: audit)?: ", "", s["name"])
+        links = [dict(lk) for lk in s.get("links") or []]
+        if s.get("url") and not is_homepage(s["url"]) and all(lk["url"] != s["url"] for lk in links):
+            # the source's own link is one of its documents too (a source with no other document keeps it as its key one)
+            links.append({"title": s["name"], "url": s["url"], "kind": "primary"})
+        for lk in links:
+            fx = LINK_FIXES.get(lk["url"])
+            if fx:
+                lk["url"] = fx["url"]
+                if fx.get("archived"):
+                    lk["archived"] = True
+            host = lk["url"].split("/")[2] if lk["url"].startswith("http") else ""
+            if lk.get("kind") == "primary" and (
+                any(p in host for p in PRESS_HOSTS) or lk["title"].lower().startswith("search snippet")
+            ):
+                lk["kind"] = "secondary"
+        cand = [lk for lk in links if lk["url"].startswith("http") and not is_homepage(lk["url"])]
+        key = [lk for lk in cand if lk.get("kind", "primary") == "primary"][:3] or cand[:3]
+        for lk in key:
+            lk["key"] = True
+        if links:
+            s["links"] = links
+        url = LINK_FIXES.get(s.get("url") or "", {}).get("url") or s.get("url")
+        if not url or is_homepage(url):
+            url = key[0]["url"] if key else None
+        if url:
+            s["url"] = url
+        else:
+            s.pop("url", None)
+        d = s.get("date") or ""
+        s["date_kind"] = "data" if typ == "data" else "published" if d and d < "2026-09" else "checked"
 
 
 def non_gas_share(by_fuel_mt: dict, prices: dict) -> list[float]:

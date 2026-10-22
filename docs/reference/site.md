@@ -42,3 +42,14 @@ The address keeps what the reader sees.
 - A country: `#AUS`, or `c=AUS` with other values; `UKR` and `RUS` open the Ukraine and Russia panels.
 - Values at their default are left out. "What's counted" is never in the address: a link always opens the official
   numbers. `c/aus.html` is a country's own page, whose link preview shows its card.
+- History (round 24): every change of view, flow or section the reader makes is a new history entry (`pushNav()`), so
+  Back retraces their steps inside the site; Back/Forward and edited addresses go through `route()`.
+
+## Sources
+
+`data.json` `sources` holds each source with `type` (`data`, `report`, `press`, `ours`, `notes`), `date_kind` and its
+documents (`links`); 1-3 documents per source are `key`, and the documents of the research-note bundles carry the
+`flows` they belong to. All of this is set at build time by `classify_sources()` in `pipeline/build_data.py`, which
+also swaps links that no longer open for the addresses in `research/2026-10/link_fixes.json`. The site renders a
+source with `srcItem()` (name, date, key documents, the rest folded) and a flow's sources with `flowSourcesHtml()`;
+check 37 in `check_data.py` holds the rules.

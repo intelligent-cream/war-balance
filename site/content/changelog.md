@@ -4,6 +4,78 @@ Every update to the map, newest first: what changed and every decision behind it
 
 The detailed research log, with every file, is [`research/2026-10/README.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/README.md).
 
+<h2 id="cl-r24">Round 24: every number backed where you read it <span class="cl-date">22 October</span></h2>
+<!-- flows: aid loans euaid priv ref paid windfall laund sold buy services shipping companytax agents remit gold frozen -->
+
+**Four independent audits (a reader trace, numbers against the data, every source link, the quality of the data and
+method) and the owner's decisions on them. The fixes and the new way of showing sources are here; the method changes
+the owner decided come in round 24b. No number changed in this round.**
+
+### What changed
+
+1. **Sources show their documents.** A source is a publisher's dataset or report; under its name the reader now sees
+   its 1–3 key documents as links, without opening anything, and "+ n more documents" folded. In How it works each
+   money flow lists its sources grouped as official statistics and datasets, reports and studies, press reports, our
+   own models and research notes, with "All N documents in one list (for checking)" at the end; the header says
+   "18 sources · 127 documents". The fold "Exact tables and reports" is gone: it held the real sources (509 documents
+   behind 66 bundles), and a flow such as Loans looked like it had one source when it had 25 documents.
+2. **Research-note bundles show only what belongs to the flow.** The documents behind the round-11 corrections are
+   tagged with the money flows they changed, so Payments to Russia no longer lists refugee budgets or crowdfunded
+   drones.
+3. **The country panel**: a line under the numbers, "Backed by N sources · see them", opens the panel's sources; each
+   part lists its own sources in place, each with its key documents (the second link into How it works is gone); the
+   list at the end shows every source under every part that uses it, and counts only the sources behind the country's
+   non-zero parts (a small economy no longer lists 60 sources that feed nothing there).
+4. **Sources are typed and labelled** in the build (`classify_sources()` in `pipeline/build_data.py`): press reports
+   and encyclopedias are marked as press, dates say "data to", "published" or "checked", the internal "Round 11:"
+   prefix is gone from names, and a source's own link is never a bare homepage. `check_data.py` check 37 holds this.
+5. **Dead links replaced**: 17 links that no longer opened (UN Comtrade's old API address, Eurostat's moved trade
+   database, a Bank of Russia page, Ukraine's statistics office, the KSE company list and others) point to the working
+   page or to an archived copy, labelled "archived copy"
+   ([`link_fixes.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/link_fixes.json)).
+6. **Out-of-date figures in the method pages** corrected and now checked against the model: Germany's worked example
+   (support EUR 65.4bn, business with Russia EUR 65.8bn, net EUR 134.4bn, refugees +19.7bn), the US earning back
+   EUR 2.52bn, Poland's gas and oil cut off by Russia (EUR 11.1bn), Hungary without the war-time prices, the
+   Tajikistan remittance marker, the counts of countries too close to call (96, 122 and 114 of 163) and the certainty
+   letters' distribution. 107 figures in the text are now tagged and compared with the model on every build (check 30).
+7. **Removed features no longer described as current**: the cost view, per person, the table and the Sources tab;
+   the "above or below expectation" page is gone from the method (it described a view removed in round 11; a note is
+   in the limitations).
+8. **One name per part everywhere**: the panel's plain names ("Paid Russia war-time fuel prices", "Its share of EU
+   aid") are used on the flow cards ("On the map: …") and in the lists; the flows are renamed "War-time fuel prices"
+   and "Share of EU aid".
+9. **Back stays on the site**: every change of view, flow or section is a step in the browser's history, so Back
+   returns to the country panel or the flow card instead of leaving the site.
+10. **Certainty letters explain themselves on a tap** (they only had a hover text): their meaning and a link to how
+    the letters are set.
+11. **Smaller fixes**: the "updated" date comes from this changelog; the Highlights and share texts use the current
+    wording ("increased business with Russia"; the net "adds help given to Ukraine and the change in business with
+    Russia", true for every country); function names in the method text sit in a small "In the code" note; on phones
+    the Highlights and Filters buttons step aside while reading; the hover card no longer stays over an opened panel;
+    the compare rows say "Net (toward Ukraine)"; self-links in this changelog removed; the two round-11 entries have
+    distinct titles.
+
+### Decisions
+
+- **Show sources with their key documents, typed, filtered by flow; "Backed by N sources" under the numbers** —
+  *raised by:* audit (sources, reader trace); *decided by:* owner, 22 October 2026 ("two makes sense")
+- **Fix every stale figure and link, and the Back button** — *raised by:* audit; *decided by:* owner ("do one for sure")
+- **Decided, implemented in round 24b (numbers will change):**
+  - **Refugee hosting at actual spending**, minus only the host's real gain on refugees' work (as for other money
+    flowing back), instead of minus all taxes refugees pay with a floor at zero — *raised by:* audit (quality);
+    *why:* the tax netting broke the one-seller rule and set Czechia, Slovakia, Romania and the Baltic states to zero
+  - **A "leaning" list** for countries too close to call — *raised by:* audit; *decided by:* owner
+  - **Business with Russia as two lines**: Russia's gain on what it sold, and the seller's own gain on sales to
+    Russia — *raised by:* audit; *decided by:* owner
+  - **North Korea's value, contracted versus delivered military aid, Hungary's war-time price range, and a label for
+    buyers with no alternative to Russia** — *raised by:* audit; *decided by:* owner; every change with its sources
+- **Not changed:** gas that Russia cut off stays in the totals and Russia's seizures stay outside them — *raised by:*
+  audit (it asked for the same treatment of both); *decided by:* owner: "if I still buy Russian gas … I'm giving
+  Russia money. If I lose my company to Russia, I didn't give them anything, they stole something"; a seizure is
+  theft, not a payment
+- **No "choices only" net** — *raised by:* audit; *decided by:* owner: sanctions a country voted for are still a
+  choice, so chosen and imposed changes cannot be cleanly separated
+
 <h2 id="cl-r23">Round 23: one home for the documentation <span class="cl-date">21 October</span></h2>
 <!-- flows:  -->
 
@@ -52,8 +124,7 @@ The detailed research log, with every file, is [`research/2026-10/README.md`](ht
 
 ### What changed
 
-Owner requests; no number changed (all 231 entries identical before and after). Decisions:
-[round 22](#view=how&sec=cl-r22).
+Owner requests; no number changed (all 231 entries identical before and after).
 
 1. **Views as tabs**: Map · Ranking · Sources in the header bar (`.vtabs`, role="tablist", arrow keys, Home and End);
    a full-width row under the question on phones. The Views block is gone from Filters; check 31 now asserts the
@@ -79,9 +150,7 @@ Owner requests; no number changed (all 231 entries identical before and after). 
 
 The owner asked for the views out of Filters, easier sources and a better organised country panel, then renamed the
 site and its numbers. **No number changed.** "Kept from Russia" in the rows above is now called **Business with
-Russia**; those rows keep the old name as the record. Details:
-[decisions](#view=how&sec=cl-r22); steps:
-[changelog](#view=how&sec=cl-r22).
+Russia**; those rows keep the old name as the record.
 
 - **Views as tabs** in the header bar, not in Filters — *raised by:* owner; *why:* "not really filters"; *effect:* display
 - **Country panel in three levels**, five named groups, sources grouped by part — *raised by:* owner; *why:* "perfect gradual exposure"; *effect:* display
@@ -98,8 +167,7 @@ and easier to trace the data and method in the sources. Same for the single coun
 and very well organised"; then a renaming, "do all of this renaming and make sure to do that everywhere". **No number
 changed** (every country's figures identical before and after). The second number, "Kept from Russia" from round 17 to
 round 21, is now **Business with Russia**: the rows of earlier rounds keep the old name as the record of what was
-decided then. Log: [round 22](#view=how&sec=cl-r22); steps:
-[changelog](#view=how&sec=cl-r22).
+decided then.
 
 - **The views are the page's main tabs**: Map · Ranking · Sources in the header bar (a full-width row on phones), keyboard tabs; not in Filters any more — *data or judgement:* judgement; *raised by:* owner; *why:* they change the page, they do not filter it; *effect:* display; *where:* `.vtabs`, `setView`
 - **The country panel in three levels**: numbers first; then what makes up the number, one compact card per part (how, why, its sources one line each, one fold of exact tables, the links); then five closed groups with a preview (over time, context, how certain, facts, share and compare) replacing eight loose folds; last all the country's sources, closed, grouped by part and numbered in that order — *data or judgement:* judgement; *raised by:* owner; *why:* gradual exposure: each level only when asked; *effect:* display; *where:* `methodCard`, `group`, `panelSources`, `renumber`
@@ -121,8 +189,8 @@ decided then. Log: [round 22](#view=how&sec=cl-r22); steps:
 
 #### Round 21: polish
 
-Owner request ("clean it up even more, make it look even more professional"); no number changed (`audit_tmp/calc.js`
-for all 231 entries identical). Decisions: [round 21](#view=how&sec=cl-r21).
+Owner request ("clean it up even more, make it look even more professional"); no number changed (the map's own model
+for all 231 entries identical).
 
 1. **Header bar** (`#bar`): the slim banner, the boxed header line on the map and the two buttons are one bar above the
    map. "Research preview · estimates not yet checked by a person · About"; About (`setAbout`) opens the full
@@ -163,8 +231,7 @@ Palestine stay as drawn, as on Google Maps. No number changed.
 
 ### Decisions
 
-The owner asked for a cleaner, more professional look. **No number changed.** Details:
-[decisions](#view=how&sec=cl-r21); steps: [changelog](#view=how&sec=cl-r21).
+The owner asked for a cleaner, more professional look. **No number changed.**
 
 - **One header bar** with the site's name, a short research-preview note (About opens the full text), the question and the two buttons — *raised by:* owner; *why:* the banner was cut off; the boxed title looked unfinished; *effect:* display
 - **Capital names beside the Kyiv and Moscow dots** at every zoom — *raised by:* owner; *why:* a dot without its name; *effect:* display
@@ -182,8 +249,7 @@ The owner asked for a cleaner, more professional look. **No number changed.** De
 #### Round 21: polish
 
 The owner asked to "clean it up even more, make it look even more professional" and approved seven changes. **No
-number changed** (every country's figures identical before and after). Log:
-[round 21](#view=how&sec=cl-r21); steps: [changelog](#view=how&sec=cl-r21).
+number changed** (every country's figures identical before and after).
 
 - **One header bar** above the map: the site's name, "Research preview · estimates not yet checked by a person · About" (About opens the full text: dates, how the figures were compiled, how to report an error), the question with its period and ⓘ, and the Highlights and Filters buttons (at the bottom on phones). It replaces the cut-off banner line and the boxed header on the map — *data or judgement:* judgement; *raised by:* owner; *why:* the banner ended mid-sentence; a boxed title on the map looked unfinished; *effect:* display; *where:* `#bar`, `setAbout`
 - **The names of Ukraine and Russia beside the dots of Kyiv and Moscow**, at a fixed distance on screen at every zoom — *data or judgement:* judgement; *raised by:* owner; *why:* zoomed in on Europe the Moscow dot was left without its name; *effect:* display; *where:* `placeLabels`
@@ -205,7 +271,7 @@ number changed** (every country's figures identical before and after). Log:
 
 ### What changed
 
-Owner request after round 19 went live; no number changed. Decisions: [round 20](#view=how&sec=cl-r20).
+Owner request after round 19 went live; no number changed.
 
 1. **Three views**: Map, Ranking, Sources. Ukraine vs Russia (`renderBubbles`) and Table & data (`renderTable`) are
    removed; `#view=bubbles` opens Ranking and `#view=table` opens Sources (`OLD_VIEW`).
@@ -224,8 +290,7 @@ Owner request after round 19 went live; no number changed. Decisions: [round 20]
 
 ### Decisions
 
-The owner asked for a simpler site after round 19 went live. **No number changed.** Details:
-[decisions](#view=how&sec=cl-r20); steps: [changelog](#view=how&sec=cl-r20).
+The owner asked for a simpler site after round 19 went live. **No number changed.**
 
 - **Three views**: Map, Ranking, Sources; Ukraine vs Russia and Table & data removed, their old links open Ranking and Sources — *raised by:* owner; *why:* simpler; *effect:* display
 - **The ranking as clean as the map**: its title in the header line, its explanation in the ⓘ — *raised by:* owner; *why:* "more clean like the map"; *effect:* display
@@ -238,8 +303,7 @@ The owner asked for a simpler site after round 19 went live. **No number changed
 
 The owner, after round 19 went live: "the ranking pages should be more clean like the map where you just click the (i)
 at the top to get the more information besides that you use the filter, remove the Ukraine vs Russia thing and the
-Table & data ... just keep the sources ranking and map to keep it simpler". **No number changed.** Log:
-[round 20](#view=how&sec=cl-r20); steps: [changelog](#view=how&sec=cl-r20).
+Table & data ... just keep the sources ranking and map to keep it simpler". **No number changed.**
 
 - **Three views**: Map, Ranking, Sources. Ukraine vs Russia and Table & data are removed; `#view=bubbles` opens Ranking, `#view=table` opens Sources — *data or judgement:* judgement; *raised by:* owner; *why:* simpler; *effect:* display; *where:* `VIEWS`, `OLD_VIEW`
 - **The ranking as clean as the map**: no title, filter line or notes above the chart; the header line names it ("Ranking: Net (the sum)") and its ⓘ explains the dots, lines, measure, scale and what the net adds. The list of countries too close to call stays below the chart — *data or judgement:* judgement; *raised by:* owner; *why:* "more clean like the map"; *effect:* display; *where:* `rankInfo`, `renderInfo`
@@ -257,8 +321,7 @@ Table & data ... just keep the sources ranking and map to keep it simpler". **No
 ### What changed
 
 Owner requests (the interface); no number changed for the net, support for Ukraine or kept from Russia
-(`audit_tmp/calc.js` for all 231 entries identical before and after). Decisions:
-[round 19](#view=how&sec=cl-r19).
+(the map's own model run on all 231 entries identical before and after).
 
 1. **Views in the Filters drawer.** A "Views" control at the top of the drawer: Map, Ranking, Ukraine vs Russia,
    Table & data, Sources. How it works is no longer a view (`#view=how` opens Sources; the panel's link to its
@@ -300,9 +363,7 @@ Owner requests (the interface); no number changed for the net, support for Ukrai
 ### Decisions
 
 The owner asked for a simpler interface: every filter in one drawer that stays open, the views listed at its top, and
-no cost view. **No number changed** for the net, support for Ukraine or kept from Russia. Details:
-[decisions](#view=how&sec=cl-r19); steps:
-[changelog](#view=how&sec=cl-r19).
+no cost view. **No number changed** for the net, support for Ukraine or kept from Russia.
 
 - **Views at the top of Filters** (Map, Ranking, Ukraine vs Russia, Table & data, Sources); How it works and the Top lists removed, their old links open Sources and the Ranking view — *raised by:* owner; *why:* one list of the ways to look at the data; *effect:* display
 - **Filters only in the drawer**: the views have no filters of their own and say in one line what they show — *raised by:* owner; *why:* two sets of filters disagreed; *effect:* display
@@ -318,10 +379,9 @@ no cost view. **No number changed** for the net, support for Ukraine or kept fro
 #### Round 19: one place for every filter
 
 The owner's interface requests, in order. Presentation only: **no number changed** for the net, support for Ukraine or
-kept from Russia (`audit_tmp/calc.js` for all 231 entries and `headline.json` byte-identical before and after; check 32
+kept from Russia (the map's own model run on all 231 entries and `headline.json` byte-identical before and after; check 32
 still matches the browser with Node). The rows of earlier rounds keep their wording as the record of what was decided
-then. Log: [round 19](#view=how&sec=cl-r19); steps:
-[changelog](#view=how&sec=cl-r19).
+then.
 
 - **Views at the top of the Filters drawer**: Map, Ranking, Ukraine vs Russia, Table & data, Sources, as one segmented control. **How it works is no longer a view**: its entry points are gone (`#view=how` opens Sources); its content is in these docs, and the panel's text that pointed to its waterfall now points to the method on each bar and to Sources. **The Top lists are gone** (the drawer's "Top lists" button and its top ten and bottom five, and the "Top lists" panel): the Ranking view does that; `#c=RANKINGS` and `#RANKINGS` open the Ranking view, and the panel's data-gaps table moved to Table & data — *data or judgement:* judgement (presentation); *raised by:* owner; *why:* the ways of looking at the data belong together, first; the top lists repeated the Ranking view; *effect:* display; old links keep working; *where:* `.dviews`, `VIEWS`, `OLD_VIEW`, `parseHash()`; check 31
 - **All filtering only in the drawer**: the Ranking, Ukraine vs Russia and Table & data views have no filter controls of their own (the group and "small economies" chips are gone). Each reads the drawer's state (what the map shows, measure, what's counted, region, group, size, year), updates live when it changes and says in one line what it shows ("Net (the sum) · % of GDP · EU · 2022–Aug 2026"), with a link that opens the drawer — *data or judgement:* judgement; *raised by:* owner; *why:* two sets of filters disagreed and confused; *effect:* display; *where:* `filterSummary()`, `views.js`, `views2.js`; check 31
@@ -343,8 +403,7 @@ then. Log: [round 19](#view=how&sec=cl-r19); steps:
 
 ### What changed
 
-Owner requests; no number changed (`audit_tmp/calc.js` for all 231 entries identical before and after). Decisions:
-[round 18](#view=how&sec=cl-r18).
+Owner requests; no number changed (the map's own model run on all 231 entries identical before and after).
 
 1. **Streams on phones.** The cause: off by default under 900px with the switch below the fold of the Filters sheet; a
    tapped country's streams drawn behind the bottom sheet; the moving dashes repainting the whole map SVG each frame.
@@ -370,13 +429,13 @@ Owner requests; no number changed (`audit_tmp/calc.js` for all 231 entries ident
 
 #### Round 18: the streams on phones, and a country panel of numbers and bars
 
-Two owner requests. Presentation only: **no number changed** (`audit_tmp/calc.js` for all 231 entries gives
+Two owner requests. Presentation only: **no number changed** (the map's own model run on all 231 entries gives
 byte-identical output and `headline.json` before and after; check 32 still matches the browser with Node). The
-round-17 rows above keep their wording as the record of what was decided then. Steps: [changelog](#view=how&sec=cl-r18).
+round-17 rows above keep their wording as the record of what was decided then.
 
 - **Money streams on by default on phones, calmer there** (owner: "the money flows are not working on mobile"). Cause found in phone emulation (iPhone 13, Pixel 7, both orientations): the streams were off by default under 900px and their switch sat below the fold of the Filters sheet, so on a phone nothing moved; switched on, a tapped country's own streams were drawn behind the bottom sheet (the map did not move), and the moving dashes, inside the map's SVG, repainted every country path each frame (about 47 fps with 4× CPU throttling; 31 fps at 6×). Now: on by default everywhere; on phones the 7 largest each way (12 on larger screens) and lines about half as thick; a tapped country's streams move into view above the sheet (beside it on a phone held sideways, where the panel is now a side sheet); the dashes are on their own layer (`#streamfx`) and pause while the page is hidden or the map is dragged; the gross-flow canvas loop runs only while those lines are on, at no more than 2 device pixels per CSS pixel; the reduced-motion arrowheads keep one size on screen (they grew with the zoom into blobs on phones) — *data or judgement:* judgement (presentation); *raised by:* owner; *why:* the streams are the map's story in euros; on a phone they were invisible or hidden; *effect:* display only; 60 fps on phone emulation with 4× throttling; the ⓘ says how many streams each way; *where:* `STREAMS_DEFAULT`, `streamTop()`, `drawStreams()`, `frameStreams()`, `#streamfx`, `startLoop()`
 - **The country panel: numbers and bars first, every explanation one tap away** (owner: "a lot of text ... I like just numbers ... very easy on the eyes at first. Keep all the explanations, but hide them: click to expand"). Default view: the name only (the code, people and GDP moved to a folded "About" section); the net as one big number with one compact line (€ · likely range · ≈ per year) and its certainty letter; the two parts as two tiles with a small bar, and Russian money frozen as a slim third tile where it exists; "what changes the meaning" as small flags with an icon; the 7 biggest parts as a diverging bar chart on one zero line (blue toward Ukraine, orange toward Russia), "Show the other N parts". Behind a tap, in place: the lead sentence and what the net adds (net), the parts in words, ranges, average year, gas Russia cut off and refugees not counted (tiles), each flag's meaning, each part's how / why / sources (bars). Everything else stays in the folded sections at the bottom — *data or judgement:* judgement (presentation); *raised by:* owner; *why:* the owner liked the bars and the bare numbers, not the sentences around them; *effect:* display only; nothing deleted: a browser check opens every fold before and after and finds every figure and every explanation sentence of the old panel in the new one (DEU, HUN, LTU, USA, CHN, PRK, BEL, TUR, IND, NGA, BLR, FRA); *where:* `netBlock()`, `partTiles()`, `meaningFlags()`, `leadParts()`, `partRow()`, `barAxis()`, `firstLayer()`, `countryPanel()`
-- **Each bar shows its likely range as a gradient plot** (owner: the range outline was "so vague to understand" and "not always there"). Cause found by measuring the 7 shown parts of every country (830 rows): no part lacks a low and high value, and the outline was drawn above the bar, not under it; but the chart's scale was set by the central values only, so in 539 of 830 rows (65%) the range ran past the chart edge and its outline was cut off there, where it merged with the track's own rounded edge; 20 ranges were under 4 px wide (Korea's aid 0.6 px), so the faint grey outline (45% opacity) vanished into the bar's end; and the two tiles' small bars never drew a range at all. Now, following [Correll & Gleicher 2014, "Error Bars Considered Harmful"](https://graphics.cs.wisc.edu/Papers/2014/CG14/Error%20Bars%20Considered%20Harmful%20Exploring%20Alternate%20Encodings%20for%20Mean%20and%20Error.pdf), which recommends gradient plots over bars with error bars because of the within-the-bar bias (Newman & Scholl 2012, *Psychonomic Bulletin & Review* 19(4):601–607) and the cliff effect at the ends of an interval: solid colour from zero to the low end of the likely range (what we are fairly sure of), a fade in the same hue from there to the high end (what it could be up to), and a thin dark tick, a little taller than the bar, at the best estimate. A range that crosses zero has no solid part: a faint fade in the faded colour of its leaning direction (as on the map) spreads both ways from zero, with the tick at the best estimate. The scale now makes room for the ranges (each side grows by at most half the central values' span, so one very wide range does not squash every other bar; beyond that the fade is cut at the edge at the strength it has there); the fade is at least 6 px wide and the tick has a hairline of the surface colour, so both read in light and dark. A one-line key above the bars (at least · could be up to · best estimate); each part's opened row now gives its range in words in % of GDP and €. The two tiles use the same bar; the net has no bar — *data or judgement:* judgement (presentation); *raised by:* owner; *why:* an outline box around a bar is read as "the bar" (values inside it look more likely) and the box was often missing; a fade shows "at least" and "could be up to" without a hard edge; *effect:* display only; numbers identical (`audit_tmp/calc.js`, all 231 entries); *where:* `barAxis()`, `barHtml()`, `fadeHtml()`, `barKey()`, `partTiles()`, `methodCard()`, `--fa0`…`--fx1`
+- **Each bar shows its likely range as a gradient plot** (owner: the range outline was "so vague to understand" and "not always there"). Cause found by measuring the 7 shown parts of every country (830 rows): no part lacks a low and high value, and the outline was drawn above the bar, not under it; but the chart's scale was set by the central values only, so in 539 of 830 rows (65%) the range ran past the chart edge and its outline was cut off there, where it merged with the track's own rounded edge; 20 ranges were under 4 px wide (Korea's aid 0.6 px), so the faint grey outline (45% opacity) vanished into the bar's end; and the two tiles' small bars never drew a range at all. Now, following [Correll & Gleicher 2014, "Error Bars Considered Harmful"](https://graphics.cs.wisc.edu/Papers/2014/CG14/Error%20Bars%20Considered%20Harmful%20Exploring%20Alternate%20Encodings%20for%20Mean%20and%20Error.pdf), which recommends gradient plots over bars with error bars because of the within-the-bar bias (Newman & Scholl 2012, *Psychonomic Bulletin & Review* 19(4):601–607) and the cliff effect at the ends of an interval: solid colour from zero to the low end of the likely range (what we are fairly sure of), a fade in the same hue from there to the high end (what it could be up to), and a thin dark tick, a little taller than the bar, at the best estimate. A range that crosses zero has no solid part: a faint fade in the faded colour of its leaning direction (as on the map) spreads both ways from zero, with the tick at the best estimate. The scale now makes room for the ranges (each side grows by at most half the central values' span, so one very wide range does not squash every other bar; beyond that the fade is cut at the edge at the strength it has there); the fade is at least 6 px wide and the tick has a hairline of the surface colour, so both read in light and dark. A one-line key above the bars (at least · could be up to · best estimate); each part's opened row now gives its range in words in % of GDP and €. The two tiles use the same bar; the net has no bar — *data or judgement:* judgement (presentation); *raised by:* owner; *why:* an outline box around a bar is read as "the bar" (values inside it look more likely) and the box was often missing; a fade shows "at least" and "could be up to" without a hard edge; *effect:* display only; numbers identical (the map's own model, all 231 entries); *where:* `barAxis()`, `barHtml()`, `fadeHtml()`, `barKey()`, `partTiles()`, `methodCard()`, `--fa0`…`--fx1`
 
 </details>
 
@@ -388,8 +447,7 @@ round-17 rows above keep their wording as the record of what was decided then. S
 ### What changed
 
 **Redesign: the map first (option B), 20 October 2026.** The owner chose option B of the first-view prototypes, with
-the country panel and highlights of prototype v2 and the "what's counted" switches of concept 2. Decisions:
-[decisions](#view=how&sec=cl-r17), [log](#view=how&sec=cl-r17).
+the country panel and highlights of prototype v2 and the "what's counted" switches of concept 2.
 **No number changed**: `calc()` with every part counted is the same code, and the model's output for all 231 entries
 is byte-identical before and after (check 32 still matches the browser with Node).
 
@@ -448,8 +506,7 @@ proposed "poorer importer" rule (not approved; the round-14 fairness note stays)
 ### Decisions
 
 The owner compared the first-view prototypes A, B and C and **chose B**: the map first, with money streams, v2's
-country panel and highlights, and concept 2's "what's counted" switches. **No number changed.** Details:
-[decisions](#view=how&sec=cl-r17); steps: [changelog](#view=how&sec=cl-r17).
+country panel and highlights, and concept 2's "what's counted" switches. **No number changed.**
 
 - **Map first**: on load only the slim research-preview banner, one header line with ⓘ, a one-row legend and two buttons (Highlights, Filters) — *raised by:* owner; *why:* the controls covered the map; *effect:* display
 - **Filters collapsed by default**, with a dot when anything differs — *raised by:* owner; *why:* one place for every control; *effect:* display
@@ -467,14 +524,13 @@ country panel and highlights, and concept 2's "what's counted" switches. **No nu
 The owner tested three first-view prototypes (A: the net map with two bars on hover; B: the net map with money streams;
 C: two maps side by side) and the two earlier prototypes (v2: the method on the bars and the highlights; concept 2: the
 "what's counted" switches), and **chose option B**, with v2's country panel and highlights and concept 2's switches.
-These are presentation choices: **no number changed** (`audit_tmp/calc.js` for all 231 entries and
+These are presentation choices: **no number changed** (the map's own model run on all 231 entries and
 `pipeline/site_numbers.mjs` give byte-identical output before and after; check 32 still matches the browser with Node).
-Log: [round 17](#view=how&sec=cl-r17); steps: [changelog](#view=how&sec=cl-r17).
 
 - **The map first**: on load the map fills the screen, with only the research-preview banner as one slim line (it opens on click), one header line ("Who supported Ukraine, and who paid Russia less, or more? · 2022–Aug 2026" with an ⓘ popover), a one-row legend ("toward Russia ← no clear change → toward Ukraine") and two buttons, Highlights and Filters — *data or judgement:* judgement (presentation); *raised by:* owner (option B); *why:* the bar of controls, the title box and the large legend covered half the map and asked for decisions before the reader had seen anything; *effect:* display; the explanation (the three points, the per-year example, the orange caveat, what grey means, what the streams show) is in the ⓘ popover; *where:* `index.html` (`.topline`, `.hdr`, `.tr`, `renderLegend()`, `renderInfo()`); check 31 and the round-17 browser checks
 - **Filters collapsed by default**: a drawer with find a country, the four views, the measure, "€ to Ukraine" and "Change in € to Russia", what's counted, region, group, size, year, the rankings and top lists, the pages (Ranking, Ukraine vs Russia, Table & data, How it works, Sources), the map layers, zoom, theme and language. The button shows a dot when anything differs from the default — *data or judgement:* judgement; *raised by:* owner; *why:* one place for every control, out of the way until wanted; *effect:* display; the region, group and size filters are shared by the map (others dimmed), the drawer's ranking and the views; *where:* `#drawer`, `renderDrawer()`, `filtersChanged()`, `eligible()` in `views.js`
 - **One colour rule everywhere**: blue = toward Ukraine, orange = toward Russia, grey = no clear change, with the site's colour-blind-safe blue and orange in both themes; no teal and no bivariate mixing. Grey also for "too close to call" (no dot pattern; later in round 17 the owner changed this to a faded colour of the leaning direction, see below), for support below zero and for a net below zero that is mainly earning from the war effort (gold until round 17), and for a gain in the cost view. The EUR 5bn colour clamp (round 16) is kept — *data or judgement:* judgement (presentation); *raised by:* owner; *why:* two hues for two directions read at a glance; earning from Ukraine's war effort is not money toward Russia; *effect:* display; `browser_check.mjs` now expects a too-close-to-call small economy in the neutral grey; *where:* `scaleFor()`, `ONE_SIDED`, `paint()`, `--back`; [overview](#view=how&sec=m-overview-round-17-the-map-first)
-- **Too close to call: a faded colour of the leaning direction, not grey** (owner, after the redesign: "I don't like all the uncertain countries being grey even if they strongly lean"). A number whose likely range or method band crosses zero is painted the colour its value would get (the EUR 5bn clamp included), mixed halfway toward the neutral grey (`d3.interpolateRgb(…, --mid)(0.5)`): a strong lean stays a clear but lighter, greyer blue or orange. No dots and no outline (the round-15 dashed edge is gone). Still not ranked, still "too close to call" in the hover card and the panel, still no stream. The hover card's two bars use the same mix; the panel's big number mixes toward the soft ink so it keeps its contrast. Grey stays for no clear change and for a net below zero that is mainly earning from the war effort. The legend's "More" and the ⓘ add a faded swatch; all six languages — *data or judgement:* judgement (presentation); *raised by:* owner; *why:* the lean is information: grey hid that Türkiye leans toward Russia and Brunei toward Ukraine, while "too close to call" and the unranked status still say the sign is not settled; *effect:* display only, no number changed (`audit_tmp/calc.js` identical for all 231 entries); 61 countries on the default map (net, % of GDP, 2022–Aug 2026) turn from grey to a faded colour; `browser_check.mjs` (check 32) now expects a too-close-to-call small economy in the faded lean colour; *where:* `scaleFor().fadedFor`, `paint()`, `twoBars()`, `firstLayer()`, `.total .n.fpos/.fneg`, `renderLegend()`, `renderInfo()`, `meaningNotes()`
+- **Too close to call: a faded colour of the leaning direction, not grey** (owner, after the redesign: "I don't like all the uncertain countries being grey even if they strongly lean"). A number whose likely range or method band crosses zero is painted the colour its value would get (the EUR 5bn clamp included), mixed halfway toward the neutral grey (`d3.interpolateRgb(…, --mid)(0.5)`): a strong lean stays a clear but lighter, greyer blue or orange. No dots and no outline (the round-15 dashed edge is gone). Still not ranked, still "too close to call" in the hover card and the panel, still no stream. The hover card's two bars use the same mix; the panel's big number mixes toward the soft ink so it keeps its contrast. Grey stays for no clear change and for a net below zero that is mainly earning from the war effort. The legend's "More" and the ⓘ add a faded swatch; all six languages — *data or judgement:* judgement (presentation); *raised by:* owner; *why:* the lean is information: grey hid that Türkiye leans toward Russia and Brunei toward Ukraine, while "too close to call" and the unranked status still say the sign is not settled; *effect:* display only, no number changed (the map's own model identical for all 231 entries); 61 countries on the default map (net, % of GDP, 2022–Aug 2026) turn from grey to a faded colour; `browser_check.mjs` (check 32) now expects a too-close-to-call small economy in the faded lean colour; *where:* `scaleFor().fadedFor`, `paint()`, `twoBars()`, `firstLayer()`, `.total .n.fpos/.fneg`, `renderLegend()`, `renderInfo()`, `meaningNotes()`
 - **The Filters drawer in seven sections** (owner: it "can look better"): the map shows and the measure as full-width segmented controls; find a country; what's counted (folded, on/off switches grouped by side, the official/custom status under the heading); where and when; map layers (switches, markers grouped, zoom); rankings and top lists (the pages as a 3×2 grid, Top lists, the top ten and bottom five folded); display (light or dark, language). One heading style, one spacing, one left edge; a sticky header with the close button; a bottom sheet with a grab handle on phones instead of a full-screen page — *data or judgement:* judgement (presentation); *raised by:* owner; *why:* theme and language sat beside the search at the top, the four views wrapped onto two ragged rows, the 17 switches and the top-15 list were always open and pushed the map layers to the bottom; a reader looking for one control had to scan everything; *effect:* display only; every control, id and default unchanged; *where:* `#drawer`, `.dblock`, `.seg-grid`, `.dfold`, `renderDrawer()`
 - **The country panel, each number once** (owner: it "has all the information (some duplicated)"): header (name, a one-sentence lead in words, the net with €, likely range, certainty and average year); the two parts side by side, each with value, €, bar, words, likely range, grade and average year, and Russian money frozen on its own line; at most four notes on what changes the meaning; the five biggest parts and "Show the other N parts"; then folded sections: cost (with money flowing back), method band and alternatives (with the method notes, coverage, "How this is calculated"), markers, sanctions or own choice, per year, aid, companies and people, share and compare, sources. Removed as duplicates: the lead's numbers (the net, both parts, per year, frozen), the "Show more" repeat of the net line, both parts' cards, the net's likely range and the average year, the waterfall (the same parts; it stays in How it works, linked), the sanctions split and the critical goods in the notes (each now in its own section), the earner note in the parts, the top five repeated in "all parts", and the subtotals in its group headings; the map value shows only when it is a different number (per person or total €) — *data or judgement:* judgement (presentation); *raised by:* owner; *why:* in the audit of DEU, HUN, LTU, USA, CHN, PRK and BEL the net appeared 4 times, its euro value 4, the average year 3, each part 3 to 6, Russian money frozen 4 to 7 and each top part twice; *effect:* display only, no number changed; nothing deleted that is not shown elsewhere in the panel or the How it works view; *where:* `leadLine()`, `twoParts()`, `meaningNotes()`, `firstLayer()`, `countryPanel()`, `fold()`
 - **"Kept from Russia"** replaces "Change in payments to Russia" everywhere: site, views, panel, rankings, lists, table, CSV and JSON (`kept_from_russia_*`, `kept_from_russia`), share text, share cards, OG text, docs and all six languages. Positive = kept from Russia (paid Russia less than without the war) = blue; negative = paid it more = orange. In sentences the sign is in words: "paid Russia €65.8bn (1.6% of GDP) less than without the war". The net = support for Ukraine + kept from Russia + Russian money frozen — *data or judgement:* judgement (wording); *raised by:* owner; *why:* next to "+1.6%" the old name read as "paid Russia more"; *effect:* wording; `lens=kept` opens the view (the address keeps `lens=payments`); the CSV gains a `figures` column; *where:* `keptWords()`, `supportWords()`, `shareText()`, `views.js`, `share_cards.mjs`, `i18n/`
@@ -484,7 +540,7 @@ Log: [round 17](#view=how&sec=cl-r17); steps: [changelog](#view=how&sec=cl-r17).
 - **The country panel**: side panel on desktop, bottom sheet on phones; a one-sentence headline, the total with its range and certainty in words, the two parts as bars in words, "What changes the meaning here" (with the orange caveat for orange countries), the five biggest parts and "Show all parts". **Every part opens in place**: how it is calculated (two or three plain sentences), why it is done this way (one line, with links to its section in this page and the decision log), this country's sources with their exact tables, and links to the method page, the full trace and all sources for the flow. Everything the panel showed before (map value, share, compare, method band, grades, markers, cost, money flowing back, per year, coverage, sources) is behind "Show more" — *data or judgement:* judgement; *raised by:* owner (v2); *why:* the method was a link away; now it sits on the number it explains; *effect:* display; *where:* `firstLayer()`, `methodCard()`, `HOW`, `WHY`, `countryPanel()`
 - **The Sources view opens with the method in four lines** and how decisions are made, and each money flow adds how it is calculated and why — *data or judgement:* judgement; *raised by:* owner (v2); *why:* the method page of v2; *effect:* display; `#view=sources&flow=…` unchanged; *where:* `renderSources()`, `flowHtml()`
 - **Map markers off by default** (critical goods, wages from Russia, taken by Russia), switched on in Filters; still in every panel — *data or judgement:* judgement; *raised by:* owner ("only the map" on load); *why:* they crowded the first view; *effect:* display; *where:* `state.chpl`, `state.remit`, `state.taken`
-- **Not ported**: the bivariate map and its 3×3 legend (replaced by the one colour rule), concept 2's ledger workbench layout, v2's separate Rankings page (the Ranking view and the drawer's top ten do this), option C's two maps, the prototypes' proposed "poorer importer" rule for economies under EUR 1,000bn (not approved; the site keeps its round-14 fairness note) and the full list of every decision row per flow (each part links to its decisions section and log instead) — *data or judgement:* judgement; *raised by:* owner; *why:* see [changelog](#view=how&sec=cl-r17); *effect:* none
+- **Not ported**: the bivariate map and its 3×3 legend (replaced by the one colour rule), concept 2's ledger workbench layout, v2's separate Rankings page (the Ranking view and the drawer's top ten do this), option C's two maps, the prototypes' proposed "poorer importer" rule for economies under EUR 1,000bn (not approved; the site keeps its round-14 fairness note) and the full list of every decision row per flow (each part links to its decisions section and log instead) — *data or judgement:* judgement; *raised by:* owner; *why:* see changelog; *effect:* none
 
 </details>
 
@@ -495,8 +551,7 @@ Log: [round 17](#view=how&sec=cl-r17); steps: [changelog](#view=how&sec=cl-r17).
 
 ### What changed
 
-Check 16 (economist and data journalist, 20 October 2026), approved by the owner. Decisions:
-[decisions](#view=how&sec=cl-r16b), [log](#view=how&sec=cl-r16b). Movers
+Check 16 (economist and data journalist, 20 October 2026), approved by the owner. Movers
 are % of a year's GDP, 2022 to August 2026, round 16 → round 16b.
 
 1. **Small-flow baseline** (B1, N1): the median of 2019, 2020 and 2021 at 2019–2021 prices, computed from the yearly
@@ -530,7 +585,6 @@ are % of a year's GDP, 2022 to August 2026, round 16 → round 16b.
 
 A pre-release check of round 16 found that Brunei's rise came from a mislabelled field (B1) and that the new colour
 clamp painted negative micro-states as "no change" (B2), with ten smaller points. The **owner approved** the fixes.
-Details: [decisions](#view=how&sec=cl-r16b); steps: [changelog](#view=how&sec=cl-r16b).
 
 - **Small-flow baseline: the median of 2019–2021 at pre-war prices, from the yearly series**; refinery openings and closures (Brunei, New Zealand) and mirror-only data (Syria) keep 2021 (B1, N1) — *raised by:* check, owner; *why:* the "average" was 2021 at 2021 prices for 28 flows; one-off years decided the mean; *effect:* Brunei +5.04 → +2.35, Malta +0.79 → +0.28 (payments)
 - **Lightest colour of each direction for small economies** (B2) — *raised by:* check, owner; *why:* negatives fell into the neutral colour; *effect:* display
@@ -569,7 +623,7 @@ B2) and ten smaller points; the **owner approved** the fixes below. Each row say
 ### What changed
 
 Review 5 (economist and data journalist), approved by the owner; the owner kept the net as the default view and
-ranking. Decisions: [decisions](#view=how&sec=cl-r16), [log](#view=how&sec=cl-r16).
+ranking.
 Steps, in the order applied, with the main movers (% of a year's GDP, 2022 to August 2026):
 
 1. **Bands, rankings and grades in the browser** (C2): `detail.json` (the method band's alternatives) loads with the
@@ -620,8 +674,8 @@ more; direction uncertain on support 96, on payments 123 and on the net 114 (rou
 
 A fifth independent review (economist and data journalist) raised the points below; the **owner approved** each and
 **kept the net as the default view and ranking** (the review asked to stop ranking it). Two points were the owner's
-own additions to the brief: the "Russia's net gain" wording and refugee spending flowing back. Details, data and
-effects: [decisions](#view=how&sec=cl-r16); all steps: [changelog](#view=how&sec=cl-r16).
+own additions to the brief: the "Russia's net gain" wording and refugee spending flowing back.
+
 
 - **The method band's alternatives load before anything is drawn**, and a real-browser check compares the page with the Node model (C2) — *raised by:* review, owner; *why:* the page ranked countries its own rule leaves out; *effect:* the browser shows what the checks report
 - **Poland's refugee scope factor in 2022 only**; Germany's later years at the reported federal figure (H1) — *raised by:* review, owner; *why:* a 2022 projection applied to every year; *effect:* Poland support +1.95 → +1.28 (with step 13)
@@ -647,8 +701,7 @@ effects: [decisions](#view=how&sec=cl-r16); all steps: [changelog](#view=how&sec
 A fifth independent review ("review 5", economist and data journalist) raised C1, C2, H1–H6, M1–M6 and L1–L4. **The
 owner approved the changes below** (items 1–8 and 10–17 of the round-16 brief); **every row is "raised by review 5,
 approved by owner"** unless it says otherwise. The owner **kept the net as the default view and ranking**, with its
-warning line (review C1 asked to stop ranking it; the owner prefers simplicity). Log: [round 16](#view=how&sec=cl-r16);
-steps and effects: [changelog](#view=how&sec=cl-r16).
+warning line (review C1 asked to stop ranking it; the owner prefers simplicity).
 
 - **Nothing is worked out before the method band's alternatives load** (C2): `detail.json` loads with `data.json`, before the first render; the caches of bands and grades fill only once the alternatives are in (`ALTS_READY`) and are emptied by `resetModelCaches()`. A real-browser check compares the page with the Node model — *data or judgement:* test (a bug fix); *why:* the page drew the map and cached bands and grades before `detail.json` arrived and never cleared them, so it ranked countries the documented rule leaves out (Nepal, Mauritius on the net; Australia, Mauritius, Nigeria, Nepal on payments); *effect:* the browser now shows what `check_data.py` reports; on the old code the new check finds 115 mismatches; *where:* `index.html` load; [`pipeline/browser_check.mjs`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/browser_check.mjs); check 32
 - **Poland's refugee scope factor in 2022 only** (H1): the 2022 gap between broad estimates and reported spending scales 2022; later years keep the reported figure. Germany had the same gap built into its central values in every year, so from 2023 its central is the reported federal figure — *data or judgement:* data (the ratio is a 2022 projection) and judgement (later years); *why:* a 2022 OECD projection says nothing about 2023–2026; Poland ended most free accommodation in 2023; *effect:* Poland's hosting EUR 9.6bn → 4.9bn, support +1.95% → +1.34%; Germany 25.1bn → 19.7bn, +1.70% → +1.58%; *where:* `REFUGEE_SCOPE_YEARS`, `SCOPE_IN_CENTRAL`; [refugees](#view=how&sec=m-aid-refugees-military-refugees)
@@ -678,9 +731,7 @@ steps and effects: [changelog](#view=how&sec=cl-r16).
 
 ### What changed
 
-Review 4 (economist and data journalist), approved by the owner; two points raised by the owner. Decisions:
-[decisions](#view=how&sec=cl-r15),
-[log](#view=how&sec=cl-r15).
+Review 4 (economist and data journalist), approved by the owner; two points raised by the owner.
 
 1. **Docs brought up to date** (H4): Poland's reading guide, the limitations table, the overview's units (current
    euros since round 14) and every round-15 figure; headline figures in the docs now carry a tag
@@ -713,7 +764,7 @@ Combined, round 14b → round 15 (support for Ukraine; net): Denmark +3.40 → +
 Estonia +1.99 → +2.07; +9.90 → +10.33; at the other end Hungary −5.33 → −5.77, Libya −6.16 → −6.54, Yemen −6.11 →
 −5.13, India −2.08 → −2.21, China −0.66 → −0.63, Nigeria +0.81 → +0.44, Belarus −2.52 → −2.78 (net).
 
-Then, at the owner's request (the net first, then its two parts; [decisions](#view=how&sec=cl-r15)):
+Then, at the owner's request (the net first, then its two parts; decisions):
 
 10. **Four views, the net first**: "Net (the sum)" is the default map, ranking, top lists, share-card headline and
     OG text, always with its warning; then "Support for Ukraine", "Change in payments to Russia" (with the world
@@ -730,8 +781,7 @@ Then, at the owner's request (the net first, then its two parts; [decisions](#vi
 ### Decisions
 
 A fourth independent review (economist and data journalist) raised every point below except two, which the **owner
-raised**; the owner approved each. Details, data and effects: [decisions](#view=how&sec=cl-r15);
-all steps: [changelog](#view=how&sec=cl-r15).
+raised**; the owner approved each.
 
 - **Support for Ukraine is the default map**; the change in payments to Russia a second map with the world total; the net a third, with a warning (C1) — *raised by:* review, owner; *why:* the net adds two different things and credits each buyer with a market-wide effect; *effect:* display
 - **"Paid Russia more than before the war" and "Armed Russia"** replace "Who helps Russia the most" (C2) — *raised by:* review, owner; *why:* poor fuel importers ranked above Iran; *effect:* display
@@ -749,8 +799,7 @@ all steps: [changelog](#view=how&sec=cl-r15).
 A fourth independent review ("review 4", economist and data journalist) raised C1, C2, H2–H4, M1, M2, M4, M5, L1–L3;
 **the owner approved each** with instructions. Two points were **raised by the owner**: refugees hosted by the
 aggressor side (item 4) and the Hormuz crisis in 2026. The review's H1 (links to a stale `main`) does not apply: `main`
-and `develop` are identical. Log: [round 15](#view=how&sec=cl-r15);
-steps and effects: [changelog](#view=how&sec=cl-r15).
+and `develop` are identical.
 
 - **Three maps** (C1): support for Ukraine is the default map colour, ranking and share-card headline; the change in payments to Russia is a second map ("Paid Russia less than before the war" / "Paid Russia more than before the war") with the world total in its title (EUR 358.8bn less paid by buyers who cut, 226.7bn more by others); the net is a third, with the warning "adds two different things: aid given and payments to Russia avoided; much of what one country stopped paying, Russia sold to others" — *data or judgement:* judgement (presentation); *raised by:* review, approved by owner; *why:* the net adds aid at full value to payments avoided at Russia's rent, and gives each buyer the full credit for a market-wide effect; *effect:* display; old links with `lens=change` open the net; *where:* `HEAD_LENS`, `OLD_LENS`, `scaleFor()`, `titleNote()` in `index.html`
 - **Two named lists** (C2) replace "Who helps Russia the most": "Paid Russia more than before the war" (the payments map's negative end, with the round-14 note that fuel is fungible and the figure reflects purchases, not a policy) and "Armed Russia" (weapons and troops at full value: North Korea 8.8, Iran 3.5, China 1.3, Belarus 1.3 EUR bn) — *data or judgement:* data (military values, round 6) and judgement (the split); *raised by:* review, approved by owner; *why:* the old heading put poor fuel importers above Iran, whose drones count at the seller's gain; *effect:* display; totals unchanged (paid deliveries still at the seller's gain, round 13); *where:* `targetPanel()`
@@ -772,7 +821,7 @@ steps and effects: [changelog](#view=how&sec=cl-r15).
 
 After review 4, the owner changed the order of the views. Owner: **start with the net, then its two parts; removed the
 gross To Ukraine/To Russia views because they include normal trade and measure something different; renamed Cost carried
-to Cost to the country.** No number changed. Log: [round 15](#view=how&sec=cl-r15).
+to Cost to the country.** No number changed.
 
 - **The net first** (replaces the default in "Three maps" above): four views in this order, "Net (the sum)" (the default map colour, ranking, top lists, share-card headline and OG text, always with its warning), "Support for Ukraine", "Change in payments to Russia" (with the world total) and "Cost to the country"; share cards lead with the net and still show both parts and the main-part qualifiers — *data or judgement:* judgement (presentation); *raised by:* owner; *why:* the net is the map's question; the warning and the two parts keep it from being read as aid alone; *effect:* display; an address without `lens` opens the net; *where:* `state`, `LENS_RANK`, `OLD_LENS` in `index.html`; `share_cards.mjs`; check 31
 - **Gross views removed**: "To Ukraine" (aid + refugees + purchases from Ukraine) and "To Russia" (payments, laundered oil, taxes, weapons, services, hidden channels) — *data or judgement:* judgement; *raised by:* owner; *why:* gross totals include trade that existed before the war, so they measure something different from the change since before the war; *effect:* display; the gross flows stay in the panel's small charts, the table and downloads and the flow lines; old links with `lens=ukr` open support for Ukraine, `lens=rus` the change in payments to Russia; *where:* `OLD_LENS`; [overview](#view=how&sec=m-overview-the-other-lenses)
@@ -788,7 +837,7 @@ to Cost to the country.** No number changed. Log: [round 15](#view=how&sec=cl-r1
 ### What changed
 
 **Two owner changes, 19 October 2026** ([decisions](#view=how&sec=cl-why),
-[decision log](#view=how&sec=cl-r14b)). Net % of a year's GDP,
+decision log). Net % of a year's GDP,
 each step alone:
 
 1. **Taken by Russia, not in the totals.** Seizures (round 14, M4) and forced exit costs (round 5: the forced discount
@@ -817,9 +866,7 @@ top 20, Portugal leaves it. Totals' letters: 1 A, 6 B, 205 C, 19 D.
 
 ### Decisions
 
-Two changes, both **raised by the owner**. Details: [decisions](#view=how&sec=cl-why)
-and [decisions](#view=how&sec=cl-r14b); steps and effects in the
-[changelog](#view=how&sec=cl-r14b).
+Two changes, both **raised by the owner**. The reasons are in [why each money flow is counted](#view=how&sec=cl-why).
 
 - **Seizures and forced exit costs out of the totals, counted as a cost carried** (reverses round 5's forced discounts and exit fees and round 14's M4 seizures); shown in the panel, table, CSV, JSON and as a map marker; check 25 — *raised by:* owner; *why:* a loss imposed on the country's companies and a gain for Russia; the country did not choose to move that money; *effect:* Finland +0.88, Austria +0.72, Ireland +0.54, Denmark +0.52; cost view up by the same amounts
 - **Russia's and Ukraine's normal return as for every seller**: 5% real + the country risk premium, on book capital as a nominal USD rate (Russia 11.4%, Ukraine 23.0%); capital per unit of revenue measured for every product group — *raised by:* owner (after the round-14 check); *why:* one rule for every seller; the files subtracted 2.4 and 15 points too little; *effect:* Estonia −1.27, Lithuania −1.12 (from Russia's lower gain shares, not Ukraine's normal return), Moldova −0.99, Libya +0.86, Yemen +0.75
@@ -854,8 +901,7 @@ less from Russia credits less, buying more from Russia costs less, and extra pur
 
 ### What changed
 
-**Independent audit 3, 19 October 2026** (every change raised by the audit and approved by the owner;
-[decisions](#view=how&sec=cl-r14), [decision log](#view=how&sec=cl-r14)).
+**Independent audit 3, 19 October 2026** (every change raised by the audit and approved by the owner).
 Steps in the order applied, net % of a year's GDP, each step alone:
 
 1. **C1, measured fuel share** in Russia's gain on what was bought: Yemen −7.86 → −4.06, Moldova 7.77 → 6.06, Libya
@@ -888,7 +934,7 @@ Nigeria (+0.93, range +0.14 to +1.75), Malta and Ireland leave the top 20; Monte
 
 ### Decisions
 
-A third independent review ("audit 3", economist and data journalist) raised every point below; the owner approved each, with instructions for C1–C4, H1–H5, M1–M6 and L1–L5. Details, data and effects: [decisions](#view=how&sec=cl-r14); all steps: [changelog](#view=how&sec=cl-r14).
+A third independent review ("audit 3", economist and data journalist) raised every point below; the owner approved each, with instructions for C1–C4, H1–H5, M1–M6 and L1–L5.
 
 - Use the **measured fuel share** in Russia's gain on what was bought (C1), and **customs values** for what was bought each year, not tracker tonnes (C2) — *raised by:* audit, owner; *why:* a 60-country average and tonnes that contradict customs drove the bottom of the ranking; *effect:* Yemen −7.86 → −6.86 (both), Uzbekistan −6.15 → −3.53, Tunisia −7.09 → −4.92, Libya −5.20 → −7.03
 - **FOB on both sides** of the windfall: freight surge taken out of customs values (C3) — *raised by:* audit, owner; *why:* the freight surge counted as Russia's windfall and again for shipowners; *effect:* India −2.74 → −2.38, China −1.03 → −0.72, Türkiye −3.08 → −2.62
@@ -905,7 +951,7 @@ A third independent review ("audit 3", economist and data journalist) raised eve
 
 #### Round 14: independent audit 3
 
-A third independent review by an economist and a data journalist (19 October 2026, "audit 3") found two coding inconsistencies in Russia's gain on what was bought, a price-basis error in the windfall, a share-card qualifier printed for countries it did not apply to, stale flowback text, artefacts for Nigeria, Lebanon, Belgium and Malta, and a method band that left out the choices that moved results. Every change below was **raised by the audit and approved by the owner**. Each row says what is data and what is judgement. Effects are on the net, % of a year's GDP, for that step alone, in the order applied (all steps and the combined before/after: [changelog](#view=how&sec=cl-r14)).
+A third independent review by an economist and a data journalist (19 October 2026, "audit 3") found two coding inconsistencies in Russia's gain on what was bought, a price-basis error in the windfall, a share-card qualifier printed for countries it did not apply to, stale flowback text, artefacts for Nigeria, Lebanon, Belgium and Malta, and a method band that left out the choices that moved results. Every change below was **raised by the audit and approved by the owner**. Each row says what is data and what is judgement. Effects are on the net, % of a year's GDP, for that step alone, in the order applied.
 
 - **C1. Measured fuel share in the net-gain step**: `apply_net_gain()` uses `fossil_share()` (the measured 2018–2021 mix in `prices.json`), as the price index and the windfall do, and the measured split over fuels where customs give it; `check_data.py` check 22 — *data or judgement:* data (a coding inconsistency); *why:* 172 economies outside the 60 largest buyers took the 60-country average (57% fuel): Yemen's wheat counted as half fuel; *effect:* Yemen −7.86 → −4.06, Moldova 7.77 → 6.06, Libya −5.20 → −3.72, Nigeria 1.51 → 1.06; *where:* [prices](#view=how&sec=m-prices-the-mix-of-what-was-bought-round-14)
 - **C2. What was bought from customs values**: the fuel share of each year's purchases from the country's customs values per fuel, each deflated by its own price level, moved in odds against 2018–2021 (no cap at 100% fuel); tracker tonnes only split fuels, not in copied years (25 economies repeat 2024 in 2025) — *data or judgement:* data (customs) with a judgement (odds anchoring); *why:* tracker tonnes contradicted customs (Uzbekistan's products 13 times 2021) and capped Yemen and Tunisia at all fuel; *effect:* Uzbekistan −6.32 → −3.16, Belarus −5.00 → −2.02, Tunisia −7.54 → −5.06, Libya −3.72 → −6.63, Yemen −4.06 → −6.87; *where:* [prices](#view=how&sec=m-prices-the-mix-of-what-was-bought-round-14)
@@ -935,7 +981,7 @@ A third independent review by an economist and a data journalist (19 October 202
 ### What changed
 
 **Remittances as a marker; laundered oil only where both routes are measured, 19 October 2026** (two owner decisions
-after the round-13 report, both raised by the audit; [decisions](#view=how&sec=cl-r13b),
+after the round-13 report, both raised by the audit; decisions,
 [decision log](#view=how&sec=cl-r13)). Net % of a year's GDP:
 
 1. **Remittances out of the totals, shown as a marker** (△ in the panel, map layer "Wages from Russia", columns marked
@@ -963,7 +1009,7 @@ bottom. Togo, Tajikistan, Montenegro and Argentina left the ranking (their range
 #### Round 13b: remittances as a marker, laundered-oil routes
 
 Two owner decisions after the round-13 report (19 October 2026), both raised by the audit. Effects are on the net, % of
-a year's GDP, for that change alone; every other country is unchanged ([changelog](#view=how&sec=cl-r13b)).
+a year's GDP, for that change alone; every other country is unchanged (changelog).
 
 - **Remittances out of the totals, shown as a marker**: no longer in the net shift, the cost view, either headline number, the method band or the share cards; the change in labour remittances from Russia against the expected level is shown in the panel ("depends on wages earned in Russia" where migrants sent at least 1% of GDP a year), as a map layer (a triangle, "Wages from Russia") and as columns marked "not in totals" in the table, CSV and JSON. **Reverses the owner's round-7 decision** — *data or judgement:* rule (owner); the 1% of GDP threshold for the map is a judgement; *why:* individuals' wages, not a country's choice; the money flows from Russia to the migrant's home; the real gain over the alternatives is small and hard to measure; they would dominate the bottom of the ranking (Tajikistan −39.6, almost all remittances); *effect:* Tajikistan −39.61 → −0.81, Uzbekistan −14.46 → −6.11, Kyrgyzstan −7.48 → −4.94, Armenia −2.91 → −1.62, Belarus −5.63 → −4.96, Moldova +7.96 → +7.77; *where:* [remittances](#view=how&sec=cl-why-remittances-from-russia), [trade](#view=how&sec=m-trade-remittances-and-relocants-round-7)
 - **Laundered oil through EU refiners: a change counts only where both routes are measured for the buyer.** Before the war the route is measured for every buyer (each EU refiner's 2021 Comtrade HS 2710 exports by partner). After the EU ban, fuel made from Russian crude came through India, Türkiye, the UAE and China; that route counts as measured for a buyer when (1) it is an EU member (its own customs records, laundered_eu.json, checked against CREA), or (2) it is named in the post-war fuel-export records of India, Türkiye or the UAE (their own reports for 2022–2025, hub_buyers.json) or among the importers that record fuel via Togo (refine.json), and a cap does not set its post-war value. Elsewhere the route's 2023–2026 values are held at the expected level and labelled "route not measured after 2022"; 2022 keeps the refiners' own measured exports — *data or judgement:* data: which buyers the post-war records name; rule: hold at the expected level where they do not; *why:* the fall for small fuel importers (Togo, the Marshall Islands, Gibraltar, Tunisia, Georgia) was a gap in our post-war data, not a change in what they did; EU members keep the step-7 treatment (both routes measured). 74 buyers of EU-refined fuel are measured both ways, 128 are held; *effect:* Togo +6.61 → −0.05, Marshall Islands +6.17 → +0.91, Gibraltar +2.88 → −0.10, Tunisia −5.51 → −7.09, Georgia −1.11 → −2.48, Aruba +0.96 → −0.33, North Macedonia −0.78 → −1.53; no EU member moves; *where:* [energy](#view=how&sec=m-energy-and-laundered-oil-eu-refined-fuel-measured-both-ways-round-13b), `eu_refiner_exports()`
@@ -978,7 +1024,7 @@ a year's GDP, for that change alone; every other country is unchanged ([changelo
 
 ### What changed
 
-**One rule, two numbers, 19 October 2026** (an independent economist and journalist audit, all fixes approved by the owner; [decisions](#view=how&sec=cl-r13), [decision log](#view=how&sec=cl-r13)). Each step was made on its own; net % of a year's GDP:
+**One rule, two numbers, 19 October 2026** (an independent economist and journalist audit, all fixes approved by the owner). Each step was made on its own; net % of a year's GDP:
 
 1. **Fuel-mix bug**: the volume of all payments now uses 2019–2021 prices. Hungary −4.09 → −5.53, Mongolia −4.68 → −6.53, Slovakia +1.33 → −0.07, Belarus −17.55 → −18.48, Libya −6.45 → −7.34, Türkiye −3.30 → −3.91, India −2.32 → −2.83. New check in `check_data.py`.
 2. **Gold deflator**: Hong Kong −4.20 → −1.90; small changes for China, Oman, Switzerland.
@@ -997,7 +1043,7 @@ All steps together (base → round 13): Lithuania 14.55 → 10.50, Finland 9.02 
 
 ### Decisions
 
-An independent review by an economist and a data journalist ("audit") raised every point below; the owner approved each. Details, data and effects: [decisions](#view=how&sec=cl-r13).
+An independent review by an economist and a data journalist ("audit") raised every point below; the owner approved each.
 
 - Fix the **fuel-mix bug** (volumes at 2019–2021 prices, not no-war prices) and add a check — *raised by:* audit; *why:* the fuel share of what was bought was understated from 2022; *effect:* Hungary −4.1 → −5.5, Slovakia +1.3 → −0.1, India −2.3 → −2.8
 - Deflate **gold** with the gold price — *raised by:* audit; *why:* Hong Kong's palladium-heavy mix inflated its volume of gold 1.3–3 times; *effect:* Hong Kong −4.2 → −1.9
@@ -1019,7 +1065,7 @@ An independent review by an economist and a data journalist ("audit") raised eve
 
 #### Round 13: one valuation rule for every seller
 
-An independent review by an economist and a data journalist (19 October 2026, "audit") found three valuation rules mixed in the headline, a bug in the fuel mix, a wrong deflator for gold, unequal treatment of refiners, and framing and certainty that overstated the evidence. The owner approved every fix below. Each row says what is data and what is judgement. Effects are on the net, % of a year's GDP, for that step alone (all steps: [changelog](#view=how&sec=cl-r13)).
+An independent review by an economist and a data journalist (19 October 2026, "audit") found three valuation rules mixed in the headline, a bug in the fuel mix, a wrong deflator for gold, unequal treatment of refiners, and framing and certainty that overstated the evidence. The owner approved every fix below. Each row says what is data and what is judgement. Effects are on the net, % of a year's GDP, for that step alone.
 
 - **Fuel-mix bug fixed**: the volume of all payments in `apply_net_gain()` uses the payments index at 2019–2021 prices (`_pidx_pre`), as the tracker's fuel volumes do; a check tests that the same volumes give the same gain — *data or judgement:* data (a coding error); *why:* the no-war index valued fuel at no-war prices, about twice the 2019–2021 level in 2022, so the fuel share of what was bought was understated (audit); *effect:* Hungary −4.1 → −5.5, Slovakia +1.3 → −0.1, India −2.3 → −2.8, Türkiye −3.3 → −3.9, Mongolia −4.7 → −6.5; *where:* [overview](#view=how&sec=m-overview-the-net-gain-rule-round-10), `check_data.py`
 - **Gold at the gold price**: gold in the payments (tagged or Hong Kong's rise) is deflated with the gold index, rebased to 2019–2021 — *data or judgement:* data (prices.json gold index); *why:* Hong Kong's pre-war index was half palladium, whose price fell while gold's rose 2.7 times (audit); *effect:* Hong Kong −4.2 → −1.9; *where:* [trade](#view=how&sec=m-trade-hong-kong-gold)
@@ -1069,7 +1115,7 @@ An independent review by an economist and a data journalist (19 October 2026, "a
 
 **Measured values for six judgements, 19 October 2026.** The round-11 audit listed values that were judgements or not
 traced. Round 12 replaced six of them with measured ones, one at a time, recording each change's effect with the site's
-own `calc()` ([decisions](#view=how&sec=cl-r11), [decision log](#view=how&sec=cl-r12)).
+own `calc()` ([round 11](#view=how&sec=cl-r11)).
 
 - **Loans** ([loans](#view=how&sec=m-loans), new page). The gift in a loan is now cheaper interest, discounted at Ukraine's
   2021 bond rate (6.7%), plus the default risk the lender really carries: the measured expected loss of its creditor
@@ -1148,7 +1194,7 @@ August 2026, central), measured with the site's own `calc()` before and after ea
 
 </details>
 
-<h2 id="cl-r11a">Round 11 audit: traceability <span class="cl-date">19 October</span></h2>
+<h2 id="cl-r11a">Round 11b: checking every link and figure behind the sources <span class="cl-date">19 October</span></h2>
 <!-- flows: loans ref flowback -->
 
 **An audit of every source and constant.**
@@ -1192,7 +1238,7 @@ every country are the same before and after (checked with the site's own `calc()
 - Call the 10% loan discount rate a **judgement** — *raised by:* audit; *why:* it is not a current IMF or OECD standard; *effect:* text only
 - Stop publishing the AI-guessed **incentive scores** — *raised by:* audit; *why:* the view was removed in round 8 and nothing reads them; *effect:* smaller `data.json`
 
-<h2 id="cl-r11">Round 11: traceability <span class="cl-date">19 October</span></h2>
+<h2 id="cl-r11">Round 11: every constant traced to its data <span class="cl-date">19 October</span></h2>
 <!-- flows: aid loans euaid priv ref paid windfall laund sold buy services shipping companytax frozen remit gold -->
 
 **Every input traced to its primary source; assumptions and constants written down.**
@@ -1200,7 +1246,7 @@ every country are the same before and after (checked with the site's own `calc()
 ### What changed
 
 **Assumptions backed by data.** Judgement values were checked against data and replaced where data exists
-([decisions.md](#view=how&sec=cl-r11)). Russia's net gain on services and arms now comes
+(decisions.md). Russia's net gain on services and arms now comes
 from official sector profits: 0.08 → about 0.04 and 0.12 → about 0.045. Fewer lost sales to Russia count as lost
 income. Partners' records of bunkers sold to ships of Liberia, Panama and the Marshall Islands no longer count as their
 laundered oil. Refugee costs, remittances, donations and freight margins use budget and statistical figures. EU-level
@@ -1313,9 +1359,9 @@ numbers are those of the round-11 audit version of [`build_data.py`](https://git
 #### Constants in the code
 
 - build_data.py:323 — *constant:* `EUR_PER_MT_2021`: crude 0.414, products 0.549, gas and LNG 0.583, coal 0.130 EUR bn per Mt; *status:* data; *basis:* CREA's 2021 value for Germany by fuel ([`crea.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/crea.json)) ÷ the tracker's 2021 tonnes ([`energy.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/energy.json)): 9.065/21.935, 4.057/7.393, 18.177/31.167, 0.831/6.37
-- build_data.py:345, :955 — *constant:* China's fuel = crude value ÷ China's own crude share of its fuel exports per year (0.72, 0.75, 0.82, 0.76, 0.75 in 2022–2026); *status:* **data** (round 12; was 0.70, a judgement); *basis:* `crude_k(y, "CHN")` in [`crude_content.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/crude_content.json) ([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/crude_content-notes.md)); see [round 12](#view=how&sec=cl-r11)
-- build_data.py:3102 — *constant:* `HK_METALS_SHARE`: 1.0 every year (the precious-metals share of Hong Kong's rise in imports from Russia); *status:* **data** (round 12; was 0.98, not traced); *basis:* UN Comtrade, Hong Kong's imports from Russia, HS 71 and total, 2019–2025 ([raw/comtrade_hkg](https://github.com/intelligent-cream/follow-the-money-ukraine/tree/main/research/2026-10/raw/comtrade_hkg)); see [round 12](#view=how&sec=cl-r11)
-- build_data.py:1622, :1627 — *constant:* `GAS_IN_CUSTOMS`: Türkiye 1.0, Poland 1.0; `GAS_UNLABELLED`: Germany EUR 2.3bn (2021), 3.5bn (2022), so a share of 0.14 and 0.15; *status:* **data** (Germany since round 12; was 0.07, a judgement); *basis:* [audit-notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/audit-notes.md) items 1, 2 and 8 and the flags in [`audit.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/audit.json); see [round 12](#view=how&sec=cl-r11)
+- build_data.py:345, :955 — *constant:* China's fuel = crude value ÷ China's own crude share of its fuel exports per year (0.72, 0.75, 0.82, 0.76, 0.75 in 2022–2026); *status:* **data** (round 12; was 0.70, a judgement); *basis:* `crude_k(y, "CHN")` in [`crude_content.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/crude_content.json) ([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/crude_content-notes.md)); see [round 12](#view=how&sec=cl-r12)
+- build_data.py:3102 — *constant:* `HK_METALS_SHARE`: 1.0 every year (the precious-metals share of Hong Kong's rise in imports from Russia); *status:* **data** (round 12; was 0.98, not traced); *basis:* UN Comtrade, Hong Kong's imports from Russia, HS 71 and total, 2019–2025 ([raw/comtrade_hkg](https://github.com/intelligent-cream/follow-the-money-ukraine/tree/main/research/2026-10/raw/comtrade_hkg)); see [round 12](#view=how&sec=cl-r12)
+- build_data.py:1622, :1627 — *constant:* `GAS_IN_CUSTOMS`: Türkiye 1.0, Poland 1.0; `GAS_UNLABELLED`: Germany EUR 2.3bn (2021), 3.5bn (2022), so a share of 0.14 and 0.15; *status:* **data** (Germany since round 12; was 0.07, a judgement); *basis:* [audit-notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/audit-notes.md) items 1, 2 and 8 and the flags in [`audit.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/audit.json); see [round 12](#view=how&sec=cl-r12)
 - build_data.py:3103 — *constant:* Gibraltar keeps 10% (5–30%) of its Russian fuel; *status:* judgement; *basis:* a reseller's margin, as for other hubs; bunkers are paid by shipowners elsewhere
 - build_data.py:3124 — *constant:* Malta's services bought from Russia 0.127, 0.133 (2021–2022), ±35%; *status:* data, band judgement; *basis:* the map's own 2021–2022 values and the 2023–2026 fix in [`round4b.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/round4b.json) `artefacts.MLT`; ±35% is the width of letter C
 - build_data.py:180 — *constant:* Malta's own fuel imports, low ×0.76, high ×1.43; *status:* judgement; *basis:* the band of the model's laundered-oil values, applied to Malta's own customs figure
@@ -1326,7 +1372,7 @@ numbers are those of the round-11 audit version of [`build_data.py`](https://git
 - build_data.py:1752–1786 — *constant:* `GAS_FORMULA`, `LNG_FORMULA` weights (Türkiye 0.7/0.3, Greece, Bulgaria, North Macedonia, Moldova 0.5/0.5, default 0.75/0.25, Taiwan and China LNG 0.5/0.5); *status:* contract types data, mixed weights judgement; *basis:* [energy_nowar-notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/energy_nowar-notes.md) section 2 and its note that the hub shares are "judgement calls"; Türkiye from [turkey_prices-notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/turkey_prices-notes.md)
 - build_data.py:1979 — *constant:* services trend bounds kept within ×2.5 of the middle; *status:* judgement; *basis:* tiny or noisy series give extreme fitted bounds
 - build_data.py:1991 — *constant:* company-tax trend fallback 1.045; *status:* data; *basis:* `trend2.json` global central ([trend2-notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/trend2-notes.md))
-- build_data.py:1669 — *constant:* Belarus gas price ±2% (2019–2022), ±8% (2023–2025), ±15% (2026); *status:* ±2%: judgement on a published dollar price; ±8% and ±15%: **data** (round 12; was ±2% for every year); *basis:* [`gas_prices-notes.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/gas_prices-notes.md) (the range rule for customs prices); see [round 12](#view=how&sec=cl-r11)
+- build_data.py:1669 — *constant:* Belarus gas price ±2% (2019–2022), ±8% (2023–2025), ±15% (2026); *status:* ±2%: judgement on a published dollar price; ±8% and ±15%: **data** (round 12; was ±2% for every year); *basis:* [`gas_prices-notes.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/gas_prices-notes.md) (the range rule for customs prices); see [round 12](#view=how&sec=cl-r12)
 - build_data.py:1673 — *constant:* Tajikistan's 2021 price band ±3%; *status:* judgement; *basis:* its 2021 band came from a fixed ratio that cancels in the index
 - build_data.py:2239 — *constant:* `conduit` Kazakhstan 3.5, Netherlands 4.7; *status:* data; *basis:* Polymetal's transfer, EUR 3.5bn (1.7–6.0), and Yandex in [company_flows-notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows-notes.md); the notes' table rounds Kazakhstan to 3.6
 - build_data.py:3062 — *constant:* freight share per importer, low ×0.7, high ×1.4; *status:* judgement (in the proposal); *basis:* the rule in [`assumptions_r11_people.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/assumptions_r11_people.json) `CIF_SHARE`
@@ -1783,13 +1829,13 @@ Research: [shipping-notes](https://github.com/intelligent-cream/follow-the-money
 <h3 id="cl-why-companies-leaving-russia">Companies leaving Russia</h3>
 <!-- flows: exits -->
 
-**Since round 14b: not in the totals, counted in the cost to the country** ([below](#view=how&sec=cl-why)).
+**Since round 14b: not in the totals, counted in the cost to the country** (below).
 Rounds 5 to 14: toward Russia, in the net shift, by the company's home country. Added in round 5 (commit `650e1ff`). Method:
 [companies leaving Russia](#view=how&sec=m-russia-state-and-companies-companies-leaving-russia). Research:
 [company_flows-notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows-notes.md) §1. Log:
 [round 5](#view=how&sec=cl-r5).
 
-- **Round 14b: out of the totals, a cost carried**: the forced discount and the exit contribution, and the seizures counted in round 14, leave the net shift and both headline numbers and count in the cost view — *data or judgement:* rule (owner); *why:* Russia took this money; the country did not choose to move it ([below](#view=how&sec=cl-why)); *where:* `apply_company_flows()`, `add_taken()`
+- **Round 14b: out of the totals, a cost carried**: the forced discount and the exit contribution, and the seizures counted in round 14, leave the net shift and both headline numbers and count in the cost view — *data or judgement:* rule (owner); *why:* Russia took this money; the country did not choose to move it (below); *where:* `apply_company_flows()`, `add_taken()`
 - ~~**Count the exit contribution**~~ (rounds 5–14, in the totals) paid to Russia's budget by foreign companies that sell out, by home country — *data or judgement:* data: Russia's budget line (RUB 116bn in 2023, 160bn in 2024); judgement: the split by home country, by the size of the businesses sold (certainty D for most); *why:* Russia makes foreign companies pay an "exit contribution" to its budget to be allowed to sell: "that's money to Russia, by company home country" (proposed, accepted); *where:* [company_flows-notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows-notes.md) §1
 - ~~**Count the forced discount**~~ (rounds 5–14, in the totals): the value handed to Russian buyers by sales at least 50–60% below valuation — *data or judgement:* judgement: a 2022 case list, later years from the contribution; *why:* Proposed together with the contribution as money to Russia and accepted (proposed, accepted). The research suggested counting only the contribution, since a discount goes to Russian buyers, not the state; why the discount was kept anyway: reason not recorded; *where:* [company_flows-notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows-notes.md) §1 and "Things the builder must decide or watch"
 - **No pre-war level**: each payment is its own change — *data or judgement:* data; *why:* None of these payments existed before the war; *where:* [company_flows-notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows-notes.md) §1

@@ -35,8 +35,18 @@ for (const [k, c] of Object.entries(by)) {
       [q + "Eur"]: r4(v), [q + "Unc"]: M.uncertain(c, Y, q), [q + "SameSign"]: sameSign });
   }
   Object.assign(o, { ua2025: r4(x25.uaBal * g), rus2025: r4(x25.rusBal * g), net2025: r4(x25.shift * g),
-    refugees: r4(x.refugees), aidRef: r4((x.shiftParts.find(p => p.k === "ref") || { v: 0 }).v) });
+    refugees: r4(x.refugees), aidRef: r4((x.shiftParts.find(p => p.k === "ref") || { v: 0 }).v),
+    // round 24 (audit B): the euro amounts the worked examples quote: what was given and earned back, each part (EUR
+    // bn, with its likely range), the gas and oil Russia cut off itself
+    uaGave: r4(x.uaGave), uaBackEur: r4(-x.uaBack), rusCut: r4(x.rusCut), frozenEur: r4(x.frozen) });
+  for (const p of x.shiftParts.concat(x.backShift)) Object.assign(o, { ["part_" + p.k]: r4(p.v), ["part_" + p.k + "Lo"]: r4(p.lo), ["part_" + p.k + "Hi"]: r4(p.hi) });
   for (const a of mb.alts) o["alt_" + a.k] = { ua: r4(a.ua * g), rus: r4(a.rus * g), net: r4(a.net * g) };
   out.countries[k] = o;
 }
+// round 24 (audit B): counts the text quotes, worked out here so they cannot go stale: economies over EUR 5bn of GDP,
+// how many of them are too close to call on each number, the sources and their documents
+const big = Object.values(out.countries).filter(o => o.gdp >= 5);
+Object.assign(out.world, { nAll: Object.keys(out.countries).length, nBig: big.length,
+  uncUa: big.filter(o => o.uaUnc).length, uncRus: big.filter(o => o.rusUnc).length, uncNet: big.filter(o => o.netUnc).length,
+  nSources: Object.keys(D.sources).length, nDocs: new Set(Object.values(D.sources).flatMap(s => (s.links || []).map(l => l.url))).size });
 process.stdout.write(JSON.stringify(out));

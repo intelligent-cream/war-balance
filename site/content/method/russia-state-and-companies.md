@@ -63,7 +63,7 @@ Russian arms were settled in drones and missiles that are already counted as wea
 
 ## Companies leaving Russia
 
-**Since round 14b: not in the totals, counted in the cost to the country** ([below](#view=how&sec=m-russia-state-and-companies-round-14b-taken-by-russia-not-in-the-totals)).
+**Since round 14b: not in the totals; a marker on the map and a column in the full data download** ([below](#view=how&sec=m-russia-state-and-companies-round-14b-taken-by-russia-not-in-the-totals)).
 
 Code: `apply_company_flows()`; data: [`company_flows.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows.json)
 ([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows-notes.md)). By the company's home country:
@@ -74,7 +74,7 @@ Code: `apply_company_flows()`; data: [`company_flows.json`](https://github.com/i
   Renault, Société Générale, McDonald's, Nissan, Equinor, Shell; later years from the contribution). Yandex (Netherlands)
   and Polymetal (Kazakhstan) are left out: their shareholders were mostly international, not Dutch or Kazakh.
 - **Seizures** without payment were not counted until round 13; in round 14 they were, on their own line
-  ([below](#view=how&sec=m-russia-state-and-companies-assets-seized-by-russia-round-14)); since round 14b they are, like the exit costs, in the cost to the country.
+  ([below](#view=how&sec=m-russia-state-and-companies-assets-seized-by-russia-round-14)); since round 14b they are, like the exit costs, out of the totals (a marker).
 
 Rounds 5 to 14 counted exit payments toward Russia, so a company's exit cost its country on this part. Since round 14b
 they are a sacrifice instead: the taxes the company no longer pays in Russia still count toward Ukraine (company taxes,
@@ -86,9 +86,7 @@ cost the country carried.
 Raised by the third audit (M4) and approved by the owner: a seizure is as coerced as a forced-sale discount, and both
 hand value to Russia (its state or Russian firms). Until round 13 discounts counted and seizures did not, so leaving
 Russia lowered a country's score while having one's company seized did not. In round 14 seizures counted as money
-taken by Russia, on their own line, "Seized by Russia (companies' assets)", toward Russia in the money kept
-from Russia. **Since round 14b** (raised by the owner) seizures and forced exit costs are both out of the totals and
-counted in the cost to the country (`taken` in `data.json`; [above](#view=how&sec=m-russia-state-and-companies-round-14b-taken-by-russia-not-in-the-totals)).
+taken by Russia, on their own line, "Seized by Russia (companies' assets)", toward Russia in the second headline number (business with Russia). **Since round 14b** (raised by the owner) seizures and forced exit costs are both out of the totals: a marker on the map and a column in the full data download (`taken` in `data.json`; [above](#view=how&sec=m-russia-state-and-companies-round-14b-taken-by-russia-not-in-the-totals)).
 
 - **Data**: `seizure` in [`company_flows.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows.json): asset value lost by the
   foreign owner minus anything received abroad, in the year control was lost, by the company's home country. Cases:
@@ -123,10 +121,9 @@ fee paid to Russia's budget) are:
 
 The country did not choose to move that money; Russia took it. So:
 
-- **Totals:** neither is in the net shift or in either headline number (support for Ukraine; kept
-from Russia). This reverses round 5, which counted forced discounts and exit fees, and round 14 (audit M4), which counted
+- **Totals:** neither is in the net shift or in either headline number (support for Ukraine; business with Russia). This reverses round 5, which counted forced discounts and exit fees, and round 14 (audit M4), which counted
   seizures.
-- **Cost view:** both count in the cost to the country, like the energy switching cost: "Seized by Russia (companies' assets)"
+- **Cost view (until round 19):** both counted in the cost to the country, like the energy switching cost: "Seized by Russia (companies' assets)"
   and "Forced sales: discount and exit fee taken by Russia", positive (`taken` in `data.json`, by home country, with the
   same values, ranges and certainty letters as before). Since round 19 the site no longer shows the cost view (the
   owner removed it); the cost stays in the full data download, labelled, and these two are a marker.
@@ -176,7 +173,7 @@ home: about EUR 0.1–0.2bn a year in total, before and after the war, and the c
 **Round 16 (review 5 H4, approved by the owner): a line of its own, added to the net only.** The return Russia lost
 on its frozen reserves is not a payment, so it is no longer inside business with Russia: not on that map,
 in its ranking or in its world total. It is a third line, **"Russian money frozen"**, shown in the panel under the two
-numbers, in the table, the CSV and JSON downloads and [trace](#view=how&flow=frozen), and added to the
+numbers, in the CSV and JSON downloads and [its money flow](#view=how&flow=frozen), and added to the
 net only (`OWN_LINE` and `frozenLine()` in `index.html`; check 34). The net is therefore support for Ukraine plus the
 business with Russia plus Russian money frozen. It is still not something the country gave Ukraine (what
 Ukraine receives from this return, the G7 ERA loans, is already left out of donors' aid), so it is not in support for
@@ -199,7 +196,7 @@ have earned for Russia without the freeze: money Russia did not get, so toward U
 [notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/frozen_assets-notes.md)).
 
 - **Rates per currency and year**, close to what Euroclear actually earned (about 3.4%, 3.8% and 2.6% in 2023–2025);
-  yen and 2022 euro rates were near zero. Total about EUR 31bn over 2022 to August 2026 (24.5–40).
+  yen and 2022 euro rates were near zero. Total about EUR 31bn over 2022 to August 2026 (24.5–40) before Belgium's tax below; about EUR 27.5bn on the map after it.
 - **Euroclear and Clearstream**: the freeze is an EU decision, so a third of their return goes to the host (Belgium,
   Luxembourg, which carry the legal risk) and two thirds to all EU members by their share of EU-level aid.
 - **Belgium's tax** on Euroclear's Russian-asset income (about EUR 1.7bn in 2024, 1.0bn in 2025) is pledged to

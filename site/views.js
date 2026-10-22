@@ -71,7 +71,7 @@ function rankInfo() {
   const n = Object.values(DATA).filter(eligible).length;
   return `<p><b>${t(LENS_TITLE[state.lens])}</b></p>
     <p>${t("{measure}, {period}. Dot: middle estimate; line: likely range (data and model uncertainty given the method, about 90% by judgement). {n} countries; switch view and measure in Filters. Click a country for the breakdown.", { measure: measureText(), period: periodText(), n })}</p>
-    ${state.lens === "net" ? `<p>${t("The net adds two different things: help given to Ukraine and reduced business with Russia. Much of what one country stopped buying, Russia sold to others.")}</p>` : ""}
+    ${state.lens === "net" ? `<p>${t("The net adds two different things: help given to Ukraine and the change in business with Russia. Much of what one country stopped buying, Russia sold to others.")}</p>` : ""}
     <p class="sub">${t("Scale is compressed (symmetric log) so small and large countries both stay readable; the axis labels give the true values.")}</p>
     <p class="sub"><button class="linkbtn" data-goview="map">${t("Map")}</button> · <button class="linkbtn" data-goview="how">${t("How it works")}</button></p>`;
 }
@@ -156,7 +156,8 @@ function setView(v, quiet) {
   if (typeof renderInfo === "function") renderInfo();
   // round 17: a view starts below the header line, which shows the page tabs outside the map
   if (typeof placeView === "function") placeView();
-  if (!quiet) writeHash(false);
+  // round 24: a view chosen by the reader is a new history entry (Back returns to the one before)
+  if (!quiet) (window.pushNav ? window.pushNav() : writeHash(false));
 }
 // round 19: switching views leaves the Filters drawer open (it closes only when the reader closes it)
 document.querySelectorAll(".vtabs [data-view]").forEach(b => (b.onclick = () => setView(b.dataset.view)));

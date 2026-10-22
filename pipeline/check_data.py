@@ -613,6 +613,32 @@ check(
     f"2021 kept: {_kept}",
 )
 
+# 37. round 24 (audit C; approved by the owner on 22 October 2026): every source the map cites has a type (its group in
+# How it works) and 1-3 key documents shown under its name, or is this project's own model; the source's own link is
+# never a bare homepage; the dead links audit C found are replaced (research/2026-10/link_fixes.json); the site no
+# longer hides the documents in one "Exact tables and reports" fold
+_types = {"data", "report", "press", "ours", "notes"}
+_fixes = json.loads((ROOT / "research" / "2026-10" / "link_fixes.json").read_text())["fixes"]
+_src_bad, _home, _dead = [], [], []
+for _sid, _s in data["sources"].items():
+    _keys = [lk for lk in _s.get("links") or [] if lk.get("key")]
+    if _s.get("type") not in _types or not (1 <= len(_keys) <= 3 or _s.get("type") == "ours"):
+        _src_bad.append(_sid)
+    _u = _s.get("url") or ""
+    if _u and _u.split("/", 3)[3:] in ([], [""]):
+        _home.append(_sid)
+    _dead += [_sid for lk in _s.get("links") or [] if lk["url"] in _fixes] + ([_sid] if _u in _fixes else [])
+check(
+    "every source has a type and key documents; no homepage or known dead link",
+    not _src_bad
+    and not _home
+    and not _dead
+    and "Exact tables and reports" not in _html
+    and "function srcItem" in _html,
+    f"{len(data['sources'])} sources; untyped or without key documents: {_src_bad[:5] or 'none'}; homepage as main "
+    f"link: {_home[:5] or 'none'}; known dead links left: {sorted(set(_dead))[:5] or 'none'}",
+)
+
 width = max(len(n) for _, n, _ in results)
 for status, name, detail in results:
     print(f"{status:4}  {name:<{width}}  {detail}")
