@@ -4,7 +4,7 @@
 // state (view, measure, what's counted, region, group, size, year) and re-renders whenever it changes (paint() calls
 // renderView()). Round 20 (owner): only Map, Ranking and Sources remain, and the ranking is as clean as the map: the
 // header line names it and its explanation is in the header's ⓘ (rankInfo)
-/* global leaning, PARTY_TO_WAR, state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
+/* global leaning, noDataAt, PARTY_TO_WAR, state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
    num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades, renderDrawer, renderInfo, verb */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
@@ -84,6 +84,9 @@ function renderRanking(root) {
   // near the middle, "uncertain direction"; neither is ranked, both are named under the chart. Belarus, a party to the
   // war, is in neither
   const party = all.filter(m => PARTY_TO_WAR.has(m.c.iso3));
+  // round 26 (owner): a country with no observation of its own is not ranked or listed at all
+  const nod = y > 2021 ? all.filter(m => noDataAt(m.c, y)) : [];
+  for (const m of nod) all.splice(all.indexOf(m), 1);
   const unc0 = hq && y > 2021 ? all.filter(m => !party.includes(m) && uncertain(m.c, y, hq)) : [];
   const big = (a, b) => Math.abs(b.v) - Math.abs(a.v);   // largest first
   const lean = side => unc0.filter(m => leaning(m.c, y, hq) === side).sort(big);

@@ -698,13 +698,16 @@ check(
     f"{_ud_n} donors adjusted; undelivered above allocation, below zero or out of order: {_ud_bad[:6] or 'none'}",
 )
 
-# 41. round 24b (audit 24 D M5; the owner): the captive-buyer label is a label only: no number in the model reads it
+# 41. round 24b (audit 24 D M5; the owner): the captive-buyer label was a label only. Round 26 (the owner, 22 October
+# 2026: "everybody has alternatives... there's always a way") removed it; Hungary and Slovakia's "kept buying Russian
+# pipeline oil (EU exemption)" label is a label only too: no number in the model reads it, and no captive label is left
 _model_src = _html[_html.index("// ===== Model =====") : _html.index("function lensValue")]
 _cap = sorted(k for k, c in countries.items() if c.get("captive"))
+_pe = sorted(k for k, c in countries.items() if c.get("pipeline_exempt"))
 check(
-    "captive-buyer labels change no numbers",
-    bool(_cap) and ".captive" not in _model_src,
-    f"labelled: {_cap}; read by the model: {'yes' if '.captive' in _model_src else 'no'}",
+    "no captive label; the pipeline-exemption label changes no numbers",
+    not _cap and _pe == ["HUN", "SVK"] and "pipeline_exempt" not in _model_src and ".captive" not in _html,
+    f"captive labels: {_cap or 'none'}; pipeline exemption: {_pe}; read by the model: {'yes' if 'pipeline_exempt' in _model_src else 'no'}",
 )
 
 # 42. round 25 (owner, 22 October 2026: story tags, "then we back that up with the numbers"): every tag rule in
@@ -722,7 +725,8 @@ _undoc = [k for k in _keys if k not in _rows or not _rows[k].rstrip("|").split("
 _data_tags = [
     "party",
     "gascut",
-    "captive",
+    "exempt",
+    "sanct",
     "windfall",
     "discount",
     "hidden",

@@ -4,6 +4,67 @@ Every update to the map, newest first: what changed and every decision behind it
 
 The detailed research log, with every file, is [`research/2026-10/README.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/README.md).
 
+<h2 id="cl-r26">Round 26: coherence <span class="cl-date">22 October</span></h2>
+<!-- flows: paid windfall laund sold buy flowback sanctions -->
+
+**The breakdown now matches the numbers at the top, parts with no data of the country's own count as zero, the "no
+real alternative" label is gone, and the sanctions tags say who set the sanctions. Only parts with no observation
+changed: 74 economies and territories; the 19 of them over EUR 5bn moved by at most 0.2 points of GDP.**
+
+### What changed
+
+1. **The breakdown follows the tiles** (owner, 22 October 2026, on Moldova: "the breakdown doesn't seem to match the
+   numbers at the top"). "What makes up the number" has one section per tile, Support for Ukraine, Trade with Russia
+   and Russian money frozen, each headed with the tile's own words and amount; inside, rows by size, each saying its
+   direction in words and colour (blue toward Ukraine, orange toward Russia, grey for money flowing back), with no + or
+   − sign. The closing line adds the tiles: "Supported Ukraine 0.35% − trade toward Russia 6.1% + Russia lost 0.07% on
+   frozen money = toward Russia by 5.7%". The browser check now proves for every country that each section equals its
+   tile and that the sections make the net.
+2. **No data, no number** (owner, on the Falkland Islands: "if I don't have any data, we shouldn't put anything there").
+   A trade part counts only where the country has its own observation for the war years: a figure it or its partners
+   report for 2022-2025 (UN Comtrade, Eurostat), or a country-specific record from the research (non-reporters'
+   trade from tanker tracking and official statements, hubs' re-export records, national statistics, gas by country
+   of use, the Power of Siberia, Hong Kong's gold); for fuel made from Russian crude, the country's own customs records,
+   refiners' reported exports to it or refinery-specific research. The pre-war trend carried forward, Russia's import
+   gap split by origin shares and fuel reached only through EU refiners' 2021 export shares are not observations: those
+   parts count as zero and are named under the trade section as "No data". A country with nothing observed at all is
+   hatched on the map as "No data", with no tags and no ranking. Every part removed is listed in
+   [no_data_effects](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/no_data_effects.md).
+   The Falkland Islands keep only their observed sales to Ukraine (from Ukraine's own customs records).
+3. **No "no real alternative to Russian fuel" label** (owner: "every country has an alternative ... all the other
+   countries in Europe found an alternative"; then: "I don't know if you even need that tag anywhere. Everybody has
+   alternatives... there's always a way"). The round-24b label is removed everywhere; its research stays in
+   `captive_buyers.json` as background. Hungary and Slovakia get a plain label instead, **"Kept buying Russian
+   pipeline oil (EU exemption)"**: the EU's crude embargo exempted crude by pipeline (Council Regulation (EU)
+   2022/879), the Adria pipeline from Croatia was an alternative, and Czechia, on the same Druzhba pipeline, switched
+   fully to crude via Italy and Germany by 2025 ([OSW, 18 April 2025](https://www.osw.waw.pl/en/publikacje/analyses/2025-04-18/czech-republic-no-longer-depends-russian-oil)).
+4. **Sanctions tags say who set the sanctions** (owner: "these tags are weird, the US gets mostly sanctions which is
+   not true at all if you look at the breakdown"). Sanctions a country set or agreed to are its own choice too, so
+   "Mostly required by sanctions" became "Cut through its own sanctions" (the US, the UK, Japan, Canada, Australia, New
+   Zealand, South Korea), "Cut through EU sanctions it agreed to" (EU members) or "Cut through sanctions it adopted"
+   (Switzerland, Norway and others that took over the EU's); "Mostly its own choice" became "Cut beyond what sanctions
+   required" (at most 40% required), and the middle case "Partly its sanctions, partly beyond them". The tap gives the
+   numbers, e.g. the US: "Of the €39.7 bn less that Russia kept from its trade, about 74% was required by sanctions it
+   set itself (oil import ban of March 2022, EO 14066), 26% went beyond them". Each trade part's card now shows its own
+   split (the US's fuel and goods: "Required by sanctions it set itself: 75% · beyond them: 25%"), so the breakdown backs the tag up.
+5. **Tag audit** on 15 large economies: "Fuel buying, not policy" claimed more than the numbers show (keeping on buying
+   can be a choice; Hungary does both) and is now "Mostly from fuel buying" ("Mostly from sales to Russia"); the
+   war-time discount tag now says where its money is in the breakdown (inside "Russia kept … from fuel and goods sold
+   here"), since the discount is not a part of its own.
+6. **Checks**: check 41 now asserts that no captive label is left and that the pipeline-exemption label changes no
+   number; check 42 requires sources for the new tags; check 32 compares each section with its tile.
+
+### Decisions
+
+- **Tile-aligned breakdown** — *raised by:* owner; *decided by:* owner, 22 October 2026; *effect:* display.
+- **A part with no observation of the country's own counts as zero** — *raised by:* owner; *decided by:* owner; *effect:*
+  74 economies and territories, at most 0.2 points of GDP for those over EUR 5bn (Guinea −0.26% → −0.08%).
+  Not applied: a year missing after observed years (mostly 2025, the customs lag) is still filled from the country's
+  own path, because zeroing it would remove 2025 and 2026 for more than a hundred countries that report.
+- **No "no real alternative" label; a plain EU-exemption label for Hungary and Slovakia** — *raised by:* owner; *decided
+  by:* owner; *effect:* labels only, no number.
+- **Sanctions tags name who set the sanctions** — *raised by:* owner; *decided by:* owner; *effect:* labels only.
+
 <h2 id="cl-r25">Round 25: kept wording, two-section parts, story tags <span class="cl-date">22 October</span></h2>
 <!-- flows: paid windfall laund sold services shipping companytax rusfirms rusarms statefin mil agents frozen buy flowback -->
 

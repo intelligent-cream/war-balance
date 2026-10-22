@@ -1,8 +1,12 @@
-# No real alternative to Russian fuel: the captive-buyer label (round 24b)
+# No real alternative to Russian fuel: the captive-buyer label (round 24b; removed in round 26)
+
+**Round 26 (the owner, 22 October 2026): the label is removed everywhere** ("I don't know if you even need that tag anywhere. Everybody has alternatives... there's always a way"). This file stays as background research only; nothing on the site shows it. What remains is a plain label for Hungary and Slovakia (`pipeline_exemption` in `captive_buyers.json`), below.
 
 Data: [`captive_buyers.json`](captive_buyers.json); attached in `pipeline/build_data.py` `apply_captive()` as `captive` on each labelled country; shown as a flag in the country panel. **A label only: no number changes** (check_data.py checks it).
 
 **Decision (the owner, 22 October 2026, audit 24 D M5):** the criteria below; captive: Mongolia and Kyrgyzstan (refined fuels), Armenia (gas), Moldova (gas, 2022), Serbia (gas, 2022-2023), Bosnia and Herzegovina (gas); partly captive: Hungary and Slovakia (pipeline crude), shown too, with the reason. Belarus is not labelled (it is a party to the war).
+
+**Round 26 (the owner, 22 October 2026):** "every country has an alternative ... all the other countries in Europe found an alternative". No "partly" label any more. Hungary and Slovakia are not captive: the Adria pipeline from Croatia existed (JANAF confirmed 14.4 Mt a year in 2023 tests), and Czechia, on the same Druzhba pipeline, switched fully to the TAL/IKL route ([OSW, 18 April 2025](https://www.osw.waw.pl/en/publikacje/analyses/2025-04-18/czech-republic-no-longer-depends-russian-oil)). They get a plain label instead, "Kept buying Russian pipeline oil (EU exemption)": the EU crude embargo exempted crude delivered by pipeline ([Council Regulation (EU) 2022/879](https://eur-lex.europa.eu/eli/reg/2022/879/oj)). In the data: `pipeline_exemption`. Moldova and Serbia keep the captive label with its period shown (until 2022 and until 2023).
 
 Data: `t6_captive_buyers.json`. Comtrade shares: `_t6_comtrade_2021.json`, fetched 22 Oct 2026 from the UN Comtrade public API (`scripts/comtrade_fetch.sh`, raw files in `dl/comtrade/`). Research only. **This is a label only; no number changes.**
 
@@ -53,6 +57,6 @@ Data: `t6_captive_buyers.json`. Comtrade shares: `_t6_comtrade_2021.json`, fetch
 - **Hungary and Slovakia:** medium. Adria's capacity is contested between JANAF and MOL.
 
 ## Open questions
-1. Should "partly captive" (Hungary and Slovakia crude) be shown at all, or only full captives?
+1. ~~Should "partly captive" be shown?~~ Decided in round 26: no (see above).
 2. Should Tajikistan (87%, routes exist but are thin) be included? The criteria say no.
 3. Pull the national energy balance (IEA) for imports as a share of consumption, to check criterion 1 for Tajikistan and Armenia's fuels.
