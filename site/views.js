@@ -1,5 +1,5 @@
 // ===== Views: the ranking (the data downloads are in views2.js, shown in Sources) =====
-// Same numbers as the map: the current view (the net, support for Ukraine, business with Russia), measure and year.
+// Same numbers as the map: the current view (the net, support for Ukraine, trade with Russia), measure and year.
 // Round 19 (owner): every filter is in the Filters drawer. The views have none of their own: each reads the drawer's
 // state (view, measure, what's counted, region, group, size, year) and re-renders whenever it changes (paint() calls
 // renderView()). Round 20 (owner): only Map, Ranking and Sources remain, and the ranking is as clean as the map: the
@@ -38,8 +38,8 @@ function metricOf(c) {
 }
 const LENS_TITLE = {
   support: "Support for Ukraine since before the war",
-  payments: "Business with Russia since before the war: reduced (+) or increased (−) against a world without the war",
-  net: "Support for Ukraine plus business with Russia, since before the war",
+  payments: "Trade with Russia since before the war: Russia kept less (+) or more (−) against a world without the war",
+  net: "Support for Ukraine plus trade with Russia, since before the war",
 };
 function measureText() {
   return t({ gdp: "total as % of one year's GDP (average 2022–2024), not a yearly rate", pp: "€ per person", total: "€ billion" }[state.measure]);
@@ -71,7 +71,7 @@ function rankInfo() {
   const n = Object.values(DATA).filter(eligible).length;
   return `<p><b>${t(LENS_TITLE[state.lens])}</b></p>
     <p>${t("{measure}, {period}. Dot: middle estimate; line: likely range (data and model uncertainty given the method, about 90% by judgement). {n} countries; switch view and measure in Filters. Click a country for the breakdown.", { measure: measureText(), period: periodText(), n })}</p>
-    ${state.lens === "net" ? `<p>${t("The net adds two different things: help given to Ukraine and the change in business with Russia. Much of what one country stopped buying, Russia sold to others.")}</p>` : ""}
+    ${state.lens === "net" ? `<p>${t("The net adds two different things: help given to Ukraine and the change in what Russia kept from trade. Much of what one country stopped buying, Russia sold to others.")}</p>` : ""}
     <p class="sub">${t("Scale is compressed (symmetric log) so small and large countries both stay readable; the axis labels give the true values.")}</p>
     <p class="sub"><button class="linkbtn" data-goview="map">${t("Map")}</button> · <button class="linkbtn" data-goview="how">${t("How it works")}</button></p>`;
 }
@@ -124,14 +124,19 @@ function renderRanking(root) {
   </svg>`;
   root.innerHTML = `<div class="view-inner">
     <div class="chart">${svg}</div>
-    ${[[leanR, "Leaning toward Russia ({n}):"], [leanU, "Leaning toward Ukraine ({n}):"], [unc, "Uncertain direction ({n}):"]].filter(([l]) => l.length).map(([l, lab]) => `<p class="note-small"><b>${t(lab, { n: l.length })}</b> ${l.map(m => `${m.c.name} ${fmtMeasure(m.c, m.bn, state.measure, true)}`).join(", ")}</p>`).join("")}
+    ${[[leanR, "Leaning toward Russia ({n}):", "rus"], [leanU, "Leaning toward Ukraine ({n}):", "ukr"], [unc, "Uncertain direction ({n}):", "unc"], [party, "Party to the war (with Russia), not ranked:", "party"]].filter(([l]) => l.length).map(([l, lab, cls]) => chipGroup(l, t(lab, { n: l.length }), cls)).join("")}
     ${unc0.length ? `<p class="note-small">${t("Not ranked: the likely range or another reasonable method choice crosses zero. Leaning: at least a 65% chance of that direction under the likely range; uncertain: less.")}</p>` : ""}
-    ${party.length ? `<p class="note-small"><b>${t("Party to the war (with Russia), not ranked:")}</b> ${party.map(m => `${m.c.name} ${fmtMeasure(m.c, m.bn, state.measure, true)}`).join(", ")}</p>` : ""}
   </div>`;
   wireRows(root, rows);
 }
+// round 25 (owner): the countries not ranked as tappable chips, grouped (leaning toward Russia or Ukraine, uncertain,
+// party to the war); a chip opens the country's panel
+function chipGroup(list, label, cls) {
+  return `<div class="rk-group rk-${cls}"><p class="rk-h">${label}</p><div class="rk-chips">${list.map(m => `<button class="rk-chip" data-n="${m.c.n}">${m.c.name} <span>${fmtMeasure(m.c, m.bn, state.measure, true)}</span></button>`).join("")}</div></div>`;
+}
 function wireRows(root, rows) {
   const by = Object.fromEntries(rows.map(m => [m.c.n, m]));
+  root.querySelectorAll(".rk-chip").forEach(el => el.addEventListener("click", () => { tip.hidden = true; select(el.dataset.n, false); }));
   root.querySelectorAll(".row").forEach(el => {
     const m = by[el.dataset.n];
     el.addEventListener("pointermove", e => showTip(e, tipFor(m)));

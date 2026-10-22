@@ -8,7 +8,7 @@
 const TGROUPS = [
   { id: "net", label: "Net", v: k => [k.shift, k.shiftLo, k.shiftHi], en: "net" },
   { id: "ua", label: "Support for Ukraine", v: k => [k.uaBal, k.uaLo, k.uaHi], en: "support_for_ukraine" },
-  { id: "rus", label: "Business with Russia", v: k => [k.rusBal, k.rusLo, k.rusHi], en: "business_with_russia_reduced" },
+  { id: "rus", label: "Trade with Russia", v: k => [k.rusBal, k.rusLo, k.rusHi], en: "trade_with_russia_toward_ukraine" },
   { id: "frozen", label: "Russian money frozen", v: k => [k.frozen, k.frozenLo, k.frozenHi], en: "russian_money_frozen" },
 ];
 
@@ -72,8 +72,8 @@ const r4 = v => (v == null || Number.isNaN(v) ? null : +v.toFixed(4));
 function csvFull(rows) {
   const head = ["iso3", "country", "period", "net_of_flowback",
     "support_ukraine_eur_bn", "support_ukraine_low_eur_bn", "support_ukraine_high_eur_bn", "support_ukraine_pct_gdp", "support_ukraine_certainty", "support_ukraine_direction_uncertain",
-    "business_with_russia_reduced_eur_bn", "business_with_russia_reduced_low_eur_bn", "business_with_russia_reduced_high_eur_bn", "business_with_russia_reduced_pct_gdp", "business_with_russia_reduced_certainty", "business_with_russia_reduced_direction_uncertain", "of_which_gas_cut_by_russia_eur_bn",
-    "of_which_paid_russia_less_eur_bn", "of_which_paid_russia_less_low_eur_bn", "of_which_paid_russia_less_high_eur_bn", "of_which_earned_less_from_russia_eur_bn", "of_which_earned_less_from_russia_low_eur_bn", "of_which_earned_less_from_russia_high_eur_bn",
+    "trade_with_russia_toward_ukraine_eur_bn", "trade_with_russia_toward_ukraine_low_eur_bn", "trade_with_russia_toward_ukraine_high_eur_bn", "trade_with_russia_toward_ukraine_pct_gdp", "trade_with_russia_toward_ukraine_certainty", "trade_with_russia_toward_ukraine_direction_uncertain", "of_which_gas_cut_by_russia_eur_bn",
+    "of_which_russia_kept_less_eur_bn", "of_which_russia_kept_less_low_eur_bn", "of_which_russia_kept_less_high_eur_bn", "of_which_country_kept_less_from_selling_to_russia_eur_bn", "of_which_country_kept_less_from_selling_to_russia_low_eur_bn", "of_which_country_kept_less_from_selling_to_russia_high_eur_bn",
     "russian_money_frozen_eur_bn_net_only", "russian_money_frozen_low_eur_bn_net_only", "russian_money_frozen_high_eur_bn_net_only", "russian_money_frozen_pct_gdp_net_only",
     "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person", "net_shift_certainty", "net_shift_direction_uncertain", "net_shift_leaning",
     "military_aid_allocated_not_yet_delivered_eur_bn",

@@ -473,6 +473,7 @@ else:
 # the downloads now are); the ranking has no text of its own above the chart: the header line names it and its ⓘ explains it.
 # Round 22 (owner): the views are tabs in the header bar (role="tablist"), not in the drawer
 # and the second number is named "Business with Russia" (positive: reduced); lens=kept and lens=business open it too.
+# Round 25 (owner, 22 October 2026): it is now "Trade with Russia", said as who kept what; lens=trade opens it too.
 # Round 23 (owner): Sources is How it works again (view "how"; #view=sources and #view=table open it), and its
 # long-form text comes from site/content/ (the method pages, the limitations and the changelog, which every flow's
 # "Changes to this flow" reads); no link points at the documentation that used to be in docs/
@@ -512,12 +513,20 @@ check(
     and bool(_start)
     and _start.group(1) == "net"
     and _old_map
-    == {"change": "net", "ukr": "support", "rus": "payments", "kept": "payments", "business": "payments", "cost": "net"}
+    == {
+        "change": "net",
+        "ukr": "support",
+        "rus": "payments",
+        "kept": "payments",
+        "business": "payments",
+        "trade": "payments",
+        "cost": "net",
+    }
     and _lens_keys == _buttons
     and 'data-lens="cost"' not in _html
     and 'data-lens="ukr"' not in _html
     and 'data-lens="rus"' not in _html
-    and '<button data-lens="payments" aria-pressed="false" data-i18n="Business with Russia">' in _html
+    and '<button data-lens="payments" aria-pressed="false" data-i18n="Trade with Russia">' in _html
     and re.search(r'<aside class="drawer" id="drawer"[^>]*\bhidden>', _html) is not None
     and 'id="hlbtn"' in _html
     and 'id="fbtn"' in _html
@@ -696,6 +705,52 @@ check(
     "captive-buyer labels change no numbers",
     bool(_cap) and ".captive" not in _model_src,
     f"labelled: {_cap}; read by the model: {'yes' if '.captive' in _model_src else 'no'}",
+)
+
+# 42. round 25 (owner, 22 October 2026: story tags, "then we back that up with the numbers"): every tag rule in
+# storyTags() is in the table of site/content/method/tags.md with a source; a tag that states a figure from a data
+# source links its sources (ref(...)) in its sentence; Belarus's "party" tag comes first (also checked in the browser,
+# check 32)
+_st = _html[_html.index("function storyTags(") :]
+_st = _st[: _st.index("\nfunction tagsHtml(")]
+_keys = sorted(set(re.findall(r'add\(\d+, "(\w+)"', _st)))
+_tags_md = (ROOT / "site" / "content" / "method" / "tags.md").read_text()
+_rows = {
+    k: row for row in _tags_md.splitlines() if row.startswith("|") for k in re.findall(r"`(\w+)`", row.split("|")[1])
+}
+_undoc = [k for k in _keys if k not in _rows or not _rows[k].rstrip("|").split("|")[-1].strip()]
+_data_tags = [
+    "party",
+    "gascut",
+    "captive",
+    "windfall",
+    "discount",
+    "hidden",
+    "bought",
+    "sold",
+    "hub",
+    "mil",
+    "aid",
+    "refugees",
+    "rusfirms",
+    "tax",
+    "ship",
+]
+
+
+def _tag_call(key):
+    # the add(...) statement of a tag, up to its closing ");" at the end of a line, with the line before it (a sentence
+    # built beforehand, as for "aid")
+    i = re.search(r"add\(\d+, \"" + key + '"', _st).start()
+    j = _st.index(");\n", i)
+    return _st[_st.rfind("\n", 0, _st.rfind("\n", 0, i)) : j]
+
+
+_no_ref = [k for k in _data_tags if not re.search(r"add\(\d+, \"" + k + '"', _st) or "ref(" not in _tag_call(k)]
+check(
+    "every story tag is documented with a source, and data tags cite theirs",
+    bool(_keys) and not _undoc and not _no_ref and 'add(100, "party"' in _st,
+    f"{len(_keys)} tag rules; not in tags.md with a source: {_undoc or 'none'}; data tags without sources: {_no_ref or 'none'}",
 )
 
 width = max(len(n) for _, n, _ in results)

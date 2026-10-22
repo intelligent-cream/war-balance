@@ -35,7 +35,7 @@ The address keeps what the reader sees.
 - `flow`: with `view=how`, a money flow (`#view=how&flow=loans`); `open=method` also opens its full method.
 - `sec`: with `view=how`, a section or heading: `method-h`, `flows-h`, `method-full`, `limitations`, `changelog`,
   `data`, a method page or one of its headings (`m-trade`, `m-trade-re-export-hubs`) or a round (`cl-r13`).
-- `lens`: `net` (the default), `support`, or `payments` (business with Russia; `business` and `kept` open it too).
+- `lens`: `net` (the default), `support`, or `payments` (trade with Russia; `trade`, `business` and `kept` open it too).
   Older values: `change` opens `net`, `ukr` opens `support`, `rus` opens `payments`, `cost` opens `net`.
 - `m`: `gdp` (the default) or `total`; `pp` (per person until round 20) opens `gdp`.
 - `y`: a year, 2021 to 2026. `hl`: a highlight (`world`, `armed`, `baltic`, `hungary`, `support`, `gascut`, `taken`).

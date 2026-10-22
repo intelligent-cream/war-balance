@@ -138,11 +138,40 @@ for (const lens of ["net", "payments"]) {
   }
 }
 
+// 4. round 25 (owner, 22 October 2026): "What makes up the number" in two sections, toward Russia and toward Ukraine,
+// with no + or − signs; their subtotals make the net in every country; every country gets its story tags, Belarus its
+// "Party to the war" tag first
+await ready("");
+const r25 = await page.evaluate(() => {
+  const bad = [], noTags = [];
+  for (const c of Object.values(DATA)) {
+    if (!c.gdp) continue;
+    const k = calc(c, 2026), S = partSections(c, k);
+    if (Math.abs(S.uaSum - S.ruSum - k.shift) > 1e-6 + 1e-6 * Math.abs(k.shift)) bad.push(`${c.iso3} ${(S.uaSum - S.ruSum).toFixed(4)} vs ${k.shift.toFixed(4)}`);
+    if (!storyTags(c, k, 2026).length && Math.abs(k.shift) >= 0.001 * c.gdp) noTags.push(c.iso3);
+  }
+  const blr = byIso.BLR ? storyTags(byIso.BLR, calc(byIso.BLR, 2026), 2026).map(f => f.key) : [];
+  const signs = [];
+  for (const iso of ["DEU", "HUN", "BLR", "CZE", "MNG", "TUR", "PRK", "POL", "IND", "USA"]) {
+    const c = byIso[iso];
+    if (!c) continue;
+    select(c.n, false);
+    const txt = [...document.querySelectorAll("#panel .psec-h, #panel .psec summary .pv, #panel .psec-sum")].map(e => e.textContent).join(" | ");
+    if (/[+\u2212]\s*[€\d]|(^|\s)-\s*[€\d]/.test(txt)) signs.push(`${iso}: ${txt.slice(0, 120)}`);
+    if (!document.querySelector("#panel .psec")) signs.push(`${iso}: no sections`);
+  }
+  return { bad, noTags, blr, signs };
+});
+if (r25.bad.length) problems.push(`parts sections do not make the net: ${r25.bad.slice(0, 5).join("; ")}`);
+if (r25.blr[0] !== "party") problems.push(`Belarus's first tag is not "party": ${r25.blr.join(", ")}`);
+if (r25.signs.length) problems.push(`signs in the parts sections: ${r25.signs.slice(0, 3).join(" || ")}`);
+
 if (errors.length) problems.push("page errors: " + errors.slice(0, 3).join(" | "));
 await browser.close();
 server.close();
 
 const unc = q => Object.values(node.countries).filter(c => c.gdp >= MIN_GDP && c[q + "Unc"]).length;
+console.log(`two-section parts make the net everywhere; Belarus tags ${r25.blr.slice(0, 3).join(", ")}; ${r25.noTags.length} countries with a material net and no tag`);
 console.log(`browser check: ${Object.keys(inPage).length} economies; ranked net ${ranked.net}, support ${ranked.support}, payments ${ranked.payments}; direction uncertain (GDP >= EUR 5bn) ua ${unc("ua")}, rus ${unc("rus")}, net ${unc("net")}; small economies' colours: ${nSmall} checked (${nFaded} faded)`);
 if (problems.length) {
   console.log(`MISMATCH: ${problems.length} (bands ${nBand}, flags ${nFlag}, grades ${nGrade})`);

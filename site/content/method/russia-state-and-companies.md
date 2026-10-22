@@ -86,7 +86,7 @@ cost the country carried.
 Raised by the third audit (M4) and approved by the owner: a seizure is as coerced as a forced-sale discount, and both
 hand value to Russia (its state or Russian firms). Until round 13 discounts counted and seizures did not, so leaving
 Russia lowered a country's score while having one's company seized did not. In round 14 seizures counted as money
-taken by Russia, on their own line, "Seized by Russia (companies' assets)", toward Russia in the second headline number (business with Russia). **Since round 14b** (raised by the owner) seizures and forced exit costs are both out of the totals: a marker on the map and a column in the full data download (`taken` in `data.json`; [above](#view=how&sec=m-russia-state-and-companies-round-14b-taken-by-russia-not-in-the-totals)).
+taken by Russia, on their own line, "Seized by Russia (companies' assets)", toward Russia in the second headline number (trade with Russia). **Since round 14b** (raised by the owner) seizures and forced exit costs are both out of the totals: a marker on the map and a column in the full data download (`taken` in `data.json`; [above](#view=how&sec=m-russia-state-and-companies-round-14b-taken-by-russia-not-in-the-totals)).
 
 - **Data**: `seizure` in [`company_flows.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows.json): asset value lost by the
   foreign owner minus anything received abroad, in the year control was lost, by the company's home country. Cases:
@@ -121,7 +121,7 @@ fee paid to Russia's budget) are:
 
 The country did not choose to move that money; Russia took it. So:
 
-- **Totals:** neither is in the net shift or in either headline number (support for Ukraine; business with Russia). This reverses round 5, which counted forced discounts and exit fees, and round 14 (audit M4), which counted
+- **Totals:** neither is in the net shift or in either headline number (support for Ukraine; trade with Russia). This reverses round 5, which counted forced discounts and exit fees, and round 14 (audit M4), which counted
   seizures.
 - **Cost view (until round 19):** both counted in the cost to the country, like the energy switching cost: "Seized by Russia (companies' assets)"
   and "Forced sales: discount and exit fee taken by Russia", positive (`taken` in `data.json`, by home country, with the
@@ -171,13 +171,13 @@ home: about EUR 0.1–0.2bn a year in total, before and after the war, and the c
 ## Frozen central-bank reserves (round 7)
 
 **Round 16 (review 5 H4, approved by the owner): a line of its own, added to the net only.** The return Russia lost
-on its frozen reserves is not a payment, so it is no longer inside business with Russia: not on that map,
+on its frozen reserves is not a payment, so it is no longer inside trade with Russia: not on that map,
 in its ranking or in its world total. It is a third line, **"Russian money frozen"**, shown in the panel under the two
 numbers, in the CSV and JSON downloads and [its money flow](#view=how&flow=frozen), and added to the
 net only (`OWN_LINE` and `frozenLine()` in `index.html`; check 34). The net is therefore support for Ukraine plus the
-business with Russia plus Russian money frozen. It is still not something the country gave Ukraine (what
+trade with Russia plus Russian money frozen. It is still not something the country gave Ukraine (what
 Ukraine receives from this return, the G7 ERA loans, is already left out of donors' aid), so it is not in support for
-Ukraine either. Before (round 14, audit M6) it was its own line inside business with Russia; it made up two-thirds of
+Ukraine either. Before (round 14, audit M6) it was its own line inside trade with Russia; it made up two-thirds of
 Belgium's payments number (+1.86% → +0.62%; its net is unchanged at +2.81%).
 
 **The one-third host share (a judgement).** The freeze is an EU decision, taken by all members and renewed by

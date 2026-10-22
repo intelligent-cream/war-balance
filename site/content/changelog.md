@@ -4,6 +4,60 @@ Every update to the map, newest first: what changed and every decision behind it
 
 The detailed research log, with every file, is [`research/2026-10/README.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/README.md).
 
+<h2 id="cl-r25">Round 25: kept wording, two-section parts, story tags <span class="cl-date">22 October</span></h2>
+<!-- flows: paid windfall laund sold services shipping companytax rusfirms rusarms statefin mil agents frozen buy flowback -->
+
+**The trade side now says who kept what, "What makes up the number" splits the parts into toward Russia and toward
+Ukraine without signs, and every country gets a few story tags. No number changed.**
+
+### What changed
+
+1. **"Kept" wording** (owner, 22 October 2026: "Yeah, I like the word kept ... let's just work with kept"): only what
+   really stays with them is counted, taxes and profit above a normal return, not the full price paid, so the trade
+   side says who kept what. The second number is **Trade with Russia** (was Business with Russia): its tile reads
+   "Trade with Russia: toward Ukraine by 1.6%" (or "toward Russia", "leaning toward …"), with two lines underneath:
+   "Russia kept €65.6 bn less" and "Germany kept €0.2 bn less from selling to Russia". The parts read "Russia kept
+   less from fuel and goods sold here", "Russia kept more from war-time fuel prices", "Germany kept less from selling to
+   Russia", "Its firms paid Russia more tax", and so on; Russian money frozen reads "Russia lost €3.2 bn in returns on
+   its frozen money". A one-line explanation of "kept" sits wherever it appears. The legend reads "Russia kept more ←
+   no clear change → Russia kept less"; `lens=trade` opens the map too. The full data download's columns are renamed:
+   `business_with_russia_reduced_*` → `trade_with_russia_toward_ukraine_*` (same sign: positive = toward Ukraine,
+   Russia kept less), `of_which_paid_russia_less_*` → `of_which_russia_kept_less_*`, `of_which_earned_less_from_russia_*`
+   → `of_which_country_kept_less_from_selling_to_russia_*`.
+2. **"What makes up the number" in two sections** (owner: "Yes, we should have a section towards Russia. The section
+   towards Ukraine makes sense. Totally good. Approved."): **Toward Russia** and **Toward Ukraine**, each with its
+   subtotal and its parts largest first (five shown, the rest one tap away), no + or − signs: the label says the
+   direction, the section confirms it, and each bar grows from the section's left edge in its colour with its likely
+   range. A closing line shows how the two make the headline: "Toward Russia 6.3% − toward Ukraine 0.58% = toward Russia
+   by 5.7%". The ranking and other charts with a zero line keep their signs.
+3. **Story tags** (owner: "add some more tags that make sense ... all the tags there ... to in short tell the story why
+   the country is where it's at ... then we back that up with the numbers"): up to six short tags under each country's
+   numbers (the rest behind "+ more"), each opening a sentence with its number and sources; the top three on the hover
+   card. 25 rules with explicit thresholds, documented in [Story tags](#view=how&sec=m-tags): party to the war, gas
+   cut off by Russia, no real alternative to Russian fuel, sanctions or own choice, war-time fuel prices, Russian oil at
+   a war-time discount, trade data hidden, bought or sold N% more or less, trade hub, weapons sent to Russia, top-10 or
+   major aid giver, many refugees, froze Russian money, fuel buying not policy, Russian-owned firms, taxes still paid in
+   Russia, shipping Russian oil, rough data, mostly one part, small economy. Belarus, for example: party to the war,
+   war-time fuel prices, Russian oil at a war-time discount, sold Russia 70% more, trade data hidden since 2022. The
+   sanctions tags now need 60% (was 50%) to say "mostly", with "partly sanctions, partly own choice" in between.
+4. **No double "leaning" chip**: when the headline already says "Leaning toward …", no second chip repeats it (Czechia);
+   the chance of that direction moved into the headline's explanation.
+5. **Ranking**: the countries not ranked (leaning toward Russia, leaning toward Ukraine, uncertain direction, party to
+   the war) are tappable country chips, grouped, instead of plain text.
+6. **Checks**: check 32 (in the browser) also checks that the two sections make the net in every country, that no + or −
+   sign is left in the sections, and that Belarus's first tag is "Party to the war"; check 42 checks that every tag rule
+   is in the tags table with a source and that every tag stating a figure from data links its sources.
+
+### Decisions
+
+- **"Kept" for the trade side, "Trade with Russia" for the number** — *raised by:* owner, 22 October 2026 ("I like the word
+  kept ... let's just work with kept"); *why:* the numbers count what stays with Russia (or with the seller), not the full
+  price, so "business" overstated them; *effect:* wording only.
+- **Two sections in "What makes up the number", without signs** — *raised by:* owner ("Approved. Do that."); *why:* "−5.2%
+  paid Russia war-time fuel prices" read as paying less; *effect:* display only.
+- **Story tags on every country, from documented rules** — *raised by:* owner; *why:* tell in short why a country is where
+  it is, then back it up with the numbers; *effect:* display only (a tag changes no number).
+
 <h2 id="cl-r24b">Round 24b: the method changes the owner decided <span class="cl-date">22 October</span></h2>
 <!-- flows: aid euaid ref flowback paid windfall laund sold services shipping companytax rusfirms rusarms statefin mil agents -->
 
