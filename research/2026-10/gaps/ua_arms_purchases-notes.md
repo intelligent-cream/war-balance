@@ -4,7 +4,7 @@ Data file: `ua_arms_purchases.json` (same folder). Roadmap item 1. **Not yet rev
 
 ## 1. What this flow is
 
-The map already counts three kinds of "money flowing back" ([flowback](https://intelligent-cream.github.io/follow-the-money-ukraine/#view=how&sec=m-aid-refugees-military-flowback)):
+The map already counts three kinds of "money flowing back" ([flowback](https://followthemoneyukraine.org/#view=how&sec=m-aid-refugees-military-flowback)):
 
 - a donor's own aid spent with its own industry;
 - NATO PURL purchases from US stocks;

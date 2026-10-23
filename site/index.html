@@ -11,10 +11,22 @@
 <meta name="twitter:title" content="Follow the Money: Ukraine">
 <meta property="og:description" content="Research preview, unverified estimates. Where did each country's money move: toward Ukraine or toward Russia? Support for Ukraine plus how much less, or more, Russia kept from trade, against a world without the war. Totals for 2022 to August 2026 (about 4.7 years) against one year's GDP, with sources and ranges.">
 <meta name="twitter:description" content="Research preview, unverified estimates. Where did each country's money move: toward Ukraine or toward Russia? Support for Ukraine plus how much less, or more, Russia kept from trade, for every country since 2022, with sources and ranges.">
-<meta property="og:url" content="https://intelligent-cream.github.io/follow-the-money-ukraine/">
-<meta property="og:image" content="https://intelligent-cream.github.io/follow-the-money-ukraine/share/world.png">
+<meta property="og:url" content="https://followthemoneyukraine.org/">
+<meta property="og:image" content="https://followthemoneyukraine.org/share/world.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://followthemoneyukraine.org/">
+<!-- round 30: the site's own address is pipeline/site_config.json site_url (checked by check_data.py); languages by ?lang= (pickLang() in i18n.js) -->
+<link rel="alternate" hreflang="en" href="https://followthemoneyukraine.org/?lang=en">
+<link rel="alternate" hreflang="uk" href="https://followthemoneyukraine.org/?lang=uk">
+<link rel="alternate" hreflang="de" href="https://followthemoneyukraine.org/?lang=de">
+<link rel="alternate" hreflang="fr" href="https://followthemoneyukraine.org/?lang=fr">
+<link rel="alternate" hreflang="pl" href="https://followthemoneyukraine.org/?lang=pl">
+<link rel="alternate" hreflang="nl" href="https://followthemoneyukraine.org/?lang=nl">
+<link rel="alternate" hreflang="es" href="https://followthemoneyukraine.org/?lang=es">
+<link rel="alternate" hreflang="x-default" href="https://followthemoneyukraine.org/">
+<link rel="sitemap" type="application/xml" href="https://followthemoneyukraine.org/sitemap.xml">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://followthemoneyukraine.org/#website", "name": "Follow the Money: Ukraine", "url": "https://followthemoneyukraine.org/", "inLanguage": ["en", "uk", "de", "fr", "pl", "nl", "es"], "publisher": {"@id": "https://followthemoneyukraine.org/#org"}}, {"@context": "https://schema.org", "@type": "Organization", "@id": "https://followthemoneyukraine.org/#org", "name": "Follow the Money: Ukraine", "url": "https://followthemoneyukraine.org/"}, {"@context": "https://schema.org", "@type": "Dataset", "@id": "https://followthemoneyukraine.org/#dataset", "name": "Follow the Money: Ukraine — where each country's money moved since 2022", "description": "Research preview: unverified estimates. For every country, its support for Ukraine and how much less, or more, Russia kept from trade with it (taxes and profit above a normal return, not the full price), against a world without the war, from February 2022 to August 2026, as totals against one year's GDP. Every number has a likely range, a certainty letter and its sources.", "url": "https://followthemoneyukraine.org/", "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": true, "creator": {"@id": "https://followthemoneyukraine.org/#org"}, "publisher": {"@id": "https://followthemoneyukraine.org/#org"}, "temporalCoverage": "2022-02/2026-08", "spatialCoverage": {"@type": "Place", "name": "World"}, "keywords": ["Ukraine", "Russia", "war", "aid to Ukraine", "sanctions", "trade with Russia", "fossil fuels", "refugees", "frozen assets", "Kiel Ukraine Support Tracker"], "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://followthemoneyukraine.org/data.json", "name": "Full data (JSON)"}]}]</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -3029,7 +3041,9 @@ function wirePanel() {
   }));
 }
 // each country has its own page with a preview image, so a shared link shows that country's number
-const SITE_URL = "https://intelligent-cream.github.io/follow-the-money-ukraine/";
+// the site's own address (round 30: pipeline/site_config.json site_url, checked by check_data.py); OLD_URL is the
+// previous address, still recognised in links (old research notes and shared links)
+const SITE_URL = "https://followthemoneyukraine.org/", OLD_URL = "https://intelligent-cream.github.io/follow-the-money-ukraine/";
 // the one-line summary of a country: shared, and read out when its panel opens
 // Round 14 (audit C4, approved by the owner): what the second number is, in words, for the panel, the share text and the
 // share cards. "Cut off by Russia" only where Russia actually cut the country's gas (k.rusCut); earners (weapons, troops,
@@ -3486,9 +3500,9 @@ const SRC_TYPES = [["data", "Official statistics and datasets"], ["report", "Rep
 const docsOf = (id, flow) => (SRC[id].links || []).filter(l => !flow || !l.flows || l.flows.includes(flow));
 function docLink(l) {
   // round 23: a link to this site's own How it works opens it in place
-  const own = l.url.startsWith(SITE_URL + "#view=how");
+  const base = [SITE_URL, OLD_URL].find(u => l.url.startsWith(u + "#view=how")), own = !!base;
   const tag = l.archived ? t("archived copy") : l.kind === "secondary" ? t("press report") : l.kind === "model" || l.kind === "method" ? t("this project's method") : "";
-  return `<a href="${esc(own ? l.url.slice(SITE_URL.length) : l.url)}"${own ? "" : ' target="_blank" rel="noopener"'} lang="en">${esc(l.title)}</a>${tag ? ` <span class="src-kind">${tag}</span>` : ""}`;
+  return `<a href="${esc(own ? l.url.slice(base.length) : l.url)}"${own ? "" : ' target="_blank" rel="noopener"'} lang="en">${esc(l.title)}</a>${tag ? ` <span class="src-kind">${tag}</span>` : ""}`;
 }
 const dateTxt = s => (s.date ? `<span class="sd">${t({ data: ", data to {date}", published: ", published {date}", checked: ", checked {date}" }[s.date_kind] || ", data to {date}", { date: s.date })}</span>` : "");
 // one source: its name, date and (in How it works) note, its key documents, then the others folded
