@@ -94,6 +94,10 @@ Volunteers for Ukraine and fighters for Russia are shown as counts, not money.
 
 Part of aid comes back to the donor as orders for its own industry. Counting the full aid while ignoring this would flatter big arms producers. Each seller's flowback is its own aid spent at home (including replacing donated stock), other countries' aid spent there, Ukraine's own arms purchases there, aid spent there on energy and rebuilding, and extra sales to Ukraine. It counts at the **seller's net gain × genuinely extra**: arms makers earn little above a normal return, so the US earns back only a few percent of the money spent in its economy. The "money flowing back" switch on the map turns it off.
 
+### Services sold to Ukraine
+
+Since round 39 extra **services** sold to Ukraine count as flowing back too, like extra goods: transport on the solidarity lanes and other services the sellers report (Eurostat, OECD-WTO), and Ukrainians' own card spending abroad (the National Bank of Ukraine), spread over hosts by refugee numbers. Each at the seller's real gain times the share that is genuinely extra; host governments' refugee spending is not in it (that is refugee hosting). About EUR 1bn in all; Poland −0.06% of GDP, the most.
+
 ### Arms Ukraine bought abroad
 
 Weapons Ukraine bought from foreign sellers, with its own budget or donors' cash (the Czech ammunition initiative, Bulgarian and Serbian shells, Patriots from the US), are money flowing back to the seller too: about EUR 21bn over 2022–2026, Czechia 5.7bn gross, Bulgaria 5.0, the US 4.1.
