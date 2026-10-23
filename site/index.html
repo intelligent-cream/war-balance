@@ -2685,11 +2685,13 @@ const amtWords = (c, v, measure = state.measure) => t("{eur} ({pct})", { eur: sh
 // "by 1.6%" is never read as a 1.6% fall in trade. Business with Russia is positive when it was reduced
 // Round 25 (owner, 22 October 2026: "kept"; "Trade with Russia"): only what really stays with them is counted (taxes and
 // profit above a normal return, not the full price paid), so the trade side says who kept what. The tile's headline says
-// the direction ("Trade with Russia: toward Ukraine by"), its two lines who kept what ("Russia kept €65.6 bn less";
+// the direction (round 27: "Reduced trade with Russia by"), its two lines who kept what ("Russia kept €65.6 bn less";
 // "Germany kept €0.2 bn less from selling to Russia"); {c} is the country's name
 const VERBS = { net: ["Toward Ukraine by {x}", "Toward Russia by {x}"], ua: ["Supported Ukraine with {x}", "Gave Ukraine less than without the war, by {x}"],
-  rus: ["Trade with Russia: toward Ukraine by {x}", "Trade with Russia: toward Russia by {x}"],
-  rusLean: ["Trade with Russia: leaning toward Ukraine by {x}", "Trade with Russia: leaning toward Russia by {x}"],
+  // round 27 (owner, 23 October 2026): the tile says what happened to trade ("Reduced trade with Russia by"); the
+  // amount is measured by what each side kept (the two lines under it and the "kept" tap line say so)
+  rus: ["Reduced trade with Russia by {x}", "Increased trade with Russia by {x}"],
+  rusLean: ["Probably reduced trade with Russia by {x}", "Probably increased trade with Russia by {x}"],
   frozen: ["Froze Russian money: Russia lost {x} in returns", "Froze Russian money: Russia lost {x} in returns"],
   // round 24b (audit 24, D M1; approved by the owner): the trade side's two lines; round 25: who kept what
   paid: ["Russia kept {x} less", "Russia kept {x} more"], earned: ["{c} kept {x} less from selling to Russia", "{c} kept {x} more from selling to Russia"],
@@ -2703,9 +2705,9 @@ const verb = (q, v, c, m) => t(verbKey(q, v), { x: amtX(c, v, m), c: c ? c.name 
 const KEPT_MEANS = () => t("“Kept” means what really stays with them: taxes and profit above a normal return, not the full price paid.");
 // the verb around a big number in a tile: the words before and after the amount
 const verbAround = (q, v) => t(verbKey(q, v)).split("{x}").map(x => x.trim());
-// the net in words: "Supported Ukraine + trade with Russia toward Ukraine + froze Russian money = 3.2% of GDP toward Ukraine"
+// the net in words: "Supported Ukraine + reduced trade with Russia + froze Russian money = 3.2% of GDP toward Ukraine"
 function netSentence(c, k, m = state.measure) {
-  const parts = [t(k.uaBal >= 0 ? "supported Ukraine" : "gave Ukraine less than without the war"), t(k.rusBal >= 0 ? "trade with Russia toward Ukraine" : "trade with Russia toward Russia")];
+  const parts = [t(k.uaBal >= 0 ? "supported Ukraine" : "gave Ukraine less than without the war"), t(k.rusBal >= 0 ? "reduced trade with Russia" : "increased trade with Russia")];
   if (Math.abs(k.frozen) >= 0.0005) parts.push(t("froze Russian money"));
   const s = t(k.shift >= 0 ? "{parts} = {x} toward Ukraine" : "{parts} = {x} toward Russia", { parts: parts.join(" + "), x: amtX(c, k.shift, m) });
   return s.charAt(0).toUpperCase() + s.slice(1);
@@ -3822,7 +3824,7 @@ function firstLayer(c, k, y) {
   const term = (v, pos, neg) => terms.push({ s: v >= 0 ? 1 : -1, w: t(v >= 0 ? pos : neg, { x: amt(v) }) });
   term(k.uaBal, "supported Ukraine {x}", "gave Ukraine less {x}");
   // a tile with nothing in it (no parts, or only "no data") adds nothing to the sum
-  if (S[1].parts.length || Math.abs(k.rusBal) >= 0.0005) term(k.rusBal, "trade toward Ukraine {x}", "trade toward Russia {x}");
+  if (S[1].parts.length || Math.abs(k.rusBal) >= 0.0005) term(k.rusBal, "reduced trade with Russia {x}", "increased trade with Russia {x}");
   if (Math.abs(k.frozen) >= 0.0005) term(k.frozen, "Russia lost {x} on frozen money", "Russia lost {x} on frozen money");
   const sumTxt = terms.map((x, i) => (i === 0 ? (x.s < 0 ? "− " : "") : x.s < 0 ? " − " : " + ") + x.w).join("");
   const closing = `<p class="psec-sum">${sumTxt.charAt(0).toUpperCase() + sumTxt.slice(1)} = ${headline}</p>`;

@@ -4,6 +4,27 @@ Every update to the map, newest first: what changed and every decision behind it
 
 The detailed research log, with every file, is [`research/2026-10/README.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/README.md).
 
+<h2 id="cl-r27">Round 27: the trade tile says what happened to trade <span class="cl-date">23 October</span></h2>
+<!-- flows: paid windfall laund sold -->
+
+**The trade tile reads "Reduced trade with Russia by 1.6%" again ("Increased …", or "Probably …" when it leans); the
+two lines under it still say who kept what. No number changed.**
+
+### What changed
+
+1. The tile's headline is "Reduced / Increased trade with Russia by X of GDP" ("Probably reduced / increased …" when
+   its likely range crosses zero but leans), instead of "Trade with Russia: toward Ukraine / Russia by". The amount is
+   still measured by what each side kept (taxes and profit above a normal return), as the two lines under it and the
+   "kept" tap line say. All six languages.
+2. The closing sum under "What makes up the number" reads, for example, "Supported Ukraine 0.50% + reduced trade with
+   Russia 6.3% = toward Ukraine by 6.8%".
+
+### Decisions
+
+- **The trade tile says what happened to trade.** Raised by the owner (23 October 2026): "Can we rename this not
+  simply to reduce trade with Russia or what the previous name was? … we had a name that made way more sense."
+  Effect: wording only.
+
 <h2 id="cl-r26">Round 26: coherence <span class="cl-date">22 October</span></h2>
 <!-- flows: paid windfall laund sold buy flowback sanctions -->
 
