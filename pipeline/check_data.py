@@ -400,7 +400,7 @@ import check_docs_numbers as cdn  # noqa: E402
 
 _m = cdn.model()
 if _m is None:
-    check("ranking leaves out uncertain directions", True, "node not found: not checked", warn_only=True)
+    check("ranking marks uncertain directions", True, "node not found: not checked", warn_only=True)
     check("docs figures match data.json", True, "node not found: not checked", warn_only=True)
 else:
     # 29. round 15 (review 4, H3; approved by the owner): a country is ranked on a headline number only if neither its
@@ -422,7 +422,7 @@ else:
         q: sum(1 for c in _m["countries"].values() if c[q + "Unc"] and c["gdp"] >= 5) for q in ("ua", "rus", "net")
     }
     check(
-        "ranking leaves out uncertain directions",
+        "ranking marks uncertain directions",
         not _wrong and len(_calls) >= 3 and "uncertain(r.c, y, q)" in _html,
         f"rule mismatches: {_wrong[:6] or 'none'}; direction uncertain (GDP >= EUR 5bn): {_unc_n}",
     )
@@ -448,13 +448,34 @@ else:
     _plean = [f"{k}.{q}" for k in _party for q in ("ua", "rus", "net") if _m["countries"][k][q + "Lean"]]
     _rank_src = _html[_html.index("function rankList") :][:3000]
     check(
-        "a party to the war is not ranked and in no list",
-        _party == ["BLR"]
+        "a party to the war (Belarus, North Korea) is not ranked and in no list",
+        _party == ["BLR", "PRK"]
         and not _plean
         and "PARTY_TO_WAR" in _rank_src
         and "PARTY_TO_WAR.has" in _views_js
         and "Party to the war (with Russia)" in _html,
         f"parties: {_party}; leaning: {_plean or 'none'}",
+    )
+    # 42. round 29 (owner, 23 October 2026: "in the ranking we have the uncertainty there"): the Ranking view ranks
+    # leaning and uncertain directions too, faded and labelled, with a key; parties to the war are listed under it
+    # (browser_check.mjs checks the rows against Node)
+    check(
+        "the ranking shows leaning and uncertain rows, labelled, and lists the parties under it",
+        all(x in _views_js for x in ('" rk-" + m.st', 'class="rk-st"', 'class="rk-key"', "chipGroup(party"))
+        and '"leaning: at least a 65% chance of that direction"' not in _html,
+        "row classes rk-lean / rk-unc, a label per row, a key; party chips",
+    )
+    # 43. round 29 (owner: "show the Kiel numbers next to the real ones and explain the difference in short"): the aid card
+    # and the support tile show Kiel's own figure next to the amount counted, wherever Kiel has the country
+    _kiel_n = sum(
+        1
+        for c in data["countries"].values()
+        if (c.get("aid") or {}).get("cats") and "kiel" in ((c.get("aid") or {}).get("src") or [])
+    )
+    check(
+        "Kiel's own aid figure is shown next to ours",
+        "function kielLine" in _html and _html.count("kielLine(c,") >= 2 and _kiel_n > 30,
+        f"{_kiel_n} countries in Kiel get the line in the aid card and the support tile",
     )
 
 # 31. round 15 (approved by the owner): the net is the view the map opens with, then its two parts; the gross "To
@@ -526,7 +547,7 @@ check(
     and 'data-lens="cost"' not in _html
     and 'data-lens="ukr"' not in _html
     and 'data-lens="rus"' not in _html
-    and '<button data-lens="payments" aria-pressed="false" data-i18n="Trade with Russia">' in _html
+    and '<button data-lens="payments" aria-pressed="false" data-i18n="Russia\'s earnings from trade">' in _html
     and re.search(r'<aside class="drawer" id="drawer"[^>]*\bhidden>', _html) is not None
     and 'id="hlbtn"' in _html
     and 'id="fbtn"' in _html
