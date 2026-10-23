@@ -1,0 +1,104 @@
+{
+ "generated": "2026-10-23",
+ "round": 39,
+ "unit": "EUR bn per year (2026 = January-August), low/central/high",
+ "replaces": "research/2026-10/gaps/uncovered.json -> undisclosed_aid.countries.DEU (same shape)",
+ "countries": {
+  "DEU": {
+   "years": {
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0.2
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0.2
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0.3
+    },
+    "2025": {
+     "low": 0,
+     "central": 0.3,
+     "high": 1.5
+    },
+    "2026": {
+     "low": 0,
+     "central": 1.4,
+     "high": 3.5
+    }
+   },
+   "certainty": "D",
+   "certainty_note": "Unchanged grade: no official 2026 outflow figure exists yet. The decisive document is the government's answer to Kleine Anfrage 21/8052 (filed 18 Sep 2026), whose question 2 asks for Ist-Ausgaben 2022-2025 and 2026 to 30 June 2026 for Einzelplan 60, Kapitel 6002, Titel 687 06 and 687 03; it was not yet published on 23 Oct 2026. With it, 2026 can become B.",
+   "inputs": {
+    "appropriation_2026_eur_bn": {
+     "value": 11.55,
+     "what": "Einzelplan 60, Ertüchtigung (Titel 687 06, attacked states), final 2026 budget: raised by EUR 3bn from the EUR 8.5bn cabinet draft"
+    },
+    "appropriation_2025_eur_bn": {
+     "value": 8.3,
+     "plus": "up to about EUR 2.5bn approved overspend (Haushaltsausschuss, March 2025, as reported in the BMF advisory council report; not verified from the primary record)",
+     "VE": 13.6
+    },
+    "disbursed_2022_2025_eur_bn": {
+     "value": 22.7,
+     "what": "budget outflows per Kiel Policy Brief 10/2026 (from government totals)"
+    },
+    "government_military_total_30jun2026_eur_bn": {
+     "value": 57.6,
+     "what": "Bundesregierung list, Stand 30.06.2026: 'geleistet bzw. für die kommenden Jahre bereitgestellt', including commitments for later years, the value of Bundeswehr stock deliveries and training costs; the earlier list format (Stand 31.03.2025) counted only cash outflows (BMVg EUR 15.07bn)"
+    },
+    "kiel_r31_deu_by_year_all_aid_eur_bn": {
+     "2022": 5.99,
+     "2023": 5.63,
+     "2024": 4.4,
+     "2025": 9.37,
+     "2026_JanAug": 5.45
+    }
+   },
+   "arithmetic_2026": "Expected Jan-Aug 2026 outflow = 11.55 x execution 0.80-1.00 x 8/12 = EUR 6.2-7.7bn. Kiel R31 records EUR 5.45bn of German aid for Jan-Aug 2026 (all types; military about 4.9-5.2). Gap = 1.0-2.8; central 1.4 (execution 0.9, military 5.0). Low 0: German money also flows as multi-year prepayments that Kiel books at contract or delivery, and part of 2026 appropriations pays for items Kiel dated in 2025. High 3.5: full execution and Kiel missing all non-itemised 2026 deliveries.",
+   "change_vs_current": "2026 central 1.5 -> 1.4, high 4.0 -> 3.5; 2022-2025 unchanged. Effect on the map: -0.1bn central (Germany toward Ukraine falls by EUR 0.1bn, about 0.002% of GDP).",
+   "sources": [
+    {
+     "title": "Bundesregierung: Bilaterale Unterstützungsleistungen der Bundesregierung für die Ukraine und Menschen aus der Ukraine, Stand 30.06.2026",
+     "url": "https://www.bundesregierung.de/resource/blob/975228/2423058/b49e873efda519b0e6be3a12d1e306ee/2026-04-24-ukraine-unterstuetzung-data.pdf?download=1",
+     "what": "civil EUR 43.3bn; military about EUR 57.6bn provided or set aside for coming years, incl. stock deliveries (valued) and training"
+    },
+    {
+     "title": "Bundesregierung: same list, Stand 31.03.2025 (old format, cash outflows only)",
+     "url": "https://www.bundesregierung.de/resource/blob/975228/2201464/c03ec9d86f75e03dbec547ac4d5fcc99/liste-ukr-bilaterale-hilfe-data.pdf?download=1",
+     "what": "BMVg EUR 15.07bn cash outflows to 31 Mar 2025; excludes stock deliveries and training"
+    },
+    {
+     "title": "Deutscher Bundestag, Drucksache 21/8052 (Kleine Anfrage, 18.09.2026)",
+     "url": "https://dserver.bundestag.de/btd/21/080/2108052.pdf",
+     "what": "asks for Ist-Ausgaben by year and title (687 06, 687 03) incl. 2026 to 30 June; answer pending"
+    },
+    {
+     "title": "hib 277/2025, Haushalt 2025 Einzelplan 60",
+     "url": "https://www.bundestag.de/presse/hib/kurzmeldungen-1098302",
+     "what": "Ertüchtigung 2025: EUR 8.3bn, VE EUR 13.6bn"
+    },
+    {
+     "title": "Auswärtiges Amt: Der Haushalt des Auswärtigen Amts 2026",
+     "url": "https://www.auswaertiges-amt.de/de/aamt/haushalt-2283092",
+     "what": "Ertüchtigungsinitiative 2026 'rund 12 Milliarden Euro (einschließlich Einnahmen und Rückflüssen)'"
+    },
+    {
+     "title": "Kiel Institute, Policy Brief 10/2026 (8 Oct 2026)",
+     "url": "https://www.kielinstitut.de/media/news/ukraine-support-tracker-only-eur-417-billion-of-germanys-eur-100-billion-went-to-ukraine/",
+     "what": "EUR 22.7bn disbursed 2022-25; EUR 11.6bn appropriated 2026, disbursement unknown; EUR 22bn future commitments; Kiel traces 56.3 of the government's 57.6bn"
+    },
+    {
+     "title": "Weltwoche/Handelsblatt (Nov 2025): Bundesregierung stockt Ukraine-Hilfe 2026 auf 11,5 Milliarden Euro auf",
+     "url": "https://weltwoche.de/daily/bundesregierung-stockt-ukraine-hilfe-2026-auf-115-milliarden-euro-auf/",
+     "what": "military line raised by EUR 3bn from the EUR 8.5bn draft to EUR 11.55bn (press; the budget law itself is the primary source: Haushaltsgesetz 2026, Einzelplan 60)"
+    }
+   ]
+  }
+ }
+}

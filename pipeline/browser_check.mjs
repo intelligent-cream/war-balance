@@ -101,9 +101,10 @@ for (const [lens, q] of Object.entries(LENS)) {
   const want = Object.entries(node.countries).filter(([, c]) => c.gdp >= MIN_GDP && !c.party && c[q] !== null).map(([k]) => k).sort();
   const wrongSt = Object.entries(got.st).filter(([k, s]) => {
     const c = node.countries[k]; if (!c) return false;
-    // round 38 (owner: "we can create leaning groups"): five groups, only the two certain ones numbered (#)
-    const pos = c[q] >= 0, g = !c[q + "Unc"] ? (pos ? 0 : 4) : !c[q + "Lean"] ? 2 : pos ? 1 : 3;
-    const exp = (!c[q + "Unc"] ? "" : c[q + "Lean"] ? "lean" : "unc") + ":g" + g + (g === 0 || g === 4 ? "#" : "");
+    // round 38 (owner: "we can create leaning groups"): the groups, only the two certain ones numbered (#)
+    // round 39: a sixth group, near zero (2), between leaning toward Ukraine and uncertain
+    const pos = c[q] >= 0, g = !c[q + "Unc"] ? (pos ? 0 : 5) : c[q + "Near"] ? 2 : !c[q + "Lean"] ? 3 : pos ? 1 : 4;
+    const exp = (!c[q + "Unc"] ? "" : c[q + "Lean"] ? "lean" : "unc") + ":g" + g + (g === 0 || g === 5 ? "#" : "");
     return s !== exp;
   }).map(([k, s]) => `${k}=${s || "certain"}`);
   if (wrongSt.length) problems.push(`${lens} ranking: rows not faded and grouped as Node says: ${wrongSt.slice(0, 8).join(" ")}`);

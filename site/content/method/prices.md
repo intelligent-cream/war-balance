@@ -44,7 +44,7 @@ For each year from 2022: what the country paid for Russian fuel, minus the same 
 
 - **Fuel only**: other goods' price rises are mostly general inflation.
 - **Only money flowing to Russia**: higher prices on goods sold to Russia do not count.
-- **On top of volume**: a country that cut volumes still pays the windfall on what it kept buying. Germany: EUR 16.5bn<!-- n:DEU.part_windfall abs --> toward Russia (likely 1.3<!-- n:DEU.part_windfallHi abs --> to 29.1<!-- n:DEU.part_windfallLo abs -->), almost all in 2022.
+- **On top of volume**: a country that cut volumes still pays the windfall on what it kept buying. Germany: EUR 16.5bn<!-- n:DEU.part_windfall abs --> toward Russia (likely 1.3<!-- n:DEU.part_windfallHi abs --> to 29.2<!-- n:DEU.part_windfallLo abs -->), almost all in 2022.
 
 ## No-war prices
 
@@ -58,4 +58,4 @@ A change in the volume of gold is valued at the **2021 gold price held flat**, s
 
 ## 2026 and the Hormuz crisis
 
-Fuel prices in 2026 are high partly because the Strait of Hormuz was shut to tankers from March 2026 (Brent 35% above its pre-crisis futures, diesel about 59%; [CREA](https://energyandcleanair.org/what-the-hormuz-crisis-has-cost-fossil-fuel-importers-march-to-august-2026/)). This war did not cause it, so the 2026 no-war price is the actual world price and only Russia-specific price gaps count. The money still really reached Russia, so 2026 is valued at 2026 prices; the panel notes where valuing 2026 at 2025 prices would change the number, and the method band shows it. Germany: net 3.44%<!-- n:DEU.net --> for 2022–August 2026; with 2026 at 2025 prices it cut Russia's earnings from trade by 1.46%<!-- n:DEU.alt_p26.rus --> instead of 1.57%<!-- n:DEU.rus -->.
+Fuel prices in 2026 are high partly because the Strait of Hormuz was shut to tankers from March 2026 (Brent 35% above its pre-crisis futures, diesel about 59%; [CREA](https://energyandcleanair.org/what-the-hormuz-crisis-has-cost-fossil-fuel-importers-march-to-august-2026/)). This war did not cause it, so the 2026 no-war price is the actual world price and only Russia-specific price gaps count. The money still really reached Russia, so 2026 is valued at 2026 prices; the panel notes where valuing 2026 at 2025 prices would change the number, and the method band shows it. Germany: net 3.65%<!-- n:DEU.net --> for 2022–August 2026; with 2026 at 2025 prices it cut Russia's earnings from trade by 1.62%<!-- n:DEU.alt_p26.rus --> instead of 1.74%<!-- n:DEU.rus -->.

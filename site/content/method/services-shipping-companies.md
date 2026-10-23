@@ -27,3 +27,13 @@ Taxes that Russian subsidiaries of foreign companies pay while still foreign-own
 - **Companies that left** stop counting once sold; seized companies (Unipro, Fortum from 2023) stop counting for their old owners.
 - **Company reports** correct the data where they exist: Austria rests on Raiffeisen's own Russian tax figures; Japan Tobacco's Russian business counts for Japan, not Switzerland.
 - 2026 is January–August, estimated from 2025 and the first 2026 reports (`*`). Compared in money, without a price index.
+
+## Company profits in Russia
+
+Taxes are one part of what foreign companies in Russia give Russia; **their profits are what their owners earned from Russia**. Since round 39 the change in those profits against the no-war level counts, after Russian tax (so nothing overlaps with taxes), from KSE Institute's company data and the OECD's direct-investment income by partner:
+
+- **Dividends that reached home count in full.** Profit kept in Russia counts at about a third of its value (0.35): roughly what an owner from a sanctioning country can still get out, after a sale at a deep discount and Russia's exit fee. The other two thirds are a marker beside seizures, not in the totals.
+- **Firms that sold out** count their lost profit only above a normal return on the price they got.
+- **Stakes in Russian oil and gas** (Yamal LNG, Novatek, Sakhalin, Vankor) are a part of their own: TotalEnergies, CNPC, Japanese trading houses and Indian state firms, and the income BP, Shell, Exxon, Wintershall and OMV lost when they left.
+
+Most owners earned much less from Russia than without the war: the UK, Germany, Sweden and Finland move toward Ukraine by 0.2 to 0.5% of GDP. Owners that kept earning there (Raiffeisen for Austria, OTP for Hungary) move toward Russia.

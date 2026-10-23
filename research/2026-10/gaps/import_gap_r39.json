@@ -1,0 +1,6733 @@
+{
+ "generated": "2026-10-23",
+ "round": 39,
+ "unit": "EUR bn per year (ECB annual averages as trade_full.json); 2026 is not given: the pipeline sets 2026 = 2025 x 8/12 as now",
+ "replaces": "research/2026-10/gaps/residual.json -> exports_to_rus_gap.countries (same shape: {ISO3: {year: {low, central, high}}}). Totals per year are unchanged (CIF/FOB, KGZ/KAZ transit and the residual total stay as in residual.json by_year); only the split of the residual component over countries changes.",
+ "method": "Russia's customs (FCS) still publishes its imports by continent of origin (Europe, Asia, America, Africa, Oceania) although it stopped publishing by country. Russia records imports by country of ORIGIN, partners record exports by DESTINATION, so the gap per continent shows whose goods reach Russia without being declared as exports to Russia. Steps: (1) partner-reported exports to Russia (trade_full.json, central) summed by UN M49 continent; (2) hub re-exports (reexports.json x refine.json shares, belarus.json) moved from the hub's continent to the origin continents (origin_shares); (3) gap per block = FCS imports - origin-adjusted partner exports, blocks Asia, West (Europe + Americas, combined because EU-reported exports carry US-origin goods: in 2021 Europe's partner exports exceeded FCS imports from Europe by 5% while the Americas' fell 52% short), Africa+Oceania; (4) minus CIF/FOB (residual.json share 3.5-7.5% of FCS, Asia's rate 0-30% higher for sea freight) and minus the KGZ/KAZ unrecorded transit by origin block (residual.json origin_shares_of_hub_increase; OTHER split 30-70% Asia); (5) the rest, floored at 0, gives each block's share of residual.json's residual component (20,000 Monte Carlo draws: FCS +-1% (2022 +-2%), Belarus +-12%, partner sums +-2%, re-export moves x0.5-1.5, CIF/FOB, transit). Within blocks: Asia pro rata to reported exports with coalition weight 0.25 (as residual.json); West by Russia's own 2021 imports by origin (Comtrade reporter 643, 2021, excluding BLR and UKR), i.e. the pre-war origin mix the parallel imports replace; Africa+Oceania pro rata to reported exports. Belarus keeps its old value (its share is re-spread by the pipeline as now). Transit (KGZ/KAZ) parts per country are kept from residual.json (old value minus its reconstructed pro-rata part).",
+ "pre_war_check": "2021 origin-adjusted ratios partner/FCS: Asia 0.913, Europe 1.054, Americas 0.48, Africa 0.50. After CIF/FOB the 2021 residual is entirely Asian (+ small Africa/Oceania), i.e. the old pro-rata rule fits the pre-war pattern. The war years differ: Europe's ratio fell to 0.92 (2023) and 0.91 (2024); Asia's stayed near 0.87-0.89 until 2024, then fell to 0.81 in 2025.",
+ "fcs_imports_by_region_usd_bn": {
+  "2021": {
+   "Asia": 135.35652096333797,
+   "Europe": 124.434907927076,
+   "Africa": 3.02547872202,
+   "Oceania": 0.96318676161,
+   "America": 26.898357797729997
+  },
+  "2023": {
+   "Asia": 187.5,
+   "Europe": 78.5,
+   "America": 15.0,
+   "Africa": 3.4,
+   "Oceania": 0.2
+  },
+  "2022": {
+   "Asia": 145.12383900928793,
+   "Europe": 89.5096921322691,
+   "America": 16.853932584269664,
+   "Africa": 3.1307550644567215,
+   "Oceania": 0.47846889952153115
+  },
+  "2024": {
+   "Asia": 191.2,
+   "Europe": 73.1,
+   "America": 14.8,
+   "Africa": 3.5,
+   "Oceania": 0.2
+  },
+  "2025": {
+   "Asia": 185.9,
+   "Europe": 72.3,
+   "America": 16.3,
+   "Africa": 4.4,
+   "Oceania": 0.1
+  }
+ },
+ "fcs_region_sources": [
+  {
+   "year": "2021",
+   "what": "Russia's own 2021 imports by partner (FCS data as reported to UN Comtrade, reporter 643, flow M, TOTAL)",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=643&period=2021&flowCode=M&cmdCode=TOTAL"
+  },
+  {
+   "year": "2023 (and 2022 from the growth rates)",
+   "what": "FCS via Interfax 2024-02: imports from Asia USD 187.5bn (+29.2%), Europe 78.5 (-12.3%), America 15.0 (-11.0%), Africa 3.4 (+8.6%), Oceania 0.2 (-58.2%); total 285.1",
+   "url": "https://www.interfax.ru/business/945632"
+  },
+  {
+   "year": "2024",
+   "what": "FCS via TASS/Mail.ru 2025-02: Europe 73.1 (-6.88%), Asia 191.2 (+1.92%), Africa 3.5 (+2.94%), America 14.8 (-1.33%); total 283.0",
+   "url": "https://finance.mail.ru/article/fts-polozhitelnoe-saldo-vneshney-torgovli-rf-vyroslo-za-2024-god-na-7-79-65042948/"
+  },
+  {
+   "year": "2025",
+   "what": "FCS regional table via Lognews 2026-02: Europe 72.3, Asia 185.9, Africa 4.4, America 16.3, Oceania 0.1; total 279.0",
+   "url": "https://lognews.ru/fts-predostavila-otchet-po-tamozhennoy-statistike-vneshnetorgovyy-oborot-rossii-v-yanvare-dekabre"
+  }
+ ],
+ "blocks_by_year": {
+  "2022": {
+   "fcs_usd_bn": {
+    "Asia": 145.12,
+    "West": 106.36,
+    "AfOc": 3.61
+   },
+   "partner_direct_usd_bn": {
+    "Asia": 128.68,
+    "West": 94.8,
+    "AfOc": 1.64
+   },
+   "partner_origin_adjusted_usd_bn": {
+    "Asia": 126.57,
+    "West": 96.85,
+    "AfOc": 1.7
+   },
+   "residual_block_usd_bn_median": {
+    "Asia": 5.66,
+    "West": 4.29,
+    "AfOc": 1.65
+   },
+   "share_of_residual": {
+    "Asia": {
+     "low": 0.0,
+     "central": 0.486,
+     "high": 0.818
+    },
+    "West": {
+     "low": 0.0,
+     "central": 0.366,
+     "high": 0.757
+    },
+    "AfOc": {
+     "low": 0.081,
+     "central": 0.141,
+     "high": 0.404
+    }
+   },
+   "model_residual_eur_bn": {
+    "low": 0.1537,
+    "central": 11.2893,
+    "high": 22.3038
+   }
+  },
+  "2023": {
+   "fcs_usd_bn": {
+    "Asia": 187.5,
+    "West": 93.5,
+    "AfOc": 3.6
+   },
+   "partner_direct_usd_bn": {
+    "Asia": 169.02,
+    "West": 74.63,
+    "AfOc": 1.17
+   },
+   "partner_origin_adjusted_usd_bn": {
+    "Asia": 166.22,
+    "West": 77.32,
+    "AfOc": 1.27
+   },
+   "residual_block_usd_bn_median": {
+    "Asia": 2.67,
+    "West": 11.68,
+    "AfOc": 2.07
+   },
+   "share_of_residual": {
+    "Asia": {
+     "low": 0.0,
+     "central": 0.162,
+     "high": 0.443
+    },
+    "West": {
+     "low": 0.455,
+     "central": 0.71,
+     "high": 0.876
+    },
+    "AfOc": {
+     "low": 0.084,
+     "central": 0.123,
+     "high": 0.193
+    }
+   },
+   "model_residual_eur_bn": {
+    "low": 2.6404,
+    "central": 15.7387,
+    "high": 28.6654
+   }
+  },
+  "2024": {
+   "fcs_usd_bn": {
+    "Asia": 191.2,
+    "West": 87.9,
+    "AfOc": 3.7
+   },
+   "partner_direct_usd_bn": {
+    "Asia": 168.21,
+    "West": 69.48,
+    "AfOc": 1.27
+   },
+   "partner_origin_adjusted_usd_bn": {
+    "Asia": 165.98,
+    "West": 71.63,
+    "AfOc": 1.35
+   },
+   "residual_block_usd_bn_median": {
+    "Asia": 2.52,
+    "West": 11.5,
+    "AfOc": 2.09
+   },
+   "share_of_residual": {
+    "Asia": {
+     "low": 0.0,
+     "central": 0.158,
+     "high": 0.442
+    },
+    "West": {
+     "low": 0.453,
+     "central": 0.713,
+     "high": 0.874
+    },
+    "AfOc": {
+     "low": 0.084,
+     "central": 0.126,
+     "high": 0.201
+    }
+   },
+   "model_residual_eur_bn": {
+    "low": 1.1069,
+    "central": 14.8918,
+    "high": 28.6932
+   }
+  },
+  "2025": {
+   "fcs_usd_bn": {
+    "Asia": 185.9,
+    "West": 88.6,
+    "AfOc": 4.5
+   },
+   "partner_direct_usd_bn": {
+    "Asia": 153.95,
+    "West": 71.23,
+    "AfOc": 1.68
+   },
+   "partner_origin_adjusted_usd_bn": {
+    "Asia": 151.19,
+    "West": 73.91,
+    "AfOc": 1.77
+   },
+   "residual_block_usd_bn_median": {
+    "Asia": 10.52,
+    "West": 10.09,
+    "AfOc": 2.41
+   },
+   "share_of_residual": {
+    "Asia": {
+     "low": 0.177,
+     "central": 0.457,
+     "high": 0.635
+    },
+    "West": {
+     "low": 0.263,
+     "central": 0.439,
+     "high": 0.675
+    },
+    "AfOc": {
+     "low": 0.076,
+     "central": 0.105,
+     "high": 0.169
+    }
+   },
+   "model_residual_eur_bn": {
+    "low": 7.832,
+    "central": 20.6816,
+    "high": 33.3211
+   }
+  }
+ },
+ "within_west_weights_2021_fcs_top25": {
+  "DEU": 0.2079,
+  "USA": 0.1313,
+  "FRA": 0.0928,
+  "ITA": 0.0915,
+  "POL": 0.0442,
+  "GBR": 0.034,
+  "NLD": 0.0326,
+  "CZE": 0.0275,
+  "FIN": 0.0271,
+  "ESP": 0.0267,
+  "CHE": 0.0258,
+  "AUT": 0.0202,
+  "BEL": 0.0192,
+  "SWE": 0.0189,
+  "HUN": 0.0172,
+  "BRA": 0.0169,
+  "IRL": 0.016,
+  "SVK": 0.0148,
+  "ROU": 0.0121,
+  "ECU": 0.0111,
+  "MEX": 0.0105,
+  "DNK": 0.0095,
+  "SRB": 0.008,
+  "ARG": 0.0077,
+  "SVN": 0.0075
+ },
+ "countries": {
+  "AFG": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0001
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0001
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0001
+   },
+   "2025": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   }
+  },
+  "AGO": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0005,
+    "high": 0.0016
+   },
+   "2025": {
+    "low": 0.0002,
+    "central": 0.0003,
+    "high": 0.0006
+   }
+  },
+  "ALB": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0005,
+    "high": 0.0011
+   },
+   "2023": {
+    "low": 0.0005,
+    "central": 0.0013,
+    "high": 0.0021
+   },
+   "2024": {
+    "low": 0.0004,
+    "central": 0.0012,
+    "high": 0.0021
+   },
+   "2025": {
+    "low": 0.0005,
+    "central": 0.001,
+    "high": 0.0017
+   }
+  },
+  "ARE": {
+   "2022": {
+    "low": 0.1487,
+    "central": 0.3671,
+    "high": 0.5973
+   },
+   "2023": {
+    "low": 0.2634,
+    "central": 0.4896,
+    "high": 0.787
+   },
+   "2024": {
+    "low": 0.0023,
+    "central": 0.0681,
+    "high": 0.1999
+   },
+   "2025": {
+    "low": 0.0834,
+    "central": 0.2444,
+    "high": 0.397
+   }
+  },
+  "ARG": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.028,
+    "high": 0.0674
+   },
+   "2023": {
+    "low": 0.029,
+    "central": 0.0763,
+    "high": 0.1287
+   },
+   "2024": {
+    "low": 0.0239,
+    "central": 0.0726,
+    "high": 0.1264
+   },
+   "2025": {
+    "low": 0.029,
+    "central": 0.0612,
+    "high": 0.1054
+   }
+  },
+  "ARM": {
+   "2022": {
+    "low": 0.0002,
+    "central": 0.0986,
+    "high": 0.2063
+   },
+   "2023": {
+    "low": 0.0021,
+    "central": 0.059,
+    "high": 0.1713
+   },
+   "2024": {
+    "low": 0.0018,
+    "central": 0.0531,
+    "high": 0.156
+   },
+   "2025": {
+    "low": 0.058,
+    "central": 0.1698,
+    "high": 0.2759
+   }
+  },
+  "AUS": {
+   "2022": {
+    "low": 0.0355,
+    "central": 0.124,
+    "high": 0.3864
+   },
+   "2023": {
+    "low": 0.0015,
+    "central": 0.0038,
+    "high": 0.0072
+   },
+   "2024": {
+    "low": 0.0007,
+    "central": 0.002,
+    "high": 0.0038
+   },
+   "2025": {
+    "low": 0.0011,
+    "central": 0.0021,
+    "high": 0.0037
+   }
+  },
+  "AUT": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.072,
+    "high": 0.1742
+   },
+   "2023": {
+    "low": 0.0759,
+    "central": 0.1992,
+    "high": 0.336
+   },
+   "2024": {
+    "low": 0.0624,
+    "central": 0.1875,
+    "high": 0.3261
+   },
+   "2025": {
+    "low": 0.0747,
+    "central": 0.1569,
+    "high": 0.2706
+   }
+  },
+  "AZE": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0398,
+    "high": 0.0832
+   },
+   "2023": {
+    "low": 0.0007,
+    "central": 0.0201,
+    "high": 0.0584
+   },
+   "2024": {
+    "low": 0.0007,
+    "central": 0.0199,
+    "high": 0.0586
+   },
+   "2025": {
+    "low": 0.0235,
+    "central": 0.0689,
+    "high": 0.112
+   }
+  },
+  "BDI": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0004,
+    "high": 0.0013
+   },
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0006
+   },
+   "2024": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0006
+   },
+   "2025": {
+    "low": 0.0003,
+    "central": 0.0005,
+    "high": 0.0009
+   }
+  },
+  "BEL": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0687,
+    "high": 0.166
+   },
+   "2023": {
+    "low": 0.0721,
+    "central": 0.1897,
+    "high": 0.3201
+   },
+   "2024": {
+    "low": 0.0594,
+    "central": 0.1792,
+    "high": 0.3117
+   },
+   "2025": {
+    "low": 0.0715,
+    "central": 0.1503,
+    "high": 0.2591
+   }
+  },
+  "BEN": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0005,
+    "high": 0.0016
+   },
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0004
+   },
+   "2024": {
+    "low": 0.0021,
+    "central": 0.006,
+    "high": 0.0118
+   },
+   "2025": {
+    "low": 0.0012,
+    "central": 0.0023,
+    "high": 0.0041
+   }
+  },
+  "BFA": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0002,
+    "high": 0.0005
+   },
+   "2023": {
+    "low": 0.0002,
+    "central": 0.0004,
+    "high": 0.0008
+   },
+   "2024": {
+    "low": 0.0009,
+    "central": 0.0026,
+    "high": 0.0051
+   },
+   "2025": {
+    "low": 0.0011,
+    "central": 0.0021,
+    "high": 0.0038
+   }
+  },
+  "BGD": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0266,
+    "high": 0.0557
+   },
+   "2023": {
+    "low": 0.0003,
+    "central": 0.0088,
+    "high": 0.0255
+   },
+   "2024": {
+    "low": 0.0003,
+    "central": 0.0093,
+    "high": 0.0272
+   },
+   "2025": {
+    "low": 0.0089,
+    "central": 0.026,
+    "high": 0.0422
+   }
+  },
+  "BGR": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0155,
+    "high": 0.0374
+   },
+   "2023": {
+    "low": 0.0163,
+    "central": 0.0429,
+    "high": 0.0724
+   },
+   "2024": {
+    "low": 0.0134,
+    "central": 0.0404,
+    "high": 0.0703
+   },
+   "2025": {
+    "low": 0.0161,
+    "central": 0.0339,
+    "high": 0.0585
+   }
+  },
+  "BHR": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0002,
+    "high": 0.0004
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0001
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   },
+   "2025": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   }
+  },
+  "BIH": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0024,
+    "high": 0.0058
+   },
+   "2023": {
+    "low": 0.0025,
+    "central": 0.0067,
+    "high": 0.0112
+   },
+   "2024": {
+    "low": 0.0021,
+    "central": 0.0063,
+    "high": 0.011
+   },
+   "2025": {
+    "low": 0.0025,
+    "central": 0.0053,
+    "high": 0.0092
+   }
+  },
+  "BLR": {
+   "2022": {
+    "low": 0.0776,
+    "central": 1.7251,
+    "high": 3.3584
+   },
+   "2023": {
+    "low": 0.4072,
+    "central": 2.0084,
+    "high": 3.5861
+   },
+   "2024": {
+    "low": 0.2716,
+    "central": 2.0732,
+    "high": 3.8728
+   },
+   "2025": {
+    "low": 1.3116,
+    "central": 3.2163,
+    "high": 5.0843
+   }
+  },
+  "BOL": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0004,
+    "high": 0.001
+   },
+   "2023": {
+    "low": 0.0004,
+    "central": 0.0011,
+    "high": 0.0019
+   },
+   "2024": {
+    "low": 0.0003,
+    "central": 0.0011,
+    "high": 0.0018
+   },
+   "2025": {
+    "low": 0.0004,
+    "central": 0.0009,
+    "high": 0.0015
+   }
+  },
+  "BRA": {
+   "2022": {
+    "low": 0.0002,
+    "central": 0.063,
+    "high": 0.1511
+   },
+   "2023": {
+    "low": 0.0641,
+    "central": 0.1698,
+    "high": 0.2866
+   },
+   "2024": {
+    "low": 0.0529,
+    "central": 0.1622,
+    "high": 0.2828
+   },
+   "2025": {
+    "low": 0.0647,
+    "central": 0.1366,
+    "high": 0.2349
+   }
+  },
+  "CAN": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0248,
+    "high": 0.0603
+   },
+   "2023": {
+    "low": 0.0264,
+    "central": 0.0692,
+    "high": 0.1167
+   },
+   "2024": {
+    "low": 0.0217,
+    "central": 0.0651,
+    "high": 0.1131
+   },
+   "2025": {
+    "low": 0.026,
+    "central": 0.0545,
+    "high": 0.094
+   }
+  },
+  "CHE": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0922,
+    "high": 0.223
+   },
+   "2023": {
+    "low": 0.0971,
+    "central": 0.2553,
+    "high": 0.4306
+   },
+   "2024": {
+    "low": 0.0799,
+    "central": 0.2408,
+    "high": 0.4189
+   },
+   "2025": {
+    "low": 0.096,
+    "central": 0.2019,
+    "high": 0.348
+   }
+  },
+  "CHL": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0216,
+    "high": 0.0519
+   },
+   "2023": {
+    "low": 0.0224,
+    "central": 0.0592,
+    "high": 0.1
+   },
+   "2024": {
+    "low": 0.0184,
+    "central": 0.0559,
+    "high": 0.0973
+   },
+   "2025": {
+    "low": 0.0224,
+    "central": 0.0473,
+    "high": 0.0814
+   }
+  },
+  "CHN": {
+   "2022": {
+    "low": 0.9054,
+    "central": 5.4614,
+    "high": 10.3289
+   },
+   "2023": {
+    "low": 1.9111,
+    "central": 5.6911,
+    "high": 11.2047
+   },
+   "2024": {
+    "low": 3.3538,
+    "central": 8.0446,
+    "high": 14.6194
+   },
+   "2025": {
+    "low": 6.2382,
+    "central": 12.3018,
+    "high": 18.2191
+   }
+  },
+  "CIV": {
+   "2022": {
+    "low": 0.003,
+    "central": 0.0104,
+    "high": 0.0325
+   },
+   "2023": {
+    "low": 0.0339,
+    "central": 0.0852,
+    "high": 0.1606
+   },
+   "2024": {
+    "low": 0.0108,
+    "central": 0.0312,
+    "high": 0.0612
+   },
+   "2025": {
+    "low": 0.0219,
+    "central": 0.041,
+    "high": 0.0735
+   }
+  },
+  "CMR": {
+   "2022": {
+    "low": 0.0286,
+    "central": 0.0997,
+    "high": 0.3106
+   },
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0003
+   },
+   "2024": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0004
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0003
+   }
+  },
+  "COD": {
+   "2024": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   }
+  },
+  "COL": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0056,
+    "high": 0.0136
+   },
+   "2023": {
+    "low": 0.0058,
+    "central": 0.0153,
+    "high": 0.0258
+   },
+   "2024": {
+    "low": 0.0048,
+    "central": 0.0145,
+    "high": 0.0253
+   },
+   "2025": {
+    "low": 0.0057,
+    "central": 0.012,
+    "high": 0.0207
+   }
+  },
+  "CRI": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0031,
+    "high": 0.0075
+   },
+   "2023": {
+    "low": 0.0032,
+    "central": 0.0085,
+    "high": 0.0143
+   },
+   "2024": {
+    "low": 0.0027,
+    "central": 0.0081,
+    "high": 0.0141
+   },
+   "2025": {
+    "low": 0.0032,
+    "central": 0.0067,
+    "high": 0.0116
+   }
+  },
+  "CUB": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0004,
+    "high": 0.001
+   },
+   "2023": {
+    "low": 0.0004,
+    "central": 0.0011,
+    "high": 0.0019
+   },
+   "2024": {
+    "low": 0.0003,
+    "central": 0.0011,
+    "high": 0.0019
+   },
+   "2025": {
+    "low": 0.0004,
+    "central": 0.0009,
+    "high": 0.0015
+   }
+  },
+  "CYP": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0005,
+    "high": 0.001
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0003
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0003
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0003
+   }
+  },
+  "CZE": {
+   "2022": {
+    "low": 0.0094,
+    "central": 0.1244,
+    "high": 0.285
+   },
+   "2023": {
+    "low": 0.1184,
+    "central": 0.2969,
+    "high": 0.4956
+   },
+   "2024": {
+    "low": 0.1434,
+    "central": 0.3558,
+    "high": 0.6027
+   },
+   "2025": {
+    "low": 0.137,
+    "central": 0.2713,
+    "high": 0.4567
+   }
+  },
+  "DEU": {
+   "2022": {
+    "low": 0.0661,
+    "central": 0.8987,
+    "high": 2.0473
+   },
+   "2023": {
+    "low": 0.9543,
+    "central": 2.3157,
+    "high": 3.8158
+   },
+   "2024": {
+    "low": 0.9327,
+    "central": 2.3415,
+    "high": 3.895
+   },
+   "2025": {
+    "low": 0.9652,
+    "central": 1.8832,
+    "high": 3.1276
+   }
+  },
+  "DNK": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0336,
+    "high": 0.0814
+   },
+   "2023": {
+    "low": 0.0356,
+    "central": 0.0934,
+    "high": 0.1575
+   },
+   "2024": {
+    "low": 0.0293,
+    "central": 0.0878,
+    "high": 0.1526
+   },
+   "2025": {
+    "low": 0.035,
+    "central": 0.0735,
+    "high": 0.1268
+   }
+  },
+  "DOM": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0011,
+    "high": 0.0026
+   },
+   "2023": {
+    "low": 0.0011,
+    "central": 0.003,
+    "high": 0.005
+   },
+   "2024": {
+    "low": 0.0009,
+    "central": 0.0028,
+    "high": 0.0048
+   },
+   "2025": {
+    "low": 0.0011,
+    "central": 0.0024,
+    "high": 0.004
+   }
+  },
+  "DZA": {
+   "2022": {
+    "low": 0.0022,
+    "central": 0.0077,
+    "high": 0.0239
+   },
+   "2023": {
+    "low": 0.0044,
+    "central": 0.0111,
+    "high": 0.0209
+   },
+   "2024": {
+    "low": 0.0034,
+    "central": 0.0099,
+    "high": 0.0194
+   },
+   "2025": {
+    "low": 0.0043,
+    "central": 0.0081,
+    "high": 0.0145
+   }
+  },
+  "ECU": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0408,
+    "high": 0.0982
+   },
+   "2023": {
+    "low": 0.0421,
+    "central": 0.1116,
+    "high": 0.1885
+   },
+   "2024": {
+    "low": 0.0347,
+    "central": 0.1059,
+    "high": 0.1846
+   },
+   "2025": {
+    "low": 0.0425,
+    "central": 0.0899,
+    "high": 0.1545
+   }
+  },
+  "EGY": {
+   "2022": {
+    "low": 0.1412,
+    "central": 0.4932,
+    "high": 1.5361
+   },
+   "2023": {
+    "low": 0.3047,
+    "central": 0.7657,
+    "high": 1.4434
+   },
+   "2024": {
+    "low": 0.2701,
+    "central": 0.7823,
+    "high": 1.5355
+   },
+   "2025": {
+    "low": 0.477,
+    "central": 0.8925,
+    "high": 1.5981
+   }
+  },
+  "ERI": {
+   "2022": {
+    "low": 0.0003,
+    "central": 0.0011,
+    "high": 0.0035
+   },
+   "2023": {
+    "low": 0.0004,
+    "central": 0.0012,
+    "high": 0.0022
+   },
+   "2024": {
+    "low": 0.0007,
+    "central": 0.0021,
+    "high": 0.0041
+   },
+   "2025": {
+    "low": 0.0002,
+    "central": 0.0004,
+    "high": 0.0008
+   }
+  },
+  "ESP": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0944,
+    "high": 0.2286
+   },
+   "2023": {
+    "low": 0.0999,
+    "central": 0.2621,
+    "high": 0.442
+   },
+   "2024": {
+    "low": 0.0822,
+    "central": 0.2466,
+    "high": 0.4288
+   },
+   "2025": {
+    "low": 0.0984,
+    "central": 0.2065,
+    "high": 0.3563
+   }
+  },
+  "EST": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0133,
+    "high": 0.0319
+   },
+   "2023": {
+    "low": 0.0137,
+    "central": 0.0362,
+    "high": 0.0612
+   },
+   "2024": {
+    "low": 0.0112,
+    "central": 0.0344,
+    "high": 0.0599
+   },
+   "2025": {
+    "low": 0.0135,
+    "central": 0.0285,
+    "high": 0.0491
+   }
+  },
+  "ETH": {
+   "2022": {
+    "low": 0.0032,
+    "central": 0.0113,
+    "high": 0.0351
+   },
+   "2023": {
+    "low": 0.0075,
+    "central": 0.0189,
+    "high": 0.0356
+   },
+   "2024": {
+    "low": 0.0061,
+    "central": 0.0176,
+    "high": 0.0346
+   },
+   "2025": {
+    "low": 0.0071,
+    "central": 0.0133,
+    "high": 0.0237
+   }
+  },
+  "FIN": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0963,
+    "high": 0.2332
+   },
+   "2023": {
+    "low": 0.1016,
+    "central": 0.2664,
+    "high": 0.4493
+   },
+   "2024": {
+    "low": 0.0836,
+    "central": 0.2503,
+    "high": 0.4352
+   },
+   "2025": {
+    "low": 0.0998,
+    "central": 0.2095,
+    "high": 0.3615
+   }
+  },
+  "FRA": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.3281,
+    "high": 0.7951
+   },
+   "2023": {
+    "low": 0.348,
+    "central": 0.9122,
+    "high": 1.5382
+   },
+   "2024": {
+    "low": 0.2863,
+    "central": 0.8585,
+    "high": 1.4925
+   },
+   "2025": {
+    "low": 0.3422,
+    "central": 0.7182,
+    "high": 1.2394
+   }
+  },
+  "FRO": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0099,
+    "high": 0.0237
+   },
+   "2023": {
+    "low": 0.0102,
+    "central": 0.0271,
+    "high": 0.0458
+   },
+   "2024": {
+    "low": 0.0083,
+    "central": 0.0254,
+    "high": 0.0442
+   },
+   "2025": {
+    "low": 0.0101,
+    "central": 0.0212,
+    "high": 0.0366
+   }
+  },
+  "GBR": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.1201,
+    "high": 0.2909
+   },
+   "2023": {
+    "low": 0.1273,
+    "central": 0.3337,
+    "high": 0.5626
+   },
+   "2024": {
+    "low": 0.1047,
+    "central": 0.3139,
+    "high": 0.5457
+   },
+   "2025": {
+    "low": 0.125,
+    "central": 0.2624,
+    "high": 0.4528
+   }
+  },
+  "GEO": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0262,
+    "high": 0.0548
+   },
+   "2023": {
+    "low": 0.1377,
+    "central": 0.2148,
+    "high": 0.31
+   },
+   "2024": {
+    "low": 0.3409,
+    "central": 0.5087,
+    "high": 0.7184
+   },
+   "2025": {
+    "low": 0.3827,
+    "central": 0.5896,
+    "high": 0.861
+   }
+  },
+  "GHA": {
+   "2022": {
+    "low": 0.0306,
+    "central": 0.1069,
+    "high": 0.3329
+   },
+   "2023": {
+    "low": 0.0062,
+    "central": 0.0157,
+    "high": 0.0295
+   },
+   "2024": {
+    "low": 0.01,
+    "central": 0.0289,
+    "high": 0.0568
+   },
+   "2025": {
+    "low": 0.0264,
+    "central": 0.0494,
+    "high": 0.0885
+   }
+  },
+  "GIN": {
+   "2022": {
+    "low": 0.0123,
+    "central": 0.0431,
+    "high": 0.1342
+   },
+   "2023": {
+    "low": 0.0249,
+    "central": 0.0625,
+    "high": 0.1178
+   },
+   "2024": {
+    "low": 0.0161,
+    "central": 0.0466,
+    "high": 0.0916
+   },
+   "2025": {
+    "low": 0.0218,
+    "central": 0.0407,
+    "high": 0.0729
+   }
+  },
+  "GRC": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.008,
+    "high": 0.0195
+   },
+   "2023": {
+    "low": 0.0085,
+    "central": 0.0224,
+    "high": 0.0377
+   },
+   "2024": {
+    "low": 0.007,
+    "central": 0.021,
+    "high": 0.0366
+   },
+   "2025": {
+    "low": 0.0084,
+    "central": 0.0176,
+    "high": 0.0304
+   }
+  },
+  "GRL": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0028,
+    "high": 0.0068
+   },
+   "2023": {
+    "low": 0.0029,
+    "central": 0.0077,
+    "high": 0.013
+   },
+   "2024": {
+    "low": 0.0024,
+    "central": 0.0073,
+    "high": 0.0127
+   },
+   "2025": {
+    "low": 0.0029,
+    "central": 0.0062,
+    "high": 0.0106
+   }
+  },
+  "GTM": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0011,
+    "high": 0.0027
+   },
+   "2023": {
+    "low": 0.0011,
+    "central": 0.003,
+    "high": 0.005
+   },
+   "2024": {
+    "low": 0.0009,
+    "central": 0.0028,
+    "high": 0.0049
+   },
+   "2025": {
+    "low": 0.0011,
+    "central": 0.0023,
+    "high": 0.004
+   }
+  },
+  "HKG": {
+   "2022": {
+    "low": 0.0002,
+    "central": 0.0971,
+    "high": 0.2032
+   },
+   "2023": {
+    "low": 0.0016,
+    "central": 0.0446,
+    "high": 0.1294
+   },
+   "2024": {
+    "low": 0.0009,
+    "central": 0.0253,
+    "high": 0.0744
+   },
+   "2025": {
+    "low": 0.0328,
+    "central": 0.096,
+    "high": 0.156
+   }
+  },
+  "HND": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0006,
+    "high": 0.0014
+   },
+   "2023": {
+    "low": 0.0006,
+    "central": 0.0015,
+    "high": 0.0026
+   },
+   "2024": {
+    "low": 0.0005,
+    "central": 0.0015,
+    "high": 0.0026
+   },
+   "2025": {
+    "low": 0.0006,
+    "central": 0.0012,
+    "high": 0.0021
+   }
+  },
+  "HRV": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0071,
+    "high": 0.0171
+   },
+   "2023": {
+    "low": 0.0074,
+    "central": 0.0195,
+    "high": 0.0329
+   },
+   "2024": {
+    "low": 0.0061,
+    "central": 0.0185,
+    "high": 0.0323
+   },
+   "2025": {
+    "low": 0.0074,
+    "central": 0.0155,
+    "high": 0.0268
+   }
+  },
+  "HUN": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0612,
+    "high": 0.1483
+   },
+   "2023": {
+    "low": 0.0647,
+    "central": 0.17,
+    "high": 0.2867
+   },
+   "2024": {
+    "low": 0.0533,
+    "central": 0.1601,
+    "high": 0.2784
+   },
+   "2025": {
+    "low": 0.0638,
+    "central": 0.134,
+    "high": 0.2311
+   }
+  },
+  "IDN": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0602,
+    "high": 0.1259
+   },
+   "2023": {
+    "low": 0.0007,
+    "central": 0.0193,
+    "high": 0.0559
+   },
+   "2024": {
+    "low": 0.001,
+    "central": 0.0294,
+    "high": 0.0865
+   },
+   "2025": {
+    "low": 0.0373,
+    "central": 0.1093,
+    "high": 0.1776
+   }
+  },
+  "IND": {
+   "2022": {
+    "low": 0.0002,
+    "central": 0.1194,
+    "high": 0.2498
+   },
+   "2023": {
+    "low": 0.0025,
+    "central": 0.0684,
+    "high": 0.1984
+   },
+   "2024": {
+    "low": 0.0028,
+    "central": 0.0821,
+    "high": 0.2409
+   },
+   "2025": {
+    "low": 0.0894,
+    "central": 0.2618,
+    "high": 0.4254
+   }
+  },
+  "IRL": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0564,
+    "high": 0.1367
+   },
+   "2023": {
+    "low": 0.0599,
+    "central": 0.157,
+    "high": 0.2648
+   },
+   "2024": {
+    "low": 0.0493,
+    "central": 0.1481,
+    "high": 0.2575
+   },
+   "2025": {
+    "low": 0.0591,
+    "central": 0.1241,
+    "high": 0.2141
+   }
+  },
+  "IRN": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0282,
+    "high": 0.059
+   },
+   "2023": {
+    "low": 0.0006,
+    "central": 0.0153,
+    "high": 0.0445
+   },
+   "2024": {
+    "low": 0.0003,
+    "central": 0.0085,
+    "high": 0.0251
+   },
+   "2025": {
+    "low": 0.0105,
+    "central": 0.0308,
+    "high": 0.05
+   }
+  },
+  "ISL": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0005,
+    "high": 0.0013
+   },
+   "2023": {
+    "low": 0.0006,
+    "central": 0.0015,
+    "high": 0.0025
+   },
+   "2024": {
+    "low": 0.0005,
+    "central": 0.0014,
+    "high": 0.0024
+   },
+   "2025": {
+    "low": 0.0005,
+    "central": 0.0011,
+    "high": 0.002
+   }
+  },
+  "ISR": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0267,
+    "high": 0.0558
+   },
+   "2023": {
+    "low": 0.0004,
+    "central": 0.0099,
+    "high": 0.0288
+   },
+   "2024": {
+    "low": 0.0003,
+    "central": 0.008,
+    "high": 0.0234
+   },
+   "2025": {
+    "low": 0.0096,
+    "central": 0.0282,
+    "high": 0.0459
+   }
+  },
+  "ITA": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.3246,
+    "high": 0.7861
+   },
+   "2023": {
+    "low": 0.3514,
+    "central": 0.9231,
+    "high": 1.5554
+   },
+   "2024": {
+    "low": 0.4387,
+    "central": 1.0725,
+    "high": 1.7697
+   },
+   "2025": {
+    "low": 0.4736,
+    "central": 0.8924,
+    "high": 1.4574
+   }
+  },
+  "JAM": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0019,
+    "high": 0.0044
+   },
+   "2023": {
+    "low": 0.0018,
+    "central": 0.005,
+    "high": 0.0085
+   },
+   "2024": {
+    "low": 0.0016,
+    "central": 0.0054,
+    "high": 0.0095
+   },
+   "2025": {
+    "low": 0.002,
+    "central": 0.0044,
+    "high": 0.0074
+   }
+  },
+  "JOR": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0002,
+    "high": 0.0004
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0004
+   }
+  },
+  "JPN": {
+   "2022": {
+    "low": 0.0054,
+    "central": 0.0669,
+    "high": 0.1337
+   },
+   "2023": {
+    "low": 0.0004,
+    "central": 0.012,
+    "high": 0.0348
+   },
+   "2024": {
+    "low": 0.051,
+    "central": 0.0945,
+    "high": 0.1518
+   },
+   "2025": {
+    "low": 0.0447,
+    "central": 0.0878,
+    "high": 0.1304
+   }
+  },
+  "KAZ": {
+   "2022": {
+    "low": 0.0189,
+    "central": 0.4453,
+    "high": 0.9087
+   },
+   "2023": {
+    "low": 0.1133,
+    "central": 0.4164,
+    "high": 0.8736
+   },
+   "2024": {
+    "low": 0.3974,
+    "central": 0.8852,
+    "high": 1.5507
+   },
+   "2025": {
+    "low": 0.6548,
+    "central": 1.2045,
+    "high": 1.7517
+   }
+  },
+  "KEN": {
+   "2022": {
+    "low": 0.0153,
+    "central": 0.0535,
+    "high": 0.1666
+   },
+   "2023": {
+    "low": 0.0198,
+    "central": 0.0497,
+    "high": 0.0937
+   },
+   "2024": {
+    "low": 0.0216,
+    "central": 0.0625,
+    "high": 0.1226
+   },
+   "2025": {
+    "low": 0.0306,
+    "central": 0.0573,
+    "high": 0.1027
+   }
+  },
+  "KGZ": {
+   "2022": {
+    "low": 0.1843,
+    "central": 0.4202,
+    "high": 0.7856
+   },
+   "2023": {
+    "low": 0.3172,
+    "central": 0.6861,
+    "high": 1.3431
+   },
+   "2024": {
+    "low": 0.3684,
+    "central": 0.8061,
+    "high": 1.5646
+   },
+   "2025": {
+    "low": 0.4552,
+    "central": 1.0371,
+    "high": 2.1011
+   }
+  },
+  "KHM": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0005,
+    "high": 0.0011
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0003
+   }
+  },
+  "KIR": {
+   "2023": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   }
+  },
+  "KOR": {
+   "2022": {
+    "low": 0.0631,
+    "central": 0.1875,
+    "high": 0.3216
+   },
+   "2023": {
+    "low": 0.2275,
+    "central": 0.3599,
+    "high": 0.5255
+   },
+   "2024": {
+    "low": 0.5205,
+    "central": 0.7656,
+    "high": 1.0668
+   },
+   "2025": {
+    "low": 0.8618,
+    "central": 1.3438,
+    "high": 1.9893
+   }
+  },
+  "KWT": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0001
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0001
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0004
+   }
+  },
+  "LAO": {
+   "2025": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0001
+   }
+  },
+  "LBN": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0003,
+    "high": 0.0006
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0004
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0003
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0004,
+    "high": 0.0006
+   }
+  },
+  "LBR": {
+   "2022": {
+    "low": 0.0006,
+    "central": 0.0022,
+    "high": 0.0068
+   },
+   "2023": {
+    "low": 0.0013,
+    "central": 0.0032,
+    "high": 0.006
+   },
+   "2024": {
+    "low": 0.0008,
+    "central": 0.0024,
+    "high": 0.0046
+   },
+   "2025": {
+    "low": 0.0011,
+    "central": 0.0021,
+    "high": 0.0037
+   }
+  },
+  "LKA": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.006,
+    "high": 0.0125
+   },
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0024,
+    "high": 0.0071
+   },
+   "2024": {
+    "low": 0.0001,
+    "central": 0.003,
+    "high": 0.0087
+   },
+   "2025": {
+    "low": 0.0029,
+    "central": 0.0086,
+    "high": 0.014
+   }
+  },
+  "LTU": {
+   "2022": {
+    "low": 0.065,
+    "central": 0.1265,
+    "high": 0.1976
+   },
+   "2023": {
+    "low": 0.0189,
+    "central": 0.0505,
+    "high": 0.0852
+   },
+   "2024": {
+    "low": 0.0154,
+    "central": 0.0465,
+    "high": 0.0809
+   },
+   "2025": {
+    "low": 0.0184,
+    "central": 0.0388,
+    "high": 0.0668
+   }
+  },
+  "LUX": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0048,
+    "high": 0.0116
+   },
+   "2023": {
+    "low": 0.0051,
+    "central": 0.0134,
+    "high": 0.0225
+   },
+   "2024": {
+    "low": 0.0042,
+    "central": 0.0125,
+    "high": 0.0218
+   },
+   "2025": {
+    "low": 0.005,
+    "central": 0.0105,
+    "high": 0.0181
+   }
+  },
+  "LVA": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0139,
+    "high": 0.0333
+   },
+   "2023": {
+    "low": 0.0143,
+    "central": 0.038,
+    "high": 0.0641
+   },
+   "2024": {
+    "low": 0.0118,
+    "central": 0.036,
+    "high": 0.0627
+   },
+   "2025": {
+    "low": 0.0144,
+    "central": 0.0303,
+    "high": 0.0522
+   }
+  },
+  "MAC": {
+   "2024": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0004
+   }
+  },
+  "MAR": {
+   "2022": {
+    "low": 0.021,
+    "central": 0.0735,
+    "high": 0.2289
+   },
+   "2023": {
+    "low": 0.0573,
+    "central": 0.1439,
+    "high": 0.2713
+   },
+   "2024": {
+    "low": 0.0373,
+    "central": 0.1081,
+    "high": 0.2122
+   },
+   "2025": {
+    "low": 0.0604,
+    "central": 0.1131,
+    "high": 0.2025
+   }
+  },
+  "MDA": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0112,
+    "high": 0.0272
+   },
+   "2023": {
+    "low": 0.0119,
+    "central": 0.0311,
+    "high": 0.0525
+   },
+   "2024": {
+    "low": 0.0098,
+    "central": 0.0293,
+    "high": 0.051
+   },
+   "2025": {
+    "low": 0.0117,
+    "central": 0.0245,
+    "high": 0.0423
+   }
+  },
+  "MDG": {
+   "2022": {
+    "low": 0.0005,
+    "central": 0.0016,
+    "high": 0.0051
+   },
+   "2023": {
+    "low": 0.0015,
+    "central": 0.0037,
+    "high": 0.007
+   },
+   "2024": {
+    "low": 0.0034,
+    "central": 0.0097,
+    "high": 0.0191
+   },
+   "2025": {
+    "low": 0.0028,
+    "central": 0.0052,
+    "high": 0.0093
+   }
+  },
+  "MEX": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0372,
+    "high": 0.09
+   },
+   "2023": {
+    "low": 0.0393,
+    "central": 0.103,
+    "high": 0.1737
+   },
+   "2024": {
+    "low": 0.0323,
+    "central": 0.0969,
+    "high": 0.1684
+   },
+   "2025": {
+    "low": 0.0386,
+    "central": 0.081,
+    "high": 0.1397
+   }
+  },
+  "MHL": {
+   "2022": {
+    "low": 0.0002,
+    "central": 0.0008,
+    "high": 0.0024
+   },
+   "2023": {
+    "low": 0.0004,
+    "central": 0.0011,
+    "high": 0.0021
+   },
+   "2024": {
+    "low": 0.0003,
+    "central": 0.0008,
+    "high": 0.0016
+   },
+   "2025": {
+    "low": 0.0004,
+    "central": 0.0007,
+    "high": 0.0013
+   }
+  },
+  "MKD": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0025,
+    "high": 0.0061
+   },
+   "2023": {
+    "low": 0.0027,
+    "central": 0.0071,
+    "high": 0.012
+   },
+   "2024": {
+    "low": 0.0022,
+    "central": 0.0067,
+    "high": 0.0116
+   },
+   "2025": {
+    "low": 0.0027,
+    "central": 0.0056,
+    "high": 0.0096
+   }
+  },
+  "MLI": {
+   "2024": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0001,
+    "high": 0.0002
+   }
+  },
+  "MLT": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0007,
+    "high": 0.0016
+   },
+   "2023": {
+    "low": 0.0007,
+    "central": 0.0019,
+    "high": 0.0032
+   },
+   "2024": {
+    "low": 0.0006,
+    "central": 0.0018,
+    "high": 0.0031
+   },
+   "2025": {
+    "low": 0.0007,
+    "central": 0.0015,
+    "high": 0.0025
+   }
+  },
+  "MMR": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0006,
+    "high": 0.0011
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0007,
+    "high": 0.0019
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0006,
+    "high": 0.0017
+   },
+   "2025": {
+    "low": 0.0002,
+    "central": 0.0007,
+    "high": 0.0011
+   }
+  },
+  "MNE": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0009,
+    "high": 0.0021
+   },
+   "2023": {
+    "low": 0.0009,
+    "central": 0.0024,
+    "high": 0.0041
+   },
+   "2024": {
+    "low": 0.0008,
+    "central": 0.0023,
+    "high": 0.004
+   },
+   "2025": {
+    "low": 0.0009,
+    "central": 0.0019,
+    "high": 0.0033
+   }
+  },
+  "MNG": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0046,
+    "high": 0.0095
+   },
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0019,
+    "high": 0.0054
+   },
+   "2024": {
+    "low": 0.0001,
+    "central": 0.0022,
+    "high": 0.0063
+   },
+   "2025": {
+    "low": 0.0024,
+    "central": 0.0072,
+    "high": 0.0116
+   }
+  },
+  "MOZ": {
+   "2022": {
+    "low": 0.0004,
+    "central": 0.0013,
+    "high": 0.0041
+   },
+   "2023": {
+    "low": 0.0002,
+    "central": 0.0004,
+    "high": 0.0007
+   },
+   "2024": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0007
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0001,
+    "high": 0.0002
+   }
+  },
+  "MRT": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0004
+   },
+   "2024": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0004
+   },
+   "2025": {
+    "low": 0.0004,
+    "central": 0.0008,
+    "high": 0.0015
+   }
+  },
+  "MUS": {
+   "2022": {
+    "low": 0.0002,
+    "central": 0.0008,
+    "high": 0.0025
+   },
+   "2023": {
+    "low": 0.0009,
+    "central": 0.0021,
+    "high": 0.004
+   },
+   "2024": {
+    "low": 0.0003,
+    "central": 0.0009,
+    "high": 0.0018
+   },
+   "2025": {
+    "low": 0.0002,
+    "central": 0.0003,
+    "high": 0.0005
+   }
+  },
+  "MWI": {
+   "2022": {
+    "low": 0.0007,
+    "central": 0.0024,
+    "high": 0.0074
+   },
+   "2023": {
+    "low": 0.0008,
+    "central": 0.0019,
+    "high": 0.0036
+   },
+   "2024": {
+    "low": 0.0024,
+    "central": 0.0069,
+    "high": 0.0135
+   },
+   "2025": {
+    "low": 0.0134,
+    "central": 0.0251,
+    "high": 0.045
+   }
+  },
+  "MYS": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0224,
+    "high": 0.0468
+   },
+   "2023": {
+    "low": 0.0004,
+    "central": 0.0104,
+    "high": 0.0302
+   },
+   "2024": {
+    "low": 0.0005,
+    "central": 0.0151,
+    "high": 0.0443
+   },
+   "2025": {
+    "low": 0.0157,
+    "central": 0.0461,
+    "high": 0.0749
+   }
+  },
+  "NAM": {
+   "2022": {
+    "low": 0.0005,
+    "central": 0.002,
+    "high": 0.006
+   },
+   "2023": {
+    "low": 0.0023,
+    "central": 0.0058,
+    "high": 0.0109
+   },
+   "2024": {
+    "low": 0.0025,
+    "central": 0.0072,
+    "high": 0.0141
+   },
+   "2025": {
+    "low": 0.0022,
+    "central": 0.004,
+    "high": 0.0072
+   }
+  },
+  "NER": {
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0005
+   }
+  },
+  "NGA": {
+   "2022": {
+    "low": 0.0011,
+    "central": 0.0039,
+    "high": 0.0123
+   },
+   "2023": {
+    "low": 0.0058,
+    "central": 0.0146,
+    "high": 0.0276
+   },
+   "2024": {
+    "low": 0.0007,
+    "central": 0.0019,
+    "high": 0.0038
+   },
+   "2025": {
+    "low": 0.0023,
+    "central": 0.0044,
+    "high": 0.0078
+   }
+  },
+  "NIC": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0005,
+    "high": 0.0011
+   },
+   "2023": {
+    "low": 0.0005,
+    "central": 0.0012,
+    "high": 0.002
+   },
+   "2024": {
+    "low": 0.0004,
+    "central": 0.0011,
+    "high": 0.002
+   },
+   "2025": {
+    "low": 0.0005,
+    "central": 0.0009,
+    "high": 0.0016
+   }
+  },
+  "NLD": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.1164,
+    "high": 0.2814
+   },
+   "2023": {
+    "low": 0.1223,
+    "central": 0.3212,
+    "high": 0.5418
+   },
+   "2024": {
+    "low": 0.1007,
+    "central": 0.3029,
+    "high": 0.5269
+   },
+   "2025": {
+    "low": 0.1679,
+    "central": 0.3218,
+    "high": 0.5274
+   }
+  },
+  "NOR": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0243,
+    "high": 0.0588
+   },
+   "2023": {
+    "low": 0.0257,
+    "central": 0.0675,
+    "high": 0.1138
+   },
+   "2024": {
+    "low": 0.0212,
+    "central": 0.0634,
+    "high": 0.1101
+   },
+   "2025": {
+    "low": 0.0253,
+    "central": 0.053,
+    "high": 0.0915
+   }
+  },
+  "NPL": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0001
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0001
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0001
+   },
+   "2025": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0001
+   }
+  },
+  "NZL": {
+   "2022": {
+    "low": 0.0118,
+    "central": 0.0411,
+    "high": 0.1281
+   },
+   "2023": {
+    "low": 0.0084,
+    "central": 0.0211,
+    "high": 0.0397
+   },
+   "2024": {
+    "low": 0.0049,
+    "central": 0.0141,
+    "high": 0.0277
+   },
+   "2025": {
+    "low": 0.0068,
+    "central": 0.0127,
+    "high": 0.0228
+   }
+  },
+  "OMN": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0003,
+    "high": 0.0006
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0004,
+    "high": 0.0011
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0002,
+    "high": 0.0006
+   },
+   "2025": {
+    "low": 0.0002,
+    "central": 0.0005,
+    "high": 0.0008
+   }
+  },
+  "PAK": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0031,
+    "high": 0.0064
+   },
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0015,
+    "high": 0.0044
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0012,
+    "high": 0.0034
+   },
+   "2025": {
+    "low": 0.0013,
+    "central": 0.0038,
+    "high": 0.0062
+   }
+  },
+  "PAN": {
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0004
+   },
+   "2024": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0004
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0003
+   }
+  },
+  "PER": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0067,
+    "high": 0.0162
+   },
+   "2023": {
+    "low": 0.007,
+    "central": 0.0185,
+    "high": 0.0312
+   },
+   "2024": {
+    "low": 0.0058,
+    "central": 0.0175,
+    "high": 0.0304
+   },
+   "2025": {
+    "low": 0.007,
+    "central": 0.0147,
+    "high": 0.0254
+   }
+  },
+  "PHL": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0022,
+    "high": 0.0046
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0009,
+    "high": 0.0025
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0009,
+    "high": 0.0028
+   },
+   "2025": {
+    "low": 0.0011,
+    "central": 0.0033,
+    "high": 0.0054
+   }
+  },
+  "PNG": {
+   "2022": {
+    "low": 0.0003,
+    "central": 0.001,
+    "high": 0.003
+   },
+   "2023": {
+    "low": 0.0006,
+    "central": 0.0014,
+    "high": 0.0027
+   },
+   "2024": {
+    "low": 0.0004,
+    "central": 0.0011,
+    "high": 0.0022
+   },
+   "2025": {
+    "low": 0.0005,
+    "central": 0.0009,
+    "high": 0.0017
+   }
+  },
+  "POL": {
+   "2022": {
+    "low": 0.0073,
+    "central": 0.1815,
+    "high": 0.4223
+   },
+   "2023": {
+    "low": 0.248,
+    "central": 0.5656,
+    "high": 0.9141
+   },
+   "2024": {
+    "low": 0.1918,
+    "central": 0.4996,
+    "high": 0.8374
+   },
+   "2025": {
+    "low": 0.1633,
+    "central": 0.343,
+    "high": 0.5917
+   }
+  },
+  "PRT": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0171,
+    "high": 0.0414
+   },
+   "2023": {
+    "low": 0.0181,
+    "central": 0.0475,
+    "high": 0.0801
+   },
+   "2024": {
+    "low": 0.0149,
+    "central": 0.0448,
+    "high": 0.0778
+   },
+   "2025": {
+    "low": 0.0178,
+    "central": 0.0374,
+    "high": 0.0645
+   }
+  },
+  "PRY": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0233,
+    "high": 0.0561
+   },
+   "2023": {
+    "low": 0.0243,
+    "central": 0.064,
+    "high": 0.1079
+   },
+   "2024": {
+    "low": 0.0199,
+    "central": 0.0602,
+    "high": 0.1048
+   },
+   "2025": {
+    "low": 0.024,
+    "central": 0.0504,
+    "high": 0.0868
+   }
+  },
+  "QAT": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0003
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0002,
+    "high": 0.0004
+   }
+  },
+  "ROU": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0428,
+    "high": 0.1036
+   },
+   "2023": {
+    "low": 0.0453,
+    "central": 0.1188,
+    "high": 0.2002
+   },
+   "2024": {
+    "low": 0.0373,
+    "central": 0.1117,
+    "high": 0.1943
+   },
+   "2025": {
+    "low": 0.0445,
+    "central": 0.0934,
+    "high": 0.1612
+   }
+  },
+  "RWA": {
+   "2022": {
+    "low": 0.001,
+    "central": 0.0034,
+    "high": 0.0106
+   },
+   "2023": {
+    "low": 0.0035,
+    "central": 0.0089,
+    "high": 0.0168
+   },
+   "2024": {
+    "low": 0.0019,
+    "central": 0.0056,
+    "high": 0.0109
+   },
+   "2025": {
+    "low": 0.0067,
+    "central": 0.0125,
+    "high": 0.0224
+   }
+  },
+  "SAU": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0019,
+    "high": 0.0039
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0003,
+    "high": 0.0009
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0007,
+    "high": 0.002
+   },
+   "2025": {
+    "low": 0.0015,
+    "central": 0.0043,
+    "high": 0.0069
+   }
+  },
+  "SGP": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0018,
+    "high": 0.0038
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0006,
+    "high": 0.0017
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0006,
+    "high": 0.0016
+   },
+   "2025": {
+    "low": 0.0007,
+    "central": 0.002,
+    "high": 0.0033
+   }
+  },
+  "SLE": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0008
+   },
+   "2023": {
+    "low": 0.0002,
+    "central": 0.0004,
+    "high": 0.0007
+   },
+   "2024": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0006
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0005
+   }
+  },
+  "SLV": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0003
+   },
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0004,
+    "high": 0.0006
+   },
+   "2024": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0006
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0005
+   }
+  },
+  "SMR": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0008,
+    "high": 0.0016
+   },
+   "2023": {
+    "low": 0.0004,
+    "central": 0.0013,
+    "high": 0.0022
+   },
+   "2024": {
+    "low": 0.0003,
+    "central": 0.0011,
+    "high": 0.002
+   },
+   "2025": {
+    "low": 0.0005,
+    "central": 0.0012,
+    "high": 0.0019
+   }
+  },
+  "SOM": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0007
+   },
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0006
+   },
+   "2024": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0005
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0004
+   }
+  },
+  "SRB": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0304,
+    "high": 0.0728
+   },
+   "2023": {
+    "low": 0.0308,
+    "central": 0.0824,
+    "high": 0.1393
+   },
+   "2024": {
+    "low": 0.0253,
+    "central": 0.0784,
+    "high": 0.1368
+   },
+   "2025": {
+    "low": 0.031,
+    "central": 0.0655,
+    "high": 0.1126
+   }
+  },
+  "SSD": {
+   "2022": {
+    "low": 0.0004,
+    "central": 0.0015,
+    "high": 0.0046
+   },
+   "2023": {
+    "low": 0.0009,
+    "central": 0.0022,
+    "high": 0.0041
+   },
+   "2024": {
+    "low": 0.0006,
+    "central": 0.0016,
+    "high": 0.0032
+   },
+   "2025": {
+    "low": 0.0008,
+    "central": 0.0014,
+    "high": 0.0025
+   }
+  },
+  "STP": {
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0005
+   },
+   "2024": {
+    "low": 0.0002,
+    "central": 0.0005,
+    "high": 0.0009
+   },
+   "2025": {
+    "low": 0.0002,
+    "central": 0.0004,
+    "high": 0.0007
+   }
+  },
+  "SVK": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0524,
+    "high": 0.1269
+   },
+   "2023": {
+    "low": 0.0556,
+    "central": 0.1457,
+    "high": 0.2457
+   },
+   "2024": {
+    "low": 0.0457,
+    "central": 0.137,
+    "high": 0.2381
+   },
+   "2025": {
+    "low": 0.0546,
+    "central": 0.1146,
+    "high": 0.1977
+   }
+  },
+  "SVN": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0269,
+    "high": 0.065
+   },
+   "2023": {
+    "low": 0.0282,
+    "central": 0.0744,
+    "high": 0.1255
+   },
+   "2024": {
+    "low": 0.0233,
+    "central": 0.0705,
+    "high": 0.1228
+   },
+   "2025": {
+    "low": 0.0282,
+    "central": 0.0593,
+    "high": 0.1021
+   }
+  },
+  "SWE": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0671,
+    "high": 0.1625
+   },
+   "2023": {
+    "low": 0.071,
+    "central": 0.1864,
+    "high": 0.3144
+   },
+   "2024": {
+    "low": 0.0585,
+    "central": 0.1756,
+    "high": 0.3053
+   },
+   "2025": {
+    "low": 0.0702,
+    "central": 0.1476,
+    "high": 0.2545
+   }
+  },
+  "SWZ": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0004,
+    "high": 0.0013
+   },
+   "2023": {
+    "low": 0.0002,
+    "central": 0.0005,
+    "high": 0.0009
+   },
+   "2024": {
+    "low": 0.0002,
+    "central": 0.0004,
+    "high": 0.0009
+   },
+   "2025": {
+    "low": 0.0002,
+    "central": 0.0004,
+    "high": 0.0007
+   }
+  },
+  "SYC": {
+   "2024": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0003
+   }
+  },
+  "SYR": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0002,
+    "high": 0.0005
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0004
+   }
+  },
+  "TGO": {
+   "2022": {
+    "low": 0.0004,
+    "central": 0.0012,
+    "high": 0.0039
+   },
+   "2023": {
+    "low": 0.0019,
+    "central": 0.0047,
+    "high": 0.0088
+   },
+   "2024": {
+    "low": 0.0029,
+    "central": 0.0085,
+    "high": 0.0167
+   },
+   "2025": {
+    "low": 0.0037,
+    "central": 0.007,
+    "high": 0.0125
+   }
+  },
+  "THA": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0238,
+    "high": 0.0499
+   },
+   "2023": {
+    "low": 0.0005,
+    "central": 0.0139,
+    "high": 0.0402
+   },
+   "2024": {
+    "low": 0.0005,
+    "central": 0.015,
+    "high": 0.0441
+   },
+   "2025": {
+    "low": 0.0194,
+    "central": 0.0567,
+    "high": 0.0921
+   }
+  },
+  "TJK": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0036,
+    "high": 0.0076
+   },
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0023,
+    "high": 0.0066
+   },
+   "2024": {
+    "low": 0.0001,
+    "central": 0.0021,
+    "high": 0.006
+   },
+   "2025": {
+    "low": 0.0025,
+    "central": 0.0074,
+    "high": 0.012
+   }
+  },
+  "TKM": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0029,
+    "high": 0.0061
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.001,
+    "high": 0.0029
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0008,
+    "high": 0.0024
+   },
+   "2025": {
+    "low": 0.001,
+    "central": 0.0029,
+    "high": 0.0048
+   }
+  },
+  "TUN": {
+   "2022": {
+    "low": 0.0039,
+    "central": 0.0137,
+    "high": 0.0426
+   },
+   "2023": {
+    "low": 0.0102,
+    "central": 0.0257,
+    "high": 0.0484
+   },
+   "2024": {
+    "low": 0.0089,
+    "central": 0.0257,
+    "high": 0.0505
+   },
+   "2025": {
+    "low": 0.0114,
+    "central": 0.0214,
+    "high": 0.0383
+   }
+  },
+  "TUR": {
+   "2022": {
+    "low": 0.0112,
+    "central": 0.4411,
+    "high": 0.9075
+   },
+   "2023": {
+    "low": 0.0792,
+    "central": 0.3725,
+    "high": 0.8367
+   },
+   "2024": {
+    "low": 0.2854,
+    "central": 0.6519,
+    "high": 1.1577
+   },
+   "2025": {
+    "low": 0.3768,
+    "central": 0.7661,
+    "high": 1.1444
+   }
+  },
+  "TWN": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0087,
+    "high": 0.0183
+   },
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0034,
+    "high": 0.0097
+   },
+   "2024": {
+    "low": 0.0001,
+    "central": 0.0025,
+    "high": 0.0074
+   },
+   "2025": {
+    "low": 0.0028,
+    "central": 0.0083,
+    "high": 0.0135
+   }
+  },
+  "TZA": {
+   "2022": {
+    "low": 0.0013,
+    "central": 0.0047,
+    "high": 0.0146
+   },
+   "2023": {
+    "low": 0.0035,
+    "central": 0.0088,
+    "high": 0.0166
+   },
+   "2024": {
+    "low": 0.004,
+    "central": 0.0116,
+    "high": 0.0228
+   },
+   "2025": {
+    "low": 0.0174,
+    "central": 0.0325,
+    "high": 0.0583
+   }
+  },
+  "UGA": {
+   "2022": {
+    "low": 0.0031,
+    "central": 0.0107,
+    "high": 0.0334
+   },
+   "2023": {
+    "low": 0.0089,
+    "central": 0.0223,
+    "high": 0.0421
+   },
+   "2024": {
+    "low": 0.0175,
+    "central": 0.0506,
+    "high": 0.0994
+   },
+   "2025": {
+    "low": 0.0351,
+    "central": 0.0657,
+    "high": 0.1176
+   }
+  },
+  "UKR": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0002,
+    "high": 0.0005
+   },
+   "2023": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0001
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "2025": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0001
+   }
+  },
+  "URY": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0034,
+    "high": 0.0082
+   },
+   "2023": {
+    "low": 0.0035,
+    "central": 0.0093,
+    "high": 0.0157
+   },
+   "2024": {
+    "low": 0.0029,
+    "central": 0.0088,
+    "high": 0.0154
+   },
+   "2025": {
+    "low": 0.0035,
+    "central": 0.0074,
+    "high": 0.0128
+   }
+  },
+  "USA": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.4625,
+    "high": 1.1216
+   },
+   "2023": {
+    "low": 0.4916,
+    "central": 1.2879,
+    "high": 2.1715
+   },
+   "2024": {
+    "low": 0.4045,
+    "central": 1.2108,
+    "high": 2.1047
+   },
+   "2025": {
+    "low": 0.4828,
+    "central": 1.0129,
+    "high": 1.7483
+   }
+  },
+  "UZB": {
+   "2022": {
+    "low": 0.0112,
+    "central": 0.146,
+    "high": 0.2916
+   },
+   "2023": {
+    "low": 0.0018,
+    "central": 0.0509,
+    "high": 0.1478
+   },
+   "2024": {
+    "low": 0.0017,
+    "central": 0.0505,
+    "high": 0.1484
+   },
+   "2025": {
+    "low": 0.0893,
+    "central": 0.2617,
+    "high": 0.4251
+   }
+  },
+  "VEN": {
+   "2022": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   },
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0002,
+    "high": 0.0003
+   },
+   "2024": {
+    "low": 0.0,
+    "central": 0.0001,
+    "high": 0.0002
+   },
+   "2025": {
+    "low": 0.0001,
+    "central": 0.0001,
+    "high": 0.0002
+   }
+  },
+  "VNM": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0636,
+    "high": 0.133
+   },
+   "2023": {
+    "low": 0.0011,
+    "central": 0.0293,
+    "high": 0.0852
+   },
+   "2024": {
+    "low": 0.0013,
+    "central": 0.0395,
+    "high": 0.1159
+   },
+   "2025": {
+    "low": 0.0463,
+    "central": 0.1356,
+    "high": 0.2202
+   }
+  },
+  "ZAF": {
+   "2022": {
+    "low": 0.0668,
+    "central": 0.2335,
+    "high": 0.7271
+   },
+   "2023": {
+    "low": 0.1645,
+    "central": 0.4133,
+    "high": 0.779
+   },
+   "2024": {
+    "low": 0.1332,
+    "central": 0.3858,
+    "high": 0.7572
+   },
+   "2025": {
+    "low": 0.2257,
+    "central": 0.4224,
+    "high": 0.7563
+   }
+  },
+  "ZMB": {
+   "2022": {
+    "low": 0.0001,
+    "central": 0.0005,
+    "high": 0.0015
+   },
+   "2024": {
+    "low": 0.0002,
+    "central": 0.0006,
+    "high": 0.0012
+   },
+   "2025": {
+    "low": 0.0005,
+    "central": 0.0009,
+    "high": 0.0016
+   }
+  },
+  "ZWE": {
+   "2022": {
+    "low": 0.0004,
+    "central": 0.0013,
+    "high": 0.0039
+   },
+   "2023": {
+    "low": 0.0001,
+    "central": 0.0003,
+    "high": 0.0006
+   },
+   "2024": {
+    "low": 0.0006,
+    "central": 0.0017,
+    "high": 0.0033
+   },
+   "2025": {
+    "low": 0.0007,
+    "central": 0.0014,
+    "high": 0.0025
+   }
+  }
+ },
+ "comparison_old_new_eur_bn": {
+  "AFG": {
+   "2022": {
+    "old": 0.0001,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0001,
+    "new": 0.0,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0001,
+    "new": 0.0,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0002,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "AGO": {
+   "2022": {
+    "old": 0.0,
+    "new": 0.0005,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "ALB": {
+   "2022": {
+    "old": 0,
+    "new": 0.0005,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0,
+    "new": 0.0013,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0,
+    "new": 0.0012,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0,
+    "new": 0.001,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "ARE": {
+   "2022": {
+    "old": 0.4397,
+    "new": 0.3671,
+    "of_which_transit_kgz_kaz": 0.2661
+   },
+   "2023": {
+    "old": 0.7739,
+    "new": 0.4896,
+    "of_which_transit_kgz_kaz": 0.4275
+   },
+   "2024": {
+    "old": 0.3095,
+    "new": 0.0681,
+    "of_which_transit_kgz_kaz": 0.0177
+   },
+   "2025": {
+    "old": 0.4655,
+    "new": 0.2444,
+    "of_which_transit_kgz_kaz": 0.0173
+   }
+  },
+  "ARG": {
+   "2022": {
+    "old": 0.0343,
+    "new": 0.028,
+    "of_which_transit_kgz_kaz": 0.0009
+   },
+   "2023": {
+    "old": 0.0215,
+    "new": 0.0763,
+    "of_which_transit_kgz_kaz": 0.0008
+   },
+   "2024": {
+    "old": 0.0284,
+    "new": 0.0726,
+    "of_which_transit_kgz_kaz": 0.0016
+   },
+   "2025": {
+    "old": 0.0494,
+    "new": 0.0612,
+    "of_which_transit_kgz_kaz": 0.0018
+   }
+  },
+  "ARM": {
+   "2022": {
+    "old": 0.1663,
+    "new": 0.0986,
+    "of_which_transit_kgz_kaz": 0.0044
+   },
+   "2023": {
+    "old": 0.2808,
+    "new": 0.059,
+    "of_which_transit_kgz_kaz": 0.0105
+   },
+   "2024": {
+    "old": 0.2415,
+    "new": 0.0531,
+    "of_which_transit_kgz_kaz": 0.0138
+   },
+   "2025": {
+    "old": 0.3235,
+    "new": 0.1698,
+    "of_which_transit_kgz_kaz": 0.0121
+   }
+  },
+  "AUS": {
+   "2022": {
+    "old": 0.0026,
+    "new": 0.124,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0001,
+    "new": 0.0038,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0,
+    "new": 0.002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0001,
+    "new": 0.0021,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "AUT": {
+   "2022": {
+    "old": 0.0333,
+    "new": 0.072,
+    "of_which_transit_kgz_kaz": 0.0009
+   },
+   "2023": {
+    "old": 0.0281,
+    "new": 0.1992,
+    "of_which_transit_kgz_kaz": 0.0011
+   },
+   "2024": {
+    "old": 0.0207,
+    "new": 0.1875,
+    "of_which_transit_kgz_kaz": 0.0012
+   },
+   "2025": {
+    "old": 0.0285,
+    "new": 0.1569,
+    "of_which_transit_kgz_kaz": 0.0011
+   }
+  },
+  "AZE": {
+   "2022": {
+    "old": 0.0671,
+    "new": 0.0398,
+    "of_which_transit_kgz_kaz": 0.0017
+   },
+   "2023": {
+    "old": 0.0958,
+    "new": 0.0201,
+    "of_which_transit_kgz_kaz": 0.0035
+   },
+   "2024": {
+    "old": 0.0907,
+    "new": 0.0199,
+    "of_which_transit_kgz_kaz": 0.0052
+   },
+   "2025": {
+    "old": 0.1313,
+    "new": 0.0689,
+    "of_which_transit_kgz_kaz": 0.0049
+   }
+  },
+  "BDI": {
+   "2022": {
+    "old": 0.0,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0,
+    "new": 0.0005,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "BEL": {
+   "2022": {
+    "old": 0.0466,
+    "new": 0.0687,
+    "of_which_transit_kgz_kaz": 0.0012
+   },
+   "2023": {
+    "old": 0.0417,
+    "new": 0.1897,
+    "of_which_transit_kgz_kaz": 0.0016
+   },
+   "2024": {
+    "old": 0.0406,
+    "new": 0.1792,
+    "of_which_transit_kgz_kaz": 0.0023
+   },
+   "2025": {
+    "old": 0.0636,
+    "new": 0.1503,
+    "of_which_transit_kgz_kaz": 0.0024
+   }
+  },
+  "BEN": {
+   "2022": {
+    "old": 0.0,
+    "new": 0.0005,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0004,
+    "new": 0.006,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0002,
+    "new": 0.0023,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "BFA": {
+   "2022": {
+    "old": 0.0,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0002,
+    "new": 0.0026,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0002,
+    "new": 0.0021,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "BGD": {
+   "2022": {
+    "old": 0.0449,
+    "new": 0.0266,
+    "of_which_transit_kgz_kaz": 0.0012
+   },
+   "2023": {
+    "old": 0.0419,
+    "new": 0.0088,
+    "of_which_transit_kgz_kaz": 0.0015
+   },
+   "2024": {
+    "old": 0.042,
+    "new": 0.0093,
+    "of_which_transit_kgz_kaz": 0.0024
+   },
+   "2025": {
+    "old": 0.0495,
+    "new": 0.026,
+    "of_which_transit_kgz_kaz": 0.0019
+   }
+  },
+  "BGR": {
+   "2022": {
+    "old": 0.0088,
+    "new": 0.0155,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.0108,
+    "new": 0.0429,
+    "of_which_transit_kgz_kaz": 0.0004
+   },
+   "2024": {
+    "old": 0.0077,
+    "new": 0.0404,
+    "of_which_transit_kgz_kaz": 0.0004
+   },
+   "2025": {
+    "old": 0.0132,
+    "new": 0.0339,
+    "of_which_transit_kgz_kaz": 0.0005
+   }
+  },
+  "BHR": {
+   "2022": {
+    "old": 0.0003,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0001,
+    "new": 0.0,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0002,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0002,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "BIH": {
+   "2022": {
+    "old": 0.0036,
+    "new": 0.0024,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0045,
+    "new": 0.0067,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0039,
+    "new": 0.0063,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2025": {
+    "old": 0.0063,
+    "new": 0.0053,
+    "of_which_transit_kgz_kaz": 0.0002
+   }
+  },
+  "BLR": {
+   "2022": {
+    "old": 1.7251,
+    "new": 1.7251,
+    "of_which_transit_kgz_kaz": 1.7251
+   },
+   "2023": {
+    "old": 2.0084,
+    "new": 2.0084,
+    "of_which_transit_kgz_kaz": 2.0084
+   },
+   "2024": {
+    "old": 2.0732,
+    "new": 2.0732,
+    "of_which_transit_kgz_kaz": 2.0732
+   },
+   "2025": {
+    "old": 3.2163,
+    "new": 3.2163,
+    "of_which_transit_kgz_kaz": 3.2163
+   }
+  },
+  "BOL": {
+   "2022": {
+    "old": 0.0027,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.001,
+    "new": 0.0011,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0001,
+    "new": 0.0011,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0001,
+    "new": 0.0009,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "BRA": {
+   "2022": {
+    "old": 0.1358,
+    "new": 0.063,
+    "of_which_transit_kgz_kaz": 0.0036
+   },
+   "2023": {
+    "old": 0.1076,
+    "new": 0.1698,
+    "of_which_transit_kgz_kaz": 0.004
+   },
+   "2024": {
+    "old": 0.1117,
+    "new": 0.1622,
+    "of_which_transit_kgz_kaz": 0.0064
+   },
+   "2025": {
+    "old": 0.1689,
+    "new": 0.1366,
+    "of_which_transit_kgz_kaz": 0.0063
+   }
+  },
+  "CAN": {
+   "2022": {
+    "old": 0.0028,
+    "new": 0.0248,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0007,
+    "new": 0.0692,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0007,
+    "new": 0.0651,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0008,
+    "new": 0.0545,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "CHE": {
+   "2022": {
+    "old": 0.0546,
+    "new": 0.0922,
+    "of_which_transit_kgz_kaz": 0.0014
+   },
+   "2023": {
+    "old": 0.0576,
+    "new": 0.2553,
+    "of_which_transit_kgz_kaz": 0.0021
+   },
+   "2024": {
+    "old": 0.0482,
+    "new": 0.2408,
+    "of_which_transit_kgz_kaz": 0.0028
+   },
+   "2025": {
+    "old": 0.0747,
+    "new": 0.2019,
+    "of_which_transit_kgz_kaz": 0.0028
+   }
+  },
+  "CHL": {
+   "2022": {
+    "old": 0.0312,
+    "new": 0.0216,
+    "of_which_transit_kgz_kaz": 0.0008
+   },
+   "2023": {
+    "old": 0.0368,
+    "new": 0.0592,
+    "of_which_transit_kgz_kaz": 0.0014
+   },
+   "2024": {
+    "old": 0.0264,
+    "new": 0.0559,
+    "of_which_transit_kgz_kaz": 0.0015
+   },
+   "2025": {
+    "old": 0.0505,
+    "new": 0.0473,
+    "of_which_transit_kgz_kaz": 0.0018
+   }
+  },
+  "CHN": {
+   "2022": {
+    "old": 7.5933,
+    "new": 5.4614,
+    "of_which_transit_kgz_kaz": 2.4929
+   },
+   "2023": {
+    "old": 12.7104,
+    "new": 5.6911,
+    "of_which_transit_kgz_kaz": 4.1566
+   },
+   "2024": {
+    "old": 14.9677,
+    "new": 8.0446,
+    "of_which_transit_kgz_kaz": 6.5994
+   },
+   "2025": {
+    "old": 17.7537,
+    "new": 12.3018,
+    "of_which_transit_kgz_kaz": 6.7035
+   }
+  },
+  "CIV": {
+   "2022": {
+    "old": 0.0009,
+    "new": 0.0104,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0047,
+    "new": 0.0852,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2024": {
+    "old": 0.0019,
+    "new": 0.0312,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0041,
+    "new": 0.041,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "CMR": {
+   "2022": {
+    "old": 0.0083,
+    "new": 0.0997,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.0,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "COD": {
+   "2024": {
+    "old": 0,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "COL": {
+   "2022": {
+    "old": 0.0088,
+    "new": 0.0056,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.0055,
+    "new": 0.0153,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2024": {
+    "old": 0.005,
+    "new": 0.0145,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2025": {
+    "old": 0.0055,
+    "new": 0.012,
+    "of_which_transit_kgz_kaz": 0.0002
+   }
+  },
+  "CRI": {
+   "2022": {
+    "old": 0.0017,
+    "new": 0.0031,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0019,
+    "new": 0.0085,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0025,
+    "new": 0.0081,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2025": {
+    "old": 0.0031,
+    "new": 0.0067,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "CUB": {
+   "2022": {
+    "old": 0.0002,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0002,
+    "new": 0.0011,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0003,
+    "new": 0.0011,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0002,
+    "new": 0.0009,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "CYP": {
+   "2022": {
+    "old": 0.0008,
+    "new": 0.0005,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0005,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0004,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0003,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "CZE": {
+   "2022": {
+    "old": 0.0536,
+    "new": 0.1244,
+    "of_which_transit_kgz_kaz": 0.0275
+   },
+   "2023": {
+    "old": 0.0409,
+    "new": 0.2969,
+    "of_which_transit_kgz_kaz": 0.0268
+   },
+   "2024": {
+    "old": 0.1137,
+    "new": 0.3558,
+    "of_which_transit_kgz_kaz": 0.1019
+   },
+   "2025": {
+    "old": 0.0736,
+    "new": 0.2713,
+    "of_which_transit_kgz_kaz": 0.0589
+   }
+  },
+  "DEU": {
+   "2022": {
+    "old": 0.4315,
+    "new": 0.8987,
+    "of_which_transit_kgz_kaz": 0.1673
+   },
+   "2023": {
+    "old": 0.4669,
+    "new": 2.3157,
+    "of_which_transit_kgz_kaz": 0.2763
+   },
+   "2024": {
+    "old": 0.5725,
+    "new": 2.3415,
+    "of_which_transit_kgz_kaz": 0.4243
+   },
+   "2025": {
+    "old": 0.494,
+    "new": 1.8832,
+    "of_which_transit_kgz_kaz": 0.2796
+   }
+  },
+  "DNK": {
+   "2022": {
+    "old": 0.0057,
+    "new": 0.0336,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0021,
+    "new": 0.0934,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0024,
+    "new": 0.0878,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0025,
+    "new": 0.0735,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "DOM": {
+   "2022": {
+    "old": 0.0003,
+    "new": 0.0011,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0002,
+    "new": 0.003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0,
+    "new": 0.0028,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0001,
+    "new": 0.0024,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "DZA": {
+   "2022": {
+    "old": 0.0006,
+    "new": 0.0077,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0006,
+    "new": 0.0111,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0006,
+    "new": 0.0099,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0008,
+    "new": 0.0081,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "ECU": {
+   "2022": {
+    "old": 0.0684,
+    "new": 0.0408,
+    "of_which_transit_kgz_kaz": 0.0018
+   },
+   "2023": {
+    "old": 0.074,
+    "new": 0.1116,
+    "of_which_transit_kgz_kaz": 0.0028
+   },
+   "2024": {
+    "old": 0.0627,
+    "new": 0.1059,
+    "of_which_transit_kgz_kaz": 0.0036
+   },
+   "2025": {
+    "old": 0.1158,
+    "new": 0.0899,
+    "of_which_transit_kgz_kaz": 0.0043
+   }
+  },
+  "EGY": {
+   "2022": {
+    "old": 0.0411,
+    "new": 0.4932,
+    "of_which_transit_kgz_kaz": 0.0011
+   },
+   "2023": {
+    "old": 0.042,
+    "new": 0.7657,
+    "of_which_transit_kgz_kaz": 0.0016
+   },
+   "2024": {
+    "old": 0.0467,
+    "new": 0.7823,
+    "of_which_transit_kgz_kaz": 0.0027
+   },
+   "2025": {
+    "old": 0.09,
+    "new": 0.8925,
+    "of_which_transit_kgz_kaz": 0.0034
+   }
+  },
+  "ERI": {
+   "2022": {
+    "old": 0.0001,
+    "new": 0.0011,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0001,
+    "new": 0.0012,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0001,
+    "new": 0.0021,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "ESP": {
+   "2022": {
+    "old": 0.0233,
+    "new": 0.0944,
+    "of_which_transit_kgz_kaz": 0.0006
+   },
+   "2023": {
+    "old": 0.0184,
+    "new": 0.2621,
+    "of_which_transit_kgz_kaz": 0.0007
+   },
+   "2024": {
+    "old": 0.0157,
+    "new": 0.2466,
+    "of_which_transit_kgz_kaz": 0.0009
+   },
+   "2025": {
+    "old": 0.0241,
+    "new": 0.2065,
+    "of_which_transit_kgz_kaz": 0.0009
+   }
+  },
+  "EST": {
+   "2022": {
+    "old": 0.0237,
+    "new": 0.0133,
+    "of_which_transit_kgz_kaz": 0.0006
+   },
+   "2023": {
+    "old": 0.0237,
+    "new": 0.0362,
+    "of_which_transit_kgz_kaz": 0.0009
+   },
+   "2024": {
+    "old": 0.0198,
+    "new": 0.0344,
+    "of_which_transit_kgz_kaz": 0.0011
+   },
+   "2025": {
+    "old": 0.019,
+    "new": 0.0285,
+    "of_which_transit_kgz_kaz": 0.0007
+   }
+  },
+  "ETH": {
+   "2022": {
+    "old": 0.0009,
+    "new": 0.0113,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.001,
+    "new": 0.0189,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0011,
+    "new": 0.0176,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0013,
+    "new": 0.0133,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "FIN": {
+   "2022": {
+    "old": 0.0375,
+    "new": 0.0963,
+    "of_which_transit_kgz_kaz": 0.001
+   },
+   "2023": {
+    "old": 0.0143,
+    "new": 0.2664,
+    "of_which_transit_kgz_kaz": 0.0006
+   },
+   "2024": {
+    "old": 0.0072,
+    "new": 0.2503,
+    "of_which_transit_kgz_kaz": 0.0004
+   },
+   "2025": {
+    "old": 0.0096,
+    "new": 0.2095,
+    "of_which_transit_kgz_kaz": 0.0004
+   }
+  },
+  "FRA": {
+   "2022": {
+    "old": 0.056,
+    "new": 0.3281,
+    "of_which_transit_kgz_kaz": 0.0015
+   },
+   "2023": {
+    "old": 0.0446,
+    "new": 0.9122,
+    "of_which_transit_kgz_kaz": 0.0017
+   },
+   "2024": {
+    "old": 0.0425,
+    "new": 0.8585,
+    "of_which_transit_kgz_kaz": 0.0025
+   },
+   "2025": {
+    "old": 0.0593,
+    "new": 0.7182,
+    "of_which_transit_kgz_kaz": 0.0022
+   }
+  },
+  "FRO": {
+   "2022": {
+    "old": 0.0177,
+    "new": 0.0099,
+    "of_which_transit_kgz_kaz": 0.0005
+   },
+   "2023": {
+    "old": 0.0233,
+    "new": 0.0271,
+    "of_which_transit_kgz_kaz": 0.0009
+   },
+   "2024": {
+    "old": 0.0124,
+    "new": 0.0254,
+    "of_which_transit_kgz_kaz": 0.0007
+   },
+   "2025": {
+    "old": 0.0177,
+    "new": 0.0212,
+    "of_which_transit_kgz_kaz": 0.0006
+   }
+  },
+  "GBR": {
+   "2022": {
+    "old": 0.0216,
+    "new": 0.1201,
+    "of_which_transit_kgz_kaz": 0.0006
+   },
+   "2023": {
+    "old": 0.0163,
+    "new": 0.3337,
+    "of_which_transit_kgz_kaz": 0.0006
+   },
+   "2024": {
+    "old": 0.0137,
+    "new": 0.3139,
+    "of_which_transit_kgz_kaz": 0.0008
+   },
+   "2025": {
+    "old": 0.0132,
+    "new": 0.2624,
+    "of_which_transit_kgz_kaz": 0.0005
+   }
+  },
+  "GEO": {
+   "2022": {
+    "old": 0.0442,
+    "new": 0.0262,
+    "of_which_transit_kgz_kaz": 0.0012
+   },
+   "2023": {
+    "old": 0.2564,
+    "new": 0.2148,
+    "of_which_transit_kgz_kaz": 0.2057
+   },
+   "2024": {
+    "old": 0.5495,
+    "new": 0.5087,
+    "of_which_transit_kgz_kaz": 0.5002
+   },
+   "2025": {
+    "old": 0.6291,
+    "new": 0.5896,
+    "of_which_transit_kgz_kaz": 0.5491
+   }
+  },
+  "GHA": {
+   "2022": {
+    "old": 0.0089,
+    "new": 0.1069,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.0009,
+    "new": 0.0157,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0017,
+    "new": 0.0289,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.005,
+    "new": 0.0494,
+    "of_which_transit_kgz_kaz": 0.0002
+   }
+  },
+  "GIN": {
+   "2022": {
+    "old": 0.0036,
+    "new": 0.0431,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0034,
+    "new": 0.0625,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0028,
+    "new": 0.0466,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2025": {
+    "old": 0.0041,
+    "new": 0.0407,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "GRC": {
+   "2022": {
+    "old": 0.0028,
+    "new": 0.008,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0021,
+    "new": 0.0224,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0018,
+    "new": 0.021,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0023,
+    "new": 0.0176,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "GRL": {
+   "2022": {
+    "old": 0.0036,
+    "new": 0.0028,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0012,
+    "new": 0.0077,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0011,
+    "new": 0.0073,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0017,
+    "new": 0.0062,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "GTM": {
+   "2022": {
+    "old": 0.0005,
+    "new": 0.0011,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0002,
+    "new": 0.003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0003,
+    "new": 0.0028,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0002,
+    "new": 0.0023,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "HKG": {
+   "2022": {
+    "old": 0.1638,
+    "new": 0.0971,
+    "of_which_transit_kgz_kaz": 0.0043
+   },
+   "2023": {
+    "old": 0.2122,
+    "new": 0.0446,
+    "of_which_transit_kgz_kaz": 0.0079
+   },
+   "2024": {
+    "old": 0.1153,
+    "new": 0.0253,
+    "of_which_transit_kgz_kaz": 0.0066
+   },
+   "2025": {
+    "old": 0.1829,
+    "new": 0.096,
+    "of_which_transit_kgz_kaz": 0.0068
+   }
+  },
+  "HND": {
+   "2022": {
+    "old": 0.0008,
+    "new": 0.0006,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0005,
+    "new": 0.0015,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0003,
+    "new": 0.0015,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0004,
+    "new": 0.0012,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "HRV": {
+   "2022": {
+    "old": 0.0033,
+    "new": 0.0071,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0048,
+    "new": 0.0195,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0048,
+    "new": 0.0185,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2025": {
+    "old": 0.0082,
+    "new": 0.0155,
+    "of_which_transit_kgz_kaz": 0.0003
+   }
+  },
+  "HUN": {
+   "2022": {
+    "old": 0.0238,
+    "new": 0.0612,
+    "of_which_transit_kgz_kaz": 0.0006
+   },
+   "2023": {
+    "old": 0.0235,
+    "new": 0.17,
+    "of_which_transit_kgz_kaz": 0.0009
+   },
+   "2024": {
+    "old": 0.0187,
+    "new": 0.1601,
+    "of_which_transit_kgz_kaz": 0.0011
+   },
+   "2025": {
+    "old": 0.0258,
+    "new": 0.134,
+    "of_which_transit_kgz_kaz": 0.001
+   }
+  },
+  "IDN": {
+   "2022": {
+    "old": 0.1015,
+    "new": 0.0602,
+    "of_which_transit_kgz_kaz": 0.0026
+   },
+   "2023": {
+    "old": 0.0917,
+    "new": 0.0193,
+    "of_which_transit_kgz_kaz": 0.0034
+   },
+   "2024": {
+    "old": 0.134,
+    "new": 0.0294,
+    "of_which_transit_kgz_kaz": 0.0076
+   },
+   "2025": {
+    "old": 0.2082,
+    "new": 0.1093,
+    "of_which_transit_kgz_kaz": 0.0078
+   }
+  },
+  "IND": {
+   "2022": {
+    "old": 0.2014,
+    "new": 0.1194,
+    "of_which_transit_kgz_kaz": 0.0053
+   },
+   "2023": {
+    "old": 0.3251,
+    "new": 0.0684,
+    "of_which_transit_kgz_kaz": 0.0122
+   },
+   "2024": {
+    "old": 0.3728,
+    "new": 0.0821,
+    "of_which_transit_kgz_kaz": 0.0214
+   },
+   "2025": {
+    "old": 0.4987,
+    "new": 0.2618,
+    "of_which_transit_kgz_kaz": 0.0186
+   }
+  },
+  "IRL": {
+   "2022": {
+    "old": 0.0099,
+    "new": 0.0564,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.0102,
+    "new": 0.157,
+    "of_which_transit_kgz_kaz": 0.0004
+   },
+   "2024": {
+    "old": 0.015,
+    "new": 0.1481,
+    "of_which_transit_kgz_kaz": 0.0009
+   },
+   "2025": {
+    "old": 0.0259,
+    "new": 0.1241,
+    "of_which_transit_kgz_kaz": 0.001
+   }
+  },
+  "IRN": {
+   "2022": {
+    "old": 0.0476,
+    "new": 0.0282,
+    "of_which_transit_kgz_kaz": 0.0012
+   },
+   "2023": {
+    "old": 0.0729,
+    "new": 0.0153,
+    "of_which_transit_kgz_kaz": 0.0028
+   },
+   "2024": {
+    "old": 0.0389,
+    "new": 0.0085,
+    "of_which_transit_kgz_kaz": 0.0022
+   },
+   "2025": {
+    "old": 0.0586,
+    "new": 0.0308,
+    "of_which_transit_kgz_kaz": 0.0022
+   }
+  },
+  "ISL": {
+   "2022": {
+    "old": 0.0,
+    "new": 0.0005,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0,
+    "new": 0.0015,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0,
+    "new": 0.0014,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0,
+    "new": 0.0011,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "ISR": {
+   "2022": {
+    "old": 0.045,
+    "new": 0.0267,
+    "of_which_transit_kgz_kaz": 0.0012
+   },
+   "2023": {
+    "old": 0.0472,
+    "new": 0.0099,
+    "of_which_transit_kgz_kaz": 0.0017
+   },
+   "2024": {
+    "old": 0.0362,
+    "new": 0.008,
+    "of_which_transit_kgz_kaz": 0.0021
+   },
+   "2025": {
+    "old": 0.0538,
+    "new": 0.0282,
+    "of_which_transit_kgz_kaz": 0.002
+   }
+  },
+  "ITA": {
+   "2022": {
+    "old": 0.1054,
+    "new": 0.3246,
+    "of_which_transit_kgz_kaz": 0.0028
+   },
+   "2023": {
+    "old": 0.1224,
+    "new": 0.9231,
+    "of_which_transit_kgz_kaz": 0.0258
+   },
+   "2024": {
+    "old": 0.3151,
+    "new": 1.0725,
+    "of_which_transit_kgz_kaz": 0.229
+   },
+   "2025": {
+    "old": 0.2987,
+    "new": 0.8924,
+    "of_which_transit_kgz_kaz": 0.1868
+   }
+  },
+  "JAM": {
+   "2022": {
+    "old": 0.0069,
+    "new": 0.0019,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.0111,
+    "new": 0.005,
+    "of_which_transit_kgz_kaz": 0.0005
+   },
+   "2024": {
+    "old": 0.0182,
+    "new": 0.0054,
+    "of_which_transit_kgz_kaz": 0.0011
+   },
+   "2025": {
+    "old": 0.0207,
+    "new": 0.0044,
+    "of_which_transit_kgz_kaz": 0.0008
+   }
+  },
+  "JOR": {
+   "2022": {
+    "old": 0.0003,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0003,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0003,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0005,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "JPN": {
+   "2022": {
+    "old": 0.0992,
+    "new": 0.0669,
+    "of_which_transit_kgz_kaz": 0.022
+   },
+   "2023": {
+    "old": 0.0571,
+    "new": 0.012,
+    "of_which_transit_kgz_kaz": 0.0021
+   },
+   "2024": {
+    "old": 0.127,
+    "new": 0.0945,
+    "of_which_transit_kgz_kaz": 0.0877
+   },
+   "2025": {
+    "old": 0.1202,
+    "new": 0.0878,
+    "of_which_transit_kgz_kaz": 0.0546
+   }
+  },
+  "KAZ": {
+   "2022": {
+    "old": 0.6912,
+    "new": 0.4453,
+    "of_which_transit_kgz_kaz": 0.1029
+   },
+   "2023": {
+    "old": 1.0357,
+    "new": 0.4164,
+    "of_which_transit_kgz_kaz": 0.281
+   },
+   "2024": {
+    "old": 1.4585,
+    "new": 0.8852,
+    "of_which_transit_kgz_kaz": 0.7655
+   },
+   "2025": {
+    "old": 1.6392,
+    "new": 1.2045,
+    "of_which_transit_kgz_kaz": 0.7582
+   }
+  },
+  "KEN": {
+   "2022": {
+    "old": 0.0045,
+    "new": 0.0535,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.0027,
+    "new": 0.0497,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0037,
+    "new": 0.0625,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2025": {
+    "old": 0.0058,
+    "new": 0.0573,
+    "of_which_transit_kgz_kaz": 0.0002
+   }
+  },
+  "KGZ": {
+   "2022": {
+    "old": 0.4501,
+    "new": 0.4202,
+    "of_which_transit_kgz_kaz": 0.3784
+   },
+   "2023": {
+    "old": 0.7381,
+    "new": 0.6861,
+    "of_which_transit_kgz_kaz": 0.6748
+   },
+   "2024": {
+    "old": 0.8647,
+    "new": 0.8061,
+    "of_which_transit_kgz_kaz": 0.7938
+   },
+   "2025": {
+    "old": 1.0631,
+    "new": 1.0371,
+    "of_which_transit_kgz_kaz": 1.0104
+   }
+  },
+  "KHM": {
+   "2022": {
+    "old": 0.0009,
+    "new": 0.0005,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0003,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0003,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0003,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "KIR": {
+   "2023": {
+    "old": 0,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "KOR": {
+   "2022": {
+    "old": 0.2318,
+    "new": 0.1875,
+    "of_which_transit_kgz_kaz": 0.1258
+   },
+   "2023": {
+    "old": 0.4567,
+    "new": 0.3599,
+    "of_which_transit_kgz_kaz": 0.3387
+   },
+   "2024": {
+    "old": 0.8335,
+    "new": 0.7656,
+    "of_which_transit_kgz_kaz": 0.7514
+   },
+   "2025": {
+    "old": 1.397,
+    "new": 1.3438,
+    "of_which_transit_kgz_kaz": 1.2891
+   }
+  },
+  "KWT": {
+   "2022": {
+    "old": 0.0001,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0001,
+    "new": 0.0,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0002,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0005,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "LAO": {
+   "2025": {
+    "old": 0.0001,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "LBN": {
+   "2022": {
+    "old": 0.0005,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0007,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0005,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0007,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "LBR": {
+   "2022": {
+    "old": 0.0002,
+    "new": 0.0022,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0002,
+    "new": 0.0032,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0001,
+    "new": 0.0024,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0002,
+    "new": 0.0021,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "LKA": {
+   "2022": {
+    "old": 0.0101,
+    "new": 0.006,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2023": {
+    "old": 0.0117,
+    "new": 0.0024,
+    "of_which_transit_kgz_kaz": 0.0004
+   },
+   "2024": {
+    "old": 0.0135,
+    "new": 0.003,
+    "of_which_transit_kgz_kaz": 0.0008
+   },
+   "2025": {
+    "old": 0.0165,
+    "new": 0.0086,
+    "of_which_transit_kgz_kaz": 0.0006
+   }
+  },
+  "LTU": {
+   "2022": {
+    "old": 0.1573,
+    "new": 0.1265,
+    "of_which_transit_kgz_kaz": 0.1091
+   },
+   "2023": {
+    "old": 0.0464,
+    "new": 0.0505,
+    "of_which_transit_kgz_kaz": 0.0017
+   },
+   "2024": {
+    "old": 0.0132,
+    "new": 0.0465,
+    "of_which_transit_kgz_kaz": 0.0007
+   },
+   "2025": {
+    "old": 0.0127,
+    "new": 0.0388,
+    "of_which_transit_kgz_kaz": 0.0004
+   }
+  },
+  "LUX": {
+   "2022": {
+    "old": 0.0009,
+    "new": 0.0048,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0001,
+    "new": 0.0134,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0001,
+    "new": 0.0125,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0,
+    "new": 0.0105,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "LVA": {
+   "2022": {
+    "old": 0.0217,
+    "new": 0.0139,
+    "of_which_transit_kgz_kaz": 0.0006
+   },
+   "2023": {
+    "old": 0.0245,
+    "new": 0.038,
+    "of_which_transit_kgz_kaz": 0.0009
+   },
+   "2024": {
+    "old": 0.0209,
+    "new": 0.036,
+    "of_which_transit_kgz_kaz": 0.0012
+   },
+   "2025": {
+    "old": 0.032,
+    "new": 0.0303,
+    "of_which_transit_kgz_kaz": 0.0012
+   }
+  },
+  "MAC": {
+   "2024": {
+    "old": 0.0003,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0004,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "MAR": {
+   "2022": {
+    "old": 0.0061,
+    "new": 0.0735,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0079,
+    "new": 0.1439,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2024": {
+    "old": 0.0065,
+    "new": 0.1081,
+    "of_which_transit_kgz_kaz": 0.0004
+   },
+   "2025": {
+    "old": 0.0114,
+    "new": 0.1131,
+    "of_which_transit_kgz_kaz": 0.0004
+   }
+  },
+  "MDA": {
+   "2022": {
+    "old": 0.0033,
+    "new": 0.0112,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0029,
+    "new": 0.0311,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0023,
+    "new": 0.0293,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2025": {
+    "old": 0.003,
+    "new": 0.0245,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "MDG": {
+   "2022": {
+    "old": 0.0001,
+    "new": 0.0016,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0002,
+    "new": 0.0037,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0006,
+    "new": 0.0097,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0005,
+    "new": 0.0052,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "MEX": {
+   "2022": {
+    "old": 0.0074,
+    "new": 0.0372,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.0016,
+    "new": 0.103,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0011,
+    "new": 0.0969,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0018,
+    "new": 0.081,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "MHL": {
+   "2022": {
+    "old": 0.0001,
+    "new": 0.0008,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0001,
+    "new": 0.0011,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0,
+    "new": 0.0008,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0001,
+    "new": 0.0007,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "MKD": {
+   "2022": {
+    "old": 0.0009,
+    "new": 0.0025,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.001,
+    "new": 0.0071,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0009,
+    "new": 0.0067,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.002,
+    "new": 0.0056,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "MLI": {
+   "2024": {
+    "old": 0,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "MLT": {
+   "2022": {
+    "old": 0,
+    "new": 0.0007,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0,
+    "new": 0.0019,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0,
+    "new": 0.0018,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0,
+    "new": 0.0015,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "MMR": {
+   "2022": {
+    "old": 0.0009,
+    "new": 0.0006,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0031,
+    "new": 0.0007,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0027,
+    "new": 0.0006,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0013,
+    "new": 0.0007,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "MNE": {
+   "2022": {
+    "old": 0,
+    "new": 0.0009,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0,
+    "new": 0.0024,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0,
+    "new": 0.0023,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0,
+    "new": 0.0019,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "MNG": {
+   "2022": {
+    "old": 0.0077,
+    "new": 0.0046,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.0089,
+    "new": 0.0019,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2024": {
+    "old": 0.0097,
+    "new": 0.0022,
+    "of_which_transit_kgz_kaz": 0.0006
+   },
+   "2025": {
+    "old": 0.0136,
+    "new": 0.0072,
+    "of_which_transit_kgz_kaz": 0.0006
+   }
+  },
+  "MOZ": {
+   "2022": {
+    "old": 0.0001,
+    "new": 0.0013,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "MRT": {
+   "2022": {
+    "old": 0.0,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0001,
+    "new": 0.0008,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "MUS": {
+   "2022": {
+    "old": 0.0001,
+    "new": 0.0008,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0001,
+    "new": 0.0021,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0001,
+    "new": 0.0009,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "MWI": {
+   "2022": {
+    "old": 0.0002,
+    "new": 0.0024,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0001,
+    "new": 0.0019,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0004,
+    "new": 0.0069,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0025,
+    "new": 0.0251,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "MYS": {
+   "2022": {
+    "old": 0.0377,
+    "new": 0.0224,
+    "of_which_transit_kgz_kaz": 0.001
+   },
+   "2023": {
+    "old": 0.0496,
+    "new": 0.0104,
+    "of_which_transit_kgz_kaz": 0.0018
+   },
+   "2024": {
+    "old": 0.0686,
+    "new": 0.0151,
+    "of_which_transit_kgz_kaz": 0.0039
+   },
+   "2025": {
+    "old": 0.0878,
+    "new": 0.0461,
+    "of_which_transit_kgz_kaz": 0.0033
+   }
+  },
+  "NAM": {
+   "2022": {
+    "old": 0.0002,
+    "new": 0.002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0003,
+    "new": 0.0058,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0004,
+    "new": 0.0072,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0004,
+    "new": 0.004,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "NER": {
+   "2025": {
+    "old": 0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "NGA": {
+   "2022": {
+    "old": 0.0003,
+    "new": 0.0039,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0008,
+    "new": 0.0146,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0001,
+    "new": 0.0019,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0004,
+    "new": 0.0044,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "NIC": {
+   "2022": {
+    "old": 0.0003,
+    "new": 0.0005,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0004,
+    "new": 0.0012,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0003,
+    "new": 0.0011,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0006,
+    "new": 0.0009,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "NLD": {
+   "2022": {
+    "old": 0.0679,
+    "new": 0.1164,
+    "of_which_transit_kgz_kaz": 0.0018
+   },
+   "2023": {
+    "old": 0.0482,
+    "new": 0.3212,
+    "of_which_transit_kgz_kaz": 0.0018
+   },
+   "2024": {
+    "old": 0.0457,
+    "new": 0.3029,
+    "of_which_transit_kgz_kaz": 0.0026
+   },
+   "2025": {
+    "old": 0.1413,
+    "new": 0.3218,
+    "of_which_transit_kgz_kaz": 0.0706
+   }
+  },
+  "NOR": {
+   "2022": {
+    "old": 0.004,
+    "new": 0.0243,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0034,
+    "new": 0.0675,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0013,
+    "new": 0.0634,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0014,
+    "new": 0.053,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "NPL": {
+   "2022": {
+    "old": 0.0001,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0001,
+    "new": 0.0,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0001,
+    "new": 0.0,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0001,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "NZL": {
+   "2022": {
+    "old": 0.0009,
+    "new": 0.0411,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0003,
+    "new": 0.0211,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0002,
+    "new": 0.0141,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0003,
+    "new": 0.0127,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "OMN": {
+   "2022": {
+    "old": 0.0005,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0018,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0009,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0009,
+    "new": 0.0005,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "PAK": {
+   "2022": {
+    "old": 0.0052,
+    "new": 0.0031,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0071,
+    "new": 0.0015,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2024": {
+    "old": 0.0053,
+    "new": 0.0012,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2025": {
+    "old": 0.0073,
+    "new": 0.0038,
+    "of_which_transit_kgz_kaz": 0.0003
+   }
+  },
+  "PAN": {
+   "2023": {
+    "old": 0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "PER": {
+   "2022": {
+    "old": 0.0066,
+    "new": 0.0067,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.0063,
+    "new": 0.0185,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2024": {
+    "old": 0.0066,
+    "new": 0.0175,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2025": {
+    "old": 0.0106,
+    "new": 0.0147,
+    "of_which_transit_kgz_kaz": 0.0004
+   }
+  },
+  "PHL": {
+   "2022": {
+    "old": 0.0037,
+    "new": 0.0022,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0042,
+    "new": 0.0009,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0043,
+    "new": 0.0009,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2025": {
+    "old": 0.0063,
+    "new": 0.0033,
+    "of_which_transit_kgz_kaz": 0.0002
+   }
+  },
+  "PNG": {
+   "2022": {
+    "old": 0.0001,
+    "new": 0.001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0001,
+    "new": 0.0014,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0001,
+    "new": 0.0011,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0001,
+    "new": 0.0009,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "POL": {
+   "2022": {
+    "old": 0.1115,
+    "new": 0.1815,
+    "of_which_transit_kgz_kaz": 0.0262
+   },
+   "2023": {
+    "old": 0.2087,
+    "new": 0.5656,
+    "of_which_transit_kgz_kaz": 0.1326
+   },
+   "2024": {
+    "old": 0.1462,
+    "new": 0.4996,
+    "of_which_transit_kgz_kaz": 0.0925
+   },
+   "2025": {
+    "old": 0.0676,
+    "new": 0.343,
+    "of_which_transit_kgz_kaz": 0.0025
+   }
+  },
+  "PRT": {
+   "2022": {
+    "old": 0.0016,
+    "new": 0.0171,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0016,
+    "new": 0.0475,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0021,
+    "new": 0.0448,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2025": {
+    "old": 0.0026,
+    "new": 0.0374,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "PRY": {
+   "2022": {
+    "old": 0.0245,
+    "new": 0.0233,
+    "of_which_transit_kgz_kaz": 0.0006
+   },
+   "2023": {
+    "old": 0.0214,
+    "new": 0.064,
+    "of_which_transit_kgz_kaz": 0.0008
+   },
+   "2024": {
+    "old": 0.0159,
+    "new": 0.0602,
+    "of_which_transit_kgz_kaz": 0.0009
+   },
+   "2025": {
+    "old": 0.0184,
+    "new": 0.0504,
+    "of_which_transit_kgz_kaz": 0.0007
+   }
+  },
+  "QAT": {
+   "2022": {
+    "old": 0.0002,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0006,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "ROU": {
+   "2022": {
+    "old": 0.0075,
+    "new": 0.0428,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.0051,
+    "new": 0.1188,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2024": {
+    "old": 0.0039,
+    "new": 0.1117,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2025": {
+    "old": 0.0042,
+    "new": 0.0934,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "RWA": {
+   "2022": {
+    "old": 0.0003,
+    "new": 0.0034,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0005,
+    "new": 0.0089,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0003,
+    "new": 0.0056,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0013,
+    "new": 0.0125,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "SAU": {
+   "2022": {
+    "old": 0.0031,
+    "new": 0.0019,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0015,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0031,
+    "new": 0.0007,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2025": {
+    "old": 0.0081,
+    "new": 0.0043,
+    "of_which_transit_kgz_kaz": 0.0003
+   }
+  },
+  "SGP": {
+   "2022": {
+    "old": 0.0031,
+    "new": 0.0018,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0028,
+    "new": 0.0006,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0024,
+    "new": 0.0006,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2025": {
+    "old": 0.0038,
+    "new": 0.002,
+    "of_which_transit_kgz_kaz": 0.0002
+   }
+  },
+  "SLE": {
+   "2022": {
+    "old": 0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "SLV": {
+   "2022": {
+    "old": 0,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "SMR": {
+   "2022": {
+    "old": 0.0006,
+    "new": 0.0008,
+    "of_which_transit_kgz_kaz": 0.0005
+   },
+   "2023": {
+    "old": 0.0006,
+    "new": 0.0013,
+    "of_which_transit_kgz_kaz": 0.0005
+   },
+   "2024": {
+    "old": 0.0004,
+    "new": 0.0011,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2025": {
+    "old": 0.0007,
+    "new": 0.0012,
+    "of_which_transit_kgz_kaz": 0.0005
+   }
+  },
+  "SOM": {
+   "2022": {
+    "old": 0,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "SRB": {
+   "2022": {
+    "old": 0.0822,
+    "new": 0.0304,
+    "of_which_transit_kgz_kaz": 0.0022
+   },
+   "2023": {
+    "old": 0.0957,
+    "new": 0.0824,
+    "of_which_transit_kgz_kaz": 0.0036
+   },
+   "2024": {
+    "old": 0.0741,
+    "new": 0.0784,
+    "of_which_transit_kgz_kaz": 0.0043
+   },
+   "2025": {
+    "old": 0.0945,
+    "new": 0.0655,
+    "of_which_transit_kgz_kaz": 0.0035
+   }
+  },
+  "SSD": {
+   "2022": {
+    "old": 0.0001,
+    "new": 0.0015,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0001,
+    "new": 0.0022,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0001,
+    "new": 0.0016,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0001,
+    "new": 0.0014,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "STP": {
+   "2023": {
+    "old": 0.0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0,
+    "new": 0.0005,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "SVK": {
+   "2022": {
+    "old": 0.0098,
+    "new": 0.0524,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.0076,
+    "new": 0.1457,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2024": {
+    "old": 0.0046,
+    "new": 0.137,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2025": {
+    "old": 0.0062,
+    "new": 0.1146,
+    "of_which_transit_kgz_kaz": 0.0002
+   }
+  },
+  "SVN": {
+   "2022": {
+    "old": 0.0212,
+    "new": 0.0269,
+    "of_which_transit_kgz_kaz": 0.0005
+   },
+   "2023": {
+    "old": 0.0239,
+    "new": 0.0744,
+    "of_which_transit_kgz_kaz": 0.0009
+   },
+   "2024": {
+    "old": 0.0244,
+    "new": 0.0705,
+    "of_which_transit_kgz_kaz": 0.0014
+   },
+   "2025": {
+    "old": 0.0394,
+    "new": 0.0593,
+    "of_which_transit_kgz_kaz": 0.0015
+   }
+  },
+  "SWE": {
+   "2022": {
+    "old": 0.0173,
+    "new": 0.0671,
+    "of_which_transit_kgz_kaz": 0.0005
+   },
+   "2023": {
+    "old": 0.0179,
+    "new": 0.1864,
+    "of_which_transit_kgz_kaz": 0.0007
+   },
+   "2024": {
+    "old": 0.0174,
+    "new": 0.1756,
+    "of_which_transit_kgz_kaz": 0.001
+   },
+   "2025": {
+    "old": 0.0416,
+    "new": 0.1476,
+    "of_which_transit_kgz_kaz": 0.0016
+   }
+  },
+  "SWZ": {
+   "2022": {
+    "old": 0.0,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0,
+    "new": 0.0005,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0,
+    "new": 0.0004,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "SYC": {
+   "2024": {
+    "old": 0,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "SYR": {
+   "2022": {
+    "old": 0.0004,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0004,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0003,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0005,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "TGO": {
+   "2022": {
+    "old": 0.0001,
+    "new": 0.0012,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0003,
+    "new": 0.0047,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2024": {
+    "old": 0.0005,
+    "new": 0.0085,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0007,
+    "new": 0.007,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "THA": {
+   "2022": {
+    "old": 0.0402,
+    "new": 0.0238,
+    "of_which_transit_kgz_kaz": 0.001
+   },
+   "2023": {
+    "old": 0.0658,
+    "new": 0.0139,
+    "of_which_transit_kgz_kaz": 0.0025
+   },
+   "2024": {
+    "old": 0.0683,
+    "new": 0.015,
+    "of_which_transit_kgz_kaz": 0.0039
+   },
+   "2025": {
+    "old": 0.108,
+    "new": 0.0567,
+    "of_which_transit_kgz_kaz": 0.004
+   }
+  },
+  "TJK": {
+   "2022": {
+    "old": 0.0061,
+    "new": 0.0036,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.0108,
+    "new": 0.0023,
+    "of_which_transit_kgz_kaz": 0.0004
+   },
+   "2024": {
+    "old": 0.0093,
+    "new": 0.0021,
+    "of_which_transit_kgz_kaz": 0.0006
+   },
+   "2025": {
+    "old": 0.014,
+    "new": 0.0074,
+    "of_which_transit_kgz_kaz": 0.0006
+   }
+  },
+  "TKM": {
+   "2022": {
+    "old": 0.0049,
+    "new": 0.0029,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0047,
+    "new": 0.001,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2024": {
+    "old": 0.0038,
+    "new": 0.0008,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2025": {
+    "old": 0.0056,
+    "new": 0.0029,
+    "of_which_transit_kgz_kaz": 0.0002
+   }
+  },
+  "TUN": {
+   "2022": {
+    "old": 0.0011,
+    "new": 0.0137,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0014,
+    "new": 0.0257,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0015,
+    "new": 0.0257,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0022,
+    "new": 0.0214,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "TUR": {
+   "2022": {
+    "old": 0.7028,
+    "new": 0.4411,
+    "of_which_transit_kgz_kaz": 0.0768
+   },
+   "2023": {
+    "old": 1.0626,
+    "new": 0.3725,
+    "of_which_transit_kgz_kaz": 0.2216
+   },
+   "2024": {
+    "old": 1.1661,
+    "new": 0.6519,
+    "of_which_transit_kgz_kaz": 0.5446
+   },
+   "2025": {
+    "old": 1.1205,
+    "new": 0.7661,
+    "of_which_transit_kgz_kaz": 0.4022
+   }
+  },
+  "TWN": {
+   "2022": {
+    "old": 0.0147,
+    "new": 0.0087,
+    "of_which_transit_kgz_kaz": 0.0004
+   },
+   "2023": {
+    "old": 0.0159,
+    "new": 0.0034,
+    "of_which_transit_kgz_kaz": 0.0006
+   },
+   "2024": {
+    "old": 0.0115,
+    "new": 0.0025,
+    "of_which_transit_kgz_kaz": 0.0007
+   },
+   "2025": {
+    "old": 0.0159,
+    "new": 0.0083,
+    "of_which_transit_kgz_kaz": 0.0005
+   }
+  },
+  "TZA": {
+   "2022": {
+    "old": 0.0004,
+    "new": 0.0047,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0005,
+    "new": 0.0088,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0007,
+    "new": 0.0116,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0033,
+    "new": 0.0325,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "UGA": {
+   "2022": {
+    "old": 0.0009,
+    "new": 0.0107,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0012,
+    "new": 0.0223,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.003,
+    "new": 0.0506,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2025": {
+    "old": 0.0066,
+    "new": 0.0657,
+    "of_which_transit_kgz_kaz": 0.0002
+   }
+  },
+  "UKR": {
+   "2022": {
+    "old": 0.0085,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2023": {
+    "old": 0.002,
+    "new": 0.0,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0004,
+    "new": 0.0,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0006,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0001
+   }
+  },
+  "URY": {
+   "2022": {
+    "old": 0.0051,
+    "new": 0.0034,
+    "of_which_transit_kgz_kaz": 0.0001
+   },
+   "2023": {
+    "old": 0.0051,
+    "new": 0.0093,
+    "of_which_transit_kgz_kaz": 0.0002
+   },
+   "2024": {
+    "old": 0.0059,
+    "new": 0.0088,
+    "of_which_transit_kgz_kaz": 0.0003
+   },
+   "2025": {
+    "old": 0.0069,
+    "new": 0.0074,
+    "of_which_transit_kgz_kaz": 0.0003
+   }
+  },
+  "USA": {
+   "2022": {
+    "old": 0.0295,
+    "new": 0.4625,
+    "of_which_transit_kgz_kaz": 0.0008
+   },
+   "2023": {
+    "old": 0.012,
+    "new": 1.2879,
+    "of_which_transit_kgz_kaz": 0.0005
+   },
+   "2024": {
+    "old": 0.0101,
+    "new": 1.2108,
+    "of_which_transit_kgz_kaz": 0.0006
+   },
+   "2025": {
+    "old": 0.0164,
+    "new": 1.0129,
+    "of_which_transit_kgz_kaz": 0.0006
+   }
+  },
+  "UZB": {
+   "2022": {
+    "old": 0.2188,
+    "new": 0.146,
+    "of_which_transit_kgz_kaz": 0.0446
+   },
+   "2023": {
+    "old": 0.2422,
+    "new": 0.0509,
+    "of_which_transit_kgz_kaz": 0.0091
+   },
+   "2024": {
+    "old": 0.2298,
+    "new": 0.0505,
+    "of_which_transit_kgz_kaz": 0.0131
+   },
+   "2025": {
+    "old": 0.4984,
+    "new": 0.2617,
+    "of_which_transit_kgz_kaz": 0.0186
+   }
+  },
+  "VEN": {
+   "2022": {
+    "old": 0.0001,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0001,
+    "new": 0.0002,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0001,
+    "new": 0.0001,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "VNM": {
+   "2022": {
+    "old": 0.1072,
+    "new": 0.0636,
+    "of_which_transit_kgz_kaz": 0.0028
+   },
+   "2023": {
+    "old": 0.1397,
+    "new": 0.0293,
+    "of_which_transit_kgz_kaz": 0.0052
+   },
+   "2024": {
+    "old": 0.1794,
+    "new": 0.0395,
+    "of_which_transit_kgz_kaz": 0.0103
+   },
+   "2025": {
+    "old": 0.2582,
+    "new": 0.1356,
+    "of_which_transit_kgz_kaz": 0.0096
+   }
+  },
+  "ZAF": {
+   "2022": {
+    "old": 0.0195,
+    "new": 0.2335,
+    "of_which_transit_kgz_kaz": 0.0005
+   },
+   "2023": {
+    "old": 0.0227,
+    "new": 0.4133,
+    "of_which_transit_kgz_kaz": 0.0009
+   },
+   "2024": {
+    "old": 0.023,
+    "new": 0.3858,
+    "of_which_transit_kgz_kaz": 0.0013
+   },
+   "2025": {
+    "old": 0.0426,
+    "new": 0.4224,
+    "of_which_transit_kgz_kaz": 0.0016
+   }
+  },
+  "ZMB": {
+   "2022": {
+    "old": 0.0,
+    "new": 0.0005,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0,
+    "new": 0.0006,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0001,
+    "new": 0.0009,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  },
+  "ZWE": {
+   "2022": {
+    "old": 0.0001,
+    "new": 0.0013,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2023": {
+    "old": 0.0,
+    "new": 0.0003,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2024": {
+    "old": 0.0001,
+    "new": 0.0017,
+    "of_which_transit_kgz_kaz": 0.0
+   },
+   "2025": {
+    "old": 0.0001,
+    "new": 0.0014,
+    "of_which_transit_kgz_kaz": 0.0
+   }
+  }
+ },
+ "largest_changes_2022_2025_sum_old_new": {
+  "CHN": {
+   "old": 53.025,
+   "new": 31.499
+  },
+  "DEU": {
+   "old": 1.965,
+   "new": 7.439
+  },
+  "USA": {
+   "old": 0.068,
+   "new": 3.974
+  },
+  "EGY": {
+   "old": 0.22,
+   "new": 2.934
+  },
+  "FRA": {
+   "old": 0.202,
+   "new": 2.817
+  },
+  "ITA": {
+   "old": 0.842,
+   "new": 3.213
+  },
+  "KAZ": {
+   "old": 4.825,
+   "new": 2.951
+  },
+  "TUR": {
+   "old": 4.052,
+   "new": 2.232
+  },
+  "ZAF": {
+   "old": 0.108,
+   "new": 1.455
+  },
+  "POL": {
+   "old": 0.534,
+   "new": 1.59
+  },
+  "GBR": {
+   "old": 0.065,
+   "new": 1.03
+  },
+  "IND": {
+   "old": 1.398,
+   "new": 0.532
+  },
+  "ARE": {
+   "old": 1.989,
+   "new": 1.169
+  },
+  "CZE": {
+   "old": 0.282,
+   "new": 1.048
+  },
+  "NLD": {
+   "old": 0.303,
+   "new": 1.062
+  },
+  "FIN": {
+   "old": 0.069,
+   "new": 0.823
+  },
+  "ESP": {
+   "old": 0.082,
+   "new": 0.81
+  },
+  "UZB": {
+   "old": 1.189,
+   "new": 0.509
+  },
+  "ARM": {
+   "old": 1.012,
+   "new": 0.381
+  },
+  "CHE": {
+   "old": 0.235,
+   "new": 0.79
+  },
+  "AUT": {
+   "old": 0.111,
+   "new": 0.616
+  },
+  "SWE": {
+   "old": 0.094,
+   "new": 0.577
+  },
+  "HUN": {
+   "old": 0.092,
+   "new": 0.525
+  },
+  "IRL": {
+   "old": 0.061,
+   "new": 0.486
+  },
+  "SVK": {
+   "old": 0.028,
+   "new": 0.45
+  },
+  "VNM": {
+   "old": 0.684,
+   "new": 0.268
+  },
+  "HKG": {
+   "old": 0.674,
+   "new": 0.263
+  },
+  "MAR": {
+   "old": 0.032,
+   "new": 0.439
+  },
+  "BEL": {
+   "old": 0.193,
+   "new": 0.588
+  },
+  "ROU": {
+   "old": 0.021,
+   "new": 0.367
+  }
+ },
+ "certainty": {
+  "block_shares": "C (official FCS regional aggregates, quoted by Interfax/TASS/Lognews; FCS's own release pages were not reachable)",
+  "split_within_West": "D (Russia's 2021 origin mix as a proxy)",
+  "split_within_Asia": "C (as residual.json)"
+ }
+}

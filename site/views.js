@@ -4,7 +4,7 @@
 // state (view, measure, what's counted, region, group, size, year) and re-renders whenever it changes (paint() calls
 // renderView()). Round 20 (owner): only Map, Ranking and Sources remain, and the ranking is as clean as the map: the
 // header line names it and its explanation is in the header's ⓘ (rankInfo)
-/* global leaning, noDataAt, PARTY_TO_WAR, state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
+/* global leaning, isNearZero, noDataAt, PARTY_TO_WAR, state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
    num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades, renderDrawer, renderInfo, verb, rangeWords */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
@@ -93,13 +93,15 @@ function renderRanking(root) {
   // groups are numbered: toward Ukraine from the top, toward Russia from the bottom (1 = furthest toward Russia)
   const status = m => (!hq || y <= 2021 || !uncertain(m.c, y, hq) ? "" : leaning(m.c, y, hq) ? "lean" : "unc");
   rows.forEach(m => (m.st = status(m)));
-  const grp = m => (m.st === "unc" ? 2 : m.v >= 0 ? (m.st ? 1 : 0) : (m.st ? 3 : 4));
+  // round 39 (owner: "do B"): a sixth group in the middle, near zero (range and method band within ±0.5% of GDP)
+  rows.forEach(m => (m.nz = !!m.st && isNearZero(m.c, y, hq)));
+  const grp = m => (m.nz ? 2 : m.st === "unc" ? 3 : m.v >= 0 ? (m.st ? 1 : 0) : (m.st ? 4 : 5));
   const GROUP_LABEL = state.lens === "support"
-    ? ["Supported Ukraine", "Leaning: supported Ukraine", "Direction uncertain", "Leaning: below zero", "Below zero"]
-    : ["Toward Ukraine", "Leaning toward Ukraine", "Direction uncertain", "Leaning toward Russia", "Toward Russia"];
+    ? ["Supported Ukraine", "Leaning: supported Ukraine", "Near zero", "Direction uncertain", "Leaning: below zero", "Below zero"]
+    : ["Toward Ukraine", "Leaning toward Ukraine", "Near zero", "Direction uncertain", "Leaning toward Russia", "Toward Russia"];
   rows.sort((a, b) => grp(a) - grp(b) || b.v - a.v);
-  const groups = [0, 1, 2, 3, 4].map(g => rows.filter(m => grp(m) === g)).map((list, g) => ({ g, list })).filter(x => x.list.length);
-  groups.forEach(({ g, list }) => list.forEach((m, i) => (m.rank = g === 0 ? i + 1 : g === 4 ? list.length - i : null)));
+  const groups = [0, 1, 2, 3, 4, 5].map(g => rows.filter(m => grp(m) === g)).map((list, g) => ({ g, list })).filter(x => x.list.length);
+  groups.forEach(({ g, list }) => list.forEach((m, i) => (m.rank = g === 0 ? i + 1 : g === 5 ? list.length - i : null)));
   // one layout list: a heading line before each group, then its rows
   const lines = groups.flatMap(({ g, list }) => [{ head: g, n: list.length }, ...list]);
   const diverging = true;   // every view can go either way around zero
@@ -131,7 +133,7 @@ function renderRanking(root) {
       if (m.head != null) return `<text class="rk-gh rk-gh${m.head}" x="0" y="${y + 6}">${t(GROUP_LABEL[m.head])} · ${m.n}</text>`;
       const w = m.lo != null ? `<line class="whisk" x1="${x(m.lo)}" x2="${x(m.hi)}" y1="${y}" y2="${y}"/>` : `<line class="whisk" x1="${x(0)}" x2="${x(m.v)}" y1="${y}" y2="${y}" style="stroke:${col(m.v)};stroke-opacity:.35;stroke-width:6"/>`;
       const tag = m.st ? ` · ${stLabel[m.st]}` : "";
-      return `<g class="row${m.st ? " rk-" + m.st : ""}" tabindex="0" role="button" data-n="${m.c.n}" data-g="${grp(m)}" aria-label="${m.c.name}: ${verb(HEAD_LENS[state.lens], m.bn, m.c)}${tag}">
+      return `<g class="row${m.st ? " rk-" + m.st : ""}${m.nz ? " rk-nz" : ""}" tabindex="0" role="button" data-n="${m.c.n}" data-g="${grp(m)}" aria-label="${m.c.name}: ${verb(HEAD_LENS[state.lens], m.bn, m.c)}${tag}">
         <rect class="hit" x="0" y="${y - rowH / 2}" width="${W}" height="${rowH}" fill="transparent"/>
         <text class="lbl" x="${labelW - 10}" y="${y + 4}" text-anchor="end">${m.rank ? m.rank + ". " : ""}${fitName(m.c.name, narrowScreen ? 12 : 20)}<title>${m.c.name}${tag}</title></text>
         ${w}<circle class="dot" cx="${x(m.v)}" cy="${y}" r="5.5" fill="${col(m.v)}"/>

@@ -2,6 +2,17 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r39">Round 39: certainty, a visual How it works, five new money flows and better data <span class="cl-date">23 October</span></h2>
+<!-- flows: frozen coprofits flowback laund sold paid ref undisc -->
+
+The owner: "what has evidence should be counted as such, then on top we can add speculative".
+
+- **Certainty**: a number's chance of each direction is worked out by simulating its parts; a sixth ranking group, **near zero** (range and method band within ±0.5% of GDP, 35 countries); each panel that is not certain says why in one line.
+- **How it works** rebuilt around pictures: one country's sum, four rules, one euro, the no-war chart, how sure a number is, the money flows as tiles, a glossary; the long texts one tap deeper.
+- **New money flows**: Russian private assets frozen abroad (Luxembourg +1.74% → +3.47%, Belgium +2.84% → +3.41%, Cyprus +1.34% → +2.14%); profits of companies in Russia and stakes in Russian oil and gas (Sweden +0.38, Finland +0.48, the UK +0.36, Germany +0.21; Hungary −0.39); the sanctions premium Russia pays (Belarus −0.82 with laundered oil, Uzbekistan −0.50, Kazakhstan −0.25, China −0.12); extra services sold to Ukraine (Poland −0.06).
+- **Laundered oil measured** for 21 fuel buyers from their own customs and the Russian share of crude at each origin; "not counted" is no longer a method-band alternative, "half charged" is (Mozambique −2.19% → −1.04%, Tanzania −1.95% → −1.04%, Nepal −1.67% → −2.25%, Mauritius −0.35% → −0.86%).
+- **Weak estimates replaced**: re-exports by product matching, Russia's import gap split by its own regions of origin, refugee budgets (Denmark −0.22, Sweden −0.12), Germany's 2026 undisclosed aid, Tajikistan's remittance split, four citations; raw trade data and download scripts in the repository, so the trade figures can be rebuilt.
+
 <h2 id="cl-r38">Round 38: leaning groups, Kiel reconciled, and much less text <span class="cl-date">23 October</span></h2>
 <!-- flows: aid mil ref -->
 

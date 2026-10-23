@@ -164,4 +164,4 @@ EUR 29bn of explicit replacement purchases, capped at the value given (the US 19
 Patriots, the UK's and Sweden's restocking). Each seller's flowback has four parts: its own aid spent at home (with its
 own replacement), other countries' and EU money spent there (with their replacement purchases), Ukraine's own arms
 purchases there, and aid spent there on energy, relief and rebuilding. `apply_money_ledger()` builds them. At the seller's net gain × genuinely extra, the US earns back
-EUR 2.02bn<!-- n:USA.uaBackEur -->, and its support for Ukraine is EUR 82.6bn<!-- n:USA.uaEur --> (0.32%<!-- n:USA.ua --> of GDP, refugee hosting included).
+EUR 2.08bn<!-- n:USA.uaBackEur -->, and its support for Ukraine is EUR 82.5bn<!-- n:USA.uaEur --> (0.32%<!-- n:USA.ua --> of GDP, refugee hosting included).

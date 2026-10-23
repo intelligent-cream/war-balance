@@ -14,7 +14,7 @@ const code = html.slice(html.indexOf("// ===== Model ====="), html.indexOf("func
 const D = JSON.parse(readFileSync(join(SITE, "data.json"), "utf8"));
 const det = JSON.parse(readFileSync(join(SITE, "detail.json"), "utf8"));
 const M = new Function("D", "t", `let YEARS = D.years, FRAC = D.frac, SRC = D.sources, META = D.meta; let DATA = {}, byIso = {}, INCLUDED = {};
-  ${code}; return { calc, normalise, methodBands, uncertain, leaning, grades, worldPaid, PARTY_TO_WAR, setData: (d, b) => { DATA = d; byIso = b; ALTS_READY = true; } };`)(D, s => s);
+  ${code}; return { calc, normalise, methodBands, uncertain, leaning, isNearZero, grades, worldPaid, PARTY_TO_WAR, setData: (d, b) => { DATA = d; byIso = b; ALTS_READY = true; } };`)(D, s => s);
 const data = {}, by = {};
 for (const [k, c] of Object.entries(D.countries)) { c.alts = det.alts[k] || {}; M.normalise(c); data[c.n] = c; by[k] = c; }
 M.setData(data, by);
@@ -34,7 +34,7 @@ for (const [k, c] of Object.entries(by)) {
     Object.assign(o, { [q]: r4(v * g), [q + "Lo"]: r4(lo * g), [q + "Hi"]: r4(hi * g), [q + "BandLo"]: r4(mb[q].lo * g), [q + "BandHi"]: r4(mb[q].hi * g),
       [q + "Eur"]: r4(v), [q + "Unc"]: M.uncertain(c, Y, q), [q + "SameSign"]: sameSign,
       // round 24b (owner): which way a number that is not certain leans ("ukraine", "russia", or null: uncertain direction)
-      [q + "Lean"]: M.leaning(c, Y, q) });
+      [q + "Lean"]: M.leaning(c, Y, q), [q + "Near"]: M.isNearZero(c, Y, q) });
   }
   Object.assign(o, { ua2025: r4(x25.uaBal * g), rus2025: r4(x25.rusBal * g), net2025: r4(x25.shift * g),
     refugees: r4(x.refugees), aidRef: r4((x.shiftParts.find(p => p.k === "ref") || { v: 0 }).v),
@@ -53,7 +53,7 @@ const big = Object.values(out.countries).filter(o => o.gdp >= 5);
 Object.assign(out.world, { nAll: Object.keys(out.countries).length, nBig: big.length,
   uncUa: big.filter(o => o.uaUnc).length, uncRus: big.filter(o => o.rusUnc).length, uncNet: big.filter(o => o.netUnc).length,
   // round 24b: of those, how many lean one way, and how many have an uncertain direction (a party to the war left out)
-  leanNet: big.filter(o => o.netUnc && o.netLean).length, dirUncNet: big.filter(o => o.netUnc && !o.netLean && !o.party).length,
+  leanNet: big.filter(o => o.netUnc && o.netLean).length, nearNet: big.filter(o => o.netUnc && o.netNear).length, dirUncNet: big.filter(o => o.netUnc && !o.netLean && !o.party).length,
   leanUa: big.filter(o => o.uaUnc && o.uaLean).length, leanRus: big.filter(o => o.rusUnc && o.rusLean).length,
   nSources: Object.keys(D.sources).length, nDocs: new Set(Object.values(D.sources).flatMap(s => (s.links || []).map(l => l.url))).size });
 process.stdout.write(JSON.stringify(out));

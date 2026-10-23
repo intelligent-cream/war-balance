@@ -56,3 +56,7 @@ About EUR 260bn of the Bank of Russia's reserves have been frozen since 28 Febru
 - Belgium's tax on Euroclear's Russian-asset income is already in its aid, so it is taken off first. The G7 loans repaid from this return are left out of donors' aid, so nothing is counted twice.
 
 Largest, 2022–2026: Belgium EUR 7.4bn (1.2% of GDP), France 5.0, Germany 3.2, Italy 1.9, the UK 1.8.
+
+### Russian private assets frozen
+
+Since round 39 the same line also counts **the return Russian private owners lost on assets frozen abroad**: sanctioned people's and firms' accounts and holdings, and Russian investors' securities blocked at Euroclear and Clearstream through Russia's sanctioned central depository. About EUR 18bn (10.5 to 26) over 2022 to August 2026, from the EU Commission, Belgium's Treasury, the UK's OFSI, Switzerland's SECO and the Bank of Russia's own statements. Only the financial part earns a return (not yachts, villas or art), at the same rates as the reserves. Every figure used excludes the central bank, so nothing is counted twice. The depositories' part is shared like the reserves; national freezes go to the country that froze them. Largest: Belgium +0.57% of GDP, Luxembourg +1.7%, Cyprus +0.6%. Money of Western investors blocked in Russia (type-C accounts) is not in it.
