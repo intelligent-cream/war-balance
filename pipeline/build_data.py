@@ -485,8 +485,42 @@ def load(path: Path) -> dict | None:
         path = path.with_name(path.stem + "_r14.json")
     if not path.exists():
         return None
-    # round 7 actuals first, then the round-11 assumptions backed by data
-    return apply_assumptions_r11(name, _actuals_r7(name, json.loads(path.read_text())))
+    # round 7 actuals first, then the round-11 assumptions backed by data, then round 39's replacements of weak estimates
+    return _r39_replace(name, apply_assumptions_r11(name, _actuals_r7(name, json.loads(path.read_text()))))
+
+
+def _r39_replace(name: str, d: dict) -> dict:
+    """Round 39 (owner: "fix that", sources audit): better inputs replace the weakest estimates, each file stating what
+    it replaces, in the same shape. Re-exports of Türkiye, Azerbaijan and Serbia by product matching (reexports_r39,
+    through refine.json's factor); the import gap Russia's customs show split by its own regions of origin, so less of it
+    goes to China and more to Western makers (import_gap_r39); refugee costs of Denmark, Sweden and Italy from their
+    budgets (refugees_budgets_r39); Germany's undisclosed aid in 2026 (deu_undisclosed_r39); Tajikistan's share of
+    remittances sent from Russia (remit_split_r39)."""
+    rd = lambda f: json.loads((GAPS / f).read_text())  # noqa: E731
+    if name == "refine.json":
+        hubs = rd("reexports_r39.json")["hubs"]
+        for h in ("TUR", "AZE", "SRB"):
+            eq = hubs[h]["refine_reexport_share_equivalent"]
+            d["reexport_share"][h] = {y: {b: v[b] for b in ("low", "central", "high")} for y, v in eq.items()}
+    elif name == "residual.json":
+        d["exports_to_rus_gap"]["countries"] = rd("import_gap_r39.json")["countries"]
+    elif name in ("refugees_net.json", "round4b.json"):
+        new = rd("refugees_budgets_r39.json")["countries"]
+        tgt = d["countries"] if name == "refugees_net.json" else d["refugees"]
+        for h in ("DNK", "SWE", "ITA"):
+            if h in tgt:
+                for y, v in new[h]["gross"].items():
+                    tgt[h]["gross" if name == "refugees_net.json" else y] = (
+                        tgt[h]["gross"] | {y: v} if name == "refugees_net.json" else {**tgt[h].get(y, {}), **v}
+                    )
+    elif name == "uncovered.json":
+        d["undisclosed_aid"]["countries"]["DEU"] = rd("deu_undisclosed_r39.json")["countries"]["DEU"]
+    elif name == "assumptions_r11_people.json":
+        new = next(p for p in rd("remit_split_r39.json")["proposals"] if p.get("country") == "TJK")
+        for p in d["proposals"]:
+            if p.get("item") == "remittance_russia_share" and p.get("country") == "TJK":
+                p["new"] = new["new"]
+    return d
 
 
 def iso_numeric(iso3: str) -> str | None:
