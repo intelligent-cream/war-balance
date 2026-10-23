@@ -88,13 +88,24 @@ function renderRanking(root) {
   const party = all.filter(m => PARTY_TO_WAR.has(m.c.iso3));
   const nod = y > 2021 ? all.filter(m => noDataAt(m.c, y)) : [];
   const rows = all.filter(m => !party.includes(m) && !nod.includes(m));
+  // Round 38 (owner, 23 October 2026: "we can create leaning groups"): the rows come in five groups, each under its own
+  // heading: a certain direction either way, leaning either way (at least a 65% chance), and uncertain. Only the certain
+  // groups are numbered: toward Ukraine from the top, toward Russia from the bottom (1 = furthest toward Russia)
   const status = m => (!hq || y <= 2021 || !uncertain(m.c, y, hq) ? "" : leaning(m.c, y, hq) ? "lean" : "unc");
   rows.forEach(m => (m.st = status(m)));
-  const nUnc = rows.filter(m => m.st).length;
+  const grp = m => (m.st === "unc" ? 2 : m.v >= 0 ? (m.st ? 1 : 0) : (m.st ? 3 : 4));
+  const GROUP_LABEL = state.lens === "support"
+    ? ["Supported Ukraine", "Leaning: supported Ukraine", "Direction uncertain", "Leaning: below zero", "Below zero"]
+    : ["Toward Ukraine", "Leaning toward Ukraine", "Direction uncertain", "Leaning toward Russia", "Toward Russia"];
+  rows.sort((a, b) => grp(a) - grp(b) || b.v - a.v);
+  const groups = [0, 1, 2, 3, 4].map(g => rows.filter(m => grp(m) === g)).map((list, g) => ({ g, list })).filter(x => x.list.length);
+  groups.forEach(({ g, list }) => list.forEach((m, i) => (m.rank = g === 0 ? i + 1 : g === 4 ? list.length - i : null)));
+  // one layout list: a heading line before each group, then its rows
+  const lines = groups.flatMap(({ g, list }) => [{ head: g, n: list.length }, ...list]);
   const diverging = true;   // every view can go either way around zero
   const narrowScreen = root.clientWidth < 600;
   const W = Math.min(1040, root.clientWidth - 32), rowH = 22, labelW = narrowScreen ? 112 : 170, valW = narrowScreen ? 58 : 76;
-  const top = 30, H = top + rows.length * rowH + 10;
+  const top = 30, H = top + lines.length * rowH + 10;
   const vals = rows.flatMap(m => [m.v, m.lo ?? m.v, m.hi ?? m.v]);
   // a compressed (symmetric-log) scale keeps small countries readable next to large totals; the range is clamped to the
   // 1st-99th percentile. Its axis says so (round 29: the ticks are not evenly spaced in value)
@@ -115,23 +126,24 @@ function renderRanking(root) {
   const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("{title}, {n} countries, ranked", { title, n: rows.length })}">
     <g class="grid">${ticks.map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="${top - 6}" y2="${H - 6}"/><text x="${x(t)}" y="${top - 12}" text-anchor="middle">${tick(t)}</text>`).join("")}</g>
     ${diverging ? `<line class="zero" x1="${x(0)}" x2="${x(0)}" y1="${top - 6}" y2="${H - 6}"/>` : ""}
-    ${rows.map((m, i) => {
+    ${lines.map((m, i) => {
       const y = top + i * rowH + rowH / 2;
+      if (m.head != null) return `<text class="rk-gh rk-gh${m.head}" x="0" y="${y + 6}">${t(GROUP_LABEL[m.head])} · ${m.n}</text>`;
       const w = m.lo != null ? `<line class="whisk" x1="${x(m.lo)}" x2="${x(m.hi)}" y1="${y}" y2="${y}"/>` : `<line class="whisk" x1="${x(0)}" x2="${x(m.v)}" y1="${y}" y2="${y}" style="stroke:${col(m.v)};stroke-opacity:.35;stroke-width:6"/>`;
       const tag = m.st ? ` · ${stLabel[m.st]}` : "";
-      return `<g class="row${m.st ? " rk-" + m.st : ""}" tabindex="0" role="button" data-n="${m.c.n}" aria-label="${m.c.name}: ${verb(HEAD_LENS[state.lens], m.bn, m.c)}${tag}">
+      return `<g class="row${m.st ? " rk-" + m.st : ""}" tabindex="0" role="button" data-n="${m.c.n}" data-g="${grp(m)}" aria-label="${m.c.name}: ${verb(HEAD_LENS[state.lens], m.bn, m.c)}${tag}">
         <rect class="hit" x="0" y="${y - rowH / 2}" width="${W}" height="${rowH}" fill="transparent"/>
-        <text class="lbl" x="${labelW - 10}" y="${y + 4}" text-anchor="end">${i + 1}. ${fitName(m.c.name, narrowScreen ? 12 : 20)}<title>${m.c.name}${tag}</title></text>
+        <text class="lbl" x="${labelW - 10}" y="${y + 4}" text-anchor="end">${m.rank ? m.rank + ". " : ""}${fitName(m.c.name, narrowScreen ? 12 : 20)}<title>${m.c.name}${tag}</title></text>
         ${w}<circle class="dot" cx="${x(m.v)}" cy="${y}" r="5.5" fill="${col(m.v)}"/>
-        <text x="${W}" y="${y + 4}" text-anchor="end" style="font-family:var(--font-data);font-size:12px;fill:var(--ink)">${m.st ? `<tspan class="rk-st">${stLabel[m.st]} </tspan>` : ""}${fmtMeasure(m.c, m.bn, state.measure, diverging, false)}</text>
+        <text x="${W}" y="${y + 4}" text-anchor="end" style="font-family:var(--font-data);font-size:12px;fill:var(--ink)">${fmtMeasure(m.c, m.bn, state.measure, diverging, false)}</text>
       </g>`;
     }).join("")}
   </svg>`;
   const tagNote = ts ? `<p class="rk-tags" role="status"><span>${t("Showing {n} countries tagged: {tags}.", { n: rows.length + party.length, tags: tagNames() })}</span> <button class="linkbtn tclear" data-tag-clear>${t("Clear tags")}</button></p>` : "";
   root.innerHTML = `<div class="view-inner">
-    ${tagNote}<p class="rk-key"><span class="rk-k rk-k-sure"></span>${t("certain direction")} <span class="rk-k rk-k-lean"></span>${t("leaning: at least a 65% chance of that direction")} <span class="rk-k rk-k-unc"></span>${t("uncertain: less")} · ${t("{n} of {all} not certain", { n: nUnc, all: rows.length })}</p>
+    ${tagNote}<p class="rk-key"><span class="rk-k rk-k-sure"></span>${t("certain")} <span class="rk-k rk-k-lean"></span>${t("leaning (≥65%)")} <span class="rk-k rk-k-unc"></span>${t("uncertain")}</p>
     <div class="chart">${svg}</div>
-    <p class="note-small">${t("The scale is compressed, so small and large countries both stay readable: equal steps on the axis are not equal amounts; the axis labels give the true values. Dot: middle estimate; line: likely range.")}</p>
+    <p class="note-small">${t("Compressed scale: the axis labels give the true values.")}</p>
     ${party.length ? chipGroup(party, t("Party to the war (with Russia), not ranked:"), "party") : ""}
   </div>`;
   wireRows(root, rows);

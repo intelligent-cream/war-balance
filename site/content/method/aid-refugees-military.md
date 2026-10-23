@@ -1,164 +1,103 @@
 # Aid, refugees, military support and flowback
 
-The Ukraine side of the ledger: government aid (Kiel Institute and, for the 190 countries outside its tracker, UN and government records), each EU member's share of EU-level aid, undisclosed military aid, private donations and the cost of hosting refugees. On the Russia side, weapons and troops sent to Russia. And in between, flowback: aid that returns to the donor's own economy as orders for its own industry. This page explains each, including the corrections that keep Russia's own money (loans repaid from frozen assets) out of donors' aid.
+The Ukraine side of the ledger: government aid, each EU member's share of EU-level aid, undisclosed military aid, private donations and the cost of hosting refugees. On the Russia side, weapons and troops sent to Russia. In between, flowback: aid that returns to the donor's own economy as orders for its own industry.
+
+Details for developers: [lead times, factors, sources and research files](https://github.com/intelligent-cream/war-balance/blob/main/docs/reference/method/aid-refugees-military.md).
 
 ## Aid
 
-**Military aid counts when delivered.** Kiel records military aid when it is allocated; much of it, above all what is bought from industry, arrives years later. Each Kiel military allocation row is counted as delivered evenly over a lead time from its start date: donor stocks 0.25 years, NATO's PURL 0.5, procurement in Ukraine (the "Danish model") 1, other procurement 3, and US USAI 4.5, set so that the model gives 57.6% of USAI delivered by March 2026 against the Department of Defense's 57% (Lead IG quarterly report, read via Militarnyi and Legis1). What was allocated but not yet delivered by 31 August 2026 comes off the aid (Germany 4.3bn, the US 10.2bn, Denmark 2.0bn; the EU's own military aid, mostly the EU Support Loan, by each member's EU share); Kiel's full allocation is the high end of support and the slow lead times the low end. Germany's own cash payments to March 2025 (EUR 15.07bn, federal list of 31 March 2025) exceed Kiel's German procurement allocations then (EUR 8.3bn), so for Germany the smaller (fast-delivery) cut is central. The money a donor spends at home (flowback "own") follows the same delivered share. Data: [`military_delivered.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/military_delivered.json), written by `pipeline/military_delivered.py` from the Kiel workbook; [notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/military_delivered-notes.md). The panel's aid card says how much was not yet delivered.
+Aid comes from the [Kiel Institute Ukraine Support Tracker](https://www.kielinstitut.de/research/topics/war-against-ukraine/ukraine-support-tracker/) (release of 8 October 2026, data to 31 August 2026): **allocations** (delivered or contracted), not pledges. For the 190 countries outside Kiel, UN and government records fill the gap; countries with no record anywhere get zero with a small upper bound.
 
-**Kiel's figure next to ours.** The panel shows Kiel's own figure for a country's aid next to the amount counted here, with the reasons they differ: donated weapons at their market value, loans at their gift value rather than their full amount, G7 loans repaid from Russian assets left out (Russia pays for them), and military aid counted when delivered. For example, the US: Kiel EUR 115bn, counted here 79.8bn; Germany 49.5bn and 25.9bn<!-- n:DEU.part_aid -->; the UK 22.8bn and 10.4bn; Poland 9.2bn and 2.95bn<!-- n:POL.part_aid -->. Kiel's tracker counts allocations at their face value and is the right source for what was promised and sent; the map asks what it was worth to Ukraine. <span class="incode">In the code: `kielLine()`</span>
+Four adjustments, which is why the map's figure differs from Kiel's (the panel shows both):
 
-Data: [`kiel.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/kiel.json) ([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/kiel-notes.md)), the [Kiel Institute Ukraine Support Tracker](https://www.kielinstitut.de/research/topics/war-against-ukraine/ukraine-support-tracker/), Release 31 (data 24 January 2022 to 31 August 2026), allocations by month, categories military, financial and humanitarian. Code: aid section of [build_data.py `build()`](https://github.com/intelligent-cream/war-balance/blob/main/pipeline/build_data.py). <span class="incode">In the code: `Allocations per Month`</span>
+- **Military aid counts when delivered.** Much of it, above all what is bought from industry, arrives years after it is allocated. Each allocation is spread over a lead time by channel (donor stocks 3 months, US procurement 4.5 years), calibrated to the Pentagon's 57% delivered by March 2026. Not yet delivered by August 2026: the US EUR 10.2bn, Germany 4.3bn. Kiel's full allocation is the high end.
+- **Donated weapons at market value**, not book value (below).
+- **Loans at their gift to Ukraine**, not their face value (below).
+- **G7 loans repaid from frozen Russian assets are left out**: Russia pays for them.
 
-- **Allocated, not pledged.** "Allocated" means delivered or contracted. Commitments not yet allocated are shown as `pledged_open` in "More details", not counted.
-- **Loans** count at their **economic value to Ukraine** in the net shift and at the **lender's cost** in the cost view (not shown on the site; in the full data download), both per loan item from measured rates and expected losses ([loans](#view=how&sec=m-loans); certainty C).
-- **ERA loans excluded.** G7 loans repaid from immobilised Russian assets (ERA: US 18.3, EU 18.1, Canada 3.3, UK 2.6, Japan 1.6 EUR bn) are Russia's money, not the donor's. They are taken out of the donor's years (in the year paid: US 2024, Japan 2026, UK 2025–2026, the others 2025), loans and financial category; [`check_data.py`](https://github.com/intelligent-cream/war-balance/blob/main/pipeline/check_data.py) check 5 verifies this. <span class="incode">In the code: `era_excluded` in `data.json`</span>
-- **Amounts without a month** (Italy 1.3bn) are spread over the years in proportion.
+From Kiel to the map, € billion, bilateral aid to August 2026 (each member's share of EU-level aid is a part of its own). "Other": countries outside Kiel and rounding.
 
-**Outside Kiel** (190 countries): [`aid_gaps.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/aid_gaps.json) ([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/aid_gaps-notes.md)) from the [UN OCHA Financial Tracking Service](https://fts.unocha.org/countries/234/summary/2026) and official statements. Largest: Saudi Arabia 0.37bn, UAE, Qatar, North Macedonia (military), Azerbaijan. 163 countries with no record anywhere get 0 with a small upper bound (0.002% of 2022 GDP, a judgement: [decisions](#view=how&sec=cl-r11)), so no one is assumed to have given nothing for certain. Check 2 verifies no country takes aid from both Kiel and the gap research.
+| Donor | Kiel | G7 loans Russia repays | Not yet delivered | Loans at gift value | Weapons at market value | Other | **Map** |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| United States | 115.38 | −18.34 | −10.20 | 0.00 | −7.01 | +0.01 | **79.84** |
+| Germany | 30.84 | 0.00 | −4.33 | −0.16 | −0.49 | 0.00 | **25.86** |
+| United Kingdom | 22.80 | −2.65 | −1.86 | −3.54 | −2.67 | +0.01 | **12.09** |
+| Canada | 14.85 | −3.26 | −1.31 | −3.48 | −0.18 | 0.00 | **6.62** |
+| Japan | 14.42 | −1.58 | −0.01 | −7.94 | −0.03 | +0.01 | **4.87** |
+| Denmark | 11.74 | 0.00 | −1.98 | −0.03 | −0.68 | +0.01 | **9.06** |
+| Norway | 11.53 | 0.00 | −2.04 | 0.00 | −1.06 | +0.01 | **8.44** |
+| Sweden | 11.33 | 0.00 | −2.04 | −0.26 | −2.44 | 0.00 | **6.59** |
+| Netherlands | 11.20 | 0.00 | −0.97 | −0.22 | −1.31 | −0.01 | **8.69** |
+| France | 7.91 | 0.00 | −1.48 | −0.57 | −1.59 | −0.01 | **4.26** |
+| Poland | 5.89 | 0.00 | −0.28 | −0.87 | −1.78 | −0.01 | **2.95** |
+| Italy | 4.31 | 0.00 | 0.00 | −0.18 | −0.75 | 0.00 | **3.38** |
+| **All countries** | 283.12 | −25.83 | −28.11 | −17.93 | −24.68 | +0.65 | **187.22** |
+
+Refugee hosting is not in Kiel's aid. For EU hosts, 2022–2025, Kiel's modelled cost (cited by the European Parliament's research service) is €163bn; the map counts €74bn: what governments actually spent (€79bn), minus what donors paid back and the host's gain on refugees' work. Kiel models about €10,800 per refugee-year; the budgets paid about €5,300. Spending per refugee differs widely: the Netherlands about €24,000 a year, Poland about €2,400.
 
 ### EU-level aid
 
-Aid from EU institutions (Commission, Council, EIB; Kiel's `EU_INST`) is split over the 27 members by their share of EU budget contributions, Kiel's own method, and shown as its own part, "Share of EU-level aid", with the same relative range as the member's aid. Check 1 verifies the members' shares add up to the EU total. <span class="incode">In the code: `eu_share`</span>
-
-**The 2026 EU Ukraine Support Loan** is guaranteed by 24 members, not Czechia, Hungary or Slovakia; their slice of the 2026 disbursements goes to the other 24 in proportion (`apply_audit()`, [notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/audit-notes.md) item 9; Czechia 1.90, Hungary 0.87, Slovakia 1.30 EUR bn instead of 2.06, 0.98 and 1.37).
-
-**The European Peace Facility (EPF) is not counted**. Kiel has not counted it since tracker version 16 ([kiel-notes.md](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/kiel-notes.md)): the EPF reimburses member states for weapons they gave Ukraine themselves, which are already in their own bilateral aid, so adding it would count them twice. It is not paid from the EU budget either: it is off-budget, funded by the member states by a GNI key, so it shifts who bears the cost of those weapons between members; the map does not model that shift ([limitations](#view=how&sec=limitations)). The panel says so, and gives the member's EU-level share at the same value as its bar (loans at their gift to Ukraine), with the face value beside it.
-
-**Grade of the adjusted aid**: Kiel's figure is reported (A), but the part on the map is adjusted by modelled factors (weapons at market value, loans as gifts). Its letter is A only where those adjustments are under 5% of it, B under 25%, else C. <span class="incode">In the code: `aidCert` in `calc()`</span>
+Aid from EU institutions is split over the 27 members by their share of the EU budget, Kiel's own method. The 2026 EU Support Loan is guaranteed by 24 members, so Czechia's, Hungary's and Slovakia's slices go to the other 24. The European Peace Facility is not counted: it reimburses members for weapons already in their own aid, so adding it would count them twice ([limitations](#view=how&sec=limitations)).
 
 ### Donated weapons at market value
 
-Donors value weapons from their stocks differently: the US at replacement cost until March 2023 and at depreciated book
-value after (GAO-24-106934: about USD 8.1bn overstated), the UK budget at replacement cost (National Audit Office: book
-value GBP 0.17bn against replacement GBP 2.7bn), Nordic and Baltic EU Peace Facility claims at 91–100% of the new price.
-The map counts the **value to Ukraine: what the equipment would fetch on the market**. Each Kiel row gets a factor
-(market value ÷ recorded value) by how it was valued and what it is (MiG-29 × 0.12, F-16 × 0.30, Patriot × 0.75, shells
-× 1.3 because their price doubled); new procurement keeps factor 1. Code: `apply_weapons_value()` stores yearly
-corrections, which `calc()` adds to aid in the shift toward Ukraine. **The cost view (in the full data download <span class="incode">In the code: `aid.weapons_mv`</span>
-only) keeps the recorded values**, closer to what the donor spent. Data: [`weapons_value.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/weapons_value.json)
-([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/weapons_value-notes.md)).
-
-Over 2022–2026 this lowers bilateral military aid by about 14% (EUR 177bn → 152bn): USA −7.0bn, UK −2.7, Sweden −2.4,
-Poland −1.8, France −1.6, Netherlands −1.3, Norway −1.1; Germany only −0.5 (mostly new procurement). The correction
-shrinks over time as aid moved from stocks to new production.
+Donors value weapons from their stocks very differently (the US at replacement cost until 2023, the UK at replacement cost far above book value). The map counts **what the equipment would fetch on the market**: old MiG-29s at a fraction of their recorded value, shells above it because their price doubled. This lowers bilateral military aid by about 14% (EUR 177bn → 152bn), most for the US, the UK and Sweden; Germany's mostly new purchases barely move.
 
 ### Loans at their economic value
 
-A loan that is repaid is worth less to Ukraine than a grant. Each loan and guarantee counts at its gift:
-cheaper interest, discounted at Ukraine's normal 2021 rate (6.7%), plus the default risk the lender really carries (the
-measured expected loss of its creditor class: 0 for the IMF and World Bank, for EU loans the provisioning rate the EU set for each loan (70% for the 2022 exceptional MFA and the repurposed EIB loans, 9% for the rest), the bilateral standstill
-for G7 and Paris Club lenders, about 95% for the 2026 Support Loan). The high end discounts at the promised war yield
-of the year of payout (38% in 2022, 40% in 2023, 15–24% after). Over
-2022–2026 face value EUR 96.5bn becomes about 55bn (likely 42 to 85). The full method, the measured rates,
-a worked example and the evidence are on the [loans page](#view=how&sec=m-loans). Code: [`loan_rates.py`](https://github.com/intelligent-cream/war-balance/blob/main/pipeline/loan_rates.py)
-and `apply_loans_value()`; data: [`loans_value.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/loans_value.json)
-([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/loans_value-notes.md)). The cost view (in the full data download only) uses the lender's cost: the same terms and
-losses at the lender's own funding rate ([loans](#view=how&sec=m-loans-the-cost-view)).
-
-**Multilateral lending** (IMF, World Bank, EBRD, CEB): only the rise over each institution's 2019–2021 own-risk lending
-counts (donor-guaranteed and trust-fund lending is already in Kiel), valued the same way and credited by shareholding,
-as its own part ([loans](#view=how&sec=m-loans-new-lending-by-the-imf-and-world-bank)). Biggest: US 0.28bn, Germany 0.13, Japan
-0.12, France 0.11, Italy 0.10, China 0.09.
-
-**ERA years**: the ERA loans (repaid from frozen Russian assets, left out) are removed in the years they were
-paid: the US in 2024, Japan in 2026, the UK 1.78bn in 2025 and the rest in 2026, the others in 2025; the UK's is coded
-as military in Kiel ([refresh_2026-notes.md](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/refresh_2026-notes.md)).
+A loan that is repaid is worth less than a grant. Each loan counts at its gift: cheaper interest plus the default risk the lender really carries. Over 2022–2026, EUR 96.5bn of loans at face value become about 55bn. The full method is on the [loans page](#view=how&sec=m-loans). New IMF, World Bank and EBRD lending counts only above pre-war levels, credited by shareholding.
 
 ## Undisclosed aid and private donations
 
-From [`uncovered.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/uncovered.json) ([notes §3–4](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/uncovered-notes.md)):
-
-- **Undisclosed military aid** beyond Kiel (certainty C–D): Germany's 2026 appropriations above what Kiel records (0 / 1.5 / 4.0), Italy's later classified decrees, France's 2024 gap, small Greek amounts. France's 2022–23 gap is not added, because Kiel uses France's official figure. Check 8 warns if undisclosed aid exceeds half of a country's Kiel military aid.
-- **Private donations**: national totals for 2022 (Germany DZI, UK DEC, Netherlands Giro555, Switzerland Zewo, US Candid), a GDP share elsewhere (Western donors 0.015%, Central and Eastern Europe 0.03%, Baltic states 0.06%; a judgement, [decisions](#view=how&sec=cl-r11)), falling to about 5–13% of the 2022 level later. Largest 2022–2026: US 2.6, Germany 1.3, UK 0.8 EUR bn.
+- **Undisclosed military aid** beyond Kiel (certainty C–D): Germany's 2026 appropriations above what Kiel records, Italy's classified decrees, France's 2024 gap.
+- **Private donations**: national totals for 2022 (Germany, UK, Netherlands, Switzerland, US), a share of GDP elsewhere (a judgement), falling sharply after 2022. Largest 2022–2026: the US EUR 2.6bn, Germany 1.3bn, the UK 0.8bn.
 
 ## Refugees
 
-**Hosting at actual spending, minus only the host's gain on refugees' work.** Hosting = what all levels of government actually spend on refugees from Ukraine, minus donor-paid shares, minus the host's **real gain on refugees' work**: refugees' wage bill × the host's net gain per euro of their wages in the industries they work in (taxes on production plus profit above a normal return, `net_gain_sellers.json`, × output per euro of labour cost, OECD STAN) × the genuinely extra share (0.5, range 0.3-0.8). Refugees' wages, and the taxes on them, are their own income, not the host's gain (the same reason remittances are not counted), so the taxes refugees pay are not taken off, and there is no floor. The industries are measured for the Netherlands (CBS) and ranked for Germany, Poland and Czechia (Bundesagentur für Arbeit, ZUS, MPSV); Ireland takes the OECD median margins (multinational profit booking). **Poland:** its own STAN margins give a gain per euro of wages five times Germany's, so the OECD median is used at central and Poland's own margins as the range end. Hosting 2022 to August 2026: Germany EUR 35.5bn<!-- n:DEU.part_ref -->, Poland 10.6bn<!-- n:POL.part_ref -->, Czechia 3.1bn. Data: [`refugees_gain.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/refugees_gain.json), [notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/refugees_gain-notes.md). The money spent hosting (rent, food, retail) flows back to the host (below), on the gross spending.
+Hosting refugees from Ukraine counts toward Ukraine at **what all levels of government actually spend on them**, minus what donors paid, minus the host's **real gain on refugees' work** (the extra profit and taxes on production their work creates). Refugees' own wages and the taxes on them are their income, not the host's gain, so they are not subtracted.
 
-Hosting refugees from Ukraine counts toward Ukraine. Sources, in order of preference:
-
-1. **Government budgets and audit offices** for 27 hosts ([`round4b.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/round4b.json) §2, [notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/round4b-notes.md)), applied by `apply_audit()`: gross public spending on Ukrainians per calendar year (US ORR and benefits, German federal budget and Bürgergeld, Polish Aid Fund, UK Homes for Ukraine, Dutch central government, Swiss lump sums and others).
-2. **Elsewhere**, [`refugees.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/refugees.json) ([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/refugees-notes.md)): person-years per calendar year (Eurostat `migr_asytpsm` monthly stocks for the EU and EFTA, UNHCR end-year counts with a ramp elsewhere, US and Canadian programme arrivals) × k × GDP per head, with k calibrated on the reported budgets (certainty C).
-3. **Donor-paid costs** are taken off the host ([`flowback2.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/flowback2.json) `refugee_donor_funding`): UN refugee plans and EU grants paid for part of the cost in Moldova and others. Moldova's `round4b.json` figures are already its own cost, net of donors. Check 11 verifies this for Moldova.
-
-4. **Refugees' taxes** ([`refugees_net.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/refugees_net.json), [notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/refugees_net-notes.md)) are measured (official revenue figures for Czechia, Poland, Lithuania and Moldova; Germany from official job counts × wages × tax rate; elsewhere modelled) and kept in the data, but not taken off the hosting cost: they are refugees' own income.
-5. **Poland**: the cost is refugee spending from the Aid Fund at BGK (PLN 11.3bn in 2022, 8.9bn in 2023, 8.1bn in 2024; NIK confirms 2022), not the Fund's total, which also pays for tasks outside Poland. Bulgaria and Croatia also have budget figures. These PLN figures are checked only against a press article, because the BGK and NIK pages block automated access ([verify_r11_aid-notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/verify_r11_aid-notes.md)), so Poland's refugee part is certainty C.
-
-6. **One definition for every host**: the cost to **all levels of government**. Germany's reported figure is federal spending and Poland's is the Aid Fund's refugee spending, so in 2022 each is scaled by the gap that broad all-government estimates show for that host: Germany against the OECD *International Migration Outlook 2022* first-year estimate (EUR 6.8bn, 1.24 × federal) and Kiel's estimate (1.53 ×); Poland against OECD (EUR 8.36bn, 3.47 × the Fund's PLN 11.3bn), Kiel (3.68 ×) and Poland's Council for Cooperation with Ukraine (3.81 ×). The central value is the reported figure × √(median ratio); the low end is the reported figure alone, the high end × the largest ratio. The OECD figures are as reported in the press ([Notes from Poland, 14 October 2022](https://notesfrompoland.com/2022/10/14/poland-to-spend-e8-4bn-supporting-ukraine-refugees-in-2022-highest-in-oecd/)); the OECD table itself blocks automated access (not verified). **The gap applies to 2022 only**: it is measured on 2022 alone, the OECD figure is a projection for 2022 with a fixed refugee population, and Poland ended most free accommodation and host payments in 2023. From 2023 Poland keeps the Aid Fund's reported refugee spending with its own range; Germany's central is the reported federal figure and its high end keeps the gap. Switzerland keeps a judgement (no broad estimate found); the modelled hosts keep their calibration. <span class="incode">In the code: `REFUGEE_SCOPE` in `build_data.py`; `REFUGEE_SCOPE_YEARS`; `SCOPE_IN_CENTRAL`</span>
-7. **Not on the aggressor side**. Russia is not on the map as a host: it is the aggressor, and the International Criminal Court issued arrest warrants on 17 March 2023 against Vladimir Putin and Maria Lvova-Belova for the war crime of unlawful deportation and transfer of children from occupied areas of Ukraine to Russia ([ICC press release](https://www.icc-cpi.int/news/situation-ukraine-icc-judges-issue-arrest-warrants-against-vladimir-vladimirovich-putin-and)); the UN Independent International Commission of Inquiry on Ukraine found in March 2026 that these deportations and forcible transfers are crimes against humanity ([UN News, 12 March 2026](https://news.un.org/en/story/2026/03/1167122)). UNHCR's counts for Russia rest on Russian data. No refugee cost of Russia's is in any file the map uses, and `check_data.py` checks that Russia has no entry. **Belarus** hosted Ukrainian refugees too (about EUR 0.1bn, certainty D), but it is a party to the war: the UN General Assembly "deplores the involvement of Belarus in this unlawful use of force against Ukraine" (resolution [ES-11/1](https://documents.un.org/api/symbol/access?s=A/RES/ES-11/1&l=en&t=pdf), 2 March 2022). Its cost is moved out of support for Ukraine and every total into a label ("hosted Ukrainian refugees (€0.1bn), not counted as support: co-belligerent"; `ref_excluded` in `data.json`). Many Ukrainians reached Belarus via Russia; UNHCR's inter-agency update of October 2022 says most refugees in Belarus transited Poland, Lithuania and Latvia and "an unknown number continue to arrive via Russia" ([ReliefWeb](https://reliefweb.int/report/belarus/regional-refugee-response-plan-ukraine-situation-inter-agency-operational-update-belarus-31-october-2022-enru)), so the decision rests on Belarus's role in the war, not on the route.
-
-8. **Actual cost on the map, a common cost in the method band**. Each host keeps what it actually spent. Because the same refugee is then worth EUR 0 to 20,000 a year depending on the host's welfare system, the method band adds "refugees at one common cost per person-year for every host": each year's total counted cost of all hosts over their person-years ([`refugees.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/refugees.json) `person_years`, 83 hosts; Belarus left out), EUR 5,780 per person-year in 2022, 3,693 in 2023, 2,180 in 2024, 1,322 in 2025 and 806 in January–August 2026 (`data.json` `meta`). Donor-paid shares stay off. The alternative counts in the "direction uncertain" test like every other one. <span class="incode">In the code: `refugee_common_cost()`, `calc(c, y, {refCommon: true})`</span>
-
-The panel also shows the latest refugee count. <span class="incode">In the code: `people.refugees`</span>
+- **Sources**: government budgets and audit offices for 27 hosts; elsewhere a model of refugee-years × a cost per person calibrated on those budgets (certainty C).
+- **One definition**: where a reported figure covers only part of government (Germany's federal budget, Poland's Aid Fund), 2022 is scaled up by the gap broad estimates (OECD, Kiel) show.
+- **Hosting 2022 to August 2026**: Germany EUR 35.5bn<!-- n:DEU.part_ref -->, Poland 10.6bn<!-- n:POL.part_ref -->, Czechia 3.1bn.
+- **Not the aggressor's side**: Russia is not credited as a host (the International Criminal Court's arrest warrants concern the deportation of Ukrainian children). Belarus's hosting (about EUR 0.1bn) is a label, not support: Belarus is a party to the war.
+- **The method band** shows refugees at one common cost per person for every host, since the same refugee is worth EUR 0 to 20,000 a year depending on the host's welfare system.
 
 ### Refugee spending flowing back
 
-Like weapons bought at home, money spent hosting refugees is spent in the host's own economy: rent, food, retail and other services. Only the host's real gain on it is subtracted, under the same rule as other money flowing back ([one rule](#view=how&sec=m-overview-one-rule-for-every-seller)): the host's net gain per euro (taxes on production plus profit above a normal return) in the industries refugees' money flows through × the genuinely extra share of civilian spending ([`value_kept.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/value_kept.json) `flowback_other`). Those industries are retail trade (STAN G47; all of G where G47 is missing), accommodation and food (I) and renting of real estate without owner-occupiers' imputed rent (L less L68A, where STAN publishes L68A); the mean of those the host reports ([`net_gain_sellers.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/net_gain_sellers.json) group `refugee_spending`; the OECD median outside STAN). The broad services group (I and GTNXL) is not used: it holds finance (Poland's net gain 33%) and ICT, where refugees spend little. Poland is the highest: its retail (29%) and accommodation and food (19%) keep a large operating surplus per unit of output, part of it the labour income of the self-employed that the correction for mixed income (self-employed × compensation per employee) does not fully take out; its rent without imputed rent is near zero (capital six times output). It is applied to the gross hosting spending and shown as "Refugee hosting spent in its own economy (rent, food, services)" among the money flowing back; it is not part of the money that reached Ukraine. Weighted over all hosts it is about 2.7% of the hosting cost (Germany 2.2%, the Netherlands 3.0%, Poland 7.3%); check 35 keeps it between 1% and 5%. <span class="incode">In the code: `refugee_flowback()`, `aid.refugee_back_f`</span>
+Money spent hosting refugees is spent in the host's own economy (rent, food, shops). Only the host's real gain on it is subtracted, under the [one rule](#view=how&sec=m-overview-one-rule-for-every-seller): about 2.7% of the hosting cost overall (Germany 2.2%, Poland 7.3%).
 
 ## Military support to Russia
 
-**North Korea.** Its full value 2022 to August 2026 is EUR 10.0bn (likely 6.8 to 18.6): low the Institute for National Security Strategy's (INSS, 16 March 2026) low end, central the INSS midpoint plus 2026, high the Korea Institute for Defense Analyses' (KIDA, April 2025) figure without the technology Russia gave North Korea, which is Russia's payment, not North Korea's delivery. Both studies are read through press reports (NK News, Korea Times, Kyiv Independent). Deliveries paid in kind count at the seller's gain; a method-band alternative counts only what was observed flowing back to Pyongyang (USD 0.5-1.5bn of fuel, food and weapons), which moves North Korea's net from about −11% to −32% of GDP. On the panel's two trade lines, the paid share of weapons sent to Russia is the seller's earning ("kept more from selling to Russia"), the unpaid share a gift. North Korea is a party to the war (its troops fought for Russia in the Kursk region from late 2024, which it confirmed in April 2025): its numbers are shown but it is not ranked. Data: [`north_korea_r24.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/north_korea_r24.json), [notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/north_korea_r24-notes.md).
+"Weapons and troops sent to Russia", always toward Russia:
 
-"Weapons and troops sent to Russia", always toward Russia, certainty D:
+- **North Korea**: shells, missiles and troops. Full value 2022 to August 2026 EUR 10.0bn (likely 6.8 to 18.6), from South Korean studies read through press reports; the volumes are confirmed by the sanctions monitoring team's report of May 2025 (MSMT/2025/1), which gives no prices.
+- **Iran**: Shahed drones and missiles under contract, about EUR 3.5bn.
+- **Belarus**: ammunition from army stocks.
+- **China**: only what is **not** in recorded trade (unrecorded military items, smuggled dual-use goods, services), EUR 0.17–0.33bn a year.
 
-- **North Korea**: shells, missiles and troops, from INSS munitions estimates, KIDA and others (central about EUR 9bn for August 2023 to December 2025; [other-notes.md](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/other-notes.md)); narrowed in [`narrow.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/narrow.json).
-- **Iran**: Shahed and missile contracts, about EUR 4bn ([`flowback2.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/flowback2.json) `military_to_russia`).
-- **Belarus**: own valuation of ammunition and equipment quantities.
-- **China**: only what is **not** in recorded trade ([`china_military.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/china_military.json), [notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/china_military-notes.md)): unrecorded finished military items (15% of their value), smuggled dual-use goods (3% of recorded) and intelligence, training and services: EUR 0.17–0.33bn a year (Monte Carlo 90%: 0.12–0.72). China's recorded dual-use exports (EUR 4.5–5.8bn a year on the Common High Priority list) are already in its sales to Russia and are shown only as a note. <span class="incode">In the code: `dual_use_note`</span>
+**Paid deliveries count as sales**: what Russia paid for, also in kind (technology, fuel, food), counts at the seller's net gain, like any sale; what it did not pay for counts in full. North Korea was largely paid in kind; about half its shells were old stock with no other use. A method-band alternative counts only what was seen flowing back to Pyongyang, which moves North Korea's net from about −11% to −32% of GDP. North Korea is a party to the war and not ranked.
 
-Most of these supplies are sales or barter paid for by Russia. **Paid deliveries count as sales.** What Russia paid for, also in kind (technology, components, fuel, food), counts at the seller's net gain × genuinely extra, like any sale to Russia; what it did not pay for counts in full as support ([`military_payment_r13.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/military_payment_r13.json), [notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/military_payment_r13-notes.md)). North Korea: paid (INSS: technology and components 80–96% of Russia's compensation); about half its shells were outdated stock with no other use, counted at 0.9 of their price; troops' pay in full. Iran: paid under contracts. Belarus: no payment found, in full. China's unrecorded part: sold by firms. The full-value series is kept for the method band. Volunteers for Ukraine and fighters for Russia are shown as counts, not money; belligerent-sourced counts are left out. <span class="incode">In the code: `people`</span>
-
-
-**Armed Russia.** The Russia panel has two named lists. "Russia kept more from trade" is the negative end of the map of Russia's earnings from trade, with each entry's main cause ("mostly the 2022 price spike on gas contracts" for Hungary, "mostly gold") and the note that fuel is fungible and that the figures reflect purchases, not a policy. "Armed Russia" lists the weapons, ammunition, drones, missiles and troops delivered to Russia **at their full value** (the `military_rus.alt` series): North Korea EUR 8.8bn, Iran 3.5bn, China 1.3bn and Belarus 1.3bn for 2022–August 2026, with what counts in the totals next to it (paid deliveries at the seller's net gain: Iran EUR 0.1bn). The list is information; the totals do not change. A country whose number is more than half weapons or troops sent to Russia (North Korea, Belarus, Iran) is on "Armed Russia" only, with a note under the first list.
+The Russia panel's list **"Armed Russia"** shows all deliveries at full value (North Korea EUR 8.8bn, Iran 3.5bn, China 1.3bn, Belarus 1.3bn); the totals do not change.
 
 ### Sources and values
 
-North Korea, Iran and Belarus are valued from several sources ([`military_rus_r6.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/military_rus_r6.json),
-[notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/military_rus_r6-notes.md)), at market value (what Russia pays its own industry):
-
 | supplier | 2022–Aug 2026, EUR bn (range) | certainty | main evidence |
 |---|---|---|---|
-| North Korea | 8.8 (3.3–17.6) | C | 6.5–15m shells (Ukrainian and South Korean intelligence, Open Source Centre container counts, the sanctions monitoring team), 150–280 KN-23 missiles, troops' pay |
-| Iran | 3.5 (1.5–5.5) | C | ready drones 2022–23, the Alabuga licence (leaked USD 1.75bn), over 400 ballistic missiles; nothing in 2026 |
-| Belarus | 1.3 (0.55–2.7) | D | ammunition from army stocks; components sold by companies are already in trade |
-| China | 1.3 (1.0–3.0) | D | unchanged (`china_military.json`) |
+| North Korea | 8.8 (3.3–17.6) | C | 6.5–15m shells, 150–280 missiles, troops' pay |
+| Iran | 3.5 (1.5–5.5) | C | drones 2022–23, the Alabuga licence, ballistic missiles |
+| Belarus | 1.3 (0.55–2.7) | D | ammunition from army stocks |
+| China | 1.3 (1.0–3.0) | D | unrecorded military items |
 
-North Korea's volumes are checked against a primary report: the Multilateral Sanctions Monitoring Team's
-MSMT/2025/1 (29 May 2025, UN document S/2025/340). It confirms the rounds, containers, missiles, artillery and troops,
-but gives no prices, so the value stays our judgement and the letter stays C
-([comparison](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/military_rus_r6-notes.md#checked-against-the-primary-report-round-12)).
+Volunteers for Ukraine and fighters for Russia are shown as counts, not money.
 
 ## Flowback
 
-Part of military aid comes back to the donor as orders for its own industry. Counting the full aid as a shift toward Ukraine while ignoring this would flatter big arms producers. Code: flowback section of `build()`; data: [`flowback.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/flowback.json) ([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/flowback-notes.md)) and [`flowback2.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/flowback2.json) ([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/flowback2-notes.md)).
-
-Each seller's flowback comes from the all-money ledger below: its own aid spent at home (with its own replacement purchases), other countries' and EU money spent there, Ukraine's own arms purchases there, aid spent there on energy, relief and rebuilding, and extra sales to Ukraine above the expected level ([trade.md](#view=how&sec=m-trade)). EU-level military aid is credited where Kiel's items say it was spent (`EU_ARMS_SLICE`): Sweden 28% (the Gripen contract), all other members together 3% (0–10%, split by the ASAP 2024 grants), and about 70% to Ukraine's own drone industry, which is no member's flowback; all of it is dated 2026, as in Kiel. Donors with no evidence (Albania, North Macedonia, Montenegro) use `OWN_SHARE_DEFAULT` (0% / 10% / 30%, certainty D).
-
-**They count at the seller's net gain × genuinely extra** ([one rule](#view=how&sec=m-overview-one-rule-for-every-seller)): weapons at the defence industries' gain, with a normal return of 5% a year above inflation plus the country's risk premium (US 0.051, Germany 0.051, OECD median 0.051), so the US earns back only a few percent of the money spent in its economy ([below](#view=how&sec=m-aid-refugees-military-the-all-money-ledger)). Replacing donated stock is defence spending, not income from Ukraine, and the rule reflects that: the US arms industry earns little above a normal return. Extra sales to Ukraine count at refining's and manufacturing's gain (Poland 0.68 × 0.116 + 0.32 × 0.066). They are subtracted from both the net shift and the cost. The "money flowing back" switch on the map (on by default, `state.netBack`) turns them off. Check 6 compares PURL paid with PURL received by the US.
+Part of aid comes back to the donor as orders for its own industry. Counting the full aid while ignoring this would flatter big arms producers. Each seller's flowback is its own aid spent at home (including replacing donated stock), other countries' aid spent there, Ukraine's own arms purchases there, aid spent there on energy and rebuilding, and extra sales to Ukraine. It counts at the **seller's net gain × genuinely extra**: arms makers earn little above a normal return, so the US earns back only a few percent of the money spent in its economy. The "money flowing back" switch on the map turns it off.
 
 ### Arms Ukraine bought abroad
 
-Weapons Ukraine bought from foreign sellers, with its own budget or donors' cash, are money flowing back to the seller
-too: the Czech ammunition initiative (paid by Germany, the Netherlands, Denmark and others; Czech export licences to
-Ukraine CZK 47–51bn a year in 2024–25), Bulgarian and Serbian shells via third countries, German money for Patriots from
-the US, Danish money for Swedish CV90s. Only sales not already in customs (sales to Ukraine) or in a donor's own-industry
-share count. These sales are part of the
-all-money ledger below and count at the seller's net gain × genuinely extra. Over 2022–2026 about EUR 21bn of sales: Czechia 5.7bn gross, Bulgaria 5.0, the US 4.1, Türkiye 1.5, Serbia 1.1. Code: `apply_ua_arms_purchases()`; data:
-[`ua_arms_purchases.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/ua_arms_purchases.json)
-([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/ua_arms_purchases-notes.md)).
-
+Weapons Ukraine bought from foreign sellers, with its own budget or donors' cash (the Czech ammunition initiative, Bulgarian and Serbian shells, Patriots from the US), are money flowing back to the seller too: about EUR 21bn over 2022–2026, Czechia 5.7bn gross, Bulgaria 5.0, the US 4.1.
 
 ### The all-money ledger
 
-Flowback comes from one ledger of all money that reached Ukraine ([`money_ledger.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/money_ledger.json),
-[notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/money_ledger-notes.md)): every one of Kiel's 5,587 allocations plus undisclosed aid,
-IMF/World Bank/EBRD/CEB money, private donations and Ukraine's own budget spent on arms abroad, EUR 437bn in all,
-assigned once to what it paid for and the economy where it was spent. Of the new money, EUR 220bn was spent in Ukraine
-(mostly pensions, social payments and salaries), 71bn in the payer's own economy, 69bn in other economies. Weapons
-given from donors' own stocks (EUR 72bn) are not new spending and earn nothing, unless the donor bought replacements:
-EUR 29bn of explicit replacement purchases, capped at the value given (the US 19.3bn at home, Poland's Abrams, German
-Patriots, the UK's and Sweden's restocking). Each seller's flowback has four parts: its own aid spent at home (with its
-own replacement), other countries' and EU money spent there (with their replacement purchases), Ukraine's own arms
-purchases there, and aid spent there on energy, relief and rebuilding. `apply_money_ledger()` builds them. At the seller's net gain × genuinely extra, the US earns back
-EUR 2.02bn<!-- n:USA.uaBackEur -->, and its support for Ukraine is EUR 82.6bn<!-- n:USA.uaEur --> (0.32%<!-- n:USA.ua --> of GDP, refugee hosting included).
+Flowback comes from one ledger of all money that reached Ukraine, EUR 437bn: every Kiel allocation, undisclosed aid, IMF and World Bank money, private donations and Ukraine's own arms purchases abroad, each assigned once to where it was spent. EUR 220bn was spent in Ukraine (mostly pensions, social payments and salaries), 71bn in the payer's own economy, 69bn elsewhere. Weapons given from stocks (EUR 72bn) earn nothing unless the donor bought replacements. The US earns back EUR 2.02bn<!-- n:USA.uaBackEur -->, and its support for Ukraine is EUR 82.6bn<!-- n:USA.uaEur --> (0.32%<!-- n:USA.ua --> of GDP).

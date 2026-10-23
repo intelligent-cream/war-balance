@@ -1,14 +1,14 @@
 # War Balance
 
-Where did each country's money move since the full-scale invasion: toward Ukraine or toward Russia? An interactive
-map of every country's support for Ukraine and Russia's earnings from trade with it (how much less, or more, Russia
-earned: taxes and profit above a normal return, not the full price, war-time prices included), each against what it
-would have done without the war, with sources, ranges and certainty for every number.
+War Balance has no connection to Follow the Money (ftm.nl / ftm.eu). During its first week the project was called “Follow the Money: Ukraine”; that name remains on early commits.
 
-**Website: https://warbalance.org/**
+An interactive map: did each country's money move toward Ukraine or toward Russia since 2022, against a world without
+the war? Every number has its sources, a range and a certainty letter.
 
-Status: **research preview**. The figures were compiled with AI assistance from public sources and have not yet been
-checked line by line by a person. Treat them as estimates and check the sources before quoting one.
+**Website: https://warbalance.org/** · Research preview: check the sources before quoting a figure
+([limitations](https://warbalance.org/#view=how&sec=limitations)).
+
+![The War Balance map: countries coloured by whether their money moved toward Ukraine (blue) or toward Russia (orange)](docs/screenshot.png)
 
 ## Documentation
 
@@ -17,12 +17,12 @@ Everything a reader needs is on the website, under **How it works**, written onc
 - [How it works](https://warbalance.org/#view=how): how to trace a number, the
   method, every money flow with its sources, and [the method in full](https://warbalance.org/#view=how&sec=method-full)
 - [Limitations](https://warbalance.org/#view=how&sec=limitations)
-- [Changelog](https://warbalance.org/#view=how&sec=changelog): every update,
-  what it changed and every decision behind it
+- [Changelog](https://warbalance.org/#view=how&sec=changelog): every update in short; the full record of every
+  decision is in [`docs/changelog-full.md`](docs/changelog-full.md)
 - [Download the data](https://warbalance.org/#view=how&sec=data): CSV and JSON
 
-The text behind those pages is in [`site/content/`](site/content/) (Markdown, rendered by the site). Edit it there;
-nothing else in the repository repeats it.
+The text behind those pages is in [`site/content/`](site/content/) (Markdown, rendered by the site); edit it there.
+Developer detail behind each method page is in [`docs/reference/method/`](docs/reference/method/).
 
 ## Repository
 
@@ -31,7 +31,7 @@ nothing else in the repository repeats it.
 | `site/` | the website: `index.html`, `views.js`, `views2.js`, `i18n/`, the data (`data.json`, `detail.json`) and `content/` (How it works) |
 | `pipeline/` | `build_data.py` turns the research files into `site/data.json` and `site/detail.json`; `check_data.py` runs the 44 checks; `tests/` holds the unit tests |
 | `research/2026-10/` | every input (JSON) with a notes file beside it: sources, retrieval dates and the reasoning behind each estimate |
-| `docs/reference/` | developer notes: [the pipeline](docs/reference/pipeline.md), [the research files](docs/reference/research-files.md), [the site](docs/reference/site.md) |
+| `docs/reference/` | developer notes: [the pipeline](docs/reference/pipeline.md), [the research files](docs/reference/research-files.md), [the site](docs/reference/site.md), and [each method page in full technical detail](docs/reference/method/) |
 
 Run it yourself:
 
@@ -43,10 +43,9 @@ uv run pytest -q                            # unit tests (pipeline/tests/)
 cd ../site && python3 -m http.server 8000   # open http://localhost:8000
 ```
 
-CI (`.github/workflows/checks.yml`) does the same on every push to `develop`, on pull requests and before every deploy:
-it fails if a fresh build differs from the committed `data.json` and `detail.json` (the build date aside), if any check
-fails or if a unit test fails, so commit the rebuilt files with any change to the research files or the pipeline. Details:
-[docs/reference/pipeline.md](docs/reference/pipeline.md).
+CI (`.github/workflows/checks.yml`) runs the build, the checks and the tests on every push and before every deploy; commit
+the rebuilt `data.json` and `detail.json` with any change to the research files or the pipeline
+([details](docs/reference/pipeline.md)).
 
 ## Corrections
 

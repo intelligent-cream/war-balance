@@ -24,7 +24,23 @@ flows (ids in `FLOWS`) the round changed, which fill each flow's "Changes to thi
 names its place in a method page (`trade.md#re-export-hubs`); its card shows that section as "Full method".
 
 Links inside the content use the site's own addresses (below), so they work on the site; on GitHub they do not.
-`pipeline/check_docs_numbers.py` checks every figure tagged `<!-- n:POL.rus -->` in `site/content/` against the model.
+`pipeline/check_docs_numbers.py` checks every figure tagged `<!-- n:POL.rus -->` in `site/content/` (and in `docs/`
+and the README) against the model.
+
+The site's text is written for readers. Developer detail lives here instead: the parameter-level version of each method
+page is in [`method/`](method/) (one file per page; each method page links to its own), and the full round-by-round
+history with every decision is [`docs/changelog-full.md`](../changelog-full.md). The site's changelog is a short
+summary with the same round ids (`cl-r13`). The content may use raw HTML: inline SVG diagrams (in a `<figure>` with no
+blank lines inside, colours as `style="fill:var(--ukr)"` so both themes work) pass through marked and DOMPurify.
+
+Known display notes (moved from the limitations page):
+
+- Links to research files from the map point to the `main` branch on GitHub, the published branch; a file added on a
+  branch opens only after it is merged.
+- Refugee ranges per year in `data.json` can have a low value above the middle one in a single year (35 cases, for
+  example the United States in 2026). The ranges are floored on running totals, so they are ordered for every period
+  the map shows, not for each year on its own ([pipeline.md](pipeline.md#datajson-in-brief)).
+- China's dual-use exports are shown in its panel as a note; they are already in its sales to Russia.
 
 ## Addresses
 
