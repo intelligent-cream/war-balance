@@ -1,0 +1,1203 @@
+{
+ "generated": "2026-10-23",
+ "round": 39,
+ "unit": "EUR bn, current prices, ECB annual USD/EUR as trade_full.json; 2026_JanAug not annualised",
+ "replaces": "reexports.json hubs.{TUR,AZE,SRB}: reexports_to_RUS, reexports_to_RUS_baseline_2019_2021, reexport_share_of_exports_to_RUS (same shape). Origin shares, margins, onward-Russian-goods fields stay. IMPORTANT: apply_reexports() multiplies these series by refine.json reexport_share[hub][y][b]/old; if the series are swapped, delete those three hubs from refine.json reexport_share (or set the factor to 1). Alternatively keep reexports.json and swap refine.json reexport_share.{TUR,AZE,SRB} for refine_reexport_share_equivalent (same effect, no code change). apply_residual() reads reexport_share_of_exports_to_RUS directly (without the refine factor) for the pro-rata gap moved to origins.",
+ "method": "Per HS6 product p (chapters as reexports.json), from the hub's own Comtrade report: XR = exports to Russia; M3 = imports from all partners minus Russia; XW = exports to all partners minus Russia. Base 2021 (2019 not pulled: quota). Matched increase m_p = max(0, min(dXR, dM3)) vs 2021. Weight w_p = 1 - XW/M3 in 2021 (clamped 0-1; a product the hub already exported to the rest of the world counts as home production). Re-exports_y = sum w_p m_p + pre-war level sum w_p min(XR_2021, M3_2021). Low uses w_p^2 (both parts); high = max(level capacity sum min(XR_y, max(0, M3_y - XW_y)), central x1.3) = most foreign content the hub's own imports allow. 2026 Jan-Aug = 2025 share of exports to Russia x trade_full Jan-Aug 2026, range x0.8/x1.2. HS2021->HS2022 code changes between 2021 (H5) and 2022+ (H6) are treated as new/lost codes (min of both sides, small).",
+ "hubs": {
+  "TUR": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 1.0138,
+     "central": 1.3528,
+     "high": 2.3821
+    },
+    "2023": {
+     "low": 1.3235,
+     "central": 1.7958,
+     "high": 3.3282
+    },
+    "2024": {
+     "low": 0.9001,
+     "central": 1.24,
+     "high": 2.3057
+    },
+    "2025": {
+     "low": 0.734,
+     "central": 1.0113,
+     "high": 1.7264
+    },
+    "2026_JanAug": {
+     "low": 0.3433,
+     "central": 0.5913,
+     "high": 1.2116
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.2743,
+    "central": 0.408,
+    "high": 0.7478
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.1143,
+     "central": 0.1525,
+     "high": 0.2685
+    },
+    "2023": {
+     "low": 0.1312,
+     "central": 0.178,
+     "high": 0.33
+    },
+    "2024": {
+     "low": 0.1138,
+     "central": 0.1568,
+     "high": 0.2915
+    },
+    "2025": {
+     "low": 0.1233,
+     "central": 0.1699,
+     "high": 0.2901
+    }
+   },
+   "refine_reexport_share_equivalent": {
+    "2022": {
+     "low": 0.6191,
+     "central": 0.3947,
+     "high": 0.4434,
+     "old": 0.4,
+     "weighted_share_of_increase_in_exports_to_RUS": 0.383
+    },
+    "2023": {
+     "low": 0.5397,
+     "central": 0.3553,
+     "high": 0.4261,
+     "old": 0.4,
+     "weighted_share_of_increase_in_exports_to_RUS": 0.346
+    },
+    "2024": {
+     "low": 0.5724,
+     "central": 0.376,
+     "high": 0.446,
+     "old": 0.4,
+     "weighted_share_of_increase_in_exports_to_RUS": 0.367
+    },
+    "2025": {
+     "low": 0.8413,
+     "central": 0.5358,
+     "high": 0.567,
+     "old": 0.4,
+     "weighted_share_of_increase_in_exports_to_RUS": 0.915
+    },
+    "2026": {
+     "low": 0.9879,
+     "central": 0.5363,
+     "high": 0.4846,
+     "old": 0.4,
+     "note": "no Comtrade HS data for 2026; 2025 share x trade_full Jan-Aug 2026, range widened"
+    }
+   },
+   "comparison_eur_bn": {
+    "2022": {
+     "old_reexports_json": 1.371,
+     "old_effective_with_refine": 1.1619,
+     "new": 1.3528,
+     "old_share_of_exports_to_RUS": 0.155,
+     "new_share": 0.1525
+    },
+    "2023": {
+     "old_reexports_json": 2.022,
+     "old_effective_with_refine": 1.5569,
+     "new": 1.7958,
+     "old_share_of_exports_to_RUS": 0.2,
+     "new_share": 0.178
+    },
+    "2024": {
+     "old_reexports_json": 1.319,
+     "old_effective_with_refine": 1.0057,
+     "new": 1.24,
+     "old_share_of_exports_to_RUS": 0.167,
+     "new_share": 0.1568
+    },
+    "2025": {
+     "old_reexports_json": 0.755,
+     "old_effective_with_refine": 0.6719,
+     "new": 1.0113,
+     "old_share_of_exports_to_RUS": 0.127,
+     "new_share": 0.1699
+    }
+   },
+   "certainty": "C (was D): HS6 product matching on the hub's own customs data; no official re-export flag",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API (no key; max 500 rows and 1 period per call; rate-limited), reporter 792, partners 0 and 643, flows M and X, 3,891 HS6 codes of chapters 28-40, 42-43, 61-70, 73, 82-96 in 36 batches per year, 2021-2025",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=792&period=2023&partnerCode=0,643&flowCode=M,X&cmdCode=<110 HS6 codes>&partner2Code=0&customsCode=C00&motCode=0",
+     "date": "2026-10-23"
+    },
+    {
+     "name": "HS6 code list: Comtrade reference HS.json",
+     "url": "https://comtradeapi.un.org/files/v1/app/reference/HS.json",
+     "date": "2026-10-23"
+    }
+   ]
+  },
+  "AZE": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 0.049,
+     "central": 0.0559,
+     "high": 0.0858
+    },
+    "2023": {
+     "low": 0.0673,
+     "central": 0.0772,
+     "high": 0.1097
+    },
+    "2024": {
+     "low": 0.0892,
+     "central": 0.0975,
+     "high": 0.1267
+    },
+    "2025": {
+     "low": 0.0691,
+     "central": 0.0773,
+     "high": 0.1006
+    },
+    "2026_JanAug": {
+     "low": 0.0377,
+     "central": 0.0527,
+     "high": 0.0823
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.0241,
+    "central": 0.0298,
+    "high": 0.0315
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.0529,
+     "central": 0.0603,
+     "high": 0.0926
+    },
+    "2023": {
+     "low": 0.0608,
+     "central": 0.0698,
+     "high": 0.0991
+    },
+    "2024": {
+     "low": 0.0819,
+     "central": 0.0896,
+     "high": 0.1164
+    },
+    "2025": {
+     "low": 0.066,
+     "central": 0.0738,
+     "high": 0.096
+    }
+   },
+   "refine_reexport_share_equivalent": {
+    "2022": {
+     "low": 0.4594,
+     "central": 0.3301,
+     "high": 0.3575,
+     "old": 0.75,
+     "weighted_share_of_increase_in_exports_to_RUS": null
+    },
+    "2023": {
+     "low": 0.4807,
+     "central": 0.313,
+     "high": 0.2706,
+     "old": 0.75,
+     "weighted_share_of_increase_in_exports_to_RUS": 0.446
+    },
+    "2024": {
+     "low": 0.6027,
+     "central": 0.3789,
+     "high": 0.3277,
+     "old": 0.75,
+     "weighted_share_of_increase_in_exports_to_RUS": 0.82
+    },
+    "2025": {
+     "low": 0.4627,
+     "central": 0.3134,
+     "high": 0.297,
+     "old": 0.75,
+     "weighted_share_of_increase_in_exports_to_RUS": 0.961
+    },
+    "2026": {
+     "low": 0.5437,
+     "central": 0.3137,
+     "high": 0.2551,
+     "old": 0.75,
+     "note": "no Comtrade HS data for 2026; 2025 share x trade_full Jan-Aug 2026, range widened"
+    }
+   },
+   "comparison_eur_bn": {
+    "2022": {
+     "old_reexports_json": 0.127,
+     "old_effective_with_refine": 0.0708,
+     "new": 0.0559,
+     "old_share_of_exports_to_RUS": 0.137,
+     "new_share": 0.0603
+    },
+    "2023": {
+     "old_reexports_json": 0.185,
+     "old_effective_with_refine": 0.0932,
+     "new": 0.0772,
+     "old_share_of_exports_to_RUS": 0.167,
+     "new_share": 0.0698
+    },
+    "2024": {
+     "old_reexports_json": 0.193,
+     "old_effective_with_refine": 0.1101,
+     "new": 0.0975,
+     "old_share_of_exports_to_RUS": 0.177,
+     "new_share": 0.0896
+    },
+    "2025": {
+     "old_reexports_json": 0.185,
+     "old_effective_with_refine": 0.089,
+     "new": 0.0773,
+     "old_share_of_exports_to_RUS": 0.177,
+     "new_share": 0.0738
+    }
+   },
+   "certainty": "C (was D): HS6 product matching on the hub's own customs data; no official re-export flag",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API (no key; max 500 rows and 1 period per call; rate-limited), reporter 31, partners 0 and 643, flows M and X, 3,891 HS6 codes of chapters 28-40, 42-43, 61-70, 73, 82-96 in 36 batches per year, 2021-2025",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=31&period=2023&partnerCode=0,643&flowCode=M,X&cmdCode=<110 HS6 codes>&partner2Code=0&customsCode=C00&motCode=0",
+     "date": "2026-10-23"
+    },
+    {
+     "name": "HS6 code list: Comtrade reference HS.json",
+     "url": "https://comtradeapi.un.org/files/v1/app/reference/HS.json",
+     "date": "2026-10-23"
+    }
+   ]
+  },
+  "SRB": {
+   "reexports_to_RUS": {
+    "2022": {
+     "low": 0.2032,
+     "central": 0.2455,
+     "high": 0.3191
+    },
+    "2023": {
+     "low": 0.1855,
+     "central": 0.2376,
+     "high": 0.3089
+    },
+    "2024": {
+     "low": 0.14,
+     "central": 0.1865,
+     "high": 0.2517
+    },
+    "2025": {
+     "low": 0.1235,
+     "central": 0.1637,
+     "high": 0.2128
+    },
+    "2026_JanAug": {
+     "low": 0.0597,
+     "central": 0.0989,
+     "high": 0.1544
+    }
+   },
+   "reexports_to_RUS_baseline_2019_2021": {
+    "low": 0.0682,
+    "central": 0.0969,
+    "high": 0.1523
+   },
+   "reexport_share_of_exports_to_RUS": {
+    "2022": {
+     "low": 0.1791,
+     "central": 0.2164,
+     "high": 0.2813
+    },
+    "2023": {
+     "low": 0.1679,
+     "central": 0.215,
+     "high": 0.2795
+    },
+    "2024": {
+     "low": 0.1575,
+     "central": 0.2098,
+     "high": 0.2832
+    },
+    "2025": {
+     "low": 0.1639,
+     "central": 0.2172,
+     "high": 0.2824
+    }
+   },
+   "refine_reexport_share_equivalent": {
+    "2022": {
+     "low": 1.0035,
+     "central": 0.5611,
+     "high": 0.3964,
+     "old": 0.4,
+     "weighted_share_of_increase_in_exports_to_RUS": 0.772
+    },
+    "2023": {
+     "low": 0.8065,
+     "central": 0.4824,
+     "high": 0.3432,
+     "old": 0.4,
+     "weighted_share_of_increase_in_exports_to_RUS": 0.628
+    },
+    "2024": {
+     "low": 0.875,
+     "central": 0.5329,
+     "high": 0.3872,
+     "old": 0.4,
+     "weighted_share_of_increase_in_exports_to_RUS": 2.099
+    },
+    "2025": {
+     "low": 0.9686,
+     "central": 0.5744,
+     "high": 0.3978,
+     "old": 0.4,
+     "weighted_share_of_increase_in_exports_to_RUS": null
+    },
+    "2026": {
+     "low": 1.1371,
+     "central": 0.5733,
+     "high": 0.3357,
+     "old": 0.4,
+     "note": "no Comtrade HS data for 2026; 2025 share x trade_full Jan-Aug 2026, range widened"
+    }
+   },
+   "comparison_eur_bn": {
+    "2022": {
+     "old_reexports_json": 0.175,
+     "old_effective_with_refine": 0.1973,
+     "new": 0.2455,
+     "old_share_of_exports_to_RUS": 0.154,
+     "new_share": 0.2164
+    },
+    "2023": {
+     "old_reexports_json": 0.197,
+     "old_effective_with_refine": 0.1803,
+     "new": 0.2376,
+     "old_share_of_exports_to_RUS": 0.178,
+     "new_share": 0.215
+    },
+    "2024": {
+     "old_reexports_json": 0.14,
+     "old_effective_with_refine": 0.1491,
+     "new": 0.1865,
+     "old_share_of_exports_to_RUS": 0.157,
+     "new_share": 0.2098
+    },
+    "2025": {
+     "old_reexports_json": 0.114,
+     "old_effective_with_refine": 0.1362,
+     "new": 0.1637,
+     "old_share_of_exports_to_RUS": 0.151,
+     "new_share": 0.2172
+    }
+   },
+   "certainty": "C (was D): HS6 product matching on the hub's own customs data; no official re-export flag",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview API (no key; max 500 rows and 1 period per call; rate-limited), reporter 688, partners 0 and 643, flows M and X, 3,891 HS6 codes of chapters 28-40, 42-43, 61-70, 73, 82-96 in 36 batches per year, 2021-2025",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=688&period=2023&partnerCode=0,643&flowCode=M,X&cmdCode=<110 HS6 codes>&partner2Code=0&customsCode=C00&motCode=0",
+     "date": "2026-10-23"
+    },
+    {
+     "name": "HS6 code list: Comtrade reference HS.json",
+     "url": "https://comtradeapi.un.org/files/v1/app/reference/HS.json",
+     "date": "2026-10-23"
+    }
+   ]
+  }
+ },
+ "effect_eur_bn": {
+  "TUR": {
+   "old_effective_2022_2026": 4.789,
+   "new_2022_2026": 5.991,
+   "change": 1.202
+  },
+  "AZE": {
+   "old_effective_2022_2026": 0.424,
+   "new_2022_2026": 0.361,
+   "change": -0.063
+  },
+  "SRB": {
+   "old_effective_2022_2026": 0.745,
+   "new_2022_2026": 0.932,
+   "change": 0.187
+  }
+ },
+ "diagnostics": {
+  "TUR": {
+   "base_batches": 36,
+   "base_class": {
+    "H5": 9178
+   },
+   "baseline_level_usd_bn": 0.8845,
+   "baseline_weighted_usd_bn": 0.4826,
+   "baseline_weighted_sq_usd_bn": 0.3244,
+   "base_mfg_exports_to_RUS_usd_bn": 3.3901,
+   "years": {
+    "2022": {
+     "batches": 36,
+     "mfg_exports_to_RUS_usd_bn": 5.8475,
+     "increase_mfg_exports_to_RUS_usd_bn": 2.4574,
+     "hs2_match_usd_bn": 2.4984,
+     "hs6_match_unweighted_usd_bn": 2.182,
+     "hs6_match_weighted_usd_bn": 0.9419,
+     "hs6_match_weighted_sq_usd_bn": 0.7432,
+     "hs6_match_any_netimport_usd_bn": 1.3995,
+     "level_capacity_usd_bn": 2.5084,
+     "share_vs_hs2": {
+      "low": 0.297,
+      "central": 0.377,
+      "high": 0.56
+     },
+     "weighted_share_of_increase": 0.383,
+     "top_codes": [
+      [
+       "340250",
+       0.0256,
+       1.0,
+       0.0256,
+       0.2438
+      ],
+      [
+       "382499",
+       0.0176,
+       0.73,
+       0.0376,
+       0.8532
+      ],
+      [
+       "340319",
+       0.0161,
+       0.86,
+       0.0195,
+       0.1013
+      ],
+      [
+       "382370",
+       0.0155,
+       0.93,
+       0.0167,
+       0.0443
+      ],
+      [
+       "851762",
+       0.0153,
+       0.95,
+       0.0163,
+       1.4456
+      ],
+      [
+       "320890",
+       0.0151,
+       0.54,
+       0.034,
+       0.301
+      ],
+      [
+       "842123",
+       0.0145,
+       0.33,
+       0.0493,
+       0.2201
+      ],
+      [
+       "853710",
+       0.0131,
+       0.69,
+       0.029,
+       1.3273
+      ],
+      [
+       "350691",
+       0.0124,
+       0.58,
+       0.0369,
+       0.2107
+      ],
+      [
+       "844399",
+       0.0124,
+       0.85,
+       0.0148,
+       0.1889
+      ],
+      [
+       "321519",
+       0.0113,
+       0.46,
+       0.0347,
+       0.1178
+      ],
+      [
+       "340239",
+       0.0113,
+       1.0,
+       0.0113,
+       0.0591
+      ],
+      [
+       "841989",
+       0.0112,
+       0.66,
+       0.0199,
+       0.3762
+      ],
+      [
+       "284700",
+       0.0112,
+       0.57,
+       0.0195,
+       0.0398
+      ],
+      [
+       "842951",
+       0.011,
+       0.83,
+       0.0133,
+       0.209
+      ]
+     ]
+    },
+    "2023": {
+     "batches": 36,
+     "mfg_exports_to_RUS_usd_bn": 7.6127,
+     "increase_mfg_exports_to_RUS_usd_bn": 4.2226,
+     "hs2_match_usd_bn": 3.8809,
+     "hs6_match_unweighted_usd_bn": 3.9699,
+     "hs6_match_weighted_usd_bn": 1.4591,
+     "hs6_match_weighted_sq_usd_bn": 1.1067,
+     "hs6_match_any_netimport_usd_bn": 2.3139,
+     "level_capacity_usd_bn": 3.5987,
+     "share_vs_hs2": {
+      "low": 0.285,
+      "central": 0.376,
+      "high": 0.596
+     },
+     "weighted_share_of_increase": 0.346,
+     "top_codes": [
+      [
+       "340250",
+       0.0433,
+       1.0,
+       0.0433,
+       0.2672
+      ],
+      [
+       "853710",
+       0.0348,
+       0.69,
+       0.0605,
+       1.6303
+      ],
+      [
+       "871690",
+       0.0318,
+       0.46,
+       0.08,
+       0.3283
+      ],
+      [
+       "845811",
+       0.03,
+       0.89,
+       0.034,
+       0.3881
+      ],
+      [
+       "320890",
+       0.0278,
+       0.54,
+       0.0576,
+       0.3224
+      ],
+      [
+       "382499",
+       0.0265,
+       0.73,
+       0.0498,
+       0.8661
+      ],
+      [
+       "845710",
+       0.0217,
+       0.96,
+       0.0244,
+       0.645
+      ],
+      [
+       "842123",
+       0.0209,
+       0.33,
+       0.0687,
+       0.2805
+      ],
+      [
+       "620140",
+       0.0189,
+       1.0,
+       0.0189,
+       0.2123
+      ],
+      [
+       "850440",
+       0.0173,
+       0.87,
+       0.0232,
+       1.5679
+      ],
+      [
+       "321519",
+       0.0169,
+       0.46,
+       0.0385,
+       0.132
+      ],
+      [
+       "846261",
+       0.0164,
+       1.0,
+       0.0164,
+       0.0171
+      ],
+      [
+       "340319",
+       0.016,
+       0.86,
+       0.0193,
+       0.112
+      ],
+      [
+       "847330",
+       0.0159,
+       0.86,
+       0.0186,
+       0.2154
+      ],
+      [
+       "851762",
+       0.015,
+       0.95,
+       0.0159,
+       1.7845
+      ]
+     ]
+    },
+    "2024": {
+     "batches": 36,
+     "mfg_exports_to_RUS_usd_bn": 5.7318,
+     "increase_mfg_exports_to_RUS_usd_bn": 2.3417,
+     "hs2_match_usd_bn": 2.154,
+     "hs6_match_unweighted_usd_bn": 2.2625,
+     "hs6_match_weighted_usd_bn": 0.8595,
+     "hs6_match_weighted_sq_usd_bn": 0.6498,
+     "hs6_match_any_netimport_usd_bn": 1.3588,
+     "level_capacity_usd_bn": 2.4956,
+     "share_vs_hs2": {
+      "low": 0.302,
+      "central": 0.399,
+      "high": 0.631
+     },
+     "weighted_share_of_increase": 0.367,
+     "top_codes": [
+      [
+       "340250",
+       0.0432,
+       1.0,
+       0.0432,
+       0.2147
+      ],
+      [
+       "390931",
+       0.0227,
+       0.82,
+       0.057,
+       0.5089
+      ],
+      [
+       "853710",
+       0.0179,
+       0.69,
+       0.0359,
+       1.67
+      ],
+      [
+       "320890",
+       0.0154,
+       0.54,
+       0.0344,
+       0.3011
+      ],
+      [
+       "846219",
+       0.0135,
+       1.0,
+       0.0135,
+       0.0196
+      ],
+      [
+       "382499",
+       0.0129,
+       0.73,
+       0.0312,
+       0.8463
+      ],
+      [
+       "350691",
+       0.0128,
+       0.58,
+       0.0383,
+       0.204
+      ],
+      [
+       "340242",
+       0.0121,
+       1.0,
+       0.0121,
+       0.249
+      ],
+      [
+       "340319",
+       0.0119,
+       0.86,
+       0.0146,
+       0.1114
+      ],
+      [
+       "870830",
+       0.0116,
+       0.32,
+       0.0773,
+       0.6488
+      ],
+      [
+       "846223",
+       0.0108,
+       1.0,
+       0.0108,
+       0.0118
+      ],
+      [
+       "841480",
+       0.0108,
+       0.46,
+       0.0429,
+       0.3132
+      ],
+      [
+       "382219",
+       0.0107,
+       1.0,
+       0.0107,
+       0.2981
+      ],
+      [
+       "620140",
+       0.0107,
+       1.0,
+       0.0107,
+       0.2177
+      ],
+      [
+       "321519",
+       0.0103,
+       0.46,
+       0.024,
+       0.117
+      ]
+     ]
+    },
+    "2025": {
+     "batches": 36,
+     "mfg_exports_to_RUS_usd_bn": 4.1116,
+     "increase_mfg_exports_to_RUS_usd_bn": 0.7215,
+     "hs2_match_usd_bn": 0.9435,
+     "hs6_match_unweighted_usd_bn": 1.5159,
+     "hs6_match_weighted_usd_bn": 0.6602,
+     "hs6_match_weighted_sq_usd_bn": 0.505,
+     "hs6_match_any_netimport_usd_bn": 1.0251,
+     "level_capacity_usd_bn": 1.9508,
+     "share_vs_hs2": {
+      "low": 0.535,
+      "central": 0.7,
+      "high": 1.086
+     },
+     "weighted_share_of_increase": 0.915,
+     "top_codes": [
+      [
+       "340250",
+       0.0373,
+       1.0,
+       0.0373,
+       0.1885
+      ],
+      [
+       "390931",
+       0.0298,
+       0.82,
+       0.0448,
+       0.5175
+      ],
+      [
+       "330210",
+       0.0151,
+       0.68,
+       0.0443,
+       0.3933
+      ],
+      [
+       "381190",
+       0.0145,
+       0.93,
+       0.0156,
+       0.0797
+      ],
+      [
+       "320890",
+       0.0137,
+       0.54,
+       0.0313,
+       0.3116
+      ],
+      [
+       "400122",
+       0.0127,
+       0.99,
+       0.0137,
+       0.4548
+      ],
+      [
+       "350691",
+       0.012,
+       0.58,
+       0.0362,
+       0.2091
+      ],
+      [
+       "382499",
+       0.0119,
+       0.73,
+       0.0297,
+       0.922
+      ],
+      [
+       "340242",
+       0.0112,
+       1.0,
+       0.0112,
+       0.2587
+      ],
+      [
+       "870830",
+       0.0107,
+       0.32,
+       0.0745,
+       0.7044
+      ],
+      [
+       "321519",
+       0.0104,
+       0.46,
+       0.0243,
+       0.1212
+      ],
+      [
+       "350790",
+       0.0098,
+       0.72,
+       0.0137,
+       0.2048
+      ],
+      [
+       "620140",
+       0.0094,
+       1.0,
+       0.0094,
+       0.2095
+      ],
+      [
+       "330290",
+       0.0093,
+       0.55,
+       0.0179,
+       0.2654
+      ],
+      [
+       "853710",
+       0.0091,
+       0.69,
+       0.0231,
+       1.9389
+      ]
+     ]
+    }
+   }
+  },
+  "AZE": {
+   "base_batches": 36,
+   "base_class": {
+    "H5": 6163
+   },
+   "baseline_level_usd_bn": 0.0373,
+   "baseline_weighted_usd_bn": 0.0353,
+   "baseline_weighted_sq_usd_bn": 0.0285,
+   "base_mfg_exports_to_RUS_usd_bn": 0.259,
+   "years": {
+    "2022": {
+     "batches": 36,
+     "mfg_exports_to_RUS_usd_bn": 0.2407,
+     "increase_mfg_exports_to_RUS_usd_bn": -0.0183,
+     "hs2_match_usd_bn": 0.0368,
+     "hs6_match_unweighted_usd_bn": 0.0254,
+     "hs6_match_weighted_usd_bn": 0.0236,
+     "hs6_match_weighted_sq_usd_bn": 0.0231,
+     "hs6_match_any_netimport_usd_bn": 0.0247,
+     "level_capacity_usd_bn": 0.0903,
+     "share_vs_hs2": {
+      "low": 0.629,
+      "central": 0.641,
+      "high": 0.673
+     },
+     "weighted_share_of_increase": null,
+     "top_codes": [
+      [
+       "847130",
+       0.0053,
+       1.0,
+       0.0097,
+       0.0853
+      ]
+     ]
+    },
+    "2023": {
+     "batches": 36,
+     "mfg_exports_to_RUS_usd_bn": 0.3671,
+     "increase_mfg_exports_to_RUS_usd_bn": 0.1081,
+     "hs2_match_usd_bn": 0.1286,
+     "hs6_match_unweighted_usd_bn": 0.0678,
+     "hs6_match_weighted_usd_bn": 0.0482,
+     "hs6_match_weighted_sq_usd_bn": 0.0443,
+     "hs6_match_any_netimport_usd_bn": 0.0609,
+     "level_capacity_usd_bn": 0.1186,
+     "share_vs_hs2": {
+      "low": 0.345,
+      "central": 0.375,
+      "high": 0.474
+     },
+     "weighted_share_of_increase": 0.446,
+     "top_codes": [
+      [
+       "381121",
+       0.0108,
+       1.0,
+       0.0108,
+       0.0132
+      ],
+      [
+       "847130",
+       0.0059,
+       1.0,
+       0.0071,
+       0.086
+      ]
+     ]
+    },
+    "2024": {
+     "batches": 36,
+     "mfg_exports_to_RUS_usd_bn": 0.3447,
+     "increase_mfg_exports_to_RUS_usd_bn": 0.0857,
+     "hs2_match_usd_bn": 0.1153,
+     "hs6_match_unweighted_usd_bn": 0.0917,
+     "hs6_match_weighted_usd_bn": 0.0702,
+     "hs6_match_weighted_sq_usd_bn": 0.068,
+     "hs6_match_any_netimport_usd_bn": 0.0772,
+     "level_capacity_usd_bn": 0.1356,
+     "share_vs_hs2": {
+      "low": 0.59,
+      "central": 0.609,
+      "high": 0.67
+     },
+     "weighted_share_of_increase": 0.82,
+     "top_codes": [
+      [
+       "381121",
+       0.0233,
+       1.0,
+       0.024,
+       0.0254
+      ],
+      [
+       "830990",
+       0.0139,
+       1.0,
+       0.0139,
+       0.0243
+      ]
+     ]
+    },
+    "2025": {
+     "batches": 36,
+     "mfg_exports_to_RUS_usd_bn": 0.3133,
+     "increase_mfg_exports_to_RUS_usd_bn": 0.0543,
+     "hs2_match_usd_bn": 0.0794,
+     "hs6_match_unweighted_usd_bn": 0.067,
+     "hs6_match_weighted_usd_bn": 0.0521,
+     "hs6_match_weighted_sq_usd_bn": 0.0496,
+     "hs6_match_any_netimport_usd_bn": 0.06,
+     "level_capacity_usd_bn": 0.1092,
+     "share_vs_hs2": {
+      "low": 0.625,
+      "central": 0.657,
+      "high": 0.755
+     },
+     "weighted_share_of_increase": 0.961,
+     "top_codes": [
+      [
+       "381121",
+       0.015,
+       1.0,
+       0.015,
+       0.0198
+      ],
+      [
+       "830990",
+       0.0138,
+       1.0,
+       0.0157,
+       0.0238
+      ]
+     ]
+    }
+   }
+  },
+  "SRB": {
+   "base_batches": 36,
+   "base_class": {
+    "H5": 7191
+   },
+   "baseline_level_usd_bn": 0.1801,
+   "baseline_weighted_usd_bn": 0.1146,
+   "baseline_weighted_sq_usd_bn": 0.0807,
+   "base_mfg_exports_to_RUS_usd_bn": 0.5597,
+   "years": {
+    "2022": {
+     "batches": 36,
+     "mfg_exports_to_RUS_usd_bn": 0.7461,
+     "increase_mfg_exports_to_RUS_usd_bn": 0.1864,
+     "hs2_match_usd_bn": 0.2236,
+     "hs6_match_unweighted_usd_bn": 0.2003,
+     "hs6_match_weighted_usd_bn": 0.1439,
+     "hs6_match_weighted_sq_usd_bn": 0.1333,
+     "hs6_match_any_netimport_usd_bn": 0.1648,
+     "level_capacity_usd_bn": 0.3237,
+     "share_vs_hs2": {
+      "low": 0.596,
+      "central": 0.644,
+      "high": 0.737
+     },
+     "weighted_share_of_increase": 0.772,
+     "top_codes": [
+      [
+       "340250",
+       0.0435,
+       1.0,
+       0.0435,
+       0.086
+      ],
+      [
+       "851713",
+       0.0361,
+       1.0,
+       0.0361,
+       0.2785
+      ]
+     ]
+    },
+    "2023": {
+     "batches": 36,
+     "mfg_exports_to_RUS_usd_bn": 0.7862,
+     "increase_mfg_exports_to_RUS_usd_bn": 0.2265,
+     "hs2_match_usd_bn": 0.2889,
+     "hs6_match_unweighted_usd_bn": 0.2546,
+     "hs6_match_weighted_usd_bn": 0.1423,
+     "hs6_match_weighted_sq_usd_bn": 0.1199,
+     "hs6_match_any_netimport_usd_bn": 0.1875,
+     "level_capacity_usd_bn": 0.3312,
+     "share_vs_hs2": {
+      "low": 0.415,
+      "central": 0.493,
+      "high": 0.649
+     },
+     "weighted_share_of_increase": 0.628,
+     "top_codes": [
+      [
+       "340250",
+       0.0195,
+       1.0,
+       0.0195,
+       0.0991
+      ],
+      [
+       "842121",
+       0.0075,
+       0.9,
+       0.0104,
+       0.0277
+      ]
+     ]
+    },
+    "2024": {
+     "batches": 36,
+     "mfg_exports_to_RUS_usd_bn": 0.6012,
+     "increase_mfg_exports_to_RUS_usd_bn": 0.0416,
+     "hs2_match_usd_bn": 0.1568,
+     "hs6_match_unweighted_usd_bn": 0.1788,
+     "hs6_match_weighted_usd_bn": 0.0873,
+     "hs6_match_weighted_sq_usd_bn": 0.0708,
+     "hs6_match_any_netimport_usd_bn": 0.1258,
+     "level_capacity_usd_bn": 0.2724,
+     "share_vs_hs2": {
+      "low": 0.452,
+      "central": 0.557,
+      "high": 0.802
+     },
+     "weighted_share_of_increase": 2.099,
+     "top_codes": []
+    },
+    "2025": {
+     "batches": 36,
+     "mfg_exports_to_RUS_usd_bn": 0.5167,
+     "increase_mfg_exports_to_RUS_usd_bn": -0.043,
+     "hs2_match_usd_bn": 0.1278,
+     "hs6_match_unweighted_usd_bn": 0.1283,
+     "hs6_match_weighted_usd_bn": 0.0704,
+     "hs6_match_weighted_sq_usd_bn": 0.0588,
+     "hs6_match_any_netimport_usd_bn": 0.0968,
+     "level_capacity_usd_bn": 0.2198,
+     "share_vs_hs2": {
+      "low": 0.46,
+      "central": 0.55,
+      "high": 0.757
+     },
+     "weighted_share_of_increase": null,
+     "top_codes": [
+      [
+       "382219",
+       0.0051,
+       1.0,
+       0.0051,
+       0.078
+      ]
+     ]
+    }
+   }
+  }
+ }
+}

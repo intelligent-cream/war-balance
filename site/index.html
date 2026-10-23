@@ -1299,7 +1299,7 @@ const PARTY_WHY = {
 const RUS_PART = p => !UA_PARTS.has(p.k) && !OWN_LINE.has(p.k);
 // round 24b: the parts of business with Russia that are the country's own earning from Russia (the "earned" line); the
 // rest is what it paid Russia. Weapons sent to Russia are split by their paid share in calc()
-const LINE_EARNED = new Set(["sold", "svcsold", "ship", "agents"]);
+const LINE_EARNED = new Set(["sold", "svcsold", "ship", "agents", "coprofits", "lngpartners"]);
 // Round 13 (audit): parts that share inputs are correlated too, not only expected trade. EU-level aid takes the
 // country's own aid range by construction (1); aid and its own flowback move together, so their errors offset in the
 // total (-0.5, judgement); parts weighted by Russia's net-gain shares share them (0.5, judgement); flowback parts weighted
@@ -1917,7 +1917,7 @@ const PART_DOC = {
   aid: "aid-refugees-military.md#aid", aidge: "loans.md#the-cost-view", euaid: "aid-refugees-military.md#eu-level-aid",
   ref: "aid-refugees-military.md#refugees", buy: "overview.md#the-net-gain-rule", paid: "overview.md#the-net-gain-rule",
   windfall: "prices.md#war-time-windfall", laund: "energy-and-laundered-oil.md#laundered-oil", sold: "trade.md#profit-not-revenue",
-  tax: "services-shipping-companies.md#company-taxes", mil: "aid-refugees-military.md#military-support-to-russia",
+  tax: "services-shipping-companies.md#company-taxes", coprofits: "services-shipping-companies.md#company-taxes", lngpartners: "services-shipping-companies.md#company-taxes", mil: "aid-refugees-military.md#military-support-to-russia",
   svcpaid: "services-shipping-companies.md#services", svcsold: "services-shipping-companies.md#services", ship: "services-shipping-companies.md#shipping",
   hidden: "trade.md#gold-and-hidden-channels", undisc: "aid-refugees-military.md#undisclosed-aid-and-private-donations", priv: "aid-refugees-military.md#undisclosed-aid-and-private-donations",
   statefin: "russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia", rusarms: "russia-state-and-companies.md#weapons-bought-from-russia",
@@ -1952,6 +1952,7 @@ const FLOWS = [
   {"id": "shipping", "name": "Shipping Russian oil", "what": "Income from shipping and insuring Russian oil, counted for the country that really controls the tankers, at the shippers' and insurers' net gain.", "parts": ["ship"], "method": "services-shipping-companies.md#shipping", "files": ["gaps/shipping-notes.md", "gaps/net_gain_sellers-notes.md", "gaps/shadow_fleet_r6-notes.md", "gaps/shadow_fleet-notes.md"]},
   {"id": "companytax", "name": "Company taxes in Russia", "what": "Taxes that foreign-owned companies still pay in Russia: profit tax plus half of other taxes.", "parts": ["tax"], "method": "services-shipping-companies.md#company-taxes", "files": ["companies-notes.md", "gaps/companies_all-notes.md", "gaps/company_taxes_r6-notes.md", "gaps/round4a-notes.md", "gaps/trend2-notes.md"], "src": ["companies"]},
   {"id": "exits", "name": "Companies leaving Russia (not in the totals)", "what": "The forced discount and the exit fee Russia took from companies that sold their Russian business: not in the totals, shown as a marker.", "parts": [], "costParts": ["exits"], "method": "russia-state-and-companies.md#companies-leaving-russia", "files": ["gaps/company_flows-notes.md"]},
+  {"id": "coprofits", "name": "Company profits in Russia", "what": "What owners from this country earned from their companies in Russia, and from stakes in Russian oil and gas projects, against the level expected without the war.", "parts": ["coprofits", "lngpartners"], "method": "services-shipping-companies.md#company-taxes", "files": ["gaps/company_profits_r39-notes.md"]},
   {"id": "rusfirms", "name": "Russian-owned companies abroad", "what": "Profits that Russian-owned companies in this country send to their Russian owners.", "parts": ["rusfirms"], "method": "russia-state-and-companies.md#russian-owned-companies-abroad", "files": ["gaps/company_flows-notes.md", "gaps/russian_owned_r10-notes.md"]},
   {"id": "frozen", "name": "Russian money frozen", "what": "The return Russia lost on its central-bank reserves and on Russian private assets frozen in this country. Not a payment: on its own line, added to the net only, not to Russia's earnings from trade.", "parts": ["frozen", "frozen_priv"], "method": "russia-state-and-companies.md#frozen-central-bank-reserves", "files": ["gaps/frozen_assets-notes.md", "gaps/private_frozen_r39-notes.md"]},
   {"id": "seized", "name": "Assets seized by Russia (not in the totals)", "what": "Company assets Russia seized (temporary management by decree, expropriation, court seizures, leased aircraft kept), at the owners' write-downs, by the company's home country: not in the totals, shown as a marker.", "parts": [], "costParts": ["seized"], "method": "russia-state-and-companies.md#assets-seized-by-russia", "files": ["gaps/company_flows-notes.md"]},
@@ -2023,7 +2024,7 @@ const FLOW_GROUPS = [
   // round 24b (audit 24, D M1; approved by the owner): business with Russia in its two lines. Services (bought and sold)
   // and weapons sent to Russia (given and sold) count on both; each is listed once, where most of it is
   ["Russia's earnings from trade: what Russia kept", ["paid", "windfall", "laund", "services", "companytax", "rusfirms", "statefin", "rusarms", "gold"]],
-  ["Russia's earnings from trade: what the country kept from selling to Russia", ["sold", "shipping", "agents", "mil"]],
+  ["Russia's earnings from trade: what the country kept from selling to Russia", ["sold", "shipping", "agents", "coprofits", "mil"]],
   ["Russian money frozen", ["frozen", "frozen_priv"]],
   ["Not in the totals", ["energy", "exits", "seized", "remit", "markers"]],
 ];
@@ -2222,7 +2223,7 @@ function changelogHtml(c) {
 const FLOW_WORDS = { aid: ["aid to ukraine", "military aid", "aid "], loans: ["loan"], euaid: ["eu aid", "eu-level"], undisc: ["undisclosed"], priv: ["private donation"],
   ref: ["refugee"], buy: ["purchases from ukraine"], flowback: ["flowing back", "flowback", "own economy"], paid: ["paid russia", "purchases from russia", "less paid", "fuel and goods", "gas"],
   windfall: ["windfall", "war-time price", "war-time fuel"], laund: ["laundered", "refined"], sold: ["sales to russia", "sold to russia", "earned"], services: ["services", "tourism"],
-  shipping: ["shipping", "tanker"], companytax: ["company tax", "taxes paid in russia"], mil: ["weapons", "north korea", "troops"], frozen: ["frozen"], gold: ["gold", "hidden"] };
+  shipping: ["shipping", "tanker"], companytax: ["company tax", "taxes paid in russia"], coprofits: ["company profits", "profits in russia", "lng"], mil: ["weapons", "north korea", "troops"], frozen: ["frozen"], gold: ["gold", "hidden"] };
 function flowDecisions(r, flow) {
   const f = flowById(flow), words = (FLOW_WORDS[flow] || []).concat(f ? [f.name.toLowerCase()] : []);
   return (r.decisions || []).filter(d => words.some(w => d.text.toLowerCase().includes(w)));
@@ -3242,17 +3243,17 @@ const SITE_URL = "https://warbalance.org/", OLD_URLS = ["https://intelligent-cre
 // sales) are "earned from Russia", not "more paid". Round 15 (review 4, H2; approved by the owner): whenever one part is
 // more than half of the number, in either direction, it is named with its amount ("mostly the 2022 war-time price spike
 // (€9.9bn of €11.6bn; its volumes barely changed)"), and so is gas Russia cut off itself when it is at least 40% of it
-const EARNED_PARTS = new Set(["mil", "sold", "svcsold", "ship", "agents"]);
+const EARNED_PARTS = new Set(["mil", "sold", "svcsold", "ship", "agents", "coprofits", "lngpartners"]);
 const LESS_MOSTLY = { frozen: "mostly the return Russia lost on its frozen reserves", frozen_priv: "mostly the return lost on frozen Russian private assets", laund: "mostly less Russian crude in fuel bought from refiners elsewhere",
   windfall: "mostly paying Russia less than no-war prices", tax: "mostly less tax paid in Russia by companies", sold: "mostly sales to Russia given up",
   svcpaid: "mostly less paid for Russian services", svcsold: "mostly services to Russia given up", ship: "mostly less income from shipping Russian oil",
   hidden: "mostly less gold and hidden payments", rusarms: "mostly fewer Russian weapons bought", statefin: "mostly fewer payments for Russian nuclear projects and loans",
-  rusfirms: "mostly less profit sent to Russian owners" };
+  rusfirms: "mostly less profit sent to Russian owners", coprofits: "mostly less profit made by its companies in Russia", lngpartners: "mostly less income from Russian oil and gas projects" };
 const MORE_MOSTLY = { paid: "mostly more bought from Russia", windfall: "mostly the war-time fuel price spike", laund: "mostly Russian crude in fuel bought from refiners elsewhere",
   tax: "mostly more tax paid in Russia by companies", sold: "mostly earnings from sales to Russia", svcpaid: "mostly more paid for Russian services",
   svcsold: "mostly earnings from services sold to Russia", ship: "mostly income from shipping and insuring Russian oil", hidden: "mostly gold and hidden payments",
   mil: "mostly weapons and troops sent to Russia", rusarms: "mostly more Russian weapons bought", statefin: "mostly payments for Russian nuclear projects and loans",
-  rusfirms: "mostly profits sent to Russian owners", agents: "mostly fees for settling Russia's trade" };
+  rusfirms: "mostly profits sent to Russian owners", agents: "mostly fees for settling Russia's trade", coprofits: "mostly profits its companies made in Russia", lngpartners: "mostly income from Russian oil and gas projects" };
 // the net's largest part, named the same way (support parts too)
 const NET_MOSTLY = { frozen: "mostly the return Russia lost on its frozen reserves", frozen_priv: "mostly the return lost on frozen Russian private assets", aid: "mostly aid to Ukraine", euaid: "mostly its share of EU-level aid", ref: "mostly hosting refugees", undisc: "mostly undisclosed military aid", multilat: "mostly its share of IMF and World Bank lending" };
 // the one part that is more than half of a total (same sign), or null
@@ -3288,7 +3289,7 @@ function driverText(c, k, top, total, lang, isNet) {
 const CAUSE = { paid: "more bought from Russia", windfall: "war-time fuel prices", laund: "Russian crude in fuel bought from refiners elsewhere",
   tax: "taxes its companies pay in Russia", sold: "sales to Russia", svcpaid: "Russian services bought", svcsold: "services sold to Russia",
   ship: "shipping and insuring Russian oil", hidden: "gold and hidden payments", mil: "weapons and troops sent to Russia",
-  rusarms: "Russian weapons bought", statefin: "Russian nuclear projects and loans", rusfirms: "profits sent to Russian owners", agents: "fees for settling Russia's trade" };
+  rusarms: "Russian weapons bought", statefin: "Russian nuclear projects and loans", rusfirms: "profits sent to Russian owners", agents: "fees for settling Russia's trade", coprofits: "profits its companies made in Russia", lngpartners: "income from Russian oil and gas projects" };
 function gainCause(c, k) {
   const neg = k.shiftParts.filter(p => RUS_PART(p) && p.v < 0).sort((a, b) => a.v - b.v), top = neg[0];
   if (!top) return "";
@@ -3615,7 +3616,7 @@ const PLAIN = {
   svcsold: v => (v >= 0 ? "{c} kept less from services sold to Russia" : "{c} kept more from services sold to Russia"),
   ship: v => (v >= 0 ? "{c} kept less from shipping Russian oil" : "{c} kept more from shipping Russian oil"),
   hidden: v => (v >= 0 ? "Russia kept less from gold and hidden payments" : "Russia kept more from gold and hidden payments"),
-  undisc: "Undisclosed military aid", priv: "Private donations", frozen: "Russia lost returns on its frozen money", frozen_priv: "Russian owners lost returns on assets frozen here",
+  undisc: "Undisclosed military aid", priv: "Private donations", frozen: "Russia lost returns on its frozen money", frozen_priv: "Russian owners lost returns on assets frozen here", coprofits: "{c}'s companies made less profit in Russia", lngpartners: "{c} earned less from Russian oil and gas stakes",
   multilat: "Its share of IMF and World Bank loans",
   rusfirms: v => (v >= 0 ? "Russian owners kept less from their firms here" : "Russian owners kept more from their firms here"),
   statefin: v => (v >= 0 ? "Russia kept less from its nuclear projects and loans" : "Russia kept more from its nuclear projects and loans"),
@@ -3649,6 +3650,7 @@ const HOW = {
   services: "Services bought from and sold to Russia (transport, business services, tourism), against the pre-war level, at the seller's net gain: the same rule as goods.",
   shipping: "Income from carrying, insuring and financing Russia's seaborne oil and gas, counted for the country of the owner, manager, insurer or lender (never the flag), at their net gain.",
   companytax: "Taxes that foreign-owned companies still pay in Russia (profit tax plus half of other taxes), from KSE Institute and B4Ukraine reports, against the pre-war level.",
+  coprofits: "Profits after Russian tax of companies from this country in Russia, from KSE Institute and OECD data: dividends that reached home in full, profit trapped in Russia at a third of its value; firms that sold out only above a normal return on the sale price. Plus income from stakes in Russian oil and gas projects.",
   exits: "When companies sold their Russian business, Russia took a forced discount and an exit fee. This is not in the totals: it is shown as a marker.",
   rusfirms: "Profits that Russian-owned companies abroad (refineries, banks, plants) send to their Russian owners, against 2019–2021. Mostly estimates (certainty D).",
   frozen: "The return Russia lost on its central-bank reserves frozen in the country (most of them at Euroclear in Belgium). It is not a payment, so it is a line of its own, added to the net only.",
@@ -3678,6 +3680,7 @@ const WHY = {
   services: "Services are money to and from Russia too, so they follow the same rule as goods.",
   shipping: "The flag is often a convenience; the money goes to whoever owns, insures or finances the ship.",
   companytax: "Taxes fund Russia's state.",
+  coprofits: "Profit made in Russia is money a country's owners earned from Russia, like a sale; most of what stayed trapped there they cannot use.",
   exits: "The country did not choose to move this money, so it is not a payment.",
   rusfirms: "It is money reaching Russian owners.",
   frozen: "Holding the reserves is a choice that denies Russia income, but it is not a payment.",
@@ -4536,7 +4539,7 @@ const COUNTED = [
   { id: "back", side: "ua", label: "Minus: earned back from the war effort", keys: [], netBack: true },
   { id: "paid", side: "rus", label: "Fuel and goods bought from Russia", keys: ["paid"] }, { id: "windfall", side: "rus", label: "War-time fuel price windfall", keys: ["windfall"] },
   { id: "laund", side: "rus", label: "Russian oil refined elsewhere", keys: ["laund"] }, { id: "sold", side: "rus", label: "Sales to Russia", keys: ["sold", "margin"] },
-  { id: "svc", side: "rus", label: "Services and tourism", keys: ["svcpaid", "svcsold"] }, { id: "tax", side: "rus", label: "Company taxes in Russia", keys: ["tax"] },
+  { id: "svc", side: "rus", label: "Services and tourism", keys: ["svcpaid", "svcsold"] }, { id: "tax", side: "rus", label: "Company taxes in Russia", keys: ["tax"] }, { id: "coprofits", side: "rus", label: "Company profits in Russia", keys: ["coprofits", "lngpartners"] },
   { id: "mil", side: "rus", label: "Weapons and troops sent to Russia", keys: ["mil"] },
   { id: "other", side: "rus", label: "Other: shipping, gold, nuclear, arms, Russian-owned firms, payment agents", keys: ["ship", "hidden", "statefin", "rusarms", "rusfirms", "agents"] },
   { id: "frozen", side: "own", label: "Russian money frozen (in the net only)", keys: ["frozen", "frozen_priv"] },

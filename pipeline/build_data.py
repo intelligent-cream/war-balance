@@ -1571,6 +1571,7 @@ def build() -> dict:
     apply_frozen_reserves(countries, src)
     apply_frozen_private(countries, src)
     apply_svc_ukr(countries, src)
+    apply_company_profits(countries, src)
     apply_remittances(countries, src)
     apply_chpl(countries, src)
     apply_value_kept(countries, src)
@@ -1877,7 +1878,7 @@ SOURCE_TYPE = {
     "ua_trade_cf": "ours", "cf_bands": "ours", "power_of_siberia": "press", "weapons_value": "report",
     "state_finance": "data", "company_flows": "report", "russian_owned_r10": "report", "seizures": "report",
     "refugees_net": "data", "co_belligerent": "report", "loans_value": "report", "money_ledger": "data",
-    "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "svc_ukr": "data", "remittances": "data",
+    "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "svc_ukr": "data", "company_profits": "data", "remittances": "data",
     "chpl": "data", "value_kept": "report", "net_gain_sellers": "data", "military_payment": "press",
     "net_gain_russia": "data", "net_gain_ukraine": "data", "dangote": "press", "hormuz": "report",
     "assumptions_r11_gain": "notes", "assumptions_r11_rules": "notes", "assumptions_r11_hubs": "notes",
@@ -3995,6 +3996,61 @@ def apply_svc_ukr(countries: dict[str, dict], src: Sources) -> None:
         if not any(abs(v) > 1e-6 for v in out["h"]):
             continue
         c["svc_ukr"] = {**out, "cert": (d.get("certainty") or "C")[0], "src": [sid]}
+
+
+def apply_company_profits(countries: dict[str, dict], src: Sources) -> None:
+    """Round 39 (owner: "fix that"): what owners from each country earned from their companies in Russia against the
+    no-war level (company_profits_r39.json): profits after Russian tax, dividends that reached home in full and profit
+    trapped in Russia at 0.35 of its value (what an owner from a sanctioning country can get out: a sale at a deep
+    discount less the exit fee); firms that sold out count their lost profit only above a normal return on the sale
+    price. Positive change = earned more from Russia, toward Russia. Next to company taxes (taxes are before profit, so
+    nothing overlaps). Foreign partners' income from Russian oil and gas projects (Yamal LNG, Novatek, Sakhalin, Vankor;
+    TotalEnergies, CNPC, Mitsui, Indian state firms, and the lost income of BP, Shell, Exxon, Wintershall and OMV) is a
+    part of its own. The rest of the trapped profit is a marker beside seizures and forced sales, not in the totals."""
+    cp = load(GAPS / "company_profits_r39.json")
+    sid = src.add(
+        "company_profits",
+        "Profits of foreign companies in Russia and foreign partners' income from Russian oil and gas: KSE Institute / B4Ukraine #LeaveRussia, OECD direct-investment income by partner, company reports",
+        "https://leave-russia.org/",
+        cp.get("generated"),
+        "against the 2018-2021 level grown like company taxes; see research/2026-10/gaps/company_profits_r39-notes.md",
+    )
+    bands = ("low", "central", "high")
+    ser = lambda d: {b: [(d.get(str(y)) or {}).get(b, 0.0) for y in YEARS] for b in bands}  # noqa: E731
+    for iso3, d in cp["countries"].items():
+        c = countries.get(iso3)
+        if not c or not d.get("change"):
+            continue
+        add_extra(
+            c, "coprofits", "Profits of its companies in Russia", ser(d["change"]), (d.get("certainty") or "C")[0], sid
+        )
+        tr = ser(d.get("trapped") or {})
+        if any(tr["high"]):
+            # the 65% of trapped profit not counted above, as a marker (positive = kept from the owners by Russia)
+            add_taken(
+                c,
+                "trapped",
+                "Profits trapped in Russia (not paid out)",
+                {b: [round(v * 0.65, 5) for v in tr[b]] for b in bands},
+                "C",
+                [sid],
+            )
+    part: dict[str, dict[str, list[float]]] = {}
+    cert: dict[str, str] = {}
+    for p in cp["partners"]:
+        h = p.get("home")
+        if h not in countries or not p.get("change"):
+            continue
+        s3 = ser(p["change"])
+        acc = part.setdefault(h, {b: [0.0] * len(YEARS) for b in bands})
+        for b in bands:
+            acc[b] = [a + v for a, v in zip(acc[b], s3[b], strict=True)]
+        cert[h] = max(cert.get(h, "A"), (p.get("certainty") or "C")[0])
+    for h, s3 in part.items():
+        if any(abs(v) > 1e-6 for v in s3["high"] + s3["low"]):
+            add_extra(
+                countries[h], "lngpartners", "Income from stakes in Russian oil and gas projects", s3, cert[h], sid
+            )
 
 
 def apply_remittances(countries: dict[str, dict], src: Sources) -> None:
