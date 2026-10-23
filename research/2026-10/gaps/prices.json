@@ -84269,7 +84269,7 @@
   }
  ],
  "notes": [
-  "Not yet reviewed by a person. Generated 2026-10-18 from Comtrade (annual and monthly), Comext (monthly), FRED, NBP and CREA data. Produced by the project's research step and kept as a data input; the research scripts are not in the repository, and the sources are listed in the notes.",
+  "Generated 2026-10-18 from Comtrade (annual and monthly), Comext (monthly), FRED, NBP and CREA data. Produced by the project's research step and kept as a data input; the research scripts are not in the repository, and the sources are listed in the notes.",
   "See prices-notes.md for method, checks and weak spots."
  ],
  "band_width_comparison": {

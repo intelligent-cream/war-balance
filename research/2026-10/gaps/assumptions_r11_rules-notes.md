@@ -1,7 +1,7 @@
 # Round 11: checking the assumptions behind the money rule and the cost view
 
 Data file: [`assumptions_r11_rules.json`](assumptions_r11_rules.json). The file only proposes changes:
-`pipeline/build_data.py` and `value_kept.json` are untouched. This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. **Not yet reviewed by a person.**
+`pipeline/build_data.py` and `value_kept.json` are untouched. This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## Summary: old and new values
 

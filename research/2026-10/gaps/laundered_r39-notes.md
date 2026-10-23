@@ -1,6 +1,6 @@
 # Laundered oil, round 39: measured content as the central value, speculative versions in the band
 
-Gathered 2026-10-23. Output: [`laundered_r39.json`](laundered_r39.json). EUR bn, nominal; 2026 = January–August, not annualised. USD at ECB yearly averages. **Not yet reviewed by a person, and not wired into the builder.**
+Gathered 2026-10-23. Output: [`laundered_r39.json`](laundered_r39.json). EUR bn, nominal; 2026 = January–August, not annualised. USD at ECB yearly averages. **, and not wired into the builder.**
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes and in the JSON (`sources`, `extracts`).
 
 ## The question

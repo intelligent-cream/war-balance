@@ -1,6 +1,6 @@
 # Laundered oil, round 6: Brunei's refinery and Turkish relabelling ports (roadmap C2)
 
-Gathered 2026-10-18. Output: [`laundered_r6.json`](laundered_r6.json). EUR bn, nominal, low / central / high; 2026 = January–August, not annualised. USD at ECB yearly averages (2019 1.120, 2020 1.142, 2021 1.183, 2022 1.053, 2023 1.081, 2024 1.082, 2025 1.13, 2026 1.16). **Not yet reviewed by a person.**
+Gathered 2026-10-18. Output: [`laundered_r6.json`](laundered_r6.json). EUR bn, nominal, low / central / high; 2026 = January–August, not annualised. USD at ECB yearly averages (2019 1.120, 2020 1.142, 2021 1.183, 2022 1.053, 2023 1.081, 2024 1.082, 2025 1.13, 2026 1.16).
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## What the two flows are

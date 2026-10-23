@@ -1,6 +1,6 @@
 # Refugee hosting cost per host country, 2022 – Aug 2026
 
-Data: `refugees.json`, generated 2026-10-17. **Not yet reviewed by a person.**
+Data: `refugees.json`, generated 2026-10-17.
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## What changed versus the current model

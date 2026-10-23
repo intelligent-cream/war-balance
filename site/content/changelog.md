@@ -2,6 +2,14 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r40">Round 40: Russian forces in Africa, corrected citations, and no "not yet checked" <span class="cl-date">23 October</span></h2>
+<!-- flows: rusarms laund -->
+
+- **Wagner / Africa Corps** count as money toward Russia: what host governments paid them and what their firms took in gold and timber, at Russia's own gain, against 2021. Central African Republic −0.41% → −4.84% (a small economy, not ranked); Sudan −0.42% → −0.14% (Wagner's gold fell after Sudan's own war); Mali, Burkina Faso, Niger, Equatorial Guinea and Libya move by under 0.1 point. A tag, "Russian forces in the country", marks the years they were there.
+- **New Zealand and South Africa** carry a structural label: they bought more refined fuel because their own refineries closed. The numbers do not change.
+- **Three citations corrected**: Russia's 2014 arms exports ($13.2bn for Rosoboronexport, over $15bn in all), Georgian fighters for Ukraine (500 to 1,500, not 1,500), Russians in Serbia (48,000 residence permits, 80,000 to 110,000 resident, not 300,000).
+- The owner: the inputs are checked by a person, so "not yet checked by a person" is gone from the site and the files.
+
 <h2 id="cl-r39">Round 39: certainty, a visual How it works, five new money flows and better data <span class="cl-date">23 October</span></h2>
 <!-- flows: frozen coprofits flowback laund sold paid ref undisc -->
 

@@ -3,7 +3,7 @@
 Data file: `import_premium_r39.json`. Made on 2026-10-23 for the round-39 audit item "Russia side, item 2"
 (the price premium Russia pays for imports is only partly covered). **Research input only.** Nothing in
 `build_data.py`, `data.json` or the site uses it yet. Unit: EUR bn, current prices, ECB yearly USD rates
-as in `trade_full.json`; 2026 is January–August. Ranges are rough 90% bands. Not yet reviewed by a person.
+as in `trade_full.json`; 2026 is January–August. Ranges are rough 90% bands..
 
 **In one paragraph.** Since 2022 the same exporters charge Russia more than their other customers for the
 same HS6 goods, and the gap has grown each year. Measured from the sellers' own UN Comtrade unit values,

@@ -1,6 +1,6 @@
 # Crude content of fuel refined from Russian crude
 
-File: `crude_content.json`. Gathered 2026-10-18. Not yet reviewed by a person. Ranges are meant as about 90%.
+File: `crude_content.json`. Gathered 2026-10-18.. Ranges are meant as about 90%.
 
 ## Question
 A refiner (India, Türkiye, China, Brunei's Hengyi, other) exports fuel made from Russian crude. Of each euro a buyer pays for that fuel, how much went to Russia for the crude? The crude is valued at the FOB price Russia gets (Urals or ESPO after the discount). Freight, insurance and trader margins are left out, because the project counts them separately.

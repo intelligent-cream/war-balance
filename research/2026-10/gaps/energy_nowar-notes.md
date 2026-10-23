@@ -1,6 +1,6 @@
 # No-war energy prices (round 7)
 
-Data: [`energy_nowar.json`](energy_nowar.json). Not yet reviewed by a person.
+Data: [`energy_nowar.json`](energy_nowar.json)..
 
 ## What changes
 

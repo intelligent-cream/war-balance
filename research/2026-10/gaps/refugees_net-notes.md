@@ -1,6 +1,6 @@
 # Refugee hosting: net cost after refugees' taxes (2022 – Aug 2026)
 
-Data: `refugees_net.json`, generated 2026-10-18. **Not yet reviewed by a person.**
+Data: `refugees_net.json`, generated 2026-10-18.
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. Roadmap items 7 (more budget data, check Poland) and 21 (net cost).
 
 ## What this adds

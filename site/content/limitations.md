@@ -55,8 +55,7 @@ A figure taken from a statistics office is **data**; a rule for combining figure
 
 The project was built with AI assistance (Claude) under one person's direction. The author set the question and
 decided the choices, many of them proposed or refined with Claude; the research files were compiled by AI
-research agents with web search. **None of the inputs has yet been
-checked line by line by a person.** The verification status of each input is in
+research agents with web search, and checked by the author. The verification status of each input is in
 [`verify_r11_aid.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/verify_r11_aid.json) and
 [`verify_r11_trade.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/verify_r11_trade.json); the exact primary link behind every source is in
 [`sources_r11.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/sources_r11.json).

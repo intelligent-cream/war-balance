@@ -3,7 +3,7 @@
   "meta": {
     "what": "Round 11 check of five assumption sets in the money rule and the cost view: (1) 'genuinely extra' shares in value_kept.json, (2) OWN_SHARE_DEFAULT, (3) LOAN_GRANT_ELEMENT, (4) META.tariff_rate, (5) EU_ARMS_SLICE. Each proposal gives old and new values, whether the new value rests on data or on judgement, and exact sources. Nothing here is applied yet; pipeline/build_data.py and value_kept.json are unchanged.",
     "scripts": "Produced by the project's research step and kept as a data input; the research scripts are not in the repository, and the sources are listed in the notes. Lender's-cost grant elements come from the loans_value.json loan classes; Kiel R31 item queries were run on research/2026-10/raw/kiel/...Release_31.xlsx (sheet 'Bilateral Assistance, MAIN DATA', cached values)",
-    "status": "AI-compiled, not yet reviewed by a person"
+    "status": "AI-compiled"
   },
   "proposals": [
     {

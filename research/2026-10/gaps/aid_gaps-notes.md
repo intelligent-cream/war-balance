@@ -1,6 +1,6 @@
 # Aid to Ukraine: the 190 countries outside the Kiel tracker
 
-File: `aid_gaps.json`. EUR bn per year, 2022 to 2026 (2026 covers January to August). Every year has low, central and high values, meant as a ~90% range. Gathered 2026-10-17. Not yet reviewed by a person.
+File: `aid_gaps.json`. EUR bn per year, 2022 to 2026 (2026 covers January to August). Every year has low, central and high values, meant as a ~90% range. Gathered 2026-10-17..
 
 ## Method
 1. **UN OCHA FTS.** We downloaded every incoming flow to Ukraine for 2022–2026 from `api.hpc.tools/v1/public/fts/flow?countryISO3=UKR&year=Y`. Note that `locationISO3` is rejected and the results come in pages of 200. Only government donors are kept. Low counts paid flows only. Central and high count paid flows plus commitments. Flows are deduplicated by id. Our flow-level sums match FTS's own `groupby=organization` totals.

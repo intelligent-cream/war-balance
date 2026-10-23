@@ -1,6 +1,6 @@
 # How much of each country's cut in Russian trade did sanctions require?
 
-File: `sanctions_share.json`. Gathered 2026-10-18. Not yet reviewed by a person.
+File: `sanctions_share.json`. Gathered 2026-10-18..
 
 The map credits countries for cutting trade with Russia. Part of each cut was required by bans and part was the country's own choice. This file estimates the required part (`mandated_share`) for each country, flow and year. Own choice is `1 - mandated_share`.
 

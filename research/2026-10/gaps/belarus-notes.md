@@ -1,6 +1,6 @@
 # Belarus: re-exports to Russia and a Belarus-specific counterfactual
 
-Data file: `research/2026-10/gaps/belarus.json`. Generated 2026-10-18. Not yet reviewed by a person.
+Data file: `research/2026-10/gaps/belarus.json`. Generated 2026-10-18..
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 Units: EUR bn, nominal, ECB yearly average USD/EUR rates (2022 1.053, 2023 1.081, 2024 1.082, 2025 1.13, 2026 1.16). Ranges are roughly 90%.
 

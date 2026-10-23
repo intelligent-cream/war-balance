@@ -1,6 +1,6 @@
 # Hong Kong's Russian gold: what stays, what goes on (round 16)
 
-File: `hk_gold_r16.json`, built by [`scripts/hk_gold_r16.py`](../scripts/hk_gold_r16.py). Gathered 2026-10-20. Not yet reviewed by a person.
+File: `hk_gold_r16.json`, built by [`scripts/hk_gold_r16.py`](../scripts/hk_gold_r16.py). Gathered 2026-10-20..
 
 Raised by review 5 (M1, M6), approved by the owner. Until round 15 only the share of Hong Kong's Russian gold passed on to mainland China (`refine.json` `hk_onward`) was moved out of Hong Kong; the share it re-exported to everyone else stayed with Hong Kong, while the UAE's gold was passed to its buyers. Round 16 counts **only the gold that stays in Hong Kong** for Hong Kong.
 

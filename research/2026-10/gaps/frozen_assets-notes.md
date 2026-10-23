@@ -1,6 +1,6 @@
 # Frozen Russian reserves: the return Russia did not get
 
-Data: [`frozen_assets.json`](frozen_assets.json). Gathered 2026-10-18. Not yet reviewed by a person. Not wired into the pipeline.
+Data: [`frozen_assets.json`](frozen_assets.json). Gathered 2026-10-18.. Not wired into the pipeline.
 
 ## The question
 

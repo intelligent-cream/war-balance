@@ -1,6 +1,6 @@
 # Extra services sold to Ukraine: the services twin of `sell_ukr` (round 39)
 
-File: `svc_ukr_r39.json` (same folder). Generated 2026-10-23. **Not yet reviewed by a person.** The file is a research input only: `build_data.py` does not read it yet. The research scripts and raw downloads are not in the repository. The JSON keeps the extracts, and the sources are listed below.
+File: `svc_ukr_r39.json` (same folder). Generated 2026-10-23. The file is a research input only: `build_data.py` does not read it yet. The research scripts and raw downloads are not in the repository. The JSON keeps the extracts, and the sources are listed below.
 
 Raised by the round-39 gap audit (Ukraine side, item 1). Today `sell_ukr` covers goods only, and the services part (`svc_sold`, `uncovered.json`) covers Russia only. Two flows were therefore missing from the money flowing back:
 - transport and other services sold to Ukraine;

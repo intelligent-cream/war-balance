@@ -1,7 +1,7 @@
 {
   "name": "War Balance",
   "short_name": "War Balance",
-  "description": "Where did each country's money move since 2022: toward Ukraine or toward Russia? Research preview: unverified estimates.",
+  "description": "Where did each country's money move since 2022: toward Ukraine or toward Russia? Research preview.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f1820",
