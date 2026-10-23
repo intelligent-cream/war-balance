@@ -1646,7 +1646,8 @@ def build() -> dict:
         "Compiled with AI assistance from public sources and not yet checked line by line against them by a person: treat the figures as unverified estimates. "
         "Every number has a likely range and sources; gaps are filled with estimates, never left at zero. "
         'Every choice and its evidence: <a href="#view=how&sec=changelog">changelog</a>. '
-        'Method and data: <a href="https://github.com/intelligent-cream/follow-the-money-ukraine">GitHub</a>. Corrections: <a href="https://www.reddit.com/user/Intelligent-Cream-14/">Reddit</a> or a GitHub issue.'
+        'Method and data: <a href="https://github.com/intelligent-cream/follow-the-money-ukraine">GitHub</a>. Corrections: <a href="https://www.reddit.com/user/Intelligent-Cream-14/">Reddit</a> or a GitHub issue. '
+        "Not affiliated with Follow the Money (FTM), the Dutch investigative platform."
     )
     return {
         "generated": UPDATED,
