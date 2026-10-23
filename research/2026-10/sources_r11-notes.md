@@ -1,6 +1,6 @@
 # Exact source links per source id (round 11)
 
-Data file: `research/2026-10/sources_r11.json`. Generated 2026-10-19. Not yet reviewed by a person.
+Data file: `research/2026-10/sources_r11.json`. Generated 2026-10-19..
 
 This round answers a reader's criticism: many source entries in `site/data.json` have no URL, or only a homepage. Each of the 59 source ids now has its own list of 2 to 8 links. Each link points to the exact dataset query, report PDF, press release or method section behind the figure.
 

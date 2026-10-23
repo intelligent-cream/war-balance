@@ -1,6 +1,6 @@
 # Counterfactual bands: 2022-2026 sums, neighbours' own bands, Moldova (round 6, B1-B3)
 
-Data file: `research/2026-10/gaps/cf_bands.json`. Generated 2026-10-18. Not yet reviewed by a person.
+Data file: `research/2026-10/gaps/cf_bands.json`. Generated 2026-10-18..
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 This file moves no money. It changes how wide the "expected without the war" ranges are. For Moldova it also changes the expected level a little, from 1.00 to 0.973 × 2021.

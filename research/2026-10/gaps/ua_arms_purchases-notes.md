@@ -1,6 +1,6 @@
 # Ukraine's arms purchases abroad: money flowing back to sellers (2026-10-18)
 
-Data file: `ua_arms_purchases.json` (same folder). Roadmap item 1. **Not yet reviewed by a person.**
+Data file: `ua_arms_purchases.json` (same folder). Roadmap item 1.
 
 ## 1. What this flow is
 

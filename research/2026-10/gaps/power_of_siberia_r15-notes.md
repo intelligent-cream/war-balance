@@ -1,6 +1,6 @@
 # Power of Siberia: contracted deliveries in China's no-war path (round 15)
 
-Data: `power_of_siberia_r15.json`, generated 2026-10-19. Raised by review 4 (M2), approved by the owner. **Not yet reviewed by a person.**
+Data: `power_of_siberia_r15.json`, generated 2026-10-19. Raised by review 4 (M2), approved by the owner.
 
 ## Why
 

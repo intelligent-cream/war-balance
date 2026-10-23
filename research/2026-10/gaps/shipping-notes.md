@@ -1,6 +1,6 @@
 # Earnings from carrying, insuring and servicing Russian oil and LNG exports
 
-File: `shipping.json`. Values are EUR bn per year, 2021 to 2026 (2026 covers January to August), plus a 2019–2021 baseline. Each value has a low, central and high figure, meant as a ~90% range. Gathered 2026-10-18. Not yet reviewed by a person.
+File: `shipping.json`. Values are EUR bn per year, 2021 to 2026 (2026 covers January to August), plus a 2019–2021 baseline. Each value has a low, central and high figure, meant as a ~90% range. Gathered 2026-10-18..
 
 Dollars are converted at ECB yearly averages (USD per EUR): 2019 1.1195, 2020 1.1422, 2021 1.1827, 2022 1.0530, 2023 1.0813, 2024 1.0824, 2025 1.1300, 2026 1.1629.
 

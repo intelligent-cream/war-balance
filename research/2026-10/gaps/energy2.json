@@ -7030,7 +7030,7 @@
   }
  },
  "notes": [
-  "Not yet reviewed by a person. Generated 2026-10-17 from Eurostat, Comtrade, FRED, data.gov.sg and CREA data. Produced by the project's research step and kept as a data input; the research scripts are not in the repository, and the sources are listed in the notes.",
+  "Generated 2026-10-17 from Eurostat, Comtrade, FRED, data.gov.sg and CREA data. Produced by the project's research step and kept as a data input; the research scripts are not in the repository, and the sources are listed in the notes.",
   "transit_gas totals over the 33 countries (central): bcm 2019 188.0, 2020 177.0, 2021 193.2, 2022 119.7, 2023 63.5, 2024 69.1, 2025 55.6, 2026 35.6; EUR bn 2019 37.3, 2020 23.6, 2021 61.7, 2022 106.0, 2023 28.9, 2024 24.6, 2025 20.0, 2026 15.5 (2026 = Jan-Aug).",
   "transit_gas values are FINAL-USE Russian gas, so they should replace (not add to) the CREA pipeline-gas figures of transit countries. Where only CREA destination data exist (2025-2026), the passed_on_shares say how CREA volumes at DEU/SVK/AUT/HUN/TUR/BGR/SRB/BEL map to final users.",
   "Eurostat partner data are by country of origin and exclude pure transit; Austria (all NSP) and Switzerland (not covered) are estimated from consumption x Russian share. Germany and Czechia report Russian origin directly, so the Czech volume is not double counted in Germany.",

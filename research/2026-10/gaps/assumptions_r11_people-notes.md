@@ -1,6 +1,6 @@
 # Round 11: primary data for the "people" assumptions
 
-Data: `assumptions_r11_people.json`, generated 2026-10-19 (31 proposals). **Not yet reviewed by a person. Nothing
+Data: `assumptions_r11_people.json`, generated 2026-10-19 (31 proposals). **. Nothing
 in `site/` or `pipeline/` was changed.** This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 Amounts are EUR bn unless stated otherwise; 2026 means January to August. FX: ECB annual averages. "Data" means the

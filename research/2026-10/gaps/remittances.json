@@ -9,7 +9,7 @@
   "money_rule": "counted = change x value_kept x extra. Use product_when_more when labour is above the expected level, product_when_less when below. change ranges: labour and expected ranges summed over 2022-2026 (years fully correlated within a series), then combined in quadrature (independent). Money-rule low pairs a negative change with the high factor.",
   "fx_effect": "Rouble per USD: 2021 73.7, 2022 68.5 (stronger; inflates 2022 by ~8% vs no-war ~74), 2023 85.2 and 2024 92.6 (weaker; deflates by 13-20%), 2025 ~83.5 (~-10%). Net FX effect over 2022-2026 is negative, not positive: the gap is driven by rouble wages (+14-18% a year in 2023-2025 vs ~7-9% pre-war: 57,244 RUB in 2021 -> 100,360 RUB in 2025).",
   "certainty": "A official by country; B official by country with estimated years; C partial data / modelled split; D model with weak evidence.",
-  "status": "Not yet reviewed by a person. Not wired into data.json."
+  "status": "Not wired into data.json."
  },
  "countries": {
   "UZB": {

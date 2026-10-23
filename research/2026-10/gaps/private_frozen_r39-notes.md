@@ -1,6 +1,6 @@
 # Russian private assets frozen abroad, and western income blocked in Russia (round 39)
 
-Data: [`private_frozen_r39.json`](private_frozen_r39.json). Gathered 2026-10-23. Not yet reviewed by a person. Not wired into the pipeline.
+Data: [`private_frozen_r39.json`](private_frozen_r39.json). Gathered 2026-10-23.. Not wired into the pipeline.
 
 This file answers item 3 of the round-39 Russia-side audit (private assets frozen abroad are missing) and item 5 (type-C balances are only partly covered). It extends [`frozen_assets.json`](frozen_assets.json), which counts only the Bank of Russia's reserves, and reuses its rates and its rule: the **return the owners would have earned without the freeze** is counted, not the frozen amount.
 

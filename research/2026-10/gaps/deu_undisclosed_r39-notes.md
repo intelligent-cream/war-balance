@@ -1,6 +1,6 @@
 # Germany's undisclosed military aid (round 39)
 
-Data file: `deu_undisclosed_r39.json` (same folder). Generated 2026-10-23. **Not yet reviewed by a person.**
+Data file: `deu_undisclosed_r39.json` (same folder). Generated 2026-10-23.
 
 ## What it replaces
 

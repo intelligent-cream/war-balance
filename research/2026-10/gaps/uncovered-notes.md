@@ -1,6 +1,6 @@
 # Flows the map does not yet count: services, hidden channels, undisclosed aid, private donations
 
-File: `uncovered.json`. Values are EUR bn per year for 2022 to 2026 (2026 covers January to August), plus a 2021 baseline for services. Every value has a low, central and high figure, meant as a ~90% range. Gathered 2026-10-17. Not yet reviewed by a person.
+File: `uncovered.json`. Values are EUR bn per year for 2022 to 2026 (2026 covers January to August), plus a 2021 baseline for services. Every value has a low, central and high figure, meant as a ~90% range. Gathered 2026-10-17..
 
 Dollars are converted at ECB yearly averages (USD per EUR): 2021 1.1827, 2022 1.0530, 2023 1.0813, 2024 1.0824, 2025 1.1300, 2026 1.1629.
 

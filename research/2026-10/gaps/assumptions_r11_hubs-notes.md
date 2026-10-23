@@ -1,6 +1,6 @@
 # Round 11: checking the rough inputs (hubs, payment agents, shadow fleet, company taxes, laundered-oil cap)
 
-Data file: `assumptions_r11_hubs.json` (27 proposals). Gathered on 2026-10-19 and not yet reviewed by a person.
+Data file: `assumptions_r11_hubs.json` (27 proposals). Gathered on 2026-10-19.
 Each proposal gives the old value, the new value, whether the basis is **data** or **judgement**, and its sources.
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 

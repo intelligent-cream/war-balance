@@ -1,0 +1,4227 @@
+{
+ "generated": "2026-10-23",
+ "status": "Research input for round 40; not wired into build_data.py. Owner's decision: count Wagner Group / Africa Corps operations in host countries as money toward Russia, plus a tag 'Russian forces in the country'.",
+ "what": "Per host country, 2021-2026: (a) payments by host governments for Wagner / Africa Corps security services; (b) resources and concessions taken by Wagner/Africa Corps-linked firms (gold, diamonds, timber); Russia's gain on both (net of fighters' pay, equipment, transport, local partners and miners) and the part that plausibly reached Russia; (c) the no-war level and the change against it; (d) presence years for the tag.",
+ "units": "USD bn gross as the sources give them; EUR bn at the project's yearly USD/EUR (2021 1.1827, 2022 1.053, 2023 1.0813, 2024 1.0824, 2025 1.13, 2026 1.16). 2026 = January-August (already 8/12). low/central/high is a rough 90% range. Gold in tonnes, valued at the 2021 gold price (USD 1,799/oz = USD 57.8m a tonne), the project's no-war gold rule (build_data.py GOLD_NOWAR); the actual-price value is kept as gross_usd_bn_actual_price for the method band's gold_actual.",
+ "years": [
+  2021,
+  2022,
+  2023,
+  2024,
+  2025,
+  2026
+ ],
+ "rules": {
+  "what_counts": "Money paid by the host (or taken from its resources) to Russian forces and Russian-controlled firms, at Russia's gain: the payment or resource value minus the operation's real costs (fighters' pay, equipment wear and the MoD's charges for aircraft and transport, local partners, artisanal miners). This is the project's net-gain rule (overview.md: 'taxes plus profit above a normal return') applied to a service Russia sells. The arms net gain (0.04-0.05) is NOT used: the shares here come from RUSI's cost-and-revenue evidence per country.",
+  "no_war_level": "Count only the change against the 2021 level (held flat, 2026 prorated), unless evidence says the war changed it. Mali: the contract was agreed and first paid before 24 Feb 2022 (Reuters Sept 2021; Wagner arrived Dec 2021, US Treasury), so its 2021 level is the contract's run rate (USD 10.8m a month = 0.13bn a year), not the one month paid in calendar 2021; the strict calendar-2021 alternative is kept as alt_strict_2021 for the method band. Burkina Faso, Niger and Equatorial Guinea had no Russian forces in 2021: everything since counts. CAR, Libya, Sudan: present before 2022, 2021 level held flat.",
+  "falls": "A fall against 2021 counts toward Ukraine like any other part (Sudan's Wagner gold after its own April 2023 war; Libya's 2022 drawdown when Wagner fighters went to Ukraine). Most of those falls were not the host's choice; not_buyer_choice carries the share for the panel, as rusarms does.",
+  "russian_owned_vs_reached": "The central counts the whole Russian network's gain, wherever it was banked (UAE, Hong Kong, CAR front companies), as the project counts Russian-owned firms' profits (russian_owned_r10: profits kept by Russian owners). reached_russia gives the share that plausibly reached Russia itself (Russian state or Russian accounts): Africa Corps contracts ~1 (MoD body); Prigozhin-era margins 0.4-0.5. A method-band alternative could count only the reached part.",
+  "ranges": "Gain: relative ranges of the payment and of the gain share combined in quadrature, floored at 0. Change: the widest of (central, low path minus low no-war level x low share, high path minus high no-war level x high share), widened by 30% of the no-war level's gain (is 2021 the right expectation?)."
+ },
+ "summary_eur_bn_2022_2026": "Central change toward Russia: CAR +0.11 (4.4% of GDP; range -0.03 to +0.32; small economy, not ranked), Mali +0.01 (+0.04% of GDP; +0.09 / 0.37% with the strict calendar-2021 level), Burkina Faso +0.006, Equatorial Guinea +0.006, Niger +0.003 (0.02-0.05% of GDP each), Libya -0.04 (toward Ukraine, the 2022 drawdown, mostly not its choice), Sudan -0.12 (toward Ukraine, Wagner gold fell with Sudan's own war; range -0.63 to +0.13). Mozambique and Madagascar: 0 (presence ended 2019). The level of Russia's gain (not the change) 2022-Aug 2026 is about EUR 0.6bn (CAR 0.30, Sudan 0.12, Mali 0.09, Libya 0.05); gross paid or taken about EUR 2.5bn.",
+ "countries": {
+  "MLI": {
+   "name": "Mali",
+   "certainty": "D",
+   "certainty_parts": {
+    "presence": "A",
+    "payments": "C",
+    "gain_share": "D",
+    "no_war_level": "C"
+   },
+   "presence": {
+    "years": [
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "force": "Wagner from December 2021 (first fighters in Bamako by January 2022); Africa Corps (Russian MoD) from mid-2025 (Wagner announced its exit 6 June 2025). About 1,000 early on, up to 2,000-2,500 in 2024. Kidal lost in late April 2026; Africa Corps stays around Bamako.",
+    "sources": [
+     "treasury_jy1645",
+     "aljazeera_2025_exit",
+     "adf_2026_mali",
+     "wotr_2026"
+    ]
+   },
+   "lines": {
+    "security": {
+     "what": "Payments by the junta for Wagner / Africa Corps security services (cash, partly gold levied on mining firms)",
+     "basis": "Reuters (Sept 2021, four sources): about 6bn CFA francs (USD 10.8m) a month; Blood Gold Report: more than USD 200m from Dec 2021 to June 2023; ADF (May 2026): 'nearly USD 1 billion' since 2021 and 'at least USD 10m a month' for Africa Corps. Central = USD 10.8m a month from Dec 2021, rising with the 2024 build-up (up to 2,500 men), lower in 2025 (arrears reported by The Sentry, Aug 2025; Wagner-to-Africa Corps handover) and in 2026 (8 months, Kidal lost). High = the ADF total (~USD 1bn over 2022-Aug 2026); low = the contract with months of arrears.",
+     "no_war_basis": "Contract agreed before 24 Feb 2022 (Reuters Sept 2021; first payments Dec 2021): its run rate, USD 10.8m a month = 0.13bn a year, held flat. The strict calendar-2021 level (one month, 0.011bn) is given as alt_strict_2021.",
+     "share": {
+      "low": 0.0,
+      "central": 0.15,
+      "high": 0.35
+     },
+     "share_basis": "RUSI (Feb 2025): 'operations in Mali were not profitable for Wagner'; fighters' pay ~USD 4m a month (37% of the contract), MoD charges for aircraft, drones and transport up to 30%, plus logistics; delays in payment. Central 0.15, low 0 (loss), high 0.35.",
+     "reached_russia": {
+      "low": 0.5,
+      "central": 0.8,
+      "high": 1.0
+     },
+     "reached_basis": "RUSI: unclear whether paid to the Russian MoD (which holds the contract) or to Wagner; from mid-2025 Africa Corps is a MoD body, so the margin is the Russian state's.",
+     "not_buyer_choice": {
+      "low": 0.0,
+      "central": 0.1,
+      "high": 0.3
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.005,
+       "central": 0.011,
+       "high": 0.011
+      },
+      "2022": {
+       "low": 0.08,
+       "central": 0.13,
+       "high": 0.2
+      },
+      "2023": {
+       "low": 0.09,
+       "central": 0.15,
+       "high": 0.22
+      },
+      "2024": {
+       "low": 0.1,
+       "central": 0.17,
+       "high": 0.24
+      },
+      "2025": {
+       "low": 0.08,
+       "central": 0.14,
+       "high": 0.2
+      },
+      "2026": {
+       "low": 0.05,
+       "central": 0.09,
+       "high": 0.13
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.00423,
+       "central": 0.0093,
+       "high": 0.0093
+      },
+      "2022": {
+       "low": 0.07597,
+       "central": 0.12346,
+       "high": 0.18993
+      },
+      "2023": {
+       "low": 0.08323,
+       "central": 0.13872,
+       "high": 0.20346
+      },
+      "2024": {
+       "low": 0.09239,
+       "central": 0.15706,
+       "high": 0.22173
+      },
+      "2025": {
+       "low": 0.0708,
+       "central": 0.12389,
+       "high": 0.17699
+      },
+      "2026": {
+       "low": 0.0431,
+       "central": 0.07759,
+       "high": 0.11207
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.1,
+       "central": 0.13,
+       "high": 0.16
+      },
+      "2022": {
+       "low": 0.1,
+       "central": 0.13,
+       "high": 0.16
+      },
+      "2023": {
+       "low": 0.1,
+       "central": 0.13,
+       "high": 0.16
+      },
+      "2024": {
+       "low": 0.1,
+       "central": 0.13,
+       "high": 0.16
+      },
+      "2025": {
+       "low": 0.1,
+       "central": 0.13,
+       "high": 0.16
+      },
+      "2026": {
+       "low": 0.06667,
+       "central": 0.08667,
+       "high": 0.10667
+      }
+     },
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0014,
+       "high": 0.00326
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.01852,
+       "high": 0.04515
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.02081,
+       "high": 0.0502
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.02356,
+       "high": 0.05643
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.01858,
+       "high": 0.04461
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.01164,
+       "high": 0.02799
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": -0.00556,
+       "central": 0.0,
+       "high": 0.01885
+      },
+      "2023": {
+       "low": -0.00541,
+       "central": 0.00277,
+       "high": 0.02483
+      },
+      "2024": {
+       "low": -0.0054,
+       "central": 0.00554,
+       "high": 0.03127
+      },
+      "2025": {
+       "low": -0.00518,
+       "central": 0.00133,
+       "high": 0.01757
+      },
+      "2026": {
+       "low": -0.00336,
+       "central": 0.00043,
+       "high": 0.0104
+      }
+     },
+     "reached_russia_eur_bn_central": {
+      "2021": 0.00112,
+      "2022": 0.01482,
+      "2023": 0.01665,
+      "2024": 0.01885,
+      "2025": 0.01486,
+      "2026": 0.00931
+     },
+     "alt_strict_2021_change_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": -0.00047,
+       "central": 0.01695,
+       "high": 0.06329
+      },
+      "2023": {
+       "low": -0.00046,
+       "central": 0.01928,
+       "high": 0.06811
+      },
+      "2024": {
+       "low": -0.00046,
+       "central": 0.02203,
+       "high": 0.07451
+      },
+      "2025": {
+       "low": -0.00044,
+       "central": 0.01712,
+       "high": 0.05898
+      },
+      "2026": {
+       "low": -0.00028,
+       "central": 0.01069,
+       "high": 0.0373
+      }
+     },
+     "alt_strict_2021_total_2022_2026_eur_bn": {
+      "low": -0.0021,
+      "central": 0.0861,
+      "high": 0.3022
+     }
+    },
+    "resources": {
+     "what": "No Wagner/Africa Corps mining concession confirmed (RUSI; The Sentry Aug 2025: the junta 'appears unwilling to allow Wagner to control the mining sector'). Gold handed over in lieu of cash is inside the security payments. Yadran (Russia) gold refinery JV: groundbreaking June 2025, not producing; a commercial Russian-owned firm, belongs to russian_owned if it starts.",
+     "share": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_basis": "2021 level held flat (2026 prorated 8/12).",
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     }
+    }
+   },
+   "to_russia_eur_bn": {
+    "low": [
+     0.0,
+     -0.00556,
+     -0.00541,
+     -0.0054,
+     -0.00518,
+     -0.00336
+    ],
+    "central": [
+     0.0,
+     0.0,
+     0.00277,
+     0.00554,
+     0.00133,
+     0.00043
+    ],
+    "high": [
+     0.0,
+     0.01885,
+     0.02483,
+     0.03127,
+     0.01757,
+     0.0104
+    ]
+   },
+   "total_2022_2026_eur_bn": {
+    "low": -0.0249,
+    "central": 0.0101,
+    "high": 0.1029
+   },
+   "pct_gdp": {
+    "low": -0.1082,
+    "central": 0.0439,
+    "high": 0.4471
+   },
+   "russia_gain_level_2022_2026_eur_bn_central": 0.0931,
+   "gross_paid_or_taken_2022_2026_eur_bn_central": 0.6207
+  },
+  "CAF": {
+   "name": "Central African Republic",
+   "certainty": "D",
+   "certainty_parts": {
+    "presence": "A",
+    "payments": "C",
+    "resources": "D",
+    "gain_share": "D",
+    "no_war_level": "D"
+   },
+   "presence": {
+    "years": [
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "force": "Wagner since 2018 ('Russian instructors'): 500 in 2018, up to ~2,000 in 2021, 600-1,600 in 2024 (RUSI). Moscow asked Bangui in 2025 to switch to Africa Corps and pay cash; Bangui prefers to pay in minerals (AP, Aug 2025). Still present 2026.",
+    "sources": [
+     "rusi_2025",
+     "sentry_2023",
+     "ap_2025_car",
+     "treasury_jy1220"
+    ]
+   },
+   "lines": {
+    "security": {
+     "what": "Payments by the CAR government for Wagner security and support services (incl. Sewa Security Services presidential guard)",
+     "basis": "RUSI table 1: payments from the CAR government EUR 91.2m a year on average 2018-2022 (Osborn and Zufferey: EUR 7.6m a month, EUR 391m since 2018, a source close to the Ministry of Finance). That is ~4% of CAR's GDP and ~25% of its revenue, so the central is set lower (USD 70m) with EUR 91m near the high end. No evidence of a change since 2021: held flat.",
+     "no_war_basis": "Present since 2018; 2021 level held flat.",
+     "share": {
+      "low": 0.1,
+      "central": 0.3,
+      "high": 0.5
+     },
+     "share_basis": "RUSI: Wagner contingent cost USD 25-100m a year (fighters ~USD 3,000 a month, plus 30% to the MoD for equipment and air transport); profit for Wagner's top management EUR 0-100m+ a year on EUR 91-200m revenue including mining.",
+     "reached_russia": {
+      "low": 0.3,
+      "central": 0.5,
+      "high": 0.8
+     },
+     "reached_basis": "Fighters' pay goes to Russian accounts (a cost, not a gain). The margin went to Prigozhin's network (CAR front companies, UAE traders); after Aug 2023 the network was taken over by MoD/GRU-controlled management (Dmitry Sytyi stayed).",
+     "not_buyer_choice": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.2
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.035,
+       "central": 0.07,
+       "high": 0.11
+      },
+      "2022": {
+       "low": 0.035,
+       "central": 0.07,
+       "high": 0.11
+      },
+      "2023": {
+       "low": 0.035,
+       "central": 0.07,
+       "high": 0.11
+      },
+      "2024": {
+       "low": 0.035,
+       "central": 0.07,
+       "high": 0.11
+      },
+      "2025": {
+       "low": 0.035,
+       "central": 0.07,
+       "high": 0.11
+      },
+      "2026": {
+       "low": 0.02333,
+       "central": 0.04667,
+       "high": 0.07333
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.02959,
+       "central": 0.05919,
+       "high": 0.09301
+      },
+      "2022": {
+       "low": 0.03324,
+       "central": 0.06648,
+       "high": 0.10446
+      },
+      "2023": {
+       "low": 0.03237,
+       "central": 0.06474,
+       "high": 0.10173
+      },
+      "2024": {
+       "low": 0.03234,
+       "central": 0.06467,
+       "high": 0.10163
+      },
+      "2025": {
+       "low": 0.03097,
+       "central": 0.06195,
+       "high": 0.09735
+      },
+      "2026": {
+       "low": 0.02011,
+       "central": 0.04023,
+       "high": 0.06322
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.035,
+       "central": 0.07,
+       "high": 0.11
+      },
+      "2022": {
+       "low": 0.035,
+       "central": 0.07,
+       "high": 0.11
+      },
+      "2023": {
+       "low": 0.035,
+       "central": 0.07,
+       "high": 0.11
+      },
+      "2024": {
+       "low": 0.035,
+       "central": 0.07,
+       "high": 0.11
+      },
+      "2025": {
+       "low": 0.035,
+       "central": 0.07,
+       "high": 0.11
+      },
+      "2026": {
+       "low": 0.02333,
+       "central": 0.04667,
+       "high": 0.07333
+      }
+     },
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.00296,
+       "central": 0.01776,
+       "high": 0.03335
+      },
+      "2022": {
+       "low": 0.00332,
+       "central": 0.01994,
+       "high": 0.03745
+      },
+      "2023": {
+       "low": 0.00324,
+       "central": 0.01942,
+       "high": 0.03647
+      },
+      "2024": {
+       "low": 0.00323,
+       "central": 0.0194,
+       "high": 0.03644
+      },
+      "2025": {
+       "low": 0.0031,
+       "central": 0.01858,
+       "high": 0.0349
+      },
+      "2026": {
+       "low": 0.00201,
+       "central": 0.01207,
+       "high": 0.02267
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": -0.00598,
+       "central": 0.0,
+       "high": 0.00598
+      },
+      "2023": {
+       "low": -0.00583,
+       "central": 0.0,
+       "high": 0.00583
+      },
+      "2024": {
+       "low": -0.00582,
+       "central": 0.0,
+       "high": 0.00582
+      },
+      "2025": {
+       "low": -0.00558,
+       "central": 0.0,
+       "high": 0.00558
+      },
+      "2026": {
+       "low": -0.00362,
+       "central": 0.0,
+       "high": 0.00362
+      }
+     },
+     "reached_russia_eur_bn_central": {
+      "2021": 0.00888,
+      "2022": 0.00997,
+      "2023": 0.00971,
+      "2024": 0.0097,
+      "2025": 0.00929,
+      "2026": 0.00604
+     }
+    },
+    "resources": {
+     "what": "Gold (Ndassima mine, Midas Ressources, 25-year concession 2020; other Lobaye Invest permits), diamonds (Diamville, Lobaye Invest) and timber (Bois Rouge / Wood International / Ripperwood, 186,600 ha permit Feb 2021), taken by Wagner-linked firms",
+     "parts": {
+      "gold_tonnes": {
+       "low": [
+        0.3,
+        0.8,
+        1.6,
+        1.2,
+        0.9,
+        0.6
+       ],
+       "central": [
+        1.0,
+        2.0,
+        2.8,
+        2.5,
+        2.2,
+        1.4
+       ],
+       "high": [
+        2.5,
+        4.0,
+        4.7,
+        4.5,
+        4.5,
+        3.0
+       ],
+       "basis": "Experts' range for Ndassima: USD 100-290m a year of gold (Blood Gold Report p. 23; NBC; RUSI table 1, 2023) = 1.6-4.7 t at the 2023 price. Production was still ramping in 2021 (concession 2020) and was expanded to eight production areas by early 2023 (Politico, US cable, Jan 2023); after Prigozhin's death a Wagner source put CAR revenue at USD 200m a year (RUSI). 2026 = 8 months. Valued at the 2021 gold price (the project's no-war gold rule); the actual-price value is in gross_usd_bn_actual_price."
+      },
+      "diamonds_usd_bn": {
+       "low": [
+        0.009,
+        0.009,
+        0.009,
+        0.007,
+        0.007,
+        0.004
+       ],
+       "central": [
+        0.015,
+        0.015,
+        0.015,
+        0.012,
+        0.012,
+        0.008
+       ],
+       "high": [
+        0.04,
+        0.04,
+        0.04,
+        0.035,
+        0.035,
+        0.02
+       ],
+       "basis": "Diamville legal exports USD 12m in 16 months (Oct 2019-Jan 2021) = USD 9m a year (OCCRP/EIC/All Eyes on Wagner); 'tens of millions' with smuggling (ADF). Diamville top exporter 2021-2022 (Kimberley Process)."
+      },
+      "timber_usd_bn": {
+       "low": [
+        0.004,
+        0.008,
+        0.008,
+        0.006,
+        0.006,
+        0.004
+       ],
+       "central": [
+        0.01,
+        0.02,
+        0.02,
+        0.015,
+        0.015,
+        0.01
+       ],
+       "high": [
+        0.02,
+        0.04,
+        0.04,
+        0.03,
+        0.03,
+        0.02
+       ],
+       "basis": "Wagner source: USD 20m a year of timber exports before Prigozhin's death (RUSI); at least EUR 3.4m entered the EU in 2022. Permit from Feb 2021 (so 2021 half)."
+      }
+     },
+     "share": {
+      "low": 0.15,
+      "central": 0.3,
+      "high": 0.5
+     },
+     "share_basis": "Wagner mostly leases concessions or 'taxes' artisanal miners and traders rather than mining (RUSI interviews), so its take is a share of the value; tax exemptions granted by Bangui (April 2021 letter, RUSI) raise it. Same share used for diamonds and timber.",
+     "reached_russia": {
+      "low": 0.2,
+      "central": 0.4,
+      "high": 0.7
+     },
+     "reached_basis": "Gold and diamonds are sold mainly via the UAE (Industrial Resources General Trading, Kratol Aviation; Treasury jy1581/jy2384), timber to Cameroon/EU; proceeds partly fund the CAR operation itself. LLC DM (Russia) sold gold in Russia (Treasury jy1581).",
+     "not_buyer_choice": {
+      "low": 0.0,
+      "central": 0.0,
+      "high": 0.0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.03035,
+       "central": 0.08284,
+       "high": 0.2046
+      },
+      "2022": {
+       "low": 0.06327,
+       "central": 0.15068,
+       "high": 0.31136
+      },
+      "2023": {
+       "low": 0.10954,
+       "central": 0.19695,
+       "high": 0.35184
+      },
+      "2024": {
+       "low": 0.08241,
+       "central": 0.1716,
+       "high": 0.32528
+      },
+      "2025": {
+       "low": 0.06506,
+       "central": 0.15425,
+       "high": 0.32528
+      },
+      "2026": {
+       "low": 0.0427,
+       "central": 0.09897,
+       "high": 0.21352
+      }
+     },
+     "gross_usd_bn_actual_price": {
+      "2021": {
+       "low": 0.03035,
+       "central": 0.08284,
+       "high": 0.2046
+      },
+      "2022": {
+       "low": 0.0633,
+       "central": 0.15074,
+       "high": 0.31149
+      },
+      "2023": {
+       "low": 0.11695,
+       "central": 0.20991,
+       "high": 0.3736
+      },
+      "2024": {
+       "low": 0.10505,
+       "central": 0.21878,
+       "high": 0.4102
+      },
+      "2025": {
+       "low": 0.11176,
+       "central": 0.26841,
+       "high": 0.55879
+      },
+      "2026": {
+       "low": 0.09577,
+       "central": 0.2228,
+       "high": 0.47886
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.02566,
+       "central": 0.07004,
+       "high": 0.17299
+      },
+      "2022": {
+       "low": 0.06009,
+       "central": 0.1431,
+       "high": 0.29569
+      },
+      "2023": {
+       "low": 0.1013,
+       "central": 0.18214,
+       "high": 0.32539
+      },
+      "2024": {
+       "low": 0.07614,
+       "central": 0.15854,
+       "high": 0.30052
+      },
+      "2025": {
+       "low": 0.05758,
+       "central": 0.1365,
+       "high": 0.28786
+      },
+      "2026": {
+       "low": 0.03681,
+       "central": 0.08532,
+       "high": 0.18407
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.03035,
+       "central": 0.08284,
+       "high": 0.2046
+      },
+      "2022": {
+       "low": 0.03035,
+       "central": 0.08284,
+       "high": 0.2046
+      },
+      "2023": {
+       "low": 0.03035,
+       "central": 0.08284,
+       "high": 0.2046
+      },
+      "2024": {
+       "low": 0.03035,
+       "central": 0.08284,
+       "high": 0.2046
+      },
+      "2025": {
+       "low": 0.03035,
+       "central": 0.08284,
+       "high": 0.2046
+      },
+      "2026": {
+       "low": 0.02023,
+       "central": 0.05523,
+       "high": 0.1364
+      }
+     },
+     "no_war_basis": "2021 level held flat (2026 prorated 8/12).",
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.00405,
+       "central": 0.02101,
+       "high": 0.05493
+      },
+      "2022": {
+       "low": 0.01005,
+       "central": 0.04293,
+       "high": 0.09692
+      },
+      "2023": {
+       "low": 0.01811,
+       "central": 0.05464,
+       "high": 0.11098
+      },
+      "2024": {
+       "low": 0.01326,
+       "central": 0.04756,
+       "high": 0.10066
+      },
+      "2025": {
+       "low": 0.00965,
+       "central": 0.04095,
+       "high": 0.09393
+      },
+      "2026": {
+       "low": 0.00622,
+       "central": 0.0256,
+       "high": 0.05978
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": -0.00239,
+       "central": 0.01933,
+       "high": 0.05777
+      },
+      "2023": {
+       "low": 0.00409,
+       "central": 0.03166,
+       "high": 0.07498
+      },
+      "2024": {
+       "low": 0.00033,
+       "central": 0.0246,
+       "high": 0.06263
+      },
+      "2025": {
+       "low": -0.00199,
+       "central": 0.01896,
+       "high": 0.06
+      },
+      "2026": {
+       "low": -0.00138,
+       "central": 0.01131,
+       "high": 0.03753
+      }
+     },
+     "reached_russia_eur_bn_central": {
+      "2021": 0.0084,
+      "2022": 0.01717,
+      "2023": 0.02186,
+      "2024": 0.01902,
+      "2025": 0.01638,
+      "2026": 0.01024
+     }
+    }
+   },
+   "to_russia_eur_bn": {
+    "low": [
+     0.0,
+     -0.00837,
+     -0.00174,
+     -0.00549,
+     -0.00757,
+     -0.005
+    ],
+    "central": [
+     0.0,
+     0.01933,
+     0.03166,
+     0.0246,
+     0.01896,
+     0.01131
+    ],
+    "high": [
+     0.0,
+     0.06375,
+     0.08081,
+     0.06845,
+     0.06558,
+     0.04115
+    ]
+   },
+   "total_2022_2026_eur_bn": {
+    "low": -0.0282,
+    "central": 0.1059,
+    "high": 0.3197
+   },
+   "pct_gdp": {
+    "low": -1.1804,
+    "central": 4.4328,
+    "high": 13.3822
+   },
+   "russia_gain_level_2022_2026_eur_bn_central": 0.3011,
+   "gross_paid_or_taken_2022_2026_eur_bn_central": 1.0037
+  },
+  "SDN": {
+   "name": "Sudan",
+   "certainty": "D",
+   "certainty_parts": {
+    "presence": "B (2021-2023)",
+    "resources": "D",
+    "gain_share": "D",
+    "no_war_level": "D"
+   },
+   "presence": {
+    "years": [
+     2021,
+     2022,
+     2023
+    ],
+    "force": "Wagner since 2017 (M-Invest / Meroe Gold, training for the army and RSF). From the April 2023 war Wagner backed the RSF; Russia later courted the army (Port Sudan naval base deal announced Feb 2025, frozen Dec 2025). No confirmed Russian unit in Sudan after 2023; presence 2024-2026 left out of the tag.",
+    "sources": [
+     "treasury_sm1058",
+     "cnn_2022_sudan",
+     "uk_2023_wagner",
+     "eu_2023_wagner",
+     "un_poe_sudan_2024"
+    ]
+   },
+   "lines": {
+    "security": {
+     "what": "Security/training paid in mining access (inside the resources line); no separate cash contract documented",
+     "share": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_basis": "2021 level held flat (2026 prorated 8/12).",
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     }
+    },
+    "resources": {
+     "what": "Gold produced, processed (al-Ibaidiya plant) and exported by Meroe Gold / Al-Solag (Wagner fronts), largely smuggled (flights to Latakia and Russia)",
+     "parts": {
+      "gold_tonnes": {
+       "low": [
+        1.0,
+        1.5,
+        0.5,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "central": [
+        5.0,
+        6.0,
+        3.0,
+        1.0,
+        0.8,
+        0.5
+       ],
+       "high": [
+        12.0,
+        15.0,
+        8.0,
+        4.0,
+        3.0,
+        2.0
+       ],
+       "basis": "CNN (July 2022): at least 16 Russian gold flights out of Sudan in 18 months, one with ~1 t declared as biscuits; leaked central bank data: 32.7 t unaccounted for in 2021 (all smuggling, not only Wagner). The Blood Gold Report assumes half of USD 1.9bn a year reaches Wagner/the Kremlin; that is taken as far above the high end (Sudan's smuggling also runs through the RSF's own firms and the UAE). Falls after the April 2023 war: Wagner sided with the RSF, the army controls the River Nile state plant."
+      }
+     },
+     "share": {
+      "low": 0.08,
+      "central": 0.2,
+      "high": 0.4
+     },
+     "share_basis": "A smuggler-processor's margin: buys artisanal gold and tailings below world price and avoids Sudan's export taxes; pays Aswar (USD 100,000 a month plus staff salaries and USD 500 per Wagner entrant, Blood Gold Report) and processing costs.",
+     "reached_russia": {
+      "low": 0.3,
+      "central": 0.5,
+      "high": 0.8
+     },
+     "reached_basis": "Part flown to Russia via Latakia (CNN), adding to Russia's gold reserves in 2022 before and after the invasion; part sold in the UAE.",
+     "not_buyer_choice": {
+      "low": 0.3,
+      "central": 0.6,
+      "high": 0.9
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.05784,
+       "central": 0.2892,
+       "high": 0.69407
+      },
+      "2022": {
+       "low": 0.08676,
+       "central": 0.34704,
+       "high": 0.86759
+      },
+      "2023": {
+       "low": 0.02892,
+       "central": 0.17352,
+       "high": 0.46271
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.05784,
+       "high": 0.23136
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.04627,
+       "high": 0.17352
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.02892,
+       "high": 0.11568
+      }
+     },
+     "gross_usd_bn_actual_price": {
+      "2021": {
+       "low": 0.05784,
+       "central": 0.2892,
+       "high": 0.69407
+      },
+      "2022": {
+       "low": 0.08681,
+       "central": 0.34723,
+       "high": 0.86807
+      },
+      "2023": {
+       "low": 0.03123,
+       "central": 0.18741,
+       "high": 0.49975
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.07671,
+       "high": 0.30685
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.08778,
+       "high": 0.32919
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.07314,
+       "high": 0.29257
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.04891,
+       "central": 0.24453,
+       "high": 0.58685
+      },
+      "2022": {
+       "low": 0.08239,
+       "central": 0.32957,
+       "high": 0.82392
+      },
+      "2023": {
+       "low": 0.02675,
+       "central": 0.16047,
+       "high": 0.42792
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.05344,
+       "high": 0.21375
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.04095,
+       "high": 0.15356
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.02493,
+       "high": 0.09972
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.05784,
+       "central": 0.2892,
+       "high": 0.69407
+      },
+      "2022": {
+       "low": 0.05784,
+       "central": 0.2892,
+       "high": 0.69407
+      },
+      "2023": {
+       "low": 0.05784,
+       "central": 0.2892,
+       "high": 0.69407
+      },
+      "2024": {
+       "low": 0.05784,
+       "central": 0.2892,
+       "high": 0.69407
+      },
+      "2025": {
+       "low": 0.05784,
+       "central": 0.2892,
+       "high": 0.69407
+      },
+      "2026": {
+       "low": 0.03856,
+       "central": 0.1928,
+       "high": 0.46271
+      }
+     },
+     "no_war_basis": "2021 level held flat (2026 prorated 8/12).",
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.04891,
+       "high": 0.13304
+      },
+      "2022": {
+       "low": 0.00261,
+       "central": 0.06591,
+       "high": 0.18474
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.03209,
+       "high": 0.09447
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.01069,
+       "high": 0.04448
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.00819,
+       "high": 0.03215
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.00499,
+       "high": 0.02075
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": -0.01428,
+       "central": 0.01099,
+       "high": 0.08239
+      },
+      "2023": {
+       "low": -0.10163,
+       "central": -0.0214,
+       "high": 0.01391
+      },
+      "2024": {
+       "low": -0.18703,
+       "central": -0.04275,
+       "high": 0.01176
+      },
+      "2025": {
+       "low": -0.19962,
+       "central": -0.043,
+       "high": 0.01126
+      },
+      "2026": {
+       "low": -0.12964,
+       "central": -0.02826,
+       "high": 0.00731
+      }
+     },
+     "reached_russia_eur_bn_central": {
+      "2021": 0.02446,
+      "2022": 0.03295,
+      "2023": 0.01605,
+      "2024": 0.00534,
+      "2025": 0.00409,
+      "2026": 0.00249
+     }
+    }
+   },
+   "to_russia_eur_bn": {
+    "low": [
+     0.0,
+     -0.01428,
+     -0.10163,
+     -0.18703,
+     -0.19962,
+     -0.12964
+    ],
+    "central": [
+     0.0,
+     0.01099,
+     -0.0214,
+     -0.04275,
+     -0.043,
+     -0.02826
+    ],
+    "high": [
+     0.0,
+     0.08239,
+     0.01391,
+     0.01176,
+     0.01126,
+     0.00731
+    ]
+   },
+   "total_2022_2026_eur_bn": {
+    "low": -0.6322,
+    "central": -0.1244,
+    "high": 0.1266
+   },
+   "pct_gdp": {
+    "low": -1.4384,
+    "central": -0.283,
+    "high": 0.288
+   },
+   "russia_gain_level_2022_2026_eur_bn_central": 0.1219,
+   "gross_paid_or_taken_2022_2026_eur_bn_central": 0.6094
+  },
+  "LBY": {
+   "name": "Libya (Haftar's LNA)",
+   "certainty": "D",
+   "certainty_parts": {
+    "presence": "B",
+    "payments": "D",
+    "gain_share": "D",
+    "payer": "D (LNA or the UAE)"
+   },
+   "presence": {
+    "years": [
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "force": "Wagner since late 2018 (UN Panel S/2021/229: up to 2,000); 300-400 to ~1,000 pulled to Ukraine in spring 2022 (FT/Al Jazeera). Africa Corps (MoD/GRU) took over from 2024 and uses al-Jufra, Brak al-Shati, al-Khadim, Maaten al-Sarra as its logistics hub.",
+    "sources": [
+     "un_poe_libya_2021",
+     "aljazeera_2022_libya",
+     "fp_2020_uae",
+     "aeow_2024_libya"
+    ]
+   },
+   "lines": {
+    "security": {
+     "what": "Payments for Wagner/Africa Corps forces with the LNA (payer unclear: Haftar or the UAE)",
+     "basis": "No payment figure is public. Cost-based: RUSI's Syria cost of USD 5,150 per fighter-month (USD 154.5m a year for 2,500) applied to ~1,200-2,000 men in 2021, fewer after the 2022 drawdown; since 2024 the Africa Corps hub serves Russia's own Sahel logistics, so the host pays less of it. The Pentagon IG (2020) said the UAE possibly funded Wagner in Libya.",
+     "no_war_basis": "Present since 2018; 2021 level held flat.",
+     "share": {
+      "low": 0.05,
+      "central": 0.25,
+      "high": 0.45
+     },
+     "share_basis": "RUSI: Syria-type contract, cost close to revenue; no resource concession (Wagner guarded the Sharara and Es Sider oil sites but no oil income to Wagner is documented).",
+     "reached_russia": {
+      "low": 0.4,
+      "central": 0.7,
+      "high": 1.0
+     },
+     "reached_basis": "Contracts via Wagner, then MoD/GRU.",
+     "not_buyer_choice": {
+      "low": 0.3,
+      "central": 0.6,
+      "high": 0.9
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.03,
+       "central": 0.08,
+       "high": 0.15
+      },
+      "2022": {
+       "low": 0.02,
+       "central": 0.06,
+       "high": 0.12
+      },
+      "2023": {
+       "low": 0.015,
+       "central": 0.05,
+       "high": 0.12
+      },
+      "2024": {
+       "low": 0.01,
+       "central": 0.04,
+       "high": 0.12
+      },
+      "2025": {
+       "low": 0.01,
+       "central": 0.04,
+       "high": 0.12
+      },
+      "2026": {
+       "low": 0.007,
+       "central": 0.027,
+       "high": 0.08
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.02537,
+       "central": 0.06764,
+       "high": 0.12683
+      },
+      "2022": {
+       "low": 0.01899,
+       "central": 0.05698,
+       "high": 0.11396
+      },
+      "2023": {
+       "low": 0.01387,
+       "central": 0.04624,
+       "high": 0.11098
+      },
+      "2024": {
+       "low": 0.00924,
+       "central": 0.03695,
+       "high": 0.11086
+      },
+      "2025": {
+       "low": 0.00885,
+       "central": 0.0354,
+       "high": 0.10619
+      },
+      "2026": {
+       "low": 0.00603,
+       "central": 0.02328,
+       "high": 0.06897
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.03,
+       "central": 0.08,
+       "high": 0.15
+      },
+      "2022": {
+       "low": 0.03,
+       "central": 0.08,
+       "high": 0.15
+      },
+      "2023": {
+       "low": 0.03,
+       "central": 0.08,
+       "high": 0.15
+      },
+      "2024": {
+       "low": 0.03,
+       "central": 0.08,
+       "high": 0.15
+      },
+      "2025": {
+       "low": 0.03,
+       "central": 0.08,
+       "high": 0.15
+      },
+      "2026": {
+       "low": 0.02,
+       "central": 0.05333,
+       "high": 0.1
+      }
+     },
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.01691,
+       "high": 0.03696
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.01425,
+       "high": 0.03249
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.01156,
+       "high": 0.0302
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.00924,
+       "high": 0.02914
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.00885,
+       "high": 0.02791
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.00582,
+       "high": 0.01815
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": -0.01852,
+       "central": -0.00475,
+       "high": 0.00522
+      },
+      "2023": {
+       "low": -0.01803,
+       "central": -0.00694,
+       "high": 0.00486
+      },
+      "2024": {
+       "low": -0.01802,
+       "central": -0.00924,
+       "high": 0.00462
+      },
+      "2025": {
+       "low": -0.01726,
+       "central": -0.00885,
+       "high": 0.00442
+      },
+      "2026": {
+       "low": -0.01121,
+       "central": -0.00567,
+       "high": 0.00289
+      }
+     },
+     "reached_russia_eur_bn_central": {
+      "2021": 0.01184,
+      "2022": 0.00997,
+      "2023": 0.00809,
+      "2024": 0.00647,
+      "2025": 0.00619,
+      "2026": 0.00407
+     }
+    },
+    "resources": {
+     "what": "None documented",
+     "share": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_basis": "2021 level held flat (2026 prorated 8/12).",
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     }
+    }
+   },
+   "to_russia_eur_bn": {
+    "low": [
+     0.0,
+     -0.01852,
+     -0.01803,
+     -0.01802,
+     -0.01726,
+     -0.01121
+    ],
+    "central": [
+     0.0,
+     -0.00475,
+     -0.00694,
+     -0.00924,
+     -0.00885,
+     -0.00567
+    ],
+    "high": [
+     0.0,
+     0.00522,
+     0.00486,
+     0.00462,
+     0.00442,
+     0.00289
+    ]
+   },
+   "total_2022_2026_eur_bn": {
+    "low": -0.083,
+    "central": -0.0355,
+    "high": 0.022
+   },
+   "pct_gdp": {
+    "low": -0.1967,
+    "central": -0.0841,
+    "high": 0.0521
+   },
+   "russia_gain_level_2022_2026_eur_bn_central": 0.0497,
+   "gross_paid_or_taken_2022_2026_eur_bn_central": 0.1988
+  },
+  "BFA": {
+   "name": "Burkina Faso",
+   "certainty": "D",
+   "certainty_parts": {
+    "presence": "B",
+    "payments": "D",
+    "gain_share": "D"
+   },
+   "presence": {
+    "years": [
+     2024,
+     2025,
+     2026
+    ],
+    "force": "Africa Corps from 24 Jan 2024: 100, planned 300 (OSW); more instructors announced June 2024 (Lavrov). Wagner presence in 2022-23 alleged (Ghana's president) and denied.",
+    "sources": [
+     "osw_2024_bfa",
+     "aljazeera_2022_bfa"
+    ]
+   },
+   "lines": {
+    "security": {
+     "what": "Payments for Africa Corps instructors and presidential protection",
+     "basis": "No figure is public. 100-300 men at USD 5,000-10,000 per man-month (RUSI Syria cost; ADF: USD 10,000 per fighter in Mali). Low 0: Russia may carry the cost as influence spending.",
+     "no_war_basis": "No Russian forces in 2021.",
+     "share": {
+      "low": 0.0,
+      "central": 0.15,
+      "high": 0.35
+     },
+     "share_basis": "As Mali.",
+     "reached_russia": {
+      "low": 0.8,
+      "central": 1.0,
+      "high": 1.0
+     },
+     "reached_basis": "Africa Corps is a Russian MoD body.",
+     "not_buyer_choice": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0.01
+      },
+      "2024": {
+       "low": 0,
+       "central": 0.012,
+       "high": 0.03
+      },
+      "2025": {
+       "low": 0,
+       "central": 0.018,
+       "high": 0.04
+      },
+      "2026": {
+       "low": 0,
+       "central": 0.012,
+       "high": 0.027
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.00925
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.01109,
+       "high": 0.02772
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.01593,
+       "high": 0.0354
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.01034,
+       "high": 0.02328
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.00324
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.00166,
+       "high": 0.005
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.00239,
+       "high": 0.00671
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.00155,
+       "high": 0.00439
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.00324
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.00166,
+       "high": 0.0097
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.00239,
+       "high": 0.01239
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.00155,
+       "high": 0.00815
+      }
+     },
+     "reached_russia_eur_bn_central": {
+      "2021": 0.0,
+      "2022": 0.0,
+      "2023": 0.0,
+      "2024": 0.00166,
+      "2025": 0.00239,
+      "2026": 0.00155
+     }
+    },
+    "resources": {
+     "what": "No Africa Corps concession documented (Nordgold is a commercial Russian miner: in russian_owned/company files, not here)",
+     "share": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_basis": "2021 level held flat (2026 prorated 8/12).",
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     }
+    }
+   },
+   "to_russia_eur_bn": {
+    "low": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "central": [
+     0.0,
+     0.0,
+     0.0,
+     0.00166,
+     0.00239,
+     0.00155
+    ],
+    "high": [
+     0.0,
+     0.0,
+     0.00324,
+     0.0097,
+     0.01239,
+     0.00815
+    ]
+   },
+   "total_2022_2026_eur_bn": {
+    "low": 0.0,
+    "central": 0.0056,
+    "high": 0.0335
+   },
+   "pct_gdp": {
+    "low": 0.0,
+    "central": 0.0291,
+    "high": 0.1743
+   },
+   "russia_gain_level_2022_2026_eur_bn_central": 0.0056,
+   "gross_paid_or_taken_2022_2026_eur_bn_central": 0.0374
+  },
+  "NER": {
+   "name": "Niger",
+   "certainty": "D",
+   "certainty_parts": {
+    "presence": "B",
+    "payments": "D",
+    "gain_share": "D"
+   },
+   "presence": {
+    "years": [
+     2024,
+     2025,
+     2026
+    ],
+    "force": "Africa Corps from 10-12 April 2024: ~100 instructors with an air-defence system, more flights in May 2024 (CNN/AFP). Possible role escorting uranium convoys (All Eyes on Wagner, Dec 2025, unverified).",
+    "sources": [
+     "cnn_2024_niger",
+     "aeow_2025_uranium"
+    ]
+   },
+   "lines": {
+    "security": {
+     "what": "Payments for Africa Corps instructors",
+     "basis": "As Burkina Faso, ~100 men. Uranium sales to Russia (talks on ~1,000 t, ~USD 170m, Le Monde via Intellinews Nov 2025) would be trade, not this part.",
+     "no_war_basis": "No Russian forces in 2021.",
+     "share": {
+      "low": 0.0,
+      "central": 0.15,
+      "high": 0.35
+     },
+     "share_basis": "As Mali.",
+     "reached_russia": {
+      "low": 0.8,
+      "central": 1.0,
+      "high": 1.0
+     },
+     "reached_basis": "Russian MoD body.",
+     "not_buyer_choice": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0,
+       "central": 0.006,
+       "high": 0.02
+      },
+      "2025": {
+       "low": 0,
+       "central": 0.01,
+       "high": 0.03
+      },
+      "2026": {
+       "low": 0,
+       "central": 0.007,
+       "high": 0.02
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.00554,
+       "high": 0.01848
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.00885,
+       "high": 0.02655
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.00603,
+       "high": 0.01724
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.00083,
+       "high": 0.00307
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.00133,
+       "high": 0.00452
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.00091,
+       "high": 0.00297
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.00083,
+       "high": 0.00647
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.00133,
+       "high": 0.00929
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.00091,
+       "high": 0.00603
+      }
+     },
+     "reached_russia_eur_bn_central": {
+      "2021": 0.0,
+      "2022": 0.0,
+      "2023": 0.0,
+      "2024": 0.00083,
+      "2025": 0.00133,
+      "2026": 0.00091
+     }
+    },
+    "resources": {
+     "what": "None documented",
+     "share": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_basis": "2021 level held flat (2026 prorated 8/12).",
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     }
+    }
+   },
+   "to_russia_eur_bn": {
+    "low": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "central": [
+     0.0,
+     0.0,
+     0.0,
+     0.00083,
+     0.00133,
+     0.00091
+    ],
+    "high": [
+     0.0,
+     0.0,
+     0.0,
+     0.00647,
+     0.00929,
+     0.00603
+    ]
+   },
+   "total_2022_2026_eur_bn": {
+    "low": 0.0,
+    "central": 0.0031,
+    "high": 0.0218
+   },
+   "pct_gdp": {
+    "low": 0.0,
+    "central": 0.0191,
+    "high": 0.1344
+   },
+   "russia_gain_level_2022_2026_eur_bn_central": 0.0031,
+   "gross_paid_or_taken_2022_2026_eur_bn_central": 0.0204
+  },
+  "GNQ": {
+   "name": "Equatorial Guinea",
+   "certainty": "D",
+   "certainty_parts": {
+    "presence": "C (government denies)",
+    "payments": "D",
+    "gain_share": "D"
+   },
+   "presence": {
+    "years": [
+     2024,
+     2025,
+     2026
+    ],
+    "force": "100-200 Russians from ~Aug 2024 guarding President Obiang and training a Rapid Intervention Brigade (Reuters via BBC/Ghanaian Times); 100-300 Africa Corps in Malabo and Bata in 2026 (Fides/Jeune Afrique). The government denies a Russian presence.",
+    "sources": [
+     "ghanaian_times_2024_gnq",
+     "fides_2026_gnq"
+    ]
+   },
+   "lines": {
+    "security": {
+     "what": "Payments for Africa Corps presidential protection and training",
+     "basis": "No figure is public; 100-300 men at USD 5,000-10,000 per man-month; an oil state able to pay cash.",
+     "no_war_basis": "No Russian forces in 2021.",
+     "share": {
+      "low": 0.1,
+      "central": 0.25,
+      "high": 0.45
+     },
+     "share_basis": "Guard duty in a capital: lower cost per man than combat in the Sahel.",
+     "reached_russia": {
+      "low": 0.8,
+      "central": 1.0,
+      "high": 1.0
+     },
+     "reached_basis": "Russian MoD body.",
+     "not_buyer_choice": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2022": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2023": {
+       "low": 0,
+       "central": 0,
+       "high": 0
+      },
+      "2024": {
+       "low": 0.002,
+       "central": 0.005,
+       "high": 0.012
+      },
+      "2025": {
+       "low": 0.005,
+       "central": 0.012,
+       "high": 0.03
+      },
+      "2026": {
+       "low": 0.003,
+       "central": 0.009,
+       "high": 0.02
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.00185,
+       "central": 0.00462,
+       "high": 0.01109
+      },
+      "2025": {
+       "low": 0.00442,
+       "central": 0.01062,
+       "high": 0.02655
+      },
+      "2026": {
+       "low": 0.00259,
+       "central": 0.00776,
+       "high": 0.01724
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.00017,
+       "central": 0.00115,
+       "high": 0.00302
+      },
+      "2025": {
+       "low": 0.00043,
+       "central": 0.00265,
+       "high": 0.00717
+      },
+      "2026": {
+       "low": 0.0002,
+       "central": 0.00194,
+       "high": 0.00477
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.00018,
+       "central": 0.00115,
+       "high": 0.00499
+      },
+      "2025": {
+       "low": 0.00044,
+       "central": 0.00265,
+       "high": 0.01195
+      },
+      "2026": {
+       "low": 0.00026,
+       "central": 0.00194,
+       "high": 0.00776
+      }
+     },
+     "reached_russia_eur_bn_central": {
+      "2021": 0.0,
+      "2022": 0.0,
+      "2023": 0.0,
+      "2024": 0.00115,
+      "2025": 0.00265,
+      "2026": 0.00194
+     }
+    },
+    "resources": {
+     "what": "None documented",
+     "share": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_basis": "2021 level held flat (2026 prorated 8/12).",
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     }
+    }
+   },
+   "to_russia_eur_bn": {
+    "low": [
+     0.0,
+     0.0,
+     0.0,
+     0.00018,
+     0.00044,
+     0.00026
+    ],
+    "central": [
+     0.0,
+     0.0,
+     0.0,
+     0.00115,
+     0.00265,
+     0.00194
+    ],
+    "high": [
+     0.0,
+     0.0,
+     0.0,
+     0.00499,
+     0.01195,
+     0.00776
+    ]
+   },
+   "total_2022_2026_eur_bn": {
+    "low": 0.0009,
+    "central": 0.0057,
+    "high": 0.0247
+   },
+   "pct_gdp": {
+    "low": 0.0073,
+    "central": 0.0464,
+    "high": 0.2011
+   },
+   "russia_gain_level_2022_2026_eur_bn_central": 0.0057,
+   "gross_paid_or_taken_2022_2026_eur_bn_central": 0.023
+  },
+  "MOZ": {
+   "name": "Mozambique",
+   "certainty": "C",
+   "presence": {
+    "years": [],
+    "years_before_2021": "2019",
+    "force": "~200 Wagner in Cabo Delgado Sept-Nov 2019, withdrew after losses; replaced by Dyck Advisory Group. Nothing in 2021-2026.",
+    "sources": [
+     "rusi_2025"
+    ]
+   },
+   "lines": {
+    "security": {
+     "what": "none in 2021-2026",
+     "share": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_basis": "2021 level held flat (2026 prorated 8/12).",
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     }
+    },
+    "resources": {
+     "what": "none in 2021-2026",
+     "share": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_basis": "2021 level held flat (2026 prorated 8/12).",
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     }
+    }
+   },
+   "to_russia_eur_bn": {
+    "low": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "central": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "high": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "total_2022_2026_eur_bn": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "pct_gdp": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "russia_gain_level_2022_2026_eur_bn_central": 0.0,
+   "gross_paid_or_taken_2022_2026_eur_bn_central": 0.0
+  },
+  "MDG": {
+   "name": "Madagascar",
+   "certainty": "C",
+   "presence": {
+    "years": [],
+    "years_before_2021": "2018-2019",
+    "force": "Wagner-linked political technologists in the 2018 election and the Kraoma chromite venture (Ferrum Mining), ended 2019. Nothing in 2021-2026.",
+    "sources": [
+     "rusi_2025"
+    ]
+   },
+   "lines": {
+    "security": {
+     "what": "none in 2021-2026",
+     "share": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_basis": "2021 level held flat (2026 prorated 8/12).",
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     }
+    },
+    "resources": {
+     "what": "none in 2021-2026",
+     "share": {
+      "low": 0,
+      "central": 0,
+      "high": 0
+     },
+     "gross_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "gross_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_usd_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "no_war_basis": "2021 level held flat (2026 prorated 8/12).",
+     "russia_gain_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     },
+     "change_vs_no_war_eur_bn": {
+      "2021": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2022": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2023": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2024": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2025": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      },
+      "2026": {
+       "low": 0.0,
+       "central": 0.0,
+       "high": 0.0
+      }
+     }
+    }
+   },
+   "to_russia_eur_bn": {
+    "low": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "central": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "high": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "total_2022_2026_eur_bn": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "pct_gdp": {
+    "low": 0.0,
+    "central": 0.0,
+    "high": 0.0
+   },
+   "russia_gain_level_2022_2026_eur_bn_central": 0.0,
+   "gross_paid_or_taken_2022_2026_eur_bn_central": 0.0
+  }
+ },
+ "totals_2022_2026_eur_bn": {
+  "low": -0.7674,
+  "central": -0.0295,
+  "high": 0.6512
+ },
+ "totals_note": "Sum of the central changes is near zero: Sudan's fall in Wagner gold after its own 2023 war offsets the CAR's rise. Without Sudan and Libya (falls not chosen by the host): 0.1304 toward Russia.",
+ "overlaps": {
+  "rusarms (russian_arms_exports.json + arms_r6.json)": "Weapons only; Wagner/Africa Corps fees are explicitly left out there (arms_r6-notes.md: 'not included here or, as far as checked, anywhere else'). Two edges: (1) arms_r6 Mali notes armour and artillery convoys in 2025 'partly for Africa Corps'; if Mali paid for kit that Africa Corps itself uses, that payment is inside both. (2) ADF's 'nearly USD 1bn since 2021' for Mali may include arms; it is used only as this file's high end. Rule for the builder: keep both, but in Mali's high band take off arms_r6 Mali's 2025-2026 payments (EUR 0.05-0.1bn a year at 0.04-0.05 net gain: under EUR 0.01bn, immaterial).",
+  "hidden (uncovered.json hidden_channels)": "Covers Russian-origin gold (UAE, Hong Kong, Kyrgyzstan, China, Turkey...). Wagner's African gold sold in Dubai is African-origin in UAE customs, so it is not in the UAE's Russian gold. Sudanese gold flown to Russia (CNN) and later re-exported as Russian gold could appear in a buyer's Russian gold and earn Russia's gold net gain (0.31-0.64) a second time; at most a few tonnes in 2021-2022, below 0.01bn of gain. No adjustment proposed; noted.",
+  "military_rus / military_payment / north_korea": "The other direction (weapons and troops sent to Russia). No overlap. Africans recruited to fight in Ukraine are not money and are not here.",
+  "nonreport.json (CAF imports from Russia)": "CAR's unreported imports from Russia include fuel and goods brought in with the Russian presence and the 50 kt free wheat (paid share 0.3). Those are Russia's goods sales at the goods net gain; Wagner's own imports of Russian equipment (Logistique Economique Etrangere, Broker Expert; Treasury jy2384) are a cost inside this file's gain share, not a second gain. No overlap.",
+  "russian_owned_r10 / company_taxes_r6 / companies_all": "None of Midas, Lobaye Invest, Diamville, Bois Rouge, Meroe Gold/Al-Solag appears there (checked: CAF, MLI, SDN, BFA all zero). Nordgold (Burkina Faso, Guinea) and the Yadran refinery (Mali) are commercial Russian firms: they belong to russian_owned, not here.",
+  "trade_full": "Sudan has reported zero gold exports to Russia for over a decade (Blood Gold Report); CAR's reported exports to Russia are ~EUR 0.00005bn. Nothing of this file is in customs."
+ },
+ "pipeline_proposal": {
+  "part_key": "wagner",
+  "label": "Russian forces paid here (Wagner / Africa Corps)",
+  "side": "Russia's earnings from trade (orange), like rusarms: a service bought from Russia.",
+  "how": "New apply_wagner(countries, src) called right after apply_russian_arms(): for each country with a non-zero to_russia_eur_bn, add_extra(c, 'wagner', label, d['to_russia_eur_bn'], d['certainty'], sid), and set c['extra'][-1]['not_choice'] from the lines' not_buyer_choice (the central of the largest line). The series are already Russia's gain and already the change against the no-war level (2021 entry 0), positive = toward Russia, so no net-gain multiplier and no further baseline. src.add('wagner', 'Wagner Group and Africa Corps in Africa: RUSI (2025), The Sentry, Blood Gold Report, UN Panels of Experts, US Treasury, EU and UK sanctions, Reuters, CNN, AP', 'https://static.rusi.org/wagners-business-model-in-syria-and-africa_0.pdf', '2026-10', 'change against the 2021 level at Russia's gain; see research/2026-10/gaps/wagner_r40-notes.md'); SOURCE_KIND 'wagner': 'report'.",
+  "site_touch_points": "index.html: FLOWS list (next to rusarms, line ~1960), method link map (~1922: russia-state-and-companies.md#russian-forces-paid-by-host-countries), part labels (~1986), the 'Russia's earnings from trade' group (~2025), the 'mostly ...' phrases (~3249/3254), short names (~3291), direction sentence (~3626), part explanations (~3663/3693), the 'Other' bucket keys (~4547). build_data.py r11_proposal_flows 'arms' group if the arms gain is ever applied (it is not here). Method page: a new subsection under 'Weapons bought from Russia' in russia-state-and-companies.md (and docs/reference/method/), plus a row in overview.md's parts table.",
+  "tag": "New story tag 'Russian forces in the country' (key rusforces), added to tags.md and storyTags(): shown when presence.years contains any year from 2022 to the chosen year; changes no number. Sentence: 'Wagner / Africa Corps forces have been here since <first year>: <force>. Paid about EUR X (gross, 2022 to the chosen year); Russia's gain is in the totals.' Source: wagner (this file). Carried in the data as c['rusforces'] = {'years': [...], 'cert': ..., 'src': ['wagner']}. Priority: after 'party', before 'gascut' (it is a fact about the country, not a size).",
+  "expected_effect": "Moves only the hosts and only a little, except CAR: CAR +0.11bn toward Russia = 4.4% of its GDP (range -1.2% to +13%); CAR is a small economy (GDP EUR 2.4bn), not ranked. Mali +0.04% of GDP (0.37% strict), Burkina Faso +0.03%, Equatorial Guinea +0.05%, Niger +0.02%, Libya -0.08% (toward Ukraine), Sudan -0.28% (toward Ukraine). Compare rusarms for the same countries: under EUR 0.01bn each. Worldwide sum about 0 (central), -0.77 to +0.65.",
+  "method_band": "Two alternatives for the method band: (1) 'wagner_strict_2021' = Mali's calendar-2021 level (alt_strict_2021_change_eur_bn), Mali +0.09bn; (2) 'wagner_reached_only' = only the reached_russia share of each gain. Optionally (3) 'no_falls': floor Sudan's and Libya's falls at 0, since those falls were Sudan's own war and Russia's redeployment."
+ },
+ "open_questions": [
+  "Who paid for Wagner in Libya: Haftar or the UAE (Pentagon IG 2020: 'possibly' the UAE)? If the UAE, the line belongs to ARE, not LBY. It is attributed to Libya here (as arms_r6 does).",
+  "Count falls? Sudan's -0.12bn and Libya's -0.04bn credit the host toward Ukraine for flows that fell because of Sudan's own war and Russia's redeployment to Ukraine. Options: count (rule as written, with the not-choice label), or floor each host's total at 0 (only increases count). The owner should decide.",
+  "Mali's no-war level: contract run rate (central here) or calendar 2021 (strict). The difference is 0.08bn (0.33% of Mali's GDP).",
+  "CAR's payments: Osborn and Zufferey's EUR 7.6m a month (~25% of CAR state revenue) is unverified and may include in-kind items and tax exemptions; central set at USD 70m a year. The UN Panel (S/2023/360) and RUSI confirm the presence and Midas's operation of Ndassima but give no payment figures.",
+  "Ndassima output: no production data exist (the government cannot inspect the mine, US Treasury). The USD 100-290m a year range is experts' estimates via the Blood Gold Report and NBC; AXMIN's own reserves (1.54m oz, early-stage project) argue for the lower half.",
+  "Sudan's 2021 level: if Wagner's 2021 gold was smaller than 5 t, the post-2023 fall shrinks and Sudan moves toward 0.",
+  "Africa Corps' financing model since 2024: does the Russian MoD charge Burkina Faso, Niger and Equatorial Guinea at all, or carry the cost as influence spending (low = 0 here)? AP (Aug 2025) reports Moscow asking the CAR to pay Africa Corps in cash.",
+  "Syria (Evro Polis oil and gas: profits ~USD 90m in 2020, RUSI) is outside Africa and outside this file; Wagner left Syria in 2023. If the owner wants all host countries, Syria's change against 2021 would be a fall (toward Ukraine) of roughly EUR 0.05-0.1bn a year.",
+  "Togo (military cooperation ratified 2025), Chad, Mauritania, Guinea: no confirmed Wagner/Africa Corps deployment found in 2021-2026; not included."
+ ],
+ "sources": {
+  "rusi_2025": {
+   "name": "RUSI Occasional Paper: Wagner's Business Model in Syria and Africa: Profit and Patronage (Allison, Connon, Giustozzi, Pascall), 6 Feb 2025 - Table 1 revenue/cost by country, CAR and Mali chapters",
+   "url": "https://static.rusi.org/wagners-business-model-in-syria-and-africa_0.pdf",
+   "page": "https://www.rusi.org/explore-our-research/publications/occasional-papers/wagners-business-model-syria-and-africa-profit-and-patronage",
+   "certainty": "B (secondary compilation; its own sources C-D)"
+  },
+  "blood_gold_2023": {
+   "name": "The Blood Gold Report (Berlin et al., 21 Democracy), Dec 2023: Ndassima USD 290m a year; Sudan USD 1.9bn smuggled with 50% assumed captured; Mali USD 10.8m a month; 'USD 2.5bn since Feb 2022'",
+   "url": "https://bloodgoldreport.com/wp-content/uploads/2023/12/The-Blood-Gold-Report-2023-December.pdf",
+   "certainty": "D (advocacy; its USD 114m a month is gross and assumes half of Sudan's smuggling)"
+  },
+  "sentry_2023": {
+   "name": "The Sentry: Architects of Terror - The Wagner Group's Blueprint for State Capture in the CAR, June 2023",
+   "url": "https://thesentry.org/wp-content/uploads/2023/06/ArchitectsTerror-TheSentry-June2023.pdf",
+   "certainty": "C"
+  },
+  "sentry_2025_mali": {
+   "name": "The Sentry: Mercenary Meltdown - Wagner's failure in Mali, Aug 2025 ('seemingly gone unpaid for months'; no concessions)",
+   "url": "https://thesentry.org/reports/mercenary-meltdown-wagner-failure-mali/",
+   "certainty": "C"
+  },
+  "reuters_2021_mali": {
+   "name": "Reuters (Irish, Lewis), 13 Sept 2021: deal allowing Russian mercenaries into Mali is close - 6bn CFA francs (USD 10.8m) a month, four sources; as carried by Al Jazeera",
+   "url": "https://www.aljazeera.com/news/2021/9/14/france-warns-mali-against-russian-wagner-mercenary-deal",
+   "certainty": "C"
+  },
+  "treasury_jy1645": {
+   "name": "US Treasury jy1645, 24 July 2023: Malian officials facilitating Wagner; Wagner's arrival in Mali in December 2021",
+   "url": "https://home.treasury.gov/news/press-releases/jy1645",
+   "certainty": "A (presence)"
+  },
+  "treasury_jy1502": {
+   "name": "US Treasury jy1502, May 2023: head of the Wagner Group in Mali (Ivan Maslov)",
+   "url": "https://home.treasury.gov/news/press-releases/jy1502",
+   "certainty": "A (presence)"
+  },
+  "treasury_jy1581": {
+   "name": "US Treasury jy1581, 27 June 2023: Midas Ressources (Ndassima, 'gold valued at more than one billion dollars'), Diamville, Industrial Resources General Trading (UAE), LLC DM (Russia), Andrei Ivanov (Mali)",
+   "url": "https://home.treasury.gov/news/press-releases/jy1581",
+   "certainty": "A (designations)"
+  },
+  "treasury_jy1220": {
+   "name": "US Treasury jy1220, 26 Jan 2023: Wagner as a transnational criminal organisation; Sewa Security Services, OUIS, Kratol Aviation (CAR, Libya, Mali flights)",
+   "url": "https://home.treasury.gov/news/press-releases/jy1220",
+   "certainty": "A (designations)"
+  },
+  "treasury_jy2384": {
+   "name": "US Treasury jy2384, 30 May 2024: Mining Industries SARLU and Logistique Economique Etrangere (CAR); earlier actions on Lobaye Invest, Midas, Bois Rouge",
+   "url": "https://home.treasury.gov/news/press-releases/jy2384",
+   "certainty": "A (designations)"
+  },
+  "treasury_sm1133": {
+   "name": "US Treasury sm1133, 23 Sept 2020: M Finans and Lobaye Invest (CAR mining), Dmitry Sytyi",
+   "url": "https://home.treasury.gov/news/press-releases/sm1133",
+   "certainty": "A (designations)"
+  },
+  "treasury_sm1058": {
+   "name": "US Treasury sm1058, 15 July 2020: M Invest and Meroe Gold, cover for Wagner forces in Sudan",
+   "url": "https://home.treasury.gov/news/press-releases/sm1058",
+   "certainty": "A (designations)"
+  },
+  "eu_2023_wagner": {
+   "name": "Council of the EU, 25 Feb 2023: Wagner Group - 11 individuals and 7 entities (Meroe Gold, M-Invest, Lobaye Invest, Diamville) for trading gold and diamonds looted by force",
+   "url": "https://www.eeas.europa.eu/delegations/ukraine/wagner-group-council-adds-11-individuals-and-7-entities-eu-sanctions-lists_en",
+   "certainty": "A (designations)"
+  },
+  "uk_2023_wagner": {
+   "name": "UK FCDO, 20 July 2023: sanctions on Wagner leaders and front companies in Mali, CAR and Sudan (Maslov, Pikalov, Perfilev; M-Invest, Meroe Gold, Al-Solag)",
+   "url": "https://www.gov.uk/government/news/uk-sanctions-wagner-group-leaders-and-front-companies-responsible-for-violence-and-instability-across-africa",
+   "certainty": "A (designations)"
+  },
+  "uk_2023_sudan_notice": {
+   "name": "OFSI Financial Sanctions Notice, Sudan, 20 July 2023 (Meroe Gold, Al-Solag Mining)",
+   "url": "https://assets.publishing.service.gov.uk/media/64b8f1e62059dc000d5d2641/Notice_Sudan_200723.pdf",
+   "certainty": "A"
+  },
+  "uk_2023_car_notice": {
+   "name": "OFSI Financial Sanctions Notice, CAR, 20 July 2023 (Lobaye Invest, Sewa Security Services)",
+   "url": "https://assets.publishing.service.gov.uk/media/64b8f2ae06f78d0014742584/Notice_Central_African_Republic_200723.pdf",
+   "certainty": "A"
+  },
+  "un_poe_car_2023": {
+   "name": "UN Panel of Experts on the CAR, final report S/2023/360, 18 May 2023: Russian instructors with FACA; Midas Ressources operates the Ndassima processing compound (paras 103-105)",
+   "url": "https://documents.un.org/doc/undoc/gen/n23/117/53/pdf/n2311753.pdf",
+   "certainty": "A (presence)"
+  },
+  "un_poe_libya_2021": {
+   "name": "UN Panel of Experts on Libya, final report S/2021/229, 8 March 2021: Wagner section and annex (press: up to 2,000)",
+   "url": "https://www.ecoi.net/en/file/local/2047327/S_2021_229_E.pdf",
+   "certainty": "A (presence)"
+  },
+  "un_poe_mali_2023": {
+   "name": "UN Panel of Experts on Mali, final report S/2023/578, 3 Aug 2023",
+   "url": "https://digitallibrary.un.org/record/4019115",
+   "certainty": "A (presence)"
+  },
+  "un_poe_sudan_2024": {
+   "name": "UN Panel of Experts on the Sudan, final report S/2024/65, Jan 2024 (RSF supply routes via Libya and CAR; Wagner not named)",
+   "url": "https://documents.un.org/doc/undoc/gen/n24/005/64/pdf/n2400564.pdf",
+   "certainty": "A (what it says); not evidence of Wagner money"
+  },
+  "cnn_2022_sudan": {
+   "name": "CNN (July 2022): Russia is plundering gold in Sudan to boost Putin's war effort in Ukraine - 16 flights, Meroe Gold, al-Ibaidiya plant (syndicated copy)",
+   "url": "https://abc17news.com/news/national-world/cnn-europe-mideast-africa/2022/07/29/russia-is-plundering-gold-in-sudan-to-boost-putins-war-effort-in-ukraine-2/",
+   "certainty": "C"
+  },
+  "fp_2020_uae": {
+   "name": "Foreign Policy, 30 Nov 2020: Pentagon says UAE possibly funding Wagner in Libya",
+   "url": "https://foreignpolicy.com/2020/11/30/pentagon-trump-russia-libya-uae/",
+   "certainty": "C"
+  },
+  "aljazeera_2022_libya": {
+   "name": "Al Jazeera, 15 Apr 2022: Russians unlikely to leave Libya despite Ukraine war (FT: ~200 Wagner and 1,000 Syrians moved; analysts 300-400)",
+   "url": "https://www.aljazeera.com/news/2022/4/15/russians-unlikely-leave-libya-despite-ukraine-war",
+   "certainty": "C"
+  },
+  "aeow_2024_libya": {
+   "name": "All Eyes on Wagner, 10 May 2024: Mediterranean Sea objective for the Africa Corps (Libya hub)",
+   "url": "https://alleyesonwagner.org/2024/05/10/mediterranean-sea-objective-for-the-african-corps/",
+   "certainty": "C"
+  },
+  "aeow_2025_uranium": {
+   "name": "All Eyes on Wagner, 1 Dec 2025: the 'Madmax uranium express' convoy (Niger; buyer believed Russian; Africa Corps escort unverified)",
+   "url": "https://alleyesonwagner.org/2025/12/01/the-madmax-uranium-express-the-convoy-of-all-dangers/",
+   "certainty": "D"
+  },
+  "aljazeera_2025_exit": {
+   "name": "Al Jazeera, 6 June 2025: Wagner leaving Mali, Africa Corps to remain",
+   "url": "https://www.aljazeera.com/news/2025/6/6/russias-wagner-mercenaries-leaving-mali-africa-corps-to-remain",
+   "certainty": "B"
+  },
+  "aljazeera_2026_mali": {
+   "name": "Al Jazeera, 29 Apr 2026: what role has Russia played in Mali (Kidal lost, April 2026 offensive)",
+   "url": "https://www.aljazeera.com/news/2026/4/29/what-role-has-russia-played-in-malis-security-and-the-sahel-region",
+   "certainty": "B"
+  },
+  "adf_2026_mali": {
+   "name": "ADF Magazine, May 2026: Mercenaries in Mali come with high cost, few results ('nearly USD 1 billion' since 2021; at least USD 10m a month; paid in cash)",
+   "url": "https://adf-magazine.com/2026/05/mercenaries-in-mali-come-with-high-cost-few-results/",
+   "certainty": "D (US AFRICOM publication, unsourced totals)"
+  },
+  "wotr_2026": {
+   "name": "War on the Rocks (Parens), 3 Sept 2026: Russia's Road to El Dorado (Mali paid from gold taxes; RUSI quote)",
+   "url": "https://warontherocks.com/2026/09/russias-road-to-el-dorado/",
+   "certainty": "C"
+  },
+  "ap_2025_car": {
+   "name": "AP, 6 Aug 2025: Russia asks CAR to replace Wagner with state-run Africa Corps and pay for it (syndicated copy)",
+   "url": "https://www.news4jax.com/business/2025/08/06/russia-asks-central-african-republic-to-replace-wagner-with-state-run-africa-corps-and-pay-for-it/",
+   "certainty": "C"
+  },
+  "occrp_2022_diamonds": {
+   "name": "OCCRP, 7 Dec 2022: Wagner mercenaries profit from Central Africa's blood diamonds (Diamville USD 12m in 16 months)",
+   "url": "https://www.occrp.org/en/news/report-wagner-mercenaries-profit-from-central-africas-blood-diamonds",
+   "certainty": "C"
+  },
+  "nbc_2023_car": {
+   "name": "NBC News, 1 June 2023: Russian mercenaries exploit a war-torn African nation (Ndassima)",
+   "url": "https://www.nbcnews.com/news/africa/wagner-ukraine-russia-central-african-republic-gold-mine-putin-rcna86392",
+   "certainty": "C"
+  },
+  "globe_2024_ndassima": {
+   "name": "Globe and Mail: Canadian-owned mine seized by Russian mercenaries (AXMIN USD 340m 2011; CAR document USD 2.8bn)",
+   "url": "https://theglobeandmail.com/business/article-canadian-owned-mine-seized-by-russian-mercenaries-in-africa-is-helping/",
+   "certainty": "C"
+  },
+  "osw_2024_bfa": {
+   "name": "OSW, 31 Jan 2024: Wagner forces under a new flag - Russia's Africa Corps in Burkina Faso (100 landed, 200 more expected)",
+   "url": "https://www.osw.waw.pl/en/publikacje/analyses/2024-01-31/wagner-forces-under-a-new-flag-russias-africa-corps-burkina-faso",
+   "certainty": "B"
+  },
+  "aljazeera_2022_bfa": {
+   "name": "Al Jazeera, 21 Dec 2022: Burkina Faso denies paying Wagner with mine rights",
+   "url": "https://www.aljazeera.com/news/2022/12/21/burkina-faso-denies-it-paid-russian-fighters-with-mine-rights",
+   "certainty": "C"
+  },
+  "cnn_2024_niger": {
+   "name": "CNN (via KRDO), 12 Apr 2024: Russian weapons and trainers arrive in Niger",
+   "url": "https://krdo.com/news/2024/04/12/russian-weapons-and-trainers-arrive-in-niger-weeks-after-us-military-agreement-ends/",
+   "certainty": "B"
+  },
+  "ghanaian_times_2024_gnq": {
+   "name": "BBC via Ghanaian Times: Russia sends military instructors to Equatorial Guinea (Reuters sources: 100-200)",
+   "url": "https://ghanaiantimes.com.gh/russia-sends-military-instructors-to-equatorial-guinea-reports",
+   "certainty": "C"
+  },
+  "fides_2026_gnq": {
+   "name": "Fides, Sept 2026: Equatorial Guinea says it foiled a coup with Russian help (100-300 Africa Corps, Jeune Afrique)",
+   "url": "https://fides.org/en/news/78126",
+   "certainty": "C"
+  }
+ }
+}

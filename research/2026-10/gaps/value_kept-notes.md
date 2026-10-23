@@ -1,6 +1,6 @@
 # Value kept and genuinely extra (round 6, steps A3 and A4)
 
-Data file: `value_kept.json` (same folder). Scripts: [`../scripts/value_kept/`](../scripts/value_kept/) (`exposure.py`, `build.py`, `compare.py`, `finalize.py`; moved into the repository in round 13 from an unpublished working folder, audit M8). Downloads: [`../raw/oecd_tiva/`](../raw/oecd_tiva/) (TiVA extracts `dva.csv`, `dva2.csv`; Ukraine's imports by partner `ua_m_*.json`). **Not yet reviewed by a person.**
+Data file: `value_kept.json` (same folder). Scripts: [`../scripts/value_kept/`](../scripts/value_kept/) (`exposure.py`, `build.py`, `compare.py`, `finalize.py`; moved into the repository in round 13 from an unpublished working folder, audit M8). Downloads: [`../raw/oecd_tiva/`](../raw/oecd_tiva/) (TiVA extracts `dva.csv`, `dva2.csv`; Ukraine's imports by partner `ua_m_*.json`).
 
 **Round 13:** the value kept is no longer used on the map. Every seller's earnings now count at its **net gain** (taxes plus profit above a normal return, [`net_gain_sellers.json`](net_gain_sellers.json)) × the **genuinely extra** share from this file, the same rule as for Russia and Ukraine. The products in this file are kept in `data.json` as `vk_old` for the method band.
 

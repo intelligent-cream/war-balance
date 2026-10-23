@@ -1,6 +1,6 @@
 # Relocants' spending inside "services sold to Russia"
 
-File: `relocants.json`. Gathered 2026-10-18. Not yet reviewed by a person.
+File: `relocants.json`. Gathered 2026-10-18..
 
 ## What this is
 

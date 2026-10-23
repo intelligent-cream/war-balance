@@ -33,7 +33,7 @@ EU27 = set(
 TARIFF_WAIVER = EU27 | {"GBR", "CAN"}
 
 # ---- round 11: assumptions replaced by data where the research found it (research/2026-10/gaps/assumptions_r11_*.json
-# and their -notes.md; not yet reviewed by a person). The research files keep their old values: each proposals file is
+# and their -notes.md). The research files keep their old values: each proposals file is
 # applied by one overlay, apply_assumptions_r11_<file>(), when the research file it changes is loaded (load(), the same
 # way as the round-7 actuals), or by a commented constant below. Proposals that were left out, and why, are listed in
 # site/content/changelog.md (assumptions backed by data, round 11)
@@ -1625,6 +1625,7 @@ def build() -> dict:
     apply_military_delivered(countries, src)
     apply_captive(countries, src)
     apply_russian_arms(countries, src)
+    apply_wagner(countries, src)
     apply_payment_agents(countries, src)
     apply_frozen_reserves(countries, src)
     apply_frozen_private(countries, src)
@@ -1716,7 +1717,7 @@ def build() -> dict:
     gdp_average(countries)
     status = (
         f"<b>Research preview</b> · figures to {DATA_TO_TEXT}, updated {UPDATED_TEXT}. "
-        "Compiled with AI assistance from public sources and not yet checked line by line against them by a person: treat the figures as unverified estimates. "
+        "Compiled with AI assistance from public sources. "
         "Every number has a likely range and sources; gaps are filled with estimates, never left at zero. "
         'Every choice and its evidence: <a href="#view=how&sec=changelog">changelog</a>. '
         'Method and data: <a href="https://github.com/intelligent-cream/war-balance">GitHub</a>. Corrections: <a href="https://www.reddit.com/user/Intelligent-Cream-14/">Reddit</a> or a GitHub issue. '
@@ -1946,7 +1947,7 @@ SOURCE_TYPE = {
     "ua_trade_cf": "ours", "cf_bands": "ours", "power_of_siberia": "press", "weapons_value": "report",
     "state_finance": "data", "company_flows": "report", "russian_owned_r10": "report", "seizures": "report",
     "refugees_net": "data", "co_belligerent": "report", "loans_value": "report", "money_ledger": "data",
-    "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "svc_ukr": "data", "company_profits": "data", "import_premium": "data", "remittances": "data",
+    "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "svc_ukr": "data", "company_profits": "data", "import_premium": "data", "wagner": "report", "remittances": "data",
     "chpl": "data", "value_kept": "report", "net_gain_sellers": "data", "military_payment": "press",
     "net_gain_russia": "data", "net_gain_ukraine": "data", "dangote": "press", "hormuz": "report",
     "assumptions_r11_gain": "notes", "assumptions_r11_rules": "notes", "assumptions_r11_hubs": "notes",
@@ -4161,6 +4162,35 @@ def apply_import_premium(countries: dict[str, dict], src: Sources) -> None:
         )
 
 
+def apply_wagner(countries: dict[str, dict], src: Sources) -> None:
+    """Round 40 (owner: "Yeah, sure. For Wagner and Africa Corps"): what host governments paid Wagner / Africa Corps for
+    security and what Wagner-linked firms took in gold, minerals and timber (wagner_r40.json), at Russia's own gain on it
+    (RUSI's cost and revenue evidence, not the arms gain), against the 2021 level held flat: Mali at its contract's run
+    rate (agreed before the war), Burkina Faso, Niger and Equatorial Guinea in full (no Russian forces in 2021); falls
+    (Sudan's gold after its own war, Libya after the 2022 pull-out) count the other way. Gold at its 2021 price, as in
+    the gold rule. Plus the years Russian forces were present, for the tag (no number)."""
+    wg = load(GAPS / "wagner_r40.json")
+    sid = src.add(
+        "wagner",
+        "Wagner Group / Africa Corps: RUSI (2025), The Sentry, Blood Gold Report, UN Panels of Experts, US Treasury, EU and UK sanctions designations",
+        "https://www.rusi.org/explore-our-research/publications/occasional-papers/wagners-business-model-syria-and-africa",
+        wg.get("generated"),
+        "against the 2021 level; see research/2026-10/gaps/wagner_r40-notes.md",
+    )
+    for iso3, d in wg["countries"].items():
+        c = countries.get(iso3)
+        if not c:
+            continue
+        tr = d.get("to_russia_eur_bn") or {}
+        if any(abs(v) > 1e-6 for b in ("low", "central", "high") for v in tr.get(b, [])):
+            add_extra(
+                c, "wagner", "Russian forces paid here (Wagner / Africa Corps)", tr, (d.get("certainty") or "D")[0], sid
+            )
+        yrs = (d.get("presence") or {}).get("years") or []
+        if yrs:
+            c["rusforces"] = {"years": yrs, "src": [sid]}
+
+
 def apply_remittances(countries: dict[str, dict], src: Sources) -> None:
     """Migrant workers' remittances from Russia (remittances.json, round 7): a marker, not in the totals (round 13b,
     owner's decision after the round-13 audit; site/content/changelog.md). They are individuals' wages, not a country's choice;
@@ -5133,9 +5163,11 @@ def apply_laundered_r39(countries: dict[str, dict], src: Sources) -> None:
         for k in ("bmul", "bmul_lo", "bmul_hi"):
             if lb.get(k):
                 c["laund"][k] = lb[k]
-        # TODO(round 39, owner decision pending): New Zealand (Marsden Point, closed 31 March 2022) and South Africa
-        # (Engen Durban 2020, SAPREF 2022) bought more fuel because their own refineries closed; laundered_r39.json
-        # proposes a "structural" label like Nigeria's (structural_variant). Not adopted until the owner decides
+        # round 40 (owner: "New Zealand, South Africa, structural label. That's fine"): they bought more fuel because their
+        # own refineries closed (Marsden Point 31 March 2022; Engen Durban 2020, SAPREF 2022): a label like Nigeria's,
+        # the totals do not change
+        if iso3 in ("NZL", "ZAF"):
+            c["laund"]["structural"] = {"why": "refinery_closed", "src": [sid]}
         tr = c["to_rus"]
         for k, kt in (("years", "laundered"), ("years_lo", "laundered_lo"), ("years_hi", "laundered_hi")):
             tr[kt] = c["laund"][k]

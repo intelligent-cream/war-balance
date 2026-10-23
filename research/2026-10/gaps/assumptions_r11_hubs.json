@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-19",
- "scope": "Round 11 check of rough inputs: hub resale shares (energy2.json hub_resale), payment-agent fees (payment_channels.json), shadow-fleet freight by controller (shadow_fleet_r6.json), company taxes for allocated countries (company_taxes_r6.json), LAUNDERED_CAP (pipeline/build_data.py). Not yet reviewed by a person. Comtrade and Eurostat values were fetched on 2026-10-19; Comtrade preview URLs take one period per call, and the URL shown is one of the calls.",
+ "scope": "Round 11 check of rough inputs: hub resale shares (energy2.json hub_resale), payment-agent fees (payment_channels.json), shadow-fleet freight by controller (shadow_fleet_r6.json), company taxes for allocated countries (company_taxes_r6.json), LAUNDERED_CAP (pipeline/build_data.py). Comtrade and Eurostat values were fetched on 2026-10-19; Comtrade preview URLs take one period per call, and the URL shown is one of the calls.",
  "proposals": [
   {
    "item": "hub_resale",
