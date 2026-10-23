@@ -5,7 +5,7 @@
 // renderView()). Round 20 (owner): only Map, Ranking and Sources remain, and the ranking is as clean as the map: the
 // header line names it and its explanation is in the header's ⓘ (rankInfo)
 /* global leaning, noDataAt, PARTY_TO_WAR, state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
-   num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades, renderDrawer, renderInfo, verb */
+   num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades, renderDrawer, renderInfo, verb, rangeWords */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
 const GROUPS = {
@@ -38,8 +38,8 @@ function metricOf(c) {
 }
 const LENS_TITLE = {
   support: "Support for Ukraine since before the war",
-  payments: "Trade with Russia since before the war: Russia kept less (+) or more (−) against a world without the war",
-  net: "Support for Ukraine plus trade with Russia, since before the war",
+  payments: "Russia's earnings from trade since before the war: Russia kept less (+) or more (−) against a world without the war",
+  net: "Support for Ukraine plus the cut in Russia's earnings from trade, since before the war",
 };
 function measureText() {
   return t({ gdp: "total as % of one year's GDP (average 2022–2024), not a yearly rate", pp: "€ per person", total: "€ billion" }[state.measure]);
@@ -60,7 +60,7 @@ const fitName = (name, max) => (name.length > max ? name.slice(0, max - 1).trimE
 // chart rows act like buttons: Enter and Space open the country, as a click does
 function activateOnKey(el, fn) { el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } }); }
 function tipFor(m) {
-  const range = m.loBn != null ? "<br>" + t("Likely range {lo} to {hi}", { lo: fmtMeasure(m.c, m.loBn, state.measure, true), hi: fmtMeasure(m.c, m.hiBn, state.measure, true) }) : "";
+  const range = m.loBn != null ? "<br>" + rangeWords(m.c, m.loBn, m.hiBn, HEAD_LENS[state.lens] === "ua" ? "ua" : "net") + (m.st ? " · " + t(m.st === "lean" ? "leaning" : "uncertain") : "") : "";
   // round 22 (owner): a verb and an amount ("Toward Ukraine by 3.2% of GDP · €134 bn"); the chart itself keeps its signed axis
   return `<b>${m.c.name}</b>${verb(HEAD_LENS[state.lens], m.bn, m.c)}${state.measure !== "total" ? ` · ${eur(Math.abs(m.bn))}` : ""}${range}<br><span style="opacity:.75">${t("Click for the full breakdown")}</span>`;
 }
@@ -76,28 +76,26 @@ function rankInfo() {
     <p class="sub"><button class="linkbtn" data-goview="map">${t("Map")}</button> · <button class="linkbtn" data-goview="how">${t("How it works")}</button></p>`;
 }
 function renderRanking(root) {
-  // round 15: a headline number whose direction is uncertain (its likely range or a method-band alternative crosses
-  // zero) is not ranked; those countries are named below the chart
+  // Round 29 (owner, 23 October 2026: "I like the ranking. But maybe in the ranking we have the uncertainty there, so we
+  // can just see it"): every country is in the one ranked chart, with its likely range; a number whose direction is not
+  // certain (the likely range or a method-band alternative crosses zero) stays in its place, drawn faded and labelled
+  // "leaning" or "uncertain". Parties to the war are listed under the chart, not ranked; a country with no observation
+  // of its own is left out
   const hq = HEAD_LENS[state.lens], y = state.year;
   const all = Object.values(DATA).filter(eligible).map(metricOf).filter(m => m.v != null).sort((a, b) => b.v - a.v);
-  // round 24b (owner, 22 October 2026): a number whose direction is not certain is "leaning toward Ukraine / Russia" or,
-  // near the middle, "uncertain direction"; neither is ranked, both are named under the chart. Belarus, a party to the
-  // war, is in neither
   const party = all.filter(m => PARTY_TO_WAR.has(m.c.iso3));
-  // round 26 (owner): a country with no observation of its own is not ranked or listed at all
   const nod = y > 2021 ? all.filter(m => noDataAt(m.c, y)) : [];
-  for (const m of nod) all.splice(all.indexOf(m), 1);
-  const unc0 = hq && y > 2021 ? all.filter(m => !party.includes(m) && uncertain(m.c, y, hq)) : [];
-  const big = (a, b) => Math.abs(b.v) - Math.abs(a.v);   // largest first
-  const lean = side => unc0.filter(m => leaning(m.c, y, hq) === side).sort(big);
-  const leanU = lean("ukraine"), leanR = lean("russia"), unc = unc0.filter(m => !leanU.includes(m) && !leanR.includes(m)).sort(big);
-  const rows = all.filter(m => !unc0.includes(m) && !party.includes(m));
+  const rows = all.filter(m => !party.includes(m) && !nod.includes(m));
+  const status = m => (!hq || y <= 2021 || !uncertain(m.c, y, hq) ? "" : leaning(m.c, y, hq) ? "lean" : "unc");
+  rows.forEach(m => (m.st = status(m)));
+  const nUnc = rows.filter(m => m.st).length;
   const diverging = true;   // every view can go either way around zero
   const narrowScreen = root.clientWidth < 600;
-  const W = Math.min(1040, root.clientWidth - 32), rowH = 22, labelW = narrowScreen ? 104 : 150, valW = narrowScreen ? 58 : 76;
+  const W = Math.min(1040, root.clientWidth - 32), rowH = 22, labelW = narrowScreen ? 112 : 170, valW = narrowScreen ? 58 : 76;
   const top = 30, H = top + rows.length * rowH + 10;
   const vals = rows.flatMap(m => [m.v, m.lo ?? m.v, m.hi ?? m.v]);
-  // a square-root scale keeps small countries readable next to large totals; the range is clamped to the 2nd-98th percentile
+  // a compressed (symmetric-log) scale keeps small countries readable next to large totals; the range is clamped to the
+  // 1st-99th percentile. Its axis says so (round 29: the ticks are not evenly spaced in value)
   const sorted = vals.slice().sort((a, b) => a - b);
   const q = p => sorted[Math.min(sorted.length - 1, Math.max(0, Math.round(p * (sorted.length - 1))))] ?? 0;
   const lo = Math.min(0, q(0.01)), hi = Math.max(0, q(0.99));
@@ -107,8 +105,9 @@ function renderRanking(root) {
   const cand = [0, ...base.flatMap(b => [b, -b])].filter(t => t >= x.domain()[0] && t <= x.domain()[1]).sort((a, b) => Math.abs(a) - Math.abs(b));
   const ticks = [];
   for (const t of cand) if (ticks.every(u => Math.abs(x(u) - x(t)) >= (narrowScreen ? 38 : 46))) ticks.push(t);
-  // round 17: one colour rule; below zero is orange only where it is money toward Russia (not support)
+  // one colour rule; below zero is orange only where it is money toward Russia (not support)
   const col = v => (v >= 0 ? "var(--ukr)" : state.lens === "support" ? "var(--ink-soft)" : "var(--rus)");
+  const stLabel = { lean: t("leaning"), unc: t("uncertain") };
   // a group, not an image: its rows are buttons that keyboard and screen reader users reach one by one
   const title = t(LENS_TITLE[state.lens]);
   const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("{title}, {n} countries, ranked", { title, n: rows.length })}">
@@ -117,18 +116,20 @@ function renderRanking(root) {
     ${rows.map((m, i) => {
       const y = top + i * rowH + rowH / 2;
       const w = m.lo != null ? `<line class="whisk" x1="${x(m.lo)}" x2="${x(m.hi)}" y1="${y}" y2="${y}"/>` : `<line class="whisk" x1="${x(0)}" x2="${x(m.v)}" y1="${y}" y2="${y}" style="stroke:${col(m.v)};stroke-opacity:.35;stroke-width:6"/>`;
-      return `<g class="row" tabindex="0" role="button" data-n="${m.c.n}" aria-label="${m.c.name}: ${verb(HEAD_LENS[state.lens], m.bn, m.c)}">
+      const tag = m.st ? ` · ${stLabel[m.st]}` : "";
+      return `<g class="row${m.st ? " rk-" + m.st : ""}" tabindex="0" role="button" data-n="${m.c.n}" aria-label="${m.c.name}: ${verb(HEAD_LENS[state.lens], m.bn, m.c)}${tag}">
         <rect class="hit" x="0" y="${y - rowH / 2}" width="${W}" height="${rowH}" fill="transparent"/>
-        <text class="lbl" x="${labelW - 10}" y="${y + 4}" text-anchor="end">${i + 1}. ${fitName(m.c.name, narrowScreen ? 13 : 22)}<title>${m.c.name}</title></text>
+        <text class="lbl" x="${labelW - 10}" y="${y + 4}" text-anchor="end">${i + 1}. ${fitName(m.c.name, narrowScreen ? 12 : 20)}<title>${m.c.name}${tag}</title></text>
         ${w}<circle class="dot" cx="${x(m.v)}" cy="${y}" r="5.5" fill="${col(m.v)}"/>
-        <text x="${W}" y="${y + 4}" text-anchor="end" style="font-family:var(--font-data);font-size:12px;fill:var(--ink)">${fmtMeasure(m.c, m.bn, state.measure, diverging, false)}</text>
+        <text x="${W}" y="${y + 4}" text-anchor="end" style="font-family:var(--font-data);font-size:12px;fill:var(--ink)">${m.st ? `<tspan class="rk-st">${stLabel[m.st]} </tspan>` : ""}${fmtMeasure(m.c, m.bn, state.measure, diverging, false)}</text>
       </g>`;
     }).join("")}
   </svg>`;
   root.innerHTML = `<div class="view-inner">
+    <p class="rk-key"><span class="rk-k rk-k-sure"></span>${t("certain direction")} <span class="rk-k rk-k-lean"></span>${t("leaning: at least a 65% chance of that direction")} <span class="rk-k rk-k-unc"></span>${t("uncertain: less")} · ${t("{n} of {all} not certain", { n: nUnc, all: rows.length })}</p>
     <div class="chart">${svg}</div>
-    ${[[leanR, "Leaning toward Russia ({n}):", "rus"], [leanU, "Leaning toward Ukraine ({n}):", "ukr"], [unc, "Uncertain direction ({n}):", "unc"], [party, "Party to the war (with Russia), not ranked:", "party"]].filter(([l]) => l.length).map(([l, lab, cls]) => chipGroup(l, t(lab, { n: l.length }), cls)).join("")}
-    ${unc0.length ? `<p class="note-small">${t("Not ranked: the likely range or another reasonable method choice crosses zero. Leaning: at least a 65% chance of that direction under the likely range; uncertain: less.")}</p>` : ""}
+    <p class="note-small">${t("The scale is compressed, so small and large countries both stay readable: equal steps on the axis are not equal amounts; the axis labels give the true values. Dot: middle estimate; line: likely range.")}</p>
+    ${party.length ? chipGroup(party, t("Party to the war (with Russia), not ranked:"), "party") : ""}
   </div>`;
   wireRows(root, rows);
 }

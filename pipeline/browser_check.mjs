@@ -88,11 +88,23 @@ for (const [lens, q] of Object.entries(LENS)) {
     const isoOf = n => DATA[n].iso3;
     return {
       rows: [...document.querySelectorAll("#view g.row[data-n]")].map(g => isoOf(g.dataset.n)),
+      st: Object.fromEntries([...document.querySelectorAll("#view g.row[data-n]")].map(g => [isoOf(g.dataset.n),
+        (g.classList.contains("rk-lean") ? "lean" : g.classList.contains("rk-unc") ? "unc" : "") + (g.querySelector(".rk-st") ? ":label" : "")])),
+      party: [...document.querySelectorAll("#view .rk-party .rk-chip[data-n]")].map(b => isoOf(b.dataset.n)).sort(),
       dotted: [...document.querySelectorAll("path.country.uncertain")].map(p => p.__data__ && DATA[p.__data__.id]).filter(Boolean).map(c => c.iso3),
     };
   });
-  // round 24b (owner): a party to the war (Belarus) is never ranked
-  const want = Object.entries(node.countries).filter(([, c]) => c.gdp >= MIN_GDP && !c[q + "Unc"] && !c.party && c[q] !== null).map(([k]) => k).sort();
+  // a party to the war (Belarus, North Korea) is never ranked but listed under the chart; round 29 (owner): leaning and
+  // uncertain directions are ranked too, faded and labelled ("leaning" when Node's leaning() gives a side, else "uncertain")
+  const want = Object.entries(node.countries).filter(([, c]) => c.gdp >= MIN_GDP && !c.party && c[q] !== null).map(([k]) => k).sort();
+  const wrongSt = Object.entries(got.st).filter(([k, s]) => {
+    const c = node.countries[k]; if (!c) return false;
+    const exp = !c[q + "Unc"] ? "" : (c[q + "Lean"] ? "lean:label" : "unc:label");
+    return s !== exp;
+  }).map(([k, s]) => `${k}=${s || "certain"}`);
+  if (wrongSt.length) problems.push(`${lens} ranking: leaning/uncertain rows not faded and labelled as Node says: ${wrongSt.slice(0, 8).join(" ")}`);
+  const wantParty = Object.entries(node.countries).filter(([, c]) => c.party && c.gdp >= MIN_GDP).map(([k]) => k).sort();
+  if (got.party.join() !== wantParty.join() || !got.party.includes("BLR") || !got.party.includes("PRK")) problems.push(`${lens} ranking: parties listed under the chart ${got.party.join(" ") || "none"}, want ${wantParty.join(" ")} (Belarus and North Korea)`);
   const have = got.rows.slice().sort();
   const extra = have.filter(k => !want.includes(k)), missing = want.filter(k => !have.includes(k));
   if (extra.length || missing.length) problems.push(`${lens} ranking: ranked in the page but not in Node ${extra.join(" ") || "none"}; missing ${missing.join(" ") || "none"}`);
@@ -155,6 +167,7 @@ const r25 = await page.evaluate(() => {
     if (!storyTags(c, k, 2026).length && Math.abs(k.shift) >= 0.001 * c.gdp) noTags.push(c.iso3);
   }
   const blr = byIso.BLR ? storyTags(byIso.BLR, calc(byIso.BLR, 2026), 2026).map(f => f.key) : [];
+  const prk = byIso.PRK ? storyTags(byIso.PRK, calc(byIso.PRK, 2026), 2026).map(f => f.key) : [];
   const signs = [];
   for (const iso of ["DEU", "HUN", "BLR", "CZE", "MNG", "TUR", "PRK", "POL", "IND", "USA"]) {
     const c = byIso[iso];
@@ -164,6 +177,10 @@ const r25 = await page.evaluate(() => {
     // − when it takes away from it, like a balance sheet
     const heads = [...document.querySelectorAll("#panel .psec-h")].map(e => e.textContent).join(" | ");
     if (/[+\u2212]\s*[€\d]|(^|\s)-\s*[€\d]/.test(heads)) signs.push(`${iso} head: ${heads.slice(0, 120)}`);
+    // round 29: the ranges under an unsigned headline are in words ("likely 2.4% to 4.8% toward Ukraine"), never a bare
+    // minus or plus, and never "+<0.01% to +<0.01%"
+    const rng = [...document.querySelectorAll("#panel .nline, #panel .rl-r, #panel .tile .xp-body > p:last-child")].map(e => e.textContent).join(" | ");
+    if (/[+\u2212]\s*[<€\d]|(^|\s)-\s*[€\d]/.test(rng)) signs.push(`${iso} ranges with a bare sign: ...${rng.slice(Math.max(0, rng.search(/[+\u2212]\s*[<€\d]|(^|\s)-\s*[€\d]/) - 60)).slice(0, 120)}`);
     const k2 = calc(c, 2026), S2 = partSections(c, k2);
     document.querySelectorAll("#panel .psec").forEach((el, i) => {
       const sec = S2.filter(x => x.parts.length || Math.abs(x.tile) >= 0.0005)[i];
@@ -178,10 +195,11 @@ const r25 = await page.evaluate(() => {
     });
     if (!document.querySelector("#panel .psec")) signs.push(`${iso}: no sections`);
   }
-  return { bad, noTags, blr, signs };
+  return { bad, noTags, blr, prk, signs };
 });
 if (r25.bad.length) problems.push(`parts sections do not match the tiles or the net: ${r25.bad.slice(0, 5).join("; ")}`);
 if (r25.blr[0] !== "party") problems.push(`Belarus's first tag is not "party": ${r25.blr.join(", ")}`);
+if (r25.prk[0] !== "party") problems.push(`North Korea's first tag is not "party": ${r25.prk.join(", ")}`);
 if (r25.signs.length) problems.push(`wrong signs in the parts sections: ${r25.signs.slice(0, 3).join(" || ")}`);
 
 if (errors.length) problems.push("page errors: " + errors.slice(0, 3).join(" | "));
@@ -189,7 +207,7 @@ await browser.close();
 server.close();
 
 const unc = q => Object.values(node.countries).filter(c => c.gdp >= MIN_GDP && c[q + "Unc"]).length;
-console.log(`parts sections match the tiles and make the net everywhere; Belarus tags ${r25.blr.slice(0, 3).join(", ")}; ${r25.noTags.length} countries with a material net and no tag`);
+console.log(`parts sections match the tiles and make the net everywhere; Belarus tags ${r25.blr.slice(0, 3).join(", ")}, North Korea ${r25.prk.slice(0, 3).join(", ")}; ${r25.noTags.length} countries with a material net and no tag`);
 console.log(`browser check: ${Object.keys(inPage).length} economies; ranked net ${ranked.net}, support ${ranked.support}, payments ${ranked.payments}; direction uncertain (GDP >= EUR 5bn) ua ${unc("ua")}, rus ${unc("rus")}, net ${unc("net")}; small economies' colours: ${nSmall} checked (${nFaded} faded)`);
 if (problems.length) {
   console.log(`MISMATCH: ${problems.length} (bands ${nBand}, flags ${nFlag}, grades ${nGrade})`);

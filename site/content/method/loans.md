@@ -1,10 +1,10 @@
-# Loans: what a loan is really worth (round 12)
+# Loans: what a loan is really worth
 
 About EUR 96.5bn of the aid in the Kiel tracker is loans and loan guarantees (2022 to August 2026, not counting the
 loans repaid from frozen Russian assets). A loan has to be paid back, so EUR 1 lent is worth less than EUR 1 given.
 This page explains how the map values each loan, for Ukraine's gain (the net shift) and for the lender's cost (the
-cost view, not shown on the site since round 19 but kept in the full data download). Round 12 replaced the flat 10% discount rate of round 5 with measured rates and measured expected losses,
-on the owner's decision ([decision log](#view=how&sec=cl-r12)).
+cost view, not shown on the site but kept in the full data download), with measured rates and measured expected losses
+([decisions](#view=how&sec=cl-r12)).
 
 Code: [`pipeline/loan_rates.py`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/loan_rates.py) (rates, losses, values per loan item) and
 `apply_loans_value()` in [`build_data.py`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/build_data.py). Data:
@@ -33,22 +33,22 @@ overstates the gift a little on euro and yen loans, where normal rates were lowe
 
 Central values for a loan paid out in the year shown. "Gift" is the share of face value that counts toward Ukraine.
 
-| loan type | creditor class | expected loss | evidence | gift (round 5, 10%) | gift now (central) |
-|---|---|---|---|---|---|
-| EU MFA+ 2023 (35 years, interest paid by members to 2027) | EU | 9% | not restructured; serviced. Its regulation sets no provisioning rate (budget headroom, [2022/2463](https://eur-lex.europa.eu/eli/reg/2022/2463/oj)), so the EU's usual 9% is kept | 0.80 | 0.67 |
-| EU Ukraine Facility loans 2024–2026 | EU | 9% | as above: no provisioning rate set ([2024/792](https://eur-lex.europa.eu/eli/reg/2024/792/oj)) | 0.79 | 0.66 (2024) |
-| EU emergency MFA 2022 (EUR 1.2bn) | EU | 9% | provisioned under [Regulation 2021/947](https://eur-lex.europa.eu/eli/reg/2021/947/oj), Article 31(5): 9% ([2022/313](https://eur-lex.europa.eu/eli/dec/2022/313/oj)) | 0.67 | 0.55 |
-| EU exceptional MFA 2022 (EUR 1bn and EUR 5bn) | EU | **70%** | the EU set a 70% provisioning rate for these loans ([2022/1201](https://eur-lex.europa.eu/eli/dec/2022/1201/oj), [2022/1628](https://eur-lex.europa.eu/eli/dec/2022/1628/oj)); it judged 9% "not adequate" | 0.64–0.77 | 0.84–0.89 (was 0.52–0.65 at 9%) |
-| EIB loans: the EUR 1.59bn of repurposed ELM loans, 2022 | EU | **70%** | [2022/1628](https://eur-lex.europa.eu/eli/dec/2022/1628/oj) "applies a 70 % provisioning rate to the repurposed ELM loans of EUR 1,59 billion" | 0.52 | 0.80 (was 0.40) |
-| other EIB loans | EU | 9% | no provisioning rate of their own was found | 0.52 | 0.40 |
-| EU Ukraine Support Loan 2026 | repaid only from reparations | about 0.95 | the legal text: "to be repaid by reparations due by Russia" | 0.95 | 0.95 (0.80–1.00) |
-| IBRD loans backed by Japan, the UK, Sweden, Spain, Denmark, the Netherlands, Lithuania | World Bank | 0 | the World Bank is a senior creditor; it is paid first | 0.41 | 0.20 |
-| Canada's loans through the IMF Administered Account | IMF | 0 | the IMF is a senior creditor; Ukraine keeps paying it | 0.44–0.45 | 0.30–0.31 |
-| Japan JICA yen loans 2022 | bilateral (GCU) | 6% (the standstill) | Group of Creditors of Ukraine: payments deferred to 2030 | 0.75 | 0.63 |
-| France Treasury, Germany KfW, Netherlands, Canada Sovereignty Bonds 2022 | bilateral (GCU) | 13–28% (the standstill) | as above | 0.26–0.55 | 0.29–0.48 |
-| Korea Exim 2024 | bilateral (GCU) | 3% (the standstill) | as above | 0.62 | 0.49 |
-| guarantees for lending to Ukrainian firms | the risk covered | 10% / 25% / 40% of face | **judgement**: no published war-risk premium was found to measure it | 0.25 | 0.25 |
-| Poland's central-bank swap line | none | about 0 | repaid within months | 0.01 | 0.01 |
+| loan type | creditor class | expected loss | evidence | gift (central) |
+|---|---|---|---|---|
+| EU MFA+ 2023 (35 years, interest paid by members to 2027) | EU | 9% | not restructured; serviced. Its regulation sets no provisioning rate (budget headroom, [2022/2463](https://eur-lex.europa.eu/eli/reg/2022/2463/oj)), so the EU's usual 9% is kept | 0.67 |
+| EU Ukraine Facility loans 2024–2026 | EU | 9% | as above: no provisioning rate set ([2024/792](https://eur-lex.europa.eu/eli/reg/2024/792/oj)) | 0.66 (2024) |
+| EU emergency MFA 2022 (EUR 1.2bn) | EU | 9% | provisioned under [Regulation 2021/947](https://eur-lex.europa.eu/eli/reg/2021/947/oj), Article 31(5): 9% ([2022/313](https://eur-lex.europa.eu/eli/dec/2022/313/oj)) | 0.55 |
+| EU exceptional MFA 2022 (EUR 1bn and EUR 5bn) | EU | **70%** | the EU set a 70% provisioning rate for these loans ([2022/1201](https://eur-lex.europa.eu/eli/dec/2022/1201/oj), [2022/1628](https://eur-lex.europa.eu/eli/dec/2022/1628/oj)); it judged 9% "not adequate" | 0.84–0.89 |
+| EIB loans: the EUR 1.59bn of repurposed ELM loans, 2022 | EU | **70%** | [2022/1628](https://eur-lex.europa.eu/eli/dec/2022/1628/oj) "applies a 70 % provisioning rate to the repurposed ELM loans of EUR 1,59 billion" | 0.80 |
+| other EIB loans | EU | 9% | no provisioning rate of their own was found | 0.40 |
+| EU Ukraine Support Loan 2026 | repaid only from reparations | about 0.95 | the legal text: "to be repaid by reparations due by Russia" | 0.95 (0.80–1.00) |
+| IBRD loans backed by Japan, the UK, Sweden, Spain, Denmark, the Netherlands, Lithuania | World Bank | 0 | the World Bank is a senior creditor; it is paid first | 0.20 |
+| Canada's loans through the IMF Administered Account | IMF | 0 | the IMF is a senior creditor; Ukraine keeps paying it | 0.30–0.31 |
+| Japan JICA yen loans 2022 | bilateral (GCU) | 6% (the standstill) | Group of Creditors of Ukraine: payments deferred to 2030 | 0.63 |
+| France Treasury, Germany KfW, Netherlands, Canada Sovereignty Bonds 2022 | bilateral (GCU) | 13–28% (the standstill) | as above | 0.29–0.48 |
+| Korea Exim 2024 | bilateral (GCU) | 3% (the standstill) | as above | 0.49 |
+| guarantees for lending to Ukrainian firms | the risk covered | 10% / 25% / 40% of face | **judgement**: no published war-risk premium was found to measure it | 0.25 |
+| Poland's central-bank swap line | none | about 0 | repaid within months | 0.01 |
 
 **The bilateral standstill.** In July 2022 the Group of Creditors of Ukraine (Canada, France, Germany, Italy, Japan,
 Korea, the Netherlands, the UK and the US) suspended Ukraine's payments. The suspension was extended in December 2023
@@ -60,8 +60,8 @@ so it is not in the central value (the cost view's high end allows for it, below
 
 ## Why the promised war yield overstates the gift
 
-In 2022 and 2023 Ukraine's long bonds traded at 15–50 cents per dollar: a promised yield of about 40% a year. The owner's
-first idea was to discount loans at that rate, since it is what the market would have charged. At 40%, a 35-year loan
+In 2022 and 2023 Ukraine's long bonds traded at 15–50 cents per dollar: a promised yield of about 40% a year. One could
+discount loans at that rate, since it is what the market would have charged. At 40%, a 35-year loan
 is almost a full gift (MFA+ 2023: 0.997).
 
 But most of a 40% yield is **compensation for expected default**, not the price of time. Bond buyers expected to lose
@@ -76,7 +76,7 @@ and each class's own measured loss for the risk (B).
 
 - **Low:** Ukraine's normal rate, and no expected loss for any official lender (no standstill either).
 - **Central:** the normal rate, and each class's measured expected loss.
-- **High:** the full promised war yield of the year the loan was paid out, as the owner first proposed. It already
+- **High:** the full promised war yield of the year the loan was paid out. It already
   prices default, so no loss is added. The interest subsidies run for the loan's whole life.
 
 The promised war yield is the yield of Ukraine's longest US dollar bonds, averaged over the year:
@@ -99,7 +99,7 @@ rates.
 
 ## The cost view
 
-Not shown on the site since round 19; the full data download keeps it. The cost view asks what the lender gave up. It now uses the same loan terms and the same expected losses, discounted at
+Not shown on the site; the full data download keeps it. The cost view asks what the lender gave up. It uses the same loan terms and the same expected losses, discounted at
 the **lender's own funding rate** instead of Ukraine's:
 
 - **EU loans:** the EU's reported cost of funding (Ukraine Facility 2.76%, MFA+ 3.15%, other MFA 2.54%; Council
@@ -110,10 +110,9 @@ the **lender's own funding rate** instead of Ukraine's:
 The range uses the same expected losses at 0 (low), central and high: for EU loans the central is the provisioning
 rate the EU set for that loan (70% for the 2022 exceptional MFA and the repurposed EIB loans, 9% otherwise) and the
 high is 70%; bilateral lenders 60% high
-(a final treatment like the bondholders' 60% present-value cut). This replaces the flat 26% of face
- and its half-to-one-and-a-half band. <span class="incode">In the code: `LOAN_GRANT_ELEMENT`</span>
+(a final treatment like the bondholders' 60% present-value cut). <span class="incode">In the code: `LOAN_GRANT_ELEMENT`</span>
 
-Over 2022–2026 the lender's cost of EUR 96.5bn of loans is about EUR 34bn (15–62); at 26% it was EUR 25bn. EU members
+Over 2022–2026 the lender's cost of EUR 96.5bn of loans is about EUR 34bn (likely 15 to 62). EU members
 carry more (their EU loans cost about 45% of face, the Support Loan 95%); Japan, the UK and Canada carry less, because
 IBRD guarantees and IMF-account loans cost the lender almost nothing.
 
@@ -124,7 +123,6 @@ A 35-year loan, repaid from 2033, at the EU's funding cost (about 3%). EU member
 
 | | discount rate | interest paid for Ukraine to | expected loss | value of Ukraine's repayments | gift share | gift EUR bn |
 |---|---|---|---|---|---|---|
-| round 5 (old) | 10% | 2034 | 0 | 0.20 | 0.80 | 14.3 |
 | low | 6.7% | 2027 | 0 | 0.48 | 0.52 | 9.3 |
 | central | 6.7% | 2034 | 9% | 0.36 × 0.91 = 0.33 | 0.67 (A 0.64 + B 0.03) | 12.1 |
 | high | 40.3% (2023 war yield) | the loan's life | 0 | 0.003 | 1.00 | 17.9 |
@@ -134,10 +132,9 @@ A 35-year loan, repaid from 2033, at the EU's funding cost (about 3%). EU member
 
 The rise in the IMF's and World Bank's own lending to Ukraine over 2019–2021 is credited to their members by
 shareholding, as its own part ("Share of new IMF, World Bank and EBRD lending"). Both are paid first and lend at close
-to Ukraine's normal rate, so at 6.7% their loans are worth little to Ukraine: the IMF part falls from EUR 3.1bn
-(round 5, at 10%) to 1.2bn (1.0–8.4), the World Bank part from 0.31bn to 0.15bn. Each round-5 band is moved by the
-grant element of a matching loan at the new rate (an IMF loan of about 5% over 10 years, and the IBRD terms). The EBRD
-and CEB parts use fixed factors that do not depend on the rate and are unchanged.
+to Ukraine's normal rate, so at 6.7% their loans are worth little to Ukraine: the IMF part is EUR 1.2bn (likely 1.0 to 8.4), the World Bank part
+0.15bn. The bands follow the grant element of a matching loan (an IMF loan of about 5% over 10 years, and the IBRD
+terms). The EBRD and CEB parts use fixed factors that do not depend on the rate.
 
 ## Evidence
 
@@ -159,7 +156,7 @@ Every number above has a fetched source, also listed under `loans_value` in
 | Ukraine keeps paying the IMF | USD 279.7m in February 2026 | [Interfax, 6 Mar 2026](https://interfax.com/newsroom/top-stories/116503/) |
 | EU provisioning for MFA loans | 9% normally; 70% for Ukraine in 2022 | [Legislative Observatory 2022/0213(COD)](https://oeil.europarl.europa.eu/oeil/en/document-summary?id=1710888) |
 | the 2026 loan is repaid only from reparations | – | [Council document 5738/26](https://data.consilium.europa.eu/doc/document/ST-5738-2026-INIT/en/pdf) |
-| EU funding cost | 2.54–3.15% | [Council document 8202/26](https://data.consilium.europa.eu/doc/document/ST-8202-2026-INIT/en/pdf) (round 11) |
+| EU funding cost | 2.54–3.15% | [Council document 8202/26](https://data.consilium.europa.eu/doc/document/ST-8202-2026-INIT/en/pdf) |
 | lenders' bond yields | yearly means | [FRED, OECD 10-year yields](https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01DEM156N&cosd=2021-01-01) (same series for each lender) |
 
 **Not verified, so not used for numbers:**
@@ -176,16 +173,16 @@ Every number above has a fetched source, also listed under `loans_value` in
 
 - The EU's expected loss uses the provisioning rate the EU set for each loan as a stand-in (70% for the 2022
   exceptional MFA and the repurposed EIB loans, 9% for the rest): no loss has happened. MFA+ and the Ukraine Facility
-  have no provisioning rate of their own (they rest on budget headroom), so they keep the usual 9%. Decision B,
-  round 12, the owner's choice ([decision log](#view=how&sec=cl-r12)).
+  have no provisioning rate of their own (they rest on budget headroom), so they keep the usual 9%
+  ([decisions](#view=how&sec=cl-r12)).
 - The Ukraine Support Loan's 0.80 / 0.95 / 1.00: whether reparations, or the frozen Russian assets, ever repay it.
 - Guarantees for lending to firms (10% / 25% / 40%), the swap line, near-market DFI loans.
 - How the standstill repays (equal yearly instalments over 2035–2039, interest at the loan's rate in between).
 - The USD normal rate for euro and yen loans.
 
-**The audit's critique (round 13, documented, not changed).** An independent audit (19 October 2026) argues two points:
+**Two open points.**
 
-1. Ukraine's 2021 USD yield of 6.7% already contains a default premium of about 5 points over US Treasuries, so adding the creditor class's expected loss on top partly counts the same risk twice; for senior IMF and World Bank loans, discounting at 6.7% creates a gift the lender does not bear. The audit suggests a risk-free rate plus a normal spread in the loan's currency, with expected-loss scenarios on top.
-2. The EU's provisioning rates (70%) are budget prudence, not loss forecasts; they should be the high case, not the central.
+1. Ukraine's 2021 USD yield of 6.7% already contains a default premium of about 5 points over US Treasuries, so adding the creditor class's expected loss on top partly counts the same risk twice; for senior IMF and World Bank loans, discounting at 6.7% creates a gift the lender does not bear. A risk-free rate plus a normal spread in the loan's currency, with expected-loss scenarios on top, is the alternative.
+2. The EU's provisioning rates (70%) are budget prudence, not loss forecasts; they could be the high case, not the central.
 
-Effect on the headline is small (EU members +0.007 to +0.014 points of GDP). The owner kept decision B (provisioning rates as expected losses) and the 6.7% normal rate; both critiques are recorded in [decisions](#view=how&sec=cl-r13). The method band on the map shows the result with loans at the war-time yield instead.
+Either would change the headline little (EU members +0.007 to +0.014 points of GDP); both are recorded in [decisions](#view=how&sec=cl-r13). The method band on the map shows the result with loans at the war-time yield instead.

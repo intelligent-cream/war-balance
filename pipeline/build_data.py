@@ -577,6 +577,30 @@ def cut_fraction(iso3: str, y: int) -> float:
     return (end - start).days / (end - datetime.date(cy, 1, 1)).days
 
 
+def cut_part_of_gas_fall(iso3: str, y: int) -> float:
+    """Round 29 (audit 29, economist: Italy's "gas cut off by Russia" took in its own move away from Russian gas): in a
+    year after the cut, only the gas the country was still buying just before the cut was stopped by it; the rest of that
+    year's fall against the pre-war level had already happened by the country's own choice. Share of the year's gas fall
+    that the cut explains: (gas bought the year before the cut - gas bought this year) / (pre-war gas - gas bought this
+    year), from transit_gas volumes (energy2.json, bcm). 1 where there are no volumes, or for a cut in 2022 (the year
+    before is the pre-war level)."""
+    d = RUSSIA_GAS_CUT.get(iso3)
+    tg = (E2.get("transit_gas") or {}).get("countries", {}).get(iso3)
+    if not d or not tg:
+        return 1.0
+    bcm = {int(k): v["central"] for k, v in tg["gas_from_rus_bcm"].items()}
+    cy = int(d[:4])
+    if cy <= 2022:
+        return 1.0
+    pre = sum(bcm.get(x, 0.0) for x in (2019, 2020, 2021)) / 3
+    before = bcm.get(cy - 1, pre)
+    now = bcm.get(y, 0.0) / (FRAC[YEARS.index(y)] or 1.0)
+    fall = pre - now
+    if fall <= 0:
+        return 0.0
+    return max(0.0, min(1.0, (before - now) / fall))
+
+
 def fall_of(v: dict) -> float:
     """Round 16: the map's fall in one year of sanctions_share.json, kept as fall_map where stop dates moved the
     required part (apply_stop_dates), else the required euros over the required share."""
@@ -1494,7 +1518,7 @@ def build() -> dict:
                 # ended (RUSSIA_GAS_CUT), shown as "cut off by Russia or by the end of transit"; a label only. Round 14:
                 # from the cut date (the first year in part), and Poland's gas part from volumes
                 cut = sum(
-                    gas_part_r14(iso3, int(y), v) * cut_fraction(iso3, int(y)) * fall_of(v)
+                    gas_part_r14(iso3, int(y), v) * cut_fraction(iso3, int(y)) * cut_part_of_gas_fall(iso3, int(y)) * fall_of(v)
                     + (v.get("stopped_by_russia_eurbn") or 0.0)
                     for y, v in (d.get(flow) or {}).items()
                     if y.isdigit() and v.get("mandated_share_map") and fall_of(v) and flow == "to_rus"
@@ -1853,7 +1877,7 @@ SOURCE_TYPE = {
     "assumptions_r11_gain": "notes", "assumptions_r11_rules": "notes", "assumptions_r11_hubs": "notes",
     "assumptions_r11_people": "notes",
     "refugees_gain": "data", "north_korea_r24": "press", "military_delivered": "ours", "windfall_band": "ours",
-    "pipeline_exemption": "report", "belarus_party": "report",
+    "pipeline_exemption": "report", "belarus_party": "report", "north_korea_party": "report",
 }  # fmt: skip
 # news sites and encyclopedias: a link there is a press report, whatever the research file called it
 PRESS_HOSTS = (
@@ -1866,7 +1890,7 @@ PRESS_HOSTS = (
     "kun.uz", "gazeta.uz", "eurasianet", "jiji.com", "kyodo", "japantimes", "nikkei", "scmp", "caixin",
     "globaltimes", "xinhua", "sofiaglobe", "globalnews", "usm.media", "hartvannederland", "kathimerini",
     "lemonde", "lefigaro", "spiegel", "handelsblatt", "faz.net", "zeit.de", "corriere", "ansa.it", "elpais",
-    "kyivpost", "euronews", "apnews", "cnbc", "forbes", "insider", "occrp", "pozirk", "alta.ru", "zerno.ru",
+    "kyivpost", "euronews", "apnews", "nbcnews", "cnbc", "forbes", "insider", "occrp", "pozirk", "alta.ru", "zerno.ru",
     "infomarket.md", "newsmaker.md", "rtp.pt", "aa.com.tr", "argusmedia", "lloydslist", "tradewinds", "splash247",
 )  # fmt: skip
 LINK_FIXES = json.loads((RESEARCH / "link_fixes.json").read_text())["fixes"]
@@ -3516,6 +3540,36 @@ def party_to_war(countries: dict[str, dict], src: Sources) -> None:
         c = countries.get(iso3)
         if c:
             c["party_to_war"] = {"side": "russia", "src": ["co_belligerent", sid]}
+    # Round 29 (owner, 23 October 2026: "I think North Korea is a party to the war. Maybe."): North Korea's troops fought
+    # for Russia in the Kursk region from late 2024, confirmed by North Korea itself on 28 April 2025 (KCNA), and it
+    # supplied shells and missiles (UN MSMT/2025/1). To undo: remove this block and "PRK" from PARTY_TO_WAR in index.html
+    nk = src.add(
+        "north_korea_party",
+        "North Korea's troops in Russia's war: UN Multilateral Sanctions Monitoring Team report MSMT/2025/1 and North Korea's own confirmation of 28 April 2025",
+        "https://msmt.info/api/file/download/18858",
+        "2025-04-28",
+        "North Korea is shown as a party to the war (round 29, the owner)",
+    )
+    src.items[nk]["links"] = [
+        {
+            "title": "MSMT/2025/1 (29 May 2025): Unlawful military cooperation between North Korea and Russia, paragraphs 25-26: over 11,000 troops deployed in late 2024, over 3,000 more in January-March 2025",
+            "url": "https://msmt.info/api/file/download/18858",
+            "kind": "primary",
+        },
+        {
+            "title": "Kyiv Independent (28 April 2025): North Korea confirms for first time it has deployed troops to fight alongside Russia in Kursk Oblast",
+            "url": "https://kyivindependent.com/north-korea-confirms-for-first-time-it-has-deployed-troops-to-fight-alongside-russia-in-kursk-oblast/",
+            "kind": "secondary",
+        },
+        {
+            "title": "NBC News (28 April 2025): North Korea confirms it sent troops to Russia, calling them heroes",
+            "url": "https://www.nbcnews.com/world/asia/north-korea-confirms-sent-troops-russia-calling-heroes-rcna203245",
+            "kind": "secondary",
+        },
+    ]
+    c = countries.get("PRK")
+    if c:
+        c["party_to_war"] = {"side": "russia", "src": [nk]}
 
 
 def refugee_common_cost(countries: dict[str, dict]) -> None:

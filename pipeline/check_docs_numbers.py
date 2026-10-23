@@ -6,6 +6,11 @@ follows it:
 
     Germany's support for Ukraine is +1.7%<!-- n:DEU.ua -->
 
+A figure written without its sign, in words ("raised Russia's earnings from trade by 6.14%"), carries " abs" in its
+tag and is compared with the size of the value:
+
+    Hungary raised Russia's earnings from trade by 6.14%<!-- n:HUN.rus abs -->
+
 The tag names a country (ISO3) and a quantity, computed with the map's own model (pipeline/site_numbers.mjs):
 
     ua, rus, net                   support for Ukraine, change in payments to Russia, net: % of GDP, 2022-August 2026
@@ -34,7 +39,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-TAG = re.compile(r"([+\-−]?\d[\d,]*(?:\.\d+)?)\s*(?:%|bn|pp)?\)?\s*<!-- n:([A-Z]{3}|WORLD)\.([\w.]+) -->")
+TAG = re.compile(r"([+\-−]?\d[\d,]*(?:\.\d+)?)\s*(?:%|bn|pp)?\)?\s*<!-- n:([A-Z]{3}|WORLD)\.([\w.]+)( abs)? -->")
 
 
 def model() -> dict | None:
@@ -68,9 +73,11 @@ def check(m: dict) -> tuple[list[str], int]:
         for i, line in enumerate(f.read_text().splitlines(), 1):
             for mt in TAG.finditer(line):
                 n += 1
-                raw, who, what = mt.groups()
+                raw, who, what, absolute = mt.groups()
                 num = float(raw.replace("−", "-").replace(",", ""))
                 want = value(m, who, what)
+                if absolute and want is not None:
+                    num, want = abs(num), abs(want)
                 dec = len(raw.split(".")[1]) if "." in raw else 0
                 tol = max(0.5 * 10**-dec, 0.006)
                 if want is None or abs(num - want) > tol + 1e-9:

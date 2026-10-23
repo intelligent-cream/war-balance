@@ -2,7 +2,7 @@
 
 Money that reaches Russia outside ordinary trade: payments for Russian nuclear projects and repayments of Russia's
 state loans, purchases of Russian weapons, and money moved by companies (foreign companies leaving Russia, Russian
-companies abroad sending profits home). Added in round 5. Each is a yearly change against the pre-war level, stored as
+companies abroad sending profits home). Each is a yearly change against the pre-war level, stored as
 an extra part (`add_extra()` in [build_data.py](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/build_data.py), `c.extra` in `data.json`) and shown in the
 country breakdown like any other part.
 
@@ -25,14 +25,14 @@ Code: `apply_state_finance()`; data: [`russia_state_finance.json`](https://githu
 
 | country | 2022–2026, EUR bn, money (toward Russia +) | shown on the map, EUR bn (toward Ukraine +) | why |
 |---|---|---|---|
-| Türkiye | −2.5 | +0.61 | customs over-count of Akkuyu equipment removed; on the map at Russia's net gain on the goods it replaces (round 10) |
+| Türkiye | −2.5 | +0.61 | customs over-count of Akkuyu equipment removed; on the map at Russia's net gain on the goods it replaces |
 | Hungary | +0.8 | −0.78 | Paks II payments and loan prepayments (certainty D) |
 | Viet Nam | −0.7 | +0.71 | stopped paying in 2023 (blocked payment channels) |
 | Iraq | −0.4 | +0.37 | stopped paying |
 
-The two columns have opposite signs because the research counts money toward Russia and the map counts the shift toward Ukraine. Loan payments count in full. The customs correction (Türkiye, Egypt) comes out of payments that the map counts at Russia's net gain, so it is rescaled to that gain ([overview](#view=how&sec=m-overview-the-net-gain-rule-round-10)). Belarus's deferrals (EUR −1.1bn) are not on the map (below).
+The two columns have opposite signs because the research counts money toward Russia and the map counts the shift toward Ukraine. Loan payments count in full. The customs correction (Türkiye, Egypt) comes out of payments that the map counts at Russia's net gain, so it is rescaled to that gain ([overview](#view=how&sec=m-overview-the-net-gain-rule)). Belarus's deferrals (EUR −1.1bn) are not on the map (below).
 
-Arrears in Viet Nam, Iraq and Bangladesh were caused by sanctions on payment channels, not by choice: they count (the money did not reach Russia) and the country panel says so in a note. **Belarus's** deferrals were granted by Russia and refinanced with new Russian loans, so its loan repayments are left out (round 6); only its nuclear-plant part counts.
+Arrears in Viet Nam, Iraq and Bangladesh were caused by sanctions on payment channels, not by choice: they count (the money did not reach Russia) and the country panel says so in a note. **Belarus's** deferrals were granted by Russia and refinanced with new Russian loans, so its loan repayments are left out; only its nuclear-plant part counts.
 
 ## Weapons bought from Russia
 
@@ -46,24 +46,24 @@ timing, against an expected level without the war that leaves out one-off contra
 
 Biggest changes over 2022–2026 (toward Ukraine = paid less), in money: India +4.3bn, China +3.7, Egypt +2.8, Algeria
 +2.3, Iraq, Viet Nam, Myanmar about +0.5 each; Iran −2.5 (paid more), Saudi Arabia −0.5. The map counts these at
-Russia's net gain on arms (round 10; 0.039–0.050 since round 11), so it shows much smaller values: India +0.19bn, China
+Russia's net gain on arms (0.039–0.050), so it shows much smaller values: India +0.19bn, China
 +0.18, Egypt +0.13, Algeria +0.10, Iran −0.07. A large part of the fall was not the
 buyer's choice: Russia kept its output for its own army and sanctions hit its production (India about 50%, China 70%,
 Egypt 20%, about 60% elsewhere). The country panel says so in a note, like the sanctions split; the number is not
 reduced. Most buyer values after 2021 are educated guesses (certainty D; India and China C).
 
-### Round 6
+### More buyers
 
-18 more buyers were found for the "rest of world" remainder from SIPRI fact sheets ([`arms_r6.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/arms_r6.json),
+18 more buyers are found for the "rest of world" remainder from SIPRI fact sheets ([`arms_r6.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/arms_r6.json),
 [notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/arms_r6-notes.md)): Mali, Burkina Faso, Niger, Libya, Sudan, Ethiopia, Uganda,
 Angola, Nigeria, Laos, Mongolia, Malaysia, Turkmenistan, Thailand, Azerbaijan, Venezuela, Bulgaria, Slovakia. The
-unassigned amount falls from EUR 3.0bn to 1.2bn. **Iran** is counted once: about 35% (10–70%) of its payments for
+unassigned amount is EUR 1.2bn. **Iran** is counted once: about 35% (10–70%) of its payments for
 Russian arms were settled in drones and missiles that are already counted as weapons sent to Russia, so that part
 (EUR 1.2bn central) is taken off its arms payments.
 
 ## Companies leaving Russia
 
-**Since round 14b: not in the totals; a marker on the map and a column in the full data download** ([below](#view=how&sec=m-russia-state-and-companies-round-14b-taken-by-russia-not-in-the-totals)).
+**Not in the totals; a marker on the map and a column in the full data download** ([below](#view=how&sec=m-russia-state-and-companies-taken-by-russia-not-in-the-totals)).
 
 Code: `apply_company_flows()`; data: [`company_flows.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows.json)
 ([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows-notes.md)). By the company's home country:
@@ -73,20 +73,17 @@ Code: `apply_company_flows()`; data: [`company_flows.json`](https://github.com/i
 - **Forced discount**: sales at least 50–60% below valuation hand the difference to Russian buyers (2022 case list:
   Renault, Société Générale, McDonald's, Nissan, Equinor, Shell; later years from the contribution). Yandex (Netherlands)
   and Polymetal (Kazakhstan) are left out: their shareholders were mostly international, not Dutch or Kazakh.
-- **Seizures** without payment were not counted until round 13; in round 14 they were, on their own line
-  ([below](#view=how&sec=m-russia-state-and-companies-assets-seized-by-russia-round-14)); since round 14b they are, like the exit costs, out of the totals (a marker).
+- **Seizures** without payment ([below](#view=how&sec=m-russia-state-and-companies-assets-seized-by-russia)) are, like the exit costs, out of the totals (a marker).
 
-Rounds 5 to 14 counted exit payments toward Russia, so a company's exit cost its country on this part. Since round 14b
-they are a sacrifice instead: the taxes the company no longer pays in Russia still count toward Ukraine (company taxes,
-[services-shipping-companies.md](#view=how&sec=m-services-shipping-companies-company-taxes)), and what Russia took on the way out is a
-cost the country carried.
+Exit costs are a sacrifice, not a payment the country chose: the taxes the company no longer pays in Russia count toward
+Ukraine (company taxes, [services-shipping-companies.md](#view=how&sec=m-services-shipping-companies-company-taxes)), and what
+Russia took on the way out is a cost the country carried.
 
-## Assets seized by Russia (round 14)
+## Assets seized by Russia
 
-Raised by the third audit (M4) and approved by the owner: a seizure is as coerced as a forced-sale discount, and both
-hand value to Russia (its state or Russian firms). Until round 13 discounts counted and seizures did not, so leaving
-Russia lowered a country's score while having one's company seized did not. In round 14 seizures counted as money
-taken by Russia, on their own line, "Seized by Russia (companies' assets)", toward Russia in the second headline number (trade with Russia). **Since round 14b** (raised by the owner) seizures and forced exit costs are both out of the totals: a marker on the map and a column in the full data download (`taken` in `data.json`; [above](#view=how&sec=m-russia-state-and-companies-round-14b-taken-by-russia-not-in-the-totals)).
+A seizure is as coerced as a forced-sale discount, and both hand value to Russia (its state or Russian firms). Like
+forced exit costs, seizures are out of the totals: a marker on the map and a column in the full data download (`taken`
+in `data.json`; [below](#view=how&sec=m-russia-state-and-companies-taken-by-russia-not-in-the-totals)).
 
 - **Data**: `seizure` in [`company_flows.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows.json): asset value lost by the
   foreign owner minus anything received abroad, in the year control was lost, by the company's home country. Cases:
@@ -102,17 +99,15 @@ taken by Russia, on their own line, "Seized by Russia (companies' assets)", towa
   DKK 7bn ([Interfax](https://interfax.com/newsroom/top-stories/99188/)), Danone's EUR 0.2bn plus about 0.5bn of
   currency adjustments ([Interfax](https://interfax.com/newsroom/top-stories/93000/)), and the KSE Institute's case
   list ([Annex 1](https://kse.ua/wp-content/uploads/2025/03/KSE_Assessing-Foreign-Companies-Losses-in-Russia.pdf)),
-  all fetched in round 14. Certainty B for named company write-downs, C for court seizures and aircraft.
+  all fetched. Certainty B for named company write-downs, C for court seizures and aircraft.
 - **Largest** (EUR bn, 2022–2026): Germany 9.5, the US 4.9, the UK 3.9, Austria 3.4, Ireland 2.8 (aircraft lessors),
-  Finland 1.7, Belgium 1.0, Denmark 1.0. Effect on the net in round 14 (% of GDP): Austria +0.26 → −0.43, Finland
-  −0.62, Ireland −0.49, Denmark −0.25, Germany −0.22, Belgium −0.16; undone in round 14b, when seizures moved to the
-  cost view.
+  Finland 1.7, Belgium 1.0, Denmark 1.0.
 - **What it does not include**: write-downs of businesses that were sold (their loss is in the forced discount) and
   frozen dividends; a book value can differ from what Russia gained.
 
-## Round 14b: taken by Russia, not in the totals
+## Taken by Russia, not in the totals
 
-Raised by the owner. Assets seized by Russia (decree 302 temporary management, expropriation, court seizures, leased
+Assets seized by Russia (decree 302 temporary management, expropriation, court seizures, leased
 aircraft) and forced exit costs (the forced discount when companies sold out, and the "voluntary contribution" or exit
 fee paid to Russia's budget) are:
 
@@ -121,14 +116,12 @@ fee paid to Russia's budget) are:
 
 The country did not choose to move that money; Russia took it. So:
 
-- **Totals:** neither is in the net shift or in either headline number (support for Ukraine; trade with Russia). This reverses round 5, which counted forced discounts and exit fees, and round 14 (audit M4), which counted
-  seizures.
-- **Cost view (until round 19):** both counted in the cost to the country, like the energy switching cost: "Seized by Russia (companies' assets)"
-  and "Forced sales: discount and exit fee taken by Russia", positive (`taken` in `data.json`, by home country, with the
-  same values, ranges and certainty letters as before). Since round 19 the site no longer shows the cost view (the
-  owner removed it); the cost stays in the full data download, labelled, and these two are a marker.
+- **Totals:** neither is in the net shift or in either headline number (support for Ukraine; Russia's earnings from trade).
+- **Cost view:** both count in the cost to the country, like the energy switching cost: "Seized by Russia (companies' assets)"
+  and "Forced sales: discount and exit fee taken by Russia", positive (`taken` in `data.json`, by home country). The
+  site does not show the cost view; it stays in the full data download, labelled, and these two are a marker.
 - **Shown apart:** the panel says "Russia took €X from companies of this country (seizures and forced sales); not in
-  the totals" (until round 19 it added "counted in the cost to the country"); the full data CSV and the parts CSV have columns marked "not in totals"; the map shows a
+  the totals"; the full data CSV and the parts CSV have columns marked "not in totals"; the map shows a
   square marker (layer "Taken by Russia") where Russia took at least 0.1% of a year's GDP.
 - **Method band:** no alternative includes them (the alternatives are rebuilt with the same rule).
 - **Check:** `check_data.py` check 25 fails if a country carries `exits` or `seized` among the parts of the net, if a
@@ -137,8 +130,7 @@ The country did not choose to move that money; Russia took it. So:
 
 Largest amounts, 2022 to August 2026 (EUR bn, seizures + forced exits): Germany 9.5 + 2.4, the US 5.0 + 5.2, the UK
 3.9 + 3.9, France 0.7 + 6.1, the Netherlands 0.6 + 3.4, Austria 3.4 + 0.2, Ireland 2.8 + 0.3, Finland 1.7 + 0.7,
-Denmark 1.0 + 1.0, Japan 1.0 + 1.1. Effect on the net (% of a year's GDP): Finland +0.88, Austria +0.72, Ireland
-+0.54, Denmark +0.52, Norway +0.37, the Netherlands +0.35, Germany +0.27, France +0.23, the UK +0.23.
+Denmark 1.0 + 1.0, Japan 1.0 + 1.1.
 
 ## Russian-owned companies abroad
 
@@ -147,8 +139,8 @@ Profits Russian parents receive from their companies abroad, by host country, ag
 Viet Nam, Russian banks. Trusteeships that stopped transfers count toward Ukraine: Germany (Rosneft Deutschland,
 Gazprom Germania, now SEFE) about EUR 1.3bn over 2022–2026. Mostly estimates (certainty D) except Serbia.
 
-**Round 10: metals, mining and chemicals plants.** Prompted by a reader asking about Rusal's Aughinish Alumina in
-Limerick, Russian-owned industrial plants abroad were added ([`russian_owned_r10.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/russian_owned_r10.json),
+**Metals, mining and chemicals plants.** Prompted by a reader asking about Rusal's Aughinish Alumina in
+Limerick, Russian-owned industrial plants abroad are included ([`russian_owned_r10.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/russian_owned_r10.json),
 [notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/russian_owned_r10-notes.md)), by host country, in the same part. They send little
 home: about EUR 0.1–0.2bn a year in total, before and after the war, and the change against 2019–2021 stays within
 ±0.05bn a year.
@@ -157,7 +149,7 @@ home: about EUR 0.1–0.2bn a year in total, before and after the war, and the c
   2023, 240m at the end of 2024), so it cannot legally pay one; for 2024 none was paid (pre-tax profit USD 119m).
   Profit can leave through prices charged to Rusal's trading companies, which public data do not show. Its alumina
   sold to Russia (Eurostat: EUR 0.11bn in 2019, 0.16bn in 2021, 0.35bn in 2024) is already in Ireland's exports to
-  Russia, counted at the money rule like all sales to Russia ([trade.md](#view=how&sec=m-trade-profit-not-revenue)).
+  Russia, counted at the seller's net gain like all sales to Russia ([trade.md](#view=how&sec=m-trade-profit-not-revenue)).
 - **Sweden, KUBAL (Rusal):** about EUR 0.07bn sent to its Cyprus parent in 2023 and a small dividend in 2024; none
   in 2026, after a police raid over suspected sanctions breaches froze its payments.
 - **Belgium, Denmark, Italy, France (NLMK's plants; EuroChem Antwerpen):** about zero; the steel plants lose money and
@@ -168,17 +160,16 @@ home: about EUR 0.1–0.2bn a year in total, before and after the war, and the c
 - **Angola, Catoca (Alrosa 41%):** USD 322m of dividends for 2021–2023 blocked; the stake was sold in May 2025.
 - **USA and Canada, Evraz North America:** zero after the UK sanctions of May 2022; sold in August 2025.
 
-## Frozen central-bank reserves (round 7)
+## Frozen central-bank reserves
 
-**Round 16 (review 5 H4, approved by the owner): a line of its own, added to the net only.** The return Russia lost
-on its frozen reserves is not a payment, so it is no longer inside trade with Russia: not on that map,
+**A line of its own, added to the net only.** The return Russia lost
+on its frozen reserves is not a payment, so it is not inside Russia's earnings from trade: not on that map,
 in its ranking or in its world total. It is a third line, **"Russian money frozen"**, shown in the panel under the two
 numbers, in the CSV and JSON downloads and [its money flow](#view=how&flow=frozen), and added to the
 net only (`OWN_LINE` and `frozenLine()` in `index.html`; check 34). The net is therefore support for Ukraine plus the
-trade with Russia plus Russian money frozen. It is still not something the country gave Ukraine (what
+cut in Russia's earnings from trade plus Russian money frozen. It is still not something the country gave Ukraine (what
 Ukraine receives from this return, the G7 ERA loans, is already left out of donors' aid), so it is not in support for
-Ukraine either. Before (round 14, audit M6) it was its own line inside trade with Russia; it made up two-thirds of
-Belgium's payments number (+1.86% → +0.62%; its net is unchanged at +2.81%).
+Ukraine either. For Belgium it is large: two thirds of what would otherwise be its trade number.
 
 **The one-third host share (a judgement).** The freeze is an EU decision, taken by all members and renewed by
 unanimity, so most of the return Russia lost is credited to all EU members by their share of EU-level aid. The host
@@ -186,7 +177,7 @@ gets one third on top of that share for Euroclear (Belgium) and Clearstream (Lux
 (arbitration and court claims by Russia), the political exposure and the custody, which the other members do not. One
 third is a round judgement between the two corners: 0 (the freeze as purely collective) and 1 (custody alone decides,
 which would give Belgium the whole of a decision all members took). It is worth about 1.2 points of Belgium's GDP at
-the central value (review 5's estimate; the decisions page said about 0.8 until round 16). It is not in the method
+the central value. It is not in the method
 band: it moves where the credit lands between EU members, not its total or sign for the EU.
 
 About EUR 260bn of the Bank of Russia's reserves have been immobilised since 28 February 2022, about 185bn at
@@ -204,7 +195,7 @@ have earned for Russia without the freeze: money Russia did not get, so toward U
 - **The low end** allows for Russia having spent part of the reserves without a freeze (× 0.8).
 - **No double count** with the G7 ERA loans, which are repaid from this return and already left out of donors' aid.
   Most of the July 2024 windfall tranche went to the European Peace Facility; Kiel has not counted the EPF since
-  tracker version 16 (round 16 check), so none of it sits in members' EU shares and there is no overlap.
+  tracker version 16, so none of it sits in members' EU shares and there is no overlap.
 - **Left out**: private sanctioned assets (about EUR 28bn in the EU): private money, much of it yachts and property
   that earn nothing. Reserves held in China (about USD 103bn) and gold held in Russia were not frozen.
 
