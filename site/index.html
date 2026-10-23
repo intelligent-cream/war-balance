@@ -2258,7 +2258,7 @@ function howSum(c) {
   const opts = Object.values(DATA).filter(o => (o.gdp || 0) >= MIN_GDP_RANK && !PARTY_TO_WAR.has(o.iso3)).sort((a, b) => a.name.localeCompare(b.name, LANG));
   return `<p class="hs-c"><label>${t("Country")} <select id="how-country">${opts.map(o => `<option value="${o.iso3}"${o === c ? " selected" : ""}>${o.name}</option>`).join("")}</select></label> · ${periodText()}</p>
     <div class="hs-eq">${tile("ua", t("Support for Ukraine"), k.uaBal)}<i>+</i>${tile("ru", t("Cut in Russia's earnings from trade"), k.rusBal)}<i>+</i>${tile("fz", t("Russian money frozen"), k.frozen)}<i>=</i>
-      ${tile("net " + (k.shift >= 0 ? "ua" : "ru"), t("Net"), k.shift, `${g(k.shift)} · ${t("likely {lo} to {hi}", { lo: eur(k.shiftLo, true), hi: eur(k.shiftHi, true) })} · ${t(CERT_WORD[k.shiftCert] || "")}`)}</div>
+      ${tile("net " + (k.shift >= 0 ? "ua" : "ru"), t("Net"), k.shift, `${g(k.shift)} · ${t("likely {lo} to {hi}", { lo: eur(k.shiftLo, true), hi: eur(k.shiftHi, true) })}${k.shiftCert ? " · " + t(CERT_WORD[k.shiftCert]) : ""}`)}</div>
     <div class="hs-bar" role="list">${pos.map(p => link(p, `class="hs-seg ${howSide(p.k)}" role="listitem" style="flex:${Math.abs(p.v) / tot}" title="${esc(plainName(p, c))}: ${eur(p.v, true)}">`)).join("")}</div>
     <ul class="hs-key">${pos.slice(0, 8).map(p => `<li>${link(p, `class="hs-k ${howSide(p.k)}">${esc(plainName(p, c))} <b>${eur(p.v, true)}</b>`)}</li>`).join("")}
       ${neg.length ? `<li class="hs-neg">${t("Takes away:")} ${neg.sort((a, b) => Math.abs(b.v) - Math.abs(a.v)).slice(0, 2).map(p => link(p, `>${esc(plainName(p, c))} ${eur(p.v, true)}`)).join(", ")}${neg.length > 2 ? " " + t("and {n} smaller", { n: neg.length - 2 }) : ""}</li>` : ""}</ul>
