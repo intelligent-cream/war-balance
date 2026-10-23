@@ -2,11 +2,7 @@
 
 Data file: `round4b.json` (generated 2026-10-18). Amounts are EUR bn at ECB annual averages (as in `trade_full.json`).
 2026 means January to August and is not annualised. Ranges are about 90%.
-Scripts are in `working/round4b/`:
-- `ct.sh`: UN Comtrade queries
-- `partners_blr.py`: mirror test for Belarus
-- `build_round4b.py`: assembles the JSON
-- `artefact_fix.py` and `scan.js`: run the map's own `calc()` in a headless browser before and after the fixes
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. The fixes were tested by running the map's own `calc()` in a headless browser before and after.
 
 Nothing in `site/` or `pipeline/` was changed.
 

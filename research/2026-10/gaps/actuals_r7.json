@@ -3,7 +3,7 @@
  "round": 7,
  "unit": "EUR bn nominal (years); EUR bn at 2019-2021 prices (base); index 2019-2021 = 1 (pidx)",
  "layer": "years, base and pidx are the final series as site/data.json carries them (after re-exports, residual, freight and the Brunei refinery step), produced by running the current builder with the input changes in each entry's 'inputs'. The builder should take the 'inputs' (customs-level and parameter changes), not the final values, so nothing is applied twice.",
- "how_to_apply": "Each entry's 'inputs' says which research file value it replaces. A copy of the builder run with these inputs reproduces every 'years'/'base'/'pidx' here (scratch: r7/actuals/scripts/patch.py). Series not listed are unchanged.",
+ "how_to_apply": "Each entry's 'inputs' says which research file value it replaces. A copy of the builder run with these inputs reproduces every 'years'/'base'/'pidx' here. Series not listed are unchanged.",
  "checked_overlaps": {
   "narrow.json": "KAZ/KGZ/MNG to_rus and KAZ from_rus: only the low/high bands of narrow.json's trade_layer (and trade_full's own-report years) change; centrals are kept. ARM to_rus: narrow.json's trade_layer is kept; the change is in reexports.json's gold pass-through. BRN: narrow.json's values were already superseded by laundered_r6.json (apply_brunei_r6); this file replaces laundered_r6's residual. TJK, YEM, SYR are not in narrow.json.",
   "laundered_r6.json": "BRN: replaces refiner.option_b_residual_kept_by_brunei_eur_bn (to_rus and its 2021 base). The deduction passed to fuel buyers (deduct_exported_crude_value_eur_bn) and the buyers' laundered-oil series are NOT changed; only the residual's range is recomputed with one Russian crude share applied to both intake and deduction.",

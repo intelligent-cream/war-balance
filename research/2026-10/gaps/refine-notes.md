@@ -2,16 +2,7 @@
 
 File: `refine.json`. Gathered 2026-10-18. Not yet reviewed by a person. Ranges are meant as about 90%.
 
-Scripts are in `working/refine/scripts/`:
-- `bars.py` reads values off KSE stacked-bar charts from the bar geometry.
-- `rot_tables.py` parses the KSE top-10 ship-manager tables.
-- `shipping_control.py` computes the shipping shares.
-- `ct_fetch.py` and `reexport_hs4.py` run the HS4 re-export match.
-- `togo.py` and `togo_final.py` build the Togo split.
-- `gold.py` builds the gold shares.
-- `assemble.py` and `finalize.py` write the output.
-
-Downloaded reports and Comtrade extracts are in `working/refine/dl/`.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. KSE chart values were read off the bar geometry of the KSE charts.
 
 ## Summary
 

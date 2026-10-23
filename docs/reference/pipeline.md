@@ -9,15 +9,17 @@ Everything the map shows comes from one file, `site/data.json`, built by one scr
 uv run python pipeline/loan_rates.py        # only after changing a loan input: rewrites loans_value.json (round 12)
 uv run python pipeline/build_data.py        # research/ -> site/data.json and research/2026-10/gaps.md
 uv run python pipeline/check_data.py        # checks; exits non-zero on any FAIL
+uv run pytest -q                            # unit tests (pipeline/tests/, under a second)
 cd site && python3 -m http.server 8000      # open http://localhost:8000
 node pipeline/share_cards.mjs               # optional: share images and a page per country
 node pipeline/browser_check.mjs             # optional, also run by check_data.py (check 32): the page in a real browser matches the model
 ```
 
 - [`setup.sh`](../../setup.sh) runs `uv sync` and `uv run pre-commit install`. The hooks ([`.pre-commit-config.yaml`](../../.pre-commit-config.yaml)) check whitespace, YAML and JSON, file size (2 MB) and run `ruff` and `ruff-format` (line length 120, [`pyproject.toml`](../../pyproject.toml)). Python 3.12+, one dependency: `pycountry`.
-- `build_data.py` writes `site/data.json` (compact JSON, about 1.4 MB) and `site/detail.json` (the per-part coverage notes, loaded after the map), regenerates [`research/2026-10/gaps.md`](../../research/2026-10/gaps.md) (`write_gaps_report()`), and prints the number of entries and sources.
+- `build_data.py` writes `site/data.json` (compact JSON, about 2.2 MB) and `site/detail.json` (about 1.0 MB: the per-part coverage notes and the method band's alternatives, loaded after the map), regenerates [`research/2026-10/gaps.md`](../../research/2026-10/gaps.md) (`write_gaps_report()`), and prints the number of entries and sources. It takes about 30 seconds (the method band rebuilds the model once per alternative). The output is deterministic: two builds give byte-identical files, apart from the build date (`generated` and the "updated" date in `status_html`, both the newest date in `site/content/changelog.md`); round 29 sorted the keys that came from set iteration in `method_alternatives()`.
 - [`share_cards.mjs`](../../pipeline/share_cards.mjs) needs Node 18+ and Playwright. It serves `site/`, opens the map in Chromium and renders one 1200×630 preview card per country (`site/share/<iso>.png`), a page per country (`site/c/<iso>.html`) whose link preview shows that card, and a world card. It uses the map's own calculations, so cards always match the map. Both output folders are git-ignored.
-- **Deploy**: [`.github/workflows/pages.yml`](../../.github/workflows/pages.yml) runs on pushes to `main`: installs Playwright 1.48.2, runs `share_cards.mjs` and publishes `site/` to GitHub Pages. It does not rebuild `data.json`; the committed file is what goes live.
+- **CI (round 29)**: [`.github/workflows/checks.yml`](../../.github/workflows/checks.yml) runs on every push to `develop`, on pull requests to `develop` and `main`, and before every deploy. With uv 0.11.32 (Python 3.13), Node 20 and Playwright 1.48.2 with its Chromium, it: keeps a copy of the committed `site/data.json` and `site/detail.json`; runs `build_data.py`; fails if the rebuild differs from the committed files ([`pipeline/compare_built.py`](../../pipeline/compare_built.py), build date left out) or changes `research/2026-10/gaps.md`; runs the unit tests; renders the share cards (check 24 reads them); and runs `check_data.py` with `CHECK_DATA_STRICT=1`, so checks 29, 30 and 32 FAIL instead of warning if node or Playwright are missing. So a hand-edited or stale `data.json`, or any FAIL, stops the deploy. After changing a research file or the pipeline, rebuild and commit `site/data.json` and `site/detail.json` together.
+- **Deploy**: [`.github/workflows/pages.yml`](../../.github/workflows/pages.yml) runs on pushes to `main`: it first runs `checks.yml` (above) and deploys only if that passes; then it installs Playwright 1.48.2, runs `share_cards.mjs` and publishes `site/` to GitHub Pages. It does not commit the rebuilt `data.json`; the committed file, checked to match a fresh build, is what goes live.
 
 ## Build order
 
@@ -131,7 +133,7 @@ Common fields inside a series:
 
 ## Checks
 
-[`pipeline/check_data.py`](../../pipeline/check_data.py) prints PASS, WARN or FAIL per check; any FAIL exits non-zero. (Numbering in the file skips 10.)
+[`pipeline/check_data.py`](../../pipeline/check_data.py) prints PASS, WARN or FAIL per check; any FAIL exits non-zero. There are 44 checks (numbered 1-45 in the file, which skips 10); with node, Playwright and the share cards present all 44 pass. Set `CHECK_DATA_STRICT=1` (as CI does) to make the checks that need node or Playwright fail rather than warn when those are missing. The unit tests in [`pipeline/tests/`](../../pipeline/tests/) (`uv run pytest`) cover a few core rules on small inputs: parts adding up to totals (Kiel aid, the EU split, aid categories, `spread()`), the no-data rule (`mark_no_data()`) and the common refugee cost (`refugee_common_cost()`).
 
 | # | check | type |
 |---|---|---|
@@ -169,6 +171,16 @@ Common fields inside a series:
 | 33 | Hong Kong's Russian gold counted once: the share passed to mainland China plus the share exported elsewhere never exceed what Hong Kong imported, and the destination shares add up to one (`hk_gold_r16.json`, round 16) | FAIL |
 | 34 | Russian money frozen only in the net: `OWN_LINE` holds `frozen`, trade with Russia is built from `RUS_PART`, and the world total from the `paid` part only (round 16) | FAIL |
 | 35 | refugee spending flowing back stays small: the hosting-weighted factor is between 1% and 5% (round 16) | FAIL |
+| 36 | a small flow's no-war baseline is the median of its 2019–2021 values at 2019–2021 prices (round 16b) | FAIL |
+| 37 | every source has a type and key documents; no bare homepage or known dead link (round 24) | FAIL |
+| 38 | "Paid Russia less / more" and "Earned less / more from Russia" add up to trade with Russia in every country (round 24b); needs node (skipped without it) | FAIL |
+| 39 | Belarus, a party to the war, has its own map category and is never ranked or listed as leaning (round 24b); needs node (skipped without it) | FAIL |
+| 40 | military aid delivered is no more than allocated (round 24b) | FAIL |
+| 41 | no captive-buyer label; the pipeline-exemption label changes no numbers (round 26) | FAIL |
+| 42 | every story tag is documented with a source, and data tags cite theirs (round 25) | FAIL |
+| 43 | outside benchmark: for the top 20 Kiel donors, the model's aid input (aid before its own adjustments, less the EU share, plus the ERA loans left out) equals Kiel Release 31's `total_allocated` within 1% (`KIEL_TOL`, round 29) | FAIL |
+| 44 | outside benchmark: the model's fossil payments input (`energy.json` `fossil_from_russia`) matches CREA's published totals (`crea.json`) for each year 2021–2025 within 1% (`CREA_TOL`, round 29) | FAIL |
+| 45 | outside benchmark: the refugee input's EU-27 end-of-year counts (`refugees.json`) match Eurostat's EU total (`migr_asytpsm`, raw download) for 2022–2025 within 1% (`REFUGEE_EU_TOL`), and the map's EU-27 count equals the input's (round 29) | FAIL |
 
 **Figures in the docs (round 15).** A headline figure quoted in the site's long-form text (`site/content/`, round 23) is followed by a tag naming the country and quantity, for example `+1.89%<!-- n:POL.ua -->` (support for Ukraine), `n:DEU.net2025` (the net for 2022–2025), `n:DEU.alt_p26.rus` (a method-band alternative) or `n:WORLD.less`. [`pipeline/check_docs_numbers.py`](../../pipeline/check_docs_numbers.py) computes every quantity with the map's own model ([`pipeline/site_numbers.mjs`](../../pipeline/site_numbers.mjs), which runs the "Model" section of `site/index.html` in node) and fails when a tagged figure differs by more than half a unit of its last digit. Run it on its own with `uv run python pipeline/check_docs_numbers.py`; `check_data.py` runs it as check 30. Tag every new headline figure you write.
 

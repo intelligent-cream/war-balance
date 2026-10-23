@@ -1,6 +1,6 @@
 # Weapons at market value (roadmap item 23)
 
-Data: [`weapons_value.json`](weapons_value.json). Scripts and downloads are in the round-5 scratch folder (`weapons_value/split.py`, `model2.py`, `build_json.py`).
+Data: [`weapons_value.json`](weapons_value.json). This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## What this is about
 

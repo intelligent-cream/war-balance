@@ -8888,7 +8888,7 @@
  },
  "sources": [
   {
-   "name": "Back-test errors of research/2026-10/gaps/counterfactual.json (UN Comtrade, BaTiS, World Bank WDI, Pink Sheet; scratch bt.pkl)",
+   "name": "Back-test errors of research/2026-10/gaps/counterfactual.json (UN Comtrade, BaTiS, World Bank WDI, Pink Sheet)",
    "url": "research/2026-10/gaps/counterfactual-notes.md",
    "date": "2026-10-18"
   },

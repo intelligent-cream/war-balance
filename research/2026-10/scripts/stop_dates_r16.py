@@ -4,8 +4,10 @@ sanctions_share-notes.md) for EU members whose imports of a banned fuel stopped 
 product counts as the country's own choice in every year, and pipeline crude that stopped before the exemption ended
 (23 June 2023) is not required either. Writes the amount moved from "required" to "own choice" per country and year.
 
-Needs the sanctions working directory (compute_goods.py, rules.py, annex_codes.json and the Eurostat Comext downloads),
-which is not in the repository, as for sanctions_share.json. Usage:
+Needs the sanctions research directory (compute_goods.py, rules.py, annex_codes.json and the Eurostat Comext
+downloads), which is not in the repository, as for sanctions_share.json: stop_dates_r16.json was produced by the
+project's research step and is kept as a data input, so this script documents how it was made but cannot be rerun from
+the repository alone. Without that directory it stops with a message (exit code 1) instead of a traceback. Usage:
     python3 -I research/2026-10/scripts/stop_dates_r16.py <sanctions workdir> research/2026-10/gaps <out json>
 Evidence for each date: research/2026-10/gaps/stop_dates_r16-notes.md.
 """
@@ -15,6 +17,11 @@ import json
 import os
 import sys
 
+if len(sys.argv) != 4 or not os.path.isfile(os.path.join(sys.argv[1], "compute_goods.py")):
+    sys.exit(
+        "usage: stop_dates_r16.py <sanctions research dir with compute_goods.py> research/2026-10/gaps <out json>\n"
+        "The sanctions research directory is not in the repository; gaps/stop_dates_r16.json is kept as a data input."
+    )
 W, RES, OUT = sys.argv[1], sys.argv[2], sys.argv[3]
 sys.argv = [sys.argv[0], W, RES, "/dev/null"]
 spec = importlib.util.spec_from_file_location("cg", os.path.join(W, "compute_goods.py"))

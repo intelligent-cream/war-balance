@@ -1,8 +1,7 @@
 # Re-exports through transit hubs (to and from Russia)
 
 Data file: `research/2026-10/gaps/reexports.json`. Retrieved 2026-10-17. Unit: EUR bn, current prices, ECB annual average USD/EUR rates. Ranges are roughly 90%.
-Scripts: `working/scripts-reexport/` (`ct.py` fetcher, `f2.py` to `f4.py` downloads, `analyze.py` model, `build.py` assembly, `finalize.py` metadata and output).
-Raw downloads: `working/raw/reexport/` (about 330 UN Comtrade preview files, Comtrade partner reference).
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## What the numbers mean
 

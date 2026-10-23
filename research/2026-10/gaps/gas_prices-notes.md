@@ -122,10 +122,4 @@ The map deflates trade with Russia to pre-war prices. Until now gas used one Eur
 7. **Small LNG buyers and Kazakhstan.** Bases are often a single later year, or swap values. Treat these indices as indicative.
 
 ## Files
-- Scripts are in `working/gasprices/scripts/`:
-  - `fetch_comext.py`, `fetch_comtrade.py` and `fetch_ct_monthly.py` download the raw data.
-  - `parse_comext.py` and `parse_ctm.py` parse it.
-  - `market.py` builds the Brent, TTF, Japan LNG and FX monthly series.
-  - `obs.py` assembles the customs observations.
-  - `build.py` writes the JSON. `show.py` prints the tables.
-- Raw downloads are in `working/gasprices/raw/` (Comext, Comtrade, FRED, ECB). CREA yearly counter data are reused from `working/raw/energy/`, and the earlier Comtrade gas downloads from `working/raw/energy2/comtrade/`.
+- This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.

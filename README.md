@@ -29,7 +29,7 @@ nothing else in the repository repeats it.
 | Folder | What it holds |
 |---|---|
 | `site/` | the website: `index.html`, `views.js`, `views2.js`, `i18n/`, the data (`data.json`, `detail.json`) and `content/` (How it works) |
-| `pipeline/` | `build_data.py` turns the research files into `site/data.json`; `check_data.py` runs the checks |
+| `pipeline/` | `build_data.py` turns the research files into `site/data.json` and `site/detail.json`; `check_data.py` runs the 44 checks; `tests/` holds the unit tests |
 | `research/2026-10/` | every input (JSON) with a notes file beside it: sources, retrieval dates and the reasoning behind each estimate |
 | `docs/reference/` | developer notes: [the pipeline](docs/reference/pipeline.md), [the research files](docs/reference/research-files.md), [the site](docs/reference/site.md) |
 
@@ -37,10 +37,16 @@ Run it yourself:
 
 ```sh
 ./setup.sh                                  # dependencies and pre-commit hooks
-cd pipeline && uv run build_data.py         # rebuild site/data.json from research/
-uv run check_data.py                        # the checks (figures quoted in site/content/ included, via node)
+cd pipeline && uv run build_data.py         # rebuild site/data.json and site/detail.json from research/ (~30 s)
+uv run check_data.py                        # the 44 checks (node and Playwright for the browser checks)
+uv run pytest -q                            # unit tests (pipeline/tests/)
 cd ../site && python3 -m http.server 8000   # open http://localhost:8000
 ```
+
+CI (`.github/workflows/checks.yml`) does the same on every push to `develop`, on pull requests and before every deploy:
+it fails if a fresh build differs from the committed `data.json` and `detail.json` (the build date aside), if any check
+fails or if a unit test fails, so commit the rebuilt files with any change to the research files or the pipeline. Details:
+[docs/reference/pipeline.md](docs/reference/pipeline.md).
 
 ## Corrections
 

@@ -1,7 +1,7 @@
 # "Paid to Russia": a narrower no-war band from physical fuel volumes? (round 8)
 
 Data file: `research/2026-10/gaps/fuel_volume_cf.json`. Generated 2026-10-18. Not yet reviewed by a person.
-Scripts: scratch folder `r8/fuel_volume/scripts/`. Run order: `es_parse.py`, `dl_ct.py` (inputs), `build_vol.py`, `backtest.py`, `analyze.py`, `decide.py`, `frame.py`, `assemble.py`. Downloads are in `r8/fuel_volume/dl/` (`es` = Eurostat, `ct` = Comtrade). All run with `python3 -I`.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 This file moves no money and changes no central value. It only replaces the width of the "expected without the war" band of `to_rus`, for seven countries.
 

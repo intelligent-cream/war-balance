@@ -1,8 +1,7 @@
 # Residual gaps: missing GDP and population, the shortfall in exports to Russia, Hong Kong, territories
 
 Data file: `research/2026-10/gaps/residual.json`. Retrieved 2026-10-17.
-Scripts: `working/scripts-gdp2/` (`hubs2.py`, `gap.py`, `hk.py`, `build_residual.py`, `snaama_gdp.py`, `fb.py`).
-Raw downloads: `working/raw/gdp2/` (UNSD AMA xlsx, UN WPP 2024 csv, World Bank and IMF API, CIA Factbook JSON, Comtrade previews).
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 All values have low/central/high bounds, roughly a 90% range.
 
 ## 1. Population and GDP (2024; EUR bn at 1.08238 USD/EUR)

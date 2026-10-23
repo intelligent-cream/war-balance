@@ -7155,7 +7155,7 @@
   }
  ],
  "notes": [
-  "Not yet reviewed by a person. Generated 2026-10-18 by scratchpad scripts nowar.py and assemble.py (round 7, energy_nowar).",
+  "Not yet reviewed by a person. Generated 2026-10-18 (round 7, energy_nowar). Produced by the project's research step and kept as a data input; the research scripts are not in the repository, and the sources are listed in the notes.",
   "Choice: central = the median of the institutional forecasts and futures dated October 2021 to January 2022 (oil), or the mean of the institutional forecasts and the early/mid-January 2022 futures (gas, coal); low = the lowest pre-war source (mostly October 2021 forecasts, before the Q4-2021 gas squeeze); high = the mid-February 2022 futures, which already held a war-risk premium (TTF Cal-23 rose from ~43 in mid-January to ~52-56 in mid-February and 57-63 on 22-23 February; Brent rose ~10 USD).",
   "2025-2026 lie beyond most pre-war horizons: oil from the World Bank October 2021 path and the Nov 2021 / Jan 2022 futures curves extended at their slope; gas from World Bank and curve extrapolation; certainty D.",
   "Coal futures (Newcastle, API2) for early 2022 are approximate (no free archive found); certainty D. API2 is derived from Newcastle with the pre-war ratio.",

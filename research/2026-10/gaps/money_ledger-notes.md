@@ -1,7 +1,7 @@
 # All-money ledger and stock replacement (round 6, steps A1 and A2)
 
 Data file: `money_ledger.json` (same folder). Generated 2026-10-18. **Not yet reviewed by a person.**
-Scripts and downloads: `scratchpad/r6/money_ledger/` (`scripts/dump.py`, `build.py`, `aggregate.py`, `finalize.py`).
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## 1. What this is
 

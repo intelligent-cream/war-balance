@@ -1,7 +1,7 @@
 # Energy gaps: switching cost, oil discount gain, laundered oil (research 2026-10)
 
 Gathered 2026-10-17. Output: `energy.json` (231 countries, the same list as the "Energy switching cost" section of `gaps-input.json`). Values in EUR bn, low / central / high (meant as ~90% intervals), years 2022-2025 plus 2026 Jan-Aug. **Not yet reviewed by a person.**
-Scripts: `working/scripts-energy/model.py` (model) and `assemble.py` (writes the JSON). Raw downloads: `working/raw/energy/`.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## What replaces what
 `pipeline/build_data.py` modelled the switching cost as 25% of the value of Russian fuel no longer bought (`ENERGY_PREMIUM_SHARE`). It also spread the published discount and laundered-oil totals over years with fixed weights. This file replaces all three with volume x price-gap estimates for every country.

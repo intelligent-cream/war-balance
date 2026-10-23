@@ -1,16 +1,7 @@
 # No-war counterfactual, version 4: nowcasting with realised non-war predictors
 
 Data file: `research/2026-10/gaps/counterfactual.json`. Generated 2026-10-18. Not yet reviewed by a person.
-Scripts: `working/cf/scripts/`. They run in this order:
-1. `dl_totals2.py`, `dl_ua.py`, `dl_hs.py`: downloads.
-2. `data.py`: inputs.
-3. `backtest.py`: models, three tests, and the 2022-2026 predictions.
-4. `summarise.py`: tables, decision, bootstrap.
-5. `build.py`: intervals and per-country output.
-6. `assemble.py`: the JSON.
-7. `explain.py`: diagnostics.
-
-Raw downloads are in `working/cf/raw/`. The bilateral series, deflators and IMF WEO vintages come from `working/trend3/` (see `trend3-notes.md`).
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. The steps were: downloads; inputs; models, three back-tests and the 2022-2026 predictions; tables, decision and bootstrap; intervals and per-country output; the JSON. The bilateral series, deflators and IMF WEO vintages are those of `trend3.json` (see `trend3-notes.md`).
 
 ## Summary
 

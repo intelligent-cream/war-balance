@@ -1,7 +1,7 @@
 # "Paid to Russia": can the no-war band be narrower? (round 7)
 
 Data file: `research/2026-10/gaps/to_rus_cf.json`. Generated 2026-10-18. Not yet reviewed by a person.
-Scripts: scratch folder `r7/to_rus_cf/scripts/`. Run order: `eia_extract.py`, `dl_ag2.py`, `mirror.py` (inputs), `i1_split.py`, `i1_bands.py`, `neigh.py` (idea 1), `i2_lumpy.py` (idea 2), `i3_analog.py`, `analog_band.py` (idea 3), `own.py`, `own_cond.py` (idea 4), `bands_roll.py`, `cell_checks.py`, `calib5.py` (idea 5), `decide.py`, `assemble.py`. Downloads are in `r7/to_rus_cf/dl/`.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 This file moves no money and changes no central value. It only replaces the width of the "expected without the war" band for six countries.
 

@@ -6,14 +6,9 @@ File: `narrow.json`, generated 2026-10-18. Values are EUR bn per year for 2021â€
 
 - **Layer.** Each series is the final series as the map compares it, the same layer as `site/data.json` (`to_rus`, `from_rus`, `svc_bought`, `svc_sold`, `hidden`, `military_rus`). Pipeline adjustments I did not re-examine are kept at their current values. These are re-export pass-through, the residual of missing partner exports, and freight (CIF) removal. They were carried over as the difference between the builder's value and `trade_full.json`, band by band.
 - **`trade_layer`.** Where the change starts at customs level, the entry also has a `trade_layer` object: the corrected `trade_full.json` values (imports_from_RUS or exports_to_RUS, before any adjustment). The builder can take these instead of the final values, so nothing is applied twice.
-- **Reference run.** The reference is a run of the current builder on the current research files with the base-range fix described below (`working/narrow/build_patched.py`, run with FIX=1).
+- **Reference run.** The reference is a run of the current builder on the current research files with the base-range fix described below.
 - **Turkey's price index.** `TUR.to_rus` also carries `pidx`, `pidx_lo` and `pidx_hi`.
-- **Scripts.**
-  - `working/narrow/build_narrow.py` assembles the file.
-  - `working/narrow/calc.py` reproduces the site's `calc()` for the Russia-side parts, optionally with this file overlaid.
-  - `working/narrow/compare.py` gives the widths below.
-  - `working/narrow/ct.py` and `ctbatch.py` fetch Comtrade.
-  - The downloads are in `working/narrow/dl/`.
+- **How it was made.** This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## Structural findings
 

@@ -111,4 +111,4 @@ Sum over countries (central, with range): 2022 7.9 (4.8–17.9), 2023 1.0 (0.4�
 - The BaTiS balanced series for 2022 onward relies on Russian figures that are modelled, because Russia stopped reporting by partner after 2021. For EU reporters it is often 2–7 times their own reported figure, so it is used only as a bound.
 - The services residual is large and has not been assigned to countries. Who earns Russians' extra USD 30bn+ of travel spending is the biggest open question in this file.
 - Several sources come from search-result snippets or secondary reports: the FT figures via GreekReporter and bne, and Swissaid via its press release. Hong Kong's 2026 gold figure comes from one secondary report, which matches the Comtrade 2025 value.
-- Raw downloads are in the scratchpad under `raw/uncovered/` (eurostat, batis, comtrade, cbr). Scripts are in `scripts-uncovered/` (`eurostat_table.py`, `batis_load.py`, `services.py`, `build.py`).
+- This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.

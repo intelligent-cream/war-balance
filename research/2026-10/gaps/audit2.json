@@ -7,7 +7,7 @@
   "sha256_prefix": "9e86583f36b8f928",
   "note": "rebuilt from pipeline/build_data.py and found identical before the audit"
  },
- "how_effects_were_measured": "Each correction is applied to a copy of data.json (working/audit2/patches.py) and the page's own calc(c, 2026) is run for every country; effects are the change in the central shift for 2022 to Aug 2026, EUR bn, at pre-war prices as the map shows it (positive = more toward Ukraine). Nominal amounts are given per question.",
+ "how_effects_were_measured": "Each correction is applied to a copy of data.json and the page's own calc(c, 2026) is run for every country; effects are the change in the central shift for 2022 to Aug 2026, EUR bn, at pre-war prices as the map shows it (positive = more toward Ukraine). Nominal amounts are given per question.",
  "units": "EUR bn; low/central/high are about 90% ranges",
  "sources": {
   "comtrade_gold_uae": {
