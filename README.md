@@ -1,11 +1,11 @@
-# Follow the Money: Ukraine
+# War Balance
 
 Where did each country's money move since the full-scale invasion: toward Ukraine or toward Russia? An interactive
 map of every country's support for Ukraine and Russia's earnings from trade with it (how much less, or more, Russia
 earned: taxes and profit above a normal return, not the full price, war-time prices included), each against what it
 would have done without the war, with sources, ranges and certainty for every number.
 
-**Website: https://followthemoneyukraine.org/**
+**Website: https://warbalance.org/**
 
 Status: **research preview**. The figures were compiled with AI assistance from public sources and have not yet been
 checked line by line by a person. Treat them as estimates and check the sources before quoting one.
@@ -14,12 +14,12 @@ checked line by line by a person. Treat them as estimates and check the sources 
 
 Everything a reader needs is on the website, under **How it works**, written once and kept there:
 
-- [How it works](https://followthemoneyukraine.org/#view=how): how to trace a number, the
-  method, every money flow with its sources, and [the method in full](https://followthemoneyukraine.org/#view=how&sec=method-full)
-- [Limitations](https://followthemoneyukraine.org/#view=how&sec=limitations)
-- [Changelog](https://followthemoneyukraine.org/#view=how&sec=changelog): every update,
+- [How it works](https://warbalance.org/#view=how): how to trace a number, the
+  method, every money flow with its sources, and [the method in full](https://warbalance.org/#view=how&sec=method-full)
+- [Limitations](https://warbalance.org/#view=how&sec=limitations)
+- [Changelog](https://warbalance.org/#view=how&sec=changelog): every update,
   what it changed and every decision behind it
-- [Download the data](https://followthemoneyukraine.org/#view=how&sec=data): CSV and JSON
+- [Download the data](https://warbalance.org/#view=how&sec=data): CSV and JSON
 
 The text behind those pages is in [`site/content/`](site/content/) (Markdown, rendered by the site). Edit it there;
 nothing else in the repository repeats it.

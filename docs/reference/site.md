@@ -57,7 +57,7 @@ check 37 in `check_data.py` holds the rules.
 ## The site's address, search engines and the domain
 
 - **One setting.** The site's own address is `site_url` in `pipeline/site_config.json` (now
-  `https://followthemoneyukraine.org/`); `old_url` is the previous GitHub Pages address. `pipeline/share_cards.mjs`
+  `https://warbalance.org/`); `old_url` is the previous GitHub Pages address. `pipeline/share_cards.mjs`
   reads it for the country pages, the card images, `robots.txt` and `sitemap.xml`. `site/index.html` carries the same
   value in its head (canonical, `og:url`, `og:image`, hreflang alternates) and in `SITE_URL`; check 46 fails if any of
   them, or `site/CNAME`, differs, or if a file in `site/` still gives the old address as the site's own. To move the site
@@ -65,13 +65,14 @@ check 37 in `check_data.py` holds the rules.
 - **Generated files.** `robots.txt` (allow all, with the sitemap) and `sitemap.xml` (the map with its seven language
   versions, `?lang=…`, and every country page `c/<iso>.html`, each with the data's date) are written by
   `share_cards.mjs`, in CI and in the deploy; they are not committed (`.gitignore`), like `site/c/` and `site/share/`.
-- **Structured data.** The map's head has JSON-LD for the website, the publishing organisation ("Follow the Money:
-  Ukraine", no personal names) and the Dataset (licence CC BY 4.0, coverage February 2022 to August 2026, the JSON
+- **Structured data.** The map's head has JSON-LD for the website, the publishing organisation ("War Balance",
+  no personal names) and the Dataset (licence CC BY 4.0, coverage February 2022 to August 2026, the JSON
   download). Each country page has a WebPage that is part of the Dataset.
 - **The custom domain on GitHub Pages.** The deploy uses GitHub Actions, so `site/CNAME` documents the domain but does
-  not set it: in the repository's Settings → Pages → Custom domain, enter `followthemoneyukraine.org`, then tick
-  Enforce HTTPS once the certificate is issued. DNS for the domain is at Cloudflare (CNAME of the apex to
-  `intelligent-cream.github.io`, proxied; `www` and `followthemoneyukraine.com` redirect to the apex).
+  not set it: in the repository's Settings → Pages → Custom domain, enter `warbalance.org`, then tick Enforce
+  HTTPS once the certificate is issued. DNS for the domain is at Cloudflare: four A records for GitHub Pages
+  (185.199.108–111.153, not proxied; no AAAA records) and `www` as a CNAME to `intelligent-cream.github.io`. The
+  earlier addresses (followthemoneyukraine.org and .com) redirect to warbalance.org with Cloudflare redirect rules.
 - **Search Console and Bing Webmaster Tools.** Use the project's own email account. Add the site as a Domain property
   (a DNS TXT record at Cloudflare) or as a URL-prefix property with an HTML tag: put the tag in the head of
-  `site/index.html` next to the canonical link, deploy, verify, then submit `https://followthemoneyukraine.org/sitemap.xml`.
+  `site/index.html` next to the canonical link, deploy, verify, then submit `https://warbalance.org/sitemap.xml`.

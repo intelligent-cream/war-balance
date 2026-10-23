@@ -6,11 +6,11 @@ This page explains how the map values each loan, for Ukraine's gain (the net shi
 cost view, not shown on the site but kept in the full data download), with measured rates and measured expected losses
 ([decisions](#view=how&sec=cl-r12)).
 
-Code: [`pipeline/loan_rates.py`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/loan_rates.py) (rates, losses, values per loan item) and
-`apply_loans_value()` in [`build_data.py`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/build_data.py). Data:
-[`loans_value.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/loans_value.json)
-([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/loans_value-notes.md)); raw downloads in
-[`raw/loan_rates`](https://github.com/intelligent-cream/follow-the-money-ukraine/tree/main/research/2026-10/raw/loan_rates).
+Code: [`pipeline/loan_rates.py`](https://github.com/intelligent-cream/war-balance/blob/main/pipeline/loan_rates.py) (rates, losses, values per loan item) and
+`apply_loans_value()` in [`build_data.py`](https://github.com/intelligent-cream/war-balance/blob/main/pipeline/build_data.py). Data:
+[`loans_value.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/loans_value.json)
+([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/loans_value-notes.md)); raw downloads in
+[`raw/loan_rates`](https://github.com/intelligent-cream/war-balance/tree/main/research/2026-10/raw/loan_rates).
 
 ## The two parts of the gift
 
@@ -139,9 +139,9 @@ terms). The EBRD and CEB parts use fixed factors that do not depend on the rate.
 ## Evidence
 
 Every number above has a fetched source, also listed under `loans_value` in
-[`sources_r11.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/sources_r11.json). Pages and small files are saved in
-[`raw/loan_rates`](https://github.com/intelligent-cream/follow-the-money-ukraine/tree/main/research/2026-10/raw/loan_rates) (large PDFs are listed with their checksum in
-[`MANIFEST.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/raw/MANIFEST.json)).
+[`sources_r11.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/sources_r11.json). Pages and small files are saved in
+[`raw/loan_rates`](https://github.com/intelligent-cream/war-balance/tree/main/research/2026-10/raw/loan_rates) (large PDFs are listed with their checksum in
+[`MANIFEST.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/raw/MANIFEST.json)).
 
 | what | number | source |
 |---|---|---|

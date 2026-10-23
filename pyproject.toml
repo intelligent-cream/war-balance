@@ -1,5 +1,5 @@
 [project]
-name = "follow-the-money-ukraine"
+name = "war-balance"
 version = "0.1.0"
 description = "Follow the money: per country, how much flows to Ukraine and to Russia."
 requires-python = ">=3.12"
