@@ -350,7 +350,7 @@ details.more[open] summary { margin-bottom: 10px; }
 .flow-files a { color: inherit; }
 .ai-note { background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px; padding: 10px 14px; margin: 6px 0 12px; max-width: 80ch; font-size: 14px; line-height: 1.45; }
 .app[data-view]:not([data-view="map"]) #map, .app[data-view]:not([data-view="map"]) #flows, .app[data-view]:not([data-view="map"]) #labels,
-.app[data-view]:not([data-view="map"]) .legend, .app[data-view]:not([data-view="map"]) .fact, .app[data-view]:not([data-view="map"]) .hlpanel { display: none !important; }
+.app[data-view]:not([data-view="map"]) .legend, .app[data-view]:not([data-view="map"]) .fact { display: none !important; }
 .view { position: absolute; inset: 0; overflow: auto; background: var(--surface); z-index: 1; -webkit-overflow-scrolling: touch; }
 .view-inner { max-width: 1080px; margin: 0 auto; padding: 22px max(16px, env(safe-area-inset-left, 0px)) 48px; }
 .view h2 { font-family: var(--font-display); font-weight: 800; font-stretch: 112%; font-size: 24px; letter-spacing: -0.015em; margin: 0 0 4px; }
@@ -390,7 +390,7 @@ details.more[open] summary { margin-bottom: 10px; }
 .panel-head h2:focus { outline: none; }
 .panel-head h2:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 /* ===== Round 17 (redesign B, approved by the owner): the map first. On load only the slim banner, one header line, the
-   one-row legend and two buttons (Highlights, Filters) sit on the map; everything else is behind them ===== */
+   one-row legend and the Filters button sit on the map; everything else is behind them ===== */
 :root { --custom: #fff1c2; --custom-ink: #5c4a0b; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --custom: #4a3d0c; --custom-ink: #f5e2a0; } }
 :root[data-theme="dark"] { --custom: #4a3d0c; --custom-ink: #f5e2a0; }
@@ -411,12 +411,19 @@ details.info > summary::-webkit-details-marker { display: none; }
 .tr .btn { background: var(--surface); font-size: 13.5px; padding: 6px 11px; }
 .btn[aria-expanded="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
 .btn .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--rus); margin-left: 6px; vertical-align: 1px; }
-/* highlights */
-.hlpanel { position: absolute; z-index: 13; top: 8px; right: max(12px, env(safe-area-inset-right, 0px)); width: min(340px, calc(100% - 24px)); background: var(--surface); border: 1px solid var(--line);
-  border-radius: 8px; padding: 8px 10px 10px; box-shadow: 0 8px 24px rgba(0,0,0,.3); }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip-btn { border: 1px solid var(--line); background: transparent; border-radius: 14px; padding: 3px 10px; font-size: 13px; cursor: pointer; color: var(--ink); text-align: left; }
+/* the tags in Filters (round 33) and their card on the map */
+.tgroup { margin: 10px 0 0; }
+.tgroup-h { margin: 0 0 5px; font-size: 12px; font-weight: 600; color: var(--ink-soft); }
+.chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip-btn { border: 1px solid var(--line); background: transparent; border-radius: 14px; padding: 3px 9px; font-size: 12.5px; cursor: pointer; color: var(--ink); text-align: left; line-height: 1.3; }
+.chip-btn .tn { color: var(--ink-soft); font-variant-numeric: tabular-nums; margin-left: 5px; }
 .chip-btn[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.chip-btn[aria-pressed="true"] .tn { color: inherit; opacity: .75; }
+.tsel { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin: 8px 0 0; font-size: 13px; }
+.linkbtn.tclear { font-size: 13px; }
+.fact .tlist { font-size: 13px; color: var(--ink-soft); } .fact .tlist a { color: var(--ink); }
+.fact .tfoot { font-size: 12.5px; margin: 2px 0 0; }
+.rk-tags { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 13px; margin: 0 0 8px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--sea); max-width: max-content; }
 .fact { position: absolute; z-index: 6; left: max(12px, env(safe-area-inset-left, 0px)); bottom: calc(52px + env(safe-area-inset-bottom, 0px)); max-width: min(470px, calc(100% - 24px)); background: var(--surface);
   border: 1px solid var(--line); border-radius: 8px; padding: 9px 34px 9px 12px; box-shadow: 0 6px 20px rgba(0,0,0,.3); font-size: 14px; line-height: 1.45; }
 .fact p { margin: 0 0 4px; } .fact .cav { font-size: 13px; color: var(--ink-soft); } .fact .cav b { color: var(--ink); }
@@ -462,7 +469,7 @@ details.info > summary::-webkit-details-marker { display: none; }
 .tooltip .cav { font-size: 12px; border-left: 3px solid var(--rus); padding-left: 6px; margin-top: 4px; }
 /* the Filters drawer */
 /* round 19 (owner): a persistent top layer. On desktop it sits on the left (the country panel is on the right), above
-   everything else, and the header line, the legend, the highlight card and the views move right to make room */
+   everything else, and the header line, the legend, the tag card and the views move right to make room */
 .drawer { position: absolute; z-index: 45; top: 0; left: 0; bottom: 0; width: var(--dw); max-width: 100%; background: var(--surface); border-right: 1px solid var(--line); overflow: auto;
   padding: 0 18px calc(24px + env(safe-area-inset-bottom, 0px)); box-shadow: 8px 0 24px rgba(0,0,0,.25); font-size: 13.5px; overscroll-behavior: contain; }
 .app { --dw: 360px; }
@@ -686,7 +693,6 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
   /* round 29 (audit: a phone reader never saw the scale): "More" stays, and the legend opens across the screen */
   .legend[data-collapsed="false"] { max-width: calc(100% - 16px); z-index: 30; bottom: calc(58px + env(safe-area-inset-bottom, 0px)); }
   .legend .more { width: calc(100vw - 40px); max-height: 55vh; overflow-y: auto; }
-  .hlpanel { top: auto; bottom: calc(52px + env(safe-area-inset-bottom, 0px)); right: 8px; }
   .fact { left: 8px; right: 8px; max-width: none; bottom: calc(52px + env(safe-area-inset-bottom, 0px)); }
   /* a bottom sheet on phones (round 19: it stays open at the height chosen, half, full or just its handle; drag or tap the
      handle); the map, the buttons and the legend stay usable above it */
@@ -700,7 +706,7 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
   .dhead .grab { display: block; position: absolute; top: 0; left: 50%; width: 96px; height: 22px; margin-left: -48px; border: 0; background: transparent; cursor: grab; padding: 0; }
   .dhead .grab::after { content: ""; position: absolute; top: 7px; left: 30px; width: 36px; height: 4px; border-radius: 2px; background: var(--line); }
   .app[data-drawer="open"] .tr, .app[data-drawer="open"] .legend { bottom: calc(10px + var(--dh, 0px)); }
-  .app[data-drawer="open"] .fact, .app[data-drawer="open"] .hlpanel { bottom: calc(52px + var(--dh, 0px)); }
+  .app[data-drawer="open"] .fact { bottom: calc(52px + var(--dh, 0px)); }
   .app[data-drawer="open"] .view { bottom: var(--dh, 0px); }
   .app[data-drawer="open"] .panel { bottom: var(--dmin, 0px); }
   /* a sheet at nearly full height leaves no room for the buttons and the legend above it: its own × and handle stay */
@@ -966,7 +972,7 @@ li.src-again { color: var(--ink-soft); }
 <div class="app" data-view="map">
   <!-- round 21 (polish, owner): one clean header bar above the map: the site's name and the research-preview note on one
        short line (an honesty requirement, never hidden; "About" opens the full text), the question with its period and ⓘ,
-       and the Highlights and Filters buttons -->
+       and the Filters button -->
   <header class="topbar" id="bar">
     <div class="tb-text">
       <p class="tb-meta"><span class="brand"><img class="brand-logo" src="favicon.svg" alt="" width="16" height="16"><span id="brand">War Balance</span></span>
@@ -984,7 +990,6 @@ li.src-again { color: var(--ink-soft); }
       <button role="tab" data-view="how" aria-selected="false" tabindex="-1" data-i18n="How it works">How it works</button>
     </nav>
     <div class="tr">
-      <button class="btn" id="hlbtn" aria-expanded="false" aria-controls="hlpanel"><span data-i18n="Highlights">Highlights</span><span class="dot" hidden></span></button>
       <button class="btn" id="fbtn" aria-expanded="false" aria-controls="drawer"><span data-i18n="Filters">Filters</span><span class="dot" hidden></span></button>
     </div>
     <div class="aboutpop sample" id="status" role="note" aria-label="Research preview." data-i18n-aria="Research preview." hidden><span data-i18n="Loading data…">Loading data…</span></div>
@@ -1000,7 +1005,6 @@ li.src-again { color: var(--ink-soft); }
 
     <!-- round 17 (redesign B): on load only the legend row sits on the map; round 21: the header line and the two buttons
          moved into the header bar above it -->
-    <div class="hlpanel" id="hlpanel" hidden><p class="dsec" data-i18n="Highlights: pick one to see it on the map">Highlights: pick one to see it on the map</p><div class="chips" id="chips" role="group" aria-label="Highlights" data-i18n-aria="Highlights"></div></div>
     <div class="fact" id="fact" hidden aria-live="polite"></div>
     <div class="tooltip" id="tip" hidden></div>
     <div class="legend" id="legend" data-collapsed="true"></div>
@@ -1028,6 +1032,12 @@ li.src-again { color: var(--ink-soft); }
           <button data-measure="gdp" aria-pressed="true" data-i18n="% of GDP">% of GDP</button>
           <button data-measure="total" aria-pressed="false" data-i18n="Total €">Total €</button>
         </div>
+      </section>
+      <!-- round 33 (owner, 23 October 2026): the story tags as filters, in place of the Highlights -->
+      <section class="dblock" id="tags-block">
+        <h3 class="dsec" id="tags-h" data-i18n="Tags">Tags</h3>
+        <p class="sub" data-i18n="Pick a tag to see which countries share it. Pick up to three to see the countries that have all of them.">Pick a tag to see which countries share it. Pick up to three to see the countries that have all of them.</p>
+        <div id="tagfilters" role="group" aria-labelledby="tags-h"></div>
       </section>
       <section class="dblock">
         <h3 class="dsec"><label for="year" data-i18n="Up to">Up to</label></h3>
@@ -1176,8 +1186,8 @@ function normalise(c) {
 const state = { lens: "net", measure: "gdp", year: 2026, selected: null, compare: null, panel: null,
   flows: false, netBack: true, chpl: false, remit: false, taken: false, rankMeasure: "gdp", flow: null,
   // round 17 (redesign, approved by the owner): the money streams (on, except on phones), the drawer's filters and the
-  // highlight shown; the gross flow lines and the markers are off by default (switched in Filters)
-  streams: true, region: "all", size: 5, hl: null };
+  // tags picked (round 33); the gross flow lines and the markers are off by default (switched in Filters)
+  streams: true, region: "all", size: 5, tags: [] };
 const HEAD_LENS = { support: "ua", payments: "rus", net: "net" };
 // Round 17 (redesign, approved by the owner): "What's counted". The reader can switch parts off (concept 2's switches, an
 // extension of the existing state.netBack switch). OFF holds the part keys switched off; live(), which every total in
@@ -2231,7 +2241,7 @@ document.addEventListener("click", e => {
 });
 window.EXTRA_VIEWS = Object.assign(window.EXTRA_VIEWS || {}, { how: renderHow });
 
-// round 24: on phones the Highlights and Filters buttons step aside while a view is scrolled down (CSS body.tr-away)
+// round 24: on phones the Filters button steps aside while a view is scrolled down (CSS body.tr-away)
 {
   let lastY = 0;
   document.getElementById("view").addEventListener("scroll", e => {
@@ -2404,7 +2414,7 @@ function titleNote() {
 function worldGainText(w) {
   return t("Russia's net gain on goods and fuel, against the level expected without the war, worldwide: from buyers who cut {less}; from buyers who bought more {more}; in total {net}.", { less: eur(-w.less, true), more: eur(w.more, true), net: eur(-w.net, true) });
 }
-// ----- round 17: filters (region, group, size), highlights and "what's counted" -----
+// ----- round 17: filters (region, group, size), the tags (round 33) and "what's counted" -----
 const inRegion = c => state.region === "all" || (REGION_OF[c.iso3] || "asia") === state.region;
 const inGroupS = c => typeof viewState === "undefined" || typeof GROUPS === "undefined" || viewState.group === "all" || GROUPS[viewState.group].list.split(" ").includes(c.iso3);
 // the drawer's size filter: economies of at least state.size € bn (0 = all); EUR 5bn is the ranking rule (MIN_GDP_RANK)
@@ -2435,14 +2445,13 @@ function paint() {
     d3.select(this).classed("nodata", !c || v == null || nd).classed("uncertain", unc).style("fill", fill)
       .classed("dim", hs ? !(c && hs.has(c.n)) : !!(c && dimmedOut(c))).classed("hl", !!(hs && c && hs.has(c.n)));
   });
-  // with a highlight on, Ukraine and Russia step back too
+  // with tags picked, Ukraine and Russia step back too
   countryPaths.filter(f => f.id === "804" || f.id === "643").classed("dim", !!hs);
   document.getElementById("per").textContent = "· " + periodShort();
   renderLegend(sc);
   renderInfo();
   renderCustom();
-  renderChips();
-  renderFact();
+  renderTagCard();
   renderDrawer();
   buildArcs();
   drawChpl();
@@ -2532,15 +2541,14 @@ function renderCustom() {
   el.hidden = !on; el.innerHTML = on ? customNote() : "";
   updateDots();
 }
-// a dot on Highlights or Filters when something differs from the default
+// a dot on Filters when something differs from the default
 function filtersChanged() {
   return custom() || state.lens !== START.lens || state.measure !== START.measure || state.year !== START.year || state.region !== "all" || state.size !== MIN_GDP_RANK
-    || (typeof viewState !== "undefined" && viewState.group !== "all") || state.streams !== STREAMS_DEFAULT || state.flows || state.chpl || state.remit || state.taken;
+    || (typeof viewState !== "undefined" && viewState.group !== "all") || state.streams !== STREAMS_DEFAULT || state.flows || state.chpl || state.remit || state.taken || state.tags.length > 0;
 }
 function updateDots() {
-  const f = document.querySelector("#fbtn .dot"), h = document.querySelector("#hlbtn .dot");
+  const f = document.querySelector("#fbtn .dot");
   if (f) { f.hidden = !filtersChanged(); f.title = t("Changed from the default"); }
-  if (h) { h.hidden = !state.hl; h.title = t("One is shown"); }
   // round 21: a dot on "More options" when something folded in it differs from the default
   const m = document.querySelector("#more-fold .dot");
   if (m) { m.hidden = !(custom() || state.region !== "all" || state.size !== MIN_GDP_RANK || (typeof viewState !== "undefined" && viewState.group !== "all")
@@ -2619,7 +2627,7 @@ function anchorOf(f) {
 // Blue streams to Kyiv, sized by each country's support for Ukraine in €; orange streams to Moscow, sized by how much more
 // it paid Russia than without the war in € (the negative side of business with Russia). The map's own two numbers, from
 // calc(), never gross trade; a direction that is not certain (leaning or uncertain) has no stream. Hovering or picking a country shows its
-// own, a highlight shows those of its countries. Switched in Filters. Round 18 (owner): on by default on phones too, but
+// own, picked tags show those of their countries. Switched in Filters. Round 18 (owner): on by default on phones too, but
 // calmer there. Round 21 (polish, owner): thin solid lines that fade in, no moving dashes; the 8 largest each way (5 on
 // a small screen)
 const streamTop = () => (narrow() ? 5 : 8);
@@ -2880,9 +2888,10 @@ function parseHash() {
   // views that are gone open the nearest one (OLD_VIEW); the old "Top lists" panel
   // ("#c=RANKINGS") opens the Ranking view
   const c = (p.get("c") || "").toUpperCase(), v = OLD_VIEW[p.get("view")] || p.get("view") || (c === "RANKINGS" ? "rank" : "map");
-  // hl: a highlight on the map (round 17), "#hl=baltic"; unknown ones are dropped
+  // tags: the tag filter (round 33), "#tags=windfall,discount"; an old highlight link ("#hl=hungary", rounds 17 to 32)
+  // opens the nearest tag (OLD_HL); unknown ones are dropped
   const sec0 = /^[\w-]{1,120}$/.test(p.get("sec") || "") ? p.get("sec") : null, sec = sec0 && (SEC_ALIAS[sec0] || sec0);
-  return { view: v, c: c === "RANKINGS" ? "" : c, lens, m: p.get("m"), y: p.get("y"), flow, sec, open: p.get("open") === "method" ? "method" : null, hl: p.get("hl") };
+  return { view: v, c: c === "RANKINGS" ? "" : c, lens, m: p.get("m"), y: p.get("y"), flow, sec, open: p.get("open") === "method" ? "method" : null, tags: p.get("tags") ? p.get("tags").split(",") : OLD_HL[p.get("hl")] ? [OLD_HL[p.get("hl")]] : [] };
 }
 function panelCode() {
   const c = DATA[state.selected];
@@ -2904,8 +2913,9 @@ function hashFor() {
   if (state.lens !== START.lens) p.set("lens", state.lens);
   if (state.measure !== START.measure) p.set("m", state.measure);
   if (state.year !== START.year) p.set("y", state.year);
-  if (state.hl && (!state.view || state.view === "map")) p.set("hl", state.hl);
-  const h = c && [...p.keys()].length === 1 ? "#" + c : [...p.keys()].length ? "#" + p : "";
+  if (state.tags.length && (!state.view || state.view === "map" || state.view === "rank")) p.set("tags", state.tags.join(","));
+  // the comma between tags stays readable ("#tags=windfall,discount", not "%2C")
+  const h = c && [...p.keys()].length === 1 ? "#" + c : [...p.keys()].length ? "#" + String(p).replace(/%2C/g, ",") : "";
   return h;
 }
 function writeHash(push) {
@@ -2970,8 +2980,8 @@ function route(how) {
   // the buttons on top come from the address when it names them (a shared or edited link) or on loading; an address
   // without them (Back to an earlier panel) keeps the current ones, as closing with × does
   if (how === "load" || h.lens || h.m || h.y) setFilters(h);
-  const hl = h.hl && typeof HL !== "undefined" && HL[h.hl] ? h.hl : null;
-  if (hl !== state.hl && (how === "load" || hl || state.hl)) { state.hl = hl; if (countryPaths) paint(); }
+  const tg = (h.tags || []).filter(x => TAG_CAT[x]).slice(0, TAG_MAX);
+  if (tg.join() !== state.tags.join() && (how === "load" || tg.length || state.tags.length)) { state.tags = tg; if (countryPaths) { paint(); if (state.view === "rank" && window.renderView) window.renderView(); } }
   // round 24: Back to How it works without a flow or section clears them (else the address would be rewritten to the
   // flow the reader left, and a second Back would land there again)
   if (h.view === "how" && (h.flow !== state.flow || h.sec !== state.sec || how === "load")) {
@@ -4343,14 +4353,6 @@ function countedHtml() {
     <p class="sub">${t("Bilateral loans are inside government aid at their gift value. The markers cannot be switched off.")}</p>`;
 }
 
-// ===== Highlights (round 17, from prototype v2; every number from the data, worked out when shown) =====
-const named = c => `<a href="#${c.iso3}" data-goto="${c.n}">${c.name}</a>`;
-const topN = (arr, f, n) => arr.slice().sort((a, b) => f(b) - f(a)).slice(0, n);
-const hlY = () => Math.max(2022, state.year);
-const HK = c => calc(c, hlY());
-const ALLC = () => Object.values(DATA).filter(c => c.gdp);
-const paidV = c => HK(c).shiftParts.find(p => p.k === "paid")?.v || 0;
-const armedList = () => { const iy = yi(hlY()); return ALLC().map(c => ({ c, full: c.military_rus ? (c.military_rus.alt || c.military_rus.years).slice(1, iy + 1).reduce((a, b) => a + b, 0) : 0 })).filter(r => r.full > 0.001).sort((a, b) => b.full - a.full); };
 // the share of the reduced business with Russia required by sanctions, cut off by Russia itself, and the country's own choice
 function sanctionSplit(c, k) {
   if (!c?.sanctions) return null;
@@ -4359,60 +4361,130 @@ function sanctionSplit(c, k) {
   for (const p of k.shiftParts) { const f = flows[p.k], s = f && c.sanctions[f]; if (!s || p.v <= 0) continue; tot += p.v; mand += p.v * s.mandated; gas += p.v * Math.max(0, Math.min(s.cut || 0, 1 - s.mandated)); }
   return tot < 1e-3 ? null : { tot, mand: mand / tot, cut: gas / tot, own: (tot - mand - gas) / tot };
 }
-const pc0 = x => Math.round(x * 100) + "%";
-const HL = {
-  world: { label: "Russia sold elsewhere", set: () => new Set(ALLC().filter(c => c.gdp >= MIN_GDP_RANK && paidV(c) < 0).map(c => c.n)),
-    fact: () => { const w = worldPaid(hlY()); return [t("Russia's gain fell by <b>{less}</b> from buyers who cut, and rose by <b>{more}</b> from buyers who bought more (net {net}). Highlighted: those who bought more, led by {list}.", { less: eur(w.less), more: eur(w.more), net: eur(-w.net, true), list: topN(ALLC().filter(c => paidV(c) < 0), c => -paidV(c), 3).map(named).join(", ") }), t("So the countries' cuts do not add up to Russia's loss.")]; } },
-  armed: { label: "Armed Russia", set: () => new Set(armedList().map(r => r.c.n)),
-    fact: () => [t("At full military value: {list}.", { list: armedList().map(r => `${named(r.c)} ${eur(r.full)}`).join(", ") }), t("In the totals, what Russia paid for counts only at the seller's gain, like any sale.")] },
-  baltic: { label: "Baltic cuts: sanctions or choice?", set: () => new Set(["EST", "LVA", "LTU"].filter(i => byIso[i]).map(i => byIso[i].n)),
-    fact: () => {
-      const s = i => sanctionSplit(byIso[i], HK(byIso[i])) || { mand: 0, own: 0 }, lt = s("LTU");
-      // corrected (prototype review): Lithuania's cut was mostly its own choice, not required by sanctions
-      return [t("Share of what Russia kept less that sanctions required: {a} <b>{x}</b>, {b} <b>{y}</b>, {c} <b>{z}</b>.", { a: named(byIso.EST), x: pc0(s("EST").mand), b: named(byIso.LVA), y: pc0(s("LVA").mand), c: named(byIso.LTU), z: pc0(lt.mand) })
-        + (lt.own >= 0.5 ? " " + t("{name}'s cut was mostly its own choice ({own}).", { name: byIso.LTU.name, own: pc0(lt.own) }) : ""), t("A required cut still means Russia kept less, but it is not money given to Ukraine.")];
-    } },
-  hungary: { label: "Hungary: the 2022 price spike", set: () => new Set(byIso.HUN ? [byIso.HUN.n] : []),
-    fact: () => {
-      const c = byIso.HUN, k = HK(c), w = k.shiftParts.find(p => p.k === "windfall"), ys = c.windfall?.years?.slice(1, yi(hlY()) + 1) || [], tot = ys.reduce((a, b) => a + b, 0);
-      const v = { name: c.name, pct: fmtMeasure(c, -k.rusBal, "gdp"), eur: eur(-k.rusBal), w: eur(-(w ? w.v : 0)) };
-      return [t(tot > 0 && ys[0] > 0.5 * tot ? "Russia kept {pct} of a year's GDP more from trade with {name} ({eur}), of which <b>{w}</b> is war-time prices on its gas contracts, mostly in 2022. Its volumes barely changed." : "Russia kept {pct} of a year's GDP more from trade with {name} ({eur}), of which <b>{w}</b> is war-time prices on its gas contracts. Its volumes barely changed.", v), t("The money really reached Russia, but it reflects contract prices, not buying more.")];
-    } },
-  support: { label: "Top support relative to GDP", set: () => new Set(topSupport().map(c => c.n)),
-    fact: () => [t("Support for Ukraine as % of a year's GDP: {list}.", { list: topSupport().map(c => `${named(c)} ${fmtMeasure(c, Math.abs(HK(c).uaBal), "gdp")}`).join(", ") }),
-      t("In euros the order is different: {list}. These are totals for {n} years.", { list: topN(ALLC().filter(c => c.gdp >= MIN_GDP_RANK), c => HK(c).uaBal, 2).map(c => `${c.name} ${eur(HK(c).uaBal)}`).join(", "), n: num(yearsOf(hlY()), 1) })] },
-  gascut: { label: "Gas Russia cut off itself", set: () => new Set(ALLC().filter(c => HK(c).rusCut > 0.05).map(c => c.n)),
-    fact: () => [t("{tot} of what Russia kept less is gas (and Poland's pipeline oil) that Russia cut off itself or that stopped with Ukraine's transit: {list}.", { tot: eur(ALLC().reduce((a, c) => a + HK(c).rusCut, 0)), list: topN(ALLC().filter(c => HK(c).rusCut > 0.05), c => HK(c).rusCut, 5).map(c => `${named(c)} ${eur(HK(c).rusCut)}`).join(", ") }), t("It counts, but it was Russia's decision.")] },
-  taken: { label: "What Russia took from companies", set: () => new Set(ALLC().filter(c => HK(c).taken > 0.001).map(c => c.n)),
-    fact: () => [t("Russia took <b>{tot}</b> from foreign companies through seizures and forced sales, led by {list}.", { tot: eur(ALLC().reduce((a, c) => a + HK(c).taken, 0)), list: topN(ALLC().filter(c => HK(c).taken > 0.001), c => HK(c).taken, 4).map(c => `${named(c)} ${eur(HK(c).taken)}`).join(", ") }), t("Not in the totals: the countries did not choose to move this money.")] },
+// ===== Tags as filters (round 33; the owner, 23 October 2026: "remove the highlights and use the tags in the filter
+// section to get similar interesting insights but based on tags") =====
+// Every story tag (storyTags, the rules in How it works: site/content/method/tags.md) is a filter in the Filters drawer.
+// Picking one dims the countries without it and opens a card with what it means, how many countries have it and the
+// largest five; up to TAG_MAX tags combine (countries that have all of them). The pick is in the address ("#tags=...")
+// and filters the Ranking too. Tags only select countries: no number changes. A tag that comes in variants is split into
+// filters (bought more or less, sold more or less, top-10 or major aid giver, orange from fuel or from sales)
+const TAG_MAX = 3;
+// the old highlights (rounds 17 to 32) open their nearest tag; "baltic" and "taken" have none and are dropped
+const OLD_HL = { world: "bought_more", armed: "mil", hungary: "windfall", support: "aid_top", gascut: "gascut" };
+const tagPart = (k, key) => k.shiftParts.find(p => p.k === key)?.v || 0;
+const aidOf = k => k.shiftParts.filter(p => AID_KEYS.includes(p.k)).reduce((a, p) => a + p.v, 0);
+const discOf = (c, y) => (c.energy && c.energy.discount ? c.energy.discount.slice(1, yi(y) + 1).reduce((a, b) => a + b, 0) : 0);
+const chg = (tr, y) => { const ch = tradeChange(tr, y); return ch ? Math.abs(ch.b - ch.a) : 0; };
+const per1kOf = c => (c.people && c.people.refugees && c.pop ? c.people.refugees.count / (c.pop * 1000) : 0);
+// g: the group in Filters; v: the amount its largest five are ordered by (€ bn); rel: ordered and shown against GDP;
+// p1k: shown per 1,000 residents
+const TAG_CAT = {
+  gascut: { g: "why", label: () => t("Gas cut off by Russia"), meaning: () => t("Much of what Russia kept less is gas (or pipeline oil) that Russia cut off itself, or that stopped with the end of transit through Ukraine."), v: (c, k) => k.rusCut },
+  exempt: { g: "why", label: () => t("Kept buying Russian pipeline oil (EU exemption)"), meaning: () => t("It kept buying Russian crude through the Druzhba pipeline under the EU's exemption, although another route existed."), v: (c, k) => -k.rusBal },
+  sanct: { g: "why", label: () => t("Cut through sanctions"), meaning: () => t("Most of what Russia kept less was required by sanctions: the EU's, its own, or ones it adopted."), v: (c, k) => k.rusBal },
+  own: { g: "why", label: () => t("Cut beyond what sanctions required"), meaning: () => t("Most of what Russia kept less went beyond what sanctions required: its own further choice."), v: (c, k) => k.rusBal },
+  mixed: { g: "why", label: () => t("Partly its sanctions, partly beyond them"), meaning: () => t("What Russia kept less was partly required by sanctions, partly beyond them."), v: (c, k) => k.rusBal },
+  windfall: { g: "why", label: () => t("War-time fuel prices"), meaning: () => t("Russia kept more because fuel prices rose with the war, on the fuel this country kept buying."), v: (c, k) => -tagPart(k, "windfall") },
+  discount: { g: "why", label: () => t("Russian oil at a war-time discount"), meaning: () => t("After the sanctions it bought Russian oil below world prices, so Russia kept less on each barrel."), v: (c, k, y) => discOf(c, y) },
+  bought_less: { g: "why", label: () => t("Bought much less from Russia"), meaning: () => t("What it bought from Russia fell by at least half since 2021, and by at least €0.5 bn."), v: (c, k, y) => chg(c.to_rus, y) },
+  bought_more: { g: "why", label: () => t("Bought much more from Russia"), meaning: () => t("What it bought from Russia rose by at least half since 2021, and by at least €0.5 bn."), v: (c, k, y) => chg(c.to_rus, y) },
+  sold_less: { g: "why", label: () => t("Sold Russia much less"), meaning: () => t("What it sold to Russia fell by at least half since 2021, and by at least €0.5 bn."), v: (c, k, y) => chg(c.from_rus, y) },
+  sold_more: { g: "why", label: () => t("Sold Russia much more"), meaning: () => t("What it sold to Russia rose by at least half since 2021, and by at least €0.5 bn."), v: (c, k, y) => chg(c.from_rus, y) },
+  hub: { g: "why", label: () => t("Trade hub for re-exports to Russia"), meaning: () => t("Goods made elsewhere reached Russia through it; they count for the countries that made them."), v: (c, k) => Math.abs(k.rusBal) },
+  party: { g: "did", label: () => t("Party to the war"), meaning: () => t("On Russia's side in the war: shown apart and not ranked."), v: (c, k) => Math.abs(k.shift) },
+  aid_top: { g: "did", label: () => t("Top-10 aid giver for its size"), meaning: () => t("Among the ten economies that gave Ukraine the most aid for their size."), v: (c, k) => aidOf(k), rel: true },
+  aid_major: { g: "did", label: () => t("Major aid giver"), meaning: () => t("Gave Ukraine aid worth at least 0.5% of a year's GDP."), v: (c, k) => aidOf(k), rel: true },
+  refugees: { g: "did", label: () => t("Hosts many refugees"), meaning: () => t("At least 10 refugees from Ukraine per 1,000 residents."), v: c => per1kOf(c), p1k: true },
+  frozen: { g: "did", label: () => t("Froze Russian money"), meaning: () => t("Russian reserves frozen here: the return Russia lost on them counts in the net."), v: (c, k) => k.frozen },
+  mil: { g: "did", label: () => t("Sent weapons or troops to Russia"), meaning: () => t("Weapons, ammunition or troops sent to Russia."), v: (c, k) => -tagPart(k, "mil") },
+  chpl: { g: "did", label: () => t("Sold Russia goods its weapons need"), meaning: () => t("Sold Russia goods on the Common High Priority List (chips, electronics, machine tools): at least €1 bn, or €50 m and 0.1% of GDP, at full value."), v: (c, k, y) => chplSum(c, yi(y)) },
+  orange_fuel: { g: "did", label: () => t("Mostly from fuel buying"), meaning: () => t("Toward Russia mostly because of the fuel it kept buying."), v: (c, k) => -k.shift },
+  orange_sales: { g: "did", label: () => t("Mostly from sales to Russia"), meaning: () => t("Toward Russia mostly because of what it earned selling to Russia."), v: (c, k) => -k.shift },
+  earner: { g: "did", label: () => t("Earned from the war effort"), meaning: () => t("It earned more supplying Ukraine's war effort than it gave."), v: (c, k) => Math.abs(k.uaBal) },
+  rusfirms: { g: "did", label: () => t("Russian-owned firms here"), meaning: () => t("Russian owners kept more from their firms in this country."), v: (c, k) => -tagPart(k, "rusfirms") },
+  tax: { g: "did", label: () => t("Its firms still pay tax in Russia"), meaning: () => t("Its companies paid Russia more tax than without the war."), v: (c, k) => -tagPart(k, "tax") },
+  ship: { g: "did", label: () => t("Ships Russian oil"), meaning: () => t("It kept more from shipping and insuring Russian oil."), v: (c, k) => -tagPart(k, "ship") },
+  hidden: { g: "sure", label: () => t("Trade data hidden since 2022"), meaning: () => t("Its trade with Russia is no longer published by partner and product, so its ranges are wide."), v: (c, k) => Math.abs(k.shift) },
+  rough: { g: "sure", label: () => t("Rough data: mostly estimates"), meaning: () => t("At least half of its parts, by size, are rough indications (certainty D)."), v: (c, k) => Math.abs(k.shift), rel: true },
+  one: { g: "sure", label: () => t("Mostly one part"), meaning: () => t("One part makes at least 70% of its net."), v: (c, k) => Math.abs(k.shift), rel: true },
+  small: { g: "sure", label: () => t("Small economy"), meaning: () => t("GDP under €5 bn: small sums move its % a lot, so it is not ranked."), v: (c, k) => Math.abs(k.shift), rel: true },
+  two: { g: "sure", label: () => t("Two different things added"), meaning: () => t("Its net adds help given to Ukraine and a cut in what Russia kept from trade."), v: (c, k) => k.shift },
 };
-function topSupport() { return topN(ALLC().filter(c => c.gdp >= MIN_GDP_RANK && !uncertain(c, hlY(), "ua")), c => HK(c).uaBal / c.gdp, 5); }
-const highlightSet = () => (state.hl && HL[state.hl] && Object.keys(DATA).length ? HL[state.hl].set() : null);
-function renderChips() {
-  const el = document.getElementById("chips");
-  el.innerHTML = Object.entries(HL).map(([k, h]) => `<button class="chip-btn" data-hl="${k}" aria-pressed="${state.hl === k}">${t(h.label)}</button>`).join("");
-  el.querySelectorAll("[data-hl]").forEach(b => (b.onclick = () => setHighlight(state.hl === b.dataset.hl ? null : b.dataset.hl, true)));
+const TAG_GROUPS = [["why", () => t("Why trade with Russia changed")], ["did", () => t("What it did")], ["sure", () => t("How sure")]];
+// a story tag's filter key: its own key, or the variant it is
+function tagKey(f) {
+  if (f.key === "bought" || f.key === "sold") return f.key + (f.cls === "orange" ? "_more" : "_less");
+  if (f.key === "aid") return f.label === t("Top-10 aid giver for its size") ? "aid_top" : "aid_major";
+  if (f.key === "orange") return f.label === t("Mostly from sales to Russia") ? "orange_sales" : "orange_fuel";
+  return f.key;
 }
-function renderFact() {
-  const el = document.getElementById("fact");
-  if (!state.hl || !HL[state.hl] || !Object.keys(DATA).length) { el.hidden = true; el.innerHTML = ""; return; }
-  const [f, cav] = HL[state.hl].fact();
-  el.innerHTML = `<button class="close" aria-label="${t("Close highlight")}">×</button><p><b>${t(HL[state.hl].label)}</b> · ${f}</p><p class="cav"><b>${t("Caveat:")}</b> ${cav}</p>`;
+// every country's tags, worked out once per year, what's counted and the drawer's filter (region, group, size)
+let tagMemo = null;
+function tagIndex() {
+  const y = Math.max(2022, state.year);
+  const key = [y, [...OFF].join(), state.netBack, state.region, typeof viewState === "undefined" ? "" : viewState.group, state.size, LANG].join("|");
+  if (tagMemo && tagMemo.key === key) return tagMemo;
+  const by = {};
+  for (const c of Object.values(DATA)) {
+    if (!c.gdp || !inFilter(c)) continue;
+    const k = calc(c, y);
+    for (const f of storyTags(c, k, y)) { const fk = tagKey(f); if (TAG_CAT[fk]) (by[fk] = by[fk] || []).push({ c, k }); }
+  }
+  tagMemo = { key, y, by };
+  return tagMemo;
+}
+// the countries that have every picked tag
+function tagRows() {
+  if (!state.tags.length || !Object.keys(DATA).length) return null;
+  const I = tagIndex(), lists = state.tags.map(fk => I.by[fk] || []);
+  return lists[0].filter(r => lists.every(l => l.some(x => x.c === r.c)));
+}
+function highlightSet() { const rows = tagRows(); return rows ? new Set(rows.map(r => r.c.n)) : null; }
+function tagSet() { return highlightSet(); }
+window.tagSet = tagSet;
+function setTags(list) {
+  state.tags = list.filter(fk => TAG_CAT[fk]).slice(-TAG_MAX);
+  if (state.view === "how" && state.tags.length && window.setView) window.setView("map");
+  paint();
+  if (state.view === "rank" && window.renderView) window.renderView();
+  writeHash(false);
+}
+function toggleTag(fk) { setTags(state.tags.includes(fk) ? state.tags.filter(x => x !== fk) : [...state.tags, fk]); }
+const tagNames = () => state.tags.map(fk => TAG_CAT[fk].label()).join(" + ");
+const countWords = n => (n === 1 ? t("1 country") : t("{n} countries", { n }));
+// the chips in Filters, with how many countries have each (in the drawer's filter)
+function renderTagFilters() {
+  const el = document.getElementById("tagfilters");
+  if (!el || !Object.keys(DATA).length) return;
+  const I = tagIndex(), rows = tagRows();
+  el.innerHTML = TAG_GROUPS.map(([g, h]) => {
+    const keys = Object.keys(TAG_CAT).filter(fk => TAG_CAT[fk].g === g && ((I.by[fk] || []).length || state.tags.includes(fk)));
+    return keys.length ? `<div class="tgroup"><p class="tgroup-h">${h()}</p><div class="chips">${keys.map(fk => `<button class="chip-btn" data-tag="${fk}" aria-pressed="${state.tags.includes(fk)}">${TAG_CAT[fk].label()}<span class="tn">${(I.by[fk] || []).length}</span></button>`).join("")}</div></div>` : "";
+  }).join("") + (rows ? `<p class="tsel" role="status">${state.tags.length > 1 ? t("Countries with all of these: {n}", { n: rows.length }) : countWords(rows.length)}<button class="linkbtn tclear" data-tag-clear>${t("Clear tags")}</button></p>` : "");
+}
+// the card on the map: what the tag means, how many countries, the largest five (tappable), how the tags are set
+function renderTagCard() {
+  const el = document.getElementById("fact"), rows = tagRows();
+  if (!rows) { el.hidden = true; el.innerHTML = ""; return; }
+  const first = TAG_CAT[state.tags[0]], y = tagIndex().y;
+  const val = r => { const v = first.v(r.c, r.k, y) || 0; return first.rel || first.p1k ? v / (first.p1k ? 1 : r.c.gdp || Infinity) : v; };
+  const show = r => { const v = first.v(r.c, r.k, y) || 0; return first.p1k ? t("{r} per 1,000", { r: num(v, 0) }) : first.rel ? ofGdp(r.c, v) : eur(Math.abs(v)); };
+  const top = rows.slice().sort((a, b) => val(b) - val(a)).slice(0, 5);
+  const named = r => `<a href="#${r.c.iso3}" data-goto="${r.c.n}">${r.c.name}</a> ${show(r)}`;
+  el.innerHTML = `<button class="close" aria-label="${t("Clear tags")}">×</button>
+    <p><b>${tagNames()}</b>${state.tags.length > 1 ? `<br>${t("Countries with all of these: {n}", { n: rows.length })}` : ` · ${countWords(rows.length)}`}</p>
+    ${state.tags.length === 1 ? `<p class="cav">${first.meaning()}</p>` : ""}
+    ${top.length ? `<p class="tlist">${t("Largest:")} ${top.map(named).join(", ")}</p>` : ""}
+    <p class="tfoot"><a href="#view=how&amp;sec=m-tags">${t("How the tags are set")}</a></p>`;
   el.hidden = false;
-  el.querySelector(".close").onclick = () => { setHighlight(null); document.getElementById("hlbtn").focus(); };
+  el.querySelector(".close").onclick = () => { setTags([]); fbtn.focus(); };
 }
-function setHighlight(id, fromChip) {
-  state.hl = id && HL[id] ? id : null;
-  if (fromChip) hlOpen(false);
-  if (state.hl && state.view && state.view !== "map" && window.setView) window.setView("map");
-  paint(); writeHash(false);
-}
-function hlOpen(on) {
-  const p = document.getElementById("hlpanel"), b = document.getElementById("hlbtn");
-  p.hidden = !on; b.setAttribute("aria-expanded", String(on));
-  if (on) { const first = p.querySelector("button"); if (first) first.focus(); }
-}
-document.getElementById("hlbtn").onclick = () => hlOpen(document.getElementById("hlpanel").hidden);
+document.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest("[data-tag], [data-tag-clear]");
+  if (!b) return;
+  e.preventDefault();
+  if (b.hasAttribute("data-tag-clear")) setTags([]); else toggleTag(b.dataset.tag);
+});
 
 // ===== The Filters drawer (round 17): collapsed by default; a dot on its button when anything differs from the default =====
 // Round 19 (owner): a persistent top layer. Filters opens it and it stays open until it is closed (× , the Filters button or
@@ -4444,7 +4516,7 @@ function setDrawerSize(size, quiet) {
 // the views are laid out for the space left beside or above the drawer
 function afterDrawerMove() { placeView(); if (state.view && state.view !== "map" && window.renderView) renderView(); }
 function openDrawer(focus = true) {
-  drawer.hidden = false; fbtn.setAttribute("aria-expanded", "true"); hlOpen(false);
+  drawer.hidden = false; fbtn.setAttribute("aria-expanded", "true");
   if (narrow() && drawer.dataset.size === "min") setDrawerSize("half", true);
   store(DKEY, "open");
   renderDrawer(); drawerSpace(); afterDrawerMove();
@@ -4503,6 +4575,7 @@ function renderDrawer() {
   document.getElementById("dcustom").innerHTML = custom() ? `<div class="custom">${customNote()}</div>` : `<p class="sub">${t("Showing the official numbers.")}</p>`;
   document.getElementById("lens-note").textContent = titleNote();
   document.getElementById("counted").innerHTML = countedHtml();
+  renderTagFilters();
   for (const [id, on] of [["show-streams", state.streams], ["show-flows", state.flows], ["show-chpl", state.chpl], ["show-remit", state.remit], ["show-taken", state.taken]]) document.getElementById(id).checked = on;
 }
 document.getElementById("f-region").onchange = e => { state.region = e.target.value; streamCache = null; paint(); };
@@ -4518,11 +4591,9 @@ document.addEventListener("click", e => {
   if (gv) { e.preventDefault(); const inf = document.getElementById("info"); if (inf) inf.open = false; if (narrow() && state.panel && gv.closest("#panel")) closePanel(); window.setView(gv.dataset.goview); return; }
   const go = el.closest("#drawer [data-goto], #fact [data-goto], .pop [data-goto]");
   if (go && !e.ctrlKey && !e.metaKey) { e.preventDefault(); select(go.dataset.goto, true); return; }
-  // a click outside closes the ⓘ popover and the highlights list
+  // a click outside closes the ⓘ popover
   const inf = document.getElementById("info");
   if (inf && inf.open && !inf.contains(el)) inf.open = false;
-  const hp = document.getElementById("hlpanel");
-  if (!hp.hidden && !hp.contains(el) && !el.closest("#hlbtn")) hlOpen(false);
 });
 const search = document.getElementById("search"), searchMsg = document.getElementById("search-msg");
 search.addEventListener("input", () => (searchMsg.textContent = ""));
@@ -4541,13 +4612,12 @@ search.addEventListener("change", () => {
 document.getElementById("zin").onclick = () => svg.transition().duration(300).call(zoom.scaleBy, 1.6);
 document.getElementById("zout").onclick = () => svg.transition().duration(300).call(zoom.scaleBy, 1 / 1.6);
 document.getElementById("zreset").onclick = () => svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
-// Escape closes the ⓘ popover or the highlights list first, then the Filters drawer when the focus is in it (focus back
+// Escape closes the ⓘ popover first, then the Filters drawer when the focus is in it (focus back
 // on its button), else the panel. Round 19: Escape elsewhere leaves the drawer open, as it stays until it is closed
 document.addEventListener("keydown", e => {
   if (e.key !== "Escape") return;
   const inf = document.getElementById("info");
   if (inf && inf.open) { inf.open = false; inf.querySelector("summary").focus(); }
-  else if (!document.getElementById("hlpanel").hidden) { hlOpen(false); document.getElementById("hlbtn").focus(); }
   else if (!drawer.hidden && drawer.contains(document.activeElement)) { closeDrawer(); fbtn.focus(); }
   else if (state.panel) closePanel();
   else if (!drawer.hidden) { closeDrawer(); fbtn.focus(); }

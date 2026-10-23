@@ -4,6 +4,35 @@ Every update to the map, newest first: what changed and every decision behind it
 
 The detailed research log, with every file, is [`research/2026-10/README.md`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/README.md).
 
+<h2 id="cl-r33">Round 33: tags replace Highlights <span class="cl-date">23 October</span></h2>
+<!-- flows: -->
+
+**The Highlights are gone; the story tags are filters in Filters. No number changed.**
+
+### What changed
+
+1. The Highlights button and its list are gone from the map.
+2. Filters has a new **Tags** section, after "The map shows" and Measure: every story tag a country can have (the same
+   rules as under each country's numbers, in [How the tags are set](#view=how&sec=m-tags)), grouped as "Why trade with
+   Russia changed", "What it did" and "How sure", each with how many countries have it. A tag that comes in two
+   versions is two filters (bought or sold much more or much less, top-10 or major aid giver, orange mostly from fuel
+   buying or from sales).
+3. Picking a tag dims the countries without it and opens a card on the map: what the tag means, how many countries
+   have it, the largest five (tap one to open it) and a link to how the tags are set. Up to three tags combine: the map
+   then shows the countries that have all of them, with their number and a "Clear tags" button.
+4. The tags picked are in the address (`#tags=windfall,discount`), so a view can be shared, and they narrow the
+   Ranking too, with a note above it. Old Highlight links open their nearest tag (Hungary's price spike: War-time fuel
+   prices; Who armed Russia: Sent weapons or troops to Russia), or the plain map where there is none.
+5. All six languages are updated; the Highlights' text is removed from them.
+
+### Decisions
+
+- **Tags instead of Highlights.** The owner, 23 October 2026: "remove the highlights and use the tags in the filter
+  section to get similar interesting insights but based on tags". The Highlights were a fixed set of stories written by
+  hand; the tags are worked out from the data for every country by published rules, so the same insights (who bought
+  more, who armed Russia, the war-time price spike, the top supporters, the gas Russia cut off) now come from one
+  source, and can be combined. Effect: none on the numbers; tags only pick countries.
+
 <h2 id="cl-r32">Round 32: renamed to War Balance <span class="cl-date">23 October</span></h2>
 <!-- flows: -->
 

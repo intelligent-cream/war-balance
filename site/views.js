@@ -82,7 +82,9 @@ function renderRanking(root) {
   // "leaning" or "uncertain". Parties to the war are listed under the chart, not ranked; a country with no observation
   // of its own is left out
   const hq = HEAD_LENS[state.lens], y = state.year;
-  const all = Object.values(DATA).filter(eligible).map(metricOf).filter(m => m.v != null).sort((a, b) => b.v - a.v);
+  // round 33: tags picked in Filters narrow the ranking to the countries that have all of them (a note says so)
+  const ts = typeof tagSet === "function" ? tagSet() : null;
+  const all = Object.values(DATA).filter(eligible).filter(c => !ts || ts.has(c.n)).map(metricOf).filter(m => m.v != null).sort((a, b) => b.v - a.v);
   const party = all.filter(m => PARTY_TO_WAR.has(m.c.iso3));
   const nod = y > 2021 ? all.filter(m => noDataAt(m.c, y)) : [];
   const rows = all.filter(m => !party.includes(m) && !nod.includes(m));
@@ -125,8 +127,9 @@ function renderRanking(root) {
       </g>`;
     }).join("")}
   </svg>`;
+  const tagNote = ts ? `<p class="rk-tags" role="status"><span>${t("Showing {n} countries tagged: {tags}.", { n: rows.length + party.length, tags: tagNames() })}</span> <button class="linkbtn tclear" data-tag-clear>${t("Clear tags")}</button></p>` : "";
   root.innerHTML = `<div class="view-inner">
-    <p class="rk-key"><span class="rk-k rk-k-sure"></span>${t("certain direction")} <span class="rk-k rk-k-lean"></span>${t("leaning: at least a 65% chance of that direction")} <span class="rk-k rk-k-unc"></span>${t("uncertain: less")} · ${t("{n} of {all} not certain", { n: nUnc, all: rows.length })}</p>
+    ${tagNote}<p class="rk-key"><span class="rk-k rk-k-sure"></span>${t("certain direction")} <span class="rk-k rk-k-lean"></span>${t("leaning: at least a 65% chance of that direction")} <span class="rk-k rk-k-unc"></span>${t("uncertain: less")} · ${t("{n} of {all} not certain", { n: nUnc, all: rows.length })}</p>
     <div class="chart">${svg}</div>
     <p class="note-small">${t("The scale is compressed, so small and large countries both stay readable: equal steps on the axis are not equal amounts; the axis labels give the true values. Dot: middle estimate; line: likely range.")}</p>
     ${party.length ? chipGroup(party, t("Party to the war (with Russia), not ranked:"), "party") : ""}

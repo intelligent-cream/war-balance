@@ -6,7 +6,7 @@ What a reader sees is described on the site itself (How it works). This note say
 
 | File | What it holds |
 |---|---|
-| `site/index.html` | the map, the country panel, Filters and Highlights, the model (`calc()`, ranges, grades) and How it works (`renderHow`) |
+| `site/index.html` | the map, the country panel, Filters (with the tags as filters), the model (`calc()`, ranges, grades) and How it works (`renderHow`) |
 | `site/views.js` | the Ranking view |
 | `site/views2.js` | the data downloads (CSV and JSON), shown at the end of How it works |
 | `site/i18n.js`, `site/i18n/*.js` | the six translations; the English text in the code is the key (`t("...")`, `tData()` for data texts) |
@@ -38,7 +38,10 @@ The address keeps what the reader sees.
 - `lens`: `net` (the default), `support`, or `payments` (trade with Russia; `trade`, `business` and `kept` open it too).
   Older values: `change` opens `net`, `ukr` opens `support`, `rus` opens `payments`, `cost` opens `net`.
 - `m`: `gdp` (the default) or `total`; `pp` (per person until round 20) opens `gdp`.
-- `y`: a year, 2021 to 2026. `hl`: a highlight (`world`, `armed`, `baltic`, `hungary`, `support`, `gascut`, `taken`).
+- `y`: a year, 2021 to 2026. `tags`: up to three story tags picked in Filters (round 33), comma-separated
+  (`#tags=windfall,discount`); on the map and in the Ranking. The keys are `TAG_CAT` in `index.html`. The older `hl`
+  (a highlight, rounds 17 to 32) opens its nearest tag: `world` → `bought_more`, `armed` → `mil`, `hungary` →
+  `windfall`, `support` → `aid_top`, `gascut` → `gascut`; `baltic` and `taken` are dropped.
 - A country: `#AUS`, or `c=AUS` with other values; `UKR` and `RUS` open the Ukraine and Russia panels.
 - Values at their default are left out. "What's counted" is never in the address: a link always opens the official
   numbers. `c/aus.html` is a country's own page, whose link preview shows its card.
