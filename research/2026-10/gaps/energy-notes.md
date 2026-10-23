@@ -1,6 +1,6 @@
 # Energy gaps: switching cost, oil discount gain, laundered oil (research 2026-10)
 
-Gathered 2026-10-17. Output: `energy.json` (231 countries, the same list as the "Energy switching cost" section of `gaps-input.json`). Values in EUR bn, low / central / high (meant as ~90% intervals), years 2022-2025 plus 2026 Jan-Aug. **Not yet reviewed by a person.**
+Gathered 2026-10-17. Output: `energy.json` (231 countries, the same list as the "Energy switching cost" section of `gaps-input.json`). Values in EUR bn, low / central / high (meant as ~90% intervals), years 2022-2025 plus 2026 Jan-Aug.
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## What replaces what

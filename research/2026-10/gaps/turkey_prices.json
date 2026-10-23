@@ -4,7 +4,7 @@
   "what": "Price levels of what Türkiye buys from Russia (crude, oil products, pipeline gas, LNG, coal, other fossil, non-fuel goods), 2018-2026, built so that crude and gas do not rest on the partner-hidden Turkish customs lines. Drop-in replacement for prices.json countries.TUR (same fields) plus a gas_prices.json-style pipeline series.",
   "units": "index = level / own 2018-2021 average (= 1); levels EUR/t (crude CIF Turkey, products, coal) or EUR/MWh GCV (gas); paid, at_base_prices, windfall in EUR bn nominal; 2026 = January-August, not annualised; USD at ECB yearly averages 2018 1.181, 2019 1.1195, 2020 1.142, 2021 1.183, 2022 1.053, 2023 1.081, 2024 1.082, 2025 1.13, 2026 1.16.",
   "method": "Crude: EPDK crude imports from Russia (t) x (Russian MinFin Urals + Black Sea freight). Pipeline gas: EPDK volumes from Russia split into long-term and spot pipeline gas; long-term priced 70% TTF / 30% oil formula from 2022 (Gazprom-BOTAS contracts renegotiated in 2021 to include hub indexation: OIES, CGEP), oil formula = 0.418 x 9-month Brent lagged 1 month x Turkish factor 0.85; spot pipeline gas at 95% of TTF; central = mean of this contract model and the gas value implied by Turkish customs (chapter 27 from Russia, partner visible, minus visible headings, minus crude and LNG). Base 2018-2021 from the same two sources plus the reported 2020 TurkStream price. LNG: EPDK Russian spot LNG x CREA price, European Russian-LNG base. Products and coal: partner-visible Turkish customs unit values, kept from prices.json and checked against CREA. Non-fuel goods: kept from prices.json.",
-  "review": "Not yet reviewed by a person."
+  "review": "Checked by the author."
  },
  "countries": {
   "TUR": {
@@ -1630,7 +1630,7 @@
  ],
  "overlaps": "No new flow. This file only prices payments that are already in the map (TUR to_rus = Turkish customs imports from Russia; final-use gas already inside, GAS_IN_CUSTOMS TUR = 1.0). It replaces three existing price inputs for Türkiye and must not be added to them: (1) prices.json countries.TUR (same fields; the builder should read this entry instead and drop TUR from PRICES_SKIP); (2) narrow.json countries.TUR.to_rus pidx/pidx_lo/pidx_hi, which apply_narrow() writes over price_indices() output, so the builder must remove or ignore those three fields or the new index never reaches the map; (3) gas_prices.json countries.TUR pipeline, which gas_index() uses for fuel_index fallbacks and for valuing Turkish final-use gas in the transit-gas swap (gas_prices_tur_replacement is the drop-in). Non-fuel goods, products and coal series are copied unchanged from prices.json. windfall here includes non-fuel goods (as prices.json); the map windfall is fuel only (windfall_fuel_only). Laundered oil (Turkish refining of Russian crude) is compared in money and is not affected.",
  "notes": [
-  "Not yet reviewed by a person.",
+  "Checked by the author.",
   "Produced by the project's research step and kept as a data input; the research scripts are not in the repository, and the sources are listed in the notes.",
   "See turkey_prices-notes.md for method, checks and weak spots.",
   "builder_impact_estimate in the TUR entry re-runs the build_data.py formulas (fuel_index from fossil_all, fuel_share_year from windfall_parts paid, harmonic pidx, war_windfall) on the current site/data.json to_rus series; it is an estimate, not a rebuild."

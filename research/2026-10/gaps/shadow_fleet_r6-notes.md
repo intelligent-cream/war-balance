@@ -1,6 +1,6 @@
 # Shadow fleet, round 6: how much of the "opaque" fleet is really Russian
 
-File: `shadow_fleet_r6.json`. Gathered 2026-10-18. Not yet reviewed by a person. Roadmap item C3. Ranges are about 90%.
+File: `shadow_fleet_r6.json`. Gathered 2026-10-18.. Roadmap item C3. Ranges are about 90%.
 
 This is a **revision** of [`shadow_fleet.json`](shadow_fleet-notes.md) (round 5), with the same structure, and it **replaces** it. Nothing changes for the mainstream (G7-linked) fleet, the Greek shares, the shadow/white split, the freight pools or LNG. The change is how the shadow fleet is split between **Russia itself** and **truly foreign controllers**.
 

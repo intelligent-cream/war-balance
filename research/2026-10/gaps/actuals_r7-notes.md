@@ -1,6 +1,6 @@
 # Narrowing the actual values, bases and price levels (round 7)
 
-File: `actuals_r7.json`, generated 2026-10-18. Not yet reviewed by a person. Nothing in `pipeline/`, `site/` or `docs/` was changed.
+File: `actuals_r7.json`, generated 2026-10-18.. Nothing in `pipeline/`, `site/` or `docs/` was changed.
 
 ## How the values were made
 

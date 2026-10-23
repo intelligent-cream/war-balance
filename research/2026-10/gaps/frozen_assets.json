@@ -4,7 +4,7 @@
   "what": "Bank of Russia reserves immobilised by each holding jurisdiction since 28 Feb 2022, and the yearly return those reserves would have earned for Russia without the freeze ('return denied'), credited to the holding country on its balance with Russia. Private sanctioned assets and unfrozen reserves are listed separately and are not part of the per-country numbers.",
   "units": "EUR bn, nominal. Rates as fractions per year. 2022 = 28 Feb-31 Dec (10/12 of a year), 2023-2025 full years, 2026 = January-August (8/12), not annualised. Ranges about 90%.",
   "method": "return_denied[y] = immobilised_central[y] x blended_rate_central[y] x year_fraction[y]. blended_rate = sum over currencies of share x the yield Russia's reserve managers would plausibly earn on short government paper and deposits in that currency (low = policy/deposit rate, central = between policy rate and 1-year government yield, high = 1-2 year government yield plus a small spread). Low/high combine the relative error of the amount and of the rate in quadrature (independent), floored at amount_low x rate_low. Immobilised amounts are by holding jurisdiction (custodian location), not by issuer: Euroclear's cash held in Canada, Australia or the UK counts for Belgium only. The return is counted once, toward Ukraine on the holder's balance, as money Russia did not get; the windfall contributions and ERA loans sent to Ukraine stay out of every donor's aid.",
-  "status": "Research file, not yet reviewed by a person. Not wired into the pipeline."
+  "status": "Research file. Not wired into the pipeline."
  },
  "countries": {
   "BEL": {

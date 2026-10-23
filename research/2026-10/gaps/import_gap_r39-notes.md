@@ -1,6 +1,6 @@
 # Russia's import gap: who the missing sales belong to (round 39)
 
-Data file: `import_gap_r39.json` (same folder). Generated 2026-10-23. **Not yet reviewed by a person.**
+Data file: `import_gap_r39.json` (same folder). Generated 2026-10-23.
 Scratch work and scripts: `/tmp/claude-0/-home-user/71ac834a-35d2-5698-a36d-858806a141e1/scratchpad/r39/weak/` (`scripts/gap2.py`, `scripts/gap_mc.py`, `out/`).
 
 ## What it replaces

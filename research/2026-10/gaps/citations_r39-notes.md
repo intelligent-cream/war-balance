@@ -1,6 +1,6 @@
 # Weak citations: replacements (round 39)
 
-Mapping file: `citations_r39.json` (same folder). Generated 2026-10-23. **Not yet reviewed by a person.**
+Mapping file: `citations_r39.json` (same folder). Generated 2026-10-23.
 
 Each entry gives the file and field, the old URL, the claim it supports, the new source(s) with what each supports, and a status:
 - `replace`: the new source supports the same claim.

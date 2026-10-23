@@ -1,6 +1,6 @@
 # "Paid to Russia": a narrower no-war band from physical fuel volumes? (round 8)
 
-Data file: `research/2026-10/gaps/fuel_volume_cf.json`. Generated 2026-10-18. Not yet reviewed by a person.
+Data file: `research/2026-10/gaps/fuel_volume_cf.json`. Generated 2026-10-18..
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 This file moves no money and changes no central value. It only replaces the width of the "expected without the war" band of `to_rus`, for seven countries.

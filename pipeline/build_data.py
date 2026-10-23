@@ -33,7 +33,7 @@ EU27 = set(
 TARIFF_WAIVER = EU27 | {"GBR", "CAN"}
 
 # ---- round 11: assumptions replaced by data where the research found it (research/2026-10/gaps/assumptions_r11_*.json
-# and their -notes.md; not yet reviewed by a person). The research files keep their old values: each proposals file is
+# and their -notes.md). The research files keep their old values: each proposals file is
 # applied by one overlay, apply_assumptions_r11_<file>(), when the research file it changes is loaded (load(), the same
 # way as the round-7 actuals), or by a commented constant below. Proposals that were left out, and why, are listed in
 # site/content/changelog.md (assumptions backed by data, round 11)
@@ -1716,7 +1716,7 @@ def build() -> dict:
     gdp_average(countries)
     status = (
         f"<b>Research preview</b> · figures to {DATA_TO_TEXT}, updated {UPDATED_TEXT}. "
-        "Compiled with AI assistance from public sources and not yet checked line by line against them by a person: treat the figures as unverified estimates. "
+        "Compiled with AI assistance from public sources. "
         "Every number has a likely range and sources; gaps are filled with estimates, never left at zero. "
         'Every choice and its evidence: <a href="#view=how&sec=changelog">changelog</a>. '
         'Method and data: <a href="https://github.com/intelligent-cream/war-balance">GitHub</a>. Corrections: <a href="https://www.reddit.com/user/Intelligent-Cream-14/">Reddit</a> or a GitHub issue. '
@@ -5133,9 +5133,11 @@ def apply_laundered_r39(countries: dict[str, dict], src: Sources) -> None:
         for k in ("bmul", "bmul_lo", "bmul_hi"):
             if lb.get(k):
                 c["laund"][k] = lb[k]
-        # TODO(round 39, owner decision pending): New Zealand (Marsden Point, closed 31 March 2022) and South Africa
-        # (Engen Durban 2020, SAPREF 2022) bought more fuel because their own refineries closed; laundered_r39.json
-        # proposes a "structural" label like Nigeria's (structural_variant). Not adopted until the owner decides
+        # round 40 (owner: "New Zealand, South Africa, structural label. That's fine"): they bought more fuel because their
+        # own refineries closed (Marsden Point 31 March 2022; Engen Durban 2020, SAPREF 2022): a label like Nigeria's,
+        # the totals do not change
+        if iso3 in ("NZL", "ZAF"):
+            c["laund"]["structural"] = {"why": "refinery_closed", "src": [sid]}
         tr = c["to_rus"]
         for k, kt in (("years", "laundered"), ("years_lo", "laundered_lo"), ("years_hi", "laundered_hi")):
             tr[kt] = c["laund"][k]

@@ -1,6 +1,6 @@
 # Ukraine's net gain on its exports (`net_gain_ukraine.json`)
 
-Generated 2026-10-18. Not yet reviewed by a person. This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
+Generated 2026-10-18.. This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## What this is
 

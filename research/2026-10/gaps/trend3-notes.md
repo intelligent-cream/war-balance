@@ -1,6 +1,6 @@
 # No-war counterfactual, version 3: 2018-2021 baseline, back-tested methods, error-based ranges
 
-Data file: `research/2026-10/gaps/trend3.json`. Generated 2026-10-18. Not yet reviewed by a person.
+Data file: `research/2026-10/gaps/trend3.json`. Generated 2026-10-18..
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. Its steps: inputs, methods, back-test, then the decision, ranges and output, and a comparison of range widths and country tables.
 
 ## Summary

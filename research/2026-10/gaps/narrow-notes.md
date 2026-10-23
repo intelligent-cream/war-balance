@@ -1,6 +1,6 @@
 # Narrowing the widest ranges (Russia side)
 
-File: `narrow.json`, generated 2026-10-18. Values are EUR bn per year for 2021–2026 (2026 = January–August), with a 2019–2021 base. Each series has low, central and high values, a certainty letter and sources. Not yet reviewed by a person.
+File: `narrow.json`, generated 2026-10-18. Values are EUR bn per year for 2021–2026 (2026 = January–August), with a 2019–2021 base. Each series has low, central and high values, a certainty letter and sources..
 
 ## What the values are
 

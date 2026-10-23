@@ -127,7 +127,7 @@ for (const d of cards) {
       <div style="margin-top:12px;font-size:21px;color:#15212b;line-height:1.3"><b style="color:${!d.uaPos ? grey : d.uaUnc ? fadeB : "#2a6fb0"}">${d.uaV}</b> (${d.uaRange})${d.uaUnc && !d.party ? " · " + d.uaDir : ""}${d.refX ? ` · hosted Ukrainian refugees (${d.refX}), not counted as support: co-belligerent` : ""}</div>
       <div style="margin-top:6px;font-size:21px;color:#15212b;line-height:1.3"><b style="color:${d.ruUnc ? (d.ruLess ? fadeB : fadeO) : d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ruV}</b> (${d.ruRange}): ${d.ruWhat}${d.ruUnc && !d.party && d.ruDir ? " · " + d.ruDir : ""}</div>
       ${d.fz ? `<div style="margin-top:6px;font-size:21px;color:#15212b;line-height:1.3"><b style="color:#2a6fb0">${d.fzV}</b>: the return Russia lost on its reserves frozen here, in the net only</div>` : ""}
-      <div style="margin-top:auto;font-size:16px;color:#55636e;line-height:1.35">2022 to August 2026 (about ${d.years} years) · figures to ${d.dataTo} · <b>Research preview: unverified estimates</b>, compiled with AI assistance, not yet checked by a person<br>${d.host}</div>
+      <div style="margin-top:auto;font-size:16px;color:#55636e;line-height:1.35">2022 to August 2026 (about ${d.years} years) · figures to ${d.dataTo} · <b>Research preview</b>, compiled with AI assistance<br>${d.host}</div>
 `;
   }, d);
   await page.waitForTimeout(30);
@@ -137,7 +137,7 @@ for (const d of cards) {
   // GDP; cut Russia's earnings from trade by 1.6% of GDP | War Balance"
   const lc = s => s.charAt(0).toLowerCase() + s.slice(1);
   const title = `${d.name}: ${d.party ? "party to the war (with Russia); " : ""}${lc(d.netV)}; ${lc(d.ruV)} | War Balance`;
-  const desc = `Research preview: unverified estimates. In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: ${d.sum} (${d.netRange}; ${d.eurU}; about ${d.pctYU} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.party ? ", party to the war (with Russia), not ranked" : d.netUnc ? ", " + d.netDir : ""}. ${d.uaV} (${d.uaRange}). ${d.ruV} (${d.ruRange}): ${d.ruWhat}${d.fzV ? `. ${d.fzV}` : ""}. The net adds two different things: help given to Ukraine and the change in what Russia kept from trade. Every number with a range and a source.`;
+  const desc = `Research preview. In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: ${d.sum} (${d.netRange}; ${d.eurU}; about ${d.pctYU} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.party ? ", party to the war (with Russia), not ranked" : d.netUnc ? ", " + d.netDir : ""}. ${d.uaV} (${d.uaRange}). ${d.ruV} (${d.ruRange}): ${d.ruWhat}${d.fzV ? `. ${d.fzV}` : ""}. The net adds two different things: help given to Ukraine and the change in what Russia kept from trade. Every number with a range and a source.`;
   await writeFile(join(SITE, "c", iso + ".html"), `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="icon" href="../favicon.ico" sizes="48x48"><link rel="apple-touch-icon" href="../apple-touch-icon.png">

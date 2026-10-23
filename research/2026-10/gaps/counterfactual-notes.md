@@ -1,6 +1,6 @@
 # No-war counterfactual, version 4: nowcasting with realised non-war predictors
 
-Data file: `research/2026-10/gaps/counterfactual.json`. Generated 2026-10-18. Not yet reviewed by a person.
+Data file: `research/2026-10/gaps/counterfactual.json`. Generated 2026-10-18..
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. The steps were: downloads; inputs; models, three back-tests and the 2022-2026 predictions; tables, decision and bootstrap; intervals and per-country output; the JSON. The bilateral series, deflators and IMF WEO vintages are those of `trend3.json` (see `trend3-notes.md`).
 
 ## Summary

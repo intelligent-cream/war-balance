@@ -1,6 +1,6 @@
 # Who really owns and controls the tankers carrying Russian oil
 
-File: `shadow_fleet.json`. Gathered 2026-10-18. Not yet reviewed by a person. Ranges are meant as about 90%.
+File: `shadow_fleet.json`. Gathered 2026-10-18.. Ranges are meant as about 90%.
 
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 

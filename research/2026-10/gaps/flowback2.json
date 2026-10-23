@@ -2418,15 +2418,20 @@
    "note": "Cumulative served since 2022. High = Colombian president / NV; low = International Legion unofficial 1,500-2,500 rounded up given 140 officially recorded deaths and 670 missing. Ukrainian ombudsman (belligerent) says ~40% of 16,000 foreigners are Latin American (~6,400)."
   },
   "GEO": {
-   "low": 700,
-   "central": 1200,
-   "high": 2000,
+   "low": 500,
+   "central": 800,
+   "high": 1500,
    "as_of": "2025",
    "belligerent_source": false,
    "sources": [
     {
-     "name": "Wikipedia compilation: ~1,500 Georgians (unofficial), Georgian Legion",
-     "url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
+     "name": "RFE/RL: Georgian Legion said to number 800-1,000, roughly half ethnic Georgians",
+     "url": "https://www.rferl.org/a/ukraine-war-georgia-fighters-russia-invasion/32181784.html",
+     "date": "2026-10"
+    },
+    {
+     "name": "Civil.ge: running tally of Georgian fighters killed (unofficial)",
+     "url": "https://civil.ge/archives/tag/georgian-legion",
      "date": "2026-10"
     },
     {
@@ -2435,7 +2440,7 @@
      "date": "2024"
     }
    ],
-   "note": "Georgian government publishes no figure. Russian IC 712 / MoD 1,042 (belligerent) fall inside the range."
+   "note": "Georgian government publishes no figure. Russian IC 712 / MoD 1,042 (belligerent) fall inside the range. Round 40: no source gives 1,500; RFE/RL implies about 400-500 Georgians in the Legion, other units extra (500-1,500, central 800)."
   },
   "USA": {
    "low": 800,

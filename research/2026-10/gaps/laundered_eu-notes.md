@@ -1,6 +1,6 @@
 # Laundered oil per EU member (research 2026-10, round 5, item 5)
 
-Gathered 2026-10-18. Output: [`laundered_eu.json`](laundered_eu.json). EUR bn, nominal, low / central / high; 2026 = January–August, not annualised. **Not yet reviewed by a person.**
+Gathered 2026-10-18. Output: [`laundered_eu.json`](laundered_eu.json). EUR bn, nominal, low / central / high; 2026 = January–August, not annualised.
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## What the flow is

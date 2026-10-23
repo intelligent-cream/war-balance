@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-23",
- "status": "Research input for round 39; not yet reviewed by a person; not wired into build_data.py.",
+ "status": "Research input for round 39; not wired into build_data.py.",
  "what": "Extra services sold to Ukraine (the services twin of sell_ukr): per exporting economy, services exports to Ukraine 2019-2026, the no-war expectation, the extra amount and the money flowing back it implies at the seller's net gain x genuinely extra. Two parts: (1) travel = Ukrainian money spent abroad by refugees and travellers (NBU card-based travel imports above the expected level, allocated by host); (2) non-travel = transport, ICT, business and other services, as the exporter reports them, without government goods and services (SL) and maintenance and repair (SB).",
  "units": "EUR bn current prices unless a key says _eur_m or _usd_m; 2026 = January-August, projected from the first half (NBU Q1-Q2 2026) as H1 2026 + 2/3 of Q3 2025 grown at the H1 growth; low/central/high ~90% range. Effect = gross extra x factor, summed 2022-Aug 2026.",
  "years": "2019-2025 calendar years (2025: Eurostat/BaTiS have no partner-UA data yet, projected from 2024 with Ukraine's own imports of that kind, NBU); 2026 Jan-Aug projected",

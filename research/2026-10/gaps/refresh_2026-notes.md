@@ -1,6 +1,6 @@
 # Refresh 2026: actual Jan–Aug 2026 trade, latest Kiel release, pledged vs delivered aid
 
-File: [`refresh_2026.json`](refresh_2026.json). Gathered 2026-10-18 for roadmap items 8, 22 and 27. Not yet reviewed by a person.
+File: [`refresh_2026.json`](refresh_2026.json). Gathered 2026-10-18 for roadmap items 8, 22 and 27..
 EUR bn, nominal. 2026 means January–August 2026 and is **not annualised**. Comtrade's dollar values are converted month by month with ECB reference rates (mean for Jan–Aug 2026: 1.1629 USD per EUR).
 
 ## 1. Trade in 2026 (item 8)

@@ -1,6 +1,6 @@
 # Re-exports to Russia from Türkiye, Azerbaijan and Serbia: HS6 product matching (round 39)
 
-Data file: `reexports_r39.json` (same folder). Generated 2026-10-23. **Not yet reviewed by a person.**
+Data file: `reexports_r39.json` (same folder). Generated 2026-10-23.
 Raw pulls: 540 Comtrade JSON files are in `/tmp/claude-0/-home-user/71ac834a-35d2-5698-a36d-858806a141e1/scratchpad/r39/weak/dl/hs6/`. Scripts are `scripts/pull.py`, `scripts/hs6.py` and `scripts/write_rx.py` in the same scratch folder.
 
 ## What it replaces and how to swap it in

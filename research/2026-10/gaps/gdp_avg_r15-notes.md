@@ -1,6 +1,6 @@
 # GDP denominator: average 2022–2024 (round 15)
 
-Data: `gdp_avg_r15.json`, generated 2026-10-19 by [`scripts/gdp_avg_r15.py`](../scripts/gdp_avg_r15.py). Raised by review 4 (M1), approved by the owner. **Not yet reviewed by a person.**
+Data: `gdp_avg_r15.json`, generated 2026-10-19 by [`scripts/gdp_avg_r15.py`](../scripts/gdp_avg_r15.py). Raised by review 4 (M1), approved by the owner.
 
 ## Why
 

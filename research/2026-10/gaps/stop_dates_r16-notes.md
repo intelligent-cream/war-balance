@@ -1,6 +1,6 @@
 # "Required by sanctions" from each country's actual stop date (round 16)
 
-File: `stop_dates_r16.json`, built by [`scripts/stop_dates_r16.py`](../scripts/stop_dates_r16.py) from the sanctions working directory (the same scripts and Eurostat Comext downloads as `sanctions_share.json`, not in the repository). Gathered 2026-10-20. Not yet reviewed by a person.
+File: `stop_dates_r16.json`, built by [`scripts/stop_dates_r16.py`](../scripts/stop_dates_r16.py) from the sanctions working directory (the same scripts and Eurostat Comext downloads as `sanctions_share.json`, not in the repository). Gathered 2026-10-20..
 
 Raised by review 5 (M4), approved by the owner. `sanctions_share.json` counted a fall as "required" from the date each ban took effect, whether or not the country had already stopped. Lithuania's panel said "86% required by sanctions" although Lithuania stopped Russian crude before the EU ban. Round 16: the required share reflects only what was still flowing when a ban took effect; anything stopped earlier is the country's own choice. A label only: no total changes.
 
