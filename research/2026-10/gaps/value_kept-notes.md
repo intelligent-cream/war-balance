@@ -8,7 +8,7 @@ Data file: `value_kept.json` (same folder). Scripts: [`../scripts/value_kept/`](
 
 Until now, money a country *earns* counted as a flat profit of 20% of the sale (range 0.5–1.5×). Shipping used
 35% (20–50%). That applied to flowback, extra sales to Ukraine, sales to Russia given up or added, services sold to Russia,
-and shipping Russian oil. The round-6 rule ([roadmap A](https://followthemoneyukraine.org/#view=how)) replaces it with:
+and shipping Russian oil. The round-6 rule ([roadmap A](https://warbalance.org/#view=how)) replaces it with:
 
 > **counted share = value kept in the economy × share that is genuinely extra**
 

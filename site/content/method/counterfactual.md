@@ -2,7 +2,7 @@
 
 Every trade number on the map is a change against what a country would have bought from or sold to Russia and Ukraine **if there had been no war**. That expected level cannot be observed, so it has to be predicted. This page explains what the map predicts, which models were tried (four generations, 16 models in the last one), how they were tested on past years, which model is used for which flow and why, and how the prediction's own error widens the map's ranges. The short version: for most flows the best prediction turned out to be "2021 held flat"; only exports to Russia (and, on weaker evidence, trade with Ukraine) are predicted better by a model that uses the country's trade with everyone else and its GDP.
 
-Main files: [`counterfactual.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/counterfactual.json) with its notes [`counterfactual-notes.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/counterfactual-notes.md), applied by [build_data.py `counterfactual()`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/build_data.py), and used on the site by `triple()` and `spread()` in [`site/index.html`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/site/index.html).
+Main files: [`counterfactual.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/counterfactual.json) with its notes [`counterfactual-notes.md`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/counterfactual-notes.md), applied by [build_data.py `counterfactual()`](https://github.com/intelligent-cream/war-balance/blob/main/pipeline/build_data.py), and used on the site by `triple()` and `spread()` in [`site/index.html`](https://github.com/intelligent-cream/war-balance/blob/main/site/index.html).
 
 ## 1. What "expected without the war" means
 
@@ -19,7 +19,7 @@ change_i   = expected_i − actual_i           (positive = less than expected)
 - `bmul_i` is the counterfactual multiplier against the base (1 = flat), with `bmul_lo` and `bmul_hi` as its 90% interval.
 - `pidx_i` is the flow's price level against 2019–2021 (see [prices.md](#view=how&sec=m-prices)).
 
-The changes are summed over 2022 up to the chosen year and divided by one year's GDP (see [overview.md](#view=how&sec=m-overview)). The code is `exV`, `actV` and `spread()` inside `calc()` in [`site/index.html`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/site/index.html).
+The changes are summed over 2022 up to the chosen year and divided by one year's GDP (see [overview.md](#view=how&sec=m-overview)). The code is `exV`, `actV` and `spread()` inside `calc()` in [`site/index.html`](https://github.com/intelligent-cream/war-balance/blob/main/site/index.html).
 
 A good counterfactual must not use anything the war caused. That rules out, for example, Russia's own trade with China or India after 2022, or realised 2022 energy prices. Section 8 lists what was rejected for that reason.
 
@@ -28,9 +28,9 @@ A good counterfactual must not use anything the war caused. That rules out, for 
 | generation | file and notes | idea | status |
 |---|---|---|---|
 | 1. Flat average | none (in `trade_full.json` baselines) | expected = the 2019–2021 average at pre-war prices, every year | the starting `base` before `counterfactual()` runs |
-| 2. Damped trends | [`trend.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/trend.json) ([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/trend-notes.md)), [`trend2.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/trend2.json) ([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/trend2-notes.md)) | each country's own 2012–2021 real trend, continued with a 3-year half-life and capped at ±10% a year (multiplier 0.68–1.41 by 2026); services, company taxes and shipping in `trend2.json` | applied by [build_data.py `pre_war_trends()`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/build_data.py); used only for company taxes, shipping and flows without a counterfactual |
-| 3. Back-tested methods | [`trend3.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/trend3.json) ([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/trend3-notes.md)) | nine methods scored on 2008 and 2013 origins against the flat average; **the random walk (2021 held flat) won** | research only, not in the pipeline; it sets up generation 4 |
-| 4. Nowcasts with realised non-war predictors | [`counterfactual.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/counterfactual.json) ([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/counterfactual-notes.md)) | 16 models scored on 2008, 2013 and 2016 origins against the random walk; a model replaces "2021 flat" only if it clearly wins | applied by [build_data.py `counterfactual()`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/build_data.py) |
+| 2. Damped trends | [`trend.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/trend.json) ([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/trend-notes.md)), [`trend2.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/trend2.json) ([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/trend2-notes.md)) | each country's own 2012–2021 real trend, continued with a 3-year half-life and capped at ±10% a year (multiplier 0.68–1.41 by 2026); services, company taxes and shipping in `trend2.json` | applied by [build_data.py `pre_war_trends()`](https://github.com/intelligent-cream/war-balance/blob/main/pipeline/build_data.py); used only for company taxes, shipping and flows without a counterfactual |
+| 3. Back-tested methods | [`trend3.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/trend3.json) ([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/trend3-notes.md)) | nine methods scored on 2008 and 2013 origins against the flat average; **the random walk (2021 held flat) won** | research only, not in the pipeline; it sets up generation 4 |
+| 4. Nowcasts with realised non-war predictors | [`counterfactual.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/counterfactual.json) ([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/counterfactual-notes.md)) | 16 models scored on 2008, 2013 and 2016 origins against the random walk; a model replaces "2021 flat" only if it clearly wins | applied by [build_data.py `counterfactual()`](https://github.com/intelligent-cream/war-balance/blob/main/pipeline/build_data.py) |
 
 **Why not the flat average.** It is biased low: trade usually grows, so a 2019–2021 average predicts too little, and every fall looks larger than it was. In the trend3 back-test it had a median bias of +0.21 log (actual above predicted) and lost to the random walk by 22–31% on median absolute log error over 1–5 years ahead.
 
@@ -45,7 +45,7 @@ A good counterfactual must not use anything the war caused. That rules out, for 
 | **half-life 3 years, cap ±10% (chosen)** | **0.318** | **+0.05** |
 | half-life 5 years, cap ±10% | 0.328 | +0.02 |
 
-But that test covered a single boom period. The trend3 back-test, with two origins, showed the trend adds error for Russia flows and services, and 68 "reliable" trends were fitted on 2016–2021 only, which measures the rebound from the 2014–2016 crash (Kazakhstan's imports from Russia would grow 9.4% a year; the full window gives 0.8%) ([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/audit2-notes.md), question 5). Their ranges are also far too narrow: bands of about ×1.5 (high/low in 2026) against ×8.3 for an honest back-tested interval.
+But that test covered a single boom period. The trend3 back-test, with two origins, showed the trend adds error for Russia flows and services, and 68 "reliable" trends were fitted on 2016–2021 only, which measures the rebound from the 2014–2016 crash (Kazakhstan's imports from Russia would grow 9.4% a year; the full window gives 0.8%) ([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/audit2-notes.md), question 5). Their ranges are also far too narrow: bands of about ×1.5 (high/low in 2026) against ×8.3 for an honest back-tested interval.
 
 **What generation 3 found** (1–5 years ahead, median absolute log error):
 
@@ -122,7 +122,7 @@ Median absolute log error of the random walk and the chosen (or best) model, all
 | svc_bought (lin, not chosen) | 0.179 → 0.132 | 0.222 → 0.238 | 0.190 → 0.134 |
 | svc_sold (lin, not chosen) | 0.199 → 0.130 | 0.213 → 0.214 | 0.178 → 0.147 |
 
-The full tables for all 16 models, by size class, with bias, a bootstrap check and a COVID sensitivity run are in [counterfactual-notes.md §4](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/counterfactual-notes.md) and under `backtest`, `backtest_by_size`, `bootstrap_gain_90` and `backtest_incl_covid_T2016` in [`counterfactual.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/counterfactual.json).
+The full tables for all 16 models, by size class, with bias, a bootstrap check and a COVID sensitivity run are in [counterfactual-notes.md §4](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/counterfactual-notes.md) and under `backtest`, `backtest_by_size`, `bootstrap_gain_90` and `backtest_incl_covid_T2016` in [`counterfactual.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/counterfactual.json).
 
 **Outcome** (`chosen` in the JSON):
 
@@ -146,10 +146,10 @@ The full tables for all 16 models, by size class, with bias, a bootstrap check a
 | Re-export hubs and Belarus (ARM, GEO, KAZ, KGZ, UZB, TUR, AZE, MNG, TJK, SRB, ARE, BLR) | 2021 held flat | their trade with the rest of the world was itself reshaped by goods passing through to Russia (`HUBS_CF` in build_data.py) |
 | Company taxes | `trend2.json` trend on a 2018–2021 base | not covered by the back-test; see [services-shipping-companies.md](#view=how&sec=m-services-shipping-companies) |
 | Shipping | `trend2.json` Russian seaborne export volumes (+3.9% a year) | not covered by the back-test |
-| Laundered oil | pre-war level 2018–2021 × its pre-war growth ([`round4a.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/round4a.json)) | see [energy-and-laundered-oil.md](#view=how&sec=m-energy-and-laundered-oil) |
+| Laundered oil | pre-war level 2018–2021 × its pre-war growth ([`round4a.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/round4a.json)) | see [energy-and-laundered-oil.md](#view=how&sec=m-energy-and-laundered-oil) |
 | Countries missing from `counterfactual.json` | `trend.json` / `trend2.json` from `pre_war_trends()`, with the window fixes | fallback |
 
-Four adjustments keep war effects out of the model inputs for 2022–2026 ([notes §5](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/counterfactual-notes.md)):
+Four adjustments keep war effects out of the model inputs for 2022–2026 ([notes §5](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/counterfactual-notes.md)):
 
 1. **Commodity prices** follow the IMF World Economic Outlook of October 2021 (the last pre-war forecast), not realised prices. Realised 2022 oil alone would add about +0.1 log to exports to Russia.
 2. **Sourcing switches.** The model is run with rest-of-world trade both excluding and including Russia, Ukraine and Belarus; the central is midway and the range covers both (median difference 0.002 log, at most about 0.1 for the Baltic states, Moldova and Georgia).
@@ -162,7 +162,7 @@ In `data.json` every covered flow carries `cf`: the method `counterfactual.json`
 
 The multipliers carry the back-tested 90% interval, so the expected path is never treated as exact.
 
-- **Construction** ([notes §7](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/counterfactual-notes.md)): back-test errors (actual − predicted) of the chosen model are pooled over the three tests, divided by a horizon scale g(h) ∝ h^0.50, h^0.43, h^0.48, and their 5th, 50th and 95th percentiles taken per flow type × size class. Then `low = central × exp(q05 × g(h))` and `high = central × exp(q95 × g(h))`, widened by half the sourcing-switch difference. <span class="incode">In the code: `lin`; `rf`; `rw`</span>
+- **Construction** ([notes §7](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/counterfactual-notes.md)): back-test errors (actual − predicted) of the chosen model are pooled over the three tests, divided by a horizon scale g(h) ∝ h^0.50, h^0.43, h^0.48, and their 5th, 50th and 95th percentiles taken per flow type × size class. Then `low = central × exp(q05 × g(h))` and `high = central × exp(q95 × g(h))`, widened by half the sourcing-switch difference. <span class="incode">In the code: `lin`; `rf`; `rw`</span>
 - **In the pipeline**, `counterfactual()` writes `bmul`, `bmul_lo = min(low, central)` and `bmul_hi = max(high, central)` for 2022–2026 (2021 = 1); for services all three are scaled by the same cap factor as the central (section 6).
 - **On the site**, `triple()` reads them as `q`, `ql`, `qh`, and `spread()` adds the trend term `ql`/`qh` in quadrature with the baseline, actual-value and price terms (see [ranges.md](#view=how&sec=m-ranges)).
 
@@ -192,13 +192,13 @@ Belarus's imports from Russia (about EUR 18bn a year, a third crude and gas on n
 than the average partner's: its own 2002–2021 history gives a random-walk error of 0.11 against 0.17–0.28 for large
 flows in the generic test. Its 90% band for 2026 is ×0.72–1.44 instead of ×0.47–1.91 (central still 1.00; a model on
 Belarus's GDP failed the 2013 test with forecasts available at the time). Its exports to Russia keep the generic band,
-which rests on far more errors. [`belarus.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/belarus.json) ([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/belarus-notes.md)).
+which rests on far more errors. [`belarus.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/belarus.json) ([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/belarus-notes.md)).
 
 ### Trade with Ukraine
 
 On two back-tests a linear model wins for purchases from Ukraine and a random forest for sales to Ukraine. On far
-more evidence ([`ua_trade_cf.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/ua_trade_cf.json),
-[notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/ua_trade_cf-notes.md)): rolling origins on Ukraine's own 2004–2021 trade, and
+more evidence ([`ua_trade_cf.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/ua_trade_cf.json),
+[notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/ua_trade_cf-notes.md)): rolling origins on Ukraine's own 2004–2021 trade, and
 trade with eight analogue partners (Poland, Romania, Türkiye, Kazakhstan, Georgia, Moldova, Bulgaria, Hungary) from
 IMF DOTS. Scored with the commodity-price *forecasts* the map actually feeds them (not realised prices), their gains
 roughly halve (`lin` +8%, `rf` +10%) and they lose at several origins. Both flows hold 2021 flat, with bands from
@@ -231,13 +231,13 @@ Gazprom gas is not counted: Transnistria never paid for that gas, and it ended o
 2025, so it is support for Transnistria, not money to Russia. It is left out of the baseline and the actual values
 alike (also from the fossil-fuel floor used for pipeline-gas countries). The pre-war level is EUR 0.76bn at 2019–2021 prices (gas 0.25, other goods 0.51; 2019–2021 average as the low
 alternative, 0.64). The expected path is 0.97 × 2021: right-bank gas at its 2019–2021 average volume.
-[`cf_bands.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/cf_bands.json) ([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/cf_bands-notes.md)).
+[`cf_bands.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/cf_bands.json) ([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/cf_bands-notes.md)).
 
 ### Imports from Russia
 
 Five ways to narrow the band for "paid to Russia" were tested on back-tests
-([`to_rus_cf.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/to_rus_cf.json),
-[notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/to_rus_cf-notes.md)): fuel and other goods modelled apart (an energy-balance model
+([`to_rus_cf.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/to_rus_cf.json),
+[notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/to_rus_cf-notes.md)): fuel and other goods modelled apart (an energy-balance model
 for fuel), steady staples apart from one-off items, analogue partners, each country's own history, and the size-class
 band re-measured on rolling origins 2005–2020. Only the last passes: calibrated by era (bands from two eras cover
 90–94% of the third), it is a little narrower than the generic band. Large flows 2022–2026: ×0.57–1.62;
@@ -274,7 +274,7 @@ country is singled out. 140 flows are under it.
 | Brunei (`SMALL_FLOW_EXCLUDE`) | refinery opening: the Hengyi refinery at Pulau Muara Besar began operations in November 2019, so 2019 (EUR 0.6m) and 2020 are start-up years, not the pre-war level | [Brunei Ministry of Finance and Economy](https://www.business.gov.bn/mofe-expansion-of-hengyi-complex-will-be-significant-boost-to-brunei-economy/), fetched 20 October 2026 |
 | New Zealand (`SMALL_FLOW_EXCLUDE`) | refinery closure: Marsden Point stopped refining on 31 March 2022 (closure voted in August 2021); its Russian crude and fuel of 2019–2020 (EUR 0.37bn and 0.22bn) fed a refinery that closed for reasons of its own, so the median would credit New Zealand for the closure | [Marsden Point Oil Refinery](https://en.wikipedia.org/wiki/Marsden_Point_Oil_Refinery), fetched 20 October 2026 |
 | Syria (`SMALL_FLOW_MIRROR`) | pre-war figures are only Russia's own export reports, coded 100% as confidential (HS 99, which may include arms) in 2020 and 2021; the panel says the number is less reliable | UN Comtrade, Russia as reporter |
-| Mauritania, Botswana (`fix_artefacts()`) | the pre-war level is a single researched value (traders' origin labels; diamonds bought for resale), set as 2021 | [`round4b.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/round4b.json) |
+| Mauritania, Botswana (`fix_artefacts()`) | the pre-war level is a single researched value (traders' origin labels; diamonds bought for resale), set as 2021 | [`round4b.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/round4b.json) |
 | EU pipeline-gas buyers whose baseline is the 2021 fossil-fuel value | the fuel tracker's value is known from 2021 only, so there is no yearly series behind it | `PIPELINE_GAS` in `build_data.py` |
 
 Lebanon keeps its researched pre-war level (the mean of 2018, 2020 and 2021, leaving out 2019's fuel bought for
@@ -288,8 +288,8 @@ Most of the width of "less paid to Russia" comes from not knowing what a country
 without the war. That band is measured on trade values divided by price indices, over all kinds of goods. For
 fuel it is measured on **physical volumes** instead (tonnes of crude and products, terajoules of gas; Eurostat and UN
 Comtrade, 2005–2021), with rolling back-tests calibrated by era as before
-([`fuel_volume_cf.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/fuel_volume_cf.json),
-[notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/fuel_volume_cf-notes.md)):
+([`fuel_volume_cf.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/fuel_volume_cf.json),
+[notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/fuel_volume_cf-notes.md)):
 
 - Buyers whose Russian fuel came mainly by **pipeline** (Druzhba crude plus pipeline gas, at least 60% of their fuel)
   had steady volumes: their 5-year fuel band is ×0.80–1.30. Seaborne fuel is unsteady (×0.52–1.77), and so
@@ -304,7 +304,7 @@ Comtrade, 2005–2021), with rolling back-tests calibrated by era as before
 
 ### Power of Siberia
 
-China's imports from Russia keep 2021 flat, but the Power of Siberia pipeline was agreed in 2014 (a 30-year CNPC–Gazprom contract with a 38 bcm a year plateau) and has flowed since December 2019, so its ramp-up was expected without the war. China's no-war path includes the **contracted** volume above the 2021 level (10.39 bcm): 15.4 bcm in 2022 (the actual delivery: the 2022 contractual quantity was not found, not verified), 22.0 in 2023 (Gazprom said the 22.7 delivered was 0.7 bcm above its obligation), 30.0 in 2024 (the initial plan; 31.12 delivered; the plan figure is from a search summary of an Interfax report, not verified), and the 38 bcm plateau in 2025 (38.84 delivered) and 2026 ([`power_of_siberia_r15.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/power_of_siberia_r15.json), with Interfax, TASS and Reuters sources). Only deliveries beyond that path, and the 44 bcm a year agreed in autumn 2025, count as war-driven. The extra volume is added to China's expected path at 2019–2021 prices (its pipeline-gas unit value, 15.2 EUR/MWh) before the no-war fuel price is applied. With it, China raised Russia's earnings from trade by 0.62%<!-- n:CHN.rus abs --> of GDP instead of 0.66%. TurkStream deliveries contracted in 2020–2021 are not yet treated this way. <span class="incode">In the code: `cf: "rw"`; `power_of_siberia()` in `build_data.py`</span>
+China's imports from Russia keep 2021 flat, but the Power of Siberia pipeline was agreed in 2014 (a 30-year CNPC–Gazprom contract with a 38 bcm a year plateau) and has flowed since December 2019, so its ramp-up was expected without the war. China's no-war path includes the **contracted** volume above the 2021 level (10.39 bcm): 15.4 bcm in 2022 (the actual delivery: the 2022 contractual quantity was not found, not verified), 22.0 in 2023 (Gazprom said the 22.7 delivered was 0.7 bcm above its obligation), 30.0 in 2024 (the initial plan; 31.12 delivered; the plan figure is from a search summary of an Interfax report, not verified), and the 38 bcm plateau in 2025 (38.84 delivered) and 2026 ([`power_of_siberia_r15.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/power_of_siberia_r15.json), with Interfax, TASS and Reuters sources). Only deliveries beyond that path, and the 44 bcm a year agreed in autumn 2025, count as war-driven. The extra volume is added to China's expected path at 2019–2021 prices (its pipeline-gas unit value, 15.2 EUR/MWh) before the no-war fuel price is applied. With it, China raised Russia's earnings from trade by 0.62%<!-- n:CHN.rus abs --> of GDP instead of 0.66%. TurkStream deliveries contracted in 2020–2021 are not yet treated this way. <span class="incode">In the code: `cf: "rw"`; `power_of_siberia()` in `build_data.py`</span>
 
 ### Deliberate choices
 

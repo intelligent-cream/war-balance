@@ -49,7 +49,7 @@ await page.evaluate(() => {
   window.dispatchEvent(new Event("resize"));
   const el = document.createElement("div");
   el.style.cssText = "position:fixed;right:40px;bottom:40px;z-index:99;background:#fbfcfcee;padding:22px 28px;border-radius:10px;max-width:560px;font-family:'Source Sans 3',sans-serif;color:#15212b";
-  el.innerHTML = `<div style="font-family:Archivo,sans-serif;font-weight:800;font-stretch:115%;font-size:40px;letter-spacing:-.02em;line-height:1.05">Follow the Money:<br>Ukraine</div>
+  el.innerHTML = `<div style="font-family:Archivo,sans-serif;font-weight:800;font-stretch:115%;font-size:40px;letter-spacing:-.02em;line-height:1.05">War<br>Balance</div>
     <div style="margin-top:10px;font-size:22px;color:#55636e">Where did each country's money move: <b style="color:#2a6fb0">toward Ukraine</b> or <b style="color:#c9520f">toward Russia</b>? Its support for Ukraine plus how much <span style="color:#2a6fb0">less</span>, or <span style="color:#c9520f">more</span>, Russia kept from trade with it (taxes and profit, not the full price), as a share of its economy: totals since 2022 against one year's GDP.</div>`;
   document.body.appendChild(el);
 });
@@ -114,7 +114,7 @@ for (const d of cards) {
       <div style="display:flex;align-items:center;gap:14px;font-family:Archivo,sans-serif;font-weight:800;font-stretch:115%;font-size:26px;letter-spacing:-.01em">
         <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#2a6fb0"></span>
         <span style="display:inline-block;width:14px;height:14px;border-radius:3px;background:#d4601a;margin-left:-10px"></span>
-        Follow the Money: Ukraine</div>
+        War Balance</div>
       <div style="margin-top:18px;font-family:Archivo,sans-serif;font-weight:800;font-stretch:112%;font-size:54px;letter-spacing:-.02em;line-height:1">${d.name}</div>
       <div style="margin-top:12px;font-size:30px;font-weight:700;color:${col};line-height:1">${d.netVerb}</div>
       <div style="display:flex;align-items:baseline;gap:18px;margin-top:4px">
@@ -134,9 +134,9 @@ for (const d of cards) {
   const iso = d.iso3.toLowerCase();
   await page.screenshot({ path: join(SITE, "share", iso + ".png") });
   // round 30: the title gives the net and the trade side in the site's own words, e.g. "Germany: toward Ukraine by 3.4% of
-  // GDP; cut Russia's earnings from trade by 1.6% of GDP | Follow the Money: Ukraine"
+  // GDP; cut Russia's earnings from trade by 1.6% of GDP | War Balance"
   const lc = s => s.charAt(0).toLowerCase() + s.slice(1);
-  const title = `${d.name}: ${d.party ? "party to the war (with Russia); " : ""}${lc(d.netV)}; ${lc(d.ruV)} | Follow the Money: Ukraine`;
+  const title = `${d.name}: ${d.party ? "party to the war (with Russia); " : ""}${lc(d.netV)}; ${lc(d.ruV)} | War Balance`;
   const desc = `Research preview: unverified estimates. In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: ${d.sum} (${d.netRange}; ${d.eurU}; about ${d.pctYU} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.party ? ", party to the war (with Russia), not ranked" : d.netUnc ? ", " + d.netDir : ""}. ${d.uaV} (${d.uaRange}). ${d.ruV} (${d.ruRange}): ${d.ruWhat}${d.fzV ? `. ${d.fzV}` : ""}. The net adds two different things: help given to Ukraine and the change in what Russia kept from trade. Every number with a range and a source.`;
   await writeFile(join(SITE, "c", iso + ".html"), `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">

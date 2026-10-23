@@ -184,7 +184,7 @@
     },
     {
      "title": "Method: EU-level aid",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-aid-refugees-military-eu-level-aid",
+     "url": "https://warbalance.org/#view=how&sec=m-aid-refugees-military-eu-level-aid",
      "kind": "method",
      "what": "how the EU share is attributed in this project",
      "confirmed": true,
@@ -494,7 +494,7 @@
     },
     {
      "title": "Method: Laundered oil",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-energy-and-laundered-oil-laundered-oil",
+     "url": "https://warbalance.org/#view=how&sec=m-energy-and-laundered-oil-laundered-oil",
      "kind": "method",
      "what": "hub resale chain and crude-content valuation",
      "confirmed": true,
@@ -980,7 +980,7 @@
     },
     {
      "title": "Method: Undisclosed aid and private donations",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-aid-refugees-military-undisclosed-aid-and-private-donations",
+     "url": "https://warbalance.org/#view=how&sec=m-aid-refugees-military-undisclosed-aid-and-private-donations",
      "kind": "method",
      "what": "GDP-based model for countries without a national total",
      "confirmed": true,
@@ -994,7 +994,7 @@
    "links": [
     {
      "title": "Method: Flowback",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-aid-refugees-military-flowback",
+     "url": "https://warbalance.org/#view=how&sec=m-aid-refugees-military-flowback",
      "kind": "method",
      "what": "own-industry share ranges and how they are applied",
      "confirmed": true,
@@ -1087,7 +1087,7 @@
    "links": [
     {
      "title": "Method: Flowback (OWN_SHARE_DEFAULT, 0/10/30% since round 11; was 20/40/70%)",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-aid-refugees-military-flowback",
+     "url": "https://warbalance.org/#view=how&sec=m-aid-refugees-military-flowback",
      "kind": "method",
      "what": "assumed own-industry share where no evidence exists",
      "confirmed": true,
@@ -1095,7 +1095,7 @@
     },
     {
      "title": "Method: Ranges and certainty letters",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-ranges-where-a-parts-range-comes-from",
+     "url": "https://warbalance.org/#view=how&sec=m-ranges-where-a-parts-range-comes-from",
      "kind": "method",
      "what": "how assumed ranges enter the totals",
      "confirmed": true,
@@ -1126,7 +1126,7 @@
     },
     {
      "title": "Method: Flowback",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-aid-refugees-military-flowback",
+     "url": "https://warbalance.org/#view=how&sec=m-aid-refugees-military-flowback",
      "kind": "method",
      "what": "how coded shares become own-industry shares",
      "confirmed": true,
@@ -1157,7 +1157,7 @@
     },
     {
      "title": "Method: Flowback",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-aid-refugees-military-flowback",
+     "url": "https://warbalance.org/#view=how&sec=m-aid-refugees-military-flowback",
      "kind": "method",
      "what": "EU arms slice by production share",
      "confirmed": true,
@@ -1196,7 +1196,7 @@
     },
     {
      "title": "Method: Military support to Russia",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-aid-refugees-military-military-support-to-russia",
+     "url": "https://warbalance.org/#view=how&sec=m-aid-refugees-military-military-support-to-russia",
      "kind": "method",
      "what": "superseded by military_rus_r6 for BLR, IRN, PRK",
      "confirmed": true,
@@ -1227,7 +1227,7 @@
     },
     {
      "title": "Method: Military support to Russia",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-aid-refugees-military-military-support-to-russia",
+     "url": "https://warbalance.org/#view=how&sec=m-aid-refugees-military-military-support-to-russia",
      "kind": "method",
      "what": "superseded by military_rus_r6 for BLR, IRN, PRK",
      "confirmed": true,
@@ -1476,7 +1476,7 @@
     },
     {
      "title": "Method: Shipping",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-services-shipping-companies-shipping",
+     "url": "https://warbalance.org/#view=how&sec=m-services-shipping-companies-shipping",
      "kind": "method",
      "what": "freight = barrels x freight rates, split by owner country",
      "confirmed": true,
@@ -1630,7 +1630,7 @@
     },
     {
      "title": "Method: Residual gap",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-trade-residual-gap",
+     "url": "https://warbalance.org/#view=how&sec=m-trade-residual-gap",
      "kind": "method",
      "what": "Russia's import gap by country of origin",
      "confirmed": true,
@@ -1886,7 +1886,7 @@
     },
     {
      "title": "Method: War-time windfall",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-prices-war-time-windfall",
+     "url": "https://warbalance.org/#view=how&sec=m-prices-war-time-windfall",
      "kind": "method",
      "what": "windfall = payments minus volume at no-war prices",
      "confirmed": true,
@@ -1924,7 +1924,7 @@
     },
     {
      "title": "Method: the counterfactual models",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-counterfactual-3-the-16-models-of-generation-4",
+     "url": "https://warbalance.org/#view=how&sec=m-counterfactual-3-the-16-models-of-generation-4",
      "kind": "method",
      "what": "trend model with 3-year half-life",
      "confirmed": true,
@@ -1978,7 +1978,7 @@
     },
     {
      "title": "Method: Gas prices per country",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-prices-gas-prices-per-country",
+     "url": "https://warbalance.org/#view=how&sec=m-prices-gas-prices-per-country",
      "kind": "method",
      "what": "how per-country prices are set",
      "confirmed": true,
@@ -2078,7 +2078,7 @@
     },
     {
      "title": "Method: the counterfactual models",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-counterfactual-6-which-model-is-used-for-which-flow",
+     "url": "https://warbalance.org/#view=how&sec=m-counterfactual-6-which-model-is-used-for-which-flow",
      "kind": "method",
      "what": "which model is used for each flow",
      "confirmed": true,
@@ -2116,7 +2116,7 @@
     },
     {
      "title": "Method: Trade with Ukraine (round 6)",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-counterfactual-trade-with-ukraine",
+     "url": "https://warbalance.org/#view=how&sec=m-counterfactual-trade-with-ukraine",
      "kind": "method",
      "what": "2021 held flat for both flows",
      "confirmed": true,
@@ -2130,7 +2130,7 @@
    "links": [
     {
      "title": "Method: How the prediction's error enters the ranges",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-counterfactual-7-how-the-predictions-error-enters-the-ranges",
+     "url": "https://warbalance.org/#view=how&sec=m-counterfactual-7-how-the-predictions-error-enters-the-ranges",
      "kind": "method",
      "what": "cumulative bands from back-test errors",
      "confirmed": true,
@@ -2138,7 +2138,7 @@
     },
     {
      "title": "Method: Russia's neighbours and Moldova (round 6)",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-counterfactual-russias-neighbours-and-moldova",
+     "url": "https://warbalance.org/#view=how&sec=m-counterfactual-russias-neighbours-and-moldova",
      "kind": "method",
      "what": "own bands for Mongolia, Yemen, Tajikistan, Moldova",
      "confirmed": true,
@@ -2270,7 +2270,7 @@
     },
     {
      "title": "Method: Nuclear projects and state loans from Russia",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-russia-state-and-companies-nuclear-projects-and-state-loans-from-russia",
+     "url": "https://warbalance.org/#view=how&sec=m-russia-state-and-companies-nuclear-projects-and-state-loans-from-russia",
      "kind": "method",
      "what": "drawdowns left out",
      "confirmed": true,
@@ -2340,7 +2340,7 @@
     },
     {
      "title": "Method: Companies leaving Russia",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-russia-state-and-companies-companies-leaving-russia",
+     "url": "https://warbalance.org/#view=how&sec=m-russia-state-and-companies-companies-leaving-russia",
      "kind": "method",
      "what": "exit contribution and forced discount",
      "confirmed": true,
@@ -2911,7 +2911,7 @@
     },
     {
      "title": "Method: Payment agents (round 6)",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-trade-payment-agents",
+     "url": "https://warbalance.org/#view=how&sec=m-trade-payment-agents",
      "kind": "method",
      "what": "fees kept by residents of the agent's country",
      "confirmed": true,
@@ -2973,7 +2973,7 @@
     },
     {
      "title": "Method: Frozen central-bank reserves (round 7)",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-russia-state-and-companies-frozen-central-bank-reserves",
+     "url": "https://warbalance.org/#view=how&sec=m-russia-state-and-companies-frozen-central-bank-reserves",
      "kind": "method",
      "what": "rates per currency and year",
      "confirmed": true,
@@ -3143,7 +3143,7 @@
     },
     {
      "title": "Method: The money rule (round 6)",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-overview-one-rule-for-every-seller",
+     "url": "https://warbalance.org/#view=how&sec=m-overview-one-rule-for-every-seller",
      "kind": "method",
      "what": "value kept x genuinely extra",
      "confirmed": true,
@@ -3205,7 +3205,7 @@
     },
     {
      "title": "Method: The net-gain rule (round 10)",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-overview-the-net-gain-rule",
+     "url": "https://warbalance.org/#view=how&sec=m-overview-the-net-gain-rule",
      "kind": "method",
      "what": "taxes plus profit above a normal return",
      "confirmed": true,
@@ -3323,7 +3323,7 @@
     },
     {
      "title": "Method: The net-gain rule (round 10)",
-     "url": "https://followthemoneyukraine.org/#view=how&sec=m-overview-the-net-gain-rule",
+     "url": "https://warbalance.org/#view=how&sec=m-overview-the-net-gain-rule",
      "kind": "method",
      "what": "taxes plus profit above a normal return",
      "confirmed": true,
@@ -3459,7 +3459,7 @@
     },
     {
      "title": "Net gain of sellers: method and script",
-     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/net_gain_sellers-notes.md",
+     "url": "https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/net_gain_sellers-notes.md",
      "kind": "method",
      "what": "how the shares are built",
      "confirmed": true,
@@ -3891,7 +3891,7 @@
    "links": [
     {
      "title": "Price levels: method and data (prices-notes.md)",
-     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/prices-notes.md",
+     "url": "https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/prices-notes.md",
      "kind": "model",
      "what": "own customs unit values per fuel and benchmarks",
      "confirmed": true,
@@ -3907,7 +3907,7 @@
     },
     {
      "title": "Gas prices by buyer (gas_prices-notes.md)",
-     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/gas_prices-notes.md",
+     "url": "https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/gas_prices-notes.md",
      "kind": "model",
      "what": "gas contract and border prices",
      "confirmed": true,
@@ -3915,7 +3915,7 @@
     },
     {
      "title": "Sea freight on Russian oil (shipping-notes.md, freight pool)",
-     "url": "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/shipping-notes.md",
+     "url": "https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/shipping-notes.md",
      "kind": "model",
      "what": "freight taken out of customs values (round 14)",
      "confirmed": true,

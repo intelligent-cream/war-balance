@@ -39,7 +39,7 @@ wheels = [
 ]
 
 [[package]]
-name = "follow-the-money-ukraine"
+name = "war-balance"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

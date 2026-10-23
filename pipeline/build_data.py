@@ -1536,7 +1536,7 @@ def build() -> dict:
     src.add(
         "prices",
         "Price levels of what was traded with Russia and Ukraine (2019-2021 = 1): each buyer's own customs unit values per fuel and for other goods, benchmark indices (CREA, World Bank, Eurostat), gas contract prices; oil at the Russian port (FOB), outliers screened",
-        "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/prices-notes.md",
+        "https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/prices-notes.md",
         "2026-10-19",
         "prices.json, energy2.json price_index, gas_prices.json; freight from shipping-notes.md; see How it works",
     )
@@ -1646,8 +1646,7 @@ def build() -> dict:
         "Compiled with AI assistance from public sources and not yet checked line by line against them by a person: treat the figures as unverified estimates. "
         "Every number has a likely range and sources; gaps are filled with estimates, never left at zero. "
         'Every choice and its evidence: <a href="#view=how&sec=changelog">changelog</a>. '
-        'Method and data: <a href="https://github.com/intelligent-cream/follow-the-money-ukraine">GitHub</a>. Corrections: <a href="https://www.reddit.com/user/Intelligent-Cream-14/">Reddit</a> or a GitHub issue. '
-        "Not affiliated with Follow the Money (FTM), the Dutch investigative platform."
+        'Method and data: <a href="https://github.com/intelligent-cream/war-balance">GitHub</a>. Corrections: <a href="https://www.reddit.com/user/Intelligent-Cream-14/">Reddit</a> or a GitHub issue.'
     )
     return {
         "generated": UPDATED,
@@ -2473,7 +2472,7 @@ def war_windfall(countries: dict[str, dict], src: Sources) -> None:
     wid = src.add(
         "windfall",
         "War-time price windfall on Russian fuel: payments minus the same volume at the prices a no-war market expected (pre-invasion forecasts and futures: IMF, World Bank, EIA, ECB, ICE)",
-        "https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/energy_nowar-notes.md",
+        "https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/energy_nowar-notes.md",
         "2026-10-18",
         "fuel share of payments per year from own customs where measured (prices.json), else the pre-war import mix; fuel price indices (prices.json, energy2.json, gas_prices.json); round 14: oil at FOB, the war-time sea-freight surge (shipping-notes.md freight pool) taken out of customs CIF values",
     )

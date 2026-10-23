@@ -36,17 +36,17 @@ function dataHtml() {
     <div class="dl" role="group" aria-label="${t("Downloads")}">
       <button id="dl-full">${t("Full data (CSV)")}</button>
       <button id="dl-parts">${t("CSV with every part")}</button>
-      <a href="data.json" download="follow-the-money-ukraine.json">${t("Full data (JSON)")}</a>
+      <a href="data.json" download="war-balance.json">${t("Full data (JSON)")}</a>
     </div>
     ${coverageHtml(rows)}
-    <p class="note-small">${t("Data and text: CC BY 4.0, credit \"Follow the Money: Ukraine\". Every figure has its sources in the country breakdown and in the research files on GitHub. Figures to {date}.", { date: document.body.dataset.dataTo || t("the end of August 2026") })}</p>`;
+    <p class="note-small">${t("Data and text: CC BY 4.0, credit \"War Balance\". Every figure has its sources in the country breakdown and in the research files on GitHub. Figures to {date}.", { date: document.body.dataset.dataTo || t("the end of August 2026") })}</p>`;
 }
 function wireData(root) {
   const all = () => tableRows(Object.values(DATA)).sort((a, b) => a.iso3.localeCompare(b.iso3));
   const tag = `${state.year === 2021 ? "2021" : "2022-" + state.year}${custom() ? "_custom-mix" : ""}`;
   const f = root.querySelector("#dl-full"), p = root.querySelector("#dl-parts");
-  if (f) f.onclick = () => download(csvFull(all()), `follow-the-money-ukraine_full_${tag}.csv`);
-  if (p) p.onclick = () => download(csvParts(all()), `follow-the-money-ukraine_parts_${tag}.csv`);
+  if (f) f.onclick = () => download(csvFull(all()), `war-balance_full_${tag}.csv`);
+  if (p) p.onclick = () => download(csvParts(all()), `war-balance_parts_${tag}.csv`);
 }
 // which parts of each country rest on reported, estimated or missing data (moved here from the old Top lists panel)
 function coverageHtml(rows) {

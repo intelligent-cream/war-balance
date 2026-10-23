@@ -11,7 +11,7 @@ Every number on the map has a middle value, a likely range and a certainty lette
 | C | modelled estimate | ±35% |
 | D | rough indication | ±70% |
 
-Defaults are `RANGE` in [`site/index.html`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/site/index.html); they are applied in `part()` only when a part's own low and high coincide. The four widths (±5%, ±15%, ±35%, ±70%) are a judgement, not a measured error ([decisions](#view=how&sec=cl-r11)). Each research file assigns letters per value ([`gaps.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps.md) shows per country which parts are reported or estimated).
+Defaults are `RANGE` in [`site/index.html`](https://github.com/intelligent-cream/war-balance/blob/main/site/index.html); they are applied in `part()` only when a part's own low and high coincide. The four widths (±5%, ±15%, ±35%, ±70%) are a judgement, not a measured error ([decisions](#view=how&sec=cl-r11)). Each research file assigns letters per value ([`gaps.md`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps.md) shows per country which parts are reported or estimated).
 
 **A total's letter in the cost view.** The cost view (in the full data download only) grades a total by how much of it rests on primary data, weighting each part by its absolute value: <span class="incode">In the code: `gradeTotal()` in `site/index.html`</span>
 
@@ -57,9 +57,9 @@ These are judgements; they change letters, not values ([decisions](#view=how&sec
 
 ## Where a part's range comes from
 
-Each series in `data.json` is a triple per year: `years`, `years_lo`, `years_hi`. The pipeline ([`build_data.py`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/build_data.py)) takes them from the research files, which build them from:
+Each series in `data.json` is a triple per year: `years`, `years_lo`, `years_hi`. The pipeline ([`build_data.py`](https://github.com/intelligent-cream/war-balance/blob/main/pipeline/build_data.py)) takes them from the research files, which build them from:
 
-- **disagreement between sources**: a country's own customs report against its partner's mirror report ([`trade_full-notes.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/trade_full-notes.md): half the mirror gap, 3–25%, for reported values; 10–60% for mirror values);
+- **disagreement between sources**: a country's own customs report against its partner's mirror report ([`trade_full-notes.md`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/trade_full-notes.md): half the mirror gap, 3–25%, for reported values; 10–60% for mirror values);
 - **Monte Carlo or percentile ranges** of a model (China's military support, the residual gap, gap-filled trade);
 - **alternative assumptions** (resale shares, margins, own-industry shares, refugee cost per person).
 
@@ -96,15 +96,15 @@ model, calibrated so that two tests' bands cover 90% of the third), and `spread(
 `ql = (1 − low) × Σe` and `qh = (high − 1) × Σe`, where `Σe` is the expected total and `[low, high]` the measured band
 for that number of years (`cb` in `data.json`; 2026 counted at 8 of 12 months). Because one flow's yearly errors are
 strongly correlated (0.6–0.7 between years), the measured bands are about as wide as the sum of the yearly bands (×0.8–1.2). The yearly view and the "only the rise" parts keep the yearly bands. Belarus's imports from Russia
-keep their own yearly band. Source: [`cf_bands.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/cf_bands.json)
-([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/cf_bands-notes.md)).
+keep their own yearly band. Source: [`cf_bands.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/cf_bands.json)
+([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/cf_bands-notes.md)).
 
 The low end does not take the low baseline, the high actual value and the low price level all at once (stacked worst cases): that would make ranges too wide in one way and ignore forecast error in another.
 
 Variants:
 
 - **"Only the rise"** parts (extra purchases from Ukraine, extra sales to Ukraine, laundered oil) use `above3()`: `spread()` on each year alone, counting only the positive part of each bound.
-- **Income parts** (sales and services to Russia) are multiplied by the money rule's factor, the seller's net gain (taxes plus profit above a normal return, [`net_gain_sellers.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/net_gain_sellers.json)) × genuinely extra (`c.vk` in `data.json`): `earned3()` uses the factor's low on the low side and its high on the high side. Money flowing back uses the same factors (weapons `fw`, other spending `fo`, extra sales to Ukraine `ux`); for US weapons that is about 3.6% of the money ([overview](#view=how&sec=m-overview-the-net-gain-rule)).
+- **Income parts** (sales and services to Russia) are multiplied by the money rule's factor, the seller's net gain (taxes plus profit above a normal return, [`net_gain_sellers.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/net_gain_sellers.json)) × genuinely extra (`c.vk` in `data.json`): `earned3()` uses the factor's low on the low side and its high on the high side. Money flowing back uses the same factors (weapons `fw`, other spending `fo`, extra sales to Ukraine `ux`); for US weapons that is about 3.6% of the money ([overview](#view=how&sec=m-overview-the-net-gain-rule)).
 - **Current euros.** Each year's change in volume is multiplied by that year's price level, so trade parts are in the same euros as aid ([overview](#view=how&sec=m-overview-the-core-idea-in-four-steps)). The flat 20% margin with a 0.5–1.5× band is only a fallback for a country without `vk`; every country in the current data has `vk`. <span class="incode">In the code: `cur`</span>
 - **Parts with no pre-war comparison** (aid, refugees, windfall, weapons, hidden channels) sum their yearly triples. <span class="incode">In the code: `sum3()`</span>
 
@@ -168,7 +168,7 @@ The headline is a total for 2022 to the chosen year against one year's GDP (the 
 
 - `company` (company taxes; 2026 estimated from 2025 and the first 2026 company reports);
 - `from_rus` where the residual gap is added (its 2026 is estimated from 2025);
-- `to_rus`, `from_rus`, `buy_ukr`, `sell_ukr` where the 2026 trade value itself is an estimate (`basis = estimated` in [`trade_full.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/trade_full.json), for example Belarus and Uzbekistan).
+- `to_rus`, `from_rus`, `buy_ukr`, `sell_ukr` where the 2026 trade value itself is an estimate (`basis = estimated` in [`trade_full.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/trade_full.json), for example Belarus and Uzbekistan).
 
 The site marks the parts "paid to Russia", "sold to Russia" and "company taxes" (`est` map in `part()`). Every period label reads "2026 year to date".
 

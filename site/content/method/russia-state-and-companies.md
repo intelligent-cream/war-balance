@@ -3,13 +3,13 @@
 Money that reaches Russia outside ordinary trade: payments for Russian nuclear projects and repayments of Russia's
 state loans, purchases of Russian weapons, and money moved by companies (foreign companies leaving Russia, Russian
 companies abroad sending profits home). Each is a yearly change against the pre-war level, stored as
-an extra part (`add_extra()` in [build_data.py](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/pipeline/build_data.py), `c.extra` in `data.json`) and shown in the
+an extra part (`add_extra()` in [build_data.py](https://github.com/intelligent-cream/war-balance/blob/main/pipeline/build_data.py), `c.extra` in `data.json`) and shown in the
 country breakdown like any other part.
 
 ## Nuclear projects and state loans from Russia
 
-Code: `apply_state_finance()`; data: [`russia_state_finance.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/russia_state_finance.json)
-([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/russia_state_finance-notes.md)).
+Code: `apply_state_finance()`; data: [`russia_state_finance.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/russia_state_finance.json)
+([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/russia_state_finance-notes.md)).
 
 - **Nuclear fuel and enrichment** (HS 2844, 8401) are already in goods trade with Russia: nothing added (US EUR
   0.5–1.1bn a year, China, Korea, France, the VVER countries).
@@ -36,8 +36,8 @@ Arrears in Viet Nam, Iraq and Bangladesh were caused by sanctions on payment cha
 
 ## Weapons bought from Russia
 
-Code: `apply_russian_arms()`; data: [`russian_arms_exports.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/russian_arms_exports.json)
-([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/russian_arms_exports-notes.md)). Russia's income from arms sales fell from about
+Code: `apply_russian_arms()`; data: [`russian_arms_exports.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/russian_arms_exports.json)
+([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/russian_arms_exports-notes.md)). Russia's income from arms sales fell from about
 USD 15bn a year in 2019–2021 to 7–9bn after 2022 (official statements of the export agency and Rostec; Russia's later
 claims of 14–15bn are used only as the high end). Arms are almost entirely outside customs data (India and China record
 almost none), so this is a new part; the small part inside customs (Algeria's 2024 radars) is taken out. Split by buyer
@@ -54,8 +54,8 @@ reduced. Most buyer values after 2021 are educated guesses (certainty D; India a
 
 ### More buyers
 
-18 more buyers are found for the "rest of world" remainder from SIPRI fact sheets ([`arms_r6.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/arms_r6.json),
-[notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/arms_r6-notes.md)): Mali, Burkina Faso, Niger, Libya, Sudan, Ethiopia, Uganda,
+18 more buyers are found for the "rest of world" remainder from SIPRI fact sheets ([`arms_r6.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/arms_r6.json),
+[notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/arms_r6-notes.md)): Mali, Burkina Faso, Niger, Libya, Sudan, Ethiopia, Uganda,
 Angola, Nigeria, Laos, Mongolia, Malaysia, Turkmenistan, Thailand, Azerbaijan, Venezuela, Bulgaria, Slovakia. The
 unassigned amount is EUR 1.2bn. **Iran** is counted once: about 35% (10–70%) of its payments for
 Russian arms were settled in drones and missiles that are already counted as weapons sent to Russia, so that part
@@ -65,8 +65,8 @@ Russian arms were settled in drones and missiles that are already counted as wea
 
 **Not in the totals; a marker on the map and a column in the full data download** ([below](#view=how&sec=m-russia-state-and-companies-taken-by-russia-not-in-the-totals)).
 
-Code: `apply_company_flows()`; data: [`company_flows.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows.json)
-([notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows-notes.md)). By the company's home country:
+Code: `apply_company_flows()`; data: [`company_flows.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/company_flows.json)
+([notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/company_flows-notes.md)). By the company's home country:
 
 - **Exit contribution** to Russia's budget, required since 2023 for every sale (Russian budget line: RUB 116bn in 2023,
   160bn in 2024, about 150bn of 2025's line). Split by the size of the businesses that sold out.
@@ -85,7 +85,7 @@ A seizure is as coerced as a forced-sale discount, and both hand value to Russia
 forced exit costs, seizures are out of the totals: a marker on the map and a column in the full data download (`taken`
 in `data.json`; [below](#view=how&sec=m-russia-state-and-companies-taken-by-russia-not-in-the-totals)).
 
-- **Data**: `seizure` in [`company_flows.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/company_flows.json): asset value lost by the
+- **Data**: `seizure` in [`company_flows.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/company_flows.json): asset value lost by the
   foreign owner minus anything received abroad, in the year control was lost, by the company's home country. Cases:
   temporary management by decree 302 and later decrees (Uniper's Unipro and Fortum in April 2023, Danone and Carlsberg
   in July 2023, AB InBev's stake in December 2024), expropriation by decree (Wintershall Dea's and OMV's gas joint
@@ -140,8 +140,8 @@ Viet Nam, Russian banks. Trusteeships that stopped transfers count toward Ukrain
 Gazprom Germania, now SEFE) about EUR 1.3bn over 2022–2026. Mostly estimates (certainty D) except Serbia.
 
 **Metals, mining and chemicals plants.** Prompted by a reader asking about Rusal's Aughinish Alumina in
-Limerick, Russian-owned industrial plants abroad are included ([`russian_owned_r10.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/russian_owned_r10.json),
-[notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/russian_owned_r10-notes.md)), by host country, in the same part. They send little
+Limerick, Russian-owned industrial plants abroad are included ([`russian_owned_r10.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/russian_owned_r10.json),
+[notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/russian_owned_r10-notes.md)), by host country, in the same part. They send little
 home: about EUR 0.1–0.2bn a year in total, before and after the war, and the change against 2019–2021 stays within
 ±0.05bn a year.
 
@@ -183,8 +183,8 @@ band: it moves where the credit lands between EU members, not its total or sign 
 About EUR 260bn of the Bank of Russia's reserves have been immobilised since 28 February 2022, about 185bn at
 Euroclear in Belgium. The frozen amount itself is not counted. What counts is the yearly return those reserves would
 have earned for Russia without the freeze: money Russia did not get, so toward Ukraine on the balance with Russia
-(`apply_frozen_reserves()`, [`frozen_assets.json`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/frozen_assets.json),
-[notes](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/gaps/frozen_assets-notes.md)).
+(`apply_frozen_reserves()`, [`frozen_assets.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/frozen_assets.json),
+[notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/frozen_assets-notes.md)).
 
 - **Rates per currency and year**, close to what Euroclear actually earned (about 3.4%, 3.8% and 2.6% in 2023–2025);
   yen and 2022 euro rates were near zero. Total about EUR 31bn over 2022 to August 2026 (24.5–40) before Belgium's tax below; about EUR 27.5bn on the map after it.
