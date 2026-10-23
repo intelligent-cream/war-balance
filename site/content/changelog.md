@@ -4,6 +4,18 @@ Every update to the map, newest first: what changed and every decision behind it
 
 The detailed research log, with every file, is [`research/2026-10/README.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/README.md).
 
+<h2 id="cl-r31">Round 31: a logo, and visits counted <span class="cl-date">23 October</span></h2>
+<!-- flows: -->
+
+**The site has a logo, and visits are counted without cookies. No number changed.**
+
+### What changed
+
+1. A logo: a white serif "F" on navy with a thin rule under it, as the browser-tab icon, the home-screen icon on
+   phones (with a web manifest), next to the name in the header, and as the organisation's logo for search engines.
+2. Visits are counted with Cloudflare Web Analytics: no cookies, no personal data, nothing stored on the reader's
+   device; only page views, pages, countries and referrers in total.
+
 <h2 id="cl-r30">Round 30: ready for the new address <span class="cl-date">23 October</span></h2>
 <!-- flows: -->
 
