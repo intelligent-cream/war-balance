@@ -4,6 +4,29 @@ Every update to the map, newest first: what changed and every decision behind it
 
 The detailed research log, with every file, is [`research/2026-10/README.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/README.md).
 
+<h2 id="cl-r28">Round 28: signs in the breakdown, like a balance sheet <span class="cl-date">23 October</span></h2>
+<!-- flows: paid windfall laund sold flowback -->
+
+**Each row in "What makes up the number" again carries a sign: + when it adds to its section's headline, − when it
+takes away from it. No number changed.**
+
+### What changed
+
+1. In each section (support for Ukraine, trade with Russia, Russian money frozen) a row reads "+1.7%" when it adds to
+   the section's headline and "−0.39%" when it works against it. For Germany, "Reduced trade with Russia by 1.6%" is
+   made of "+1.7% Russia kept less from fuel and goods sold here" and "−0.39% Russia kept more from war-time fuel
+   prices"; for Hungary, "Increased trade with Russia by 6.1%" includes "+5.2% Russia kept more from war-time fuel
+   prices". Colour still says the direction (blue toward Ukraine, orange toward Russia). The section headings keep no
+   sign; their verbs say the direction.
+2. The browser check (check 32) now checks every row's sign against its section's headline.
+
+### Decisions
+
+- **A sign on each row, relative to its section.** Raised by the owner (23 October 2026), on Germany's "Russia kept more
+  from war-time fuel prices 0.39%": "should be a negative on the balance sheet; the colour makes it semi clear now, but
+  not really as clear as a − would". Round 25 had removed all signs because a bare "−5.2%" read as "paid less"; a sign
+  measured against the section's own headline does not have that problem. Effect: display only.
+
 <h2 id="cl-r27">Round 27: the trade tile says what happened to trade <span class="cl-date">23 October</span></h2>
 <!-- flows: paid windfall laund sold -->
 

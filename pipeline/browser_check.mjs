@@ -138,7 +138,8 @@ for (const lens of ["net", "payments"]) {
   }
 }
 
-// 4. round 25 (owner, 22 October 2026): "What makes up the number" with no + or − signs in its rows; round 26: one
+// 4. round 25 (owner, 22 October 2026): "What makes up the number" with no + or − signs in its rows (round 28: each row
+// signed against its section's headline); round 26: one
 // section per tile, each subtotal equal to its tile, together making the net in every country; every country gets its story tags, Belarus its
 // "Party to the war" tag first
 await ready("");
@@ -159,16 +160,29 @@ const r25 = await page.evaluate(() => {
     const c = byIso[iso];
     if (!c) continue;
     select(c.n, false);
-    // the rows and section heads carry no sign (the closing line's + and − join terms, so it is checked apart)
-    const txt = [...document.querySelectorAll("#panel .psec-h, #panel .psec summary .pv")].map(e => e.textContent).join(" | ");
-    if (/[+\u2212]\s*[€\d]|(^|\s)-\s*[€\d]/.test(txt)) signs.push(`${iso}: ${txt.slice(0, 120)}`);
+    // the section heads carry no sign; round 28 (owner): each row carries + when it adds to its section's headline and
+    // − when it takes away from it, like a balance sheet
+    const heads = [...document.querySelectorAll("#panel .psec-h")].map(e => e.textContent).join(" | ");
+    if (/[+\u2212]\s*[€\d]|(^|\s)-\s*[€\d]/.test(heads)) signs.push(`${iso} head: ${heads.slice(0, 120)}`);
+    const k2 = calc(c, 2026), S2 = partSections(c, k2);
+    document.querySelectorAll("#panel .psec").forEach((el, i) => {
+      const sec = S2.filter(x => x.parts.length || Math.abs(x.tile) >= 0.0005)[i];
+      if (!sec) return;
+      const ss = sec.tile < 0 ? -1 : 1;
+      el.querySelectorAll("details.part").forEach(d => {
+        const p = sec.parts.find(q => q.k === d.dataset.part), pv = d.querySelector(".pv");
+        if (!p || !pv) return;
+        const want = (p.v >= 0 ? 1 : -1) === ss ? "+" : "\u2212";
+        if (pv.textContent.trim()[0] !== want) signs.push(`${iso} ${p.k}: "${pv.textContent.trim().slice(0, 20)}" should start with ${want}`);
+      });
+    });
     if (!document.querySelector("#panel .psec")) signs.push(`${iso}: no sections`);
   }
   return { bad, noTags, blr, signs };
 });
 if (r25.bad.length) problems.push(`parts sections do not match the tiles or the net: ${r25.bad.slice(0, 5).join("; ")}`);
 if (r25.blr[0] !== "party") problems.push(`Belarus's first tag is not "party": ${r25.blr.join(", ")}`);
-if (r25.signs.length) problems.push(`signs in the parts sections: ${r25.signs.slice(0, 3).join(" || ")}`);
+if (r25.signs.length) problems.push(`wrong signs in the parts sections: ${r25.signs.slice(0, 3).join(" || ")}`);
 
 if (errors.length) problems.push("page errors: " + errors.slice(0, 3).join(" | "));
 await browser.close();
