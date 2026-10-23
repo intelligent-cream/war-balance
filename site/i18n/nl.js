@@ -1105,4 +1105,5 @@ I18N.nl = {
   "G7 loans repaid from Russian assets left out (Russia pays for them)": "G7-leningen die uit Russische tegoeden worden terugbetaald weggelaten (Rusland betaalt ze)",
   "military aid counted when delivered, by August 2026": "militaire hulp geteld bij levering, tot augustus 2026",
   "Kiel Institute's figure for its own aid: {k}; counted here: {v}": "Cijfer van het Kiel Instituut voor zijn eigen hulp: {k}; hier geteld: {v}",
+  "Tags picked": "Labels gekozen",
 };

@@ -1105,4 +1105,5 @@ I18N.fr = {
   "G7 loans repaid from Russian assets left out (Russia pays for them)": "prêts du G7 remboursés par les avoirs russes exclus (la Russie les paie)",
   "military aid counted when delivered, by August 2026": "aide militaire comptée à la livraison, jusqu’en août 2026",
   "Kiel Institute's figure for its own aid: {k}; counted here: {v}": "Chiffre de l’Institut de Kiel pour son aide propre : {k} ; compté ici : {v}",
+  "Tags picked": "Étiquettes choisies",
 };
