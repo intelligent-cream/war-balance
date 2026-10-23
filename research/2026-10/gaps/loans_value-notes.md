@@ -20,7 +20,7 @@ Round 5 discounted every loan at a flat 10% (6–7% low, 13–15% high), a judge
 rates and measured expected losses, on the owner's decisions. The values per loan item are made by
 [`pipeline/loan_rates.py`](../../../pipeline/loan_rates.py), which rewrites this file's `ge` (and the new `cost`) for
 every item from the existing terms; each item keeps its round-5 value as `ge_round5`. The method page is
-[docs/method/loans.md](https://followthemoneyukraine.org/#view=how&sec=m-loans).
+[docs/method/loans.md](https://warbalance.org/#view=how&sec=m-loans).
 
 **How the owner decided.**
 
@@ -98,7 +98,7 @@ cost the guarantor its expected loss, 0. Each item has `cost` (low / central / h
 
 ## Loan terms by lender
 
-All values are from Kiel Release 31's own terms columns (`loan_mat`, `loan_int`, `loan_gra`) plus the legal texts. The grant elements in this table are **round 5's** (10% central), low / central / high for a 2023 disbursement; the round-12 values per item are `ge` in the JSON (round 5's are `ge_round5`), and typical ones are on the [loans page](https://followthemoneyukraine.org/#view=how&sec=m-loans-by-loan-type).
+All values are from Kiel Release 31's own terms columns (`loan_mat`, `loan_int`, `loan_gra`) plus the legal texts. The grant elements in this table are **round 5's** (10% central), low / central / high for a 2023 disbursement; the round-12 values per item are `ge` in the JSON (round 5's are `ge_round5`), and typical ones are on the [loans page](https://warbalance.org/#view=how&sec=m-loans-by-loan-type).
 
 | Lender / type | Face 2022–26 (EUR bn) | Terms | Grant element |
 |---|---|---|---|

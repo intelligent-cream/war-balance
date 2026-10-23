@@ -874,23 +874,22 @@ check(
 # 46. round 30 (the owner, 23 October 2026: the site moves to its own address): the site's address is in one place,
 # pipeline/site_config.json; the map's head (canonical, og:url, og:image, the hreflang alternates), its SITE_URL, the
 # CNAME file and every country page's canonical use it; no file in site/ still gives the old github.io address as the
-# site's own (index.html keeps it once, as OLD_URL, to recognise old links); robots.txt and sitemap.xml, written with
+# site's own (index.html keeps each once, in OLD_URLS, to recognise old links; round 32 adds followthemoneyukraine.org); robots.txt and sitemap.xml, written with
 # the share cards, list the sitemap and every country page. Without the share cards (a local run) that half only warns,
 # like check 24; in CI (strict) it fails.
 _cfg = json.loads((ROOT / "pipeline" / "site_config.json").read_text())
-_su, _ou = _cfg["site_url"], _cfg["old_url"]
+_su, _ous = _cfg["site_url"], _cfg["old_urls"]
 _bad = []
 _need = [
     f'<link rel="canonical" href="{_su}">',
     f'<meta property="og:url" content="{_su}">',
     f'<meta property="og:image" content="{_su}share/world.png">',
     f'<link rel="alternate" hreflang="x-default" href="{_su}">',
-    f'const SITE_URL = "{_su}", OLD_URL = "{_ou}";',
+    f'const SITE_URL = "{_su}", OLD_URLS = {json.dumps(_ous)};'.replace('","', '", "'),
 ]
 _bad += [n[:50] for n in _need if n not in _html]
 if (ROOT / "site" / "CNAME").read_text().strip() != _su.split("//")[1].strip("/"):
     _bad.append("CNAME")
-_old = _ou.rstrip("/")
 for _f in [
     *(ROOT / "site").glob("*.html"),
     *(ROOT / "site").glob("*.js"),
@@ -899,9 +898,11 @@ for _f in [
     *(ROOT / "site" / "content").rglob("*.md"),
     *_pages,
 ]:
-    _n = _f.read_text().count(_old)
-    if _n > (1 if _f.name == "index.html" else 0):
-        _bad.append(f"{_f.name}: old address {_n}x")
+    _txt = _f.read_text()
+    for _old in (u.rstrip("/") for u in _ous):
+        _n = _txt.count(_old)
+        if _n > (1 if _f.name == "index.html" else 0):
+            _bad.append(f"{_f.name}: old address {_old} {_n}x")
 for _p in _pages:
     if f'<link rel="canonical" href="{_su}c/{_p.name}">' not in _p.read_text():
         _bad.append(f"canonical {_p.name}")

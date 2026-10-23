@@ -1,4 +1,4 @@
-// Ukrainian for Follow the Money: Ukraine. Keys are the English text in index.html and views.js; see i18n.js.
+// Ukrainian for War Balance. Keys are the English text in index.html and views.js; see i18n.js.
 I18N.uk = {
   "{lo} to {hi}": "від {lo} до {hi}",
   "{v} per person": "{v} на особу",
@@ -327,7 +327,7 @@ I18N.uk = {
   "this project's method": "метод цього проєкту",
   "Figures were compiled with AI assistance from these sources and have not yet been checked line by line by a person. Each source lists the exact tables and reports used; the research notes give every input with its own source.": "Цифри зібрано за допомогою ШІ з цих джерел, і людина ще не перевірила їх рядок за рядком. Кожне джерело називає точні таблиці та звіти; дослідницькі нотатки подають кожне вхідне значення з власним джерелом.",
   "How this part is calculated": "Як рахується ця частина",
-  "Compiled with AI assistance from public sources and not yet checked line by line against them by a person: treat the figures as unverified estimates. Every number has a likely range and sources; gaps are filled with estimates, never left at zero. Every choice and its evidence: <a href=\"#view=how&sec=changelog\">changelog</a>. Method and data: <a href=\"https://github.com/intelligent-cream/follow-the-money-ukraine\">GitHub</a>. Corrections: <a href=\"https://www.reddit.com/user/Intelligent-Cream-{n0}/\">Reddit</a> or a GitHub issue.": "Зібрано за допомогою ШІ з відкритих джерел і ще не звірено з ними рядок за рядком людиною: вважайте цифри неперевіреними оцінками. Кожне число має ймовірний діапазон і джерела; прогалини заповнено оцінками, а не нулями. Кожне рішення та його докази: <a href='#view=how&sec=changelog'>журнал змін</a>. Метод і дані: <a href='https://github.com/intelligent-cream/follow-the-money-ukraine'>GitHub</a>. Виправлення: <a href='https://www.reddit.com/user/Intelligent-Cream-{n0}/'>Reddit</a> або issue на GitHub.",
+  "Compiled with AI assistance from public sources and not yet checked line by line against them by a person: treat the figures as unverified estimates. Every number has a likely range and sources; gaps are filled with estimates, never left at zero. Every choice and its evidence: <a href=\"#view=how&sec=changelog\">changelog</a>. Method and data: <a href=\"https://github.com/intelligent-cream/war-balance\">GitHub</a>. Corrections: <a href=\"https://www.reddit.com/user/Intelligent-Cream-{n0}/\">Reddit</a> or a GitHub issue.": "Зібрано за допомогою ШІ з відкритих джерел і ще не звірено з ними рядок за рядком людиною: вважайте цифри неперевіреними оцінками. Кожне число має ймовірний діапазон і джерела; прогалини заповнено оцінками, а не нулями. Кожне рішення та його докази: <a href='#view=how&sec=changelog'>журнал змін</a>. Метод і дані: <a href='https://github.com/intelligent-cream/war-balance'>GitHub</a>. Виправлення: <a href='https://www.reddit.com/user/Intelligent-Cream-{n0}/'>Reddit</a> або issue на GitHub.",
   "Trade figures are this country's own customs data (UN Comtrade). EU statistics (Eurostat) can show different figures for a single member, because they book goods where they enter the EU, such as Rotterdam or Antwerp.": "Торговельні дані — це власні митні дані цієї країни (UN Comtrade). Статистика ЄС (Eurostat) може показувати інші цифри для окремого члена, бо враховує товари там, де вони входять до ЄС, наприклад у Роттердамі чи Антверпені.",
   "Why": "Чому",
   "Round {n0}: net-gain shares from official sector profitability (Russia: FNS/Rosstat by OKVED-{n1} activity; Ukraine: Derzhstat by KVED division), export duties collected and company results": "Раунд {n0}: частки чистого виграшу з офіційної рентабельності галузей (Росія: ФНС/Росстат за видами діяльності ОКВЕД-{n1}; Україна: Держстат за розділами КВЕД), стягнуті експортні мита та результати компаній",
@@ -805,8 +805,8 @@ I18N.uk = {
   "{parts} = {x} toward Russia": "{parts} = {x} у бік Росії",
   "Business with Russia": "Бізнес із Росією",
   "Where did each country's money move: toward Ukraine or toward Russia?": "Куди рухалися гроші кожної країни: у бік України чи в бік Росії?",
-  "Follow the Money: Ukraine": "Слідами грошей: Україна",
-  "Data and text: CC BY 4.0, credit \"Follow the Money: Ukraine\". Every figure has its sources in the country breakdown and in the research files on GitHub. Figures to {date}.": "Дані й текст: CC BY 4.0, з посиланням на «Follow the Money: Ukraine». Джерела кожної цифри — у розбивці за країною та в дослідницьких файлах на GitHub. Дані до {date}.",
+  "War Balance": "Слідами грошей: Україна",
+  "Data and text: CC BY 4.0, credit \"War Balance\". Every figure has its sources in the country breakdown and in the research files on GitHub. Figures to {date}.": "Дані й текст: CC BY 4.0, з посиланням на «War Balance». Джерела кожної цифри — у розбивці за країною та в дослідницьких файлах на GitHub. Дані до {date}.",
   "How it works": "Як це працює",
   "This section is in English.": "Цей розділ англійською.",
   "Full method": "Повний метод",

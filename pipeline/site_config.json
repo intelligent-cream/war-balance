@@ -1,5 +1,8 @@
 {
-  "_note": "The site's own address, in one place. Read by pipeline/share_cards.mjs (pages, cards, sitemap, robots.txt); site/index.html carries the same value in its head and in SITE_URL, and pipeline/check_data.py checks they match. old_url is the previous address, kept so old links can be recognised.",
-  "site_url": "https://followthemoneyukraine.org/",
-  "old_url": "https://intelligent-cream.github.io/follow-the-money-ukraine/"
+  "_note": "The site's own address, in one place. Read by pipeline/share_cards.mjs (pages, cards, sitemap, robots.txt); site/index.html carries the same value in its head and in SITE_URL, and pipeline/check_data.py checks they match. old_urls are the previous addresses (round 32: renamed to War Balance), kept so old links can be recognised.",
+  "site_url": "https://warbalance.org/",
+  "old_urls": [
+    "https://intelligent-cream.github.io/follow-the-money-ukraine/",
+    "https://followthemoneyukraine.org/"
+  ]
 }
