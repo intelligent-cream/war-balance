@@ -143,8 +143,9 @@ The likely range is **data and model uncertainty, given the method**. Method cho
 | war-time windfall at 100% | `calc(c, y, {windfall: "full"})`, `windfall.alt` | Russia's gain on the extra price |
 | loans at the war-time yield | `calc(c, y, {loans: "war"})` | the loan discount rate |
 | EU refiners keep the Russian crude in their fuel exports | data rebuilt with `refiner` (`METHOD_ALTERNATIVES` in `build_data.py`) | EU refiner treatment |
-| laundered oil without the route rule | rebuilt with `laund_route` | the laundered-oil rule |
-| laundered oil not counted | rebuilt with `laund_off` | the laundered-oil coverage |
+| laundered oil without the route rule (buyers without a measured series) | rebuilt with `laund_route` | the laundered-oil rule |
+| laundered oil: half of Russia's gain charged to the fuel buyer (round 39, replaces "not counted") | rebuilt with `laund_half` | who bears a redirected barrel |
+| laundered oil modelled from refiners' exports and hub resale (round 38 method) for the 21 measured buyers | rebuilt with `laund_model` | the laundered-oil data |
 | the mix of what was bought from tracker tonnes | rebuilt with `fuelmix` | the fuel-mix basis |
 | fuel prices as customs (CIF) values, freight included | rebuilt with `freight` | the freight basis |
 | sellers' normal return 9% nominal, services with real estate | rebuilt with `normal_return` (`net_gain_sellers_r13.json`) | the normal return |

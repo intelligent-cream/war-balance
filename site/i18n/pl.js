@@ -401,8 +401,6 @@ I18N.pl = {
   "less paid to Russia": "mniej zapłacone Rosji",
   ", of which {v} gas cut off by Russia": ", w tym {v} gazu odciętego przez Rosję",
   "EU refiners keep the Russian crude in the fuel they export": "rafinerie UE zatrzymują rosyjską ropę w eksportowanym paliwie",
-  "laundered oil: every buyer's change counted, without the route rule": "wyprana ropa: liczona zmiana każdego nabywcy, bez reguły tras",
-  "laundered oil (fuel made from Russian crude elsewhere) not counted": "wyprana ropa (paliwo wyprodukowane gdzie indziej z rosyjskiej ropy) nieliczona",
   "the mix of what was bought from the fuel tracker's tonnes, not customs values": "struktura zakupów z ton z trackera paliw, a nie z wartości celnych",
   "fuel prices as customs (CIF) values, freight included": "ceny paliw jako wartości celne (CIF), z frachtem",
   "sellers' normal return 9% nominal, services incl. real estate; Russia 9%, Ukraine 8.2%": "normalna stopa zwrotu sprzedawców 9% nominalnie, usługi z nieruchomościami; Rosja 9%, Ukraina 8,2%",
@@ -1159,4 +1157,7 @@ I18N.pl = {
   "profits its companies made in Russia": "zyski jego firm w Rosji",
   "income from Russian oil and gas projects": "dochody z rosyjskich projektów naftowych i gazowych",
   "mostly the return lost on frozen Russian private assets": "głównie utracony zwrot z zamrożonych rosyjskich aktywów prywatnych",
+  "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)": "wyprana ropa: połowa zysku Rosji na ropie przypisana nabywcy paliwa (Rosja przekierowała ropę, więc jeden nabywca mniej wpływa na jej dochody)",
+  "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs": "wyprana ropa modelowana z eksportu rafinerii i odsprzedaży w hubach (do rundy 38), nie mierzona w cle nabywcy",
+  "laundered oil: every buyer's change counted, without the route rule (buyers without a measured series)": "wyprana ropa: liczona zmiana każdego nabywcy, bez reguły trasy (nabywcy bez zmierzonej serii)",
 };

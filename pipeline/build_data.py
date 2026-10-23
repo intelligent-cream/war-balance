@@ -384,6 +384,28 @@ LAUNDERED_CAP_BY = {
 # of the bunker share is fuel bought by foreign shipowners (judgement). Gibraltar is left out: fix_artefacts() already
 # keeps only 10% of its fuel, for the same reason
 HUB_BUNKER_HALF_MID = {"MLT": 0.5 * E2["hub_resale"]["MLT"]["bunker_share"]["central"]}
+# Round 39 (owner: "what has evidence should be counted as such, then on top we can add speculative"): for the buyers in
+# laundered_r39.json the laundered oil is measured, not modelled: the buyer's own customs imports of fuel by origin x the
+# measured Russian share of that origin's crude x crude content, its pre-war level measured the same way (option A: only
+# refiners whose payments are netted here pass Russian crude on). Hub resale, the Brunei channel and the EU-refiner route
+# are already inside these series, so they are not added again (apply_laundered_r39). The hub-chain model stays in the
+# method band ("laund_model"); "laund_half" charges half of Russia's gain (redirected trade)
+LAUNDERED_R39 = json.loads(
+    (Path(__file__).resolve().parent.parent / "research/2026-10/gaps/laundered_r39.json").read_text()
+)
+R39_BUYERS = frozenset(LAUNDERED_R39["buyers"])
+# what the old route rules would have charged these buyers, per channel and refiner, so that the refiners' deductions can
+# move by exactly what the buyers' charge moves (filled during each build by reassign_laundered_oil(),
+# apply_laundered_r6() and eu_refiner_exports(); used by apply_laundered_r39(); Brunei's part waits for apply_brunei_r6())
+_R39_OLD: dict[str, dict] = {}
+_R39_BRN: dict[str, list[float]] = {}
+
+
+def r39_on() -> bool:
+    """The measured series replace the hub-chain model unless the method band's "laund_model" is being built."""
+    return "laund_model" not in ALT
+
+
 # countries that received Russian pipeline gas, which customs data often do not record as Russian; only for these is the
 # fossil fuel tracker used when it is higher than customs data (elsewhere its "destinations" can be storage terminals)
 PIPELINE_GAS = EU27 | {
@@ -1153,6 +1175,7 @@ def build() -> dict:
         tr["_refined_out"] = [g - v for g, v in zip(gross["years"], tr["years"])]
         tr["src"] = tr.get("src", []) + [rid]
     eu_refiner_exports(countries, src, rid)
+    apply_laundered_r39(countries, src)
 
     # ---- taxes paid in Russia by companies based in the country (all taxes, still foreign-owned) ----
     kse = src.add(
@@ -1636,12 +1659,22 @@ def build() -> dict:
         "2026-10-19",
         "the 2026 price spike came from the Hormuz crisis, not from this war; the money stays in, and the method band values 2026 at 2025 prices (How it works)",
     )
-    if "laund_off" in ALT:
+    if "laund_half" in ALT:
+        # round 39 (owner: "what has evidence should be counted as such, then on top we can add speculative"): "not
+        # counted" (laund_off, until round 38) contradicts the measured content and left the band. Its speculative low
+        # end: Russia redirected its crude at a discount without losing volume (Babina et al., CEPR DP17957), so one
+        # buyer's fuel moves Russia's revenue by less than the crude inside it; half of Russia's gain is charged, the
+        # redirected-trade incidence "paid" uses (attrib). The refiners' deductions stay: they passed the crude on
         for c in countries.values():
-            c.pop("laund", None)
-            tr = c.get("to_rus") or {}
-            for k in ("laundered", "laundered_lo", "laundered_hi", "laund_gain"):
-                tr.pop(k, None)
+            lb, tr = c.get("laund"), c.get("to_rus") or {}
+            if not lb:
+                continue
+            for k, kt in (("years", "laundered"), ("years_lo", "laundered_lo"), ("years_hi", "laundered_hi")):
+                lb[k] = [round(v * 0.5, 5) for v in lb[k]]
+                if kt in tr:
+                    tr[kt] = lb[k]
+            lb["base"] = round(lb.get("base", 0.0) * 0.5, 5)
+            lb["base_range"] = [round(v * 0.5, 5) for v in lb.get("base_range") or [0.0, 0.0]]
     attach_r11_sources(countries, src)
     attach_input_sources(countries)
     mark_no_data(countries)
@@ -1903,7 +1936,7 @@ def prune_sources(countries: dict[str, dict], src: Sources) -> None:
 SOURCE_TYPE = {
     "trade": "data", "nonreport": "report", "kiel": "data", "kiel_eu_share": "report", "aid_gaps": "data",
     "refugees": "data", "energy": "ours", "transit_gas": "data", "laundered": "ours", "laundered_eu": "data",
-    "laundered_r6": "report", "refining": "report", "eu_refiners": "ours", "companies": "report",
+    "laundered_r6": "report", "laundered_r39": "data", "refining": "report", "eu_refiners": "ours", "companies": "report",
     "company_taxes_r6": "report", "services": "data", "hidden": "report", "undisclosed": "report", "private": "report",
     "military_rus_r6": "report", "china_military": "report", "people": "report", "shipping": "report",
     "shadow_fleet": "report", "reexports": "data", "residual": "data", "hk_gold_r16": "data", "audit": "notes",
@@ -2256,8 +2289,11 @@ def fuel_share_year(iso3: str) -> list[float | None]:
 ALT: set[str] = set()
 METHOD_ALTERNATIVES = {
     "refiner": "EU refiners keep the Russian crude in the fuel they export (until round 13)",
-    "laund_route": "laundered oil: every buyer's change counted, without the round-13b route rule",
-    "laund_off": "laundered oil (fuel made from Russian crude elsewhere) not counted",
+    "laund_route": "laundered oil: every buyer's change counted, without the round-13b route rule (buyers without a measured series)",
+    # round 39 (owner: "what has evidence should be counted as such, then on top we can add speculative"): "not counted"
+    # (laund_off) is replaced by half of Russia's gain charged; the hub-chain model is kept for the measured buyers
+    "laund_half": "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)",
+    "laund_model": "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs (21 buyers)",
     "fuelmix": "the mix of what was bought from the fuel tracker's tonnes (until round 14), not customs values",
     "freight": "fuel prices as customs (CIF) values, freight included (until round 14)",
     "normal_return": "sellers' normal return 9% nominal, services incl. real estate (round 13); Russia's and Ukraine's shares as in round 14",
@@ -4045,7 +4081,7 @@ def apply_company_profits(countries: dict[str, dict], src: Sources) -> None:
     sid = src.add(
         "company_profits",
         "Profits of foreign companies in Russia and foreign partners' income from Russian oil and gas: KSE Institute / B4Ukraine #LeaveRussia, OECD direct-investment income by partner, company reports",
-        "https://leave-russia.org/",
+        "https://kse.ua/wp-content/uploads/2024/09/ENG_What-are-the-financial-results-of-foreign-business-in-Russia-in-2023_final.pdf",
         cp.get("generated"),
         "against the 2018-2021 level grown like company taxes; see research/2026-10/gaps/company_profits_r39-notes.md",
     )
@@ -4571,8 +4607,8 @@ def apply_military_delivered(countries: dict[str, dict], src: Sources) -> None:
 #   the country and sold on to Russia (reexports), national statistics (narrow), gas by country of use (transit_gas), the
 #   Power of Siberia, Hong Kong's gold, refinery-specific research (laundered_r6);
 # - fuel made from Russian crude (laundered oil): the country's own customs records of fuel imports by origin
-#   (laundered_eu), refiners' reported fuel exports to the country (laundered), or refinery-specific research
-#   (laundered_r6). Fuel reached only through EU refiners' 2021 export shares is an allocation, not an observation.
+#   (laundered_eu, and round 39's laundered_r39), refiners' reported fuel exports to the country (laundered), or
+#   refinery-specific research (laundered_r6). Fuel reached only through EU refiners' 2021 export shares is an allocation, not an observation.
 # Not an observation: the pre-war trend continued (trend), Russia's import gap split by origin shares (residual), audit
 # shares (audit2) and models. A part without its own observation is set to zero in calc() and marked "no data".
 NO_DATA_OBS = {
@@ -4580,7 +4616,7 @@ NO_DATA_OBS = {
     "from_rus": {"nonreport", "reexports", "narrow"},
     "buy_ukr": set(),
     "sell_ukr": set(),
-    "laund": {"laundered", "laundered_r6", "laundered_eu"},
+    "laund": {"laundered", "laundered_r6", "laundered_eu", "laundered_r39"},
 }
 NO_DATA_TRADE = {
     "to_rus": "imports_from_RUS",
@@ -4801,6 +4837,13 @@ def apply_laundered_r6(countries: dict[str, dict], src: Sources) -> None:
         nb = (d.get("replacement_for_laundered_eu_non_eu_AUS") or {}).get("non_brunei_part") or {}
         fix = lambda y, b: r6_brunei_change(d, y, b) + get(nb, y, b) * (eu_k_factor(y, b) - 1)  # noqa: E731
         add = {str(y): {b: get(add, y, b) + fix(y, b) for b in ("low", "central", "high")} for y in YEARS}
+        if iso3 in R39_BUYERS and r39_on():
+            # round 39: the buyer's measured series (laundered_r39.json) already holds its fuel from Brunei (Hengyi): not
+            # added again; kept so that Brunei's deduction follows the measured value (apply_laundered_r39)
+            o = _R39_OLD.setdefault(iso3, {})
+            o["BRN"] = {k: [get(add, y, b) for y in YEARS] for k, b in keys}
+            o["base_old"] = o.get("base_old", 0.0) + max(0.0, get(add, 2021, "central"))
+            continue
         if iso3 in ("TUR", "BRN"):
             # passed on: out of the hub's own payments to Russia
             tr = c.get("to_rus")
@@ -4890,6 +4933,197 @@ def apply_laundered_eu(countries: dict[str, dict], src: Sources) -> None:
         lb["src"] = [sid]
 
 
+def _r39_share(origin: str, y: int) -> float:
+    """Central measured Russian share of an origin's fuel pool in year y (laundered_r39.json, option A; one value for
+    the EU's refiners)."""
+    sh = LAUNDERED_R39["origin_russian_share_used"]["A"]
+    return (sh.get(f"{'EU' if origin in EU27 else origin}|{y}") or [0.0])[0]
+
+
+def _r39_hub_mix(hub: str, y: int, netted: set[str], depth: int = 0) -> dict[str, float]:
+    """Where the Russian crude in a trading hub's fuel (Singapore, Malaysia, Oman) was refined: the hub's own customs
+    imports of fuel by origin x each origin's measured share; a hub bought from goes through its own mix. Under option A
+    the hubs' own refineries pass nothing on (their Russian crude is in their own payments)."""
+    ex = LAUNDERED_R39["extracts"]["comtrade_hub_product_imports_by_origin_usd_m"].get(hub) or {}
+    row = ex.get(str(min(max(y, 2019), 2025))) or {}
+    out: dict[str, float] = {}
+    for o, v in (row.get("top_origins_usd_m") or {}).items():
+        if o in R39_HUBS and o != hub and depth < 2:
+            for r, w in _r39_hub_mix(o, y, netted, depth + 1).items():
+                out[r] = out.get(r, 0.0) + v * _r39_share(o, y) * w
+        elif o in netted:
+            out[o] = out.get(o, 0.0) + v * _r39_share(o, y)
+    tot = sum(out.values())
+    return {r: w / tot for r, w in out.items()} if tot > 0 else {}
+
+
+def _r39_weights(entry: dict, years: tuple[int, ...], netted: set[str]) -> dict[str, float]:
+    """The refiners (netted here) whose Russian crude is in a measured buyer's fuel, as shares: its Russian crude by
+    origin (laundered_r39.json by_origin_eur_m), trading hubs split by their own mix; other origins (the UK, Norway, Saudi
+    Arabia...) and the small origins not listed are spread over these in proportion."""
+    out: dict[str, float] = {}
+    for y in years:
+        row = entry["fuel_imports_and_russian_crude_by_year"].get(str(y)) or {}
+        for o, v in (row.get("by_origin_eur_m") or {}).items():
+            parts = _r39_hub_mix(o, y, netted) if o in R39_HUBS else {o: 1.0} if o in netted else {}
+            for r, w in parts.items():
+                out[r] = out.get(r, 0.0) + v * w
+    tot = sum(out.values())
+    return {r: w / tot for r, w in out.items()} if tot > 0 else {}
+
+
+R39_HUBS = ("SGP", "MYS", "OMN")
+
+
+def _r39_relieve(tr: dict, dl: dict[str, list[float]], out: bool = True) -> None:
+    """Takes a refiner's change in fuel passed on (dl, at the refiner's ends) off its payments to Russia; what came off
+    is kept for apply_net_gain() (Russia's gain on crude), as for the refiners' other deductions."""
+    gross = list(tr["years"])
+    for k in ("years", "years_lo", "years_hi"):
+        tr[k] = [round(max(0.0, v - x), 5) for v, x in zip(tr[k], dl[k])]
+    if out:
+        o = tr.get("_refined_out") or [0.0] * 6
+        tr["_refined_out"] = [a + g - v for a, g, v in zip(o, gross, tr["years"])]
+
+
+def apply_laundered_r39(countries: dict[str, dict], src: Sources) -> None:
+    """Round 39 (owner: "what has evidence should be counted as such, then on top we can add speculative"): for the 21
+    buyers in laundered_r39.json, laundered oil is the measured Russian crude in the fuel they imported (option A): their
+    own customs imports of fuel by origin (the suppliers' records x 1.05 where they do not report or name a trading hub)
+    x the measured Russian share of that origin's crude (customs; CREA and KSE refinery data) x crude content. The
+    pre-war level is measured the same way (the mean of 2019-2021 at the Urals price, 1.124, 0.723, 1.154), flat, so the
+    route rule has nothing to hold (eu_route_held) and the pre-war growth of the model (bmul) does not apply. The hubs'
+    resale, Brunei's fuel (laundered_r6.json) and the EU refiners' route were not added for them (reassign_laundered_oil,
+    apply_laundered_r6, eu_refiner_exports). The refiners netted here (India, China, Türkiye, the UAE, Brunei, EU refiners)
+    are relieved of exactly what moves at these buyers: the new value split by the origin of its Russian crude, less what
+    the old routes charged them (EU refiners and Brunei per refiner; the rest over India, China, Türkiye and the UAE by the
+    same origins). Before the war: China's 2021 deduction is the buyers' pre-war levels (as in build()), the EU refiners'
+    and Brunei's their own parts. The method band keeps the hub-chain model ("laund_model")."""
+    _R39_BRN.clear()
+    if not r39_on():
+        return
+    d = LAUNDERED_R39
+    sid = src.add(
+        "laundered_r39",
+        "Fuel made from Russian crude, measured per buyer: the buyer's own customs imports of fuel by origin (UN Comtrade, DGCI&S) x the Russian share of each origin's crude (customs; CREA and KSE Institute refinery data) x crude content",
+        "https://comtradeapi.un.org/public/v1/preview/C/A/HS",
+        d.get("generated"),
+        "pre-war level measured the same way; the speculative versions are in the method band; see research/2026-10/gaps/laundered_r39-notes.md",
+    )
+    eu_ref = set() if "refiner" in ALT else set(load(GAPS / "round4a.json")["eu_refiners"]["by_country"])
+    netted = {"IND", "CHN", "TUR", "ARE", "BRN"} | set(load(GAPS / "round4a.json")["eu_refiners"]["by_country"])
+    rest = ("IND", "CHN", "TUR", "ARE")
+    ui = {y: E2["price_index"]["urals"][str(y)]["central"] for y in (2019, 2020, 2021)}
+    r21 = idx("urals", "central")[0]
+    keys = (("years", "central"), ("years_lo", "low"), ("years_hi", "high"))
+    # the refiner's ends are the buyers' the other way round: its low end passes on the buyers' high values
+    rk = {"years": "years", "years_lo": "years_hi", "years_hi": "years_lo"}
+    delta: dict[str, dict[str, list[float]]] = {}
+
+    def move(r: str, k: str, i: int, v: float) -> None:
+        dl = delta.setdefault(r, {x: [0.0] * 6 for x in rk})
+        dl[rk[k]][i] += v
+
+    def norm(w: dict[str, float], keep) -> dict[str, float]:
+        w = {r: v for r, v in w.items() if r in keep}
+        tot = sum(w.values())
+        return {r: v / tot for r, v in w.items()} if tot > 0 else {}
+
+    for iso3, e in d["buyers"].items():
+        c = countries.get(iso3)
+        if not c or not c.get("to_rus"):
+            continue
+        lv = e["russian_crude_in_fuel_eur_bn_levels"]
+        at = lambda b, y: lv[b][lv["years"].index(y)]  # noqa: E731
+        new = {k: [at(b, y) for y in YEARS] for k, b in keys}
+        # in 2021 money at the 2019-2021 Urals price: laundered_volumes() divides by the 2021 index
+        base = {k: sum(at(b, y) / ui[y] for y in (2019, 2020, 2021)) / 3 * r21 for k, b in keys}
+        w_all = _r39_weights(e, tuple(range(2019, 2027)), netted) or {"IND": 1.0}
+        w_pre = _r39_weights(e, (2019, 2020, 2021), netted) or w_all
+        w_y = [_r39_weights(e, (y,), netted) or w_all for y in YEARS]
+        if "refiner" in ALT:
+            # EU refiners keep the Russian crude in the fuel they export: that part is not charged to the buyer either
+            for i, w in enumerate(w_y):
+                f = 1 - sum(v for r, v in w.items() if r in EU27)
+                for k, _ in keys:
+                    new[k][i] *= f
+            f = 1 - sum(v for r, v in w_pre.items() if r in EU27)
+            base = {k: v * f for k, v in base.items()}
+            w_all = norm(w_all, netted - EU27) or {"IND": 1.0}
+            w_pre = norm(w_pre, netted - EU27) or w_all
+            w_y = [norm(w, netted - EU27) or w_all for w in w_y]
+        old = _R39_OLD.get(iso3) or {}
+        lb = c.get("laund") or {}
+        hub = old.get("hub") or {}
+        # what the hub-chain model still charged them here (refiners' own exports to them, and hub resale that was
+        # not passed on): India, China, Türkiye and the UAE, split by the same origins
+        cur = {k: [(lb.get(k) or [0.0] * 6)[i] + (hub.get(k) or [0.0] * 6)[i] for i in range(6)] for k, _ in keys}
+        wr_all = norm(w_all, rest) or {"IND": 1.0}
+        for i in range(1, 6):
+            wr = norm(w_y[i], rest) or wr_all
+            for k, _ in keys:
+                for r, w in w_y[i].items():
+                    move(r, k, i, new[k][i] * w)
+                for r, w in wr.items():
+                    move(r, k, i, -cur[k][i] * w)
+                for r, rec in (old.get("eu") or {}).items():
+                    move(r, k, i, -rec[k][i])
+                if old.get("BRN"):
+                    move("BRN", k, i, -old["BRN"][k][i])
+        # before the war (2021): China's deduction is the buyers' pre-war levels at their central value (build()),
+        # the EU refiners' and Brunei's their own measured parts
+        for k, _ in keys:
+            for r, w in w_pre.items():
+                if r in eu_ref or r == "BRN":
+                    move(r, k, 0, base[k] * w)
+                else:
+                    move("CHN", k, 0, base["years"] * w)
+            move("CHN", k, 0, -lb.get("base", 0.0))
+            for r, rec in (old.get("eu") or {}).items():
+                move(r, k, 0, -rec[k][0])
+            if old.get("BRN"):
+                move("BRN", k, 0, -old["BRN"][k][0])
+        trip = [sorted(t) for t in zip(new["years_lo"], new["years"], new["years_hi"])]
+        c["laund"] = {
+            "years": [round(t[1], 5) for t in trip], "years_lo": [round(t[0], 5) for t in trip],
+            "years_hi": [round(t[2], 5) for t in trip], "base": round(base["years"], 5),
+            "base_range": [round(min(base["years_lo"], base["years"]), 5), round(max(base["years_hi"], base["years"]), 5)],
+            "cert": (e.get("certainty") or "C")[0], "src": [sid],
+        }  # fmt: skip
+        # the expected path keeps the pre-war growth the old routes gave it (round4a.json, EU refiners' part flat): the
+        # builder notes replace only the levels and the pre-war level, and the research computed its values that way
+        for k in ("bmul", "bmul_lo", "bmul_hi"):
+            if lb.get(k):
+                c["laund"][k] = lb[k]
+        # TODO(round 39, owner decision pending): New Zealand (Marsden Point, closed 31 March 2022) and South Africa
+        # (Engen Durban 2020, SAPREF 2022) bought more fuel because their own refineries closed; laundered_r39.json
+        # proposes a "structural" label like Nigeria's (structural_variant). Not adopted until the owner decides
+        tr = c["to_rus"]
+        for k, kt in (("years", "laundered"), ("years_lo", "laundered_lo"), ("years_hi", "laundered_hi")):
+            tr[kt] = c["laund"][k]
+        tr["laundered_src"] = [sid]
+        R11_TOUCHED["hubs"].discard("laund:" + iso3)
+    for r, dl in sorted(delta.items()):
+        if r == "BRN":
+            _R39_BRN.update(dl)  # Brunei's payments are set later (apply_brunei_r6)
+            continue
+        if r in EU27 and r not in eu_ref:
+            continue
+        tr = (countries.get(r) or {}).get("to_rus")
+        if not tr:
+            continue
+        y0 = tr["years"][0]
+        _r39_relieve(tr, dl)
+        if r in eu_ref and y0 > 0:
+            # an EU refiner's pre-war level was cut by the share of its 2021 payments passed on (eu_refiner_exports)
+            f = tr["years"][0] / y0
+            tr["base"] = round(tr.get("base", 0.0) * f, 5)
+            if tr.get("base_range"):
+                tr["base_range"] = [round(v * f, 5) for v in tr["base_range"]]
+        if sid not in tr.setdefault("src", []):
+            tr["src"].append(sid)
+
+
 def apply_assumptions_r11_laundered(countries: dict[str, dict]) -> None:
     """Round 11 (hubs), after every source of laundered oil is in (reassign, laundered_eu.json, laundered_r6.json):
     Malta's laundered oil comes from laundered_eu.json and Turkish ports, not through the hub step, so half of its
@@ -4929,8 +5163,14 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
     for hub, d in buyers["hubs"].items():
         hubs.setdefault(hub, {k: v["central"] for k, v in d["destination_shares"].items() if k != "other"})
 
-    def pass_on(start: dict[str, dict]) -> dict[str, dict]:
-        """Each hub's resold share goes to its customers, through chains of hubs."""
+    # round 39: a fresh build starts the bookkeeping of the measured buyers' old charges (apply_laundered_r39)
+    _R39_OLD.clear()
+    measured = R39_BUYERS if r39_on() else frozenset()
+
+    def pass_on(start: dict[str, dict], drop: dict[str, dict] | None = None) -> dict[str, dict]:
+        """Each hub's resold share goes to its customers, through chains of hubs. Round 39: the buyers with a measured
+        series (R39_BUYERS) get nothing from the hubs, their own customs already hold that fuel; what they would have got
+        is kept in drop, and the hub gives it away as before (it is not the hub's own use)."""
         totals = {iso3: {k: list(v[k]) for k in ("years", "years_lo", "years_hi")} for iso3, v in start.items()}
         # fuel passed from one hub to another (India to the Netherlands, Belgium to the Netherlands) is passed on again:
         # each hub resells what it has not yet processed, until nothing is left in transit (order does not matter)
@@ -4957,15 +5197,26 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
                     totals[hub][key] = [v - a * min(1.0, out_f) for v, a in zip(totals[hub][key], amount[key])]
                     moved = [a * give_f for a in amount[key]]
                     for dest, w in shares.items():
-                        t = totals.setdefault(dest, {k: [0.0] * 6 for k in keys})
                         add = [m * w / norm for m in moved]
+                        if drop is not None and dest in measured:
+                            dd = drop.setdefault(dest, {k: [0.0] * 6 for k in keys})
+                            dd[key] = [v + x for v, x in zip(dd[key], add)]
+                            continue
+                        t = totals.setdefault(dest, {k: [0.0] * 6 for k in keys})
                         t[key] = [v + x for v, x in zip(t[key], add)]
                         if dest in HUB_RESALE:
                             pk = pending.setdefault(dest, {k: [0.0] * 6 for k in keys})
                             pk[key] = [v + x for v, x in zip(pk[key], add)]
         return totals
 
-    totals = pass_on(laundered)
+    hub_drop: dict[str, dict] = {}
+    totals = pass_on(laundered, hub_drop)
+    for b, d in hub_drop.items():
+        # in crude, as the yearly values below (the refiners' deductions still hold this fuel: apply_laundered_r39)
+        ks = [crude_k(y) for y in YEARS]
+        _R39_OLD.setdefault(b, {})["hub"] = {
+            k: [v * kk[n] for v, kk in zip(d[k], ks)] for k, n in (("years", 1), ("years_lo", 0), ("years_hi", 2))
+        }
     # the pre-war level goes through the same chain (round4a.json gives it before hub pass-on); the EU correction
     # comes first, as for the yearly values
     prewar = {}
@@ -4975,7 +5226,12 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
             k: [b[band] * e] * 6
             for k, band, e in (("years", "central", eu[1]), ("years_lo", "low", eu[0]), ("years_hi", "high", eu[2]))
         }
-    passed = pass_on(prewar)
+    # round 39: the measured buyers' pre-war level is measured too, so the hubs pass them none of it either (what
+    # they would have got leaves China's 2021 deduction with it, as that deduction is the buyers' pre-war levels)
+    pre_drop: dict[str, dict] = {}
+    passed = pass_on(prewar, pre_drop)
+    for b, d in pre_drop.items():
+        _R39_OLD.setdefault(b, {})["hub_base"] = d["years"][0] * crude_k(2021)[1]
     prewar = {k: (v["years"][0], v["years_lo"][0], v["years_hi"][0]) for k, v in passed.items()}
 
     lid = src.add(
@@ -5018,6 +5274,11 @@ def reassign_laundered_oil(countries: dict[str, dict], laundered: dict[str, dict
         # post-war route is not measured at the final buyer (eu_refiner_exports)
         lb["_capped"] = any(v * k[1] > m for v, k, m in list(zip(t["years"], ks, cap_mid))[1:])
         countries[iso3]["laund"] = lb
+        if iso3 in measured:
+            # round 39: the pre-war level the old routes would have had, which weights the EU refiners' flat part of
+            # the expected path (bmul) as before (eu_refiner_exports); the measured series keep that path
+            o = _R39_OLD.setdefault(iso3, {})
+            o["base_old"] = lb["base"] + o.get("hub_base", 0.0)
         if iso3 in HUB_RESALE:
             countries[iso3]["hub"] = (
                 "fuel trading hub: the share of laundered oil it resells is counted for its customers"
@@ -5324,6 +5585,16 @@ def apply_brunei_r6(countries: dict[str, dict]) -> None:
     r21 = res["2021"]
     tr["base"], tr["base_range"] = round(r21["central"], 5), [round(r21["low"], 5), round(r21["high"], 5)]
     tr["_pre_single"] = "refinery"  # 2021 only: Hengyi started in November 2019 (SMALL_FLOW_EXCLUDE)
+    if _R39_BRN:
+        # round 39: the measured buyers (New Zealand, the Philippines, Bangladesh) are charged their own customs' Brunei
+        # fuel, not laundered_r6.json's: the crude Brunei passed on moves with it (apply_laundered_r39). The base is the
+        # 2021 value here, so it moves with that year
+        gross = tr["years"][0]
+        _r39_relieve(tr, _R39_BRN, out=False)
+        tr["base"] = round(max(0.0, tr["base"] - (gross - tr["years"][0])), 5)
+        tr["base_range"] = [
+            round(max(0.0, v - _R39_BRN[k][0]), 5) for v, k in zip(tr["base_range"], ("years_lo", "years_hi"))
+        ]
 
 
 BANDS = ("low", "central", "high")
@@ -5875,11 +6146,6 @@ def eu_refiner_exports(countries: dict[str, dict], src: Sources, rid: str) -> No
             if w <= 0 or b not in countries or not countries[b].get("to_rus"):
                 continue
             bc = countries[b]
-            lb = bc.get("laund")
-            if lb is None:
-                t = bc["to_rus"]
-                lb = bc["laund"] = {"years": list(t.get("laundered") or [0.0] * 6), "years_lo": list(t.get("laundered_lo") or t.get("laundered") or [0.0] * 6),
-                                    "years_hi": list(t.get("laundered_hi") or t.get("laundered") or [0.0] * 6), "base": 0.0, "base_range": [0.0, 0.0], "cert": "C", "src": list(t.get("laundered_src") or [])}  # fmt: skip
             # the buyer's low end takes the low export share (ex holds the refiner's ends, the other way round)
             add = {
                 k: [x * final[n].get(b, 0.0) / moved_net for x in ex[kx]]
@@ -5888,6 +6154,27 @@ def eu_refiner_exports(countries: dict[str, dict], src: Sources, rid: str) -> No
             add["years_lo"] = [min(a, m) for a, m in zip(add["years_lo"], add["years"])]
             add["years_hi"] = [max(a, m) for a, m in zip(add["years_hi"], add["years"])]
             w = w * moved / moved_net  # the buyer's share of what the refiner's payments lose (ex)
+            if b in R39_BUYERS and r39_on():
+                # round 39: the buyer's own customs measure this fuel both before and after the war (laundered_r39.json),
+                # so nothing is added here and no route is held; what the refiner's deduction holds for it (2021 = the
+                # pre-war level) is kept, so that the deduction follows the measured value (apply_laundered_r39)
+                rec = {k: list(v) for k, v in add.items()}
+                for k, kx in (("years", "years"), ("years_lo", "years_hi"), ("years_hi", "years_lo")):
+                    rec[k][0] = ex[kx][0] * w / moved
+                o = _R39_OLD.setdefault(b, {})
+                o.setdefault("eu", {})[r] = rec
+                # the expected path keeps the shape the old routes gave it (laundered_r39.json was computed with it)
+                lb, b_add, b_old = bc.get("laund") or {}, rec["years"][0], o.get("base_old", 0.0)
+                if lb.get("bmul") and b_old + b_add > 0:
+                    for k in ("bmul", "bmul_lo", "bmul_hi"):
+                        lb[k] = [round((b_old * v + b_add) / (b_old + b_add), 4) for v in lb.get(k) or lb["bmul"]]
+                o["base_old"] = b_old + b_add
+                continue
+            lb = bc.get("laund")
+            if lb is None:
+                t = bc["to_rus"]
+                lb = bc["laund"] = {"years": list(t.get("laundered") or [0.0] * 6), "years_lo": list(t.get("laundered_lo") or t.get("laundered") or [0.0] * 6),
+                                    "years_hi": list(t.get("laundered_hi") or t.get("laundered") or [0.0] * 6), "base": 0.0, "base_range": [0.0, 0.0], "cert": "C", "src": list(t.get("laundered_src") or [])}  # fmt: skip
             # round 14 (H2, audit): the pre-war growth of laundered oil (round4a.json) was measured on the fuel refined
             # in China, India and Türkiye before the war, not on EU refiners' exports: it stays on that base only. The
             # expected path is re-weighted so the EU-refined part added here is flat (its pre-war level x no-war price)

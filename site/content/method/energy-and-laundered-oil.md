@@ -77,3 +77,7 @@ Türkiye appears in almost every energy step: a transit and final-use gas countr
 
 - **Extra paid to replace Russian energy**: the displaced volume × the premium over the Russian price. Largest: Germany EUR 34.5bn, Italy 18.5bn, the Netherlands 11.3bn.
 - **Discount gained on Russian oil**: crude bought below Brent from March 2022, only the part beyond Russia's normal pre-war discount. Largest: India EUR 24.1bn, China 18.1bn, Türkiye 5.5bn.
+
+### Measured for 21 buyers (round 39)
+
+For 21 buyers of refined fuel outside Europe (Nepal, South Africa, Tanzania, Mozambique, the Philippines, Bangladesh, Pakistan, Sri Lanka, Fiji, New Zealand, Mauritius and others), the Russian crude in their fuel is now **measured, not modelled**: their own customs imports of fuel by origin, times the measured Russian share of crude at that origin (UN Comtrade crude imports by origin, India's export records by destination, refinery shares from KSE and CREA), with the pre-war level measured the same way. That evidence is the central value. The speculative versions are the method band: half of Russia's gain charged (Russia redirected its crude, so one buyer moves its revenue by less) and the round-38 model of refiners' exports and hub resale. The refiners are relieved of exactly what these buyers are charged.

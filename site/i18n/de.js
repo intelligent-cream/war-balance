@@ -400,8 +400,6 @@ I18N.de = {
   "less paid to Russia": "weniger an Russland gezahlt",
   ", of which {v} gas cut off by Russia": ", davon {v} Gas, das Russland abgestellt hat",
   "EU refiners keep the Russian crude in the fuel they export": "EU-Raffinerien behalten das russische Rohöl in ihren Kraftstoffexporten",
-  "laundered oil: every buyer's change counted, without the route rule": "gewaschenes Öl: die Änderung jedes Käufers gezählt, ohne die Routenregel",
-  "laundered oil (fuel made from Russian crude elsewhere) not counted": "gewaschenes Öl (anderswo aus russischem Rohöl hergestellter Kraftstoff) nicht gezählt",
   "the mix of what was bought from the fuel tracker's tonnes, not customs values": "die Zusammensetzung der Käufe aus den Tonnen des Brennstoff-Trackers, nicht aus Zollwerten",
   "fuel prices as customs (CIF) values, freight included": "Kraftstoffpreise als Zollwerte (CIF), mit Fracht",
   "sellers' normal return 9% nominal, services incl. real estate; Russia 9%, Ukraine 8.2%": "normale Rendite der Verkäufer 9 % nominal, Dienstleistungen mit Immobilien; Russland 9 %, Ukraine 8,2 %",
@@ -1158,4 +1156,7 @@ I18N.de = {
   "profits its companies made in Russia": "Gewinne seiner Unternehmen in Russland",
   "income from Russian oil and gas projects": "Einkünfte aus russischen Öl- und Gasprojekten",
   "mostly the return lost on frozen Russian private assets": "vor allem die entgangene Rendite auf eingefrorene russische Privatvermögen",
+  "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)": "gewaschenes Öl: die Hälfte von Russlands Gewinn auf das Rohöl wird dem Brennstoffkäufer angerechnet (Russland lenkte sein Rohöl um, also bewegt ein Käufer seine Einnahmen weniger)",
+  "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs": "gewaschenes Öl aus Exporten der Raffinerien und Weiterverkauf über Drehkreuze modelliert (bis Runde 38), nicht aus dem Zoll des Käufers gemessen",
+  "laundered oil: every buyer's change counted, without the route rule (buyers without a measured series)": "gewaschenes Öl: die Veränderung jedes Käufers gezählt, ohne die Routenregel (Käufer ohne gemessene Reihe)",
 };

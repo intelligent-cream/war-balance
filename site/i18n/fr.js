@@ -401,8 +401,6 @@ I18N.fr = {
   "less paid to Russia": "moins payé à la Russie",
   ", of which {v} gas cut off by Russia": ", dont {v} de gaz coupé par la Russie",
   "EU refiners keep the Russian crude in the fuel they export": "les raffineries de l’UE gardent le brut russe des carburants qu’elles exportent",
-  "laundered oil: every buyer's change counted, without the route rule": "pétrole blanchi : la variation de chaque acheteur comptée, sans la règle des routes",
-  "laundered oil (fuel made from Russian crude elsewhere) not counted": "pétrole blanchi (carburant fait ailleurs à partir de brut russe) non compté",
   "the mix of what was bought from the fuel tracker's tonnes, not customs values": "la composition des achats tirée des tonnes du traceur de combustibles, et non des valeurs douanières",
   "fuel prices as customs (CIF) values, freight included": "prix des carburants en valeurs douanières (CAF), fret compris",
   "sellers' normal return 9% nominal, services incl. real estate; Russia 9%, Ukraine 8.2%": "rendement normal des vendeurs de 9 % nominal, services avec l’immobilier ; Russie 9 %, Ukraine 8,2 %",
@@ -1159,4 +1157,7 @@ I18N.fr = {
   "profits its companies made in Russia": "bénéfices de ses entreprises en Russie",
   "income from Russian oil and gas projects": "revenus de projets pétroliers et gaziers russes",
   "mostly the return lost on frozen Russian private assets": "surtout le rendement perdu sur les avoirs privés russes gelés",
+  "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)": "pétrole blanchi : la moitié du gain de la Russie sur le brut imputée à l’acheteur de carburant (la Russie a réorienté son brut, un acheteur pèse donc moins sur ses revenus)",
+  "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs": "pétrole blanchi modélisé à partir des exportations des raffineries et de la revente par les plateformes (jusqu’au tour 38), non mesuré dans les douanes de l’acheteur",
+  "laundered oil: every buyer's change counted, without the route rule (buyers without a measured series)": "pétrole blanchi : la variation de chaque acheteur comptée, sans la règle de l’itinéraire (acheteurs sans série mesurée)",
 };

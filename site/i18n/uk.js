@@ -403,8 +403,6 @@ I18N.uk = {
   "less paid to Russia": "менше сплачено Росії",
   ", of which {v} gas cut off by Russia": ", з них {v} газу, який відрізала Росія",
   "EU refiners keep the Russian crude in the fuel they export": "НПЗ ЄС залишають російську нафту в експортованому пальному",
-  "laundered oil: every buyer's change counted, without the route rule": "відмита нафта: зміна кожного покупця врахована, без правила маршрутів",
-  "laundered oil (fuel made from Russian crude elsewhere) not counted": "відмита нафта (пальне з російської нафти, вироблене деінде) не врахована",
   "the mix of what was bought from the fuel tracker's tonnes, not customs values": "склад закупівель за тоннами з трекера палива, а не за митними вартостями",
   "fuel prices as customs (CIF) values, freight included": "ціни пального як митні вартості (CIF), з фрахтом",
   "sellers' normal return 9% nominal, services incl. real estate; Russia 9%, Ukraine 8.2%": "нормальна дохідність продавців 9% номінально, послуги з нерухомістю; Росія 9%, Україна 8,2%",
@@ -1161,4 +1159,7 @@ I18N.uk = {
   "profits its companies made in Russia": "прибутки її компаній у Росії",
   "income from Russian oil and gas projects": "доходи від російських нафтогазових проєктів",
   "mostly the return lost on frozen Russian private assets": "здебільшого втрачений дохід на заморожених російських приватних активах",
+  "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)": "відмита нафта: половина вигоди Росії на сирій нафті зараховується покупцю палива (Росія перенаправила нафту, тож один покупець менше впливає на її доходи)",
+  "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs": "відмита нафта, змодельована з експорту НПЗ і перепродажу через хаби (до раунду 38), а не виміряна з митниці покупця",
+  "laundered oil: every buyer's change counted, without the route rule (buyers without a measured series)": "відмита нафта: враховано зміну кожного покупця, без правила маршруту (покупці без виміряного ряду)",
 };

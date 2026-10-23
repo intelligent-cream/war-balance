@@ -402,8 +402,6 @@ I18N.es = {
   "less paid to Russia": "menos pagado a Rusia",
   ", of which {v} gas cut off by Russia": ", de ello {v} de gas cortado por Rusia",
   "EU refiners keep the Russian crude in the fuel they export": "las refinerías de la UE conservan el crudo ruso del combustible que exportan",
-  "laundered oil: every buyer's change counted, without the route rule": "petróleo blanqueado: se cuenta el cambio de cada comprador, sin la regla de rutas",
-  "laundered oil (fuel made from Russian crude elsewhere) not counted": "petróleo blanqueado (combustible hecho con crudo ruso en otros países) no contado",
   "the mix of what was bought from the fuel tracker's tonnes, not customs values": "la composición de lo comprado según las toneladas del rastreador de combustibles, no los valores aduaneros",
   "fuel prices as customs (CIF) values, freight included": "precios del combustible como valores aduaneros (CIF), con flete",
   "sellers' normal return 9% nominal, services incl. real estate; Russia 9%, Ukraine 8.2%": "rentabilidad normal de los vendedores del 9 % nominal, servicios con inmobiliario; Rusia 9 %, Ucrania 8,2 %",
@@ -1160,4 +1158,7 @@ I18N.es = {
   "profits its companies made in Russia": "beneficios de sus empresas en Rusia",
   "income from Russian oil and gas projects": "ingresos de proyectos rusos de petróleo y gas",
   "mostly the return lost on frozen Russian private assets": "sobre todo el rendimiento perdido en activos privados rusos congelados",
+  "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)": "petróleo blanqueado: la mitad de la ganancia de Rusia sobre el crudo se atribuye al comprador de combustible (Rusia redirigió su crudo, así que un comprador mueve menos sus ingresos)",
+  "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs": "petróleo blanqueado modelado a partir de exportaciones de refinerías y reventa en centros (hasta la ronda 38), no medido en las aduanas del comprador",
+  "laundered oil: every buyer's change counted, without the route rule (buyers without a measured series)": "petróleo blanqueado: se cuenta el cambio de cada comprador, sin la regla de ruta (compradores sin serie medida)",
 };

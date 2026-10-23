@@ -401,8 +401,6 @@ I18N.nl = {
   "less paid to Russia": "minder aan Rusland betaald",
   ", of which {v} gas cut off by Russia": ", waarvan {v} gas dat Rusland afsloot",
   "EU refiners keep the Russian crude in the fuel they export": "EU-raffinaderijen houden de Russische ruwe olie in hun brandstofexport",
-  "laundered oil: every buyer's change counted, without the route rule": "witgewassen olie: de verandering van elke koper geteld, zonder de routeregel",
-  "laundered oil (fuel made from Russian crude elsewhere) not counted": "witgewassen olie (elders van Russische ruwe olie gemaakte brandstof) niet geteld",
   "the mix of what was bought from the fuel tracker's tonnes, not customs values": "de samenstelling van wat werd gekocht uit de tonnen van de brandstoftracker, niet uit douanewaarden",
   "fuel prices as customs (CIF) values, freight included": "brandstofprijzen als douanewaarden (CIF), vracht inbegrepen",
   "sellers' normal return 9% nominal, services incl. real estate; Russia 9%, Ukraine 8.2%": "normaal rendement van verkopers 9% nominaal, diensten met vastgoed; Rusland 9%, Oekraïne 8,2%",
@@ -1159,4 +1157,7 @@ I18N.nl = {
   "profits its companies made in Russia": "winst van zijn bedrijven in Rusland",
   "income from Russian oil and gas projects": "inkomsten uit Russische olie- en gasprojecten",
   "mostly the return lost on frozen Russian private assets": "vooral het gemiste rendement op bevroren Russische privévermogens",
+  "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)": "witgewassen olie: de helft van de winst van Rusland op de ruwe olie toegerekend aan de brandstofkoper (Rusland leidde zijn ruwe olie om, dus één koper beweegt zijn inkomsten minder)",
+  "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs": "witgewassen olie gemodelleerd uit export van raffinaderijen en doorverkoop via knooppunten (tot ronde 38), niet gemeten uit de douane van de koper",
+  "laundered oil: every buyer's change counted, without the route rule (buyers without a measured series)": "witgewassen olie: de verandering van elke koper geteld, zonder de routeregel (kopers zonder gemeten reeks)",
 };
