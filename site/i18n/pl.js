@@ -981,8 +981,6 @@ I18N.pl = {
   "Its story in short": "Jego historia w skrócie",
   "+{n} more": "+{n} więcej",
   "Russia's earnings from trade: buying from and selling to Russia, services, shipping and company taxes paid there, each compared with no war.": "Dochody Rosji z handlu: zakupy od Rosji i sprzedaż do Rosji, usługi, żegluga i podatki firm płacone tam, każde w porównaniu z brakiem wojny.",
-  "What Russia kept: on purchases from Russia, war-time prices, Russian oil bought via others, services, taxes paid in Russia, and arms given to Russia. What the country kept: on sales and services sold to Russia, shipping its oil and arms sold to it. The two ranges do not add up to the total's.": "Co zatrzymała Rosja: z zakupów od Rosji, cen wojennych, rosyjskiej ropy kupionej przez innych, usług, podatków płaconych w Rosji i broni przekazanej Rosji. Co zatrzymał kraj: ze sprzedaży towarów i usług Rosji, przewozu jej ropy i broni sprzedanej Rosji. Dwa przedziały nie sumują się do przedziału całości.",
-  "Russia's earnings from trade in two lines": "Dochody Rosji z handlu w dwóch wierszach",
   "Toward Russia": "W stronę Rosji",
   "Show the other part": "Pokaż pozostałą część",
   "tap a part for how it is calculated": "dotknij części, by zobaczyć obliczenie",

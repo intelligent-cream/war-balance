@@ -981,8 +981,6 @@ I18N.nl = {
   "Its story in short": "Zijn verhaal in het kort",
   "+{n} more": "+{n} meer",
   "Russia's earnings from trade: buying from and selling to Russia, services, shipping and company taxes paid there, each compared with no war.": "Russische handelsinkomsten: kopen van en verkopen aan Rusland, diensten, scheepvaart en daar betaalde vennootschapsbelasting, elk vergeleken met geen oorlog.",
-  "What Russia kept: on purchases from Russia, war-time prices, Russian oil bought via others, services, taxes paid in Russia, and arms given to Russia. What the country kept: on sales and services sold to Russia, shipping its oil and arms sold to it. The two ranges do not add up to the total's.": "Wat Rusland overhield: aan aankopen van Rusland, oorlogsprijzen, Russische olie via anderen, diensten, in Rusland betaalde belasting en wapens die aan Rusland werden gegeven. Wat het land overhield: aan verkoop en diensten aan Rusland, vervoer van zijn olie en wapens die aan Rusland werden verkocht. De twee bandbreedtes tellen niet op tot die van het totaal.",
-  "Russia's earnings from trade in two lines": "Russische handelsinkomsten in twee regels",
   "Toward Russia": "Richting Rusland",
   "Show the other part": "Het andere deel tonen",
   "tap a part for how it is calculated": "tik op een deel voor de berekening",
