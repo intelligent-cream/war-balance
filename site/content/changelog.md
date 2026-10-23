@@ -4,6 +4,19 @@ Every update to the map, newest first: what changed and every decision behind it
 
 The detailed research log, with every file, is [`research/2026-10/README.md`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/README.md).
 
+<h2 id="cl-r36">Round 36: Russian money frozen without a tile of its own <span class="cl-date">23 October</span></h2>
+<!-- flows: frozen -->
+
+**The small "Froze Russian money" tile under the two main tiles is gone. The frozen money is still in the net: as the last
+section of "What makes up the number", in the closing sum, and as the "Froze Russian money" tag where it matters. No
+number changed.**
+
+### Decisions
+
+- **No tile for Russian money frozen.** Raised by the owner (23 October 2026): "I never get why [it] is explicitly
+  mentioned and not just in the breakdown or tags." For most countries it is a few hundredths of a percent of GDP;
+  only a few hold frozen Russian reserves. Effect: display only.
+
 <h2 id="cl-r35">Round 35: a calmer country panel <span class="cl-date">23 October</span></h2>
 <!-- flows: -->
 
