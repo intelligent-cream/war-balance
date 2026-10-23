@@ -53,7 +53,7 @@ const big = Object.values(out.countries).filter(o => o.gdp >= 5);
 Object.assign(out.world, { nAll: Object.keys(out.countries).length, nBig: big.length,
   uncUa: big.filter(o => o.uaUnc).length, uncRus: big.filter(o => o.rusUnc).length, uncNet: big.filter(o => o.netUnc).length,
   // round 24b: of those, how many lean one way, and how many have an uncertain direction (a party to the war left out)
-  leanNet: big.filter(o => o.netUnc && o.netLean).length, dirUncNet: big.filter(o => o.netUnc && !o.netLean && !o.party).length,
+  leanNet: big.filter(o => o.netUnc && o.netLean).length, nearNet: big.filter(o => o.netUnc && o.netNear).length, dirUncNet: big.filter(o => o.netUnc && !o.netLean && !o.party).length,
   leanUa: big.filter(o => o.uaUnc && o.uaLean).length, leanRus: big.filter(o => o.rusUnc && o.rusLean).length,
   nSources: Object.keys(D.sources).length, nDocs: new Set(Object.values(D.sources).flatMap(s => (s.links || []).map(l => l.url))).size });
 process.stdout.write(JSON.stringify(out));

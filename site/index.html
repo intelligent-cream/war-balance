@@ -51,6 +51,7 @@
   --rus-lo: #fde2c6;
   --back: #55636e;          /* money flowing back (round 17: grey, under the one colour rule) */
   --target: #39424a;       /* Ukraine and Russia themselves */         /* money flowing back from Ukraine */
+  --frozen: #7b62c4;       /* Russian money frozen (round 39, How it works) */
   --mid: #c9d0d6;           /* countries close to zero: grey, distinct from the sea */
   --focus: #0d4f66;
   --warn-bg: #f3f5f7;
@@ -68,7 +69,7 @@
   :root:not([data-theme="light"]) {
     --sea: #0e161d; --land: #26333d; --land-edge: #0e161d; --surface: #141f28; --ink: #e3e9ee; --ink-soft: #97a6b1;
     --line: #2b3944; --ukr: #6aa8e0; --ukr-lo: #1b3350; --rus: #f39a52; --rus-lo: #4a2a14; --back: #97a6b1; --target: #6b7782; --mid: #4f5962;
-    --focus: #8fd3ea; --warn-bg: #141f28; --warn-ink: #c9d2d9; color-scheme: dark;
+    --focus: #8fd3ea; --frozen: #a993e6; --warn-bg: #141f28; --warn-ink: #c9d2d9; color-scheme: dark;
     --rus-text: #f39a52; --on-accent: #141f28;
     --fa0: 62%; --fa1: 20%; --fx0: 80%; --fx1: 22%;
   }
@@ -76,7 +77,7 @@
 :root[data-theme="dark"] {
   --sea: #0e161d; --land: #26333d; --land-edge: #0e161d; --surface: #141f28; --ink: #e3e9ee; --ink-soft: #97a6b1;
   --line: #2b3944; --ukr: #6aa8e0; --ukr-lo: #1b3350; --rus: #f39a52; --rus-lo: #4a2a14; --back: #97a6b1; --target: #6b7782; --mid: #4f5962;
-  --focus: #8fd3ea; --warn-bg: #141f28; --warn-ink: #c9d2d9; color-scheme: dark;
+  --focus: #8fd3ea; --frozen: #a993e6; --warn-bg: #141f28; --warn-ink: #c9d2d9; color-scheme: dark;
     --rus-text: #f39a52; --on-accent: #141f28;
     --fa0: 62%; --fa1: 20%; --fx0: 80%; --fx1: 22%;
 }
@@ -204,6 +205,50 @@ button, input, select { font: inherit; color: inherit; }
 .cstrip .axis { stroke: var(--line); stroke-width: 2; } .cstrip .zero { stroke: var(--ink-soft); stroke-dasharray: 2 2; }
 .cstrip-ends { display: flex; justify-content: space-between; gap: 12px; max-width: 420px; font-size: 11.5px; color: var(--ink-soft); }
 .cstrip-ends span:last-child { text-align: right; }
+/* round 39: How it works, pictures first */
+.how-chips { position: sticky; top: 0; z-index: 5; display: flex; gap: 6px; overflow-x: auto; padding: 8px 0; margin: 0 0 6px; background: var(--sea); scrollbar-width: none; }
+.how-chips a { flex: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px; font-size: 13px; color: var(--ink); text-decoration: none; background: var(--surface); }
+.how-chips a:hover, .how-chips a:focus-visible { border-color: var(--ink-soft); }
+.hs-c { font-size: 13px; color: var(--ink-soft); margin: 0 0 8px; } .hs-c select { font: inherit; margin-left: 4px; }
+.hs-eq { display: flex; flex-wrap: wrap; align-items: stretch; gap: 6px; }
+.hs-eq > i { align-self: center; font-style: normal; font-weight: 700; color: var(--ink-soft); }
+.hs-t { flex: 1 1 140px; border: 1px solid var(--line); border-top: 4px solid var(--ukr); border-radius: 8px; padding: 8px 10px; background: var(--surface); display: flex; flex-direction: column; gap: 2px; }
+.hs-t.ru { border-top-color: var(--rus); } .hs-t.fz { border-top-color: var(--frozen); }
+.hs-t span { font-size: 12.5px; color: var(--ink-soft); } .hs-t b { font: 700 20px var(--font-data); } .hs-t small { font-size: 11.5px; color: var(--ink-soft); }
+.hs-t.net { border: 2px solid var(--ukr); } .hs-t.net.ru { border-color: var(--rus); }
+.hs-bar { display: flex; height: 18px; border-radius: 5px; overflow: hidden; margin: 12px 0 6px; gap: 1px; }
+.hs-seg { display: block; min-width: 3px; } .hs-seg.ua, .hs-k.ua::before { background: var(--ukr); } .hs-seg.ru, .hs-k.ru::before { background: var(--rus); } .hs-seg.fz, .hs-k.fz::before { background: var(--frozen); }
+.hs-seg:nth-child(even) { opacity: .78; }
+.hs-key { list-style: none; padding: 0; margin: 0 0 6px; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12.5px; }
+.hs-k { color: var(--ink); text-decoration: none; } .hs-k::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; }
+.hs-k b { font-family: var(--font-data); font-weight: 600; } .hs-neg { color: var(--ink-soft); }
+.method-top .m4 svg { display: block; width: 64px; height: 32px; margin-bottom: 6px; }
+@media (max-width: 600px) { .method-top .m4 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; } .method-top .m4 > * { margin: 0; } }
+.eu-row { margin: 0 0 12px; max-width: 560px; }
+.eu-bar { display: flex; height: 26px; border-radius: 6px; overflow: hidden; font-size: 12px; font-weight: 600; }
+.eu-bar span { display: flex; align-items: center; padding: 0 8px; white-space: nowrap; overflow: hidden; color: #fff; }
+.eu-bar .ru { background: var(--rus); } .eu-bar .ua { background: var(--ukr); }
+.eu-bar .cost { background: transparent; border: 1.5px dashed var(--line); color: var(--ink-soft); border-left: 0; border-radius: 0 6px 6px 0; }
+.how-chart { max-width: 520px; } .how-chart .mini svg { width: 100%; height: auto; }
+.hr-bar { max-width: 360px; } .hr-l { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 12px 0 8px; max-width: 520px; }
+.hr-l > div { border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; display: flex; flex-direction: column; gap: 2px; font-size: 12px; }
+.hr-l small { color: var(--ink-soft); font-family: var(--font-data); }
+.hr-g { padding-left: 18px; font-size: 13px; margin: 0; } .hr-g li { margin-bottom: 3px; }
+.gloss { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 8px; margin: 0; }
+.gloss > div { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+.gloss dt { font-weight: 700; font-size: 13.5px; } .gloss dd { margin: 2px 0 0; font-size: 13px; color: var(--ink-soft); }
+.more-t { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
+.more-t .mt { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; background: var(--surface); color: var(--ink); text-decoration: none; font-weight: 600; font-size: 14px; }
+.more-t .mt small { display: block; font-weight: 400; font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+.more-t details.mt[open] { grid-column: 1 / -1; } .more-t details.mt > summary { cursor: pointer; list-style: none; }
+.more-t details.mt > summary::-webkit-details-marker { display: none; }
+/* the money flows as a grid of tiles; an open flow takes the whole row */
+.fgroup { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; align-items: start; }
+.fgroup > .fg-h { grid-column: 1 / -1; margin-bottom: 0; }
+.fgroup > details.flow[open] { grid-column: 1 / -1; }
+.fgroup > details.flow:not([open]) .fl-p, .fgroup > details.flow:not([open]) .fl-m { display: none; }
+.fgroup > details.flow:not([open]) .fl-w { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+@media (max-width: 600px) { .fgroup { grid-template-columns: 1fr 1fr; gap: 6px; } .fgroup > details.flow:not([open]) .fl-w { display: none; } .fgroup > details.flow:not([open]) > summary { padding: 8px 10px; } .fgroup > details.flow:not([open]) .fl-t { font-size: 13.5px; } }
 .eq { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin: 0 0 6px; }
 .eq i { font-style: normal; font-weight: 700; color: var(--ink-soft); }
 .eq-b { border-radius: 6px; padding: 2px 7px; font-size: 12.5px; line-height: 1.3; background: color-mix(in srgb, var(--ukr) 16%, transparent); color: var(--ink); }
@@ -1892,7 +1937,7 @@ const FLOWS = [
   {"id": "euaid", "name": "Share of EU aid", "what": "Aid paid by the EU itself, split over member states by their share of the EU budget.", "parts": ["euaid"], "method": "aid-refugees-military.md#eu-level-aid", "files": ["kiel-notes.md", "gaps/assumptions_r11_rules-notes.md", "gaps/loans_value-notes.md"], "raw": ["kiel"]},
   {"id": "undisc", "name": "Undisclosed military aid (estimate)", "what": "Military aid that governments did not publish, estimated from policy briefs and national reports.", "parts": ["undisc"], "method": "aid-refugees-military.md#undisclosed-aid-and-private-donations", "files": ["gaps/uncovered-notes.md", "gaps/audit2-notes.md"]},
   {"id": "priv", "name": "Private donations", "what": "Money given to Ukraine by people and companies, from national donation totals or a model based on GDP.", "parts": ["priv"], "method": "aid-refugees-military.md#undisclosed-aid-and-private-donations", "files": ["gaps/uncovered-notes.md", "gaps/assumptions_r11_people-notes.md"]},
-  {"id": "ref", "name": "Hosting refugees", "what": "The cost of hosting refugees from Ukraine, minus the taxes working refugees pay.", "parts": ["ref"], "method": "aid-refugees-military.md#refugees", "files": ["gaps/refugees-notes.md", "gaps/refugees_net-notes.md", "gaps/flowback2-notes.md", "gaps/round4b-notes.md", "gaps/assumptions_r11_people-notes.md", "verify_r11_aid-notes.md"], "raw": ["eurostat_tp", "unhcr_verify", "refugee_budgets"], "src": ["co_belligerent"]},
+  {"id": "ref", "name": "Hosting refugees", "what": "What host governments spent on refugees from Ukraine, minus what donors paid back and the host's gain on refugees' work.", "parts": ["ref"], "method": "aid-refugees-military.md#refugees", "files": ["gaps/refugees-notes.md", "gaps/refugees_net-notes.md", "gaps/flowback2-notes.md", "gaps/round4b-notes.md", "gaps/assumptions_r11_people-notes.md", "verify_r11_aid-notes.md"], "raw": ["eurostat_tp", "unhcr_verify", "refugee_budgets"], "src": ["co_belligerent"]},
   {"id": "flowback", "name": "Flowing back from Ukraine", "what": "Aid money spent in the giver's own economy, and extra sales to Ukraine, subtracted at the seller's net gain times the share that is genuinely extra.", "parts": ["own", "purl", "othsp", "arms", "sell", "refsp"], "method": "aid-refugees-military.md#flowback", "files": ["gaps/money_ledger-notes.md", "gaps/net_gain_sellers-notes.md", "gaps/value_kept-notes.md", "gaps/ua_arms_purchases-notes.md", "flowback-notes.md", "gaps/flowback2-notes.md"]},
   {"id": "paid", "name": "Payments to Russia for fuel and goods", "what": "Oil, gas, coal, LNG and other goods bought from Russia, against the level expected without the war, counted at Russia's net gain. Gas that Russia cut off itself is labelled.", "parts": ["paid"], "method": "overview.md#the-net-gain-rule", "files": ["gaps/trade_full-notes.md", "crea-notes.md", "gaps/energy2-notes.md", "gaps/gas_prices-notes.md", "gaps/prices-notes.md", "gaps/net_gain_russia-notes.md", "gaps/counterfactual-notes.md", "gaps/to_rus_cf-notes.md", "gaps/power_of_siberia_r15-notes.md", "gaps/nonreport-notes.md", "gaps/reexports-notes.md", "verify_r11_trade-notes.md"], "raw": ["comtrade", "crea", "eurostat"], "src": ["gas_cuts"]},
   {"id": "windfall", "name": "War-time fuel prices", "what": "The extra Russia earned because fuel prices rose with the war, at Russia's net gain on that extra price (all of it for oil and pipeline gas, less for LNG and coal).", "parts": ["windfall"], "method": "prices.md#war-time-windfall", "files": ["gaps/energy_nowar-notes.md", "gaps/prices-notes.md", "gaps/gas_prices-notes.md", "gaps/net_gain_russia-notes.md"], "raw": ["crea"], "src": ["hormuz"]},
@@ -2179,49 +2224,101 @@ function flowDecisions(r, flow) {
   const f = flowById(flow), words = (FLOW_WORDS[flow] || []).concat(f ? [f.name.toLowerCase()] : []);
   return (r.decisions || []).filter(d => words.some(w => d.text.toLowerCase().includes(w)));
 }
-// round 24b (audit 24, A #9; approved by the owner): one number traced live, from the country back to its source document
-// and research note: Germany's share of EU aid (worked out from the data on the page, so it never goes stale)
-function traceExample() {
-  const c = byIso.DEU, f = flowById("euaid");
-  if (!c || !f) return "";
-  const p = calc(c, 2026).shiftParts.find(q => q.k === "euaid"), s = SRC.kiel_eu_share || SRC.kiel;
-  if (!p || !s) return "";
-  const doc = (s.links || []).find(l => l.key) || { url: s.url, title: s.name };
-  return `<div class="trace-ex"><p class="lbl2">${t("Example, worked out live")}</p><ol>
-    <li>${t("Germany's number: {v} of a year's GDP toward Ukraine.", { v: fmtMeasure(c, Math.abs(calc(c, 2026).shift), "gdp") })} <a href="#DEU" data-goto="${c.n}">${t("Open Germany")}</a></li>
-    <li>${t("One of its parts: {part}, {v} ({eur}).", { part: plainName(p, c), v: fmtMeasure(c, p.v, "gdp", true), eur: eur(p.v, true) })}</li>
-    <li>${t("Its money flow:")} <a href="#view=how&amp;flow=${f.id}" data-flow="${f.id}">${t(f.name)}</a></li>
-    <li>${t("Its source:")} <a href="${esc(doc.url)}" target="_blank" rel="noopener" lang="en">${esc(doc.title || s.name)}</a></li>
-    <li>${t("Its research note:")} <a href="${REPO}research/2026-10/kiel-notes.md" target="_blank" rel="noopener">research/2026-10/kiel-notes.md</a></li>
-  </ol></div>`;
+// round 39 (owner: "make how it works a lot stronger and easier to read ... structure/visual"): pictures first, one
+// country's live sum at the top, the money flows as a grid, a glossary, and the long texts one tap deeper
+const HOW_SECS = [["how-sum", "The sum"], ["how-rules", "4 rules"], ["how-euro", "One euro"], ["how-nowar", "No-war level"],
+  ["how-ranges", "Ranges"], ["flows-h", "Money flows"], ["how-terms", "Terms"], ["how-more", "For researchers"]];
+const GLOSSARY = [
+  ["Net gain", "What a seller keeps from a sale: taxes plus profit above a normal return, not the full price."],
+  ["No-war level", "What a country was expected to buy or sell without the war, from models tested on past years."],
+  ["Flowing back", "Aid spent in the donor's own economy: only the donor's real gain on it is taken off."],
+  ["War-time prices", "Fuel bought at prices raised by the war: the extra paid counts toward Russia."],
+  ["Laundered oil", "Fuel refined elsewhere from Russian crude: Russia's gain on it counts for the final buyer."],
+  ["Likely range", "Where the number probably lies (about 90%), from the uncertainty of every part."],
+  ["Certainty letter", "A reported, B measured estimate, C modelled estimate, D rough indication."],
+  ["Method band", "The same number under other reasonable method choices."],
+  ["Leaning, near zero, uncertain", "Leaning: at least a 65% chance of its direction. Near zero: within ±0.5% of GDP. Uncertain: neither."],
+  ["Marker", "Shown on the map or panel for information, not added to the totals."],
+];
+let howIso = null;   // the country in How it works' live sum: the one last opened, else Germany
+const flowOfPart = k => FLOWS.find(f => f.parts.includes(k));
+const howSide = k => (UA_PARTS.has(k) ? "ua" : OWN_LINE.has(k) ? "fz" : "ru");
+// the sum, live for one country: three tiles that add up to the net, then its parts as one bar, each piece a link to
+// its money flow (the trace from a number to its source)
+function howSum(c) {
+  const y = 2026, k = calc(c, y), parts = k.shiftParts.concat(k.backShift).filter(p => Math.abs(p.v) >= 0.0005);
+  const pos = parts.filter(p => p.v * Math.sign(k.shift || 1) > 0).sort((a, b) => Math.abs(b.v) - Math.abs(a.v)), neg = parts.filter(p => !pos.includes(p));
+  const tot = pos.reduce((a, p) => a + Math.abs(p.v), 0) || 1, g = v => fmtMeasure(c, v, "gdp", true);
+  const link = (p, html) => { const f = flowOfPart(p.k); return f ? `<a href="#view=how&amp;flow=${f.id}" data-flow="${f.id}" ${html}</a>` : `<span ${html}</span>`; };
+  const tile = (cls, label, v, sub) => `<div class="hs-t ${cls}"><span>${label}</span><b>${eur(v, true)}</b>${sub ? `<small>${sub}</small>` : ""}</div>`;
+  const opts = Object.values(DATA).filter(o => (o.gdp || 0) >= MIN_GDP_RANK && !PARTY_TO_WAR.has(o.iso3)).sort((a, b) => a.name.localeCompare(b.name, LANG));
+  return `<p class="hs-c"><label>${t("Country")} <select id="how-country">${opts.map(o => `<option value="${o.iso3}"${o === c ? " selected" : ""}>${o.name}</option>`).join("")}</select></label> · ${periodText()}</p>
+    <div class="hs-eq">${tile("ua", t("Support for Ukraine"), k.uaBal)}<i>+</i>${tile("ru", t("Cut in Russia's earnings from trade"), k.rusBal)}<i>+</i>${tile("fz", t("Russian money frozen"), k.frozen)}<i>=</i>
+      ${tile("net " + (k.shift >= 0 ? "ua" : "ru"), t("Net"), k.shift, `${g(k.shift)} · ${t("likely {lo} to {hi}", { lo: eur(k.shiftLo, true), hi: eur(k.shiftHi, true) })} · ${t(CERT_WORD[k.shiftCert] || "")}`)}</div>
+    <div class="hs-bar" role="list">${pos.map(p => link(p, `class="hs-seg ${howSide(p.k)}" role="listitem" style="flex:${Math.abs(p.v) / tot}" title="${esc(plainName(p, c))}: ${eur(p.v, true)}">`)).join("")}</div>
+    <ul class="hs-key">${pos.slice(0, 8).map(p => `<li>${link(p, `class="hs-k ${howSide(p.k)}">${esc(plainName(p, c))} <b>${eur(p.v, true)}</b>`)}</li>`).join("")}
+      ${neg.length ? `<li class="hs-neg">${t("Takes away:")} ${neg.sort((a, b) => Math.abs(b.v) - Math.abs(a.v)).slice(0, 2).map(p => link(p, `>${esc(plainName(p, c))} ${eur(p.v, true)}`)).join(", ")}${neg.length > 2 ? " " + t("and {n} smaller", { n: neg.length - 2 }) : ""}</li>` : ""}</ul>
+    <p class="key">${t("Tap a piece to see where it comes from: its money flow, its sources and its research notes.")}</p>`;
 }
-const HOW_SECS = [["trace-h", "How to trace a number"], ["method-h", "The method in four lines"], ["flows-h", "Money flows"],
-  ["method-full", "The method in full"], ["limitations", "Limitations"], ["changelog", "Changelog"], ["data", "Download the data"]];
+// follow one euro: a purchase from Russia counts at Russia's net gain (this country's own 2021 share for fuel), a gift in full
+function howEuro(c) {
+  const gs = c.to_rus?.gain?.e?.[1]?.[0], keep = Math.round(100 * (gs > 0 && gs < 1 ? gs : 0.48));
+  return `<div class="eu-row"><p class="lbl2">${t("€100 paid to Russia for fuel")}</p>
+      <div class="eu-bar"><span class="ru" style="flex:${keep}">${t("€{n} Russia keeps", { n: keep })}</span><span class="cost" style="flex:${100 - keep}">${t("€{n} its costs", { n: 100 - keep })}</span></div>
+      <p class="key">${t("Stop buying, and Russia loses €{n}, not €100. That is what counts.", { n: keep })}</p></div>
+    <div class="eu-row"><p class="lbl2">${t("€100 given to Ukraine")}</p>
+      <div class="eu-bar"><span class="ua" style="flex:100">${t("€100 counts in full")}</span></div>
+      <p class="key">${t("Minus the donor's own gain when the money is spent at home (flowing back).")}</p></div>`;
+}
+function howNowar(c) {
+  const ch = miniChart(c.T.paid, "rus", t("Paid to Russia"), null);
+  return ch ? `<div class="how-chart">${ch}</div><p class="key">${t("Dashed: what was expected without the war. Only the gap counts, at Russia's net gain.")}</p>`
+    : `<p class="key">${t("No purchases from Russia to show for this country.")}</p>`;
+}
+function howRanges(c) {
+  const k = calc(c, 2026), cls = k.shift >= 0 ? "pos" : "neg";
+  return `<div class="hr-bar">${rangeBar(c, k.shift, k.shiftLo, k.shiftHi, "gdp", cls)}</div>
+    <div class="hr-l">${["A", "B", "C", "D"].map(l => `<div><b class="chip ${l.toLowerCase()}">${l}</b><span>${t(CERT_WORD[l])}</span><small>±${Math.round(RANGE[l] * 100)}%</small></div>`).join("")}</div>
+    <ul class="hr-g"><li><b>${t("Certain")}</b> ${t("the likely range and every other method choice stay on one side.")}</li>
+      <li><b>${t("Leaning")}</b> ${t("at least a 65% chance of its direction.")}</li>
+      <li><b>${t("Near zero")}</b> ${t("range and method band within ±0.5% of GDP.")}</li>
+      <li><b>${t("Uncertain")}</b> ${t("the rest.")}</li></ul>`;
+}
+function fillHowCountry(root) {
+  const c = byIso[howIso] || byIso.DEU;
+  if (!c) return;
+  root.querySelector("#how-sum-b").innerHTML = howSum(c);
+  root.querySelector("#how-euro-b").innerHTML = howEuro(c);
+  root.querySelector("#how-nowar-b").innerHTML = howNowar(c);
+  root.querySelector("#how-ranges-b").innerHTML = howRanges(c);
+  root.querySelector("#how-country").onchange = e => { howIso = e.target.value; fillHowCountry(root); };
+}
+const RULE_ICONS = [
+  `<svg viewBox="0 0 64 32" aria-hidden="true"><path d="M2 8H24L34 22H62" fill="none" stroke="var(--ink-soft)" stroke-dasharray="3 3" stroke-width="2"/><path d="M2 8H24L34 22H62V8H34Z" fill="var(--ukr)" opacity=".3"/><path d="M2 8H62" fill="none" stroke="var(--rus)" stroke-width="2"/></svg>`,
+  `<svg viewBox="0 0 64 32" aria-hidden="true"><rect x="4" y="4" width="22" height="24" rx="3" fill="var(--ukr)"/><rect x="38" y="4" width="22" height="24" rx="3" fill="none" stroke="var(--rus)" stroke-width="2"/><rect x="38" y="16" width="22" height="12" rx="2" fill="var(--rus)"/></svg>`,
+  `<svg viewBox="0 0 64 32" aria-hidden="true">${[14, 22, 20, 16, 10].map((h, i) => `<rect x="${4 + i * 12}" y="${30 - h}" width="9" height="${h}" fill="var(--ukr)" opacity=".8"/>`).join("")}</svg>`,
+  `<svg viewBox="0 0 64 32" aria-hidden="true"><circle cx="12" cy="16" r="7" fill="var(--ink-soft)"/><path d="M21 16H42" stroke="var(--ink-soft)" stroke-width="2"/><path d="M40 11L47 16L40 21" fill="none" stroke="var(--ink-soft)" stroke-width="2"/><circle cx="54" cy="16" r="7" fill="var(--rus)"/></svg>`,
+];
 function renderHow(root) {
   const srcs = flowSources();
-  const step = (n, title, body) => `<li><span class="st-n" aria-hidden="true">${n}</span><b>${title}</b><span>${body}</span></li>`;
   const card = html => `<div class="mcard4">${html}</div>`;
   const secLink = ([id, name]) => `<li><a href="#view=how&amp;sec=${id}" data-sec="${id}">${t(name)}</a></li>`;
   const toc = `<p class="toc-g">${t("On this page")}</p><ul class="toc-s">${HOW_SECS.map(secLink).join("")}</ul>`
     + FLOW_GROUPS.map(([g, ids]) => `<p class="toc-g">${t(g)}</p><ul>${ids.map(id => flowById(id)).filter(Boolean).map(f => `<li><a href="#view=how&amp;flow=${f.id}" data-flow="${f.id}"${f.id === state.flow ? ' aria-current="true"' : ""}>${t(f.name)}</a></li>`).join("")}</ul>`).join("");
   root.innerHTML = `<div class="view-inner sources-view how-view">
     <h2>${t("How it works")}</h2>
-    <section aria-labelledby="trace-h"><h3 class="how-h" id="trace-h">${t("How to trace a number")}</h3>
-      <ol class="trace-steps">
-        ${step(1, t("Source"), t("Official statistics and reports: Kiel Institute, UN Comtrade, Eurostat, CREA, national budgets."))}
-        ${step(2, t("Research note"), t("Every input with its own source and the exact table, in the research files."))}
-        ${step(3, t("Part on the map"), t("Each money flow below turns those inputs into parts, against a world without the war."))}
-        ${step(4, t("The country's number"), t("The parts add up to the country's number; in its panel each part links back here."))}
-      </ol>${traceExample()}</section>
-    <section class="method-top" aria-labelledby="method-h"><h3 class="how-h" id="method-h">${t("The method in four lines")}</h3>
-      <div class="m4">
-        ${card(t("<b>What is counted.</b> Every money flow between a country and Ukraine or Russia: aid, refugees, loans, trade, fuel, services, weapons, frozen reserves."))}
-        ${card(t("<b>Against a world without the war.</b> Only the change from what was expected counts."))}
-        ${card(t("<b>Gifts in full, sales at the gain.</b> A sale counts only for what the seller keeps: taxes and profit."))}
-        ${card(t("<b>Totals, not yearly rates.</b> {n} years of money against one year's GDP.", { n: num(yearsOf(2026), 1) }))}
-      </div>
-      <p class="key">${t("Every number has a likely range, a certainty letter (A reported to D rough) and a method band.")}</p>
+    <nav class="how-chips" aria-label="${t("On this page")}">${HOW_SECS.map(([id, n]) => `<a href="#view=how&amp;sec=${id}" data-sec="${id}">${t(n)}</a>`).join("")}</nav>
+    <section aria-labelledby="how-sum"><h3 class="how-h" id="how-sum">${t("The whole calculation in one line")}</h3><div id="how-sum-b"></div></section>
+    <section class="method-top" aria-labelledby="how-rules"><h3 class="how-h" id="how-rules">${t("Four rules")}</h3>
+      <div class="m4">${[
+        "<b>What is counted.</b> Every money flow between a country and Ukraine or Russia: aid, refugees, loans, trade, fuel, services, weapons, frozen reserves.",
+        "<b>Against a world without the war.</b> Only the change from what was expected counts.",
+        "<b>Gifts in full, sales at the gain.</b> A sale counts only for what the seller keeps: taxes and profit.",
+        "<b>Totals, not yearly rates.</b> {n} years of money against one year's GDP."].map((x, i) => card(`${RULE_ICONS[[3, 0, 1, 2][i]]}${t(x, { n: num(yearsOf(2026), 1) })}`)).join("")}</div>
     </section>
+    <section aria-labelledby="how-euro"><h3 class="how-h" id="how-euro">${t("Follow one euro")}</h3><div id="how-euro-b"></div></section>
+    <section aria-labelledby="how-nowar"><h3 class="how-h" id="how-nowar">${t("The no-war level")}</h3><div id="how-nowar-b"></div></section>
+    <section aria-labelledby="how-ranges"><h3 class="how-h" id="how-ranges">${t("How sure is a number")}</h3><div id="how-ranges-b"></div></section>
     <div class="src-layout">
       <nav class="flow-nav" aria-label="${t("On this page")}">
         <label class="fsearch"><span class="sr-only">${t("Search flows and sources")}</span><input type="search" id="flow-q" placeholder="${t("Search")}" autocomplete="off"></label>
@@ -2230,21 +2327,27 @@ function renderHow(root) {
       </nav>
       <div class="flows">
         <h2 class="flows-h" id="flows-h">${t("Money flows")}</h2>
-        <div class="fl-tools"><span class="fl-count" id="flow-count" aria-live="polite"></span><button class="linkbtn" id="flows-open" type="button">${t("Expand all")}</button><button class="linkbtn" id="flows-close" type="button">${t("Collapse all")}</button></div>
+        <div class="fl-tools"><span class="fl-count" id="flow-count" aria-live="polite"></span></div>
         ${FLOW_GROUPS.map(([g, ids]) => `<section class="fgroup" aria-label="${t(g)}"><h3 class="fg-h">${t(g)}</h3>${ids.map(id => flowById(id)).filter(Boolean).map(f => flowHtml(f, srcs[f.id] || [])).join("")}</section>`).join("")}
         <p class="key fl-none" id="flow-none" hidden>${t("No flow or source matches.")}</p>
-        <section class="how-sec" aria-labelledby="method-full"><h2 class="flows-h" id="method-full">${t("The method in full")}</h2>
-          <p class="key">${t("Every step of the calculation, page by page. Each money flow above opens its own part of it.")}</p>
-          <div class="mpages">${MD_PAGES.map(p => `<details class="flow mpage" id="m-${p}" data-page="${p}"><summary><span class="fl-t" lang="en">${p}</span></summary><div class="fl-b md" lang="en"></div></details>`).join("")}</div>
-        </section>
-        <section class="how-sec" aria-labelledby="limitations"><h2 class="flows-h" id="limitations">${t("Limitations")}</h2><div class="md md-lim" lang="en"><p class="key">${t("Loading…")}</p></div></section>
-        <section class="how-sec" aria-labelledby="changelog"><h2 class="flows-h" id="changelog">${t("Changelog")}</h2>
-          <div class="md md-cl" lang="en"><p class="key">${t("Loading…")}</p></div></section>
+        <section class="how-sec" aria-labelledby="how-terms"><h2 class="flows-h" id="how-terms">${t("Terms")}</h2>
+          <dl class="gloss">${GLOSSARY.map(([term, def]) => `<div><dt>${t(term)}</dt><dd>${t(def)}</dd></div>`).join("")}</dl></section>
+        <section class="how-sec" aria-labelledby="how-more"><h2 class="flows-h" id="how-more">${t("For researchers")}</h2>
+          <div class="more-t">
+            <details class="mt" id="method-full"><summary>${t("The method in full")}<small>${t("12 pages")}</small></summary>
+              <div class="mpages">${MD_PAGES.map(p => `<details class="flow mpage" id="m-${p}" data-page="${p}"><summary><span class="fl-t" lang="en">${p}</span></summary><div class="fl-b md" lang="en"></div></details>`).join("")}</div></details>
+            <details class="mt" id="limitations"><summary>${t("Limitations")}<small>${t("open issues, by effect")}</small></summary><div class="md md-lim" lang="en"><p class="key">${t("Loading…")}</p></div></details>
+            <details class="mt" id="changelog"><summary>${t("Changelog")}<small>${t("every round")}</small></summary><div class="md md-cl" lang="en"><p class="key">${t("Loading…")}</p></div></details>
+            <a class="mt" href="${TREE}research/2026-10" target="_blank" rel="noopener">${t("Research files")} ↗<small>${t("every input with its source")}</small></a>
+            <a class="mt" href="${REPO}docs/reference/method" target="_blank" rel="noopener">${t("Details for developers")} ↗<small>${t("parameters and code")}</small></a>
+          </div></section>
       </div>
     </div>
     ${window.dataHtml ? window.dataHtml() : ""}
   </div>`;
   wireHow(root);
+  if (!howIso) howIso = (state.panel === "country" && DATA[state.selected]?.iso3) || "DEU";
+  fillHowCountry(root);
   if (window.wireData) window.wireData(root);
   loadContent().then(c => {
     if (!root.querySelector(".how-view")) return;
@@ -2263,8 +2366,6 @@ function renderHow(root) {
 }
 function wireHow(root) {
   const flows = [...root.querySelectorAll("details.flow:not(.mpage)")], q = root.querySelector("#flow-q");
-  root.querySelector("#flows-open").onclick = () => flows.forEach(d => { if (!d.hidden) d.open = true; });
-  root.querySelector("#flows-close").onclick = () => flows.forEach(d => (d.open = false));
   root.querySelector("#flow-jump").onchange = e => { const v = e.target.value; if (v) howGo(v.startsWith("sec:") ? { sec: v.slice(4) } : { flow: v }); e.target.value = ""; };
   root.querySelectorAll("details.fl-method").forEach(d => d.addEventListener("toggle", () => { if (d.open) fillMethod(d); }));
   root.querySelectorAll("details.mpage").forEach(d => d.addEventListener("toggle", () => { if (d.open) fillPage(d); }));
@@ -2945,7 +3046,7 @@ const OLD_VIEW = { sources: "how", rankings: "rank", top: "rank", bubbles: "rank
 // decision's own anchor (cl-r13-d2) opens its round, and the ranges section on combining traded flows was renamed
 const DEC_TABLE = "m-overview-decisions-behind-the-method";
 const secAlias = id => SEC_ALIAS[id] || (/^cl-(why|foundations)/.test(id) ? DEC_TABLE : id.replace(/^(cl-r\d+[a-z]?)-d\d+$/, "$1"));
-const SEC_ALIAS = {"m-ranges-quadrature-for-traded-flows-spread": "m-ranges-how-a-traded-flows-range-is-combined", "m-aid-refugees-military-arms-ukraine-bought-abroad-round-5": "m-aid-refugees-military-arms-ukraine-bought-abroad", "m-aid-refugees-military-donated-weapons-at-market-value-round-5": "m-aid-refugees-military-donated-weapons-at-market-value", "m-aid-refugees-military-refugee-spending-flowing-back-round-16": "m-aid-refugees-military-refugee-spending-flowing-back", "m-aid-refugees-military-round-6-revision": "m-aid-refugees-military-sources-and-values", "m-aid-refugees-military-round-6-the-all-money-ledger": "m-aid-refugees-military-the-all-money-ledger", "m-counterfactual-2-history-four-generations": "m-counterfactual-2-four-generations-of-models", "m-counterfactual-belarus-round-5": "m-counterfactual-belarus", "m-counterfactual-imports-from-russia-round-7": "m-counterfactual-imports-from-russia", "m-counterfactual-pipeline-fuel-buyers-round-8": "m-counterfactual-pipeline-fuel-buyers", "m-counterfactual-power-of-siberia-round-15": "m-counterfactual-power-of-siberia", "m-counterfactual-russias-neighbours-and-moldova-round-6": "m-counterfactual-russias-neighbours-and-moldova", "m-counterfactual-small-flows-start-from-the-2019-to-2021-median-round-16-corrected-in-16b": "m-counterfactual-small-flows-start-from-the-2019-to-2021-median", "m-counterfactual-trade-with-ukraine-round-6": "m-counterfactual-trade-with-ukraine", "m-energy-and-laundered-oil-eu-refined-fuel-measured-both-ways-round-13b": "m-energy-and-laundered-oil-eu-refined-fuel-measured-both-ways", "m-energy-and-laundered-oil-per-country-values-for-the-eu-usa-uk-and-australia-round-5": "m-energy-and-laundered-oil-per-country-values-for-the-eu-usa-uk-and-australia", "m-energy-and-laundered-oil-round-14-growth-hubs-and-nigeria-audit-h2-h3": "m-energy-and-laundered-oil-growth-hubs-and-nigeria", "m-incentives": "lim-not-shown", "m-overview-no-data-round-26": "m-overview-no-data", "m-overview-one-rule-for-every-seller-round-13": "m-overview-one-rule-for-every-seller", "m-overview-round-14-changes-to-the-rules": "m-overview-the-core-idea-in-four-steps", "m-overview-round-17-the-map-first": "m-overview-how-the-map-shows-it", "m-overview-the-money-rule-round-6": "m-overview-one-rule-for-every-seller", "m-overview-the-net-gain-rule-round-10": "m-overview-the-net-gain-rule", "m-overview-the-other-lenses": "m-overview-gross-flows", "m-overview-two-balances-round-6": "m-overview-two-numbers", "m-prices-2026-and-the-hormuz-crisis-round-15": "m-prices-2026-and-the-hormuz-crisis", "m-prices-fuel-price-screen-round-14": "m-prices-fuel-price-screen", "m-prices-gold-at-its-no-war-price-round-16": "m-prices-gold-at-its-no-war-price", "m-prices-no-war-prices-round-7": "m-prices-no-war-prices", "m-prices-one-price-basis-fob-round-14": "m-prices-one-price-basis-fob", "m-prices-the-mix-of-what-was-bought-round-14": "m-prices-the-mix-of-what-was-bought", "m-ranges-the-method-band-round-13-widened-in-round-14": "m-ranges-the-method-band", "m-russia-state-and-companies-assets-seized-by-russia-round-14": "m-russia-state-and-companies-assets-seized-by-russia", "m-russia-state-and-companies-frozen-central-bank-reserves-round-7": "m-russia-state-and-companies-frozen-central-bank-reserves", "m-russia-state-and-companies-round-14b-taken-by-russia-not-in-the-totals": "m-russia-state-and-companies-taken-by-russia-not-in-the-totals", "m-russia-state-and-companies-round-6": "m-russia-state-and-companies-more-buyers", "m-trade-2026-refresh-round-5": "m-trade-januaryaugust-2026", "m-trade-belarus-round-5": "m-trade-belarus", "m-trade-goods-russias-weapons-need-the-critical-goods-marker-round-7": "m-trade-goods-russias-weapons-need-the-critical-goods-marker", "m-trade-narrower-actual-values-round-7": "m-trade-narrower-actual-values", "m-trade-payment-agents-round-6": "m-trade-payment-agents", "m-trade-remittances-and-relocants-round-7": "m-trade-remittances-and-relocants"};
+const SEC_ALIAS = {"trace-h": "how-sum", "method-h": "how-rules", "m-ranges-quadrature-for-traded-flows-spread": "m-ranges-how-a-traded-flows-range-is-combined", "m-aid-refugees-military-arms-ukraine-bought-abroad-round-5": "m-aid-refugees-military-arms-ukraine-bought-abroad", "m-aid-refugees-military-donated-weapons-at-market-value-round-5": "m-aid-refugees-military-donated-weapons-at-market-value", "m-aid-refugees-military-refugee-spending-flowing-back-round-16": "m-aid-refugees-military-refugee-spending-flowing-back", "m-aid-refugees-military-round-6-revision": "m-aid-refugees-military-sources-and-values", "m-aid-refugees-military-round-6-the-all-money-ledger": "m-aid-refugees-military-the-all-money-ledger", "m-counterfactual-2-history-four-generations": "m-counterfactual-2-four-generations-of-models", "m-counterfactual-belarus-round-5": "m-counterfactual-belarus", "m-counterfactual-imports-from-russia-round-7": "m-counterfactual-imports-from-russia", "m-counterfactual-pipeline-fuel-buyers-round-8": "m-counterfactual-pipeline-fuel-buyers", "m-counterfactual-power-of-siberia-round-15": "m-counterfactual-power-of-siberia", "m-counterfactual-russias-neighbours-and-moldova-round-6": "m-counterfactual-russias-neighbours-and-moldova", "m-counterfactual-small-flows-start-from-the-2019-to-2021-median-round-16-corrected-in-16b": "m-counterfactual-small-flows-start-from-the-2019-to-2021-median", "m-counterfactual-trade-with-ukraine-round-6": "m-counterfactual-trade-with-ukraine", "m-energy-and-laundered-oil-eu-refined-fuel-measured-both-ways-round-13b": "m-energy-and-laundered-oil-eu-refined-fuel-measured-both-ways", "m-energy-and-laundered-oil-per-country-values-for-the-eu-usa-uk-and-australia-round-5": "m-energy-and-laundered-oil-per-country-values-for-the-eu-usa-uk-and-australia", "m-energy-and-laundered-oil-round-14-growth-hubs-and-nigeria-audit-h2-h3": "m-energy-and-laundered-oil-growth-hubs-and-nigeria", "m-incentives": "lim-not-shown", "m-overview-no-data-round-26": "m-overview-no-data", "m-overview-one-rule-for-every-seller-round-13": "m-overview-one-rule-for-every-seller", "m-overview-round-14-changes-to-the-rules": "m-overview-the-core-idea-in-four-steps", "m-overview-round-17-the-map-first": "m-overview-how-the-map-shows-it", "m-overview-the-money-rule-round-6": "m-overview-one-rule-for-every-seller", "m-overview-the-net-gain-rule-round-10": "m-overview-the-net-gain-rule", "m-overview-the-other-lenses": "m-overview-gross-flows", "m-overview-two-balances-round-6": "m-overview-two-numbers", "m-prices-2026-and-the-hormuz-crisis-round-15": "m-prices-2026-and-the-hormuz-crisis", "m-prices-fuel-price-screen-round-14": "m-prices-fuel-price-screen", "m-prices-gold-at-its-no-war-price-round-16": "m-prices-gold-at-its-no-war-price", "m-prices-no-war-prices-round-7": "m-prices-no-war-prices", "m-prices-one-price-basis-fob-round-14": "m-prices-one-price-basis-fob", "m-prices-the-mix-of-what-was-bought-round-14": "m-prices-the-mix-of-what-was-bought", "m-ranges-the-method-band-round-13-widened-in-round-14": "m-ranges-the-method-band", "m-russia-state-and-companies-assets-seized-by-russia-round-14": "m-russia-state-and-companies-assets-seized-by-russia", "m-russia-state-and-companies-frozen-central-bank-reserves-round-7": "m-russia-state-and-companies-frozen-central-bank-reserves", "m-russia-state-and-companies-round-14b-taken-by-russia-not-in-the-totals": "m-russia-state-and-companies-taken-by-russia-not-in-the-totals", "m-russia-state-and-companies-round-6": "m-russia-state-and-companies-more-buyers", "m-trade-2026-refresh-round-5": "m-trade-januaryaugust-2026", "m-trade-belarus-round-5": "m-trade-belarus", "m-trade-goods-russias-weapons-need-the-critical-goods-marker-round-7": "m-trade-goods-russias-weapons-need-the-critical-goods-marker", "m-trade-narrower-actual-values-round-7": "m-trade-narrower-actual-values", "m-trade-payment-agents-round-6": "m-trade-payment-agents", "m-trade-remittances-and-relocants-round-7": "m-trade-remittances-and-relocants"};
 function parseHash() {
   const h = decodeURIComponent(location.hash.slice(1));
   // round 19: "#RANKINGS" (the old Top lists panel) opens the Ranking view
