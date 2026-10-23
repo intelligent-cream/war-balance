@@ -2,7 +2,12 @@
 <html lang="en">
 <meta charset="utf-8">
 <script>try { document.documentElement.dataset.theme = localStorage.getItem("ftm-theme") || "dark"; } catch (e) { document.documentElement.dataset.theme = "dark"; }</script>
-<link rel="icon" href="data:,">   <!-- no icon file: this stops the browser asking for /favicon.ico (a 404 in the console) -->
+<!-- round 31: the logo, a serif "F" on navy (favicon.svg; PNG and ICO copies for older browsers and phones) -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#14213d">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Follow the Money: Ukraine</title>
 <meta name="description" content="Research preview, unverified estimates. Where did each country's money move since the full-scale invasion: toward Ukraine or toward Russia? Its support for Ukraine plus how much less, or more, Russia kept from trade with it (taxes and profit, not the full price), against a world without the war. Totals for 2022 to August 2026 (about 4.7 years) against one year's GDP, with the average year. Every number with a range and a source.">
@@ -26,7 +31,7 @@
 <link rel="alternate" hreflang="es" href="https://followthemoneyukraine.org/?lang=es">
 <link rel="alternate" hreflang="x-default" href="https://followthemoneyukraine.org/">
 <link rel="sitemap" type="application/xml" href="https://followthemoneyukraine.org/sitemap.xml">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://followthemoneyukraine.org/#website", "name": "Follow the Money: Ukraine", "url": "https://followthemoneyukraine.org/", "inLanguage": ["en", "uk", "de", "fr", "pl", "nl", "es"], "publisher": {"@id": "https://followthemoneyukraine.org/#org"}}, {"@context": "https://schema.org", "@type": "Organization", "@id": "https://followthemoneyukraine.org/#org", "name": "Follow the Money: Ukraine", "url": "https://followthemoneyukraine.org/"}, {"@context": "https://schema.org", "@type": "Dataset", "@id": "https://followthemoneyukraine.org/#dataset", "name": "Follow the Money: Ukraine — where each country's money moved since 2022", "description": "Research preview: unverified estimates. For every country, its support for Ukraine and how much less, or more, Russia kept from trade with it (taxes and profit above a normal return, not the full price), against a world without the war, from February 2022 to August 2026, as totals against one year's GDP. Every number has a likely range, a certainty letter and its sources.", "url": "https://followthemoneyukraine.org/", "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": true, "creator": {"@id": "https://followthemoneyukraine.org/#org"}, "publisher": {"@id": "https://followthemoneyukraine.org/#org"}, "temporalCoverage": "2022-02/2026-08", "spatialCoverage": {"@type": "Place", "name": "World"}, "keywords": ["Ukraine", "Russia", "war", "aid to Ukraine", "sanctions", "trade with Russia", "fossil fuels", "refugees", "frozen assets", "Kiel Ukraine Support Tracker"], "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://followthemoneyukraine.org/data.json", "name": "Full data (JSON)"}]}]</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://followthemoneyukraine.org/#website", "name": "Follow the Money: Ukraine", "url": "https://followthemoneyukraine.org/", "inLanguage": ["en", "uk", "de", "fr", "pl", "nl", "es"], "publisher": {"@id": "https://followthemoneyukraine.org/#org"}}, {"@context": "https://schema.org", "@type": "Organization", "@id": "https://followthemoneyukraine.org/#org", "name": "Follow the Money: Ukraine", "url": "https://followthemoneyukraine.org/", "logo": "https://followthemoneyukraine.org/icon-512.png"}, {"@context": "https://schema.org", "@type": "Dataset", "@id": "https://followthemoneyukraine.org/#dataset", "name": "Follow the Money: Ukraine — where each country's money moved since 2022", "description": "Research preview: unverified estimates. For every country, its support for Ukraine and how much less, or more, Russia kept from trade with it (taxes and profit above a normal return, not the full price), against a world without the war, from February 2022 to August 2026, as totals against one year's GDP. Every number has a likely range, a certainty letter and its sources.", "url": "https://followthemoneyukraine.org/", "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": true, "creator": {"@id": "https://followthemoneyukraine.org/#org"}, "publisher": {"@id": "https://followthemoneyukraine.org/#org"}, "temporalCoverage": "2022-02/2026-08", "spatialCoverage": {"@type": "Place", "name": "World"}, "keywords": ["Ukraine", "Russia", "war", "aid to Ukraine", "sanctions", "trade with Russia", "fossil fuels", "refugees", "frozen assets", "Kiel Ukraine Support Tracker"], "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://followthemoneyukraine.org/data.json", "name": "Full data (JSON)"}]}]</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -730,6 +735,7 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
 .tb-text { flex: 1 1 auto; min-width: 0; }
 .tb-meta { margin: 0 0 1px; font-size: 12.5px; line-height: 1.4; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 0 14px; }
 .tb-meta .brand { font-weight: 700; color: var(--ink); }
+.tb-meta .brand-logo { width: 16px; height: 16px; border-radius: 3px; vertical-align: -3px; margin-right: 6px; }
 .tb-note b { font-weight: 600; color: var(--ink-soft); }
 .tb-note .tb-short { display: none; }
 .tb-note .linkbtn { color: var(--ukr); text-decoration: underline; text-underline-offset: 2px; }
@@ -963,7 +969,7 @@ li.src-again { color: var(--ink-soft); }
        and the Highlights and Filters buttons -->
   <header class="topbar" id="bar">
     <div class="tb-text">
-      <p class="tb-meta"><span class="brand" id="brand">Follow the Money: Ukraine</span>
+      <p class="tb-meta"><span class="brand"><img class="brand-logo" src="favicon.svg" alt="" width="16" height="16"><span id="brand">Follow the Money: Ukraine</span></span>
         <span class="tb-note" role="note"><b data-i18n="Research preview">Research preview</b> · <span class="tb-long" data-i18n="estimates not yet checked by a person">estimates not yet checked by a person</span><span class="tb-short" data-i18n="unverified estimates">unverified estimates</span> · <button class="linkbtn" id="about-btn" type="button" aria-expanded="false" aria-controls="status" data-i18n="About">About</button></span></p>
       <h1 class="hed"><span id="hed-title" data-i18n="Where did each country's money move: toward Ukraine or toward Russia?">Where did each country's money move: toward Ukraine or toward Russia?</span>
         <span class="per" id="per"></span>
@@ -4665,3 +4671,5 @@ Promise.all([json(narrow() || matchMedia("(pointer: coarse)").matches ? "countri
   status.textContent = msg; setAbout(true);
 });
 </script>
+<!-- round 31: visits counted with Cloudflare Web Analytics: no cookies, no personal data -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "75bc871fc6fd41939f35f32036bc7902", "spa": true}'></script>
