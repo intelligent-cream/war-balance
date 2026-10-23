@@ -12,7 +12,7 @@ Units are EUR bn, nominal, as low / central / high (~90% range). 2026 means Janu
 
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
-**How the map uses the exit payments and seizures (round 14b, raised by the owner):** the exit contribution, the forced discount and the seizures are **not in the totals**. They are a loss imposed on the country's companies and a gain for Russia, not money the country chose to move, so the map counts them in the cost view as a cost carried (`taken` in `site/data.json`) and shows them apart in the panel, the table and as a map marker. Rounds 5–14 counted the contribution and the discount in the net (round 14 added seizures). See [`docs/decisions.md`](https://intelligent-cream.github.io/follow-the-money-ukraine/#view=how&sec=cl-why).
+**How the map uses the exit payments and seizures (round 14b, raised by the owner):** the exit contribution, the forced discount and the seizures are **not in the totals**. They are a loss imposed on the country's companies and a gain for Russia, not money the country chose to move, so the map counts them in the cost view as a cost carried (`taken` in `site/data.json`) and shows them apart in the panel, the table and as a map marker. Rounds 5–14 counted the contribution and the discount in the net (round 14 added seizures). See [`docs/decisions.md`](https://followthemoneyukraine.org/#view=how&sec=cl-why).
 
 ## 1. Exit payments (item 18)
 

@@ -871,6 +871,58 @@ check(
     f"{_map / 1e6:.3f}m vs input {sum(_latest.values()) / 1e6:.3f}m; off: {_ref_off or 'none'}",
 )
 
+# 46. round 30 (the owner, 23 October 2026: the site moves to its own address): the site's address is in one place,
+# pipeline/site_config.json; the map's head (canonical, og:url, og:image, the hreflang alternates), its SITE_URL, the
+# CNAME file and every country page's canonical use it; no file in site/ still gives the old github.io address as the
+# site's own (index.html keeps it once, as OLD_URL, to recognise old links); robots.txt and sitemap.xml, written with
+# the share cards, list the sitemap and every country page. Without the share cards (a local run) that half only warns,
+# like check 24; in CI (strict) it fails.
+_cfg = json.loads((ROOT / "pipeline" / "site_config.json").read_text())
+_su, _ou = _cfg["site_url"], _cfg["old_url"]
+_bad = []
+_need = [
+    f'<link rel="canonical" href="{_su}">',
+    f'<meta property="og:url" content="{_su}">',
+    f'<meta property="og:image" content="{_su}share/world.png">',
+    f'<link rel="alternate" hreflang="x-default" href="{_su}">',
+    f'const SITE_URL = "{_su}", OLD_URL = "{_ou}";',
+]
+_bad += [n[:50] for n in _need if n not in _html]
+if (ROOT / "site" / "CNAME").read_text().strip() != _su.split("//")[1].strip("/"):
+    _bad.append("CNAME")
+_old = _ou.rstrip("/")
+for _f in [
+    *(ROOT / "site").glob("*.html"),
+    *(ROOT / "site").glob("*.js"),
+    *(ROOT / "site").glob("*.json"),
+    *(ROOT / "site" / "i18n").glob("*.js"),
+    *(ROOT / "site" / "content").rglob("*.md"),
+    *_pages,
+]:
+    _n = _f.read_text().count(_old)
+    if _n > (1 if _f.name == "index.html" else 0):
+        _bad.append(f"{_f.name}: old address {_n}x")
+for _p in _pages:
+    if f'<link rel="canonical" href="{_su}c/{_p.name}">' not in _p.read_text():
+        _bad.append(f"canonical {_p.name}")
+_robots, _smap = ROOT / "site" / "robots.txt", ROOT / "site" / "sitemap.xml"
+_seo_missing = []
+if _pages:
+    if not _robots.exists() or f"Sitemap: {_su}sitemap.xml" not in _robots.read_text():
+        _bad.append("robots.txt")
+    _sm = _smap.read_text() if _smap.exists() else ""
+    _bad += [
+        f"sitemap misses c/{k.lower()}.html" for k in countries if f"<loc>{_su}c/{k.lower()}.html</loc>" not in _sm
+    ][:5]
+else:
+    _seo_missing.append("share cards, robots.txt and sitemap.xml not generated (run node pipeline/share_cards.mjs)")
+check(
+    "the site's own address is one setting, with robots.txt and a full sitemap",
+    not _bad and not (_seo_missing and STRICT),
+    f"site_url {_su}; {len(_pages)} country pages; problems: {_bad or 'none'}{'; ' + _seo_missing[0] if _seo_missing else ''}",
+    warn_only=bool(_seo_missing) and not _bad and not STRICT,
+)
+
 width = max(len(n) for _, n, _ in results)
 for status, name, detail in results:
     print(f"{status:4}  {name:<{width}}  {detail}")

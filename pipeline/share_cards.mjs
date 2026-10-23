@@ -1,6 +1,7 @@
 // Share images and pages: one 1200×630 preview card per country (site/share/<iso>.png), a page per country
 // (site/c/<iso>.html) whose link preview shows that card and which opens the map on that country, and a world card.
-// Uses the map's own calculations, so the cards always match the map.
+// Uses the map's own calculations, so the cards always match the map. Also writes robots.txt and sitemap.xml (round
+// 30), with the site's address from pipeline/site_config.json.
 //
 // Run after build_data.py:  node pipeline/share_cards.mjs
 // Needs Node 18+ and Playwright (npm i -g playwright; a Chromium build, or PLAYWRIGHT_CHROMIUM=/path/to/chromium).
@@ -14,7 +15,9 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
 const SITE = join(dirname(fileURLToPath(import.meta.url)), "..", "site");
-const SITE_URL = "https://intelligent-cream.github.io/follow-the-money-ukraine/";
+// the site's own address, in one place (round 30): pipeline/site_config.json
+const CFG = JSON.parse(await readFile(join(dirname(fileURLToPath(import.meta.url)), "site_config.json"), "utf8"));
+const SITE_URL = CFG.site_url, HOST = new URL(SITE_URL).host;
 const TYPES = { ".html": "text/html", ".js": "text/javascript", ".json": "application/json", ".png": "image/png", ".css": "text/css" };
 
 const server = createServer(async (req, res) => {
@@ -96,6 +99,7 @@ const cards = await page.evaluate(() => {
 
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
 for (const d of cards) {
+  d.host = HOST;
   await page.evaluate(d => {
     let el = document.getElementById("card");
     if (!el) { el = document.createElement("div"); el.id = "card"; document.body.appendChild(el); }
@@ -123,14 +127,17 @@ for (const d of cards) {
       <div style="margin-top:12px;font-size:21px;color:#15212b;line-height:1.3"><b style="color:${!d.uaPos ? grey : d.uaUnc ? fadeB : "#2a6fb0"}">${d.uaV}</b> (${d.uaRange})${d.uaUnc && !d.party ? " · " + d.uaDir : ""}${d.refX ? ` · hosted Ukrainian refugees (${d.refX}), not counted as support: co-belligerent` : ""}</div>
       <div style="margin-top:6px;font-size:21px;color:#15212b;line-height:1.3"><b style="color:${d.ruUnc ? (d.ruLess ? fadeB : fadeO) : d.ruLess ? "#2a6fb0" : "#c9520f"}">${d.ruV}</b> (${d.ruRange}): ${d.ruWhat}${d.ruUnc && !d.party && d.ruDir ? " · " + d.ruDir : ""}</div>
       ${d.fz ? `<div style="margin-top:6px;font-size:21px;color:#15212b;line-height:1.3"><b style="color:#2a6fb0">${d.fzV}</b>: the return Russia lost on its reserves frozen here, in the net only</div>` : ""}
-      <div style="margin-top:auto;font-size:16px;color:#55636e;line-height:1.35">2022 to August 2026 (about ${d.years} years) · figures to ${d.dataTo} · <b>Research preview: unverified estimates</b>, compiled with AI assistance, not yet checked by a person<br>intelligent-cream.github.io/follow-the-money-ukraine</div>
+      <div style="margin-top:auto;font-size:16px;color:#55636e;line-height:1.35">2022 to August 2026 (about ${d.years} years) · figures to ${d.dataTo} · <b>Research preview: unverified estimates</b>, compiled with AI assistance, not yet checked by a person<br>${d.host}</div>
 `;
   }, d);
   await page.waitForTimeout(30);
   const iso = d.iso3.toLowerCase();
   await page.screenshot({ path: join(SITE, "share", iso + ".png") });
-  const title = `${d.name}: ${d.netV} in total since 2022 (${d.netRange}) | Follow the Money: Ukraine`;
-  const desc = `Research preview, unverified estimates. In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: ${d.sum} (${d.netRange}; ${d.eurU}; about ${d.pctYU} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.party ? ", party to the war (with Russia), not ranked" : d.netUnc ? ", " + d.netDir : ""}. ${d.uaV} (${d.uaRange}). ${d.ruV} (${d.ruRange}): ${d.ruWhat}${d.fzV ? `. ${d.fzV}` : ""}. The net adds two different things: help given to Ukraine and the change in what Russia kept from trade. Every number with a range and a source.`;
+  // round 30: the title gives the net and the trade side in the site's own words, e.g. "Germany: toward Ukraine by 3.4% of
+  // GDP; cut Russia's earnings from trade by 1.6% of GDP | Follow the Money: Ukraine"
+  const lc = s => s.charAt(0).toLowerCase() + s.slice(1);
+  const title = `${d.name}: ${d.party ? "party to the war (with Russia); " : ""}${lc(d.netV)}; ${lc(d.ruV)} | Follow the Money: Ukraine`;
+  const desc = `Research preview: unverified estimates. In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: ${d.sum} (${d.netRange}; ${d.eurU}; about ${d.pctYU} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.party ? ", party to the war (with Russia), not ranked" : d.netUnc ? ", " + d.netDir : ""}. ${d.uaV} (${d.uaRange}). ${d.ruV} (${d.ruRange}): ${d.ruWhat}${d.fzV ? `. ${d.fzV}` : ""}. The net adds two different things: help given to Ukraine and the change in what Russia kept from trade. Every number with a range and a source.`;
   await writeFile(join(SITE, "c", iso + ".html"), `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -143,12 +150,22 @@ for (const d of cards) {
 <meta property="og:image" content="${SITE_URL}share/${iso}.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="${SITE_URL}#${d.iso3}">
+<link rel="canonical" href="${SITE_URL}c/${iso}.html">
+<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "WebPage", name: title, description: desc, url: `${SITE_URL}c/${iso}.html`, inLanguage: "en", image: `${SITE_URL}share/${iso}.png`, isPartOf: { "@id": SITE_URL + "#dataset" }, about: { "@type": "Country", name: d.name } }).replace(/</g, "\\u003c")}</script>
 <meta http-equiv="refresh" content="0; url=../#${d.iso3}">
 <style>body{font-family:system-ui,sans-serif;margin:40px;color:#15212b;background:#fbfcfc}</style>
 </head><body><p><a href="../#${d.iso3}">${esc(d.name)} on the map</a></p><script>location.replace("../#${d.iso3}");</script></body></html>
 `);
 }
-console.log(`wrote ${cards.length} cards and pages, and share/world.png`);
+// round 30: robots.txt and sitemap.xml. Only real addresses: the map with its languages (?lang=, read by pickLang() in
+// i18n.js) and every country page; views inside the map (#view=how) are not separate pages for a search engine
+const LANGS = ["en", "uk", "de", "fr", "pl", "nl", "es"];
+const gen = JSON.parse(await readFile(join(SITE, "data.json"), "utf8")).generated;
+const alt = LANGS.map(l => `    <xhtml:link rel="alternate" hreflang="${l}" href="${SITE_URL}?lang=${l}"/>`).join("\n") + `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}"/>`;
+const urls = [`  <url>\n    <loc>${SITE_URL}</loc>\n    <lastmod>${gen}</lastmod>\n${alt}\n  </url>`,
+  ...cards.map(d => `  <url>\n    <loc>${SITE_URL}c/${d.iso3.toLowerCase()}.html</loc>\n    <lastmod>${gen}</lastmod>\n  </url>`)];
+await writeFile(join(SITE, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join("\n")}\n</urlset>\n`);
+await writeFile(join(SITE, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}sitemap.xml\n`);
+console.log(`wrote ${cards.length} cards and pages, share/world.png, robots.txt and sitemap.xml (${urls.length} addresses)`);
 await browser.close();
 server.close();

@@ -4,6 +4,29 @@ Every update to the map, newest first: what changed and every decision behind it
 
 The detailed research log, with every file, is [`research/2026-10/README.md`](https://github.com/intelligent-cream/follow-the-money-ukraine/blob/main/research/2026-10/README.md).
 
+<h2 id="cl-r30">Round 30: ready for the new address <span class="cl-date">23 October</span></h2>
+<!-- flows: -->
+
+**The site is ready to move to its own address, followthemoneyukraine.org, and search engines can now find every
+country page. No number changed.**
+
+### What changed
+
+1. **One address.** The site's address is set in one place and used by the map, the country pages, the share cards and
+   the documentation. Links to the old address keep working inside the site.
+2. **Found by search engines.** A sitemap lists the map in its seven languages and every country page; a robots file
+   points to it. Each page names its main address, so the old and new addresses do not compete.
+3. **Described as a dataset.** The map describes itself as an open dataset (licence CC BY 4.0, February 2022 to August
+   2026, with the data download), so it can appear in dataset search; each country page is part of it.
+4. **Country pages say what they show.** Each country page's title gives its net and its trade side in the site's own
+   words, for example "Germany: toward Ukraine by 3.4% of GDP; cut Russia's earnings from trade by 1.6% of GDP", and
+   its description starts with "Research preview: unverified estimates".
+
+### Decisions
+
+- **Move to followthemoneyukraine.org.** Raised by the owner (23 October 2026), with Cloudflare for the domain and
+  GitHub Pages for the site. Effect: the address only.
+
 <h2 id="cl-r29">Round 29: Russia's earnings from trade, uncertainty in the ranking, a cleaner method <span class="cl-date">23 October</span></h2>
 <!-- flows: paid windfall laund sold mil aid -->
 
