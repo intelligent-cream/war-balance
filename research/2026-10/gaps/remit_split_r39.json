@@ -1,0 +1,85 @@
+{
+ "generated": "2026-10-23",
+ "round": 39,
+ "proposals": [
+  {
+   "item": "remittance_russia_share",
+   "country": "TJK",
+   "years": "2019-2026",
+   "old": {
+    "low": 0.8,
+    "central": 0.88,
+    "high": 0.93
+   },
+   "new": {
+    "low": 0.82,
+    "central": 0.9,
+    "high": 0.97
+   },
+   "basis": "data",
+   "replaces": "the TJK proposal in assumptions_r11_people.json (old 0.80/0.88/0.93 -> new 0.80/0.88/0.97); same item and shape, so apply_assumptions_r11_people() scales labour, total and expected level by new/old",
+   "evidence": {
+    "cbr_outflows_to_tjk_usd_m": {
+     "2019": 2576,
+     "2020": 1741,
+     "2021": 1800
+    },
+    "wdi_tjk_personal_remittances_usd_m": {
+     "2019": 2322,
+     "2020": 2187,
+     "2021": 2922,
+     "2022": 5346,
+     "2023": 4634,
+     "2024": 6802,
+     "2025": 10184
+    },
+    "mirror_ratio_cbr_over_wdi": {
+     "2019": 1.109,
+     "2020": 0.796,
+     "2021": 0.616,
+     "pooled_2019_2021": 0.823
+    },
+    "coverage_check_uzb_2021": "CBR outflows to Uzbekistan 2021 USD 5,532m vs the Central Bank of Uzbekistan's transfers from Russia ~USD 5.4bn (remittances.json): CBR captures about all bank/MTS money; cash carried home and compensation of employees are not in it, so the bank-only ratio 0.82 is a floor for Russia's share of WDI",
+    "migrants_by_destination_2024": "MoLMEP via IOM: 604,259 of 618,097 Tajik labour migrants abroad (98%) in Russia, 6,534 (1%) in Kazakhstan, Sep 2024",
+    "kazakhstan_to_tajikistan_2024_usd_m": 14.9,
+    "undesa_stock_2024": "514,478 Tajik-born abroad, 415,676 (81%) in Russia (long-term stock, incl. 30k in Ukraine)",
+    "national_bank_of_tajikistan": "publishes no split by country; IOM notes NBT data were unavailable for 2024"
+   },
+   "effect": {
+    "labour_2022_2026_central_eur_bn": {
+     "r11_now": 20.924,
+     "new": 21.399
+    },
+    "change_vs_expected_2022_2026_central_eur_bn": {
+     "r11_now": 9.363,
+     "new": 9.576
+    },
+    "note": "the low end rises by 2.5% (0.82/0.80); the high end is unchanged from round 11; the central rises by 2.3%"
+   },
+   "certainty": "C (was D): sending-side official data 2019-21 (Bank of Russia) plus official migrant destination counts (MoLMEP via IOM); no war-year country split exists from either central bank",
+   "sources": [
+    {
+     "title": "Bank of Russia: cross-border transfers of individuals by main counterpart countries, 2019-2021 (tables 33-rem_19/20/21, annual sheets, 'Перечисления из Российской Федерации')",
+     "url": "https://www.cbr.ru/vfs/statistics/CrossBorder/33-rem_21.xlsx",
+     "what": "outflows to Tajikistan USD 2,576m (2019), 1,741m (2020), 1,800m (2021); page updated 07.11.2024, no country tables after 2021"
+    },
+    {
+     "title": "World Bank WDI BX.TRF.PWKR.CD.DT, Tajikistan",
+     "url": "https://api.worldbank.org/v2/country/TJK/indicator/BX.TRF.PWKR.CD.DT?format=json&date=2017:2025",
+     "what": "2,322 / 2,187 / 2,922 / 5,346 / 4,634 / 6,802 / 10,184 USD m (2019-2025)"
+    },
+    {
+     "title": "IOM DTM, Tajikistan Migration Situation Report, July-December 2024 (MoLMEP data)",
+     "url": "https://dtm.iom.int/sites/g/files/tmzbdl1461/files/reports/TAJ_Migration%20Situation%20Report_ENG_0.pdf",
+     "what": "604,259 (98%) of 618,097 labour migrants abroad in Russia (Sep 2024); NB Kazakhstan: USD 14.9m transferred from Kazakhstan to Tajikistan in 2024; UNDESA 2024 stock 81% in Russia; NBT remittance data unavailable"
+    }
+   ]
+  }
+ ],
+ "other_central_asia": {
+  "UZB": "already official by country (Central Bank of Uzbekistan); CBR 2021 outflow USD 5.53bn matches CBU's Russia figure (~5.4bn): no change",
+  "KGZ": "already official by country (National Bank of the Kyrgyz Republic); CBR 2021 outflow USD 2.13bn vs WDI 3.01bn: no change",
+  "KAZ": "already official (National Bank of Kazakhstan); no change",
+  "TKM": "no remittance data; not modelled"
+ }
+}

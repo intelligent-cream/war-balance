@@ -1,0 +1,216 @@
+{
+ "generated": "2026-10-23",
+ "round": 39,
+ "unit": "EUR bn per year, 2026 = January-August; low/central/high",
+ "replaces": "refugees_net.json countries.{DNK,SWE,ITA}.gross (and round4b.json refugees.{DNK,SWE,ITA}, which it copies); same {year: {low, central, high}} shape. DNK also gets new revenue_model_inputs.employment_rate.",
+ "countries": {
+  "DNK": {
+   "gross": {
+    "2022": {
+     "low": 0.279,
+     "central": 0.373,
+     "high": 0.537
+    },
+    "2023": {
+     "low": 0.197,
+     "central": 0.282,
+     "high": 0.414
+    },
+    "2024": {
+     "low": 0.121,
+     "central": 0.192,
+     "high": 0.297
+    },
+    "2025": {
+     "low": 0.101,
+     "central": 0.171,
+     "high": 0.262
+    },
+    "2026": {
+     "low": 0.062,
+     "central": 0.13,
+     "high": 0.22
+    }
+   },
+   "gross_certainty": "C",
+   "basis": "official components: OECD DAC in-donor refugee costs (rise over 2021, first-year ODA-eligible costs) + the municipal block-grant compensation agreed by the government and KL; central counts 70% of the municipal frame to allow overlap; high x1.3 for benefits beyond 12 months and regional health care",
+   "components": {
+    "dac_in_donor_refugee_costs_usd_m": {
+     "2021": 63.2,
+     "2022": 356.72,
+     "2023": 276.54,
+     "2024": 179.69,
+     "2025": 177.25
+    },
+    "municipal_frame_dkk_bn": {
+     "2022": "1.4 (Ukraine and COVID together; Ukraine part taken as ~1.0)",
+     "2023": 0.9,
+     "2024": 0.9,
+     "2025": "not found; 0.75 judged"
+    }
+   },
+   "revenue_model_inputs_employment_rate": {
+    "old": [
+     0.4,
+     0.55,
+     0.6,
+     0.62,
+     0.63
+    ],
+    "new": [
+     0.3,
+     0.48,
+     0.57,
+     0.6,
+     0.61
+    ],
+    "basis": "Statistics Denmark: about one third of 18-64-year-olds in wage employment in Q3 2022, 58% in Q3 2024 (12,100 people); annual averages interpolated, later years +2-3 points",
+    "certainty": "B"
+   },
+   "old_total_2022_2026": 1.95,
+   "new_total_2022_2026": 1.148
+  },
+  "SWE": {
+   "gross": {
+    "2022": {
+     "low": 0.235,
+     "central": 0.294,
+     "high": 0.4
+    },
+    "2023": {
+     "low": 0.163,
+     "central": 0.204,
+     "high": 0.278
+    },
+    "2024": {
+     "low": 0.134,
+     "central": 0.168,
+     "high": 0.228
+    },
+    "2025": {
+     "low": 0.071,
+     "central": 0.145,
+     "high": 0.198
+    },
+    "2026": {
+     "low": 0.04,
+     "central": 0.101,
+     "high": 0.152
+    }
+   },
+   "gross_certainty": "B-C",
+   "basis": "Migration Agency annual reports: total cost of reception and support of people with temporary protection (2022 ~SEK 2.0bn plus the SEK 0.5bn one-off municipal grant; 2023 1,875m; 2024 1,534m; 2025 486m) plus, for 2025, the municipal resettlement lump sums paid for Ukrainians once registered (est. SEK 0.8bn, 0.3-1.0); central x1.25 for regional health care and other costs outside the Agency line; high = max(x1.7, the rise in Sweden's DAC in-donor refugee costs over 2021, OECD's 2022 estimate EUR 0.325bn)",
+   "components": {
+    "migrationsverket_sek_bn": {
+     "2022": 2.5,
+     "2023": 1.874549,
+     "2024": 1.534116,
+     "2025": 1.285647
+    },
+    "dac_in_donor_refugee_costs_usd_m": {
+     "2021": 87.91,
+     "2022": 384.36,
+     "2023": 253.7,
+     "2024": 129.35,
+     "2025": 189.63
+    }
+   },
+   "old_total_2022_2026": 1.57,
+   "new_total_2022_2026": 0.912
+  },
+  "ITA": {
+   "gross": {
+    "2022": {
+     "low": 0.45,
+     "central": 0.65,
+     "high": 0.8
+    },
+    "2023": {
+     "low": 0.38,
+     "central": 0.5,
+     "high": 0.6
+    },
+    "2024": {
+     "low": 0.175,
+     "central": 0.25,
+     "high": 0.4
+    },
+    "2025": {
+     "low": 0.084,
+     "central": 0.12,
+     "high": 0.192
+    },
+    "2026": {
+     "low": 0.042,
+     "central": 0.06,
+     "high": 0.096
+    }
+   },
+   "gross_certainty": "C",
+   "basis": "national appropriations in the Ukraine decree-laws (DL 21/2022, DL 50/2022, DL 16/2023) as summarised by the Chamber of Deputies research service; these are spending caps, so the low end allows for under-spending (unused accoglienza diffusa places were reallocated in 2023). EU pre-financing stays in round4b eu_funded",
+   "components": {
+    "2022_eur_m": {
+     "Fondo emergenze nazionali (DL 21/2022)": 348,
+     "first relief (CdM 28.2.2022)": 10,
+     "CAS reception centres (DL 14, 21, 50/2022)": 174.4,
+     "regional health contribution (DL 21 and 50/2022)": 179
+    },
+    "2023_eur_m": {
+     "Civil Protection: diffuse reception and maintenance contribution (DL 16/2023)": 89.6,
+     "CAS": 137.9,
+     "SAI": 52.3,
+     "health (of which 191.1 within the national health fund)": 238.9
+    }
+   },
+   "old_total_2022_2026": 1.43,
+   "new_total_2022_2026": 1.58
+  }
+ },
+ "sources": [
+  {
+   "title": "OECD Data Explorer, DAC1 measure 1820 'Refugees in donor countries', DNK/SWE/ITA, USD current",
+   "url": "https://sdmx.oecd.org/public/rest/data/OECD.DCD.FSD,DSD_DAC1@DF_DAC1,/DNK+SWE+ITA..1820....?startPeriod=2021&endPeriod=2025",
+   "what": "DNK 63.2/356.7/276.5/179.7/177.3; SWE 87.9/384.4/253.7/129.4/189.6; ITA 556/1,480/1,660/1,824/1,501 (2021-2025, USD m)"
+  },
+  {
+   "title": "Finansministeriet: Aftale om kommunernes økonomi for 2024 (June 2023)",
+   "url": "https://fm.dk/media/c0kiohrw/aftale-om-kommunernes-oekonomi-for-2024-a.pdf",
+   "what": "DKK 1.4bn for municipalities' 2022 net extra costs (displaced Ukrainians and COVID-19); DKK 0.9bn frame for 2023"
+  },
+  {
+   "title": "Finansministeriet: Aftale om kommunernes økonomi for 2025 (May 2024)",
+   "url": "https://fm.dk/media/3mojyyvq/aftale-om-kommunernes-oekonomi-for-2025.pdf",
+   "what": "DKK 900m frame for 2024 for receiving displaced persons from Ukraine, via the block grant"
+  },
+  {
+   "title": "Danmarks Statistik: 32.100 ukrainske statsborgere har opholdstilladelse efter særloven (24 Feb 2025)",
+   "url": "https://www.dst.dk/da/Statistik/nyheder-analyser-publ/bagtal/2025/2025-02-24-Ukrainske-statsborgere",
+   "what": "Q3 2024: 12,800 in wage employment; 58% of 18-64-year-olds; about one third in Q3 2022"
+  },
+  {
+   "title": "Migrationsverket, Årsredovisning 2023",
+   "url": "https://www.migrationsverket.se/download/18.2cd2e409193b84c506a2fb82/1738845281528/Migrationsverkets_arsredovisning_2023.pdf",
+   "what": "total cost of reception and support of people with temporary protection ~SEK 1.8bn (2023) vs ~2bn (2022)"
+  },
+  {
+   "title": "Migrationsverket, Årsredovisning 2024",
+   "url": "https://www.migrationsverket.se/download/18.2cd2e409193b84c506a346f2/1744638139545/Migrationsverkets_arsredovisning_2024.pdf",
+   "what": "SEK 1.5bn (2024); municipal compensation for people under the directive SEK 1,000m/1,429m/1,350m (2022-24); the one-off SEK 500m municipal grant of 2022"
+  },
+  {
+   "title": "Migrationsverket, Årsredovisning 2025 (table 3.8)",
+   "url": "https://www.migrationsverket.se/download/18.f09188f19bb7cf3a2ad60/1771595185205/Migrationsverkets_arsredovisning_2025.pdf",
+   "what": "reception and support SEK 1,808.8m / 1,498.6m / 456.9m; total incl. case handling 1,874.5m / 1,534.1m / 485.6m (2023-25); compensation for newly arrived rose SEK 3.48bn -> 4.49bn as Ukrainians were registered"
+  },
+  {
+   "title": "Camera dei deputati, Servizio Studi, dossier D23016a on DL 16/2023 (protezione temporanea)",
+   "url": "https://documenti.camera.it/Leg19/Dossier/Pdf/D23016a.Pdf",
+   "what": "2022: Fondo emergenze +348m, CAS 54.2+7.5+112.7m, health 152+27m; 2023: 49.6m diffuse reception + 40m contributo di sostentamento, CAS +137.9m, SAI +52.3m, health EUR 238.9m"
+  },
+  {
+   "title": "Gazzetta Ufficiale n. 2, 3 Jan 2025: DPC ordinance for 2025",
+   "url": "https://gazzettaufficiale.biz/atti/2025/20250002/24A07062.htm",
+   "what": "EUR 36m spending limit for 2025 for Civil Protection reception measures"
+  }
+ ]
+}

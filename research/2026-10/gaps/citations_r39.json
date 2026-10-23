@@ -1,0 +1,181 @@
+{
+ "generated": "2026-10-23",
+ "round": 39,
+ "how_to_use": "Each entry maps an existing citation (file, JSON path or line, old URL) to replacement source(s). status: 'replace' = verified authoritative source supports the same claim; 'replace_with_correction' = authoritative source supports a corrected value (see 'correction'); 'partial' = better source found for part of the claim; 'no_replacement' = keep old as secondary and flag. Numbers are not changed by this file except where 'correction' says so.",
+ "mappings": [
+  {
+   "id": "C1",
+   "files": ["research/2026-10/gaps/assumptions_r11_gain.json (6 proposals, net_gain_russia arms 2021-2026, sources[] entry 'Wikipedia (ru): Rosoboronexport')"],
+   "old_url": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82",
+   "claim": "Rosoboronexport 2014 revenue RUB 22.04bn, net profit RUB 9.67bn",
+   "new": [
+    {"url": "https://www.audit-it.ru/buh_otchet/7718852163_ao-rosoboroneksport", "what": "Rosoboronexport's filed RAS statements (data from FNS and Rosstat databases): 2014 EBIT RUB 10,354,546k; return on sales 58.2%", "verified": "2026-10-23 (WebFetch)"},
+    {"url": "https://synapsenet.ru/searchorganization/organization/1117746521452-ao-rosoboroneksport", "what": "FNS-based register: 2014 net profit RUB 9,667,235k", "verified": "search snippet only"}
+   ],
+   "status": "partial",
+   "correction": "Net profit 9.67bn is confirmed by FNS-based data. Revenue 22.04bn is not: EBIT / return on sales implies about RUB 17.8bn. With ROE's own 2014 deliveries of USD 13.2bn (about RUB 0.5trn), the commission is 3.5-4.4% and net profit about 1.9% of contract value, so the +0.02 (0.01-0.03) arms margin term is unchanged."
+  },
+  {
+   "id": "C2",
+   "files": ["research/2026-10/gaps/assumptions_r11_gain.json (same 6 proposals, 'GlobalSecurity/Sputnik, 17 Dec 2014')"],
+   "old_url": "https://www.globalsecurity.org/wmd/library/news/russia/2014/russia-141217-sputnik02.htm",
+   "claim": "2014 arms exports ~USD 13bn",
+   "new": [
+    {"url": "http://en.kremlin.ru/events/president/news/47530", "what": "Kremlin, meeting of the Commission for Military-Technical Cooperation, 27 Jan 2015: 'The total volume of sales exceeded $15 billion. We signed almost $14 billion worth of contracts'", "verified": "2026-10-23 (fetched)"}
+   ],
+   "status": "replace_with_correction",
+   "correction": "USD 13bn was a December 2014 preliminary figure from a Kremlin aide. The official full-year 2014 figure is >USD 15bn for all exporters. Rosoboronexport's own deliveries were USD 13.2bn (its 2014 annual report, as quoted by Profile.ru), and that is the right denominator for its commission. The note should say 'USD 13.2bn (Rosoboronexport), >15bn (all exporters, Kremlin)'."
+  },
+  {
+   "id": "C3",
+   "files": ["research/2026-10/gaps/assumptions_r11_rules.json (EU-level military flowback, sources[] 'European Peace Facility (overview)')"],
+   "old_url": "https://en.wikipedia.org/wiki/European_Peace_Facility",
+   "claim": "EPF reimburses member states for weapons donated from stock and funds joint procurement (EUR 1bn, 2023); it flows to member treasuries by donations, not to industry by production shares",
+   "new": [
+    {"url": "https://www.consilium.europa.eu/en/press/press-releases/2023/04/13/ammunition-for-ukraine-council-agrees-1-billion-support-under-the-european-peace-facility/", "what": "Council, 13 Apr 2023: EUR 1bn EPF track 1 reimburses member states for ammunition donated from existing stocks or reprioritised orders, 9 Feb-31 May 2023; total EPF for Ukraine EUR 4.6bn"},
+    {"url": "https://www.consilium.europa.eu/en/press/press-releases/2023/05/05/eu-joint-procurement-of-ammunition-and-missiles-for-ukraine-council-agrees-1-billion-support-under-the-european-peace-facility/", "what": "Council, 5 May 2023: EUR 1bn track 2 for joint procurement from economic operators in the EU or Norway"},
+    {"url": "https://www.consilium.europa.eu/en/policies/military-support-ukraine/", "what": "Council policy page: EPF mobilised EUR 6.4bn for Ukraine 2022-2025"}
+   ],
+   "status": "replace",
+   "verified": "search results from consilium.europa.eu (the policy page itself returned 403 to the fetcher)"
+  },
+  {
+   "id": "C4",
+   "files": ["research/2026-10/gaps/captive_buyers.json (sources.arm_gazprom)", "research/2026-10/gaps/captive_buyers-notes.md line 32"],
+   "old_url": "https://en.wikipedia.org/wiki/Gazprom_Armenia",
+   "claim": "Gazprom owns 100% of Armenia's gas distribution and the Armenian section of the Iran-Armenia pipeline; Russian gas ~2 bcm vs Iranian ~0.37-0.5 bcm",
+   "new": [
+    {"url": "https://armenia.gazprom.com/about/today/", "what": "Gazprom Armenia: PJSC Gazprom is the only shareholder; transmission, storage, distribution and sale of gas in Armenia"},
+    {"url": "https://www.gazprom.com/press/news/2014/january/article182633/", "what": "Gazprom, Jan 2014: stake in ArmRosgazprom raised to 100% (renamed Gazprom Armenia)"}
+   ],
+   "status": "partial",
+   "correction": "Ownership is now officially sourced. The volume split (2 bcm Russian against 0.37-0.5 bcm Iranian) still needs a primary source: Armenia's PSRC tariff decisions or Armstat's energy balance. Comtrade's 2021 Russia share (84.5%) is already in the table."
+  },
+  {
+   "id": "C5",
+   "files": ["research/2026-10/gaps/china_military.json (sources[] 'Wikipedia, China and the Russo-Ukrainian war')"],
+   "old_url": "https://en.wikipedia.org/wiki/China_and_the_Russo-Ukrainian_war",
+   "claim": "secondary summary of Politico 2023 (rifles, body armour, drone parts) and NYT (gunpowder), sanctions chronology",
+   "new": [
+    {"url": "https://www.politico.com/news/2023/03/16/chinese-rifles-body-armor-russia-ukraine-00087398", "what": "Politico, 16 Mar 2023 (ImportGenius customs data): 1,000 CQ-A rifles from Norinco to Tekhkrim (Jun 2022), >12 t of body armour via Türkiye, DJI parts via the UAE", "verified": "not fetched: politico.com is not reachable from this agent. Date and content confirmed by Novaya Gazeta Europe and Moscow Times summaries; the URL slug is from memory, so check it"},
+    {"url": "https://novayagazeta.eu/en/articles/2023/03/17/politico-china-supplies-russia-with-copies-of-m-16-marks-those-as-civilian-hunting-rifles-in-customs-papers-en-news", "what": "summary of the Politico report (fallback)"}
+   ],
+   "status": "partial",
+   "correction": "Wikipedia dates the Politico report to 2023; it is March 2023, not July. The NYT gunpowder item and the sanctions chronology need their own primary links: the US Treasury/BIS designation notices and the EU sanctions packages in the Official Journal."
+  },
+  {
+   "id": "C6",
+   "files": ["research/2026-10/gaps/energy2.json (Gibraltar bunker share, sources[] 'Ship & Bunker via Wikipedia')"],
+   "old_url": "https://en.wikipedia.org/wiki/Shipping_in_Gibraltar",
+   "claim": "Gibraltar bunker sales ~4.3 Mt (2021), ~3.4 Mt (2022 est.); the Port Authority does not publish volumes",
+   "new": [
+    {"url": "https://shipandbunker.com/news/emea/778476-gibraltar-2022-bunker-calls-heading-for-12-year-low", "what": "Ship & Bunker, Dec 2022: 2021 sales about 4.3 Mt (S&B estimate); 2022 projected 3.4 Mt from calls down 20.2% in Jan-Nov; GPA publishes calls, not volumes"}
+   ],
+   "status": "replace",
+   "note": "trade press is the original source of the estimate; no official volume exists"
+  },
+  {
+   "id": "C7",
+   "files": ["research/2026-10/gaps/flowback2.json (foreign fighters: Georgia; 6 entries citing 'Foreign_fighters_in_the_Russo-Ukrainian_war')"],
+   "old_url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
+   "claim": "~1,500 Georgians (unofficial), Georgian Legion",
+   "new": [
+    {"url": "https://www.rferl.org/a/ukraine-war-georgia-fighters-russia-invasion/32181784.html", "what": "RFE/RL: Georgian Legion said to number 800-1,000, roughly half ethnic Georgians"},
+    {"url": "https://civil.ge/archives/tag/georgian-legion", "what": "Civil.ge running tally of Georgian fighters killed (unofficial)"}
+   ],
+   "status": "replace_with_correction",
+   "correction": "No source gives 1,500. RFE/RL implies about 400-500 Georgians in the Legion, and other units are extra. Use 500-1,500 with central ~800, or keep 1,500 as the high."
+  },
+  {
+   "id": "C8",
+   "files": ["research/2026-10/gaps/flowback2.json ('List_of_Americans_in_the_Armed_Forces_of_Ukraine')"],
+   "old_url": "https://en.wikipedia.org/wiki/List_of_Americans_in_the_Armed_Forces_of_Ukraine",
+   "claim": "count of US volunteers",
+   "new": [],
+   "status": "no_replacement",
+   "note": "No official count exists. Keep it as a label-level source or drop it. Ukraine's International Legion publishes no figures by nationality."
+  },
+  {
+   "id": "C9",
+   "files": ["research/2026-10/gaps/fuel_volume_cf.json (Türkiye gas, sources[])"],
+   "old_url": "https://en.wikipedia.org/wiki/Blue_Stream",
+   "claim": "Blue Stream route and capacity; contract end 2025",
+   "new": [
+    {"url": "https://www.gazprom.com/projects/blue-stream/", "what": "Gazprom: Blue Stream, 1,213 km, design capacity 16 bcm/yr"}
+   ],
+   "status": "replace",
+   "note": "the S&P Global source already cited covers the contract end date"
+  },
+  {
+   "id": "C10",
+   "files": ["research/2026-10/gaps/fuel_volume_cf.json (Slovakia/Hungary crude, sources[])"],
+   "old_url": "https://en.wikipedia.org/wiki/Druzhba_pipeline",
+   "claim": "MOL's refineries are supplied mostly via Druzhba; Adria/JANAF is the alternative",
+   "new": [
+    {"url": "https://molgroup.info/en/investor-relations/investor-news/first-batches-of-crude-oil-via-the-druzhba-pipeline-received-in-hungary-and-slovakia", "what": "MOL Group: landlocked Hungarian and Slovak refineries historically supplied via Druzhba through Ukraine; 2026 halt and restart"},
+    {"url": "https://molgroup.info/storage/documents/publications/investor_presentations/2026/investor-presentation-may-2026.pdf", "what": "MOL investor presentation, May 2026: refinery capacities and Adria route"}
+   ],
+   "status": "replace"
+  },
+  {
+   "id": "C11",
+   "files": ["research/2026-10/gaps/relocants.json (id srb_wiki)"],
+   "old_url": "https://en.wikipedia.org/wiki/Russians_in_Serbia",
+   "claim": "Interior Ministry: 300k entries, ~53k settled",
+   "new": [
+    {"url": "https://www.rferl.org/a/serbia-passports-citizenship-sanctioned-russians/33778410.html", "what": "RFE/RL from the Serbian Interior Ministry: just over 48,000 Russian citizens held temporary residence in Jan 2025"},
+    {"url": "https://bezbednost.org/en/russian-exiles-in-serbia-liberal-anti-war-but-politically-reserved/", "what": "BCSP: 80,000-110,000 Russians resident; the 220,000 'arrivals' counted border entries, not people"}
+   ],
+   "status": "replace_with_correction",
+   "correction": "Use 48k residence permits (official, Jan 2025) as the settled count, and the 80-110k BCSP range as the stock. The '300k entries' figure has no official source."
+  },
+  {
+   "id": "C12",
+   "files": ["research/2026-10/gaps/russian_arms_exports.json (sources[] 'Sputnik via GlobalSecurity')", "research/2026-10/gaps/russian_arms_exports-notes.md line 42 (2023 row)"],
+   "old_url": "https://www.globalsecurity.org/wmd/library/news/russia/2024/02/russia-240205-sputnik01.htm",
+   "claim": "Rosoboronexport order portfolio >USD 55bn; 2023 contracts >USD 12bn",
+   "new": [
+    {"url": "https://iz.ru/1645033/2024-02-05/rosoboroneksport-ukazal-na-rekordnyi-obem-zakazov-v-55-mlrd", "what": "Izvestia, 5 Feb 2024, quoting Rosoboronexport CEO Mikheev at World Defense Show: order portfolio >USD 55bn at end-2023 (record)", "verified": "2026-10-23 (fetched)"},
+    {"url": "https://www.rbc.ru/rbcfreenews/65c070ba9a794746b5d5c40c", "what": "RBC, 5 Feb 2024: 'Rosoboronexport named the value of 2023 contracts'", "verified": "headline only (RBC returned 401)"}
+   ],
+   "status": "partial",
+   "correction": "The portfolio figure is verified. Keep 'contracts >12bn' only once RBC's text is checked; Izvestia does not give it."
+  },
+  {
+   "id": "C13",
+   "files": ["research/2026-10/gaps/windfall_band_r24.json (sources.presqueeze_early2021_forwards.url)", "research/2026-10/gaps/windfall_band_r24-notes.md line 23"],
+   "old_url": "https://k4viewnews-globaltrading-qual.enel.com/spanish-forward-gas-update-21-01-2021",
+   "claim": "TTF Cal-22 traded at EUR 16.7-18.1/MWh, 22 Jan-12 Mar 2021",
+   "new": [
+    {"url": "https://www.ice.com/products/27996665/Dutch-TTF-Natural-Gas-Futures/data", "what": "ICE Endex Dutch TTF futures: the exchange's settlement data, the authoritative series for Cal-22 (history needs ICE Report Center or a data vendor)", "verified": "not fetched; paywalled history"},
+    {"url": "https://commission.europa.eu/news-and-media/news/quarterly-market-reports-confirm-globalised-nature-gas-market-1st-quarter-2021-2021-07-08_en", "what": "DG ENER Quarterly Report on European Gas Markets Q1 2021: forward contracts far less volatile than spot in Q1 2021 (qualitative support; the report PDF has the forward curve)"}
+   ],
+   "status": "partial",
+   "correction": "The Enel host is a QA/staging server, and Enel's production domain has no copy (www.globaltrading.enel.com answers with a bare Apache page). Until an ICE or DG ENER number is read, cite the Enel page as 'Enel Global Trading daily update (staging host, archived)'. Archive it: archive.org was not reachable from here."
+  },
+  {
+   "id": "C14",
+   "files": ["research/2026-10/gaps/power_of_siberia_r15.json / -notes.md (Interfax 115552, 117354; TASS 2032425)"],
+   "old_url": "https://interfax.com/newsroom/top-stories/115552/",
+   "claim": "Power of Siberia volumes and records",
+   "new": [
+    {"url": "https://www.gazprom.com/press/news/2025/may/article581634/", "what": "Gazprom, May 2025: first 100 bcm delivered; supplies above contract every year since 2020; 2024 +35%; maximum contractual daily rate from 1 Dec 2024"},
+    {"url": "https://www.gazprom.com/projects/power-of-siberia/", "what": "Gazprom project page: 38 bcm/yr contract, 30 years"}
+   ],
+   "status": "partial",
+   "note": "Gazprom has issued no full-year 2025 volume release. China's GACC monthly pipeline-gas imports from Russia are the check."
+  },
+  {
+   "id": "C15",
+   "files": ["research/2026-10/gaps/north_korea_r24.json", "research/2026-10/gaps/military_payment_r13.json (NK News 2026-03, Korea Times 2026-03-16, The Insider 290450)"],
+   "old_url": "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/",
+   "claim": "North Korea earned USD 7.67-14.4bn (Aug 2023-Dec 2025); arms 7.05-13.78bn; troops ~0.62bn; earlier KIDA estimate ~USD 20bn (Jul 2023-Mar 2025)",
+   "new": [
+    {"url": "https://www.inss.re.kr/", "what": "original: Institute for National Security Strategy (INSS, Seoul) report, published 16-17 Mar 2026 (author named in coverage as Lim Soo-ho); the direct PDF URL could not be confirmed from here", "verified": "no"},
+    {"url": "https://thedefensepost.com/2026/03/17/n-korea-earnings-russia-military/amp/", "what": "Defense Post summary with the component split (better than NK News for the breakdown)"}
+   ],
+   "status": "partial",
+   "note": "Next step: fetch the INSS report and the KIDA report from their Korean sites and cite them directly. Also cite MSMT/2025/1 for volumes, as the audit asked."
+  }
+ ]
+}
