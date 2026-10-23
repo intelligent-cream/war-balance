@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22",
+ "generated": "2026-10-23",
  "round": "24b (audit 24, D M4; approved by the owner 22 October 2026)",
  "source": "Kiel Institute, Ukraine Support Tracker Release 31 (8 October 2026), sheet 'Bilateral Assistance, MAIN DATA': military allocation rows (measure, aid_type_general, tot_sub_activity_value_EUR_redistr, source_of_weapon, procurement_location, channel, earmarked_year, announcement_date)",
  "url": "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
@@ -883,8 +883,8 @@
    "kiel_name": "United Kingdom",
    "by_channel": {
     "stock": 7.3769,
-    "proc": 6.8306,
-    "ua": 1.2806,
+    "proc": 4.9691,
+    "ua": 0.4099,
     "purl": 0.6205
    },
    "asof": {
@@ -922,26 +922,26 @@
      "proc_delivered_share": 0.3367
     },
     "2025": {
-     "allocated": 14.2014,
+     "allocated": 12.3399,
      "undelivered": {
-      "low": 3.3408,
-      "central": 4.6108,
-      "high": 5.7026
+      "low": 2.1842,
+      "central": 3.2192,
+      "high": 4.1544
      },
-     "proc_allocated": 7.2406,
-     "proc_delivered": 3.043,
-     "proc_delivered_share": 0.4203
+     "proc_allocated": 5.379,
+     "proc_delivered": 2.573,
+     "proc_delivered_share": 0.4783
     },
     "2026": {
-     "allocated": 16.1086,
+     "allocated": 13.3763,
      "undelivered": {
-      "low": 1.7861,
-      "central": 3.5301,
-      "high": 5.4097
+      "low": 0.7308,
+      "central": 1.857,
+      "high": 3.3542
      },
-     "proc_allocated": 8.1112,
-     "proc_delivered": 4.73,
-     "proc_delivered_share": 0.5831
+     "proc_allocated": 5.379,
+     "proc_delivered": 3.6708,
+     "proc_delivered_share": 0.6824
     }
    }
   },
