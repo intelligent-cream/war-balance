@@ -3545,10 +3545,13 @@ const mBar = c => v => scaled(c, v, state.measure) ?? 0;
 // Round 25 (owner, 22 October 2026: "What makes up the number" in two sections, no + or − signs): a row says its
 // direction in words (the "kept" label) and by its section; the value is an amount without a sign; the bar grows from the
 // section's left edge in its colour, with the likely range as before (ax: an axis of amounts toward that side)
-function partRow(c, p, ax) {
+// secSign (round 28, owner: "should be a negative on the balance sheet ... not as clear as a − would"): in a section,
+// each row says whether it adds to the section's headline (+) or takes away from it (−), like a balance sheet
+function partRow(c, p, ax, secSign) {
   const g = mBar(c), id = "part-" + p.k, s = p.v >= 0 ? 1 : -1;
   const lo = p.lo == null ? null : s > 0 ? p.lo : -p.hi, hi = p.hi == null ? null : s > 0 ? p.hi : -p.lo;
-  const amt = fmtMeasure(c, Math.abs(p.v), state.measure, false, true), sec = state.measure === "gdp" ? eur(Math.abs(p.v)) : ofGdp(c, p.v);
+  const sg = secSign ? (s === secSign ? "+" : "−") : "";
+  const amt = sg + fmtMeasure(c, Math.abs(p.v), state.measure, false, true), sec = state.measure === "gdp" ? eur(Math.abs(p.v)) : ofGdp(c, p.v);
   return `<details class="part" data-part="${p.k}"${panelOpen.has(id) ? " open" : ""}><summary><span class="nm">${plainName(p, c)}${chip(p.cert)}</span>
     <span class="pv">${amt}<small>${sec}</small></span>
     <span class="pbar" aria-hidden="true">${barHtml(ax, g(Math.abs(p.v)), partCol(p), lo == null ? null : g(lo), hi == null ? null : g(hi))}</span></summary>${methodCard(c, p)}</details>`;
@@ -3776,7 +3779,8 @@ const PARTS_SHOWN = 5;   // per section (round 25)
 // Round 26 (the owner, 22 October 2026, Moldova: "the breakdown doesn't seem to match the numbers at the top"): the parts
 // follow the tiles exactly. One section per tile (support for Ukraine, trade with Russia, Russian money frozen), each
 // with the tile's own words and amount as its subtotal; inside, rows by size, each saying its direction in words and
-// colour (blue toward Ukraine, orange toward Russia, grey for money flowing back within support), with no + or − sign
+// colour (blue toward Ukraine, orange toward Russia, grey for money flowing back within support); round 28: and a + or −
+// saying whether it adds to the section's headline or takes away from it
 function partSections(c, k) {
   const parts = k.shiftParts.concat(k.backShift).filter(p => Math.abs(p.v) >= 1e-9);
   const bySize = l => l.sort((a, b) => Math.abs(b.v) - Math.abs(a.v));
@@ -3809,11 +3813,12 @@ function firstLayer(c, k, y) {
     const [pre, post] = verbAround(q2(sec.q), sec.tile);
     const side = sec.q === "rus" && sec.tile < 0 ? "ru" : sec.q === "ua" && sec.tile < 0 ? "mid" : "ua";
     const top = sec.parts.filter(big).slice(0, PARTS_SHOWN), rest = sec.parts.filter(p => !top.includes(p)), id = "allparts-" + sec.q;
+    const ss = sec.tile < 0 ? -1 : 1;
     const head = `${pre} ${amt(sec.tile)}${post ? " " + post : ""}`;
     return `<div class="psec psec-${side}" role="group" aria-label="${esc(head)}">
       <p class="psec-h"><span>${pre}</span><b>${amt(sec.tile)}${post ? ` <small>${post}</small>` : ""}</b></p>
-      <div class="parts">${top.map(p => partRow(c, p, ax)).join("")}</div>
-      ${rest.length ? `<details class="allparts" id="${id}"${panelOpen.has(id) ? " open" : ""}><summary>${t(rest.length === 1 ? "Show the other part" : "Show the other {n} parts", { n: rest.length })}</summary><div class="parts">${rest.map(p => partRow(c, p, ax)).join("")}</div></details>` : ""}
+      <div class="parts">${top.map(p => partRow(c, p, ax, ss)).join("")}</div>
+      ${rest.length ? `<details class="allparts" id="${id}"${panelOpen.has(id) ? " open" : ""}><summary>${t(rest.length === 1 ? "Show the other part" : "Show the other {n} parts", { n: rest.length })}</summary><div class="parts">${rest.map(p => partRow(c, p, ax, ss)).join("")}</div></details>` : ""}
       ${sec.q === "rus" ? noDataLine(c) : ""}
     </div>`;
   };
