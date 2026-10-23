@@ -7,6 +7,8 @@
 // direction"), which way each of those leans, and the countries ranked in the Ranking view of each headline
 // number.
 //
+// Round 33: and the tag filters only pick countries (5).
+//
 // Run after build_data.py:  node pipeline/browser_check.mjs      (check_data.py runs it too, check 32)
 // Needs Node 18+ and Playwright (npm i -g playwright, or PLAYWRIGHT_CHROMIUM=/path/to/chromium). Exit code 1 on a mismatch.
 
@@ -202,12 +204,47 @@ if (r25.blr[0] !== "party") problems.push(`Belarus's first tag is not "party": $
 if (r25.prk[0] !== "party") problems.push(`North Korea's first tag is not "party": ${r25.prk.join(", ")}`);
 if (r25.signs.length) problems.push(`wrong signs in the parts sections: ${r25.signs.slice(0, 3).join(" || ")}`);
 
+// 5. round 33 (owner, 23 October 2026: "remove the highlights and use the tags in the filter section"): the story tags
+// are filters in Filters, and picking them only picks countries. With each tag alone, and with two and three combined,
+// every country's numbers are the same as with none, the Ranking lists exactly the ranked countries that have all the
+// tags picked, each with the value it shows unfiltered, and the chips count the countries whose story tags include them
+await ready("#view=rank");
+const r33 = await page.evaluate(() => {
+  const snap = () => JSON.stringify(Object.values(DATA).filter(c => c.gdp).map(c => { const k = calc(c, state.year); return [c.iso3, k.shift, k.uaBal, k.rusBal]; }));
+  const rankVals = () => Object.fromEntries([...document.querySelectorAll("#view g.row[data-n]")].map(g => [g.dataset.n, g.querySelector("text:last-of-type").textContent]));
+  const before = snap(), all = rankVals(), bad = [];
+  const I = tagIndex(), keys = Object.keys(TAG_CAT).filter(k => (I.by[k] || []).length);
+  // the chips' counts: the countries whose story tags give that filter key
+  for (const k of keys) {
+    const n = Object.values(DATA).filter(c => c.gdp && inFilter(c) && storyTags(c, calc(c, I.y), I.y).some(f => tagKey(f) === k)).length;
+    if (n !== I.by[k].length) bad.push(`${k}: chip counts ${I.by[k].length}, story tags ${n}`);
+  }
+  const combos = [...keys.map(k => [k]), ["windfall", "discount"], ["windfall", "discount", "bought_more"]];
+  for (const tg of combos) {
+    setTags(tg);
+    const set = tagSet(), got = rankVals();
+    if (!set) { bad.push(`${tg}: no countries picked`); continue; }
+    for (const [n, v] of Object.entries(got)) {
+      if (!set.has(+n) && !set.has(n)) bad.push(`${tg}: ${DATA[n].iso3} ranked but not tagged`);
+      if (all[n] !== v) bad.push(`${tg}: ${DATA[n].iso3} shows ${v}, unfiltered ${all[n]}`);
+    }
+    for (const n of Object.keys(all)) if ((set.has(+n) || set.has(n)) && !(n in got)) bad.push(`${tg}: ${DATA[n].iso3} tagged but not ranked`);
+    if (!document.querySelector("#view .rk-tags")) bad.push(`${tg}: no note above the Ranking`);
+    if (snap() !== before) bad.push(`${tg}: numbers changed`);
+  }
+  setTags([]);
+  if (snap() !== before) bad.push("numbers changed after clearing the tags");
+  return { n: keys.length, combos: combos.length, bad };
+});
+if (r33.bad.length) problems.push(`tag filters: ${r33.bad.slice(0, 5).join("; ")}`);
+
 if (errors.length) problems.push("page errors: " + errors.slice(0, 3).join(" | "));
 await browser.close();
 server.close();
 
 const unc = q => Object.values(node.countries).filter(c => c.gdp >= MIN_GDP && c[q + "Unc"]).length;
 console.log(`parts sections match the tiles and make the net everywhere; Belarus tags ${r25.blr.slice(0, 3).join(", ")}, North Korea ${r25.prk.slice(0, 3).join(", ")}; ${r25.noTags.length} countries with a material net and no tag`);
+console.log(`tag filters: ${r33.n} with countries, ${r33.combos} picks checked; numbers and Ranking values unchanged`);
 console.log(`browser check: ${Object.keys(inPage).length} economies; ranked net ${ranked.net}, support ${ranked.support}, payments ${ranked.payments}; direction uncertain (GDP >= EUR 5bn) ua ${unc("ua")}, rus ${unc("rus")}, net ${unc("net")}; small economies' colours: ${nSmall} checked (${nFaded} faded)`);
 if (problems.length) {
   console.log(`MISMATCH: ${problems.length} (bands ${nBand}, flags ${nFlag}, grades ${nGrade})`);

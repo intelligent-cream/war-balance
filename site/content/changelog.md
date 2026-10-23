@@ -4,6 +4,79 @@ Every update to the map, newest first: what changed and every decision behind it
 
 The detailed research log, with every file, is [`research/2026-10/README.md`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/README.md).
 
+<h2 id="cl-r37">Round 37: the trade tile without the two "who kept what" lines <span class="cl-date">23 October</span></h2>
+<!-- flows: paid windfall laund sold -->
+
+**Opening the trade tile no longer shows "Russia kept €X less" and "<country> kept €X less from selling to Russia" with
+their ranges: the breakdown rows and the tags already say this. No number changed.**
+
+### Decisions
+
+- **No separate "who kept what" lines.** Raised by the owner (23 October 2026): "either tags or breakdown, we don't need
+  these sections." Effect: display only.
+
+<h2 id="cl-r36">Round 36: Russian money frozen without a tile of its own <span class="cl-date">23 October</span></h2>
+<!-- flows: frozen -->
+
+**The small "Froze Russian money" tile under the two main tiles is gone. The frozen money is still in the net: as the last
+section of "What makes up the number", in the closing sum, and as the "Froze Russian money" tag where it matters. No
+number changed.**
+
+### Decisions
+
+- **No tile for Russian money frozen.** Raised by the owner (23 October 2026): "I never get why [it] is explicitly
+  mentioned and not just in the breakdown or tags." For most countries it is a few hundredths of a percent of GDP;
+  only a few hold frozen Russian reserves. Effect: display only.
+
+<h2 id="cl-r35">Round 35: a calmer country panel <span class="cl-date">23 October</span></h2>
+<!-- flows: -->
+
+**The country panel shows less at once; nothing is removed, only folded one level deeper. No number changed.**
+
+### What changed
+
+1. The two lines of "Russia's earnings from trade" (what Russia kept, what the country kept from selling to Russia)
+   are inside the trade tile: tap the tile to see them.
+2. Three story tags are shown, the rest behind "+n more"; "How the tags are set" is inside each tag and in "+n more".
+3. "Backed by n sources" is one quiet line under the headline number.
+4. "What makes up the number" shows the three largest parts per section; the others are under "Show the other n
+   parts". How to read the bars sits behind a small ⓘ next to the heading.
+5. More space between blocks and lighter dividers. Tags became a fold in Filters (round 34).
+
+### Decisions
+
+- **A calmer panel.** Raised by the owner (23 October 2026): "the country view is now again quite busy with
+  uncollapsed parts, it should be more calm". Effect: display only.
+
+<h2 id="cl-r33">Round 33: tags replace Highlights <span class="cl-date">23 October</span></h2>
+<!-- flows: -->
+
+**The Highlights are gone; the story tags are filters in Filters. No number changed.**
+
+### What changed
+
+1. The Highlights button and its list are gone from the map.
+2. Filters has a new **Tags** section, after "The map shows" and Measure: every story tag a country can have (the same
+   rules as under each country's numbers, in [How the tags are set](#view=how&sec=m-tags)), grouped as "Why trade with
+   Russia changed", "What it did" and "How sure", each with how many countries have it. A tag that comes in two
+   versions is two filters (bought or sold much more or much less, top-10 or major aid giver, orange mostly from fuel
+   buying or from sales).
+3. Picking a tag dims the countries without it and opens a card on the map: what the tag means, how many countries
+   have it, the largest five (tap one to open it) and a link to how the tags are set. Up to three tags combine: the map
+   then shows the countries that have all of them, with their number and a "Clear tags" button.
+4. The tags picked are in the address (`#tags=windfall,discount`), so a view can be shared, and they narrow the
+   Ranking too, with a note above it. Old Highlight links open their nearest tag (Hungary's price spike: War-time fuel
+   prices; Who armed Russia: Sent weapons or troops to Russia), or the plain map where there is none.
+5. All six languages are updated; the Highlights' text is removed from them.
+
+### Decisions
+
+- **Tags instead of Highlights.** The owner, 23 October 2026: "remove the highlights and use the tags in the filter
+  section to get similar interesting insights but based on tags". The Highlights were a fixed set of stories written by
+  hand; the tags are worked out from the data for every country by published rules, so the same insights (who bought
+  more, who armed Russia, the war-time price spike, the top supporters, the gas Russia cut off) now come from one
+  source, and can be combined. Effect: none on the numbers; tags only pick countries.
+
 <h2 id="cl-r32">Round 32: renamed to War Balance <span class="cl-date">23 October</span></h2>
 <!-- flows: -->
 
