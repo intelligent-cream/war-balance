@@ -1281,7 +1281,7 @@ const UA_PARTS = new Set(["aid", "euaid", "ref", "buy", "undisc", "priv", "multi
 // Round 16 (review 5, H4; approved by the owner): the return Russia lost on its frozen reserves is not a payment. It is
 // its own line, "Russian money frozen", added to the net only: not in support for Ukraine, not in the change in payments
 // to Russia (its map, ranking and world total); site/content/method/russia-state-and-companies.md
-const OWN_LINE = new Set(["frozen"]);
+const OWN_LINE = new Set(["frozen", "frozen_priv"]);   // round 39: private assets frozen abroad too
 // Round 24b (owner, 22 October 2026: "party to war, yes, for sure"): Belarus is on Russia's side of the war. Russia
 // invaded Ukraine from its territory in February 2022 (UN General Assembly A/RES/ES-11/1 deplores its involvement; EU
 // Council Regulation 2022/355). Its money numbers are worked out and shown in its panel, but it has its own category on
@@ -1919,7 +1919,7 @@ const PART_DOC = {
   hidden: "trade.md#gold-and-hidden-channels", undisc: "aid-refugees-military.md#undisclosed-aid-and-private-donations", priv: "aid-refugees-military.md#undisclosed-aid-and-private-donations",
   statefin: "russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia", rusarms: "russia-state-and-companies.md#weapons-bought-from-russia",
   exits: "russia-state-and-companies.md#companies-leaving-russia", rusfirms: "russia-state-and-companies.md#russian-owned-companies-abroad",
-  frozen: "russia-state-and-companies.md#frozen-central-bank-reserves", seized: "russia-state-and-companies.md#assets-seized-by-russia", remit: "trade.md#remittances-and-relocants",
+  frozen: "russia-state-and-companies.md#frozen-central-bank-reserves", frozen_priv: "russia-state-and-companies.md#frozen-central-bank-reserves", seized: "russia-state-and-companies.md#assets-seized-by-russia", remit: "trade.md#remittances-and-relocants",
   agents: "trade.md#payment-agents", multilat: "loans.md#new-lending-by-the-imf-and-world-bank",
   own: "aid-refugees-military.md#flowback", refsp: "aid-refugees-military.md#refugee-spending-flowing-back", purl: "aid-refugees-military.md#flowback", sell: "aid-refugees-military.md#flowback", arms: "aid-refugees-military.md#arms-ukraine-bought-abroad", othsp: "aid-refugees-military.md#flowback",
   prem: "energy-and-laundered-oil.md#energy-premium-and-oil-discount", disc: "energy-and-laundered-oil.md#energy-premium-and-oil-discount", margin: "trade.md#profit-not-revenue", tariff: "overview.md#the-cost-view",
@@ -1950,7 +1950,7 @@ const FLOWS = [
   {"id": "companytax", "name": "Company taxes in Russia", "what": "Taxes that foreign-owned companies still pay in Russia: profit tax plus half of other taxes.", "parts": ["tax"], "method": "services-shipping-companies.md#company-taxes", "files": ["companies-notes.md", "gaps/companies_all-notes.md", "gaps/company_taxes_r6-notes.md", "gaps/round4a-notes.md", "gaps/trend2-notes.md"], "src": ["companies"]},
   {"id": "exits", "name": "Companies leaving Russia (not in the totals)", "what": "The forced discount and the exit fee Russia took from companies that sold their Russian business: not in the totals, shown as a marker.", "parts": [], "costParts": ["exits"], "method": "russia-state-and-companies.md#companies-leaving-russia", "files": ["gaps/company_flows-notes.md"]},
   {"id": "rusfirms", "name": "Russian-owned companies abroad", "what": "Profits that Russian-owned companies in this country send to their Russian owners.", "parts": ["rusfirms"], "method": "russia-state-and-companies.md#russian-owned-companies-abroad", "files": ["gaps/company_flows-notes.md", "gaps/russian_owned_r10-notes.md"]},
-  {"id": "frozen", "name": "Russian money frozen", "what": "The return Russia lost on its central-bank reserves frozen in this country. Not a payment: on its own line, added to the net only, not to Russia's earnings from trade.", "parts": ["frozen"], "method": "russia-state-and-companies.md#frozen-central-bank-reserves", "files": ["gaps/frozen_assets-notes.md"]},
+  {"id": "frozen", "name": "Russian money frozen", "what": "The return Russia lost on its central-bank reserves and on Russian private assets frozen in this country. Not a payment: on its own line, added to the net only, not to Russia's earnings from trade.", "parts": ["frozen", "frozen_priv"], "method": "russia-state-and-companies.md#frozen-central-bank-reserves", "files": ["gaps/frozen_assets-notes.md", "gaps/private_frozen_r39-notes.md"]},
   {"id": "seized", "name": "Assets seized by Russia (not in the totals)", "what": "Company assets Russia seized (temporary management by decree, expropriation, court seizures, leased aircraft kept), at the owners' write-downs, by the company's home country: not in the totals, shown as a marker.", "parts": [], "costParts": ["seized"], "method": "russia-state-and-companies.md#assets-seized-by-russia", "files": ["gaps/company_flows-notes.md"]},
   {"id": "remit", "name": "Remittances from Russia (marker)", "what": "Shown as a marker, not in the totals: the change in what migrants working in Russia sent home, against the level expected without the war.", "parts": [], "method": "trade.md#remittances-and-relocants", "files": ["gaps/remittances-notes.md", "gaps/remittances_r13-notes.md", "gaps/relocants-notes.md", "gaps/assumptions_r11_people-notes.md"], "src": ["remittances", "assumptions_r11_people"]},
   {"id": "statefin", "name": "Rosatom and Russian state loans", "what": "Payments for Russian nuclear projects and repayments of Russian state loans.", "parts": ["statefin"], "method": "russia-state-and-companies.md#nuclear-projects-and-state-loans-from-russia", "files": ["gaps/russia_state_finance-notes.md"]},
@@ -1981,7 +1981,7 @@ const PART_NAMES = {
   ship: ["Income from shipping and insuring Russian oil", "Less income from shipping Russian oil"], hidden: ["Gold and hidden payments to Russia"],
   undisc: ["Undisclosed military aid (estimate)"], priv: ["Private donations"], statefin: ["Nuclear projects and state loans from Russia"],
   rusarms: ["Weapons bought from Russia"], exits: ["Forced sales: discount and exit fee taken by Russia"], rusfirms: ["Profits sent to Russia by Russian-owned companies here"],
-  frozen: ["Russian money frozen (return Russia lost on its reserves)"], seized: ["Seized by Russia (companies' assets)"],
+  frozen: ["Russian money frozen (return Russia lost on its reserves)"], frozen_priv: ["Russian money frozen (return lost on private Russian assets)"], seized: ["Seized by Russia (companies' assets)"],
   agents: ["Fees earned settling Russia's trade (payment agents)"], multilat: ["Share of new IMF, World Bank and EBRD lending"],
   own: ["Own aid spent in its own economy (incl. replacing donated stock)"], purl: ["Other countries' aid spent here (incl. their stock replacement)"],
   sell: ["Extra sales to Ukraine above the pre-war level"], arms: ["Arms Ukraine bought here"], othsp: ["Aid spent here on energy, relief and rebuilding"],
@@ -2021,7 +2021,7 @@ const FLOW_GROUPS = [
   // and weapons sent to Russia (given and sold) count on both; each is listed once, where most of it is
   ["Russia's earnings from trade: what Russia kept", ["paid", "windfall", "laund", "services", "companytax", "rusfirms", "statefin", "rusarms", "gold"]],
   ["Russia's earnings from trade: what the country kept from selling to Russia", ["sold", "shipping", "agents", "mil"]],
-  ["Russian money frozen", ["frozen"]],
+  ["Russian money frozen", ["frozen", "frozen_priv"]],
   ["Not in the totals", ["energy", "exits", "seized", "remit", "markers"]],
 ];
 // every flow is in exactly one group (a flow added later without a group goes to the last one)
@@ -3240,7 +3240,7 @@ const SITE_URL = "https://warbalance.org/", OLD_URLS = ["https://intelligent-cre
 // more than half of the number, in either direction, it is named with its amount ("mostly the 2022 war-time price spike
 // (€9.9bn of €11.6bn; its volumes barely changed)"), and so is gas Russia cut off itself when it is at least 40% of it
 const EARNED_PARTS = new Set(["mil", "sold", "svcsold", "ship", "agents"]);
-const LESS_MOSTLY = { frozen: "mostly the return Russia lost on its frozen reserves", laund: "mostly less Russian crude in fuel bought from refiners elsewhere",
+const LESS_MOSTLY = { frozen: "mostly the return Russia lost on its frozen reserves", frozen_priv: "mostly the return lost on frozen Russian private assets", laund: "mostly less Russian crude in fuel bought from refiners elsewhere",
   windfall: "mostly paying Russia less than no-war prices", tax: "mostly less tax paid in Russia by companies", sold: "mostly sales to Russia given up",
   svcpaid: "mostly less paid for Russian services", svcsold: "mostly services to Russia given up", ship: "mostly less income from shipping Russian oil",
   hidden: "mostly less gold and hidden payments", rusarms: "mostly fewer Russian weapons bought", statefin: "mostly fewer payments for Russian nuclear projects and loans",
@@ -3251,7 +3251,7 @@ const MORE_MOSTLY = { paid: "mostly more bought from Russia", windfall: "mostly 
   mil: "mostly weapons and troops sent to Russia", rusarms: "mostly more Russian weapons bought", statefin: "mostly payments for Russian nuclear projects and loans",
   rusfirms: "mostly profits sent to Russian owners", agents: "mostly fees for settling Russia's trade" };
 // the net's largest part, named the same way (support parts too)
-const NET_MOSTLY = { frozen: "mostly the return Russia lost on its frozen reserves", aid: "mostly aid to Ukraine", euaid: "mostly its share of EU-level aid", ref: "mostly hosting refugees", undisc: "mostly undisclosed military aid", multilat: "mostly its share of IMF and World Bank lending" };
+const NET_MOSTLY = { frozen: "mostly the return Russia lost on its frozen reserves", frozen_priv: "mostly the return lost on frozen Russian private assets", aid: "mostly aid to Ukraine", euaid: "mostly its share of EU-level aid", ref: "mostly hosting refugees", undisc: "mostly undisclosed military aid", multilat: "mostly its share of IMF and World Bank lending" };
 // the one part that is more than half of a total (same sign), or null
 function mainPart(parts, total) {
   if (!total) return null;
@@ -3468,7 +3468,7 @@ Object.entries({
 function frozenLine(c, k) {
   if (Math.abs(k.frozen) < 0.0005) return "";
   const p = k.frozenParts[0];
-  return `<p class="note frozen-line"><b>${t("Russian money frozen")}</b>${p ? howLink("frozen") + flowLink("frozen") + chip(p.cert) + ref(p.src) : ""}: ${t("{pct} of a year's GDP ({eur}; likely {lo} to {hi}): the return Russia lost on its central-bank reserves frozen here. Not a payment, so it is on its own line, added to the net only.", { pct: fmtMeasure(c, Math.abs(k.frozen), "gdp"), eur: eur(Math.abs(k.frozen)), lo: eur(Math.abs(k.frozenLo)), hi: eur(Math.abs(k.frozenHi)) })}</p>`;
+  return `<p class="note frozen-line"><b>${t("Russian money frozen")}</b>${p ? howLink("frozen") + flowLink("frozen") + chip(p.cert) + ref(p.src) : ""}: ${t("{pct} of a year's GDP ({eur}; likely {lo} to {hi}): the return Russia lost on its central-bank reserves and on Russian private assets frozen here. Not a payment, so it is on its own line, added to the net only.", { pct: fmtMeasure(c, Math.abs(k.frozen), "gdp"), eur: eur(Math.abs(k.frozen)), lo: eur(Math.abs(k.frozenLo)), hi: eur(Math.abs(k.frozenHi)) })}</p>`;
 }
 // sales to Russia of goods its weapons need (Common High Priority List): a marker, not in the totals
 function chplNote(c) {
@@ -3612,7 +3612,7 @@ const PLAIN = {
   svcsold: v => (v >= 0 ? "{c} kept less from services sold to Russia" : "{c} kept more from services sold to Russia"),
   ship: v => (v >= 0 ? "{c} kept less from shipping Russian oil" : "{c} kept more from shipping Russian oil"),
   hidden: v => (v >= 0 ? "Russia kept less from gold and hidden payments" : "Russia kept more from gold and hidden payments"),
-  undisc: "Undisclosed military aid", priv: "Private donations", frozen: "Russia lost returns on its frozen money",
+  undisc: "Undisclosed military aid", priv: "Private donations", frozen: "Russia lost returns on its frozen money", frozen_priv: "Russian owners lost returns on assets frozen here",
   multilat: "Its share of IMF and World Bank loans",
   rusfirms: v => (v >= 0 ? "Russian owners kept less from their firms here" : "Russian owners kept more from their firms here"),
   statefin: v => (v >= 0 ? "Russia kept less from its nuclear projects and loans" : "Russia kept more from its nuclear projects and loans"),
@@ -3895,9 +3895,9 @@ function leadLine(c, k) {
   const kind = Math.abs(ua) / tot >= 0.35 && Math.abs(ru) / tot >= 0.35 && Math.sign(ua) === Math.sign(ru) ? "About half support for Ukraine, half less kept by Russia from trade."
     : Math.abs(ru) >= Math.abs(ua) ? (ru >= 0 ? "Mostly less kept by Russia from trade." : "Mostly toward Russia.") : "Mostly support for Ukraine.";
   const L = leadParts(c, k);
-  if (L.cause && kind === "Mostly toward Russia.") return t("Mostly toward Russia ({cause}).", { cause: L.cause }) + (L.flat ? " " + t("Its volumes barely changed: it is the price.") : "") + (L.fz ? " " + t("Much of the net is Russian money frozen here: the return Russia lost on its reserves, not a payment.") : "");
+  if (L.cause && kind === "Mostly toward Russia.") return t("Mostly toward Russia ({cause}).", { cause: L.cause }) + (L.flat ? " " + t("Its volumes barely changed: it is the price.") : "") + (L.fz ? " " + t("Much of the net is Russian money frozen here: the return Russia lost on its reserves and private assets, not a payment.") : "");
   const why = L.cause ? t("Toward Russia: {cause}.", { cause: L.cause }) : L.why ? t(L.why) : "";
-  return t(kind) + (why ? " " + why : "") + (L.flat ? " " + t("Its volumes barely changed: it is the price.") : "") + (L.fz ? " " + t("Much of the net is Russian money frozen here: the return Russia lost on its reserves, not a payment.") : "");
+  return t(kind) + (why ? " " + why : "") + (L.flat ? " " + t("Its volumes barely changed: it is the price.") : "") + (L.fz ? " " + t("Much of the net is Russian money frozen here: the return Russia lost on its reserves and private assets, not a payment.") : "");
 }
 // what the lead says beyond the numbers, as data: the gas Russia cut off, sanctions or own choice, the cause toward
 // Russia, "it is the price", and Russian money frozen
@@ -4010,7 +4010,7 @@ function storyTags(c, k, y) {
   }
   const refN = c.people && c.people.refugees ? c.people.refugees.count : 0, per1k = c.pop ? refN / (c.pop * 1000) : 0;
   if (per1k >= 10 && !PARTY_TO_WAR.has(c.iso3)) add(64, "refugees", ICON.home, t("Hosts many refugees"), t("{n} refugees from Ukraine, {r} per 1,000 residents.", { n: num(refN), r: num(per1k, 0) }) + ref(c.people.refugees.src || ["refugees"]));
-  if (Math.abs(k.frozen) >= MAT || L.fz) add(62, "frozen", ICON.ice, t("Froze Russian money"), (L.fz ? t("Much of the net is Russian money frozen here: the return Russia lost on its reserves, not a payment.") + " " : "") + frozenLine(c, k).replace(/^<p[^>]*>|<\/p>$/g, ""));
+  if (Math.abs(k.frozen) >= MAT || L.fz) add(62, "frozen", ICON.ice, t("Froze Russian money"), (L.fz ? t("Much of the net is Russian money frozen here: the return Russia lost on its reserves and private assets, not a payment.") + " " : "") + frozenLine(c, k).replace(/^<p[^>]*>|<\/p>$/g, ""));
   if (isOrange(c, k, y) && !PARTY_TO_WAR.has(c.iso3)) {
     const cav = orangeCaveat(c, k), armed = armedMostly(k), sales = !armed && cav === t("Orange here is mostly earnings from sales to Russia, not siding with Russia.");
     // round 26 (tag audit): "not policy" was a claim the numbers do not back (keeping on buying can be a choice): the tag
@@ -4536,7 +4536,7 @@ const COUNTED = [
   { id: "svc", side: "rus", label: "Services and tourism", keys: ["svcpaid", "svcsold"] }, { id: "tax", side: "rus", label: "Company taxes in Russia", keys: ["tax"] },
   { id: "mil", side: "rus", label: "Weapons and troops sent to Russia", keys: ["mil"] },
   { id: "other", side: "rus", label: "Other: shipping, gold, nuclear, arms, Russian-owned firms, payment agents", keys: ["ship", "hidden", "statefin", "rusarms", "rusfirms", "agents"] },
-  { id: "frozen", side: "own", label: "Russian money frozen (in the net only)", keys: ["frozen"] },
+  { id: "frozen", side: "own", label: "Russian money frozen (in the net only)", keys: ["frozen", "frozen_priv"] },
 ];
 const isOn = gp => (gp.netBack ? state.netBack : !gp.keys.some(k => OFF.has(k)));
 function setOn(gp, on) {

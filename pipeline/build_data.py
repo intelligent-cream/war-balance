@@ -1569,6 +1569,7 @@ def build() -> dict:
     apply_russian_arms(countries, src)
     apply_payment_agents(countries, src)
     apply_frozen_reserves(countries, src)
+    apply_frozen_private(countries, src)
     apply_remittances(countries, src)
     apply_chpl(countries, src)
     apply_value_kept(countries, src)
@@ -1875,7 +1876,7 @@ SOURCE_TYPE = {
     "ua_trade_cf": "ours", "cf_bands": "ours", "power_of_siberia": "press", "weapons_value": "report",
     "state_finance": "data", "company_flows": "report", "russian_owned_r10": "report", "seizures": "report",
     "refugees_net": "data", "co_belligerent": "report", "loans_value": "report", "money_ledger": "data",
-    "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "remittances": "data",
+    "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "remittances": "data",
     "chpl": "data", "value_kept": "report", "net_gain_sellers": "data", "military_payment": "press",
     "net_gain_russia": "data", "net_gain_ukraine": "data", "dangote": "press", "hormuz": "report",
     "assumptions_r11_gain": "notes", "assumptions_r11_rules": "notes", "assumptions_r11_hubs": "notes",
@@ -3857,7 +3858,7 @@ def apply_frozen_reserves(countries: dict[str, dict], src: Sources) -> None:
     (Luxembourg): a third to the host, two thirds to all EU members; Belgium's tax on that income, already in its aid,
     is taken off first. The low end allows for Russia having spent part of the reserves without a freeze (x0.8; the
     notes guess 10-30%, frozen_assets-notes.md; judgement, site/content/changelog.md).
-    Private sanctioned assets are left out (private money, much of it earning nothing)."""
+    Private assets are their own part since round 39 (apply_frozen_private)."""
     fa = load(GAPS / "frozen_assets.json")
     sid = src.add(
         "frozen_reserves",
@@ -3899,6 +3900,59 @@ def apply_frozen_reserves(countries: dict[str, dict], src: Sources) -> None:
             countries[iso3],
             "frozen",
             "Russian money frozen (return Russia lost on its reserves)",
+            out,
+            cert.get(iso3, "C"),
+            sid,
+        )
+
+
+def apply_frozen_private(countries: dict[str, dict], src: Sources) -> None:
+    """Round 39 (owner: "fix it"): the return Russian private owners lost on assets frozen abroad (private_frozen_r39.json):
+    sanctioned people's and firms' accounts and holdings, and Russian investors' securities blocked at Euroclear and
+    Clearstream through the sanctioned NSD. The same rule as the reserves: money Russia did not get, on the "Russian money
+    frozen" line, added to the net only; the low end x0.8; the depository part (csd) a third to its host and two thirds
+    to EU members by their share of EU-level aid (the NSD listing is an EU decision), national freezes to the holding
+    country. Every national figure used excludes the central bank, so nothing is counted twice with the reserves; the EU
+    block that is not split by country is left out. Type-C balances blocked in Russia are not here (a marker at most)."""
+    pf = load(GAPS / "private_frozen_r39.json")
+    sid = src.add(
+        "frozen_private",
+        "Return lost on Russian private assets frozen abroad: EU Commission, Belgian Treasury, OFSI, Swiss SECO, national authorities, Bank of Russia statements on securities blocked at Euroclear and Clearstream",
+        "https://finance.ec.europa.eu/eu-and-world/sanctions-restrictive-measures/sanctions-adopted-following-russias-military-aggression-against-ukraine_en",
+        pf.get("generated"),
+        "per holding country; the depository part shared with all EU members; see research/2026-10/gaps/private_frozen_r39-notes.md",
+    )
+    bands = ("low", "central", "high")
+    credit = {i: {b: [0.0] * len(YEARS) for b in bands} for i in countries}
+    eu = {i: c["aid"]["eu_share"] for i, c in countries.items() if i in EU27 and (c.get("aid") or {}).get("eu_share")}
+    eu_sum = sum(eu.values()) or 1
+    cert: dict[str, str] = {}
+    worse = lambda a, b: max(a, b)  # noqa: E731  (letters: "D" is the weakest)
+    for d in pf["holdings"].values():
+        iso3 = d["iso3"]
+        if iso3 not in countries:
+            continue
+        letter = (d.get("certainty") or "C")[0]
+        for i, y in enumerate(YEARS):
+            r = d["return_lost_eur_bn"].get(str(y)) or {}
+            for b in bands:
+                v = r.get(b, 0.0) * (0.8 if b == "low" else 1.0)
+                if d.get("component") == "csd":
+                    credit[iso3][b][i] += v * HOST_SHARE
+                    for j, sh in eu.items():
+                        credit[j][b][i] += v * (1 - HOST_SHARE) * sh / eu_sum
+                        cert[j] = worse(cert.get(j, "C"), letter) if j != iso3 else cert.get(j, letter)
+                else:
+                    credit[iso3][b][i] += v
+        cert[iso3] = worse(cert.get(iso3, letter), letter)
+    for iso3, cr in credit.items():
+        if not any(cr["high"]):
+            continue
+        out = {"low": [-v for v in cr["high"]], "central": [-v for v in cr["central"]], "high": [-v for v in cr["low"]]}
+        add_extra(
+            countries[iso3],
+            "frozen_priv",
+            "Russian money frozen (return lost on private Russian assets)",
             out,
             cert.get(iso3, "C"),
             sid,
