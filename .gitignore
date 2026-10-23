@@ -7,6 +7,9 @@ site/node_modules/
 site/dist/
 site/share/
 site/c/
+# generated with the share cards (pipeline/share_cards.mjs), like site/c/
+site/robots.txt
+site/sitemap.xml
 node_modules/
 
 # raw downloads: small open-data API responses are kept; large files and third-party documents (reports, press

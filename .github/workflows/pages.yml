@@ -30,7 +30,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      # preview images and a page per country, so a shared link shows that country's number
+      # preview images and a page per country, so a shared link shows that country's number; also robots.txt and
+      # sitemap.xml (round 30), with the address from pipeline/site_config.json
       - name: Share cards
         run: |
           npm install --no-save playwright@1.48.2
