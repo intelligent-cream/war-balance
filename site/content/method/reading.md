@@ -1,12 +1,32 @@
 # How to read a number
 
-Suppose you open Poland. These are the figures in the current build (2022 to August 2026).
+Germany, 2022 to August 2026, in the current build:
 
-1. **Supported Ukraine with 1.89%<!-- n:POL.ua --> of a year's GDP**, likely 0.38%<!-- n:POL.uaLo --> to 3.09%<!-- n:POL.uaHi -->, certainty C: over 2022 to August 2026, Poland's support for Ukraine equals a little under a fiftieth of one year's economic output (its average 2022–2024 GDP, about EUR 753bn; so EUR 14.2bn<!-- n:POL.uaEur -->). It is a total for the whole period (about 4.7 years), not a yearly rate: an average year is about 0.4%. It gave EUR 16.0bn<!-- n:POL.uaGave -->: aid of EUR 2.95bn<!-- n:POL.part_aid --> (Kiel Institute, adjusted: Kiel's own figure for Poland is about EUR 9.2bn with loans at their full amount; with donated weapons at market value, loans at their gift to Ukraine and military aid counted when delivered it is EUR 2.95bn), its share of EU-level aid (EUR 2.04bn<!-- n:POL.part_euaid -->), refugee hosting (EUR 10.6bn<!-- n:POL.part_ref -->: what all levels of government spent on refugees from Ukraine, minus Poland's own gain on refugees' work) and private donations. From that, EUR 1.82bn<!-- n:POL.uaBackEur --> is taken off: money that flowed back to its economy from the war effort, including its gain on refugee spending in Poland.
-2. **Cut Russia's earnings from trade by 3.03%<!-- n:POL.rus --> of a year's GDP** (EUR 22.8bn<!-- n:POL.rusEur -->): Russia earned that much less from Poland than without the war, mostly because Poland bought less from Russia, which includes EUR 11.1bn<!-- n:POL.rusCut --> of gas and pipeline oil Russia cut off itself from April 2022 (Poland's gas is measured from volumes, as its customs book the gas under other headings). The fall in payments is measured in volumes, valued at each year's prices and counted at Russia's net gain (EUR 22.3bn<!-- n:POL.part_paid -->); the extra Poland paid for Russian fuel because of war-time prices (EUR 1.8bn) is counted toward Russia. **Earnings means what Russia keeps: taxes and profit above a normal return, not the full price paid; it includes war-time prices.** The panel says who kept what: "Russia kept less" and "Poland kept less from selling to Russia". On charts and in the data a plus sign means toward Ukraine (Russia earned less), a minus sign toward Russia. In "What makes up the number" the parts sit in two sections, toward Russia and toward Ukraine, without signs, and their subtotals make the net.
-3. **Toward Ukraine by 5.00%<!-- n:POL.net --> of a year's GDP** (likely 2.67%<!-- n:POL.netLo --> to 8.12%<!-- n:POL.netHi --> toward Ukraine): the sum of the two, plus Russian money frozen (EUR 0.55bn<!-- n:POL.frozenEur -->, Poland's share of the return Russia lost on reserves frozen in the EU, a line of its own). It adds help given to Ukraine and a cut in Russia's earnings, two different things; it is the default map, always with that warning.
-4. **"Compared with what?"**: for trade, the expected level without the war is predicted by a model tested on past years. For Poland's imports from Russia it is the 2021 level held flat ([counterfactual](#view=how&sec=m-counterfactual)).
-5. **The likely range**: the uncertainty of the data and the models given the method (the price levels, the no-war prediction, the gain shares), calibrated by judgement to about 90%, not measured ([ranges](#view=how&sec=m-ranges)). The panel also shows a **method band** for each number: the cut in Russia's earnings from trade is 1.56%<!-- n:POL.rusBandLo --> to 3.43%<!-- n:POL.rusBandHi --> under other method choices (the windfall in full or left out, loans at the war-time yield, EU refiners' exports, laundered oil, the fuel mix, freight, the normal return, the gas Russia cut off left out, redirected trade, refugees at gross cost or at one common cost per refugee, 2026 at 2025 prices and 2024 GDP). A country whose range or band crosses zero is "leaning" or "uncertain": it stays in the ranking, faded and labelled.
-6. **Certainty C**: each number's letter weighs how much of it rests on primary data (A or B) and on judgement (D), and how wide its range and method band are against the value ([ranges](#view=how&sec=m-ranges-certainty-letters)). A = reported, B = measured estimate, C = modelled estimate, D = rough indication. What Russia took from Poland's companies on their way out (forced discounts and exit fees, EUR 0.2bn) is not in the totals: it is a marker ("Taken by Russia").
-7. **A `*` on a part**: its 2026 value is estimated from the 2025 rate.
-8. **Each part opens its method**: click a part in the panel for its value in words and one sentence of how it is calculated, then "How it works" for that money flow: why it is done this way, every source with its exact tables, the full method and the changes to it. The panel ends with the sources used for Poland's own figures.
+1. **Supported Ukraine with 1.79%<!-- n:DEU.ua -->** of a year's GDP (EUR 74.9bn<!-- n:DEU.uaEur -->): it gave EUR 76.2bn<!-- n:DEU.uaGave --> and earned back 1.30<!-- n:DEU.uaBackEur --> from the war effort.
+2. **Cut Russia's earnings from trade by 1.57%<!-- n:DEU.rus -->** (EUR 65.8bn<!-- n:DEU.rusEur -->): Russia kept that much less from Germany than without the war. EUR 21.9bn<!-- n:DEU.rusCut --> of it is gas Russia cut off itself, which the panel labels.
+3. **Net: toward Ukraine by 3.44%<!-- n:DEU.net -->**, likely 2.38%<!-- n:DEU.netLo --> to 4.84%<!-- n:DEU.netHi -->. The net adds help given and a cut in Russia's earnings, two different things, plus Russian money frozen (EUR 3.2bn<!-- n:DEU.frozenEur -->).
+4. **A total, not a yearly rate**: over about 4.7 years, so an average year is about 0.7%.
+
+The largest parts, EUR bn:
+
+| part | middle (likely range) | direction |
+|---|---|---|
+| Bought less from Russia | 69.9<!-- n:DEU.part_paid --> (29.6<!-- n:DEU.part_paidLo --> to 119.4<!-- n:DEU.part_paidHi -->) | Ukraine |
+| Hosting refugees | 35.5<!-- n:DEU.part_ref --> (32.1<!-- n:DEU.part_refLo --> to 54.2<!-- n:DEU.part_refHi -->) | Ukraine |
+| Aid (Kiel, adjusted) | 25.9<!-- n:DEU.part_aid --> (22.1<!-- n:DEU.part_aidLo --> to 32.6<!-- n:DEU.part_aidHi -->) | Ukraine |
+| Share of EU aid | 11.6<!-- n:DEU.part_euaid --> (8.4<!-- n:DEU.part_euaidLo --> to 17.3<!-- n:DEU.part_euaidHi -->) | Ukraine |
+| Its firms pay Russia less tax | 5.4<!-- n:DEU.part_tax --> (1.9<!-- n:DEU.part_taxLo --> to 10.5<!-- n:DEU.part_taxHi -->) | Ukraine |
+| Less Russian oil via other countries | 4.3<!-- n:DEU.part_laund --> (2.3<!-- n:DEU.part_laundLo --> to 6.4<!-- n:DEU.part_laundHi -->) | Ukraine |
+| Russian money frozen | 3.2<!-- n:DEU.part_frozen --> (2.1<!-- n:DEU.part_frozenLo --> to 3.8<!-- n:DEU.part_frozenHi -->) | Ukraine |
+| Paid Russia war-time fuel prices | 16.5<!-- n:DEU.part_windfall abs --> (1.3<!-- n:DEU.part_windfallHi abs --> to 29.1<!-- n:DEU.part_windfallLo abs -->) | Russia |
+
+What to look at:
+
+- **"Compared with what?"** The wide range comes almost entirely from "bought less from Russia": nobody knows exactly what Germany would have bought without the war ([counterfactual](#view=how&sec=m-counterfactual)).
+- **Aid differs from Kiel's.** Kiel's figure for Germany is EUR 49.5bn; 25.9 is counted because donated weapons are at market value, loans at their gift value, and military aid counts when delivered.
+- **The likely range** is about 90%, set by judgement. The **method band** (net 2.92%<!-- n:DEU.netBandLo --> to 3.84%<!-- n:DEU.netBandHi -->) shows the same number under other reasonable method choices ([ranges](#view=how&sec=m-ranges)).
+- **The letter C** means most of the number rests on modelled parts ([certainty letters](#view=how&sec=m-ranges-certainty-letters)). A = reported, B = measured estimate, C = modelled, D = rough.
+- **A `*`** on a part: its 2026 value is estimated from the 2025 rate.
+- **2026 prices**: 2022–2025 alone the net is +2.77%<!-- n:DEU.net2025 -->; 2026 adds a lot because fuel prices rose with the Hormuz crisis ([prices](#view=how&sec=m-prices-2026-and-the-hormuz-crisis)).
+- **Not in the number**: what Russia took from German companies (seizures EUR 9.5bn, forced exits 2.4bn) is a marker on the map.
+- **Each part opens its method**: tap a part in the panel, then "How it works" for that money flow, its sources and its changes.
