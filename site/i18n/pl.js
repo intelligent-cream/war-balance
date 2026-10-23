@@ -1106,4 +1106,5 @@ I18N.pl = {
   "military aid counted when delivered, by August 2026": "pomoc wojskowa liczona przy dostawie, do sierpnia 2026",
   "Kiel Institute's figure for its own aid: {k}; counted here: {v}": "Dane Instytutu Kilońskiego dla jego własnej pomocy: {k}; policzone tutaj: {v}",
   "Tags picked": "Wybrane tagi",
+  "How to read the bars": "Jak czytać paski",
 };
