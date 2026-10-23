@@ -1105,4 +1105,5 @@ I18N.de = {
   "military aid counted when delivered, by August 2026": "Militärhilfe erst bei Lieferung gezählt, bis August 2026",
   "Kiel Institute's figure for its own aid: {k}; counted here: {v}": "Zahl des Kiel Instituts für seine eigene Hilfe: {k}; hier gezählt: {v}",
   "Tags picked": "Tags ausgewählt",
+  "How to read the bars": "So liest man die Balken",
 };

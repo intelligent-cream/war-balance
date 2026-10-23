@@ -1108,4 +1108,5 @@ I18N.uk = {
   "military aid counted when delivered, by August 2026": "військова допомога врахована при постачанні, до серпня 2026",
   "Kiel Institute's figure for its own aid: {k}; counted here: {v}": "Дані Кільського інституту про його власну допомогу: {k}; враховано тут: {v}",
   "Tags picked": "Вибрані теги",
+  "How to read the bars": "Як читати смужки",
 };

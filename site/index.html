@@ -579,7 +579,7 @@ details.part .pv small { font-size: 11px; font-weight: 400; color: var(--ink-sof
 .pbar .b, .tile .tbar .b { border-radius: 0; }
 .pbar .f, .tile .tbar .f { border-radius: 0; }
 .pbar .t, .tile .tbar .t { width: 2px; margin-left: -1px; top: -3px; bottom: -3px; background: var(--ink); box-shadow: 0 0 0 1px var(--surface); border-radius: 1px; z-index: 2; }
-.pc-key { display: flex; flex-wrap: wrap; gap: 2px 14px; margin: -2px 0 8px; font: 11px var(--font-data); color: var(--ink-soft); }
+.pc-key { display: flex; flex-wrap: wrap; gap: 2px 12px; margin: -2px 0 10px; font: 11px var(--font-data); color: var(--ink-soft); opacity: .85; }
 .pc-key > span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
 .pc-key .ks { position: relative; display: inline-block; width: 18px; height: 8px; }
 .pc-key .ks-s { background: var(--ukr); }
@@ -597,7 +597,7 @@ details.allparts > summary { cursor: pointer; font-weight: 600; font-size: 13.5p
 .about-line { font: 12.5px var(--font-data); color: var(--ink-soft); margin: 0; font-variant-numeric: tabular-nums; }
 /* ===== round 18 (owner): the country panel, numbers first. One big number, medium tile numbers, small labels; every
    explanation one tap away (details.xp) ===== */
-.panel-body:has(.pv-top) { gap: 18px; }
+.panel-body:has(.pv-top) { gap: 26px; }
 details.xp > summary { list-style: none; cursor: pointer; }
 details.xp > summary::-webkit-details-marker { display: none; }
 details.xp > summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 8px; }
@@ -660,8 +660,12 @@ details.flag.orange .fi { color: var(--rus-text, var(--rus)); }
 details.flag .xp-body { padding: 6px 4px 2px 10px; margin-left: 8px; border-left: 2px solid var(--line); }
 details.flag.orange .xp-body { border-left-color: var(--rus); }
 .pv-chart h3 { margin: 0; }
-.pc-h { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
-.pc-hint { font-size: 11.5px; color: var(--ink-soft); }
+.pc-h { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.pc-info { margin-left: auto; }
+.pc-info > summary { list-style: none; cursor: pointer; color: var(--ink-soft); font-size: 14px; line-height: 1; padding: 2px 4px; }
+.pc-info > summary::-webkit-details-marker { display: none; }
+.pc-info[open] { flex-basis: 100%; order: 3; margin-left: 0; display: flex; align-items: flex-start; gap: 8px; }
+.pc-info[open] .pc-key { margin: 0; }
 .pc-axis { display: flex; justify-content: space-between; font: 10.5px var(--font-data); color: var(--ink-soft); padding: 0 6px; margin-bottom: 2px; }
 .pv-chart .parts { gap: 0; }
 /* round 25: the parts in two sections, toward Russia and toward Ukraine, each with its subtotal */
@@ -676,7 +680,7 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
 .psec-h b { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
 .psec details.allparts > summary { font-size: 12.5px; padding: 6px; }
 .psec-sum { margin: 10px 0 0; padding: 8px 10px; border-radius: 8px; background: var(--sea); font-size: 13px; font-variant-numeric: tabular-nums; }
-.pv-chart details.part + details.part { border-top: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+.pv-chart details.part + details.part { border-top: 1px solid color-mix(in srgb, var(--line) 35%, transparent); }
 .pv-chart details.part > summary .nm { font-weight: 500; }
 .pv-chart details.part > summary .nm::before { content: none; }
 .pv-chart details.part[open] > summary { background: var(--sea); }
@@ -951,8 +955,8 @@ details.fl-more[open] > summary { margin-bottom: 6px; }
 .mc-src-h { margin-top: 10px; }
 .mc-src { margin-top: 2px; }
 li.src-again { color: var(--ink-soft); }
-.backed { margin: 10px 0 0; font-size: 13.5px; }
-.backed a { font-weight: 600; }
+.backed { margin: -4px 0 2px; font-size: 12px; }
+.backed a { font-weight: 400; color: var(--ink-soft); }
 @media (max-width: 900px) {
   .trace-steps { grid-template-columns: 1fr; }
   .trace-steps li, .trace-steps li + li { padding: 8px 0; border-left: 0; }
@@ -3040,7 +3044,7 @@ function wirePanel() {
   if (cmp) cmp.onchange = () => { if (cmp.value) { state.compare = cmp.value; state.panel = "compare"; renderPanel(); } };
   const back = q("#compare-back");
   if (back) back.onclick = () => { state.panel = "country"; state.compare = null; renderPanel(); };
-  panel.querySelectorAll("details.part, details.allparts, #showmore, details.pfold, details.xp").forEach(d => d.addEventListener("toggle", () => { const id = d.dataset.part ? "part-" + d.dataset.part : d.id; if (d.open) panelOpen.add(id); else panelOpen.delete(id); }));
+  panel.querySelectorAll("details.part, details.allparts, #showmore, details.pfold, details.xp, details.pc-info").forEach(d => d.addEventListener("toggle", () => { const id = d.dataset.part ? "part-" + d.dataset.part : d.id; if (d.open) panelOpen.add(id); else panelOpen.delete(id); }));
   const sh = q("#share-btn");
   if (sh) sh.onclick = () => shareCountry(DATA[state.selected], sh);
   // round 24: "Backed by n sources" opens the list at the end of the panel
@@ -3653,7 +3657,8 @@ function barHtml(ax, v, col, lo, hi) {
   return zero + `<span class="b" style="left:${Math.min(z, xn)}%;width:${Math.abs(xn - z)}%;background:${col}"></span>` + fadeHtml(ax, ax.x(near), ax.x(far), col, "--fa0", "--fa1") + tick;
 }
 // the key above the bars: what solid, faded and the line mean
-const barKey = () => `<p class="pc-key" aria-hidden="true"><span><i class="ks ks-s"></i>${t("at least")}</span><span><i class="ks ks-f"></i>${t("could be up to")}</span><span><i class="ks ks-t"></i>${t("best estimate")}</span></p>`;
+// round 35 (owner: "more calm"): the bar key and the tap hint sit behind a small ⓘ next to the heading
+const barKey = () => `<details class="pc-info" id="x-pc-info"${panelOpen.has("x-pc-info") ? " open" : ""}><summary aria-label="${t("How to read the bars")}" title="${t("How to read the bars")}">ⓘ</summary><div class="pc-key"><span>${t("tap a part for how it is calculated")}</span><span aria-hidden="true"><i class="ks ks-s"></i>${t("at least")}</span><span aria-hidden="true"><i class="ks ks-f"></i>${t("could be up to")}</span><span aria-hidden="true"><i class="ks ks-t"></i>${t("best estimate")}</span></div></details>`;
 // Round 19 (owner): the panel follows the drawer's Measure. In % of GDP each number has its euros beside it; per person
 // or in total euros, each number is in that measure with its % of GDP beside it, and the bars are drawn in that measure
 const mVal = (c, v, unit = true) => fmtMeasure(c, v, state.measure, true, unit);
@@ -3744,7 +3749,7 @@ const uncWords = dirWords;
 // an icon and a few words, opening one or two sentences with the number and its sources. Every rule and threshold is
 // here, in TAG_RULES' order of priority, and in the table in How it works (site/content/method/tags.md). MAT, a
 // material amount, is 0.1% of the country's GDP
-const TAGS_SHOWN = 6;
+const TAGS_SHOWN = 3;   // round 35 (owner: "more calm"): three, the rest behind "+n more"
 const TRADE_HIDDEN = { BLR: { why: "Belarus and Russia stopped publishing trade by partner and product in 2022: its trade with Russia is estimated from partners' and Russia's own totals, so its ranges are wide.", src: ["counterfactual", "trade"] } };
 const AID_KEYS = ["aid", "euaid", "undisc", "priv", "multilat"];
 let aidRankMemo = null;
@@ -3847,9 +3852,11 @@ function storyTags(c, k, y) {
 // the tags under the headline numbers: the first TAGS_SHOWN, then "+n more"
 function tagsHtml(tags) {
   if (!tags.length) return "";
-  const one = f => xp("flag " + f.cls, "x-flag-" + f.key, `<span class="fi" aria-hidden="true">${f.icon}</span><span>${f.label}</span>`, f.body);
+  // round 35: "How the tags are set" sits inside each tag's tap text and in "+n more", not on the panel itself
+  const how = `<p class="tags-how"><a href="#view=how&amp;sec=m-tags">${t("How the tags are set")}</a></p>`;
+  const one = f => xp("flag " + f.cls, "x-flag-" + f.key, `<span class="fi" aria-hidden="true">${f.icon}</span><span>${f.label}</span>`, f.body + how);
   const shown = tags.slice(0, TAGS_SHOWN), more = tags.slice(TAGS_SHOWN);
-  return `<section class="pv-flags" aria-label="${t("Its story in short")}"><div class="flags">${shown.map(one).join("")}${more.length ? `<details class="xp flag more-tags" id="x-flag-more"${panelOpen.has("x-flag-more") ? " open" : ""}><summary><span>${t("+{n} more", { n: more.length })}</span></summary><div class="flags">${more.map(one).join("")}</div></details>` : ""}</div><p class="tags-how"><a href="#view=how&amp;sec=m-tags">${t("How the tags are set")}</a></p></section>`;
+  return `<section class="pv-flags" aria-label="${t("Its story in short")}"><div class="flags">${shown.map(one).join("")}${more.length ? `<details class="xp flag more-tags" id="x-flag-more"${panelOpen.has("x-flag-more") ? " open" : ""}><summary><span>${t("+{n} more", { n: more.length })}</span></summary><div class="flags">${more.map(one).join("")}</div>${how}</details>` : ""}</div></section>`;
 }
 // the net: one big number, its unit, one compact line; the lead, what the net adds, the certainty and the range behind a tap
 function netBlock(c, k, y) {
@@ -3907,6 +3914,7 @@ function partTiles(c, k, y) {
     const [pre, post] = verbAround("frozen", k.frozen);
     frozen = xp("tile mini", "x-frozen", `<span class="tl"><span class="tn">${pre}</span><span class="xi" aria-hidden="true"></span></span><span class="tv">${gu(k.frozen)}</span><span class="te">${post ? post + " · " : ""}${su(k.frozen)}</span>`, frozenLine(c, k));
   }
+  // round 35 (owner: "more calm"): the two lines are inside the tile's tap text, not under it
   // round 24b (audit 24, D M1; approved by the owner): business with Russia as two lines under its tile, what the country
   // paid Russia and what it earned from Russia (display subtotals; their ranges do not add up to the tile's)
   // round 29 (audit: "€0 more"): a line that rounds to nothing is left out
@@ -3916,10 +3924,10 @@ function partTiles(c, k, y) {
     ${lineRow("paid", k.rusPaid, k.rusPaidLo, k.rusPaidHi)}${lineRow("earned", k.rusEarned, k.rusEarnedLo, k.rusEarnedHi)}</div>` : "";
   return `<div class="tiles">
     ${tile("ua", "ua", k.uaBal, k.uaLo, k.uaHi, k.earnerUa ? "earn" : "", col(k.uaBal, "ua", "var(--ink-soft)"), ua, rx + (() => { const ap = k.shiftParts.find(p => p.k === "aid"), kl = ap ? kielLine(c, ap.v) : ""; return kl ? `<p>${kl}</p>` : ""; })(), "var(--ink-soft)")}
-    ${tile("rus", "rus", k.rusBal, k.rusLo, k.rusHi, "", col(k.rusBal, "rus", "var(--rus-text, var(--rus))"), ru, cutTxt + busy + (lines ? lineKey : ""), "var(--rus)")}
-  </div>${lines}${frozen}`;
+    ${tile("rus", "rus", k.rusBal, k.rusLo, k.rusHi, "", col(k.rusBal, "rus", "var(--rus-text, var(--rus))"), ru, lines + cutTxt + busy + (lines ? lineKey : ""), "var(--rus)")}
+  </div>${frozen}`;
 }
-const PARTS_SHOWN = 5;   // per section (round 25)
+const PARTS_SHOWN = 3;   // per section (round 25: 5; round 35, owner "more calm": 3)
 // Round 26 (the owner, 22 October 2026, Moldova: "the breakdown doesn't seem to match the numbers at the top"): the parts
 // follow the tiles exactly. One section per tile (support for Ukraine, trade with Russia, Russian money frozen), each
 // with the tile's own words and amount as its subtotal; inside, rows by size, each saying its direction in words and
@@ -3980,9 +3988,9 @@ function firstLayer(c, k, y) {
   const tags = storyTags(c, k, y);
   return `${custom() ? `<div class="custom">${customNote()}</div>` : ""}
     ${partyLine(c)}
-    <section class="pv-top">${netBlock(c, k, y)}${partTiles(c, k, y)}${backedLine(k)}</section>
+    <section class="pv-top">${netBlock(c, k, y)}${backedLine(k)}${partTiles(c, k, y)}</section>
     ${tagsHtml(tags)}
-    <section class="pv-chart"><div class="pc-h"><h3>${t("What makes up the number")}</h3><span class="pc-hint">${t("tap a part for how it is calculated")}</span></div>${barKey()}
+    <section class="pv-chart"><div class="pc-h"><h3>${t("What makes up the number")}</h3>${barKey()}</div>
       ${S.map(section).join("")}
       ${closing}
     </section>`;

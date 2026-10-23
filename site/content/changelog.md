@@ -4,6 +4,26 @@ Every update to the map, newest first: what changed and every decision behind it
 
 The detailed research log, with every file, is [`research/2026-10/README.md`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/README.md).
 
+<h2 id="cl-r35">Round 35: a calmer country panel <span class="cl-date">23 October</span></h2>
+<!-- flows: -->
+
+**The country panel shows less at once; nothing is removed, only folded one level deeper. No number changed.**
+
+### What changed
+
+1. The two lines of "Russia's earnings from trade" (what Russia kept, what the country kept from selling to Russia)
+   are inside the trade tile: tap the tile to see them.
+2. Three story tags are shown, the rest behind "+n more"; "How the tags are set" is inside each tag and in "+n more".
+3. "Backed by n sources" is one quiet line under the headline number.
+4. "What makes up the number" shows the three largest parts per section; the others are under "Show the other n
+   parts". How to read the bars sits behind a small ⓘ next to the heading.
+5. More space between blocks and lighter dividers. Tags became a fold in Filters (round 34).
+
+### Decisions
+
+- **A calmer panel.** Raised by the owner (23 October 2026): "the country view is now again quite busy with
+  uncollapsed parts, it should be more calm". Effect: display only.
+
 <h2 id="cl-r33">Round 33: tags replace Highlights <span class="cl-date">23 October</span></h2>
 <!-- flows: -->
 

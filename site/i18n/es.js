@@ -1107,4 +1107,5 @@ I18N.es = {
   "military aid counted when delivered, by August 2026": "ayuda militar contada al entregarse, hasta agosto de 2026",
   "Kiel Institute's figure for its own aid: {k}; counted here: {v}": "Cifra del Instituto Kiel para su propia ayuda: {k}; contado aquí: {v}",
   "Tags picked": "Etiquetas elegidas",
+  "How to read the bars": "Cómo leer las barras",
 };
