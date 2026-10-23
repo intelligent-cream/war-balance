@@ -1033,12 +1033,15 @@ li.src-again { color: var(--ink-soft); }
           <button data-measure="total" aria-pressed="false" data-i18n="Total €">Total €</button>
         </div>
       </section>
-      <!-- round 33 (owner, 23 October 2026): the story tags as filters, in place of the Highlights -->
-      <section class="dblock" id="tags-block">
-        <h3 class="dsec" id="tags-h" data-i18n="Tags">Tags</h3>
+      <!-- round 33 (owner, 23 October 2026): the story tags as filters, in place of the Highlights; round 34 (owner): a
+           fold, closed until a tag is picked, with a dot while tags are picked -->
+      <details class="dmore" id="tags-block">
+        <summary><span id="tags-h" data-i18n="Tags">Tags</span><span class="dot" hidden></span></summary>
+        <section class="dblock">
         <p class="sub" data-i18n="Pick a tag to see which countries share it. Pick up to three to see the countries that have all of them.">Pick a tag to see which countries share it. Pick up to three to see the countries that have all of them.</p>
         <div id="tagfilters" role="group" aria-labelledby="tags-h"></div>
-      </section>
+        </section>
+      </details>
       <section class="dblock">
         <h3 class="dsec"><label for="year" data-i18n="Up to">Up to</label></h3>
         <div class="year">
@@ -2549,6 +2552,9 @@ function filtersChanged() {
 function updateDots() {
   const f = document.querySelector("#fbtn .dot");
   if (f) { f.hidden = !filtersChanged(); f.title = t("Changed from the default"); }
+  // round 34: the Tags fold shows a dot while tags are picked, and opens itself when a link brings tags
+  const tf = document.getElementById("tags-block");
+  if (tf) { tf.querySelector(".dot").hidden = !state.tags.length; tf.querySelector(".dot").title = t("Tags picked"); if (state.tags.length && !tf.dataset.opened) { tf.open = true; tf.dataset.opened = "1"; } }
   // round 21: a dot on "More options" when something folded in it differs from the default
   const m = document.querySelector("#more-fold .dot");
   if (m) { m.hidden = !(custom() || state.region !== "all" || state.size !== MIN_GDP_RANK || (typeof viewState !== "undefined" && viewState.group !== "all")
