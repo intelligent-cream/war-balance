@@ -1,0 +1,114 @@
+# PROPOSAL (not active). To enable it, copy this file to .github/workflows/fetch.yml.
+#
+# Monthly data refresh. It runs the download scripts in pipeline/fetch/, which write dated raw files under
+# research/2026-10/raw/<source>/. It then compares the headline totals (pipeline/fetch/totals.py) with those stored
+# by the previous run (research/2026-10/raw/fetch_totals.json). When any total moves by more than THRESHOLD, or a new
+# period appears, it opens a pull request against develop with the new raw files, the updated manifest, the
+# trade.json rebuild check and the list of moved totals.
+#
+# It does not change trade.json or any other research file. A person reviews the pull request and runs the research
+# step. The pull request also runs checks.yml, so a broken rebuild shows up there.
+#
+# Secrets (optional):
+#   COMTRADE_KEY  a free UN Comtrade subscription key (comtradeapi.un.org). Without it the script uses the preview API.
+#                 The preview API is limited to 500 rows and about 40 calls per half hour, so a full run takes
+#                 1-2 hours.
+# Kiel, KSE, Euroclear and national statistics have no stable API. They stay manual review rounds; the job only
+# reminds the reviewer to check them.
+name: Monthly data fetch
+
+on:
+  schedule:
+    # 06:17 UTC on the 18th: Comext is updated about mid-month and Eurostat's temporary-protection data a few days
+    # after. An off-minute avoids the top-of-hour rush.
+    - cron: "17 6 18 * *"
+  workflow_dispatch:
+    inputs:
+      threshold:
+        description: "relative move that triggers a pull request"
+        default: "0.01"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: monthly-fetch
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 240
+    env:
+      UV_PYTHON: "3.13"
+      COMTRADE_KEY: ${{ secrets.COMTRADE_KEY }}
+      THRESHOLD: ${{ inputs.threshold || '0.01' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: develop
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.11.32"
+
+      - name: Fetch (each source independently; one failure does not stop the others)
+        id: fetch
+        run: |
+          set +e
+          failed=""
+          for s in ecb crea eurostat_comext eurostat_tp imf_imts fts unhcr ukrstat comtrade; do
+            echo "::group::$s"
+            if ! uv run pipeline/fetch/$s.py; then failed="$failed $s"; fi
+            echo "::endgroup::"
+          done
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
+
+      - name: Rebuild check of trade.json (informational)
+        run: uv run pipeline/fetch/build_trade_check.py --show 60 > "$RUNNER_TEMP/trade_check.txt" || true
+
+      - name: Compare totals
+        id: totals
+        run: |
+          set +e
+          uv run pipeline/fetch/totals.py --out "$RUNNER_TEMP/totals.json" \
+            --compare research/2026-10/raw/fetch_totals.json --threshold "$THRESHOLD" 2> "$RUNNER_TEMP/moved.txt"
+          echo "moved=$?" >> "$GITHUB_OUTPUT"
+          cp "$RUNNER_TEMP/totals.json" research/2026-10/raw/fetch_totals.json
+          cat "$RUNNER_TEMP/moved.txt"
+
+      - name: Update the raw manifest
+        if: steps.totals.outputs.moved == '1'
+        run: uv run python pipeline/raw_manifest.py
+
+      - name: Write the pull request body
+        if: steps.totals.outputs.moved == '1'
+        run: |
+          {
+            echo "Monthly fetch of $(date -u +%Y-%m-%d). Raw files only; no research value has been changed."
+            echo
+            echo "### Totals that moved by more than ${THRESHOLD}"
+            echo '```'; cat "$RUNNER_TEMP/moved.txt"; echo '```'
+            echo
+            echo "### trade.json rebuilt from the new Comtrade pull"
+            echo '```'; head -80 "$RUNNER_TEMP/trade_check.txt"; echo '```'
+            if [ -n "${{ steps.fetch.outputs.failed }}" ]; then
+              echo; echo "**Failed sources:** ${{ steps.fetch.outputs.failed }} (see the run log)"
+            fi
+            echo
+            echo "Check by hand: Kiel UST release, KSE Russian Oil Tracker, Euroclear quarterly results, Ukrstat."
+          } > "$RUNNER_TEMP/pr.md"
+
+      - name: Open the pull request
+        if: steps.totals.outputs.moved == '1'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: data/monthly-fetch
+          base: develop
+          title: "Monthly data fetch: source totals changed"
+          body-path: ${{ runner.temp }}/pr.md
+          commit-message: "Monthly fetch of raw open data (pipeline/fetch)"
+          add-paths: |
+            research/2026-10/raw/**
+          labels: data-refresh
+          delete-branch: true
