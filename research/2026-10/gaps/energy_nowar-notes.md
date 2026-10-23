@@ -171,4 +171,4 @@ What drives it:
 - `energy.json` labels FRED `PNGASJPUSDM` as an oil-indexed Japan LNG price, but in 2022 it averages USD 33.3/MMBtu, close to JKM spot. That makes the low end of the gas switching premium too high. Check this separately.
 - Hub shares in the mixed gas contracts (0.5, 0.7, 0.75 for the European benchmark) are judgement calls.
 
-Scripts and downloads: the scratchpad folder `r7/energy_nowar/` (`scripts/nowar.py`, `scripts/assemble.py`, `raw/`).
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.

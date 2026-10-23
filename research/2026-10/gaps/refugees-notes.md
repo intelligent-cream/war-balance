@@ -1,7 +1,7 @@
 # Refugee hosting cost per host country, 2022 – Aug 2026
 
 Data: `refugees.json`, generated 2026-10-17. **Not yet reviewed by a person.**
-Scripts: `working/scripts-refugees/{counts,model,assemble}.py`. Raw downloads: `working/raw/refugees/`.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## What changed versus the current model
 The old model split Kiel's EU total (EUR 163.1bn, 2022–2025) by *today's* refugee count × income.

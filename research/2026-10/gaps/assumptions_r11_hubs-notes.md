@@ -2,10 +2,7 @@
 
 Data file: `assumptions_r11_hubs.json` (27 proposals). Gathered on 2026-10-19 and not yet reviewed by a person.
 Each proposal gives the old value, the new value, whether the basis is **data** or **judgement**, and its sources.
-Raw downloads and scripts are in the scratchpad folder `r11/`:
-- `fetch_ct.py` and `summ.py` for UN Comtrade
-- `es.py` for Eurostat
-- `fetch_civ.py` and `fetch_p.py` for partner breakdowns
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 Units: Mt is million tonnes and EUR bn is nominal. USD is converted at the ECB yearly averages used in the repo (2022 1.053, 2023 1.081, 2024 1.082).
 

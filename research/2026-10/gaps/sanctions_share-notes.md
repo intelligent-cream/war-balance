@@ -11,12 +11,7 @@ The map credits countries for cutting trade with Russia. Part of each cut was re
 
 **Years:** 2022–2026. 2026 means January–August.
 
-**Scripts:** all in `working/sanctions/`:
-- `parse_annexes.py` reads the annexes of Regulation 833/2014;
-- `rules.py` holds the ban rules;
-- `fetch_comext.py`, `fetch_comext_m.py` and `fetch_comtrade.py` download the trade data;
-- `compute_goods.py` and `compute_services.py` do the calculations;
-- `assemble.py` writes the JSON.
+**Scripts:** This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. The ban rules were read from the annexes of Regulation 833/2014 and applied to Comext and Comtrade trade data.
 
 ## Fields
 

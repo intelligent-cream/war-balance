@@ -209,4 +209,4 @@ Corrected values exclude guarantees, earmarks for after 2026 and the ERA loan in
 - Taiwan's Jan–Aug 2026 imports from Russia (Ministry of Finance trade database).
 - Belarus: a Belarusian-side figure for Jan–Aug, and the split between imports and exports.
 
-Scratch scripts and downloads: `/tmp/claude-0/-home-user/71ac834a-35d2-5698-a36d-858806a141e1/scratchpad/r5/refresh_2026/`.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.

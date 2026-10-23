@@ -4,11 +4,7 @@ File: `shadow_fleet_r6.json`. Gathered 2026-10-18. Not yet reviewed by a person.
 
 This is a **revision** of [`shadow_fleet.json`](shadow_fleet-notes.md) (round 5), with the same structure, and it **replaces** it. Nothing changes for the mainstream (G7-linked) fleet, the Greek shares, the shadow/white split, the freight pools or LNG. The change is how the shadow fleet is split between **Russia itself** and **truly foreign controllers**.
 
-Scripts are in the scratchpad folder `r6/shadow_fleet_r6/`:
-- `build_r6.py` builds the model and runs a Monte Carlo for the ranges.
-- `assemble_r6.py` writes the JSON.
-- `sens.py` runs the one-at-a-time sensitivities.
-- `balt_mgr_sep26.txt` and `balt_mgr_annual.json` hold the KSE Baltic chart readings.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. The ranges come from a Monte Carlo run of the model, with one-at-a-time sensitivities alongside.
 
 ## The question
 

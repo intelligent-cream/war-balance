@@ -1,4 +1,8 @@
 # ruff: noqa
+"""Round 6 research script (value_kept.json): gross flows per country from site/data.json, for the comparison and sanity
+sections of value_kept.json only. It reads the pipeline's output on purpose (a report on the map, not an input to it):
+build_data.py does not read those sections, so there is no cycle in the numbers."""
+
 import json, sys
 
 d = json.load(open(str(__import__("pathlib").Path(__file__).resolve().parents[4] / "site/data.json")))

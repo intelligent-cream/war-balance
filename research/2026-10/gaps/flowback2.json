@@ -2,7 +2,7 @@
  "meta": {
   "generated": "2026-10-17",
   "scope": "Gap-fill: own-industry share of military aid, donor funding of refugee hosting, military support/people for Russia, volunteers for Ukraine",
-  "scripts": "working/scripts-flowback2/{kiel_source.py,build_own.py,fts_dest.py,build_all.py}",
+  "scripts": "Produced by the project's research step and kept as a data input; the research scripts are not in the repository, and the sources are listed in the notes.",
   "certainty": "B documented; C modelled from partial data; D mostly assumption"
  },
  "own_industry": {

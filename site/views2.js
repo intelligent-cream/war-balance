@@ -8,7 +8,7 @@
 const TGROUPS = [
   { id: "net", label: "Net", v: k => [k.shift, k.shiftLo, k.shiftHi], en: "net" },
   { id: "ua", label: "Support for Ukraine", v: k => [k.uaBal, k.uaLo, k.uaHi], en: "support_for_ukraine" },
-  { id: "rus", label: "Trade with Russia", v: k => [k.rusBal, k.rusLo, k.rusHi], en: "trade_with_russia_toward_ukraine" },
+  { id: "rus", label: "Russia's earnings from trade", v: k => [k.rusBal, k.rusLo, k.rusHi], en: "trade_with_russia_toward_ukraine" },
   { id: "frozen", label: "Russian money frozen", v: k => [k.frozen, k.frozenLo, k.frozenHi], en: "russian_money_frozen" },
 ];
 

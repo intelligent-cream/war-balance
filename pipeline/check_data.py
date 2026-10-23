@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import itertools
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -18,6 +19,9 @@ data = json.loads((ROOT / "site" / "data.json").read_text())
 countries = data["countries"]
 kiel = json.loads((RESEARCH / "kiel.json").read_text())
 results: list[tuple[str, str, str]] = []
+# round 29 (audit 29): in CI (CHECK_DATA_STRICT=1, set by .github/workflows/checks.yml) the checks that need node or
+# Playwright (29, 30, 32) FAIL when those are missing, instead of warning "not checked"
+STRICT = os.environ.get("CHECK_DATA_STRICT") == "1"
 
 
 def check(name: str, ok: bool, detail: str, warn_only: bool = False) -> None:
@@ -400,8 +404,8 @@ import check_docs_numbers as cdn  # noqa: E402
 
 _m = cdn.model()
 if _m is None:
-    check("ranking leaves out uncertain directions", True, "node not found: not checked", warn_only=True)
-    check("docs figures match data.json", True, "node not found: not checked", warn_only=True)
+    check("ranking marks uncertain directions", not STRICT, "node not found: not checked", warn_only=not STRICT)
+    check("docs figures match data.json", not STRICT, "node not found: not checked", warn_only=not STRICT)
 else:
     # 29. round 15 (review 4, H3; approved by the owner): a country is ranked on a headline number only if neither its
     # likely range nor any method-band alternative changes the sign; uncertain() must agree with that rule written out
@@ -422,7 +426,7 @@ else:
         q: sum(1 for c in _m["countries"].values() if c[q + "Unc"] and c["gdp"] >= 5) for q in ("ua", "rus", "net")
     }
     check(
-        "ranking leaves out uncertain directions",
+        "ranking marks uncertain directions",
         not _wrong and len(_calls) >= 3 and "uncertain(r.c, y, q)" in _html,
         f"rule mismatches: {_wrong[:6] or 'none'}; direction uncertain (GDP >= EUR 5bn): {_unc_n}",
     )
@@ -448,13 +452,34 @@ else:
     _plean = [f"{k}.{q}" for k in _party for q in ("ua", "rus", "net") if _m["countries"][k][q + "Lean"]]
     _rank_src = _html[_html.index("function rankList") :][:3000]
     check(
-        "a party to the war is not ranked and in no list",
-        _party == ["BLR"]
+        "a party to the war (Belarus, North Korea) is not ranked and in no list",
+        _party == ["BLR", "PRK"]
         and not _plean
         and "PARTY_TO_WAR" in _rank_src
         and "PARTY_TO_WAR.has" in _views_js
         and "Party to the war (with Russia)" in _html,
         f"parties: {_party}; leaning: {_plean or 'none'}",
+    )
+    # 42. round 29 (owner, 23 October 2026: "in the ranking we have the uncertainty there"): the Ranking view ranks
+    # leaning and uncertain directions too, faded and labelled, with a key; parties to the war are listed under it
+    # (browser_check.mjs checks the rows against Node)
+    check(
+        "the ranking shows leaning and uncertain rows, labelled, and lists the parties under it",
+        all(x in _views_js for x in ('" rk-" + m.st', 'class="rk-st"', 'class="rk-key"', "chipGroup(party"))
+        and '"leaning: at least a 65% chance of that direction"' not in _html,
+        "row classes rk-lean / rk-unc, a label per row, a key; party chips",
+    )
+    # 43. round 29 (owner: "show the Kiel numbers next to the real ones and explain the difference in short"): the aid card
+    # and the support tile show Kiel's own figure next to the amount counted, wherever Kiel has the country
+    _kiel_n = sum(
+        1
+        for c in data["countries"].values()
+        if (c.get("aid") or {}).get("cats") and "kiel" in ((c.get("aid") or {}).get("src") or [])
+    )
+    check(
+        "Kiel's own aid figure is shown next to ours",
+        "function kielLine" in _html and _html.count("kielLine(c,") >= 2 and _kiel_n > 30,
+        f"{_kiel_n} countries in Kiel get the line in the aid card and the support tile",
     )
 
 # 31. round 15 (approved by the owner): the net is the view the map opens with, then its two parts; the gross "To
@@ -526,7 +551,7 @@ check(
     and 'data-lens="cost"' not in _html
     and 'data-lens="ukr"' not in _html
     and 'data-lens="rus"' not in _html
-    and '<button data-lens="payments" aria-pressed="false" data-i18n="Trade with Russia">' in _html
+    and '<button data-lens="payments" aria-pressed="false" data-i18n="Russia\'s earnings from trade">' in _html
     and re.search(r'<aside class="drawer" id="drawer"[^>]*\bhidden>', _html) is not None
     and 'id="hlbtn"' in _html
     and 'id="fbtn"' in _html
@@ -570,7 +595,12 @@ _pw = (
     == 0
 )
 if not _pw:
-    check("browser shows the same numbers as Node", True, "node or Playwright not found: not checked", warn_only=True)
+    check(
+        "browser shows the same numbers as Node",
+        not STRICT,
+        "node or Playwright not found: not checked",
+        warn_only=not STRICT,
+    )
 else:
     _r = subprocess.run([_node, str(ROOT / "pipeline" / "browser_check.mjs")], capture_output=True, text=True)
     _out = (_r.stdout or _r.stderr).strip().splitlines()
@@ -755,6 +785,90 @@ check(
     "every story tag is documented with a source, and data tags cite theirs",
     bool(_keys) and not _undoc and not _no_ref and 'add(100, "party"' in _st,
     f"{len(_keys)} tag rules; not in tags.md with a source: {_undoc or 'none'}; data tags without sources: {_no_ref or 'none'}",
+)
+
+# ---- outside benchmarks (round 29, audit 29 item 3; approved by the owner): hard checks, FAIL when out of tolerance.
+# Checks 3 and 9 above compare totals loosely and only warn; these compare each input with its published source.
+# Tolerances, with their reasons:
+# Kiel Ukraine Support Tracker, Release 31 ("Country Summary (EUR)", research/2026-10/kiel.json): the model's aid input
+# (aid.years before its own adjustments, less the EU share, plus the ERA loans it leaves out) must equal each donor's
+# total_allocated. 1%: amounts without a month are spread over years and each year is rounded to 4 decimals, which moves
+# a total by far less than 1%; a donor read from the wrong row or a lost year moves it by more
+KIEL_TOL = 0.01
+KIEL_TOP_DONORS = 20
+# CREA Russia Fossil Tracker (research/2026-10/crea.json, calendar years, retrieved 2026-10-17) against the model's fossil
+# payments input (gaps/energy.json fossil_from_russia, the same CREA API queried by month to 31 August 2026). Summed over
+# the countries CREA reports in that year, 2021-2025 (2026 is left out: CREA's figure runs to 16 October, energy.json to
+# August). 1%: both are the same CREA counter, so only rounding and CREA's later revisions of Kpler arrivals may differ
+CREA_TOL = 0.01
+CREA_YEARS = ("2021", "2022", "2023", "2024", "2025")
+# Eurostat migr_asytpsm (beneficiaries of temporary protection, citizens of Ukraine, end of month; EU27_2020 aggregate;
+# research/2026-10/raw/eurostat_tp/migr_asytpsm_UA.json) against the EU-27 refugee counts of the refugee input
+# (gaps/refugees.json counts, end of year). 1%: Eurostat rounds each country to 5, and late revisions are small
+REFUGEE_EU_TOL = 0.01
+
+# 43. Kiel: the model's aid input matches Kiel's total for each of the top donors
+_kd = {i: d for i, d in kiel["donors"].items() if i != "EU_INST" and d.get("total_allocated")}
+_top = sorted(_kd, key=lambda i: -_kd[i]["total_allocated"])[:KIEL_TOP_DONORS]
+_kiel_off = []
+for _i in _top:
+    _a = (countries.get(_i) or {}).get("aid") or {}
+    _own = total(_a.get("years")) - total(_a.get("eu_years")) + (_a.get("era_excluded") or 0)
+    if "kiel" not in _a.get("src", []) or abs(_own / _kd[_i]["total_allocated"] - 1) > KIEL_TOL:
+        _kiel_off.append(f"{_i} {_own:.2f}/{_kd[_i]['total_allocated']:.2f}")
+check(
+    "aid input matches Kiel for the top donors",
+    not _kiel_off,
+    f"top {len(_top)} Kiel donors within {KIEL_TOL:.0%}; off: {_kiel_off or 'none'}",
+)
+
+# 44. CREA: fossil fuel payments by year in the model's input match CREA's published totals
+_en = json.loads((RESEARCH / "gaps" / "energy.json").read_text())["countries"]
+_crea_off, _crea_txt = [], []
+for _y in CREA_YEARS:
+    _key = {"2022": "2022_calendar_full"}.get(_y, _y)
+    _cv = {
+        k: (v.get("fossil_2021") if _y == "2021" else (v.get("fossil_by_year") or {}).get(_key))
+        for k, v in crea["countries"].items()
+    }
+    _cv = {k: v for k, v in _cv.items() if v}
+    _cr = sum(_cv.values())
+    _ours = sum((((_en.get(k) or {}).get("fossil_from_russia") or {}).get(_y) or {}).get("central", 0) for k in _cv)
+    _crea_txt.append(f"{_y} {_ours:.1f}/{_cr:.1f}")
+    if not _cr or abs(_ours / _cr - 1) > CREA_TOL:
+        _crea_off.append(_y)
+check(
+    "fossil payments input matches CREA by year",
+    not _crea_off,
+    f"ours/CREA EUR bn {', '.join(_crea_txt)} (within {CREA_TOL:.0%}); off: {_crea_off or 'none'}",
+)
+
+# 45. Eurostat: the EU-27 refugee counts of the refugee input match Eurostat's EU total, and the map carries them
+_tp = json.loads((RESEARCH / "raw" / "eurostat_tp" / "migr_asytpsm_UA.json").read_text())
+_geo, _tm = _tp["dimension"]["geo"]["category"]["index"], _tp["dimension"]["time"]["category"]["index"]
+_refc = json.loads((RESEARCH / "gaps" / "refugees.json").read_text())["countries"]
+_eu27 = bd.EU27
+_ref_off, _ref_txt = [], []
+for _y in ("2022", "2023", "2024", "2025"):
+    _es = _tp["value"].get(str(_geo["EU27_2020"] * len(_tm) + _tm[f"{_y}-12"]))
+    _in = sum(((_refc.get(k) or {}).get("counts") or {}).get(_y) or 0 for k in _eu27)
+    _ref_txt.append(f"{_y} {_in / 1e6:.3f}/{(_es or 0) / 1e6:.3f}m")
+    if not _es or abs(_in / _es - 1) > REFUGEE_EU_TOL:
+        _ref_off.append(_y)
+# the map's refugee count (people.refugees, the latest year of the input) sums to the input's EU-27 total
+_latest = {
+    k: next(((d.get("counts") or {})[y] for y in ("2026", "2025", "2024") if (d.get("counts") or {}).get(y)), 0)
+    for k, d in _refc.items()
+    if k in _eu27
+}
+_map = sum((((countries.get(k) or {}).get("people") or {}).get("refugees") or {}).get("count") or 0 for k in _eu27)
+if abs(_map - sum(_latest.values())) > 0.001 * max(1, sum(_latest.values())):
+    _ref_off.append("map count")
+check(
+    "EU refugee counts match Eurostat",
+    not _ref_off,
+    f"input/Eurostat end of year {', '.join(_ref_txt)} (within {REFUGEE_EU_TOL:.0%}); map EU-27 count "
+    f"{_map / 1e6:.3f}m vs input {sum(_latest.values()) / 1e6:.3f}m; off: {_ref_off or 'none'}",
 )
 
 width = max(len(n) for _, n, _ in results)

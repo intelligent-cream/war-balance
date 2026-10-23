@@ -1950,6 +1950,6 @@
   "Destination shares are shares of the hub's refined-product (HS 2710) exports by value; central shares plus \"other\" sum to 1; low/high are per-destination bounds and do not sum to 1.",
   "Russia is removed as a destination (round trip).",
   "Destinations that are themselves hubs (NLD, SGP, ARE, IND, TGO) are listed as they are; chaining them is left to the pipeline.",
-  "Scripts and downloads: working/hubbuyers/ (build.py, assemble.py, raw/)."
+  "Produced by the project's research step and kept as a data input; the research scripts are not in the repository, and the sources are listed in the notes."
  ]
 }

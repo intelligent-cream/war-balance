@@ -8,7 +8,7 @@
   "decision_rule": "New band only if (a) the 2022-2026 band is >= 5% narrower than today's; (b) it is era-calibrated (5th-95th percentile of two eras of origins x K covers >= 90% of the third; eras 2005-09, 2010-12, 2013-16; K >= 1, no shrinking); (c) it covers >= 90% of the country's own 5-year windows (at least 8 measured) and all three of its test windows (origins 2007, 2012, 2016); (d) the band built WITHOUT the country also covers >= 90% of its windows; (e) safeguard: >= 90% of the country's own windows of the map's own series (deflated value, all goods) are inside, else the band is extended to cover them.",
   "fuel_volume_index": "x_y = sum over fuels of volume x fixed 2019-2021 unit value: crude EUR 370/t, products EUR 420/t, pipeline gas EUR 4.67/GJ (EUR 4,670/TJ GCV), coal EUR 60/t. A constant-price volume index: price noise removed.",
   "groups": "Infrastructure group fixed ex ante: 'pipeline' if pipeline gas + Druzhba crude is >= 60% of the fuel value bought from Russia (back-test windows: at the origin year, from the volumes; application: in 2019-2021, from energy2.json). LNG-only buyers: ESP PRT GBR JPN KOR IND CHN IRL MLT CYP. Druzhba crude: DEU POL CZE SVK HUN BLR (UKR excluded).",
-  "scripts": "scratchpad r8/fuel_volume/scripts: es_parse.py, dl_ct.py, build_vol.py, backtest.py, analyze.py, decide.py, frame.py, assemble.py (run in that order, python3 -I). Downloads in r8/fuel_volume/dl/ (es = Eurostat, ct = Comtrade).",
+  "scripts": "Produced by the project's research step and kept as a data input; the research scripts are not in the repository, and the sources are listed in the notes. Data: Eurostat and Comtrade.",
   "not_reviewed": true
  },
  "coverage": {
@@ -1961,7 +1961,7 @@
   },
   {
    "name": "to_rus nominal series, HS 27 share by year and non-fuel price index (round 7 inputs, cf/inputs.pkl, trend/series.pkl)",
-   "url": "scratchpad (read-only reuse)"
+   "url": "not in the repository (intermediate research data)"
   },
   {
    "name": "energy2.json fuel_mix_2019_2021 (fossil_share and fuel split)",

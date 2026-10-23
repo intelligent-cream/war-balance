@@ -10,7 +10,7 @@ Dollars are converted at ECB yearly averages (USD per EUR): 2019 1.1195, 2020 1.
 - `insurance_finance`
 - `registry`
 
-**Scripts:** `working/shipping/build.py` builds the model and `working/shipping/assemble.py` adds the text and sources.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## Method
 

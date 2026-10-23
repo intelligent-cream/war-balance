@@ -2,9 +2,7 @@
 
 File: `shadow_fleet.json`. Gathered 2026-10-18. Not yet reviewed by a person. Ranges are meant as about 90%.
 
-Scripts and working data are in the scratchpad folder `r5/shadow_fleet/`:
-- `build.py` builds the shares and the freight.
-- `assemble.py` writes the JSON.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 KSE chart readings are reused from `refine/work_kse_annual.json`, which round 4 read off the chart geometry of the KSE September 2026 tracker.
 
@@ -131,7 +129,7 @@ All foreign countries together: EUR 46.0bn gross over 2022–26. That compares w
 
 ## What changes against shipping.json
 
-**What `shipping.json` assumed.** It used hand-set owner shares per year, in `working/shipping/build.py` `CRUDE` and `PRODUCTS`:
+**What `shipping.json` assumed.** It used hand-set owner shares per year (`CRUDE` and `PRODUCTS` tables):
 - The UAE got 13–17% of crude and 10–15% of products from 2023, with 45% of UAE tonnage already judged Russian.
 - India got 8–10% of crude, and Hong Kong and China 6–12% each.
 - Greece got 17% of crude in 2024 and 8% in 2026, and products at 18% (2024–25) and 10% (2026).

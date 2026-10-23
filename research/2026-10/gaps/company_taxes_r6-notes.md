@@ -59,7 +59,9 @@ file, KSE is reliable. Its weak points are the interpolated and carried-forward 
 bo.nalog.ru (GIR BO), pb.nalog.ru and audit-it. The FNS "taxes paid" open data could not be reached. SPARK is paid.
 Company-level RAS data therefore come only through secondary sites.
 
-## How the numbers were built (script: scratchpad `company_taxes_r6/scripts/build.py`)
+## How the numbers were built
+
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 The starting point is the current in-scope series: the KSE figures for non-exited firms, plus a time-weighted share
 of the exited cohort. Each correction then replaces only the company inside it.

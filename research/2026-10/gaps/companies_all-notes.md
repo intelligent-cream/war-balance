@@ -2,7 +2,7 @@
 
 Output: `companies_all.json`. It covers 231 countries/territories: the 208 gap countries plus the 23 countries already in `companies.json`. Each value has a low / central / high (~90%) range.
 
-Scripts are in `working/scripts-companies2/` (`bars2.py`, `lrcounts.py`, `model2.py`, `build.py`). Downloads are in `working/raw/companies2/`.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## Scope
 **Definition used here:** taxes paid by Russian subsidiaries *while foreign-owned*.

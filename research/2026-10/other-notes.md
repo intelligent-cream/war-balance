@@ -3,7 +3,7 @@
 ## Method
 - FX: ECB 2024 annual average is 1.08238 USD per EUR (ECB SDW EXR.A.USD.EUR.SP00.A, downloaded). 2023 fallbacks use 1.08127.
 - Downloads are in research/raw/other/: wb_gdp.json, wb_pop.json, wb_countries.json, wb_gdp2023.json, imf_gdp.json, imf_pop.json, m49.html, unhcr_ukr*.json, eurostat_tp_ua.json, ecb_usd*.csv and kse_chp_q2_2026.pdf.
-- Scripts are in working/scripts/: popgdp.py builds popgdp.json, and build_other.py builds other.json.
+- This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 - Certainty letters: A means reported, B means a measured estimate, C means modelled and D means a rough indication. Belligerent sources are tagged "BELLIGERENT" in source strings.
 
 ## A. Military support to Russia (all D)

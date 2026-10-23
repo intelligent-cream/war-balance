@@ -2,11 +2,7 @@
 
 Gathered on 2026-10-17. The output is `nonreport.json`, covering 21 countries. Values are in EUR bn, low / central / high (meant as ~90% ranges), for 2019-2025 plus 2026 Jan-Aug (not annualized). **No one has reviewed this yet.**
 
-Scripts:
-- `working/scripts-nonreport/build.py` assembles the JSON from `trade_full.json` plus the overrides.
-- `crea_month.py` aggregates CREA monthly data by destination.
-
-The CREA extract is saved as `working/raw/nonreport/crea_by_dest_year.txt`. Its source file is `raw/energy/counter_month_dest_commodity_2021_2026aug.csv`, the CREA API data retrieved for `energy.json`.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. The CREA figures by destination and year were aggregated from `raw/energy/counter_month_dest_commodity_2021_2026aug.csv`, the CREA API data retrieved for `energy.json`.
 
 ## How to use
 - Each year has a `basis` field:
