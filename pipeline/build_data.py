@@ -1570,6 +1570,7 @@ def build() -> dict:
     apply_payment_agents(countries, src)
     apply_frozen_reserves(countries, src)
     apply_frozen_private(countries, src)
+    apply_svc_ukr(countries, src)
     apply_remittances(countries, src)
     apply_chpl(countries, src)
     apply_value_kept(countries, src)
@@ -1876,7 +1877,7 @@ SOURCE_TYPE = {
     "ua_trade_cf": "ours", "cf_bands": "ours", "power_of_siberia": "press", "weapons_value": "report",
     "state_finance": "data", "company_flows": "report", "russian_owned_r10": "report", "seizures": "report",
     "refugees_net": "data", "co_belligerent": "report", "loans_value": "report", "money_ledger": "data",
-    "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "remittances": "data",
+    "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "svc_ukr": "data", "remittances": "data",
     "chpl": "data", "value_kept": "report", "net_gain_sellers": "data", "military_payment": "press",
     "net_gain_russia": "data", "net_gain_ukraine": "data", "dangote": "press", "hormuz": "report",
     "assumptions_r11_gain": "notes", "assumptions_r11_rules": "notes", "assumptions_r11_hubs": "notes",
@@ -3957,6 +3958,43 @@ def apply_frozen_private(countries: dict[str, dict], src: Sources) -> None:
             cert.get(iso3, "C"),
             sid,
         )
+
+
+def apply_svc_ukr(countries: dict[str, dict], src: Sources) -> None:
+    """Round 39 (owner: "fix it"): extra services sold to Ukraine above the no-war level (svc_ukr_r39.json): transport on
+    the solidarity lanes and the like (the exporter's own report, without government services and repair), and
+    Ukrainians' own card spending abroad (refugees' spending less the fall in seasonal workers'). Money flowing back to
+    the seller, at its real gain: travel at the refugee-spending net gain x genuinely extra, the rest at the services
+    net gain x genuinely extra (the shares the file carries, product low/central/high). Stored per year (EUR bn, may be
+    negative); calc() sums the years and floors the total at zero, as for extra goods sold to Ukraine. Host
+    governments' refugee spending is not here (it flows back as refugee hosting, refsp)."""
+    sv = load(GAPS / "svc_ukr_r39.json")
+    sid = src.add(
+        "svc_ukr",
+        "Services sold to Ukraine: Eurostat bop_its6_det (partner UA), OECD-WTO BaTiS, National Bank of Ukraine services imports and card spending abroad",
+        "https://ec.europa.eu/eurostat/databrowser/view/bop_its6_det/default/table",
+        sv.get("generated"),
+        "against the 2021 level; see research/2026-10/gaps/svc_ukr_r39-notes.md",
+    )
+    keys = {"c": "central", "l": "low", "h": "high"}
+    for iso3, d in sv["countries"].items():
+        c = countries.get(iso3)
+        ex = d.get("extra_eur_bn") or {}
+        if not c or not ex:
+            continue
+        tr, nt, sh = ex.get("travel_ukrainian_money") or {}, ex.get("nontravel") or {}, d.get("shares") or {}
+        pt = (sh.get("travel") or {}).get("product_low_central_high") or [0, 0, 0]
+        pn = (sh.get("nontravel") or {}).get("product_low_central_high") or [0, 0, 0]
+        out = {}
+        for k, b in keys.items():
+            i = ("low", "central", "high").index(b)
+            out[k] = [0.0] + [
+                round((tr.get(b) or {}).get(str(y), 0.0) * pt[i] + (nt.get(b) or {}).get(str(y), 0.0) * pn[i], 5)
+                for y in YEARS[1:]
+            ]
+        if not any(abs(v) > 1e-6 for v in out["h"]):
+            continue
+        c["svc_ukr"] = {**out, "cert": (d.get("certainty") or "C")[0], "src": [sid]}
 
 
 def apply_remittances(countries: dict[str, dict], src: Sources) -> None:

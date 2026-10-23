@@ -1503,6 +1503,9 @@ function calc(c, y, opt = {}) {
     part("sell", "Extra sales to Ukraine above the pre-war level", sell3, cTrade, src("sell_ukr")),
     part("arms", "Arms Ukraine bought here", sum3(T.arms), c.flowback?.arms_cert || "C", c.flowback?.arms_src || []),
     part("othsp", "Aid spent here on energy, relief and rebuilding", sum3(T.othsp), c.flowback?.cert_own || "C", c.flowback?.src || []),
+    // round 39: extra services sold to Ukraine, already at the seller's real gain (svc_ukr: years summed, the total
+    // floored at zero, as for extra goods)
+    part("svcukr", "Extra services sold to Ukraine (transport, Ukrainians' spending)", ["c", "l", "h"].map(b => Math.max(0, (c.svc_ukr?.[b] || []).slice(1, N + 1).reduce((a, v) => a + v, 0))), c.svc_ukr?.cert || "C", c.svc_ukr?.src || []),
   ];
   const takenParts = (c.taken || []).map(x => { const s3 = [0, 0, 0]; for (let i = 1; i <= N; i++) { s3[0] += x.c[i]; s3[1] += x.l[i]; s3[2] += x.h[i]; } return part(x.k, x.label, s3, x.cert, x.src); });
   const costParts = [
@@ -1546,7 +1549,7 @@ function calc(c, y, opt = {}) {
   const rgs = k => (c.aid?.[k] ? c.aid[k].slice(1, N + 1).reduce((a, b) => a + b, 0) : null);
   const rg3 = c.aid?.refugee_gross_years ? [rgs("refugee_gross_years"), rgs("refugee_gross_years_lo") ?? rgs("refugee_gross_years"), rgs("refugee_gross_years_hi") ?? rgs("refugee_gross_years")] : ref3;
   const rbf = c.aid?.refugee_back_f, refBack = rbf && ref3[0] > 0 && rg3[0] > 0 ? [{ ...part("refsp", "Refugee hosting spent in its own economy (rent, food, services)", rg3, "C", c.aid?.refugee_src || []), cert: "C" }] : [];
-  const back = state.netBack ? live(backParts.concat(refBack).map(negPart).map(p => { const f = p.k === "refsp" ? rbf : vk(p.k === "sell" ? "ux" : p.k === "othsp" ? "fo" : "fw"); return { ...p, v: p.v * f[1], lo: p.lo * f[2], hi: p.hi * f[0] }; })) : [];
+  const back = state.netBack ? live(backParts.concat(refBack).map(negPart).map(p => { const f = p.k === "refsp" ? rbf : p.k === "svcukr" ? [1, 1, 1] : vk(p.k === "sell" ? "ux" : p.k === "othsp" ? "fo" : "fw"); return { ...p, v: p.v * f[1], lo: p.lo * f[2], hi: p.hi * f[0] }; })) : [];
   const backCost = back;
   const shiftAll = live(shiftParts.concat(back)), costAll = live(costParts.concat(backCost));
   const [shift, shiftLo, shiftHi] = total(shiftAll), [cost, costLo, costHi] = total(costAll);
@@ -1921,7 +1924,7 @@ const PART_DOC = {
   exits: "russia-state-and-companies.md#companies-leaving-russia", rusfirms: "russia-state-and-companies.md#russian-owned-companies-abroad",
   frozen: "russia-state-and-companies.md#frozen-central-bank-reserves", frozen_priv: "russia-state-and-companies.md#frozen-central-bank-reserves", seized: "russia-state-and-companies.md#assets-seized-by-russia", remit: "trade.md#remittances-and-relocants",
   agents: "trade.md#payment-agents", multilat: "loans.md#new-lending-by-the-imf-and-world-bank",
-  own: "aid-refugees-military.md#flowback", refsp: "aid-refugees-military.md#refugee-spending-flowing-back", purl: "aid-refugees-military.md#flowback", sell: "aid-refugees-military.md#flowback", arms: "aid-refugees-military.md#arms-ukraine-bought-abroad", othsp: "aid-refugees-military.md#flowback",
+  own: "aid-refugees-military.md#flowback", refsp: "aid-refugees-military.md#refugee-spending-flowing-back", purl: "aid-refugees-military.md#flowback", svcukr: "aid-refugees-military.md#flowback", sell: "aid-refugees-military.md#flowback", arms: "aid-refugees-military.md#arms-ukraine-bought-abroad", othsp: "aid-refugees-military.md#flowback",
   prem: "energy-and-laundered-oil.md#energy-premium-and-oil-discount", disc: "energy-and-laundered-oil.md#energy-premium-and-oil-discount", margin: "trade.md#profit-not-revenue", tariff: "overview.md#the-cost-view",
 };
 // in How it works: a part's place in its flow's full method (round 23: the method pages are site/content/method/)
@@ -1938,7 +1941,7 @@ const FLOWS = [
   {"id": "undisc", "name": "Undisclosed military aid (estimate)", "what": "Military aid that governments did not publish, estimated from policy briefs and national reports.", "parts": ["undisc"], "method": "aid-refugees-military.md#undisclosed-aid-and-private-donations", "files": ["gaps/uncovered-notes.md", "gaps/audit2-notes.md"]},
   {"id": "priv", "name": "Private donations", "what": "Money given to Ukraine by people and companies, from national donation totals or a model based on GDP.", "parts": ["priv"], "method": "aid-refugees-military.md#undisclosed-aid-and-private-donations", "files": ["gaps/uncovered-notes.md", "gaps/assumptions_r11_people-notes.md"]},
   {"id": "ref", "name": "Hosting refugees", "what": "What host governments spent on refugees from Ukraine, minus what donors paid back and the host's gain on refugees' work.", "parts": ["ref"], "method": "aid-refugees-military.md#refugees", "files": ["gaps/refugees-notes.md", "gaps/refugees_net-notes.md", "gaps/flowback2-notes.md", "gaps/round4b-notes.md", "gaps/assumptions_r11_people-notes.md", "verify_r11_aid-notes.md"], "raw": ["eurostat_tp", "unhcr_verify", "refugee_budgets"], "src": ["co_belligerent"]},
-  {"id": "flowback", "name": "Flowing back from Ukraine", "what": "Aid money spent in the giver's own economy, and extra sales to Ukraine, subtracted at the seller's net gain times the share that is genuinely extra.", "parts": ["own", "purl", "othsp", "arms", "sell", "refsp"], "method": "aid-refugees-military.md#flowback", "files": ["gaps/money_ledger-notes.md", "gaps/net_gain_sellers-notes.md", "gaps/value_kept-notes.md", "gaps/ua_arms_purchases-notes.md", "flowback-notes.md", "gaps/flowback2-notes.md"]},
+  {"id": "flowback", "name": "Flowing back from Ukraine", "what": "Aid money spent in the giver's own economy, and extra sales to Ukraine, subtracted at the seller's net gain times the share that is genuinely extra.", "parts": ["own", "purl", "othsp", "arms", "sell", "svcukr", "refsp"], "method": "aid-refugees-military.md#flowback", "files": ["gaps/svc_ukr_r39-notes.md", "gaps/money_ledger-notes.md", "gaps/net_gain_sellers-notes.md", "gaps/value_kept-notes.md", "gaps/ua_arms_purchases-notes.md", "flowback-notes.md", "gaps/flowback2-notes.md"]},
   {"id": "paid", "name": "Payments to Russia for fuel and goods", "what": "Oil, gas, coal, LNG and other goods bought from Russia, against the level expected without the war, counted at Russia's net gain. Gas that Russia cut off itself is labelled.", "parts": ["paid"], "method": "overview.md#the-net-gain-rule", "files": ["gaps/trade_full-notes.md", "crea-notes.md", "gaps/energy2-notes.md", "gaps/gas_prices-notes.md", "gaps/prices-notes.md", "gaps/net_gain_russia-notes.md", "gaps/counterfactual-notes.md", "gaps/to_rus_cf-notes.md", "gaps/power_of_siberia_r15-notes.md", "gaps/nonreport-notes.md", "gaps/reexports-notes.md", "verify_r11_trade-notes.md"], "raw": ["comtrade", "crea", "eurostat"], "src": ["gas_cuts"]},
   {"id": "windfall", "name": "War-time fuel prices", "what": "The extra Russia earned because fuel prices rose with the war, at Russia's net gain on that extra price (all of it for oil and pipeline gas, less for LNG and coal).", "parts": ["windfall"], "method": "prices.md#war-time-windfall", "files": ["gaps/energy_nowar-notes.md", "gaps/prices-notes.md", "gaps/gas_prices-notes.md", "gaps/net_gain_russia-notes.md"], "raw": ["crea"], "src": ["hormuz"]},
   {"id": "laund", "name": "Refined and laundered Russian oil", "what": "Fuel made from Russian crude in other countries, EU refiners included, or passed on by trading hubs, charged to the final buyer, in volumes against its pre-war level.", "parts": ["laund"], "method": "energy-and-laundered-oil.md#laundered-oil", "files": ["gaps/laundered_eu-notes.md", "gaps/hub_buyers-notes.md", "gaps/crude_content-notes.md", "gaps/laundered_r6-notes.md", "gaps/assumptions_r11_hubs-notes.md", "gaps/energy-notes.md", "gaps/round4a-notes.md"], "raw": ["comtrade", "comtrade_2710"], "src": ["laundered_eu", "eu_refiners", "dangote"]},
@@ -3263,7 +3266,7 @@ function mainPart(parts, total) {
 const BACK_MOSTLY = "mostly earnings from the war effort for Ukraine";
 function driverText(c, k, top, total, lang, isNet) {
   const T = lang === "en" ? (x, v) => (v ? x.replace(/\{(\w+)\}/g, (m, q) => (q in v ? v[q] : m)) : x) : t;
-  const what = total >= 0 ? (isNet && NET_MOSTLY[top.k]) || LESS_MOSTLY[top.k] : MORE_MOSTLY[top.k] || (["own", "purl", "sell", "arms", "othsp", "refsp"].includes(top.k) ? BACK_MOSTLY : null);
+  const what = total >= 0 ? (isNet && NET_MOSTLY[top.k]) || LESS_MOSTLY[top.k] : MORE_MOSTLY[top.k] || (["own", "purl", "sell", "svcukr", "arms", "othsp", "refsp"].includes(top.k) ? BACK_MOSTLY : null);
   if (!what) return "";
   let w = T(what);
   if (top.k === "windfall" && total < 0 && c.windfall?.years) {
@@ -3619,11 +3622,11 @@ const PLAIN = {
   rusarms: v => (v >= 0 ? "Russia kept less from weapons sold here" : "Russia kept more from weapons sold here"),
   agents: v => (v >= 0 ? "{c} kept less from settling Russia's trade" : "{c} kept more from settling Russia's trade"),
   // money flowing back from the war effort: what the country kept of what was spent here
-  own: "{c} kept back part of its aid, spent at home", purl: "{c} kept part of others' aid, spent here", sell: "{c} kept more from extra sales to Ukraine",
+  own: "{c} kept back part of its aid, spent at home", purl: "{c} kept part of others' aid, spent here", sell: "{c} kept more from extra sales to Ukraine", svcukr: "{c} kept more from extra services sold to Ukraine",
   arms: "{c} kept more from arms Ukraine bought here", othsp: "{c} kept part of aid spent here (energy, rebuilding)", refsp: "{c} kept back part of its refugee spending",
 };
 const plainName = (p, c) => { const L = PLAIN[p.k]; return L ? t(typeof L === "function" ? L(p.v) : L, { c: c ? c.name : t("The country") }) : p.label; };
-const BACK_KEYS = new Set(["own", "purl", "sell", "arms", "othsp", "refsp"]);
+const BACK_KEYS = new Set(["own", "purl", "sell", "svcukr", "arms", "othsp", "refsp"]);
 const sideOf = p => (UA_PARTS.has(p.k) || BACK_KEYS.has(p.k) ? "ua" : OWN_LINE.has(p.k) ? "own" : "rus");
 // one colour rule on the bars too: blue toward Ukraine, orange toward Russia, grey for what was earned back
 const partCol = p => (p.v >= 0 ? "var(--ukr)" : sideOf(p) === "rus" ? "var(--rus)" : "var(--ink-soft)");
