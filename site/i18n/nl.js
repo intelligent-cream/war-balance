@@ -1163,4 +1163,11 @@ I18N.nl = {
   "the extra price Russia paid because of sanctions": "de meerprijs die Rusland door de sancties betaalde",
   "{c} earned an extra price from Russia because of sanctions": "{c} verdiende door de sancties een meerprijs aan Rusland",
   "More fuel bought from refiners abroad, some of it made from Russian crude, because its own refineries closed (New Zealand's Marsden Point in 2022; South Africa's Engen and SAPREF in 2020 and 2022). A structural change in supply, not a policy.": "Meer brandstof gekocht van buitenlandse raffinaderijen, deels uit Russische ruwe olie, omdat de eigen raffinaderijen sloten (Marsden Point in Nieuw-Zeeland in 2022; Engen en SAPREF in Zuid-Afrika in 2020 en 2022). Een structurele verandering in aanbod, geen beleid.",
+  "Russian forces paid here (Wagner / Africa Corps)": "Hier betaalde Russische troepen (Wagner / Africa Corps)",
+  "mostly less paid to Russian forces (Wagner / Africa Corps)": "vooral minder betaald aan Russische troepen (Wagner / Africa Corps)",
+  "mostly payments and resources to Russian forces (Wagner / Africa Corps)": "vooral betalingen en grondstoffen aan Russische troepen (Wagner / Africa Corps)",
+  "Russian forces in the country": "Russische troepen in het land",
+  "Wagner Group or Russia's Africa Corps operated here: {yrs}.": "De Wagnergroep of het Russische Africa Corps was hier actief: {yrs}.",
+  "Paid to them and taken by their firms, at Russia's gain, against 2021: {v}.": "Aan hen betaald en door hun bedrijven genomen, tegen de winst van Rusland, tegenover 2021: {v}.",
+  "Wagner Group or Russia's Africa Corps operated here (2022 on).": "De Wagnergroep of het Russische Africa Corps was hier actief (vanaf 2022).",
 };

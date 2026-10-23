@@ -1162,4 +1162,11 @@ I18N.de = {
   "the extra price Russia paid because of sanctions": "der Aufpreis, den Russland wegen der Sanktionen zahlte",
   "{c} earned an extra price from Russia because of sanctions": "{c} verdiente wegen der Sanktionen einen Aufpreis von Russland",
   "More fuel bought from refiners abroad, some of it made from Russian crude, because its own refineries closed (New Zealand's Marsden Point in 2022; South Africa's Engen and SAPREF in 2020 and 2022). A structural change in supply, not a policy.": "Mehr Brennstoff von Raffinerien im Ausland gekauft, teils aus russischem Rohöl, weil die eigenen Raffinerien schlossen (Neuseelands Marsden Point 2022; Südafrikas Engen und SAPREF 2020 und 2022). Ein struktureller Wandel des Angebots, keine Politik.",
+  "Russian forces paid here (Wagner / Africa Corps)": "Hier bezahlte russische Kräfte (Wagner / Afrikakorps)",
+  "mostly less paid to Russian forces (Wagner / Africa Corps)": "vor allem weniger an russische Kräfte gezahlt (Wagner / Afrikakorps)",
+  "mostly payments and resources to Russian forces (Wagner / Africa Corps)": "vor allem Zahlungen und Ressourcen an russische Kräfte (Wagner / Afrikakorps)",
+  "Russian forces in the country": "Russische Kräfte im Land",
+  "Wagner Group or Russia's Africa Corps operated here: {yrs}.": "Die Wagner-Gruppe oder Russlands Afrikakorps war hier tätig: {yrs}.",
+  "Paid to them and taken by their firms, at Russia's gain, against 2021: {v}.": "An sie gezahlt und von ihren Firmen genommen, mit Russlands Gewinn, gegenüber 2021: {v}.",
+  "Wagner Group or Russia's Africa Corps operated here (2022 on).": "Die Wagner-Gruppe oder Russlands Afrikakorps war hier tätig (ab 2022).",
 };

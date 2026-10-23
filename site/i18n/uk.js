@@ -1165,4 +1165,11 @@ I18N.uk = {
   "the extra price Russia paid because of sanctions": "надбавка, яку Росія платила через санкції",
   "{c} earned an extra price from Russia because of sanctions": "{c} отримала від Росії надбавку через санкції",
   "More fuel bought from refiners abroad, some of it made from Russian crude, because its own refineries closed (New Zealand's Marsden Point in 2022; South Africa's Engen and SAPREF in 2020 and 2022). A structural change in supply, not a policy.": "Більше пального куплено в закордонних НПЗ, частково з російської нафти, бо закрилися власні НПЗ (Marsden Point у Новій Зеландії у 2022; Engen і SAPREF у ПАР у 2020 і 2022). Структурна зміна пропозиції, а не політика.",
+  "Russian forces paid here (Wagner / Africa Corps)": "Російські сили, оплачені тут (Вагнер / Африканський корпус)",
+  "mostly less paid to Russian forces (Wagner / Africa Corps)": "здебільшого менше сплачено російським силам (Вагнер / Африканський корпус)",
+  "mostly payments and resources to Russian forces (Wagner / Africa Corps)": "здебільшого платежі й ресурси російським силам (Вагнер / Африканський корпус)",
+  "Russian forces in the country": "Російські сили в країні",
+  "Wagner Group or Russia's Africa Corps operated here: {yrs}.": "Група Вагнера або російський Африканський корпус діяли тут: {yrs}.",
+  "Paid to them and taken by their firms, at Russia's gain, against 2021: {v}.": "Сплачено їм і взято їхніми фірмами, за вигодою Росії, порівняно з 2021: {v}.",
+  "Wagner Group or Russia's Africa Corps operated here (2022 on).": "Група Вагнера або російський Африканський корпус діяли тут (з 2022).",
 };
