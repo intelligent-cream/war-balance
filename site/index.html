@@ -3911,17 +3911,11 @@ function partTiles(c, k, y) {
   const busy = `<p class="key">${t("Russia's earnings from trade: buying from and selling to Russia, services, shipping and company taxes paid there, each compared with no war.")} ${EARN_MEANS()} ${KEPT_MEANS()}</p>`;
   // round 36 (owner, 23 October 2026: "I never get why [frozen money] is explicitly mentioned and not just in the
   // breakdown or tags"): no tile of its own; it is the last section of the breakdown, in the closing sum and a tag
-  // round 35 (owner: "more calm"): the two lines are inside the tile's tap text, not under it
-  // round 24b (audit 24, D M1; approved by the owner): business with Russia as two lines under its tile, what the country
-  // paid Russia and what it earned from Russia (display subtotals; their ranges do not add up to the tile's)
-  // round 29 (audit: "€0 more"): a line that rounds to nothing is left out
-  const lineRow = (q, v, lo, hi) => Math.abs(v) < 0.0005 ? "" : `<p class="rline"><span>${verb(q, v, c, "total")}</span><span class="rl-r">${rangeWords(c, lo, hi, "net", "gdp")}</span></p>`;
-  const lineKey = `<p class="key">${t("What Russia kept: on purchases from Russia, war-time prices, Russian oil bought via others, services, taxes paid in Russia, and arms given to Russia. What the country kept: on sales and services sold to Russia, shipping its oil and arms sold to it. The two ranges do not add up to the total's.")}</p>`;
-  const lines = Math.abs(k.rusPaid) + Math.abs(k.rusEarned) > 0.0005 ? `<div class="rlines" aria-label="${t("Russia's earnings from trade in two lines")}">
-    ${lineRow("paid", k.rusPaid, k.rusPaidLo, k.rusPaidHi)}${lineRow("earned", k.rusEarned, k.rusEarnedLo, k.rusEarnedHi)}</div>` : "";
+  // round 37 (owner, 23 October 2026): the two "who kept what" lines are gone from the tile; the breakdown rows and the
+  // tags say the same
   return `<div class="tiles">
     ${tile("ua", "ua", k.uaBal, k.uaLo, k.uaHi, k.earnerUa ? "earn" : "", col(k.uaBal, "ua", "var(--ink-soft)"), ua, rx + (() => { const ap = k.shiftParts.find(p => p.k === "aid"), kl = ap ? kielLine(c, ap.v) : ""; return kl ? `<p>${kl}</p>` : ""; })(), "var(--ink-soft)")}
-    ${tile("rus", "rus", k.rusBal, k.rusLo, k.rusHi, "", col(k.rusBal, "rus", "var(--rus-text, var(--rus))"), ru, lines + cutTxt + busy + (lines ? lineKey : ""), "var(--rus)")}
+    ${tile("rus", "rus", k.rusBal, k.rusLo, k.rusHi, "", col(k.rusBal, "rus", "var(--rus-text, var(--rus))"), ru, cutTxt + busy, "var(--rus)")}
   </div>`;
 }
 const PARTS_SHOWN = 3;   // per section (round 25: 5; round 35, owner "more calm": 3)

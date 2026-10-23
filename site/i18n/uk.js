@@ -983,8 +983,6 @@ I18N.uk = {
   "Its story in short": "Її історія коротко",
   "+{n} more": "+{n} ще",
   "Russia's earnings from trade: buying from and selling to Russia, services, shipping and company taxes paid there, each compared with no war.": "Торговельні доходи Росії: купівля в Росії та продаж Росії, послуги, перевезення і податки фірм, сплачені там, кожне порівняно з відсутністю війни.",
-  "What Russia kept: on purchases from Russia, war-time prices, Russian oil bought via others, services, taxes paid in Russia, and arms given to Russia. What the country kept: on sales and services sold to Russia, shipping its oil and arms sold to it. The two ranges do not add up to the total's.": "Що залишила собі Росія: з купівлі в Росії, воєнних цін, російської нафти, купленої через інших, послуг, податків, сплачених у Росії, і зброї, переданої Росії. Що залишила собі країна: з продажу товарів і послуг Росії, перевезення її нафти та зброї, проданої їй. Два діапазони не складаються в діапазон загальної суми.",
-  "Russia's earnings from trade in two lines": "Торговельні доходи Росії у двох рядках",
   "Toward Russia": "На бік Росії",
   "Show the other part": "Показати іншу частину",
   "tap a part for how it is calculated": "торкніться частини, щоб побачити розрахунок",

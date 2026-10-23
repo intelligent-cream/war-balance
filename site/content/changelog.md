@@ -4,6 +4,17 @@ Every update to the map, newest first: what changed and every decision behind it
 
 The detailed research log, with every file, is [`research/2026-10/README.md`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/README.md).
 
+<h2 id="cl-r37">Round 37: the trade tile without the two "who kept what" lines <span class="cl-date">23 October</span></h2>
+<!-- flows: paid windfall laund sold -->
+
+**Opening the trade tile no longer shows "Russia kept €X less" and "<country> kept €X less from selling to Russia" with
+their ranges: the breakdown rows and the tags already say this. No number changed.**
+
+### Decisions
+
+- **No separate "who kept what" lines.** Raised by the owner (23 October 2026): "either tags or breakdown, we don't need
+  these sections." Effect: display only.
+
 <h2 id="cl-r36">Round 36: Russian money frozen without a tile of its own <span class="cl-date">23 October</span></h2>
 <!-- flows: frozen -->
 
