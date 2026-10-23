@@ -36,15 +36,15 @@ A traded flow has four main sources of uncertainty: the pre-war level, the actua
 
 ## From parts to a total
 
-Parts' ranges are combined the same way, with correlations where errors are shared (for example, all parts weighted by Russia's gain shares move together). The effect is small: Germany's net range is +2.38%<!-- n:DEU.netLo --> to +4.84%<!-- n:DEU.netHi -->.
+Parts' ranges are combined the same way, with correlations where errors are shared (for example, all parts weighted by Russia's gain shares move together). The effect is small: Germany's net range is +2.58%<!-- n:DEU.netLo --> to +5.05%<!-- n:DEU.netHi -->.
 
-A number's direction is **certain** only if neither its likely range nor any method-band alternative changes its sign. Otherwise it **leans** toward Ukraine or Russia when its direction has at least a 65% chance, worked out by simulating its parts (each a skewed range, correlated where they share inputs), and is **uncertain** below that. When its likely range and its method band both stay within ±0.5% of a year's GDP it is **near zero**: the war moved little money either way. All stay in the ranking, in their own groups, and the country's panel says in one line why its number is not certain. Among the 163<!-- n:WORLD.nBig --> economies above EUR 5bn, 95<!-- n:WORLD.uncUa --> are not certain on support for Ukraine, 119<!-- n:WORLD.uncRus --> on Russia's earnings from trade and 110<!-- n:WORLD.uncNet --> on the net, of which 66<!-- n:WORLD.leanNet --> lean one way and 36<!-- n:WORLD.nearNet --> are near zero.
+A number's direction is **certain** only if neither its likely range nor any method-band alternative changes its sign. Otherwise it **leans** toward Ukraine or Russia when its direction has at least a 65% chance, worked out by simulating its parts (each a skewed range, correlated where they share inputs), and is **uncertain** below that. When its likely range and its method band both stay within ±0.5% of a year's GDP it is **near zero**: the war moved little money either way. All stay in the ranking, in their own groups, and the country's panel says in one line why its number is not certain. Among the 163<!-- n:WORLD.nBig --> economies above EUR 5bn, 96<!-- n:WORLD.uncUa --> are not certain on support for Ukraine, 114<!-- n:WORLD.uncRus --> on Russia's earnings from trade and 107<!-- n:WORLD.uncNet --> on the net, of which 62<!-- n:WORLD.leanNet --> lean one way and 35<!-- n:WORLD.nearNet --> are near zero.
 
 ## The method band
 
 The likely range is uncertainty **given the method**. The method band shows each headline number under other reasonable choices, one at a time:
 
-- the war-time windfall in full, or left out (Hungary raised Russia's earnings from trade by 0.92%<!-- n:HUN.alt_windfall_off.rus abs --> of GDP without it, instead of 6.14%<!-- n:HUN.rus abs -->);
+- the war-time windfall in full, or left out (Hungary raised Russia's earnings from trade by 1.35%<!-- n:HUN.alt_windfall_off.rus abs --> of GDP without it, instead of 6.57%<!-- n:HUN.rus abs -->);
 - loans at the war-time yield;
 - EU refiners keep the Russian crude in their fuel exports; laundered oil with a looser rule, or not counted;
 - the fuel mix from tanker tonnes; fuel prices with freight; a higher normal return;
@@ -55,7 +55,7 @@ The likely range is uncertainty **given the method**. The method band shows each
 - North Korea paid only what was observed flowing back;
 - 2024 GDP instead of the 2022–2024 average.
 
-The band is the lowest and highest of these; it is not a probability range. Examples (the net): Germany 2.92%<!-- n:DEU.netBandLo --> to 3.84%<!-- n:DEU.netBandHi -->, Moldova 4.05%<!-- n:MDA.netBandLo --> to 9.90%<!-- n:MDA.netBandHi -->, Hungary −7.70%<!-- n:HUN.netBandLo --> to −0.50%<!-- n:HUN.netBandHi -->, North Korea −31.86%<!-- n:PRK.netBandLo --> to −11.21%<!-- n:PRK.netBandHi -->.
+The band is the lowest and highest of these; it is not a probability range. Examples (the net): Germany 3.13%<!-- n:DEU.netBandLo --> to 4.05%<!-- n:DEU.netBandHi -->, Moldova 3.96%<!-- n:MDA.netBandLo --> to 9.76%<!-- n:MDA.netBandHi -->, Hungary −8.09%<!-- n:HUN.netBandLo --> to −0.89%<!-- n:HUN.netBandHi -->, North Korea −31.86%<!-- n:PRK.netBandLo --> to −11.21%<!-- n:PRK.netBandHi -->.
 
 ## Average year
 

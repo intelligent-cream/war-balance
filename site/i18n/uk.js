@@ -1162,4 +1162,8 @@ I18N.uk = {
   "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)": "відмита нафта: половина вигоди Росії на сирій нафті зараховується покупцю палива (Росія перенаправила нафту, тож один покупець менше впливає на її доходи)",
   "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs": "відмита нафта, змодельована з експорту НПЗ і перепродажу через хаби (до раунду 38), а не виміряна з митниці покупця",
   "laundered oil: every buyer's change counted, without the route rule (buyers without a measured series)": "відмита нафта: враховано зміну кожного покупця, без правила маршруту (покупці без виміряного ряду)",
+  "Extra price Russia paid it because of sanctions": "Надбавка, яку Росія платила йому через санкції",
+  "mostly the extra price Russia paid it because of sanctions": "здебільшого надбавка, яку Росія платила через санкції",
+  "the extra price Russia paid because of sanctions": "надбавка, яку Росія платила через санкції",
+  "{c} earned an extra price from Russia because of sanctions": "{c} отримала від Росії надбавку через санкції",
 };

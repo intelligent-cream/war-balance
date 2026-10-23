@@ -1160,4 +1160,8 @@ I18N.pl = {
   "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)": "wyprana ropa: połowa zysku Rosji na ropie przypisana nabywcy paliwa (Rosja przekierowała ropę, więc jeden nabywca mniej wpływa na jej dochody)",
   "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs": "wyprana ropa modelowana z eksportu rafinerii i odsprzedaży w hubach (do rundy 38), nie mierzona w cle nabywcy",
   "laundered oil: every buyer's change counted, without the route rule (buyers without a measured series)": "wyprana ropa: liczona zmiana każdego nabywcy, bez reguły trasy (nabywcy bez zmierzonej serii)",
+  "Extra price Russia paid it because of sanctions": "Dopłata, którą Rosja mu płaciła z powodu sankcji",
+  "mostly the extra price Russia paid it because of sanctions": "głównie dopłata, którą Rosja płaciła z powodu sankcji",
+  "the extra price Russia paid because of sanctions": "dopłata, którą Rosja płaciła z powodu sankcji",
+  "{c} earned an extra price from Russia because of sanctions": "{c} zarobił na Rosji dopłatę z powodu sankcji",
 };

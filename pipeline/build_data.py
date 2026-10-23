@@ -1604,6 +1604,7 @@ def build() -> dict:
     apply_brunei_r6(countries)
     apply_relocants(countries)
     apply_audit2(countries, src, "values")
+    apply_import_premium(countries, src)
     uae_fuel_net(countries)
     war_windfall(countries, src)
     pre_war_trends(countries, src)
@@ -1945,7 +1946,7 @@ SOURCE_TYPE = {
     "ua_trade_cf": "ours", "cf_bands": "ours", "power_of_siberia": "press", "weapons_value": "report",
     "state_finance": "data", "company_flows": "report", "russian_owned_r10": "report", "seizures": "report",
     "refugees_net": "data", "co_belligerent": "report", "loans_value": "report", "money_ledger": "data",
-    "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "svc_ukr": "data", "company_profits": "data", "remittances": "data",
+    "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "svc_ukr": "data", "company_profits": "data", "import_premium": "data", "remittances": "data",
     "chpl": "data", "value_kept": "report", "net_gain_sellers": "data", "military_payment": "press",
     "net_gain_russia": "data", "net_gain_ukraine": "data", "dangote": "press", "hormuz": "report",
     "assumptions_r11_gain": "notes", "assumptions_r11_rules": "notes", "assumptions_r11_hubs": "notes",
@@ -4121,6 +4122,43 @@ def apply_company_profits(countries: dict[str, dict], src: Sources) -> None:
             add_extra(
                 countries[h], "lngpartners", "Income from stakes in Russian oil and gas projects", s3, cert[h], sid
             )
+
+
+def apply_import_premium(countries: dict[str, dict], src: Sources) -> None:
+    """Round 39 (owner: "fix it"): the extra price Russia pays because of sanctions (import_premium_r39.json): for each
+    seller and year, its unit values to Russia against the same goods to everyone else, against 2021 (UN Comtrade HS6,
+    fuel and gold left out). The premium is price, not volume: it comes off the seller's sales to Russia (so it is not
+    read as extra volume), and the seller's own gain on it is a part toward Russia (net gain 1, genuinely extra 1, times
+    the share that really stays with the seller: not compliance and payment costs, mix changes, over-invoicing for
+    capital flight or Russian-owned front companies). Re-exports, the unexplained residual, hub margins, agent fees and
+    the critical-goods marker are unchanged."""
+    ip = load(GAPS / "import_premium_r39.json")
+    sid = src.add(
+        "import_premium",
+        "Sanctions premium on Russia's imports: UN Comtrade HS6 unit values to Russia against the rest of the world, CEPII, BOFIT and CEPR studies",
+        "https://www.cepii.fr/PDF_PUB/pb/2024/pb2024-50.pdf",
+        ip.get("generated"),
+        "against 2021; see research/2026-10/gaps/import_premium_r39-notes.md",
+    )
+    bands = ("low", "central", "high")
+    for iso3, d in ip["countries"].items():
+        c = countries.get(iso3)
+        fr = (c or {}).get("from_rus")
+        if not c or not fr or not d.get("years"):
+            continue
+        yrs = d["years"]
+        gross = [((yrs.get(str(y)) or {}).get("gross_premium_eur_bn") or {}).get("central", 0.0) for y in YEARS]
+        gain = {
+            b: [((yrs.get(str(y)) or {}).get("seller_gain_eur_bn") or {}).get(b, 0.0) for y in YEARS] for b in bands
+        }
+        if not any(gross) and not any(gain["high"]):
+            continue
+        for k in ("years", "years_lo", "years_hi"):
+            if fr.get(k):
+                fr[k] = [round(max(0.0, v - g), 5) for v, g in zip(fr[k], gross, strict=True)]
+        add_extra(
+            c, "premium", "Extra price Russia paid it because of sanctions", gain, (d.get("certainty") or "D")[0], sid
+        )
 
 
 def apply_remittances(countries: dict[str, dict], src: Sources) -> None:

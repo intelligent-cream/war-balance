@@ -1159,4 +1159,8 @@ I18N.de = {
   "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)": "gewaschenes Öl: die Hälfte von Russlands Gewinn auf das Rohöl wird dem Brennstoffkäufer angerechnet (Russland lenkte sein Rohöl um, also bewegt ein Käufer seine Einnahmen weniger)",
   "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs": "gewaschenes Öl aus Exporten der Raffinerien und Weiterverkauf über Drehkreuze modelliert (bis Runde 38), nicht aus dem Zoll des Käufers gemessen",
   "laundered oil: every buyer's change counted, without the route rule (buyers without a measured series)": "gewaschenes Öl: die Veränderung jedes Käufers gezählt, ohne die Routenregel (Käufer ohne gemessene Reihe)",
+  "Extra price Russia paid it because of sanctions": "Aufpreis, den Russland ihm wegen der Sanktionen zahlte",
+  "mostly the extra price Russia paid it because of sanctions": "vor allem der Aufpreis, den Russland wegen der Sanktionen zahlte",
+  "the extra price Russia paid because of sanctions": "der Aufpreis, den Russland wegen der Sanktionen zahlte",
+  "{c} earned an extra price from Russia because of sanctions": "{c} verdiente wegen der Sanktionen einen Aufpreis von Russland",
 };

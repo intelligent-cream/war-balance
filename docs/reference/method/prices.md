@@ -108,7 +108,7 @@ Rules:
 
 - **Fuel only.** The price rise of non-fuel goods is mostly general inflation, so it is left out.
 - **Only money flowing to Russia.** Higher prices on goods *sold to* Russia do not count in the seller's favour.
-- **On top of volume.** A country that cut volumes still gets the windfall on what it kept buying. Germany: EUR 16.5bn<!-- n:DEU.part_windfall abs --> toward Russia (likely 1.3<!-- n:DEU.part_windfallHi abs --> to 29.1<!-- n:DEU.part_windfallLo abs -->), almost all in 2022.
+- **On top of volume.** A country that cut volumes still gets the windfall on what it kept buying. Germany: EUR 16.5bn<!-- n:DEU.part_windfall abs --> toward Russia (likely 1.3<!-- n:DEU.part_windfallHi abs --> to 29.2<!-- n:DEU.part_windfallLo abs -->), almost all in 2022.
 
 `prices.json` computes its own windfall too (all 102 countries EUR 601bn for 2022–2026, 486–716, including non-fuel goods); the map's part uses fuel only and the map's own payments series, so the two differ.
 
@@ -168,7 +168,7 @@ Fuel prices in 2026 are high partly because of the Hormuz crisis: after the stri
 - **The money stays in.** It really reached Russia, and buyers who stopped buying would have paid those prices, so 2026's changes are valued at 2026's prices like every other year (and the 2026 no-war price is the actual world price, [above](https://warbalance.org/#view=how&sec=m-prices-no-war-prices)).
 - **It is made visible.** The panel shows a note on 2026 wherever valuing 2026 at 2025 prices would move Russia's earnings from trade by at least 0.01% of GDP, with that value and the 2022–2025 figure; the cited source is CREA's analysis. <span class="incode">In the code: `hormuzNote()`</span>
 - **Method band "2026 at 2025 prices".** `calc(c, y, {p26: true})` values 2026's trade at 2025's no-war fuel price level (`to_rus.p26` = 2025 ÷ 2026 of the country's fuel price multiplier), the Russian crude in fuel bought elsewhere at 2025's Brent (`laund.p26` = 1.191 ÷ 1.515 = 0.786) and 2026's windfall at the same factor as payments. Built in `apply_nowar_prices()` and `current_euros()`.
-- **Germany as an example**: its net is toward Ukraine by 3.44%<!-- n:DEU.net --> for 2022–August 2026 and 2.77%<!-- n:DEU.net2025 --> for 2022–2025 alone. With 2026 at 2025 prices it cut Russia's earnings from trade by 1.46%<!-- n:DEU.alt_p26.rus --> instead of 1.57%<!-- n:DEU.rus -->.
+- **Germany as an example**: its net is toward Ukraine by 3.65%<!-- n:DEU.net --> for 2022–August 2026 and 2.94%<!-- n:DEU.net2025 --> for 2022–2025 alone. With 2026 at 2025 prices it cut Russia's earnings from trade by 1.62%<!-- n:DEU.alt_p26.rus --> instead of 1.74%<!-- n:DEU.rus -->.
 
 ## A note on index bases
 

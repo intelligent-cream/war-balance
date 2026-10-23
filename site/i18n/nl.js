@@ -1160,4 +1160,8 @@ I18N.nl = {
   "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)": "witgewassen olie: de helft van de winst van Rusland op de ruwe olie toegerekend aan de brandstofkoper (Rusland leidde zijn ruwe olie om, dus één koper beweegt zijn inkomsten minder)",
   "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs": "witgewassen olie gemodelleerd uit export van raffinaderijen en doorverkoop via knooppunten (tot ronde 38), niet gemeten uit de douane van de koper",
   "laundered oil: every buyer's change counted, without the route rule (buyers without a measured series)": "witgewassen olie: de verandering van elke koper geteld, zonder de routeregel (kopers zonder gemeten reeks)",
+  "Extra price Russia paid it because of sanctions": "Meerprijs die Rusland het betaalde door de sancties",
+  "mostly the extra price Russia paid it because of sanctions": "vooral de meerprijs die Rusland door de sancties betaalde",
+  "the extra price Russia paid because of sanctions": "de meerprijs die Rusland door de sancties betaalde",
+  "{c} earned an extra price from Russia because of sanctions": "{c} verdiende door de sancties een meerprijs aan Rusland",
 };

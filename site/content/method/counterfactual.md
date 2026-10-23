@@ -62,7 +62,7 @@ The expected level is never treated as exact. Its range comes from the models' o
 
 ### Belarus
 
-Belarus's imports from Russia (about EUR 18bn a year) are steadier than the average partner's, so they get a narrower band of their own (×0.72–1.44). Even so the range is wide enough to cross zero: its net is −2.78%<!-- n:BLR.net --> of GDP, likely −10.90%<!-- n:BLR.netLo --> to +8.13%<!-- n:BLR.netHi -->. Belarus is a party to the war and not ranked.
+Belarus's imports from Russia (about EUR 18bn a year) are steadier than the average partner's, so they get a narrower band of their own (×0.72–1.44). Even so the range is wide enough to cross zero: its net is −3.60%<!-- n:BLR.net --> of GDP, likely −13.26%<!-- n:BLR.netLo --> to +7.34%<!-- n:BLR.netHi -->. Belarus is a party to the war and not ranked.
 
 ### Trade with Ukraine
 
@@ -86,7 +86,7 @@ Buyers whose Russian fuel came mainly by pipeline had steady volumes, so seven c
 
 ### Power of Siberia
 
-China's no-war path includes the gas the Power of Siberia contract (2014) already foresaw: 15.4 bcm in 2022 rising to 38 bcm. Only deliveries beyond that count as war-driven. China raised Russia's earnings from trade by 0.62%<!-- n:CHN.rus abs --> of GDP.
+China's no-war path includes the gas the Power of Siberia contract (2014) already foresaw: 15.4 bcm in 2022 rising to 38 bcm. Only deliveries beyond that count as war-driven. China raised Russia's earnings from trade by 0.74%<!-- n:CHN.rus abs --> of GDP.
 
 ### Deliberate choices
 

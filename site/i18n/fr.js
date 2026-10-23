@@ -1160,4 +1160,8 @@ I18N.fr = {
   "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)": "pétrole blanchi : la moitié du gain de la Russie sur le brut imputée à l’acheteur de carburant (la Russie a réorienté son brut, un acheteur pèse donc moins sur ses revenus)",
   "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs": "pétrole blanchi modélisé à partir des exportations des raffineries et de la revente par les plateformes (jusqu’au tour 38), non mesuré dans les douanes de l’acheteur",
   "laundered oil: every buyer's change counted, without the route rule (buyers without a measured series)": "pétrole blanchi : la variation de chaque acheteur comptée, sans la règle de l’itinéraire (acheteurs sans série mesurée)",
+  "Extra price Russia paid it because of sanctions": "Prix supplémentaire payé par la Russie à cause des sanctions",
+  "mostly the extra price Russia paid it because of sanctions": "surtout le prix supplémentaire payé par la Russie à cause des sanctions",
+  "the extra price Russia paid because of sanctions": "le prix supplémentaire payé par la Russie à cause des sanctions",
+  "{c} earned an extra price from Russia because of sanctions": "{c} a obtenu de la Russie un prix supplémentaire à cause des sanctions",
 };
