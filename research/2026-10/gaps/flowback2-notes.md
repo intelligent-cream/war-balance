@@ -1,12 +1,8 @@
 # Flowback gap-fill 2: own-industry shares, refugee donor funding, support for Russia (2026-10-17)
 
 Data file: `flowback2.json` (same folder). **Not yet reviewed by a person.**
-- Scripts: `working/scripts-flowback2/`
-  - `kiel_source.py` splits Kiel's item-level military aid by source.
-  - `build_own.py` builds the own-industry shares.
-  - `fts_dest.py` sums UN refugee-plan (RRP) funding by country.
-  - `build_all.py` assembles the JSON.
-- Raw downloads: `working/raw/flowback2/{kiel,fts,sipri}/`.
+- This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
+  - Kiel's item-level military aid was split by source, the own-industry shares were built from it, and UN refugee-plan (RRP) funding was summed by country.
 - Certainty letters:
   - B = documented.
   - C = modelled, and Kiel coded where at least half of the value was sourced.

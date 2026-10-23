@@ -3034,5 +3034,5 @@
    }
   }
  },
- "scripts": "working/round4b/ (Comtrade queries ct.sh, partners_blr.py, build_round4b.py, artefact_fix.py, scan.js)"
+ "scripts": "Produced by the project's research step and kept as a data input; the research scripts are not in the repository, and the sources are listed in the notes."
 }

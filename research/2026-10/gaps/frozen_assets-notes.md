@@ -165,7 +165,7 @@ The main ones are listed below. All of them are in `sources` in the JSON.
 - [SECO via bluewin](https://www.bluewin.ch/en/news/switzerland-freezes-russian-assets-worth-15-billion-2633158.html).
 - [Belga: Belgian tax EUR 1.7bn](https://www.belganewsagency.eu/frozen-russian-assets-at-euroclear-earn-belgium-17-billion-euros-in-tax-revenue).
 
-Scripts: `/tmp/claude-0/-home-user/71ac834a-35d2-5698-a36d-858806a141e1/scratchpad/r7/frozen_assets/scripts/` (`build.py` for the calculation, `assemble.py` for the JSON).
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## Round 16: its own line, in the net only
 

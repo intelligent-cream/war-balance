@@ -1,7 +1,7 @@
 # Crypto and payment agents: what can be split by country (round 6, C8)
 
 Data file: `research/2026-10/gaps/payment_channels.json`. Gathered 2026-10-18. Not yet reviewed by a person.
-Scripts: scratchpad `r6/payment_channels/` (`bop2.py` reads the Bank of Russia balance of payments, `build.py` computes, `write.py` writes the JSON).
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. The Bank of Russia balance of payments is the main input.
 Units: EUR bn, nominal; 2026 = January–August, not annualised. USD at ECB yearly averages (2021 1.183, 2022 1.053, 2023 1.081, 2024 1.082, 2025 1.13, 2026 1.16).
 
 ## 1. The question

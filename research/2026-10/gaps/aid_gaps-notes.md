@@ -36,4 +36,4 @@ Of the 190 countries, 13 are A, 7 are B, 4 are C and 166 are D. In 163 of the D 
   - private and diaspora giving
   - unearmarked contributions to global pooled funds (CERF, UNHCR, UNICEF)
 - Several pages could not be fetched (403 or 404 errors). For those, figures come from search-result snippets. The sources are listed for each country.
-- Raw downloads are in the scratchpad: `raw/aid/` (`fts_flow_*_p*.json`, `fts_grp_org_*.json`). Scripts are in `scripts-aid/` (`fts_agg.py`, `fts_gap.py`, `build_aid.py`).
+- This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.

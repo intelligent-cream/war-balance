@@ -1,8 +1,6 @@
 # CREA / fossil payments to Russia: method and gaps (retrieved 2026-10-17)
 
-Output: `working/research/crea.json`
-Build script: `working/scripts/build_crea.py`
-Raw files: `.../research/raw/{crea,comtrade,minfin,ecb,fred}/`
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## Data access
 - The CREA tracker API is **not** on api.energyandcleanair.org: there `/v0/counter` returns 404 and `/v1/russia_counter` sits behind Cloudflare. It lives at **https://api.russiafossiltracker.com** (Swagger: `/swagger.json`). The useful endpoints are `/v0/counter` (aggregate_by year, destination_iso2 and commodity_group, `commodity_grouping=split_gas_oil`, format=csv), `/v0/counter_last` and `/v0/price`. Data runs from 2021-01-01 to 2026-10-16. Counter version v2 is based on Kpler trades, with pricing_scenario "default".

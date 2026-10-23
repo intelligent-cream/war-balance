@@ -2,7 +2,7 @@
 
 Data file: `research/2026-10/gaps/chpl.json`. Generated 2026-10-18.
 Unit: EUR bn, current prices, converted with the ECB rates in `trade_full.json`. 2026 covers January–August only.
-Scripts and raw downloads are in the scratchpad (`r7/chpl/`): `fetch3.py` (Comtrade), `eu.py` (Comext), `assemble.py`, `build.py` and `write_out.py`.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 **Purpose.** This is a display marker only, with no change to any total. Every euro in it is already counted in `exports_to_RUS` in `trade_full.json`, or in the residual and re-export layers. It answers one question: how much of what a country sold to Russia was the kind of goods Russia's weapons need.
 

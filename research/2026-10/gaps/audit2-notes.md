@@ -2,10 +2,7 @@
 
 This audit follows up the open questions in `audit-notes.md`. It checks `site/data.json` (generated 2026-10-18, sha256 prefix `9e86583f36b8f928`; a rebuild gave the identical file) against UN Comtrade, Eurostat, CREA, Kiel and national sources.
 
-Details, machine-readable corrections (per country, series and year, with low/central/high) and sources are in `audit2.json`. Scripts are in `working/audit2/`:
-- `patches.py` applies each correction to a copy of `data.json`.
-- `q6shares.py` computes the Baltic and Finnish shares.
-- `build_audit2.py` writes the JSON file.
+Details, machine-readable corrections (per country, series and year, with low/central/high) and sources are in `audit2.json`. This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 **How effects were measured.** Each correction was applied to a copy of `data.json`. The page's own `calc(c, 2026)` was then run for every country.
 - Effects are the change in the central shift for 2022 to Aug 2026. They are in EUR bn at pre-war prices, as the map shows them.

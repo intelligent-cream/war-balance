@@ -201,12 +201,4 @@ Where own customs exist, single-fuel bands shrink to 7-10% (coal 2022: 106% → 
 10. **EU "Russian-origin" crude after the embargo** (Netherlands, Germany 2023-26). This is small and probably CPC/Kazakh blend recorded as Russian. It is kept as reported.
 
 ## Files
-- Scripts are in `working/prices/`:
-  - `fetch_ct.py`, `fetch_ct_fix.py` and `fetch_ctm.py`: Comtrade annual and monthly;
-  - `fetch_comext.py`: Comext monthly;
-  - `parse_ct.py` and `parse_comext.py`;
-  - `bench.py`: benchmarks;
-  - `load.py`;
-  - `build.py`: unit values, indices and windfall;
-  - `finalize.py`: output and band comparison.
-- Raw downloads are in `working/prices/raw`. CREA files are reused from the energy run.
+- This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.

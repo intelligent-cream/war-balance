@@ -1,7 +1,7 @@
 # Refugee hosting: net cost after refugees' taxes (2022 – Aug 2026)
 
 Data: `refugees_net.json`, generated 2026-10-18. **Not yet reviewed by a person.**
-Scripts: `scratchpad/r5/refugees_net/scripts/{build,assemble}.py`. Roadmap items 7 (more budget data, check Poland) and 21 (net cost).
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. Roadmap items 7 (more budget data, check Poland) and 21 (net cost).
 
 ## What this adds
 The map counts the cost of hosting refugees from Ukraine as a shift toward Ukraine. Until now that cost has been **gross**. But many refugees work, and they pay income tax, social contributions and VAT. Without the war, neither the costs nor those taxes would exist, so the war's effect on a host's budget is the **net**:

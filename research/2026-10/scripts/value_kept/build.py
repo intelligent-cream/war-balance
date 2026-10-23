@@ -2,13 +2,22 @@
 """Round 6 research script for value_kept.json (value kept = OECD TiVA domestic value added share; genuinely extra).
 Moved into the repository in round 13 (audit M8). Inputs: research/2026-10/raw/oecd_tiva/. Order: exposure.py, build.py,
 compare.py, finalize.py. Round 13 keeps value_kept.json's genuinely extra factors; the value kept is replaced by
-net_gain_sellers.json (scripts/net_gain_sellers.py)."""
+net_gain_sellers.json (scripts/net_gain_sellers.py).
+
+Round 29 (audit 29, item 1): the list of economies comes from gaps/energy.json (the same 231 economies as the map and
+gaps-input.json), no longer from site/data.json, so this research step does not read the pipeline's own output.
+exposure.py, compare.py and finalize.py still read site/data.json, but only for the "comparison_top15" and
+"sanity_checks" sections of value_kept.json (a report on the round-6 map); build_data.py reads only the per-country
+factors, which this script writes from the TiVA downloads."""
 
 import csv, collections, json, math
 
 B = str(__import__("pathlib").Path(__file__).resolve().parent) + "/"
-D = json.load(open(str(__import__("pathlib").Path(__file__).resolve().parents[4] / "site/data.json")))
-ISO = sorted(D["countries"])
+ISO = sorted(
+    json.load(open(str(__import__("pathlib").Path(__file__).resolve().parents[2] / "gaps" / "energy.json")))[
+        "countries"
+    ]
+)
 tiva = collections.defaultdict(dict)
 RAW = str(__import__("pathlib").Path(__file__).resolve().parents[2] / "raw" / "oecd_tiva") + "/"
 for f in ("dva.csv", "dva2.csv"):

@@ -1,7 +1,6 @@
 # Remittances from Russia (round 7, R5)
 
-Data file: `remittances.json` (same folder). Script and downloads:
-`/tmp/claude-0/-home-user/71ac834a-35d2-5698-a36d-858806a141e1/scratchpad/r7/remittances/` (`scripts/build.py`, `dl/`).
+Data file: `remittances.json` (same folder). This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 **Not yet reviewed by a person.** **Round 13:** the money rule in section 5 is replaced by the migrant's net gain ([`remittances_r13-notes.md`](remittances_r13-notes.md)); the series here stay.
 
 ## 1. What this is

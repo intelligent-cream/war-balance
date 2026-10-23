@@ -3,7 +3,7 @@
 Data file: `research/2026-10/gaps/trade_full.json` (233 economies; four flows: `imports_from_RUS`, `exports_to_RUS`, `imports_from_UKR`, `exports_to_UKR`).
 Each country, flow and year (2019-2025, plus `2026` = Jan-Aug 2026) has `{low, central, high, basis, src}`. Every flow also has `2026_annualized` and `baseline` (2021 central, 2019-21 average, 2019-21 trend to 2022).
 `basis`: `reported` (own customs report), `mirror` (Russia's or Ukraine's report on the same flow), `imf` (IMF IMTS, which can be partner-derived or an IMF staff estimate), or `estimated`.
-Retrieved 2026-10-17. Scripts: `working/scripts-trade2/` (`load.py`, `build.py`, `finalize.py`, `parse_imf.py`). Raw downloads: `working/raw/trade2/`.
+Retrieved 2026-10-17. This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## Sources
 - **UN Comtrade public preview**: 2019-2020 newly downloaded for all reporters against Russia (643) and Ukraine (804), plus Russia's and Ukraine's own reports. 2021-2025 reuse the files behind `trade.json`.

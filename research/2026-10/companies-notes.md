@@ -53,4 +53,4 @@
 
 For 2024, the source also gives FIN 124, HUN 91, SWE 70, DNK 61 and GRC 50.
 
-Scripts: working/scripts/build_companies.py, countries.py, txt.py.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.

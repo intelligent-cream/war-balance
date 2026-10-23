@@ -1,7 +1,7 @@
 # Pre-war trends for the counterfactual baseline (2012-2021 → 2022-2026)
 
 Data file: `research/2026-10/gaps/trend.json`. Generated 2026-10-18. Not yet reviewed by a person.
-Scripts: `working/trend/scripts/` (`load.py`, `fit.py`, `notes.py`). Raw downloads: `working/trend/raw/`.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## What it is for
 

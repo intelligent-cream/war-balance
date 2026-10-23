@@ -7,7 +7,7 @@ File: `actuals_r7.json`, generated 2026-10-18. Not yet reviewed by a person. Not
 - **Layer.** `years`, `base` and `pidx` in the JSON are the final series, as `site/data.json` would carry them. They come from running a copy of the current builder with the input changes listed under each entry's `inputs`.
 - **What the builder should take.** The builder should take the `inputs`, not the final values, so that re-exports, freight removal and the Brunei refinery step are not applied twice.
 - **Before and after.** Each entry also has the old values and the width of the 2022–2026 total in % of GDP, before and after. The width is split into actual values (`al`/`ah`), base (`bl`/`bh`) and price (`pl`/`ph`). My reproduction of the site's `spread()` matches the widths in the task table exactly.
-- **Scripts.** The patch runner and downloads are in the scratch folder `r7/actuals/` (`scripts/patch.py`, `run_build.py`, `decomp.py`, `brn.py`, `assemble.py`; downloads in `dl/`).
+- **Scripts.** This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## Results (width of the 2022–2026 total, % of GDP, low / high)
 

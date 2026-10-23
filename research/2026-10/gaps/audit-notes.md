@@ -1,6 +1,6 @@
 # Audit of the 31 most-viewed countries (2026-10-18)
 
-This is the first check of `site/data.json` against independent primary sources. Every part's 2022 to Aug 2026 total was compared with its source. The details, sources and worst-case ranges are in `audit.json`. Scripts and downloads are in `working/audit/`.
+This is the first check of `site/data.json` against independent primary sources. Every part's 2022 to Aug 2026 total was compared with its source. The details, sources and worst-case ranges are in `audit.json`. This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 **Caveat:** `data.json` was rebuilt three times while the audit ran: the CIF-to-FOB freight cut, Turkey/India refining, gas price indices, pre-war trends and shipping all changed. The audit uses the version generated 2026-10-18 (sha256 prefix in `audit.json`). Import checks are converted from CIF to FOB (x0.945), as the pipeline now does.
 

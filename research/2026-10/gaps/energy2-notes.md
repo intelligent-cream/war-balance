@@ -5,13 +5,7 @@ Gathered 2026-10-17. The output is `energy2.json`. **No person has reviewed it y
 - Values have low / central / high ranges, meant as ~90% intervals.
 - Years run 2019-2025, plus 2026 January-August.
 - Each country entry has a `sources` list (name, URL, date) and a `reasoning` text.
-- Scripts are in `working/scripts-energy2/`:
-  - `build.py` writes the JSON.
-  - `jsonstat.py` is a JSON-stat parser.
-  - `indices.py` makes `annual_indices.json`.
-  - Also there: `show_*.py` and `fetch_comtrade.py`.
-- Hub figures are hand-assembled in `working/hub_resale.json` from the downloads listed below.
-- Raw downloads are in `working/raw/energy2/` (eurostat, comtrade, fred, web). The CREA files from the first energy run are reused from `working/raw/energy/`.
+- This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. The hub figures were assembled by hand from the downloads listed below.
 
 ## 1. Transit gas → gas by country of final use (`transit_gas`)
 **Problem.** CREA assigns pipeline gas to the country where it enters the EU or a non-EU country. Examples: Germany for Nord Stream, Slovakia for the Ukraine route, Bulgaria and Turkey for TurkStream.

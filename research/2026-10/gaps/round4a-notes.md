@@ -2,7 +2,7 @@
 
 Gathered 2026-10-18. Output: `round4a.json`. **No person has reviewed it yet.**
 Values are in EUR bn, nominal, converted at ECB annual average rates. Ranges are low / central / high, meant as ~90% intervals.
-Scripts: `working/round4a/round4a.py` (model) and `working/round4a/assemble.py` (writes the JSON). Downloads: `working/round4a/raw/`.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## 1. Taxes paid in Russia by foreign companies
 

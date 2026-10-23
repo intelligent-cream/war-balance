@@ -1,7 +1,7 @@
 # Pre-war trends for services, company taxes and shipping (2012-2021 → 2022-2026)
 
 Data file: `research/2026-10/gaps/trend2.json`. Generated 2026-10-18. Not yet reviewed by a person.
-Scripts: `working/trend2/scripts/` (`common.py`, `services.py`, `company.py`, `shipping.py`, `assemble.py`). Raw downloads: `working/trend2/raw/`.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 
 ## What it is for
 

@@ -1,0 +1,57 @@
+name: Build and check the data
+
+# Round 29 (audit 29, item 1; approved by the owner): every push and pull request to develop, and every deploy from
+# main (pages.yml calls this workflow first), rebuilds site/data.json and site/detail.json from the research files and
+# fails if the rebuild differs from the committed files (build date left out), if any check in check_data.py FAILs
+# (in strict mode: checks that need node or Playwright fail when those are missing), or if a unit test fails.
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop, main]
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      UV_PYTHON: "3.13"
+      CHECK_DATA_STRICT: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.11.32"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Python dependencies
+        run: uv sync --locked
+      - name: Install Playwright and Chromium
+        run: |
+          npm install --no-save playwright@1.48.2
+          npx playwright install --with-deps chromium
+      - name: Keep the committed data files
+        run: |
+          mkdir -p "$RUNNER_TEMP/committed"
+          cp site/data.json site/detail.json "$RUNNER_TEMP/committed/"
+      - name: Build
+        working-directory: pipeline
+        run: uv run build_data.py
+      - name: Rebuild matches the committed data files
+        run: |
+          uv run python pipeline/compare_built.py "$RUNNER_TEMP/committed" site
+          git diff --exit-code -- research/2026-10/gaps.md
+      - name: Unit tests
+        run: uv run pytest -q
+      # share cards are not committed (site/c/); check 24 reads them
+      - name: Share cards
+        run: node pipeline/share_cards.mjs
+      - name: Checks
+        working-directory: pipeline
+        run: uv run check_data.py

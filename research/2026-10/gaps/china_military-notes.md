@@ -1,7 +1,7 @@
 # China's military and military-relevant support to Russia
 
 Data file: `research/2026-10/gaps/china_military.json`. Generated 2026-10-18 (data retrieved 2026-10-17).
-Scripts: `working/chinamil/` (`fetch.py` and `fetch_m.py` for Comtrade HS-6, `fetch_hs4.py` for HS-4, `build.py` for the numbers, `write_json.py` for the output).
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 Unit: EUR bn, current prices, ECB annual average USD/EUR. 2026 = Jan-Aug. Ranges are roughly 90%.
 
 ## Bottom line

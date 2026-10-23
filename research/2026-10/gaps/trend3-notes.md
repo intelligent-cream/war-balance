@@ -1,7 +1,7 @@
 # No-war counterfactual, version 3: 2018-2021 baseline, back-tested methods, error-based ranges
 
 Data file: `research/2026-10/gaps/trend3.json`. Generated 2026-10-18. Not yet reviewed by a person.
-Scripts: `working/trend3/scripts/`. They run in this order: `data.py` (inputs), `models.py` (methods), `backtest.py`, `build.py` (decision, ranges, output), then `compare.py` (range widths and country tables). Raw downloads are in `working/trend3/raw/`. The Comtrade downloads from `working/trend/raw/` are reused.
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes. Its steps: inputs, methods, back-test, then the decision, ranges and output, and a comparison of range widths and country tables.
 
 ## Summary
 
@@ -64,7 +64,7 @@ All methods predict log(value in year Y / average over the 4 base years). They u
 | `flat_last` | last pre-war year held flat (random walk), relative to the base average |
 | `holt` | damped-Holt type: exponentially smoothed last level plus w × the damped trend after the last year; (α, w) per flow type, fitted on the other origin |
 
-The pure unit-elasticity gravity (`grav_unit`) and the share-trend variant were also run (`working/trend3/bt.log`). Neither came close.
+The pure unit-elasticity gravity (`grav_unit`) and the share-trend variant were also run. Neither came close.
 
 ## 3. Back-test design
 

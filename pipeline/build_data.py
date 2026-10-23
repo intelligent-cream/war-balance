@@ -6184,11 +6184,12 @@ def method_alternatives(data: dict) -> dict:
         for iso3, c in other.items():
             b = base.get(iso3) or {}
             diff: dict = {}
-            for k in set(c) | set(b):
+            # sorted, so detail.json is byte-identical from run to run (set order depends on PYTHONHASHSEED)
+            for k in sorted(set(c) | set(b)):
                 if k == "coverage" or c.get(k) == b.get(k):
                     continue
                 if isinstance(c.get(k), dict) and isinstance(b.get(k), dict):
-                    diff[k] = {s: c[k].get(s) for s in set(c[k]) | set(b[k]) if c[k].get(s) != b[k].get(s)}
+                    diff[k] = {s: c[k].get(s) for s in sorted(set(c[k]) | set(b[k])) if c[k].get(s) != b[k].get(s)}
                 else:
                     diff[k] = c.get(k)
             if diff:

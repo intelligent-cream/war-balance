@@ -146,4 +146,4 @@ Yearly profile, central: 2022 ≈ 2.2, 2023 ≈ 3.9, 2024 ≈ 5.6, 2025 ≈ 5.3,
 - A Czech government breakdown of initiative rounds by origin country.
 - Ukraine's Ministry of Finance or DPA data on foreign contracts by country. The USD 10.6bn of prepaid but undelivered foreign contracts (Sept 2026) suggests large foreign orders not yet delivered.
 
-Scripts and downloads: `scratchpad/r5/ua_arms_purchases/` (`scripts/kiel_sellers.py`, `scripts/build.py`, `dl/` Comtrade JSON and COARM PDFs).
+This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.

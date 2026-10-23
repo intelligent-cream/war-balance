@@ -1480,6 +1480,6 @@
    "https://pages.stern.nyu.edu/~adamodar/pc/datasets/ctryprem.xlsx (January 2026)"
   ],
   "archive_index": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/dataarchived.html (file ctryprem21 = 1/22, ... ctryprem24 = 1/25)",
-  "scripts": "ua_model.py and ua.py of round 14b with the yearly premium (outside the repository, like the originals): /tmp/claude-0/-home-user/71ac834a-35d2-5698-a36d-858806a141e1/scratchpad/r15/ng/"
+  "scripts": "Produced by the project's research step and kept as a data input; the research scripts are not in the repository, and the sources are listed in the notes. Rerun with the yearly premium."
  }
 }

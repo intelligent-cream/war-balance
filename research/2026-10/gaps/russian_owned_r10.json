@@ -76,7 +76,7 @@
    "2025": -0.0127,
    "2026": -0.0284
   },
-  "method_short": "See russian_owned_r10-notes.md. Builder script in scratch r10/build.py."
+  "method_short": "See russian_owned_r10-notes.md. Produced by the project's research step and kept as a data input; the research scripts are not in the repository, and the sources are listed in the notes."
  },
  "countries": {
   "IRL": {
