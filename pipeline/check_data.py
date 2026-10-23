@@ -464,10 +464,10 @@ else:
     # leaning and uncertain directions too, faded and labelled, with a key; parties to the war are listed under it
     # (browser_check.mjs checks the rows against Node)
     check(
-        "the ranking shows leaning and uncertain rows, labelled, and lists the parties under it",
-        all(x in _views_js for x in ('" rk-" + m.st', 'class="rk-st"', 'class="rk-key"', "chipGroup(party"))
+        "the ranking shows leaning and uncertain rows in their own groups, and lists the parties under it",
+        all(x in _views_js for x in ('" rk-" + m.st', 'class="rk-gh', 'class="rk-key"', "chipGroup(party"))
         and '"leaning: at least a 65% chance of that direction"' not in _html,
-        "row classes rk-lean / rk-unc, a label per row, a key; party chips",
+        "row classes rk-lean / rk-unc, five group headings (round 38), a key; party chips",
     )
     # 43. round 29 (owner: "show the Kiel numbers next to the real ones and explain the difference in short"): the aid card
     # and the support tile show Kiel's own figure next to the amount counted, wherever Kiel has the country

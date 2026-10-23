@@ -91,20 +91,22 @@ for (const [lens, q] of Object.entries(LENS)) {
     return {
       rows: [...document.querySelectorAll("#view g.row[data-n]")].map(g => isoOf(g.dataset.n)),
       st: Object.fromEntries([...document.querySelectorAll("#view g.row[data-n]")].map(g => [isoOf(g.dataset.n),
-        (g.classList.contains("rk-lean") ? "lean" : g.classList.contains("rk-unc") ? "unc" : "") + (g.querySelector(".rk-st") ? ":label" : "")])),
+        (g.classList.contains("rk-lean") ? "lean" : g.classList.contains("rk-unc") ? "unc" : "") + ":g" + g.dataset.g + (/^\d+\. /.test(g.querySelector(".lbl").textContent) ? "#" : "")])),
       party: [...document.querySelectorAll("#view .rk-party .rk-chip[data-n]")].map(b => isoOf(b.dataset.n)).sort(),
       dotted: [...document.querySelectorAll("path.country.uncertain")].map(p => p.__data__ && DATA[p.__data__.id]).filter(Boolean).map(c => c.iso3),
     };
   });
   // a party to the war (Belarus, North Korea) is never ranked but listed under the chart; round 29 (owner): leaning and
-  // uncertain directions are ranked too, faded and labelled ("leaning" when Node's leaning() gives a side, else "uncertain")
+  // uncertain directions are ranked too, faded; round 38: in five groups, numbered only where the direction is certain
   const want = Object.entries(node.countries).filter(([, c]) => c.gdp >= MIN_GDP && !c.party && c[q] !== null).map(([k]) => k).sort();
   const wrongSt = Object.entries(got.st).filter(([k, s]) => {
     const c = node.countries[k]; if (!c) return false;
-    const exp = !c[q + "Unc"] ? "" : (c[q + "Lean"] ? "lean:label" : "unc:label");
+    // round 38 (owner: "we can create leaning groups"): five groups, only the two certain ones numbered (#)
+    const pos = c[q] >= 0, g = !c[q + "Unc"] ? (pos ? 0 : 4) : !c[q + "Lean"] ? 2 : pos ? 1 : 3;
+    const exp = (!c[q + "Unc"] ? "" : c[q + "Lean"] ? "lean" : "unc") + ":g" + g + (g === 0 || g === 4 ? "#" : "");
     return s !== exp;
   }).map(([k, s]) => `${k}=${s || "certain"}`);
-  if (wrongSt.length) problems.push(`${lens} ranking: leaning/uncertain rows not faded and labelled as Node says: ${wrongSt.slice(0, 8).join(" ")}`);
+  if (wrongSt.length) problems.push(`${lens} ranking: rows not faded and grouped as Node says: ${wrongSt.slice(0, 8).join(" ")}`);
   const wantParty = Object.entries(node.countries).filter(([, c]) => c.party && c.gdp >= MIN_GDP).map(([k]) => k).sort();
   if (got.party.join() !== wantParty.join() || !got.party.includes("BLR") || !got.party.includes("PRK")) problems.push(`${lens} ranking: parties listed under the chart ${got.party.join(" ") || "none"}, want ${wantParty.join(" ")} (Belarus and North Korea)`);
   const have = got.rows.slice().sort();

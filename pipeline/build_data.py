@@ -800,7 +800,9 @@ def build() -> dict:
         by_year = d.get("by_year") or {}
         years = [0] + [round(by_year.get(str(y)) or 0, 4) for y in YEARS[1:]]
         unassigned = d.get("total_allocated", 0) - sum(years)
-        if unassigned > 0.05:  # amounts without a month: spread over the years in proportion
+        if (
+            unassigned > 0.0005
+        ):  # amounts without a month: spread over the years in proportion (round 38: also small ones)
             tot = sum(years) or 1
             years = [round(v + unassigned * v / tot, 4) for v in years]
         loans, era = d.get("loans_face_value") or 0, d.get("era_allocated") or 0
@@ -1646,7 +1648,9 @@ def build() -> dict:
         "Compiled with AI assistance from public sources and not yet checked line by line against them by a person: treat the figures as unverified estimates. "
         "Every number has a likely range and sources; gaps are filled with estimates, never left at zero. "
         'Every choice and its evidence: <a href="#view=how&sec=changelog">changelog</a>. '
-        'Method and data: <a href="https://github.com/intelligent-cream/war-balance">GitHub</a>. Corrections: <a href="https://www.reddit.com/user/Intelligent-Cream-14/">Reddit</a> or a GitHub issue.'
+        'Method and data: <a href="https://github.com/intelligent-cream/war-balance">GitHub</a>. Corrections: <a href="https://www.reddit.com/user/Intelligent-Cream-14/">Reddit</a> or a GitHub issue. '
+        # round 38: the project was called "Follow the Money: Ukraine" in its first week; it has no link to ftm.nl
+        "Not connected to Follow the Money (ftm.nl), whose name the project used in its first week."
     )
     return {
         "generated": UPDATED,
@@ -3475,6 +3479,9 @@ def apply_refugees_gain(countries: dict[str, dict], src: Sources) -> None:
         a["refugee_years_hi"] = [round(t[2], 5) for t in band]
         # the host's gain on refugees' work, kept for the panel and the check (EUR bn per year, central)
         a["refugee_work_gain"] = [round(v, 5) for v in gain["central"]]
+        # round 38 (Kiel reconciliation): refugee person-years per year (2026: January to August), for the cost per
+        # refugee-year in the panel (why a host with fewer refugees can spend more)
+        a["refugee_person_years"] = [0] + [round((d.get("person_years") or {}).get(str(y), 0)) for y in YEARS[1:]]
         # the gross own spending's range (before the gain), the base of the refugee-spending flowback (refsp)
         a["refugee_gross_years_lo"] = [round(g(y, "low") * (1 - sh["high"]), 5) for y in YEARS]
         a["refugee_gross_years_hi"] = [round(g(y, "high") * (1 - sh["low"]), 5) for y in YEARS]

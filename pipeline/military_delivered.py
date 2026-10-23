@@ -87,6 +87,10 @@ def main() -> None:
         r = dict(zip(hdr, raw))
         if r.get("aid_type_general") != "Military" or r.get("measure") != "Allocation" or r.get("before_war") == 1:
             continue
+        # round 38 (Kiel reconciliation): the UK's G7 ERA loan tranches (channel "ERA Loans Mechanism") are left out of
+        # the aid altogether (build_data.py ERA_YEARS: Russia's frozen assets repay them), so they are not "undelivered"
+        if "ERA" in str(r.get("channel") or ""):
+            continue
         v = r.get("tot_sub_activity_value_EUR_redistr")
         if not isinstance(v, (int, float)):
             continue
