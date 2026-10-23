@@ -32,3 +32,5 @@ Under each country's numbers, a few short tags tell its story in a line each: wh
 | Two different things added (`two`) | the net adds support for Ukraine to a cut in Russia's earnings from trade | our model |
 
 Whether a number is "leaning toward Ukraine / Russia" or "uncertain direction" is said in its headline, not as a tag. Each tag that cites data links its sources in its sentence; the code is `storyTags()` in `index.html`.
+
+The same tags are filters in the map's Filters drawer (round 33). Picking one dims the countries without it and shows a card with what it means, how many countries have it and the largest five; up to three combine (the countries that have all of them), and the pick also narrows the Ranking. A tag that comes in two versions is two filters there: bought or sold much more or much less, top-10 or major aid giver, orange mostly from fuel buying or from sales. The filters only pick countries: no number changes.

@@ -485,8 +485,9 @@ else:
 # 31. round 15 (approved by the owner): the net is the view the map opens with, then its two parts; the gross "To
 # Ukraine" and "To Russia" views are gone, and links to them open the nearest view. Round 17 (redesign, approved by the
 # owner): the Filters drawer is closed on load (the page opens with the map, one header line, the legend and the
-# Highlights and Filters buttons); the second number is "Kept from Russia" everywhere ("lens=kept" opens it too), and no
-# page text says "change in payments to Russia" any more. Round 19 (the owner's interface changes):
+# Highlights and Filters buttons; round 33: the Highlights are gone, their place taken by the tags in Filters); the
+# second number is "Kept from Russia" everywhere ("lens=kept" opens it too), and no page text says "change in payments
+# to Russia" any more. Round 19 (the owner's interface changes):
 # - three views of the map: the cost to the country is gone (lens=cost opens the net), with no cost wording left in the
 #   page's text, and the quick buttons are gone;
 # - the drawer opens with a Views list (Map, Ranking, Ukraine vs Russia, Table & data, Sources); How it works is no
@@ -553,7 +554,8 @@ check(
     and 'data-lens="rus"' not in _html
     and '<button data-lens="payments" aria-pressed="false" data-i18n="Russia\'s earnings from trade">' in _html
     and re.search(r'<aside class="drawer" id="drawer"[^>]*\bhidden>', _html) is not None
-    and 'id="hlbtn"' in _html
+    and 'id="hlbtn"' not in _html
+    and bool(_drawer and 'id="tagfilters"' in _drawer.group(0))
     and 'id="fbtn"' in _html
     and not _old_name
     and not _cost_words
@@ -785,6 +787,26 @@ check(
     "every story tag is documented with a source, and data tags cite theirs",
     bool(_keys) and not _undoc and not _no_ref and 'add(100, "party"' in _st,
     f"{len(_keys)} tag rules; not in tags.md with a source: {_undoc or 'none'}; data tags without sources: {_no_ref or 'none'}",
+)
+
+# 47. round 33 (owner, 23 October 2026: "remove the highlights and use the tags in the filter section to get similar
+# interesting insights but based on tags"): every tag filter in Filters (TAG_CAT in index.html) is a story tag rule
+# (storyTags) in the table of tags.md, a tag with two versions ("bought", "sold", "aid", "orange") being two filters;
+# no Highlights code is left. That picking tags changes no number is checked in the browser (check 32,
+# browser_check.mjs part 5)
+_tc = _html[_html.index("const TAG_CAT = {") :]
+_tc = _tc[: _tc.index("\n};\n")]
+_filters = re.findall(r"^  (\w+): \{ g: \"(?:why|did|sure)\"", _tc, re.M)
+_base = {"bought_less": "bought", "bought_more": "bought", "sold_less": "sold", "sold_more": "sold"}
+_base |= {"aid_top": "aid", "aid_major": "aid", "orange_fuel": "orange", "orange_sales": "orange"}
+_unmatched = [f for f in _filters if _base.get(f, f) not in _keys or _base.get(f, f) not in _rows]
+_untagged = [k for k in _keys if k not in {_base.get(f, f) for f in _filters}]
+_hl_left = [x for x in ('id="hlbtn"', 'id="hlpanel"', "state.hl", "function renderChips", "const HL =") if x in _html]
+check(
+    "every tag filter is a documented story tag, and the Highlights are gone",
+    len(_filters) >= 20 and not _unmatched and not _untagged and not _hl_left,
+    f"{len(_filters)} tag filters for {len(_keys)} tag rules; not a documented rule: {_unmatched or 'none'}; "
+    f"rules without a filter: {_untagged or 'none'}; Highlights left: {_hl_left or 'none'}",
 )
 
 # ---- outside benchmarks (round 29, audit 29 item 3; approved by the owner): hard checks, FAIL when out of tolerance.
