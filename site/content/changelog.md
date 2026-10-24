@@ -2,6 +2,18 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r42">Round 42: how likely each direction is, what decides it, and tested ranges <span class="cl-date">24 October</span></h2>
+<!-- flows: paid sold aid own -->
+
+The owner: "decide 'certain' with the simulation alone", "replace the letter grade with a plain scale".
+
+- **A chance instead of a letter**: each headline number says how likely its direction is, from simulating every part's range together: very likely (at least 95%, and every other method choice agrees: certain), likely (at least 65%: leaning), unclear, or near zero. The ranking shows the chance on every row.
+- **Two fixes**: leaning now looks both ways (a middle value just above zero in a range that reaches mostly below it leans the other way, and says so); aid and the money flowing back from it now offset in the range instead of adding (Germany's support low end 1.58% → 1.60%).
+- **Groups that moved** (net): the UAE, Hong Kong and South Africa from leaning toward Russia to certain; Taiwan from uncertain to leaning toward Ukraine; French Polynesia from near zero to certain. Support: 12 small numbers from near zero to certain. Trade: Armenia and Mozambique from leaning to uncertain, Fiji from certain to leaning. No middle value changed.
+- **What decides it**: each panel names the smallest change to one part that would flip the direction.
+- **Letters follow the sources**: a part's letter is capped by its sources (A needs two official statistics, B one, C research; press or own estimates alone give D), and parts resting on the press alone say "press only".
+- **Ranges tested**: rerun as if the war had started in 2018, trade ranges held the true zero for 97% of ranked economies; for a 2014 start, 92%. The site now says so instead of "about 90% by judgement".
+
 <h2 id="cl-r41">Round 41: a map you can read at a glance, tested code, and a fixed simulation <span class="cl-date">24 October</span></h2>
 <!-- flows: windfall paid sold -->
 

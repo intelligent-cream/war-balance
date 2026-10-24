@@ -979,6 +979,12 @@
    "in_repository": true
   },
   {
+   "path": "ecb_placebo/EXR_USD_annual_2008_2021_2026-10-24.json",
+   "bytes": 484,
+   "sha256": "582a487e192cb2f7ca1431e7b95eb7264a7f680166e7250062ed7d54db15d81c",
+   "in_repository": true
+  },
+  {
    "path": "euroclear/mr-20-euroclear-h1-2026-results_2026-10-23.html",
    "bytes": 184908,
    "sha256": "5a4d190fc220878c9dc1f64b4c7fba35fdad4a83c386bef5621a6cb51a02d6da",
@@ -997,6 +1003,12 @@
    "in_repository": true
   },
   {
+   "path": "eurostat_placebo/sts_inpi_a_EA20_2008_2021_2026-10-24.json",
+   "bytes": 426,
+   "sha256": "dc44d63704f11f0990bd4366d06c24f84ff8a503862f43476510d038c3fbd320",
+   "in_repository": true
+  },
+  {
    "path": "eurostat_tp/migr_asytpsm_UA.json",
    "bytes": 30014,
    "sha256": "6ddf23c8d187c2d69af656df63e51e3125af88c8e42c2e278f8f48ca2c72bbc7",
@@ -1006,6 +1018,12 @@
    "path": "eurostat_tp/migr_asytpsm_UA_2026-10-23.json",
    "bytes": 30078,
    "sha256": "3d626b6974b3278b3f631106f867d01b731fc9e7a0e4b44830bb614109e7b526",
+   "in_repository": true
+  },
+  {
+   "path": "fred_placebo/commodities_monthly_2008_2021_2026-10-24.json",
+   "bytes": 15277,
+   "sha256": "1f4907dea3c56fd95abb1fff7b2744b090f626e4f55b9ea2cfa2c23dc9c83b32",
    "in_repository": true
   },
   {
@@ -1048,6 +1066,12 @@
    "path": "imf_imts/IMTS_RUS_UKR_2026-10-23.json.gz",
    "bytes": 1130218,
    "sha256": "8c3cb308683aba050c38d6416df7aaa433c8e7fae3c8d680adaecf8ca0d30d90",
+   "in_repository": true
+  },
+  {
+   "path": "imf_imts_placebo/IMTS_RUS_annual_2008_2021_2026-10-24.json.gz",
+   "bytes": 100210,
+   "sha256": "3fc50d1f3a33427565d4677232761f9d6dd6d77438d1d729f30d378e322b3977",
    "in_repository": true
   },
   {
@@ -1294,6 +1318,12 @@
    "path": "worldbank/NY.GDP.MKTP.CD_2024.json",
    "bytes": 56316,
    "sha256": "2cb08dd1b259b1ecabd0264013d22d09b7e3b05fd6c7ab9c57f5345830a6d5e2",
+   "in_repository": true
+  },
+  {
+   "path": "worldbank_placebo/NY.GDP.MKTP.CD_2008_2021_2026-10-24.json",
+   "bytes": 788761,
+   "sha256": "13d4d98da6be00a9c1c352ef37b2b956dde493103bcebdcf493e47750b4cd35e",
    "in_repository": true
   }
  ]

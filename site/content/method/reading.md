@@ -24,8 +24,8 @@ What to look at:
 
 - **"Compared with what?"** The wide range comes almost entirely from "bought less from Russia": nobody knows exactly what Germany would have bought without the war ([counterfactual](#view=how&sec=m-counterfactual)).
 - **Aid differs from Kiel's.** Kiel's figure for Germany is EUR 49.5bn; 25.9 is counted because donated weapons are at market value, loans at their gift value, and military aid counts when delivered.
-- **The likely range** is about 90%, set by judgement. The **method band** (net 3.13%<!-- n:DEU.netBandLo --> to 4.05%<!-- n:DEU.netBandHi -->) shows the same number under other reasonable method choices ([ranges](#view=how&sec=m-ranges)).
-- **The letter C** means most of the number rests on modelled parts ([certainty letters](#view=how&sec=m-ranges-certainty-letters)). A = reported, B = measured estimate, C = modelled, D = rough.
+- **The likely range** aims at about 90%; rerun as if the war had started in 2018 or 2014, trade ranges held the true zero 97% and 92% of the time ([ranges](#view=how&sec=m-ranges-how-often-the-ranges-are-right)). The **method band** (net 3.13%<!-- n:DEU.netBandLo --> to 4.05%<!-- n:DEU.netBandHi -->) shows the same number under other reasonable method choices ([ranges](#view=how&sec=m-ranges)).
+- **"Very likely · >99%"** is the chance of its direction, from simulating every part's range together ([how likely the direction is](#view=how&sec=m-ranges-how-likely-the-direction-is)). The letters on the parts say how each is known: A = reported, B = measured estimate, C = modelled, D = rough, capped by its sources ([certainty letters](#view=how&sec=m-ranges-certainty-letters)).
 - **A `*`** on a part: its 2026 value is estimated from the 2025 rate.
 - **2026 prices**: 2022–2025 alone the net is +2.94%<!-- n:DEU.net2025 -->; 2026 adds a lot because fuel prices rose with the Hormuz crisis ([prices](#view=how&sec=m-prices-2026-and-the-hormuz-crisis)).
 - **Not in the number**: what Russia took from German companies (seizures EUR 9.5bn, forced exits 2.4bn) is a marker on the map.

@@ -19,7 +19,7 @@ const code = html.slice(html.indexOf("// ===== Model ====="), html.indexOf("func
 const D = JSON.parse(readFileSync(join(SITE, "data.json"), "utf8"));
 const det = JSON.parse(readFileSync(join(SITE, "detail.json"), "utf8"));
 const M = new Function("D", "t", `let YEARS = D.years, FRAC = D.frac, SRC = D.sources, META = D.meta; let DATA = {}, byIso = {}, INCLUDED = {};
-  ${code}; return { calc, normalise, methodBands, uncertain, leanInfo, isNearZero, pSignMC, LEAN, PARTY_TO_WAR, setData: (d, b) => { DATA = d; byIso = b; ALTS_READY = true; } };`)(D, s => s);
+  ${code}; return { calc, normalise, methodBands, uncertain, leanInfo, isNearZero, pSignMC, chance, evidence, partGrade, LEAN, CHANCE, PARTY_TO_WAR, setData: (d, b) => { DATA = d; byIso = b; ALTS_READY = true; } };`)(D, s => s);
 const data = {}, by = {};
 for (const [k, c] of Object.entries(D.countries)) { c.alts = det.alts[k] || {}; M.normalise(c); data[c.n] = c; by[k] = c; }
 M.setData(data, by);
@@ -99,6 +99,40 @@ test("leaning: a side only at a 65% chance or more, never for a certain number",
       if (!li) continue;
       assert.ok(M.uncertain(c, Y, q), `${c.iso3} ${q}: lean info for a certain number`);
       assert.equal(!!li.side, li.p >= M.LEAN.p, `${c.iso3} ${q}: side ${li.side} at p ${li.p}`);
+    }
+  }
+});
+
+// round 42 (certainty audit): the chance is the more likely direction's, whichever sign the middle value has; a certain
+// number has at least a 95% chance on the side of its middle value, and every method choice agrees
+test("certain means a 95% chance on the middle value's side and every method choice agreeing", () => {
+  for (const c of all) {
+    for (const q of ["net", "ua", "rus"]) {
+      const ch = M.chance(c, Y, q), v = { net: "shift", ua: "uaBal", rus: "rusBal" }[q], val = M.calc(c, Y)[v];
+      assert.ok(ch.p >= 0.5 && ch.p <= 1 && Math.abs(ch.p - Math.max(ch.pUa, 1 - ch.pUa)) < 1e-12, `${c.iso3} ${q}`);
+      if (M.uncertain(c, Y, q)) continue;
+      assert.ok(ch.p >= M.CHANCE.sure, `${c.iso3} ${q}: certain at ${ch.p}`);
+      assert.equal(ch.side, val > 0 ? "ukraine" : "russia", `${c.iso3} ${q}: side`);
+      assert.ok(M.methodBands(c, Y).alts.every(a => a[q] * val > 0), `${c.iso3} ${q}: a method choice disagrees`);
+    }
+  }
+});
+
+test("the aid and flowback errors offset: a positive and a negative part that grow together narrow the total", () => {
+  // the same two parts, the chance of the total's sign is higher when their sizes correlate (+0.5 in RHO for aid|own)
+  const correlated = M.pSignMC([{ k: "aid", v: 2, lo: 1, hi: 3 }, { k: "own", v: -1.5, lo: -2.25, hi: -0.75 }], 1);
+  const independent = M.pSignMC([{ k: "x1", v: 2, lo: 1, hi: 3 }, { k: "x2", v: -1.5, lo: -2.25, hi: -0.75 }], 1);
+  assert.ok(correlated > independent, `${correlated} vs ${independent}`);
+});
+
+test("a part's letter never claims more than its sources: A two official statistics, B one, press or own estimates D", () => {
+  const ORDER = ["A", "B", "C", "D"];
+  for (const c of all) {
+    for (const p of M.calc(c, Y).signParts.net) {
+      const ev = M.evidence(p), g = M.partGrade(p);
+      assert.ok(ORDER.indexOf(g) >= ORDER.indexOf(ev.letter) && ORDER.indexOf(g) >= ORDER.indexOf(p.cert || "A"), `${c.iso3} ${p.k}: ${g} vs ${ev.letter}/${p.cert}`);
+      if (g === "A") assert.ok(ev.off >= 2, `${c.iso3} ${p.k}`);
+      if (ev.kind === "press" || ev.kind === "own") assert.equal(g, "D", `${c.iso3} ${p.k}`);
     }
   }
 });
