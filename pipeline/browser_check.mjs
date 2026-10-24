@@ -103,7 +103,8 @@ for (const [lens, q] of Object.entries(LENS)) {
     const c = node.countries[k]; if (!c) return false;
     // round 38 (owner: "we can create leaning groups"): the groups, only the two certain ones numbered (#)
     // round 39: a sixth group, near zero (2), between leaning toward Ukraine and uncertain
-    const pos = c[q] >= 0, g = !c[q + "Unc"] ? (pos ? 0 : 5) : c[q + "Near"] ? 2 : !c[q + "Lean"] ? 3 : pos ? 1 : 4;
+    // round 42: a leaning row is grouped by the side the simulation favours, not the sign of its middle value
+    const pos = c[q] >= 0, g = !c[q + "Unc"] ? (pos ? 0 : 5) : c[q + "Near"] ? 2 : !c[q + "Lean"] ? 3 : c[q + "Lean"] === "ukraine" ? 1 : 4;
     const exp = (!c[q + "Unc"] ? "" : c[q + "Lean"] ? "lean" : "unc") + ":g" + g + (g === 0 || g === 5 ? "#" : "");
     return s !== exp;
   }).map(([k, s]) => `${k}=${s || "certain"}`);
