@@ -203,12 +203,14 @@
      {
       "name": "Novaya Gazeta Europe: Austria 98% Russian share late 2023, ~80% late 2024, OMV contract ~6 bcm/yr",
       "url": "https://novayagazeta.eu/en/articles/2024/12/17/gaslighting-en",
-      "date": "2024-12-17"
+      "date": "2024-12-17",
+      "kind": "press"
      },
      {
       "name": "Gas Processing News: Gazprom stops OMV deliveries after arbitration (Nov 2024)",
       "url": "https://gasprocessingnews.com/news/2024/11/russian-gas-supply-could-stop-to-austria-before-year-end",
-      "date": "2024-11"
+      "date": "2024-11",
+      "kind": "press"
      }
     ],
     "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. Eurostat records all Austrian gas imports with origin \"not specified\". 2019-2020 = gross inland consumption (Eurostat nrg_cb_gas IC_OBS) x 80% Russian share (government statements: ~80% before 2022), range 65-90%. 2021 = mean of that and CREA. 2022-2023 = CREA destination volume (Austria 2023 Russian share averaged ~65% per press reports while reaching 98% in Dec 2023). 2024 = mean of CREA and 80% x consumption (BMK monthly shares 81-97% Jan-Apr 2024). 2025: Eurostat nrg_ti_gasm (monthly, partner RU) 2026: Eurostat nrg_ti_gasm (monthly, partner RU) 2025 override: OMV-Gazprom deliveries stopped 16 Nov 2024 and Ukraine transit ended 1 Jan 2025; CREA 0.02 bcm. 2026 override: No direct supply route; only traces via Slovakia/Hungary possible."
@@ -583,7 +585,8 @@
      {
       "name": "S&P Global: TurkStream flows to Europe 16.8 bcm in 2025 (+8% y/y), 1.61 bcm Jan 2026",
       "url": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/020226-russian-gas-flows-to-europe-via-turkstream-remain-at-sustained-high-in-jan",
-      "date": "2026-02-02"
+      "date": "2026-02-02",
+      "kind": "press"
      }
     ],
     "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. 2025: Comtrade 2025 (2.50 bcm) x median Eurostat/Comtrade ratio 2023-24 (0.44); range incl. CREA-scaled 2026: CREA destination volume 1.42 bcm x ratio to Eurostat-based level (0.70) 2025 override: Eurostat shows no Russian-origin imports by Bulgaria since 2023 (Gazprom contract ended 2022); Bulgarian customs 2023-24 0.16-0.32 bcm, 2025 2.50 bcm (likely traders' transit purchases); CREA 1.57 = transit artefact. 2026 override: Same reasoning as 2025 at 8/12 of the year."
@@ -2068,7 +2071,8 @@
      {
       "name": "S&P Global: TurkStream flows to Europe 16.8 bcm in 2025 (+8% y/y), 1.61 bcm Jan 2026",
       "url": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/020226-russian-gas-flows-to-europe-via-turkstream-remain-at-sustained-high-in-jan",
-      "date": "2026-02-02"
+      "date": "2026-02-02",
+      "kind": "press"
      }
     ],
     "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. Greece: Eurostat central (low 0.85x); Greek customs (Comtrade 271111+271121) are 20-240% higher each year and set the high case (partly gas re-exported to Bulgaria/North Macedonia). 2025: Comtrade 2025 (3.47 bcm) x median Eurostat/Comtrade ratio 2023-24 (0.58); range incl. CREA-scaled 2026: CREA destination volume 0.19 bcm x ratio to Eurostat-based level (4.99) 2026 override: CREA Jan-Aug 2026 0.19 bcm x (2025 central/CREA 2025); high = 2025 Comtrade pace x 8/12."
@@ -2257,7 +2261,8 @@
      {
       "name": "Interfax: Szijjarto, Russian gas to Hungary 8-8.5 bcm in 2025, ~2 bcm/yr to Slovakia",
       "url": "https://interfax.com/newsroom/top-stories/112094/",
-      "date": "2025-06-19"
+      "date": "2025-06-19",
+      "kind": "press"
      }
     ],
     "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Slovakia/Hungary: central = RU + 50% of \"not specified\" origin, low = RU only, high = RU + all NSP. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. 2025: Comtrade 2025 (6.54 bcm) x median Eurostat/Comtrade ratio 2023-24 (0.81); range incl. CREA-scaled 2026: CREA destination volume 4.78 bcm x ratio to Eurostat-based level (0.76) 2024 override: Eurostat 4.06 bcm is out of line with Hungarian customs (Comtrade 7.24 bcm) and CREA (5.87); Eurostat 2023 (6.41) matched both. Central 5.0 between; low Eurostat, high Comtrade (may include gas re-exported to Ukraine/Slovakia). 2025 override: Szijjarto (Jun 2025): 8-8.5 bcm Russian gas to Hungary in 2025, ~2 bcm/yr passed on to Slovakia -> 6.0-6.5 own use; Comtrade 6.54 bcm; CREA 6.96. 2026 override: CREA Jan-Aug 2026 4.78 bcm x (2025 central / CREA 2025 = 0.905)."
@@ -3872,7 +3877,8 @@
      {
       "name": "S&P Global: TurkStream flows to Europe 16.8 bcm in 2025 (+8% y/y), 1.61 bcm Jan 2026",
       "url": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/020226-russian-gas-flows-to-europe-via-turkstream-remain-at-sustained-high-in-jan",
-      "date": "2026-02-02"
+      "date": "2026-02-02",
+      "kind": "press"
      }
     ],
     "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. 2025: Eurostat nrg_ti_gasm (monthly, partner RU) 2026: Eurostat nrg_ti_gasm (monthly, partner RU)"
@@ -4066,7 +4072,8 @@
      {
       "name": "Interfax: Szijjarto on ~2 bcm/yr passed to Slovakia",
       "url": "https://interfax.com/newsroom/top-stories/112094/",
-      "date": "2025-06-19"
+      "date": "2025-06-19",
+      "kind": "press"
      }
     ],
     "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Slovakia/Hungary: central = RU + 50% of \"not specified\" origin, low = RU only, high = RU + all NSP. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. 2025: Comtrade 2025 (3.79 bcm) x median Eurostat/Comtrade ratio 2023-24 (0.76); range incl. CREA-scaled 2026: CREA destination volume 1.46 bcm x ratio to Eurostat-based level (1.58) 2025 override: TurkStream gas via Hungary: ~2 bcm passed on by Hungary (Szijjarto), CREA 1.84, Slovak customs (Comtrade) 3.79 bcm. 2026 override: CREA Jan-Aug 2026 1.46 bcm, scaled by 2025 central/CREA (1.41) and capped by Slovak consumption pace."
@@ -4733,7 +4740,8 @@
      {
       "name": "S&P Global: TurkStream flows to Europe 16.8 bcm in 2025 (+8% y/y), 1.61 bcm Jan 2026",
       "url": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/020226-russian-gas-flows-to-europe-via-turkstream-remain-at-sustained-high-in-jan",
-      "date": "2026-02-02"
+      "date": "2026-02-02",
+      "kind": "press"
      }
     ],
     "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. 2025: Comtrade 2025 (2.49 bcm) x median Eurostat/Comtrade ratio 2023-24 (1.05); range incl. CREA-scaled 2026: CREA destination volume 1.56 bcm x ratio to Eurostat-based level (0.95)"
@@ -4899,7 +4907,8 @@
      {
       "name": "S&P Global: TurkStream flows to Europe 16.8 bcm in 2025 (+8% y/y), 1.61 bcm Jan 2026",
       "url": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/020226-russian-gas-flows-to-europe-via-turkstream-remain-at-sustained-high-in-jan",
-      "date": "2026-02-02"
+      "date": "2026-02-02",
+      "kind": "press"
      }
     ],
     "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. 2025: Comtrade 2025 (0.24 bcm) x median Eurostat/Comtrade ratio 2023-24 (1.01); range incl. CREA-scaled 2026: no recorded Russian gas (Eurostat 2023-24 zero, CREA zero) 2026 override: Comtrade 2025 0.24 bcm x 8/12 (TurkStream flows at or above 2025 pace in 2026)."
@@ -5065,7 +5074,8 @@
      {
       "name": "S&P Global: TurkStream flows to Europe 16.8 bcm in 2025 (+8% y/y), 1.61 bcm Jan 2026",
       "url": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/020226-russian-gas-flows-to-europe-via-turkstream-remain-at-sustained-high-in-jan",
-      "date": "2026-02-02"
+      "date": "2026-02-02",
+      "kind": "press"
      }
     ],
     "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. 2025: Comtrade 2025 (0.14 bcm) x median Eurostat/Comtrade ratio 2023-24 (1.20); range incl. CREA-scaled 2026: CREA destination volume 0.13 bcm x ratio to Eurostat-based level (0.55)"
@@ -5392,7 +5402,8 @@
      {
       "name": "Corriere del Ticino / VSG: slightly less than half of Swiss gas Russian in 2020",
       "url": "https://cdt.ch/prodotti/cdt-international/in-the-case-of-a-gas-shortage-switzerland-has-an-advantage-278870",
-      "date": "2022-04"
+      "date": "2022-04",
+      "kind": "press"
      },
      {
       "name": "Pictet: ~43% of Swiss gas ultimately Russian",
@@ -5604,17 +5615,20 @@
      {
       "name": "S&P Global: TurkStream flows to Europe 16.8 bcm in 2025 (+8% y/y), 1.61 bcm Jan 2026",
       "url": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/020226-russian-gas-flows-to-europe-via-turkstream-remain-at-sustained-high-in-jan",
-      "date": "2026-02-02"
+      "date": "2026-02-02",
+      "kind": "press"
      },
      {
       "name": "S&P Global: TurkStream 2021 ~11.6 bcm to southeast Europe; Aug 2023 peak 1.43 bcm",
       "url": "https://www.spglobal.com/commodity-insights/en/news-research/latest-news/natural-gas/080224-russian-flows-to-europe-via-turkstream-hit-second-highest-monthly-level",
-      "date": "2024-08-02"
+      "date": "2024-08-02",
+      "kind": "press"
      },
      {
       "name": "Interfax: TurkStream March 2026 1.704 bcm (+21% y/y)",
       "url": "https://interfax.com/newsroom/top-stories/116906/",
-      "date": "2026-04-01"
+      "date": "2026-04-01",
+      "kind": "press"
      }
     ],
     "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. 2025: Eurostat nrg_ti_gasm (monthly, partner RU) 2026: Eurostat nrg_ti_gasm (monthly, partner RU)"
@@ -6077,12 +6091,14 @@
    {
     "name": "Russian MinFin/MinEcon Urals averages: 2021 $69.0, 2022 $76.09 (fomag.ru/Interfax, Jan 2023); 2024 $67.85, 2025 $55.62 (ldaily.ua, Jan 2026); 2020 $41.73 (Jan-Nov MinFin $41.04, profinance.ru); 2019 $63.59 (MinFin; not re-verified in this session)",
     "url": "https://fomag.ru/news-streem/srednyaya-tsena-nefti-urals-v-yanvare-dekabre-2022-g-sostavila-76-09-za-barrel-minfin-rf/",
-    "date": "2023-01"
+    "date": "2023-01",
+    "kind": "press"
    },
    {
     "name": "ldaily.ua: Urals 2025 average $55.62 vs $67.85 in 2024",
     "url": "https://ldaily.ua/en/wp-json/wp/v2/news/150961",
-    "date": "2026-01"
+    "date": "2026-01",
+    "kind": "press"
    },
    {
     "name": "CREA Russia Fossil Tracker /v0/price daily modelled Russian export prices (crude_oil_urals, oil_products, natural_gas, lng, coal), 2021-Aug 2026",
@@ -6823,7 +6839,8 @@
     {
      "name": "MPA via Gas Processing News: Singapore bunker sales 54.92 Mt 2024, 56.77 Mt 2025",
      "url": "https://www.gasprocessingnews.com/news/2026/01/marine-fuel-sales-in-singapore-bunker-hub-scale-fresh-highs-in-2025/",
-     "date": "2026-01"
+     "date": "2026-01",
+     "kind": "press"
     }
    ],
    "reasoning": "2024: petroleum product imports 88,119 ktoe, crude imports 49,758 ktoe (~refinery throughput), product exports 77,054 ktoe. Proportional re-export share 77.1/(88.1+49.8)=0.56 (0.54-0.56 in 2019-2024); exports/imports = 0.87 (upper bound). Bunkers ~53 Mtoe (54.9 Mt) = ~0.38 of product supply; imported fuel oil (45.2 Mtoe) mostly goes to bunkers (fuel oil exports only 15.3 Mtoe), and Russian-origin barrels in Singapore are mostly fuel oil and naphtha, so for Russian-linked fuel the bunker share is likely higher than average. Prototype guess 0.5-0.9 (central 0.7) is slightly high excluding bunkers; with bunkers counted as resale the share would be ~0.94."
@@ -6939,9 +6956,10 @@
    },
    "sources": [
     {
-     "name": "Ship & Bunker via Wikipedia: Gibraltar bunker sales ~4.3 Mt (2021), ~3.4 Mt (2022 est.); Port Authority does not publish volumes",
+     "name": "Ship & Bunker (trade press, Dec 2022; S&B's own estimate, no official volume exists): Gibraltar bunker sales ~4.3 Mt (2021), ~3.4 Mt (2022 est.); Port Authority does not publish volumes",
      "url": "https://shipandbunker.com/news/emea/778476-gibraltar-2022-bunker-calls-heading-for-12-year-low",
-     "date": "2026-10-17"
+     "date": "2026-10-17",
+     "kind": "press"
     },
     {
      "name": "Gibraltar Port Authority activity statistics 2024 (5,084 bunker calls)",

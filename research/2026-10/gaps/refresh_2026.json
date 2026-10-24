@@ -1834,7 +1834,8 @@
      "previous": {
       "central": 1.585728,
       "basis": "reported"
-     }
+     },
+     "src_kind": "press"
     }
    },
    "exports_to_RUS": {
@@ -1849,7 +1850,8 @@
      "previous": {
       "central": 1.51872,
       "basis": "reported"
-     }
+     },
+     "src_kind": "press"
     }
    }
   },
@@ -1867,7 +1869,8 @@
      "previous": {
       "central": 17.686814,
       "basis": "estimated"
-     }
+     },
+     "src_kind": "press"
     }
    },
    "exports_to_RUS": {
@@ -1882,7 +1885,8 @@
      "previous": {
       "central": 19.944705,
       "basis": "estimated"
-     }
+     },
+     "src_kind": "press"
     }
    }
   }
@@ -3105,22 +3109,26 @@
   {
    "name": "Spot.uz, Uzbekistan foreign trade Jan-Aug 2026 (Russia USD 9.19bn, +9.7%)",
    "url": "https://www.spot.uz/ru/2026/10/01/foreign-trade/",
-   "date": "2026-10-01"
+   "date": "2026-10-01",
+   "kind": "press"
   },
   {
    "name": "Investfuture/Interfax, Armenia-Russia turnover Jan-Jun 2026 USD 2.630bn (Armstat)",
    "url": "https://investfuture.ru/articles/v-yanvare-iyune-tovarooborot-armenii-s-rossiey-sokratilsya-na-20-9-do-2-630-mlrd-37514792",
-   "date": "2026-07"
+   "date": "2026-07",
+   "kind": "press"
   },
   {
    "name": "Investfuture, Alikhanov: Russia-Belarus turnover Jan-Jul 2026 USD 32.8bn +14%",
    "url": "https://investfuture.ru/articles/alihanov-tovarooborot-rossii-i-belorussii-vyros-na-14-5faf501db8a71d29",
-   "date": "2026-10-01"
+   "date": "2026-10-01",
+   "kind": "press"
   },
   {
    "name": "finance.mail.ru, Overchuk: Russia-Belarus turnover Q1 2026 ~USD 13bn +7.1%",
    "url": "https://finance.mail.ru/article/overchuk-soobschil-o-roste-tovarooborota-rossii-i-belorussii-69209336/",
-   "date": "2026"
+   "date": "2026",
+   "kind": "press"
   },
   {
    "name": "Kiel Institute, Ukraine Support Tracker Release 31 workbook",

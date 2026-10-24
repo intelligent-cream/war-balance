@@ -13319,7 +13319,8 @@
     {
      "name": "Euronews (es), KSE LeaveRussia (A. Onopriienko): Italian firms paid ~USD 1.2bn in taxes to Russia 2022-2024 (~USD 400m/yr)",
      "url": "https://es.euronews.com/2025/11/11/firmas-italianas-millones-euros-kremlin-invasion-ucrania",
-     "date": "2025-11-11"
+     "date": "2025-11-11",
+     "kind": "press"
     }
    ],
    "note": "KSE per-country figures used: 2021+2023 (B4U23, excl. exited); 2024 (B4U24, all statuses). Central = taxes of subsidiaries while foreign-owned: non-exited firms in full plus a time-weighted share of the exited cohort (KSE country charts for 2024 include firms already sold to Russian owners). KSE-basis (all statuses) profit tax EUR bn: 2021 0.147, 2022 0.2349, 2023 0.2735, 2024 0.2725, 2025 0.2305. All taxes = mean of profit-tax-share and revenue-share estimators of KSE all-tax totals. Cross-check: KSE told Euronews Italian firms paid ~USD 1.2bn 2022-24 (tax type not stated; ~USD 400m/yr), between this file's profit tax (~USD 0.8bn in-scope, ~0.9bn KSE basis) and all taxes.",

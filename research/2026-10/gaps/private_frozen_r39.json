@@ -3099,62 +3099,74 @@
   {
    "id": "ec_18_9bn_2022",
    "name": "Commission: EUR 18.9bn reported frozen by member states at 16 Dec 2022 (European Sanctions); member split BEL 3.5, LUX 2.5, ITA 2.3, DEU 2.2, IRL 1.8, AUT 1.8, FRA 1.3, ESP 1.0 (Belga; Paperjam)",
-   "url": "https://www.europeansanctions.com/2023/01/eu-commission-says-e18-9-billion-in-russian-assets-frozen-by-member-states/"
+   "url": "https://www.europeansanctions.com/2023/01/eu-commission-says-e18-9-billion-in-russian-assets-frozen-by-member-states/",
+   "kind": "press"
   },
   {
    "id": "belga_split",
    "name": "Belga: Belgium blocked EUR 3.5bn in Russian assets, more than any other EU member",
-   "url": "https://belganewsagency.eu/belgium-blocked-35-billion-in-russian-assets-more-than-any-other-eu-member"
+   "url": "https://belganewsagency.eu/belgium-blocked-35-billion-in-russian-assets-more-than-any-other-eu-member",
+   "kind": "press"
   },
   {
    "id": "politico_68bn_2022",
    "name": "Politico via Ukrinform: EU froze EUR 68bn of Russian assets, Belgium 50, Luxembourg 5.5; CBR reserves (33.8) listed separately (Nov 2022)",
-   "url": "https://ukrinform.net/rubric-economy/3617160-eu-freezes-eur-68b-in-russian-assets-politico.html"
+   "url": "https://ukrinform.net/rubric-economy/3617160-eu-freezes-eur-68b-in-russian-assets-politico.html",
+   "kind": "press"
   },
   {
    "id": "belgium_treasury_2023",
    "name": "Belgian Treasury via Ukrinform/Le Soir: EUR 58.7bn assets (mainly securities) and EUR 191.9bn transactions blocked",
-   "url": "https://ukrinform.net/rubric-economy/3676034-belgium-freezes-russian-assets-worth-eur-58b.html"
+   "url": "https://ukrinform.net/rubric-economy/3676034-belgium-freezes-russian-assets-worth-eur-58b.html",
+   "kind": "press"
   },
   {
    "id": "belgium_occrp_2025",
    "name": "OCCRP: Belgium blocked EUR 258bn: 193bn transactions (CBR), 65bn assets of which 55bn NSD securities and about 10bn sanctioned Russian banks (19 Feb 2025)",
-   "url": "https://occrp.org/en/scoop/belgium-blocked-270b-due-to-russian-sanctions-much-of-it-belongs-to-unsanctioned-investors"
+   "url": "https://occrp.org/en/scoop/belgium-blocked-270b-due-to-russian-sanctions-much-of-it-belongs-to-unsanctioned-investors",
+   "kind": "press"
   },
   {
    "id": "euroclear_ceo_2025",
    "name": "Investfuture (Euroclear CEO): EUR 193bn of Russian assets, of which 180bn Bank of Russia",
-   "url": "https://investfuture.ru/articles/euroclear-zamorazhivaet-193-milliarda-evro-rossiyskikh-aktivov-v-otvet-na-konflikt-1170151279"
+   "url": "https://investfuture.ru/articles/euroclear-zamorazhivaet-193-milliarda-evro-rossiyskikh-aktivov-v-otvet-na-konflikt-1170151279",
+   "kind": "press"
   },
   {
    "id": "cbr_5_7tn",
    "name": "Interfax: Bank of Russia estimate RUB 5.7tn of Russian investors' assets blocked at Euroclear and Clearstream (end-Nov 2022); type-C over RUB 280bn (Nov 2022), near 600bn end-2022 (sources)",
-   "url": "https://interfax.com/newsroom/top-stories/91372/"
+   "url": "https://interfax.com/newsroom/top-stories/91372/",
+   "kind": "press"
   },
   {
    "id": "cbr_half_unblocked",
    "name": "Expert: Bank of Russia: about half of the assets blocked in 2022 unblocked by early 2025; RUB 570bn in 2024 (9 Apr 2025)",
-   "url": "https://expert.ru/news/tsb-razblokirovano-okolo-poloviny-aktivov-rossiyskikh-grazhdan-i-kompaniy/"
+   "url": "https://expert.ru/news/tsb-razblokirovano-okolo-poloviny-aktivov-rossiyskikh-grazhdan-i-kompaniy/",
+   "kind": "press"
   },
   {
    "id": "cbr_2025_unblocked",
    "name": "Expert: Nabiullina: RUB 5.3tn unblocked since 2022, over RUB 400bn in 2025 (24 Mar 2026)",
-   "url": "https://expert.ru/news/elvira-nabiullina-soobshchila-o-razblokirovke-aktivov-investorov-na-5-trln-rubley"
+   "url": "https://expert.ru/news/elvira-nabiullina-soobshchila-o-razblokirovke-aktivov-investorov-na-5-trln-rubley",
+   "kind": "press"
   },
   {
    "id": "lux_paperjam_2022",
    "name": "Paperjam: Russian assets worth EUR 5.5bn blocked in Luxembourg (Dec 2022; EU list says 2.5)",
-   "url": "https://en.paperjam.lu/article/russian-assets-worth-5-5bn-blo"
+   "url": "https://en.paperjam.lu/article/russian-assets-worth-5-5bn-blo",
+   "kind": "press"
   },
   {
    "id": "deu_welt_2025",
    "name": "Mind.ua (Welt am Sonntag): Germany has frozen Russian assets worth over EUR 5.3bn",
-   "url": "https://mind.ua/en/news/20253639-germany-has-frozen-russian-assets-worth-more-than-5-3-billion-euros"
+   "url": "https://mind.ua/en/news/20253639-germany-has-frozen-russian-assets-worth-more-than-5-3-billion-euros",
+   "kind": "press"
   },
   {
    "id": "ita_gdf_2022",
    "name": "Foreign Policy / Reuters: Italy's Guardia di Finanza seizures over EUR 1.7bn (2022)",
-   "url": "https://foreignpolicy.com/2022/08/17/italy-is-leading-the-world-in-seizing-oligarchs-assets/"
+   "url": "https://foreignpolicy.com/2022/08/17/italy-is-leading-the-world-in-seizing-oligarchs-assets/",
+   "kind": "press"
   },
   {
    "id": "irl_oireachtas_2024",
@@ -3164,27 +3176,32 @@
   {
    "id": "aut_dsn",
    "name": "Vienna.at (APA, DSN/OeNB): frozen Russian assets in Austria fell from about EUR 2bn to 1.5bn",
-   "url": "https://www.vienna.at/eingefrorenes-russisches-vermogen-in-osterreich-gesunken/8579134"
+   "url": "https://www.vienna.at/eingefrorenes-russisches-vermogen-in-osterreich-gesunken/8579134",
+   "kind": "press"
   },
   {
    "id": "fra_tresor_2022",
    "name": "Ukrinform (CNN): France froze EUR 23.7bn, of which 22.8bn central bank",
-   "url": "https://ukrinform.net/rubric-polytics/3456151-france-freezes-over-25b-worth-of-russian-assets.html"
+   "url": "https://ukrinform.net/rubric-polytics/3456151-france-freezes-over-25b-worth-of-russian-assets.html",
+   "kind": "press"
   },
   {
    "id": "esp_reynders_2022",
    "name": "The Objective: Reynders: Spain froze EUR 41m (Sep 2022)",
-   "url": "https://theobjective.com/espana/2022-09-30/reynders-espana-oligarcas-rusia/"
+   "url": "https://theobjective.com/espana/2022-09-30/reynders-espana-oligarcas-rusia/",
+   "kind": "press"
   },
   {
    "id": "nld_2024",
    "name": "DutchNews: frozen Russian assets have melted to just under EUR 100m (Oct 2024)",
-   "url": "https://dutchnews.nl/2024/10/frozen-russian-assets-have-melted-to-just-under-e100-million"
+   "url": "https://dutchnews.nl/2024/10/frozen-russian-assets-have-melted-to-just-under-e100-million",
+   "kind": "press"
   },
   {
    "id": "cyp_2025",
    "name": "CBN / AP: Cyprus frozen assets EUR 1.5bn (2023), 1.3bn (Jan 2025), 1.2bn (Oct 2025)",
-   "url": "https://www.cbn.com.cy/article/120678"
+   "url": "https://www.cbn.com.cy/article/120678",
+   "kind": "press"
   },
   {
    "id": "ofsi_2024_25",
@@ -3194,7 +3211,8 @@
   {
    "id": "ofsi_2021_22",
    "name": "Bloomberg: UK has frozen GBP 18bn over Russia sanctions (OFSI review 2021-22, Nov 2022)",
-   "url": "https://www.bloomberg.com/news/articles/2022-11-10/uk-has-frozen-18-billion-over-russia-sanctions"
+   "url": "https://www.bloomberg.com/news/articles/2022-11-10/uk-has-frozen-18-billion-over-russia-sanctions",
+   "kind": "press"
   },
   {
    "id": "gov_uk_25bn",
@@ -3204,12 +3222,14 @@
   {
    "id": "seco_2025",
    "name": "Bluewin (SECO): CHF 7.4bn private plus CHF 7.45bn Bank of Russia (Apr 2025)",
-   "url": "https://www.bluewin.ch/en/news/switzerland-freezes-russian-assets-worth-15-billion-2633158.html"
+   "url": "https://www.bluewin.ch/en/news/switzerland-freezes-russian-assets-worth-15-billion-2633158.html",
+   "kind": "press"
   },
   {
    "id": "seco_2026_iz",
    "name": "Izvestia (SECO spokesman Mayenfisch): CHF 8.5bn private at 1 Jun 2026, CBR CHF 6.8bn",
-   "url": "https://iz.ru/en/node/2149609"
+   "url": "https://iz.ru/en/node/2149609",
+   "kind": "press"
   },
   {
    "id": "repo_2023",
@@ -3234,7 +3254,8 @@
   {
    "id": "typec_dzhabarov",
    "name": "Smart-lab (NAUFOR conference, Sberbank's Dzhabarov): RUB 1.4tn paid into type-C in 2022-2024, RUB 704bn expected in 2025 (16 May 2025)",
-   "url": "https://smart-lab.ru/blog/news/1155535.php"
+   "url": "https://smart-lab.ru/blog/news/1155535.php",
+   "kind": "press"
   },
   {
    "id": "typec_mt",
@@ -3244,12 +3265,14 @@
   {
    "id": "typec_reuters",
    "name": "Reuters via MarketScreener: Medvedev's USD 300bn in type-C (unverified) (11 Dec 2025)",
-   "url": "https://in.marketscreener.com/news/how-might-russia-react-to-any-eu-decision-to-use-its-frozen-assets-for-ukraine-ce7d50dbd880f02c"
+   "url": "https://in.marketscreener.com/news/how-might-russia-react-to-any-eu-decision-to-use-its-frozen-assets-for-ukraine-ce7d50dbd880f02c",
+   "kind": "press"
   },
   {
    "id": "typec_decrees_2026",
    "name": "Global Sanctions: Russia lifts type-C deposit restrictions for foreign nationals (decree 550/2026, Aug 2026)",
-   "url": "https://globalsanctions.com/2026/08/russia-lifts-type-c-deposit-restrictions-for-foreign-nationals-and-firms-russian-branches/"
+   "url": "https://globalsanctions.com/2026/08/russia-lifts-type-c-deposit-restrictions-for-foreign-nationals-and-firms-russian-branches/",
+   "kind": "press"
   },
   {
    "id": "imf_pip",

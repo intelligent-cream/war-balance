@@ -1842,7 +1842,9 @@ def attach_r11_sources(countries: dict[str, dict], src: Sources) -> None:
                     # round 24: a link cited by several proposals belongs to each of their flows
                     seen[u]["flows"] = sorted(set(seen[u]["flows"]) | set(fl))
                     continue
-                seen[u] = {"title": x.get("title") or u, "url": u, "kind": "primary", "flows": fl}
+                # round 41 (citations): a link the proposals mark as press stays press (secondary) on the site
+                kind = "secondary" if x.get("kind") == "press" else "primary"
+                seen[u] = {"title": x.get("title") or u, "url": u, "kind": kind, "flows": fl}
                 links.append(seen[u])
         src.items[sid]["links"] = links
         ids[k] = sid
@@ -1940,7 +1942,7 @@ SOURCE_TYPE = {
     "refugees": "data", "energy": "ours", "transit_gas": "data", "laundered": "ours", "laundered_eu": "data",
     "laundered_r6": "report", "laundered_r39": "data", "refining": "report", "eu_refiners": "ours", "companies": "report",
     "company_taxes_r6": "report", "services": "data", "hidden": "report", "undisclosed": "report", "private": "report",
-    "military_rus_r6": "report", "china_military": "report", "people": "report", "shipping": "report",
+    "military_rus_r6": "report", "china_military": "report", "people": "press", "shipping": "report",
     "shadow_fleet": "report", "reexports": "data", "residual": "data", "hk_gold_r16": "data", "audit": "notes",
     "sanctions_share": "report", "gas_cuts": "press", "prices": "ours", "narrow": "data", "audit2": "notes",
     "windfall": "ours", "trend": "ours", "gas_prices": "data", "trend2": "ours", "counterfactual": "ours",
@@ -3104,8 +3106,8 @@ def power_of_siberia(countries: dict[str, dict], src: Sources) -> None:
             tr[k] = [round(b + a, 4) for b, a in zip(tr[k], add)]
     sid = src.add(
         "power_of_siberia",
-        "Power of Siberia: contracted gas deliveries to China (Gazprom via Interfax, TASS and Reuters)",
-        "https://interfax.com/newsroom/top-stories/115552/",
+        "Power of Siberia: contracted gas deliveries to China (Gazprom's 2014 CNPC contract, 38 bcm a year; yearly volumes via Interfax, TASS and Reuters)",
+        "https://www.gazprom.com/press/news/2014/may/article191451/",
         ps.get("generated"),
         "the contracted ramp-up (2014 contract, 38 bcm/yr plateau) is in China's no-war path; see research/2026-10/gaps/power_of_siberia_r15.json",
     )

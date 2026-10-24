@@ -209,8 +209,12 @@
   },
   {
    "title": "Gazzetta Ufficiale n. 2, 3 Jan 2025: DPC ordinance for 2025",
-   "url": "https://gazzettaufficiale.biz/atti/2025/20250002/24A07062.htm",
-   "what": "EUR 36m spending limit for 2025 for Civil Protection reception measures"
+   "url": "https://www.gazzettaufficiale.it/eli/id/2025/01/03/24A07062/SG",
+   "what": "EUR 36m spending limit for 2025 for Civil Protection reception measures",
+   "replaced_r41": {
+    "old_url": "https://gazzettaufficiale.biz/atti/2025/20250002/24A07062.htm",
+    "verified": "official Gazzetta Ufficiale ELI page for act 24A07062 returns 200 (2026-10-24); the act text loads in a frame, the EUR 36m figure was read earlier on the unofficial mirror"
+   }
   }
  ]
 }

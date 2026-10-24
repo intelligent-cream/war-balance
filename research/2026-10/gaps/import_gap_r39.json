@@ -51,17 +51,20 @@
   {
    "year": "2023 (and 2022 from the growth rates)",
    "what": "FCS via Interfax 2024-02: imports from Asia USD 187.5bn (+29.2%), Europe 78.5 (-12.3%), America 15.0 (-11.0%), Africa 3.4 (+8.6%), Oceania 0.2 (-58.2%); total 285.1",
-   "url": "https://www.interfax.ru/business/945632"
+   "url": "https://www.interfax.ru/business/945632",
+   "kind": "press"
   },
   {
    "year": "2024",
    "what": "FCS via TASS/Mail.ru 2025-02: Europe 73.1 (-6.88%), Asia 191.2 (+1.92%), Africa 3.5 (+2.94%), America 14.8 (-1.33%); total 283.0",
-   "url": "https://finance.mail.ru/article/fts-polozhitelnoe-saldo-vneshney-torgovli-rf-vyroslo-za-2024-god-na-7-79-65042948/"
+   "url": "https://finance.mail.ru/article/fts-polozhitelnoe-saldo-vneshney-torgovli-rf-vyroslo-za-2024-god-na-7-79-65042948/",
+   "kind": "press"
   },
   {
    "year": "2025",
    "what": "FCS regional table via Lognews 2026-02: Europe 72.3, Asia 185.9, Africa 4.4, America 16.3, Oceania 0.1; total 279.0",
-   "url": "https://lognews.ru/fts-predostavila-otchet-po-tamozhennoy-statistike-vneshnetorgovyy-oborot-rossii-v-yanvare-dekabre"
+   "url": "https://lognews.ru/fts-predostavila-otchet-po-tamozhennoy-statistike-vneshnetorgovyy-oborot-rossii-v-yanvare-dekabre",
+   "kind": "press"
   }
  ],
  "blocks_by_year": {

@@ -71,12 +71,14 @@
     {
      "title": "PressHub, 16 Aug 2023: Romania owes Ukrainian refugees RON 300m (figures on 50/20 payments)",
      "url": "https://www.presshub.ro/exclusiv-romania-datoreaza-refugiatilor-ucraineni-300-de-milioane-de-lei-in-schimb-ii-trimite-la-munca-282164/",
-     "what": "RON 1,251,823,627 paid in total for food and accommodation; RON 660,578,758 transferred in 2023 alone; IGSU: arrears for Apr-Jul 2023 EUR 63.7m (headline RON 312.2m)"
+     "what": "RON 1,251,823,627 paid in total for food and accommodation; RON 660,578,758 transferred in 2023 alone; IGSU: arrears for Apr-Jul 2023 EUR 63.7m (headline RON 312.2m)",
+     "kind": "press"
     },
     {
      "title": "Juridice.ro, 28 Jul 2023: EUR 400m from POCU 2014-2020 to reimburse refugee support costs (OG 25/2023)",
      "url": "https://www.juridice.ro/697895/400-de-milioane-de-euro-pentru-decontarea-cheltuielilor-privind-sprijinirea-refugiatilor-ucraineni.html",
-     "what": "EU funds earmarked to reimburse Romania's refugee costs"
+     "what": "EU funds earmarked to reimburse Romania's refugee costs",
+     "kind": "press"
     }
    ],
    "note": "2022: 1,251.8 - 660.6 = RON 591.2m paid for 2022 (matches the RON 592m in round4b) = EUR 0.120bn at 4.931 RON/EUR; health and schooling come on top, so 0.15 is kept. 2023: 660.6 + 312.2 (Apr-Jul arrears) = RON 972.8m for activity up to July 2023 (a small part may be Dec 2022 arrears) = EUR 0.197bn at 4.947; Aug-Dec 2023 under the lower lump sums (750/2000 lei a month) adds an estimated EUR 0.03-0.08bn. Up to EUR 0.4bn of this is reimbursed from EU POCU funds (flag as eu_funded)."
@@ -96,7 +98,8 @@
     {
      "title": "Sofia Globe, 31 Oct 2022: Bulgaria to move Ukrainian refugees from hotels to state facilities",
      "url": "https://sofiaglobe.com/?p=109602",
-     "what": "Caretaker Tourism Minister Ilin Dimitrov: close to BGN 523m (EUR 267m) paid to hoteliers so far, BGN 200m from the national budget and about BGN 300m from EU programmes and funds"
+     "what": "Caretaker Tourism Minister Ilin Dimitrov: close to BGN 523m (EUR 267m) paid to hoteliers so far, BGN 200m from the national budget and about BGN 300m from EU programmes and funds",
+     "kind": "press"
     }
    ],
    "note": "BGN 523m / 1.95583 = EUR 0.267bn, accommodation only, to the end of October 2022. Nov-Dec 2022 accommodation, health and schooling come on top, so central 0.30. About EUR 0.15bn of it (BGN 300m) was EU-funded: flag as eu_funded. 2023-26 unchanged (no outturn found)."
@@ -127,7 +130,8 @@
     {
      "title": "Budapest Times, 25 Nov 2024: The biggest relief operation of Hungary",
      "url": "https://www.budapesttimes.hu/hungary/the-biggest-relief-operation-of-hungary/",
-     "what": "State Secretary Miklos Soltesz: nearly HUF 100bn in aid to Ukraine AND incoming refugees over the 1,000 days of the war; charities shipped goods to Ukraine worth about HUF 13bn"
+     "what": "State Secretary Miklos Soltesz: nearly HUF 100bn in aid to Ukraine AND incoming refugees over the 1,000 days of the war; charities shipped goods to Ukraine worth about HUF 13bn",
+     "kind": "press"
     }
    ],
    "note": "HUF 100bn / ~390 HUF/EUR = about EUR 0.25bn for everything (aid inside Ukraine plus refugees) Feb 2022 - Nov 2024. Our current refugee-only gross for 2022-24 is 0.282, already above the government's own all-in total. Taking 50-80% of the HUF 100bn as refugee cost gives EUR 0.13-0.20bn for 2022-24; the proposed path (0.13 for 2022-24, 0.18 for 2022-26) sits in that band. Split across years is judgement (front-loaded, Hungary's protected population fell after 2022)."
@@ -157,7 +161,8 @@
     {
      "title": "Brussels Times, 26 Apr 2023: Belgian MP condemns 'colossal' Ukrainian refugee aid",
      "url": "https://www.brusselstimes.com/474292/we-cannot-afford-this-belgian-mp-condemns-colossal-ukrainian-refugee-aid",
-     "what": "Theo Francken (N-VA), quoting the budget: EUR 372m for this (living-wage equivalent) aid in 2023 alone"
+     "what": "Theo Francken (N-VA), quoting the budget: EUR 372m for this (living-wage equivalent) aid in 2023 alone",
+     "kind": "press"
     },
     {
      "title": "OECD International Migration Outlook 2022, Box 4.1 and Table 4.1 (first-year cost of hosting Ukrainian refugees, European OECD countries, 10 months of 2022, modelled)",
@@ -204,12 +209,14 @@
     {
      "title": "LSM, 21 Nov 2024: support for Ukrainian refugees in Latvia extended by a year",
      "url": "https://www.lsm.lv/raksts/zinas/latvija/21.11.2024-vel-uz-gadu-pagarina-atbalstu-ukrainas-begliem-latvija.a577249/",
-     "what": "State budget 2025: EUR 65m for support of Ukrainian civilians in Latvia"
+     "what": "State budget 2025: EUR 65m for support of Ukrainian civilians in Latvia",
+     "kind": "press"
     },
     {
      "title": "LV portals, 23 Feb 2026: Welfare Minister: support for Ukrainian civilians continues in 2026",
      "url": "https://lvportals.lv/dienaskartiba/386456-labklajibas-ministrs-r-uzulnieks-atbalsts-ukrainas-civiliedzivotajiem-latvija-tiks-turpinats-2026",
-     "what": "Welfare sector support about EUR 125m since Feb 2022; EUR 48.4m of municipal social benefits to 52,000 people; about EUR 19m of state social benefits"
+     "what": "Welfare sector support about EUR 125m since Feb 2022; EUR 48.4m of municipal social benefits to 52,000 people; about EUR 19m of state social benefits",
+     "kind": "press"
     }
    ],
    "note": "2025 = the EUR 65m budget line of the Ukrainian Civilians Support Law. Welfare sector alone averaged EUR 125m / 4 years = 0.031 a year, before schooling, health, language courses and accommodation, so 2023-24 at about 0.06 is consistent. 2026 Jan-Aug = 8/12 x about 0.06. Current values are about half of this."
@@ -229,7 +236,8 @@
     {
      "title": "ERR: Riisalo: refugee flow to Estonia starting to stabilise (2022 budget for war refugees)",
      "url": "https://www.err.ee/1608579985/riisalo-pogenikevoog-eestisse-hakkab-stabiliseeruma",
-     "what": "Planned 2022 state money: EUR 44.3m for housing about 30,000 war refugees, EUR 17m initial rent support, EUR 1.4m basic goods and prescription medicines"
+     "what": "Planned 2022 state money: EUR 44.3m for housing about 30,000 war refugees, EUR 17m initial rent support, EUR 1.4m basic goods and prescription medicines",
+     "kind": "press"
     },
     {
      "title": "OECD International Migration Outlook 2022, Box 4.1 and Table 4.1 (first-year cost of hosting Ukrainian refugees, European OECD countries, 10 months of 2022, modelled)",
@@ -261,12 +269,14 @@
     {
      "title": "Search snippet of press report on Public Accounts Committee figures (Tipperary Live / Iconic Media), 2024; page itself blocked by a bot wall",
      "url": "https://www.tipperarylive.ie/national/government-spent-almost-eu15-billion-on-accommodation-for-ukrainian-refugees-last-year-7165026",
-     "what": "Department of Integration spent EUR 515m on BOTP accommodation in 2022 and EUR 1.49bn in 2023 (figures given to the PAC)"
+     "what": "Department of Integration spent EUR 515m on BOTP accommodation in 2022 and EUR 1.49bn in 2023 (figures given to the PAC)",
+     "kind": "press"
     },
     {
      "title": "Business Post: State spending on housing asylum seekers and Ukrainians in 2023 totals EUR 1.8bn",
      "url": "https://www.businesspost.ie/news/state-spending-on-housing-asylum-seekers-and-ukrainians-in-2023-totals-e1-8bn/",
-     "what": "IP applicants + Ukrainians together, 2023 [search-result snippet; page not opened]"
+     "what": "IP applicants + Ukrainians together, 2023 [search-result snippet; page not opened]",
+     "kind": "press"
     }
    ],
    "note": "Confirms the 2023 central (2.0) is plausible: accommodation alone 1.49. Raise the 2022 floor from 0.448 to 0.515 and set the 2023 low to at least 1.49. Not verified on the PAC page itself."
@@ -342,12 +352,14 @@
     {
      "title": "FrontNews Georgia: state programme ensuring shelter and food for Ukrainian refugees ends",
      "url": "https://frontnews.ge/en/news/details/28741",
-     "what": "Tbilisi City Hall: GEL 14m spent on hotel accommodation and meals, March - 1 Aug 2022 [search-result snippet; page not opened]"
+     "what": "Tbilisi City Hall: GEL 14m spent on hotel accommodation and meals, March - 1 Aug 2022 [search-result snippet; page not opened]",
+     "kind": "press"
     },
     {
      "title": "1TV Georgia: Agency for IDPs reports on assistance to Ukrainian refugees",
      "url": "https://1tv.ge/lang/en/news/agency-for-idps-reports-on-assistance-to-ukrainian-refugees/",
-     "what": "since 15 Jul 2022: GEL 1.8m social aid and accommodation, GEL 0.2m temporary housing, GEL 0.8m medical treatment; programme pays GEL 300 per family + GEL 45 per member a month [search-result snippet; page not opened]"
+     "what": "since 15 Jul 2022: GEL 1.8m social aid and accommodation, GEL 0.2m temporary housing, GEL 0.8m medical treatment; programme pays GEL 300 per family + GEL 45 per member a month [search-result snippet; page not opened]",
+     "kind": "press"
     }
    ],
    "note": "Documented 2022 spending is about GEL 17m (EUR 0.006bn), a floor. The monthly cash programme (extended to Oct 2025) can reach GEL 30-50m a year at the UNHCR caseload, so central kept."
@@ -543,12 +555,14 @@
     {
      "title": "vienna.at, 30 Nov 2022: Rueckgang an Spenden in Oesterreich befuerchtet (Fundraising Verband Austria)",
      "url": "https://www.vienna.at/rueckgang-an-spenden-in-oesterreich-befuerchtet/7774852",
-     "what": "EUR 100m given for Ukraine aid in the first two months of the war; Nachbar in Not over EUR 50m by end-October 2022"
+     "what": "EUR 100m given for Ukraine aid in the first two months of the war; Nachbar in Not over EUR 50m by end-October 2022",
+     "kind": "press"
     },
     {
      "title": "ORF, 9 Aug 2023: Nachbar in Not: bisher 98 Mio. Euro gespendet",
      "url": "https://orf.at/stories/3326898/",
-     "what": "EUR 56m private donations to Nachbar in Not since 24 Feb 2022; government doubling about EUR 42m (government money, not private)"
+     "what": "EUR 56m private donations to Nachbar in Not since 24 Feb 2022; government doubling about EUR 42m (government money, not private)",
+     "kind": "press"
     }
    ],
    "note": "EUR 100m in two months is already above the model's 2022 high-centre; central 0.11, low 0.10."
@@ -572,12 +586,14 @@
     {
      "title": "Seznam Zpravy, 24 Feb 2023: how the war changed Czechia",
      "url": "https://www.seznamzpravy.cz/clanek/fakta-jak-valka-na-ukrajine-zmenila-cesko-cesi-jsou-nejsolidarnejsi-v-historii-226309",
-     "what": "almost CZK 5bn collected for Ukraine in the first year, mostly People in Need and the Ukrainian embassy account; material aid excluded"
+     "what": "almost CZK 5bn collected for Ukraine in the first year, mostly People in Need and the Ukrainian embassy account; material aid excluded",
+     "kind": "press"
     },
     {
      "title": "Seznam Zpravy, 17 Mar 2022",
      "url": "https://www.seznamzpravy.cz/clanek/fakta-pomoc-jaka-nema-obdoby-cesi-uz-darovali-ukrajine-temer-27-miliardy-194018",
-     "what": "almost CZK 2.7bn in three weeks: People in Need 1.46bn, embassy (defence materiel) 0.66bn, Post Bellum 0.18bn, Red Cross 0.178bn, Charita 0.101bn"
+     "what": "almost CZK 2.7bn in three weeks: People in Need 1.46bn, embassy (defence materiel) 0.66bn, Post Bellum 0.18bn, Red Cross 0.178bn, Charita 0.101bn",
+     "kind": "press"
     }
    ],
    "note": "CZK 5bn / 24.566 = EUR 0.204bn for Feb 2022 - Feb 2023, most of it in 2022. Includes about CZK 1.2bn to the embassy's defence account (private money for military aid); drop that if the map counts only humanitarian giving (then about 0.15)."
@@ -601,7 +617,8 @@
     {
      "title": "The Copenhagen Post (citing TV2), 23 Feb 2023: Danish donations to Ukraine exceed all expectations",
      "url": "https://test.cphpost.dk/2023-02-23/news/danish-donations-to-ukraine-exceed-all-expectations",
-     "what": "well over DKK 1bn; Red Cross DKK 693m, UNICEF DKK 195m (155m from companies), Save the Children DKK 40m"
+     "what": "well over DKK 1bn; Red Cross DKK 693m, UNICEF DKK 195m (155m from companies), Save the Children DKK 40m",
+     "kind": "press"
     }
    ],
    "note": "DKK 1bn / 7.4396 = EUR 0.134bn in the first year (companies included, as in the other anchors). Model central was 0.059."
@@ -631,7 +648,8 @@
     {
      "title": "MTV Uutiset, 24 Feb 2024",
      "url": "https://www.mtvuutiset.fi/artikkeli/vasyivatko-suomalaiset-jo-ukrainan-tukemiseen-nain-lahjoituksien-maara-hiipui-kahdessa-vuodessa/8884946",
-     "what": "Finnish Red Cross Ukraine appeal: about EUR 39m in 2022, about EUR 5m in 2023, EUR 44m in total"
+     "what": "Finnish Red Cross Ukraine appeal: about EUR 39m in 2022, about EUR 5m in 2023, EUR 44m in total",
+     "kind": "press"
     }
    ],
    "note": "Red Cross alone = the model's whole 2022 central; other NGOs and drone crowdfunding come on top. Floors from the Red Cross; central x1.5 judgement."
@@ -663,17 +681,20 @@
     {
      "title": "Novaya Gazeta Europe, 25 Feb 2023: Lithuania raises EUR 14 million for Ukraine army radars",
      "url": "https://novayagazeta.eu/en/articles/2023/02/25/lithuania-raises-eur14-million-for-ukraine-army-radars-en-news",
-     "what": "Radarom campaign: EUR 14m in four weeks (LRT, Blue/Yellow, Laisves TV, 1K fondas, Stiprus kartu)"
+     "what": "Radarom campaign: EUR 14m in four weeks (LRT, Blue/Yellow, Laisves TV, 1K fondas, Stiprus kartu)",
+     "kind": "press"
     },
     {
      "title": "Al Jazeera, 30 May 2022: Lithuanians crowdfund $5.4m for combat drone",
      "url": "https://www.aljazeera.com/amp/news/2022/5/30/lithuanians-crowdfund-5-4-million-for-combat-drone-to-ukraine",
-     "what": "EUR 5m Bayraktar campaign in 3.5 days [search-result snippet; page not opened]"
+     "what": "EUR 5m Bayraktar campaign in 3.5 days [search-result snippet; page not opened]",
+     "kind": "press"
     },
     {
      "title": "Censor.NET (citing LRT): Radarom drones 2025",
      "url": "https://censor.net/en/news/3564638/lithuania-acquires-2609-drones-for-the-armed-forces-of-ukraine-under-radarom",
-     "what": "Feb 2025 Radarom campaign over EUR 4.4m in its early stage [search-result snippet; page not opened]"
+     "what": "Feb 2025 Radarom campaign over EUR 4.4m in its early stage [search-result snippet; page not opened]",
+     "kind": "press"
     }
    ],
    "note": "One 2023 campaign (EUR 14m) is 2.3x the model's whole 2023 central; the model's decay factor (0.13 of 2022) is too steep for the Baltics, where anniversary campaigns recur."
@@ -721,12 +742,14 @@
     {
      "title": "ERR News: Huge rise in Estonian developmental aid and charitable donations in 2022",
      "url": "https://news.err.ee/1609187389/huge-rise-in-estonian-developmental-aid-and-charitable-donations-in-2022",
-     "what": "Estonian Refugee Council EUR 6.4m, MTU Slava Ukraini EUR 4.7m, Ukrainian Cultural Centre EUR 3.5m"
+     "what": "Estonian Refugee Council EUR 6.4m, MTU Slava Ukraini EUR 4.7m, Ukrainian Cultural Centre EUR 3.5m",
+     "kind": "press"
     },
     {
      "title": "ERR News: Estonians donated almost EUR 96 million to NGOs in 2022",
      "url": "https://news.err.ee/1609178377/estonians-donated-almost-96-million-to-ngos-in-2022",
-     "what": "EUR 95.7m in 2022 vs 55.8m in 2021 (+EUR 40m); Ukraine aid the most popular cause"
+     "what": "EUR 95.7m in 2022 vs 55.8m in 2021 (+EUR 40m); Ukraine aid the most popular cause",
+     "kind": "press"
     }
    ],
    "note": "Floor = 6.4+4.7+3.5 = EUR 14.6m; the +EUR 40m rise in all giving is an upper guide. Central about unchanged."
@@ -780,7 +803,8 @@
     {
      "title": "Red Deer Advocate (Canadian Press), Apr 2022: Canadians help Red Cross raise millions to support Ukrainians",
      "url": "https://www.reddeeradvocate.com/news/canadians-help-red-cross-raise-millions-to-support-ukrainians/",
-     "what": "Canadian Red Cross Ukraine appeal CAD 151m by 11 April 2022, including CAD 30m federal matching [search-result snippet; page not opened]"
+     "what": "Canadian Red Cross Ukraine appeal CAD 151m by 11 April 2022, including CAD 30m federal matching [search-result snippet; page not opened]",
+     "kind": "press"
     }
    ],
    "note": "Private part (151 - 30) = CAD 121m / 1.3695 = EUR 0.088bn in six weeks through one charity. That is below the model's low (0.168), so it confirms the range without changing it. Scale check only."
@@ -812,7 +836,8 @@
     {
      "title": "TV4: TV4 programme collected over SEK 40 million for those affected (Sverige samlas och hjalper, 2022)",
      "url": "https://www.tv4.se/artikel/67SX9uaIA4DiNMcfzSZWL1/tv4-programmet-samlade-in-oever-40-miljoner-kronor-till-de-drabbade-i",
-     "what": "single Swedish campaign, SEK 40m; no national total"
+     "what": "single Swedish campaign, SEK 40m; no national total",
+     "kind": "press"
     }
    ],
    "note": "No national total found. Note the Japanese and Danish results: the GDP model can be off by 2-5x either way, so ranges should stay wide."

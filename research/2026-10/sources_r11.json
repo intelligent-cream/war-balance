@@ -963,12 +963,12 @@
      "checked": "fetched"
     },
     {
-     "title": "Fondation de France: four years after the start of the war",
-     "url": "https://www.carenews.com/fondation-de-france/news/quatre-ans-apres-le-debut-de-la-guerre-la-fondation-de-france-reste",
-     "kind": "secondary",
+     "title": "Fondation de France press release, Feb 2026 (four years of Solidarite Ukraine): EUR 21.6m collected to 31 Dec 2025, of which EUR 1.8m in 2025; first-year release: EUR 16.8m collected to Feb 2023",
+     "url": "https://fondationdefrance.org/images/pdf/2026/CP_FDF_4_ans_Ukraine.pdf",
+     "kind": "primary",
      "what": "France: Fondation de France",
      "confirmed": true,
-     "checked": "fetched"
+     "checked": "round 41: PDFs fetched 2026-10-24 (4-year and 1-year releases)"
     },
     {
      "title": "Interfax-Ukraine: United24 totals",
@@ -2606,7 +2606,7 @@
     {
      "title": "Ukrinform: Ukraine prices USD 1.25bn 8-year Eurobond at 6.875% (27 Apr 2021)",
      "url": "https://www.ukrinform.net/rubric-economy/3235891-ukraine-to-issue-eurobonds-worth-125b-finance-ministry.html",
-     "kind": "primary",
+     "kind": "secondary",
      "what": "round 12: Ukraine's normal (pre-war) rate, part of the 2021 mean",
      "confirmed": true,
      "checked": "fetched"
@@ -2614,7 +2614,7 @@
     {
      "title": "Interfax-Ukraine: USD 500m tap of the 2029 Eurobond at 6.30% (22 Jul 2021)",
      "url": "https://en.interfax.com.ua/news/economic/758134.html",
-     "kind": "primary",
+     "kind": "secondary",
      "what": "round 12: Ukraine's normal (pre-war) rate, part of the 2021 mean",
      "confirmed": true,
      "checked": "fetched"
@@ -2694,7 +2694,7 @@
     {
      "title": "Interfax: Ukraine repaid USD 279.7m to the IMF in February 2026 (6 Mar 2026)",
      "url": "https://interfax.com/newsroom/top-stories/116503/",
-     "kind": "primary",
+     "kind": "secondary",
      "what": "round 12: servicing record to the IMF",
      "confirmed": true,
      "checked": "fetched"
@@ -3796,12 +3796,12 @@
    "model": false,
    "links": [
     {
-     "title": "Global News (AP): Russia cuts off gas to Finland (21 May 2022), after Poland and Bulgaria (April 2022)",
-     "url": "https://globalnews.ca/news/8851619/russia-cut-finland-off-gas-supply-rubles/amp",
-     "kind": "secondary",
+     "title": "Gasum, 20 May 2022: natural gas imports from Russia under Gasum's supply contract will be halted on Saturday 21 May at 07.00",
+     "url": "https://gasum.com/en/About-gasum/for-the-media/News/2022/natural-gas-imports-from-russia-under-gasums-supply-contract-will-be-halted-on-saturday-21-may-at-07.00",
+     "kind": "primary",
      "what": "Finland, Poland, Bulgaria",
      "confirmed": true,
-     "checked": "fetched 2026-10-19 (round 14)"
+     "checked": "round 41: confirmed by web search 2026-10-24 (gasum.com returns 403 to the fetcher)"
     },
     {
      "title": "Gasunie Transport Services: Gazprom ceases supplying GasTerra with effect from 31 May",

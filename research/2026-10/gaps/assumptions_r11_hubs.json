@@ -41,7 +41,8 @@
     {
      "title": "Port of Rotterdam via PortsEurope: 9.8 Mt bunkers 2024, 9.9 Mt 2023, 10.6 Mt 2022",
      "url": "https://www.portseurope.com/port-of-rotterdam-supplied-9-8-million-tonnes-of-bunker-fuel-in-2024/",
-     "what": "port bunker totals, consistent with Eurostat INTMARB"
+     "what": "port bunker totals, consistent with Eurostat INTMARB",
+     "kind": "press"
     }
    ],
    "note": "Confirmed. Proportional re-export EXP/(IMP+refinery output) = 106.39/143.81=0.740 (2022), 104.66/138.88=0.754 (2023), 100.36/137.42=0.730 (2024). Bunkers/(IMP+output) 0.081/0.076/0.082. No change."
@@ -195,9 +196,13 @@
      "what": "HS 2710 by weight M 83.7 (2023)/84.9 (2024) Mt, X 69.4/71.3 Mt: X/M 0.83/0.84; by value X/M 1.07/1.04"
     },
     {
-     "title": "Engine: Singapore 51.27 Mt bunkers in 2023 (conventional)",
-     "url": "https://engine.online/news/rotterdam-conventional-bunker-sales-dipped-by-9-pc-in-2023-5712",
-     "what": "2023 bunker total"
+     "title": "Maritime and Port Authority of Singapore, bunker sales statistics (annual workbook): 51.82 Mt in 2023, 54.92 Mt in 2024 (all fuels; 51.27 Mt was conventional fuels only)",
+     "url": "https://www.mpa.gov.sg/who-we-are/newsroom-resources/research-and-statistics/bunkering-statistics",
+     "what": "2023 bunker total",
+     "replaced_r41": {
+      "old_url": "https://engine.online/news/rotterdam-conventional-bunker-sales-dipped-by-9-pc-in-2023-5712",
+      "verified": "MPA workbook bunker-sales_Sep-2026.xlsx read 2026-10-24"
+     }
     }
    ],
    "note": "Confirmed. Comtrade X/M by weight 0.83-0.84 sits just under the 0.87 high taken from EMA data; 51.3-54.9 Mt bunkers keep the 0.38 bunker share. No change."
@@ -236,12 +241,14 @@
     {
      "title": "Engine (FOIZ / S&P Global data): Fujairah bunker sales 7.49 Mt in 2024, +2%",
      "url": "https://engine.online/news/fujairah-bunker-sales-grew-2-pc-in-2024-despite-weaker-vlsfo-demand-672b",
-     "what": "annual bunker volume, verifies the previously unverified ~7 Mt"
+     "what": "annual bunker volume, verifies the previously unverified ~7 Mt",
+     "kind": "press"
     },
     {
      "title": "Ship & Bunker: Fujairah November 2024 sales 606,042 m3",
      "url": "https://shipandbunker.com/news/emea/799458-fujairah-november-bunker-sales-drop-to-17-month-low",
-     "what": "monthly level ~0.6-0.67 Mm3"
+     "what": "monthly level ~0.6-0.67 Mm3",
+     "kind": "press"
     }
    ],
    "note": "Resale share confirmed: RX/M 0.45 (2022), 0.38 (2023). Bunker share now verified: Fujairah ~7.4-7.5 Mt/yr against 21-24 Mt imports = 0.31-0.35; part of Fujairah bunkers comes from domestic refinery output (Ruwais, ENOC), so central stays 0.30 and the range narrows to 0.20-0.40."
@@ -436,12 +443,14 @@
     {
      "title": "Seatrade Maritime: Panama bunker sales 4.9 Mt in 2023, 5.24 Mt in 2022 (AMP data)",
      "url": "https://www.seatrade-maritime.com/bunkering/panama-bunkering-bouncing-back-from-drought-restrictions",
-     "what": "bunker volumes"
+     "what": "bunker volumes",
+     "kind": "press"
     },
     {
      "title": "Ship & Bunker: Panama 2024 bunker sales about 5.1 Mt, +3.9%",
      "url": "https://shipandbunker.com/news/am/124578-strong-december-takes-panama-2024-bunker-sales-up-39-on-year",
-     "what": "2024 bunker volume"
+     "what": "2024 bunker volume",
+     "kind": "press"
     }
    ],
    "note": "The old shares were set on the customs basis, but the fuel reaching Panama in the model comes from partners' records (the free-zone basis). On that basis, excluding China's ~3 Mt (flag-of-ship bunker records, see LAUNDERED_CAP items), supply is ~10.5-12.8 Mt. Bunkers are 4.9-5.2 Mt (0.40-0.50 of it) and domestic use 2.7 Mt (0.21-0.26). The remaining 0.25-0.40 is free-zone re-export or storage, which no source splits. So bunker 0.3/0.4/0.5 and resale 0/0.05/0.35. Small effect if the PAN cap below is adopted."
@@ -486,7 +495,8 @@
     {
      "title": "Izvestia, 26 Jun 2025: fees for cross-border payments from Russia dropped 2-3 times",
      "url": "https://iz.ru/en/node/1910577",
-     "what": "average agency fee 5% -> 2% in 2025, 1.5% for large batches; 2024 4-5% (Impaya) and 5-7% (First Group); 2025 2-3% (Novasmart); intermediaries 70-80% of the payment market"
+     "what": "average agency fee 5% -> 2% in 2025, 1.5% for large batches; 2024 4-5% (Impaya) and 5-7% (First Group); 2025 2-3% (Novasmart); intermediaries 70-80% of the payment market",
+     "kind": "press"
     }
    ],
    "note": "A higher share via agents (0.70 vs 0.55) and a lower fee (2% vs 2.5%) offset: 0.70x0.02=0.0140 vs 0.55x0.025=0.01375 (+2%). Keep the current 2025 values. The 2024 central fee 4% sits inside the quoted 4-7%. No source splits fees or volumes by country, and Bank of Russia BoP has no counterparty-country table for this."
@@ -549,12 +559,14 @@
     {
      "title": "bne IntelliNews: Armenian banks net profit about USD 586m in 2023 (UBA: 171m 2021, 581m 2022)",
      "url": "https://www.intellinews.com/in-2023-ra-banks-recorded-a-net-profit-of-approximately-586mn-309088/",
-     "what": "bank profit series"
+     "what": "bank profit series",
+     "kind": "press"
     },
     {
      "title": "CivilNet: Armenian banks' 2024 profit just under USD 923m",
      "url": "https://civilnet.am/en/news/999474",
-     "what": "2024 bank profit (search snippet; page not opened)"
+     "what": "2024 bank profit (search snippet; page not opened)",
+     "kind": "press"
     }
    ],
    "note": "Bank profit above 2021: USD 410m, 415m and 752m, i.e. EUR 0.39, 0.38 and 0.70bn. The agent-fee central is 15-30% of that excess. Most of the excess comes from relocant deposits, FX conversion and the 2024 gold/re-export boom. No change, but the 2024 jump means the 2024 high (0.34) should not be cut."
@@ -570,7 +582,8 @@
     {
      "title": "Izvestia, 26 Jun 2025",
      "url": "https://iz.ru/en/node/1910577",
-     "what": "names CIS (Armenia, Kazakhstan, Kyrgyzstan, Uzbekistan), Turkiye, UAE and China as main directions, no shares"
+     "what": "names CIS (Armenia, Kazakhstan, Kyrgyzstan, Uzbekistan), Turkiye, UAE and China as main directions, no shares",
+     "kind": "press"
     }
    ],
    "note": "No source gives agent volumes, fees or commissions by country: Bank of Russia BoP, the Russian Finance Ministry and press were checked. The split stays a judgement."
@@ -597,12 +610,14 @@
     {
      "title": "USM (FT, 7 Jul 2026): Greek companies earned almost USD 4bn transporting Russian oil in three years",
      "url": "https://en.usm.media/?p=195381",
-     "what": "FT estimate: at least USD 3.8bn on 389m bbl priced, out of 542m bbl tracked"
+     "what": "FT estimate: at least USD 3.8bn on 389m bbl priced, out of 542m bbl tracked",
+     "kind": "press"
     },
     {
      "title": "Ground News summary of FT, Jul 2026",
      "url": "https://ground.news/article/ft-greek-shipowners-earn-nearly-4-billion-from-transporting-russian-oil",
-     "what": "Dynacom at least USD 915m, Olympic USD 404m; freight premium 30-40%"
+     "what": "Dynacom at least USD 915m, Olympic USD 404m; freight premium 30-40%",
+     "kind": "press"
     },
     {
      "title": "Windward: Greece-owned tankers exit Russia crude trades ahead of US sanctions deadline",
@@ -645,9 +660,13 @@
    "basis": "data",
    "sources": [
     {
-     "title": "Brussels Times, 7 Jul 2023: Global corporations pay $3.5 billion in taxes to Kremlin (B4Ukraine/KSE, 2022 data)",
-     "url": "https://www.brusselstimes.com/590174/global-corporations-pay-3-5-billion-in-taxes-to-kremlin",
-     "what": "Belgian-HQ companies: 54% remained, USD 595m revenue, USD 17m profit tax in 2022"
+     "title": "B4Ukraine and KSE Institute, 'The Business of Staying' (Jul 2023, 2022 data): foreign companies paid USD 3.5bn of profit tax in Russia; Belgian-HQ companies 54% remained, USD 595m revenue, USD 17m profit tax",
+     "url": "https://b4ukraine.org/pdf/BusinessOfStaying.pdf",
+     "what": "Belgian-HQ companies: 54% remained, USD 595m revenue, USD 17m profit tax in 2022",
+     "replaced_r41": {
+      "old_url": "https://www.brusselstimes.com/590174/global-corporations-pay-3-5-billion-in-taxes-to-kremlin",
+      "verified": "PDF fetched 2026-10-24: USD 3.5bn read in the text; the Belgian split is in a table not extracted as text (search confirms it)"
+     }
     },
     {
      "title": "B4Ukraine, The Business of Staying (2023), the report behind it",
@@ -678,7 +697,8 @@
     {
      "title": "Kyiv Independent on Follow the Money investigation, 10 Jun 2025",
      "url": "https://kyivindependent.com/western-firms-paid-at-least-46-billion-in-taxes-to-russia-amid-full-scale-war-in-ukraine-investigation-says/",
-     "what": "EUR 40bn total; only the Raiffeisen figure by country"
+     "what": "EUR 40bn total; only the Raiffeisen figure by country",
+     "kind": "press"
     }
    ],
    "note": "No published per-country figures were found for the allocated countries. Euronews has country pieces for Germany, Italy and France only (all already reported). Belgium 2022 is the one new data point."
@@ -721,9 +741,13 @@
      "what": "partners report 4.9-5.3 Mt a year 'to Liberia' (China 3.6-4.1 Mt, Brazil, Greece): bunkers for Liberian-flag ships, 15-20x Liberia's own imports"
     },
     {
-     "title": "Worldometers (EIA data): Liberia oil consumption 4,853 b/d in 2024",
-     "url": "https://www.worldometers.info/ca/petroli/liberia-petroli/",
-     "what": "about 0.24 Mt a year, consistent with customs"
+     "title": "US EIA International Energy Statistics: Liberia petroleum consumption 4.85 thousand b/d (224 kt) in 2024",
+     "url": "https://www.eia.gov/international/data/country/LBR/petroleum-and-other-liquids/annual-refined-petroleum-products-consumption",
+     "what": "about 0.24 Mt a year, consistent with customs",
+     "replaced_r41": {
+      "old_url": "https://www.worldometers.info/ca/petroli/liberia-petroli/",
+      "verified": "EIA API read 2026-10-24 (4.852734 kb/d, 2024)"
+     }
     }
    ],
    "note": "Laundered oil Liberia can actually use = fuel imports x share made from Russian crude elsewhere x crude content. Central: EUR 553m (2022-24 average, ECB averages 1.053/1.081/1.082) x 0.04 x 0.5 = EUR 11m = 0.25% of GDP 4.42bn. High: EUR 619m (2023) x 0.10 x 0.6 = EUR 37m = 0.84%. The 4%/10% shares are a judgement from CIV's India+Turkiye share (4-8%) plus Belgian blends. The current cap binds every year at EUR 44m."
@@ -751,9 +775,13 @@
    "basis": "data",
    "sources": [
     {
-     "title": "Worldometers (EIA data): Togo oil consumption 15,690 b/d in 2024",
-     "url": "https://www.worldometers.info/fr/petrole/togo-petrole/",
-     "what": "5.73m bbl a year, secondary source"
+     "title": "US EIA International Energy Statistics: Togo petroleum consumption 15.69 thousand b/d (685 kt) in 2024",
+     "url": "https://www.eia.gov/international/data/country/TGO/petroleum-and-other-liquids/annual-refined-petroleum-products-consumption",
+     "what": "5.73m bbl a year, secondary source",
+     "replaced_r41": {
+      "old_url": "https://www.worldometers.info/fr/petrole/togo-petrole/",
+      "verified": "EIA API read 2026-10-24 (15.690353 kb/d, 2024)"
+     }
     },
     {
      "title": "UN Comtrade HS 2710, TGO as reporter, world partner, 2022-2024 (one call per year; URL shows 2023)",
@@ -884,7 +912,8 @@
     {
      "title": "IndexMundi (CIA World Factbook): Marshall Islands refined products consumption 2,000 bbl/day (2014 est.)",
      "url": "https://www.indexmundi.com/marshall_islands/refined_petroleum_products_production.html",
-     "what": "only consumption figure found; seen in search result, page not opened"
+     "what": "only consumption figure found; seen in search result, page not opened",
+     "kind": "press"
     },
     {
      "title": "UN Comtrade mirror: exports to Marshall Islands",

@@ -154,32 +154,38 @@
     {
      "name": "Chernyshenko via Russia-Cuba business council: 2022 turnover tripled to USD 452m",
      "url": "https://xn--90aivcdt6dxbc.xn--p1ai/articles/news/tovarooborot_mezhdu_rossiey_i_kuboy_za_god_vyros_v_tri_raza/",
-     "date": "2023 (accessed 2026-10-17)"
+     "date": "2023 (accessed 2026-10-17)",
+     "kind": "press"
     },
     {
      "name": "Interfax: Mishustin, Russia-Cuba trade x9 in Jan-Apr 2023 (USD 137.6m); 2022 ~RUB 60bn",
      "url": "https://interfax.com/newsroom/top-stories/91271/",
-     "date": "2023-06-07"
+     "date": "2023-06-07",
+     "kind": "press"
     },
     {
      "name": "gCaptain/Reuters: first Russian oil in a year, 90 kt, ~USD 46m (Pinon); no Russian crude to Cuba in 2023",
      "url": "https://gcaptain.com/russian-oil-arrives-in-cuba-after-year-long-hiatus/",
-     "date": "2024-03"
+     "date": "2024-03",
+     "kind": "press"
     },
     {
      "name": "TASS: Chernyshenko, ~100 kt oil delivered 19 Feb 2025 under Russian state loan",
      "url": "https://tass.com/economy/1939131",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "Maritime Executive: Anatoly Kolodkin, 100 kt \"humanitarian\" crude at Matanzas",
      "url": "https://news.maritime-executive.com/article/sanctioned-russian-tanker-docks-in-cuba-bringing-badly-needed-crude-oil",
-     "date": "2026-03-31"
+     "date": "2026-03-31",
+     "kind": "press"
     },
     {
      "name": "ADN/AP: Russia plans second tanker to Cuba",
      "url": "https://www.adn.com/nation-world/2026/04/02/russia-plans-to-send-second-oil-tanker-to-cuba-amid-energy-blockade/",
-     "date": "2026-04-02"
+     "date": "2026-04-02",
+     "kind": "press"
     }
    ],
    "reasoning": "Cuba's own 2022 report (EUR 0.09bn) and the IMF/estimated 2023-26 values (~0.1bn) omit Russian oil. CREA (Kpler) puts Russian crude+products to Cuba at EUR 0.545bn in 2022, 0.164 (2023), 0.158 (2024), 0.139 (2025), 0.044 (Jan-Aug 2026 = one 100 kt cargo). Russian officials: 2022 turnover USD 452m (Chernyshenko) to ~RUB 60bn (~USD 0.87bn, Mishustin); Jan-Apr 2023 USD 137.6m. Educated guess: imports = CREA fossil value + non-fossil goods (cars/trucks, flour, sunflower oil, spare parts; ~EUR 0.07-0.2bn/yr, growing per Agroexport +20% in 2024). 2022 central 0.60 sits between the two official turnover statements and above CREA fossil alone; 2023 central = Jan-Apr x3. Paid share: the Feb 2025 cargo was explicitly under a Russian state loan, the Mar 2026 cargo 'humanitarian'; Cuba was already in arrears and Russia deferred Cuban debt service; non-oil goods are partly on Russian export credits. Central 35% paid, i.e. ~65% of Russian supplies 2022-26 are Russian support to Cuba rather than money to Russia (oil share of unpaid higher, ~80%). Exports to Russia (rum, cigars, pharma) tiny; trade_full values kept in magnitude but range widened."
@@ -335,22 +341,26 @@
     {
      "name": "Argus (Vortexa/Kpler): Venezuela naphtha imports 88 kb/d in 2025, Russia 41% (~36 kb/d); Jan 2026 loadings all US Gulf",
      "url": "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2781568-us-naphtha-displaces-russian-flows-to-venezuela",
-     "date": "2026-01"
+     "date": "2026-01",
+     "kind": "press"
     },
     {
      "name": "Baird Maritime/Reuters: PDVSA importing Russian naphtha",
      "url": "https://www.bairdmaritime.com/shipping/tankers/data-indicates-venezuelas-pdvsa-is-importing-naphtha-from-russia",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "Interfax: Putin, Russia-Venezuela trade ~USD 200m, +64% last year",
      "url": "https://interfax.com/newsroom/top-stories/111314/",
-     "date": "2025-05-07"
+     "date": "2025-05-07",
+     "kind": "press"
     },
     {
      "name": "Interfax: Russia-Venezuela trade +47% Jan-May 2023",
      "url": "https://interfax.com/newsroom/top-stories/92659/",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     }
    ],
    "reasoning": "trade_full only extrapolated Russia's 2019-21 mirror data (~EUR 0.1bn) and misses the 2025 naphtha trade. Kpler/Vortexa: Russia supplied ~36 kb/d of naphtha (diluent) in 2025 (from Dec 2024); CREA values Russian fossil to Venezuela at EUR 0.16bn (2024), 0.97bn (2025), 0.044bn (Jan-Aug 2026, after the US takeover of Venezuelan oil exports in Jan 2026). Non-fossil (fertilizer, wheat, soybean oil, vehicles): official turnover ~USD 120m in 2023 and ~USD 200m in 2024 (Putin) -> ~EUR 0.1-0.18bn. 2025 = CREA 0.97 + ~0.13 non-fossil. Paid share: naphtha was bought by PDVSA via intermediaries (swaps against crude / cash) - commercial; Venezuela also serviced its restructured Russian debt. Arms deliveries on earlier Russian credit are not in goods trade. Exports to Russia: cocoa, rum etc., small (FM: +453% vs 2022 by Sep 2024 from a tiny base)."
@@ -506,7 +516,8 @@
     {
      "name": "gCaptain/Reuters: Russia ships Arctic crude to Syria (Baniyas) for first time; ~350 kt by spring 2025",
      "url": "https://gcaptain.com/russia-ships-arctic-oil-to-syria-for-first-time/",
-     "date": "2025-03"
+     "date": "2025-03",
+     "kind": "press"
     },
     {
      "name": "IENE/Reuters: Russia boosts oil supplies to Syria",
@@ -516,7 +527,8 @@
     {
      "name": "AJOT/Signal Ocean: Syria tanker trade 2026, Russian load ports 8.0m bbl = 47% of 2026 wet arrivals",
      "url": "https://www.ajot.com/news/signal-market-insights-syrias-tanker-trade-what-the-data-shows",
-     "date": "2026"
+     "date": "2026",
+     "kind": "press"
     }
    ],
    "reasoning": "Syria does not report; 2019-21 = Russia's mirror, 2022-24 IMF (mainly Russian wheat, partly grain from occupied Ukraine) kept with wider range. After Assad fell (Dec 2024) Iranian crude stopped and Russia became the main crude/product supplier to Baniyas: CREA EUR 1.13bn in 2025 and 1.26bn in Jan-Aug 2026, vs trade_full 0.85 (2025) and 0.55 (2026). 2025-26 = CREA fossil + ~0.05-0.15 non-fossil (wheat resumed in reduced volumes). Paid share: Assad-era wheat largely on Russian credit/aid terms (central ~40% paid); 2025-26 cargoes are sanctioned Gazprom Neft Arctic barrels sold via intermediaries at discount, presumably paid (~85%); weighted central 0.65."
@@ -667,27 +679,32 @@
     {
      "name": "Eghtesad Online/IRICA: 9M 1403 (to 20 Dec 2024) imports from Russia USD 1.099bn, exports USD 803m",
      "url": "https://www.eghtesadonline.com/en/news/2000632/irans-exports-to-russia-up-14-in-9-months-irica",
-     "date": "2025-01-15"
+     "date": "2025-01-15",
+     "kind": "press"
     },
     {
      "name": "Tehran Times/IRICA: non-oil imports from Russia USD 1.3bn in year to Mar 2025",
      "url": "https://www.tehrantimes.com/news/512018/",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "TASS: Tsivilev, Russia-Iran turnover +16.2% in 2024 to USD 4.8bn (2023 ~USD 4.0bn)",
      "url": "https://tass.com/economy/1949413",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "TASS: turnover +13.1% to USD 4.8bn in Jan-Nov 2025",
      "url": "https://tass.com/economy/2088433",
-     "date": "2026-02-18"
+     "date": "2026-02-18",
+     "kind": "press"
     },
     {
      "name": "Iran International: customs vs ambassador export claims; drones not in customs data",
      "url": "https://www.iranintl.com/en/202402266973",
-     "date": "2024-02-26"
+     "date": "2024-02-26",
+     "kind": "press"
     }
    ],
    "reasoning": "Iran reported through 2023; trade_full's IMF values for 2024-25 understate Iranian exports to Russia (0.47 vs customs ~USD 1.05bn) and slightly imports. Used Iranian customs (IRICA) for consistency with the 2019-23 reporter basis: 2024 imports ~USD 1.35-1.4bn, exports ~USD 1.05bn (9M x 12/9, cross-checked with full-year 1403 'over USD 1bn' and 1.3bn). 2025 = 2024 x Russian-side growth (+13% Jan-Nov) tempered by the June 2025 war; 2026 = 8/12 of 2025 with wide downside. Russian official turnover (~USD 4-5bn) is ~2x Iranian customs in every year including 2021, so it is a different coverage (grain via Caspian traders, gold, transit), not a post-2022 gap; using it would break comparability with the baseline. Iranian drones/missiles to Russia (Shahed licence deal ~USD 1.75bn, reportedly partly paid in gold) are NOT in these goods figures - see arms_note.",
@@ -839,27 +856,32 @@
     {
      "name": "NK News: Russia-North Korea trade hit record USD 34m in 2024 on food and fuel (official)",
      "url": "https://www.nknews.org/2025/06/russia-north-korea-trade-hit-record-34m-in-2024-on-food-and-fuel-official",
-     "date": "2025-06"
+     "date": "2025-06",
+     "kind": "press"
     },
     {
      "name": "Malay Mail/BBC-Open Source Centre: >1m barrels Russian oil to DPRK in 8 months of 2024 (cap 500k/yr)",
      "url": "https://www.malaymail.com/news/world/2024/11/23/report-north-korea-received-over-1-million-barrels-of-russian-oil-violating-un-sanctions/157741",
-     "date": "2024-11-23"
+     "date": "2024-11-23",
+     "kind": "press"
     },
     {
      "name": "OCCRP: leaked records on Russian fuel to DPRK (~1.3m bbl), payment channels",
      "url": "https://www.occrp.org/en/scoop/leaked-russian-records-reveal-obscure-firms-helping-bust-oil-sanctions-on-north-korea",
-     "date": "2025-11"
+     "date": "2025-11",
+     "kind": "press"
     },
     {
      "name": "Kyiv Independent/KIDA: DPRK earned ~USD 20bn from Russia (munitions ~19.2bn)",
      "url": "https://kyivindependent.com/north-korea-earns-over-20-billion-aiding-russias-war-effort-report-says/",
-     "date": "2025-04-16"
+     "date": "2025-04-16",
+     "kind": "press"
     },
     {
      "name": "The Defense Post/INSS: up to USD 14.4bn through Dec 2025, 0.58-1.5bn observably confirmed",
      "url": "https://thedefensepost.com/2026/03/17/n-korea-earnings-russia-military/",
-     "date": "2026-03-17"
+     "date": "2026-03-17",
+     "kind": "press"
     }
    ],
    "reasoning": "Official trade is tiny (USD 34m in 2024, 'record'), but Russia ships refined oil far above the UN cap: >1m bbl in 8 months of 2024 (OSC), i.e. ~1.5-2m bbl/yr ~ USD 0.13-0.18bn delivered, plus food, flour and vehicles outside official statistics. Central 2024 ~USD 0.2bn; 2025 slightly higher (expanded rail/road links, tourism, food); 2022 near zero (border closed), 2023 ramp-up from Sep 2023. Military technology transfers excluded. Paid share: these goods are largely compensation in kind for DPRK munitions and troops (barter) - not money to Russia; cash payments via UAE intermediaries exist (OCCRP) -> central 20% paid. DPRK civilian goods exports to Russia negligible; munitions are reported separately in military_exports_to_RUS and NOT included in exports_to_RUS.",
@@ -1027,7 +1049,8 @@
     {
      "name": "Russia's Pivot to Asia: H1 2024 turnover +73% to >USD 700m",
      "url": "https://russiaspivottoasia.com/russian/tovarooborot-mezhdu-rossiej-i-turkmenistanom-vyros-na-73-v-pervom-polugodii-2024-goda/",
-     "date": "2024-09-15"
+     "date": "2024-09-15",
+     "kind": "press"
     },
     {
      "name": "Oilgas.gov.tm: Russia a key partner, annual turnover over USD 1.6bn",
@@ -1037,12 +1060,14 @@
     {
      "name": "TASS: Putin, turnover +35% in Jan-Oct 2025, exceeding all of 2024",
      "url": "https://tass.com/politics/2057993",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "TASS: turnover up nearly one-third since start of 2025",
      "url": "https://tass.com/economy/1998263",
-     "date": "2025-08-05"
+     "date": "2025-08-05",
+     "kind": "press"
     }
    ],
    "reasoning": "Neither side publishes; trade_full extrapolated a decline to EUR 0.31bn imports in 2025, contradicted by official statements of strong growth. Reconstruction (educated guess, wide ranges): 2023 turnover ~USD 0.68-1.0bn with Russia ~80% (542m vs 136m per Turkmen statement, units read as USD); 2022 = 2023/1.13 but bounded up by the ambassador's 'USD >1.6bn'; H1 2024 >USD 700m (+73%), full 2024 ~USD 1.5bn (consistent with 'over USD 1.6bn annual' in June 2025); 2025 = +30-35% (~USD 1.95bn); 2026 Jan-Aug = 8/12 of 2025. Split 80/20 assumed (2023 ratio). Commercial trade (grain, machinery, timber vs. textiles, fruit, polymers): paid ~97%. Gas purchases by Gazprom are not visible in either source and are excluded."
@@ -1193,22 +1218,26 @@
     {
      "name": "Interfax: Tajik-Russian trade USD 1.9bn in 2024, +USD 200m vs 2023; Jan-Apr 2024 imports USD 600.7m, exports 36.1m",
      "url": "https://interfax.com/newsroom/top-stories/114318/",
-     "date": "2025-10-15"
+     "date": "2025-10-15",
+     "kind": "press"
     },
     {
      "name": "Interfax: Russian MinEcon, 2025 record USD 2.47bn (+24.8%)",
      "url": "https://interfax.com/newsroom/top-stories/114209/",
-     "date": "2025-10-09"
+     "date": "2025-10-09",
+     "kind": "press"
     },
     {
      "name": "bne IntelliNews: Jan-May 2025 Russian-Tajik trade ~USD 900m, Tajik exports 42m, +9.3% y/y",
      "url": "https://www.intellinews.com/russia-s-relegation-in-central-asia-trade-complete-as-china-takes-tajikistan-export-import-crown-391198/",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "TASS: turnover >USD 1bn in H1 2025 (+10%)",
      "url": "https://tass.com/economy/1992635",
-     "date": "2025-07"
+     "date": "2025-07",
+     "kind": "press"
     }
    ],
    "reasoning": "Tajikistan's 2023 Comtrade report (EUR 0.83bn imports) and IMF 2024 (0.84) are far below Tajik national statistics: total trade USD 1.7bn (2023) and 1.9bn (2024) with ~94% Russian exports (Jan-Apr 2024 600.7 vs 36.1). 2024 imports ~USD 1.79bn; 2025 Tajik-basis ~USD 2.1bn (+~10% per Tajik H1/5M data; the Russian MinEcon USD 2.47bn is Russian-basis and treated as upper bound); 2026 = 8/12 of 2025. 2023 low = the Comtrade report. Exports ~USD 0.11bn/yr. Commercial (fuel, grain, timber, metals); paid ~97%."
@@ -1359,27 +1388,32 @@
     {
      "name": "Afghanistan International: Taliban MoIC, trade with Russia USD 538m (imports 534m, exports 4m)",
      "url": "https://www.afintl.com/en/202603314184",
-     "date": "2026-03-31"
+     "date": "2026-03-31",
+     "kind": "press"
     },
     {
      "name": "Hellenic Shipping News/Reuters: Russian gasoline to Afghanistan tripled to 325 kt in 2023, LPG doubled to 104 kt",
      "url": "https://www.hellenicshippingnews.com/russia-boosts-fuel-exports-to-central-asia-afghanistan-and-mongolia-in-2023/",
-     "date": "2024-01"
+     "date": "2024-01",
+     "kind": "press"
     },
     {
      "name": "VOA: Afghan oil trade with Russia >USD 300m in 11 months of 2023",
      "url": "https://www.voanews.com/a/afghanistan-boosts-russian-oil-imports-trade-amid-banking-sanctions/7407123.html",
-     "date": "2023-12"
+     "date": "2023-12",
+     "kind": "press"
     },
     {
      "name": "BNN Bloomberg: discounted fuel and grain make Taliban boost trade with Russia",
      "url": "https://www.bnnbloomberg.ca/discounted-fuel-grains-make-taliban-boost-trade-with-russia-1.1830763",
-     "date": "2022-10-11"
+     "date": "2022-10-11",
+     "kind": "press"
     },
     {
      "name": "Profit/Agroexport: Russian flour to Afghanistan ~USD 80m in 2024, double 2023",
      "url": "https://profit.pakistantoday.com.pk/?p=183159",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     }
    ],
    "reasoning": "IMF imputes only EUR 0.07-0.10bn; Taliban and Russian statements show far more after the Sep 2022 fuel/wheat deal (much moves by rail via Central Asia, so Russian customs may book it to transit countries). 2023: oil >USD 300m in 11 months + flour ~40m + wheat/other -> ~USD 0.45bn; 2024: Overchuk ~USD 326m (lower bound, Russian basis) vs Taliban-side larger, central ~USD 0.41bn; 2025: Taliban USD 534m imports (latest annual, period not explicit -> range 0.30-0.55 EUR); 2026 = Jan-Aug share. Paid commercially in roubles/cash at a discount: ~95% paid."
@@ -1535,22 +1569,26 @@
     {
      "name": "Attaqa (Energy Research Unit, Kpler): Libya top Arab buyer of Russian diesel 2024; Russian fuel exports to Libya 0.26 Mt (2022) -> 2.5 Mt (2023)",
      "url": "https://attaqa.net/2024/10/20/%d8%a3%d9%83%d8%a8%d8%b1-%d9%85%d8%b3%d8%aa%d9%88%d8%b1%d8%af%d9%8a-%d8%a7%d9%84%d8%af%d9%8a%d8%b2%d9%84-%d8%a7%d9%84%d8%b1%d9%88%d8%b3%d9%8a-%d9%81%d9%8a-2024-5-%d8%af%d9%88%d9%84-%d8%b9%d8%b1/",
-     "date": "2024-10-20"
+     "date": "2024-10-20",
+     "kind": "press"
     },
     {
      "name": "StartMag: ~40% of subsidised fuel imported into Libya smuggled, much of Russian origin",
      "url": "https://www.startmag.it/?p=268110",
-     "date": "2024"
+     "date": "2024",
+     "kind": "press"
     },
     {
      "name": "Interfax/Agroexport: Libya among top-5 African buyers of Russian food 2024, value -18%",
      "url": "https://interfax.com/newsroom/top-stories/110252/",
-     "date": "2025-03-10"
+     "date": "2025-03-10",
+     "kind": "press"
     },
     {
      "name": "Russia's Pivot to Asia: Russia-Libya turnover ~USD 1bn in 2023 vs 350m in 2021",
      "url": "https://russiaspivottoasia.com/russia-libya-bilateral-2024-relations-update/",
-     "date": "2024"
+     "date": "2024",
+     "kind": "press"
     }
    ],
    "reasoning": "Libya does not report; trade_full extrapolated EUR 0.15-0.35bn. CREA (Kpler) shows Russian oil products discharged in Libya (largely Benghazi/east and Brega-NOC tenders) of EUR 2.16bn (2023), 2.78bn (2024), 1.76bn (2025), 0.21bn (Jan-Aug 2026). Imports = 0.75-1.0 x CREA (part may be ship-to-ship/transit rather than discharge) + Russian food ~EUR 0.2-0.3bn (Agroexport 2021 USD 275m, -18% in 2024). Russian official turnover (~USD 1bn 2023) is lower because cargoes are sold via third-country traders; by origin they are Russian. A sizeable share is then smuggled onward (Malta/Italy/Sudan/Chad) - still an import into Libya first. Paid: Libyan NOC/Brega fuel imports are paid (crude-for-fuel swaps, cash); ~95%. Russia's military presence in eastern Libya is not trade."
@@ -1706,17 +1744,20 @@
     {
      "name": "Interfax/Agroexport: Russian agri exports to Sudan ~USD 410m in 2025 (wheat 408m)",
      "url": "https://www.interfax.com/newsroom/top-stories/115584/",
-     "date": "2026-01-14"
+     "date": "2026-01-14",
+     "kind": "press"
     },
     {
      "name": "Interfax: Russia shipped ~1.7 Mt wheat to Sudan Jul 2025-early Apr 2026 vs 0.7 Mt a year earlier",
      "url": "https://interfax.com/newsroom/top-stories/117113/",
-     "date": "2026-04-14"
+     "date": "2026-04-14",
+     "kind": "press"
     },
     {
      "name": "Hellenic Shipping News/LSEG: Russia begins diesel exports to Sudan (Port Sudan)",
      "url": "https://www.hellenicshippingnews.com/russia-begins-diesel-exports-to-sudan-lseg-data-shows/",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     }
    ],
    "reasoning": "Sudan does not report; trade_full uses IMF imputations (EUR 0.13-0.28bn). Agroexport: wheat USD 408m in 2025, and wheat flows Jul 2025-Apr 2026 2.4x the year before; CREA Russian fuel to Sudan EUR 0.28bn (2024), 0.12 (2025), 0.38 (Jan-Aug 2026). 2025 = 0.36 agri + 0.12 fuel; 2026 = ~1.1 Mt wheat x ~USD 245/t + CREA fuel; 2024 = ~0.75 Mt wheat + flour + CREA fuel. Paid: commercial imports by Port Sudan government/traders, ~90% (some Russian humanitarian wheat). Exports high bound covers unrecorded gold flows (most Sudanese gold goes via UAE)."
@@ -1872,17 +1913,20 @@
     {
      "name": "Myanmar Now/Energy Intelligence: Russian crude unloaded at Kyaukphyu and piped to PetroChina Yunnan",
      "url": "https://myanmar-now.org/en/news/russia-moves-crude-to-chinese-refineries-via-myanmar-pipeline/",
-     "date": "2023-04"
+     "date": "2023-04",
+     "kind": "press"
     },
     {
      "name": "TASS: Myanmar minister, bilateral trade USD 74.7m in FY2023-24",
      "url": "https://tass.com/economy/1898807",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "Egypt Independent/Reuters: Myanmar buying Russian oil products, paying in roubles",
      "url": "https://egyptindependent.com/myanmar-is-purchasing-russian-oil-products-and-will-pay-in-rubles-russian-state-media",
-     "date": "2022-09"
+     "date": "2022-09",
+     "kind": "press"
     }
    ],
    "reasoning": "CREA attributes EUR 0.96bn (2023) and 1.39bn (2024) of Russian crude to Myanmar, but it is discharged at Kyaukphyu for the China-Myanmar pipeline and consumed in China (China's customs records it as imports from Russia) - NOT counted here, to avoid double counting. Myanmar's own reports (EUR 0.01-0.04bn) agree with Myanmar's fiscal-year statement (USD 74.7m turnover FY2023-24), so centrals kept; highs raised for Russian diesel/fuel oil bought from 2022 via Singapore traders that may be booked to the consignment country. Paid: commercial in roubles; fertilizer barter; ~85%. Russian arms (on credit) are not in goods data."
@@ -2033,12 +2077,14 @@
     {
      "name": "The EastAfrican: Russia completes free grain to six African states (25 kt each Mali, Burkina, Zimbabwe, Eritrea; 50 kt Somalia, CAR)",
      "url": "https://www.theeastafrican.co.ke/tea/business/russia-completes-shipping-of-free-grains-to-six-african-states-4532416",
-     "date": "2024-02"
+     "date": "2024-02",
+     "kind": "press"
     },
     {
      "name": "Modern Diplomacy: Eritrea-Russia partnership, 2022 turnover ~USD 13.5m, wheat 27.5 kt",
      "url": "https://moderndiplomacy.eu/2023/06/02/the-strategic-partnership-between-eritrea-and-russia/",
-     "date": "2023-06-02"
+     "date": "2023-06-02",
+     "kind": "press"
     }
    ],
    "reasoning": "Eritrea does not report; IMF values (~EUR 0.009bn) are of the right order. Adjusted 2022 to the Russian-cited USD 12.7m exports, and added the free 25 kt wheat (~USD 8-10m incl. freight) delivered Jan 2024. Unpaid share = donations (2024) plus concessional terms; central 60% paid."
@@ -2189,12 +2235,14 @@
     {
      "name": "Al Jazeera: Russia to ship ~USD 100m food and fuel to Mali (60 kt petroleum products, 30 kt fertiliser, 25 kt wheat)",
      "url": "https://www.aljazeera.com/news/2022/11/3/malian-minister-says-russia-will-ship-food-and-fuel-to-mali-in-coming-weeks",
-     "date": "2022-11-03"
+     "date": "2022-11-03",
+     "kind": "press"
     },
     {
      "name": "The EastAfrican: 25 kt free Russian wheat to Mali",
      "url": "https://www.theeastafrican.co.ke/tea/business/russia-completes-shipping-of-free-grains-to-six-african-states-4532416",
-     "date": "2024-02"
+     "date": "2024-02",
+     "kind": "press"
     }
    ],
    "reasoning": "Mali reports, but its 2023 figure (EUR 0.03bn) cannot contain the ~USD 100m Russian fuel/fertiliser/wheat package announced Nov 2022 for delivery in following months (likely booked under transit countries Senegal/Guinea/Cote d'Ivoire or not recorded). 2023 central raised to 0.09; 2024 includes 25 kt free wheat. Terms of the 2022 package unclear (preferential; fertiliser offered free by Putin) -> paid share central 0.7."
@@ -2345,7 +2393,8 @@
     {
      "name": "The EastAfrican: 25 kt free Russian wheat to Burkina Faso",
      "url": "https://www.theeastafrican.co.ke/tea/business/russia-completes-shipping-of-free-grains-to-six-african-states-4532416",
-     "date": "2024-02"
+     "date": "2024-02",
+     "kind": "press"
     }
    ],
    "reasoning": "Burkina Faso reports to Comtrade (imports from Russia rising to EUR 0.69bn in 2024, IMF 0.71 in 2025) - consistent with the large-flow expectation; no correction. Free 25 kt wheat (~USD 8m) is the only identified unpaid component -> ~95% paid."
@@ -2647,7 +2696,8 @@
     {
      "name": "The EastAfrican: 50 kt free Russian grain to CAR",
      "url": "https://www.theeastafrican.co.ke/tea/business/russia-completes-shipping-of-free-grains-to-six-african-states-4532416",
-     "date": "2024-02"
+     "date": "2024-02",
+     "kind": "press"
     }
    ],
    "reasoning": "CAR's reported imports from Russia (EUR 0.001-0.002bn) miss even the 50 kt free wheat (~USD 15m, delivered early 2024) and fuel/consumer goods brought in with the Russian (Wagner/Africa Corps) presence via Cameroon. Educated guess with wide ranges. Largely donations / in-kind (payment via mining concessions) -> paid share central 0.3."
@@ -3402,12 +3452,14 @@
     {
      "name": "TBS News: Rooppur loan payment hurdle; USD 7.7bn of USD 11.38bn Russian credit disbursed by Dec 2023",
      "url": "https://www.tbsnews.net/economy/rooppur-plant-payment-hurdle-sticks-it-1097121",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "Financial Express: USD 7.77bn released incl. 1.295bn in FY2024; repayment stuck by sanctions",
      "url": "https://thefinancialexpress.com.bd/economy/dhaka-moscow-meet-misses-consensus-on-back-pay",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     }
    ],
    "reasoning": "Values kept from trade_full (IMF 2022-25). Included for paid_share: a large part of Russian deliveries to Bangladesh is Rooppur NPP equipment financed by the USD 11.38bn Russian state loan (USD ~1.3bn disbursed in FY2024 alone; repayment blocked by sanctions, first principal due 2027). Grain/fertiliser are paid commercially. Central 50% paid. Similar credit-financed Russian deliveries exist for Egypt (El Dabaa) and Turkey (Akkuyu, Russian-owned) - see notes."

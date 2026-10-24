@@ -55,37 +55,44 @@
      {
       "name": "Kommersant: Union State Council of Ministers, 2022 Russia-Belarus trade USD 43.4bn; Russian exports to Belarus USD 21.3bn, Belarusian exports to Russia USD 22.0bn",
       "url": "https://www.kommersant.ru/doc/5900590",
-      "date": "2023-03"
+      "date": "2023-03",
+      "kind": "press"
      },
      {
       "name": "Belarus-Russia goods turnover Jan-Oct 2023 USD 39.8bn; Belarusian exports to Russia Jan-Aug 2023 USD 16.7bn (+24.9%); full-year 2023 exports expected at about USD 25bn",
       "url": "https://myfin.by/article/rynki/cem-torgovali-belarus-i-rossia-v-2023-godu-top-klucevyh-tovarov",
-      "date": "2024-01"
+      "date": "2024-01",
+      "kind": "press"
      },
      {
       "name": "TASS: Russia-Belarus trade above USD 37bn in Jan-Sep 2024 (+8.4%), Putin",
       "url": "https://tass.com/politics/1883663/amp",
-      "date": "2024-11"
+      "date": "2024-11",
+      "kind": "press"
      },
      {
       "name": "Interfax: Belarus-Russia trade in goods and services USD 57.6bn in 2024 (+7.4%), Belarusian Ministry of Economy",
       "url": "https://interfax.com/newsroom/top-stories/109945/",
-      "date": "2025-02-21"
+      "date": "2025-02-21",
+      "kind": "press"
      },
      {
       "name": "TKS/TASS: Russia-Belarus goods turnover USD 51.9bn in 2025 vs USD 38.4bn in 2021 (Ambassador Gryzlov); Russian embassy: USD 50.9bn record",
       "url": "https://www.tks.ru/news/nearby/2026/04/03/0007/eksport-belorusskih-tovarov-v-rossiyu-vyiros-na-40-procent-posle-sanktsij-2022-goda/",
-      "date": "2026-04-03"
+      "date": "2026-04-03",
+      "kind": "press"
      },
      {
       "name": "Rossiyskaya Gazeta: goods trade +37% 2021-2025 and Belarus-Russia services trade up from USD 4bn (2021) to USD 9bn (2025), First Deputy PM Snopkov; goods and services USD 62bn in 2025 (Krutoy)",
       "url": "https://rg.ru/2026/07/15/vziali-delo-v-oborot.html",
-      "date": "2026-07-15"
+      "date": "2026-07-15",
+      "kind": "press"
      },
      {
       "name": "TKS: Belarus-Russia trade +12.5% in H1 2026 (Manturov), 2025 record USD 50.9bn",
       "url": "https://www.tks.ru/news/nearby/2026/08/30/0001/minsk-i-moskva-naraschivayut-vzaimnuyu-torgovlyu---rost-uzhe-prevyisil-12-procent/",
-      "date": "2026-08-30"
+      "date": "2026-08-30",
+      "kind": "press"
      },
      {
       "name": "National Bank of Belarus: monthly foreign trade in goods and services, totals 2000-2025",
@@ -180,37 +187,44 @@
      {
       "name": "Kommersant: Union State Council of Ministers, 2022 Russia-Belarus trade USD 43.4bn; Russian exports to Belarus USD 21.3bn, Belarusian exports to Russia USD 22.0bn",
       "url": "https://www.kommersant.ru/doc/5900590",
-      "date": "2023-03"
+      "date": "2023-03",
+      "kind": "press"
      },
      {
       "name": "Belarus-Russia goods turnover Jan-Oct 2023 USD 39.8bn; Belarusian exports to Russia Jan-Aug 2023 USD 16.7bn (+24.9%); full-year 2023 exports expected at about USD 25bn",
       "url": "https://myfin.by/article/rynki/cem-torgovali-belarus-i-rossia-v-2023-godu-top-klucevyh-tovarov",
-      "date": "2024-01"
+      "date": "2024-01",
+      "kind": "press"
      },
      {
       "name": "TASS: Russia-Belarus trade above USD 37bn in Jan-Sep 2024 (+8.4%), Putin",
       "url": "https://tass.com/politics/1883663/amp",
-      "date": "2024-11"
+      "date": "2024-11",
+      "kind": "press"
      },
      {
       "name": "Interfax: Belarus-Russia trade in goods and services USD 57.6bn in 2024 (+7.4%), Belarusian Ministry of Economy",
       "url": "https://interfax.com/newsroom/top-stories/109945/",
-      "date": "2025-02-21"
+      "date": "2025-02-21",
+      "kind": "press"
      },
      {
       "name": "TKS/TASS: Russia-Belarus goods turnover USD 51.9bn in 2025 vs USD 38.4bn in 2021 (Ambassador Gryzlov); Russian embassy: USD 50.9bn record",
       "url": "https://www.tks.ru/news/nearby/2026/04/03/0007/eksport-belorusskih-tovarov-v-rossiyu-vyiros-na-40-procent-posle-sanktsij-2022-goda/",
-      "date": "2026-04-03"
+      "date": "2026-04-03",
+      "kind": "press"
      },
      {
       "name": "Rossiyskaya Gazeta: goods trade +37% 2021-2025 and Belarus-Russia services trade up from USD 4bn (2021) to USD 9bn (2025), First Deputy PM Snopkov; goods and services USD 62bn in 2025 (Krutoy)",
       "url": "https://rg.ru/2026/07/15/vziali-delo-v-oborot.html",
-      "date": "2026-07-15"
+      "date": "2026-07-15",
+      "kind": "press"
      },
      {
       "name": "TKS: Belarus-Russia trade +12.5% in H1 2026 (Manturov), 2025 record USD 50.9bn",
       "url": "https://www.tks.ru/news/nearby/2026/08/30/0001/minsk-i-moskva-naraschivayut-vzaimnuyu-torgovlyu---rost-uzhe-prevyisil-12-procent/",
-      "date": "2026-08-30"
+      "date": "2026-08-30",
+      "kind": "press"
      },
      {
       "name": "National Bank of Belarus: monthly foreign trade in goods and services, totals 2000-2025",
@@ -305,7 +319,8 @@
      {
       "name": "Rossiyskaya Gazeta: goods trade +37% 2021-2025 and Belarus-Russia services trade up from USD 4bn (2021) to USD 9bn (2025), First Deputy PM Snopkov; goods and services USD 62bn in 2025 (Krutoy)",
       "url": "https://rg.ru/2026/07/15/vziali-delo-v-oborot.html",
-      "date": "2026-07-15"
+      "date": "2026-07-15",
+      "kind": "press"
      },
      {
       "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
@@ -368,7 +383,8 @@
      {
       "name": "Rossiyskaya Gazeta: goods trade +37% 2021-2025 and Belarus-Russia services trade up from USD 4bn (2021) to USD 9bn (2025), First Deputy PM Snopkov; goods and services USD 62bn in 2025 (Krutoy)",
       "url": "https://rg.ru/2026/07/15/vziali-delo-v-oborot.html",
-      "date": "2026-07-15"
+      "date": "2026-07-15",
+      "kind": "press"
      },
      {
       "name": "Bank of Russia, External Trade of the Russian Federation in Services 2021, Table 3 (services by partner country, 2019-2021)",
@@ -691,7 +707,8 @@
      {
       "name": "Inbusiness.kz / Bureau of National Statistics: Kazakhstan-Russia turnover USD 13.2bn in H1 2026, imports from Russia USD 9.7bn (+14%)",
       "url": "https://inbusiness.kz/ru/last/tovarooborot-kazahstana-i-rossii-vyros-na-16-s-nachala-2026-goda",
-      "date": "2026-08"
+      "date": "2026-08",
+      "kind": "press"
      },
      {
       "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
@@ -776,7 +793,8 @@
      {
       "name": "Inbusiness.kz / Bureau of National Statistics: Kazakhstan-Russia turnover USD 13.2bn in H1 2026, imports from Russia USD 9.7bn (+14%)",
       "url": "https://inbusiness.kz/ru/last/tovarooborot-kazahstana-i-rossii-vyros-na-16-s-nachala-2026-goda",
-      "date": "2026-08"
+      "date": "2026-08",
+      "kind": "press"
      },
      {
       "name": "UN Comtrade public preview API, reporter's own monthly and annual data with partner Russia (HS TOTAL and chapters 27, 71)",
@@ -1217,7 +1235,8 @@
      {
       "name": "GBC / 1TV (National Bank of Georgia): travel revenue from Russia 2025 by quarter USD 141.8m, 166.0m, 252.5m, 133.7m with y/y changes",
       "url": "https://1tv.ge/lang/en/news/nbg-georgias-travel-income-reaches-usd-1052-4-million-in-q4-2025-up-9-2-year-on-year/",
-      "date": "2026-01"
+      "date": "2026-01",
+      "kind": "press"
      },
      {
       "name": "Transparency International Georgia (NBG data): Russian visitors spent USD 891m in 2022 and USD 938m in 2023; Russia 23.7% of travel revenue in 2019",
@@ -1320,7 +1339,8 @@
      {
       "name": "Trading Economics (Mongolia NSO/customs): Jan-Sep 2026 imports USD 9,725m, Russia 27.6%; Expert.ru: Russia-Mongolia trade USD 2.2bn in 2023, >USD 1.4bn Jan-Jul 2024",
       "url": "https://tradingeconomics.com/mongolia/imports",
-      "date": "2026-10"
+      "date": "2026-10",
+      "kind": "press"
      }
     ],
     "reasoning": "Mongolia stopped reporting to Comtrade after 2023 and IMF estimates gave EUR 2.0-4.1bn. 2024: Russian-side turnover >USD 1.4bn in Jan-Jul, about USD 2.4bn for the year, Mongolian (CIF) basis ~8% higher; 2025: total imports -2.6% with a similar Russian share; 2026 Jan-Aug: Russia 27.6% of USD 9,725m Jan-Sep imports x 8/9 (fuel switched from China to Russia after March 2026). Central 2024 lowered from EUR 2.84bn to 2.40bn.",
@@ -1898,12 +1918,14 @@
      {
       "name": "NK News: INSS estimates North Korea's revenue from military cooperation with Russia at USD 7.7-14.4bn (artillery etc. USD 7.05-13.78bn, troops USD 0.62bn, Oct 2024-Dec 2025)",
       "url": "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/",
-      "date": "2026-03"
+      "date": "2026-03",
+      "kind": "press"
      },
      {
       "name": "Militarnyi / Reuters-Open Source Centre: 64 voyages, 15,809 containers Sep 2023-Mar 2025 (4-6m shells); Shin Won-sik: ~5,000 containers by end-2023, 6,700 by Feb 2024",
       "url": "https://militarnyi.com/en/news/dprk-transferred-4-6-million-shells-to-russia-over-20-months/",
-      "date": "2025-04"
+      "date": "2025-04",
+      "kind": "press"
      }
     ],
     "reasoning": "Narrowest well-sourced estimate: INSS (March 2026), USD 7.7-14.4bn for Aug 2023-Dec 2025 = EUR 6.9-13.0bn (artillery shells, rockets, missiles and systems USD 7.05-13.78bn valued from intelligence shell counts; troops USD 0.62bn Oct 2024-Dec 2025). Higher figures (KIDA >USD 20bn, Bloomberg up to 22bn) use higher unit prices or add other revenue. Split by containers shipped: ~5,000 by end-2023 (Shin Won-sik), 15,809 by Mar 2025 (OSC, 64 voyages), ~30,000 by early 2026 (IStories/OSC, 112 voyages): 18% / 31% / 51%, troops in 2024-2025. Year lows and highs add up to the INSS range. Our old 2025 central (EUR 2.0bn) was too low: deliveries continued at a faster pace in 2025. 2026 kept as before (no estimate yet). These are valuations of transfers, not cash."
@@ -2116,17 +2138,20 @@
      {
       "name": "Kapitalis (ONTT data): 632,000 Russian tourists Jan-Nov 2019, about 635,000 for the year",
       "url": "https://kapitalis.com/tunisie/?p=267191",
-      "date": "2019-12"
+      "date": "2019-12",
+      "kind": "press"
      },
      {
       "name": "Dispatch Risk / African Manager: about 10,000 Russians among ~6m visitors in 2022",
       "url": "https://dispatchrisk.com/?p=15709",
-      "date": "2023"
+      "date": "2023",
+      "kind": "press"
      },
      {
       "name": "AllAfrica/La Presse: about 50,000 Russian tourists in Tunisia in 2025, nearly triple 2024 (TASS)",
       "url": "https://fr.allafrica.com/stories/202606300595.html",
-      "date": "2026-06-30"
+      "date": "2026-06-30",
+      "kind": "press"
      }
     ],
     "reasoning": "Our central was wrong by an order of magnitude. It was the BaTiS model value (EUR 0.63bn in 2021 rising to 1.07bn in 2025), but Russian tourists, nearly all of Tunisia's services sales to Russia, collapsed after Feb 2022: about 635,000 in 2019, about 10,000 in 2022, ~17,000 in 2024 and ~50,000 in 2025 (two to six flights a week). Value = arrivals x EUR 420 (300-600) per package stay spent in Tunisia + EUR 15m (5-40m) non-travel services. 2020-2021 arrivals are uncertain (0.06m and 0.2m with wide ranges). This flips the part from 'extra services sold to Russia' to 'services given up'."
@@ -2191,7 +2216,8 @@
      {
       "name": "TASS/ATOR: summer 2026 Russian tourist flow to Turkey forecast cut to 2.7m",
       "url": "https://tass.com/economy/1997143/amp",
-      "date": "2026"
+      "date": "2026",
+      "kind": "press"
      }
     ],
     "reasoning": "Our central was too low. Turkey's partner breakdown (Eurostat, partner RU: EUR 2.5-3.0bn in 2022-2024) has no travel line at all (SD empty): Turkey does not allocate tourism receipts to countries, so Russian tourists were missing; uncovered.json's mean with BaTiS only partly offset this. Now: Turkey's reported non-travel services + Russian travel spending = arrivals (7.02m 2019, 4.69m 2021, 5.23m, 6.31m, 6.72m, 6.90m in 2022-2025, ~3.8m Jan-Aug 2026 after ATOR's cut) x spend per trip anchored on the Bank of Russia's 2021 figure (USD 2,840m = USD 605 a trip, 2020 USD 1,680m), indexed to Turkey's average spend per visitor (USD 680-770). Ranges: travel +-20%, non-travel 0.95-1.6x (the Bank of Russia records ~1.6x more non-travel imports from Turkey). Base high = the Bank of Russia mirror average (EUR 4.4bn)."
@@ -2313,7 +2339,8 @@
      {
       "name": "Gulf Business / UAE government: UAE-Russia non-oil trade USD 20.4bn in 2025 (+77.7%), USD 10.8bn in 2022; Dhs 42.23bn (USD 11.5bn) in 2024, +4.9% on 2023",
       "url": "https://gulfbusiness.com/en/2025/trade/uae-russia-ink-trade-services-and-investment-pact/",
-      "date": "2026"
+      "date": "2026",
+      "kind": "press"
      },
      {
       "name": "Swissaid (via uncovered.json): 66 t of Russian gold (USD 5.4bn) to the UAE in 2024",
@@ -2371,7 +2398,8 @@
      {
       "name": "Gulf Business / UAE government: UAE-Russia non-oil trade USD 20.4bn in 2025 (+77.7%), USD 10.8bn in 2022; Dhs 42.23bn (USD 11.5bn) in 2024, +4.9% on 2023",
       "url": "https://gulfbusiness.com/en/2025/trade/uae-russia-ink-trade-services-and-investment-pact/",
-      "date": "2026"
+      "date": "2026",
+      "kind": "press"
      },
      {
       "name": "Swissaid (via uncovered.json): 66 t of Russian gold (USD 5.4bn) to the UAE in 2024",

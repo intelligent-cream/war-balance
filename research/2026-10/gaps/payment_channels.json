@@ -1100,47 +1100,56 @@
   {
    "name": "The Bell: The rise of Russia's foreign trade middlemen (citing Vedomosti: up to 80% of cross-border payments, fees up to ~8%)",
    "url": "https://en.thebell.io/the-rise-of-russias-foreign-trade-middlemen/",
-   "date": "2024-11-02"
+   "date": "2024-11-02",
+   "kind": "press"
   },
   {
    "name": "Harici (citing Reuters): agent commissions up to 12% early 2024, 2-3% average after China Track netting",
    "url": "https://harici.com.tr/en/new-russia-china-payment-network-cuts-trade-costs/",
-   "date": "2025-04"
+   "date": "2025-04",
+   "kind": "press"
   },
   {
    "name": "The Moscow Times (Russian): sanctioned Russian banks created a secret netting system (China Track)",
    "url": "https://ru.themoscowtimes.com/2025/04/22/popavshie-pod-sanktsii-rossiiskie-banki-sozdali-sekretnuyu-sistemu-dlya-sdelok-skitaem-a161694",
-   "date": "2025-04-22"
+   "date": "2025-04-22",
+   "kind": "press"
   },
   {
    "name": "Vesti: average agent commission fell from 5% to 2% in 2025",
    "url": "https://www.vesti.ru/article/4567302",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "Alta.ru: commissions reached 10-15% in 2023",
    "url": "https://www.alta.ru/external_news/120536/",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "T-Bank Secrets (citing B1): agents used in about 7 of 10 import operations",
    "url": "https://secrets.tbank.ru/razvitie/kak-vesti-mezhdunarodnye-raschety/",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "New Retail: up to 85% of FX transfers via agents",
    "url": "https://new-retail.ru/business/ekonomika/transgranichnye_raschety_cherez_agentov_novye_realii_i_skrytye_izderzhki/",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "TKS.RU (R.I. Vasiliev): agent remuneration and customs value; Minfin letter 01.11.2024 No. 27-01-21/106988",
    "url": "https://www.tks.ru/columns/vasiliev/2025/03/11/0001/",
-   "date": "2025-03-11"
+   "date": "2025-03-11",
+   "kind": "press"
   },
   {
    "name": "The Moscow Times: Kyrgyz banks tighten restrictions; Russian entities sent USD 2.8bn to Kyrgyzstan in 2023, fees up to 3%",
    "url": "https://www.themoscowtimes.com/2026/08/06/kyrgyz-banks-tighten-restrictions-on-russian-transactions-amid-us-sanctions-pressure",
-   "date": "2026-08-06"
+   "date": "2026-08-06",
+   "kind": "press"
   },
   {
    "name": "US Treasury press release: Keremet Bank designated (E.O. 14024), PSB network",
@@ -1150,7 +1159,8 @@
   {
    "name": "Economist.kg: A7A5 operations USD 179.1bn, FinCEN proposed special measure on A7 Network (5 Oct 2026)",
    "url": "https://economist.kg/dengi/2026/10/11/a7a5-operatsii-179-mlrd-fincen/",
-   "date": "2026-10-11"
+   "date": "2026-10-11",
+   "kind": "press"
   },
   {
    "name": "Elliptic: A7A5, the ruble-backed stablecoin, USD 100bn in transactions",
@@ -1165,42 +1175,50 @@
   {
    "name": "Forklog (citing Chainalysis 2025 Geography of Crypto): Russia USD 376bn received Jul 2024-Jun 2025",
    "url": "https://forklog.com/?p=267711",
-   "date": "2025-10"
+   "date": "2025-10",
+   "kind": "press"
   },
   {
    "name": "Akchabar: Kyrgyz regulator on A7A5 (100bn tokens registered, issuer Old Vector)",
    "url": "https://www.akchabar.kg/en/article/lichnie-finansi-hnqkxevqxnwxkxsy/finnadzor-raskryl-realnye-masshtaby-rublevogo-stejblkoina-a7a5-vypushhennogo-v-kyrgyzstane",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "Economist.kg: Kyrgyz banks net profit 2024 KGS 31.1bn (2023: 24.2bn), NBKR",
    "url": "https://economist.kg/all/2025/02/25/chistaia-pribyl-bankov-kyrghyzstana-v-2024-ghodu-prievysila-31-mlrd-somov/",
-   "date": "2025-02-25"
+   "date": "2025-02-25",
+   "kind": "press"
   },
   {
    "name": "Eurasianet: Armenian banks record mega profits; transfers from Russia USD 3.5bn in 2022 (0.865bn 2021)",
    "url": "https://eurasianet.org/armenian-banks-record-mega-profits-but-the-economy-doesnt-feel-it",
-   "date": "2023-02"
+   "date": "2023-02",
+   "kind": "press"
   },
   {
    "name": "Kyiv Independent (citing RBC): transfers from Russia to neighbours up 300-500% in 2022; Georgia ~USD 2bn",
    "url": "https://kyivindependent.com/russian-media-money-transfers-from-russia-to-neighboring-countries-up-by-300-500-in-2022/",
-   "date": "2023-01"
+   "date": "2023-01",
+   "kind": "press"
   },
   {
    "name": "Orda.kz (citing RBC): transfers from Russia to Kazakhstan fell 44% in 2024; Armenia -13%, Kyrgyzstan +12%",
    "url": "https://en.orda.kz/money-transfers-from-russia-to-kazakhstan-drop-significantly-4851/",
-   "date": "2025-02"
+   "date": "2025-02",
+   "kind": "press"
   },
   {
    "name": "24.kg: remittances from Russia to Kyrgyzstan record USD 2.99bn Jan-Nov 2025",
    "url": "https://24.kg/english/360721_Remittances_from_Russia_to_Kyrgyzstan_reach_record_299_billion",
-   "date": "2025-12"
+   "date": "2025-12",
+   "kind": "press"
   },
   {
    "name": "Novaya Gazeta Europe: ~80% of Russian payments to China returned (2024)",
    "url": "https://novayagazeta.eu/articles/2024/07/29/some-80-of-russian-payments-to-china-returned-amid-increasing-western-pressure-en-news",
-   "date": "2024-07-29"
+   "date": "2024-07-29",
+   "kind": "press"
   }
  ]
 }

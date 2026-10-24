@@ -651,7 +651,8 @@
   {
    "id": "nbg_travel",
    "name": "National Bank of Georgia, international travel revenues by country (quarterly), via 1tv.ge, gbc.ge, Georgia Today, CBW",
-   "url": "https://1tv.ge/lang/en/news/nbg-georgias-travel-income-reaches-usd-1052-4-million-in-q4-2025-up-9-2-year-on-year/"
+   "url": "https://1tv.ge/lang/en/news/nbg-georgias-travel-income-reaches-usd-1052-4-million-in-q4-2025-up-9-2-year-on-year/",
+   "kind": "press"
   },
   {
    "id": "pmcg_2023",
@@ -661,17 +662,20 @@
   {
    "id": "idfi_2022",
    "name": "IDFI / JAM News: income from Russian travellers USD 891m in 2022, +15% vs 2019; IDFI 73.7k Russians stayed 2022-23",
-   "url": "https://jam-news.net/idfi-study/"
+   "url": "https://jam-news.net/idfi-study/",
+   "kind": "press"
   },
   {
    "id": "geo_2023",
    "name": "Georgia Today: 2023 travel revenue from Russia USD 938.3m",
-   "url": "https://georgiatoday.ge/in-2023-georgia-received-high-income-from-tourism"
+   "url": "https://georgiatoday.ge/in-2023-georgia-received-high-income-from-tourism",
+   "kind": "press"
   },
   {
    "id": "geo_oct22",
    "name": "JAM News: Russians spent 526% more in Georgia in Oct 2022",
-   "url": "https://jam-news.net/?p=133403"
+   "url": "https://jam-news.net/?p=133403",
+   "kind": "press"
   },
   {
    "id": "geostat_mig",
@@ -686,7 +690,8 @@
   {
    "id": "srb_wiki",
    "name": "RFE/RL from the Serbian Interior Ministry: just over 48,000 Russian citizens with temporary residence (Jan 2025); BCSP: 80,000-110,000 resident",
-   "url": "https://www.rferl.org/a/serbia-passports-citizenship-sanctioned-russians/33778410.html"
+   "url": "https://www.rferl.org/a/serbia-passports-citizenship-sanctioned-russians/33778410.html",
+   "kind": "press"
   },
   {
    "id": "cep_srb",
@@ -701,27 +706,32 @@
   {
    "id": "tur_agbi",
    "name": "AGBI / Reuters: Russian permit holders 96k (May 2024) from 154k end 2022",
-   "url": "https://www.agbi.com/lifestyle/2024/05/russians-leave-turkey-as-costs-and-restrictions-bite/"
+   "url": "https://www.agbi.com/lifestyle/2024/05/russians-leave-turkey-as-costs-and-restrictions-bite/",
+   "kind": "press"
   },
   {
    "id": "tur_gv",
    "name": "Global Voices: ~66k pre-war, ~90k Sep 2024",
-   "url": "https://globalvoices.org/2024/11/05/a-temporary-welcome-russians-in-turkey-since-february-2022/"
+   "url": "https://globalvoices.org/2024/11/05/a-temporary-welcome-russians-in-turkey-since-february-2022/",
+   "kind": "press"
   },
   {
    "id": "kaz_intellinews",
    "name": "bne IntelliNews: how many Russians stayed in Kazakhstan; 146k still present Dec 2022",
-   "url": "https://www.intellinews.com/central-asia-blog-how-many-of-the-russians-who-fled-putin-s-war-machine-for-kazakhstan-stayed-there-291989"
+   "url": "https://www.intellinews.com/central-asia-blog-how-many-of-the-russians-who-fled-putin-s-war-machine-for-kazakhstan-stayed-there-291989",
+   "kind": "press"
   },
   {
    "id": "kaz_bizmedia",
    "name": "Bizmedia.kz / TASS: ~80k Russians remain in Kazakhstan end 2023",
-   "url": "https://bizmedia.kz/2024-02-13-okolo-80-tysyach-grazhdan-rossii-ostayutsya-v-kazahstane-s-2022-goda/"
+   "url": "https://bizmedia.kz/2024-02-13-okolo-80-tysyach-grazhdan-rossii-ostayutsya-v-kazahstane-s-2022-goda/",
+   "kind": "press"
   },
   {
    "id": "bell_650k",
    "name": "The Bell via Novaya Gazeta Europe: ~650k left Russia permanently",
-   "url": "https://novayagazeta.eu/en/articles/2024/07/16/the-bell-650000-people-have-left-russia-permanently-since-the-invasion-of-ukraine-en-news"
+   "url": "https://novayagazeta.eu/en/articles/2024/07/16/the-bell-650000-people-have-left-russia-permanently-since-the-invasion-of-ukraine-en-news",
+   "kind": "press"
   },
   {
    "id": "map_uncovered",

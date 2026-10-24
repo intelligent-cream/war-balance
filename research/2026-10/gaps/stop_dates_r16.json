@@ -515,19 +515,22 @@
     "name": "The Baltic Times (BNS), 25 March 2022: Orlen Lithuania plans to refine Saudi oil only - minister",
     "url": "https://www.baltictimes.com/orlen_lithuania_plans_to_refine_saudi_oil_only___minister/",
     "date": "2022-03-25",
-    "checked": "fetched 2026-10-20"
+    "checked": "fetched 2026-10-20",
+    "kind": "press"
    },
    {
     "name": "S&P Global Commodity Insights, 26 April 2022: Polish top refiner PKN Orlen ready for any Russian oil ban (the Mazeikiai refinery had stopped taking Russian cargoes at the end of March)",
     "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/042622-polish-top-refiner-pkn-orlen-ready-for-any-russian-oil-ban-ceo",
     "date": "2022-04-26",
-    "checked": "not verified (HTTP 403); as reported in search results"
+    "checked": "not verified (HTTP 403); as reported in search results",
+    "kind": "press"
    },
    {
     "name": "LRT, 4 April 2022: Lithuania becomes first EU country to stop Russian gas imports (gas: never banned by the EU, so not in the required share either way)",
     "url": "https://www.lrt.lt/en/news-in-english/19/1661749/lithuania-becomes-first-eu-country-to-stop-russian-gas-imports",
     "date": "2022-04-04",
-    "checked": "fetched 2026-10-20"
+    "checked": "fetched 2026-10-20",
+    "kind": "press"
    }
   ],
   "FIN": [
@@ -549,13 +552,15 @@
     "name": "Baker McKenzie Sanctions Blog: Poland introduces sanctions against Russia and Belarus (coal, CN 2701 and 2704, effective 16 April 2022)",
     "url": "https://sanctionsnews.bakermckenzie.com/poland-introduces-sanctions-against-russia-and-belarus/",
     "date": "2022-04",
-    "checked": "fetched 2026-10-20"
+    "checked": "fetched 2026-10-20",
+    "kind": "press"
    },
    {
     "name": "WION, 26 February 2023: Polish energy group says Russia halted oil pipeline deliveries (Druzhba to Poland stopped by the Russian side; about 10% of Orlen's crude)",
     "url": "https://www.wionews.com/world/polish-energy-group-says-russia-halted-oil-pipeline-deliveries-565942/amp",
     "date": "2023-02-26",
-    "checked": "fetched 2026-10-20"
+    "checked": "fetched 2026-10-20",
+    "kind": "press"
    }
   ],
   "DEU": [
@@ -563,7 +568,8 @@
     "name": "Stars and Stripes (dpa), 20 December 2022: Germany says it won't be buying Russian oil at all in 2023 (Leuna and Schwedt stop ordering Russian crude from the new year)",
     "url": "https://www.stripes.com/theaters/europe/2022-12-20/germany-russian-oil-2023-8490978.html",
     "date": "2022-12-20",
-    "checked": "fetched 2026-10-20"
+    "checked": "fetched 2026-10-20",
+    "kind": "press"
    }
   ]
  },

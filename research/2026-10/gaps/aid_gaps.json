@@ -255,7 +255,8 @@
     {
      "name": "Interfax-Ukraine: Albania transfers 22 MaxxPro armored personnel carriers to Ukraine (Oryx)",
      "url": "https://interfax.com.ua/news/general/936101.html",
-     "date": "2023-09"
+     "date": "2023-09",
+     "kind": "press"
     },
     {
      "name": "President of Ukraine: Ukraine and Albania conclude bilateral security agreement",
@@ -364,7 +365,8 @@
     {
      "name": "UAE MoFA / Interfax: UAE allots $100 million for humanitarian aid to Ukraine",
      "url": "https://interfax.com/newsroom/top-stories/84198/",
-     "date": "2022-10-20"
+     "date": "2022-10-20",
+     "kind": "press"
     },
     {
      "name": "UAE MoFA: plane carrying 55 tonnes of relief to Ukraine",
@@ -467,12 +469,14 @@
     {
      "name": "Espreso: Armenia sends humanitarian aid to Ukraine first time since war started",
      "url": "https://global.espreso.tv/armenia-sends-humanitarian-aid-to-ukraine-first-time-since-war-started",
-     "date": "2023-09"
+     "date": "2023-09",
+     "kind": "press"
     },
     {
      "name": "Rubryka: Armenia handed 10 tons of medicines to Main Military Clinical Hospital",
      "url": "https://rubryka.com/en/2024/02/09/rishennya-dlya-peremogy-virmeniya-peredala-10-tonn-medykamentiv-golovnomu-vijskovomu-klinichnomu-gospitalyu",
-     "date": "2024-02-09"
+     "date": "2024-02-09",
+     "kind": "press"
     }
    ],
    "note": "documented non-FTS items: 2023: First humanitarian shipment Sept 2023 (value undisclosed); 2024: 10 t medicines via embassy and diaspora union (Feb 2024), govt share unclear. High also adds the unrecorded-donation band (GDP share)."
@@ -721,7 +725,8 @@
     {
      "name": "Rubryka/Ukrinform: Azerbaijan sends transformers, generators (embassy: ~AZN 30m total)",
      "url": "https://rubryka.com/en/2022/12/10/do-ukrayiny-vidpravyly-45-sylovyh-transformatoriv-i-50-generatoriv-z-azerbajdzhanu/",
-     "date": "2022-12-10"
+     "date": "2022-12-10",
+     "kind": "press"
     },
     {
      "name": "Azerbaijan Embassy Kyiv: decree allocating funds for humanitarian assistance to Ukraine",
@@ -731,7 +736,8 @@
     {
      "name": "Ukrainska Pravda: Azerbaijan allocates US$1 million",
      "url": "https://pravda.com.ua/eng/news/2025/02/5/7496933",
-     "date": "2025-02-05"
+     "date": "2025-02-05",
+     "kind": "press"
     },
     {
      "name": "DIA Dnipro: humanitarian and energy assistance from Azerbaijan in 2025 (>USD 42m since 2022)",
@@ -741,12 +747,14 @@
     {
      "name": "Ukrinform: Azerbaijan sends Ukraine new batch of electrical equipment (USD 1m; cumulative >USD 45m)",
      "url": "https://www.ukrinform.net/rubric-polytics/4082355-azerbaijan-sends-ukraine-new-batch-of-electrical-equipment.html",
-     "date": "2026"
+     "date": "2026",
+     "kind": "press"
     },
     {
      "name": "Trend: Azerbaijan sends around $1.5M in electricity equipment to Ukraine",
      "url": "https://www.trend.az/azerbaijan/society/4232079.html",
-     "date": "2026-10"
+     "date": "2026-10",
+     "kind": "press"
     }
    ],
    "note": "documented non-FTS items: 2022: Embassy: ~AZN 30m (~USD 17.7m) total humanitarian aid by Dec 2022 (energy equipment, fuel, medicines); 2023: Cumulative >USD 40m by Feb 2025 implies ~USD 22m in 2023-24; incl. USD 7.6m batches Oct 2023-Jan 2024; split ~55/45; 2024: see 2023; 2025: Presidential decrees: USD 1m (5 Feb 2025) + USD 2m (11 Aug 2025) electrical equipment; 2026: Decree 16 Jan 2026 USD 1m equipment; cumulative quoted USD 45-49m by May 2026 vs USD 42m in Oct 2025. High also adds the unrecorded-donation band (GDP share)."
@@ -1445,7 +1453,8 @@
     {
      "name": "CNN Brasil: Brasil envia alimentos e remedios para vitimas da guerra na Ucrania",
      "url": "https://www.cnnbrasil.com.br/internacional/brasil-envia-alimentos-e-remedios-para-vitimas-da-guerra-na-ucrania/",
-     "date": "2022-03"
+     "date": "2022-03",
+     "kind": "press"
     }
    ],
    "note": "documented non-FTS items: 2022: KC-390 flight with 11-12 t food/medicines (partly privately collected) to Poland; valued at EUR 2-10k/t plus flight. High also adds the unrecorded-donation band (GDP share)."
@@ -1844,7 +1853,8 @@
     {
      "name": "El Dinamo: Chile donara USD 100 mil a Ucrania",
      "url": "https://www.eldinamo.cl/mundo/2022/03/24/chile-donara-usd-100-mil-a-ucrania-como-parte-del-fondo-contra-el-hambre-y-la-pobreza/",
-     "date": "2022-03-24"
+     "date": "2022-03-24",
+     "kind": "press"
     }
    ],
    "note": "documented non-FTS items: 2022: USD 100k from Fondo Chile contra el Hambre via IFRC (Mar 2022). High also adds the unrecorded-donation band (GDP share)."
@@ -3241,12 +3251,14 @@
     {
      "name": "Civil.ge: Georgia sends humanitarian aid to Ukraine (GEL 1m purchase)",
      "url": "https://civil.ge/archives/475744",
-     "date": "2022-02"
+     "date": "2022-02",
+     "kind": "press"
     },
     {
      "name": "1TV: over 100 tons of humanitarian aid collected across Georgia",
      "url": "https://1tv.ge/lang/en/news/over-100-tons-of-humanitarian-aid-for-ukrainian-people-collected-across-georgia/",
-     "date": "2022-03"
+     "date": "2022-03",
+     "kind": "press"
     }
    ],
    "note": "documented non-FTS items: 2022: Govt purchase GEL 1m (USD 315k) + state-organised collection (100+ t) and Enterprise Georgia 60 t; valued at EUR 2-10k/t. High also adds the unrecorded-donation band (GDP share)."
@@ -3995,7 +4007,8 @@
     {
      "name": "Tempo: Indonesia offers Ukraine humanitarian aid",
      "url": "https://en.tempo.co/amp/1586621/indonesia-foreign-affairs-minister-offers-ukraine-humanitarian-aid",
-     "date": "2022"
+     "date": "2022",
+     "kind": "press"
     }
    ],
    "note": "documented non-FTS items: 2022: Medicines handed over during Jokowi's Kyiv visit (29 Jun 2022), value undisclosed. High also adds the unrecorded-donation band (GDP share)."
@@ -4194,17 +4207,20 @@
     {
      "name": "Times of Israel: 17 tons of equipment for Israeli field hospital en route to Ukraine (NIS 21m budget)",
      "url": "https://www.timesofisrael.com/17-tons-of-equipment-for-israeli-field-hospital-en-route-to-ukraine",
-     "date": "2022-03-21"
+     "date": "2022-03-21",
+     "kind": "press"
     },
     {
      "name": "Times of Israel: Israel to give another NIS 10 million in aid for Ukrainian Jews",
      "url": "https://www.timesofisrael.com/liveblog_entry/israel-to-give-another-nis-10-million-in-aid-for-ukrainian-jews-half-of-it-from-anonymous-donor/",
-     "date": "2022"
+     "date": "2022",
+     "kind": "press"
     },
     {
      "name": "Jewish Press: Israel sends $1m in equipment to children's hospital in Ukraine",
      "url": "https://jewishpress.com/israel-sends-1-m-in-equipment-to-childrens-hospital-in-ukraine/",
-     "date": "2022-09"
+     "date": "2022-09",
+     "kind": "press"
     },
     {
      "name": "Israel Embassy: MASHAV summary of activities 2022-2024",
@@ -4214,7 +4230,8 @@
     {
      "name": "Interfax: Israel to give Ukraine $200m in loan guarantees (not counted: guarantee)",
      "url": "https://interfax.com/newsroom/top-stories/88056/",
-     "date": "2023-02-16"
+     "date": "2023-02-16",
+     "kind": "press"
     }
    ],
    "note": "documented non-FTS items: 2022: Kochav Meir field hospital, NIS 21m (~USD 6.5m) budget; govt share 50-100% (co-funded by Schusterman Fdn and JDC); 2022: Diaspora Ministry aid to Ukrainian Jews, NIS 10-20m; 2022: MASHAV medical equipment for Kyiv children's hospital (>USD 1m); 2022: ~100 t humanitarian cargo valued at EUR/USD 2-10k per t; 2023: MASHAV ongoing in-kind (meals, trauma training), unvalued; 2024: MASHAV ongoing in-kind, unvalued; 2025: no specific record; residual; 2026: no specific record; residual. High also adds the unrecorded-donation band (GDP share)."
@@ -4667,7 +4684,8 @@
     {
      "name": "Kuwait Times: Kuwait donates $2 million at pledging conference for Ukraine",
      "url": "https://kuwaittimes.com/kuwait-donates-2-million-at-pledging-conference-for-ukraine",
-     "date": "2022"
+     "date": "2022",
+     "kind": "press"
     },
     {
      "name": "Govt of Ukraine: Kuleba in Kuwait, USD 1m for power generators",
@@ -5122,7 +5140,8 @@
     {
      "name": "Interfax-Ukraine: Morocco hands over 20 T-72B tanks (via Czech refurbishment; US/NL-financed, counted as their aid)",
      "url": "https://interfax.com.ua/news/general/886275.html",
-     "date": "2023-01"
+     "date": "2023-01",
+     "kind": "press"
     }
    ],
    "note": "No government flow in FTS 2022-2026; no donation found in news (targeted searches covered notable donors only, so small unreported gifts are possible). Central 0, low 0; high = unrecorded-donation band (0.002% of GDP in 2022, 0.0005%/yr 2023-25, 0.00033% for Jan-Aug 2026; fixed EUR 50k/10k where GDP is unknown; 0 for uninhabited territories). About 20 T-72B tanks from Morocco reached Ukraine via Czech refurbishment in 2022-23, but they were bought with US/Dutch money and Morocco reportedly objected; counted as US/NL aid, not Moroccan. Central 0."
@@ -5171,12 +5190,14 @@
     {
      "name": "Kyiv Independent: Moldova delivers energy aid (EUR 700k) as new PM visits Kyiv",
      "url": "https://www.kyivindependent.com/moldovas-new-prime-minister-visits-kyiv/",
-     "date": "2026-02-10"
+     "date": "2026-02-10",
+     "kind": "press"
     },
     {
      "name": "IPN: IGSU transports donation of electrical equipment to Ukraine",
      "url": "https://ipn.md/en/igsu-transports-donation-of-electrical-equipment-to-ukraine-7967_1099307.html",
-     "date": "n.d."
+     "date": "n.d.",
+     "kind": "press"
     }
    ],
    "note": "documented non-FTS items: 2022: Govt (Gavrilita cabinet) batch ~MDL 17m: energy equipment, medicines, tents; 2023: Utilities' equipment lot MDL 1.2m (undated); 2026: Feb 2026 energy/medical package EUR 0.7m. High also adds the unrecorded-donation band (GDP share)."
@@ -5425,7 +5446,8 @@
     {
      "name": "meta.mk: Macedonia will donate 12 helicopters to Ukraine (minister: other donations ~EUR 30m)",
      "url": "https://meta.mk/en/macedonia-will-donate-12-helicopters-to-ukraine-and-buy-eight-new-ones/",
-     "date": "2023-03-29"
+     "date": "2023-03-29",
+     "kind": "press"
     },
     {
      "name": "President Pendarovski, Ukraine-SEE summit Tirana: 12 packages worth EUR 60m",
@@ -5579,7 +5601,8 @@
     {
      "name": "Espreso: Ukraine receives EUR 10 million in military aid from Montenegro",
      "url": "https://global.espreso.tv/ukraine-receives-eur-10-million-in-military-aid-from-montenegro",
-     "date": "2023-02-10"
+     "date": "2023-02-10",
+     "kind": "press"
     }
    ],
    "note": "documented non-FTS items: 2022: Defence Ministry Feb 2023: total military aid >EUR 10m (largest package EUR 8.24m; last Sept 2022); 2023: no valued package found; 2024: no valued package found; 2025: no valued package found (joined EUMAM training 2025); 2026: no valued package found. High also adds the unrecorded-donation band (GDP share)."
@@ -5978,7 +6001,8 @@
     {
      "name": "Bernama: Malaysia Health Ministry medical aid to Ukraine (RM 227,984)",
      "url": "https://www.bernama.com/tv/news.php?id=2437890",
-     "date": "2023-02"
+     "date": "2023-02",
+     "kind": "press"
     }
    ],
    "note": "documented non-FTS items: 2023: Health Ministry medicines RM 227,984 (Feb 2023). High also adds the unrecorded-donation band (GDP share)."
@@ -7185,12 +7209,14 @@
     {
      "name": "Arab News: Saudi Arabia, Ukraine sign $400m deals in Kyiv for aid",
      "url": "https://www.arabnews.com/node/2258386",
-     "date": "2023-02-26"
+     "date": "2023-02-26",
+     "kind": "press"
     },
     {
      "name": "Ukrainska Pravda: Saudi Arabia will supply Ukraine with aid worth $400 million",
      "url": "https://www.pravda.com.ua/eng/news/2023/02/26/7391100",
-     "date": "2023-02-26"
+     "date": "2023-02-26",
+     "kind": "press"
     }
    ],
    "note": "FTS government flows (low = paid, central/high = paid + commitments) + documented non-FTS items: Feb 2023 USD 100m KSrelief humanitarian part of USD 400m package; FTS shows ~USD 72.8m humanitarian since -> central adds 50% of the unrecorded remainder, high adds 100%, spread over 2023/2024. High also adds the unrecorded-donation band (GDP share). FTS records the USD 300m petroleum-products grant (Saudi Fund for Development, Feb 2023) as paid humanitarian aid to the Government of Ukraine; it is energy in-kind support. 2025 includes a USD 1m OCHA commitment that may duplicate a paid USD 1m OCHA flow. Three FTS flows dated Sept 2026 (USD 1.08m) are outside the Jan-Aug window."
@@ -8985,17 +9011,20 @@
     {
      "name": "Kun.uz: Uzbekistan sends humanitarian aid to Ukraine (19 t, >USD 1m)",
      "url": "https://kun.uz/en/news/2022/06/08/uzbekistan-sends-humanitarian-aid-to-ukraine",
-     "date": "2022-06-08"
+     "date": "2022-06-08",
+     "kind": "press"
     },
     {
      "name": "Kun.uz: Uzbekistan sends humanitarian aid to Ukraine (34 t)",
      "url": "https://kun.uz/en/news/2022/04/11/uzbekistan-sends-humanitarian-aid-to-ukraine",
-     "date": "2022-04-11"
+     "date": "2022-04-11",
+     "kind": "press"
     },
     {
      "name": "Kun.uz: Uzbekistan sends humanitarian aid to Ukraine (10.5 t)",
      "url": "https://kun.uz/en/news/2023/08/19/uzbekistan-sends-humanitarian-aid-to-ukraine",
-     "date": "2023-08-19"
+     "date": "2023-08-19",
+     "kind": "press"
     }
    ],
    "note": "documented non-FTS items: 2022: Jun 2022 19 t medicines >USD 1m; Apr 2022 34 t (unvalued, ~USD 0.07-0.34m at 2-10k/t); 2023: Aug 2023 10.5 t, ~USD 25k. High also adds the unrecorded-donation band (GDP share)."

@@ -238,7 +238,8 @@
     {
      "title": "Poland sees approx. 78 pct working-age Ukrainians employed",
      "publisher": "PAP Biznes",
-     "url": "https://biznes.pap.pl/wiadomosci/gospodarka/poland-sees-approx-78-pct-working-age-ukrainians-employed"
+     "url": "https://biznes.pap.pl/wiadomosci/gospodarka/poland-sees-approx-78-pct-working-age-ukrainians-employed",
+     "kind": "press"
     },
     {
      "title": "Poland: almost 1.3 million foreigners work legally",
@@ -259,7 +260,8 @@
     {
      "title": "Over 50,000 Ukrainian refugees have found jobs in Czech Republic",
      "publisher": "Interfax",
-     "url": "https://interfax.com/newsroom/top-stories/79308/"
+     "url": "https://interfax.com/newsroom/top-stories/79308/",
+     "kind": "press"
     }
    ]
   },
@@ -293,7 +295,8 @@
     "title": "Deutsche Ukrainehilfe weniger generoes als von Berlin deklariert (Kiel Institute analysis, C. Trebesch)",
     "publisher": "Boersen-Zeitung",
     "date": "2026-10-08",
-    "url": "https://www.boersen-zeitung.de/konjunktur-politik/deutsche-ukrainehilfe-weniger-generoes-als-von-berlin-deklariert"
+    "url": "https://www.boersen-zeitung.de/konjunktur-politik/deutsche-ukrainehilfe-weniger-generoes-als-von-berlin-deklariert",
+    "kind": "press"
    }
   },
   {
@@ -315,7 +318,8 @@
     "title": "Czechia spent CZK 62.5 billion on aid for Ukrainian refugees, tax contributions reached CZK 55.5 billion",
     "publisher": "Radio Prague International",
     "url": "https://english.radio.cz/node/8843622",
-    "note": "page returned 403; figures from the headline only"
+    "note": "page returned 403; figures from the headline only",
+    "kind": "press"
    }
   },
   {
@@ -337,7 +341,8 @@
     "title": "EU countries spent over EUR 43 billion on Ukrainian refugees",
     "publisher": "Gwara Media",
     "date": "2023-07-04",
-    "url": "https://gwaramedia.com/en/eu-countries-spent-over-e43-billion-on-ukrainian-refugees/"
+    "url": "https://gwaramedia.com/en/eu-countries-spent-over-e43-billion-on-ukrainian-refugees/",
+    "kind": "press"
    }
   }
  ],
