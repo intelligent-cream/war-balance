@@ -82,7 +82,7 @@ The owner asked whether Playwright can get the UAE and Hong Kong trade data that
 
 ## Reproducibility
 
-`node pipeline/fetch/uae_hkg_r43.mjs` re-runs the fetch, in about 8 minutes with the delays:
+`node pipeline/fetch/uae_hkg_r43.mjs` re-runs the fetch, in about 10–12 minutes with the delays (verified end to end on 2026-10-24):
 
 - SCAD release pages are found by their slug; the xlsx link is read from each page.
 - The bayanat dataset is found by search and opened with a click, because its ids change per session.

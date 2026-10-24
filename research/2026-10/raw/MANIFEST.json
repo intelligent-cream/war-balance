@@ -1375,9 +1375,93 @@
    "in_repository": true
   },
   {
+   "path": "uae_hkg_r43/bayanat_fca_by_country.zip",
+   "bytes": 265002,
+   "sha256": "5045a255e6583e59b67127f53d735b7281087a8bd64ddb1e42a869ceb4242971",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/comtrade_hkg_7108_m_202601.json",
+   "bytes": 1857,
+   "sha256": "7a7251cdd2e27832e43d7a630ef7f173247001ea5999bc8e055aa44ba4b03bfe",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/comtrade_hkg_7108_m_202602.json",
+   "bytes": 1862,
+   "sha256": "d6a0f8251b42e9155ab5e9c0a582059a75ecf0283829c650c7e602470f692f5d",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/comtrade_hkg_7108_m_202603.json",
+   "bytes": 1869,
+   "sha256": "a886d3b38af20c7d775a53de144e8afba075a89f3691df19b2da3cef0cd5e1d5",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/comtrade_hkg_7108_m_202604.json",
+   "bytes": 1869,
+   "sha256": "35ef4470c810c208e22170be89931612f04b55763449d773f17d041b39792a77",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/comtrade_hkg_7108_m_202605.json",
+   "bytes": 1869,
+   "sha256": "2299e46fa0d8901ab97f012ebba1dca5752d6a3bb7bb7eb8dc38dee09fa1c436",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/comtrade_hkg_7108_m_202606.json",
+   "bytes": 1869,
+   "sha256": "49ee9b58c0eeae229daed132aec8e09e935647a598338c3f37e9242bbe29f306",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/comtrade_hkg_7108_m_202607.json",
+   "bytes": 1869,
+   "sha256": "31827809a05037cb7fa85802d4bd5f51d04991991df81b40e9f3d6f50957d8b4",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/comtrade_hkg_7108_m_202608.json",
+   "bytes": 58,
+   "sha256": "d5b6bec2ca12c01d3de898153073fea5196e40f417bf4617352282e5478ee1bd",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/comtrade_hkg_7108_m_202609.json",
+   "bytes": 58,
+   "sha256": "74fb9e013d2918f975bfabd9d7de6ec6c766547ddfcbaed48bfea66fe1eb2e96",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/comtrade_hkg_7108_m_202610.json",
+   "bytes": 58,
+   "sha256": "562ee4ded0e529583c597f1fa5fa42c83885d50eb48194e4e6343359d945bd18",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/comtrade_hkg_7108_monthly.csv",
+   "bytes": 1193,
+   "sha256": "66ce168644095e3f6fcfb1bc9deab640376f9891660e2d23e821a338a3daa525",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/fca_uae_russia_2010_2019.csv",
+   "bytes": 1879,
+   "sha256": "26304f557a55dec0fb74d4ff6537eb3cf7c05e551fd3728887e908dd2953c980",
+   "in_repository": true
+  },
+  {
    "path": "uae_hkg_r43/fetch_log_2026-10-24.json",
-   "bytes": 6744,
-   "sha256": "dd0cd7c5d62d8e103e0bd0d5424609b965e42e9dadda000845ee17e4a43e96c4",
+   "bytes": 8884,
+   "sha256": "fa9bb5e258588c84d3e0b3412587d90ef30ba7008154fb90922003c11f9d7046",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/scad_abu_dhabi_russia.csv",
+   "bytes": 4652,
+   "sha256": "c44abea37943300fc1ef7963f8dcafaa71c1e65eef1734d2de089b8b88608a12",
    "in_repository": true
   },
   {

@@ -18,6 +18,7 @@ import json
 import re
 import sys
 import zipfile
+from datetime import UTC, datetime
 from pathlib import Path
 
 import openpyxl
@@ -25,6 +26,10 @@ import openpyxl
 RAW = Path(__file__).resolve().parents[2] / "research/2026-10/raw/uae_hkg_r43"
 AED_PER_USD = 3.6725  # the dirham's fixed peg
 SKIP = {"TOTAL", "OTHERS", "OTHER", "COUNTRY"}
+
+
+def accessed(f: Path) -> str:
+    return datetime.fromtimestamp(f.stat().st_mtime, tz=UTC).date().isoformat()
 
 
 def top10(ws) -> tuple[dict[str, float], float]:
@@ -87,6 +92,7 @@ def fca() -> list[dict]:
                     "exports_usd_bn": round(exp / AED_PER_USD / 1e9, 3),
                     "reexports_usd_bn": round(rex / AED_PER_USD / 1e9, 3),
                     "source": "https://bayanat.ae/en/Datasets (Federal Customs Authority, General Total Trade volume by country 2010-2019)",
+                    "accessed": accessed(z),
                 }
             )
     return out
@@ -103,6 +109,7 @@ def comtrade() -> list[dict]:
                     "period": period,
                     "hs7108_usd_m": round(vals.get("7108", 0) / 1e6, 1),
                     "total_usd_m": round(vals.get("TOTAL", 0) / 1e6, 1),
+                    "accessed": accessed(f),
                     "source": f"https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=344&partnerCode=643&period={period}&flowCode=M&cmdCode=7108,TOTAL",
                 }
             )
