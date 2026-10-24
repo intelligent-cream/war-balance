@@ -2,6 +2,18 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r43">Round 43: more numbers certain, from tested bands and measured data <span class="cl-date">24 October</span></h2>
+<!-- flows: paid laund sold -->
+
+The owner: "go for 1 to 3", and for the UAE and Hong Kong, "can you use Playwright?"
+
+- **No-war bands calibrated by the placebo test**: what countries would have bought from Russia without the war now has a band 0.81 of its old width, and small sales to Russia 1.1 times theirs (the 2014 test, when Russia's own economy was hit). Rerun, the trade ranges still hold the true zero for 96% (2018) and 90% (2014) of ranked economies.
+- **Türkiye's own band**, back-tested on its energy regulator's (EPDK) gas and crude volumes since 2005; EPDK is a second official source next to customs. Its range narrows, but at 94% it still only leans toward Russia.
+- **Gas checked against metered pipeline flows (ENTSOG)**: Hungary 2025–2026 and Austria 2024 bought less Russian gas than the figures used (Hungary 5.3 bcm, not 6.3, in 2025); Bulgaria's high case widened to what physically came in.
+- **Laundered oil from measured data**: Russia's share of India's crude from its monthly customs, Türkiye's from EPDK, each EU refiner's own share, and Australia's own petroleum statistics; Cyprus and Malta measured as buyers (Cyprus re-exports most of the fuel it imports, so that is no longer charged to it). A bug is fixed: measured buyers keep a flat no-war path, as documented.
+- **Now certain** on the net: Bulgaria, Egypt, Chile, Cyprus, New Zealand, Papua New Guinea, the Maldives; on Russia's earnings from trade also Spain, Italy, South Africa and Fiji. The Philippines moves from leaning to near zero. Certain directions: 61 → 68 on the net, 51 → 60 on Russia's earnings.
+- **UAE and Hong Kong**: a browser reaches more UAE sites than plain downloads, but the UAE statistics office blocks it and Hong Kong's detailed trade tool does not allow automated access; nothing narrowed their ranges. The UAE's 2019 customs figures match the IMF data the site uses to the dollar, so those are official UAE figures.
+
 <h2 id="cl-r42">Round 42: how likely each direction is, what decides it, and tested ranges <span class="cl-date">24 October</span></h2>
 <!-- flows: paid sold aid own -->
 

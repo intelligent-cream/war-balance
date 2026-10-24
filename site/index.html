@@ -4316,7 +4316,7 @@ function mostlyPrice(c, k) {
 function netBlock(c, k, y) {
   const g = v => fmtMeasure(c, v, "gdp", true), unc = uncertain(c, y, "net") && !PARTY_TO_WAR.has(c.iso3);
   const cls = k.earner ? "mid" : unc ? (k.shift >= 0 ? "fpos" : "fneg") : k.shift >= 0 ? "pos" : "neg";
-  const rangeInfo = t("The likely range covers the uncertainty of the data and the models given the method: each part's low and high value, combined as errors, correlated where parts share inputs. It aims at about 90%: rerun as if the war had started in 2018, trade ranges held the true zero for 97% of ranked economies (92% for a 2014 start, when Russia's own economy was hit). How much the method choices themselves move the result is the method band below.");
+  const rangeInfo = t("The likely range covers the uncertainty of the data and the models given the method: each part's low and high value, combined as errors, correlated where parts share inputs. It aims at about 90%: rerun as if the war had started in 2018, trade ranges held the true zero for 96% of ranked economies (90% for a 2014 start, when Russia's own economy was hit). How much the method choices themselves move the result is the method band below.");
   // round 19: the big number in the drawer's measure ("+3.2%", "+€1,610" per person, "+€134 bn"); % of GDP is then the
   // second line
   // round 22 (owner): the verb carries the direction ("Toward Ukraine by"), the big number has no sign

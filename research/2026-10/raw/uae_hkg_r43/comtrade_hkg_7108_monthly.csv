@@ -1,0 +1,8 @@
+period,hs7108_usd_m,total_usd_m,accessed,source
+202601,741.2,823.1,2026-10-24,"https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=344&partnerCode=643&period=202601&flowCode=M&cmdCode=7108,TOTAL"
+202602,586.5,721.6,2026-10-24,"https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=344&partnerCode=643&period=202602&flowCode=M&cmdCode=7108,TOTAL"
+202603,1636.3,1840.9,2026-10-24,"https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=344&partnerCode=643&period=202603&flowCode=M&cmdCode=7108,TOTAL"
+202604,2720.4,2939.1,2026-10-24,"https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=344&partnerCode=643&period=202604&flowCode=M&cmdCode=7108,TOTAL"
+202605,3782.9,4007.1,2026-10-24,"https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=344&partnerCode=643&period=202605&flowCode=M&cmdCode=7108,TOTAL"
+202606,3695.4,3953.0,2026-10-24,"https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=344&partnerCode=643&period=202606&flowCode=M&cmdCode=7108,TOTAL"
+202607,3114.9,3181.5,2026-10-24,"https://comtradeapi.un.org/public/v1/preview/C/M/HS?reporterCode=344&partnerCode=643&period=202607&flowCode=M&cmdCode=7108,TOTAL"

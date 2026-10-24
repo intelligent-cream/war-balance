@@ -38,6 +38,7 @@ All endpoints were checked from the sandbox on 2026-10-23. None needs an API key
 | `unhcr.py` | `api.unhcr.org/population/v1/population/?coo=UKR&coa_all=true` | `unhcr/` | refugees from Ukraine by country of asylum, end-year from 2021 (2026 is empty until UNHCR publishes) |
 | `ecb.py` | `data-api.ecb.europa.eu/service/data/EXR/...` | `ecb/` | annual and monthly euro reference rates (USD and 14 others) |
 | `ukrstat.py` | `stat.gov.ua/sdmx/workspaces/default:integration/registry/sdmx/2.1/data/...` | `ukrstat/` | Ukraine's own trade by partner: annual to 2024 and Jan–Sep 2025 cumulative (all that Ukrstat publishes as of 2026-10-23) |
+| `epdk_entsog.py` | `epdk.gov.tr` market reports (gas, oil); `transparency.entsog.eu/api/v1/operationalData` (Physical Flow) | `epdk/`, `entsog/` | round 43: Türkiye's gas and crude imports by origin (EPDK, 2005–2026); metered daily flows at the TurkStream, Balkan and Central European points from 2021-11, summed to months |
 
 Not scriptable from here (manual review rounds):
 - Kiel UST: an xlsx whose URL changes with every release.
@@ -45,7 +46,7 @@ Not scriptable from here (manual review rounds):
 - Euroclear: www.euroclear.com blocks scripts (Cloudflare 403); `cf.euroclear.com` works.
 - ukrstat.gov.ua: its TLS certificate has expired.
 - customs.gov.ua: returns 403.
-- The ENTSOG and World Bank APIs work but are not scripted yet.
+- The World Bank API works but is not scripted yet (ENTSOG is, in `epdk_entsog.py`).
 
 Large responses are written as `.json.gz` holding `{"columns": [...], "rows": [[...]]}` plus the query metadata. `*.csv.gz`, `*.pdf`, `*.html` and `*.xlsx` under `raw/` are git-ignored, so the scripts never write `.csv.gz`.
 

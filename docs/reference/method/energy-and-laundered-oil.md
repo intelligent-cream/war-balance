@@ -48,8 +48,8 @@ The model got the EU total right (within about 5% of customs evidence) but split
 Eurostat Comext imports of fuel (HS 2710) by member and origin (India, Türkiye, UAE, China, Singapore, Georgia) × the
 Russian-crude share of each origin's exports × the crude-to-fuel value ratio, with the Netherlands (about 74% resold)
 and Belgium (48%) passing fuel on to their customers, so each value is at the **final consumer**. Checked against
-CREA's per-country figures for 2023 (EU 2.60 vs 2.6; France 0.42 vs 0.42; Italy 0.34 vs 0.32). USA, UK and Australia
-come from CREA's country figures. Italy, Spain, France and Slovenia were too low in the model (they buy directly from
+CREA's per-country figures for 2023 (EU 2.60 vs 2.6; France 0.42 vs 0.42; Italy 0.34 vs 0.32). USA and UK come from
+CREA's country figures; Australia is a measured buyer (below). Italy, Spain, France and Slovenia were too low in the model (they buy directly from
 Jamnagar, Vadinar and STAR); the Netherlands, Germany, Malta and Cyprus too high (refiners' mirror data and bunkers).
 2026 drops sharply after the EU ban of 21 January 2026 on fuel made from Russian crude.
 
@@ -69,6 +69,33 @@ Two more channels ([`laundered_r6.json`](https://github.com/intelligent-cream/wa
 
 Not covered: non-EU buyers from the Turkish ports (about EUR 1–1.5bn a year, buyers unknown) and Georgia's Black Sea
 terminals.
+
+### Measured buyers (rounds 39 and 43)
+
+Function: [`apply_laundered_r39()`](https://github.com/intelligent-cream/war-balance/blob/main/pipeline/build_data.py).
+Data: [`laundered_r39.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/laundered_r39.json) and [`laundered_r43.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/laundered_r43.json) (`measured_buyers`; [notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/laundered_r43-notes.md)).
+
+**Which buyers.** 24 buyers have measured series: the 21 of round 39 (South Asia, East and Southern Africa, the Pacific, Chile, Pakistan, the Philippines, New Zealand), plus Cyprus, Malta and Australia since round 43.
+
+**How a series is built.** The buyer's own customs imports of fuel by origin, × the measured Russian share of that origin's crude, × crude content. Option A applies: only refiners netted here pass Russian crude on. The shares come from:
+
+- **India:** customs; 2026 from India's monthly customs, about 0.39.
+- **Türkiye:** EPDK.
+- **EU refiners:** Eurostat, member by member.
+- **US refiners:** zero (EIA).
+- **Hubs:** a mass balance of the hub's own customs.
+
+Australia uses its Petroleum Statistics by source country. Cyprus and Malta use Eurostat energy imports by consigning country. This leaves out Cyprus's bonded fuel that is re-exported, and the Comext "not specified" imports. Malta then keeps its bunker rule and cap.
+
+**What is not added for them.** The hubs' resale, Brunei's and the Turkish ports' fuel, and the EU-refiner route. These are recorded so that the refiners' deductions move by exactly what the buyers' charges move.
+
+**Ranges.** Quantity and origin share are combined in quadrature. Crude content is added across origins, because refiners share it.
+
+**Price band.** None in `laundered_volumes()` (`_measured`). Crude content is the Urals price × yield ÷ the fuel price, so the Urals price cancels in the volume.
+
+**Expected path.** The measured 2019–2021 level, flat, with only the no-war crude price on top. This is a round-43 fix: until then the code copied the old routes' pre-war growth (`bmul`).
+
+**Method band.** `laund_half` and `laund_model` are rebuilt from the same build.
 
 ### Hub resale chain
 

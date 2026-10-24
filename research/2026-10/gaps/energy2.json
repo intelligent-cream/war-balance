@@ -48,9 +48,9 @@
       "high": 3.146
      },
      "2024": {
-      "low": 1.467,
-      "central": 1.942,
-      "high": 2.586
+      "low": 1.395,
+      "central": 1.521,
+      "high": 1.646
      },
      "2025": {
       "low": 0.0,
@@ -90,9 +90,9 @@
       "high": 5.614
      },
      "2024": {
-      "low": 4.517,
-      "central": 5.262,
-      "high": 6.254
+      "low": 3.78,
+      "central": 4.12,
+      "high": 4.46
      },
      "2025": {
       "low": 0.0,
@@ -213,7 +213,10 @@
       "kind": "press"
      }
     ],
-    "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. Eurostat records all Austrian gas imports with origin \"not specified\". 2019-2020 = gross inland consumption (Eurostat nrg_cb_gas IC_OBS) x 80% Russian share (government statements: ~80% before 2022), range 65-90%. 2021 = mean of that and CREA. 2022-2023 = CREA destination volume (Austria 2023 Russian share averaged ~65% per press reports while reaching 98% in Dec 2023). 2024 = mean of CREA and 80% x consumption (BMK monthly shares 81-97% Jan-Apr 2024). 2025: Eurostat nrg_ti_gasm (monthly, partner RU) 2026: Eurostat nrg_ti_gasm (monthly, partner RU) 2025 override: OMV-Gazprom deliveries stopped 16 Nov 2024 and Ukraine transit ended 1 Jan 2025; CREA 0.02 bcm. 2026 override: No direct supply route; only traces via Slovakia/Hungary possible."
+    "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. Eurostat records all Austrian gas imports with origin \"not specified\". 2019-2020 = gross inland consumption (Eurostat nrg_cb_gas IC_OBS) x 80% Russian share (government statements: ~80% before 2022), range 65-90%. 2021 = mean of that and CREA. 2022-2023 = CREA destination volume (Austria 2023 Russian share averaged ~65% per press reports while reaching 98% in Dec 2023). 2024 = mean of CREA and 80% x consumption (BMK monthly shares 81-97% Jan-Apr 2024). 2025: Eurostat nrg_ti_gasm (monthly, partner RU) 2026: Eurostat nrg_ti_gasm (monthly, partner RU) 2025 override: OMV-Gazprom deliveries stopped 16 Nov 2024 and Ukraine transit ended 1 Jan 2025; CREA 0.02 bcm. 2026 override: No direct supply route; only traces via Slovakia/Hungary possible.",
+    "notes": [
+     "round 43: checked against ENTSOG metered physical flows (entsog_r43.json); see entsog_r43-notes.md"
+    ]
    },
    "BEL": {
     "gas_from_rus_eur_bn": {
@@ -415,12 +418,12 @@
      "2023": {
       "low": 0.0,
       "central": 0.0,
-      "high": 0.0
+      "high": 0.49
      },
      "2024": {
       "low": 0.0,
       "central": 0.0,
-      "high": 0.0
+      "high": 0.713
      },
      "2025": {
       "low": 0.0,
@@ -457,12 +460,12 @@
      "2023": {
       "low": 0.0,
       "central": 0.0,
-      "high": 0.0
+      "high": 0.92
      },
      "2024": {
       "low": 0.0,
       "central": 0.0,
-      "high": 0.0
+      "high": 2.01
      },
      "2025": {
       "low": 0.0,
@@ -589,7 +592,10 @@
       "kind": "press"
      }
     ],
-    "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. 2025: Comtrade 2025 (2.50 bcm) x median Eurostat/Comtrade ratio 2023-24 (0.44); range incl. CREA-scaled 2026: CREA destination volume 1.42 bcm x ratio to Eurostat-based level (0.70) 2025 override: Eurostat shows no Russian-origin imports by Bulgaria since 2023 (Gazprom contract ended 2022); Bulgarian customs 2023-24 0.16-0.32 bcm, 2025 2.50 bcm (likely traders' transit purchases); CREA 1.57 = transit artefact. 2026 override: Same reasoning as 2025 at 8/12 of the year."
+    "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. 2025: Comtrade 2025 (2.50 bcm) x median Eurostat/Comtrade ratio 2023-24 (0.44); range incl. CREA-scaled 2026: CREA destination volume 1.42 bcm x ratio to Eurostat-based level (0.70) 2025 override: Eurostat shows no Russian-origin imports by Bulgaria since 2023 (Gazprom contract ended 2022); Bulgarian customs 2023-24 0.16-0.32 bcm, 2025 2.50 bcm (likely traders' transit purchases); CREA 1.57 = transit artefact. 2026 override: Same reasoning as 2025 at 8/12 of the year.",
+    "notes": [
+     "round 43: checked against ENTSOG metered physical flows (entsog_r43.json); see entsog_r43-notes.md"
+    ]
    },
    "HRV": {
     "gas_from_rus_eur_bn": {
@@ -2110,14 +2116,14 @@
       "high": 2.875
      },
      "2025": {
-      "low": 2.141,
-      "central": 2.643,
-      "high": 3.289
+      "low": 2.098,
+      "central": 2.24,
+      "high": 2.643
      },
      "2026": {
-      "low": 1.872,
-      "central": 2.373,
-      "high": 3.055
+      "low": 1.8,
+      "central": 1.909,
+      "high": 2.373
      }
     },
     "gas_from_rus_bcm": {
@@ -2152,14 +2158,14 @@
       "high": 7.236
      },
      "2025": {
-      "low": 5.8,
-      "central": 6.3,
-      "high": 7.0
+      "low": 5.0,
+      "central": 5.34,
+      "high": 6.3
      },
      "2026": {
-      "low": 3.9,
-      "central": 4.35,
-      "high": 5.0
+      "low": 3.3,
+      "central": 3.5,
+      "high": 4.35
      }
     },
     "import_price": {
@@ -2265,7 +2271,10 @@
       "kind": "press"
      }
     ],
-    "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Slovakia/Hungary: central = RU + 50% of \"not specified\" origin, low = RU only, high = RU + all NSP. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. 2025: Comtrade 2025 (6.54 bcm) x median Eurostat/Comtrade ratio 2023-24 (0.81); range incl. CREA-scaled 2026: CREA destination volume 4.78 bcm x ratio to Eurostat-based level (0.76) 2024 override: Eurostat 4.06 bcm is out of line with Hungarian customs (Comtrade 7.24 bcm) and CREA (5.87); Eurostat 2023 (6.41) matched both. Central 5.0 between; low Eurostat, high Comtrade (may include gas re-exported to Ukraine/Slovakia). 2025 override: Szijjarto (Jun 2025): 8-8.5 bcm Russian gas to Hungary in 2025, ~2 bcm/yr passed on to Slovakia -> 6.0-6.5 own use; Comtrade 6.54 bcm; CREA 6.96. 2026 override: CREA Jan-Aug 2026 4.78 bcm x (2025 central / CREA 2025 = 0.905)."
+    "reasoning": "Final-use (origin-reported) Russian natural gas incl. LNG. 2019-2024 central = Eurostat nrg_ti_gas partner RU (countries report by country of origin and exclude pure transit, so this is final use, not the transit country CREA assigns). Range: +-8% (2019-21), +-12% (2022), +-15% (2023-24), widened to include the country's own customs figure (Comtrade) when within 0.5-2x, capped at max(gross inland consumption, total imports) x1.05. Slovakia/Hungary: central = RU + 50% of \"not specified\" origin, low = RU only, high = RU + all NSP. Value = volume x import price (own Comtrade unit value from Russia where reported, else Europe-wide Comtrade unit value for pipeline or LNG; Turkey: CREA modelled price; 2026 = 2025 price x CREA price change), price range +-12%. 2025: Comtrade 2025 (6.54 bcm) x median Eurostat/Comtrade ratio 2023-24 (0.81); range incl. CREA-scaled 2026: CREA destination volume 4.78 bcm x ratio to Eurostat-based level (0.76) 2024 override: Eurostat 4.06 bcm is out of line with Hungarian customs (Comtrade 7.24 bcm) and CREA (5.87); Eurostat 2023 (6.41) matched both. Central 5.0 between; low Eurostat, high Comtrade (may include gas re-exported to Ukraine/Slovakia). 2025 override: Szijjarto (Jun 2025): 8-8.5 bcm Russian gas to Hungary in 2025, ~2 bcm/yr passed on to Slovakia -> 6.0-6.5 own use; Comtrade 6.54 bcm; CREA 6.96. 2026 override: CREA Jan-Aug 2026 4.78 bcm x (2025 central / CREA 2025 = 0.905).",
+    "notes": [
+     "round 43: checked against ENTSOG metered physical flows (entsog_r43.json); see entsog_r43-notes.md"
+    ]
    },
    "IRL": {
     "gas_from_rus_eur_bn": {

@@ -1,0 +1,1987 @@
+{
+ "generated": "2026-10-24",
+ "round": 43,
+ "status": "proposal (not yet read by the build)",
+ "units": {
+  "gas": "million standard cubic metres (Sm3, EPDK); 1 bcm = 1,000 million Sm3",
+  "crude": "million tonnes",
+  "bands": "multipliers in real (volume) terms, as cf_bands.json: cumulative_band = multiplier on the SUM over the horizon of the central expected level (H5_2026_8of12 = 2022-2026 with 2026 at 8/12); multiplier_vs_2021 = per-year ratio to the yearly central (2021 held flat)"
+ },
+ "gas_imports_from_russia_mcm": {
+  "2005": 17524.0,
+  "2006": 19316.0,
+  "2007": 22762.0,
+  "2008": 23159.0,
+  "2009": 19473.0,
+  "2010": 17576.0,
+  "2011": 25406.0,
+  "2012": 26491.0,
+  "2013": 26212.0,
+  "2014": 26975.0,
+  "2015": 26783.0,
+  "2016": 24540.0,
+  "2017": 28690.0,
+  "2018": 23642.0,
+  "2019": 15196.0,
+  "2020": 16178.0,
+  "2021": 26343.0,
+  "2022": 21575.0,
+  "2023": 21340.0,
+  "2024": 21572.0,
+  "2025": 21160.3,
+  "2026": 12137.2
+ },
+ "gas_imports_all_sources_mcm": {
+  "2005": 26571.0,
+  "2006": 30221.0,
+  "2007": 35842.0,
+  "2008": 37350.0,
+  "2009": 35856.0,
+  "2010": 38036.0,
+  "2011": 43874.0,
+  "2012": 45922.0,
+  "2013": 45269.0,
+  "2014": 49262.0,
+  "2015": 48427.0,
+  "2016": 46352.0,
+  "2017": 55250.0,
+  "2018": 50282.0,
+  "2019": 45211.0,
+  "2020": 48126.0,
+  "2021": 58704.0,
+  "2022": 54662.0,
+  "2023": 50484.0,
+  "2024": 52213.0,
+  "2025": 58336.6,
+  "2026": 36528.0
+ },
+ "gas_russian_share": {
+  "2005": 0.6595,
+  "2006": 0.6392,
+  "2007": 0.6351,
+  "2008": 0.6201,
+  "2009": 0.5431,
+  "2010": 0.4621,
+  "2011": 0.5791,
+  "2012": 0.5769,
+  "2013": 0.579,
+  "2014": 0.5476,
+  "2015": 0.5531,
+  "2016": 0.5294,
+  "2017": 0.5193,
+  "2018": 0.4702,
+  "2019": 0.3361,
+  "2020": 0.3362,
+  "2021": 0.4487,
+  "2022": 0.3947,
+  "2023": 0.4227,
+  "2024": 0.4132,
+  "2025": 0.3627,
+  "2026": 0.3323
+ },
+ "gas_note": "2005-2013 from the 2014 report (Table 2.1), 2014-2024 from the 2024 report (Table 2.2), 2025 from the 2025 report annex (Table 4, spot + long-term, all twelve months), 2026 = January-August (August 2026 monthly report annex). Russian totals include pipeline gas (Blue Stream, TurkStream) and Russian spot LNG (497 million Sm3 in 2024).",
+ "gas_spot_pipeline_from_russia_mcm": {
+  "2020": 12.04,
+  "2021": 0.0,
+  "2022": 6321.57,
+  "2023": 4470.75,
+  "2024": 5652.3
+ },
+ "gas_monthly_2025_2026": {
+  "2025": {
+   "months": [
+    "Ocak",
+    "Şubat",
+    "Mart",
+    "Nisan",
+    "Mayıs",
+    "Haziran",
+    "Temmuz",
+    "Ağustos",
+    "Eylül",
+    "Ekim",
+    "Kasım",
+    "Aralık"
+   ],
+   "russia_spot_mcm": [
+    519.3,
+    544.2,
+    382.2,
+    488.9,
+    520.8,
+    302.6,
+    520.9,
+    690.9,
+    418.9,
+    412.2,
+    199.4,
+    488.1
+   ],
+   "russia_long_term_mcm": [
+    2262.1,
+    1866.4,
+    1408.3,
+    1330.9,
+    671.8,
+    668.0,
+    1254.3,
+    1144.3,
+    1028.3,
+    1216.3,
+    1005.4,
+    1815.7
+   ],
+   "all_sources_mcm": [
+    6518.0,
+    6521.5,
+    5998.0,
+    4060.9,
+    3539.1,
+    3261.7,
+    3912.9,
+    4121.7,
+    3605.4,
+    4104.8,
+    5038.2,
+    7654.2
+   ]
+  },
+  "2026": {
+   "months": [
+    "Ocak",
+    "Şubat",
+    "Mart",
+    "Nisan",
+    "Mayıs",
+    "Haziran",
+    "Temmuz",
+    "Ağustos"
+   ],
+   "russia_spot_mcm": [
+    519.1,
+    280.1,
+    484.1,
+    371.1,
+    508.7,
+    260.6,
+    247.7,
+    298.9
+   ],
+   "russia_long_term_mcm": [
+    2184.3,
+    809.0,
+    2067.0,
+    1597.8,
+    762.1,
+    621.5,
+    700.8,
+    424.2
+   ],
+   "all_sources_mcm": [
+    7723.2,
+    5259.9,
+    6272.2,
+    4730.7,
+    3643.6,
+    3059.7,
+    3063.2,
+    2775.5
+   ]
+  }
+ },
+ "gas_2026_jan_aug_vs_2025_jan_aug": {
+  "2025_jan_aug_mcm": 14575.9,
+  "2026_jan_aug_mcm": 12137.2,
+  "ratio": 0.833
+ },
+ "gas_realised_vs_2021": {
+  "2022": 0.819,
+  "2023": 0.81,
+  "2024": 0.819,
+  "2025": 0.803,
+  "2026_jan_aug_vs_2025_jan_aug": 0.833
+ },
+ "epdk_vs_eurostat_gas_ratio": {
+  "2005": 1.0001,
+  "2006": 1.0,
+  "2007": 1.0004,
+  "2008": 1.0086,
+  "2009": 1.0,
+  "2010": 1.0001,
+  "2011": 1.0,
+  "2012": 1.0,
+  "2013": 1.0,
+  "2014": 1.0,
+  "2015": 1.0,
+  "2016": 1.0,
+  "2017": 1.0002,
+  "2018": 1.0,
+  "2019": 1.0,
+  "2020": 1.0,
+  "2021": 1.0,
+  "2022": 1.0,
+  "2023": 1.0,
+  "2024": 1.0
+ },
+ "epdk_vs_eurostat_note": "Eurostat nrg_ti_gas (geo TR, partner RU) equals EPDK to within rounding in every year 2005-2024, and Eurostat's crude from Russia equals EPDK's crude: Türkiye reports the regulator's figures to Eurostat. EPDK is therefore not a second measurement next to Eurostat (which fuel_volume_cf.json already used for TUR); it is a second measurement next to customs (Turkish customs hide the partner of crude and gas) and next to CREA/Kpler for crude.",
+ "crude_and_products": {
+  "2018": {
+   "russian_crude_mt": 1.898,
+   "all_crude_mt": 20.971,
+   "russian_share_of_crude": 0.0905,
+   "russian_diesel_mt": 5.053,
+   "russian_products_mt": 7.86,
+   "russian_share_of_all_oil_imports": 0.2521,
+   "period": "year"
+  },
+  "2019": {
+   "russian_crude_mt": 10.45,
+   "all_crude_mt": 31.074,
+   "russian_share_of_crude": 0.3363,
+   "russian_diesel_mt": 3.951,
+   "russian_products_mt": 5.451,
+   "russian_share_of_all_oil_imports": 0.3547,
+   "period": "year"
+  },
+  "2020": {
+   "russian_crude_mt": 3.268,
+   "all_crude_mt": 29.369,
+   "russian_share_of_crude": 0.1113,
+   "russian_diesel_mt": 3.777,
+   "russian_products_mt": 5.311,
+   "russian_share_of_all_oil_imports": 0.2118,
+   "period": "year"
+  },
+  "2021": {
+   "russian_crude_mt": 5.422,
+   "all_crude_mt": 31.418,
+   "russian_share_of_crude": 0.1726,
+   "russian_diesel_mt": 3.712,
+   "russian_products_mt": 5.311,
+   "russian_share_of_all_oil_imports": 0.242,
+   "period": "year"
+  },
+  "2022": {
+   "russian_crude_mt": 12.001,
+   "all_crude_mt": 33.486,
+   "russian_share_of_crude": 0.3584,
+   "russian_diesel_mt": 4.058,
+   "russian_products_mt": 7.323,
+   "russian_share_of_all_oil_imports": 0.4075,
+   "period": "year"
+  },
+  "2023": {
+   "russian_crude_mt": 10.707,
+   "all_crude_mt": 31.395,
+   "russian_share_of_crude": 0.341,
+   "russian_diesel_mt": 10.198,
+   "russian_products_mt": 14.286,
+   "russian_share_of_all_oil_imports": 0.5101,
+   "period": "year"
+  },
+  "2024": {
+   "russian_crude_mt": 16.944,
+   "all_crude_mt": 30.025,
+   "russian_share_of_crude": 0.5644,
+   "russian_diesel_mt": 11.354,
+   "russian_products_mt": 15.26,
+   "russian_share_of_all_oil_imports": 0.6607,
+   "period": "year"
+  },
+  "2025": {
+   "russian_crude_mt": 15.229,
+   "all_crude_mt": 31.938,
+   "russian_share_of_crude": 0.4768,
+   "russian_diesel_mt": 11.593,
+   "russian_products_mt": 14.957,
+   "russian_share_of_all_oil_imports": 0.5997,
+   "period": "year"
+  },
+  "2026_jan_08": {
+   "russian_crude_mt": 5.852,
+   "all_crude_mt": 21.745,
+   "russian_share_of_crude": 0.2691,
+   "russian_diesel_mt": 5.302,
+   "russian_products_mt": 7.383,
+   "russian_share_of_all_oil_imports": 0.4109,
+   "period": "Jan-Aug"
+  }
+ },
+ "crude_comparison_with_site": {
+  "2019": {
+   "epdk_russian_crude_mt": 10.45,
+   "site_hub_buyers_turkey_refining_mt": null,
+   "site_vs_epdk": null,
+   "energy_json_crude_mt": null,
+   "epdk_russian_share_of_crude": 0.3363,
+   "laundered_r39_share_used": 0.2,
+   "laundered_r39_share_range": [
+    0.13,
+    0.27
+   ],
+   "epdk_share_inside_r39_range": false,
+   "period": "year"
+  },
+  "2020": {
+   "epdk_russian_crude_mt": 3.268,
+   "site_hub_buyers_turkey_refining_mt": null,
+   "site_vs_epdk": null,
+   "energy_json_crude_mt": null,
+   "epdk_russian_share_of_crude": 0.1113,
+   "laundered_r39_share_used": 0.1,
+   "laundered_r39_share_range": [
+    0.05,
+    0.15
+   ],
+   "epdk_share_inside_r39_range": true,
+   "period": "year"
+  },
+  "2021": {
+   "epdk_russian_crude_mt": 5.422,
+   "site_hub_buyers_turkey_refining_mt": null,
+   "site_vs_epdk": null,
+   "energy_json_crude_mt": 6.338,
+   "epdk_russian_share_of_crude": 0.1726,
+   "laundered_r39_share_used": 0.15,
+   "laundered_r39_share_range": [
+    0.08,
+    0.22
+   ],
+   "epdk_share_inside_r39_range": true,
+   "period": "year"
+  },
+  "2022": {
+   "epdk_russian_crude_mt": 12.001,
+   "site_hub_buyers_turkey_refining_mt": 12.9,
+   "site_vs_epdk": 0.075,
+   "energy_json_crude_mt": 12.897,
+   "epdk_russian_share_of_crude": 0.3584,
+   "laundered_r39_share_used": 0.416,
+   "laundered_r39_share_range": [
+    0.3328,
+    0.4992
+   ],
+   "epdk_share_inside_r39_range": true,
+   "period": "year"
+  },
+  "2023": {
+   "epdk_russian_crude_mt": 10.707,
+   "site_hub_buyers_turkey_refining_mt": 10.89,
+   "site_vs_epdk": 0.017,
+   "energy_json_crude_mt": 10.886,
+   "epdk_russian_share_of_crude": 0.341,
+   "laundered_r39_share_used": 0.351,
+   "laundered_r39_share_range": [
+    0.2808,
+    0.4212
+   ],
+   "epdk_share_inside_r39_range": true,
+   "period": "year"
+  },
+  "2024": {
+   "epdk_russian_crude_mt": 16.944,
+   "site_hub_buyers_turkey_refining_mt": 16.75,
+   "site_vs_epdk": -0.011,
+   "energy_json_crude_mt": 16.753,
+   "epdk_russian_share_of_crude": 0.5644,
+   "laundered_r39_share_used": 0.54,
+   "laundered_r39_share_range": [
+    0.432,
+    0.648
+   ],
+   "epdk_share_inside_r39_range": true,
+   "period": "year"
+  },
+  "2025": {
+   "epdk_russian_crude_mt": 15.229,
+   "site_hub_buyers_turkey_refining_mt": 15.06,
+   "site_vs_epdk": -0.011,
+   "energy_json_crude_mt": 15.06,
+   "epdk_russian_share_of_crude": 0.4768,
+   "laundered_r39_share_used": 0.486,
+   "laundered_r39_share_range": [
+    0.3888,
+    0.5832
+   ],
+   "epdk_share_inside_r39_range": true,
+   "period": "year"
+  },
+  "2026": {
+   "epdk_russian_crude_mt": 5.852,
+   "site_hub_buyers_turkey_refining_mt": 6.24,
+   "site_vs_epdk": 0.066,
+   "energy_json_crude_mt": 6.238,
+   "epdk_russian_share_of_crude": 0.2691,
+   "laundered_r39_share_used": 0.45,
+   "laundered_r39_share_range": [
+    0.36,
+    0.54
+   ],
+   "epdk_share_inside_r39_range": false,
+   "period": "Jan-Aug"
+  }
+ },
+ "band": {
+  "question": "a no-war band for Türkiye's imports from Russia (to_rus) measured on Türkiye's own history instead of the generic band of large flows",
+  "series": "Russian gas volumes (EPDK, million Sm3, at Eurostat's GCV per Sm3, valued at EUR 4.67/GJ), crude and products (Eurostat = EPDK, EUR 370/t and 420/t) and coal (Eurostat, EUR 60/t) as a fixed-price fuel volume index (fuel_volume_cf.json weights); other goods = Türkiye's imports from Russia (Comtrade TOTAL minus HS 27, USD) deflated by the US import price index excluding fuels (FRED IREXFUELS). Composite R = s x fuel + (1 - s) x other goods with Türkiye's fuel share s = 0.533 (energy2.json, as fuel_volume_cf.json). 2021 held flat (random walk). Rolling origins 2005-2020, horizons 1-5, targets to 2021, all years kept (2009, 2014-15 and 2020 included).",
+  "fuel_share": 0.533,
+  "gas_share_of_fuel_2019_2021_at_fixed_prices": 0.376,
+  "gas_share_of_to_rus_2019_2021_approx": 0.201,
+  "proposed_B2_composite": {
+   "n_errors": 70,
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.215,
+    0.1,
+    0.335
+   ],
+   "widened_bounds": [
+    -0.248,
+    0.388
+   ],
+   "multiplier_vs_2021": {
+    "2022": {
+     "low": 0.867,
+     "central": 1.0,
+     "high": 1.251
+    },
+    "2023": {
+     "low": 0.817,
+     "central": 1.0,
+     "high": 1.373
+    },
+    "2024": {
+     "low": 0.78,
+     "central": 1.0,
+     "high": 1.474
+    },
+    "2025": {
+     "low": 0.751,
+     "central": 1.0,
+     "high": 1.566
+    },
+    "2026": {
+     "low": 0.726,
+     "central": 1.0,
+     "high": 1.651
+    }
+   },
+   "cumulative_band": {
+    "H1": {
+     "low": 0.867,
+     "central": 1.0,
+     "high": 1.251
+    },
+    "H2": {
+     "low": 0.857,
+     "central": 1.0,
+     "high": 1.299
+    },
+    "H3": {
+     "low": 0.851,
+     "central": 1.0,
+     "high": 1.352
+    },
+    "H4": {
+     "low": 0.831,
+     "central": 1.0,
+     "high": 1.384
+    },
+    "H5": {
+     "low": 0.847,
+     "central": 1.0,
+     "high": 1.437
+    },
+    "H5_2026_8of12": {
+     "low": 0.843,
+     "central": 1.0,
+     "high": 1.421
+    }
+   },
+   "coverage": {
+    "leave_window_out_generic_tests": {
+     "hits": {
+      "2007": "2/5",
+      "2012": "5/5",
+      "2016": "5/5"
+     },
+     "rate": 0.8
+    },
+    "out_of_time_train_to_2013_test_origins_2014_2020": {
+     "hits": "24/25",
+     "rate": 0.96
+    }
+   }
+  },
+  "proposed_sensitivity": {
+   "fuel_share_0.40": {
+    "cumulative_H5_2026_8of12": {
+     "low": 0.831,
+     "central": 1.0,
+     "high": 1.482
+    },
+    "per_year_2026": {
+     "low": 0.706,
+     "central": 1.0,
+     "high": 1.753
+    },
+    "coverage": {
+     "leave_window_out_generic_tests": {
+      "hits": {
+       "2007": "2/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "rate": 0.8
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "24/25",
+      "rate": 0.96
+     }
+    }
+   },
+   "fuel_share_0.65": {
+    "cumulative_H5_2026_8of12": {
+     "low": 0.852,
+     "central": 1.0,
+     "high": 1.387
+    },
+    "per_year_2026": {
+     "low": 0.741,
+     "central": 1.0,
+     "high": 1.596
+    },
+    "coverage": {
+     "leave_window_out_generic_tests": {
+      "hits": {
+       "2007": "2/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "rate": 0.8
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "24/25",
+      "rate": 0.96
+     }
+    }
+   },
+   "other_goods_nominal_usd": {
+    "cumulative_H5_2026_8of12": {
+     "low": 0.849,
+     "central": 1.0,
+     "high": 1.464
+    },
+    "per_year_2026": {
+     "low": 0.736,
+     "central": 1.0,
+     "high": 1.724
+    },
+    "coverage": {
+     "leave_window_out_generic_tests": {
+      "hits": {
+       "2007": "3/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "rate": 0.867
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "24/25",
+      "rate": 0.96
+     }
+    }
+   }
+  },
+  "B2_gas_only": {
+   "n_errors": 70,
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.486,
+    0.042,
+    0.456
+   ],
+   "widened_bounds": [
+    -0.577,
+    0.561
+   ],
+   "multiplier_vs_2021": {
+    "2022": {
+     "low": 0.717,
+     "central": 1.0,
+     "high": 1.382
+    },
+    "2023": {
+     "low": 0.624,
+     "central": 1.0,
+     "high": 1.58
+    },
+    "2024": {
+     "low": 0.561,
+     "central": 1.0,
+     "high": 1.752
+    },
+    "2025": {
+     "low": 0.513,
+     "central": 1.0,
+     "high": 1.91
+    },
+    "2026": {
+     "low": 0.475,
+     "central": 1.0,
+     "high": 2.062
+    }
+   },
+   "cumulative_band": {
+    "H1": {
+     "low": 0.717,
+     "central": 1.0,
+     "high": 1.382
+    },
+    "H2": {
+     "low": 0.698,
+     "central": 1.0,
+     "high": 1.459
+    },
+    "H3": {
+     "low": 0.688,
+     "central": 1.0,
+     "high": 1.547
+    },
+    "H4": {
+     "low": 0.65,
+     "central": 1.0,
+     "high": 1.598
+    },
+    "H5": {
+     "low": 0.679,
+     "central": 1.0,
+     "high": 1.687
+    },
+    "H5_2026_8of12": {
+     "low": 0.673,
+     "central": 1.0,
+     "high": 1.66
+    }
+   },
+   "coverage": {
+    "leave_window_out_generic_tests": {
+     "hits": {
+      "2007": "5/5",
+      "2012": "5/5",
+      "2016": "3/5"
+     },
+     "rate": 0.867
+    },
+    "out_of_time_train_to_2013_test_origins_2014_2020": {
+     "hits": "13/25",
+     "rate": 0.52
+    }
+   }
+  },
+  "direct_cumulative_percentiles": {
+   "what": "variant: 5th-95th percentile of Türkiye's own cumulative windows per horizon (n = 12-16), widened halfway to the bootstrap bounds, era factor K as fuel_volume_cf.json; 'calibrated_on_own_coverage' = the smallest K reaching >= 90% in sample and >= 80% held out",
+   "composite": {
+    "cumulative_band": {
+     "H1": {
+      "low": 0.85,
+      "central": 1.0,
+      "high": 1.317
+     },
+     "H2": {
+      "low": 0.845,
+      "central": 1.0,
+      "high": 1.291
+     },
+     "H3": {
+      "low": 0.83,
+      "central": 1.0,
+      "high": 1.317
+     },
+     "H4": {
+      "low": 0.836,
+      "central": 1.0,
+      "high": 1.279
+     },
+     "H5": {
+      "low": 0.844,
+      "central": 1.0,
+      "high": 1.282
+     },
+     "H5_2026_8of12": {
+      "low": 0.841,
+      "central": 1.0,
+      "high": 1.283
+     }
+    },
+    "era_K": null,
+    "era_coverage_at_K": {
+     "E1": 0.64,
+     "E2": 1.0,
+     "E3": 1.0
+    },
+    "detail": {
+     "H1": {
+      "n": 16,
+      "q05_q95_raw": [
+       0.891,
+       1.254
+      ],
+      "bootstrap_10_90": [
+       0.811,
+       1.384
+      ]
+     },
+     "H2": {
+      "n": 15,
+      "q05_q95_raw": [
+       0.892,
+       1.268
+      ],
+      "bootstrap_10_90": [
+       0.8,
+       1.315
+      ]
+     },
+     "H3": {
+      "n": 14,
+      "q05_q95_raw": [
+       0.86,
+       1.249
+      ],
+      "bootstrap_10_90": [
+       0.801,
+       1.39
+      ]
+     },
+     "H4": {
+      "n": 13,
+      "q05_q95_raw": [
+       0.855,
+       1.226
+      ],
+      "bootstrap_10_90": [
+       0.817,
+       1.334
+      ]
+     },
+     "H5": {
+      "n": 12,
+      "q05_q95_raw": [
+       0.86,
+       1.265
+      ],
+      "bootstrap_10_90": [
+       0.828,
+       1.3
+      ]
+     },
+     "H5_2026_8of12": {
+      "n": 12,
+      "q05_q95_raw": [
+       0.858,
+       1.256
+      ],
+      "bootstrap_10_90": [
+       0.825,
+       1.31
+      ]
+     }
+    },
+    "coverage": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "1/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "rate": 0.733,
+      "rule": "training windows exclude every window sharing a year with the test window"
+     },
+     "leave_origin_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "rate": 1.0,
+      "rule": "only the test origin is left out (overlapping windows stay in training)"
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "24/25",
+      "rate": 0.96,
+      "misses": [
+       "2020+1: x1.38 vs 0.84-1.21"
+      ]
+     },
+     "in_sample_all_windows": "60/70"
+    },
+    "calibrated_on_own_coverage": {
+     "K": 2.3,
+     "coverage_at_K": {
+      "leave_window_out": {
+       "hits": {
+        "2007": "2/5",
+        "2012": "5/5",
+        "2016": "5/5"
+       },
+       "rate": 0.8,
+       "rule": "training windows exclude every window sharing a year with the test window"
+      },
+      "leave_origin_out": {
+       "hits": {
+        "2007": "5/5",
+        "2012": "5/5",
+        "2016": "5/5"
+       },
+       "rate": 1.0,
+       "rule": "only the test origin is left out (overlapping windows stay in training)"
+      },
+      "out_of_time_train_to_2013_test_origins_2014_2020": {
+       "hits": "25/25",
+       "rate": 1.0,
+       "misses": []
+      },
+      "in_sample_all_windows": "70/70"
+     },
+     "cumulative_band": {
+      "H1": {
+       "low": 0.689,
+       "central": 1.0,
+       "high": 1.885
+      },
+      "H2": {
+       "low": 0.678,
+       "central": 1.0,
+       "high": 1.801
+      },
+      "H3": {
+       "low": 0.651,
+       "central": 1.0,
+       "high": 1.884
+      },
+      "H4": {
+       "low": 0.662,
+       "central": 1.0,
+       "high": 1.76
+      },
+      "H5": {
+       "low": 0.677,
+       "central": 1.0,
+       "high": 1.772
+      },
+      "H5_2026_8of12": {
+       "low": 0.672,
+       "central": 1.0,
+       "high": 1.773
+      }
+     },
+     "multiplier_vs_2021": {
+      "2022": {
+       "low": 0.689,
+       "central": 1.0,
+       "high": 1.885
+      },
+      "2023": {
+       "low": 0.592,
+       "central": 1.0,
+       "high": 2.117
+      },
+      "2024": {
+       "low": 0.608,
+       "central": 1.0,
+       "high": 2.338
+      },
+      "2025": {
+       "low": 0.695,
+       "central": 1.0,
+       "high": 1.773
+      },
+      "2026": {
+       "low": 0.751,
+       "central": 1.0,
+       "high": 2.386
+      }
+     }
+    },
+    "windows_H5_2026_8of12": {
+     "2005": 1.31,
+     "2006": 1.103,
+     "2007": 0.886,
+     "2008": 0.825,
+     "2009": 1.124,
+     "2010": 1.138,
+     "2011": 1.116,
+     "2012": 1.068,
+     "2013": 1.1,
+     "2014": 1.089,
+     "2015": 1.074,
+     "2016": 1.214
+    },
+    "multiplier_vs_2021": {
+     "2022": {
+      "low": 0.85,
+      "central": 1.0,
+      "high": 1.317
+     },
+     "2023": {
+      "low": 0.796,
+      "central": 1.0,
+      "high": 1.386
+     },
+     "2024": {
+      "low": 0.806,
+      "central": 1.0,
+      "high": 1.447
+     },
+     "2025": {
+      "low": 0.853,
+      "central": 1.0,
+      "high": 1.283
+     },
+     "2026": {
+      "low": 0.883,
+      "central": 1.0,
+      "high": 1.459
+     }
+    }
+   },
+   "gas_only": {
+    "cumulative_band": {
+     "H1": {
+      "low": 0.706,
+      "central": 1.0,
+      "high": 1.557
+     },
+     "H2": {
+      "low": 0.668,
+      "central": 1.0,
+      "high": 1.449
+     },
+     "H3": {
+      "low": 0.691,
+      "central": 1.0,
+      "high": 1.398
+     },
+     "H4": {
+      "low": 0.749,
+      "central": 1.0,
+      "high": 1.409
+     },
+     "H5": {
+      "low": 0.828,
+      "central": 1.0,
+      "high": 1.43
+     },
+     "H5_2026_8of12": {
+      "low": 0.839,
+      "central": 1.0,
+      "high": 1.426
+     }
+    },
+    "era_K": null,
+    "era_coverage_at_K": {
+     "E1": 1.0,
+     "E2": 1.0,
+     "E3": 0.72
+    },
+    "detail": {
+     "H1": {
+      "n": 16,
+      "q05_q95_raw": [
+       0.774,
+       1.489
+      ],
+      "bootstrap_10_90": [
+       0.643,
+       1.628
+      ]
+     },
+     "H2": {
+      "n": 15,
+      "q05_q95_raw": [
+       0.673,
+       1.422
+      ],
+      "bootstrap_10_90": [
+       0.664,
+       1.476
+      ]
+     },
+     "H3": {
+      "n": 14,
+      "q05_q95_raw": [
+       0.748,
+       1.32
+      ],
+      "bootstrap_10_90": [
+       0.639,
+       1.481
+      ]
+     },
+     "H4": {
+      "n": 13,
+      "q05_q95_raw": [
+       0.792,
+       1.329
+      ],
+      "bootstrap_10_90": [
+       0.709,
+       1.495
+      ]
+     },
+     "H5": {
+      "n": 12,
+      "q05_q95_raw": [
+       0.848,
+       1.363
+      ],
+      "bootstrap_10_90": [
+       0.808,
+       1.501
+      ]
+     },
+     "H5_2026_8of12": {
+      "n": 12,
+      "q05_q95_raw": [
+       0.856,
+       1.357
+      ],
+      "bootstrap_10_90": [
+       0.823,
+       1.499
+      ]
+     }
+    },
+    "coverage": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "5/5",
+       "2016": "3/5"
+      },
+      "rate": 0.867,
+      "rule": "training windows exclude every window sharing a year with the test window"
+     },
+     "leave_origin_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "rate": 1.0,
+      "rule": "only the test origin is left out (overlapping windows stay in training)"
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "12/25",
+      "rate": 0.48,
+      "misses": [
+       "2017+1: x0.82 vs 0.85-1.39",
+       "2018+1: x0.64 vs 0.85-1.39",
+       "2020+1: x1.63 vs 0.85-1.39",
+       "2017+2: x0.68 vs 0.82-1.43",
+       "2018+2: x0.66 vs 0.82-1.43",
+       "2017+3: x0.64 vs 0.88-1.45",
+       "2018+3: x0.81 vs 0.88-1.45",
+       "2015+4: x0.86 vs 0.94-1.23",
+       "2016+4: x0.85 vs 0.94-1.23",
+       "2017+4: x0.71 vs 0.94-1.23",
+       "2014+5: x0.88 vs 0.99-1.16",
+       "2015+5: x0.81 vs 0.99-1.16",
+       "2016+5: x0.90 vs 0.99-1.16"
+      ]
+     },
+     "in_sample_all_windows": "60/70"
+    },
+    "calibrated_on_own_coverage": {
+     "K": 2.75,
+     "coverage_at_K": {
+      "leave_window_out": {
+       "hits": {
+        "2007": "5/5",
+        "2012": "5/5",
+        "2016": "4/5"
+       },
+       "rate": 0.933,
+       "rule": "training windows exclude every window sharing a year with the test window"
+      },
+      "leave_origin_out": {
+       "hits": {
+        "2007": "5/5",
+        "2012": "5/5",
+        "2016": "5/5"
+       },
+       "rate": 1.0,
+       "rule": "only the test origin is left out (overlapping windows stay in training)"
+      },
+      "out_of_time_train_to_2013_test_origins_2014_2020": {
+       "hits": "20/25",
+       "rate": 0.8,
+       "misses": [
+        "2017+3: x0.64 vs 0.71-2.77",
+        "2017+4: x0.71 vs 0.85-1.75",
+        "2014+5: x0.88 vs 0.96-1.52",
+        "2015+5: x0.81 vs 0.96-1.52",
+        "2016+5: x0.90 vs 0.96-1.52"
+       ]
+      },
+      "in_sample_all_windows": "70/70"
+     },
+     "cumulative_band": {
+      "H1": {
+       "low": 0.383,
+       "central": 1.0,
+       "high": 3.38
+      },
+      "H2": {
+       "low": 0.33,
+       "central": 1.0,
+       "high": 2.772
+      },
+      "H3": {
+       "low": 0.362,
+       "central": 1.0,
+       "high": 2.515
+      },
+      "H4": {
+       "low": 0.452,
+       "central": 1.0,
+       "high": 2.569
+      },
+      "H5": {
+       "low": 0.595,
+       "central": 1.0,
+       "high": 2.674
+      },
+      "H5_2026_8of12": {
+       "low": 0.618,
+       "central": 1.0,
+       "high": 2.654
+      }
+     },
+     "multiplier_vs_2021": {
+      "2022": {
+       "low": 0.383,
+       "central": 1.0,
+       "high": 3.38
+      },
+      "2023": {
+       "low": 0.223,
+       "central": 1.0,
+       "high": 3.968
+      },
+      "2024": {
+       "low": 0.225,
+       "central": 1.0,
+       "high": 2.765
+      },
+      "2025": {
+       "low": 0.238,
+       "central": 1.0,
+       "high": 2.915
+      },
+      "2026": {
+       "low": 0.218,
+       "central": 1.0,
+       "high": 2.963
+      }
+     }
+    },
+    "windows_H5_2026_8of12": {
+     "2005": 1.179,
+     "2006": 1.108,
+     "2007": 0.972,
+     "2008": 0.985,
+     "2009": 1.251,
+     "2010": 1.499,
+     "2011": 1.036,
+     "2012": 1.0,
+     "2013": 1.003,
+     "2014": 0.904,
+     "2015": 0.823,
+     "2016": 0.884
+    },
+    "multiplier_vs_2021": {
+     "2022": {
+      "low": 0.706,
+      "central": 1.0,
+      "high": 1.557
+     },
+     "2023": {
+      "low": 0.579,
+      "central": 1.0,
+      "high": 1.651
+     },
+     "2024": {
+      "low": 0.581,
+      "central": 1.0,
+      "high": 1.447
+     },
+     "2025": {
+      "low": 0.594,
+      "central": 1.0,
+      "high": 1.476
+     },
+     "2026": {
+      "low": 0.574,
+      "central": 1.0,
+      "high": 1.484
+     }
+    }
+   },
+   "fuel_only": {
+    "cumulative_band": {
+     "H1": {
+      "low": 0.792,
+      "central": 1.0,
+      "high": 1.276
+     },
+     "H2": {
+      "low": 0.851,
+      "central": 1.0,
+      "high": 1.231
+     },
+     "H3": {
+      "low": 0.845,
+      "central": 1.0,
+      "high": 1.233
+     },
+     "H4": {
+      "low": 0.82,
+      "central": 1.0,
+      "high": 1.233
+     },
+     "H5": {
+      "low": 0.812,
+      "central": 1.0,
+      "high": 1.228
+     },
+     "H5_2026_8of12": {
+      "low": 0.814,
+      "central": 1.0,
+      "high": 1.226
+     }
+    },
+    "era_K": null,
+    "era_coverage_at_K": {
+     "E1": 0.84,
+     "E2": 1.0,
+     "E3": 1.0
+    },
+    "detail": {
+     "H1": {
+      "n": 16,
+      "q05_q95_raw": [
+       0.834,
+       1.239
+      ],
+      "bootstrap_10_90": [
+       0.752,
+       1.314
+      ]
+     },
+     "H2": {
+      "n": 15,
+      "q05_q95_raw": [
+       0.861,
+       1.195
+      ],
+      "bootstrap_10_90": [
+       0.84,
+       1.269
+      ]
+     },
+     "H3": {
+      "n": 14,
+      "q05_q95_raw": [
+       0.847,
+       1.221
+      ],
+      "bootstrap_10_90": [
+       0.843,
+       1.246
+      ]
+     },
+     "H4": {
+      "n": 13,
+      "q05_q95_raw": [
+       0.833,
+       1.225
+      ],
+      "bootstrap_10_90": [
+       0.808,
+       1.242
+      ]
+     },
+     "H5": {
+      "n": 12,
+      "q05_q95_raw": [
+       0.825,
+       1.222
+      ],
+      "bootstrap_10_90": [
+       0.799,
+       1.235
+      ]
+     },
+     "H5_2026_8of12": {
+      "n": 12,
+      "q05_q95_raw": [
+       0.827,
+       1.224
+      ],
+      "bootstrap_10_90": [
+       0.802,
+       1.229
+      ]
+     }
+    },
+    "coverage": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "1/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "rate": 0.733,
+      "rule": "training windows exclude every window sharing a year with the test window"
+     },
+     "leave_origin_out": {
+      "hits": {
+       "2007": "2/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "rate": 0.8,
+      "rule": "only the test origin is left out (overlapping windows stay in training)"
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "22/25",
+      "rate": 0.88,
+      "misses": [
+       "2019+1: x0.75 vs 0.87-1.20",
+       "2020+1: x1.31 vs 0.87-1.20",
+       "2014+5: x1.23 vs 0.81-1.20"
+      ]
+     },
+     "in_sample_all_windows": "60/70"
+    },
+    "calibrated_on_own_coverage": {
+     "K": 1.15,
+     "coverage_at_K": {
+      "leave_window_out": {
+       "hits": {
+        "2007": "2/5",
+        "2012": "5/5",
+        "2016": "5/5"
+       },
+       "rate": 0.8,
+       "rule": "training windows exclude every window sharing a year with the test window"
+      },
+      "leave_origin_out": {
+       "hits": {
+        "2007": "2/5",
+        "2012": "5/5",
+        "2016": "5/5"
+       },
+       "rate": 0.8,
+       "rule": "only the test origin is left out (overlapping windows stay in training)"
+      },
+      "out_of_time_train_to_2013_test_origins_2014_2020": {
+       "hits": "22/25",
+       "rate": 0.88,
+       "misses": [
+        "2019+1: x0.75 vs 0.85-1.24",
+        "2020+1: x1.31 vs 0.85-1.24",
+        "2014+5: x1.23 vs 0.78-1.23"
+       ]
+      },
+      "in_sample_all_windows": "69/70"
+     },
+     "cumulative_band": {
+      "H1": {
+       "low": 0.764,
+       "central": 1.0,
+       "high": 1.324
+      },
+      "H2": {
+       "low": 0.83,
+       "central": 1.0,
+       "high": 1.27
+      },
+      "H3": {
+       "low": 0.824,
+       "central": 1.0,
+       "high": 1.273
+      },
+      "H4": {
+       "low": 0.796,
+       "central": 1.0,
+       "high": 1.273
+      },
+      "H5": {
+       "low": 0.787,
+       "central": 1.0,
+       "high": 1.267
+      },
+      "H5_2026_8of12": {
+       "low": 0.789,
+       "central": 1.0,
+       "high": 1.264
+      }
+     }
+    },
+    "windows_H5_2026_8of12": {
+     "2005": 1.22,
+     "2006": 1.041,
+     "2007": 0.802,
+     "2008": 0.902,
+     "2009": 0.847,
+     "2010": 0.969,
+     "2011": 1.123,
+     "2012": 1.076,
+     "2013": 1.144,
+     "2014": 1.229,
+     "2015": 1.035,
+     "2016": 1.055
+    }
+   },
+   "nonfuel_only": {
+    "cumulative_band": {
+     "H1": {
+      "low": 0.666,
+      "central": 1.0,
+      "high": 1.393
+     },
+     "H2": {
+      "low": 0.681,
+      "central": 1.0,
+      "high": 1.377
+     },
+     "H3": {
+      "low": 0.732,
+      "central": 1.0,
+      "high": 1.48
+     },
+     "H4": {
+      "low": 0.77,
+      "central": 1.0,
+      "high": 1.424
+     },
+     "H5": {
+      "low": 0.793,
+      "central": 1.0,
+      "high": 1.454
+     },
+     "H5_2026_8of12": {
+      "low": 0.785,
+      "central": 1.0,
+      "high": 1.433
+     }
+    },
+    "era_K": null,
+    "era_coverage_at_K": {
+     "E1": 0.8,
+     "E2": 1.0,
+     "E3": 1.0
+    },
+    "detail": {
+     "H1": {
+      "n": 16,
+      "q05_q95_raw": [
+       0.781,
+       1.326
+      ],
+      "bootstrap_10_90": [
+       0.568,
+       1.464
+      ]
+     },
+     "H2": {
+      "n": 15,
+      "q05_q95_raw": [
+       0.758,
+       1.374
+      ],
+      "bootstrap_10_90": [
+       0.612,
+       1.381
+      ]
+     },
+     "H3": {
+      "n": 14,
+      "q05_q95_raw": [
+       0.797,
+       1.411
+      ],
+      "bootstrap_10_90": [
+       0.672,
+       1.553
+      ]
+     },
+     "H4": {
+      "n": 13,
+      "q05_q95_raw": [
+       0.831,
+       1.409
+      ],
+      "bootstrap_10_90": [
+       0.713,
+       1.438
+      ]
+     },
+     "H5": {
+      "n": 12,
+      "q05_q95_raw": [
+       0.844,
+       1.448
+      ],
+      "bootstrap_10_90": [
+       0.746,
+       1.46
+      ]
+     },
+     "H5_2026_8of12": {
+      "n": 12,
+      "q05_q95_raw": [
+       0.837,
+       1.425
+      ],
+      "bootstrap_10_90": [
+       0.737,
+       1.44
+      ]
+     }
+    },
+    "coverage": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "rate": 1.0,
+      "rule": "training windows exclude every window sharing a year with the test window"
+     },
+     "leave_origin_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "rate": 1.0,
+      "rule": "only the test origin is left out (overlapping windows stay in training)"
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "23/25",
+      "rate": 0.92,
+      "misses": [
+       "2020+1: x1.46 vs 0.63-1.27",
+       "2016+5: x1.44 vs 0.76-1.38"
+      ]
+     },
+     "in_sample_all_windows": "60/70"
+    },
+    "calibrated_on_own_coverage": {
+     "K": 1.05,
+     "coverage_at_K": {
+      "leave_window_out": {
+       "hits": {
+        "2007": "5/5",
+        "2012": "5/5",
+        "2016": "5/5"
+       },
+       "rate": 1.0,
+       "rule": "training windows exclude every window sharing a year with the test window"
+      },
+      "leave_origin_out": {
+       "hits": {
+        "2007": "5/5",
+        "2012": "5/5",
+        "2016": "5/5"
+       },
+       "rate": 1.0,
+       "rule": "only the test origin is left out (overlapping windows stay in training)"
+      },
+      "out_of_time_train_to_2013_test_origins_2014_2020": {
+       "hits": "23/25",
+       "rate": 0.92,
+       "misses": [
+        "2020+1: x1.46 vs 0.62-1.29",
+        "2016+5: x1.44 vs 0.75-1.41"
+       ]
+      },
+      "in_sample_all_windows": "63/70"
+     },
+     "cumulative_band": {
+      "H1": {
+       "low": 0.653,
+       "central": 1.0,
+       "high": 1.416
+      },
+      "H2": {
+       "low": 0.668,
+       "central": 1.0,
+       "high": 1.4
+      },
+      "H3": {
+       "low": 0.72,
+       "central": 1.0,
+       "high": 1.51
+      },
+      "H4": {
+       "low": 0.76,
+       "central": 1.0,
+       "high": 1.449
+      },
+      "H5": {
+       "low": 0.784,
+       "central": 1.0,
+       "high": 1.482
+      },
+      "H5_2026_8of12": {
+       "low": 0.776,
+       "central": 1.0,
+       "high": 1.459
+      }
+     }
+    },
+    "windows_H5_2026_8of12": {
+     "2005": 1.413,
+     "2006": 1.174,
+     "2007": 0.982,
+     "2008": 0.737,
+     "2009": 1.44,
+     "2010": 1.33,
+     "2011": 1.107,
+     "2012": 1.059,
+     "2013": 1.049,
+     "2014": 0.929,
+     "2015": 1.118,
+     "2016": 1.396
+    }
+   }
+  },
+  "generic_now": {
+   "source": "to_rus_cf.json size class L (cumulative), scaled around 1 by CB_SCALE_PAID = 0.81 in pipeline/build_data.py (round 43 placebo); own bands in cf_bands.json keep their width",
+   "cumulative_band_unscaled": {
+    "H1": {
+     "low": 0.66,
+     "central": 1.0,
+     "high": 1.436
+    },
+    "H2": {
+     "low": 0.601,
+     "central": 1.0,
+     "high": 1.483
+    },
+    "H3": {
+     "low": 0.604,
+     "central": 1.0,
+     "high": 1.535
+    },
+    "H4": {
+     "low": 0.588,
+     "central": 1.0,
+     "high": 1.56
+    },
+    "H5": {
+     "low": 0.578,
+     "central": 1.0,
+     "high": 1.642
+    },
+    "H5_2026_8of12": {
+     "low": 0.57,
+     "central": 1.0,
+     "high": 1.617
+    }
+   },
+   "H5_2026_8of12_as_built": {
+    "low": 0.6517,
+    "high": 1.4998
+   },
+   "site_data_json_cb": [
+    null,
+    [
+     0.7246,
+     1.3532
+    ],
+    [
+     0.6768,
+     1.3912
+    ],
+    [
+     0.6792,
+     1.4333
+    ],
+    [
+     0.6663,
+     1.4536
+    ],
+    [
+     0.6517,
+     1.4998
+    ]
+   ],
+   "multiplier_vs_2021": {
+    "2022": {
+     "low": 0.66,
+     "central": 1.0,
+     "high": 1.436
+    },
+    "2023": {
+     "low": 0.513,
+     "central": 1.0,
+     "high": 1.611
+    },
+    "2024": {
+     "low": 0.459,
+     "central": 1.0,
+     "high": 1.735
+    },
+    "2025": {
+     "low": 0.439,
+     "central": 1.0,
+     "high": 1.847
+    },
+    "2026": {
+     "low": 0.348,
+     "central": 1.0,
+     "high": 1.986
+    }
+   }
+  },
+  "fuel_volume_cf_round8_test": {
+   "tested_band_2022_2026": [
+    0.66,
+    1.661
+   ],
+   "status": "kept_today",
+   "method": "Today's band kept (site/data.json). The fuel-volume band was tested and failed the rule: not narrower (x0.96)"
+  },
+  "width_ratio_vs_generic_as_built": 0.682,
+  "width_ratio_vs_generic_unscaled": 0.552,
+  "safeguard": {
+   "map_series_own_windows_inside": "12/12",
+   "composite_own_windows_inside": "11/12",
+   "generic_as_built_map_series_inside": "12/12"
+  },
+  "decision_rule": "cf_bands.json B2: use the own band only if its 2022-2026 cumulative band is at least 10% narrower than the generic one Türkiye has now (as built, after the 0.81 scaling) and own coverage is at least 80% leave-window-out and at least 80% out of time; plus the fuel_volume_cf.json safeguard (>= 90% of the map series' own windows inside)",
+  "use": true,
+  "effect_on_map": {
+   "expected_2022_2026_sum_eur_bn": 112.95,
+   "gdp_eur_bn": 1063.526,
+   "generic_as_built_low_high_eur_bn": [
+    39.3,
+    56.4
+   ],
+   "own_low_high_eur_bn": [
+    17.7,
+    47.5
+   ],
+   "generic_as_built_low_high_pct_gdp": [
+    3.7,
+    5.3
+   ],
+   "own_low_high_pct_gdp": [
+    1.7,
+    4.5
+   ],
+   "note": "low side = how much less Türkiye might have bought from Russia without the war (makes 'more paid to Russia' larger); high side = how much more. Base, actuals and the central path are unchanged."
+  },
+  "proposed_cf_bands_entry": {
+   "countries.TUR.to_rus": {
+    "level_2021": {
+     "low": 24.485,
+     "central": 24.485,
+     "high": 26.3793
+    },
+    "multiplier_vs_2021": {
+     "2022": {
+      "low": 0.867,
+      "central": 1.0,
+      "high": 1.251
+     },
+     "2023": {
+      "low": 0.817,
+      "central": 1.0,
+      "high": 1.373
+     },
+     "2024": {
+      "low": 0.78,
+      "central": 1.0,
+      "high": 1.474
+     },
+     "2025": {
+      "low": 0.751,
+      "central": 1.0,
+      "high": 1.566
+     },
+     "2026": {
+      "low": 0.726,
+      "central": 1.0,
+      "high": 1.651
+     }
+    },
+    "cumulative_band": {
+     "H1": {
+      "low": 0.867,
+      "central": 1.0,
+      "high": 1.251
+     },
+     "H2": {
+      "low": 0.857,
+      "central": 1.0,
+      "high": 1.299
+     },
+     "H3": {
+      "low": 0.851,
+      "central": 1.0,
+      "high": 1.352
+     },
+     "H4": {
+      "low": 0.831,
+      "central": 1.0,
+      "high": 1.384
+     },
+     "H5": {
+      "low": 0.847,
+      "central": 1.0,
+      "high": 1.437
+     },
+     "H5_2026_8of12": {
+      "low": 0.843,
+      "central": 1.0,
+      "high": 1.421
+     }
+    },
+    "generic_multiplier_vs_2021_replaced": {
+     "2022": {
+      "low": 0.66,
+      "central": 1.0,
+      "high": 1.436
+     },
+     "2023": {
+      "low": 0.513,
+      "central": 1.0,
+      "high": 1.611
+     },
+     "2024": {
+      "low": 0.459,
+      "central": 1.0,
+      "high": 1.735
+     },
+     "2025": {
+      "low": 0.439,
+      "central": 1.0,
+      "high": 1.847
+     },
+     "2026": {
+      "low": 0.348,
+      "central": 1.0,
+      "high": 1.986
+     }
+    },
+    "generic_cumulative_band_replaced": {
+     "H1": {
+      "low": 0.66,
+      "central": 1.0,
+      "high": 1.436
+     },
+     "H2": {
+      "low": 0.601,
+      "central": 1.0,
+      "high": 1.483
+     },
+     "H3": {
+      "low": 0.604,
+      "central": 1.0,
+      "high": 1.535
+     },
+     "H4": {
+      "low": 0.588,
+      "central": 1.0,
+      "high": 1.56
+     },
+     "H5": {
+      "low": 0.578,
+      "central": 1.0,
+      "high": 1.642
+     },
+     "H5_2026_8of12": {
+      "low": 0.57,
+      "central": 1.0,
+      "high": 1.617
+     }
+    },
+    "method": "2021 level held (random walk), country-specific interval: 5th-95th percentile of Türkiye's own random-walk errors 1-5 years ahead (rolling origins 2005-2020, all years kept) on a composite of its fuel volumes from Russia (EPDK gas, crude and products, coal at fixed 2019-2021 unit values) and its other imports from Russia (deflated), combined by its fuel share 0.533, scaled by sqrt(h/3) and widened halfway to the block-bootstrap bounds, as cf_bands.json B2; cumulative band = the generic cumulative band scaled per side by the own/generic ratio of the log bounds in the same year; used because its 2022-2026 cumulative band is at least 10% narrower than the generic one and its own held-out coverage holds (turkey_gas_r43.json)",
+    "size_class": "L",
+    "certainty": "C",
+    "own_backtest": {
+     "series": "composite: 0.533 x fuel volume index (EPDK/Eurostat) + 0.467 x other goods (Comtrade, deflated by FRED IREXFUELS)",
+     "origins": "2005-2020",
+     "horizons": "1-5",
+     "n_errors": 70,
+     "q05_q50_q95_per_sqrt_h_over_3": [
+      -0.215,
+      0.1,
+      0.335
+     ],
+     "bootstrap_widened_bounds": [
+      -0.248,
+      0.388
+     ],
+     "coverage": {
+      "leave_window_out_generic_tests": {
+       "hits": {
+        "2007": "2/5",
+        "2012": "5/5",
+        "2016": "5/5"
+       },
+       "rate": 0.8
+      },
+      "out_of_time_train_to_2013_test_origins_2014_2020": {
+       "hits": "24/25",
+       "rate": 0.96
+      }
+     },
+     "safeguard": {
+      "map_series_own_windows_inside": "12/12",
+      "composite_own_windows_inside": "11/12",
+      "generic_as_built_map_series_inside": "12/12"
+     }
+    }
+   }
+  }
+ },
+ "sources": [
+  {
+   "name": "EPDK, Doğal Gaz Piyasası Sektör Raporu 2014 (Table 2.1) and 2024 (Tables 2.2, 2.9); Gelişim Raporu 2025 annex; Sektör Raporu Ağustos 2026 annex",
+   "url": "https://www.epdk.gov.tr/Detay/Icerik/3-0-94/dogal-gazyillik-sektor-raporu",
+   "retrieved": "2026-10-24"
+  },
+  {
+   "name": "EPDK, Petrol Piyasası Sektör Raporu 2018-2024 (Table 2.1.1), Aralık 2025 (Table 2.1.2), Ağustos 2026 annex (Table 2)",
+   "url": "https://www.epdk.gov.tr/Detay/Icerik/3-0-107/yillik-sektor-raporu",
+   "retrieved": "2026-10-24"
+  },
+  {
+   "name": "Eurostat nrg_ti_gas, nrg_ti_oil, nrg_ti_sff (geo TR, partner RU)",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ti_gas?geo=TR&partner=RU&partner=TOTAL&siec=G3000&unit=TJ_GCV&unit=MIO_M3&sinceTimePeriod=2004",
+   "retrieved": "2026-10-24"
+  },
+  {
+   "name": "UN Comtrade public preview, Türkiye's imports from Russia, TOTAL and HS 27, 2004-2021",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS",
+   "retrieved": "2026-10-24"
+  },
+  {
+   "name": "FRED IREXFUELS (US import price index, all imports excluding fuels), annual average",
+   "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=IREXFUELS&fq=Annual&fam=avg",
+   "retrieved": "2026-10-24"
+  }
+ ],
+ "raw_files": [
+  "raw/epdk/epdk_gas_imports_2026-10-24.json",
+  "raw/epdk/epdk_oil_imports_2026-10-24.json",
+  "raw/epdk/tur_context_2026-10-24.json"
+ ]
+}

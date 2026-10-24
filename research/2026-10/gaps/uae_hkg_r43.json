@@ -1,0 +1,58 @@
+{
+  "generated": "2026-10-24",
+  "round": 43,
+  "what": "UAE and Hong Kong official trade with Russia reached with an ordinary headless browser (Playwright); see uae_hkg_r43-notes.md. Not used by the build yet.",
+  "fetch": "pipeline/fetch/uae_hkg_r43.mjs, then pipeline/fetch/uae_hkg_r43_extract.py; extracts in research/2026-10/raw/uae_hkg_r43/",
+  "aed_per_usd": 3.6725,
+  "uae_fca_with_russia_2010_2019": {
+    "source": "UAE Open Data Portal (bayanat.ae), Federal Customs Authority, 'General Total Trade volume by country' 2010-2019 (dataset found by search; ids change per session)",
+    "accessed": "2026-10-24",
+    "unit": "USD bn (AED / 3.6725)",
+    "imports_from_russia": {"2017": 1.727, "2018": 2.153, "2019": 2.794},
+    "exports_to_russia": {"2017": 0.249, "2018": 0.302, "2019": 0.342},
+    "reexports_to_russia": {"2017": 0.556, "2018": 0.961, "2019": 0.545},
+    "check": "2019 imports AED 10,262,485,242 / 3.6725 = USD 2,794.4 m, identical to IMF IMTS ARE MG_CIF_USD from RUS 2019 (2,794,413,952). IMTS therefore carries the UAE's own customs figures, so the IMTS series for 2022-2025 (8.19, 6.45, 6.53, 8.13) is the official UAE total"
+  },
+  "abu_dhabi_scad_non_oil": {
+    "source": "Statistics Centre - Abu Dhabi, Non-oil Foreign Merchandise Trade Statistics Through Ports by Harmonized System (annual 2024, 2025; monthly 2026), Tables 7-8 (top 10 countries only). Abu Dhabi ports only; Dubai, where the gold trade is, is not covered",
+    "accessed": "2026-10-24",
+    "unit": "AED million (USD million in brackets); 'lt' = Russia not in the top-10 table, below the 10th country's value",
+    "imports_from_russia": {
+      "2024": {"lt": 4361.9, "usd_lt": 1187.7},
+      "2025": {"lt": 4479.3, "usd_lt": 1219.7},
+      "2026-03": {"lt": 287.5},
+      "2026-04": {"lt": 389.8},
+      "2026-05": {"lt": 477.7},
+      "2026-06": {"value": 579.5, "usd": 157.8},
+      "2026-07": {"value": 689.9, "usd": 187.9}
+    },
+    "reexports_to_russia": {
+      "2024": {"lt": 991.4},
+      "2025": {"lt": 933.0},
+      "2026-03": {"value": 611.8, "usd": 166.6},
+      "2026-04": {"value": 898.8, "usd": 244.7},
+      "2026-05": {"value": 1058.3, "usd": 288.2},
+      "2026-06": {"value": 1248.1, "usd": 339.8},
+      "2026-07": {"value": 620.3, "usd": 168.9}
+    }
+  },
+  "hong_kong_hs7108_from_russia_monthly_2026": {
+    "source": "UN Comtrade public preview (Hong Kong = C&SD's own records), reporter 344, partner 643, flow M, monthly, one period per call",
+    "accessed": "2026-10-24",
+    "unit": "USD million",
+    "hs7108": {"2026-01": 741.2, "2026-02": 586.5, "2026-03": 1636.3, "2026-04": 2720.4, "2026-05": 3782.9, "2026-06": 3695.4, "2026-07": 3114.9},
+    "total": {"2026-01": 823.1, "2026-02": 721.6, "2026-03": 1840.9, "2026-04": 2939.1, "2026-05": 4007.1, "2026-06": 3953.0, "2026-07": 3181.5},
+    "jan_jul_2026": {"hs7108": 16277.6, "total": 17466.3, "gold_share_of_total": 0.932},
+    "note": "August and September 2026 not yet in Comtrade on 2026-10-24. The TOTAL rows equal those already in raw/comtrade_api/comtrade_monthly_2026_2026-10-23.json.gz; the HS 7108 split is new and confirms the build's 2026 HK_METALS_SHARE of 1.0 (carried from 2025)"
+  },
+  "not_reached": {
+    "fcsc.gov.ae / uaestat.fcsc.gov.ae": "Cloudflare block page ('Sorry, you have been blocked', HTTP 403) on an ordinary browser load; not retried",
+    "www.dsc.gov.ae (redirects to data.dubai)": "WAF 'Request Rejected' page",
+    "data.gov.ae": "proxy CONNECT 502",
+    "www.economy.gov.ae": "502 upstream failure; the ministry now lives at moet.gov.ae (reachable; open-data page links back to bayanat.ae)",
+    "www.dubaicustoms.gov.ae": "reachable in the browser (curl gets a reset). Trade Statistics open-data page offers press-release cards (2013-2020, 2023), Dubai totals only, no partner-by-commodity tables",
+    "tradeidds.censtatd.gov.hk": "NOT requested: robots.txt 'User-agent: * Disallow: /'. This is the only C&SD source of country-by-commodity data after 2017 and of re-exports by origin",
+    "C&SD annual supplements (B1020002 imports, B1020004 exports and re-exports)": "reachable, but the last edition is 2017",
+    "C&SD Merchandise Trade Interactive Dashboard": "a Tableau Public embed (Trade_EN_PROD/TradeDashboard) that rendered blank in headless Chromium; it shows selected key statistics only"
+  }
+}
