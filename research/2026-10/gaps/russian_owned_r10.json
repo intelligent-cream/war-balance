@@ -1731,37 +1731,43 @@
    "id": "it_aughinish_2024",
    "title": "Irish Times: Russian-owned Aughinish Alumina plant in Limerick records profits of EUR 103m (2024 accounts; no dividend to Rusal; accumulated losses $240m)",
    "url": "https://www.irishtimes.com/business/2026/04/03/russian-owned-aughinish-alumina-plant-in-limerick-records-profits-of-103m/",
-   "note": "2026-04-03"
+   "note": "2026-04-03",
+   "kind": "press"
   },
   {
    "id": "rte_aughinish_2023",
    "title": "RTE: Aughinish Alumina on course to return to profit in 2025 (2023 loss $113.6m; accumulated losses $359.65m; parent letter of support)",
    "url": "https://www.rte.ie/news/business/2024/1212/1486128-limerick-alumina-refining-ltd-results/",
-   "note": "2024-12-12"
+   "note": "2024-12-12",
+   "kind": "press"
   },
   {
    "id": "it_aughinish_2019",
    "title": "Irish Times: Lifting of US sanctions boosts profits at Aughinish Alumina (2019 pre-tax $54.6m; owes Rusal Trading $126.3m)",
    "url": "https://www.irishtimes.com/business/energy-and-resources/lifting-of-us-sanctions-boosts-profits-at-aughinish-alumina-1.4333962",
-   "note": "2020-08-19"
+   "note": "2020-08-19",
+   "kind": "press"
   },
   {
    "id": "ie_aughinish_2018",
    "title": "Irish Examiner: Aughinish Alumina revenues up despite sanctions (2018 pre-tax $40.9m)",
    "url": "https://www.irishexaminer.com/breakingnews/business/aughinish-alumina-revenues-up-despite-sanctions-951369.html",
-   "note": "2019-09-17"
+   "note": "2019-09-17",
+   "kind": "press"
   },
   {
    "id": "rte_aughinish_sanctions",
    "title": "RTE analysis: Collateral damage - Aughinish Alumina and EU sanctions (exports to Russia 396 kt 2020, ~826 kt 2024; 45% of exports to Russia; 21st package debate)",
    "url": "https://www.rte.ie/news/analysis-and-comment/2026/0530/1575983-aughinish-alumina-analysis/",
-   "note": "2026-05-30"
+   "note": "2026-05-30",
+   "kind": "press"
   },
   {
    "id": "occrp_aughinish",
    "title": "OCCRP: Inside the supply chain funneling Irish alumina to Russian rockets",
    "url": "https://www.occrp.org/en/investigation/inside-the-aluminum-supply-chain-linking-irish-industry-to-russian-rockets",
-   "note": "not fetched (timeout); figures via RTE"
+   "note": "not fetched (timeout); figures via RTE",
+   "kind": "press"
   },
   {
    "id": "eurostat_comext",
@@ -1773,13 +1779,15 @@
    "id": "efn_kubal_1",
    "title": "EFN: Bankstopp for Kubal - miljoner frysta och miljardoverforing utreds (SEK 800m to Libertatum Materials 2023; SEK 151m dividend 2024)",
    "url": "https://efn.se/bankstopp-for-kubal-miljoner-frysta-och-miljardoverforing-utreds",
-   "note": "2026-09-02"
+   "note": "2026-09-02",
+   "kind": "press"
   },
   {
    "id": "efn_kubal_2",
    "title": "EFN: Kubal i Sundsvall utreds for brott (raid 26 Mar 2026)",
    "url": "https://efn.se/kubal-i-sundsvall-utreds-for-brott-nu-vantas-vinsten-oka",
-   "note": "2026-04-03"
+   "note": "2026-04-03",
+   "kind": "press"
   },
   {
    "id": "lc_kubal",
@@ -1815,67 +1823,78 @@
    "id": "lrt_lifosa",
    "title": "LRT: Lifosa accounts frozen after Melnichenko listed",
    "url": "https://www.lrt.lt/en/news-in-english/19/1640865/lithuania-based-fertiliser-plant-falls-under-eu-sanctions-on-putin-linked-oligarch",
-   "note": "2022-03-10"
+   "note": "2022-03-10",
+   "kind": "press"
   },
   {
    "id": "fd_lifosa",
    "title": "Fertilizer Daily: Lifosa cleared from EU sanctions list with appointment of temporary administrator",
    "url": "https://www.fertilizerdaily.com/20240731-lifosa-cleared-from-eu-sanctions-list-with-the-appointment-of-temporary-administrator",
-   "note": "2024-07-31"
+   "note": "2024-07-31",
+   "kind": "press"
   },
   {
    "id": "mu_lifosa_2016",
    "title": "Mano ukis: Lifosa paid EUR 165m dividend to EuroChem (2016)",
    "url": "https://manoukis.lt/naujienos/rinka/smukusios-pasaulines-trasu-kainos-apkarpe-lietuvos-gamintoju-pajamas",
-   "note": ""
+   "note": "",
+   "kind": "press"
   },
   {
    "id": "expansao_catoca",
    "title": "Expansao: Alrosa cannot repatriate USD 320m Catoca dividends (FY2021 100m, FY2022 85m, FY2023 134.4m)",
    "url": "https://www.expansao.co.ao/empresas/detalhe/alrosa-nao-consegue-repatriar-para-a-russia-dividendos-de-320-milhoes-usd-62633.html",
-   "note": "2024-10-01"
+   "note": "2024-10-01",
+   "kind": "press"
   },
   {
    "id": "interfax_catoca",
    "title": "Interfax: Alrosa's Catoca stake now held by Taadeen (Oman); $464m dividends 1995-2018",
    "url": "https://interfax.com/newsroom/top-stories/111927/",
-   "note": "2025-06-09"
+   "note": "2025-06-09",
+   "kind": "press"
   },
   {
    "id": "mt_alrosa_h1",
    "title": "Moscow Times: Alrosa H1 2025, Catoca deal closed 26 May 2025, RUB 6.75bn gain",
    "url": "https://ru.themoscowtimes.com/2025/08/12/update-1-alrosa-uvelichila-chistuyu-pribyl-na-11-v-1-pol-25g-a171379",
-   "note": ""
+   "note": "",
+   "kind": "press"
   },
   {
    "id": "u1_china",
    "title": "Mining.com/Reuters: Russia sells stakes in some Kazakh uranium deposits to China",
    "url": "https://www.mining.com/web/russia-sells-stakes-in-some-kazakh-uranium-deposits-to-china/",
-   "note": "2024-12"
+   "note": "2024-12",
+   "kind": "press"
   },
   {
    "id": "rbc_u1",
    "title": "RBC: Rosatom to sell US uranium unit; Uranium One H1 2021 net profit $60m",
    "url": "https://www.rbc.ru/business/09/11/2021/618a641c9a794728ea77abb5",
-   "note": "2021-11-09"
+   "note": "2021-11-09",
+   "kind": "press"
   },
   {
    "id": "evraz_atlas",
    "title": "GMK Center: Atlas Holdings completes acquisition of Evraz North America (1 Aug 2025)",
    "url": "https://gmk.center/en/news/atlas-holdings-completes-acquisition-of-evraz-north-america/",
-   "note": ""
+   "note": "",
+   "kind": "press"
   },
   {
    "id": "coloradosun_evraz",
    "title": "Colorado Sun/AP: Pueblo steel mill sale; proceeds withheld from Evraz plc until sanctions lifted",
    "url": "https://coloradosun.com/2025/06/27/pueblo-steel-mill-evraz-sale/",
-   "note": "2025-06-27"
+   "note": "2025-06-27",
+   "kind": "press"
   },
   {
    "id": "gleaner_windalco",
    "title": "Gleaner: Rusal seeks buyers for Windalco (2025 output 396 kt alumina)",
    "url": "https://jamaica-gleaner.com/article/business/20260925/rusal-seeks-buyers-windalco-it-pulls-back-caribbean",
-   "note": "2026-09-25"
+   "note": "2026-09-25",
+   "kind": "press"
   },
   {
    "id": "company_flows",

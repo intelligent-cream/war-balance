@@ -161,47 +161,56 @@
     {
      "name": "NK News on INSS (Seoul): North Korea's revenue from military cooperation with Russia USD 7.7-14.4bn Aug 2023-Dec 2025 (artillery etc. USD 7.05-13.78bn; troops USD 0.62bn Oct 2024-Dec 2025; pay USD 2,800-5,000/month; ~USD 560m/yr if continued)",
      "url": "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/",
-     "date": "2026-03"
+     "date": "2026-03",
+     "kind": "press"
     },
     {
      "name": "Bloomberg on INSS: North Korea gave Russia up to USD 14bn; 80-96% of compensation in military technology and components",
      "url": "https://www.bloomberg.com/news/articles/2026-03-18/n-korea-gave-russia-up-to-14-billion-in-military-aid-report",
-     "date": "2026-03-18"
+     "date": "2026-03-18",
+     "kind": "press"
     },
     {
      "name": "IStories with Open Source Centre: at least 29,488 containers Sep 2023-Jan 2026 = 8-11m shells and rockets; Rajin to Tikhoretsk",
      "url": "https://istories.media/en/stories/2026/03/16/how-north-korea-armed-russia/",
-     "date": "2026-03-16"
+     "date": "2026-03-16",
+     "kind": "press"
     },
     {
      "name": "Korea Times: ROK Defense Intelligence Agency - about 33,000 containers of weapons to Russia (28,000 in Jul 2025); 220 artillery pieces",
      "url": "https://www.koreatimes.co.kr/amp/foreignaffairs/northkorea/20260301/n-korea-ships-33000-containers-of-weapons-to-russia-seoul",
-     "date": "2026-03-01"
+     "date": "2026-03-01",
+     "kind": "press"
     },
     {
      "name": "Kyiv Independent: ROK DIA - >28,000 containers, >12m 152mm-equivalent rounds",
      "url": "https://kyivindependent.com/north-korea-supplied-russia-with-12-million-rounds-of-152mm-shells-south-korean-intelligence-estimates/",
-     "date": "2025-07"
+     "date": "2025-07",
+     "kind": "press"
     },
     {
      "name": "Multilateral Sanctions Monitoring Team report MSMT 2025-1 (via Ukrainska Pravda): up to 9m artillery and rocket rounds and at least 100 ballistic missiles in 2024; >200 pieces of equipment",
      "url": "https://www.yahoo.com/news/north-korea-supplied-russia-9-142135873.html",
-     "date": "2025-05-29"
+     "date": "2025-05-29",
+     "kind": "press"
     },
     {
      "name": "Pryamiy on Reuters: HUR deputy head Skibitsky - ~6.5m shells since 2023; 2025 deliveries half of 2024; about half outdated (BELLIGERENT)",
      "url": "https://prm.ua/en/intelligence-shipments-of-shells-from-north-korea-to-russia-have-halved/",
-     "date": "2025-11-14"
+     "date": "2025-11-14",
+     "kind": "press"
     },
     {
      "name": "Maritime Executive: North Korean shipments of shells to Russia tail off (two shipments noted Jan-Mar 2026)",
      "url": "https://maritime-executive.com/article/north-korean-shipments-of-shells-to-russia-tail-off",
-     "date": "2026"
+     "date": "2026",
+     "kind": "press"
     },
     {
      "name": "Hromadske on Nikkei/INSS: ~USD 13bn in three years; ~250 KN-23; >USD 600m for troops; ~USD 2,000/month per soldier",
      "url": "https://hromadske.ua/en/economy/263814-pivnichna-koreia-zarobyla-blyzko-polovyny-svoho-vvp-za-try-roky-viyny-na-botsi-rosiyi-proty-ukrayiny-nikkei",
-     "date": "2026-05-11"
+     "date": "2026-05-11",
+     "kind": "press"
     },
     {
      "name": "Conflict Armament Research: Documenting a North Korean missile in Ukraine (KN-23/24 in Kharkiv, Jan 2024)",
@@ -211,12 +220,14 @@
     {
      "name": "Euromaidan Press on Militarnyi (Russian state procurement): standard 152mm round ~USD 1,200 in 2024, >USD 1,300 in 2025",
      "url": "https://euromaidanpress.com/2026/01/27/ukrainian-drones-forced-a-change-russia-now-pays-more-per-shell-to-fire-from-farther-away/",
-     "date": "2026-01-27"
+     "date": "2026-01-27",
+     "kind": "press"
     },
     {
      "name": "Militarnyi on Sky News/Bain: Russian 152mm shell ~USD 1,000 vs NATO 155mm ~USD 4,000",
      "url": "https://militarnyi.com/en/news/sky-news-russia-is-producing-artillery-shells-around-three-times-faster-than-europe-and-the-united-states/",
-     "date": "2024-05"
+     "date": "2024-05",
+     "kind": "press"
     }
    ],
    "belligerent_sources_flag": "Only the low shell count (6.5m) is Ukrainian HUR. Central and high rest on OSC (independent UK NGO), MSMT (11-state monitoring team), ROK DIA and INSS (South Korean state). Prices from Russian procurement records (published by a Ukrainian outlet).",
@@ -392,22 +403,26 @@
     {
      "name": "Militarnyi on Bloomberg: Iranian missile contracts ~USD 2.7bn since Oct 2021 (hundreds of Fath-360, ~500 other SRBMs, ~200 SAMs); Shahed contract USD 1.75bn; total >USD 4bn",
      "url": "https://militarnyi.com/en/blogs/iran-sent-russia-2-7-billion-worth-of-missiles-alone/",
-     "date": "2026-01-13"
+     "date": "2026-01-13",
+     "kind": "press"
     },
     {
      "name": "RFE/RL: Cavoli - Iran delivered over 400 SRBMs; Pentagon confirmed Fath-360 delivery Sep 2024; WSJ 300,000 shells and 1m rounds (2023); ~90% of Geran cycle now in Russia",
      "url": "https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html",
-     "date": "2026-01"
+     "date": "2026-01",
+     "kind": "press"
     },
     {
      "name": "The War Zone: What does a Shahed-136 really cost? Leaked Alabuga files - asked USD 375k, agreed USD 193k (6,000 units) or 290k (2,000); localisation transfer price USD 165.5k; >2 t gold paid (unverified)",
      "url": "https://twz.com/news-features/what-does-a-shahed-136-really-cost",
-     "date": "2024-02"
+     "date": "2024-02",
+     "kind": "press"
     },
     {
      "name": "LB.ua: hackers leak cost of Iranian Shaheds; 2,067,795 g gold from Alabuga to Sahara Thunder (Feb 2023)",
      "url": "https://en.lb.ua/news/2024/02/06/26552_hackers_leak_cost_iranian_shaheds.html",
-     "date": "2024-02-06"
+     "date": "2024-02-06",
+     "kind": "press"
     },
     {
      "name": "Institute for Science and International Security: Alabuga production rate - ~1,100 Shaheds launched before Alabuga output; Iran delivered 600 kits; Alabuga >=2,300 airframes Apr-Dec 2023",
@@ -550,22 +565,26 @@
     {
      "name": "Ukrainska Pravda / Belarusian railway workers: 131,500 t ammunition to Russia in one year (Jan 2022-Feb 2023)",
      "url": "https://www.pravda.com.ua/eng/news/2023/06/10/7406295/",
-     "date": "2023-06-10"
+     "date": "2023-06-10",
+     "kind": "press"
     },
     {
      "name": "Militarnyi: Role of the defence industry of Belarus (Prism UA): >130,000 t from stocks 2022-23; 2024 192 railcars ~4,500-5,000 t; Russia 26% (2019) to 60% (2022) of Belarusian defence exports; Grad parts 13,000 sets/month; filling line ~180,000 shells/yr",
      "url": "https://militarnyi.com/en/articles/role-of-defense-industry-of-belarus-in-russian-aggression-against-ukraine/",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "OCCRP / Belarusian Investigative Center: 58 Belarusian firms shipped >USD 1.2bn of components to 41 Russian arms makers Feb 2022-Aug 2025 (export data)",
      "url": "https://www.occrp.org/en/news/belarus-ramps-up-arms-pipeline-to-russia-amid-sanctions-gaps",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "Euromaidan Press (BelPol): 'Uchastok' full-cycle 122/152mm ammunition plant for Russia by end-2026, hull plant ~120,000/yr from mid-2026",
      "url": "https://euromaidanpress.com/2025/12/22/belarus-launches-secret-project-full-cycle-ammunition-plant-for-russian-army-by-2026/",
-     "date": "2025-12-22"
+     "date": "2025-12-22",
+     "kind": "press"
     },
     {
      "name": "iSANS Belarus Review: empty Russian wagons sent to Belarusian depots to load ammunition for Russia (Sep 2025)",
@@ -653,47 +672,56 @@
   {
    "name": "NK News on INSS (Seoul): North Korea's revenue from military cooperation with Russia USD 7.7-14.4bn Aug 2023-Dec 2025 (artillery etc. USD 7.05-13.78bn; troops USD 0.62bn Oct 2024-Dec 2025; pay USD 2,800-5,000/month; ~USD 560m/yr if continued)",
    "url": "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/",
-   "date": "2026-03"
+   "date": "2026-03",
+   "kind": "press"
   },
   {
    "name": "Bloomberg on INSS: North Korea gave Russia up to USD 14bn; 80-96% of compensation in military technology and components",
    "url": "https://www.bloomberg.com/news/articles/2026-03-18/n-korea-gave-russia-up-to-14-billion-in-military-aid-report",
-   "date": "2026-03-18"
+   "date": "2026-03-18",
+   "kind": "press"
   },
   {
    "name": "IStories with Open Source Centre: at least 29,488 containers Sep 2023-Jan 2026 = 8-11m shells and rockets; Rajin to Tikhoretsk",
    "url": "https://istories.media/en/stories/2026/03/16/how-north-korea-armed-russia/",
-   "date": "2026-03-16"
+   "date": "2026-03-16",
+   "kind": "press"
   },
   {
    "name": "Korea Times: ROK Defense Intelligence Agency - about 33,000 containers of weapons to Russia (28,000 in Jul 2025); 220 artillery pieces",
    "url": "https://www.koreatimes.co.kr/amp/foreignaffairs/northkorea/20260301/n-korea-ships-33000-containers-of-weapons-to-russia-seoul",
-   "date": "2026-03-01"
+   "date": "2026-03-01",
+   "kind": "press"
   },
   {
    "name": "Kyiv Independent: ROK DIA - >28,000 containers, >12m 152mm-equivalent rounds",
    "url": "https://kyivindependent.com/north-korea-supplied-russia-with-12-million-rounds-of-152mm-shells-south-korean-intelligence-estimates/",
-   "date": "2025-07"
+   "date": "2025-07",
+   "kind": "press"
   },
   {
    "name": "Multilateral Sanctions Monitoring Team report MSMT 2025-1 (via Ukrainska Pravda): up to 9m artillery and rocket rounds and at least 100 ballistic missiles in 2024; >200 pieces of equipment",
    "url": "https://www.yahoo.com/news/north-korea-supplied-russia-9-142135873.html",
-   "date": "2025-05-29"
+   "date": "2025-05-29",
+   "kind": "press"
   },
   {
    "name": "Pryamiy on Reuters: HUR deputy head Skibitsky - ~6.5m shells since 2023; 2025 deliveries half of 2024; about half outdated (BELLIGERENT)",
    "url": "https://prm.ua/en/intelligence-shipments-of-shells-from-north-korea-to-russia-have-halved/",
-   "date": "2025-11-14"
+   "date": "2025-11-14",
+   "kind": "press"
   },
   {
    "name": "Maritime Executive: North Korean shipments of shells to Russia tail off (two shipments noted Jan-Mar 2026)",
    "url": "https://maritime-executive.com/article/north-korean-shipments-of-shells-to-russia-tail-off",
-   "date": "2026"
+   "date": "2026",
+   "kind": "press"
   },
   {
    "name": "Hromadske on Nikkei/INSS: ~USD 13bn in three years; ~250 KN-23; >USD 600m for troops; ~USD 2,000/month per soldier",
    "url": "https://hromadske.ua/en/economy/263814-pivnichna-koreia-zarobyla-blyzko-polovyny-svoho-vvp-za-try-roky-viyny-na-botsi-rosiyi-proty-ukrayiny-nikkei",
-   "date": "2026-05-11"
+   "date": "2026-05-11",
+   "kind": "press"
   },
   {
    "name": "Conflict Armament Research: Documenting a North Korean missile in Ukraine (KN-23/24 in Kharkiv, Jan 2024)",
@@ -703,32 +731,38 @@
   {
    "name": "Euromaidan Press on Militarnyi (Russian state procurement): standard 152mm round ~USD 1,200 in 2024, >USD 1,300 in 2025",
    "url": "https://euromaidanpress.com/2026/01/27/ukrainian-drones-forced-a-change-russia-now-pays-more-per-shell-to-fire-from-farther-away/",
-   "date": "2026-01-27"
+   "date": "2026-01-27",
+   "kind": "press"
   },
   {
    "name": "Militarnyi on Sky News/Bain: Russian 152mm shell ~USD 1,000 vs NATO 155mm ~USD 4,000",
    "url": "https://militarnyi.com/en/news/sky-news-russia-is-producing-artillery-shells-around-three-times-faster-than-europe-and-the-united-states/",
-   "date": "2024-05"
+   "date": "2024-05",
+   "kind": "press"
   },
   {
    "name": "Militarnyi on Bloomberg: Iranian missile contracts ~USD 2.7bn since Oct 2021 (hundreds of Fath-360, ~500 other SRBMs, ~200 SAMs); Shahed contract USD 1.75bn; total >USD 4bn",
    "url": "https://militarnyi.com/en/blogs/iran-sent-russia-2-7-billion-worth-of-missiles-alone/",
-   "date": "2026-01-13"
+   "date": "2026-01-13",
+   "kind": "press"
   },
   {
    "name": "RFE/RL: Cavoli - Iran delivered over 400 SRBMs; Pentagon confirmed Fath-360 delivery Sep 2024; WSJ 300,000 shells and 1m rounds (2023); ~90% of Geran cycle now in Russia",
    "url": "https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html",
-   "date": "2026-01"
+   "date": "2026-01",
+   "kind": "press"
   },
   {
    "name": "The War Zone: What does a Shahed-136 really cost? Leaked Alabuga files - asked USD 375k, agreed USD 193k (6,000 units) or 290k (2,000); localisation transfer price USD 165.5k; >2 t gold paid (unverified)",
    "url": "https://twz.com/news-features/what-does-a-shahed-136-really-cost",
-   "date": "2024-02"
+   "date": "2024-02",
+   "kind": "press"
   },
   {
    "name": "LB.ua: hackers leak cost of Iranian Shaheds; 2,067,795 g gold from Alabuga to Sahara Thunder (Feb 2023)",
    "url": "https://en.lb.ua/news/2024/02/06/26552_hackers_leak_cost_iranian_shaheds.html",
-   "date": "2024-02-06"
+   "date": "2024-02-06",
+   "kind": "press"
   },
   {
    "name": "Institute for Science and International Security: Alabuga production rate - ~1,100 Shaheds launched before Alabuga output; Iran delivered 600 kits; Alabuga >=2,300 airframes Apr-Dec 2023",
@@ -743,22 +777,26 @@
   {
    "name": "Ukrainska Pravda / Belarusian railway workers: 131,500 t ammunition to Russia in one year (Jan 2022-Feb 2023)",
    "url": "https://www.pravda.com.ua/eng/news/2023/06/10/7406295/",
-   "date": "2023-06-10"
+   "date": "2023-06-10",
+   "kind": "press"
   },
   {
    "name": "Militarnyi: Role of the defence industry of Belarus (Prism UA): >130,000 t from stocks 2022-23; 2024 192 railcars ~4,500-5,000 t; Russia 26% (2019) to 60% (2022) of Belarusian defence exports; Grad parts 13,000 sets/month; filling line ~180,000 shells/yr",
    "url": "https://militarnyi.com/en/articles/role-of-defense-industry-of-belarus-in-russian-aggression-against-ukraine/",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "OCCRP / Belarusian Investigative Center: 58 Belarusian firms shipped >USD 1.2bn of components to 41 Russian arms makers Feb 2022-Aug 2025 (export data)",
    "url": "https://www.occrp.org/en/news/belarus-ramps-up-arms-pipeline-to-russia-amid-sanctions-gaps",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "Euromaidan Press (BelPol): 'Uchastok' full-cycle 122/152mm ammunition plant for Russia by end-2026, hull plant ~120,000/yr from mid-2026",
    "url": "https://euromaidanpress.com/2025/12/22/belarus-launches-secret-project-full-cycle-ammunition-plant-for-russian-army-by-2026/",
-   "date": "2025-12-22"
+   "date": "2025-12-22",
+   "kind": "press"
   },
   {
    "name": "iSANS Belarus Review: empty Russian wagons sent to Belarusian depots to load ammunition for Russia (Sep 2025)",
@@ -768,7 +806,8 @@
   {
    "name": "Moscow Times on Nikkei: Uralvagonzavod imported USD 24m of tank sights/cameras from Myanmar's army (late 2022); NPK KBM USD 0.15m from India (customs records)",
    "url": "https://themoscowtimes.com/2023/06/05/russia-buys-back-military-parts-exported-to-asia-a81399",
-   "date": "2023-06-05"
+   "date": "2023-06-05",
+   "kind": "press"
   }
  ],
  "overlaps": "1) Replaces flowback2.json military_to_russia (all four countries) AND narrow.json countries.PRK.military_rus (apply_narrow currently overwrites PRK after the military section; it must not). 2) CHN equals china_military.json uncounted_total: use one. 3) Belarus: only army-stock transfers, armour and non-trade state production; company components (BIC >USD 1.2bn) and repairs are inside Belarus's goods/services exports to Russia and are not added. 4) China's recorded dual-use goods stay in trade. 5) Iran: possible barter for Su-35s in russian_arms_exports.json, see countries.IRN.su35_netting. 6) Myanmar/India buy-backs are in customs (not added). 7) North Korean workers' wages not valued (labour). 8) Russia's own Geran production at Alabuga is not counted as Iranian supply.",

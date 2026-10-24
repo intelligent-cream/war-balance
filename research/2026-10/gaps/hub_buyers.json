@@ -1703,17 +1703,20 @@
    {
     "name": "Reuters via Novaya Gazeta Europe / Turkish Minute (Nov 2025): Turkey imported ~669 kb/d crude Jan-Oct 2025, 47% Russian; STAR ~210 kb/d nearly all Russian in Sep-Oct 2025, switching to non-Russian cargoes from December; Tüpraş to stop Russian crude at one refinery to keep exporting to the EU",
     "url": "https://novayagazeta.eu/en/articles/2025/11/03/turkiye-begins-reducing-russian-oil-imports-following-imposition-of-fresh-us-sanctions-en-news",
-    "date": "2026-10-18"
+    "date": "2026-10-18",
+    "kind": "press"
    },
    {
     "name": "OC Media: EU confirms STAR is covered by the 18th-package ban on products refined from Russian crude (applies from 21 Jan 2026)",
     "url": "https://oc-media.org/eu-sanctions-quietly-extend-to-azerbaijani-refinery-for-processing-russian-petrol",
-    "date": "2026-10-18"
+    "date": "2026-10-18",
+    "kind": "press"
    },
    {
     "name": "Bloomberg (Vortexa data, March 2025): Tüpraş shifts away from Russian crude, buying from Brazil",
     "url": "https://bnnbloomberg.ca/markets/oil/2025/03/18/turkey-shifts-away-from-russian-crude-as-tupras-buys-from-brazil",
-    "date": "2026-10-18"
+    "date": "2026-10-18",
+    "kind": "press"
    },
    {
     "name": "CREA and CSD, \"A Kremlin pit stop: The EU imported EUR 3 bn of oil products from Turkish ports handling Russian oil\" (June 2024)",

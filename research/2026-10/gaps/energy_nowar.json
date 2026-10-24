@@ -7139,7 +7139,8 @@
    "id": "platts_espo",
    "name": "S&P Global Platts: ESPO Blend premiums +4.5-6 USD/bbl to Dubai (Sep-Oct 2021); -9 USD/bbl to Dubai after Jan 2025 sanctions",
    "url": "https://www.spglobal.com/energy/en/news-research/latest-news/crude-oil/011625-russias-espo-blend-crude-value-plunges-as-buyers-vanish-freight-rates-surge",
-   "date": "2021-11-12 / 2025-01-16"
+   "date": "2021-11-12 / 2025-01-16",
+   "kind": "press"
   },
   {
    "id": "fred",

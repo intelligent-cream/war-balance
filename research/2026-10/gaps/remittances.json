@@ -1750,32 +1750,38 @@
   {
    "id": "cbu",
    "what": "Central Bank of Uzbekistan via Times of Central Asia / Kun.uz / Gazeta.uz: 2024 USD 14.8bn, Russia 11.5bn (77%); 2025 9M 13.9bn, H1 Russia 6.4bn (78%); H1-2026 +13%, Q1-2026 Russia 72.4%",
-   "url": "https://timesca.com/uzbekistan-receives-14-8-billion-in-remittances-in-2024/"
+   "url": "https://timesca.com/uzbekistan-receives-14-8-billion-in-remittances-in-2024/",
+   "kind": "press"
   },
   {
    "id": "cbu2",
    "what": "Uzbekistan 2022 USD 16.9bn, Russia share 87% (2022) -> 78% (2023); H1-2022 Russia 5.31bn = 2.3x H1-2021",
-   "url": "https://gazeta.uz/en/2024/04/25/remittances"
+   "url": "https://gazeta.uz/en/2024/04/25/remittances",
+   "kind": "press"
   },
   {
    "id": "cbu3",
    "what": "Q1/H1 2026 remittances to Uzbekistan, Russia share falling",
-   "url": "https://kun.uz/en/news/2026/07/07/remittances-to-uzbekistan-rise-13-despite-falling-share-from-russia-7ffbe4"
+   "url": "https://kun.uz/en/news/2026/07/07/remittances-to-uzbekistan-rise-13-despite-falling-share-from-russia-7ffbe4",
+   "kind": "press"
   },
   {
    "id": "nbkr",
    "what": "NBKR: 2024 inflows USD 2.99bn, Russia 93.1% (2.78bn); 2023 Russia 2.53bn",
-   "url": "https://24.kg/english/318729_Money_transfers_from_Russia_to_Kyrgyzstan_increase_by_12_percent_for_year/"
+   "url": "https://24.kg/english/318729_Money_transfers_from_Russia_to_Kyrgyzstan_increase_by_12_percent_for_year/",
+   "kind": "press"
   },
   {
    "id": "nbkr2",
    "what": "Kyrgyzstan 2025 USD 3.5bn (+16.8%, Russia +16.1%) EBRD; 2026 Jan-Apr -10.2%, Russia -14%",
-   "url": "https://24.kg/english/362385_Remittances_to_Kyrgyzstan_reached_35_billion_in_2025"
+   "url": "https://24.kg/english/362385_Remittances_to_Kyrgyzstan_reached_35_billion_in_2025",
+   "kind": "press"
   },
   {
    "id": "nbkr3",
    "what": "Kyrgyzstan 2026 decline",
-   "url": "https://caspianpost.com/kyrgyzstan/remittances-to-kyrgyzstan-decline-as-money-inflows-slow"
+   "url": "https://caspianpost.com/kyrgyzstan/remittances-to-kyrgyzstan-decline-as-money-inflows-slow",
+   "kind": "press"
   },
   {
    "id": "tjk",
@@ -1785,17 +1791,20 @@
   {
    "id": "cba_am",
    "what": "Armenia: Russia 2021 USD 865m (Eurasianet); 2022 ~3.6bn; 2023 3.95bn (70%); Jan-Oct 2024 2.9bn; Q1-2024 net from Russia -50%",
-   "url": "https://eurasianet.org/armenian-labor-migrants-reassess-work-in-collapsing-russian-economy"
+   "url": "https://eurasianet.org/armenian-labor-migrants-reassess-work-in-collapsing-russian-economy",
+   "kind": "press"
   },
   {
    "id": "cba_am2",
    "what": "Armenia net inflows 2024 and Russia share",
-   "url": "https://arka.am/en/news/economy/net-inflow-of-non-commercial-money-transfers-to-armenia-from-abroad-down-1-4-times-in-10-months-of-2"
+   "url": "https://arka.am/en/news/economy/net-inflow-of-non-commercial-money-transfers-to-armenia-from-abroad-down-1-4-times-in-10-months-of-2",
+   "kind": "press"
   },
   {
    "id": "cba_am3",
    "what": "Armenia 2025 transfers from Russia USD 3.9bn (RIA from CBA)",
-   "url": "https://finance.mail.ru/article/rossiya-stala-glavnym-donorom-denezhnyh-perevodov-dlya-armenii-69213862/"
+   "url": "https://finance.mail.ru/article/rossiya-stala-glavnym-donorom-denezhnyh-perevodov-dlya-armenii-69213862/",
+   "kind": "press"
   },
   {
    "id": "wfp_am",
@@ -1810,32 +1819,38 @@
   {
    "id": "nbg",
    "what": "NBG: Russia 2021 0.411bn, 2023 1.5bn, 2024 0.541bn (-64.6%)",
-   "url": "https://1tv.ge/lang/en/news/nbg-money-transfers-from-russia-decreased-by-64-6-in-2024/"
+   "url": "https://1tv.ge/lang/en/news/nbg-money-transfers-from-russia-decreased-by-64-6-in-2024/",
+   "kind": "press"
   },
   {
    "id": "nbg2",
    "what": "NBG 2022 Russia 2.068bn; ~112,000 relocants",
-   "url": "https://www.rferl.org/a/georgia-2-billion-russian-bank-transfers/32227284.html"
+   "url": "https://www.rferl.org/a/georgia-2-billion-russian-bank-transfers/32227284.html",
+   "kind": "press"
   },
   {
    "id": "nbg3",
    "what": "Georgia Aug 2026 transfers from Russia ~USD 5m after Zolotaya Korona suspension",
-   "url": "https://jam-news.net/russia-georgia-money-transfers-drop/"
+   "url": "https://jam-news.net/russia-georgia-money-transfers-drop/",
+   "kind": "press"
   },
   {
    "id": "nbg4",
    "what": "Georgia Jan-Jul 2026 from Russia USD 291m",
-   "url": "https://caliber.az/en/post/remittances-from-russia-to-georgia-decline-in-july"
+   "url": "https://caliber.az/en/post/remittances-from-russia-to-georgia-decline-in-july",
+   "kind": "press"
   },
   {
    "id": "factcheck_ge",
    "what": "Russia share of transfers to Georgia 18% (2021), 47% (2022), 37% (2023), 18% (9M 2024)",
-   "url": "https://factcheck.ge/en/story/43281-rusetis-tsili-fulad-gzavnilebshi-14-mde-shemtsirda"
+   "url": "https://factcheck.ge/en/story/43281-rusetis-tsili-fulad-gzavnilebshi-14-mde-shemtsirda",
+   "kind": "press"
   },
   {
    "id": "nbk",
    "what": "Kazakhstan: transfers from Russia 2022 KZT 357bn (USD 775m); 2024 KZT 61.8bn (-43%)",
-   "url": "https://en.orda.kz/money-transfers-from-russia-to-kazakhstan-drop-significantly-4851/"
+   "url": "https://en.orda.kz/money-transfers-from-russia-to-kazakhstan-drop-significantly-4851/",
+   "kind": "press"
   },
   {
    "id": "nbk2",
@@ -1845,7 +1860,8 @@
   {
    "id": "cba_az",
    "what": "Azerbaijan: 2023 Russia 1.047bn of 1.665bn; 2024 Russia 0.497bn of 1.083bn; 2022 ~3.6bn",
-   "url": "https://www.trend.az/azerbaijan/business/3879007.html"
+   "url": "https://www.trend.az/azerbaijan/business/3879007.html",
+   "kind": "press"
   },
   {
    "id": "bnm",
@@ -1855,7 +1871,8 @@
   {
    "id": "bnm2",
    "what": "Moldova: no transfers in Russian roubles in 2023-2024",
-   "url": "https://www.infomarket.md/en/currencymarket/350998"
+   "url": "https://www.infomarket.md/en/currencymarket/350998",
+   "kind": "press"
   },
   {
    "id": "wb_eca",
@@ -1880,7 +1897,8 @@
   {
    "id": "rosstat",
    "what": "Russian average nominal wage 2025 RUB 100,360 (+14.1%)",
-   "url": "https://iz.ru/en/1960378/2025-09-24/expert-reported-excess-average-salary-russian-federation-100-thousand"
+   "url": "https://iz.ru/en/1960378/2025-09-24/expert-reported-excess-average-salary-russian-federation-100-thousand",
+   "kind": "press"
   }
  ],
  "overlaps": [

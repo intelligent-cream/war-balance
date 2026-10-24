@@ -313,87 +313,107 @@
   {
    "name": "AP, US intelligence: ~90% of Russia's microelectronics and ~70% of its ~USD 900m Q4 2023 machine-tool imports came from China",
    "url": "https://www.pbs.org/newshour/world/u-s-intelligence-shows-china-is-surging-equipment-sales-to-russia-to-help-war-effort-in-ukraine-ap-says",
-   "date": "2024-04-12"
+   "date": "2024-04-12",
+   "kind": "press"
   },
   {
    "name": "Bloomberg, US warns China is providing Russia with drone and missile components (incl. satellite imagery)",
    "url": "https://www.bloomberg.com/news/articles/2024-04-12/us-warns-china-providing-russia-with-drone-missile-components",
-   "date": "2024-04-12"
+   "date": "2024-04-12",
+   "kind": "press"
   },
   {
    "name": "US Secretary of State Blinken in Beijing: China top supplier of machine tools, microelectronics and nitrocellulose to Russia's defence sector (Axios)",
    "url": "https://www.axios.com/2024/04/26/blinken-xi-meeting-china-russia",
-   "date": "2024-04-26"
+   "date": "2024-04-26",
+   "kind": "press"
   },
   {
    "name": "Korea Times: Blinken says China, unlike North Korea and Iran, is not sending arms to Russia",
    "url": "https://www.koreatimes.co.kr/amp/foreignaffairs/northkorea/20240522/blinken-says-china-not-sending-arms-to-russia-unlike-north-korea-and-iran",
-   "date": "2024-05-22"
+   "date": "2024-05-22",
+   "kind": "press"
   },
   {
    "name": "Reuters, Russia producing Garpiya kamikaze drones with Chinese engines (2,500+ made Jul 2023-Jul 2024; Xiamen Limbach engines), syndicated",
    "url": "https://origin01-en.protothema.gr/2024/09/13/reuters-russia-producing-kamikaze-drones-with-chinese-engines-since-last-year",
-   "date": "2024-09-13"
+   "date": "2024-09-13",
+   "kind": "press"
   },
   {
    "name": "Reuters, Russia has secret war drones project in China (Garpiya-3; seven Chinese-made drones delivered to Kupol), syndicated",
    "url": "https://kathmandupost.com/world/2024/09/25/russia-has-secret-war-drones-project-in-china-intel-sources-say",
-   "date": "2024-09-25"
+   "date": "2024-09-25",
+   "kind": "press"
   },
   {
    "name": "Reuters, Chinese engines shipped as 'cooling units' power Russian drones (Beijing Xichao; 6,000+ Garpiya contracted for 2025), syndicated",
    "url": "https://finance.yahoo.com/news/exclusive-chinese-engines-shipped-cooling-174654680.html",
-   "date": "2025-07"
+   "date": "2025-07",
+   "kind": "press"
   },
   {
    "name": "WSJ via Euromaidan Press, Chinese engines and navigation for Russia's Shahed-type drones",
    "url": "https://euromaidanpress.com/2025/10/31/wsj-how-chinese-engines-power-russias-deadly-drone-raids-on-ukrainian-cities/",
-   "date": "2025-10-31"
+   "date": "2025-10-31",
+   "kind": "press"
   },
   {
    "name": "Censor.net citing WSJ: 3.3m drone motors bought from Shenzhen Kiosk Electronic for USD 83m (Jul 2023-Feb 2025)",
    "url": "https://censor.net/en/news/3582610/russia-bought-more-than-3-million-engines-for-drones-from-china",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "Euromaidan Press, jet Shaheds (Geran-3) run on Chinese Telefly turbojets",
    "url": "https://euromaidanpress.com/2026/08/27/russias-new-jet-shaheds-run-on-turbojets-from-one-chinese-company-it-deleted-them-from-its-english-website/",
-   "date": "2026-08-27"
+   "date": "2026-08-27",
+   "kind": "press"
   },
   {
    "name": "Washington Post via LIGA: China increases exports of fibre-optic drone components to Russia, cuts finished UAV exports",
    "url": "https://news.liga.net/en/amp/world/news/wp-china-increases-exports-of-fiber-optic-drone-components-to-russia",
-   "date": "2025-10-13"
+   "date": "2025-10-13",
+   "kind": "press"
   },
   {
    "name": "Politico/Telegraph via LIGA: Chinese state-owned company supplied materials for attack drones",
    "url": "https://news.liga.net/en/world/news/politico-a-chinese-state-owned-company-supplied-russia-with-materials-for-the-production-of-attack-drones",
-   "date": "2026-09-06"
+   "date": "2026-09-06",
+   "kind": "press"
   },
   {
    "name": "Telegraph via Kyiv Independent: at least USD 10.3bn of Chinese technology and equipment for Russia's military industry since 2022, incl. CNC tools >= USD 3.1bn",
    "url": "https://kyivindependent.com/china-denies-helping-russia-produce-oreshnik-missiles/",
-   "date": "2026-01-29"
+   "date": "2026-01-29",
+   "kind": "press"
   },
   {
    "name": "Bloomberg via Fortune: China expanding aid to Russian war effort, Western officials say",
    "url": "https://fortune.com/2026/02/14/china-aid-drones-minerals-russia-war-ukraine-invasion-putin-xi-jinping",
-   "date": "2026-02-14"
+   "date": "2026-02-14",
+   "kind": "press"
   },
   {
    "name": "Reuters via CP24: Russians covertly trained by China return to fight in Ukraine (~200 personnel, late 2025)",
    "url": "https://www.cp24.com/news/world/2026/05/19/russians-covertly-trained-by-china-return-to-fight-in-ukraine-reuters-sources-say/",
-   "date": "2026-05-19"
+   "date": "2026-05-19",
+   "kind": "press"
   },
   {
-   "name": "SCMP: US Treasury targets Chinese firm (Changsha Tianyi / Spacety) for satellite imagery to Wagner in Ukraine",
-   "url": "https://amp.scmp.com/news/world/russia-central-asia/article/3208132/us-targets-chinese-firm-helping-russias-wagner-group-ukraine",
-   "date": "2023-01-26"
+   "name": "US Treasury press release jy1220, 26 Jan 2023: Changsha Tianyi Space Science and Technology Research Institute (Spacety China) designated for SAR satellite imagery over Ukraine supplied to Terra Tech for Wagner operations",
+   "url": "https://home.treasury.gov/news/press-releases/jy1220",
+   "date": "2023-01-26",
+   "replaced_r41": {
+    "old_url": "https://amp.scmp.com/news/world/russia-central-asia/article/3208132/us-targets-chinese-firm-helping-russias-wagner-group-ukraine",
+    "verified": "fetched 2026-10-24"
+   }
   },
   {
    "name": "Brussels Times: EU 14th package lists Chang Guang Satellite Technology; Wagner USD 30m+ satellite and imagery contract with Beijing Yunze (AFP)",
    "url": "https://www.brusselstimes.com/business/1109130/eu-sanctions-chinese-companies-including-global-satellite-giant",
-   "date": "2024-06"
+   "date": "2024-06",
+   "kind": "press"
   },
   {
    "name": "FDD: Ukraine alleges China provides satellite imagery to support Russian strikes",
@@ -401,19 +421,29 @@
    "date": "2025-10-15"
   },
   {
-   "name": "SCMP: EU 18th package sanctions Heihe and Suifenhe Rural Commercial Banks",
-   "url": "https://www.scmp.com/news/china/diplomacy/article/3318793/european-union-sanctions-2-chinese-banks-over-aid-russia",
-   "date": "2025-07-18"
+   "name": "Council Regulation (EU) 2025/1494 (18th package, OJ 19 Jul 2025): transaction ban on Heihe Rural Commercial Bank and Heilongjiang Suifenhe Rural Commercial Bank",
+   "url": "https://eur-lex.europa.eu/eli/reg/2025/1494/oj",
+   "date": "2025-07-18",
+   "replaced_r41": {
+    "old_url": "https://www.scmp.com/news/china/diplomacy/article/3318793/european-union-sanctions-2-chinese-banks-over-aid-russia",
+    "verified": "confirmed by web search (Global Trade Alert, SCMP) 2026-10-24; EUR-Lex returns a bot check to the fetcher"
+   }
   },
   {
    "name": "The Insider: Russian customs stopped publishing 180 high-tech import categories",
    "url": "https://theins.org/en/inv/288081",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
-   "name": "Wikipedia, China and the Russo-Ukrainian war (secondary summary of Politico 2023 rifles/body armour, NYT gunpowder, sanctions chronology)",
-   "url": "https://en.wikipedia.org/wiki/China_and_the_Russo-Ukrainian_war",
-   "date": "2026-10-17"
+   "name": "Novaya Gazeta Europe, 17 Mar 2023, summarising Politico (16 Mar 2023, ImportGenius customs data): 1,000 Norinco CQ-A rifles to Tekhkrim (Jun 2022), >12 t body armour via Turkiye, DJI parts via the UAE",
+   "url": "https://novayagazeta.eu/en/articles/2023/03/17/politico-china-supplies-russia-with-copies-of-m-16-marks-those-as-civilian-hunting-rifles-in-customs-papers-en-news",
+   "date": "2026-10-17",
+   "kind": "press",
+   "replaced_r41": {
+    "old_url": "https://en.wikipedia.org/wiki/China_and_the_Russo-Ukrainian_war",
+    "verified": "search 2026-10-24; politico.com returns 403 here, so the Politico URL slug in r39 stays unconfirmed"
+   }
   },
   {
    "name": "Project files: trade_full.json, residual.json, reexports.json (same folder)",

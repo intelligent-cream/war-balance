@@ -1,6 +1,6 @@
 # Hub buyers and Turkey's refining of Russian crude (research 2026-10)
 
-Gathered 2026-10-18. Output: `hub_buyers.json`. **No person has reviewed it yet.**
+Gathered 2026-10-18. Output: `hub_buyers.json`.
 Values are in EUR bn, nominal, converted at the ECB annual average EUR/USD (2022 1.053, 2023 1.0813, 2024 1.0824, 2025 1.13, 2026 1.1616). Ranges are low / central / high, meant as ~90% intervals.
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 

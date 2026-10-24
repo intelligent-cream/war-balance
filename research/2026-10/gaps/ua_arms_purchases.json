@@ -3157,32 +3157,38 @@
   {
    "name": "Ekonomicky denik: Czech MIT report 2025 - arms exports CZK 112.6bn, Ukraine CZK 50.7bn",
    "url": "https://ekonomickydenik.cz/ceske-firmy-vojensky-material-112-miliard/",
-   "date": "2026-08-05"
+   "date": "2026-08-05",
+   "kind": "press"
   },
   {
    "name": "Seznam Zpravy: Czech MIT report 2024 - exports ~CZK 91bn, Ukraine CZK 47.1bn",
    "url": "https://www.seznamzpravy.cz/clanek/domaci-zivot-v-cesku-vyvoz-vojenskeho-materialu-z-cr-loni-mezirocne-stoupl-o-86-procent-282612",
-   "date": "2025-07-25"
+   "date": "2025-07-25",
+   "kind": "press"
   },
   {
    "name": "Radio Prague: Czech military exports 2023 CZK 48.9bn, Ukraine over CZK 20bn",
    "url": "https://english.radio.cz/node/8821924",
-   "date": "2024"
+   "date": "2024",
+   "kind": "press"
   },
   {
    "name": "Levice conference paper citing Czech report 2022: CZK 29.7bn exports, CZK 12.8bn to Ukraine",
    "url": "https://jsmelevice.cz/wp-content/uploads/2024/11/Left-Perspectives-on-Security-Warsaw-15-17-November_-Levice.pdf",
-   "date": "2024-11"
+   "date": "2024-11",
+   "kind": "press"
   },
   {
    "name": "LIGA.net: Czech government - foreign donors CZK 93.3bn for the initiative; 3.7m rounds; 1.8m in 2025",
    "url": "https://news.liga.net/en/politics/news/ukraine-has-already-received-13-million-shells-from-the-czech-republic-by-the-end-of-2025-their-number-will-reach-18-million",
-   "date": "2025-10-15"
+   "date": "2025-10-15",
+   "kind": "press"
   },
   {
    "name": "LIGA.net interview with CSG: 3.7m rounds worth EUR 4-4.5bn (2024-25)",
    "url": "https://news.liga.net/en/politics/news/the-arms-giant-disclosed-how-many-shells-ukraine-received-under-the-czech-initiative-and-their-cost",
-   "date": "2025-12-04"
+   "date": "2025-12-04",
+   "kind": "press"
   },
   {
    "name": "Grosswald: initiative donors 18 -> 9; 1.5m (2024), 1.8m (2025), ~1.0m contracted 2026; ~EUR 1bn secured",
@@ -3192,77 +3198,92 @@
   {
    "name": "Euromaidan Press / Reuters: initiative needs EUR 5bn in 2026, EUR 1.4bn raised",
    "url": "https://euromaidanpress.com/2026/02/11/czech-ammunition-initiative-for-ukraine-needs-e5-billion-in-2026-only-e1-4-billion-raised-so-far/",
-   "date": "2026-02-11"
+   "date": "2026-02-11",
+   "kind": "press"
   },
   {
    "name": "RFE/RL Schemes, Investigace.cz, FTM: Czech initiative brokers' commissions up to 13% (coordinator: 5-10%); 2024 donations DEU USD 650m, NLD 283m, BEL 227m",
    "url": "https://www.rferl.org/a/schemes-investigation-czech-ammo-ukraine/33406541.html",
-   "date": "2025-05"
+   "date": "2025-05",
+   "kind": "press"
   },
   {
    "name": "Kyiv Post: Greece sells army stock shells to the initiative for ~USD 156m; suppliers in South Korea, Turkey, South Africa",
    "url": "https://www.kyivpost.com/post/30533",
-   "date": "2024-04"
+   "date": "2024-04",
+   "kind": "press"
   },
   {
    "name": "Defence Ukraine reference page: Czech Ammunition Initiative (named sources South Korea, Turkey, South Africa, India)",
    "url": "https://www.defenceukraine.com/en/references/czech-ammunition-initiative/",
-   "date": "2026"
+   "date": "2026",
+   "kind": "press"
   },
   {
    "name": "Balkan Insight: Czechia as a leading arms supplier to Ukraine (Czech share of initiative funding ~2%)",
    "url": "https://balkaninsight.com/2025/08/27/czechia-as-a-leading-arms-supplier-to-ukraine-really-and-for-how-much-longer/rd/",
-   "date": "2025-08-27"
+   "date": "2025-08-27",
+   "kind": "press"
   },
   {
    "name": "Defence24: Polish MFA arms export report 2023 - actual exports EUR 1.753bn, Ukraine EUR 1.419bn (donations excluded)",
    "url": "https://defence24.com/industry/poland-increases-arms-exports-ukraine-and-whats-next-commentary",
-   "date": "2024-10-01"
+   "date": "2024-10-01",
+   "kind": "press"
   },
   {
    "name": "Novinite (BGNES): Bulgarian Ministry of Economy - defence exports+transfers EUR 1.654bn (2022), 2.168bn (2023), 2.831bn (2024); direct to Ukraine 0 / 12.6m / 156.4m",
    "url": "https://www.novinite.com/articles/239281/Bulgaria",
-   "date": "2026-06-28"
+   "date": "2026-06-28",
+   "kind": "press"
   },
   {
    "name": "Novinite: How Bulgaria has been arming Ukraine (UNROCA 2022-25, Defense Express USD 2.7bn H1 2022, EUR 2.5bn exports 2025)",
    "url": "https://www.novinite.com/view_news.php?id=238879",
-   "date": "2026-06-04"
+   "date": "2026-06-04",
+   "kind": "press"
   },
   {
    "name": "Sofia Globe: Bulgarian military exports averaged >EUR 600m a year before 2022",
    "url": "https://sofiaglobe.com/2022/03/08/upward-curve-for-bulgarias-exports-of-military-products/",
-   "date": "2022-03-08"
+   "date": "2022-03-08",
+   "kind": "press"
   },
   {
    "name": "Defense One: Import records illuminate Ukraine's hunt for third-party arms (July 2023: USD 346m; Bulgaria >90m, Romania 22m, Turkey 22m, Czechia 20m)",
    "url": "https://www.defenseone.com/business/2023/11/import-records-illuminate-ukraines-desperate-hunt-third-party-arms-and-ammo/391686/",
-   "date": "2023-11-01"
+   "date": "2023-11-01",
+   "kind": "press"
   },
   {
    "name": "Ukrinform citing Financial Times: EUR 800m of Serbian ammunition reached Ukraine via third countries",
    "url": "https://ukrinform.net/rubric-ato/3877795-ukraine-received-eur-800-million-worth-of-ammunition-from-serbia-through-intermediaries-ft.html",
-   "date": "2024-06-22"
+   "date": "2024-06-22",
+   "kind": "press"
   },
   {
    "name": "The Intercept: Pakistan's secret arms sales for Ukraine (2022-23)",
    "url": "https://theintercept.com/2023/09/17/pakistan-ukraine-arms-imf/",
-   "date": "2023-09-17"
+   "date": "2023-09-17",
+   "kind": "press"
   },
   {
    "name": "Soch Fact Check: USD 364m of Pakistani 155mm shells sold to the US government via GMP and Northrop Grumman",
    "url": "https://www.sochfactcheck.com/pakistani-government-officials-falsely-deny-selling-arms-to-ukraine",
-   "date": "2023"
+   "date": "2023",
+   "kind": "press"
   },
   {
    "name": "Mind.ua citing DongA Ilbo: South Korea lends 500,000 shells to the US",
    "url": "https://mind.ua/en/news/20256025-south-korea-lent-500000-shells-to-the-united-states-which-will-help-in-supplying-ukraine",
-   "date": "2023"
+   "date": "2023",
+   "kind": "press"
   },
   {
    "name": "SABC/Reuters: South Korea negotiating sale of artillery shells to the US (100,000 rounds)",
    "url": "https://www.sabcnews.com/sabcnews/s-korea-says-it-is-negotiating-sale-of-artillery-shells-to-us-after-report-of-weapons-to-ukraine/",
-   "date": "2022-11-11"
+   "date": "2022-11-11",
+   "kind": "press"
   },
   {
    "name": "Ukraine MoD: DPA domestic share 46% -> 82% in 2025, domestic ~UAH 430bn, imports 54% -> 18%",
@@ -3272,12 +3293,14 @@
   {
    "name": "Kyiv Independent: DPA 2024 budget UAH 306.1bn; domestic share 44.1% -> 71.4%",
    "url": "https://kyivindependent.com/ukraines-defense-procurement-shifts-to-domestic-suppliers-rising-to-71-from-last-years-44/",
-   "date": "2025-07-28"
+   "date": "2025-07-28",
+   "kind": "press"
   },
   {
    "name": "Euromaidan Press: foreign defence suppliers owe Ukraine USD 10.58bn (prepayments), USD 1.7bn overdue",
    "url": "https://euromaidanpress.com/2026/09/21/ukraine-says-foreign-defense-suppliers-owe-country-about-10-58-billion-including-1-7-billion-already-paid-for-goods-delivered-late-or-never-at-all/",
-   "date": "2026-09-21"
+   "date": "2026-09-21",
+   "kind": "press"
   },
   {
    "name": "DSCA: Ukraine - Class IX spare parts (USD 185m)",

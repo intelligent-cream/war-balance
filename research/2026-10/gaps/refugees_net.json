@@ -12175,27 +12175,32 @@
   {
    "name": "Demagog: ZUS contributions of all Ukrainians ~PLN 7.3bn (2021), 13bn (2023), 15.3bn (2024); Deloitte 2022-23 modelled taxes",
    "url": "https://demagog.org.pl/analizy_i_raporty/ukraincy-w-polsce-sa-wsparciem-czy-obciazeniem-dla--budzetu/",
-   "date": "2025-03-17"
+   "date": "2025-03-17",
+   "kind": "press"
   },
   {
    "name": "Infor/ZUS: insured Ukrainian citizens ~627k (2021), ~746k (end-2022), 787.5k (end-2024)",
    "url": "https://kadry.infor.pl/5681834,trzy-czwarte-ubezpieczonych-cudzoziemcow-w-polsce-to-obywatele-ukrainy.html",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "Bankier: BGK estimate, Ukrainians paid ~PLN 15.1bn taxes and contributions in 2024; 800+ to Ukrainians PLN 2.8bn",
    "url": "https://www.bankier.pl/wiadomosc/Migranci-z-Ukrainy-wsparli-polski-budzet-BGK-pokazal-szacunki-8904888.html",
-   "date": "2025-03"
+   "date": "2025-03",
+   "kind": "press"
   },
   {
    "name": "Notes from Poland on UNHCR/Deloitte: refugees added 2.7% to GDP in 2024; 69% of working-age refugees employed",
    "url": "https://notesfrompoland.com/2025/06/12/ukrainian-refugees-boosted-polands-gdp-by-2-7-in-2024-finds-un-study/",
-   "date": "2025-06-12"
+   "date": "2025-06-12",
+   "kind": "press"
   },
   {
    "name": "Notes from Poland on OECD 2025: refugee employment 2024 Poland 78%, Lithuania 72%, UK 69%, Germany ~31%, Norway 31%, Switzerland 28%, Spain 17%",
    "url": "https://notesfrompoland.com/2025/11/05/poland-has-highest-employment-rate-for-ukrainian-refugees-in-oecd-2/",
-   "date": "2025-11-05"
+   "date": "2025-11-05",
+   "kind": "press"
   },
   {
    "name": "OECD/EMN Finland presentation: employment rates of temporary protection holders 2022-2024 by country",
@@ -12215,22 +12220,26 @@
   {
    "name": "tuenews: IAB employment rate of 2022 arrivals 50% mid-2025; BiB 51% end-2025",
    "url": "https://tuenews.de/en/more-and-more-ukrainians-are-working-in-germany/",
-   "date": "2026-07-25"
+   "date": "2026-07-25",
+   "kind": "press"
   },
   {
    "name": "Kyiv Post (citing LRT and Lithuanian Ministry of Social Security): Ukrainians paid EUR 45m (2022), 95m (2023), 65.2m (2024)",
    "url": "https://www.kyivpost.com/uk/post/39158",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "Ekonomicky denik/CTK on Slovak government analysis: Ukrainians (refugees and workers) pay ~EUR 518m taxes and contributions + ~100m consumption taxes a year; refugee spending 153m (2022), under 100m later",
    "url": "https://ekonomickydenik.cz/600-milionu-eur-do-rozpoctu-ukrajinci/",
-   "date": "2026-04-07"
+   "date": "2026-04-07",
+   "kind": "press"
   },
   {
    "name": "visitukraine.today: Bulgaria paid ~BGN 523m (EUR 267m) for refugee accommodation, BGN 200m national budget and ~300m EU funds (autumn 2023)",
    "url": "https://visitukraine.today/de/blog/1107/free-housing-in-bulgaria-the-country-continued-to-support-ukrainians-under-new-conditions",
-   "date": "2023"
+   "date": "2023",
+   "kind": "press"
   },
   {
    "name": "EUAA: Bulgaria's 2025 humanitarian support and integration programme (60-day accommodation, 2,732 eligible)",
@@ -12240,7 +12249,8 @@
   {
    "name": "N1/Hina: Croatian Interior Ministry scenario, ~EUR 19 per refugee per day, EUR 173m a year for 20,000",
    "url": "https://n1info.hr/english/news/up-to-e173m-will-necessary-in-scenario-that-croatia-cares-for-20000-refugees",
-   "date": "2022-03"
+   "date": "2022-03",
+   "kind": "press"
   },
   {
    "name": "Croatian government: state-financed housing for 2,934 in leased flats and 1,592 in collective accommodation (Mar 2024)",
@@ -12250,7 +12260,8 @@
   {
    "name": "Logos Press: Moldova Economic Council, refugees paid ~MDL 1.6bn taxes and contributions since 2022 (as cited in flowback2.json)",
    "url": "https://logos-pres.md/en/",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "OECD Taxing Wages 2025 (tax wedges at 67% of average wage) and OECD average annual wages (approximate inputs)",

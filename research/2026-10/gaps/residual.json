@@ -17,22 +17,26 @@
     {
      "name": "Prensa Latina: 2024 fiscal deficit CUP 79,528m = 6.5% of GDP at current prices (implies GDP about CUP 1.22 trillion)",
      "url": "https://www.prensa-latina.cu/?p=1600719",
-     "date": "2025-07"
+     "date": "2025-07",
+     "kind": "press"
     },
     {
      "name": "CEPAL Anuario Estadistico 2025 via ANSA/La Nacion: Cuba GDP at current prices USD 12.1bn in 2025, USD 1,082 per head",
      "url": "https://www.lanacion.com.ar/agencias/cuba-ultima-en-america-latina-por-pib-per-capita-nid24022026",
-     "date": "2026-02-24"
+     "date": "2026-02-24",
+     "kind": "press"
     },
     {
      "name": "ONEI via OnCubaNews: effective population 9,748,007 at end-2024",
      "url": "https://oncubanews.com/cuba/la-poblacion-efectiva-de-cuba-no-llega-a-10-millones-de-habitantes-confirma-la-onei",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "elTOQUE informal rate about CUP 300-400 per USD (2024-25); official rates 24 and 120",
      "url": "https://eltoque.com/us-dollar-hits-400-cuban-pesos-in-informal-market",
-     "date": "2025-08"
+     "date": "2025-08",
+     "kind": "press"
     },
     {
      "name": "UN Statistics Division, National Accounts Main Aggregates (GDP at current prices, USD and national currency), file download",
@@ -435,7 +439,8 @@
     {
      "name": "HCP regional accounts 2022, via Morocco World News: GDP per head MAD 80,996 (Dakhla-Oued Ed-Dahab) and MAD 71,246 (Laayoune-Sakia El Hamra)",
      "url": "https://www.moroccoworldnews.com/2024/09/364919/five-moroccan-regions-outperform-national-gdp-average-dakhla-oued-eddahab-leads-pack",
-     "date": "2024-09"
+     "date": "2024-09",
+     "kind": "press"
     },
     {
      "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
@@ -466,7 +471,8 @@
     {
      "name": "FITV: FIG publishes 2014-2024 National Accounts",
      "url": "https://fitv.co.fk/news-and-events/falkland-islands-government-publishes-2014-2024-national-accounts/",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "UN World Population Prospects 2024, total population (medium variant, 2024)",
@@ -544,7 +550,8 @@
     {
      "name": "IEDOM via Outremers360: Saint-Barthelemy GDP per head EUR 90,103 in 2023",
      "url": "https://outremers360.com/bassin-atlantique-appli/expertise-iedom-a-saint-barthelemy-le-pib-par-habitant-seleve-a-90-103-eur-en-2023",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "IEDOM/AFD/INSEE: GDP 2014 EUR 367m",
@@ -4230,7 +4237,8 @@
    {
     "name": "TASS: Russia-UAE turnover about USD 10bn in 2024 (Manturov)",
     "url": "https://tass.com/economy/1914351/amp",
-    "date": "2025-02"
+    "date": "2025-02",
+    "kind": "press"
    },
    {
     "name": "CAPS Unlock: Kyrgyzstan's re-export model (car re-exports fell from about 9,000 in 2023 to about 1,300 in 2024)",

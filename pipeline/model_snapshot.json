@@ -1,0 +1,142 @@
+{
+ "DEU": {
+  "net": 152.6041,
+  "netLo": 107.8695,
+  "netHi": 211.0898,
+  "ua": 74.666,
+  "rus": 72.6447,
+  "frozen": 5.2935,
+  "noData": false,
+  "mostlyNoData": false
+ },
+ "POL": {
+  "net": 37.4459,
+  "netLo": 19.9043,
+  "netHi": 60.9842,
+  "ua": 13.7875,
+  "rus": 22.8011,
+  "frozen": 0.8573,
+  "noData": false,
+  "mostlyNoData": false
+ },
+ "USA": {
+  "net": 131.5273,
+  "netLo": 102.1699,
+  "netHi": 169.8888,
+  "ua": 82.5242,
+  "rus": 47.3914,
+  "frozen": 1.6118,
+  "noData": false,
+  "mostlyNoData": false
+ },
+ "GBR": {
+  "net": 58.3422,
+  "netLo": 39.4317,
+  "netHi": 79.4592,
+  "ua": 18.4243,
+  "rus": 34.929,
+  "frozen": 4.9888,
+  "noData": false,
+  "mostlyNoData": false
+ },
+ "FRA": {
+  "net": 43.6716,
+  "netLo": 24.65,
+  "netHi": 67.9355,
+  "ua": 16.8592,
+  "rus": 20.2475,
+  "frozen": 6.5649,
+  "noData": false,
+  "mostlyNoData": false
+ },
+ "HUN": {
+  "net": -11.6313,
+  "netLo": -19.0101,
+  "netHi": -1.3151,
+  "ua": 0.6704,
+  "rus": -12.5002,
+  "frozen": 0.1985,
+  "noData": false,
+  "mostlyNoData": false
+ },
+ "CHN": {
+  "net": -127.4184,
+  "netLo": -200.11,
+  "netHi": -42.1088,
+  "ua": 0.0521,
+  "rus": -127.4705,
+  "frozen": 0,
+  "noData": false,
+  "mostlyNoData": false
+ },
+ "IND": {
+  "net": -70.8171,
+  "netLo": -104.9789,
+  "netHi": -32.0741,
+  "ua": 0.0376,
+  "rus": -70.8548,
+  "frozen": 0,
+  "noData": false,
+  "mostlyNoData": false
+ },
+ "TUR": {
+  "net": -31.4088,
+  "netLo": -61.2774,
+  "netHi": 7.3287,
+  "ua": 0.0309,
+  "rus": -31.4397,
+  "frozen": 0,
+  "noData": false,
+  "mostlyNoData": false
+ },
+ "BEL": {
+  "net": 20.2658,
+  "netLo": 12.8971,
+  "netHi": 28.8454,
+  "ua": 5.7734,
+  "rus": 3.7075,
+  "frozen": 10.7849,
+  "noData": false,
+  "mostlyNoData": false
+ },
+ "LUX": {
+  "net": 2.8366,
+  "netLo": 1.7927,
+  "netHi": 4.855,
+  "ua": 0.764,
+  "rus": 0.5944,
+  "frozen": 1.4782,
+  "noData": false,
+  "mostlyNoData": false
+ },
+ "KAZ": {
+  "net": 0.0913,
+  "netLo": -7.2574,
+  "netHi": 7.9904,
+  "ua": 0.0161,
+  "rus": 0.0752,
+  "frozen": 0,
+  "noData": false,
+  "mostlyNoData": false
+ },
+ "NPL": {
+  "net": -0.8797,
+  "netLo": -1.4059,
+  "netHi": -0.424,
+  "ua": 0,
+  "rus": -0.8797,
+  "frozen": 0,
+  "noData": false,
+  "mostlyNoData": false
+ },
+ "TCD": {
+  "net": -0.0022,
+  "netLo": -0.0037,
+  "netHi": -0.0007,
+  "ua": 0,
+  "rus": -0.0022,
+  "frozen": 0,
+  "noData": false,
+  "mostlyNoData": true
+ }
+}

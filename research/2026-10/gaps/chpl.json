@@ -9505,7 +9505,8 @@
   {
    "id": "uk_sep23",
    "what": "Sept 2023 update: 7 codes added (bearings, navigation antennas), Tier 3 split into 3.A/3.B (Baker McKenzie / Thompson Hine summaries)",
-   "url": "https://sanctionsnews.bakermckenzie.com/sanctions-enforcement-around-the-world-updated-common-high-priority-items-lists/"
+   "url": "https://sanctionsnews.bakermckenzie.com/sanctions-enforcement-around-the-world-updated-common-high-priority-items-lists/",
+   "kind": "press"
   },
   {
    "id": "comtrade",
@@ -9535,17 +9536,20 @@
   {
    "id": "ft_turkey",
    "what": "FT via Turkish Minute/Kyiv Post (2024): Turkish exports of 45 CHP categories to Russia USD 158m Jan-Sep 2023, peak USD 37.6m in Dec 2022, USD 4.1m in Aug 2024",
-   "url": "https://turkishminute.com/2024/08/07/washington-urge-turkey-to-stop-exporting-us-military-linked-hardware-to-russia-financial-times/"
+   "url": "https://turkishminute.com/2024/08/07/washington-urge-turkey-to-stop-exporting-us-military-linked-hardware-to-russia-financial-times/",
+   "kind": "press"
   },
   {
    "id": "frf_uae",
    "what": "Free Russia Foundation (via press, 2023): UAE electronic-component exports to Russia ~USD 283m in 2022 (7x), microchips USD 24.3m",
-   "url": "https://babel.ua/en/news/91136-ft-the-west-is-pressuring-the-uae-to-stop-exporting-critical-goods-to-russia-to-circumvent-sanctions"
+   "url": "https://babel.ua/en/news/91136-ft-the-west-is-pressuring-the-uae-to-stop-exporting-critical-goods-to-russia-to-circumvent-sanctions",
+   "kind": "press"
   },
   {
    "id": "insider_2025",
    "what": "The Insider (10 Apr 2025), Russian customs data: Western electronics via China down ~17x in 2024; Intel via third countries USD 476m (2022), 235m (2023), 7m (2024); ICs from third countries >USD 1bn (2023) -> 44m (2024); caveat on hidden/undeclared imports",
-   "url": "https://theins.press/en/inv/280451"
+   "url": "https://theins.press/en/inv/280451",
+   "kind": "press"
   },
   {
    "id": "b4u_2025",
@@ -9555,12 +9559,14 @@
   {
    "id": "taiwan_mt",
    "what": "Taiwan MOEA: 2023 exports of 77 high-tech machine-tool items to Russia USD 45m; banned from 2024; machine-tool exports to Russia ceased (Nov 2024)",
-   "url": "https://euromaidanpress.com/2024/02/08/taiwan-expands-export-controls-on-machine-tools-to-russia-belarus/"
+   "url": "https://euromaidanpress.com/2024/02/08/taiwan-expands-export-controls-on-machine-tools-to-russia-belarus/",
+   "kind": "press"
   },
   {
    "id": "ftm_2025",
    "what": "Follow the Money (2025): Russia severely restricted customs-data availability from spring 2024",
-   "url": "https://www.ftm.eu/articles/russia-war-ukraine-european-tech-hidden-supply-chain"
+   "url": "https://www.ftm.eu/articles/russia-war-ukraine-european-tech-hidden-supply-chain",
+   "kind": "press"
   },
   {
    "id": "rusi_2022",

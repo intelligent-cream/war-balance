@@ -554,17 +554,20 @@
    {
     "name": "UAE Ministry of Foreign Trade press release (Zawya): non-oil trade with Russia USD 20.4bn in 2025, +77.7% on 2024, nearly double the 2022 level of USD 10.8bn",
     "url": "https://www.zawya.com/en/press-release/government-news/uae-russia-trade-in-services-and-investment-agreement-enters-into-force-464653",
-    "date": "2026-08"
+    "date": "2026-08",
+    "kind": "press"
    },
    {
     "name": "Finance Middle East: UAE-Russia non-oil trade about USD 11.5bn in 2024 (+5% on 2023); H1 2025 +75%",
     "url": "https://www.financemiddleeast.com/?p=22951",
-    "date": "2025-08-11"
+    "date": "2025-08-11",
+    "kind": "press"
    },
    {
     "name": "Gulf Today / UAE Ministry of Economy: 2022 imports from Russia AED 30.1bn, re-exports AED 9bn, national exports AED 1bn; gold AED 20bn, diamonds AED 6.1bn",
     "url": "https://gulftoday.ae/business/2023/09/01/uae-is-our-first-arab-trade-partner-with-$10-billion-russian-minister",
-    "date": "2023-09-01"
+    "date": "2023-09-01",
+    "kind": "press"
    },
    {
     "name": "UAE embassy in Moscow (MOFA): bilateral trade about USD 12bn in 2025 (Russian-side measure), Russian exports led by petroleum products, gold and precious metals",
@@ -574,7 +577,8 @@
    {
     "name": "TASS via InvestFuture: Russia-UAE turnover record USD 10.2bn in 2023; USD 8.9bn Jan-Sep 2025 (Alikhanov, Russian side)",
     "url": "https://investfuture.ru/articles/tovarooborot-rossii-i-oae-stremitelno-rastet-priblizhayas-k-rekordam-0BFA7A1C0B772E9343258D5400344B2F",
-    "date": "2025-12-02"
+    "date": "2025-12-02",
+    "kind": "press"
    },
    {
     "name": "Swissaid: United Arab Emirates more than ever a hub for conflict gold (UAE-reported 2024: 66 t / USD 5.4bn of gold from Russia, 78 t from Armenia)",
@@ -584,17 +588,20 @@
    {
     "name": "Reuters (via mining.com): 75.7 t of Russian gold to the UAE Feb 2022-Mar 2023 in Russian customs records; 96.4 t in 2022 in Comtrade",
     "url": "https://www.mining.com/web/from-russia-with-gold-uae-cashes-in-as-sanctions-bite/",
-    "date": "2023-05"
+    "date": "2023-05",
+    "kind": "press"
    },
    {
     "name": "Interfax: Hong Kong imports of Russian gold 92.1 t (USD 10.5bn) in 2025, mainland China USD 3.3bn",
     "url": "https://interfax.com/newsroom/top-stories/115819/",
-    "date": "2026-01-28"
+    "date": "2026-01-28",
+    "kind": "press"
    },
    {
     "name": "ARKA / World Bank: Armenia's 2025 exports -36% on a sharp fall of gold and diamond re-exports, mainly to the UAE",
     "url": "https://www.arka.am/en/news/economy/sharp-decline-in-diamond-and-gold-re-exports-leads-to-decline-in-exports-and-imports-in-armenia-wb",
-    "date": "2026"
+    "date": "2026",
+    "kind": "press"
    },
    {
     "name": "CREA Russia Fossil Tracker (fuel delivered to the UAE, as used in audit2 Q2)",
@@ -755,7 +762,8 @@
     {
      "name": "ZDF heute: Bürgergeld to Ukrainian nationals ~EUR 6.3bn in 2024 (BMAS)",
      "url": "https://www.zdfheute.de/politik/buergergeld-ukraine-zahlen-soeder-100.html",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "Bavarian Landtag answer: federal EUR 2bn (2022) and 1.5bn (2023) to the Länder for Ukrainian refugees",
@@ -831,7 +839,8 @@
     {
      "name": "Radio Spacja: Aid Fund spending PLN 13.87bn (2022), 14.78bn (2023), ~10.12bn (2024), ~7.93bn (2025)",
      "url": "https://radiospacja.pl/ile-polska-wydaa-na-pomoc-ukrainie-pene-dane-z-2026-roku/",
-     "date": "2026-08-09"
+     "date": "2026-08-09",
+     "kind": "press"
     },
     {
      "name": "NIK audit: Aid Fund >PLN 11bn in 2022, >PLN 14bn to 30 Apr 2023",
@@ -912,7 +921,8 @@
     {
      "name": "ČTK via České noviny: CZK 62.5bn spent on humanitarian benefits and other refugee aid to end-2024; humanitarian benefit CZK 8.7bn (2022), 6.96bn (2023), 7.93bn (2024), 8.82bn (2025)",
      "url": "https://www.ceskenoviny.cz/zpravy/vydaje-na-davku-klesaji-pribyva-zamestnanych-z-ukrajiny/2864752",
-     "date": "2026-02"
+     "date": "2026-02",
+     "kind": "press"
     },
     {
      "name": "MPSV press release: balance of refugee spending and revenue (24 Feb 2025)",
@@ -922,7 +932,8 @@
     {
      "name": "Brno Daily: MPSV quarterly state expenditure on Ukrainian refugees (Q1-Q3 2025 CZK 11.5bn)",
      "url": "https://brnodaily.com/2025/11/10/news/ukrainian-refugees-contribute-twice-as-much-as-they-receive-from-the-czech-state/",
-     "date": "2025-11-10"
+     "date": "2025-11-10",
+     "kind": "press"
     }
    ],
    "reasoning": "CZK 28/17.2/17.3/15.5/9.5bn: 2022 is the CZK 62.5bn total less 2023-2024; 2024 = state final account (CZK 17.3bn direct war-related); 2025 = Q1-Q3 x 4/3. High adds health insurance for state-insured refugees and regional costs.",
@@ -1048,7 +1059,8 @@
     {
      "name": "Vozpópuli citing Ministry of Inclusion: public spending since 2022 above EUR 1.4bn incl. EU co-financing (AMIF EUR 28m, ESF EUR 209m); EUR 1.2bn extraordinary credit line",
      "url": "https://www.vozpopuli.com/espana/espana-acogido-casi-200-000-refugiados-ucranianos-inicio-guerra-pais.html",
-     "date": "2024"
+     "date": "2024",
+     "kind": "press"
     },
     {
      "name": "Ministerio de Inclusión: informe Ucrania (Feb 2025)",
@@ -1058,7 +1070,8 @@
     {
      "name": "Noticias de Navarra: 2022 transfers to regions EUR 52.8m (EUR 400/month aid) and EUR 30m reception",
      "url": "https://www.noticiasdenavarra.com/sociedad/2022/08/02/reparto-comunidades-ayuda-atencion-ucranianos-5875153.html",
-     "date": "2022-08-02"
+     "date": "2022-08-02",
+     "kind": "press"
     }
    ],
    "reasoning": "EUR 1.43bn for 2022-2024 split by the reception caseload; 2025-26 continue at the falling rate. High adds regional health and education spending not in the Ministry total. EU funds: EUR 237m (AMIF + ESF).",
@@ -1129,17 +1142,20 @@
     {
      "name": "Open: government allocates EUR 428m for reception; EUR 300/month per adult support",
      "url": "https://www.open.online/2022/03/28/ucraina-piano-aiuti-italia-ue-profughi",
-     "date": "2022-03-28"
+     "date": "2022-03-28",
+     "kind": "press"
     },
     {
      "name": "Eunews: Italy received over EUR 450m from the EU (REACT-EU pre-financing) for Ukrainian refugees",
      "url": "https://www.eunews.it/2022/04/28/italia-ha-ricevuto-oltre-450-milioni-di-euro-dallue-per-laccoglienza-dei-rifugiati-dallucraina/",
-     "date": "2022-04-28"
+     "date": "2022-04-28",
+     "kind": "press"
     },
     {
      "name": "Money.it: Quanto paga l'Italia ai profughi ucraini (CAS/SAI places EUR 181.6m 2022-24, contributo di sostentamento)",
      "url": "https://www.money.it/quanto-paga-italia-ai-profughi-ucraini",
-     "date": "2022"
+     "date": "2022",
+     "kind": "press"
     }
    ],
    "reasoning": "Italy hosted few Ukrainians in state reception; most stayed with relatives. 2022 = EUR 428m first allocation plus extensions; later years follow the falling number on support and Eurostat's 2025 clean-up of the register (162k to 60k). About EUR 0.45bn of EU pre-financing.",
@@ -1234,17 +1250,20 @@
     {
      "name": "Irish Times: Budget estimates, assistance to people fleeing Ukraine EUR 1bn (2022), ~EUR 2bn (2023), EUR 2.5bn budgeted 2024; accommodation ~2/3, social protection ~22%",
      "url": "https://www.irishtimes.com/your-money/2023/10/10/budget-estimates-show-500m-increase-in-aid-to-support-ukrainians/",
-     "date": "2023-10-10"
+     "date": "2023-10-10",
+     "kind": "press"
     },
     {
      "name": "Tipperary Live: EUR 1.49bn on accommodation for Ukrainians in 2023, EUR 118m to hosts",
      "url": "https://www.tipperarylive.ie/national/government-spent-almost-eu15-billion-on-accommodation-for-ukrainian-refugees-last-year-7165026",
-     "date": "2024"
+     "date": "2024",
+     "kind": "press"
     },
     {
      "name": "RTE: Ukrainian accommodation EUR 1.165bn (2024), EUR 719m (2025), EUR 607m allocated for 2026",
      "url": "https://www.rte.ie/news/2026/0219/1559258-ukraine-accommodation/",
-     "date": "2026-02-19"
+     "date": "2026-02-19",
+     "kind": "press"
     }
    ],
    "reasoning": "2022-2023 are the all-government totals. 2024-2026 scale the accommodation outturn by its ~2/3 share (welfare for new arrivals was cut in 2024, so the share rises). 2026 Jan-Aug = 8/12 of the allocation-based year.",
@@ -1294,7 +1313,8 @@
     {
      "name": "Vienna.at: Länder refuse higher cost rates for Ukrainian refugees",
      "url": "https://www.vienna.at/laender-verweigern-anhebung-der-kostensaetze-fuer-ukraine-fluechtlinge/7555678",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     }
    ],
    "reasoning": "No Austria-wide outturn found. 75% of person-years in basic care in 2022 falling to 45% by 2026, at EUR 8-9k per person-year, plus schools. Similar to the map.",
@@ -1339,7 +1359,8 @@
     {
      "name": "La Libre: CPAS social aid for temporary-protection holders up to the integration income; federal sets no level",
      "url": "https://www.lalibre.be/belgique/societe/2022/03/17/refugies-ukrainiens-en-belgique-loctroi-de-laide-sociale-nest-pas-un-choix-politique-cest-la-loi-47RCD77GVJACJM5AFEPAI4OBTE/",
-     "date": "2022-03-17"
+     "date": "2022-03-17",
+     "kind": "press"
     },
     {
      "name": "UVCW: CPAS and Ukrainians, state of play (Oct 2022)",
@@ -1399,7 +1420,8 @@
     {
      "name": "SVT: Migration Agency forecast, SEK 7bn more needed in 2023 for compensation to municipalities, regions and protected persons",
      "url": "https://www.svt.se/nyheter/migrationsverkets-prognos",
-     "date": "2022"
+     "date": "2022",
+     "kind": "press"
     }
    ],
    "reasoning": "Ukrainians in Sweden stay in the reception system (daily allowance, housing, municipal compensation since July 2022): about SEK 3.5-4.5bn a year in 2022-2024, falling as more work. Close to the map.",
@@ -1504,7 +1526,8 @@
     {
      "name": "Skagen Online FAQ: who pays for Ukrainian refugees (municipal block-grant compensation; DKK 2.2bn estimate for 2022)",
      "url": "https://www.skagenonline.dk/faq/hvem-betaler-for-ukrainske-flygtninge",
-     "date": "2022"
+     "date": "2022",
+     "kind": "press"
     }
    ],
    "reasoning": "About DKK 100k (EUR 13k) per person-year in 2022-2024 falling to EUR 11k as employment rises; municipalities are compensated through the block grant.",
@@ -1554,7 +1577,8 @@
     {
      "name": "UNN: Finance Minister Purra, integration compensation now over EUR 150m a year, two-thirds to three-quarters for Ukrainians",
      "url": "https://unn.ua/en/news/finland-is-ready-to-present-a-budget-that-significantly-restricts-aid-to-refugees-from-ukraine",
-     "date": "2024"
+     "date": "2024",
+     "kind": "press"
     }
    ],
    "reasoning": "Reception allowance and centres (EUR 6-7k per person-year) for those not yet in a municipality, integration compensation afterwards. Close to the map.",
@@ -1625,12 +1649,14 @@
     {
      "name": "Noviny.sk: Interior Ministry paid almost EUR 130m in accommodation contributions; rate halved",
      "url": "https://www.noviny.sk/slovensko/893610-stat-znizil-prispevok-na-ubytovanie-pre-utecencov-z-ukrajiny",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     },
     {
      "name": "TASR: accommodation contribution cut to EUR 12/6 per night, extended to March 2024",
      "url": "https://www.teraz.sk/utok-na-ukrajinu/prispevok-za-ubytovanie-ukrajincov-bude/759373-clanok.html",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     }
    ],
    "reasoning": "EUR ~130m of accommodation contributions in 2022-23 plus material-need benefits; much refunded from EU cohesion funds (CARE). The map's model is about three times higher.",
@@ -1701,12 +1727,14 @@
     {
      "name": "Europa Liberă: RON 591.97m paid in 2022 for food and housing of Ukrainians (50/20)",
      "url": "https://romania.europalibera.org/a/32343094.html",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     },
     {
      "name": "Economedia: over EUR 106m paid last year for housing and food of Ukrainian refugees; switch to a lump sum of RON 2,000/month",
      "url": "https://economedia.ro/guvernul-are-miercuri-pe-masa-din-nou-proiectul-de-ordonanta-de-urgenta-care-schimba-mecanismul-de-decontare-a-cazarii-si-mesei-pentru-refugiati-ucraineni-refugiatii-vor-primi-o-suma-forfetara-de-2-0.html",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     }
    ],
    "reasoning": "50/20 cost RON 592m (EUR 0.12bn) in 2022 and over EUR 0.1bn in the following year, plus schooling and health; the 2023 lump sum is conditional on work or school. Large parts were claimed from EU funds.",
@@ -1756,7 +1784,8 @@
     {
      "name": "Infomarket: MDL 386.7m from Reserve and Intervention funds for the refugee crisis by end-Jul 2022",
      "url": "https://www.infomarket.md/en/goverment/283226",
-     "date": "2022-08"
+     "date": "2022-08",
+     "kind": "press"
     },
     {
      "name": "UNHCR Moldova: over USD 785m received since 2022 to manage the refugee situation",
@@ -1806,12 +1835,14 @@
     {
      "name": "Euromaidan Press: Lithuania's state budget support for Ukrainian refugees over EUR 114m after a further EUR 9m; EUR 34.5m in 2022",
      "url": "https://euromaidanpress.com/2024/08/05/lithuania-allocates-98-million-for-ukrainian-refugees-support/",
-     "date": "2024-08-05"
+     "date": "2024-08-05",
+     "kind": "press"
     },
     {
      "name": "Kyiv Post: Lithuania provides nearly EUR 33m for tuition of Ukrainian refugees",
      "url": "https://www.kyivpost.com/post/46841",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     }
    ],
    "reasoning": "EUR 114m of state support by mid-2024 plus ~EUR 33m education; high allows for mainstream benefits and health not in these allocations.",
@@ -1856,7 +1887,8 @@
     {
      "name": "Ukrinform: Latvian government allocates EUR 15.6m to municipalities for refugee reception to June 2024; EUR 28.6m for Jan-Nov 2023",
      "url": "https://ukrinform.net/rubric-economy/3817369-latvian-government-allocates-156-million-to-support-ukrainians.html",
-     "date": "2023-12"
+     "date": "2023-12",
+     "kind": "press"
     }
    ],
    "reasoning": "Municipal reception transfers of about EUR 30m a year plus state benefits and schooling.",
@@ -1901,7 +1933,8 @@
     {
      "name": "ERR: EU funding for Ukraine war refugees in Estonia remains marginal (EUR 9m) against own budget spending",
      "url": "https://news.err.ee/1608654079/eu-funding-for-ukraine-war-refugees-in-estonia-remains-marginal",
-     "date": "2022"
+     "date": "2022",
+     "kind": "press"
     }
    ],
    "reasoning": "About EUR 1.5-2k per person-year; Ukrainians in Estonia work at high rates.",
@@ -1946,7 +1979,8 @@
     {
      "name": "RTP Madeira: about 54,000 Ukrainians under temporary protection in Portugal",
      "url": "https://madeira.rtp.pt/?p=186624",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     }
    ],
    "reasoning": "Portugal gives temporary-protection holders access to general social benefits and the health service; most work. EUR 1-1.5k per person-year.",
@@ -2062,7 +2096,8 @@
     {
      "name": "L'info durable: Cour des comptes, reception of Ukrainians cost France EUR 634m in 2022",
      "url": "https://www.linfodurable.fr/laccueil-des-ukrainiens-coute-634-millions-deuros-la-france-en-2022-37137",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     },
     {
      "name": "Sénat, budget report 2024, asylum mission: EUR 481.8m paid in 2022, EUR 321.8m estimated for 2023",
@@ -2112,12 +2147,14 @@
     {
      "name": "Jiji: government lump sum up to JPY 160,000 and daily living allowance JPY 2,400/1,600 for Ukrainian evacuees",
      "url": "https://sp.m.jiji.com/english/show/19109",
-     "date": "2022-04"
+     "date": "2022-04",
+     "kind": "press"
     },
     {
      "name": "Interfax: Japan to launch new living-support programme for Ukrainian evacuees in spring 2024",
      "url": "https://interfax.com/newsroom/top-stories/95717/",
-     "date": "2023-10"
+     "date": "2023-10",
+     "kind": "press"
     }
    ],
    "reasoning": "About 2,000-2,600 evacuees; government living allowances, housing and language courses. The Nippon Foundation's private JPY 5.3bn is private, not public.",
@@ -2697,17 +2734,20 @@
    {
     "name": "Novaya Gazeta Europe / The Moscow Times: Belarusian gasoline to Russia Jan-May 2026 ~13x (270 kt), diesel x3 (179 kt), amid Russian refinery outages",
     "url": "https://novayagazeta.eu/articles/2026/08/12/benzin-iz-belarusi-bodiaga-v-bak-i-otmenennye-otpuska",
-    "date": "2026-08-12"
+    "date": "2026-08-12",
+    "kind": "press"
    },
    {
     "name": "TKS: Russia-Belarus goods turnover USD 51.9bn in 2025 vs 38.4bn in 2021 (Russian side)",
     "url": "https://www.tks.ru/news/nearby/2026/04/03/0007/eksport-belorusskih-tovarov-v-rossiyu-vyiros-na-40-procent-posle-sanktsij-2022-goda/",
-    "date": "2026-04-03"
+    "date": "2026-04-03",
+    "kind": "press"
    },
    {
     "name": "Kommersant: Union State Council of Ministers, 2022 Russia-Belarus trade USD 43.4bn",
     "url": "https://www.kommersant.ru/doc/5900590",
-    "date": "2023-03"
+    "date": "2023-03",
+    "kind": "press"
    },
    {
     "name": "research/2026-10/gaps/residual.json and narrow.json (Belarus pro-rata residual and official totals)",

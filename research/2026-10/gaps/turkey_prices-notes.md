@@ -1,6 +1,6 @@
 # Türkiye: prices of what it buys from Russia (research 2026-10, round 5)
 
-Gathered 2026-10-18. Output: [`turkey_prices.json`](turkey_prices.json). **No person has reviewed it yet.**
+Gathered 2026-10-18. Output: [`turkey_prices.json`](turkey_prices.json).
 
 ## Why this file exists
 

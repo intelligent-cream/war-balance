@@ -1014,7 +1014,7 @@
    "sources": [
     "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
     "https://www.kielinstitut.de/research/topics/war-against-ukraine/ukraine-support-tracker/",
-    "https://komersant.ua/en/rakhunok-solidarnosti-skilky-hroshey-ievropeyski-krainy-vytratyly-na-ukrainskykh-bizhentsiv",
+    "Press only: https://komersant.ua/en/rakhunok-solidarnosti-skilky-hroshey-ievropeyski-krainy-vytratyly-na-ukrainskykh-bizhentsiv",
     "https://api.unhcr.org/population/v1/population/?year=2025&coo=UKR&coa_all=true"
    ],
    "notes": "EU member: figures are BILATERAL only and EXCLUDE the member's imputed share of EU-institution aid (Kiel imputed share: allocated 3.9896, committed 7.6906; bilateral+EU share allocated 9.8757, committed 14.1237). Do not add EU_INST on top if using the incl-share figures (double count). Financial allocations by type (EUR bn): loan 0.0, grant 0.0463, guarantee 0.0, ERA loan 0.0, central-bank swap line 0.8817. Guarantees are NOT counted in loans_face_value. Military in-kind values partly estimated by Kiel from price lists: 0.711 bn of allocations (12%) are 'calculated with prices'. refugee_cost: removed in round 15 (an unverified search-snippet figure; Kiel's dataset has no per-country refugee costs). refugees_hosted = UNHCR refugees from Ukraine in this country, end-2025 (Refugee Data Finder API)."
@@ -1065,7 +1065,7 @@
    "sources": [
     "https://www.kielinstitut.de/fileadmin/Dateiverwaltung/IfW-Publications/fis-import/bc5059ba-ef38-4f08-988a-746a03905a6c-Ukraine_Support_Tracker__Release_31.xlsx",
     "https://www.kielinstitut.de/research/topics/war-against-ukraine/ukraine-support-tracker/",
-    "https://komersant.ua/en/rakhunok-solidarnosti-skilky-hroshey-ievropeyski-krainy-vytratyly-na-ukrainskykh-bizhentsiv",
+    "Press only: https://komersant.ua/en/rakhunok-solidarnosti-skilky-hroshey-ievropeyski-krainy-vytratyly-na-ukrainskykh-bizhentsiv",
     "https://api.unhcr.org/population/v1/population/?year=2025&coo=UKR&coa_all=true"
    ],
    "notes": "EU member: figures are BILATERAL only and EXCLUDE the member's imputed share of EU-institution aid (Kiel imputed share: allocated 1.4256, committed 1.6257; bilateral+EU share allocated 2.0637, committed 2.5204). Do not add EU_INST on top if using the incl-share figures (double count). Financial allocations by type (EUR bn): loan 0.0, grant 0.0, guarantee 0.0, ERA loan 0.0, central-bank swap line 0.0. Guarantees are NOT counted in loans_face_value. Military in-kind values partly estimated by Kiel from price lists: 0.002 bn of allocations (0%) are 'calculated with prices'. refugee_cost: removed in round 15 (an unverified search-snippet figure; Kiel's dataset has no per-country refugee costs). refugees_hosted = UNHCR refugees from Ukraine in this country, end-2025 (Refugee Data Finder API)."

@@ -1668,7 +1668,8 @@
   {
    "name": "Euronews: Where are the Russian immobilised assets? Nobody except Belgium wants to say",
    "url": "https://www.euronews.com/my-europe/2025/11/06/where-are-the-russian-immobilised-assets-nobody-except-belgium-wants-to-say",
-   "date": "2025-11-06"
+   "date": "2025-11-06",
+   "kind": "press"
   },
   {
    "name": "Euroclear 2025 results (interest EUR 5.0bn; balance sheet 222, of which 195 sanctioned Russian; windfall 3.3)",
@@ -1723,32 +1724,38 @@
   {
    "name": "Euronews: Brussels pitches EUR 140bn loan based on frozen assets (EU 210, Euroclear ~185, cash ~175-176)",
    "url": "https://www.euronews.com/my-europe/2025/09/26/brussels-pitches-140-billion-loan-to-ukraine-based-on-russias-frozen-assets",
-   "date": "2025-09-26"
+   "date": "2025-09-26",
+   "kind": "press"
   },
   {
    "name": "Euronews (fr): France froze EUR 22.8bn of Bank of Russia assets",
    "url": "https://fr.euronews.com/2022/03/20/la-france-a-gele-plus-de-22-milliards-d-euros-d-actifs-de-la-banque-de-russie",
-   "date": "2022-03-20"
+   "date": "2022-03-20",
+   "kind": "press"
   },
   {
    "name": "SECO via swissinfo/bluewin: CHF 7.4bn private frozen, CHF 7.45bn central bank reserves",
    "url": "https://www.bluewin.ch/en/news/switzerland-freezes-russian-assets-worth-15-billion-2633158.html",
-   "date": "2025-04-01"
+   "date": "2025-04-01",
+   "kind": "press"
   },
   {
    "name": "Nikkei via nippon.com: Bank of Japan to freeze Russia's yen reserves (JPY 4-5 trillion)",
    "url": "https://www.nippon.com/en/news/reu20220301KBN2KX1YY/",
-   "date": "2022-03-01"
+   "date": "2022-03-01",
+   "kind": "press"
   },
   {
    "name": "Axios: REPO task force, USD 5.06bn Russian sovereign assets in the US",
    "url": "https://www.axios.com/2023/09/07/repo-russian-elites-proxies-oligarchs-assets-us",
-   "date": "2023-09-07"
+   "date": "2023-09-07",
+   "kind": "press"
   },
   {
    "name": "Kyiv Independent: Russian frozen assets have Australia's Senate fired up (AUD 2% of Euroclear cash; DFAT < AUD 100m)",
    "url": "https://kyivindependent.com/russian-frozen-assets-have-australias-senate-fired-up/",
-   "date": "2026-08"
+   "date": "2026-08",
+   "kind": "press"
   },
   {
    "name": "Canada Senate debate (C$22bn of Euroclear cash in Canadian banks)",
@@ -1758,12 +1765,14 @@
   {
    "name": "Schwaebische/dpa: Germany holds only a small three-digit million amount",
    "url": "https://www.schwaebische.de/politik/von-der-leyen-will-auch-russen-geld-in-deutschland-nutzen-4158437",
-   "date": "2025-12"
+   "date": "2025-12",
+   "kind": "press"
   },
   {
    "name": "vol.at: frozen Russian assets in Austria fell from EUR 2bn to 1.5bn (DSN, OeNB)",
    "url": "https://www.vol.at/eingefrorenes-russisches-vermogen-in-osterreich-gesunken/8579134",
-   "date": "2023"
+   "date": "2023",
+   "kind": "press"
   },
   {
    "name": "UK government: GBP 25bn of Russian assets frozen (OFSI)",
@@ -1773,22 +1782,26 @@
   {
    "name": "Belga: frozen Russian assets at Euroclear earn Belgium EUR 1.7bn in tax",
    "url": "https://www.belganewsagency.eu/frozen-russian-assets-at-euroclear-earn-belgium-17-billion-euros-in-tax-revenue",
-   "date": "2025-02"
+   "date": "2025-02",
+   "kind": "press"
   },
   {
    "name": "Kyiv Post fact-check: Is Belgium giving Ukraine EUR 1.7bn taxed from Russia's frozen assets?",
    "url": "https://www.kyivpost.com/post/46802",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "Belga: Belgium blocked EUR 3.5bn in Russian private assets (member-state split, total 18.9)",
    "url": "https://belganewsagency.eu/belgium-blocked-35-billion-in-russian-assets-more-than-any-other-eu-member",
-   "date": "2022"
+   "date": "2022",
+   "kind": "press"
   },
   {
    "name": "Euronews: EU triggers emergency clause to indefinitely immobilise Russian assets",
    "url": "https://www.euronews.com/my-europe/2025/12/11/eu-triggers-emergency-clause-to-indefinitely-immobilise-russian-assets",
-   "date": "2025-12-11"
+   "date": "2025-12-11",
+   "kind": "press"
   }
  ],
  "notes": [

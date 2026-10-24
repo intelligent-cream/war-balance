@@ -12643,42 +12643,50 @@
   {
    "name": "TBS News: Russia to get Rooppur loan payments via Sonali Bank account (USD 7.33bn disbursed by Aug 2024; ~USD 0.8bn dues)",
    "url": "https://www.tbsnews.net/node/1010526",
-   "date": "2024-12-05"
+   "date": "2024-12-05",
+   "kind": "press"
   },
   {
    "name": "TBS News: Rooppur plant payment hurdle sticks with it (USD 7.7bn disbursed by Dec 2023; ~USD 1bn interest and charges owed)",
    "url": "https://www.tbsnews.net/economy/rooppur-plant-payment-hurdle-sticks-it-1097121",
-   "date": "2025-03-20"
+   "date": "2025-03-20",
+   "kind": "press"
   },
   {
    "name": "The Daily Star: Govt moves to clear Rooppur dues to Russia after US waiver (escrow USD 1.03bn June 2025; OFAC waiver Aug 2025)",
    "url": "https://www.thedailystar.net/business/economy/news/govt-moves-clear-rooppur-dues-russia-after-us-waiver-3964161",
-   "date": "2025-08-16"
+   "date": "2025-08-16",
+   "kind": "press"
   },
   {
    "name": "Egypt Independent / official gazette: USD 25bn Russian loan, 85%, 3%, repayment from 15 Oct 2029",
    "url": "https://www.egyptindependent.com/25-bn-russian-funds-egypt-s-first-nuclear-plant-newspaper/",
-   "date": "2016-05"
+   "date": "2016-05",
+   "kind": "press"
   },
   {
    "name": "Financial Afrik: Putin approves repayment in roubles of the Dabaa loan",
    "url": "https://www.financialafrik.com/en/2025/06/27/egypt-vladimir-putin-approves-repayment-in-rubles-of-25-billion-nuclear-loan-for-dabaa-project/",
-   "date": "2025-06-27"
+   "date": "2025-06-27",
+   "kind": "press"
   },
   {
    "name": "World Nuclear News: Hungary gets agreement to delay Paks II loan repayment (draw period to 2030, first principal by 15 Mar 2031)",
    "url": "https://www.world-nuclear-news.org/Articles/Hungary-gets-agreement-to-delay-Paks-II-loan-repay",
-   "date": "2021-05"
+   "date": "2021-05",
+   "kind": "press"
   },
   {
    "name": "bne IntelliNews: Hungary draws down EUR 239mn Russian loan for Paks",
    "url": "https://www.intellinews.com/hungary-draw-downs-239mn-russian-loan-for-paks-nuclear-power-plant-expansion-177013/",
-   "date": "2020-02"
+   "date": "2020-02",
+   "kind": "press"
   },
   {
    "name": "BBJ: Hungary to start drawing on Paks loan from Russia (HUF 9.66bn quarterly invoice, EUR 24.5m drawn = 80%)",
    "url": "https://bbj.hu/energy-environment/hungary-to-start-drawing-on-paks-loan-from-russia_141263",
-   "date": "2019"
+   "date": "2019",
+   "kind": "press"
   },
   {
    "name": "Paks II Ltd: Hungary begins the early repayment of the loan",
@@ -12688,27 +12696,32 @@
   {
    "name": "Interfax: Duma ratifies protocol on Paks-2 loan (interest and commitment fees in euro)",
    "url": "https://interfax.com/newsroom/top-stories/92874/",
-   "date": "2023-07-21"
+   "date": "2023-07-21",
+   "kind": "press"
   },
   {
    "name": "Kyiv Independent/NV: Russia delays Belarus USD 800m debt payments",
    "url": "https://english.nv.ua/business/russia-delays-belarus-800m-debt-payments-under-new-agreement-50495225.html",
-   "date": "2025-03"
+   "date": "2025-03",
+   "kind": "press"
   },
   {
    "name": "Nasha Niva: Russia defers Belarus principal to 2032-2037 (ratified Jan 2026)",
    "url": "https://nashaniva.com/en/386782",
-   "date": "2026-01"
+   "date": "2026-01",
+   "kind": "press"
   },
   {
    "name": "Interfax: Russia ratifies restructuring of part of Belarus government debt",
    "url": "https://interfax.com/newsroom/top-stories/97551/",
-   "date": "2023"
+   "date": "2023",
+   "kind": "press"
   },
   {
    "name": "OilPrice: Venezuela slashes Russian (Rosneft) debt to below USD 1bn",
    "url": "https://oilprice.com/Latest-Energy-News/World-News/Venezuela-Slashes-Russian-Debt-To-Below-1-Billion.amp.html",
-   "date": "2019-11"
+   "date": "2019-11",
+   "kind": "press"
   },
   {
    "name": "Eurostat bop_its6_det / OECD-WTO BaTiS, services imports from Russia (via research/2026-10/gaps/uncovered.json)",

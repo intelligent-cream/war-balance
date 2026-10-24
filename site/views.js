@@ -4,7 +4,7 @@
 // state (view, measure, what's counted, region, group, size, year) and re-renders whenever it changes (paint() calls
 // renderView()). Round 20 (owner): only Map, Ranking and Sources remain, and the ranking is as clean as the map: the
 // header line names it and its explanation is in the header's ⓘ (rankInfo)
-/* global leaning, isNearZero, noDataAt, PARTY_TO_WAR, state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
+/* global leaning, chance, pct, isNearZero, noDataAt, PARTY_TO_WAR, state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
    num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades, renderDrawer, renderInfo, verb, rangeWords */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
@@ -95,7 +95,10 @@ function renderRanking(root) {
   rows.forEach(m => (m.st = status(m)));
   // round 39 (owner: "do B"): a sixth group in the middle, near zero (range and method band within ±0.5% of GDP)
   rows.forEach(m => (m.nz = !!m.st && isNearZero(m.c, y, hq)));
-  const grp = m => (m.nz ? 2 : m.st === "unc" ? 3 : m.v >= 0 ? (m.st ? 1 : 0) : (m.st ? 4 : 5));
+  // round 42 (certainty audit): a leaning row goes to the side the simulation favours, which can differ from the sign of
+  // its middle value; each row shows that side's chance
+  rows.forEach(m => { m.ch = hq && y > 2021 ? chance(m.c, y, hq) : null; });
+  const grp = m => (m.nz ? 2 : m.st === "unc" ? 3 : m.st === "lean" ? (m.ch.side === "ukraine" ? 1 : 4) : m.v >= 0 ? 0 : 5);
   const GROUP_LABEL = state.lens === "support"
     ? ["Supported Ukraine", "Leaning: supported Ukraine", "Near zero", "Direction uncertain", "Leaning: below zero", "Below zero"]
     : ["Toward Ukraine", "Leaning toward Ukraine", "Near zero", "Direction uncertain", "Leaning toward Russia", "Toward Russia"];
@@ -106,7 +109,7 @@ function renderRanking(root) {
   const lines = groups.flatMap(({ g, list }) => [{ head: g, n: list.length }, ...list]);
   const diverging = true;   // every view can go either way around zero
   const narrowScreen = root.clientWidth < 600;
-  const W = Math.min(1040, root.clientWidth - 32), rowH = 22, labelW = narrowScreen ? 112 : 170, valW = narrowScreen ? 58 : 76;
+  const W = Math.min(1040, root.clientWidth - 32), rowH = 22, labelW = narrowScreen ? 112 : 170, chW = narrowScreen ? 42 : 48, valW = (narrowScreen ? 58 : 76) + chW;
   const top = 30, H = top + lines.length * rowH + 10;
   const vals = rows.flatMap(m => [m.v, m.lo ?? m.v, m.hi ?? m.v]);
   // a compressed (symmetric-log) scale keeps small countries readable next to large totals; the range is clamped to the
@@ -132,18 +135,19 @@ function renderRanking(root) {
       const y = top + i * rowH + rowH / 2;
       if (m.head != null) return `<text class="rk-gh rk-gh${m.head}" x="0" y="${y + 6}">${t(GROUP_LABEL[m.head])} · ${m.n}</text>`;
       const w = m.lo != null ? `<line class="whisk" x1="${x(m.lo)}" x2="${x(m.hi)}" y1="${y}" y2="${y}"/>` : `<line class="whisk" x1="${x(0)}" x2="${x(m.v)}" y1="${y}" y2="${y}" style="stroke:${col(m.v)};stroke-opacity:.35;stroke-width:6"/>`;
-      const tag = m.st ? ` · ${stLabel[m.st]}` : "";
+      const tag = (m.st ? ` · ${stLabel[m.st]}` : "") + (m.ch ? ` · ${t("chance {p}", { p: pct(m.ch.p) })}` : "");
       return `<g class="row${m.st ? " rk-" + m.st : ""}${m.nz ? " rk-nz" : ""}" tabindex="0" role="button" data-n="${m.c.n}" data-g="${grp(m)}" aria-label="${m.c.name}: ${verb(HEAD_LENS[state.lens], m.bn, m.c)}${tag}">
         <rect class="hit" x="0" y="${y - rowH / 2}" width="${W}" height="${rowH}" fill="transparent"/>
         <text class="lbl" x="${labelW - 10}" y="${y + 4}" text-anchor="end">${m.rank ? m.rank + ". " : ""}${fitName(m.c.name, narrowScreen ? 12 : 20)}<title>${m.c.name}${tag}</title></text>
         ${w}<circle class="dot" cx="${x(m.v)}" cy="${y}" r="5.5" fill="${col(m.v)}"/>
+        ${m.ch ? `<text class="rk-ch" x="${W - valW + 6}" y="${y + 4}" text-anchor="start" style="fill:${m.ch.side === "ukraine" ? "var(--ukr)" : state.lens === "support" ? "var(--ink-soft)" : "var(--rus)"}">${pct(m.ch.p)}</text>` : ""}
         <text x="${W}" y="${y + 4}" text-anchor="end" style="font-family:var(--font-data);font-size:12px;fill:var(--ink)">${fmtMeasure(m.c, m.bn, state.measure, diverging, false)}</text>
       </g>`;
     }).join("")}
   </svg>`;
   const tagNote = ts ? `<p class="rk-tags" role="status"><span>${t("Showing {n} countries tagged: {tags}.", { n: rows.length + party.length, tags: tagNames() })}</span> <button class="linkbtn tclear" data-tag-clear>${t("Clear tags")}</button></p>` : "";
   root.innerHTML = `<div class="view-inner">
-    ${tagNote}<p class="rk-key"><span class="rk-k rk-k-sure"></span>${t("certain")} <span class="rk-k rk-k-lean"></span>${t("leaning (≥65%)")} <span class="rk-k rk-k-unc"></span>${t("uncertain")}</p>
+    ${tagNote}<p class="rk-key"><span class="rk-k rk-k-sure"></span>${t("certain (≥95%)")} <span class="rk-k rk-k-lean"></span>${t("leaning (≥65%)")} <span class="rk-k rk-k-unc"></span>${t("uncertain")} · ${t("% = chance of the more likely direction")}</p>
     <div class="chart">${svg}</div>
     <p class="note-small">${t("Compressed scale: the axis labels give the true values.")}</p>
     ${party.length ? chipGroup(party, t("Party to the war (with Russia), not ranked:"), "party") : ""}

@@ -1,6 +1,6 @@
 # Round 4a: company tax split and 2018-2020 history, China's refining of Russian crude, EU refiners, pre-war laundered oil
 
-Gathered 2026-10-18. Output: `round4a.json`. **No person has reviewed it yet.**
+Gathered 2026-10-18. Output: `round4a.json`.
 Values are in EUR bn, nominal, converted at ECB annual average rates. Ranges are low / central / high, meant as ~90% intervals.
 This file was produced by the project's research step and is kept as a data input; the research scripts and raw downloads are not in the repository, and the sources are listed in these notes.
 

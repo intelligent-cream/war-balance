@@ -2,7 +2,7 @@
 // Round 20 (owner): Table & data is no longer a view (its old links open Sources). Its downloads stay, in Sources: every
 // country, every number (CSV), every part (CSV) and the whole data file (JSON), plus the data gaps by country. They
 // follow the Filters drawer's period, what's counted and money flowing back; every country is in them.
-/* global leaning, state, DATA, calc, scaled, t, viewState, uncertain, grades, custom, COUNTED, isOn, esc, tData, FRAC, yi, remitSum, select */
+/* global leaning, chance, partGrade, evidence, state, DATA, calc, scaled, t, viewState, uncertain, grades, custom, COUNTED, isOn, esc, tData, FRAC, yi, remitSum, select */
 
 // the four numbers, each a group of three columns: the value, its likely range and its certainty letter
 const TGROUPS = [
@@ -75,7 +75,7 @@ function csvFull(rows) {
     "trade_with_russia_toward_ukraine_eur_bn", "trade_with_russia_toward_ukraine_low_eur_bn", "trade_with_russia_toward_ukraine_high_eur_bn", "trade_with_russia_toward_ukraine_pct_gdp", "trade_with_russia_toward_ukraine_certainty", "trade_with_russia_toward_ukraine_direction_uncertain", "of_which_gas_cut_by_russia_eur_bn",
     "of_which_russia_kept_less_eur_bn", "of_which_russia_kept_less_low_eur_bn", "of_which_russia_kept_less_high_eur_bn", "of_which_country_kept_less_from_selling_to_russia_eur_bn", "of_which_country_kept_less_from_selling_to_russia_low_eur_bn", "of_which_country_kept_less_from_selling_to_russia_high_eur_bn",
     "russian_money_frozen_eur_bn_net_only", "russian_money_frozen_low_eur_bn_net_only", "russian_money_frozen_high_eur_bn_net_only", "russian_money_frozen_pct_gdp_net_only",
-    "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person", "net_shift_certainty", "net_shift_direction_uncertain", "net_shift_leaning",
+    "net_shift_eur_bn", "net_shift_low_eur_bn", "net_shift_high_eur_bn", "net_shift_pct_gdp", "net_shift_eur_per_person", "net_shift_certainty", "net_shift_direction_uncertain", "net_shift_leaning", "net_shift_chance_toward_ukraine",
     "military_aid_allocated_not_yet_delivered_eur_bn",
     "refugees_hosted_not_counted_co_belligerent_eur_bn",
     "remittances_from_russia_change_eur_bn_not_in_totals", "remittances_from_russia_change_low_eur_bn_not_in_totals", "remittances_from_russia_change_high_eur_bn_not_in_totals", "remittances_from_russia_change_pct_gdp_not_in_totals",
@@ -91,7 +91,7 @@ function csvFull(rows) {
       k.uaBal, k.uaLo, k.uaHi, G(k.uaBal), cert("ua"), unc("ua"), k.rusBal, k.rusLo, k.rusHi, G(k.rusBal), cert("rus"), unc("rus"), k.rusCut,
       k.rusPaid, k.rusPaidLo, k.rusPaidHi, k.rusEarned, k.rusEarnedLo, k.rusEarnedHi,
       k.frozen, k.frozenLo, k.frozenHi, G(k.frozen),
-      k.shift, k.shiftLo, k.shiftHi, G(k.shift), pp && k.shift * pp, cert("net"), unc("net"), y > 2021 && unc("net") ? leaning(c, y, "net") || "" : "", k.undelivered, refX,
+      k.shift, k.shiftLo, k.shiftHi, G(k.shift), pp && k.shift * pp, cert("net"), unc("net"), y > 2021 && unc("net") ? leaning(c, y, "net") || "" : "", y > 2021 && c.gdp ? +chance(c, y, "net").pUa.toFixed(3) : "", k.undelivered, refX,
       rm[0], rm[1], rm[2], G(rm[0]),
       k.taken, k.takenLo, k.takenHi, G(k.taken),
       k.cost, G(k.cost), k.aid, k.refugees, k.paidRussia, c.gdp, c.pop, figuresEn()].map(q).join(",");
@@ -101,11 +101,11 @@ function csvFull(rows) {
 // round 17: "official", or which parts of a custom mix were switched off (in English, like the other columns)
 function figuresEn() { return custom() ? "custom mix, not the official figures: " + COUNTED.filter(gp => !isOn(gp)).map(gp => gp.label).join("; ") + " switched off" : "official"; }
 function csvParts(rows) {
-  const head = ["iso3", "country", "period", "net_of_flowback", "part", "label", "eur_bn", "low_eur_bn", "high_eur_bn", "certainty", "sources", "figures"];
+  const head = ["iso3", "country", "period", "net_of_flowback", "part", "label", "eur_bn", "low_eur_bn", "high_eur_bn", "certainty", "evidence", "sources", "figures"];
   // round 14b: what Russia took from companies comes last, marked: it is not in the net
   const all = r => r.k.shiftParts.concat(state.netBack ? r.k.backShift.map(p => ({ ...p, k: "back_" + p.k })) : [])
     .concat((r.k.takenParts || []).map(p => ({ ...p, k: "taken_" + p.k, en: p.en + " (not in totals)" })));
-  const lines = rows.flatMap(r => all(r).map(p => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, p.k, p.en, p.v, p.lo, p.hi, p.cert, (p.src || []).join(" "), figuresEn()].map(q).join(",")));
+  const lines = rows.flatMap(r => all(r).map(p => [r.iso3, r.c.name_en, periodTextEn(), state.netBack, p.k, p.en, p.v, p.lo, p.hi, partGrade(p), evidence(p).kind, (p.src || []).join(" "), figuresEn()].map(q).join(",")));
   return [head.join(","), ...lines].join("\n");
 }
 function periodTextEn() {

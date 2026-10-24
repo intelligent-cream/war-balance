@@ -103,7 +103,7 @@ No vessel-level beneficial-owner data (Lloyd's List Intelligence, S&P) was reach
 
 ## 4. Company taxes
 
-- **Belgium 2022.** B4Ukraine/KSE (July 2023, via [Brussels Times](https://www.brusselstimes.com/590174/global-corporations-pay-3-5-billion-in-taxes-to-kremlin)) give USD 17m of profit tax for Belgian-HQ firms, which is EUR 16.1m. This replaces the allocated EUR 11.8m.
+- **Belgium 2022.** B4Ukraine/KSE ([The Business of Staying, July 2023](https://b4ukraine.org/pdf/BusinessOfStaying.pdf); earlier read via the Brussels Times) give USD 17m of profit tax for Belgian-HQ firms, which is EUR 16.1m. This replaces the allocated EUR 11.8m.
 - **Other allocated countries.** No further per-country figures were found:
   - KSE's 2023 results report has its country charts only as images.
   - leave-russia.org country filters still return HTTP 500.

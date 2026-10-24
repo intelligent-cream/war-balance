@@ -120,7 +120,7 @@ increases (steel) roughly cancel.
 - **The Russian return on assets uses total assets, including financial investments.** This tends to
   understate profit above a normal return. The fertiliser makers inside OKVED 20 push chemicals up.
 - **Weaker sources.** Several figures come from secondary sources or search snippets:
-  - the Rosoboronexport 2014 figures (Wikipedia);
+  - the Rosoboronexport 2014 figures (round 41: now the filed accounts via [audit-it.ru](https://www.audit-it.ru/buh_otchet/7718852163_ao-rosoboroneksport); net profit 9.67bn confirmed, revenue 22.04bn not: the accounts imply about 17.8bn, see `citations_r41-notes.md`);
   - the 2014 arms exports;
   - MMK 9M 2025;
   - the 2025 Rusal and Severstal figures, which were already in `net_gain_russia.json`.

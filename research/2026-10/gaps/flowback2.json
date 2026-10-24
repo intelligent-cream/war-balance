@@ -467,7 +467,8 @@
     {
      "name": "Notes from Poland: Poland buys 116 used Abrams to fill gap after T-72 donations",
      "url": "https://notesfrompoland.com/2022/07/15/poland-to-buy-116-used-abrams-tanks-from-us/",
-     "date": "2022-07-15"
+     "date": "2022-07-15",
+     "kind": "press"
     },
     {
      "name": "SIPRI Top 100 2024: PGZ arms revenues $3.04bn (+34%)",
@@ -613,7 +614,8 @@
     {
      "name": "Belga: two-thirds (EUR 645m) of Belgium's EUR 1bn 2025 military aid package to flow back to Belgian companies",
      "url": "https://www.belganewsagency.eu/two-thirds-of-military-aid-to-ukraine-to-be-provided-through-belgian-companies",
-     "date": "2025-04"
+     "date": "2025-04",
+     "kind": "press"
     }
    ],
    "reasoning": "Kiel: own stocks 22% (F-16 pledge, ammunition, M113), US stocks/PURL 7%, unknown/unspecified 70%. Government says 2/3 of the 2025 EUR 1bn package goes to Belgian firms (FN Herstal, John Cockerill, Mecar, ECA Robotics, Unimog/ambulances partly foreign) -> pu 0.4-0.7. F-16 donation not replaced (F-35 bought from US anyway) -> r 0.1-0.5."
@@ -709,7 +711,8 @@
     {
      "name": "LRT: Lithuania EUR 10m for Ukrainian Palianytsia drones; buys drones from Lithuanian manufacturers",
      "url": "https://www.lrt.lt/en/news-in-english/19/2422673/lithuania-vows-to-support-ukraine-s-defence-industry-allocate-eur10m",
-     "date": "2024-11-25"
+     "date": "2024-11-25",
+     "kind": "press"
     }
    ],
    "reasoning": "Kiel: own stocks 27% (M113, M577, L-70, Stinger, Carl-Gustaf, ammo), Lithuanian procurement 5% (drones), Ukraine 3%, US stocks 2%, unknown 63%. Large documented outflows to Ukraine (Lithuanian model), Czechia (initiative) and NASAMS/Kongsberg; backfill via Germany (Boxer/Leopard), US (Stinger/HIMARS), Sweden -> r 0-0.25, pu 0.03-0.25."
@@ -858,12 +861,14 @@
     {
      "name": "STVR: EU to compensate Slovakia for material donated to Ukraine (EPF)",
      "url": "https://enrsi.stvr.sk/articles/news/290030/eu-to-compensate-slovakia-for-material-donated-to-ukraine",
-     "date": "2022"
+     "date": "2022",
+     "kind": "press"
     },
     {
      "name": "Arab News/Reuters: MiG-29 transfer compensated by EUR 200m EU + US AH-1Z/Hellfire offer (~USD 1bn, Slovakia pays ~USD 340m)",
      "url": "https://www.arabnews.pk/node/2273596",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     }
    ],
    "reasoning": "Kiel: 99% from own stocks, 63% Soviet-origin (MiG-29, S-300, BMP-1, Mi-17, Grad, Kub). Replacement flows to the US (F-16 already ordered, AH-1Z), Sweden (CV90) and EU EPF reimbursement; domestic share via Zuzana 2/ammunition (Konstrukta, ZVS, MSM), largely paid by DK/DE/NO -> r 0.02-0.25."
@@ -913,7 +918,8 @@
     {
      "name": "Ukrainska Pravda / Latvian MoD: Latvia buys >2,700 drones from 7 Latvian manufacturers; EUR 20m drone coalition 2024 (>EUR 10m Latvian industry)",
      "url": "https://www.pravda.com.ua/eng/news/2024/07/05/7464243/",
-     "date": "2024-07-05"
+     "date": "2024-07-05",
+     "kind": "press"
     }
    ],
    "reasoning": "Kiel: own stocks 62% (Stinger, M109, Soviet items), Latvian procurement 11% (drones), Patria (Finland) 10%, unknown 14%. Stinger/M109 backfill goes to US/Korea/Finland -> r 0-0.2; drone coalition money partly to Latvian firms (Origin Robotics, Atlas Dynamics, Edge Autonomy Riga) -> pu 0.1-0.5."
@@ -1012,7 +1018,8 @@
     {
      "name": "The Defense Post: US approves Patriot sale to Romania to replace system donated to Ukraine (~USD 280m, partly funded by Norway and Sweden)",
      "url": "https://thedefensepost.com/2025/04/30/us-patriot-system-romania",
-     "date": "2025-04-30"
+     "date": "2025-04-30",
+     "kind": "press"
     }
    ],
    "reasoning": "Kiel: 99% from own stocks; the Patriot battery (US-origin) is ~36% of value and is replaced by a US FMS purchase funded partly by NO/SE grants. Other items (ammunition, Soviet-era) are replaced by Romarm only marginally -> r 0-0.15; pu 0.1-0.4."
@@ -1146,7 +1153,8 @@
     {
      "name": "Rubryka/Air Recognition: Croatia transfers 14 Mi-8 to Ukraine, replaced by UH-60M Black Hawks from the US",
      "url": "https://rubryka.com/en/2023/10/20/horvatiya-nadala-ukrayini-svoyi-gelikoptery-mi-8/",
-     "date": "2023-10-20"
+     "date": "2023-10-20",
+     "kind": "press"
     }
    ],
    "reasoning": "Kiel: 87% unspecified, 13% own stocks. Main item (14 Mi-8) replaced by US Black Hawks (US-funded in part). Croatian industry (DOK-ING demining, Duro Dakovic, HS Produkt small arms) supplies some items; PURL EUR 15m -> r 0-0.25, pu 0.05-0.3."
@@ -1325,7 +1333,8 @@
     {
      "name": "The Defense Post: Slovenia gives 28 M-55S tanks to Ukraine in exchange for 40 German trucks",
      "url": "https://thedefensepost.com/2022/09/20/slovenia-ukraine-tanks-german-gear/",
-     "date": "2022-09-20"
+     "date": "2022-09-20",
+     "kind": "press"
     }
    ],
    "reasoning": "Kiel: own stocks 42% (M-55S, ammo), US stocks/PURL 55%. Tank donation backfilled by German trucks (paid by Germany) -> own share near 0."
@@ -1373,7 +1382,8 @@
     {
      "name": "AP via Washington Times: Japan to donate ~100 SDF vehicles (trucks, high-mobility vehicles) to Ukraine",
      "url": "https://www.washingtontimes.com/news/2023/may/24/japan-to-donate-100-military-vehicles-to-ukraine/",
-     "date": "2023-05-24"
+     "date": "2023-05-24",
+     "kind": "press"
     }
    ],
    "reasoning": "Japan provides only non-lethal military items. Kiel item data: EUR 62m of EUR 76m are contributions to the NATO CAP Trust Fund (USD 30m + USD 37m for anti-drone systems), which procures internationally, and EUR 12.6m PURL; only ~EUR 1-2m are SDF stock items (vehicles, vests, helmets, small drones) replaced from Japanese suppliers (r 0.6-0.95). CAP money: assumed 0-20% reaches Japanese firms -> total 0.02-0.2."
@@ -1557,7 +1567,8 @@
     {
      "name": "Rubryka: South Korea sends ~USD 0.8m non-lethal military aid (vests, helmets, rations)",
      "url": "https://rubryka.com/en/2022/03/15/pivdenna-koreya-napravyt-ukrayini-neletalnu-vijskovu-dopomogu-na-800-tys/",
-     "date": "2022-03-15"
+     "date": "2022-03-15",
+     "kind": "press"
     }
    ],
    "reasoning": "Kiel: of EUR 15m, EUR 11m is USD 12m to the NATO CAP Trust Fund (medical/rehab, procured internationally); ~EUR 3m are non-lethal items (helmets, vests, MREs, CBRN kit) bought from Korean suppliers -> blended pu 0.1-0.35. Value tiny."
@@ -1763,12 +1774,14 @@
     {
      "name": "Infomarket: MDL 386.7m from Reserve (41.9m) and Intervention (344.8m) funds for the refugee crisis by end-Jul 2022",
      "url": "https://www.infomarket.md/en/goverment/283226",
-     "date": "2022-08"
+     "date": "2022-08",
+     "kind": "press"
     },
     {
      "name": "Logos Press: Economic Council - refugees contributed ~MDL 1.6bn (>USD 90m) in taxes/contributions since 2022",
      "url": "https://logos-pres.md/en/news/since-the-start-of-the-war-ukrainian-refugees-have-contributed-more-than-90-million-to-moldovas-budget/",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     }
    ],
    "reasoning": "Donor money for Moldova's refugee response, by year: low = FTS flows recorded against the Ukraine RRP with destination Moldova (USD 636m 2022-25, 2022 incl. a pro-rata share of multi-country flows); central = the same year profile scaled to UNHCR's 'over USD 785m' 2022-25 total (x1.23; FTS misses some partner funding); high = central x1.15 for bilateral money outside the RRP (EU/US grants to ministries, e.g. NHIC health coverage financed via IOM/UNICEF/UNFPA). 2026: UNHCR's own USD 64m was 28% funded by April; RRP USD 116m; assumed USD 30/50/70m for the year. Donor funding (EUR ~0.35bn in 2022, ~0.16bn in 2023 and 2024) is larger than the modelled host cost in refugees.json for those years (central EUR 0.08-0.14bn), and Moldova's own budget outlays were small (MDL ~387m, ~EUR 19m, from emergency funds by July 2022). About 31% of RRP target beneficiaries are vulnerable Moldovans, and part is agency overhead, so donor money is not all refugee cost. Share of total refugee-related spending in Moldova paid by donors: 0.6-0.95, central 0.8. Use: Moldova's own (net) cost = max(modelled cost x (1 - donor_share), small government outlays) - do not count donor-funded parts for Moldova and the donors at the same time."
@@ -1819,12 +1832,14 @@
     {
      "name": "Demagog: EU support to Poland for refugees - CARE advance EUR 562m, REACT-EU EUR 268m, AMIF/BMVI emergency EUR 144.6m (PLN 695m, of which PLN 329m direct refugee aid), FAST-CARE expected EUR 716m; EIB loan EUR 2bn (loan)",
      "url": "https://demagog.org.pl/wypowiedzi/ile-pieniedzy-polska-dostala-od-ue-na-wsparcie-uchodzcow/",
-     "date": "2023-02"
+     "date": "2023-02",
+     "kind": "press"
     },
     {
      "name": "Notes from Poland: EU has given Poland EUR 144m to help with Ukraine refugees",
      "url": "https://notesfrompoland.com/2022/10/20/eu-has-given-poland-e144m-to-help-with-ukraine-refugees/",
-     "date": "2022-10-20"
+     "date": "2022-10-20",
+     "kind": "press"
     }
    ],
    "reasoning": "Modelled/reported Polish cost 2022-25 EUR ~18bn central (10-31). External money: UN RRP flows to Poland USD ~0.61bn (EUR ~0.57bn) 2022-25; EU AMIF/BMVI emergency EUR 0.145bn (half for border infrastructure); REACT-EU EUR 0.27bn and CARE/FAST-CARE advances EUR 0.56bn + ~0.72bn are re-programmed cohesion money from Poland's own 2014-20 envelope (not additional). EIB EUR 2bn is a loan. Strict additional (UN + EU emergency) ~EUR 0.7bn = ~4%; gross incl. cohesion re-programming ~EUR 2.3bn = ~13%. Range 0.02-0.15, central 0.06."
@@ -1875,22 +1890,26 @@
     {
      "name": "Romania Insider: EC disburses EUR 450m to Romania for handling Ukrainian refugees (CARE advance)",
      "url": "https://www.romania-insider.com/romania-eu-funds-ukrainian-refugees",
-     "date": "2022"
+     "date": "2022",
+     "kind": "press"
     },
     {
      "name": "Romania Insider: Romania spent EUR 63.9m on refugees and received EUR 39m back from EU",
      "url": "https://romania-insider.com/romania-ukrainian-refugees-money-eu",
-     "date": "2022-08"
+     "date": "2022-08",
+     "kind": "press"
     },
     {
      "name": "OCCRP/Context.ro: of ~EUR 2bn EU money that could have gone to refugees, >EUR 1.5bn never reached them",
      "url": "https://occrp.org/en/news/romania-has-blocked-aid-for-ukrainian-refugees",
-     "date": "2023-10"
+     "date": "2023-10",
+     "kind": "press"
     },
     {
      "name": "Gandul: Chancellery report - 50/20 programme payments ~EUR 106m in 2022",
      "url": "https://www.gandul.ro/actualitate/cate-sute-mii-euro-cheltuie-zilnic-romania-cazarea-hrana-ucrainenilor-19949673",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     }
    ],
    "reasoning": "Modelled Romanian cost 2022-25 EUR ~1.5bn central (0.5-4.7). UN RRP flows to Romania USD ~0.23bn (EUR ~0.21bn). EU: CARE advance EUR 450m (re-programmed cohesion, largely not used for refugees per OCCRP/Context.ro), EUR 39m reimbursed for 50/20 meals and housing (2022). 50/20 itself cost EUR 106-150m in 2022. Strict external (UN + reimbursements + AMIF emergency) ~EUR 0.3bn = ~20% of central cost; gross incl. CARE ~EUR 0.7bn. Range 0.08-0.45."
@@ -1946,7 +1965,8 @@
     {
      "name": "RTVS: accommodation allowances fell from almost EUR 5m (Jun 2024) to EUR 1.2m a month (Jul 2024)",
      "url": "https://enrsi.rtvs.sk/articles/news/374841/allowances-for-accommodating-ukrainian-refugees-declines",
-     "date": "2024-08"
+     "date": "2024-08",
+     "kind": "press"
     }
    ],
    "reasoning": "Modelled Slovak cost 2022-25 EUR ~1.6bn central (0.5-5.0). UN RRP flows to Slovakia USD ~0.13bn (EUR ~0.12bn). The accommodation allowance May 2023-Apr 2025 (~EUR 4-5m/month until mid-2024, ~EUR 1-2m after) was reimbursed from EU funds: ~EUR 0.08-0.15bn. 2022 allowance phases (EUR 16m+) were state-funded. External ~EUR 0.2-0.27bn = ~15% of central. Range 0.06-0.35."
@@ -1997,17 +2017,20 @@
     {
      "name": "Babel: Commission paid EUR 3.5bn CARE advances; Czechia received EUR 283m",
      "url": "https://babel.ua/en/news/78135-eu-countries-accepting-refugees-from-ukraine-have-been-paid-3-5-billion",
-     "date": "2022"
+     "date": "2022",
+     "kind": "press"
     },
     {
      "name": "Radio Prague: Czechia to receive CZK 680m (EUR 27.4m) from EU emergency funds for refugees",
      "url": "https://english.radio.cz/node/8750955",
-     "date": "2022"
+     "date": "2022",
+     "kind": "press"
     },
     {
      "name": "European Newsroom/CTK: of CZK 28.5bn REACT-EU only ~CZK 412m went to Ukrainian refugees",
      "url": "https://europeannewsroom.com/the-eu-provided-the-czech-republic-with-28-5-billion-czk-to-address-health-and-social-crises",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     },
     {
      "name": "EIB: EUR 200m loan to Czechia for refugee healthcare costs",
@@ -2063,12 +2086,14 @@
     {
      "name": "Sofia Globe: hotel accommodation programme payouts ~BGN 523m (~EUR 267m) by late 2022, of which BGN 200m state budget and ~BGN 300m EU programmes and funds",
      "url": "https://sofiaglobe.com/?p=109719",
-     "date": "2022"
+     "date": "2022",
+     "kind": "press"
     },
     {
      "name": "SeeNews: Bulgaria pays EUR 42m for accommodation/transport of Ukrainian refugees (Sept 2022)",
      "url": "https://seenews.com/news/bulgaria-to-pay-42-mln-euro-for-accommodation-transportation-of-ukrainian-refugees-in-sept-804158",
-     "date": "2022-11"
+     "date": "2022-11",
+     "kind": "press"
     }
    ],
    "reasoning": "Modelled Bulgarian cost 2022-25 EUR ~1.0bn central (0.3-3.1); the 2022 hotel programme alone was EUR ~0.27bn, of which ~57% (BGN ~300m, EUR ~0.15bn) from EU programmes (mostly re-programmed cohesion/AMIF). UN RRP flows USD ~17m (2023-25). External ~EUR 0.17bn = 17% of central. Range 0.05-0.35."
@@ -2095,12 +2120,14 @@
     {
      "name": "UNN: Georgian assistance programmes for Ukrainians extended to 1 Jan 2027",
      "url": "https://unn.ua/en/amp/in-georgia-assistance-programs-for-ukrainian-refugees-have-been-extended-until-2027-what-the-payments-will-be",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "FactCheck.ge: one-off GEL 470 per child paid by the government with UNICEF support",
      "url": "https://www.factcheck.ge/en/story/41577-disinformation-refugee-children-from-ukraine-receive-more-government-aid-in-georgia-as-compared-to-georgian-refugees",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     },
     {
      "name": "ReliefWeb: UNHCR Georgia fact sheet Sep 2024 (UNHCR cash to ~238 vulnerable people in 2024)",
@@ -2173,12 +2200,14 @@
     {
      "name": "Bloomberg on INSS (Seoul) report: North Korea gave Russia up to USD 14bn (USD 7.67-14.4bn Aug 2023-Dec 2025)",
      "url": "https://www.bloomberg.com/news/articles/2026-03-18/n-korea-gave-russia-up-to-14-billion-in-military-aid-report",
-     "date": "2026-03-18"
+     "date": "2026-03-18",
+     "kind": "press"
     },
     {
      "name": "Mezha (Nikkei on INSS): USD 7-13.8bn rocket artillery and ~250 KN-23; >USD 600m for units",
      "url": "https://mezha.net/eng/bukvy/4ed5619d_north_korea_earned/",
-     "date": "2026-03"
+     "date": "2026-03",
+     "kind": "press"
     },
     {
      "name": "Friedrich Naumann Foundation Korea (Guseinova): supplies USD 1.72-5.52bn (2024); later up to USD 9.8bn incl. troops",
@@ -2188,22 +2217,26 @@
     {
      "name": "Kyiv Independent: ROK DIA - >28,000 containers, >12m 152mm-equivalent rounds",
      "url": "https://kyivindependent.com/north-korea-supplied-russia-with-12-million-rounds-of-152mm-shells-south-korean-intel-estimates/",
-     "date": "2025-07"
+     "date": "2025-07",
+     "kind": "press"
     },
     {
      "name": "Kyunghyang/MSMT: North Korean workers in Russia 2-3x the 8,000 assessed for 2024",
      "url": "https://www.khan.co.kr/en/article/202609162109017",
-     "date": "2026-09-16"
+     "date": "2026-09-16",
+     "kind": "press"
     },
     {
      "name": "NPR: NIS - 15,000 North Korean labourers sent to Russia; 1,000 deminers + 5,000 military builders to Kursk",
      "url": "https://www.wfae.org/2025-06-18/north-korea-plans-to-send-military-construction-workers-and-deminers-to-russia",
-     "date": "2025-06-18"
+     "date": "2025-06-18",
+     "kind": "press"
     },
     {
      "name": "Ukrainska Pravda: up to 25,000 North Koreans work in Russian drone production (BELLIGERENT-side source)",
      "url": "https://www.pravda.com.ua/eng/news/2026/09/17/8053849/index.amp",
-     "date": "2026-09-17"
+     "date": "2026-09-17",
+     "kind": "press"
     }
    ],
    "belligerent_sources_flag": "missile and artillery-system counts rely on Ukrainian GUR; value estimates are South Korean (INSS state-funded, DIA) and German foundation (FNF) - non-belligerent but ROK is a Ukraine supporter",
@@ -2251,17 +2284,20 @@
     {
      "name": "Ukrainska Pravda on Bloomberg: Iran sold nearly USD 3bn of missiles to Russia, total contracts >USD 4bn",
      "url": "https://www.pravda.com.ua/eng/news/2026/01/13/8015831",
-     "date": "2026-01-13"
+     "date": "2026-01-13",
+     "kind": "press"
     },
     {
      "name": "RFE/RL: How important is Iran for Russia's war effort?",
      "url": "https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html",
-     "date": "2026-01"
+     "date": "2026-01",
+     "kind": "press"
     },
     {
      "name": "Militarnyi: Iran sent Russia USD 2.7bn worth of missiles alone",
      "url": "https://militarnyi.com/en/blogs/iran-sent-russia-2-7-billion-worth-of-missiles-alone/",
-     "date": "2026-01"
+     "date": "2026-01",
+     "kind": "press"
     }
    ],
    "belligerent_sources_flag": "values from an anonymous Western security official (Bloomberg) - non-belligerent but from a Ukraine supporter",
@@ -2309,22 +2345,26 @@
     {
      "name": "Ukrainska Pravda / Belarusian railway workers' community: 131,500 t ammunition to Russia in one year",
      "url": "https://www.pravda.com.ua/eng/news/2023/06/10/7406295/",
-     "date": "2023-06-10"
+     "date": "2023-06-10",
+     "kind": "press"
     },
     {
      "name": "Belaruski Hajun: >130,000 t in a year",
      "url": "https://hajun.info/news/over-130000-tons-in-a-year-the-lukashenko-regime-supplies-russia-with-ammunition-which-is-transported-to-crimea-and-the-area-bordering-georgia/amp",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     },
     {
      "name": "Euromaidan Press: half a million shells annually - China enabled Belarus munitions output for Moscow (BelPol claim)",
      "url": "https://euromaidanpress.com/2025/11/18/half-a-million-shells-annually-how-china-enabled-belaruss-munitions-output-for-moscow/",
-     "date": "2025-11-18"
+     "date": "2025-11-18",
+     "kind": "press"
     },
     {
      "name": "Pozirk: Belarusian companies produce projectiles for Russian army (BelPol)",
      "url": "https://pozirk.online/en/news/122381",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     }
    ],
    "belligerent_sources_flag": "quantities come from Belarusian opposition/activist groups (Hajun, BelPol, railway workers) - not belligerent states, but advocacy sources; no official valuation exists",
@@ -2364,22 +2404,26 @@
     {
      "name": "19FortyFive: China has become the de facto weapons parts factory for Russia (NATO official: >USD 20bn of tools, components and consumables since 2023)",
      "url": "https://www.19fortyfive.com/2026/02/china-has-become-the-de-facto-weapons-parts-factory-for-russias-war-in-ukraine/",
-     "date": "2026-02"
+     "date": "2026-02",
+     "kind": "press"
     },
     {
      "name": "Euromaidan Press: China provides 80% of critical electronics for Russian drones (Ukrainian intelligence, BELLIGERENT; NATO official similar)",
      "url": "https://euromaidanpress.com/?p=340553",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "Babel/Telegraph: Chinese firms sold >GBP 47m of drone parts to sanctioned Russian producers in 2 years",
      "url": "https://babel.ua/en/news/121125-the-telegraph-china-sold-over-60-million-worth-of-drone-parts-to-russia-in-2-years",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "MERICS estimate via The Gaze: China dual-use exports to Russia 2024 >USD 4bn",
      "url": "https://thegaze.media/news/why-does-china-increase-the-supply-of-dual-use-goods-to-russia",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     },
     {
      "name": "Swedish National China Centre / OSW China-Russia dashboard: H1 2025 high-priority dual-use exports USD 1.9bn",
@@ -2407,12 +2451,14 @@
     {
      "name": "Intellinews: Colombian Foreign Ministry counts 173 dead (140 on Ukraine's side, 33 confirmed by Russia) and 670 missing",
      "url": "https://www.intellinews.com/colombia-counts-173-dead-and-670-missing-in-russia-ukraine-war-447567/",
-     "date": "2026-06"
+     "date": "2026-06",
+     "kind": "press"
     },
     {
      "name": "President Petro: ~7,000 Colombian 'mercenaries' fighting in Ukraine (via NV investigation: >7,000 served since 2022)",
      "url": "https://www.intellinews.com/colombia-s-battle-hardened-veterans-fuel-ukraine-s-front-lines-442135/",
-     "date": "2026-05"
+     "date": "2026-05",
+     "kind": "press"
     }
    ],
    "note": "Cumulative served since 2022. High = Colombian president / NV; low = International Legion unofficial 1,500-2,500 rounded up given 140 officially recorded deaths and 670 missing. Ukrainian ombudsman (belligerent) says ~40% of 16,000 foreigners are Latin American (~6,400)."
@@ -2427,12 +2473,14 @@
     {
      "name": "RFE/RL: Georgian Legion said to number 800-1,000, roughly half ethnic Georgians",
      "url": "https://www.rferl.org/a/ukraine-war-georgia-fighters-russia-invasion/32181784.html",
-     "date": "2026-10"
+     "date": "2026-10",
+     "kind": "press"
     },
     {
      "name": "Civil.ge: running tally of Georgian fighters killed (unofficial)",
      "url": "https://civil.ge/archives/tag/georgian-legion",
-     "date": "2026-10"
+     "date": "2026-10",
+     "kind": "press"
     },
     {
      "name": "GFSIS: at least several hundred Georgians",
@@ -2452,12 +2500,8 @@
     {
      "name": "Espreso/US media: at least 92 Americans killed; volunteer estimates from >1,000 to several thousand",
      "url": "https://global.espreso.tv/at-least-92-americans-have-died-fighting-for-ukraine-against-russia-reports-say",
-     "date": "2025"
-    },
-    {
-     "name": "Wikipedia: List of Americans in the Armed Forces of Ukraine",
-     "url": "https://en.wikipedia.org/wiki/List_of_Americans_in_the_Armed_Forces_of_Ukraine",
-     "date": "2026-10"
+     "date": "2025",
+     "kind": "press"
     }
    ],
    "note": "No US government count. Russian IC 816 / MoD 1,113 (belligerent) are inside the range; Ukraine's Mar-2022 '3,000 applied' is the high end."
@@ -2472,7 +2516,8 @@
     {
      "name": "Yle: Finnish MFA - about 100 Finns believed to have fought for Ukraine, ~30 at the time, over a dozen killed",
      "url": "https://yle.fi/a/74-20141662",
-     "date": "2025-04-30"
+     "date": "2025-04-30",
+     "kind": "press"
     }
    ]
   },
@@ -2484,9 +2529,14 @@
    "belligerent_source": false,
    "sources": [
     {
-     "name": "Wikipedia compilation citing Fegyir Sandor estimate (~400, ~30 killed)",
-     "url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
-     "date": "2026-10"
+     "name": "Telex, 23 Jun 2023: Sandor Fegyir (volunteer, later Ukraine's ambassador to Hungary): about 400 Hungarians fighting in the Ukrainian army, about 30 killed",
+     "url": "https://telex.hu/english/2023/06/23/future-ukrainian-ambassador-hungary-not-taking-part-in-the-war-400-people-are-fighting-in-the-ukrainian-army",
+     "date": "2026-10",
+     "kind": "press",
+     "replaced_r41": {
+      "old_url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
+      "verified": "search 2026-10-24"
+     }
     }
    ],
    "note": "Largely ethnic Hungarians with Ukrainian ties; may overlap with Ukrainian citizens."
@@ -2499,9 +2549,14 @@
    "belligerent_source": false,
    "sources": [
     {
-     "name": "Wikipedia compilation: up to ~100 Estonians, 3 killed",
-     "url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
-     "date": "2026-10"
+     "name": "ERR News: minister unable to say how many Estonian volunteers fight for Ukraine (no official count); ERR later counts at least six Estonian volunteers killed (Aug 2025)",
+     "url": "https://news.err.ee/1609120082/minister-unable-to-say-how-many-estonian-volunteers-fighting-for-ukraine",
+     "date": "2026-10",
+     "kind": "press",
+     "replaced_r41": {
+      "old_url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
+      "verified": "search 2026-10-24"
+     }
     }
    ]
   },
@@ -2513,9 +2568,14 @@
    "belligerent_source": false,
    "sources": [
     {
-     "name": "RFE/RL (via Wikipedia): ~450 Belarusians fighting (Kalinouski Regiment etc.)",
-     "url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
-     "date": "2026-10"
+     "name": "RFE/RL: Belarusian volunteers in the Kastus Kalinouski Regiment (the commander puts it at more than 300 people)",
+     "url": "https://www.rferl.org/a/belarus-fighters-ukraine-long-march/32278387.html",
+     "date": "2026-10",
+     "kind": "press",
+     "replaced_r41": {
+      "old_url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
+      "verified": "search 2026-10-24"
+     }
     }
    ],
    "note": "Citizens of a co-belligerent state; other.json excludes RUS/BLR citizens - keep flagged/optional. Central/high are my allowance for growth since 2023."
@@ -2530,12 +2590,14 @@
     {
      "name": "Euromaidan Press: Ukraine's Military Ombudsman - ~16,000 foreign volunteers from >=72 countries, ~40% Latin American (BELLIGERENT)",
      "url": "https://euromaidanpress.com/2026/08/06/ukraine-16000-foreign-volunteers/",
-     "date": "2026-08-06"
+     "date": "2026-08-06",
+     "kind": "press"
     },
     {
      "name": "The Week/PTI: >10,000 foreigners from 75 countries served in Ground Forces (BELLIGERENT, Feb 2026)",
      "url": "https://www.theweek.in/wire-updates/international/2026/02/26/over-10k-foreign-fighters-from-75-nations-fighting-for-ukraine-reports.amp.html",
-     "date": "2026-02-26"
+     "date": "2026-02-26",
+     "kind": "press"
     }
    ],
    "note": "Independent: 1,500-2,000 active in 2023 (Rekawek). Low = sum of non-belligerent country figures above plus small others; central = Ground Forces >10,000; high = ombudsman 16,000. Russian FSB claim ~20,000 (Sep 2025, belligerent) not used."
@@ -2552,17 +2614,20 @@
     {
      "name": "Kyiv Independent: NIS - ~11,000 North Korean troops in Kursk at start of 2026",
      "url": "https://kyivindependent.com/nearly-11-000-north-korean-troops-stationed-in-russias-kursk-oblast-at-start-of-2026-media-reports/",
-     "date": "2026-01"
+     "date": "2026-01",
+     "kind": "press"
     },
     {
      "name": "NPR: NIS - 1,000 deminers and 5,000 military construction workers to Kursk",
      "url": "https://www.wfae.org/2025-06-18/north-korea-plans-to-send-military-construction-workers-and-deminers-to-russia",
-     "date": "2025-06-18"
+     "date": "2025-06-18",
+     "kind": "press"
     },
     {
      "name": "Bloomberg on INSS: >20,000 across four rotations",
      "url": "https://www.bloomberg.com/news/articles/2026-03-18/n-korea-gave-russia-up-to-14-billion-in-military-aid-report",
-     "date": "2026-03-18"
+     "date": "2026-03-18",
+     "kind": "press"
     }
    ],
    "note": "Cumulative deployed incl. engineers: 11k initial + ~3k reinforcement (early 2025) + part of 6k engineers/builders = ~17k central; INSS >20k, high 25k. Plus 15-25k civilian workers (not counted)."
@@ -2577,7 +2642,8 @@
     {
      "name": "Al Jazeera / SCMP: Kenya National Intelligence Service report to parliament - over 1,000 Kenyans recruited (89 on front line, 39 hospitalised, 28 MIA)",
      "url": "https://www.aljazeera.com/news/2026/2/19/kenyan-families-demand-return-of-loved-ones-conscripted-by-russian-army",
-     "date": "2026-02-19"
+     "date": "2026-02-19",
+     "kind": "press"
     }
    ]
   },
@@ -2591,17 +2657,20 @@
     {
      "name": "Himal Press: Nepal government confirms 36 Nepalis died fighting for Russia",
      "url": "https://en.himalpress.com/16-more-nepalis-die-in-russia-death-toll-rises-to-36/",
-     "date": "2024-03"
+     "date": "2024-03",
+     "kind": "press"
     },
     {
      "name": "CNN via KTVZ: as many as 15,000 Nepalis may have joined; government figure ~200",
      "url": "https://ktvz.com/news/national-world/cnn-world/2024/02/10/russia-has-recruited-as-many-as-15000-nepalis-to-fight-its-war-many-returned-traumatized-some-never-came-back/",
-     "date": "2024-02-10"
+     "date": "2024-02-10",
+     "kind": "press"
     },
     {
      "name": "iStories leak (Moscow EMIAS): 603 Nepalis at recruitment centres",
      "url": "https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
-     "date": "2025-04-23"
+     "date": "2025-04-23",
+     "kind": "press"
     }
    ],
    "note": "Central = geometric midpoint of iStories lower bound (603) and CNN/opposition upper (15,000); Nepal government's ~200 (2024) is below the leaked Moscow-only count."
@@ -2616,12 +2685,18 @@
     {
      "name": "Reuters on US State Dept cable: 1,000-5,000 Cubans fighting for Russia",
      "url": "https://kyivindependent.com/exclusive-1-076-cubans-identified-fighting-for-russia-ukraine-says-96-dead-or-disappeared/",
-     "date": "2025-10"
+     "date": "2025-10",
+     "kind": "press"
     },
     {
-     "name": "El Pais (via Wikipedia): up to 20,000 recruited, 200-300 killed",
-     "url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
-     "date": "2025-07"
+     "name": "El Pais, 'Russia recruits Cubans for the frontlines in Ukraine: It's all been a scam' (2025; repost by Small Wars Journal): Ukrainian intelligence, nearly 20,000 recruited since 2022, 200-300 killed",
+     "url": "https://smallwarsjournal.com/2025/08/30/russia-recruits-cubans-for-the-frontlines-in-ukraine-its-all-been-a-scam-el-pais/",
+     "date": "2025-07",
+     "kind": "press",
+     "replaced_r41": {
+      "old_url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
+      "verified": "search 2026-10-24 (El Pais page itself not reached)"
+     }
     }
    ],
    "note": "Central = middle of US cable range; GUR 1,076 named (belligerent) is the floor."
@@ -2636,7 +2711,8 @@
     {
      "name": "India MEA, Rajya Sabha Dec 2025: 202 recruited since 2022, 26 dead, 7 missing",
      "url": "https://superkalam.com/current-affairs/19-12-2025/202-indians-hired-for-russian-armed-forces-pg1-7b0d2f4f-de26-44e1-9c03-83b68e74b2a2",
-     "date": "2025-12-19"
+     "date": "2025-12-19",
+     "kind": "press"
     }
    ]
   },
@@ -2648,9 +2724,13 @@
    "belligerent_source": false,
    "sources": [
     {
-     "name": "South African presidency (via Wikipedia): investigation into 17 nationals in Donbas, 8 arrests",
-     "url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
-     "date": "2025-11"
+     "name": "SAnews (South African Government News Agency), 6 Nov 2025: the Presidency received distress calls from 17 South African men trapped in Donbas; President Ramaphosa ordered an investigation",
+     "url": "https://www.sanews.gov.za/node/78099",
+     "date": "2025-11",
+     "replaced_r41": {
+      "old_url": "https://en.wikipedia.org/wiki/Foreign_fighters_in_the_Russo-Ukrainian_war",
+      "verified": "fetched 2026-10-24; it gives 17 men and the investigation, no arrests (the press reports 4-5 arrests at OR Tambo on 28-30 Nov 2025, not 8)"
+     }
     }
    ]
   }

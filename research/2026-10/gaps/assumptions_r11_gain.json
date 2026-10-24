@@ -505,24 +505,34 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "AK&M, 18 May 2022: Rostec 2021 net profit up 47%",
-     "url": "https://www.akm.ru/news/chistaya_pribyl_rostekha_za_2021_god_vyrosla_na_47/",
-     "what": "2021 revenue 2.06 trn, EBITDA 334.9 bn, net profit 163.5 bn RUB"
+     "title": "Rostec press release (May 2022), Chemezov's 2021 report to the President: revenue RUB 2.06trn, EBITDA RUB 334.9bn, consolidated net profit RUB 163.5bn (+47%)",
+     "url": "https://www.rostec.ru/upload/iblock/a3c/mwb8hb61alrpziupuajwnq345w4z3nb1.pdf",
+     "what": "2021 revenue 2.06 trn, EBITDA 334.9 bn, net profit 163.5 bn RUB",
+     "replaced_r41": {
+      "old_url": "https://www.akm.ru/news/chistaya_pribyl_rostekha_za_2021_god_vyrosla_na_47/",
+      "verified": "confirmed by web search 2026-10-24 (rostec.ru returned 503 to the fetcher)"
+     }
     },
     {
      "title": "Vedomosti, 30 Jul 2024: Chemezov presented Rostec report",
      "url": "https://www.vedomosti.ru/politics/news/2024/07/30/1052875-chemezov-predstavil-putinu-otchet",
-     "what": "2023 revenue RUB 2.82 trn, net profit 60.1 bn (2.1%), state defence order profitability about 2%"
+     "what": "2023 revenue RUB 2.82 trn, net profit 60.1 bn (2.1%), state defence order profitability about 2%",
+     "kind": "press"
     },
     {
      "title": "The Moscow Times (ru), 15 Jul 2026: Rostec profit fell 42% to RUB 76.4 bn",
      "url": "https://ru.themoscowtimes.com/2026/07/15/deneg-unas-nemnogo-glava-krupneishego-promishlennogo-gosholdinga-rossii-pozhalovalsya-naobval-pribili-a200924",
-     "what": "2025 net profit; arms exports halved vs 2022; financial data may be classified"
+     "what": "2025 net profit; arms exports halved vs 2022; financial data may be classified",
+     "kind": "press"
     },
     {
-     "title": "Wikipedia (ru): Rosoboronexport (citing Kommersant/RBC)",
-     "url": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82",
-     "what": "2014 revenue RUB 22.04 bn, net profit 9.67 bn (secondary source)"
+     "title": "Rosoboronexport JSC filed RAS accounts (FNS/Rosstat data, via audit-it.ru): 2014 EBIT RUB 10.35bn, return on sales 58.2%",
+     "url": "https://www.audit-it.ru/buh_otchet/7718852163_ao-rosoboroneksport",
+     "what": "2014 net profit RUB 9.67bn (FNS register); revenue RUB 22.04bn is NOT confirmed: EBIT / return on sales implies about RUB 17.8bn (round 41)",
+     "replaced_r41": {
+      "old_url": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82",
+      "verified": "fetched 2026-10-24 (EBIT and return on sales read; income statement rows did not load)"
+     }
     },
     {
      "title": "Kremlin, 27 Jan 2015 (Commission for Military-Technical Cooperation): 2014 arms sales over USD 15bn for all exporters; Rosoboronexport's own deliveries USD 13.2bn (its 2014 annual report)",
@@ -532,7 +542,8 @@
     {
      "title": "Kommersant Vlast, 5 Feb 2007: Oruzhie massovogo poglosheniya",
      "url": "https://www.kommersant.ru/doc/739784",
-     "what": "Rosoboronexport commission 5-15% of each contract (2006)"
+     "what": "Rosoboronexport commission 5-15% of each contract (2006)",
+     "kind": "press"
     }
    ],
    "note": "70% OKVED 30 other transport equipment (aircraft, ships, military vehicles: p 6.6/2.2/5.1/10.0/7.4%, ROA 1.1/neg/neg/1.8/0.6%), 15% OKVED 26 electronics, 15% OKVED 25 metal products (incl. weapons and ammunition), same sector formula, plus the state intermediary Rosoboronexport: 2014 revenue RUB 22.04 bn and net profit 9.67 bn on ~USD 13 bn exports (~RUB 0.5 trn) = commission ~4.4%, net profit ~1.9% of contract value -> +0.02 (0.01-0.03). Rostec net margin 7.9% (2021) and 2.1% (2023), defence-order profitability ~2%, confirm thin producer margins. High case kept at 0.12 because Kommersant (2007) reported a 5-15% commission and export contracts are said to be more profitable than domestic orders; no current data."
@@ -580,24 +591,34 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "AK&M, 18 May 2022: Rostec 2021 net profit up 47%",
-     "url": "https://www.akm.ru/news/chistaya_pribyl_rostekha_za_2021_god_vyrosla_na_47/",
-     "what": "2021 revenue 2.06 trn, EBITDA 334.9 bn, net profit 163.5 bn RUB"
+     "title": "Rostec press release (May 2022), Chemezov's 2021 report to the President: revenue RUB 2.06trn, EBITDA RUB 334.9bn, consolidated net profit RUB 163.5bn (+47%)",
+     "url": "https://www.rostec.ru/upload/iblock/a3c/mwb8hb61alrpziupuajwnq345w4z3nb1.pdf",
+     "what": "2021 revenue 2.06 trn, EBITDA 334.9 bn, net profit 163.5 bn RUB",
+     "replaced_r41": {
+      "old_url": "https://www.akm.ru/news/chistaya_pribyl_rostekha_za_2021_god_vyrosla_na_47/",
+      "verified": "confirmed by web search 2026-10-24 (rostec.ru returned 503 to the fetcher)"
+     }
     },
     {
      "title": "Vedomosti, 30 Jul 2024: Chemezov presented Rostec report",
      "url": "https://www.vedomosti.ru/politics/news/2024/07/30/1052875-chemezov-predstavil-putinu-otchet",
-     "what": "2023 revenue RUB 2.82 trn, net profit 60.1 bn (2.1%), state defence order profitability about 2%"
+     "what": "2023 revenue RUB 2.82 trn, net profit 60.1 bn (2.1%), state defence order profitability about 2%",
+     "kind": "press"
     },
     {
      "title": "The Moscow Times (ru), 15 Jul 2026: Rostec profit fell 42% to RUB 76.4 bn",
      "url": "https://ru.themoscowtimes.com/2026/07/15/deneg-unas-nemnogo-glava-krupneishego-promishlennogo-gosholdinga-rossii-pozhalovalsya-naobval-pribili-a200924",
-     "what": "2025 net profit; arms exports halved vs 2022; financial data may be classified"
+     "what": "2025 net profit; arms exports halved vs 2022; financial data may be classified",
+     "kind": "press"
     },
     {
-     "title": "Wikipedia (ru): Rosoboronexport (citing Kommersant/RBC)",
-     "url": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82",
-     "what": "2014 revenue RUB 22.04 bn, net profit 9.67 bn (secondary source)"
+     "title": "Rosoboronexport JSC filed RAS accounts (FNS/Rosstat data, via audit-it.ru): 2014 EBIT RUB 10.35bn, return on sales 58.2%",
+     "url": "https://www.audit-it.ru/buh_otchet/7718852163_ao-rosoboroneksport",
+     "what": "2014 net profit RUB 9.67bn (FNS register); revenue RUB 22.04bn is NOT confirmed: EBIT / return on sales implies about RUB 17.8bn (round 41)",
+     "replaced_r41": {
+      "old_url": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82",
+      "verified": "fetched 2026-10-24 (EBIT and return on sales read; income statement rows did not load)"
+     }
     },
     {
      "title": "Kremlin, 27 Jan 2015 (Commission for Military-Technical Cooperation): 2014 arms sales over USD 15bn for all exporters; Rosoboronexport's own deliveries USD 13.2bn (its 2014 annual report)",
@@ -607,7 +628,8 @@
     {
      "title": "Kommersant Vlast, 5 Feb 2007: Oruzhie massovogo poglosheniya",
      "url": "https://www.kommersant.ru/doc/739784",
-     "what": "Rosoboronexport commission 5-15% of each contract (2006)"
+     "what": "Rosoboronexport commission 5-15% of each contract (2006)",
+     "kind": "press"
     }
    ],
    "note": "70% OKVED 30 other transport equipment (aircraft, ships, military vehicles: p 6.6/2.2/5.1/10.0/7.4%, ROA 1.1/neg/neg/1.8/0.6%), 15% OKVED 26 electronics, 15% OKVED 25 metal products (incl. weapons and ammunition), same sector formula, plus the state intermediary Rosoboronexport: 2014 revenue RUB 22.04 bn and net profit 9.67 bn on ~USD 13 bn exports (~RUB 0.5 trn) = commission ~4.4%, net profit ~1.9% of contract value -> +0.02 (0.01-0.03). Rostec net margin 7.9% (2021) and 2.1% (2023), defence-order profitability ~2%, confirm thin producer margins. High case kept at 0.12 because Kommersant (2007) reported a 5-15% commission and export contracts are said to be more profitable than domestic orders; no current data."
@@ -655,24 +677,34 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "AK&M, 18 May 2022: Rostec 2021 net profit up 47%",
-     "url": "https://www.akm.ru/news/chistaya_pribyl_rostekha_za_2021_god_vyrosla_na_47/",
-     "what": "2021 revenue 2.06 trn, EBITDA 334.9 bn, net profit 163.5 bn RUB"
+     "title": "Rostec press release (May 2022), Chemezov's 2021 report to the President: revenue RUB 2.06trn, EBITDA RUB 334.9bn, consolidated net profit RUB 163.5bn (+47%)",
+     "url": "https://www.rostec.ru/upload/iblock/a3c/mwb8hb61alrpziupuajwnq345w4z3nb1.pdf",
+     "what": "2021 revenue 2.06 trn, EBITDA 334.9 bn, net profit 163.5 bn RUB",
+     "replaced_r41": {
+      "old_url": "https://www.akm.ru/news/chistaya_pribyl_rostekha_za_2021_god_vyrosla_na_47/",
+      "verified": "confirmed by web search 2026-10-24 (rostec.ru returned 503 to the fetcher)"
+     }
     },
     {
      "title": "Vedomosti, 30 Jul 2024: Chemezov presented Rostec report",
      "url": "https://www.vedomosti.ru/politics/news/2024/07/30/1052875-chemezov-predstavil-putinu-otchet",
-     "what": "2023 revenue RUB 2.82 trn, net profit 60.1 bn (2.1%), state defence order profitability about 2%"
+     "what": "2023 revenue RUB 2.82 trn, net profit 60.1 bn (2.1%), state defence order profitability about 2%",
+     "kind": "press"
     },
     {
      "title": "The Moscow Times (ru), 15 Jul 2026: Rostec profit fell 42% to RUB 76.4 bn",
      "url": "https://ru.themoscowtimes.com/2026/07/15/deneg-unas-nemnogo-glava-krupneishego-promishlennogo-gosholdinga-rossii-pozhalovalsya-naobval-pribili-a200924",
-     "what": "2025 net profit; arms exports halved vs 2022; financial data may be classified"
+     "what": "2025 net profit; arms exports halved vs 2022; financial data may be classified",
+     "kind": "press"
     },
     {
-     "title": "Wikipedia (ru): Rosoboronexport (citing Kommersant/RBC)",
-     "url": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82",
-     "what": "2014 revenue RUB 22.04 bn, net profit 9.67 bn (secondary source)"
+     "title": "Rosoboronexport JSC filed RAS accounts (FNS/Rosstat data, via audit-it.ru): 2014 EBIT RUB 10.35bn, return on sales 58.2%",
+     "url": "https://www.audit-it.ru/buh_otchet/7718852163_ao-rosoboroneksport",
+     "what": "2014 net profit RUB 9.67bn (FNS register); revenue RUB 22.04bn is NOT confirmed: EBIT / return on sales implies about RUB 17.8bn (round 41)",
+     "replaced_r41": {
+      "old_url": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82",
+      "verified": "fetched 2026-10-24 (EBIT and return on sales read; income statement rows did not load)"
+     }
     },
     {
      "title": "Kremlin, 27 Jan 2015 (Commission for Military-Technical Cooperation): 2014 arms sales over USD 15bn for all exporters; Rosoboronexport's own deliveries USD 13.2bn (its 2014 annual report)",
@@ -682,7 +714,8 @@
     {
      "title": "Kommersant Vlast, 5 Feb 2007: Oruzhie massovogo poglosheniya",
      "url": "https://www.kommersant.ru/doc/739784",
-     "what": "Rosoboronexport commission 5-15% of each contract (2006)"
+     "what": "Rosoboronexport commission 5-15% of each contract (2006)",
+     "kind": "press"
     }
    ],
    "note": "70% OKVED 30 other transport equipment (aircraft, ships, military vehicles: p 6.6/2.2/5.1/10.0/7.4%, ROA 1.1/neg/neg/1.8/0.6%), 15% OKVED 26 electronics, 15% OKVED 25 metal products (incl. weapons and ammunition), same sector formula, plus the state intermediary Rosoboronexport: 2014 revenue RUB 22.04 bn and net profit 9.67 bn on ~USD 13 bn exports (~RUB 0.5 trn) = commission ~4.4%, net profit ~1.9% of contract value -> +0.02 (0.01-0.03). Rostec net margin 7.9% (2021) and 2.1% (2023), defence-order profitability ~2%, confirm thin producer margins. High case kept at 0.12 because Kommersant (2007) reported a 5-15% commission and export contracts are said to be more profitable than domestic orders; no current data."
@@ -730,24 +763,34 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "AK&M, 18 May 2022: Rostec 2021 net profit up 47%",
-     "url": "https://www.akm.ru/news/chistaya_pribyl_rostekha_za_2021_god_vyrosla_na_47/",
-     "what": "2021 revenue 2.06 trn, EBITDA 334.9 bn, net profit 163.5 bn RUB"
+     "title": "Rostec press release (May 2022), Chemezov's 2021 report to the President: revenue RUB 2.06trn, EBITDA RUB 334.9bn, consolidated net profit RUB 163.5bn (+47%)",
+     "url": "https://www.rostec.ru/upload/iblock/a3c/mwb8hb61alrpziupuajwnq345w4z3nb1.pdf",
+     "what": "2021 revenue 2.06 trn, EBITDA 334.9 bn, net profit 163.5 bn RUB",
+     "replaced_r41": {
+      "old_url": "https://www.akm.ru/news/chistaya_pribyl_rostekha_za_2021_god_vyrosla_na_47/",
+      "verified": "confirmed by web search 2026-10-24 (rostec.ru returned 503 to the fetcher)"
+     }
     },
     {
      "title": "Vedomosti, 30 Jul 2024: Chemezov presented Rostec report",
      "url": "https://www.vedomosti.ru/politics/news/2024/07/30/1052875-chemezov-predstavil-putinu-otchet",
-     "what": "2023 revenue RUB 2.82 trn, net profit 60.1 bn (2.1%), state defence order profitability about 2%"
+     "what": "2023 revenue RUB 2.82 trn, net profit 60.1 bn (2.1%), state defence order profitability about 2%",
+     "kind": "press"
     },
     {
      "title": "The Moscow Times (ru), 15 Jul 2026: Rostec profit fell 42% to RUB 76.4 bn",
      "url": "https://ru.themoscowtimes.com/2026/07/15/deneg-unas-nemnogo-glava-krupneishego-promishlennogo-gosholdinga-rossii-pozhalovalsya-naobval-pribili-a200924",
-     "what": "2025 net profit; arms exports halved vs 2022; financial data may be classified"
+     "what": "2025 net profit; arms exports halved vs 2022; financial data may be classified",
+     "kind": "press"
     },
     {
-     "title": "Wikipedia (ru): Rosoboronexport (citing Kommersant/RBC)",
-     "url": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82",
-     "what": "2014 revenue RUB 22.04 bn, net profit 9.67 bn (secondary source)"
+     "title": "Rosoboronexport JSC filed RAS accounts (FNS/Rosstat data, via audit-it.ru): 2014 EBIT RUB 10.35bn, return on sales 58.2%",
+     "url": "https://www.audit-it.ru/buh_otchet/7718852163_ao-rosoboroneksport",
+     "what": "2014 net profit RUB 9.67bn (FNS register); revenue RUB 22.04bn is NOT confirmed: EBIT / return on sales implies about RUB 17.8bn (round 41)",
+     "replaced_r41": {
+      "old_url": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82",
+      "verified": "fetched 2026-10-24 (EBIT and return on sales read; income statement rows did not load)"
+     }
     },
     {
      "title": "Kremlin, 27 Jan 2015 (Commission for Military-Technical Cooperation): 2014 arms sales over USD 15bn for all exporters; Rosoboronexport's own deliveries USD 13.2bn (its 2014 annual report)",
@@ -757,7 +800,8 @@
     {
      "title": "Kommersant Vlast, 5 Feb 2007: Oruzhie massovogo poglosheniya",
      "url": "https://www.kommersant.ru/doc/739784",
-     "what": "Rosoboronexport commission 5-15% of each contract (2006)"
+     "what": "Rosoboronexport commission 5-15% of each contract (2006)",
+     "kind": "press"
     }
    ],
    "note": "70% OKVED 30 other transport equipment (aircraft, ships, military vehicles: p 6.6/2.2/5.1/10.0/7.4%, ROA 1.1/neg/neg/1.8/0.6%), 15% OKVED 26 electronics, 15% OKVED 25 metal products (incl. weapons and ammunition), same sector formula, plus the state intermediary Rosoboronexport: 2014 revenue RUB 22.04 bn and net profit 9.67 bn on ~USD 13 bn exports (~RUB 0.5 trn) = commission ~4.4%, net profit ~1.9% of contract value -> +0.02 (0.01-0.03). Rostec net margin 7.9% (2021) and 2.1% (2023), defence-order profitability ~2%, confirm thin producer margins. High case kept at 0.12 because Kommersant (2007) reported a 5-15% commission and export contracts are said to be more profitable than domestic orders; no current data."
@@ -805,24 +849,34 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "AK&M, 18 May 2022: Rostec 2021 net profit up 47%",
-     "url": "https://www.akm.ru/news/chistaya_pribyl_rostekha_za_2021_god_vyrosla_na_47/",
-     "what": "2021 revenue 2.06 trn, EBITDA 334.9 bn, net profit 163.5 bn RUB"
+     "title": "Rostec press release (May 2022), Chemezov's 2021 report to the President: revenue RUB 2.06trn, EBITDA RUB 334.9bn, consolidated net profit RUB 163.5bn (+47%)",
+     "url": "https://www.rostec.ru/upload/iblock/a3c/mwb8hb61alrpziupuajwnq345w4z3nb1.pdf",
+     "what": "2021 revenue 2.06 trn, EBITDA 334.9 bn, net profit 163.5 bn RUB",
+     "replaced_r41": {
+      "old_url": "https://www.akm.ru/news/chistaya_pribyl_rostekha_za_2021_god_vyrosla_na_47/",
+      "verified": "confirmed by web search 2026-10-24 (rostec.ru returned 503 to the fetcher)"
+     }
     },
     {
      "title": "Vedomosti, 30 Jul 2024: Chemezov presented Rostec report",
      "url": "https://www.vedomosti.ru/politics/news/2024/07/30/1052875-chemezov-predstavil-putinu-otchet",
-     "what": "2023 revenue RUB 2.82 trn, net profit 60.1 bn (2.1%), state defence order profitability about 2%"
+     "what": "2023 revenue RUB 2.82 trn, net profit 60.1 bn (2.1%), state defence order profitability about 2%",
+     "kind": "press"
     },
     {
      "title": "The Moscow Times (ru), 15 Jul 2026: Rostec profit fell 42% to RUB 76.4 bn",
      "url": "https://ru.themoscowtimes.com/2026/07/15/deneg-unas-nemnogo-glava-krupneishego-promishlennogo-gosholdinga-rossii-pozhalovalsya-naobval-pribili-a200924",
-     "what": "2025 net profit; arms exports halved vs 2022; financial data may be classified"
+     "what": "2025 net profit; arms exports halved vs 2022; financial data may be classified",
+     "kind": "press"
     },
     {
-     "title": "Wikipedia (ru): Rosoboronexport (citing Kommersant/RBC)",
-     "url": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82",
-     "what": "2014 revenue RUB 22.04 bn, net profit 9.67 bn (secondary source)"
+     "title": "Rosoboronexport JSC filed RAS accounts (FNS/Rosstat data, via audit-it.ru): 2014 EBIT RUB 10.35bn, return on sales 58.2%",
+     "url": "https://www.audit-it.ru/buh_otchet/7718852163_ao-rosoboroneksport",
+     "what": "2014 net profit RUB 9.67bn (FNS register); revenue RUB 22.04bn is NOT confirmed: EBIT / return on sales implies about RUB 17.8bn (round 41)",
+     "replaced_r41": {
+      "old_url": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82",
+      "verified": "fetched 2026-10-24 (EBIT and return on sales read; income statement rows did not load)"
+     }
     },
     {
      "title": "Kremlin, 27 Jan 2015 (Commission for Military-Technical Cooperation): 2014 arms sales over USD 15bn for all exporters; Rosoboronexport's own deliveries USD 13.2bn (its 2014 annual report)",
@@ -832,7 +886,8 @@
     {
      "title": "Kommersant Vlast, 5 Feb 2007: Oruzhie massovogo poglosheniya",
      "url": "https://www.kommersant.ru/doc/739784",
-     "what": "Rosoboronexport commission 5-15% of each contract (2006)"
+     "what": "Rosoboronexport commission 5-15% of each contract (2006)",
+     "kind": "press"
     }
    ],
    "note": "70% OKVED 30 other transport equipment (aircraft, ships, military vehicles: p 6.6/2.2/5.1/10.0/7.4%, ROA 1.1/neg/neg/1.8/0.6%), 15% OKVED 26 electronics, 15% OKVED 25 metal products (incl. weapons and ammunition), same sector formula, plus the state intermediary Rosoboronexport: 2014 revenue RUB 22.04 bn and net profit 9.67 bn on ~USD 13 bn exports (~RUB 0.5 trn) = commission ~4.4%, net profit ~1.9% of contract value -> +0.02 (0.01-0.03). Rostec net margin 7.9% (2021) and 2.1% (2023), defence-order profitability ~2%, confirm thin producer margins. High case kept at 0.12 because Kommersant (2007) reported a 5-15% commission and export contracts are said to be more profitable than domestic orders; no current data."
@@ -880,24 +935,34 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "AK&M, 18 May 2022: Rostec 2021 net profit up 47%",
-     "url": "https://www.akm.ru/news/chistaya_pribyl_rostekha_za_2021_god_vyrosla_na_47/",
-     "what": "2021 revenue 2.06 trn, EBITDA 334.9 bn, net profit 163.5 bn RUB"
+     "title": "Rostec press release (May 2022), Chemezov's 2021 report to the President: revenue RUB 2.06trn, EBITDA RUB 334.9bn, consolidated net profit RUB 163.5bn (+47%)",
+     "url": "https://www.rostec.ru/upload/iblock/a3c/mwb8hb61alrpziupuajwnq345w4z3nb1.pdf",
+     "what": "2021 revenue 2.06 trn, EBITDA 334.9 bn, net profit 163.5 bn RUB",
+     "replaced_r41": {
+      "old_url": "https://www.akm.ru/news/chistaya_pribyl_rostekha_za_2021_god_vyrosla_na_47/",
+      "verified": "confirmed by web search 2026-10-24 (rostec.ru returned 503 to the fetcher)"
+     }
     },
     {
      "title": "Vedomosti, 30 Jul 2024: Chemezov presented Rostec report",
      "url": "https://www.vedomosti.ru/politics/news/2024/07/30/1052875-chemezov-predstavil-putinu-otchet",
-     "what": "2023 revenue RUB 2.82 trn, net profit 60.1 bn (2.1%), state defence order profitability about 2%"
+     "what": "2023 revenue RUB 2.82 trn, net profit 60.1 bn (2.1%), state defence order profitability about 2%",
+     "kind": "press"
     },
     {
      "title": "The Moscow Times (ru), 15 Jul 2026: Rostec profit fell 42% to RUB 76.4 bn",
      "url": "https://ru.themoscowtimes.com/2026/07/15/deneg-unas-nemnogo-glava-krupneishego-promishlennogo-gosholdinga-rossii-pozhalovalsya-naobval-pribili-a200924",
-     "what": "2025 net profit; arms exports halved vs 2022; financial data may be classified"
+     "what": "2025 net profit; arms exports halved vs 2022; financial data may be classified",
+     "kind": "press"
     },
     {
-     "title": "Wikipedia (ru): Rosoboronexport (citing Kommersant/RBC)",
-     "url": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82",
-     "what": "2014 revenue RUB 22.04 bn, net profit 9.67 bn (secondary source)"
+     "title": "Rosoboronexport JSC filed RAS accounts (FNS/Rosstat data, via audit-it.ru): 2014 EBIT RUB 10.35bn, return on sales 58.2%",
+     "url": "https://www.audit-it.ru/buh_otchet/7718852163_ao-rosoboroneksport",
+     "what": "2014 net profit RUB 9.67bn (FNS register); revenue RUB 22.04bn is NOT confirmed: EBIT / return on sales implies about RUB 17.8bn (round 41)",
+     "replaced_r41": {
+      "old_url": "https://ru.wikipedia.org/wiki/%D0%A0%D0%BE%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D1%8D%D0%BA%D1%81%D0%BF%D0%BE%D1%80%D1%82",
+      "verified": "fetched 2026-10-24 (EBIT and return on sales read; income statement rows did not load)"
+     }
     },
     {
      "title": "Kremlin, 27 Jan 2015 (Commission for Military-Technical Cooperation): 2014 arms sales over USD 15bn for all exporters; Rosoboronexport's own deliveries USD 13.2bn (its 2014 annual report)",
@@ -907,7 +972,8 @@
     {
      "title": "Kommersant Vlast, 5 Feb 2007: Oruzhie massovogo poglosheniya",
      "url": "https://www.kommersant.ru/doc/739784",
-     "what": "Rosoboronexport commission 5-15% of each contract (2006)"
+     "what": "Rosoboronexport commission 5-15% of each contract (2006)",
+     "kind": "press"
     }
    ],
    "note": "70% OKVED 30 other transport equipment (aircraft, ships, military vehicles: p 6.6/2.2/5.1/10.0/7.4%, ROA 1.1/neg/neg/1.8/0.6%), 15% OKVED 26 electronics, 15% OKVED 25 metal products (incl. weapons and ammunition), same sector formula, plus the state intermediary Rosoboronexport: 2014 revenue RUB 22.04 bn and net profit 9.67 bn on ~USD 13 bn exports (~RUB 0.5 trn) = commission ~4.4%, net profit ~1.9% of contract value -> +0.02 (0.01-0.03). Rostec net margin 7.9% (2021) and 2.1% (2023), defence-order profitability ~2%, confirm thin producer margins. High case kept at 0.12 because Kommersant (2007) reported a 5-15% commission and export contracts are said to be more profitable than domestic orders; no current data. 2026: no sector data yet; 2025 sector values carried forward (judgement)."
@@ -1225,9 +1291,13 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -1235,9 +1305,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "OKVED 16 wood processing 55% (p 33.6/9.9/4.9/7.6/2.6%, ROA 21.4/4.6/neg/2.0/neg), 17 paper 35%, 02 forestry 10%; plus exchange-rate-linked export duty (Oct 2023-Dec 2024, 4-7%), coverage of wood products uncertain (50%, range 20-80%)."
@@ -1285,9 +1359,13 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -1295,9 +1373,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "OKVED 16 wood processing 55% (p 33.6/9.9/4.9/7.6/2.6%, ROA 21.4/4.6/neg/2.0/neg), 17 paper 35%, 02 forestry 10%; plus exchange-rate-linked export duty (Oct 2023-Dec 2024, 4-7%), coverage of wood products uncertain (50%, range 20-80%)."
@@ -1345,9 +1427,13 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -1355,9 +1441,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "OKVED 16 wood processing 55% (p 33.6/9.9/4.9/7.6/2.6%, ROA 21.4/4.6/neg/2.0/neg), 17 paper 35%, 02 forestry 10%; plus exchange-rate-linked export duty (Oct 2023-Dec 2024, 4-7%), coverage of wood products uncertain (50%, range 20-80%)."
@@ -1405,9 +1495,13 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -1415,9 +1509,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "OKVED 16 wood processing 55% (p 33.6/9.9/4.9/7.6/2.6%, ROA 21.4/4.6/neg/2.0/neg), 17 paper 35%, 02 forestry 10%; plus exchange-rate-linked export duty (Oct 2023-Dec 2024, 4-7%), coverage of wood products uncertain (50%, range 20-80%)."
@@ -1465,9 +1563,13 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -1475,9 +1577,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "OKVED 16 wood processing 55% (p 33.6/9.9/4.9/7.6/2.6%, ROA 21.4/4.6/neg/2.0/neg), 17 paper 35%, 02 forestry 10%; plus exchange-rate-linked export duty (Oct 2023-Dec 2024, 4-7%), coverage of wood products uncertain (50%, range 20-80%)."
@@ -1525,9 +1631,13 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -1535,9 +1645,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "OKVED 16 wood processing 55% (p 33.6/9.9/4.9/7.6/2.6%, ROA 21.4/4.6/neg/2.0/neg), 17 paper 35%, 02 forestry 10%; plus exchange-rate-linked export duty (Oct 2023-Dec 2024, 4-7%), coverage of wood products uncertain (50%, range 20-80%). 2026: no sector data yet; 2025 sector values carried forward (judgement)."
@@ -1587,22 +1701,26 @@
     {
      "title": "Zerno.ru / Interfax: export duty revenue on crops in 2024 RUB 141.19 bn vs forecast 214.43 bn (Accounts Chamber note on 2024 budget execution)",
      "url": "https://www.zerno.ru/node/29146",
-     "what": "2024 grain duty revenue"
+     "what": "2024 grain duty revenue",
+     "kind": "press"
     },
     {
      "title": "Agroinvestor, 6 Nov 2025: Poshliny ne plyvut v byudzhet",
      "url": "https://www.agroinvestor.ru/markets/article/45107-poshliny-ne-plyvut-v-byudzhet-ikh-sbory-menshe-planovykh-pri-etom-agrarii-prodolzhayut-teryat-dokhod/",
-     "what": "2024 grain 141.19 / oilseeds 11.26 RUB bn; 2025 estimate grain 76.43 / oilseeds 44.84; 2026 plan grain 135.8, oilseeds ~63"
+     "what": "2024 grain 141.19 / oilseeds 11.26 RUB bn; 2025 estimate grain 76.43 / oilseeds 44.84; 2026 plan grain 135.8, oilseeds ~63",
+     "kind": "press"
     },
     {
      "title": "Interfax, 15 Jun 2022: budget received about RUB 175 bn from the grain damper",
      "url": "https://www.interfax.ru/russia/846294",
-     "what": "grain duty revenue 2021 to early 2022"
+     "what": "grain duty revenue 2021 to early 2022",
+     "kind": "press"
     },
     {
      "title": "Interfax, 28 Oct 2021: Minfin notes RUB 47 bn from grain export duty",
      "url": "https://www.interfax.ru/russia/800047",
-     "what": "grain duty revenue to Oct 2021"
+     "what": "grain duty revenue to Oct 2021",
+     "kind": "press"
     },
     {
      "title": "Bank of Russia official USD/RUB rate, daily, 2021-2026 (XML)",
@@ -1662,22 +1780,26 @@
     {
      "title": "Zerno.ru / Interfax: export duty revenue on crops in 2024 RUB 141.19 bn vs forecast 214.43 bn (Accounts Chamber note on 2024 budget execution)",
      "url": "https://www.zerno.ru/node/29146",
-     "what": "2024 grain duty revenue"
+     "what": "2024 grain duty revenue",
+     "kind": "press"
     },
     {
      "title": "Agroinvestor, 6 Nov 2025: Poshliny ne plyvut v byudzhet",
      "url": "https://www.agroinvestor.ru/markets/article/45107-poshliny-ne-plyvut-v-byudzhet-ikh-sbory-menshe-planovykh-pri-etom-agrarii-prodolzhayut-teryat-dokhod/",
-     "what": "2024 grain 141.19 / oilseeds 11.26 RUB bn; 2025 estimate grain 76.43 / oilseeds 44.84; 2026 plan grain 135.8, oilseeds ~63"
+     "what": "2024 grain 141.19 / oilseeds 11.26 RUB bn; 2025 estimate grain 76.43 / oilseeds 44.84; 2026 plan grain 135.8, oilseeds ~63",
+     "kind": "press"
     },
     {
      "title": "Interfax, 15 Jun 2022: budget received about RUB 175 bn from the grain damper",
      "url": "https://www.interfax.ru/russia/846294",
-     "what": "grain duty revenue 2021 to early 2022"
+     "what": "grain duty revenue 2021 to early 2022",
+     "kind": "press"
     },
     {
      "title": "Interfax, 28 Oct 2021: Minfin notes RUB 47 bn from grain export duty",
      "url": "https://www.interfax.ru/russia/800047",
-     "what": "grain duty revenue to Oct 2021"
+     "what": "grain duty revenue to Oct 2021",
+     "kind": "press"
     },
     {
      "title": "Bank of Russia official USD/RUB rate, daily, 2021-2026 (XML)",
@@ -1737,22 +1859,26 @@
     {
      "title": "Zerno.ru / Interfax: export duty revenue on crops in 2024 RUB 141.19 bn vs forecast 214.43 bn (Accounts Chamber note on 2024 budget execution)",
      "url": "https://www.zerno.ru/node/29146",
-     "what": "2024 grain duty revenue"
+     "what": "2024 grain duty revenue",
+     "kind": "press"
     },
     {
      "title": "Agroinvestor, 6 Nov 2025: Poshliny ne plyvut v byudzhet",
      "url": "https://www.agroinvestor.ru/markets/article/45107-poshliny-ne-plyvut-v-byudzhet-ikh-sbory-menshe-planovykh-pri-etom-agrarii-prodolzhayut-teryat-dokhod/",
-     "what": "2024 grain 141.19 / oilseeds 11.26 RUB bn; 2025 estimate grain 76.43 / oilseeds 44.84; 2026 plan grain 135.8, oilseeds ~63"
+     "what": "2024 grain 141.19 / oilseeds 11.26 RUB bn; 2025 estimate grain 76.43 / oilseeds 44.84; 2026 plan grain 135.8, oilseeds ~63",
+     "kind": "press"
     },
     {
      "title": "Interfax, 15 Jun 2022: budget received about RUB 175 bn from the grain damper",
      "url": "https://www.interfax.ru/russia/846294",
-     "what": "grain duty revenue 2021 to early 2022"
+     "what": "grain duty revenue 2021 to early 2022",
+     "kind": "press"
     },
     {
      "title": "Interfax, 28 Oct 2021: Minfin notes RUB 47 bn from grain export duty",
      "url": "https://www.interfax.ru/russia/800047",
-     "what": "grain duty revenue to Oct 2021"
+     "what": "grain duty revenue to Oct 2021",
+     "kind": "press"
     },
     {
      "title": "Bank of Russia official USD/RUB rate, daily, 2021-2026 (XML)",
@@ -1812,22 +1938,26 @@
     {
      "title": "Zerno.ru / Interfax: export duty revenue on crops in 2024 RUB 141.19 bn vs forecast 214.43 bn (Accounts Chamber note on 2024 budget execution)",
      "url": "https://www.zerno.ru/node/29146",
-     "what": "2024 grain duty revenue"
+     "what": "2024 grain duty revenue",
+     "kind": "press"
     },
     {
      "title": "Agroinvestor, 6 Nov 2025: Poshliny ne plyvut v byudzhet",
      "url": "https://www.agroinvestor.ru/markets/article/45107-poshliny-ne-plyvut-v-byudzhet-ikh-sbory-menshe-planovykh-pri-etom-agrarii-prodolzhayut-teryat-dokhod/",
-     "what": "2024 grain 141.19 / oilseeds 11.26 RUB bn; 2025 estimate grain 76.43 / oilseeds 44.84; 2026 plan grain 135.8, oilseeds ~63"
+     "what": "2024 grain 141.19 / oilseeds 11.26 RUB bn; 2025 estimate grain 76.43 / oilseeds 44.84; 2026 plan grain 135.8, oilseeds ~63",
+     "kind": "press"
     },
     {
      "title": "Interfax, 15 Jun 2022: budget received about RUB 175 bn from the grain damper",
      "url": "https://www.interfax.ru/russia/846294",
-     "what": "grain duty revenue 2021 to early 2022"
+     "what": "grain duty revenue 2021 to early 2022",
+     "kind": "press"
     },
     {
      "title": "Interfax, 28 Oct 2021: Minfin notes RUB 47 bn from grain export duty",
      "url": "https://www.interfax.ru/russia/800047",
-     "what": "grain duty revenue to Oct 2021"
+     "what": "grain duty revenue to Oct 2021",
+     "kind": "press"
     },
     {
      "title": "Bank of Russia official USD/RUB rate, daily, 2021-2026 (XML)",
@@ -1887,22 +2017,26 @@
     {
      "title": "Zerno.ru / Interfax: export duty revenue on crops in 2024 RUB 141.19 bn vs forecast 214.43 bn (Accounts Chamber note on 2024 budget execution)",
      "url": "https://www.zerno.ru/node/29146",
-     "what": "2024 grain duty revenue"
+     "what": "2024 grain duty revenue",
+     "kind": "press"
     },
     {
      "title": "Agroinvestor, 6 Nov 2025: Poshliny ne plyvut v byudzhet",
      "url": "https://www.agroinvestor.ru/markets/article/45107-poshliny-ne-plyvut-v-byudzhet-ikh-sbory-menshe-planovykh-pri-etom-agrarii-prodolzhayut-teryat-dokhod/",
-     "what": "2024 grain 141.19 / oilseeds 11.26 RUB bn; 2025 estimate grain 76.43 / oilseeds 44.84; 2026 plan grain 135.8, oilseeds ~63"
+     "what": "2024 grain 141.19 / oilseeds 11.26 RUB bn; 2025 estimate grain 76.43 / oilseeds 44.84; 2026 plan grain 135.8, oilseeds ~63",
+     "kind": "press"
     },
     {
      "title": "Interfax, 15 Jun 2022: budget received about RUB 175 bn from the grain damper",
      "url": "https://www.interfax.ru/russia/846294",
-     "what": "grain duty revenue 2021 to early 2022"
+     "what": "grain duty revenue 2021 to early 2022",
+     "kind": "press"
     },
     {
      "title": "Interfax, 28 Oct 2021: Minfin notes RUB 47 bn from grain export duty",
      "url": "https://www.interfax.ru/russia/800047",
-     "what": "grain duty revenue to Oct 2021"
+     "what": "grain duty revenue to Oct 2021",
+     "kind": "press"
     },
     {
      "title": "Bank of Russia official USD/RUB rate, daily, 2021-2026 (XML)",
@@ -1962,22 +2096,26 @@
     {
      "title": "Zerno.ru / Interfax: export duty revenue on crops in 2024 RUB 141.19 bn vs forecast 214.43 bn (Accounts Chamber note on 2024 budget execution)",
      "url": "https://www.zerno.ru/node/29146",
-     "what": "2024 grain duty revenue"
+     "what": "2024 grain duty revenue",
+     "kind": "press"
     },
     {
      "title": "Agroinvestor, 6 Nov 2025: Poshliny ne plyvut v byudzhet",
      "url": "https://www.agroinvestor.ru/markets/article/45107-poshliny-ne-plyvut-v-byudzhet-ikh-sbory-menshe-planovykh-pri-etom-agrarii-prodolzhayut-teryat-dokhod/",
-     "what": "2024 grain 141.19 / oilseeds 11.26 RUB bn; 2025 estimate grain 76.43 / oilseeds 44.84; 2026 plan grain 135.8, oilseeds ~63"
+     "what": "2024 grain 141.19 / oilseeds 11.26 RUB bn; 2025 estimate grain 76.43 / oilseeds 44.84; 2026 plan grain 135.8, oilseeds ~63",
+     "kind": "press"
     },
     {
      "title": "Interfax, 15 Jun 2022: budget received about RUB 175 bn from the grain damper",
      "url": "https://www.interfax.ru/russia/846294",
-     "what": "grain duty revenue 2021 to early 2022"
+     "what": "grain duty revenue 2021 to early 2022",
+     "kind": "press"
     },
     {
      "title": "Interfax, 28 Oct 2021: Minfin notes RUB 47 bn from grain export duty",
      "url": "https://www.interfax.ru/russia/800047",
-     "what": "grain duty revenue to Oct 2021"
+     "what": "grain duty revenue to Oct 2021",
+     "kind": "press"
     },
     {
      "title": "Bank of Russia official USD/RUB rate, daily, 2021-2026 (XML)",
@@ -2035,9 +2173,13 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -2045,9 +2187,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "OKVED 20 chemicals 60% (p 43.0/46.7/31.2/27.6/25.9%, includes fertilisers, so biased up), 22 rubber/plastics 30%, 21 pharma 10%; exchange-rate duty added at 25% coverage (chemicals partly removed from the duty list)."
@@ -2095,9 +2241,13 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -2105,9 +2255,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "OKVED 20 chemicals 60% (p 43.0/46.7/31.2/27.6/25.9%, includes fertilisers, so biased up), 22 rubber/plastics 30%, 21 pharma 10%; exchange-rate duty added at 25% coverage (chemicals partly removed from the duty list)."
@@ -2155,9 +2309,13 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -2165,9 +2323,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "OKVED 20 chemicals 60% (p 43.0/46.7/31.2/27.6/25.9%, includes fertilisers, so biased up), 22 rubber/plastics 30%, 21 pharma 10%; exchange-rate duty added at 25% coverage (chemicals partly removed from the duty list)."
@@ -2215,9 +2377,13 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -2225,9 +2391,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "OKVED 20 chemicals 60% (p 43.0/46.7/31.2/27.6/25.9%, includes fertilisers, so biased up), 22 rubber/plastics 30%, 21 pharma 10%; exchange-rate duty added at 25% coverage (chemicals partly removed from the duty list)."
@@ -2275,9 +2445,13 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -2285,9 +2459,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "OKVED 20 chemicals 60% (p 43.0/46.7/31.2/27.6/25.9%, includes fertilisers, so biased up), 22 rubber/plastics 30%, 21 pharma 10%; exchange-rate duty added at 25% coverage (chemicals partly removed from the duty list)."
@@ -2335,9 +2513,13 @@
      "what": "rentabelnost prodannykh tovarov and rentabelnost aktivov by activity, 2025"
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -2345,9 +2527,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "OKVED 20 chemicals 60% (p 43.0/46.7/31.2/27.6/25.9%, includes fertilisers, so biased up), 22 rubber/plastics 30%, 21 pharma 10%; exchange-rate duty added at 25% coverage (chemicals partly removed from the duty list). 2026: no sector data yet; 2025 sector values carried forward (judgement)."
@@ -2402,27 +2588,38 @@
     {
      "title": "AK&M, 20 Mar 2025: MMK 2024 revenue up 0.7%",
      "url": "https://www.akm.ru/news/vyruchka_mmk_za_2024_god_vyrosla_na_0_7/",
-     "what": "2024 revenue 768.5, EBITDA 153.0 RUB bn, margin 19.9%; 2023 margin 25.6%"
+     "what": "2024 revenue 768.5, EBITDA 153.0 RUB bn, margin 19.9%; 2023 margin 25.6%",
+     "kind": "press"
     },
     {
      "title": "Mail.ru Finance: MMK 9M 2025 IFRS",
      "url": "https://finance.mail.ru/article/chistaya-pribyl-mmk-po-msfo-za-devyat-mesyacev-sostavila-10669-mlrd-rublej-68428076/",
-     "what": "9M 2025 revenue 464.1, EBITDA 61.2 RUB bn (search snippet)"
+     "what": "9M 2025 revenue 464.1, EBITDA 61.2 RUB bn (search snippet)",
+     "kind": "press"
     },
     {
      "title": "Bloomberg: Severstal margins drop to 16-year low (2025 EBITDA margin 19%), as cited in net_gain_russia.json",
      "url": "https://www.bloomberg.com/news/articles/2026-02-03/russian-steelmaker-severstal-posts-lowest-margins-in-16-years",
-     "what": "2025 EBITDA margin"
+     "what": "2025 EBITDA margin",
+     "kind": "press"
     },
     {
-     "title": "GMK Center: export duties on ferrous and non-ferrous metals from 1 Aug 2021",
-     "url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
-     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel"
+     "title": "Government Decree No. 988 of 25 Jun 2021 amending export duty rates (temporary duties on ferrous and non-ferrous metals, 1 Aug-31 Dec 2021; official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202106250042",
+     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel",
+     "replaced_r41": {
+      "old_url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
+      "verified": "pravo.gov.ru API record (number and date match the 25 June 2021 decree reported by the press); the text itself was not opened"
+     }
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -2430,9 +2627,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "Average of two methods. Sector: OKVED 24 metallurgy (p 28.7/19.2/20.8/16.2/10.4%, ROA 23.4/11.8/11.6/9.4/12.2%; includes non-ferrous and precious-metal refining). Company: Severstal EBITDA 52.6% (2021), 31.5% (2022), mean Severstal/MMK 30.8% (2023), MMK 19.9% (2024), mean Severstal 19% / MMK 9M 13.2% (2025), minus D&A 6% (judgement), capital/revenue 1.0 (judgement). Low = lower method, high = higher. Duties added: 2021 metals duty Aug-Dec (15%+specific, ~0.03 of annual exports, estimate), Oct-Dec 2023 exchange-rate duty ~0.014, 2024 ~0.05 (5.5-7% at 92.7 RUB/USD average); none from 2025 (expired 31 Dec 2024)."
@@ -2487,27 +2688,38 @@
     {
      "title": "AK&M, 20 Mar 2025: MMK 2024 revenue up 0.7%",
      "url": "https://www.akm.ru/news/vyruchka_mmk_za_2024_god_vyrosla_na_0_7/",
-     "what": "2024 revenue 768.5, EBITDA 153.0 RUB bn, margin 19.9%; 2023 margin 25.6%"
+     "what": "2024 revenue 768.5, EBITDA 153.0 RUB bn, margin 19.9%; 2023 margin 25.6%",
+     "kind": "press"
     },
     {
      "title": "Mail.ru Finance: MMK 9M 2025 IFRS",
      "url": "https://finance.mail.ru/article/chistaya-pribyl-mmk-po-msfo-za-devyat-mesyacev-sostavila-10669-mlrd-rublej-68428076/",
-     "what": "9M 2025 revenue 464.1, EBITDA 61.2 RUB bn (search snippet)"
+     "what": "9M 2025 revenue 464.1, EBITDA 61.2 RUB bn (search snippet)",
+     "kind": "press"
     },
     {
      "title": "Bloomberg: Severstal margins drop to 16-year low (2025 EBITDA margin 19%), as cited in net_gain_russia.json",
      "url": "https://www.bloomberg.com/news/articles/2026-02-03/russian-steelmaker-severstal-posts-lowest-margins-in-16-years",
-     "what": "2025 EBITDA margin"
+     "what": "2025 EBITDA margin",
+     "kind": "press"
     },
     {
-     "title": "GMK Center: export duties on ferrous and non-ferrous metals from 1 Aug 2021",
-     "url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
-     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel"
+     "title": "Government Decree No. 988 of 25 Jun 2021 amending export duty rates (temporary duties on ferrous and non-ferrous metals, 1 Aug-31 Dec 2021; official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202106250042",
+     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel",
+     "replaced_r41": {
+      "old_url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
+      "verified": "pravo.gov.ru API record (number and date match the 25 June 2021 decree reported by the press); the text itself was not opened"
+     }
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -2515,9 +2727,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "Average of two methods. Sector: OKVED 24 metallurgy (p 28.7/19.2/20.8/16.2/10.4%, ROA 23.4/11.8/11.6/9.4/12.2%; includes non-ferrous and precious-metal refining). Company: Severstal EBITDA 52.6% (2021), 31.5% (2022), mean Severstal/MMK 30.8% (2023), MMK 19.9% (2024), mean Severstal 19% / MMK 9M 13.2% (2025), minus D&A 6% (judgement), capital/revenue 1.0 (judgement). Low = lower method, high = higher. Duties added: 2021 metals duty Aug-Dec (15%+specific, ~0.03 of annual exports, estimate), Oct-Dec 2023 exchange-rate duty ~0.014, 2024 ~0.05 (5.5-7% at 92.7 RUB/USD average); none from 2025 (expired 31 Dec 2024)."
@@ -2572,27 +2788,38 @@
     {
      "title": "AK&M, 20 Mar 2025: MMK 2024 revenue up 0.7%",
      "url": "https://www.akm.ru/news/vyruchka_mmk_za_2024_god_vyrosla_na_0_7/",
-     "what": "2024 revenue 768.5, EBITDA 153.0 RUB bn, margin 19.9%; 2023 margin 25.6%"
+     "what": "2024 revenue 768.5, EBITDA 153.0 RUB bn, margin 19.9%; 2023 margin 25.6%",
+     "kind": "press"
     },
     {
      "title": "Mail.ru Finance: MMK 9M 2025 IFRS",
      "url": "https://finance.mail.ru/article/chistaya-pribyl-mmk-po-msfo-za-devyat-mesyacev-sostavila-10669-mlrd-rublej-68428076/",
-     "what": "9M 2025 revenue 464.1, EBITDA 61.2 RUB bn (search snippet)"
+     "what": "9M 2025 revenue 464.1, EBITDA 61.2 RUB bn (search snippet)",
+     "kind": "press"
     },
     {
      "title": "Bloomberg: Severstal margins drop to 16-year low (2025 EBITDA margin 19%), as cited in net_gain_russia.json",
      "url": "https://www.bloomberg.com/news/articles/2026-02-03/russian-steelmaker-severstal-posts-lowest-margins-in-16-years",
-     "what": "2025 EBITDA margin"
+     "what": "2025 EBITDA margin",
+     "kind": "press"
     },
     {
-     "title": "GMK Center: export duties on ferrous and non-ferrous metals from 1 Aug 2021",
-     "url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
-     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel"
+     "title": "Government Decree No. 988 of 25 Jun 2021 amending export duty rates (temporary duties on ferrous and non-ferrous metals, 1 Aug-31 Dec 2021; official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202106250042",
+     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel",
+     "replaced_r41": {
+      "old_url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
+      "verified": "pravo.gov.ru API record (number and date match the 25 June 2021 decree reported by the press); the text itself was not opened"
+     }
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -2600,9 +2827,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "Average of two methods. Sector: OKVED 24 metallurgy (p 28.7/19.2/20.8/16.2/10.4%, ROA 23.4/11.8/11.6/9.4/12.2%; includes non-ferrous and precious-metal refining). Company: Severstal EBITDA 52.6% (2021), 31.5% (2022), mean Severstal/MMK 30.8% (2023), MMK 19.9% (2024), mean Severstal 19% / MMK 9M 13.2% (2025), minus D&A 6% (judgement), capital/revenue 1.0 (judgement). Low = lower method, high = higher. Duties added: 2021 metals duty Aug-Dec (15%+specific, ~0.03 of annual exports, estimate), Oct-Dec 2023 exchange-rate duty ~0.014, 2024 ~0.05 (5.5-7% at 92.7 RUB/USD average); none from 2025 (expired 31 Dec 2024)."
@@ -2657,27 +2888,38 @@
     {
      "title": "AK&M, 20 Mar 2025: MMK 2024 revenue up 0.7%",
      "url": "https://www.akm.ru/news/vyruchka_mmk_za_2024_god_vyrosla_na_0_7/",
-     "what": "2024 revenue 768.5, EBITDA 153.0 RUB bn, margin 19.9%; 2023 margin 25.6%"
+     "what": "2024 revenue 768.5, EBITDA 153.0 RUB bn, margin 19.9%; 2023 margin 25.6%",
+     "kind": "press"
     },
     {
      "title": "Mail.ru Finance: MMK 9M 2025 IFRS",
      "url": "https://finance.mail.ru/article/chistaya-pribyl-mmk-po-msfo-za-devyat-mesyacev-sostavila-10669-mlrd-rublej-68428076/",
-     "what": "9M 2025 revenue 464.1, EBITDA 61.2 RUB bn (search snippet)"
+     "what": "9M 2025 revenue 464.1, EBITDA 61.2 RUB bn (search snippet)",
+     "kind": "press"
     },
     {
      "title": "Bloomberg: Severstal margins drop to 16-year low (2025 EBITDA margin 19%), as cited in net_gain_russia.json",
      "url": "https://www.bloomberg.com/news/articles/2026-02-03/russian-steelmaker-severstal-posts-lowest-margins-in-16-years",
-     "what": "2025 EBITDA margin"
+     "what": "2025 EBITDA margin",
+     "kind": "press"
     },
     {
-     "title": "GMK Center: export duties on ferrous and non-ferrous metals from 1 Aug 2021",
-     "url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
-     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel"
+     "title": "Government Decree No. 988 of 25 Jun 2021 amending export duty rates (temporary duties on ferrous and non-ferrous metals, 1 Aug-31 Dec 2021; official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202106250042",
+     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel",
+     "replaced_r41": {
+      "old_url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
+      "verified": "pravo.gov.ru API record (number and date match the 25 June 2021 decree reported by the press); the text itself was not opened"
+     }
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -2685,9 +2927,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "Average of two methods. Sector: OKVED 24 metallurgy (p 28.7/19.2/20.8/16.2/10.4%, ROA 23.4/11.8/11.6/9.4/12.2%; includes non-ferrous and precious-metal refining). Company: Severstal EBITDA 52.6% (2021), 31.5% (2022), mean Severstal/MMK 30.8% (2023), MMK 19.9% (2024), mean Severstal 19% / MMK 9M 13.2% (2025), minus D&A 6% (judgement), capital/revenue 1.0 (judgement). Low = lower method, high = higher. Duties added: 2021 metals duty Aug-Dec (15%+specific, ~0.03 of annual exports, estimate), Oct-Dec 2023 exchange-rate duty ~0.014, 2024 ~0.05 (5.5-7% at 92.7 RUB/USD average); none from 2025 (expired 31 Dec 2024)."
@@ -2742,27 +2988,38 @@
     {
      "title": "AK&M, 20 Mar 2025: MMK 2024 revenue up 0.7%",
      "url": "https://www.akm.ru/news/vyruchka_mmk_za_2024_god_vyrosla_na_0_7/",
-     "what": "2024 revenue 768.5, EBITDA 153.0 RUB bn, margin 19.9%; 2023 margin 25.6%"
+     "what": "2024 revenue 768.5, EBITDA 153.0 RUB bn, margin 19.9%; 2023 margin 25.6%",
+     "kind": "press"
     },
     {
      "title": "Mail.ru Finance: MMK 9M 2025 IFRS",
      "url": "https://finance.mail.ru/article/chistaya-pribyl-mmk-po-msfo-za-devyat-mesyacev-sostavila-10669-mlrd-rublej-68428076/",
-     "what": "9M 2025 revenue 464.1, EBITDA 61.2 RUB bn (search snippet)"
+     "what": "9M 2025 revenue 464.1, EBITDA 61.2 RUB bn (search snippet)",
+     "kind": "press"
     },
     {
      "title": "Bloomberg: Severstal margins drop to 16-year low (2025 EBITDA margin 19%), as cited in net_gain_russia.json",
      "url": "https://www.bloomberg.com/news/articles/2026-02-03/russian-steelmaker-severstal-posts-lowest-margins-in-16-years",
-     "what": "2025 EBITDA margin"
+     "what": "2025 EBITDA margin",
+     "kind": "press"
     },
     {
-     "title": "GMK Center: export duties on ferrous and non-ferrous metals from 1 Aug 2021",
-     "url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
-     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel"
+     "title": "Government Decree No. 988 of 25 Jun 2021 amending export duty rates (temporary duties on ferrous and non-ferrous metals, 1 Aug-31 Dec 2021; official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202106250042",
+     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel",
+     "replaced_r41": {
+      "old_url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
+      "verified": "pravo.gov.ru API record (number and date match the 25 June 2021 decree reported by the press); the text itself was not opened"
+     }
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -2770,9 +3027,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "Average of two methods. Sector: OKVED 24 metallurgy (p 28.7/19.2/20.8/16.2/10.4%, ROA 23.4/11.8/11.6/9.4/12.2%; includes non-ferrous and precious-metal refining). Company: Severstal EBITDA 52.6% (2021), 31.5% (2022), mean Severstal/MMK 30.8% (2023), MMK 19.9% (2024), mean Severstal 19% / MMK 9M 13.2% (2025), minus D&A 6% (judgement), capital/revenue 1.0 (judgement). Low = lower method, high = higher. Duties added: 2021 metals duty Aug-Dec (15%+specific, ~0.03 of annual exports, estimate), Oct-Dec 2023 exchange-rate duty ~0.014, 2024 ~0.05 (5.5-7% at 92.7 RUB/USD average); none from 2025 (expired 31 Dec 2024)."
@@ -2827,27 +3088,38 @@
     {
      "title": "AK&M, 20 Mar 2025: MMK 2024 revenue up 0.7%",
      "url": "https://www.akm.ru/news/vyruchka_mmk_za_2024_god_vyrosla_na_0_7/",
-     "what": "2024 revenue 768.5, EBITDA 153.0 RUB bn, margin 19.9%; 2023 margin 25.6%"
+     "what": "2024 revenue 768.5, EBITDA 153.0 RUB bn, margin 19.9%; 2023 margin 25.6%",
+     "kind": "press"
     },
     {
      "title": "Mail.ru Finance: MMK 9M 2025 IFRS",
      "url": "https://finance.mail.ru/article/chistaya-pribyl-mmk-po-msfo-za-devyat-mesyacev-sostavila-10669-mlrd-rublej-68428076/",
-     "what": "9M 2025 revenue 464.1, EBITDA 61.2 RUB bn (search snippet)"
+     "what": "9M 2025 revenue 464.1, EBITDA 61.2 RUB bn (search snippet)",
+     "kind": "press"
     },
     {
      "title": "Bloomberg: Severstal margins drop to 16-year low (2025 EBITDA margin 19%), as cited in net_gain_russia.json",
      "url": "https://www.bloomberg.com/news/articles/2026-02-03/russian-steelmaker-severstal-posts-lowest-margins-in-16-years",
-     "what": "2025 EBITDA margin"
+     "what": "2025 EBITDA margin",
+     "kind": "press"
     },
     {
-     "title": "GMK Center: export duties on ferrous and non-ferrous metals from 1 Aug 2021",
-     "url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
-     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel"
+     "title": "Government Decree No. 988 of 25 Jun 2021 amending export duty rates (temporary duties on ferrous and non-ferrous metals, 1 Aug-31 Dec 2021; official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202106250042",
+     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel",
+     "replaced_r41": {
+      "old_url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
+      "verified": "pravo.gov.ru API record (number and date match the 25 June 2021 decree reported by the press); the text itself was not opened"
+     }
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     },
     {
      "title": "RSPP, 19 Feb 2024: flexible export duties brought about RUB 140 bn in 2023",
@@ -2855,9 +3127,13 @@
      "what": "2023 total; goods covered include fish, dairy, sugar, confectionery, metallurgy, precious metals, fertilisers (10%)"
     },
     {
-     "title": "PPT.ru on Government Decree 1656 of 28 Nov 2024",
-     "url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
-     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)"
+     "title": "Government Decree No. 1656 of 28 Nov 2024 amending Decree No. 1538 (official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202411290007",
+     "what": "exchange-rate duties apply to 31 Dec 2024 inclusive (coal suspended Dec 2024)",
+     "replaced_r41": {
+      "old_url": "https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-28-11-2024-1656",
+      "verified": "record found through the pravo.gov.ru API 2026-10-24; page returns 200"
+     }
     }
    ],
    "note": "Average of two methods. Sector: OKVED 24 metallurgy (p 28.7/19.2/20.8/16.2/10.4%, ROA 23.4/11.8/11.6/9.4/12.2%; includes non-ferrous and precious-metal refining). Company: Severstal EBITDA 52.6% (2021), 31.5% (2022), mean Severstal/MMK 30.8% (2023), MMK 19.9% (2024), mean Severstal 19% / MMK 9M 13.2% (2025), minus D&A 6% (judgement), capital/revenue 1.0 (judgement). Low = lower method, high = higher. Duties added: 2021 metals duty Aug-Dec (15%+specific, ~0.03 of annual exports, estimate), Oct-Dec 2023 exchange-rate duty ~0.014, 2024 ~0.05 (5.5-7% at 92.7 RUB/USD average); none from 2025 (expired 31 Dec 2024). 2026: no sector data yet; 2025 sector values carried forward (judgement)."
@@ -2890,19 +3166,31 @@
      "what": "2024 revenue 12,082, adj. EBITDA 1,494, EBIT 368, D&A 538 USD m; balance sheet (total assets 22,201, associates 4,868, cash 1,503) used for capital/revenue ~1.1"
     },
     {
-     "title": "Rusal 2025 results (as cited in net_gain_russia.json)",
-     "url": "https://www.itiger.com/news/1124699335",
-     "what": "2025 adj. EBITDA margin 7.1%"
+     "title": "UC RUSAL annual results announcement for the year ended 31 Dec 2025 (HKEX filing, 18 Mar 2026; copy hosted by moomoo): revenue USD 14,812m, adjusted EBITDA USD 1,053m, margin 7.1% (2024: 12.4%)",
+     "url": "https://newsfile.moomoo.com/public/NN-PersistNoticeAttachment/7781/20260318/12056504-0.PDF",
+     "what": "2025 adj. EBITDA margin 7.1%",
+     "replaced_r41": {
+      "old_url": "https://www.itiger.com/news/1124699335",
+      "verified": "PDF fetched and read 2026-10-24"
+     }
     },
     {
-     "title": "GMK Center: export duties on ferrous and non-ferrous metals from 1 Aug 2021",
-     "url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
-     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel"
+     "title": "Government Decree No. 988 of 25 Jun 2021 amending export duty rates (temporary duties on ferrous and non-ferrous metals, 1 Aug-31 Dec 2021; official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202106250042",
+     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel",
+     "replaced_r41": {
+      "old_url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
+      "verified": "pravo.gov.ru API record (number and date match the 25 June 2021 decree reported by the press); the text itself was not opened"
+     }
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     }
    ],
    "note": "Rusal: EBIT = adj. EBITDA margin (24.1/14.5/6.4/12.4/7.1%) minus D&A 4.4% (2024: 538/12,082); low case uses reported EBIT (17.3/9.4/-0.6/3.0%). Capital/revenue 1.1 from the 2024 balance sheet net of associates (Nornickel), cash and payables. Duties: 2021 Aug-Dec metals duty 0.04 (0.02-0.06; exports were front-loaded in July), exchange-rate duty 2023 0.007, 2024 0.025 (0-0.05; coverage of aluminium not confirmed). 2026 kept (no annual data; H1 2026 adj. EBITDA USD 1.23 bn only)."
@@ -2935,19 +3223,31 @@
      "what": "2024 revenue 12,082, adj. EBITDA 1,494, EBIT 368, D&A 538 USD m; balance sheet (total assets 22,201, associates 4,868, cash 1,503) used for capital/revenue ~1.1"
     },
     {
-     "title": "Rusal 2025 results (as cited in net_gain_russia.json)",
-     "url": "https://www.itiger.com/news/1124699335",
-     "what": "2025 adj. EBITDA margin 7.1%"
+     "title": "UC RUSAL annual results announcement for the year ended 31 Dec 2025 (HKEX filing, 18 Mar 2026; copy hosted by moomoo): revenue USD 14,812m, adjusted EBITDA USD 1,053m, margin 7.1% (2024: 12.4%)",
+     "url": "https://newsfile.moomoo.com/public/NN-PersistNoticeAttachment/7781/20260318/12056504-0.PDF",
+     "what": "2025 adj. EBITDA margin 7.1%",
+     "replaced_r41": {
+      "old_url": "https://www.itiger.com/news/1124699335",
+      "verified": "PDF fetched and read 2026-10-24"
+     }
     },
     {
-     "title": "GMK Center: export duties on ferrous and non-ferrous metals from 1 Aug 2021",
-     "url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
-     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel"
+     "title": "Government Decree No. 988 of 25 Jun 2021 amending export duty rates (temporary duties on ferrous and non-ferrous metals, 1 Aug-31 Dec 2021; official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202106250042",
+     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel",
+     "replaced_r41": {
+      "old_url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
+      "verified": "pravo.gov.ru API record (number and date match the 25 June 2021 decree reported by the press); the text itself was not opened"
+     }
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     }
    ],
    "note": "Rusal: EBIT = adj. EBITDA margin (24.1/14.5/6.4/12.4/7.1%) minus D&A 4.4% (2024: 538/12,082); low case uses reported EBIT (17.3/9.4/-0.6/3.0%). Capital/revenue 1.1 from the 2024 balance sheet net of associates (Nornickel), cash and payables. Duties: 2021 Aug-Dec metals duty 0.04 (0.02-0.06; exports were front-loaded in July), exchange-rate duty 2023 0.007, 2024 0.025 (0-0.05; coverage of aluminium not confirmed). 2026 kept (no annual data; H1 2026 adj. EBITDA USD 1.23 bn only)."
@@ -2980,19 +3280,31 @@
      "what": "2024 revenue 12,082, adj. EBITDA 1,494, EBIT 368, D&A 538 USD m; balance sheet (total assets 22,201, associates 4,868, cash 1,503) used for capital/revenue ~1.1"
     },
     {
-     "title": "Rusal 2025 results (as cited in net_gain_russia.json)",
-     "url": "https://www.itiger.com/news/1124699335",
-     "what": "2025 adj. EBITDA margin 7.1%"
+     "title": "UC RUSAL annual results announcement for the year ended 31 Dec 2025 (HKEX filing, 18 Mar 2026; copy hosted by moomoo): revenue USD 14,812m, adjusted EBITDA USD 1,053m, margin 7.1% (2024: 12.4%)",
+     "url": "https://newsfile.moomoo.com/public/NN-PersistNoticeAttachment/7781/20260318/12056504-0.PDF",
+     "what": "2025 adj. EBITDA margin 7.1%",
+     "replaced_r41": {
+      "old_url": "https://www.itiger.com/news/1124699335",
+      "verified": "PDF fetched and read 2026-10-24"
+     }
     },
     {
-     "title": "GMK Center: export duties on ferrous and non-ferrous metals from 1 Aug 2021",
-     "url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
-     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel"
+     "title": "Government Decree No. 988 of 25 Jun 2021 amending export duty rates (temporary duties on ferrous and non-ferrous metals, 1 Aug-31 Dec 2021; official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202106250042",
+     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel",
+     "replaced_r41": {
+      "old_url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
+      "verified": "pravo.gov.ru API record (number and date match the 25 June 2021 decree reported by the press); the text itself was not opened"
+     }
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     }
    ],
    "note": "Rusal: EBIT = adj. EBITDA margin (24.1/14.5/6.4/12.4/7.1%) minus D&A 4.4% (2024: 538/12,082); low case uses reported EBIT (17.3/9.4/-0.6/3.0%). Capital/revenue 1.1 from the 2024 balance sheet net of associates (Nornickel), cash and payables. Duties: 2021 Aug-Dec metals duty 0.04 (0.02-0.06; exports were front-loaded in July), exchange-rate duty 2023 0.007, 2024 0.025 (0-0.05; coverage of aluminium not confirmed). 2026 kept (no annual data; H1 2026 adj. EBITDA USD 1.23 bn only)."
@@ -3025,19 +3337,31 @@
      "what": "2024 revenue 12,082, adj. EBITDA 1,494, EBIT 368, D&A 538 USD m; balance sheet (total assets 22,201, associates 4,868, cash 1,503) used for capital/revenue ~1.1"
     },
     {
-     "title": "Rusal 2025 results (as cited in net_gain_russia.json)",
-     "url": "https://www.itiger.com/news/1124699335",
-     "what": "2025 adj. EBITDA margin 7.1%"
+     "title": "UC RUSAL annual results announcement for the year ended 31 Dec 2025 (HKEX filing, 18 Mar 2026; copy hosted by moomoo): revenue USD 14,812m, adjusted EBITDA USD 1,053m, margin 7.1% (2024: 12.4%)",
+     "url": "https://newsfile.moomoo.com/public/NN-PersistNoticeAttachment/7781/20260318/12056504-0.PDF",
+     "what": "2025 adj. EBITDA margin 7.1%",
+     "replaced_r41": {
+      "old_url": "https://www.itiger.com/news/1124699335",
+      "verified": "PDF fetched and read 2026-10-24"
+     }
     },
     {
-     "title": "GMK Center: export duties on ferrous and non-ferrous metals from 1 Aug 2021",
-     "url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
-     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel"
+     "title": "Government Decree No. 988 of 25 Jun 2021 amending export duty rates (temporary duties on ferrous and non-ferrous metals, 1 Aug-31 Dec 2021; official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202106250042",
+     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel",
+     "replaced_r41": {
+      "old_url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
+      "verified": "pravo.gov.ru API record (number and date match the 25 June 2021 decree reported by the press); the text itself was not opened"
+     }
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     }
    ],
    "note": "Rusal: EBIT = adj. EBITDA margin (24.1/14.5/6.4/12.4/7.1%) minus D&A 4.4% (2024: 538/12,082); low case uses reported EBIT (17.3/9.4/-0.6/3.0%). Capital/revenue 1.1 from the 2024 balance sheet net of associates (Nornickel), cash and payables. Duties: 2021 Aug-Dec metals duty 0.04 (0.02-0.06; exports were front-loaded in July), exchange-rate duty 2023 0.007, 2024 0.025 (0-0.05; coverage of aluminium not confirmed). 2026 kept (no annual data; H1 2026 adj. EBITDA USD 1.23 bn only)."
@@ -3070,19 +3394,31 @@
      "what": "2024 revenue 12,082, adj. EBITDA 1,494, EBIT 368, D&A 538 USD m; balance sheet (total assets 22,201, associates 4,868, cash 1,503) used for capital/revenue ~1.1"
     },
     {
-     "title": "Rusal 2025 results (as cited in net_gain_russia.json)",
-     "url": "https://www.itiger.com/news/1124699335",
-     "what": "2025 adj. EBITDA margin 7.1%"
+     "title": "UC RUSAL annual results announcement for the year ended 31 Dec 2025 (HKEX filing, 18 Mar 2026; copy hosted by moomoo): revenue USD 14,812m, adjusted EBITDA USD 1,053m, margin 7.1% (2024: 12.4%)",
+     "url": "https://newsfile.moomoo.com/public/NN-PersistNoticeAttachment/7781/20260318/12056504-0.PDF",
+     "what": "2025 adj. EBITDA margin 7.1%",
+     "replaced_r41": {
+      "old_url": "https://www.itiger.com/news/1124699335",
+      "verified": "PDF fetched and read 2026-10-24"
+     }
     },
     {
-     "title": "GMK Center: export duties on ferrous and non-ferrous metals from 1 Aug 2021",
-     "url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
-     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel"
+     "title": "Government Decree No. 988 of 25 Jun 2021 amending export duty rates (temporary duties on ferrous and non-ferrous metals, 1 Aug-31 Dec 2021; official publication, pravo.gov.ru)",
+     "url": "http://publication.pravo.gov.ru/document/0001202106250042",
+     "what": "15% base rate plus specific minimum, Aug-Dec 2021, steel, aluminium, copper, nickel",
+     "replaced_r41": {
+      "old_url": "https://gmk.center/news/v-rossii-nachali-dejstvovat-poshliny-na-eksport-chernyh-i-cvetnyh-metallov/amp/",
+      "verified": "pravo.gov.ru API record (number and date match the 25 June 2021 decree reported by the press); the text itself was not opened"
+     }
     },
     {
-     "title": "Expert, 18 Dec 2023: RUB 117 bn of exchange-rate-linked export duties collected",
-     "url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
-     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023"
+     "title": "Government Decree No. 1538 of 21 Sep 2023 on export duty rates (exchange-rate-linked duties from 1 Oct 2023; official publication, pravo.gov.ru). The RUB 117bn collected to mid-Dec 2023 is the Federal Customs Service head's statement, press only (Expert, 18 Dec 2023; FTS later gave RUB 186bn to Feb 2024)",
+     "url": "http://publication.pravo.gov.ru/document/0001202309210020",
+     "what": "rates 4% (80-85 RUB/USD) to 7% (95+), in force from 1 Oct 2023",
+     "replaced_r41": {
+      "old_url": "https://expert.ru/news/v-rossii-sobrali-117-mlrd-rub-kursovykh-eksportnykh-poshlin",
+      "verified": "pravo.gov.ru API record 2026-10-24; 117bn/186bn confirmed by web search (press)"
+     }
     }
    ],
    "note": "Rusal: EBIT = adj. EBITDA margin (24.1/14.5/6.4/12.4/7.1%) minus D&A 4.4% (2024: 538/12,082); low case uses reported EBIT (17.3/9.4/-0.6/3.0%). Capital/revenue 1.1 from the 2024 balance sheet net of associates (Nornickel), cash and payables. Duties: 2021 Aug-Dec metals duty 0.04 (0.02-0.06; exports were front-loaded in July), exchange-rate duty 2023 0.007, 2024 0.025 (0-0.05; coverage of aluminium not confirmed). 2026 kept (no annual data; H1 2026 adj. EBITDA USD 1.23 bn only)."

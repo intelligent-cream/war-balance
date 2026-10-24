@@ -14,7 +14,7 @@ const code = html.slice(html.indexOf("// ===== Model ====="), html.indexOf("func
 const D = JSON.parse(readFileSync(join(SITE, "data.json"), "utf8"));
 const det = JSON.parse(readFileSync(join(SITE, "detail.json"), "utf8"));
 const M = new Function("D", "t", `let YEARS = D.years, FRAC = D.frac, SRC = D.sources, META = D.meta; let DATA = {}, byIso = {}, INCLUDED = {};
-  ${code}; return { calc, normalise, methodBands, uncertain, leaning, isNearZero, grades, worldPaid, PARTY_TO_WAR, setData: (d, b) => { DATA = d; byIso = b; ALTS_READY = true; } };`)(D, s => s);
+  ${code}; return { calc, normalise, methodBands, uncertain, leaning, isNearZero, grades, worldPaid, pSignMC, chance, PARTY_TO_WAR, setData: (d, b) => { DATA = d; byIso = b; ALTS_READY = true; } };`)(D, s => s);
 const data = {}, by = {};
 for (const [k, c] of Object.entries(D.countries)) { c.alts = det.alts[k] || {}; M.normalise(c); data[c.n] = c; by[k] = c; }
 M.setData(data, by);
@@ -25,16 +25,21 @@ for (const [k, c] of Object.entries(by)) {
   if (!c.gdp) continue;
   const g = 100 / c.gdp, x = M.calc(c, Y), x25 = M.calc(c, 2025), mb = M.methodBands(c, Y);
   const head = { ua: [x.uaBal, x.uaLo, x.uaHi], rus: [x.rusBal, x.rusLo, x.rusHi], net: [x.shift, x.shiftLo, x.shiftHi] };
-  const o = { gdp: c.gdp, gdp_2024: c.gdp_2024 ?? null, grades: M.grades(c, Y), party: M.PARTY_TO_WAR.has(k) };
+  const o = { gdp: c.gdp, gdp_2024: c.gdp_2024 ?? null, grades: M.grades(c, Y), party: M.PARTY_TO_WAR.has(k),
+    // round 41: no data, or mostly no data (only small rough estimates): drawn hatched and not ranked
+    noData: !!(x.noData || x.mostlyNoData) };
   for (const [q, [v, lo, hi]] of Object.entries(head)) {
-    // the ranking rule written out again, independently of uncertain(): the value, its likely range and every
-    // method-band alternative must have the same sign
+    // the ranking rule written out again, independently of uncertain(): round 42 (owner: "decide 'certain' with the
+    // simulation alone"): the simulation over the parts gives the value's own sign at least a 95% chance, and every
+    // method-band alternative has that sign. Here always the full simulation, without the page's shortcut for numbers
+    // far from zero
     const alts = mb.alts.map(a => a[q]);
-    const sameSign = v !== 0 && [lo, hi, ...alts].every(z => z * v > 0);
+    const pOwn = v ? M.pSignMC(x.signParts[q], v) : 0;
+    const sameSign = v !== 0 && pOwn >= 0.95 && alts.every(z => z * v > 0);
     Object.assign(o, { [q]: r4(v * g), [q + "Lo"]: r4(lo * g), [q + "Hi"]: r4(hi * g), [q + "BandLo"]: r4(mb[q].lo * g), [q + "BandHi"]: r4(mb[q].hi * g),
       [q + "Eur"]: r4(v), [q + "Unc"]: M.uncertain(c, Y, q), [q + "SameSign"]: sameSign,
       // round 24b (owner): which way a number that is not certain leans ("ukraine", "russia", or null: uncertain direction)
-      [q + "Lean"]: M.leaning(c, Y, q), [q + "Near"]: M.isNearZero(c, Y, q) });
+      [q + "Lean"]: M.leaning(c, Y, q), [q + "Near"]: M.isNearZero(c, Y, q), [q + "Chance"]: r4(M.chance(c, Y, q).pUa) });
   }
   Object.assign(o, { ua2025: r4(x25.uaBal * g), rus2025: r4(x25.rusBal * g), net2025: r4(x25.shift * g),
     refugees: r4(x.refugees), aidRef: r4((x.shiftParts.find(p => p.k === "ref") || { v: 0 }).v),

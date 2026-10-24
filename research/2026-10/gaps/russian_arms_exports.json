@@ -3062,7 +3062,8 @@
   {
    "name": "Defense News: Russia forecasts drop in arms export revenue (Shugaev 2021 = USD 14.6bn; Mikheev 2022 YTD 5.4bn)",
    "url": "https://www.defensenews.com/global/europe/2022/08/29/russia-forecasts-drop-in-arms-export-revenue/",
-   "date": "2022-08-29"
+   "date": "2022-08-29",
+   "kind": "press"
   },
   {
    "name": "CRS R46937 Russian Arms Sales and Defense Industry",
@@ -3072,27 +3073,32 @@
   {
    "name": "www1.ru: Chemezov at Financial University (2021 ~15bn, 2022 ~7bn, 2023 ~6bn, 2024 lower)",
    "url": "https://www1.ru/en/news/2024/11/26/zakryt-svoi-potrebnosti-rossiia-snizaet-obieem-eksporta-oruziia-i-voennoi-texniki-v-2024-godu.amp.html",
-   "date": "2024-11-26"
+   "date": "2024-11-26",
+   "kind": "press"
   },
   {
    "name": "The Moscow Times (ru): Chemezov at Dubai Airshow, exports halved vs 2022",
    "url": "https://ru.themoscowtimes.com/2025/11/18/glava-rosteha-konstatiroval-obval-eksporta-rossiiskogo-oruzhiya-vdvoe-a180382",
-   "date": "2025-11-18"
+   "date": "2025-11-18",
+   "kind": "press"
   },
   {
    "name": "The Moscow Times (ru): disrupted export contracts USD 5-10bn, S-400 delay to India",
    "url": "https://ru.themoscowtimes.com/2024/08/23/rossiya-sorvala-kontrakti-napostavku-vooruzhenii-zagranitsu-namilliardi-dollarov-a140175",
-   "date": "2024-08-23"
+   "date": "2024-08-23",
+   "kind": "press"
   },
   {
    "name": "Defense News: Russia claims $15 billion in 2025 arms exports (and 13.75bn claim for 2024)",
    "url": "https://www.defensenews.com/global/europe/2026/02/02/russia-claims-15-billion-in-2025-arms-exports-with-focus-on-africa/",
-   "date": "2026-02-02"
+   "date": "2026-02-02",
+   "kind": "press"
   },
   {
    "name": "Defence24: Behind Putin's 15 billion arms revenue claim",
    "url": "https://defence24.com/other/behind-putins-15-billion-arms-revenue-claim",
-   "date": "2026-02"
+   "date": "2026-02",
+   "kind": "press"
   },
   {
    "name": "Jamestown EDM: Rosoboronexport's international arms sales status uncertain (H1 2026 contracts USD 13bn; order book)",
@@ -3107,42 +3113,50 @@
   {
    "name": "Sputnik via GlobalSecurity: Rosoboronexport order portfolio >USD 55bn, 2023 contracts >12bn",
    "url": "https://www.globalsecurity.org/wmd/library/news/russia/2024/02/russia-240205-sputnik01.htm",
-   "date": "2024-02-05"
+   "date": "2024-02-05",
+   "kind": "press"
   },
   {
    "name": "BNN Bloomberg: Russia says it has billions of Indian rupees it can't use (Bloomberg Apr 2023: >USD 2bn Indian arms payments stuck ~1 year)",
    "url": "https://www.bnnbloomberg.ca/russia-says-it-has-billions-of-indian-rupees-that-it-can-t-use-1.1916440",
-   "date": "2023-05-05"
+   "date": "2023-05-05",
+   "kind": "press"
   },
   {
    "name": "Kyiv Independent summarising Bloomberg: India-Russia arms shipments stalled",
    "url": "https://kyivindependent.com/bloomberg-india-russia-arms-shipments-stalled",
-   "date": "2023-04"
+   "date": "2023-04",
+   "kind": "press"
   },
   {
    "name": "Lok Sabha reply on defence procurement from foreign sources 2017-18 to 2021-22 (via EastMojo)",
    "url": "https://eastmojo.com/national-news/2023/02/04/rs-1-93-lakh-crore-military-equipment-imported-between-2017-18-and-2021-22-govt/",
-   "date": "2023-02-04"
+   "date": "2023-02-04",
+   "kind": "press"
   },
   {
    "name": "AP: Russia, Vietnam using energy profits (Rusvietpetro) to avoid possible US sanctions for arms deals",
    "url": "https://www.news4jax.com/news/world/2025/09/19/ap-exclusive-russia-vietnam-using-energy-profits-to-avoid-possible-us-sanctions-for-arms-deals/",
-   "date": "2025-09-19"
+   "date": "2025-09-19",
+   "kind": "press"
   },
   {
    "name": "Iran International: Leaked Russian files show Iran's EUR 6bn plan to buy 48 Su-35",
    "url": "https://www.iranintl.com/en/202510069695",
-   "date": "2025-10-06"
+   "date": "2025-10-06",
+   "kind": "press"
   },
   {
    "name": "Defense News: Russian stealth jets have arrived in North Africa (Algeria Su-57E)",
    "url": "https://defensenews.com/global/europe/2026/02/10/russian-stealth-jets-have-arrived-in-north-africa-as-filmed-by-algerian-potato-farmer",
-   "date": "2026-02-10"
+   "date": "2026-02-10",
+   "kind": "press"
   },
   {
    "name": "The Aviationist: Algeria's first Su-57E (order ~USD 2bn for 14 reported)",
    "url": "https://theaviationist.com/2026/02/11/algerias-first-su-57e/",
-   "date": "2026-02-11"
+   "date": "2026-02-11",
+   "kind": "press"
   },
   {
    "name": "UN Comtrade public preview API, HS 88/89/93/8411/8526/8710/8805/8906 and HS2, imports from Russia (reporters IND, CHN, DZA, EGY, VNM, KAZ, ARM, IDN, BGD, SRB, UZB, TUR, MMR) and Russia's own exports 2019-2021",

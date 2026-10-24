@@ -244,7 +244,8 @@
     "eur_bn": 0.929,
     "measure": "products of Russian-origin crude entering EU via Turkey, India, Georgia refineries (CREA data via Novaya Gazeta Europe, 24 Jun 2026)",
     "src": "https://novayagazeta.eu/en/articles/2026/06/24/the-billion-euro-loophole-en",
-    "certainty": "C"
+    "certainty": "C",
+    "src_kind": "press"
    },
    {
     "scope": "EU+UK",
@@ -2570,7 +2571,8 @@
     "usd_bn": 2.0,
     "period": "2023 (data to Nov)",
     "basis": "Reuters calculation (LSEG data + trader estimates), crude and products, reported 19 Dec 2023; other years not estimated.",
-    "src": "https://www.dailysabah.com/business/energy/turkiye-saves-2-billion-on-russian-oil-purchases-calculations-show/amp"
+    "src": "https://www.dailysabah.com/business/energy/turkiye-saves-2-billion-on-russian-oil-purchases-calculations-show/amp",
+    "src_kind": "press"
    },
    "certainty": {
     "fossil_2021": "B",
@@ -2585,7 +2587,7 @@
     "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
     "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
     "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of TUR>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
-    "https://www.dailysabah.com/business/energy/turkiye-saves-2-billion-on-russian-oil-purchases-calculations-show/amp"
+    "Press only: https://www.dailysabah.com/business/energy/turkiye-saves-2-billion-on-russian-oil-purchases-calculations-show/amp"
    ],
    "notes": "Includes TurkStream pipeline gas; part of TurkStream flows transit to SE Europe and may be attributed to Turkey."
   },
@@ -2696,7 +2698,11 @@
     "usd_bn": 13.0,
     "period": "2022-04/2024-02 (FY2023 + 11M FY2024)",
     "basis": "ICRA estimate (reported 1 May 2024): USD 5.1 bn FY2023 + USD 7.9 bn Apr 2023-Feb 2024, savings vs West-Asian crude unit values; FY23 converted at 2022 ECB rate, FY24 at 2023 rate. Alternative: Indian Express >= USD 10.5 bn Apr 2022-May 2024.",
-    "src": "https://deccanchronicle.com/business/economics/russian-oil-imports-save-india-79b-in-fy24-891929"
+    "src": "https://icra.in/Rating/DownloadResearchSummaryReport?id=5676",
+    "replaced_r41": {
+     "old_url": "https://deccanchronicle.com/business/economics/russian-oil-imports-save-india-79b-in-fy24-891929",
+     "verified": "PDF fetched 2026-10-24"
+    }
    },
    "certainty": {
     "fossil_2021": "B",
@@ -2711,7 +2717,7 @@
     "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2021-01-01&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
     "https://api.russiafossiltracker.com/v0/counter?format=csv&date_from=2022-02-24&date_to=2026-10-17&aggregate_by=year,destination_iso2,destination_country,commodity_group&commodity_grouping=split_gas_oil&currency=EUR,USD (retrieved 2026-10-17)",
     "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=<M49 of IND>&period=2021&partnerCode=643&flowCode=M&cmdCode=27,2701,2709,2710,2711 (retrieved 2026-10-17)",
-    "https://deccanchronicle.com/business/economics/russian-oil-imports-save-india-79b-in-fy24-891929"
+    "ICRA research summary (Apr 2024): discounted Russian crude saved India USD 5.1bn in FY2023 and USD 7.9bn in Apr 2023-Feb 2024 https://icra.in/Rating/DownloadResearchSummaryReport?id=5676"
    ],
    "notes": ""
   },

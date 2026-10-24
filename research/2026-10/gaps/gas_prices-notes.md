@@ -1,6 +1,6 @@
 # Country-specific Russian gas prices (research 2026-10)
 
-Gathered 2026-10-17/18. The output is `gas_prices.json`. **No person has reviewed it yet.**
+Gathered 2026-10-17/18. The output is `gas_prices.json`.
 
 ## What it is for
 The map deflates trade with Russia to pre-war prices. Until now gas used one Europe-wide index (`energy2.json` `price_index.pipeline_gas` and `lng`). This file gives, for each country that bought Russian pipeline gas or LNG in 2019-2026, the realised import price per year (EUR/MWh, gross calorific value; low/central/high) and an index against that country's own 2019-2021 average. To use it, divide the country's nominal Russian-gas value by `index_vs_2019_2021.pipeline` (or `.lng`). Years are calendar years; 2026 = January-August.

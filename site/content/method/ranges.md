@@ -1,6 +1,6 @@
 # Ranges and certainty letters
 
-Every number on the map has a middle value, a **likely range** and a **certainty letter** from A (reported) to D (rough indication). The likely range covers the uncertainty of the data and models given the method; it is set by judgement to about 90%, not measured. How much the method choices themselves move a number is the separate **method band**.
+Every number on the map has a middle value and a **likely range**; each part also has a **certainty letter** from A (reported) to D (rough indication), and each headline number the **chance of its direction**. The likely range covers the uncertainty of the data and models given the method; it aims at about 90% and has been **tested** (below: "How often the ranges are right"). How much the method choices themselves move a number is the separate **method band**.
 
 Details for developers: [how each range is computed, term by term](https://github.com/intelligent-cream/war-balance/blob/main/docs/reference/method/ranges.md).
 
@@ -13,16 +13,29 @@ Details for developers: [how each range is computed, term by term](https://githu
 | C | modelled estimate | ±35% |
 | D | rough indication | ±70% |
 
-Each headline number's letter weighs two things: **how much of it rests on primary data** (parts graded A or B) or on rough indications (D), and **how wide** its range and method band are against its size.
+A part's letter is also **capped by its sources** (round 42). Only the sources that measure the part count (not the method's own inputs such as price indices, the no-war models or the gain shares), and one statistical source used under several names counts once:
 
-| letter | A–B share at least | D share at most | spread at most |
-|---|---|---|---|
-| A | 75% | 5% | 0.5 × the value |
-| B | 50% | 15% | 1 × the value |
-| C | – | 35% | 2.5 × the value |
-| D | otherwise | | |
+| a part can be at most | when its sources include |
+|---|---|
+| A | two official statistics or more |
+| B | one official statistic, or two research or official reports |
+| C | one research or official report |
+| D | only press reports or this project's own estimates |
 
-The thresholds are a judgement, chosen so that the letters separate countries. A trade part built on a modelled no-war level and a modelled gain share stacks two models, so it is at best C; Russia's earnings from trade is therefore at best C. Most D letters belong to numbers close to zero, whose range is wide against their size. Examples: Germany C, C, C; France B, C, C; Hungary D, C, C (support, trade, net). Gold and hidden payments are always D; oil via other countries always C.
+A part resting on press reports alone is marked **press only** in the panel; on this project's own estimates alone, **own estimate**. A trade part built on a modelled no-war level and a modelled gain share stacks two models, so it is at best C. Gold and hidden payments are always D; oil via other countries always C.
+
+## How likely the direction is
+
+The headline numbers (support for Ukraine, Russia's earnings from trade, the net) carry no letter. They say **how likely their direction is**: every part's likely range is simulated together, each as a skewed range, correlated where parts share inputs, and the share of outcomes on each side of zero is the chance.
+
+| on the site | rule |
+|---|---|
+| very likely (certain) | at least a 95% chance of one direction, and every other method choice agrees |
+| likely (leaning) | at least a 65% chance |
+| near zero | not certain, and the likely range and method band stay within ±0.5% of a year's GDP |
+| unclear | the rest |
+
+The chance is of the more likely direction, which is usually that of the middle value. Where a middle value just above zero sits in a range that reaches mostly below it, the number leans the other way and says so, with its middle value. Each panel also says **what decides it**: the smallest change to one part that would flip the direction, for example "if Russia kept less from fuel and goods sold here were 1% smaller".
 
 ## Where a part's range comes from
 
@@ -38,7 +51,7 @@ A traded flow has four main sources of uncertainty: the pre-war level, the actua
 
 Parts' ranges are combined the same way, with correlations where errors are shared (for example, all parts weighted by Russia's gain shares move together). The effect is small: Germany's net range is +2.58%<!-- n:DEU.netLo --> to +5.05%<!-- n:DEU.netHi -->.
 
-A number's direction is **certain** only if neither its likely range nor any method-band alternative changes its sign. Otherwise it **leans** toward Ukraine or Russia when its direction has at least a 65% chance, worked out by simulating its parts (each a skewed range, correlated where they share inputs), and is **uncertain** below that. When its likely range and its method band both stay within ±0.5% of a year's GDP it is **near zero**: the war moved little money either way. All stay in the ranking, in their own groups, and the country's panel says in one line why its number is not certain. Among the 163<!-- n:WORLD.nBig --> economies above EUR 5bn, 96<!-- n:WORLD.uncUa --> are not certain on support for Ukraine, 113<!-- n:WORLD.uncRus --> on Russia's earnings from trade and 106<!-- n:WORLD.uncNet --> on the net, of which 60<!-- n:WORLD.leanNet --> lean one way and 34<!-- n:WORLD.nearNet --> are near zero.
+A number's direction is **certain** when the simulation gives it at least a 95% chance and no method-band alternative has the other sign (round 42; before, the likely range had to stay on one side). Otherwise it **leans** toward Ukraine or Russia when one direction has at least a 65% chance, and is **uncertain** below that. When its likely range and its method band both stay within ±0.5% of a year's GDP it is **near zero**: the war moved little money either way. All stay in the ranking, in their own groups, and the country's panel says in one line why its number is not certain. Among the 163<!-- n:WORLD.nBig --> economies above EUR 5bn, 84<!-- n:WORLD.uncUa --> are not certain on support for Ukraine, 112<!-- n:WORLD.uncRus --> on Russia's earnings from trade and 102<!-- n:WORLD.uncNet --> on the net, of which 56<!-- n:WORLD.leanNet --> lean one way and 29<!-- n:WORLD.nearNet --> are near zero.
 
 ## The method band
 
@@ -65,9 +78,13 @@ The headline is a total for 2022 to the chosen year against one year's GDP. The 
 
 2026 counts January to August. Where no 2026 figures exist yet, they are estimated from the 2025 monthly rate and the part's label carries a `*` (company taxes, and trade where the 2026 value is an estimate, for example Belarus and Uzbekistan).
 
+## How often the ranges are right
+
+The ranges were tested by rerunning the method as if the war had started in **2018**, when the true effect is zero. For trade with Russia, which makes most of the width of the ranges, the range contained zero for **97%** of the 150 ranked economies. Moved to **2014**, when Russia's own economy was hit by the oil and rouble crash, it was **92%**. So the ranges cover about 90% or a little more. The weak spot: sales to Russia by countries that sell it little are covered less often (about 78%). The test reruns trade only (aid, refugees and the other parts did not exist before 2022), with IMF trade totals instead of the full customs build, and the bands were measured partly on these years, so it checks the whole chain rather than proving the bands out of sample. Details: `research/2026-10/gaps/placebo_r42-notes.md`; `pipeline/placebo.py` reruns it, and a test fails if the 2018 coverage drops below 80%.
+
 ## What the ranges do not cover
 
-- **Russia-side shocks**: the no-war prediction's bands covered only 77–79% when Russia's own economy moved ([counterfactual](#view=how&sec=m-counterfactual-7-how-the-predictions-error-enters-the-ranges)).
+- **Russia-side shocks**: the no-war prediction's own bands covered only 77–79% when Russia's own economy moved ([counterfactual](#view=how&sec=m-counterfactual-7-how-the-predictions-error-enters-the-ranges)); with the other uncertainties added, trade ranges still held zero for 92% in the 2014 test, but 2022–2026 is a larger shock.
 - **The method itself**: what counts, the valuation rule, the GDP year. The method band shows the main choices one at a time, not combined.
 - **Errors shared across parts or countries** beyond the correlations included (one report behind all company taxes; value moved between countries by re-export rules).
 - **Flows nobody has measured.**

@@ -4570,37 +4570,44 @@
   {
    "name": "Izvestia: exit contributions RUB 155.8bn Jan-Nov 2024, plan 2.1bn, 97 deals in 2023, rates 10/15/35%",
    "url": "https://iz.ru/en/node/1802960",
-   "date": "2024-12-09"
+   "date": "2024-12-09",
+   "kind": "press"
   },
   {
    "name": "Izvestia: exit contributions Jan 2025 RUB 54.7bn; 2024 ~156bn; Carlsberg contribution 8.5-12bn",
    "url": "https://iz.ru/en/node/1834411",
-   "date": "2025-02-06"
+   "date": "2025-02-06",
+   "kind": "press"
   },
   {
    "name": "Interfax: First Deputy Finance Minister Okladnikova, ~RUB 120bn of exit payments received in 2025 to date",
    "url": "https://www.interfax.ru/business/1017524",
-   "date": "2025-03-31"
+   "date": "2025-03-31",
+   "kind": "press"
   },
   {
    "name": "Kommersant: 2023 exit contributions ~RUB 120bn, 2024 >150bn, discount >=60%",
    "url": "https://www.kommersant.ru/doc/7363099",
-   "date": "2024-12-09"
+   "date": "2024-12-09",
+   "kind": "press"
   },
   {
    "name": "The Moscow Times (ru): voluntary contributions 2.95 (2022), 116.45 (2023), 160.26 (2024), 251 (2025) RUB bn",
    "url": "https://ru.themoscowtimes.com/2026/10/01/vlasti-rf-ozhidayut-4715-mlrd-r-dobrovolnykh-vznosov-biznesa-v-byudzhet-v-26g-a207546",
-   "date": "2026-10-01"
+   "date": "2026-10-01",
+   "kind": "press"
   },
   {
    "name": "Meduza: 2025 line 251.3bn; 2026 forecast 471.4bn; 384bn by mid-Aug 2026; line covers exit payments and voluntary donations",
    "url": "https://meduza.io/en/news/2026/10/01/putin-reportedly-asked-russian-business-leaders-to-help-fund-the-war-moscow-expects-471-billion-rubles-in-voluntary-contributions-from-companies-this-year",
-   "date": "2026-10-01"
+   "date": "2026-10-01",
+   "kind": "press"
   },
   {
    "name": "TKS.ru: line 2025 173.4bn (early Aug) / 251.3bn (year); 2026 Q1 15.6bn, Apr 159.7, May 232.3, Jun 294.4, mid-Aug 383.69",
    "url": "https://www.tks.ru/reviews/2026/08/18/0001/dobrovolnyie-vznosyi-biznesa-v-byudzhet-dostigli-rekordnyih-384-mlrd-rublej/",
-   "date": "2026-08-18"
+   "date": "2026-08-18",
+   "kind": "press"
   },
   {
    "name": "KSE Institute: Assessing Foreign Companies' Direct Losses in Russia (write-offs USD 167bn by country; 30 seizures USD 57bn, assets USD 74bn; Annex 1 case list)",
@@ -4625,17 +4632,20 @@
   {
    "name": "Yandex N.V. sale: RUB 475bn with mandatory discount of at least 50% (AP via Slashdot / Barchart)",
    "url": "https://www.barchart.com/story/news/23844284/the-owners-of-russia-s-tech-pioneer-yandex-are-selling-at-a-big-kremlin-required-discount",
-   "date": "2024-02-05"
+   "date": "2024-02-05",
+   "kind": "press"
   },
   {
    "name": "Polymetal sale to Mangazeya, USD 3.69bn incl. 2.21bn net debt, ~2.5x EBITDA (Mining.com / Bloomberg)",
    "url": "https://www.mining.com/web/polymetal-international-agrees-to-sell-russian-assets-for-3-7-billion/",
-   "date": "2024-02-19"
+   "date": "2024-02-19",
+   "kind": "press"
   },
   {
    "name": "Interfax: Shell has not received funds for Sakhalin-2 stake",
    "url": "https://interfax.com/newsroom/top-stories/90264/",
-   "date": "2023-05"
+   "date": "2023-05",
+   "kind": "press"
   },
   {
    "name": "RBI IR release: Rasperia second-instance verdict, EUR 2.044bn",
@@ -4645,17 +4655,20 @@
   {
    "name": "Liga.net: EUR 1.87bn forcibly debited from Raiffeisenbank Russia",
    "url": "https://finance.liga.net/en/bank/news/so-schetov-raiffeisenbank-v-rossii-prinuditelno-spisali-1-9-mlrd-evro",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "Reuters factbox via Stockopedia: lessor settlements with Russia >USD 2.5bn for ~1/4 of ~400 aircraft; ~USD 10bn stranded",
    "url": "https://www.stockopedia.com/share-prices/nsk-TYO:6471/news/factbox-aviation-lessor-settlements-with-russia-over-trapped-planes-019e6d72-da8e-7d6c-8315-ae0c00d89631/",
-   "date": "2025-01-31"
+   "date": "2025-01-31",
+   "kind": "press"
   },
   {
    "name": "Kept (ex-KPMG Russia) via intellinews: exit deals 111 (2023), 63 (2024), 23 (2025)",
    "url": "https://www.intellinews.com/tougher-rules-prompt-foreign-companies-to-call-off-russia-exit-plans-350899",
-   "date": "2026"
+   "date": "2026",
+   "kind": "press"
   },
   {
    "name": "Bank of Russia: Balance of payments standard components (direct investment income credit 2019-2025)",
@@ -4685,22 +4698,26 @@
   {
    "name": "Lukoil agreement with Carlyle to sell Lukoil International GmbH excluding Kazakhstan assets, subject to OFAC (Interfax)",
    "url": "https://interfax.com/newsroom/top-stories/115836/",
-   "date": "2026-01-29"
+   "date": "2026-01-29",
+   "kind": "press"
   },
   {
    "name": "Agerpres/BTA: special manager appointed at Lukoil Neftochim Burgas",
    "url": "https://agerpres.ro/economic-extern/2025/11/17/bta-rumen-spetsov-a-fost-numit-administrator-special-la-lukoil-neftochim-burgas--1503634",
-   "date": "2025-11-17"
+   "date": "2025-11-17",
+   "kind": "press"
   },
   {
    "name": "biznis.rs: NIS dividend RSD 23.36bn (record), 10.48bn for 2023, 4.6bn for 2024 deferred for SDN shareholders",
    "url": "https://biznis.rs/vesti/nis-danas-isplacuje-rekordnu-dividendu/",
-   "date": "2023-2025"
+   "date": "2023-2025",
+   "kind": "press"
   },
   {
    "name": "Business Today / ET: Rosneft seeks Nayara exit as sanctions hinder repatriation",
    "url": "https://www.businesstoday.in/amp/latest/corporate/story/russias-rosneft-in-early-talks-with-reliance-to-sell-stake-in-nayara-energy-report-482345-2025-06-29",
-   "date": "2025-06-29"
+   "date": "2025-06-29",
+   "kind": "press"
   }
  ],
  "overlaps": "companies_all.json / round4a.json (company taxes): those count taxes paid by Russian subsidiaries while foreign-owned (profit tax + half of other taxes). KSE's 'all taxes' list mentions 'exit taxes' among other taxes; the voluntary exit contribution is normally paid by the seller or buyer to the budget, not by the subsidiary, so little of it should sit in KSE subsidiary tax data; if the builder adds exit_contribution, the worst case double count is half of at most EUR 1.6bn a year (the 'half of other taxes' weight), and the safe choice is to keep companies_all as is and add exit_contribution in full. Dividends that foreign companies still in Russia cannot repatriate (type-C accounts, BP's Rosneft dividends, RBI's EUR 4.4bn excess capital) are NOT counted here. Seizure values are asset values, not taxes, and do not overlap. Discount transfer and seizure are not payments to the Russian state and are not in any other file. Profits remitted (24): no other research file counts income on Russian outward FDI; Litasco/Swiss-UAE trading margins and Cyprus/Netherlands holding income are left out because they are part of Russian export revenue (already in trade/energy) or round-tripping. Lukoil's ISAB, NIS and Lukoil International sale prices are capital, not income, and are not counted.",

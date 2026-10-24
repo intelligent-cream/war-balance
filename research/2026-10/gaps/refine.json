@@ -516,27 +516,32 @@
    {
     "name": "Reuters via MarineLink: 45 tankers moved to Dubai-based Oil Tankers SCF MGMT FZCO (Equasis)",
     "url": "https://ws16.marinelink.com/news/russias-sovcomflot-transfers-ships-new-508512",
-    "date": "2023-10"
+    "date": "2023-10",
+    "kind": "press"
    },
    {
     "name": "GTR on S&P Global: 23 new UAE companies with 28 ex-Russian tankers, 57% with no stated group beneficial owner",
     "url": "https://www.gtreview.com/news/global/opaque-structures-hundreds-of-russia-linked-shipping-companies-formed-since-2022/",
-    "date": "2023-05-24"
+    "date": "2023-05-24",
+    "kind": "press"
    },
    {
     "name": "TradeWinds / FT via Moneylife: Gatik Ship Management (Mumbai) fleet of 58 tankers, suspected Rosneft link",
     "url": "https://moneylife.in/article/unknown-indian-company-shipping-millions-of-barrels-of-russian-oil-financial-times/70636.html",
-    "date": "2023"
+    "date": "2023",
+    "kind": "press"
    },
    {
     "name": "Reuters via Baird Maritime: Urals freight Baltic-India USD 20-23m (Mar 2026), 16m (Apr 2026)",
     "url": "https://www.bairdmaritime.com/shipping/tankers/april-shipping-costs-decline-for-russian-urals-crude-to-india",
-    "date": "2026-04-13"
+    "date": "2026-04-13",
+    "kind": "press"
    },
    {
     "name": "Kommersant via Yerepouni: Novorossiysk-India USD 23.2/bbl, -China 25.7/bbl, record, week to 6 Sep 2026",
     "url": "https://www.yerepouni-news.com/record-freight-costs-squeeze-russias-black-sea-crude-exports/",
-    "date": "2026-09-14"
+    "date": "2026-09-14",
+    "kind": "press"
    },
    {
     "name": "KSE Russian Oil Tracker Feb/Mar 2024: Primorsk-West Coast India about USD 12/bbl Dec 2023-Feb 2024, up from 7.4 in early Oct 2023",
@@ -817,12 +822,14 @@
    {
     "name": "Armenpress: finance minister, re-exports gave ~187 of ~215 percentage points of export growth to Russia, H1 2023 (validation point: 0.87 of growth)",
     "url": "https://armenpress.am/en/article/1120421",
-    "date": "2023-09"
+    "date": "2023-09",
+    "kind": "press"
    },
    {
     "name": "Azatutyun (RFE/RL Armenian service): deputy finance minister, exports to Russia +85% in Jan-Sep 2023, of which 80% re-export",
     "url": "https://www.azatutyun.am/a/32827996.html",
-    "date": "2024-02"
+    "date": "2024-02",
+    "kind": "press"
    },
    {
     "name": "S&P Global Market Intelligence: Turkish-origin share of Turkey's high-priority shipments to Russia fell from 71% to 50% (2022-23)",
@@ -832,12 +839,14 @@
    {
     "name": "Kursiv: Kazakhstan's exports of laptops and machinery to Russia surged with matching imports from third countries",
     "url": "https://kz.kursiv.media/en/2025-02-25/engk-yeri-kazakhstans-exports-of-laptops-bulldozers-to-russia-surge-after-war/",
-    "date": "2025-02-25"
+    "date": "2025-02-25",
+    "kind": "press"
    },
    {
     "name": "RFE/RL: re-exports to Russia drove Kyrgyzstan's 2022 export boom",
     "url": "https://www.rferl.org/a/ukraine-war-kyrgyzstan-trade-russia/32277438.html",
-    "date": "2023"
+    "date": "2023",
+    "kind": "press"
    },
    {
     "name": "UN Comtrade re-export flags (flowCode RX): ARM, KAZ, KGZ, TUR, AZE, SRB report none to Russia; UZB reports USD 6-21m",
@@ -982,22 +991,26 @@
    {
     "name": "Argus: West African products market supplied by large tankers discharging STS offshore Lomé for onward delivery to Nigeria, Togo and Ghana; Europe-bound diesel VLCCs stop off in Togo",
     "url": "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2585824-europe-bound-diesel-vlccs-to-stop-off-in-togo-sources",
-    "date": "2024"
+    "date": "2024",
+    "kind": "press"
    },
    {
     "name": "New Telegraph: 3.51 Mt of gasoline moved from Lomé to Lagos in Jan-Apr 2025; S&P Global: Nigeria+Togo gasoline imports 200-300 kb/d",
     "url": "https://newtelegraphng.com/marketers-pay-n120bn-to-move-pms-from-togo-to-lagos/",
-    "date": "2025-05-21"
+    "date": "2025-05-21",
+    "kind": "press"
    },
    {
     "name": "Reuters via MarineLink: Russian diesel supply to Lomé about 200 kt in March 2023, STS transfers off Lomé and Lagos",
     "url": "https://www.marinelink.com/news/russia-using-shiptoship-diesel-transfers-504157",
-    "date": "2023-04-05"
+    "date": "2023-04-05",
+    "kind": "press"
    },
    {
     "name": "Nairametrics (NBS): Nigeria's petrol imports from Togo N84.7bn in Q4 2025",
     "url": "https://nairametrics.com/2026/03/16/nigeria-spends-n84-69-billion-on-petrol-imports-from-togo-in-q4-2025/",
-    "date": "2026-03-16"
+    "date": "2026-03-16",
+    "kind": "press"
    }
   ],
   "reasoning": "The fuel India ships 'to Togo' is gasoil and diesel (HS 271019: USD 4.8bn in 2022, 3.2bn in 2023, 2.1bn in 2024, 1.7bn in 2025; no gasoline). Importers usually record the country of origin (India), not Lomé, so plain mirror data miss most of it. Origin reconciliation: for each West/Central African importer, imports recorded from India minus India's recorded direct exports to that country, plus imports recorded from Togo, is the cargo India declared elsewhere. In 2023 this finds USD 2.78bn of the 3.24bn India declared to Togo: Nigeria 53%, DR Congo 15%, Cameroon 12%, Congo 6%, Benin 5%. 2022 importer records are incomplete (Nigeria records less from India than India shipped directly), so 2022 is half its own reconciliation and half the 2023 structure. From 2024 Dangote's diesel cut Nigeria's imports (India's direct gasoil exports to Nigeria fell from USD 1.3bn to 0.2bn and then 0.02bn), so 2024-25 use 70% importers' mirror data (Angola, Ghana, South Africa, Benin, Congo, Côte d'Ivoire) and 30% the 2023 structure. Years are weighted by India's exports to Togo. Low and high are the minimum and maximum over three scenarios, x0.75/x1.3. 5% is left as 'other' for Europe-bound part-cargoes and non-reporting buyers. Trade press confirms that Lomé STS mainly serves Nigeria, then Ghana and Gulf of Guinea ports. Gasoline via Lomé is almost all Nigerian but is not part of this flow.",
@@ -1133,7 +1146,8 @@
    {
     "name": "Reuters via The New Arab: 75.7 t of Russian gold to the UAE, Feb 2022-Mar 2023",
     "url": "https://www.newarab.com/news/russia-gold-uae-cashes-sanctions-bite",
-    "date": "2023-05-25"
+    "date": "2023-05-25",
+    "kind": "press"
    }
   ],
   "reasoning": "The UAE does not report gold exports by partner usefully, so first-hop destinations come from importers' records of HS 7108 from the UAE. Weighted by the yearly Russian gold flow through the UAE (2022-heavy), the level shares are Switzerland 31%, Hong Kong 23%, India 15%, Turkey 11% and Saudi Arabia 6%. The old proxy (increase in UAE-reported HS71 exports, mostly 'other': Iraq, Oman, Qatar) missed Hong Kong and India almost entirely. Switzerland bars Russian-origin gold and its refiners screen for it, so the Russian component reaching Switzerland is likely below Switzerland's share of all UAE gold. The central halves it (low 0, high = its full level share), and the freed share goes pro rata to Hong Kong, India, Turkey, Saudi Arabia, Thailand and China. Gold re-melted in the UAE takes UAE origin, which is why some Swiss share remains possible. First hop only: Hong Kong's onward share to China is in hk_onward.",

@@ -503,7 +503,8 @@ else:
 # Round 23 (owner): Sources is How it works again (view "how"; #view=sources and #view=table open it), and its
 # long-form text comes from site/content/ (the method pages, the limitations and the changelog, which every flow's
 # "Changes to this flow" reads); no link points at the documentation that used to be in docs/
-_buttons = re.findall(r'<button data-lens="(\w+)"', _html)
+# Round 41: the map bar repeats the three lenses on the map itself, so each lens is counted once
+_buttons = list(dict.fromkeys(re.findall(r'<button data-lens="(\w+)"', _html)))
 _start = re.search(r'const state = \{ lens: "(\w+)"', _html)
 _old = re.search(r"const OLD_LENS = \{([^}]*)\}", _html)
 _old_map = dict(re.findall(r'(\w+): "(\w+)"', _old.group(1))) if _old else {}
