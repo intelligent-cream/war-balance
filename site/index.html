@@ -249,6 +249,18 @@ button, input, select { font: inherit; color: inherit; }
 .fgroup > details.flow:not([open]) .fl-p, .fgroup > details.flow:not([open]) .fl-m { display: none; }
 .fgroup > details.flow:not([open]) .fl-w { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 @media (max-width: 600px) { .fgroup { grid-template-columns: 1fr 1fr; gap: 6px; } .fgroup > details.flow:not([open]) .fl-w { display: none; } .fgroup > details.flow:not([open]) > summary { padding: 8px 10px; } .fgroup > details.flow:not([open]) .fl-t { font-size: 13.5px; } }
+/* round 41: the views and years on the map */
+.mapbar { position: absolute; z-index: 2; top: 10px; left: 12px; display: flex; flex-wrap: wrap; gap: 6px; pointer-events: none; }
+.mapbar .seg { pointer-events: auto; display: inline-flex; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 2px; box-shadow: 0 1px 4px rgba(0,0,0,.18); }
+.mapbar .seg button { border: 0; background: transparent; color: var(--ink); font: 600 12.5px var(--font-body); padding: 4px 9px; border-radius: 6px; cursor: pointer; }
+.mapbar .mb-year button { padding: 4px 6px; font-variant-numeric: tabular-nums; }
+.mapbar .seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+.mapbar .stories { pointer-events: auto; flex-basis: 100%; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; max-width: min(100vw - 24px, 1100px); }
+.mapbar .story { flex: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 3px 10px; font: 12.5px var(--font-body); cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,.18); }
+.mapbar .story:hover, .mapbar .story:focus-visible { border-color: var(--ink-soft); }
+@media (max-width: 600px) { .mapbar .story { font-size: 11.5px; padding: 2px 8px; } .mapbar .stories { max-width: calc(100vw - 12px); } }
+.app[data-view]:not([data-view="map"]) .mapbar { display: none; }
+@media (max-width: 600px) { .mapbar { top: 6px; left: 6px; gap: 4px; } .mapbar .seg button { font-size: 11.5px; padding: 3px 7px; } .mapbar .mb-year button { padding: 3px 4px; } }
 .eq { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin: 0 0 6px; }
 .eq i { font-style: normal; font-weight: 700; color: var(--ink-soft); }
 .eq-b { border-radius: 6px; padding: 2px 7px; font-size: 12.5px; line-height: 1.3; background: color-mix(in srgb, var(--ukr) 16%, transparent); color: var(--ink); }
@@ -682,6 +694,7 @@ details[open] > summary .xi::before { transform: rotate(180deg); }
 .rbar-d { position: absolute; top: 0; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; border: 1.5px solid var(--surface); box-sizing: border-box; }
 .rbar-d.fpos, .rbar-d.fneg { opacity: .6; }
 .rbar-l { display: flex; justify-content: space-between; font: 11.5px var(--font-data); color: var(--ink-soft); margin-top: 3px; }
+.sumline { display: block; font: 600 12.5px var(--font-data); color: var(--ink); margin-top: 4px; font-variant-numeric: tabular-nums; }
 .pnet .unc-why { display: block; font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; }
 .pnet .nline { font: 12.5px var(--font-data); color: var(--ink-soft); margin-top: 8px; font-variant-numeric: tabular-nums; }
 .pnet .nline > span { white-space: nowrap; }
@@ -739,6 +752,7 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
 .psec-mid .psec-h { color: var(--ink-soft); }
 .psec-h small { font-weight: 400; font-family: var(--font-body); }
 .nodata-big { margin: 8px 0; padding: 10px 12px; border-radius: 8px; background: var(--sea); }
+.nodata-big b { display: block; margin-bottom: 2px; }
 .nodata-line { margin: 6px 6px 0; font-size: 12.5px; color: var(--ink-soft); }
 .psec-h b { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
 .psec details.allparts > summary { font-size: 12.5px; padding: 6px; }
@@ -1067,6 +1081,13 @@ li.src-again { color: var(--ink-soft); }
     <!-- the label (with how to get at countries by keyboard) is set in applyLang -->
     <svg id="map" role="img" aria-label="World map coloured by the change in money flows since before the war. With a keyboard, use “Find your country” or the Ranking view."></svg>
     <canvas id="flows" aria-hidden="true"></canvas>
+    <!-- round 41 (review: the lens switch, year slider and Play were hidden in Filters): the three views and the years on
+         the map itself; the same buttons stay in Filters -->
+    <div class="mapbar" id="mapbar" role="toolbar" aria-label="View and year" data-i18n-aria="View and year">
+      <div class="seg mb-lens" role="group"><button data-lens="net" aria-pressed="true" data-i18n="Net">Net</button><button data-lens="support" aria-pressed="false" data-i18n="Support">Support</button><button data-lens="payments" aria-pressed="false" data-i18n="Trade">Trade</button></div>
+      <div class="seg mb-year" role="group"><button class="mb-play" id="mb-play" aria-label="Play 2022 to 2026" data-i18n-aria="Play 2022 to 2026">▶</button><button data-yr="2022">22</button><button data-yr="2023">23</button><button data-yr="2024">24</button><button data-yr="2025">25</button><button data-yr="2026" aria-pressed="true">26</button></div>
+      <div class="stories" id="stories" role="list" aria-label="Stories" data-i18n-aria="Stories"></div>
+    </div>
     <!-- names of Ukraine and Russia, above the flow lines so they stay readable -->
     <svg id="labels" aria-hidden="true"></svg>
     <div class="view" id="view" hidden></div>
@@ -1151,7 +1172,7 @@ li.src-again { color: var(--ink-soft); }
         <fieldset class="dfs" id="layers">
         <legend class="sr-only" data-i18n="Map layers">Map layers</legend>
         <div class="toggles">
-          <label class="toggle" for="show-streams"><input id="show-streams" type="checkbox" checked> <span data-i18n="Money streams (the two numbers in €)">Money streams (the two numbers in €)</span></label>
+          <label class="toggle" for="show-streams"><input id="show-streams" type="checkbox"> <span data-i18n="Money streams (the two numbers in €)">Money streams (the two numbers in €)</span></label>
           <label class="toggle" for="show-flows"><input id="show-flows" type="checkbox"> <span data-i18n="Gross trade flows (all money to Ukraine and Russia, each year)">Gross trade flows (all money to Ukraine and Russia, each year)</span></label>
         </div>
         <p class="dlbl" data-i18n="Markers">Markers</p>
@@ -1598,6 +1619,10 @@ function calc(c, y, opt = {}) {
     shift, shiftLo, shiftHi, shiftCert: gradeTotal(shiftAll), signParts,
     // round 26: nothing observed of its own at all (every part is "no data" or zero): "No data" on the map, unranked
     noData: !!(c.no_data && c.no_data.length) && shiftAll.length === 0,
+    // round 41 (review: Chad read "toward Russia by 0.01%" on €2m of modelled oil): its main trade with Russia (bought
+    // and sold) has no observation of its own and what is left is rough estimates only (D), or less than 0.1% of its
+    // GDP: "mostly no data", treated like no data on the map and in the ranking; the panel still lists the small parts
+    mostlyNoData: !!(c.no_data && c.no_data.includes("paid") && c.no_data.includes("sold")) && shiftAll.length > 0 && (shiftAll.every(p => p.cert === "D") || Math.abs(total(shiftAll)[0]) < 0.001 * (c.gdp || Infinity)),
     uaBal, uaLo, uaHi, uaGave, uaBack, rusBal, rusLo, rusHi, frozen, frozenLo, frozenHi, frozenParts,
     rusPaid, rusPaidLo, rusPaidHi, rusEarned, rusEarnedLo, rusEarnedHi, milPaidShare: fPaid, undelivered: -(und3[0] + undEu3[0]),
     // negative overall mainly because it earned from the war effort, not because of money toward Russia
@@ -1732,15 +1757,17 @@ function corrRoot(C) {
   for (const r of L) { const sc = Math.sqrt(r.reduce((t, x) => t + x * x, 0)) || 1; for (let j = 0; j < n; j++) r[j] /= sc; }
   return L;
 }
-const MC_DRAWS = 4000;
+const MC_DRAWS = 8000;   // round 41: twice the draws, so the chance of a sign is within about ±0.5 points
 function pSignMC(parts, v) {
   const ps = parts.filter(p => p.hi - p.lo > 1e-9 || Math.abs(p.v) > 1e-9), n = ps.length;
   if (!n || !v) return 0.5;
   const rho = (p, q) => (RHO[p.k + "|" + q.k] || RHO[q.k + "|" + p.k] || 0) * Math.sign(p.v || 1) * Math.sign(q.v || 1);
   const L = corrRoot(ps.map((p, i) => ps.map((q, j) => (i === j ? 1 : rho(p, q)))));
   const sl = ps.map(p => (p.v - p.lo) / 1.645), sh = ps.map(p => (p.hi - p.v) / 1.645), mid = ps.reduce((t, p) => t + p.v, 0);
+  // round 41 (review: the old linear generator overflowed exact integers and repeated after ~10,500 draws):
+  // mulberry32, 32-bit integer arithmetic throughout (Math.imul), period 2^32, values in (0, 1)
   let seed = 12345, same = 0;
-  const rnd = () => { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return (seed + 1) / 0x80000000; };
+  const rnd = () => { seed = (seed + 0x6d2b79f5) | 0; let x = Math.imul(seed ^ (seed >>> 15), 1 | seed); x = (x + Math.imul(x ^ (x >>> 7), 61 | x)) ^ x; return (((x ^ (x >>> 14)) >>> 0) + 0.5) / 4294967296; };
   const z = new Float64Array(n);
   for (let s = 0; s < MC_DRAWS; s++) {
     for (let i = 0; i < n; i += 2) { const r = Math.sqrt(-2 * Math.log(rnd())), th = 2 * Math.PI * rnd(); z[i] = r * Math.cos(th); if (i + 1 < n) z[i + 1] = r * Math.sin(th); }
@@ -1769,7 +1796,7 @@ function isNearZero(c, y, q) {
   return Math.max(Math.abs(lo), Math.abs(hi), Math.abs(m.lo), Math.abs(m.hi)) <= NEAR_ZERO * c.gdp;
 }
 // round 26 (owner: "if I don't have any data, we shouldn't put anything there"): no observation of its own at all
-const noDataAt = (c, y) => !!(c && c.no_data && y > 2021 && calc(c, y).noData);
+const noDataAt = (c, y) => !!(c && c.no_data && y > 2021 && (calc(c, y).noData || calc(c, y).mostlyNoData));
 // Round 15 (review 4, H3; approved by the owner): each headline number gets a letter from two things. Data: the share of
 // its absolute value that rests on parts graded A or B (primary data) and on D (judgement). Spread: the width of its
 // likely range and method band together, against the value. A: at least 75% on A-B, at most 5% on D, spread at most
@@ -2521,7 +2548,8 @@ const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const narrow = () => window.innerWidth <= 900;   // same breakpoint as the CSS: phones and tablets get the compact layout
 // round 17 (approved by the owner): the money streams are on by default; round 18 (owner: "the money flows are not
 // working on mobile"): on phones too, calmer there (fewer and thinner streams, see streamTop and drawStreams)
-const STREAMS_DEFAULT = true;
+// round 41 (owner, after a review: "the arcs decorate rather than explain"): off by default, on in Filters
+const STREAMS_DEFAULT = false;
 state.streams = STREAMS_DEFAULT;
 
 // a tap on a touch screen selects at once. iPhone Safari treats the first tap on an element that reacts to hover (the
@@ -2600,8 +2628,39 @@ const inFilter = c => inRegion(c) && inGroupS(c) && inSize(c);
 // threshold, a region or a group dims the countries outside it
 const dimmedOut = c => !inRegion(c) || !inGroupS(c) || (state.size > MIN_GDP_RANK && !inSize(c));
 function custom() { return !state.netBack || OFF.size > 0; }
+// round 41 (owner: a stories strip from the tags, after Highlights went in round 33): one line of the most surprising
+// findings, each picked by a rule from the same parts the tags use (largest of its kind among economies over the
+// ranking threshold), each opening its country. Recomputed with the year
+const STORY_RULES = [
+  { k: "price", pick: (c, k) => { const w = mostlyPrice(c, k); return w && k.shift < 0 ? -scaled(c, w.v, "gdp") : null; },
+    text: (c, k) => t("{c}: mostly war-time gas and fuel prices it did not set", { c: c.name }) },
+  { k: "premium", pick: (c, k) => { const p = k.shiftParts.find(q => q.k === "premium"); return p ? -p.v : null; },
+    text: (c, k) => t("{c}: {v} extra price from Russia for sanctioned goods", { c: c.name, v: eur(Math.abs(k.shiftParts.find(q => q.k === "premium").v)) }) },
+  { k: "frozen", pick: (c, k) => scaled(c, k.frozen, "gdp"), text: (c, k) => t("{c}: {v} of GDP from Russian money frozen there", { c: c.name, v: fmtMeasure(c, k.frozen, "gdp", true) }) },
+  { k: "armed", pick: c => (c.military_rus && !PARTY_TO_WAR.has(c.iso3) ? (c.military_rus.alt || c.military_rus.years).slice(1, yi(state.year) + 1).reduce((a, b) => a + b, 0) : null),
+    text: (c, k) => t("{c}: armed Russia with {v}, yet its net barely moved", { c: c.name, v: eur((c.military_rus.alt || c.military_rus.years).slice(1, yi(state.year) + 1).reduce((a, b) => a + b, 0)) }) },
+  { k: "laund", pick: (c, k) => { const p = k.shiftParts.find(q => q.k === "laund"); return p && p.v < 0 ? -scaled(c, p.v, "gdp") : null; },
+    text: (c, k) => t("{c}: Russian crude in its fuel, refined elsewhere", { c: c.name }) },
+  { k: "profits", pick: (c, k) => { const p = k.shiftParts.find(q => q.k === "coprofits"); return p && p.v > 0 ? scaled(c, p.v, "gdp") : null; },
+    text: (c, k) => t("{c}: its companies earned far less in Russia", { c: c.name }) },
+];
+function renderStories() {
+  const el = document.getElementById("stories");
+  if (!el) return;
+  const y = state.year;
+  if (y < 2022) { el.innerHTML = ""; return; }
+  const pool = Object.values(DATA).filter(c => (c.gdp || 0) >= MIN_GDP_RANK && !noDataAt(c, y)), used = new Set(), out = [];
+  for (const r of STORY_RULES) {
+    let best = null, bv = 0;
+    for (const c of pool) { if (used.has(c)) continue; const k = calc(c, y), v = r.pick(c, k); if (v != null && v > bv) { bv = v; best = c; } }
+    if (best) { used.add(best); out.push(`<button class="story" role="listitem" data-n="${best.n}">${esc(r.text(best, calc(best, y)))}</button>`); }
+  }
+  el.innerHTML = out.join("");
+  el.querySelectorAll("[data-n]").forEach(b => (b.onclick = () => select(b.dataset.n, true)));
+}
 function paint() {
   readColors();
+  renderStories();
   const sc = (currentScale = scaleFor());
   const hs = highlightSet();
   document.querySelector(".app").dataset.streams = state.streams && state.year > 2021 ? "on" : "off";
@@ -2731,11 +2790,13 @@ function updateDots() {
   if (m) { m.hidden = !(custom() || state.region !== "all" || state.size !== MIN_GDP_RANK || (typeof viewState !== "undefined" && viewState.group !== "all")
     || state.streams !== STREAMS_DEFAULT || state.flows || state.chpl || state.remit || state.taken); m.title = t("Changed from the default"); }
 }
-// the opening frame (round 21): Europe and western Asia, Kyiv and Moscow near the middle
+// the opening frame (round 21): Europe and western Asia, Kyiv and Moscow near the middle. Round 41 (review: the
+// default frame cut off the Americas, Africa and East Asia): the world from the Americas to East Asia on a wide screen;
+// a phone opens on Europe, Africa and Asia
 function openView() {
-  // round 29 (audit: on a phone the first view was a quarter Arctic sea): phones open a little further south and closer
-  const [cx, cy] = projection(narrow() ? [30, 47] : [40, 45]);
-  svg.call(zoom.transform, d3.zoomIdentity.translate(W / 2, H * (narrow() ? 0.42 : 0.5)).scale(narrow() ? Math.min(12, Math.max(8.5, 5.6 * H / W)) : W > 1300 ? 3.2 : 2.9).translate(-cx, -cy));
+  const [cx, cy] = projection(narrow() ? [32, 28] : [15, 12]);
+  const k = narrow() ? Math.min(5, Math.max(3.2, 2.4 * H / W)) : Math.max(1.05, Math.min(1.5, 1.25 * W / H / 1.6));
+  svg.call(zoom.transform, d3.zoomIdentity.translate(W / 2, H * (narrow() ? 0.48 : 0.52)).scale(k).translate(-cx, -cy));
 }
 // round 21: the header bar's height, for the popovers that are fixed to the screen on phones
 function placeView() {
@@ -3021,11 +3082,12 @@ function tipHtml(c, name) {
   if (state.year < 2022) return `<b>${c.name}</b>${t("2021 is the year before the war, the comparison year: every number is zero by definition.")}`;
   const y = state.year, k = calc(c, y);
   if (k.noData) return `<b>${c.name}</b>${t("No data: there is no observation of its own for the war years, so nothing is counted.")}`;
+  if (k.mostlyNoData) return `<b>${c.name}</b>${t("Mostly no data: its trade with Russia has no record of its own; only small rough estimates ({eur}) are counted.", { eur: eur(k.shift, true) })}`;
   // round 38 (owner: "yes fix all that"): three lines: the net with its direction word, the two parts as bars, and the
   // orange caveat or "click for more"; tags, ranges and the parts' sentences are in the panel
   const party = PARTY_TO_WAR.has(c.iso3) ? ` <span class="tt orange"><span aria-hidden="true">${ICON.war}</span> ${t("Party to the war")}</span>` : "";
-  const net = `<b>${verb("net", k.shift, c)}</b>${uncertain(c, y, "net") ? " · " + dirWords(c, y, "net") : ""}${custom() ? " · " + t("custom mix") : ""}`;
-  return `<b>${c.name}</b>${party}<div class="r">${net}</div>${twoBars(c, k, y)}<div class="cav">${isOrange(c, k, y) ? orangeCaveat(c, k) : t("click for more")}</div>`;
+  const net = `<b>${verb("net", k.shift, c)}</b>${uncertain(c, y, "net") ? " · " + dirWords(c, y, "net") : ""}${mostlyPrice(c, k) ? " · " + t("mostly war-time prices") : ""}${custom() ? " · " + t("custom mix") : ""}`;
+  return `<b>${c.name}</b>${party}<div class="r">${net}</div><div class="sumline">${sumLine(c, k)}</div>${twoBars(c, k, y)}<div class="cav">${isOrange(c, k, y) ? orangeCaveat(c, k) : t("click for more")}</div>`;
 }
 function showTip(e, html) {
   tip.innerHTML = html; tip.hidden = false;
@@ -4024,7 +4086,8 @@ function storyTags(c, k, y) {
   const refN = c.people && c.people.refugees ? c.people.refugees.count : 0, per1k = c.pop ? refN / (c.pop * 1000) : 0;
   if (per1k >= 10 && !PARTY_TO_WAR.has(c.iso3)) add(64, "refugees", ICON.home, t("Hosts many refugees"), t("{n} refugees from Ukraine, {r} per 1,000 residents.", { n: num(refN), r: num(per1k, 0) }) + ref(c.people.refugees.src || ["refugees"]));
   if (Math.abs(k.frozen) >= MAT || L.fz) add(62, "frozen", ICON.ice, t("Froze Russian money"), (L.fz ? t("Much of the net is Russian money frozen here: the return Russia lost on its reserves and private assets, not a payment.") + " " : "") + frozenLine(c, k).replace(/^<p[^>]*>|<\/p>$/g, ""));
-  if (isOrange(c, k, y) && !PARTY_TO_WAR.has(c.iso3)) {
+  // round 41: a country with mostly no data gets no claim about what its (tiny) orange is made of
+  if (isOrange(c, k, y) && !PARTY_TO_WAR.has(c.iso3) && !k.mostlyNoData) {
     const cav = orangeCaveat(c, k), armed = armedMostly(k), sales = !armed && cav === t("Orange here is mostly earnings from sales to Russia, not siding with Russia.");
     // round 26 (tag audit): "not policy" was a claim the numbers do not back (keeping on buying can be a choice): the tag
     // says what the orange is made of, the tap says the rest
@@ -4083,6 +4146,17 @@ function rangeBar(c, v, lo, hi, m, cls) {
     ${lo < 0 && hi > 0 ? `<span class="rbar-z" style="left:${x(0)}%"></span>` : ""}<span class="rbar-d ${cls}" style="left:${x(v)}%;background:${col}"></span></span>
     <span class="rbar-l"><span>${f(lo)}</span><span>${t("likely range")}</span><span>${f(hi)}</span></span></span>`;
 }
+// round 41 (review: Hungary's position is about four fifths gas price, which it did not set): the war-time price part is
+// more than half of the net, in the same direction
+// round 41 (owner): the two numbers that make the net, as one line: "support +1.8% · trade +1.6% · frozen +0.1% = net +3.5%"
+function sumLine(c, k, m = state.measure) {
+  const f = v => fmtMeasure(c, v, m === "pp" ? "gdp" : m, true, m !== "gdp");
+  return t("support {ua} · trade {ru}", { ua: f(k.uaBal), ru: f(k.rusBal) }) + (Math.abs(k.frozen) >= 0.0005 ? " · " + t("frozen {fz}", { fz: f(k.frozen) }) : "") + " = " + t("net {n}", { n: f(k.shift) });
+}
+function mostlyPrice(c, k) {
+  const w = k.shiftParts.find(p => p.k === "windfall");
+  return w && k.shift && Math.sign(w.v) === Math.sign(k.shift) && Math.abs(w.v) >= 0.5 * Math.abs(k.shift) ? w : null;
+}
 function netBlock(c, k, y) {
   const gr = grades(c, y), g = v => fmtMeasure(c, v, "gdp", true), unc = uncertain(c, y, "net") && !PARTY_TO_WAR.has(c.iso3);
   const cls = k.earner ? "mid" : unc ? (k.shift >= 0 ? "fpos" : "fneg") : k.shift >= 0 ? "pos" : "neg";
@@ -4100,7 +4174,8 @@ function netBlock(c, k, y) {
   const lean = unc && leaning(c, y, "net"), li = unc ? leanInfo(c, y, "net") : null;
   const sum = `<span class="nlbl">${pre}${chip(gr.net)}${unc && !lean ? `<span class="unc-tag">${uncWords(c, y, "net")}</span>` : ""}<span class="xi" aria-hidden="true"></span></span>
     <span class="nbig ${cls}">${mu(k.shift)}</span><span class="nunit">${post ? post + " " : ""}${t(unit)}</span>
-    ${rangeBar(c, k.shift, k.shiftLo, k.shiftHi, m, cls)}<span class="nline">${line.map(x => `<span>${x}</span>`).join(" · ")}</span>
+    <span class="sumline">${sumLine(c, k)}</span>${rangeBar(c, k.shift, k.shiftLo, k.shiftHi, m, cls)}<span class="nline">${line.map(x => `<span>${x}</span>`).join(" · ")}</span>
+    ${mostlyPrice(c, k) ? `<span class="unc-why price-why">${t("Mostly war-time fuel prices it did not set: {v} of the {n}.", { v: eur(Math.abs(mostlyPrice(c, k).v)), n: eur(Math.abs(k.shift)) })}</span>` : ""}
     ${unc ? `<span class="unc-why">${t(isNearZero(c, y, "net") ? "Near zero, and not certain mostly because of {why}." : "Not certain, mostly because of {why}.", { why: uncReason(c, y, "net") })}</span>` : ""}`;
   const body = `<p class="lead">${leadLine(c, k)}</p><p><b>${netSentence(c, k, "gdp")}</b> (${eur(Math.abs(k.shift))}).</p>
     <p>${t("certainty: {what}", { what: certWords(gr.net) })} · ${t("about {v} a year", { v: fmtMeasure(c, Math.abs(k.shift) / yrs, "gdp") })}</p>
@@ -4194,7 +4269,7 @@ function firstLayer(c, k, y) {
   const tags = storyTags(c, k, y);
   return `${custom() ? `<div class="custom">${customNote()}</div>` : ""}
     ${partyLine(c)}
-    <section class="pv-top">${netBlock(c, k, y)}${backedLine(k)}${partTiles(c, k, y)}</section>
+    <section class="pv-top">${k.mostlyNoData ? `<p class="nodata-big"><b>${t("Mostly no data")}</b> ${t("Its trade with Russia has no record of its own: no customs or partner records of what it bought from or sold to Russia. Only small rough estimates are counted ({eur}), too little to give it a direction; it is drawn hatched and not ranked.", { eur: eur(k.shift, true) })}</p>` : netBlock(c, k, y) + backedLine(k) + partTiles(c, k, y)}</section>
     ${tagsHtml(tags)}
     <section class="pv-chart"><div class="pc-h"><h3>${t("What makes up the number")}</h3>${barKey()}</div>
       ${S.map(section).join("")}
@@ -4495,6 +4570,7 @@ const yearInput = document.getElementById("year");
 const yearText = y => (y === 2026 && FRAC[5] < 1 ? t("2026 YTD") : String(y));
 // the slider reads out the period, not just the number: "2021 (before the war)", "2026 YTD"
 function showYear(y) {
+  document.querySelectorAll("#mapbar [data-yr]").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.yr === y)));
   document.getElementById("year-out").textContent = yearText(y);
   yearInput.setAttribute("aria-valuetext", y === 2021 ? t("2021 (before the war)") : yearText(y));
 }
@@ -4515,10 +4591,12 @@ const playBtn = document.getElementById("play");
 // every view is zero in 2021 by definition (it is the comparison year), so playing starts at 2022
 const playFrom = () => 2022;
 const playLabel = () => t("Play 2022 to 2026");
-function stopPlay() { clearInterval(playTimer); playTimer = null; playBtn.textContent = "▶"; playBtn.setAttribute("aria-label", playLabel()); writeHash(false); }
+function stopPlay() { clearInterval(playTimer); playTimer = null; playBtn.textContent = document.getElementById("mb-play").textContent = "▶"; playBtn.setAttribute("aria-label", playLabel()); writeHash(false); }
+document.querySelectorAll("#mapbar [data-yr]").forEach(b => (b.onclick = () => { stopPlay(); setYear(+b.dataset.yr); writeHash(false); }));
+document.getElementById("mb-play").onclick = () => playBtn.click();
 playBtn.onclick = () => {
   if (playTimer) return stopPlay();
-  playBtn.textContent = "❚❚"; playBtn.setAttribute("aria-label", t("Pause"));
+  playBtn.textContent = document.getElementById("mb-play").textContent = "❚❚"; playBtn.setAttribute("aria-label", t("Pause"));
   setYear(playFrom());
   playTimer = setInterval(() => { if (state.year >= 2026) return stopPlay(); setYear(state.year + 1); }, 1800);
 };

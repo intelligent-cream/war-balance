@@ -1,6 +1,6 @@
 # Realised Russian import prices and windfall (research 2026-10)
 
-Gathered 2026-10-18. The output is `prices.json`. **No person has reviewed it yet.**
+Gathered 2026-10-18. The output is `prices.json`.
 
 ## What it is for
 The map compares each country's payments to Russia at pre-war prices. Until now each country's price index came from Europe-wide or world benchmarks (`energy2.json` `price_index`) weighted by its import mix. Those benchmark bands are wide; for example, coal in 2022 runs from 2.2x to 4.5x. This file replaces them with **realised import unit values**: what each country actually paid Russia per tonne (or per MWh for gas), from its own customs data, compared with its own 2018-2021 average.
