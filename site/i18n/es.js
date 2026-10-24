@@ -896,7 +896,6 @@ I18N.es = {
   "What it sold to Russia, in euros at each year's prices: {a} in 2021, {b} in {y}. Only what it kept on it counts in the totals.": "Lo que vendió a Rusia, en euros a precios de cada año: {a} en 2021, {b} en {y}. En los totales solo cuenta con lo que se quedó.",
   "Trade hub for re-exports to Russia": "Centro de reexportación a Rusia",
   "Goods it passed on to Russia count for the countries that made them; it keeps its trading margin.": "Los bienes que pasó a Rusia cuentan para los países que los fabricaron; se queda con su margen comercial.",
-  "Sent weapons or troops to Russia": "Envió armas o tropas a Rusia",
   "Aid to Ukraine (weapons, money, loans as gifts, its share of EU aid): {v}, number {r} of {n} economies for its size.": "Ayuda a Ucrania (armas, dinero, préstamos como regalo, su parte de la ayuda de la UE): {v}, puesto {r} de {n} economías según su tamaño.",
   "Top-10 aid giver for its size": "Entre los 10 mayores donantes según su tamaño",
   "Major aid giver": "Gran donante",
