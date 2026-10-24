@@ -4690,7 +4690,7 @@ const TAG_CAT = {
   aid_major: { g: "did", label: () => t("Major aid giver"), meaning: () => t("Gave Ukraine aid worth at least 0.5% of a year's GDP."), v: (c, k) => aidOf(k), rel: true },
   refugees: { g: "did", label: () => t("Hosts many refugees"), meaning: () => t("At least 10 refugees from Ukraine per 1,000 residents."), v: c => per1kOf(c), p1k: true },
   frozen: { g: "did", label: () => t("Froze Russian money"), meaning: () => t("Russian reserves frozen here: the return Russia lost on them counts in the net."), v: (c, k) => k.frozen },
-  mil: { g: "did", label: () => t("Sent weapons or troops to Russia"), meaning: () => t("Weapons, ammunition or troops sent to Russia."), v: (c, k) => -tagPart(k, "mil") },
+  mil: { g: "did", label: () => t("Armed Russia"), meaning: () => t("Weapons, ammunition or troops sent to Russia."), v: (c, k) => -tagPart(k, "mil") },
   rusforces: { g: "did", label: () => t("Russian forces in the country"), meaning: () => t("Wagner Group or Russia's Africa Corps operated here (2022 on)."), v: (c, k) => -tagPart(k, "wagner") },
   chpl: { g: "did", label: () => t("Sold Russia goods its weapons need"), meaning: () => t("Sold Russia goods on the Common High Priority List (chips, electronics, machine tools): at least €1 bn, or €50 m and 0.1% of GDP, at full value."), v: (c, k, y) => chplSum(c, yi(y)) },
   orange_fuel: { g: "did", label: () => t("Mostly from fuel buying"), meaning: () => t("Toward Russia mostly because of the fuel it kept buying."), v: (c, k) => -k.shift },

@@ -897,7 +897,6 @@ I18N.uk = {
   "What it sold to Russia, in euros at each year's prices: {a} in 2021, {b} in {y}. Only what it kept on it counts in the totals.": "Що вона продала Росії, в євро за цінами кожного року: {a} у 2021, {b} у {y}. У підсумках рахується лише те, що вона залишила собі.",
   "Trade hub for re-exports to Russia": "Хаб для реекспорту до Росії",
   "Goods it passed on to Russia count for the countries that made them; it keeps its trading margin.": "Товари, які вона передала Росії, рахуються для країн-виробників; вона залишає собі торговельну маржу.",
-  "Sent weapons or troops to Russia": "Надсилала зброю або війська до Росії",
   "Aid to Ukraine (weapons, money, loans as gifts, its share of EU aid): {v}, number {r} of {n} economies for its size.": "Допомога Україні (зброя, гроші, кредити як дарунок, її частка допомоги ЄС): {v}, місце {r} з {n} економік з огляду на її розмір.",
   "Top-10 aid giver for its size": "У першій десятці донорів з огляду на розмір",
   "Major aid giver": "Великий донор",

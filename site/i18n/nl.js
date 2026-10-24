@@ -895,7 +895,6 @@ I18N.nl = {
   "What it sold to Russia, in euros at each year's prices: {a} in 2021, {b} in {y}. Only what it kept on it counts in the totals.": "Wat het aan Rusland verkocht, in euro tegen de prijzen van elk jaar: {a} in 2021, {b} in {y}. Alleen wat het eraan overhield telt in de totalen.",
   "Trade hub for re-exports to Russia": "Doorvoerhub voor wederuitvoer naar Rusland",
   "Goods it passed on to Russia count for the countries that made them; it keeps its trading margin.": "Goederen die het aan Rusland doorgaf tellen voor de landen die ze maakten; het houdt zijn handelsmarge.",
-  "Sent weapons or troops to Russia": "Stuurde wapens of troepen naar Rusland",
   "Aid to Ukraine (weapons, money, loans as gifts, its share of EU aid): {v}, number {r} of {n} economies for its size.": "Hulp aan Oekraïne (wapens, geld, leningen als gift, zijn deel van de EU-hulp): {v}, nummer {r} van {n} economieën naar zijn omvang.",
   "Top-10 aid giver for its size": "Top-10-donor naar zijn omvang",
   "Major aid giver": "Grote donor",
