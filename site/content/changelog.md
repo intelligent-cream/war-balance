@@ -2,6 +2,18 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r41">Round 41: a map you can read at a glance, tested code, and a fixed simulation <span class="cl-date">24 October</span></h2>
+<!-- flows: windfall paid sold -->
+
+- **The sign simulation had a broken random generator** (it repeated after about 10,000 draws), so "leaning" was decided on fewer independent draws than it said. It is replaced, and 8,000 draws now run per number. No net figure changes; seven groups move: Taiwan's net from leaning toward Ukraine to uncertain, Nicaragua's net from uncertain to leaning toward Russia, and the trade groups of Armenia, Cyprus, Mozambique, Nicaragua and Thailand.
+- **Mostly no data**: a country whose trade with Russia has no record of its own and only small rough estimates counted (Chad, South Sudan, Somalia, Haiti, Guinea, Equatorial Guinea and others) no longer gets a direction. It is drawn hatched, not ranked, and says so.
+- **Mostly price**: where war-time fuel prices it did not set make up most of a number (Hungary: €9.9 bn of €11.6 bn), the panel and the tooltip say so.
+- **Two numbers as the headline**: each panel and tooltip shows support · trade · frozen = net.
+- **On the map**: the three views, the year and Play sit on the map; the default frame shows the Americas, Africa and East Asia; a strip of stories picks the clearest case for each kind of flow; the arcs are off until switched on.
+- **Tests**: the map's own model is tested directly in every build (the parts add up, the ranges hold their middle value, the simulation gives known answers, a dozen countries' numbers are pinned).
+- **Citable**: a citation file (CITATION.cff) and a git tag per round.
+- The last "not reviewed by a person" lines are gone from the research notes.
+
 <h2 id="cl-r40">Round 40: Russian forces in Africa, corrected citations, and no "not yet checked" <span class="cl-date">23 October</span></h2>
 <!-- flows: rusarms laund -->
 

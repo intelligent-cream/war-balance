@@ -25,7 +25,9 @@ for (const [k, c] of Object.entries(by)) {
   if (!c.gdp) continue;
   const g = 100 / c.gdp, x = M.calc(c, Y), x25 = M.calc(c, 2025), mb = M.methodBands(c, Y);
   const head = { ua: [x.uaBal, x.uaLo, x.uaHi], rus: [x.rusBal, x.rusLo, x.rusHi], net: [x.shift, x.shiftLo, x.shiftHi] };
-  const o = { gdp: c.gdp, gdp_2024: c.gdp_2024 ?? null, grades: M.grades(c, Y), party: M.PARTY_TO_WAR.has(k) };
+  const o = { gdp: c.gdp, gdp_2024: c.gdp_2024 ?? null, grades: M.grades(c, Y), party: M.PARTY_TO_WAR.has(k),
+    // round 41: no data, or mostly no data (only small rough estimates): drawn hatched and not ranked
+    noData: !!(x.noData || x.mostlyNoData) };
   for (const [q, [v, lo, hi]] of Object.entries(head)) {
     // the ranking rule written out again, independently of uncertain(): the value, its likely range and every
     // method-band alternative must have the same sign

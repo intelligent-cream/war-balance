@@ -49,6 +49,9 @@ jobs:
           git diff --exit-code -- research/2026-10/gaps.md
       - name: Unit tests
         run: uv run pytest -q
+      # round 41: the map's own model (site/index.html), tested directly: invariants, the sign simulation, a snapshot
+      - name: Model tests
+        run: node --test pipeline/test_model.mjs
       # share cards are not committed (site/c/); check 24 reads them
       - name: Share cards
         run: node pipeline/share_cards.mjs

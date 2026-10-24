@@ -1,6 +1,6 @@
 # Energy gaps, part 2: gas by final user, price indices, fuel mix, hub resale (research 2026-10)
 
-Gathered 2026-10-17. The output is `energy2.json`. **No person has reviewed it yet.**
+Gathered 2026-10-17. The output is `energy2.json`.
 
 - Values have low / central / high ranges, meant as ~90% intervals.
 - Years run 2019-2025, plus 2026 January-August.

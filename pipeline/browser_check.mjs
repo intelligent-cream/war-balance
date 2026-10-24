@@ -98,7 +98,7 @@ for (const [lens, q] of Object.entries(LENS)) {
   });
   // a party to the war (Belarus, North Korea) is never ranked but listed under the chart; round 29 (owner): leaning and
   // uncertain directions are ranked too, faded; round 38: in five groups, numbered only where the direction is certain
-  const want = Object.entries(node.countries).filter(([, c]) => c.gdp >= MIN_GDP && !c.party && c[q] !== null).map(([k]) => k).sort();
+  const want = Object.entries(node.countries).filter(([, c]) => c.gdp >= MIN_GDP && !c.party && !c.noData && c[q] !== null).map(([k]) => k).sort();
   const wrongSt = Object.entries(got.st).filter(([k, s]) => {
     const c = node.countries[k]; if (!c) return false;
     // round 38 (owner: "we can create leaning groups"): the groups, only the two certain ones numbered (#)
