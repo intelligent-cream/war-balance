@@ -3033,6 +3033,16 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
         bands.get("generated"),
         "see research/2026-10/gaps/cf_bands-notes.md",
     )
+    # round 43 (owner: "go for 1"): the placebo test (placebo_r42.json) found the bands for purchases from Russia too
+    # wide (rerun as if the war began in 2014, the Russia-shock case, they would cover 90% at x0.81 of their width) and
+    # those for small sales to Russia too narrow (about 78% instead of 90%). Generic bands are scaled around 1 by these
+    # factors; bands tested on a country's own history (cf_bands.json, Belarus) keep their width. Small = purchases plus
+    # sales with Russia under EUR 1bn a year in 2019-2021, as in the placebo
+    small_trade = {
+        iso3: sum((countries.get(iso3, {}).get(k) or {}).get("base") or 0 for k in ("to_rus", "from_rus"))
+        < CB_SMALL_EUR_BN
+        for iso3 in cf["countries"]
+    }
     for iso3, flows in cf["countries"].items():
         c = countries.get(iso3)
         if not c:
@@ -3078,7 +3088,18 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
                 cb = (table["rw"] if obj["cf"] == "rw" and cell in table["rw"] else table["chosen"]).get(cell)
             if cb:
                 hs = ["H1", "H2", "H3", "H4", "H5_2026_8of12"]
-                obj["cb"] = [None] + [[cb[h]["low"], cb[h]["high"]] for h in hs]
+                f = 1.0
+                if iso3 not in bands["countries"] or key not in bands["countries"][iso3]:
+                    f = (
+                        CB_SCALE_PAID
+                        if key == "to_rus"
+                        else CB_SCALE_SOLD_SMALL
+                        if key == "from_rus" and small_trade[iso3]
+                        else 1.0
+                    )
+                obj["cb"] = [None] + [
+                    [round(1 - (1 - cb[h]["low"]) * f, 4), round(1 + (cb[h]["high"] - 1) * f, 4)] for h in hs
+                ]
                 obj["src"].append(bid)
             if key in ("buy_ukr", "sell_ukr") and key in (ua["countries"].get(iso3) or {}):
                 obj["src"].append(uid)
@@ -3086,6 +3107,12 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
                 # right-bank gas and other goods at 2019-2021 prices; the 2019-2021 average as the low alternative
                 m = bands["countries"]["MDA"]["to_rus"]["base_range_recommended_eur_bn_at_2019_2021_prices"]
                 obj["base"], obj["base_range"] = m["central"], [m["low"], m["high"]]
+
+
+# round 43: placebo-calibrated scaling of the generic no-war bands (counterfactual() above; placebo_r42.json, the 2014 run)
+CB_SCALE_PAID = 0.81
+CB_SCALE_SOLD_SMALL = 1.1
+CB_SMALL_EUR_BN = 1.0
 
 
 def power_of_siberia(countries: dict[str, dict], src: Sources) -> None:
