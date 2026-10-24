@@ -57,7 +57,7 @@ A number's direction is **certain** when the simulation gives it at least a 95% 
 
 The likely range is uncertainty **given the method**. The method band shows each headline number under other reasonable choices, one at a time:
 
-- the war-time windfall in full, or left out (Hungary raised Russia's earnings from trade by 1.35%<!-- n:HUN.alt_windfall_off.rus abs --> of GDP without it, instead of 6.57%<!-- n:HUN.rus abs -->);
+- the war-time windfall in full, or left out (Hungary raised Russia's earnings from trade by 1.20%<!-- n:HUN.alt_windfall_off.rus abs --> of GDP without it, instead of 6.35%<!-- n:HUN.rus abs -->);
 - loans at the war-time yield;
 - EU refiners keep the Russian crude in their fuel exports; laundered oil with a looser rule, or not counted;
 - the fuel mix from tanker tonnes; fuel prices with freight; a higher normal return;
@@ -68,7 +68,7 @@ The likely range is uncertainty **given the method**. The method band shows each
 - North Korea paid only what was observed flowing back;
 - 2024 GDP instead of the 2022–2024 average.
 
-The band is the lowest and highest of these; it is not a probability range. Examples (the net): Germany 3.13%<!-- n:DEU.netBandLo --> to 4.05%<!-- n:DEU.netBandHi -->, Moldova 3.96%<!-- n:MDA.netBandLo --> to 9.76%<!-- n:MDA.netBandHi -->, Hungary −8.09%<!-- n:HUN.netBandLo --> to −0.89%<!-- n:HUN.netBandHi -->, North Korea −31.86%<!-- n:PRK.netBandLo --> to −11.21%<!-- n:PRK.netBandHi -->.
+The band is the lowest and highest of these; it is not a probability range. Examples (the net): Germany 3.13%<!-- n:DEU.netBandLo --> to 4.05%<!-- n:DEU.netBandHi -->, Moldova 3.96%<!-- n:MDA.netBandLo --> to 9.76%<!-- n:MDA.netBandHi -->, Hungary −7.86%<!-- n:HUN.netBandLo --> to −0.75%<!-- n:HUN.netBandHi -->, North Korea −31.86%<!-- n:PRK.netBandLo --> to −11.21%<!-- n:PRK.netBandHi -->.
 
 ## Average year
 

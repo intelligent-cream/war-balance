@@ -1095,6 +1095,18 @@ def build() -> dict:
                     round(max(0.0, tr["base_range"][1] - cpre) + pre["high"], 5),
                 ]
                 tr["src"] = tr.get("src", []) + ["transit_gas"]
+                # round 43: metered physical flows (ENTSOG) checked these volumes; Hungary 2025-26 and Austria 2024
+                # corrected to them, Bulgaria's high case widened to the physical upper bound (entsog_r43-notes.md)
+                if iso3 in ENTSOG_CHECKED:
+                    tr["src"].append(
+                        src.add(
+                            "entsog_r43",
+                            "ENTSOG Transparency Platform: metered physical gas flows at the TurkStream, Balkan and Central European border points, 2021-11 to 2026-08",
+                            "https://transparency.entsog.eu/api/v1/operationalData",
+                            "2026-10-24",
+                            "a second, independent measurement of volume (no origin); see research/2026-10/gaps/entsog_r43-notes.md",
+                        )
+                    )
         if tr and iso3 in PIPELINE_GAS and iso3 != "MDA":  # Moldova: customs gas only (see above)
             # customs data miss some fossil fuel (pipeline gas is not always recorded as Russian),
             # so payments to Russia use whichever is larger each year: all imports from Russia, or the fossil fuel value
@@ -1946,7 +1958,7 @@ SOURCE_TYPE = {
     "shadow_fleet": "report", "reexports": "data", "residual": "data", "hk_gold_r16": "data", "audit": "notes",
     "sanctions_share": "report", "gas_cuts": "press", "prices": "ours", "narrow": "data", "audit2": "notes",
     "windfall": "ours", "trend": "ours", "gas_prices": "data", "trend2": "ours", "counterfactual": "ours",
-    "ua_trade_cf": "ours", "cf_bands": "ours", "power_of_siberia": "press", "weapons_value": "report",
+    "ua_trade_cf": "ours", "cf_bands": "ours", "entsog_r43": "data", "epdk_r43": "data", "power_of_siberia": "press", "weapons_value": "report",
     "state_finance": "data", "company_flows": "report", "russian_owned_r10": "report", "seizures": "report",
     "refugees_net": "data", "co_belligerent": "report", "loans_value": "report", "money_ledger": "data",
     "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "svc_ukr": "data", "company_profits": "data", "import_premium": "data", "wagner": "report", "remittances": "data",
@@ -3101,6 +3113,17 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
                     [round(1 - (1 - cb[h]["low"]) * f, 4), round(1 + (cb[h]["high"] - 1) * f, 4)] for h in hs
                 ]
                 obj["src"].append(bid)
+            if iso3 == "TUR" and key == "to_rus":
+                # round 43: Türkiye's own band, back-tested on its fuel volumes from the energy regulator (EPDK)
+                obj["src"].append(
+                    src.add(
+                        "epdk_r43",
+                        "EPDK (Turkish Energy Market Regulatory Authority): natural gas and oil market reports, imports by country of origin 2005-2026",
+                        "https://www.epdk.gov.tr/Detay/Icerik/3-0-94/dogal-gazyillik-sektor-raporu",
+                        "2026-10-24",
+                        "Russian gas and crude volumes; Türkiye's own no-war band; see research/2026-10/gaps/turkey_gas_r43-notes.md",
+                    )
+                )
             if key in ("buy_ukr", "sell_ukr") and key in (ua["countries"].get(iso3) or {}):
                 obj["src"].append(uid)
             if iso3 == "MDA" and key == "to_rus":
@@ -3109,6 +3132,8 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
                 obj["base"], obj["base_range"] = m["central"], [m["low"], m["high"]]
 
 
+# round 43: countries whose pipeline gas volumes were checked against ENTSOG's metered flows (entsog_r43.json)
+ENTSOG_CHECKED = {"HUN", "AUT", "BGR", "SRB", "BIH", "MKD", "GRC"}
 # round 43: placebo-calibrated scaling of the generic no-war bands (counterfactual() above; placebo_r42.json, the 2014 run)
 CB_SCALE_PAID = 0.81
 CB_SCALE_SOLD_SMALL = 1.1

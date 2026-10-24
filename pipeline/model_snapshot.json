@@ -50,11 +50,11 @@
   "mostlyNoData": false
  },
  "HUN": {
-  "net": -11.6313,
-  "netLo": -18.9034,
-  "netHi": -1.4503,
+  "net": -11.2198,
+  "netLo": -18.4387,
+  "netHi": -1.156,
   "ua": 0.6704,
-  "rus": -12.5002,
+  "rus": -12.0887,
   "frozen": 0.1985,
   "noData": false,
   "mostlyNoData": false
@@ -81,8 +81,8 @@
  },
  "TUR": {
   "net": -31.4088,
-  "netLo": -59.1614,
-  "netHi": 4.0415,
+  "netLo": -55.5718,
+  "netHi": 2.0805,
   "ua": 0.0309,
   "rus": -31.4397,
   "frozen": 0,
