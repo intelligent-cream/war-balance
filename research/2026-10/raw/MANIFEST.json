@@ -1375,6 +1375,54 @@
    "in_repository": true
   },
   {
+   "path": "uae_hkg_r43/fetch_log_2026-10-24.json",
+   "bytes": 6744,
+   "sha256": "dd0cd7c5d62d8e103e0bd0d5424609b965e42e9dadda000845ee17e4a43e96c4",
+   "in_repository": true
+  },
+  {
+   "path": "uae_hkg_r43/scad_annually-2024.xlsx",
+   "bytes": 146793,
+   "sha256": "437a150b62d5049afcaf8afcbe7dc6ffd675d52b04be4d3da8baf08486c7a7f5",
+   "in_repository": false
+  },
+  {
+   "path": "uae_hkg_r43/scad_annually-2025.xlsx",
+   "bytes": 152186,
+   "sha256": "6e83c7df0ce5a44d9260ed7b2e0bf9f76289c6474f21e52a9423bf4c0d6f66eb",
+   "in_repository": false
+  },
+  {
+   "path": "uae_hkg_r43/scad_monthly-april-2026.xlsx",
+   "bytes": 124729,
+   "sha256": "afc0bd285849d82e01c819da696fdca9984ddc4a80889412dbc2d12f01386364",
+   "in_repository": false
+  },
+  {
+   "path": "uae_hkg_r43/scad_monthly-july-2026.xlsx",
+   "bytes": 124741,
+   "sha256": "39eb89e77747737a747e451ed618a0758a815c142e6d223a4290956f41e26009",
+   "in_repository": false
+  },
+  {
+   "path": "uae_hkg_r43/scad_monthly-june-2026.xlsx",
+   "bytes": 124524,
+   "sha256": "9aa7c0aef094d98573b5bcb9fbaa7ac88096ae78414f0c83a6a2254b5d9104da",
+   "in_repository": false
+  },
+  {
+   "path": "uae_hkg_r43/scad_monthly-march-2026.xlsx",
+   "bytes": 124411,
+   "sha256": "185c51de8f638391cfbcbad4d98076367232d2748a996f115a2c1fe3185ab8df",
+   "in_repository": false
+  },
+  {
+   "path": "uae_hkg_r43/scad_monthly-may-2026.xlsx",
+   "bytes": 124250,
+   "sha256": "5365910e27c0f1ef04b61ab7c6333a83d8da4cc0023fa398bfa15c0b1a22cd8c",
+   "in_repository": false
+  },
+  {
    "path": "ukrstat/ukrstat_trade_by_partner_2026-10-23.json.gz",
    "bytes": 79452,
    "sha256": "d01bff10410890ea0f3585c5048c76ffab42b7d691585482341019d91bc14ae7",
