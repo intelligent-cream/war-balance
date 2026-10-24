@@ -1,6 +1,6 @@
 # Method overview: one scale for every flow
 
-The map gives every country two numbers for the time since the full-scale invasion, each against what it would have done without the war: **support for Ukraine** and **Russia's earnings from trade** (what Russia keeps: taxes and profit above a normal return, not the full price). Their sum, with the return Russia lost on its frozen reserves, is the **net**. Worldwide, Russia's net gain from buyers who cut fell by EUR 351.6bn<!-- n:WORLD.less --> and rose by EUR 214.0bn<!-- n:WORLD.more --> from buyers who bought more (2022–August 2026).
+The map gives every country two numbers for the time since the full-scale invasion, each against what it would have done without the war: **support for Ukraine** and **Russia's earnings from trade** (what Russia keeps: taxes and profit above a normal return, not the full price). Their sum, with the return Russia lost on its frozen reserves, is the **net**. Worldwide, Russia's net gain from buyers who cut fell by EUR 351.5bn<!-- n:WORLD.less --> and rose by EUR 213.9bn<!-- n:WORLD.more --> from buyers who bought more (2022–August 2026).
 
 ## The core idea in four steps
 
@@ -161,7 +161,7 @@ The map shows changes, not gross totals, because gross totals include normal tra
 
 - **Counted where used**: gas where it is burned, fuel resold by hubs at the final buyer, goods re-exported by hubs at the country that made them.
 - **Counted once**: automated checks test for double counting.
-- **Rankings** leave out economies under EUR 5bn GDP. Each headline number says how likely its direction is, from simulating its parts: **certain** at 95% or more with every method choice agreeing; otherwise ranked faded, labelled **leaning** (at least 65%), **near zero** or **uncertain**. Among 163<!-- n:WORLD.nBig --> economies above EUR 5bn, 100<!-- n:WORLD.uncNet --> are not certain on the net.
+- **Rankings** leave out economies under EUR 5bn GDP. Each headline number says how likely its direction is, from simulating its parts: **certain** at 95% or more with every method choice agreeing; otherwise ranked faded, labelled **leaning** (at least 65%), **near zero** or **uncertain**. Among 163<!-- n:WORLD.nBig --> economies above EUR 5bn, 95<!-- n:WORLD.uncNet --> are not certain on the net.
 - **Parties to the war**, Belarus and North Korea, are listed under the ranking, not ranked. Russia invaded Ukraine from Belarus (UN resolution ES-11/1); North Korean troops fought for Russia in Kursk from late 2024.
 
 ## No data

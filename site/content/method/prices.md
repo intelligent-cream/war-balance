@@ -44,7 +44,7 @@ For each year from 2022: what the country paid for Russian fuel, minus the same 
 
 - **Fuel only**: other goods' price rises are mostly general inflation.
 - **Only money flowing to Russia**: higher prices on goods sold to Russia do not count.
-- **On top of volume**: a country that cut volumes still pays the windfall on what it kept buying. Germany: EUR 16.5bn<!-- n:DEU.part_windfall abs --> toward Russia (likely 1.3<!-- n:DEU.part_windfallHi abs --> to 29.2<!-- n:DEU.part_windfallLo abs -->), almost all in 2022.
+- **On top of volume**: a country that cut volumes still pays the windfall on what it kept buying. Germany: EUR 16.5bn<!-- n:DEU.part_windfall abs --> toward Russia (likely 1.3<!-- n:DEU.part_windfallHi abs --> to 29.1<!-- n:DEU.part_windfallLo abs -->), almost all in 2022.
 
 ## No-war prices
 

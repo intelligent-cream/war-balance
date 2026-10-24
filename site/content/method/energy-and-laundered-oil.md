@@ -20,7 +20,7 @@ CREA assigns pipeline gas to the country where it enters (Germany for Nord Strea
 
 ### Per-country values for the EU, USA, UK and Australia
 
-The model got the EU total right but split it badly between members, so EU members use their own customs imports of fuel from India, Türkiye, the UAE, China, Singapore and Georgia, with the Netherlands and Belgium passing fuel on to their customers. They match CREA's per-country figures (2023: EU 2.60 vs 2.6; France 0.42 vs 0.42). The US, UK and Australia use CREA's figures. Two more routes are added: Brunei's refinery (mostly to Australia) and Russian fuel relabelled in Turkish ports (mostly to Greece). After the EU ban of 21 January 2026 on fuel made from Russian crude, the EU values drop sharply.
+The model got the EU total right but split it badly between members, so EU members use their own customs imports of fuel from India, Türkiye, the UAE, China, Singapore and Georgia, with the Netherlands and Belgium passing fuel on to their customers. They match CREA's per-country figures (2023: EU 2.60 vs 2.6; France 0.42 vs 0.42). The US and UK use CREA's figures; Australia is measured from its own petroleum statistics (see below). Two more routes are added: Brunei's refinery (mostly to Australia) and Russian fuel relabelled in Turkish ports (mostly to Greece). After the EU ban of 21 January 2026 on fuel made from Russian crude, the EU values drop sharply.
 
 ### Hub resale chain
 
@@ -78,6 +78,19 @@ Türkiye appears in almost every energy step: a transit and final-use gas countr
 - **Extra paid to replace Russian energy**: the displaced volume × the premium over the Russian price. Largest: Germany EUR 34.5bn, Italy 18.5bn, the Netherlands 11.3bn.
 - **Discount gained on Russian oil**: crude bought below Brent from March 2022, only the part beyond Russia's normal pre-war discount. Largest: India EUR 24.1bn, China 18.1bn, Türkiye 5.5bn.
 
-### Measured for 21 buyers (round 39)
+### Measured buyers (round 39)
 
 For 21 buyers of refined fuel outside Europe (Nepal, South Africa, Tanzania, Mozambique, the Philippines, Bangladesh, Pakistan, Sri Lanka, Fiji, New Zealand, Mauritius and others), the Russian crude in their fuel is now **measured, not modelled**: their own customs imports of fuel by origin, times the measured Russian share of crude at that origin (UN Comtrade crude imports by origin, India's export records by destination, refinery shares from KSE and CREA), with the pre-war level measured the same way. That evidence is the central value. The speculative versions are the method band: half of Russia's gain charged (Russia redirected its crude, so one buyer moves its revenue by less) and the round-38 model of refiners' exports and hub resale. The refiners are relieved of exactly what these buyers are charged.
+
+### Measured again, with Cyprus, Malta and Australia (round 43)
+
+The measured buyers now use better data. India's Russian share in 2026 comes from its monthly customs: 21% in January, 54% in July, about 0.39 for January–August instead of 0.30. Türkiye's share comes from its energy regulator, EPDK: 34% in 2019 and 27% in January–August 2026. Each EU refiner has its own share from Eurostat instead of one EU average: Greece 13% in 2021, Italy 10%, Finland 83%. US refiners pass on none, because US imports from Russia stopped in 2022 (EIA). The 2026 quantities come from the buyers' monthly customs.
+
+Three more buyers are measured:
+
+- **Australia**, from its petroleum statistics by source country.
+- **Cyprus and Malta**, from Eurostat's energy imports by consigning country. These show what they use: fuel stored in Cyprus and re-exported to Libya or Lebanon is not counted as Cyprus's.
+
+**Ranges.** Quantity and origin share are combined as independent errors. Crude content still adds up across refiners, because they share it. The Urals price band is left out of these series: crude content already holds the Urals price, and it cancels when the value is turned into a volume.
+
+**Expected level.** It is the measured pre-war level, held flat, as round 39 described. Until round 42 the code kept the old model's pre-war growth for these buyers. That growth had given the Philippines and Pakistan most of their credit for buying less.

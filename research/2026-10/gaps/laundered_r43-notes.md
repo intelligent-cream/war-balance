@@ -1,6 +1,6 @@
 # Laundered oil, round 43: better data for the countries it decides
 
-Gathered 2026-10-24. Output: [`laundered_r43.json`](laundered_r43.json). Downloads: `research/2026-10/raw/{eurostat,comext,comtrade,aps,eia,epdk,ecb}_laund/` (≈330 KB), fetched by `pipeline/fetch/laundered_r43.py` (run with `python -I`). Not wired into the builder; see **Proposed build changes**.
+Gathered 2026-10-24. Output: [`laundered_r43.json`](laundered_r43.json). Downloads: `research/2026-10/raw/{eurostat,comext,comtrade,aps,eia,epdk,ecb}_laund/` (≈330 KB), fetched by `pipeline/fetch/laundered_r43.py` (run with `python -I`). Wired into the builder in round 43; see **Wired in** for the built values. The tables before it are the research-stage estimates.
 
 Units: EUR bn nominal, 2026 = January–August. "Part" means the site's laundered-oil part (`laund`, at Russia's net gain), summed over 2022–2026. Positive means Russia lost: the buyer gets credit. The part was recomputed with the site's own `calc()` and `pSignMC` on patched copies of `site/data.json` (2026-10-24). These are approximations: refiners' deductions and other countries are not rebuilt.
 
@@ -148,6 +148,55 @@ These changes also affect other buyers through the shared inputs:
 - **The higher India share for 2026** raises 2026 for Nepal, Sri Lanka, Bangladesh, Mauritius, Tanzania and Kenya.
 - **The member-specific EU shares** lower the pre-war base for buyers of Italian, Spanish and Greek fuel.
 - **EPDK's 2019 share for Türkiye** raises the pre-war base for buyers of Turkish fuel.
+
+## Wired in (round 43 build)
+
+These decisions were taken:
+
+- **B3, ranges.** Quantity and origin share are combined in quadrature. Crude content is added across origins, because all refiners share it (the Urals price and refining margins).
+- **B7, expected path.** It is flat for the measured buyers, as round 39 documented. This is a bug fix: the code had copied the old routes' `bmul`.
+- **B5, Malta.** The bunker rule and the cap are kept. They now apply to its measured levels and to its pre-war level.
+- **B8, price band.** The Urals band is dropped for measured series.
+- **B1, B2, B4, B6** are done as proposed. Australia's expected path is flat too, like the other measured buyers, not its old `bmul`.
+- **Method band.** `refiner`, `laund_half` and the other alternatives are rebuilt from the new data. `laund_model` remains the old model, by definition.
+
+All 24 measured buyers (the 21 of round 39 plus Cyprus, Malta and Australia) use `measured_buyers`. Their levels were recomputed with the new shares and range rule.
+
+Built values (`site/data.json`, 2026). "Part" is the laundered part in EUR bn; net and Russia's earnings are in % of GDP, with the chance and the group.
+
+| | laundered part, before | after | net, before | after | Russia's earnings, before | after |
+|---|---|---|---|---|---|---|
+| Cyprus | −0.190 (−0.974 to +0.235) | **+0.222 (+0.044 to +0.308)** | +2.14, 94.5% leaning Ukraine | +3.42, 99.9% **certain** | +0.20, 63% uncertain | +1.48, 95.1% **certain** |
+| Malta | +0.028 (−0.114 to +0.169) | +0.042 (−0.088 to +0.196) | +0.90, 92.7% leaning | +0.97, 94.8% leaning | +0.28, 68% leaning | +0.35, 72% leaning (`refiner` crosses) |
+| Philippines | +0.599 (−0.269 to +1.181) | **+0.037 (−0.266 to +0.297)** | +0.26, 92.9% leaning Ukraine | +0.12, 89.8% near zero | +0.26, 92.9% leaning | +0.12, 87.3% near zero |
+| Papua New Guinea | −0.023 (−0.058 to +0.003) | −0.025 (−0.040 to −0.010) | −0.07, 90.4% near zero | −0.08, 99.8% **certain** Russia | −0.07, 91.6% near zero | −0.08, 99.8% **certain** |
+| Chile | +0.136 (−0.209 to +0.542) | +0.089 (+0.053 to +0.146) | +0.04, 83.4% near zero | +0.03, 100% **certain** Ukraine | +0.04, 78.9% near zero | +0.03, 100% **certain** |
+| Fiji | −0.015 (−0.034 to +0.000) | −0.018 (−0.028 to −0.008) | −0.30, 95.0% certain | −0.35, 99.9% certain | −0.30, 94.8% leaning | −0.35, 99.9% **certain** |
+| South Africa | −1.641 (−3.165 to −0.412) | −1.742 (−2.407 to −1.075) | −0.45, 97.2% certain | −0.48, 99.3% certain | −0.45, 95.6% certain | −0.48, 99.3% certain |
+| New Zealand | −0.237 (−0.411 to −0.082) | −0.204 (−0.278 to −0.124) | +0.04, 89.0% near zero | +0.05, 95.9% **certain** Ukraine | −0.01, 53.5% near zero | +0.00, 55.5% near zero |
+| Pakistan | +0.184 (−0.495 to +0.974) | −0.064 (−0.327 to +0.322) | +0.02, 70.2% near zero (Ukraine side) | −0.05, 60.1% near zero (Russia side) | +0.02, 68% near zero | −0.05, 62% near zero |
+| Australia | −1.511 (−2.872 to −0.339) | −2.021 (−2.825 to −1.129) | −0.01, 57% near zero | −0.04, 73% near zero | −0.09, 98.1% certain | −0.12, 100% certain |
+
+**Philippines and Pakistan.** With the expected level flat, almost all of the Philippines' laundered credit goes: +0.04 bn instead of +0.60. Its net falls from 0.26% (92.9%, leaning Ukraine) to 0.12% (89.8%, near zero). Pakistan's part changes sign, to −0.06 bn, and its net moves to the Russia side, still near zero. Their credit came from the old China-route growth (×1.25–1.8 by 2026), not from anything measured for them.
+
+**Malta.** It stays leaning, at 94.8% on the net. Under the kept bunker rule its high end charges all of its bunkers (base range up to 0.075), and the cap holds its middle values for 2021–22 at 0.035.
+
+**Other buyers that moved:**
+
+- **Through the flat path and India's 2026 share:**
+  - Maldives: net from 83.4% leaning to 99.6% certain Russia.
+  - Solomon Islands and Tonga: from leaning to certain Russia.
+  - Samoa: 98.2%, still leaning, because `laund_model` crosses.
+  - Bangladesh: from near zero on the Ukraine side to near zero on the Russia side (−0.01%).
+  - Nepal: −2.25 → −2.45%. Tanzania: −1.04 → −1.12%. Mozambique: −1.04 → −1.18%. Kenya: 81.5 → 87.6%. Cameroon: 86 → 92%. All these keep their groups.
+  - Vanuatu: −0.79 → −0.73%.
+- **Refiners, through their deductions** (no group changes):
+  - India: −2.17 → −2.15%; it is relieved more, mostly through the higher 2026 share.
+  - China: −0.12 bn net.
+  - Türkiye: −2.95 → −3.00%. It gets back the Turkish-port fuel no longer charged to Cyprus and Malta, which was re-exported or not used there.
+  - Brunei: +2.44 → +3.09%, 85% leaning Ukraine. Australia's own statistics show more Hengyi fuel than laundered_r6 did, so Brunei passes on more.
+  - EU refiners shifted by their own Eurostat shares: Netherlands −0.03, Lithuania +0.03, Finland −0.01, Romania +0.01, Germany −0.02 bn, France −0.02 bn, Poland, Hungary.
+- **Counts:** among economies of at least EUR 5bn GDP, numbers whose direction is not certain fell from 108 to 103 on Russia's earnings and from 100 to 95 on the net (`overview.md` figures refreshed).
 
 ## What is estimated
 
