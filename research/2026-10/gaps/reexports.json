@@ -269,17 +269,20 @@
     {
      "name": "Armenpress: Armenian finance ministry - re-exports contributed ~187 pp of the ~215% growth in goods exports to Russia, H1 2023",
      "url": "https://armenpress.am/en/article/1120421",
-     "date": "2023 (accessed 2026-10-17)"
+     "date": "2023 (accessed 2026-10-17)",
+     "kind": "press"
     },
     {
      "name": "ARKA, Armenia foreign trade 2024 (Armstat): exports to Russia USD 3.1bn (-11%), imports from Russia >USD 9.4bn (x2), exports to UAE >USD 5.2bn (x2.4); precious stones/metals exports >USD 8bn, imports USD 7.4bn",
      "url": "https://arka.am/en/news/economy/armenia-s-foreign-trade-t2024-exceeded-30-billion-growth-has-been-slowing-for-six-months/",
-     "date": "2025-02-06"
+     "date": "2025-02-06",
+     "kind": "press"
     },
     {
      "name": "The Insider / Hetq investigation: Russian customs show 89 t of gold (~USD 5.2bn) to Armenia 2022-2024; Armenian customs 111 t (USD 6.2bn) of Russian gold 2023-H1 2024, re-exported mainly to the UAE",
      "url": "https://theins.co/en/corruption/276578",
-     "date": "2025 (accessed 2026-10-17)"
+     "date": "2025 (accessed 2026-10-17)",
+     "kind": "press"
     },
     {
      "name": "EBRD (Chupilkin, Javorcik, Plekhanov), \"The Eurasian roundabout: trade flows into Russia through the Caucasus and Central Asia\", EBRD Working Paper, news item 24 Feb 2023: increase in sanctioned-goods exports to ARM/KAZ/KGZ about 5% of the drop in direct sanctioned exports to Russia",
@@ -294,7 +297,8 @@
     {
      "name": "Belga News Agency on Eric Dor: EU exports to KAZ +EUR 4.9bn, ARM +EUR 1.1bn, KGZ +EUR 0.9bn 2021->2022",
      "url": "https://www.belganewsagency.eu/eu-trade-numbers-rise-in-countries-bordering-russia",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     }
    ],
    "reasoning": "Armenia does not flag re-exports in Comtrade. Re-exports = matched increase per HS2 chapter (manufactured chapters 28-40, 42-43, 61-70, 73, 82-96): min(increase in exports to Russia over 2019-21, increase in imports from non-Russian partners) x 0.87 (0.70-1.0). 0.87 is calibrated on the finance ministry statement that re-exports gave 187 of 215 pp of export growth to Russia in H1 2023. Plus a baseline 2019-21 re-export level (60% of the matched baseline flow in net-import chapters). HS85 (phones, electronics), HS87 (cars, until Russia raised duties in 2023-24) and HS84 dominate. Onward Russian goods: matched increase of HS71 imports from Russia vs HS71 exports to non-Russian partners (gold, diamonds) x 0.95; 2024 peak USD ~6.6bn, consistent with Armstat (precious stones/metals imports USD 7.4bn) and The Insider/Hetq (111 t Russian gold)."
@@ -825,7 +829,8 @@
     {
      "name": "Belga News Agency on Eric Dor: EU exports to KAZ +EUR 4.9bn, ARM +EUR 1.1bn, KGZ +EUR 0.9bn 2021->2022",
      "url": "https://www.belganewsagency.eu/eu-trade-numbers-rise-in-countries-bordering-russia",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     },
     {
      "name": "research/2026-10/gaps/residual.json (unrecorded transit via KGZ/KAZ, allocated to origins)",
@@ -1058,7 +1063,8 @@
     {
      "name": "RFE/RL, \"Reexports to Russia: how the Ukraine war made trade boom in Kyrgyzstan\"",
      "url": "https://www.rferl.org/amp/ukraine-war-kyrgyzstan-trade-russia/32277438.html",
-     "date": "2023 (accessed 2026-10-17)"
+     "date": "2023 (accessed 2026-10-17)",
+     "kind": "press"
     },
     {
      "name": "EBRD (Chupilkin, Javorcik, Plekhanov), \"The Eurasian roundabout: trade flows into Russia through the Caucasus and Central Asia\", EBRD Working Paper, news item 24 Feb 2023: increase in sanctioned-goods exports to ARM/KAZ/KGZ about 5% of the drop in direct sanctioned exports to Russia",
@@ -2630,17 +2636,20 @@
     {
      "name": "Gulf Today / UAE Ministry of Economy: 2022 imports from Russia AED 30.1bn, re-exports AED 9bn, national exports AED 1bn",
      "url": "https://gulftoday.ae/business/2023/09/01/uae-is-our-first-arab-trade-partner-with-$10-billion-russian-minister",
-     "date": "2023-09-01"
+     "date": "2023-09-01",
+     "kind": "press"
     },
     {
      "name": "UAE Ministry of Foreign Trade press release (Zawya): UAE-Russia non-oil trade USD 20.4bn in 2025 (+77.7%); 2024 AED 42.23bn (~USD 11.5bn)",
      "url": "https://www.zawya.com/en/press-release/government-news/uae-russia-trade-in-services-and-investment-agreement-enters-into-force-464653",
-     "date": "2026-08"
+     "date": "2026-08",
+     "kind": "press"
     },
     {
      "name": "Reuters analysis of Russian customs data (via The New Arab): UAE took 75.7 t of Russian gold worth USD 4.3bn Feb 2022-Mar 2023 (1.3 t in 2021); China/HK and Turkey ~20 t each",
      "url": "https://www.newarab.com/news/russia-gold-uae-cashes-sanctions-bite",
-     "date": "2023-05-25"
+     "date": "2023-05-25",
+     "kind": "press"
     },
     {
      "name": "KSE Institute / Yermak-McFaul group, \"Challenges of export controls enforcement\" (critical components): almost half of Russia's battlefield-goods imports Jan-Oct 2023 were coalition-brand goods via third countries (mainly CHN/HKG, TUR, UAE)",

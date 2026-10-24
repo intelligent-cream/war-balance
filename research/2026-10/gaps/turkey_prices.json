@@ -1620,7 +1620,8 @@
   {
    "name": "ICIS, \"Official TurkStream launch opens new supply corridor\" (Russian gas to Turkish importers at a fixed price of about USD 225-230 per 1000 m3 in 2020)",
    "url": "https://www.icis.com/explore/resources/news/2020/01/08/10457879/official-turkstream-launch-opens-new-supply-corridor/",
-   "date": "2020-01-08"
+   "date": "2020-01-08",
+   "kind": "press"
   },
   {
    "name": "prices.json and gas_prices.json (this research run): products, coal and non-fuel indices and payments; Serbian/Bosnian oil-formula calibration k = 0.418",

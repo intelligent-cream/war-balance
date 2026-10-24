@@ -11009,7 +11009,8 @@
   },
   "1news_2025": {
    "url": "https://www.1news.co.nz/2025/11/20/russian-oil-has-flowed-into-new-zealand-despite-sanctions",
-   "verified": "301 -> page read"
+   "verified": "301 -> page read",
+   "kind": "press"
   },
   "mbie_oil": {
    "url": "https://www.mbie.govt.nz/building-and-energy/energy-and-natural-resources/energy-statistics-and-modelling/energy-publications-and-technical-papers/energy-in-new-zealand/energy-in-new-zealand-2023/oil",
@@ -11019,17 +11020,20 @@
   "sapref": {
    "url": "https://ogj.com/refining-processing/refining/operations/article/14233703/shell-bp-joint-venture-to-idle-south-african-refinery",
    "verified": "search result, not fetched",
-   "use": "SAPREF 180 kb/d idled no later than end-March 2022"
+   "use": "SAPREF 180 kb/d idled no later than end-March 2022",
+   "kind": "press"
   },
   "korea_naphtha_2026": {
    "url": "https://www.koreatimes.co.kr/amp/business/companies/20260330/korea-resumes-russian-naphtha-imports",
    "verified": "200",
-   "use": "Korea bought no Russian crude 2023-2025; first Russian naphtha in four years in March 2026 under a US waiver"
+   "use": "Korea bought no Russian crude 2023-2025; first Russian naphtha in four years in March 2026 under a US waiver",
+   "kind": "press"
   },
   "singapore_fuel_oil": {
    "url": "https://shipandbunker.com/news/world/802037-singapore-fuel-oil-imports-triple-russia-sourced-product-hits-2-year-high",
    "verified": "200",
-   "use": "Russian fuel oil into Singapore rose in 2026 (bunker pool, direct Russian product)"
+   "use": "Russian fuel oil into Singapore rose in 2026 (bunker pool, direct Russian product)",
+   "kind": "press"
   },
   "repo": [
    "research/2026-10/gaps/crude_content.json",

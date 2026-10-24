@@ -1337,7 +1337,8 @@
    "id": "interfax_8m2026",
    "title": "Interfax-Ukraine: foreign trade deficit approached $40 bn in 8 months of 2026",
    "url": "https://en.interfax.com.ua/news/projects/1217001.html",
-   "note": "Jan-Aug 2026 exports 26.70; partner values"
+   "note": "Jan-Aug 2026 exports 26.70; partner values",
+   "kind": "press"
   },
   {
    "id": "usda_ams_2026",
@@ -1349,13 +1350,15 @@
    "id": "interfax_crops",
    "title": "Interfax-Ukraine: crop structure shift, profitability of wheat, corn, sunflower (UkrAgroConsult)",
    "url": "https://interfax.com.ua/news/economic/1161565.html",
-   "note": "wheat -14.9% (2022), -1.8% (2023); 2025/26 wheat 26%, corn 23%, sunflower 48%"
+   "note": "wheat -14.9% (2022), -1.8% (2023); 2025/26 wheat 26%, corn 23%, sunflower 48%",
+   "kind": "press"
   },
   {
    "id": "latifundist",
    "title": "Latifundist: profitability of crops in Ukraine 2021-2026",
    "url": "https://latifundist.com/analytics/37-rentabelnist-silgospkultur-v-ukrayini-20212026-rr-ekonomika-vizhivannya-ta-rozrahunku",
-   "note": "sunflower 70% (2021), 15-20% (2024), 106% (2025, MAS Seeds); corn 50%/-5%; transport costs up 4-5x in 2022-23"
+   "note": "sunflower 70% (2021), 15-20% (2024), 106% (2025, MAS Seeds); corn 50%/-5%; transport costs up 4-5x in 2022-23",
+   "kind": "press"
   },
   {
    "id": "kernel_fy2025",
@@ -1373,7 +1376,8 @@
    "id": "ferrexpo_2023",
    "title": "Interfax: Ferrexpo swings to $85m net loss in 2023",
    "url": "https://interfax.com/newsroom/top-stories/101557/",
-   "note": "2023 revenue 652, EBITDA 130"
+   "note": "2023 revenue 652, EBITDA 130",
+   "kind": "press"
   },
   {
    "id": "metinvest_2025",
@@ -1385,7 +1389,8 @@
    "id": "metinvest_2023",
    "title": "Interfax: Metinvest posts $194m loss for 2023",
    "url": "https://interfax.com/newsroom/top-stories/100516/",
-   "note": "revenue 8,288 -> 7,397; EBITDA 1,873 -> 861; steel EBITDA margin 3% (GMK Center)"
+   "note": "revenue 8,288 -> 7,397; EBITDA 1,873 -> 861; steel EBITDA margin 3% (GMK Center)",
+   "kind": "press"
   }
  ],
  "certainty": "C overall. B for the export mix 2021-2024 (Comtrade) and for the sector profitability anchors (Ukrstat). C for grain, oilseeds, iron ore and steel shares: built from Ukrstat sector profitability, crop profitability from trade analysts, USDA farm/FOB spreads and company reports, but capital intensity, farm/FOB ratios and tax incidence are estimated. D-to-C for food_other, metals_other, wood, machinery, chemicals and other: judgement values anchored on Ukrstat industry profitability (0.8-11%) and tolling/low-margin structure, no product-level margin data. 2025 and 2026 have no Ukrstat profitability data yet; they rest on company and analyst data. Mix 2025 is B-/C, 2026 Jan-Aug C."

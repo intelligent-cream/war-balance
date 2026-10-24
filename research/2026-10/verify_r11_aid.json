@@ -6965,7 +6965,8 @@
    "primary": null,
    "source_url": "https://brnodaily.com/2025/05/22/news/tax-paid-by-ukrainian-refugees-surpasses-cost-to-czech-state/",
    "match": "unverified",
-   "note": "MPSV primary not retrieved (mpsv.cz connection reset; search is JS-only). CTK report via Brno Daily (secondary) gives 25bn (2022), 22bn (2023) and says \"last year ... receiving CZK 17.5bn in aid\" for 2024, NOT 15.5. But the same article says 41.3bn spent since start of 2023 incl. Q1-2025 3.8bn: 41.3-22-3.8 = 15.5, so 17.5 looks like a press typo. Needs the MPSV table to settle"
+   "note": "MPSV primary not retrieved (mpsv.cz connection reset; search is JS-only). CTK report via Brno Daily (secondary) gives 25bn (2022), 22bn (2023) and says \"last year ... receiving CZK 17.5bn in aid\" for 2024, NOT 15.5. But the same article says 41.3bn spent since start of 2023 incl. Q1-2025 3.8bn: 41.3-22-3.8 = 15.5, so 17.5 looks like a press typo. Needs the MPSV table to settle",
+   "source_url_kind": "press"
   }
  ]
 }

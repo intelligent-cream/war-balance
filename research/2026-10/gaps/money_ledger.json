@@ -12100,17 +12100,20 @@
   {
    "name": "ESUT: Bundestag budget committee, ~EUR 3.8bn of the EUR 12bn package for replacement (Wiederbeschaffung)",
    "url": "https://esut.de/2023/03/meldungen/41074/haushaltsausschuss-gibt-rund-zwoelf-milliarden-euro-fuer-ukraine-frei/",
-   "date": "2023-03"
+   "date": "2023-03",
+   "kind": "press"
   },
   {
    "name": "Defense News: Germany buys more Patriots (2x USD 1.2bn contracts, 2024) as it supplies Ukraine",
    "url": "https://defensenews.com/land/2024/07/11/germany-buys-more-patriots-as-it-supplements-ukraines-air-defense",
-   "date": "2024-07-11"
+   "date": "2024-07-11",
+   "kind": "press"
   },
   {
    "name": "Ukrainska Pravda: Germany to receive USD 478m of GEM-T missiles to replace those given to Ukraine",
    "url": "https://www.pravda.com.ua/eng/news/2024/08/07/7469292/",
-   "date": "2024-08-07"
+   "date": "2024-08-07",
+   "kind": "press"
   },
   {
    "name": "KNDS/KMW: Bundeswehr orders 18 Leopard 2 A8 (replacing tanks given to Ukraine) and 12 PzH 2000; AP: budget committee ~EUR 525m",
@@ -12120,12 +12123,14 @@
   {
    "name": "ESUT / Defense News: Ringtausch Leopard 2A4 for Czechia and Slovakia, Marder for Greece, trucks for Slovenia",
    "url": "https://esut.de/en/2022/08/meldungen/36153/leopard-2-a4-im-ringtausch-fuer-slowakei-und-tschechien/",
-   "date": "2022-08"
+   "date": "2022-08",
+   "kind": "press"
   },
   {
    "name": "UK Defence Journal citing NAO: ~GBP 1bn of restocking contracts placed, total replacement cost GBP 2.71bn",
    "url": "https://ukdefencejournal.org.uk/a-look-at-exactly-what-britain-has-given-to-ukraine/",
-   "date": "2024"
+   "date": "2024",
+   "kind": "press"
   },
   {
    "name": "UK DE&S: Archer bought from Sweden as interim replacement for the AS90s gifted to Ukraine",
@@ -12140,12 +12145,14 @@
   {
    "name": "Notes from Poland: Poland buys 116 Abrams (USD 1.4bn net) to restock after sending T-72s to Ukraine",
    "url": "https://notesfrompoland.com/2023/01/04/poland-approves-1-4-billion-deal-to-buy-116-abrams-tanks-from-us/",
-   "date": "2023-01-04"
+   "date": "2023-01-04",
+   "kind": "press"
   },
   {
    "name": "OODA Loop / Military Periscope: Polish K2/K9 purchases partly to replace T-72, PT-91, Krab, Gozdzik sent to Ukraine",
    "url": "https://oodaloop.com/briefs/2022/07/27/poland-to-buy-hundreds-of-south-korean-tanks-howitzers-after-sending-arms-to-ukraine",
-   "date": "2022-07-27"
+   "date": "2022-07-27",
+   "kind": "press"
   },
   {
    "name": "Riksdagen: Prop. 2022/23:92 and FiU report: donated materiel to be re-acquired urgently (återanskaffning), appropriations 1:1 and 1:3 raised",
@@ -12165,17 +12172,20 @@
   {
    "name": "European Security & Defence: Elbit ATMOS (USD 119m) and PULS (USD 133m) for Denmark after Caesars went to Ukraine",
    "url": "https://euro-sd.com/2023/03/news/29918/elbit-to-supply-rocket-and-tube-artillery-to-denmark-worth-more-than-usd-250-m/",
-   "date": "2023-03"
+   "date": "2023-03",
+   "kind": "press"
   },
   {
    "name": "RTBF: France invests EUR 85m to replace Caesars given to Kyiv",
    "url": "https://www.rtbf.be/article/paris-va-investir-85-millions-d-euros-pour-remplacer-les-canons-caesar-donnes-a-kiev-11035003",
-   "date": "2022"
+   "date": "2022",
+   "kind": "press"
   },
   {
    "name": "Romania Insider: Pentagon awards contract to replace Romania's Patriot donated to Ukraine (USD 946m)",
    "url": "https://romania-insider.com/pentagon-awards-contract-replace-romanias-patriot-system-donated-ukraine",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "Estonian MoD / ERR: FH-70 donation (replacement value EUR 113m), K9 additional purchase",

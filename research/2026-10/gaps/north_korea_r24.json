@@ -47,13 +47,15 @@
      "title": "North Korea earns over $20 billion aiding Russia's war effort, report says",
      "publisher": "Kyiv Independent",
      "date": "2025-04-16",
-     "url": "https://kyivindependent.com/north-korea-earns-over-20-billion-aiding-russias-war-effort-report-says/"
+     "url": "https://kyivindependent.com/north-korea-earns-over-20-billion-aiding-russias-war-effort-report-says/",
+     "kind": "press"
     },
     {
      "title": "(KIDA estimate)",
      "publisher": "NK News (Jooheon Kim)",
      "date": "2025-04-16",
-     "url": "https://www.nknews.org/?p=954760"
+     "url": "https://www.nknews.org/?p=954760",
+     "kind": "press"
     }
    ]
   },
@@ -75,13 +77,15 @@
      "title": "North Korea likely earned $14.4B from military deals with Russia: report",
      "publisher": "NK News",
      "date": "2026-03-17",
-     "url": "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/"
+     "url": "https://www.nknews.org/2026/03/north-korea-likely-earned-14-4b-from-military-deals-with-russia-report/",
+     "kind": "press"
     },
     {
      "title": "N. Korea estimated to have earned up to $14.4 bil. from Russia-Ukraine war involvement",
      "publisher": "Korea Times",
      "date": "2026-03-16",
-     "url": "https://www.koreatimes.co.kr/amp/foreignaffairs/northkorea/20260316/n-korea-estimated-to-have-earned-up-to-144-bil-from-russia-ukraine-war-involvement-report"
+     "url": "https://www.koreatimes.co.kr/amp/foreignaffairs/northkorea/20260316/n-korea-estimated-to-have-earned-up-to-144-bil-from-russia-ukraine-war-involvement-report",
+     "kind": "press"
     }
    ]
   },
@@ -99,7 +103,8 @@
      "title": "New research estimates North Korean arms supplies to Russia at $5.5 billion",
      "publisher": "Euromaidan Press",
      "date": "2024-10-28",
-     "url": "https://euromaidanpress.com/2024/10/28/new-research-estimates-north-korean-arms-supplies-to-russia-at-5-5-billion/"
+     "url": "https://euromaidanpress.com/2024/10/28/new-research-estimates-north-korean-arms-supplies-to-russia-at-5-5-billion/",
+     "kind": "press"
     }
    ]
   },
@@ -119,7 +124,8 @@
      "title": "North Korea getting a 'raw deal' on support for Russia's war: Report",
      "publisher": "Al Jazeera",
      "date": "2025-09-18",
-     "url": "https://www.aljazeera.com/news/2025/9/18/north-korea-getting-a-raw-deal-on-support-for-russias-war-report"
+     "url": "https://www.aljazeera.com/news/2025/9/18/north-korea-getting-a-raw-deal-on-support-for-russias-war-report",
+     "kind": "press"
     },
     {
      "title": "New FNF study: partnership between Russia and North Korea",
@@ -142,7 +148,8 @@
     {
      "title": "North Korea earned almost half its GDP over three years of war (Nikkei via Hromadske)",
      "publisher": "Hromadske",
-     "url": "https://hromadske.ua/en/economy/263814-pivnichna-koreia-zarobyla-blyzko-polovyny-svoho-vvp-za-try-roky-viyny-na-botsi-rosiyi-proty-ukrayiny-nikkei"
+     "url": "https://hromadske.ua/en/economy/263814-pivnichna-koreia-zarobyla-blyzko-polovyny-svoho-vvp-za-try-roky-viyny-na-botsi-rosiyi-proty-ukrayiny-nikkei",
+     "kind": "press"
     }
    ]
   },

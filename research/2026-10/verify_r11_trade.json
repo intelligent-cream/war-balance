@@ -8409,7 +8409,8 @@
    "primary": 76.09,
    "source_url": "https://tass.com/economy/1730001",
    "match": "yes",
-   "note": "TASS quoting the Russian MinFin Telegram channel (\"January-December 2022 - $76.09\"). raw/crea/minfin_press/tass_1730001.html. Note MinFin is a tax reference price, a different concept from CREA FOB (77.8 in 2022)."
+   "note": "TASS quoting the Russian MinFin Telegram channel (\"January-December 2022 - $76.09\"). raw/crea/minfin_press/tass_1730001.html. Note MinFin is a tax reference price, a different concept from CREA FOB (77.8 in 2022).",
+   "source_url_kind": "press"
   },
   {
    "what": "Russian MinFin annual average Urals, USD/bbl (project minfin_urals_usd_bbl)",
@@ -8419,7 +8420,8 @@
    "primary": 62.99,
    "source_url": "https://tass.com/economy/1730001",
    "match": "yes",
-   "note": "TASS quoting MinFin: \"January-December 2023 was $62.99\". raw/crea/minfin_press/tass_1730001.html."
+   "note": "TASS quoting MinFin: \"January-December 2023 was $62.99\". raw/crea/minfin_press/tass_1730001.html.",
+   "source_url_kind": "press"
   },
   {
    "what": "Russian MinFin annual average Urals, USD/bbl (project minfin_urals_usd_bbl)",
@@ -8429,7 +8431,8 @@
    "primary": 68.0,
    "source_url": "https://investfuture.ru/articles/bank-rossii-povyshaet-prognoz-tseny-nefti-urals-do-58-dollarov-za-barrel-1168991515",
    "match": "yes",
-   "note": "Secondary only and rounded: investfuture.ru article on Bank of Russia forecast says the 2024 average Urals price was \"68 dollars\". MinFin/MinEcon annual figure itself not retrievable (minfin.gov.ru returned 503, economy.gov.ru reset). raw/crea/minfin_press/investfuture_cbr_urals.html."
+   "note": "Secondary only and rounded: investfuture.ru article on Bank of Russia forecast says the 2024 average Urals price was \"68 dollars\". MinFin/MinEcon annual figure itself not retrievable (minfin.gov.ru returned 503, economy.gov.ru reset). raw/crea/minfin_press/investfuture_cbr_urals.html.",
+   "source_url_kind": "press"
   }
  ]
 }

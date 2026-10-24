@@ -122,7 +122,8 @@
   {
    "name": "RBI preliminary results 2025 (profit excluding Russia EUR 1,443m)",
    "url": "https://www.eqs-news.com/news/corporate/consolidated-profit-excluding-russia-above-1-4-billion-euros/495ce5d1-af8f-4a38-a51d-54726beb9790_en",
-   "checked": "2026-10-23, fetched"
+   "checked": "2026-10-23, fetched",
+   "kind": "press"
   },
   {
    "name": "Arctida, Hidden beneficiaries of Yamal LNG (2026-05-28)",
@@ -132,7 +133,8 @@
   {
    "name": "Interfax: Novatek AGM approves 2022 final dividend RUB 60.58",
    "url": "https://interfax.com/newsroom/top-stories/89944/",
-   "checked": "2026-10-23, search"
+   "checked": "2026-10-23, search",
+   "kind": "press"
   },
   {
    "name": "Novatek: 2023 dividends RUB 78.59 incl. 34.50 interim",
@@ -142,37 +144,44 @@
   {
    "name": "Interfax: Novatek H1 2025 interim RUB 39 recommended",
    "url": "https://interfax.com/newsroom/top-stories/112954/",
-   "checked": "2026-10-23, search"
+   "checked": "2026-10-23, search",
+   "kind": "press"
   },
   {
    "name": "LNG Prime: Yamal LNG to pay first dividends (RUB 31.4bn for 9M 2021)",
    "url": "https://lngprime.com/corporate/russias-yamal-lng-to-pay-first-dividends/36563/",
-   "checked": "2026-10-23, search"
+   "checked": "2026-10-23, search",
+   "kind": "press"
   },
   {
    "name": "dpa via boerse-online: Greenpeace study, TotalEnergies USD 5.06bn Yamal LNG + 1.74bn Novatek dividends since 2022",
    "url": "https://www.boerse-online.de/dpa-afx/roundup-2studie-gas-export-in-eu-beschert-putin-milliardeneinnahmen-473805.html",
-   "checked": "2026-10-23, search"
+   "checked": "2026-10-23, search",
+   "kind": "press"
   },
   {
    "name": "RTVI (citing Nikkei, 2023-06-15): Japanese partners in Sakhalin-1 and -2 received dividends in yuan",
    "url": "https://rtvi.com/news/rossiya-zaplatila-dividendy-yaponskim-uchastnikam-sahalin-1-i-sahalin-2-v-yuanyah/",
-   "checked": "2026-10-23, fetched"
+   "checked": "2026-10-23, fetched",
+   "kind": "press"
   },
   {
    "name": "The Week / PTI (2025-08-29): ONGC Videsh USD 350m dividends stuck in Russia, last received July 2022",
    "url": "https://www.theweek.in/wire-updates/business/2025/08/29/dcm95-biz-ongc-russia.html",
-   "checked": "2026-10-23, search"
+   "checked": "2026-10-23, search",
+   "kind": "press"
   },
   {
    "name": "Business Standard (2025-08-29): same",
    "url": "https://www.business-standard.com/amp/companies/news/ongc-videsh-eyes-banking-channel-to-recover-350-mn-stuck-in-russia-125082901490_1.html",
-   "checked": "2026-10-23, search (fetch 403)"
+   "checked": "2026-10-23, search (fetch 403)",
+   "kind": "press"
   },
   {
    "name": "Interfax (2026-02-16): ONGC completed Sakhalin-1 abandonment payment partly from held dividends",
    "url": "https://interfax.com/newsroom/top-stories/116188/",
-   "checked": "2026-10-23, search"
+   "checked": "2026-10-23, search",
+   "kind": "press"
   },
   {
    "name": "Rosneft dividends page and release on 2022 dividends (38.36 total, 17.97 final)",
@@ -15570,9 +15579,9 @@
    "trapped_value_weight": null,
    "certainty": "B (2022-2024), C (2025-2026)",
    "sources": [
-    "https://www.interfax.com/newsroom/top-stories/89944/",
+    "Press only: https://www.interfax.com/newsroom/top-stories/89944/",
     "https://www.novatek.ru/en/press/releases/index.php?id_4=6392",
-    "https://interfax.com/newsroom/top-stories/112954/"
+    "Press only: https://interfax.com/newsroom/top-stories/112954/"
    ],
    "note": "Cash dividends paid in each calendar year x 589.0m shares, net of Russian withholding (5% to Aug 2023, 15% after the treaty suspension). Matches Greenpeace's USD 1.74bn from Novatek since 2022 (dpa, 2025). 2025: H1 interim 39.00 recommended; receipt by TotalEnergies not confirmed (low = 0). 2026 = final 2025 guessed at RUB 40.",
    "counted": {
@@ -15746,7 +15755,7 @@
    "certainty": "B (2022-2023), C (2024), D (2021, 2025-2026)",
    "sources": [
     "https://arctida.io/en/projects/hidden-beneficiaries-yamal-lng",
-    "https://lngprime.com/corporate/russias-yamal-lng-to-pay-first-dividends/36563/"
+    "Press only: https://lngprime.com/corporate/russias-yamal-lng-to-pay-first-dividends/36563/"
    ],
    "note": "Payments recorded from Yamal LNG to TotalEnergies Treasury (Arctida, internal records, 2026-05-28): RUB 50.5bn (2022), 43.1bn (2023), 6.5bn (Oct 2024); 105.2bn in total 2022-24, so 5.1bn is put in 2024. TotalEnergies' CEO said none since 2023, contradicting the records; 2025-2026 central 0. Yamal LNG's first dividend was RUB 31.4bn for 9M 2021. Greenpeace's USD 5.06bn since 2022 is not consistent with the records and is not used. No-war: whole-project distributions RUB 100bn a year (60-150), judgement from the 2021 start of payouts and debt service at no-war LNG prices.",
    "counted": {
@@ -15919,7 +15928,7 @@
    "trapped_value_weight": null,
    "certainty": "B",
    "sources": [
-    "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/070326-rising-chinese-arctic-lng-2-imports-signal-firming-global-market-divide-analysts"
+    "Press only: https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/070326-rising-chinese-arctic-lng-2-imports-signal-firming-global-market-divide-analysts"
    ],
    "note": "Not producing at plan and under US sanctions since Nov 2023; no dividends. Its no-war income would have started about 2024-2025 (first train), so the no-war level is left at 0 here and named as an open question.",
    "counted": {
@@ -16092,7 +16101,7 @@
    "trapped_value_weight": null,
    "certainty": "B",
    "sources": [
-    "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/070326-rising-chinese-arctic-lng-2-imports-signal-firming-global-market-divide-analysts"
+    "Press only: https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/070326-rising-chinese-arctic-lng-2-imports-signal-firming-global-market-divide-analysts"
    ],
    "note": "Not producing at plan and under US sanctions since Nov 2023; no dividends. Its no-war income would have started about 2024-2025 (first train), so the no-war level is left at 0 here and named as an open question.",
    "counted": {
@@ -16265,7 +16274,7 @@
    "trapped_value_weight": null,
    "certainty": "B",
    "sources": [
-    "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/070326-rising-chinese-arctic-lng-2-imports-signal-firming-global-market-divide-analysts"
+    "Press only: https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/070326-rising-chinese-arctic-lng-2-imports-signal-firming-global-market-divide-analysts"
    ],
    "note": "Not producing at plan and under US sanctions since Nov 2023; no dividends. Its no-war income would have started about 2024-2025 (first train), so the no-war level is left at 0 here and named as an open question.",
    "counted": {
@@ -16438,7 +16447,7 @@
    "trapped_value_weight": null,
    "certainty": "B",
    "sources": [
-    "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/070326-rising-chinese-arctic-lng-2-imports-signal-firming-global-market-divide-analysts"
+    "Press only: https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/070326-rising-chinese-arctic-lng-2-imports-signal-firming-global-market-divide-analysts"
    ],
    "note": "Not producing at plan and under US sanctions since Nov 2023; no dividends. Its no-war income would have started about 2024-2025 (first train), so the no-war level is left at 0 here and named as an open question.",
    "counted": {
@@ -16612,7 +16621,7 @@
    "certainty": "C (2022-2023), D (other years)",
    "sources": [
     "https://arctida.io/en/projects/hidden-beneficiaries-yamal-lng",
-    "https://lngprime.com/corporate/russias-yamal-lng-to-pay-first-dividends/36563/"
+    "Press only: https://lngprime.com/corporate/russias-yamal-lng-to-pay-first-dividends/36563/"
    ],
    "note": "Pro rata to the payments recorded for TotalEnergies (Yamal LNG pays all holders by stake). China is not 'unfriendly': no type-C restriction; paid share 1. High case for 2024-2026 assumes Chinese holders kept receiving the 2023 level.",
    "counted": {
@@ -16786,7 +16795,7 @@
    "certainty": "C (2022-2023), D (other years)",
    "sources": [
     "https://arctida.io/en/projects/hidden-beneficiaries-yamal-lng",
-    "https://lngprime.com/corporate/russias-yamal-lng-to-pay-first-dividends/36563/"
+    "Press only: https://lngprime.com/corporate/russias-yamal-lng-to-pay-first-dividends/36563/"
    ],
    "note": "Pro rata to the payments recorded for TotalEnergies (Yamal LNG pays all holders by stake). China is not 'unfriendly': no type-C restriction; paid share 1. High case for 2024-2026 assumes Chinese holders kept receiving the 2023 level.",
    "counted": {
@@ -16960,7 +16969,7 @@
    "certainty": "C (2021-2024), D (2025-2026)",
    "sources": [
     "https://sdmx.oecd.org/public/rest/data/OECD.DAF.INV,DSD_FDI@DF_FDI_INC_CTRY,/JPN.......RUS....?startPeriod=2018",
-    "https://rtvi.com/news/rossiya-zaplatila-dividendy-yaponskim-uchastnikam-sahalin-1-i-sahalin-2-v-yuanyah/"
+    "Press only: https://rtvi.com/news/rossiya-zaplatila-dividendy-yaponskim-uchastnikam-sahalin-1-i-sahalin-2-v-yuanyah/"
    ],
    "note": "Japan's direct-investment income from Russia (OECD FDI income by counterpart, USD m: 702 in 2021, 899, 871, 1,394 in 2024) times the Sakhalin share (0.85, 0.6-1.0), split 2/3 Sakhalin-2 (by stake) and 1/3 Sakhalin-1. Nikkei (June 2023, via RTVI): the Japanese partners received their dividends in yuan via Gazprombank, so they reached Japan (paid share 1). 2025 = 2024 x 0.8; 2026 Jan-Aug = 2025 x 1.15 x 8/12. No-war: 2018-2021 average x the company trend.",
    "counted": {
@@ -17134,7 +17143,7 @@
    "certainty": "C (2021-2024), D (2025-2026)",
    "sources": [
     "https://sdmx.oecd.org/public/rest/data/OECD.DAF.INV,DSD_FDI@DF_FDI_INC_CTRY,/JPN.......RUS....?startPeriod=2018",
-    "https://rtvi.com/news/rossiya-zaplatila-dividendy-yaponskim-uchastnikam-sahalin-1-i-sahalin-2-v-yuanyah/"
+    "Press only: https://rtvi.com/news/rossiya-zaplatila-dividendy-yaponskim-uchastnikam-sahalin-1-i-sahalin-2-v-yuanyah/"
    ],
    "note": "Japan's direct-investment income from Russia (OECD FDI income by counterpart, USD m: 702 in 2021, 899, 871, 1,394 in 2024) times the Sakhalin share (0.85, 0.6-1.0), split 2/3 Sakhalin-2 (by stake) and 1/3 Sakhalin-1. Nikkei (June 2023, via RTVI): the Japanese partners received their dividends in yuan via Gazprombank, so they reached Japan (paid share 1). 2025 = 2024 x 0.8; 2026 Jan-Aug = 2025 x 1.15 x 8/12. No-war: 2018-2021 average x the company trend.",
    "counted": {
@@ -17308,7 +17317,7 @@
    "certainty": "C (2021-2024), D (2025-2026)",
    "sources": [
     "https://sdmx.oecd.org/public/rest/data/OECD.DAF.INV,DSD_FDI@DF_FDI_INC_CTRY,/JPN.......RUS....?startPeriod=2018",
-    "https://rtvi.com/news/rossiya-zaplatila-dividendy-yaponskim-uchastnikam-sahalin-1-i-sahalin-2-v-yuanyah/"
+    "Press only: https://rtvi.com/news/rossiya-zaplatila-dividendy-yaponskim-uchastnikam-sahalin-1-i-sahalin-2-v-yuanyah/"
    ],
    "note": "Japan's direct-investment income from Russia (OECD FDI income by counterpart, USD m: 702 in 2021, 899, 871, 1,394 in 2024) times the Sakhalin share (0.85, 0.6-1.0), split 2/3 Sakhalin-2 (by stake) and 1/3 Sakhalin-1. Nikkei (June 2023, via RTVI): the Japanese partners received their dividends in yuan via Gazprombank, so they reached Japan (paid share 1). 2025 = 2024 x 0.8; 2026 Jan-Aug = 2025 x 1.15 x 8/12. No-war: 2018-2021 average x the company trend.",
    "counted": {
@@ -17492,9 +17501,9 @@
    },
    "certainty": "C (blocked amounts), D (accrual)",
    "sources": [
-    "https://www.business-standard.com/amp/companies/news/ongc-videsh-eyes-banking-channel-to-recover-350-mn-stuck-in-russia-125082901490_1.html",
-    "https://www.theweek.in/wire-updates/business/2025/08/29/dcm95-biz-ongc-russia.html",
-    "https://interfax.com/newsroom/top-stories/116188/"
+    "Press only: https://www.business-standard.com/amp/companies/news/ongc-videsh-eyes-banking-channel-to-recover-350-mn-stuck-in-russia-125082901490_1.html",
+    "Press only: https://www.theweek.in/wire-updates/business/2025/08/29/dcm95-biz-ongc-russia.html",
+    "Press only: https://interfax.com/newsroom/top-stories/116188/"
    ],
    "note": "Last dividend repatriated July 2022 (OVL); USD 350m of OVL dividends held in Russia (Aug 2025); about USD 800m for all Indian state firms (Reuters, Dec 2025); part of it lent to OVL and spent in Russia on the Sakhalin-1 abandonment fund (Feb 2026). Accrual about USD 0.25-0.3bn a year from the stuck balance, plus Sakhalin-1 income that was suspended until OVL's stake was confirmed (judgement). Trapped money is usable inside Russia and India expects release: value weight 0.5 (0.25-0.9).",
    "counted": {
@@ -17852,7 +17861,7 @@
    "trapped_value_weight": null,
    "certainty": "D",
    "sources": [
-    "https://interfax.com/newsroom/top-stories/90264/"
+    "Press only: https://interfax.com/newsroom/top-stories/90264/"
    ],
    "note": "Stake taken by decree of 30 June 2022 and later assigned to Novatek for RUB 94.8bn, receipt not confirmed (company_flows seizure). 2021 = Japan's implied Sakhalin-2 income per % x 27.5 plus Salym about EUR 0.08bn; 2022 a guess for the first half.",
    "counted": {
@@ -18025,7 +18034,7 @@
    "trapped_value_weight": null,
    "certainty": "D",
    "sources": [
-    "https://www.worldoil.com/news/2022/10/18/exxon-completes-russia-exit-says-operation-was-expropriated/"
+    "Press only: https://www.worldoil.com/news/2022/10/18/exxon-completes-russia-exit-says-operation-was-expropriated/"
    ],
    "note": "Exited (announced 1 March 2022), production stopped May 2022, stake terminated by decree in October 2022 (seizure marker USD 4.6bn). 2021 income set equal to SODECO's 30% (Japan's implied Sakhalin-1 income).",
    "counted": {

@@ -968,25 +968,29 @@
    "id": "neftegaz_2023",
    "title": "Neftegaz.ru: Russian oil and gas budget revenue 2023 fell 23.9% (MET oil RUB 7.7866 trn, MET gas 1.2193 trn, damper 1.5886 trn)",
    "url": "https://neftegaz.ru/news/finance/811330-neftegazovye-dokhody-rossiyskogo-byudzheta-v-2023-g-sokratilis-na-23-9/",
-   "note": "Crude 2023 tax-take arithmetic (via search snippet; page blocked to fetch)."
+   "note": "Crude 2023 tax-take arithmetic (via search snippet; page blocked to fetch).",
+   "kind": "press"
   },
   {
    "id": "reuters_2024",
    "title": "Reuters via Sweet Crude Reports: Russian oil and gas revenues jump 26% in 2024 to RUB 11.13 trn",
    "url": "https://sweetcrudereports.com/russian-oil-and-gas-revenues-jump-26-in-2024-to-108-billion/",
-   "note": "2023 = 8.82 trn."
+   "note": "2023 = 8.82 trn.",
+   "kind": "press"
   },
   {
    "id": "reuters_2025",
    "title": "Reuters via BOE Report: Russia oil and gas budget revenue falls 24% to lowest since 2020 (RUB 8.48 trn in 2025)",
    "url": "https://boereport.com/2026/01/15/russias-oil-and-gas-budget-revenue-falls-24-to-lowest-since-2020/amp/",
-   "note": ""
+   "note": "",
+   "kind": "press"
   },
   {
    "id": "te_2026",
    "title": "Trading Economics: Russia budget Jan-Aug 2026 (oil and gas revenue RUB 5.0 trn, -16.7%)",
    "url": "https://tradingeconomics.com/russia/government-budget-value/news/582355",
-   "note": "Plus SZRU: damper USD 10.58 bn Jan-Aug 2026."
+   "note": "Plus SZRU: damper USD 10.58 bn Jan-Aug 2026.",
+   "kind": "press"
   },
   {
    "id": "szru_2026",
@@ -998,19 +1002,22 @@
    "id": "bloomberg_apr2026",
    "title": "Bloomberg via Hellenic Shipping News: Russia oil tax revenues hit six-month high in April 2026 amid Iran war",
    "url": "https://www.hellenicshippingnews.com/russias-oil-tax-revenues-hit-six-month-high-in-april-amid-iran-war/",
-   "note": "RUB 707 bn oil taxes at USD 77 Urals tax price; ~USD 32/bbl state take."
+   "note": "RUB 707 bn oil taxes at USD 77 Urals tax price; ~USD 32/bbl state take.",
+   "kind": "press"
   },
   {
    "id": "meduza_ndd",
    "title": "Meduza: The price is right (NDD Q1 2023 RUB 211 bn vs Q1 2024 587 bn)",
    "url": "https://meduza.io/en/feature/2024/04/15/the-price-is-right",
-   "note": "NDD scale."
+   "note": "NDD scale.",
+   "kind": "press"
   },
   {
    "id": "interfax_met_base",
    "title": "Interfax: Urals tax base price, discount caps 2023 and 78/22 Urals-ESPO mix from 2025",
    "url": "https://interfax.com/newsroom/top-stories/87871/",
-   "note": "Why MinFin tax price exceeds actual Urals FOB in 2023."
+   "note": "Why MinFin tax price exceeds actual Urals FOB in 2023.",
+   "kind": "press"
   },
   {
    "id": "rosneft_2025",
@@ -1028,19 +1035,25 @@
    "id": "nornickel_2025",
    "title": "Kitco/Reuters: Nornickel reports 36% rise in 2025 net profit",
    "url": "https://www.kitco.com/news/off-the-wire/2026-02-11/nornickel-reports-36-rise-net-profit",
-   "note": "Revenue USD 13.76 bn, EBITDA 5.67 bn."
+   "note": "Revenue USD 13.76 bn, EBITDA 5.67 bn.",
+   "kind": "press"
   },
   {
    "id": "rusal_2025",
-   "title": "Rusal 2025 results: revenue USD 14.81 bn, adj. EBITDA 1.053 bn (7.1%), net loss 455 m",
-   "url": "https://www.itiger.com/news/1124699335",
-   "note": "H1 2026 adj. EBITDA USD 1.23 bn (HKEX interim, https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0819/2026081900105.pdf)."
+   "title": "UC RUSAL annual results announcement for the year ended 31 Dec 2025 (HKEX filing, 18 Mar 2026; copy hosted by moomoo): revenue USD 14,812m, adjusted EBITDA USD 1,053m, margin 7.1% (2024: 12.4%)",
+   "url": "https://newsfile.moomoo.com/public/NN-PersistNoticeAttachment/7781/20260318/12056504-0.PDF",
+   "note": "H1 2026 adj. EBITDA USD 1.23 bn (HKEX interim, https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0819/2026081900105.pdf).",
+   "replaced_r41": {
+    "old_url": "https://www.itiger.com/news/1124699335",
+    "verified": "PDF fetched and read 2026-10-24"
+   }
   },
   {
    "id": "severstal_2025",
    "title": "Bloomberg: Severstal margins drop to 16-year low (EBITDA RUB 137.6 bn, 19%)",
    "url": "https://www.bloomberg.com/news/articles/2026-02-03/russian-steelmaker-severstal-posts-lowest-margins-in-16-years",
-   "note": ""
+   "note": "",
+   "kind": "press"
   },
   {
    "id": "polyus_2025",
@@ -1052,7 +1065,8 @@
    "id": "coal_losses",
    "title": "The Coal Hub / CCA: Russian coal industry losses 2024-2025",
    "url": "https://thecoalhub.com/losses-of-russian-coal-companies-hit-1-7-billion-usd-in-jan-may-2025.html",
-   "note": "Rosstat 2024 loss RUB 112.6 bn; MinEnergo 2025 projection RUB 350 bn; 65% of firms loss-making."
+   "note": "Rosstat 2024 loss RUB 112.6 bn; MinEnergo 2025 projection RUB 350 bn; 65% of firms loss-making.",
+   "kind": "press"
   },
   {
    "id": "iep_2026",

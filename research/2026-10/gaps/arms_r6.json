@@ -3008,12 +3008,14 @@
   {
    "name": "TASS: Africa >30% of Rosoboronexport supplies in 2023",
    "url": "https://tass.com/defense/1715497",
-   "date": "2023-11"
+   "date": "2023-11",
+   "kind": "press"
   },
   {
    "name": "TASS / www1.ru: Africa ~30% of Rosoboronexport order portfolio; H1 2026 contracts >USD 13bn",
    "url": "https://www1.ru/en/news/2026/09/07/17-mlrd-dollarov-i-30-portfelia-rosoboroneksport-raskryl-masstab-oboronnogo-sotrudnicestva-s-afrikoi.html",
-   "date": "2026-09-07"
+   "date": "2026-09-07",
+   "kind": "press"
   },
   {
    "name": "Janes: Russia delivers more aircraft to Mali (L-39, Su-25, Mi-8, Jan 2023)",
@@ -3023,32 +3025,38 @@
   {
    "name": "Al Arabiya: Mali receives six more warplanes from Russia",
    "url": "https://english.alarabiya.net/News/world/2022/08/09/Mali-receives-six-more-warplanes-from-Russia",
-   "date": "2022-08-09"
+   "date": "2022-08-09",
+   "kind": "press"
   },
   {
    "name": "AP: Russia skirts Western sanctions to ramp up its military footprint in Africa (Conakry deliveries, Africa Corps)",
    "url": "https://www.ksat.com/news/world/2025/06/10/russia-skirts-western-sanctions-to-ramp-up-its-military-footprint-in-africa/",
-   "date": "2025-06-10"
+   "date": "2025-06-10",
+   "kind": "press"
   },
   {
    "name": "ADF: Russia tightens control of Malian gold (USD 10.8m/month)",
    "url": "https://adf-magazine.com/2024/04/russia-tightens-control-of-malian-gold",
-   "date": "2024-04"
+   "date": "2024-04",
+   "kind": "press"
   },
   {
    "name": "Military Africa: Uganda acquiring Mi-28N",
    "url": "https://military.africa/2022/06/uganda-acquiring-mi-28n-havoc-attack-helicopter-from-russia",
-   "date": "2022-06"
+   "date": "2022-06",
+   "kind": "press"
   },
   {
    "name": "Militaeraktuell: ex-Indian Su-30K now all in Africa (Ethiopia, Jan 2024)",
    "url": "https://militaeraktuell.at/en/ex-indian-su-30k-now-all-in-africa/",
-   "date": "2024"
+   "date": "2024",
+   "kind": "press"
   },
   {
    "name": "New Arab: Sudan offers Russia Red Sea base for 25 years in exchange for arms",
    "url": "https://www.newarab.com/news/sudan-offers-russia-red-sea-base-25-years-military-arms",
-   "date": "2025-12"
+   "date": "2025-12",
+   "kind": "press"
   },
   {
    "name": "New America: The Abu Dhabi Express (Russian Pantsir equipment to Libya via UAE)",
@@ -3058,17 +3066,20 @@
   {
    "name": "AIN: Laos receives Yak-130 (Kommersant: 10 aircraft ~USD 300m)",
    "url": "https://oldain.ainonline.com/aviation-news/defense/2019-01-21/laos-receives-yak-130-combat-jet-trainers",
-   "date": "2019-01-21"
+   "date": "2019-01-21",
+   "kind": "press"
   },
   {
    "name": "RFA: Laos trades mining concessions for Russian jets, tanks",
    "url": "https://www.rfa.org/english/news/laos/tanks-12282018162153.html",
-   "date": "2018-12-28"
+   "date": "2018-12-28",
+   "kind": "press"
   },
   {
    "name": "National Interest: Venezuela owes Russia for weapons; Rostec staff withdrawn 2019",
    "url": "https://nationalinterest.org/node/93906",
-   "date": "2019"
+   "date": "2019",
+   "kind": "press"
   },
   {
    "name": "Univ. of Navarra Global Affairs: Russian arms sales to Latin America dropped (0.8% of Russian exports 2015-19; none since 2017 except Nicaragua)",
@@ -3078,27 +3089,32 @@
   {
    "name": "CABAR: Import of arms in Central Asia",
    "url": "https://cabar.asia/en/import-of-arms-in-central-asia-trends-and-directions-for-diversification",
-   "date": "2023"
+   "date": "2023",
+   "kind": "press"
   },
   {
    "name": "BTA: Agreement on maintenance of MiG-29 fighters signed with RSK MiG (BGN 81.3m, 4 years)",
    "url": "https://bta.bg/en/news/108193-Agreement-on-Maintenance-of-MiG-29-Fighters-Signed-with-Russia-s-RSK-MiG",
-   "date": "2018-03"
+   "date": "2018-03",
+   "kind": "press"
   },
   {
    "name": "Defence24: Bulgarian fighters under Russian care, four-year contract (extras EUR 15.4m)",
    "url": "https://defence24.pl/przemysl/bulgarskie-mysliwce-pod-opieka-rosji-czteroletni-kontrakt",
-   "date": "2018"
+   "date": "2018",
+   "kind": "press"
   },
   {
    "name": "FlightGlobal: RSK MiG nets Slovak order",
    "url": "https://flightglobal.com/rsk-mig-nets-slovak-order/43644.article",
-   "date": "n.d."
+   "date": "n.d.",
+   "kind": "press"
   },
   {
    "name": "Iran International: leaked Rostec files - 48 Su-35 for ~EUR 6bn, deliveries 16-18 to 46-48 months after advance payment",
    "url": "https://www.iranintl.com/en/202510069695",
-   "date": "2025-10-06"
+   "date": "2025-10-06",
+   "kind": "press"
   },
   {
    "name": "Bourse & Bazaar: Iran paid for Su-35 jets (full payment under Rouhani) but Russia won't deliver them",
@@ -3108,37 +3124,44 @@
   {
    "name": "Kyiv Independent on Sky News: Russia sent Iran EUR 140m cash and captured Western weapons for ~160 drones (20 Aug 2022)",
    "url": "https://kyivindependent.com/sky-news-russia-sent-to-iran-140-million-euros-in-cash-western-weapons-seized-in-ukraine-in-exchange-for-kamikaze-drones/",
-   "date": "2022-11-09"
+   "date": "2022-11-09",
+   "kind": "press"
   },
   {
    "name": "TWZ: What does a Shahed-136 really cost? (leaked Sahara Thunder files: USD 1.75bn contract, ~2 t gold transfer Feb 2023, USD 193k/drone for 6,000)",
    "url": "https://twz.com/news-features/what-does-a-shahed-136-really-cost",
-   "date": "2024-02"
+   "date": "2024-02",
+   "kind": "press"
   },
   {
    "name": "Ukrainska Pravda on Bloomberg: Iran sold Russia ~USD 2.7bn of missiles, contracts >USD 4bn",
    "url": "https://www.pravda.com.ua/eng/news/2026/01/13/8015831",
-   "date": "2026-01-13"
+   "date": "2026-01-13",
+   "kind": "press"
   },
   {
    "name": "Iran Times on Reuters: Fath-360 launcher delivery 'may partly be a payment' for Su-35s",
    "url": "https://iran-times.com/iran-said-about-to-ship-missile-launchers-to-russia/?amp=1",
-   "date": "2025-05"
+   "date": "2025-05",
+   "kind": "press"
   },
   {
    "name": "Iran International: Iranian MP claims missiles/drones bartered for Russian soy and wheat; customs show no soy",
    "url": "https://www.iranintl.com/en/202409089074",
-   "date": "2024-09-09"
+   "date": "2024-09-09",
+   "kind": "press"
   },
   {
    "name": "Daily Times: Russia completes first Su-35 batch for Iran (aircraft still in Russia)",
    "url": "https://dailytimes.com.pk/1517162/russia-completes-first-su-35-batch-for-iran/",
-   "date": "2026-07"
+   "date": "2026-07",
+   "kind": "press"
   },
   {
    "name": "The Aviationist: Mi-28 helicopters in Iran",
    "url": "https://theaviationist.com/2026/01/30/iran-mi-28-helicopters/",
-   "date": "2026-01-30"
+   "date": "2026-01-30",
+   "kind": "press"
   }
  ],
  "overlaps": "(1) russian_arms_exports.json: these entries REPLACE its ROW; national totals and the 19 named buyers are unchanged, so nothing is added on top. None of the 18 new ISO3 codes exists there. (2) trade_full.json / nonreport.json: arms are outside customs for all these buyers (in_customs = 0). Libya, Venezuela, Sudan are non-reporters corrected in nonreport.json from tanker/partner data; arms are not in those corrections. (3) Services (BaTiS/Eurostat): Bulgaria's and Slovakia's MiG-29 maintenance (EUR 0.006-0.012bn/yr) may sit in 'maintenance and repair' imports from Russia; if the builder's services part shows a fall in that line for BGR/SVK, drop these two entries. (4) Wagner/Africa Corps service fees (Mali ~USD 0.13bn/yr) and gold/mining concessions are not included anywhere here and, as far as checked, not in other files (companies_all, kgz_gold are unrelated); they are an open item, not part of arms revenue. (5) Iran: military_to_russia (flowback2.json) vs IRN payments (russian_arms_exports.json): see iran_overlap; subtract once from the IRN arms payments. Separately, an Iranian MP claimed missiles/drones were bartered for Russian grain: if true, part of Iran's grain imports from Russia (trade_full/nonreport, ~USD 1bn/yr) is a third copy of the same value; not quantified, keep as a caveat or use in Iran's high case only. (6) Venezuela's repayments of Russian arms loans are debt service, not counted here; check that loans_value.json / russia_state_finance.json do not treat them as arms payments.",

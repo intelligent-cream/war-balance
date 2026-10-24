@@ -349,47 +349,56 @@
      {
       "name": "Avtostat via Nasha Niva / Telegraf.news: 17.1 thousand new and 19.1 thousand used cars imported from Belarus to Russia in 2025",
       "url": "https://nashaniva.com/en/388158",
-      "date": "2026-02-14"
+      "date": "2026-02-14",
+      "kind": "press"
      },
      {
       "name": "Avtostat (S. Tselikov) via autonews.ru / alta.ru: used cars into Russia via Belarus 45.4 thousand (2023), 45.9 thousand (2024); 16.4 thousand cars in Jan-Aug 2026",
       "url": "https://www.autonews.ru/news/693aab0d9a79472bebd6701b",
-      "date": "2025-12-11"
+      "date": "2025-12-11",
+      "kind": "press"
      },
      {
       "name": "Interfax: shipments of Geely cars from the Belarusian BelGee plant to Russia exceed 45,000 units in 2023 (plant output ~60,000, ~80% to Russia)",
       "url": "https://interfax.com/newsroom/top-stories/96780/",
-      "date": "2024 (exact day not checked)"
+      "date": "2024 (exact day not checked)",
+      "kind": "press"
      },
      {
       "name": "www1.ru: most Geely and BelGee cars were sold in Russia in 2024 (plant output >90,000, ~25,000 sold in Belarus)",
       "url": "https://www1.ru/news/2025/01/08/bolsinstvo-avtomobilei-geely-i-belgee-byli-prodany-v-2024-godu-v-rossii-a-ne-v-belorussii.html",
-      "date": "2025-01-08"
+      "date": "2025-01-08",
+      "kind": "press"
      },
      {
       "name": "Pozirk citing the Belarusian Automobile Association: 14,843 new cars sold in Belarus in 2022 (Geely 4,355); 4,574 in Jan-Apr 2023",
       "url": "https://pozirk.online/en/news/46736",
-      "date": "2023-05-05"
+      "date": "2023-05-05",
+      "kind": "press"
      },
      {
       "name": "Kyiv Independent (FT): EU seeks to stop Russian imports of Western luxury cars via Belarus",
       "url": "https://kyivindependent.com/ft-eu-seeks-to-stop-russian-imports-of-western-luxury-cars-via-belarus/",
-      "date": "2024"
+      "date": "2024",
+      "kind": "press"
      },
      {
       "name": "LRT: Lithuanian railway (LTG Cargo) detects possible sanctions-evasion scheme for luxury cars to Russia (447 shipments reviewed)",
       "url": "https://www.lrt.lt/en/news-in-english/19/2118281/lithuanian-railway-co-detects-possible-sanctions-evasion-scheme-to-ship-luxury-cars-to-russia",
-      "date": "2023-11-07"
+      "date": "2023-11-07",
+      "kind": "press"
      },
      {
       "name": "LRT: Lithuania's customs uncovers sanction-evasion scheme for car exports to Russia",
       "url": "https://www.lrt.lt/en/news-in-english/19/2307628/lithuania-s-customs-uncovers-sanction-evasion-scheme-for-car-exports-to-russia",
-      "date": "2024-06-28"
+      "date": "2024-06-28",
+      "kind": "press"
      },
      {
       "name": "Buro media citing Corisk: Belarus over a third of 'shadow exports' to Russia, more than EUR 10bn in 2022-2023 (method not published; treated as an upper anchor only)",
       "url": "https://buromedia.io/en/news/eksperty-cherez-belarus-prokhodit-tret-ot-tenevogo-eksporta-v-rossiyu",
-      "date": "2024-02-26"
+      "date": "2024-02-26",
+      "kind": "press"
      },
      {
       "name": "Mayer Brown: EU extends anti-circumvention sanctions to Belarus (14th package, CHPL risk assessments from 2 Jan 2025)",
@@ -715,47 +724,56 @@
   {
    "name": "Avtostat via Nasha Niva / Telegraf.news: 17.1 thousand new and 19.1 thousand used cars imported from Belarus to Russia in 2025",
    "url": "https://nashaniva.com/en/388158",
-   "date": "2026-02-14"
+   "date": "2026-02-14",
+   "kind": "press"
   },
   {
    "name": "Avtostat (S. Tselikov) via autonews.ru / alta.ru: used cars into Russia via Belarus 45.4 thousand (2023), 45.9 thousand (2024); 16.4 thousand cars in Jan-Aug 2026",
    "url": "https://www.autonews.ru/news/693aab0d9a79472bebd6701b",
-   "date": "2025-12-11"
+   "date": "2025-12-11",
+   "kind": "press"
   },
   {
    "name": "Interfax: shipments of Geely cars from the Belarusian BelGee plant to Russia exceed 45,000 units in 2023 (plant output ~60,000, ~80% to Russia)",
    "url": "https://interfax.com/newsroom/top-stories/96780/",
-   "date": "2024 (exact day not checked)"
+   "date": "2024 (exact day not checked)",
+   "kind": "press"
   },
   {
    "name": "www1.ru: most Geely and BelGee cars were sold in Russia in 2024 (plant output >90,000, ~25,000 sold in Belarus)",
    "url": "https://www1.ru/news/2025/01/08/bolsinstvo-avtomobilei-geely-i-belgee-byli-prodany-v-2024-godu-v-rossii-a-ne-v-belorussii.html",
-   "date": "2025-01-08"
+   "date": "2025-01-08",
+   "kind": "press"
   },
   {
    "name": "Pozirk citing the Belarusian Automobile Association: 14,843 new cars sold in Belarus in 2022 (Geely 4,355); 4,574 in Jan-Apr 2023",
    "url": "https://pozirk.online/en/news/46736",
-   "date": "2023-05-05"
+   "date": "2023-05-05",
+   "kind": "press"
   },
   {
    "name": "Kyiv Independent (FT): EU seeks to stop Russian imports of Western luxury cars via Belarus",
    "url": "https://kyivindependent.com/ft-eu-seeks-to-stop-russian-imports-of-western-luxury-cars-via-belarus/",
-   "date": "2024"
+   "date": "2024",
+   "kind": "press"
   },
   {
    "name": "LRT: Lithuanian railway (LTG Cargo) detects possible sanctions-evasion scheme for luxury cars to Russia (447 shipments reviewed)",
    "url": "https://www.lrt.lt/en/news-in-english/19/2118281/lithuanian-railway-co-detects-possible-sanctions-evasion-scheme-to-ship-luxury-cars-to-russia",
-   "date": "2023-11-07"
+   "date": "2023-11-07",
+   "kind": "press"
   },
   {
    "name": "LRT: Lithuania's customs uncovers sanction-evasion scheme for car exports to Russia",
    "url": "https://www.lrt.lt/en/news-in-english/19/2307628/lithuania-s-customs-uncovers-sanction-evasion-scheme-for-car-exports-to-russia",
-   "date": "2024-06-28"
+   "date": "2024-06-28",
+   "kind": "press"
   },
   {
    "name": "Buro media citing Corisk: Belarus over a third of 'shadow exports' to Russia, more than EUR 10bn in 2022-2023 (method not published; treated as an upper anchor only)",
    "url": "https://buromedia.io/en/news/eksperty-cherez-belarus-prokhodit-tret-ot-tenevogo-eksporta-v-rossiyu",
-   "date": "2024-02-26"
+   "date": "2024-02-26",
+   "kind": "press"
   },
   {
    "name": "Mayer Brown: EU extends anti-circumvention sanctions to Belarus (14th package, CHPL risk assessments from 2 Jan 2025)",

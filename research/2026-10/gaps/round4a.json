@@ -13468,7 +13468,8 @@
    {
     "name": "KSE leave-russia.org: tax base of tracked companies is 2021 data (no 2018-2020 series published); Komersant summary of KSE research",
     "url": "https://komersant.ua/en/rosiia-ekspropriiuie-a-zakhidni-kompanii-splachuiut-podatky-iak-mizhnarodnyy-biznes-finansuie-viynu-doslidzhennia-kse/",
-    "date": "2026-10-18"
+    "date": "2026-10-18",
+    "kind": "press"
    }
   ],
   "reasoning": "Split: profit tax is taken unchanged from companies_all.json; other taxes (VAT, excise, payroll, property, customs, exit taxes) = all taxes minus profit tax. The range of other taxes combines the ranges of all taxes and profit tax with correlation 0.6 (the all-tax estimate is half built on profit-tax shares), log-normal, at least +-10%. Owner measure (profit + half of other) totals are given under split_totals. Other taxes are 69-79% of all taxes (79% in 2021), so the owner measure is 60-66% of all taxes. Cross-check with FDI income: Bank of Russia direct investment income payable (after tax) grossed up at 20% (25% in 2025) implies profit tax of foreign direct investors of EUR 20.2bn (2021), 13.1, 8.7, 6.0 and 5.3bn (2022-2025). KSE in-scope profit tax is 23% of that in 2021 (the rest is round-trip capital via Cyprus and others and resource joint ventures) and 43-72% in 2022-2025; it never exceeds it. FDI income cannot be split by home country: the Bank of Russia stopped country data in 2022 and immediate-investor data are dominated by conduits. History 2018-2020: no tax series by home country exists before 2021 (KSE and B4Ukraine start in 2021; Rosstat publishes no FDI income by investor country). Each country's 2021 profit tax and other taxes are carried back with global indices in nominal EUR: profit tax with the geometric mean of the direct-investment-income ratio (2018 0.62, 2019 0.78, 2020 0.58 of 2021) and the Russian GDP in EUR ratio (0.91, 0.98, 0.85); low = income ratio x0.9, high = GDP ratio x1.1. Other taxes (turnover and payroll based) with the GDP-in-EUR ratio (low x0.9, high x1.08). A country factor moves each country by half its IMF DIP position change relative to all countries (Russia-reported and counterpart data, capped 0.75-1.33); conduits use the global index only. Ranges combine the 2021 range, the index range and the country factor (log-normal). Totals: 2018 EUR 18.2bn, 2019 20.8bn, 2020 17.6bn of all taxes (2021: 21.9bn); profit tax 3.3, 4.0, 3.2bn (2021: 4.6bn). The 2018-2021 average of all taxes is about 0.90 of 2021 and of profit tax about 0.83 of 2021."
@@ -13714,27 +13715,32 @@
    {
     "name": "China customs via press: Jan-Aug 2026 refined product exports 34.24 Mt (-9.6% y/y); August 6.01 Mt; export quotas by company",
     "url": "https://www.idnfinancials.com/news/69072/chinas-refined-oil-product-exports-surge-in-august",
-    "date": "2026-09"
+    "date": "2026-09",
+    "kind": "press"
    },
    {
     "name": "Reuters via Hydrocarbon Processing: China eases controls on fuel exports for a second month (quota holders: state refiners and Zhejiang Petrochemical)",
     "url": "https://hydrocarbonprocessing.com/news/2026/08/china-eases-controls-on-fuel-exports-for-a-second-month/",
-    "date": "2026-08"
+    "date": "2026-08",
+    "kind": "press"
    },
    {
     "name": "S&P Global: China yet to restrict refined product exports despite tight domestic supply",
     "url": "https://www.spglobal.com/energy/en/news-research/latest-news/refined-products/090826-appec-china-yet-to-restrict-refined-oil-product-export-despite-tight-domestic-supply",
-    "date": "2026-09-08"
+    "date": "2026-09-08",
+    "kind": "press"
    },
    {
     "name": "Tank Terminals (Reuters data): China Jan-Nov 2025 product exports 52.65 Mt; marine fuel 2025 20.47 Mt",
     "url": "https://tankterminals.com/news/chinas-gasoline-exports-plummeted-51-7-in-november",
-    "date": "2025-12"
+    "date": "2025-12",
+    "kind": "press"
    },
    {
     "name": "Energy Intelligence: China refinery runs 2026 (April 13.2 mb/d, lowest since 2022); November 2025 60.83 Mt",
     "url": "https://www.energyintel.com/0000019e-3af6-d2db-adde-bff638360000",
-    "date": "2026-05"
+    "date": "2026-05",
+    "kind": "press"
    },
    {
     "name": "National Bureau of Statistics of China, crude oil processed (annual 2022-2024)",

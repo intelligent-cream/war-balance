@@ -75,7 +75,8 @@
     {
      "title": "Politico: Biden admin map - >$27bn PDA replenishment+USAI obligations in 37 states",
      "url": "https://www.politico.com/news/2023/11/29/biden-admin-map-states-benefit-ukraine-aid-00129068",
-     "date": "2023-11-29"
+     "date": "2023-11-29",
+     "kind": "press"
     },
     {
      "title": "Kiel Policy Brief 203 'Europe Steps Up' (PURL EUR 3.7bn 2025; Danish model; 22% procurement in Ukraine)",
@@ -95,12 +96,14 @@
     {
      "title": "AeroTime: US approves missile (ERAM $825m, funded by DK/NL/NO + FMF) and Patriot sales",
      "url": "https://www.aerotime.aero/articles/us-approves-missile-patriot-sales-ukraine",
-     "date": "2025-08"
+     "date": "2025-08",
+     "kind": "press"
     },
     {
      "title": "AA: US approves $179.1m Patriot support for Ukraine",
      "url": "https://www.aa.com.tr/en/americas/us-approves-1791m-patriot-air-defense-system-support-for-ukraine/3673276",
-     "date": "2025-08-29"
+     "date": "2025-08-29",
+     "kind": "press"
     },
     {
      "title": "DSCA: Ukraine - Patriot sustainment ($105m)",
@@ -179,12 +182,14 @@
     {
      "title": "Pravda: Germany to allocate another US$400m (USD 200m PURL + USD 200m PAC-3)",
      "url": "https://www.pravda.com.ua/eng/news/2026/06/18/8039903/",
-     "date": "2026-06-18"
+     "date": "2026-06-18",
+     "kind": "press"
     },
     {
      "title": "Interfax-Ukraine: Germany EUR 576m for 180,000 rounds in Czech initiative",
      "url": "https://en.interfax.com.ua/news/general/1132786-amp.html",
-     "date": "2024"
+     "date": "2024",
+     "kind": "press"
     },
     {
      "title": "Germany invested another EUR 300m in Czech ammunition initiative",
@@ -194,12 +199,14 @@
     {
      "title": "Rubryka: Germany EUR 11.5bn military aid in 2026 budget",
      "url": "https://rubryka.com/en/2025/11/14/nimechchyna-zbilshuye-pidtrymku-ukrayiny/",
-     "date": "2025-11-14"
+     "date": "2025-11-14",
+     "kind": "press"
     },
     {
      "title": "defenceukraine.com Danish Model reference",
      "url": "https://www.defenceukraine.com/en/references/danish-model/",
-     "date": "2026"
+     "date": "2026",
+     "kind": "press"
     }
    ],
    "notes": [
@@ -242,7 +249,8 @@
     {
      "title": "defenceukraine.com Danish Model reference",
      "url": "https://www.defenceukraine.com/en/references/danish-model/",
-     "date": "2026"
+     "date": "2026",
+     "kind": "press"
     }
    ],
    "notes": []
@@ -273,7 +281,8 @@
     {
      "title": "defenceukraine.com Czech Ammunition Initiative reference",
      "url": "https://www.defenceukraine.com/en/references/czech-ammunition-initiative/",
-     "date": "2026"
+     "date": "2026",
+     "kind": "press"
     }
    ],
    "notes": [
@@ -320,12 +329,14 @@
     {
      "title": "Euromaidan Press: US envoy names PURL leaders (DK DKK 580m, SE $275m, NO ~$135m, NL EUR 500m first package)",
      "url": "https://euromaidanpress.com/2026/02/11/us-envoy-names-norway-netherlands-germany-as-purl-program-leaders-with-4-5-billion-in-weapons-commitments/",
-     "date": "2026-02-11"
+     "date": "2026-02-11",
+     "kind": "press"
     },
     {
      "title": "defenceukraine.com Czech Ammunition Initiative reference",
      "url": "https://www.defenceukraine.com/en/references/czech-ammunition-initiative/",
-     "date": "2026"
+     "date": "2026",
+     "kind": "press"
     }
    ],
    "notes": []
@@ -369,17 +380,20 @@
     {
      "title": "defenceukraine.com Danish Model reference",
      "url": "https://www.defenceukraine.com/en/references/danish-model/",
-     "date": "2026"
+     "date": "2026",
+     "kind": "press"
     },
     {
      "title": "Kyiv Independent: Denmark 30th package DKK 4.4bn, DKK 1.3bn via Danish model",
      "url": "https://kyivindependent.com/denmark-announces-670-million-defense-aid-package-for-ukraine/",
-     "date": "2026-06-30"
+     "date": "2026-06-30",
+     "kind": "press"
     },
     {
      "title": "Euromaidan Press: US envoy names PURL leaders (DK DKK 580m, SE $275m, NO ~$135m, NL EUR 500m first package)",
      "url": "https://euromaidanpress.com/2026/02/11/us-envoy-names-norway-netherlands-germany-as-purl-program-leaders-with-4-5-billion-in-weapons-commitments/",
-     "date": "2026-02-11"
+     "date": "2026-02-11",
+     "kind": "press"
     },
     {
      "title": "NATO: Nordic and Baltic Allies to fund joint $500m PURL package",
@@ -389,7 +403,8 @@
     {
      "title": "defenceukraine.com Czech Ammunition Initiative reference",
      "url": "https://www.defenceukraine.com/en/references/czech-ammunition-initiative/",
-     "date": "2026"
+     "date": "2026",
+     "kind": "press"
     }
    ],
    "notes": []
@@ -433,7 +448,8 @@
     {
      "title": "defenceukraine.com Danish Model reference",
      "url": "https://www.defenceukraine.com/en/references/danish-model/",
-     "date": "2026"
+     "date": "2026",
+     "kind": "press"
     },
     {
      "title": "NATO: Nordic and Baltic Allies to fund joint $500m PURL package",
@@ -474,7 +490,8 @@
     {
      "title": "Euromaidan Press: US envoy names PURL leaders (DK DKK 580m, SE $275m, NO ~$135m, NL EUR 500m first package)",
      "url": "https://euromaidanpress.com/2026/02/11/us-envoy-names-norway-netherlands-germany-as-purl-program-leaders-with-4-5-billion-in-weapons-commitments/",
-     "date": "2026-02-11"
+     "date": "2026-02-11",
+     "kind": "press"
     },
     {
      "title": "Kiel Policy Brief 203 'Europe Steps Up' (PURL EUR 3.7bn 2025; Danish model; 22% procurement in Ukraine)",
@@ -532,7 +549,8 @@
     {
      "title": "defenceukraine.com PURL reference",
      "url": "https://www.defenceukraine.com/en/references/purl/",
-     "date": "2026-07"
+     "date": "2026-07",
+     "kind": "press"
     }
    ],
    "notes": []
@@ -560,17 +578,20 @@
     {
      "title": "defenceukraine.com Czech Ammunition Initiative reference",
      "url": "https://www.defenceukraine.com/en/references/czech-ammunition-initiative/",
-     "date": "2026"
+     "date": "2026",
+     "kind": "press"
     },
     {
      "title": "bne IntelliNews: Ukraine to start receiving ammunition worth EUR 1.6bn through Czech scheme (15 states >EUR 1.6bn)",
      "url": "https://www.intellinews.com/ukraine-to-start-receiving-ammunition-worth-1-6bn-through-czech-scheme-327322/",
-     "date": "2024-05"
+     "date": "2024-05",
+     "kind": "press"
     },
     {
      "title": "Euromaidan: Czech initiative needs EUR 5bn in 2026, EUR 1.4bn raised",
      "url": "https://euromaidanpress.com/2026/02/11/czech-ammunition-initiative-for-ukraine-needs-e5-billion-in-2026-only-e1-4-billion-raised-so-far/",
-     "date": "2026-02-11"
+     "date": "2026-02-11",
+     "kind": "press"
     }
    ],
    "notes": []
@@ -622,12 +643,14 @@
     {
      "title": "defenceukraine.com Danish Model reference",
      "url": "https://www.defenceukraine.com/en/references/danish-model/",
-     "date": "2026"
+     "date": "2026",
+     "kind": "press"
     },
     {
      "title": "Interfax-Ukraine: Germany EUR 576m for 180,000 rounds in Czech initiative",
      "url": "https://en.interfax.com.ua/news/general/1132786-amp.html",
-     "date": "2024"
+     "date": "2024",
+     "kind": "press"
     }
    ],
    "notes": []
@@ -667,7 +690,8 @@
     {
      "title": "defenceukraine.com PURL reference",
      "url": "https://www.defenceukraine.com/en/references/purl/",
-     "date": "2026-07"
+     "date": "2026-07",
+     "kind": "press"
     }
    ],
    "notes": []
@@ -689,12 +713,14 @@
     {
      "title": "Kyiv Independent: EU court / EPF EUR 11.1bn for Ukraine since 2022, reimbursement mechanism blocked",
      "url": "https://kyivindependent.com/top-eu-court-throws-out-orban-era-attempt-to-block-funds-for-ukraine/",
-     "date": "2026-09-09"
+     "date": "2026-09-09",
+     "kind": "press"
     },
     {
      "title": "Kyiv Post: EU releases EUR 6.6bn EPF (EUR 4.7bn reimbursements, EUR 1bn joint procurement, EUR 0.9bn EUMAM)",
      "url": "https://www.kyivpost.com/post/85439",
-     "date": "2026-09-25"
+     "date": "2026-09-25",
+     "kind": "press"
     },
     {
      "title": "Kiel Policy Brief 203 'Europe Steps Up' (PURL EUR 3.7bn 2025; Danish model; 22% procurement in Ukraine)",
@@ -749,10 +775,12 @@
    "certainty": "C",
    "sources": [
     {
-     "url": "https://news.online.ua/en/north-korea-earned-almost-20-billion-from-russian-arms-supplies-892621/"
+     "url": "https://news.online.ua/en/north-korea-earned-almost-20-billion-from-russian-arms-supplies-892621/",
+     "kind": "press"
     },
     {
-     "url": "https://www.kyivpost.com/post/41325"
+     "url": "https://www.kyivpost.com/post/41325",
+     "kind": "press"
     }
    ]
   },
@@ -762,10 +790,12 @@
    "certainty": "C",
    "sources": [
     {
-     "url": "https://www.twz.com/news-features/what-does-a-shahed-136-really-cost"
+     "url": "https://www.twz.com/news-features/what-does-a-shahed-136-really-cost",
+     "kind": "press"
     },
     {
-     "url": "https://en.thepage.ua/news/hackers-revealed-how-much-russia-paid-for-iranian-shahed-drones"
+     "url": "https://en.thepage.ua/news/hackers-revealed-how-much-russia-paid-for-iranian-shahed-drones",
+     "kind": "press"
     }
    ]
   },
@@ -785,7 +815,8 @@
      "url": "https://www.osw.waw.pl/chinarussia/"
     },
     {
-     "url": "https://www.themoscowtimes.com/2026/08/04/china-now-supplies-90-of-russias-sanctioned-tech-imports-bloomberg"
+     "url": "https://www.themoscowtimes.com/2026/08/04/china-now-supplies-90-of-russias-sanctioned-tech-imports-bloomberg",
+     "kind": "press"
     }
    ]
   },
@@ -807,13 +838,16 @@
    },
    "sources": [
     {
-     "url": "https://dev.ua/en/news/import-droniv-1745323111"
+     "url": "https://dev.ua/en/news/import-droniv-1745323111",
+     "kind": "press"
     },
     {
-     "url": "https://www.rferl.org/a/ukraine-drones-china-chinese-components/33835808.html"
+     "url": "https://www.rferl.org/a/ukraine-drones-china-chinese-components/33835808.html",
+     "kind": "press"
     },
     {
-     "url": "https://abcnews.com/amp/International/wireStory/secret-vulnerability-ukraines-drone-arsenal-chinese-technology-137247698"
+     "url": "https://abcnews.com/amp/International/wireStory/secret-vulnerability-ukraines-drone-arsenal-chinese-technology-137247698",
+     "kind": "press"
     }
    ],
    "certainty": "B"
@@ -857,7 +891,8 @@
   "politico_map": {
    "title": "Politico: Biden admin map - >$27bn PDA replenishment+USAI obligations in 37 states",
    "url": "https://www.politico.com/news/2023/11/29/biden-admin-map-states-benefit-ukraine-aid-00129068",
-   "date": "2023-11-29"
+   "date": "2023-11-29",
+   "kind": "press"
   },
   "kiel_kpb203": {
    "title": "Kiel Policy Brief 203 'Europe Steps Up' (PURL EUR 3.7bn 2025; Danish model; 22% procurement in Ukraine)",
@@ -877,7 +912,8 @@
   "defua_purl": {
    "title": "defenceukraine.com PURL reference",
    "url": "https://www.defenceukraine.com/en/references/purl/",
-   "date": "2026-07"
+   "date": "2026-07",
+   "kind": "press"
   },
   "nato_nb8": {
    "title": "NATO: Nordic and Baltic Allies to fund joint $500m PURL package",
@@ -892,42 +928,50 @@
   "euromaidan_purl": {
    "title": "Euromaidan Press: US envoy names PURL leaders (DK DKK 580m, SE $275m, NO ~$135m, NL EUR 500m first package)",
    "url": "https://euromaidanpress.com/2026/02/11/us-envoy-names-norway-netherlands-germany-as-purl-program-leaders-with-4-5-billion-in-weapons-commitments/",
-   "date": "2026-02-11"
+   "date": "2026-02-11",
+   "kind": "press"
   },
   "pravda_de_purl": {
    "title": "Pravda: Germany to allocate another US$400m (USD 200m PURL + USD 200m PAC-3)",
    "url": "https://www.pravda.com.ua/eng/news/2026/06/18/8039903/",
-   "date": "2026-06-18"
+   "date": "2026-06-18",
+   "kind": "press"
   },
   "defua_danish": {
    "title": "defenceukraine.com Danish Model reference",
    "url": "https://www.defenceukraine.com/en/references/danish-model/",
-   "date": "2026"
+   "date": "2026",
+   "kind": "press"
   },
   "kyivind_dk30": {
    "title": "Kyiv Independent: Denmark 30th package DKK 4.4bn, DKK 1.3bn via Danish model",
    "url": "https://kyivindependent.com/denmark-announces-670-million-defense-aid-package-for-ukraine/",
-   "date": "2026-06-30"
+   "date": "2026-06-30",
+   "kind": "press"
   },
   "defua_czech": {
    "title": "defenceukraine.com Czech Ammunition Initiative reference",
    "url": "https://www.defenceukraine.com/en/references/czech-ammunition-initiative/",
-   "date": "2026"
+   "date": "2026",
+   "kind": "press"
   },
   "interfax_czech": {
    "title": "Interfax-Ukraine: Germany EUR 576m for 180,000 rounds in Czech initiative",
    "url": "https://en.interfax.com.ua/news/general/1132786-amp.html",
-   "date": "2024"
+   "date": "2024",
+   "kind": "press"
   },
   "intellinews_czech": {
    "title": "bne IntelliNews: Ukraine to start receiving ammunition worth EUR 1.6bn through Czech scheme (15 states >EUR 1.6bn)",
    "url": "https://www.intellinews.com/ukraine-to-start-receiving-ammunition-worth-1-6bn-through-czech-scheme-327322/",
-   "date": "2024-05"
+   "date": "2024-05",
+   "kind": "press"
   },
   "euromaidan_czech": {
    "title": "Euromaidan: Czech initiative needs EUR 5bn in 2026, EUR 1.4bn raised",
    "url": "https://euromaidanpress.com/2026/02/11/czech-ammunition-initiative-for-ukraine-needs-e5-billion-in-2026-only-e1-4-billion-raised-so-far/",
-   "date": "2026-02-11"
+   "date": "2026-02-11",
+   "kind": "press"
   },
   "deaidua_de_czech": {
    "title": "Germany invested another EUR 300m in Czech ammunition initiative",
@@ -952,17 +996,20 @@
   "de_budget26": {
    "title": "Rubryka: Germany EUR 11.5bn military aid in 2026 budget",
    "url": "https://rubryka.com/en/2025/11/14/nimechchyna-zbilshuye-pidtrymku-ukrayiny/",
-   "date": "2025-11-14"
+   "date": "2025-11-14",
+   "kind": "press"
   },
   "kyivind_epf": {
    "title": "Kyiv Independent: EU court / EPF EUR 11.1bn for Ukraine since 2022, reimbursement mechanism blocked",
    "url": "https://kyivindependent.com/top-eu-court-throws-out-orban-era-attempt-to-block-funds-for-ukraine/",
-   "date": "2026-09-09"
+   "date": "2026-09-09",
+   "kind": "press"
   },
   "kyivpost_epf": {
    "title": "Kyiv Post: EU releases EUR 6.6bn EPF (EUR 4.7bn reimbursements, EUR 1bn joint procurement, EUR 0.9bn EUMAM)",
    "url": "https://www.kyivpost.com/post/85439",
-   "date": "2026-09-25"
+   "date": "2026-09-25",
+   "kind": "press"
   },
   "dsca_patriot": {
    "title": "DSCA: Ukraine - Patriot sustainment ($105m)",
@@ -972,12 +1019,14 @@
   "aa_patriot": {
    "title": "AA: US approves $179.1m Patriot support for Ukraine",
    "url": "https://www.aa.com.tr/en/americas/us-approves-1791m-patriot-air-defense-system-support-for-ukraine/3673276",
-   "date": "2025-08-29"
+   "date": "2025-08-29",
+   "kind": "press"
   },
   "aerotime_eram": {
    "title": "AeroTime: US approves missile (ERAM $825m, funded by DK/NL/NO + FMF) and Patriot sales",
    "url": "https://www.aerotime.aero/articles/us-approves-missile-patriot-sales-ukraine",
-   "date": "2025-08"
+   "date": "2025-08",
+   "kind": "press"
   },
   "kiel_nonew": {
    "title": "Kiel: European support continues steadily - US assistance stalls (no new US aid since 2025-01-09)",

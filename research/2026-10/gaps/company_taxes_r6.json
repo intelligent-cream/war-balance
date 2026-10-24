@@ -23933,32 +23933,38 @@
   {
    "name": "RBI preliminary results 2025 (RBI excluding Russia and Belarus: PBT 2,214, PAT 1,693)",
    "url": "https://www.eqs-news.com/news/corporate/consolidated-profit-excluding-russia-above-1-4-billion-euros/495ce5d1-af8f-4a38-a51d-54726beb9790_en",
-   "date": "2026-01-30"
+   "date": "2026-01-30",
+   "kind": "press"
   },
   {
    "name": "RBI semi-annual report 2026 (ex-Russia consolidated profit 708)",
    "url": "https://www.ots.at/presseaussendung/EQS_20260731_EQS0002/eqs-news-rbi-semi-annual-financial-report-2026-consolidated-profit-excl-russia-up-25",
-   "date": "2026-07-31"
+   "date": "2026-07-31",
+   "kind": "press"
   },
   {
    "name": "RTTNews: RBI H1 2026 net profit EUR 1.256bn",
    "url": "https://www.rttnews.com/3673636/raiffeisen-bank-international-h1-net-income-surges.aspx",
-   "date": "2026-07-31"
+   "date": "2026-07-31",
+   "kind": "press"
   },
   {
    "name": "Interfax: UniCredit Russian business net profit EUR 577m in 2024",
    "url": "https://interfax.com/newsroom/top-stories/109722/",
-   "date": "2025-02-11"
+   "date": "2025-02-11",
+   "kind": "press"
   },
   {
    "name": "Finance Mail (Interfax): UniCredit Russian business 2025 net profit EUR 814m, retail wind-down H1 2026",
    "url": "https://finance.mail.ru/article/rossijskij-biznes-unicredit-v-2025-godu-uvelichil-chistuyu-pribyl-na-41-69197795/",
-   "date": "2026-02-09"
+   "date": "2026-02-09",
+   "kind": "press"
   },
   {
    "name": "Intellinews: UniCredit Russia pre-tax profit EUR 890m in 2023",
    "url": "https://intellinews.com/unicredit-doubles-profit-to-213mn-in-russia-as-exit-pressure-mounts-324365",
-   "date": "2024-05"
+   "date": "2024-05",
+   "kind": "press"
   },
   {
    "name": "OTP Bank investor presentation 4Q 2025 (OTP Bank Russia profit after tax HUF 137bn 2024, 202bn 2025)",
@@ -23968,12 +23974,14 @@
   {
    "name": "smart-lab.ru: PepsiCo Holdings RAS revenue and profit 2021-2024 (audit-it data)",
    "url": "https://smart-lab.ru/blog/1146924.php",
-   "date": "2025-04-27"
+   "date": "2025-04-27",
+   "kind": "press"
   },
   {
    "name": "TAdviser: PepsiCo Russia (2025 net profit RUB 46.5bn)",
    "url": "https://www.tadviser.ru/index.php/%D0%9A%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D1%8F:PepsiCo_Russia_(%D0%9F%D0%B5%D0%BF%D1%81%D0%B8%D0%BA%D0%BE_%D0%A5%D0%BE%D0%BB%D0%B4%D0%B8%D0%BD%D0%B3%D1%81)",
-   "date": "2026"
+   "date": "2026",
+   "kind": "press"
   },
   {
    "name": "B4Ukraine/KSE, Corporate Enablers of Russia's War (2021 and 2023 data), top-20 taxpayers p.25",
@@ -23998,17 +24006,20 @@
   {
    "name": "The Insider: companies with Western owners in Russia, 2023 taxes (SPARK-Interfax)",
    "url": "https://theins.ru/inv/279306",
-   "date": "2025-03-04"
+   "date": "2025-03-04",
+   "kind": "press"
   },
   {
    "name": "Follow the Money / Kyiv Independent: Western firms paid at least EUR 40bn in taxes to Russia; Raiffeisen EUR 457m in 2023",
    "url": "https://kyivindependent.com/western-firms-paid-at-least-46-billion-in-taxes-to-russia-amid-full-scale-war-in-ukraine-investigation-says/",
-   "date": "2025-06-10"
+   "date": "2025-06-10",
+   "kind": "press"
   },
   {
    "name": "Moscow Times: Leroy Merlin's former Russian business changes name (Lemana PRO; owner Scenari Holding LP, UAE)",
    "url": "https://themoscowtimes.com/2024/06/18/leroy-merlins-former-russian-business-changes-name-a85449",
-   "date": "2024-06-18"
+   "date": "2024-06-18",
+   "kind": "press"
   },
   {
    "name": "Rosstat Yaroslavl: consolidated budget Jan-Mar 2026, profit tax 98.8% of Jan-Mar 2025",

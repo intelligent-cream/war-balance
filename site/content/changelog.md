@@ -12,6 +12,7 @@ The short history, newest first. The [full changelog](https://github.com/intelli
 - **On the map**: the three views, the year and Play sit on the map; the default frame shows the Americas, Africa and East Asia; a strip of stories picks the clearest case for each kind of flow; the arcs are off until switched on.
 - **Tests**: the map's own model is tested directly in every build (the parts add up, the ranges hold their middle value, the simulation gives known answers, a dozen countries' numbers are pinned).
 - **Citable**: a citation file (CITATION.cff) and a git tag per round.
+- **Citations**: no Wikipedia left; 21 citations now point to the official or primary source (company accounts, decrees, regulator reports, government releases). What rests on the press alone is kept and marked "press report". No number changed.
 - The last "not reviewed by a person" lines are gone from the research notes.
 
 <h2 id="cl-r40">Round 40: Russian forces in Africa, corrected citations, and no "not yet checked" <span class="cl-date">23 October</span></h2>

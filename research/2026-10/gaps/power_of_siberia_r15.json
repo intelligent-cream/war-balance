@@ -14,9 +14,10 @@
  },
  "price_prewar_eur_mwh": "2019-2021 average of China's pipeline-gas unit value (gas_prices.json CHN pipeline: 18.0, 16.1, 11.6 EUR/MWh = 15.23); 10.55 TWh per bcm (MWH_PER_BCM in build_data.py)",
  "sources": [
-  {"name": "Interfax: Gazprom supplies 38.8 bcm of gas to China in 2025 (31.12 bcm in 2024; maximum contractual level of 38 bcm/yr from 1 December 2024)", "url": "https://interfax.com/newsroom/top-stories/115552/", "date": "2026-01-13"},
-  {"name": "Interfax: Power of Siberia at the planned contractual level of 38 bcm; 38.8 bcm in 2025 exceeded the contractual obligations", "url": "https://interfax.com/newsroom/top-stories/117354/", "date": "2026-04-28"},
-  {"name": "Reuters via BusinessDay: Russian gas supply to China reaches record daily level (22.7 bcm in 2023, 15.4 in 2022; 0.7 bcm above the contractual obligation)", "url": "https://www.businessday.co.za/bd/world/europe/2024-01-03-russian-gas-supply-to-china-reaches-record-daily-level/", "date": "2024-01-03"},
-  {"name": "TASS: Gazprom to supply over 38 bcm of gas via Power of Siberia to China in 2025; agreement to raise supplies to 44 bcm/yr", "url": "https://tass.com/economy/2032425", "date": "2025-10-20"}
+  {"name": "Gazprom, 21 May 2014: Gazprom and CNPC sign the 30-year purchase and sale agreement, 38 bcm of gas a year via the eastern route (the contracted plateau; round 41 primary source for the contract)", "url": "https://www.gazprom.com/press/news/2014/may/article191451/", "date": "2014-05-21", "verified": "confirmed by web search 2026-10-24; gazprom.com unreachable from here"},
+  {"name": "Interfax: Gazprom supplies 38.8 bcm of gas to China in 2025 (31.12 bcm in 2024; maximum contractual level of 38 bcm/yr from 1 December 2024)", "url": "https://interfax.com/newsroom/top-stories/115552/", "kind": "press", "date": "2026-01-13"},
+  {"name": "Interfax: Power of Siberia at the planned contractual level of 38 bcm; 38.8 bcm in 2025 exceeded the contractual obligations", "url": "https://interfax.com/newsroom/top-stories/117354/", "kind": "press", "date": "2026-04-28"},
+  {"name": "Reuters via BusinessDay: Russian gas supply to China reaches record daily level (22.7 bcm in 2023, 15.4 in 2022; 0.7 bcm above the contractual obligation)", "url": "https://www.businessday.co.za/bd/world/europe/2024-01-03-russian-gas-supply-to-china-reaches-record-daily-level/", "kind": "press", "date": "2024-01-03"},
+  {"name": "TASS: Gazprom to supply over 38 bcm of gas via Power of Siberia to China in 2025; agreement to raise supplies to 44 bcm/yr", "url": "https://tass.com/economy/2032425", "kind": "press", "date": "2025-10-20"}
  ]
 }

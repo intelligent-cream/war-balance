@@ -888,7 +888,8 @@
    "id": "minfin_urals",
    "title": "Russian Finance Ministry Urals averages (via fomag.ru/Interfax, TASS, ldaily.ua; collected in energy2.json)",
    "url": "https://tass.com/economy/1730001",
-   "note": "2021 69.0, 2022 76.09, 2023 62.99, 2024 67.85, 2025 55.62. Before 2023 based on CIF Med/Rotterdam quotes, so above FOB in 2022."
+   "note": "2021 69.0, 2022 76.09, 2023 62.99, 2024 67.85, 2025 55.62. Before 2023 based on CIF Med/Rotterdam quotes, so above FOB in 2022.",
+   "kind": "press"
   },
   {
    "id": "dallasfed_argus",
@@ -942,7 +943,8 @@
    "id": "reuters_brunei",
    "title": "Reuters via Baird Maritime, Russia to send first oil shipment to Brunei via Arctic passage",
    "url": "https://www.bairdmaritime.com/amp/story/shipping/tankers/russia-to-send-first-oil-shipment-to-brunei-via-arctic-passage",
-   "note": "Arco cargo to Hengyi; first Urals cargo to Hengyi in 2023."
+   "note": "Arco cargo to Hengyi; first Urals cargo to Hengyi in 2023.",
+   "kind": "press"
   },
   {
    "id": "eia_steo_2026",
@@ -966,7 +968,8 @@
    "id": "kiatnakin_2q26",
    "title": "Kaohoon International, Kiatnakin upgrades Thai refinery outlook",
    "url": "https://www.kaohooninternational.com/markets/589557",
-   "note": "Singapore GRM USD 24.7/bbl in 2Q26; 2026 forecast 19.6."
+   "note": "Singapore GRM USD 24.7/bbl in 2Q26; 2026 forecast 19.6.",
+   "kind": "press"
   },
   {
    "id": "ecb_fx",

@@ -21,11 +21,11 @@
      },
      "period": "Sep 2023 - mid 2025",
      "sources": [
-      "Reuters / Open Source Centre, Apr 2025: 64 voyages Rajin->Russia, ~16,000 containers, 4-6m shells (Sep 2023-Mar 2025) https://www.themoscowtimes.com/2025/04/15/north-korea-supplying-up-to-100-of-russian-artillery-shells-used-in-ukraine-reuters-a88745",
+      "Press only: Reuters / Open Source Centre, Apr 2025: 64 voyages Rajin->Russia, ~16,000 containers, 4-6m shells (Sep 2023-Mar 2025) https://www.themoscowtimes.com/2025/04/15/north-korea-supplying-up-to-100-of-russian-artillery-shells-used-in-ukraine-reuters-a88745",
       "RUSI 'Brothers in Arms' (OSC: 4.2-5.8m munitions) https://www.rusi.org/explore-our-research/publications/commentary/brothers-arms-assessing-north-koreas-contribution-russias-war-ukraine",
-      "South Korea Defense Intelligence Agency, Jul 2025: >28,000 containers, >12m rounds in 152mm-equivalent https://kyivindependent.com/north-korea-supplied-russia-with-12-million-rounds-of-152mm-shells-south-korean-intel-estimates/",
-      "Frontelligence Insight, most conservative model 502,000 shells https://frontelligence.substack.com/p/counting-the-rounds-north-korean",
-      "Guseinova (HUFS) for Friedrich Naumann Foundation Korea, Oct 2024: unit-price scenarios 152mm $300/$500/$800/$1,000; KN-23/24 $1.5m-$3m; total $1.72-5.52bn https://www.kyivpost.com/post/41325"
+      "Press only: South Korea Defense Intelligence Agency, Jul 2025: >28,000 containers, >12m rounds in 152mm-equivalent https://kyivindependent.com/north-korea-supplied-russia-with-12-million-rounds-of-152mm-shells-south-korean-intel-estimates/",
+      "Press only: Frontelligence Insight, most conservative model 502,000 shells https://frontelligence.substack.com/p/counting-the-rounds-north-korean",
+      "Press only: Guseinova (HUFS) for Friedrich Naumann Foundation Korea, Oct 2024: unit-price scenarios 152mm $300/$500/$800/$1,000; KN-23/24 $1.5m-$3m; total $1.72-5.52bn https://www.kyivpost.com/post/41325"
      ],
      "note": "Low/central = Reuters/OSC 4-6m (Frontelligence's most conservative model: 502k); high = South Korean DIA >12m 152mm-equivalent. Unit price assumptions from Guseinova/FNF scenarios ($300/$500/$1,000 per 152mm round)."
     },
@@ -48,8 +48,8 @@
      },
      "period": "late 2023 - 2026",
      "sources": [
-      "Ukraine GUR (BELLIGERENT): ~100 KN-23/24 by Nov 2024 https://www.koreajoongangdaily.com/korea/north-korea-sent-100-short-range-missiles-military-experts-to-russia-says-ukraines-military-intelligence/12168702 ; ~150 by Aug 2025, +~40 batch 2026, unit to hold up to 120 https://thedefensepost.com/2026/08/07/north-korean-russia-missiles/",
-      "Guseinova (HUFS) for Friedrich Naumann Foundation Korea, Oct 2024: unit-price scenarios 152mm $300/$500/$800/$1,000; KN-23/24 $1.5m-$3m; total $1.72-5.52bn https://www.kyivpost.com/post/41325"
+      "Press only: Ukraine GUR (BELLIGERENT): ~100 KN-23/24 by Nov 2024 https://www.koreajoongangdaily.com/korea/north-korea-sent-100-short-range-missiles-military-experts-to-russia-says-ukraines-military-intelligence/12168702 ; ~150 by Aug 2025, +~40 batch 2026, unit to hold up to 120 https://thedefensepost.com/2026/08/07/north-korean-russia-missiles/",
+      "Press only: Guseinova (HUFS) for Friedrich Naumann Foundation Korea, Oct 2024: unit-price scenarios 152mm $300/$500/$800/$1,000; KN-23/24 $1.5m-$3m; total $1.72-5.52bn https://www.kyivpost.com/post/41325"
      ],
      "note": "Counts are Ukrainian (belligerent) intelligence only: ~100 by Nov 2024, ~150 by Aug 2025, +~40 batch reported 2026. Central unit price = midpoint of Guseinova's $1.5m-$3m range (my midpoint)."
     },
@@ -72,7 +72,7 @@
      },
      "period": "Aug-Nov 2024 onward",
      "sources": [
-      "Budanov/GUR (BELLIGERENT) to The War Zone: ~120 Koksan 170mm SPGs + ~120 M-1991 240mm MLRS, more expected https://twz.com/news-features/more-north-korean-artillery-troops-heading-to-russia-ukraine-intel-chief"
+      "Press only: Budanov/GUR (BELLIGERENT) to The War Zone: ~120 Koksan 170mm SPGs + ~120 M-1991 240mm MLRS, more expected https://twz.com/news-features/more-north-korean-artillery-troops-heading-to-russia-ukraine-intel-chief"
      ],
      "note": "~120 + ~120 per Budanov (belligerent); high = 'at least as many more' expected. No sourced unit price -> value null."
     },
@@ -95,7 +95,7 @@
      },
      "period": "Oct 2024 - Dec 2025",
      "sources": [
-      "Institute for National Security Strategy (Seoul, state-funded), Mar 2026: $7.67-14.4bn Aug 2023-Dec 2025 (munitions $7.05-13.78bn; troops $0.62bn) https://www.nknews.org/?p=969099 ; Bloomberg 2026-03-18"
+      "Press only: Institute for National Security Strategy (Seoul, state-funded), Mar 2026: $7.67-14.4bn Aug 2023-Dec 2025 (munitions $7.05-13.78bn; troops $0.62bn) https://www.nknews.org/?p=969099 ; Bloomberg 2026-03-18"
      ],
      "note": "INSS estimate of payments for the troop deployment; troop counts are in fighters_for_russia.PRK."
     }
@@ -112,9 +112,9 @@
    },
    "total_basis": "Aggregate third-party valuations: low/high = INSS (Mar 2026) $7.67-14.4bn for Aug 2023-Dec 2025; central = Friedrich Naumann Foundation (Sep 2025) up to $9.8bn. KIDA has floated 'up to $20bn' (ambiguous scope, excluded). Item-based sum (shells+missiles+troops) is lower; difference = MLRS/SPGs, other munitions, valuation method.",
    "total_sources": [
-    "Institute for National Security Strategy (Seoul, state-funded), Mar 2026: $7.67-14.4bn Aug 2023-Dec 2025 (munitions $7.05-13.78bn; troops $0.62bn) https://www.nknews.org/?p=969099 ; Bloomberg 2026-03-18",
-    "Friedrich Naumann Foundation report, Sep 2025: up to $9.8bn in weapons, ammunition and troops since 2023; ~$1.2bn compensation https://thedefensepost.com/2025/09/19/north-korea-arms-russia-3/",
-    "Guseinova (HUFS) for Friedrich Naumann Foundation Korea, Oct 2024: unit-price scenarios 152mm $300/$500/$800/$1,000; KN-23/24 $1.5m-$3m; total $1.72-5.52bn https://www.kyivpost.com/post/41325"
+    "Press only: Institute for National Security Strategy (Seoul, state-funded), Mar 2026: $7.67-14.4bn Aug 2023-Dec 2025 (munitions $7.05-13.78bn; troops $0.62bn) https://www.nknews.org/?p=969099 ; Bloomberg 2026-03-18",
+    "Press only: Friedrich Naumann Foundation report, Sep 2025: up to $9.8bn in weapons, ammunition and troops since 2023; ~$1.2bn compensation https://thedefensepost.com/2025/09/19/north-korea-arms-russia-3/",
+    "Press only: Guseinova (HUFS) for Friedrich Naumann Foundation Korea, Oct 2024: unit-price scenarios 152mm $300/$500/$800/$1,000; KN-23/24 $1.5m-$3m; total $1.72-5.52bn https://www.kyivpost.com/post/41325"
    ],
    "nature": "Mostly paid/bartered transfers (Russia compensates with cash, food, oil, technology), not donations.",
    "certainty": "D"
@@ -141,7 +141,7 @@
      "period": "contract early 2023",
      "sources": [
       "Leaked Alabuga/Sahara Thunder documents (ISIS report May 2024; hacked emails): $1.75bn contract, 6,000 Shahed-136, negotiated $193k/drone (initial $375k) https://isis-online.org/isis-reports/alabugas-shahed-136-geran-2-warheads-a-dangerous-escalation ; https://en.thepage.ua/news/hackers-revealed-how-much-russia-paid-for-iranian-shahed-drones",
-      "Bloomberg (Western security officials), Jan 2026: Iran supplied >$4bn military equipment since late 2021; missile contracts ~$2.7bn; drone/Geran-2 contract ~$1.75bn https://anewz.tv/region/middle-east/17155/iran-sold-russia-27bn-in-missiles-western-official-says/news"
+      "Press only: Bloomberg (Western security officials), Jan 2026: Iran supplied >$4bn military equipment since late 2021; missile contracts ~$2.7bn; drone/Geran-2 contract ~$1.75bn https://anewz.tv/region/middle-east/17155/iran-sold-russia-27bn-in-missiles-western-official-says/news"
      ],
      "note": "Value = whole $1.75bn contract (drones ~$1.15bn + factory setup/tech/services), per leaks and Bloomberg. Unit price $193k negotiated (initial asking $375k). Iranian-built Shaheds delivered directly in 2022-23 before Alabuga: no reliable count. Later Russian domestic Geran output NOT included."
     },
@@ -164,9 +164,9 @@
      },
      "period": "contracts from Oct 2021; deliveries 2024-2025",
      "sources": [
-      "Ukraine GUR (BELLIGERENT) via Kyiv Independent: >350 Fath-360 delivered, none confirmed launched https://kyivindependent.com/exclusive-iran-gave-russia-over-350-fath-missiles/",
-      "Gen. Cavoli (US EUCOM) Senate testimony 2025: Iran donated >400 SRBMs and hundreds of thousands of artillery shells https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html",
-      "Bloomberg (Western security officials), Jan 2026: Iran supplied >$4bn military equipment since late 2021; missile contracts ~$2.7bn; drone/Geran-2 contract ~$1.75bn https://anewz.tv/region/middle-east/17155/iran-sold-russia-27bn-in-missiles-western-official-says/news"
+      "Press only: Ukraine GUR (BELLIGERENT) via Kyiv Independent: >350 Fath-360 delivered, none confirmed launched https://kyivindependent.com/exclusive-iran-gave-russia-over-350-fath-missiles/",
+      "Press only: Gen. Cavoli (US EUCOM) Senate testimony 2025: Iran donated >400 SRBMs and hundreds of thousands of artillery shells https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html",
+      "Press only: Bloomberg (Western security officials), Jan 2026: Iran supplied >$4bn military equipment since late 2021; missile contracts ~$2.7bn; drone/Geran-2 contract ~$1.75bn https://anewz.tv/region/middle-east/17155/iran-sold-russia-27bn-in-missiles-western-official-says/news"
      ],
      "note": "Low = GUR >350 Fath-360 (belligerent); central = US EUCOM >400 SRBMs; high = Bloomberg-sourced 'hundreds of Fath-360 + nearly 500 other SRBMs' (+~200 SAMs not counted in qty). Value = ~$2.7bn missile contracts (Bloomberg); delivered share unknown so low is null."
     },
@@ -189,8 +189,8 @@
      },
      "period": "Oct 2022 - Apr 2023 (six months) and later",
      "sources": [
-      "Wall Street Journal, Apr 2023: >300,000 artillery shells and ~1m rounds via Caspian in six months https://euromaidanpress.com/2023/04/27/iranian-ships-transported-300000-artillery-shells-1-million-rounds-of-ammunition-to-russia-in-six-months-wsj/",
-      "Gen. Cavoli (US EUCOM) Senate testimony 2025: Iran donated >400 SRBMs and hundreds of thousands of artillery shells https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html"
+      "Press only: Wall Street Journal, Apr 2023: >300,000 artillery shells and ~1m rounds via Caspian in six months https://euromaidanpress.com/2023/04/27/iranian-ships-transported-300000-artillery-shells-1-million-rounds-of-ammunition-to-russia-in-six-months-wsj/",
+      "Press only: Gen. Cavoli (US EUCOM) Senate testimony 2025: Iran donated >400 SRBMs and hundreds of thousands of artillery shells https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html"
      ],
      "note": "300k is a six-month snapshot (WSJ); EUCOM says 'hundreds of thousands' overall -> high null. Unit prices borrowed from the DPRK Guseinova scenarios (assumption)."
     }
@@ -207,9 +207,9 @@
    },
    "total_basis": "Low = Bloomberg/Western officials '>$4bn' since late 2021 (Jan 2026); central = $2.7bn missiles + $1.75bn drone contract + ~$0.15bn shells; high null (officials say figures understate full support).",
    "total_sources": [
-    "Bloomberg (Western security officials), Jan 2026: Iran supplied >$4bn military equipment since late 2021; missile contracts ~$2.7bn; drone/Geran-2 contract ~$1.75bn https://anewz.tv/region/middle-east/17155/iran-sold-russia-27bn-in-missiles-western-official-says/news",
+    "Press only: Bloomberg (Western security officials), Jan 2026: Iran supplied >$4bn military equipment since late 2021; missile contracts ~$2.7bn; drone/Geran-2 contract ~$1.75bn https://anewz.tv/region/middle-east/17155/iran-sold-russia-27bn-in-missiles-western-official-says/news",
     "Leaked Alabuga/Sahara Thunder documents (ISIS report May 2024; hacked emails): $1.75bn contract, 6,000 Shahed-136, negotiated $193k/drone (initial $375k) https://isis-online.org/isis-reports/alabugas-shahed-136-geran-2-warheads-a-dangerous-escalation ; https://en.thepage.ua/news/hackers-revealed-how-much-russia-paid-for-iranian-shahed-drones",
-    "Gen. Cavoli (US EUCOM) Senate testimony 2025: Iran donated >400 SRBMs and hundreds of thousands of artillery shells https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html"
+    "Press only: Gen. Cavoli (US EUCOM) Senate testimony 2025: Iran donated >400 SRBMs and hundreds of thousands of artillery shells https://www.rferl.org/a/iran-protests-russia-war-ukraine/33648840.html"
    ],
    "nature": "Sales (contracts), paid partly in cash/gold per reporting; not donations.",
    "certainty": "D"
@@ -235,8 +235,8 @@
      },
      "period": "Jan 2022 - Feb 2023 (tonnes)",
      "sources": [
-      "Anton Motolko investigation (railway data): 131,582 t ammunition Jan 2022-Feb 2023 https://kyivindependent.com/investigation-belarus-sent-over-130-000-tons-of-munitions-to-russia-in-first-year-of-full-scale-war/",
-      "Belaruski Hajun (independent monitor): 65,089 t ammunition by rail Mar-Sep 2022 https://www.pravda.com.ua/eng/news/2022/10/28/7374018/"
+      "Press only: Anton Motolko investigation (railway data): 131,582 t ammunition Jan 2022-Feb 2023 https://kyivindependent.com/investigation-belarus-sent-over-130-000-tons-of-munitions-to-russia-in-first-year-of-full-scale-war/",
+      "Press only: Belaruski Hajun (independent monitor): 65,089 t ammunition by rail Mar-Sep 2022 https://www.pravda.com.ua/eng/news/2022/10/28/7374018/"
      ],
      "note": "Quantity in TONNES, not rounds. Hajun counted 65,089 t for Mar-Sep 2022 (subset). No sourced EUR value or price per tonne -> null."
     },
@@ -259,7 +259,7 @@
      },
      "period": "2024 (tonnes, ~192 railcars)",
      "sources": [
-      "UNITED24 overview 2025: 192 railcars (~5,000 t) ammunition in 2024; Belarus mainly subcontractor https://united24media.com/latest-news/inside-belaruss-secret-role-in-arming-putins-war-machine-14010"
+      "Press only: UNITED24 overview 2025: 192 railcars (~5,000 t) ammunition in 2024; Belarus mainly subcontractor https://united24media.com/latest-news/inside-belaruss-secret-role-in-arming-putins-war-machine-14010"
      ],
      "note": "Tonnes. Value null."
     },
@@ -282,7 +282,7 @@
      },
      "period": "Oct-Nov 2022",
      "sources": [
-      "Hajun / Ukrainian General Staff, Oct-Nov 2022: >=94 T-72A tanks + 36-44 Ural trucks transferred https://www.pravda.com.ua/eng/news/2022/10/12/7371556/"
+      "Press only: Hajun / Ukrainian General Staff, Oct-Nov 2022: >=94 T-72A tanks + 36-44 Ural trucks transferred https://www.pravda.com.ua/eng/news/2022/10/12/7371556/"
      ],
      "note": "Plus 36-44 Ural trucks; ~20 armoured vehicles. Value null."
     },
@@ -305,7 +305,7 @@
      },
      "period": "2022-",
      "sources": [
-      "UNITED24 overview 2025: 192 railcars (~5,000 t) ammunition in 2024; Belarus mainly subcontractor https://united24media.com/latest-news/inside-belaruss-secret-role-in-arming-putins-war-machine-14010"
+      "Press only: UNITED24 overview 2025: 192 railcars (~5,000 t) ammunition in 2024; Belarus mainly subcontractor https://united24media.com/latest-news/inside-belaruss-secret-role-in-arming-putins-war-machine-14010"
      ],
      "note": "Not quantifiable in EUR."
     }
@@ -344,7 +344,7 @@
      },
      "period": "2024",
      "sources": [
-      "MERICS estimate (via The Gaze): China dual-use exports to Russia 2024 >$4bn (~$300m/month) https://thegaze.media/news/why-does-china-increase-the-supply-of-dual-use-goods-to-russia",
+      "Press only: MERICS estimate (via The Gaze): China dual-use exports to Russia 2024 >$4bn (~$300m/month) https://thegaze.media/news/why-does-china-increase-the-supply-of-dual-use-goods-to-russia",
       "KSE Institute CHP Imports Tracker Q2 2026: China ~75-85% of Russia's CHP imports; Russian premium ~300% (2025) https://sanctions.kse.ua/wp-content/uploads/2026/07/CHP-Q2-2026-Report.pdf"
      ],
      "note": "Commercial sales, not aid. '>$4bn' per MERICS (secondary citation)."
@@ -385,7 +385,7 @@
    },
    "total_basis": "Low = 2024 + H1 2025 only. 2022, 2023, H2 2025 and 2026 not covered by a consistent sourced series -> central/high null. China (incl. HK) supplied ~76% of Russia's battlefield goods in 2023 and ~75-85% of CHP imports since (KSE). No lethal weapons transfers confirmed.",
    "total_sources": [
-    "MERICS estimate (via The Gaze): China dual-use exports to Russia 2024 >$4bn (~$300m/month) https://thegaze.media/news/why-does-china-increase-the-supply-of-dual-use-goods-to-russia",
+    "Press only: MERICS estimate (via The Gaze): China dual-use exports to Russia 2024 >$4bn (~$300m/month) https://thegaze.media/news/why-does-china-increase-the-supply-of-dual-use-goods-to-russia",
     "OSW / Swedish National China Centre China-Russia Dashboard, Aug 2025: H1 2025 high-priority dual-use exports $1.9bn (-7% y/y) https://kinacentrum.se/en/publications/china-russia-trade-in-early-2025-fueling-moscows-war-despite-headwinds/",
     "KSE Institute CHP Imports Tracker Q2 2026: China ~75-85% of Russia's CHP imports; Russian premium ~300% (2025) https://sanctions.kse.ua/wp-content/uploads/2026/07/CHP-Q2-2026-Report.pdf",
     "KSE: China+HK 76% of battlefield goods 2023 https://kse.ua/about-the-school/news/china-supplied-76-of-russia-s-battlefield-goods-in-2023-kse-institute-report/"
@@ -401,7 +401,7 @@
    "high": 2960,
    "as_of": "2024-03",
    "sources": [
-    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
+    "Press only: Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
    ],
    "note": "Russian claim incl. 1,497 'killed'; no independent count."
   },
@@ -411,8 +411,8 @@
    "high": 1113,
    "as_of": "2024-03/2025-05",
    "sources": [
-    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
-    "Russian Investigative Committee (BELLIGERENT), Bastrykin, May 2025 via The Insider https://theins.press/en/politics/281953"
+    "Press only: Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
+    "Press only: Russian Investigative Committee (BELLIGERENT), Bastrykin, May 2025 via The Insider https://theins.press/en/politics/281953"
    ],
    "note": "Central = Russian IC 816 (May 2025); high = Russian MoD 1,113. Both belligerent claims. Chosen Company etc. mainly Americans."
   },
@@ -422,8 +422,8 @@
    "high": 1042,
    "as_of": "2024-03/2025-05",
    "sources": [
-    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
-    "Russian Investigative Committee (BELLIGERENT), Bastrykin, May 2025 via The Insider https://theins.press/en/politics/281953",
+    "Press only: Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
+    "Press only: Russian Investigative Committee (BELLIGERENT), Bastrykin, May 2025 via The Insider https://theins.press/en/politics/281953",
     "GFSIS: 'at least several hundred' Georgians https://gfsis.org.ge/publications/view/3269"
    ],
    "note": "Independent: at least several hundred (Georgian Legion)."
@@ -434,8 +434,8 @@
    "high": 1005,
    "as_of": "2024-03/2025-05",
    "sources": [
-    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
-    "Russian Investigative Committee (BELLIGERENT), Bastrykin, May 2025 via The Insider https://theins.press/en/politics/281953"
+    "Press only: Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
+    "Press only: Russian Investigative Committee (BELLIGERENT), Bastrykin, May 2025 via The Insider https://theins.press/en/politics/281953"
    ]
   },
   "GBR": {
@@ -444,8 +444,8 @@
    "high": 822,
    "as_of": "2024-03/2025-05",
    "sources": [
-    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
-    "Russian Investigative Committee (BELLIGERENT), Bastrykin, May 2025 via The Insider https://theins.press/en/politics/281953"
+    "Press only: Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
+    "Press only: Russian Investigative Committee (BELLIGERENT), Bastrykin, May 2025 via The Insider https://theins.press/en/politics/281953"
    ]
   },
   "ROU": {
@@ -454,7 +454,7 @@
    "high": 784,
    "as_of": "2024-03",
    "sources": [
-    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
+    "Press only: Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
    ]
   },
   "FRA": {
@@ -463,7 +463,7 @@
    "high": 356,
    "as_of": "2024-03",
    "sources": [
-    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
+    "Press only: Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
    ],
    "note": "France denies its nationals' presence in organized form."
   },
@@ -473,7 +473,7 @@
    "high": 235,
    "as_of": "2024-03",
    "sources": [
-    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
+    "Press only: Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
    ]
   },
   "IDN": {
@@ -482,7 +482,7 @@
    "high": 10,
    "as_of": "2024-03",
    "sources": [
-    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
+    "Press only: Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia"
    ]
   },
   "COL": {
@@ -492,8 +492,8 @@
    "as_of": "2025-10/2026",
    "sources": [
     "CEPA interview: >2,000 Colombians fighting https://cepa.org/?p=33770",
-    "NV (Ukrainian media) investigation: >7,000 Colombians served since 2022 (cumulative) https://www.intellinews.com/colombia-s-battle-hardened-veterans-fuel-ukraine-s-front-lines-442135/",
-    "Colombian MFA: 140 dead in Ukraine as of Jun 2026 https://www.intellinews.com/colombia-counts-173-dead-and-670-missing-in-russia-ukraine-war-447567/"
+    "Press only: NV (Ukrainian media) investigation: >7,000 Colombians served since 2022 (cumulative) https://www.intellinews.com/colombia-s-battle-hardened-veterans-fuel-ukraine-s-front-lines-442135/",
+    "Press only: Colombian MFA: 140 dead in Ukraine as of Jun 2026 https://www.intellinews.com/colombia-counts-173-dead-and-670-missing-in-russia-ukraine-war-447567/"
    ],
    "note": "Likely the largest current foreign contingent; low = currently fighting, high = cumulative served."
   },
@@ -503,7 +503,7 @@
    "high": 181,
    "as_of": "2024-11",
    "sources": [
-    "Czech Radio via The Insider: 181 applications, 60 approved (Feb 2022-Nov 2024) https://theins.press/en/politics/281953"
+    "Press only: Czech Radio via The Insider: 181 applications, 60 approved (Feb 2022-Nov 2024) https://theins.press/en/politics/281953"
    ],
    "note": "Government-approved only; unauthorised volunteers not counted."
   },
@@ -514,10 +514,10 @@
    "as_of": "2023-2025",
    "sources": [
     "NYT 25 Mar 2023 / CEP Mar 2023: 1,500-2,000 actively fighting (via The Insider)",
-    "Responsible Statecraft: ~4,000 foreign fighters still in Ukraine https://responsiblestatecraft.org/foreign-fighters-ukraine/",
+    "Press only: Responsible Statecraft: ~4,000 foreign fighters still in Ukraine https://responsiblestatecraft.org/foreign-fighters-ukraine/",
     "Ukraine (BELLIGERENT) 2022: ~20,000 volunteers from 50+ countries signed up",
-    "Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
-    "FSB (BELLIGERENT): 18,000 from 85 countries https://tass.com/defense/1852091"
+    "Press only: Russian MoD (BELLIGERENT, unverified), 14-16 Mar 2024: 13,387 'mercenaries' arrived, 5,962 killed https://english.kontan.co.id/news/complete-list-of-foreign-mercenaries-fighting-in-ukraine-10-from-indonesia",
+    "Press only: FSB (BELLIGERENT): 18,000 from 85 countries https://tass.com/defense/1852091"
    ],
    "note": "Excludes Russian (RDK, Freedom of Russia Legion) and Belarusian (Kalinouski Regiment) citizens, which Russian sources call the largest groups; no count found. High = Ukrainian 2022 sign-up claim."
   }
@@ -529,9 +529,9 @@
    "high": 20000,
    "as_of": "2024-11/2026-03",
    "sources": [
-    "South Korea NIS: ~11,000 in Kursk start-2026 (10k combat + 1k engineers); ~6,000 killed/wounded (Feb 2026) https://kyivindependent.com/nearly-11-000-north-korean-troops-stationed-in-russias-kursk-oblast-at-start-of-2026-media-reports/ https://united24media.com/latest-news/6000-north-korean-troops-killed-or-wounded-fighting-for-russia-seoul-reveals-15864",
-    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html",
-    "Institute for National Security Strategy (Seoul, state-funded), Mar 2026: $7.67-14.4bn Aug 2023-Dec 2025 (munitions $7.05-13.78bn; troops $0.62bn) https://www.nknews.org/?p=969099 ; Bloomberg 2026-03-18"
+    "Press only: South Korea NIS: ~11,000 in Kursk start-2026 (10k combat + 1k engineers); ~6,000 killed/wounded (Feb 2026) https://kyivindependent.com/nearly-11-000-north-korean-troops-stationed-in-russias-kursk-oblast-at-start-of-2026-media-reports/ https://united24media.com/latest-news/6000-north-korean-troops-killed-or-wounded-fighting-for-russia-seoul-reveals-15864",
+    "Press only: Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html",
+    "Press only: Institute for National Security Strategy (Seoul, state-funded), Mar 2026: $7.67-14.4bn Aug 2023-Dec 2025 (munitions $7.05-13.78bn; troops $0.62bn) https://www.nknews.org/?p=969099 ; Bloomberg 2026-03-18"
    ],
    "note": "Low = NIS ~11,000 initial/standing Kursk force; central = GUR >14,000; high = INSS >20,000 across four rotations (incl. engineers/deminers). Casualties: NIS ~6,000 killed+wounded (Feb 2026); ~2,300 dead (BBC memorial analysis / Mediazona 2,304 Jul 2026)."
   },
@@ -541,10 +541,10 @@
    "high": 20000,
    "as_of": "2025-10/2026-06",
    "sources": [
-    "Ukraine GUR (BELLIGERENT), Oct 2025: 1,076 identified by name, 96 dead/missing https://kyivindependent.com/exclusive-1-076-cubans-identified-fighting-for-russia-ukraine-says-96-dead-or-disappeared/",
+    "Press only: Ukraine GUR (BELLIGERENT), Oct 2025: 1,076 identified by name, 96 dead/missing https://kyivindependent.com/exclusive-1-076-cubans-identified-fighting-for-russia-ukraine-says-96-dead-or-disappeared/",
     "US State Dept cable: 1,000-5,000 Cubans fighting (via same report)",
-    "Frontelligence Jul 2025: 'slightly more than 500' (2023 contracts) https://frontelligence.substack.com/p/outsourced-war",
-    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html (Cuba 15,000+)"
+    "Press only: Frontelligence Jul 2025: 'slightly more than 500' (2023 contracts) https://frontelligence.substack.com/p/outsourced-war",
+    "Press only: Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html (Cuba 15,000+)"
    ],
    "note": "Middle range per US cable 1,000-5,000; GUR spokesman up to 20,000 (belligerent)."
   },
@@ -554,8 +554,8 @@
    "high": 15000,
    "as_of": "2024-02/2025-04",
    "sources": [
-    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/ (Nepal 603)",
-    "Nepal government ~200 (2024); opposition/CNN estimate ~15,000 https://warontherocks.com/strangers-in-the-motherland-the-dynamics-of-russias-foreign-recruitment/"
+    "Press only: iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/ (Nepal 603)",
+    "Press only: Nepal government ~200 (2024); opposition/CNN estimate ~15,000 https://warontherocks.com/strangers-in-the-motherland-the-dynamics-of-russias-foreign-recruitment/"
    ],
    "note": "War on the Rocks author: 'mid-thousands'. Government figure (~200) lower than iStories count."
   },
@@ -565,8 +565,8 @@
    "high": null,
    "as_of": "2025-12",
    "sources": [
-    "India MEA, Rajya Sabha Dec 2025: 202 recruited since 2022, 26 dead, 7 missing, 119 discharged https://superkalam.com/current-affairs/19-12-2025/202-indians-hired-for-russian-armed-forces-pg1-7b0d2f4f-de26-44e1-9c03-83b68e74b2a2",
-    "MEA Jan 2025: 126 cases, 12 dead https://www.thenewsminute.com/news/mea-confirms-16-indians-missing-12-dead-in-russian-army-deployment"
+    "Press only: India MEA, Rajya Sabha Dec 2025: 202 recruited since 2022, 26 dead, 7 missing, 119 discharged https://superkalam.com/current-affairs/19-12-2025/202-indians-hired-for-russian-armed-forces-pg1-7b0d2f4f-de26-44e1-9c03-83b68e74b2a2",
+    "Press only: MEA Jan 2025: 126 cases, 12 dead https://www.thenewsminute.com/news/mea-confirms-16-indians-missing-12-dead-in-russian-army-deployment"
    ]
   },
   "LKA": {
@@ -575,8 +575,8 @@
    "high": 897,
    "as_of": "2025/2026-06",
    "sources": [
-    "Sri Lanka government ~280 (via Kyiv Post) https://www.kyivpost.com/analysis/85141",
-    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html (Sri Lanka 897)"
+    "Press only: Sri Lanka government ~280 (via Kyiv Post) https://www.kyivpost.com/analysis/85141",
+    "Press only: Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html (Sri Lanka 897)"
    ]
   },
   "UZB": {
@@ -585,8 +585,8 @@
    "high": 4955,
    "as_of": "2025-04/2026-06",
    "sources": [
-    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
-    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
+    "Press only: iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+    "Press only: Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
    ]
   },
   "TJK": {
@@ -595,8 +595,8 @@
    "high": 3321,
    "as_of": "2025-04/2026-06",
    "sources": [
-    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
-    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
+    "Press only: iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+    "Press only: Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
    ]
   },
   "KAZ": {
@@ -605,8 +605,8 @@
    "high": 2420,
    "as_of": "2025-04/2026-06",
    "sources": [
-    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
-    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
+    "Press only: iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+    "Press only: Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
    ]
   },
   "KGZ": {
@@ -615,8 +615,8 @@
    "high": 1395,
    "as_of": "2025-04/2026-06",
    "sources": [
-    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
-    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
+    "Press only: iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+    "Press only: Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
    ]
   },
   "BLR": {
@@ -625,8 +625,8 @@
    "high": 2871,
    "as_of": "2025-04/2026-06",
    "sources": [
-    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
-    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
+    "Press only: iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+    "Press only: Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
    ]
   },
   "ARM": {
@@ -635,7 +635,7 @@
    "high": 994,
    "as_of": "2026-06",
    "sources": [
-    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
+    "Press only: Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html"
    ]
   },
   "TKM": {
@@ -644,7 +644,7 @@
    "high": null,
    "as_of": "2025-04",
    "sources": [
-    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/"
+    "Press only: iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/"
    ]
   },
   "MDA": {
@@ -653,7 +653,7 @@
    "high": null,
    "as_of": "2025-04",
    "sources": [
-    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/"
+    "Press only: iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/"
    ]
   },
   "CHN": {
@@ -662,7 +662,7 @@
    "high": null,
    "as_of": "2025-04",
    "sources": [
-    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/"
+    "Press only: iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/"
    ]
   },
   "SRB": {
@@ -671,8 +671,8 @@
    "high": 500,
    "as_of": "2025-04/2025-07",
    "sources": [
-    "iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
-    "Frontelligence Jul 2025: Serbia 'similar number' to Cuba (~500) https://frontelligence.substack.com/p/outsourced-war"
+    "Press only: iStories (Vazhnye Istorii), 23 Apr 2025: leaked Moscow EMIAS medical database, >1,500 foreigners from 48 countries (recruitment-centre visits, Moscow only) https://kyivindependent.com/over-1-500-foreign-mercenaries-from-48-countries-join-russian-military-media-reports/",
+    "Press only: Frontelligence Jul 2025: Serbia 'similar number' to Cuba (~500) https://frontelligence.substack.com/p/outsourced-war"
    ]
   },
   "KEN": {
@@ -681,7 +681,7 @@
    "high": 1000,
    "as_of": "2026-02",
    "sources": [
-    "Kenyan government ~200; Kenyan intelligence report to parliament Feb 2026: 1,000 https://www.npr.org/2026/02/19/g-s1-110724/russia-ukraine-war-kenyans-recruited"
+    "Press only: Kenyan government ~200; Kenyan intelligence report to parliament Feb 2026: 1,000 https://www.npr.org/2026/02/19/g-s1-110724/russia-ukraine-war-kenyans-recruited"
    ]
   },
   "SYR": {
@@ -700,7 +700,7 @@
    "high": null,
    "as_of": "2026-08",
    "sources": [
-    "Ukraine Foreign Intelligence Service (BELLIGERENT), Aug 2026, via Kyiv Post https://www.kyivpost.com/analysis/85141"
+    "Press only: Ukraine Foreign Intelligence Service (BELLIGERENT), Aug 2026, via Kyiv Post https://www.kyivpost.com/analysis/85141"
    ]
   },
   "_AFRICA": {
@@ -709,7 +709,7 @@
    "high": null,
    "as_of": "2025-11",
    "sources": [
-    "Ukraine FM Sybiha (BELLIGERENT): >1,400 Africans from 36 countries https://www.aljazeera.com/news/2025/11/8/ukraines-fm-says-over-1400-africans-recruited-to-fight-for-russia-in-war"
+    "Press only: Ukraine FM Sybiha (BELLIGERENT): >1,400 Africans from 36 countries https://www.aljazeera.com/news/2025/11/8/ukraines-fm-says-over-1400-africans-recruited-to-fight-for-russia-in-war"
    ]
   },
   "_SAS4": {
@@ -718,7 +718,7 @@
    "high": null,
    "as_of": "2025/2026",
    "sources": [
-    "Ukraine Coordination HQ for POWs (BELLIGERENT): Sri Lanka+Nepal+India+Pakistan >=1,794 https://www.kyivpost.com/analysis/85141"
+    "Press only: Ukraine Coordination HQ for POWs (BELLIGERENT): Sri Lanka+Nepal+India+Pakistan >=1,794 https://www.kyivpost.com/analysis/85141"
    ]
   },
   "_TOTAL_EXCL_PRK": {
@@ -727,9 +727,9 @@
    "high": 28000,
    "as_of": "2025-07/2026-06",
    "sources": [
-    "Frontelligence Jul 2025: 4,660-8,000 foreign recruits https://frontelligence.substack.com/p/outsourced-war",
-    "War on the Rocks: ~10,000, 'may well be closer to 20,000' https://warontherocks.com/strangers-in-the-motherland-the-dynamics-of-russias-foreign-recruitment/",
-    "Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html (>28,000 non-DPRK)"
+    "Press only: Frontelligence Jul 2025: 4,660-8,000 foreign recruits https://frontelligence.substack.com/p/outsourced-war",
+    "Press only: War on the Rocks: ~10,000, 'may well be closer to 20,000' https://warontherocks.com/strangers-in-the-motherland-the-dynamics-of-russias-foreign-recruitment/",
+    "Press only: Ukraine GUR / CCD 'I Want to Live' project (BELLIGERENT), Jun 2026: >42,000 foreigners incl. >14,000 DPRK https://newsukraine.rbc.ua/news/russia-s-top-source-of-foreign-mercenaries-1781320790.html (>28,000 non-DPRK)"
    ],
    "note": "GUR per-country list does not reconcile with its own total (sums to ~31,850 non-DPRK). Dead foreigners (excl. DPRK) identified by BBC/Mediazona: 1,285 as of Jul 2026."
   }
@@ -3924,7 +3924,7 @@
    "context": "Government reports EUR 57.6bn military aid; Kiel traces EUR 56.3bn: ~22.7bn disbursed 2022-25 (budget), 11.6bn appropriated 2026 (disbursement unknown), 22bn future commitments. Undisclosed = item-level content, not totals. Mar-Apr 2026 allocations EUR 4.2bn.",
    "sources": [
     "Kiel Institute, 8 Oct 2026 (Policy Brief 10/2026) https://www.kielinstitut.de/media/news/ukraine-support-tracker-only-eur-417-billion-of-germanys-eur-100-billion-went-to-ukraine/",
-    "Merz announcement May 2025 https://euromaidanpress.com/2025/05/11/germany-to-halt-public-reports-on-arms-sent-to-ukraine/"
+    "Press only: Merz announcement May 2025 https://euromaidanpress.com/2025/05/11/germany-to-halt-public-reports-on-arms-sent-to-ukraine/"
    ],
    "certainty": "B"
   },
@@ -3938,8 +3938,8 @@
    "context": "Bloomberg sources: first 11 packages EUR 2.5-3bn; Chief of Defence Staff Dec 2025: 'exceeded EUR 3bn'. IAI: no official data. 12th package (Nov 2025) value unknown -> high could exceed 3.0.",
    "sources": [
     "IAI https://www.iai.it/en/node/22399",
-    "Kyiv Independent/NV on 12th package https://english.nv.ua/amp/12th-italian-aid-package-boosts-ukraine-s-air-defenses-50565109.html",
-    "Il Sole 24 Ore https://en.ilsole24ore.com/art/weapons-from-italia-to-kyiv-controversy-erupts-over-crosetto-and-the-copasir-decree-when-will-it-be-ready-AJ5P70v"
+    "Press only: Kyiv Independent/NV on 12th package https://english.nv.ua/amp/12th-italian-aid-package-boosts-ukraine-s-air-defenses-50565109.html",
+    "Press only: Il Sole 24 Ore https://en.ilsole24ore.com/art/weapons-from-italia-to-kyiv-controversy-erupts-over-crosetto-and-the-copasir-decree-when-will-it-be-ready-AJ5P70v"
    ],
    "certainty": "C"
   },
@@ -3953,8 +3953,8 @@
    "context": "Range for Feb 2022-Dec 2023 equipment: Kiel own estimate EUR 0.64bn (equipment) vs MoD EUR 2.615bn equipment (+1.2bn EPF = 3.8bn); parliamentary report (Nov 2023) EUR 3.2bn total/1.7bn equipment at replacement cost. Gap is valuation, not necessarily hidden deliveries. Unverified 2025 media figure EUR 8.6bn (5.9bn arms) via Russian-embassy-sourced report - not used.",
    "sources": [
     "Kiel research note https://www.kielinstitut.de/fileadmin/Dateiverwaltung/Subject_Dossiers_Topics/Ukraine/Ukraine_Support_Tracker/Ukraine_Support_Tracker_-_Research_Note.pdf",
-    "European Focus https://europeanfocus.eu/number-of-the-week-france-aid-ukraine-war-russia/",
-    "Public Sénat (Lecornu) https://www.publicsenat.fr/actualites/international/ukraine-avec-le-degel-des-avoirs-russes-la-france-aura-accorde-pres-de-3-milliards-deuros-daides-en-2024-annonce-sebastien-lecornu"
+    "Press only: European Focus https://europeanfocus.eu/number-of-the-week-france-aid-ukraine-war-russia/",
+    "Press only: Public Sénat (Lecornu) https://www.publicsenat.fr/actualites/international/ukraine-avec-le-degel-des-avoirs-russes-la-france-aura-accorde-pres-de-3-milliards-deuros-daides-en-2024-annonce-sebastien-lecornu"
    ],
    "certainty": "C"
   },
@@ -3967,8 +3967,8 @@
    },
    "context": "Ex-PM Petkov: ~1/3 of Ukraine's early-war ammunition; ex-FinMin Vassilev: up to 40% of diesel (Apr-Aug 2022). Paid sales via private firms - not donations; no value estimate found.",
    "sources": [
-    "Die Welt Jan 2023 via Militarnyi https://militarnyi.com/en/news/at-the-beginning-of-the-war-a-third-of-ukrainian-ammunition-was-supplied-from-bulgaria-welt/",
-    "bne IntelliNews https://www.intellinews.com/bulgaria-secretly-provided-fuel-and-ammunition-to-ukraine-at-start-of-russian-invasion-267304/"
+    "Press only: Die Welt Jan 2023 via Militarnyi https://militarnyi.com/en/news/at-the-beginning-of-the-war-a-third-of-ukrainian-ammunition-was-supplied-from-bulgaria-welt/",
+    "Press only: bne IntelliNews https://www.intellinews.com/bulgaria-secretly-provided-fuel-and-ammunition-to-ukraine-at-start-of-russian-invasion-267304/"
    ],
    "certainty": "D"
   },

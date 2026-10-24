@@ -8445,7 +8445,8 @@
   {
    "name": "CREA via Sydney Morning Herald: Hengyi Russian crude 5% (2022), 37% (2025), 72% (Jan-Jul 2026, peak 88% Apr-Jun); 68% of fuel to Australia Russian-derived in Jan-Jul 2026 vs 24% two years earlier; 2.6 Mt to Australia since 2022; 43% of Hengyi exports to Australia",
    "url": "https://au.headtopics.com/news/majority-of-australian-fuel-from-key-refinery-traced-to-87992177",
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "kind": "press"
   },
   {
    "name": "Australian Federation of Ukrainian Organisations, summary of the same CREA report",
@@ -8480,12 +8481,14 @@
   {
    "name": "Novaya Gazeta Europe, The billion-euro loophole (CREA: EUR 929 mn Jan-May 2026 via Turkiye, India, Georgia; 36 of 49 shipments from Turkish ports; Cyprus 16 cargoes)",
    "url": "https://novayagazeta.eu/en/articles/2026/06/24/the-billion-euro-loophole-en",
-   "date": "2026-06-24"
+   "date": "2026-06-24",
+   "kind": "press"
   },
   {
    "name": "Global Trade Review, EU still buying Russian oil products as Turkey becomes re-export hub",
    "url": "https://www.gtreview.com/news/europe/eu-still-buying-russian-oil-products-as-turkey-becomes-re-export-hub/",
-   "date": "2024-05"
+   "date": "2024-05",
+   "kind": "press"
   },
   {
    "name": "Eurostat Comext DS-045409: HS 2710 imports of GR, CY, BG, MT, ES, IT, RO by origin, annual 2019-2025 and monthly Jan-Aug 2025/2026",

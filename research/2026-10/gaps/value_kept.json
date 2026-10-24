@@ -34528,32 +34528,38 @@
   {
    "name": "Defense Daily / Defense News: US Army 155mm ramp-up (14,000-14,500/month before 2022; 85,000 target by 2028)",
    "url": "https://www.defensenews.com/digital-show-dailies/2023/03/28/us-army-eyes-six-fold-production-boost-of-155mm-shells-used-in-ukraine/",
-   "date": "2023-03-28"
+   "date": "2023-03-28",
+   "kind": "press"
   },
   {
    "name": "The Defense Post: US artillery shell production ~40,000/month mid-2025",
    "url": "https://thedefensepost.com/2025/06/19/us-artillery-shells-production/amp/",
-   "date": "2025-06-19"
+   "date": "2025-06-19",
+   "kind": "press"
   },
   {
    "name": "Pentagon IG via CBS News/UkrNews: ~36,000 shells/month March 2026",
    "url": "https://ukranews.com/en/amp/news/1163285-us-unable-to-increase-production-of-155-mm-shells-to-100-000-per-month-in-two-years-cbs-news",
-   "date": "2026"
+   "date": "2026",
+   "kind": "press"
   },
   {
    "name": "Rheinmetall Expal 450,000 rounds/yr; Rheinmetall group ~700,000 rounds (2025), Unterlüß 350,000",
    "url": "https://defence-industry.eu/rheinmetall-expal-munitions-reaches-450000-annual-output-of-155mm-shells/",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "Army Technology: Rheinmetall Unterlüß ammunition plant",
    "url": "https://www.army-technology.com/news/rheinmetall-ammunition-factory-germany/",
-   "date": "2025-08"
+   "date": "2025-08",
+   "kind": "press"
   },
   {
    "name": "LIGA.net / CSG: Czech initiative sourcing (own production, partner production abroad, bought stockpiles); 3.7m rounds",
    "url": "https://news.liga.net/en/amp/politics/news/the-arms-giant-disclosed-how-many-shells-ukraine-received-under-the-czech-initiative-and-their-cost",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "Janes: South Korea parts localisation; Asia Economy: core component localisation 65%",
@@ -34563,7 +34569,8 @@
   {
    "name": "Hurriyet Daily News: Turkish defence local content 82-83% (official)",
    "url": "https://www.hurriyetdailynews.com/defense-industrys-local-content-at-83-pct-gorgun-227711",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "Middle East Forum: Turkey's defence industry far from self-sufficient (engines)",
@@ -34573,17 +34580,20 @@
   {
    "name": "Draghi report on EU competitiveness (via Defense News): 78% of EU defence procurement June 2022-June 2023 from outside the EU, 63% US",
    "url": "https://defensenews.com/global/europe/2024/09/10/eu-told-to-hire-defense-commissioner-to-compete-with-us",
-   "date": "2024-09-10"
+   "date": "2024-09-10",
+   "kind": "press"
   },
   {
    "name": "Taiwan arms backlog USD 18.7bn, Ukraine diversion cited (WSJ via Taiwan News) and contested (War on the Rocks)",
    "url": "https://www.taiwannews.com.tw/en/news/4733798",
-   "date": "2022-11"
+   "date": "2022-11",
+   "kind": "press"
   },
   {
    "name": "War on the Rocks: The real reasons for Taiwan's arms backlog",
    "url": "https://warontherocks.com/?p=28091",
-   "date": "2023"
+   "date": "2023",
+   "kind": "press"
   },
   {
    "name": "Haidar, J.I. (2017) Sanctions and export deflection: evidence from Iran, Economic Policy 32(90)",
@@ -34613,12 +34623,14 @@
   {
    "name": "CarNewsChina / Caixin: Chinese car exports to Russia 2023-2025",
    "url": "https://carnewschina.com/2025/11/17/chinese-auto-exports-to-russia-plummet-58-amid-policy-squeeze-and-market-cool-down/",
-   "date": "2025-11-17"
+   "date": "2025-11-17",
+   "kind": "press"
   },
   {
    "name": "FastForward / KPMG Cyprus: arrivals 2023 at 97% of 2019 despite losing ~0.8m Russian visitors",
    "url": "https://fastforward.com.cy/business/cyprus-tourist-arrivals-surge-despite-loss-russian-market",
-   "date": "2023"
+   "date": "2023",
+   "kind": "press"
   },
   {
    "name": "KPMG Cyprus hospitality newsletter June 2024",
@@ -34628,12 +34640,14 @@
   {
    "name": "Argus Russian-origin freight assessments vs 'baseline' (sanctions premium); Baltic-India Aframax rates 2022 vs 2025 (Reuters via WorldPorts)",
    "url": "https://www.hellenicshippingnews.com/argus-launches-freight-rates-for-russian-crude-exports-to-india-and-china/",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   },
   {
    "name": "WorldPorts: freight rates for Russian oil shipments to India",
    "url": "https://www.worldports.org/freight-rates-for-russian-oil-shipments-to-india-continue-to-climb",
-   "date": "2025"
+   "date": "2025",
+   "kind": "press"
   }
  ],
  "overlaps": "This file holds factors only, no EUR flows, so it cannot double count by itself. It replaces META.lost_margin (0.2, x0.5-1.5) in profit3() and the flowback margin in calc(), and SHIPPING_PROFIT['freight'] in build_data.py. It must not be applied on top of them. Exceptions the builder must respect: (1) ua_arms_purchases.json CZE.broker_margin_profit is already a margin (value added): apply only an extra factor (0.75) or keep as is, not value_kept again. (2) Re-export hubs (trade.md): the trading margin a hub keeps is value added; apply 0.85 x extra to it, not the goods value_kept, and re-exports moved to origin countries take the origin's factors. (3) Shipping 'ship_sales' (price premium) and 'registry' keep SHIPPING_PROFIT; insurance_finance may use value_kept 0.85 (K sector) x the shipping extra. (4) The cost view's 'profit lost on sales to Russia' can use the same products. (5) Stock replacement (A2) and the ledger (A1) define the flows; this file only prices them.",

@@ -14923,7 +14923,8 @@
   {
    "name": "Ukraine Support Loan EUR 90bn: interest-free, repaid only from Russian reparations, interest from EU budget (Liga.net / NBC)",
    "url": "https://news.liga.net/en/economics/news/the-eu-has-agreed-on-90-billion-in-aid-for-ukraine",
-   "date": "2025-12-19"
+   "date": "2025-12-19",
+   "kind": "press"
   },
   {
    "name": "Council text: Ukraine Support Loan to be repaid by reparations due by Russia (ST-5738-2026)",
@@ -14933,12 +14934,14 @@
   {
    "name": "bne IntelliNews: Ukraine USD 1.25bn 8-year Eurobond priced at 6.875% (Apr 2021)",
    "url": "https://www.intellinews.com/ukraine-issued-a-1-25bn-eight-year-eurobond-on-april-26-to-high-demand-209139",
-   "date": "2021-04-27"
+   "date": "2021-04-27",
+   "kind": "press"
   },
   {
    "name": "Interfax-Ukraine: USD 500m tap at 6.30% (Jul 2021)",
    "url": "https://en.interfax.com.ua/news/economic/758134.html",
-   "date": "2021-07-22"
+   "date": "2021-07-22",
+   "kind": "press"
   },
   {
    "name": "ICU Weekly Insight 15 Aug 2022: Eurobonds at 20-35 cents after payment deferral",
@@ -14948,12 +14951,14 @@
   {
    "name": "Kyiv Post / ICU Weekly Insight Dec 2023: Eurobonds at 24-31 cents",
    "url": "https://www.kyivpost.com/amp/post/25810",
-   "date": "2023-12-18"
+   "date": "2023-12-18",
+   "kind": "press"
   },
   {
    "name": "Kyiv Post / ICU Weekly Insight Nov 2024 and Jan 2025: spreads 1,000-1,500bp, yields below 15%",
    "url": "https://www.kyivpost.com/category/finance?page=15",
-   "date": "2025-01-27"
+   "date": "2025-01-27",
+   "kind": "press"
   },
   {
    "name": "ICU Weekly Insight 26 Jan 2026: Eurobond yield map, YTM 11-16%",
@@ -15028,7 +15033,8 @@
   {
    "name": "Ukrinform: Ukraine prices USD 1.25bn 8-year Eurobond at 6.875% (normal rate)",
    "url": "https://www.ukrinform.net/rubric-economy/3235891-ukraine-to-issue-eurobonds-worth-125b-finance-ministry.html",
-   "date": "2021-04-27"
+   "date": "2021-04-27",
+   "kind": "press"
   },
   {
    "name": "ICU Weekly Insight: weekly Eurobond price ranges 2022-2024 (72 issues; example 28 Mar 2022)",
@@ -15068,7 +15074,8 @@
   {
    "name": "Interfax: Ukraine repaid USD 279.7m to the IMF in February 2026",
    "url": "https://interfax.com/newsroom/top-stories/116503/",
-   "date": "2026-03-06"
+   "date": "2026-03-06",
+   "kind": "press"
   },
   {
    "name": "FRED (OECD): 10-year government bond yields, series IRLTLT01xxM156N (lenders' funding rates)",

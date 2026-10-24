@@ -4056,7 +4056,8 @@
   "reuters_2021_mali": {
    "name": "Reuters (Irish, Lewis), 13 Sept 2021: deal allowing Russian mercenaries into Mali is close - 6bn CFA francs (USD 10.8m) a month, four sources; as carried by Al Jazeera",
    "url": "https://www.aljazeera.com/news/2021/9/14/france-warns-mali-against-russian-wagner-mercenary-deal",
-   "certainty": "C"
+   "certainty": "C",
+   "kind": "press"
   },
   "treasury_jy1645": {
    "name": "US Treasury jy1645, 24 July 2023: Malian officials facilitating Wagner; Wagner's arrival in Mali in December 2021",
@@ -4136,17 +4137,20 @@
   "cnn_2022_sudan": {
    "name": "CNN (July 2022): Russia is plundering gold in Sudan to boost Putin's war effort in Ukraine - 16 flights, Meroe Gold, al-Ibaidiya plant (syndicated copy)",
    "url": "https://abc17news.com/news/national-world/cnn-europe-mideast-africa/2022/07/29/russia-is-plundering-gold-in-sudan-to-boost-putins-war-effort-in-ukraine-2/",
-   "certainty": "C"
+   "certainty": "C",
+   "kind": "press"
   },
   "fp_2020_uae": {
    "name": "Foreign Policy, 30 Nov 2020: Pentagon says UAE possibly funding Wagner in Libya",
    "url": "https://foreignpolicy.com/2020/11/30/pentagon-trump-russia-libya-uae/",
-   "certainty": "C"
+   "certainty": "C",
+   "kind": "press"
   },
   "aljazeera_2022_libya": {
    "name": "Al Jazeera, 15 Apr 2022: Russians unlikely to leave Libya despite Ukraine war (FT: ~200 Wagner and 1,000 Syrians moved; analysts 300-400)",
    "url": "https://www.aljazeera.com/news/2022/4/15/russians-unlikely-leave-libya-despite-ukraine-war",
-   "certainty": "C"
+   "certainty": "C",
+   "kind": "press"
   },
   "aeow_2024_libya": {
    "name": "All Eyes on Wagner, 10 May 2024: Mediterranean Sea objective for the Africa Corps (Libya hub)",
@@ -4161,42 +4165,50 @@
   "aljazeera_2025_exit": {
    "name": "Al Jazeera, 6 June 2025: Wagner leaving Mali, Africa Corps to remain",
    "url": "https://www.aljazeera.com/news/2025/6/6/russias-wagner-mercenaries-leaving-mali-africa-corps-to-remain",
-   "certainty": "B"
+   "certainty": "B",
+   "kind": "press"
   },
   "aljazeera_2026_mali": {
    "name": "Al Jazeera, 29 Apr 2026: what role has Russia played in Mali (Kidal lost, April 2026 offensive)",
    "url": "https://www.aljazeera.com/news/2026/4/29/what-role-has-russia-played-in-malis-security-and-the-sahel-region",
-   "certainty": "B"
+   "certainty": "B",
+   "kind": "press"
   },
   "adf_2026_mali": {
    "name": "ADF Magazine, May 2026: Mercenaries in Mali come with high cost, few results ('nearly USD 1 billion' since 2021; at least USD 10m a month; paid in cash)",
    "url": "https://adf-magazine.com/2026/05/mercenaries-in-mali-come-with-high-cost-few-results/",
-   "certainty": "D (US AFRICOM publication, unsourced totals)"
+   "certainty": "D (US AFRICOM publication, unsourced totals)",
+   "kind": "press"
   },
   "wotr_2026": {
    "name": "War on the Rocks (Parens), 3 Sept 2026: Russia's Road to El Dorado (Mali paid from gold taxes; RUSI quote)",
    "url": "https://warontherocks.com/2026/09/russias-road-to-el-dorado/",
-   "certainty": "C"
+   "certainty": "C",
+   "kind": "press"
   },
   "ap_2025_car": {
    "name": "AP, 6 Aug 2025: Russia asks CAR to replace Wagner with state-run Africa Corps and pay for it (syndicated copy)",
    "url": "https://www.news4jax.com/business/2025/08/06/russia-asks-central-african-republic-to-replace-wagner-with-state-run-africa-corps-and-pay-for-it/",
-   "certainty": "C"
+   "certainty": "C",
+   "kind": "press"
   },
   "occrp_2022_diamonds": {
    "name": "OCCRP, 7 Dec 2022: Wagner mercenaries profit from Central Africa's blood diamonds (Diamville USD 12m in 16 months)",
    "url": "https://www.occrp.org/en/news/report-wagner-mercenaries-profit-from-central-africas-blood-diamonds",
-   "certainty": "C"
+   "certainty": "C",
+   "kind": "press"
   },
   "nbc_2023_car": {
    "name": "NBC News, 1 June 2023: Russian mercenaries exploit a war-torn African nation (Ndassima)",
    "url": "https://www.nbcnews.com/news/africa/wagner-ukraine-russia-central-african-republic-gold-mine-putin-rcna86392",
-   "certainty": "C"
+   "certainty": "C",
+   "kind": "press"
   },
   "globe_2024_ndassima": {
    "name": "Globe and Mail: Canadian-owned mine seized by Russian mercenaries (AXMIN USD 340m 2011; CAR document USD 2.8bn)",
    "url": "https://theglobeandmail.com/business/article-canadian-owned-mine-seized-by-russian-mercenaries-in-africa-is-helping/",
-   "certainty": "C"
+   "certainty": "C",
+   "kind": "press"
   },
   "osw_2024_bfa": {
    "name": "OSW, 31 Jan 2024: Wagner forces under a new flag - Russia's Africa Corps in Burkina Faso (100 landed, 200 more expected)",
@@ -4206,22 +4218,26 @@
   "aljazeera_2022_bfa": {
    "name": "Al Jazeera, 21 Dec 2022: Burkina Faso denies paying Wagner with mine rights",
    "url": "https://www.aljazeera.com/news/2022/12/21/burkina-faso-denies-it-paid-russian-fighters-with-mine-rights",
-   "certainty": "C"
+   "certainty": "C",
+   "kind": "press"
   },
   "cnn_2024_niger": {
    "name": "CNN (via KRDO), 12 Apr 2024: Russian weapons and trainers arrive in Niger",
    "url": "https://krdo.com/news/2024/04/12/russian-weapons-and-trainers-arrive-in-niger-weeks-after-us-military-agreement-ends/",
-   "certainty": "B"
+   "certainty": "B",
+   "kind": "press"
   },
   "ghanaian_times_2024_gnq": {
    "name": "BBC via Ghanaian Times: Russia sends military instructors to Equatorial Guinea (Reuters sources: 100-200)",
    "url": "https://ghanaiantimes.com.gh/russia-sends-military-instructors-to-equatorial-guinea-reports",
-   "certainty": "C"
+   "certainty": "C",
+   "kind": "press"
   },
   "fides_2026_gnq": {
    "name": "Fides, Sept 2026: Equatorial Guinea says it foiled a coup with Russian help (100-300 Africa Corps, Jeune Afrique)",
    "url": "https://fides.org/en/news/78126",
-   "certainty": "C"
+   "certainty": "C",
+   "kind": "press"
   }
  }
 }

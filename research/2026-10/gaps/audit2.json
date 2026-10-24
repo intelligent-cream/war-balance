@@ -28,12 +28,14 @@
   "bloomberg_hk_gold": {
    "name": "Bloomberg via mining.com: Hong Kong ousts Dubai as biggest hub for Russian gold trade",
    "url": "https://www.mining.com/web/hong-kong-ousts-dubai-as-biggest-hub-for-russian-gold-trade/",
-   "date": "2023-11-15"
+   "date": "2023-11-15",
+   "kind": "press"
   },
   "gulfbusiness_uae": {
    "name": "Gulf Business: UAE-Russia non-oil trade USD 20.4bn in 2025 (+77.7%)",
    "url": "https://gulfbusiness.com/en/2025/trade/uae-russia-ink-trade-services-and-investment-pact/",
-   "date": "2026"
+   "date": "2026",
+   "kind": "press"
   },
   "crea_api": {
    "name": "CREA Russia Fossil Tracker API (as stored in energy.json: fossil_from_russia and tonnes by fuel for the UAE)",
@@ -58,7 +60,8 @@
   "publicsenat_fr": {
    "name": "Public Senat: France's 2024 aid 'between two and three billion, closer to three', of which about EUR 300m from frozen Russian assets",
    "url": "https://www.publicsenat.fr/actualites/international/ukraine-avec-le-degel-des-avoirs-russes-la-france-aura-accorde-pres-de-3-milliards-deuros-daides-en-2024-annonce-sebastien-lecornu",
-   "date": "2024-10-15"
+   "date": "2024-10-15",
+   "kind": "press"
   },
   "residual_notes": {
    "name": "This repository: residual.json and residual-notes.md (partner/FCS ratio 0.908-0.935 in 2019-2021; war-specific excess USD 10/17/21/30bn in 2022-2025)",
@@ -98,7 +101,8 @@
   "baltictimes_lt": {
    "name": "Baltic Times: Lithuania's exports to Russia up 30% in 2017, Lithuanian-origin goods +12%; under 2.5% of Lithuanian production sold to Russia",
    "url": "https://www.baltictimes.com/lithuania_s_exports_to_russia_up_30_pct_in_2017__goods_of_lithuanian_origin_by_12_pct_y/y/",
-   "date": "2018"
+   "date": "2018",
+   "kind": "press"
   },
   "nordea_lt": {
    "name": "Nordea research on Lithuania (Statistics Lithuania data): 85% of goods exports to Russia in 2013 were re-exports (EUR 4.2bn)",

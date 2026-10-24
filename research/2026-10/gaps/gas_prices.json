@@ -126,7 +126,8 @@
     {
      "name": "ARKA / JAM News: Gazprom border price for Armenia $165/1000 m3 since 2019, unchanged",
      "url": "https://jam-news.net/explainer-russian-armenian-gas-talks/",
-     "date": "2020-2023"
+     "date": "2020-2023",
+     "kind": "press"
     }
    ],
    "reasoning": "Armenian customs unit values (value / reported m3) give $163-169/1000 m3, matching the published $165. EUR index moves only with USD/EUR. 2026 = Comtrade monthly (Jan-May, Aug)."
@@ -837,7 +838,8 @@
     {
      "name": "RFE/RL and PGJ: Energoinvest price adjusted quarterly on 9-month change in oil-product prices; Gazprom +9.7% from Oct 2022",
      "url": "https://www.pgjonline.com/news/2022/june/bosnian-region-extends-gazprom-gas-deal-until-end-2022",
-     "date": "2022-06"
+     "date": "2022-06",
+     "kind": "press"
     }
    ],
    "reasoning": "Bosnian customs unit values (oil-indexed, hence no 2022 spike). 2026 = Comtrade monthly January-August."
@@ -952,17 +954,20 @@
     {
      "name": "PrimePress: price of Russian gas for Belarus up 1.2% to $128.5 in 2021 (from $127 in 2020)",
      "url": "https://primepress.by/news/ekonomika/price_of_russia_s_gas_for_belarus_up_1_2_to_128_5_per_1_000_cubic_meters_in_2021-28396/",
-     "date": "2021-01"
+     "date": "2021-01",
+     "kind": "press"
     },
     {
      "name": "Belarus price: S&P Global \"Russia to keep gas price unchanged for Belarus in 2022\" ($128.5/1000 m3); neg.by citing Russian Economy Minister Reshetnikov: fixed $128.5 for 2024-2025",
      "url": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/091021-russia-to-keep-gas-price-unchanged-for-belarus-in-2022",
-     "date": "2021-09-10 / 2023-11"
+     "date": "2021-09-10 / 2023-11",
+     "kind": "press"
     },
     {
      "name": "neg.by: price of Russian gas for Belarus for 2024-2025",
      "url": "https://neg.by/novosti/otkrytj/stala-izvestna-tsena-rossiyskogo-gaza-dlya-belarusi-na-2024-2025-gody/",
-     "date": "2023-11"
+     "date": "2023-11",
+     "kind": "press"
     }
    ],
    "reasoning": "Belarus no longer reports partner trade, so the price is the published USD contract price converted at ECB annual USD/EUR rates and 10.55 kWh/m3. Because the price is fixed in dollars (roubles since 2023), the EUR index moves only with the exchange rate. 2023-2025 ±8% (rouble settlement, protocol not public for 2023); 2026 ±15% (assumed unchanged)."
@@ -1360,7 +1365,8 @@
     {
      "name": "RFA / Interfax on Power of Siberia prices from Russian and Chinese customs data ($212 launch, ~$203 Jan-Feb 2020, $126 Oct-Nov 2020, $148 2021; oil-product basket with 9-month lag)",
      "url": "https://www.rfa.org/english/commentaries/energy_watch/pipeline-02122021105409.html",
-     "date": "2021-02-12"
+     "date": "2021-02-12",
+     "kind": "press"
     },
     {
      "name": "Gazprom press releases on Power of Siberia annual deliveries (2020 4.1 bcm; 2021 10.4; 2022 15.5; 2023 22.7; 2024 31.0; 2025 38.8)",
@@ -1583,7 +1589,8 @@
     {
      "name": "BAFA Grenzuebergangspreis Erdgas (German border price, all origins) 2019-2022, as tabulated in cleanthinking.de \"Gazprom gewaehrte Deutschland nie einen Gasrabatt\"",
      "url": "https://www.cleanthinking.de/?p=1073555",
-     "date": "2026-09-28"
+     "date": "2026-09-28",
+     "kind": "press"
     },
     {
      "name": "Eurostat Comext DS-045409, monthly imports by HS6 from partner RU (VALUE_IN_EUROS, QUANTITY_IN_100KG), HS 271121 and 271111",
@@ -2800,7 +2807,8 @@
     {
      "name": "bne IntelliNews: Hungary agrees deferred payments with Gazprom for winter gas deliveries",
      "url": "https://intellinews.com/hungary-agrees-on-deferred-payments-with-gazprom-for-winter-gas-deliveries-258321",
-     "date": "2022-10"
+     "date": "2022-10",
+     "kind": "press"
     },
     {
      "name": "energy2.json (this research run): final-use Russian gas volumes and Europe-wide price index",
@@ -4166,12 +4174,14 @@
     {
      "name": "InfoMarket / Interfax reporting on Moldovagaz monthly purchase prices 2021-2023",
      "url": "https://interfax.com/newsroom/top-stories/91091/",
-     "date": "2023"
+     "date": "2023",
+     "kind": "press"
     },
     {
      "name": "S&P Global Platts: Gazprom realised far-abroad price $203/1000 m3 in 2019",
      "url": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/021220-russias-gazprom-eyes-european-gas-exports-at-200-bcmyear-to-2030",
-     "date": "2020-02-12"
+     "date": "2020-02-12",
+     "kind": "press"
     }
    ],
    "reasoning": "Moldovan customs unit values for 2021-2023 (2021: $309/1000 m3, matching the $306 Moldovagaz reported); 2020 = the reported Moldovagaz average; 2019 = estimated from the contract formula (9-month lag on Gazprom's far-abroad price, $203 in 2019 and $245 in 2018 → ≈$235). 2023 covers only a few weeks of right-bank purchases. Transnistria's gas (high case in energy2) had no price paid and is not priced here; 2024-2026 null."
@@ -5055,12 +5065,14 @@
     {
      "name": "TASS: gas price for Serbia under oil formula; Argus: Serbia signs new gas supply contract with Gazprom (2.2 bcm/yr, 100% oil-indexed)",
      "url": "https://www.argusmedia.com/es/news/2336504-serbia-signs-new-gas-supply-contract-with-gazprom",
-     "date": "2022-05/2022-06"
+     "date": "2022-05/2022-06",
+     "kind": "press"
     },
     {
      "name": "bne IntelliNews: Serbia extends Russian gas supply deal until end-September (EUR 290/1000 m3, oil formula)",
      "url": "https://www.intellinews.com/serbia-extends-russian-gas-supply-deal-until-end-september-382948",
-     "date": "2025"
+     "date": "2025",
+     "kind": "press"
     }
    ],
    "reasoning": "Serbian customs unit values; they follow a 9-month Brent average with a factor of ~0.41 EUR/MWh per EUR/bbl (the oil formula used for Turkey and China is calibrated here). The 2021 value (15 EUR/MWh) is low because the lagged oil average was still depressed and Serbia booked part of the year at the old Hungary-route price. 2026 = Comtrade monthly January-July."
@@ -5644,7 +5656,8 @@
     {
      "name": "ICIS: Turkey seeks mid-term Russian gas deal (existing BOTAS contracts oil-indexed)",
      "url": "https://icis.com/explore/resources/news/2021/09/24/10688146/turkey-seeks-mid-term-russian-gas-deal-as-demand-set-to-soar",
-     "date": "2021-09-24"
+     "date": "2021-09-24",
+     "kind": "press"
     },
     {
      "name": "CREA Russia Fossil Tracker, yearly value and tonnes by destination (Kpler-based volumes, CREA price model)",

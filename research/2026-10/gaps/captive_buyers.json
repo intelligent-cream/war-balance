@@ -160,27 +160,35 @@
    "publisher": "IndraStra",
    "date": "2026-10",
    "url": "https://www.indrastra.com/2026/10/mongolias-fuel-crisis-when-third.html",
-   "figures": "Russian share of fuel imports 96.84% (2024), 95% end-2025, ~97% Apr 2026 (Ministry figures); ~3 Mt a year consumed, 97% imported from Russia (PM); 2024 intergovernmental agreement 1.8-1.9 Mt products + 60 kt jet fuel; no functioning domestic refinery"
+   "figures": "Russian share of fuel imports 96.84% (2024), 95% end-2025, ~97% Apr 2026 (Ministry figures); ~3 Mt a year consumed, 97% imported from Russia (PM); 2024 intergovernmental agreement 1.8-1.9 Mt products + 60 kt jet fuel; no functioning domestic refinery",
+   "kind": "press"
   },
   "mng_mt2011": {
    "title": "Mongolian dependence a threat",
    "publisher": "The Moscow Times",
    "date": "2011-06-23",
    "url": "https://www.themoscowtimes.com/2011/06/23/mongolian-dependence-a-threat-a7803",
-   "figures": "~90% of petroleum products from Russia; Chinese fuel ~40% dearer"
+   "figures": "~90% of petroleum products from Russia; Chinese fuel ~40% dearer",
+   "kind": "press"
   },
   "kgz_timesca": {
    "title": "Kyrgyzstan seeks alternative fuel suppliers as Russian export restrictions hit",
    "publisher": "The Times of Central Asia",
    "date": "2026",
    "url": "https://timesca.com/kyrgyzstan-seeks-alternative-fuel-suppliers-as-russian-export-restrictions-hit/",
-   "figures": ">90% of imported petroleum products from Russia; ~1.2 Mt a year imported; domestic refineries ~5% of demand"
+   "figures": ">90% of imported petroleum products from Russia; ~1.2 Mt a year imported; domestic refineries ~5% of demand",
+   "kind": "press"
   },
   "arm_gazprom": {
-   "title": "Gazprom Armenia",
-   "publisher": "Wikipedia (summary of RFE/RL Azatutyun reports)",
-   "url": "https://en.wikipedia.org/wiki/Gazprom_Armenia",
-   "figures": "Gazprom owns 100% of Armenia's gas distribution and the Armenian section of the Iran-Armenia pipeline; Russian gas ~2 bcm vs Iranian ~0.37-0.5 bcm (gas-for-electricity swap)"
+   "title": "Gazprom Armenia: in 2021 CJSC Gazprom Armenia imported 2,449.2 million cubic meters of natural gas",
+   "publisher": "Gazprom Armenia (company release)",
+   "url": "https://armenia.gazprom.com/press/news/2022/02/73",
+   "figures": "Gazprom owns 100% of Armenia's gas distribution and the Armenian section of the Iran-Armenia pipeline; Russian gas ~2 bcm vs Iranian ~0.37-0.5 bcm (gas-for-electricity swap)",
+   "replaced_r41": {
+    "old_url": "https://en.wikipedia.org/wiki/Gazprom_Armenia",
+    "verified": "confirmed by web search 2026-10-24 (page returned 503 to the fetcher); ownership: Gazprom, Jan 2014 (100% of ArmRosgazprom), r39 C4"
+   },
+   "official_check_r41": "Gazprom Armenia's own release gives 2,449.2 million m3 imported in 2021 (Russian gas), against '~2 bcm' in figures; Iranian ~0.37 bcm (swap) is a press estimate. Label only, no number change"
   },
   "srb_interconnector": {
    "title": "Serbia - Bulgaria gas pipeline opened to diversify energy supplies",
@@ -193,14 +201,16 @@
    "title": "Fact check: Does Hungary have alternatives to the Druzhba pipeline?",
    "publisher": "Euronews",
    "date": "2026-03-31",
-   "url": "https://euronews.com/my-europe/2026/03/31/fact-check-does-hungary-have-alternatives-to-the-druzhba-pipeline"
+   "url": "https://euronews.com/my-europe/2026/03/31/fact-check-does-hungary-have-alternatives-to-the-druzhba-pipeline",
+   "kind": "press"
   },
   "adria_tests": {
    "title": "Adriatic pipeline tests fail to verify stable oil supply for Hungary, Slovakia, MOL says",
    "publisher": "MarketScreener (Reuters)",
    "date": "2026",
    "url": "https://www.marketscreener.com/news/adriatic-pipeline-tests-fail-to-verify-stable-oil-supply-for-hungary-slovakia-mol-says-ce7d58d2d98afe27",
-   "figures": "JANAF: 1.2 Mt/month = 14.4 Mt/yr confirmed in Feb 2023 tests, enough for MOL's Hungarian and Slovak refineries; MOL: never more than 2.2 Mt moved on the relevant section, tests not verified"
+   "figures": "JANAF: 1.2 Mt/month = 14.4 Mt/yr confirmed in Feb 2023 tests, enough for MOL's Hungarian and Slovak refineries; MOL: never more than 2.2 Mt moved on the relevant section, tests not verified",
+   "kind": "press"
   },
   "osw_moldova": {
    "title": "Moldova diversifies gas import sources",

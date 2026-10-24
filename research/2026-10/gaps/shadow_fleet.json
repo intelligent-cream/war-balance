@@ -8480,17 +8480,20 @@
   {
    "name": "Lloyd's List: Greeks shipping half of Russian crude (Greek beneficially owned tankers 50% of oil shipments Aug 2022 vs a third Aug 2021)",
    "url": "https://www.lloydslist.com/LL1142145/Greeks-shipping-half-of-Russian-crude",
-   "date": "2022-09"
+   "date": "2022-09",
+   "kind": "press"
   },
   {
    "name": "Lloyd's List: Greece owners ship 42% of crude in October",
    "url": "https://www.lloydslist.com/LL1142763/Russia-postsanctions-tanker-tonnage-challenge-exposed-as-Greece-owners-ship-42-of-crude-in-October",
-   "date": "2022-11"
+   "date": "2022-11",
+   "kind": "press"
   },
   {
    "name": "S&P Global via Hellenic Shipping News: G7-linked tankers 52.4% of Russian crude May 2023, 30.1% Jan 2024, 33% Feb 2024; Greek operators 11.5m / 16.6m bbl Jan / Feb 2024",
    "url": "https://www.hellenicshippingnews.com/greek-operators-regain-share-in-russian-crude-exports-despite-tighter-sanctions/",
-   "date": "2024-03-08"
+   "date": "2024-03-08",
+   "kind": "press"
   },
   {
    "name": "S&P Global Market Intelligence whitepaper: Greek owners carry 20%+ of Russian crude",
@@ -8500,7 +8503,8 @@
   {
    "name": "Kpler data via Cyprus Shipping News / PGJ (Reuters): Greek beneficially owned vessels 34% of Russia-linked seaborne volume, 33% of crude, 51% of fuel oil, 1 Jan-27 Jul 2025",
    "url": "https://pgjonline.com/news/2025/july/greek-tankers-to-keep-moving-russian-oil-despite-new-eu-sanctions",
-   "date": "2025-07-22"
+   "date": "2025-07-22",
+   "kind": "press"
   },
   {
    "name": "Windward: Greek shipowners fill Russia's tonnage void (Jun 2025: 37% of crude+products, 41% of Urals, 43% of clean products)",
@@ -8520,7 +8524,8 @@
   {
    "name": "FT analysis via GreekReporter: Greek shipping companies made USD 3.8bn transporting Russian crude since mid-2023",
    "url": "https://greekreporter.com/2026/07/07/greek-shipping-companies-russian-oil/",
-   "date": "2026-07-07"
+   "date": "2026-07-07",
+   "kind": "press"
   },
   {
    "name": "Brookings (Brooks & Harris): Where did Russia's shadow fleet come from? (shadow ~6% of departures pre-war, ~35% early 2025; Greek owners largest sellers)",
@@ -8530,7 +8535,8 @@
   {
    "name": "Shipping Telegraph on CREA registered-owner counts (UAE ~41% of shadow crude tankers)",
    "url": "https://shippingtelegraph.com/maritime-insurance-news/uae-and-russia-the-biggest-registered-owners-of-shadow-tankers/",
-   "date": "2024"
+   "date": "2024",
+   "kind": "press"
   }
  ],
  "overlaps": "This file is a re-allocation of the freight part of shipping.json, not a new flow: use it INSTEAD of shipping.json freight (and instead of refine.json shipping_control scaling and the 2026 x1.065 factor), never in addition. Totals are close: all-foreign gross freight 2022-26 here vs shipping.json are given in totals; the difference is mostly the 2026 crude pool (11.0 vs 9.7 USD bn) and a larger Russian pool than shipping.json had before refine. Ship sales (Greek and other tankers sold into the shadow fleet) stay in shipping.json ship_sales and are not in these shares, so a Greek-built/ex-Greek tanker now run by a UAE front counts here for the controller (often Russia) and its sale premium counts for the seller in ship_sales - no double count. Services overlap (uncovered.json sold_to_rus) and CIF overlap with fossil-fuel payments are unchanged and handled by shipping.json overlap_share_with_services_sold_to_rus, which still applies per country. uncovered.json GRC.oil_shipping_earned remains replaced by shipping.json. Insurance by insurer country (UK, Norway IG clubs vs Ingosstrakh) is not re-estimated here.",

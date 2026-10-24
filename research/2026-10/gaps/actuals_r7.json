@@ -418,22 +418,26 @@
      {
       "name": "TASS via InvestFuture: Tajik Minister of Economic Development Abdurakhmonzoda, H1 2026 turnover USD 1.316bn (+22.9%), imports from Russia USD 1.242bn, exports ~USD 74m; 2025 turnover >USD 2.47bn (+~25%), Russia 22.9% of Tajik trade",
       "url": "https://investfuture.ru/articles/tadzhikistan-i-rossiya-uvelichili-tovarooborot-37329310",
-      "date": "2026-07-20"
+      "date": "2026-07-20",
+      "kind": "press"
      },
      {
       "name": "Interfax: Tajik-Russian trade USD 1.9bn in 2024, +USD 200m vs 2023; Jan-Apr 2024 imports USD 600.7m, exports 36.1m",
       "url": "https://interfax.com/newsroom/top-stories/114318/",
-      "date": "2025-10-15"
+      "date": "2025-10-15",
+      "kind": "press"
      },
      {
       "name": "Expert.ru / 1prime: Russian trade representative, Jan-Oct 2024 turnover USD 1.618bn (+19.1%); Jan-Jul 2024 imports from Russia USD 1.06bn",
       "url": "https://expert.ru/news/tovarooborot-tadzhikistana-i-rf-v-yanvare-iyule-2024-goda-prevysil-1-mlrd-dollarov",
-      "date": "2024-08"
+      "date": "2024-08",
+      "kind": "press"
      },
      {
       "name": "Tajik-Russian turnover Jan-Aug 2026 USD 1,676.5m (+16.4%), as reported in Russian-language press (search result; original page not opened)",
       "url": "https://www.alta.ru/external_news/131513/",
-      "date": "2026-09"
+      "date": "2026-09",
+      "kind": "press"
      },
      {
       "name": "UN Comtrade public preview API: reporter's own annual and monthly data (HS TOTAL, 71) and Russia's own 2019-2021 reports (mirror)",
@@ -620,7 +624,8 @@
      {
       "name": "Interfax: Belarus crude pricing (Urals monitoring, export duty, premium in USD/t)",
       "url": "https://www.interfax.ru/business/696274",
-      "date": "2020-02-21"
+      "date": "2020-02-21",
+      "kind": "press"
      },
      {
       "name": "gas_prices.json: Gazprom-Belarus contract price USD 127-128.5/tcm 2019-2026",
