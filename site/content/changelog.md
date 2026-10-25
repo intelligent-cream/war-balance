@@ -2,6 +2,14 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r51">Round 51: Ukraine's strikes on Russian refineries are not a buyer's choice <span class="cl-date">25 October</span></h2>
+
+The owner: "that's not something what any country chose ... it's just a lowering of the baseline".
+
+- Where Ukraine's strikes on refineries, ports and the Druzhba pipeline cut what Russia could export, a buyer that still wanted Russian fuel could not get it. That shortfall no longer counts as its choice: its no-war level is lowered by the fuel it lost (oil products about 5 Mt in 2024, 9 Mt in 2025, 19 Mt in 2026 to August, with a range; crude about none). Buyers that had already stopped by their own embargo are unaffected. Russia's 2022 gas cut-off still counts: it answered the buyers' own sanctions.
+- **What that changes**: EUR 12bn of expected purchases for 58 buyers, most for Türkiye (2.9bn), China (1.7bn), Singapore, India and Brazil; their shift toward Russia grows slightly. No country changes group.
+- **Models we tried**: four ways to predict the no-war level better than "2021 held flat" (from buyers' total demand, from Russia's exports, from predicted shares, and a blend) were back-tested on 2005–2016. None was clearly better, so the simple rule stays; the method page lists them.
+
 <h2 id="cl-r47">Round 47: a better no-war starting point for smaller buyers <span class="cl-date">25 October</span></h2>
 
 The owner: "Fix that". Both rules come from back-testing the no-war level on 2005–2016 trade with Russia.

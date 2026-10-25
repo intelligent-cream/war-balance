@@ -1,0 +1,400 @@
+{
+ "generated": "2026-10-25",
+ "what": "Round 51 (owner): Russian oil exports lost to Ukraine's strikes on refineries, ports and pipelines, by year and product, as [low, central, high]. 'per_tonne_exported' is the lost volume per tonne Russia actually exported that year: the build gives each buyer of that product (pro rata to what it actually bought, from its customs) that share of its own purchases as the volume strikes kept from it, valued at the no-war price, and lowers its no-war level by it, capped at its own no-war level of that product. Buyers under an embargo on that product get nothing. 2026 = January-August.",
+ "unit": "mb/d (year average; 2026 Jan-Aug), Mt (that period), fractions",
+ "seaborne": {
+  "products": {
+   "2022": {
+    "lost_mbd": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "lost_mt": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_of_nowar_exports": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "per_tonne_exported": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "actual_exports_mbd": 2.98,
+    "cap_mbd": 0.0
+   },
+   "2023": {
+    "lost_mbd": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "lost_mt": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_of_nowar_exports": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "per_tonne_exported": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "actual_exports_mbd": 2.97,
+    "cap_mbd": 0.0
+   },
+   "2024": {
+    "lost_mbd": [
+     0.045,
+     0.105,
+     0.22
+    ],
+    "lost_mt": [
+     2.2,
+     5.2,
+     10.8
+    ],
+    "share_of_nowar_exports": [
+     0.0153,
+     0.0356,
+     0.0746
+    ],
+    "per_tonne_exported": [
+     0.0165,
+     0.0385,
+     0.0806
+    ],
+    "actual_exports_mbd": 2.73,
+    "cap_mbd": 0.22
+   },
+   "2025": {
+    "lost_mbd": [
+     0.09,
+     0.182,
+     0.33
+    ],
+    "lost_mt": [
+     4.4,
+     8.9,
+     16.2
+    ],
+    "share_of_nowar_exports": [
+     0.0305,
+     0.0617,
+     0.1119
+    ],
+    "per_tonne_exported": [
+     0.0349,
+     0.0705,
+     0.1279
+    ],
+    "actual_exports_mbd": 2.58,
+    "cap_mbd": 0.37
+   },
+   "2026": {
+    "lost_mbd": [
+     0.375,
+     0.595,
+     0.896
+    ],
+    "lost_mt": [
+     12.2,
+     19.4,
+     29.2
+    ],
+    "share_of_nowar_exports": [
+     0.1271,
+     0.2017,
+     0.3037
+    ],
+    "per_tonne_exported": [
+     0.1826,
+     0.2897,
+     0.4362
+    ],
+    "actual_exports_mbd": 2.054,
+    "cap_mbd": 0.896
+   }
+  },
+  "crude": {
+   "2022": {
+    "lost_mbd": [
+     0,
+     0,
+     0
+    ],
+    "lost_mt": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_of_nowar_exports": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "per_tonne_exported": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "actual_exports_mbd": 5.11
+   },
+   "2023": {
+    "lost_mbd": [
+     0,
+     0,
+     0
+    ],
+    "lost_mt": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_of_nowar_exports": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "per_tonne_exported": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "actual_exports_mbd": 4.91
+   },
+   "2024": {
+    "lost_mbd": [
+     0,
+     0,
+     0
+    ],
+    "lost_mt": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_of_nowar_exports": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "per_tonne_exported": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "actual_exports_mbd": 4.78
+   },
+   "2025": {
+    "lost_mbd": [
+     0,
+     0,
+     0.005
+    ],
+    "lost_mt": [
+     0.0,
+     0.0,
+     0.2
+    ],
+    "share_of_nowar_exports": [
+     0.0,
+     0.0,
+     0.001
+    ],
+    "per_tonne_exported": [
+     0.0,
+     0.0,
+     0.001
+    ],
+    "actual_exports_mbd": 4.78
+   },
+   "2026": {
+    "lost_mbd": [
+     0,
+     0,
+     0.09
+    ],
+    "lost_mt": [
+     0.0,
+     0.0,
+     3.0
+    ],
+    "share_of_nowar_exports": [
+     0.0,
+     0.0,
+     0.018
+    ],
+    "per_tonne_exported": [
+     0.0,
+     0.0,
+     0.0202
+    ],
+    "actual_exports_mbd": 4.449
+   }
+  }
+ },
+ "pipeline": {
+  "what": "Druzhba south: days of lost flow to the buyer from Ukrainian strikes on pumping stations in Russia, as [low, central, high]; applied to that buyer's crude purchases that year",
+  "buyers": {
+   "HUN": {
+    "days": {
+     "2025": [
+      3,
+      6,
+      8
+     ]
+    }
+   },
+   "SVK": {
+    "days": {
+     "2025": [
+      3,
+      6,
+      8
+     ]
+    }
+   }
+  },
+  "not_counted": "CZE (stopped Russian crude by its own choice in April 2025); the 27 Jan - 22 Apr 2026 halt (Russian strike on the pipeline at Brody in Ukraine)"
+ },
+ "embargo": {
+  "what": "Buyers whose own embargo or sanctions stopped the product: the strike changed nothing for them, so their no-war level is not lowered",
+  "products_from": 2023,
+  "crude_from": 2023,
+  "countries": "EU27 (Druzhba crude to Hungary and Slovakia exempt), GBR, USA, CAN, AUS, NZL, CHE, NOR, ISL"
+ },
+ "other_products": "Ammonia and fertiliser exports through ports: no strike-related loss found (the Togliatti-Odesa ammonia pipeline was shut by the war in February 2022, not by a strike; no measured loss at Taman). Not included. Gasoline export bans of 2023 (Sept-Nov, domestic prices before the strike waves) not counted; bans from March 2024 are counted through the pass-through (responses to strike-driven shortages).",
+ "inputs": {
+  "runs_lost_mbd": {
+   "2022": [
+    0.0,
+    0.0,
+    0.01
+   ],
+   "2023": [
+    0.0,
+    0.015,
+    0.05
+   ],
+   "2024": [
+    0.09,
+    0.15,
+    0.25
+   ],
+   "2025": [
+    0.18,
+    0.26,
+    0.33
+   ],
+   "2026": [
+    0.75,
+    0.85,
+    0.95
+   ]
+  },
+  "pass_through": [
+   0.5,
+   0.7,
+   1.0
+  ],
+  "nowar_products_mbd": 2.95,
+  "products_2026_monthly_mbd": {
+   "1": 2.81,
+   "2": 2.44,
+   "3": 2.5,
+   "4": 2.15,
+   "5": 2.0,
+   "6": 1.83,
+   "7": 1.4,
+   "8": 1.3
+  },
+  "crude_2026_monthly_mbd": {
+   "1": 4.65,
+   "2": 4.33,
+   "3": 4.63,
+   "4": 4.88,
+   "5": 4.7,
+   "6": 4.4,
+   "7": 4.2,
+   "8": 3.8
+  }
+ },
+ "sources": [
+  {
+   "name": "IEA Oil Market Report, 13 May 2026: Russian Crude and Product Exports table 2022-2026, port and refinery attack effects",
+   "url": "https://iea.blob.core.windows.net/assets/2b89a47b-34a2-40e0-90ff-68f7ccd80715/-13MAY2026__OilMarketReport_publicversion.pdf",
+   "date": "2026-05-13",
+   "extract": "raw/strike_supply_r51/iea_omr_2026-05.txt"
+  },
+  {
+   "name": "KSE Institute, Russian Oil Tracker, July, August and September 2026 (monthly exports and runs, IEA basis)",
+   "url": "https://institute.kse.ua/wp-content/uploads/2026/10/rot_eng_september_2026.pdf",
+   "date": "2026-10-01",
+   "extract": "raw/strike_supply_r51/kse_*.txt"
+  },
+  {
+   "name": "Kpler: Ukraine's drone campaign pushes Russian refinery runs to 21-year lows (July 2026)",
+   "url": "https://www.kpler.com/blog/ukraines-drone-campaign-pushes-russian-refinery-runs-to-21-year-lows",
+   "date": "2026-07",
+   "extract": "raw/strike_supply_r51/kpler_2026-07_runs_21y_low.txt"
+  },
+  {
+   "name": "Kpler: Repeated drone attacks keep Russian refinery runs in check (18 Nov 2025)",
+   "url": "https://www.kpler.com/blog/repeated-drone-attacks-keep-russian-refinery-runs-in-check",
+   "date": "2025-11-18",
+   "extract": "raw/strike_supply_r51/kpler_2025-11_repeated_attacks.txt"
+  },
+  {
+   "name": "Reuters via Hydrocarbon Processing: Russian oil refining capacity idled by drones reaches 14% of total (March 2024)",
+   "url": "https://hydrocarbonprocessing.com/news/2024/03/russian-oil-refining-capacity-idled-by-drones-reaches-14-of-total/",
+   "date": "2024-03",
+   "extract": "raw/strike_supply_r51/reuters_2024-03_14pct_offline.txt"
+  },
+  {
+   "name": "Polskie Radio, Meduza, Al Jazeera: Druzhba flows to Hungary and Slovakia halted and resumed after strikes on Nikolskoye and Unecha (August 2025)",
+   "url": "https://www.polskieradio.pl/395/7785/artykul/3571430,oil-flows-to-hungary-slovakia-resume-via-druzhba-pipeline-after-attack-outage",
+   "date": "2025-08",
+   "extract": "raw/strike_supply_r51/polskieradio_2025-08_druzhba_resume.txt"
+  },
+  {
+   "name": "The Moscow Times: Oil supplies to Hungary and Slovakia halted after damage to Druzhba pipeline (16 Feb 2026); Kyiv Post: Kaleykino strike (23 Feb 2026)",
+   "url": "https://www.themoscowtimes.com/2026/02/16/oil-supplies-to-hungary-and-slovakia-halted-after-damage-to-druzhba-pipeline-a91964",
+   "date": "2026-02-16",
+   "extract": "raw/strike_supply_r51/moscowtimes_2026-02-16_druzhba_halt.txt"
+  },
+  {
+   "name": "Wikipedia: 2025-2026 Russian fuel crisis (export bans, capacity offline)",
+   "url": "https://en.wikipedia.org/wiki/2025%E2%80%932026_Russian_fuel_crisis",
+   "date": "2026-10-25",
+   "extract": "raw/strike_supply_r51/wikipedia_fuel_crisis_2025_2026.txt"
+  },
+  {
+   "name": "Reuters via OilPrice: Russian fuel exports rebound in August but still down 50% from last year (Sept 2026)",
+   "url": "https://oilprice.com/Latest-Energy-News/World-News/Russian-Fuel-Exports-Rebound-in-August-But-Still-Down-50-From-Last-Year.html",
+   "date": "2026-09",
+   "extract": "raw/strike_supply_r51/oilprice_2026-09_fuel_exports_august.txt"
+  },
+  {
+   "name": "CREA: September 2025 monthly analysis of Russian fossil fuel exports (product exports -13% m-o-m after strikes)",
+   "url": "https://energyandcleanair.org/september-2025-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/",
+   "date": "2025-10",
+   "extract": "raw/strike_supply_r51/crea_2025-09_monthly.txt"
+  },
+  {
+   "name": "Russian Federal Customs Service via SeaNews: oil product exports 144.3 Mt in 2021 (search summary; page not opened)",
+   "url": "https://seanews.ru/en/2022/02/28/en-russian-oil-export-in-2021-products-up",
+   "date": "2022-02-28",
+   "verified": "search summary only"
+  }
+ ]
+}
