@@ -1191,11 +1191,8 @@ I18N.uk = {
   "What decides it: if {name} were {f} smaller, the direction would flip.": "Що вирішує: якби {name} було на {f} меншим, напрям змінився б.",
   "What decides it: if {name} were {f} larger, the direction would flip.": "Що вирішує: якби {name} було на {f} більшим, напрям змінився б.",
   "No part flips it by shrinking; {name} would have to be {f} larger.": "Жодна частина не змінює його, зменшуючись; {name} мало б бути на {f} більшим.",
-  "No single part could flip its direction.": "Жодна окрема частина не могла б змінити напрям.",
   "The likely range covers the uncertainty of the data and the models given the method: each part's low and high value, combined as errors, correlated where parts share inputs. It aims at about 90%: rerun as if the war had started in 2018, trade ranges held the true zero for 96% of ranked economies (90% for a 2014 start, when Russia's own economy was hit). How much the method choices themselves move the result is the method band below.": "Ймовірний діапазон охоплює невизначеність даних і моделей за даного методу: низьке й високе значення кожної частини, поєднані як похибки, скорельовані там, де частини мають спільні дані. Він має покривати близько 90%: якщо перерахувати так, ніби війна почалася 2018 року, діапазони торгівлі містили справжній нуль для 96% економік у рейтингу (90% для початку 2014 року, коли постраждала економіка самої Росії). Наскільки самі вибори методу зсувають результат, показує смуга методів нижче.",
   "Not certain: ranked faded and labelled, and shown faded on the map.": "Непевно: у рейтингу блідим і з позначкою, блідим на мапі.",
-  "{n} official statistics": "{n} офіційні статистики",
-  "{n} press only": "{n} лише преса",
   "Leaning toward Ukraine; middle value {x}": "Схиляється на бік України; середнє значення {x}",
   "Leaning toward Russia; middle value {x}": "Схиляється на бік Росії; середнє значення {x}",
   "Probably cut Russia's earnings from trade; middle value {x}": "Ймовірно, зменшила прибутки Росії від торгівлі; середнє значення {x}",
@@ -1209,4 +1206,5 @@ I18N.uk = {
   "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Unclear: below that. Near zero: within ±0.5% of GDP.": "Дуже ймовірно: щонайменше 95% і кожен інший вибір методу погоджується. Ймовірно (схиляється): щонайменше 65%. Неясно: нижче. Близько нуля: у межах ±0,5% ВВП.",
   "above zero": "вище нуля",
   "below zero": "нижче нуля",
+  "likely · {p}": "ймовірно · {p}",
 };

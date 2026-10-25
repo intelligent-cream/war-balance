@@ -2,6 +2,16 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r45">Round 45: a shorter country panel <span class="cl-date">25 October</span></h2>
+
+The owner: "a little too much text in the main country view".
+
+- "What decides it" only for numbers that are not certain, and only when one part can flip them.
+- The two tiles show their chance only when it is not certain; the headline already says "very likely".
+- "Backed by N sources" without the count of official statistics; each part still says how it is backed.
+- A leaning pill no longer repeats the side its label already names ("likely · 71%").
+- The country panel follows the view: in Support or Trade the big number is that number, and the tiles show the other two (the owner: "if I click support / trade and click on the country I still get the same headline").
+
 <h2 id="cl-r44">Round 44: more certain numbers from official sources, two fixes, and a cleaner map bar <span class="cl-date">25 October</span></h2>
 <!-- flows: paid windfall rusfirms -->
 

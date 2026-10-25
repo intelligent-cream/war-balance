@@ -1188,11 +1188,8 @@ I18N.de = {
   "What decides it: if {name} were {f} smaller, the direction would flip.": "Was entscheidet: Wäre {name} {f} kleiner, kehrte sich die Richtung um.",
   "What decides it: if {name} were {f} larger, the direction would flip.": "Was entscheidet: Wäre {name} {f} größer, kehrte sich die Richtung um.",
   "No part flips it by shrinking; {name} would have to be {f} larger.": "Kein Teil kehrt sie durch Schrumpfen um; {name} müsste {f} größer sein.",
-  "No single part could flip its direction.": "Kein einzelner Teil könnte die Richtung umkehren.",
   "The likely range covers the uncertainty of the data and the models given the method: each part's low and high value, combined as errors, correlated where parts share inputs. It aims at about 90%: rerun as if the war had started in 2018, trade ranges held the true zero for 96% of ranked economies (90% for a 2014 start, when Russia's own economy was hit). How much the method choices themselves move the result is the method band below.": "Die wahrscheinliche Spanne deckt die Unsicherheit der Daten und Modelle bei gegebener Methode ab: der niedrige und hohe Wert jedes Teils, als Fehler kombiniert, korreliert, wo Teile Eingaben teilen. Sie zielt auf etwa 90 %: Als hätte der Krieg 2018 begonnen, enthielten die Handelsspannen für 96 % der gereihten Volkswirtschaften die wahre Null (90 % bei Beginn 2014, als Russlands eigene Wirtschaft getroffen wurde). Wie stark die Methodenwahl selbst das Ergebnis bewegt, zeigt das Methodenband unten.",
   "Not certain: ranked faded and labelled, and shown faded on the map.": "Nicht sicher: blass gereiht und gekennzeichnet, und blass auf der Karte.",
-  "{n} official statistics": "{n} amtliche Statistiken",
-  "{n} press only": "{n} nur Presse",
   "Leaning toward Ukraine; middle value {x}": "Tendenz zugunsten der Ukraine; Mittelwert {x}",
   "Leaning toward Russia; middle value {x}": "Tendenz zugunsten Russlands; Mittelwert {x}",
   "Probably cut Russia's earnings from trade; middle value {x}": "Senkte wohl Russlands Einnahmen aus dem Handel; Mittelwert {x}",
@@ -1206,4 +1203,5 @@ I18N.de = {
   "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Unclear: below that. Near zero: within ±0.5% of GDP.": "Sehr wahrscheinlich: mindestens 95 % und jede andere Methodenwahl stimmt zu. Wahrscheinlich (Tendenz): mindestens 65 %. Unklar: darunter. Nahe null: innerhalb von ±0,5 % des BIP.",
   "above zero": "über null",
   "below zero": "unter null",
+  "likely · {p}": "wahrscheinlich · {p}",
 };
