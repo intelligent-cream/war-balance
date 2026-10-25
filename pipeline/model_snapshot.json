@@ -100,11 +100,11 @@
   "mostlyNoData": false
  },
  "LUX": {
-  "net": 2.8366,
-  "netLo": 1.7974,
-  "netHi": 4.641,
+  "net": 2.9428,
+  "netLo": 1.8704,
+  "netHi": 4.6726,
   "ua": 0.764,
-  "rus": 0.5944,
+  "rus": 0.7007,
   "frozen": 1.4782,
   "noData": false,
   "mostlyNoData": false
@@ -120,11 +120,11 @@
   "mostlyNoData": false
  },
  "NPL": {
-  "net": -0.9571,
-  "netLo": -1.3739,
-  "netHi": -0.5931,
+  "net": -0.952,
+  "netLo": -1.3662,
+  "netHi": -0.5876,
   "ua": 0,
-  "rus": -0.9571,
+  "rus": -0.952,
   "frozen": 0,
   "noData": false,
   "mostlyNoData": false
