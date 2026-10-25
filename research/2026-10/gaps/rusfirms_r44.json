@@ -1,0 +1,474 @@
+{
+ "generated": "2026-10-25",
+ "meta": {
+  "units": "EUR bn nominal; low/central/high ~90% range; 2026 = January-August (not annualised); change = paid - 2019-2021 average (x 8/12 for 2026); positive change = more money to Russia (same sign as company_flows/russian_owned_r10 profits_change_vs_prewar)",
+  "fx": {
+   "USD_per_EUR": {
+    "2019": 1.12,
+    "2020": 1.142,
+    "2021": 1.183,
+    "2022": 1.053,
+    "2023": 1.081,
+    "2024": 1.082,
+    "2025": 1.13,
+    "2026": 1.16
+   },
+   "RUB_per_EUR": {
+    "2019": 72.5,
+    "2020": 82.45,
+    "2021": 87.19,
+    "2025_May": 90.5
+   },
+   "KZT_per_EUR": {
+    "2023": 499,
+    "2024": 508
+   }
+  },
+  "replaces": {
+   "AGO": "russian_owned_r10.json countries.AGO profits_* (the only AGO rusfirms input)",
+   "IRQ": "company_flows.json countries.IRQ profits_* (Lukoil/Gazprom Neft/Rosneft-Kurdistan block)"
+  }
+ },
+ "countries": {
+  "AGO": {
+   "profits_remitted": {
+    "2019": {
+     "low": 0.0276,
+     "central": 0.0414,
+     "high": 0.0621
+    },
+    "2020": {
+     "low": 0.0723,
+     "central": 0.0736,
+     "high": 0.075
+    },
+    "2021": {
+     "low": 0.0503,
+     "central": 0.0511,
+     "high": 0.0518
+    },
+    "2022": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2023": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2024": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    },
+    "2025": {
+     "low": 0.2045,
+     "central": 0.2102,
+     "high": 0.2161
+    },
+    "2026": {
+     "low": 0,
+     "central": 0,
+     "high": 0
+    }
+   },
+   "profits_prewar_avg_2019_2021": {
+    "low": 0.0501,
+    "central": 0.0554,
+    "high": 0.0629
+   },
+   "profits_change_vs_prewar": {
+    "2022": {
+     "low": -0.0629,
+     "central": -0.0554,
+     "high": -0.0501
+    },
+    "2023": {
+     "low": -0.0629,
+     "central": -0.0554,
+     "high": -0.0501
+    },
+    "2024": {
+     "low": -0.0629,
+     "central": -0.0554,
+     "high": -0.0501
+    },
+    "2025": {
+     "low": 0.1416,
+     "central": 0.1548,
+     "high": 0.1661
+    },
+    "2026": {
+     "low": -0.042,
+     "central": -0.0369,
+     "high": -0.0334
+    }
+   },
+   "profits_certainty": "B",
+   "companies": [
+    {
+     "name": "Sociedade Mineira de Catoca (41%)",
+     "parent": "Alrosa",
+     "sector": "diamond mining"
+    }
+   ],
+   "profits_note": "Cash dividends Alrosa received from Catoca. 2020-2021 from Alrosa's audited IFRS cash flow ('dividends received from associates', Catoca is ~all of it); 2019 estimated (FY2018 dividend at the then 32.8% stake; not found). 2022-2024 zero: FY2021-23 dividends declared but not paid (Alrosa IFRS 2025 note 5.2). 2025: RUB 19,019m cash received in May 2025 for assigning the dividend claims, booked separately from the RUB 15,942m share price (IFRS 2025 note 5.3) - the r10 'high case' happened. 2026 zero (stake sold).",
+   "sources": [
+    "alrosa_ifrs_2021",
+    "alrosa_mda_2020",
+    "alrosa_ifrs_2025"
+   ]
+  },
+  "IRQ": {
+   "profits_remitted": {
+    "2019": {
+     "low": 0.0714,
+     "central": 0.092,
+     "high": 0.1116
+    },
+    "2020": {
+     "low": 0.063,
+     "central": 0.0806,
+     "high": 0.0981
+    },
+    "2021": {
+     "low": 0.0659,
+     "central": 0.0811,
+     "high": 0.0972
+    },
+    "2022": {
+     "low": 0.076,
+     "central": 0.078,
+     "high": 0.0807
+    },
+    "2023": {
+     "low": 0.124,
+     "central": 0.1274,
+     "high": 0.1304
+    },
+    "2024": {
+     "low": 0.0739,
+     "central": 0.0961,
+     "high": 0.1248
+    },
+    "2025": {
+     "low": 0.0442,
+     "central": 0.0664,
+     "high": 0.1062
+    },
+    "2026": {
+     "low": 0.0,
+     "central": 0.0086,
+     "high": 0.0647
+    }
+   },
+   "profits_prewar_avg_2019_2021": {
+    "low": 0.0668,
+    "central": 0.0846,
+    "high": 0.1023
+   },
+   "profits_change_vs_prewar": {
+    "2022": {
+     "low": -0.0263,
+     "central": -0.0066,
+     "high": 0.0139
+    },
+    "2023": {
+     "low": 0.0217,
+     "central": 0.0428,
+     "high": 0.0636
+    },
+    "2024": {
+     "low": -0.0284,
+     "central": 0.0116,
+     "high": 0.058
+    },
+    "2025": {
+     "low": -0.058,
+     "central": -0.0182,
+     "high": 0.0394
+    },
+    "2026": {
+     "low": -0.0682,
+     "central": -0.0478,
+     "high": 0.0201
+    }
+   },
+   "profits_certainty": "C",
+   "companies": [
+    {
+     "name": "West Qurna-2 TSC (75%)",
+     "parent": "Lukoil (Lukoil Mid-East Ltd)",
+     "fee": "USD 1.15/bbl Mishrif, 3.65 Yamama"
+    },
+    {
+     "name": "Badra DPSC (30%)",
+     "parent": "Gazprom Neft (Gazprom Neft Badra B.V.)",
+     "fee": "USD 5.5/bbl"
+    }
+   ],
+   "profits_note": "Profit = remuneration fee (Lukoil's 75% / Gazprom Neft's 30% share, excluding the state partner) less 35% Iraqi income tax; cost-recovery barrels repay costs and are not profit. 2022 and 2023 from Iraq EITI (PCLD tables, reconciled with SOMO): Lukoil 126.25m gross/44.19m tax (2022), 178.69m/62.54m (2023); Gazprom Neft 0 in 2022 (carried forward: cost-recovery ceiling), 33.18m/11.61m (2023). 2019-2021: fee x production (WQ2 146.0 Mbbl and Badra 12.86 Mbbl in 2021, Iraq EITI 2021). 2024 estimated from 2022-23 and ~460 kb/d. 2025: Lukoil paid to ~Q3, force majeure after Oct-2025 sanctions; Gazprom Neft (US-sanctioned Jan 2025) little. 2026: West Qurna-2 handed to Basra Oil Co., settlement amount undisclosed (high case). Rosneft's Kurdistan pipeline (KPC) is NOT included in the main estimate: see alternatives.IRQ_A.",
+   "sources": [
+    "iraq_eiti_2023",
+    "iraq_eiti_2023_data",
+    "iraq_eiti_2022",
+    "iraq_eiti_2021",
+    "lukoil_wq2_page",
+    "press_wq2_2026",
+    "press_badra_2025"
+   ]
+  }
+ },
+ "alternatives": {
+  "IRQ_A": {
+   "label": "add Rosneft's share of Kurdistan Pipeline Company tariffs (60%, 49% from Nov 2025); cash to Rosneft = 0.5 (0.3-0.8) of its share",
+   "profits_change_vs_prewar": {
+    "2022": {
+     "low": -0.0119,
+     "central": 0.0174,
+     "high": 0.0523
+    },
+    "2023": {
+     "low": -0.1789,
+     "central": -0.0826,
+     "high": -0.0116
+    },
+    "2024": {
+     "low": -0.2863,
+     "central": -0.1496,
+     "high": -0.0387
+    },
+    "2025": {
+     "low": -0.2887,
+     "central": -0.1624,
+     "high": -0.0471
+    },
+    "2026": {
+     "low": -0.1759,
+     "central": -0.1151,
+     "high": -0.0203
+    }
+   },
+   "kpc_rosneft_cash": {
+    "2019": {
+     "low": 0.1035,
+     "central": 0.1725,
+     "high": 0.276
+    },
+    "2020": {
+     "low": 0.0954,
+     "central": 0.1589,
+     "high": 0.2543
+    },
+    "2021": {
+     "low": 0.0913,
+     "central": 0.1522,
+     "high": 0.2434
+    },
+    "2022": {
+     "low": 0.1111,
+     "central": 0.1852,
+     "high": 0.2963
+    },
+    "2023": {
+     "low": 0.0215,
+     "central": 0.0358,
+     "high": 0.0573
+    },
+    "2024": {
+     "low": 0.0,
+     "central": 0.0,
+     "high": 0.0
+    },
+    "2025": {
+     "low": 0.0102,
+     "central": 0.017,
+     "high": 0.0273
+    },
+    "2026": {
+     "low": 0.0241,
+     "central": 0.0401,
+     "high": 0.0642
+    }
+   },
+   "why_not_main": "The pipeline was shut from 25 March 2023 to 27 September 2025 because of the ICC arbitration (Iraq v Turkey, filed 2014) and the Baghdad-Erbil dispute, not because of the war; a no-war world would have had the same closure, so measuring it against 2019-2021 would book a war-unrelated drop as a shift toward Ukraine. KPC tariff payments also include capital recovery on Rosneft's ~USD 1.8bn 2017 investment.",
+   "sources": [
+    "krg_deloitte",
+    "iraq_eiti_2023",
+    "press_kpc_2025"
+   ]
+  }
+ },
+ "leads": {
+  "KAZ": {
+   "finding": "Kazakhstan EITI 2023-2024 (official) lists dividends paid to the state share of Uranium One's 50/50 JVs: Karatau 48.59bn KZT (2023), 58.85bn (2024); Akbastau 57.15bn (2024). Uranium One's equal share = EUR 0.097bn (2023, Karatau only) and EUR 0.228bn (2024, two JVs) - already above russian_owned_r10's 2024 guess for ALL of Uranium One (central 0.18). South Inkai (U1 70%), Khorasan, Zarechnoye (sold Dec 2024) come on top. Pre-war JV dividends are not in the 2019 / 2020-21 / 2022 EITI reports (they cover production and taxes only); Kazatomprom's annual reports (dividends received from JVs) would give both the pre-war base and the U1 share.",
+   "values_eur_bn": {
+    "2023": 0.0974,
+    "2024": 0.2283
+   },
+   "sources": [
+    "kazakhstan_eiti_2023_2024"
+   ]
+  },
+  "UZB_EGY": "eiti.org has no Uzbekistan or Egypt country pages reachable (404 'Not found'); EITI reports show payments to governments, not dividends to foreign owners, so they would bound but not measure Lukoil's (UZB, EGY) and Rosneft's (Zohr) remittances. Not checked further.",
+  "VEN_MOZ": "No rusfirms part on the site for Venezuela or Mozambique (data.json). Venezuela is not an EITI member (Rosneft's Venezuelan stakes went to Roszarubezhneft in 2020). Rosneft's Mozambique interests are offshore exploration blocks without production, so no profits to send; nothing to add.",
+  "ARM": "Armenia EITI covers mining; Russian-owned rusfirms there (Gazprom Armenia, banks, South Caucasus Railway) are outside EITI scope."
+ },
+ "chance_effect": {
+  "method": "patched the rusfirms extra (c/l/h) in the loaded site data and reran calc/chance (pSignMC) with scratchpad r43/load.mjs; other parts unchanged",
+  "AGO": {
+   "rusfirms_sum_2022_2026_toward_ukraine_eur_bn": {
+    "old": [
+     0.171,
+     -0.235,
+     0.325
+    ],
+    "new": [
+     0.048,
+     0.018,
+     0.089
+    ]
+   },
+   "net": {
+    "old": 0.862,
+    "new": 0.914
+   },
+   "rus": {
+    "old": 0.875,
+    "new": 0.916
+   },
+   "ua": {
+    "old": 0.871,
+    "new": 0.871
+   },
+   "after": "rusfirms share of the variance toward zero falls from 0.86 to 0.03; the blockers are now laund (0.53) and paid (0.38); halving either range would cross 0.95"
+  },
+  "IRQ": {
+   "rusfirms_sum_2022_2026_toward_ukraine_eur_bn": {
+    "old": [
+     -0.111,
+     -1.091,
+     0.869
+    ],
+    "new_B": [
+     0.018,
+     -0.195,
+     0.159
+    ],
+    "alt_A_with_KPC": [
+     0.492,
+     0.065,
+     0.942
+    ]
+   },
+   "net": {
+    "old": 0.814,
+    "new_B": 0.897,
+    "alt_A": 0.507
+   },
+   "rus": {
+    "old": 0.82,
+    "new_B": 0.891,
+    "alt_A": 0.522
+   },
+   "ua": {
+    "old": 1.0,
+    "new_B": 1.0
+   },
+   "after": "B: rusfirms share falls from 0.79 to 0.07; blockers laund (0.57) and paid (0.30). Halving laund's range -> 0.946, paid's -> 0.921"
+  }
+ },
+ "sources": {
+  "iraq_eiti_2023": {
+   "url": "https://eiti.org/document/25590",
+   "file": "https://eiti.org/sites/default/files/Iraq%202023%20EITI%20Report.docx",
+   "kind": "official",
+   "status": "reached 2026-10-25 (200, DOCX 8.1MB, published 30 Dec 2025)",
+   "used": "Tables 27 (liftings by IOC), 45 (cost recovery), 46 (remuneration), 47 (state partner), 48 (35% tax), 50 (KRG Q1 2023 incl. KPC)"
+  },
+  "iraq_eiti_2023_data": {
+   "url": "https://eiti.org/document/25597",
+   "kind": "official",
+   "status": "reached (XLS: SOMO liftings by cargo, 2023)"
+  },
+  "iraq_eiti_2022": {
+   "url": "https://eiti.org/document/25352",
+   "file": "https://eiti.org/sites/default/files/Iraq%202022%20report_1.pdf",
+   "kind": "official",
+   "status": "reached (Arabic PDF, 118 p)",
+   "used": "liftings, cost recovery, remuneration (Lukoil 126.25m, Badra 0), tax (Lukoil 44.19m)"
+  },
+  "iraq_eiti_2021": {
+   "url": "https://eiti.org/sites/default/files/2024-01/Iraq%202021%20EITI%20Report.pdf",
+   "kind": "official",
+   "status": "reached (PDF, 249 p); Lukoil Mid-East and Gazprom Neft Badra non-compliant; per-field remuneration not published",
+   "used": "2021 production West Qurna-2 146.0 Mbbl, Badra 12.86 Mbbl; liftings Lukoil USD 938.8m, GPN 237.6m"
+  },
+  "iraq_eiti_2019_2020": {
+   "url": "https://eiti.org/documents/iraq-2019-eiti-report",
+   "kind": "official",
+   "status": "no files on eiti.org; ieiti.org.iq not reachable from this session (proxy refused)"
+  },
+  "lukoil_wq2_page": {
+   "url": "https://lukoil.com/Business/Upstream/Overseas/WestQurna-2",
+   "kind": "company",
+   "status": "reached",
+   "used": "USD 1.15/bbl remuneration x 75%, profit tax paid, 400 kb/d (2019)"
+  },
+  "krg_deloitte": {
+   "url": "https://api.eiti.org/sites/default/files/attachments/krg_mnr_oil_production_export_consumption_and_revenue_report_2019.pdf",
+   "kind": "official (KRG, Deloitte review)",
+   "status": "2019, Q1-Q3 2020 reached via api.eiti.org; 2021-2022 not hosted there; gov.krd 403",
+   "used": "KPC payments 2019 USD 644.4m; Q1 2020 179.1m; Q2 2020 84.9m; Q3 2020 191.3m"
+  },
+  "alrosa_ifrs_2021": {
+   "url": "https://www.alrosa.ru/upload/iblock/01f/IFRS-Consolidated-Statements-for-Q412M-2021.pdf",
+   "kind": "company (audited)",
+   "status": "reached via WebFetch (curl 403)",
+   "used": "dividends received from associates RUB 4,454m (2021), 6,071m (2020); Catoca FY2019/FY2020 dividends declared"
+  },
+  "alrosa_mda_2020": {
+   "url": "https://www.alrosa.ru/upload/iblock/0cb/MDA-release-Q412M-2020-ENG.pdf",
+   "kind": "company",
+   "status": "reached via WebFetch",
+   "used": "Q4 2020: RUB 4.5bn 2019 dividends from Catoca (41%)"
+  },
+  "alrosa_ifrs_2025": {
+   "url": "https://www.alrosa.ru/upload/iblock/716/4qtpyyo2q8ggbhcpysfxhauxoolmzuww/ALROSA%20IFRS%202025%20ENG%20with%20exception.pdf",
+   "kind": "company (disclosed with exceptions)",
+   "status": "reached via WebFetch",
+   "used": "FY2021-23 Catoca dividends unpaid at end-2024 (provision RUB 10,340m); 26 May 2025 sale: RUB 15,942m for the 41% stake, RUB 19,019m cash for assignment of the dividend claims"
+  },
+  "kazakhstan_eiti_2023_2024": {
+   "url": "https://eiti.org/document/26214",
+   "file": "https://eiti.org/sites/default/files/RU%20Kazakhstan%20EITI%20report%202023-2024.pdf",
+   "kind": "official",
+   "status": "reached (Russian PDF)",
+   "used": "dividends to the state share: Karatau 48.59bn KZT (2023), 58.85bn (2024); Akbastau 57.15bn (2024); Uranium One holds the other 50%"
+  },
+  "angola_eiti": {
+   "url": "https://eiti.org/countries/angola",
+   "kind": "official",
+   "status": "reached; Angola 2022 and 2023 EITI report pages carry no downloadable files on eiti.org; Endiama site 500; not used"
+  },
+  "press_wq2_2026": {
+   "url": "https://www.worldoil.com/news/2026/2/23/iraq-shifts-460-000-bpd-west-qurna-2-from-lukoil-to-basra-oil/",
+   "kind": "press",
+   "status": "reached",
+   "used": "force majeure Oct 2025; operations to Basra Oil Co.; 'amicable settlement' of outstanding invoices, amount not disclosed; 460 kb/d"
+  },
+  "press_kpc_2025": {
+   "url": "https://www.iraqoilreport.com/news/rosneft-partially-divests-from-kurdistans-export-pipeline-47406",
+   "kind": "press",
+   "status": "search result",
+   "used": "Rosneft sold 11% of KPC to DEX Capital (Nov 2025), keeps ~49%"
+  },
+  "press_badra_2025": {
+   "url": "https://www.iraq-businessnews.com/2025/05/22/gazprom-signs-amendment-to-badra-oilfield-service-contract/",
+   "kind": "press",
+   "status": "search result",
+   "used": "Badra contract amendment 22 May 2025 (also in Iraq EITI 2023 contract table)"
+  }
+ }
+}

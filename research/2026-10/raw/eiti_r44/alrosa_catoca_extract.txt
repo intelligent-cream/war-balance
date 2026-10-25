@@ -1,0 +1,43 @@
+# ALROSA IFRS 2021 (https://www.alrosa.ru/upload/iblock/01f/IFRS-Consolidated-Statements-for-Q412M-2021.pdf) and 2025 disclosed IFRS (https://www.alrosa.ru/upload/iblock/716/4qtpyyo2q8ggbhcpysfxhauxoolmzuww/ALROSA%20IFRS%202025%20ENG%20with%20exception.pdf), MD&A Q4 2020 (https://www.alrosa.ru/upload/iblock/0cb/MDA-release-Q412M-2020-ENG.pdf); fetched via WebFetch (curl blocked 403), pdftotext, 2026-10-25
+## IFRS 2021
+Dividends received from associates                                                      5.2                            4,454                  6,071
+Catoca Mining Company Ltd.
+(associate)                                    Angola                 41.0          41.0     11,104         7,630      8,344       3,707
+In June 2021 Catoca Mining Company Ltd declared dividends for the year ended 31 December 2020; the Group’s share of these
+dividends amounted to RR’mln 4,841 before taxation in the amount of RR’mln 484.
+In November 2020 Catoca Mining Company Ltd declared dividends for the year ended 31 December 2019; the Group’s share
+of these dividends amounted to RR’mln 5,720 before taxation in the amount of RR’mln 572. For the year ended 31 December
+In December 2020 the Group received payment in the amount of US dollars 70 mln, equivalent to RR’mln 5,132, from the
+National diamond company of Angola – Endiama A.P. (further- “Endiama”) for 8.2% of Catoca (note 18).
+
+On 4 November 2021 the Group completed the sale of 8.2% share of Catoca to Endiama A.P., recognizing a gain on the
+transaction in the amount of RR’mln 957 as part of foreign exchange gain in other operating income (Note 24).
+Profit/(loss) for the year                               20,352            9,042            (10)            (8)          20,342       9,034
+Dividends declared to shareholders                      (11,808)         (13,951)           (24)            (8)         (11,832)   (13,959)
+## MD&A Q4 2020
+                              Cash inflow from investing activities (excluding inflow of cash from bank
+                               deposits) in Q4 amounted to RUB 9.8 bn, including RUB 4.5 bn received in 2019
+                               dividends for the 41% interest in Catoca, as ALROSA's associate, and RUB 5.1 bn
+                               received as an advance payment for the sale of the 8.2% interest in Catoca
+                               Mining Ltd. recognised as assets held for sale.
+## IFRS 2025
+Proceeds from sale of investments in associates                                         5.3                           15,942                    1,010
+Proceeds from assignment of rights of claim to receivables for                          5.3                           19,019                        -
+dividends from an associate
+Catoca Mining Company Ltd.
+(associate)                                    Angola                       -           41.0                -              -          2,518         13,884
+As at 31 December 2024 dividends declared by Catoca Mining Company Ltd in favour of PJSC ALROSA for 2023, 2022 and
+2021 were not paid due to the technical impossibility of making currency payments by credit institutions to PJSC ALROSA due
+to sanctions restrictions imposed by the USА on the Company. The Company's management decided to create a provison for the
+entire amount of outstanding dividends from the Catoca Mining Company Ltd for 2023, 2022 and 2021 (note 11 as at 31
+December 2024). For the year ended 31 December 2024 the reserve was recognised in other operating expenses in the amount
+of RR’mln 10,340 (note 25).
+The sale of Catoca Mining Company Ltd and Hydroshikapa S.A.R.L was completed on 26 May 2025. The consideration was
+received in cash in May 2025.
+
+The remuneration for the 41% share of the authorised capital of Catoca Mining Company Ltd amounted to RR’mln 15,942,
+income from the sale in the amount of RR’mln 6,747 was recognised within other operating income (note 24) and income from
+the assignment of rights of claim to receivables for dividends in the amount of RR’mln 19,019 was also recorded as part of other
+operating income (note 24).
+Gain on assignment of rights of claim to receivables for dividends from an associate
+(note 5)                                                                                          19,019                   -

@@ -1,0 +1,7 @@
+# Iraq EITI 2021 report, https://eiti.org/sites/default/files/2024-01/Iraq%202021%20EITI%20Report.pdf ; pdftotext, retrieved 2026-10-25. Lukoil Mid-East and Gazprom Neft Badra did not report (non-compliant); per-field remuneration listed as outstanding (annex 1 item 56).
+ 18   Lukoil Mid - East Limited                 No         No            No           No          Non-compliant
+ 19   Gazprom Neft Badra B.V.                   No         No            No           No          Non-compliant
+ West Qurna 2        Basra                146,022,515           10.53%
+ Badra               Wasit                 12,857,981            0.93%
+ 1    LUKOIL MID - EAST LIMITED                              13,786,512          938,778,017
+ 4    GAZPROM NEFT BADRA B.V.                                 3,564,669          237,608,698
