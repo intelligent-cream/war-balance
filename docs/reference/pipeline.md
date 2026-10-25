@@ -62,6 +62,7 @@ Two things apply to every step:
 | 28 | `apply_audit2(..., "values")` | UAE gold and fuel, France's undisclosed aid, Russia's import-statistics gap | [trade](https://warbalance.org/#view=how&sec=m-trade) |
 | 29 | `uae_fuel_net()` | UAE fuel addition net of what UAE customs record | [energy](https://warbalance.org/#view=how&sec=m-energy-and-laundered-oil-payments-to-russia-for-fuel) |
 | 30 | `war_windfall()` | price windfall on Russian fuel, against no-war prices (`energy_nowar.json`) | [prices](https://warbalance.org/#view=how&sec=m-prices-war-time-windfall) |
+| 30b | `attrib_mix()` | round 46: each country's mix of oil, gas, coal and other goods in the fall and the rise of its purchases from Russia (`to_rus.attrib_mix`; `prices.json` `windfall_parts`, else the pre-war mix), for the redirected-trade alternative by commodity | [ranges](https://warbalance.org/#view=how&sec=m-ranges-the-method-band) |
 | 31 | `pre_war_trends()` | `trend.json` and `trend2.json` multipliers (all flows) | [counterfactual](https://warbalance.org/#view=how&sec=m-counterfactual) |
 | 32 | `counterfactual()`, `power_of_siberia()` (round 15: China's contracted pipeline ramp-up) | back-tested multipliers and 2021 base for covered flows, cumulative bands (`cf_bands.json`, `ua_trade_cf.json`, `to_rus_cf.json`, `fuel_volume_cf.json`, `belarus.json`); replaces step 31 there | [counterfactual](https://warbalance.org/#view=how&sec=m-counterfactual) |
 | 33 | `apply_weapons_value()` | donated weapons at market value, stored as yearly corrections (`weapons_value.json`) | [aid](https://warbalance.org/#view=how&sec=m-aid-refugees-military-donated-weapons-at-market-value) |
@@ -93,7 +94,7 @@ Per country: `n` (numeric ISO for the map shapes), `iso3`, `name`, `kind`, `pop`
 
 | key | content |
 |---|---|
-| `to_rus`, `from_rus`, `buy_ukr`, `sell_ukr` | goods trade; `to_rus` also holds `laundered*`, `paid_share`, `nowar_prices` and `nrl`/`nrh` (the no-war price's range, as factors on the expected path) |
+| `to_rus`, `from_rus`, `buy_ukr`, `sell_ukr` | goods trade; `to_rus` also holds `laundered*`, `paid_share`, `nowar_prices` and `nrl`/`nrh` (the no-war price's range, as factors on the expected path) and `attrib_mix` (round 46: shares of oil, gas, coal and other goods in what it bought less, `less`, and more, `more`) |
 | `to_rus.gain`, `buy_ukr.gain` | the seller's net gain per euro (round 10): weights per year as `[low, central, high]`; in `to_rus.gain`, `e` is for what was expected without the war (the 2019–2021 mix) and `a` for what was bought (that year's mix) |
 | `to_rus.laund_gain`, `svc_bought.gain` | Russia's gain on crude in laundered fuel (`e` for the pre-war level, `a` for what was bought, with relabelled Russian products at the products gain) and on services, per year `[low, central, high]` |
 | `svc_bought`, `svc_sold`, `shipping` | services and tanker income; `svc_sold.relocants_out` marks that relocants' spending was taken out |

@@ -19,7 +19,7 @@ const code = html.slice(html.indexOf("// ===== Model ====="), html.indexOf("func
 const D = JSON.parse(readFileSync(join(SITE, "data.json"), "utf8"));
 const det = JSON.parse(readFileSync(join(SITE, "detail.json"), "utf8"));
 const M = new Function("D", "t", `let YEARS = D.years, FRAC = D.frac, SRC = D.sources, META = D.meta; let DATA = {}, byIso = {}, INCLUDED = {};
-  ${code}; return { calc, normalise, methodBands, uncertain, leanInfo, isNearZero, pSignMC, chance, evidence, partGrade, LEAN, CHANCE, PARTY_TO_WAR, setData: (d, b) => { DATA = d; byIso = b; ALTS_READY = true; } };`)(D, s => s);
+  ${code}; return { calc, normalise, methodBands, withAlt, uncertain, leanInfo, isNearZero, pSignMC, chance, evidence, partGrade, LEAN, CHANCE, PARTY_TO_WAR, setData: (d, b) => { DATA = d; byIso = b; ALTS_READY = true; } };`)(D, s => s);
 const data = {}, by = {};
 for (const [k, c] of Object.entries(D.countries)) { c.alts = det.alts[k] || {}; M.normalise(c); data[c.n] = c; by[k] = c; }
 M.setData(data, by);
@@ -135,6 +135,31 @@ test("a part's letter never claims more than its sources: A two official statist
       if (ev.kind === "press" || ev.kind === "own") assert.equal(g, "D", `${c.iso3} ${p.k}`);
     }
   }
+});
+
+// round 46 (owner: "start on 3"): rules the project replaced, the early-2021 gas path (carried by the likely range) and
+// "without the war-time windfall" (a view of behaviour only) never veto a certain direction or widen the method band
+const NOT_A_VETO = ["refiner", "laund_route", "fuelmix", "freight", "laund_model", "gas_early2021"];
+test("retired, simulated and view-only alternatives never veto", () => {
+  let bites = 0;
+  for (const c of all) {
+    const mb = M.methodBands(c, Y), keys = new Set(mb.alts.map(a => a.k));
+    for (const k of [...NOT_A_VETO, "windfall_off", "windfall_full"]) assert.ok(!keys.has(k), `${c.iso3}: ${k} is in the method band`);
+    assert.ok(mb.views.some(a => a.k === "windfall_off"), `${c.iso3}: no windfall-off view`);
+    if (!c.gdp || c.gdp < 5) continue;
+    const others = [M.calc(c, Y, { windfall: "off" }), ...NOT_A_VETO.filter(n => c.alts[n]).map(n => M.calc(M.withAlt(c, n), Y))];
+    for (const q of ["net", "rus"]) {
+      const f = { net: "shift", rus: "rusBal" }[q], v = M.calc(c, Y)[f], ch = M.chance(c, Y, q);
+      // a number the main rule makes certain stays certain when only these alternatives have the other sign
+      const sure = v && ch.p >= M.CHANCE.sure && ch.side === (v > 0 ? "ukraine" : "russia") && mb.alts.every(a => a[q] * v > 0);
+      if (!sure) continue;
+      assert.ok(!M.uncertain(c, Y, q), `${c.iso3} ${q}: not certain`);
+      if (others.some(k => k[f] * v <= 0)) bites++;
+      for (const a of mb.alts) assert.ok(a[q] <= mb[q].hi + EPS && a[q] >= mb[q].lo - EPS);
+      for (const a of mb.views) if (a[q] > mb[q].hi + EPS || a[q] < mb[q].lo - EPS) bites++;
+    }
+  }
+  assert.ok(bites > 0, "no certain number has a retired or view-only alternative on the other side or outside the band: the test does not bite");
 });
 
 test("near zero only for numbers that are not certain", () => {

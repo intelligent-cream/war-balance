@@ -1708,6 +1708,7 @@ def build() -> dict:
     apply_import_premium(countries, src)
     uae_fuel_net(countries)
     war_windfall(countries, src)
+    attrib_mix(countries)
     pre_war_trends(countries, src)
     counterfactual(countries, src)
     power_of_siberia(countries, src)
@@ -2714,6 +2715,56 @@ def war_windfall(countries: dict[str, dict], src: Sources) -> None:
                 [round(p["feb2022_futures"] / c0, 4), round(p["oct2021_forecasts"] / c0, 4)]
             )
             c["windfall"]["src"].append("windfall_band")
+
+
+# round 46 (owner: "start on 3"; method-choice review of round 43): the redirected-trade alternative (index.html
+# worldPaid(), attrib) by commodity group instead of one ratio for all goods. Russia redirected most of its oil and coal
+# but little of its pipeline gas (the EU lost about 113 bcm, China gained about 12 bcm; CGEP), so a buyer that cut gas
+# lost Russia more than one that cut oil. Each country's change in purchases from Russia, by group, over 2022 to August
+# 2026 against its 2019-2021 average, at its 2018-2021 unit values (prices.json windfall_parts: paid minus the windfall
+# = the volume at pre-war prices). attrib_mix holds the groups' shares of what it bought less ("less") and of what it
+# bought more ("more"); the site applies them to the model's own world totals per group
+ATTRIB_GROUPS = ("oil", "gas", "coal", "other")
+ATTRIB_GROUP_OF = {"crude": "oil", "products": "oil", "other_fossil": "oil", "crude_gas_hidden": "oil",
+                   "pipeline_gas": "gas", "lng": "gas", "coal": "coal", "non_fuel_goods": "other"}  # fmt: skip
+
+
+def attrib_mix(countries: dict[str, dict]) -> None:
+    """Round 46: the shares of oil, gas, coal and other goods in the fall ("less") and the rise ("more") of a country's
+    purchases from Russia, from its own customs by fuel (prices.json windfall_parts) where measured; else, or where it
+    has no fall (rise) at all, its pre-war mix (pre_war_fuel_split, fossil_share), the closest guess for a fall."""
+    war = [y for y in YEARS if y >= 2022]
+    for iso3, c in countries.items():
+        tr = c.get("to_rus")
+        if not tr:
+            continue
+        parts = ((PRICES.get(iso3) or {}).get("windfall_parts") or {}) if iso3 not in PRICES_SKIP else {}
+        ch = dict.fromkeys(ATTRIB_GROUPS, 0.0)
+        for part, by in parts.items():
+            g = ATTRIB_GROUP_OF.get(part)
+            if not g:
+                continue
+            vol = {
+                y: ((by.get(str(y)) or {}).get("paid") or 0.0) - ((by.get(str(y)) or {}).get("central") or 0.0)
+                for y in range(2019, 2027)
+            }
+            base = sum(vol[y] for y in (2019, 2020, 2021)) / 3
+            ch[g] += sum(base * FRAC[YEARS.index(y)] - vol[y] for y in war)
+        mix = pre_war_fuel_split(iso3)
+        fs = fossil_share(iso3)
+        fuels = sum(mix.get(f) or 0.0 for f in ("crude", "products", "other_fossil", "gas", "lng", "coal")) or 1.0
+        pre = {"oil": fs * sum(mix.get(f) or 0.0 for f in ("crude", "products", "other_fossil")) / fuels,
+               "gas": fs * ((mix.get("gas") or 0.0) + (mix.get("lng") or 0.0)) / fuels,
+               "coal": fs * (mix.get("coal") or 0.0) / fuels, "other": 1 - fs}  # fmt: skip
+
+        def shares(sign: float) -> list[float]:
+            s = {g: max(0.0, sign * v) for g, v in ch.items()}
+            tot = sum(s.values())
+            src = s if tot > 1e-6 else pre
+            tot = sum(src.values()) or 1.0
+            return [round(src[g] / tot, 3) for g in ATTRIB_GROUPS]
+
+        tr["attrib_mix"] = {"less": shares(1.0), "more": shares(-1.0)}
 
 
 def windfall_gas_share(iso3: str) -> float:
