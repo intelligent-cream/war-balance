@@ -2,6 +2,17 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r52">Round 52: one rule for what counts <span class="cl-date">25 October</span></h2>
+
+The owner: "we also don't punish them for it, so the Ukraine strikes also don't punish India".
+
+- **The rule**, now on the method page: a country's figure reflects its own choices and the foreseeable answers to them. Things forced on it that it did not choose, such as Ukraine's strikes or Russia's sudden export bans, count neither for it nor against it. India is counted for the Russian fuel it chose to buy. What the strikes kept from it neither credits nor blames it.
+- **Still counted**: embargoes, sanctions, the price cap, switching suppliers, Russia's 2022 gas cut-off and its counter-sanctions, and the war-time prices paid by buyers who kept buying. For buyers hit by a forced loss, the figure shows what they chose to pay: about EUR 13bn more in total than actually reached Russia.
+- **Two losses added**, treated like the strikes:
+  - Russia's ban on gasoline and diesel exports from September to November 2023: about 0.9 Mt lost (likely 0.5–1.4), EUR 0.3bn of expected purchases for 40 buyers. Armenia, Belarus, Kazakhstan and Kyrgyzstan were exempt.
+  - The Druzhba halt from 27 January to 22 April 2026, after a Russian strike in Ukraine: 86 days of crude, EUR 0.65bn for Slovakia and EUR 0.35bn for Hungary.
+- **What that changes**: no country changes group. Slovakia's net moves toward Russia, from +0.48bn to +0.17bn, and stays too close to call. The world's net change in payments to Russia: EUR 137.6bn → 137.1bn.
+
 <h2 id="cl-r51">Round 51: Ukraine's strikes on Russian refineries are not a buyer's choice <span class="cl-date">25 October</span></h2>
 
 The owner: "that's not something what any country chose ... it's just a lowering of the baseline".

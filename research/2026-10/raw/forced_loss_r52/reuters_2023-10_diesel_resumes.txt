@@ -1,0 +1,26 @@
+URL: https://hydrocarbonprocessing.com/news/2023/10/russia-resumes-seaborne-diesel-exports-after-partially-lifting-ban/
+Fetched: 2026-10-25
+HTTP: 200
+Extract (short passages around the figures used):
+
+Russia resumes seaborne diesel exports after partially lifting ban COPYING AND DISTRIBUTING ARE PROHIBITED WITHOUT PERMISSION OF THE PUBLISHER 160.79.106.131 Accept :: [ */* ] Accept-Encoding :: [ gzip, br ] Connection :: [ keep-alive ] Host :: [ hydrocarbonprocessing.com ] User-Agent :: [ Mozilla/5.0 ] X-FORWARDED-PROTO :: [ https ] X-FORWARDED-PORT :: [ 443 ] X-Forwarded-For :: [ 160.79.106.131, 104.23.209.166:10946 ] X-Original-URL :: [ /news/2023/10/russia-resumes-seaborne-diesel-exports-after-partially-lifting-ban/ ] X-AppGW-Trace-Id :: [ 91b5962401b6c67322100b112a051725 ] X-ORIGINAL-HOST :: [ hydroc
+
+---
+
+ing.com ] User-Agent :: [ Mozilla/5.0 ] X-FORWARDED-PROTO :: [ https ] X-FORWARDED-PORT :: [ 443 ] X-Forwarded-For :: [ 160.79.106.131, 104.23.209.166:10946 ] X-Original-URL :: [ /news/2023/10/russia-resumes-seaborne-diesel-exports-after-partially-lifting-ban/ ] X-AppGW-Trace-Id :: [ 91b5962401b6c67322100b112a051725 ] X-ORIGINAL-HOST :: [ hydrocarbonprocessing.com ] X-Azure-JA4-Fingerprint :: [ t13d1310h2_a44d0ee8b3cc_e381dae6da6b ] cf-ray :: [ a5043a1d095350e2-IAD ] cdn-loop :: [ cloudflare; loops=1 ] CF-Connecting-IP :: [ 160.79.106.131 ] CF-IPCountry :: [ US ] CF-Visitor :: [ {"scheme":"https"} ] Login | Free Trial | Subscribe | Advertise Home Magazine September 2026 Free Trial | Subscribe Free Trial Current Issue Digital Exclusives Archive Supplements Customer Service News Latest News Newsl
+
+---
+
+Novak said on Monday. On Sept. 21 Russia temporarily banned most exports of gasoline and diesel to cope with a domestic market shortage, with pipeline operator Transneft halting diesel shipments from Primorsk from Sept. 22. The ban was partially lifted on Friday. TASS news agency cited a spokesman for Transneft as saying that the oil pipeline monopoly had restarted diesel exports on Saturday. Pavel Sorokin, Russia's first deputy energy minister, told RBC TV that storage at oil refineries had been full, which could lead to a decline in refining volumes. He also said the ban will be fully lifted once the domestic market is "saturated" with fuel. "We will take further steps depending on the situation," he said. Tankers loaded with diesel LSEG data showed that one tanker carrying a cargo of diesel lef
+
+---
+
+ed" with fuel. "We will take further steps depending on the situation," he said. Tankers loaded with diesel LSEG data showed that one tanker carrying a cargo of diesel left the Russian Baltic port of Primorsk on Monday and three more were docked ready for loading. All four vessels were chartered in September and had been waiting offshore since the export ban was introduced. The Chiba, Prime V, Romeos and Eternal Sunshine are each expected to carry about 33,000 metric tons of ultra-low sulphur diesel. Diesel is Russia's biggest oil product export, at about 35 million metric tons last year, of which almost three-quarters were shipped via pipeline. Russia also exported 4.8 million tons of gasoline in 2022. Of that, 3.5 million tons of gasoline and 6.6 million tons of diesel were exported by rail, acc
+
+---
+
+oad are still prohibited, Deputy Prime Minister Alexander Novak said on Monday. On Sept. 21 Russia temporarily banned most exports of gasoline and diesel to cope with a domestic market shortage, with pipeline operator Transneft halting diesel shipments from Primorsk from Sept. 22. The ban was partially lifted on Friday. TASS news agency cited a spokesman for Transneft as saying that the oil pipeline monopoly had restarted diesel exports on Saturday. Pavel Sorokin, Russia's first deputy energy minister, told RBC TV that storage at oil refineries had been full, which could lead to a decline in refining volumes. He also said the ban will be fully lifted once the domestic market is "saturated" with fuel. "We will take further steps depending on the situation," he said. Tankers loaded with diesel LSEG
+
+---
+
+with pipeline operator Transneft halting diesel shipments from Primorsk from Sept. 22. The ban was partially lifted on Friday. TASS news agency cited a spokesman for Transneft as saying that the oil pipeline monopoly had restarted diesel exports on Saturday. Pavel Sorokin, Russia's first deputy energy minister, told RBC TV that storage at oil refineries had been full, which could lead to a decline in refining volumes. He also said the ban will be fully lifted once the domestic market is "saturated" with fuel. "We will take further steps depending on the situation," he said. Tankers loaded with diesel LSEG data showed that one tanker carrying a cargo of diesel left the Russian Baltic port of Primorsk on Monday and three more were docked ready for loading. All four vessels were chartered in Septemb

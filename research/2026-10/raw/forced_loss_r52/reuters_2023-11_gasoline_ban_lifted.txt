@@ -1,0 +1,14 @@
+URL: https://hydrocarbonprocessing.com/news/2023/11/russia-lifts-gasoline-export-ban-energy-ministry/
+Fetched: 2026-10-25
+HTTP: 200
+Extract (short passages around the figures used):
+
+Russia lifts gasoline export ban - energy ministry COPYING AND DISTRIBUTING ARE PROHIBITED WITHOUT PERMISSION OF THE PUBLISHER 160.79.106.131 Accept :: [ */* ] Accept-Encoding :: [ gzip, br ] Connection :: [ keep-alive ] Host :: [ hydrocarbonprocessing.com ] User-Agent :: [ Mozilla/5.0 ] X-FORWARDED-PROTO :: [ https ] X-FORWARDED-PORT :: [ 443 ] X-Forwarded-For :: [ 160.79.106.131, 104.22.93.119:12362 ] X-Original-URL :: [ /news/2023/11/russia-lifts-gasoline-export-ban-energy-ministry/ ] X-AppGW-Trace-Id :: [ 5d3eba7d13e208b50c0721b4e2d79b5b ] X-ORIGINAL-HOST :: [ hydrocarbonprocessing.com ] X-Azure-JA4-
+
+---
+
+sing.com ] User-Agent :: [ Mozilla/5.0 ] X-FORWARDED-PROTO :: [ https ] X-FORWARDED-PORT :: [ 443 ] X-Forwarded-For :: [ 160.79.106.131, 104.22.93.119:12362 ] X-Original-URL :: [ /news/2023/11/russia-lifts-gasoline-export-ban-energy-ministry/ ] X-AppGW-Trace-Id :: [ 5d3eba7d13e208b50c0721b4e2d79b5b ] X-ORIGINAL-HOST :: [ hydrocarbonprocessing.com ] X-Azure-JA4-Fingerprint :: [ t13d1310h2_a44d0ee8b3cc_e381dae6da6b ] cf-ray :: [ a5043a2bdf83c207-IAD ] cdn-loop :: [ cloudflare; loops=1 ] CF-Connecting-IP :: [ 160.79.106.131 ] CF-IPCountry :: [ US ] CF-Visitor :: [ {"scheme":"https"} ] Login | Free Trial | Subscribe | Advertise Home Magazine September 2026 Free Trial | Subscribe Free Trial Current Issue Digital Exclusives Archive Supplements Customer Service News Latest News Newsletter Sign-up Dat
+
+---
+
+ministry said on Friday. "A decision was made to terminate the temporary ban on the export of motor gasoline." Russia, the world's top seaborne exporter of diesel, introduced a ban on fuel exports on Sept. 21 in order to tackle high domestic prices and shortages. Only four ex-Soviet states - Belarus, Kazakhstan, Armenia and Kyrgyzstan - were exempt. The government eased restrictions on Oct. 6, allowing the export of diesel by pipeline, but kept measures on gasoline exports in place. Overseas supplies of diesel and other fuels by truck and railway also remained prohibited at the time. The scrapping of the ban might complicate Russia's efforts to reduce its oil and petroleum product exports by 300,000 barrels per day until the end of the year, compared with the average level seen in May and June. Ru
