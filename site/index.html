@@ -751,7 +751,7 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
 .nodata-big b { display: block; margin-bottom: 2px; }
 .chance { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 999px; font: 600 11.5px var(--font-body); border: 1px solid var(--line); color: var(--ink-soft); white-space: nowrap; }
 .chance.ch-sure { color: var(--ink); border-color: var(--ink-soft); }
-.chance.ch-unc, .chance.ch-near { border-style: dashed; }
+.chance.ch-unc, .chance.ch-near, .chance.ch-zero { border-style: dashed; }
 .ev { display: inline-block; margin-left: 5px; padding: 0 5px; border-radius: 4px; font: 11px var(--font-body); color: var(--ink-soft); border: 1px dashed var(--line); }
 .ev.ev-press { color: var(--rus-text, var(--rus)); border-color: currentColor; }
 .ev.ev-off { border-style: solid; }
@@ -2364,7 +2364,7 @@ const GLOSSARY = [
   ["Certainty letter", "On each part: A reported, B measured estimate, C modelled estimate, D rough indication; capped by its sources (press only or own estimates give D)."],
   ["Chance", "How likely a headline number's direction is, from simulating every part's likely range together."],
   ["Method band", "The same number under other reasonable method choices."],
-  ["Very likely, likely, unclear", "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Unclear: below that. Near zero: within ±0.5% of GDP."],
+  ["Very likely, likely, too close to call", "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Too close to call: below that. Near zero: within ±0.5% of GDP. Essentially zero: under 0.1% of GDP and not certain."],
   ["Marker", "Shown on the map or panel for information, not added to the totals."],
 ];
 let howIso = null;   // the country in How it works' live sum: the one last opened, else Germany
@@ -2410,7 +2410,7 @@ function howRanges(c) {
     <ul class="hr-g"><li><b>${t("Very likely (certain)")}</b> ${t("at least a 95% chance of its direction, and every other method choice agrees.")}</li>
       <li><b>${t("Likely (leaning)")}</b> ${t("at least a 65% chance of its direction.")}</li>
       <li><b>${t("Near zero")}</b> ${t("range and method band within ±0.5% of GDP.")}</li>
-      <li><b>${t("Unclear")}</b> ${t("the rest.")}</li></ul>`;
+      <li><b>${t("Too close to call")}</b> ${t("the rest.")}</li></ul>`;
 }
 function fillHowCountry(root) {
   const c = byIso[howIso] || byIso.DEU;
@@ -4074,10 +4074,14 @@ const uncWords = dirWords;
 // method choice agrees: certain), likely (at least 65%: leaning), unclear (below that) or near zero
 const pct = p => (p >= 0.995 ? ">99%" : Math.floor(p * 100) + "%");
 const SIDE_WORDS = { net: { ukraine: "toward Ukraine", russia: "toward Russia" }, rus: { ukraine: "toward Ukraine", russia: "toward Russia" }, ua: { ukraine: "above zero", russia: "below zero" } };
+const ESSENTIALLY_ZERO = 0.001;
 function chanceInfo(c, y, q) {
   if (y < 2022 || !c.gdp || noDataAt(c, y)) return null;
   const ch = chance(c, y, q), unc = uncertain(c, y, q);
-  const level = !unc ? "sure" : isNearZero(c, y, q) ? "near" : ch.p >= LEAN.p ? "lean" : "unc";
+  // round 46 (owner: "start on 4"): a number that is not certain and whose middle value is under 0.1% of a year's GDP is
+  // essentially zero, a fact rather than an open question; below a 65% chance the direction is too close to call
+  const v = HEAD3(calc(c, y))[q];
+  const level = !unc ? "sure" : Math.abs(v) < ESSENTIALLY_ZERO * c.gdp ? "zero" : isNearZero(c, y, q) ? "near" : ch.p >= LEAN.p ? "lean" : "unc";
   return { ...ch, level, sideWords: t(SIDE_WORDS[q][ch.side]) };
 }
 // round 45 (owner: less text): in the panel's pill the side is left out when the label already says it (short)
@@ -4085,9 +4089,10 @@ function chanceText(c, y, q, short = false) {
   const i = chanceInfo(c, y, q);
   if (!i) return "";
   return i.level === "sure" ? t("very likely · {p}", { p: pct(i.p) }) : i.level === "lean" ? (short ? t("likely · {p}", { p: pct(i.p) }) : t("likely {side} · {p}", { side: i.sideWords, p: pct(i.p) }))
-    : i.level === "near" ? t("near zero · {p} {side}", { side: i.sideWords, p: pct(i.p) }) : t("unclear · {p} {side}", { side: i.sideWords, p: pct(i.p) });
+    : i.level === "zero" ? t("essentially zero")
+    : i.level === "near" ? t("near zero · {p} {side}", { side: i.sideWords, p: pct(i.p) }) : t("too close to call · {p} {side}", { side: i.sideWords, p: pct(i.p) });
 }
-const CHANCE_KEY = () => t("The chance of the direction comes from simulating every part's likely range together, correlated where parts share inputs. Very likely: at least 95% and every other method choice agrees. Likely: at least 65%. Unclear: below that. Near zero: the likely range and the method band stay within ±0.5% of a year's GDP.");
+const CHANCE_KEY = () => t("The chance of the direction comes from simulating every part's likely range together, correlated where parts share inputs. Very likely: at least 95% and every other method choice agrees. Likely: at least 65%. Too close to call: below that. Near zero: the likely range and the method band stay within ±0.5% of a year's GDP. Essentially zero: not certain, and the middle value is under 0.1% of a year's GDP.");
 function chancePill(c, y, q) {
   const i = chanceInfo(c, y, q);
   return i ? `<span class="chance ch-${i.level}" title="${esc(CHANCE_KEY())}">${chanceText(c, y, q, i.level === "lean" && !headVerb(c, y, q, HEAD3(calc(c, y))[q]).flip)}</span>` : "";

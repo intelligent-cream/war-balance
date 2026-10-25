@@ -33,7 +33,8 @@ The headline numbers (support for Ukraine, Russia's earnings from trade, the net
 | very likely (certain) | at least a 95% chance of one direction, and every other method choice agrees |
 | likely (leaning) | at least a 65% chance |
 | near zero | not certain, and the likely range and method band stay within ±0.5% of a year's GDP |
-| unclear | the rest |
+| essentially zero | not certain, and the middle value is under 0.1% of a year's GDP: the war moved almost no money either way (round 46) |
+| too close to call | the rest: below a 65% chance either way |
 
 The chance is of the more likely direction, which is usually that of the middle value. Where a middle value just above zero sits in a range that reaches mostly below it, the number leans the other way and says so, with its middle value. Each panel also says **what decides it**: the smallest change to one part that would flip the direction, for example "if Russia kept less from fuel and goods sold here were 1% smaller".
 

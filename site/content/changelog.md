@@ -2,6 +2,11 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r46">Round 46: "essentially zero" and "too close to call" <span class="cl-date">25 October</span></h2>
+
+- A number that is not certain and whose middle value is under 0.1% of a year's GDP now says **essentially zero**: the war moved almost no money either way there (Kazakhstan, Algeria, Israel and others), a fact rather than an open question.
+- Below a 65% chance either way, a direction is **too close to call** (was "unclear"; the ranking group was "direction uncertain").
+
 <h2 id="cl-r45">Round 45: a shorter country panel <span class="cl-date">25 October</span></h2>
 
 The owner: "a little too much text in the main country view".

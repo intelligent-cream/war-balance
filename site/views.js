@@ -60,7 +60,7 @@ const fitName = (name, max) => (name.length > max ? name.slice(0, max - 1).trimE
 // chart rows act like buttons: Enter and Space open the country, as a click does
 function activateOnKey(el, fn) { el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); } }); }
 function tipFor(m) {
-  const range = m.loBn != null ? "<br>" + rangeWords(m.c, m.loBn, m.hiBn, HEAD_LENS[state.lens] === "ua" ? "ua" : "net") + (m.st ? " · " + t(m.st === "lean" ? "leaning" : "uncertain") : "") : "";
+  const range = m.loBn != null ? "<br>" + rangeWords(m.c, m.loBn, m.hiBn, HEAD_LENS[state.lens] === "ua" ? "ua" : "net") + (m.st ? " · " + t(m.st === "lean" ? "leaning" : "too close to call") : "") : "";
   // round 22 (owner): a verb and an amount ("Toward Ukraine by 3.2% of GDP · €134 bn"); the chart itself keeps its signed axis
   return `<b>${m.c.name}</b>${verb(HEAD_LENS[state.lens], m.bn, m.c)}${state.measure !== "total" ? ` · ${eur(Math.abs(m.bn))}` : ""}${range}<br><span style="opacity:.75">${t("Click for the full breakdown")}</span>`;
 }
@@ -100,8 +100,8 @@ function renderRanking(root) {
   rows.forEach(m => { m.ch = hq && y > 2021 ? chance(m.c, y, hq) : null; });
   const grp = m => (m.nz ? 2 : m.st === "unc" ? 3 : m.st === "lean" ? (m.ch.side === "ukraine" ? 1 : 4) : m.v >= 0 ? 0 : 5);
   const GROUP_LABEL = state.lens === "support"
-    ? ["Supported Ukraine", "Leaning: supported Ukraine", "Near zero", "Direction uncertain", "Leaning: below zero", "Below zero"]
-    : ["Toward Ukraine", "Leaning toward Ukraine", "Near zero", "Direction uncertain", "Leaning toward Russia", "Toward Russia"];
+    ? ["Supported Ukraine", "Leaning: supported Ukraine", "Near zero", "Too close to call", "Leaning: below zero", "Below zero"]
+    : ["Toward Ukraine", "Leaning toward Ukraine", "Near zero", "Too close to call", "Leaning toward Russia", "Toward Russia"];
   rows.sort((a, b) => grp(a) - grp(b) || b.v - a.v);
   const groups = [0, 1, 2, 3, 4, 5].map(g => rows.filter(m => grp(m) === g)).map((list, g) => ({ g, list })).filter(x => x.list.length);
   groups.forEach(({ g, list }) => list.forEach((m, i) => (m.rank = g === 0 ? i + 1 : g === 5 ? list.length - i : null)));
@@ -125,7 +125,7 @@ function renderRanking(root) {
   for (const t of cand) if (ticks.every(u => Math.abs(x(u) - x(t)) >= (narrowScreen ? 38 : 46))) ticks.push(t);
   // one colour rule; below zero is orange only where it is money toward Russia (not support)
   const col = v => (v >= 0 ? "var(--ukr)" : state.lens === "support" ? "var(--ink-soft)" : "var(--rus)");
-  const stLabel = { lean: t("leaning"), unc: t("uncertain") };
+  const stLabel = { lean: t("leaning"), unc: t("too close to call") };
   // a group, not an image: its rows are buttons that keyboard and screen reader users reach one by one
   const title = t(LENS_TITLE[state.lens]);
   const svg = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${t("{title}, {n} countries, ranked", { title, n: rows.length })}">
@@ -147,7 +147,7 @@ function renderRanking(root) {
   </svg>`;
   const tagNote = ts ? `<p class="rk-tags" role="status"><span>${t("Showing {n} countries tagged: {tags}.", { n: rows.length + party.length, tags: tagNames() })}</span> <button class="linkbtn tclear" data-tag-clear>${t("Clear tags")}</button></p>` : "";
   root.innerHTML = `<div class="view-inner">
-    ${tagNote}<p class="rk-key"><span class="rk-k rk-k-sure"></span>${t("certain (≥95%)")} <span class="rk-k rk-k-lean"></span>${t("leaning (≥65%)")} <span class="rk-k rk-k-unc"></span>${t("uncertain")} · ${t("% = chance of the more likely direction")}</p>
+    ${tagNote}<p class="rk-key"><span class="rk-k rk-k-sure"></span>${t("certain (≥95%)")} <span class="rk-k rk-k-lean"></span>${t("leaning (≥65%)")} <span class="rk-k rk-k-unc"></span>${t("too close to call")} · ${t("% = chance of the more likely direction")}</p>
     <div class="chart">${svg}</div>
     <p class="note-small">${t("Compressed scale: the axis labels give the true values.")}</p>
     ${party.length ? chipGroup(party, t("Party to the war (with Russia), not ranked:"), "party") : ""}
