@@ -19,8 +19,14 @@ const data = {}, by = {};
 for (const [k, c] of Object.entries(D.countries)) { c.alts = det.alts[k] || {}; M.normalise(c); data[c.n] = c; by[k] = c; }
 M.setData(data, by);
 const Y = +(process.argv[2] || 2026);
+// round 46 (owner: "start on 3"): the choices that never veto a certain direction, written out here as the rule says
+// (site/content/method/ranges.md, "The method band"): rules the project replaced (round 44, and round 46: the windfall at
+// 100%), the early-2021 gas path, which the likely range carries, and "without the war-time windfall", a view only
+const NOT_A_VETO = new Set(["refiner", "laund_route", "fuelmix", "freight", "laund_model", "windfall_full", "gas_early2021", "windfall_off"]);
 const r4 = v => (v == null ? null : +v.toFixed(4));
-const out = { year: Y, world: M.worldPaid(Y), countries: {} };
+const wp = M.worldPaid(Y);
+// round 46: the redirected-trade ratios by commodity group (oil, gas, coal, other goods), as single figures for the docs
+const out = { year: Y, world: { ...wp, ...Object.fromEntries(["oil", "gas", "coal", "other"].flatMap((g, i) => [["ratio_" + g, r4(wp.ratioG[i])], ["ratioMore_" + g, r4(wp.ratioMoreG[i])]])) }, countries: {} };
 for (const [k, c] of Object.entries(by)) {
   if (!c.gdp) continue;
   const g = 100 / c.gdp, x = M.calc(c, Y), x25 = M.calc(c, 2025), mb = M.methodBands(c, Y);
@@ -33,7 +39,7 @@ for (const [k, c] of Object.entries(by)) {
     // simulation alone"): the simulation over the parts gives the value's own sign at least a 95% chance, and every
     // method-band alternative has that sign. Here always the full simulation, without the page's shortcut for numbers
     // far from zero
-    const alts = mb.alts.map(a => a[q]);
+    const alts = mb.alts.filter(a => !NOT_A_VETO.has(a.k)).map(a => a[q]);
     const pOwn = v ? M.pSignMC(x.signParts[q], v) : 0;
     const sameSign = v !== 0 && pOwn >= 0.95 && alts.every(z => z * v > 0);
     Object.assign(o, { [q]: r4(v * g), [q + "Lo"]: r4(lo * g), [q + "Hi"]: r4(hi * g), [q + "BandLo"]: r4(mb[q].lo * g), [q + "BandHi"]: r4(mb[q].hi * g),
@@ -49,7 +55,8 @@ for (const [k, c] of Object.entries(by)) {
     // round 24b (owner): business with Russia in two lines, paid Russia and earned from Russia (EUR bn); they add up to it
     rusPaidEur: r4(x.rusPaid), rusEarnedEur: r4(x.rusEarned) });
   for (const p of x.shiftParts.concat(x.backShift)) Object.assign(o, { ["part_" + p.k]: r4(p.v), ["part_" + p.k + "Lo"]: r4(p.lo), ["part_" + p.k + "Hi"]: r4(p.hi) });
-  for (const a of mb.alts) o["alt_" + a.k] = { ua: r4(a.ua * g), rus: r4(a.rus * g), net: r4(a.net * g) };
+  // round 46: the views beside the band (without the war-time windfall) under the same names
+  for (const a of mb.alts.concat(mb.views || [])) o["alt_" + a.k] = { ua: r4(a.ua * g), rus: r4(a.rus * g), net: r4(a.net * g) };
   out.countries[k] = o;
 }
 // round 24 (audit B): counts the text quotes, worked out here so they cannot go stale: economies over EUR 5bn of GDP,

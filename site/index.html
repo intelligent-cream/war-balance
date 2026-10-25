@@ -751,7 +751,7 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
 .nodata-big b { display: block; margin-bottom: 2px; }
 .chance { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 999px; font: 600 11.5px var(--font-body); border: 1px solid var(--line); color: var(--ink-soft); white-space: nowrap; }
 .chance.ch-sure { color: var(--ink); border-color: var(--ink-soft); }
-.chance.ch-unc, .chance.ch-near { border-style: dashed; }
+.chance.ch-unc, .chance.ch-near, .chance.ch-zero { border-style: dashed; }
 .ev { display: inline-block; margin-left: 5px; padding: 0 5px; border-radius: 4px; font: 11px var(--font-body); color: var(--ink-soft); border: 1px dashed var(--line); }
 .ev.ev-press { color: var(--rus-text, var(--rus)); border-color: currentColor; }
 .ev.ev-off { border-style: solid; }
@@ -1335,9 +1335,9 @@ const LINE_EARNED = new Set(["sold", "svcsold", "ship", "agents", "coprofits", "
 const RHO = { "svcpaid|svcsold": 0.4, "paid|svcpaid": 0.25, "sold|svcpaid": 0.2, "sold|svcsold": 0.2, "paid|svcsold": 0.15,
   "aid|euaid": 1, "aid|own": 0.5, "euaid|own": 0.5, "paid|laund": 0.5, "paid|hidden": 0.5, "laund|hidden": 0.5, "paid|rusarms": 0.5, "paid|sold": 0.2,
   "own|purl": 0.5, "own|arms": 0.5, "purl|arms": 0.5 };
-// opt (round 13, the method band): windfall "full" = the war-time price windfall at 100%; loans "war" = loans discounted at the
-// war-time yield instead of Ukraine's 2021 rate. Round 15 (review 4, approved by the owner): windfall "off" = without
-// the windfall; attrib = redirected trade (much of what one buyer stopped paying, Russia sold to others; round 16: scales
+// opt (round 13, the method band): loans "war" = loans discounted at the war-time yield instead of Ukraine's 2021 rate
+// (round 46: windfall "full", the windfall at 100% instead of Russia's net gain, is gone: round 13 replaced it). Round 15
+// (review 4, approved by the owner): windfall "off" = without the windfall (round 46: a view, not in the band); attrib = redirected trade (much of what one buyer stopped paying, Russia sold to others; round 16: scales
 // "less paid" and "more paid" so that the world total stays the world's net change, worldPaid()); nocut = without the gas Russia cut off itself; refGross
 // = refugees at gross cost (before their taxes); refCommon (round 16) = one common net cost per refugee; p26 = 2026 valued at 2025 prices (the Hormuz crisis). Migrants' remittances are a marker since round 13b, in no total and no
 // alternative (remitNote)
@@ -1492,10 +1492,22 @@ function calc(c, y, opt = {}) {
   // under the other pre-war no-war gas paths (c.windfall.path_band, factors on the windfall; windfall_band_r24.json), the
   // line takes the wider of that and the band moved from "paid", on each side
   const pb = c.windfall?.path_band;
+  // round 46 (owner: "start on 3"; method-choice review of round 43): no-war gas at early-2021 forward prices
+  // (gas_early2021, before the late-2021 squeeze) is a third pre-war path, no longer a method-band alternative that can
+  // veto a certain direction. Which forecast vintage is right is an empirical question, so it sits in the likely range:
+  // its move of "paid" and the windfall together (g21) is one more end of the no-war path, taken like the Feb-2022 and
+  // Oct-2021 paths (as a 5th or 95th percentile of the path, combined with the actual-price band) where it reaches
+  // further. The middle value does not change
+  const wf3 = opt.windfall === "off" ? [0, 0, 0] : neg(sum26(T.windfall, c.to_rus?.p26));
+  const g21 = opt.noG21 || opt.windfall === "off" ? 0 : g21Shift(c, y, opt, lessPaid3[0] + wf3[0]);
   const withNr = r => {
-    const W = -r[0], dl = pb ? Math.max(nrL, Math.abs(W) * Math.max(0, (W >= 0 ? pb[1] : pb[0]) - 1)) : nrL, dh = pb ? Math.max(nrH, Math.abs(W) * Math.max(0, 1 - (W >= 0 ? pb[0] : pb[1]))) : nrH;
+    const W = -r[0];
+    let dl = pb ? Math.max(nrL, Math.abs(W) * Math.max(0, (W >= 0 ? pb[1] : pb[0]) - 1)) : nrL, dh = pb ? Math.max(nrH, Math.abs(W) * Math.max(0, 1 - (W >= 0 ? pb[0] : pb[1]))) : nrH;
+    if (wfOn) { dl = Math.max(dl, -g21); dh = Math.max(dh, g21); }
     return [r[0], r[0] - Math.hypot(r[0] - r[1], dl), r[0] + Math.hypot(r[2] - r[0], dh)];
   };
+  // without a windfall line, the path's end widens "paid", which then carries the no-war price band
+  if (!wfOn && g21) lessPaid3 = [lessPaid3[0], Math.min(lessPaid3[1], lessPaid3[0] + Math.min(0, g21)), Math.max(lessPaid3[2], lessPaid3[0] + Math.max(0, g21))];
   const shiftParts = [
     // Kiel's figure, adjusted (round 13 audit: the label says so): weapons at market value, loans at their gift
     part("aid", "Aid to Ukraine (Kiel, adjusted: weapons at market value, loans as gifts)", ownAid3, aidCert, src("aid")),
@@ -1504,7 +1516,7 @@ function calc(c, y, opt = {}) {
     part("buy", "Extra purchases from Ukraine", above3(T.buyUkr), cTrade, src("buy_ukr")),
     part("paid", lessPaid3[0] >= 0 ? "Less paid to Russia" : "More paid to Russia", lessPaid3, cRus, src("to_rus")),
     // against the prices a no-war market expected; negative where Russia sold below them (price cap, discounts)
-    part("windfall", sum3(T.windfall)[0] >= 0 ? "Extra paid to Russia because of war-time prices" : "Paid Russia less than no-war prices (discounts, price cap)", opt.windfall === "off" ? [0, 0, 0] : withNr(neg(sum26(opt.windfall === "full" && c.windfall?.alt ? { c: c.windfall.alt, l: c.windfall.alt, h: c.windfall.alt } : T.windfall, c.to_rus?.p26))), c.windfall?.cert || "C", src("windfall")),
+    part("windfall", sum3(T.windfall)[0] >= 0 ? "Extra paid to Russia because of war-time prices" : "Paid Russia less than no-war prices (discounts, price cap)", opt.windfall === "off" ? wf3 : withNr(wf3), c.windfall?.cert || "C", src("windfall")),
     // round 13: in volumes like every other trade part (the crude inside the fuel at no-war crude prices, against its
     // pre-war level), counted both ways, at Russia's net gain on crude
     part("laund", "Russian oil bought via other countries", c.laund ? delta3(T.laundered) : neg(sum3(T.laundered)), "C", c.to_rus?.laundered_src || []),
@@ -1612,6 +1624,8 @@ function calc(c, y, opt = {}) {
   const rusCut = sp && pp && pp.v > 0 ? pp.v * Math.max(0, Math.min(sp.cut || 0, 1 - sp.mandated)) : 0;
   return {
     rusCut,
+    // round 46: "paid" and the windfall together (middle values), for the early-2021 gas path (g21Shift)
+    paidWf: lessPaid3[0] + wf3[0],
     // round 14b: taken by Russia from the country's companies, not in the totals (in the cost view)
     taken: taken3[0], takenLo: taken3[1], takenHi: taken3[2], takenParts: live(takenParts),
     aid: aid3[0], refugees: ref3[0], loansFace, loansGE, kielOwn: aid3[0] - eu, aidAdj: ownAid3[0], euAdj: eu3[0], euFace: eu,
@@ -1658,8 +1672,24 @@ function gradeTotal(parts) {
 // 2025 prices, and 2024 GDP instead of the 2022-2024 average (the denominator; in % of GDP only)
 // Round 16 (review 5, H5; approved by the owner): the superseded pre-round-13 valuation rule ("rule: old") is no longer
 // an alternative: the project replaced it, so it is not a reasonable other choice and no longer decides who is ranked
-const METHOD_ALTS = [["windfall", "full"], ["loans", "war"], ["windfall", "off"], ["nocut", true], ["attrib", "world"], ["refGross", true], ["refCommon", true], ["p26", true]];
+// Round 46 (owner: "start on 3"; method-choice review of round 43): the number without the windfall (windfall "off") leaves the method
+// band. The project counts the money that moved, and the price premium Russia received is money that moved; leaving it
+// out measures behaviour (volumes) only. It stays as a view the panel shows next to the band (METHOD_VIEWS), which
+// never vetoes a certain direction or widens the band. "The windfall at 100%" (Russia's gain on the extra price taken as
+// all of it, LNG and coal too) is the rule round 13 replaced with Russia's net gain, as for every other payment, so it
+// is retired like the rules in RETIRED_ALTS
+const METHOD_ALTS = [["loans", "war"], ["nocut", true], ["attrib", "commodity"], ["refGross", true], ["refCommon", true], ["p26", true]];
+const METHOD_VIEWS = [["windfall", "off"]];
 const ALT_KEY = (k, v) => (k === "windfall" ? "windfall_" + v : k);
+// round 46: the early-2021 gas path's move of "paid" and the windfall together (toward Ukraine, EUR bn), from the
+// gas_early2021 rebuild in detail.json (calc(): one more end of the no-war path, not a method-band alternative)
+function g21Shift(c, y, opt, base) {
+  if (!c.alts?.gas_early2021) return 0;
+  const key = y + "|" + offKey() + "|" + JSON.stringify(opt);
+  c._g21 = c._g21 || {};
+  if (!(key in c._g21)) c._g21[key] = calc(withAlt(c, "gas_early2021"), y, { ...opt, noG21: true }).paidWf;
+  return c._g21[key] - base;
+}
 function withAlt(c, name) {
   c._alt = c._alt || {};
   if (c._alt[name]) return c._alt[name];
@@ -1672,7 +1702,7 @@ function withAlt(c, name) {
       c2[k] = o;
     } else c2[k] = v;
   }
-  delete c2._alt; delete c2._mb; delete c2._gr;
+  delete c2._alt; delete c2._mb; delete c2._gr; delete c2._g21;
   return (c._alt[name] = normalise(c2));
 }
 // the world's payments to Russia for goods and fuel ("paid"): what buyers who cut paid less, what others paid more, and
@@ -1683,16 +1713,36 @@ function worldPaid(y) {
   const key = y + "|" + state.netBack + "|" + offKey();
   if (WORLD[key]) return WORLD[key];
   let less = 0, more = 0;
+  const lessG = ATTRIB_GROUPS.map(() => 0), moreG = ATTRIB_GROUPS.map(() => 0);
   for (const c of Object.values(DATA)) {
     const p = calc(c, y).shiftParts.find(q => q.k === "paid");
-    if (p) { if (p.v > 0) less += p.v; else more -= p.v; }
+    if (!p) continue;
+    const w = attribMix(c);
+    if (p.v > 0) { less += p.v; w.less.forEach((s, g) => (lessG[g] += p.v * s)); }
+    else { more -= p.v; w.more.forEach((s, g) => (moreG[g] -= p.v * s)); }
   }
   // round 16 (review 5, H6; approved by the owner): what buyers who bought more took up is Russian supply redirected
   // from buyers who cut (at most the smaller of the two). Counted once, half against each side: the cutters' credits are
   // scaled by (less − r/2) / less and the extra buyers' debits by (more − r/2) / more, so the two still add up to the
   // world's net change (round 15 scaled the cutters only, to the world net, which left the world total incoherent)
-  const r = Math.min(less, more);
-  return (WORLD[key] = { less, more, net: less - more, redirected: r, ratio: less ? (less - r / 2) / less : 1, ratioMore: more ? (more - r / 2) / more : 1 });
+  // round 46 (owner: "start on 3"; method-choice review of round 43): the same, per commodity group (oil, gas, coal, other
+  // goods): what was bought more of one group can only have been redirected from cuts of that group. Russia found new
+  // buyers for most of its oil and coal but for little of its pipeline gas, so a cut of gas is credited more than a cut of
+  // oil. Each country's paid part is split by its own mix of the fall or the rise (to_rus.attrib_mix, build_data.py
+  // attrib_mix()); the groups' credits and debits still add up to the world's net change
+  const rG = lessG.map((l, g) => Math.min(l, moreG[g]));
+  const ratioG = lessG.map((l, g) => (l ? (l - rG[g] / 2) / l : 1)), ratioMoreG = moreG.map((m, g) => (m ? (m - rG[g] / 2) / m : 1));
+  const r = rG.reduce((a, b) => a + b, 0);
+  return (WORLD[key] = { less, more, net: less - more, redirected: r, ratio: less ? (less - r / 2) / less : 1, ratioMore: more ? (more - r / 2) / more : 1,
+    lessG, moreG, ratioG, ratioMoreG });
+}
+// round 46: the groups of build_data.py ATTRIB_GROUPS; a country without a mix counts as other goods
+const ATTRIB_GROUPS = ["oil", "gas", "coal", "other"];
+const attribMix = c => c.to_rus?.attrib_mix || { less: [0, 0, 0, 1], more: [0, 0, 0, 1] };
+// a country's redirected-trade factors: its mix of the fall (rise) times the groups' world ratios
+function attribOf(c, y) {
+  const w = worldPaid(y), m = attribMix(c);
+  return { less: m.less.reduce((a, s, g) => a + s * w.ratioG[g], 0), more: m.more.reduce((a, s, g) => a + s * w.ratioMoreG[g], 0) };
 }
 // the three headline numbers of one calc() result
 const HEAD3 = k => ({ ua: k.uaBal, rus: k.rusBal, net: k.shift });
@@ -1703,7 +1753,7 @@ let ALTS_READY = false;
 // notes (as before round 16), and says so in the banner and the panel; nothing is cached (ALTS_READY stays false)
 let DETAIL_FAILED = false;
 function resetModelCaches() {
-  for (const c of Object.values(byIso)) { delete c._mb; delete c._gr; delete c._alt; }
+  for (const c of Object.values(byIso)) { delete c._mb; delete c._gr; delete c._alt; delete c._g21; }
   for (const k of Object.keys(WORLD)) delete WORLD[k];
   if (typeof flowSrc !== "undefined") flowSrc = null;
 }
@@ -1712,16 +1762,21 @@ function resetModelCaches() {
 // crude in their fuel exports (replaced in round 13), laundered oil without the route rule (13b), the mix from the
 // tracker's tonnes and CIF fuel prices (14), and the modelled laundered oil (38). Their rebuilds stay in detail.json
 const RETIRED_ALTS = new Set(["refiner", "laund_route", "fuelmix", "freight", "laund_model"]);
+// round 46: rebuilt alternatives that the likely range carries instead (calc(), g21Shift): an empirical question, not a
+// method choice
+const IN_SIMULATION = new Set(["gas_early2021"]);
 function methodBands(c, y) {
   const key = y + "|" + state.netBack + "|" + offKey();
   c._mb = c._mb || {};
   if (c._mb[key] && ALTS_READY) return c._mb[key];
   const base = HEAD3(calc(c, y)), alts = [];
-  for (const [k, v] of METHOD_ALTS) alts.push({ k: ALT_KEY(k, v), ...HEAD3(calc(c, y, { [k]: k === "attrib" ? { less: worldPaid(y).ratio, more: worldPaid(y).ratioMore } : v })) });
-  for (const name of Object.keys(c.alts || {})) if (!RETIRED_ALTS.has(name)) alts.push({ k: name, ...HEAD3(calc(withAlt(c, name), y)) });
+  for (const [k, v] of METHOD_ALTS) alts.push({ k: ALT_KEY(k, v), ...HEAD3(calc(c, y, { [k]: k === "attrib" ? attribOf(c, y) : v })) });
+  for (const name of Object.keys(c.alts || {})) if (!RETIRED_ALTS.has(name) && !IN_SIMULATION.has(name)) alts.push({ k: name, ...HEAD3(calc(withAlt(c, name), y)) });
   // the denominator: 2024 GDP instead of the 2022-2024 average, as euros that give that % of the average GDP
   if (c.gdp_2024 && c.gdp) { const f = c.gdp / c.gdp_2024; alts.push({ k: "gdp2024", ua: base.ua * f, rus: base.rus * f, net: base.net * f }); }
-  const out = { alts };
+  // round 46: views shown beside the band, never in it (METHOD_VIEWS)
+  const views = METHOD_VIEWS.map(([k, v]) => ({ k: ALT_KEY(k, v), ...HEAD3(calc(c, y, { [k]: v })) }));
+  const out = { alts, views };
   for (const q of ["ua", "rus", "net"]) { const all = [base[q], ...alts.map(a => a[q])]; out[q] = { lo: Math.min(...all), hi: Math.max(...all) }; }
   if (ALTS_READY) c._mb[key] = out;
   return out;
@@ -2364,7 +2419,7 @@ const GLOSSARY = [
   ["Certainty letter", "On each part: A reported, B measured estimate, C modelled estimate, D rough indication; capped by its sources (press only or own estimates give D)."],
   ["Chance", "How likely a headline number's direction is, from simulating every part's likely range together."],
   ["Method band", "The same number under other reasonable method choices."],
-  ["Very likely, likely, unclear", "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Unclear: below that. Near zero: within ±0.5% of GDP."],
+  ["Very likely, likely, too close to call", "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Too close to call: below that. Near zero: within ±0.5% of GDP. Essentially zero: under 0.1% of GDP and not certain."],
   ["Marker", "Shown on the map or panel for information, not added to the totals."],
 ];
 let howIso = null;   // the country in How it works' live sum: the one last opened, else Germany
@@ -2410,7 +2465,7 @@ function howRanges(c) {
     <ul class="hr-g"><li><b>${t("Very likely (certain)")}</b> ${t("at least a 95% chance of its direction, and every other method choice agrees.")}</li>
       <li><b>${t("Likely (leaning)")}</b> ${t("at least a 65% chance of its direction.")}</li>
       <li><b>${t("Near zero")}</b> ${t("range and method band within ±0.5% of GDP.")}</li>
-      <li><b>${t("Unclear")}</b> ${t("the rest.")}</li></ul>`;
+      <li><b>${t("Too close to call")}</b> ${t("the rest.")}</li></ul>`;
 }
 function fillHowCountry(root) {
   const c = byIso[howIso] || byIso.DEU;
@@ -3548,12 +3603,12 @@ function miniChart(tr, colour, title, srcIds) {
 // the method band and the average year, below the range (round 13); round 15: a band for each of the three numbers, and
 // the choices that move them
 const ALT_WHAT = {
-  windfall_full: "the war-time windfall at 100%", loans: "loans discounted at the war-time yield",
+  loans: "loans discounted at the war-time yield",
   refiner: "EU refiners keep the Russian crude in the fuel they export", laund_route: "laundered oil: every buyer's change counted, without the route rule (buyers without a measured series)",
   laund_half: "laundered oil: half of Russia's gain on the crude charged to the fuel buyer (Russia redirected its crude, so one buyer moves its revenue by less)", laund_model: "laundered oil modelled from refiners' exports and hub resale (until round 38), not measured from the buyer's own customs", fuelmix: "the mix of what was bought from the fuel tracker's tonnes, not customs values",
   freight: "fuel prices as customs (CIF) values, freight included", normal_return: "sellers' normal return 9% nominal, services incl. real estate; Russia 9%, Ukraine 8.2%",
-  windfall_off: "without the war-time windfall", nocut: "without the gas Russia cut off itself", nocut_oil: "without the gas and pipeline oil Russia cut off itself", attrib: "redirected trade: much of what buyers who cut stopped paying, Russia sold to others; counted half against each side (less paid × {r}, more paid × {m})",
-  refGross: "refugees at gross cost (before the host's gain on their work is taken off)", refCommon: "refugees at one common cost per person-year for every host (the hosts' average), not each host's actual cost", p26: "2026 at 2025 prices (without the Hormuz-crisis prices)", gold_actual: "gold valued at its actual price, not at its 2021 price (central banks' buying after Russia's reserves were frozen is linked to the war)", gdp2024: "2024 GDP as the denominator, not the 2022–2024 average", gas_early2021: "no-war gas prices at early-2021 forward prices (before the late-2021 squeeze)", nk_paid_observed: "North Korea paid only what was seen flowing back",
+  nocut: "without the gas Russia cut off itself", nocut_oil: "without the gas and pipeline oil Russia cut off itself", attrib: "redirected trade: much of what buyers who cut stopped paying, Russia sold to others (most of its oil and coal, little of its gas), counted half against each side, by commodity (here less paid × {r}, more paid × {m})",
+  refGross: "refugees at gross cost (before the host's gain on their work is taken off)", refCommon: "refugees at one common cost per person-year for every host (the hosts' average), not each host's actual cost", p26: "2026 at 2025 prices (without the Hormuz-crisis prices)", gold_actual: "gold valued at its actual price, not at its 2021 price (central banks' buying after Russia's reserves were frozen is linked to the war)", gdp2024: "2024 GDP as the denominator, not the 2022–2024 average", nk_paid_observed: "North Korea paid only what was seen flowing back",
 };
 // round 38 (owner: "yes fix all that"): the choices that move the net as one strip of dots instead of a list: the official
 // net is the bar, each dot the net under one other choice (its name on hover or tap), the two ends named underneath
@@ -3571,15 +3626,18 @@ function methodLine(c, y, noYear) {
   const m = methodBands(c, y), g = v => fmtMeasure(c, v, "gdp", true), gdp = c.gdp || 1;
   const k = calc(c, y), base = HEAD3(k), yrs = yearsOf(y);
   const altKey = a => (a === "nocut" && oilCut(c) ? "nocut_oil" : a);
-  const what = a => t(ALT_WHAT[altKey(a)] || a, { r: num(worldPaid(y).ratio, 2), m: num(worldPaid(y).ratioMore, 2) });
+  const at = attribOf(c, y), what = a => t(ALT_WHAT[altKey(a)] || a, { r: num(at.less, 2), m: num(at.more, 2) });
   // the choices that move any number by at least 0.005% of GDP, largest first; the bands cover all of them
   const moved = a => Math.max(...["ua", "rus", "net"].map(q => Math.abs(a[q] - base[q])));
   const shown = m.alts.filter(a => moved(a) >= 0.00005 * gdp).sort((a, b) => moved(b) - moved(a));
   const bands = t("Method band, the numbers under other method choices: support for Ukraine {ua}; Russia's earnings from trade {ru}; net {net}.", {
     ua: t("{lo} to {hi}", { lo: g(m.ua.lo), hi: g(m.ua.hi) }), ru: t("{lo} to {hi}", { lo: g(m.rus.lo), hi: g(m.rus.hi) }), net: t("{lo} to {hi}", { lo: g(m.net.lo), hi: g(m.net.hi) }) });
+  // round 46: the number without the war-time price windfall, a view of behaviour (volumes) only, beside the band, not in it
+  const wo = m.views.find(a => a.k === "windfall_off"), woLine = wo && moved(wo) >= 0.00005 * gdp
+    ? `<div class="range-txt">${t("Without the war-time price windfall (a view of volumes only, not a method choice: the price premium Russia received is money that moved): Russia's earnings from trade {ru}; net {net}.", { ru: g(wo.rus), net: g(wo.net) })}</div>` : "";
   const partial = DETAIL_FAILED ? `<div class="range-txt">${t("The rebuilt method choices could not load: this band covers only the choices worked out in the page.")}</div>` : "";
   return `${partial}<div class="range-txt">${shown.length ? bands : t("Method band: the other method choices do not move this net.")}</div>
-    ${shown.length ? choiceStrip(c, base.net, shown, what) : ""}
+    ${shown.length ? choiceStrip(c, base.net, shown, what) : ""}${woLine}
     ${noYear ? "" : `<div class="range-txt">${t("A total for {n} years, not a yearly rate: about {v} of GDP in an average year.", { n: num(yrs, 1), v: g(k.shift / yrs) })}</div>`}`;
 }
 // Round 15 (raised by the owner): 2026 prices include the Hormuz crisis, which this war did not cause. The money really
@@ -4074,10 +4132,14 @@ const uncWords = dirWords;
 // method choice agrees: certain), likely (at least 65%: leaning), unclear (below that) or near zero
 const pct = p => (p >= 0.995 ? ">99%" : Math.floor(p * 100) + "%");
 const SIDE_WORDS = { net: { ukraine: "toward Ukraine", russia: "toward Russia" }, rus: { ukraine: "toward Ukraine", russia: "toward Russia" }, ua: { ukraine: "above zero", russia: "below zero" } };
+const ESSENTIALLY_ZERO = 0.001;
 function chanceInfo(c, y, q) {
   if (y < 2022 || !c.gdp || noDataAt(c, y)) return null;
   const ch = chance(c, y, q), unc = uncertain(c, y, q);
-  const level = !unc ? "sure" : isNearZero(c, y, q) ? "near" : ch.p >= LEAN.p ? "lean" : "unc";
+  // round 46 (owner: "start on 4"): a number that is not certain and whose middle value is under 0.1% of a year's GDP is
+  // essentially zero, a fact rather than an open question; below a 65% chance the direction is too close to call
+  const v = HEAD3(calc(c, y))[q];
+  const level = !unc ? "sure" : Math.abs(v) < ESSENTIALLY_ZERO * c.gdp ? "zero" : isNearZero(c, y, q) ? "near" : ch.p >= LEAN.p ? "lean" : "unc";
   return { ...ch, level, sideWords: t(SIDE_WORDS[q][ch.side]) };
 }
 // round 45 (owner: less text): in the panel's pill the side is left out when the label already says it (short)
@@ -4085,9 +4147,10 @@ function chanceText(c, y, q, short = false) {
   const i = chanceInfo(c, y, q);
   if (!i) return "";
   return i.level === "sure" ? t("very likely · {p}", { p: pct(i.p) }) : i.level === "lean" ? (short ? t("likely · {p}", { p: pct(i.p) }) : t("likely {side} · {p}", { side: i.sideWords, p: pct(i.p) }))
-    : i.level === "near" ? t("near zero · {p} {side}", { side: i.sideWords, p: pct(i.p) }) : t("unclear · {p} {side}", { side: i.sideWords, p: pct(i.p) });
+    : i.level === "zero" ? t("essentially zero")
+    : i.level === "near" ? t("near zero · {p} {side}", { side: i.sideWords, p: pct(i.p) }) : t("too close to call · {p} {side}", { side: i.sideWords, p: pct(i.p) });
 }
-const CHANCE_KEY = () => t("The chance of the direction comes from simulating every part's likely range together, correlated where parts share inputs. Very likely: at least 95% and every other method choice agrees. Likely: at least 65%. Unclear: below that. Near zero: the likely range and the method band stay within ±0.5% of a year's GDP.");
+const CHANCE_KEY = () => t("The chance of the direction comes from simulating every part's likely range together, correlated where parts share inputs. Very likely: at least 95% and every other method choice agrees. Likely: at least 65%. Too close to call: below that. Near zero: the likely range and the method band stay within ±0.5% of a year's GDP. Essentially zero: not certain, and the middle value is under 0.1% of a year's GDP.");
 function chancePill(c, y, q) {
   const i = chanceInfo(c, y, q);
   return i ? `<span class="chance ch-${i.level}" title="${esc(CHANCE_KEY())}">${chanceText(c, y, q, i.level === "lean" && !headVerb(c, y, q, HEAD3(calc(c, y))[q]).flip)}</span>` : "";
@@ -4254,7 +4317,8 @@ function uncReason(c, y, q) {
   // the likely range first: when it crosses zero, that is the main reason; a method choice only when the range does not
   if (flip.length && lo * v > 0 && hi * v > 0) {
     const a = flip.sort((x, z) => Math.abs(z[q] - v) - Math.abs(x[q] - v))[0];
-    return t("a method choice: {what}", { what: t(ALT_WHAT[altKey(a.k)] || a.k, { r: num(worldPaid(y).ratio, 2), m: num(worldPaid(y).ratioMore, 2) }) });
+    const at = attribOf(c, y);
+    return t("a method choice: {what}", { what: t(ALT_WHAT[altKey(a.k)] || a.k, { r: num(at.less, 2), m: num(at.more, 2) }) });
   }
   const ps = (k.signParts[q] || []).map(p => ({ p, d: v > 0 ? p.v - p.lo : p.hi - p.v })).sort((a, b) => b.d - a.d);
   if (!ps.length) return "";

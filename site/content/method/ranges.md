@@ -33,7 +33,8 @@ The headline numbers (support for Ukraine, Russia's earnings from trade, the net
 | very likely (certain) | at least a 95% chance of one direction, and every other method choice agrees |
 | likely (leaning) | at least a 65% chance |
 | near zero | not certain, and the likely range and method band stay within ±0.5% of a year's GDP |
-| unclear | the rest |
+| essentially zero | not certain, and the middle value is under 0.1% of a year's GDP: the war moved almost no money either way (round 46) |
+| too close to call | the rest: below a 65% chance either way |
 
 The chance is of the more likely direction, which is usually that of the middle value. Where a middle value just above zero sits in a range that reaches mostly below it, the number leans the other way and says so, with its middle value. Each panel also says **what decides it**: the smallest change to one part that would flip the direction, for example "if Russia kept less from fuel and goods sold here were 1% smaller".
 
@@ -51,26 +52,30 @@ A traded flow has four main sources of uncertainty: the pre-war level, the actua
 
 Parts' ranges are combined the same way, with correlations where errors are shared (for example, all parts weighted by Russia's gain shares move together). The effect is small: Germany's net range is +2.63%<!-- n:DEU.netLo --> to +4.99%<!-- n:DEU.netHi -->.
 
-A number's direction is **certain** when the simulation gives it at least a 95% chance and no method-band alternative has the other sign (round 42; before, the likely range had to stay on one side). Otherwise it **leans** toward Ukraine or Russia when one direction has at least a 65% chance, and is **uncertain** below that. When its likely range and its method band both stay within ±0.5% of a year's GDP it is **near zero**: the war moved little money either way. All stay in the ranking, in their own groups, and the country's panel says in one line why its number is not certain. Among the 163<!-- n:WORLD.nBig --> economies above EUR 5bn, 84<!-- n:WORLD.uncUa --> are not certain on support for Ukraine, 99<!-- n:WORLD.uncRus --> on Russia's earnings from trade and 92<!-- n:WORLD.uncNet --> on the net, of which 49<!-- n:WORLD.leanNet --> lean one way and 29<!-- n:WORLD.nearNet --> are near zero.
+A number's direction is **certain** when the simulation gives it at least a 95% chance and no method-band alternative has the other sign (round 42; before, the likely range had to stay on one side). Otherwise it **leans** toward Ukraine or Russia when one direction has at least a 65% chance, and is **uncertain** below that. When its likely range and its method band both stay within ±0.5% of a year's GDP it is **near zero**: the war moved little money either way. All stay in the ranking, in their own groups, and the country's panel says in one line why its number is not certain. Among the 163<!-- n:WORLD.nBig --> economies above EUR 5bn, 84<!-- n:WORLD.uncUa --> are not certain on support for Ukraine, 101<!-- n:WORLD.uncRus --> on Russia's earnings from trade and 92<!-- n:WORLD.uncNet --> on the net, of which 51<!-- n:WORLD.leanNet --> lean one way and 30<!-- n:WORLD.nearNet --> are near zero.
 
 ## The method band
 
 The likely range is uncertainty **given the method**. The method band shows each headline number under other reasonable choices, one at a time:
 
-- the war-time windfall in full, or left out (Hungary raised Russia's earnings from trade by 1.20%<!-- n:HUN.alt_windfall_off.rus abs --> of GDP without it, instead of 6.35%<!-- n:HUN.rus abs -->);
 - loans at the war-time yield;
 - laundered oil with half of Russia's gain charged to the fuel buyer;
 - a higher normal return;
-- **redirected trade**: much of what one buyer stopped paying, Russia sold to others ("less paid" × 0.70<!-- n:WORLD.ratio -->);
+- **redirected trade**: much of what one buyer stopped paying, Russia sold to others, so only part of each cut cost Russia. It is worked out per commodity, because Russia found new buyers for most of its oil and coal but for little of its pipeline gas (the EU took about 113 bcm less, China about 12 bcm more): "less paid" × 0.63<!-- n:WORLD.ratio_oil --> for oil, 0.89<!-- n:WORLD.ratio_gas --> for gas, 0.50<!-- n:WORLD.ratio_coal --> for coal and 0.76<!-- n:WORLD.ratio_other --> for other goods, applied to each country's own mix of what it cut;
 - without the gas Russia cut off itself;
 - refugees at gross cost, or at one common cost per refugee;
-- 2026 at 2025 prices; gold at its actual price; no-war gas at early-2021 prices;
+- 2026 at 2025 prices; gold at its actual price;
 - North Korea paid only what was observed flowing back;
 - 2024 GDP instead of the 2022–2024 average.
 
-Rules the project itself replaced are not other reasonable choices and are not in the band (round 44): EU refiners keeping the Russian crude in their fuel exports, laundered oil without the route rule or modelled instead of measured, the fuel mix from tanker tonnes, and fuel prices with freight. Their rebuilt figures stay in the data download.
+Rules the project itself replaced are not other reasonable choices and are not in the band (round 44): EU refiners keeping the Russian crude in their fuel exports, laundered oil without the route rule or modelled instead of measured, the fuel mix from tanker tonnes, and fuel prices with freight. Since round 46 the same holds for the war-time windfall at 100% (round 13 replaced it with Russia's net gain on the extra price, as for every other payment). Their rebuilt figures stay in the data download.
 
-The band is the lowest and highest of these; it is not a probability range. Examples (the net): Germany 3.13%<!-- n:DEU.netBandLo --> to 4.05%<!-- n:DEU.netBandHi -->, Moldova 3.96%<!-- n:MDA.netBandLo --> to 9.76%<!-- n:MDA.netBandHi -->, Hungary −7.86%<!-- n:HUN.netBandLo --> to −0.75%<!-- n:HUN.netBandHi -->, North Korea −31.86%<!-- n:PRK.netBandLo --> to −11.21%<!-- n:PRK.netBandHi -->.
+Two former alternatives moved out of the band in round 46, so they no longer decide whether a direction is certain:
+
+- **No-war gas at early-2021 prices** (before the late-2021 squeeze) is a question of fact, which forecast to trust, so it is now in the likely range: the war-time price windfall's range reaches the early-2021 path, as it reaches the October-2021 forecasts and February-2022 futures. Italy, Spain and France are no longer certain on Russia's earnings from trade because of it.
+- **Without the war-time windfall** contradicts what the site measures: the price premium Russia received is money that moved. The panel still shows the number without it, as a view of volumes alone (Hungary raised Russia's earnings from trade by 1.20%<!-- n:HUN.alt_windfall_off.rus abs --> of GDP without it, instead of 6.35%<!-- n:HUN.rus abs -->).
+
+The band is the lowest and highest of these; it is not a probability range. Examples (the net): Germany 3.13%<!-- n:DEU.netBandLo --> to 3.81%<!-- n:DEU.netBandHi -->, Moldova 3.96%<!-- n:MDA.netBandLo --> to 9.76%<!-- n:MDA.netBandHi -->, Hungary −6.01%<!-- n:HUN.netBandLo --> to −5.45%<!-- n:HUN.netBandHi -->, North Korea −31.86%<!-- n:PRK.netBandLo --> to −11.21%<!-- n:PRK.netBandHi -->.
 
 ## Average year
 

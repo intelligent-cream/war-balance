@@ -1,0 +1,7363 @@
+{
+ "generated": "2026-10-25",
+ "round": 46,
+ "status": "proposal (not yet read by the build)",
+ "question": "own no-war bands for purchases from Russia (to_rus) of the uncertain countries, by the cf_bands.json B2 rule unchanged",
+ "units": "multipliers in real terms, as cf_bands.json: cumulative_band = multiplier on the SUM over the horizon of the central expected level (H5_2026_8of12 = 2022-2026 with 2026 at 8/12); multiplier_vs_2021 = per-year ratio to the yearly central; band_as_built = site/data.json to_rus.cb[5] (generic x 0.81)",
+ "rule": "(unchanged) used only if (1) the 2022-2026 cumulative band is at least 10% narrower than the band the site builds now (generic x CB_SCALE_PAID 0.81), (2) leave-window-out coverage >= 80% (12/15: test origins 2007, 2012, 2016, training without any overlapping window), (3) out of time >= 80% (trained on errors ending by 2013, scored on origins 2014-2020, 25 errors), (4) >= 90% of the country's own 5-year windows inside (fuel_volume_cf.json safeguard, as Türkiye in round 43). Checks (2)-(4) must hold on series A and, where the country reports to the IMF, also on series B (B has no 2007 test window). At least 15 usable years of A.",
+ "how_to_apply": "for each accepted ISO copy proposed_cf_bands_entry['countries.<ISO>.to_rus'] into cf_bands.json countries.<ISO>.to_rus; counterfactual() then replaces the generic multipliers and cumulative band and does not apply CB_SCALE_PAID (as Türkiye, round 43)",
+ "countries": {
+  "MLT": {
+   "name": "Malta",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "net": 0.879
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -2.13,
+    0.616,
+    2.838
+   ],
+   "widened_bounds": [
+    -2.274,
+    2.958
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.269,
+     "central": 1.0,
+     "high": 5.516
+    },
+    "2023": {
+     "low": 0.156,
+     "central": 1.0,
+     "high": 11.19
+    },
+    "2024": {
+     "low": 0.103,
+     "central": 1.0,
+     "high": 19.256
+    },
+    "2025": {
+     "low": 0.072,
+     "central": 1.0,
+     "high": 30.429
+    },
+    "2026": {
+     "low": 0.053,
+     "central": 1.0,
+     "high": 45.537
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.269,
+     "central": 1.0,
+     "high": 5.516
+    },
+    "H2": {
+     "low": 0.229,
+     "central": 1.0,
+     "high": 8.083
+    },
+    "H3": {
+     "low": 0.222,
+     "central": 1.0,
+     "high": 9.266
+    },
+    "H4": {
+     "low": 0.195,
+     "central": 1.0,
+     "high": 13.301
+    },
+    "H5": {
+     "low": 0.208,
+     "central": 1.0,
+     "high": 18.286
+    },
+    "H5_2026_8of12": {
+     "low": 0.207,
+     "central": 1.0,
+     "high": 16.6
+    }
+   },
+   "width_ratio_vs_as_built": 7.441,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "3/5",
+       "2016": "4/5"
+      },
+      "total": "12/15",
+      "rate": 0.8
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "9/25",
+      "rate": 0.36,
+      "misses": [
+       "2014+2: x9.91",
+       "2014+3: x8.53",
+       "2015+1: x8.00",
+       "2015+2: x6.89",
+       "2016+1: x5.19",
+       "2016+5: x0.42",
+       "2017+1: x0.25",
+       "2017+2: x0.30",
+       "2017+3: x0.15",
+       "2017+4: x0.08",
+       "2018+1: x0.30",
+       "2018+2: x0.15",
+       "2018+3: x0.08",
+       "2019+1: x0.50",
+       "2019+2: x0.27",
+       "2020+1: x0.33"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "1/5",
+       "2016": "0/5"
+      },
+      "total": "1/10",
+      "rate": 0.1
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "9/25",
+      "rate": 0.36,
+      "misses": [
+       "2014+1: x12.53",
+       "2014+2: x5.79",
+       "2015+1: x2.97",
+       "2015+3: x0.36",
+       "2016+1: x0.32",
+       "2016+2: x0.12",
+       "2016+3: x0.54",
+       "2016+4: x0.46",
+       "2016+5: x0.15",
+       "2017+1: x0.12",
+       "2017+2: x0.54",
+       "2017+3: x0.46",
+       "2017+4: x0.15",
+       "2018+3: x0.45",
+       "2019+2: x0.45",
+       "2020+1: x0.32"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 2.586,
+      "2006": 2.556,
+      "2007": 1.533,
+      "2008": 0.93,
+      "2009": 1.622,
+      "2010": 1.91,
+      "2011": 4.218,
+      "2012": 4.989,
+      "2013": 5.048,
+      "2014": 5.119,
+      "2015": 4.137,
+      "2016": 1.939
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 7.707,
+      "2011": 11.787,
+      "2012": 13.46,
+      "2013": 12.747,
+      "2014": 4.922,
+      "2015": 1.455,
+      "2016": 0.33
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 7.44); out of time 9/25 on A_mirror_baci; leave-window-out 1/10 on B_own_imf; out of time 9/25 on B_own_imf"
+  },
+  "COL": {
+   "name": "Colombia",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "net": 0.791,
+    "rus": 0.679
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.464,
+    0.347,
+    0.82
+   ],
+   "widened_bounds": [
+    -0.517,
+    0.845
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.742,
+     "central": 1.0,
+     "high": 1.629
+    },
+    "2023": {
+     "low": 0.656,
+     "central": 1.0,
+     "high": 1.994
+    },
+    "2024": {
+     "low": 0.596,
+     "central": 1.0,
+     "high": 2.329
+    },
+    "2025": {
+     "low": 0.55,
+     "central": 1.0,
+     "high": 2.654
+    },
+    "2026": {
+     "low": 0.513,
+     "central": 1.0,
+     "high": 2.978
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.742,
+     "central": 1.0,
+     "high": 1.629
+    },
+    "H2": {
+     "low": 0.716,
+     "central": 1.0,
+     "high": 1.817
+    },
+    "H3": {
+     "low": 0.71,
+     "central": 1.0,
+     "high": 1.89
+    },
+    "H4": {
+     "low": 0.689,
+     "central": 1.0,
+     "high": 2.095
+    },
+    "H5": {
+     "low": 0.7,
+     "central": 1.0,
+     "high": 2.294
+    },
+    "H5_2026_8of12": {
+     "low": 0.699,
+     "central": 1.0,
+     "high": 2.232
+    }
+   },
+   "width_ratio_vs_as_built": 0.696,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "4/5",
+       "2016": "3/5"
+      },
+      "total": "12/15",
+      "rate": 0.8
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "18/25",
+      "rate": 0.72,
+      "misses": [
+       "2016+3: x0.66",
+       "2016+4: x0.64",
+       "2017+2: x0.64",
+       "2017+3: x0.61",
+       "2018+1: x0.64",
+       "2018+2: x0.61",
+       "2019+1: x0.63"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "5/5",
+       "2016": "1/5"
+      },
+      "total": "6/10",
+      "rate": 0.6
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "17/25",
+      "rate": 0.68,
+      "misses": [
+       "2015+1: x0.84",
+       "2015+4: x0.63",
+       "2015+5: x0.69",
+       "2016+3: x0.63",
+       "2016+4: x0.69",
+       "2017+2: x0.73",
+       "2018+1: x0.76",
+       "2020+1: x1.75"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 1.239,
+      "2006": 1.05,
+      "2007": 1.262,
+      "2008": 1.779,
+      "2009": 2.054,
+      "2010": 1.843,
+      "2011": 1.739,
+      "2012": 1.936,
+      "2013": 1.632,
+      "2014": 1.364,
+      "2015": 1.121,
+      "2016": 0.989
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 1.984,
+      "2011": 1.733,
+      "2012": 1.647,
+      "2013": 1.305,
+      "2014": 1.0,
+      "2015": 0.771,
+      "2016": 0.811
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "out of time 18/25 on A_mirror_baci; leave-window-out 6/10 on B_own_imf; out of time 17/25 on B_own_imf"
+  },
+  "JOR": {
+   "name": "Jordan",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "net": 0.773,
+    "rus": 0.766
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.897,
+    -0.161,
+    1.119
+   ],
+   "widened_bounds": [
+    -0.964,
+    1.341
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.573,
+     "central": 1.0,
+     "high": 2.169
+    },
+    "2023": {
+     "low": 0.455,
+     "central": 1.0,
+     "high": 2.99
+    },
+    "2024": {
+     "low": 0.382,
+     "central": 1.0,
+     "high": 3.824
+    },
+    "2025": {
+     "low": 0.329,
+     "central": 1.0,
+     "high": 4.706
+    },
+    "2026": {
+     "low": 0.288,
+     "central": 1.0,
+     "high": 5.65
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.573,
+     "central": 1.0,
+     "high": 2.169
+    },
+    "H2": {
+     "low": 0.535,
+     "central": 1.0,
+     "high": 2.58
+    },
+    "H3": {
+     "low": 0.529,
+     "central": 1.0,
+     "high": 2.745
+    },
+    "H4": {
+     "low": 0.501,
+     "central": 1.0,
+     "high": 3.234
+    },
+    "H5": {
+     "low": 0.515,
+     "central": 1.0,
+     "high": 3.736
+    },
+    "H5_2026_8of12": {
+     "low": 0.513,
+     "central": 1.0,
+     "high": 3.575
+    }
+   },
+   "width_ratio_vs_as_built": 1.39,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "3/5",
+       "2012": "5/5",
+       "2016": "3/5"
+      },
+      "total": "11/15",
+      "rate": 0.733
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "21/25",
+      "rate": 0.84,
+      "misses": [
+       "2014+3: x0.38",
+       "2015+2: x0.42",
+       "2016+1: x0.42",
+       "2018+1: x0.63"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "3/5",
+       "2016": "4/5"
+      },
+      "total": "7/10",
+      "rate": 0.7
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "19/25",
+      "rate": 0.76,
+      "misses": [
+       "2014+1: x0.69",
+       "2014+2: x0.51",
+       "2014+3: x0.36",
+       "2015+2: x0.52",
+       "2016+1: x0.52",
+       "2020+1: x0.69"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "11/12",
+     "rate": 0.917,
+     "windows": {
+      "2005": 4.146,
+      "2006": 2.958,
+      "2007": 1.727,
+      "2008": 0.925,
+      "2009": 0.862,
+      "2010": 0.932,
+      "2011": 1.099,
+      "2012": 0.97,
+      "2013": 0.997,
+      "2014": 0.69,
+      "2015": 0.69,
+      "2016": 0.632
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 1.476,
+      "2011": 0.983,
+      "2012": 0.69,
+      "2013": 0.686,
+      "2014": 0.546,
+      "2015": 0.742,
+      "2016": 0.722
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 1.39); leave-window-out 11/15 on A_mirror_baci; leave-window-out 7/10 on B_own_imf; out of time 19/25 on B_own_imf"
+  },
+  "PYF": {
+   "name": "French Polynesia",
+   "size_class": "S",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "rus": 0.643
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.433,
+    6.8417
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.487,
+    0.211,
+    0.975
+   ],
+   "widened_bounds": [
+    -0.526,
+    1.028
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.738,
+     "central": 1.0,
+     "high": 1.81
+    },
+    "2023": {
+     "low": 0.651,
+     "central": 1.0,
+     "high": 2.314
+    },
+    "2024": {
+     "low": 0.591,
+     "central": 1.0,
+     "high": 2.795
+    },
+    "2025": {
+     "low": 0.545,
+     "central": 1.0,
+     "high": 3.276
+    },
+    "2026": {
+     "low": 0.507,
+     "central": 1.0,
+     "high": 3.769
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.65,
+     "central": 1.0,
+     "high": 2.353
+    },
+    "H2": {
+     "low": 0.659,
+     "central": 1.0,
+     "high": 2.493
+    },
+    "H3": {
+     "low": 0.672,
+     "central": 1.0,
+     "high": 2.933
+    },
+    "H4": {
+     "low": 0.682,
+     "central": 1.0,
+     "high": 3.012
+    },
+    "H5": {
+     "low": 0.698,
+     "central": 1.0,
+     "high": 3.076
+    },
+    "H5_2026_8of12": {
+     "low": 0.7,
+     "central": 1.0,
+     "high": 3.029
+    }
+   },
+   "width_ratio_vs_as_built": 0.363,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "4/5",
+       "2016": "5/5"
+      },
+      "total": "14/15",
+      "rate": 0.933
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "4/5",
+       "2016": "5/5"
+      },
+      "total": "9/10",
+      "rate": 0.9
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 1.405,
+      "2006": 1.567,
+      "2007": 1.619,
+      "2008": 1.372,
+      "2009": 1.429,
+      "2010": 1.632,
+      "2011": 1.498,
+      "2012": 1.208,
+      "2013": 1.33,
+      "2014": 1.314,
+      "2015": 1.11,
+      "2016": 1.003
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 1.504,
+      "2011": 1.329,
+      "2012": 1.102,
+      "2013": 1.213,
+      "2014": 1.505,
+      "2015": 1.334,
+      "2016": 0.794
+     }
+    }
+   },
+   "status": "accepted",
+   "reason": "passes the B2 rule",
+   "sensitivity_origin_year_start": {
+    "per_year_2026": {
+     "low": 0.282,
+     "central": 1.0,
+     "high": 5.409
+    },
+    "cumulative_H5_2026_8of12": {
+     "low": 0.514,
+     "high": 4.096
+    },
+    "width_ratio_vs_as_built": 0.559,
+    "coverage": {
+     "A_mirror_baci": {
+      "leave_window_out": {
+       "hits": {
+        "2007": "5/5",
+        "2012": "4/5",
+        "2016": "5/5"
+       },
+       "total": "14/15",
+       "rate": 0.933
+      },
+      "out_of_time_train_to_2013_test_origins_2014_2020": {
+       "hits": "25/25",
+       "rate": 1.0,
+       "misses": []
+      }
+     },
+     "B_own_imf": {
+      "leave_window_out": {
+       "hits": {
+        "2012": "4/5",
+        "2016": "5/5"
+       },
+       "total": "9/10",
+       "rate": 0.9
+      },
+      "out_of_time_train_to_2013_test_origins_2014_2020": {
+       "hits": "25/25",
+       "rate": 1.0,
+       "misses": []
+      }
+     }
+    },
+    "note": "not the method: the site starts this country from the 2019-2021 median (small_flow_base)"
+   },
+   "proposed_cf_bands_entry": {
+    "countries.PYF.to_rus": {
+     "level_2021": {
+      "low": 0.0,
+      "central": 0.0002,
+      "high": 0.0002
+     },
+     "multiplier_vs_2021": {
+      "2022": {
+       "low": 0.738,
+       "central": 1.0,
+       "high": 1.81
+      },
+      "2023": {
+       "low": 0.651,
+       "central": 1.0,
+       "high": 2.314
+      },
+      "2024": {
+       "low": 0.591,
+       "central": 1.0,
+       "high": 2.795
+      },
+      "2025": {
+       "low": 0.545,
+       "central": 1.0,
+       "high": 3.276
+      },
+      "2026": {
+       "low": 0.507,
+       "central": 1.0,
+       "high": 3.769
+      }
+     },
+     "cumulative_band": {
+      "H1": {
+       "low": 0.65,
+       "central": 1.0,
+       "high": 2.353
+      },
+      "H2": {
+       "low": 0.659,
+       "central": 1.0,
+       "high": 2.493
+      },
+      "H3": {
+       "low": 0.672,
+       "central": 1.0,
+       "high": 2.933
+      },
+      "H4": {
+       "low": 0.682,
+       "central": 1.0,
+       "high": 3.012
+      },
+      "H5": {
+       "low": 0.698,
+       "central": 1.0,
+       "high": 3.076
+      },
+      "H5_2026_8of12": {
+       "low": 0.7,
+       "central": 1.0,
+       "high": 3.029
+      }
+     },
+     "generic_multiplier_vs_2021_replaced": {
+      "2022": {
+       "low": 0.348,
+       "central": 1.0,
+       "high": 3.185
+      },
+      "2023": {
+       "low": 0.229,
+       "central": 1.0,
+       "high": 5.048
+      },
+      "2024": {
+       "low": 0.167,
+       "central": 1.0,
+       "high": 7.167
+      },
+      "2025": {
+       "low": 0.128,
+       "central": 1.0,
+       "high": 9.613
+      },
+      "2026": {
+       "low": 0.101,
+       "central": 1.0,
+       "high": 12.437
+      }
+     },
+     "generic_cumulative_band_replaced": {
+      "model": "rw",
+      "H1": {
+       "low": 0.224,
+       "central": 1.0,
+       "high": 5.317,
+       "median_error_multiplier": 1.065,
+       "n_country_flows": 115,
+       "cell": "to_rus/S",
+       "uncalibrated_in_sample": {
+        "low": 0.287,
+        "high": 4.025
+       },
+       "current_sum_of_yearly_bands": {
+        "low": 0.348,
+        "high": 3.185
+       },
+       "shrink_vs_current": {
+        "low_side": 1.192,
+        "high_side": 1.976,
+        "width": 1.796
+       },
+       "variant_available_years_only": {
+        "low": 0.287,
+        "high": 4.025,
+        "n": 115
+       },
+       "variant_T2016_with_real_2020": {
+        "low": 0.287,
+        "high": 4.025,
+        "n": 115
+       }
+      },
+      "H2": {
+       "low": 0.239,
+       "central": 1.0,
+       "high": 5.827,
+       "median_error_multiplier": 1.172,
+       "n_country_flows": 115,
+       "cell": "to_rus/S",
+       "uncalibrated_in_sample": {
+        "low": 0.303,
+        "high": 4.344
+       },
+       "current_sum_of_yearly_bands": {
+        "low": 0.289,
+        "high": 4.117
+       },
+       "shrink_vs_current": {
+        "low_side": 1.07,
+        "high_side": 1.549,
+        "width": 1.46
+       },
+       "variant_available_years_only": {
+        "low": 0.347,
+        "high": 3.672,
+        "n": 79
+       },
+       "variant_T2016_with_real_2020": {
+        "low": 0.303,
+        "high": 4.344,
+        "n": 115
+       }
+      },
+      "H3": {
+       "low": 0.258,
+       "central": 1.0,
+       "high": 7.862,
+       "median_error_multiplier": 1.243,
+       "n_country_flows": 115,
+       "cell": "to_rus/S",
+       "uncalibrated_in_sample": {
+        "low": 0.323,
+        "high": 5.575
+       },
+       "current_sum_of_yearly_bands": {
+        "low": 0.248,
+        "high": 5.133
+       },
+       "shrink_vs_current": {
+        "low_side": 0.987,
+        "high_side": 1.66,
+        "width": 1.557
+       },
+       "variant_available_years_only": {
+        "low": 0.321,
+        "high": 4.186,
+        "n": 78
+       },
+       "variant_T2016_with_real_2020": {
+        "low": 0.323,
+        "high": 5.575,
+        "n": 115
+       }
+      },
+      "H4": {
+       "low": 0.274,
+       "central": 1.0,
+       "high": 8.188,
+       "median_error_multiplier": 1.285,
+       "n_country_flows": 114,
+       "cell": "to_rus/S",
+       "uncalibrated_in_sample": {
+        "low": 0.34,
+        "high": 5.768
+       },
+       "current_sum_of_yearly_bands": {
+        "low": 0.218,
+        "high": 6.254
+       },
+       "shrink_vs_current": {
+        "low_side": 0.928,
+        "high_side": 1.368,
+        "width": 1.311
+       },
+       "variant_available_years_only": {
+        "low": 0.389,
+        "high": 7.031,
+        "n": 74
+       },
+       "variant_T2016_with_real_2020": {
+        "low": 0.339,
+        "high": 5.763,
+        "n": 115
+       }
+      },
+      "H5": {
+       "low": 0.297,
+       "central": 1.0,
+       "high": 8.453,
+       "median_error_multiplier": 1.403,
+       "n_country_flows": 114,
+       "cell": "to_rus/S",
+       "uncalibrated_in_sample": {
+        "low": 0.364,
+        "high": 5.922
+       },
+       "current_sum_of_yearly_bands": {
+        "low": 0.194,
+        "high": 7.491
+       },
+       "shrink_vs_current": {
+        "low_side": 0.872,
+        "high_side": 1.148,
+        "width": 1.118
+       },
+       "bootstrap_80pct_of_low": [
+        0.313,
+        0.419
+       ],
+       "bootstrap_80pct_of_high": [
+        4.347,
+        10.429
+       ],
+       "variant_available_years_only": {
+        "low": 0.364,
+        "high": 6.666,
+        "n": 114
+       },
+       "variant_T2016_with_real_2020": {
+        "low": 0.364,
+        "high": 5.922,
+        "n": 114
+       }
+      },
+      "H5_2026_8of12": {
+       "low": 0.3,
+       "central": 1.0,
+       "high": 8.212,
+       "median_error_multiplier": 1.345,
+       "n_country_flows": 114,
+       "cell": "to_rus/S",
+       "uncalibrated_in_sample": {
+        "low": 0.367,
+        "high": 5.782
+       },
+       "current_sum_of_yearly_bands": {
+        "low": 0.201,
+        "high": 7.137
+       },
+       "shrink_vs_current": {
+        "low_side": 0.876,
+        "high_side": 1.175,
+        "width": 1.141
+       },
+       "bootstrap_80pct_of_low": [
+        0.325,
+        0.406
+       ],
+       "bootstrap_80pct_of_high": [
+        4.487,
+        10.062
+       ],
+       "variant_available_years_only": {
+        "low": 0.367,
+        "high": 6.338,
+        "n": 114
+       },
+       "variant_T2016_with_real_2020": {
+        "low": 0.365,
+        "high": 5.782,
+        "n": 114
+       }
+      }
+     },
+     "method": "2021 level held (random walk, from the 2019-2021 median as small_flow_base), country-specific interval: 5th-95th percentile of the country's own random-walk errors 1-5 years ahead (rolling origins 2005-2020, all years kept; Russia's exports to it (CEPII BACI, 2001-2021) and its own customs report (IMF IMTS, 2008-2021) pooled, real by goods group), scaled by sqrt(h/3) and widened halfway to the block-bootstrap bounds, as cf_bands.json B2; cumulative band = the generic cumulative band scaled per side by the own/generic ratio of the log bounds in the same year; used because its 2022-2026 cumulative band is at least 10% narrower than the band as built and its own held-out coverage holds (own_bands_r46.json)",
+     "size_class": "S",
+     "certainty": "C",
+     "own_backtest": {
+      "series": "A: Russia's exports to the country (CEPII BACI HS92, reconciled, 2001-2021); B: the country's imports from Russia (IMF IMTS own report, 2008-2021); real by goods group",
+      "origins": "2005-2020",
+      "horizons": "1-5",
+      "n_errors": 115,
+      "q05_q50_q95_per_sqrt_h_over_3": [
+       -0.487,
+       0.211,
+       0.975
+      ],
+      "bootstrap_widened_bounds": [
+       -0.526,
+       1.028
+      ],
+      "coverage": {
+       "A_mirror_baci": {
+        "leave_window_out": {
+         "hits": {
+          "2007": "5/5",
+          "2012": "4/5",
+          "2016": "5/5"
+         },
+         "total": "14/15",
+         "rate": 0.933
+        },
+        "out_of_time_train_to_2013_test_origins_2014_2020": {
+         "hits": "25/25",
+         "rate": 1.0,
+         "misses": []
+        }
+       },
+       "B_own_imf": {
+        "leave_window_out": {
+         "hits": {
+          "2012": "4/5",
+          "2016": "5/5"
+         },
+         "total": "9/10",
+         "rate": 0.9
+        },
+        "out_of_time_train_to_2013_test_origins_2014_2020": {
+         "hits": "25/25",
+         "rate": 1.0,
+         "misses": []
+        }
+       }
+      },
+      "safeguard": {
+       "A_mirror_baci": "12/12",
+       "B_own_imf": "7/7"
+      }
+     }
+    }
+   },
+   "chance": {
+    "net": {
+     "old": {
+      "p": 0.977,
+      "side": "ukraine",
+      "group": "certain"
+     },
+     "new": {
+      "p": 0.993,
+      "side": "ukraine",
+      "group": "certain"
+     }
+    },
+    "rus": {
+     "old": {
+      "p": 0.924,
+      "side": "ukraine",
+      "group": "near zero"
+     },
+     "new": {
+      "p": 0.955,
+      "side": "ukraine",
+      "group": "certain"
+     }
+    },
+    "ua": {
+     "old": {
+      "p": 0.868,
+      "side": "ukraine",
+      "group": "near zero"
+     },
+     "new": {
+      "p": 0.868,
+      "side": "ukraine",
+      "group": "near zero"
+     }
+    }
+   }
+  },
+  "CMR": {
+   "name": "Cameroon",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "rus": 0.543,
+    "net": 0.49
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.652,
+    0.514,
+    1.866
+   ],
+   "widened_bounds": [
+    -0.822,
+    1.957
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.622,
+     "central": 1.0,
+     "high": 3.095
+    },
+    "2023": {
+     "low": 0.511,
+     "central": 1.0,
+     "high": 4.943
+    },
+    "2024": {
+     "low": 0.439,
+     "central": 1.0,
+     "high": 7.079
+    },
+    "2025": {
+     "low": 0.387,
+     "central": 1.0,
+     "high": 9.582
+    },
+    "2026": {
+     "low": 0.346,
+     "central": 1.0,
+     "high": 12.511
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.622,
+     "central": 1.0,
+     "high": 3.095
+    },
+    "H2": {
+     "low": 0.587,
+     "central": 1.0,
+     "high": 3.986
+    },
+    "H3": {
+     "low": 0.58,
+     "central": 1.0,
+     "high": 4.363
+    },
+    "H4": {
+     "low": 0.554,
+     "central": 1.0,
+     "high": 5.542
+    },
+    "H5": {
+     "low": 0.567,
+     "central": 1.0,
+     "high": 6.841
+    },
+    "H5_2026_8of12": {
+     "low": 0.566,
+     "central": 1.0,
+     "high": 6.417
+    }
+   },
+   "width_ratio_vs_as_built": 2.656,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "1/5",
+       "2012": "4/5",
+       "2016": "0/5"
+      },
+      "total": "5/15",
+      "rate": 0.333
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "5/25",
+      "rate": 0.2,
+      "misses": [
+       "2014+2: x2.95",
+       "2014+3: x4.89",
+       "2014+4: x5.64",
+       "2014+5: x4.30",
+       "2015+1: x2.61",
+       "2015+2: x4.33",
+       "2015+3: x4.99",
+       "2015+4: x3.81",
+       "2015+5: x5.20",
+       "2016+1: x4.06",
+       "2016+2: x4.68",
+       "2016+3: x3.57",
+       "2016+4: x4.88",
+       "2016+5: x9.88",
+       "2017+1: x1.91",
+       "2017+3: x1.99",
+       "2017+4: x4.03",
+       "2018+3: x2.43",
+       "2019+2: x2.43",
+       "2020+1: x2.11"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "4/5",
+       "2016": "0/5"
+      },
+      "total": "4/10",
+      "rate": 0.4
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "5/25",
+      "rate": 0.2,
+      "misses": [
+       "2014+2: x3.33",
+       "2014+3: x5.71",
+       "2014+4: x6.54",
+       "2014+5: x5.05",
+       "2015+1: x2.92",
+       "2015+2: x5.00",
+       "2015+3: x5.73",
+       "2015+4: x4.42",
+       "2015+5: x5.89",
+       "2016+1: x4.75",
+       "2016+2: x5.44",
+       "2016+3: x4.20",
+       "2016+4: x5.59",
+       "2016+5: x12.05",
+       "2017+1: x1.96",
+       "2017+3: x2.02",
+       "2017+4: x4.35",
+       "2018+3: x2.54",
+       "2019+2: x2.54",
+       "2020+1: x2.22"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 1.269,
+      "2006": 0.958,
+      "2007": 0.719,
+      "2008": 0.687,
+      "2009": 0.793,
+      "2010": 1.207,
+      "2011": 2.01,
+      "2012": 2.756,
+      "2013": 3.464,
+      "2014": 3.761,
+      "2015": 4.116,
+      "2016": 5.093
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 1.023,
+      "2011": 1.629,
+      "2012": 2.464,
+      "2013": 3.339,
+      "2014": 4.318,
+      "2015": 4.714,
+      "2016": 6.001
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 2.66); leave-window-out 5/15 on A_mirror_baci; out of time 5/25 on A_mirror_baci; leave-window-out 4/10 on B_own_imf; out of time 5/25 on B_own_imf"
+  },
+  "MEX": {
+   "name": "Mexico",
+   "size_class": "L",
+   "small_flow_median_start": false,
+   "needed_factor_on_paid_band": {
+    "net": 0.509,
+    "rus": null
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.6517,
+    1.4998
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 55
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.469,
+    0.326,
+    0.863
+   ],
+   "widened_bounds": [
+    -0.507,
+    0.975
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.746,
+     "central": 1.0,
+     "high": 1.756
+    },
+    "2023": {
+     "low": 0.661,
+     "central": 1.0,
+     "high": 2.217
+    },
+    "2024": {
+     "low": 0.603,
+     "central": 1.0,
+     "high": 2.652
+    },
+    "2025": {
+     "low": 0.557,
+     "central": 1.0,
+     "high": 3.083
+    },
+    "2026": {
+     "low": 0.52,
+     "central": 1.0,
+     "high": 3.522
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.746,
+     "central": 1.0,
+     "high": 1.756
+    },
+    "H2": {
+     "low": 0.729,
+     "central": 1.0,
+     "high": 1.931
+    },
+    "H3": {
+     "low": 0.721,
+     "central": 1.0,
+     "high": 2.135
+    },
+    "H4": {
+     "low": 0.686,
+     "central": 1.0,
+     "high": 2.261
+    },
+    "H5": {
+     "low": 0.712,
+     "central": 1.0,
+     "high": 2.484
+    },
+    "H5_2026_8of12": {
+     "low": 0.706,
+     "central": 1.0,
+     "high": 2.415
+    }
+   },
+   "width_ratio_vs_as_built": 2.015,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "15/15",
+      "rate": 1.0
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "22/25",
+      "rate": 0.88,
+      "misses": [
+       "2018+1: x0.76",
+       "2018+2: x0.63",
+       "2020+1: x1.92"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "5/5",
+       "2016": "4/5"
+      },
+      "total": "9/10",
+      "rate": 0.9
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "18/25",
+      "rate": 0.72,
+      "misses": [
+       "2015+5: x0.55",
+       "2016+4: x0.59",
+       "2017+3: x0.61",
+       "2018+1: x0.68",
+       "2018+2: x0.50",
+       "2019+1: x0.74",
+       "2020+1: x1.89"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 0.846,
+      "2006": 0.885,
+      "2007": 1.337,
+      "2008": 1.44,
+      "2009": 2.279,
+      "2010": 1.416,
+      "2011": 1.844,
+      "2012": 1.985,
+      "2013": 1.759,
+      "2014": 1.206,
+      "2015": 1.348,
+      "2016": 1.252
+     }
+    },
+    "B_own_imf": {
+     "inside": "9/9",
+     "rate": 1.0,
+     "windows": {
+      "2008": 1.533,
+      "2009": 2.231,
+      "2010": 1.39,
+      "2011": 1.601,
+      "2012": 1.518,
+      "2013": 1.502,
+      "2014": 1.205,
+      "2015": 0.874,
+      "2016": 0.915
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 2.02); out of time 18/25 on B_own_imf"
+  },
+  "GEO": {
+   "name": "Georgia",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "rus": 0.508,
+    "net": 0.383
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.684,
+    0.382,
+    0.853
+   ],
+   "widened_bounds": [
+    -0.736,
+    0.867
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.654,
+     "central": 1.0,
+     "high": 1.65
+    },
+    "2023": {
+     "low": 0.548,
+     "central": 1.0,
+     "high": 2.03
+    },
+    "2024": {
+     "low": 0.479,
+     "central": 1.0,
+     "high": 2.381
+    },
+    "2025": {
+     "low": 0.428,
+     "central": 1.0,
+     "high": 2.723
+    },
+    "2026": {
+     "low": 0.387,
+     "central": 1.0,
+     "high": 3.064
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.654,
+     "central": 1.0,
+     "high": 1.65
+    },
+    "H2": {
+     "low": 0.621,
+     "central": 1.0,
+     "high": 1.845
+    },
+    "H3": {
+     "low": 0.615,
+     "central": 1.0,
+     "high": 1.921
+    },
+    "H4": {
+     "low": 0.59,
+     "central": 1.0,
+     "high": 2.136
+    },
+    "H5": {
+     "low": 0.602,
+     "central": 1.0,
+     "high": 2.345
+    },
+    "H5_2026_8of12": {
+     "low": 0.601,
+     "central": 1.0,
+     "high": 2.279
+    }
+   },
+   "width_ratio_vs_as_built": 0.762,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "0/5",
+       "2012": "0/5",
+       "2016": "5/5"
+      },
+      "total": "5/15",
+      "rate": 0.333
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "1/5",
+       "2016": "5/5"
+      },
+      "total": "6/10",
+      "rate": 0.6
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "9/12",
+     "rate": 0.75,
+     "windows": {
+      "2005": 1.171,
+      "2006": 0.677,
+      "2007": 0.542,
+      "2008": 0.57,
+      "2009": 0.968,
+      "2010": 1.64,
+      "2011": 2.046,
+      "2012": 2.357,
+      "2013": 2.017,
+      "2014": 1.796,
+      "2015": 1.731,
+      "2016": 1.197
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 1.465,
+      "2011": 1.747,
+      "2012": 1.965,
+      "2013": 1.858,
+      "2014": 1.65,
+      "2015": 1.715,
+      "2016": 1.356
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "leave-window-out 5/15 on A_mirror_baci; leave-window-out 6/10 on B_own_imf; own 5-year windows inside 9/12 on A_mirror_baci"
+  },
+  "NAM": {
+   "name": "Namibia",
+   "size_class": "S",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "net": 0.484,
+    "rus": 0.473
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.433,
+    6.8417
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.616,
+    0.661,
+    2.798
+   ],
+   "widened_bounds": [
+    -1.001,
+    2.902
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.561,
+     "central": 1.0,
+     "high": 5.34
+    },
+    "2023": {
+     "low": 0.442,
+     "central": 1.0,
+     "high": 10.689
+    },
+    "2024": {
+     "low": 0.368,
+     "central": 1.0,
+     "high": 18.204
+    },
+    "2025": {
+     "low": 0.315,
+     "central": 1.0,
+     "high": 28.517
+    },
+    "2026": {
+     "low": 0.275,
+     "central": 1.0,
+     "high": 42.351
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.441,
+     "central": 1.0,
+     "high": 11.204
+    },
+    "H2": {
+     "low": 0.453,
+     "central": 1.0,
+     "high": 13.187
+    },
+    "H3": {
+     "low": 0.469,
+     "central": 1.0,
+     "high": 20.863
+    },
+    "H4": {
+     "low": 0.483,
+     "central": 1.0,
+     "high": 22.488
+    },
+    "H5": {
+     "low": 0.505,
+     "central": 1.0,
+     "high": 23.858
+    },
+    "H5_2026_8of12": {
+     "low": 0.508,
+     "central": 1.0,
+     "high": 22.854
+    }
+   },
+   "width_ratio_vs_as_built": 3.487,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "2/5",
+       "2016": "4/5"
+      },
+      "total": "11/15",
+      "rate": 0.733
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "21/25",
+      "rate": 0.84,
+      "misses": [
+       "2014+1: x7.62",
+       "2014+2: x5.02",
+       "2015+1: x3.21",
+       "2016+1: x0.31"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "3/5",
+       "2016": "3/5"
+      },
+      "total": "6/10",
+      "rate": 0.6
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "19/25",
+      "rate": 0.76,
+      "misses": [
+       "2014+1: x10.12",
+       "2014+2: x8.74",
+       "2015+1: x5.48",
+       "2016+1: x0.33",
+       "2016+2: x0.34",
+       "2017+1: x0.34"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 1.932,
+      "2006": 2.047,
+      "2007": 1.567,
+      "2008": 1.482,
+      "2009": 1.53,
+      "2010": 3.778,
+      "2011": 6.064,
+      "2012": 10.125,
+      "2013": 5.958,
+      "2014": 4.476,
+      "2015": 2.429,
+      "2016": 0.742
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 3.19,
+      "2011": 5.531,
+      "2012": 8.003,
+      "2013": 5.427,
+      "2014": 6.208,
+      "2015": 3.298,
+      "2016": 0.556
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 3.49); leave-window-out 11/15 on A_mirror_baci; leave-window-out 6/10 on B_own_imf; out of time 19/25 on B_own_imf"
+  },
+  "AGO": {
+   "name": "Angola",
+   "size_class": "S",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "net": 0.476,
+    "rus": 0.419
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.433,
+    6.8417
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -1.139,
+    0.433,
+    2.631
+   ],
+   "widened_bounds": [
+    -1.264,
+    3.011
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.482,
+     "central": 1.0,
+     "high": 5.687
+    },
+    "2023": {
+     "low": 0.356,
+     "central": 1.0,
+     "high": 11.684
+    },
+    "2024": {
+     "low": 0.283,
+     "central": 1.0,
+     "high": 20.301
+    },
+    "2025": {
+     "low": 0.232,
+     "central": 1.0,
+     "high": 32.343
+    },
+    "2026": {
+     "low": 0.196,
+     "central": 1.0,
+     "high": 48.752
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.355,
+     "central": 1.0,
+     "high": 12.269
+    },
+    "H2": {
+     "low": 0.367,
+     "central": 1.0,
+     "high": 14.529
+    },
+    "H3": {
+     "low": 0.385,
+     "central": 1.0,
+     "high": 23.386
+    },
+    "H4": {
+     "low": 0.398,
+     "central": 1.0,
+     "high": 25.278
+    },
+    "H5": {
+     "low": 0.422,
+     "central": 1.0,
+     "high": 26.878
+    },
+    "H5_2026_8of12": {
+     "low": 0.425,
+     "central": 1.0,
+     "high": 25.706
+    }
+   },
+   "width_ratio_vs_as_built": 3.945,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "3/5",
+       "2016": "5/5"
+      },
+      "total": "13/15",
+      "rate": 0.867
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "2/5",
+       "2016": "5/5"
+      },
+      "total": "7/10",
+      "rate": 0.7
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "24/25",
+      "rate": 0.96,
+      "misses": [
+       "2015+1: x14.44"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 2.027,
+      "2006": 1.209,
+      "2007": 1.185,
+      "2008": 0.863,
+      "2009": 0.772,
+      "2010": 1.102,
+      "2011": 4.396,
+      "2012": 5.792,
+      "2013": 4.297,
+      "2014": 2.406,
+      "2015": 2.057,
+      "2016": 0.95
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 2.592,
+      "2011": 13.338,
+      "2012": 16.198,
+      "2013": 1.93,
+      "2014": 1.984,
+      "2015": 4.658,
+      "2016": 2.228
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 3.94); leave-window-out 7/10 on B_own_imf"
+  },
+  "SEN": {
+   "name": "Senegal",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "net": 0.429,
+    "rus": 0.426
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.061,
+    0.865,
+    1.834
+   ],
+   "widened_bounds": [
+    -0.148,
+    1.955
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.918,
+     "central": 1.0,
+     "high": 3.091
+    },
+    "2023": {
+     "low": 0.886,
+     "central": 1.0,
+     "high": 4.933
+    },
+    "2024": {
+     "low": 0.862,
+     "central": 1.0,
+     "high": 7.062
+    },
+    "2025": {
+     "low": 0.843,
+     "central": 1.0,
+     "high": 9.555
+    },
+    "2026": {
+     "low": 0.826,
+     "central": 1.0,
+     "high": 12.472
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.918,
+     "central": 1.0,
+     "high": 3.091
+    },
+    "H2": {
+     "low": 0.908,
+     "central": 1.0,
+     "high": 3.979
+    },
+    "H3": {
+     "low": 0.906,
+     "central": 1.0,
+     "high": 4.355
+    },
+    "H4": {
+     "low": 0.899,
+     "central": 1.0,
+     "high": 5.53
+    },
+    "H5": {
+     "low": 0.903,
+     "central": 1.0,
+     "high": 6.824
+    },
+    "H5_2026_8of12": {
+     "low": 0.902,
+     "central": 1.0,
+     "high": 6.402
+    }
+   },
+   "width_ratio_vs_as_built": 2.496,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "4/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "14/15",
+      "rate": 0.933
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "10/10",
+      "rate": 1.0
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 1.043,
+      "2006": 1.525,
+      "2007": 2.258,
+      "2008": 2.263,
+      "2009": 2.61,
+      "2010": 2.813,
+      "2011": 3.298,
+      "2012": 2.238,
+      "2013": 3.82,
+      "2014": 3.83,
+      "2015": 5.103,
+      "2016": 4.763
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 2.141,
+      "2011": 4.406,
+      "2012": 1.698,
+      "2013": 1.97,
+      "2014": 2.222,
+      "2015": 3.049,
+      "2016": 2.613
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 2.50)"
+  },
+  "KEN": {
+   "name": "Kenya",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "net": 0.379,
+    "rus": 0.37
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.134,
+    0.415,
+    0.857
+   ],
+   "widened_bounds": [
+    -0.159,
+    0.903
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.912,
+     "central": 1.0,
+     "high": 1.685
+    },
+    "2023": {
+     "low": 0.878,
+     "central": 1.0,
+     "high": 2.091
+    },
+    "2024": {
+     "low": 0.853,
+     "central": 1.0,
+     "high": 2.468
+    },
+    "2025": {
+     "low": 0.832,
+     "central": 1.0,
+     "high": 2.838
+    },
+    "2026": {
+     "low": 0.814,
+     "central": 1.0,
+     "high": 3.21
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.912,
+     "central": 1.0,
+     "high": 1.685
+    },
+    "H2": {
+     "low": 0.902,
+     "central": 1.0,
+     "high": 1.893
+    },
+    "H3": {
+     "low": 0.9,
+     "central": 1.0,
+     "high": 1.974
+    },
+    "H4": {
+     "low": 0.892,
+     "central": 1.0,
+     "high": 2.204
+    },
+    "H5": {
+     "low": 0.896,
+     "central": 1.0,
+     "high": 2.429
+    },
+    "H5_2026_8of12": {
+     "low": 0.895,
+     "central": 1.0,
+     "high": 2.359
+    }
+   },
+   "width_ratio_vs_as_built": 0.664,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "3/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "13/15",
+      "rate": 0.867
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "10/10",
+      "rate": 1.0
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 2.243,
+      "2006": 1.72,
+      "2007": 1.701,
+      "2008": 1.336,
+      "2009": 1.586,
+      "2010": 1.52,
+      "2011": 1.593,
+      "2012": 1.975,
+      "2013": 1.564,
+      "2014": 1.637,
+      "2015": 1.546,
+      "2016": 1.101
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 1.94,
+      "2011": 1.822,
+      "2012": 2.056,
+      "2013": 1.411,
+      "2014": 1.472,
+      "2015": 1.447,
+      "2016": 1.154
+     }
+    }
+   },
+   "status": "accepted",
+   "reason": "passes the B2 rule",
+   "sensitivity_origin_year_start": {
+    "per_year_2026": {
+     "low": 0.449,
+     "central": 1.0,
+     "high": 3.88
+    },
+    "cumulative_H5_2026_8of12": {
+     "low": 0.651,
+     "high": 2.712
+    },
+    "width_ratio_vs_as_built": 0.935,
+    "coverage": {
+     "A_mirror_baci": {
+      "leave_window_out": {
+       "hits": {
+        "2007": "5/5",
+        "2012": "4/5",
+        "2016": "5/5"
+       },
+       "total": "14/15",
+       "rate": 0.933
+      },
+      "out_of_time_train_to_2013_test_origins_2014_2020": {
+       "hits": "25/25",
+       "rate": 1.0,
+       "misses": []
+      }
+     },
+     "B_own_imf": {
+      "leave_window_out": {
+       "hits": {
+        "2012": "5/5",
+        "2016": "5/5"
+       },
+       "total": "10/10",
+       "rate": 1.0
+      },
+      "out_of_time_train_to_2013_test_origins_2014_2020": {
+       "hits": "25/25",
+       "rate": 1.0,
+       "misses": []
+      }
+     }
+    },
+    "note": "not the method: the site starts this country from the 2019-2021 median (small_flow_base)"
+   },
+   "proposed_cf_bands_entry": {
+    "countries.KEN.to_rus": {
+     "level_2021": {
+      "low": 0.2207,
+      "central": 0.2904,
+      "high": 0.2904
+     },
+     "multiplier_vs_2021": {
+      "2022": {
+       "low": 0.912,
+       "central": 1.0,
+       "high": 1.685
+      },
+      "2023": {
+       "low": 0.878,
+       "central": 1.0,
+       "high": 2.091
+      },
+      "2024": {
+       "low": 0.853,
+       "central": 1.0,
+       "high": 2.468
+      },
+      "2025": {
+       "low": 0.832,
+       "central": 1.0,
+       "high": 2.838
+      },
+      "2026": {
+       "low": 0.814,
+       "central": 1.0,
+       "high": 3.21
+      }
+     },
+     "cumulative_band": {
+      "H1": {
+       "low": 0.912,
+       "central": 1.0,
+       "high": 1.685
+      },
+      "H2": {
+       "low": 0.902,
+       "central": 1.0,
+       "high": 1.893
+      },
+      "H3": {
+       "low": 0.9,
+       "central": 1.0,
+       "high": 1.974
+      },
+      "H4": {
+       "low": 0.892,
+       "central": 1.0,
+       "high": 2.204
+      },
+      "H5": {
+       "low": 0.896,
+       "central": 1.0,
+       "high": 2.429
+      },
+      "H5_2026_8of12": {
+       "low": 0.895,
+       "central": 1.0,
+       "high": 2.359
+      }
+     },
+     "generic_multiplier_vs_2021_replaced": {
+      "2022": {
+       "low": 0.384,
+       "central": 1.0,
+       "high": 2.411
+      },
+      "2023": {
+       "low": 0.325,
+       "central": 1.0,
+       "high": 2.962
+      },
+      "2024": {
+       "low": 0.293,
+       "central": 1.0,
+       "high": 3.661
+      },
+      "2025": {
+       "low": 0.28,
+       "central": 1.0,
+       "high": 4.353
+      },
+      "2026": {
+       "low": 0.245,
+       "central": 1.0,
+       "high": 4.839
+      }
+     },
+     "generic_cumulative_band_replaced": {
+      "H1": {
+       "low": 0.384,
+       "central": 1.0,
+       "high": 2.411
+      },
+      "H2": {
+       "low": 0.41,
+       "central": 1.0,
+       "high": 2.559
+      },
+      "H3": {
+       "low": 0.444,
+       "central": 1.0,
+       "high": 2.656
+      },
+      "H4": {
+       "low": 0.453,
+       "central": 1.0,
+       "high": 3.048
+      },
+      "H5": {
+       "low": 0.472,
+       "central": 1.0,
+       "high": 3.32
+      },
+      "H5_2026_8of12": {
+       "low": 0.47,
+       "central": 1.0,
+       "high": 3.19
+      }
+     },
+     "method": "2021 level held (random walk, from the 2019-2021 median as small_flow_base), country-specific interval: 5th-95th percentile of the country's own random-walk errors 1-5 years ahead (rolling origins 2005-2020, all years kept; Russia's exports to it (CEPII BACI, 2001-2021) and its own customs report (IMF IMTS, 2008-2021) pooled, real by goods group), scaled by sqrt(h/3) and widened halfway to the block-bootstrap bounds, as cf_bands.json B2; cumulative band = the generic cumulative band scaled per side by the own/generic ratio of the log bounds in the same year; used because its 2022-2026 cumulative band is at least 10% narrower than the band as built and its own held-out coverage holds (own_bands_r46.json)",
+     "size_class": "M",
+     "certainty": "C",
+     "own_backtest": {
+      "series": "A: Russia's exports to the country (CEPII BACI HS92, reconciled, 2001-2021); B: the country's imports from Russia (IMF IMTS own report, 2008-2021); real by goods group",
+      "origins": "2005-2020",
+      "horizons": "1-5",
+      "n_errors": 115,
+      "q05_q50_q95_per_sqrt_h_over_3": [
+       -0.134,
+       0.415,
+       0.857
+      ],
+      "bootstrap_widened_bounds": [
+       -0.159,
+       0.903
+      ],
+      "coverage": {
+       "A_mirror_baci": {
+        "leave_window_out": {
+         "hits": {
+          "2007": "3/5",
+          "2012": "5/5",
+          "2016": "5/5"
+         },
+         "total": "13/15",
+         "rate": 0.867
+        },
+        "out_of_time_train_to_2013_test_origins_2014_2020": {
+         "hits": "25/25",
+         "rate": 1.0,
+         "misses": []
+        }
+       },
+       "B_own_imf": {
+        "leave_window_out": {
+         "hits": {
+          "2012": "5/5",
+          "2016": "5/5"
+         },
+         "total": "10/10",
+         "rate": 1.0
+        },
+        "out_of_time_train_to_2013_test_origins_2014_2020": {
+         "hits": "25/25",
+         "rate": 1.0,
+         "misses": []
+        }
+       }
+      },
+      "safeguard": {
+       "A_mirror_baci": "12/12",
+       "B_own_imf": "7/7"
+      }
+     }
+    }
+   },
+   "chance": {
+    "net": {
+     "old": {
+      "p": 0.876,
+      "side": "russia",
+      "group": "leaning"
+     },
+     "new": {
+      "p": 0.911,
+      "side": "russia",
+      "group": "leaning"
+     }
+    },
+    "rus": {
+     "old": {
+      "p": 0.841,
+      "side": "russia",
+      "group": "leaning"
+     },
+     "new": {
+      "p": 0.885,
+      "side": "russia",
+      "group": "leaning"
+     }
+    },
+    "ua": {
+     "old": {
+      "p": 0.738,
+      "side": "ukraine",
+      "group": "near zero"
+     },
+     "new": {
+      "p": 0.738,
+      "side": "ukraine",
+      "group": "near zero"
+     }
+    }
+   }
+  },
+  "BGR": {
+   "name": "Bulgaria",
+   "size_class": "L",
+   "small_flow_median_start": false,
+   "needed_factor_on_paid_band": {
+    "rus": 0.359
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.6517,
+    1.4998
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 55
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.358,
+    -0.031,
+    0.373
+   ],
+   "widened_bounds": [
+    -0.38,
+    0.516
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.803,
+     "central": 1.0,
+     "high": 1.347
+    },
+    "2023": {
+     "low": 0.734,
+     "central": 1.0,
+     "high": 1.524
+    },
+    "2024": {
+     "low": 0.684,
+     "central": 1.0,
+     "high": 1.675
+    },
+    "2025": {
+     "low": 0.645,
+     "central": 1.0,
+     "high": 1.814
+    },
+    "2026": {
+     "low": 0.613,
+     "central": 1.0,
+     "high": 1.946
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.803,
+     "central": 1.0,
+     "high": 1.347
+    },
+    "H2": {
+     "low": 0.79,
+     "central": 1.0,
+     "high": 1.416
+    },
+    "H3": {
+     "low": 0.782,
+     "central": 1.0,
+     "high": 1.494
+    },
+    "H4": {
+     "low": 0.754,
+     "central": 1.0,
+     "high": 1.54
+    },
+    "H5": {
+     "low": 0.776,
+     "central": 1.0,
+     "high": 1.618
+    },
+    "H5_2026_8of12": {
+     "low": 0.771,
+     "central": 1.0,
+     "high": 1.594
+    }
+   },
+   "width_ratio_vs_as_built": 0.97,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "15/15",
+      "rate": 1.0
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "24/25",
+      "rate": 0.96,
+      "misses": [
+       "2019+1: x0.78"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "10/10",
+      "rate": 1.0
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "24/25",
+      "rate": 0.96,
+      "misses": [
+       "2019+1: x0.74"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "11/12",
+     "rate": 0.917,
+     "windows": {
+      "2005": 1.89,
+      "2006": 1.504,
+      "2007": 0.818,
+      "2008": 0.842,
+      "2009": 1.089,
+      "2010": 1.238,
+      "2011": 1.086,
+      "2012": 0.925,
+      "2013": 0.894,
+      "2014": 1.044,
+      "2015": 0.873,
+      "2016": 0.93
+     }
+    },
+    "B_own_imf": {
+     "inside": "9/9",
+     "rate": 1.0,
+     "windows": {
+      "2008": 0.99,
+      "2009": 1.249,
+      "2010": 1.169,
+      "2011": 1.06,
+      "2012": 0.915,
+      "2013": 0.856,
+      "2014": 0.988,
+      "2015": 0.899,
+      "2016": 0.92
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 0.97)"
+  },
+  "RWA": {
+   "name": "Rwanda",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "rus": 0.35,
+    "net": 0.23
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.8,
+    0.765,
+    2.128
+   ],
+   "widened_bounds": [
+    -0.971,
+    2.384
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.571,
+     "central": 1.0,
+     "high": 3.961
+    },
+    "2023": {
+     "low": 0.453,
+     "central": 1.0,
+     "high": 7.005
+    },
+    "2024": {
+     "low": 0.379,
+     "central": 1.0,
+     "high": 10.849
+    },
+    "2025": {
+     "low": 0.326,
+     "central": 1.0,
+     "high": 15.689
+    },
+    "2026": {
+     "low": 0.286,
+     "central": 1.0,
+     "high": 21.712
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.571,
+     "central": 1.0,
+     "high": 3.961
+    },
+    "H2": {
+     "low": 0.534,
+     "central": 1.0,
+     "high": 5.389
+    },
+    "H3": {
+     "low": 0.526,
+     "central": 1.0,
+     "high": 6.017
+    },
+    "H4": {
+     "low": 0.498,
+     "central": 1.0,
+     "high": 8.052
+    },
+    "H5": {
+     "low": 0.513,
+     "central": 1.0,
+     "high": 10.407
+    },
+    "H5_2026_8of12": {
+     "low": 0.511,
+     "central": 1.0,
+     "high": 9.626
+    }
+   },
+   "width_ratio_vs_as_built": 4.137,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "3/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "13/15",
+      "rate": 0.867
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "10/10",
+      "rate": 1.0
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 1.731,
+      "2006": 4.483,
+      "2007": 6.097,
+      "2008": 7.274,
+      "2009": 5.636,
+      "2010": 3.253,
+      "2011": 4.742,
+      "2012": 1.913,
+      "2013": 5.239,
+      "2014": 2.886,
+      "2015": 2.277,
+      "2016": 1.39
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 6.169,
+      "2011": 6.426,
+      "2012": 1.592,
+      "2013": 3.215,
+      "2014": 2.125,
+      "2015": 1.498,
+      "2016": 1.454
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 4.14)"
+  },
+  "BFA": {
+   "name": "Burkina Faso",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "net": 0.316,
+    "rus": 0.313
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.543,
+    0.865,
+    1.749
+   ],
+   "widened_bounds": [
+    -0.636,
+    1.842
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.693,
+     "central": 1.0,
+     "high": 2.896
+    },
+    "2023": {
+     "low": 0.595,
+     "central": 1.0,
+     "high": 4.499
+    },
+    "2024": {
+     "low": 0.529,
+     "central": 1.0,
+     "high": 6.307
+    },
+    "2025": {
+     "low": 0.48,
+     "central": 1.0,
+     "high": 8.387
+    },
+    "2026": {
+     "low": 0.44,
+     "central": 1.0,
+     "high": 10.78
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.693,
+     "central": 1.0,
+     "high": 2.896
+    },
+    "H2": {
+     "low": 0.662,
+     "central": 1.0,
+     "high": 3.674
+    },
+    "H3": {
+     "low": 0.656,
+     "central": 1.0,
+     "high": 4.0
+    },
+    "H4": {
+     "low": 0.633,
+     "central": 1.0,
+     "high": 5.01
+    },
+    "H5": {
+     "low": 0.645,
+     "central": 1.0,
+     "high": 6.108
+    },
+    "H5_2026_8of12": {
+     "low": 0.644,
+     "central": 1.0,
+     "high": 5.751
+    }
+   },
+   "width_ratio_vs_as_built": 2.318,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "4/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "14/15",
+      "rate": 0.933
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "22/25",
+      "rate": 0.88,
+      "misses": [
+       "2014+4: x9.10",
+       "2017+1: x3.26",
+       "2020+1: x0.62"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "4/5",
+       "2016": "5/5"
+      },
+      "total": "9/10",
+      "rate": 0.9
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "21/25",
+      "rate": 0.84,
+      "misses": [
+       "2014+4: x8.20",
+       "2014+5: x12.39",
+       "2018+1: x3.08",
+       "2020+1: x0.61"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 1.507,
+      "2006": 1.555,
+      "2007": 1.92,
+      "2008": 2.188,
+      "2009": 2.749,
+      "2010": 2.827,
+      "2011": 1.547,
+      "2012": 1.889,
+      "2013": 3.864,
+      "2014": 4.917,
+      "2015": 2.254,
+      "2016": 2.328
+     }
+    },
+    "B_own_imf": {
+     "inside": "6/7",
+     "rate": 0.857,
+     "windows": {
+      "2010": 3.026,
+      "2011": 1.584,
+      "2012": 2.077,
+      "2013": 3.986,
+      "2014": 5.765,
+      "2015": 3.245,
+      "2016": 3.446
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 2.32); own 5-year windows inside 6/7 on B_own_imf"
+  },
+  "MOZ": {
+   "name": "Mozambique",
+   "size_class": "S",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "rus": 0.237,
+    "net": 0.232
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.433,
+    6.8417
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 13
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 40
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.901,
+    0.886,
+    4.021
+   ],
+   "widened_bounds": [
+    -1.257,
+    4.6
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.484,
+     "central": 1.0,
+     "high": 14.234
+    },
+    "2023": {
+     "low": 0.358,
+     "central": 1.0,
+     "high": 42.76
+    },
+    "2024": {
+     "low": 0.285,
+     "central": 1.0,
+     "high": 99.451
+    },
+    "2025": {
+     "low": 0.234,
+     "central": 1.0,
+     "high": 202.6
+    },
+    "2026": {
+     "low": 0.197,
+     "central": 1.0,
+     "high": 379.228
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.358,
+     "central": 1.0,
+     "high": 46.08
+    },
+    "H2": {
+     "low": 0.369,
+     "central": 1.0,
+     "high": 59.651
+    },
+    "H3": {
+     "low": 0.387,
+     "central": 1.0,
+     "high": 123.448
+    },
+    "H4": {
+     "low": 0.401,
+     "central": 1.0,
+     "high": 139.03
+    },
+    "H5": {
+     "low": 0.423,
+     "central": 1.0,
+     "high": 152.695
+    },
+    "H5_2026_8of12": {
+     "low": 0.426,
+     "central": 1.0,
+     "high": 142.637
+    }
+   },
+   "width_ratio_vs_as_built": 22.19,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "4/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "14/15",
+      "rate": 0.933
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "4/5",
+       "2016": "5/5"
+      },
+      "total": "9/10",
+      "rate": 0.9
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 82.643,
+      "2006": 88.626,
+      "2007": 2.354,
+      "2008": 4.089,
+      "2009": 3.194,
+      "2010": 3.394,
+      "2011": 2.541,
+      "2012": 2.982,
+      "2013": 2.894,
+      "2014": 1.628,
+      "2015": 1.065,
+      "2016": 1.848
+     }
+    },
+    "B_own_imf": {
+     "inside": "6/6",
+     "rate": 1.0,
+     "windows": {
+      "2011": 1.091,
+      "2012": 1.624,
+      "2013": 9.107,
+      "2014": 11.359,
+      "2015": 3.341,
+      "2016": 2.186
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 22.19)"
+  },
+  "NER": {
+   "name": "Niger",
+   "size_class": "S",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "rus": 0.197,
+    "net": 0.186
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.433,
+    6.8417
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -3.347,
+    0.153,
+    3.674
+   ],
+   "widened_bounds": [
+    -3.904,
+    3.946
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.105,
+     "central": 1.0,
+     "high": 9.762
+    },
+    "2023": {
+     "low": 0.041,
+     "central": 1.0,
+     "high": 25.085
+    },
+    "2024": {
+     "low": 0.02,
+     "central": 1.0,
+     "high": 51.753
+    },
+    "2025": {
+     "low": 0.011,
+     "central": 1.0,
+     "high": 95.298
+    },
+    "2026": {
+     "low": 0.006,
+     "central": 1.0,
+     "high": 163.185
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.041,
+     "central": 1.0,
+     "high": 26.747
+    },
+    "H2": {
+     "low": 0.045,
+     "central": 1.0,
+     "high": 33.378
+    },
+    "H3": {
+     "low": 0.052,
+     "central": 1.0,
+     "high": 62.299
+    },
+    "H4": {
+     "low": 0.058,
+     "central": 1.0,
+     "high": 68.988
+    },
+    "H5": {
+     "low": 0.067,
+     "central": 1.0,
+     "high": 74.767
+    },
+    "H5_2026_8of12": {
+     "low": 0.068,
+     "central": 1.0,
+     "high": 70.521
+    }
+   },
+   "width_ratio_vs_as_built": 10.993,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "2/5",
+       "2012": "4/5",
+       "2016": "4/5"
+      },
+      "total": "10/15",
+      "rate": 0.667
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "7/25",
+      "rate": 0.28,
+      "misses": [
+       "2014+3: x4.82",
+       "2014+5: x5.57",
+       "2015+2: x4.19",
+       "2015+4: x4.85",
+       "2015+5: x43.92",
+       "2016+1: x4.19",
+       "2016+3: x4.85",
+       "2016+4: x43.92",
+       "2016+5: x13.02",
+       "2017+2: x4.85",
+       "2017+3: x43.92",
+       "2017+4: x13.02",
+       "2018+1: x4.67",
+       "2018+2: x42.30",
+       "2018+3: x12.54",
+       "2019+1: x10.48",
+       "2019+2: x3.11",
+       "2020+1: x2.69"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "4/5",
+       "2016": "5/5"
+      },
+      "total": "9/10",
+      "rate": 0.9
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "10/25",
+      "rate": 0.4,
+      "misses": [
+       "2014+1: x2.65",
+       "2014+3: x2.82",
+       "2014+5: x6.80",
+       "2015+5: x12.15",
+       "2016+4: x12.15",
+       "2016+5: x7.61",
+       "2017+2: x2.57",
+       "2017+3: x12.15",
+       "2017+4: x7.61",
+       "2018+1: x4.08",
+       "2018+2: x19.33",
+       "2018+3: x12.10",
+       "2019+1: x11.43",
+       "2019+2: x7.16",
+       "2020+1: x2.97"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 0.795,
+      "2006": 0.703,
+      "2007": 0.607,
+      "2008": 0.581,
+      "2009": 0.672,
+      "2010": 1.897,
+      "2011": 0.635,
+      "2012": 1.666,
+      "2013": 5.35,
+      "2014": 2.557,
+      "2015": 8.631,
+      "2016": 13.432
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 1.499,
+      "2011": 0.489,
+      "2012": 1.181,
+      "2013": 4.158,
+      "2014": 2.648,
+      "2015": 2.704,
+      "2016": 4.603
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 10.99); leave-window-out 10/15 on A_mirror_baci; out of time 7/25 on A_mirror_baci; out of time 10/25 on B_own_imf"
+  },
+  "URY": {
+   "name": "Uruguay",
+   "size_class": "S",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "rus": 0.14,
+    "net": 0.139
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.433,
+    6.8417
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -1.619,
+    -0.526,
+    0.96
+   ],
+   "widened_bounds": [
+    -1.698,
+    1.181
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.375,
+     "central": 1.0,
+     "high": 1.978
+    },
+    "2023": {
+     "low": 0.25,
+     "central": 1.0,
+     "high": 2.623
+    },
+    "2024": {
+     "low": 0.183,
+     "central": 1.0,
+     "high": 3.258
+    },
+    "2025": {
+     "low": 0.141,
+     "central": 1.0,
+     "high": 3.911
+    },
+    "2026": {
+     "low": 0.112,
+     "central": 1.0,
+     "high": 4.594
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.249,
+     "central": 1.0,
+     "high": 2.675
+    },
+    "H2": {
+     "low": 0.26,
+     "central": 1.0,
+     "high": 2.857
+    },
+    "H3": {
+     "low": 0.277,
+     "central": 1.0,
+     "high": 3.444
+    },
+    "H4": {
+     "low": 0.291,
+     "central": 1.0,
+     "high": 3.551
+    },
+    "H5": {
+     "low": 0.314,
+     "central": 1.0,
+     "high": 3.637
+    },
+    "H5_2026_8of12": {
+     "low": 0.317,
+     "central": 1.0,
+     "high": 3.574
+    }
+   },
+   "width_ratio_vs_as_built": 0.508,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "4/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "14/15",
+      "rate": 0.933
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "23/25",
+      "rate": 0.92,
+      "misses": [
+       "2019+2: x1.97",
+       "2020+1: x1.70"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "5/5",
+       "2016": "3/5"
+      },
+      "total": "8/10",
+      "rate": 0.8
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "20/25",
+      "rate": 0.8,
+      "misses": [
+       "2016+2: x2.45",
+       "2016+3: x2.86",
+       "2017+1: x2.69",
+       "2017+2: x3.14",
+       "2018+1: x3.14"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "11/12",
+     "rate": 0.917,
+     "windows": {
+      "2005": 0.567,
+      "2006": 0.799,
+      "2007": 1.429,
+      "2008": 1.009,
+      "2009": 0.697,
+      "2010": 0.533,
+      "2011": 0.494,
+      "2012": 0.244,
+      "2013": 0.456,
+      "2014": 0.46,
+      "2015": 0.795,
+      "2016": 1.335
+     }
+    },
+    "B_own_imf": {
+     "inside": "6/7",
+     "rate": 0.857,
+     "windows": {
+      "2010": 0.529,
+      "2011": 0.525,
+      "2012": 0.237,
+      "2013": 0.541,
+      "2014": 0.713,
+      "2015": 1.42,
+      "2016": 1.88
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "own 5-year windows inside 6/7 on B_own_imf"
+  },
+  "VEN": {
+   "name": "Venezuela",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "rus": 0.135
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 18,
+    "B_own_imf_2008_2021": 12
+   },
+   "n_errors": {
+    "A": 60,
+    "B": 35
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -1.812,
+    -0.104,
+    1.508
+   ],
+   "widened_bounds": [
+    -2.015,
+    1.566
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.312,
+     "central": 1.0,
+     "high": 2.47
+    },
+    "2023": {
+     "low": 0.193,
+     "central": 1.0,
+     "high": 3.593
+    },
+    "2024": {
+     "low": 0.133,
+     "central": 1.0,
+     "high": 4.79
+    },
+    "2025": {
+     "low": 0.098,
+     "central": 1.0,
+     "high": 6.103
+    },
+    "2026": {
+     "low": 0.074,
+     "central": 1.0,
+     "high": 7.556
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.312,
+     "central": 1.0,
+     "high": 2.47
+    },
+    "H2": {
+     "low": 0.271,
+     "central": 1.0,
+     "high": 3.024
+    },
+    "H3": {
+     "low": 0.263,
+     "central": 1.0,
+     "high": 3.252
+    },
+    "H4": {
+     "low": 0.236,
+     "central": 1.0,
+     "high": 3.937
+    },
+    "H5": {
+     "low": 0.249,
+     "central": 1.0,
+     "high": 4.66
+    },
+    "H5_2026_8of12": {
+     "low": 0.247,
+     "central": 1.0,
+     "high": 4.428
+    }
+   },
+   "width_ratio_vs_as_built": 1.898,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "0/5",
+       "2012": "3/5",
+       "2016": "0/3"
+      },
+      "total": "3/13",
+      "rate": 0.231
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "2/15",
+      "rate": 0.133,
+      "misses": [
+       "2014+1: x0.49",
+       "2014+2: x0.81",
+       "2014+3: x0.21",
+       "2014+4: x0.21",
+       "2014+5: x0.21",
+       "2015+2: x0.25",
+       "2015+3: x0.25",
+       "2015+4: x0.24",
+       "2016+1: x0.26",
+       "2016+2: x0.26",
+       "2016+3: x0.25",
+       "2017+1: x0.42",
+       "2017+2: x0.42"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "4/5",
+       "2016": "0/3"
+      },
+      "total": "4/8",
+      "rate": 0.5
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "1/15",
+      "rate": 0.067,
+      "misses": [
+       "2014+2: x0.77",
+       "2014+3: x0.19",
+       "2014+4: x0.22",
+       "2014+5: x0.15",
+       "2015+1: x0.81",
+       "2015+2: x0.20",
+       "2015+3: x0.23",
+       "2015+4: x0.16",
+       "2016+1: x0.22",
+       "2016+2: x0.25",
+       "2016+3: x0.18",
+       "2017+1: x0.28",
+       "2017+2: x0.20",
+       "2018+1: x0.71"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "10/10",
+     "rate": 1.0,
+     "windows": {
+      "2005": 4.044,
+      "2006": 4.049,
+      "2007": 3.001,
+      "2008": 1.611,
+      "2009": 1.896,
+      "2010": 2.151,
+      "2011": 1.918,
+      "2012": 0.786,
+      "2013": 0.438,
+      "2014": 0.399
+     }
+    },
+    "B_own_imf": {
+     "inside": "5/5",
+     "rate": 1.0,
+     "windows": {
+      "2010": 1.264,
+      "2011": 1.132,
+      "2012": 0.869,
+      "2013": 0.71,
+      "2014": 0.46
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 1.90); leave-window-out 3/13 on A_mirror_baci; out of time 2/15 on A_mirror_baci; leave-window-out 4/8 on B_own_imf; out of time 1/15 on B_own_imf"
+  },
+  "ZMB": {
+   "name": "Zambia",
+   "size_class": "S",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "rus": 0.131,
+    "net": 0.128
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.433,
+    6.8417
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -1.122,
+    1.62,
+    4.396
+   ],
+   "widened_bounds": [
+    -1.346,
+    4.689
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.46,
+     "central": 1.0,
+     "high": 14.984
+    },
+    "2023": {
+     "low": 0.333,
+     "central": 1.0,
+     "high": 45.982
+    },
+    "2024": {
+     "low": 0.26,
+     "central": 1.0,
+     "high": 108.704
+    },
+    "2025": {
+     "low": 0.211,
+     "central": 1.0,
+     "high": 224.519
+    },
+    "2026": {
+     "low": 0.176,
+     "central": 1.0,
+     "high": 425.384
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.333,
+     "central": 1.0,
+     "high": 49.623
+    },
+    "H2": {
+     "low": 0.344,
+     "central": 1.0,
+     "high": 64.56
+    },
+    "H3": {
+     "low": 0.361,
+     "central": 1.0,
+     "high": 135.499
+    },
+    "H4": {
+     "low": 0.375,
+     "central": 1.0,
+     "high": 152.953
+    },
+    "H5": {
+     "low": 0.399,
+     "central": 1.0,
+     "high": 168.293
+    },
+    "H5_2026_8of12": {
+     "low": 0.402,
+     "central": 1.0,
+     "high": 157.0
+    }
+   },
+   "width_ratio_vs_as_built": 24.435,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "4/5",
+       "2012": "5/5",
+       "2016": "4/5"
+      },
+      "total": "13/15",
+      "rate": 0.867
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "20/25",
+      "rate": 0.8,
+      "misses": [
+       "2014+1: x23.33",
+       "2015+1: x0.31",
+       "2015+2: x0.40",
+       "2016+1: x0.40",
+       "2020+1: x0.51"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "5/5",
+       "2016": "4/5"
+      },
+      "total": "9/10",
+      "rate": 0.9
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "22/25",
+      "rate": 0.88,
+      "misses": [
+       "2015+1: x0.29",
+       "2015+2: x0.46",
+       "2016+1: x0.46"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 19.172,
+      "2006": 22.518,
+      "2007": 26.323,
+      "2008": 14.453,
+      "2009": 3.786,
+      "2010": 12.368,
+      "2011": 16.437,
+      "2012": 15.109,
+      "2013": 9.901,
+      "2014": 13.75,
+      "2015": 1.865,
+      "2016": 2.179
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 25.415,
+      "2011": 34.033,
+      "2012": 38.071,
+      "2013": 16.724,
+      "2014": 6.748,
+      "2015": 1.026,
+      "2016": 1.38
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 24.44)"
+  },
+  "SRB": {
+   "name": "Serbia",
+   "size_class": "L",
+   "small_flow_median_start": false,
+   "needed_factor_on_paid_band": {
+    "rus": 0.127,
+    "net": null
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.6517,
+    1.4998
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 16,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 65,
+    "B": 55
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.477,
+    -0.066,
+    0.397
+   ],
+   "widened_bounds": [
+    -0.564,
+    0.423
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.722,
+     "central": 1.0,
+     "high": 1.276
+    },
+    "2023": {
+     "low": 0.631,
+     "central": 1.0,
+     "high": 1.412
+    },
+    "2024": {
+     "low": 0.569,
+     "central": 1.0,
+     "high": 1.526
+    },
+    "2025": {
+     "low": 0.521,
+     "central": 1.0,
+     "high": 1.629
+    },
+    "2026": {
+     "low": 0.483,
+     "central": 1.0,
+     "high": 1.726
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.722,
+     "central": 1.0,
+     "high": 1.276
+    },
+    "H2": {
+     "low": 0.704,
+     "central": 1.0,
+     "high": 1.33
+    },
+    "H3": {
+     "low": 0.694,
+     "central": 1.0,
+     "high": 1.389
+    },
+    "H4": {
+     "low": 0.657,
+     "central": 1.0,
+     "high": 1.424
+    },
+    "H5": {
+     "low": 0.685,
+     "central": 1.0,
+     "high": 1.484
+    },
+    "H5_2026_8of12": {
+     "low": 0.679,
+     "central": 1.0,
+     "high": 1.466
+    }
+   },
+   "width_ratio_vs_as_built": 0.928,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "15/15",
+      "rate": 1.0
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "16/25",
+      "rate": 0.64,
+      "misses": [
+       "2014+1: x1.15",
+       "2014+2: x1.16",
+       "2014+5: x1.51",
+       "2015+4: x1.31",
+       "2016+3: x1.31",
+       "2017+2: x1.43",
+       "2018+1: x1.36",
+       "2019+1: x0.65",
+       "2019+2: x0.59"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "4/5",
+       "2016": "5/5"
+      },
+      "total": "9/10",
+      "rate": 0.9
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "16/25",
+      "rate": 0.64,
+      "misses": [
+       "2014+1: x1.13",
+       "2014+2: x1.36",
+       "2014+5: x1.49",
+       "2015+1: x1.21",
+       "2015+4: x1.33",
+       "2017+2: x1.43",
+       "2018+1: x1.37",
+       "2019+1: x0.57",
+       "2019+2: x0.59"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "10/11",
+     "rate": 0.909,
+     "windows": {
+      "2006": 0.926,
+      "2007": 0.759,
+      "2008": 0.667,
+      "2009": 0.817,
+      "2010": 0.905,
+      "2011": 0.943,
+      "2012": 1.292,
+      "2013": 1.312,
+      "2014": 1.175,
+      "2015": 1.023,
+      "2016": 0.975
+     }
+    },
+    "B_own_imf": {
+     "inside": "9/9",
+     "rate": 1.0,
+     "windows": {
+      "2008": 0.687,
+      "2009": 0.828,
+      "2010": 0.886,
+      "2011": 0.944,
+      "2012": 1.324,
+      "2013": 1.315,
+      "2014": 1.207,
+      "2015": 1.058,
+      "2016": 0.797
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 0.93); out of time 16/25 on A_mirror_baci; out of time 16/25 on B_own_imf"
+  },
+  "AFG": {
+   "name": "Afghanistan",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "net": 0.122
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 11
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 14
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -1.216,
+    -0.048,
+    1.457
+   ],
+   "widened_bounds": [
+    -1.305,
+    1.508
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.471,
+     "central": 1.0,
+     "high": 2.389
+    },
+    "2023": {
+     "low": 0.345,
+     "central": 1.0,
+     "high": 3.426
+    },
+    "2024": {
+     "low": 0.271,
+     "central": 1.0,
+     "high": 4.519
+    },
+    "2025": {
+     "low": 0.222,
+     "central": 1.0,
+     "high": 5.706
+    },
+    "2026": {
+     "low": 0.186,
+     "central": 1.0,
+     "high": 7.009
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.471,
+     "central": 1.0,
+     "high": 2.389
+    },
+    "H2": {
+     "low": 0.43,
+     "central": 1.0,
+     "high": 2.902
+    },
+    "H3": {
+     "low": 0.422,
+     "central": 1.0,
+     "high": 3.112
+    },
+    "H4": {
+     "low": 0.392,
+     "central": 1.0,
+     "high": 3.742
+    },
+    "H5": {
+     "low": 0.407,
+     "central": 1.0,
+     "high": 4.401
+    },
+    "H5_2026_8of12": {
+     "low": 0.405,
+     "central": 1.0,
+     "high": 4.19
+    }
+   },
+   "width_ratio_vs_as_built": 1.718,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "0/5",
+       "2012": "5/5",
+       "2016": "3/5"
+      },
+      "total": "8/15",
+      "rate": 0.533
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "6/25",
+      "rate": 0.24,
+      "misses": [
+       "2014+1: x0.67",
+       "2014+4: x0.48",
+       "2014+5: x0.57",
+       "2015+3: x0.50",
+       "2015+4: x0.60",
+       "2015+5: x0.50",
+       "2016+2: x0.48",
+       "2016+3: x0.57",
+       "2016+4: x0.48",
+       "2016+5: x0.21",
+       "2017+1: x0.45",
+       "2017+2: x0.54",
+       "2017+3: x0.45",
+       "2017+4: x0.20",
+       "2018+1: x0.54",
+       "2018+2: x0.45",
+       "2018+3: x0.20",
+       "2019+2: x0.37",
+       "2020+1: x0.44"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {},
+      "total": "0/0",
+      "rate": null
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "6/10",
+      "rate": 0.6,
+      "misses": [
+       "2017+4: x0.49",
+       "2018+3: x0.49",
+       "2019+2: x0.55",
+       "2020+1: x0.55"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 2.12,
+      "2006": 3.136,
+      "2007": 3.097,
+      "2008": 3.345,
+      "2009": 2.615,
+      "2010": 1.412,
+      "2011": 1.068,
+      "2012": 0.644,
+      "2013": 0.605,
+      "2014": 0.81,
+      "2015": 0.818,
+      "2016": 0.583
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 1.72); leave-window-out 8/15 on A_mirror_baci; out of time 6/25 on A_mirror_baci; out of time 6/10 on B_own_imf"
+  },
+  "UGA": {
+   "name": "Uganda",
+   "size_class": "S",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "rus": 0.102,
+    "net": 0.097
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.433,
+    6.8417
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.195,
+    0.307,
+    1.726
+   ],
+   "widened_bounds": [
+    -0.294,
+    1.932
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.844,
+     "central": 1.0,
+     "high": 3.051
+    },
+    "2023": {
+     "low": 0.787,
+     "central": 1.0,
+     "high": 4.843
+    },
+    "2024": {
+     "low": 0.745,
+     "central": 1.0,
+     "high": 6.903
+    },
+    "2025": {
+     "low": 0.712,
+     "central": 1.0,
+     "high": 9.308
+    },
+    "2026": {
+     "low": 0.684,
+     "central": 1.0,
+     "high": 12.112
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.786,
+     "central": 1.0,
+     "high": 4.997
+    },
+    "H2": {
+     "low": 0.792,
+     "central": 1.0,
+     "high": 5.57
+    },
+    "H3": {
+     "low": 0.8,
+     "central": 1.0,
+     "high": 7.559
+    },
+    "H4": {
+     "low": 0.807,
+     "central": 1.0,
+     "high": 7.946
+    },
+    "H5": {
+     "low": 0.818,
+     "central": 1.0,
+     "high": 8.266
+    },
+    "H5_2026_8of12": {
+     "low": 0.819,
+     "central": 1.0,
+     "high": 8.032
+    }
+   },
+   "width_ratio_vs_as_built": 1.126,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "3/5",
+       "2012": "4/5",
+       "2016": "5/5"
+      },
+      "total": "12/15",
+      "rate": 0.8
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "4/5",
+       "2016": "5/5"
+      },
+      "total": "9/10",
+      "rate": 0.9
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 5.796,
+      "2006": 4.993,
+      "2007": 1.626,
+      "2008": 1.674,
+      "2009": 1.76,
+      "2010": 1.815,
+      "2011": 1.247,
+      "2012": 1.445,
+      "2013": 2.395,
+      "2014": 2.573,
+      "2015": 1.297,
+      "2016": 1.427
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 1.352,
+      "2011": 1.502,
+      "2012": 1.173,
+      "2013": 1.76,
+      "2014": 1.363,
+      "2015": 1.35,
+      "2016": 1.421
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 1.13)"
+  },
+  "BWA": {
+   "name": "Botswana",
+   "size_class": "M",
+   "small_flow_median_start": false,
+   "needed_factor_on_paid_band": {
+    "rus": 0.057,
+    "net": null
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 55
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -2.21,
+    1.448,
+    5.33
+   ],
+   "widened_bounds": [
+    -2.265,
+    5.813
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.27,
+     "central": 1.0,
+     "high": 28.677
+    },
+    "2023": {
+     "low": 0.157,
+     "central": 1.0,
+     "high": 115.148
+    },
+    "2024": {
+     "low": 0.104,
+     "central": 1.0,
+     "high": 334.59
+    },
+    "2025": {
+     "low": 0.073,
+     "central": 1.0,
+     "high": 822.349
+    },
+    "2026": {
+     "low": 0.054,
+     "central": 1.0,
+     "high": 1816.066
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.27,
+     "central": 1.0,
+     "high": 28.677
+    },
+    "H2": {
+     "low": 0.23,
+     "central": 1.0,
+     "high": 60.763
+    },
+    "H3": {
+     "low": 0.224,
+     "central": 1.0,
+     "high": 79.475
+    },
+    "H4": {
+     "low": 0.196,
+     "central": 1.0,
+     "high": 161.719
+    },
+    "H5": {
+     "low": 0.211,
+     "central": 1.0,
+     "high": 302.263
+    },
+    "H5_2026_8of12": {
+     "low": 0.209,
+     "central": 1.0,
+     "high": 249.93
+    }
+   },
+   "width_ratio_vs_as_built": 113.345,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "0/5",
+       "2016": "5/5"
+      },
+      "total": "10/15",
+      "rate": 0.667
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "0/5",
+       "2016": "5/5"
+      },
+      "total": "5/10",
+      "rate": 0.5
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "11/12",
+     "rate": 0.917,
+     "windows": {
+      "2005": 6.824,
+      "2006": 26.048,
+      "2007": 2.969,
+      "2008": 11.874,
+      "2009": 11.927,
+      "2010": 32.855,
+      "2011": 13.485,
+      "2012": 383.771,
+      "2013": 0.922,
+      "2014": 7.896,
+      "2015": 2.168,
+      "2016": 3.587
+     }
+    },
+    "B_own_imf": {
+     "inside": "8/9",
+     "rate": 0.889,
+     "windows": {
+      "2008": 14.726,
+      "2009": 11.089,
+      "2010": 28.937,
+      "2011": 12.532,
+      "2012": 372.421,
+      "2013": 1.063,
+      "2014": 7.059,
+      "2015": 1.839,
+      "2016": 2.873
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 113.34); leave-window-out 10/15 on A_mirror_baci; leave-window-out 5/10 on B_own_imf; own 5-year windows inside 8/9 on B_own_imf"
+  },
+  "PHL": {
+   "name": "Philippines",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "net": null,
+    "rus": null
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -1.333,
+    0.26,
+    1.553
+   ],
+   "widened_bounds": [
+    -1.539,
+    1.703
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.411,
+     "central": 1.0,
+     "high": 2.673
+    },
+    "2023": {
+     "low": 0.285,
+     "central": 1.0,
+     "high": 4.016
+    },
+    "2024": {
+     "low": 0.214,
+     "central": 1.0,
+     "high": 5.488
+    },
+    "2025": {
+     "low": 0.169,
+     "central": 1.0,
+     "high": 7.142
+    },
+    "2026": {
+     "low": 0.137,
+     "central": 1.0,
+     "high": 9.008
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.411,
+     "central": 1.0,
+     "high": 2.673
+    },
+    "H2": {
+     "low": 0.369,
+     "central": 1.0,
+     "high": 3.33
+    },
+    "H3": {
+     "low": 0.361,
+     "central": 1.0,
+     "high": 3.602
+    },
+    "H4": {
+     "low": 0.331,
+     "central": 1.0,
+     "high": 4.436
+    },
+    "H5": {
+     "low": 0.346,
+     "central": 1.0,
+     "high": 5.328
+    },
+    "H5_2026_8of12": {
+     "low": 0.344,
+     "central": 1.0,
+     "high": 5.039
+    }
+   },
+   "width_ratio_vs_as_built": 2.131,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "15/15",
+      "rate": 1.0
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "24/25",
+      "rate": 0.96,
+      "misses": [
+       "2017+1: x2.91"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "10/10",
+      "rate": 1.0
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "23/25",
+      "rate": 0.92,
+      "misses": [
+       "2015+1: x0.34",
+       "2017+1: x3.14"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 0.53,
+      "2006": 1.065,
+      "2007": 3.033,
+      "2008": 3.718,
+      "2009": 3.524,
+      "2010": 1.524,
+      "2011": 0.952,
+      "2012": 0.754,
+      "2013": 0.603,
+      "2014": 0.824,
+      "2015": 0.988,
+      "2016": 2.115
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 2.818,
+      "2011": 1.44,
+      "2012": 0.822,
+      "2013": 0.589,
+      "2014": 0.885,
+      "2015": 1.073,
+      "2016": 2.382
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 2.13)"
+  },
+  "LBN": {
+   "name": "Lebanon",
+   "size_class": "M",
+   "small_flow_median_start": false,
+   "needed_factor_on_paid_band": {
+    "net": null,
+    "rus": null
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 55
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.741,
+    0.221,
+    0.979
+   ],
+   "widened_bounds": [
+    -0.956,
+    1.037
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.576,
+     "central": 1.0,
+     "high": 1.82
+    },
+    "2023": {
+     "low": 0.458,
+     "central": 1.0,
+     "high": 2.332
+    },
+    "2024": {
+     "low": 0.384,
+     "central": 1.0,
+     "high": 2.82
+    },
+    "2025": {
+     "low": 0.331,
+     "central": 1.0,
+     "high": 3.311
+    },
+    "2026": {
+     "low": 0.291,
+     "central": 1.0,
+     "high": 3.813
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.576,
+     "central": 1.0,
+     "high": 1.82
+    },
+    "H2": {
+     "low": 0.538,
+     "central": 1.0,
+     "high": 2.081
+    },
+    "H3": {
+     "low": 0.531,
+     "central": 1.0,
+     "high": 2.182
+    },
+    "H4": {
+     "low": 0.503,
+     "central": 1.0,
+     "high": 2.477
+    },
+    "H5": {
+     "low": 0.517,
+     "central": 1.0,
+     "high": 2.769
+    },
+    "H5_2026_8of12": {
+     "low": 0.515,
+     "central": 1.0,
+     "high": 2.677
+    }
+   },
+   "width_ratio_vs_as_built": 0.981,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "2/5",
+       "2016": "5/5"
+      },
+      "total": "12/15",
+      "rate": 0.8
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "21/25",
+      "rate": 0.84,
+      "misses": [
+       "2017+1: x0.66",
+       "2018+1: x1.95",
+       "2019+1: x0.50",
+       "2019+2: x0.38"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "2/5",
+       "2016": "4/5"
+      },
+      "total": "6/10",
+      "rate": 0.6
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "21/25",
+      "rate": 0.84,
+      "misses": [
+       "2017+1: x0.65",
+       "2018+1: x2.35",
+       "2019+1: x0.51",
+       "2019+2: x0.40"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 0.577,
+      "2006": 1.522,
+      "2007": 1.299,
+      "2008": 1.147,
+      "2009": 1.045,
+      "2010": 1.186,
+      "2011": 1.675,
+      "2012": 2.498,
+      "2013": 1.424,
+      "2014": 1.525,
+      "2015": 1.03,
+      "2016": 0.856
+     }
+    },
+    "B_own_imf": {
+     "inside": "9/9",
+     "rate": 1.0,
+     "windows": {
+      "2008": 1.14,
+      "2009": 1.085,
+      "2010": 1.24,
+      "2011": 1.738,
+      "2012": 2.61,
+      "2013": 1.205,
+      "2014": 1.378,
+      "2015": 0.952,
+      "2016": 0.825
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 0.98); leave-window-out 6/10 on B_own_imf"
+  },
+  "BRN": {
+   "name": "Brunei",
+   "size_class": "L",
+   "small_flow_median_start": false,
+   "needed_factor_on_paid_band": {
+    "net": null,
+    "rus": null
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.6517,
+    1.4998
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 12
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 37
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -3.85,
+    1.705,
+    7.8
+   ],
+   "widened_bounds": [
+    -4.289,
+    8.371
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.084,
+     "central": 1.0,
+     "high": 125.604
+    },
+    "2023": {
+     "low": 0.03,
+     "central": 1.0,
+     "high": 929.909
+    },
+    "2024": {
+     "low": 0.014,
+     "central": 1.0,
+     "high": 4320.978
+    },
+    "2025": {
+     "low": 0.007,
+     "central": 1.0,
+     "high": 15776.425
+    },
+    "2026": {
+     "low": 0.004,
+     "central": 1.0,
+     "high": 49376.046
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.084,
+     "central": 1.0,
+     "high": 125.604
+    },
+    "H2": {
+     "low": 0.069,
+     "central": 1.0,
+     "high": 283.845
+    },
+    "H3": {
+     "low": 0.063,
+     "central": 1.0,
+     "high": 672.157
+    },
+    "H4": {
+     "low": 0.041,
+     "central": 1.0,
+     "high": 1102.934
+    },
+    "H5": {
+     "low": 0.057,
+     "central": 1.0,
+     "high": 2468.171
+    },
+    "H5_2026_8of12": {
+     "low": 0.053,
+     "central": 1.0,
+     "high": 1938.31
+    }
+   },
+   "width_ratio_vs_as_built": 2285.411,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "4/5",
+       "2016": "3/5"
+      },
+      "total": "12/15",
+      "rate": 0.8
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "17/25",
+      "rate": 0.68,
+      "misses": [
+       "2016+4: x1808.94",
+       "2016+5: x7237.12",
+       "2017+3: x744.26",
+       "2017+4: x2977.60",
+       "2018+2: x295.03",
+       "2018+3: x1180.36",
+       "2019+1: x180.22",
+       "2019+2: x721.00"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2016": "3/5"
+      },
+      "total": "3/5",
+      "rate": 0.6
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "16/25",
+      "rate": 0.64,
+      "misses": [
+       "2015+5: x9260.29",
+       "2016+4: x3592.39",
+       "2016+5: x10824.17",
+       "2017+3: x985.92",
+       "2017+4: x2970.67",
+       "2018+2: x1316.07",
+       "2018+3: x3965.42",
+       "2019+1: x491.86",
+       "2019+2: x1482.01"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 195.507,
+      "2006": 7.331,
+      "2007": 8.37,
+      "2008": 0.178,
+      "2009": 0.631,
+      "2010": 1.095,
+      "2011": 0.273,
+      "2012": 12.973,
+      "2013": 189.082,
+      "2014": 23.149,
+      "2015": 116.786,
+      "2016": 1425.491
+     }
+    },
+    "B_own_imf": {
+     "inside": "2/3",
+     "rate": 0.667,
+     "windows": {
+      "2014": 1.202,
+      "2015": 1331.005,
+      "2016": 2319.04
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 2285.41); out of time 17/25 on A_mirror_baci; leave-window-out 3/5 on B_own_imf; out of time 16/25 on B_own_imf; own 5-year windows inside 2/3 on B_own_imf"
+  },
+  "DOM": {
+   "name": "Dominican Republic",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "net": null,
+    "rus": null
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -1.352,
+    0.632,
+    2.003
+   ],
+   "widened_bounds": [
+    -1.474,
+    2.213
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.427,
+     "central": 1.0,
+     "high": 3.588
+    },
+    "2023": {
+     "low": 0.3,
+     "central": 1.0,
+     "high": 6.09
+    },
+    "2024": {
+     "low": 0.229,
+     "central": 1.0,
+     "high": 9.141
+    },
+    "2025": {
+     "low": 0.182,
+     "central": 1.0,
+     "high": 12.872
+    },
+    "2026": {
+     "low": 0.149,
+     "central": 1.0,
+     "high": 17.403
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.427,
+     "central": 1.0,
+     "high": 3.588
+    },
+    "H2": {
+     "low": 0.385,
+     "central": 1.0,
+     "high": 4.775
+    },
+    "H3": {
+     "low": 0.377,
+     "central": 1.0,
+     "high": 5.289
+    },
+    "H4": {
+     "low": 0.347,
+     "central": 1.0,
+     "high": 6.931
+    },
+    "H5": {
+     "low": 0.362,
+     "central": 1.0,
+     "high": 8.794
+    },
+    "H5_2026_8of12": {
+     "low": 0.36,
+     "central": 1.0,
+     "high": 8.18
+    }
+   },
+   "width_ratio_vs_as_built": 3.549,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "4/5",
+       "2012": "3/5",
+       "2016": "4/5"
+      },
+      "total": "11/15",
+      "rate": 0.733
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "19/25",
+      "rate": 0.76,
+      "misses": [
+       "2014+1: x16.91",
+       "2014+2: x3.95",
+       "2014+3: x3.40",
+       "2014+4: x6.88",
+       "2014+5: x4.87",
+       "2016+1: x0.32"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "3/5",
+       "2016": "5/5"
+      },
+      "total": "8/10",
+      "rate": 0.8
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "16/25",
+      "rate": 0.64,
+      "misses": [
+       "2014+2: x3.39",
+       "2014+3: x3.46",
+       "2014+4: x5.56",
+       "2015+1: x2.72",
+       "2015+2: x2.78",
+       "2015+3: x4.47",
+       "2016+1: x2.44",
+       "2016+2: x3.93",
+       "2016+5: x4.55"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "10/12",
+     "rate": 0.833,
+     "windows": {
+      "2005": 1.187,
+      "2006": 0.732,
+      "2007": 0.803,
+      "2008": 0.294,
+      "2009": 2.616,
+      "2010": 3.74,
+      "2011": 4.581,
+      "2012": 4.95,
+      "2013": 8.471,
+      "2014": 7.368,
+      "2015": 0.444,
+      "2016": 0.502
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 0.944,
+      "2011": 2.658,
+      "2012": 2.94,
+      "2013": 4.153,
+      "2014": 3.44,
+      "2015": 3.224,
+      "2016": 3.198
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "not 10% narrower than the band as built (width ratio 3.55); leave-window-out 11/15 on A_mirror_baci; out of time 19/25 on A_mirror_baci; out of time 16/25 on B_own_imf; own 5-year windows inside 10/12 on A_mirror_baci"
+  },
+  "PER": {
+   "name": "Peru",
+   "size_class": "M",
+   "small_flow_median_start": true,
+   "needed_factor_on_paid_band": {
+    "net": null,
+    "rus": null
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 45
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.145,
+    0.262,
+    0.767
+   ],
+   "widened_bounds": [
+    -0.219,
+    0.815
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.881,
+     "central": 1.0,
+     "high": 1.601
+    },
+    "2023": {
+     "low": 0.837,
+     "central": 1.0,
+     "high": 1.945
+    },
+    "2024": {
+     "low": 0.804,
+     "central": 1.0,
+     "high": 2.259
+    },
+    "2025": {
+     "low": 0.777,
+     "central": 1.0,
+     "high": 2.562
+    },
+    "2026": {
+     "low": 0.754,
+     "central": 1.0,
+     "high": 2.863
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.881,
+     "central": 1.0,
+     "high": 1.601
+    },
+    "H2": {
+     "low": 0.868,
+     "central": 1.0,
+     "high": 1.778
+    },
+    "H3": {
+     "low": 0.866,
+     "central": 1.0,
+     "high": 1.847
+    },
+    "H4": {
+     "low": 0.855,
+     "central": 1.0,
+     "high": 2.04
+    },
+    "H5": {
+     "low": 0.86,
+     "central": 1.0,
+     "high": 2.227
+    },
+    "H5_2026_8of12": {
+     "low": 0.859,
+     "central": 1.0,
+     "high": 2.168
+    }
+   },
+   "width_ratio_vs_as_built": 0.594,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "5/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "15/15",
+      "rate": 1.0
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "20/25",
+      "rate": 0.8,
+      "misses": [
+       "2015+1: x0.94",
+       "2015+5: x0.88",
+       "2017+3: x0.78",
+       "2018+2: x0.78",
+       "2019+1: x0.78"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "10/10",
+      "rate": 1.0
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "25/25",
+      "rate": 1.0,
+      "misses": []
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 1.556,
+      "2006": 1.65,
+      "2007": 1.436,
+      "2008": 1.68,
+      "2009": 1.863,
+      "2010": 1.981,
+      "2011": 1.215,
+      "2012": 1.08,
+      "2013": 1.052,
+      "2014": 1.22,
+      "2015": 1.073,
+      "2016": 1.207
+     }
+    },
+    "B_own_imf": {
+     "inside": "7/7",
+     "rate": 1.0,
+     "windows": {
+      "2010": 1.664,
+      "2011": 1.267,
+      "2012": 1.178,
+      "2013": 1.194,
+      "2014": 1.286,
+      "2015": 1.357,
+      "2016": 1.363
+     }
+    }
+   },
+   "status": "accepted",
+   "reason": "passes the B2 rule",
+   "sensitivity_origin_year_start": {
+    "per_year_2026": {
+     "low": 0.615,
+     "central": 1.0,
+     "high": 3.022
+    },
+    "cumulative_H5_2026_8of12": {
+     "low": 0.77,
+     "high": 2.256
+    },
+    "width_ratio_vs_as_built": 0.674,
+    "coverage": {
+     "A_mirror_baci": {
+      "leave_window_out": {
+       "hits": {
+        "2007": "5/5",
+        "2012": "5/5",
+        "2016": "5/5"
+       },
+       "total": "15/15",
+       "rate": 1.0
+      },
+      "out_of_time_train_to_2013_test_origins_2014_2020": {
+       "hits": "23/25",
+       "rate": 0.92,
+       "misses": [
+        "2015+1: x0.77",
+        "2018+2: x0.69"
+       ]
+      }
+     },
+     "B_own_imf": {
+      "leave_window_out": {
+       "hits": {
+        "2012": "5/5",
+        "2016": "5/5"
+       },
+       "total": "10/10",
+       "rate": 1.0
+      },
+      "out_of_time_train_to_2013_test_origins_2014_2020": {
+       "hits": "24/25",
+       "rate": 0.96,
+       "misses": [
+        "2018+1: x0.79"
+       ]
+      }
+     }
+    },
+    "note": "not the method: the site starts this country from the 2019-2021 median (small_flow_base)"
+   },
+   "proposed_cf_bands_entry": {
+    "countries.PER.to_rus": {
+     "level_2021": {
+      "low": 0.3676,
+      "central": 0.5432,
+      "high": 0.5432
+     },
+     "multiplier_vs_2021": {
+      "2022": {
+       "low": 0.881,
+       "central": 1.0,
+       "high": 1.601
+      },
+      "2023": {
+       "low": 0.837,
+       "central": 1.0,
+       "high": 1.945
+      },
+      "2024": {
+       "low": 0.804,
+       "central": 1.0,
+       "high": 2.259
+      },
+      "2025": {
+       "low": 0.777,
+       "central": 1.0,
+       "high": 2.562
+      },
+      "2026": {
+       "low": 0.754,
+       "central": 1.0,
+       "high": 2.863
+      }
+     },
+     "cumulative_band": {
+      "H1": {
+       "low": 0.881,
+       "central": 1.0,
+       "high": 1.601
+      },
+      "H2": {
+       "low": 0.868,
+       "central": 1.0,
+       "high": 1.778
+      },
+      "H3": {
+       "low": 0.866,
+       "central": 1.0,
+       "high": 1.847
+      },
+      "H4": {
+       "low": 0.855,
+       "central": 1.0,
+       "high": 2.04
+      },
+      "H5": {
+       "low": 0.86,
+       "central": 1.0,
+       "high": 2.227
+      },
+      "H5_2026_8of12": {
+       "low": 0.859,
+       "central": 1.0,
+       "high": 2.168
+      }
+     },
+     "generic_multiplier_vs_2021_replaced": {
+      "2022": {
+       "low": 0.384,
+       "central": 1.0,
+       "high": 2.411
+      },
+      "2023": {
+       "low": 0.325,
+       "central": 1.0,
+       "high": 2.962
+      },
+      "2024": {
+       "low": 0.293,
+       "central": 1.0,
+       "high": 3.661
+      },
+      "2025": {
+       "low": 0.28,
+       "central": 1.0,
+       "high": 4.353
+      },
+      "2026": {
+       "low": 0.245,
+       "central": 1.0,
+       "high": 4.839
+      }
+     },
+     "generic_cumulative_band_replaced": {
+      "H1": {
+       "low": 0.384,
+       "central": 1.0,
+       "high": 2.411
+      },
+      "H2": {
+       "low": 0.41,
+       "central": 1.0,
+       "high": 2.559
+      },
+      "H3": {
+       "low": 0.444,
+       "central": 1.0,
+       "high": 2.656
+      },
+      "H4": {
+       "low": 0.453,
+       "central": 1.0,
+       "high": 3.048
+      },
+      "H5": {
+       "low": 0.472,
+       "central": 1.0,
+       "high": 3.32
+      },
+      "H5_2026_8of12": {
+       "low": 0.47,
+       "central": 1.0,
+       "high": 3.19
+      }
+     },
+     "method": "2021 level held (random walk, from the 2019-2021 median as small_flow_base), country-specific interval: 5th-95th percentile of the country's own random-walk errors 1-5 years ahead (rolling origins 2005-2020, all years kept; Russia's exports to it (CEPII BACI, 2001-2021) and its own customs report (IMF IMTS, 2008-2021) pooled, real by goods group), scaled by sqrt(h/3) and widened halfway to the block-bootstrap bounds, as cf_bands.json B2; cumulative band = the generic cumulative band scaled per side by the own/generic ratio of the log bounds in the same year; used because its 2022-2026 cumulative band is at least 10% narrower than the band as built and its own held-out coverage holds (own_bands_r46.json)",
+     "size_class": "M",
+     "certainty": "C",
+     "own_backtest": {
+      "series": "A: Russia's exports to the country (CEPII BACI HS92, reconciled, 2001-2021); B: the country's imports from Russia (IMF IMTS own report, 2008-2021); real by goods group",
+      "origins": "2005-2020",
+      "horizons": "1-5",
+      "n_errors": 115,
+      "q05_q50_q95_per_sqrt_h_over_3": [
+       -0.145,
+       0.262,
+       0.767
+      ],
+      "bootstrap_widened_bounds": [
+       -0.219,
+       0.815
+      ],
+      "coverage": {
+       "A_mirror_baci": {
+        "leave_window_out": {
+         "hits": {
+          "2007": "5/5",
+          "2012": "5/5",
+          "2016": "5/5"
+         },
+         "total": "15/15",
+         "rate": 1.0
+        },
+        "out_of_time_train_to_2013_test_origins_2014_2020": {
+         "hits": "20/25",
+         "rate": 0.8,
+         "misses": [
+          "2015+1: x0.94",
+          "2015+5: x0.88",
+          "2017+3: x0.78",
+          "2018+2: x0.78",
+          "2019+1: x0.78"
+         ]
+        }
+       },
+       "B_own_imf": {
+        "leave_window_out": {
+         "hits": {
+          "2012": "5/5",
+          "2016": "5/5"
+         },
+         "total": "10/10",
+         "rate": 1.0
+        },
+        "out_of_time_train_to_2013_test_origins_2014_2020": {
+         "hits": "25/25",
+         "rate": 1.0,
+         "misses": []
+        }
+       }
+      },
+      "safeguard": {
+       "A_mirror_baci": "12/12",
+       "B_own_imf": "7/7"
+      }
+     }
+    }
+   },
+   "chance": {
+    "net": {
+     "old": {
+      "p": 0.774,
+      "side": "ukraine",
+      "group": "leaning"
+     },
+     "new": {
+      "p": 0.824,
+      "side": "ukraine",
+      "group": "near zero"
+     }
+    },
+    "rus": {
+     "old": {
+      "p": 0.741,
+      "side": "ukraine",
+      "group": "leaning"
+     },
+     "new": {
+      "p": 0.803,
+      "side": "ukraine",
+      "group": "near zero"
+     }
+    },
+    "ua": {
+     "old": {
+      "p": 0.994,
+      "side": "ukraine",
+      "group": "certain"
+     },
+     "new": {
+      "p": 0.994,
+      "side": "ukraine",
+      "group": "certain"
+     }
+    }
+   }
+  },
+  "HRV": {
+   "name": "Croatia",
+   "size_class": "M",
+   "small_flow_median_start": false,
+   "needed_factor_on_paid_band": {
+    "rus": null
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.5707,
+    2.7739
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 55
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.79,
+    -0.379,
+    0.485
+   ],
+   "widened_bounds": [
+    -0.805,
+    0.616
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.628,
+     "central": 1.0,
+     "high": 1.427
+    },
+    "2023": {
+     "low": 0.518,
+     "central": 1.0,
+     "high": 1.653
+    },
+    "2024": {
+     "low": 0.447,
+     "central": 1.0,
+     "high": 1.851
+    },
+    "2025": {
+     "low": 0.395,
+     "central": 1.0,
+     "high": 2.036
+    },
+    "2026": {
+     "low": 0.354,
+     "central": 1.0,
+     "high": 2.214
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.628,
+     "central": 1.0,
+     "high": 1.427
+    },
+    "H2": {
+     "low": 0.593,
+     "central": 1.0,
+     "high": 1.545
+    },
+    "H3": {
+     "low": 0.587,
+     "central": 1.0,
+     "high": 1.59
+    },
+    "H4": {
+     "low": 0.561,
+     "central": 1.0,
+     "high": 1.714
+    },
+    "H5": {
+     "low": 0.574,
+     "central": 1.0,
+     "high": 1.831
+    },
+    "H5_2026_8of12": {
+     "low": 0.573,
+     "central": 1.0,
+     "high": 1.795
+    }
+   },
+   "width_ratio_vs_as_built": 0.555,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "3/5",
+       "2012": "5/5",
+       "2016": "3/5"
+      },
+      "total": "11/15",
+      "rate": 0.733
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "16/25",
+      "rate": 0.64,
+      "misses": [
+       "2015+5: x1.59",
+       "2016+4: x1.65",
+       "2016+5: x1.52",
+       "2017+3: x2.10",
+       "2017+4: x1.94",
+       "2018+2: x2.03",
+       "2018+3: x1.87",
+       "2019+1: x2.41",
+       "2019+2: x2.22"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "10/10",
+      "rate": 1.0
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "19/25",
+      "rate": 0.76,
+      "misses": [
+       "2017+1: x1.07",
+       "2017+4: x1.27",
+       "2018+3: x1.19",
+       "2019+1: x1.20",
+       "2019+2: x1.50",
+       "2020+1: x1.25"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "10/12",
+     "rate": 0.833,
+     "windows": {
+      "2005": 0.981,
+      "2006": 0.861,
+      "2007": 0.652,
+      "2008": 0.574,
+      "2009": 0.503,
+      "2010": 0.522,
+      "2011": 0.662,
+      "2012": 0.619,
+      "2013": 0.826,
+      "2014": 0.577,
+      "2015": 0.904,
+      "2016": 1.059
+     }
+    },
+    "B_own_imf": {
+     "inside": "6/9",
+     "rate": 0.667,
+     "windows": {
+      "2008": 0.591,
+      "2009": 0.538,
+      "2010": 0.592,
+      "2011": 0.718,
+      "2012": 0.668,
+      "2013": 0.54,
+      "2014": 0.55,
+      "2015": 0.757,
+      "2016": 0.842
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "leave-window-out 11/15 on A_mirror_baci; out of time 16/25 on A_mirror_baci; out of time 19/25 on B_own_imf; own 5-year windows inside 10/12 on A_mirror_baci; own 5-year windows inside 6/9 on B_own_imf"
+  },
+  "BEL": {
+   "name": "Belgium",
+   "size_class": "L",
+   "small_flow_median_start": false,
+   "needed_factor_on_paid_band": {
+    "rus": null
+   },
+   "band_as_built_H5_2026_8of12": [
+    0.6517,
+    1.4998
+   ],
+   "usable_years": {
+    "A_mirror_baci_2002_2021": 20,
+    "B_own_imf_2008_2021": 14
+   },
+   "n_errors": {
+    "A": 70,
+    "B": 55
+   },
+   "q05_q50_q95_per_sqrt_h_over_3": [
+    -0.324,
+    0.037,
+    0.421
+   ],
+   "widened_bounds": [
+    -0.353,
+    0.468
+   ],
+   "own_multiplier_vs_2021": {
+    "2022": {
+     "low": 0.816,
+     "central": 1.0,
+     "high": 1.31
+    },
+    "2023": {
+     "low": 0.75,
+     "central": 1.0,
+     "high": 1.465
+    },
+    "2024": {
+     "low": 0.703,
+     "central": 1.0,
+     "high": 1.597
+    },
+    "2025": {
+     "low": 0.666,
+     "central": 1.0,
+     "high": 1.717
+    },
+    "2026": {
+     "low": 0.634,
+     "central": 1.0,
+     "high": 1.83
+    }
+   },
+   "own_cumulative_band": {
+    "H1": {
+     "low": 0.816,
+     "central": 1.0,
+     "high": 1.31
+    },
+    "H2": {
+     "low": 0.803,
+     "central": 1.0,
+     "high": 1.371
+    },
+    "H3": {
+     "low": 0.796,
+     "central": 1.0,
+     "high": 1.439
+    },
+    "H4": {
+     "low": 0.769,
+     "central": 1.0,
+     "high": 1.48
+    },
+    "H5": {
+     "low": 0.789,
+     "central": 1.0,
+     "high": 1.548
+    },
+    "H5_2026_8of12": {
+     "low": 0.785,
+     "central": 1.0,
+     "high": 1.527
+    }
+   },
+   "width_ratio_vs_as_built": 0.875,
+   "coverage": {
+    "A_mirror_baci": {
+     "leave_window_out": {
+      "hits": {
+       "2007": "1/5",
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "11/15",
+      "rate": 0.733
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "22/25",
+      "rate": 0.88,
+      "misses": [
+       "2017+2: x0.78",
+       "2018+1: x0.78",
+       "2018+2: x0.78"
+      ]
+     }
+    },
+    "B_own_imf": {
+     "leave_window_out": {
+      "hits": {
+       "2012": "5/5",
+       "2016": "5/5"
+      },
+      "total": "10/10",
+      "rate": 1.0
+     },
+     "out_of_time_train_to_2013_test_origins_2014_2020": {
+      "hits": "19/25",
+      "rate": 0.76,
+      "misses": [
+       "2014+1: x0.83",
+       "2017+3: x0.72",
+       "2017+4: x0.73",
+       "2018+1: x0.80",
+       "2018+2: x0.71",
+       "2018+3: x0.72"
+      ]
+     }
+    }
+   },
+   "safeguard_own_windows": {
+    "A_mirror_baci": {
+     "inside": "12/12",
+     "rate": 1.0,
+     "windows": {
+      "2005": 0.975,
+      "2006": 0.918,
+      "2007": 1.214,
+      "2008": 1.305,
+      "2009": 1.191,
+      "2010": 1.268,
+      "2011": 1.085,
+      "2012": 1.253,
+      "2013": 1.016,
+      "2014": 0.942,
+      "2015": 1.005,
+      "2016": 0.913
+     }
+    },
+    "B_own_imf": {
+     "inside": "8/9",
+     "rate": 0.889,
+     "windows": {
+      "2008": 1.297,
+      "2009": 1.679,
+      "2010": 1.352,
+      "2011": 1.033,
+      "2012": 1.234,
+      "2013": 0.959,
+      "2014": 0.862,
+      "2015": 1.008,
+      "2016": 0.971
+     }
+    }
+   },
+   "status": "rejected",
+   "reason": "leave-window-out 11/15 on A_mirror_baci; out of time 19/25 on B_own_imf; own 5-year windows inside 8/9 on B_own_imf"
+  }
+ },
+ "accepted": [
+  "PYF",
+  "KEN",
+  "PER"
+ ],
+ "rejected": {
+  "MLT": "not 10% narrower than the band as built (width ratio 7.44); out of time 9/25 on A_mirror_baci; leave-window-out 1/10 on B_own_imf; out of time 9/25 on B_own_imf",
+  "COL": "out of time 18/25 on A_mirror_baci; leave-window-out 6/10 on B_own_imf; out of time 17/25 on B_own_imf",
+  "JOR": "not 10% narrower than the band as built (width ratio 1.39); leave-window-out 11/15 on A_mirror_baci; leave-window-out 7/10 on B_own_imf; out of time 19/25 on B_own_imf",
+  "CMR": "not 10% narrower than the band as built (width ratio 2.66); leave-window-out 5/15 on A_mirror_baci; out of time 5/25 on A_mirror_baci; leave-window-out 4/10 on B_own_imf; out of time 5/25 on B_own_imf",
+  "MEX": "not 10% narrower than the band as built (width ratio 2.02); out of time 18/25 on B_own_imf",
+  "GEO": "leave-window-out 5/15 on A_mirror_baci; leave-window-out 6/10 on B_own_imf; own 5-year windows inside 9/12 on A_mirror_baci",
+  "NAM": "not 10% narrower than the band as built (width ratio 3.49); leave-window-out 11/15 on A_mirror_baci; leave-window-out 6/10 on B_own_imf; out of time 19/25 on B_own_imf",
+  "AGO": "not 10% narrower than the band as built (width ratio 3.94); leave-window-out 7/10 on B_own_imf",
+  "SEN": "not 10% narrower than the band as built (width ratio 2.50)",
+  "BGR": "not 10% narrower than the band as built (width ratio 0.97)",
+  "RWA": "not 10% narrower than the band as built (width ratio 4.14)",
+  "BFA": "not 10% narrower than the band as built (width ratio 2.32); own 5-year windows inside 6/7 on B_own_imf",
+  "MOZ": "not 10% narrower than the band as built (width ratio 22.19)",
+  "NER": "not 10% narrower than the band as built (width ratio 10.99); leave-window-out 10/15 on A_mirror_baci; out of time 7/25 on A_mirror_baci; out of time 10/25 on B_own_imf",
+  "URY": "own 5-year windows inside 6/7 on B_own_imf",
+  "VEN": "not 10% narrower than the band as built (width ratio 1.90); leave-window-out 3/13 on A_mirror_baci; out of time 2/15 on A_mirror_baci; leave-window-out 4/8 on B_own_imf; out of time 1/15 on B_own_imf",
+  "ZMB": "not 10% narrower than the band as built (width ratio 24.44)",
+  "SRB": "not 10% narrower than the band as built (width ratio 0.93); out of time 16/25 on A_mirror_baci; out of time 16/25 on B_own_imf",
+  "AFG": "not 10% narrower than the band as built (width ratio 1.72); leave-window-out 8/15 on A_mirror_baci; out of time 6/25 on A_mirror_baci; out of time 6/10 on B_own_imf",
+  "UGA": "not 10% narrower than the band as built (width ratio 1.13)",
+  "BWA": "not 10% narrower than the band as built (width ratio 113.34); leave-window-out 10/15 on A_mirror_baci; leave-window-out 5/10 on B_own_imf; own 5-year windows inside 8/9 on B_own_imf",
+  "PHL": "not 10% narrower than the band as built (width ratio 2.13)",
+  "LBN": "not 10% narrower than the band as built (width ratio 0.98); leave-window-out 6/10 on B_own_imf",
+  "BRN": "not 10% narrower than the band as built (width ratio 2285.41); out of time 17/25 on A_mirror_baci; leave-window-out 3/5 on B_own_imf; out of time 16/25 on B_own_imf; own 5-year windows inside 2/3 on B_own_imf",
+  "DOM": "not 10% narrower than the band as built (width ratio 3.55); leave-window-out 11/15 on A_mirror_baci; out of time 19/25 on A_mirror_baci; out of time 16/25 on B_own_imf; own 5-year windows inside 10/12 on A_mirror_baci",
+  "HRV": "leave-window-out 11/15 on A_mirror_baci; out of time 16/25 on A_mirror_baci; out of time 19/25 on B_own_imf; own 5-year windows inside 10/12 on A_mirror_baci; own 5-year windows inside 6/9 on B_own_imf",
+  "BEL": "leave-window-out 11/15 on A_mirror_baci; out of time 19/25 on B_own_imf; own 5-year windows inside 8/9 on B_own_imf"
+ },
+ "placebo_check": {
+  "generic": {
+   "2018": {
+    "ranked_paid": {
+     "n": 149,
+     "contains_zero": 143,
+     "coverage": 0.96,
+     "wilson90": [
+      0.924,
+      0.979
+     ],
+     "miss_below_zero": 4,
+     "miss_above_zero": 2
+    },
+    "ranked_trade": {
+     "n": 150,
+     "contains_zero": 144,
+     "coverage": 0.96,
+     "wilson90": [
+      0.925,
+      0.979
+     ],
+     "miss_below_zero": 4,
+     "miss_above_zero": 2
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       0.0006,
+       -0.1079,
+       0.3866
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.1008,
+       -0.2468,
+       0.3257
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       0.003,
+       -0.0024,
+       0.0504
+      ],
+      "band": [
+       0.274,
+       8.188
+      ],
+      "band_src": "to_rus/S (cf_bands)"
+     }
+    }
+   },
+   "2014": {
+    "ranked_paid": {
+     "n": 147,
+     "contains_zero": 133,
+     "coverage": 0.905,
+     "wilson90": [
+      0.857,
+      0.938
+     ],
+     "miss_below_zero": 13,
+     "miss_above_zero": 1
+    },
+    "ranked_trade": {
+     "n": 148,
+     "contains_zero": 133,
+     "coverage": 0.899,
+     "wilson90": [
+      0.85,
+      0.933
+     ],
+     "miss_below_zero": 13,
+     "miss_above_zero": 2
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.1106,
+       -0.21,
+       0.1712
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0514,
+       -0.1593,
+       0.2832
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0026,
+       -0.0059,
+       0.0212
+      ],
+      "band": [
+       0.274,
+       8.188
+      ],
+      "band_src": "to_rus/S (cf_bands)"
+     }
+    }
+   },
+   "roll2011": {
+    "ranked_paid": {
+     "n": 146,
+     "contains_zero": 133,
+     "coverage": 0.911,
+     "wilson90": [
+      0.864,
+      0.943
+     ],
+     "miss_below_zero": 13,
+     "miss_above_zero": 0
+    },
+    "ranked_trade": {
+     "n": 146,
+     "contains_zero": 132,
+     "coverage": 0.904,
+     "wilson90": [
+      0.856,
+      0.937
+     ],
+     "miss_below_zero": 14,
+     "miss_above_zero": 0
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.1424,
+       -0.2478,
+       0.1399
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0969,
+       -0.2123,
+       0.3244
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0007,
+       -0.0037,
+       0.0272
+      ],
+      "band": [
+       0.274,
+       8.188
+      ],
+      "band_src": "to_rus/S (cf_bands)"
+     }
+    }
+   },
+   "roll2012": {
+    "ranked_paid": {
+     "n": 146,
+     "contains_zero": 128,
+     "coverage": 0.877,
+     "wilson90": [
+      0.825,
+      0.915
+     ],
+     "miss_below_zero": 14,
+     "miss_above_zero": 4
+    },
+    "ranked_trade": {
+     "n": 147,
+     "contains_zero": 130,
+     "coverage": 0.884,
+     "wilson90": [
+      0.834,
+      0.921
+     ],
+     "miss_below_zero": 13,
+     "miss_above_zero": 4
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.1331,
+       -0.2321,
+       0.1142
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0468,
+       -0.1609,
+       0.312
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0013,
+       -0.0043,
+       0.0246
+      ],
+      "band": [
+       0.274,
+       8.188
+      ],
+      "band_src": "to_rus/S (cf_bands)"
+     }
+    }
+   },
+   "roll2013": {
+    "ranked_paid": {
+     "n": 147,
+     "contains_zero": 133,
+     "coverage": 0.905,
+     "wilson90": [
+      0.857,
+      0.938
+     ],
+     "miss_below_zero": 13,
+     "miss_above_zero": 1
+    },
+    "ranked_trade": {
+     "n": 148,
+     "contains_zero": 133,
+     "coverage": 0.899,
+     "wilson90": [
+      0.85,
+      0.933
+     ],
+     "miss_below_zero": 13,
+     "miss_above_zero": 2
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.1106,
+       -0.21,
+       0.1712
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0514,
+       -0.1593,
+       0.2832
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0026,
+       -0.0059,
+       0.0212
+      ],
+      "band": [
+       0.274,
+       8.188
+      ],
+      "band_src": "to_rus/S (cf_bands)"
+     }
+    }
+   },
+   "roll2014": {
+    "ranked_paid": {
+     "n": 149,
+     "contains_zero": 135,
+     "coverage": 0.906,
+     "wilson90": [
+      0.859,
+      0.938
+     ],
+     "miss_below_zero": 9,
+     "miss_above_zero": 5
+    },
+    "ranked_trade": {
+     "n": 150,
+     "contains_zero": 136,
+     "coverage": 0.907,
+     "wilson90": [
+      0.86,
+      0.939
+     ],
+     "miss_below_zero": 9,
+     "miss_above_zero": 5
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.102,
+       -0.1968,
+       0.1704
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0804,
+       -0.1868,
+       0.2275
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0033,
+       -0.0059,
+       0.0163
+      ],
+      "band": [
+       0.274,
+       8.188
+      ],
+      "band_src": "to_rus/S (cf_bands)"
+     }
+    }
+   },
+   "roll2015": {
+    "ranked_paid": {
+     "n": 151,
+     "contains_zero": 143,
+     "coverage": 0.947,
+     "wilson90": [
+      0.908,
+      0.97
+     ],
+     "miss_below_zero": 7,
+     "miss_above_zero": 1
+    },
+    "ranked_trade": {
+     "n": 152,
+     "contains_zero": 144,
+     "coverage": 0.947,
+     "wilson90": [
+      0.909,
+      0.97
+     ],
+     "miss_below_zero": 7,
+     "miss_above_zero": 1
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0948,
+       -0.1873,
+       0.1957
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0827,
+       -0.1921,
+       0.2498
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0027,
+       -0.0051,
+       0.0172
+      ],
+      "band": [
+       0.274,
+       8.188
+      ],
+      "band_src": "to_rus/S (cf_bands)"
+     }
+    }
+   },
+   "roll2016": {
+    "ranked_paid": {
+     "n": 149,
+     "contains_zero": 140,
+     "coverage": 0.94,
+     "wilson90": [
+      0.899,
+      0.965
+     ],
+     "miss_below_zero": 6,
+     "miss_above_zero": 3
+    },
+    "ranked_trade": {
+     "n": 150,
+     "contains_zero": 141,
+     "coverage": 0.94,
+     "wilson90": [
+      0.9,
+      0.965
+     ],
+     "miss_below_zero": 6,
+     "miss_above_zero": 3
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0374,
+       -0.1399,
+       0.3083
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0443,
+       -0.1654,
+       0.338
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       0.0026,
+       -0.0021,
+       0.0455
+      ],
+      "band": [
+       0.274,
+       8.188
+      ],
+      "band_src": "to_rus/S (cf_bands)"
+     }
+    }
+   },
+   "roll2017": {
+    "ranked_paid": {
+     "n": 149,
+     "contains_zero": 143,
+     "coverage": 0.96,
+     "wilson90": [
+      0.924,
+      0.979
+     ],
+     "miss_below_zero": 4,
+     "miss_above_zero": 2
+    },
+    "ranked_trade": {
+     "n": 150,
+     "contains_zero": 144,
+     "coverage": 0.96,
+     "wilson90": [
+      0.925,
+      0.979
+     ],
+     "miss_below_zero": 4,
+     "miss_above_zero": 2
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       0.0006,
+       -0.1079,
+       0.3866
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.1008,
+       -0.2468,
+       0.3257
+      ],
+      "band": [
+       0.453,
+       3.048
+      ],
+      "band_src": "to_rus/M (to_rus_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       0.003,
+       -0.0024,
+       0.0504
+      ],
+      "band": [
+       0.274,
+       8.188
+      ],
+      "band_src": "to_rus/S (cf_bands)"
+     }
+    }
+   }
+  },
+  "own": {
+   "2018": {
+    "ranked_paid": {
+     "n": 149,
+     "contains_zero": 143,
+     "coverage": 0.96,
+     "wilson90": [
+      0.924,
+      0.979
+     ],
+     "miss_below_zero": 4,
+     "miss_above_zero": 2
+    },
+    "ranked_trade": {
+     "n": 150,
+     "contains_zero": 144,
+     "coverage": 0.96,
+     "wilson90": [
+      0.925,
+      0.979
+     ],
+     "miss_below_zero": 4,
+     "miss_above_zero": 2
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       0.0006,
+       -0.0479,
+       0.2879
+      ],
+      "band": [
+       0.892,
+       2.204
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.1008,
+       -0.2013,
+       0.1731
+      ],
+      "band": [
+       0.855,
+       2.04
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       0.003,
+       -0.0006,
+       0.0195
+      ],
+      "band": [
+       0.682,
+       3.012
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     }
+    }
+   },
+   "2014": {
+    "ranked_paid": {
+     "n": 147,
+     "contains_zero": 133,
+     "coverage": 0.905,
+     "wilson90": [
+      0.857,
+      0.938
+     ],
+     "miss_below_zero": 13,
+     "miss_above_zero": 1
+    },
+    "ranked_trade": {
+     "n": 148,
+     "contains_zero": 133,
+     "coverage": 0.899,
+     "wilson90": [
+      0.85,
+      0.933
+     ],
+     "miss_below_zero": 13,
+     "miss_above_zero": 2
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.1106,
+       -0.1807,
+       0.0999
+      ],
+      "band": [
+       0.892,
+       2.204
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0514,
+       -0.1206,
+       0.1643
+      ],
+      "band": [
+       0.855,
+       2.04
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0026,
+       -0.0052,
+       0.0058
+      ],
+      "band": [
+       0.682,
+       3.012
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     }
+    }
+   },
+   "roll2011": {
+    "ranked_paid": {
+     "n": 146,
+     "contains_zero": 133,
+     "coverage": 0.911,
+     "wilson90": [
+      0.864,
+      0.943
+     ],
+     "miss_below_zero": 13,
+     "miss_above_zero": 0
+    },
+    "ranked_trade": {
+     "n": 146,
+     "contains_zero": 132,
+     "coverage": 0.904,
+     "wilson90": [
+      0.856,
+      0.937
+     ],
+     "miss_below_zero": 14,
+     "miss_above_zero": 0
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.1424,
+       -0.2281,
+       0.0881
+      ],
+      "band": [
+       0.892,
+       2.204
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0969,
+       -0.185,
+       0.2562
+      ],
+      "band": [
+       0.855,
+       2.04
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0007,
+       -0.0027,
+       0.0109
+      ],
+      "band": [
+       0.682,
+       3.012
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     }
+    }
+   },
+   "roll2012": {
+    "ranked_paid": {
+     "n": 146,
+     "contains_zero": 128,
+     "coverage": 0.877,
+     "wilson90": [
+      0.825,
+      0.915
+     ],
+     "miss_below_zero": 14,
+     "miss_above_zero": 4
+    },
+    "ranked_trade": {
+     "n": 147,
+     "contains_zero": 130,
+     "coverage": 0.884,
+     "wilson90": [
+      0.834,
+      0.921
+     ],
+     "miss_below_zero": 13,
+     "miss_above_zero": 4
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.1331,
+       -0.2109,
+       0.0531
+      ],
+      "band": [
+       0.892,
+       2.204
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0468,
+       -0.1184,
+       0.1842
+      ],
+      "band": [
+       0.855,
+       2.04
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0013,
+       -0.0034,
+       0.0077
+      ],
+      "band": [
+       0.682,
+       3.012
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     }
+    }
+   },
+   "roll2013": {
+    "ranked_paid": {
+     "n": 147,
+     "contains_zero": 133,
+     "coverage": 0.905,
+     "wilson90": [
+      0.857,
+      0.938
+     ],
+     "miss_below_zero": 13,
+     "miss_above_zero": 1
+    },
+    "ranked_trade": {
+     "n": 148,
+     "contains_zero": 133,
+     "coverage": 0.899,
+     "wilson90": [
+      0.85,
+      0.933
+     ],
+     "miss_below_zero": 13,
+     "miss_above_zero": 2
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.1106,
+       -0.1807,
+       0.0999
+      ],
+      "band": [
+       0.892,
+       2.204
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0514,
+       -0.1206,
+       0.1643
+      ],
+      "band": [
+       0.855,
+       2.04
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0026,
+       -0.0052,
+       0.0058
+      ],
+      "band": [
+       0.682,
+       3.012
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     }
+    }
+   },
+   "roll2014": {
+    "ranked_paid": {
+     "n": 149,
+     "contains_zero": 135,
+     "coverage": 0.906,
+     "wilson90": [
+      0.859,
+      0.938
+     ],
+     "miss_below_zero": 9,
+     "miss_above_zero": 5
+    },
+    "ranked_trade": {
+     "n": 150,
+     "contains_zero": 136,
+     "coverage": 0.907,
+     "wilson90": [
+      0.86,
+      0.939
+     ],
+     "miss_below_zero": 9,
+     "miss_above_zero": 5
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.102,
+       -0.1674,
+       0.1003
+      ],
+      "band": [
+       0.892,
+       2.204
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0804,
+       -0.1549,
+       0.1193
+      ],
+      "band": [
+       0.855,
+       2.04
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0033,
+       -0.0052,
+       0.0036
+      ],
+      "band": [
+       0.682,
+       3.012
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     }
+    }
+   },
+   "roll2015": {
+    "ranked_paid": {
+     "n": 151,
+     "contains_zero": 143,
+     "coverage": 0.947,
+     "wilson90": [
+      0.908,
+      0.97
+     ],
+     "miss_below_zero": 7,
+     "miss_above_zero": 1
+    },
+    "ranked_trade": {
+     "n": 152,
+     "contains_zero": 144,
+     "coverage": 0.947,
+     "wilson90": [
+      0.909,
+      0.97
+     ],
+     "miss_below_zero": 7,
+     "miss_above_zero": 1
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0948,
+       -0.1597,
+       0.1371
+      ],
+      "band": [
+       0.892,
+       2.204
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0827,
+       -0.1642,
+       0.1619
+      ],
+      "band": [
+       0.855,
+       2.04
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0027,
+       -0.0045,
+       0.0063
+      ],
+      "band": [
+       0.682,
+       3.012
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     }
+    }
+   },
+   "roll2016": {
+    "ranked_paid": {
+     "n": 149,
+     "contains_zero": 140,
+     "coverage": 0.94,
+     "wilson90": [
+      0.899,
+      0.965
+     ],
+     "miss_below_zero": 6,
+     "miss_above_zero": 3
+    },
+    "ranked_trade": {
+     "n": 150,
+     "contains_zero": 141,
+     "coverage": 0.94,
+     "wilson90": [
+      0.9,
+      0.965
+     ],
+     "miss_below_zero": 6,
+     "miss_above_zero": 3
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0374,
+       -0.0887,
+       0.2156
+      ],
+      "band": [
+       0.892,
+       2.204
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.0443,
+       -0.1197,
+       0.2018
+      ],
+      "band": [
+       0.855,
+       2.04
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       0.0026,
+       -0.0003,
+       0.0176
+      ],
+      "band": [
+       0.682,
+       3.012
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     }
+    }
+   },
+   "roll2017": {
+    "ranked_paid": {
+     "n": 149,
+     "contains_zero": 143,
+     "coverage": 0.96,
+     "wilson90": [
+      0.924,
+      0.979
+     ],
+     "miss_below_zero": 4,
+     "miss_above_zero": 2
+    },
+    "ranked_trade": {
+     "n": 150,
+     "contains_zero": 144,
+     "coverage": 0.96,
+     "wilson90": [
+      0.925,
+      0.979
+     ],
+     "miss_below_zero": 4,
+     "miss_above_zero": 2
+    },
+    "countries": {
+     "KEN": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       0.0006,
+       -0.0479,
+       0.2879
+      ],
+      "band": [
+       0.892,
+       2.204
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PER": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       -0.1008,
+       -0.2013,
+       0.1731
+      ],
+      "band": [
+       0.855,
+       2.04
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     },
+     "PYF": {
+      "paid_contains_zero": true,
+      "trade_contains_zero": true,
+      "paid_pct_gdp": [
+       0.003,
+       -0.0006,
+       0.0195
+      ],
+      "band": [
+       0.682,
+       3.012
+      ],
+      "band_src": "own (fuel_volume_cf)"
+     }
+    }
+   }
+  },
+  "per_country_windows_containing_zero": {
+   "PYF": {
+    "generic": "9/9",
+    "own": "9/9"
+   },
+   "KEN": {
+    "generic": "9/9",
+    "own": "9/9"
+   },
+   "PER": {
+    "generic": "9/9",
+    "own": "9/9"
+   }
+  },
+  "note": "runs: the 2018 and 2014 placebos of placebo_r42.json and rolling placebo windows with base years 2011-2017 (summed 4 years, band H4), pipeline/placebo.py evaluate(site_scale=True) with the own H4 bands added to its own bands (unscaled, as the build would treat them). The own bands were fitted on data that include these years, so this is a sanity check, not an out-of-sample test."
+ },
+ "sources": [
+  {
+   "name": "CEPII BACI HS92 via the OEC API: Russia's exports by partner and HS2, and to the world by HS4 with tonnes, 2001-2021",
+   "file": "raw/oec_baci_r44/"
+  },
+  {
+   "name": "IMF IMTS: imports from Russia (MG_CIF_USD), own reports, 2008-2021",
+   "file": "raw/imf_imts_placebo/IMTS_RUS_annual_2008_2021_2026-10-24.json.gz"
+  },
+  {
+   "name": "FRED IREXFUELS (US import prices excluding fuels)",
+   "file": "raw/oec_baci_r44/fred.json"
+  }
+ ]
+}
