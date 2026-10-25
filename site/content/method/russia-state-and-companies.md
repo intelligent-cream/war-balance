@@ -45,7 +45,7 @@ Seizures and forced exit costs are a loss imposed on the country's companies and
 
 ## Russian-owned companies abroad
 
-Profits Russian parents receive from their companies abroad, against 2019–2021: Lukoil's refineries (Bulgaria, Romania, the Netherlands), NIS in Serbia, Rosneft in India, Russian banks. Trusteeships that stopped transfers count toward Ukraine: Germany (Rosneft Deutschland, Gazprom Germania) about EUR 1.3bn. Metals, mining and chemicals plants (Rusal's Aughinish in Ireland, KUBAL in Sweden, NLMK, EuroChem, Uranium One) send little home: the change stays within ±EUR 0.05bn a year. Mostly estimates (D), except Serbia.
+Profits Russian parents receive from their companies abroad, against 2019–2021: Lukoil's refineries (Bulgaria, Romania, the Netherlands), NIS in Serbia, Rosneft in India, Russian banks. Trusteeships that stopped transfers count toward Ukraine: Germany (Rosneft Deutschland, Gazprom Germania) about EUR 1.3bn. Metals, mining and chemicals plants (Rusal's Aughinish in Ireland, KUBAL in Sweden, NLMK, EuroChem, Uranium One) send little home: the change stays within ±EUR 0.05bn a year. Iraq (Lukoil, Gazprom Neft) uses the remuneration fees and the 35% tax in Iraq's EITI reports; Angola uses Alrosa's audited Catoca dividends, including RUB 19bn received in 2025 for the blocked dividends. Rosneft's Kurdistan pipeline is left out: its 2023–2025 shutdown came from the Iraq–Turkey arbitration, not the war. Mostly estimates (D), except Serbia, Angola and Iraq.
 
 ## Frozen central-bank reserves
 

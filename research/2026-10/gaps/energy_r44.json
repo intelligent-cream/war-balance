@@ -1,0 +1,352 @@
+{
+ "generated": "2026-10-25",
+ "round": 44,
+ "what": "Three near-miss headline numbers (Türkiye net/Russia's earnings, Czechia net, Malta net): the official evidence that exists for the part holding each back, the corrected range, and the chance recomputed with the site's own calc()/chance()/uncertain() (site/index.html '// ===== Model =====') on a patched copy of the country (scratchpad harness, alternatives from detail.json unchanged).",
+ "raw": "research/2026-10/raw/energy_r44/ (pipeline/fetch/energy_r44.py): eurostat_cz_ru, comtrade_cze_tur, unctad_fleet_owners, sources (HTTP status + SHA-256 of documents consulted)",
+ "countries": {
+  "TUR": {
+   "blocker": "windfall",
+   "finding": "No official Turkish price evidence exists for Russian gas: Turkish customs (Comtrade reporter 792) publish HS 27 from Russia (USD 41.8bn 2022, 30.1bn 2023) but hide HS 2709 and all of HS 2711 except LNG/LPG (0.146 / 0.348bn); EPDK sector reports give volumes and retail tariffs (Tablo 9.1, TL/Sm3) but no import prices; BOTAŞ annual reports are not downloadable from botas.gov.tr (page 200, no documents) and give no cost by supplier; Gazprom stopped publishing prices by country after 2021. The chapter-residual check already in turkey_prices.json is the only official price evidence. Instead a method error was found: the windfall line counts its actual-price band twice on the no-war-path side.",
+   "method_error": {
+    "where": "pipeline/build_data.py war_windfall() sets c.windfall.path_band = proposed_likely_range_eur_bn low/high over central (windfall_band_r24.json); site/index.html calc() withNr() then combines hypot(actual-price band, |W| x (1 - pb)).",
+    "why_double": "proposed_likely_range_eur_bn is itself the quadrature of the actual-price band and the no-war-path deviation (windfall_band_r24-notes.md, Proposal 1). TUR: 20.495 - hypot(20.495-6.629, 20.491-5.946) = 0.40 = the stored low. calc() adds the actual-price band (13.9bn) again.",
+    "fix": "path_band = sorted([feb2022_futures, oct2021_forecasts]) / central_jan2022 (the pure path ratios), skipping |central| < 0.05bn (BIH)."
+   },
+   "path_band": {
+    "now": [
+     0.0195,
+     1.6765
+    ],
+    "proposed": [
+     0.2902,
+     1.5114
+    ]
+   },
+   "windfall_pct_gdp": {
+    "now": [
+     -1.926,
+     -3.486,
+     0.371
+    ],
+    "proposed": [
+     -1.926,
+     -3.232,
+     -0.034
+    ]
+   },
+   "windfall_eur_bn": {
+    "now": [
+     -20.48,
+     -37.07,
+     3.95
+    ],
+    "proposed": [
+     -20.48,
+     -34.37,
+     -0.36
+    ]
+   },
+   "chance": {
+    "net": {
+     "now": 0.9455,
+     "proposed": 0.9627
+    },
+    "rus": {
+     "now": 0.9409,
+     "proposed": 0.9579
+    }
+   },
+   "becomes_certain": {
+    "net": true,
+    "rus": true
+   },
+   "other_countries_with_path_band": "HUN, SRB, SVK, AUT, CHN, MDA, BGR, GRC, MKD, DEU, ITA, CZE, POL, FIN, BIH re-run: no status changes besides TUR (largest p change elsewhere +0.007, GRC rus); none loses certainty.",
+   "sources": [
+    {
+     "name": "UN Comtrade public preview, Türkiye imports from Russia 2022-2023 (HS TOTAL, 27, 2709, 2711)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=792&partnerCode=643&flowCode=M",
+     "http": 200,
+     "kind": "official"
+    },
+    {
+     "name": "EPDK 2024 Doğal Gaz Piyasası Sektör Raporu (sha256 9bede383...): no import price table; section 9 retail tariffs only",
+     "url": "https://www.epdk.gov.tr/Detay/DownloadDocument?id=di3gdUtTWpM%3D",
+     "http": 200,
+     "kind": "official"
+    },
+    {
+     "name": "BOTAŞ Faaliyet Raporları page (no report files linked)",
+     "url": "https://www.botas.gov.tr/Sayfa/faaliyet-raporlari/815",
+     "http": 200,
+     "kind": "official"
+    }
+   ]
+  },
+  "CZE": {
+   "blocker": "paid (pre-war 2021 level, base_range low end)",
+   "finding": "The low end of Czechia's 2021 purchases from Russia (trade_full.json, EUR 3.945bn against 5.918bn) is the IMF IMTS value capped at central/1.5. IMF's series is Czech customs TOTAL minus HS 2711, to within 4% in every year 2019-2024 (10% in 2025): it leaves out the Russian gas. The build then subtracts customs gas again (customs_gas.json CZE 2021 EUR 2.95bn) before adding final-use gas, so the low case keeps EUR 1.0bn of non-gas goods and in effect drops the Druzhba crude. Official volumes contradict that: Czech customs record 3,417 kt of Russian crude in 2021 (USD 1.745bn, USD 511/t, at Urals) and Eurostat's energy balance 3,418 kt; gas 8,719 million m3 from Russia (Eurostat) against 6.35 Mt in customs HS 2711 (USD 3.489bn, about EUR 32/MWh).",
+   "druzhba_crude_kt": {
+    "eurostat_nrg_ti_oil_RU": {
+     "2015": 4025,
+     "2016": 3424,
+     "2017": 4100,
+     "2018": 4003,
+     "2019": 3822,
+     "2020": 3013,
+     "2021": 3418,
+     "2022": 4161,
+     "2023": 4307,
+     "2024": 2715
+    },
+    "eurostat_total_crude": {
+     "2017": 7814,
+     "2018": 7439,
+     "2019": 7738,
+     "2020": 6174,
+     "2021": 6841,
+     "2022": 7425,
+     "2023": 7406,
+     "2024": 6501
+    },
+    "czech_customs_hs2709_RU": {
+     "2017": 4100,
+     "2018": 4003,
+     "2019": 3821,
+     "2020": 3013,
+     "2021": 3417,
+     "2022": 4162,
+     "2023": 4223,
+     "2024": 2716,
+     "2025": 527
+    },
+    "2025_2026": "MERO ČR press release 17 April 2025: Czechia supplied exclusively with non-Russian crude (TAL-PLUS via TAL/IKL) for the first time; 2025 = January to mid-April (527 kt in customs); 2026 = 0. MERO publishes no yearly Druzhba volume table on mero.cz (annual-report pages 404).",
+    "druzhba_ru_share_of_crude": {
+     "2019": 0.494,
+     "2020": 0.488,
+     "2021": 0.5,
+     "2022": 0.56,
+     "2023": 0.582,
+     "2024": 0.418
+    }
+   },
+   "gas_from_russia_mio_m3_eurostat": {
+    "2015": 7460,
+    "2016": 8121,
+    "2017": 8817,
+    "2018": 7968,
+    "2019": 9508,
+    "2020": 7590,
+    "2021": 8719,
+    "2022": 6838,
+    "2023": 551,
+    "2024": 1791
+   },
+   "imports_from_russia_usd_bn": {
+    "comtrade_total": {
+     "2019": 5.015,
+     "2020": 2.942,
+     "2021": 6.999,
+     "2022": 11.375,
+     "2023": 3.468,
+     "2024": 3.392,
+     "2025": 1.148
+    },
+    "comtrade_hs2711": {
+     "2019": 1.632,
+     "2020": 0.808,
+     "2021": 3.489,
+     "2022": 7.79,
+     "2023": 0.475,
+     "2024": 0.9,
+     "2025": 0.0
+    },
+    "total_minus_hs2711": {
+     "2019": 3.383,
+     "2020": 2.134,
+     "2021": 3.51,
+     "2022": 3.585,
+     "2023": 2.993,
+     "2024": 2.492,
+     "2025": 1.148
+    },
+    "imf_imts": {
+     "2019": 3.283,
+     "2020": 2.176,
+     "2021": 3.511,
+     "2022": 3.449,
+     "2023": 2.974,
+     "2024": 2.407,
+     "2025": 1.04
+    }
+   },
+   "base_site": {
+    "base_eur_bn_2019_21_prices": 4.208,
+    "base_range_now": [
+     2.051,
+     5.682
+    ],
+    "to_rus_2021_now": [
+     5.588,
+     2.888,
+     6.514
+    ]
+   },
+   "proposed_trade_full_low": {
+    "2019": 4.168,
+    "2020": 2.396,
+    "2021": 5.506,
+    "2022": 10.05,
+    "2023": 2.985,
+    "2024": 2.916,
+    "rule": "reported margin (the file's own +-6.96%, = high/central - 1), no IMF widening"
+   },
+   "estimated_effect": {
+    "to_rus_years_lo_2021": [
+     2.888,
+     4.218
+    ],
+    "base_range_low": [
+     2.051,
+     2.996
+    ],
+    "paid_pct_gdp": {
+     "now": [
+      2.38,
+      0.143,
+      4.497
+     ],
+     "proposed": [
+      2.38,
+      0.874,
+      4.497
+     ]
+    },
+    "note": "years_lo after the gas swap and remove_freight approximated by the current lo factor 0.852; with a harsher 0.80 factor (lo 3.96) net p = 0.9675"
+   },
+   "chance": {
+    "net": {
+     "now": 0.9399,
+     "proposed": 0.968,
+     "with_windfall_fix_too": 0.972
+    },
+    "rus": {
+     "now": 0.769,
+     "proposed": 0.827
+    }
+   },
+   "becomes_certain": {
+    "net": true,
+    "rus": false
+   },
+   "same_pattern_elsewhere": "trade_full.json 2021 imports_from_RUS rows with basis reported and low = central/1.5 (IMF cap): CZE, GBR, ROU, OMN. Not checked here.",
+   "sources": [
+    {
+     "name": "Eurostat nrg_ti_oil, geo CZ, O4100_TOT, partner RU/TOTAL",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ti_oil?geo=CZ&partner=RU&partner=TOTAL&siec=O4100_TOT&unit=THS_T",
+     "http": 200,
+     "kind": "official"
+    },
+    {
+     "name": "Eurostat nrg_ti_gas, geo CZ, G3000, partner RU/TOTAL",
+     "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ti_gas?geo=CZ&partner=RU&partner=TOTAL&siec=G3000&unit=MIO_M3",
+     "http": 200,
+     "kind": "official"
+    },
+    {
+     "name": "UN Comtrade public preview, Czechia imports from Russia 2017-2025 (TOTAL, 27, 2709, 2711)",
+     "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=203&partnerCode=643&flowCode=M",
+     "http": 200,
+     "kind": "official"
+    },
+    {
+     "name": "IMF IMTS (already in raw/imf_imts/IMTS_RUS_UKR_2026-10-23.json.gz), CZE MG_CIF_USD RUS",
+     "url": "https://api.imf.org",
+     "kind": "official"
+    },
+    {
+     "name": "MERO ČR press release 2025-04-17 (Czechia supplied exclusively with non-Russian oil)",
+     "url": "https://mero.cz/wp-content/uploads/2025/04/2025-04-17-tz-cesko-je-poprve-v-historii-zasobovano-vyhradne-neruskou-ropou.pdf",
+     "http": 200,
+     "kind": "official (operator)"
+    },
+    {
+     "name": "MERO ČR press release October 2025 (60 years of Druzhba; ~330 Mt carried; 9 Mt/yr capacity)",
+     "url": "https://mero.cz/wp-content/uploads/2025/10/tz-pred-sedesati-lety-odstartoval-v-cesku-provoz-ropovodu-druzba-mero-cr-nyni-pracuje-na-scenarich-jeho-dalsiho-vyuzitiprilohy.pdf",
+     "http": 200,
+     "kind": "official (operator)"
+    }
+   ]
+  },
+  "MLT": {
+   "blocker": "ship (with laund almost as large)",
+   "finding": "The ship part's toward-zero side (EUR 0.131bn over 2022-26) is ship sales at the high case (0.060bn; 80% of 1.5x an educated-guess sale value), Maltese-controlled freight at the high share x the high 'genuinely extra' net gain vk.sh 0.0415 (0.052bn; central vk.sh is 0, so freight adds nothing to the central), insurance (0.010) and registry fees (0.010). No reachable official source measures either driver. UNCTADstat beneficial ownership (official, all ship types) shows Malta-owned fleet of only 4.2-4.3 Mdwt (0.07% of the world, ~200 ships) in 2019-2022, 5.1 Mdwt in 2023 and 12.2-12.7 Mdwt in 2024-25 (0.18%); Greece-owned 18%. Malta/Greece is 0.4% (2021-22) and 1.0% (2024-25) against 4-7% in the model's controller shares (shadow_fleet.json: Malta 1.7-2.2% of Russian barrels vs Greece 30-39%). This points to Malta's controller share being overstated (Malta is mainly a flag of Greek owners: 63.5 of 115 Mdwt under Malta's flag is Greek-owned, 0.7 Mdwt Maltese-owned in 2022), but the fleet data have no ship-type split, so they bound rather than measure tanker shares. CREA's per-voyage owner/flag data (/v1/kpler_trade) need an API key (HTTP 400 'Please provide an API key'); Transport Malta registry statistics returned HTTP 403.",
+   "ship_pct_gdp_now": [
+    -0.174,
+    -0.808,
+    0.056
+   ],
+   "options": {
+    "freight high share at central (pool band only)": {
+     "ship_lo": -0.783,
+     "net_p": 0.9505
+    },
+    "Malta freight halved (UNCTAD-informed judgement)": {
+     "ship_lo": -0.683,
+     "net_p": 0.9595
+    },
+    "Malta freight x0.25": {
+     "ship_lo": -0.621,
+     "net_p": 0.9625
+    },
+    "ship sales high = 2x central (60% not 80% of 1.5x value)": {
+     "ship_lo": -0.664,
+     "net_p": 0.9606
+    }
+   },
+   "chance": {
+    "net": {
+     "now": 0.9484,
+     "proposed": 0.9484
+    },
+    "rus": {
+     "now": 0.724
+    }
+   },
+   "becomes_certain": {
+    "net": false,
+    "rus": false
+   },
+   "recommendation": "No build change on the evidence reached. Malta crosses 95% only with a judgement (halving Maltese freight on the UNCTAD ownership evidence gives 0.9595). With a CREA API key, Russian-origin voyages by ship_owner country for Malta would settle it.",
+   "sources": [
+    {
+     "name": "UNCTADstat US.FleetBeneficialOwners bulk download",
+     "url": "https://unctadstat-api.unctad.org/bulkdownload/US.FleetBeneficialOwners/US_FleetBeneficialOwners",
+     "http": 200,
+     "kind": "official"
+    },
+    {
+     "name": "CREA API swagger (kpler_trade with ship owner/flag needs api_key)",
+     "url": "https://api.russiafossiltracker.com/swagger.json",
+     "http": 200,
+     "kind": "data provider"
+    },
+    {
+     "name": "Transport Malta ship registry statistics",
+     "url": "https://www.transport.gov.mt/maritime/ship-and-yacht-registry/statistics-15",
+     "http": 403,
+     "kind": "official, not reached"
+    },
+    {
+     "name": "Lloyd's List, Greek owners' share of Russian crude; Malta mentioned only as the flag of Greek-owned tankers",
+     "url": "https://www.lloydslist.com/LL1142145/Greeks-shipping-half-of-Russian-crude",
+     "kind": "press"
+    }
+   ]
+  }
+ },
+ "summary": {
+  "TUR": "net 0.946 -> 0.963, rus 0.941 -> 0.958: certain (method fix, no new price data)",
+  "CZE": "net 0.940 -> 0.968: certain (official volumes); rus 0.769 -> 0.827",
+  "MLT": "net 0.948 unchanged: not certain without a judgement"
+ }
+}

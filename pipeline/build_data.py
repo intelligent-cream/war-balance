@@ -542,7 +542,17 @@ def _r39_replace(name: str, d: dict) -> dict:
             eq = hubs[h]["refine_reexport_share_equivalent"]
             d["reexport_share"][h] = {y: {b: v[b] for b in ("low", "central", "high")} for y, v in eq.items()}
     elif name == "residual.json":
+        r5_kgz = d["exports_to_rus_gap"]["countries"]["KGZ"]
         d["exports_to_rus_gap"]["countries"] = rd("import_gap_r39.json")["countries"]
+        # round 44: Kyrgyzstan's gap less the exports to Russia its statistics office now reports (eaeu_r44.json); the
+        # gap was measured against Comtrade's lower vintage, so the newly reported exports would otherwise count twice.
+        # eaeu_r44's proposal was computed on the round-5 gap that round 39 replaced, so its reduction (proposal minus
+        # the round-5 gap: 2024 and 2025 only) is applied to round 39's gap rather than copying the proposal over it
+        prop = rd("eaeu_r44.json")["proposals"]["residual.json:exports_to_rus_gap.countries.KGZ"]
+        kgz = d["exports_to_rus_gap"]["countries"]["KGZ"]
+        for y, v in kgz.items():
+            for b in ("low", "central", "high"):
+                v[b] = round(max(0.0, v[b] + prop[y][b] - r5_kgz[y][b]), 4)
     elif name in ("refugees_net.json", "round4b.json"):
         new = rd("refugees_budgets_r39.json")["countries"]
         tgt = d["countries"] if name == "refugees_net.json" else d["refugees"]
@@ -733,6 +743,35 @@ def build() -> dict:
                 continue
             f = trade["countries"].setdefault(iso3, {}).setdefault(field, {})
             f["2026"] = {**(f.get("2026") or {}), **{k: v[k] for k in ("low", "central", "high", "basis") if k in v}}
+    # Round 44: Kyrgyzstan's and Armenia's own statistics (eaeu_r44.json), after narrow.json and refresh_2026.json and
+    # after the load-time own-report bands (_actuals_r7), since these entries carry their own bands. Kyrgyzstan: the
+    # NSC's refined totals for 2020, 2024 and 2025 and its January-August 2026 first release; Comtrade holds an earlier,
+    # lower vintage of the same statistic (it agrees to 0-0.4% in 2021-2023), so it is the low end; the high end is
+    # Russia's own mirror ratio (x1.13 imports, x1.05 exports), for 2026 the NSC's usual July upward revision. Armenia:
+    # Armstat's January-August 2026 values replace the press-based estimate. The same office's figures as Comtrade, so
+    # not a second official family (SRC_FAMILY in site/index.html)
+    eaeu = load(GAPS / "eaeu_r44.json")["proposals"]
+    for key in ("KGZ.imports_from_RUS", "KGZ.exports_to_RUS"):
+        iso3, field = key.split(".")
+        f = trade["countries"][iso3][field]
+        for y, v in eaeu["trade_full.json:" + key].items():
+            f[y] = {**(f.get(y) or {}), **{k: v[k] for k in ("low", "central", "high", "basis") if k in v}}
+        base = f.get("baseline")
+        if base:  # Kyrgyzstan's 2020 is in the pre-war average
+            base["avg_2019_2021"] = round(sum(f[str(y)]["central"] for y in PRE_YEARS) / len(PRE_YEARS), 6)
+            base["low"] = min(base["avg_2019_2021"], base["central_2021"])
+    for field in ("imports_from_RUS", "exports_to_RUS"):
+        v = eaeu[f"refresh_2026.json:ARM.{field}.2026"]
+        f = trade["countries"]["ARM"][field]
+        f["2026"] = {**(f.get("2026") or {}), **{k: v[k] for k in ("low", "central", "high", "basis") if k in v}}
+    # Round 44: Hong Kong's January-August 2026 imports from Russia with the gold measured (hk_csd_r44.json): C&SD's
+    # Russian-origin HS 7108 imports for all eight months (the owner's Trade-IDDS download), in place of refresh_2026's
+    # August estimate; gold is about 93% of the total. By origin, because the method needs the Russian gold Hong Kong
+    # bought, whoever consigned it; for 2026 it equals Comtrade's figure to 0.1% (January-July). The non-gold remainder
+    # stays an estimate (Comtrade January-July, August at the monthly mean), so the range is that remainder's only
+    hk26 = load(GAPS / "hk_csd_r44.json")["imports_from_RUS_2026"]
+    f = trade["countries"]["HKG"]["imports_from_RUS"]
+    f["2026"] = {**f["2026"], **{k: hk26[k] for k in ("low", "central", "high", "basis", "period")}}
     # the UAE: its own customs totals, which match the official non-oil trade with Russia (round4b.json), after narrow.json, which is older for the UAE
     for key, field in (("to_rus", "imports_from_RUS"), ("from_rus", "exports_to_RUS")):
         f = trade["countries"].setdefault("ARE", {}).setdefault(field, {})
@@ -814,6 +853,39 @@ def build() -> dict:
             kinds = sorted({b for b in bases})
             status = "ok" if set(bases[:5]) == {"reported"} else "est"
             note(iso3, part, status, "reported 2021-2025" if status == "ok" else "partly filled: " + ", ".join(kinds))
+    # round 44: Kyrgyzstan's and Armenia's own statistics, entered above (eaeu_r44.json)
+    es = next(x for x in load(GAPS / "eaeu_r44.json")["sources"] if x["id"] == "eaeu_r44")
+    eid = src.add(
+        "eaeu_r44",
+        es["name"],
+        es["urls"][0],
+        es["retrieved"],
+        "Kyrgyzstan 2020 and 2024 to August 2026 (refined totals), Armenia January-August 2026; see research/2026-10/gaps/eaeu_r44-notes.md",
+    )
+    src.items[eid]["links"] = [
+        {"title": "National Statistical Committee of the Kyrgyz Republic: mutual trade in goods with EAEU member states", "url": es["urls"][0], "kind": "primary"},
+        {"title": "Armstat: foreign trade by country (Russia)", "url": es["urls"][3], "kind": "primary"},
+    ]  # fmt: skip
+    for iso3 in ("KGZ", "ARM"):
+        for key in ("to_rus", "from_rus"):
+            if (countries.get(iso3) or {}).get(key):
+                countries[iso3][key]["src"].append(eid)
+    # round 44: Hong Kong's 2026 gold, entered above (hk_csd_r44.json)
+    if (countries.get("HKG") or {}).get("to_rus"):
+        hid = src.add(
+            "hk_csd_r44",
+            "C&SD Trade-IDDS, Hong Kong imports of HS 7108 by origin, downloaded by the owner 2026-10-25",
+            "https://tradeidds.censtatd.gov.hk/",
+            "2026-10-25",
+            "Russian-origin gold, January-August 2026, measured; the non-gold remainder estimated; see research/2026-10/gaps/hk_csd_r44-notes.md",
+        )
+        # Trade-IDDS has no address per query: the key document is the owner's download as kept in the repository
+        src.items[hid]["links"] = [
+            {"title": "C&SD Trade-IDDS: Hong Kong imports of gold (HS 7108) of Russian origin, monthly 2018-2026, HK$ '000 (the owner's download)",
+             "url": "https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/raw/hk_tradeidds_r44/imports_origin_RUS_7108_monthly_2018-2026.csv",
+             "kind": "primary"},
+        ]  # fmt: skip
+        countries["HKG"]["to_rus"]["src"].append(hid)
 
     # ---- Russia's partners that do not report trade: corrected values, and only the paid share counts ----
     nr = load(GAPS / "nonreport.json")
@@ -1666,6 +1738,7 @@ def build() -> dict:
     apply_military_payment(countries, src)
     apply_audit2(countries, src, "trends")
     apply_nowar_prices(countries, src)
+    contract_lng(countries, src)
     laundered_volumes(countries)
     current_euros(countries)
     deflate_gold(countries)
@@ -1976,8 +2049,8 @@ SOURCE_TYPE = {
     "sanctions_share": "report", "gas_cuts": "press", "prices": "ours", "narrow": "data", "audit2": "notes",
     "windfall": "ours", "trend": "ours", "gas_prices": "data", "trend2": "ours", "counterfactual": "ours",
     "ua_trade_cf": "ours", "cf_bands": "ours", "entsog_r43": "data", "epdk_r43": "data", "power_of_siberia": "press", "weapons_value": "report",
-    "state_finance": "data", "company_flows": "report", "russian_owned_r10": "report", "seizures": "report",
-    "refugees_net": "data", "co_belligerent": "report", "loans_value": "report", "money_ledger": "data",
+    "state_finance": "data", "company_flows": "report", "russian_owned_r10": "report", "rusfirms_r44": "report", "seizures": "report",
+    "refugees_net": "data", "co_belligerent": "report", "eaeu_r44": "data", "hk_csd_r44": "data", "japan_lng_r44": "data", "loans_value": "report", "money_ledger": "data",
     "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "svc_ukr": "data", "company_profits": "data", "import_premium": "data", "wagner": "report", "remittances": "data",
     "chpl": "data", "value_kept": "report", "net_gain_sellers": "data", "military_payment": "press",
     "net_gain_russia": "data", "net_gain_ukraine": "data", "dangote": "press", "hormuz": "report",
@@ -2630,10 +2703,16 @@ def war_windfall(countries: dict[str, dict], src: Sources) -> None:
         }
         # round 24b (audit 24, D M2): the windfall under the other pre-war no-war gas price paths (Feb-2022 futures,
         # Oct-2021 forecasts; windfall_band_r24.json), as factors on the central windfall; calc() widens the line with them
+        # round 44 (energy_r44-notes.md): the factors are the no-war paths alone. The research file's proposed likely
+        # range already combined them with the actual-price band, which calc() (withNr) adds again; taken from it, the
+        # actual-price band was counted twice (Türkiye's windfall range ran to +3.95 instead of -0.36 EUR bn)
         wb = (WINDFALL_BAND.get("countries_research_run") or {}).get(iso3)
-        if wb and wb["proposed_likely_range_eur_bn"]["central"]:
-            r = wb["proposed_likely_range_eur_bn"]
-            c["windfall"]["path_band"] = [round(r["low"] / r["central"], 4), round(r["high"] / r["central"], 4)]
+        p = (wb or {}).get("windfall_by_path_eur_bn") or {}
+        c0 = p.get("central_jan2022") or 0.0
+        if abs(c0) >= 0.05:
+            c["windfall"]["path_band"] = sorted(
+                [round(p["feb2022_futures"] / c0, 4), round(p["oct2021_forecasts"] / c0, 4)]
+            )
             c["windfall"]["src"].append("windfall_band")
 
 
@@ -3191,6 +3270,59 @@ def power_of_siberia(countries: dict[str, dict], src: Sources) -> None:
     tr["pos_contracted_bmul_add"] = [round(a, 4) for a in add]
 
 
+def contract_lng(countries: dict[str, dict], src: Sources) -> None:
+    """Round 44: Japan's Sakhalin-2 LNG follows its buyers' long-term contracts (about 5 Mt/yr, japan_lng_r44.json):
+    the LNG part of "paid" (about a quarter of Japan's purchases from Russia) gets a no-war band from the contract floor
+    and the pre-war maximum, the rest keeps the generic band (x CB_SCALE_PAID); combined by LNG's share of the expected
+    value. No central change (the 2021 volume held, as the generic central). After apply_nowar_prices: it needs bmul
+    with the no-war fuel price."""
+    jl = load(GAPS / "japan_lng_r44.json")
+    sid = src.add(
+        "japan_lng_r44",
+        "Japan's imports from Russia by product (Ministry of Finance trade statistics via e-Stat) and Sakhalin-2 long-term LNG contracts (about 5 Mt/yr to Japanese buyers)",
+        "https://www.e-stat.go.jp/en/stat-search/files?toukei=00350300&tstat=000001013141",
+        jl.get("generated"),
+        "LNG's no-war band from the contracts, the generic band on the rest; see research/2026-10/gaps/japan_lng_r44-notes.md",
+    )
+    js = {x["url"]: x["name"] for x in jl["sources"]}
+    src.items[sid]["links"] = [
+        {"title": js[u], "url": u, "kind": k}
+        for u, k in (
+            ("https://www.e-stat.go.jp/en/stat-search/files?page=1&layout=datalist&toukei=00350300&tstat=000001013141&cycle=1&tclass1=000001013180&tclass2=000001013182", "primary"),
+            ("https://energynews.africa/2024/12/12/japan-weighs-lng-supply-shift/", "secondary"),
+            ("https://www.spglobal.com/energy/en/news-research/latest-news/lng/050925-japanese-sakhalin-2-buyers-agree-on-price-review-from-april-2024-retrospectively", "secondary"),
+        )
+    ]  # fmt: skip
+    # the floor is the contracted volume per buyer (JERA, Tokyo Gas, Kyushu, Toho, Tohoku...). That per-buyer table comes
+    # from press and web-search summaries (S&P Global's table could not be opened); only the ~5 Mt/yr total for Japanese
+    # buyers is confirmed (energynews.africa, December 2024, against MoF's 5.7-6.9 Mt/yr imported)
+    for iso3, flows in jl["countries"].items():
+        d, tr = flows["to_rus"], (countries.get(iso3) or {}).get("to_rus")
+        if not tr or not tr.get("cb") or not tr.get("bmul"):
+            continue
+        # rho = 0.26 (owner): the correlation of fuel and non-fuel errors round 8 measured for pipeline buyers
+        # (fuel_volume_cf-notes.md), the higher, more cautious of its two values (0.10 overall)
+        fs, s, rho = fossil_share(iso3), d["lng_share_of_base"], d["rho"]
+        q = tr["bmul"]
+        # LNG's share of the expected value per year: its 2019-2021 share, raised by the no-war fuel price factor
+        w = [s * (b - (1 - fs)) / fs / b if b and fs else s for b in q]
+        hs = ["H1", "H2", "H3", "H4", "H5_2026_8of12"]
+        cb = [None]
+        for h in range(1, 6):
+            wt = [q[i] * FRAC[i] for i in range(1, h + 1)]
+            W = sum(x * w[i] for x, i in zip(wt, range(1, h + 1))) / sum(wt)
+            band = d["lng_cumulative_band"][hs[h - 1]]
+            g_lo, g_hi = tr["cb"][h]
+
+            def comb(a: float, b: float, W: float = W, rho: float = rho) -> float:
+                return math.sqrt((W * a) ** 2 + ((1 - W) * b) ** 2 + 2 * rho * W * (1 - W) * a * b)
+
+            cb.append([round(1 - comb(1 - band["low"], 1 - g_lo), 4), round(1 + comb(band["high"] - 1, g_hi - 1), 4)])
+        tr["cb_generic"] = tr["cb"]
+        tr["cb"] = cb
+        tr["src"] = list(dict.fromkeys((tr.get("src") or []) + [sid]))
+
+
 LAUNDERED_PREWAR = json.loads(
     (Path(__file__).resolve().parent.parent / "research/2026-10/gaps/round4a.json").read_text()
 )["laundered_prewar"]
@@ -3323,6 +3455,34 @@ def apply_company_flows(countries: dict[str, dict], src: Sources) -> None:
             weakest([old.get("profits_certainty"), d.get("profits_certainty")]) if old else d.get("profits_certainty")
         )
         hosts[iso3] = {**old, "profits_change_vs_prewar": merged, "profits_certainty": cert, "_r10": True}
+    # Round 44: Angola and Iraq from official and audited company figures (rusfirms_r44.json). They replace, not add to,
+    # the earlier estimates: Angola's r10 guess (Alrosa's Catoca dividends; the RUB 19bn Alrosa received in May 2025 for
+    # its blocked dividend claims was r10's "high case", and it happened) and Iraq's company_flows block (Lukoil's and
+    # Gazprom Neft's remuneration fee less the 35% Iraqi tax, from Iraq's EITI reports; a fixed fee per barrel, so it
+    # barely moved with oil prices). Rosneft's Kurdistan pipeline stays out (owner): its 2023-2025 shutdown came from the
+    # Iraq-Turkey arbitration, not the war, so the no-war path has it too. This also drops company_flows' 2023-2024
+    # Kurdistan-labelled values, which the notes show were wrong in either reading
+    r44 = (load(GAPS / "rusfirms_r44.json") or {}).get("countries") or {}
+    r44id = src.add(
+        "rusfirms_r44",
+        "Iraq EITI 2021-2023 (PCLD remuneration and tax tables) and Alrosa IFRS 2021/2025 (Catoca dividends)",
+        "https://eiti.org/document/25590",
+        "2026-10-25",
+        "see research/2026-10/gaps/rusfirms_r44-notes.md",
+    )
+    rs = load(GAPS / "rusfirms_r44.json")["sources"]
+    src.items[r44id]["links"] = [
+        {"title": "Iraq EITI Report 2023 (Ministry of Oil PCLD remuneration and tax tables)", "url": rs["iraq_eiti_2023"]["url"], "kind": "primary"},
+        {"title": "Iraq EITI Report 2022", "url": rs["iraq_eiti_2022"]["url"], "kind": "primary"},
+        {"title": "ALROSA IFRS consolidated financial statements 2025 (Catoca sale and dividend claims, notes 5.2-5.3)", "url": rs["alrosa_ifrs_2025"]["url"], "kind": "primary"},
+    ]  # fmt: skip
+    for iso3, d in r44.items():
+        hosts[iso3] = {
+            **hosts.get(iso3, {}),
+            "profits_change_vs_prewar": d["profits_change_vs_prewar"],
+            "profits_certainty": d["profits_certainty"],
+            "_r44": True,
+        }
     src.add(
         "seizures",
         "Company assets seized by Russia (decree 302 temporary management, expropriation by decree, court seizures, leased aircraft): owners' write-downs and book values, KSE Institute loss study and company reports",
@@ -3384,6 +3544,8 @@ def apply_company_flows(countries: dict[str, dict], src: Sources) -> None:
                 )
                 if d.get("_r10"):
                     c["extra"][-1]["src"].append(rid)
+                if d.get("_r44"):
+                    c["extra"][-1]["src"].append(r44id)
 
 
 def apply_refugees_net(countries: dict[str, dict], src: Sources) -> None:
@@ -4758,8 +4920,18 @@ def apply_military_delivered(countries: dict[str, dict], src: Sources) -> None:
 # Not an observation: the pre-war trend continued (trend), Russia's import gap split by origin shares (residual), audit
 # shares (audit2) and models. A part without its own observation is set to zero in calc() and marked "no data".
 NO_DATA_OBS = {
-    "to_rus": {"nonreport", "reexports", "narrow", "transit_gas", "power_of_siberia", "hk_gold_r16", "laundered_r6"},
-    "from_rus": {"nonreport", "reexports", "narrow"},
+    "to_rus": {
+        "nonreport",
+        "reexports",
+        "narrow",
+        "transit_gas",
+        "power_of_siberia",
+        "hk_gold_r16",
+        "laundered_r6",
+        "eaeu_r44",
+        "hk_csd_r44",
+    },
+    "from_rus": {"nonreport", "reexports", "narrow", "eaeu_r44"},
     "buy_ukr": set(),
     "sell_ukr": set(),
     "laund": {"laundered", "laundered_r6", "laundered_eu", "laundered_r39", "laundered_r43"},

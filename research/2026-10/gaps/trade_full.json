@@ -17851,46 +17851,52 @@
    "name": "Czechia",
    "imports_from_RUS": {
     "2019": {
-     "low": 2.986562,
+     "low": 4.168,
      "central": 4.479844,
      "high": 4.791761,
      "basis": "reported",
-     "src": "UN Comtrade reporter (CZE)"
+     "src": "UN Comtrade reporter (CZE)",
+     "note_r44": "low end from the reporter's own margin: IMF IMTS equals Czech customs total minus gas (HS 2711), so it is not a low case for the total (energy_r44.json)"
     },
     "2020": {
-     "low": 1.9052,
+     "low": 2.396,
      "central": 2.575598,
      "high": 2.754928,
      "basis": "reported",
-     "src": "UN Comtrade reporter (CZE)"
+     "src": "UN Comtrade reporter (CZE)",
+     "note_r44": "low end from the reporter's own margin: IMF IMTS equals Czech customs total minus gas (HS 2711), so it is not a low case for the total (energy_r44.json)"
     },
     "2021": {
-     "low": 3.945053,
+     "low": 5.506,
      "central": 5.91758,
      "high": 6.329602,
      "basis": "reported",
-     "src": "UN Comtrade reporter (CZE)"
+     "src": "UN Comtrade reporter (CZE)",
+     "note_r44": "low end from the reporter's own margin: IMF IMTS equals Czech customs total minus gas (HS 2711), so it is not a low case for the total (energy_r44.json)"
     },
     "2022": {
-     "low": 7.201341,
+     "low": 10.05,
      "central": 10.802011,
      "high": 11.55412,
      "basis": "reported",
-     "src": "UN Comtrade reporter (CZE)"
+     "src": "UN Comtrade reporter (CZE)",
+     "note_r44": "low end from the reporter's own margin: IMF IMTS equals Czech customs total minus gas (HS 2711), so it is not a low case for the total (energy_r44.json)"
     },
     "2023": {
-     "low": 2.750102,
+     "low": 2.985,
      "central": 3.207786,
      "high": 3.431134,
      "basis": "reported",
-     "src": "UN Comtrade reporter (CZE)"
+     "src": "UN Comtrade reporter (CZE)",
+     "note_r44": "low end from the reporter's own margin: IMF IMTS equals Czech customs total minus gas (HS 2711), so it is not a low case for the total (energy_r44.json)"
     },
     "2024": {
-     "low": 2.223548,
+     "low": 2.916,
      "central": 3.133759,
      "high": 3.351953,
      "basis": "reported",
-     "src": "UN Comtrade reporter (CZE)"
+     "src": "UN Comtrade reporter (CZE)",
+     "note_r44": "low end from the reporter's own margin: IMF IMTS equals Czech customs total minus gas (HS 2711), so it is not a low case for the total (energy_r44.json)"
     },
     "2025": {
      "low": 0.920071,
@@ -17919,7 +17925,7 @@
      "avg_2019_2021": 4.324341,
      "trend_2022": 6.636448,
      "trend_slope_per_year": 0.718868,
-     "low": 3.945053,
+     "low": 5.506,
      "high": 6.329602
     }
    },
