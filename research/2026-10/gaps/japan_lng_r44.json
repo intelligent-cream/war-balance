@@ -1,0 +1,1112 @@
+{
+ "generated": "2026-10-25",
+ "what": "Round 44: Japan's purchases from Russia ('paid', to_rus) split into Sakhalin-2 LNG (HS 2711.11), whose no-war path follows the Japanese buyers' long-term contracts, and everything else, which keeps the generic no-war band (x CB_SCALE_PAID). Moves no central value: the contract path's central is the 2021 volume held, the same as the generic path. Narrows the cumulative no-war band (to_rus cb) for Japan only.",
+ "status": "proposal; not applied",
+ "units": "volumes in kt (MoF quantity 2, tonnes / 1000); values in bn JPY, nominal; band multipliers on the summed expected (central) level, as cf_bands.json cumulative_bands",
+ "history_mof": {
+  "2009": {
+   "total_bn_jpy": 825.51,
+   "lng": {
+    "bn_jpy": 88.99,
+    "kt": 2772.4
+   },
+   "crude": {
+    "bn_jpy": 244.05,
+    "kt": 5550.3
+   },
+   "coal": {
+    "bn_jpy": 103.89,
+    "kt": 8907.1
+   },
+   "products": {
+    "bn_jpy": 123.8,
+    "kt": 3125.7
+   },
+   "pgm_7110": {
+    "bn_jpy": 20.11,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 60.75,
+    "kt": 403.4
+   },
+   "fish_03": {
+    "bn_jpy": 95.55,
+    "kt": 164.6
+   },
+   "other_bn_jpy": 88.37
+  },
+  "2010": {
+   "total_bn_jpy": 1412.03,
+   "lng": {
+    "bn_jpy": 231.55,
+    "kt": 6030.7
+   },
+   "crude": {
+    "bn_jpy": 518.5,
+    "kt": 9873.2
+   },
+   "coal": {
+    "bn_jpy": 118.41,
+    "kt": 10689.2
+   },
+   "products": {
+    "bn_jpy": 195.74,
+    "kt": 3852.7
+   },
+   "pgm_7110": {
+    "bn_jpy": 39.43,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 88.94,
+    "kt": 467.1
+   },
+   "fish_03": {
+    "bn_jpy": 102.46,
+    "kt": 168.4
+   },
+   "other_bn_jpy": 117.0
+  },
+  "2011": {
+   "total_bn_jpy": 1513.89,
+   "lng": {
+    "bn_jpy": 376.92,
+    "kt": 7125.2
+   },
+   "crude": {
+    "bn_jpy": 452.51,
+    "kt": 6939.0
+   },
+   "coal": {
+    "bn_jpy": 152.77,
+    "kt": 11374.5
+   },
+   "products": {
+    "bn_jpy": 149.01,
+    "kt": 2196.9
+   },
+   "pgm_7110": {
+    "bn_jpy": 52.02,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 91.8,
+    "kt": 471.7
+   },
+   "fish_03": {
+    "bn_jpy": 113.28,
+    "kt": 159.9
+   },
+   "other_bn_jpy": 125.58
+  },
+  "2012": {
+   "total_bn_jpy": 1660.15,
+   "lng": {
+    "bn_jpy": 494.01,
+    "kt": 8306.2
+   },
+   "crude": {
+    "bn_jpy": 572.16,
+    "kt": 8263.6
+   },
+   "coal": {
+    "bn_jpy": 142.87,
+    "kt": 12472.1
+   },
+   "products": {
+    "bn_jpy": 74.12,
+    "kt": 1021.0
+   },
+   "pgm_7110": {
+    "bn_jpy": 41.18,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 100.79,
+    "kt": 588.4
+   },
+   "fish_03": {
+    "bn_jpy": 121.14,
+    "kt": 169.2
+   },
+   "other_bn_jpy": 113.88
+  },
+  "2013": {
+   "total_bn_jpy": 2307.59,
+   "lng": {
+    "bn_jpy": 612.86,
+    "kt": 8565.9
+   },
+   "crude": {
+    "bn_jpy": 989.67,
+    "kt": 12139.1
+   },
+   "coal": {
+    "bn_jpy": 138.64,
+    "kt": 12345.9
+   },
+   "products": {
+    "bn_jpy": 156.3,
+    "kt": 1722.1
+   },
+   "pgm_7110": {
+    "bn_jpy": 59.31,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 89.17,
+    "kt": 437.5
+   },
+   "fish_03": {
+    "bn_jpy": 120.18,
+    "kt": 163.5
+   },
+   "other_bn_jpy": 141.46
+  },
+  "2014": {
+   "total_bn_jpy": 2618.54,
+   "lng": {
+    "bn_jpy": 703.9,
+    "kt": 8449.5
+   },
+   "crude": {
+    "bn_jpy": 1105.76,
+    "kt": 13468.2
+   },
+   "coal": {
+    "bn_jpy": 158.9,
+    "kt": 15097.3
+   },
+   "products": {
+    "bn_jpy": 183.59,
+    "kt": 1952.5
+   },
+   "pgm_7110": {
+    "bn_jpy": 61.29,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 138.18,
+    "kt": 606.1
+   },
+   "fish_03": {
+    "bn_jpy": 118.26,
+    "kt": 145.3
+   },
+   "other_bn_jpy": 148.66
+  },
+  "2015": {
+   "total_bn_jpy": 1904.71,
+   "lng": {
+    "bn_jpy": 474.36,
+    "kt": 7570.9
+   },
+   "crude": {
+    "bn_jpy": 723.38,
+    "kt": 14322.3
+   },
+   "coal": {
+    "bn_jpy": 164.28,
+    "kt": 16821.2
+   },
+   "products": {
+    "bn_jpy": 120.47,
+    "kt": 1945.7
+   },
+   "pgm_7110": {
+    "bn_jpy": 53.17,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 116.39,
+    "kt": 494.8
+   },
+   "fish_03": {
+    "bn_jpy": 105.61,
+    "kt": 121.5
+   },
+   "other_bn_jpy": 147.05
+  },
+  "2016": {
+   "total_bn_jpy": 1227.31,
+   "lng": {
+    "bn_jpy": 271.56,
+    "kt": 7314.7
+   },
+   "crude": {
+    "bn_jpy": 359.3,
+    "kt": 9980.9
+   },
+   "coal": {
+    "bn_jpy": 150.55,
+    "kt": 17963.5
+   },
+   "products": {
+    "bn_jpy": 74.45,
+    "kt": 1612.6
+   },
+   "pgm_7110": {
+    "bn_jpy": 45.76,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 95.84,
+    "kt": 525.3
+   },
+   "fish_03": {
+    "bn_jpy": 110.87,
+    "kt": 120.9
+   },
+   "other_bn_jpy": 118.98
+  },
+  "2017": {
+   "total_bn_jpy": 1550.71,
+   "lng": {
+    "bn_jpy": 311.55,
+    "kt": 7261.9
+   },
+   "crude": {
+    "bn_jpy": 416.36,
+    "kt": 9007.1
+   },
+   "coal": {
+    "bn_jpy": 232.45,
+    "kt": 18188.9
+   },
+   "products": {
+    "bn_jpy": 114.73,
+    "kt": 2047.0
+   },
+   "pgm_7110": {
+    "bn_jpy": 83.19,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 138.12,
+    "kt": 622.5
+   },
+   "fish_03": {
+    "bn_jpy": 123.94,
+    "kt": 125.6
+   },
+   "other_bn_jpy": 130.37
+  },
+  "2018": {
+   "total_bn_jpy": 1722.68,
+   "lng": {
+    "bn_jpy": 358.03,
+    "kt": 6673.2
+   },
+   "crude": {
+    "bn_jpy": 432.98,
+    "kt": 7033.3
+   },
+   "coal": {
+    "bn_jpy": 263.38,
+    "kt": 18736.6
+   },
+   "products": {
+    "bn_jpy": 135.47,
+    "kt": 2053.8
+   },
+   "pgm_7110": {
+    "bn_jpy": 117.99,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 131.79,
+    "kt": 558.9
+   },
+   "fish_03": {
+    "bn_jpy": 140.29,
+    "kt": 128.9
+   },
+   "other_bn_jpy": 142.75
+  },
+  "2019": {
+   "total_bn_jpy": 1560.64,
+   "lng": {
+    "bn_jpy": 337.53,
+    "kt": 6398.6
+   },
+   "crude": {
+    "bn_jpy": 435.49,
+    "kt": 7891.5
+   },
+   "coal": {
+    "bn_jpy": 250.18,
+    "kt": 20177.8
+   },
+   "products": {
+    "bn_jpy": 66.01,
+    "kt": 1120.4
+   },
+   "pgm_7110": {
+    "bn_jpy": 125.18,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 83.69,
+    "kt": 434.7
+   },
+   "fish_03": {
+    "bn_jpy": 120.74,
+    "kt": 115.4
+   },
+   "other_bn_jpy": 141.82
+  },
+  "2020": {
+   "total_bn_jpy": 1144.78,
+   "lng": {
+    "bn_jpy": 250.46,
+    "kt": 6140.4
+   },
+   "crude": {
+    "bn_jpy": 192.32,
+    "kt": 5087.9
+   },
+   "coal": {
+    "bn_jpy": 194.79,
+    "kt": 21679.8
+   },
+   "products": {
+    "bn_jpy": 43.16,
+    "kt": 1000.3
+   },
+   "pgm_7110": {
+    "bn_jpy": 166.52,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 72.82,
+    "kt": 405.9
+   },
+   "fish_03": {
+    "bn_jpy": 102.66,
+    "kt": 108.9
+   },
+   "other_bn_jpy": 122.05
+  },
+  "2021": {
+   "total_bn_jpy": 1551.64,
+   "lng": {
+    "bn_jpy": 371.59,
+    "kt": 6566.9
+   },
+   "crude": {
+    "bn_jpy": 257.77,
+    "kt": 4433.0
+   },
+   "coal": {
+    "bn_jpy": 286.28,
+    "kt": 19734.4
+   },
+   "products": {
+    "bn_jpy": 38.64,
+    "kt": 577.0
+   },
+   "pgm_7110": {
+    "bn_jpy": 153.38,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 135.73,
+    "kt": 511.7
+   },
+   "fish_03": {
+    "bn_jpy": 137.33,
+    "kt": 109.3
+   },
+   "other_bn_jpy": 170.92
+  },
+  "2022": {
+   "total_bn_jpy": 1971.81,
+   "lng": {
+    "bn_jpy": 678.33,
+    "kt": 6869.3
+   },
+   "crude": {
+    "bn_jpy": 174.43,
+    "kt": 1924.9
+   },
+   "coal": {
+    "bn_jpy": 476.04,
+    "kt": 11576.9
+   },
+   "products": {
+    "bn_jpy": 22.48,
+    "kt": 220.5
+   },
+   "pgm_7110": {
+    "bn_jpy": 129.56,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 150.1,
+    "kt": 404.5
+   },
+   "fish_03": {
+    "bn_jpy": 155.15,
+    "kt": 124.4
+   },
+   "other_bn_jpy": 185.72
+  },
+  "2023": {
+   "total_bn_jpy": 1033.2,
+   "lng": {
+    "bn_jpy": 582.74,
+    "kt": 6133.3
+   },
+   "crude": {
+    "bn_jpy": 6.92,
+    "kt": 92.3
+   },
+   "coal": {
+    "bn_jpy": 112.35,
+    "kt": 3470.6
+   },
+   "products": {
+    "bn_jpy": 0.0,
+    "kt": 0.0
+   },
+   "pgm_7110": {
+    "bn_jpy": 60.46,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 46.59,
+    "kt": 142.0
+   },
+   "fish_03": {
+    "bn_jpy": 130.76,
+    "kt": 104.0
+   },
+   "other_bn_jpy": 93.38
+  },
+  "2024": {
+   "total_bn_jpy": 859.99,
+   "lng": {
+    "bn_jpy": 547.14,
+    "kt": 5683.8
+   },
+   "crude": {
+    "bn_jpy": 0.0,
+    "kt": 0.0
+   },
+   "coal": {
+    "bn_jpy": 29.24,
+    "kt": 1191.4
+   },
+   "products": {
+    "bn_jpy": 0.0,
+    "kt": 0.0
+   },
+   "pgm_7110": {
+    "bn_jpy": 59.56,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 24.94,
+    "kt": 68.6
+   },
+   "fish_03": {
+    "bn_jpy": 130.4,
+    "kt": 108.3
+   },
+   "other_bn_jpy": 68.71
+  },
+  "2025": {
+   "total_bn_jpy": 828.08,
+   "lng": {
+    "bn_jpy": 502.02,
+    "kt": 5797.7
+   },
+   "crude": {
+    "bn_jpy": 5.08,
+    "kt": 75.0
+   },
+   "coal": {
+    "bn_jpy": 23.31,
+    "kt": 1175.2
+   },
+   "products": {
+    "bn_jpy": 0.0,
+    "kt": 0.0
+   },
+   "pgm_7110": {
+    "bn_jpy": 71.46,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 26.38,
+    "kt": 67.8
+   },
+   "fish_03": {
+    "bn_jpy": 143.15,
+    "kt": 118.5
+   },
+   "other_bn_jpy": 56.68
+  },
+  "2026": {
+   "total_bn_jpy": 582.76,
+   "lng": {
+    "bn_jpy": 305.33,
+    "kt": 3416.7
+   },
+   "crude": {
+    "bn_jpy": 25.79,
+    "kt": 192.3
+   },
+   "coal": {
+    "bn_jpy": 16.1,
+    "kt": 795.7
+   },
+   "products": {
+    "bn_jpy": 0.0,
+    "kt": 0.0
+   },
+   "pgm_7110": {
+    "bn_jpy": 91.98,
+    "kt": 0.0
+   },
+   "alu_7601": {
+    "bn_jpy": 25.78,
+    "kt": 48.7
+   },
+   "fish_03": {
+    "bn_jpy": 82.26,
+    "kt": 66.1
+   },
+   "other_bn_jpy": 35.52,
+   "note": "January-August 2026 (July: 9-digit detailed; August: provisional)"
+  }
+ },
+ "value_shares_2019_2021": {
+  "lng": 0.2254,
+  "crude": 0.208,
+  "coal": 0.1718,
+  "products": 0.0347,
+  "pgm_7110": 0.1046,
+  "alu_7601": 0.0686,
+  "fish_03": 0.0847,
+  "other": 0.1022,
+  "fossil": 0.6399
+ },
+ "lng_volume_kt": {
+  "2009": 2772.4,
+  "2010": 6030.7,
+  "2011": 7125.2,
+  "2012": 8306.2,
+  "2013": 8565.9,
+  "2014": 8449.5,
+  "2015": 7570.9,
+  "2016": 7314.7,
+  "2017": 7261.9,
+  "2018": 6673.2,
+  "2019": 6398.6,
+  "2020": 6140.4,
+  "2021": 6566.9,
+  "2022": 6869.3,
+  "2023": 6133.3,
+  "2024": 5683.8,
+  "2025": 5797.7,
+  "2026": 3416.7
+ },
+ "lng_monthly_kt": {
+  "2017": [
+   670,
+   844,
+   717,
+   469,
+   803,
+   470,
+   582,
+   653,
+   392,
+   588,
+   283,
+   790
+  ],
+  "2018": [
+   668,
+   710,
+   653,
+   469,
+   476,
+   523,
+   465,
+   525,
+   598,
+   495,
+   495,
+   597
+  ],
+  "2019": [
+   617,
+   604,
+   524,
+   404,
+   534,
+   404,
+   535,
+   583,
+   403,
+   532,
+   588,
+   672
+  ],
+  "2020": [
+   541,
+   597,
+   522,
+   393,
+   324,
+   266,
+   391,
+   595,
+   652,
+   529,
+   580,
+   750
+  ],
+  "2021": [
+   553,
+   718,
+   640,
+   460,
+   591,
+   488,
+   761,
+   144,
+   652,
+   393,
+   521,
+   646
+  ],
+  "2022": [
+   780,
+   653,
+   710,
+   396,
+   559,
+   617,
+   562,
+   450,
+   582,
+   530,
+   446,
+   584
+  ],
+  "2023": [
+   704,
+   522,
+   425,
+   354,
+   610,
+   485,
+   261,
+   392,
+   386,
+   506,
+   655,
+   833
+  ],
+  "2024": [
+   654,
+   564,
+   577,
+   288,
+   363,
+   552,
+   94,
+   585,
+   432,
+   551,
+   479,
+   547
+  ],
+  "2025": [
+   573,
+   585,
+   639,
+   352,
+   497,
+   251,
+   444,
+   391,
+   555,
+   538,
+   446,
+   527
+  ],
+  "2026": [
+   573,
+   576,
+   465,
+   456,
+   453,
+   382,
+   130,
+   382,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "contracts": {
+  "japan_long_term_mtpa": {
+   "JERA (ex-TEPCO)": [
+    1.5,
+    2029
+   ],
+   "JERA (ex-Chubu)": [
+    0.5,
+    "March 2026"
+   ],
+   "Tokyo Gas": [
+    1.1,
+    2031
+   ],
+   "Kyushu Electric": [
+    0.5,
+    2031
+   ],
+   "Toho Gas": [
+    0.5,
+    2033
+   ],
+   "Tohoku Electric": [
+    0.42,
+    2030
+   ],
+   "Hiroshima Gas": [
+    0.21,
+    2028
+   ],
+   "Osaka Gas": [
+    0.2,
+    2031
+   ],
+   "Saibu Gas": [
+    0.07,
+    2028
+   ]
+  },
+  "japan_total_mtpa": 5.0,
+  "other_buyers": {
+   "KOGAS (Korea)": [
+    1.5,
+    2028
+   ]
+  },
+  "plant_capacity_mtpa": 9.6,
+  "price_basis": "oil-indexed (JCC), periodic price reviews (the Japanese buyers agreed a review effective April 2024, S&P Global, May 2025)",
+  "flexibility": "downward quantity tolerance not public; not used. The floor below is the annual contract quantity (ACQ) without any spot or mid-term cargoes",
+  "basis": "S&P Global table (May 2025) via web search summary (pages return 403 here: not fetched); total of about 5 Mt/yr of Japan's about 6 Mt/yr confirmed on energynews.africa (12 December 2024; fetched). Volumes match Energy Intelligence reports of the 2004-2005 contract signings (TEPCO 1.5 Mt, Kyushu up to 0.5 Mt 21 years, Hiroshima Gas up to 0.2 Mt 20 years; search summaries)."
+ },
+ "lng_no_war_path": {
+  "central": "2021 volume held (6.567 Mt; 2017-2021 mean 6.61 Mt), i.e. volume multiplier 1.0 each year, the same as the generic central: no change to bmul",
+  "low": "contracted Japanese ACQ only, 5.0 Mt/yr, 4.69 Mt/yr in 2026 (JERA's 0.5 Mt contract ends March 2026): 0.761 of 2021 per year; 0.755 for 2022-2026 with 2026 at 8/12",
+  "high": "the larger of the highest pre-war year (8.566 Mt in 2013 = 1.304 x 2021) and the highest own rolling window at that horizon (origin 2010, the Fukushima years: 1.33-1.35)",
+  "cumulative_band": {
+   "H1": {
+    "low": 0.761,
+    "high": 1.304
+   },
+   "H2": {
+    "low": 0.761,
+    "high": 1.304
+   },
+   "H3": {
+    "low": 0.761,
+    "high": 1.326
+   },
+   "H4": {
+    "low": 0.761,
+    "high": 1.345
+   },
+   "H5_2026_8of12": {
+    "low": 0.755,
+    "high": 1.332
+   }
+  },
+  "check_own_windows": {
+   "method": "2021-style random walk on Japan's own LNG volumes from Russia: hold the origin year flat, cumulative ratio over 1-5 years (5 years: last at 8/12), origins 2010-2020, targets to 2021",
+   "H5_ratios": {
+    "2010": 1.332,
+    "2011": 1.136,
+    "2012": 0.948,
+    "2013": 0.877,
+    "2014": 0.839,
+    "2015": 0.898,
+    "2016": 0.904
+   },
+   "H1_range": [
+    0.896,
+    1.181
+   ],
+   "H5_range": [
+    0.839,
+    1.332
+   ],
+   "covered": "all 7 five-year windows and all 11 one-year windows lie inside the band",
+   "war_years_actual": "6.869, 6.133, 5.684, 5.798 Mt in 2022-2025 and 3.417 Mt in January-August 2026: 0.92 x 2021 for 2022-2026 (2026 at 8/12), inside the band; deliveries continued at about contract-plus level through the war"
+  },
+  "generic_band_now": {
+   "H5_2026_8of12": [
+    0.6517,
+    1.4998
+   ],
+   "note": "to_rus/L 0.570-1.617 scaled by CB_SCALE_PAID 0.81"
+  }
+ },
+ "combination": {
+  "lng_share_of_base": 0.23,
+  "lng_share_basis": "LNG's share of Japan's imports from Russia: 22.5% of 2019-2021 value, 23.8% of 2021 volume at 2019-2021 unit values (MoF)",
+  "weight_per_year": "w_t = s x n_t / bmul_t, with n_t = (bmul_t - (1 - fs)) / fs the no-war fuel price factor (fs = fossil_share('JPN')); the horizon weight W_H = sum(bmul_t x frac_t x w_t) / sum(bmul_t x frac_t), about 0.25",
+  "rule": "1 - low_H = sqrt((W (1 - L_lng))^2 + ((1 - W)(1 - G_low))^2 + 2 rho W (1 - W)(1 - L_lng)(1 - G_low)); high the same with (H_lng - 1) and (G_high - 1); G = Japan's current generic cb (already x0.81)",
+  "rho_evidence": "round 8 (fuel_volume_cf-notes.md): fuel vs non-fuel errors correlate 0.10 overall, 0.26 among pipeline buyers; Japan's own LNG vs crude+coal+products volume windows (2010-2020 origins): -0.16 (1 year) to 0.39 (5 years, 7 windows); non-fuel is 36% of the rest. rho = 1 is the conservative bound",
+  "rho_recommended": 0.26
+ },
+ "effect_JPN_2026": {
+  "note": "site model (load.mjs/blk.mjs harness), T.paid.cb replaced; Russia's-earnings number ('rus'), EUR bn cumulative 2022-2026; chance = chance(c, 2026, 'rus').p (pSignMC, seeded: identical on repeats); certain needs >= 0.95 and no method alternative crossing (none cross: lowest is attrib +4.15)",
+  "now": {
+   "cb_H5": [
+    0.6517,
+    1.4998
+   ],
+   "paid": [
+    7.755,
+    1.444,
+    16.349
+   ],
+   "rus": [
+    6.508,
+    -0.756,
+    15.968
+   ],
+   "rus_pct_gdp": [
+    0.161,
+    -0.019,
+    0.394
+   ],
+   "chance": 0.9285,
+   "certain": false
+  },
+  "rho_1_linear": {
+   "cb_H5": [
+    0.6776,
+    1.4578
+   ],
+   "paid": [
+    7.755,
+    1.801,
+    15.738
+   ],
+   "rus": [
+    6.508,
+    -0.458,
+    15.42
+   ],
+   "chance": 0.9409,
+   "certain": false
+  },
+  "rho_0.5": {
+   "cb_H5": [
+    0.7034,
+    1.4224
+   ],
+   "paid": [
+    7.755,
+    2.15,
+    15.23
+   ],
+   "rus": [
+    6.508,
+    -0.17,
+    14.97
+   ],
+   "chance": 0.9477,
+   "certain": false
+  },
+  "rho_0.39": {
+   "chance": 0.9486,
+   "certain": false
+  },
+  "rho_0.26_recommended": {
+   "cb_H5": [
+    0.7167,
+    1.4043
+   ],
+   "paid": [
+    7.755,
+    2.326,
+    14.973
+   ],
+   "rus": [
+    6.508,
+    -0.031,
+    14.748
+   ],
+   "rus_pct_gdp": [
+    0.161,
+    -0.001,
+    0.364
+   ],
+   "chance": 0.9505,
+   "certain": true
+  },
+  "rho_0.1": {
+   "cb_H5": [
+    0.7259,
+    1.3918
+   ],
+   "paid": [
+    7.755,
+    2.45,
+    14.8
+   ],
+   "rus": [
+    6.508,
+    0.07,
+    14.6
+   ],
+   "chance": 0.9527,
+   "certain": true
+  },
+  "rho_0": {
+   "cb_H5": [
+    0.7318,
+    1.3838
+   ],
+   "paid": [
+    7.755,
+    2.523,
+    14.685
+   ],
+   "rus": [
+    6.508,
+    0.126,
+    14.5
+   ],
+   "chance": 0.9537,
+   "certain": true
+  },
+  "sensitivity_lng_band_own_windows_K1.2_[0.81,1.41]": {
+   "rho_1": 0.9453,
+   "rho_0.39": 0.9505,
+   "rho_0.26": 0.9519
+  },
+  "reference_whole_band_scaled": {
+   "x0.9": 0.9439,
+   "x0.8": 0.9513,
+   "x0.7": 0.9593
+  },
+  "reading": "The split narrows the low side of Japan's no-war band by 8% (rho 1) to 19% (rho 0.26). Japan's chance moves from 92.9% to 94.1-95.4% depending on rho; it crosses 95% only for rho <= about 0.3, and then by 0.05 points. Not a robust flip."
+ },
+ "other_countries": {
+  "KOR": {
+   "lng_share_2019_2021_value": 0.084,
+   "contract": "KOGAS 1.5 Mt/yr Sakhalin-2 to 2028; Korea's LNG from Russia 1.9-2.9 Mt/yr 2017-2021, 1.65-2.47 in 2022-2025 (Comtrade)",
+   "effect": "small narrowing (LNG under a tenth of the base); Korea's Russia number is already certain (99.1%); no status change"
+  },
+  "CHN": {
+   "lng_share_2019_2021_value": 0.028,
+   "contract": "Yamal LNG (CNPC 3 Mt/yr from 2019-2020), Sakhalin-2 spot/short-term; China's LNG from Russia 2.5/5.1/4.5 Mt 2019-2021, 6.5-10.0 Mt 2022-2025 (Comtrade)",
+   "effect": "negligible: LNG is 3% of the base and the pipeline part is already handled by power_of_siberia(); China's Russia number is certain (99.8%). A Yamal contract floor would sit below the 2021 volume, so no central change"
+  },
+  "TWN": {
+   "contract": "no long-term Sakhalin-2 or Yamal contract found for CPC; Russian LNG bought spot/short-term. Taiwan does not report to Comtrade",
+   "effect": "not applicable; Taiwan's paid central is near zero (0.20, -2.71 to 3.14) and its chance 59.8%: narrowing a band cannot make it certain"
+  }
+ },
+ "sources": [
+  {
+   "name": "Ministry of Finance Japan, Trade Statistics of Japan: Commodity by Country (Import), yearly files 2009-2025 and January-August 2026, via e-Stat (statistics code 00350300)",
+   "url": "https://www.e-stat.go.jp/en/stat-search/files?page=1&layout=datalist&toukei=00350300&tstat=000001013141&cycle=1&tclass1=000001013180&tclass2=000001013182",
+   "kind": "official",
+   "retrieved": "2026-10-25",
+   "extract": "research/2026-10/raw/japan_r44/mof_imports_from_russia_2026-10-25.json.gz (Russia rows, country code 224)",
+   "status": "reachable, fetched"
+  },
+  {
+   "name": "UN Comtrade public preview: Japan (392), Korea (410), China (156) imports from Russia, HS 271111 and TOTAL (Japan also 2701, 2709, 2710, 0303, 0306, 7110, 7601)",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS",
+   "kind": "official",
+   "retrieved": "2026-10-25",
+   "status": "reachable, fetched; Japan's LNG tonnes and values identical to MoF"
+  },
+  {
+   "name": "Japan Customs trade statistics search (www.customs.go.jp/toukei/srch/indexe.htm)",
+   "url": "https://www.customs.go.jp/toukei/srch/indexe.htm",
+   "status": "reachable (200), JavaScript search form; the same data taken from the e-Stat files"
+  },
+  {
+   "name": "METI/ANRE (enecho.meti.go.jp)",
+   "url": "https://www.enecho.meti.go.jp/",
+   "status": "HTTP 403 from here; not used"
+  },
+  {
+   "name": "JOGMEC",
+   "url": "https://www.jogmec.go.jp/",
+   "status": "301 redirect; not needed (MoF gives LNG tonnes by origin)"
+  },
+  {
+   "name": "Sakhalin Energy",
+   "url": "https://www.sakhalinenergy.ru/en/",
+   "status": "HTTP 503; not used"
+  },
+  {
+   "name": "S&P Global Commodity Insights, 9 May 2025: Japanese Sakhalin 2 buyers agree on price review from April 2024 retrospectively (table of buyers, volumes, expiries)",
+   "url": "https://www.spglobal.com/energy/en/news-research/latest-news/lng/050925-japanese-sakhalin-2-buyers-agree-on-price-review-from-april-2024-retrospectively",
+   "kind": "press",
+   "status": "403 here; figures from a web-search summary, not verified"
+  },
+  {
+   "name": "Energy News Africa, 12 December 2024: Japan weighs LNG supply shift as Sakhalin-2 contracts expire (5 Mt/yr contracted of about 6 Mt/yr imported; JERA 0.5 Mt; expiries 2026-2033)",
+   "url": "https://energynews.africa/2024/12/12/japan-weighs-lng-supply-shift/",
+   "kind": "press",
+   "status": "fetched"
+  },
+  {
+   "name": "Energy Intelligence (2004-2005): Sakhalin-2 contract signings with TEPCO, Kyushu Electric, Toho Gas, Hiroshima Gas",
+   "url": "https://www.energyintel.com/0000017b-a7a3-de4c-a17b-e7e3b23b0000",
+   "kind": "press",
+   "status": "search summary only, not fetched"
+  }
+ ],
+ "countries": {
+  "JPN": {
+   "to_rus": {
+    "lng_share_of_base": 0.23,
+    "rho": 0.26,
+    "rho_conservative": 1.0,
+    "lng_cumulative_band": {
+     "H1": {
+      "low": 0.761,
+      "high": 1.304
+     },
+     "H2": {
+      "low": 0.761,
+      "high": 1.304
+     },
+     "H3": {
+      "low": 0.761,
+      "high": 1.326
+     },
+     "H4": {
+      "low": 0.761,
+      "high": 1.345
+     },
+     "H5_2026_8of12": {
+      "low": 0.755,
+      "high": 1.332
+     }
+    },
+    "method": "contract-based LNG band (Sakhalin-2 Japanese ACQ floor, pre-war maximum) combined with the generic band (x CB_SCALE_PAID) on the rest, by LNG's share of the expected value"
+   }
+  }
+ }
+}

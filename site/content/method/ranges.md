@@ -49,18 +49,18 @@ A traded flow has four main sources of uncertainty: the pre-war level, the actua
 
 ## From parts to a total
 
-Parts' ranges are combined the same way, with correlations where errors are shared (for example, all parts weighted by Russia's gain shares move together). The effect is small: Germany's net range is +2.58%<!-- n:DEU.netLo --> to +5.05%<!-- n:DEU.netHi -->.
+Parts' ranges are combined the same way, with correlations where errors are shared (for example, all parts weighted by Russia's gain shares move together). The effect is small: Germany's net range is +2.63%<!-- n:DEU.netLo --> to +4.99%<!-- n:DEU.netHi -->.
 
-A number's direction is **certain** when the simulation gives it at least a 95% chance and no method-band alternative has the other sign (round 42; before, the likely range had to stay on one side). Otherwise it **leans** toward Ukraine or Russia when one direction has at least a 65% chance, and is **uncertain** below that. When its likely range and its method band both stay within ±0.5% of a year's GDP it is **near zero**: the war moved little money either way. All stay in the ranking, in their own groups, and the country's panel says in one line why its number is not certain. Among the 163<!-- n:WORLD.nBig --> economies above EUR 5bn, 84<!-- n:WORLD.uncUa --> are not certain on support for Ukraine, 112<!-- n:WORLD.uncRus --> on Russia's earnings from trade and 102<!-- n:WORLD.uncNet --> on the net, of which 56<!-- n:WORLD.leanNet --> lean one way and 29<!-- n:WORLD.nearNet --> are near zero.
+A number's direction is **certain** when the simulation gives it at least a 95% chance and no method-band alternative has the other sign (round 42; before, the likely range had to stay on one side). Otherwise it **leans** toward Ukraine or Russia when one direction has at least a 65% chance, and is **uncertain** below that. When its likely range and its method band both stay within ±0.5% of a year's GDP it is **near zero**: the war moved little money either way. All stay in the ranking, in their own groups, and the country's panel says in one line why its number is not certain. Among the 163<!-- n:WORLD.nBig --> economies above EUR 5bn, 84<!-- n:WORLD.uncUa --> are not certain on support for Ukraine, 99<!-- n:WORLD.uncRus --> on Russia's earnings from trade and 92<!-- n:WORLD.uncNet --> on the net, of which 49<!-- n:WORLD.leanNet --> lean one way and 29<!-- n:WORLD.nearNet --> are near zero.
 
 ## The method band
 
 The likely range is uncertainty **given the method**. The method band shows each headline number under other reasonable choices, one at a time:
 
-- the war-time windfall in full, or left out (Hungary raised Russia's earnings from trade by 1.35%<!-- n:HUN.alt_windfall_off.rus abs --> of GDP without it, instead of 6.57%<!-- n:HUN.rus abs -->);
+- the war-time windfall in full, or left out (Hungary raised Russia's earnings from trade by 1.20%<!-- n:HUN.alt_windfall_off.rus abs --> of GDP without it, instead of 6.35%<!-- n:HUN.rus abs -->);
 - loans at the war-time yield;
-- EU refiners keep the Russian crude in their fuel exports; laundered oil with a looser rule, or not counted;
-- the fuel mix from tanker tonnes; fuel prices with freight; a higher normal return;
+- laundered oil with half of Russia's gain charged to the fuel buyer;
+- a higher normal return;
 - **redirected trade**: much of what one buyer stopped paying, Russia sold to others ("less paid" × 0.70<!-- n:WORLD.ratio -->);
 - without the gas Russia cut off itself;
 - refugees at gross cost, or at one common cost per refugee;
@@ -68,7 +68,9 @@ The likely range is uncertainty **given the method**. The method band shows each
 - North Korea paid only what was observed flowing back;
 - 2024 GDP instead of the 2022–2024 average.
 
-The band is the lowest and highest of these; it is not a probability range. Examples (the net): Germany 3.13%<!-- n:DEU.netBandLo --> to 4.05%<!-- n:DEU.netBandHi -->, Moldova 3.96%<!-- n:MDA.netBandLo --> to 9.76%<!-- n:MDA.netBandHi -->, Hungary −8.09%<!-- n:HUN.netBandLo --> to −0.89%<!-- n:HUN.netBandHi -->, North Korea −31.86%<!-- n:PRK.netBandLo --> to −11.21%<!-- n:PRK.netBandHi -->.
+Rules the project itself replaced are not other reasonable choices and are not in the band (round 44): EU refiners keeping the Russian crude in their fuel exports, laundered oil without the route rule or modelled instead of measured, the fuel mix from tanker tonnes, and fuel prices with freight. Their rebuilt figures stay in the data download.
+
+The band is the lowest and highest of these; it is not a probability range. Examples (the net): Germany 3.13%<!-- n:DEU.netBandLo --> to 4.05%<!-- n:DEU.netBandHi -->, Moldova 3.96%<!-- n:MDA.netBandLo --> to 9.76%<!-- n:MDA.netBandHi -->, Hungary −7.86%<!-- n:HUN.netBandLo --> to −0.75%<!-- n:HUN.netBandHi -->, North Korea −31.86%<!-- n:PRK.netBandLo --> to −11.21%<!-- n:PRK.netBandHi -->.
 
 ## Average year
 
@@ -80,7 +82,7 @@ The headline is a total for 2022 to the chosen year against one year's GDP. The 
 
 ## How often the ranges are right
 
-The ranges were tested by rerunning the method as if the war had started in **2018**, when the true effect is zero. For trade with Russia, which makes most of the width of the ranges, the range contained zero for **97%** of the 150 ranked economies. Moved to **2014**, when Russia's own economy was hit by the oil and rouble crash, it was **92%**. So the ranges cover about 90% or a little more. The weak spot: sales to Russia by countries that sell it little are covered less often (about 78%). The test reruns trade only (aid, refugees and the other parts did not exist before 2022), with IMF trade totals instead of the full customs build, and the bands were measured partly on these years, so it checks the whole chain rather than proving the bands out of sample. Details: `research/2026-10/gaps/placebo_r42-notes.md`; `pipeline/placebo.py` reruns it, and a test fails if the 2018 coverage drops below 80%.
+The ranges were tested by rerunning the method as if the war had started in **2018**, when the true effect is zero. For trade with Russia, which makes most of the width of the ranges, the range contained zero for **96%** of the 150 ranked economies. Moved to **2014**, when Russia's own economy was hit by the oil and rouble crash, it was **90%**. That is with the bands as the site now uses them: round 42's test found the bands for purchases from Russia wider than needed and those for small sales to Russia too narrow, so since round 43 the first are scaled to 0.81 of their width and the second to 1.1 (the 2014 result, the harder case). Before that, coverage was 97% and 92%, with small sales to Russia at about 78%. The test reruns trade only (aid, refugees and the other parts did not exist before 2022), with IMF trade totals instead of the full customs build, and the bands were measured partly on these years, so it checks the whole chain rather than proving the bands out of sample. Details: `research/2026-10/gaps/placebo_r42-notes.md`; `pipeline/placebo.py` reruns it, and a test fails if the 2018 coverage drops below 80%.
 
 ## What the ranges do not cover
 

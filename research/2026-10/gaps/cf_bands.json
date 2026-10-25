@@ -6941,6 +6941,170 @@
     "size_class": "M",
     "certainty": "C"
    }
+  },
+  "TUR": {
+   "to_rus": {
+    "level_2021": {
+     "low": 24.485,
+     "central": 24.485,
+     "high": 26.3793
+    },
+    "multiplier_vs_2021": {
+     "2022": {
+      "low": 0.867,
+      "central": 1.0,
+      "high": 1.251
+     },
+     "2023": {
+      "low": 0.817,
+      "central": 1.0,
+      "high": 1.373
+     },
+     "2024": {
+      "low": 0.78,
+      "central": 1.0,
+      "high": 1.474
+     },
+     "2025": {
+      "low": 0.751,
+      "central": 1.0,
+      "high": 1.566
+     },
+     "2026": {
+      "low": 0.726,
+      "central": 1.0,
+      "high": 1.651
+     }
+    },
+    "cumulative_band": {
+     "H1": {
+      "low": 0.867,
+      "central": 1.0,
+      "high": 1.251
+     },
+     "H2": {
+      "low": 0.857,
+      "central": 1.0,
+      "high": 1.299
+     },
+     "H3": {
+      "low": 0.851,
+      "central": 1.0,
+      "high": 1.352
+     },
+     "H4": {
+      "low": 0.831,
+      "central": 1.0,
+      "high": 1.384
+     },
+     "H5": {
+      "low": 0.847,
+      "central": 1.0,
+      "high": 1.437
+     },
+     "H5_2026_8of12": {
+      "low": 0.843,
+      "central": 1.0,
+      "high": 1.421
+     }
+    },
+    "generic_multiplier_vs_2021_replaced": {
+     "2022": {
+      "low": 0.66,
+      "central": 1.0,
+      "high": 1.436
+     },
+     "2023": {
+      "low": 0.513,
+      "central": 1.0,
+      "high": 1.611
+     },
+     "2024": {
+      "low": 0.459,
+      "central": 1.0,
+      "high": 1.735
+     },
+     "2025": {
+      "low": 0.439,
+      "central": 1.0,
+      "high": 1.847
+     },
+     "2026": {
+      "low": 0.348,
+      "central": 1.0,
+      "high": 1.986
+     }
+    },
+    "generic_cumulative_band_replaced": {
+     "H1": {
+      "low": 0.66,
+      "central": 1.0,
+      "high": 1.436
+     },
+     "H2": {
+      "low": 0.601,
+      "central": 1.0,
+      "high": 1.483
+     },
+     "H3": {
+      "low": 0.604,
+      "central": 1.0,
+      "high": 1.535
+     },
+     "H4": {
+      "low": 0.588,
+      "central": 1.0,
+      "high": 1.56
+     },
+     "H5": {
+      "low": 0.578,
+      "central": 1.0,
+      "high": 1.642
+     },
+     "H5_2026_8of12": {
+      "low": 0.57,
+      "central": 1.0,
+      "high": 1.617
+     }
+    },
+    "method": "2021 level held (random walk), country-specific interval: 5th-95th percentile of Türkiye's own random-walk errors 1-5 years ahead (rolling origins 2005-2020, all years kept) on a composite of its fuel volumes from Russia (EPDK gas, crude and products, coal at fixed 2019-2021 unit values) and its other imports from Russia (deflated), combined by its fuel share 0.533, scaled by sqrt(h/3) and widened halfway to the block-bootstrap bounds, as cf_bands.json B2; cumulative band = the generic cumulative band scaled per side by the own/generic ratio of the log bounds in the same year; used because its 2022-2026 cumulative band is at least 10% narrower than the generic one and its own held-out coverage holds (turkey_gas_r43.json)",
+    "size_class": "L",
+    "certainty": "C",
+    "own_backtest": {
+     "series": "composite: 0.533 x fuel volume index (EPDK/Eurostat) + 0.467 x other goods (Comtrade, deflated by FRED IREXFUELS)",
+     "origins": "2005-2020",
+     "horizons": "1-5",
+     "n_errors": 70,
+     "q05_q50_q95_per_sqrt_h_over_3": [
+      -0.215,
+      0.1,
+      0.335
+     ],
+     "bootstrap_widened_bounds": [
+      -0.248,
+      0.388
+     ],
+     "coverage": {
+      "leave_window_out_generic_tests": {
+       "hits": {
+        "2007": "2/5",
+        "2012": "5/5",
+        "2016": "5/5"
+       },
+       "rate": 0.8
+      },
+      "out_of_time_train_to_2013_test_origins_2014_2020": {
+       "hits": "24/25",
+       "rate": 0.96
+      }
+     },
+     "safeguard": {
+      "map_series_own_windows_inside": "12/12",
+      "composite_own_windows_inside": "11/12",
+      "generic_as_built_map_series_inside": "12/12"
+     }
+    }
+   }
   }
  },
  "tested_not_used": {

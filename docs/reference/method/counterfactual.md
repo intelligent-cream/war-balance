@@ -309,6 +309,20 @@ Comtrade, 2005–2021), with rolling back-tests calibrated by era as before
 
 China's imports from Russia keep 2021 flat, but the Power of Siberia pipeline was agreed in 2014 (a 30-year CNPC–Gazprom contract with a 38 bcm a year plateau) and has flowed since December 2019, so its ramp-up was expected without the war. China's no-war path includes the **contracted** volume above the 2021 level (10.39 bcm): 15.4 bcm in 2022 (the actual delivery: the 2022 contractual quantity was not found, not verified), 22.0 in 2023 (Gazprom said the 22.7 delivered was 0.7 bcm above its obligation), 30.0 in 2024 (the initial plan; 31.12 delivered; the plan figure is from a search summary of an Interfax report, not verified), and the 38 bcm plateau in 2025 (38.84 delivered) and 2026 ([`power_of_siberia_r15.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/power_of_siberia_r15.json), with Interfax, TASS and Reuters sources). Only deliveries beyond that path, and the 44 bcm a year agreed in autumn 2025, count as war-driven. The extra volume is added to China's expected path at 2019–2021 prices (its pipeline-gas unit value, 15.2 EUR/MWh) before the no-war fuel price is applied. With it, China raised Russia's earnings from trade by 0.74%<!-- n:CHN.rus abs --> of GDP instead of 0.66%. TurkStream deliveries contracted in 2020–2021 are not yet treated this way. <span class="incode">In the code: `cf: "rw"`; `power_of_siberia()` in `build_data.py`</span>
 
+### Japan's Sakhalin-2 LNG
+
+LNG was 23% of Japan's purchases from Russia in 2019–2021 (Ministry of Finance trade statistics), and it kept flowing
+during the war under Japanese buyers' long-term Sakhalin-2 contracts, about 5 Mt a year against 6.1–7.3 Mt imported
+before the war ([`japan_lng_r44.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/japan_lng_r44.json),
+[notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/japan_lng_r44-notes.md)). Since round 44 the LNG part of
+Japan's no-war band comes from those contracts: the floor is the contracted volume (0.76 of 2021; JERA's 0.5 Mt contract
+ended in March 2026, an expiry known before the war), the top the highest pre-war level (×1.30–1.35). The other 77% keep
+the generic band. The two are combined by LNG's share of the expected value, with a correlation of 0.26 between their
+errors (round 8's measured value for fuel and non-fuel errors of pipeline buyers, the more cautious of its two values).
+For 2022–2026 Japan's band narrows from ×0.65–1.50 to ×0.72–1.40. The middle value does not change (the 2021 volume
+held). Only the ~5 Mt total is confirmed; the per-buyer contract table is from press summaries.
+<span class="incode">In the code: `contract_lng()` in `build_data.py`</span>
+
 ### Deliberate choices
 
 - **Actual figures as inputs.** The models use each country's actual 2022–2026 GDP and trade with others, although the war affected them too. The map asks how far a country went out of its way: if its economy shrank because of the war, it would have traded less with Russia anyway, and that is not a choice to credit or blame. Pre-war forecasts were considered and rejected.

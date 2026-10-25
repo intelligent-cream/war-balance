@@ -1,0 +1,7879 @@
+{
+ "generated": "2026-10-24",
+ "round": 43,
+ "status": "Wired into the builder in round 43 (apply_laundered_r39 reads measured_buyers; decisions: quadrature ranges, flat expected path, Malta's bunker rule kept, Urals band dropped for measured series). The 'buyers' block holds the research-stage estimates (variants); the built values are in laundered_r43-notes.md, 'Wired in'.",
+ "units": "EUR bn nominal unless stated (USD at the ECB yearly averages laundered_r39.json uses; AUD at ECB monthly averages: 2019 1.6106, 2020 1.6554, 2021 1.5747, 2022 1.5174, 2023 1.6285, 2024 1.6399, 2025 1.7514, 2026 Jan-Sep 1.6507). 2026 = January-August, not annualised. 'Levels' are the money Russia was paid for the crude inside the fuel a country bought (laund.years in site/data.json). Laundered part = the site's 'laund' part (calc() delta3 at Russia's net gain), cumulative 2022-2026, positive = Russia lost (credit to the buyer), worked out with the site's own model (site/index.html calc(), pSignMC) on patched copies of site/data.json of 2026-10-24.",
+ "question": "Narrow the laundered-oil part for the countries where it decides certainty (Cyprus, Malta, the Philippines, Papua New Guinea, Chile; Fiji and South Africa on Russia's earnings; also Australia, New Zealand, Pakistan): which inputs make the range wide, and what better data say.",
+ "key_findings": [
+  "Cyprus: Eurostat's energy statistics (imports by country of last consignment) show Cyprus's own supply of 2.3-2.5 Mt a year came from Greece, Israel, Spain and Italy; Türkiye 0-44 kt, 'not specified' 0-37 kt. The Comext 'not specified extra-EU' imports (QW, 1.1 Mt in 2024, 1.6 Mt in 2025) that laundered_eu.json counted 40% (10-80%) Turkish/Indian-refined are not in that supply: Cyprus re-exported 1.5-3.7 Mt of fuel a year in 2023-2025 (Libya, Lebanon, Egypt, Nigeria). Cyprus's own fuel from Russian crude therefore fell after the EU bans (Greek, Italian, Belgian and Dutch refiners ran 10-32% Russian crude in 2019-2021, 0 from 2023): the laundered part changes sign, from -0.19 bn (-0.97 to +0.23) to +0.24 bn (+0.07 to +0.34; stacked ends -0.04 to +0.40).",
+  "Malta: 80% of its oil supply is international maritime bunkers (Eurostat INTMARB/imports 0.80 in 2022-2024; energy2.json's 0.81 confirmed); inland use is 17-19%. Its supply came from Italy, Spain, Greece, Croatia, Algeria, Israel and Caspian ports; Türkiye 60-73 kt a year, against CREA-implied ~0.2 Mt. Recomputed by consignor, the part is +0.07 bn (-0.03 to +0.12) under the current half-bunker rule, or +0.02 (0.00 to +0.03) if only inland use is charged (bunkers to no country, as the method page says).",
+  "Chile: the width is an artefact of the 'OTHER' 2% high share applied to US-refined fuel (75-85% of Chile's imports). EIA: US imports from Russia were 673 kb/d in 2021 (4.4% of refinery crude input at most), 147 in 2022 and 0 from 2023; under option A, US refiners (not netted) pass nothing on, as Korea and Japan. With US at zero the range shrinks to a fifth and stays positive.",
+  "Philippines and Pakistan: the largest single driver is not data but the expected path (bmul keeps the old China-route pre-war growth, x1.25-1.8 by 2026 in the middle case). The r39 docstring says the measured buyers' pre-war level is flat; with a flat path (no-war price only, +-15%) the Philippines' laundered credit nearly vanishes (+0.04 bn instead of +0.64) and its net falls to 89% chance. Owner decision.",
+  "India's Russian share in 2026 is higher than r39's 0.30: India's monthly customs (UN Comtrade) give 20.6% in January rising to 53.7% in July (Jan-Jul 37.5%), CREA 55.5% in July: Jan-Aug about 0.39 (0.29-0.47).",
+  "Türkiye: EPDK's annual oil market reports give the Russian share of crude imports as 33.6% (2019), 11.1%, 17.3%, 35.8%, 34.1%, 56.4%, 47.7% (2025) and 26.9% for Jan-Aug 2026 (turkey_gas_r43.json, same reports); r39 used 0.20 for 2019 and 0.45 for 2026.",
+  "EU refiners differ: Eurostat crude imports from Russia in 2019-2021 were Greece 10-18%, Spain 2-5%, Italy 10-14%, France 9-13%, Netherlands 27-32%, Belgium 29-32%, Finland 83-92%, Lithuania 73-80%, Poland 63-72%; r39 used one EU share of 27%. Pre-war charges for buyers of Italian, Spanish and Greek fuel (South Africa, Cyprus, Malta, Chile) fall.",
+  "Australia: APS (monthly, by source country, to August 2026) replaces CREA-based values. It confirms CREA's order of magnitude (2025 Russian crude in fuel 1.27 bn against CREA's 1.6 bn of fuel 'made from Russian crude' Feb 2025-Jan 2026, about 1.1 bn of crude) but raises the pre-war level (Chinese fuel at China's 15.5% Russian crude), so the part hardly moves (-1.58 bn).",
+  "Range construction: r39 stacks the low (and high) ends of quantity, origin share and crude content, and the site then adds the Urals price band in calc(), which partly re-counts the price inside crude content. Combining the independent factors in quadrature (as calc() does for every part's own terms) is what moves the Philippines, Papua New Guinea and New Zealand; data alone (stacked ends kept) moves Chile, Cyprus, Malta and Fiji."
+ ],
+ "origin_russian_share_r43": {
+  "note": "(central, low, high) Russian share of the origin's crude (or of a hub's pool), option A as in r39 (refiners not netted here at zero). India: UN Comtrade (India's own customs, tonnes) 2019-2025, 2026 from India's monthly customs Jan-Jul plus CREA July; band from the exporting refineries' deviation (KSE: six exporting refineries' Russian-derived exports 48%/27%/21% against national ~35/30/33% in three periods 2025-26). Türkiye: EPDK. EU members: Eurostat nrg_ti_oil crude imports from Russia / total (2025-2026 = 2024). USA: 0 (EIA; option A). China, UAE, Brunei, Korea, Japan, Thailand: unchanged from laundered_r39.json. Hub pools: r39's pools rescaled by the new shares of their product imports' origins, band x0.8-1.25.",
+  "shares": {
+   "IND": {
+    "2019": [
+     0.0134,
+     0.0107,
+     0.0168
+    ],
+    "2020": [
+     0.0133,
+     0.0106,
+     0.0166
+    ],
+    "2021": [
+     0.0212,
+     0.017,
+     0.0265
+    ],
+    "2022": [
+     0.152,
+     0.1216,
+     0.1976
+    ],
+    "2023": [
+     0.378,
+     0.3213,
+     0.4725
+    ],
+    "2024": [
+     0.381,
+     0.3238,
+     0.4763
+    ],
+    "2025": [
+     0.337,
+     0.2865,
+     0.4213
+    ],
+    "2026": [
+     0.39,
+     0.2925,
+     0.468
+    ]
+   },
+   "TUR": {
+    "2019": [
+     0.3363,
+     0.2858,
+     0.4036
+    ],
+    "2020": [
+     0.1113,
+     0.0946,
+     0.1335
+    ],
+    "2021": [
+     0.1726,
+     0.1467,
+     0.2071
+    ],
+    "2022": [
+     0.3584,
+     0.3046,
+     0.4301
+    ],
+    "2023": [
+     0.341,
+     0.2899,
+     0.4093
+    ],
+    "2024": [
+     0.5644,
+     0.4797,
+     0.6772
+    ],
+    "2025": [
+     0.4768,
+     0.4053,
+     0.5722
+    ],
+    "2026": [
+     0.2691,
+     0.2288,
+     0.3229
+    ]
+   },
+   "USA": {
+    "2019": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "2020": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "2021": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "2022": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "2023": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "2024": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "2025": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "2026": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "GRC": {
+    "2019": [
+     0.0953,
+     0.0857,
+     0.1048
+    ],
+    "2020": [
+     0.1773,
+     0.1596,
+     0.1951
+    ],
+    "2021": [
+     0.1309,
+     0.1178,
+     0.1439
+    ],
+    "2022": [
+     0.0277,
+     0.0249,
+     0.0304
+    ],
+    "2023": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2024": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2025": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2026": [
+     0.0,
+     0.0,
+     0.01
+    ]
+   },
+   "ITA": {
+    "2019": [
+     0.1441,
+     0.1297,
+     0.1585
+    ],
+    "2020": [
+     0.1111,
+     0.1,
+     0.1222
+    ],
+    "2021": [
+     0.101,
+     0.0909,
+     0.1111
+    ],
+    "2022": [
+     0.1932,
+     0.1738,
+     0.2125
+    ],
+    "2023": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2024": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2025": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2026": [
+     0.0,
+     0.0,
+     0.01
+    ]
+   },
+   "ESP": {
+    "2019": [
+     0.024,
+     0.0216,
+     0.0264
+    ],
+    "2020": [
+     0.0179,
+     0.0161,
+     0.0197
+    ],
+    "2021": [
+     0.0457,
+     0.0412,
+     0.0503
+    ],
+    "2022": [
+     0.011,
+     0.0099,
+     0.0121
+    ],
+    "2023": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2024": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2025": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2026": [
+     0.0,
+     0.0,
+     0.01
+    ]
+   },
+   "NLD": {
+    "2019": [
+     0.2875,
+     0.2588,
+     0.3163
+    ],
+    "2020": [
+     0.2646,
+     0.2381,
+     0.291
+    ],
+    "2021": [
+     0.3225,
+     0.2902,
+     0.3547
+    ],
+    "2022": [
+     0.2369,
+     0.2132,
+     0.2605
+    ],
+    "2023": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2024": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2025": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2026": [
+     0.0,
+     0.0,
+     0.01
+    ]
+   },
+   "BEL": {
+    "2019": [
+     0.3239,
+     0.2915,
+     0.3563
+    ],
+    "2020": [
+     0.2994,
+     0.2695,
+     0.3294
+    ],
+    "2021": [
+     0.2922,
+     0.263,
+     0.3214
+    ],
+    "2022": [
+     0.2211,
+     0.199,
+     0.2432
+    ],
+    "2023": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2024": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2025": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2026": [
+     0.0,
+     0.0,
+     0.01
+    ]
+   },
+   "DEU": {
+    "2019": [
+     0.315,
+     0.2835,
+     0.3465
+    ],
+    "2020": [
+     0.3401,
+     0.3061,
+     0.3741
+    ],
+    "2021": [
+     0.3412,
+     0.3071,
+     0.3754
+    ],
+    "2022": [
+     0.2537,
+     0.2284,
+     0.2791
+    ],
+    "2023": [
+     0.0027,
+     0.0,
+     0.01
+    ],
+    "2024": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2025": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2026": [
+     0.0,
+     0.0,
+     0.01
+    ]
+   },
+   "FRA": {
+    "2019": [
+     0.1277,
+     0.1149,
+     0.1404
+    ],
+    "2020": [
+     0.0877,
+     0.079,
+     0.0965
+    ],
+    "2021": [
+     0.0885,
+     0.0797,
+     0.0974
+    ],
+    "2022": [
+     0.0519,
+     0.0467,
+     0.0571
+    ],
+    "2023": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2024": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2025": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2026": [
+     0.0,
+     0.0,
+     0.01
+    ]
+   },
+   "FIN": {
+    "2019": [
+     0.9208,
+     0.8287,
+     1.0128
+    ],
+    "2020": [
+     0.8404,
+     0.7564,
+     0.9245
+    ],
+    "2021": [
+     0.8301,
+     0.747,
+     0.9131
+    ],
+    "2022": [
+     0.1756,
+     0.158,
+     0.1931
+    ],
+    "2023": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2024": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2025": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2026": [
+     0.0,
+     0.0,
+     0.01
+    ]
+   },
+   "SWE": {
+    "2019": [
+     0.2911,
+     0.2619,
+     0.3202
+    ],
+    "2020": [
+     0.0805,
+     0.0724,
+     0.0885
+    ],
+    "2021": [
+     0.0872,
+     0.0785,
+     0.0959
+    ],
+    "2022": [
+     0.0255,
+     0.023,
+     0.0281
+    ],
+    "2023": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2024": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2025": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2026": [
+     0.0,
+     0.0,
+     0.01
+    ]
+   },
+   "POL": {
+    "2019": [
+     0.6836,
+     0.6153,
+     0.752
+    ],
+    "2020": [
+     0.7203,
+     0.6482,
+     0.7923
+    ],
+    "2021": [
+     0.6343,
+     0.5709,
+     0.6978
+    ],
+    "2022": [
+     0.4304,
+     0.3874,
+     0.4735
+    ],
+    "2023": [
+     0.0204,
+     0.0,
+     0.0245
+    ],
+    "2024": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2025": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2026": [
+     0.0,
+     0.0,
+     0.01
+    ]
+   },
+   "LTU": {
+    "2019": [
+     0.7872,
+     0.7085,
+     0.8659
+    ],
+    "2020": [
+     0.7261,
+     0.6535,
+     0.7988
+    ],
+    "2021": [
+     0.799,
+     0.7191,
+     0.8789
+    ],
+    "2022": [
+     0.1726,
+     0.1553,
+     0.1898
+    ],
+    "2023": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2024": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2025": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2026": [
+     0.0,
+     0.0,
+     0.01
+    ]
+   },
+   "ROU": {
+    "2019": [
+     0.388,
+     0.3492,
+     0.4268
+    ],
+    "2020": [
+     0.3233,
+     0.291,
+     0.3556
+    ],
+    "2021": [
+     0.2655,
+     0.2389,
+     0.292
+    ],
+    "2022": [
+     0.2642,
+     0.2378,
+     0.2906
+    ],
+    "2023": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2024": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2025": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "2026": [
+     0.0,
+     0.0,
+     0.01
+    ]
+   },
+   "SGP_pool": {
+    "2019": [
+     0.0288,
+     0.023,
+     0.036
+    ],
+    "2020": [
+     0.0295,
+     0.0236,
+     0.0369
+    ],
+    "2021": [
+     0.03,
+     0.024,
+     0.0375
+    ],
+    "2022": [
+     0.0365,
+     0.0292,
+     0.0456
+    ],
+    "2023": [
+     0.0391,
+     0.0313,
+     0.0489
+    ],
+    "2024": [
+     0.039,
+     0.0312,
+     0.0488
+    ],
+    "2025": [
+     0.0317,
+     0.0254,
+     0.0396
+    ],
+    "2026": [
+     0.0413,
+     0.033,
+     0.0516
+    ]
+   },
+   "MYS_pool": {
+    "2019": [
+     0.0258,
+     0.0206,
+     0.0323
+    ],
+    "2020": [
+     0.0269,
+     0.0215,
+     0.0336
+    ],
+    "2021": [
+     0.0249,
+     0.0199,
+     0.0311
+    ],
+    "2022": [
+     0.0345,
+     0.0276,
+     0.0431
+    ],
+    "2023": [
+     0.0438,
+     0.035,
+     0.0548
+    ],
+    "2024": [
+     0.0446,
+     0.0357,
+     0.0558
+    ],
+    "2025": [
+     0.0346,
+     0.0277,
+     0.0432
+    ],
+    "2026": [
+     0.0436,
+     0.0349,
+     0.0545
+    ]
+   },
+   "OMN_pool": {
+    "2019": [
+     0.0007,
+     0.0006,
+     0.0009
+    ],
+    "2020": [
+     0.0045,
+     0.0036,
+     0.0056
+    ],
+    "2021": [
+     0.006,
+     0.0048,
+     0.0075
+    ],
+    "2022": [
+     0.0247,
+     0.0198,
+     0.0309
+    ],
+    "2023": [
+     0.0281,
+     0.0225,
+     0.0351
+    ],
+    "2024": [
+     0.0274,
+     0.0219,
+     0.0343
+    ],
+    "2025": [
+     0.0219,
+     0.0175,
+     0.0274
+    ],
+    "2026": [
+     0.0257,
+     0.0205,
+     0.0321
+    ]
+   }
+  },
+  "cert": {
+   "IND": "B (customs; route band from Kpler via KSE)",
+   "TUR": "A (regulator, matches CREA within 1% in 2024)",
+   "EU": "A (Eurostat; BG confidential, r39 value kept)",
+   "USA": "A (EIA)",
+   "hub_pools": "C (mass balance of hub customs)"
+  },
+  "eurostat_crude_imports_kt_RU_total": {
+   "EL": {
+    "2019": [
+     2174.2,
+     22826.0
+    ],
+    "2020": [
+     4037.4,
+     22766.7
+    ],
+    "2021": [
+     3063.1,
+     23407.1
+    ],
+    "2022": [
+     606.5,
+     21928.4
+    ],
+    "2023": [
+     0.0,
+     23331.4
+    ],
+    "2024": [
+     0.0,
+     23946.1
+    ]
+   },
+   "IT": {
+    "2019": [
+     9095.7,
+     63139.5
+    ],
+    "2020": [
+     5595.5,
+     50363.1
+    ],
+    "2021": [
+     5757.9,
+     57022.7
+    ],
+    "2022": [
+     12075.5,
+     62515.3
+    ],
+    "2023": [
+     0.0,
+     61244.1
+    ],
+    "2024": [
+     0.0,
+     56051.0
+    ]
+   },
+   "ES": {
+    "2019": [
+     1591.0,
+     66303.0
+    ],
+    "2020": [
+     980.0,
+     54855.0
+    ],
+    "2021": [
+     2569.2,
+     56171.8
+    ],
+    "2022": [
+     698.5,
+     63691.5
+    ],
+    "2023": [
+     0.0,
+     61558.7
+    ],
+    "2024": [
+     0.0,
+     64587.9
+    ]
+   },
+   "FR": {
+    "2019": [
+     6171.0,
+     48335.0
+    ],
+    "2020": [
+     2906.0,
+     33121.0
+    ],
+    "2021": [
+     2995.0,
+     33831.9
+    ],
+    "2022": [
+     2130.0,
+     41016.0
+    ],
+    "2023": [
+     0.0,
+     45506.0
+    ],
+    "2024": [
+     0.0,
+     44577.0
+    ]
+   },
+   "NL": {
+    "2019": [
+     16549.3,
+     57554.8
+    ],
+    "2020": [
+     13082.2,
+     49450.2
+    ],
+    "2021": [
+     16930.4,
+     52498.6
+    ],
+    "2022": [
+     12599.3,
+     53194.7
+    ],
+    "2023": [
+     0.0,
+     53744.8
+    ],
+    "2024": [
+     0.0,
+     48372.1
+    ]
+   },
+   "BE": {
+    "2019": [
+     11177.9,
+     34513.4
+    ],
+    "2020": [
+     8181.7,
+     27322.9
+    ],
+    "2021": [
+     8382.4,
+     28686.2
+    ],
+    "2022": [
+     6123.7,
+     27694.3
+    ],
+    "2023": [
+     0.0,
+     30169.0
+    ],
+    "2024": [
+     0.0,
+     30826.8
+    ]
+   },
+   "DE": {
+    "2019": [
+     27091.0,
+     85991.0
+    ],
+    "2020": [
+     28132.0,
+     82724.0
+    ],
+    "2021": [
+     27741.0,
+     81296.0
+    ],
+    "2022": [
+     22392.0,
+     88248.0
+    ],
+    "2023": [
+     205.0,
+     77197.0
+    ],
+    "2024": [
+     0,
+     84018.0
+    ]
+   },
+   "FI": {
+    "2019": [
+     10958.0,
+     11901.0
+    ],
+    "2020": [
+     9007.0,
+     10717.0
+    ],
+    "2021": [
+     6491.0,
+     7820.0
+    ],
+    "2022": [
+     1603.0,
+     9130.0
+    ],
+    "2023": [
+     0.0,
+     9478.0
+    ],
+    "2024": [
+     0.0,
+     8103.0
+    ]
+   },
+   "LT": {
+    "2019": [
+     7580.4,
+     9629.9
+    ],
+    "2020": [
+     5692.8,
+     7839.8
+    ],
+    "2021": [
+     6398.8,
+     8008.3
+    ],
+    "2022": [
+     1416.0,
+     8204.9
+    ],
+    "2023": [
+     0.0,
+     9092.7
+    ],
+    "2024": [
+     0.0,
+     8854.4
+    ]
+   },
+   "PL": {
+    "2019": [
+     18199.3,
+     26622.0
+    ],
+    "2020": [
+     17938.8,
+     24905.8
+    ],
+    "2021": [
+     14982.8,
+     23619.6
+    ],
+    "2022": [
+     11316.6,
+     26290.8
+    ],
+    "2023": [
+     499.9,
+     24493.1
+    ],
+    "2024": [
+     0.0,
+     25522.8
+    ]
+   },
+   "RO": {
+    "2019": [
+     3361.9,
+     8664.9
+    ],
+    "2020": [
+     2286.9,
+     7073.4
+    ],
+    "2021": [
+     1811.3,
+     6823.4
+    ],
+    "2022": [
+     2299.8,
+     8704.7
+    ],
+    "2023": [
+     0.0,
+     7371.8
+    ],
+    "2024": [
+     0.0,
+     8263.1
+    ]
+   },
+   "SE": {
+    "2019": [
+     4759.0,
+     16351.0
+    ],
+    "2020": [
+     1422.8,
+     17675.8
+    ],
+    "2021": [
+     1564.9,
+     17952.5
+    ],
+    "2022": [
+     480.6,
+     18846.6
+    ],
+    "2023": [
+     0.0,
+     17329.3
+    ],
+    "2024": [
+     0.0,
+     18164.8
+    ]
+   },
+   "EU27_2020": {
+    "2019": [
+     138524.8,
+     507158.9
+    ],
+    "2020": [
+     112980.3,
+     439359.2
+    ],
+    "2021": [
+     112447.9,
+     446453.5
+    ],
+    "2022": [
+     88429.8,
+     479642.1
+    ],
+    "2023": [
+     14367.9,
+     471568.3
+    ],
+    "2024": [
+     11705.0,
+     471284.2
+    ]
+   }
+  },
+  "india_monthly_2026_customs_share": {
+   "2026-01": 0.206,
+   "2026-02": 0.265,
+   "2026-03": 0.384,
+   "2026-04": 0.349,
+   "2026-05": 0.408,
+   "2026-06": 0.491,
+   "2026-07": 0.537,
+   "Jan-Jul": 0.375,
+   "Jul (CREA, press)": 0.555
+  },
+  "turkey_epdk_kt": {
+   "2019": [
+    10449.9,
+    31073.8
+   ],
+   "2020": [
+    3267.9,
+    29368.8
+   ],
+   "2021": [
+    5421.6,
+    31418.4
+   ],
+   "2022": [
+    12001.0,
+    33486.2
+   ],
+   "2023": [
+    10707.1,
+    31395.1
+   ],
+   "2024": [
+    16944.4,
+    30024.6
+   ],
+   "2025": [
+    15229.3,
+    31937.8
+   ],
+   "2026 Jan-Aug": [
+    5852,
+    21745
+   ]
+  },
+  "usa_eia": {
+   "imports_from_russia_crude_and_products_kbd": {
+    "2020": 540,
+    "2021": 673,
+    "2022": 147,
+    "2023": 0
+   },
+   "refinery_crude_input_kbd": {
+    "2020": 14212,
+    "2021": 15147,
+    "2022": 15977,
+    "2023": 15967,
+    "2024": 16225,
+    "2025": 16369
+   }
+  }
+ },
+ "cyprus_malta_bunkers": {
+  "eurostat_oil_balance_ktoe": {
+   "CY": {
+    "imports": {
+     "2019": 2602,
+     "2020": 2269,
+     "2021": 2282,
+     "2022": 2499,
+     "2023": 2517,
+     "2024": 2494
+    },
+    "international_maritime_bunkers": {
+     "2019": 277,
+     "2020": 276,
+     "2021": 253,
+     "2022": 288,
+     "2023": 232,
+     "2024": 214
+    },
+    "gross_inland_consumption": {
+     "2019": 2332,
+     "2020": 1956,
+     "2021": 2031,
+     "2022": 2188,
+     "2023": 2223,
+     "2024": 2313
+    },
+    "of_which_power": {
+     "2019": 1011,
+     "2020": 937,
+     "2021": 959,
+     "2022": 974,
+     "2023": 950,
+     "2024": 1009
+    }
+   },
+   "MT": {
+    "imports": {
+     "2019": 3069,
+     "2020": 2711,
+     "2021": 2373,
+     "2022": 2655,
+     "2023": 2822,
+     "2024": 2626
+    },
+    "international_maritime_bunkers": {
+     "2019": 2262,
+     "2020": 2186,
+     "2021": 1939,
+     "2022": 2125,
+     "2023": 2250,
+     "2024": 2100
+    },
+    "gross_inland_consumption": {
+     "2019": 491,
+     "2020": 350,
+     "2021": 378,
+     "2022": 475,
+     "2023": 480,
+     "2024": 495
+    }
+   }
+  },
+  "shares": {
+   "CY_bunkers_of_imports": [
+    0.11,
+    0.09,
+    0.12
+   ],
+   "CY_inland_of_imports": [
+    0.88,
+    0.93
+   ],
+   "MT_bunkers_of_imports": [
+    0.74,
+    0.8,
+    0.82
+   ],
+   "MT_inland_of_imports": [
+    0.17,
+    0.18,
+    0.2
+   ]
+  },
+  "cyprus_consigned_kt_eurostat_energy": {
+   "2022": {
+    "EL": 632,
+    "IL": 806,
+    "ES": 146,
+    "IT": 416,
+    "BE": 85,
+    "NL": 70,
+    "TR": 44,
+    "GE": 32,
+    "RU": 190,
+    "NSP": 8
+   },
+   "2023": {
+    "EL": 877,
+    "IL": 694,
+    "ES": 521,
+    "IT": 140,
+    "BE": 140,
+    "TR": 33,
+    "HR": 30,
+    "DZ": 24,
+    "NSP": 5
+   },
+   "2024": {
+    "EL": 1004,
+    "IL": 693,
+    "ES": 538,
+    "IT": 72,
+    "FR": 41,
+    "NSP": 37,
+    "MT": 33,
+    "US": 23,
+    "DZ": 21,
+    "TR": 0
+   }
+  },
+  "cyprus_comext_kt": {
+   "imports_QW_not_specified_extra_EU": {
+    "2021": 225,
+    "2022": 244,
+    "2023": 618,
+    "2024": 1080,
+    "2025": 1575
+   },
+   "imports_world": {
+    "2023": 3547,
+    "2024": 3213,
+    "2025": 4751
+   },
+   "exports_world": {
+    "2023": 1465,
+    "2024": 1653,
+    "2025": 3652
+   },
+   "exports_top": "Libya 742/938/1963, Lebanon 516/387/541, Egypt 0/153/237, Nigeria 186/133/26 (2023/2024/2025)"
+  },
+  "malta_consigned_kt_eurostat_energy_2024": {
+   "IT": 611,
+   "KZ": 306,
+   "ES": 276,
+   "EL": 205,
+   "IL": 169,
+   "DZ": 124,
+   "HR": 105,
+   "AZ": 90,
+   "FR": 86,
+   "SE": 81,
+   "BE": 75,
+   "SA": 68,
+   "TR": 60,
+   "TM": 58,
+   "TN": 57,
+   "IN": 20
+  },
+  "how_the_site_counts_it": "Method page: bunkers have no buyer country and stay with the hub. Builder: Malta keeps 1 - 0.5 x 0.81 = 0.595 of its laundered oil in the middle case (HUB_BUNKER_HALF_MID, judgement), all of it at the high end, none of the bunker share at the low end; Cyprus is not a hub (all charged). The data: Cyprus's imports are 88-93% inland use, Malta's 17-20%. Cyprus is a trading hub too (re-exports), but of fuel that does not enter its energy supply."
+ },
+ "buyers": {
+  "CYP": {
+   "name": "Cyprus",
+   "cert": "B",
+   "needed_for_certainty": "net x0.98",
+   "what_makes_the_range_wide_now": "years_hi: Comext 'not specified' extra-EU imports (QW) counted 40% (10-80%) Turkish/Indian-refined, plus CREA's Turkish-port cargoes to Cyprus counted as consumed there; Eurostat energy statistics show neither is in Cyprus's own supply (QW fuel is re-exported to Libya, Lebanon, Egypt)",
+   "drivers_now_share_of_half_width": {
+    "base": -0.28,
+    "actual": 0.59,
+    "price": 0.09,
+    "trend": 0.0,
+    "gain": 0.06
+   },
+   "russian_crude_in_fuel_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.10304,
+     0.09466,
+     0.14064,
+     0.10717,
+     0.04679,
+     0.05676,
+     0.06386,
+     0.01093
+    ],
+    "low": [
+     0.09116,
+     0.08362,
+     0.12486,
+     0.09008,
+     0.02665,
+     0.03205,
+     0.03617,
+     0.00368
+    ],
+    "high": [
+     0.12426,
+     0.10718,
+     0.15975,
+     0.14814,
+     0.08824,
+     0.10922,
+     0.09669,
+     0.13149
+    ],
+    "low_stacked": [
+     0.07567,
+     0.0731,
+     0.10854,
+     0.07243,
+     0.02445,
+     0.02687,
+     0.03244,
+     0.00202
+    ],
+    "high_stacked": [
+     0.14826,
+     0.1241,
+     0.18612,
+     0.20694,
+     0.14001,
+     0.15678,
+     0.1326,
+     0.16563
+    ]
+   },
+   "site_fields_proposed": {
+    "years": [
+     0.14064,
+     0.10717,
+     0.04679,
+     0.05676,
+     0.06386,
+     0.01093
+    ],
+    "years_lo": [
+     0.12486,
+     0.09008,
+     0.02665,
+     0.03205,
+     0.03617,
+     0.00368
+    ],
+    "years_hi": [
+     0.15975,
+     0.14814,
+     0.08824,
+     0.10922,
+     0.09669,
+     0.13149
+    ],
+    "base": 0.11482,
+    "base_range": [
+     0.10165,
+     0.13241
+    ]
+   },
+   "site_fields_stacked_ends": {
+    "years": [
+     0.14064,
+     0.10717,
+     0.04679,
+     0.05676,
+     0.06386,
+     0.01093
+    ],
+    "years_lo": [
+     0.10854,
+     0.07243,
+     0.02445,
+     0.02687,
+     0.03244,
+     0.00202
+    ],
+    "years_hi": [
+     0.18612,
+     0.20694,
+     0.14001,
+     0.15678,
+     0.1326,
+     0.16563
+    ],
+    "base": 0.11482,
+    "base_range": [
+     0.08749,
+     0.15494
+    ]
+   },
+   "by_origin_eur_m": {
+    "2019": {
+     "ARE": 0.0,
+     "BEL": 25.26,
+     "BGR": 0.0,
+     "DEU": 0.05,
+     "GRC": 29.33,
+     "ESP": 1.94,
+     "FRA": 16.56,
+     "HRV": 0.07,
+     "IND": 0.0,
+     "ITA": 16.39,
+     "LTU": 0.07,
+     "NLD": 8.07,
+     "NSP": 5.11,
+     "POL": 0.02,
+     "PRT": 0.02,
+     "SWE": 0.0,
+     "TUR": 0.15
+    },
+    "2020": {
+     "ARE": 0.0,
+     "BEL": 33.57,
+     "BGR": 0.0,
+     "DEU": 0.03,
+     "GRC": 42.75,
+     "ESP": 0.5,
+     "FRA": 1.87,
+     "ITA": 10.57,
+     "LTU": 0.04,
+     "NLD": 5.2,
+     "POL": 0.06,
+     "ROU": 0.0,
+     "SWE": 0.0,
+     "SGP": 0.05
+    },
+    "2021": {
+     "ARE": 0.0,
+     "AUT": 0.0,
+     "BEL": 37.75,
+     "BGR": 0.0,
+     "CHN": 0.0,
+     "DEU": 0.08,
+     "GRC": 39.33,
+     "ESP": 0.98,
+     "FRA": 0.0,
+     "IND": 0.0,
+     "ITA": 14.07,
+     "LTU": 0.08,
+     "NLD": 46.06,
+     "POL": 0.01,
+     "ROU": 0.01,
+     "SWE": 0.0,
+     "TUR": 2.25
+    },
+    "2022": {
+     "ARE": 0.01,
+     "BEL": 12.13,
+     "BGR": 0.84,
+     "CZE": 0.0,
+     "DEU": 0.09,
+     "GRC": 11.27,
+     "ESP": 1.03,
+     "FRA": 0.68,
+     "GEO": 6.12,
+     "ITA": 51.89,
+     "NLD": 10.67,
+     "NSP": 0.97,
+     "POL": 0.01,
+     "ROU": 0.01,
+     "SWE": 0.0,
+     "TUR": 9.84,
+     "GRC_resale_of_TR_ports": 1.6
+    },
+    "2023": {
+     "ARE": 0.0,
+     "BGR": 0.0,
+     "CHN": 0.32,
+     "CZE": 0.0,
+     "DEU": 0.0,
+     "GEO": 0.0,
+     "IND": 0.0,
+     "NSP": 0.42,
+     "POL": 0.0,
+     "SVK": 0.0,
+     "TUR": 5.63,
+     "GRC_resale_of_TR_ports": 40.4
+    },
+    "2024": {
+     "ARE": 0.02,
+     "BGR": 0.0,
+     "CHN": 0.0,
+     "CZE": 0.0,
+     "IND": 0.0,
+     "NSP": 5.93,
+     "SGP": 0.0,
+     "SVK": 0.01,
+     "GRC_resale_of_TR_ports": 50.8
+    },
+    "2025": {
+     "ARE": 0.01,
+     "BGR": 0.0,
+     "CHN": 0.0,
+     "CZE": 0.0,
+     "IND": 0.0,
+     "NSP": 4.04,
+     "SGP": 0.0,
+     "SVK": 0.0,
+     "GRC_resale_of_TR_ports": 59.8
+    },
+    "2026": {
+     "ARE": 0.01,
+     "BGR": 0.0,
+     "CHN": 0.0,
+     "CZE": 0.0,
+     "IND": 0.0,
+     "NSP": 1.91,
+     "SGP": 0.0,
+     "SVK": 0.0,
+     "GRC_resale_of_TR_ports": 9.0
+    }
+   },
+   "laund_part_eur_bn": {
+    "current": [
+     -0.1899,
+     -0.9739,
+     0.2347
+    ],
+    "data_stacked": [
+     0.2418,
+     -0.0438,
+     0.3973
+    ],
+    "data_quad": [
+     0.2418,
+     0.0692,
+     0.3375
+    ],
+    "data_quad_flat": [
+     0.2266,
+     0.046,
+     0.3355
+    ],
+    "data_quad_noprice": [
+     0.2418,
+     0.0693,
+     0.3298
+    ]
+   },
+   "laund_part_pct_gdp": {
+    "current": [
+     -0.588,
+     -3.017,
+     0.727
+    ],
+    "data_stacked": [
+     0.749,
+     -0.136,
+     1.231
+    ],
+    "data_quad": [
+     0.749,
+     0.214,
+     1.045
+    ],
+    "data_quad_flat": [
+     0.702,
+     0.143,
+     1.039
+    ],
+    "data_quad_noprice": [
+     0.749,
+     0.215,
+     1.021
+    ]
+   },
+   "chance_net": {
+    "current": 0.945,
+    "data_stacked": 0.999,
+    "data_quad": 1,
+    "data_quad_flat": 1,
+    "data_quad_noprice": 1
+   },
+   "chance_rus": {
+    "current": 0.631,
+    "data_stacked": 0.938,
+    "data_quad": 0.958,
+    "data_quad_flat": 0.952,
+    "data_quad_noprice": 0.958
+   },
+   "alternatives_crossing_net": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   },
+   "alternatives_crossing_rus": {
+    "current": [
+     "refiner",
+     "normal_return"
+    ],
+    "data_stacked": [
+     "refiner"
+    ],
+    "data_quad": [
+     "refiner"
+    ],
+    "data_quad_flat": [
+     "refiner"
+    ],
+    "data_quad_noprice": [
+     "refiner"
+    ]
+   }
+  },
+  "MLT": {
+   "name": "Malta",
+   "cert": "B",
+   "needed_for_certainty": "net x0.71",
+   "what_makes_the_range_wide_now": "the bunker split (low end: all bunker fuel out; middle: half) and the EU-refiner route's 2021-2022 values; CREA Turkish-port cargoes to Malta capped at LAUNDERED_CAP_BY",
+   "drivers_now_share_of_half_width": {
+    "base": -0.14,
+    "actual": 0.16,
+    "price": 0.0,
+    "trend": 0.0,
+    "gain": 0.01
+   },
+   "russian_crude_in_fuel_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.10452,
+     0.04377,
+     0.05939,
+     0.09978,
+     0.03051,
+     0.03738,
+     0.03401,
+     0.01086
+    ],
+    "low": [
+     0.09234,
+     0.0391,
+     0.05268,
+     0.08367,
+     0.02226,
+     0.02832,
+     0.02412,
+     0.00786
+    ],
+    "high": [
+     0.1131,
+     0.04843,
+     0.06689,
+     0.14239,
+     0.0678,
+     0.06166,
+     0.05775,
+     0.033
+    ],
+    "low_stacked": [
+     0.08054,
+     0.03305,
+     0.0457,
+     0.06734,
+     0.01622,
+     0.02261,
+     0.01858,
+     0.00474
+    ],
+    "high_stacked": [
+     0.1281,
+     0.05961,
+     0.08212,
+     0.20638,
+     0.12251,
+     0.10236,
+     0.10045,
+     0.06932
+    ]
+   },
+   "site_fields_proposed": {
+    "years": [
+     0.05939,
+     0.09978,
+     0.03051,
+     0.03738,
+     0.03401,
+     0.01086
+    ],
+    "years_lo": [
+     0.05268,
+     0.08367,
+     0.02226,
+     0.02832,
+     0.02412,
+     0.00786
+    ],
+    "years_hi": [
+     0.06689,
+     0.14239,
+     0.0678,
+     0.06166,
+     0.05775,
+     0.033
+    ],
+    "base": 0.06833,
+    "base_range": [
+     0.06063,
+     0.07519
+    ]
+   },
+   "site_fields_stacked_ends": {
+    "years": [
+     0.05939,
+     0.09978,
+     0.03051,
+     0.03738,
+     0.03401,
+     0.01086
+    ],
+    "years_lo": [
+     0.0457,
+     0.06734,
+     0.01622,
+     0.02261,
+     0.01858,
+     0.00474
+    ],
+    "years_hi": [
+     0.08212,
+     0.20638,
+     0.12251,
+     0.10236,
+     0.10045,
+     0.06932
+    ],
+    "base": 0.06833,
+    "base_range": [
+     0.05232,
+     0.08919
+    ]
+   },
+   "by_origin_eur_m": {
+    "2019": {
+     "ARE": 0.13,
+     "BEL": 1.95,
+     "DEU": 0.0,
+     "DNK": 1.63,
+     "GRC": 6.98,
+     "ESP": 10.93,
+     "FRA": 4.8,
+     "HRV": 0.29,
+     "ITA": 14.16,
+     "NLD": 58.85,
+     "ROU": 0.28,
+     "SGP": 0.04,
+     "TUR": 4.48
+    },
+    "2020": {
+     "ARE": 0.0,
+     "BEL": 0.23,
+     "DEU": 0.02,
+     "GRC": 3.21,
+     "ESP": 1.74,
+     "FRA": 5.09,
+     "GEO": 1.24,
+     "IND": 0.03,
+     "ITA": 13.96,
+     "NLD": 10.07,
+     "ROU": 0.96,
+     "SWE": 1.0,
+     "SGP": 0.02,
+     "TUR": 6.21
+    },
+    "2021": {
+     "ARE": 0.0,
+     "BEL": 0.03,
+     "BGR": 0.44,
+     "DEU": 0.02,
+     "DNK": 0.04,
+     "GRC": 7.93,
+     "ESP": 5.97,
+     "FIN": 0.33,
+     "FRA": 5.47,
+     "ITA": 28.98,
+     "LTU": 0.0,
+     "NLD": 6.64,
+     "POL": 0.0,
+     "SGP": 0.01,
+     "TUR": 3.52
+    },
+    "2022": {
+     "ARE": 4.08,
+     "BEL": 0.67,
+     "DEU": 0.01,
+     "GRC": 3.99,
+     "ESP": 1.71,
+     "FRA": 5.85,
+     "GEO": 4.76,
+     "IND": 8.04,
+     "ITA": 47.47,
+     "NLD": 8.69,
+     "SWE": 0.0,
+     "SGP": 0.1,
+     "SVK": 0.01,
+     "TUR": 13.78,
+     "GRC_resale_of_TR_ports": 0.6
+    },
+    "2023": {
+     "ARE": 0.05,
+     "BGR": 0.0,
+     "DEU": 0.0,
+     "GEO": 6.16,
+     "IND": 0.01,
+     "POL": 0.0,
+     "SGP": 0.0,
+     "SVK": 0.01,
+     "TUR": 10.68,
+     "GRC_resale_of_TR_ports": 13.6
+    },
+    "2024": {
+     "ARE": 0.0,
+     "BGR": 0.26,
+     "CHN": 0.49,
+     "GEO": 0.28,
+     "IND": 3.36,
+     "SGP": 0.01,
+     "SVK": 0.02,
+     "TUR": 15.76,
+     "GRC_resale_of_TR_ports": 17.2
+    },
+    "2025": {
+     "ARE": 0.0,
+     "BGR": 0.21,
+     "CHN": 0.35,
+     "GEO": 0.22,
+     "IND": 2.37,
+     "SGP": 0.01,
+     "SVK": 0.02,
+     "TUR": 10.65,
+     "GRC_resale_of_TR_ports": 20.2
+    },
+    "2026": {
+     "ARE": 0.0,
+     "BGR": 0.09,
+     "CHN": 0.36,
+     "GEO": 0.18,
+     "IND": 2.25,
+     "SGP": 0.01,
+     "SVK": 0.01,
+     "TUR": 4.95,
+     "GRC_resale_of_TR_ports": 3.0
+    }
+   },
+   "laund_part_eur_bn": {
+    "current": [
+     0.0275,
+     -0.1141,
+     0.1693
+    ],
+    "data_stacked": [
+     0.0681,
+     -0.0646,
+     0.1276
+    ],
+    "data_quad": [
+     0.0681,
+     -0.0315,
+     0.1208
+    ],
+    "data_quad_inland": [
+     0.0206,
+     0.0019,
+     0.0308
+    ],
+    "data_quad_flat": [
+     0.0669,
+     -0.034,
+     0.1235
+    ],
+    "data_quad_noprice": [
+     0.0681,
+     -0.0314,
+     0.118
+    ]
+   },
+   "laund_part_pct_gdp": {
+    "current": [
+     0.133,
+     -0.552,
+     0.819
+    ],
+    "data_stacked": [
+     0.329,
+     -0.312,
+     0.617
+    ],
+    "data_quad": [
+     0.329,
+     -0.152,
+     0.584
+    ],
+    "data_quad_inland": [
+     0.1,
+     0.009,
+     0.149
+    ],
+    "data_quad_flat": [
+     0.324,
+     -0.164,
+     0.597
+    ],
+    "data_quad_noprice": [
+     0.329,
+     -0.152,
+     0.571
+    ]
+   },
+   "chance_net": {
+    "current": 0.927,
+    "data_stacked": 0.963,
+    "data_quad": 0.974,
+    "data_quad_inland": 0.981,
+    "data_quad_flat": 0.973,
+    "data_quad_noprice": 0.974
+   },
+   "chance_rus": {
+    "current": 0.68,
+    "data_stacked": 0.78,
+    "data_quad": 0.813,
+    "data_quad_inland": 0.763,
+    "data_quad_flat": 0.81,
+    "data_quad_noprice": 0.812
+   },
+   "alternatives_crossing_net": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_inland": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   },
+   "alternatives_crossing_rus": {
+    "current": [
+     "refiner"
+    ],
+    "data_stacked": [
+     "refiner"
+    ],
+    "data_quad": [
+     "refiner"
+    ],
+    "data_quad_inland": [
+     "refiner"
+    ],
+    "data_quad_flat": [
+     "refiner"
+    ],
+    "data_quad_noprice": [
+     "refiner"
+    ]
+   },
+   "note": "levels are all fuel Malta imported (bunkers included); the site patch applies the current rule (low x0.17, middle x0.595, high x0.625); 'data_quad_inland' charges inland use only (0.17/0.18/0.20)"
+  },
+  "PHL": {
+   "name": "Philippines",
+   "cert": "B",
+   "needed_for_certainty": "net x0.80",
+   "what_makes_the_range_wide_now": "the expected path: bmul keeps the old China-route pre-war growth (x1.25-1.8 by 2026 in the middle case, flat at the low end); the actual range is China's share +-20% stacked with crude content and quantity",
+   "drivers_now_share_of_half_width": {
+    "base": 0.08,
+    "actual": -0.07,
+    "price": 0.0,
+    "trend": 0.48,
+    "gain": 0.04
+   },
+   "russian_crude_in_fuel_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.48694,
+     0.23784,
+     0.38072,
+     0.36136,
+     0.52627,
+     0.58944,
+     0.27749,
+     0.22419
+    ],
+    "low": [
+     0.39089,
+     0.19398,
+     0.31229,
+     0.28885,
+     0.40532,
+     0.47281,
+     0.21468,
+     0.17866
+    ],
+    "high": [
+     0.58395,
+     0.28188,
+     0.45021,
+     0.42901,
+     0.64697,
+     0.70744,
+     0.34568,
+     0.26592
+    ],
+    "low_stacked": [
+     0.33934,
+     0.1645,
+     0.26097,
+     0.22436,
+     0.32592,
+     0.38163,
+     0.17289,
+     0.13195
+    ],
+    "high_stacked": [
+     0.65085,
+     0.3194,
+     0.52643,
+     0.53478,
+     0.79488,
+     0.86709,
+     0.42771,
+     0.33698
+    ]
+   },
+   "site_fields_proposed": {
+    "years": [
+     0.38072,
+     0.36136,
+     0.52627,
+     0.58944,
+     0.27749,
+     0.22419
+    ],
+    "years_lo": [
+     0.31229,
+     0.28885,
+     0.40532,
+     0.47281,
+     0.21468,
+     0.17866
+    ],
+    "years_hi": [
+     0.45021,
+     0.42901,
+     0.64697,
+     0.70744,
+     0.34568,
+     0.26592
+    ],
+    "base": 0.36403,
+    "base_range": [
+     0.29556,
+     0.43318
+    ]
+   },
+   "site_fields_stacked_ends": {
+    "years": [
+     0.38072,
+     0.36136,
+     0.52627,
+     0.58944,
+     0.27749,
+     0.22419
+    ],
+    "years_lo": [
+     0.26097,
+     0.22436,
+     0.32592,
+     0.38163,
+     0.17289,
+     0.13195
+    ],
+    "years_hi": [
+     0.52643,
+     0.53478,
+     0.79488,
+     0.86709,
+     0.42771,
+     0.33698
+    ],
+    "base": 0.36403,
+    "base_range": [
+     0.25186,
+     0.49233
+    ]
+   },
+   "by_origin_eur_m": {
+    "2019": {
+     "CHN": 438.65,
+     "SGP": 24.15,
+     "MYS": 12.04,
+     "ARE": 7.59,
+     "IND": 3.3,
+     "DEU": 0.39
+    },
+    "2020": {
+     "CHN": 197.17,
+     "SGP": 20.0,
+     "MYS": 11.22,
+     "IND": 3.17,
+     "BRN": 2.73,
+     "ARE": 2.73
+    },
+    "2021": {
+     "CHN": 305.7,
+     "SGP": 33.7,
+     "MYS": 17.03,
+     "BRN": 6.91,
+     "IND": 6.42,
+     "ARE": 5.56
+    },
+    "2022": {
+     "CHN": 241.68,
+     "SGP": 52.96,
+     "MYS": 25.66,
+     "ARE": 20.24,
+     "IND": 9.73,
+     "BRN": 7.01
+    },
+    "2023": {
+     "CHN": 405.6,
+     "SGP": 45.47,
+     "MYS": 34.89,
+     "IND": 34.66,
+     "ARE": 3.66,
+     "BRN": 1.9
+    },
+    "2024": {
+     "CHN": 408.77,
+     "IND": 92.72,
+     "MYS": 46.37,
+     "SGP": 29.07,
+     "BRN": 11.73,
+     "OMN": 0.37
+    },
+    "2025": {
+     "CHN": 216.73,
+     "SGP": 25.53,
+     "MYS": 14.46,
+     "BRN": 12.97,
+     "IND": 7.36,
+     "ARE": 0.3
+    },
+    "2026": {
+     "CHN": 95.85,
+     "CZE": 0.0,
+     "MYS": 33.67,
+     "IND": 2.28,
+     "SGP": 39.49,
+     "ARE": 0.09,
+     "EST": 0.0,
+     "SAU": 0.0,
+     "TUR": 0.04,
+     "OMN": 1.16,
+     "BRN": 51.61
+    }
+   },
+   "laund_part_eur_bn": {
+    "current": [
+     0.5991,
+     -0.2689,
+     1.181
+    ],
+    "data_stacked": [
+     0.6378,
+     -0.2721,
+     1.2902
+    ],
+    "data_quad": [
+     0.6378,
+     -0.1155,
+     1.0743
+    ],
+    "data_quad_flat": [
+     0.0368,
+     -0.3219,
+     0.4516
+    ],
+    "data_quad_noprice": [
+     0.6378,
+     -0.1141,
+     0.9853
+    ]
+   },
+   "laund_part_pct_gdp": {
+    "current": [
+     0.148,
+     -0.066,
+     0.292
+    ],
+    "data_stacked": [
+     0.158,
+     -0.067,
+     0.319
+    ],
+    "data_quad": [
+     0.158,
+     -0.029,
+     0.265
+    ],
+    "data_quad_flat": [
+     0.009,
+     -0.08,
+     0.112
+    ],
+    "data_quad_noprice": [
+     0.158,
+     -0.028,
+     0.243
+    ]
+   },
+   "chance_net": {
+    "current": 0.929,
+    "data_stacked": 0.93,
+    "data_quad": 0.953,
+    "data_quad_flat": 0.886,
+    "data_quad_noprice": 0.953
+   },
+   "chance_rus": {
+    "current": 0.929,
+    "data_stacked": 0.93,
+    "data_quad": 0.947,
+    "data_quad_flat": 0.855,
+    "data_quad_noprice": 0.947
+   },
+   "alternatives_crossing_net": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   },
+   "alternatives_crossing_rus": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   }
+  },
+  "PNG": {
+   "name": "Papua New Guinea",
+   "cert": "C",
+   "needed_for_certainty": "net x0.82",
+   "what_makes_the_range_wide_now": "the Singapore pool share (x0.74-1.38) stacked with crude content and quantity; mirror quantities in 2025-2026",
+   "drivers_now_share_of_half_width": {
+    "base": -0.18,
+    "actual": 0.27,
+    "price": 0.25,
+    "trend": 0.0,
+    "gain": 0.08
+   },
+   "russian_crude_in_fuel_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.01245,
+     0.00828,
+     0.00987,
+     0.01582,
+     0.01891,
+     0.02516,
+     0.01851,
+     0.01942
+    ],
+    "low": [
+     0.01021,
+     0.00658,
+     0.00789,
+     0.01194,
+     0.01446,
+     0.01965,
+     0.014,
+     0.01443
+    ],
+    "high": [
+     0.0149,
+     0.01019,
+     0.0121,
+     0.02001,
+     0.02411,
+     0.0315,
+     0.02403,
+     0.02502
+    ],
+    "low_stacked": [
+     0.0083,
+     0.00553,
+     0.0066,
+     0.00979,
+     0.01169,
+     0.01617,
+     0.0102,
+     0.01045
+    ],
+    "high_stacked": [
+     0.01755,
+     0.01162,
+     0.01385,
+     0.02441,
+     0.03064,
+     0.03784,
+     0.0324,
+     0.03335
+    ]
+   },
+   "site_fields_proposed": {
+    "years": [
+     0.00987,
+     0.01582,
+     0.01891,
+     0.02516,
+     0.01851,
+     0.01942
+    ],
+    "years_lo": [
+     0.00789,
+     0.01194,
+     0.01446,
+     0.01965,
+     0.014,
+     0.01443
+    ],
+    "years_hi": [
+     0.0121,
+     0.02001,
+     0.02411,
+     0.0315,
+     0.02403,
+     0.02502
+    ],
+    "base": 0.01036,
+    "base_range": [
+     0.00834,
+     0.01261
+    ]
+   },
+   "site_fields_stacked_ends": {
+    "years": [
+     0.00987,
+     0.01582,
+     0.01891,
+     0.02516,
+     0.01851,
+     0.01942
+    ],
+    "years_lo": [
+     0.0066,
+     0.00979,
+     0.01169,
+     0.01617,
+     0.0102,
+     0.01045
+    ],
+    "years_hi": [
+     0.01385,
+     0.02441,
+     0.03064,
+     0.03784,
+     0.0324,
+     0.03335
+    ],
+    "base": 0.01036,
+    "base_range": [
+     0.00692,
+     0.01456
+    ]
+   },
+   "by_origin_eur_m": {
+    "2019": {
+     "SGP": 8.22,
+     "MYS": 3.64,
+     "CHN": 0.37,
+     "NLD": 0.14,
+     "GBR": 0.04,
+     "DEU": 0.01
+    },
+    "2020": {
+     "SGP": 7.04,
+     "MYS": 0.74,
+     "CHN": 0.26,
+     "NLD": 0.21,
+     "ARE": 0.02,
+     "BEL": 0.01
+    },
+    "2021": {
+     "SGP": 8.15,
+     "MYS": 1.04,
+     "CHN": 0.3,
+     "NLD": 0.36,
+     "SWE": 0.0,
+     "ARE": 0.01
+    },
+    "2022": {
+     "SGP": 13.89,
+     "MYS": 1.44,
+     "CHN": 0.24,
+     "NLD": 0.18,
+     "ARE": 0.06,
+     "DEU": 0.01
+    },
+    "2023": {
+     "SGP": 15.15,
+     "MYS": 3.18,
+     "CHN": 0.46,
+     "ARE": 0.04,
+     "TUR": 0.03,
+     "IND": 0.02
+    },
+    "2024": {
+     "SGP": 20.87,
+     "MYS": 3.87,
+     "CHN": 0.39,
+     "NLD": 0.0,
+     "ARE": 0.02,
+     "IND": 0.01
+    },
+    "2025": {
+     "SGP": 12.34,
+     "MYS": 5.98,
+     "CHN": 0.11,
+     "IND": 0.07,
+     "NLD": 0.0,
+     "ASM": 0.0
+    },
+    "2026": {
+     "SGP": 13.11,
+     "MYS": 6.14,
+     "CHN": 0.11,
+     "IND": 0.07,
+     "NLD": 0.0,
+     "ASM": 0.0
+    }
+   },
+   "laund_part_eur_bn": {
+    "current": [
+     -0.0228,
+     -0.0575,
+     0.0026
+    ],
+    "data_stacked": [
+     -0.0245,
+     -0.0574,
+     0.0015
+    ],
+    "data_quad": [
+     -0.0245,
+     -0.0404,
+     -0.0049
+    ],
+    "data_quad_flat": [
+     -0.0245,
+     -0.0412,
+     -0.0042
+    ],
+    "data_quad_noprice": [
+     -0.0245,
+     -0.0402,
+     -0.0099
+    ]
+   },
+   "laund_part_pct_gdp": {
+    "current": [
+     -0.079,
+     -0.198,
+     0.009
+    ],
+    "data_stacked": [
+     -0.084,
+     -0.198,
+     0.005
+    ],
+    "data_quad": [
+     -0.084,
+     -0.139,
+     -0.017
+    ],
+    "data_quad_flat": [
+     -0.084,
+     -0.142,
+     -0.015
+    ],
+    "data_quad_noprice": [
+     -0.084,
+     -0.139,
+     -0.034
+    ]
+   },
+   "chance_net": {
+    "current": 0.904,
+    "data_stacked": 0.926,
+    "data_quad": 0.978,
+    "data_quad_flat": 0.976,
+    "data_quad_noprice": 0.998
+   },
+   "chance_rus": {
+    "current": 0.916,
+    "data_stacked": 0.93,
+    "data_quad": 0.974,
+    "data_quad_flat": 0.97,
+    "data_quad_noprice": 0.998
+   },
+   "alternatives_crossing_net": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   },
+   "alternatives_crossing_rus": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   }
+  },
+  "CHL": {
+   "name": "Chile",
+   "cert": "B",
+   "needed_for_certainty": "net x0.60",
+   "what_makes_the_range_wide_now": "years_hi: 'OTHER' origins (US refiners, 'areas nes') allowed up to 2% Russian crude: US fuel is 75-85% of Chile's imports, so the high end is 5-10x the middle",
+   "drivers_now_share_of_half_width": {
+    "base": -0.12,
+    "actual": 0.93,
+    "price": 0.0,
+    "trend": 0.04,
+    "gain": 0.01
+   },
+   "russian_crude_in_fuel_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.0109,
+     0.0369,
+     0.04922,
+     0.00993,
+     0.01283,
+     0.01459,
+     0.00654,
+     0.00284
+    ],
+    "low": [
+     0.00953,
+     0.03021,
+     0.04123,
+     0.00821,
+     0.00993,
+     0.01174,
+     0.00549,
+     0.00233
+    ],
+    "high": [
+     0.01854,
+     0.04465,
+     0.05842,
+     0.02053,
+     0.02295,
+     0.0259,
+     0.01566,
+     0.00904
+    ],
+    "low_stacked": [
+     0.00759,
+     0.02591,
+     0.03475,
+     0.00652,
+     0.00787,
+     0.00933,
+     0.0044,
+     0.00179
+    ],
+    "high_stacked": [
+     0.02258,
+     0.05368,
+     0.07087,
+     0.02675,
+     0.03025,
+     0.03321,
+     0.0197,
+     0.01136
+    ]
+   },
+   "site_fields_proposed": {
+    "years": [
+     0.04922,
+     0.00993,
+     0.01283,
+     0.01459,
+     0.00654,
+     0.00284
+    ],
+    "years_lo": [
+     0.04123,
+     0.00821,
+     0.00993,
+     0.01174,
+     0.00549,
+     0.00233
+    ],
+    "years_hi": [
+     0.05842,
+     0.02053,
+     0.02295,
+     0.0259,
+     0.01566,
+     0.00904
+    ],
+    "base": 0.03446,
+    "base_range": [
+     0.02866,
+     0.04296
+    ]
+   },
+   "site_fields_stacked_ends": {
+    "years": [
+     0.04922,
+     0.00993,
+     0.01283,
+     0.01459,
+     0.00654,
+     0.00284
+    ],
+    "years_lo": [
+     0.03475,
+     0.00652,
+     0.00787,
+     0.00933,
+     0.0044,
+     0.00179
+    ],
+    "years_hi": [
+     0.07087,
+     0.02675,
+     0.03025,
+     0.03321,
+     0.0197,
+     0.01136
+    ],
+    "base": 0.03446,
+    "base_range": [
+     0.02423,
+     0.05192
+    ]
+   },
+   "by_origin_eur_m": {
+    "2019": {
+     "DEU": 4.32,
+     "CHN": 3.09,
+     "ESP": 0.12,
+     "FRA": 0.59,
+     "BEL": 0.73,
+     "SWE": 0.56
+    },
+    "2020": {
+     "CHN": 30.17,
+     "DEU": 3.78,
+     "ESP": 0.08,
+     "FRA": 0.34,
+     "BEL": 0.89,
+     "ITA": 0.28
+    },
+    "2021": {
+     "CHN": 34.85,
+     "DEU": 8.08,
+     "NLD": 3.2,
+     "ESP": 0.3,
+     "FRA": 0.53,
+     "ITA": 0.28
+    },
+    "2022": {
+     "DEU": 5.91,
+     "FRA": 0.3,
+     "ESP": 0.06,
+     "BEL": 0.9,
+     "ITA": 0.64,
+     "TUR": 0.46
+    },
+    "2023": {
+     "CHN": 10.16,
+     "TUR": 1.16,
+     "ESP": 0.0,
+     "IND": 0.66,
+     "DEU": 0.04,
+     "FRA": 0.0
+    },
+    "2024": {
+     "CHN": 9.34,
+     "TUR": 3.51,
+     "SGP": 0.67,
+     "IND": 0.56,
+     "DEU": 0.0,
+     "FRA": 0.0
+    },
+    "2025": {
+     "TUR": 4.58,
+     "SGP": 0.59,
+     "IND": 0.46,
+     "CHN": 0.38,
+     "DEU": 0.0,
+     "FRA": 0.0
+    },
+    "2026": {
+     "CHN": 0.46,
+     "HUN": 0.05,
+     "MYS": 0.01,
+     "IND": 0.47,
+     "SGP": 0.17,
+     "ARE": 0.07,
+     "TUR": 1.6,
+     "CZE": 0.0,
+     "EST": 0.0
+    }
+   },
+   "laund_part_eur_bn": {
+    "current": [
+     0.1357,
+     -0.2088,
+     0.5417
+    ],
+    "data_stacked": [
+     0.1337,
+     0.0442,
+     0.2594
+    ],
+    "data_quad": [
+     0.1337,
+     0.0524,
+     0.2132
+    ],
+    "data_quad_flat": [
+     0.0894,
+     0.0494,
+     0.1487
+    ],
+    "data_quad_noprice": [
+     0.1337,
+     0.0524,
+     0.2129
+    ]
+   },
+   "laund_part_pct_gdp": {
+    "current": [
+     0.045,
+     -0.07,
+     0.18
+    ],
+    "data_stacked": [
+     0.045,
+     0.015,
+     0.086
+    ],
+    "data_quad": [
+     0.045,
+     0.017,
+     0.071
+    ],
+    "data_quad_flat": [
+     0.03,
+     0.016,
+     0.05
+    ],
+    "data_quad_noprice": [
+     0.045,
+     0.017,
+     0.071
+    ]
+   },
+   "chance_net": {
+    "current": 0.834,
+    "data_stacked": 0.996,
+    "data_quad": 0.998,
+    "data_quad_flat": 1,
+    "data_quad_noprice": 0.998
+   },
+   "chance_rus": {
+    "current": 0.789,
+    "data_stacked": 0.995,
+    "data_quad": 0.997,
+    "data_quad_flat": 0.999,
+    "data_quad_noprice": 0.997
+   },
+   "alternatives_crossing_net": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   },
+   "alternatives_crossing_rus": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   }
+  },
+  "AUS": {
+   "name": "Australia",
+   "cert": "B",
+   "needed_for_certainty": null,
+   "what_makes_the_range_wide_now": "CREA-based series (laundered_eu non-EU + Brunei) with wide ends; price index and gain share",
+   "drivers_now_share_of_half_width": {
+    "base": -0.16,
+    "actual": 0.22,
+    "price": 0.2,
+    "trend": 0.01,
+    "gain": 0.16
+   },
+   "russian_crude_in_fuel_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.57897,
+     0.39144,
+     0.57306,
+     0.78937,
+     0.96234,
+     1.63781,
+     1.27273,
+     1.52042
+    ],
+    "low": [
+     0.4984,
+     0.33314,
+     0.47797,
+     0.64776,
+     0.78682,
+     1.39409,
+     1.06624,
+     1.13806
+    ],
+    "high": [
+     0.65558,
+     0.44075,
+     0.65747,
+     0.92933,
+     1.16359,
+     1.93493,
+     1.57692,
+     1.81302
+    ],
+    "low_stacked": [
+     0.41928,
+     0.26349,
+     0.36697,
+     0.50965,
+     0.62548,
+     1.12353,
+     0.8475,
+     0.85009
+    ],
+    "high_stacked": [
+     0.76488,
+     0.52803,
+     0.80521,
+     1.18637,
+     1.48472,
+     2.3972,
+     2.0265,
+     2.22152
+    ]
+   },
+   "site_fields_proposed": {
+    "years": [
+     0.57306,
+     0.78937,
+     0.96234,
+     1.63781,
+     1.27273,
+     1.52042
+    ],
+    "years_lo": [
+     0.47797,
+     0.64776,
+     0.78682,
+     1.39409,
+     1.06624,
+     1.13806
+    ],
+    "years_hi": [
+     0.65747,
+     0.92933,
+     1.16359,
+     1.93493,
+     1.57692,
+     1.81302
+    ],
+    "base": 0.5177,
+    "base_range": [
+     0.43946,
+     0.58753
+    ]
+   },
+   "site_fields_stacked_ends": {
+    "years": [
+     0.57306,
+     0.78937,
+     0.96234,
+     1.63781,
+     1.27273,
+     1.52042
+    ],
+    "years_lo": [
+     0.36697,
+     0.50965,
+     0.62548,
+     1.12353,
+     0.8475,
+     0.85009
+    ],
+    "years_hi": [
+     0.80521,
+     1.18637,
+     1.48472,
+     2.3972,
+     2.0265,
+     2.22152
+    ],
+    "base": 0.5177,
+    "base_range": [
+     0.35182,
+     0.70286
+    ]
+   },
+   "by_origin_eur_m": {
+    "2019": {
+     "BEL": 5.16,
+     "CHN": 323.43,
+     "FIN": 0.48,
+     "DEU": 7.55,
+     "IND": 2.75,
+     "MYS": 25.69,
+     "NLD": 100.18,
+     "SGP": 107.49,
+     "ESP": 0.12,
+     "SWE": 0.66,
+     "ARE": 5.47,
+     "OMN": 0.0
+    },
+    "2020": {
+     "BEL": 5.33,
+     "BRN": 55.68,
+     "CHN": 194.3,
+     "FIN": 0.47,
+     "DEU": 8.46,
+     "IND": 9.71,
+     "MYS": 24.4,
+     "NLD": 22.19,
+     "SGP": 64.91,
+     "ESP": 0.06,
+     "SWE": 0.16,
+     "ARE": 5.76
+    },
+    "2021": {
+     "BEL": 5.09,
+     "BRN": 124.37,
+     "CHN": 162.37,
+     "FIN": 0.1,
+     "DEU": 9.96,
+     "IND": 35.5,
+     "MYS": 50.79,
+     "NLD": 30.04,
+     "SGP": 151.73,
+     "ESP": 0.24,
+     "SWE": 0.16,
+     "ARE": 2.66,
+     "TUR": 0.04,
+     "GRC": 0.02
+    },
+    "2022": {
+     "BEL": 3.13,
+     "BRN": 52.65,
+     "CHN": 190.14,
+     "DEU": 6.98,
+     "IND": 202.76,
+     "MYS": 80.95,
+     "NLD": 1.49,
+     "SGP": 243.17,
+     "ESP": 0.05,
+     "SWE": 0.05,
+     "ARE": 6.14,
+     "OMN": 1.81,
+     "TUR": 0.05,
+     "GRC": 0.01
+    },
+    "2023": {
+     "BRN": 37.29,
+     "CHN": 237.2,
+     "DEU": 0.07,
+     "IND": 336.39,
+     "MYS": 144.6,
+     "SAU": 0.68,
+     "SGP": 197.01,
+     "ARE": 8.16,
+     "OMN": 0.95
+    },
+    "2024": {
+     "BRN": 236.26,
+     "CHN": 314.4,
+     "IND": 744.27,
+     "MYS": 136.64,
+     "SAU": 0.0,
+     "SGP": 194.02,
+     "ARE": 10.21,
+     "OMN": 1.92,
+     "TUR": 0.08
+    },
+    "2025": {
+     "BRN": 334.09,
+     "CHN": 221.42,
+     "IND": 474.69,
+     "MYS": 80.48,
+     "SAU": 0.0,
+     "SGP": 149.29,
+     "ARE": 10.84,
+     "OMN": 1.76,
+     "TUR": 0.15
+    },
+    "2026": {
+     "BRN": 719.33,
+     "CHN": 158.85,
+     "IND": 365.26,
+     "MYS": 111.18,
+     "SGP": 162.76,
+     "ARE": 1.67,
+     "OMN": 1.26,
+     "TUR": 0.11
+    }
+   },
+   "laund_part_eur_bn": {
+    "current": [
+     -1.5113,
+     -2.8724,
+     -0.3391
+    ],
+    "data_stacked": [
+     -1.5767,
+     -3.3397,
+     -0.0032
+    ],
+    "data_quad": [
+     -1.5767,
+     -2.4654,
+     -0.3814
+    ],
+    "data_quad_flat": [
+     -2.0207,
+     -2.8781,
+     -0.7826
+    ],
+    "data_quad_noprice": [
+     -1.5767,
+     -2.4551,
+     -0.7038
+    ]
+   },
+   "laund_part_pct_gdp": {
+    "current": [
+     -0.094,
+     -0.178,
+     -0.021
+    ],
+    "data_stacked": [
+     -0.098,
+     -0.207,
+     0
+    ],
+    "data_quad": [
+     -0.098,
+     -0.153,
+     -0.024
+    ],
+    "data_quad_flat": [
+     -0.125,
+     -0.178,
+     -0.049
+    ],
+    "data_quad_noprice": [
+     -0.098,
+     -0.152,
+     -0.044
+    ]
+   },
+   "chance_net": {
+    "current": 0.574,
+    "data_stacked": 0.517,
+    "data_quad": 0.581,
+    "data_quad_flat": 0.681,
+    "data_quad_noprice": 0.537
+   },
+   "chance_rus": {
+    "current": 0.981,
+    "data_stacked": 0.946,
+    "data_quad": 0.983,
+    "data_quad_flat": 0.998,
+    "data_quad_noprice": 0.999
+   },
+   "alternatives_crossing_net": {
+    "current": [
+     "windfall_full",
+     "loans",
+     "windfall_off",
+     "nocut",
+     "attrib",
+     "refGross",
+     "refCommon",
+     "p26",
+     "refiner",
+     "fuelmix",
+     "freight",
+     "normal_return",
+     "gold_actual",
+     "gas_early2021",
+     "gdp2024"
+    ],
+    "data_stacked": [
+     "windfall_full",
+     "loans",
+     "windfall_off",
+     "nocut",
+     "attrib",
+     "refGross",
+     "refCommon",
+     "p26",
+     "refiner",
+     "fuelmix",
+     "freight",
+     "normal_return",
+     "gold_actual",
+     "gas_early2021",
+     "gdp2024"
+    ],
+    "data_quad": [
+     "windfall_full",
+     "loans",
+     "windfall_off",
+     "nocut",
+     "attrib",
+     "refGross",
+     "refCommon",
+     "p26",
+     "refiner",
+     "fuelmix",
+     "freight",
+     "normal_return",
+     "gold_actual",
+     "gas_early2021",
+     "gdp2024"
+    ],
+    "data_quad_flat": [
+     "laund_half"
+    ],
+    "data_quad_noprice": [
+     "windfall_full",
+     "loans",
+     "windfall_off",
+     "nocut",
+     "attrib",
+     "refGross",
+     "refCommon",
+     "p26",
+     "refiner",
+     "fuelmix",
+     "freight",
+     "normal_return",
+     "gold_actual",
+     "gas_early2021",
+     "gdp2024"
+    ]
+   },
+   "alternatives_crossing_rus": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   }
+  },
+  "NZL": {
+   "name": "New Zealand",
+   "cert": "B",
+   "needed_for_certainty": null,
+   "what_makes_the_range_wide_now": "Singapore/Malaysia pool shares and India (Jamnagar) share stacked; price index and gain share",
+   "drivers_now_share_of_half_width": {
+    "base": -0.15,
+    "actual": 0.44,
+    "price": 0.21,
+    "trend": 0.06,
+    "gain": 0.22
+   },
+   "russian_crude_in_fuel_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.02257,
+     0.02303,
+     0.03237,
+     0.07945,
+     0.11958,
+     0.09672,
+     0.11142,
+     0.07666
+    ],
+    "low": [
+     0.0187,
+     0.01932,
+     0.02539,
+     0.06283,
+     0.09559,
+     0.07891,
+     0.09293,
+     0.06059
+    ],
+    "high": [
+     0.02682,
+     0.02661,
+     0.03884,
+     0.09641,
+     0.14591,
+     0.11605,
+     0.13712,
+     0.09344
+    ],
+    "low_stacked": [
+     0.01491,
+     0.01449,
+     0.01859,
+     0.0491,
+     0.07419,
+     0.06199,
+     0.07172,
+     0.04568
+    ],
+    "high_stacked": [
+     0.03176,
+     0.03225,
+     0.04834,
+     0.12119,
+     0.18635,
+     0.14425,
+     0.18036,
+     0.11717
+    ]
+   },
+   "site_fields_proposed": {
+    "years": [
+     0.03237,
+     0.07945,
+     0.11958,
+     0.09672,
+     0.11142,
+     0.07666
+    ],
+    "years_lo": [
+     0.02539,
+     0.06283,
+     0.09559,
+     0.07891,
+     0.09293,
+     0.06059
+    ],
+    "years_hi": [
+     0.03884,
+     0.09641,
+     0.14591,
+     0.11605,
+     0.13712,
+     0.09344
+    ],
+    "base": 0.02666,
+    "base_range": [
+     0.02179,
+     0.03144
+    ]
+   },
+   "site_fields_stacked_ends": {
+    "years": [
+     0.03237,
+     0.07945,
+     0.11958,
+     0.09672,
+     0.11142,
+     0.07666
+    ],
+    "years_lo": [
+     0.01859,
+     0.0491,
+     0.07419,
+     0.06199,
+     0.07172,
+     0.04568
+    ],
+    "years_hi": [
+     0.04834,
+     0.12119,
+     0.18635,
+     0.14425,
+     0.18036,
+     0.11717
+    ],
+    "base": 0.02666,
+    "base_range": [
+     0.01647,
+     0.03825
+    ]
+   },
+   "by_origin_eur_m": {
+    "2019": {
+     "SGP": 15.15,
+     "CHN": 1.74,
+     "BEL": 1.39,
+     "MYS": 0.9,
+     "DEU": 1.04,
+     "GBR": 0.69
+    },
+    "2020": {
+     "SGP": 11.77,
+     "CHN": 3.34,
+     "BRN": 3.08,
+     "BEL": 1.3,
+     "DEU": 1.15,
+     "MYS": 0.67
+    },
+    "2021": {
+     "SGP": 13.95,
+     "BRN": 10.2,
+     "CHN": 3.2,
+     "BEL": 1.53,
+     "DEU": 1.16,
+     "GBR": 0.65
+    },
+    "2022": {
+     "SGP": 51.29,
+     "MYS": 11.8,
+     "IND": 5.11,
+     "CHN": 4.89,
+     "BRN": 3.07,
+     "BEL": 1.39
+    },
+    "2023": {
+     "SGP": 58.31,
+     "MYS": 29.54,
+     "CHN": 22.11,
+     "IND": 7.76,
+     "BRN": 1.49,
+     "BEL": 0.0
+    },
+    "2024": {
+     "SGP": 53.11,
+     "CHN": 26.39,
+     "MYS": 11.53,
+     "BRN": 4.9,
+     "IND": 0.61,
+     "DEU": 0.0
+    },
+    "2025": {
+     "SGP": 38.5,
+     "IND": 29.84,
+     "BRN": 20.58,
+     "MYS": 13.73,
+     "CHN": 8.14,
+     "OMN": 0.42
+    },
+    "2026": {
+     "CHN": 7.73,
+     "HUN": 0.0,
+     "MYS": 12.52,
+     "IND": 0.58,
+     "SGP": 43.56,
+     "ARE": 0.05,
+     "CZE": 0.0,
+     "TUR": 0.02,
+     "BRN": 12.2,
+     "EST": 0.0,
+     "BGR": 0.0
+    }
+   },
+   "laund_part_eur_bn": {
+    "current": [
+     -0.2367,
+     -0.4107,
+     -0.0817
+    ],
+    "data_stacked": [
+     -0.2139,
+     -0.3711,
+     -0.0753
+    ],
+    "data_quad": [
+     -0.2139,
+     -0.2927,
+     -0.1024
+    ],
+    "data_quad_flat": [
+     -0.2036,
+     -0.28,
+     -0.0997
+    ],
+    "data_quad_noprice": [
+     -0.2139,
+     -0.292,
+     -0.1236
+    ]
+   },
+   "laund_part_pct_gdp": {
+    "current": [
+     -0.099,
+     -0.172,
+     -0.034
+    ],
+    "data_stacked": [
+     -0.09,
+     -0.156,
+     -0.032
+    ],
+    "data_quad": [
+     -0.09,
+     -0.123,
+     -0.043
+    ],
+    "data_quad_flat": [
+     -0.085,
+     -0.117,
+     -0.042
+    ],
+    "data_quad_noprice": [
+     -0.09,
+     -0.122,
+     -0.052
+    ]
+   },
+   "chance_net": {
+    "current": 0.89,
+    "data_stacked": 0.925,
+    "data_quad": 0.954,
+    "data_quad_flat": 0.964,
+    "data_quad_noprice": 0.951
+   },
+   "chance_rus": {
+    "current": 0.535,
+    "data_stacked": 0.537,
+    "data_quad": 0.556,
+    "data_quad_flat": 0.568,
+    "data_quad_noprice": 0.539
+   },
+   "alternatives_crossing_net": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   },
+   "alternatives_crossing_rus": {
+    "current": [
+     "laund_half",
+     "laund_model"
+    ],
+    "data_stacked": [
+     "windfall_full",
+     "loans",
+     "windfall_off",
+     "nocut",
+     "attrib",
+     "refGross",
+     "refCommon",
+     "p26",
+     "refiner",
+     "fuelmix",
+     "freight",
+     "normal_return",
+     "gas_early2021",
+     "gdp2024"
+    ],
+    "data_quad": [
+     "windfall_full",
+     "loans",
+     "windfall_off",
+     "nocut",
+     "attrib",
+     "refGross",
+     "refCommon",
+     "p26",
+     "refiner",
+     "fuelmix",
+     "freight",
+     "normal_return",
+     "gas_early2021",
+     "gdp2024"
+    ],
+    "data_quad_flat": [
+     "windfall_full",
+     "loans",
+     "windfall_off",
+     "nocut",
+     "attrib",
+     "refGross",
+     "refCommon",
+     "refiner",
+     "fuelmix",
+     "freight",
+     "normal_return",
+     "gas_early2021",
+     "gdp2024"
+    ],
+    "data_quad_noprice": [
+     "windfall_full",
+     "loans",
+     "windfall_off",
+     "nocut",
+     "attrib",
+     "refGross",
+     "refCommon",
+     "p26",
+     "refiner",
+     "fuelmix",
+     "freight",
+     "normal_return",
+     "gas_early2021",
+     "gdp2024"
+    ]
+   }
+  },
+  "PAK": {
+   "name": "Pakistan",
+   "cert": "C",
+   "needed_for_certainty": null,
+   "what_makes_the_range_wide_now": "the expected path (bmul, as Philippines) and the UAE share (+-50%) on the UAE's large volume",
+   "drivers_now_share_of_half_width": {
+    "base": -0.16,
+    "actual": 0.24,
+    "price": 0.0,
+    "trend": 0.4,
+    "gain": 0.06
+   },
+   "russian_crude_in_fuel_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.20257,
+     0.12522,
+     0.32055,
+     0.72249,
+     0.25354,
+     0.1188,
+     0.09051,
+     0.0865
+    ],
+    "low": [
+     0.15927,
+     0.09525,
+     0.25723,
+     0.49041,
+     0.1547,
+     0.08228,
+     0.05813,
+     0.05453
+    ],
+    "high": [
+     0.24602,
+     0.1565,
+     0.38655,
+     0.9488,
+     0.35542,
+     0.16163,
+     0.12832,
+     0.1229
+    ],
+    "low_stacked": [
+     0.12623,
+     0.07359,
+     0.19975,
+     0.36402,
+     0.11509,
+     0.06052,
+     0.04236,
+     0.03482
+    ],
+    "high_stacked": [
+     0.30346,
+     0.19694,
+     0.48212,
+     1.2189,
+     0.47002,
+     0.22319,
+     0.18387,
+     0.18632
+    ]
+   },
+   "site_fields_proposed": {
+    "years": [
+     0.32055,
+     0.72249,
+     0.25354,
+     0.1188,
+     0.09051,
+     0.0865
+    ],
+    "years_lo": [
+     0.25723,
+     0.49041,
+     0.1547,
+     0.08228,
+     0.05813,
+     0.05453
+    ],
+    "years_hi": [
+     0.38655,
+     0.9488,
+     0.35542,
+     0.16163,
+     0.12832,
+     0.1229
+    ],
+    "base": 0.2104,
+    "base_range": [
+     0.16545,
+     0.25677
+    ]
+   },
+   "site_fields_stacked_ends": {
+    "years": [
+     0.32055,
+     0.72249,
+     0.25354,
+     0.1188,
+     0.09051,
+     0.0865
+    ],
+    "years_lo": [
+     0.19975,
+     0.36402,
+     0.11509,
+     0.06052,
+     0.04236,
+     0.03482
+    ],
+    "years_hi": [
+     0.48212,
+     1.2189,
+     0.47002,
+     0.22319,
+     0.18387,
+     0.18632
+    ],
+    "base": 0.2104,
+    "base_range": [
+     0.12906,
+     0.32005
+    ]
+   },
+   "by_origin_eur_m": {
+    "2019": {
+     "NLD": 115.71,
+     "ARE": 71.35,
+     "SGP": 7.96,
+     "MYS": 1.88,
+     "ROU": 2.4,
+     "CHN": 0.84
+    },
+    "2020": {
+     "ARE": 53.96,
+     "NLD": 41.63,
+     "CHN": 12.46,
+     "BEL": 6.24,
+     "SGP": 5.29,
+     "MYS": 2.33
+    },
+    "2021": {
+     "CHN": 185.58,
+     "ARE": 89.45,
+     "NLD": 26.79,
+     "SGP": 11.48,
+     "MYS": 2.65,
+     "ITA": 0.71
+    },
+    "2022": {
+     "ARE": 397.48,
+     "CHN": 239.04,
+     "NLD": 57.58,
+     "SGP": 12.45,
+     "OMN": 11.6,
+     "SAU": 1.22
+    },
+    "2023": {
+     "ARE": 178.58,
+     "CHN": 43.68,
+     "SGP": 19.84,
+     "OMN": 8.28,
+     "NLD": 0.0,
+     "MYS": 1.17
+    },
+    "2024": {
+     "ARE": 64.88,
+     "SGP": 26.09,
+     "OMN": 18.31,
+     "CHN": 4.54,
+     "MYS": 3.94,
+     "NLD": 0.0
+    },
+    "2025": {
+     "ARE": 58.9,
+     "SGP": 16.61,
+     "OMN": 10.29,
+     "MYS": 1.46,
+     "SAU": 1.31,
+     "CHN": 1.0
+    },
+    "2026": {
+     "ARE": 54.85,
+     "SGP": 17.65,
+     "OMN": 9.81,
+     "MYS": 1.49,
+     "SAU": 1.06,
+     "CHN": 1.02
+    }
+   },
+   "laund_part_eur_bn": {
+    "current": [
+     0.1844,
+     -0.4955,
+     0.9743
+    ],
+    "data_stacked": [
+     0.1926,
+     -0.5242,
+     1.0619
+    ],
+    "data_quad": [
+     0.1926,
+     -0.3364,
+     0.7466
+    ],
+    "data_quad_flat": [
+     -0.0641,
+     -0.3493,
+     0.3789
+    ],
+    "data_quad_noprice": [
+     0.1926,
+     -0.3357,
+     0.7133
+    ]
+   },
+   "laund_part_pct_gdp": {
+    "current": [
+     0.055,
+     -0.147,
+     0.289
+    ],
+    "data_stacked": [
+     0.057,
+     -0.156,
+     0.315
+    ],
+    "data_quad": [
+     0.057,
+     -0.1,
+     0.222
+    ],
+    "data_quad_flat": [
+     -0.019,
+     -0.104,
+     0.112
+    ],
+    "data_quad_noprice": [
+     0.057,
+     -0.1,
+     0.212
+    ]
+   },
+   "chance_net": {
+    "current": 0.702,
+    "data_stacked": 0.7,
+    "data_quad": 0.757,
+    "data_quad_flat": 0.591,
+    "data_quad_noprice": 0.757
+   },
+   "chance_rus": {
+    "current": 0.682,
+    "data_stacked": 0.682,
+    "data_quad": 0.715,
+    "data_quad_flat": 0.607,
+    "data_quad_noprice": 0.716
+   },
+   "alternatives_crossing_net": {
+    "current": [
+     "refiner",
+     "laund_half",
+     "laund_model",
+     "fuelmix"
+    ],
+    "data_stacked": [
+     "refiner",
+     "laund_half",
+     "laund_model",
+     "fuelmix"
+    ],
+    "data_quad": [
+     "refiner",
+     "laund_half",
+     "laund_model",
+     "fuelmix"
+    ],
+    "data_quad_flat": [],
+    "data_quad_noprice": [
+     "refiner",
+     "laund_half",
+     "laund_model",
+     "fuelmix"
+    ]
+   },
+   "alternatives_crossing_rus": {
+    "current": [
+     "refiner",
+     "laund_half",
+     "laund_model",
+     "fuelmix"
+    ],
+    "data_stacked": [
+     "refiner",
+     "laund_half",
+     "laund_model",
+     "fuelmix"
+    ],
+    "data_quad": [
+     "refiner",
+     "laund_half",
+     "laund_model",
+     "fuelmix"
+    ],
+    "data_quad_flat": [],
+    "data_quad_noprice": [
+     "refiner",
+     "laund_half",
+     "laund_model",
+     "fuelmix"
+    ]
+   }
+  },
+  "ZAF": {
+   "name": "South Africa",
+   "cert": "B",
+   "needed_for_certainty": "rus x0.96",
+   "what_makes_the_range_wide_now": "India's share band (x0.75-1.27) on 30-35% of imports, stacked with crude content; price index",
+   "drivers_now_share_of_half_width": {
+    "base": -0.11,
+    "actual": 0.13,
+    "price": 0.21,
+    "trend": 0.0,
+    "gain": 0.13
+   },
+   "russian_crude_in_fuel_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.19224,
+     0.13298,
+     0.34618,
+     1.28412,
+     0.98909,
+     0.81581,
+     0.54117,
+     0.43319
+    ],
+    "low": [
+     0.1632,
+     0.11072,
+     0.29887,
+     1.01508,
+     0.77923,
+     0.67438,
+     0.44116,
+     0.31451
+    ],
+    "high": [
+     0.22055,
+     0.15487,
+     0.39218,
+     1.55072,
+     1.24403,
+     1.01204,
+     0.70466,
+     0.54226
+    ],
+    "low_stacked": [
+     0.12373,
+     0.0827,
+     0.22768,
+     0.71661,
+     0.58042,
+     0.53377,
+     0.34803,
+     0.24659
+    ],
+    "high_stacked": [
+     0.27805,
+     0.19407,
+     0.49388,
+     2.04946,
+     1.6534,
+     1.31594,
+     0.9653,
+     0.71763
+    ]
+   },
+   "site_fields_proposed": {
+    "years": [
+     0.34618,
+     1.28412,
+     0.98909,
+     0.81581,
+     0.54117,
+     0.43319
+    ],
+    "years_lo": [
+     0.29887,
+     1.01508,
+     0.77923,
+     0.67438,
+     0.44116,
+     0.31451
+    ],
+    "years_hi": [
+     0.39218,
+     1.55072,
+     1.24403,
+     1.01204,
+     0.70466,
+     0.54226
+    ],
+    "base": 0.21831,
+    "base_range": [
+     0.18577,
+     0.25009
+    ]
+   },
+   "site_fields_stacked_ends": {
+    "years": [
+     0.34618,
+     1.28412,
+     0.98909,
+     0.81581,
+     0.54117,
+     0.43319
+    ],
+    "years_lo": [
+     0.22768,
+     0.71661,
+     0.58042,
+     0.53377,
+     0.34803,
+     0.24659
+    ],
+    "years_hi": [
+     0.49388,
+     2.04946,
+     1.6534,
+     1.31594,
+     0.9653,
+     0.71763
+    ],
+    "base": 0.21831,
+    "base_range": [
+     0.14059,
+     0.31459
+    ]
+   },
+   "by_origin_eur_m": {
+    "2019": {
+     "ITA": 24.88,
+     "NLD": 33.78,
+     "ARE": 18.22,
+     "TUR": 22.48,
+     "FIN": 38.6,
+     "CHN": 9.21
+    },
+    "2020": {
+     "NLD": 34.77,
+     "BEL": 26.84,
+     "ITA": 8.53,
+     "ARE": 18.38,
+     "SWE": 2.75,
+     "GBR": 8.35
+    },
+    "2021": {
+     "ITA": 38.91,
+     "NLD": 122.28,
+     "BEL": 38.86,
+     "ARE": 29.47,
+     "TUR": 31.54,
+     "GBR": 24.18
+    },
+    "2022": {
+     "ARE": 352.39,
+     "IND": 333.27,
+     "TUR": 263.66,
+     "NLD": 74.11,
+     "BEL": 49.75,
+     "CHN": 40.38
+    },
+    "2023": {
+     "IND": 585.69,
+     "ARE": 218.18,
+     "OMN": 43.76,
+     "TUR": 42.26,
+     "CHN": 35.71,
+     "MYS": 16.68
+    },
+    "2024": {
+     "IND": 614.66,
+     "ARE": 68.99,
+     "OMN": 56.3,
+     "TUR": 38.64,
+     "SAU": 7.22,
+     "CHN": 6.18
+    },
+    "2025": {
+     "IND": 432.79,
+     "OMN": 46.46,
+     "ARE": 42.12,
+     "SAU": 12.67,
+     "ITA": 0.0,
+     "NLD": 0.0
+    },
+    "2026": {
+     "CHN": 0.08,
+     "EST": 0.01,
+     "MLT": 0.0,
+     "OMN": 32.14,
+     "SAU": 4.87,
+     "IND": 373.14,
+     "SGP": 0.16,
+     "ARE": 20.42,
+     "TUR": 0.25,
+     "CZE": 0.0,
+     "MYS": 2.04,
+     "HUN": 0.08
+    }
+   },
+   "laund_part_eur_bn": {
+    "current": [
+     -1.6408,
+     -3.1652,
+     -0.4119
+    ],
+    "data_stacked": [
+     -1.6939,
+     -3.2305,
+     -0.5298
+    ],
+    "data_quad": [
+     -1.6939,
+     -2.3626,
+     -0.8211
+    ],
+    "data_quad_flat": [
+     -1.7418,
+     -2.4228,
+     -0.8594
+    ],
+    "data_quad_noprice": [
+     -1.6939,
+     -2.3564,
+     -1.0301
+    ]
+   },
+   "laund_part_pct_gdp": {
+    "current": [
+     -0.443,
+     -0.855,
+     -0.111
+    ],
+    "data_stacked": [
+     -0.458,
+     -0.873,
+     -0.143
+    ],
+    "data_quad": [
+     -0.458,
+     -0.638,
+     -0.222
+    ],
+    "data_quad_flat": [
+     -0.471,
+     -0.655,
+     -0.232
+    ],
+    "data_quad_noprice": [
+     -0.458,
+     -0.637,
+     -0.278
+    ]
+   },
+   "chance_net": {
+    "current": 0.972,
+    "data_stacked": 0.984,
+    "data_quad": 0.991,
+    "data_quad_flat": 0.991,
+    "data_quad_noprice": 0.991
+   },
+   "chance_rus": {
+    "current": 0.956,
+    "data_stacked": 0.973,
+    "data_quad": 0.987,
+    "data_quad_flat": 0.989,
+    "data_quad_noprice": 0.991
+   },
+   "alternatives_crossing_net": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   },
+   "alternatives_crossing_rus": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   }
+  },
+  "FJI": {
+   "name": "Fiji",
+   "cert": "C",
+   "needed_for_certainty": "rus x0.99",
+   "what_makes_the_range_wide_now": "the Singapore pool share stacked with crude content and the split of Singapore-consigned fuel",
+   "drivers_now_share_of_half_width": {
+    "base": -0.21,
+    "actual": 0.35,
+    "price": 0.26,
+    "trend": 0.0,
+    "gain": 0.08
+   },
+   "russian_crude_in_fuel_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.00853,
+     0.00385,
+     0.00596,
+     0.01185,
+     0.01384,
+     0.0148,
+     0.00942,
+     0.01214
+    ],
+    "low": [
+     0.00655,
+     0.00297,
+     0.00458,
+     0.00876,
+     0.01051,
+     0.01146,
+     0.00742,
+     0.00938
+    ],
+    "high": [
+     0.01081,
+     0.00486,
+     0.00755,
+     0.01521,
+     0.01768,
+     0.01867,
+     0.01189,
+     0.01518
+    ],
+    "low_stacked": [
+     0.00566,
+     0.00256,
+     0.00396,
+     0.00732,
+     0.00857,
+     0.00952,
+     0.00598,
+     0.0075
+    ],
+    "high_stacked": [
+     0.01201,
+     0.00542,
+     0.0084,
+     0.01787,
+     0.02168,
+     0.02229,
+     0.01486,
+     0.01877
+    ]
+   },
+   "site_fields_proposed": {
+    "years": [
+     0.00596,
+     0.01185,
+     0.01384,
+     0.0148,
+     0.00942,
+     0.01214
+    ],
+    "years_lo": [
+     0.00458,
+     0.00876,
+     0.01051,
+     0.01146,
+     0.00742,
+     0.00938
+    ],
+    "years_hi": [
+     0.00755,
+     0.01521,
+     0.01768,
+     0.01867,
+     0.01189,
+     0.01518
+    ],
+    "base": 0.00603,
+    "base_range": [
+     0.00463,
+     0.00763
+    ]
+   },
+   "site_fields_stacked_ends": {
+    "years": [
+     0.00596,
+     0.01185,
+     0.01384,
+     0.0148,
+     0.00942,
+     0.01214
+    ],
+    "years_lo": [
+     0.00396,
+     0.00732,
+     0.00857,
+     0.00952,
+     0.00598,
+     0.0075
+    ],
+    "years_hi": [
+     0.0084,
+     0.01787,
+     0.02168,
+     0.02229,
+     0.01486,
+     0.01877
+    ],
+    "base": 0.00603,
+    "base_range": [
+     0.004,
+     0.00849
+    ]
+   },
+   "by_origin_eur_m": {
+    "2019": {
+     "SGP": 8.47,
+     "ARE": 0.02,
+     "MYS": 0.01,
+     "IND": 0.01,
+     "TUR": 0.02,
+     "AUS": 0.0
+    },
+    "2020": {
+     "SGP": 3.75,
+     "MYS": 0.06,
+     "CHN": 0.01,
+     "IND": 0.01,
+     "ARE": 0.01,
+     "TUR": 0.01
+    },
+    "2021": {
+     "SGP": 5.9,
+     "ARE": 0.02,
+     "CHN": 0.01,
+     "MYS": 0.01,
+     "IND": 0.01,
+     "TUR": 0.01
+    },
+    "2022": {
+     "SGP": 11.53,
+     "MYS": 0.16,
+     "IND": 0.09,
+     "ARE": 0.05,
+     "CHN": 0.01,
+     "TUR": 0.01
+    },
+    "2023": {
+     "SGP": 11.64,
+     "MYS": 1.91,
+     "IND": 0.24,
+     "CHN": 0.02,
+     "ARE": 0.02,
+     "TUR": 0.01
+    },
+    "2024": {
+     "SGP": 12.98,
+     "MYS": 1.53,
+     "IND": 0.22,
+     "CHN": 0.03,
+     "ARE": 0.02,
+     "TUR": 0.01
+    },
+    "2025": {
+     "SGP": 6.71,
+     "MYS": 2.43,
+     "IND": 0.2,
+     "CHN": 0.06,
+     "ARE": 0.02,
+     "AUS": 0.0
+    },
+    "2026": {
+     "SGP": 8.76,
+     "MYS": 3.06,
+     "IND": 0.22,
+     "CHN": 0.07,
+     "ARE": 0.02,
+     "AUS": 0.0
+    }
+   },
+   "laund_part_eur_bn": {
+    "current": [
+     -0.0152,
+     -0.0342,
+     0.0003
+    ],
+    "data_stacked": [
+     -0.0176,
+     -0.036,
+     -0.0017
+    ],
+    "data_quad": [
+     -0.0176,
+     -0.0275,
+     -0.005
+    ],
+    "data_quad_flat": [
+     -0.0176,
+     -0.028,
+     -0.0046
+    ],
+    "data_quad_noprice": [
+     -0.0176,
+     -0.0274,
+     -0.0082
+    ]
+   },
+   "laund_part_pct_gdp": {
+    "current": [
+     -0.298,
+     -0.67,
+     0.007
+    ],
+    "data_stacked": [
+     -0.345,
+     -0.705,
+     -0.034
+    ],
+    "data_quad": [
+     -0.345,
+     -0.54,
+     -0.098
+    ],
+    "data_quad_flat": [
+     -0.345,
+     -0.549,
+     -0.091
+    ],
+    "data_quad_noprice": [
+     -0.345,
+     -0.538,
+     -0.162
+    ]
+   },
+   "chance_net": {
+    "current": 0.95,
+    "data_stacked": 0.973,
+    "data_quad": 0.99,
+    "data_quad_flat": 0.991,
+    "data_quad_noprice": 0.999
+   },
+   "chance_rus": {
+    "current": 0.948,
+    "data_stacked": 0.969,
+    "data_quad": 0.99,
+    "data_quad_flat": 0.989,
+    "data_quad_noprice": 0.999
+   },
+   "alternatives_crossing_net": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   },
+   "alternatives_crossing_rus": {
+    "current": [],
+    "data_stacked": [],
+    "data_quad": [],
+    "data_quad_flat": [],
+    "data_quad_noprice": []
+   }
+  }
+ },
+ "sources": [
+  {
+   "id": "eurostat_energy",
+   "name": "Eurostat nrg_bal_c (oil balance), nrg_ti_oil (imports by partner: products of CY and MT by last consignment; crude of every member)",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ti_oil",
+   "status": 200,
+   "kind": "official",
+   "raw": "raw/eurostat_laund/"
+  },
+  {
+   "id": "comext",
+   "name": "Eurostat Comext DS-045409, HS 2710 of CY and MT by partner, imports and exports",
+   "url": "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409",
+   "status": 200,
+   "kind": "official",
+   "raw": "raw/comext_laund/"
+  },
+  {
+   "id": "comtrade_monthly",
+   "name": "UN Comtrade public preview, monthly 2026: HS 2709 of India, China, Korea, Singapore, Malaysia, Türkiye (from Russia, world); HS 2710 of the measured buyers by partner",
+   "url": "https://comtradeapi.un.org/public/v1/preview/C/M/HS",
+   "status": 200,
+   "kind": "official (national customs via UN)",
+   "raw": "raw/comtrade_laund/"
+  },
+  {
+   "id": "aps",
+   "name": "DCCEEW Australian Petroleum Statistics, August 2026 extract (CC BY 4.0), imports by source country",
+   "url": "https://data.gov.au/data/dataset/d889484e-fb65-4190-a2e3-1739517cbf9b/resource/a5825135-47fa-4c59-a4e8-94e19511cb95/download/australian-petroleum-statistics-data-extract-august-26.xlsx",
+   "status": 200,
+   "kind": "official",
+   "raw": "raw/aps_laund/"
+  },
+  {
+   "id": "eia",
+   "name": "EIA, U.S. imports by country of origin (crude oil and products, kb/d) and refinery net input of crude",
+   "url": "https://www.eia.gov/dnav/pet/pet_move_impcus_a2_nus_ep00_im0_mbblpd_a.htm",
+   "status": 200,
+   "kind": "official",
+   "raw": "raw/eia_laund/"
+  },
+  {
+   "id": "epdk",
+   "name": "EPDK Petrol Piyasası Sektör Raporu 2019-2024 (Table 2.1.1) and Gelişim Raporu 2025",
+   "url": "https://www.epdk.gov.tr/Detay/Icerik/3-0-107/yillik-sektor-raporu",
+   "status": 200,
+   "kind": "official",
+   "raw": "raw/epdk_laund/"
+  },
+  {
+   "id": "turkey_gas_r43",
+   "name": "turkey_gas_r43.json (another round-43 extraction of the same EPDK reports, incl. the August 2026 annex)",
+   "url": "research/2026-10/gaps/turkey_gas_r43.json",
+   "status": "file",
+   "kind": "official (EPDK)"
+  },
+  {
+   "id": "ecb",
+   "name": "ECB EUR/AUD reference rate, monthly",
+   "url": "https://data-api.ecb.europa.eu/service/data/EXR/M.AUD.EUR.SP00.A",
+   "status": 200,
+   "kind": "official",
+   "raw": "raw/ecb_laund/"
+  },
+  {
+   "id": "kse_2026",
+   "name": "KSE Institute, The refining loophole (June 2026), Kpler-based refinery shares",
+   "url": "https://institute.kse.ua/wp-content/uploads/2026/06/kse_refining_loophole_eng_june_2026.pdf",
+   "status": 200,
+   "kind": "research (Kpler)"
+  },
+  {
+   "id": "crea_aug_2026",
+   "name": "CREA, August 2026 monthly analysis",
+   "url": "https://energyandcleanair.org/august-2026-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/",
+   "status": 200,
+   "kind": "research (Kpler)"
+  },
+  {
+   "id": "crea_4y",
+   "name": "CREA, Four years of invasion (Feb 2026): Australia EUR 1.6 bn of 3.4 bn made from Russian crude",
+   "url": "https://energyandcleanair.org/wp/wp-content/uploads/2026/02/CREA_RU_Analysis_Four-years-of-invasion_24.02.2026.pdf",
+   "status": 200,
+   "kind": "research (Kpler)"
+  },
+  {
+   "id": "businesstoday_2026",
+   "name": "Business Today / CREA: India's Russian crude imports 2.8 mb/d in July 2026, 55.5% of the total",
+   "url": "https://www.businesstoday.in/latest/economy/story/india-buys-record-russian-crude-again-imports-hit-2-8-million-bpd-in-july-548355-2026-08-10",
+   "status": 200,
+   "kind": "press"
+  }
+ ],
+ "variants": {
+  "current": "site/data.json as of 2026-10-24",
+  "data_stacked": "new inputs, ends stacked as in r39 (data only)",
+  "data_quad": "new inputs, independent factors combined in quadrature (proposed)",
+  "data_quad_flat": "data_quad with a flat expected path (bmul = no-war crude price only, +-15%), as the r39 docstring describes",
+  "data_quad_noprice": "data_quad with pidx_lo = pidx_hi = pidx (the Urals band already sits inside crude content)",
+  "data_quad_inland": "Malta: inland use only charged"
+ },
+ "proposed_build_changes": [
+  {
+   "id": "B1",
+   "what": "Origin shares used for the measured buyers",
+   "where": "laundered_r39.json origin_russian_share_used.A, read by _r39_share() and _r39_hub_mix() (build_data.py ~5024-5048) and baked into laundered_r39.json buyers.*.russian_crude_in_fuel_eur_bn_levels",
+   "replace": "IND|2026 [0.30,0.21,0.40] -> [0.39,0.29,0.47]; IND|2023-2025 bands x0.75/1.27 -> x0.85/1.25; TUR|2019-2026 -> EPDK [0.336,0.111,0.173,0.358,0.341,0.564,0.477,0.269] with band x0.85/1.20; 'EU|y' (one 27% share) -> each member's Eurostat share (origin_russian_share_r43.shares; Bulgaria keeps the EU value); USA explicitly [0,0,0] (was OTHER [0,0,0.02]); SGP/MYS/OMN pools rescaled (shares.*_pool)",
+   "how": "_r39_share(origin, y): look up 'USA' and member codes before falling back to 'EU'; or load origin_russian_share_r43.shares from laundered_r43.json on top of r39's table"
+  },
+  {
+   "id": "B2",
+   "what": "Measured buyers' series (Philippines, Papua New Guinea, Chile, New Zealand, Pakistan, South Africa, Fiji)",
+   "where": "apply_laundered_r39(): c['laund'] years / years_lo / years_hi / base / base_range come from laundered_r39.json russian_crude_in_fuel_eur_bn_levels",
+   "replace": "levels -> laundered_r43.json buyers.<ISO>.russian_crude_in_fuel_levels (central/low/high; 2026 from the buyers' monthly customs for CHL, NZL, PHL, ZAF, FJI). base = mean over 2019-2021 of level / Urals index (1.124, 0.723, 1.154) x the 2021 index, as now. site_fields_proposed shows the resulting site values",
+   "how": "read levels from laundered_r43.json when present (same keys); refiner deductions follow automatically (they are computed from the new value split by origin)"
+  },
+  {
+   "id": "B3",
+   "what": "Range construction for measured series",
+   "where": "laundered_r39.json low/high (stacked ends)",
+   "replace": "low/high = quadrature of the independent log-bands of quantity (customs +-8%, mirror/carried +-20%), origin share and crude content, per origin, origins combined in quadrature (laundered_r43 'low'/'high'); the stacked ends are kept as 'low_stacked'/'high_stacked' for the data-only comparison",
+   "owner": "method: calc() already combines each part's terms in quadrature; r39 stacked the ends inside the series"
+  },
+  {
+   "id": "B4",
+   "what": "Cyprus",
+   "where": "apply_laundered_eu() (laundered_eu.json countries.CYP: QW 40% (10-80%)), apply_laundered_r6() (laundered_r6.json CYP turkish_ports add_total_eur_bn), eu_refiner_exports() (EU refiners' 2021 export shares to CYP)",
+   "replace": "CYP's laund = laundered_r43.json buyers.CYP (Eurostat energy imports by consignor x consignor's share x crude content, plus laundered_r6's Greek resale of Turkish-port fuel). Drop the QW part and the direct Turkish-port first-importer part at Cyprus (not in its energy supply: re-exported); treat CYP like an r39 buyer (no route rule, the EU refiners' route not added again; their deduction follows the measured value)",
+   "how": "add CYP to the measured-buyer path (R39_BUYERS) with these levels, or a CYP override after apply_assumptions_r11_laundered(); the QW and Turkish-port fuel then belongs to Cyprus's re-export customers (LBY, LBN, EGY, NGA: not computed here; the refiners keep it until it is assigned)"
+  },
+  {
+   "id": "B5",
+   "what": "Malta",
+   "where": "apply_laundered_r6() MLT turkish_ports; eu_refiner_exports(); HUB_BUNKER_HALF_MID = {'MLT': 0.5 x 0.81}; LAUNDERED_CAP_BY['MLT']",
+   "replace": "MLT's laund levels = laundered_r43.json buyers.MLT (all imports by consignor), then the bunker rule as now (middle x0.595). Owner option: HUB_BUNKER_HALF_MID['MLT'] -> the measured bunker share 0.80 (0.74-0.82), i.e. only inland use (0.18) charged, as the method page states for bunkers",
+   "owner": "the half-bunker rule is a judgement; the bunker share itself is now measured (Eurostat)"
+  },
+  {
+   "id": "B6",
+   "what": "Australia",
+   "where": "apply_laundered_r6() replacement_for_laundered_eu_non_eu_AUS + laundered_eu non_eu AUS (CREA)",
+   "replace": "AUS laund = laundered_r43.json buyers.AUS (APS imports by source country x origin share x crude content, option A; Brunei inside). Keep AUS's bmul. Brunei's deduction (apply_brunei_r6) should follow the BRN part of by_origin_eur_m"
+  },
+  {
+   "id": "B7",
+   "what": "Expected path of the measured buyers",
+   "where": "apply_laundered_r39(): 'for k in (bmul, bmul_lo, bmul_hi): if lb.get(k): c[laund][k] = lb[k]' (keeps the old routes' pre-war growth)",
+   "replace": "owner decision. The docstring says the measured pre-war level is flat; the code keeps bmul. Flat (bmul = no-war crude price only) removes most of the Philippines' and Pakistan's laundered credit (variant data_quad_flat)",
+   "owner": "counterfactual choice, not data"
+  },
+  {
+   "id": "B8",
+   "what": "Price band of laundered oil (optional)",
+   "where": "laundered_volumes(): pidx_lo / pidx_hi from the Urals band",
+   "replace": "for measured series, pidx_lo = pidx_hi = pidx: the crude-content band already carries the Urals price (crude content = Russian FOB price x yield / fuel price), so the Urals band is counted twice (variant data_quad_noprice; small effect)"
+  }
+ ],
+ "measured_buyers": {
+  "FJI": {
+   "certainty": "C",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.00853,
+     0.00385,
+     0.00596,
+     0.01185,
+     0.01384,
+     0.0148,
+     0.00942,
+     0.01214
+    ],
+    "low": [
+     0.00655,
+     0.00297,
+     0.00458,
+     0.00876,
+     0.01051,
+     0.01146,
+     0.00742,
+     0.00938
+    ],
+    "high": [
+     0.01081,
+     0.00486,
+     0.00755,
+     0.01521,
+     0.01768,
+     0.01867,
+     0.01189,
+     0.01518
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "SGP": 8.47,
+      "ARE": 0.02,
+      "MYS": 0.01,
+      "IND": 0.01,
+      "TUR": 0.02,
+      "AUS": 0.0
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "SGP": 3.75,
+      "MYS": 0.06,
+      "CHN": 0.01,
+      "IND": 0.01,
+      "ARE": 0.01,
+      "TUR": 0.01
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "SGP": 5.9,
+      "ARE": 0.02,
+      "CHN": 0.01,
+      "MYS": 0.01,
+      "IND": 0.01,
+      "TUR": 0.01
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "SGP": 11.53,
+      "MYS": 0.16,
+      "IND": 0.09,
+      "ARE": 0.05,
+      "CHN": 0.01,
+      "TUR": 0.01
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "SGP": 11.64,
+      "MYS": 1.91,
+      "IND": 0.24,
+      "CHN": 0.02,
+      "ARE": 0.02,
+      "TUR": 0.01
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "SGP": 12.98,
+      "MYS": 1.53,
+      "IND": 0.22,
+      "CHN": 0.03,
+      "ARE": 0.02,
+      "TUR": 0.01
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "SGP": 6.71,
+      "MYS": 2.43,
+      "IND": 0.2,
+      "CHN": 0.06,
+      "ARE": 0.02,
+      "AUS": 0.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "SGP": 8.76,
+      "MYS": 3.06,
+      "IND": 0.22,
+      "CHN": 0.07,
+      "ARE": 0.02,
+      "AUS": 0.0
+     }
+    }
+   }
+  },
+  "NCL": {
+   "certainty": "C",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.00758,
+     0.00551,
+     0.00675,
+     0.0122,
+     0.01264,
+     0.00996,
+     0.00626,
+     0.00641
+    ],
+    "low": [
+     0.00558,
+     0.00412,
+     0.00506,
+     0.009,
+     0.00915,
+     0.00725,
+     0.00468,
+     0.00467
+    ],
+    "high": [
+     0.0099,
+     0.00712,
+     0.0087,
+     0.01564,
+     0.01668,
+     0.01312,
+     0.0082,
+     0.00839
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "SGP": 6.84,
+      "MYS": 0.73,
+      "CHN": 0.01,
+      "KOR": 0.0
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "SGP": 4.69,
+      "MYS": 0.78,
+      "CHN": 0.03,
+      "KOR": 0.0,
+      "TUR": 0.0
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "SGP": 5.67,
+      "MYS": 1.08,
+      "KOR": 0.0
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "SGP": 8.77,
+      "MYS": 3.38,
+      "TUR": 0.05,
+      "KOR": 0.0
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "SGP": 10.27,
+      "MYS": 2.22,
+      "TUR": 0.14,
+      "ARE": 0.01,
+      "KOR": 0.0,
+      "IDN": 0.0
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "SGP": 8.81,
+      "MYS": 0.68,
+      "TUR": 0.41,
+      "CHN": 0.06,
+      "KOR": 0.0
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "SGP": 4.77,
+      "MYS": 1.17,
+      "TUR": 0.32,
+      "KOR": 0.0,
+      "CHN": 0.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "SGP": 5.06,
+      "MYS": 1.2,
+      "TUR": 0.15,
+      "KOR": 0.0,
+      "CHN": 0.0
+     }
+    }
+   }
+  },
+  "NZL": {
+   "certainty": "B",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.02257,
+     0.02303,
+     0.03237,
+     0.07945,
+     0.11958,
+     0.09672,
+     0.11142,
+     0.07666
+    ],
+    "low": [
+     0.0187,
+     0.01932,
+     0.02539,
+     0.06283,
+     0.09559,
+     0.07891,
+     0.09293,
+     0.06059
+    ],
+    "high": [
+     0.02682,
+     0.02661,
+     0.03884,
+     0.09641,
+     0.14591,
+     0.11605,
+     0.13712,
+     0.09344
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "SGP": 15.15,
+      "CHN": 1.74,
+      "BEL": 1.39,
+      "MYS": 0.9,
+      "DEU": 1.04,
+      "GBR": 0.69
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "SGP": 11.77,
+      "CHN": 3.34,
+      "BRN": 3.08,
+      "BEL": 1.3,
+      "DEU": 1.15,
+      "MYS": 0.67
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "SGP": 13.95,
+      "BRN": 10.2,
+      "CHN": 3.2,
+      "BEL": 1.53,
+      "DEU": 1.16,
+      "GBR": 0.65
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "SGP": 51.29,
+      "MYS": 11.8,
+      "IND": 5.11,
+      "CHN": 4.89,
+      "BRN": 3.07,
+      "BEL": 1.39
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "SGP": 58.31,
+      "MYS": 29.54,
+      "CHN": 22.11,
+      "IND": 7.76,
+      "BRN": 1.49,
+      "BEL": 0.0
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "SGP": 53.11,
+      "CHN": 26.39,
+      "MYS": 11.53,
+      "BRN": 4.9,
+      "IND": 0.61,
+      "DEU": 0.0
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "SGP": 38.5,
+      "IND": 29.84,
+      "BRN": 20.58,
+      "MYS": 13.73,
+      "CHN": 8.14,
+      "OMN": 0.42
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "CHN": 7.73,
+      "HUN": 0.0,
+      "MYS": 12.52,
+      "IND": 0.58,
+      "SGP": 43.56,
+      "ARE": 0.05,
+      "CZE": 0.0,
+      "TUR": 0.02,
+      "BRN": 12.2,
+      "EST": 0.0,
+      "BGR": 0.0
+     }
+    }
+   }
+  },
+  "ZAF": {
+   "certainty": "B",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.19224,
+     0.13298,
+     0.34618,
+     1.28412,
+     0.98909,
+     0.81581,
+     0.54117,
+     0.43319
+    ],
+    "low": [
+     0.1632,
+     0.11072,
+     0.29887,
+     1.01508,
+     0.77923,
+     0.67438,
+     0.44116,
+     0.31451
+    ],
+    "high": [
+     0.22055,
+     0.15487,
+     0.39218,
+     1.55072,
+     1.24403,
+     1.01204,
+     0.70466,
+     0.54226
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "ITA": 24.88,
+      "NLD": 33.78,
+      "ARE": 18.22,
+      "TUR": 22.48,
+      "FIN": 38.6,
+      "CHN": 9.21
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "NLD": 34.77,
+      "BEL": 26.84,
+      "ITA": 8.53,
+      "ARE": 18.38,
+      "SWE": 2.75,
+      "GBR": 8.35
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "ITA": 38.91,
+      "NLD": 122.28,
+      "BEL": 38.86,
+      "ARE": 29.47,
+      "TUR": 31.54,
+      "GBR": 24.18
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "ARE": 352.39,
+      "IND": 333.27,
+      "TUR": 263.66,
+      "NLD": 74.11,
+      "BEL": 49.75,
+      "CHN": 40.38
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "IND": 585.69,
+      "ARE": 218.18,
+      "OMN": 43.76,
+      "TUR": 42.26,
+      "CHN": 35.71,
+      "MYS": 16.68
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "IND": 614.66,
+      "ARE": 68.99,
+      "OMN": 56.3,
+      "TUR": 38.64,
+      "SAU": 7.22,
+      "CHN": 6.18
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "IND": 432.79,
+      "OMN": 46.46,
+      "ARE": 42.12,
+      "SAU": 12.67,
+      "ITA": 0.0,
+      "NLD": 0.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "CHN": 0.08,
+      "EST": 0.01,
+      "MLT": 0.0,
+      "OMN": 32.14,
+      "SAU": 4.87,
+      "IND": 373.14,
+      "SGP": 0.16,
+      "ARE": 20.42,
+      "TUR": 0.25,
+      "CZE": 0.0,
+      "MYS": 2.04,
+      "HUN": 0.08
+     }
+    }
+   }
+  },
+  "MUS": {
+   "certainty": "C",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.01406,
+     0.01274,
+     0.01476,
+     0.07119,
+     0.07571,
+     0.0754,
+     0.0232,
+     0.02183
+    ],
+    "low": [
+     0.00916,
+     0.00666,
+     0.00984,
+     0.0425,
+     0.05103,
+     0.05935,
+     0.01497,
+     0.01371
+    ],
+    "high": [
+     0.01925,
+     0.01883,
+     0.01968,
+     0.09947,
+     0.10197,
+     0.09522,
+     0.03203,
+     0.03057
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "ARE": 9.26,
+      "IND": 3.54,
+      "SGP": 0.62,
+      "FRA": 0.16,
+      "DEU": 0.15,
+      "ITA": 0.05
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "ARE": 11.86,
+      "FRA": 0.08,
+      "IND": 0.23,
+      "DEU": 0.18,
+      "BEL": 0.13,
+      "NLD": 0.07
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "ARE": 9.17,
+      "IND": 4.74,
+      "SGP": 0.28,
+      "FRA": 0.08,
+      "BEL": 0.13,
+      "DEU": 0.13
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "ARE": 52.28,
+      "IND": 9.78,
+      "OMN": 8.19,
+      "SGP": 0.33,
+      "FRA": 0.05,
+      "MYS": 0.2
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "ARE": 41.81,
+      "IND": 30.69,
+      "OMN": 2.36,
+      "MYS": 0.28,
+      "NLD": 0.0,
+      "ITA": 0.0
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "IND": 53.19,
+      "ARE": 20.65,
+      "MYS": 0.81,
+      "NLD": 0.0,
+      "SAU": 0.2,
+      "ESP": 0.0
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "ARE": 15.0,
+      "OMN": 5.0,
+      "IND": 1.88,
+      "SGP": 0.43,
+      "MYS": 0.4,
+      "NLD": 0.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "ARE": 13.97,
+      "OMN": 4.76,
+      "IND": 1.74,
+      "SGP": 0.45,
+      "MYS": 0.41,
+      "SAU": 0.22
+     }
+    }
+   }
+  },
+  "NPL": {
+   "certainty": "B",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.01654,
+     0.00944,
+     0.0254,
+     0.21595,
+     0.38909,
+     0.42524,
+     0.32946,
+     0.30512
+    ],
+    "low": [
+     0.01283,
+     0.00735,
+     0.01968,
+     0.15986,
+     0.27735,
+     0.31313,
+     0.24105,
+     0.20053
+    ],
+    "high": [
+     0.02101,
+     0.01195,
+     0.03228,
+     0.28966,
+     0.53798,
+     0.57607,
+     0.45622,
+     0.40673
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "IND": 16.08,
+      "ARE": 0.22,
+      "SGP": 0.09,
+      "MYS": 0.04,
+      "CHN": 0.03,
+      "BEL": 0.02
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "IND": 9.02,
+      "ARE": 0.15,
+      "SGP": 0.1,
+      "CHN": 0.09,
+      "BEL": 0.03,
+      "MYS": 0.03
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "IND": 24.76,
+      "ARE": 0.25,
+      "SGP": 0.18,
+      "CHN": 0.07,
+      "DEU": 0.05,
+      "MYS": 0.04
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "IND": 214.9,
+      "ARE": 0.7,
+      "SGP": 0.22,
+      "MYS": 0.05,
+      "CHN": 0.03,
+      "BEL": 0.02
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "IND": 388.66,
+      "ARE": 0.32,
+      "SGP": 0.06,
+      "MYS": 0.03,
+      "CHN": 0.01,
+      "KOR": 0.0
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "IND": 424.99,
+      "CHN": 0.17,
+      "SGP": 0.05,
+      "MYS": 0.03,
+      "IDN": 0.0
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "IND": 329.4,
+      "SGP": 0.03,
+      "CHN": 0.03,
+      "MYS": 0.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "IND": 305.06,
+      "SGP": 0.03,
+      "CHN": 0.03,
+      "MYS": 0.0
+     }
+    }
+   }
+  },
+  "PNG": {
+   "certainty": "C",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.01245,
+     0.00828,
+     0.00987,
+     0.01582,
+     0.01891,
+     0.02516,
+     0.01851,
+     0.01942
+    ],
+    "low": [
+     0.01021,
+     0.00658,
+     0.00789,
+     0.01194,
+     0.01446,
+     0.01965,
+     0.014,
+     0.01443
+    ],
+    "high": [
+     0.0149,
+     0.01019,
+     0.0121,
+     0.02001,
+     0.02411,
+     0.0315,
+     0.02403,
+     0.02502
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "SGP": 8.22,
+      "MYS": 3.64,
+      "CHN": 0.37,
+      "NLD": 0.14,
+      "GBR": 0.04,
+      "DEU": 0.01
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "SGP": 7.04,
+      "MYS": 0.74,
+      "CHN": 0.26,
+      "NLD": 0.21,
+      "ARE": 0.02,
+      "BEL": 0.01
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "SGP": 8.15,
+      "MYS": 1.04,
+      "CHN": 0.3,
+      "NLD": 0.36,
+      "SWE": 0.0,
+      "ARE": 0.01
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "SGP": 13.89,
+      "MYS": 1.44,
+      "CHN": 0.24,
+      "NLD": 0.18,
+      "ARE": 0.06,
+      "DEU": 0.01
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "SGP": 15.15,
+      "MYS": 3.18,
+      "CHN": 0.46,
+      "ARE": 0.04,
+      "TUR": 0.03,
+      "IND": 0.02
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "SGP": 20.87,
+      "MYS": 3.87,
+      "CHN": 0.39,
+      "NLD": 0.0,
+      "ARE": 0.02,
+      "IND": 0.01
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "SGP": 12.34,
+      "MYS": 5.98,
+      "CHN": 0.11,
+      "IND": 0.07,
+      "NLD": 0.0,
+      "ASM": 0.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "SGP": 13.11,
+      "MYS": 6.14,
+      "CHN": 0.11,
+      "IND": 0.07,
+      "NLD": 0.0,
+      "ASM": 0.0
+     }
+    }
+   }
+  },
+  "BGD": {
+   "certainty": "C",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.17656,
+     0.14013,
+     0.2501,
+     0.52479,
+     0.62587,
+     0.64674,
+     0.37039,
+     0.36179
+    ],
+    "low": [
+     0.1414,
+     0.11013,
+     0.20022,
+     0.4144,
+     0.47511,
+     0.51721,
+     0.29532,
+     0.27711
+    ],
+    "high": [
+     0.21388,
+     0.17206,
+     0.30298,
+     0.63742,
+     0.78828,
+     0.80304,
+     0.47063,
+     0.44445
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "CHN": 118.14,
+      "MYS": 28.6,
+      "SGP": 23.67,
+      "IND": 4.35,
+      "ARE": 0.98,
+      "TUR": 0.82
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "CHN": 104.35,
+      "SGP": 21.6,
+      "MYS": 8.44,
+      "IND": 4.52,
+      "ARE": 0.94,
+      "TUR": 0.28
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "CHN": 168.69,
+      "SGP": 40.45,
+      "MYS": 26.48,
+      "IND": 12.24,
+      "ARE": 1.54,
+      "TUR": 0.69
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "CHN": 256.69,
+      "IND": 137.27,
+      "SGP": 61.56,
+      "MYS": 61.46,
+      "ARE": 6.28,
+      "TUR": 0.77
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "CHN": 387.95,
+      "IND": 169.87,
+      "MYS": 33.64,
+      "SGP": 28.08,
+      "ARE": 4.08,
+      "TUR": 2.23
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "IND": 356.37,
+      "CHN": 213.24,
+      "MYS": 44.18,
+      "SGP": 29.8,
+      "TUR": 3.14,
+      "KOR": 0.0
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "IND": 196.07,
+      "CHN": 105.39,
+      "MYS": 45.13,
+      "SGP": 16.47,
+      "BRN": 6.42,
+      "TUR": 0.91
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "IND": 181.58,
+      "CHN": 106.54,
+      "MYS": 46.31,
+      "SGP": 17.5,
+      "BRN": 9.43,
+      "TUR": 0.41
+     }
+    }
+   }
+  },
+  "PHL": {
+   "certainty": "B",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.48694,
+     0.23784,
+     0.38072,
+     0.36136,
+     0.52627,
+     0.58944,
+     0.27749,
+     0.22419
+    ],
+    "low": [
+     0.39089,
+     0.19398,
+     0.31229,
+     0.28885,
+     0.40532,
+     0.47281,
+     0.21468,
+     0.17866
+    ],
+    "high": [
+     0.58395,
+     0.28188,
+     0.45021,
+     0.42901,
+     0.64697,
+     0.70744,
+     0.34568,
+     0.26592
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "CHN": 438.65,
+      "SGP": 24.15,
+      "MYS": 12.04,
+      "ARE": 7.59,
+      "IND": 3.3,
+      "DEU": 0.39
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "CHN": 197.17,
+      "SGP": 20.0,
+      "MYS": 11.22,
+      "IND": 3.17,
+      "BRN": 2.73,
+      "ARE": 2.73
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "CHN": 305.7,
+      "SGP": 33.7,
+      "MYS": 17.03,
+      "BRN": 6.91,
+      "IND": 6.42,
+      "ARE": 5.56
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "CHN": 241.68,
+      "SGP": 52.96,
+      "MYS": 25.66,
+      "ARE": 20.24,
+      "IND": 9.73,
+      "BRN": 7.01
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "CHN": 405.6,
+      "SGP": 45.47,
+      "MYS": 34.89,
+      "IND": 34.66,
+      "ARE": 3.66,
+      "BRN": 1.9
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "CHN": 408.77,
+      "IND": 92.72,
+      "MYS": 46.37,
+      "SGP": 29.07,
+      "BRN": 11.73,
+      "OMN": 0.37
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "CHN": 216.73,
+      "SGP": 25.53,
+      "MYS": 14.46,
+      "BRN": 12.97,
+      "IND": 7.36,
+      "ARE": 0.3
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "CHN": 95.85,
+      "CZE": 0.0,
+      "MYS": 33.67,
+      "IND": 2.28,
+      "SGP": 39.49,
+      "ARE": 0.09,
+      "EST": 0.0,
+      "SAU": 0.0,
+      "TUR": 0.04,
+      "OMN": 1.16,
+      "BRN": 51.61
+     }
+    }
+   }
+  },
+  "LKA": {
+   "certainty": "B",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.03679,
+     0.02703,
+     0.04511,
+     0.19813,
+     0.12211,
+     0.2056,
+     0.13852,
+     0.13206
+    ],
+    "low": [
+     0.03,
+     0.02314,
+     0.03734,
+     0.15156,
+     0.09636,
+     0.17085,
+     0.11418,
+     0.097
+    ],
+    "high": [
+     0.04456,
+     0.03087,
+     0.05307,
+     0.24904,
+     0.15099,
+     0.253,
+     0.17544,
+     0.16617
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "SGP": 12.25,
+      "MYS": 10.17,
+      "ARE": 9.21,
+      "IND": 4.73,
+      "GBR": 0.12,
+      "DEU": 0.07
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "SGP": 9.39,
+      "MYS": 4.83,
+      "NLD": 4.3,
+      "ARE": 3.67,
+      "IND": 2.27,
+      "CHN": 1.85
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "SGP": 11.82,
+      "ARE": 10.85,
+      "IND": 9.6,
+      "NLD": 6.56,
+      "MYS": 5.24,
+      "BEL": 0.64
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "IND": 112.5,
+      "ARE": 51.52,
+      "SGP": 12.54,
+      "MYS": 11.24,
+      "CHN": 8.21,
+      "OMN": 0.92
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "IND": 48.28,
+      "ARE": 28.61,
+      "SGP": 15.62,
+      "CHN": 12.65,
+      "MYS": 11.26,
+      "OMN": 4.51
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "IND": 148.8,
+      "SGP": 29.77,
+      "MYS": 10.41,
+      "ARE": 6.9,
+      "CHN": 6.62,
+      "OMN": 2.65
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "IND": 97.69,
+      "SGP": 15.85,
+      "MYS": 8.85,
+      "CHN": 7.67,
+      "ARE": 6.02,
+      "OMN": 2.41
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "IND": 90.47,
+      "SGP": 16.84,
+      "MYS": 9.08,
+      "CHN": 7.75,
+      "ARE": 5.6,
+      "OMN": 2.3
+     }
+    }
+   }
+  },
+  "MDV": {
+   "certainty": "C",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.01192,
+     0.0032,
+     0.00398,
+     0.01799,
+     0.01708,
+     0.02011,
+     0.01309,
+     0.01246
+    ],
+    "low": [
+     0.00776,
+     0.00228,
+     0.00328,
+     0.01378,
+     0.01333,
+     0.01464,
+     0.00992,
+     0.00917
+    ],
+    "high": [
+     0.01603,
+     0.00411,
+     0.00469,
+     0.02209,
+     0.02117,
+     0.02564,
+     0.01661,
+     0.01594
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "ARE": 7.91,
+      "SGP": 1.83,
+      "CHN": 1.17,
+      "MYS": 0.94,
+      "POL": 0.05,
+      "FRA": 0.0
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "ARE": 1.7,
+      "MYS": 0.63,
+      "OMN": 0.52,
+      "SGP": 0.3,
+      "BEL": 0.01,
+      "CHN": 0.01
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "OMN": 1.51,
+      "SGP": 1.33,
+      "ARE": 0.79,
+      "MYS": 0.28,
+      "TUR": 0.03,
+      "IND": 0.02
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "OMN": 10.0,
+      "ARE": 4.4,
+      "SGP": 1.82,
+      "MYS": 1.45,
+      "IND": 0.14,
+      "TUR": 0.07
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "OMN": 9.23,
+      "ARE": 3.12,
+      "MYS": 2.24,
+      "SGP": 2.06,
+      "IND": 0.38,
+      "TUR": 0.05
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "ARE": 9.31,
+      "OMN": 5.32,
+      "MYS": 2.21,
+      "SGP": 2.01,
+      "IND": 0.74,
+      "TUR": 0.41
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "ARE": 4.73,
+      "OMN": 4.59,
+      "MYS": 1.64,
+      "SGP": 1.45,
+      "TUR": 0.36,
+      "IND": 0.3
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "ARE": 4.4,
+      "OMN": 4.37,
+      "MYS": 1.68,
+      "SGP": 1.55,
+      "TUR": 0.17,
+      "IND": 0.27
+     }
+    }
+   }
+  },
+  "CHL": {
+   "certainty": "B",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.0109,
+     0.0369,
+     0.04922,
+     0.00993,
+     0.01283,
+     0.01459,
+     0.00654,
+     0.00284
+    ],
+    "low": [
+     0.00953,
+     0.03021,
+     0.04123,
+     0.00821,
+     0.00993,
+     0.01174,
+     0.00549,
+     0.00233
+    ],
+    "high": [
+     0.01854,
+     0.04465,
+     0.05842,
+     0.02053,
+     0.02295,
+     0.0259,
+     0.01566,
+     0.00904
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "DEU": 4.32,
+      "CHN": 3.09,
+      "ESP": 0.12,
+      "FRA": 0.59,
+      "BEL": 0.73,
+      "SWE": 0.56
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "CHN": 30.17,
+      "DEU": 3.78,
+      "ESP": 0.08,
+      "FRA": 0.34,
+      "BEL": 0.89,
+      "ITA": 0.28
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "CHN": 34.85,
+      "DEU": 8.08,
+      "NLD": 3.2,
+      "ESP": 0.3,
+      "FRA": 0.53,
+      "ITA": 0.28
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "DEU": 5.91,
+      "FRA": 0.3,
+      "ESP": 0.06,
+      "BEL": 0.9,
+      "ITA": 0.64,
+      "TUR": 0.46
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "CHN": 10.16,
+      "TUR": 1.16,
+      "ESP": 0.0,
+      "IND": 0.66,
+      "DEU": 0.04,
+      "FRA": 0.0
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "CHN": 9.34,
+      "TUR": 3.51,
+      "SGP": 0.67,
+      "IND": 0.56,
+      "DEU": 0.0,
+      "FRA": 0.0
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "TUR": 4.58,
+      "SGP": 0.59,
+      "IND": 0.46,
+      "CHN": 0.38,
+      "DEU": 0.0,
+      "FRA": 0.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "CHN": 0.46,
+      "HUN": 0.05,
+      "MYS": 0.01,
+      "IND": 0.47,
+      "SGP": 0.17,
+      "ARE": 0.07,
+      "TUR": 1.6,
+      "CZE": 0.0,
+      "EST": 0.0
+     }
+    }
+   }
+  },
+  "CMR": {
+   "certainty": "D",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.12241,
+     0.08688,
+     0.07453,
+     0.1024,
+     0.11536,
+     0.12414,
+     0.08137,
+     0.07157
+    ],
+    "low": [
+     0.10694,
+     0.07596,
+     0.06513,
+     0.08397,
+     0.09187,
+     0.09515,
+     0.06213,
+     0.04915
+    ],
+    "high": [
+     0.13631,
+     0.09629,
+     0.08328,
+     0.12091,
+     0.14744,
+     0.16262,
+     0.10881,
+     0.09338
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "BEL": 70.92,
+      "NLD": 33.25,
+      "GBR": 9.25,
+      "FRA": 4.08,
+      "GRC": 1.46,
+      "MLT": 0.84
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "BEL": 50.99,
+      "NLD": 16.79,
+      "GBR": 7.46,
+      "ITA": 1.88,
+      "NOR": 4.27,
+      "FRA": 0.95
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "BEL": 29.07,
+      "NLD": 20.26,
+      "NOR": 8.34,
+      "ESP": 1.17,
+      "SGP": 2.85,
+      "CHN": 2.66
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "IND": 34.31,
+      "NLD": 23.48,
+      "FRA": 4.19,
+      "NOR": 10.88,
+      "ARE": 9.44,
+      "BEL": 4.12
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "IND": 92.91,
+      "ARE": 7.08,
+      "BEL": 0.0,
+      "NOR": 3.22,
+      "GBR": 2.24,
+      "TUR": 1.74
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "IND": 106.47,
+      "BEL": 0.0,
+      "TUR": 3.25,
+      "ARE": 3.05,
+      "NOR": 2.38,
+      "GBR": 1.66
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "IND": 69.37,
+      "BEL": 0.0,
+      "TUR": 2.03,
+      "ARE": 1.98,
+      "NOR": 1.76,
+      "GBR": 1.23
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "IND": 64.25,
+      "ARE": 1.84,
+      "TUR": 0.92,
+      "BEL": 0.0,
+      "SGP": 0.84,
+      "NOR": 0.72
+     }
+    }
+   }
+  },
+  "KEN": {
+   "certainty": "C",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.06232,
+     0.09007,
+     0.14636,
+     0.37832,
+     0.25151,
+     0.15026,
+     0.13185,
+     0.12185
+    ],
+    "low": [
+     0.04441,
+     0.07702,
+     0.12339,
+     0.21689,
+     0.15622,
+     0.11236,
+     0.09993,
+     0.08532
+    ],
+    "high": [
+     0.08558,
+     0.10274,
+     0.16884,
+     0.53851,
+     0.35143,
+     0.19151,
+     0.17303,
+     0.16025
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "ARE": 33.56,
+      "CHN": 13.61,
+      "NLD": 5.2,
+      "IND": 3.91,
+      "ITA": 1.76,
+      "MYS": 1.39
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "NLD": 53.3,
+      "ARE": 13.65,
+      "BEL": 6.06,
+      "CYP": 4.86,
+      "IND": 3.59,
+      "GBR": 2.53
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "NLD": 73.17,
+      "ARE": 30.37,
+      "BEL": 19.22,
+      "CYP": 9.37,
+      "IND": 2.62,
+      "GBR": 2.24
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "ARE": 299.41,
+      "IND": 21.83,
+      "NLD": 20.38,
+      "BEL": 11.7,
+      "TUR": 8.65,
+      "SAU": 4.59
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "ARE": 171.53,
+      "IND": 63.53,
+      "SAU": 4.46,
+      "MYS": 3.81,
+      "OMN": 3.37,
+      "NLD": 0.0
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "IND": 65.47,
+      "ARE": 63.23,
+      "OMN": 10.1,
+      "TUR": 3.65,
+      "NLD": 0.0,
+      "MYS": 3.1
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "IND": 72.5,
+      "ARE": 48.62,
+      "OMN": 5.97,
+      "SAU": 3.0,
+      "BEL": 0.0,
+      "NLD": 0.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "IND": 67.15,
+      "ARE": 45.28,
+      "OMN": 5.69,
+      "SAU": 2.45,
+      "BEL": 0.0,
+      "CHN": 0.34
+     }
+    }
+   }
+  },
+  "TZA": {
+   "certainty": "C",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.03224,
+     0.02774,
+     0.03283,
+     0.27909,
+     0.2272,
+     0.28134,
+     0.16463,
+     0.15257
+    ],
+    "low": [
+     0.0229,
+     0.0202,
+     0.02025,
+     0.16756,
+     0.17144,
+     0.22773,
+     0.1318,
+     0.10585
+    ],
+    "high": [
+     0.04259,
+     0.03573,
+     0.04741,
+     0.39002,
+     0.29614,
+     0.35594,
+     0.21384,
+     0.19835
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "ARE": 17.46,
+      "CHN": 6.58,
+      "IND": 4.59,
+      "MYS": 0.95,
+      "SGP": 0.7,
+      "FRA": 0.27
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "ARE": 13.99,
+      "CHN": 6.36,
+      "IND": 2.87,
+      "NLD": 2.43,
+      "MYS": 0.56,
+      "GBR": 0.39
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "ARE": 24.19,
+      "GBR": 2.45,
+      "IND": 2.38,
+      "SGP": 1.08,
+      "OMN": 0.93,
+      "MYS": 0.71
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "ARE": 202.87,
+      "IND": 60.57,
+      "GBR": 3.44,
+      "NLD": 3.03,
+      "SAU": 2.45,
+      "OMN": 2.32
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "IND": 147.58,
+      "ARE": 70.07,
+      "SAU": 4.42,
+      "OMN": 1.37,
+      "SGP": 1.24,
+      "CHN": 1.09
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "IND": 240.43,
+      "ARE": 35.43,
+      "OMN": 3.42,
+      "CHN": 0.59,
+      "SAU": 0.53,
+      "SGP": 0.35
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "IND": 134.9,
+      "ARE": 26.13,
+      "OMN": 1.36,
+      "CHN": 0.87,
+      "SAU": 0.84,
+      "NLD": 0.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "IND": 124.93,
+      "ARE": 24.33,
+      "OMN": 1.29,
+      "CHN": 0.88,
+      "SAU": 0.69,
+      "SGP": 0.22
+     }
+    }
+   }
+  },
+  "MOZ": {
+   "certainty": "C",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.02961,
+     0.02016,
+     0.01968,
+     0.15329,
+     0.08803,
+     0.06233,
+     0.03484,
+     0.03274
+    ],
+    "low": [
+     0.02275,
+     0.01561,
+     0.01252,
+     0.08334,
+     0.05896,
+     0.05161,
+     0.02643,
+     0.02361
+    ],
+    "high": [
+     0.03657,
+     0.02481,
+     0.02692,
+     0.22283,
+     0.11946,
+     0.0757,
+     0.0448,
+     0.04216
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "ARE": 12.17,
+      "CHN": 7.48,
+      "ITA": 2.88,
+      "GBR": 2.57,
+      "IND": 1.79,
+      "ESP": 0.15
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "GBR": 9.57,
+      "ARE": 6.52,
+      "IND": 1.75,
+      "NLD": 1.33,
+      "PRT": 0.0,
+      "OMN": 0.21
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "ARE": 13.69,
+      "FRA": 1.05,
+      "IND": 3.18,
+      "SGP": 0.64,
+      "PRT": 0.0,
+      "MYS": 0.5
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "ARE": 130.44,
+      "IND": 18.47,
+      "SAU": 1.38,
+      "SGP": 0.9,
+      "OMN": 0.88,
+      "PRT": 0.0
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "ARE": 49.6,
+      "IND": 33.49,
+      "CHN": 1.65,
+      "MYS": 1.49,
+      "SAU": 1.23,
+      "OMN": 0.26
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "IND": 35.25,
+      "ARE": 9.49,
+      "OMN": 9.4,
+      "SGP": 6.94,
+      "MYS": 0.73,
+      "CHN": 0.35
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "IND": 13.31,
+      "ARE": 13.13,
+      "OMN": 5.66,
+      "SGP": 2.22,
+      "CHN": 0.2,
+      "SAU": 0.17
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "ARE": 12.23,
+      "IND": 12.32,
+      "OMN": 5.4,
+      "SGP": 2.36,
+      "CHN": 0.2,
+      "SAU": 0.14
+     }
+    }
+   }
+  },
+  "PAK": {
+   "certainty": "C",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.20257,
+     0.12522,
+     0.32055,
+     0.72249,
+     0.25354,
+     0.1188,
+     0.09051,
+     0.0865
+    ],
+    "low": [
+     0.15927,
+     0.09525,
+     0.25723,
+     0.49041,
+     0.1547,
+     0.08228,
+     0.05813,
+     0.05453
+    ],
+    "high": [
+     0.24602,
+     0.1565,
+     0.38655,
+     0.9488,
+     0.35542,
+     0.16163,
+     0.12832,
+     0.1229
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "NLD": 115.71,
+      "ARE": 71.35,
+      "SGP": 7.96,
+      "MYS": 1.88,
+      "ROU": 2.4,
+      "CHN": 0.84
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "ARE": 53.96,
+      "NLD": 41.63,
+      "CHN": 12.46,
+      "BEL": 6.24,
+      "SGP": 5.29,
+      "MYS": 2.33
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "CHN": 185.58,
+      "ARE": 89.45,
+      "NLD": 26.79,
+      "SGP": 11.48,
+      "MYS": 2.65,
+      "ITA": 0.71
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "ARE": 397.48,
+      "CHN": 239.04,
+      "NLD": 57.58,
+      "SGP": 12.45,
+      "OMN": 11.6,
+      "SAU": 1.22
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "ARE": 178.58,
+      "CHN": 43.68,
+      "SGP": 19.84,
+      "OMN": 8.28,
+      "NLD": 0.0,
+      "MYS": 1.17
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "ARE": 64.88,
+      "SGP": 26.09,
+      "OMN": 18.31,
+      "CHN": 4.54,
+      "MYS": 3.94,
+      "NLD": 0.0
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "ARE": 58.9,
+      "SGP": 16.61,
+      "OMN": 10.29,
+      "MYS": 1.46,
+      "SAU": 1.31,
+      "CHN": 1.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "ARE": 54.85,
+      "SGP": 17.65,
+      "OMN": 9.81,
+      "MYS": 1.49,
+      "SAU": 1.06,
+      "CHN": 1.02
+     }
+    }
+   }
+  },
+  "SLB": {
+   "certainty": "C",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.00095,
+     0.00067,
+     0.00183,
+     0.00284,
+     0.00185,
+     0.00318,
+     0.00225,
+     0.00237
+    ],
+    "low": [
+     0.00072,
+     0.0005,
+     0.00143,
+     0.00212,
+     0.0013,
+     0.00228,
+     0.0016,
+     0.00166
+    ],
+    "high": [
+     0.00122,
+     0.00086,
+     0.00228,
+     0.00361,
+     0.00249,
+     0.00424,
+     0.00305,
+     0.00319
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "SGP": 0.77,
+      "MYS": 0.16,
+      "CHN": 0.02,
+      "KOR": 0.0,
+      "TUR": 0.0,
+      "IDN": 0.0
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "SGP": 0.56,
+      "MYS": 0.06,
+      "CHN": 0.05,
+      "KOR": 0.0,
+      "IDN": 0.0
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "SGP": 1.24,
+      "MYS": 0.51,
+      "CHN": 0.07,
+      "KOR": 0.0,
+      "ARE": 0.0,
+      "IDN": 0.0
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "SGP": 1.88,
+      "MYS": 0.89,
+      "CHN": 0.07,
+      "KOR": 0.0
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "SGP": 1.7,
+      "MYS": 0.07,
+      "CHN": 0.07,
+      "KOR": 0.0
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "SGP": 2.98,
+      "CHN": 0.11,
+      "MYS": 0.09,
+      "KOR": 0.0,
+      "IDN": 0.0
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "SGP": 2.1,
+      "CHN": 0.09,
+      "MYS": 0.06
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "SGP": 2.23,
+      "CHN": 0.09,
+      "MYS": 0.06
+     }
+    }
+   }
+  },
+  "VUT": {
+   "certainty": "C",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.00099,
+     0.00067,
+     0.00154,
+     0.00249,
+     0.00439,
+     0.00566,
+     0.00387,
+     0.00324
+    ],
+    "low": [
+     0.00081,
+     0.00055,
+     0.00129,
+     0.00197,
+     0.00345,
+     0.0045,
+     0.00311,
+     0.00255
+    ],
+    "high": [
+     0.00119,
+     0.00079,
+     0.0018,
+     0.00302,
+     0.00537,
+     0.0069,
+     0.00474,
+     0.00396
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "CHN": 0.54,
+      "TUR": 0.35,
+      "SGP": 0.09,
+      "MYS": 0.01,
+      "KOR": 0.0
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "CHN": 0.31,
+      "SGP": 0.19,
+      "TUR": 0.16,
+      "MYS": 0.01,
+      "KOR": 0.0
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "TUR": 0.59,
+      "SGP": 0.45,
+      "MYS": 0.28,
+      "CHN": 0.22,
+      "KOR": 0.0
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "MYS": 1.06,
+      "TUR": 0.82,
+      "SGP": 0.47,
+      "CHN": 0.14,
+      "KOR": 0.0
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "CHN": 2.02,
+      "TUR": 1.26,
+      "MYS": 0.63,
+      "SGP": 0.47,
+      "KOR": 0.0,
+      "IDN": 0.0
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "MYS": 2.43,
+      "CHN": 2.06,
+      "SGP": 0.72,
+      "TUR": 0.45,
+      "KOR": 0.0
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "CHN": 1.53,
+      "TUR": 1.26,
+      "MYS": 0.72,
+      "SGP": 0.36,
+      "KOR": 0.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "CHN": 1.55,
+      "TUR": 0.57,
+      "MYS": 0.74,
+      "SGP": 0.38,
+      "KOR": 0.0
+     }
+    }
+   }
+  },
+  "WSM": {
+   "certainty": "C",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.00146,
+     0.00069,
+     0.00123,
+     0.00202,
+     0.00256,
+     0.00251,
+     0.0018,
+     0.00191
+    ],
+    "low": [
+     0.00112,
+     0.00049,
+     0.00097,
+     0.0015,
+     0.00189,
+     0.00189,
+     0.00135,
+     0.00131
+    ],
+    "high": [
+     0.00185,
+     0.00092,
+     0.00152,
+     0.00259,
+     0.00335,
+     0.00323,
+     0.00236,
+     0.00261
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "SGP": 1.45,
+      "ASM": 0.0,
+      "AUS": 0.0,
+      "CHN": 0.0,
+      "FJI": 0.0,
+      "HKG": 0.0
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "SGP": 0.69,
+      "ASM": 0.0,
+      "AUS": 0.0,
+      "FJI": 0.0,
+      "HKG": 0.0,
+      "ITA": 0.0
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "SGP": 1.05,
+      "MYS": 0.18,
+      "ASM": 0.0,
+      "AUS": 0.0,
+      "CHN": 0.0,
+      "FJI": 0.0
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "SGP": 1.96,
+      "MYS": 0.05,
+      "ASM": 0.0,
+      "AUS": 0.0,
+      "CHN": 0.0,
+      "FJI": 0.0
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "SGP": 2.53,
+      "CHN": 0.01,
+      "MYS": 0.01,
+      "ARE": 0.01,
+      "ASM": 0.0,
+      "AUS": 0.0
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "SGP": 2.49,
+      "CHN": 0.01,
+      "MYS": 0.01,
+      "ASM": 0.0,
+      "AUS": 0.0,
+      "FJI": 0.0
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "SGP": 1.79,
+      "CHN": 0.01,
+      "ASM": 0.0,
+      "AUS": 0.0,
+      "FJI": 0.0,
+      "HKG": 0.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "SGP": 1.9,
+      "CHN": 0.01,
+      "ASM": 0.0,
+      "AUS": 0.0,
+      "FJI": 0.0,
+      "HKG": 0.0
+     }
+    }
+   }
+  },
+  "TON": {
+   "certainty": "D",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     3e-05,
+     0.00069,
+     0.00097,
+     0.00142,
+     0.00123,
+     0.00137,
+     0.00111,
+     0.00116
+    ],
+    "low": [
+     2e-05,
+     0.00053,
+     0.00074,
+     0.00105,
+     0.00091,
+     0.00097,
+     0.00084,
+     0.0008
+    ],
+    "high": [
+     3e-05,
+     0.00087,
+     0.00123,
+     0.00183,
+     0.00161,
+     0.00184,
+     0.00145,
+     0.00157
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "SGP": 0.01,
+      "TUR": 0.02,
+      "ASM": 0.0,
+      "AUS": 0.0,
+      "CHN": 0.0,
+      "FJI": 0.0
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "SGP": 0.68,
+      "TUR": 0.01,
+      "AUS": 0.0,
+      "CAN": 0.0,
+      "CHN": 0.0,
+      "FJI": 0.0
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "SGP": 0.97,
+      "AUS": 0.0,
+      "CHN": 0.0,
+      "FJI": 0.0,
+      "MYS": 0.0,
+      "NZL": 0.0
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "SGP": 1.41,
+      "MYS": 0.01,
+      "AUS": 0.0,
+      "CHN": 0.0,
+      "FJI": 0.0,
+      "NZL": 0.0
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "SGP": 1.21,
+      "MYS": 0.01,
+      "TUR": 0.01,
+      "AUS": 0.0,
+      "CHN": 0.0,
+      "FJI": 0.0
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "SGP": 1.34,
+      "TUR": 0.02,
+      "AUS": 0.0,
+      "CHN": 0.0,
+      "FJI": 0.0,
+      "DEU": 0.0
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "SGP": 1.07,
+      "TUR": 0.02,
+      "CHN": 0.01,
+      "MYS": 0.01,
+      "AUS": 0.0,
+      "FJI": 0.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "SGP": 1.13,
+      "CHN": 0.01,
+      "MYS": 0.01,
+      "TUR": 0.01,
+      "AUS": 0.0,
+      "FJI": 0.0
+     }
+    }
+   }
+  },
+  "AUS": {
+   "certainty": "B",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.57897,
+     0.39144,
+     0.57306,
+     0.78937,
+     0.96234,
+     1.63781,
+     1.27273,
+     1.52042
+    ],
+    "low": [
+     0.4984,
+     0.33314,
+     0.47797,
+     0.64776,
+     0.78682,
+     1.39409,
+     1.06624,
+     1.13806
+    ],
+    "high": [
+     0.65558,
+     0.44075,
+     0.65747,
+     0.92933,
+     1.16359,
+     1.93493,
+     1.57692,
+     1.81302
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "BEL": 5.16,
+      "CHN": 323.43,
+      "FIN": 0.48,
+      "DEU": 7.55,
+      "IND": 2.75,
+      "MYS": 25.69,
+      "NLD": 100.18,
+      "SGP": 107.49,
+      "ESP": 0.12,
+      "SWE": 0.66,
+      "ARE": 5.47,
+      "OMN": 0.0
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "BEL": 5.33,
+      "BRN": 55.68,
+      "CHN": 194.3,
+      "FIN": 0.47,
+      "DEU": 8.46,
+      "IND": 9.71,
+      "MYS": 24.4,
+      "NLD": 22.19,
+      "SGP": 64.91,
+      "ESP": 0.06,
+      "SWE": 0.16,
+      "ARE": 5.76
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "BEL": 5.09,
+      "BRN": 124.37,
+      "CHN": 162.37,
+      "FIN": 0.1,
+      "DEU": 9.96,
+      "IND": 35.5,
+      "MYS": 50.79,
+      "NLD": 30.04,
+      "SGP": 151.73,
+      "ESP": 0.24,
+      "SWE": 0.16,
+      "ARE": 2.66,
+      "TUR": 0.04,
+      "GRC": 0.02
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "BEL": 3.13,
+      "BRN": 52.65,
+      "CHN": 190.14,
+      "DEU": 6.98,
+      "IND": 202.76,
+      "MYS": 80.95,
+      "NLD": 1.49,
+      "SGP": 243.17,
+      "ESP": 0.05,
+      "SWE": 0.05,
+      "ARE": 6.14,
+      "OMN": 1.81,
+      "TUR": 0.05,
+      "GRC": 0.01
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "BRN": 37.29,
+      "CHN": 237.2,
+      "DEU": 0.07,
+      "IND": 336.39,
+      "MYS": 144.6,
+      "SAU": 0.68,
+      "SGP": 197.01,
+      "ARE": 8.16,
+      "OMN": 0.95
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "BRN": 236.26,
+      "CHN": 314.4,
+      "IND": 744.27,
+      "MYS": 136.64,
+      "SAU": 0.0,
+      "SGP": 194.02,
+      "ARE": 10.21,
+      "OMN": 1.92,
+      "TUR": 0.08
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "BRN": 334.09,
+      "CHN": 221.42,
+      "IND": 474.69,
+      "MYS": 80.48,
+      "SAU": 0.0,
+      "SGP": 149.29,
+      "ARE": 10.84,
+      "OMN": 1.76,
+      "TUR": 0.15
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "BRN": 719.33,
+      "CHN": 158.85,
+      "IND": 365.26,
+      "MYS": 111.18,
+      "SGP": 162.76,
+      "ARE": 1.67,
+      "OMN": 1.26,
+      "TUR": 0.11
+     }
+    }
+   }
+  },
+  "CYP": {
+   "certainty": "B",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.10304,
+     0.09466,
+     0.14064,
+     0.10717,
+     0.04679,
+     0.05676,
+     0.06386,
+     0.01093
+    ],
+    "low": [
+     0.09116,
+     0.08362,
+     0.12486,
+     0.09008,
+     0.02665,
+     0.03205,
+     0.03617,
+     0.00368
+    ],
+    "high": [
+     0.12426,
+     0.10718,
+     0.15975,
+     0.14814,
+     0.08824,
+     0.10922,
+     0.09669,
+     0.13149
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "ARE": 0.0,
+      "BEL": 25.26,
+      "BGR": 0.0,
+      "DEU": 0.05,
+      "GRC": 29.33,
+      "ESP": 1.94,
+      "FRA": 16.56,
+      "HRV": 0.07,
+      "IND": 0.0,
+      "ITA": 16.39,
+      "LTU": 0.07,
+      "NLD": 8.07,
+      "TUR": 5.26,
+      "POL": 0.02,
+      "PRT": 0.02,
+      "SWE": 0.0
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "ARE": 0.0,
+      "BEL": 33.57,
+      "BGR": 0.0,
+      "DEU": 0.03,
+      "GRC": 42.75,
+      "ESP": 0.5,
+      "FRA": 1.87,
+      "ITA": 10.57,
+      "LTU": 0.04,
+      "NLD": 5.2,
+      "POL": 0.06,
+      "ROU": 0.0,
+      "SWE": 0.0,
+      "SGP": 0.05
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "ARE": 0.0,
+      "AUT": 0.0,
+      "BEL": 37.75,
+      "BGR": 0.0,
+      "CHN": 0.0,
+      "DEU": 0.08,
+      "GRC": 39.33,
+      "ESP": 0.98,
+      "FRA": 0.0,
+      "IND": 0.0,
+      "ITA": 14.07,
+      "LTU": 0.08,
+      "NLD": 46.06,
+      "POL": 0.01,
+      "ROU": 0.01,
+      "SWE": 0.0,
+      "TUR": 2.25
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "ARE": 0.01,
+      "BEL": 12.13,
+      "BGR": 0.84,
+      "CZE": 0.0,
+      "DEU": 0.09,
+      "GRC": 11.27,
+      "ESP": 1.03,
+      "FRA": 0.68,
+      "ITA": 51.89,
+      "NLD": 10.67,
+      "TUR": 12.41,
+      "POL": 0.01,
+      "ROU": 0.01,
+      "SWE": 0.0
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "ARE": 0.0,
+      "BGR": 0.0,
+      "CHN": 0.32,
+      "CZE": 0.0,
+      "DEU": 0.0,
+      "IND": 0.0,
+      "TUR": 46.45,
+      "POL": 0.0,
+      "SVK": 0.0
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "ARE": 0.02,
+      "BGR": 0.0,
+      "CHN": 0.0,
+      "CZE": 0.0,
+      "IND": 0.0,
+      "TUR": 56.73,
+      "SGP": 0.0,
+      "SVK": 0.01
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "ARE": 0.01,
+      "BGR": 0.0,
+      "CHN": 0.0,
+      "CZE": 0.0,
+      "IND": 0.0,
+      "TUR": 63.84,
+      "SGP": 0.0,
+      "SVK": 0.0
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "ARE": 0.01,
+      "BGR": 0.0,
+      "CHN": 0.0,
+      "CZE": 0.0,
+      "IND": 0.0,
+      "TUR": 10.91,
+      "SGP": 0.0,
+      "SVK": 0.0
+     }
+    }
+   }
+  },
+  "MLT": {
+   "certainty": "B",
+   "russian_crude_in_fuel_eur_bn_levels": {
+    "years": [
+     2019,
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
+     2026
+    ],
+    "central": [
+     0.10452,
+     0.04377,
+     0.05939,
+     0.09978,
+     0.03051,
+     0.03738,
+     0.03401,
+     0.01086
+    ],
+    "low": [
+     0.09234,
+     0.0391,
+     0.05268,
+     0.08367,
+     0.02226,
+     0.02832,
+     0.02412,
+     0.00786
+    ],
+    "high": [
+     0.1131,
+     0.04843,
+     0.06689,
+     0.14239,
+     0.0678,
+     0.06166,
+     0.05775,
+     0.033
+    ]
+   },
+   "fuel_imports_and_russian_crude_by_year": {
+    "2019": {
+     "by_origin_eur_m": {
+      "ARE": 0.13,
+      "BEL": 1.95,
+      "DEU": 0.0,
+      "DNK": 1.63,
+      "GRC": 6.98,
+      "ESP": 10.93,
+      "FRA": 4.8,
+      "HRV": 0.29,
+      "ITA": 14.16,
+      "NLD": 58.85,
+      "ROU": 0.28,
+      "SGP": 0.04,
+      "TUR": 4.48
+     }
+    },
+    "2020": {
+     "by_origin_eur_m": {
+      "ARE": 0.0,
+      "BEL": 0.23,
+      "DEU": 0.02,
+      "GRC": 3.21,
+      "ESP": 1.74,
+      "FRA": 5.09,
+      "IND": 0.03,
+      "ITA": 13.96,
+      "NLD": 10.07,
+      "ROU": 0.96,
+      "SWE": 1.0,
+      "SGP": 0.02,
+      "TUR": 6.21
+     }
+    },
+    "2021": {
+     "by_origin_eur_m": {
+      "ARE": 0.0,
+      "BEL": 0.03,
+      "BGR": 0.44,
+      "DEU": 0.02,
+      "DNK": 0.04,
+      "GRC": 7.93,
+      "ESP": 5.97,
+      "FIN": 0.33,
+      "FRA": 5.47,
+      "ITA": 28.98,
+      "LTU": 0.0,
+      "NLD": 6.64,
+      "POL": 0.0,
+      "SGP": 0.01,
+      "TUR": 3.52
+     }
+    },
+    "2022": {
+     "by_origin_eur_m": {
+      "ARE": 4.08,
+      "BEL": 0.67,
+      "DEU": 0.01,
+      "GRC": 3.99,
+      "ESP": 1.71,
+      "FRA": 5.85,
+      "IND": 8.04,
+      "ITA": 47.47,
+      "NLD": 8.69,
+      "SWE": 0.0,
+      "SGP": 0.1,
+      "SVK": 0.01,
+      "TUR": 14.38
+     }
+    },
+    "2023": {
+     "by_origin_eur_m": {
+      "ARE": 0.05,
+      "BGR": 0.0,
+      "DEU": 0.0,
+      "IND": 0.01,
+      "POL": 0.0,
+      "SGP": 0.0,
+      "SVK": 0.01,
+      "TUR": 24.28
+     }
+    },
+    "2024": {
+     "by_origin_eur_m": {
+      "ARE": 0.0,
+      "BGR": 0.26,
+      "CHN": 0.49,
+      "IND": 3.36,
+      "SGP": 0.01,
+      "SVK": 0.02,
+      "TUR": 32.96
+     }
+    },
+    "2025": {
+     "by_origin_eur_m": {
+      "ARE": 0.0,
+      "BGR": 0.21,
+      "CHN": 0.35,
+      "IND": 2.37,
+      "SGP": 0.01,
+      "SVK": 0.02,
+      "TUR": 30.85
+     }
+    },
+    "2026": {
+     "by_origin_eur_m": {
+      "ARE": 0.0,
+      "BGR": 0.09,
+      "CHN": 0.36,
+      "IND": 2.25,
+      "SGP": 0.01,
+      "SVK": 0.01,
+      "TUR": 7.95
+     }
+    }
+   }
+  }
+ },
+ "measured_buyers_note": "The builder's input (apply_laundered_r39): every measured buyer in laundered_r39.json's shape. Levels 2019-2026 (central, low, high; quantity and origin share combined in quadrature, crude content added across origins), and the Russian crude in its fuel by refining origin per year (EUR m, central), which splits the refiners' deductions. Cyprus: Turkish-consigned fuel, 'not specified' and the Greek resale of Turkish-port fuel are booked to Türkiye.",
+ "proposed_build_changes_status": "B1-B4, B6-B8 done as proposed, with these differences: B5: Malta's levels only (bunker rule kept, also on its pre-war level); B6: Australia's expected path flat like the other measured buyers (not its old bmul); B3: crude content added across origins (shared input), quantity and share in quadrature."
+}

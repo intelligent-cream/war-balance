@@ -13,7 +13,7 @@ Details for developers: [filling order, shares, margins and research files](http
 3. **IMF trade statistics**, certainty B;
 4. **an estimate** from the growth of reporting countries, certainty C.
 
-Russia publishes no partner detail after 2021, so from 2022 trade with Russia is always what the other country reports. Official national statistics replace these where they are better (Belarus, Kazakhstan, Kyrgyzstan, Armenia, Uzbekistan, Türkiye, the UAE and others). For **countries that do not report** (Libya, Venezuela, Syria, Iran, North Korea and others), tanker tracking and official statements fill the gap; only the share Russia was paid for counts, not supplies on credit or as aid.
+Russia publishes no partner detail after 2021, so from 2022 trade with Russia is always what the other country reports. Official national statistics replace these where they are better (Belarus, Kazakhstan, Kyrgyzstan, Armenia, Uzbekistan, Türkiye, the UAE and others). Kyrgyzstan's 2020 and 2024 to August 2026 are its statistics office's revised totals (Comtrade holds an earlier, lower version of the same figures), and the estimate of its unrecorded sales to Russia is cut by the extra sales now reported, so they are not counted twice; Armenia's January–August 2026 is Armstat's. For **countries that do not report** (Libya, Venezuela, Syria, Iran, North Korea and others), tanker tracking and official statements fill the gap; only the share Russia was paid for counts, not supplies on credit or as aid.
 
 ### Why UN Comtrade and not Eurostat for EU members
 
@@ -52,7 +52,7 @@ Russia's own customs record EUR 29–46bn a year more imports than its partners 
 
 ## Hong Kong gold
 
-Nearly all of the rise in Hong Kong's imports from Russia since before the war is precious metals (measured from its own records). The share it passed on to mainland China counts for China, the share sent elsewhere for those buyers; Hong Kong keeps the rest. Gold is valued at the 2021 gold price held flat ([prices](#view=how&sec=m-prices-gold-at-its-no-war-price)). Hong Kong's direction is uncertain.
+Nearly all of the rise in Hong Kong's imports from Russia since before the war is precious metals (measured from its own records). For January–August 2026 the gold is measured: Hong Kong's imports of Russian-origin gold from its statistics department (C&SD Trade-IDDS); only the rest, about 7%, is estimated. The share it passed on to mainland China counts for China, the share sent elsewhere for those buyers; Hong Kong keeps the rest. Gold is valued at the 2021 gold price held flat ([prices](#view=how&sec=m-prices-gold-at-its-no-war-price)). Hong Kong's direction is uncertain.
 
 ## Gold and hidden channels
 

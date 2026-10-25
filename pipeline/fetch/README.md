@@ -38,6 +38,10 @@ All endpoints were checked from the sandbox on 2026-10-23. None needs an API key
 | `unhcr.py` | `api.unhcr.org/population/v1/population/?coo=UKR&coa_all=true` | `unhcr/` | refugees from Ukraine by country of asylum, end-year from 2021 (2026 is empty until UNHCR publishes) |
 | `ecb.py` | `data-api.ecb.europa.eu/service/data/EXR/...` | `ecb/` | annual and monthly euro reference rates (USD and 14 others) |
 | `ukrstat.py` | `stat.gov.ua/sdmx/workspaces/default:integration/registry/sdmx/2.1/data/...` | `ukrstat/` | Ukraine's own trade by partner: annual to 2024 and Jan–Sep 2025 cumulative (all that Ukrstat publishes as of 2026-10-23) |
+| `epdk_entsog.py` | `epdk.gov.tr` market reports (gas, oil); `transparency.entsog.eu/api/v1/operationalData` (Physical Flow) | `epdk/`, `entsog/` | round 43: Türkiye's gas and crude imports by origin (EPDK, 2005–2026); metered daily flows at the TurkStream, Balkan and Central European points from 2021-11, summed to months |
+| `energy_r44.py` | Eurostat `nrg_ti_oil`/`nrg_ti_gas`; Comtrade public preview `C/A/HS`; `unctadstat-api.unctad.org/bulkdownload/US.FleetBeneficialOwners` | `energy_r44/` | round 44: Czechia's crude and gas imports from Russia by origin (2015 onward), Czechia's and Türkiye's imports from Russia by heading, the fleet by country of beneficial ownership (Malta, Greece, Cyprus, Russia); status and SHA-256 of the documents consulted (MERO, EPDK, BOTAŞ, Transport Malta) |
+| `eaeu_r44.py` | `eec.eaeunion.org` trade-statistics pages; `stat.gov.kg`, `stat.gov.kz`, `armstat.am`; `dataportal.belstat.gov.by` API | `eaeu_r44/` | round 44: EAEU members' own statistics of trade with Russia (Kyrgyzstan's refined totals and 2026 first release, Kazakhstan, Armenia by origin and trading country), the EEC's 2015–2021 member-pair tables and the latest period each EEC product offers; downloads in `src_<date>/`, extract `eaeu_r44_<date>.json` |
+| `japan_r44.py` | `www.e-stat.go.jp` (MoF Trade Statistics of Japan, "Commodity by Country (Import)", statistics code 00350300); Comtrade public preview `C/A/HS` | `japan_r44/` | round 44: Japan's imports from Russia by 9-digit HS code, yearly and monthly, 2014–2026 (only the Russia rows kept), and Comtrade's Japan/Korea/China imports from Russia (LNG and TOTAL) as a cross-check |
 
 Not scriptable from here (manual review rounds):
 - Kiel UST: an xlsx whose URL changes with every release.
@@ -45,7 +49,7 @@ Not scriptable from here (manual review rounds):
 - Euroclear: www.euroclear.com blocks scripts (Cloudflare 403); `cf.euroclear.com` works.
 - ukrstat.gov.ua: its TLS certificate has expired.
 - customs.gov.ua: returns 403.
-- The ENTSOG and World Bank APIs work but are not scripted yet.
+- The World Bank API works but is not scripted yet (ENTSOG is, in `epdk_entsog.py`).
 
 Large responses are written as `.json.gz` holding `{"columns": [...], "rows": [[...]]}` plus the query metadata. `*.csv.gz`, `*.pdf`, `*.html` and `*.xlsx` under `raw/` are git-ignored, so the scripts never write `.csv.gz`.
 

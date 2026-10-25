@@ -1,0 +1,1515 @@
+{
+ "generated": "2026-10-25",
+ "round": "r44",
+ "unit": "EUR bn at the customs layer (the layer of trade_full.json, narrow.json trade_layer and refresh_2026.json), converted at trade_full.json fx; national figures also given in million USD as published",
+ "question": "Do the Eurasian Economic Commission's mutual-trade statistics and the EAEU members' national statistics give a second, independent measurement of trade with Russia (to_rus = imports from Russia, from_rus = exports to Russia) for KAZ, KGZ, ARM and BLR, and do they change ranges, letters or centrals?",
+ "answer_short": {
+  "eec_after_2021": "No pair data. Every EEC mutual-trade product (tables, time series, express information, analytical reviews, bulletins, annual report on mutual trade) ends at January 2022 or 2021; checked 2026-10-25. The EEC socio-economic briefs for 2022-2025 contain no trade at all, and the payments express (2025) gives currency shares only and notes that the Bank of Russia has suspended its data. The EEC publishes no Russia-reported flows after 2021.",
+  "independence": "Not independent. The national figures (BNS Kazakhstan, NSC Kyrgyzstan, Armstat) are the reporters' own statistics, the same records they send to UN Comtrade and the IMF; they match Comtrade to 0.0-0.4% wherever both carry the final vintage. Same source family 'trade'. The only independent measurement, Russia's own report, stops in 2021 (Comtrade r643 and the EEC 2015-2021 pair tables carry the same Russian figures).",
+  "letter": "No change. A part needs two official families for A; these add none.",
+  "ranges": "Kazakhstan: nothing new except an exact 2026 figure (already used to 0.1%). Armenia: 2026 January-August moves from press-based to Armstat's official chapter (central +5.8% imports, +2.2% exports; band about +-3% instead of +-8%). Kyrgyzstan: no narrowing; the site's 2024, 2025 and 2026 values sit below the National Statistical Committee's current figures by 18-30% (imports) and 18-50% (exports), outside the site's high bound.",
+  "centrals": "Kyrgyzstan to_rus rises by about EUR 1.15bn over 2022-2026 at the customs layer after the 2019-2021 base moves up (about 8% of one year's GDP, toward Russia). Kyrgyzstan from_rus: reported exports +0.39 (base included), residual -0.52 (2024, 2025 and 2026 at 8/12 of 2025), net about -0.13 (about -1% of GDP); mostly a shift from estimate to report. Armenia +0.09 to_rus, -0.04 from_rus (under 0.5% of GDP) and Kazakhstan 0.00: both stay near zero. Belarus: nothing new after 2021."
+ },
+ "eec_status": {
+  "intra_tables": {
+   "url": "https://eec.eaeunion.org/comission/department/dep_stat/tradestat/tables/intra/",
+   "latest_year_linked": "2022",
+   "january_2022": true
+  },
+  "time_series_mutual": {
+   "url": "https://eec.eaeunion.org/comission/department/dep_stat/tradestat/time_series/vzaimnaya-torgovlya-tovarami-dinamicheskie-ryady",
+   "latest_year_linked": "2021",
+   "january_2022": false
+  },
+  "express_trade": {
+   "url": "https://eec.eaeunion.org/comission/department/dep_stat/union_stat/current_stat/tradestat/express/",
+   "latest_year_linked": "2022",
+   "january_2022": true
+  },
+  "analytical_reviews": {
+   "url": "https://eec.eaeunion.org/comission/department/dep_stat/union_stat/current_stat/tradestat/analytical_reviews/",
+   "latest_year_linked": "2022",
+   "january_2022": true
+  },
+  "bulletins": {
+   "url": "https://eec.eaeunion.org/comission/department/dep_stat/union_stat/current_stat/tradestat/statistical_compilations/",
+   "latest_year_linked": "2021",
+   "january_2022": false
+  },
+  "mutual_trade_report": {
+   "url": "https://eec.eaeunion.org/comission/department/dep_stat/tradestat/analytics/tradereport.php",
+   "latest_year_linked": "2022",
+   "january_2022": false
+  }
+ },
+ "national_offices_status": {
+  "KAZ": {
+   "site": "stat.gov.kz (Bureau of National Statistics)",
+   "reachable": true,
+   "has_russia": "monthly cumulative by country (xlsx, current and prior-year period) and annual express releases (PDF, partner shares to 0.1 pp); EAEU trade from form 1-TS (statistical survey), other partners from customs (State Revenue Committee)",
+   "latest": "January-August 2026 (15.10.2026)"
+  },
+  "KGZ": {
+   "site": "stat.gov.kg (the old www.stat.kg serves a certificate for another host; stat.gov.kg works)",
+   "reachable": true,
+   "has_russia": "annual and year-to-date 'Mutual trade of goods with EAEU states' (xlsx, table 1 by member, thousand USD), imports by country of dispatch; forms 1-VT and 1-V plus surveys of individuals at the Kazakh border; refined totals each July",
+   "latest": "January-August 2026 (19.10.2026)"
+  },
+  "ARM": {
+   "site": "armstat.am",
+   "reachable": true,
+   "has_russia": "foreign-trade database by country (annual to 2025: exports, imports by origin, imports by trading country) and the monthly socio-economic report ch. 4.1.1 (January-August 2026)",
+   "latest": "January-August 2026"
+  },
+  "BLR": {
+   "site": "belstat.gov.by unreachable from the sandbox (timeouts); dataportal.belstat.gov.by reachable",
+   "reachable": "portal only",
+   "has_russia": "no: the portal's foreign-trade-by-country API lists years 2006-2021 only (foreignTradeStatisticGetYearList); Belstat stopped partner detail in 2022",
+   "latest": "2021"
+  },
+  "RUS": {
+   "has_partner_data_after_2021": false,
+   "note": "Rosstat and the FCS publish no partner detail since 2022; EEC carries none either"
+  }
+ },
+ "sources": [
+  {
+   "id": "eaeu_r44",
+   "proposed_type": "data",
+   "proposed_family": "trade",
+   "name": "EAEU members' own statistics of trade with Russia: Bureau of National Statistics of Kazakhstan, National Statistical Committee of the Kyrgyz Republic, Armstat; EEC member-pair tables 2015-2021",
+   "urls": [
+    "https://stat.gov.kg/ru/publications/vzaimnaya-torgovlya-tovarami-kyrgyzskoj-respubliki-s-gosudarstvami-chlenami-evrazijskogo-ekonomicheskogo-soyuza/",
+    "https://stat.gov.kg/ru/statistics/vneshneekonomicheskaya-deyatelnost/",
+    "https://stat.gov.kz/ru/industries/economy/foreign-market/",
+    "https://www.armstat.am/ru/?nid=159",
+    "https://www.armstat.am/ru/?nid=82&id=2841",
+    "https://eec.eaeunion.org/comission/department/dep_stat/tradestat/time_series/vzaimnaya-torgovlya-tovarami-dinamicheskie-ryady"
+   ],
+   "retrieved": "2026-10-25",
+   "fetch": "pipeline/fetch/eaeu_r44.py -> research/2026-10/raw/eaeu_r44/eaeu_r44_2026-10-25.json"
+  }
+ ],
+ "comparison": {
+  "KGZ": {
+   "to_rus": {
+    "2019": {
+     "national_usd_m": 1404.3,
+     "national_eur_bn": 1.2544,
+     "site_customs_eur_bn": [
+      1.0871,
+      1.2544,
+      1.4475
+     ],
+     "diff_pct": -0.0
+    },
+    "2020": {
+     "national_usd_m": 1319.9,
+     "national_eur_bn": 1.1556,
+     "site_customs_eur_bn": [
+      0.8269,
+      0.9542,
+      1.1522
+     ],
+     "diff_pct": 21.1,
+     "comtrade_usd_m_2026_10_25": 1089.8
+    },
+    "2021": {
+     "national_usd_m": 1911.5,
+     "national_eur_bn": 1.6162,
+     "site_customs_eur_bn": [
+      1.4003,
+      1.6159,
+      1.8646
+     ],
+     "diff_pct": 0.0
+    },
+    "2022": {
+     "national_usd_m": 2406.0,
+     "national_eur_bn": 2.2848,
+     "site_customs_eur_bn": [
+      1.9792,
+      2.2839,
+      2.6355
+     ],
+     "diff_pct": 0.0
+    },
+    "2023": {
+     "national_usd_m": 2282.8,
+     "national_eur_bn": 2.1113,
+     "site_customs_eur_bn": [
+      1.823,
+      2.1036,
+      2.4275
+     ],
+     "diff_pct": 0.4
+    },
+    "2024": {
+     "national_usd_m": 2739.8,
+     "national_eur_bn": 2.5313,
+     "site_customs_eur_bn": [
+      1.8493,
+      2.1339,
+      2.4625
+     ],
+     "diff_pct": 18.6,
+     "comtrade_usd_m_2026_10_25": 2309.7
+    },
+    "2025": {
+     "national_usd_m": 3366.8,
+     "national_eur_bn": 2.9795,
+     "site_customs_eur_bn": [
+      1.9908,
+      2.2972,
+      2.6509
+     ],
+     "diff_pct": 29.7,
+     "comtrade_usd_m_2026_10_25": 2595.8
+    },
+    "2026": {
+     "national_usd_m": 2370.4,
+     "national_eur_bn": 2.0385,
+     "site_customs_eur_bn": [
+      1.5906,
+      1.6569,
+      1.7231
+     ],
+     "diff_pct": 23.0,
+     "period": "January-August"
+    },
+    "site_final_layer": {
+     "years": [
+      1.51087,
+      2.13545,
+      1.96596,
+      2.03015,
+      2.23274,
+      1.60317
+     ],
+     "years_lo": [
+      1.41165,
+      1.99521,
+      1.83591,
+      1.87061,
+      2.02423,
+      1.45441
+     ],
+     "years_hi": [
+      1.7438,
+      2.46467,
+      2.26922,
+      2.38491,
+      2.64243,
+      1.80277
+     ],
+     "base": 1.35468,
+     "base_range": [
+      1.21453,
+      1.63216
+     ],
+     "cert": "A",
+     "src": [
+      "trade",
+      "reexports",
+      "reexports",
+      "prices",
+      "narrow",
+      "counterfactual",
+      "cf_bands",
+      "net_gain_russia",
+      "assumptions_r11_gain",
+      "assumptions_r11_people",
+      "gas_prices"
+     ]
+    }
+   },
+   "from_rus": {
+    "2019": {
+     "national_usd_m": 281.3,
+     "national_eur_bn": 0.2512,
+     "site_customs_eur_bn": [
+      0.2295,
+      0.2512,
+      0.275
+     ],
+     "diff_pct": -0.0
+    },
+    "2020": {
+     "national_usd_m": 257.3,
+     "national_eur_bn": 0.2253,
+     "site_customs_eur_bn": [
+      0.1739,
+      0.1904,
+      0.2115
+     ],
+     "diff_pct": 18.3,
+     "comtrade_usd_m_2026_10_25": 217.5
+    },
+    "2021": {
+     "national_usd_m": 393.3,
+     "national_eur_bn": 0.3326,
+     "site_customs_eur_bn": [
+      0.3031,
+      0.3318,
+      0.3632
+     ],
+     "diff_pct": 0.2
+    },
+    "2022": {
+     "national_usd_m": 1069.7,
+     "national_eur_bn": 1.0158,
+     "site_customs_eur_bn": [
+      0.9151,
+      1.0155,
+      1.1117
+     ],
+     "diff_pct": 0.0
+    },
+    "2023": {
+     "national_usd_m": 823.7,
+     "national_eur_bn": 0.7618,
+     "site_customs_eur_bn": [
+      0.6941,
+      0.7598,
+      0.8318
+     ],
+     "diff_pct": 0.3
+    },
+    "2024": {
+     "national_usd_m": 1151.7,
+     "national_eur_bn": 1.064,
+     "site_customs_eur_bn": [
+      0.8237,
+      0.9018,
+      0.9872
+     ],
+     "diff_pct": 18.0,
+     "comtrade_usd_m_2026_10_25": 976.1
+    },
+    "2025": {
+     "national_usd_m": 738.5,
+     "national_eur_bn": 0.6536,
+     "site_customs_eur_bn": [
+      0.3988,
+      0.4366,
+      0.4779
+     ],
+     "diff_pct": 49.7,
+     "comtrade_usd_m_2026_10_25": 493.3
+    },
+    "2026": {
+     "national_usd_m": 423.6,
+     "national_eur_bn": 0.3642,
+     "site_customs_eur_bn": [
+      0.2501,
+      0.2946,
+      0.347
+     ],
+     "diff_pct": 23.7,
+     "period": "January-August"
+    },
+    "site_final_layer": {
+     "years": [
+      0.27722,
+      1.01056,
+      0.85623,
+      1.20914,
+      0.76281,
+      0.51004
+     ],
+     "years_lo": [
+      0.22422,
+      0.55079,
+      0.35528,
+      0.40975,
+      0.33705,
+      0.13677
+     ],
+     "years_hi": [
+      0.33696,
+      1.5314,
+      1.46797,
+      1.97782,
+      1.38478,
+      0.97259
+     ],
+     "base": 0.26759,
+     "base_range": [
+      0.21415,
+      0.33865
+     ],
+     "cert": "C",
+     "src": [
+      "trade",
+      "reexports",
+      "residual",
+      "prices",
+      "counterfactual",
+      "cf_bands",
+      "value_kept",
+      "net_gain_sellers",
+      "assumptions_r11_rules"
+     ]
+    }
+   }
+  },
+  "KAZ": {
+   "to_rus": {
+    "2019": {
+     "national_usd_m": 14312.1,
+     "national_eur_bn": 12.7847,
+     "site_customs_eur_bn": [
+      11.6483,
+      12.7847,
+      14.032
+     ],
+     "diff_pct": 0.0
+    },
+    "2020": {
+     "national_usd_m": 13768.2,
+     "national_eur_bn": 12.0542,
+     "site_customs_eur_bn": [
+      10.9827,
+      12.0542,
+      13.2303
+     ],
+     "diff_pct": 0.0
+    },
+    "2021": {
+     "national_usd_m": 17605.5,
+     "national_eur_bn": 14.8854,
+     "site_customs_eur_bn": [
+      13.5622,
+      14.8853,
+      16.3376
+     ],
+     "diff_pct": 0.0
+    },
+    "2022": {
+     "national_usd_m": null,
+     "national_eur_bn": null,
+     "site_customs_eur_bn": [
+      15.0052,
+      16.4692,
+      18.0759
+     ],
+     "diff_pct": null
+    },
+    "2023": {
+     "national_usd_m": 16207.1,
+     "national_eur_bn": 14.9891,
+     "site_customs_eur_bn": [
+      13.6441,
+      14.9753,
+      16.4363
+     ],
+     "diff_pct": 0.1
+    },
+    "2024": {
+     "national_usd_m": 18235.1,
+     "national_eur_bn": 16.8473,
+     "site_customs_eur_bn": [
+      15.3639,
+      16.8629,
+      18.5081
+     ],
+     "diff_pct": -0.1
+    },
+    "2025": {
+     "national_usd_m": 19259.6,
+     "national_eur_bn": 17.0442,
+     "site_customs_eur_bn": [
+      15.7545,
+      17.2916,
+      18.9786
+     ],
+     "diff_pct": -1.4
+    },
+    "2026": {
+     "national_usd_m": 13198.6,
+     "national_eur_bn": 11.3502,
+     "site_customs_eur_bn": [
+      10.8914,
+      11.3452,
+      11.799
+     ],
+     "diff_pct": 0.0,
+     "period": "January-August"
+    },
+    "site_final_layer": {
+     "years": [
+      13.9118,
+      15.3925,
+      13.99806,
+      15.67511,
+      15.94622,
+      10.46588
+     ],
+     "years_lo": [
+      12.98094,
+      14.36236,
+      13.06031,
+      14.52931,
+      14.72416,
+      9.55125
+     ],
+     "years_hi": [
+      15.05577,
+      16.65965,
+      15.15708,
+      17.05435,
+      17.42099,
+      11.2296
+     ],
+     "base": 12.82903,
+     "base_range": [
+      11.41081,
+      14.59741
+     ],
+     "cert": "A",
+     "src": [
+      "trade",
+      "reexports",
+      "reexports",
+      "prices",
+      "narrow",
+      "counterfactual",
+      "cf_bands",
+      "net_gain_russia",
+      "assumptions_r11_gain",
+      "assumptions_r11_people",
+      "gas_prices"
+     ]
+    }
+   },
+   "from_rus": {
+    "2019": {
+     "national_usd_m": 5670.9,
+     "national_eur_bn": 5.0657,
+     "site_customs_eur_bn": [
+      4.4299,
+      5.0657,
+      5.7928
+     ],
+     "diff_pct": -0.0
+    },
+    "2020": {
+     "national_usd_m": 5007.1,
+     "national_eur_bn": 4.3838,
+     "site_customs_eur_bn": [
+      3.8336,
+      4.3838,
+      5.013
+     ],
+     "diff_pct": -0.0
+    },
+    "2021": {
+     "national_usd_m": 7018.7,
+     "national_eur_bn": 5.9343,
+     "site_customs_eur_bn": [
+      5.1895,
+      5.9343,
+      6.786
+     ],
+     "diff_pct": 0.0
+    },
+    "2022": {
+     "national_usd_m": null,
+     "national_eur_bn": null,
+     "site_customs_eur_bn": [
+      7.2919,
+      8.3385,
+      9.5352
+     ],
+     "diff_pct": null
+    },
+    "2023": {
+     "national_usd_m": 9755.6,
+     "national_eur_bn": 9.0225,
+     "site_customs_eur_bn": [
+      7.9164,
+      9.0526,
+      10.3519
+     ],
+     "diff_pct": -0.3
+    },
+    "2024": {
+     "national_usd_m": 9549.4,
+     "national_eur_bn": 8.8226,
+     "site_customs_eur_bn": [
+      7.7129,
+      8.8199,
+      10.0858
+     ],
+     "diff_pct": 0.0
+    },
+    "2025": {
+     "national_usd_m": 8141.2,
+     "national_eur_bn": 7.2048,
+     "site_customs_eur_bn": [
+      6.3834,
+      7.2995,
+      8.3472
+     ],
+     "diff_pct": -1.3
+    },
+    "2026": {
+     "national_usd_m": 5127.4,
+     "national_eur_bn": 4.4093,
+     "site_customs_eur_bn": [
+      4.3004,
+      4.4142,
+      4.5289
+     ],
+     "diff_pct": -0.1,
+     "period": "January-August"
+    },
+    "site_final_layer": {
+     "years": [
+      5.71785,
+      6.21889,
+      6.17412,
+      6.32715,
+      5.6735,
+      3.39824
+     ],
+     "years_lo": [
+      5.27998,
+      3.35034,
+      2.41949,
+      2.2418,
+      2.57697,
+      0.24179
+     ],
+     "years_hi": [
+      6.1597,
+      8.23011,
+      8.68358,
+      8.90393,
+      7.8656,
+      4.97607
+     ],
+     "base": 5.51916,
+     "base_range": [
+      5.04296,
+      6.19065
+     ],
+     "cert": "B",
+     "src": [
+      "trade",
+      "reexports",
+      "residual",
+      "prices",
+      "narrow",
+      "audit2",
+      "counterfactual",
+      "cf_bands",
+      "value_kept",
+      "net_gain_sellers",
+      "assumptions_r11_rules"
+     ]
+    }
+   }
+  },
+  "ARM": {
+   "to_rus": {
+    "2019": {
+     "national_usd_m": 1483.9,
+     "national_eur_bn": 1.3256,
+     "site_customs_eur_bn": [
+      1.1456,
+      1.325,
+      1.5324
+     ],
+     "diff_pct": 0.0,
+     "national_trading_country_usd_m": 1642.6,
+     "trading_country_over_origin": 1.107
+    },
+    "2020": {
+     "national_usd_m": 1477.4,
+     "national_eur_bn": 1.2935,
+     "site_customs_eur_bn": [
+      1.1091,
+      1.2827,
+      1.4836
+     ],
+     "diff_pct": 0.8,
+     "national_trading_country_usd_m": 1635.7,
+     "trading_country_over_origin": 1.107
+    },
+    "2021": {
+     "national_usd_m": 1785.4,
+     "national_eur_bn": 1.5096,
+     "site_customs_eur_bn": [
+      1.464,
+      1.5093,
+      1.5545
+     ],
+     "diff_pct": 0.0,
+     "national_trading_country_usd_m": 1997.9,
+     "trading_country_over_origin": 1.119
+    },
+    "2022": {
+     "national_usd_m": 2637.1,
+     "national_eur_bn": 2.5043,
+     "site_customs_eur_bn": [
+      2.4291,
+      2.5042,
+      2.5793
+     ],
+     "diff_pct": 0.0,
+     "national_trading_country_usd_m": 2891.3,
+     "trading_country_over_origin": 1.096
+    },
+    "2023": {
+     "national_usd_m": 4383.8,
+     "national_eur_bn": 4.0543,
+     "site_customs_eur_bn": [
+      3.9277,
+      4.0492,
+      4.1707
+     ],
+     "diff_pct": 0.1,
+     "national_trading_country_usd_m": 4543.4,
+     "trading_country_over_origin": 1.036
+    },
+    "2024": {
+     "national_usd_m": 9240.0,
+     "national_eur_bn": 8.5367,
+     "site_customs_eur_bn": [
+      8.2798,
+      8.5358,
+      8.7919
+     ],
+     "diff_pct": 0.0,
+     "national_trading_country_usd_m": 9432.6,
+     "trading_country_over_origin": 1.021
+    },
+    "2025": {
+     "national_usd_m": 4691.6,
+     "national_eur_bn": 4.152,
+     "site_customs_eur_bn": [
+      4.0319,
+      4.1565,
+      4.2812
+     ],
+     "diff_pct": -0.1,
+     "national_trading_country_usd_m": 4866.0,
+     "trading_country_over_origin": 1.037
+    },
+    "2026": {
+     "national_usd_m": 1939.2,
+     "national_eur_bn": 1.6676,
+     "site_customs_eur_bn": [
+      1.4496,
+      1.5757,
+      1.7017
+     ],
+     "diff_pct": 5.8,
+     "national_trading_country_usd_m": 2026.5,
+     "trading_country_over_origin": 1.045,
+     "period": "January-August"
+    },
+    "site_final_layer": {
+     "years": [
+      1.4112,
+      2.01045,
+      1.91315,
+      2.18558,
+      1.99627,
+      1.11729
+     ],
+     "years_lo": [
+      1.33224,
+      1.8704,
+      1.67898,
+      1.68511,
+      1.75633,
+      0.84897
+     ],
+     "years_hi": [
+      1.48455,
+      2.17256,
+      2.23019,
+      2.91477,
+      2.32008,
+      1.42208
+     ],
+     "base": 1.33915,
+     "base_range": [
+      1.21157,
+      1.47277
+     ],
+     "cert": "A",
+     "src": [
+      "trade",
+      "reexports",
+      "prices",
+      "narrow",
+      "counterfactual",
+      "cf_bands",
+      "net_gain_russia",
+      "assumptions_r11_gain",
+      "assumptions_r11_people",
+      "gas_prices"
+     ]
+    }
+   },
+   "from_rus": {
+    "2019": {
+     "national_usd_m": 741.4,
+     "national_eur_bn": 0.6623,
+     "site_customs_eur_bn": [
+      0.5746,
+      0.6418,
+      0.7169
+     ],
+     "diff_pct": 3.2
+    },
+    "2020": {
+     "national_usd_m": 680.3,
+     "national_eur_bn": 0.5956,
+     "site_customs_eur_bn": [
+      0.4789,
+      0.535,
+      0.5976
+     ],
+     "diff_pct": 11.3
+    },
+    "2021": {
+     "national_usd_m": 840.7,
+     "national_eur_bn": 0.7108,
+     "site_customs_eur_bn": [
+      0.6009,
+      0.6712,
+      0.7497
+     ],
+     "diff_pct": 5.9
+    },
+    "2022": {
+     "national_usd_m": 2462.8,
+     "national_eur_bn": 2.3387,
+     "site_customs_eur_bn": [
+      2.0548,
+      2.2953,
+      2.5638
+     ],
+     "diff_pct": 1.9
+    },
+    "2023": {
+     "national_usd_m": 3540.2,
+     "national_eur_bn": 3.2741,
+     "site_customs_eur_bn": [
+      2.9024,
+      3.242,
+      3.6213
+     ],
+     "diff_pct": 1.0
+    },
+    "2024": {
+     "national_usd_m": 3182.8,
+     "national_eur_bn": 2.9405,
+     "site_customs_eur_bn": [
+      2.5945,
+      2.898,
+      3.2371
+     ],
+     "diff_pct": 1.5
+    },
+    "2025": {
+     "national_usd_m": 2916.4,
+     "national_eur_bn": 2.5809,
+     "site_customs_eur_bn": [
+      2.5029,
+      2.5803,
+      2.6577
+     ],
+     "diff_pct": 0.0
+    },
+    "2026": {
+     "national_usd_m": 1651.8,
+     "national_eur_bn": 1.4205,
+     "site_customs_eur_bn": [
+      1.2784,
+      1.3896,
+      1.5007
+     ],
+     "diff_pct": 2.2,
+     "period": "January-August"
+    },
+    "site_final_layer": {
+     "years": [
+      0.60614,
+      1.25321,
+      1.5238,
+      1.5414,
+      1.28938,
+      0.63404
+     ],
+     "years_lo": [
+      0.49407,
+      0.47185,
+      0.42282,
+      0.64339,
+      0.63872,
+      0.0
+     ],
+     "years_hi": [
+      0.7373,
+      2.11622,
+      2.83899,
+      2.6415,
+      2.06902,
+      1.43585
+     ],
+     "base": 0.58508,
+     "base_range": [
+      0.47189,
+      0.74101
+     ],
+     "cert": "C",
+     "src": [
+      "trade",
+      "reexports",
+      "residual",
+      "prices",
+      "narrow",
+      "audit2",
+      "counterfactual",
+      "cf_bands",
+      "value_kept",
+      "net_gain_sellers",
+      "assumptions_r11_rules"
+     ]
+    }
+   }
+  },
+  "BLR": {
+   "to_rus": {
+    "2019": {
+     "national_usd_m": 22022.7,
+     "national_eur_bn": 19.6724,
+     "site_customs_eur_bn": [
+      13.8202,
+      19.6668,
+      27.9868
+     ],
+     "diff_pct": 0.0
+    },
+    "2020": {
+     "national_usd_m": 16516.9,
+     "national_eur_bn": 14.4608,
+     "site_customs_eur_bn": [
+      10.1579,
+      14.4551,
+      20.5703
+     ],
+     "diff_pct": 0.0
+    },
+    "2021": {
+     "national_usd_m": 23665.7,
+     "national_eur_bn": 20.0092,
+     "site_customs_eur_bn": [
+      19.4096,
+      20.0099,
+      20.6102
+     ],
+     "diff_pct": -0.0
+    },
+    "2022": {
+     "national_usd_m": null,
+     "national_eur_bn": null,
+     "site_customs_eur_bn": [
+      20.2279,
+      21.2726,
+      22.0323
+     ],
+     "diff_pct": null
+    },
+    "2023": {
+     "national_usd_m": null,
+     "national_eur_bn": null,
+     "site_customs_eur_bn": [
+      19.8835,
+      21.2707,
+      22.6579
+     ],
+     "diff_pct": null
+    },
+    "2024": {
+     "national_usd_m": null,
+     "national_eur_bn": null,
+     "site_customs_eur_bn": [
+      20.7871,
+      22.1729,
+      23.5588
+     ],
+     "diff_pct": null
+    },
+    "2025": {
+     "national_usd_m": null,
+     "national_eur_bn": null,
+     "site_customs_eur_bn": [
+      20.7965,
+      22.1239,
+      23.4513
+     ],
+     "diff_pct": null
+    },
+    "2026": {
+     "national_usd_m": null,
+     "national_eur_bn": null,
+     "site_customs_eur_bn": [
+      13.1429,
+      15.6463,
+      17.4773
+     ],
+     "diff_pct": null,
+     "period": "January-August"
+    },
+    "site_final_layer": {
+     "years": [
+      18.87134,
+      20.06233,
+      20.0612,
+      20.91383,
+      20.86606,
+      14.75632
+     ],
+     "years_lo": [
+      17.86265,
+      18.6158,
+      18.29913,
+      19.13143,
+      19.1394,
+      12.09548
+     ],
+     "years_hi": [
+      19.78991,
+      21.15611,
+      21.75997,
+      22.63322,
+      22.52219,
+      16.78299
+     ],
+     "base": 17.24197,
+     "base_range": [
+      15.6306,
+      18.93953
+     ],
+     "cert": "B",
+     "src": [
+      "trade",
+      "reexports",
+      "prices",
+      "narrow",
+      "counterfactual",
+      "net_gain_russia",
+      "assumptions_r11_gain",
+      "assumptions_r11_people",
+      "gas_prices"
+     ]
+    }
+   },
+   "from_rus": {
+    "2019": {
+     "national_usd_m": 13690.8,
+     "national_eur_bn": 12.2297,
+     "site_customs_eur_bn": [
+      9.2442,
+      12.2252,
+      16.1675
+     ],
+     "diff_pct": 0.0
+    },
+    "2020": {
+     "national_usd_m": 13161.7,
+     "national_eur_bn": 11.5232,
+     "site_customs_eur_bn": [
+      8.7102,
+      11.5189,
+      15.2334
+     ],
+     "diff_pct": 0.0
+    },
+    "2021": {
+     "national_usd_m": 16375.4,
+     "national_eur_bn": 13.8453,
+     "site_customs_eur_bn": [
+      13.4304,
+      13.8458,
+      14.2611
+     ],
+     "diff_pct": -0.0
+    },
+    "2022": {
+     "national_usd_m": null,
+     "national_eur_bn": null,
+     "site_customs_eur_bn": [
+      20.8927,
+      22.2222,
+      23.192
+     ],
+     "diff_pct": null
+    },
+    "2023": {
+     "national_usd_m": null,
+     "national_eur_bn": null,
+     "site_customs_eur_bn": [
+      22.1955,
+      23.1203,
+      24.4451
+     ],
+     "diff_pct": null
+    },
+    "2024": {
+     "national_usd_m": null,
+     "national_eur_bn": null,
+     "site_customs_eur_bn": [
+      23.0968,
+      24.2979,
+      25.8065
+     ],
+     "diff_pct": null
+    },
+    "2025": {
+     "national_usd_m": null,
+     "national_eur_bn": null,
+     "site_customs_eur_bn": [
+      22.5664,
+      23.8938,
+      25.6212
+     ],
+     "diff_pct": null
+    },
+    "2026": {
+     "national_usd_m": null,
+     "national_eur_bn": null,
+     "site_customs_eur_bn": [
+      15.6463,
+      17.6437,
+      20.2736
+     ],
+     "diff_pct": null,
+     "period": "January-August"
+    },
+    "site_final_layer": {
+     "years": [
+      13.6208,
+      21.3158,
+      21.1602,
+      22.7841,
+      22.7664,
+      16.83642
+     ],
+     "years_lo": [
+      12.9554,
+      19.49025,
+      18.8608,
+      20.59775,
+      20.6576,
+      13.87177
+     ],
+     "years_hi": [
+      14.1811,
+      22.6325,
+      23.4725,
+      24.9817,
+      24.9391,
+      19.85933
+     ],
+     "base": 13.14749,
+     "base_range": [
+      12.37383,
+      14.25236
+     ],
+     "cert": "B",
+     "src": [
+      "trade",
+      "reexports",
+      "prices",
+      "narrow",
+      "counterfactual",
+      "cf_bands",
+      "value_kept",
+      "net_gain_sellers",
+      "assumptions_r11_rules"
+     ]
+    }
+   }
+  }
+ },
+ "russia_mirror_2019_2021_from_eec": {
+  "ARM": {
+   "russia_exports_over_partner_imports": {
+    "2019": 1.029,
+    "2020": 1.015,
+    "2021": 0.946
+   },
+   "russia_imports_over_partner_exports": {
+    "2019": 1.153,
+    "2020": 0.95,
+    "2021": 0.847
+   },
+   "russia_exports_usd_m": {
+    "2019": 1690.9,
+    "2020": 1660.5,
+    "2021": 1890.4
+   },
+   "russia_imports_usd_m": {
+    "2019": 854.7,
+    "2020": 646.5,
+    "2021": 711.9
+   },
+   "note": "EEC carries Armenia's imports by trading country (consignment); against Armstat's imports by origin the ratio is 1.14/1.12/1.06"
+  },
+  "BLR": {
+   "russia_exports_over_partner_imports": {
+    "2019": 0.986,
+    "2020": 1.026,
+    "2021": 0.998
+   },
+   "russia_imports_over_partner_exports": {
+    "2019": 0.998,
+    "2020": 1.007,
+    "2021": 0.992
+   },
+   "russia_exports_usd_m": {
+    "2019": 21709.7,
+    "2020": 16939.8,
+    "2021": 23617.2
+   },
+   "russia_imports_usd_m": {
+    "2019": 13663.2,
+    "2020": 13256.7,
+    "2021": 16236.6
+   }
+  },
+  "KAZ": {
+   "russia_exports_over_partner_imports": {
+    "2019": 0.998,
+    "2020": 1.021,
+    "2021": 1.051
+   },
+   "russia_imports_over_partner_exports": {
+    "2019": 1.007,
+    "2020": 1.01,
+    "2021": 1.017
+   },
+   "russia_exports_usd_m": {
+    "2019": 14286.9,
+    "2020": 14051.5,
+    "2021": 18495.5
+   },
+   "russia_imports_usd_m": {
+    "2019": 5710.1,
+    "2020": 5054.8,
+    "2021": 7135.2
+   }
+  },
+  "KGZ": {
+   "russia_exports_over_partner_imports": {
+    "2019": 1.111,
+    "2020": 1.104,
+    "2021": 1.128
+   },
+   "russia_imports_over_partner_exports": {
+    "2019": 1.145,
+    "2020": 0.933,
+    "2021": 0.886
+   },
+   "russia_exports_usd_m": {
+    "2019": 1559.7,
+    "2020": 1456.9,
+    "2021": 2156.3
+   },
+   "russia_imports_usd_m": {
+    "2019": 321.9,
+    "2020": 240.2,
+    "2021": 348.4
+   }
+  }
+ },
+ "proposals": {
+  "trade_full.json:KGZ.imports_from_RUS": {
+   "2020": {
+    "low": 0.9541,
+    "central": 1.1556,
+    "high": 1.3058,
+    "basis": "reported",
+    "src": "National Statistical Committee of the Kyrgyz Republic, mutual trade with EAEU states, table 1 (refined totals); low = UN Comtrade (earlier vintage of the same statistic)"
+   },
+   "2024": {
+    "low": 2.1339,
+    "central": 2.5313,
+    "high": 2.8604,
+    "basis": "reported",
+    "src": "National Statistical Committee of the Kyrgyz Republic, mutual trade with EAEU states, table 1 (refined totals); low = UN Comtrade (earlier vintage of the same statistic)"
+   },
+   "2025": {
+    "low": 2.2972,
+    "central": 2.9795,
+    "high": 3.3669,
+    "basis": "reported",
+    "src": "National Statistical Committee of the Kyrgyz Republic, mutual trade with EAEU states, table 1 (refined totals); low = UN Comtrade (earlier vintage of the same statistic)"
+   },
+   "2026": {
+    "low": 1.9977,
+    "central": 2.0385,
+    "high": 2.4869,
+    "basis": "reported",
+    "period": "2026-01..2026-08",
+    "src": "NSC KR, mutual trade with EAEU states January-August 2026 (19.10.2026, first release); high allows the July refinement (+21.7% for January-August 2025 EAEU imports)"
+   }
+  },
+  "trade_full.json:KGZ.exports_to_RUS": {
+   "2020": {
+    "low": 0.1904,
+    "central": 0.2253,
+    "high": 0.2366,
+    "basis": "reported",
+    "src": "National Statistical Committee of the Kyrgyz Republic, mutual trade with EAEU states, table 1 (refined totals); low = UN Comtrade (earlier vintage)"
+   },
+   "2024": {
+    "low": 0.9018,
+    "central": 1.064,
+    "high": 1.1172,
+    "basis": "reported",
+    "src": "National Statistical Committee of the Kyrgyz Republic, mutual trade with EAEU states, table 1 (refined totals); low = UN Comtrade (earlier vintage)"
+   },
+   "2025": {
+    "low": 0.4366,
+    "central": 0.6536,
+    "high": 0.6863,
+    "basis": "reported",
+    "src": "National Statistical Committee of the Kyrgyz Republic, mutual trade with EAEU states, table 1 (refined totals); low = UN Comtrade (earlier vintage)"
+   },
+   "2026": {
+    "low": 0.357,
+    "central": 0.3642,
+    "high": 0.459,
+    "basis": "reported",
+    "period": "2026-01..2026-08",
+    "src": "NSC KR, January-August 2026 first release; high allows the July refinement (+26.3% for January-August 2025 EAEU exports)"
+   }
+  },
+  "residual.json:exports_to_rus_gap.countries.KGZ": {
+   "2022": {
+    "low": 0.2192,
+    "central": 0.4501,
+    "high": 0.8302
+   },
+   "2023": {
+    "low": 0.347,
+    "central": 0.7381,
+    "high": 1.4301
+   },
+   "2024": {
+    "low": 0.2391,
+    "central": 0.7025,
+    "high": 1.4979
+   },
+   "2025": {
+    "low": 0.2525,
+    "central": 0.8461,
+    "high": 1.9479
+   }
+  },
+  "refresh_2026.json:ARM.imports_from_RUS.2026": {
+   "low": 1.6176,
+   "central": 1.6676,
+   "high": 1.7427,
+   "basis": "reported",
+   "period": "2026-01..2026-08",
+   "src": "Armstat, Socio-economic situation of RA January-August 2026, ch. 4.1.1 (imports by country of origin); high = imports by country of dispatch",
+   "certainty": "A"
+  },
+  "refresh_2026.json:ARM.exports_to_RUS.2026": {
+   "low": 1.3779,
+   "central": 1.4205,
+   "high": 1.4631,
+   "basis": "reported",
+   "period": "2026-01..2026-08",
+   "src": "Armstat, Socio-economic situation of RA January-August 2026, ch. 4.1.1",
+   "certainty": "A"
+  },
+  "trade_full.json:ARM.exports_to_RUS": {
+   "2019": {
+    "low": 0.5929,
+    "central": 0.6623,
+    "high": 0.7398,
+    "basis": "reported",
+    "src": "Armstat foreign trade database by country (current revision); band = the existing band moved with the central"
+   },
+   "2020": {
+    "low": 0.5333,
+    "central": 0.5956,
+    "high": 0.6653,
+    "basis": "reported",
+    "src": "Armstat foreign trade database by country (current revision); band = the existing band moved with the central"
+   },
+   "2021": {
+    "low": 0.6363,
+    "central": 0.7108,
+    "high": 0.7939,
+    "basis": "reported",
+    "src": "Armstat foreign trade database by country (current revision); band = the existing band moved with the central"
+   },
+   "2022": {
+    "low": 2.0937,
+    "central": 2.3387,
+    "high": 2.6123,
+    "basis": "reported",
+    "src": "Armstat foreign trade database by country (current revision); band = the existing band moved with the central"
+   },
+   "2023": {
+    "low": 2.9312,
+    "central": 3.2741,
+    "high": 3.6572,
+    "basis": "reported",
+    "src": "Armstat foreign trade database by country (current revision); band = the existing band moved with the central"
+   },
+   "2024": {
+    "low": 2.6326,
+    "central": 2.9405,
+    "high": 3.2846,
+    "basis": "reported",
+    "src": "Armstat foreign trade database by country (current revision); band = the existing band moved with the central"
+   }
+  },
+  "refresh_2026.json:KAZ.imports_from_RUS.2026": {
+   "central": 11.3502,
+   "basis": "reported",
+   "period": "2026-01..2026-08",
+   "src": "BNS RK, Main indicators of foreign trade by country, January-August 2026 (xlsx), thousand USD 13,198,601.4",
+   "keep_band": "refresh_2026 low/high ratios"
+  },
+  "refresh_2026.json:KAZ.exports_to_RUS.2026": {
+   "central": 4.4093,
+   "basis": "reported",
+   "period": "2026-01..2026-08",
+   "src": "BNS RK, Main indicators of foreign trade by country, January-August 2026 (xlsx), thousand USD 5,127,370.2",
+   "keep_band": "refresh_2026 low/high ratios"
+  }
+ },
+ "effects_customs_layer": {
+  "KGZ.to_rus": {
+   "base_2019_2021_old": 1.2748,
+   "base_2019_2021_new": 1.342,
+   "sum_2022_2026_minus_base_old": 4.5263,
+   "sum_2022_2026_minus_base_new": 5.6743,
+   "change_eur_bn": 1.148,
+   "change_pct_of_gdp": 8.13
+  },
+  "KGZ.from_rus (reported part only; residual reduced by the same amount in 2024-2025)": {
+   "base_2019_2021_old": 0.2578,
+   "base_2019_2021_new": 0.2694,
+   "sum_2022_2026_minus_base_old": 2.2052,
+   "sum_2022_2026_minus_base_new": 2.5998,
+   "change_eur_bn": 0.3946,
+   "change_pct_of_gdp": 2.8
+  },
+  "ARM.to_rus": {
+   "base_2019_2021_old": 1.3723,
+   "base_2019_2021_new": 1.3723,
+   "sum_2022_2026_minus_base_old": 14.4172,
+   "sum_2022_2026_minus_base_new": 14.5091,
+   "change_eur_bn": 0.0919,
+   "change_pct_of_gdp": 0.43
+  },
+  "ARM.from_rus": {
+   "base_2019_2021_old": 0.616,
+   "base_2019_2021_new": 0.6562,
+   "sum_2022_2026_minus_base_old": 9.5306,
+   "sum_2022_2026_minus_base_new": 9.4917,
+   "change_eur_bn": -0.0389,
+   "change_pct_of_gdp": -0.18
+  },
+  "KAZ.to_rus": {
+   "base_2019_2021_old": 13.2414,
+   "base_2019_2021_new": 13.2414,
+   "sum_2022_2026_minus_base_old": 15.151,
+   "sum_2022_2026_minus_base_new": 15.156,
+   "change_eur_bn": 0.005,
+   "change_pct_of_gdp": 0.0
+  },
+  "KAZ.from_rus": {
+   "base_2019_2021_old": 5.1279,
+   "base_2019_2021_new": 5.1279,
+   "sum_2022_2026_minus_base_old": 13.9943,
+   "sum_2022_2026_minus_base_new": 13.9894,
+   "change_eur_bn": -0.0049,
+   "change_pct_of_gdp": -0.0
+  },
+  "KGZ.from_rus net of residual": {
+   "reported_change_eur_bn": 0.3946,
+   "residual_change_eur_bn": -0.5239,
+   "net_eur_bn": -0.1293,
+   "net_pct_of_gdp": -0.92
+  }
+ },
+ "kgz_revisions_eaeu_total_musd": {
+  "2025_full_year": {
+   "first_release_2026_02": 4772.1,
+   "refined_2026_07": 5465.8,
+   "imports_revision_pct": 14.5,
+   "exports_first": 1152.0,
+   "exports_refined": 1322.9,
+   "exports_revision_pct": 14.8
+  },
+  "2025_jan_aug": {
+   "first_release_2025_09_imports": 2674.4,
+   "revised_imports": 3253.5,
+   "imports_revision_pct": 21.7,
+   "first_release_exports": 674.6,
+   "revised_exports": 851.8,
+   "exports_revision_pct": 26.3
+  }
+ },
+ "discrepancies": {
+  "KGZ_vintage": "NSC revises EAEU trade upward in its July 'refined totals' (late reports, survey estimates): full-year 2025 EAEU imports 4,772.1 -> 5,465.8 m USD (+14.5%), exports 1,152.0 -> 1,322.9 (+14.8%); January-August 2025 imports 2,674.4 -> 3,253.5 (+21.7%), exports 674.6 -> 851.8 (+26.3%). UN Comtrade holds lower figures for 2024 (imports from Russia 2,309.7 vs NSC 2,739.8; exports 976.1 vs 1,151.7), 2025 (2,595.8 vs 3,366.8; 493.3 vs 738.5) and 2020 (1,089.8 vs 1,319.9; 217.5 vs 257.3), and the same figures as the NSC for 2021-2023. Not a basis difference (dispatch vs origin would also show in 2021-2023); most likely Comtrade kept an early or partial submission. The NSC turnover with Russia (2025: 4.11bn USD) sits between Comtrade (3.09bn) and Russian officials' figure (above 5bn).",
+  "KGZ_mirror_2020": "actuals_r7 quotes Russia's exports / Kyrgyz imports = 1.34 for 2020 (against Comtrade's low 2020 Kyrgyz figure); against the NSC/EEC figure it is 1.10, in line with 2019 (1.11) and 2021 (1.13).",
+  "ARM_origin_vs_trading_country": "The site uses Armenia's imports by country of origin. Imports with Russia as trading (dispatch) country are 2-12% higher (2021: 1.998 vs 1.785bn USD; 2024: 9.43 vs 9.24; 2025: 4.87 vs 4.69; Jan-Aug 2026: 2.03 vs 1.94). Payment goes to the seller, so the trading-country figure is the better high bound for money paid to Russia; base and years move together, so the effect on the change is small.",
+  "ARM_exports_revisions": "Armstat's current exports to Russia are above Comtrade by 3.2% (2019), 11.3% (2020), 5.9% (2021), 1.0-1.9% (2022-2024), 0% (2025). Re-exports to Russia (Armenia's cars, electronics, gold) are inside these totals in both versions; no Russia-side figure exists after 2021 to test them.",
+  "KAZ_2025": "Comtrade's 2025 figures are 1.3-1.4% above those implied by BNS's annual release (imports from Russia 29.7% of 64,847.0 m USD = 19.26bn vs 19.54bn; exports 10.3% of 79,041.2 = 8.14bn vs 8.25bn). Within the actuals_r7 band (-4%/+6%); no change proposed.",
+  "BLR": "EEC 2019-2021 pair values (Belstat basis) equal trade_full.json centrals to 0.0%; nothing after 2021 (EEC stopped, Belstat portal ends 2021)."
+ },
+ "proposed_build_changes": [
+  {
+   "what": "New source id 'eaeu_r44' (SOURCE_TYPE 'data') and SRC_FAMILY.eaeu_r44 = 'trade' in site/index.html, so it never counts as a second official family.",
+   "where": [
+    "pipeline/build_data.py SOURCE_TYPE",
+    "site/index.html SRC_FAMILY"
+   ]
+  },
+  {
+   "what": "In build(), after the refresh_2026.json overlay and before the ARE overlay, overlay proposals['trade_full.json:KGZ.imports_from_RUS'] and ['trade_full.json:KGZ.exports_to_RUS'] (years 2020, 2024, 2025, 2026: low/central/high/basis) onto trade['countries']['KGZ'], and proposals['trade_full.json:ARM.exports_to_RUS'] (2019-2024). These must come after narrow.json's trade_layer (which sets KGZ 2026) and after _actuals_r7 banding (they carry their own bands). Add 'eaeu_r44' to src of KGZ/ARM to_rus and from_rus.",
+   "where": "pipeline/build_data.py build()"
+  },
+  {
+   "what": "refresh_2026.json-level overrides: ARM 2026 imports/exports from Armstat (proposals['refresh_2026.json:ARM.*']), KAZ 2026 exact centrals (proposals['refresh_2026.json:KAZ.*'], keep refresh bands' ratios).",
+   "where": "same overlay"
+  },
+  {
+   "what": "In load() for residual.json, replace exports_to_rus_gap.countries.KGZ with proposals['residual.json:exports_to_rus_gap.countries.KGZ'] (the 2024-2025 gap less the extra exports now reported; 2026 follows as 2025 x FRAC). Otherwise the newly reported exports are counted twice.",
+   "where": "pipeline/build_data.py load() / a _eaeu_r44 hook like _r39_replace"
+  },
+  {
+   "what": "Optional: ARM to_rus high bound and base high from imports by trading country (comparison.ARM.to_rus.*.national_trading_country_usd_m).",
+   "where": "trade_full ARM imports_from_RUS high"
+  },
+  {
+   "what": "Optional: actuals_r7 KGZ mirror note: 2020 ratio is 1.10, not 1.34.",
+   "where": "research note only"
+  },
+  {
+   "what": "Do not raise any letter: national office = reporter = Comtrade family.",
+   "where": "evidence()"
+  }
+ ],
+ "not_done": [
+  "Kazakhstan 2022 national annual figure not re-extracted (2023-2025 match Comtrade, 2019-2021 via EEC match)",
+  "KGZ first-release figures by partner (only EAEU totals per vintage) were not found; the vintage explanation for Comtrade's gap rests on the EAEU-total revisions",
+  "Belarus: no official partner data after 2021 anywhere reachable"
+ ]
+}

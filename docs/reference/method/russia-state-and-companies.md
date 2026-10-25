@@ -140,7 +140,22 @@ Denmark 1.0 + 1.0, Japan 1.0 + 1.1.
 Profits Russian parents receive from their companies abroad, by host country, against 2019–2021: Lukoil's refineries
 (Bulgaria, Romania, the Netherlands), NIS in Serbia (reported dividends), Rosneft in India and Egypt, Zarubezhneft in
 Viet Nam, Russian banks. Trusteeships that stopped transfers count toward Ukraine: Germany (Rosneft Deutschland,
-Gazprom Germania, now SEFE) about EUR 1.3bn over 2022–2026. Mostly estimates (certainty D) except Serbia.
+Gazprom Germania, now SEFE) about EUR 1.3bn over 2022–2026. Mostly estimates (certainty D) except Serbia, Angola and
+Iraq.
+
+Since round 44 Angola and Iraq come from official and audited company figures, replacing the earlier estimates
+([`rusfirms_r44.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/rusfirms_r44.json),
+[notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/rusfirms_r44-notes.md)):
+
+- **Iraq (certainty C):** Lukoil's West Qurna-2 and Gazprom Neft's Badra profit is the remuneration fee (a fixed number of
+  dollars per barrel) less the 35% Iraqi income tax, from the Iraq EITI reports for 2022 and 2023 (reconciled with the
+  Ministry of Oil and SOMO); other years are fee × production. About USD 80–140m a year, barely moved by the war, so the
+  range shrinks from about ±EUR 1bn to about ±0.2bn. Rosneft's Kurdistan pipeline is left out (owner's decision): its
+  shutdown from March 2023 to September 2025 came from the Iraq–Turkey arbitration and the Baghdad–Erbil dispute, not the
+  war, so the no-war path has it too.
+- **Angola (certainty B):** Alrosa's cash dividends from Catoca (41%), from its audited IFRS cash flows: none paid in
+  2022–2024, and RUB 19.0bn received in May 2025 for its blocked dividend claims, booked apart from the share price.
+  <span class="incode">In the code: `apply_company_flows()` (`_r44`)</span>
 
 **Metals, mining and chemicals plants.** Prompted by a reader asking about Rusal's Aughinish Alumina in
 Limerick, Russian-owned industrial plants abroad are included ([`russian_owned_r10.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/russian_owned_r10.json),

@@ -88,6 +88,10 @@ Buyers whose Russian fuel came mainly by pipeline had steady volumes, so seven c
 
 China's no-war path includes the gas the Power of Siberia contract (2014) already foresaw: 15.4 bcm in 2022 rising to 38 bcm. Only deliveries beyond that count as war-driven. China raised Russia's earnings from trade by 0.74%<!-- n:CHN.rus abs --> of GDP.
 
+### Japan's Sakhalin-2 LNG
+
+LNG is about a quarter of what Japan bought from Russia. Its no-war band comes from Japanese buyers' long-term Sakhalin-2 contracts (about 5 Mt a year): the floor is the contracted volume, the top the pre-war maximum. The rest of Japan's purchases keeps the generic band. The middle value does not change.
+
 ### Deliberate choices
 
 - **Actual figures as inputs.** The models use each country's actual 2022–2026 GDP and trade with others. If a country's economy shrank because of the war, it would have traded less with Russia anyway; that is not a choice to credit or blame.

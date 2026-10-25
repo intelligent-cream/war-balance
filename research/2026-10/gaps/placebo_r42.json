@@ -169,6 +169,17 @@
      }
     },
     "ranked_by_region": {
+     "mea": {
+      "n": 51,
+      "contains_zero": 49,
+      "coverage": 0.961,
+      "wilson90": [
+       0.888,
+       0.987
+      ],
+      "miss_below_zero": 1,
+      "miss_above_zero": 1
+     },
      "am": {
       "n": 27,
       "contains_zero": 25,
@@ -179,17 +190,6 @@
       ],
       "miss_below_zero": 1,
       "miss_above_zero": 1
-     },
-     "eu": {
-      "n": 27,
-      "contains_zero": 27,
-      "coverage": 1.0,
-      "wilson90": [
-       0.909,
-       1.0
-      ],
-      "miss_below_zero": 0,
-      "miss_above_zero": 0
      },
      "asia": {
       "n": 32,
@@ -213,16 +213,16 @@
       "miss_below_zero": 0,
       "miss_above_zero": 0
      },
-     "mea": {
-      "n": 51,
-      "contains_zero": 49,
-      "coverage": 0.961,
+     "eu": {
+      "n": 27,
+      "contains_zero": 27,
+      "coverage": 1.0,
       "wilson90": [
-       0.888,
-       0.987
+       0.909,
+       1.0
       ],
-      "miss_below_zero": 1,
-      "miss_above_zero": 1
+      "miss_below_zero": 0,
+      "miss_above_zero": 0
      }
     },
     "ranked_by_part_size_class": {
@@ -361,7 +361,42 @@
       "miss_above_zero": 22
      }
     },
-    "nowar_band_scale_for_90pct": 0.59
+    "nowar_band_scale_for_90pct": 0.59,
+    "site_bands_r43": {
+     "trade": {
+      "n": 150,
+      "contains_zero": 144,
+      "coverage": 0.96,
+      "wilson90": [
+       0.925,
+       0.979
+      ],
+      "miss_below_zero": 4,
+      "miss_above_zero": 2
+     },
+     "paid": {
+      "n": 149,
+      "contains_zero": 143,
+      "coverage": 0.96,
+      "wilson90": [
+       0.924,
+       0.979
+      ],
+      "miss_below_zero": 4,
+      "miss_above_zero": 2
+     },
+     "sold": {
+      "n": 148,
+      "contains_zero": 130,
+      "coverage": 0.878,
+      "wilson90": [
+       0.827,
+       0.916
+      ],
+      "miss_below_zero": 5,
+      "miss_above_zero": 13
+     }
+    }
    },
    "countries": [
     {
@@ -9171,6 +9206,17 @@
      }
     },
     "ranked_by_region": {
+     "mea": {
+      "n": 51,
+      "contains_zero": 45,
+      "coverage": 0.882,
+      "wilson90": [
+       0.788,
+       0.938
+      ],
+      "miss_below_zero": 6,
+      "miss_above_zero": 0
+     },
      "am": {
       "n": 26,
       "contains_zero": 25,
@@ -9178,17 +9224,6 @@
       "wilson90": [
        0.845,
        0.991
-      ],
-      "miss_below_zero": 1,
-      "miss_above_zero": 0
-     },
-     "eu": {
-      "n": 27,
-      "contains_zero": 26,
-      "coverage": 0.963,
-      "wilson90": [
-       0.85,
-       0.992
       ],
       "miss_below_zero": 1,
       "miss_above_zero": 0
@@ -9215,15 +9250,15 @@
       "miss_below_zero": 0,
       "miss_above_zero": 0
      },
-     "mea": {
-      "n": 51,
-      "contains_zero": 45,
-      "coverage": 0.882,
+     "eu": {
+      "n": 27,
+      "contains_zero": 26,
+      "coverage": 0.963,
       "wilson90": [
-       0.788,
-       0.938
+       0.85,
+       0.992
       ],
-      "miss_below_zero": 6,
+      "miss_below_zero": 1,
       "miss_above_zero": 0
      }
     },
@@ -9363,7 +9398,42 @@
       "miss_above_zero": 25
      }
     },
-    "nowar_band_scale_for_90pct": 0.81
+    "nowar_band_scale_for_90pct": 0.81,
+    "site_bands_r43": {
+     "trade": {
+      "n": 148,
+      "contains_zero": 133,
+      "coverage": 0.899,
+      "wilson90": [
+       0.85,
+       0.933
+      ],
+      "miss_below_zero": 13,
+      "miss_above_zero": 2
+     },
+     "paid": {
+      "n": 147,
+      "contains_zero": 133,
+      "coverage": 0.905,
+      "wilson90": [
+       0.857,
+       0.938
+      ],
+      "miss_below_zero": 13,
+      "miss_above_zero": 1
+     },
+     "sold": {
+      "n": 142,
+      "contains_zero": 124,
+      "coverage": 0.873,
+      "wilson90": [
+       0.82,
+       0.912
+      ],
+      "miss_below_zero": 2,
+      "miss_above_zero": 16
+     }
+    }
    },
    "countries": [
     {

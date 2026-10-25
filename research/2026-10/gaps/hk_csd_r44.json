@@ -1,0 +1,60 @@
+{
+ "generated": "2026-10-25",
+ "round": 44,
+ "units": "EUR bn unless stated; USD m from HK$ at the 7.8 peg; EUR at ECB monthly USD per EUR",
+ "source": {
+  "id": "hk_csd_r44",
+  "name": "C&SD Trade-IDDS, Hong Kong imports of HS 7108 by origin, downloaded by the owner 2026-10-25",
+  "url": "https://tradeidds.censtatd.gov.hk/",
+  "file": "research/2026-10/raw/hk_tradeidds_r44/imports_origin_RUS_7108_monthly_2018-2026.csv",
+  "basis": "country of origin (Russian-origin gold, whatever country it was consigned from)"
+ },
+ "gold_usd_m_monthly_2026": {
+  "1": 741.0,
+  "2": 587.9,
+  "3": 1644.2,
+  "4": 2678.6,
+  "5": 3783.3,
+  "6": 3705.4,
+  "7": 3160.7,
+  "8": 3548.8
+ },
+ "gold_usd_m_annual_csd_origin": {
+  "2018": 0.5,
+  "2019": 0.2,
+  "2020": 56.3,
+  "2021": 188.0,
+  "2022": 966.1,
+  "2023": 5596.0,
+  "2024": 5193.7,
+  "2025": 10510.4,
+  "2026": 19849.8
+ },
+ "gold_usd_m_annual_comtrade": {
+  "2022": 578.5,
+  "2023": 5212.0,
+  "2024": 4640.1,
+  "2025": 10451.1
+ },
+ "gold_usd_m_jan_jul_2026": {
+  "csd_origin": 16301.1,
+  "comtrade": 16277.6
+ },
+ "gold_jan_aug_2026_eur_bn": 17.126597,
+ "nongold_jan_jul_2026_eur_bn": 1.021913,
+ "nongold_aug_2026_eur_bn": {
+  "low": 0.057448,
+  "central": 0.146479,
+  "high": 0.222201
+ },
+ "gold_share_jan_jul_2026": 0.9319,
+ "imports_from_RUS_2026": {
+  "low": 18.205958,
+  "central": 18.294989,
+  "high": 18.370711,
+  "basis": "reported",
+  "period": "2026-01..2026-08",
+  "src": "C&SD Trade-IDDS HS 7108 of Russian origin, January-August 2026 (measured), plus non-gold: UN Comtrade TOTAL minus HS 7108 January-July (C&SD records) and August at the January-July monthly mean (range: lowest and highest month)"
+ },
+ "replaces": "trade_full.json HKG imports_from_RUS 2026 as overlaid by refresh_2026.json (Comtrade TOTAL January-July plus an August estimate from seasonal ratios): 19.002 (17.448-20.611)"
+}

@@ -108,7 +108,7 @@ Rules:
 
 - **Fuel only.** The price rise of non-fuel goods is mostly general inflation, so it is left out.
 - **Only money flowing to Russia.** Higher prices on goods *sold to* Russia do not count in the seller's favour.
-- **On top of volume.** A country that cut volumes still gets the windfall on what it kept buying. Germany: EUR 16.5bn<!-- n:DEU.part_windfall abs --> toward Russia (likely 1.3<!-- n:DEU.part_windfallHi abs --> to 29.2<!-- n:DEU.part_windfallLo abs -->), almost all in 2022.
+- **On top of volume.** A country that cut volumes still gets the windfall on what it kept buying. Germany: EUR 16.5bn<!-- n:DEU.part_windfall abs --> toward Russia (likely 1.3<!-- n:DEU.part_windfallHi abs --> to 29.1<!-- n:DEU.part_windfallLo abs -->), almost all in 2022.
 
 `prices.json` computes its own windfall too (all 102 countries EUR 601bn for 2022–2026, 486–716, including non-fuel goods); the map's part uses fuel only and the map's own payments series, so the two differ.
 

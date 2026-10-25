@@ -48,6 +48,11 @@ SMALL_FLOW_EUR_BN = 1.0  # build_data.py: purchases under EUR 1bn a year start f
 RANKED_GDP_EUR_BN = 5.0  # the site's ranking threshold
 PARTY_TO_WAR = {"BLR", "PRK"}
 RHO_PAID_SOLD = 0.2  # site/index.html RHO "paid|sold"
+# round 43: the build's scaling of the generic no-war bands (build_data.py CB_SCALE_PAID, CB_SCALE_SOLD_SMALL,
+# CB_SMALL_EUR_BN; tests/test_placebo.py checks they match)
+CB_SCALE_PAID = 0.81
+CB_SCALE_SOLD_SMALL = 1.1
+CB_SMALL_EUR_BN = 1.0
 # the ten importers whose customs omit Russian pipeline gas: deflated without gas (trend3-notes.md), and their customs
 # value here has no gas either
 GAS_HIDDEN = {"DEU", "AUT", "POL", "NLD", "FRA", "HUN", "CHE", "FIN", "BEL", "TUR"}
@@ -330,7 +335,14 @@ def part(inp: dict, iso3: str, flow: str, s: dict, years: list[int], sold_band: 
             "base_eur_bn_window_prices": round(base, 5), "avg_nominal_eur_bn": round(avg_nominal, 5)}  # fmt: skip
 
 
-def evaluate(inp: dict, key: str, years: list[int] | None = None, sold_band: str = "rw", band_scale: float = 1.0):
+def evaluate(
+    inp: dict,
+    key: str,
+    years: list[int] | None = None,
+    sold_band: str = "rw",
+    band_scale: float = 1.0,
+    site_scale: bool = False,
+):
     s = SETTINGS[key]
     years = years or s["years"]
     rows = []
@@ -348,10 +360,16 @@ def evaluate(inp: dict, key: str, years: list[int] | None = None, sold_band: str
         vk = (c.get("vk") or {}).get("rl") or [0.1, 0.2, 0.3]
         vkx = (c.get("vk") or {}).get("rx") or vk
         res = {}
+        # round 43: site_scale applies the build's own scaling of the generic bands (build_data.py CB_SCALE_*): paid
+        # x0.81, sold x1.1 where trade with Russia is under EUR 1bn a year; own bands keep their width
+        comb0 = (pp["avg_nominal_eur_bn"] if pp else 0) + (ps["avg_nominal_eur_bn"] if ps else 0)
+        own = bool(pp) and pp["band_src"].startswith("own")
+        fp = CB_SCALE_PAID if site_scale and not own else band_scale
+        fs = CB_SCALE_SOLD_SMALL if site_scale and comb0 < CB_SMALL_EUR_BN else band_scale
         if pp:
-            res["paid"] = spread(pp["t"], band_scale)
+            res["paid"] = spread(pp["t"], fp)
         if ps:
-            r = spread(ps["t"], band_scale)
+            r = spread(ps["t"], fs)
             res["sold"] = earned3(r, vk if r[0] >= 0 else vkx)
         pct = {k: tuple(100 * x / gdp for x in r) for k, r in res.items()}
         pct["trade"] = total(list(pct.values()), RHO_PAID_SOLD) if len(pct) == 2 else next(iter(pct.values()))
@@ -494,10 +512,17 @@ def main() -> None:
             },
         }
         s["nowar_band_scale_for_90pct"] = band_scale_for(inp, key)
+        # round 43: the bands as the site now builds them (paid x0.81, small sold x1.1)
+        s["site_bands_r43"] = {
+            k: cov([r for r in evaluate(inp, key, site_scale=True) if r["ranked"]], k)
+            for k in ("trade", "paid", "sold")
+        }
         result["placebos"][key] = {"summary": s, "countries": rows}
         print(f"placebo {key}: ranked trade coverage {s['ranked']['trade']['coverage']} (n {s['ranked']['trade']['n']}), "
               f"paid {s['ranked']['paid']['coverage']}, sold {s['ranked']['sold']['coverage']}; "
-              f"no-war band x{s['nowar_band_scale_for_90pct']} for 90%")  # fmt: skip
+              f"no-war band x{s['nowar_band_scale_for_90pct']} for 90%; site bands r43: "
+              f"trade {s['site_bands_r43']['trade']['coverage']}, paid {s['site_bands_r43']['paid']['coverage']}, "
+              f"sold {s['site_bands_r43']['sold']['coverage']}")  # fmt: skip
     OUT.write_text(json.dumps(result, indent=1, ensure_ascii=False) + "\n")
     print(f"wrote {OUT.relative_to(ROOT)}")
 
