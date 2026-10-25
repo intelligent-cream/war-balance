@@ -2630,10 +2630,16 @@ def war_windfall(countries: dict[str, dict], src: Sources) -> None:
         }
         # round 24b (audit 24, D M2): the windfall under the other pre-war no-war gas price paths (Feb-2022 futures,
         # Oct-2021 forecasts; windfall_band_r24.json), as factors on the central windfall; calc() widens the line with them
+        # round 44 (energy_r44-notes.md): the factors are the no-war paths alone. The research file's proposed likely
+        # range already combined them with the actual-price band, which calc() (withNr) adds again; taken from it, the
+        # actual-price band was counted twice (Türkiye's windfall range ran to +3.95 instead of -0.36 EUR bn)
         wb = (WINDFALL_BAND.get("countries_research_run") or {}).get(iso3)
-        if wb and wb["proposed_likely_range_eur_bn"]["central"]:
-            r = wb["proposed_likely_range_eur_bn"]
-            c["windfall"]["path_band"] = [round(r["low"] / r["central"], 4), round(r["high"] / r["central"], 4)]
+        p = (wb or {}).get("windfall_by_path_eur_bn") or {}
+        c0 = p.get("central_jan2022") or 0.0
+        if abs(c0) >= 0.05:
+            c["windfall"]["path_band"] = sorted(
+                [round(p["feb2022_futures"] / c0, 4), round(p["oct2021_forecasts"] / c0, 4)]
+            )
             c["windfall"]["src"].append("windfall_band")
 
 
