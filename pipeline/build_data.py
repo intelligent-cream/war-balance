@@ -2051,7 +2051,7 @@ SOURCE_TYPE = {
     "shadow_fleet": "report", "reexports": "data", "residual": "data", "hk_gold_r16": "data", "audit": "notes",
     "sanctions_share": "report", "gas_cuts": "press", "prices": "ours", "narrow": "data", "audit2": "notes",
     "windfall": "ours", "trend": "ours", "gas_prices": "data", "trend2": "ours", "counterfactual": "ours",
-    "ua_trade_cf": "ours", "cf_bands": "ours", "cf_bias_r47": "ours", "strike_supply_r51": "report", "entsog_r43": "data", "epdk_r43": "data", "power_of_siberia": "press", "weapons_value": "report",
+    "ua_trade_cf": "ours", "cf_bands": "ours", "cf_bias_r47": "ours", "strike_supply_r51": "report", "forced_ban_r52": "report", "forced_druzhba_r52": "press", "entsog_r43": "data", "epdk_r43": "data", "power_of_siberia": "press", "weapons_value": "report",
     "state_finance": "data", "company_flows": "report", "russian_owned_r10": "report", "rusfirms_r44": "report", "seizures": "report",
     "refugees_net": "data", "co_belligerent": "report", "eaeu_r44": "data", "hk_csd_r44": "data", "japan_lng_r44": "data", "loans_value": "report", "money_ledger": "data",
     "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "svc_ukr": "data", "company_profits": "data", "import_premium": "data", "wagner": "report", "remittances": "data",
@@ -3377,6 +3377,13 @@ STRIKE_SUPPLY = load(GAPS / "strike_supply_r51.json")
 STRIKE_EMBARGO = EU27 | {"GBR", "USA", "CAN", "AUS", "NZL", "CHE", "NOR", "ISL"}
 STRIKE_PARTS = {"products": ("products",), "crude": ("crude", "crude_gas_hidden")}
 STRIKE_NW = {"products": "diesel_gasoil_products", "crude": "urals"}
+# Round 52 (owner): "A country's figure reflects its own choices and the foreseeable answers to them. Things forced on it
+# that it did not choose - Ukraine's strikes on Russian refineries, Russia's sudden export bans - count neither for it
+# nor against it." The other forced losses of Russian supply, each a cause with its own source (forced_loss_r52.json):
+# Russia's gasoline and diesel export ban of September-November 2023 (the other EAEU members exempt) and the halt of the
+# southern Druzhba to Hungary and Slovakia from 27 January to 22 April 2026 (a Russian strike near Brody). Applied with
+# the strikes, by strike_supply() below
+FORCED_LOSS = load(GAPS / "forced_loss_r52.json")
 
 
 def strike_supply(countries: dict[str, dict], src: Sources) -> None:
@@ -3390,7 +3397,11 @@ def strike_supply(countries: dict[str, dict], src: Sources) -> None:
     nor charged to it. The windfall (actual volumes x price gap) and laundered oil are untouched. The yearly band takes
     the low/high loss (bmul_hi/bmul_lo); the cumulative band (cb, relative to the summed expected level) keeps its
     width in euros and adds the loss range, weighted as spread() in index.html sums it (FRAC x cur x Russia's gain
-    share). Run after small_flow_bias() (needs the no-war prices, cur and gain). Pre-war years: no strikes, 1."""
+    share). Run after small_flow_bias() (needs the no-war prices, cur and gain). Pre-war years: no strikes, 1.
+    Round 52 (owner; forced_loss_r52-notes.md): the same for every forced loss of supply, a list of causes (the strikes;
+    Russia's 2023 export ban; the 2026 Druzhba halt), each with its own source and its own exempt buyers; the causes add
+    up under the one cap. Pipeline days are set against the days the pipeline flowed in the data period (the buyer's
+    customs are what arrived on those days): r = days / (period - days); round 51 used days / 365."""
     st = STRIKE_SUPPLY
     if not st:
         return
@@ -3405,7 +3416,18 @@ def strike_supply(countries: dict[str, dict], src: Sources) -> None:
         {"title": s["name"], "url": s["url"], "kind": "primary" if i < 2 else "secondary"}
         for i, s in enumerate(st["sources"])
     ]
-    pipe = st["pipeline"]["buyers"]
+    # each cause: (source id, seaborne {fuel: {year: {per_tonne_exported}}}, pipeline buyers, data period days, exempt)
+    causes = [(sid, st["seaborne"], st["pipeline"]["buyers"], {}, set())]
+    for c in (FORCED_LOSS or {}).get("causes", {}).values():
+        s = c["source"]
+        csid = src.add(s["sid"], s["name"], None, FORCED_LOSS.get("generated"), s["note"])
+        src.items[csid]["links"] = [
+            {"title": FORCED_LOSS["sources"][j]["name"], "url": FORCED_LOSS["sources"][j]["url"],
+             "kind": "primary" if k < 2 else "secondary"}
+            for k, j in enumerate(s["links"])
+        ]  # fmt: skip
+        sea = {c["fuel"]: c["years"]} if c["kind"] == "seaborne" else {}
+        causes.append((csid, sea, c.get("buyers") or {}, c.get("period_days") or {}, set(c.get("exempt") or [])))
     for iso3, c in countries.items():
         tr = c.get("to_rus")
         if not tr or not tr.get("bmul") or not tr.get("base"):
@@ -3414,6 +3436,7 @@ def strike_supply(countries: dict[str, dict], src: Sources) -> None:
         mix, fs = pre_war_fuel_split(iso3), fossil_share(iso3)
         fuels = sum(mix.get(f) or 0.0 for f in ("crude", "products", "gas", "lng", "coal", "other_fossil")) or 1.0
         lost = [[0.0] * len(YEARS) for _ in BANDS]  # low, central, high, as multipliers on base
+        by_cause: dict[str, list[float]] = {}
         for i, y in enumerate(YEARS):
             if y < 2022:
                 continue
@@ -3421,15 +3444,28 @@ def strike_supply(countries: dict[str, dict], src: Sources) -> None:
                 v = sum((vols.get(y) or {}).get(p, 0.0) for p in parts) / tr["base"] / FRAC[i]
                 n = nw(STRIKE_NW[fuel], y, "central")
                 cap = fs * (mix.get(fuel) or 0.0) / fuels * n
-                if fuel == "crude" and iso3 in pipe:
-                    days = pipe[iso3]["days"].get(str(y)) or [0, 0, 0]
-                    r = [d / (366 if y == 2024 else 365) for d in days]
-                elif iso3 in STRIKE_EMBARGO and y >= 2023:
-                    continue
-                else:
-                    r = st["seaborne"][fuel][str(y)]["per_tonne_exported"]
+                got = []  # (source id, [low, central, high]) before the cap
+                for csid, sea, pipe, period, exempt in causes:
+                    if iso3 in exempt:
+                        continue
+                    if fuel == "crude" and iso3 in pipe:
+                        days = pipe[iso3]["days"].get(str(y)) or [0, 0, 0]
+                        p_days = period.get(str(y)) or (366 if y == 2024 else 365)
+                        r = [d / (p_days - d) for d in days]
+                    elif iso3 in STRIKE_EMBARGO and y >= 2023:
+                        continue
+                    elif str(y) in (sea.get(fuel) or {}):
+                        r = sea[fuel][str(y)]["per_tonne_exported"]
+                    else:
+                        continue
+                    got.append((csid, [v * r[b] * n for b in range(3)]))
                 for b in range(3):
-                    lost[b][i] += min(cap, v * r[b] * n)
+                    tot = sum(g[1][b] for g in got)
+                    lost[b][i] += min(cap, tot)
+                    if b == 1:
+                        for csid, g in got:
+                            k = by_cause.setdefault(csid, [0.0] * len(YEARS))
+                            k[i] += g[1] * (min(cap, tot) / tot if tot else 0.0)
         if not any(lost[2]):
             continue
         q = tr["bmul"]
@@ -3448,8 +3484,9 @@ def strike_supply(countries: dict[str, dict], src: Sources) -> None:
             tr["cb"] = cb
         for k, b in (("bmul", 1), ("bmul_lo", 2), ("bmul_hi", 0)):
             tr[k] = [round(max(0.0, v - x), 4) for v, x in zip(tr.get(k) or q, lost[b])]
-        tr["strike_lost"] = [[round(x, 4) for x in lost[b]] for b in range(3)]  # low, central, high, x base
-        tr["src"] = list(dict.fromkeys((tr.get("src") or []) + [sid]))
+        tr["strike_lost"] = [[round(x, 4) for x in lost[b]] for b in range(3)]  # low, central, high, x base; all causes
+        tr["forced_lost"] = {k: [round(x, 4) for x in v] for k, v in by_cause.items() if any(v)}  # central, by cause
+        tr["src"] = list(dict.fromkeys((tr.get("src") or []) + [k for k in tr["forced_lost"]]))
 
 
 # round 43: countries whose pipeline gas volumes were checked against ENTSOG's metered flows (entsog_r43.json)

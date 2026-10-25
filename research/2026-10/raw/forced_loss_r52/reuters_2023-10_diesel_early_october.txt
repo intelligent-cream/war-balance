@@ -1,0 +1,22 @@
+URL: https://hydrocarbonprocessing.com/news/2023/10/russian-seaborne-diesel-exports-fell-by-20-in-early-october/
+Fetched: 2026-10-25
+HTTP: 200
+Extract (short passages around the figures used):
+
+el exports fell by 20% in early October Russian seaborne diesel exports fell by 20% in early October 10/17/2023 9:00:00 AM (Reuters) - Russia's seaborne diesel and gasoil exports fell by 20% to about 1.1 million metric tons in the first 15 days of October from the same period in September due to ongoing seasonal maintenance of refineries and a fuel export ban, data from traders and LSEG showed. Idle primary oil refining capacity for October is estimated at 4.0 million tons, down 22% from September, according to Reuters calculations. Russia temporarily banned exports of gasoline and ultra-low sulfur diesel (ULSD) from Sept. 21 to cope with a domestic market shortage, although gasoil and marine diesel export shipments were allowed. The embargo was partially lifted from Oct. 9, with Russia resuming ULSD
+
+---
+
+Russian seaborne diesel exports fell by 20% in early October COPYING AND DISTRIBUTING ARE PROHIBITED WITHOUT PERMISSION OF THE PUBLISHER 160.79.106.131 Accept :: [ */* ] Accept-Encoding :: [ gzip, br ] Connection :: [ keep-alive ] Host :: [ hydrocarbonprocessing.com ] User-Agent :: [ Mozilla/5.0 ] X-FORWARDED-PROTO :: [ https ] X-FORWARDED-PORT :: [ 443 ] X-Forwarded-For :: [ 160.79.106.131, 162.158.79.172:14221 ] X-Original-URL :: [ /news/2023/10/russian-seaborne-diesel-exports-fell-by-20-in-early-october/ ] X-AppGW-Trace-Id :: [ 59ce02211c128b8500f6fbf540d517b2 ] X-ORIGINAL-HOST :: [ hydrocarbonprocessing.com ] X-Azure-JA4-Fingerprin
+
+---
+
+rch Environment & Safety Gas Processing/LNG Maintenance & Reliability Petrochemicals Process Control Process Optimization Project Management Refining Home News Russian seaborne diesel exports fell by 20% in early October Russian seaborne diesel exports fell by 20% in early October 10/17/2023 9:00:00 AM (Reuters) - Russia's seaborne diesel and gasoil exports fell by 20% to about 1.1 million metric tons in the first 15 days of October from the same period in September due to ongoing seasonal maintenance of refineries and a fuel export ban, data from traders and LSEG showed. Idle primary oil refining capacity for October is estimated at 4.0 million tons, down 22% from September, according to Reuters calculations. Russia temporarily banned exports of gasoline and ultra-low sulfur diesel (ULSD) fr
+
+---
+
+l and gasoil exports fell by 20% to about 1.1 million metric tons in the first 15 days of October from the same period in September due to ongoing seasonal maintenance of refineries and a fuel export ban, data from traders and LSEG showed. Idle primary oil refining capacity for October is estimated at 4.0 million tons, down 22% from September, according to Reuters calculations. Russia temporarily banned exports of gasoline and ultra-low sulfur diesel (ULSD) from Sept. 21 to cope with a domestic market shortage, although gasoil and marine diesel export shipments were allowed. The embargo was partially lifted from Oct. 9, with Russia resuming ULSD seaborne exports. Due to the export ban, diesel loadings via the Russian Baltic port of Primorsk, the country's biggest outlet for exports of ULSD, h
+
+---
+
+ban, data from traders and LSEG showed. Idle primary oil refining capacity for October is estimated at 4.0 million tons, down 22% from September, according to Reuters calculations. Russia temporarily banned exports of gasoline and ultra-low sulfur diesel (ULSD) from Sept. 21 to cope with a domestic market shortage, although gasoil and marine diesel export shipments were allowed. The embargo was partially lifted from Oct. 9, with Russia resuming ULSD seaborne exports. Due to the export ban, diesel loadings via the Russian Baltic port of Primorsk, the country's biggest outlet for exports of ULSD, have fallen in the first 15 days of October by 22% from the same period in September to 330,000 metric tons. So far in October, Turkey remains the top destination for diesel exports from Russian ports,

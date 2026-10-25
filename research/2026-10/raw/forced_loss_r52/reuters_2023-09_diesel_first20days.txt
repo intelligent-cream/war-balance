@@ -1,0 +1,10 @@
+URL: https://www.hydrocarbonprocessing.com/news/2023/09/russia-cuts-september-seaborne-diesel-exports-to-meet-domestic-shortage/
+Fetched: 2026-10-25
+HTTP: 200
+Extract (short passages around the figures used):
+
+eet domestic shortage Russia cuts September seaborne diesel exports to meet domestic shortage 9/21/2023 9:00:00 AM (Reuters) - Russia cut its seaborne diesel and gasoil exports by nearly 30% to about 1.7 million metric tons in the first 20 days of September from the same time in August, as local refineries went into seasonal maintenance and the domestic market faces a fuel shortage and rising prices, traders said and LSEG data showed. Idle primary oil refining capacity for September is estimated at 4.657 million tons, up 45% from August, according to Reuters calculations. Due to the domestic fuel shortage, Russia's government is considering an export duty for oil products of $250 per ton - much higher than current fees - from Oct. 1 until June 2024, sources told Reuters on Tuesday. "The export duty c
+
+---
+
+exports to meet domestic shortage Russia cuts September seaborne diesel exports to meet domestic shortage 9/21/2023 9:00:00 AM (Reuters) - Russia cut its seaborne diesel and gasoil exports by nearly 30% to about 1.7 million metric tons in the first 20 days of September from the same time in August, as local refineries went into seasonal maintenance and the domestic market faces a fuel shortage and rising prices, traders said and LSEG data showed. Idle primary oil refining capacity for September is estimated at 4.657 million tons, up 45% from August, according to Reuters calculations. Due to the domestic fuel shortage, Russia's government is considering an export duty for oil products of $250 per ton - much higher than current fees - from Oct. 1 until June 2024, sources told Reuters on Tuesda

@@ -1429,6 +1429,102 @@
    "in_repository": true
   },
   {
+   "path": "forced_loss_r52/armenpress_2024-02_ban_exemptions.txt",
+   "bytes": 3478,
+   "sha256": "397774ee02370f7c246a6a0f0732b4c8795d13d6a54c28cc8c0e236c04c7fdb1",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/bloomberg_2023-12-20_fuel_exports.txt",
+   "bytes": 186,
+   "sha256": "59661d3d9da02e89d90cccebd3dfee164c19f9f07327b957380478c8f3bedc8d",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/enerdata_2023-11_gasoline_ban_lifted.txt",
+   "bytes": 2631,
+   "sha256": "7c7587b47ff188f33fd090097ce772675a34586337611aed11568ad1e29e964d",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/intellinews_2026-06_druzhba_normal.txt",
+   "bytes": 233,
+   "sha256": "e0985852acaf6407d6647bd015ac90fef86addf72b5ace1861cde9c7a3d83a04",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/interfax_2023-09_resolution_1564.txt",
+   "bytes": 5483,
+   "sha256": "a0b702eb776d8a7e21d65341422c3cc4d9044b237e99a29fe127bc9fd54a3b48",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/moscowtimes_2026-04-23_druzhba_resumed.txt",
+   "bytes": 3445,
+   "sha256": "b970d0d10068e178aeff9dab21b8adc4a22bdc323f60a976ae8c6e31ffd9d007",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/oenergetice_2026-04_mol_resumes.txt",
+   "bytes": 4176,
+   "sha256": "40b80568c1f6f46d996b75994310d5a3c378082d37ee1cf111a55a99e29d376d",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/pgj_2026-04_druzhba_resume.txt",
+   "bytes": 4259,
+   "sha256": "f279d8d8b57fd71795b37dbbebcd921d9e896338f0dec3321e01a1a8cb6d86fb",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/reuters_2023-09_diesel_first20days.txt",
+   "bytes": 1831,
+   "sha256": "cbd96c48175595d54ec350aace373b3f8d8c65a62c179f5b64432d667263ad26",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/reuters_2023-10_diesel_early_october.txt",
+   "bytes": 4086,
+   "sha256": "e8c674a4953641bda122946a8d78aa45dbb765cd2500f61fa8ee3c1d508d3cc7",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/reuters_2023-10_diesel_resumes.txt",
+   "bytes": 4884,
+   "sha256": "f96737a79ae26773da0267addbfaa2ff007e3aabf1e5a14b1bc5d7eeccadf7be",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/reuters_2023-11_diesel_october.txt",
+   "bytes": 3311,
+   "sha256": "b19d9f5c784f58e887d56063d64d265d531e14eb7ff980e613d41f0884b53a36",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/reuters_2023-11_gasoline_ban_lifted.txt",
+   "bytes": 2421,
+   "sha256": "a4d42e5fdacea34ef6e3cfa5a65604d2855ff60b8f6c43611b19c00309500631",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/reuters_2024-07_lukoil_transit.txt",
+   "bytes": 2477,
+   "sha256": "0612b6fa863a7650f668acc26e90379ebad1f756f5f248ea8e58532dbfeaf539",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/reuters_daryo_2023-10_gasoline_rail.txt",
+   "bytes": 4914,
+   "sha256": "d84bec278aa8f713bab5c4c5c4ab2c2717d529bd43ed6deef7949ffe2a5a12c0",
+   "in_repository": true
+  },
+  {
+   "path": "forced_loss_r52/wikipedia_2026_druzhba_dispute.txt",
+   "bytes": 7475,
+   "sha256": "efee6ce43b9fc6c143b35ccdb95cdf7edba4fe9df7ac7baeb8b09754d2ba655c",
+   "in_repository": true
+  },
+  {
    "path": "fred_placebo/commodities_monthly_2008_2021_2026-10-24.json",
    "bytes": 15277,
    "sha256": "1f4907dea3c56fd95abb1fff7b2744b090f626e4f55b9ea2cfa2c23dc9c83b32",

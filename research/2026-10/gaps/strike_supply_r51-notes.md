@@ -148,4 +148,5 @@ EUR 11.8bn of expected purchases over 2022–2026 (7.3–19.6bn) is taken out, f
 - **The pro-rata rule** assumes every buyer was cut in proportion. In fact Russia's bans fell on gasoline and diesel first, and Türkiye's imports halved in August 2026 under the diesel ban.
 - **Druzhba August 2025.** Whether the lost days were made up later is not known.
 - **The halt of January to April 2026** (Russian strike at Brody, Hungary blaming Ukraine's repairs) is not counted. Counting it would add roughly EUR 1bn for Hungary and Slovakia (about 85 days of their Druzhba crude).
+  - **Round 52:** now counted, with Russia's 2023 export ban, as a forced loss under the owner's rule (`forced_loss_r52.json`, -notes.md): EUR 1.0bn for Hungary and Slovakia.
 - **The evidence letter.** The new source is a research-type source. The site's evidence letter for "paid" may treat it as a measuring source, because it is not in index.html `METHOD_INPUTS`, which this round could not edit. Paid parts already rest on official customs, so no letter rises.
