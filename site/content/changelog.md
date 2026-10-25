@@ -5,6 +5,7 @@ The short history, newest first. The [full changelog](https://github.com/intelli
 <h2 id="cl-r46">Round 46: "essentially zero" and "too close to call" <span class="cl-date">25 October</span></h2>
 
 - A number that is not certain and whose middle value is under 0.1% of a year's GDP now says **essentially zero**: the war moved almost no money either way there (Kazakhstan, Algeria, Israel and others), a fact rather than an open question.
+- **Own-history no-war bands**: 30 uncertain countries were back-tested on their own trade with Russia since 2001, under the same rule that admitted Türkiye's band. Three pass (Kenya, Peru, French Polynesia); French Polynesia becomes certain on trade, Peru's narrower range puts it near zero. The other 27 keep the general band: their own history is more volatile than it (Colombia came closest, but its 2014–2020 errors were larger than anything before).
 - Below a 65% chance either way, a direction is **too close to call** (was "unclear"; the ranking group was "direction uncertain").
 
 <h2 id="cl-r45">Round 45: a shorter country panel <span class="cl-date">25 October</span></h2>

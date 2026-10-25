@@ -7105,6 +7105,731 @@
      }
     }
    }
+  },
+  "KEN": {
+   "to_rus": {
+    "level_2021": {
+     "low": 0.2207,
+     "central": 0.2904,
+     "high": 0.2904
+    },
+    "multiplier_vs_2021": {
+     "2022": {
+      "low": 0.912,
+      "central": 1.0,
+      "high": 1.685
+     },
+     "2023": {
+      "low": 0.878,
+      "central": 1.0,
+      "high": 2.091
+     },
+     "2024": {
+      "low": 0.853,
+      "central": 1.0,
+      "high": 2.468
+     },
+     "2025": {
+      "low": 0.832,
+      "central": 1.0,
+      "high": 2.838
+     },
+     "2026": {
+      "low": 0.814,
+      "central": 1.0,
+      "high": 3.21
+     }
+    },
+    "cumulative_band": {
+     "H1": {
+      "low": 0.912,
+      "central": 1.0,
+      "high": 1.685
+     },
+     "H2": {
+      "low": 0.902,
+      "central": 1.0,
+      "high": 1.893
+     },
+     "H3": {
+      "low": 0.9,
+      "central": 1.0,
+      "high": 1.974
+     },
+     "H4": {
+      "low": 0.892,
+      "central": 1.0,
+      "high": 2.204
+     },
+     "H5": {
+      "low": 0.896,
+      "central": 1.0,
+      "high": 2.429
+     },
+     "H5_2026_8of12": {
+      "low": 0.895,
+      "central": 1.0,
+      "high": 2.359
+     }
+    },
+    "generic_multiplier_vs_2021_replaced": {
+     "2022": {
+      "low": 0.384,
+      "central": 1.0,
+      "high": 2.411
+     },
+     "2023": {
+      "low": 0.325,
+      "central": 1.0,
+      "high": 2.962
+     },
+     "2024": {
+      "low": 0.293,
+      "central": 1.0,
+      "high": 3.661
+     },
+     "2025": {
+      "low": 0.28,
+      "central": 1.0,
+      "high": 4.353
+     },
+     "2026": {
+      "low": 0.245,
+      "central": 1.0,
+      "high": 4.839
+     }
+    },
+    "generic_cumulative_band_replaced": {
+     "H1": {
+      "low": 0.384,
+      "central": 1.0,
+      "high": 2.411
+     },
+     "H2": {
+      "low": 0.41,
+      "central": 1.0,
+      "high": 2.559
+     },
+     "H3": {
+      "low": 0.444,
+      "central": 1.0,
+      "high": 2.656
+     },
+     "H4": {
+      "low": 0.453,
+      "central": 1.0,
+      "high": 3.048
+     },
+     "H5": {
+      "low": 0.472,
+      "central": 1.0,
+      "high": 3.32
+     },
+     "H5_2026_8of12": {
+      "low": 0.47,
+      "central": 1.0,
+      "high": 3.19
+     }
+    },
+    "method": "2021 level held (random walk, from the 2019-2021 median as small_flow_base), country-specific interval: 5th-95th percentile of the country's own random-walk errors 1-5 years ahead (rolling origins 2005-2020, all years kept; Russia's exports to it (CEPII BACI, 2001-2021) and its own customs report (IMF IMTS, 2008-2021) pooled, real by goods group), scaled by sqrt(h/3) and widened halfway to the block-bootstrap bounds, as cf_bands.json B2; cumulative band = the generic cumulative band scaled per side by the own/generic ratio of the log bounds in the same year; used because its 2022-2026 cumulative band is at least 10% narrower than the band as built and its own held-out coverage holds (own_bands_r46.json)",
+    "size_class": "M",
+    "certainty": "C",
+    "own_backtest": {
+     "series": "A: Russia's exports to the country (CEPII BACI HS92, reconciled, 2001-2021); B: the country's imports from Russia (IMF IMTS own report, 2008-2021); real by goods group",
+     "origins": "2005-2020",
+     "horizons": "1-5",
+     "n_errors": 115,
+     "q05_q50_q95_per_sqrt_h_over_3": [
+      -0.134,
+      0.415,
+      0.857
+     ],
+     "bootstrap_widened_bounds": [
+      -0.159,
+      0.903
+     ],
+     "coverage": {
+      "A_mirror_baci": {
+       "leave_window_out": {
+        "hits": {
+         "2007": "3/5",
+         "2012": "5/5",
+         "2016": "5/5"
+        },
+        "total": "13/15",
+        "rate": 0.867
+       },
+       "out_of_time_train_to_2013_test_origins_2014_2020": {
+        "hits": "25/25",
+        "rate": 1.0,
+        "misses": []
+       }
+      },
+      "B_own_imf": {
+       "leave_window_out": {
+        "hits": {
+         "2012": "5/5",
+         "2016": "5/5"
+        },
+        "total": "10/10",
+        "rate": 1.0
+       },
+       "out_of_time_train_to_2013_test_origins_2014_2020": {
+        "hits": "25/25",
+        "rate": 1.0,
+        "misses": []
+       }
+      }
+     },
+     "safeguard": {
+      "A_mirror_baci": "12/12",
+      "B_own_imf": "7/7"
+     }
+    }
+   }
+  },
+  "PER": {
+   "to_rus": {
+    "level_2021": {
+     "low": 0.3676,
+     "central": 0.5432,
+     "high": 0.5432
+    },
+    "multiplier_vs_2021": {
+     "2022": {
+      "low": 0.881,
+      "central": 1.0,
+      "high": 1.601
+     },
+     "2023": {
+      "low": 0.837,
+      "central": 1.0,
+      "high": 1.945
+     },
+     "2024": {
+      "low": 0.804,
+      "central": 1.0,
+      "high": 2.259
+     },
+     "2025": {
+      "low": 0.777,
+      "central": 1.0,
+      "high": 2.562
+     },
+     "2026": {
+      "low": 0.754,
+      "central": 1.0,
+      "high": 2.863
+     }
+    },
+    "cumulative_band": {
+     "H1": {
+      "low": 0.881,
+      "central": 1.0,
+      "high": 1.601
+     },
+     "H2": {
+      "low": 0.868,
+      "central": 1.0,
+      "high": 1.778
+     },
+     "H3": {
+      "low": 0.866,
+      "central": 1.0,
+      "high": 1.847
+     },
+     "H4": {
+      "low": 0.855,
+      "central": 1.0,
+      "high": 2.04
+     },
+     "H5": {
+      "low": 0.86,
+      "central": 1.0,
+      "high": 2.227
+     },
+     "H5_2026_8of12": {
+      "low": 0.859,
+      "central": 1.0,
+      "high": 2.168
+     }
+    },
+    "generic_multiplier_vs_2021_replaced": {
+     "2022": {
+      "low": 0.384,
+      "central": 1.0,
+      "high": 2.411
+     },
+     "2023": {
+      "low": 0.325,
+      "central": 1.0,
+      "high": 2.962
+     },
+     "2024": {
+      "low": 0.293,
+      "central": 1.0,
+      "high": 3.661
+     },
+     "2025": {
+      "low": 0.28,
+      "central": 1.0,
+      "high": 4.353
+     },
+     "2026": {
+      "low": 0.245,
+      "central": 1.0,
+      "high": 4.839
+     }
+    },
+    "generic_cumulative_band_replaced": {
+     "H1": {
+      "low": 0.384,
+      "central": 1.0,
+      "high": 2.411
+     },
+     "H2": {
+      "low": 0.41,
+      "central": 1.0,
+      "high": 2.559
+     },
+     "H3": {
+      "low": 0.444,
+      "central": 1.0,
+      "high": 2.656
+     },
+     "H4": {
+      "low": 0.453,
+      "central": 1.0,
+      "high": 3.048
+     },
+     "H5": {
+      "low": 0.472,
+      "central": 1.0,
+      "high": 3.32
+     },
+     "H5_2026_8of12": {
+      "low": 0.47,
+      "central": 1.0,
+      "high": 3.19
+     }
+    },
+    "method": "2021 level held (random walk, from the 2019-2021 median as small_flow_base), country-specific interval: 5th-95th percentile of the country's own random-walk errors 1-5 years ahead (rolling origins 2005-2020, all years kept; Russia's exports to it (CEPII BACI, 2001-2021) and its own customs report (IMF IMTS, 2008-2021) pooled, real by goods group), scaled by sqrt(h/3) and widened halfway to the block-bootstrap bounds, as cf_bands.json B2; cumulative band = the generic cumulative band scaled per side by the own/generic ratio of the log bounds in the same year; used because its 2022-2026 cumulative band is at least 10% narrower than the band as built and its own held-out coverage holds (own_bands_r46.json)",
+    "size_class": "M",
+    "certainty": "C",
+    "own_backtest": {
+     "series": "A: Russia's exports to the country (CEPII BACI HS92, reconciled, 2001-2021); B: the country's imports from Russia (IMF IMTS own report, 2008-2021); real by goods group",
+     "origins": "2005-2020",
+     "horizons": "1-5",
+     "n_errors": 115,
+     "q05_q50_q95_per_sqrt_h_over_3": [
+      -0.145,
+      0.262,
+      0.767
+     ],
+     "bootstrap_widened_bounds": [
+      -0.219,
+      0.815
+     ],
+     "coverage": {
+      "A_mirror_baci": {
+       "leave_window_out": {
+        "hits": {
+         "2007": "5/5",
+         "2012": "5/5",
+         "2016": "5/5"
+        },
+        "total": "15/15",
+        "rate": 1.0
+       },
+       "out_of_time_train_to_2013_test_origins_2014_2020": {
+        "hits": "20/25",
+        "rate": 0.8,
+        "misses": [
+         "2015+1: x0.94",
+         "2015+5: x0.88",
+         "2017+3: x0.78",
+         "2018+2: x0.78",
+         "2019+1: x0.78"
+        ]
+       }
+      },
+      "B_own_imf": {
+       "leave_window_out": {
+        "hits": {
+         "2012": "5/5",
+         "2016": "5/5"
+        },
+        "total": "10/10",
+        "rate": 1.0
+       },
+       "out_of_time_train_to_2013_test_origins_2014_2020": {
+        "hits": "25/25",
+        "rate": 1.0,
+        "misses": []
+       }
+      }
+     },
+     "safeguard": {
+      "A_mirror_baci": "12/12",
+      "B_own_imf": "7/7"
+     }
+    }
+   }
+  },
+  "PYF": {
+   "to_rus": {
+    "level_2021": {
+     "low": 0.0,
+     "central": 0.0002,
+     "high": 0.0002
+    },
+    "multiplier_vs_2021": {
+     "2022": {
+      "low": 0.738,
+      "central": 1.0,
+      "high": 1.81
+     },
+     "2023": {
+      "low": 0.651,
+      "central": 1.0,
+      "high": 2.314
+     },
+     "2024": {
+      "low": 0.591,
+      "central": 1.0,
+      "high": 2.795
+     },
+     "2025": {
+      "low": 0.545,
+      "central": 1.0,
+      "high": 3.276
+     },
+     "2026": {
+      "low": 0.507,
+      "central": 1.0,
+      "high": 3.769
+     }
+    },
+    "cumulative_band": {
+     "H1": {
+      "low": 0.65,
+      "central": 1.0,
+      "high": 2.353
+     },
+     "H2": {
+      "low": 0.659,
+      "central": 1.0,
+      "high": 2.493
+     },
+     "H3": {
+      "low": 0.672,
+      "central": 1.0,
+      "high": 2.933
+     },
+     "H4": {
+      "low": 0.682,
+      "central": 1.0,
+      "high": 3.012
+     },
+     "H5": {
+      "low": 0.698,
+      "central": 1.0,
+      "high": 3.076
+     },
+     "H5_2026_8of12": {
+      "low": 0.7,
+      "central": 1.0,
+      "high": 3.029
+     }
+    },
+    "generic_multiplier_vs_2021_replaced": {
+     "2022": {
+      "low": 0.348,
+      "central": 1.0,
+      "high": 3.185
+     },
+     "2023": {
+      "low": 0.229,
+      "central": 1.0,
+      "high": 5.048
+     },
+     "2024": {
+      "low": 0.167,
+      "central": 1.0,
+      "high": 7.167
+     },
+     "2025": {
+      "low": 0.128,
+      "central": 1.0,
+      "high": 9.613
+     },
+     "2026": {
+      "low": 0.101,
+      "central": 1.0,
+      "high": 12.437
+     }
+    },
+    "generic_cumulative_band_replaced": {
+     "model": "rw",
+     "H1": {
+      "low": 0.224,
+      "central": 1.0,
+      "high": 5.317,
+      "median_error_multiplier": 1.065,
+      "n_country_flows": 115,
+      "cell": "to_rus/S",
+      "uncalibrated_in_sample": {
+       "low": 0.287,
+       "high": 4.025
+      },
+      "current_sum_of_yearly_bands": {
+       "low": 0.348,
+       "high": 3.185
+      },
+      "shrink_vs_current": {
+       "low_side": 1.192,
+       "high_side": 1.976,
+       "width": 1.796
+      },
+      "variant_available_years_only": {
+       "low": 0.287,
+       "high": 4.025,
+       "n": 115
+      },
+      "variant_T2016_with_real_2020": {
+       "low": 0.287,
+       "high": 4.025,
+       "n": 115
+      }
+     },
+     "H2": {
+      "low": 0.239,
+      "central": 1.0,
+      "high": 5.827,
+      "median_error_multiplier": 1.172,
+      "n_country_flows": 115,
+      "cell": "to_rus/S",
+      "uncalibrated_in_sample": {
+       "low": 0.303,
+       "high": 4.344
+      },
+      "current_sum_of_yearly_bands": {
+       "low": 0.289,
+       "high": 4.117
+      },
+      "shrink_vs_current": {
+       "low_side": 1.07,
+       "high_side": 1.549,
+       "width": 1.46
+      },
+      "variant_available_years_only": {
+       "low": 0.347,
+       "high": 3.672,
+       "n": 79
+      },
+      "variant_T2016_with_real_2020": {
+       "low": 0.303,
+       "high": 4.344,
+       "n": 115
+      }
+     },
+     "H3": {
+      "low": 0.258,
+      "central": 1.0,
+      "high": 7.862,
+      "median_error_multiplier": 1.243,
+      "n_country_flows": 115,
+      "cell": "to_rus/S",
+      "uncalibrated_in_sample": {
+       "low": 0.323,
+       "high": 5.575
+      },
+      "current_sum_of_yearly_bands": {
+       "low": 0.248,
+       "high": 5.133
+      },
+      "shrink_vs_current": {
+       "low_side": 0.987,
+       "high_side": 1.66,
+       "width": 1.557
+      },
+      "variant_available_years_only": {
+       "low": 0.321,
+       "high": 4.186,
+       "n": 78
+      },
+      "variant_T2016_with_real_2020": {
+       "low": 0.323,
+       "high": 5.575,
+       "n": 115
+      }
+     },
+     "H4": {
+      "low": 0.274,
+      "central": 1.0,
+      "high": 8.188,
+      "median_error_multiplier": 1.285,
+      "n_country_flows": 114,
+      "cell": "to_rus/S",
+      "uncalibrated_in_sample": {
+       "low": 0.34,
+       "high": 5.768
+      },
+      "current_sum_of_yearly_bands": {
+       "low": 0.218,
+       "high": 6.254
+      },
+      "shrink_vs_current": {
+       "low_side": 0.928,
+       "high_side": 1.368,
+       "width": 1.311
+      },
+      "variant_available_years_only": {
+       "low": 0.389,
+       "high": 7.031,
+       "n": 74
+      },
+      "variant_T2016_with_real_2020": {
+       "low": 0.339,
+       "high": 5.763,
+       "n": 115
+      }
+     },
+     "H5": {
+      "low": 0.297,
+      "central": 1.0,
+      "high": 8.453,
+      "median_error_multiplier": 1.403,
+      "n_country_flows": 114,
+      "cell": "to_rus/S",
+      "uncalibrated_in_sample": {
+       "low": 0.364,
+       "high": 5.922
+      },
+      "current_sum_of_yearly_bands": {
+       "low": 0.194,
+       "high": 7.491
+      },
+      "shrink_vs_current": {
+       "low_side": 0.872,
+       "high_side": 1.148,
+       "width": 1.118
+      },
+      "bootstrap_80pct_of_low": [
+       0.313,
+       0.419
+      ],
+      "bootstrap_80pct_of_high": [
+       4.347,
+       10.429
+      ],
+      "variant_available_years_only": {
+       "low": 0.364,
+       "high": 6.666,
+       "n": 114
+      },
+      "variant_T2016_with_real_2020": {
+       "low": 0.364,
+       "high": 5.922,
+       "n": 114
+      }
+     },
+     "H5_2026_8of12": {
+      "low": 0.3,
+      "central": 1.0,
+      "high": 8.212,
+      "median_error_multiplier": 1.345,
+      "n_country_flows": 114,
+      "cell": "to_rus/S",
+      "uncalibrated_in_sample": {
+       "low": 0.367,
+       "high": 5.782
+      },
+      "current_sum_of_yearly_bands": {
+       "low": 0.201,
+       "high": 7.137
+      },
+      "shrink_vs_current": {
+       "low_side": 0.876,
+       "high_side": 1.175,
+       "width": 1.141
+      },
+      "bootstrap_80pct_of_low": [
+       0.325,
+       0.406
+      ],
+      "bootstrap_80pct_of_high": [
+       4.487,
+       10.062
+      ],
+      "variant_available_years_only": {
+       "low": 0.367,
+       "high": 6.338,
+       "n": 114
+      },
+      "variant_T2016_with_real_2020": {
+       "low": 0.365,
+       "high": 5.782,
+       "n": 114
+      }
+     }
+    },
+    "method": "2021 level held (random walk, from the 2019-2021 median as small_flow_base), country-specific interval: 5th-95th percentile of the country's own random-walk errors 1-5 years ahead (rolling origins 2005-2020, all years kept; Russia's exports to it (CEPII BACI, 2001-2021) and its own customs report (IMF IMTS, 2008-2021) pooled, real by goods group), scaled by sqrt(h/3) and widened halfway to the block-bootstrap bounds, as cf_bands.json B2; cumulative band = the generic cumulative band scaled per side by the own/generic ratio of the log bounds in the same year; used because its 2022-2026 cumulative band is at least 10% narrower than the band as built and its own held-out coverage holds (own_bands_r46.json)",
+    "size_class": "S",
+    "certainty": "C",
+    "own_backtest": {
+     "series": "A: Russia's exports to the country (CEPII BACI HS92, reconciled, 2001-2021); B: the country's imports from Russia (IMF IMTS own report, 2008-2021); real by goods group",
+     "origins": "2005-2020",
+     "horizons": "1-5",
+     "n_errors": 115,
+     "q05_q50_q95_per_sqrt_h_over_3": [
+      -0.487,
+      0.211,
+      0.975
+     ],
+     "bootstrap_widened_bounds": [
+      -0.526,
+      1.028
+     ],
+     "coverage": {
+      "A_mirror_baci": {
+       "leave_window_out": {
+        "hits": {
+         "2007": "5/5",
+         "2012": "4/5",
+         "2016": "5/5"
+        },
+        "total": "14/15",
+        "rate": 0.933
+       },
+       "out_of_time_train_to_2013_test_origins_2014_2020": {
+        "hits": "25/25",
+        "rate": 1.0,
+        "misses": []
+       }
+      },
+      "B_own_imf": {
+       "leave_window_out": {
+        "hits": {
+         "2012": "4/5",
+         "2016": "5/5"
+        },
+        "total": "9/10",
+        "rate": 0.9
+       },
+       "out_of_time_train_to_2013_test_origins_2014_2020": {
+        "hits": "25/25",
+        "rate": 1.0,
+        "misses": []
+       }
+      }
+     },
+     "safeguard": {
+      "A_mirror_baci": "12/12",
+      "B_own_imf": "7/7"
+     }
+    }
+   }
   }
  },
  "tested_not_used": {

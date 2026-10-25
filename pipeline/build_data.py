@@ -3143,7 +3143,7 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
             )
     bid = src.add(
         "cf_bands",
-        "Ranges of the 2022-2026 total measured on the back-tests' cumulative errors; own bands for Mongolia, Yemen, Tajikistan and Moldova",
+        "Ranges of the 2022-2026 total measured on the back-tests' cumulative errors; own bands tested on their own history for Mongolia, Yemen, Tajikistan, Moldova, Türkiye (round 43), Kenya, Peru and French Polynesia (round 46)",
         None,
         bands.get("generated"),
         "see research/2026-10/gaps/cf_bands-notes.md",
