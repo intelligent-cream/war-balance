@@ -44,11 +44,13 @@ For each year from 2022: what the country paid for Russian fuel, minus the same 
 
 - **Fuel only**: other goods' price rises are mostly general inflation.
 - **Only money flowing to Russia**: higher prices on goods sold to Russia do not count.
-- **On top of volume**: a country that cut volumes still pays the windfall on what it kept buying. Germany: EUR 16.5bn<!-- n:DEU.part_windfall abs --> toward Russia (likely 1.3<!-- n:DEU.part_windfallHi abs --> to 29.1<!-- n:DEU.part_windfallLo abs -->), almost all in 2022.
+- **On top of volume**: a country that cut volumes still pays the windfall on what it kept buying. Germany: EUR 16.5bn<!-- n:DEU.part_windfall abs --> toward Russia (likely 1.3<!-- n:DEU.part_windfallHi abs --> to 29.3<!-- n:DEU.part_windfallLo abs -->), almost all in 2022.
 
 ## No-war prices
 
 The comparison is with prices markets **expected before the invasion**: IMF, World Bank, EIA, ECB and European Commission forecasts and futures from October 2021 to January 2022 (central), the lowest of them (low) and mid-February 2022 futures (high). Hub-indexed gas contracts follow the no-war hub price, oil-indexed contracts an oil formula, and fixed-price buyers (Belarus, Armenia and others) get no gas windfall.
+
+Gas forward prices of early 2021, before the late-2021 squeeze (TTF about EUR 17.5/MWh for 2022, against 38 in the October-2021 forecasts and 59 in the central path), are a third pre-war path. Part of that squeeze may have been the war's: the IEA tied much of Europe's 2021 storage shortfall to Gazprom ([Bloomberg](https://www.bloombergquint.com/business/iea-blames-russia-for-gas-squeeze-hurting-european-economies)). Since round 46 the windfall's likely range reaches this path, as it reaches the October-2021 forecasts and the February-2022 futures; before, it was a method-band alternative.
 
 Against 2019–2021 prices the windfall would be about three times larger: that average includes the 2020 COVID crash, and prices were already rising in late 2021. Urals sold in 2022 at almost exactly its no-war price; gas was still more than twice its no-war level.
 

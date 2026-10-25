@@ -18,13 +18,13 @@ The largest parts, EUR bn:
 | Its firms pay Russia less tax | 5.4<!-- n:DEU.part_tax --> (1.9<!-- n:DEU.part_taxLo --> to 10.5<!-- n:DEU.part_taxHi -->) | Ukraine |
 | Less Russian oil via other countries | 4.3<!-- n:DEU.part_laund --> (2.3<!-- n:DEU.part_laundLo --> to 6.4<!-- n:DEU.part_laundHi -->) | Ukraine |
 | Russian money frozen | 3.2<!-- n:DEU.part_frozen --> (2.1<!-- n:DEU.part_frozenLo --> to 3.8<!-- n:DEU.part_frozenHi -->) | Ukraine |
-| Paid Russia war-time fuel prices | 16.5<!-- n:DEU.part_windfall abs --> (1.3<!-- n:DEU.part_windfallHi abs --> to 29.1<!-- n:DEU.part_windfallLo abs -->) | Russia |
+| Paid Russia war-time fuel prices | 16.5<!-- n:DEU.part_windfall abs --> (1.3<!-- n:DEU.part_windfallHi abs --> to 29.3<!-- n:DEU.part_windfallLo abs -->) | Russia |
 
 What to look at:
 
 - **"Compared with what?"** The wide range comes almost entirely from "bought less from Russia": nobody knows exactly what Germany would have bought without the war ([counterfactual](#view=how&sec=m-counterfactual)).
 - **Aid differs from Kiel's.** Kiel's figure for Germany is EUR 49.5bn; 25.9 is counted because donated weapons are at market value, loans at their gift value, and military aid counts when delivered.
-- **The likely range** aims at about 90%; rerun as if the war had started in 2018 or 2014, trade ranges held the true zero 96% and 90% of the time ([ranges](#view=how&sec=m-ranges-how-often-the-ranges-are-right)). The **method band** (net 3.13%<!-- n:DEU.netBandLo --> to 4.05%<!-- n:DEU.netBandHi -->) shows the same number under other reasonable method choices ([ranges](#view=how&sec=m-ranges)).
+- **The likely range** aims at about 90%; rerun as if the war had started in 2018 or 2014, trade ranges held the true zero 96% and 90% of the time ([ranges](#view=how&sec=m-ranges-how-often-the-ranges-are-right)). The **method band** (net 3.13%<!-- n:DEU.netBandLo --> to 3.81%<!-- n:DEU.netBandHi -->) shows the same number under other reasonable method choices ([ranges](#view=how&sec=m-ranges)).
 - **"Very likely · >99%"** is the chance of its direction, from simulating every part's range together ([how likely the direction is](#view=how&sec=m-ranges-how-likely-the-direction-is)). The letters on the parts say how each is known: A = reported, B = measured estimate, C = modelled, D = rough, capped by its sources ([certainty letters](#view=how&sec=m-ranges-certainty-letters)).
 - **A `*`** on a part: its 2026 value is estimated from the 2025 rate.
 - **2026 prices**: 2022–2025 alone the net is +2.94%<!-- n:DEU.net2025 -->; 2026 adds a lot because fuel prices rose with the Hormuz crisis ([prices](#view=how&sec=m-prices-2026-and-the-hormuz-crisis)).
