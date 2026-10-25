@@ -1,0 +1,6 @@
+Agency on Statistics under the President of the Republic of Tajikistan (Tajstat), retrieved 2026-10-25. *.txt = pdftotext -layout.
+Archive page: https://www.stat.tj/ru/elektronnye-versii-publikaczij-arhiv/
+- Socio-economic situation, January-August 2026: https://www.stat.tj/wp-content/uploads/2026/09/8-2026-russkij-variant.pdf  (table: foreign trade by country, USD thousand)
+- Socio-economic situation, January-December 2025: https://www.stat.tj/wp-content/uploads/2026/06/dekabr-2025-doklad-rusi.pdf
+- Socio-economic situation, January-August 2025: https://www.stat.tj/wp-content/uploads/2026/06/avgust-2025-russ.pdf
+- Foreign economic activity of the Republic of Tajikistan 2025 (2019-2024 data): https://www.stat.tj/wp-content/uploads/2026/02/sbornik-ves-za-2025-g.pdf

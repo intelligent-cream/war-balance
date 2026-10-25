@@ -1,0 +1,4 @@
+UN Comtrade public preview API, retrieved 2026-10-25.
+tot_YYYY.json: https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=854,760,434,96,422,887,795,762,496,417,51,268&partnerCode=643&flowCode=M,X&period=YYYY&cmdCode=TOTAL
+m_YYYYMM.json: same reporters, C/M, flow M (all empty: no monthly 2025-26 reports for these 9)
+bfa_ag2_YYYY.json: https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=854&partnerCode=643&flowCode=M&period=YYYY&cmdCode=AG2

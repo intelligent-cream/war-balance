@@ -1,0 +1,1 @@
+source: https://data.1212.mn/api/v1/en/NSO/Economy, environment/Foreign Trade (PxWeb POST), retrieved 2026-10-25

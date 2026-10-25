@@ -1,0 +1,1904 @@
+{
+ "generated": "2026-10-25",
+ "round": 53,
+ "unit": "EUR bn, current prices (trade layer, before paid share and CIF/FOB); 2026 = January-August",
+ "question": "Can better official sources narrow the data part of purchases from Russia (and the 2019-2021 base) for BFA, SYR, LBY, BRN, LBN, YEM, TKM, TJK, MNG, KGZ, ARM, GEO?",
+ "summary": {
+  "BFA": {
+   "current_source": "Comtrade (BFA's own report) 2019-2024, IMF 2025, IMF monthly x rule 2026",
+   "better_source": "INSD quarterly notes (identical to Comtrade for 2019-2024): 2025 and H1 2026 measured",
+   "action": "wire (A/B)"
+  },
+  "SYR": {
+   "current_source": "Russia's mirror 2019-2021 (actuals_r7), IMF 2022-2024, CREA fuel + food 2025-2026; paid share 0.35-0.90",
+   "better_source": "none official; wheat volumes (IKAR, Fastmarkets: ~1.4 Mt deal 2023, 0.3-0.67 Mt H2 2024) only confirm the IMF level; the paid share, not the trade data, is the width",
+   "action": "no change"
+  },
+  "LBY": {
+   "current_source": "CREA (Kpler) Russian products x 0.75-1.0 + food 2022-2026",
+   "better_source": "none official (no Libyan customs; NOC/Brega publish no origin); Kpler volumes via Attaqa (2.5 Mt 2023) agree with CREA",
+   "action": "no change"
+  },
+  "BRN": {
+   "current_source": "actuals_r7 refinery residual (Russian share of Hengyi crude x crude bill - passed on)",
+   "better_source": "DEPS monthly releases 2026: Russia never a top-3 source; crude arrives booked to Malaysia (54-70%), so customs origin cannot fix the Russian share",
+   "action": "no change"
+  },
+  "LBN": {
+   "current_source": "Comtrade (LBN) to 2024, CREA fuel + non-fuel 2025, IMF 2026",
+   "better_source": "Lebanese Customs online statistics (blocked from here: TLS chain/503)",
+   "action": "owner download"
+  },
+  "YEM": {
+   "current_source": "Russia's mirror 2019-2021 (actuals_r7), CREA fuel + food 2022-2026",
+   "better_source": "none official for Houthi ports (UNVIM reports volumes, not origin)",
+   "action": "no change"
+  },
+  "TKM": {
+   "current_source": "Russia's mirror 2019-2021, Turkmen/Russian statements 2022-2026",
+   "better_source": "Russian ambassador: Jan-Oct 2025 +35% (confirms the +30-35% used); no published values",
+   "action": "no change"
+  },
+  "TJK": {
+   "current_source": "actuals_r7: turnover statements minus exports 2023-2026",
+   "better_source": "Tajstat monthly reports and yearbook: imports/exports by country 2020-2025 and Jan-Aug 2026",
+   "action": "wire (A)"
+  },
+  "MNG": {
+   "current_source": "Comtrade (MNG) 2019-2023, narrow.json (Russian-side turnover, TE share) 2024-2026",
+   "better_source": "NSO PxWeb (data.1212.mn) imports/exports by country 2005-2025",
+   "action": "wire (A)"
+  },
+  "KGZ": {
+   "current_source": "Comtrade (KGZ) + Kyrgyz NSC (eaeu_r44)",
+   "better_source": "already the national source",
+   "action": "no change"
+  },
+  "ARM": {
+   "current_source": "Armstat via Comtrade, HS 71 netted (narrow/actuals_r7, eaeu_r44)",
+   "better_source": "already the national source",
+   "action": "no change"
+  },
+  "GEO": {
+   "current_source": "Geostat via Comtrade",
+   "better_source": "already the national source",
+   "action": "no change"
+  }
+ },
+ "comtrade_totals_usd_m": {
+  "ARM": {
+   "2023_M": 4378.4,
+   "2023_X": 3505.4,
+   "2024_M": 9239.2,
+   "2024_X": 3136.8,
+   "2025_M": 4696.9,
+   "2025_X": 2915.8
+  },
+  "BRN": {
+   "2023_M": 239.9,
+   "2024_M": 825.8,
+   "2025_M": 532.0
+  },
+  "GEO": {
+   "2023_M": 1744.4,
+   "2023_X": 657.0,
+   "2024_M": 1852.2,
+   "2024_X": 679.7,
+   "2025_M": 1939.4,
+   "2025_X": 749.3
+  },
+  "KGZ": {
+   "2023_M": 2274.6,
+   "2023_X": 821.6,
+   "2024_M": 2309.7,
+   "2024_X": 976.1,
+   "2025_M": 2595.8,
+   "2025_X": 493.3
+  },
+  "LBN": {
+   "2023_M": 586.3,
+   "2023_X": 8.9,
+   "2024_M": 340.1,
+   "2024_X": 6.8
+  },
+  "MNG": {
+   "2023_M": 2386.3,
+   "2023_X": 111.2
+  },
+  "TJK": {
+   "2023_M": 899.4,
+   "2023_X": 134.7
+  },
+  "BFA": {
+   "2023_M": 523.9,
+   "2023_X": 0.3,
+   "2024_M": 751.4,
+   "2024_X": 2.0
+  },
+  "YEM": {
+   "2023_M": 97.3,
+   "2024_M": 161.3
+  }
+ },
+ "countries": {
+  "BFA": {
+   "proposal": {
+    "flow": "imports_from_RUS",
+    "replaces": "nonreport.json BFA imports_from_RUS 2025 (IMF, kept from trade_full) and 2026 (IMF monthly x rule)",
+    "old": {
+     "2025": {
+      "low": 0.389,
+      "central": 0.7088,
+      "high": 1.2915
+     },
+     "2026": {
+      "low": 0.2646,
+      "central": 0.5008,
+      "high": 0.9479
+     }
+    },
+    "new": {
+     "2025": {
+      "central": 0.8188,
+      "low": 0.6377,
+      "high": 1.0514
+     },
+     "2026": {
+      "central": 0.5435,
+      "low": 0.3692,
+      "high": 0.787
+     }
+    },
+    "inputs_bn_fcfa": {
+     "quarters_2025": [
+      94.2,
+      128.7,
+      156.8,
+      157.3
+     ],
+     "cum_2024": 455.9,
+     "cum_2025": 537.1,
+     "h1_2025": 222.9,
+     "h1_2026": 242.7,
+     "q3_2025": 156.8,
+     "jul_aug_2026_est": 113.8
+    },
+    "new_margin10": {
+     "2022": {
+      "low": 0.3748,
+      "central": 0.4164,
+      "high": 0.4581
+     },
+     "2023": {
+      "low": 0.4361,
+      "central": 0.4845,
+      "high": 0.533
+     },
+     "2024": {
+      "low": 0.6248,
+      "central": 0.6942,
+      "high": 0.7636
+     },
+     "2025": {
+      "low": 0.7369,
+      "central": 0.8188,
+      "high": 0.9007
+     },
+     "2026": {
+      "low": 0.4371,
+      "central": 0.5435,
+      "high": 0.6499
+     }
+    },
+    "old_2022_2024": {
+     "2022": {
+      "low": 0.3243,
+      "central": 0.4164,
+      "high": 0.5347
+     },
+     "2023": {
+      "low": 0.3774,
+      "central": 0.4845,
+      "high": 0.6222
+     },
+     "2024": {
+      "low": 0.5406,
+      "central": 0.6942,
+      "high": 0.8914
+     }
+    },
+    "check": "INSD 2024 cumulative / Comtrade 2024 (BFA report) = 1.0012: the same customs data",
+    "band": "the reported years' own margin (2024 ratio low/central, high/central) on the measured part; July-August 2026 0.6-1.4 x its estimate",
+    "certainty": "A (2025), B (2026)",
+    "new_by_year": {
+     "2025": {
+      "old": {
+       "low": 0.389,
+       "central": 0.7088,
+       "high": 1.2915
+      },
+      "new": {
+       "central": 0.8188,
+       "low": 0.6377,
+       "high": 1.0514
+      }
+     },
+     "2026": {
+      "old": {
+       "low": 0.2646,
+       "central": 0.5008,
+       "high": 0.9479
+      },
+      "new": {
+       "central": 0.5435,
+       "low": 0.3692,
+       "high": 0.787
+      }
+     }
+    }
+   },
+   "wire": true
+  },
+  "MNG": {
+   "proposal": {
+    "flow": "imports_from_RUS",
+    "replaces": "narrow.json MNG to_rus trade_layer 2024-2025 (Russian-side turnover / Trading Economics share)",
+    "old": {
+     "2024": {
+      "low": 2.2173,
+      "central": 2.4021,
+      "high": 2.633
+     },
+     "2025": {
+      "low": 1.9469,
+      "central": 2.2124,
+      "high": 2.4779
+     }
+    },
+    "new": {
+     "2024": {
+      "low": 2.4793,
+      "central": 2.6098,
+      "high": 2.7403
+     },
+     "2025": {
+      "low": 2.3418,
+      "central": 2.4651,
+      "high": 2.5883
+     }
+    },
+    "nso_usd_m": {
+     "imports_from_RUS": {
+      "2019": 1729.9,
+      "2020": 1400.0,
+      "2021": 1955.2,
+      "2022": 2611.5,
+      "2023": 2386.3,
+      "2024": 2824.8,
+      "2025": 2785.5
+     },
+     "exports_to_RUS": {
+      "2019": 68.1,
+      "2020": 57.3,
+      "2021": 112.8,
+      "2022": 93.4,
+      "2023": 112.7,
+      "2024": 100.7,
+      "2025": 60.7
+     }
+    },
+    "exports_to_RUS_eur_bn_new": {
+     "2024": 0.093,
+     "2025": 0.0537
+    },
+    "exports_to_RUS_old": {
+     "2024": {
+      "low": 0.0637,
+      "central": 0.1161,
+      "high": 0.2115
+     },
+     "2025": {
+      "low": 0.0593,
+      "central": 0.1081,
+      "high": 0.197
+     }
+    },
+    "check": "NSO / Comtrade (MNG's own report) 2019-2023: {'2019': 1.0, '2020': 1.0, '2021': 1.0, '2022': 0.9844, '2023': 1.0} - the same customs data",
+    "band": "+-5%, as actuals_r7 set for Mongolia's own-report years 2019-2023",
+    "certainty": "A",
+    "new_by_year": {
+     "2024": {
+      "old": {
+       "low": 2.2173,
+       "central": 2.4021,
+       "high": 2.633
+      },
+      "new": {
+       "low": 2.4793,
+       "central": 2.6098,
+       "high": 2.7403
+      }
+     },
+     "2025": {
+      "old": {
+       "low": 1.9469,
+       "central": 2.2124,
+       "high": 2.4779
+      },
+      "new": {
+       "low": 2.3418,
+       "central": 2.4651,
+       "high": 2.5883
+      }
+     }
+    }
+   },
+   "wire": true
+  },
+  "TJK": {
+   "proposal": {
+    "flow": "imports_from_RUS",
+    "replaces": "actuals_r7.json TJK imports_from_RUS 2023-2026 (turnover from press statements minus exports)",
+    "old": {
+     "2023": {
+      "low": 1.33,
+      "central": 1.415,
+      "high": 1.5
+     },
+     "2024": {
+      "low": 1.62,
+      "central": 1.719,
+      "high": 1.82
+     },
+     "2025": {
+      "low": 1.96,
+      "central": 2.089,
+      "high": 2.21
+     },
+     "2026": {
+      "low": 1.27,
+      "central": 1.359,
+      "high": 1.44
+     }
+    },
+    "new": {
+     "2023": {
+      "low": 1.3885,
+      "central": 1.4615,
+      "high": 1.5346
+     },
+     "2024": {
+      "low": 1.655,
+      "central": 1.7421,
+      "high": 1.8292
+     },
+     "2025": {
+      "low": 1.8765,
+      "central": 1.9753,
+      "high": 2.074
+     },
+     "2026": {
+      "low": 1.2829,
+      "central": 1.3504,
+      "high": 1.4179
+     }
+    },
+    "tajstat_usd_m": {
+     "imports_from_RUS": {
+      "2020": 932.6,
+      "2021": 1280.5,
+      "2022": 1585.7,
+      "2023": 1580.3,
+      "2024": 1885.6,
+      "2025": 2232.0,
+      "2026": 1570.3
+     },
+     "exports_to_RUS": {
+      "2020": 41.0,
+      "2021": 72.5,
+      "2022": 88.2,
+      "2023": 134.7,
+      "2024": 96.2,
+      "2025": 240.5,
+      "2026": 106.2
+     }
+    },
+    "exports_to_RUS": {
+     "old": {
+      "2023": {
+       "low": 0.110414,
+       "central": 0.124565,
+       "high": 0.14053
+      },
+      "2024": {
+       "low": 0.08,
+       "central": 0.1,
+       "high": 0.14
+      },
+      "2025": {
+       "low": 0.08,
+       "central": 0.1,
+       "high": 0.14
+      },
+      "2026": {
+       "low": 0.05,
+       "central": 0.07,
+       "high": 0.1
+      }
+     },
+     "new": {
+      "2023": {
+       "low": 0.1121,
+       "central": 0.1246,
+       "high": 0.137
+      },
+      "2024": {
+       "low": 0.08,
+       "central": 0.0889,
+       "high": 0.0978
+      },
+      "2025": {
+       "low": 0.1916,
+       "central": 0.2128,
+       "high": 0.2341
+      },
+      "2026": {
+       "low": 0.0822,
+       "central": 0.0913,
+       "high": 0.1004
+      }
+     }
+    },
+    "check": "Tajstat / Comtrade (TJK report): {'2020': 1.0, '2021': 1.0, '2022': 1.0, '2023': 1.757} - 2020-2022 identical; Tajstat revised 2023 up from the USD 0.90bn sent to Comtrade to 1.58bn",
+    "band": "+-5% imports (own customs, land border); +-10% exports (small flow)",
+    "certainty": "A",
+    "new_by_year": {
+     "2023": {
+      "old": {
+       "low": 1.33,
+       "central": 1.415,
+       "high": 1.5
+      },
+      "new": {
+       "low": 1.3885,
+       "central": 1.4615,
+       "high": 1.5346
+      }
+     },
+     "2024": {
+      "old": {
+       "low": 1.62,
+       "central": 1.719,
+       "high": 1.82
+      },
+      "new": {
+       "low": 1.655,
+       "central": 1.7421,
+       "high": 1.8292
+      }
+     },
+     "2025": {
+      "old": {
+       "low": 1.96,
+       "central": 2.089,
+       "high": 2.21
+      },
+      "new": {
+       "low": 1.8765,
+       "central": 1.9753,
+       "high": 2.074
+      }
+     },
+     "2026": {
+      "old": {
+       "low": 1.27,
+       "central": 1.359,
+       "high": 1.44
+      },
+      "new": {
+       "low": 1.2829,
+       "central": 1.3504,
+       "high": 1.4179
+      }
+     }
+    }
+   },
+   "wire": true
+  },
+  "BRN": {
+   "evidence": {
+    "months": {
+     "JAN": {
+      "top3_text": "Singapura sebanyak 33.4 peratus, diikuti oleh Emiriah Arab Bersatu sebanyak 16.3 peratus, dan Malaysia sebanyak 13.9 peratus.",
+      "third_share_pct": 13.9,
+      "russia_named": false
+     },
+     "FEB": {
+      "top3_text": "Malaysia sebanyak 24.7 peratus, diikuti oleh Australia sebanyak 14.9 peratus, dan Republik Rakyat China sebanyak 12.5 peratus.",
+      "third_share_pct": 12.5,
+      "russia_named": false
+     },
+     "MAR": {
+      "top3_text": "Singapura sebanyak 52.4 peratus, diikuti oleh Australia sebanyak 14.3 peratus, dan Malaysia sebanyak 11.2 peratus.",
+      "third_share_pct": 11.2,
+      "russia_named": false
+     },
+     "APR": {
+      "top3_text": "Malaysia sebanyak 67.8 peratus, diikuti oleh Viet Nam sebanyak 6.0 peratus, dan Republik Rakyat China sebanyak 5.4 peratus.",
+      "third_share_pct": 5.4,
+      "russia_named": false
+     },
+     "MAY": {
+      "top3_text": "Malaysia sebanyak 69.5 peratus, diikuti oleh Australia sebanyak 10.5 peratus, dan Viet Nam sebanyak 4.9 peratus.",
+      "third_share_pct": 4.9,
+      "russia_named": false
+     },
+     "JUN": {
+      "top3_text": "Malaysia sebanyak 54.3 peratus, diikuti oleh Australia sebanyak 11.0 peratus, dan Republik Rakyat China sebanyak 6.6 peratus.",
+      "third_share_pct": 6.6,
+      "russia_named": false
+     },
+     "JUL": {
+      "top3_text": "Malaysia sebanyak 70.0 peratus, diikuti oleh Republik Rakyat China sebanyak 6.6 peratus, dan Nigeria sebanyak 5.2 peratus.",
+      "third_share_pct": 5.2,
+      "russia_named": false
+     }
+    },
+    "use": "upper bound only: Russia below the third source each month; Hengyi's crude arrives booked to Malaysia (54-70% of imports April-July 2026), so customs origin cannot settle the Russian share; no change proposed"
+   },
+   "wire": false
+  }
+ },
+ "effects_2026": {
+  "base": {
+   "BFA": {
+    "net": {
+     "level": "lean",
+     "p": 0.922,
+     "v": -3.9,
+     "lo": -7.09,
+     "hi": 0.8,
+     "width": 7.89
+    },
+    "ua": {
+     "level": "near",
+     "p": 0.869,
+     "v": 0,
+     "lo": 0,
+     "hi": 0.01,
+     "width": 0.01
+    },
+    "rus": {
+     "level": "lean",
+     "p": 0.903,
+     "v": -3.9,
+     "lo": -7.09,
+     "hi": 0.8,
+     "width": 7.89
+    }
+   },
+   "SYR": {
+    "net": {
+     "level": "unc",
+     "p": 0.631,
+     "v": -1.01,
+     "lo": -5.04,
+     "hi": 5.42,
+     "width": 10.46
+    },
+    "ua": {
+     "level": "near",
+     "p": 0.949,
+     "v": 0.02,
+     "lo": 0,
+     "hi": 0.05,
+     "width": 0.05
+    },
+    "rus": {
+     "level": "unc",
+     "p": 0.63,
+     "v": -1.03,
+     "lo": -5.06,
+     "hi": 5.4,
+     "width": 10.46
+    }
+   },
+   "LBY": {
+    "net": {
+     "level": "sure",
+     "p": 0.988,
+     "v": -6.61,
+     "lo": -10.52,
+     "hi": -1.73,
+     "width": 8.79
+    },
+    "ua": {
+     "level": "near",
+     "p": 0.869,
+     "v": 0,
+     "lo": 0,
+     "hi": 0.04,
+     "width": 0.04
+    },
+    "rus": {
+     "level": "sure",
+     "p": 0.979,
+     "v": -6.61,
+     "lo": -10.52,
+     "hi": -1.73,
+     "width": 8.79
+    }
+   },
+   "BRN": {
+    "net": {
+     "level": "lean",
+     "p": 0.849,
+     "v": 3.09,
+     "lo": -1.93,
+     "hi": 8.39,
+     "width": 10.32
+    },
+    "ua": {
+     "level": "near",
+     "p": 0.866,
+     "v": 0,
+     "lo": 0,
+     "hi": 0.01,
+     "width": 0.01
+    },
+    "rus": {
+     "level": "lean",
+     "p": 0.851,
+     "v": 3.09,
+     "lo": -1.93,
+     "hi": 8.39,
+     "width": 10.32
+    }
+   },
+   "LBN": {
+    "net": {
+     "level": "lean",
+     "p": 0.872,
+     "v": 2.68,
+     "lo": -1.54,
+     "hi": 13.72,
+     "width": 15.26
+    },
+    "ua": {
+     "level": "sure",
+     "p": 0.953,
+     "v": 0.1,
+     "lo": 0,
+     "hi": 0.36,
+     "width": 0.36
+    },
+    "rus": {
+     "level": "lean",
+     "p": 0.844,
+     "v": 2.58,
+     "lo": -1.64,
+     "hi": 13.61,
+     "width": 15.25
+    }
+   },
+   "YEM": {
+    "net": {
+     "level": "sure",
+     "p": 0.993,
+     "v": -5.16,
+     "lo": -8.46,
+     "hi": -1.4,
+     "width": 7.06
+    },
+    "ua": {
+     "level": "near",
+     "p": 0.869,
+     "v": 0,
+     "lo": 0,
+     "hi": 0.33,
+     "width": 0.33
+    },
+    "rus": {
+     "level": "sure",
+     "p": 0.988,
+     "v": -5.16,
+     "lo": -8.46,
+     "hi": -1.41,
+     "width": 7.05
+    }
+   },
+   "TKM": {
+    "net": {
+     "level": "lean",
+     "p": 0.822,
+     "v": 1.53,
+     "lo": -0.9,
+     "hi": 7.64,
+     "width": 8.54
+    },
+    "ua": {
+     "level": "near",
+     "p": 0.81,
+     "v": -0.01,
+     "lo": -0.05,
+     "hi": 0.01,
+     "width": 0.05
+    },
+    "rus": {
+     "level": "lean",
+     "p": 0.827,
+     "v": 1.54,
+     "lo": -0.89,
+     "hi": 7.65,
+     "width": 8.54
+    }
+   },
+   "TJK": {
+    "net": {
+     "level": "unc",
+     "p": 0.584,
+     "v": -0.39,
+     "lo": -4.29,
+     "hi": 4.52,
+     "width": 8.81
+    },
+    "ua": {
+     "level": "near",
+     "p": 0.863,
+     "v": 0,
+     "lo": 0,
+     "hi": 0.02,
+     "width": 0.02
+    },
+    "rus": {
+     "level": "unc",
+     "p": 0.571,
+     "v": -0.39,
+     "lo": -4.29,
+     "hi": 4.52,
+     "width": 8.81
+    }
+   },
+   "MNG": {
+    "net": {
+     "level": "lean",
+     "p": 0.776,
+     "v": -6.37,
+     "lo": -10.71,
+     "hi": 7.82,
+     "width": 18.54
+    },
+    "ua": {
+     "level": "near",
+     "p": 0.869,
+     "v": 0,
+     "lo": 0,
+     "hi": 0.01,
+     "width": 0.01
+    },
+    "rus": {
+     "level": "lean",
+     "p": 0.764,
+     "v": -6.37,
+     "lo": -10.71,
+     "hi": 7.82,
+     "width": 18.54
+    }
+   },
+   "KGZ": {
+    "net": {
+     "level": "sure",
+     "p": 0.972,
+     "v": -10.01,
+     "lo": -18.67,
+     "hi": -0.76,
+     "width": 17.91
+    },
+    "ua": {
+     "level": "sure",
+     "p": 0.994,
+     "v": 0,
+     "lo": 0,
+     "hi": 0.04,
+     "width": 0.04
+    },
+    "rus": {
+     "level": "sure",
+     "p": 0.972,
+     "v": -10.01,
+     "lo": -18.67,
+     "hi": -0.76,
+     "width": 17.91
+    }
+   },
+   "ARM": {
+    "net": {
+     "level": "lean",
+     "p": 0.672,
+     "v": -0.13,
+     "lo": -8.83,
+     "hi": 5.04,
+     "width": 13.87
+    },
+    "ua": {
+     "level": "sure",
+     "p": 0.953,
+     "v": 0.03,
+     "lo": 0,
+     "hi": 0.13,
+     "width": 0.13
+    },
+    "rus": {
+     "level": "lean",
+     "p": 0.685,
+     "v": -0.15,
+     "lo": -8.86,
+     "hi": 5.01,
+     "width": 13.87
+    }
+   },
+   "GEO": {
+    "net": {
+     "level": "lean",
+     "p": 0.824,
+     "v": -3.71,
+     "lo": -6.23,
+     "hi": 2.88,
+     "width": 9.1
+    },
+    "ua": {
+     "level": "sure",
+     "p": 0.967,
+     "v": 0.41,
+     "lo": 0.03,
+     "hi": 1.43,
+     "width": 1.4
+    },
+    "rus": {
+     "level": "lean",
+     "p": 0.849,
+     "v": -4.12,
+     "lo": -6.61,
+     "hi": 2.38,
+     "width": 8.99
+    }
+   }
+  },
+  "res": {
+   "A_wire_now_paid": {
+    "BFA": {
+     "before": {
+      "net": {
+       "level": "lean",
+       "p": 0.922,
+       "v": -3.9,
+       "lo": -7.09,
+       "hi": 0.8,
+       "width": 7.89
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.903,
+       "v": -3.9,
+       "lo": -7.09,
+       "hi": 0.8,
+       "width": 7.89
+      }
+     },
+     "after": {
+      "net": {
+       "level": "lean",
+       "p": 0.931,
+       "v": -4.09,
+       "lo": -6.75,
+       "hi": 0.58,
+       "width": 7.33
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.908,
+       "v": -4.09,
+       "lo": -6.75,
+       "hi": 0.58,
+       "width": 7.33
+      }
+     }
+    },
+    "MNG": {
+     "before": {
+      "net": {
+       "level": "lean",
+       "p": 0.776,
+       "v": -6.37,
+       "lo": -10.71,
+       "hi": 7.82,
+       "width": 18.54
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.764,
+       "v": -6.37,
+       "lo": -10.71,
+       "hi": 7.82,
+       "width": 18.54
+      }
+     },
+     "after": {
+      "net": {
+       "level": "lean",
+       "p": 0.79,
+       "v": -6.93,
+       "lo": -11.29,
+       "hi": 7.28,
+       "width": 18.57
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.787,
+       "v": -6.93,
+       "lo": -11.29,
+       "hi": 7.28,
+       "width": 18.57
+      }
+     }
+    },
+    "TJK": {
+     "before": {
+      "net": {
+       "level": "unc",
+       "p": 0.584,
+       "v": -0.39,
+       "lo": -4.29,
+       "hi": 4.52,
+       "width": 8.81
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.863,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.02,
+       "width": 0.02
+      },
+      "rus": {
+       "level": "unc",
+       "p": 0.571,
+       "v": -0.39,
+       "lo": -4.29,
+       "hi": 4.52,
+       "width": 8.81
+      }
+     },
+     "after": {
+      "net": {
+       "level": "unc",
+       "p": 0.584,
+       "v": -0.36,
+       "lo": -4.26,
+       "hi": 4.54,
+       "width": 8.8
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.863,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.02,
+       "width": 0.02
+      },
+      "rus": {
+       "level": "unc",
+       "p": 0.569,
+       "v": -0.36,
+       "lo": -4.26,
+       "hi": 4.54,
+       "width": 8.8
+      }
+     }
+    }
+   },
+   "A2_plus_sold_to_russia": {
+    "BFA": {
+     "before": {
+      "net": {
+       "level": "lean",
+       "p": 0.922,
+       "v": -3.9,
+       "lo": -7.09,
+       "hi": 0.8,
+       "width": 7.89
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.903,
+       "v": -3.9,
+       "lo": -7.09,
+       "hi": 0.8,
+       "width": 7.89
+      }
+     },
+     "after": {
+      "net": {
+       "level": "lean",
+       "p": 0.931,
+       "v": -4.09,
+       "lo": -6.75,
+       "hi": 0.58,
+       "width": 7.33
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.908,
+       "v": -4.09,
+       "lo": -6.75,
+       "hi": 0.58,
+       "width": 7.33
+      }
+     }
+    },
+    "MNG": {
+     "before": {
+      "net": {
+       "level": "lean",
+       "p": 0.776,
+       "v": -6.37,
+       "lo": -10.71,
+       "hi": 7.82,
+       "width": 18.54
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.764,
+       "v": -6.37,
+       "lo": -10.71,
+       "hi": 7.82,
+       "width": 18.54
+      }
+     },
+     "after": {
+      "net": {
+       "level": "lean",
+       "p": 0.789,
+       "v": -6.92,
+       "lo": -11.29,
+       "hi": 7.28,
+       "width": 18.57
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.787,
+       "v": -6.92,
+       "lo": -11.29,
+       "hi": 7.28,
+       "width": 18.57
+      }
+     }
+    },
+    "TJK": {
+     "before": {
+      "net": {
+       "level": "unc",
+       "p": 0.584,
+       "v": -0.39,
+       "lo": -4.29,
+       "hi": 4.52,
+       "width": 8.81
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.863,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.02,
+       "width": 0.02
+      },
+      "rus": {
+       "level": "unc",
+       "p": 0.571,
+       "v": -0.39,
+       "lo": -4.29,
+       "hi": 4.52,
+       "width": 8.81
+      }
+     },
+     "after": {
+      "net": {
+       "level": "unc",
+       "p": 0.584,
+       "v": -0.38,
+       "lo": -4.27,
+       "hi": 4.53,
+       "width": 8.8
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.863,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.02,
+       "width": 0.02
+      },
+      "rus": {
+       "level": "unc",
+       "p": 0.571,
+       "v": -0.38,
+       "lo": -4.27,
+       "hi": 4.53,
+       "width": 8.8
+      }
+     }
+    }
+   },
+   "B_bfa_margin_10pct": {
+    "BFA": {
+     "before": {
+      "net": {
+       "level": "lean",
+       "p": 0.922,
+       "v": -3.9,
+       "lo": -7.09,
+       "hi": 0.8,
+       "width": 7.89
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.903,
+       "v": -3.9,
+       "lo": -7.09,
+       "hi": 0.8,
+       "width": 7.89
+      }
+     },
+     "after": {
+      "net": {
+       "level": "lean",
+       "p": 0.936,
+       "v": -4.09,
+       "lo": -6.22,
+       "hi": 0.47,
+       "width": 6.69
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.924,
+       "v": -4.09,
+       "lo": -6.22,
+       "hi": 0.47,
+       "width": 6.69
+      }
+     }
+    }
+   },
+   "U_data_part_zero_upper_bound": {
+    "BFA": {
+     "before": {
+      "net": {
+       "level": "lean",
+       "p": 0.922,
+       "v": -3.9,
+       "lo": -7.09,
+       "hi": 0.8,
+       "width": 7.89
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.903,
+       "v": -3.9,
+       "lo": -7.09,
+       "hi": 0.8,
+       "width": 7.89
+      }
+     },
+     "after": {
+      "net": {
+       "level": "lean",
+       "p": 0.933,
+       "v": -3.9,
+       "lo": -5.89,
+       "hi": 0.6,
+       "width": 6.49
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.907,
+       "v": -3.9,
+       "lo": -5.89,
+       "hi": 0.6,
+       "width": 6.49
+      }
+     }
+    },
+    "SYR": {
+     "before": {
+      "net": {
+       "level": "unc",
+       "p": 0.631,
+       "v": -1.01,
+       "lo": -5.04,
+       "hi": 5.42,
+       "width": 10.46
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.949,
+       "v": 0.02,
+       "lo": 0,
+       "hi": 0.05,
+       "width": 0.05
+      },
+      "rus": {
+       "level": "unc",
+       "p": 0.63,
+       "v": -1.03,
+       "lo": -5.06,
+       "hi": 5.4,
+       "width": 10.46
+      }
+     },
+     "after": {
+      "net": {
+       "level": "unc",
+       "p": 0.631,
+       "v": -1.01,
+       "lo": -4.21,
+       "hi": 5.46,
+       "width": 9.68
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.949,
+       "v": 0.02,
+       "lo": 0,
+       "hi": 0.05,
+       "width": 0.05
+      },
+      "rus": {
+       "level": "unc",
+       "p": 0.629,
+       "v": -1.03,
+       "lo": -4.23,
+       "hi": 5.44,
+       "width": 9.68
+      }
+     }
+    },
+    "LBY": {
+     "before": {
+      "net": {
+       "level": "sure",
+       "p": 0.988,
+       "v": -6.61,
+       "lo": -10.52,
+       "hi": -1.73,
+       "width": 8.79
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.04,
+       "width": 0.04
+      },
+      "rus": {
+       "level": "sure",
+       "p": 0.979,
+       "v": -6.61,
+       "lo": -10.52,
+       "hi": -1.73,
+       "width": 8.79
+      }
+     },
+     "after": {
+      "net": {
+       "level": "sure",
+       "p": 0.993,
+       "v": -6.61,
+       "lo": -9.87,
+       "hi": -2.3,
+       "width": 7.58
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.04,
+       "width": 0.04
+      },
+      "rus": {
+       "level": "sure",
+       "p": 0.993,
+       "v": -6.61,
+       "lo": -9.87,
+       "hi": -2.3,
+       "width": 7.58
+      }
+     }
+    },
+    "BRN": {
+     "before": {
+      "net": {
+       "level": "lean",
+       "p": 0.849,
+       "v": 3.09,
+       "lo": -1.93,
+       "hi": 8.39,
+       "width": 10.32
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.866,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.851,
+       "v": 3.09,
+       "lo": -1.93,
+       "hi": 8.39,
+       "width": 10.32
+      }
+     },
+     "after": {
+      "net": {
+       "level": "lean",
+       "p": 0.857,
+       "v": 3.09,
+       "lo": -1.78,
+       "hi": 8.53,
+       "width": 10.31
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.866,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.855,
+       "v": 3.09,
+       "lo": -1.78,
+       "hi": 8.53,
+       "width": 10.31
+      }
+     }
+    },
+    "LBN": {
+     "before": {
+      "net": {
+       "level": "lean",
+       "p": 0.872,
+       "v": 2.68,
+       "lo": -1.54,
+       "hi": 13.72,
+       "width": 15.26
+      },
+      "ua": {
+       "level": "sure",
+       "p": 0.953,
+       "v": 0.1,
+       "lo": 0,
+       "hi": 0.36,
+       "width": 0.36
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.844,
+       "v": 2.58,
+       "lo": -1.64,
+       "hi": 13.61,
+       "width": 15.25
+      }
+     },
+     "after": {
+      "net": {
+       "level": "lean",
+       "p": 0.869,
+       "v": 2.68,
+       "lo": -1.61,
+       "hi": 13.76,
+       "width": 15.37
+      },
+      "ua": {
+       "level": "sure",
+       "p": 0.953,
+       "v": 0.1,
+       "lo": 0,
+       "hi": 0.36,
+       "width": 0.36
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.837,
+       "v": 2.58,
+       "lo": -1.71,
+       "hi": 13.66,
+       "width": 15.37
+      }
+     }
+    },
+    "YEM": {
+     "before": {
+      "net": {
+       "level": "sure",
+       "p": 0.993,
+       "v": -5.16,
+       "lo": -8.46,
+       "hi": -1.4,
+       "width": 7.06
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.33,
+       "width": 0.33
+      },
+      "rus": {
+       "level": "sure",
+       "p": 0.988,
+       "v": -5.16,
+       "lo": -8.46,
+       "hi": -1.41,
+       "width": 7.05
+      }
+     },
+     "after": {
+      "net": {
+       "level": "sure",
+       "p": 0.994,
+       "v": -5.16,
+       "lo": -7.49,
+       "hi": -1.82,
+       "width": 5.67
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.33,
+       "width": 0.33
+      },
+      "rus": {
+       "level": "sure",
+       "p": 0.994,
+       "v": -5.16,
+       "lo": -7.49,
+       "hi": -1.84,
+       "width": 5.65
+      }
+     }
+    },
+    "TKM": {
+     "before": {
+      "net": {
+       "level": "lean",
+       "p": 0.822,
+       "v": 1.53,
+       "lo": -0.9,
+       "hi": 7.64,
+       "width": 8.54
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.81,
+       "v": -0.01,
+       "lo": -0.05,
+       "hi": 0.01,
+       "width": 0.05
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.827,
+       "v": 1.54,
+       "lo": -0.89,
+       "hi": 7.65,
+       "width": 8.54
+      }
+     },
+     "after": {
+      "net": {
+       "level": "lean",
+       "p": 0.811,
+       "v": 1.53,
+       "lo": -1,
+       "hi": 7.7,
+       "width": 8.7
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.81,
+       "v": -0.01,
+       "lo": -0.05,
+       "hi": 0.01,
+       "width": 0.05
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.821,
+       "v": 1.54,
+       "lo": -0.99,
+       "hi": 7.71,
+       "width": 8.7
+      }
+     }
+    },
+    "TJK": {
+     "before": {
+      "net": {
+       "level": "unc",
+       "p": 0.584,
+       "v": -0.39,
+       "lo": -4.29,
+       "hi": 4.52,
+       "width": 8.81
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.863,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.02,
+       "width": 0.02
+      },
+      "rus": {
+       "level": "unc",
+       "p": 0.571,
+       "v": -0.39,
+       "lo": -4.29,
+       "hi": 4.52,
+       "width": 8.81
+      }
+     },
+     "after": {
+      "net": {
+       "level": "unc",
+       "p": 0.584,
+       "v": -0.39,
+       "lo": -4.35,
+       "hi": 4.51,
+       "width": 8.86
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.863,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.02,
+       "width": 0.02
+      },
+      "rus": {
+       "level": "unc",
+       "p": 0.571,
+       "v": -0.39,
+       "lo": -4.35,
+       "hi": 4.51,
+       "width": 8.86
+      }
+     }
+    },
+    "MNG": {
+     "before": {
+      "net": {
+       "level": "lean",
+       "p": 0.776,
+       "v": -6.37,
+       "lo": -10.71,
+       "hi": 7.82,
+       "width": 18.54
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.764,
+       "v": -6.37,
+       "lo": -10.71,
+       "hi": 7.82,
+       "width": 18.54
+      }
+     },
+     "after": {
+      "net": {
+       "level": "lean",
+       "p": 0.776,
+       "v": -6.37,
+       "lo": -10.71,
+       "hi": 7.83,
+       "width": 18.54
+      },
+      "ua": {
+       "level": "near",
+       "p": 0.869,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.01,
+       "width": 0.01
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.764,
+       "v": -6.37,
+       "lo": -10.71,
+       "hi": 7.83,
+       "width": 18.54
+      }
+     }
+    },
+    "KGZ": {
+     "before": {
+      "net": {
+       "level": "sure",
+       "p": 0.972,
+       "v": -10.01,
+       "lo": -18.67,
+       "hi": -0.76,
+       "width": 17.91
+      },
+      "ua": {
+       "level": "sure",
+       "p": 0.994,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.04,
+       "width": 0.04
+      },
+      "rus": {
+       "level": "sure",
+       "p": 0.972,
+       "v": -10.01,
+       "lo": -18.67,
+       "hi": -0.76,
+       "width": 17.91
+      }
+     },
+     "after": {
+      "net": {
+       "level": "sure",
+       "p": 0.969,
+       "v": -10.01,
+       "lo": -18.16,
+       "hi": -0.67,
+       "width": 17.49
+      },
+      "ua": {
+       "level": "sure",
+       "p": 0.994,
+       "v": 0,
+       "lo": 0,
+       "hi": 0.04,
+       "width": 0.04
+      },
+      "rus": {
+       "level": "sure",
+       "p": 0.969,
+       "v": -10.01,
+       "lo": -18.17,
+       "hi": -0.67,
+       "width": 17.49
+      }
+     }
+    },
+    "ARM": {
+     "before": {
+      "net": {
+       "level": "lean",
+       "p": 0.672,
+       "v": -0.13,
+       "lo": -8.83,
+       "hi": 5.04,
+       "width": 13.87
+      },
+      "ua": {
+       "level": "sure",
+       "p": 0.953,
+       "v": 0.03,
+       "lo": 0,
+       "hi": 0.13,
+       "width": 0.13
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.685,
+       "v": -0.15,
+       "lo": -8.86,
+       "hi": 5.01,
+       "width": 13.87
+      }
+     },
+     "after": {
+      "net": {
+       "level": "lean",
+       "p": 0.672,
+       "v": -0.13,
+       "lo": -8.77,
+       "hi": 5.03,
+       "width": 13.8
+      },
+      "ua": {
+       "level": "sure",
+       "p": 0.953,
+       "v": 0.03,
+       "lo": 0,
+       "hi": 0.13,
+       "width": 0.13
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.692,
+       "v": -0.15,
+       "lo": -8.79,
+       "hi": 5,
+       "width": 13.8
+      }
+     }
+    },
+    "GEO": {
+     "before": {
+      "net": {
+       "level": "lean",
+       "p": 0.824,
+       "v": -3.71,
+       "lo": -6.23,
+       "hi": 2.88,
+       "width": 9.1
+      },
+      "ua": {
+       "level": "sure",
+       "p": 0.967,
+       "v": 0.41,
+       "lo": 0.03,
+       "hi": 1.43,
+       "width": 1.4
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.849,
+       "v": -4.12,
+       "lo": -6.61,
+       "hi": 2.38,
+       "width": 8.99
+      }
+     },
+     "after": {
+      "net": {
+       "level": "lean",
+       "p": 0.824,
+       "v": -3.71,
+       "lo": -6.19,
+       "hi": 2.84,
+       "width": 9.03
+      },
+      "ua": {
+       "level": "sure",
+       "p": 0.967,
+       "v": 0.41,
+       "lo": 0.03,
+       "hi": 1.43,
+       "width": 1.4
+      },
+      "rus": {
+       "level": "lean",
+       "p": 0.85,
+       "v": -4.12,
+       "lo": -6.57,
+       "hi": 2.35,
+       "width": 8.93
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,8 @@
+INSD Burkina Faso, Statistiques du commerce exterieur (quarterly notes), Tableau 1.6 importations par pays (valeur CAF, milliards FCFA). Retrieved 2026-10-25.
+https://www.insd.bf/sites/default/files/2026-07/SCE_2025_T4.pdf   (Q4 2025; 2025 quarters and cumulative 2024/2025)
+https://www.insd.bf/sites/default/files/2025-12/SCE_3T2025_KB_RBF_BB_DEF.pdf  (Q3 2025)
+https://www.insd.bf/sites/default/files/2026-09/SCE_1T2026.pdf    (Q1 2026)
+https://www.insd.bf/sites/default/files/2026-10/SCE_2T2026.pdf    (Q2 2026; H1 2025 and H1 2026 cumulative)
+https://www.insd.bf/sites/default/files/2025-09/Annuaire_Commerce_exterieur2024.pdf (annual yearbook 2024)
+Listing page: https://www.insd.bf/fr/statistiques/statistiques-economiques/-commerce-ext-rieur
+*.txt = pdftotext -layout of the PDFs.

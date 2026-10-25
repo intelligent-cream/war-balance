@@ -1,0 +1,1786 @@
+                   INSTITUT NATIONAL DE LA STATISTIQUE ET
+                   DE LA DEMOGRAPHIE
+
+
+      NOTE TRIMESTRIELLE SUR LES
+ STATISTIQUES DU COMMERCE EXTÉRIEUR
+Description chiffrée des échanges commerciaux du Burkina Faso au
+                      deuxième trimestre 2026
+
+
+
+
+                                                     Juillet 2026
+NOTE TRIMESTRIELLE SUR
+ LES STATISTIQUES DU
+ COMMERCE EXTERIEUR
+Description chiffrée des échanges commerciaux du
+    Burkina Faso au deuxième trimestre 2026
+
+
+
+
+                                            Juillet 2026
+
+
+
+
+                                                   1
+                                           AVANT-PROPOS
+    L’Institut national de la statistique et de la démographie (INSD) a le plaisir de mettre, à la disposition des
+    utilisateurs, la note du deuxième trimestre 2026 sur les Statistiques du commerce extérieur (SCE) du
+    Burkina Faso.
+    Cette note est élaborée par le Service des statistiques d’entreprises, du commerce, de l’économie rurale
+    et de l’environnement (SSECERE) de la Direction des Statistiques et des Synthèses économiques (DSSE).
+    Elle vient en complément des publications annuelles que sont la situation annuelle du commerce
+    extérieur et l'annuaire du commerce extérieur du Burkina Faso.
+    Elle propose un ensemble d'indicateurs suivis de commentaires, donnant ainsi à l'utilisateur une vue
+    synthétique de l'évolution conjoncturelle du commerce extérieur du pays. En application des
+    recommandations internationales, toutes les statistiques portent sur le commerce général.
+    Nous adressons nos vifs remerciements à tous ceux qui ont contribué à l’élaboration de cette note,
+    notamment les services de la Direction Générale des Douanes du Burkina Faso pour la mise à disposition
+    à temps du fichier mensuel des déclarations douanières et tous les utilisateurs des statistiques du
+    commerce extérieur dont les contributions ont permis d’améliorer ce document.
+    En espérant que la présente note réponde à vos attentes, l’Institut reste à votre entière disposition pour
+    toute information complémentaire.
+
+
+
+
+                                                                                   Le Directeur Général
+
+
+
+
+                                                                                     Toubou RIPAMA
+                                                                                 Chevalier de l’Ordre de l’Etalon
+
+
+
+
+2
+                  MEMBRES DE L’EQUIPE DE REDACTION
+SUPERVISEURS
+Directeur Général                                              Toubou RIPAMA
+Directeur Général Adjoint                                      Bernard BERE
+Directeur des Statistiques et des Synthèses économiques        Barbi KABORE
+Chef de Service des statistiques d’entreprises, du commerce,   Karim SARA
+de l’économie rurale et de l’environnement
+                                                               Marcel OUEDRAOGO
+EQUIPE DE REDACTION                                            Dansané OUEDRAOGO
+                                                               Dramane CESSOUMA
+                                                               Didier KABRE
+                                                               Ali KABORE
+LECTEURS
+                                                               Ibrahima TRAORE
+                                                               Zembendé SIGUIBEOGO
+
+
+
+
+                                                                                 3
+    SIGLES ET ABRÉVIATIONS
+    AES       Alliance des Etats du Sahel
+    BC        Balance commerciale
+    CAF       Coût, Assurance, Fret
+    CEDEAO    Communauté Économique des États de l’Afrique de l’Ouest
+    CTCI      Classification type pour le commerce international
+    DSSE      Direction des statistiques et des synthèses économiques
+    FCFA       Franc de la Communauté financière africaine
+    FMI       Fonds monétaire international
+    FOB       Free On Board
+    ICE       Indice du commerce extérieur
+    IGE       Indice de gain à l'exportation
+    ILPE      Indice de Laspeyres des prix à l’exportation
+    ILPI      Indice de Laspeyres des prix à l’importation
+    ILQ       Indice de Laspeyres des quantités
+    ILQE      Indice de Laspeyres des quantités à l’exportation
+    ILQI      Indice de Laspeyres des quantités à l’importation
+    INSD      Institut national de la statistique et de la démographie
+    INSEE     Institut national de la statistique et des études économiques
+    IPC       Indice des prix à la consommation
+    IPP       Indice de Paasche des prix
+    IPPE      Indice de Paasche des prix à l’exportation
+    IPPI      Indice de Paasche des prix à l’importation
+    IPQE      Indice de Paasche des quantités à l’exportation
+    IPQI      Indice de Paasche des quantités à l’importation
+    ITE       Indice des termes de l'échange
+    IVT       Indice des valeurs totales
+    NDA       Non désignés ailleurs
+    SH        Système harmonisé de désignation et de codification des marchandises
+              Service des statistiques d’entreprises, du commerce, de l’économie rurale
+    SSECERE
+              et de l’environnement
+    TC        Taux de couverture
+    Trim      Trimestre
+    UEMOA     Union Economique et Monétaire Ouest-Africaine
+    2T25      Deuxième trimestre 2025
+    3T25      Troisième trimestre 2025
+    4T25      Quatrième trimestre 2025
+    1T26      Premier trimestre 2026
+    2T26      Deuxième trimestre 2026
+
+
+
+
+4
+SOMMAIRE
+AVANT-PROPOS ...................................................................................................................... 2
+SIGLES ET ABRÉVIATIONS ..................................................................................................... 4
+SOMMAIRE ............................................................................................................................... 5
+LISTE DES TABLEAUX ............................................................................................................ 6
+LISTE DES GRAPHIQUES ........................................................................................................ 7
+RÉSUMÉ .................................................................................................................................... 8
+1.          ÉVOLUTION DU COMMERCE EXTÉRIEUR .................................................................. 9
+     1.1.     Statistiques sur les exportations ................................................................................................... 9
+     1.2.     Pays clients du Burkina Faso ..................................................................................................... 10
+     1.3.     Statistiques sur les importations ................................................................................................. 12
+     1.4.     Pays fournisseurs du Burkina Faso ............................................................................................ 14
+     1.5.     Balance commerciale et taux de couverture .............................................................................. 16
+2.          INDICES DU COMMERCE EXTERIEUR ....................................................................... 17
+     2.1.     Indices à l'exportation ................................................................................................................. 17
+       2.1.1.        Indice de Paasche des prix à l'exportation ......................................................................... 17
+       2.1.2.        Indice de Laspeyres des quantités à l'exportation ............................................................. 18
+       2.1.3.        Indice des valeurs totales à l’exportation ........................................................................... 19
+     2.2.     Indices à l'importation ................................................................................................................. 20
+       2.2.1.        Indice de Paasche des prix à l'importation ......................................................................... 20
+       2.2.2.        Indice de Laspeyres des quantités à l'importation ............................................................. 21
+       2.2.3.        Indice des valeurs totales à l'importation............................................................................ 22
+3.          AUTRES INDICES DU COMMERCE EXTERIEUR ....................................................... 24
+     3.1.     Indice des termes de l'échange (ITE) ......................................................................................... 24
+     3.2.     Indice de gain à l'exportation (IGE) ............................................................................................ 25
+ANNEXES ................................................................................................................................ 26
+AUTRES TABLEAUX ET GRAPHIQUES ................................................................................ 29
+
+
+
+
+                                                                                                                                                  5
+    LISTE DES TABLEAUX
+
+    Tableau 1.1 : Évolution des exportations en valeur et en volume ............................................................... 9
+    Tableau 1.2 : Évolution des principaux produits exportés en valeur FOB (milliards de FCFA) ................ 10
+    Tableau 1.3 : Statistiques trimestrielles des exportations par pays en valeur FOB (milliards de FCFA) .. 11
+    Tableau 1.4 : Évolution des importations en milliards de FCFA et en milliers de tonnes ......................... 13
+    Tableau 1.5 : Évolution des principaux produits importés en valeur CAF (milliards de FCFA) ................ 13
+    Tableau 1.6 : Statistiques trimestrielles des importations par pays : valeur CAF (milliards de FCFA) ..... 14
+    Tableau 1.7 : Évolution de la balance commerciale (en milliards de FCFA) et du taux de couverture..... 16
+    Tableau 2.1 : Évolution des indices synthétiques à l'exportation, base 100 en 2022 ............................... 17
+    Tableau 2.2 : Évolution des indices des valeurs unitaires des principaux produits à l’exportation ........... 18
+    Tableau 2.3 : Évolution des indices des quantités des principaux produits à l'exportation....................... 19
+    Tableau 2.4 : Évolution des indices synthétiques à l'importation base 100 en 2022 ................................ 20
+    Tableau 2.5 : Évolution des indices des valeurs unitaires des principaux produits à l'importation ........... 21
+    Tableau 2.6 : Évolution des indices des quantités des principaux produits à l'importation....................... 22
+    Tableau 3.1 : Evolution d'autres indices du commerce extérieur .............................................................. 24
+
+
+
+
+6
+LISTE DES GRAPHIQUES
+
+Graphique 1.1 : Exportations (en %) du deuxième trimestre 2026 par destination .................................. 11
+Graphique 1.2 : Évolution trimestrielle de la part (en pourcentage) des exportations vers la CEDEAO,
+l’UEMOA et l’AES dans les exportations totales ........................................................................................ 12
+Graphique 1.3 : Importations (en %) du deuxième trimestre 2026 par pays fournisseur ......................... 14
+Graphique 1.4 : Évolution trimestrielle de la part (en pourcentage) des importations provenant de la
+CEDEAO, de l'UEMOA et de l’AES dans les importations totales ............................................................. 15
+Graphique 1.5 : Évolution trimestrielle de la balance commerciale et du taux de couverture .................. 16
+Graphique 2.1 : Évolution trimestrielle de l'indice de Paasche des prix (IPP) à l'exportation .................. 17
+Graphique 2.2 : Évolution trimestrielle de l'indice de Laspeyres des quantités (ILQ) à l'exportation ....... 18
+Graphique 2.3 : Évolution trimestrielle de l'indice des valeurs totales (IVT) à l'exportation ..................... 19
+Graphique 2.4 : Évolution trimestrielle de l’indice de Paasche des prix à l'importation ............................ 20
+Graphique 2.5 : Évolution trimestrielle de l’indice de Laspeyres des quantités (ILQ) à l'importation ....... 22
+Graphique 2.6 : Évolution trimestrielle des indices des valeurs totales à l'importation ............................ 23
+Graphique 3.1 : Évolution trimestrielle de l'indice des termes de l'échange ............................................. 24
+Graphique 3.2 : Évolution trimestrielle de l'indice de gain à l'exportation ................................................. 25
+
+
+
+
+                                                                                                                                   7
+    RÉSUMÉ
+    La balance commerciale du Burkina Faso a enregistré un excédent commercial de 1 205,8
+    milliards de FCFA au deuxième trimestre 2026, en baisse de 128,5 milliards de FCFA par rapport
+    au trimestre précédent, mais en hausse de 709,0 milliards de FCFA, soit 142,7 % en glissement
+    annuel. Cette évolution résulte d'une légère diminution des exportations (-1,4 %) combinée à une
+    progression des importations (+9,1 %) par rapport au premier trimestre 2026. En glissement
+    annuel, l'amélioration du solde commercial s'explique par une croissance des exportations (+50,1
+    %) nettement supérieure à celle des importations (+6,6 %).
+    Les exportations se sont établies à 2 334,4 milliards de FCFA au deuxième trimestre 2026, en
+    baisse de 1,4 % par rapport au trimestre précédent, mais en hausse de 50,1 % en glissement
+    annuel. En volume, elles ont atteint 216,7 milliers de tonnes, soit une diminution de 21,4 % par
+    rapport au premier trimestre 2026 et de 40,8 % par rapport au deuxième trimestre 2025.
+    L'or non monétaire demeure le principal produit exporté avec 93,5 % des recettes totales
+    d'exportation. Il est suivi des fruits (à l'exception des fruits oléagineux), frais ou secs (2,0 %), du
+    coton (1,7 %), des autres huiles végétales fixes (0,8 %) et des graines et fruits oléagineux (0,4
+    %). Ces cinq produits concentrent 98,4 % des recettes totales d'exportation du Burkina Faso.
+    Les Émirats Arabes Unis et la Suisse demeurent les principaux partenaires à l'exportation. Les
+    exportations vers les Émirats Arabes Unis se sont élevées à 1 158,0 milliards de FCFA, soit 49,6
+    % des recettes totales d'exportation, tandis que celles destinées à la Suisse ont atteint 863,4
+    milliards de FCFA, représentant 37,0 % des exportations. Ensemble, ces deux pays ont concentré
+    86,6 % des recettes d'exportation du Burkina Faso.
+    Les exportations vers la CEDEAO se sont établies à 37,8 milliards de FCFA, soit 1,6 % des
+    exportations totales. Celles à destination de l'UEMOA ont atteint 30,6 milliards de FCFA,
+    représentant 1,3 % du total, tandis que les exportations vers les pays membres de l'AES se sont
+    élevées à 12,5 milliards de FCFA, soit 0,5 % des exportations totales.
+    Concernant les importations, leur valeur s'est établie à 1 128,7 milliards de FCFA au deuxième
+    trimestre 2026, en hausse de 9,1 % par rapport au trimestre précédent et de 6,6 % en glissement
+    annuel. Les quantités importées se sont établies à 2,7 millions de tonnes, en baisse de 3,9 % sur
+    un trimestre et de 5,9 % par rapport à la même période de 2025.
+    Les produits raffinés du pétrole demeurent le principal produit importé avec 28,9 % de la valeur
+    totale des importations. Ils sont suivis des produits médicinaux et pharmaceutiques (4,7 %), des
+    motocycles, scooters et autres vélocipèdes (3,1 %), des voitures automobiles pour le transport
+    des personnes (2,8 %) ainsi que des chaux, ciments et matériaux de construction fabriqués (2,7
+    %).
+    La République populaire de Chine demeure le principal fournisseur du Burkina Faso avec 269,9
+    milliards de FCFA d'importations, soit 23,9 % des importations totales. Elle est suivie du Ghana
+    (14,4 %), de la Russie (13,4 %), de l'Inde (5,5 %) et de la Côte d'Ivoire (5,4 %). Les importations
+    en provenance de la CEDEAO représentent 23,6 % des importations totales, celles de l'UEMOA
+    8,8 % et celles des pays membres de l'AES 0,1 %.
+    Le taux de couverture des importations par les exportations s'est établi à 206,8 % au deuxième
+    trimestre 2026 contre 229,0 % au trimestre précédent, soit une baisse de 22,2 points de
+    pourcentage. Malgré ce recul, ce niveau demeure largement supérieur à 100 %, traduisant la
+    forte capacité des exportations à couvrir les dépenses d'importation.
+    Enfin, l'indice des termes de l'échange s'est établi à 238,2, en hausse de 0,8 % en glissement
+    trimestriel et de 50,2 % en glissement annuel. L'indice de gain à l'exportation s'est établi à 133,3,
+    en progression de 5,3 % par rapport au trimestre précédent et de 4,4 % en glissement annuel,
+    traduisant une amélioration des gains tirés des échanges extérieurs du Burkina Faso.
+
+
+
+
+8
+1.       ÉVOLUTION DU COMMERCE EXTÉRIEUR
+Les statistiques des échanges extérieurs du Burkina Faso indiquent une progression en glissement annuel
+de la valeur des exportations, portée par l'or, tandis que les volumes exportés reculent nettement au
+deuxième trimestre 2026.
+La balance commerciale a enregistré un excédent commercial de 1 205,8 milliards de FCFA au deuxième
+trimestre 2026, soit une baisse de 128,5 milliards de FCFA par rapport au trimestre précédent. Cette
+évolution du solde commercial est due à une baisse des exportations (-1,4 %) combinée à une hausse des
+importations (+9,1 %).
+En glissement annuel, le solde commercial connaît une hausse de 709,0 milliards de FCFA. Cette
+amélioration s’explique par une progression des exportations (+50,1 %) nettement plus forte que celle des
+importations (+6,6 %) (Cf. Tableau 1.7).
+
+
+1.1. Statistiques sur les exportations
+Les exportations du deuxième trimestre 2026 ont enregistré une légère baisse de 1,4 % en valeur et un
+net recul de 21,4 % en volume par rapport au trimestre précédent. Au cours du trimestre sous revue, 216,7
+milliers de tonnes de marchandises, d'une valeur de 2 334,4 milliards de FCFA, ont été exportées.
+En glissement annuel, les recettes d'exportation ont augmenté de 50,1 %, tandis que le volume des
+marchandises exportées a diminué de 40,8 %.
+
+                       Tableau 1.1 : Évolution des exportations en valeur et en volume
+                                                                                            Glissement
+                                                            Trimestres                                              Cumul
+                                                                                                (%)
+
+                                         2T25     3T25        4T25       1T26    2T26      Trim     Annuel   2T25       2T26
+
+Exportations valeur FOB (en milliards
+FCFA)                                   1 555,5   1 449,7    2 054,9 2 368,4     2 334,4   - 1,4     50,1    2 925,8    4 702,9
+Exportations (en milliers de tonnes)
+                                         366,0    178,8       140,8      275,7   216,7     - 21,4   - 40,8   708,4      492,4
+Source : INSD/DSSE/SSECERE
+
+L'« or non monétaire » demeure le principal produit exporté et représente 93,5 % des recettes totales
+d'exportation du pays au deuxième trimestre 2026. Il est suivi des « fruits (à l'exception des fruits
+oléagineux), frais ou secs » (2,0 %), du « coton » (1,7 %), des « autres huiles végétales fixes » (0,8 %) et
+des « graines et fruits oléagineux » (0,4 %). Ces cinq (5) produits concentrent 98,4 % des recettes totales
+d'exportation.
+
+Par rapport au trimestre précédent, les recettes d'exportation de l'or non monétaire ont augmenté de 36,1
+milliards de FCFA, soit une hausse de 1,7 %. Les recettes d'exportation des « fruits (à l'exception des fruits
+oléagineux), frais ou secs » sont passées de 27,1 milliards de FCFA au premier trimestre 2026 à 46,4
+milliards de FCFA au deuxième trimestre 2026, soit une progression de 19,3 milliards de FCFA (+71,3 %).
+En revanche, les recettes d'exportation du « coton » ont diminué de 47,4 milliards de FCFA, passant de
+88,1 milliards de FCFA à 40,7 milliards de FCFA, soit une baisse de 53,8 %. Les recettes des « autres
+huiles végétales fixes » ont légèrement progressé, passant de 17,2 milliards de FCFA à 17,7 milliards de
+FCFA, soit une hausse de 3,1 %. Quant aux « graines et fruits oléagineux », leurs recettes sont passées
+de 17,4 milliards de FCFA à 9,7 milliards de FCFA, soit une baisse de 44,3 %.
+
+En glissement annuel, les recettes d'exportation de l'or non monétaire ont progressé de 61,4 %, passant
+de 1 352,4 milliards de FCFA au deuxième trimestre 2025 à 2 182,6 milliards de FCFA au deuxième
+trimestre 2026. Les recettes du « coton » ont augmenté de 45,8 %, passant de 27,9 milliards de FCFA à
+40,7 milliards de FCFA. Celles des « autres huiles végétales fixes » se sont accrues de 69,2 %, passant
+de 10,5 milliards de FCFA à 17,7 milliards de FCFA. Les recettes des « graines et fruits oléagineux » ont
+enregistré une hausse de 6,1 %, passant de 9,1 milliards de FCFA à 9,7 milliards de FCFA. En revanche,
+les recettes d'exportation des « fruits (à l'exception des fruits oléagineux), frais ou secs » ont diminué de
+56,1 % par rapport au deuxième trimestre 2025.
+
+
+
+
+                                                                                                                         9
+       Tableau 1.2 : permet d’apprécier les niveaux des dix (10) principaux produits exportés et d’observer leurs
+       fluctuations.
+                            Tableau 1.2 : Évolution des principaux produits exportés en valeur FOB
+                     (milliards de FCFA)
+Code                                                                       Trimestres                      Glissement (%)            Cumul
+       Produits
+CTCI                                                    2T25      3T25       4T25       1T26    2T26      Trim     Annuel     2T25       2T26
+971    Or, non monétaire                               1 352,4   1 354,1    1 989,9 2 146,5    2 182,6     1,7      61,4     2 538,2    4 329,0
+       Fruits (à l'exception des fruits oléagineux),
+057                                                    105,8      34,9        6,7       27,1    46,4      71,3      - 56,1   131,4       73,6
+       frais ou secs
+263    Coton                                            27,9      11,4        2,7       88,1    40,7     - 53,8     45,8      81,8       128,8
+424    Autres huiles végétales fixes                    10,5       7,7        12,0      17,2    17,7       3,1      69,2      20,2       34,9
+       Graines et fruits oléagineux, même
+222                                                      9,1       1,6        5,5       17,4     9,7     - 44,3      6,1      53,9       27,1
+       concassés, servant à extraire l'huile
+334    Produits raffinés du pétrole                      5,4       7,2        7,2       9,4      4,7     - 50,4     - 14,0     8,8       14,1
+       Nourritures destinées aux animaux (à
+081                                                      1,9       0,2        0,6       1,9      3,8      98,5      103,2      4,3           5,8
+       l'exception des céréales non moulues)
+       Appareils et matériels de génie civil et de
+723                                                      6,3       2,8        0,5       0,2      3,7     1 836,2    - 41,1    12,6           3,9
+       construction, et leurs pièces
+       Voitures automobiles à tous moteurs, pour le
+782                                                      7,1       3,8        1,0       1,0      2,8     179,3      - 60,7    10,2           3,8
+       transport des marchandises
+       Argent, platine et autres métaux de la mine
+681                                                      0,8       0,9        1,1       2,4      2,7      15,2      236,0      1,7           5,1
+       du platine
+       Source : INSD/DSSE/SSECERE
+
+
+       1.2. Pays clients du Burkina Faso
+       Au cours du deuxième trimestre 2026, les deux (2) principaux pays destinataires des exportations
+       burkinabè demeurent les Émirats Arabes Unis et la Suisse.
+       Les Émirats Arabes Unis restent la principale destination des exportations burkinabè avec 1 158,0 milliards
+       de FCFA d'achats. En effet, 49,6 % des recettes d'exportation du pays proviennent de ce partenaire,
+       principalement grâce à l’exportation de volumes importants d’or non monétaire (15,1 tonnes)
+       d’une valeur de 1 150,0 milliards FCFA.
+       La Suisse occupe le second rang avec 863,4 milliards de FCFA, soit 37,0 % des recettes totales
+       d'exportation. Les exportations à destination de la Suisse sont composées principalement de l’or
+       non monétaire (10,9 tonnes) d’une valeur de 839,9 milliards FCFA, représentant 97,3 % de leurs
+       achats. Ainsi, les exportations à destination de ces deux partenaires ont généré 86,6 % de la valeur totale
+       des exportations du Burkina Faso au deuxième trimestre 2026.
+       Par rapport au trimestre précédent, les recettes d'exportation à destination des Émirats Arabes Unis ont
+       progressé de 3,4 %, passant de 1 120,2 milliards de FCFA à 1 158,0 milliards de FCFA. En revanche, les
+       exportations vers la Suisse ont reculé de 7,2 %, passant de 930,9 milliards de FCFA à 863,4 milliards de
+       FCFA.
+       En glissement annuel, les recettes d'exportation à destination des Émirats Arabes Unis se sont accrues de
+       40,6 %, passant de 823,8 milliards de FCFA au deuxième trimestre 2025 à 1 158,0 milliards de FCFA au
+       deuxième trimestre 2026. Celles réalisées avec la Suisse ont augmenté de 57,8 %, passant de 547,1
+       milliards de FCFA à 863,4 milliards de FCFA sur la même période.
+
+
+
+
+10
+                     Tableau 1.3 : Statistiques trimestrielles des exportations par pays en valeur
+                FOB (milliards de FCFA)
+                                                             Trimestres                          Glissement (%)               Cumul
+
+                                            2T25     3T25       4T25          1T26      2T26     Trim        Annuel    2T25       2T26
+
+ÉMIRATS ARABES UNIS                         823,8    799,9    1 122,1     1 120,2      1 158,0    3,4         40,6    1 435,4    2 278,2
+SUISSE                                      547,1    537,7      806,5     930,9         863,4    - 7,2        57,8    1 126,4    1 794,3
+THAILANDE                                    0,0       -          -           68,6      111,0    61,8          -        0,0       179,6
+INDE                                        16,0      25,0      69,0          66,9      73,2      9,3        356,1     20,5       140,1
+HONG-KONG                                     -        -         0,0          14,0      23,0     64,7          -        0,0       36,9
+GHANA                                       44,1      14,2       7,8          12,0      18,7     55,6        - 57,6    73,9       30,7
+SINGAPOUR                                   13,1      2,9        2,1          35,4      14,7     - 58,3       12,7     35,2       50,1
+MALI                                        13,1      18,7       8,5          11,4      10,3     - 9,9       - 21,3    25,8       21,7
+ÎLE MAURICE                                  3,5      0,1         -           5,6        9,5     67,6        171,4      5,8       15,1
+FRANCE                                       6,5      6,8        4,1          41,0       8,1     - 80,1       24,5     13,9       49,1
+ Source : INSD/DSSE/SSECERE
+
+
+               Graphique 1.1 : Exportations (en %) du deuxième trimestre 2026 par destination
+
+                                     1,0%
+                         3,1%
+                                                     4,5%
+
+                    4,8%
+
+
+
+
+                                                                               49,6%
+
+
+
+
+       37,0%
+
+               Emirats Arabes Unis      SUISSE      THAILANDE          INDE          HONG-KONG      Autres
+
+ Source : INSD/DSSE/SSECERE
+
+
+
+
+ Au cours de la période sous revue, les exportations du Burkina Faso vers la CEDEAO se sont
+ établies à 37,8 milliards de FCFA, soit 1,6 % des exportations totales. Elles enregistrent une
+
+
+
+                                                                                                                                11
+     hausse de 27,5 % par rapport au trimestre précédent. Les principaux produits exportés vers cet
+     espace sont les « fruits (à l'exception des fruits oléagineux), frais ou secs » (39,6 %), les « autres
+     huiles végétales fixes » (10,6 %), les « appareils et matériels de génie civil et de construction »
+     (9,0 %), les « voitures automobiles pour le transport des marchandises » (7,0 %), les « animaux
+     vivants destinés à l'alimentation humaine » (4,2 %) et les « nourritures destinées aux animaux »
+     (3,6 %).
+     Les exportations vers la CEDEAO sont principalement orientées vers le Ghana, qui concentre
+     49,5 % des recettes d’exportation à destination de cet espace. Il est suivi du Togo (19,4 %), du
+     Sénégal (15,7 %), de la Côte d’Ivoire (12,5 %) et de la Guinée (2,4 %).
+     Les exportations à destination de l’UEMOA ont représenté 1,3 % des exportations totales du
+     pays. Elles sont passées de 29,0 milliards de FCFA au premier trimestre 2026 à 30,6 milliards de
+     FCFA au deuxième trimestre 2026, soit une hausse de 5,6 %. Les principaux produits exportés
+     vers cet espace sont les « fruits (à l'exception des fruits oléagineux), frais ou secs » (15,0 %), les
+     « produits raffinés du pétrole » (14,9 %), les « nourritures destinées aux animaux » (9,8 %), les «
+     voitures automobiles pour le transport des marchandises » (6,7 %), les « appareils et matériels
+     de génie civil et de construction » (6,1 %), les « équipements mécaniques de manutention » (5,4
+     %) et les « boissons non alcooliques » (5,1 %).
+     Au cours du trimestre sous revue, le Mali demeure la première destination des marchandises
+     burkinabè au sein de l’UEMOA, avec 33,6 % des recettes d’exportation vers cet espace. Il est
+     suivi du Togo (24,0 %), du Sénégal (19,4 %), de la Côte d’Ivoire (15,5 %), du Niger (7,2 %) et du
+     Bénin (0,3 %).
+     Au deuxième trimestre 2026, les exportations vers les pays membres de l’Alliance des États du
+     Sahel (AES) se sont élevées à 12,5 milliards de FCFA, soit 0,5 % des exportations totales. Elles
+     ont enregistré une légère hausse de 0,4 % par rapport au trimestre précédent. Les exportations
+     à destination de cet espace sont composées essentiellement des « produits raffinés du pétrole »
+     (36,6 %), des « nourritures destinées aux animaux » (13,8 %), des « produits médicinaux et
+     pharmaceutiques » (6,6 %), des « boissons non alcooliques » (5,7 %), des « autres produits
+     chimiques inorganiques » (5,3 %), des « tabacs fabriqués » (3,6 %), des « huiles végétales fixes,
+     douces, brutes, épurées ou raffinées » (2,7 %) et des « équipements mécaniques de manutention
+     » (2,5 %).
+
+
+                Graphique 1.2 : Évolution trimestrielle de la part (en pourcentage) des exportations
+          vers la CEDEAO, l’UEMOA et l’AES dans les exportations totales
+      7             6,4
+      6
+
+      5      4,5
+
+      4
+
+      3
+                                  2,3
+                                         1,9
+      2                                                                                                        1,6
+                                                 1,4            1,2 1,0              1,2 1,3            1,3
+                            1,0
+      1                                                                     0,6                   0,5                  0,5
+
+      0
+                   2 T 25               3 T 25                     4 T 25                1 T 26               2 T 26
+
+                                                       %UEMOA      %CEDEAO        %AES
+
+     Source : INSD/DSSE/SSECERE
+
+
+     1.3. Statistiques sur les importations
+
+
+12
+Globalement, la valeur des importations a enregistré une hausse de 9,1 % au deuxième trimestre 2026 par
+rapport au trimestre précédent. Au cours de la période sous revue, 2,7 millions de tonnes de marchandises,
+d'une valeur de 1 128,7 milliards de FCFA, ont été importées. En glissement annuel, la valeur des
+importations affiche une progression de 6,6 %.
+Quant aux quantités importées, elles ont diminué de 3,9 % par rapport au premier trimestre 2026. En
+glissement annuel, elles enregistrent également une baisse de 5,9 %, traduisant une diminution des
+volumes importés par rapport au deuxième trimestre 2025.
+
+                        Tableau 1.4 : Évolution des importations en milliards de FCFA et en milliers de
+               tonnes
+                                                           Trimestres                             Glissement (%)                     Cumul
+
+                                        2T25        3T25     4T25        1T26       2T26       Trim         Annuel               2T25        2T26
+
+Importations en valeur CAF (en
+                                      1 058,7      1 126,3 1 135,9      1 034,2    1 128,7        9,1           6,6             2 027,9     2 162,9
+milliards de FCFA)
+Importations en volume (en
+                                      2 819,2      2 766,2 3 003,1      2 758,1    2 651,6     - 3,9            - 5,9           5 239,9     5 409,7
+milliers de tonnes)
+Source : INSD/DSSE/SSECERE
+
+Les « produits raffinés du pétrole » constituent le principal produit d'importation au deuxième trimestre 2026
+avec 28,9 % de la valeur totale des importations. Ils sont suivis des « produits médicinaux et
+pharmaceutiques » (4,7 %), des « motocycles, scooters et autres vélocipèdes avec ou sans moteur » (3,1
+%), des « voitures automobiles à tous moteurs, pour le transport des personnes » (2,8 %) et des « chaux,
+ciments et matériaux de construction fabriqués » (2,7 %). La hausse trimestrielle de la valeur des
+importations s'explique principalement par l'augmentation des importations de plusieurs produits,
+notamment les « produits médicinaux et pharmaceutiques » (+45,9 %), les « voitures automobiles à tous
+moteurs, pour le transport des marchandises » (+41,0 %), les « motocycles, scooters et autres vélocipèdes
+avec ou sans moteur » (+33,4 %), les « gaz naturel et gaz manufacturé » (+27,2 %), les « chaux, ciments
+et matériaux de construction fabriqués » (+12,5 %) et les « produits raffinés du pétrole » (+11,3 %).
+En glissement annuel, les importations en valeur des « produits raffinés du pétrole » ont progressé de 5,1
+%. Celles des « produits médicinaux et pharmaceutiques » de 12,2 %, celles des « motocycles, scooters
+et autres vélocipèdes avec ou sans moteur » de 121,2 %, celles des « voitures automobiles à tous moteurs,
+pour le transport des personnes » de 28,3 %, celles des « voitures automobiles à tous moteurs, pour le
+transport des marchandises », du « gaz naturel et gaz manufacturé » et du « riz » ont augmenté
+respectivement de 38,2 %, 50,5 % et 11,1 %.
+
+                        Tableau 1.5 : Évolution des principaux produits importés en valeur CAF
+               (milliards de FCFA)
+ Code                                                               Trimestres                          Glissement (%)                    Cumul
+                       Produits
+ CTCI                                              2T25     3T25       4T25       1T26    2T26          Trim          Annuel        2T25      2T26
+ 334    Produits raffinés du pétrole               310,0    328,0       317,6     292,8    326,0        11,3             5,1        576,7     618,7
+        Produits médicinaux et
+ 541
+        pharmaceutiques                             47,7     40,7       43,7      36,7     53,5         45,9             12,2       89,2       90,1
+        Motocycles, scooters et autres
+ 785
+        vélocipèdes avec ou sans moteur             15,9     27,0       30,6      26,4     35,2         33,4            121,2       32,1       61,6
+        Voitures automobiles à tous moteurs,
+ 781
+        pour le transport des personnes             24,5     24,0       32,4      31,4     31,4          0,0             28,3       52,5       62,9
+        Chaux, ciments et matériaux de
+ 661
+        construction fabriqués                      38,2     29,4       33,3      27,5     31,0         12,5            - 18,9      65,4       58,5
+        Voitures automobiles à tous moteurs,
+ 782
+        pour le transport des marchandises          22,0     34,8       20,6      21,5     30,3         41,0             38,2       30,9       51,8
+ 341    Gaz naturel et gaz manufacturé              16,5     17,9       19,5      19,5     24,8         27,2             50,5       36,8       44,3
+ 042    Riz                                         20,1     20,8       21,8      21,6     22,4          3,6             11,1       44,9       44,0
+ 674    Larges plats et tôles en fer ou en acier    8,1      12,5       18,8      20,2     18,2         - 9,6            125,2      20,7       38,4
+ 351    Energie électrique                          30,6     26,9       19,1      19,2     18,2         - 5,4           - 40,5      44,9       37,4
+Source : INSD/DSSE/SSECERE
+
+
+
+
+                                                                                                                                              13
+     1.4. Pays fournisseurs du Burkina Faso
+     La République populaire de Chine demeure le principal fournisseur du Burkina Faso au deuxième trimestre
+     2026. Le Burkina Faso a importé de ce pays 269,9 milliards de FCFA de marchandises, soit 23,9 % des
+     importations totales. Comparativement au premier trimestre 2026, les importations en provenance de la
+     Chine ont progressé de 7,0 %. Elles sont composées essentiellement de « voitures automobiles pour le
+     transport des marchandises » (6,3 %), de « larges plats et tôles en fer ou en acier » (5,4 %), de « barres
+     et profilés en fer ou en acier » (5,2 %), de « produits désinfectants, insecticides, fongicides, herbicides et
+     anti-rongeurs » (4,1 %), ainsi que « d'autres machines et appareils électriques » (3,6 %).
+     La Chine est suivie du Ghana, avec 162,4 milliards de FCFA d'importations, soit 14,4 % des importations
+     totales, puis de la Russie (13,4 %), de l'Inde (5,5 %) et de la Côte d'Ivoire (5,4 %). À eux seuls, ces cinq
+     partenaires concentrent 62,5 % des importations du Burkina Faso au deuxième trimestre 2026, ce qui met
+     en évidence une forte concentration géographique des approvisionnements extérieurs du pays.
+
+                          Tableau 1.6 : Statistiques trimestrielles des importations par pays : valeur CAF
+                   (milliards de FCFA)
+                                                            Trimestres                       Glissement (%)        Cumul
+
+                                           2T25      3T25      4T25       1T26    2T26       Trim      Annuel   2T25    2T26
+
+      CHINE                               190,9     210,7    264,3       252,3   269,9     7,0        41,4      381,9   522,3
+      GHANA                               96,9      86,5     113,5       117,1   162,4     38,8       67,7      175,1   279,5
+      RUSSIE                              128,7     156,8    157,7       91,4    151,3     65,5       17,5      222,9   242,7
+      INDE                                52,6      59,2     59,7        47,7    61,8      29,6       17,4      108,0   109,4
+      COTE D'IVOIRE                       118,3     149,1    101,0       115,1   60,5      - 47,4     - 48,8    237,4   175,6
+      FRANCE                              34,7      40,8     49,6        31,5    44,8      42,5       29,2      71,0    76,3
+      ETATS-UNIS D'AMERIQUE               39,9      38,7     40,8        30,3    30,8      1,5        - 22,9    86,9    61,1
+      JAPON                               23,0      18,5     20,1        25,4    29,5      15,8       28,4      43,1    54,9
+      TURQUIE                             7,9       12,0     8,1         15,5    22,9      47,7       191,6     22,1    38,4
+      VIETNAM                             27,8      19,5     18,1        11,2    22,2      97,5       - 20,3    48,8    33,4
+     Source : INSD/DSSE/SSECERE
+
+     Dans le top 10 des partenaires fournisseurs du Burkina Faso au cours du deuxième trimestre 2026,
+     présenté dans le tableau 1.6 ci-dessus, tous les continents sont représentés, exception faite de l’Océanie.
+
+
+
+                 Graphique 1.3 : Importations (en %) du deuxième trimestre 2026 par pays fournisseur
+
+
+
+
+                                                    23,9%
+                                  37,5%
+
+
+                                                       14,4%
+
+                                      5,4%
+                                         5,5% 13,4%
+
+
+
+
+               CHIN          GHANA         RUSSIE           INDE           COTE D'IVOIRE            Autres
+
+
+
+     Source : INSD/DSSE/SSECERE
+
+
+
+
+14
+Les importations en provenance des pays membres de la CEDEAO se sont établies à 266,1
+milliards de FCFA au deuxième trimestre 2026, soit 23,6 % des importations totales du Burkina
+Faso. Elles ont enregistré une baisse de 3,1 % par rapport au trimestre précédent et de 3,8 % en
+glissement annuel. Les principaux produits importés de cet espace sont les « produits raffinés du
+pétrole » (51,6 %). Ils sont suivis de « l'énergie électrique » (6,8 %), du « gaz naturel et gaz
+manufacturé » (4,0 %), des « chaux, ciments et matériaux de construction fabriqués » (3,3 %)
+ainsi que des « produits et préparations alimentaires » (2,9 %). Le Ghana demeure le principal
+fournisseur du Burkina Faso au sein de la CEDEAO, avec 61,0 % des importations provenant de
+cet espace. Il est suivi de la Côte d'Ivoire (22,8 %), du Sénégal (8,2 %), du Togo (5,6 %), du
+Gambie (1,3 %) et du Bénin (0,3 %).
+Les importations en provenance des pays membres de l'UEMOA se sont élevées à 99,7 milliards
+de FCFA, représentant 8,8 % des importations totales. Elles ont diminué de 33,4 % par rapport
+au premier trimestre 2026, où elles s'établissaient à 149,8 milliards de FCFA. La Côte d'Ivoire
+demeure le principal fournisseur du Burkina Faso dans cet espace, avec 60,7 % des importations
+en provenance de l'UEMOA. Les principaux produits importés de la Côte d'Ivoire sont les «
+produits raffinés du pétrole » (23,1 %), les « tabacs fabriqués » (13,4 %), les « produits et
+préparations alimentaires » (9,9 %), les « chaux, ciments et matériaux de construction fabriqués
+» (7,1 %) ainsi que « l'énergie électrique » (6,4 %). Elle est suivie du Sénégal (21,7 %), du Togo
+(15,0 %), du Mali (1,0 %), du Bénin (0,9 %) et du Niger (0,7 %).
+Au deuxième trimestre 2026, les importations en provenance des pays membres de l'Alliance des
+États du Sahel (AES) se sont chiffrées à 1,6 milliard de FCFA, soit 0,1 % des importations totales.
+Elles ont reculé de 49,8 % par rapport au trimestre précédent et de 80,4 % en glissement annuel.
+Les importations en provenance de cet espace sont composées essentiellement des « produits
+médicinaux et pharmaceutiques » (45,3 %), des « produits et préparations chimiques, nda » (10,9
+%), des « animaux vivants pour l'alimentation humaine » (10,8 %), des « produits raffinés du
+pétrole » (4,5 %) ainsi que des « chaux, ciments et matériaux de construction fabriqués » (2,7
+%).
+
+           Graphique 1.4 : Évolution trimestrielle de la part (en pourcentage) des importations
+      provenant de la CEDEAO, de l'UEMOA et de l’AES dans les importations totales
+ 30
+                26,1                                                              26,5
+                                    24,2                                                             23,6
+ 25
+                                                            21,1
+ 20
+         16,7                16,1
+                                                                           14,5
+ 15
+                                                     11,1
+ 10                                                                                            8,8
+
+
+  5
+                       0,8                 0,7                     0,5                   0,3                  0,1
+  0
+            2 T 25              3 T 25                  4 T 25                  1 T 26               2 T 26
+
+                                            %UEMOA      %CEDEAO          %AES
+
+Source : INSD/DSSE/SSECERE
+
+
+
+
+                                                                                                                    15
+     1.5. Balance commerciale et taux de couverture
+     La balance commerciale du Burkina Faso est ressortie excédentaire au deuxième trimestre 2026,
+     enregistrant un excédent commercial de 1 205,8 milliards de FCFA contre 1 334,3 milliards de FCFA au
+     trimestre précédent. Cet excédent s'est ainsi contracté de 128,5 milliards de FCFA, sous l'effet combiné
+     d'une baisse des exportations de 34,0 milliards de FCFA et d'une hausse des importations de 94,5 milliards
+     de FCFA.
+     En glissement annuel, la balance commerciale s'est toutefois améliorée de 709,0 milliards de FCFA (soit
+     +142,7 %), passant de 496,8 milliards de FCFA au deuxième trimestre 2025 à 1 205,8 milliards de FCFA
+     au deuxième trimestre 2026.
+     Le taux de couverture des dépenses d'importation par les recettes d'exportation a diminué au deuxième
+     trimestre 2026. Il est passé de 229,0 % au premier trimestre 2026 à 206,8 % au deuxième trimestre 2026,
+     soit une baisse de 22,2 points de pourcentage. Ce niveau, toujours largement supérieur à 100 %, traduit
+     une capacité des exportations à couvrir les dépenses d'importation du pays.
+
+                        Tableau 1.7 : Évolution de la balance commerciale (en milliards de FCFA) et du
+                  taux de couverture
+                                                  Trimestres                                    Glissement (%)             Cumul
+
+                          2T25         3T25          4T25       1T26           2T26            Trim         Annuel     2T25            2T26
+
+     Exportations FOB    1 555,5      1 449,7      2 054,9     2 368,4       2 334,4          - 1,4         50,1      2 925,8      4 702,9
+     Importations CAF    1 058,7      1 126,3      1 135,9     1 034,2       1 128,7           9,1           6,6      2 027,9      2 162,9
+     BC                   496,8        323,5        919,0      1 334,3       1 205,8          - 9,6         142,7      897,9       2 540,0
+     TC (%)               146,9        128,7        180,9       229,0         206,8         -22,2 pts     +59,9 pts    144,3        217,4
+     Source : INSD/DSSE/SSECERE
+
+
+                Graphique 1.5 : Évolution trimestrielle de la balance commerciale et du taux de
+         couverture
+       150                                                                                                                         1 500
+                             Taux de Couverture (en %)                   Balance Commerciale (en milliards FCFA)
+       130
+       110                                                                                                                         1 000
+        90
+        70                                                                                                                         500
+        50
+        30                                                                                                                         0
+        10
+       -10                                                                                                                         -500
+
+
+
+
+     Source : INSD/DSSE/SSECERE
+
+
+
+
+16
+2.                           INDICES DU COMMERCE EXTERIEUR
+Les indices du commerce extérieur sont des indicateurs économiques qui traduisent les performances et
+les évolutions du commerce extérieur du pays. Ils permettent d'évaluer les échanges de biens entre le pays
+et le reste du monde. Ces indices fournissent des informations qui permettent de déceler les changements
+intervenus dans les exportations et les importations.
+
+
+2.1. Indices à l'exportation
+Les indices à l'exportation analysés dans cette section sont : l'indice de Paasche des prix, l’indice de
+Laspeyres des quantités et l'indice des valeurs totales. Ces indices synthétiques sont calculés à partir des
+indices élémentaires des différents produits à chaque période (un tableau détaillé des indices par produit
+figure en annexe).
+                   Tableau 2.1 : Évolution des indices synthétiques à l'exportation, base 100 en
+             2022
+                                                            Trimestres                      Glissement (%)
+
+                                           2T25     3T25      4T25       1T26    2T26     Trim         Annuel
+
+  Indice de Paasche des prix               143,2    154,1    185,5       191,1   196,3     2,8          37,1
+  Indice de Laspeyres des
+                                           155,0    134,1    158,0       177,1   169,8    - 4,1         9,6
+  quantités
+  Indice des valeurs totales               222,0    206,7    293,0       338,4   333,4    - 1,5         50,2
+Source : INSD/DSSE/SSECERE
+
+
+2.1.1. Indice de Paasche des prix à l'exportation
+L'indice de Paasche des prix à l'exportation du Burkina Faso a enregistré une hausse de 2,8 % en
+glissement trimestriel et de 37,1 % en glissement annuel au deuxième trimestre 2026. Cette progression
+est principalement portée par la légère augmentation de l'indice des valeurs unitaires de l'or non monétaire
+(+0,2 %), principal produit d'exportation du Burkina Faso, ainsi que par les fortes hausses enregistrées
+pour les « appareils et matériels de génie civil et de construction, et leurs pièces » (+932,3 %), les « voitures
+automobiles à tous moteurs, pour le transport des marchandises » (+172,3 %) et les fruits (à l'exception
+des fruits oléagineux), frais ou secs (+12,0 %).
+En glissement annuel, la progression de l'indice est principalement imputable à la hausse des indices des
+valeurs unitaires de l'« argent, platine et autres métaux de la mine du platine » (+129,7 %), de l'« or non
+monétaire » (+33,6 %), des « graines et fruits oléagineux, même concassés, servant à extraire l'huile »
+(+29,0 %), des « nourritures destinées aux animaux » (+13,1 %) ainsi que des fruits (à l'exception des fruits
+oléagineux), frais ou secs (+9,6 %).
+
+
+                              Graphique 2.1 : Évolution trimestrielle de l'indice de Paasche des prix (IPP) à
+                       l'exportation
+
+                       250
+
+
+                       200
+
+
+                       150
+     Points d'indice
+
+
+
+
+                       100
+
+
+                        50
+
+
+                         0
+
+
+
+Source : INSD/DSSE/SSECERE
+
+
+
+
+                                                                                                              17
+     L’évolution des indices des valeurs unitaires des principaux produits s’observe dans le Tableau 2.2 : ci-
+     après.
+                        Tableau 2.2 : Évolution des indices des valeurs unitaires des principaux
+                  produits à l’exportation
+      Code                                                                    Base                   Trimestres                    Glissement (%)
+           Libellés
+      CTCI                                                                    2022    2T25   3T25      4T25       1T26    2T26      Trim   Annuel
+                              Or, non monétaire (à l'exclusion des
+     971                                                                      100    158,6   159,0    189,5       211,5   211,9   0,2      33,6
+                              minerais et concentrés d'or)
+                              Fruits (à l'exception des fruits oléagineux),
+     057                                                                      100    73,3    126,6    523,5       71,7    80,4    12,0     9,6
+                              frais ou secs
+     263                      Coton                                           100    97,5    81,9     79,4        87,4    85,8    - 1,9    - 12,0
+     424                      Autres huiles végétales fixes                   100    165,4   118,3    136,7       169,9   156,7   - 7,7    - 5,2
+                              Graines et fruits oléagineux, même
+     222                                                                      100    90,5    65,1     100,8       123,3   116,8   - 5,3    29,0
+                              concassés, servant à extraire l'huile
+     334                      Produits raffinés du pétrole                    100    99,5    96,4     97,2        94,0    85,0    - 9,6    - 14,5
+                              Nourritures destinées aux animaux (à
+     081                                                                      100    129,2   37,2     68,7        162,3   146,1   - 10,0   13,1
+                              l'exception des céréales non moulues)
+                              Appareils et matériels de génie civil et de
+     723                                                                      100    186,4   110,6    60,3        15,6    161,4   932,3    - 13,4
+                              construction, et leurs pièces
+                              Voitures automobiles à tous moteurs, pour
+     782                                                                      100    124,6   104,0    23,4        45,4    123,5   172,3    - 0,8
+                              le transport des marchandises
+                              Argent, platine et autres métaux de la
+     681                                                                      100    145,4   158,6    229,3       423,1   334,1   - 21,0   129,7
+                              mine du platine
+     Source : INSD/DSSE/SSECERE
+
+
+     2.1.2. Indice de Laspeyres des quantités à l'exportation
+
+     L'indice de Laspeyres des quantités des produits exportés a enregistré une baisse de 4,1 % en glissement
+     trimestriel et une hausse de 9,6 % en glissement annuel au deuxième trimestre 2026. Le recul observé au
+     cours du trimestre s'explique principalement par la diminution des quantités exportées de plusieurs
+     produits, notamment le coton (-52,9 %), les « produits raffinés du pétrole » (-45,2 %) et les « graines et
+     fruits oléagineux, même concassés, servant à extraire l'huile » (-41,1 %). Cette évolution a toutefois été
+     atténuée par la progression des quantités exportées des « nourritures destinées aux animaux » (+120,5
+     %), des « appareils et matériels de génie civil et de construction, et leurs pièces » (+87,6 %), des fruits (à
+     l'exception des fruits oléagineux), frais ou secs (+52,9 %), de l'« argent, platine et autres métaux de la mine
+     du platine » (+45,9 %), des « autres huiles végétales fixes » (+11,8 %), des « voitures automobiles à tous
+     moteurs, pour le transport des marchandises » (+2,6 %) ainsi que de l'« or non monétaire » (+1,5 %).
+     En glissement annuel, la progression de l'indice est principalement imputable à la hausse des quantités
+     exportées des « nourritures destinées aux animaux » (+79,6 %), des « autres huiles végétales fixes »
+     (+78,5 %), du coton (+65,6 %), de l'« argent, platine et autres métaux de la mine du platine » (+46,3 %),
+     de l'« or non monétaire » (+20,8 %) ainsi que des « produits raffinés du pétrole » (+0,6 %).
+
+
+                                   Graphique 2.2 : Évolution trimestrielle de l'indice de Laspeyres des quantités (ILQ) à
+                         l'exportation
+                        200
+                        180
+                        160
+                        140
+                        120
+                        100
+      Points d'indice
+
+
+
+
+                         80
+                         60
+                         40
+                         20
+                          0
+
+
+
+     Source : INSD/DSSE/SSECERE
+
+     L’évolution des indices des quantités des autres produits s’observe dans le Tableau 2.3 :
+
+
+
+
+18
+                                        Tableau 2.3 : Évolution des indices des quantités des principaux produits à
+                                l'exportation
+                                                                                       Trimestres                   Glissement (%)
+   Code                                                         Base
+        Libellés
+   CTCI                                                         2022
+                                                                       2T25    3T25      4T25       1T26    2T26    Trim     Annuel
+
+971                     Or, non monétaire                       100    162,5   162,2     200,2      193,3   196,3    1,5      20,8
+                        Fruits (à l'exception des fruits
+057                                                             100    513,2   98,0       4,6       134,5   205,6   52,9     - 59,9
+                        oléagineux), frais ou secs
+263                     Coton                                   100    38,7    18,9       4,6       136,2   64,1    - 52,9    65,6
+
+424                     Autres huiles végétales fixes           100    159,5   163,4     221,1      254,8   284,7   11,8      78,5
+                        Graines et fruits oléagineux, même
+222                                                             100    82,1    20,0      44,4       114,7   67,5    - 41,1   - 17,8
+                        concassés, servant à extraire l'huile
+334                     Produits raffinés du pétrole            100    109,2   148,7     148,5      200,4   109,9   - 45,2    0,6
+
+081                     Nourritures destinées aux animaux       100    84,0    32,3      50,4       68,4    150,8   120,5     79,6
+                        Appareils et matériels de génie civil
+723                                                             100    117,6   90,0      31,8       42,7    80,0    87,6     - 32,0
+                        et de construction, et leurs pièces
+                        Voitures automobiles à tous
+782                     moteurs, pour le transport des          100    259,8   166,7     199,1      100,3   102,9    2,6     - 60,4
+                        marchandises
+                        Argent, platine et autres métaux de
+681                                                             100    69,6    67,7      58,7       69,8    101,8   45,9      46,3
+                        la mine du platine
+Source : INSD/DSSE/SSECERE
+
+
+2.1.3. Indice des valeurs totales à l’exportation
+L'évolution de l'indice des valeurs totales résulte de la combinaison des variations des indices des prix et
+des quantités à l'exportation. Au deuxième trimestre 2026, l'indice des valeurs totales à l'exportation a
+enregistré une baisse de 1,5 % en glissement trimestriel. Ce repli s'explique par la diminution de l'indice
+des quantités de 4,1 %, qui a plus que compensé la hausse de l'indice des prix de 2,8 % observée au cours
+de la période.
+En glissement annuel, l'indice des valeurs totales a progressé de 50,2 %, sous l'effet conjugué de la hausse
+de l'indice des prix de 37,1 % et de celle de l'indice des quantités de 9,6 %. Cette évolution traduit une
+nette amélioration de la valeur des exportations du Burkina Faso par rapport au deuxième trimestre 2025,
+principalement soutenue par le maintien de niveaux élevés des prix des principaux produits exportés, en
+particulier l'or, malgré le repli du tonnage exporté.
+
+
+                             Graphique 2.3 : Évolution trimestrielle de l'indice des valeurs totales (IVT) à
+                   l'exportation
+
+                  400
+                  350
+                  300
+Points d'indice
+
+
+
+
+                  250
+                  200
+                  150
+                  100
+                   50
+                    0
+
+
+
+Source : INSD/DSSE/SSECERE
+
+
+
+
+                                                                                                                              19
+     2.2. Indices à l'importation
+     Les évolutions des indices à l’importation sont présentées dans cette section afin de mettre en évidence
+     les principaux changements conjoncturels observés dans les importations du Burkina Faso. Le deuxième
+     trimestre 2026 est marqué par une hausse de l’indice des prix à l’importation, de l’indice des quantités
+     importées ainsi que de l’indice des valeurs totales par rapport au trimestre précédent.
+     En glissement annuel, l'indice des prix à l'importation enregistre une baisse, tandis que les indices des
+     quantités et des valeurs totales poursuivent leur progression.
+
+                                      Tableau 2.4 : Évolution des indices synthétiques à l'importation base 100 en
+                               2022
+
+                                                                     Trimestres                     Glissement (%)
+
+
+                                                     2T25    3T25     4T25        1T26    2T26     Trim       Annuel
+
+     Indice de Paasche des prix (IPP)                90,3    88,5     84,9        80,9    82,4     1,9          - 8,8
+     Indice de Laspeyres des quantités
+                                                    132,5    144,3   153,0        145,6   156,6    7,5          18,2
+     (ILQ)
+     Indice des valeurs totales (IVT)               119,7    127,7   129,9        117,8   129,1    9,6          7,9
+     Source : INSD/DSSE/SSECERE
+
+
+     2.2.1. Indice de Paasche des prix à l'importation
+     L'indice de Paasche des prix à l'importation a enregistré une hausse de 1,9 % en glissement trimestriel au
+     deuxième trimestre 2026. Cette évolution est principalement imputable à la progression des indices des
+     valeurs unitaires à l'importation de plusieurs produits, notamment les « chaux, ciments et matériaux de
+     construction fabriqués (excepté argile, verre) » (+25,8 %), les « voitures automobiles à tous moteurs, pour
+     le transport des marchandises » (+21,5 %), le « gaz naturel et gaz manufacturé » (+18,3 %), les «
+     motocycles, scooters et autres vélocipèdes avec ou sans moteur » (+17,1 %), les « produits raffinés du
+     pétrole » (+9,7 %), les « larges plats et tôles en fer ou en acier » (+4,5 %) ainsi que les « préparations à
+     base de céréales, de farines et de fécules de fruits ou légumes » (+2,1 %). Cette hausse a été atténuée
+     par la baisse des indices des valeurs unitaires des « produits médicinaux et pharmaceutiques » (-20,6 %),
+     du riz (-12,1 %) et des « voitures automobiles à tous moteurs, pour le transport des personnes » (-4,7 %).
+
+     En glissement annuel, l'indice de Paasche des prix à l'importation a enregistré une baisse de 8,8 %,
+     traduisant un niveau des prix à l'importation inférieur à celui observé au deuxième trimestre 2025. Cette
+     évolution résulte principalement de la diminution des indices des valeurs unitaires des « voitures
+     automobiles à tous moteurs, pour le transport des marchandises » (-32,7 %), des « voitures automobiles à
+     tous moteurs, pour le transport des personnes » (-11,7 %) et du riz (-4,3 %) malgré les hausses observées
+     pour les « chaux, ciments et matériaux de construction fabriqués (excepté argile, verre) » (+40,3 %), le «
+     gaz naturel et gaz manufacturé » (+14,1 %), les « motocycles, scooters et autres vélocipèdes avec ou sans
+     moteur » (+9,5 %) et les « produits raffinés du pétrole » (+8,8 %).
+
+
+                              Graphique 2.4 : Évolution trimestrielle de l’indice de Paasche des prix à l'importation
+                        110
+
+                        100
+
+                         90
+      Points d'indice
+
+
+
+
+                         80
+
+                         70
+
+                         60
+
+
+
+     Source : INSD/DSSE/SSECERE
+
+
+
+
+20
+Le Tableau 2.5 :ci-après renseigne sur les tendances de l’indice de Paasche des prix des
+principaux produits importés.
+                 Tableau 2.5 : Évolution des indices des valeurs unitaires des principaux
+                   produits à l'importation
+                                                                      Trimestres                     Glissement (%)
+  Code
+         Libellé
+  CTCI                                              Base
+                                                           2T25    3T25      4T25    1T26    2T26    Trim      Annuel
+                                                    2022
+
+334      Produits raffinés du pétrole               100    86,5    89,8       91,9   85,7    94,1     9,7          8,8
+         Produits médicinaux et
+541                                                 100    84,7    60,5       79,6   109,2   86,7    - 20,6        2,3
+         pharmaceutiques
+         Motocycles, scooters et autres
+785                                                 100    128,1   137,9     128,0   119,8   140,3   17,1          9,5
+         vélocipèdes avec ou sans moteur
+         Voitures automobiles à tous moteurs,
+781                                                 100    137,1   134,1     148,9   126,9   121,0   - 4,7     - 11,7
+         pour le transport des personnes
+         Chaux, ciments et matériaux de
+661      construction fabriqués (excepté argile,    100    74,2    75,5       75,4   82,8    104,1   25,8          40,3
+         verre)
+         Voitures automobiles à tous moteurs,
+782                                                 100    150,3   200,6     117,2   83,2    101,1   21,5      - 32,7
+         pour le transport des marchandises
+341      Gaz naturel et gaz manufacturé             100    63,8    55,7       54,8   61,5    72,8    18,3          14,1
+
+042      Riz                                        100    78,3    73,6       70,2   85,2    74,9    - 12,1     - 4,3
+
+674      Larges plats et tôles en fer ou en acier   100    61,4    61,4       68,7   60,5    63,3     4,5          2,9
+         Préparations à base de céréales, de
+048      farines et de fécules de fruits ou         100    90,8    83,2       76,4   94,9    96,9     2,1          6,7
+         légumes
+Source : INSD/DSSE/SSECERE
+
+
+2.2.2. Indice de Laspeyres des quantités à l'importation
+L'indice de Laspeyres des quantités des produits importés a enregistré une hausse de 7,5 % en glissement
+trimestriel au deuxième trimestre 2026. Cette évolution est principalement imputable à l'augmentation des
+quantités importées de plusieurs produits, notamment les « produits médicinaux et pharmaceutiques »
+(+83,8 %), le riz (+17,9 %), les « voitures automobiles à tous moteurs, pour le transport des marchandises
+» (+16,1 %), les « motocycles, scooters et autres vélocipèdes avec ou sans moteur » (+13,9 %), le « gaz
+naturel et gaz manufacturé » (+7,5 %), les « voitures automobiles à tous moteurs, pour le transport des
+personnes » (+4,9 %) ainsi que les « produits raffinés du pétrole » (+1,4 %). En revanche, cette hausse a
+été atténuée par la diminution des quantités importées des « larges plats et tôles en fer ou en acier » (-
+13,5 %), des « chaux, ciments et matériaux de construction fabriqués (excepté argile, verre) » (-10,6 %) et
+des « préparations à base de céréales, de farines et de fécules de fruits ou légumes » (-6,8 %).
+En glissement annuel, l'indice a progressé de 18,2 %, sous l'effet de la hausse des quantités importées
+des « larges plats et tôles en fer ou en acier » (+118,7 %), des « voitures automobiles à tous moteurs, pour
+le transport des marchandises » (+105,3 %), des « motocycles, scooters et autres vélocipèdes avec ou
+sans moteur » (+102,0 %), des « préparations à base de céréales, de farines et de fécules de fruits ou
+légumes » (+66,9 %), des « voitures automobiles à tous moteurs, pour le transport des personnes » (+45,3
+%), du « gaz naturel et gaz manufacturé » (+31,9 %), du riz (+16,1 %) ainsi que des « produits médicinaux
+et pharmaceutiques » (+9,7 %). À l'inverse, les quantités importées des « chaux, ciments et matériaux de
+construction fabriqués (excepté argile, verre) » (-42,2 %) et des « produits raffinés du pétrole » (-3,4 %) ont
+reculé par rapport au deuxième trimestre 2025.
+
+
+
+
+                                                                                                              21
+                                    Graphique 2.5 : Évolution trimestrielle de l’indice de Laspeyres des quantités (ILQ) à
+                        l'importation
+                        180
+                        160
+                        140
+                        120
+                        100
+                         80
+      Points d'indice
+
+
+
+
+                         60
+                         40
+                         20
+                          0
+
+
+
+     Source : INSD/DSSE/SSECERE
+
+
+     Le Tableau 2.6 :
+                                              Tableau 2.6 : Évolution des indices des quantités des principaux produits à
+                                        l'importation
+                                                                                           Trimestres                     Glissement (%)
+
+            Code
+                              Libellé
+            CTCI                                                         2022   2T25    3T25      4T25    1T26    2T26    Trim      Annuel
+
+
+     334                      Produits raffinés du pétrole               100    126,8   129,1     122,2   120,8   122,5    1,4       - 3,4
+                              Produits médicinaux et
+     541                                                                 100    118,0   140,9     115,1   70,4    129,4   83,8       9,7
+                              pharmaceutiques
+                              Motocycles, scooters et autres
+     785                                                                 100    123,4   194,7     237,2   218,8   249,2   13,9      102,0
+                              vélocipèdes avec ou sans moteur
+                              Voitures automobiles à tous moteurs,
+     781                                                                 100    111,5   111,8     135,8   154,4   162,0    4,9       45,3
+                              pour le transport des personnes
+                              Chaux, ciments et matériaux de
+     661                      construction fabriqués (excepté argile,    100    171,8   130,1     147,5   111,0   99,3    - 10,6    - 42,2
+                              verre)
+                              Voitures automobiles à tous moteurs,
+     782                                                                 100    151,3   179,5     181,7   267,8   310,8   16,1      105,3
+                              pour le transport des marchandises
+
+     341                      Gaz naturel et gaz manufacturé             100    127,9   158,8     175,9   156,9   168,7    7,5       31,9
+     042                      Riz                                        100    114,8   125,7     138,3   113,1   133,3   17,9       16,1
+     674                      Larges plats et tôles en fer ou en acier   100    72,5    111,6     150,6   183,4   158,7   - 13,5    118,7
+                              Préparations à base de céréales, de
+     048                      farines et de fécules de fruits ou         100    102,9   154,6     182,1   184,3   171,7   - 6,8      66,9
+                              légumes
+     Source : INSD/DSSE/SSECERE
+
+
+     2.2.3. Indice des valeurs totales à l'importation
+     L'évolution de l'indice des valeurs totales à l'importation résulte de la combinaison des variations des
+     indices des prix et des quantités importées. Au deuxième trimestre 2026, l'indice des valeurs totales à
+     l'importation a enregistré une hausse de 9,6 % en glissement trimestriel. Cette progression est
+     principalement attribuable à l'augmentation de l'indice des quantités importées (+7,5 %), conjuguée à la
+     hausse de l'indice des prix à l'importation (+1,9 %).
+     En glissement annuel, l'indice des valeurs totales à l'importation a progressé de 7,9 %. Cette évolution est
+     essentiellement portée par la forte augmentation de l'indice des quantités importées (+18,2 %), qui a plus
+     que compensé le recul de l'indice des prix à l'importation (-8,8 %).
+
+
+
+
+22
+                        Graphique 2.6 : Évolution trimestrielle des indices des valeurs totales à l'importation
+                  140
+                  120
+                  100
+                   80
+Points d'indice
+
+
+
+
+                   60
+                   40
+                   20
+                    -
+
+
+
+Source : INSD/DSSE/SSECERE
+
+
+
+
+                                                                                                           23
+     3.                       AUTRES INDICES DU COMMERCE EXTERIEUR
+     La balance commerciale et le taux de couverture mettent l'accent sur l'évolution en valeur des échanges
+     du Burkina Faso avec ses partenaires. Une autre façon de percevoir l'évolution du commerce extérieur est
+     d'élaborer, à partir des indices synthétiques, d'autres indicateurs tels que les indices des termes de
+     l'échange et les indices de gain à l'exportation, qui permettent de mesurer les bénéfices tirés par le pays
+     de ses échanges avec l'extérieur.
+                         Tableau 3.1 : Evolution d'autres indices du commerce extérieur
+                                                                         Trimestres                   Glissement (%)
+
+                                                        2T25     3T25      4T25       1T26    2T26    Trim     Annuel
+
+     Indice des termes de l'échange (Paasche)           158,5    174,1     218,4      236,2   238,2   0,8       50,2
+
+     Indice de gain à l'exportation (Paasche)           127,7    120,8     136,2      126,6   133,3   5,3        4,4
+
+     Source : INSD/DSSE/SSECERE
+
+
+     3.1. Indice des termes de l'échange (ITE)
+     Les termes de l'échange désignent la quantité de biens importés qu'un pays peut acquérir grâce
+     à ses exportations. L'indice des termes de l'échange est obtenu en rapportant l'indice des prix à
+     l'exportation à l'indice des prix à l'importation. Au deuxième trimestre 2026, cet indice s'est établi
+     à 238,2, enregistrant une hausse de 0,8 % en glissement trimestriel et de 50,2 % en glissement
+     annuel. Cette évolution traduit une amélioration du pouvoir d'achat des exportations burkinabè
+     vis-à-vis des importations, résultant d'une progression des prix à l'exportation (+2,8 %) plus rapide
+     que celle des prix à l'importation (+1,9 %) par rapport au trimestre précédent. En glissement
+     annuel, cette amélioration est également soutenue par la forte hausse des prix à l'exportation
+     (+37,1 %), combinée à la baisse des prix à l'importation (-8,8 %), renforçant ainsi les gains de
+     pouvoir d'achat des exportations du Burkina Faso.
+
+                               Graphique 3.1 : Évolution trimestrielle de l'indice des termes de l'échange
+                        300
+
+                        250
+
+                        200
+
+                        150
+      Points d'indice
+
+
+
+
+                        100
+
+                         50
+
+                          0
+
+
+
+     Source : INSD/DSSE/SSECERE
+
+
+
+
+24
+3.2. Indice de gain à l'exportation (IGE)
+Cet indice est le rapport entre l'indice des termes de l'échange et l'indice de volume à l'exportation. Il traduit
+les gains obtenus par le pays en exportant ses produits. Un indice supérieur à 100 indique que les recettes
+d'exportation permettent d'acquérir une quantité plus importante de biens importés que durant la période
+de base, tandis qu'un indice inférieur à 100 traduit un faible gain tiré des exportations. Au deuxième
+trimestre 2026, l'indice de gain à l'exportation s'est établi à 133,3, traduisant un gain net pour le Burkina
+Faso dans ses échanges extérieurs. Il a progressé de 5,3 % en glissement trimestriel, sous l'effet conjugué
+de l'amélioration des termes de l'échange et de l'évolution des volumes exportés. En glissement annuel,
+l'indice affiche une hausse de 4,4 %, reflétant une amélioration des gains tirés des exportations par rapport
+au deuxième trimestre 2025.
+
+
+                         Graphique 3.2 : Évolution trimestrielle de l'indice de gain à l'exportation
+                   180
+                   160
+                   140
+                   120
+                   100
+                    80
+ Points d'indice
+
+
+
+
+                    60
+                    40
+                    20
+                     0
+
+
+
+Source : INSD/DSSE/SSECERE
+
+
+
+
+                                                                                                           25
+     ANNEXES
+     NOTE MÉTHODOLOGIQUE
+
+     Cette note permet aux lecteurs de savoir comment les différents indicateurs proposés ont été obtenus.
+     Cette clarification passe par un bref aperçu de la source d'informations, de la nomenclature utilisée et des
+     indices proposés.
+     Source d'information
+     Les données brutes sur le commerce extérieur proviennent essentiellement des services de la Douane.
+     Ces données sont fournies pour tous les produits ayant fait l'objet d’une déclaration d'exportation ou
+     d'importation, en valeur et en volume, par mois, trimestre ou année.
+     Nomenclature des produits
+     Dans l'élaboration des statistiques du commerce extérieur, les marchandises sont regroupées et classées
+     selon des nomenclatures. Il existe plusieurs nomenclatures sur le commerce extérieur dont la
+     "Classification Type pour le Commerce International " (CTCI) et le Système Harmonisé (SH).
+     C'est la CTCI qui a été privilégiée (la CTCI révisée 4, version améliorée, est utilisée ici) par rapport au
+     Système Harmonisé (SH) car elle est fondée sur le critère d'utilisation économique des produits,
+     contrairement au SH qui s'appuie plus sur le critère tarifaire.
+     Indices
+     Le champ couvert par les indices est le commerce général et officiel, à l'importation comme à l'exportation
+     et selon la nomenclature CTCI.
+     L'année de base, qui sert de référence à la comparaison des grandeurs, est l'année 2022. Il est procédé à
+     un changement de base tous les cinq (5) ans pour tenir compte des modifications éventuelles de la
+     structure des importations et des exportations ou de la couverture de l'échantillon utilisé pour le calcul des
+     indices.
+     Les indicateurs suivants sont proposés aux utilisateurs :
+          • le solde de la balance commerciale et le taux de couverture ;
+          • les indices synthétiques : indice de Paasche des prix, indice de Laspeyres des quantités, indice
+              des valeurs totales ;
+          • les indices élémentaires des principaux produits à l'exportation comme à l’importation ;
+          • l'indice des termes de l'échange et l'indice de gain à l'exportation.
+
+
+     Un seul indice ne peut pas rendre compte de la complexité de l'évolution du commerce extérieur d’où la
+     multiplicité et la complémentarité des différents indicateurs.
+     Par exemple, les données en valeurs ne permettent pas de distinguer les variations de volume de celles
+     qui résultent de mouvements de prix ou de modification des parités monétaires : un déficit de la balance
+     commerciale dû à une augmentation brutale des prix du pétrole brut n'a pas la même signification et
+     n'appelle pas les mêmes mesures de politique économique qu'un déficit dû à une augmentation en volume
+     des importations ou à une diminution en volume des exportations.
+     Définition des indices
+     Le choix retenu pour le calcul des indices synthétiques repose sur les formules suivantes :
+          • l’indice des prix ou des valeurs moyennes (valeurs unitaires) est calculé au moyen de la formule
+               de Paasche. C’est un indice à pondérations variables déterminées à partir des valeurs courantes ;
+          • l’indice de volume (ou de quantité) est déterminé selon la formule de Laspeyres. C’est un indice à
+               pondérations fixes déterminées à partir des valeurs de l’année de base ;
+          • l’indice des valeurs totales est un indice simple, et est le produit des indices de Paasche des prix
+               et de Laspeyres des quantités.
+     Le choix de calculer un indice de Paasche des prix pour le commerce extérieur et non un indice de
+     Laspeyres des prix comme c’est le cas pour les indices des prix à la consommation (IPC) par exemple, se
+     justifie pour plusieurs raisons :
+          • dans le cas du commerce extérieur, disposant des statistiques sur la valeur, la quantité et les prix
+               par période (annuelle, trimestrielle et mensuelle), il est plus facile etmoins coûteux dans la pratique
+               de déterminer des pondérations variables et changer d’année de base avec une périodicité courte ;
+
+
+
+26
+      •      la pondération variable a plus d’avantages que la pondération fixe. En effet, dans le cas du
+             commerce extérieur, la composition des importations et des exportations évolue constamment et
+             souvent considérablement de période en période ;
+      •      par ce système, le panier de marchandises constituant l’échantillon s'adapte constamment aux
+             modifications des habitudes d'importation et d'exportation ainsi qu'aux développements
+             technologiques ;
+      •      cette méthode est en conformité avec celle utilisée dans plusieurs instituts nationaux de statistique
+             (INSEE-France, OFS-Suisse, Statistique Canada, etc.), et avec les recommandations des
+             standards internationaux en la matière (FMI).
+
+NOTE SUR LE CALCUL DES INDICES DU COMMERCE EXTERIEUR
+
+                                      INDICE DES VALEURS TOTALES
+L'indice élémentaire de valeur est calculé au niveau du groupe. Il mesure l'évolution de la valeur du
+groupe exprimée en FCFA par rapport à sa valeur à l'année de base. Il est donné par la formule :
+                                                        𝑃𝑡𝑖 𝑄𝑡𝑖
+                                                𝐼𝑉𝑇𝑡𝑖 = 𝑖 𝑖 × 100
+                                                        𝑃0 𝑄0
+Au niveau global, l'indice des valeurs totales (IVT) est donné par la formule suivante :
+                                                                ∑𝑛𝑖 𝑃𝑡𝑖 𝑄𝑡𝑖
+                                               𝐼𝑉𝑇 = 100 × 𝑛 𝑖 𝑖
+                                                                ∑𝑖 𝑃0 𝑄0
+NB : L'indice "i" désigne le produit "i" et parcourt le champ de l'échantillon dont la taille est représentée par
+l'indice "n". L'indice "t" représente la période courante et "0" la période de base. Les lettres "P" et "Q"
+représentent respectivement le prix et la quantité. Ces différents symboles ont la même signification dans
+les autres formules (sauf mention particulière).
+                                              INDICE DE VOLUME
+L'indice élémentaire de volume mesure la variation relative du poids total (en kg) importé ou exporté d'un
+                                                                                                  𝑄𝑡𝑖
+groupe par rapport à son poids à l'année de base. Il est donné par la formule : 𝑖 =
+                                                                                                  𝑄0𝑖
+Pour l'ensemble des importations ou des exportations, un indice de volume de type Laspeyres (ILQ) est
+utilisé et est donné par la formule :
+                                                        ∑𝑛𝑖 𝑃0𝑖 𝑄𝑡𝑖
+                                           𝐼𝐿𝑄 = 100 × 𝑛 𝑖 𝑖
+                                                        ∑𝑖 𝑃0 𝑄0
+Cette formule peut se mettre sous la forme d'une moyenne arithmétique des indices élémentaires pondérée
+par la part respective de chaque groupe dans l'échantillon. C'est cette procédure qui a été utilisée pour
+l'établissement de l'indice général. La pondération de chaque groupe est obtenue en rapportant la valeur
+totale (en FCFA) du groupe de la période (année) de base à la valeur totale de l'échantillon pour cette
+même période. La formule de calcul est la suivante :
+                                 𝑖
+                          𝑄𝑖
+                       ∑𝑛𝑖 𝑖𝑡 ∗𝑃 𝑄𝑖0
+                          𝑄0
+                                 0
+=𝐼𝐿𝑄 = 100 ×                           la pondération du groupe i à la période (année) de base,
+                        ∑𝑛𝑖 𝑃𝑖0 𝑄𝑖0
+Avec 𝑊0𝑖 = 𝑃0𝑖 𝑄0𝑖
+                                                           𝑄𝑡𝑖
+                                                               ∗ 𝑊0𝑖 ∑𝑛𝑖
+                                                           𝑄0𝑖
+                                          𝐼𝐿𝑄 = 100 ×
+                                                          ∑𝑛𝑖 𝑊0𝑖
+                                             INDICE DES PRIX
+L'indice de Paasche des prix est calculé en divisant la valeur de la période courante calculée aux
+quantités de la période courante par la valeur de la période de base calculée aux quantités de la période
+courante.
+                                                         ∑𝑛𝑖 𝑃𝑡𝑖 𝑄𝑡𝑖
+                                            𝐼𝑃𝑃 = 100 × 𝑛 𝑖 𝑖
+                                                         ∑𝑖 𝑃0 𝑄𝑡
+                         𝑖
+                        𝑃𝑡 𝑖 𝑖                𝑖
+                                             𝑃0 𝑖 𝑖
+                     ∑𝑛
+                      𝑖 𝑖 ∗𝑃0 𝑄𝑡          ∑𝑛
+                                           𝑖 𝑖 ∗𝑃𝑡 𝑄𝑡
+100       ∑𝑛  𝑖 𝑖
+           𝑖 𝑃0 𝑄𝑡     𝑃𝑡                   𝑃𝑡
+      = ∑𝑛 𝑖 𝑖 =      ∑𝑛  𝑖 𝑖         =    ∑𝑛  𝑖 𝑖
+𝐼𝑃𝑃        𝑖 𝑃𝑡 𝑄𝑡     𝑖 𝑃𝑡 𝑄𝑡              𝑖 𝑃𝑡 𝑄𝑡
+                                                                             𝑖
+                                                                            𝑃0
+                                                                         ∑𝑛
+                                                                          𝑖 𝑖 ∗𝑊𝑡
+                                                                                 𝑖
+                                                               100          𝑃𝑡
+𝑊𝑡𝑖 = 𝑃𝑡𝑖 𝑄𝑡𝑖                                                        =    ∑𝑛   𝑖
+                                                               𝐼𝑃𝑃         𝑖 𝑊𝑡
+
+
+
+
+                                                                                                           27
+     L'indice de Paasche est un indice synthétique égal à la moyenne harmonique des indices élémentaires
+     pondérée par les valeurs de la période finale.
+                                                    AUTRES INDICES
+                                                   Pouvoir d’achat (𝑃𝐴𝑗𝑖 )
+     Le pouvoir d'achat (𝑃𝐴𝑗𝑖 )du produit "i" à l'exportation par rapport au produit "j" à l'importation est le prix du
+     produit à l'exportation rapporté à celui de l'importation.
+                           𝑃
+     Nous avons : 𝑃𝐴𝑗𝑖 = 𝑖 , Cet indicateur permet de déterminer la capacité de chaque produit d'exportation à
+                           𝑃𝑗
+     acheter des produits importés. Les produits ciblés à l'exportation comme à l'importation sont des produits
+     pondéreux pour la plupart ou parfois du fait de leur caractère vital.
+                                            Indice des termes de l’échange
+     L'indice des termes de l'échange, c'est l'indice des prix à l'exportation (IPP à l’exportation) rapporté à l'indice
+     des prix à l'importation (IPP à l’importation).
+                                                           𝐼𝐿𝑃𝐸
+                                                     𝐼𝑇𝐸 =        × 100
+                                                            𝐼𝐿𝑃𝐼
+     Si ITE < 100 on dit qu'il y a détérioration des termes de l’échange : ce qui signifie qu'il faudra exporter plus
+     pour pouvoir payer une même quantité de produits étrangers achetés auparavant.
+     Si ITE > 100 on dit qu'il y a amélioration des termes de l'échange : c'est à dire qu'une même quantité de
+     produits nationaux permet maintenant d'acquérir une quantité plus importante de produits étrangers.
+                                              Indice de gain à l’exportation
+     L'indice de gain à l'exportation (IGE) est égal à l'indice des termes de l'échange (ITE) rapporté à l'indice
+     de Paasche des quantités à l'exportation (IPQE).
+
+
+
+
+28
+AUTRES TABLEAUX ET GRAPHIQUES
+
+
+       Annexe 1 : Évolution des indices des valeurs unitaires trimestriels des principaux
+       produits à l'exportation
+Code
+     Libellé                                      4 T 23 1 T 24 2 T 24 3 T 24 4 T 24 1 T 25        2T25     3T25    4T25    1T26    2T26
+CTCI
+     Or, non monétaire (à l'exclusion des
+971                                               103,2   106,8   120,1   121,5   132,8   144,2   158,6     159,0   189,5
+     minerais et concentré d'or)                                                                                            211,5   211,9
+ 263   Coton                                      101,6   107,9   102,3   98,9    96,6    98,3     97,5     81,9    79,4
+                                                                                                                            87,4    85,8
+       Fruits (à l'exception des fruits
+ 057                                              243,6   58,6    74,5    139,3   364,0   87,2     73,3     126,6   523,5
+       oléagineux), frais ou secs                                                                                           71,7    80,4
+       Chaux, ciments et matériaux de
+ 661   construction fabriqués (excepté argile,    148,5   148,5   148,5   148,5   148,9   146,3   148,6     148,5   148,5
+       verre)                                                                                                               148,5   258,9
+       Graines et fruits oléagineux, même
+ 222                                              97,3    128,2   132,3   67,3    102,8   131,4    90,5     65,1    100,8
+       concassés, servant à extraire l'huile                                                                                123,3   116,8
+       Graines et fruits oléagineux, servant à
+ 223                                              100,4   98,1    110,4   91,8    141,5           2 969,2     -       -       -     65,8
+       extraire autres huiles fixes
+       Barres et profilés en fer ou en acier (y
+ 673                                              63,0    62,6    73,8    68,6    98,8    68,7     66,1     72,5    62,9
+       compris les palplanches)                                                                                             60,1    61,2
+ 334   Produits raffinés du pétrole               95,4    101,4   113,2   118,6   126,1   100,0    99,5     96,4    97,2
+                                                                                                                            94,0    85,0
+ 424   Autres huiles végétales fixes              138,2   148,4   136,1   117,3   100,8   162,3   165,4     118,3   136,7
+                                                                                                                            169,9   156,7
+       Appareils et matériels de génie civil et
+ 723                                              44,8    88,4    174,0   41,7    83,4    136,6   186,4     110,6   60,3
+       de construction, et leurs pièces                                                                                     15,6    161,4
+Source : INSD/DSSE/SSECERE
+
+
+
+
+                                                                                                                            29
+           Annexe 2 : Évolution des indices des quantités trimestriels des principaux produits
+           à l'exportation
+     Code
+          Libellé                                  4 T 23 1 T 24 2 T 24 3 T 24 4 T 24 1 T 25       2T25    3T25    4T25    1T26    2T26
+     CTCI
+           Or, non monétaire (à l'exclusion des
+     971                                           104,5   106,9   105,9   113,0   118,6   155,7   162,5   162,2   200,2   193,3   196,3
+           minerais et concentré d'or)
+
+     263   Coton                                   52,1    152,5   37,6     3,2    68,9    74,1    38,7    18,9     4,6    136,2   64,1
+
+           Fruits (à l'exception des fruits
+     057                                           10,2    99,3    189,2   78,9     3,5    107,6   513,2   98,0     4,6    134,5   205,6
+           oléagineux), frais ou secs
+           Chaux, ciments et matériaux de
+     661   construction fabriqués (excepté         66,8    98,6    40,3    55,1    32,7    39,3    22,8    19,0    17,0     9,3     0,0
+           argile, verre)
+           Graines et fruits oléagineux, même
+     222                                           148,7   132,8   51,7    13,4    125,2   276,1   82,1    20,0    44,4    114,7   67,5
+           concassés, servant à extraire l'huile
+           Graines et fruits oléagineux, servant
+     223                                           293,0   67,6    36,5    87,5     7,8             0,0                             0,1
+           à extraire autres huiles fixes
+           Barres et profilés en fer ou en acier
+     673                                           48,3    56,7     6,3    38,3    87,0    35,0    45,4    44,6    18,4     6,9     8,8
+           (y compris les palplanches)
+
+     334   Produits raffinés du pétrole            146,4   142,2   142,1   151,1   137,5   66,1    109,2   148,7   148,5   200,4   109,9
+
+     424   Autres huiles végétales fixes           104,3   124,2   97,2    86,8    103,3   150,8   159,5   163,4   221,1   254,8   284,7
+
+           Appareils et matériels de génie civil
+     723                                           60,2    38,9    120,3   62,3    93,4    143,5   117,6   90,0    31,8    42,7    80,0
+           et de construction, et leurs pièces
+     Source : INSD/DSSE/SSECERE
+
+
+
+
+30
+      Annexe 3 : Évolution des indices des valeurs unitaires trimestriels des principaux
+      produits à l'importation
+Code
+     Libellé                                  4 T 23 1 T 24 2 T 24 3 T 24 4 T 24 1 T 25 2T25          3T25    4T25    1T26    2T26
+CTCI
+
+334   Produits raffinés du pétrole            110,5   119,7   102,3   108,7   97,2    98,8    86,5    89,8    91,9    85,7    94,1
+
+      Produits médicinaux et
+541                                           91,2    117,8   110,3   89,1    68,5    79,2    84,7    60,5    79,6    109,2   86,7
+      pharmaceutiques
+      Chaux, ciments et matériaux de
+661   construction fabriqués (excepté         83,8    94,0    80,8    78,5    72,2    73,4    74,2    75,5    75,4    82,8    104,1
+      argile, verre)
+
+042   Riz                                     73,2    73,7    71,7    86,0    76,1    80,6    78,3    73,6    70,2    85,2    74,9
+
+341   Gaz naturel et gaz manufacturé          60,3    64,6    60,2    57,7    60,0    60,8    63,8    55,7    54,8    61,5    72,8
+
+      Larges plats et tôles en fer ou en
+674                                           78,4    73,1    65,1    62,7    54,9    53,2    61,4    61,4    68,7    60,5    63,3
+      acier
+      Voitures automobiles à tous
+781   moteurs, pour le transport des          118,7   87,6    90,8    110,4   141,9   149,6   137,1   134,1   148,9   126,9   121,0
+      personnes
+      Barres et profilés en fer ou en acier
+673                                           81,1    68,6    75,3    77,0    57,1    53,9    60,0    60,7    72,0    57,5    63,7
+      (y compris les palplanches)
+      Froment (avec l'épeautre) et méteil
+041                                           73,8    79,6    73,3    74,5    69,2    74,4    67,0    68,9    73,1    68,8    68,9
+      non moulus
+
+562   Engrais manufacturés                    65,5    123,5   103,9   88,3    171,0   400,5   231,1   214,2   155,1   99,1    72,7
+
+Source : INSD/DSSE/SSECERE
+
+
+
+
+                                                                                                                              31
+            Annexe 4 : Évolution des indices des quantités trimestriels des principaux produits
+            à l'importation
+     Code
+          Libellé                                      4 T 23 1 T 24 2 T 24 3 T 24 4 T 24 1 T 25            2T25     3T25     4T25     1T26     2T26
+     CTCI
+
+      334   Produits raffinés du pétrole               130,9    104,3   106,5    123,9    139,5    95,4     126,8    129,1    122,2    120,8    122,5
+
+            Produits médicinaux et
+      541                                              90,8     79,1    77,2     85,2     135,9    102,2    118,0    140,9    115,1    70,4     129,4
+            pharmaceutiques
+            Chaux, ciments et matériaux de
+      661   construction fabriqués (excepté            132,0    84,2    86,8     133,4    173,9    122,5    171,8    130,1    147,5    111,0    99,3
+            argile, verre)
+
+      042   Riz                                        96,3     123,8   123,4    107,0    129,9    134,3    114,8    125,7    138,3    113,1    133,3
+
+      341   Gaz naturel et gaz manufacturé             150,0    179,0   124,5    118,6    152,7    165,1    127,9    158,8    175,9    156,9    168,7
+
+            Larges plats et tôles en fer ou en
+      674                                              67,0     80,2    92,9     77,5     147,1    124,4    72,5     111,6    150,6    183,4    158,7
+            acier
+            Voitures automobiles à tous moteurs,
+      781                                              79,4     87,4    90,8     94,1     93,9     115,2    111,5    111,8    135,8    154,4    162,0
+            pour le transport des personnes
+            Barres et profilés en fer ou en acier (y
+      673                                              88,6     67,2    77,8     110,9    113,4    88,7     81,5     117,5    146,8    220,6    154,8
+            compris les palplanches)
+            Froment (avec l'épeautre) et méteil
+      041                                              154,7    80,8    114,1    167,6    228,1    156,7    149,7    133,3    212,8    167,5    142,5
+            non moulus
+
+      562   Engrais manufacturés                       61,7     93,6    124,3    111,5    41,8     46,3     108,0    216,0    48,4     10,3      1,0
+
+     Source : INSD/DSSE/SSECERE
+
+
+
+
+            Annexe 5 : Évolution des indices des valeurs unitaires annuels des principaux
+            produits à l'exportation
+     Code
+          Libellé                                       2015     2016    2017     2018     2019     2020     2021     2022      2023     2024     2025
+     CTCI
+          Or, non monétaire (à l'exclusion des          52,7     65,9    64,9     62,8     72,5
+     971                                                                                            90,7      89,4    100,0    103,2    120,7    164,5
+          minerais et concentré d'or)
+      263   Coton                                       62,4     70,1    78,7     81,4     85,8     82,0      88,5    100,0    109,7    104,0     95,2
+            Fruits (à l'exception des fruits            59,8     88,0    110,7    111,9    78,3
+      057                                                                                           91,1      95,5    100,0     76,5     86,7     85,5
+            oléagineux), frais ou secs
+            Chaux, ciments et matériaux de
+      661   construction fabriqués (excepté argile,     201,1   146,0    200,8    256,0    102,0    111,6    100,2    100,0    140,0    148,6    147,6
+            verre)
+            Graines et fruits oléagineux, même          77,3     72,1    81,8     76,9     95,8
+      222                                                                                           94,1      76,1    100,0     94,5    116,5    117,2
+            concassés, servant à extraire l'huile
+            Graines et fruits oléagineux, servant à     78,6      8,6    28,2     83,5     108,1
+      223                                                                                           101,7     96,1    100,0     96,8     99,3    2 969,2
+            extraire autres huiles fixes
+            Barres et profilés en fer ou en acier (y    67,7     64,7    63,3     97,7     63,2
+      673                                                                                           64,3      72,6    100,0     67,2     80,9     68,3
+            compris les palplanches)
+      334   Produits raffinés du pétrole                61,8     46,2    51,9     62,7     67,2     54,0      52,3    100,0    106,5    114,8     97,9
+
+      424   Autres huiles végétales fixes               72,7     67,3    85,4     75,9     124,4    109,5    101,5    100,0    126,8    126,9    144,5
+            Appareils et matériels de génie civil et    103,8   102,2    93,4     78,2     107,8
+      723                                                                                           86,6      94,2    100,0     91,2    110,4    145,2
+            de construction, et leurs pièces
+     Source : INSD/DSSE/SSECERE
+
+
+
+
+32
+       Annexe 6 : Évolution des indices des quantités annuels des principaux produits à
+       l'exportation
+Code
+     Libellé                                      2015    2016    2017    2018    2019    2020    2021    2022    2023     2024    2025
+CTCI
+     Or, non monétaire (à l'exclusion des         71,9    66,5    79,7    90,3    87,3
+971                                                                                       107,7   115,8   100,0   98,4     111,1   170,4
+     minerais et concentré d'or)
+
+ 263   Coton                                      95,4    121,6   91,6    73,4    81,1    62,1    96,2    100,0   47,8     65,5    34,0
+
+       Fruits (à l'exception des fruits           86,4    76,5    87,5    104,2   79,3
+ 057                                                                                      53,8    76,8    100,0   104,5    92,7    180,1
+       oléagineux), frais ou secs
+       Chaux, ciments et matériaux de
+ 661   construction fabriqués (excepté argile,     2,8     2,2     0,1     0,0     7,5    27,3    38,6    100,0   89,9     56,7    24,5
+       verre)
+       Graines et fruits oléagineux, même         281,4   196,1   158,3   190,5   93,4
+ 222                                                                                      87,8    109,7   100,0   90,1     80,8    105,4
+       concassés, servant à extraire l'huile
+       Graines et fruits oléagineux, servant à    84,5    802,3   193,4   84,3    109,3
+ 223                                                                                      78,1    74,5    100,0   154,1    49,9     0,0
+       extraire autres huiles fixes
+       Barres et profilés en fer ou en acier (y   22,5    15,7    14,3    35,1    53,5
+ 673                                                                                      57,7    64,8    100,0   61,2     47,1    35,9
+       compris les palplanches)
+
+ 334   Produits raffinés du pétrole               161,2   68,3    75,8    119,2   86,5    66,9    67,2    100,0   73,3     143,2   118,1
+
+ 424   Autres huiles végétales fixes              46,6    59,8    55,0    103,3   94,3    106,9   96,3    100,0   77,3     102,9   173,7
+
+       Appareils et matériels de génie civil et   89,5    70,3    65,4    64,4    78,3
+ 723                                                                                      62,1    90,7    100,0   143,0    78,7    96,6
+       de construction, et leurs pièces
+Source : INSD/DSSE/SSECERE
+
+
+
+
+       Annexe 7 : Évolution des indices des valeurs unitaires annuels des principaux
+       produits à l'importation
+Code
+     Libellé                                      2015    2016    2017    2018    2019    2020    2021    2022    2023     2024    2025
+CTCI
+ 334   Produits raffinés du pétrole               65,2    54,8    57,2    63,0    67,4    57,4    59,9    100,0   107,5    106,3   91,3
+       Produits médicinaux et                     105,7   89,5    89,1    81,9    87,1
+ 541                                                                                      68,7    99,4    100,0   96,8     92,1    76,2
+       pharmaceutiques
+       Chaux, ciments et matériaux de
+ 661   construction fabriqués (excepté argile,    93,8    87,0    91,0    90,3    75,3    85,3    80,4    100,0   87,0     79,7    74,6
+       verre)
+ 042   Riz                                        109,8   102,8   103,2   104,9   107,9   114,0   118,2   100,0   74,3     76,5    75,9
+
+ 341   Gaz naturel et gaz manufacturé             64,8    59,5    70,0    74,8    72,0    73,5    80,4    100,0   69,8     61,0    58,4
+
+ 674   Larges plats et tôles en fer ou en acier   67,7    65,3    75,0    80,5    74,4    56,8    71,3    100,0   74,1     62,6    61,5
+       Voitures automobiles à tous moteurs,       106,1   102,9   111,8   120,5   124,1
+ 781                                                                                      115,5   105,2   100,0   108,6    107,0   142,9
+       pour le transport des personnes
+       Barres et profilés en fer ou en acier (y   62,3    58,0    68,5    73,4    70,7
+ 673                                                                                      59,8    72,9    100,0   70,5     69,0    63,0
+       compris les palplanches)
+       Froment (avec l'épeautre) et méteil        62,4    58,5    59,0    59,1    63,4
+ 041                                                                                      58,3    75,4    100,0   85,3     72,9    71,2
+       non moulus
+ 562   Engrais manufacturés                       126,1   122,8   106,8   91,5    80,5    84,9    73,2    100,0   107,0    111,5   232,0
+
+Source : INSD/DSSE/SSECERE
+
+
+
+
+                                                                                                                          33
+             Annexe 8 : Évolution des indices des quantités annuels des principaux produits à
+             l'importation
+      Code
+           Libellé                                      2015   2016    2017    2018    2019    2020    2021    2022         2023       2024    2025
+      CTCI
+      334    Produits raffinés du pétrole               60,3   59,4    72,5    78,0    77,8    77,2    88,0    100,0        100,5      118,6   118,4
+             Produits médicinaux et                     54,1   74,6    57,3    87,7    77,0
+      541                                                                                      106,7   73,1    100,0        82,6       94,4    119,3
+             pharmaceutiques
+             Chaux, ciments et matériaux de
+      661    construction fabriqués (excepté argile,    59,1   69,0    83,8    72,8    63,9    103,4   118,2   100,0        133,6      120,5   143,2
+             verre)
+      042    Riz                                        51,7   67,1    71,2    86,2    71,6    57,0    37,3    100,0        108,8      121,0   126,6
+
+      341    Gaz naturel et gaz manufacturé             46,6   51,9    60,9    67,1    74,7    86,5    99,1    100,0        104,6      144,0   156,9
+
+      674    Larges plats et tôles en fer ou en acier   85,5   103,0   109,8   89,0    100,3   111,1   83,7    100,0        86,9       99,6    115,9
+             Voitures automobiles à tous moteurs,       63,4   63,5    77,4    86,9    89,8
+      781                                                                                      82,9    113,0   100,0        78,6       91,6    118,7
+             pour le transport des personnes
+             Barres et profilés en fer ou en acier (y   83,2   101,4   83,5    79,6    83,1
+      673                                                                                      105,7   112,6   100,0        83,4       92,3    110,4
+             compris les palplanches)
+             Froment (avec l'épeautre) et méteil        63,2   69,3    74,8    70,7    62,2
+      041                                                                                      70,2    93,3    100,0        126,7      147,7   165,2
+             non moulus
+      562    Engrais manufacturés                       91,8   125,4   110,5   107,9   66,2    103,4   79,4    100,0        130,8      93,1    104,9
+
+
+
+     Source : INSD/DSSE/SSECERE
+
+             Graphique A.1 : Évolution du cours de l'or (Londres) et du coton Index A (Liverpool)
+
+
+       180                                                                                                                         6 000
+                                                                                                       Coton           Or
+       160
+                                                                                                                                   5 000
+       140
+
+       120                                                                                                                         4 000
+
+       100
+                                                                                                                                   3 000
+        80
+
+        60                                                                                                                         2 000
+
+        40
+                                                                                                                                   1 000
+        20
+
+         0                                                                                                                         0
+
+
+
+
+     Source des données : INSEE
+
+
+
+
+34
+                INSD/DSSE-SSECERE 2026/02
+
+Institut National de la Statistique et de la Démographie (INSD)
+
+              Avenue Pascal ZAGRÉ, Ouaga 2000
+         01 BP 374 Ouagadougou 01 – Burkina Faso
+    Tél. : (00226) 25 49 85 02 - Fax : (00226) 25 37 62 26
+     Site internet : www.insd.bf - Email : insd@insd.bf
+
+
+
+                                                        INSD 2021
+
