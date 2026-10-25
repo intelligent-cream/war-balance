@@ -1,0 +1,10 @@
+{
+ "retrieved": "2026-10-25",
+ "what": "Sources for the route criterion of round 53 (captive_bands_r53.py LANDLOCKED and LNG_FROM). No data was downloaded this round; the volume and share data are round 48's committed extracts (raw/demand_cf_r48).",
+ "sources": [
+  {"name": "UN-OHRLLS, List of Landlocked Developing Countries (32 countries)", "url": "https://www.un.org/ohrlls/content/list-lldcs", "used_for": "LANDLOCKED (ARM, AZE, KAZ, KGZ, MDA, MNG, MKD, TJK, TKM, UZB, AFG and others)"},
+  {"name": "Landlocked European countries (geography): Austria, Belarus, Czechia, Hungary, Slovakia, Serbia, Switzerland, Liechtenstein, Luxembourg, Andorra, San Marino, Vatican, Kosovo", "url": "https://en.wikipedia.org/wiki/Landlocked_country", "used_for": "LANDLOCKED (European)"},
+  {"name": "GIIGNL Annual Report (LNG import terminals by country and start-up year)", "url": "https://giignl.org/document/giignl-annual-report/", "used_for": "LNG_FROM: Lithuania Klaipeda FSRU Dec 2014 (2014), Poland Swinoujscie (first commercial 2016), Croatia Krk (Jan 2021), Malta Delimara (2017), Netherlands Gate (2011), Finland Inkoo FSRU and Hamina (2022; Pori 2016 and Tornio 2018 are small off-grid terminals, not counted), Estonia Paldiski (2022), Germany (Wilhelmshaven, Dec 2022)"}
+ ],
+ "limits": "The route criterion is a physical-entry rule for the country itself. It does not count pipeline interconnectors that could have carried non-Russian gas (Balticconnector 2020, Iasi-Ungheni 2014, Hungary-Austria HAG, reverse flows into Slovakia and Czechia, the Iran-Armenia pipeline) or crude by other pipelines (Adria to Hungary and Slovakia, IKL/TAL to Czechia). The share criterion (Russia >= 70% of the product's imports) is what tests whether such alternatives were actually used."
+}

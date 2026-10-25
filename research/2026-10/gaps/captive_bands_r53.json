@@ -1,0 +1,7309 @@
+{
+ "generated": "2026-10-25",
+ "meta": {
+  "what": "Round 53: is a band measured only on captive energy flows (Russia >= 70% of the product's imports, no sea route) narrower than the site's general band for 'paid', and does it hold out of sample?",
+  "units": "multipliers on the summed expected (held-flat) level; H1-H5, H5 with the fifth year at 8/12 (the site's 2022-2026 with 2026 at 8 of 12 months)",
+  "script": "research/2026-10/scripts/captive_bands_r53.py"
+ },
+ "rule": {
+  "written": "2026-10-25 22:05 UTC, before any back-test result was computed",
+  "captive_flow": "a country x energy product (HS 2701 coal, 2709 crude, 2710 oil products, 2711 gas) is CAPTIVE when (1) Russia's share of the country's imports of that product is >= 70%, averaged over the reference years (2017-2021 for the 2022-2026 application; the four years to the origin, o-3..o, in the back-test, so no window is selected on its own future), (2) the product could not reach the country by sea: the country is landlocked (UN LLDC list), or the product is natural gas and the country had no LNG import terminal feeding its grid in that year, and (3) the flow averaged at least EUR 10 m a year over the reference years at fixed 2019-2021 unit values",
+  "data_sets": "shares and volumes from Eurostat energy imports by country of origin (gas TJ GCV, crude and oil products kt, coal kt) for the countries Eurostat covers (EU, Western Balkans, Moldova, Georgia, Turkiye, Norway, UK); CEPII BACI elsewhere (Russia's exports to the country in tonnes; shares on value). One data set per country. Fixed 2019-2021 unit values to add products (round 8): crude EUR 370/t, products 420/t, pipeline gas EUR 4.67/GJ (249/t in BACI tonnes at 53.4 GJ/t), coal 60/t. BACI tonnes are used only when the unit value is within x1/3-x3 of the world unit value of the heading that year (else missing). Eurostat exact zeros between positive years are missing (round 8 cleaning)",
+  "unit_of_test": "a country's captive energy basket at an origin o (the sum of its captive products at o), in volume at fixed unit values; the centre is HELD FLAT at the origin year (as the site's to_rus centre); the error is the site's cumulative error log(sum w x actual / sum w x predicted), H = 1..5, w = 1 except 8/12 for the fifth year. Origins 2005-2016 for the band; 2017 only for the 2018 placebo. Ukraine and Russia are left out; Belarus is in",
+  "band": "era-calibrated 90% band (round 7/48 method: 5th-95th percentile of the pooled errors x K, K the smallest factor >= 0.5 at which bands from two eras cover >= 90% of the third; eras 2005-09, 2010-12, 2013-16), per horizon",
+  "accept_pooled_if_all": [
+   "(a) narrower: the H5 captive band's log width is smaller than the current site band for those flows: the generic band of large purchases x CB_SCALE_PAID (0.652-1.500 for 2022-2026), the band almost every captive country carries",
+   "(b) coverage: leave-era-out (band from the other two eras x K) coverage of the H5 errors >= 80% at EACH origin 2005-2016 and >= 90% pooled",
+   "(c) placebo: the band built only from origins whose windows end before the placebo window (x K) covers >= 90% of the captive windows for the war moved to 2014 (origin 2013, H5, trained on origins <= 2008) and to 2018 (origin 2017, H4, trained on origins <= 2013)",
+   "(d) centre: held flat (the current site centre); this round changes only the range, never the centre"
+  ],
+  "accept_country_if_all": "the pooled rule passes, and the country has >= 6 H5 windows, the pooled band covers >= 80% of them, and the band rebuilt without the country (leave-country-out, recalibrated) also covers >= 80% of them; and its combined 2022-2026 band (below) is narrower than its current site band. Countries with fewer windows are reported, not changed",
+  "application": "'paid' is all goods. Per country, W = the captive products' share of its 2021 purchases from Russia (BACI value), raised each year by the no-war fuel price factor the site's expected path carries (as round 44's Japan LNG split: w_t = s (b_t - (1 - f)) / f / b_t, f = the HS 27 share of 2021 purchases); the cumulative band is the combination of the captive energy band (share W) and the country's current band for the rest (1 - W): half-width = sqrt((W a)^2 + ((1 - W) b)^2 + 2 rho W (1 - W) a b), rho = 0.26 (the owner's value for fuel / non-fuel errors, round 8 / round 44). The current band before the round 51-52 strike adjustment is combined, then the strike widening is added back unchanged. The yearly bands (bmul_lo/hi) are scaled by the same factor per side as the 2022-2026 band",
+  "stress_cases": "the 2006 and 2009 gas crises (Ukraine transit) and the 2014 shock are reported: errors of the windows that contain them, single-year errors for 2006, 2009 and 2014, and the origin coverage",
+  "multiple_testing": "one pooled test plus per-country checks; per product and per group (gas, oil) cells are reported as diagnostics, not used to pass anything"
+ },
+ "verdict": "FAILS. The captive energy band (0.567-1.755 for 2022-2026, 206 windows, 21 countries) is 1.36x WIDER in log terms than the site's current band (0.652-1.500), misses 80% coverage at the 2012 origin and covers 84% in the 2014 placebo. No country is changed. Captive energy purchases were not steadier than general trade: price-insensitive supply, yes, but volumes moved with demand, transit crises, domestic output (Romania, Kazakhstan), Belarus's oil disputes and refinery events. Combining the band by energy share would narrow most countries only through the split itself (two imperfectly correlated parts); measured against that split-only baseline the captive band widens every country but Bosnia",
+ "pooled": {
+  "n_windows_H5": 206,
+  "n_countries": 21,
+  "band_H5": {
+   "band": [
+    0.567,
+    1.755
+   ],
+   "K": 1.23,
+   "era_coverage": {
+    "2005-09": 0.949,
+    "2010-12": 0.906,
+    "2013-16": 0.92
+   },
+   "n": 206,
+   "log_width": 1.1297
+  },
+  "site_band_H5": [
+   0.6517,
+   1.4998
+  ],
+  "site_band_log_width": 0.8335,
+  "width_ratio_vs_site": 1.355,
+  "site_band_coverage_on_these_windows": 0.879,
+  "median_error_H5": -0.0297,
+  "leave_era_out": {
+   "per_origin": {
+    "2005": {
+     "n": 16,
+     "coverage": 0.938
+    },
+    "2006": {
+     "n": 14,
+     "coverage": 0.857
+    },
+    "2007": {
+     "n": 15,
+     "coverage": 1.0
+    },
+    "2008": {
+     "n": 16,
+     "coverage": 0.938
+    },
+    "2009": {
+     "n": 17,
+     "coverage": 1.0
+    },
+    "2010": {
+     "n": 17,
+     "coverage": 1.0
+    },
+    "2011": {
+     "n": 18,
+     "coverage": 0.944
+    },
+    "2012": {
+     "n": 18,
+     "coverage": 0.778
+    },
+    "2013": {
+     "n": 19,
+     "coverage": 0.895
+    },
+    "2014": {
+     "n": 19,
+     "coverage": 0.895
+    },
+    "2015": {
+     "n": 19,
+     "coverage": 0.895
+    },
+    "2016": {
+     "n": 18,
+     "coverage": 1.0
+    }
+   },
+   "pooled": 0.927,
+   "n": 206
+  },
+  "placebo": {
+   "war_2014": {
+    "n": 19,
+    "coverage": 0.842,
+    "band": [
+     0.57,
+     1.452
+    ]
+   },
+   "war_2018": {
+    "n": 19,
+    "coverage": 0.947,
+    "band": [
+     0.563,
+     1.692
+    ]
+   }
+  },
+  "pass_a_narrower": false,
+  "pass_b_coverage": false,
+  "pass_c_placebo": false,
+  "pass_d_centre": true,
+  "PASS": false,
+  "why_not": "(a) not narrower than the site band; (b) coverage: pooled 0.927, origins under 80%: 2012; (c) placebo under 90%: war_2014 0.842, war_2018 0.947"
+ },
+ "captive_band": {
+  "H1": {
+   "low": 0.615,
+   "high": 1.4908,
+   "K": 1.23,
+   "n": 213
+  },
+  "H2": {
+   "low": 0.6605,
+   "high": 1.7112,
+   "K": 1.23,
+   "n": 211
+  },
+  "H3": {
+   "low": 0.6142,
+   "high": 1.7903,
+   "K": 1.23,
+   "n": 209
+  },
+  "H4": {
+   "low": 0.5749,
+   "high": 1.8012,
+   "K": 1.23,
+   "n": 207
+  },
+  "H5": {
+   "low": 0.5672,
+   "high": 1.7553,
+   "K": 1.23,
+   "n": 206
+  }
+ },
+ "diagnostics": {
+  "value_deflated_variant": {
+   "n_windows_H5": 212,
+   "n_countries": 22,
+   "band_H5": {
+    "band": [
+     0.337,
+     3.369
+    ],
+    "K": 1.53,
+    "era_coverage": {
+     "2005-09": 0.905,
+     "2010-12": 0.981,
+     "2013-16": 0.907
+    },
+    "n": 212,
+    "log_width": 2.3034
+   },
+   "site_band_H5": [
+    0.6517,
+    1.4998
+   ],
+   "site_band_log_width": 0.8335,
+   "width_ratio_vs_site": 2.764,
+   "site_band_coverage_on_these_windows": 0.731,
+   "median_error_H5": -0.0002,
+   "leave_era_out": {
+    "per_origin": {
+     "2005": {
+      "n": 16,
+      "coverage": 0.75
+     },
+     "2006": {
+      "n": 16,
+      "coverage": 0.938
+     },
+     "2007": {
+      "n": 17,
+      "coverage": 1.0
+     },
+     "2008": {
+      "n": 17,
+      "coverage": 0.941
+     },
+     "2009": {
+      "n": 18,
+      "coverage": 0.889
+     },
+     "2010": {
+      "n": 17,
+      "coverage": 1.0
+     },
+     "2011": {
+      "n": 18,
+      "coverage": 1.0
+     },
+     "2012": {
+      "n": 18,
+      "coverage": 0.944
+     },
+     "2013": {
+      "n": 19,
+      "coverage": 0.895
+     },
+     "2014": {
+      "n": 19,
+      "coverage": 0.895
+     },
+     "2015": {
+      "n": 19,
+      "coverage": 0.895
+     },
+     "2016": {
+      "n": 18,
+      "coverage": 0.944
+     }
+    },
+    "pooled": 0.925,
+    "n": 212
+   },
+   "placebo": {
+    "war_2014": {
+     "n": 19,
+     "coverage": 0.895,
+     "band": [
+      0.36,
+      6.047
+     ]
+    },
+    "war_2018": {
+     "n": 19,
+     "coverage": 0.947,
+     "band": [
+      0.324,
+      2.522
+     ]
+    }
+   },
+   "pass_a_narrower": false,
+   "pass_b_coverage": false,
+   "pass_c_placebo": false,
+   "pass_d_centre": true,
+   "PASS": false,
+   "why_not": "(a) not narrower than the site band; (b) coverage: pooled 0.925, origins under 80%: 2005; (c) placebo under 90%: war_2014 0.895, war_2018 0.947"
+  },
+  "by_group": {
+   "gas": {
+    "n_windows_H5": 119,
+    "n_countries": 13,
+    "band_H5": {
+     "band": [
+      0.518,
+      1.611
+     ],
+     "K": 1.42,
+     "era_coverage": {
+      "2005-09": 0.979,
+      "2010-12": 0.935,
+      "2013-16": 0.9
+     },
+     "n": 119,
+     "log_width": 1.135
+    },
+    "site_band_H5": [
+     0.6517,
+     1.4998
+    ],
+    "site_band_log_width": 0.8335,
+    "width_ratio_vs_site": 1.362,
+    "site_band_coverage_on_these_windows": 0.891,
+    "median_error_H5": -0.0508,
+    "leave_era_out": {
+     "per_origin": {
+      "2005": {
+       "n": 11,
+       "coverage": 1.0
+      },
+      "2006": {
+       "n": 9,
+       "coverage": 1.0
+      },
+      "2007": {
+       "n": 9,
+       "coverage": 1.0
+      },
+      "2008": {
+       "n": 9,
+       "coverage": 0.889
+      },
+      "2009": {
+       "n": 10,
+       "coverage": 1.0
+      },
+      "2010": {
+       "n": 10,
+       "coverage": 1.0
+      },
+      "2011": {
+       "n": 11,
+       "coverage": 0.909
+      },
+      "2012": {
+       "n": 10,
+       "coverage": 0.9
+      },
+      "2013": {
+       "n": 11,
+       "coverage": 1.0
+      },
+      "2014": {
+       "n": 10,
+       "coverage": 0.8
+      },
+      "2015": {
+       "n": 10,
+       "coverage": 0.8
+      },
+      "2016": {
+       "n": 9,
+       "coverage": 1.0
+      }
+     },
+     "pooled": 0.941,
+     "n": 119
+    },
+    "placebo": {
+     "war_2014": {
+      "n": 11,
+      "coverage": 1.0,
+      "band": [
+       0.497,
+       1.288
+      ]
+     },
+     "war_2018": {
+      "n": 11,
+      "coverage": 1.0,
+      "band": [
+       0.515,
+       1.365
+      ]
+     }
+    },
+    "pass_a_narrower": false,
+    "pass_b_coverage": true,
+    "pass_c_placebo": true,
+    "pass_d_centre": true,
+    "PASS": false,
+    "why_not": "(a) not narrower than the site band"
+   },
+   "oil": {
+    "n_windows_H5": 37,
+    "n_countries": 5,
+    "band_H5": {
+     "band": [
+      0.594,
+      2.106
+     ],
+     "K": 1.4,
+     "era_coverage": {
+      "2005-09": 1.0,
+      "2010-12": 1.0,
+      "2013-16": 0.933
+     },
+     "n": 37,
+     "log_width": 1.2654
+    },
+    "site_band_H5": [
+     0.6517,
+     1.4998
+    ],
+    "site_band_log_width": 0.8335,
+    "width_ratio_vs_site": 1.518,
+    "site_band_coverage_on_these_windows": 0.865,
+    "median_error_H5": 0.1087,
+    "leave_era_out": {
+     "per_origin": {
+      "2005": {
+       "n": 1,
+       "coverage": 1.0
+      },
+      "2006": {
+       "n": 1,
+       "coverage": 1.0
+      },
+      "2007": {
+       "n": 3,
+       "coverage": 1.0
+      },
+      "2008": {
+       "n": 4,
+       "coverage": 1.0
+      },
+      "2009": {
+       "n": 4,
+       "coverage": 1.0
+      },
+      "2010": {
+       "n": 3,
+       "coverage": 1.0
+      },
+      "2011": {
+       "n": 3,
+       "coverage": 1.0
+      },
+      "2012": {
+       "n": 3,
+       "coverage": 1.0
+      },
+      "2013": {
+       "n": 3,
+       "coverage": 0.667
+      },
+      "2014": {
+       "n": 4,
+       "coverage": 1.0
+      },
+      "2015": {
+       "n": 4,
+       "coverage": 1.0
+      },
+      "2016": {
+       "n": 4,
+       "coverage": 1.0
+      }
+     },
+     "pooled": 0.973,
+     "n": 37
+    },
+    "placebo": {
+     "war_2014": {
+      "n": 3,
+      "coverage": null
+     },
+     "war_2018": {
+      "n": 4,
+      "coverage": 1.0,
+      "band": [
+       0.563,
+       2.449
+      ]
+     }
+    },
+    "pass_a_narrower": false,
+    "pass_b_coverage": false,
+    "pass_c_placebo": false,
+    "pass_d_centre": true,
+    "PASS": false,
+    "why_not": "(a) not narrower than the site band; (b) coverage: pooled 0.973, origins under 80%: 2013; (c) placebo under 90%: war_2014 None, war_2018 1.0"
+   },
+   "mixed": {
+    "n_windows_H5": 50,
+    "n_countries": 5,
+    "band_H5": {
+     "band": [
+      0.403,
+      2.316
+     ],
+     "K": 1.97,
+     "era_coverage": {
+      "2005-09": 0.941,
+      "2010-12": 0.923,
+      "2013-16": 0.95
+     },
+     "n": 50,
+     "log_width": 1.7475
+    },
+    "site_band_H5": [
+     0.6517,
+     1.4998
+    ],
+    "site_band_log_width": 0.8335,
+    "width_ratio_vs_site": 2.097,
+    "site_band_coverage_on_these_windows": 0.86,
+    "median_error_H5": -0.0582,
+    "leave_era_out": {
+     "per_origin": {
+      "2005": {
+       "n": 4,
+       "coverage": 0.75
+      },
+      "2006": {
+       "n": 4,
+       "coverage": 1.0
+      },
+      "2007": {
+       "n": 3,
+       "coverage": 1.0
+      },
+      "2008": {
+       "n": 3,
+       "coverage": 1.0
+      },
+      "2009": {
+       "n": 3,
+       "coverage": 1.0
+      },
+      "2010": {
+       "n": 4,
+       "coverage": 1.0
+      },
+      "2011": {
+       "n": 4,
+       "coverage": 1.0
+      },
+      "2012": {
+       "n": 5,
+       "coverage": 0.8
+      },
+      "2013": {
+       "n": 5,
+       "coverage": 0.8
+      },
+      "2014": {
+       "n": 5,
+       "coverage": 1.0
+      },
+      "2015": {
+       "n": 5,
+       "coverage": 1.0
+      },
+      "2016": {
+       "n": 5,
+       "coverage": 1.0
+      }
+     },
+     "pooled": 0.94,
+     "n": 50
+    },
+    "placebo": {
+     "war_2014": {
+      "n": 5,
+      "coverage": 0.8,
+      "band": [
+       0.661,
+       5.862
+      ]
+     },
+     "war_2018": {
+      "n": 4,
+      "coverage": 0.75,
+      "band": [
+       0.427,
+       2.511
+      ]
+     }
+    },
+    "pass_a_narrower": false,
+    "pass_b_coverage": false,
+    "pass_c_placebo": false,
+    "pass_d_centre": true,
+    "PASS": false,
+    "why_not": "(a) not narrower than the site band; (b) coverage: pooled 0.94, origins under 80%: 2005; (c) placebo under 90%: war_2014 0.8, war_2018 0.75"
+   }
+  },
+  "by_data_set": {
+   "eurostat": {
+    "n_windows_H5": 142,
+    "n_countries": 14,
+    "band_H5": {
+     "band": [
+      0.47,
+      1.857
+     ],
+     "K": 1.66,
+     "era_coverage": {
+      "2005-09": 0.983,
+      "2010-12": 0.944,
+      "2013-16": 0.917
+     },
+     "n": 142,
+     "log_width": 1.3731
+    },
+    "site_band_H5": [
+     0.6517,
+     1.4998
+    ],
+    "site_band_log_width": 0.8335,
+    "width_ratio_vs_site": 1.647,
+    "site_band_coverage_on_these_windows": 0.901,
+    "median_error_H5": -0.0519,
+    "leave_era_out": {
+     "per_origin": {
+      "2005": {
+       "n": 13,
+       "coverage": 1.0
+      },
+      "2006": {
+       "n": 11,
+       "coverage": 1.0
+      },
+      "2007": {
+       "n": 11,
+       "coverage": 1.0
+      },
+      "2008": {
+       "n": 11,
+       "coverage": 0.909
+      },
+      "2009": {
+       "n": 12,
+       "coverage": 1.0
+      },
+      "2010": {
+       "n": 12,
+       "coverage": 1.0
+      },
+      "2011": {
+       "n": 12,
+       "coverage": 0.917
+      },
+      "2012": {
+       "n": 12,
+       "coverage": 0.917
+      },
+      "2013": {
+       "n": 13,
+       "coverage": 1.0
+      },
+      "2014": {
+       "n": 12,
+       "coverage": 0.833
+      },
+      "2015": {
+       "n": 12,
+       "coverage": 0.833
+      },
+      "2016": {
+       "n": 11,
+       "coverage": 1.0
+      }
+     },
+     "pooled": 0.951,
+     "n": 142
+    },
+    "placebo": {
+     "war_2014": {
+      "n": 13,
+      "coverage": 0.923,
+      "band": [
+       0.457,
+       1.297
+      ]
+     },
+     "war_2018": {
+      "n": 12,
+      "coverage": 1.0,
+      "band": [
+       0.465,
+       1.485
+      ]
+     }
+    },
+    "pass_a_narrower": false,
+    "pass_b_coverage": true,
+    "pass_c_placebo": true,
+    "pass_d_centre": true,
+    "PASS": false,
+    "why_not": "(a) not narrower than the site band"
+   },
+   "baci": {
+    "n_windows_H5": 64,
+    "n_countries": 7,
+    "band_H5": {
+     "band": [
+      0.553,
+      2.231
+     ],
+     "K": 1.26,
+     "era_coverage": {
+      "2005-09": 0.9,
+      "2010-12": 0.941,
+      "2013-16": 0.963
+     },
+     "n": 64,
+     "log_width": 1.3943
+    },
+    "site_band_H5": [
+     0.6517,
+     1.4998
+    ],
+    "site_band_log_width": 0.8335,
+    "width_ratio_vs_site": 1.673,
+    "site_band_coverage_on_these_windows": 0.828,
+    "median_error_H5": 0.0396,
+    "leave_era_out": {
+     "per_origin": {
+      "2005": {
+       "n": 3,
+       "coverage": 0.667
+      },
+      "2006": {
+       "n": 3,
+       "coverage": 0.667
+      },
+      "2007": {
+       "n": 4,
+       "coverage": 1.0
+      },
+      "2008": {
+       "n": 5,
+       "coverage": 1.0
+      },
+      "2009": {
+       "n": 5,
+       "coverage": 1.0
+      },
+      "2010": {
+       "n": 5,
+       "coverage": 1.0
+      },
+      "2011": {
+       "n": 6,
+       "coverage": 1.0
+      },
+      "2012": {
+       "n": 6,
+       "coverage": 0.833
+      },
+      "2013": {
+       "n": 6,
+       "coverage": 0.833
+      },
+      "2014": {
+       "n": 7,
+       "coverage": 1.0
+      },
+      "2015": {
+       "n": 7,
+       "coverage": 1.0
+      },
+      "2016": {
+       "n": 7,
+       "coverage": 1.0
+      }
+     },
+     "pooled": 0.938,
+     "n": 64
+    },
+    "placebo": {
+     "war_2014": {
+      "n": 6,
+      "coverage": 0.833,
+      "band": [
+       0.768,
+       3.004
+      ]
+     },
+     "war_2018": {
+      "n": 7,
+      "coverage": 0.857,
+      "band": [
+       0.491,
+       2.295
+      ]
+     }
+    },
+    "pass_a_narrower": false,
+    "pass_b_coverage": false,
+    "pass_c_placebo": false,
+    "pass_d_centre": true,
+    "PASS": false,
+    "why_not": "(a) not narrower than the site band; (b) coverage: pooled 0.938, origins under 80%: 2005,2006; (c) placebo under 90%: war_2014 0.833, war_2018 0.857"
+   }
+  },
+  "without_belarus": {
+   "n_windows_H5": 194,
+   "n_countries": 20,
+   "band_H5": {
+    "band": [
+     0.566,
+     1.665
+    ],
+    "K": 1.22,
+    "era_coverage": {
+     "2005-09": 0.973,
+     "2010-12": 0.9,
+     "2013-16": 0.901
+    },
+    "n": 194,
+    "log_width": 1.0799
+   },
+   "site_band_H5": [
+    0.6517,
+    1.4998
+   ],
+   "site_band_log_width": 0.8335,
+   "width_ratio_vs_site": 1.296,
+   "site_band_coverage_on_these_windows": 0.881,
+   "median_error_H5": -0.0297,
+   "leave_era_out": {
+    "per_origin": {
+     "2005": {
+      "n": 15,
+      "coverage": 1.0
+     },
+     "2006": {
+      "n": 13,
+      "coverage": 0.923
+     },
+     "2007": {
+      "n": 14,
+      "coverage": 1.0
+     },
+     "2008": {
+      "n": 15,
+      "coverage": 0.933
+     },
+     "2009": {
+      "n": 16,
+      "coverage": 1.0
+     },
+     "2010": {
+      "n": 16,
+      "coverage": 1.0
+     },
+     "2011": {
+      "n": 17,
+      "coverage": 0.941
+     },
+     "2012": {
+      "n": 17,
+      "coverage": 0.765
+     },
+     "2013": {
+      "n": 18,
+      "coverage": 0.889
+     },
+     "2014": {
+      "n": 18,
+      "coverage": 0.833
+     },
+     "2015": {
+      "n": 18,
+      "coverage": 0.889
+     },
+     "2016": {
+      "n": 17,
+      "coverage": 1.0
+     }
+    },
+    "pooled": 0.928,
+    "n": 194
+   },
+   "placebo": {
+    "war_2014": {
+     "n": 18,
+     "coverage": 0.833,
+     "band": [
+      0.57,
+      1.384
+     ]
+    },
+    "war_2018": {
+     "n": 18,
+     "coverage": 0.944,
+     "band": [
+      0.563,
+      1.594
+     ]
+    }
+   },
+   "pass_a_narrower": false,
+   "pass_b_coverage": false,
+   "pass_c_placebo": false,
+   "pass_d_centre": true,
+   "PASS": false,
+   "why_not": "(a) not narrower than the site band; (b) coverage: pooled 0.928, origins under 80%: 2012; (c) placebo under 90%: war_2014 0.833, war_2018 0.944"
+  },
+  "lookahead_2017_2021_list": {
+   "n_windows_H5": 187,
+   "n_countries": 17,
+   "band_H5": {
+    "band": [
+     0.698,
+     1.757
+    ],
+    "K": 1.12,
+    "era_coverage": {
+     "2005-09": 0.903,
+     "2010-12": 0.938,
+     "2013-16": 0.94
+    },
+    "n": 187,
+    "log_width": 0.9233
+   },
+   "site_band_H5": [
+    0.6517,
+    1.4998
+   ],
+   "site_band_log_width": 0.8335,
+   "width_ratio_vs_site": 1.108,
+   "site_band_coverage_on_these_windows": 0.914,
+   "median_error_H5": -0.0101,
+   "leave_era_out": {
+    "per_origin": {
+     "2005": {
+      "n": 14,
+      "coverage": 0.857
+     },
+     "2006": {
+      "n": 14,
+      "coverage": 0.929
+     },
+     "2007": {
+      "n": 14,
+      "coverage": 1.0
+     },
+     "2008": {
+      "n": 15,
+      "coverage": 0.867
+     },
+     "2009": {
+      "n": 15,
+      "coverage": 0.867
+     },
+     "2010": {
+      "n": 16,
+      "coverage": 0.875
+     },
+     "2011": {
+      "n": 16,
+      "coverage": 1.0
+     },
+     "2012": {
+      "n": 16,
+      "coverage": 0.938
+     },
+     "2013": {
+      "n": 16,
+      "coverage": 0.938
+     },
+     "2014": {
+      "n": 17,
+      "coverage": 1.0
+     },
+     "2015": {
+      "n": 17,
+      "coverage": 0.941
+     },
+     "2016": {
+      "n": 17,
+      "coverage": 0.882
+     }
+    },
+    "pooled": 0.925,
+    "n": 187
+   },
+   "placebo": {
+    "war_2014": {
+     "n": 16,
+     "coverage": 0.938,
+     "band": [
+      0.696,
+      1.679
+     ]
+    },
+    "war_2018": {
+     "n": 17,
+     "coverage": 0.882,
+     "band": [
+      0.69,
+      1.762
+     ]
+    }
+   },
+   "pass_a_narrower": false,
+   "pass_b_coverage": true,
+   "pass_c_placebo": false,
+   "pass_d_centre": true,
+   "PASS": false,
+   "why_not": "(a) not narrower than the site band; (c) placebo under 90%: war_2014 0.938, war_2018 0.882"
+  },
+  "post_hoc_large_flows_ge_eur_300m_at_origin": {
+   "n_windows_H5": 146,
+   "n_countries": 16,
+   "band_H5": {
+    "band": [
+     0.554,
+     1.534
+    ],
+    "K": 1.22,
+    "era_coverage": {
+     "2005-09": 0.964,
+     "2010-12": 0.9,
+     "2013-16": 0.96
+    },
+    "n": 146,
+    "log_width": 1.0179
+   },
+   "site_band_H5": [
+    0.6517,
+    1.4998
+   ],
+   "site_band_log_width": 0.8335,
+   "width_ratio_vs_site": 1.221,
+   "site_band_coverage_on_these_windows": 0.904,
+   "median_error_H5": -0.0486,
+   "leave_era_out": {
+    "per_origin": {
+     "2005": {
+      "n": 11,
+      "coverage": 1.0
+     },
+     "2006": {
+      "n": 11,
+      "coverage": 0.909
+     },
+     "2007": {
+      "n": 11,
+      "coverage": 1.0
+     },
+     "2008": {
+      "n": 11,
+      "coverage": 0.909
+     },
+     "2009": {
+      "n": 12,
+      "coverage": 1.0
+     },
+     "2010": {
+      "n": 13,
+      "coverage": 1.0
+     },
+     "2011": {
+      "n": 13,
+      "coverage": 0.846
+     },
+     "2012": {
+      "n": 14,
+      "coverage": 0.857
+     },
+     "2013": {
+      "n": 14,
+      "coverage": 0.857
+     },
+     "2014": {
+      "n": 12,
+      "coverage": 1.0
+     },
+     "2015": {
+      "n": 12,
+      "coverage": 1.0
+     },
+     "2016": {
+      "n": 12,
+      "coverage": 1.0
+     }
+    },
+    "pooled": 0.945,
+    "n": 146
+   },
+   "placebo": {
+    "war_2014": {
+     "n": 14,
+     "coverage": 0.786,
+     "band": [
+      0.561,
+      1.181
+     ]
+    },
+    "war_2018": {
+     "n": 12,
+     "coverage": 0.917,
+     "band": [
+      0.534,
+      1.567
+     ]
+    }
+   },
+   "pass_a_narrower": false,
+   "pass_b_coverage": true,
+   "pass_c_placebo": false,
+   "pass_d_centre": true,
+   "PASS": false,
+   "why_not": "(a) not narrower than the site band; (c) placebo under 90%: war_2014 0.786, war_2018 0.917"
+  },
+  "per_country_own_band": {
+   "BGR": {
+    "band_H5": [
+     0.602,
+     1.411
+    ],
+    "K": 2.31,
+    "n": 12,
+    "log_width": 0.8519,
+    "leave_era_out_pooled": 1.0,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   },
+   "BLR": {
+    "band_H5": [
+     0.543,
+     17.135
+    ],
+    "K": 3.0,
+    "n": 12,
+    "log_width": 3.4519,
+    "leave_era_out_pooled": 0.917,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   },
+   "CZE": {
+    "band_H5": [
+     0.747,
+     1.938
+    ],
+    "K": 2.35,
+    "n": 12,
+    "log_width": 0.9532,
+    "leave_era_out_pooled": 1.0,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   },
+   "EST": {
+    "band_H5": [
+     0.359,
+     0.967
+    ],
+    "K": 3.0,
+    "n": 12,
+    "log_width": 0.9919,
+    "leave_era_out_pooled": 0.75,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   },
+   "FIN": {
+    "band_H5": [
+     0.423,
+     0.97
+    ],
+    "K": 3.0,
+    "n": 12,
+    "log_width": 0.8297,
+    "leave_era_out_pooled": 0.583,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   },
+   "HUN": {
+    "band_H5": [
+     0.686,
+     1.113
+    ],
+    "K": 3.0,
+    "n": 12,
+    "log_width": 0.484,
+    "leave_era_out_pooled": 0.917,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   },
+   "KAZ": {
+    "band_H5": [
+     0.047,
+     2.21
+    ],
+    "K": 3.0,
+    "n": 12,
+    "log_width": 3.8487,
+    "leave_era_out_pooled": 0.917,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   },
+   "KGZ": {
+    "band_H5": [
+     0.579,
+     3.19
+    ],
+    "K": 3.0,
+    "n": 10,
+    "log_width": 1.7062,
+    "leave_era_out_pooled": 0.5,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   },
+   "LVA": {
+    "band_H5": [
+     0.657,
+     1.493
+    ],
+    "K": 1.34,
+    "n": 12,
+    "log_width": 0.8205,
+    "leave_era_out_pooled": 1.0,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   },
+   "MKD": {
+    "band_H5": [
+     1.248,
+     6.349
+    ],
+    "K": 3.0,
+    "n": 12,
+    "log_width": 1.6268,
+    "leave_era_out_pooled": 0.5,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   },
+   "MNG": {
+    "band_H5": [
+     1.212,
+     3.564
+    ],
+    "K": 3.0,
+    "n": 12,
+    "log_width": 1.0784,
+    "leave_era_out_pooled": 0.75,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   },
+   "ROU": {
+    "band_H5": [
+     0.069,
+     38.917
+    ],
+    "K": 3.0,
+    "n": 12,
+    "log_width": 6.3412,
+    "leave_era_out_pooled": 0.75,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   },
+   "SRB": {
+    "band_H5": [
+     0.461,
+     2.306
+    ],
+    "K": 2.02,
+    "n": 12,
+    "log_width": 1.6093,
+    "leave_era_out_pooled": 1.0,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   },
+   "SVK": {
+    "band_H5": [
+     0.823,
+     1.078
+    ],
+    "K": 2.11,
+    "n": 12,
+    "log_width": 0.2704,
+    "leave_era_out_pooled": 1.0,
+    "placebo": {
+     "war_2014": null,
+     "war_2018": null
+    },
+    "passes_own_tests": false
+   }
+  },
+  "as_written_without_trailing_zero_cleaning": {
+   "n_windows_H5": 213,
+   "n_countries": 22,
+   "band_H5": {
+    "band": [
+     0.512,
+     1.75
+    ],
+    "K": 1.24,
+    "era_coverage": {
+     "2005-09": 0.906,
+     "2010-12": 0.925,
+     "2013-16": 0.92
+    },
+    "n": 213,
+    "log_width": 1.2286
+   },
+   "site_band_H5": [
+    0.6517,
+    1.4998
+   ],
+   "site_band_log_width": 0.8335,
+   "width_ratio_vs_site": 1.474,
+   "site_band_coverage_on_these_windows": 0.854,
+   "median_error_H5": -0.0359,
+   "leave_era_out": {
+    "per_origin": {
+     "2005": {
+      "n": 17,
+      "coverage": 0.882
+     },
+     "2006": {
+      "n": 16,
+      "coverage": 0.875
+     },
+     "2007": {
+      "n": 17,
+      "coverage": 0.941
+     },
+     "2008": {
+      "n": 17,
+      "coverage": 0.882
+     },
+     "2009": {
+      "n": 18,
+      "coverage": 0.944
+     },
+     "2010": {
+      "n": 17,
+      "coverage": 1.0
+     },
+     "2011": {
+      "n": 18,
+      "coverage": 0.944
+     },
+     "2012": {
+      "n": 18,
+      "coverage": 0.833
+     },
+     "2013": {
+      "n": 19,
+      "coverage": 0.895
+     },
+     "2014": {
+      "n": 19,
+      "coverage": 0.895
+     },
+     "2015": {
+      "n": 19,
+      "coverage": 0.895
+     },
+     "2016": {
+      "n": 18,
+      "coverage": 1.0
+     }
+    },
+    "pooled": 0.915,
+    "n": 213
+   },
+   "placebo": {
+    "war_2014": {
+     "n": 19,
+     "coverage": 0.842,
+     "band": [
+      0.442,
+      1.444
+     ]
+    },
+    "war_2018": {
+     "n": 19,
+     "coverage": 0.947,
+     "band": [
+      0.464,
+      1.698
+     ]
+    }
+   },
+   "pass_a_narrower": false,
+   "pass_b_coverage": true,
+   "pass_c_placebo": false,
+   "pass_d_centre": true,
+   "PASS": false,
+   "why_not": "(a) not narrower than the site band; (c) placebo under 90%: war_2014 0.842, war_2018 0.947"
+  }
+ },
+ "per_country_backtest": {
+  "ARM": {
+   "n_windows_H5": 6,
+   "data": "baci",
+   "products": [
+    "gas"
+   ],
+   "origins": [
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    1.219,
+    0.998,
+    1.004,
+    0.958,
+    1.073,
+    1.16
+   ],
+   "median_error_H5": 1.038,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.566,
+    1.769
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": null,
+   "country_check": true
+  },
+  "BGR": {
+   "n_windows_H5": 12,
+   "data": "eurostat",
+   "products": [
+    "gas"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    1.022,
+    0.931,
+    0.832,
+    0.768,
+    1.02,
+    1.049,
+    1.016,
+    1.194,
+    1.135,
+    1.13,
+    0.942,
+    0.871
+   ],
+   "median_error_H5": 1.018,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.566,
+    1.785
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": [
+    0.803,
+    1.161
+   ],
+   "country_check": true
+  },
+  "BLR": {
+   "n_windows_H5": 12,
+   "data": "baci",
+   "products": [
+    "coal",
+    "crude",
+    "gas",
+    "products"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    3.382,
+    2.065,
+    1.115,
+    0.968,
+    0.884,
+    1.429,
+    0.994,
+    0.771,
+    1.028,
+    0.943,
+    0.854,
+    0.901
+   ],
+   "median_error_H5": 0.981,
+   "pooled_band_coverage": 0.833,
+   "leave_country_out_band": [
+    0.566,
+    1.665
+   ],
+   "leave_country_out_coverage": 0.833,
+   "own_q05_q95": [
+    0.816,
+    2.578
+   ],
+   "country_check": true
+  },
+  "CZE": {
+   "n_windows_H5": 12,
+   "data": "eurostat",
+   "products": [
+    "gas"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    0.942,
+    0.955,
+    1.104,
+    1.147,
+    1.393,
+    1.051,
+    0.841,
+    1.055,
+    0.92,
+    1.272,
+    1.134,
+    1.045
+   ],
+   "median_error_H5": 1.053,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.566,
+    1.785
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": [
+    0.883,
+    1.325
+   ],
+   "country_check": true
+  },
+  "EST": {
+   "n_windows_H5": 12,
+   "data": "eurostat",
+   "products": [
+    "gas"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    0.88,
+    0.795,
+    0.727,
+    0.697,
+    1.002,
+    0.876,
+    0.942,
+    0.819,
+    0.755,
+    0.948,
+    0.978,
+    0.722
+   ],
+   "median_error_H5": 0.847,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.566,
+    1.785
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": [
+    0.71,
+    0.989
+   ],
+   "country_check": true
+  },
+  "FIN": {
+   "n_windows_H5": 12,
+   "data": "eurostat",
+   "products": [
+    "gas"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    1.041,
+    0.946,
+    0.95,
+    0.865,
+    0.906,
+    0.739,
+    0.764,
+    0.78,
+    0.761,
+    0.829,
+    0.875,
+    0.896
+   ],
+   "median_error_H5": 0.87,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.566,
+    1.785
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": [
+    0.751,
+    0.99
+   ],
+   "country_check": true
+  },
+  "HRV": {
+   "n_windows_H5": 1,
+   "data": "eurostat",
+   "products": [
+    "gas"
+   ],
+   "origins": [
+    2005
+   ],
+   "errors_H5": [
+    0.93
+   ],
+   "median_error_H5": 0.93,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.567,
+    1.757
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": null,
+   "country_check": false
+  },
+  "HUN": {
+   "n_windows_H5": 12,
+   "data": "eurostat",
+   "products": [
+    "crude",
+    "gas"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    0.976,
+    0.904,
+    0.941,
+    0.869,
+    1.026,
+    0.91,
+    0.914,
+    0.942,
+    0.976,
+    0.893,
+    1.049,
+    0.993
+   ],
+   "median_error_H5": 0.942,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.566,
+    1.785
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": [
+    0.882,
+    1.036
+   ],
+   "country_check": true
+  },
+  "KAZ": {
+   "n_windows_H5": 12,
+   "data": "baci",
+   "products": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    1.497,
+    1.1,
+    0.816,
+    0.801,
+    0.929,
+    1.162,
+    0.651,
+    0.503,
+    0.241,
+    0.801,
+    0.885,
+    0.615
+   ],
+   "median_error_H5": 0.809,
+   "pooled_band_coverage": 0.833,
+   "leave_country_out_band": [
+    0.655,
+    1.678
+   ],
+   "leave_country_out_coverage": 0.667,
+   "own_q05_q95": [
+    0.361,
+    1.303
+   ],
+   "country_check": false
+  },
+  "KGZ": {
+   "n_windows_H5": 10,
+   "data": "baci",
+   "products": [
+    "crude",
+    "products"
+   ],
+   "origins": [
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    1.075,
+    1.072,
+    0.995,
+    1.452,
+    1.489,
+    1.079,
+    0.801,
+    0.875,
+    0.903,
+    1.053
+   ],
+   "median_error_H5": 1.062,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.567,
+    1.777
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": [
+    0.834,
+    1.472
+   ],
+   "country_check": true
+  },
+  "LTU": {
+   "n_windows_H5": 9,
+   "data": "eurostat",
+   "products": [
+    "gas"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013
+   ],
+   "errors_H5": [
+    1.014,
+    1.034,
+    0.84,
+    0.986,
+    1.115,
+    0.928,
+    0.716,
+    0.6,
+    0.63
+   ],
+   "median_error_H5": 0.928,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.609,
+    1.707
+   ],
+   "leave_country_out_coverage": 0.889,
+   "own_q05_q95": [
+    0.612,
+    1.082
+   ],
+   "country_check": true
+  },
+  "LVA": {
+   "n_windows_H5": 12,
+   "data": "eurostat",
+   "products": [
+    "gas"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    0.888,
+    0.792,
+    0.933,
+    1.178,
+    0.858,
+    1.348,
+    0.798,
+    0.755,
+    0.703,
+    1.349,
+    0.95,
+    1.121
+   ],
+   "median_error_H5": 0.91,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.566,
+    1.785
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": [
+    0.731,
+    1.348
+   ],
+   "country_check": true
+  },
+  "MDA": {
+   "n_windows_H5": 4,
+   "data": "eurostat",
+   "products": [
+    "gas"
+   ],
+   "origins": [
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    1.015,
+    0.997,
+    1.052,
+    1.045
+   ],
+   "median_error_H5": 1.03,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.567,
+    1.763
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": null,
+   "country_check": false
+  },
+  "MKD": {
+   "n_windows_H5": 12,
+   "data": "eurostat",
+   "products": [
+    "gas"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    1.301,
+    1.325,
+    1.11,
+    1.037,
+    1.743,
+    1.21,
+    1.136,
+    1.273,
+    1.264,
+    1.711,
+    1.994,
+    1.455
+   ],
+   "median_error_H5": 1.287,
+   "pooled_band_coverage": 0.917,
+   "leave_country_out_band": [
+    0.566,
+    1.629
+   ],
+   "leave_country_out_coverage": 0.75,
+   "own_q05_q95": [
+    1.077,
+    1.852
+   ],
+   "country_check": false
+  },
+  "MNG": {
+   "n_windows_H5": 12,
+   "data": "baci",
+   "products": [
+    "products"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    1.354,
+    1.284,
+    1.144,
+    1.276,
+    1.648,
+    1.274,
+    1.207,
+    0.979,
+    1.358,
+    1.384,
+    1.345,
+    1.435
+   ],
+   "median_error_H5": 1.314,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.566,
+    1.733
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": [
+    1.066,
+    1.527
+   ],
+   "country_check": true
+  },
+  "POL": {
+   "n_windows_H5": 8,
+   "data": "eurostat",
+   "products": [
+    "gas"
+   ],
+   "origins": [
+    2005,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015
+   ],
+   "errors_H5": [
+    1.143,
+    1.188,
+    0.977,
+    0.949,
+    0.996,
+    1.016,
+    1.112,
+    1.147
+   ],
+   "median_error_H5": 1.063,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.565,
+    1.777
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": [
+    0.958,
+    1.174
+   ],
+   "country_check": true
+  },
+  "ROU": {
+   "n_windows_H5": 12,
+   "data": "eurostat",
+   "products": [
+    "gas"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    0.728,
+    0.559,
+    0.621,
+    0.507,
+    0.98,
+    0.683,
+    0.442,
+    0.373,
+    0.675,
+    1.975,
+    6.555,
+    0.923
+   ],
+   "median_error_H5": 0.679,
+   "pooled_band_coverage": 0.5,
+   "leave_country_out_band": [
+    0.665,
+    1.597
+   ],
+   "leave_country_out_coverage": 0.417,
+   "own_q05_q95": [
+    0.409,
+    3.389
+   ],
+   "country_check": false
+  },
+  "SRB": {
+   "n_windows_H5": 12,
+   "data": "eurostat",
+   "products": [
+    "crude",
+    "gas"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    0.937,
+    0.856,
+    0.725,
+    0.633,
+    0.864,
+    0.748,
+    0.937,
+    1.474,
+    1.56,
+    1.201,
+    0.94,
+    0.923
+   ],
+   "median_error_H5": 0.93,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.558,
+    1.811
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": [
+    0.682,
+    1.512
+   ],
+   "country_check": true
+  },
+  "SVK": {
+   "n_windows_H5": 12,
+   "data": "eurostat",
+   "products": [
+    "crude",
+    "gas"
+   ],
+   "origins": [
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    0.99,
+    0.965,
+    0.944,
+    0.94,
+    0.969,
+    0.969,
+    0.895,
+    1.034,
+    0.926,
+    1.039,
+    0.973,
+    0.978
+   ],
+   "median_error_H5": 0.969,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.566,
+    1.785
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": [
+    0.912,
+    1.036
+   ],
+   "country_check": true
+  },
+  "TJK": {
+   "n_windows_H5": 9,
+   "data": "baci",
+   "products": [
+    "products"
+   ],
+   "origins": [
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    0.817,
+    0.681,
+    0.621,
+    1.33,
+    1.937,
+    2.265,
+    0.859,
+    0.748,
+    0.692
+   ],
+   "median_error_H5": 0.817,
+   "pooled_band_coverage": 0.778,
+   "leave_country_out_band": [
+    0.621,
+    1.535
+   ],
+   "leave_country_out_coverage": 0.667,
+   "own_q05_q95": [
+    0.644,
+    2.128
+   ],
+   "country_check": false
+  },
+  "UZB": {
+   "n_windows_H5": 3,
+   "data": "baci",
+   "products": [
+    "products"
+   ],
+   "origins": [
+    2014,
+    2015,
+    2016
+   ],
+   "errors_H5": [
+    1.587,
+    1.151,
+    0.775
+   ],
+   "median_error_H5": 1.151,
+   "pooled_band_coverage": 1.0,
+   "leave_country_out_band": [
+    0.567,
+    1.719
+   ],
+   "leave_country_out_coverage": 1.0,
+   "own_q05_q95": null,
+   "country_check": false
+  }
+ },
+ "stress_cases": {
+  "2006": {
+   "what": "2006 gas crisis (Ukraine transit, January)",
+   "single_year_vs_previous_year": [
+    {
+     "iso": "AUT",
+     "group": "gas",
+     "ratio": 0.885
+    },
+    {
+     "iso": "HRV",
+     "group": "gas",
+     "ratio": 0.988
+    },
+    {
+     "iso": "LTU",
+     "group": "gas",
+     "ratio": 0.995
+    },
+    {
+     "iso": "EST",
+     "group": "gas",
+     "ratio": 1.011
+    },
+    {
+     "iso": "SVK",
+     "group": "mixed",
+     "ratio": 1.018
+    },
+    {
+     "iso": "SRB",
+     "group": "gas",
+     "ratio": 1.022
+    },
+    {
+     "iso": "CZE",
+     "group": "gas",
+     "ratio": 1.027
+    },
+    {
+     "iso": "HUN",
+     "group": "mixed",
+     "ratio": 1.05
+    },
+    {
+     "iso": "BGR",
+     "group": "gas",
+     "ratio": 1.061
+    },
+    {
+     "iso": "LVA",
+     "group": "gas",
+     "ratio": 1.067
+    },
+    {
+     "iso": "ROU",
+     "group": "gas",
+     "ratio": 1.074
+    },
+    {
+     "iso": "FIN",
+     "group": "gas",
+     "ratio": 1.077
+    },
+    {
+     "iso": "MKD",
+     "group": "gas",
+     "ratio": 1.081
+    },
+    {
+     "iso": "POL",
+     "group": "gas",
+     "ratio": 1.09
+    },
+    {
+     "iso": "MNG",
+     "group": "oil",
+     "ratio": 1.158
+    },
+    {
+     "iso": "KAZ",
+     "group": "mixed",
+     "ratio": 1.356
+    },
+    {
+     "iso": "BLR",
+     "group": "mixed",
+     "ratio": 2.155
+    }
+   ],
+   "n_H5_windows_containing_it": 16,
+   "median_H5_error_of_those": 1.002
+  },
+  "2009": {
+   "what": "2009 gas crisis (Ukraine transit, January, two weeks)",
+   "single_year_vs_previous_year": [
+    {
+     "iso": "ROU",
+     "group": "gas",
+     "ratio": 0.458
+    },
+    {
+     "iso": "MKD",
+     "group": "gas",
+     "ratio": 0.662
+    },
+    {
+     "iso": "EST",
+     "group": "gas",
+     "ratio": 0.682
+    },
+    {
+     "iso": "SRB",
+     "group": "gas",
+     "ratio": 0.705
+    },
+    {
+     "iso": "BGR",
+     "group": "gas",
+     "ratio": 0.76
+    },
+    {
+     "iso": "KAZ",
+     "group": "mixed",
+     "ratio": 0.798
+    },
+    {
+     "iso": "HUN",
+     "group": "mixed",
+     "ratio": 0.849
+    },
+    {
+     "iso": "MNG",
+     "group": "oil",
+     "ratio": 0.852
+    },
+    {
+     "iso": "CZE",
+     "group": "gas",
+     "ratio": 0.859
+    },
+    {
+     "iso": "LTU",
+     "group": "gas",
+     "ratio": 0.876
+    },
+    {
+     "iso": "FIN",
+     "group": "gas",
+     "ratio": 0.902
+    },
+    {
+     "iso": "HRV",
+     "group": "gas",
+     "ratio": 0.946
+    },
+    {
+     "iso": "SVK",
+     "group": "mixed",
+     "ratio": 0.955
+    },
+    {
+     "iso": "BLR",
+     "group": "oil",
+     "ratio": 1.062
+    },
+    {
+     "iso": "KGZ",
+     "group": "oil",
+     "ratio": 1.123
+    },
+    {
+     "iso": "TJK",
+     "group": "oil",
+     "ratio": 1.127
+    },
+    {
+     "iso": "LVA",
+     "group": "gas",
+     "ratio": 1.278
+    }
+   ],
+   "n_H5_windows_containing_it": 61,
+   "median_H5_error_of_those": 0.946
+  },
+  "2014": {
+   "what": "2014 shock (Crimea, sanctions, rouble)",
+   "single_year_vs_previous_year": [
+    {
+     "iso": "KAZ",
+     "group": "mixed",
+     "ratio": 0.261
+    },
+    {
+     "iso": "ROU",
+     "group": "gas",
+     "ratio": 0.388
+    },
+    {
+     "iso": "LVA",
+     "group": "gas",
+     "ratio": 0.56
+    },
+    {
+     "iso": "CZE",
+     "group": "gas",
+     "ratio": 0.772
+    },
+    {
+     "iso": "EST",
+     "group": "gas",
+     "ratio": 0.785
+    },
+    {
+     "iso": "MKD",
+     "group": "gas",
+     "ratio": 0.856
+    },
+    {
+     "iso": "KGZ",
+     "group": "oil",
+     "ratio": 0.863
+    },
+    {
+     "iso": "FIN",
+     "group": "gas",
+     "ratio": 0.88
+    },
+    {
+     "iso": "SVK",
+     "group": "mixed",
+     "ratio": 0.904
+    },
+    {
+     "iso": "POL",
+     "group": "gas",
+     "ratio": 0.929
+    },
+    {
+     "iso": "LTU",
+     "group": "gas",
+     "ratio": 0.94
+    },
+    {
+     "iso": "BGR",
+     "group": "gas",
+     "ratio": 0.999
+    },
+    {
+     "iso": "MDA",
+     "group": "gas",
+     "ratio": 1.021
+    },
+    {
+     "iso": "ARM",
+     "group": "gas",
+     "ratio": 1.052
+    },
+    {
+     "iso": "BLR",
+     "group": "mixed",
+     "ratio": 1.064
+    },
+    {
+     "iso": "HUN",
+     "group": "mixed",
+     "ratio": 1.088
+    },
+    {
+     "iso": "MNG",
+     "group": "oil",
+     "ratio": 1.093
+    },
+    {
+     "iso": "SRB",
+     "group": "mixed",
+     "ratio": 1.363
+    },
+    {
+     "iso": "TJK",
+     "group": "oil",
+     "ratio": 2.38
+    }
+   ],
+   "n_H5_windows_containing_it": 89,
+   "median_H5_error_of_those": 0.977
+  }
+ },
+ "application": {
+  "BIH": {
+   "captive_products_2017_2021": {
+    "gas": 41.9
+   },
+   "data": "eurostat",
+   "captive_share_of_2021_purchases": 0.201,
+   "hs27_share_of_2021_purchases": 0.332,
+   "route": "gas, no LNG terminal",
+   "W_2022_2026": 0.256,
+   "cb_now_2022_2026": [
+    0.5707,
+    2.7739
+   ],
+   "cb_combined_2022_2026": [
+    0.6358,
+    2.3822
+   ],
+   "width_ratio_log": 0.835,
+   "width_ratio_log_split_only": 0.866,
+   "width_ratio_log_vs_split_only": 0.964,
+   "narrower": true,
+   "has_own_band_today": "generic",
+   "country_windows_H5": 0,
+   "country_check": false,
+   "applied": false,
+   "why_not": "pooled rule failed; fewer than 6 own windows"
+  },
+  "BGR": {
+   "captive_products_2017_2021": {
+    "gas": 489.7
+   },
+   "data": "eurostat",
+   "captive_share_of_2021_purchases": 0.353,
+   "hs27_share_of_2021_purchases": 0.82,
+   "route": "gas, no LNG terminal",
+   "W_2022_2026": 0.37,
+   "cb_now_2022_2026": [
+    0.6517,
+    1.4998
+   ],
+   "cb_combined_2022_2026": [
+    0.6966,
+    1.4722
+   ],
+   "width_ratio_log": 0.898,
+   "width_ratio_log_split_only": 0.805,
+   "width_ratio_log_vs_split_only": 1.115,
+   "narrower": true,
+   "has_own_band_today": "generic",
+   "country_windows_H5": 12,
+   "country_check": true,
+   "applied": false,
+   "why_not": "pooled rule failed"
+  },
+  "CZE": {
+   "captive_products_2017_2021": {
+    "gas": 1526.1
+   },
+   "data": "eurostat",
+   "captive_share_of_2021_purchases": 0.515,
+   "hs27_share_of_2021_purchases": 0.758,
+   "route": "landlocked",
+   "W_2022_2026": 0.557,
+   "cb_now_2022_2026": [
+    0.8307,
+    1.3896
+   ],
+   "cb_combined_2022_2026": [
+    0.7296,
+    1.4945
+   ],
+   "width_ratio_log": 1.394,
+   "width_ratio_log_split_only": 0.807,
+   "width_ratio_log_vs_split_only": 1.727,
+   "narrower": false,
+   "has_own_band_today": "round 8 fuel volume",
+   "country_windows_H5": 12,
+   "country_check": true,
+   "applied": false,
+   "why_not": "pooled rule failed; combined band not narrower than today's"
+  },
+  "EST": {
+   "captive_products_2017_2021": {
+    "gas": 63.4
+   },
+   "data": "eurostat",
+   "captive_share_of_2021_purchases": 0.044,
+   "hs27_share_of_2021_purchases": 0.496,
+   "route": "gas, no LNG terminal",
+   "W_2022_2026": 0.051,
+   "cb_now_2022_2026": [
+    0.6517,
+    1.4998
+   ],
+   "cb_combined_2022_2026": [
+    0.6631,
+    1.4857
+   ],
+   "width_ratio_log": 0.968,
+   "width_ratio_log_split_only": 0.962,
+   "width_ratio_log_vs_split_only": 1.006,
+   "narrower": true,
+   "has_own_band_today": "generic",
+   "country_windows_H5": 12,
+   "country_check": true,
+   "applied": false,
+   "why_not": "pooled rule failed"
+  },
+  "FIN": {
+   "captive_products_2017_2021": {
+    "gas": 397.2
+   },
+   "data": "eurostat",
+   "captive_share_of_2021_purchases": 0.013,
+   "hs27_share_of_2021_purchases": 0.534,
+   "route": "gas, no LNG terminal",
+   "W_2022_2026": 0.015,
+   "cb_now_2022_2026": [
+    0.7206,
+    1.4957
+   ],
+   "cb_combined_2022_2026": [
+    0.723,
+    1.4913
+   ],
+   "width_ratio_log": 0.991,
+   "width_ratio_log_split_only": 0.989,
+   "width_ratio_log_vs_split_only": 1.002,
+   "narrower": true,
+   "has_own_band_today": "round 8 fuel volume",
+   "country_windows_H5": 12,
+   "country_check": true,
+   "applied": false,
+   "why_not": "pooled rule failed"
+  },
+  "HUN": {
+   "captive_products_2017_2021": {
+    "gas": 1539.5
+   },
+   "data": "eurostat",
+   "captive_share_of_2021_purchases": 0.452,
+   "hs27_share_of_2021_purchases": 0.845,
+   "route": "landlocked",
+   "W_2022_2026": 0.476,
+   "cb_now_2022_2026": [
+    0.8202,
+    1.2392
+   ],
+   "cb_combined_2022_2026": [
+    0.7483,
+    1.4152
+   ],
+   "width_ratio_log": 1.544,
+   "width_ratio_log_split_only": 0.801,
+   "width_ratio_log_vs_split_only": 1.928,
+   "narrower": false,
+   "has_own_band_today": "round 8 fuel volume",
+   "country_windows_H5": 12,
+   "country_check": true,
+   "applied": false,
+   "why_not": "pooled rule failed; combined band not narrower than today's"
+  },
+  "LVA": {
+   "captive_products_2017_2021": {
+    "gas": 223.6
+   },
+   "data": "eurostat",
+   "captive_share_of_2021_purchases": 0.24,
+   "hs27_share_of_2021_purchases": 0.369,
+   "route": "gas, no LNG terminal",
+   "W_2022_2026": 0.281,
+   "cb_now_2022_2026": [
+    0.6517,
+    1.4998
+   ],
+   "cb_combined_2022_2026": [
+    0.6945,
+    1.4624
+   ],
+   "width_ratio_log": 0.893,
+   "width_ratio_log_split_only": 0.833,
+   "width_ratio_log_vs_split_only": 1.072,
+   "narrower": true,
+   "has_own_band_today": "generic",
+   "country_windows_H5": 12,
+   "country_check": true,
+   "applied": false,
+   "why_not": "pooled rule failed"
+  },
+  "MDA": {
+   "captive_products_2017_2021": {
+    "gas": 172.6
+   },
+   "data": "eurostat",
+   "captive_share_of_2021_purchases": 0.349,
+   "hs27_share_of_2021_purchases": 0.498,
+   "route": "landlocked",
+   "W_2022_2026": 0.383,
+   "cb_now_2022_2026": [
+    0.848,
+    1.435
+   ],
+   "cb_combined_2022_2026": [
+    0.7894,
+    1.4428
+   ],
+   "width_ratio_log": 1.146,
+   "width_ratio_log_split_only": 0.82,
+   "width_ratio_log_vs_split_only": 1.398,
+   "narrower": false,
+   "has_own_band_today": "own",
+   "country_windows_H5": 4,
+   "country_check": false,
+   "applied": false,
+   "why_not": "pooled rule failed; combined band not narrower than today's; fewer than 6 own windows"
+  },
+  "MKD": {
+   "captive_products_2017_2021": {
+    "gas": 57.1
+   },
+   "data": "eurostat",
+   "captive_share_of_2021_purchases": 0.644,
+   "hs27_share_of_2021_purchases": 0.686,
+   "route": "landlocked",
+   "W_2022_2026": 0.711,
+   "cb_now_2022_2026": [
+    0.5739,
+    1.5208
+   ],
+   "cb_combined_2022_2026": [
+    0.64,
+    1.5943
+   ],
+   "width_ratio_log": 0.937,
+   "width_ratio_log_split_only": 0.821,
+   "width_ratio_log_vs_split_only": 1.141,
+   "narrower": true,
+   "has_own_band_today": "round 8 fuel volume",
+   "country_windows_H5": 12,
+   "country_check": false,
+   "applied": false,
+   "why_not": "pooled rule failed; own windows not covered >= 80%"
+  },
+  "SRB": {
+   "captive_products_2017_2021": {
+    "gas": 380.5
+   },
+   "data": "eurostat",
+   "captive_share_of_2021_purchases": 0.282,
+   "hs27_share_of_2021_purchases": 0.519,
+   "route": "landlocked",
+   "W_2022_2026": 0.319,
+   "cb_now_2022_2026": [
+    0.6517,
+    1.4998
+   ],
+   "cb_combined_2022_2026": [
+    0.6961,
+    1.4653
+   ],
+   "width_ratio_log": 0.893,
+   "width_ratio_log_split_only": 0.819,
+   "width_ratio_log_vs_split_only": 1.09,
+   "narrower": true,
+   "has_own_band_today": "generic",
+   "country_windows_H5": 12,
+   "country_check": true,
+   "applied": false,
+   "why_not": "pooled rule failed"
+  },
+  "SVK": {
+   "captive_products_2017_2021": {
+    "crude": 2019.3,
+    "gas": 823.3
+   },
+   "data": "eurostat",
+   "captive_share_of_2021_purchases": 0.845,
+   "hs27_share_of_2021_purchases": 0.86,
+   "route": "landlocked",
+   "W_2022_2026": 0.877,
+   "cb_now_2022_2026": [
+    0.8566,
+    1.2473
+   ],
+   "cb_combined_2022_2026": [
+    0.6051,
+    1.6854
+   ],
+   "width_ratio_log": 2.726,
+   "width_ratio_log_split_only": 0.924,
+   "width_ratio_log_vs_split_only": 2.949,
+   "narrower": false,
+   "has_own_band_today": "round 8 fuel volume",
+   "country_windows_H5": 12,
+   "country_check": true,
+   "applied": false,
+   "why_not": "pooled rule failed; combined band not narrower than today's"
+  },
+  "KAZ": {
+   "captive_products_2017_2021": {
+    "products": 509.7,
+    "coal": 40.5
+   },
+   "data": "baci",
+   "captive_share_of_2021_purchases": 0.027,
+   "hs27_share_of_2021_purchases": 0.076,
+   "route": "landlocked",
+   "W_2022_2026": 0.039,
+   "cb_now_2022_2026": [
+    0.6484,
+    1.503
+   ],
+   "cb_combined_2022_2026": [
+    0.6572,
+    1.492
+   ],
+   "width_ratio_log": 0.975,
+   "width_ratio_log_split_only": 0.971,
+   "width_ratio_log_vs_split_only": 1.004,
+   "narrower": true,
+   "has_own_band_today": "generic",
+   "country_windows_H5": 12,
+   "country_check": false,
+   "applied": false,
+   "why_not": "pooled rule failed; own windows not covered >= 80%"
+  },
+  "KGZ": {
+   "captive_products_2017_2021": {
+    "products": 520.3
+   },
+   "data": "baci",
+   "captive_share_of_2021_purchases": 0.33,
+   "hs27_share_of_2021_purchases": 0.371,
+   "route": "landlocked",
+   "W_2022_2026": 0.377,
+   "cb_now_2022_2026": [
+    0.6246,
+    1.5253
+   ],
+   "cb_combined_2022_2026": [
+    0.6694,
+    1.4989
+   ],
+   "width_ratio_log": 0.903,
+   "width_ratio_log_split_only": 0.813,
+   "width_ratio_log_vs_split_only": 1.11,
+   "narrower": true,
+   "has_own_band_today": "generic",
+   "country_windows_H5": 10,
+   "country_check": true,
+   "applied": false,
+   "why_not": "pooled rule failed"
+  },
+  "MNG": {
+   "captive_products_2017_2021": {
+    "products": 676.4
+   },
+   "data": "baci",
+   "captive_share_of_2021_purchases": 0.506,
+   "hs27_share_of_2021_purchases": 0.54,
+   "route": "landlocked",
+   "W_2022_2026": 0.555,
+   "cb_now_2022_2026": [
+    0.8016,
+    1.9268
+   ],
+   "cb_combined_2022_2026": [
+    0.6893,
+    1.7076
+   ],
+   "width_ratio_log": 1.034,
+   "width_ratio_log_split_only": 0.848,
+   "width_ratio_log_vs_split_only": 1.219,
+   "narrower": false,
+   "has_own_band_today": "own",
+   "country_windows_H5": 12,
+   "country_check": true,
+   "applied": false,
+   "why_not": "pooled rule failed; combined band not narrower than today's"
+  },
+  "TJK": {
+   "captive_products_2017_2021": {
+    "products": 165.6
+   },
+   "data": "baci",
+   "captive_share_of_2021_purchases": 0.284,
+   "hs27_share_of_2021_purchases": 0.298,
+   "route": "landlocked",
+   "W_2022_2026": 0.329,
+   "cb_now_2022_2026": [
+    0.6516,
+    1.4999
+   ],
+   "cb_combined_2022_2026": [
+    0.6963,
+    1.4665
+   ],
+   "width_ratio_log": 0.893,
+   "width_ratio_log_split_only": 0.816,
+   "width_ratio_log_vs_split_only": 1.095,
+   "narrower": true,
+   "has_own_band_today": "own",
+   "country_windows_H5": 9,
+   "country_check": false,
+   "applied": false,
+   "why_not": "pooled rule failed; own windows not covered >= 80%"
+  },
+  "BLR": {
+   "captive_products_2017_2021": {
+    "crude": 6057.0,
+    "gas": 2792.8,
+    "coal": 90.6
+   },
+   "data": "baci",
+   "captive_share_of_2021_purchases": 0.333,
+   "hs27_share_of_2021_purchases": 0.34,
+   "route": "landlocked",
+   "W_2022_2026": 0.371,
+   "cb_now_2022_2026": [
+    0.7886,
+    1.3092
+   ],
+   "cb_combined_2022_2026": [
+    0.7663,
+    1.3805
+   ],
+   "width_ratio_log": 1.161,
+   "width_ratio_log_split_only": 0.81,
+   "width_ratio_log_vs_split_only": 1.433,
+   "narrower": false,
+   "has_own_band_today": "own",
+   "country_windows_H5": 12,
+   "country_check": true,
+   "applied": false,
+   "why_not": "pooled rule failed; combined band not narrower than today's"
+  },
+  "ARM": {
+   "captive_products_2017_2021": {
+    "gas": 394.2
+   },
+   "data": "baci",
+   "captive_share_of_2021_purchases": 0.225,
+   "hs27_share_of_2021_purchases": 0.368,
+   "route": "landlocked",
+   "W_2022_2026": 0.246,
+   "cb_now_2022_2026": [
+    0.645,
+    1.5059
+   ],
+   "cb_combined_2022_2026": [
+    0.6853,
+    1.4676
+   ],
+   "width_ratio_log": 0.898,
+   "width_ratio_log_split_only": 0.85,
+   "width_ratio_log_vs_split_only": 1.057,
+   "narrower": true,
+   "has_own_band_today": "generic",
+   "country_windows_H5": 6,
+   "country_check": true,
+   "applied": false,
+   "why_not": "pooled rule failed"
+  }
+ },
+ "windows": [
+  {
+   "iso": "AUT",
+   "o": 2005,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1235.3,
+   "H1": 0.885,
+   "H2": 0.851,
+   "H3": 0.845
+  },
+  {
+   "iso": "AUT",
+   "o": 2006,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1092.9,
+   "H1": 0.925,
+   "H2": 0.933
+  },
+  {
+   "iso": "AUT",
+   "o": 2007,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1010.7,
+   "H1": 1.018
+  },
+  {
+   "iso": "BIH",
+   "o": 2017,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 43.4,
+   "H1": 0.997,
+   "H2": 0.969,
+   "H3": 0.932,
+   "H4": 0.958
+  },
+  {
+   "iso": "BGR",
+   "o": 2005,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 534.0,
+   "H1": 1.061,
+   "H2": 1.091,
+   "H3": 1.108,
+   "H4": 1.047,
+   "H5": 1.022
+  },
+  {
+   "iso": "BGR",
+   "o": 2006,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 566.7,
+   "H1": 1.055,
+   "H2": 1.065,
+   "H3": 0.982,
+   "H4": 0.941,
+   "H5": 0.931
+  },
+  {
+   "iso": "BGR",
+   "o": 2007,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 598.2,
+   "H1": 1.019,
+   "H2": 0.896,
+   "H3": 0.855,
+   "H4": 0.847,
+   "H5": 0.832
+  },
+  {
+   "iso": "BGR",
+   "o": 2008,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 609.2,
+   "H1": 0.76,
+   "H2": 0.76,
+   "H3": 0.776,
+   "H4": 0.764,
+   "H5": 0.768
+  },
+  {
+   "iso": "BGR",
+   "o": 2009,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 462.9,
+   "H1": 1.0,
+   "H2": 1.031,
+   "H3": 1.007,
+   "H4": 1.016,
+   "H5": 1.02
+  },
+  {
+   "iso": "BGR",
+   "o": 2010,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 463.0,
+   "H1": 1.063,
+   "H2": 1.011,
+   "H3": 1.022,
+   "H4": 1.027,
+   "H5": 1.049
+  },
+  {
+   "iso": "BGR",
+   "o": 2011,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 491.9,
+   "H1": 0.902,
+   "H2": 0.943,
+   "H3": 0.956,
+   "H4": 0.995,
+   "H5": 1.016
+  },
+  {
+   "iso": "BGR",
+   "o": 2012,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 443.8,
+   "H1": 1.09,
+   "H2": 1.089,
+   "H3": 1.137,
+   "H4": 1.17,
+   "H5": 1.194
+  },
+  {
+   "iso": "BGR",
+   "o": 2013,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 483.5,
+   "H1": 0.999,
+   "H2": 1.066,
+   "H3": 1.099,
+   "H4": 1.13,
+   "H5": 1.135
+  },
+  {
+   "iso": "BGR",
+   "o": 2014,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 483.2,
+   "H1": 1.133,
+   "H2": 1.149,
+   "H3": 1.174,
+   "H4": 1.172,
+   "H5": 1.13
+  },
+  {
+   "iso": "BGR",
+   "o": 2015,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 547.3,
+   "H1": 1.03,
+   "H2": 1.055,
+   "H3": 1.046,
+   "H4": 0.978,
+   "H5": 0.942
+  },
+  {
+   "iso": "BGR",
+   "o": 2016,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 563.4,
+   "H1": 1.05,
+   "H2": 1.024,
+   "H3": 0.933,
+   "H4": 0.876,
+   "H5": 0.871
+  },
+  {
+   "iso": "BGR",
+   "o": 2017,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 591.6,
+   "H1": 0.95,
+   "H2": 0.833,
+   "H3": 0.78,
+   "H4": 0.785
+  },
+  {
+   "iso": "CZE",
+   "o": 2005,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1256.5,
+   "H1": 1.027,
+   "H2": 0.977,
+   "H3": 0.963,
+   "H4": 0.923,
+   "H5": 0.942
+  },
+  {
+   "iso": "CZE",
+   "o": 2006,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1290.2,
+   "H1": 0.903,
+   "H2": 0.907,
+   "H3": 0.865,
+   "H4": 0.906,
+   "H5": 0.955
+  },
+  {
+   "iso": "CZE",
+   "o": 2007,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1165.5,
+   "H1": 1.007,
+   "H2": 0.936,
+   "H3": 1.004,
+   "H4": 1.098,
+   "H5": 1.104
+  },
+  {
+   "iso": "CZE",
+   "o": 2008,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1174.0,
+   "H1": 0.859,
+   "H2": 0.995,
+   "H3": 1.12,
+   "H4": 1.123,
+   "H5": 1.147
+  },
+  {
+   "iso": "CZE",
+   "o": 2009,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1008.7,
+   "H1": 1.316,
+   "H2": 1.456,
+   "H3": 1.409,
+   "H4": 1.432,
+   "H5": 1.393
+  },
+  {
+   "iso": "CZE",
+   "o": 2010,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1327.4,
+   "H1": 1.213,
+   "H2": 1.106,
+   "H3": 1.117,
+   "H4": 1.058,
+   "H5": 1.051
+  },
+  {
+   "iso": "CZE",
+   "o": 2011,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1610.4,
+   "H1": 0.824,
+   "H2": 0.882,
+   "H3": 0.83,
+   "H4": 0.83,
+   "H5": 0.841
+  },
+  {
+   "iso": "CZE",
+   "o": 2012,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1326.3,
+   "H1": 1.141,
+   "H2": 1.011,
+   "H3": 1.01,
+   "H4": 1.032,
+   "H5": 1.055
+  },
+  {
+   "iso": "CZE",
+   "o": 2013,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1513.1,
+   "H1": 0.772,
+   "H2": 0.828,
+   "H3": 0.873,
+   "H4": 0.916,
+   "H5": 0.92
+  },
+  {
+   "iso": "CZE",
+   "o": 2014,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1168.5,
+   "H1": 1.144,
+   "H2": 1.196,
+   "H3": 1.248,
+   "H4": 1.242,
+   "H5": 1.272
+  },
+  {
+   "iso": "CZE",
+   "o": 2015,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1336.7,
+   "H1": 1.091,
+   "H2": 1.137,
+   "H3": 1.114,
+   "H4": 1.154,
+   "H5": 1.134
+  },
+  {
+   "iso": "CZE",
+   "o": 2016,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1458.5,
+   "H1": 1.084,
+   "H2": 1.031,
+   "H3": 1.077,
+   "H4": 1.041,
+   "H5": 1.045
+  },
+  {
+   "iso": "CZE",
+   "o": 2017,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1580.5,
+   "H1": 0.903,
+   "H2": 0.99,
+   "H3": 0.947,
+   "H4": 0.957
+  },
+  {
+   "iso": "EST",
+   "o": 2005,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 173.7,
+   "H1": 1.011,
+   "H2": 1.008,
+   "H3": 0.993,
+   "H4": 0.909,
+   "H5": 0.88
+  },
+  {
+   "iso": "EST",
+   "o": 2006,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 175.6,
+   "H1": 0.994,
+   "H2": 0.974,
+   "H3": 0.866,
+   "H4": 0.823,
+   "H5": 0.795
+  },
+  {
+   "iso": "EST",
+   "o": 2007,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 174.5,
+   "H1": 0.959,
+   "H2": 0.806,
+   "H3": 0.771,
+   "H4": 0.735,
+   "H5": 0.727
+  },
+  {
+   "iso": "EST",
+   "o": 2008,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 167.4,
+   "H1": 0.682,
+   "H2": 0.706,
+   "H3": 0.688,
+   "H4": 0.693,
+   "H5": 0.697
+  },
+  {
+   "iso": "EST",
+   "o": 2009,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 114.1,
+   "H1": 1.071,
+   "H2": 1.015,
+   "H3": 1.023,
+   "H4": 1.031,
+   "H5": 1.002
+  },
+  {
+   "iso": "EST",
+   "o": 2010,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 122.2,
+   "H1": 0.895,
+   "H2": 0.932,
+   "H3": 0.95,
+   "H4": 0.906,
+   "H5": 0.876
+  },
+  {
+   "iso": "EST",
+   "o": 2011,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 109.3,
+   "H1": 1.084,
+   "H2": 1.093,
+   "H3": 1.017,
+   "H4": 0.957,
+   "H5": 0.942
+  },
+  {
+   "iso": "EST",
+   "o": 2012,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 118.5,
+   "H1": 1.017,
+   "H2": 0.908,
+   "H3": 0.844,
+   "H4": 0.829,
+   "H5": 0.819
+  },
+  {
+   "iso": "EST",
+   "o": 2013,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 120.6,
+   "H1": 0.785,
+   "H2": 0.744,
+   "H3": 0.753,
+   "H4": 0.752,
+   "H5": 0.755
+  },
+  {
+   "iso": "EST",
+   "o": 2014,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 94.6,
+   "H1": 0.896,
+   "H2": 0.94,
+   "H3": 0.943,
+   "H4": 0.954,
+   "H5": 0.948
+  },
+  {
+   "iso": "EST",
+   "o": 2015,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 84.8,
+   "H1": 1.097,
+   "H2": 1.078,
+   "H3": 1.085,
+   "H4": 1.068,
+   "H5": 0.978
+  },
+  {
+   "iso": "EST",
+   "o": 2016,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 93.0,
+   "H1": 0.967,
+   "H2": 0.984,
+   "H3": 0.965,
+   "H4": 0.823,
+   "H5": 0.722
+  },
+  {
+   "iso": "EST",
+   "o": 2017,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 89.9,
+   "H1": 1.037,
+   "H2": 0.998,
+   "H3": 0.802,
+   "H4": 0.631
+  },
+  {
+   "iso": "FIN",
+   "o": 2005,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 783.5,
+   "H1": 1.077,
+   "H2": 1.056,
+   "H3": 1.061,
+   "H4": 1.037,
+   "H5": 1.041
+  },
+  {
+   "iso": "FIN",
+   "o": 2006,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 844.1,
+   "H1": 0.96,
+   "H2": 0.977,
+   "H3": 0.95,
+   "H4": 0.96,
+   "H5": 0.946
+  },
+  {
+   "iso": "FIN",
+   "o": 2007,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 810.6,
+   "H1": 1.035,
+   "H2": 0.984,
+   "H3": 0.999,
+   "H4": 0.974,
+   "H5": 0.95
+  },
+  {
+   "iso": "FIN",
+   "o": 2008,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 839.1,
+   "H1": 0.902,
+   "H2": 0.948,
+   "H3": 0.922,
+   "H4": 0.886,
+   "H5": 0.865
+  },
+  {
+   "iso": "FIN",
+   "o": 2009,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 756.8,
+   "H1": 1.101,
+   "H2": 1.033,
+   "H3": 0.976,
+   "H4": 0.937,
+   "H5": 0.906
+  },
+  {
+   "iso": "FIN",
+   "o": 2010,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 833.6,
+   "H1": 0.876,
+   "H2": 0.829,
+   "H3": 0.801,
+   "H4": 0.765,
+   "H5": 0.739
+  },
+  {
+   "iso": "FIN",
+   "o": 2011,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 729.9,
+   "H1": 0.894,
+   "H2": 0.872,
+   "H3": 0.831,
+   "H4": 0.79,
+   "H5": 0.764
+  },
+  {
+   "iso": "FIN",
+   "o": 2012,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 652.9,
+   "H1": 0.951,
+   "H2": 0.894,
+   "H3": 0.844,
+   "H4": 0.804,
+   "H5": 0.78
+  },
+  {
+   "iso": "FIN",
+   "o": 2013,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 620.6,
+   "H1": 0.88,
+   "H2": 0.831,
+   "H3": 0.794,
+   "H4": 0.763,
+   "H5": 0.761
+  },
+  {
+   "iso": "FIN",
+   "o": 2014,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 546.0,
+   "H1": 0.89,
+   "H2": 0.855,
+   "H3": 0.824,
+   "H4": 0.83,
+   "H5": 0.829
+  },
+  {
+   "iso": "FIN",
+   "o": 2015,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 485.9,
+   "H1": 0.921,
+   "H2": 0.889,
+   "H3": 0.91,
+   "H4": 0.915,
+   "H5": 0.875
+  },
+  {
+   "iso": "FIN",
+   "o": 2016,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 447.3,
+   "H1": 0.93,
+   "H2": 0.983,
+   "H3": 0.991,
+   "H4": 0.917,
+   "H5": 0.896
+  },
+  {
+   "iso": "FIN",
+   "o": 2017,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 416.1,
+   "H1": 1.113,
+   "H2": 1.099,
+   "H3": 0.981,
+   "H4": 0.943
+  },
+  {
+   "iso": "HRV",
+   "o": 2005,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 202.4,
+   "H1": 0.988,
+   "H2": 0.957,
+   "H3": 0.949,
+   "H4": 0.933,
+   "H5": 0.93
+  },
+  {
+   "iso": "HRV",
+   "o": 2006,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 199.9,
+   "H1": 0.937,
+   "H2": 0.941,
+   "H3": 0.926,
+   "H4": 0.925
+  },
+  {
+   "iso": "HRV",
+   "o": 2007,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 187.2,
+   "H1": 1.01,
+   "H2": 0.983,
+   "H3": 0.984
+  },
+  {
+   "iso": "HRV",
+   "o": 2008,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 189.2,
+   "H1": 0.946,
+   "H2": 0.96
+  },
+  {
+   "iso": "HRV",
+   "o": 2009,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 178.9,
+   "H1": 1.03
+  },
+  {
+   "iso": "HUN",
+   "o": 2005,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3951.4,
+   "H1": 1.05,
+   "H2": 1.017,
+   "H3": 1.019,
+   "H4": 0.981,
+   "H5": 0.976
+  },
+  {
+   "iso": "HUN",
+   "o": 2006,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 4148.3,
+   "H1": 0.938,
+   "H2": 0.956,
+   "H3": 0.912,
+   "H4": 0.91,
+   "H5": 0.904
+  },
+  {
+   "iso": "HUN",
+   "o": 2007,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3889.7,
+   "H1": 1.038,
+   "H2": 0.96,
+   "H3": 0.96,
+   "H4": 0.951,
+   "H5": 0.941
+  },
+  {
+   "iso": "HUN",
+   "o": 2008,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 4037.8,
+   "H1": 0.849,
+   "H2": 0.887,
+   "H3": 0.889,
+   "H4": 0.879,
+   "H5": 0.869
+  },
+  {
+   "iso": "HUN",
+   "o": 2009,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3426.9,
+   "H1": 1.091,
+   "H2": 1.071,
+   "H3": 1.047,
+   "H4": 1.024,
+   "H5": 1.026
+  },
+  {
+   "iso": "HUN",
+   "o": 2010,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3738.1,
+   "H1": 0.963,
+   "H2": 0.94,
+   "H3": 0.918,
+   "H4": 0.926,
+   "H5": 0.91
+  },
+  {
+   "iso": "HUN",
+   "o": 2011,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3599.8,
+   "H1": 0.953,
+   "H2": 0.93,
+   "H3": 0.949,
+   "H4": 0.922,
+   "H5": 0.914
+  },
+  {
+   "iso": "HUN",
+   "o": 2012,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3430.0,
+   "H1": 0.953,
+   "H2": 0.994,
+   "H3": 0.957,
+   "H4": 0.944,
+   "H5": 0.942
+  },
+  {
+   "iso": "HUN",
+   "o": 2013,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3267.8,
+   "H1": 1.088,
+   "H2": 1.007,
+   "H3": 0.988,
+   "H4": 0.985,
+   "H5": 0.976
+  },
+  {
+   "iso": "HUN",
+   "o": 2014,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3553.8,
+   "H1": 0.853,
+   "H2": 0.863,
+   "H3": 0.874,
+   "H4": 0.867,
+   "H5": 0.893
+  },
+  {
+   "iso": "HUN",
+   "o": 2015,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3030.5,
+   "H1": 1.023,
+   "H2": 1.038,
+   "H3": 1.023,
+   "H4": 1.073,
+   "H5": 1.049
+  },
+  {
+   "iso": "HUN",
+   "o": 2016,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3100.7,
+   "H1": 1.029,
+   "H2": 1.0,
+   "H3": 1.065,
+   "H4": 1.02,
+   "H5": 0.993
+  },
+  {
+   "iso": "HUN",
+   "o": 2017,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3190.1,
+   "H1": 0.944,
+   "H2": 1.053,
+   "H3": 0.989,
+   "H4": 0.944
+  },
+  {
+   "iso": "LTU",
+   "o": 2005,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 541.5,
+   "H1": 0.995,
+   "H2": 1.094,
+   "H3": 1.064,
+   "H4": 1.017,
+   "H5": 1.014
+  },
+  {
+   "iso": "LTU",
+   "o": 2006,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 538.6,
+   "H1": 1.2,
+   "H2": 1.104,
+   "H3": 1.03,
+   "H4": 1.023,
+   "H5": 1.034
+  },
+  {
+   "iso": "LTU",
+   "o": 2007,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 646.4,
+   "H1": 0.84,
+   "H2": 0.788,
+   "H3": 0.804,
+   "H4": 0.832,
+   "H5": 0.84
+  },
+  {
+   "iso": "LTU",
+   "o": 2008,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 543.0,
+   "H1": 0.876,
+   "H2": 0.935,
+   "H3": 0.987,
+   "H4": 1.006,
+   "H5": 0.986
+  },
+  {
+   "iso": "LTU",
+   "o": 2009,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 475.6,
+   "H1": 1.135,
+   "H2": 1.19,
+   "H3": 1.198,
+   "H4": 1.145,
+   "H5": 1.115
+  },
+  {
+   "iso": "LTU",
+   "o": 2010,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 539.8,
+   "H1": 1.097,
+   "H2": 1.083,
+   "H3": 1.012,
+   "H4": 0.964,
+   "H5": 0.928
+  },
+  {
+   "iso": "LTU",
+   "o": 2011,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 592.1,
+   "H1": 0.974,
+   "H2": 0.884,
+   "H3": 0.839,
+   "H4": 0.791,
+   "H5": 0.716
+  },
+  {
+   "iso": "LTU",
+   "o": 2012,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 576.9,
+   "H1": 0.815,
+   "H2": 0.791,
+   "H3": 0.749,
+   "H4": 0.63,
+   "H5": 0.6
+  },
+  {
+   "iso": "LTU",
+   "o": 2013,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 470.4,
+   "H1": 0.94,
+   "H2": 0.878,
+   "H3": 0.697,
+   "H4": 0.652,
+   "H5": 0.63
+  },
+  {
+   "iso": "LVA",
+   "o": 2005,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 311.5,
+   "H1": 1.067,
+   "H2": 0.992,
+   "H3": 0.916,
+   "H4": 0.931,
+   "H5": 0.888
+  },
+  {
+   "iso": "LVA",
+   "o": 2006,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 332.4,
+   "H1": 0.86,
+   "H2": 0.788,
+   "H3": 0.83,
+   "H4": 0.77,
+   "H5": 0.792
+  },
+  {
+   "iso": "LVA",
+   "o": 2007,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 285.8,
+   "H1": 0.833,
+   "H2": 0.948,
+   "H3": 0.861,
+   "H4": 0.914,
+   "H5": 0.933
+  },
+  {
+   "iso": "LVA",
+   "o": 2008,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 238.0,
+   "H1": 1.278,
+   "H2": 1.051,
+   "H3": 1.13,
+   "H4": 1.162,
+   "H5": 1.178
+  },
+  {
+   "iso": "LVA",
+   "o": 2009,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 304.1,
+   "H1": 0.645,
+   "H2": 0.826,
+   "H3": 0.879,
+   "H4": 0.908,
+   "H5": 0.858
+  },
+  {
+   "iso": "LVA",
+   "o": 2010,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 196.2,
+   "H1": 1.561,
+   "H2": 1.543,
+   "H3": 1.543,
+   "H4": 1.373,
+   "H5": 1.348
+  },
+  {
+   "iso": "LVA",
+   "o": 2011,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 306.3,
+   "H1": 0.978,
+   "H2": 0.983,
+   "H3": 0.84,
+   "H4": 0.822,
+   "H5": 0.798
+  },
+  {
+   "iso": "LVA",
+   "o": 2012,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 299.4,
+   "H1": 1.01,
+   "H2": 0.788,
+   "H3": 0.787,
+   "H4": 0.758,
+   "H5": 0.755
+  },
+  {
+   "iso": "LVA",
+   "o": 2013,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 302.5,
+   "H1": 0.56,
+   "H2": 0.669,
+   "H3": 0.667,
+   "H4": 0.682,
+   "H5": 0.703
+  },
+  {
+   "iso": "LVA",
+   "o": 2014,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 169.5,
+   "H1": 1.388,
+   "H2": 1.285,
+   "H3": 1.29,
+   "H4": 1.337,
+   "H5": 1.349
+  },
+  {
+   "iso": "LVA",
+   "o": 2015,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 235.2,
+   "H1": 0.852,
+   "H2": 0.894,
+   "H3": 0.952,
+   "H4": 0.969,
+   "H5": 0.95
+  },
+  {
+   "iso": "LVA",
+   "o": 2016,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 200.5,
+   "H1": 1.097,
+   "H2": 1.175,
+   "H3": 1.182,
+   "H4": 1.133,
+   "H5": 1.121
+  },
+  {
+   "iso": "LVA",
+   "o": 2017,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 220.0,
+   "H1": 1.141,
+   "H2": 1.115,
+   "H3": 1.043,
+   "H4": 1.021
+  },
+  {
+   "iso": "MDA",
+   "o": 2013,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 163.1,
+   "H1": 1.021,
+   "H2": 0.999,
+   "H3": 1.001,
+   "H4": 1.002,
+   "H5": 1.015
+  },
+  {
+   "iso": "MDA",
+   "o": 2014,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 166.5,
+   "H1": 0.957,
+   "H2": 0.971,
+   "H3": 0.975,
+   "H4": 0.999,
+   "H5": 0.997
+  },
+  {
+   "iso": "MDA",
+   "o": 2015,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 159.3,
+   "H1": 1.03,
+   "H2": 1.028,
+   "H3": 1.059,
+   "H4": 1.052,
+   "H5": 1.052
+  },
+  {
+   "iso": "MDA",
+   "o": 2016,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 164.0,
+   "H1": 0.997,
+   "H2": 1.043,
+   "H3": 1.029,
+   "H4": 1.026,
+   "H5": 1.045
+  },
+  {
+   "iso": "MDA",
+   "o": 2017,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 163.5,
+   "H1": 1.093,
+   "H2": 1.049,
+   "H3": 1.04,
+   "H4": 1.07
+  },
+  {
+   "iso": "MKD",
+   "o": 2005,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 13.6,
+   "H1": 1.081,
+   "H2": 1.227,
+   "H3": 1.339,
+   "H4": 1.262,
+   "H5": 1.301
+  },
+  {
+   "iso": "MKD",
+   "o": 2006,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 14.6,
+   "H1": 1.272,
+   "H2": 1.358,
+   "H3": 1.224,
+   "H4": 1.273,
+   "H5": 1.325
+  },
+  {
+   "iso": "MKD",
+   "o": 2007,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 18.6,
+   "H1": 1.136,
+   "H2": 0.944,
+   "H3": 1.001,
+   "H4": 1.072,
+   "H5": 1.11
+  },
+  {
+   "iso": "MKD",
+   "o": 2008,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 21.2,
+   "H1": 0.662,
+   "H2": 0.822,
+   "H3": 0.926,
+   "H4": 0.988,
+   "H5": 1.037
+  },
+  {
+   "iso": "MKD",
+   "o": 2009,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 14.0,
+   "H1": 1.484,
+   "H2": 1.598,
+   "H3": 1.658,
+   "H4": 1.746,
+   "H5": 1.743
+  },
+  {
+   "iso": "MKD",
+   "o": 2010,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 20.8,
+   "H1": 1.153,
+   "H2": 1.175,
+   "H3": 1.235,
+   "H4": 1.217,
+   "H5": 1.21
+  },
+  {
+   "iso": "MKD",
+   "o": 2011,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 24.0,
+   "H1": 1.038,
+   "H2": 1.107,
+   "H3": 1.073,
+   "H4": 1.059,
+   "H5": 1.136
+  },
+  {
+   "iso": "MKD",
+   "o": 2012,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 24.9,
+   "H1": 1.133,
+   "H2": 1.051,
+   "H3": 1.027,
+   "H4": 1.155,
+   "H5": 1.273
+  },
+  {
+   "iso": "MKD",
+   "o": 2013,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 28.2,
+   "H1": 0.856,
+   "H2": 0.86,
+   "H3": 1.026,
+   "H4": 1.206,
+   "H5": 1.264
+  },
+  {
+   "iso": "MKD",
+   "o": 2014,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 24.1,
+   "H1": 1.009,
+   "H2": 1.297,
+   "H3": 1.545,
+   "H4": 1.63,
+   "H5": 1.711
+  },
+  {
+   "iso": "MKD",
+   "o": 2015,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 24.3,
+   "H1": 1.572,
+   "H2": 1.798,
+   "H3": 1.82,
+   "H4": 1.91,
+   "H5": 1.994
+  },
+  {
+   "iso": "MKD",
+   "o": 2016,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 38.2,
+   "H1": 1.287,
+   "H2": 1.237,
+   "H3": 1.287,
+   "H4": 1.362,
+   "H5": 1.455
+  },
+  {
+   "iso": "MKD",
+   "o": 2017,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 49.2,
+   "H1": 0.922,
+   "H2": 1.0,
+   "H3": 1.077,
+   "H4": 1.199
+  },
+  {
+   "iso": "POL",
+   "o": 2005,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1226.5,
+   "H1": 1.09,
+   "H2": 1.041,
+   "H3": 1.069,
+   "H4": 1.098,
+   "H5": 1.143
+  },
+  {
+   "iso": "POL",
+   "o": 2009,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1453.2,
+   "H1": 1.193,
+   "H2": 1.214,
+   "H3": 1.209,
+   "H4": 1.203,
+   "H5": 1.188
+  },
+  {
+   "iso": "POL",
+   "o": 2010,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1734.0,
+   "H1": 1.035,
+   "H2": 1.02,
+   "H3": 1.01,
+   "H4": 0.988,
+   "H5": 0.977
+  },
+  {
+   "iso": "POL",
+   "o": 2011,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1794.9,
+   "H1": 0.97,
+   "H2": 0.964,
+   "H3": 0.94,
+   "H4": 0.924,
+   "H5": 0.949
+  },
+  {
+   "iso": "POL",
+   "o": 2012,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1741.3,
+   "H1": 0.988,
+   "H2": 0.953,
+   "H3": 0.937,
+   "H4": 0.985,
+   "H5": 0.996
+  },
+  {
+   "iso": "POL",
+   "o": 2013,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1720.2,
+   "H1": 0.929,
+   "H2": 0.922,
+   "H3": 0.996,
+   "H4": 1.017,
+   "H5": 1.016
+  },
+  {
+   "iso": "POL",
+   "o": 2014,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1597.8,
+   "H1": 0.986,
+   "H2": 1.108,
+   "H3": 1.126,
+   "H4": 1.118,
+   "H5": 1.112
+  },
+  {
+   "iso": "POL",
+   "o": 2015,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 1575.8,
+   "H1": 1.248,
+   "H2": 1.213,
+   "H3": 1.177,
+   "H4": 1.156,
+   "H5": 1.147
+  },
+  {
+   "iso": "ROU",
+   "o": 2005,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 910.3,
+   "H1": 1.074,
+   "H2": 0.958,
+   "H3": 0.913,
+   "H4": 0.779,
+   "H5": 0.728
+  },
+  {
+   "iso": "ROU",
+   "o": 2006,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 978.0,
+   "H1": 0.784,
+   "H2": 0.774,
+   "H3": 0.633,
+   "H4": 0.573,
+   "H5": 0.559
+  },
+  {
+   "iso": "ROU",
+   "o": 2007,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 766.5,
+   "H1": 0.976,
+   "H2": 0.711,
+   "H3": 0.642,
+   "H4": 0.632,
+   "H5": 0.621
+  },
+  {
+   "iso": "ROU",
+   "o": 2008,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 747.9,
+   "H1": 0.458,
+   "H2": 0.487,
+   "H3": 0.53,
+   "H4": 0.54,
+   "H5": 0.507
+  },
+  {
+   "iso": "ROU",
+   "o": 2009,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 342.5,
+   "H1": 1.127,
+   "H2": 1.236,
+   "H3": 1.24,
+   "H4": 1.099,
+   "H5": 0.98
+  },
+  {
+   "iso": "ROU",
+   "o": 2010,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 386.1,
+   "H1": 1.192,
+   "H2": 1.15,
+   "H3": 0.967,
+   "H4": 0.783,
+   "H5": 0.683
+  },
+  {
+   "iso": "ROU",
+   "o": 2011,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 460.3,
+   "H1": 0.928,
+   "H2": 0.716,
+   "H3": 0.543,
+   "H4": 0.424,
+   "H5": 0.442
+  },
+  {
+   "iso": "ROU",
+   "o": 2012,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 427.3,
+   "H1": 0.543,
+   "H2": 0.377,
+   "H3": 0.276,
+   "H4": 0.355,
+   "H5": 0.373
+  },
+  {
+   "iso": "ROU",
+   "o": 2013,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 232.0,
+   "H1": 0.388,
+   "H2": 0.262,
+   "H3": 0.538,
+   "H4": 0.624,
+   "H5": 0.675
+  },
+  {
+   "iso": "ROU",
+   "o": 2014,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 90.1,
+   "H1": 0.351,
+   "H2": 1.578,
+   "H3": 1.809,
+   "H4": 1.988,
+   "H5": 1.975
+  },
+  {
+   "iso": "ROU",
+   "o": 2015,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 31.6,
+   "H1": 7.996,
+   "H2": 7.238,
+   "H3": 7.222,
+   "H4": 6.772,
+   "H5": 6.555
+  },
+  {
+   "iso": "ROU",
+   "o": 2016,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 252.7,
+   "H1": 0.81,
+   "H2": 0.855,
+   "H3": 0.796,
+   "H4": 0.761,
+   "H5": 0.923
+  },
+  {
+   "iso": "ROU",
+   "o": 2017,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 204.8,
+   "H1": 1.11,
+   "H2": 0.973,
+   "H3": 0.919,
+   "H4": 1.274
+  },
+  {
+   "iso": "SRB",
+   "o": 2005,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 373.3,
+   "H1": 1.022,
+   "H2": 1.037,
+   "H3": 1.034,
+   "H4": 0.957,
+   "H5": 0.937
+  },
+  {
+   "iso": "SRB",
+   "o": 2006,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 381.5,
+   "H1": 1.03,
+   "H2": 1.018,
+   "H3": 0.916,
+   "H4": 0.887,
+   "H5": 0.856
+  },
+  {
+   "iso": "SRB",
+   "o": 2007,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 392.9,
+   "H1": 0.978,
+   "H2": 0.833,
+   "H3": 0.815,
+   "H4": 0.774,
+   "H5": 0.725
+  },
+  {
+   "iso": "SRB",
+   "o": 2008,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 384.1,
+   "H1": 0.705,
+   "H2": 0.75,
+   "H3": 0.722,
+   "H4": 0.651,
+   "H5": 0.633
+  },
+  {
+   "iso": "SRB",
+   "o": 2009,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 270.7,
+   "H1": 1.128,
+   "H2": 1.036,
+   "H3": 0.899,
+   "H4": 0.859,
+   "H5": 0.864
+  },
+  {
+   "iso": "SRB",
+   "o": 2010,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 305.5,
+   "H1": 0.837,
+   "H2": 0.695,
+   "H3": 0.682,
+   "H4": 0.709,
+   "H5": 0.748
+  },
+  {
+   "iso": "SRB",
+   "o": 2011,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 255.7,
+   "H1": 0.66,
+   "H2": 0.722,
+   "H3": 0.796,
+   "H4": 0.891,
+   "H5": 0.937
+  },
+  {
+   "iso": "SRB",
+   "o": 2012,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 489.3,
+   "H1": 1.035,
+   "H2": 1.223,
+   "H3": 1.394,
+   "H4": 1.466,
+   "H5": 1.474
+  },
+  {
+   "iso": "SRB",
+   "o": 2013,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 506.4,
+   "H1": 1.363,
+   "H2": 1.52,
+   "H3": 1.555,
+   "H4": 1.534,
+   "H5": 1.56
+  },
+  {
+   "iso": "SRB",
+   "o": 2014,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 690.1,
+   "H1": 1.231,
+   "H2": 1.212,
+   "H3": 1.168,
+   "H4": 1.191,
+   "H5": 1.201
+  },
+  {
+   "iso": "SRB",
+   "o": 2015,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 849.4,
+   "H1": 0.97,
+   "H2": 0.923,
+   "H3": 0.956,
+   "H4": 0.974,
+   "H5": 0.94
+  },
+  {
+   "iso": "SRB",
+   "o": 2016,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 823.7,
+   "H1": 0.904,
+   "H2": 0.979,
+   "H3": 1.006,
+   "H4": 0.944,
+   "H5": 0.923
+  },
+  {
+   "iso": "SRB",
+   "o": 2017,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 377.6,
+   "H1": 1.007,
+   "H2": 1.022,
+   "H3": 0.985,
+   "H4": 1.01
+  },
+  {
+   "iso": "SVK",
+   "o": 2005,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3294.2,
+   "H1": 1.018,
+   "H2": 1.017,
+   "H3": 1.012,
+   "H4": 0.998,
+   "H5": 0.99
+  },
+  {
+   "iso": "SVK",
+   "o": 2006,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3352.3,
+   "H1": 0.998,
+   "H2": 0.991,
+   "H3": 0.974,
+   "H4": 0.962,
+   "H5": 0.965
+  },
+  {
+   "iso": "SVK",
+   "o": 2007,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3346.8,
+   "H1": 0.985,
+   "H2": 0.963,
+   "H3": 0.952,
+   "H4": 0.959,
+   "H5": 0.944
+  },
+  {
+   "iso": "SVK",
+   "o": 2008,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3298.2,
+   "H1": 0.955,
+   "H2": 0.949,
+   "H3": 0.964,
+   "H4": 0.939,
+   "H5": 0.94
+  },
+  {
+   "iso": "SVK",
+   "o": 2009,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3149.1,
+   "H1": 0.987,
+   "H2": 1.015,
+   "H3": 0.978,
+   "H4": 0.981,
+   "H5": 0.969
+  },
+  {
+   "iso": "SVK",
+   "o": 2010,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3108.9,
+   "H1": 1.056,
+   "H2": 0.986,
+   "H3": 0.992,
+   "H4": 0.97,
+   "H5": 0.969
+  },
+  {
+   "iso": "SVK",
+   "o": 2011,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3284.4,
+   "H1": 0.868,
+   "H2": 0.908,
+   "H3": 0.891,
+   "H4": 0.896,
+   "H5": 0.895
+  },
+  {
+   "iso": "SVK",
+   "o": 2012,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 2849.3,
+   "H1": 1.093,
+   "H2": 1.041,
+   "H3": 1.043,
+   "H4": 1.038,
+   "H5": 1.034
+  },
+  {
+   "iso": "SVK",
+   "o": 2013,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3115.3,
+   "H1": 0.904,
+   "H2": 0.931,
+   "H3": 0.933,
+   "H4": 0.93,
+   "H5": 0.926
+  },
+  {
+   "iso": "SVK",
+   "o": 2014,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 2816.1,
+   "H1": 1.06,
+   "H2": 1.048,
+   "H3": 1.039,
+   "H4": 1.028,
+   "H5": 1.039
+  },
+  {
+   "iso": "SVK",
+   "o": 2015,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 2984.8,
+   "H1": 0.978,
+   "H2": 0.97,
+   "H3": 0.96,
+   "H4": 0.981,
+   "H5": 0.973
+  },
+  {
+   "iso": "SVK",
+   "o": 2016,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 2919.4,
+   "H1": 0.983,
+   "H2": 0.972,
+   "H3": 1.004,
+   "H4": 0.989,
+   "H5": 0.978
+  },
+  {
+   "iso": "SVK",
+   "o": 2017,
+   "prods": [
+    "crude",
+    "gas"
+   ],
+   "group": "mixed",
+   "start_eur_m": 2869.9,
+   "H1": 0.977,
+   "H2": 1.031,
+   "H3": 1.008,
+   "H4": 0.988
+  },
+  {
+   "iso": "KAZ",
+   "o": 2005,
+   "prods": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 2054.6,
+   "H1": 1.356,
+   "H2": 1.556,
+   "H3": 1.629,
+   "H4": 1.577,
+   "H5": 1.497
+  },
+  {
+   "iso": "KAZ",
+   "o": 2006,
+   "prods": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 2785.6,
+   "H1": 1.296,
+   "H2": 1.303,
+   "H3": 1.217,
+   "H4": 1.101,
+   "H5": 1.1
+  },
+  {
+   "iso": "KAZ",
+   "o": 2007,
+   "prods": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3609.3,
+   "H1": 1.011,
+   "H2": 0.909,
+   "H3": 0.8,
+   "H4": 0.811,
+   "H5": 0.816
+  },
+  {
+   "iso": "KAZ",
+   "o": 2008,
+   "prods": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3648.7,
+   "H1": 0.798,
+   "H2": 0.687,
+   "H3": 0.736,
+   "H4": 0.762,
+   "H5": 0.801
+  },
+  {
+   "iso": "KAZ",
+   "o": 2009,
+   "prods": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 2913.1,
+   "H1": 0.721,
+   "H2": 0.883,
+   "H3": 0.939,
+   "H4": 1.028,
+   "H5": 0.929
+  },
+  {
+   "iso": "KAZ",
+   "o": 2010,
+   "prods": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 2100.0,
+   "H1": 1.449,
+   "H2": 1.453,
+   "H3": 1.568,
+   "H4": 1.293,
+   "H5": 1.162
+  },
+  {
+   "iso": "KAZ",
+   "o": 2011,
+   "prods": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3042.7,
+   "H1": 1.006,
+   "H2": 1.123,
+   "H3": 0.857,
+   "H4": 0.708,
+   "H5": 0.651
+  },
+  {
+   "iso": "KAZ",
+   "o": 2012,
+   "prods": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3060.0,
+   "H1": 1.234,
+   "H2": 0.778,
+   "H3": 0.605,
+   "H4": 0.53,
+   "H5": 0.503
+  },
+  {
+   "iso": "KAZ",
+   "o": 2013,
+   "prods": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 3775.6,
+   "H1": 0.261,
+   "H2": 0.235,
+   "H3": 0.24,
+   "H4": 0.249,
+   "H5": 0.241
+  },
+  {
+   "iso": "KAZ",
+   "o": 2014,
+   "prods": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 984.0,
+   "H1": 0.806,
+   "H2": 0.879,
+   "H3": 0.94,
+   "H4": 0.889,
+   "H5": 0.801
+  },
+  {
+   "iso": "KAZ",
+   "o": 2015,
+   "prods": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 792.8,
+   "H1": 1.182,
+   "H2": 1.25,
+   "H3": 1.138,
+   "H4": 0.939,
+   "H5": 0.885
+  },
+  {
+   "iso": "KAZ",
+   "o": 2016,
+   "prods": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 937.4,
+   "H1": 1.115,
+   "H2": 0.943,
+   "H3": 0.726,
+   "H4": 0.662,
+   "H5": 0.615
+  },
+  {
+   "iso": "KAZ",
+   "o": 2017,
+   "prods": [
+    "coal",
+    "crude",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 1044.9,
+   "H1": 0.692,
+   "H2": 0.477,
+   "H3": 0.459,
+   "H4": 0.418
+  },
+  {
+   "iso": "KGZ",
+   "o": 2007,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 430.7,
+   "H1": 1.092,
+   "H2": 1.159,
+   "H3": 1.074,
+   "H4": 1.038,
+   "H5": 1.075
+  },
+  {
+   "iso": "KGZ",
+   "o": 2008,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 470.4,
+   "H1": 1.123,
+   "H2": 0.975,
+   "H3": 0.934,
+   "H4": 0.998,
+   "H5": 1.072
+  },
+  {
+   "iso": "KGZ",
+   "o": 2009,
+   "prods": [
+    "crude",
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 533.8,
+   "H1": 0.738,
+   "H2": 0.744,
+   "H3": 0.846,
+   "H4": 0.968,
+   "H5": 0.995
+  },
+  {
+   "iso": "KGZ",
+   "o": 2010,
+   "prods": [
+    "crude",
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 394.0,
+   "H1": 1.017,
+   "H2": 1.219,
+   "H3": 1.416,
+   "H4": 1.453,
+   "H5": 1.452
+  },
+  {
+   "iso": "KGZ",
+   "o": 2011,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 400.7,
+   "H1": 1.398,
+   "H2": 1.588,
+   "H3": 1.57,
+   "H4": 1.532,
+   "H5": 1.489
+  },
+  {
+   "iso": "KGZ",
+   "o": 2012,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 560.0,
+   "H1": 1.273,
+   "H2": 1.186,
+   "H3": 1.129,
+   "H4": 1.066,
+   "H5": 1.079
+  },
+  {
+   "iso": "KGZ",
+   "o": 2013,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 712.8,
+   "H1": 0.863,
+   "H2": 0.83,
+   "H3": 0.784,
+   "H4": 0.815,
+   "H5": 0.801
+  },
+  {
+   "iso": "KGZ",
+   "o": 2014,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 615.2,
+   "H1": 0.924,
+   "H2": 0.862,
+   "H3": 0.925,
+   "H4": 0.903,
+   "H5": 0.875
+  },
+  {
+   "iso": "KGZ",
+   "o": 2015,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 568.4,
+   "H1": 0.866,
+   "H2": 1.002,
+   "H3": 0.969,
+   "H4": 0.918,
+   "H5": 0.903
+  },
+  {
+   "iso": "KGZ",
+   "o": 2016,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 492.4,
+   "H1": 1.314,
+   "H2": 1.178,
+   "H3": 1.08,
+   "H4": 1.044,
+   "H5": 1.053
+  },
+  {
+   "iso": "KGZ",
+   "o": 2017,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 646.9,
+   "H1": 0.794,
+   "H2": 0.733,
+   "H3": 0.726,
+   "H4": 0.755
+  },
+  {
+   "iso": "MNG",
+   "o": 2005,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 197.5,
+   "H1": 1.158,
+   "H2": 1.302,
+   "H3": 1.337,
+   "H4": 1.303,
+   "H5": 1.354
+  },
+  {
+   "iso": "MNG",
+   "o": 2006,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 228.7,
+   "H1": 1.248,
+   "H2": 1.232,
+   "H3": 1.167,
+   "H4": 1.233,
+   "H5": 1.284
+  },
+  {
+   "iso": "MNG",
+   "o": 2007,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 285.4,
+   "H1": 0.975,
+   "H2": 0.903,
+   "H3": 0.984,
+   "H4": 1.058,
+   "H5": 1.144
+  },
+  {
+   "iso": "MNG",
+   "o": 2008,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 278.2,
+   "H1": 0.852,
+   "H2": 1.015,
+   "H3": 1.113,
+   "H4": 1.26,
+   "H5": 1.276
+  },
+  {
+   "iso": "MNG",
+   "o": 2009,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 237.1,
+   "H1": 1.381,
+   "H2": 1.458,
+   "H3": 1.638,
+   "H4": 1.63,
+   "H5": 1.648
+  },
+  {
+   "iso": "MNG",
+   "o": 2010,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 327.4,
+   "H1": 1.113,
+   "H2": 1.28,
+   "H3": 1.241,
+   "H4": 1.249,
+   "H5": 1.274
+  },
+  {
+   "iso": "MNG",
+   "o": 2011,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 364.3,
+   "H1": 1.301,
+   "H2": 1.173,
+   "H3": 1.163,
+   "H4": 1.193,
+   "H5": 1.207
+  },
+  {
+   "iso": "MNG",
+   "o": 2012,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 473.8,
+   "H1": 0.804,
+   "H2": 0.841,
+   "H3": 0.889,
+   "H4": 0.915,
+   "H5": 0.979
+  },
+  {
+   "iso": "MNG",
+   "o": 2013,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 380.8,
+   "H1": 1.093,
+   "H2": 1.16,
+   "H3": 1.185,
+   "H4": 1.312,
+   "H5": 1.358
+  },
+  {
+   "iso": "MNG",
+   "o": 2014,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 416.4,
+   "H1": 1.122,
+   "H2": 1.126,
+   "H3": 1.266,
+   "H4": 1.324,
+   "H5": 1.384
+  },
+  {
+   "iso": "MNG",
+   "o": 2015,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 467.1,
+   "H1": 1.008,
+   "H2": 1.193,
+   "H3": 1.24,
+   "H4": 1.319,
+   "H5": 1.345
+  },
+  {
+   "iso": "MNG",
+   "o": 2016,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 470.7,
+   "H1": 1.367,
+   "H2": 1.345,
+   "H3": 1.411,
+   "H4": 1.431,
+   "H5": 1.435
+  },
+  {
+   "iso": "MNG",
+   "o": 2017,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 643.5,
+   "H1": 0.968,
+   "H2": 1.049,
+   "H3": 1.063,
+   "H4": 1.064
+  },
+  {
+   "iso": "TJK",
+   "o": 2008,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 193.1,
+   "H1": 1.127,
+   "H2": 1.171,
+   "H3": 0.999,
+   "H4": 0.875,
+   "H5": 0.817
+  },
+  {
+   "iso": "TJK",
+   "o": 2009,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 217.6,
+   "H1": 1.078,
+   "H2": 0.83,
+   "H3": 0.703,
+   "H4": 0.63,
+   "H5": 0.681
+  },
+  {
+   "iso": "TJK",
+   "o": 2010,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 234.6,
+   "H1": 0.54,
+   "H2": 0.477,
+   "H3": 0.446,
+   "H4": 0.562,
+   "H5": 0.621
+  },
+  {
+   "iso": "TJK",
+   "o": 2011,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 126.6,
+   "H1": 0.769,
+   "H2": 0.74,
+   "H3": 1.056,
+   "H4": 1.242,
+   "H5": 1.33
+  },
+  {
+   "iso": "TJK",
+   "o": 2012,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 97.4,
+   "H1": 0.922,
+   "H2": 1.559,
+   "H3": 1.819,
+   "H4": 1.969,
+   "H5": 1.937
+  },
+  {
+   "iso": "TJK",
+   "o": 2013,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 89.8,
+   "H1": 2.38,
+   "H2": 2.458,
+   "H3": 2.513,
+   "H4": 2.357,
+   "H5": 2.265
+  },
+  {
+   "iso": "TJK",
+   "o": 2014,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 213.8,
+   "H1": 1.065,
+   "H2": 1.083,
+   "H3": 0.987,
+   "H4": 0.92,
+   "H5": 0.859
+  },
+  {
+   "iso": "TJK",
+   "o": 2015,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 227.8,
+   "H1": 1.034,
+   "H2": 0.89,
+   "H3": 0.819,
+   "H4": 0.73,
+   "H5": 0.748
+  },
+  {
+   "iso": "TJK",
+   "o": 2016,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 235.5,
+   "H1": 0.721,
+   "H2": 0.688,
+   "H3": 0.607,
+   "H4": 0.663,
+   "H5": 0.692
+  },
+  {
+   "iso": "TJK",
+   "o": 2017,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 169.8,
+   "H1": 0.907,
+   "H2": 0.764,
+   "H3": 0.892,
+   "H4": 0.969
+  },
+  {
+   "iso": "BLR",
+   "o": 2005,
+   "prods": [
+    "coal",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 239.7,
+   "H1": 2.155,
+   "H2": 1.863,
+   "H3": 2.7,
+   "H4": 3.682,
+   "H5": 3.382
+  },
+  {
+   "iso": "BLR",
+   "o": 2006,
+   "prods": [
+    "coal",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 516.5,
+   "H1": 0.729,
+   "H2": 1.379,
+   "H3": 1.945,
+   "H4": 1.642,
+   "H5": 2.065
+  },
+  {
+   "iso": "BLR",
+   "o": 2007,
+   "prods": [
+    "crude",
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 7786.4,
+   "H1": 1.154,
+   "H2": 1.19,
+   "H3": 1.015,
+   "H4": 1.053,
+   "H5": 1.115
+  },
+  {
+   "iso": "BLR",
+   "o": 2008,
+   "prods": [
+    "crude",
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 8987.0,
+   "H1": 1.062,
+   "H2": 0.819,
+   "H3": 0.883,
+   "H4": 0.984,
+   "H5": 0.968
+  },
+  {
+   "iso": "BLR",
+   "o": 2009,
+   "prods": [
+    "crude",
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 9544.2,
+   "H1": 0.542,
+   "H2": 0.747,
+   "H3": 0.902,
+   "H4": 0.882,
+   "H5": 0.884
+  },
+  {
+   "iso": "BLR",
+   "o": 2010,
+   "prods": [
+    "crude",
+    "gas",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 8914.5,
+   "H1": 1.409,
+   "H2": 1.552,
+   "H3": 1.46,
+   "H4": 1.435,
+   "H5": 1.429
+  },
+  {
+   "iso": "BLR",
+   "o": 2011,
+   "prods": [
+    "crude",
+    "gas",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 12557.4,
+   "H1": 1.203,
+   "H2": 1.055,
+   "H3": 1.025,
+   "H4": 1.016,
+   "H5": 0.994
+  },
+  {
+   "iso": "BLR",
+   "o": 2012,
+   "prods": [
+    "crude",
+    "gas",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 15110.0,
+   "H1": 0.754,
+   "H2": 0.778,
+   "H3": 0.793,
+   "H4": 0.773,
+   "H5": 0.771
+  },
+  {
+   "iso": "BLR",
+   "o": 2013,
+   "prods": [
+    "coal",
+    "crude",
+    "gas",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 11421.4,
+   "H1": 1.064,
+   "H2": 1.078,
+   "H3": 1.034,
+   "H4": 1.028,
+   "H5": 1.028
+  },
+  {
+   "iso": "BLR",
+   "o": 2014,
+   "prods": [
+    "coal",
+    "crude",
+    "gas",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 12155.4,
+   "H1": 1.026,
+   "H2": 0.958,
+   "H3": 0.955,
+   "H4": 0.957,
+   "H5": 0.943
+  },
+  {
+   "iso": "BLR",
+   "o": 2015,
+   "prods": [
+    "coal",
+    "crude",
+    "gas",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 12476.8,
+   "H1": 0.866,
+   "H2": 0.896,
+   "H3": 0.91,
+   "H4": 0.892,
+   "H5": 0.854
+  },
+  {
+   "iso": "BLR",
+   "o": 2016,
+   "prods": [
+    "coal",
+    "crude",
+    "gas",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 10810.5,
+   "H1": 1.067,
+   "H2": 1.075,
+   "H3": 1.039,
+   "H4": 0.96,
+   "H5": 0.901
+  },
+  {
+   "iso": "BLR",
+   "o": 2017,
+   "prods": [
+    "coal",
+    "crude",
+    "gas",
+    "products"
+   ],
+   "group": "mixed",
+   "start_eur_m": 11538.8,
+   "H1": 1.014,
+   "H2": 0.961,
+   "H3": 0.866,
+   "H4": 0.778
+  },
+  {
+   "iso": "ARM",
+   "o": 2011,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 290.3,
+   "H1": 1.225,
+   "H2": 1.223,
+   "H3": 1.243,
+   "H4": 1.229,
+   "H5": 1.219
+  },
+  {
+   "iso": "ARM",
+   "o": 2012,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 355.6,
+   "H1": 0.996,
+   "H2": 1.022,
+   "H3": 1.004,
+   "H4": 0.99,
+   "H5": 0.998
+  },
+  {
+   "iso": "ARM",
+   "o": 2013,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 354.3,
+   "H1": 1.052,
+   "H2": 1.012,
+   "H3": 0.991,
+   "H4": 1.007,
+   "H5": 1.004
+  },
+  {
+   "iso": "ARM",
+   "o": 2014,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 372.8,
+   "H1": 0.923,
+   "H2": 0.913,
+   "H3": 0.943,
+   "H4": 0.941,
+   "H5": 0.958
+  },
+  {
+   "iso": "ARM",
+   "o": 2015,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 344.2,
+   "H1": 0.977,
+   "H2": 1.031,
+   "H3": 1.025,
+   "H4": 1.056,
+   "H5": 1.073
+  },
+  {
+   "iso": "ARM",
+   "o": 2016,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 336.4,
+   "H1": 1.111,
+   "H2": 1.074,
+   "H3": 1.108,
+   "H4": 1.131,
+   "H5": 1.16
+  },
+  {
+   "iso": "ARM",
+   "o": 2017,
+   "prods": [
+    "gas"
+   ],
+   "group": "gas",
+   "start_eur_m": 373.7,
+   "H1": 0.933,
+   "H2": 0.996,
+   "H3": 1.024,
+   "H4": 1.069
+  },
+  {
+   "iso": "UZB",
+   "o": 2014,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 186.7,
+   "H1": 1.449,
+   "H2": 1.717,
+   "H3": 1.826,
+   "H4": 1.667,
+   "H5": 1.587
+  },
+  {
+   "iso": "UZB",
+   "o": 2015,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 270.5,
+   "H1": 1.371,
+   "H2": 1.391,
+   "H3": 1.201,
+   "H4": 1.091,
+   "H5": 1.151
+  },
+  {
+   "iso": "UZB",
+   "o": 2016,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 370.8,
+   "H1": 1.029,
+   "H2": 0.814,
+   "H3": 0.728,
+   "H4": 0.821,
+   "H5": 0.775
+  },
+  {
+   "iso": "UZB",
+   "o": 2017,
+   "prods": [
+    "products"
+   ],
+   "group": "oil",
+   "start_eur_m": 381.6,
+   "H1": 0.582,
+   "H2": 0.561,
+   "H3": 0.731,
+   "H4": 0.668
+  }
+ ],
+ "sources": [
+  {
+   "name": "CEPII BACI HS92 (1995-2024 release) via the OEC API: HS 2701/2709/2710/2711 imports from all suppliers and Russia's exports by importer, value and tonnes (round 48 extract)",
+   "url": "https://oec.world/api/olap-proxy/data.jsonrecords?cube=trade_i_baci_a_92",
+   "file": "research/2026-10/raw/demand_cf_r48/baci_fuel_hs4_2001_2024.json.gz",
+   "date": "2026-10-25"
+  },
+  {
+   "name": "Eurostat nrg_ti_gas, nrg_ti_oil, nrg_ti_sff: imports by partner (RU, TOTAL), annual (round 48)",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ti_gas",
+   "file": "research/2026-10/raw/demand_cf_r48/eurostat_energy_2026-10-25.json.gz",
+   "date": "2026-10-25"
+  },
+  {
+   "name": "Route table: UN-OHRLLS landlocked developing countries; GIIGNL annual reports (LNG import terminals by start year)",
+   "url": "https://www.un.org/ohrlls/content/list-lldcs ; https://giignl.org/document/giignl-annual-report/",
+   "file": "research/2026-10/raw/captive_bands_r53/route_sources.json",
+   "date": "2026-10-25"
+  },
+  {
+   "name": "site/data.json (to_rus cb, bmul) and the site's own model in site/index.html",
+   "url": "site/",
+   "date": "2026-10-25"
+  }
+ ],
+ "site_effect": {
+  "summary": {
+   "diagnostic_forced_all_captive": {
+    "countries_patched": 17,
+    "n_changes": 0,
+    "group_or_side_changes": [],
+    "world_before": {
+     "nowar": 2168.2122,
+     "nowar_lo": 1477.7214,
+     "nowar_hi": 3307.9986,
+     "paid": 137.0705
+    },
+    "world_after": {
+     "nowar": 2168.2122,
+     "nowar_lo": 1476.6553,
+     "nowar_hi": 3309.6175,
+     "paid": 137.0705
+    }
+   },
+   "rule": {
+    "countries_patched": 0,
+    "n_changes": 0,
+    "group_or_side_changes": [],
+    "world_before": {
+     "nowar": 2168.2122,
+     "nowar_lo": 1477.7214,
+     "nowar_hi": 3307.9986,
+     "paid": 137.0705
+    },
+    "world_after": {
+     "nowar": 2168.2122,
+     "nowar_lo": 1477.7214,
+     "nowar_hi": 3307.9986,
+     "paid": 137.0705
+    }
+   }
+  },
+  "countries": {
+   "BIH": {
+    "gdp_eur_bn": 25.43,
+    "paid_pct_gdp_before": [
+     0.9,
+     -0.1,
+     4.36
+    ],
+    "paid_pct_gdp_forced": [
+     0.9,
+     -0.01,
+     3.63
+    ],
+    "paid_range_width_pct_gdp": [
+     4.46,
+     3.64
+    ],
+    "net_pct_gdp_before": [
+     0.55,
+     -0.39,
+     3.88
+    ],
+    "net_pct_gdp_forced": [
+     0.55,
+     -0.3,
+     3.16
+    ],
+    "net_chance": [
+     {
+      "p": 0.869,
+      "side": "ukraine",
+      "group": "leaning"
+     },
+     {
+      "p": 0.89,
+      "side": "ukraine",
+      "group": "leaning"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.853,
+      "side": "ukraine",
+      "group": "leaning"
+     },
+     {
+      "p": 0.874,
+      "side": "ukraine",
+      "group": "leaning"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "BGR": {
+    "gdp_eur_bn": 95.065,
+    "paid_pct_gdp_before": [
+     2.73,
+     -0.39,
+     6.47
+    ],
+    "paid_pct_gdp_forced": [
+     2.73,
+     -0.18,
+     6.31
+    ],
+    "paid_range_width_pct_gdp": [
+     6.86,
+     6.49
+    ],
+    "net_pct_gdp_before": [
+     3.21,
+     -0.1,
+     7.19
+    ],
+    "net_pct_gdp_forced": [
+     3.21,
+     0.1,
+     7.03
+    ],
+    "net_chance": [
+     {
+      "p": 0.95,
+      "side": "ukraine",
+      "group": "certain"
+     },
+     {
+      "p": 0.961,
+      "side": "ukraine",
+      "group": "certain"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.903,
+      "side": "ukraine",
+      "group": "leaning"
+     },
+     {
+      "p": 0.917,
+      "side": "ukraine",
+      "group": "leaning"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "CZE": {
+    "gdp_eur_bn": 308.805,
+    "paid_pct_gdp_before": [
+     2.38,
+     0.87,
+     4.52
+    ],
+    "paid_pct_gdp_forced": [
+     2.38,
+     0.64,
+     4.87
+    ],
+    "paid_range_width_pct_gdp": [
+     3.65,
+     4.23
+    ],
+    "net_pct_gdp_before": [
+     2.56,
+     0.45,
+     5.61
+    ],
+    "net_pct_gdp_forced": [
+     2.56,
+     0.26,
+     5.88
+    ],
+    "net_chance": [
+     {
+      "p": 0.972,
+      "side": "ukraine",
+      "group": "certain"
+     },
+     {
+      "p": 0.967,
+      "side": "ukraine",
+      "group": "certain"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.833,
+      "side": "ukraine",
+      "group": "leaning"
+     },
+     {
+      "p": 0.806,
+      "side": "ukraine",
+      "group": "leaning"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "EST": {
+    "gdp_eur_bn": 38.167,
+    "paid_pct_gdp_before": [
+     6.4,
+     1.47,
+     12.44
+    ],
+    "paid_pct_gdp_forced": [
+     6.4,
+     1.53,
+     12.37
+    ],
+    "paid_range_width_pct_gdp": [
+     10.97,
+     10.84
+    ],
+    "net_pct_gdp_before": [
+     10.76,
+     5.29,
+     17.35
+    ],
+    "net_pct_gdp_forced": [
+     10.76,
+     5.34,
+     17.28
+    ],
+    "net_chance": [
+     {
+      "p": 0.999,
+      "side": "ukraine",
+      "group": "certain"
+     },
+     {
+      "p": 1,
+      "side": "ukraine",
+      "group": "certain"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.994,
+      "side": "ukraine",
+      "group": "certain"
+     },
+     {
+      "p": 0.995,
+      "side": "ukraine",
+      "group": "certain"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "FIN": {
+    "gdp_eur_bn": 271.711,
+    "paid_pct_gdp_before": [
+     5.6,
+     2.78,
+     9.33
+    ],
+    "paid_pct_gdp_forced": [
+     5.6,
+     2.79,
+     9.3
+    ],
+    "paid_range_width_pct_gdp": [
+     6.54,
+     6.51
+    ],
+    "net_pct_gdp_before": [
+     8.5,
+     5.36,
+     12.61
+    ],
+    "net_pct_gdp_forced": [
+     8.5,
+     5.36,
+     12.59
+    ],
+    "net_chance": [
+     {
+      "p": 1,
+      "side": "ukraine",
+      "group": "certain"
+     },
+     {
+      "p": 1,
+      "side": "ukraine",
+      "group": "certain"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 1,
+      "side": "ukraine",
+      "group": "certain"
+     },
+     {
+      "p": 1,
+      "side": "ukraine",
+      "group": "certain"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "HUN": {
+    "gdp_eur_bn": 190.33,
+    "paid_pct_gdp_before": [
+     -0.22,
+     -1.98,
+     1.82
+    ],
+    "paid_pct_gdp_forced": [
+     -0.22,
+     -2.21,
+     2.48
+    ],
+    "paid_range_width_pct_gdp": [
+     3.8,
+     4.69
+    ],
+    "net_pct_gdp_before": [
+     -5.99,
+     -9.77,
+     -0.73
+    ],
+    "net_pct_gdp_forced": [
+     -5.99,
+     -9.88,
+     -0.45
+    ],
+    "net_chance": [
+     {
+      "p": 0.97,
+      "side": "russia",
+      "group": "certain"
+     },
+     {
+      "p": 0.962,
+      "side": "russia",
+      "group": "certain"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.971,
+      "side": "russia",
+      "group": "certain"
+     },
+     {
+      "p": 0.969,
+      "side": "russia",
+      "group": "certain"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "LVA": {
+    "gdp_eur_bn": 38.768,
+    "paid_pct_gdp_before": [
+     1.73,
+     0.02,
+     4.1
+    ],
+    "paid_pct_gdp_forced": [
+     1.73,
+     0.11,
+     4.02
+    ],
+    "paid_range_width_pct_gdp": [
+     4.08,
+     3.91
+    ],
+    "net_pct_gdp_before": [
+     5.57,
+     3.14,
+     8.61
+    ],
+    "net_pct_gdp_forced": [
+     5.57,
+     3.22,
+     8.54
+    ],
+    "net_chance": [
+     {
+      "p": 1,
+      "side": "ukraine",
+      "group": "certain"
+     },
+     {
+      "p": 1,
+      "side": "ukraine",
+      "group": "certain"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.994,
+      "side": "ukraine",
+      "group": "certain"
+     },
+     {
+      "p": 0.995,
+      "side": "ukraine",
+      "group": "certain"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "MDA": {
+    "gdp_eur_bn": 15.357,
+    "paid_pct_gdp_before": [
+     6.55,
+     2.59,
+     11.92
+    ],
+    "paid_pct_gdp_forced": [
+     6.55,
+     2.37,
+     11.97
+    ],
+    "paid_range_width_pct_gdp": [
+     9.32,
+     9.6
+    ],
+    "net_pct_gdp_before": [
+     6.73,
+     1.55,
+     13.5
+    ],
+    "net_pct_gdp_forced": [
+     6.73,
+     1.35,
+     13.55
+    ],
+    "net_chance": [
+     {
+      "p": 0.986,
+      "side": "ukraine",
+      "group": "certain"
+     },
+     {
+      "p": 0.983,
+      "side": "ukraine",
+      "group": "certain"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.977,
+      "side": "ukraine",
+      "group": "certain"
+     },
+     {
+      "p": 0.976,
+      "side": "ukraine",
+      "group": "certain"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "MKD": {
+    "gdp_eur_bn": 14.518,
+    "paid_pct_gdp_before": [
+     0.63,
+     -0.89,
+     2.51
+    ],
+    "paid_pct_gdp_forced": [
+     0.63,
+     -0.77,
+     2.65
+    ],
+    "paid_range_width_pct_gdp": [
+     3.4,
+     3.42
+    ],
+    "net_pct_gdp_before": [
+     -1.47,
+     -3.61,
+     1.78
+    ],
+    "net_pct_gdp_forced": [
+     -1.47,
+     -3.55,
+     1.85
+    ],
+    "net_chance": [
+     {
+      "p": 0.725,
+      "side": "russia",
+      "group": "leaning"
+     },
+     {
+      "p": 0.716,
+      "side": "russia",
+      "group": "leaning"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.908,
+      "side": "russia",
+      "group": "leaning"
+     },
+     {
+      "p": 0.899,
+      "side": "russia",
+      "group": "leaning"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "SRB": {
+    "gdp_eur_bn": 73.968,
+    "paid_pct_gdp_before": [
+     0.32,
+     -1.71,
+     2.93
+    ],
+    "paid_pct_gdp_forced": [
+     0.32,
+     -1.56,
+     2.8
+    ],
+    "paid_range_width_pct_gdp": [
+     4.63,
+     4.35
+    ],
+    "net_pct_gdp_before": [
+     -1.37,
+     -3.5,
+     1.34
+    ],
+    "net_pct_gdp_forced": [
+     -1.37,
+     -3.37,
+     1.22
+    ],
+    "net_chance": [
+     {
+      "p": 0.821,
+      "side": "russia",
+      "group": "leaning"
+     },
+     {
+      "p": 0.837,
+      "side": "russia",
+      "group": "leaning"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.822,
+      "side": "russia",
+      "group": "leaning"
+     },
+     {
+      "p": 0.837,
+      "side": "russia",
+      "group": "leaning"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "SVK": {
+    "gdp_eur_bn": 121.235,
+    "paid_pct_gdp_before": [
+     1.22,
+     -2.48,
+     4.72
+    ],
+    "paid_pct_gdp_forced": [
+     1.22,
+     -3.15,
+     6.58
+    ],
+    "paid_range_width_pct_gdp": [
+     7.2,
+     9.74
+    ],
+    "net_pct_gdp_before": [
+     0.14,
+     -4.05,
+     4.7
+    ],
+    "net_pct_gdp_forced": [
+     0.14,
+     -4.67,
+     6.27
+    ],
+    "net_chance": [
+     {
+      "p": 0.575,
+      "side": "ukraine",
+      "group": "too close to call"
+     },
+     {
+      "p": 0.568,
+      "side": "ukraine",
+      "group": "too close to call"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.588,
+      "side": "russia",
+      "group": "too close to call"
+     },
+     {
+      "p": 0.568,
+      "side": "russia",
+      "group": "too close to call"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "KAZ": {
+    "gdp_eur_bn": 241.863,
+    "paid_pct_gdp_before": [
+     1.09,
+     -0.64,
+     3.51
+    ],
+    "paid_pct_gdp_forced": [
+     1.09,
+     -0.6,
+     3.46
+    ],
+    "paid_range_width_pct_gdp": [
+     4.15,
+     4.06
+    ],
+    "net_pct_gdp_before": [
+     0.02,
+     -2.74,
+     2.8
+    ],
+    "net_pct_gdp_forced": [
+     0.02,
+     -2.71,
+     2.75
+    ],
+    "net_chance": [
+     {
+      "p": 0.589,
+      "side": "russia",
+      "group": "essentially zero"
+     },
+     {
+      "p": 0.591,
+      "side": "russia",
+      "group": "essentially zero"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.606,
+      "side": "russia",
+      "group": "essentially zero"
+     },
+     {
+      "p": 0.609,
+      "side": "russia",
+      "group": "essentially zero"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "KGZ": {
+    "gdp_eur_bn": 14.114,
+    "paid_pct_gdp_before": [
+     -3.74,
+     -10.54,
+     4.84
+    ],
+    "paid_pct_gdp_forced": [
+     -3.74,
+     -10.0,
+     4.48
+    ],
+    "paid_range_width_pct_gdp": [
+     15.38,
+     14.48
+    ],
+    "net_pct_gdp_before": [
+     -10.01,
+     -18.67,
+     -0.76
+    ],
+    "net_pct_gdp_forced": [
+     -10.01,
+     -18.17,
+     -1.1
+    ],
+    "net_chance": [
+     {
+      "p": 0.972,
+      "side": "russia",
+      "group": "certain"
+     },
+     {
+      "p": 0.976,
+      "side": "russia",
+      "group": "certain"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.972,
+      "side": "russia",
+      "group": "certain"
+     },
+     {
+      "p": 0.974,
+      "side": "russia",
+      "group": "certain"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "MNG": {
+    "gdp_eur_bn": 19.021,
+    "paid_pct_gdp_before": [
+     -2.29,
+     -6.02,
+     11.64
+    ],
+    "paid_pct_gdp_forced": [
+     -2.29,
+     -7.44,
+     8.44
+    ],
+    "paid_range_width_pct_gdp": [
+     17.65,
+     15.87
+    ],
+    "net_pct_gdp_before": [
+     -6.37,
+     -10.71,
+     7.82
+    ],
+    "net_pct_gdp_forced": [
+     -6.37,
+     -11.95,
+     4.73
+    ],
+    "net_chance": [
+     {
+      "p": 0.776,
+      "side": "russia",
+      "group": "leaning"
+     },
+     {
+      "p": 0.831,
+      "side": "russia",
+      "group": "leaning"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.764,
+      "side": "russia",
+      "group": "leaning"
+     },
+     {
+      "p": 0.828,
+      "side": "russia",
+      "group": "leaning"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "TJK": {
+    "gdp_eur_bn": 11.608,
+    "paid_pct_gdp_before": [
+     0.55,
+     -3.01,
+     5.31
+    ],
+    "paid_pct_gdp_forced": [
+     0.55,
+     -2.65,
+     5.02
+    ],
+    "paid_range_width_pct_gdp": [
+     8.31,
+     7.67
+    ],
+    "net_pct_gdp_before": [
+     -0.39,
+     -4.29,
+     4.52
+    ],
+    "net_pct_gdp_forced": [
+     -0.39,
+     -3.96,
+     4.24
+    ],
+    "net_chance": [
+     {
+      "p": 0.584,
+      "side": "russia",
+      "group": "too close to call"
+     },
+     {
+      "p": 0.576,
+      "side": "russia",
+      "group": "too close to call"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.571,
+      "side": "russia",
+      "group": "too close to call"
+     },
+     {
+      "p": 0.576,
+      "side": "russia",
+      "group": "too close to call"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "BLR": {
+    "gdp_eur_bn": 69.9,
+    "paid_pct_gdp_before": [
+     3.43,
+     -4.58,
+     14.41
+    ],
+    "paid_pct_gdp_forced": [
+     3.43,
+     -5.41,
+     17.01
+    ],
+    "paid_range_width_pct_gdp": [
+     19.0,
+     22.42
+    ],
+    "net_pct_gdp_before": [
+     -3.6,
+     -13.28,
+     7.34
+    ],
+    "net_pct_gdp_forced": [
+     -3.6,
+     -13.92,
+     9.86
+    ],
+    "net_chance": [
+     {
+      "p": 0.775,
+      "side": "russia",
+      "group": "leaning"
+     },
+     {
+      "p": 0.744,
+      "side": "russia",
+      "group": "leaning"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.775,
+      "side": "russia",
+      "group": "leaning"
+     },
+     {
+      "p": 0.744,
+      "side": "russia",
+      "group": "leaning"
+     }
+    ],
+    "applied_by_rule": false
+   },
+   "ARM": {
+    "gdp_eur_bn": 21.626,
+    "paid_pct_gdp_before": [
+     1.47,
+     -2.19,
+     6.33
+    ],
+    "paid_pct_gdp_forced": [
+     1.47,
+     -1.85,
+     5.98
+    ],
+    "paid_range_width_pct_gdp": [
+     8.51,
+     7.83
+    ],
+    "net_pct_gdp_before": [
+     -0.13,
+     -8.83,
+     5.04
+    ],
+    "net_pct_gdp_forced": [
+     -0.13,
+     -8.6,
+     4.71
+    ],
+    "net_chance": [
+     {
+      "p": 0.673,
+      "side": "russia",
+      "group": "leaning"
+     },
+     {
+      "p": 0.68,
+      "side": "russia",
+      "group": "leaning"
+     }
+    ],
+    "rus_chance": [
+     {
+      "p": 0.685,
+      "side": "russia",
+      "group": "leaning"
+     },
+     {
+      "p": 0.7,
+      "side": "russia",
+      "group": "leaning"
+     }
+    ],
+    "applied_by_rule": false
+   }
+  }
+ }
+}
