@@ -1021,6 +1021,30 @@
    "in_repository": true
   },
   {
+   "path": "demand_cf_r48/baci_fuel_hs4_2001_2024.json.gz",
+   "bytes": 331258,
+   "sha256": "b81a63d1f67667d7f47b58d53e18f31470047054262e276470a5c998bcd8fcdc",
+   "in_repository": true
+  },
+  {
+   "path": "demand_cf_r48/baci_imports_groups_all_suppliers_2001_2024.json.gz",
+   "bytes": 239489,
+   "sha256": "b380da277667de893a7f1852aaf63750ca151c3d60016168599ff2f1ec9dfc39",
+   "in_repository": true
+  },
+  {
+   "path": "demand_cf_r48/baci_world_hs4q_2001_2024.json.gz",
+   "bytes": 42259,
+   "sha256": "513c933cfc560357a14dce299806495d052b437657ea80a602a13c295b598fd6",
+   "in_repository": true
+  },
+  {
+   "path": "demand_cf_r48/eurostat_energy_2026-10-25.json.gz",
+   "bytes": 307406,
+   "sha256": "ba6d0d52cc4cf3471118a5bf1544f8bb23fbb361498b74814575512981030df8",
+   "in_repository": true
+  },
+  {
    "path": "eaeu_r44/ServCantr.xlsx",
    "bytes": 243250,
    "sha256": "2aee2b332dbe13857e99daef2a5e57d93c9bd9b42b870e031cc799ab37d12ea2",
@@ -1804,6 +1828,132 @@
    "path": "oecd_tiva/ua_m_2024.json",
    "bytes": 254159,
    "sha256": "37d8ee6eba3c35903a55c75a99f9a01a45442453405389840726640c6f10d38a",
+   "in_repository": true
+  },
+  {
+   "path": "share_cf_r50/baci_fuel_hs4_1995_2000.json.gz",
+   "bytes": 69698,
+   "sha256": "3a0bc3bd646784bd1460d01c08da7b76155e3942337b4ea2628c78a6070342f6",
+   "in_repository": true
+  },
+  {
+   "path": "share_cf_r50/supply_infra_sources_2026-10-25.json",
+   "bytes": 10988,
+   "sha256": "77db9f186b8adb70f207179243c51024119ab82096365fc57e2126c7c9590c31",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/aljazeera_2025-08-22_druzhba.txt",
+   "bytes": 7839,
+   "sha256": "53680f89e6469db431bfb350e417c9f7f052bf732281c105d5d57c5a25afc1c8",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/crea_2025-09_monthly.txt",
+   "bytes": 7819,
+   "sha256": "c7913de836e21ff9a6d6e743237074148a1ddbd106905f42fc5744c1c2b80e1a",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/iea_omr_2026-05.txt",
+   "bytes": 5105,
+   "sha256": "a7a96e0fcbcf2c6bc1524d7f6568d50465cc5f6b3e02e05e7ed9c72bf6e891cf",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/kpler_2025-11_repeated_attacks.txt",
+   "bytes": 3988,
+   "sha256": "2718bc9b453d327814b9f6ff2da31251124267fbdef9c34fe62c5268767be415",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/kpler_2026-07_runs_21y_low.txt",
+   "bytes": 8707,
+   "sha256": "0bb3e4887b98b7585bb5e6d77fa3c8e73f2eedb829d0d8582cfeff02995ad30f",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/kse_ROT_August-2026.txt",
+   "bytes": 1552,
+   "sha256": "f56e2e49368e4411f727320678f9c195b386b8d76b3ed541323083492ef92fea",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/kse_ROT_July-2026.txt",
+   "bytes": 2948,
+   "sha256": "6b20ee3161dca6a79409e7e886d97bd86d814dfe3d9f6528c3ba42f18667498c",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/kse_rot_eng_september_2026.txt",
+   "bytes": 2952,
+   "sha256": "5ed3c9e31b79f9f0992d355b1ae71792681ecb604ae078ed8a19ceb2238a550a",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/kyivpost_2026-02-23_kaleykino.txt",
+   "bytes": 5641,
+   "sha256": "098592653a8601f5232b8d0516cf8bed82b207b1681f9d5c36b9a57f310d944a",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/meduza_2025-08-20_druzhba.txt",
+   "bytes": 4673,
+   "sha256": "cb6cfbfcd867e4fba60ffaf8eb63843f7f9ea718ff6414964a98c85c7a843cd7",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/moscowtimes_2026-02-16_druzhba_halt.txt",
+   "bytes": 4986,
+   "sha256": "ca57dab7bfe7989eb23e789718675f79f16c17b063aa462c6cfa5335faa35a87",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/oilprice_2026-09_fuel_exports_august.txt",
+   "bytes": 5687,
+   "sha256": "1e50e0f6f486be16174ff54170a5716095c2ad18905c3de2435970fd30a2ea0f",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/polskieradio_2025-08_druzhba_resume.txt",
+   "bytes": 3801,
+   "sha256": "8f7cb6f6c51a2048cf5a9e5a08e6f6d0d6cfb048c4b6e96c0c2aabfe5673f58e",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/reuters_2024-03_14pct_offline.txt",
+   "bytes": 5704,
+   "sha256": "23eeae5d93d0a3d97615a4a875ab5bb808eea9b3e0d96aa3ef1a454c83fa63d4",
+   "in_repository": true
+  },
+  {
+   "path": "strike_supply_r51/wikipedia_fuel_crisis_2025_2026.txt",
+   "bytes": 9628,
+   "sha256": "221042bd800c38fc8f40fe4299786a046f3b651bcd6e27e93c886c944d01e8c0",
+   "in_repository": true
+  },
+  {
+   "path": "supply_cf_r49/baci_rus_partner_hs2_2021_2024.json.gz",
+   "bytes": 205755,
+   "sha256": "18500b11b78cd96878c3066036895892234fdc9bf71675248f072e3bf831d06d",
+   "in_repository": true
+  },
+  {
+   "path": "supply_cf_r49/baci_rus_world_hs4q_2001_2024.json.gz",
+   "bytes": 296565,
+   "sha256": "babdb9613a0dc3f64f7f766e2f9add6fa96d38f5c66f4f1313185f0fea12066b",
+   "in_repository": true
+  },
+  {
+   "path": "supply_cf_r49/comtrade_rus_reported_exports_2001_2021_2026-10-25.json",
+   "bytes": 70878,
+   "sha256": "9abb4627c77f695731e7e2d4e93a9cb412b8b8f8c4101c4bd1f6581c20c6e3d7",
+   "in_repository": true
+  },
+  {
+   "path": "supply_cf_r49/usda_psd_russia_grain_exports_2026-10-25.json",
+   "bytes": 2468,
+   "sha256": "b415ac1c3e96e962019fe72df3c41a316abc3556eb0e0f4fe3ec8b6f87b2c76d",
    "in_repository": true
   },
   {

@@ -5,6 +5,8 @@ Developer reference for the method page [Expected without the war: the counterfa
 
 Every trade number on the map is a change against what a country would have bought from or sold to Russia and Ukraine **if there had been no war**. That expected level cannot be observed, so it has to be predicted. This page explains what the map predicts, which models were tried (four generations, 16 models in the last one), how they were tested on past years, which model is used for which flow and why, and how the prediction's own error widens the map's ranges. The short version: for most flows the best prediction turned out to be "2021 held flat"; only exports to Russia (and, on weaker evidence, trade with Ukraine) are predicted better by a model that uses the country's trade with everyone else and its GDP.
 
+**In short:** without the war, each country would have kept buying what it bought in 2021, at no-war prices (small and mid-size buyers: see [Small flows](#small-flows-start-from-the-2019-to-2021-median)). Where Ukraine's strikes cut what Russia could export, the baseline is lowered: a buyer that wanted Russian fuel but could not get it because of strikes did not choose to buy less. Buyers that had stopped buying by their own choice are unaffected ([Strikes on Russia's oil exports](#strikes-on-russias-oil-exports-round-51)).
+
 Main files: [`counterfactual.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/counterfactual.json) with its notes [`counterfactual-notes.md`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/counterfactual-notes.md), applied by [build_data.py `counterfactual()`](https://github.com/intelligent-cream/war-balance/blob/main/pipeline/build_data.py), and used on the site by `triple()` and `spread()` in [`site/index.html`](https://github.com/intelligent-cream/war-balance/blob/main/site/index.html).
 
 ## 1. What "expected without the war" means
@@ -361,6 +363,37 @@ For 2022–2026 Japan's band narrows from ×0.65–1.50 to ×0.72–1.40. The mi
 held). Only the ~5 Mt total is confirmed; the per-buyer contract table is from press summaries.
 <span class="incode">In the code: `contract_lng()` in `build_data.py`</span>
 
+### Strikes on Russia's oil exports (round 51)
+
+Owner's decision: Ukraine's strikes on refineries, ports and pipelines limit what Russia **can** export. A buyer that wanted Russian fuel and could not get it did not choose to buy less, so "it's just a lowering of the baseline". Sanctions, embargoes, the price cap and buyers switching suppliers are choices and stay counted. Russia's 2022 gas cut-off also stays counted (owner: a foreseeable answer to the buyers' own sanctions).
+
+Research: [`strike_supply_r51.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/strike_supply_r51.json), [notes](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/strike_supply_r51-notes.md), script `research/2026-10/scripts/strike_supply_r51.py` (`fetch` keeps short extracts with address and date in `research/2026-10/raw/strike_supply_r51/`). Applied by build_data.py `strike_supply()` (constants `STRIKE_SUPPLY`, `STRIKE_EMBARGO`), after `small_flow_bias()`, because it needs the no-war prices, `cur` and the gain shares.
+
+**Lost exports** ([low, central, high]; per year, 2026 = January–August):
+
+| year | products lost, Mt | share of no-war product exports | per tonne actually exported | crude lost, Mt |
+|---|---|---|---|---|
+| 2022 | 0 / 0 / 0 | 0% | 0 | 0 |
+| 2023 | 0 / 0 / 0 | 0% | 0 | 0 |
+| 2024 | 2.2 / 5.2 / 10.8 | 1.5% / 3.6% / 7.5% | 0.017 / 0.039 / 0.081 | 0 |
+| 2025 | 4.4 / 8.9 / 16.2 | 3.1% / 6.2% / 11.2% | 0.035 / 0.071 / 0.128 | 0 / 0 / 0.2 |
+| 2026 | 12.2 / 19.4 / 29.2 | 12.7% / 20.2% / 30.4% | 0.183 / 0.290 / 0.436 | 0 / 0 / 3.0 |
+
+- Products: refinery throughput lost to strikes (2024: 0.09/0.15/0.25 mb/d; 2025: 0.18/0.26/0.33; 2026: 0.75/0.85/0.95) times an export pass-through of 0.5/0.7/1.0, capped at the whole shortfall of product exports against the pre-war level (2.95 mb/d; IEA: 2.98, 2.97, 2.73, 2.58 mb/d in 2022–2025, about 2.05 in January–August 2026). 2022 and 2023: exports were at the pre-war level, so no loss is counted. Russia's gasoline, jet and diesel export bans from March 2024 answered strike-driven shortages and count through the pass-through; the 2023 gasoline ban (domestic prices, before the strike waves) does not.
+- Crude by sea: ports stopped for days (Primorsk and Ust-Luga in March–April 2026, Sheskharis in April and August 2026), but the crude idle refineries could not use was exported instead, so crude exports did not fall net (4.88 mb/d in April 2026, near records). Central 0; the high end is the gross volume of the outages.
+- Druzhba south: Ukrainian strikes on Nikolskoye and Unecha stopped flows to Hungary and Slovakia for about 8 days in August 2025 (3/6/8 days counted). Czechia had stopped Russian crude by its own choice in April 2025. The halt of 27 January–22 April 2026 followed a Russian strike on the pipeline in Ukraine (Brody) and is not counted.
+- Not included: ammonia and fertiliser (no strike-related loss found).
+
+**Allocation.** For buyer *c*, product *p* (seaborne crude or products) and year *t*:
+
+lost<sub>c,p,t</sub> = min( V<sub>c,p,t</sub> × r<sub>p,t</sub> × n<sub>p,t</sub> , fs<sub>c</sub> × s<sub>c,p</sub> × n<sub>p,t</sub> )
+
+where V is the buyer's own purchases of that product that year at 2019–2021 prices (`customs_fuel_volumes()`, its customs at FOB), r the volume lost per tonne Russia actually exported, n the no-war price level (2019–2021 = 1), fs its pre-war fuel share and s that product's share of its pre-war fuel (`pre_war_fuel_split()`). So the loss goes to the actual war-time buyers pro rata, and a buyer's baseline is never lowered by more than its own no-war level of that product. Druzhba: r = days lost / 365 on the buyer's crude. Buyers in `STRIKE_EMBARGO` (EU27, GBR, USA, CAN, AUS, NZL, CHE, NOR, ISL) get nothing for seaborne oil from 2023: their own embargo had stopped it and the strikes changed nothing for them. Destinations not in the customs data (a third of 2026's product cargoes are "unknown") are not allocated.
+
+The expected path becomes `bmul − lost` (central), `bmul_lo − lost_high`, `bmul_hi − lost_low` (stored as `to_rus.strike_lost`, × base). The cumulative band keeps its euro width and adds the loss range: for *h* years summed, with weights w = FRAC × cur × Russia's gain share and S = Σ w × bmul, the new band is [(cb<sub>lo</sub> S − Σ w lost<sub>high</sub>) / S′, (cb<sub>hi</sub> S − Σ w lost<sub>low</sub>) / S′], S′ = Σ w (bmul − lost) (old band kept as `cb_before_strikes`). The no-war price band (nrl/nrh) stays relative. The windfall (actual volume × price gap) and laundered oil are not touched, so nothing is counted twice. Placebo test: no strikes before the war, so the factor is 1 there (`placebo.py` unchanged).
+
+**Effect.** EUR 11.8bn (7.3–19.6bn) of expected purchases over 2022–2026 is taken out for 58 buyers, about two thirds of it in 2026: Türkiye 2.9bn, China 1.7bn, Singapore 0.9bn, India 0.8bn, Brazil 0.8bn, Mongolia and Uzbekistan 0.5bn; Hungary and Slovakia EUR 0.03bn each (Druzhba). At Russia's gain share, the world's net (less minus more paid to Russia) falls by about EUR 3.2bn. The only group change: Taiwan's "Russia's earnings" moves from uncertain to near zero.
+
 ### Deliberate choices
 
 - **Actual figures as inputs.** The models use each country's actual 2022–2026 GDP and trade with others, although the war affected them too. The map asks how far a country went out of its way: if its economy shrank because of the war, it would have traded less with Russia anyway, and that is not a choice to credit or blame. Pre-war forecasts were considered and rejected.
@@ -377,8 +410,15 @@ held). Only the ~5 Mt total is confirmed; the per-buyer contract table is from p
 | Product detail (`sh_hs`, `sh_fuel`) | no better than total-trade shares; worse in 2013 (`sh_hs` +1/+4/+11% for `to_rus`) | rejected |
 | UN voting distance (feature in `lin`, `rf`) | −0.03 per unit; one standard deviation moves the prediction by −0.015 | kept as a feature, negligible |
 | Russia-side hub models (`hub_donor`, `hub_all`, `elastic_hub`, `gbm_hub`) | the only predictors that helped in every test (+18–40%) | inputs for 2022–2026 are the war outcome |
+| Product detail (round 44) | no better than the total; product parts move independently | rejected |
+| Mid-size start from 2021, small-buyer bias shift (round 47) | +13% for mid-size flows; small buyers' median 5-year error +0.45 | applied at the owner's request, below the bar |
+| Buyer demand model (round 48) | typical 5-year miss 26% (current rule 32%, held flat 33%) | not ≥15% better at every origin 2005–2016 |
+| Russia supply model (round 49) | 30% | not ≥15% better at every origin |
+| Predicted Russian share of the buyer's imports (round 50) | large buyers 15.6% against 16% | barely different |
 | Realised commodity prices | would put part of the 2022 price shock into the "no-war" path | replaced by the IMF WEO October 2021 path |
+
+Rounds 44–50 used one rule, fixed before any result: a model replaces the current rule only if it is at least 15% more accurate at **every** rolling origin 2005–2016, its 90% bands are not wider in any size class, and the placebo test (placebo_r42) still covers at least 90%. The current rule's typical 5-year miss is 32% overall (small buyers 60%, mid-size 38%, large 16%), against 33% for 2021 held flat for everyone. The demand (26%) and supply (30%) models were better on average but failed at some origins; the share model matched the large buyers (15.6% against 16%) without gaining. The simple rule is about as accurate as any of them, so it stays.
 
 ## 9. The widest case: Belarus
 
-Belarus's 2021 imports from Russia (about EUR 18bn a year) are held flat, and the honest random-walk error on a flow that large is wide enough to cross zero: its net is −3.60%<!-- n:BLR.net --> of GDP, likely −13.26%<!-- n:BLR.netLo --> to +7.34%<!-- n:BLR.netHi --> ([limitations.md](https://warbalance.org/#view=how&sec=limitations)). Belarus is a party to the war and not ranked.
+Belarus's 2021 imports from Russia (about EUR 18bn a year) are held flat, and the honest random-walk error on a flow that large is wide enough to cross zero: its net is −3.60%<!-- n:BLR.net --> of GDP, likely −13.28%<!-- n:BLR.netLo --> to +7.34%<!-- n:BLR.netHi --> ([limitations.md](https://warbalance.org/#view=how&sec=limitations)). Belarus is a party to the war and not ranked.

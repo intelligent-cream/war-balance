@@ -1,0 +1,20 @@
+File: research/2026-10/raw/kse_rot/ROT_August-2026.pdf (KSE Institute, Russian Oil Tracker; listed in MANIFEST.json)
+Read: 2026-10-25
+Extract:
+
+Source: IEA (2026), Oil Market Reports 2023-2026, Paris, France
+ 24
+Russian oil export revenues dropped by $2.0 bn MoM on lower export volumes and lower prices
+ • Total Russian oil exports decreased by 630 kb/d MoM and 420 kb/d YoY to 6.97 mb/d as products exports collapse by 0.43 mb/d MoM 1.25 mb/d YoY to 1.4 mb/d
+ following Ukrainian drone strikes on refinery infrastructure compounded by 0.2 mb/d decline in crude exports.
+ • In July 2026, Russian oil export revenues declined by 2.0 bn to $13.8 bn due to further decline of road fuel exports, which traded with very high margin to crude since
+ the start of the US-Iran war as well lower global crude prices. Total crude and products lost $1.1
+
+---
+
+port revenues dropped by $2.0 bn MoM on lower export volumes and lower prices
+ • Total Russian oil exports decreased by 630 kb/d MoM and 420 kb/d YoY to 6.97 mb/d as products exports collapse by 0.43 mb/d MoM 1.25 mb/d YoY to 1.4 mb/d
+ following Ukrainian drone strikes on refinery infrastructure compounded by 0.2 mb/d decline in crude exports.
+ • In July 2026, Russian oil export revenues declined by 2.0 bn to $13.8 bn due to further decline of road fuel exports, which traded with very high margin to crude since
+ the start of the US-Iran war as well lower global crude prices. Total crude and products lost $1.1 bn and $0.9 bn, respectively.
+ • The KSE Institute had to revise the proje

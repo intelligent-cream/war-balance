@@ -2,6 +2,8 @@
 
 Every trade number on the map is a change against what a country would have bought from or sold to Russia and Ukraine **if there had been no war**. That level cannot be observed, so it is predicted, with models tested on past years. The short answer: for most flows the best prediction is **2021 held flat**; only sales to Russia are predicted better by a model that uses the country's trade with everyone else.
 
+**In short:** without the war, each country would have kept buying what it bought in 2021, at no-war prices (small and mid-size buyers: see below). Where Ukraine's strikes cut what Russia could export, the baseline is lowered: a buyer that wanted Russian fuel but could not get it because of strikes did not choose to buy less. Buyers that had stopped buying by their own choice are unaffected.
+
 Details for developers: [the full model tables, formulas and research files](https://github.com/intelligent-cream/war-balance/blob/main/docs/reference/method/counterfactual.md).
 
 ## 1. What "expected without the war" means
@@ -62,7 +64,7 @@ The expected level is never treated as exact. Its range comes from the models' o
 
 ### Belarus
 
-Belarus's imports from Russia (about EUR 18bn a year) are steadier than the average partner's, so they get a narrower band of their own (×0.72–1.44). Even so the range is wide enough to cross zero: its net is −3.60%<!-- n:BLR.net --> of GDP, likely −13.26%<!-- n:BLR.netLo --> to +7.34%<!-- n:BLR.netHi -->. Belarus is a party to the war and not ranked.
+Belarus's imports from Russia (about EUR 18bn a year) are steadier than the average partner's, so they get a narrower band of their own (×0.72–1.44). Even so the range is wide enough to cross zero: its net is −3.60%<!-- n:BLR.net --> of GDP, likely −13.28%<!-- n:BLR.netLo --> to +7.34%<!-- n:BLR.netHi -->. Belarus is a party to the war and not ranked.
 
 ### Trade with Ukraine
 
@@ -94,7 +96,33 @@ China's no-war path includes the gas the Power of Siberia contract (2014) alread
 
 LNG is about a quarter of what Japan bought from Russia. Its no-war band comes from Japanese buyers' long-term Sakhalin-2 contracts (about 5 Mt a year): the floor is the contracted volume, the top the pre-war maximum. The rest of Japan's purchases keeps the generic band. The middle value does not change.
 
+### Strikes on Russia's oil exports
+
+Ukraine's drones hit Russian refineries, oil ports and the Druzhba pipeline. That limited what Russia **could** export, whatever its buyers wanted. A buyer that wanted Russian fuel and could not get it did not choose to buy less, so the strike loss is taken out of its baseline: its change is counted as if the strikes had not happened.
+
+- **How much was lost.** Oil product exports (diesel, fuel oil, gasoline, naphtha): about 5 Mt in 2024, 9 Mt in 2025 and 19 Mt in January–August 2026, or 4%, 6% and 20% of what Russia exported before the war (likely 2–11 Mt, 4–16 Mt and 12–29 Mt). In 2022–2023 no loss shows in the export figures. Crude: ports stopped for days at a time, but the crude that idle refineries could not use was exported instead, so crude exports did not fall; only the high end of the range counts a small loss. Druzhba: flows to Hungary and Slovakia stopped for about a week in August 2025.
+- **Who it applies to.** The lost volume is shared over the countries that were actually buying that product at the time, in proportion to what they bought (pipeline losses go to the pipeline's buyers). A buyer's baseline is never lowered by more than it would itself have bought of that product. Buyers whose own embargo had already stopped the product (the EU, the UK, the US and others, from 2023) get nothing: the strikes changed nothing for them.
+- **What does not change.** The price windfall (what was actually bought, times the war-time price rise) and the laundered oil are not touched. Sanctions, embargoes, the price cap and buyers switching suppliers are choices and stay counted, and so does Russia's 2022 gas cut-off, a foreseeable answer to the buyers' own sanctions.
+
+In total, EUR 12bn (likely 7–20bn) of expected purchases over 2022–2026 is taken out, mostly in 2026, for 58 buyers: Türkiye, China, Singapore, India and Brazil most. What they did not buy because of strikes no longer counts as money kept from Russia, so the world's net change in payments to Russia is about EUR 3bn smaller (at Russia's share of the money).
+
 ### Deliberate choices
 
 - **Actual figures as inputs.** The models use each country's actual 2022–2026 GDP and trade with others. If a country's economy shrank because of the war, it would have traded less with Russia anyway; that is not a choice to credit or blame.
 - **Ranges as tested.** They are not widened for Russia-side shocks: stretching every range for a rare shock would blur the result more than it adds.
+
+## 8. Models we tried
+
+"2021 held flat" was tested against several alternatives. A new model is adopted only if it is at least 15% more accurate at every starting year from 2005 to 2016, its ranges are not wider, and the placebo test (the method rerun for years without a war) still finds the true value inside the range at least 90% of the time. The typical miss over five years, in the back-tests:
+
+| what was tried | typical miss | result |
+|---|---|---|
+| The current rule (2021 held flat, median start for small buyers) | 32% (small buyers 60%, mid-size 38%, large 16%) | kept |
+| 2021 held flat for everyone | 33% | the base for the rules below |
+| Product detail (round 44) | no better than the total | rejected |
+| Mid-size buyers start from 2021, small buyers raised by their measured bias (round 47) | 13% better for mid-size buyers | applied at the owner's request, below the bar |
+| Buyer demand: the buyer's economy and imports (round 48) | 26% | better on average, but not 15% better at every starting year |
+| Russia's supply (round 49) | 30% | better on average, but not 15% better at every starting year |
+| Predicted share of Russia in the buyer's imports (round 50) | large buyers 15.6% against 16% | barely different |
+
+None passed. Some were better on average but not at every starting year, or only for some buyers. The simple rule is about as accurate as any of them, and it is easy to check.

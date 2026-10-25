@@ -1745,6 +1745,7 @@ def build() -> dict:
     deflate_gold(countries)
     apply_net_gain(countries, src)
     small_flow_bias(countries, src)  # round 47: after cur and gain
+    strike_supply(countries, src)  # round 51: after the no-war prices, cur and gain
     # round 14 (audit H2): Nigeria's credit for less fuel from EU refiners is structural: the EU banned Russian-made fuel
     # (February 2023) and Nigeria's own Dangote refinery started production in January 2024; a label, the totals do not
     # change
@@ -2050,7 +2051,7 @@ SOURCE_TYPE = {
     "shadow_fleet": "report", "reexports": "data", "residual": "data", "hk_gold_r16": "data", "audit": "notes",
     "sanctions_share": "report", "gas_cuts": "press", "prices": "ours", "narrow": "data", "audit2": "notes",
     "windfall": "ours", "trend": "ours", "gas_prices": "data", "trend2": "ours", "counterfactual": "ours",
-    "ua_trade_cf": "ours", "cf_bands": "ours", "cf_bias_r47": "ours", "entsog_r43": "data", "epdk_r43": "data", "power_of_siberia": "press", "weapons_value": "report",
+    "ua_trade_cf": "ours", "cf_bands": "ours", "cf_bias_r47": "ours", "strike_supply_r51": "report", "entsog_r43": "data", "epdk_r43": "data", "power_of_siberia": "press", "weapons_value": "report",
     "state_finance": "data", "company_flows": "report", "russian_owned_r10": "report", "rusfirms_r44": "report", "seizures": "report",
     "refugees_net": "data", "co_belligerent": "report", "eaeu_r44": "data", "hk_csd_r44": "data", "japan_lng_r44": "data", "loans_value": "report", "money_ledger": "data",
     "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "svc_ukr": "data", "company_profits": "data", "import_premium": "data", "wagner": "report", "remittances": "data",
@@ -3363,6 +3364,92 @@ def counterfactual(countries: dict[str, dict], src: Sources) -> None:
                 # right-bank gas and other goods at 2019-2021 prices; the 2019-2021 average as the low alternative
                 m = bands["countries"]["MDA"]["to_rus"]["base_range_recommended_eur_bn_at_2019_2021_prices"]
                 obj["base"], obj["base_range"] = m["central"], [m["low"], m["high"]]
+
+
+# Round 51 (owner): Ukraine's strikes on refineries, ports and pipelines limited what Russia COULD export; a buyer that
+# wanted Russian fuel and could not get it did not choose to buy less ("it's just a lowering of the baseline"). The
+# volume lost per tonne Russia exported, per product and year, [low, central, high] (strike_supply_r51.json); Druzhba
+# days lost per buyer. Applied by strike_supply() below. Sanctions, embargoes, the price cap and buyers switching stay
+# counted (choices), and so does Russia's 2022 gas cut-off (owner: a foreseeable answer to the buyers' own sanctions)
+STRIKE_SUPPLY = load(GAPS / "strike_supply_r51.json")
+# buyers whose own embargo stopped Russian seaborne crude (December 2022) and products (February 2023): the strikes
+# changed nothing for them, so their no-war level is not lowered (Druzhba crude to Hungary and Slovakia stays exempt)
+STRIKE_EMBARGO = EU27 | {"GBR", "USA", "CAN", "AUS", "NZL", "CHE", "NOR", "ISL"}
+STRIKE_PARTS = {"products": ("products",), "crude": ("crude", "crude_gas_hidden")}
+STRIKE_NW = {"products": "diesel_gasoil_products", "crude": "urals"}
+
+
+def strike_supply(countries: dict[str, dict], src: Sources) -> None:
+    """Round 51 (owner; research/2026-10/gaps/strike_supply_r51-notes.md): the no-war level of purchases from Russia
+    (to_rus) is lowered by the Russian fuel strikes kept from the buyer. Seaborne crude and products: the volume lost
+    per tonne exported that year times the buyer's own purchases of that product (customs_fuel_volumes, at 2019-2021
+    prices), i.e. pro rata to the actual war-time buyers, valued at the no-war price; capped at the buyer's own no-war
+    level of that product (its pre-war share held flat at the no-war price). Druzhba: the days of flow lost to strikes
+    on pumping stations in Russia, on Hungary's and Slovakia's crude. Buyers under an embargo on the product get
+    nothing. Equivalently its change becomes actual - (expected - lost): the strike loss is neither credited to it
+    nor charged to it. The windfall (actual volumes x price gap) and laundered oil are untouched. The yearly band takes
+    the low/high loss (bmul_hi/bmul_lo); the cumulative band (cb, relative to the summed expected level) keeps its
+    width in euros and adds the loss range, weighted as spread() in index.html sums it (FRAC x cur x Russia's gain
+    share). Run after small_flow_bias() (needs the no-war prices, cur and gain). Pre-war years: no strikes, 1."""
+    st = STRIKE_SUPPLY
+    if not st:
+        return
+    sid = src.add(
+        "strike_supply_r51",
+        "Russian oil exports lost to Ukraine's strikes on refineries, ports and the Druzhba pipeline, 2022-2026 (IEA Oil Market Reports, Kpler, KSE Institute, Reuters)",
+        None,
+        st.get("generated"),
+        "the no-war level of buyers that wanted Russian fuel is lowered by what strikes kept from them; see research/2026-10/gaps/strike_supply_r51-notes.md",
+    )
+    src.items[sid]["links"] = [
+        {"title": s["name"], "url": s["url"], "kind": "primary" if i < 2 else "secondary"}
+        for i, s in enumerate(st["sources"])
+    ]
+    pipe = st["pipeline"]["buyers"]
+    for iso3, c in countries.items():
+        tr = c.get("to_rus")
+        if not tr or not tr.get("bmul") or not tr.get("base"):
+            continue
+        vols = customs_fuel_volumes(iso3)
+        mix, fs = pre_war_fuel_split(iso3), fossil_share(iso3)
+        fuels = sum(mix.get(f) or 0.0 for f in ("crude", "products", "gas", "lng", "coal", "other_fossil")) or 1.0
+        lost = [[0.0] * len(YEARS) for _ in BANDS]  # low, central, high, as multipliers on base
+        for i, y in enumerate(YEARS):
+            if y < 2022:
+                continue
+            for fuel, parts in STRIKE_PARTS.items():
+                v = sum((vols.get(y) or {}).get(p, 0.0) for p in parts) / tr["base"] / FRAC[i]
+                n = nw(STRIKE_NW[fuel], y, "central")
+                cap = fs * (mix.get(fuel) or 0.0) / fuels * n
+                if fuel == "crude" and iso3 in pipe:
+                    days = pipe[iso3]["days"].get(str(y)) or [0, 0, 0]
+                    r = [d / (366 if y == 2024 else 365) for d in days]
+                elif iso3 in STRIKE_EMBARGO and y >= 2023:
+                    continue
+                else:
+                    r = st["seaborne"][fuel][str(y)]["per_tonne_exported"]
+                for b in range(3):
+                    lost[b][i] += min(cap, v * r[b] * n)
+        if not any(lost[2]):
+            continue
+        q = tr["bmul"]
+        cur = tr.get("cur") or [1.0] * len(YEARS)
+        ge = (tr.get("gain") or {}).get("e")
+        w = [FRAC[i] * cur[i] * (ge[1][i] if ge else 1.0) for i in range(len(YEARS))]
+        if tr.get("cb"):
+            cb = [None]
+            for h in range(1, len(YEARS)):
+                s0 = sum(w[i] * q[i] for i in range(1, h + 1))
+                s1 = s0 - sum(w[i] * lost[1][i] for i in range(1, h + 1))
+                lo = tr["cb"][h][0] * s0 - sum(w[i] * lost[2][i] for i in range(1, h + 1))
+                hi = tr["cb"][h][1] * s0 - sum(w[i] * lost[0][i] for i in range(1, h + 1))
+                cb.append([round(min(1.0, lo / s1), 4), round(max(1.0, hi / s1), 4)] if s1 > 0 else tr["cb"][h])
+            tr["cb_before_strikes"] = tr["cb"]
+            tr["cb"] = cb
+        for k, b in (("bmul", 1), ("bmul_lo", 2), ("bmul_hi", 0)):
+            tr[k] = [round(max(0.0, v - x), 4) for v, x in zip(tr.get(k) or q, lost[b])]
+        tr["strike_lost"] = [[round(x, 4) for x in lost[b]] for b in range(3)]  # low, central, high, x base
+        tr["src"] = list(dict.fromkeys((tr.get("src") or []) + [sid]))
 
 
 # round 43: countries whose pipeline gas volumes were checked against ENTSOG's metered flows (entsog_r43.json)
