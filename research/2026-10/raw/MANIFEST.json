@@ -1021,6 +1021,30 @@
    "in_repository": true
   },
   {
+   "path": "demand_cf_r48/baci_fuel_hs4_2001_2024.json.gz",
+   "bytes": 331258,
+   "sha256": "b81a63d1f67667d7f47b58d53e18f31470047054262e276470a5c998bcd8fcdc",
+   "in_repository": true
+  },
+  {
+   "path": "demand_cf_r48/baci_imports_groups_all_suppliers_2001_2024.json.gz",
+   "bytes": 239489,
+   "sha256": "b380da277667de893a7f1852aaf63750ca151c3d60016168599ff2f1ec9dfc39",
+   "in_repository": true
+  },
+  {
+   "path": "demand_cf_r48/baci_world_hs4q_2001_2024.json.gz",
+   "bytes": 42259,
+   "sha256": "513c933cfc560357a14dce299806495d052b437657ea80a602a13c295b598fd6",
+   "in_repository": true
+  },
+  {
+   "path": "demand_cf_r48/eurostat_energy_2026-10-25.json.gz",
+   "bytes": 307406,
+   "sha256": "ba6d0d52cc4cf3471118a5bf1544f8bb23fbb361498b74814575512981030df8",
+   "in_repository": true
+  },
+  {
    "path": "eaeu_r44/ServCantr.xlsx",
    "bytes": 243250,
    "sha256": "2aee2b332dbe13857e99daef2a5e57d93c9bd9b42b870e031cc799ab37d12ea2",
