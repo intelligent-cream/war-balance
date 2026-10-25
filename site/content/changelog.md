@@ -10,6 +10,7 @@ The owner: "a little too much text in the main country view".
 - The two tiles show their chance only when it is not certain; the headline already says "very likely".
 - "Backed by N sources" without the count of official statistics; each part still says how it is backed.
 - A leaning pill no longer repeats the side its label already names ("likely · 71%").
+- The panel's first layer is the number, its chance and its range: the sum line, the euros and the average year, and why a number is not certain moved one tap away (the owner: "it does not add value ... it's already in the breakdown").
 - The country panel follows the view: in Support or Trade the big number is that number, and the tiles show the other two (the owner: "if I click support / trade and click on the country I still get the same headline").
 
 <h2 id="cl-r44">Round 44: more certain numbers from official sources, two fixes, and a cleaner map bar <span class="cl-date">25 October</span></h2>
