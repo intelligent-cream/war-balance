@@ -50,41 +50,41 @@
   "mostlyNoData": false
  },
  "HUN": {
-  "net": -11.2202,
-  "netLo": -18.4225,
-  "netHi": -1.1884,
+  "net": -11.2334,
+  "netLo": -18.4359,
+  "netHi": -1.2014,
   "ua": 0.6704,
-  "rus": -12.089,
+  "rus": -12.1023,
   "frozen": 0.1985,
   "noData": false,
   "mostlyNoData": false
  },
  "CHN": {
-  "net": -127.2702,
-  "netLo": -191.6765,
-  "netHi": -54.697,
+  "net": -127.7732,
+  "netLo": -192.5803,
+  "netHi": -55.0297,
   "ua": 0.0521,
-  "rus": -127.3223,
+  "rus": -127.8253,
   "frozen": 0,
   "noData": false,
   "mostlyNoData": false
  },
  "IND": {
-  "net": -70.2869,
-  "netLo": -103.7016,
-  "netHi": -32.7264,
+  "net": -70.455,
+  "netLo": -103.9466,
+  "netHi": -32.8329,
   "ua": 0.0376,
-  "rus": -70.3245,
+  "rus": -70.4927,
   "frozen": 0,
   "noData": false,
   "mostlyNoData": false
  },
  "TUR": {
-  "net": -31.8581,
-  "netLo": -54.2366,
-  "netHi": -1.3617,
+  "net": -32.7622,
+  "netLo": -55.3718,
+  "netHi": -2.0295,
   "ua": 0.0309,
-  "rus": -31.889,
+  "rus": -32.7931,
   "frozen": 0,
   "noData": false,
   "mostlyNoData": false
@@ -110,11 +110,11 @@
   "mostlyNoData": false
  },
  "KAZ": {
-  "net": 0.0913,
-  "netLo": -6.5764,
-  "netHi": 6.7982,
+  "net": 0.0511,
+  "netLo": -6.6309,
+  "netHi": 6.7703,
   "ua": 0.0161,
-  "rus": 0.0753,
+  "rus": 0.035,
   "frozen": 0,
   "noData": false,
   "mostlyNoData": false

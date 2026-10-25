@@ -1,0 +1,157 @@
+URL: https://iea.blob.core.windows.net/assets/2b89a47b-34a2-40e0-90ff-68f7ccd80715/-13MAY2026__OilMarketReport_publicversion.pdf
+Fetched: 2026-10-25
+HTTP: 200
+Extract (short passages around the figures used):
+
+in April, 480 kb/d below
+ year ago levels. Export revenues increased by $110 million to $19.2 billion, $6.28 billion more than
+ in April 2025 as global oil prices surged and Russian discounts to international benchmarks
+ narrowed.
+
+ Russian Crude and Product Exports (mb/d)
+ 2022 2023 2024 2025 Jan-26 Feb-26 Mar-26 Apr-26 m -o-m y-o-y
+ Total Crude 5.11 4.91 4.78 4.78 4.65 4.33 4.63 4.88 0.25 0.17
+ pipeline and rail 1.85 1.40 1.31 1.31 1.25 1.09 1.06 1.12 0.07 -0.15
+ seaborne 3.25 3.52 3.47 3.47 3.40 3.24 3.57 3.76 0.19 0.32
+ Total Products 2.98 2.97 2.73 2.58 2.81 2.44 2.50 2.15 -0.34 -0.64
+ Gasoline 0.16 0.21 0.17 0.12 0.07 0.08 0.07 0.01 -0.06 -0.12
+ Gasoil 0.95 0.96 0.87 0.82 1.01 0.82 0.88 0.76 -0.12 -0.17
+ Resid+VGO 1.08 1.02 0.95 0.88 0.95 0.79 0.79 0.78 -0.01 -0.24
+ Jet-Kero 0.04 0.05 0.05 0.05 0.06 0.07 0.06 0.00 -0.06 -0.04
+ Naphtha+NGLs+LPG 0.65 0.63 0.59 0.61 0.69 0.65 0.66 0.59 -0.07 -0.03
+ Total 8.09 7.88 7.51 7.36 7.46 6.76 7.12 7.03 -0.09 -0.48
+
+---
+
+d to 760 kb/d in the week of 30 March
+ IEA. All rights reserved.
+
+
+
+
+PAGE | 27 13 MAY 2026
+Oil Market Report Supply
+
+
+
+
+ due to a two‑week outage at Ust‑Luga and reduced shipments from Primorsk, before recovering later
+ in April.
+
+ Oil product exports fell by 340 kb/d m‑o‑m to 2.2 mb/d, the lowest level in our records. The decline
+ was driven by the gasoline and kerosene export embargo introduced on 1 April, alongside reduced
+ refinery runs following the 20 April strikes on Tuapse and disruptions at Primorsk, Ust-Luga and
+ Sheskharis. Weekly product loadings had earlier dropped by 1.7 mb/d between 9 March and
+ 23 March to 1.3 mb/d, before partially recovering to 1.9 mb/d. Russian total exports recovered in the
+ second half of April, but never returned to the three‑week average preceding the attacks on Baltic
+ ports – covering the period between the start of the Middle East conflict and the Baltic disruptions –
+ that peaked at 7.7 mb/d. Subsequent Uk
+
+---
+
+.96 9.68 19.07 19.18 0.11 6.28
+ … of w hich crude 146.51 118.49 123.28 101.26 6.60 6.01 11.40 12.94 1.53 4.82
+ … of w hich product 106.41 70.17 69.12 57.00 4.36 3.67 7.66 6.24 -1.42 1.46
+ Sources: IEA, Kpler, Argus Media Group .
+
+
+
+ Crude exports rose by 250 kb/d m‑o‑m to 4.9 mb/d, recovering from temporary disruptions in late
+ March and early April caused by attacks on Russian port infrastructure. The rebound was driven by
+ higher seaborne shipments via the Baltic Sea (+190 kb/d m‑o‑m) and a partial resumption of Druzhba
+ pipeline flows to Hungary and Slovakia, reaching 60 kb/d in the final week of April. On the Black Sea,
+ Urals exports from Sheskharis fell by 370 kb/d to 160 kb/d in the week of 6 April, requiring one week
+ to recover. In the Baltic, loadings briefly dropped from 1.5 mb/d to 760 kb/d in the week of 30 March
+ IEA. All rights reserved.
+
+
+
+
+PAGE | 27 13 MAY 2026
+Oil Market Report Supply
+
+
+
+
+ due to a two‑week outage at Ust‑Luga
+
+---
+
+023 2024 2025 2026 2023 2024 2025 2026
+
+
+ Eurasian crude runs forecasts are lowered by 150 kb/d on average for this year to 6.1 mb/d following
+ the increasingly effective attacks by Ukraine on Russian energy infrastructure that have reduced
+ Russian crude runs to around 4.7 mb/d in recent weeks. The increased frequency, scale and range
+ of these attacks support a more bearish assessment of Russian runs than was previously held and
+ we have cut the 2026 forecast to 5 mb/d, with 2Q26 at 4.8 mb/d.
+ IEA. All rights reserved.
+
+
+
+
+PAGE | 40 13 MAY 2026
+Oil Market Report Refining
+
+
+
+
+ mb/d
+ China Crude Throughput Africa Crude Throughput
+ mb/d
+ 15.5 2.4
+
+
+ 15.0 2.2
+
+ 2.0
+ 14.5
+ 1.8
+ 14.0
+ 1.6
+
+ 13.5 1.4
+ Jan Mar May Jul Sep Nov Jan Mar May Jul Sep Nov
+ 2023 2024 2025 2026 2023 2024 2025 2026
+
+
+ Chinese March throughputs, as reported by the National Bureau of Statistics, were 14.6 mb/d, some
+ 560 kb/d ahead of our forecast. Run cuts at Sinopec were seemingly not match
+
+---
+
+n Crude Supply Russia Crude Supply
+ mb/d mb/d
+ 4.0 10.2
+ 10.0
+ 3.6
+ 9.8
+
+ 3.2 9.6
+ 9.4
+ 2.8 9.2
+ 9.0
+ 2.4
+ 8.8
+ 2.0 8.6
+ Jan Mar May Jul Sep Nov Jan Jan Mar May Jul Sep Nov Jan
+
+ 2022 2023 2024 2025 2026 2022 2023 2024 2025 2026
+
+
+
+ Russian crude supply declined 140 kb/d m-o-m to 8.8 mb/d, down 460 kb/d y-o-y, as continued
+ Ukrainian attacks on refineries and ports constrained output. Estimated refinery runs were cut
+ 400 kb/d m-o-m to 4.7 mb/d, leading to a rise in crude exports of 250 kb/d to 4.9 mb/d.
+
+
+
+ Russia’s Total Exports Revenues: Steady Despite Infrastructure Damage
+
+ Russian crude and oil product exports declined by 90 kb/d m-o-m to 7 mb/d in April, 480 kb/d below
+ year ago levels. Export revenues increased by $110 million to $19.2 billion, $6.28 billion more than
+ in April 2025 as global oil prices surged and Russian discounts to international benchmarks
+ narrowed.
+
+ Russian Crude and Product Exports (mb/d)
+ 2022 2023 2024 2025 Jan-26 Feb-

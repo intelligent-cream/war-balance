@@ -1,6 +1,6 @@
 # Method overview: one scale for every flow
 
-The map gives every country two numbers for the time since the full-scale invasion, each against what it would have done without the war: **support for Ukraine** and **Russia's earnings from trade** (what Russia keeps: taxes and profit above a normal return, not the full price). Their sum, with the return Russia lost on its frozen reserves, is the **net**. Worldwide, Russia's net gain from buyers who cut fell by EUR 354.2bn<!-- n:WORLD.less --> and rose by EUR 213.4bn<!-- n:WORLD.more --> from buyers who bought more (2022–August 2026).
+The map gives every country two numbers for the time since the full-scale invasion, each against what it would have done without the war: **support for Ukraine** and **Russia's earnings from trade** (what Russia keeps: taxes and profit above a normal return, not the full price). Their sum, with the return Russia lost on its frozen reserves, is the **net**. Worldwide, Russia's net gain from buyers who cut fell by EUR 353.8bn<!-- n:WORLD.less --> and rose by EUR 216.1bn<!-- n:WORLD.more --> from buyers who bought more (2022–August 2026).
 
 ## The core idea in four steps
 
