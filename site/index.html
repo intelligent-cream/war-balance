@@ -255,10 +255,6 @@ button, input, select { font: inherit; color: inherit; }
 .mapbar .seg button { border: 0; background: transparent; color: var(--ink); font: 600 12.5px var(--font-body); padding: 4px 9px; border-radius: 6px; cursor: pointer; }
 .mapbar .mb-year button { padding: 4px 6px; font-variant-numeric: tabular-nums; }
 .mapbar .seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
-.mapbar .stories { pointer-events: auto; flex-basis: 100%; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; max-width: min(100vw - 24px, 1100px); }
-.mapbar .story { flex: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 3px 10px; font: 12.5px var(--font-body); cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,.18); }
-.mapbar .story:hover, .mapbar .story:focus-visible { border-color: var(--ink-soft); }
-@media (max-width: 600px) { .mapbar .story { font-size: 11.5px; padding: 2px 8px; } .mapbar .stories { max-width: calc(100vw - 12px); } }
 .app[data-view]:not([data-view="map"]) .mapbar { display: none; }
 @media (max-width: 600px) { .mapbar { top: 6px; left: 6px; gap: 4px; } .mapbar .seg button { font-size: 11.5px; padding: 3px 7px; } .mapbar .mb-year button { padding: 3px 4px; } }
 .eq { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin: 0 0 6px; }
@@ -1095,7 +1091,6 @@ li.src-again { color: var(--ink-soft); }
     <div class="mapbar" id="mapbar" role="toolbar" aria-label="View and year" data-i18n-aria="View and year">
       <div class="seg mb-lens" role="group"><button data-lens="net" aria-pressed="true" data-i18n="Net">Net</button><button data-lens="support" aria-pressed="false" data-i18n="Support">Support</button><button data-lens="payments" aria-pressed="false" data-i18n="Trade">Trade</button></div>
       <div class="seg mb-year" role="group"><button class="mb-play" id="mb-play" aria-label="Play 2022 to 2026" data-i18n-aria="Play 2022 to 2026">▶</button><button data-yr="2022">22</button><button data-yr="2023">23</button><button data-yr="2024">24</button><button data-yr="2025">25</button><button data-yr="2026" aria-pressed="true">26</button></div>
-      <div class="stories" id="stories" role="list" aria-label="Stories" data-i18n-aria="Stories"></div>
     </div>
     <!-- names of Ukraine and Russia, above the flow lines so they stay readable -->
     <svg id="labels" aria-hidden="true"></svg>
@@ -2732,39 +2727,8 @@ const inFilter = c => inRegion(c) && inGroupS(c) && inSize(c);
 // threshold, a region or a group dims the countries outside it
 const dimmedOut = c => !inRegion(c) || !inGroupS(c) || (state.size > MIN_GDP_RANK && !inSize(c));
 function custom() { return !state.netBack || OFF.size > 0; }
-// round 41 (owner: a stories strip from the tags, after Highlights went in round 33): one line of the most surprising
-// findings, each picked by a rule from the same parts the tags use (largest of its kind among economies over the
-// ranking threshold), each opening its country. Recomputed with the year
-const STORY_RULES = [
-  { k: "price", pick: (c, k) => { const w = mostlyPrice(c, k); return w && k.shift < 0 ? -scaled(c, w.v, "gdp") : null; },
-    text: (c, k) => t("{c}: mostly war-time gas and fuel prices it did not set", { c: c.name }) },
-  { k: "premium", pick: (c, k) => { const p = k.shiftParts.find(q => q.k === "premium"); return p ? -p.v : null; },
-    text: (c, k) => t("{c}: {v} extra price from Russia for sanctioned goods", { c: c.name, v: eur(Math.abs(k.shiftParts.find(q => q.k === "premium").v)) }) },
-  { k: "frozen", pick: (c, k) => scaled(c, k.frozen, "gdp"), text: (c, k) => t("{c}: {v} of GDP from Russian money frozen there", { c: c.name, v: fmtMeasure(c, k.frozen, "gdp", true) }) },
-  { k: "armed", pick: c => (c.military_rus && !PARTY_TO_WAR.has(c.iso3) ? (c.military_rus.alt || c.military_rus.years).slice(1, yi(state.year) + 1).reduce((a, b) => a + b, 0) : null),
-    text: (c, k) => t("{c}: armed Russia with {v}, yet its net barely moved", { c: c.name, v: eur((c.military_rus.alt || c.military_rus.years).slice(1, yi(state.year) + 1).reduce((a, b) => a + b, 0)) }) },
-  { k: "laund", pick: (c, k) => { const p = k.shiftParts.find(q => q.k === "laund"); return p && p.v < 0 ? -scaled(c, p.v, "gdp") : null; },
-    text: (c, k) => t("{c}: Russian crude in its fuel, refined elsewhere", { c: c.name }) },
-  { k: "profits", pick: (c, k) => { const p = k.shiftParts.find(q => q.k === "coprofits"); return p && p.v > 0 ? scaled(c, p.v, "gdp") : null; },
-    text: (c, k) => t("{c}: its companies earned far less in Russia", { c: c.name }) },
-];
-function renderStories() {
-  const el = document.getElementById("stories");
-  if (!el) return;
-  const y = state.year;
-  if (y < 2022) { el.innerHTML = ""; return; }
-  const pool = Object.values(DATA).filter(c => (c.gdp || 0) >= MIN_GDP_RANK && !noDataAt(c, y)), used = new Set(), out = [];
-  for (const r of STORY_RULES) {
-    let best = null, bv = 0;
-    for (const c of pool) { if (used.has(c)) continue; const k = calc(c, y), v = r.pick(c, k); if (v != null && v > bv) { bv = v; best = c; } }
-    if (best) { used.add(best); out.push(`<button class="story" role="listitem" data-n="${best.n}">${esc(r.text(best, calc(best, y)))}</button>`); }
-  }
-  el.innerHTML = out.join("");
-  el.querySelectorAll("[data-n]").forEach(b => (b.onclick = () => select(b.dataset.n, true)));
-}
 function paint() {
   readColors();
-  renderStories();
   const sc = (currentScale = scaleFor());
   const hs = highlightSet();
   document.querySelector(".app").dataset.streams = state.streams && state.year > 2021 ? "on" : "off";
