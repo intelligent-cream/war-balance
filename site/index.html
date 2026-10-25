@@ -4283,28 +4283,33 @@ function mostlyPrice(c, k) {
   const w = k.shiftParts.find(p => p.k === "windfall");
   return w && k.shift && Math.sign(w.v) === Math.sign(k.shift) && Math.abs(w.v) >= 0.5 * Math.abs(k.shift) ? w : null;
 }
+// round 45 (owner: "if I click support / trade and click on the country I still get the same headline % at the top"):
+// the big number is the view's own number: the net, support for Ukraine, or Russia's earnings from trade
 function netBlock(c, k, y) {
-  const g = v => fmtMeasure(c, v, "gdp", true), unc = uncertain(c, y, "net") && !PARTY_TO_WAR.has(c.iso3);
-  const cls = k.earner ? "mid" : unc ? (k.shift >= 0 ? "fpos" : "fneg") : k.shift >= 0 ? "pos" : "neg";
+  const q = HEAD_LENS[state.lens] || "net", V = HEAD3(k)[q];
+  const [LO, HI] = { ua: [k.uaLo, k.uaHi], rus: [k.rusLo, k.rusHi], net: [k.shiftLo, k.shiftHi] }[q];
+  const g = v => fmtMeasure(c, v, "gdp", true), unc = uncertain(c, y, q) && !PARTY_TO_WAR.has(c.iso3);
+  const cls = q === "net" && k.earner ? "mid" : unc ? (V >= 0 ? "fpos" : "fneg") : V >= 0 ? "pos" : "neg";
   const rangeInfo = t("The likely range covers the uncertainty of the data and the models given the method: each part's low and high value, combined as errors, correlated where parts share inputs. It aims at about 90%: rerun as if the war had started in 2018, trade ranges held the true zero for 96% of ranked economies (90% for a 2014 start, when Russia's own economy was hit). How much the method choices themselves move the result is the method band below.");
   // round 19: the big number in the drawer's measure ("+3.2%", "+€1,610" per person, "+€134 bn"); % of GDP is then the
   // second line
   // round 22 (owner): the verb carries the direction ("Toward Ukraine by"), the big number has no sign
   const m = state.measure, mv = v => mVal(c, v, false), mu = v => fmtMeasure(c, Math.abs(v), m, false, false), yrs = yearsOf(y);
   const unit = { gdp: "of a year's GDP since 2022", pp: "per person, in total since 2022", total: "in total since 2022" }[m];
-  const hv = headVerb(c, y, "net", k.shift), [pre, post] = verbAround(hv.key, hv.s);
+  const hv = headVerb(c, y, q, V), [pre, post] = verbAround(q !== "net" && hv.key === "netLean" ? q : hv.key, hv.s);
   // round 38 (owner: "yes fix all that"): the likely range is a bar under the number, the letter has its word
   // round 42 (owner): the chance replaces the letter; the letters stay on the parts
-  const line = m === "gdp" ? [eur(Math.abs(k.shift)), t("≈ {v}/yr", { v: fmtMeasure(c, Math.abs(k.shift) / yrs, "gdp") })]
-    : [ofGdp(c, k.shift), t("≈ {v}/yr", { v: mu(k.shift / yrs) })];
-  const sum = `<span class="nlbl">${pre}${PARTY_TO_WAR.has(c.iso3) ? "" : chancePill(c, y, "net")}<span class="xi" aria-hidden="true"></span></span>
-    <span class="nbig ${cls}">${hv.flip ? fmtMeasure(c, k.shift, m, true, false) : mu(k.shift)}</span><span class="nunit">${post ? post + " " : ""}${t(unit)}</span>
-    <span class="sumline">${sumLine(c, k)}</span>${rangeBar(c, k.shift, k.shiftLo, k.shiftHi, m, cls)}<span class="nline">${line.map(x => `<span>${x}</span>`).join(" · ")}</span>
-    ${mostlyPrice(c, k) ? `<span class="unc-why price-why">${t("Mostly war-time fuel prices it did not set: {v} of the {n}.", { v: eur(Math.abs(mostlyPrice(c, k).v)), n: eur(Math.abs(k.shift)) })}</span>` : ""}
-    ${unc ? `<span class="unc-why">${t(isNearZero(c, y, "net") ? "Near zero, and not certain mostly because of {why}." : "Not certain, mostly because of {why}.", { why: uncReason(c, y, "net") })}</span>` : ""}
-    ${unc ? `<span class="unc-why decide">${decideLine(c, k, "net")}</span>` : ""}`;
-  const body = `<p class="lead">${leadLine(c, k)}</p><p><b>${netSentence(c, k, "gdp")}</b> (${eur(Math.abs(k.shift))}).</p>
-    <p>${chanceSentence(c, y, "net")} · ${t("about {v} a year", { v: fmtMeasure(c, Math.abs(k.shift) / yrs, "gdp") })}</p>
+  const line = m === "gdp" ? [eur(Math.abs(V)), t("≈ {v}/yr", { v: fmtMeasure(c, Math.abs(V) / yrs, "gdp") })]
+    : [ofGdp(c, V), t("≈ {v}/yr", { v: mu(V / yrs) })];
+  const mp = q !== "ua" && mostlyPrice(c, k);
+  const sum = `<span class="nlbl">${pre}${PARTY_TO_WAR.has(c.iso3) ? "" : chancePill(c, y, q)}<span class="xi" aria-hidden="true"></span></span>
+    <span class="nbig ${cls}">${hv.flip ? fmtMeasure(c, V, m, true, false) : mu(V)}</span><span class="nunit">${post ? post + " " : ""}${t(unit)}</span>
+    ${q === "net" ? `<span class="sumline">${sumLine(c, k)}</span>` : ""}${rangeBar(c, V, LO, HI, m, cls)}<span class="nline">${line.map(x => `<span>${x}</span>`).join(" · ")}</span>
+    ${mp ? `<span class="unc-why price-why">${t("Mostly war-time fuel prices it did not set: {v} of the {n}.", { v: eur(Math.abs(mp.v)), n: eur(Math.abs(k.shift)) })}</span>` : ""}
+    ${unc ? `<span class="unc-why">${t(isNearZero(c, y, q) ? "Near zero, and not certain mostly because of {why}." : "Not certain, mostly because of {why}.", { why: uncReason(c, y, q) })}</span>` : ""}
+    ${unc ? `<span class="unc-why decide">${decideLine(c, k, q)}</span>` : ""}`;
+  const body = (q === "net" ? `<p class="lead">${leadLine(c, k)}</p><p><b>${netSentence(c, k, "gdp")}</b> (${eur(Math.abs(k.shift))}).</p>` : "") + `
+    <p>${chanceSentence(c, y, q)} · ${t("about {v} a year", { v: fmtMeasure(c, Math.abs(V) / yrs, "gdp") })}</p>
     ${unc ? `<p>${t("Not certain: ranked faded and labelled, and shown faded on the map.")}</p>` : ""}
     <p class="key">${CHANCE_KEY()}</p><p class="key">${rangeInfo}</p>`;
   return xp("pnet", "x-net", sum, body);
@@ -4316,7 +4321,7 @@ function partTiles(c, k, y) {
   const g = v => mVal(c, v), gu = v => fmtMeasure(c, Math.abs(v), state.measure, false, false);
   const su = v => (state.measure === "gdp" ? eur(Math.abs(v)) : ofGdp(c, v));
   const G = mBar(c);
-  const ax = barAxis([G(k.uaBal), G(k.rusBal)], [[G(k.uaLo), G(k.uaHi)], [G(k.rusLo), G(k.rusHi)]]);
+  const ax = barAxis([G(k.uaBal), G(k.rusBal), G(k.shift)], [[G(k.uaLo), G(k.uaHi)], [G(k.rusLo), G(k.rusHi)], [G(k.shiftLo), G(k.shiftHi)]]);
   const unc = q => (PARTY_TO_WAR.has(c.iso3) ? "" : chanceSentence(c, y, q));
   const col = (v, q, neg) => { const z = v >= 0 ? "var(--ukr)" : neg; return uncertain(c, y, q) ? `color-mix(in srgb, ${z} 50%, var(--mid))` : z; };
   // the same gradient bar as the parts, in the bar colour of its direction (the fade for a range across zero is barHtml's)
@@ -4340,9 +4345,16 @@ function partTiles(c, k, y) {
   // breakdown or tags"): no tile of its own; it is the last section of the breakdown, in the closing sum and a tag
   // round 37 (owner, 23 October 2026): the two "who kept what" lines are gone from the tile; the breakdown rows and the
   // tags say the same
+  // round 45: the tiles show the two numbers the headline does not (in the Support and Trade views, the net is one)
+  const hq = HEAD_LENS[state.lens] || "net";
+  const T = {
+    ua: () => tile("ua", "ua", k.uaBal, k.uaLo, k.uaHi, k.earnerUa ? "earn" : "", col(k.uaBal, "ua", "var(--ink-soft)"), ua, rx + (() => { const ap = k.shiftParts.find(p => p.k === "aid"), kl = ap ? kielLine(c, ap.v) : ""; return kl ? `<p>${kl}</p>` : ""; })(), "var(--ink-soft)"),
+    rus: () => tile("rus", "rus", k.rusBal, k.rusLo, k.rusHi, "", col(k.rusBal, "rus", "var(--rus-text, var(--rus))"), ru, cutTxt + busy, "var(--rus)"),
+    net: () => tile("netT", "net", k.shift, k.shiftLo, k.shiftHi, "", col(k.shift, "net", "var(--rus-text, var(--rus))"), netSentence(c, k, "gdp"), "", "var(--rus)"),
+  };
+  const show = hq === "ua" ? ["net", "rus"] : hq === "rus" ? ["ua", "net"] : ["ua", "rus"];
   return `<div class="tiles">
-    ${tile("ua", "ua", k.uaBal, k.uaLo, k.uaHi, k.earnerUa ? "earn" : "", col(k.uaBal, "ua", "var(--ink-soft)"), ua, rx + (() => { const ap = k.shiftParts.find(p => p.k === "aid"), kl = ap ? kielLine(c, ap.v) : ""; return kl ? `<p>${kl}</p>` : ""; })(), "var(--ink-soft)")}
-    ${tile("rus", "rus", k.rusBal, k.rusLo, k.rusHi, "", col(k.rusBal, "rus", "var(--rus-text, var(--rus))"), ru, cutTxt + busy, "var(--rus)")}
+    ${show.map(x => T[x]()).join("")}
   </div>`;
 }
 const PARTS_SHOWN = 3;   // per section (round 25: 5; round 35, owner "more calm": 3)
