@@ -1857,7 +1857,7 @@ function leaning(c, y, q) { const i = leanInfo(c, y, q); return i ? i.side : nul
 const METHOD_INPUTS = new Set(["prices", "counterfactual", "cf_bands", "ua_trade_cf", "net_gain_russia", "net_gain_ukraine", "net_gain_sellers", "value_kept",
   "assumptions_r11_gain", "assumptions_r11_rules", "assumptions_r11_hubs", "assumptions_r11_people", "audit", "audit2", "windfall_band", "trend", "trend2", "gas_prices"]);
 // customs records reused under several names (own and partner reports, re-export and gold corrections, Eurostat product data)
-const SRC_FAMILY = { narrow: "trade", reexports: "trade", residual: "trade", hk_gold_r16: "trade", laundered_eu: "trade", laundered_r39: "trade", transit_gas: "trade" };
+const SRC_FAMILY = { narrow: "trade", reexports: "trade", residual: "trade", hk_gold_r16: "trade", laundered_eu: "trade", laundered_r39: "trade", transit_gas: "trade", eaeu_r44: "trade", hk_csd_r44: "trade", japan_lng_r44: "trade" };
 const TIERS = ["official", "research", "press", "own"];
 function srcTier(id) {
   const s = SRC[id];

@@ -997,6 +997,204 @@
    "in_repository": true
   },
   {
+   "path": "eaeu_r44/ServCantr.xlsx",
+   "bytes": 243250,
+   "sha256": "2aee2b332dbe13857e99daef2a5e57d93c9bd9b42b870e031cc799ab37d12ea2",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/brief_2022_12.pdf",
+   "bytes": 266434,
+   "sha256": "91619bcda7c8d7b716ba74f07a4af6d9da579cb088e58bd6d713b71fc4323149",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/brief_2023_12.pdf",
+   "bytes": 272746,
+   "sha256": "ccc99cc849d0116bcfae43d47e0106705730d34f22708ac56487560198045af7",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/brief_2024_12.pdf",
+   "bytes": 349501,
+   "sha256": "64dccfe76251f20b45012be4aa1b7a258709193944f2ee2d7531712c8a9b86bb",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/brief_2025_10.pdf",
+   "bytes": 336649,
+   "sha256": "10e4b8b1840fb70f55b7354528a8a11c6390849d9eea6db0a8c15ce29f636a62",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/comtrade/ct_417_2020.json",
+   "bytes": 1845,
+   "sha256": "ffa2c2b7a394b9b178a606b0e4638211169b45c5732498689bef95e0c1c30280",
+   "in_repository": true
+  },
+  {
+   "path": "eaeu_r44/comtrade/ct_417_2024.json",
+   "bytes": 1847,
+   "sha256": "0688812da8e3e13ed5b5ad3dfdaa1e588f3bad11675a28a98aa19b66da9cbced",
+   "in_repository": true
+  },
+  {
+   "path": "eaeu_r44/comtrade/ct_417_2024_p2.json",
+   "bytes": 953,
+   "sha256": "264b1a8e2b124c89396f2b8ab260095858d08358970ae73cab88df82290d870a",
+   "in_repository": true
+  },
+  {
+   "path": "eaeu_r44/comtrade/ct_417_2025.json",
+   "bytes": 1847,
+   "sha256": "f1429ca5da597c899fb05330d5684a155607dc79c33ee4275093212241051e10",
+   "in_repository": true
+  },
+  {
+   "path": "eaeu_r44/eaeu_r44_2026-10-25.json",
+   "bytes": 15558,
+   "sha256": "3f26602c0ac4f534c2d5dfe5ac4ccef649cad0ee66ce46c7fa303f97a0ce0f4b",
+   "in_repository": true
+  },
+  {
+   "path": "eaeu_r44/express_payments_2025.pdf",
+   "bytes": 532360,
+   "sha256": "da6d34c5891c892ac4126a97da89f487da41dca6bea50e44d2dbf6fe87ca3502",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/kz_annual_123068.pdf",
+   "bytes": 170315,
+   "sha256": "9f22c0ec8c462e52af9d9d193d0f64e443f28ea237084edf1432e69db96213c5",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/kz_annual_280982.pdf",
+   "bytes": 264733,
+   "sha256": "37a6fc7249d396d7a62c35b5539bc03a6cd370268cc533946932c2699e048f53",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/kz_annual_476016.pdf",
+   "bytes": 1028246,
+   "sha256": "322ffbd44d441aded2b8cff9a4d242710b280e5395cce494a408cae4d5794e62",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/kz_mutual_2026_08.xlsx",
+   "bytes": 728474,
+   "sha256": "65ed08ab35f0097a3c164830e90bbc9937dfb46bb15b0c2262b09f46dfc13f25",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/kz_pub_2026_08.pdf",
+   "bytes": 196095,
+   "sha256": "03a00b7b3521fa1b71710ea2d8b57731c4954dec60f454320bc7b5fb4dd99cc9",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/payments_table_1Q2026.xlsx",
+   "bytes": 81149,
+   "sha256": "a53bca9b4a5b7723fa431462417e6075b9fe6ba482a736e0bb56fab06ec3a99d",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/armstat_ch411.pdf",
+   "bytes": 354597,
+   "sha256": "25dcfd387c06a309ea78a54c60597f7869a3ce8e26f07fdeca1af14201d042e5",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/armstat_russia_annual.html",
+   "bytes": 211514,
+   "sha256": "a7918bd820ade81350ab4d41e17c016db40074fb39c85e07b56f239d35451947",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/eec_geo_exports.xlsx",
+   "bytes": 38440,
+   "sha256": "459fce802dff2ec7e6758d2f355b67bdc48a24c4977e20ee6b014898857c0f79",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/eec_geo_imports.xlsx",
+   "bytes": 39096,
+   "sha256": "fd70ad1016ad82e1093f20f74e45934cfcbba483de0fb6a1af9d879a7fa9385c",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/kaz_by_country.xlsx",
+   "bytes": 82123,
+   "sha256": "7a9ead58fc4968e69c8b107a7709dd5b1fb0643e31de9200fa6686a230496aa7",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/kgz_eaeu_07.07.2025.xlsx",
+   "bytes": 660457,
+   "sha256": "4e0c4fb5395a5eec7bcd52d8672bad25d8ed7286d59b7cec9b84c7a5120ab2d1",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/kgz_eaeu_07.07.2026.xlsx",
+   "bytes": 658804,
+   "sha256": "a19bd642bacb41e5de7843dfc2fff98cbc2357534c77f193537f8cfe99117e12",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/kgz_eaeu_10.02.2021.xlsx",
+   "bytes": 2358643,
+   "sha256": "8a80a99cd62aa49d29a0be8e2d4310cb3f8b8b10987778aa8daa3763d0a2070d",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/kgz_eaeu_14.02.2022.xlsx",
+   "bytes": 2408028,
+   "sha256": "f1edbb1245b435b6e71251b4549f6cfb5d87bfcf26d8caa205ae78cbe8311b06",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/kgz_eaeu_14.02.2023.xlsx",
+   "bytes": 648312,
+   "sha256": "645e80dacc7a29a5abab1a456c0dbef263127857b08d5bcd33086677d806523c",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/kgz_eaeu_14.02.2024.xlsx",
+   "bytes": 673638,
+   "sha256": "2a5bfdd1e7f71e6a3ef1b54416b8e890e31702670d62fe8b4ffcbe6d73b474bb",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/kgz_eaeu_19.10.2026.xlsx",
+   "bytes": 599197,
+   "sha256": "0ff6d9b4fc979f1315e80110b683e5b6c0c5aa572e771f0d2b4e9b5cfe28242d",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/kgz_eaeu_24.02.2020.xlsx",
+   "bytes": 2422074,
+   "sha256": "598bf2dfbd45ca313d12c5bceeee3fd598d0b2f3a340197df1fa29aa02a2268e",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/kgz_op_1992.xlsx",
+   "bytes": 140128,
+   "sha256": "3427e349246caff84784e571d34cac7bdd0d96a0ed6c3a3112ef08fbe339d93b",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/kgz_op_2037.xlsx",
+   "bytes": 139110,
+   "sha256": "7b1304b7d762711fbdd07a6e63bb468aac573822870d3cbf55049ddad901f119",
+   "in_repository": false
+  },
+  {
+   "path": "eaeu_r44/src_2026-10-25/kgz_op_2138.xlsx",
+   "bytes": 137399,
+   "sha256": "794fe333d0607e07fa868688803a8b238cf33a76365a9a9c078ee62d99c50391",
+   "in_repository": false
+  },
+  {
    "path": "ecb/EXR_2026-10-23.json",
    "bytes": 29450,
    "sha256": "31e8c66599859177041d4d2f761838fd169c3c447f2bf68c876d4635970dc939",
@@ -1018,6 +1216,66 @@
    "path": "eia_laund/eia_us_russia_2026-10-24.json",
    "bytes": 406,
    "sha256": "4c533bc80a84108a5c666cdeebbdd3b84b071c06ca6462b2a30c0d157e0995f1",
+   "in_repository": true
+  },
+  {
+   "path": "eiti_r44/alrosa_catoca_extract.txt",
+   "bytes": 4358,
+   "sha256": "6227e08da3a133f83db48eb501def47e10ebac57e11662bba19faadee14f8b4a",
+   "in_repository": true
+  },
+  {
+   "path": "eiti_r44/iraq_eiti_2021_extract.txt",
+   "bytes": 824,
+   "sha256": "50e188996bda397269d586c3f9d262e217ac6a8073b14545305899406074134d",
+   "in_repository": true
+  },
+  {
+   "path": "eiti_r44/iraq_eiti_2022_extract.txt",
+   "bytes": 5429,
+   "sha256": "28897df860873c27fca08d97c4107bb1b2e9b071e0665c2dfadee2cc3483dce9",
+   "in_repository": true
+  },
+  {
+   "path": "eiti_r44/iraq_eiti_2023_extract.txt",
+   "bytes": 3473,
+   "sha256": "5f70e587118f3a107d923f273c77861fcbfcefc96d7d45c6f49c0d12cf2ed924",
+   "in_repository": true
+  },
+  {
+   "path": "eiti_r44/kazakhstan_eiti_2023_2024_extract.txt",
+   "bytes": 1869,
+   "sha256": "f961544c33fb3f5c8934e5d29da64c76b33af179fad480ba1e9479f95565e843",
+   "in_repository": true
+  },
+  {
+   "path": "eiti_r44/krg_kpc_extract.txt",
+   "bytes": 988,
+   "sha256": "18640314a16bede4c19d1dda848e07e064e22c5e7eb4b9cbdb58fc023bee4ff2",
+   "in_repository": true
+  },
+  {
+   "path": "energy_r44/comtrade_cze_tur_2026-10-25.json",
+   "bytes": 2450,
+   "sha256": "02b42814c6d13c01dc3188e4759a3b50a14c1dade0cc83c3e90ea4f82c77f75e",
+   "in_repository": true
+  },
+  {
+   "path": "energy_r44/eurostat_cz_ru_2026-10-25.json",
+   "bytes": 2554,
+   "sha256": "bfc93eb59dfe99f7c3a0938a1e1f87c273f1b52769d24c4ef148462c23534394",
+   "in_repository": true
+  },
+  {
+   "path": "energy_r44/sources_2026-10-25.json",
+   "bytes": 1206,
+   "sha256": "cf6916116c790c9c6357cdce8bfbd9c52d079517568cf63ef175c97f92fe7c04",
+   "in_repository": true
+  },
+  {
+   "path": "energy_r44/unctad_fleet_owners_2026-10-25.json",
+   "bytes": 4543,
+   "sha256": "67e2098b53d5d0842339fec59b5b60bde574af917bf4bb94c2ab3fecbabb2648",
    "in_repository": true
   },
   {
@@ -1159,6 +1417,12 @@
    "in_repository": true
   },
   {
+   "path": "hk_tradeidds_r44/imports_origin_RUS_7108_monthly_2018-2026.csv",
+   "bytes": 27661,
+   "sha256": "fcb080d5fa452b0507b3346711159100cb2c7bdf8872e5d2f311ca8a95a5b139",
+   "in_repository": true
+  },
+  {
    "path": "imf/weo_NGDPD_2024.json",
    "bytes": 157611,
    "sha256": "7294ac0b3013e39b131f50f3aeb23eb31bfa30a3b77199538b1e05518ecb491c",
@@ -1174,6 +1438,126 @@
    "path": "imf_imts_placebo/IMTS_RUS_annual_2008_2021_2026-10-24.json.gz",
    "bytes": 100210,
    "sha256": "3fc50d1f3a33427565d4677232761f9d6dd6d77438d1d729f30d378e322b3977",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_jpn_from_rus_2026-10-25.json",
+   "bytes": 7580,
+   "sha256": "471e72fb744538f27720a148b240682a6d572707a2294994a3605ad484d1d5f0",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r156_2017_2026-10-25.json",
+   "bytes": 1878,
+   "sha256": "74c80da56457f054136cbff519f1a972006eacbe300222983a3edae299f7dd29",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r156_2018_2026-10-25.json",
+   "bytes": 1870,
+   "sha256": "9e6f36d1377b29922be0567f02400bf7edffab5913fc5f5791e3e94a0eb0ddbe",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r156_2019_2026-10-25.json",
+   "bytes": 1876,
+   "sha256": "5b5879a979e6d9984907224e858b5bc91a24fa407f1ff4d6ff21af1717f80716",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r156_2020_2026-10-25.json",
+   "bytes": 1876,
+   "sha256": "cbfc492d940c34722f2cd07f321b5a9d1447b598e1198c228c23ef4a11157a95",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r156_2021_2026-10-25.json",
+   "bytes": 1878,
+   "sha256": "30efa5830b45cd20e254d6959c3077d7527bc3be1b02e406903b9307af355f55",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r156_2022_2026-10-25.json",
+   "bytes": 1880,
+   "sha256": "b089ade60c4f78317f0b97fc7308fc13bd0696d9af5d585cb4212f0cc5c7f347",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r156_2023_2026-10-25.json",
+   "bytes": 1880,
+   "sha256": "f9742db623a1cd262d7fa19246f40649896e5e764bcc62c942aa7581ad188e20",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r156_2024_2026-10-25.json",
+   "bytes": 1880,
+   "sha256": "85097e3b527e60fae5b75d2a1e15b5f775662f76d2e906364594044d163b7013",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r156_2025_2026-10-25.json",
+   "bytes": 1880,
+   "sha256": "ec3539095a096cb207d717a26e006a606deea4a899e7064320742b286e68f57c",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r410_2017_2026-10-25.json",
+   "bytes": 1875,
+   "sha256": "2ecf015d22e2e6abf6476f1f54e5466c8554b2aca19c7266ed505dd88b0b5ff8",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r410_2018_2026-10-25.json",
+   "bytes": 1876,
+   "sha256": "b3a811ddbe0ff73ed87706b6dd7c07df1f0c4fbaee3788f6bef000d8123dbd38",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r410_2019_2026-10-25.json",
+   "bytes": 1877,
+   "sha256": "c8a0c156058dfd7d69dd0712e3fef54588cb91145eef811636bc30f3ec59ec8d",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r410_2020_2026-10-25.json",
+   "bytes": 1875,
+   "sha256": "e2df37f6ca1f40798ae1cfeb6c15a4f7e52a346739943995df35dd1fdfa1a214",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r410_2021_2026-10-25.json",
+   "bytes": 1878,
+   "sha256": "12391c6483e0788e636a4f9973a0941e734136809ecee2611ec815a198f47428",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r410_2022_2026-10-25.json",
+   "bytes": 1878,
+   "sha256": "60c5520512bfc94ad5640b99ac4ef03adf3a941c393e79307210d47e835160bb",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r410_2023_2026-10-25.json",
+   "bytes": 1876,
+   "sha256": "132f4cf6c2b5c31c652f549e8c8fe9f362cc5c0e56d210a6aaaa53e9ad44b5f0",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r410_2024_2026-10-25.json",
+   "bytes": 1876,
+   "sha256": "dbadf21c30dd42d921c4aadad639dc3fe1a99034a59a3e6fe495c64eaedcd4a8",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/comtrade_other/r410_2025_2026-10-25.json",
+   "bytes": 1876,
+   "sha256": "1c83cd9490ac8e16812379a521a887b95dd4667978964bbb075345e73a7cafa9",
+   "in_repository": true
+  },
+  {
+   "path": "japan_r44/mof_imports_from_russia_2026-10-25.json.gz",
+   "bytes": 462398,
+   "sha256": "b743e0e247da69684c3819ee5ee6f7ba186778300f1dea829a2ec3c7120ea086",
    "in_repository": true
   },
   {
@@ -1288,6 +1672,30 @@
    "path": "loan_rates/pages/eavex_media_index.json",
    "bytes": 13185,
    "sha256": "1ef37b1c2792dde9e1e7fde30d4e128ceb5c2c9fd969b974d4bb6b59065d9a3b",
+   "in_repository": true
+  },
+  {
+   "path": "oec_baci_r44/fred.json",
+   "bytes": 6945,
+   "sha256": "f221abf2d2ff21801fa76d2dd2d1f7dd59e738e37b4df31cfb11c21b897898d3",
+   "in_repository": true
+  },
+  {
+   "path": "oec_baci_r44/rus_exports_partner_hs2_2001_2021.json.gz",
+   "bytes": 1206280,
+   "sha256": "7667e99bafa4c044041e9ea94c8ddfa4845cf97949ac25d01ef3947a1f53b976",
+   "in_repository": true
+  },
+  {
+   "path": "oec_baci_r44/rus_exports_world_hs4q_2001_2021.json.gz",
+   "bytes": 31443,
+   "sha256": "42b7d2f55f88b24fc41decd01703ba5e985c73880587b57d3f28cd0d97de9ee8",
+   "in_repository": true
+  },
+  {
+   "path": "oec_baci_r44/weo_vintages.json",
+   "bytes": 37685,
+   "sha256": "9fa096e144c75b4757ad6f52312c1bf56a6c4304a5e2b76de76aed7542e9931d",
    "in_repository": true
   },
   {

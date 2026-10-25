@@ -2,6 +2,18 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r44">Round 44: more certain numbers from official sources, two fixes, and a cleaner map bar <span class="cl-date">25 October</span></h2>
+<!-- flows: paid windfall rusfirms -->
+
+The owner: "go for it", and on the stories strip, "I don't like them".
+
+- **Now certain**: Türkiye toward Russia (net and trade), Czechia toward Ukraine (net), Kyrgyzstan toward Russia (net and trade), Nigeria (trade), Japan toward Ukraine (trade, at 95.0%, right on the line). Certain directions: 68 → 71 on the net, 60 → 64 on Russia's earnings from trade.
+- **Two fixes**: Türkiye's war-time price range counted one source of uncertainty twice; Czechia's 2021 low case came from IMF figures that leave out gas (Eurostat confirms 3.4 Mt of Russian crude that year).
+- **Official sources added**: Kyrgyzstan's own statistics (its purchases from Russia were 18–30% higher in 2024–2026 than the figures used), Armenia's 2026 figures, Japan's customs data and its Sakhalin-2 LNG contracts (a narrower no-war level for that quarter of its purchases), Hong Kong's own statistics for its 2026 Russian gold (downloaded by the owner), and the extractive-industry reports and company accounts for Russian-owned firms in Angola and Iraq (both firmer, still leaning).
+- **Rules the project replaced no longer veto a direction**: EU refiners keeping the Russian crude, the laundered-oil rules before rounds 13b and 38, the fuel mix from tanker tonnes and fuel prices with freight are out of the method band.
+- **Tested and rejected**: a no-war level per product (fuel, cereals, fertiliser, metals) did not beat "2021 held flat" in back-tests, so the bands stay as they are; the test also confirms they cover what they should.
+- The stories strip next to the year buttons is gone.
+
 <h2 id="cl-r43">Round 43: more numbers certain, from tested bands and measured data <span class="cl-date">24 October</span></h2>
 <!-- flows: paid laund sold -->
 
