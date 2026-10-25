@@ -1713,13 +1713,18 @@ function resetModelCaches() {
   for (const k of Object.keys(WORLD)) delete WORLD[k];
   if (typeof flowSrc !== "undefined") flowSrc = null;
 }
+// Round 44 (owner: "go for it"; method-choice review, round 43): rules the project itself replaced are not other
+// reasonable choices, so they leave the method band, as "rule: old" did in round 16: EU refiners keeping the Russian
+// crude in their fuel exports (replaced in round 13), laundered oil without the route rule (13b), the mix from the
+// tracker's tonnes and CIF fuel prices (14), and the modelled laundered oil (38). Their rebuilds stay in detail.json
+const RETIRED_ALTS = new Set(["refiner", "laund_route", "fuelmix", "freight", "laund_model"]);
 function methodBands(c, y) {
   const key = y + "|" + state.netBack + "|" + offKey();
   c._mb = c._mb || {};
   if (c._mb[key] && ALTS_READY) return c._mb[key];
   const base = HEAD3(calc(c, y)), alts = [];
   for (const [k, v] of METHOD_ALTS) alts.push({ k: ALT_KEY(k, v), ...HEAD3(calc(c, y, { [k]: k === "attrib" ? { less: worldPaid(y).ratio, more: worldPaid(y).ratioMore } : v })) });
-  for (const name of Object.keys(c.alts || {})) alts.push({ k: name, ...HEAD3(calc(withAlt(c, name), y)) });
+  for (const name of Object.keys(c.alts || {})) if (!RETIRED_ALTS.has(name)) alts.push({ k: name, ...HEAD3(calc(withAlt(c, name), y)) });
   // the denominator: 2024 GDP instead of the 2022-2024 average, as euros that give that % of the average GDP
   if (c.gdp_2024 && c.gdp) { const f = c.gdp / c.gdp_2024; alts.push({ k: "gdp2024", ua: base.ua * f, rus: base.rus * f, net: base.net * f }); }
   const out = { alts };
