@@ -1189,11 +1189,8 @@ I18N.nl = {
   "What decides it: if {name} were {f} smaller, the direction would flip.": "Wat het beslist: als {name} {f} kleiner was, keerde de richting om.",
   "What decides it: if {name} were {f} larger, the direction would flip.": "Wat het beslist: als {name} {f} groter was, keerde de richting om.",
   "No part flips it by shrinking; {name} would have to be {f} larger.": "Geen deel keert het om door te krimpen; {name} zou {f} groter moeten zijn.",
-  "No single part could flip its direction.": "Geen enkel deel kan de richting omkeren.",
   "The likely range covers the uncertainty of the data and the models given the method: each part's low and high value, combined as errors, correlated where parts share inputs. It aims at about 90%: rerun as if the war had started in 2018, trade ranges held the true zero for 96% of ranked economies (90% for a 2014 start, when Russia's own economy was hit). How much the method choices themselves move the result is the method band below.": "De waarschijnlijke marge dekt de onzekerheid van de gegevens en modellen bij de gekozen methode: de lage en hoge waarde van elk deel, gecombineerd als fouten, gecorreleerd waar delen invoer delen. Ze mikt op ongeveer 90%: alsof de oorlog in 2018 begon, bevatten de handelsmarges voor 96% van de gerangschikte economieën de ware nul (90% bij een begin in 2014, toen Ruslands eigen economie werd geraakt). Hoeveel de methodekeuzes zelf het resultaat verschuiven, toont de methodeband hieronder.",
   "Not certain: ranked faded and labelled, and shown faded on the map.": "Niet zeker: vaag gerangschikt en gelabeld, en vaag op de kaart.",
-  "{n} official statistics": "{n} officiële statistieken",
-  "{n} press only": "{n} alleen pers",
   "Leaning toward Ukraine; middle value {x}": "Neigt naar Oekraïne; middelste waarde {x}",
   "Leaning toward Russia; middle value {x}": "Neigt naar Rusland; middelste waarde {x}",
   "Probably cut Russia's earnings from trade; middle value {x}": "Verlaagde waarschijnlijk Ruslands verdiensten uit handel; middelste waarde {x}",
@@ -1207,4 +1204,5 @@ I18N.nl = {
   "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Unclear: below that. Near zero: within ±0.5% of GDP.": "Zeer waarschijnlijk: minstens 95% kans en elke andere methodekeuze is het ermee eens. Waarschijnlijk (neigend): minstens 65%. Onduidelijk: daaronder. Bijna nul: binnen ±0,5% van het bbp.",
   "above zero": "boven nul",
   "below zero": "onder nul",
+  "likely · {p}": "waarschijnlijk · {p}",
 };

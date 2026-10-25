@@ -1189,11 +1189,8 @@ I18N.pl = {
   "What decides it: if {name} were {f} smaller, the direction would flip.": "Co decyduje: gdyby {name} było mniejsze o {f}, kierunek by się odwrócił.",
   "What decides it: if {name} were {f} larger, the direction would flip.": "Co decyduje: gdyby {name} było większe o {f}, kierunek by się odwrócił.",
   "No part flips it by shrinking; {name} would have to be {f} larger.": "Żadna część nie odwraca go, malejąc; {name} musiałoby być większe o {f}.",
-  "No single part could flip its direction.": "Żadna pojedyncza część nie mogłaby odwrócić kierunku.",
   "The likely range covers the uncertainty of the data and the models given the method: each part's low and high value, combined as errors, correlated where parts share inputs. It aims at about 90%: rerun as if the war had started in 2018, trade ranges held the true zero for 96% of ranked economies (90% for a 2014 start, when Russia's own economy was hit). How much the method choices themselves move the result is the method band below.": "Prawdopodobny przedział obejmuje niepewność danych i modeli przy danej metodzie: niską i wysoką wartość każdej części, połączone jak błędy, skorelowane tam, gdzie części dzielą dane. Celuje w około 90%: przeliczone tak, jakby wojna zaczęła się w 2018, przedziały handlu zawierały prawdziwe zero dla 96% klasyfikowanych gospodarek (90% przy początku w 2014, gdy ucierpiała sama gospodarka Rosji). Jak bardzo same wybory metody przesuwają wynik, pokazuje pasmo metod poniżej.",
   "Not certain: ranked faded and labelled, and shown faded on the map.": "Niepewne: w rankingu wyblakłe i oznaczone, wyblakłe na mapie.",
-  "{n} official statistics": "{n} statystyki oficjalne",
-  "{n} press only": "{n} tylko prasa",
   "Leaning toward Ukraine; middle value {x}": "Skłania się ku Ukrainie; wartość środkowa {x}",
   "Leaning toward Russia; middle value {x}": "Skłania się ku Rosji; wartość środkowa {x}",
   "Probably cut Russia's earnings from trade; middle value {x}": "Prawdopodobnie obniżył zyski Rosji z handlu; wartość środkowa {x}",
@@ -1207,4 +1204,5 @@ I18N.pl = {
   "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Unclear: below that. Near zero: within ±0.5% of GDP.": "Bardzo prawdopodobne: co najmniej 95% i każdy inny wybór metody się zgadza. Prawdopodobne (skłania się): co najmniej 65%. Niejasne: poniżej. Blisko zera: w granicach ±0,5% PKB.",
   "above zero": "powyżej zera",
   "below zero": "poniżej zera",
+  "likely · {p}": "prawdopodobnie · {p}",
 };
