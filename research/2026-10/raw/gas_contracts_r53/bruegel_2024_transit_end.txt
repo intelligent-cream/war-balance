@@ -1,0 +1,80 @@
+URL: https://www.bruegel.org/analysis/end-russian-gas-transit-ukraine-and-options-eu
+Retrieved: 2026-10-25
+Extract: paragraphs containing ['bcm', 'Slovakia', 'Austria', 'Hungary', 'Moldova', 'Italy', 'transit', 'contract'] (untrusted web text, kept as data)
+
+The end of Russian gas transit via Ukraine and options for the EU
+
+The EU should seek a common position on the upcoming end to the contract governing Russian gas transit through Ukraine
+
+Keliauskaitė, U. and G. Zachmann (2024) 'The end of Russian gas transit via Ukraine and options for the EU', Analysis 31/2024, Bruegel
+
+On 1 January 2025, a major contract governing the transit of Russian gas through Ukraine will end, with significant implications for remaining Russian gas exports to some European Union countries. Despite the war in Ukraine, gas has continued to flow through a pipeline via the country and there has been no significant disruption to these gas supplies so far, even though Ukraine as part of its incursion into Russia’s Kursk region has taken control of the only active metering station for the entry of Russian gas to Ukraine, at Sudzha (Figure 1) ( Łoskot-Strachota et al , 2024 ).
+
+The end of the transit contract will mark an important shift because gas via Ukraine governed by the contract currently accounts for half of Russia’s remaining pipeline gas exports to the EU and a third of total Russian gas exports, including LNG (Table 1). The impact will be felt especially in Austria, Hungary and Slovakia, for which the Ukrainian transit route met 65 percent of gas demand in 2023 (IEA, 2024a). Overall, the share of Ukrainian transit in EU gas imports has dropped from 11 percent in 2021 to about 5 percent.
+
+Source: Bruegel EU natural gas import tracker. Note: * = first eight months of year. The only other active pipeline through which Russian gas continues to arrive in the EU is Turkstream, which carries gas across the Black Sea to Turkey and on to Bulgaria, Serbia and Hungary.
+
+The EU has a non-binding goal of stopping all Russian gas imports by 2027 (European Commission, 2022). The end of Ukraine transit could speed up this decoupling, and would also imply a loss of $6.5 billion annually for Russia, unless it can redirect these flows to other pipelines or LNG terminals 1 .
+
+However, Ukraine stands to lose fees equivalent to about 0.5 percent of GDP from ending the transit contract and risks undermining its strategic role as an energy partner for Europe (for example, as a provider of gas storage). Moreover, Ukraine’s gas infrastructure, which is so far largely undamaged 2 , could become a military target if Russian gas is no longer in Ukraine’s pipelines. While independent stress tests have confirmed the reliability of Ukraine’s gas infrastructure in extreme scenarios, including potential attacks 3 , the risk of targeted attacks remains a serious concern, especially ahead of winter.
+
+Furthermore, any stop to gas transit via Ukraine is opposed by Hungary, Slovakia and partially Austria for fear of disproportionate economic loses in such a scenario. To avoid higher prices and gas supply disruptions in 2025, those countries 4 want to maintain some gas flows via Ukraine 5 . They may fear that a stop now will end privileged access to Russian gas forever, potentially putting them at a competitive disadvantage relative to other EU countries.
+
+In this context, we first set out some details of the current transit contact, and then discuss three scenarios:
+
+Ukraine’s gas pipeline system connects Russia, Poland, Slovakia, Hungary, Romania and Moldova. Gas flows via Ukraine into Poland and Romania have stopped (Table 2). Slovakia is now the main entry point into the EU. Along with Slovakia, Austria, Hungary and Moldova are now the main gas flow recipients via Ukraine.
+
+Under the current transit contract, Russia’s Gazprom was obliged to pay Ukraine for the transit of 65 billion cubic metres (bcm) (~670 TWh) of gas in 2020, dropping to 40 bcm (~412 TWh) per year until 2024, whether or not Gazprom actually shipped the agreed amount. In fact, flows in 2024 have been around 44 million cubic metres per day, which is equivalent to 16 bcm/year – significantly below the 40 bcm/year contracted amount (Figure 2). Transit fee revenues for Ukraine amounted to $1.2 billion in 2022 and $0.8 billion in 2023, or around 0.5 percent of Ukraine’s GDP 6 .
+
+Gas transit via Ukraine: three future scenarios
+
+The end of the gas transit contract implies that from 1 January 2025, the EU would need an additional import of 140 TWh annually from other sources. Most Russian gas deliveries to Austria, Hungary and Slovakia are under long-term contracts between their major gas companies and Gazprom; these are set to expire years into the future (Table 3). However, the stopping of Ukrainian transit would not pose an immediate supply security risk to Austria, Hungary or Slovakia, for three reasons.
+
+Table 3: Gas demand, storage and Gazprom contracts in Slovakia, Austria and Hungary, 2023
+
+Annual gas contract quantity with Gazprom, TWh
+
+Source: Bruegel, Energy Institute (2024) and CGEP. Note: Gas storage as of 29 September 2024. Hungary’s total contracted volume is 46 TWh, but only 10 TWh of it is delivered through the Ukrainian transit corridor (via Slovakia and Austria).
+
+First, LNG terminals in Poland, Germany, Lithuania, Italy, Croatia and Greece, new floating storage regasification units in Germany and Italy (IEA, 2024a) and the potential expansion of the capacity of the Turkstream pipeline that runs across the Black Sea from Russia to Türkiye could replace the lost volume.
+
+Second, there is enough infrastructure for transmission system operators to transport replacement gas to Austria, Hungary, and Slovakia. For example, Czechia claims it has sufficient gas network capacity to support other countries and mitigate potential disruptions if gas flows via Ukraine cease 7 .
+
+Third, storage capacity is at time of writing 95 percent full ahead of winter. Austria has enough gas stored to cover its entire domestic gas demand (Table 3). Additionally, Germany’s decision to not charge a high gas storage fee on transits would help avoid a significant rise in regional gas prices in the event of a complete cutoff of Russian gas (AEA, 2024).
+
+This scenario in which the currently transited volumes are replaced by LNG imports from other countries might be the most ‘clean cut’ option for the EU. However, pressure from the countries that want to maintain gas transit via Ukraine in some form – potentially backed up with the threat that they could block EU financial support to Ukraine – makes achieving such a solution difficult. The loss to Ukraine of transit revenues could also be an issue.
+
+Ukraine could replace transiting ‘Russian’ gas with ‘Azeri’ gas 8 . Were that to happen, exchange deals would be the most viable mechanism in the short run because of capacity issues related to pipeline transport of gas from Azerbaijan. Russia would continue to supply gas (labelled ‘Azeri gas’) to Ukraine, while Azerbaijan would receive gas from Russia (labelled ‘Russian gas’). In simple terms, there would be no change in the gas flows: EU traders would buy gas from Azerbaijan, which would buy gas from Russia.
+
+Any such arrangement would have several limitations. Azerbaijan does not produce enough gas to fully replace Russian flows to Europe in the short term. Although Azerbaijan has an agreement to double its gas exports to the EU to at least 200 TWh by 2027 9 , its gas production has not increased significantly in recent years, while domestic consumption is rising (Table 4). Without long-term contracts from European firms 10 , Baku cannot secure the financing to increase production in the Caspian Sea 11 . Countries such as Slovakia and Hungary might consider such contracts once their agreements with Gazprom end (Table 4), but this is not guaranteed.
+
+EU traders could buy Russian gas at the Russian-Ukrainian border at Sudzha and book transit capacity through Ukraine’s pipeline network infrastructure to deliver ‘their’ gas to European countries. Before the war, Ukraine pushed for such an EU-regulation-aligned approach. But under the current circumstances, it is unclear if it would still be in Ukraine’s favour.
+
+Commercially, the state-owned Gas Transmission System Operator of Ukraine requires a minimum capacity of around 27 mcm 12 per day to operate. The daily technical capacity of Ukrainian transit is much higher (244 mcm per day) than what is being booked (72 mcm) or actually transited (40-50 mcm). As countries such as Italy and Germany have successfully reduced reliance on Russian gas, and Austria continues to diversify away from Russian gas, it is unlikely that future bookings will reach current levels, raising questions about the sustainability of high transit volumes under new agreements.
+
+TABLES (cell text, as published):
+TWh | 2021 | 2022 | 2023 | 2024*
+Russian gas via Ukraine | 409 | 193 | 140 | 112
+Other Russian gas pipeline imports | 1,080 | 472 | 140 | 115
+Russian LNG imports | 145 | 195 | 183 | 150
+Total Russian gas imports | 1,634 | 860 | 463 | 377
+Total gas imports | 3,856 | 3,751 | 3,250 | 2,072
+Ukrainian transit as % of EU imports | 11% | 5% | 4% | 5%
+---
+TWh | 2021 | 2022 | 2023 | 2024*
+Slovakia | 297 | 176 | 135 | 106
+Poland | 44 | 11 | 6 | 6
+Hungary | 65 | 3 | 0 | 0
+Romania | 4 | 4 | - | -
+Total Ukrainian transit | 409 | 193 | 140 | 112
+---
+ | Total gas demand, TWh | Gas in storage TWh (% full) | Gazprom contract end dates (gas company) | Annual gas contract quantity with Gazprom, TWh
+Slovakia | 46 | 35 (95%) | 2028 (SPP) | 67
+Austria | 72 | 94 (93%) | 2040 (OMV) | 62
+Hungary | 88 | 64 (90%) | 2036 (MVM) | 10
+---
+TWh | 2021 | 2022 | 2023
+Export to EU | 91 | 126 | 127
+Domestic consumption | 132 | 140 | 156
+Production | 328 | 351 | 367
+---

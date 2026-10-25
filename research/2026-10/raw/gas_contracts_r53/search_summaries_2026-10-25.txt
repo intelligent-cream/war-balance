@@ -1,0 +1,68 @@
+Retrieved: 2026-10-25
+What: facts taken from web-search result summaries (the search tool's own summary of the pages listed), for pages
+that could not be downloaded here (gazprom.com reset every connection; Reuters, S&P Global, IEA, Euronews,
+SeeNews, Spectator returned 403/406). These are SECONDARY (search summaries), not page extracts; each line names
+the page the summary cites. Untrusted web text, kept as data.
+
+[DEPA, Greece] https://www.gasprocessingnews.com/news/2024/03/greeces-depa-files-for-arbitration-over-prices-in-gazprom-deal/
+  "In January 2022, DEPA signed a contract with Gazprom for 2 billion cubic meters (bcm) of gas per year through 2026",
+  price 80% TTF / 20% oil; take-or-pay with untaken volumes carried over. Earlier 2014 extension to 2026 provided for
+  2.5-3 bcm/yr with more flexible take-or-pay (https://www.iene.eu/greeces-depa-gazprom-agree-long-term-gas-deal-p6494.html).
+
+[Orsted, Denmark] https://www.euronews.com/next/2022/05/31/ukraine-crisis-russia-denmark-germany-gas
+  Reuters via Euronews: the Orsted contract "stipulated gas supplies of up to 1.2 billion cubic metres per year";
+  Gazprom Export halted it from 1 June 2022 after Orsted refused to pay in roubles. Shell Energy's German contract
+  (up to 1.2 bcm/yr) was halted the same day.
+
+[Serbia] https://seenews.com/news/serbia-hopes-to-sign-long-term-gas-delivery-contract-with-gazprom-by-may-15-777239
+  "The previous long-term natural gas delivery agreement of Serbia with Gazprom expired on December 31, 2021. In
+  November, Gazprom agreed to continue selling Serbia gas at the price of $270 ... until June 2022." Gazprom's
+  exports to Serbia: 1.346 bcm in 2020; first 11 months of 2021 were 57% higher.
+
+[SPP, Slovakia] https://spectator.sme.sk/business/c/slovakia-extends-russian-gas-contract-by-20-years (25 Dec 2008)
+  20-year agreement effective 1 January 2009, about 130 bcm by 2028; Eustream transport contract to the same date.
+  Interfax (18 Jun 2025, extract interfax_2025-06_spp_2028.txt): SPP says stopping Russian imports from 1 Jan 2028
+  could expose it to take-or-pay claims of about EUR 16bn. Bruegel 2024 (extract): SPP contract end 2028, ACQ 67 TWh.
+
+[Gasum, Finland] https://tass.com/economy/1621011 (extract tass_2023-05_gasum_termination.txt)
+  Pipeline contract to end-2031 (TASS); annual volume not published. Stockholm award (Nov 2022) found the rouble
+  decree force majeure and ordered Gasum to pay over EUR 300m incl. take-or-pay; Gasum terminated 22 May 2023.
+
+[Eni, Italy] https://eegas.com/media/061115-EGM.htm and Energy Intelligence (2006)
+  2006 strategic agreement extended Eni's Gazprom contracts to 2035 (another 2006 report: to 2027). Eni's contracts
+  were "24 Bcm/yr" growing to 26; Eni ceded 2-3 bcm/yr for Gazprom's direct sales in Italy. Elcano (2024,
+  https://media.realinstitutoelcano.org/wp-content/uploads/2024/03/policy-paper-the-future-of-russian-gas-in-the-eu.pdf):
+  Eni "estimated to hold contracts for more than 20 bcm a year"; OMV 7 bcm/yr to 2040 (2018 contract).
+
+[Uniper, Germany] https://www.uniper.energy/news/uniper-terminates-russian-gas-supply-contracts
+  Award of 7 June 2024 (Stockholm, Swiss law): right to terminate and over EUR 13bn damages for gas not delivered
+  since mid-2022; contracts ran to the mid-2030s; no volumes since end-August 2022. Annual volume not in the results.
+
+[Engie, France] https://www.hellenicshippingnews.com/?p=914724 (extract hellenicshipping_2022-03_engie.txt)
+  Long-term Gazprom contracts = about 20% of Engie's 2021 gas sales; France bought 12.4 bcm from Gazprom in 2020.
+  Contracts extended to 2030 (Gazprom, Dec 2008; fuel_volume_cf.json contracts).
+
+[Latvia] https://news.err.ee/1608671326/gazprom-announces-suspension-of-supplies-to-latvia
+  Gazprom halted supplies to Latvia (30 Jul 2022) "for violating conditions"; Latvia's law bans Russian gas from
+  1 Jan 2023. Latvijas Gaze kept buying via an intermediary. Contract end date not found (Cedigaz 2018 shows the
+  Latvian contract ending in 2017; renewal terms not public).
+
+[Eesti Gaas, Estonia] https://www.baltictimes.com/news/articles/8663/
+  Eesti Gaas extended its Gazprom contract to 2015 (2003 report). Gazprom sold its stake in 2016. No long-term
+  contract after 2015 found; 2019-2021 purchases were short-term (site volumes: 0.48, 0.21, 0.06 bcm).
+
+[Turkiye] https://www.argusmedia.com/en/news-and-insights/latest-market-news/1804813 (extract
+  argus_2021_turkey_contracts.txt): Botas 20 bcm/yr (16 Blue Stream + 4 Western Line); seven private firms 10 bcm/yr;
+  take-or-pay 80%. Argus (2021): "14bn m3/yr through Turkish Stream, 8bn m3/yr of which expires this year".
+  S&P Global (11 Oct 2024): Blue Stream 16 bcm/yr expires end-2025; Enerco 2.5 bcm/yr to end-2025; Avrasya 0.5 to
+  Feb 2026. TASS (Dec 2025, extract): Botas renewed 21.75 bcm/yr for one year.
+
+[Austria after 16 Nov 2024] https://www.osw.waw.pl/en/publikacje/analyses/2024-12-02/austria-end-direct-gas-supplies-gazprom
+  and https://bnnbloomberg.ca/investing/2024/11/16/russian-gas-flows-are-steady-even-after-gazprom-cut-off-omv
+  OSW: Russian gas kept flowing through Ukraine at similar volumes and "is supplied to the Austrian market in slightly
+  smaller volumes and no longer directly by Gazprom", most likely spot sales at Baumgarten. Another report: Baumgarten
+  flows fell 10-20% after the OMV halt (OMV had taken about 17 mcm/d).
+
+[IEA, March 2022] https://www.iea.org/reports/a-10-point-plan-to-reduce-the-european-unions-reliance-on-russian-natural-gas
+  Gazprom contracts covering more than 15 bcm/yr expire by end-2022 (about 12% of Gazprom's 2021 EU supplies); close
+  to 40 bcm/yr by the end of the decade.

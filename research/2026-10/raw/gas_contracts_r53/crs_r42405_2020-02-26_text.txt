@@ -1,0 +1,64 @@
+URL: https://www.everycrsreport.com/files/20200226_R42405_6c37fe9184235b43d9adb2361d8c55d0f6948112.pdf
+Retrieved: 2026-10-25
+Extract: CRS R42405 (26 Feb 2020), Poland contract and Ukraine transit paragraphs, pdftotext -layout (untrusted text, kept as data)
+
+
+                        Poland: Proactive on Natural Gas Diversification36
+ Poland has sought to diversify its energy sources, especially natural gas sources. Polish officials say they are doing
+ so to reduce dependence on Russian natural gas and that they hope to lead in the EU by example. Poland
+ currently is under contract to import 10.24 BCM per year of gas from Russia. The Polish Oil and Gas Company
+ (PGNiG), a state-owned oil and gas company, says that it will not sign another long-term gas deal with Russia after
+ the current contract expires in 2022.
+ Actions taken by Poland fall into two categories: supply diversification, with regard to fuel type and supplier, and
+ infrastructure diversification and security, including gas storage and LNG terminal construction. PGNiG has signed
+ multiple long-term contracts with U.S. and other LNG suppliers (Cheniere, Centrica, Venture Global LNG, and
+
+
+32 For more, see Jonathan Stern, The Russian-Ukrainian Gas Crisis of January 2006, Oxford Institute for Energy
+
+ One concern of Nord Stream 2 opponents is that the pipeline would reduce Ukraine’s significance as a transit
+ state for Russian natural gas exports to EU members. Before Nord Stream 1 opened in 2011, most of Russia's
+ natural gas exports to Europe transited Ukraine. Currently, around 40% transit Ukraine. According to Ukrainian
+ oil and gas company Naftogaz, its revenues from gas transit totaled $2.65 billion in 2018.
+ If Nord Stream 2 becomes operational, observers expect it to further reduce transit through Ukraine. On
+ December 30, 2019, Gazprom and Naftogaz negotiated a contract to transit 65 BCM in 2020, a volume equal to
+ about 75% of the 2018 volume of 86.8 BCM, and 40 BCM a year from 2021 to 2024, a volume equal to about 46%
+ of the 2018 volume. Despite the reduction in export volumes, Ukraine’s Minister of Energy has said the agreement
+ provides for about $3 billion a year in transit revenue.
+ Many observers consider that reducing Ukraine’s role as a transit state would not only deprive Ukraine of revenue
+ but also threaten Ukraine’s security. It would not necessarily increase Ukraine's vulnerability to energy supply
+
+Natural Gas Contracts
+Dependence on Russian natural gas among EU member states that rely on Russian imports is
+unlikely to be overcome in the near future. Many states have long-term contracts to import
+Russian gas that specify particular durations, annual volumes, and additional terms (see Figure
+5). For example, Germany’s five gas contracts with Gazprom all terminate between 2031 and
+2035.
+As expiration dates approach, contracting parties must either renew the contract or find other
+counterparts. Depending upon market conditions, the importer or exporter may have a negotiating
+advantage. For example, contracts promulgated by U.S. LNG export companies have been
+instrumental in making natural gas a more tradeable commodity like oil. This has given
+consuming countries leverage in dealing with traditional suppliers. For instance, after Lithuania
+installed an LNG import terminal, giving it an alternative to Russian pipeline imports, Russia
+gave Lithuania a more favorable price in its contract renegotiation. Figure 5 shows where Russia,
+primarily through the state energy company Gazprom, will face shortfalls in its export contracts
+in the coming years.
+
+
+
+
+Congressional Research Service                                                                      15
+                                       European Energy Security: Options for EU Natural Gas Diversification
+
+
+
+
+             Figure 5. Russian Contract Volumes for EU Countries and Turkey
+                                                 2015-2035
+
+
+
+
+    Source: Cedigaz, Pipeline Supply Contracts Database, updated October 2018, http://www.cedigaz.org.
+    Notes: Units = billion cubic meters (BCM).
+
