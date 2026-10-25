@@ -755,7 +755,6 @@ details.flag.orange .xp-body { border-left-color: var(--rus); }
 .ev { display: inline-block; margin-left: 5px; padding: 0 5px; border-radius: 4px; font: 11px var(--font-body); color: var(--ink-soft); border: 1px dashed var(--line); }
 .ev.ev-press { color: var(--rus-text, var(--rus)); border-color: currentColor; }
 .ev.ev-off { border-style: solid; }
-.backed-more { color: var(--ink-soft); font-size: 12px; }
 .tch { display: block; margin: 2px 0 4px; }
 .tch .chance { margin-left: 0; }
 .nodata-line { margin: 6px 6px 0; font-size: 12.5px; color: var(--ink-soft); }
@@ -4081,16 +4080,17 @@ function chanceInfo(c, y, q) {
   const level = !unc ? "sure" : isNearZero(c, y, q) ? "near" : ch.p >= LEAN.p ? "lean" : "unc";
   return { ...ch, level, sideWords: t(SIDE_WORDS[q][ch.side]) };
 }
-function chanceText(c, y, q) {
+// round 45 (owner: less text): in the panel's pill the side is left out when the label already says it (short)
+function chanceText(c, y, q, short = false) {
   const i = chanceInfo(c, y, q);
   if (!i) return "";
-  return i.level === "sure" ? t("very likely · {p}", { p: pct(i.p) }) : i.level === "lean" ? t("likely {side} · {p}", { side: i.sideWords, p: pct(i.p) })
+  return i.level === "sure" ? t("very likely · {p}", { p: pct(i.p) }) : i.level === "lean" ? (short ? t("likely · {p}", { p: pct(i.p) }) : t("likely {side} · {p}", { side: i.sideWords, p: pct(i.p) }))
     : i.level === "near" ? t("near zero · {p} {side}", { side: i.sideWords, p: pct(i.p) }) : t("unclear · {p} {side}", { side: i.sideWords, p: pct(i.p) });
 }
 const CHANCE_KEY = () => t("The chance of the direction comes from simulating every part's likely range together, correlated where parts share inputs. Very likely: at least 95% and every other method choice agrees. Likely: at least 65%. Unclear: below that. Near zero: the likely range and the method band stay within ±0.5% of a year's GDP.");
 function chancePill(c, y, q) {
   const i = chanceInfo(c, y, q);
-  return i ? `<span class="chance ch-${i.level}" title="${esc(CHANCE_KEY())}">${chanceText(c, y, q)}</span>` : "";
+  return i ? `<span class="chance ch-${i.level}" title="${esc(CHANCE_KEY())}">${chanceText(c, y, q, i.level === "lean" && !headVerb(c, y, q, HEAD3(calc(c, y))[q]).flip)}</span>` : "";
 }
 function chanceSentence(c, y, q) {
   const i = chanceInfo(c, y, q);
@@ -4118,7 +4118,8 @@ function decideLine(c, k, q) {
   if (fs <= fo && fs < 1) return t("What decides it: if {name} were {f} smaller, the direction would flip.", { name: plainName(same, c), f: f(fs) });
   if (fo <= 1) return t("What decides it: if {name} were {f} larger, the direction would flip.", { name: plainName(opp, c), f: f(fo) });
   if (opp && fo < 3) return t("No part flips it by shrinking; {name} would have to be {f} larger.", { name: plainName(opp, c), f: f(fo) });
-  return t("No single part could flip its direction.");
+  // round 45 (owner: "a little too much text in the main country view"): nothing to say when no single part decides it
+  return "";
 }
 // Round 25 (owner, 22 October 2026: "add more tags that make sense ... all the tags there ... in short tell the story why
 // the country is where it's at ... then we back that up with the numbers"): several short story tags per country, each
@@ -4301,7 +4302,7 @@ function netBlock(c, k, y) {
     <span class="sumline">${sumLine(c, k)}</span>${rangeBar(c, k.shift, k.shiftLo, k.shiftHi, m, cls)}<span class="nline">${line.map(x => `<span>${x}</span>`).join(" · ")}</span>
     ${mostlyPrice(c, k) ? `<span class="unc-why price-why">${t("Mostly war-time fuel prices it did not set: {v} of the {n}.", { v: eur(Math.abs(mostlyPrice(c, k).v)), n: eur(Math.abs(k.shift)) })}</span>` : ""}
     ${unc ? `<span class="unc-why">${t(isNearZero(c, y, "net") ? "Near zero, and not certain mostly because of {why}." : "Not certain, mostly because of {why}.", { why: uncReason(c, y, "net") })}</span>` : ""}
-    <span class="unc-why decide">${decideLine(c, k, "net")}</span>`;
+    ${unc ? `<span class="unc-why decide">${decideLine(c, k, "net")}</span>` : ""}`;
   const body = `<p class="lead">${leadLine(c, k)}</p><p><b>${netSentence(c, k, "gdp")}</b> (${eur(Math.abs(k.shift))}).</p>
     <p>${chanceSentence(c, y, "net")} · ${t("about {v} a year", { v: fmtMeasure(c, Math.abs(k.shift) / yrs, "gdp") })}</p>
     ${unc ? `<p>${t("Not certain: ranked faded and labelled, and shown faded on the map.")}</p>` : ""}
@@ -4331,7 +4332,7 @@ function partTiles(c, k, y) {
     // round 25: the trade tile's headline says the direction, leaning when it is not certain but leans
     const hv = headVerb(c, y, q, v), [pre, post] = verbAround(hv.key === "netLean" ? q : hv.key, hv.s);
     return xp("tile " + cls, "x-" + id,
-      `<span class="tl"><span class="tn">${pre}</span><span class="xi" aria-hidden="true"></span></span><span class="tv" style="color:${cl}">${hv.flip ? fmtMeasure(c, v, state.measure, true, false) : gu(v)}</span><span class="te">${post ? post + " · " : ""}${su(v)}</span>${PARTY_TO_WAR.has(c.iso3) ? "" : `<span class="tch">${chancePill(c, y, q)}</span>`}${bar(v, lo, hi, bneg)}`,
+      `<span class="tl"><span class="tn">${pre}</span><span class="xi" aria-hidden="true"></span></span><span class="tv" style="color:${cl}">${hv.flip ? fmtMeasure(c, v, state.measure, true, false) : gu(v)}</span><span class="te">${post ? post + " · " : ""}${su(v)}</span>${PARTY_TO_WAR.has(c.iso3) || !uncertain(c, y, q) ? "" : `<span class="tch">${chancePill(c, y, q)}</span>`}${bar(v, lo, hi, bneg)}`,
       `${unc(q) ? `<p>${unc(q)} ${decideLine(c, k, q)}</p>` : ""}<p>${words}</p>${extra}<p>${rangeWords(c, lo, hi, q === "ua" ? "ua" : "net", "gdp")} · ${t("about {v} a year", { v: gu(v / yearsOf(y)) })}</p>`);
   };
   const busy = `<p class="key">${t("Russia's earnings from trade: buying from and selling to Russia, services, shipping and company taxes paid there, each compared with no war.")} ${EARN_MEANS()} ${KEPT_MEANS()}</p>`;
@@ -4408,14 +4409,10 @@ function partyLine(c) {
 }
 // round 24 (audit A, the owner: a reader who reads nothing else should still see that every number is backed): one line
 // under the numbers, with the count of sources behind this country's parts, opening the list at the end of the panel
-// round 42 (owner): and how many of the sources that measure its parts are official statistics, and how many press only
 function backedLine(k) {
-  const all = [...k.shiftParts, ...k.backShift, ...k.backParts, ...k.takenParts], n = partSourceIds(all).length;
-  const fam = {};
-  for (const p of all) for (const id of p.src || []) { if (METHOD_INPUTS.has(id)) continue; const tr = srcTier(id), f = SRC_FAMILY[id] || id; if (tr && (!fam[f] || TIERS.indexOf(tr) < TIERS.indexOf(fam[f]))) fam[f] = tr; }
-  const off = Object.values(fam).filter(x => x === "official").length, press = Object.values(fam).filter(x => x === "press").length;
-  const more = [off ? t("{n} official statistics", { n: off }) : "", press ? t("{n} press only", { n: press }) : ""].filter(Boolean).join(", ");
-  return n ? `<p class="backed"><a href="#f-src" data-open-src>${t(n === 1 ? "Backed by 1 source · see it" : "Backed by {n} sources · see them", { n })}</a>${more ? ` <span class="backed-more">(${more})</span>` : ""}</p>` : "";
+  const n = partSourceIds([...k.shiftParts, ...k.backShift, ...k.backParts, ...k.takenParts]).length;
+  // round 45 (owner: less text): the count only; each part says how it is backed (official sources, press only)
+  return n ? `<p class="backed"><a href="#f-src" data-open-src>${t(n === 1 ? "Backed by 1 source · see it" : "Backed by {n} sources · see them", { n })}</a></p>` : "";
 }
 // which parts and sections are open, kept when the panel re-renders (a new year, another language); cleared for a new country
 const panelOpen = new Set();

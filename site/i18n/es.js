@@ -1190,11 +1190,8 @@ I18N.es = {
   "What decides it: if {name} were {f} smaller, the direction would flip.": "Lo que decide: si {name} fuera un {f} menor, la dirección se invertiría.",
   "What decides it: if {name} were {f} larger, the direction would flip.": "Lo que decide: si {name} fuera un {f} mayor, la dirección se invertiría.",
   "No part flips it by shrinking; {name} would have to be {f} larger.": "Ninguna parte la invierte al reducirse; {name} tendría que ser un {f} mayor.",
-  "No single part could flip its direction.": "Ninguna parte por sí sola podría invertir su dirección.",
   "The likely range covers the uncertainty of the data and the models given the method: each part's low and high value, combined as errors, correlated where parts share inputs. It aims at about 90%: rerun as if the war had started in 2018, trade ranges held the true zero for 96% of ranked economies (90% for a 2014 start, when Russia's own economy was hit). How much the method choices themselves move the result is the method band below.": "El rango probable cubre la incertidumbre de los datos y los modelos dado el método: el valor bajo y alto de cada parte, combinados como errores, correlacionados donde las partes comparten datos. Apunta a cerca del 90 %: rehecho como si la guerra hubiera empezado en 2018, los rangos del comercio contuvieron el cero real en el 96 % de las economías clasificadas (90 % con inicio en 2014, cuando la propia economía rusa fue golpeada). Cuánto mueven el resultado las propias opciones de método lo muestra la banda de método abajo.",
   "Not certain: ranked faded and labelled, and shown faded on the map.": "No seguro: clasificado atenuado y señalado, y atenuado en el mapa.",
-  "{n} official statistics": "{n} estadísticas oficiales",
-  "{n} press only": "{n} solo prensa",
   "Leaning toward Ukraine; middle value {x}": "Tendencia hacia Ucrania; valor central {x}",
   "Leaning toward Russia; middle value {x}": "Tendencia hacia Rusia; valor central {x}",
   "Probably cut Russia's earnings from trade; middle value {x}": "Probablemente redujo las ganancias comerciales de Rusia; valor central {x}",
@@ -1208,4 +1205,5 @@ I18N.es = {
   "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Unclear: below that. Near zero: within ±0.5% of GDP.": "Muy probable: al menos 95 % y todas las demás opciones de método coinciden. Probable (tendencia): al menos 65 %. Incierto: por debajo. Cerca de cero: dentro de ±0,5 % del PIB.",
   "above zero": "por encima de cero",
   "below zero": "por debajo de cero",
+  "likely · {p}": "probable · {p}",
 };
