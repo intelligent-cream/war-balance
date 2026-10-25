@@ -21130,5 +21130,39 @@
    },
    "passing": []
   }
+ },
+ "bias_correction_small": {
+  "flow": "to_rus",
+  "method": "median of log(sum w*actual / sum w*predicted) of M0 (2021 held flat, 2019-2021-style median start, as the site's small flows) over all size-S cases (EUR 10-100m a year at the origin), rolling origins 2005-2016 pooled, horizons H1-H5 (w = 1, except 8/12 for the fifth year); yearly multipliers solved so that the cumulative multiplier of H years equals exp(median error H)",
+  "series": "Russia's exports to each partner, CEPII BACI HS92, real by goods group (not the site's own series)",
+  "median_cumulative_log_error": {
+   "H1": 0.1991,
+   "H2": 0.2856,
+   "H3": 0.3544,
+   "H4": 0.4,
+   "H5": 0.4491
+  },
+  "cumulative_multiplier": {
+   "H1": 1.2203,
+   "H2": 1.3306,
+   "H3": 1.4253,
+   "H4": 1.4918,
+   "H5": 1.5669
+  },
+  "yearly_multiplier_2022_2026": {
+   "2022": 1.2203,
+   "2023": 1.4409,
+   "2024": 1.6149,
+   "2025": 1.6911,
+   "2026": 2.0176
+  },
+  "n": {
+   "H1": 485,
+   "H2": 485,
+   "H3": 485,
+   "H4": 485,
+   "H5": 485
+  },
+  "classic_origins_median_H5_error": "2007 +0.23, 2012 +0.62, 2016 +0.41 (by_size.S.median_H5_error_classic.M0)"
  }
 }

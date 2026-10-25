@@ -620,10 +620,39 @@ def calibrate(errs_by_origin: dict[int, list[float]]):
     return K, K * q(allv, 0.05), K * q(allv, 0.95)
 
 
+def bias_correction_small(rows):
+    """Round 47 follow-up (owner: "Fix that"): the median cumulative error of M0 (held flat, median start) for size class
+    S, by horizon H1..H5 (H5 with its fifth year at 8/12, as the site's 2026), all rolling origins 2005-2016 pooled; and
+    the yearly multipliers that reproduce those cumulative factors (year h solved from H = h given years 1..h-1)."""
+    sel = [r for r in rows if r["c"]["size"] == "S"]
+    cum, n, mult = {}, {}, []
+    for H in range(1, 6):
+        es = [r["e"][f"H{H}"]["M0"] for r in sel if f"H{H}" in r["e"]]
+        cum[f"H{H}"] = float(np.median(es))
+        n[f"H{H}"] = len(es)
+    for H in range(1, 6):
+        ws = [W5[h - 1] if H == 5 else 1.0 for h in range(1, H + 1)]
+        need = math.exp(cum[f"H{H}"]) * sum(ws) - sum(w * m for w, m in zip(ws[:-1], mult))
+        mult.append(need / ws[-1])
+    return {
+        "method": "median of log(sum w*actual / sum w*predicted) of M0 (2021 held flat, 2019-2021-style median start, as "
+        "the site's small flows) over all size-S cases (EUR 10-100m a year at the origin), rolling origins 2005-2016 "
+        "pooled, horizons H1-H5 (w = 1, except 8/12 for the fifth year); yearly multipliers solved so that the cumulative "
+        "multiplier of H years equals exp(median error H)",
+        "series": "Russia's exports to each partner, CEPII BACI HS92, real by goods group (not the site's own series)",
+        "median_cumulative_log_error": {k: round(v, 4) for k, v in cum.items()},
+        "cumulative_multiplier": {k: round(math.exp(v), 4) for k, v in cum.items()},
+        "yearly_multiplier_2022_2026": {str(2021 + h): round(m, 4) for h, m in enumerate(mult, 1)},
+        "n": n,
+        "classic_origins_median_H5_error": "2007 +0.23, 2012 +0.62, 2016 +0.41 (by_size.S.median_H5_error_classic.M0)",
+    }
+
+
 def evaluate(cases, flow):
     rows = [{"c": c, "e": cum_errors(c)} for c in cases]
     rows = [r for r in rows if r["e"]]
     out = {"n_cases": len(rows), "by_origin": {}, "by_size": {}, "classic_by_size": {}, "bands_H5": {}}
+    out["bias_correction_small"] = bias_correction_small(rows)
     for o in ORIGINS:
         sel = [r for r in rows if r["c"]["o"] == o]
         m0, b0 = score(sel, "M0")
@@ -782,6 +811,9 @@ def run() -> None:
         ev["diagnostic_2022_2026_central_vs_M0"] = p22
         ev["fitted_2021_origin"] = f22
         ev["passing"] = [m for m, d in ev["decision"].items() if d["passes"]]
+        bc = ev.pop("bias_correction_small")
+        if flow == "to_rus":  # read by pipeline/build_data.py (round 47 follow-up)
+            res["bias_correction_small"] = {"flow": "to_rus", **bc}
         res["flows"][flow] = ev
         print(flow, "n", ev["n_cases"], "passing", ev["passing"])
         print("  origin " + " ".join(f"{m:>8}" for m in CANDIDATES))

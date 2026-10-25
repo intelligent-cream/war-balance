@@ -78,7 +78,9 @@ Five ways to narrow the range for "paid to Russia" were tested; only a band re-m
 
 ### Small flows start from the 2019 to 2021 median
 
-A small flow from Russia swings from year to year (one cargo more or less). Where purchases were under EUR 1bn a year, the no-war level starts from the **median** of 2019, 2020 and 2021, so one unusual year cannot set it. Exceptions keep 2021 where 2019–2020 do not describe the country (Brunei's refinery opened in late 2019, New Zealand's closed in 2022; Syria's pre-war data are only Russia's own reports).
+A small flow from Russia swings from year to year (one cargo more or less). Where purchases were under EUR 0.1bn a year, the no-war level starts from the **median** of 2019, 2020 and 2021, so one unusual year cannot set it. Since round 47, flows of EUR 0.1–1bn start from 2021 again: in the back-tests that was 13% more accurate for them. It was applied at the owner's request, though it is below the 15% bar for a new model.
+
+The back-tests also showed that small buyers' purchases grew faster than a flat path. Their middle value is therefore raised by the measured median error, ×1.57 over 2022–2026. Their range stays where it was, by design: only the middle moves. Exceptions keep 2021 where 2019–2020 do not describe the country (Brunei's refinery opened in late 2019, New Zealand's closed in 2022; Syria's pre-war data are only Russia's own reports).
 
 ### Pipeline fuel buyers
 

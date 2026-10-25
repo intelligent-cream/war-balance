@@ -45,6 +45,15 @@ SETTINGS = {
              "years": [2014, 2015, 2016, 2017], "gdp_years": [2014, 2015, 2016]},
 }  # fmt: skip
 SMALL_FLOW_EUR_BN = 1.0  # build_data.py: purchases under EUR 1bn a year start from the median of the window
+# round 47 (owner: "Fix that"; build_data.py MID_FLOW_EUR_BN, MID_FLOW_KEEP_MEDIAN, small_flow_bias()): purchases of EUR
+# 0.1-1bn a year keep the base year (except the own bands tested on the median start); those under EUR 0.1bn keep the
+# median and their expected path is moved up by the measured bias of "held flat" (cf_models_r47.json
+# bias_correction_small, the yearly multipliers of 2022-2025 for placebo years 1-4), with the no-war band divided by the
+# rise of the summed expected level so its range stays where it is
+MID_FLOW_EUR_BN = 0.1
+MID_FLOW_KEEP_MEDIAN = {"KEN", "PER"}
+_BC = json.loads((GAPS / "cf_models_r47.json").read_text())["bias_correction_small"]
+BIAS_YEARLY = [_BC["yearly_multiplier_2022_2026"][str(y)] for y in range(2022, 2027)]
 RANKED_GDP_EUR_BN = 5.0  # the site's ranking threshold
 PARTY_TO_WAR = {"BLR", "PRK"}
 RHO_PAID_SOLD = 0.2  # site/index.html RHO "paid|sold"
@@ -205,14 +214,17 @@ def spread(t: dict, band_scale: float = 1.0) -> tuple[float, float, float]:
     n = len(t["c"])
     g = t.get("g") or (1.0, 1.0, 1.0)
     mid = se = bl = bh = al = ah = pl = ph = ql = qh = gl = gh = 0.0
+    bias = t.get("bias") or [1.0] * n
+    se0 = 0.0
     for i in range(n):
         k = t["cur"][i] * g[1]
-        e0 = t["m"] * t["add"][i]
+        e0 = t["m"] * t["add"][i] * bias[i]
         e, a = e0 * k, t["c"][i] / t["p"][i] * k
         mid += e - a
         se += e
-        bl += e - (t["b"][0] + t["m"] * (t["add"][i] - 1)) * k
-        bh += (t["b"][1] + t["m"] * (t["add"][i] - 1)) * k - e
+        se0 += e / bias[i]
+        bl += e - (t["b"][0] + t["m"] * (t["add"][i] - 1)) * bias[i] * k
+        bh += (t["b"][1] + t["m"] * (t["add"][i] - 1)) * bias[i] * k - e
         al += t["h"][i] / t["p"][i] * k - a
         ah += a - t["l"][i] / t["p"][i] * k
         pl += t["c"][i] / t["pl"][i] * k - a
@@ -225,8 +237,13 @@ def spread(t: dict, band_scale: float = 1.0) -> tuple[float, float, float]:
         gl += v - min(v, lo_, hi_)
         gh += max(v, lo_, hi_) - v
     if t.get("cb"):
-        ql, qh = (1 - t["cb"][0]) * se, (t["cb"][1] - 1) * se
-    ql, qh = ql * band_scale, qh * band_scale
+        # round 47: with the small-flow bias the band is divided by the rise D of the summed expected level (the range
+        # stays where it is; the middle is capped at its high end), as build_data.py small_flow_bias()
+        lo_, hi_ = 1 - (1 - t["cb"][0]) * band_scale, 1 + (t["cb"][1] - 1) * band_scale
+        d = min(se / se0, hi_) if se0 else 1.0
+        ql, qh = (1 - min(1.0, lo_ / d)) * se, (max(1.0, hi_ / d) - 1) * se
+    else:
+        ql, qh = ql * band_scale, qh * band_scale
     lo = math.sqrt(max(0.0, bl * bl + al * al - bl * al) + pl * pl + ql * ql + gl * gl)
     hi = math.sqrt(max(0.0, bh * bh + ah * ah - bh * ah) + ph * ph + qh * qh + gh * gh)
     return mid, mid - lo, mid + hi
@@ -313,6 +330,8 @@ def part(inp: dict, iso3: str, flow: str, s: dict, years: list[int], sold_band: 
     avg_nominal = statistics.mean(val[y] for y in win)
     base = real[base_y]
     small = flow == "to_rus" and avg_nominal < SMALL_FLOW_EUR_BN and iso3 != "MDA"
+    if small and avg_nominal >= MID_FLOW_EUR_BN and iso3 not in MID_FLOW_KEEP_MEDIAN:
+        small = False  # round 47: mid-size flows keep the base year
     if small:
         base = statistics.median(real.values())
     b0 = min(val[base_y] * alo / (p[base_y] * phi), base)
@@ -328,6 +347,8 @@ def part(inp: dict, iso3: str, flow: str, s: dict, years: list[int], sold_band: 
          "cur": [p[y] for y in years], "m": base, "b": [b0, b1], "cb": cb, "add": add}  # fmt: skip
     if cb is None:
         t["yearly"] = [[m["low"], m["high"]] for m in inp["bands"]["blr_yearly"][: len(years)]]
+    if small and avg_nominal < MID_FLOW_EUR_BN and cb is not None:
+        t["bias"] = BIAS_YEARLY[: len(years)]
     if flow == "to_rus":
         g = (site.get("gain") or {}).get("e")
         t["g"] = (g[0][0], g[1][0], g[2][0]) if g else inp["dflt"]["gain"]
@@ -471,7 +492,9 @@ def main() -> None:
         "settings": {
             "placebos": SETTINGS,
             "expected_level": "paid: base year held flat at window prices; median of the window where purchases were "
-            "under EUR 1bn a year (as build_data.py small_flow_base). sold: base year held flat (the method's linear "
+            "under EUR 0.1bn a year (and for KEN, PER under EUR 1bn), as build_data.py small_flow_base since round 47, "
+            "with those small flows' path moved up by the measured bias (cf_models_r47.json bias_correction_small) and "
+            "their band divided by the rise so the range stays where it is (small_flow_bias). sold: base year held flat (the method's linear "
             "nowcast is not reproducible from the repository).",
             "bands": "cumulative 90% no-war bands for the number of years summed (H4; H2 in the short variant): "
             "cf_bands.json, with to_rus L/M from to_rus_cf.json, pipeline buyers from fuel_volume_cf.json, own bands "

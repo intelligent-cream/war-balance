@@ -121,3 +121,19 @@ All models start from M0's level unless stated otherwise. Fitted pieces use only
 - **Momentum uses January of the first forecast year,** as the 2022 case would (January 2022 was pre-war).
 - **Many models, one rule:** with 9 candidates and 12 origins, a chance pass was possible. None happened.
 - The 2022-2026 central paths of every model are in the JSON, `flows.<flow>.diagnostic_2022_2026_central_vs_M0`. They are a diagnostic only, not a cf_bands entry.
+
+## Applied after review (owner: "Fix that")
+
+Both findings are now in the build (`pipeline/build_data.py`). Neither passed the replacement rule; both are applied as targeted corrections at the owner's request.
+
+1. **Mid-size start rule.** Purchases of EUR 0.1–1bn a year start from 2021 (`MID_FLOW_EUR_BN`, 45 flows). The band is unchanged. Kenya and Peru keep the median start: their own bands were tested with it.
+2. **Small-flow bias correction.** Flows under EUR 0.1bn a year (93 with a band) get their middle value raised by `bias_correction_small`: the median cumulative error of M0 for size S over all rolling origins 2005–2016, n = 485 per horizon. The cumulative factors are ×1.22, 1.33, 1.43, 1.49 and 1.57 (H1–H5).
+   - The cumulative band is divided by the rise, so the expected level's range in euros is unchanged.
+   - No middle had to be capped.
+
+`pipeline/placebo.py` now applies the same rules. Coverage with the site's bands, before → after:
+
+| placebo | trade | paid |
+|---|---|---|
+| 2018 | 0.960 → 0.967 | 0.960 → 0.966 |
+| 2014 | 0.899 → 0.892 | 0.905 → 0.898 |
