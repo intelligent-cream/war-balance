@@ -1831,6 +1831,18 @@
    "in_repository": true
   },
   {
+   "path": "share_cf_r50/baci_fuel_hs4_1995_2000.json.gz",
+   "bytes": 69698,
+   "sha256": "3a0bc3bd646784bd1460d01c08da7b76155e3942337b4ea2628c78a6070342f6",
+   "in_repository": true
+  },
+  {
+   "path": "share_cf_r50/supply_infra_sources_2026-10-25.json",
+   "bytes": 10988,
+   "sha256": "77db9f186b8adb70f207179243c51024119ab82096365fc57e2126c7c9590c31",
+   "in_repository": true
+  },
+  {
    "path": "supply_cf_r49/baci_rus_partner_hs2_2021_2024.json.gz",
    "bytes": 205755,
    "sha256": "18500b11b78cd96878c3066036895892234fdc9bf71675248f072e3bf831d06d",

@@ -1,0 +1,422 @@
+{
+ "what": "curated tables (not downloaded): Russia's no-war exportable supply 2022-2026 (2021 = 1) and the infrastructure known in advance, with the sources they rest on. Primary pages (IEA, OPEC, Minenergo, government.ru, Gazprom) refuse the connection from this environment (HTTP 403 / reset, 2026-10-25); the figures were checked against the secondary reports listed, all dated before 2022 except where they report a pre-2022 plan",
+ "retrieved": "2026-10-25",
+ "supply": {
+  "crude": {
+   "low": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "central": [
+    1.04,
+    1.07,
+    1.07,
+    1.07,
+    1.07
+   ],
+   "high": [
+    1.08,
+    1.13,
+    1.15,
+    1.15,
+    1.15
+   ],
+   "basis": "crude exports = output - refinery runs (runs flat at ~280 Mt). 2021: exports 231.6 Mt (customs), output 10.5 mb/d incl. condensate. OPEC+ (18 July 2021): +0.4 mb/d a month for the group from Aug 2021 to Sep 2022, Russia's baseline 11.0 -> 11.5 mb/d from May 2022, so Russia's required crude output rises ~0.9 mb/d from the 2021 average by Sep 2022. Energy Strategy 2035 (April 2020): output 11.15-11.25 mb/d to 2024, flat to falling to 2035. Low: output stuck at 2021 (capacity limits seen in late 2021). Central: half of the OPEC+ room is produced (about +0.45 mb/d, +4% output, +7-8% exports). High: OPEC+ path fully met, Strategy's upper bound"
+  },
+  "products": {
+   "low": [
+    0.97,
+    0.95,
+    0.93,
+    0.92,
+    0.91
+   ],
+   "central": [
+    1.0,
+    1.0,
+    0.99,
+    0.98,
+    0.98
+   ],
+   "high": [
+    1.02,
+    1.03,
+    1.03,
+    1.03,
+    1.03
+   ],
+   "basis": "refinery runs flat (~280 Mt, 2019-2021); the tax manoeuvre (2019-2024, law of Aug 2018) lowers the export of fuel oil while the damper and the 2011 modernisation agreements raise light products. Energy Strategy 2035: fuel exports 'rise considerably', fuel oil falls. Range around flat"
+  },
+  "coal": {
+   "low": [
+    1.01,
+    1.02,
+    1.03,
+    1.04,
+    1.05
+   ],
+   "central": [
+    1.025,
+    1.05,
+    1.08,
+    1.1,
+    1.13
+   ],
+   "high": [
+    1.04,
+    1.08,
+    1.12,
+    1.17,
+    1.22
+   ],
+   "basis": "Coal programme 2035 (government order 1582-r, 13 June 2020): exports 2035 +22% (conservative) to +86% (optimistic) on 2018 (bpb Russland-Analysen 386). 2018 210 Mt, 2021 ~223 Mt (BACI tonnes 222.5). From 2021 that is ~+1% a year (low) to ~+4% a year (high); the Eastern Polygon rail expansion (phase 2, 2019-2024) is the main constraint"
+  },
+  "gas_pipe": {
+   "low": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "central": [
+    1.05,
+    1.05,
+    1.05,
+    1.05,
+    1.05
+   ],
+   "high": [
+    1.14,
+    1.14,
+    1.14,
+    1.14,
+    1.14
+   ],
+   "basis": "pipeline gas to Europe and Turkey (Gazprom far abroad excluding China): 2021 ~175 bcm (185.1 incl. 10.4 to China). Gazprom's own 2021 guidance 175-183 bcm (April 2021). Low: 2021 level (spot sales held back in 2021). Central: 183 bcm (the top of Gazprom's 2021 target, demand-limited). High: 2019 level (~199 bcm) with Nord Stream 2 in service (the Nord Stream 2 range: on an origin basis it re-routes rather than adds; its value is the capacity to return to 2018-2019 volumes). China's pipeline gas is the Power of Siberia contract ramp (INFRA), not this index"
+  },
+  "lng": {
+   "low": [
+    1.05,
+    1.05,
+    1.16,
+    1.39,
+    1.61
+   ],
+   "central": [
+    1.05,
+    1.16,
+    1.39,
+    1.61,
+    1.72
+   ],
+   "high": [
+    1.08,
+    1.2,
+    1.42,
+    1.64,
+    1.75
+   ],
+   "basis": "2021 LNG exports ~29.6 Mt (Yamal, Sakhalin-2, Vysotsk). Planned before 2022: Portovaya 1.5 Mt/y (2022); Arctic LNG 2, three 6.6 Mt/y trains in 2023, 2024, 2025 (Novatek, May 2021; half a year in the start year). Low: each train one year late. High: plus Yamal debottlenecking (+1 Mt/y)"
+  }
+ },
+ "infrastructure": [
+  {
+   "id": "sakhalin1_dekastri",
+   "p": "crude",
+   "to": {
+    "APAC": 1.0
+   },
+   "cap": {
+    "2006": 3.0,
+    "2007": 12.0
+   },
+   "known": 2001,
+   "sign": 1,
+   "net": 0.5,
+   "src": "ExxonMobil/Sakhalin-1 FID Oct 2001; De-Kastri terminal 250 kb/d from Oct 2006"
+  },
+  {
+   "id": "espo1_kozmino",
+   "p": "crude",
+   "to": {
+    "APAC": 1.0
+   },
+   "cap": {
+    "2010": 15.0
+   },
+   "known": 2004,
+   "sign": 1,
+   "net": 0.5,
+   "src": "Government order 1737-r of 31 Dec 2004 (ESPO); Kozmino rail-sea 15 Mt/y, Dec 2009"
+  },
+  {
+   "id": "espo_china_spur",
+   "p": "crude",
+   "to": {
+    "CHN": 1.0
+   },
+   "cap": {
+    "2011": 15.0
+   },
+   "known": 2009,
+   "sign": 1,
+   "net": 0.5,
+   "src": "Russia-China loan-for-oil agreement Feb 2009, 15 Mt/y for 20 years from 2011"
+  },
+  {
+   "id": "espo2_kozmino",
+   "p": "crude",
+   "to": {
+    "APAC": 1.0
+   },
+   "cap": {
+    "2013": 15.0
+   },
+   "known": 2009,
+   "sign": 1,
+   "net": 0.5,
+   "src": "ESPO-2 Skovorodino-Kozmino built 2009-2012, Kozmino 15 -> 30 Mt/y (Transneft)"
+  },
+  {
+   "id": "kazakh_transit_china",
+   "p": "crude",
+   "to": {
+    "CHN": 1.0
+   },
+   "cap": {
+    "2014": 7.0
+   },
+   "known": 2013,
+   "sign": 1,
+   "net": 0.5,
+   "src": "Rosneft-CNPC agreement June 2013: +7 Mt/y via Kazakhstan from 2014"
+  },
+  {
+   "id": "espo_china_2nd_line",
+   "p": "crude",
+   "to": {
+    "CHN": 1.0
+   },
+   "cap": {
+    "2018": 15.0
+   },
+   "known": 2013,
+   "sign": 1,
+   "net": 0.5,
+   "src": "Rosneft-CNPC 2013 contract; Mohe-Daqing second line from 1 Jan 2018 (+15 Mt/y)"
+  },
+  {
+   "id": "sever_primorsk",
+   "p": "products",
+   "to": {
+    "LVA": 1.0
+   },
+   "cap": {
+    "2008": 8.4,
+    "2013": 15.0
+   },
+   "known": 2006,
+   "sign": -1,
+   "net": 0.5,
+   "src": "Transnefteprodukt 'Sever' diesel pipeline to Primorsk (2008, 8.4 Mt; 15 Mt 2013), diverting diesel from Ventspils"
+  },
+  {
+   "id": "blue_stream",
+   "p": "gas",
+   "to": {
+    "TUR": 1.0
+   },
+   "known": 1997,
+   "sign": 1,
+   "net": 1.0,
+   "cap": {
+    "2003": 2.0,
+    "2004": 4.0,
+    "2005": 6.0,
+    "2006": 8.0,
+    "2007": 10.0,
+    "2008": 12.0,
+    "2009": 14.0,
+    "2010": 16.0
+   },
+   "src": "Gazprom-Botas contract 1997, plateau 16 bcm/y; linear contract ramp 2003-2010"
+  },
+  {
+   "id": "sakhalin2_lng",
+   "p": "gas",
+   "to": {
+    "JPN": 0.62,
+    "KOR": 0.16,
+    "APAC": 0.22
+   },
+   "known": 2003,
+   "sign": 1,
+   "net": 1.0,
+   "cap": {
+    "2009": 6.5,
+    "2010": 13.0
+   },
+   "src": "Sakhalin-2 FID May 2003, 9.6 Mt/y (13 bcm) LNG from 2009; long-term sales: Japanese buyers ~62%, KOGAS 1.5 Mt/y"
+  },
+  {
+   "id": "yamal_lng",
+   "p": "gas",
+   "to": {
+    "EU_LNG": 0.6,
+    "CHN": 0.18,
+    "APAC": 0.22
+   },
+   "known": 2013,
+   "sign": 1,
+   "net": 0.5,
+   "cap": {
+    "2018": 13.5,
+    "2019": 22.4
+   },
+   "src": "Yamal LNG FID Dec 2013, 16.5 Mt/y (3 trains, 2017-2018); CNPC 3 Mt/y contract; most cargoes marketed to Europe"
+  },
+  {
+   "id": "power_of_siberia",
+   "p": "gas",
+   "to": {
+    "CHN": 1.0
+   },
+   "known": 2014,
+   "sign": 1,
+   "net": 1.0,
+   "cap": {
+    "2020": 5.0,
+    "2021": 10.0,
+    "2022": 15.0,
+    "2023": 22.0,
+    "2024": 30.0,
+    "2025": 38.0
+   },
+   "src": "Gazprom-CNPC contract 21 May 2014, 38 bcm/y for 30 years; start 2 Dec 2019; ramp per Gazprom plans"
+  },
+  {
+   "id": "klaipeda_lng",
+   "p": "gas",
+   "to": {
+    "LTU": 1.0
+   },
+   "cap": {
+    "2015": 4.0
+   },
+   "known": 2012,
+   "sign": -1,
+   "net": 0.5,
+   "src": "Lithuanian government decision and Hoegh FSRU charter 2012; start Dec 2014, 4 bcm/y"
+  },
+  {
+   "id": "swinoujscie_lng",
+   "p": "gas",
+   "to": {
+    "POL": 1.0
+   },
+   "cap": {
+    "2016": 5.0
+   },
+   "known": 2010,
+   "sign": -1,
+   "net": 0.5,
+   "src": "Polskie LNG construction contract 2010; commercial operation June 2016, 5 bcm/y"
+  },
+  {
+   "id": "balticconnector",
+   "p": "gas",
+   "to": {
+    "FIN": 1.0
+   },
+   "cap": {
+    "2020": 2.6
+   },
+   "known": 2016,
+   "sign": -1,
+   "net": 0.5,
+   "src": "Gasum/Elering FID Oct 2016 (EU CEF); start Jan 2020"
+  },
+  {
+   "id": "krk_lng",
+   "p": "gas",
+   "to": {
+    "HRV": 1.0
+   },
+   "cap": {
+    "2021": 2.6
+   },
+   "known": 2019,
+   "sign": -1,
+   "net": 0.5,
+   "src": "LNG Hrvatska FID Jan 2019; start Jan 2021, 2.6 bcm/y"
+  },
+  {
+   "id": "baltic_pipe",
+   "p": "gas",
+   "to": {
+    "POL": 1.0
+   },
+   "cap": {
+    "2022": 2.5,
+    "2023": 10.0
+   },
+   "known": 2018,
+   "sign": -1,
+   "net": 0.5,
+   "src": "Gaz-System/Energinet FID Nov 2018; start Oct 2022, 10 bcm/y (war-time application only)"
+  },
+  {
+   "id": "igb",
+   "p": "gas",
+   "to": {
+    "BGR": 1.0
+   },
+   "cap": {
+    "2022": 0.5,
+    "2023": 1.0
+   },
+   "known": 2019,
+   "sign": -1,
+   "net": 1.0,
+   "src": "ICGB FID Dec 2019; Bulgargaz-SOCAR contract 1 bcm/y via IGB from 2021/22 (war-time application only)"
+  }
+ ],
+ "sources": [
+  {
+   "what": "OPEC+ 19th ONOMM, 18 July 2021: +0.4 mb/d a month from Aug 2021; baselines for Saudi Arabia and Russia 11.0 -> 11.5 mb/d from May 2022",
+   "url": "https://www.eia.gov/todayinenergy/detail.php?id=48956",
+   "also": "https://www.qcintel.com/article/opec-agrees-to-production-hike-after-baseline-output-compromise-1177.html"
+  },
+  {
+   "what": "Energy Strategy of Russia to 2035 (government order 1523-r, 9 June 2020; adopted April 2020): gas output 795-820 bcm (2024), LNG 46-65 Mt (2024), 80-140 Mt (2035); oil output ~11.15-11.25 mb/d to 2024",
+   "url": "https://www.enerdata.net/publications/daily-energy-news/russia-adopts-final-version-its-new-energy-strategy-2035.html",
+   "also": "https://www.bpb.de/themen/europa/russland-analysen/2020/308763/analyse-russlands-energiestrategie-bis-zum-jahr-2035-business-as-usual/"
+  },
+  {
+   "what": "Coal programme to 2035 (government order 1582-r, 13 June 2020): output 485 (conservative) to 668 Mt (optimistic) in 2035; exports +22% to +86% on 2018",
+   "url": "https://jamestown.org/?p=86838"
+  },
+  {
+   "what": "Power of Siberia: 10.39 bcm in 2021, ~15 bcm planned for 2022, 38 bcm/y design (contract 2014)",
+   "url": "https://www.energyintel.com/00000185-348a-d599-a1ef-35fa6b130000",
+   "also": "https://spglobal.com/commodity-insights/en/news-research/latest-news/natural-gas/121521-gazproms-gas-supply-via-power-of-siberia-pipeline-continue-above-contract-levels"
+  },
+  {
+   "what": "Arctic LNG 2: 3 x 6.6 Mt/y; Novatek (May 2021) trains in 2023, 2024, 2025",
+   "url": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/051721-russias-novatek-brings-forward-start-date-for-arctic-lng-2s-third-train-to-2025"
+  },
+  {
+   "what": "Gazprom far-abroad exports 185.1 bcm in 2021 (incl. China); 2021 Europe guidance 175-183 bcm",
+   "url": "https://worldoil.com/news/2022/1/3/gazprom-misses-2021-gas-export-targets-straining-european-markets/",
+   "also": "https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/natural-gas/042921-gazprom-sees-2021-european-gas-exports-in-range-of-175-183-bcm-burmistrova"
+  },
+  {
+   "what": "Russia's crude exports 2021, 231.6 Mt (Russia's customs report via UN Comtrade, HS 2709 net weight)",
+   "url": "raw/supply_cf_r49/comtrade_rus_reported_exports_2001_2021_2026-10-25.json"
+  }
+ ]
+}
