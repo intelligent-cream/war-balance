@@ -1744,6 +1744,7 @@ def build() -> dict:
     current_euros(countries)
     deflate_gold(countries)
     apply_net_gain(countries, src)
+    small_flow_bias(countries, src)  # round 47: after cur and gain
     # round 14 (audit H2): Nigeria's credit for less fuel from EU refiners is structural: the EU banned Russian-made fuel
     # (February 2023) and Nigeria's own Dangote refinery started production in January 2024; a label, the totals do not
     # change
@@ -2049,7 +2050,7 @@ SOURCE_TYPE = {
     "shadow_fleet": "report", "reexports": "data", "residual": "data", "hk_gold_r16": "data", "audit": "notes",
     "sanctions_share": "report", "gas_cuts": "press", "prices": "ours", "narrow": "data", "audit2": "notes",
     "windfall": "ours", "trend": "ours", "gas_prices": "data", "trend2": "ours", "counterfactual": "ours",
-    "ua_trade_cf": "ours", "cf_bands": "ours", "entsog_r43": "data", "epdk_r43": "data", "power_of_siberia": "press", "weapons_value": "report",
+    "ua_trade_cf": "ours", "cf_bands": "ours", "cf_bias_r47": "ours", "entsog_r43": "data", "epdk_r43": "data", "power_of_siberia": "press", "weapons_value": "report",
     "state_finance": "data", "company_flows": "report", "russian_owned_r10": "report", "rusfirms_r44": "report", "seizures": "report",
     "refugees_net": "data", "co_belligerent": "report", "eaeu_r44": "data", "hk_csd_r44": "data", "japan_lng_r44": "data", "loans_value": "report", "money_ledger": "data",
     "russian_arms": "report", "payment_agents": "report", "frozen_reserves": "report", "frozen_private": "report", "svc_ukr": "data", "company_profits": "data", "import_premium": "data", "wagner": "report", "remittances": "data",
@@ -3035,6 +3036,17 @@ SMALL_FLOW_EXCLUDE = {
         "https://en.wikipedia.org/wiki/Marsden_Point_Oil_Refinery",
     ),
 }
+# Round 47 (owner: "Fix that"; research/2026-10/gaps/cf_models_r47-notes.md): purchases from Russia of EUR 0.1-1bn a
+# year (the back-tests' mid-size class M) start from 2021 again, not from the 2019-2021 median. In the back-tests
+# (rolling origins 2005-2016, Russia's exports by partner, CEPII BACI) holding the origin year was 13% more accurate than
+# the median start for mid-size flows (median 5-year error +0.09/+0.18 instead of +0.27/+0.28 at the 2007/2012 origins).
+# That is below the project's 15%-in-every-test bar for replacing a model, so it is applied as a targeted start rule at
+# the owner's request, not as a new model. The band is unchanged (the narrower band was measured on BACI, not on the
+# site's own series). Small flows (under EUR 0.1bn) keep the median start
+MID_FLOW_EUR_BN = 0.1
+# own bands tested with the median start (own_bands_r46.json: Kenya's would fail its narrowing test from 2021): the start
+# they were accepted with is kept
+MID_FLOW_KEEP_MEDIAN = {"KEN", "PER"}
 # Pre-war data that are only mirror or confidential figures: 2021 kept, and the panel says so
 SMALL_FLOW_MIRROR = {
     "SYR": "Syria's pre-war imports are Russia's own export figures, coded 100% as confidential (HS 99) in 2020-2021",
@@ -3103,6 +3115,13 @@ def small_flow_base(iso3: str, obj: dict, avg_nominal: float, p21: float) -> Non
         if not sum(real) / 3 < SMALL_FLOW_EUR_BN:
             return
         med = sorted(real)[1]
+        if sum(real) / 3 >= MID_FLOW_EUR_BN and iso3 not in MID_FLOW_KEEP_MEDIAN:
+            # round 47 (owner: "Fix that"): mid-size flows (EUR 0.1-1bn a year) keep 2021 at 2019-2021 prices; the
+            # median stays an alternative baseline inside base_range, so the range is the one the median start gave
+            obj["base_median_2019_2021"] = round(med, 5)
+            obj["base_range"] = [round(min(obj["base_range"][0], med), 5), round(max(obj["base_range"][1], med), 5)]
+            obj["mid_flow_2021"] = True
+            return
         obj["base_2021"] = b21
         obj["base_years"] = [round(v, 5) for v in real]  # 2019, 2020, 2021 at 2019-2021 prices
         obj["base"] = round(med, 5)
@@ -3120,6 +3139,66 @@ def small_flow_base(iso3: str, obj: dict, avg_nominal: float, p21: float) -> Non
         obj["base_researched"] = True
     elif avg_nominal < SMALL_FLOW_EUR_BN and reason in ("refinery", "mirror"):
         obj["small_flow_kept_2021"] = reason  # a label: the panel says why 2021 is kept
+
+
+def small_flow_bias(countries: dict[str, dict], src: Sources) -> None:
+    """Round 47 (owner: "Fix that"; research/2026-10/gaps/cf_models_r47.json "bias_correction_small"): small purchases
+    from Russia (under EUR 0.1bn a year, the flows that start from the 2019-2021 median) grew faster than "held flat"
+    in the back-tests: the median 5-year cumulative log error of the flat path was +0.23, +0.62 and +0.41 at the 2007,
+    2012 and 2016 origins (+0.45 over all rolling origins 2005-2016, n = 485). The no-war middle value is moved up by the
+    median cumulative error per horizon (H1-H5, 2026 at 8/12), all rolling origins pooled. Only the middle moves, by
+    design: the expected level's range stays where it is in euros. For each number of years summed, the cumulative band
+    (cb, relative to the summed expected level) is divided by the factor D by which the summed expected level rose,
+    weighted as spread() in index.html sums it (FRAC x cur x Russia's gain share); the yearly band (bmul_lo/hi) is
+    absolute and unchanged; the no-war price band (nrl/nrh, relative to the expected level) is rescaled so its euro width
+    is unchanged. Where D would put the middle above the range's high end, the middle is capped at that end
+    (bias_capped). Run after apply_net_gain() (needs cur and gain)."""
+    bc = (load(GAPS / "cf_models_r47.json") or {}).get("bias_correction_small")
+    if not bc:
+        return
+    ym = [1.0] + [bc["yearly_multiplier_2022_2026"][str(y)] for y in YEARS[1:]]
+    sid = src.add(
+        "cf_bias_r47",
+        "Small purchases from Russia: the no-war middle value moved up by the measured bias of 'held flat' (back-tests on rolling origins 2005-2016, CEPII BACI)",
+        None,
+        "2026-10-25",
+        "see research/2026-10/gaps/cf_models_r47-notes.md",
+    )
+    for c in countries.values():
+        tr = c.get("to_rus")
+        if not tr or not tr.get("small_flow") or not tr.get("bmul") or not tr.get("cb"):
+            continue
+        if sum(tr["base_years"]) / 3 >= MID_FLOW_EUR_BN:  # mid-size flows kept on the median start (Kenya, Peru)
+            continue
+        q, qh = tr["bmul"], tr.get("bmul_hi") or tr["bmul"]
+        cur = tr.get("cur") or [1.0] * len(YEARS)
+        ge = (tr.get("gain") or {}).get("e")
+        w = [FRAC[i] * cur[i] * (ge[1][i] if ge else 1.0) * q[i] for i in range(len(YEARS))]
+        m = [min(ym[i], qh[i] / q[i]) if q[i] else 1.0 for i in range(len(YEARS))]  # the yearly band's top
+        capped = [i for i in range(1, len(YEARS)) if m[i] < ym[i] - 1e-9]
+        cb = [None]
+        for n in range(1, len(YEARS)):
+            s0 = sum(w[1 : n + 1])
+            if not s0:
+                cb.append(tr["cb"][n])
+                continue
+            d = sum(wi * mi for wi, mi in zip(w[1 : n + 1], m[1 : n + 1])) / s0
+            lo, hi = tr["cb"][n]
+            if d > hi:  # the middle would leave the range: capped at its high end (the latest year absorbs it)
+                m[n] = (hi * s0 - sum(wi * mi for wi, mi in zip(w[1:n], m[1:n]))) / w[n]
+                d = hi
+                capped.append(n)
+            cb.append([round(min(1.0, lo / d), 4), round(max(1.0, hi / d), 4)])
+        tr["cb_before_bias"] = tr["cb"]
+        tr["cb"] = cb
+        tr["bias_mult"] = [round(v, 4) for v in m]
+        tr["bmul"] = [round(b * v, 4) for b, v in zip(q, m)]
+        for k in ("nrl", "nrh"):
+            if tr.get(k):
+                tr[k] = [round(1 + (r - 1) / v, 4) if v else r for r, v in zip(tr[k], m)]
+        if capped:
+            tr["bias_capped"] = sorted(set(capped))
+        tr["src"] = list(dict.fromkeys((tr.get("src") or []) + [sid]))
 
 
 def counterfactual(countries: dict[str, dict], src: Sources) -> None:

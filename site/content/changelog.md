@@ -2,6 +2,14 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r47">Round 47: a better no-war starting point for smaller buyers <span class="cl-date">25 October</span></h2>
+
+The owner: "Fix that". Both rules come from back-testing the no-war level on 2005–2016 trade with Russia.
+
+- **Mid-size buyers** (EUR 0.1–1bn a year from Russia before the war) now start from their 2021 purchases instead of the 2019–2021 middle year: 13% more accurate in the back-test. The range is unchanged.
+- **Small buyers** (under EUR 0.1bn) kept growing their purchases more than "held flat" assumes; their no-war level is now shifted up by that measured gap (×1.22 after one year to ×1.57 after five), with the range ends in euros kept.
+- **What that changes**: Afghanistan and Jordan become certain toward Russia, Colombia certain toward Ukraine; Bosnia and Herzegovina, Honduras, Cuba and Costa Rica lean toward Ukraine; Nicaragua and Venezuela no longer lean toward Russia. Not certain on the net: 92 → 88. Placebo coverage stays about 90% (war moved to 2014) and 97% (2018).
+
 <h2 id="cl-r46">Round 46: "essentially zero" and "too close to call" <span class="cl-date">25 October</span></h2>
 
 - A number that is not certain and whose middle value is under 0.1% of a year's GDP now says **essentially zero**: the war moved almost no money either way there (Kazakhstan, Algeria, Israel and others), a fact rather than an open question.

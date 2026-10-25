@@ -268,7 +268,45 @@ pidx[0]`, as for every other flow); 2019 and 2020 are the yearly customs values 
 The threshold is the upper limit of the back-tests' small and medium size classes (S below EUR 0.1bn, M 0.1–1bn), the
 flows whose back-tested errors are widest; the same models and bands then apply (`SMALL_FLOW_EUR_BN`, `small_flow`,
 `small_flow_base()` in `build_data.py`). It is one rule, with no test on how far 2021 departs from the others, so no
-country is singled out. 140 flows are under it.
+country is singled out. 140 flows are under EUR 1bn; since round 47, 95 of them start from the median (below).
+
+**Round 47: mid-size flows start from 2021 again** (owner: "Fix that"; [`cf_models_r47-notes.md`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/cf_models_r47-notes.md)).
+- **What changed.** For purchases of EUR 0.1–1bn a year (the back-tests' mid-size class M), the no-war path starts from
+  2021 at 2019–2021 prices, not from the median (`MID_FLOW_EUR_BN`, `mid_flow_2021`). The median is kept as
+  `base_median_2019_2021` and stays inside the range (`base_range`), so the range of the starting level is unchanged.
+  The no-war band is unchanged too.
+- **Why.** In back-tests on rolling origins 2005–2016 (Russia's exports by partner, CEPII BACI), holding the origin year
+  was 13% more accurate than the median start for mid-size flows. The median 5-year error was +0.09 and +0.18 instead
+  of +0.27 and +0.28 at the 2007 and 2012 origins.
+- **Not a model replacement.** That gain is below the project's bar (15% in every test), and it was 16% worse at the
+  2009 origin. It is applied as a targeted start rule at the owner's request.
+- **Who keeps the median.** Flows under EUR 0.1bn keep the median start. So do Kenya and Peru (`MID_FLOW_KEEP_MEDIAN`):
+  their own bands were tested and accepted with the median start (`own_bands_r46.json`), and Kenya's would fail its
+  narrowing test from 2021.
+- **Counts.** 45 flows now start from 2021, among them Cameroon from the example above; 95 keep the median.
+
+**Round 47: small flows' middle value moved up by the measured bias** (`small_flow_bias()`; factors in
+[`cf_models_r47.json`](https://github.com/intelligent-cream/war-balance/blob/main/research/2026-10/gaps/cf_models_r47.json)
+`bias_correction_small`).
+- **The bias.** In the back-tests, flat paths from the median start under-predicted purchases under EUR 0.1bn a year.
+  The median 5-year cumulative log error was +0.23, +0.62 and +0.41 at the 2007, 2012 and 2016 origins, and +0.45 over
+  all rolling origins 2005–2016 (485 cases).
+- **The correction.** For the 93 flows that keep the median start and are under EUR 0.1bn, the expected path is
+  multiplied by the median cumulative error of the summed level per horizon, all origins pooled:
+  ×1.22 (1 year), 1.33, 1.43, 1.49 and ×1.57 (2022–2026, 2026 at 8/12).
+- **Yearly multipliers.** They are solved so that the sums match: ×1.22, 1.44, 1.61, 1.69 and 2.02 (`bias_mult`).
+- **Only the middle moves, by design.** For each number of years summed, the cumulative band (`cb`, relative to the
+  summed expected level) is divided by the rise D of that sum, weighted as `spread()` sums it (months, current prices,
+  Russia's gain share). So the expected level's low and high ends in euros are where they were (`cb_before_bias` keeps
+  the old band).
+  - The yearly band (`bmul_lo`, `bmul_hi`) is absolute and unchanged.
+  - The no-war price band (`nrl`, `nrh`) is rescaled so its euro width is unchanged.
+  - Where D would pass the band's high end, the middle is capped there (`bias_capped`); this happened for no flow.
+- **What still moves.** The parts' own ranges still move a little with the middle. The baseline-alternative and
+  gain-share terms are proportional to the expected path, and they are combined in quadrature.
+- **Limits.** The bias was measured on BACI mirror data, not on the map's own series. Like the start rule, it is a
+  correction applied at the owner's request, not a model that passed the replacement rule. In the back-tests no
+  model reached 15% in every test.
 
 **Exceptions: 2021 is kept** (2021 at 2019–2021 prices), each listed in `build_data.py`:
 
