@@ -4304,13 +4304,14 @@ function netBlock(c, k, y) {
   const mp = q !== "ua" && mostlyPrice(c, k);
   const sum = `<span class="nlbl">${pre}${PARTY_TO_WAR.has(c.iso3) ? "" : chancePill(c, y, q)}<span class="xi" aria-hidden="true"></span></span>
     <span class="nbig ${cls}">${hv.flip ? fmtMeasure(c, V, m, true, false) : mu(V)}</span><span class="nunit">${post ? post + " " : ""}${t(unit)}</span>
-    ${q === "net" ? `<span class="sumline">${sumLine(c, k)}</span>` : ""}${rangeBar(c, V, LO, HI, m, cls)}<span class="nline">${line.map(x => `<span>${x}</span>`).join(" · ")}</span>
-    ${mp ? `<span class="unc-why price-why">${t("Mostly war-time fuel prices it did not set: {v} of the {n}.", { v: eur(Math.abs(mp.v)), n: eur(Math.abs(k.shift)) })}</span>` : ""}
-    ${unc ? `<span class="unc-why">${t(isNearZero(c, y, q) ? "Near zero, and not certain mostly because of {why}." : "Not certain, mostly because of {why}.", { why: uncReason(c, y, q) })}</span>` : ""}
-    ${unc ? `<span class="unc-why decide">${decideLine(c, k, q)}</span>` : ""}`;
+    ${rangeBar(c, V, LO, HI, m, cls)}
+    ${mp ? `<span class="unc-why price-why">${t("Mostly war-time fuel prices it did not set: {v} of the {n}.", { v: eur(Math.abs(mp.v)), n: eur(Math.abs(k.shift)) })}</span>` : ""}`;
+  // round 45b (owner: "it does not add value ... it's already in the breakdown"): the sum line, the euros and the average
+  // year, and why a number is not certain are one tap away (here and in the breakdown), not on the panel's first layer
   const body = (q === "net" ? `<p class="lead">${leadLine(c, k)}</p><p><b>${netSentence(c, k, "gdp")}</b> (${eur(Math.abs(k.shift))}).</p>` : "") + `
-    <p>${chanceSentence(c, y, q)} · ${t("about {v} a year", { v: fmtMeasure(c, Math.abs(V) / yrs, "gdp") })}</p>
-    ${unc ? `<p>${t("Not certain: ranked faded and labelled, and shown faded on the map.")}</p>` : ""}
+    <p>${line.join(" · ")}</p>
+    <p>${chanceSentence(c, y, q)}</p>
+    ${unc ? `<p>${t(isNearZero(c, y, q) ? "Near zero, and not certain mostly because of {why}." : "Not certain, mostly because of {why}.", { why: uncReason(c, y, q) })} ${decideLine(c, k, q)}</p><p>${t("Not certain: ranked faded and labelled, and shown faded on the map.")}</p>` : ""}
     <p class="key">${CHANCE_KEY()}</p><p class="key">${rangeInfo}</p>`;
   return xp("pnet", "x-net", sum, body);
 }
