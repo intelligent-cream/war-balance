@@ -7,6 +7,30 @@
    "in_repository": true
   },
   {
+   "path": "cf_models_r47/baci_rus_imports_by_exporter_2001_2021.json.gz",
+   "bytes": 33378,
+   "sha256": "c2068f75249c10a346b83046c8e06c34d03f6c12740b87dd7a353c40d1b35477",
+   "in_repository": true
+  },
+  {
+   "path": "cf_models_r47/brent_monthly.json",
+   "bytes": 6971,
+   "sha256": "87eb6043f7c4acc7395e9558edfaad0bbac8c4100f55c859b57ef7c9050517e9",
+   "in_repository": true
+  },
+  {
+   "path": "cf_models_r47/imts_monthly_rus_2003_2018.json.gz",
+   "bytes": 535465,
+   "sha256": "d308f998eec124458a2d08691b9bf8042581a072da51b2aa24772b53d6b6dbb0",
+   "in_repository": true
+  },
+  {
+   "path": "cf_models_r47/weo_country_vintages.json.gz",
+   "bytes": 715283,
+   "sha256": "161faabbaadaeb3273c550dd35c92d79afeb4e0a334715cef9cd468c8bc20f05",
+   "in_repository": true
+  },
+  {
    "path": "comext/DS-045409_A_RU_UA_2026-10-23.json.gz",
    "bytes": 201795,
    "sha256": "974e0069e6bbb198a9b76c2afb4a55ac3d0011e55e780a1a59df09ac0e729951",
