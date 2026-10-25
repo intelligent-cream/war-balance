@@ -1,6 +1,6 @@
 # Method overview: one scale for every flow
 
-The map gives every country two numbers for the time since the full-scale invasion, each against what it would have done without the war: **support for Ukraine** and **Russia's earnings from trade** (what Russia keeps: taxes and profit above a normal return, not the full price). Their sum, with the return Russia lost on its frozen reserves, is the **net**. Worldwide, Russia's net gain from buyers who cut fell by EUR 353.8bn<!-- n:WORLD.less --> and rose by EUR 216.1bn<!-- n:WORLD.more --> from buyers who bought more (2022–August 2026).
+The map gives every country two numbers for the time since the full-scale invasion, each against what it would have done without the war: **support for Ukraine** and **Russia's earnings from trade** (what Russia keeps: taxes and profit above a normal return, not the full price). Their sum, with the return Russia lost on its frozen reserves, is the **net**. Worldwide, Russia's net gain from buyers who cut fell by EUR 353.4bn<!-- n:WORLD.less --> and rose by EUR 216.4bn<!-- n:WORLD.more --> from buyers who bought more (2022–August 2026).
 
 ## The core idea in four steps
 
@@ -8,6 +8,8 @@ The map gives every country two numbers for the time since the full-scale invasi
 2. **Volumes, valued at each year's prices.** Paying more for the same oil is not a change in behaviour, so trade is compared in volumes ([prices](#view=how&sec=m-prices)). The extra Russia earned from higher prices is a part of its own, the war-time windfall.
 3. **Summed from 2022 to the chosen year** (2026 counts January–August).
 4. **As % of one year's GDP**, the 2022–2024 average. It is a total for about 4.7 years, not a yearly rate.
+
+**One rule for what counts.** A country's figure reflects its own choices and the foreseeable answers to them. Things forced on it that it did not choose — Ukraine's strikes on Russian refineries, Russia's sudden export bans — count neither for it nor against it. Embargoes, sanctions, switching suppliers, Russia's 2022 gas cut-off and its counter-sanctions, and the war-time prices paid by buyers who kept buying all count ([what counts](#view=how&sec=m-counterfactual)).
 
 ## Every part of the net shift
 
@@ -177,6 +179,7 @@ The main choices, why they were made and what they do to the numbers. The [full 
 | decision | why | effect |
 |---|---|---|
 | Compare with a world without the war, not with zero | buying as before is not a choice; buying less is money Russia did not get | every trade part is a change |
+| Forced losses of Russian supply count for neither side (strikes, Russia's sudden export bans, the 2026 Druzhba halt) | a country's figure reflects its own choices and the foreseeable answers to them | EUR 13bn of expected purchases taken out for 60 buyers (rounds 51–52) |
 | Total since 2022 as % of average 2022–2024 GDP | compares small and large economies; one bad currency year does not decide | Nigeria +0.44%<!-- n:NGA.net --> (+0.81% against 2024 GDP alone) |
 | Trade at the seller's net gain | aid is a gift, trade an exchange | Lithuania +27.8% → +14.8%, Poland +8.1% → +4.1% (round 10) |
 | One rule for every seller, × the genuinely extra share | sales to Russia, to Ukraine and flowback on one scale | Belarus −18.5% → −5.6% (round 13) |

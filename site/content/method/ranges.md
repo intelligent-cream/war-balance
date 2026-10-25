@@ -73,9 +73,9 @@ Rules the project itself replaced are not other reasonable choices and are not i
 Two former alternatives moved out of the band in round 46, so they no longer decide whether a direction is certain:
 
 - **No-war gas at early-2021 prices** (before the late-2021 squeeze) is a question of fact, which forecast to trust, so it is now in the likely range: the war-time price windfall's range reaches the early-2021 path, as it reaches the October-2021 forecasts and February-2022 futures. Italy, Spain and France are no longer certain on Russia's earnings from trade because of it.
-- **Without the war-time windfall** contradicts what the site measures: the price premium Russia received is money that moved. The panel still shows the number without it, as a view of volumes alone (Hungary raised Russia's earnings from trade by 1.21%<!-- n:HUN.alt_windfall_off.rus abs --> of GDP without it, instead of 6.36%<!-- n:HUN.rus abs -->).
+- **Without the war-time windfall** contradicts what the site measures: the price premium Russia received is money that moved. The panel still shows the number without it, as a view of volumes alone (Hungary raised Russia's earnings from trade by 1.30%<!-- n:HUN.alt_windfall_off.rus abs --> of GDP without it, instead of 6.45%<!-- n:HUN.rus abs -->).
 
-The band is the lowest and highest of these; it is not a probability range. Examples (the net): Germany 3.13%<!-- n:DEU.netBandLo --> to 3.81%<!-- n:DEU.netBandHi -->, Moldova 3.96%<!-- n:MDA.netBandLo --> to 9.76%<!-- n:MDA.netBandHi -->, Hungary −6.01%<!-- n:HUN.netBandLo --> to −5.46%<!-- n:HUN.netBandHi -->, North Korea −31.86%<!-- n:PRK.netBandLo --> to −11.21%<!-- n:PRK.netBandHi -->.
+The band is the lowest and highest of these; it is not a probability range. Examples (the net): Germany 3.13%<!-- n:DEU.netBandLo --> to 3.81%<!-- n:DEU.netBandHi -->, Moldova 3.96%<!-- n:MDA.netBandLo --> to 9.76%<!-- n:MDA.netBandHi -->, Hungary −6.07%<!-- n:HUN.netBandLo --> to −5.54%<!-- n:HUN.netBandHi -->, North Korea −31.86%<!-- n:PRK.netBandLo --> to −11.21%<!-- n:PRK.netBandHi -->.
 
 ## Average year
 

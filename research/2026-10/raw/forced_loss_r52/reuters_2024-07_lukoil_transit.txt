@@ -1,0 +1,14 @@
+URL: https://www.hydrocarbonprocessing.com/news/2024/07/slovakia-hungary-say-ukraine-has-halted-lukoils-russian-oil-transit/
+Fetched: 2026-10-25
+HTTP: 200
+Extract (short passages around the figures used):
+
+Slovakia, Hungary say Ukraine has halted Lukoil's Russian oil transit COPYING AND DISTRIBUTING ARE PROHIBITED WITHOUT PERMISSION OF THE PUBLISHER 160.79.106.137 Accept :: [ */* ] Accept-Encoding :: [ gzip, br ] Connection :: [ keep-alive ] Host :: [ hydrocarbonprocessing.com ] User-Agent :: [ Mozilla/5.0 ] X-FORWARDED-PROTO :: [ https ] X-FORWARDED-PORT :: [ 443 ] X-Forwarded-For :: [ 160.79.106.137, 104.22.101.138:12670 ] X-Original-URL :: [ /news/2024/07/slovakia-hungary-say-ukraine-has-halted-lukoils-russian-oil-transit/ ] X-AppGW-Trace-Id :: [ 6d21dcaf55a092093cf7ae6112a13666 ] X-ORIGINAL-HOST :: [ www.hydrocarbonprocessing.com ] X-Azu
+
+---
+
+ch Environment & Safety Gas Processing/LNG Maintenance & Reliability Petrochemicals Process Control Process Optimization Project Management Refining Home News Slovakia, Hungary say Ukraine has halted Lukoil's Russian oil transit Slovakia, Hungary say Ukraine has halted Lukoil's Russian oil transit 7/18/2024 8:00:00 AM Slovakia and Hungary said they have stopped receiving oil from key supplier Lukoil after Ukraine imposed a ban last month on the transit of resources from the Russian energy company via its territory. The move highlights the volatile nature of the remaining Russian oil supplies to Europe via the Soviet-built Druzhba pipeline, the last major functioning Russian oil supply route to the continent. Both Slovakia and Hungary said they were still receiving oil from other Russian companie
+
+---
+
+g on a solution that would allow oil transit to restart as Russian oil is very important for our energy security," Szijjarto said. Industry sources said some 1.1 metric MMt per month, or some 250,000 bpd, of Russian oil have been exported via Druzhba's southern spur, of which around 900,000 t are almost equally split between Slovakia and Hungary. The southern branch of the Druzhba pipeline runs via Ukraine to the Czech Republic, Slovakia and Hungary, and has been the primary source of supply for their refineries for years. Rosneft, Lukoil and Tatneft have been the main Russian exporters via the route. Two sources, familiar with the data, said that Russia's Urals crude supplies via the Druzhba pipeline to Slovakia have been sharply lower than their scheduled volumes. They also said that oil su

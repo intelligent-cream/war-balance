@@ -1,0 +1,195 @@
+{
+ "generated": "2026-10-25",
+ "what": "Round 52 (owner): forced losses of Russian supply that are not Ukraine's strikes (those are strike_supply_r51.json), by cause, as [low, central, high]. Each cause lowers the no-war level of the buyers it fell on, as round 51 does for the strikes: shift = actual - (baseline - lost). Buyers under their own embargo for that product, and buyers a ban exempted, get nothing.",
+ "rule": "A country's figure reflects its own choices and the foreseeable answers to them. Things forced on it that it did not choose - Ukraine's strikes on Russian refineries, Russia's sudden export bans - count neither for it nor against it.",
+ "causes": {
+  "export_ban_2023": {
+   "what": "Russia's ban on gasoline and diesel exports (Government decree No. 1537 of 21 September 2023); diesel by pipeline allowed again from 6 October, gasoline from 17 November 2023. Not in round 51 (it answered domestic prices, before the strike waves); round 51's 2023 strike loss is 0 (capped), so nothing is counted twice. The bans from March 2024 are in round 51 (through the strike pass-through) and not here.",
+   "kind": "seaborne",
+   "fuel": "products",
+   "years": {
+    "2023": {
+     "gasoline_mt": [
+      0.4,
+      0.65,
+      0.85
+     ],
+     "diesel_mt": [
+      0.1,
+      0.25,
+      0.5
+     ],
+     "lost_mt": [
+      0.5,
+      0.9,
+      1.35
+     ],
+     "lost_mbd": [
+      0.0102,
+      0.0184,
+      0.0276
+     ],
+     "per_tonne_exported": [
+      0.0034,
+      0.0062,
+      0.0093
+     ],
+     "actual_exports_mbd": 2.97,
+     "ban_days": {
+      "gasoline": 58,
+      "diesel": 18
+     }
+    }
+   },
+   "exempt": [
+    "ARM",
+    "BLR",
+    "KAZ",
+    "KGZ"
+   ],
+   "embargo_counts": true,
+   "source": {
+    "sid": "forced_ban_r52",
+    "name": "Russia's 2023 gasoline and diesel export ban: decree No. 1537 (21 Sep 2023), exemptions and the export volumes lost (Reuters/LSEG, Bloomberg/Vortexa, Interfax, Enerdata)",
+    "note": "the no-war level of buyers the ban cut off is lowered by the fuel it kept from them; see research/2026-10/gaps/forced_loss_r52-notes.md",
+    "links": [
+     1,
+     4,
+     5,
+     3,
+     9,
+     8
+    ]
+   }
+  },
+  "druzhba_2026": {
+   "what": "The southern Druzhba pipeline to Hungary and Slovakia stopped from 27 January to 22 April 2026 after a Russian strike near Brody in Ukraine. Neither buyer chose it. Days of flow lost, on the buyer's own crude purchases that year, compared with the days the pipeline flowed.",
+   "kind": "pipeline",
+   "fuel": "crude",
+   "buyers": {
+    "HUN": {
+     "days": {
+      "2026": [
+       80,
+       86,
+       92
+      ]
+     }
+    },
+    "SVK": {
+     "days": {
+      "2026": [
+       80,
+       86,
+       92
+      ]
+     }
+    }
+   },
+   "period_days": {
+    "2026": 243
+   },
+   "not_counted": "CZE (stopped Russian crude by its own choice in April 2025); POL and DEU (northern branch, stopped by choice in 2023); BLR (upstream of Brody).",
+   "source": {
+    "sid": "forced_druzhba_r52",
+    "name": "Druzhba south halted 27 January - 23 April 2026 after a Russian strike near Brody (Slovak economy ministry, MOL, Ukraine's foreign ministry; via The Moscow Times, oenergetice.cz, intellinews)",
+    "note": "Hungary's and Slovakia's no-war level of crude is lowered by the 86 days of flow they lost; see research/2026-10/gaps/forced_loss_r52-notes.md",
+    "links": [
+     10,
+     11,
+     13,
+     14
+    ]
+   }
+  }
+ },
+ "not_counted": {
+  "lukoil_transit_2024": "Ukraine's sanctions stopped Lukoil's crude through Druzhba to Hungary and Slovakia from 18 July 2024; other Russian suppliers (Tatneft, Russneft) took over and MOL took title at the Belarus-Ukraine border from September. No measured loss of volume; not counted.",
+  "gas_transit_2025": "Ukraine ended Russian gas transit on 1 January 2025 (Slovakia, Austria, Moldova). Already shown as gas Russia's supply stopped ('without the gas Russia cut off itself', RUSSIA_GAS_CUT); not a baseline change this round.",
+  "food_bans": "Russia's grain export ban to the EAEU (March-June 2022), its sugar ban (March-August 2022) and its rice ban (from July 2023) are sudden export bans too; they fall on goods the build does not split by product, so they are not counted. Left for a decision."
+ },
+ "sources": [
+  {
+   "name": "reuters_2023-09_diesel_first20days.txt",
+   "url": "https://www.hydrocarbonprocessing.com/news/2023/09/russia-cuts-september-seaborne-diesel-exports-to-meet-domestic-shortage/",
+   "extract": "raw/forced_loss_r52/reuters_2023-09_diesel_first20days.txt"
+  },
+  {
+   "name": "reuters_2023-10_diesel_early_october.txt",
+   "url": "https://hydrocarbonprocessing.com/news/2023/10/russian-seaborne-diesel-exports-fell-by-20-in-early-october/",
+   "extract": "raw/forced_loss_r52/reuters_2023-10_diesel_early_october.txt"
+  },
+  {
+   "name": "reuters_2023-10_diesel_resumes.txt",
+   "url": "https://hydrocarbonprocessing.com/news/2023/10/russia-resumes-seaborne-diesel-exports-after-partially-lifting-ban/",
+   "extract": "raw/forced_loss_r52/reuters_2023-10_diesel_resumes.txt"
+  },
+  {
+   "name": "reuters_2023-11_diesel_october.txt",
+   "url": "https://hydrocarbonprocessing.com/news/2023/11/russias-october-seaborne-diesel-exports-fall-on-ban-maintenance/",
+   "extract": "raw/forced_loss_r52/reuters_2023-11_diesel_october.txt"
+  },
+  {
+   "name": "reuters_2023-11_gasoline_ban_lifted.txt",
+   "url": "https://hydrocarbonprocessing.com/news/2023/11/russia-lifts-gasoline-export-ban-energy-ministry/",
+   "extract": "raw/forced_loss_r52/reuters_2023-11_gasoline_ban_lifted.txt"
+  },
+  {
+   "name": "reuters_daryo_2023-10_gasoline_rail.txt",
+   "url": "https://daryo.uz/en/2023/10/21/russias-gasoline-exports-plummet-by-80-in-october-impact-of-temporary-export-ban/",
+   "extract": "raw/forced_loss_r52/reuters_daryo_2023-10_gasoline_rail.txt"
+  },
+  {
+   "name": "bloomberg_2023-12-20_fuel_exports.txt",
+   "url": "https://www.bnnbloomberg.ca/russia-ramps-up-fuel-exports-undermining-part-of-opec-pledge-1.2013878",
+   "extract": "raw/forced_loss_r52/bloomberg_2023-12-20_fuel_exports.txt",
+   "verified": "search summary only (page blocked automated access)"
+  },
+  {
+   "name": "enerdata_2023-11_gasoline_ban_lifted.txt",
+   "url": "https://www.enerdata.net/publications/daily-energy-news/russia-lifts-its-ban-gasoline-exports-producers.html",
+   "extract": "raw/forced_loss_r52/enerdata_2023-11_gasoline_ban_lifted.txt"
+  },
+  {
+   "name": "armenpress_2024-02_ban_exemptions.txt",
+   "url": "https://armenpress.am/en/article/1131196",
+   "extract": "raw/forced_loss_r52/armenpress_2024-02_ban_exemptions.txt"
+  },
+  {
+   "name": "interfax_2023-09_resolution_1564.txt",
+   "url": "https://interfax.com/newsroom/top-stories/94866/",
+   "extract": "raw/forced_loss_r52/interfax_2023-09_resolution_1564.txt"
+  },
+  {
+   "name": "moscowtimes_2026-04-23_druzhba_resumed.txt",
+   "url": "https://www.themoscowtimes.com/2026/04/23/druzhba-oil-flow-to-slovakia-resumed-thursday-officials-say-a92580",
+   "extract": "raw/forced_loss_r52/moscowtimes_2026-04-23_druzhba_resumed.txt"
+  },
+  {
+   "name": "oenergetice_2026-04_mol_resumes.txt",
+   "url": "https://oenergetice.cz/en/oil/mol-resumes-receiving-oil-from-druzhba-after-three-months-with-flows-also-reaching-slovakia",
+   "extract": "raw/forced_loss_r52/oenergetice_2026-04_mol_resumes.txt"
+  },
+  {
+   "name": "intellinews_2026-06_druzhba_normal.txt",
+   "url": "https://www.intellinews.com/russian-oil-flows-through-druzhba-return-to-normal-as-hungary-and-slovakia-resume-russian-oil-and-gas-imports-446680/",
+   "extract": "raw/forced_loss_r52/intellinews_2026-06_druzhba_normal.txt",
+   "verified": "search summary only (page blocked automated access)"
+  },
+  {
+   "name": "pgj_2026-04_druzhba_resume.txt",
+   "url": "https://pgjonline.com/news/2026/april/druzhba-pipeline-oil-flows-resume-to-hungary-slovakia-after-outage",
+   "extract": "raw/forced_loss_r52/pgj_2026-04_druzhba_resume.txt"
+  },
+  {
+   "name": "wikipedia_2026_druzhba_dispute.txt",
+   "url": "https://en.wikipedia.org/wiki/2026_Druzhba_pipeline_dispute",
+   "extract": "raw/forced_loss_r52/wikipedia_2026_druzhba_dispute.txt"
+  },
+  {
+   "name": "reuters_2024-07_lukoil_transit.txt",
+   "url": "https://www.hydrocarbonprocessing.com/news/2024/07/slovakia-hungary-say-ukraine-has-halted-lukoils-russian-oil-transit/",
+   "extract": "raw/forced_loss_r52/reuters_2024-07_lukoil_transit.txt"
+  }
+ ]
+}

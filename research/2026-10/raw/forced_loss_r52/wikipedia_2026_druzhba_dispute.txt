@@ -1,0 +1,38 @@
+URL: https://en.wikipedia.org/wiki/2026_Druzhba_pipeline_dispute
+Fetched: 2026-10-25
+HTTP: 200
+Extract (short passages around the figures used):
+
+ures2":{"wt":"* [[Volodymyr Zelenskyy]]<br />[[Andrej Plenković]]"}},"i":0}}]}'> 2026 Druzhba pipeline dispute Part of the Russo-Ukrainian war (2022–present) Oil pipelines from Russia to Europe. Date 27 January 2026 – 23 April 2026 [ 1 ] (2 months, 3 weeks and 6 days) Location Slovakia , Hungary and Ukraine Caused by Disruption of the Druzhba pipeline by Ukraine following Russian drone strikes Result Long-term degradation of diplomatic trust and bilateral relations between the Slovak and Ukrainian governments Slovakia halts emergency electricity supplies to Ukraine Slovakia and Hungary suspend diesel fuel exports to Ukraine Permanent expansion of the Adria Pipeline capacity to ensure Slovakia is never 100% dependent on Druzhba again The state of emergency measures in Slovakia Millions of euros spent
+
+---
+
+h the southern leg of the Druzhba pipeline , a vital energy artery for Slovakia and Hungary , due to a Russian drone strike on January 27, 2026, that severely damaged pipeline infrastructure near the Brody oil hub in western Ukraine. While both Slovakia and Hungary were affected, the situation was more critical for Slovakia, because it is almost entirely dependent on its single refinery, Slovnaft , which is specifically configured for Russian crude, unlike Hungary, which has multiple refining facilities with significantly larger storage capacities. Slovakia has declared a national energy state of emergency due to its more limited infrastructure and immediate supply vulnerabilities. The dispute has led to a significant breakdown in bilateral relations, characterized by unprecedented retaliatory
+
+---
+
+h the southern leg of the Druzhba pipeline, which supplies Slovakia and Hungary, were halted. Ukraine attributed the disruption to a Russian drone strike that damaged pipeline infrastructure near the Brody oil hub in western Ukraine. [ 3 ] On January 29, 2026, Ukrainian Foreign Minister Andrii Sybiha posted photos to social media showing the extensive damage and ongoing fires at the Brody oil hub following the Russian drone strike two days earlier. In his statement, Sybiha officially attributed the disruption to Russian aggression and cited " force majeure " to international partners, explaining that the destruction of high-pressure pumps and control systems made the continued transit of oil to Slovakia and Hungary physically impossible. [ 4 ] Despite the total cessation of oil transit through
+
+---
+
+tps://www.reuters.com/business/energy/druzhba-oil-flow-slovakia-resumed-early-thursday-slovak-ministry-says-2026-04-23/|title=Druzhba oil flows to Slovakia and Hungary after Ukraine war standoff|date=23 April 2026|website=Reuters}}</ref><br/>({{Age in years, months, weeks and days|month1=01|day1=27|year1=2026|month2=04|day2=23|year2=2026}})"},"location":{"wt":"[[Slovakia]], [[Hungary]] and [[Ukraine]]"},"causes":{"wt":"Disruption of the [[Druzhba pipeline]] by Ukraine following Russian drone strikes"},"status":{"wt":""},"result":{"wt":"* Long-term degradation of diplomatic trust and bilateral relations between the Slovak and Ukrainian governments\n* Slovakia halts emergency electricity supplies to Ukraine\n* Slovakia and [[Hungary]] suspend diesel fuel exports to Ukraine\n* Permanent expansion of
+
+---
+
+Volodymyr Zelenskyy]]<br />[[Andrej Plenković]]"}},"i":0}}]}'> 2026 Druzhba pipeline dispute Part of the Russo-Ukrainian war (2022–present) Oil pipelines from Russia to Europe. Date 27 January 2026 – 23 April 2026 [ 1 ] (2 months, 3 weeks and 6 days) Location Slovakia , Hungary and Ukraine Caused by Disruption of the Druzhba pipeline by Ukraine following Russian drone strikes Result Long-term degradation of diplomatic trust and bilateral relations between the Slovak and Ukrainian governments Slovakia halts emergency electricity supplies to Ukraine Slovakia and Hungary suspend diesel fuel exports to Ukraine Permanent expansion of the Adria Pipeline capacity to ensure Slovakia is never 100% dependent on Druzhba again The state of emergency measures in Slovakia Millions of euros spent by Slovakia to
+
+---
+
+of emergency in the oil sector, the first in the country's history. To maintain the operations of the Slovnaft refinery and ensure domestic fuel stability, Robert Fico authorized the release of up to 250,000 tonnes of crude oil from the state's strategic material reserves. This measure was designed to cover approximately one month of refinery operations while the government negotiated alternative supply routes through Croatia and the Czech Republic. [ 11 ] In the same day, Fico publicly challenged Ukraine's claims of infrastructure damage, citing Slovak intelligence reports that allegedly show the Brody oil hub has already been repaired and is "technically ready" for transit. Based on this information, Fico accused President Volodymyr Zelenskyy of using the disruption as a tool for "political bla
+
+---
+
+frastructure in Ukraine as a step toward de-escalating the crisis. [ 46 ] On March 11, during a government session attended by President Peter Pellegrini , Fico announced that the state would release 250,000 tons of crude oil from its strategic reserves to the Slovnaft refinery. While the Slovak Constitution allows the President to attend and preside over government meetings at their discretion, such participation is highly unusual and typically reserved for moments of extreme national significance. Fico stated that this emergency loan is intended to maintain standard production for at least another month. The Prime Minister characterized the crisis as a double blow caused by President Zelenskyy’s decision to halt transit and the rising global oil prices linked to the Iran war . While Fico emphas
+
+---
+
+disruption of the Druzhba pipeline, the governments of Hungary and Slovakia have formally requested that Croatia facilitate the transit of Russian crude oil via the Adria pipeline (also known as the JANAF pipeline). Hungarian Foreign Minister Péter Szijjártó and Slovak officials argued that their current EU sanctions exemptions allow for the import of Russian oil by sea if land-based pipeline deliveries are interrupted. [ 7 ] However, this proposal has faced significant resistance from the Croatian government, which has balked at allowing Russian-origin crude to enter its infrastructure, despite expressing a willingness to help with non-Russian alternatives. [ 8 ] Furthermore, Fico has noted that utilizing the Adria route would be commercially disadvantageous, as transit fees in Croatia are es
+
+---
+
+led a formal complaint with the European Commission ’s Directorate-General for Competition. The filing officially rejects Croatia's terms for using the Adria pipeline, accusing the Croatian operator, JANAF, of abusing its dominant market position to engage in "unjustified pricing and negotiation practices". [ 30 ] MOL argues that JANAF is exploiting the current energy crisis, to charge transit fees that are actually three to four times higher than fair market benchmarks, such as those of the TAL pipeline serving Austria and Germany . Beyond the financial cost, the complaint alleges that Croatia is engaging in a "refusal of supply" by intentionally delaying the acceptance of legally permitted seaborne Russian oil shipments, citing unnecessary "legal reviews" as a delay tactic that directly endan

@@ -1,0 +1,18 @@
+URL: https://hydrocarbonprocessing.com/news/2023/11/russias-october-seaborne-diesel-exports-fall-on-ban-maintenance/
+Fetched: 2026-10-25
+HTTP: 200
+Extract (short passages around the figures used):
+
+m a month earlier to about 2.55 MMt due to major maintenance work at refineries and a fuel export ban, data from traders and LSEG showed. Idle primary oil refining capacity for October stood at 4.915 million tons, down by around 1.9% from September, according to Reuters calculations. Russia temporarily banned exports of gasoline and diesel from Sept. 21 to cope with a domestic shortage but lifted restrictions on bunker fuel and high sulfur gasoil. The embargo was partially lifted on Oct. 9 with Russia resuming ULSD exports via Transneft pipelines provided that the manufacturer supplies at least 50% of the produced diesel fuel to the domestic market. Total October diesel loadings from Russia's port of Primorsk, the main outlet for ULSD exports and completely dependent on pipeline shipments, rose by 10%
+
+---
+
+e diesel exports fall on ban, maintenance Russia's October seaborne diesel exports fall on ban, maintenance 11/3/2023 8:40:00 AM (Reuters) - Seaborne diesel and gasoil exports from Russian ports fell 11% in October from a month earlier to about 2.55 MMt due to major maintenance work at refineries and a fuel export ban, data from traders and LSEG showed. Idle primary oil refining capacity for October stood at 4.915 million tons, down by around 1.9% from September, according to Reuters calculations. Russia temporarily banned exports of gasoline and diesel from Sept. 21 to cope with a domestic shortage but lifted restrictions on bunker fuel and high sulfur gasoil. The embargo was partially lifted on Oct. 9 with Russia resuming ULSD exports via Transneft pipelines provided that the manufacturer s
+
+---
+
+Russia's October seaborne diesel exports fall on ban, maintenance COPYING AND DISTRIBUTING ARE PROHIBITED WITHOUT PERMISSION OF THE PUBLISHER 160.79.106.129 Accept :: [ */* ] Accept-Encoding :: [ gzip, br ] Connection :: [ keep-alive ] Host :: [ hydrocarbonprocessing.com ] User-Agent :: [ Mozilla/5.0 ] X-FORWARDED-PROTO :: [ https ] X-FORWARDED-PORT :: [ 443 ] X-Forwarded-For :: [ 160.79.106.129, 104.22.100.7:13132 ] X-Original-URL :: [ /news/2023/11/russias-october-seaborne-diesel-exports-fall-on-ban-maintenance/ ] X-AppGW-Trace-Id :: [ cdf37fa7bb2a7e073e0c758468f0c62e ] X-ORIGINAL-HOST :: [ hydrocarbonprocessing.com ] X-Azure-JA4-Fingerprint :: [ t13d1310
+
+---
+
+ORWARDED-PROTO :: [ https ] X-FORWARDED-PORT :: [ 443 ] X-Forwarded-For :: [ 160.79.106.129, 104.22.100.7:13132 ] X-Original-URL :: [ /news/2023/11/russias-october-seaborne-diesel-exports-fall-on-ban-maintenance/ ] X-AppGW-Trace-Id :: [ cdf37fa7bb2a7e073e0c758468f0c62e ] X-ORIGINAL-HOST :: [ hydrocarbonprocessing.com ] X-Azure-JA4-Fingerprint :: [ t13d1310h2_a44d0ee8b3cc_e381dae6da6b ] cf-ray :: [ a5043a22cf4c274d-IAD ] cdn-loop :: [ cloudflare; loops=1 ] CF-Connecting-IP :: [ 160.79.106.129 ] CF-IPCountry :: [ US ] CF-Visitor :: [ {"scheme":"https"} ] Login | Free Trial | Subscribe | Advertise Home Magazine September 2026 Free Trial | Subscribe Free Trial Current Issue Digital Exclusives Archive Supplements Customer Service News Latest News Newsletter Sign-up Data HPI Market Data Book Process Handbo
