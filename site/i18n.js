@@ -22,8 +22,11 @@ WLFWF WSMWS YEMYE ZAFZA ZMBZM ZWEZW`.split(/\s+/).filter(Boolean).map(x => [x.sl
 // map shapes without their own entry in data.json (numeric ids of the world atlas), for the tooltip name
 const NUM_ISO2 = { "804": "UA", "643": "RU", "850": "VI", "630": "PR", "832": "JE", "831": "GG", "833": "IM", "492": "MC", "438": "LI", "663": "MF", "248": "AX", "334": "HM" };
 
-// ?lang= wins, then the choice stored on this device, then the browser's languages, then English
+// the page's own language wins (round 54: /de/ and the others are real pages, <html data-lang="de">), then ?lang=, then the
+// choice stored on this device, then the browser's languages, then English
+const PAGE_LANG = document.documentElement.dataset.lang;
 function pickLang() {
+  if (PAGE_LANG && LANGS[PAGE_LANG]) return PAGE_LANG;
   const q = new URLSearchParams(location.search).get("lang");
   if (q && LANGS[q]) return q;
   try { const s = localStorage.getItem("lang"); if (s && LANGS[s]) return s; } catch (e) { /* storage blocked */ }
@@ -61,7 +64,8 @@ function regionName(iso2, fallback) {
 // static text in the page: data-i18n (text), data-i18n-aria, data-i18n-ph (placeholder) and data-i18n-title hold the English key
 function applyStatic() {
   document.documentElement.lang = LANG;
-  document.title = t("War Balance");
+  // round 54: the page's title says what it shows (as in the head, where search engines read it), in the chosen language
+  document.title = t("Countries helping Ukraine or Russia: money map since 2022");
   document.querySelectorAll("[data-i18n]").forEach(el => (el.textContent = t(el.dataset.i18n)));
   document.querySelectorAll("[data-i18n-aria]").forEach(el => el.setAttribute("aria-label", t(el.dataset.i18nAria)));
   document.querySelectorAll("[data-i18n-ph]").forEach(el => el.setAttribute("placeholder", t(el.dataset.i18nPh)));
@@ -85,7 +89,13 @@ function setLang(l) {
   if (!LANGS[l] || l === LANG) return;
   try { localStorage.setItem("lang", l); } catch (e) { /* storage blocked */ }
   // keep a shared ?lang= link in step with the choice
-  try { const u = new URL(location.href); if (u.searchParams.has("lang")) { u.searchParams.set("lang", l); history.replaceState(null, "", u); } } catch (e) { /* file:// */ }
+  // on a language's own page (/de/), the address moves to the page of the new language (/fr/, or / for English)
+  try {
+    const u = new URL(location.href);
+    if (u.searchParams.has("lang")) u.searchParams.set("lang", l);
+    if (PAGE_LANG) u.pathname = l === "en" ? "/" : "/" + l + "/";
+    if (u.href !== location.href) history.replaceState(history.state, "", u);
+  } catch (e) { /* file:// */ }
   loadLang(l).then(() => {
     LANG = l;
     applyStatic();

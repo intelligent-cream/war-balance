@@ -5,7 +5,7 @@
 // renderView()). Round 20 (owner): only Map, Ranking and Sources remain, and the ranking is as clean as the map: the
 // header line names it and its explanation is in the header's ⓘ (rankInfo)
 /* global leaning, chance, pct, isNearZero, noDataAt, PARTY_TO_WAR, state, DATA, calc, scaled, fmtMeasure, eur, rangeTxt, showTip, tip, select, setPressed, MIN_GDP_RANK, YEARS, FRAC, t, LANG,
-   num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades, renderDrawer, renderInfo, verb, rangeWords */
+   num, money, tight, compact, parseHash, writeHash, yi, remitSum, HEAD_LENS, uncertain, grades, renderDrawer, renderInfo, verb, rangeWords, countryPath */
 // Labels below are English keys; t() (i18n.js) translates them when rendered.
 
 const GROUPS = {
@@ -136,13 +136,15 @@ function renderRanking(root) {
       if (m.head != null) return `<text class="rk-gh rk-gh${m.head}" x="0" y="${y + 6}">${t(GROUP_LABEL[m.head])} · ${m.n}</text>`;
       const w = m.lo != null ? `<line class="whisk" x1="${x(m.lo)}" x2="${x(m.hi)}" y1="${y}" y2="${y}"/>` : `<line class="whisk" x1="${x(0)}" x2="${x(m.v)}" y1="${y}" y2="${y}" style="stroke:${col(m.v)};stroke-opacity:.35;stroke-width:6"/>`;
       const tag = (m.st ? ` · ${stLabel[m.st]}` : "") + (m.ch ? ` · ${t("chance {p}", { p: pct(m.ch.p) })}` : "");
-      return `<g class="row${m.st ? " rk-" + m.st : ""}${m.nz ? " rk-nz" : ""}" tabindex="0" role="button" data-n="${m.c.n}" data-g="${grp(m)}" aria-label="${m.c.name}: ${verb(HEAD_LENS[state.lens], m.bn, m.c)}${tag}">
+      // round 54: each row sits in a link to the country's own page, for search engines (out of the Tab order: the row
+      // itself is the button; a click opens the panel, as before)
+      return `<a href="${countryPath(m.c)}" tabindex="-1" class="rk-a"><g class="row${m.st ? " rk-" + m.st : ""}${m.nz ? " rk-nz" : ""}" tabindex="0" role="button" data-n="${m.c.n}" data-g="${grp(m)}" aria-label="${m.c.name}: ${verb(HEAD_LENS[state.lens], m.bn, m.c)}${tag}">
         <rect class="hit" x="0" y="${y - rowH / 2}" width="${W}" height="${rowH}" fill="transparent"/>
         <text class="lbl" x="${labelW - 10}" y="${y + 4}" text-anchor="end">${m.rank ? m.rank + ". " : ""}${fitName(m.c.name, narrowScreen ? 12 : 20)}<title>${m.c.name}${tag}</title></text>
         ${w}<circle class="dot" cx="${x(m.v)}" cy="${y}" r="5.5" fill="${col(m.v)}"/>
         ${m.ch ? `<text class="rk-ch" x="${W - valW + 6}" y="${y + 4}" text-anchor="start" style="fill:${m.ch.side === "ukraine" ? "var(--ukr)" : state.lens === "support" ? "var(--ink-soft)" : "var(--rus)"}">${pct(m.ch.p)}</text>` : ""}
         <text x="${W}" y="${y + 4}" text-anchor="end" style="font-family:var(--font-data);font-size:12px;fill:var(--ink)">${fmtMeasure(m.c, m.bn, state.measure, diverging, false)}</text>
-      </g>`;
+      </g></a>`;
     }).join("")}
   </svg>`;
   const tagNote = ts ? `<p class="rk-tags" role="status"><span>${t("Showing {n} countries tagged: {tags}.", { n: rows.length + party.length, tags: tagNames() })}</span> <button class="linkbtn tclear" data-tag-clear>${t("Clear tags")}</button></p>` : "";
@@ -157,16 +159,16 @@ function renderRanking(root) {
 // round 25 (owner): the countries not ranked as tappable chips, grouped (leaning toward Russia or Ukraine, uncertain,
 // party to the war); a chip opens the country's panel
 function chipGroup(list, label, cls) {
-  return `<div class="rk-group rk-${cls}"><p class="rk-h">${label}</p><div class="rk-chips">${list.map(m => `<button class="rk-chip" data-n="${m.c.n}">${m.c.name} <span>${fmtMeasure(m.c, m.bn, state.measure, true)}</span></button>`).join("")}</div></div>`;
+  return `<div class="rk-group rk-${cls}"><p class="rk-h">${label}</p><div class="rk-chips">${list.map(m => `<a class="rk-chip" href="${countryPath(m.c)}" data-n="${m.c.n}">${m.c.name} <span>${fmtMeasure(m.c, m.bn, state.measure, true)}</span></a>`).join("")}</div></div>`;
 }
 function wireRows(root, rows) {
   const by = Object.fromEntries(rows.map(m => [m.c.n, m]));
-  root.querySelectorAll(".rk-chip").forEach(el => el.addEventListener("click", () => { tip.hidden = true; select(el.dataset.n, false); }));
+  root.querySelectorAll(".rk-chip").forEach(el => el.addEventListener("click", e => { e.preventDefault(); tip.hidden = true; select(el.dataset.n, false); }));
   root.querySelectorAll(".row").forEach(el => {
     const m = by[el.dataset.n];
     el.addEventListener("pointermove", e => showTip(e, tipFor(m)));
     el.addEventListener("pointerleave", () => (tip.hidden = true));
-    el.addEventListener("click", () => { tip.hidden = true; select(m.c.n, false); });
+    el.addEventListener("click", e => { e.preventDefault(); tip.hidden = true; select(m.c.n, false); });
     activateOnKey(el, () => select(m.c.n, false));
   });
 }
