@@ -1,7 +1,7 @@
-// Share images and pages: one 1200×630 preview card per country (site/share/<iso>.png), a page per country
-// (site/c/<iso>.html) whose link preview shows that card and which opens the map on that country, and a world card.
-// Uses the map's own calculations, so the cards always match the map. Also writes robots.txt and sitemap.xml (round
-// 30), with the site's address from pipeline/site_config.json.
+// Share images: one 1200×630 preview card per country (site/share/<iso>.png) and a world card. Uses the map's own
+// calculations, so the cards always match the map. Then (round 54) the static pages, with the same page still open:
+// a page per country whose link preview shows its card, the ranking and method pages, the map in each language,
+// robots.txt and sitemap.xml (seo_pages.mjs), with the site's address from pipeline/site_config.json.
 //
 // Run after build_data.py:  node pipeline/share_cards.mjs
 // Needs Node 18+ and Playwright (npm i -g playwright; a Chromium build, or PLAYWRIGHT_CHROMIUM=/path/to/chromium).
@@ -11,6 +11,7 @@ import { readFile, mkdir, writeFile } from "node:fs/promises";
 import { extname, join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
+import { writeSeoPages } from "./seo_pages.mjs";
 
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright");
@@ -18,7 +19,7 @@ const SITE = join(dirname(fileURLToPath(import.meta.url)), "..", "site");
 // the site's own address, in one place (round 30): pipeline/site_config.json
 const CFG = JSON.parse(await readFile(join(dirname(fileURLToPath(import.meta.url)), "site_config.json"), "utf8"));
 const SITE_URL = CFG.site_url, HOST = new URL(SITE_URL).host;
-const TYPES = { ".html": "text/html", ".js": "text/javascript", ".json": "application/json", ".png": "image/png", ".css": "text/css" };
+const TYPES = { ".html": "text/html", ".js": "text/javascript", ".json": "application/json", ".png": "image/png", ".css": "text/css", ".md": "text/markdown" };
 
 const server = createServer(async (req, res) => {
   try {
@@ -97,7 +98,6 @@ const cards = await page.evaluate(() => {
   return out;
 });
 
-const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
 for (const d of cards) {
   d.host = HOST;
   await page.evaluate(d => {
@@ -133,41 +133,12 @@ for (const d of cards) {
   await page.waitForTimeout(30);
   const iso = d.iso3.toLowerCase();
   await page.screenshot({ path: join(SITE, "share", iso + ".png") });
-  // round 30: the title gives the net and the trade side in the site's own words, e.g. "Germany: toward Ukraine by 3.4% of
-  // GDP; cut Russia's earnings from trade by 1.6% of GDP | War Balance"
-  const lc = s => s.charAt(0).toLowerCase() + s.slice(1);
-  const title = `${d.name}: ${d.party ? "party to the war (with Russia); " : ""}${lc(d.netV)}; ${lc(d.ruV)} | War Balance`;
-  const desc = `Research preview. In total since 2022 (to August 2026, about ${d.years} years) against one year's GDP: ${d.sum} (${d.netRange}; ${d.eurU}; about ${d.pctYU} a year)${d.netWhat ? ", " + d.netWhat : ""}${d.party ? ", party to the war (with Russia), not ranked" : d.netUnc ? ", " + d.netDir : ""}. ${d.uaV} (${d.uaRange}). ${d.ruV} (${d.ruRange}): ${d.ruWhat}${d.fzV ? `. ${d.fzV}` : ""}. The net adds two different things: help given to Ukraine and the change in what Russia kept from trade. Every number with a range and a source.`;
-  await writeFile(join(SITE, "c", iso + ".html"), `<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="icon" href="../favicon.ico" sizes="48x48"><link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "75bc871fc6fd41939f35f32036bc7902"}'></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)}</title>
-<meta name="description" content="${esc(desc)}">
-<meta property="og:type" content="website">
-<meta property="og:title" content="${esc(title)}">
-<meta property="og:description" content="${esc(desc)}">
-<meta property="og:url" content="${SITE_URL}c/${iso}.html">
-<meta property="og:image" content="${SITE_URL}share/${iso}.png">
-<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="${SITE_URL}c/${iso}.html">
-<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "WebPage", name: title, description: desc, url: `${SITE_URL}c/${iso}.html`, inLanguage: "en", image: `${SITE_URL}share/${iso}.png`, isPartOf: { "@id": SITE_URL + "#dataset" }, about: { "@type": "Country", name: d.name } }).replace(/</g, "\\u003c")}</script>
-<meta http-equiv="refresh" content="0; url=../#${d.iso3}">
-<style>body{font-family:system-ui,sans-serif;margin:40px;color:#15212b;background:#fbfcfc}</style>
-</head><body><p><a href="../#${d.iso3}">${esc(d.name)} on the map</a></p><script>location.replace("../#${d.iso3}");</script></body></html>
-`);
 }
-// round 30: robots.txt and sitemap.xml. Only real addresses: the map with its languages (?lang=, read by pickLang() in
-// i18n.js) and every country page; views inside the map (#view=how) are not separate pages for a search engine
-const LANGS = ["en", "uk", "de", "fr", "pl", "nl", "es"];
-const gen = JSON.parse(await readFile(join(SITE, "data.json"), "utf8")).generated;
-const alt = LANGS.map(l => `    <xhtml:link rel="alternate" hreflang="${l}" href="${SITE_URL}?lang=${l}"/>`).join("\n") + `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}"/>`;
-const urls = [`  <url>\n    <loc>${SITE_URL}</loc>\n    <lastmod>${gen}</lastmod>\n${alt}\n  </url>`,
-  ...cards.map(d => `  <url>\n    <loc>${SITE_URL}c/${d.iso3.toLowerCase()}.html</loc>\n    <lastmod>${gen}</lastmod>\n  </url>`)];
-await writeFile(join(SITE, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join("\n")}\n</urlset>\n`);
-await writeFile(join(SITE, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}sitemap.xml\n`);
-console.log(`wrote ${cards.length} cards and pages, share/world.png, robots.txt and sitemap.xml (${urls.length} addresses)`);
+// round 54 (findable pages): a page per country (country/<slug>/, with the old c/<iso>.html sent there), the ranking,
+// the two lens pages, How it works and the method pages, the map in each language, sitemap.xml and robots.txt
+// (seo_pages.mjs), from the same page, back on the map without the card
+await page.evaluate(() => { const el = document.getElementById("card"); if (el) el.remove(); });
+await writeSeoPages({ page, site: SITE, siteUrl: SITE_URL });
+console.log(`wrote ${cards.length} share cards and share/world.png`);
 await browser.close();
 server.close();

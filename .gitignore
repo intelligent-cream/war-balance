@@ -10,6 +10,21 @@ site/c/
 # generated with the share cards (pipeline/share_cards.mjs), like site/c/
 site/robots.txt
 site/sitemap.xml
+# round 54: the static pages, generated with them (pipeline/seo_pages.mjs)
+site/country/
+site/ranking/
+site/support-for-ukraine/
+site/trade-with-russia/
+site/how-it-works/
+site/method/
+site/limitations/
+site/changelog/
+site/uk/
+site/de/
+site/fr/
+site/pl/
+site/nl/
+site/es/
 node_modules/
 
 # raw downloads: small open-data API responses are kept; large files and third-party documents (reports, press
