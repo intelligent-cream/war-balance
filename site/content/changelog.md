@@ -2,6 +2,15 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r54">Round 54: findable pages <span class="cl-date">26 October</span></h2>
+
+Every country, the ranking and the method now have their own page, so a search can find them; the map itself is unchanged.
+
+- **A page per country**, at /country/ and its name (for example /country/germany/): its net, support for Ukraine and Russia's earnings from trade with their likely ranges and chances, the parts with their certainty letters, each year's amounts, its neighbours in the ranking, its main sources and a few short questions answered with its figures. "Open in the map" opens its panel. The numbers come from the map itself when the site is built, so the two always agree. Old share links (/c/) lead there.
+- **The ranking and the two lenses** have pages too (/ranking/, /support-for-ukraine/, /trade-with-russia/), and so do How it works, each method page, the limitations and this changelog.
+- **Languages**: the map opens in a language from its own address (/de/, /fr/, /pl/, /nl/, /es/, /uk/), and the ten most searched countries have a page in each.
+- In the map, the ranking rows link to these pages, and Filters lists every country from A to Z. No number changes.
+
 <h2 id="cl-r52">Round 52: one rule for what counts <span class="cl-date">25 October</span></h2>
 
 The owner: "we also don't punish them for it, so the Ukraine strikes also don't punish India".

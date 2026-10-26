@@ -1,0 +1,626 @@
+{
+ "ranking": {
+  "en": [
+   "countries supporting ukraine",
+   "countries supporting ukraine the most",
+   "which countries help russia",
+   "which countries support russia",
+   "countries supporting russia",
+   "countries supporting russia against ukraine",
+   "countries helping russia against ukraine"
+  ],
+  "de": [
+   "welche länder unterstützen die ukraine am meisten",
+   "welche länder unterstützen russland"
+  ],
+  "fr": [
+   "quels pays soutiennent la russie"
+  ],
+  "pl": [
+   "pomoc dla ukrainy ranking państw",
+   "kraje wspierające rosję"
+  ],
+  "nl": [
+   "welke landen steunen rusland"
+  ],
+  "es": [
+   "qué países apoyan a rusia"
+  ],
+  "uk": [
+   "рейтинг допомоги україні",
+   "які країни підтримують росію"
+  ]
+ },
+ "support-for-ukraine": {
+  "en": [
+   "which countries give the most to ukraine",
+   "which country has given the most to ukraine per capita",
+   "ukraine aid by country",
+   "ukraine aid by country gdp",
+   "ukraine aid as percentage of gdp",
+   "support for ukraine as percentage of gdp",
+   "ukraine aid by country per capita",
+   "aid to ukraine per capita by country"
+  ],
+  "de": [
+   "ukraine hilfe nach ländern"
+  ],
+  "fr": [
+   "aide à l'ukraine par pays"
+  ],
+  "nl": [
+   "steun oekraïne per land"
+  ],
+  "es": [
+   "ayuda a ucrania por países"
+  ],
+  "uk": [
+   "допомога україні по країнах"
+  ]
+ },
+ "home": {
+  "en": [
+   "countries that support russia map",
+   "map of countries supporting russia and ukraine",
+   "map of countries supporting ukraine",
+   "who is paying for the war in ukraine"
+  ]
+ },
+ "trade-with-russia": {
+  "en": [
+   "who buys russian oil",
+   "who buys russian oil 2026",
+   "countries that still buy russian oil",
+   "who buys russian gas",
+   "which countries still trade with russia",
+   "countries still trading with russia",
+   "countries doing business with russia",
+   "who funds russia ukraine war"
+  ],
+  "de": [
+   "wer kauft russisches öl"
+  ],
+  "fr": [
+   "qui achète le pétrole russe"
+  ],
+  "pl": [
+   "kto kupuje rosyjską ropę"
+  ],
+  "nl": [
+   "wie koopt nog russische olie"
+  ],
+  "es": [
+   "quien compra petroleo ruso"
+  ],
+  "uk": [
+   "хто купує російську нафту"
+  ]
+ },
+ "method/russia-state-and-companies": {
+  "en": [
+   "russian frozen assets by country"
+  ]
+ },
+ "how-it-works": {
+  "en": [
+   "how is aid to ukraine measured",
+   "ukraine support tracker"
+  ]
+ },
+ "USA": {
+  "en": [
+   "how much has us given ukraine",
+   "us aid to ukraine",
+   "how much has us given ukraine in total",
+   "us aid to ukraine by year",
+   "us aid to ukraine 2026",
+   "us aid to ukraine as percentage of gdp"
+  ],
+  "de": [
+   "usa ukraine hilfe summe",
+   "usa ukraine hilfe"
+  ],
+  "es": [
+   "estados unidos ayuda ucrania"
+  ],
+  "uk": [
+   "допомога сша україні за час війни",
+   "сша допомога україні"
+  ],
+  "fr": [
+   "etats-unis aide ukraine"
+  ],
+  "pl": [
+   "usa pomoc ukrainie"
+  ],
+  "nl": [
+   "amerika steun oekraïne"
+  ]
+ },
+ "DEU": {
+  "en": [
+   "how much has germany given ukraine",
+   "germany aid to ukraine",
+   "how much has germany given to ukraine in total",
+   "germany aid to ukraine total",
+   "is germany supporting russia",
+   "germany russian gas"
+  ],
+  "de": [
+   "wie viel hat deutschland der ukraine gegeben",
+   "wie viel geld hat deutschland der ukraine gegeben insgesamt",
+   "deutschland ukraine hilfe gesamt",
+   "deutschland ukraine hilfe"
+  ],
+  "pl": [
+   "niemcy pomoc ukrainie"
+  ],
+  "uk": [
+   "німеччина допомога україні"
+  ],
+  "fr": [
+   "allemagne aide ukraine"
+  ],
+  "nl": [
+   "duitsland steun oekraïne"
+  ],
+  "es": [
+   "alemania ayuda ucrania"
+  ]
+ },
+ "GBR": {
+  "en": [
+   "how much has uk given ukraine",
+   "uk aid to ukraine",
+   "how much has uk given ukraine in total",
+   "uk aid to ukraine per year",
+   "russian frozen assets in uk"
+  ],
+  "de": [
+   "großbritannien ukraine hilfe"
+  ],
+  "fr": [
+   "royaume-uni aide ukraine"
+  ],
+  "pl": [
+   "wielka brytania pomoc ukrainie"
+  ],
+  "nl": [
+   "engeland steun oekraïne"
+  ],
+  "es": [
+   "reino unido ayuda ucrania"
+  ],
+  "uk": [
+   "британія допомога україні"
+  ]
+ },
+ "FRA": {
+  "en": [
+   "how much has france given ukraine",
+   "france aid to ukraine",
+   "france aid to ukraine total",
+   "is france helping russia"
+  ],
+  "fr": [
+   "combien la france a donné à l'ukraine",
+   "montant total aide ukraine france",
+   "france aide ukraine"
+  ],
+  "de": [
+   "frankreich ukraine hilfe"
+  ],
+  "pl": [
+   "francja pomoc ukrainie"
+  ],
+  "nl": [
+   "frankrijk steun oekraïne"
+  ],
+  "es": [
+   "francia ayuda ucrania"
+  ],
+  "uk": [
+   "франція допомога україні"
+  ]
+ },
+ "POL": {
+  "en": [
+   "how much has poland given ukraine",
+   "poland aid to ukraine",
+   "poland aid to ukraine total",
+   "is poland supporting russia"
+  ],
+  "pl": [
+   "ile polska dała ukrainie pieniędzy",
+   "ile polska wydała na ukrainę od początku wojny",
+   "polska pomoc ukrainie"
+  ],
+  "de": [
+   "polen ukraine hilfe"
+  ],
+  "fr": [
+   "pologne aide ukraine"
+  ],
+  "nl": [
+   "polen steun oekraïne"
+  ],
+  "es": [
+   "polonia ayuda ucrania"
+  ],
+  "uk": [
+   "польща допомога україні"
+  ]
+ },
+ "NLD": {
+  "en": [
+   "how much has netherlands given ukraine",
+   "netherlands aid to ukraine",
+   "how much has netherlands given to ukraine"
+  ],
+  "nl": [
+   "hoeveel heeft nederland aan oekraïne gegeven",
+   "hoeveel geld heeft nederland aan oekraïne gegeven in totaal",
+   "nederland steun oekraïne"
+  ],
+  "de": [
+   "niederlande ukraine hilfe"
+  ],
+  "fr": [
+   "pays-bas aide ukraine"
+  ],
+  "pl": [
+   "holandia pomoc ukrainie"
+  ],
+  "es": [
+   "países bajos ayuda ucrania"
+  ],
+  "uk": [
+   "нідерланди допомога україні"
+  ]
+ },
+ "ITA": {
+  "en": [
+   "how much has italy given ukraine",
+   "italy aid to ukraine",
+   "is italy supporting russia"
+  ],
+  "de": [
+   "italien ukraine hilfe"
+  ],
+  "fr": [
+   "italie aide ukraine"
+  ],
+  "pl": [
+   "włochy pomoc ukrainie"
+  ],
+  "nl": [
+   "italië steun oekraïne"
+  ],
+  "es": [
+   "italia ayuda ucrania"
+  ],
+  "uk": [
+   "італія допомога україні"
+  ]
+ },
+ "ESP": {
+  "en": [
+   "how much has spain given ukraine",
+   "spain aid to ukraine"
+  ],
+  "es": [
+   "cuanto dinero ha dado españa a ucrania"
+  ]
+ },
+ "CAN": {
+  "en": [
+   "how much has canada given ukraine",
+   "canada aid to ukraine",
+   "canada aid to ukraine total"
+  ]
+ },
+ "JPN": {
+  "en": [
+   "how much has japan given ukraine",
+   "japan aid to ukraine",
+   "how much aid has japan given to ukraine",
+   "is japan supporting russia"
+  ]
+ },
+ "AUS": {
+  "en": [
+   "how much has australia given ukraine",
+   "australia aid to ukraine",
+   "australia russia sanctions"
+  ]
+ },
+ "SWE": {
+  "en": [
+   "how much has sweden given ukraine",
+   "sweden aid to ukraine",
+   "sweden aid to ukraine total"
+  ]
+ },
+ "NOR": {
+  "en": [
+   "how much has norway given ukraine",
+   "norway aid to ukraine"
+  ]
+ },
+ "DNK": {
+  "en": [
+   "how much has denmark given ukraine",
+   "denmark aid to ukraine",
+   "denmark total aid to ukraine"
+  ]
+ },
+ "FIN": {
+  "en": [
+   "how much has finland given ukraine",
+   "finland aid to ukraine",
+   "how much has finland given to ukraine",
+   "finland russia trade"
+  ]
+ },
+ "EST": {
+  "en": [
+   "how much has estonia given ukraine",
+   "estonia aid to ukraine",
+   "how much has estonia given to ukraine"
+  ]
+ },
+ "LVA": {
+  "en": [
+   "how much has latvia given ukraine",
+   "latvia aid to ukraine",
+   "how much has latvia given to ukraine"
+  ]
+ },
+ "LTU": {
+  "en": [
+   "how much has lithuania given ukraine",
+   "lithuania aid to ukraine",
+   "how much has lithuania given to ukraine",
+   "lithuania support to ukraine"
+  ]
+ },
+ "CZE": {
+  "en": [
+   "how much has czech republic given ukraine",
+   "czech republic aid to ukraine",
+   "czech republic russia relations"
+  ]
+ },
+ "SVK": {
+  "en": [
+   "how much has slovakia given ukraine",
+   "slovakia aid to ukraine",
+   "is slovakia supporting russia",
+   "slovakia russian gas"
+  ]
+ },
+ "HUN": {
+  "en": [
+   "is hungary helping russia",
+   "hungary russian gas",
+   "hungary russian gas imports",
+   "is hungary supporting russia or ukraine",
+   "hungary support to ukraine"
+  ],
+  "de": [
+   "ungarn russland gas",
+   "ungarn russland"
+  ],
+  "fr": [
+   "hongrie gaz russe",
+   "hongrie russie"
+  ],
+  "nl": [
+   "hongarije gas rusland",
+   "hongarije rusland"
+  ],
+  "uk": [
+   "угорщина російський газ",
+   "угорщина росія"
+  ],
+  "pl": [
+   "węgry rosja"
+  ],
+  "es": [
+   "hungría rusia"
+  ]
+ },
+ "AUT": {
+  "en": [
+   "how much has austria given ukraine",
+   "austria aid to ukraine",
+   "austria russian gas",
+   "austria russia sanctions"
+  ]
+ },
+ "CHE": {
+  "en": [
+   "how much has switzerland given ukraine",
+   "switzerland aid to ukraine",
+   "switzerland russia sanctions"
+  ]
+ },
+ "BEL": {
+  "en": [
+   "how much has belgium given ukraine",
+   "belgium aid to ukraine",
+   "russian frozen assets belgium",
+   "belgium russian assets"
+  ]
+ },
+ "IRL": {
+  "en": [
+   "how much has ireland given ukraine",
+   "ireland aid to ukraine",
+   "ireland aid ukraine comparison eu"
+  ]
+ },
+ "TUR": {
+  "en": [
+   "is turkey helping russia",
+   "turkey russian oil imports",
+   "turkey russia trade"
+  ]
+ },
+ "IND": {
+  "en": [
+   "is india helping russia",
+   "does india fund russia",
+   "india russian oil imports",
+   "india russia trade"
+  ],
+  "de": [
+   "indien russisches öl",
+   "indien russland"
+  ],
+  "fr": [
+   "inde russie pétrole",
+   "inde russie"
+  ],
+  "pl": [
+   "indie rosja ropa",
+   "indie rosja"
+  ],
+  "nl": [
+   "india koopt russische olie",
+   "india rusland"
+  ],
+  "es": [
+   "india compra petroleo ruso",
+   "india rusia"
+  ],
+  "uk": [
+   "індія купує російську нафту",
+   "індія росія"
+  ]
+ },
+ "CHN": {
+  "en": [
+   "is china helping russia",
+   "is china funding russia",
+   "china russia oil imports",
+   "china russia oil"
+  ],
+  "de": [
+   "china unterstützt russland",
+   "china russland"
+  ],
+  "fr": [
+   "la chine soutient la russie",
+   "chine russie"
+  ],
+  "es": [
+   "china apoya a rusia",
+   "china rusia"
+  ],
+  "uk": [
+   "китай допомагає росії",
+   "китай росія"
+  ],
+  "pl": [
+   "chiny rosja"
+  ],
+  "nl": [
+   "china rusland"
+  ]
+ },
+ "BRA": {
+  "en": [
+   "is brazil helping russia",
+   "is brazil supporting russia",
+   "brazil russia trade"
+  ]
+ },
+ "ARE": {
+  "en": [
+   "is uae helping russia",
+   "is uae supporting russia",
+   "uae russia trade"
+  ]
+ },
+ "SAU": {
+  "en": [
+   "is saudi arabia helping russia",
+   "is saudi arabia russia ally",
+   "saudi arabia russia oil"
+  ]
+ },
+ "ISR": {
+  "en": [
+   "is israel helping russia",
+   "is israel supporting russia or ukraine",
+   "israel aid to ukraine"
+  ]
+ },
+ "ZAF": {
+  "en": [
+   "is south africa helping russia",
+   "is south africa supporting russia or ukraine",
+   "south africa russia trade"
+  ]
+ },
+ "IDN": {
+  "en": [
+   "is indonesia helping russia",
+   "is indonesia supporting russia",
+   "indonesia russia oil import"
+  ]
+ },
+ "MEX": {
+  "en": [
+   "is mexico helping russia",
+   "is mexico supporting russia",
+   "mexico aid to ukraine"
+  ]
+ },
+ "KAZ": {
+  "en": [
+   "is kazakhstan helping russia",
+   "kazakhstan russia sanctions"
+  ]
+ },
+ "GEO": {
+  "en": [
+   "is georgia helping russia",
+   "is georgia supporting russia",
+   "georgia russia trade"
+  ]
+ },
+ "ARM": {
+  "en": [
+   "is armenia helping russia",
+   "is armenia supporting russia",
+   "armenia russia trade"
+  ]
+ },
+ "SRB": {
+  "en": [
+   "is serbia helping russia",
+   "is serbia supporting russia or ukraine"
+  ]
+ },
+ "BLR": {
+  "en": [
+   "is belarus helping russia",
+   "is belarus helping russia in the war",
+   "is belarus supporting russia"
+  ]
+ },
+ "IRN": {
+  "en": [
+   "is iran helping russia",
+   "is iran helping russia in ukraine"
+  ]
+ },
+ "PRK": {
+  "en": [
+   "is north korea helping russia",
+   "is north korea helping russia in ukraine"
+  ]
+ }
+}

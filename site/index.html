@@ -9,29 +9,41 @@
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#14213d">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>War Balance</title>
-<meta name="description" content="Research preview. Where did each country's money move since the full-scale invasion: toward Ukraine or toward Russia? Its support for Ukraine plus how much less, or more, Russia kept from trade with it (taxes and profit, not the full price), against a world without the war. Totals for 2022 to August 2026 (about 4.7 years) against one year's GDP, with the average year. Every number with a range and a source.">
+<title>Countries helping Ukraine or Russia: money map since 2022</title>
+<meta name="description" content="Interactive map: how much each country moved toward Ukraine or Russia since 2022, through aid and trade, as % of GDP and in euros. Ranges, sources.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="War Balance">
-<meta name="twitter:title" content="War Balance">
-<meta property="og:description" content="Research preview. Where did each country's money move: toward Ukraine or toward Russia? Support for Ukraine plus how much less, or more, Russia kept from trade, against a world without the war. Totals for 2022 to August 2026 (about 4.7 years) against one year's GDP, with sources and ranges.">
-<meta name="twitter:description" content="Research preview. Where did each country's money move: toward Ukraine or toward Russia? Support for Ukraine plus how much less, or more, Russia kept from trade, for every country since 2022, with sources and ranges.">
+<meta property="og:site_name" content="War Balance">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="uk_UA">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="pl_PL">
+<meta property="og:locale:alternate" content="nl_NL">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:title" content="Countries helping Ukraine or Russia: money map since 2022">
+<meta name="twitter:title" content="Countries helping Ukraine or Russia: money map since 2022">
+<meta property="og:description" content="Interactive map: how much each country moved toward Ukraine or Russia since 2022, through aid and trade, as % of GDP and in euros. Ranges, sources.">
+<meta name="twitter:description" content="Interactive map: how much each country moved toward Ukraine or Russia since 2022, through aid and trade, as % of GDP and in euros. Ranges, sources.">
 <meta property="og:url" content="https://warbalance.org/">
 <meta property="og:image" content="https://warbalance.org/share/world.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="World map of where each country's money moved since 2022: toward Ukraine in blue, toward Russia in orange">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://warbalance.org/share/world.png">
 <link rel="canonical" href="https://warbalance.org/">
-<!-- round 30: the site's own address is pipeline/site_config.json site_url (checked by check_data.py); languages by ?lang= (pickLang() in i18n.js) -->
-<link rel="alternate" hreflang="en" href="https://warbalance.org/?lang=en">
-<link rel="alternate" hreflang="uk" href="https://warbalance.org/?lang=uk">
-<link rel="alternate" hreflang="de" href="https://warbalance.org/?lang=de">
-<link rel="alternate" hreflang="fr" href="https://warbalance.org/?lang=fr">
-<link rel="alternate" hreflang="pl" href="https://warbalance.org/?lang=pl">
-<link rel="alternate" hreflang="nl" href="https://warbalance.org/?lang=nl">
-<link rel="alternate" hreflang="es" href="https://warbalance.org/?lang=es">
+<!-- round 30: the site's own address is pipeline/site_config.json site_url (checked by check_data.py). Round 54: each
+     language is a real page, /de/ and the others, written at deploy by pipeline/seo_pages.mjs from this one (its lang,
+     data-lang, head and canonical changed); pickLang() in i18n.js reads data-lang first -->
+<link rel="alternate" hreflang="en" href="https://warbalance.org/">
+<link rel="alternate" hreflang="uk" href="https://warbalance.org/uk/">
+<link rel="alternate" hreflang="de" href="https://warbalance.org/de/">
+<link rel="alternate" hreflang="fr" href="https://warbalance.org/fr/">
+<link rel="alternate" hreflang="pl" href="https://warbalance.org/pl/">
+<link rel="alternate" hreflang="nl" href="https://warbalance.org/nl/">
+<link rel="alternate" hreflang="es" href="https://warbalance.org/es/">
 <link rel="alternate" hreflang="x-default" href="https://warbalance.org/">
 <link rel="sitemap" type="application/xml" href="https://warbalance.org/sitemap.xml">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://warbalance.org/#website", "name": "War Balance", "url": "https://warbalance.org/", "inLanguage": ["en", "uk", "de", "fr", "pl", "nl", "es"], "publisher": {"@id": "https://warbalance.org/#org"}}, {"@context": "https://schema.org", "@type": "Organization", "@id": "https://warbalance.org/#org", "name": "War Balance", "url": "https://warbalance.org/", "logo": "https://warbalance.org/icon-512.png"}, {"@context": "https://schema.org", "@type": "Dataset", "@id": "https://warbalance.org/#dataset", "name": "War Balance — where each country's money moved since 2022", "description": "Research preview. For every country, its support for Ukraine and how much less, or more, Russia kept from trade with it (taxes and profit above a normal return, not the full price), against a world without the war, from February 2022 to August 2026, as totals against one year's GDP. Every number has a likely range, a certainty letter and its sources.", "url": "https://warbalance.org/", "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": true, "creator": {"@id": "https://warbalance.org/#org"}, "publisher": {"@id": "https://warbalance.org/#org"}, "temporalCoverage": "2022-02/2026-08", "spatialCoverage": {"@type": "Place", "name": "World"}, "keywords": ["Ukraine", "Russia", "war", "aid to Ukraine", "sanctions", "trade with Russia", "fossil fuels", "refugees", "frozen assets", "Kiel Ukraine Support Tracker"], "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://warbalance.org/data.json", "name": "Full data (JSON)"}]}]</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://warbalance.org/#website", "name": "War Balance", "url": "https://warbalance.org/", "inLanguage": ["en", "uk", "de", "fr", "pl", "nl", "es"], "publisher": {"@id": "https://warbalance.org/#org"}}, {"@context": "https://schema.org", "@type": "Organization", "@id": "https://warbalance.org/#org", "name": "War Balance", "url": "https://warbalance.org/", "logo": "https://warbalance.org/icon-512.png"}, {"@context": "https://schema.org", "@type": "Dataset", "@id": "https://warbalance.org/#dataset", "name": "War Balance — where each country's money moved since 2022", "description": "Research preview. For every country, its support for Ukraine and how much less, or more, Russia kept from trade with it (taxes and profit above a normal return, not the full price), against a world without the war, from February 2022 to August 2026, as totals against one year's GDP. Every number has a likely range, a certainty letter and its sources.", "url": "https://warbalance.org/", "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": true, "creator": {"@id": "https://warbalance.org/#org"}, "publisher": {"@id": "https://warbalance.org/#org"}, "dateModified": "2026-10-25", "temporalCoverage": "2022-02/2026-08", "variableMeasured": [{"@type": "PropertyValue", "name": "Net: support for Ukraine plus the cut in Russia's earnings from trade and the return lost on frozen reserves", "unitText": "% of one year's GDP; EUR"}, {"@type": "PropertyValue", "name": "Support for Ukraine", "unitText": "% of one year's GDP; EUR"}, {"@type": "PropertyValue", "name": "Russia's earnings from trade (change against a world without the war)", "unitText": "% of one year's GDP; EUR"}, {"@type": "PropertyValue", "name": "Russian money frozen (return lost)", "unitText": "EUR"}], "spatialCoverage": {"@type": "Place", "name": "World"}, "keywords": ["Ukraine", "Russia", "war", "aid to Ukraine", "sanctions", "trade with Russia", "fossil fuels", "refugees", "frozen assets", "Kiel Ukraine Support Tracker"], "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://warbalance.org/data.json", "name": "Full data (JSON)"}]}]</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Source+Sans+3:wght@400;600;700&display=swap">
@@ -195,7 +207,12 @@ button, input, select { font: inherit; color: inherit; }
 .rk-h { font-size: 13px; font-weight: 700; margin: 0 0 6px; }
 .rk-rus .rk-h { color: var(--rus-text, var(--rus)); } .rk-ukr .rk-h { color: var(--ukr); } .rk-unc .rk-h, .rk-party .rk-h { color: var(--ink-soft); }
 .rk-chips { display: flex; flex-wrap: wrap; gap: 5px; }
-.rk-chip { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 3px 10px; font: inherit; font-size: 12.5px; cursor: pointer; }
+.rk-chip { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 3px 10px; font: inherit; font-size: 12.5px; cursor: pointer; text-decoration: none; display: inline-block; }
+#view svg a.rk-a { text-decoration: none; }
+/* round 54: the A–Z list of every country's own page, in Filters */
+#az { display: flex; flex-wrap: wrap; gap: 3px 12px; font-size: 13px; line-height: 1.5; margin-top: 6px; }
+#az a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+#az a:hover { border-bottom-color: var(--ink-soft); }
 .rk-chip:hover, .rk-chip:focus-visible { border-color: var(--ink-soft); }
 /* round 29 (owner): the ranking keeps every country in its place; one whose direction is not certain is faded and labelled */
 .chart .row.rk-lean .dot { fill-opacity: .5; } .chart .row.rk-unc .dot { fill-opacity: .25; }
@@ -340,7 +357,7 @@ details.pfold[open] > summary { margin-bottom: 0; }
 .range-txt { font-family: var(--font-data); font-size: 12px; color: var(--ink-soft); margin-top: 4px; }
 .theme-btn { width: 34px; height: 31px; padding: 0; display: inline-grid; place-items: center; }
 .rank { display: grid; gap: 4px; }
-.rank-row { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 2px 8px; align-items: baseline; font-size: 13.5px; padding: 5px 6px; border-radius: 6px; cursor: pointer; border: 0; background: transparent; text-align: left; width: 100%; }
+.rank-row { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 2px 8px; align-items: baseline; font-size: 13.5px; padding: 5px 6px; border-radius: 6px; cursor: pointer; border: 0; background: transparent; text-align: left; width: 100%; color: inherit; text-decoration: none; }
 .rank-row:hover { background: var(--sea); }
 .rank-row .i { font-family: var(--font-data); font-size: 11px; color: var(--ink-soft); }
 .rank-row .v { font-family: var(--font-data); font-size: 12.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -1150,6 +1167,246 @@ li.src-again { color: var(--ink-soft); }
           <span class="search-msg" id="search-msg" role="status"></span>
         </div>
       </section>
+      <!-- round 54 (findable pages): every country's own page, A to Z, as plain links. The list between the two markers is
+           written by pipeline/seo_pages.mjs (run with the share cards) from data.json; a click opens the panel here -->
+      <details class="dmore" id="az-fold">
+        <summary><span data-i18n="All countries, A to Z">All countries, A to Z</span></summary>
+        <section class="dblock">
+<!-- az:start -->
+        <p class="sub" id="az-intro">For 191 countries: support for Ukraine plus how much less, or more, Russia kept from trade with each, against a world without the war, from February 2022 to August 2026, with a likely range and a chance for every direction.</p>
+        <nav id="az" aria-label="All countries, A to Z">
+          <a href="/country/afghanistan/" data-iso="AFG">Afghanistan</a>
+          <a href="/country/albania/" data-iso="ALB">Albania</a>
+          <a href="/country/algeria/" data-iso="DZA">Algeria</a>
+          <a href="/country/american-samoa/" data-iso="ASM">American Samoa</a>
+          <a href="/country/andorra/" data-iso="AND">Andorra</a>
+          <a href="/country/angola/" data-iso="AGO">Angola</a>
+          <a href="/country/anguilla/" data-iso="AIA">Anguilla</a>
+          <a href="/country/antigua-and-barbuda/" data-iso="ATG">Antigua and Barbuda</a>
+          <a href="/country/argentina/" data-iso="ARG">Argentina</a>
+          <a href="/country/armenia/" data-iso="ARM">Armenia</a>
+          <a href="/country/aruba/" data-iso="ABW">Aruba</a>
+          <a href="/country/australia/" data-iso="AUS">Australia</a>
+          <a href="/country/austria/" data-iso="AUT">Austria</a>
+          <a href="/country/azerbaijan/" data-iso="AZE">Azerbaijan</a>
+          <a href="/country/bahamas/" data-iso="BHS">Bahamas</a>
+          <a href="/country/bahrain/" data-iso="BHR">Bahrain</a>
+          <a href="/country/bangladesh/" data-iso="BGD">Bangladesh</a>
+          <a href="/country/barbados/" data-iso="BRB">Barbados</a>
+          <a href="/country/belarus/" data-iso="BLR">Belarus</a>
+          <a href="/country/belgium/" data-iso="BEL">Belgium</a>
+          <a href="/country/belize/" data-iso="BLZ">Belize</a>
+          <a href="/country/benin/" data-iso="BEN">Benin</a>
+          <a href="/country/bermuda/" data-iso="BMU">Bermuda</a>
+          <a href="/country/bhutan/" data-iso="BTN">Bhutan</a>
+          <a href="/country/bolivia/" data-iso="BOL">Bolivia</a>
+          <a href="/country/bonaire/" data-iso="BES">Bonaire</a>
+          <a href="/country/bosnia-and-herzegovina/" data-iso="BIH">Bosnia and Herzegovina</a>
+          <a href="/country/botswana/" data-iso="BWA">Botswana</a>
+          <a href="/country/brazil/" data-iso="BRA">Brazil</a>
+          <a href="/country/british-indian-ocean-territory/" data-iso="IOT">British Indian Ocean Territory</a>
+          <a href="/country/brunei/" data-iso="BRN">Brunei</a>
+          <a href="/country/bulgaria/" data-iso="BGR">Bulgaria</a>
+          <a href="/country/burkina-faso/" data-iso="BFA">Burkina Faso</a>
+          <a href="/country/burundi/" data-iso="BDI">Burundi</a>
+          <a href="/country/cabo-verde/" data-iso="CPV">Cabo Verde</a>
+          <a href="/country/cambodia/" data-iso="KHM">Cambodia</a>
+          <a href="/country/cameroon/" data-iso="CMR">Cameroon</a>
+          <a href="/country/canada/" data-iso="CAN">Canada</a>
+          <a href="/country/cayman-islands/" data-iso="CYM">Cayman Islands</a>
+          <a href="/country/central-african-republic/" data-iso="CAF">Central African Republic</a>
+          <a href="/country/chad/" data-iso="TCD">Chad</a>
+          <a href="/country/chile/" data-iso="CHL">Chile</a>
+          <a href="/country/china/" data-iso="CHN">China</a>
+          <a href="/country/christmas-island/" data-iso="CXR">Christmas Island</a>
+          <a href="/country/cocos-keeling-islands/" data-iso="CCK">Cocos (Keeling) Islands</a>
+          <a href="/country/colombia/" data-iso="COL">Colombia</a>
+          <a href="/country/comoros/" data-iso="COM">Comoros</a>
+          <a href="/country/congo/" data-iso="COG">Congo</a>
+          <a href="/country/cook-islands/" data-iso="COK">Cook Islands</a>
+          <a href="/country/costa-rica/" data-iso="CRI">Costa Rica</a>
+          <a href="/country/cote-divoire/" data-iso="CIV">Côte d'Ivoire</a>
+          <a href="/country/croatia/" data-iso="HRV">Croatia</a>
+          <a href="/country/cuba/" data-iso="CUB">Cuba</a>
+          <a href="/country/curacao/" data-iso="CUW">Curaçao</a>
+          <a href="/country/cyprus/" data-iso="CYP">Cyprus</a>
+          <a href="/country/czechia/" data-iso="CZE">Czechia</a>
+          <a href="/country/denmark/" data-iso="DNK">Denmark</a>
+          <a href="/country/djibouti/" data-iso="DJI">Djibouti</a>
+          <a href="/country/dominica/" data-iso="DMA">Dominica</a>
+          <a href="/country/dominican-republic/" data-iso="DOM">Dominican Republic</a>
+          <a href="/country/dr-congo/" data-iso="COD">DR Congo</a>
+          <a href="/country/ecuador/" data-iso="ECU">Ecuador</a>
+          <a href="/country/egypt/" data-iso="EGY">Egypt</a>
+          <a href="/country/el-salvador/" data-iso="SLV">El Salvador</a>
+          <a href="/country/equatorial-guinea/" data-iso="GNQ">Equatorial Guinea</a>
+          <a href="/country/eritrea/" data-iso="ERI">Eritrea</a>
+          <a href="/country/estonia/" data-iso="EST">Estonia</a>
+          <a href="/country/eswatini/" data-iso="SWZ">Eswatini</a>
+          <a href="/country/ethiopia/" data-iso="ETH">Ethiopia</a>
+          <a href="/country/falkland-islands-malvinas/" data-iso="FLK">Falkland Islands (Malvinas)</a>
+          <a href="/country/faroe-islands/" data-iso="FRO">Faroe Islands</a>
+          <a href="/country/fiji/" data-iso="FJI">Fiji</a>
+          <a href="/country/finland/" data-iso="FIN">Finland</a>
+          <a href="/country/france/" data-iso="FRA">France</a>
+          <a href="/country/french-polynesia/" data-iso="PYF">French Polynesia</a>
+          <a href="/country/french-southern-territories/" data-iso="ATF">French Southern Territories</a>
+          <a href="/country/gabon/" data-iso="GAB">Gabon</a>
+          <a href="/country/gambia/" data-iso="GMB">Gambia</a>
+          <a href="/country/georgia/" data-iso="GEO">Georgia</a>
+          <a href="/country/germany/" data-iso="DEU">Germany</a>
+          <a href="/country/ghana/" data-iso="GHA">Ghana</a>
+          <a href="/country/gibraltar/" data-iso="GIB">Gibraltar</a>
+          <a href="/country/greece/" data-iso="GRC">Greece</a>
+          <a href="/country/greenland/" data-iso="GRL">Greenland</a>
+          <a href="/country/grenada/" data-iso="GRD">Grenada</a>
+          <a href="/country/guam/" data-iso="GUM">Guam</a>
+          <a href="/country/guatemala/" data-iso="GTM">Guatemala</a>
+          <a href="/country/guinea/" data-iso="GIN">Guinea</a>
+          <a href="/country/guinea-bissau/" data-iso="GNB">Guinea-Bissau</a>
+          <a href="/country/guyana/" data-iso="GUY">Guyana</a>
+          <a href="/country/haiti/" data-iso="HTI">Haiti</a>
+          <a href="/country/vatican-city/" data-iso="VAT">Holy See (Vatican City State)</a>
+          <a href="/country/honduras/" data-iso="HND">Honduras</a>
+          <a href="/country/hong-kong/" data-iso="HKG">Hong Kong</a>
+          <a href="/country/hungary/" data-iso="HUN">Hungary</a>
+          <a href="/country/iceland/" data-iso="ISL">Iceland</a>
+          <a href="/country/india/" data-iso="IND">India</a>
+          <a href="/country/indonesia/" data-iso="IDN">Indonesia</a>
+          <a href="/country/iran/" data-iso="IRN">Iran</a>
+          <a href="/country/iraq/" data-iso="IRQ">Iraq</a>
+          <a href="/country/ireland/" data-iso="IRL">Ireland</a>
+          <a href="/country/israel/" data-iso="ISR">Israel</a>
+          <a href="/country/italy/" data-iso="ITA">Italy</a>
+          <a href="/country/jamaica/" data-iso="JAM">Jamaica</a>
+          <a href="/country/japan/" data-iso="JPN">Japan</a>
+          <a href="/country/jordan/" data-iso="JOR">Jordan</a>
+          <a href="/country/kazakhstan/" data-iso="KAZ">Kazakhstan</a>
+          <a href="/country/kenya/" data-iso="KEN">Kenya</a>
+          <a href="/country/kiribati/" data-iso="KIR">Kiribati</a>
+          <a href="/country/kuwait/" data-iso="KWT">Kuwait</a>
+          <a href="/country/kyrgyzstan/" data-iso="KGZ">Kyrgyzstan</a>
+          <a href="/country/laos/" data-iso="LAO">Laos</a>
+          <a href="/country/latvia/" data-iso="LVA">Latvia</a>
+          <a href="/country/lebanon/" data-iso="LBN">Lebanon</a>
+          <a href="/country/lesotho/" data-iso="LSO">Lesotho</a>
+          <a href="/country/liberia/" data-iso="LBR">Liberia</a>
+          <a href="/country/libya/" data-iso="LBY">Libya</a>
+          <a href="/country/lithuania/" data-iso="LTU">Lithuania</a>
+          <a href="/country/luxembourg/" data-iso="LUX">Luxembourg</a>
+          <a href="/country/macao/" data-iso="MAC">Macao</a>
+          <a href="/country/madagascar/" data-iso="MDG">Madagascar</a>
+          <a href="/country/malawi/" data-iso="MWI">Malawi</a>
+          <a href="/country/malaysia/" data-iso="MYS">Malaysia</a>
+          <a href="/country/maldives/" data-iso="MDV">Maldives</a>
+          <a href="/country/mali/" data-iso="MLI">Mali</a>
+          <a href="/country/malta/" data-iso="MLT">Malta</a>
+          <a href="/country/marshall-islands/" data-iso="MHL">Marshall Islands</a>
+          <a href="/country/mauritania/" data-iso="MRT">Mauritania</a>
+          <a href="/country/mauritius/" data-iso="MUS">Mauritius</a>
+          <a href="/country/mexico/" data-iso="MEX">Mexico</a>
+          <a href="/country/micronesia/" data-iso="FSM">Micronesia</a>
+          <a href="/country/moldova/" data-iso="MDA">Moldova</a>
+          <a href="/country/mongolia/" data-iso="MNG">Mongolia</a>
+          <a href="/country/montenegro/" data-iso="MNE">Montenegro</a>
+          <a href="/country/montserrat/" data-iso="MSR">Montserrat</a>
+          <a href="/country/morocco/" data-iso="MAR">Morocco</a>
+          <a href="/country/mozambique/" data-iso="MOZ">Mozambique</a>
+          <a href="/country/myanmar/" data-iso="MMR">Myanmar</a>
+          <a href="/country/namibia/" data-iso="NAM">Namibia</a>
+          <a href="/country/nauru/" data-iso="NRU">Nauru</a>
+          <a href="/country/nepal/" data-iso="NPL">Nepal</a>
+          <a href="/country/netherlands/" data-iso="NLD">Netherlands</a>
+          <a href="/country/new-caledonia/" data-iso="NCL">New Caledonia</a>
+          <a href="/country/new-zealand/" data-iso="NZL">New Zealand</a>
+          <a href="/country/nicaragua/" data-iso="NIC">Nicaragua</a>
+          <a href="/country/niger/" data-iso="NER">Niger</a>
+          <a href="/country/nigeria/" data-iso="NGA">Nigeria</a>
+          <a href="/country/niue/" data-iso="NIU">Niue</a>
+          <a href="/country/norfolk-island/" data-iso="NFK">Norfolk Island</a>
+          <a href="/country/north-korea/" data-iso="PRK">North Korea</a>
+          <a href="/country/north-macedonia/" data-iso="MKD">North Macedonia</a>
+          <a href="/country/northern-mariana-islands/" data-iso="MNP">Northern Mariana Islands</a>
+          <a href="/country/norway/" data-iso="NOR">Norway</a>
+          <a href="/country/oman/" data-iso="OMN">Oman</a>
+          <a href="/country/pakistan/" data-iso="PAK">Pakistan</a>
+          <a href="/country/palau/" data-iso="PLW">Palau</a>
+          <a href="/country/palestine/" data-iso="PSE">Palestine</a>
+          <a href="/country/panama/" data-iso="PAN">Panama</a>
+          <a href="/country/papua-new-guinea/" data-iso="PNG">Papua New Guinea</a>
+          <a href="/country/paraguay/" data-iso="PRY">Paraguay</a>
+          <a href="/country/peru/" data-iso="PER">Peru</a>
+          <a href="/country/philippines/" data-iso="PHL">Philippines</a>
+          <a href="/country/pitcairn/" data-iso="PCN">Pitcairn</a>
+          <a href="/country/poland/" data-iso="POL">Poland</a>
+          <a href="/country/portugal/" data-iso="PRT">Portugal</a>
+          <a href="/country/qatar/" data-iso="QAT">Qatar</a>
+          <a href="/country/romania/" data-iso="ROU">Romania</a>
+          <a href="/country/rwanda/" data-iso="RWA">Rwanda</a>
+          <a href="/country/saint-barthelemy/" data-iso="BLM">Saint Barthélemy</a>
+          <a href="/country/saint-helena/" data-iso="SHN">Saint Helena</a>
+          <a href="/country/saint-kitts-and-nevis/" data-iso="KNA">Saint Kitts and Nevis</a>
+          <a href="/country/saint-lucia/" data-iso="LCA">Saint Lucia</a>
+          <a href="/country/saint-pierre-and-miquelon/" data-iso="SPM">Saint Pierre and Miquelon</a>
+          <a href="/country/saint-vincent-and-the-grenadines/" data-iso="VCT">Saint Vincent and the Grenadines</a>
+          <a href="/country/samoa/" data-iso="WSM">Samoa</a>
+          <a href="/country/san-marino/" data-iso="SMR">San Marino</a>
+          <a href="/country/sao-tome-and-principe/" data-iso="STP">Sao Tome and Principe</a>
+          <a href="/country/saudi-arabia/" data-iso="SAU">Saudi Arabia</a>
+          <a href="/country/senegal/" data-iso="SEN">Senegal</a>
+          <a href="/country/serbia/" data-iso="SRB">Serbia</a>
+          <a href="/country/seychelles/" data-iso="SYC">Seychelles</a>
+          <a href="/country/sierra-leone/" data-iso="SLE">Sierra Leone</a>
+          <a href="/country/singapore/" data-iso="SGP">Singapore</a>
+          <a href="/country/sint-maarten-dutch-part/" data-iso="SXM">Sint Maarten (Dutch part)</a>
+          <a href="/country/slovakia/" data-iso="SVK">Slovakia</a>
+          <a href="/country/slovenia/" data-iso="SVN">Slovenia</a>
+          <a href="/country/solomon-islands/" data-iso="SLB">Solomon Islands</a>
+          <a href="/country/somalia/" data-iso="SOM">Somalia</a>
+          <a href="/country/south-africa/" data-iso="ZAF">South Africa</a>
+          <a href="/country/south-georgia-and-the-south-sandwich-islands/" data-iso="SGS">South Georgia and the South Sandwich Islands</a>
+          <a href="/country/south-korea/" data-iso="KOR">South Korea</a>
+          <a href="/country/south-sudan/" data-iso="SSD">South Sudan</a>
+          <a href="/country/spain/" data-iso="ESP">Spain</a>
+          <a href="/country/sri-lanka/" data-iso="LKA">Sri Lanka</a>
+          <a href="/country/sudan/" data-iso="SDN">Sudan</a>
+          <a href="/country/suriname/" data-iso="SUR">Suriname</a>
+          <a href="/country/sweden/" data-iso="SWE">Sweden</a>
+          <a href="/country/switzerland/" data-iso="CHE">Switzerland</a>
+          <a href="/country/syria/" data-iso="SYR">Syria</a>
+          <a href="/country/taiwan/" data-iso="TWN">Taiwan</a>
+          <a href="/country/tajikistan/" data-iso="TJK">Tajikistan</a>
+          <a href="/country/tanzania/" data-iso="TZA">Tanzania</a>
+          <a href="/country/thailand/" data-iso="THA">Thailand</a>
+          <a href="/country/timor-leste/" data-iso="TLS">Timor-Leste</a>
+          <a href="/country/togo/" data-iso="TGO">Togo</a>
+          <a href="/country/tokelau/" data-iso="TKL">Tokelau</a>
+          <a href="/country/tonga/" data-iso="TON">Tonga</a>
+          <a href="/country/trinidad-and-tobago/" data-iso="TTO">Trinidad and Tobago</a>
+          <a href="/country/tunisia/" data-iso="TUN">Tunisia</a>
+          <a href="/country/turkiye/" data-iso="TUR">Turkey</a>
+          <a href="/country/turkmenistan/" data-iso="TKM">Turkmenistan</a>
+          <a href="/country/turks-and-caicos-islands/" data-iso="TCA">Turks and Caicos Islands</a>
+          <a href="/country/tuvalu/" data-iso="TUV">Tuvalu</a>
+          <a href="/country/uganda/" data-iso="UGA">Uganda</a>
+          <a href="/country/united-arab-emirates/" data-iso="ARE">United Arab Emirates</a>
+          <a href="/country/united-kingdom/" data-iso="GBR">United Kingdom</a>
+          <a href="/country/united-states/" data-iso="USA">United States</a>
+          <a href="/country/uruguay/" data-iso="URY">Uruguay</a>
+          <a href="/country/uzbekistan/" data-iso="UZB">Uzbekistan</a>
+          <a href="/country/vanuatu/" data-iso="VUT">Vanuatu</a>
+          <a href="/country/venezuela/" data-iso="VEN">Venezuela</a>
+          <a href="/country/vietnam/" data-iso="VNM">Vietnam</a>
+          <a href="/country/virgin-islands/" data-iso="VGB">Virgin Islands</a>
+          <a href="/country/wallis-and-futuna/" data-iso="WLF">Wallis and Futuna</a>
+          <a href="/country/western-sahara/" data-iso="ESH">Western Sahara</a>
+          <a href="/country/yemen/" data-iso="YEM">Yemen</a>
+          <a href="/country/zambia/" data-iso="ZMB">Zambia</a>
+          <a href="/country/zimbabwe/" data-iso="ZWE">Zimbabwe</a>
+        </nav>
+<!-- az:end -->
+        </section>
+      </details>
       <!-- round 21 (polish, owner): what most readers never change is folded into one "More options" -->
       <details class="dmore" id="more-fold">
         <summary><span data-i18n="More options">More options</span><span class="dot" hidden></span></summary>
@@ -1226,6 +1483,12 @@ const yi = y => YEARS.indexOf(y);
 const zeros = () => YEARS.map(() => 0);
 const arr = a => (Array.isArray(a) ? a.map(v => v || 0) : zeros());
 const weakest = list => list.filter(Boolean).reduce((w, c) => (CERT_ORDER.indexOf(c) > CERT_ORDER.indexOf(w) ? c : w), "A");
+// Round 54 (findable pages): each country's own page is /country/<slug>/, the slug made from its English name (written
+// by pipeline/seo_pages.mjs, linked from the ranking rows and the A–Z list); a few names take a shorter or newer form
+const SLUG_FIX = { TUR: "turkiye", VAT: "vatican-city", COD: "dr-congo", COG: "congo" };
+const countrySlug = c => SLUG_FIX[c.iso3] || (c.name_en || c.name).normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/['’]/g, "")
+  .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+const countryPath = c => "/country/" + countrySlug(c) + "/";
 
 // Each series is a triple: central, low and high values per year (low = high = central when the data gives no range).
 function triple(obj, key) {
@@ -4675,11 +4938,12 @@ function rankList(list, metricFn, _measure, colourFn, n = 20, rangeFn = null, q 
   const rows = all.filter(r => !out(r)).slice(0, n);
   const unc = q ? all.filter(out).slice(0, 8) : [];
   const max = rows.length ? (byEur ? rows[0].eurV : rows[0].pct) : 1;
-  return `<div class="rank">${rows.map((r, i) => `<button class="rank-row" data-goto="${r.c.n}">
+  // round 54: each row is a link to the country's own page (for search engines); a click opens the panel, as before
+  return `<div class="rank">${rows.map((r, i) => `<a class="rank-row" href="${countryPath(r.c)}" data-goto="${r.c.n}">
       <span class="i">${i + 1}</span><span>${r.c.name}${opts.cause ? `<span class="cause">${opts.cause(r.c)}</span>` : ""}</span><span class="v"><b>${fmtMeasure(r.c, r.eurV, "gdp")}</b> <span class="eur">${eur(r.eurV)}</span></span>
-      <span class="track"><span style="width:${((byEur ? r.eurV : r.pct) / max) * 100}%;background:${colourFn(r.c)}"></span></span></button>`).join("")}</div>
-    ${skipped.length && opts.skipNote ? `<p class="key" style="margin-top:6px">${opts.skipNote(skipped.map(r => `<a href="#${r.c.iso3}" data-goto="${r.c.n}">${r.c.name}</a>`).join(", "))}</p>` : ""}
-    ${unc.length ? `<p class="key" style="margin-top:6px">${t("Not ranked, leaning or uncertain direction (the likely range or a method-band alternative crosses zero): {list}.", { list: unc.map(r => `<a href="#${r.c.iso3}" data-goto="${r.c.n}">${r.c.name}</a> (${dirWords(r.c, y, q)}) ${fmtMeasure(r.c, r.eurV, "gdp")}`).join(", ") })}</p>` : ""}`;
+      <span class="track"><span style="width:${((byEur ? r.eurV : r.pct) / max) * 100}%;background:${colourFn(r.c)}"></span></span></a>`).join("")}</div>
+    ${skipped.length && opts.skipNote ? `<p class="key" style="margin-top:6px">${opts.skipNote(skipped.map(r => `<a href="${countryPath(r.c)}" data-goto="${r.c.n}">${r.c.name}</a>`).join(", "))}</p>` : ""}
+    ${unc.length ? `<p class="key" style="margin-top:6px">${t("Not ranked, leaning or uncertain direction (the likely range or a method-band alternative crosses zero): {list}.", { list: unc.map(r => `<a href="${countryPath(r.c)}" data-goto="${r.c.n}">${r.c.name}</a> (${dirWords(r.c, y, q)}) ${fmtMeasure(r.c, r.eurV, "gdp")}`).join(", ") })}</p>` : ""}`;
 }
 const MIN_GDP_RANK = 5;   // € billion
 function measureTabs() {
@@ -4730,9 +4994,9 @@ function targetPanel(side) {
       <p class="key">${t("Many economies at this end are poorer fuel and food importers. Fuel is fungible and sold through many traders: their figures reflect what they bought from Russia, not a policy, and depend more on the model (open a country for its method band).")}</p>
     </section>
     <section class="section"><h3>${t("Armed Russia")}</h3>
-      <div class="rank">${armed.map((r, i) => `<button class="rank-row" data-goto="${r.c.n}">
+      <div class="rank">${armed.map((r, i) => `<a class="rank-row" href="${countryPath(r.c)}" data-goto="${r.c.n}">
         <span class="i">${i + 1}</span><span>${r.c.name}</span><span class="v"><b>${eur(r.full)}</b> <span class="eur">${fmtMeasure(r.c, r.full, "gdp")}</span></span>
-        <span class="track"><span style="width:${(r.full / armedMax) * 100}%;background:var(--rus)"></span></span></button>`).join("")}</div>
+        <span class="track"><span style="width:${(r.full / armedMax) * 100}%;background:var(--rus)"></span></span></a>`).join("")}</div>
       <p class="key" style="margin-top:8px">${t("Weapons, ammunition, drones, missiles and troops delivered to Russia, at their full value. In the totals, what Russia paid for counts at the seller's net gain, like any sale, and what it did not pay for in full; this list shows the full military value delivered, as information. In the totals: {list}.", { list: armed.map(r => `${r.c.name} ${eur(r.counted)}`).join(", ") })}${ref(["military_payment"])}</p>
     </section>
     <section class="section"><h3>${t("Most money still reaching Russia")}</h3>
@@ -5088,6 +5352,9 @@ document.addEventListener("click", e => {
   if (el.closest("[data-reset]")) { resetOfficial(); return; }
   const gv = el.closest("[data-goview]");
   if (gv) { e.preventDefault(); const inf = document.getElementById("info"); if (inf) inf.open = false; if (narrow() && state.panel && gv.closest("#panel")) closePanel(); window.setView(gv.dataset.goview); return; }
+  // round 54: the A–Z list's links go to each country's own page; here they open its panel
+  const az = el.closest("#az a[data-iso]");
+  if (az && byIso[az.dataset.iso] && !e.ctrlKey && !e.metaKey) { e.preventDefault(); select(byIso[az.dataset.iso].n, true); return; }
   const go = el.closest("#drawer [data-goto], #fact [data-goto], .pop [data-goto]");
   if (go && !e.ctrlKey && !e.metaKey) { e.preventDefault(); select(go.dataset.goto, true); return; }
   // a click outside closes the ⓘ popover
@@ -5146,6 +5413,7 @@ function applyLang() {
   svg.attr("aria-label", t("World map coloured by the change in money flows since before the war") + ". " + t("With a keyboard, use “Find a country” in Filters, or the Ranking view."));
   if (!countryPaths) return;
   for (const c of Object.values(DATA)) c.name = regionName(ISO2[c.iso3], c.name_en);
+  document.querySelectorAll("#az a[data-iso]").forEach(a => { const c = byIso[a.dataset.iso]; if (c) a.textContent = c.name; });
   if (DATA_TO) document.body.dataset.dataTo = fmtDate(DATA_TO);
   status.innerHTML = statusHtml();
   const names = Object.values(DATA).map(c => c.name);

@@ -52,8 +52,11 @@ jobs:
       # round 41: the map's own model (site/index.html), tested directly: invariants, the sign simulation, a snapshot
       - name: Model tests
         run: node --test pipeline/test_model.mjs
-      # share cards are not committed (site/c/); check 24 reads them
-      - name: Share cards
+      # round 54: the static pages' titles and descriptions (seo_templates.mjs) and the country slugs
+      - name: Page copy tests
+        run: node --test pipeline/test_seo.mjs
+      # share cards and the static pages are not committed (site/c/, site/country/, ...); checks 24, 46 and 48 read them
+      - name: Share cards and static pages
         run: node pipeline/share_cards.mjs
       - name: Checks
         working-directory: pipeline

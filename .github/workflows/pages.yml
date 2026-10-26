@@ -30,9 +30,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      # preview images and a page per country, so a shared link shows that country's number; also robots.txt and
-      # sitemap.xml (round 30), with the address from pipeline/site_config.json
-      - name: Share cards
+      # preview images, and (round 54) the static pages written from the map: a page per country (country/<slug>/,
+      # the old c/<iso>.html sent there), the ranking, the lens and method pages, the map in each language (/de/ ...),
+      # robots.txt and sitemap.xml, with the address from pipeline/site_config.json (pipeline/seo_pages.mjs)
+      - name: Share cards and static pages
         run: |
           npm install --no-save playwright@1.48.2
           npx playwright install --with-deps chromium
