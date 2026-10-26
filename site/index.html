@@ -210,9 +210,9 @@ button, input, select { font: inherit; color: inherit; }
 .rk-chip { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 3px 10px; font: inherit; font-size: 12.5px; cursor: pointer; text-decoration: none; display: inline-block; }
 #view svg a.rk-a { text-decoration: none; }
 /* round 54: the A–Z list of every country's own page, in Filters */
-#az { display: flex; flex-wrap: wrap; gap: 3px 12px; font-size: 13px; line-height: 1.5; margin-top: 6px; }
-#az a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
-#az a:hover { border-bottom-color: var(--ink-soft); }
+#az, #topics { display: flex; flex-wrap: wrap; gap: 3px 12px; font-size: 13px; line-height: 1.5; margin-top: 6px; }
+#az a, #topics a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+#az a:hover, #topics a:hover { border-bottom-color: var(--ink-soft); }
 .rk-chip:hover, .rk-chip:focus-visible { border-color: var(--ink-soft); }
 /* round 29 (owner): the ranking keeps every country in its place; one whose direction is not certain is faded and labelled */
 .chart .row.rk-lean .dot { fill-opacity: .5; } .chart .row.rk-unc .dot { fill-opacity: .25; }
@@ -1167,14 +1167,47 @@ li.src-again { color: var(--ink-soft); }
           <span class="search-msg" id="search-msg" role="status"></span>
         </div>
       </section>
+      <!-- round 55 (topic and group pages): one page per question or group of countries, as plain links. The list between
+           the two markers is written by pipeline/seo_pages.mjs from pipeline/seo_topics.json; round 56: in every language, with the Topics page -->
+      <details class="dmore" id="topics-fold">
+        <summary><span data-i18n="Topics">Topics</span></summary>
+        <section class="dblock">
+        <p class="sub" data-i18n="One question per page, with its figures, in every language.">One question per page, with its figures, in every language.</p>
+<!-- topics:start -->
+        <nav id="topics" aria-label="Topics" data-i18n-aria="Topics">
+          <a href="/ukraine-support-tracker/">Ukraine support tracker</a>
+          <a href="/russian-oil-gas-buyers/">Who bought Russian oil and gas</a>
+          <a href="/frozen-russian-assets/">Frozen Russian assets</a>
+          <a href="/europe-energy-payments-vs-aid/">Europe: paid Russia vs aid to Ukraine</a>
+          <a href="/russia-war-income/">Russia's war income from trade</a>
+          <a href="/group/eu/">EU countries</a>
+          <a href="/group/g7/">G7</a>
+          <a href="/group/nato/">NATO members</a>
+          <a href="/group/brics/">BRICS</a>
+          <a href="/group/gulf-states/">Gulf states</a>
+          <a href="/group/central-asia/">Central Asia</a>
+          <a href="/countries-helping-russia/">Which countries help Russia?</a>
+          <a href="/shadow-fleet/">Shadow fleet: who ships Russian oil</a>
+          <a href="/ukrainian-refugees-cost/">Cost of hosting Ukrainian refugees</a>
+          <a href="/eu-vs-us-aid/">EU vs US aid to Ukraine</a>
+          <a href="/ukraine-aid-per-capita/">Aid to Ukraine per person</a>
+          <a href="/military-support-to-russia/">Weapons sent to Russia</a>
+          <a href="/russian-oil-discount/">Russian oil discount and price cap</a>
+          <a href="/group/russia-trade-hubs/">Trade hubs next to Russia</a>
+          <a href="/russian-oil-via-third-countries/">Russian oil refined in third countries</a>
+          <a href="/topics/"><b>All topics →</b></a>
+        </nav>
+<!-- topics:end -->
+        </section>
+      </details>
       <!-- round 54 (findable pages): every country's own page, A to Z, as plain links. The list between the two markers is
            written by pipeline/seo_pages.mjs (run with the share cards) from data.json; a click opens the panel here -->
       <details class="dmore" id="az-fold">
         <summary><span data-i18n="All countries, A to Z">All countries, A to Z</span></summary>
         <section class="dblock">
 <!-- az:start -->
-        <p class="sub" id="az-intro">For 191 countries: support for Ukraine plus how much less, or more, Russia kept from trade with each, against a world without the war, from February 2022 to August 2026, with a likely range and a chance for every direction.</p>
-        <nav id="az" aria-label="All countries, A to Z">
+        <p class="sub" id="az-intro">For 191 countries: support for Ukraine plus how much less, or more, Russia kept from trade with each, against a world without the war, from February 2022 to August 2026, with a range and a chance for every direction.</p>
+        <nav id="az" aria-label="Countries, A to Z">
           <a href="/country/afghanistan/" data-iso="AFG">Afghanistan</a>
           <a href="/country/albania/" data-iso="ALB">Albania</a>
           <a href="/country/algeria/" data-iso="DZA">Algeria</a>
@@ -1266,7 +1299,6 @@ li.src-again { color: var(--ink-soft); }
           <a href="/country/guinea-bissau/" data-iso="GNB">Guinea-Bissau</a>
           <a href="/country/guyana/" data-iso="GUY">Guyana</a>
           <a href="/country/haiti/" data-iso="HTI">Haiti</a>
-          <a href="/country/vatican-city/" data-iso="VAT">Holy See (Vatican City State)</a>
           <a href="/country/honduras/" data-iso="HND">Honduras</a>
           <a href="/country/hong-kong/" data-iso="HKG">Hong Kong</a>
           <a href="/country/hungary/" data-iso="HUN">Hungary</a>
@@ -1384,7 +1416,7 @@ li.src-again { color: var(--ink-soft); }
           <a href="/country/tonga/" data-iso="TON">Tonga</a>
           <a href="/country/trinidad-and-tobago/" data-iso="TTO">Trinidad and Tobago</a>
           <a href="/country/tunisia/" data-iso="TUN">Tunisia</a>
-          <a href="/country/turkiye/" data-iso="TUR">Turkey</a>
+          <a href="/country/turkiye/" data-iso="TUR">Türkiye</a>
           <a href="/country/turkmenistan/" data-iso="TKM">Turkmenistan</a>
           <a href="/country/turks-and-caicos-islands/" data-iso="TCA">Turks and Caicos Islands</a>
           <a href="/country/tuvalu/" data-iso="TUV">Tuvalu</a>
@@ -1395,6 +1427,7 @@ li.src-again { color: var(--ink-soft); }
           <a href="/country/uruguay/" data-iso="URY">Uruguay</a>
           <a href="/country/uzbekistan/" data-iso="UZB">Uzbekistan</a>
           <a href="/country/vanuatu/" data-iso="VUT">Vanuatu</a>
+          <a href="/country/vatican-city/" data-iso="VAT">Vatican City</a>
           <a href="/country/venezuela/" data-iso="VEN">Venezuela</a>
           <a href="/country/vietnam/" data-iso="VNM">Vietnam</a>
           <a href="/country/virgin-islands/" data-iso="VGB">Virgin Islands</a>
@@ -4313,13 +4346,19 @@ const mBar = c => v => scaled(c, v, state.measure) ?? 0;
 // short"): the Kiel Institute's published figure for the country's own aid (its Ukraine Support Tracker: military,
 // financial and humanitarian, with the G7 loans repaid from Russian assets), next to what is counted here, and why they
 // differ. Only where Kiel has the country
-function kielLine(c, counted) {
+// round 55: the Kiel figure on its own (€ bn, or null where Kiel does not have the country), also read by the static
+// topic pages (pipeline/seo_extract.mjs)
+function kielFigure(c) {
   const a = c.aid;
-  if (!a || !a.cats || !(a.src || []).includes("kiel")) return "";
+  if (!a || !a.cats || !(a.src || []).includes("kiel")) return null;
   // round 38 (Kiel reconciliation): cats holds an EU member's share of EU-level aid too; Kiel's own bilateral figure is
   // without it (the EU share is a part of its own on the map)
   const kiel = Object.values(a.cats).reduce((x, v) => x + v, 0) - (a.eu_years || []).reduce((x, v) => x + v, 0) + (a.era_excluded || 0);
-  if (kiel < 0.0005) return "";
+  return kiel < 0.0005 ? null : kiel;
+}
+function kielLine(c, counted) {
+  const a = c.aid, kiel = kielFigure(c);
+  if (kiel == null) return "";
   const s0 = l => (l || []).reduce((x, v) => x + v, 0);
   const why = [];
   if (a.weapons_mv && Math.abs(s0(a.weapons_mv.c)) > 0.0005) why.push(t("donated weapons at their market value"));

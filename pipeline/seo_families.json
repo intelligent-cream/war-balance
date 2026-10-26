@@ -1,0 +1,61 @@
+{
+  "_note": "Round 56 (more findable pages, owner: \"use what we have and show it in a new manner ... split numbers that are together\"): the generated page families, written by seo_pages.mjs with seo_families.mjs from the map's own numbers, in every site language. parts: one page per part of the panel (key) with its address (slug) and side (ua: support for Ukraine; back: money flowing back from it; rus: what Russia kept from trade; frozen: the return Russia lost on frozen money; cost: outside the totals). A part gets a page only where at least minCountries countries have it and the amounts add up to at least minTotal (EUR bn, by size), and not when a topic page of seo_topics.json already ranks it (rank: part:<key>). Its name in each language is in seo_i18n.mjs (PART). years: the years with a page of support for Ukraine (/ukraine-aid-<year>/) and of trade with Russia (/trade-with-russia-<year>/); the last year runs to the data's last month. compare: pairs of countries (ISO codes, in the order searched) with a page /compare/<a>-vs-<b>/, from the keyword research of 26 October 2026; pairwiseTop: the largest donors to Ukraine in euros, every pair of them compared too (the larger donor first).",
+  "parts": {
+    "minCountries": 5,
+    "minTotal": 0.5,
+    "list": [
+      { "key": "aid", "slug": "government-aid-to-ukraine", "side": "ua" },
+      { "key": "euaid", "slug": "eu-aid-to-ukraine-by-member", "side": "ua" },
+      { "key": "ref", "slug": "refugee-hosting-cost", "side": "ua" },
+      { "key": "priv", "slug": "private-donations-to-ukraine", "side": "ua" },
+      { "key": "multilat", "slug": "imf-world-bank-lending-to-ukraine", "side": "ua" },
+      { "key": "undisc", "slug": "undisclosed-military-aid-to-ukraine", "side": "ua" },
+      { "key": "buy", "slug": "imports-from-ukraine", "side": "ua" },
+      { "key": "refsp", "slug": "refugee-spending-in-host-economies", "side": "back" },
+      { "key": "own", "slug": "ukraine-aid-spent-at-home", "side": "back" },
+      { "key": "purl", "slug": "ukraine-aid-spent-in-other-countries", "side": "back" },
+      { "key": "sell", "slug": "sales-to-ukraine", "side": "back" },
+      { "key": "svcukr", "slug": "services-sold-to-ukraine", "side": "back" },
+      { "key": "paid", "slug": "russia-earnings-from-fuel-and-goods", "side": "rus" },
+      { "key": "windfall", "slug": "russia-war-time-fuel-prices", "side": "rus" },
+      { "key": "laund", "slug": "russian-oil-refined-abroad", "side": "rus" },
+      { "key": "sold", "slug": "exports-to-russia", "side": "rus" },
+      { "key": "premium", "slug": "sanctions-premium-on-sales-to-russia", "side": "rus" },
+      { "key": "tax", "slug": "company-taxes-paid-in-russia", "side": "rus" },
+      { "key": "coprofits", "slug": "company-profits-in-russia", "side": "rus" },
+      { "key": "lngpartners", "slug": "stakes-in-russian-oil-and-gas-projects", "side": "rus" },
+      { "key": "svcpaid", "slug": "services-bought-from-russia", "side": "rus" },
+      { "key": "svcsold", "slug": "services-sold-to-russia", "side": "rus" },
+      { "key": "ship", "slug": "shipping-russian-oil", "side": "rus" },
+      { "key": "hidden", "slug": "gold-and-hidden-payments-to-russia", "side": "rus" },
+      { "key": "agents", "slug": "payment-agents-for-russian-trade", "side": "rus" },
+      { "key": "rusfirms", "slug": "russian-owned-companies-abroad", "side": "rus" },
+      { "key": "rusarms", "slug": "buyers-of-russian-weapons", "side": "rus" },
+      { "key": "statefin", "slug": "rosatom-and-russian-state-loans", "side": "rus" },
+      { "key": "wagner", "slug": "wagner-and-africa-corps", "side": "rus" },
+      { "key": "mil", "slug": "weapons-and-troops-sent-to-russia", "side": "rus" },
+      { "key": "frozen", "slug": "frozen-russian-central-bank-reserves", "side": "frozen" },
+      { "key": "frozen_priv", "slug": "frozen-russian-private-assets", "side": "frozen" },
+      { "key": "prem", "slug": "cost-of-replacing-russian-energy", "side": "cost" },
+      { "key": "disc", "slug": "russian-oil-discount-by-buyer", "side": "cost" },
+      { "key": "seized", "slug": "company-assets-seized-by-russia", "side": "cost" },
+      { "key": "exits", "slug": "companies-leaving-russia-exit-cost", "side": "cost" },
+      { "key": "trapped", "slug": "company-profits-trapped-in-russia", "side": "cost" }
+    ]
+  },
+  "years": [2022, 2023, 2024, 2025, 2026],
+  "compare": {
+    "pairwiseTop": 20,
+    "pairs": [
+      ["DEU", "FRA"], ["USA", "DEU"], ["GBR", "DEU"], ["POL", "DEU"], ["IND", "CHN"], ["TUR", "IND"], ["USA", "CHN"], ["IND", "USA"],
+      ["DEU", "IND"], ["CHN", "TUR"], ["IRN", "TUR"], ["CHN", "IRN"], ["CHN", "KAZ"], ["HUN", "SVK"], ["ISR", "TUR"], ["FRA", "GBR"],
+      ["HRV", "HUN"], ["BRA", "CHN"], ["BRA", "IND"], ["GBR", "IND"], ["CHN", "JPN"], ["ARE", "CHN"], ["ARE", "USA"], ["DEU", "ITA"],
+      ["DEU", "NOR"], ["HUN", "SRB"], ["KAZ", "UZB"], ["CHN", "KOR"], ["FRA", "HUN"], ["CAN", "USA"], ["GBR", "IRL"], ["CHN", "PRK"],
+      ["IRN", "PRK"], ["HUN", "POL"], ["ITA", "FRA"], ["ESP", "ITA"], ["NLD", "DEU"], ["USA", "GBR"]
+    ]
+  },
+  "country": {
+    "_note": "Round 57: the rule of round 56 that gives an English country page the title \"Does ... trade with Russia?\" (seo_templates.mjs): where its trade with Russia is searched at least minTrade times (pipeline/seo_demand.json), at least ratio times more than its aid or help, and its aid is searched fewer than maxAid times (the countries whose aid is much searched keep the aid question). It replaces the list of ten countries with hand-written titles.",
+    "tradeFirst": { "minTrade": 400, "ratio": 1.5, "maxAid": 800 }
+  }
+}

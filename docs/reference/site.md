@@ -81,9 +81,16 @@ check 37 in `check_data.py` holds the rules.
   value in its head (canonical, `og:url`, `og:image`, hreflang alternates) and in `SITE_URL`; check 46 fails if any of
   them, or `site/CNAME`, differs, or if a file in `site/` still gives the old address as the site's own. To move the site
   again, change `site_config.json`, the head of `index.html`, `SITE_URL` and `site/CNAME` together.
-- **Generated files.** `robots.txt` (allow all, with the sitemap) and `sitemap.xml` (the map with its seven language
-  versions, `?lang=…`, and every country page `c/<iso>.html`, each with the data's date) are written by
-  `share_cards.mjs`, in CI and in the deploy; they are not committed (`.gitignore`), like `site/c/` and `site/share/`.
+- **Generated files.** `robots.txt` (allow all, with the sitemap) and the sitemaps are written by `share_cards.mjs`
+  (with `seo_pages.mjs`), in CI and in the deploy; they are not committed (`.gitignore`), like `site/c/` and
+  `site/share/`. Since round 56 `sitemap.xml` is an index of one sitemap per language (`sitemap-en.xml`,
+  `sitemap-de.xml` ...), each page listed with its hreflang alternates and the date its words or numbers last changed
+  (`pipeline/seo_lastmod.json`).
+- **Generated pages (rounds 54–56).** A page per country, topic and group (`pipeline/seo_topics.json`), per part of the
+  panel, per year and per pair of countries (`pipeline/seo_families.json`, by rule in `seo_families.mjs`), and the
+  Topics page (`/topics/`), each in all seven languages at `/<lang>/<same path>/`; the frames of the pages in each
+  language are in `pipeline/seo_i18n.mjs`, everything said about a country is the map's own text in that language.
+  Check 48 (`pipeline/seo_check.py`) holds the rules.
 - **Structured data.** The map's head has JSON-LD for the website, the publishing organisation ("War Balance",
   no personal names) and the Dataset (licence CC BY 4.0, coverage February 2022 to August 2026, the JSON
   download). Each country page has a WebPage that is part of the Dataset.

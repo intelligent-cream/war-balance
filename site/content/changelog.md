@@ -2,6 +2,30 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r57">Round 57: richer country pages <span class="cl-date">26 October</span></h2>
+
+Each country page now tells more of its story, in the map's own words and in all seven languages; the map itself is unchanged.
+
+- **New sections, shown only where the data have something to say**: its story in short and what decides its number (the map's own tags and lines), trade with Russia before and after the war, sanctions and Russia's own cut-offs, the cost of switching away from Russian energy, frozen Russian money, refugees, why the figure differs from the Kiel tracker, money flowing back, companies, indirect channels such as trade hubs and refined oil, and its neighbours and groups, numbered by the map's own ranking rule. The longer sections are folded.
+- **Questions chosen for each country** from one pool, by its data and by what people search for. Every source behind its parts is now a link, listed by part with its kind: official, research, press or own estimate.
+- The wording check now also stops comparative words (smaller, higher, below, far more and the like) in the pages' fixed text, so no sentence can go stale when the data change. No number changes.
+
+<h2 id="cl-r56">Round 56: many more findable pages <span class="cl-date">26 October</span></h2>
+
+The same figures, shown in more ways and more languages, all written from the map every time the site is published; the map itself is unchanged.
+
+- **Every page in seven languages**: each country, topic and group page now also exists in Ukrainian, German, French, Polish, Dutch and Spanish, for every chance level, with the map's own words for it.
+- **New pages**: which countries help Russia (in money terms), the shadow fleet, the cost of hosting refugees, EU against US aid, aid per person, weapons sent to Russia, the oil discount, Russian oil refined in other countries and the trade hubs around Russia; each part of the numbers ranked on its own page; support for Ukraine and trade with Russia for each year since 2022; and over 200 pairs of countries side by side (/compare/).
+- A Topics page lists them all, and each country page links its groups, comparisons and parts. No number changes.
+
+<h2 id="cl-r55">Round 55: topic and group pages <span class="cl-date">26 October</span></h2>
+
+Pages that answer one question each, built from the map's own figures every time the site is published; the map itself is unchanged.
+
+- **Five topic pages**: a Ukraine support tracker (support for Ukraine by country in euros, % of GDP and per person, with the net and the Kiel Institute's figure beside what is counted here), who bought Russian oil and gas (what each country paid Russia; the model does not split those payments by fuel, and the page says so), frozen Russian assets (the return Russia lost, not the amount frozen), Europe's payments to Russia against its support for Ukraine, and Russia's war income from trade.
+- **Six group pages**, at /group/: the EU, the G7, NATO, BRICS, the Gulf states and Central Asia, each with the members' totals and every member's net, support and trade, with its likely range and chance. Belarus and North Korea stay apart as parties to the war; Russia and Ukraine have no figure of their own.
+- Each page has a short list of questions answered with its figures and a link to the matching view of the map. Filters lists the pages under Topics, and the ranking pages link them. No number changes.
+
 <h2 id="cl-r54">Round 54: findable pages <span class="cl-date">26 October</span></h2>
 
 Every country, the ranking and the method now have their own page, so a search can find them; the map itself is unchanged.

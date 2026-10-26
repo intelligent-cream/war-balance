@@ -52,8 +52,29 @@ function tData(str) {
 }
 const dataText = (str, tag = "span") => { const r = tData(str); return r.en ? `<${tag} lang="en">${r.s}</${tag}>` : r.s; };
 const regionNames = {};
-// the browser's name for a country in the chosen language; English (and any failure) keeps the name given
+// Round 57 (owner: "translations of all country names to every language ... all linked to the countries"): the ONE
+// source of country names, for the map and every static page (seo_extract.mjs reads them through regionName): the
+// browser's own name (Intl.DisplayNames) in each language, English from data.json, and this one small table for the
+// names the browser writes awkwardly ("Congo - Kinshasa", "Hong Kong SAR China") or that are disputed or changed
+// (Türkiye, Palestine, Kosovo). A language left out keeps the browser's name.
+const NAME_FIX = {
+  TR: { en: "Türkiye" },
+  CD: { en: "DR Congo", de: "Demokratische Republik Kongo", fr: "République démocratique du Congo", es: "República Democrática del Congo", pl: "Demokratyczna Republika Konga", nl: "Democratische Republiek Congo", uk: "Демократична Республіка Конго" },
+  CG: { en: "Congo", de: "Republik Kongo", fr: "République du Congo", es: "República del Congo", pl: "Kongo", nl: "Congo-Brazzaville", uk: "Республіка Конго" },
+  PS: { en: "Palestine", de: "Palästina", fr: "Palestine", es: "Palestina", pl: "Palestyna", nl: "Palestina", uk: "Палестина" },
+  XK: { en: "Kosovo", de: "Kosovo", fr: "Kosovo", es: "Kosovo", pl: "Kosowo", nl: "Kosovo", uk: "Косово" },
+  CZ: { en: "Czechia" },
+  MK: { en: "North Macedonia" },
+  CI: { en: "Côte d'Ivoire", uk: "Кот-д'Івуар" },
+  HK: { de: "Hongkong", fr: "Hong Kong", es: "Hong Kong", pl: "Hongkong", nl: "Hongkong", uk: "Гонконг" },
+  MO: { de: "Macau", fr: "Macao", es: "Macao", pl: "Makau", nl: "Macau", uk: "Макао" },
+  MM: { fr: "Myanmar", es: "Myanmar", pl: "Mjanma", nl: "Myanmar", uk: "Мʼянма" },
+  VA: { en: "Vatican City" },
+};
+// the browser's name for a country in the chosen language (NAME_FIX first); English (and any failure) keeps the name given
 function regionName(iso2, fallback) {
+  const fix = iso2 && NAME_FIX[iso2] && NAME_FIX[iso2][LANG];
+  if (fix) return fix;
   if (LANG === "en" || !iso2) return fallback;
   try {
     const n = (regionNames[LANG] = regionNames[LANG] || new Intl.DisplayNames([LANG], { type: "region" })).of(iso2);
