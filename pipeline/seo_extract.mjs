@@ -3,13 +3,23 @@
 // (calc, chanceInfo, chanceText, rangeWords, fmtMeasure, partSections, ...) in the chosen language, so every number,
 // range and chance word on a country page is the one its panel shows. Nothing here computes a number of its own.
 
-/* global DATA, byIso, LANG, loadLang, regionName, ISO2, calc, chance, chanceInfo, chanceText, chanceSentence, uncertain, leaning, isNearZero,
+/* global DATA, byIso, LANG, methodBands, loadLang, regionName, ISO2, calc, chance, chanceInfo, chanceText, chanceSentence, uncertain, leaning, isNearZero,
    noDataAt, scaled, fmtMeasure, rangeWords, eur, headVerb, verbAround, verb, netSentence, keptWords, leadLine, partSections, plainName,
    partGrade, evidence, kielLine, partSourceIds, SRC, tData, docsOf, yearsOf, YEARS, FRAC, yi, PARTY_TO_WAR, PARTY_WHY, t, countrySlug,
    HEAD3, refs, kielFigure, REGION_OF */
 
 export async function extractSite({ lang, isos }) {
   if (lang !== "en") await loadLang(lang);
+  // round 56 (every country in every language): the method band and the certainty of a number do not depend on the
+  // language, and the panel's words ask for them many times; they are worked out once per country and year for the
+  // whole run (kept on the page, started again with the English pass) and the map's own functions restored after
+  const W = window;
+  if (!W.__wbMemo || lang === "en") W.__wbMemo = { mb: new Map(), unc: new Map(), ch: new Map() };
+  const _mb = methodBands, _unc = uncertain, _ch = chance, MM = W.__wbMemo;
+  chance = (c, y, q) => { const k = c.iso3 + "|" + y + "|" + q; let v = MM.ch.get(k); if (v === undefined) MM.ch.set(k, (v = _ch(c, y, q))); return v; };   // eslint-disable-line no-global-assign
+  methodBands = (c, y) => { const k = c.iso3 + "|" + y; let v = MM.mb.get(k); if (v === undefined) MM.mb.set(k, (v = _mb(c, y))); return v; };   // eslint-disable-line no-global-assign
+  uncertain = (c, y, q) => { const k = c.iso3 + "|" + y + "|" + q; let v = MM.unc.get(k); if (v === undefined) MM.unc.set(k, (v = _unc(c, y, q))); return v; };   // eslint-disable-line no-global-assign
+  try {
   const prevLang = LANG;
   LANG = lang;   // eslint-disable-line no-global-assign
   for (const c of Object.values(DATA)) c.name = regionName(ISO2[c.iso3], c.name_en);
@@ -41,6 +51,7 @@ export async function extractSite({ lang, isos }) {
   }
   const pct = p => (p >= 0.995 ? ">99%" : Math.floor(p * 100) + "%");
   const rank = { net: ranking("net"), ua: lang === "en" ? ranking("ua") : null, rus: lang === "en" ? ranking("rus") : null };
+  // (round 56: the net ranking in each language gives the country pages' "nearby" lists their group names)
   // ----- one country, as its panel shows it -----
   function country(c) {
     const k = calc(c, Y), party = PARTY_TO_WAR.has(c.iso3), noData = !!k.noData, mostly = !!k.mostlyNoData;
@@ -80,6 +91,9 @@ export async function extractSite({ lang, isos }) {
       frozen: M(k.frozen, k.frozenLo, k.frozenHi, "net"), paidGain: M(k.rusPaid, k.rusPaidLo, k.rusPaidHi, "net"), paid: M(k.paidRussia || 0, null, null),
       kiel: M(typeof kielFigure === "function" ? kielFigure(c) : null, null, null), aid: M(ap ? ap.v : 0, ap ? ap.lo : null, ap ? ap.hi : null, "ua") };
     for (const p of k.shiftParts.concat(k.backShift)) out.measures["part:" + p.k] = { ...M(p.v, p.lo, p.hi, "part"), range: rangeWords(c, p.lo, p.hi, "part", "gdp", p.v >= 0 ? 1 : -1), name: strip(plainName(p, c)) };
+    // round 56 (more findable pages): the parts outside the totals (the oil discount, the cost of replacing Russian
+    // energy, what Russia took from companies), marked as such, for their own pages
+    for (const p of k.costParts.concat(k.takenParts || [])) if (!out.measures["part:" + p.k]) out.measures["part:" + p.k] = { ...M(p.v, p.lo, p.hi, "part"), range: rangeWords(c, p.lo, p.hi, "part", "gdp", p.v >= 0 ? 1 : -1), name: strip(p.label), cost: true };
     // the fuel share of what it bought from Russia before the war (2018-2021, data.json), for the energy page
     out.fuelSharePreWar = c.to_rus && c.to_rus.gain && c.to_rus.gain.fossil_share != null ? c.to_rus.gain.fossil_share : null;
     out.region = typeof REGION_OF !== "undefined" ? REGION_OF[c.iso3] || "asia" : "";
@@ -87,6 +101,8 @@ export async function extractSite({ lang, isos }) {
     const iy = yi(Y);
     out.armedFull = c.military_rus ? (c.military_rus.alt || c.military_rus.years).slice(1, iy + 1).reduce((a, b) => a + b, 0) : 0;
     out.armedFullEur = out.armedFull > 0.001 ? eur(out.armedFull) : "";
+    // round 56: as a measure too (Russia's panel, "Armed Russia"; information, not in the totals at this value)
+    if (out.armedFull > 0.0005) out.measures.armed = M(out.armedFull, null, null);
     // the parts, by section, as the panel's "What makes up the number" (round 26)
     out.sections = noData ? [] : partSections(c, k).filter(s => s.parts.length || Math.abs(s.tile) >= 0.0005).map(sec => {
       let vk = sec.q, vs = sec.tile;
@@ -104,7 +120,7 @@ export async function extractSite({ lang, isos }) {
     let prev = { shift: 0, uaBal: 0, rusBal: 0 };
     out.years = YEARS.filter(y => y >= 2022).map(y => {
       const kk = calc(c, y), row = { y, ytd: FRAC[yi(y)] < 1, ua: eur(kk.uaBal - prev.uaBal, true), rus: eur(kk.rusBal - prev.rusBal, true), net: eur(kk.shift - prev.shift, true),
-        uaBn: kk.uaBal - prev.uaBal, cum: g(kk.shift, true) };
+        uaBn: kk.uaBal - prev.uaBal, rusBn: kk.rusBal - prev.rusBal, netBn: kk.shift - prev.shift, cum: g(kk.shift, true) };
       prev = kk;
       return row;
     });
@@ -118,7 +134,9 @@ export async function extractSite({ lang, isos }) {
     return out;
   }
   const want = isos ? isos.map(i => byIso[i]).filter(Boolean) : Object.values(DATA);
-  const res = { lang, dataTo: document.body.dataset.dataTo || "", countries: want.map(country), rank };
+  const res = { lang, dataTo: document.body.dataset.dataTo || "", countries: want.map(country), rank,
+    // round 56: the map's chance words in this language, for the country pages' titles in it
+    words: { leanU: t("Leaning toward Ukraine"), leanR: t("Leaning toward Russia"), near: t("near zero"), zero: t("essentially zero"), unc: t("too close to call"), party: t("Party to the war") } };
   if (lang === "en") {
     // How it works: the money flows, each with its method page (for the static How it works page)
     res.flows = (typeof FLOWS !== "undefined" ? FLOWS : []).map(f => ({ id: f.id, name: t(f.name), what: t(f.what), method: f.method || "" }));
@@ -126,6 +144,7 @@ export async function extractSite({ lang, isos }) {
   LANG = prevLang;   // eslint-disable-line no-global-assign
   for (const c of Object.values(DATA)) c.name = regionName(ISO2[c.iso3], c.name_en);
   return res;
+  } finally { methodBands = _mb; uncertain = _unc; chance = _ch; }   // eslint-disable-line no-global-assign
 }
 
 // The method pages, the limitations and the changelog, rendered by the map's own Markdown step (loadContent, mdRender:

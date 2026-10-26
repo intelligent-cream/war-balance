@@ -1207,5 +1207,5 @@ I18N.pl = {
   "Countries helping Ukraine or Russia: money map since 2022": "Kto pomaga Ukrainie, a kto Rosji? Mapa pieniędzy od 2022",
   "All countries, A to Z": "Wszystkie kraje od A do Z",
   "Topics": "Tematy",
-  "One question per page, with its figures (in English).": "Jedno pytanie na stronę, z jego liczbami (po angielsku).",
+  "One question per page, with its figures, in every language.": "Jedno pytanie na stronę, z jego liczbami, w każdym języku.",
 };

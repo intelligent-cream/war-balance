@@ -1,5 +1,5 @@
 {
-  "_note": "Round 55: the topic and group pages (pipeline/seo_topics.mjs, written with the other static pages by seo_pages.mjs). One entry = one page; every figure comes from the map at deploy. Fields: slug; kind 'topic' (/<slug>/) or 'group' (/group/<slug>/); label (the link text in the home page's Topics list); title (at most 60 characters) and description (at most 155), each a string or a list of forms, the first that fits is used; h1; intro; rank: the measure the table is ranked by (net, ua, rus, frozen, paid, paidGain, aid, kiel, or part:<key> for one part of the panel); order: desc (largest first; for net and rus that is most toward Ukraine) or asc (most toward Russia first); sort: gdp (% of GDP), eur or pp (per person); columns: the other measures shown; members: ISO codes of a group, or regions: the map's regions (eu, eur, am, asia, mea); exclude: ISO codes left out; minGdp: smallest economy ranked (€ bn, default 5 for gdp and pp, 0 for eur); nonzero: leave out countries whose ranked measure is zero; limit: rows shown; map: the map's address to open (#view=rank&lens=support ...); faq: questions, each answered with {placeholders} filled from the table (see seo_topics.mjs); sections: extra paragraphs or lists; notes: short lines under the table; subtotals: group slugs whose totals are shown too; related: slugs of related pages. Placeholders in title, description, intro, faq and sections: {n} {dataTo} {top1} {top2} {top3} {top3list} {top1_eur} {top1_pct} {top1_pp}; {sum:KEY_eur} {sum:KEY_pct} {sum:KEY_pp} {sum:KEY_dir} (members' best estimates added, % of their combined GDP); {cmp:A:B} (more than / less than); {ratio:A:B}; {nToU:KEY} {nToR:KEY} {nUnsure:KEY} (counts by the panel's chance level: very likely toward Ukraine, very likely toward Russia, not certain) and {namesToU:KEY} {namesToR:KEY} {namesUnsure:KEY} (their names); {top1by:KEY} {top3by:KEY} {top1by:KEY_eur} (the largest by another measure); {sub:SLUG:KEY_eur} and {sub:SLUG:KEY_pct} (a subtotal).",
+  "_note": "Round 55: the topic and group pages (pipeline/seo_topics.mjs, written with the other static pages by seo_pages.mjs). One entry = one page; every figure comes from the map at deploy. Fields: slug; kind 'topic' (/<slug>/) or 'group' (/group/<slug>/); label (the link text in the home page's Topics list); title (at most 60 characters) and description (at most 155), each a string or a list of forms, the first that fits is used; h1; intro; rank: the measure the table is ranked by (net, ua, rus, frozen, paid, paidGain, aid, kiel, or part:<key> for one part of the panel); order: desc (largest first; for net and rus that is most toward Ukraine) or asc (most toward Russia first); sort: gdp (% of GDP), eur or pp (per person); columns: the other measures shown; members: ISO codes of a group, or regions: the map's regions (eu, eur, am, asia, mea); exclude: ISO codes left out; minGdp: smallest economy ranked (€ bn, default 5 for gdp and pp, 0 for eur); nonzero: leave out countries whose ranked measure is zero; limit: rows shown; map: the map's address to open (#view=rank&lens=support ...); faq: questions, each answered with {placeholders} filled from the table (see seo_topics.mjs); sections: extra paragraphs or lists; notes: short lines under the table; subtotals: group slugs whose totals are shown too; related: slugs of related pages. Placeholders in title, description, intro, faq and sections: {n} {dataTo} {top1} {top2} {top3} {top3list} {top1_eur} {top1_pct} {top1_pp}; {sum:KEY_eur} {sum:KEY_pct} {sum:KEY_pp} {sum:KEY_dir} (members' best estimates added, % of their combined GDP); {cmp:A:B} (more than / less than); {ratio:A:B}; {nToU:KEY} {nToR:KEY} {nUnsure:KEY} (counts by the panel's chance level: very likely toward Ukraine, very likely toward Russia, not certain) and {namesToU:KEY} {namesToR:KEY} {namesUnsure:KEY} (their names); {top1by:KEY} {top3by:KEY} {top1by:KEY_eur} (the largest by another measure); {sub:SLUG:KEY_eur} and {sub:SLUG:KEY_pct} (a subtotal); {iso:ISO:KEY_eur} and {iso:ISO:KEY_pct} (one named country's figure, round 56). Round 56: rank may also be armed (weapons and troops sent to Russia at full value); order abs ranks by size either way; side 'cost' marks a measure outside the totals; moneyNote 'mil' says how weapons sent to Russia count.",
   "pages": [
     {
       "slug": "ukraine-support-tracker",
@@ -7,19 +7,19 @@
       "label": "Ukraine support tracker",
       "title": ["Ukraine support tracker: aid and Russia trade by country", "Ukraine support tracker: aid and trade with Russia"],
       "description": [
-        "Support for Ukraine since 2022 by country, in euros, % of GDP and per person, with trade with Russia counted against a no-war world. Ranges, sources.",
-        "Support for Ukraine since 2022 by country, in euros and % of GDP, with trade with Russia counted. Ranges and sources."
+        "Support for Ukraine since 2022 by country, largest in euros first, with % of GDP, per person and trade with Russia vs a no-war world. Ranges, sources.",
+        "Support for Ukraine since 2022 by country, in euros, % of GDP and per person, with trade with Russia counted. Ranges and sources."
       ],
       "h1": "Ukraine support tracker: aid, refugees and trade with Russia, every country",
-      "intro": "Support for Ukraine from February 2022 to {dataTo} for every country: its own aid (loans at their gift value), its share of EU aid and the cost of hosting refugees, minus money flowing back. Beside it, the net: support plus how much less, or more, Russia kept from trade with that country than in a world without the war. {top3list} gave the most as a share of their economy.",
+      "intro": "Support for Ukraine from February 2022 to {dataTo} for every country, largest in euros first: its own aid (loans at their gift value), its share of EU aid and the cost of hosting refugees, minus money flowing back, each also as a share of GDP and per person. Beside it, the net: support plus how much less, or more, Russia kept from trade with that country than in a world without the war. {top3list} gave the most in euros.",
       "rank": "ua",
       "order": "desc",
-      "sort": "gdp",
+      "sort": "eur",
       "columns": ["net", "aid", "kiel"],
       "limit": 60,
       "map": "#view=rank&lens=support",
       "faq": [
-        { "q": "Which countries give the most to Ukraine?", "a": "As a share of one year's GDP, {top1} ({top1_pct}), {top2} and {top3} gave the most support since 2022. Together the {n} countries in this table gave {sum:ua_eur}. In euros the largest amounts came from {top3by:ua}: {top1by:ua_eur} from {top1by:ua}." },
+        { "q": "Which countries give the most to Ukraine?", "a": "In euros, {top3list} gave the most support since 2022: {top1} {top1_eur}. Together the {n} countries in this table gave {sum:ua_eur}. As a share of GDP the order changes; each row gives both, and per person." },
         { "q": "How is this different from an aid-only tracker?", "a": "It adds what aid-only trackers do not measure: the change in what Russia kept from each country's trade against a world without the war, the return Russia lost on money frozen there, refugee hosting, loans at their gift value and money flowing back to the donor. With all of that, {nToU:net} of the countries listed are very likely toward Ukraine and {nToR:net} very likely toward Russia." },
         { "q": "Where do the aid figures come from?", "a": "Government aid starts from the Kiel Institute's Ukraine Support Tracker, adjusted: donated weapons at their market value, loans at their gift value, military aid counted when delivered. The Kiel column shows the Institute's own published figure for each country's aid next to what is counted here. Refugee hosting, EU shares and money flowing back come from other official sources, listed on each country page." }
       ],
@@ -266,6 +266,228 @@
         { "q": "Is Central Asia helping Russia?", "a": "In money terms the five together come to {sum:net_pct} of their combined GDP {sum:net_dir}. Very likely toward Russia: {namesToR:net}. Direction not certain (likely, too close to call or near zero): {namesUnsure:net}. Goods re-exported to Russia through them count for the countries that made them." }
       ],
       "related": ["brics", "russia-war-income", "gulf-states"]
+    },
+    {
+      "slug": "countries-helping-russia",
+      "kind": "topic",
+      "label": "Which countries help Russia",
+      "title": ["Which countries help Russia? Money toward Russia since 2022", "Countries helping Russia, in money terms"],
+      "description": [
+        "Countries whose money moved toward Russia since 2022, through trade, fuel and arms, against a no-war world. {top1} first. Ranges and sources.",
+        "Countries whose money moved toward Russia since 2022, through trade, fuel and arms, against a world without the war. With ranges and sources."
+      ],
+      "h1": "Which countries help Russia? Where money moved toward Russia since 2022",
+      "intro": "From February 2022 to {dataTo}, Russia kept more from trade with these countries than in a world without the war, by more than they gave Ukraine. It is a money measure, not a list of allies, and each row gives the chance of its direction. {top1}, {top2} and {top3} lead as a share of their economy; Belarus and North Korea, parties to the war, are listed apart.",
+      "rank": "net",
+      "order": "asc",
+      "sort": "gdp",
+      "onlySide": "russia",
+      "columns": ["rus", "ua", "part:mil"],
+      "limit": 60,
+      "map": "#view=rank",
+      "moneyNote": "mil",
+      "faq": [
+        {"q": "Which countries support Russia financially?", "a": "In money terms, {nToR:net} of the {n} countries listed are very likely toward Russia since 2022, led by {top1} ({top1_pct} of one year's GDP); for the others it is likely, too close to call or near zero. The figure is how much more Russia kept from trade with each, against a world without the war, minus its support for Ukraine."},
+        {"q": "Does buying Russian oil mean a country funds the war?", "a": "Not the full purchase. Only Russia's taxes and profit above a no-war normal are counted, so a buyer that paid less than before, or got a discount, can lean toward Ukraine."},
+        {"q": "Are weapons sent to Russia counted?", "a": "Yes, for the four countries that sent them (North Korea, Iran, Belarus and China): what Russia paid for counts at the seller's net gain, like a sale; what it did not pay for, in full. Diplomacy is not in the number."}
+      ],
+      "related": ["russia-war-income", "russian-oil-gas-buyers", "brics", "military-support-to-russia"]
+    },
+    {
+      "slug": "shadow-fleet",
+      "kind": "topic",
+      "label": "Shadow fleet: who ships Russian oil",
+      "title": ["Shadow fleet: who earns from shipping Russian oil", "Russian oil shipping and the shadow fleet, by country"],
+      "description": [
+        "Which countries' shipping and insurance firms earned more from carrying Russian oil since 2022 than without the war. {top1} first. Ranges, sources.",
+        "Which countries earned from shipping and insuring Russian oil since 2022, against a world without the war. Ranges and sources."
+      ],
+      "h1": "Shadow fleet: which countries earn from shipping Russian oil?",
+      "intro": "Russia's seaborne oil moves on tankers that someone owns, manages and insures. This page ranks how much more each country's shipping and insurance firms earned from carrying Russian oil from February 2022 to {dataTo} than without the war, at their net gain, counted for the country that really controls the tankers, never the flag. It counts money, not ships: {top1} leads with {top1_eur}.",
+      "rank": "part:ship",
+      "order": "asc",
+      "sort": "eur",
+      "minGdp": 0,
+      "nonzero": true,
+      "columns": ["rus", "net"],
+      "limit": 30,
+      "map": "#view=rank&lens=payments",
+      "faq": [
+        {"q": "Who owns the shadow fleet?", "a": "By extra income from carrying and insuring Russian oil since 2022, firms controlled from {top3list} earned the most. Ship counts and flags change from month to month; the money is the steadier measure."},
+        {"q": "Is shipping Russian oil counted as money toward Russia?", "a": "Yes, as earnings from trade with Russia: the extra income a country's firms made carrying and insuring Russian oil counts in its trade with Russia, like a sale to Russia, at the firms' net gain. The oil sale itself counts under the buyer's trade."}
+      ],
+      "related": ["russian-oil-gas-buyers", "russian-oil-discount", "russia-war-income"]
+    },
+    {
+      "slug": "ukrainian-refugees-cost",
+      "kind": "topic",
+      "label": "Cost of hosting Ukrainian refugees",
+      "title": ["Cost of hosting Ukrainian refugees, by country", "Ukrainian refugees: hosting cost by country"],
+      "description": [
+        "What hosting refugees from Ukraine cost each country's government since 2022, from budgets and audit offices. {top1} first by share of GDP.",
+        "What hosting refugees from Ukraine cost each country's government since 2022, as % of GDP and in euros. Ranges and sources."
+      ],
+      "h1": "What has hosting Ukrainian refugees cost each country since 2022?",
+      "intro": "Refugee hosting is part of each country's support for Ukraine here: what all levels of government actually spent on refugees from February 2022 to {dataTo}, minus what donors paid back and the host's own gain on refugees' work. {top1}, {top2} and {top3} carried the most as a share of their economy.",
+      "rank": "part:ref",
+      "order": "desc",
+      "sort": "gdp",
+      "nonzero": true,
+      "columns": ["ua", "net"],
+      "limit": 40,
+      "map": "#view=rank&lens=support",
+      "faq": [
+        {"q": "Which country has spent the most on Ukrainian refugees?", "a": "As a share of GDP, {top1} ({top1_pct}), {top2} and {top3}. In euros, {top1by:part:ref} spent the most: {top1by:part:ref_eur}. The cost comes from government budgets and audit offices for 27 hosts; elsewhere from refugee-years times a cost per person calibrated on those budgets."},
+        {"q": "Is refugee hosting counted as aid to Ukraine?", "a": "Yes, as support for Ukraine, beside government aid. Aid-only trackers usually leave it out, which is one reason totals differ."}
+      ],
+      "related": ["ukraine-support-tracker", "eu", "europe-energy-payments-vs-aid"]
+    },
+    {
+      "slug": "eu-vs-us-aid",
+      "kind": "topic",
+      "label": "EU vs US aid to Ukraine",
+      "title": ["EU vs US aid to Ukraine: who has given more since 2022?", "EU vs US aid to Ukraine since 2022"],
+      "description": [
+        "Europe vs the US: support for Ukraine since 2022 in euros, % of GDP and per person, with refugee hosting and loans at gift value. Ranges, sources.",
+        "Europe vs the United States: support for Ukraine since 2022 in euros, % of GDP and per person. Ranges and sources."
+      ],
+      "h1": "EU vs US: who has given Ukraine more since 2022?",
+      "intro": "From February 2022 to {dataTo}, the EU's 27 members together supported Ukraine with {sub:eu:ua_eur} ({sub:eu:ua_pct} of their combined GDP): their own aid, their shares of EU aid and refugee hosting. The United States gave {iso:USA:ua_eur} ({iso:USA:ua_pct} of its GDP). The table ranks each country in euros, with its share of GDP and per person, where the order changes.",
+      "rank": "ua",
+      "order": "desc",
+      "sort": "eur",
+      "members": ["USA", "GBR", "CAN", "JPN", "NOR", "CHE", "AUT", "BEL", "BGR", "HRV", "CYP", "CZE", "DNK", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "IRL", "ITA", "LVA", "LTU", "LUX", "MLT", "NLD", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE"],
+      "subtotals": ["eu", "g7"],
+      "columns": ["net", "kiel"],
+      "limit": 33,
+      "map": "#view=rank&lens=support",
+      "faq": [
+        {"q": "Has Europe given more to Ukraine than the US?", "a": "EU members together gave {sub:eu:ua_eur} since 2022 ({sub:eu:ua_pct} of their combined GDP), the United States {iso:USA:ua_eur} ({iso:USA:ua_pct} of its GDP). Both figures count aid with loans at their gift value and refugee hosting; the Kiel column gives the Institute's own figure for each country's aid."}
+      ],
+      "related": ["ukraine-support-tracker", "eu", "g7", "europe-energy-payments-vs-aid"]
+    },
+    {
+      "slug": "ukraine-aid-per-capita",
+      "kind": "topic",
+      "label": "Aid to Ukraine per person",
+      "title": ["Ukraine aid per capita: which country gives most per person", "Aid to Ukraine per person, by country"],
+      "description": [
+        "Support for Ukraine since 2022 per person in each donor country, with refugee hosting and loans at gift value. {top1} first: {top1_pp}. Ranges, sources.",
+        "Support for Ukraine since 2022 per person in each country, with refugee hosting and loans at gift value. Ranges and sources."
+      ],
+      "h1": "Ukraine aid per capita: which countries give the most per person?",
+      "intro": "Support for Ukraine from February 2022 to {dataTo}, divided by each country's population. {top1} gave the most per person ({top1_pp}), then {top2} and {top3}. Large donors in euros rank lower here.",
+      "rank": "ua",
+      "order": "desc",
+      "sort": "pp",
+      "columns": ["net", "kiel"],
+      "limit": 50,
+      "map": "#view=rank&lens=support",
+      "faq": [
+        {"q": "Which country gives the most to Ukraine per person?", "a": "{top1}, with {top1_pp} per resident since 2022, followed by {top2} and {top3}."}
+      ],
+      "related": ["ukraine-support-tracker", "eu-vs-us-aid"]
+    },
+    {
+      "slug": "military-support-to-russia",
+      "kind": "topic",
+      "label": "Weapons sent to Russia",
+      "title": ["Who sends Russia weapons? Drones, shells and missiles", "Military support to Russia since 2022, by country"],
+      "description": [
+        "Shells, missiles, drones and troops sent to Russia since 2022 by North Korea, Iran, Belarus and China: their full value and what counts in the totals.",
+        "Weapons and troops sent to Russia since 2022, by country: their full value and what counts in the totals, with sources."
+      ],
+      "h1": "Who sends Russia weapons? Military supplies to Russia since 2022",
+      "intro": "Weapons, ammunition and troops sent to Russia from February 2022 to {dataTo}, by sending country, at their full value as Russia's panel lists them, beside what counts in the totals: what Russia paid for counts at the seller's net gain, like a sale; what it did not pay for counts in full. The evidence is thinner than for trade, so the figures are rough. Belarus and North Korea, parties to the war, are listed apart. Dual-use goods in recorded trade count under trade.",
+      "rank": "armed",
+      "order": "desc",
+      "sort": "eur",
+      "minGdp": 0,
+      "nonzero": true,
+      "columns": ["part:mil", "net"],
+      "limit": 20,
+      "map": "#RUS",
+      "moneyNote": "mil",
+      "faq": [
+        {"q": "Is Iran sending drones to Russia?", "a": "Yes. Iran's Shahed drones and missiles delivered under contract since 2022 come to about {iso:IRN:armed_eur} at full value, from the sources on Iran's page."},
+        {"q": "Are North Korean troops counted?", "a": "Yes: North Korea's shells, missiles and troops come to about {iso:PRK:armed_eur} at full value since 2022. As a party to the war on Russia's side it is listed apart and not ranked."},
+        {"q": "Is China sending weapons to Russia?", "a": "Only what is not in recorded trade is counted here (unrecorded military items, smuggled dual-use goods, services): about {iso:CHN:armed_eur} at full value since 2022, a rough estimate. Recorded dual-use exports already count under China's trade with Russia."}
+      ],
+      "related": ["countries-helping-russia", "russia-war-income"]
+    },
+    {
+      "slug": "russian-oil-discount",
+      "kind": "topic",
+      "label": "Russian oil discount and price cap",
+      "side": "cost",
+      "title": ["Russian oil price cap: who got the discount since 2022", "Who bought Russian oil at a discount"],
+      "description": [
+        "Since the price cap and sanctions, Russian crude has sold below Brent. The discount each buyer gained since 2022, beyond Russia's pre-war discount. {top1} first.",
+        "Since the price cap and sanctions, Russian crude has sold below Brent: the discount each buyer gained since 2022, with sources."
+      ],
+      "h1": "Russian oil price cap: who bought Russian crude at a discount?",
+      "intro": "Since March 2022 Russia has sold crude below Brent, under the EU embargo and the G7 price cap. This page ranks the discount each buyer gained from then to {dataTo}, counting only the part beyond Russia's normal pre-war discount: {top1} gained the most ({top1_eur}). It is shown for information and not added to the totals: what Russia kept from each buyer, discounts included, is in its trade figures.",
+      "rank": "part:disc",
+      "order": "asc",
+      "sort": "eur",
+      "minGdp": 0,
+      "nonzero": true,
+      "columns": ["paid", "rus", "net"],
+      "limit": 25,
+      "map": "#view=rank&lens=payments",
+      "faq": [
+        {"q": "How big is the discount on Russian oil?", "a": "Across the {n} buyers listed, the discount gained since March 2022 beyond Russia's normal pre-war discount comes to {sum:part:disc_eur}, most of it for {top3list}."},
+        {"q": "Did the price cap reduce Russia's oil income?", "a": "Partly. Selling below world prices cut what Russia kept, but war-time prices raised it, above all in 2022; each buyer's page shows both in its line for war-time fuel prices."}
+      ],
+      "related": ["russian-oil-gas-buyers", "shadow-fleet", "russia-war-income"]
+    },
+    {
+      "slug": "russia-trade-hubs",
+      "kind": "group",
+      "label": "Trade hubs next to Russia",
+      "title": ["Sanctions and re-export hubs: UAE, Türkiye, Kazakhstan", "Trade hubs and Russia since 2022"],
+      "description": [
+        "The UAE, Türkiye, Kazakhstan, Kyrgyzstan, Armenia, Georgia and other hubs: what Russia kept from trade with each since 2022, re-exports credited to makers.",
+        "Trade hubs around Russia since 2022: what Russia kept from trade with each, with re-exported goods credited to the countries that made them."
+      ],
+      "h1": "Trade hubs and Russia: what passes through the UAE, Türkiye and Central Asia",
+      "intro": "From February 2022 to {dataTo}, Russia kept {sum:rus_eur} {sum:rus_dir2} from trade with these 11 hubs together than without the war. Goods they passed on to Russia count for the countries that made them; each hub keeps its trading margin here.",
+      "members": ["ARE", "TUR", "KAZ", "KGZ", "ARM", "GEO", "UZB", "AZE", "TJK", "MNG", "SRB"],
+      "rank": "rus",
+      "order": "asc",
+      "sort": "gdp",
+      "columns": ["net", "ua"],
+      "map": "#view=rank&lens=payments",
+      "faq": [
+        {"q": "Is Kazakhstan helping Russia evade sanctions?", "a": "Goods made elsewhere and sold on to Russia through Kazakhstan count here for the countries that made them, so Kazakhstan's own figure covers its own trade and its trading margin. Very likely toward Russia among these hubs: {namesToR:net}."},
+        {"q": "Why are re-exports not counted for the hub?", "a": "The money for re-exported goods goes mostly to the maker; the hub keeps a margin. Counting the maker shows whose goods reach Russia."}
+      ],
+      "related": ["central-asia", "gulf-states", "countries-helping-russia", "russia-war-income"]
+    },
+    {
+      "slug": "russian-oil-via-third-countries",
+      "kind": "topic",
+      "label": "Russian oil refined in third countries",
+      "title": ["Russian oil refined in India and Türkiye: who bought it", "Russian oil via third countries, by buyer"],
+      "description": [
+        "Fuel made from Russian crude in India, Türkiye and elsewhere and sold on since 2022: what Russia kept on it, by buying country, against the pre-war level.",
+        "Fuel refined from Russian crude in third countries and sold on since 2022, by buying country, against the pre-war level."
+      ],
+      "h1": "Russian oil through the back door: who bought fuel refined from Russian crude?",
+      "intro": "Diesel and jet fuel refined from Russian crude in India, Türkiye, China, the UAE or EU refineries reach buyers elsewhere. For each buying country this page counts what Russia kept on the crude inside that fuel, against the pre-war level, from February 2022 to {dataTo}. {top1} added the most to Russia's earnings this way ({top1_eur}); where buyers took less of it than before the war, Russia kept less.",
+      "rank": "part:laund",
+      "order": "asc",
+      "sort": "eur",
+      "minGdp": 0,
+      "nonzero": true,
+      "columns": ["rus", "net"],
+      "limit": 30,
+      "map": "#view=rank&lens=payments",
+      "faq": [
+        {"q": "Does Europe still buy Russian oil through India?", "a": "Some, as fuel refined from Russian crude in India, Türkiye and elsewhere, until the EU's ban of 21 January 2026 on fuel made from Russian crude. Here such fuel counts for the buyer at what Russia kept on the crude inside it, against the pre-war level; each European country's page gives its own line."},
+        {"q": "Is this legal?", "a": "Mostly, until the EU's 2026 ban. The page measures money, not legality."}
+      ],
+      "related": ["russian-oil-gas-buyers", "shadow-fleet", "eu"]
     }
   ]
 }

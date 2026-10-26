@@ -1,0 +1,828 @@
+{
+"_note": "Round 56: search demand per country from the keyword research of 26 October 2026 (autocomplete in 16 languages, keywords.csv): the summed demand scores (0-100 each) of queries naming one country, by intent: trade (trade, oil, gas, sanctions), help (is it helping Russia, relations) and aid (how much it gave Ukraine). Relative only; used to choose a country page title variant and its questions (seo_templates.mjs).",
+"AFG": {
+"trade": 0,
+"help": 81,
+"aid": 0
+},
+"ALB": {
+"trade": 0,
+"help": 0,
+"aid": 65
+},
+"ARE": {
+"trade": 1018,
+"help": 3374,
+"aid": 49
+},
+"ARE CHN": {
+"trade": 0,
+"help": 72,
+"aid": 0
+},
+"ARE SDN": {
+"trade": 0,
+"help": 30,
+"aid": 0
+},
+"ARE USA": {
+"trade": 0,
+"help": 58,
+"aid": 0
+},
+"ARG": {
+"trade": 98,
+"help": 225,
+"aid": 337
+},
+"ARM": {
+"trade": 190,
+"help": 245,
+"aid": 216
+},
+"AUS": {
+"trade": 1769,
+"help": 434,
+"aid": 563
+},
+"AUS IND": {
+"trade": 42,
+"help": 0,
+"aid": 0
+},
+"AUS USA": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"AUT": {
+"trade": 1839,
+"help": 337,
+"aid": 620
+},
+"AUT DEU": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"AUT USA": {
+"trade": 40,
+"help": 0,
+"aid": 0
+},
+"AZE": {
+"trade": 374,
+"help": 501,
+"aid": 344
+},
+"BEL": {
+"trade": 1183,
+"help": 236,
+"aid": 809
+},
+"BEL DEU": {
+"trade": 62,
+"help": 0,
+"aid": 0
+},
+"BEL USA": {
+"trade": 42,
+"help": 0,
+"aid": 0
+},
+"BGR": {
+"trade": 799,
+"help": 470,
+"aid": 427
+},
+"BLR": {
+"trade": 730,
+"help": 800,
+"aid": 96
+},
+"BRA": {
+"trade": 627,
+"help": 299,
+"aid": 147
+},
+"BRA IND CHN": {
+"trade": 0,
+"help": 52,
+"aid": 0
+},
+"BRA USA": {
+"trade": 0,
+"help": 49,
+"aid": 0
+},
+"CAN": {
+"trade": 1427,
+"help": 301,
+"aid": 1210
+},
+"CAN USA": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"CHE": {
+"trade": 1186,
+"help": 441,
+"aid": 797
+},
+"CHL": {
+"trade": 96,
+"help": 44,
+"aid": 60
+},
+"CHN": {
+"trade": 9080,
+"help": 2618,
+"aid": 974
+},
+"CHN COL": {
+"trade": 38,
+"help": 0,
+"aid": 0
+},
+"CHN IND": {
+"trade": 219,
+"help": 18,
+"aid": 0
+},
+"CHN KOR": {
+"trade": 0,
+"help": 48,
+"aid": 0
+},
+"CHN SAU": {
+"trade": 31,
+"help": 0,
+"aid": 0
+},
+"CHN TUR": {
+"trade": 0,
+"help": 37,
+"aid": 0
+},
+"CHN USA": {
+"trade": 40,
+"help": 0,
+"aid": 0
+},
+"CHN VEN": {
+"trade": 18,
+"help": 94,
+"aid": 0
+},
+"COL": {
+"trade": 0,
+"help": 49,
+"aid": 0
+},
+"CUB": {
+"trade": 861,
+"help": 545,
+"aid": 0
+},
+"CYP": {
+"trade": 292,
+"help": 204,
+"aid": 144
+},
+"CYP USA": {
+"trade": 42,
+"help": 0,
+"aid": 0
+},
+"CZE": {
+"trade": 768,
+"help": 451,
+"aid": 477
+},
+"DEU": {
+"trade": 6342,
+"help": 823,
+"aid": 3230
+},
+"DEU BEL": {
+"trade": 31,
+"help": 0,
+"aid": 0
+},
+"DEU IND": {
+"trade": 116,
+"help": 0,
+"aid": 0
+},
+"DEU NOR": {
+"trade": 0,
+"help": 0,
+"aid": 55
+},
+"DMA": {
+"trade": 0,
+"help": 0,
+"aid": 30
+},
+"DNK": {
+"trade": 614,
+"help": 345,
+"aid": 460
+},
+"DZA": {
+"trade": 0,
+"help": 65,
+"aid": 0
+},
+"EGY": {
+"trade": 115,
+"help": 185,
+"aid": 119
+},
+"ESP": {
+"trade": 1799,
+"help": 1178,
+"aid": 1195
+},
+"ESP USA": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"EST": {
+"trade": 390,
+"help": 298,
+"aid": 340
+},
+"FIN": {
+"trade": 819,
+"help": 557,
+"aid": 400
+},
+"FIN IND": {
+"trade": 52,
+"help": 0,
+"aid": 0
+},
+"FRA": {
+"trade": 3100,
+"help": 1006,
+"aid": 2186
+},
+"FRA CHN": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"FRA DEU": {
+"trade": 0,
+"help": 0,
+"aid": 54
+},
+"GBR": {
+"trade": 2584,
+"help": 301,
+"aid": 893
+},
+"GBR CHN": {
+"trade": 24,
+"help": 0,
+"aid": 0
+},
+"GBR FRA": {
+"trade": 0,
+"help": 40,
+"aid": 0
+},
+"GBR IND": {
+"trade": 91,
+"help": 0,
+"aid": 0
+},
+"GBR USA": {
+"trade": 40,
+"help": 0,
+"aid": 0
+},
+"GEO": {
+"trade": 322,
+"help": 438,
+"aid": 138
+},
+"GRC": {
+"trade": 620,
+"help": 166,
+"aid": 296
+},
+"GRD": {
+"trade": 84,
+"help": 0,
+"aid": 0
+},
+"GRL": {
+"trade": 0,
+"help": 40,
+"aid": 0
+},
+"HKG": {
+"trade": 49,
+"help": 358,
+"aid": 0
+},
+"HRV": {
+"trade": 115,
+"help": 96,
+"aid": 179
+},
+"HRV HUN": {
+"trade": 109,
+"help": 0,
+"aid": 0
+},
+"HUN": {
+"trade": 2673,
+"help": 1131,
+"aid": 1180
+},
+"HUN CHN": {
+"trade": 40,
+"help": 0,
+"aid": 0
+},
+"HUN FRA": {
+"trade": 50,
+"help": 0,
+"aid": 0
+},
+"HUN SRB": {
+"trade": 47,
+"help": 0,
+"aid": 0
+},
+"HUN SVK": {
+"trade": 150,
+"help": 0,
+"aid": 0
+},
+"IDN": {
+"trade": 585,
+"help": 181,
+"aid": 0
+},
+"IND": {
+"trade": 20069,
+"help": 2110,
+"aid": 626
+},
+"IND ARE": {
+"trade": 0,
+"help": 37,
+"aid": 0
+},
+"IND CHN": {
+"trade": 465,
+"help": 18,
+"aid": 0
+},
+"IND DEU": {
+"trade": 241,
+"help": 0,
+"aid": 0
+},
+"IND IRN": {
+"trade": 18,
+"help": 0,
+"aid": 0
+},
+"IND PAK": {
+"trade": 39,
+"help": 0,
+"aid": 0
+},
+"IND USA": {
+"trade": 352,
+"help": 0,
+"aid": 0
+},
+"IND VEN": {
+"trade": 39,
+"help": 0,
+"aid": 0
+},
+"IRL": {
+"trade": 425,
+"help": 40,
+"aid": 266
+},
+"IRL OMN": {
+"trade": 0,
+"help": 18,
+"aid": 0
+},
+"IRN": {
+"trade": 898,
+"help": 0,
+"aid": 183
+},
+"IRN CHN": {
+"trade": 18,
+"help": 0,
+"aid": 0
+},
+"ISL": {
+"trade": 40,
+"help": 0,
+"aid": 125
+},
+"ISR": {
+"trade": 521,
+"help": 593,
+"aid": 1029
+},
+"ITA": {
+"trade": 1536,
+"help": 412,
+"aid": 1355
+},
+"ITA DEU": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"JPN": {
+"trade": 2204,
+"help": 1068,
+"aid": 1464
+},
+"JPN CHN": {
+"trade": 72,
+"help": 0,
+"aid": 0
+},
+"JPN USA": {
+"trade": 42,
+"help": 0,
+"aid": 0
+},
+"KAZ": {
+"trade": 1104,
+"help": 4718,
+"aid": 155
+},
+"KAZ CHN": {
+"trade": 18,
+"help": 133,
+"aid": 0
+},
+"KAZ DEU": {
+"trade": 50,
+"help": 0,
+"aid": 0
+},
+"KAZ UZB": {
+"trade": 0,
+"help": 46,
+"aid": 0
+},
+"KEN": {
+"trade": 0,
+"help": 0,
+"aid": 22
+},
+"KGZ": {
+"trade": 0,
+"help": 48,
+"aid": 49
+},
+"KOR": {
+"trade": 638,
+"help": 179,
+"aid": 408
+},
+"LTU": {
+"trade": 549,
+"help": 434,
+"aid": 316
+},
+"LUX": {
+"trade": 0,
+"help": 28,
+"aid": 96
+},
+"LVA": {
+"trade": 564,
+"help": 502,
+"aid": 336
+},
+"MAR": {
+"trade": 0,
+"help": 86,
+"aid": 28
+},
+"MDA": {
+"trade": 207,
+"help": 451,
+"aid": 124
+},
+"MEX": {
+"trade": 602,
+"help": 493,
+"aid": 273
+},
+"MEX ARE CHN": {
+"trade": 18,
+"help": 0,
+"aid": 0
+},
+"MLI": {
+"trade": 0,
+"help": 40,
+"aid": 0
+},
+"MLT": {
+"trade": 55,
+"help": 140,
+"aid": 49
+},
+"MNG": {
+"trade": 147,
+"help": 470,
+"aid": 49
+},
+"MYS": {
+"trade": 593,
+"help": 28,
+"aid": 182
+},
+"NGA": {
+"trade": 35,
+"help": 0,
+"aid": 0
+},
+"NLD": {
+"trade": 1581,
+"help": 269,
+"aid": 1298
+},
+"NLD ARG": {
+"trade": 42,
+"help": 0,
+"aid": 0
+},
+"NLD USA": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"NOR": {
+"trade": 702,
+"help": 305,
+"aid": 358
+},
+"NZL": {
+"trade": 455,
+"help": 42,
+"aid": 118
+},
+"PAK": {
+"trade": 663,
+"help": 550,
+"aid": 254
+},
+"PER": {
+"trade": 47,
+"help": 0,
+"aid": 0
+},
+"PHL": {
+"trade": 55,
+"help": 0,
+"aid": 0
+},
+"POL": {
+"trade": 2171,
+"help": 823,
+"aid": 2448
+},
+"PRK": {
+"trade": 108,
+"help": 0,
+"aid": 0
+},
+"PRT": {
+"trade": 67,
+"help": 168,
+"aid": 196
+},
+"PRT ESP": {
+"trade": 0,
+"help": 14,
+"aid": 0
+},
+"PSE": {
+"trade": 0,
+"help": 18,
+"aid": 74
+},
+"QAT": {
+"trade": 96,
+"help": 0,
+"aid": 140
+},
+"ROU": {
+"trade": 472,
+"help": 192,
+"aid": 388
+},
+"SAU": {
+"trade": 1015,
+"help": 93,
+"aid": 58
+},
+"SEN": {
+"trade": 0,
+"help": 30,
+"aid": 0
+},
+"SGP": {
+"trade": 934,
+"help": 52,
+"aid": 96
+},
+"SRB": {
+"trade": 617,
+"help": 456,
+"aid": 341
+},
+"SVK": {
+"trade": 1029,
+"help": 637,
+"aid": 906
+},
+"SVK DEU": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"SVN": {
+"trade": 67,
+"help": 546,
+"aid": 145
+},
+"SWE": {
+"trade": 846,
+"help": 316,
+"aid": 917
+},
+"SWE IND": {
+"trade": 40,
+"help": 0,
+"aid": 0
+},
+"SWE USA": {
+"trade": 42,
+"help": 0,
+"aid": 0
+},
+"SYR": {
+"trade": 0,
+"help": 0,
+"aid": 18
+},
+"THA": {
+"trade": 464,
+"help": 155,
+"aid": 121
+},
+"TJK": {
+"trade": 49,
+"help": 0,
+"aid": 0
+},
+"TUR": {
+"trade": 3676,
+"help": 13517,
+"aid": 810
+},
+"TUR AZE": {
+"trade": 0,
+"help": 18,
+"aid": 0
+},
+"TUR CHE": {
+"trade": 0,
+"help": 18,
+"aid": 0
+},
+"TUR CHN": {
+"trade": 0,
+"help": 208,
+"aid": 0
+},
+"TUR EGY": {
+"trade": 0,
+"help": 24,
+"aid": 0
+},
+"TUR GEO": {
+"trade": 0,
+"help": 22,
+"aid": 0
+},
+"TUR GRC": {
+"trade": 0,
+"help": 20,
+"aid": 0
+},
+"TUR ISR": {
+"trade": 0,
+"help": 103,
+"aid": 0
+},
+"TUR LBY": {
+"trade": 0,
+"help": 64,
+"aid": 0
+},
+"TUR PAK": {
+"trade": 0,
+"help": 20,
+"aid": 0
+},
+"TUR POL": {
+"trade": 0,
+"help": 18,
+"aid": 0
+},
+"TUR PSE": {
+"trade": 0,
+"help": 34,
+"aid": 0
+},
+"TUR SYR": {
+"trade": 0,
+"help": 131,
+"aid": 0
+},
+"TUR USA": {
+"trade": 0,
+"help": 37,
+"aid": 0
+},
+"TWN": {
+"trade": 18,
+"help": 0,
+"aid": 37
+},
+"USA": {
+"trade": 4043,
+"help": 1117,
+"aid": 8362
+},
+"USA BLR": {
+"trade": 0,
+"help": 49,
+"aid": 0
+},
+"USA IND": {
+"trade": 142,
+"help": 0,
+"aid": 0
+},
+"USA IRN": {
+"trade": 0,
+"help": 0,
+"aid": 35
+},
+"USA ISR": {
+"trade": 0,
+"help": 0,
+"aid": 42
+},
+"UZB": {
+"trade": 125,
+"help": 346,
+"aid": 75
+},
+"VEN": {
+"trade": 274,
+"help": 388,
+"aid": 96
+},
+"VEN CHN": {
+"trade": 0,
+"help": 24,
+"aid": 0
+},
+"VNM": {
+"trade": 507,
+"help": 287,
+"aid": 49
+},
+"ZAF": {
+"trade": 492,
+"help": 178,
+"aid": 0
+}
+}

@@ -29,6 +29,11 @@ site/es/
 # the second line covers every topic folder, so a new entry in the config needs no line here
 site/group/
 site/*/index.html
+# round 56: the comparisons, the per-language sitemaps and the pages' shared look (the part and year pages are top-level
+# folders, covered by the line above)
+site/compare/
+site/sitemap-*.xml
+site/pages.css
 node_modules/
 
 # raw downloads: small open-data API responses are kept; large files and third-party documents (reports, press

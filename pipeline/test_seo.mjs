@@ -22,10 +22,11 @@ test("the templates give the approved copy", () => {
   assert.equal(T.countryCopy("en", FX.HUN).title, "Is Hungary helping Russia? 6.0% of GDP toward Russia");
   assert.equal(T.countryCopy("en", FX.BLR).title, "Is Belarus helping Russia? Party to the war, 3.6% of GDP");
   assert.equal(T.countryCopy("en", FX.AUS).title, "How much has Australia given Ukraine? €1.3bn since 2022");
-  assert.equal(T.countryCopy("de", FX.DEU).title, "Wie viel hat Deutschland der Ukraine gegeben? 74,7 Mrd. €");
+  assert.equal(T.countryCopy("de", FX.DEU).title, "Wie viel hat Deutschland der Ukraine gegeben? 74,7\u00a0Mrd.\u00a0€");
   assert.equal(T.countryCopy("pl", FX.HUN).h1, "Czy Węgry pomagają Rosji? Co pokazują przepływy pieniędzy");
   assert.deepEqual(T.countryLangs(FX.DEU), T.LANGS);
-  assert.deepEqual(T.countryLangs(FX.SVK), ["en"]);
+  // round 56: every country has a page in every language
+  assert.deepEqual(T.countryLangs(FX.SVK), T.LANGS);
 });
 
 test("a title's chance word follows the category", () => {
@@ -78,12 +79,15 @@ const mk = (iso, name, gdp, net, ua, rus, extra = {}) => ({ iso, nameEn: name, s
     ua: { v: ua, lo: ua, hi: ua, range: "", chance: "very likely · >99%", level: "sure", side: "ukraine" }, rus: { v: rus, lo: rus, hi: rus, range: "", chance: "likely toward Russia · 80%", level: "lean", side: "russia" },
     paid: { v: 10 }, frozen: { v: 0 } }, ...extra });
 const CS = [mk("AAA", "Aland", 100, 4, 2, 2), mk("BBB", "Bland", 50, -1, 0.5, -1.5), mk("CCC", "Cland", 3, 0.3, 0.3, 0), mk("DDD", "Dland", 20, -2, 0, -2, { party: true })];
+// the countries the config names in its questions ({iso:...}), with the measures it asks for
+const named = (iso, extra = {}) => { const c = mk(iso, iso, 50, 1, 1, 0, extra); c.measures.armed = { v: 2 }; return c; };
+const CS_NAMED = CS.concat([named("IRN"), named("PRK", { party: true }), named("CHN"), named("USA")]);
 
 test("every config entry builds a page with titles and descriptions that fit", () => {
   const slugs = new Set();
   for (const e of TOPICS) {
     assert.ok(!slugs.has(pathOf(e)), "two entries at " + pathOf(e)); slugs.add(pathOf(e));
-    const m = buildTopic(e, CS, TOPICS, { dataTo: "August 2026" });
+    const m = buildTopic(e, CS_NAMED, TOPICS, { dataTo: "August 2026" });
     assert.ok(m.title.length <= T.TITLE_MAX, e.slug + ": " + m.title);
     assert.ok(m.description.length <= T.DESC_MAX, e.slug + ": " + m.description);
     assert.ok(m.h1 && m.intro && !/\{\w/.test(m.intro + m.title + m.description + JSON.stringify(m.faq)), e.slug);
@@ -107,4 +111,87 @@ test("a topic ranks, totals and leaves out parties as configured", () => {
   assert.match(html, /data-total="net"><span>Net<\/span><b class="pos">\+4\.2%/);
   assert.match(html, /Party to the war/);
   assert.throws(() => buildTopic({ ...e, title: "{nope}" }, CS, [], { dataTo: "" }), /unknown placeholder/);
+});
+
+// ----- round 56: the generated families, the language frames and the year pages -----
+import * as I from "./seo_i18n.mjs";
+import { partEntries, yearEntries, compareEntries } from "./seo_families.mjs";
+const FAM = JSON.parse(readFileSync(join(HERE, "seo_families.json"), "utf8"));
+
+test("numbers are written the way each language writes them", () => {
+  assert.equal(I.E("en", 74.666), "€74.7bn");
+  assert.equal(I.E("en", 1234.4), "€1,234bn");
+  assert.equal(I.E("en", 0.05), "€50m");
+  assert.equal(I.E("de", 74.666), "74,7 Mrd. €");
+  assert.equal(I.E("fr", 0.05), "50 M€");
+  assert.equal(I.E("es", 74.666), "74.700 M€");
+  assert.equal(I.E("pl", 547.2), "547 mld €");
+  assert.equal(I.P("en", 3.651), "3.7%");
+  assert.equal(I.P("de", 0.004), "<0,01 %");
+  assert.equal(I.P("uk", 0.35), "0,35%");
+  assert.equal(I.PP("nl", 1514.6), "€1.515");
+  assert.equal(I.monthYear("2026-08-31", "pl"), "sierpnia 2026");
+});
+
+test("every family page and language has a title and description that fit", () => {
+  const parts = FAM.parts.list.map(p => p.key);
+  for (const l of I.LANGS) {
+    for (const k of parts) {
+      const c = I.partCopy(l, { key: k, n: 40, top: ["Bosnia and Herzegovina", "Saint Vincent and the Grenadines"], topV: "€1,234bn", dataTo: I.monthYear("2026-08-31", l) });
+      assert.ok(c.title.length <= T.TITLE_MAX && c.description.length <= T.DESC_MAX, l + " " + k + " " + c.title + " | " + c.description);
+      assert.ok(I.partName(l, k) !== k, l + " has no name for " + k);
+    }
+    for (const kind of ["ua", "rus"]) for (const partial of [false, true]) {
+      const c = I.yearCopy(l, { kind, y: 2026, partial, month: I.monthOnly("2026-08-31", l), n: 60, top: ["Central African Republic", "B", "C"], topV: "€1,234bn", dataTo: "" });
+      assert.ok(c.title.length <= T.TITLE_MAX && c.description.length <= T.DESC_MAX, l + " " + kind + " " + c.title);
+    }
+    const c = I.compareCopy(l, { A: "Saint Vincent and the Grenadines", B: "Bosnia and Herzegovina" });
+    assert.ok(c.title.length <= T.TITLE_MAX && c.description.length <= T.DESC_MAX, l + " " + c.title);
+    const h = I.hubCopy(l, 300);
+    assert.ok(h.title.length <= T.TITLE_MAX && h.description.length <= T.DESC_MAX, l);
+    if (l === "en") continue;
+    for (const e of TOPICS) {
+      assert.ok(I.TOPIC_T[e.slug] && I.TOPIC_T[e.slug][l], "no " + l + " words for " + e.slug);
+      const t = I.topicCopyLang(l, e, { n: 60, top: ["Saint Vincent and the Grenadines", "B", "C"], topV: "€1,234bn", measure: I.measureName(l, "ua"), unitKey: "gdp", dataTo: "August 2026", sumUa: "€1bn", sumNetPct: "1%", netDir: "x", isGroup: e.kind === "group" });
+      assert.ok(t.title.length <= T.TITLE_MAX && t.description.length <= T.DESC_MAX, l + " " + e.slug + " " + t.title + " | " + t.description);
+    }
+  }
+});
+
+test("a country page in another language says the map's chance words, for every level and long names", () => {
+  const words = { leanU: "Tendenz Richtung Ukraine", leanR: "Tendenz Richtung Russland", near: "nahe null", zero: "praktisch null", unc: "zu knapp für eine Aussage", party: "Kriegspartei" };
+  const levels = [["sure", "ukraine", "u_sure"], ["sure", "russia", "r_sure"], ["lean", "ukraine", "u_lean"], ["lean", "russia", "r_lean"], ["unc", "russia", "unc"], ["near", "ukraine", "zero"], ["zero", "russia", "zero"]];
+  for (const l of I.LANGS.filter(x => x !== "en")) for (const name of ["Schweiz", "St. Vincent und die Grenadinen", "Demokratische Republik Kongo"]) for (const [level, side, cat] of levels) for (const party of [false, true]) {
+    const f = { ...FX.DEU, iso: "XXA", name, nameL: name, party, words, cN: { level, p: 0.97, side }, cR: { level, p: 0.9, side } };
+    const c = T.countryCopy(l, f);
+    assert.ok(c.title.length <= T.TITLE_MAX && c.description.length <= T.DESC_MAX, l + " " + c.title + " | " + c.description);
+    const want = party ? "kriegspartei" : cat === "u_lean" ? "tendenz richtung ukraine" : cat === "r_lean" ? "tendenz richtung russland" : cat === "unc" ? "zu knapp" : cat === "zero" ? (level === "near" ? "nahe null" : "praktisch null") : "";
+    if (l === "de" && want) assert.ok(c.title.toLowerCase().includes(want), c.title);
+  }
+  // the ten most searched countries keep their hand-written titles while very likely
+  assert.match(T.countryCopy("fr", { ...FX.HUN, nameL: "Hongrie", words }).title, /^La Hongrie aide-t-elle la Russie \?/);
+});
+
+test("the families: parts by rule, five years each way, the searched pairs and every pair of the largest donors", () => {
+  const C = [mk("AAA", "Aland", 100, 4, 2, 2), mk("BBB", "Bland", 50, -1, 0.5, -1.5)];
+  for (const c of C) c.measures["part:aid"] = { v: 1 };
+  const few = { ...FAM, parts: { minCountries: 2, minTotal: 0.5, list: [{ key: "aid", slug: "a", side: "ua" }, { key: "ship", slug: "s", side: "rus" }] } };
+  assert.deepEqual(partEntries(few, C, []).map(e => e.slug), ["a"]);
+  // a part a topic page already ranks gets no page of its own
+  assert.deepEqual(partEntries(few, C, [{ rank: "part:aid" }]).map(e => e.slug), []);
+  const ys = yearEntries(FAM, 2026);
+  assert.equal(ys.length, 2 * FAM.years.length);
+  assert.ok(ys.find(e => e.slug === "ukraine-aid-2026").partial && !ys.find(e => e.slug === "trade-with-russia-2025").partial);
+  const cmp = compareEntries({ compare: { pairwiseTop: 2, pairs: [["BBB", "AAA"], ["AAA", "ZZZ"]] } }, C);
+  assert.deepEqual(cmp.map(e => e.slug), ["bland-vs-aland"]);
+});
+
+test("a year page ranks that year's own amounts", () => {
+  const C = [mk("AAA", "Aland", 100, 4, 2, 2), mk("BBB", "Bland", 50, -1, 0.5, -1.5)];
+  C[0].years = [{ y: 2023, uaBn: 1, rusBn: 0.5, netBn: 1.5 }]; C[1].years = [{ y: 2023, uaBn: 3, rusBn: -1, netBn: 2 }];
+  const m = buildTopic({ kind: "year", slug: "ukraine-aid-2023", rank: "ua", year: 2023, sort: "eur", order: "desc", columns: ["rus", "net"] }, C, [], { dataTo: "" });
+  assert.deepEqual(m.rows.map(c => c.iso), ["BBB", "AAA"]);
+  const html = renderTopic(m, { esc: s => String(s), cPath: c => "/country/" + c.slug + "/", l: "de" });
+  assert.match(html, /data-q="ua" data-year="2023"><b class="pos">\+3 Mrd\. €/);
+  assert.match(html, /im Jahr 2023/);
 });

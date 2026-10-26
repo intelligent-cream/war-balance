@@ -150,3 +150,75 @@ def test_every_topic_entry_must_be_written(tmp_path):
     s = site(tmp_path, {"group/svk-group/": topic_page(GOOD_CELL)})
     p = sc.check_site(s, U, MODEL, TOPICS + [{"slug": "missing-topic", "kind": "topic"}])["topics"]
     assert p == ["/missing-topic/ not written or not in the sitemap"]
+
+
+# ----- round 56: the sitemap index, every language, the families -----
+def test_number_formats_in_every_language():
+    assert sc.fmt_eur(74.666, "de") == "74,7 Mrd. €"
+    assert sc.fmt_eur(1234.4, "fr") == "1 234 Md€"
+    assert sc.fmt_eur(74.666, "es") == "74.700 M€"
+    assert sc.fmt_eur(0.05, "nl") == "€50 mln"
+    assert sc.fmt_pct(0.1394, "de") == "0,14 %"
+    assert sc.fmt_pct(3.651, "uk") == "3,7%"
+    assert sc.numbers("Schweiz: 8,3 Mrd. € und 1,0 %", "de") == ["8,3 Mrd. €", "1,0 %"]
+
+
+def test_sitemap_index_is_read(tmp_path):
+    s = site(
+        tmp_path,
+        {
+            "country/slovakia/": page(
+                "country/slovakia/", "Is Slovakia helping Ukraine or Russia? Too close to call", iso="SVK"
+            )
+        },
+    )
+    (s / "sitemap-en.xml").write_text((s / "sitemap.xml").read_text())
+    (s / "sitemap.xml").write_text(f"<sitemapindex><sitemap><loc>{U}sitemap-en.xml</loc></sitemap></sitemapindex>")
+    assert sc.site_urls(s, U) == [U + "country/slovakia/"]
+    assert not any(sc.check_site(s, U, MODEL).values())
+
+
+WORDS_DE = sc.lang_words(
+    {
+        "too close to call": "zu knapp für eine Aussage",
+        "Leaning toward Ukraine": "Tendenz Richtung Ukraine",
+        "Leaning toward Russia": "Tendenz Richtung Russland",
+        "near zero": "nahe null",
+        "essentially zero": "praktisch null",
+        "Party to the war": "Kriegspartei",
+        "very likely · {p}": "sehr wahrscheinlich · {p}",
+    }
+)
+
+
+def test_a_title_in_another_language_says_the_maps_chance_words():
+    good = "Slowakei: Ukraine oder Russland? Zu knapp für eine Aussage"
+    assert sc.title_problems_lang(good, SVK, "de", WORDS_DE) == []
+    bad = "Slowakei: Tendenz Richtung Ukraine, 0,48 %"
+    assert sc.title_problems_lang(bad, SVK, "de", WORDS_DE) == [
+        "number 0,48 %",
+        "says lean words, the map says unc",
+        "does not say the unc words",
+    ]
+
+
+def test_every_family_page_is_expected():
+    model = {
+        "countries": {
+            "SVK": {**SVK, "uaEur": 1.0, "part_aid": 0.6},
+            "POL": {**SVK, "slug": "poland", "uaEur": 9.0, "part_aid": 0.3},
+        }
+    }
+    fam = {
+        "parts": {"minCountries": 2, "minTotal": 0.5, "list": [{"key": "aid", "slug": "gov-aid", "side": "ua"}]},
+        "years": [2025],
+        "compare": {"pairwiseTop": 2, "pairs": [["SVK", "POL"], ["SVK", "XXX"]]},
+    }
+    assert sc.family_pages(model, TOPICS, fam) == [
+        "group/svk-group/",
+        "gov-aid/",
+        "ukraine-aid-2025/",
+        "trade-with-russia-2025/",
+        "compare/slovakia-vs-poland/",
+        "topics/",
+    ]

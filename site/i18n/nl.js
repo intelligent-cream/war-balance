@@ -1207,5 +1207,5 @@ I18N.nl = {
   "Countries helping Ukraine or Russia: money map since 2022": "Wie helpt Oekraïne, wie helpt Rusland? Geldkaart sinds 2022",
   "All countries, A to Z": "Alle landen van A tot Z",
   "Topics": "Onderwerpen",
-  "One question per page, with its figures (in English).": "Eén vraag per pagina, met de cijfers (in het Engels).",
+  "One question per page, with its figures, in every language.": "Eén vraag per pagina, met de cijfers, in elke taal.",
 };

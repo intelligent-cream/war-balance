@@ -935,12 +935,15 @@ for _p in _old_pages:
     _to = re.search(r'<meta http-equiv="refresh" content="0; url=(/country/[\w-]+/)">', _t)
     if not _to or f'<link rel="canonical" href="{_su}{_to.group(1)[1:]}">' not in _t:
         _bad.append(f"c/{_p.name} not sent to its country page")
+import seo_check  # noqa: E402
+
 _robots, _smap = ROOT / "site" / "robots.txt", ROOT / "site" / "sitemap.xml"
 _seo_missing = []
 if _pages:
     if not _robots.exists() or f"Sitemap: {_su}sitemap.xml" not in _robots.read_text():
         _bad.append("robots.txt")
-    _sm = _smap.read_text() if _smap.exists() else ""
+    # round 56: sitemap.xml is an index of one sitemap per language (seo_check.site_urls reads them all)
+    _sm = "\n".join(f"<loc>{u}</loc>" for u in seo_check.site_urls(ROOT / "site", _su)) if _smap.exists() else ""
     # every country page is in it (check 48 names any missing), and the old share links are not
     if _sm.count(f"<loc>{_su}country/") < len(_pages) or f"<loc>{_su}c/" in _sm:
         _bad.append("sitemap: country pages missing or old c/ links listed")
@@ -963,7 +966,10 @@ check(
 # Round 55 (topic and group pages, owner: "similar pages loading the same thing"): every entry of
 # pipeline/seo_topics.json is written, in the sitemap and linked from the home page's Topics list, and in each of its
 # tables every country's net, support and trade figures and chance words are the model's; a group's totals add up.
-import seo_check  # noqa: E402
+# Round 56 (owner: "many many pages ... use what we have and show it in a new manner"): every country page and every
+# topic, group, part, year and comparison page (pipeline/seo_families.json) and the Topics page in all seven languages,
+# with the model's numbers in each language's format and the map's own chance words; sitemap.xml an index of one
+# sitemap per language.
 
 if not (ROOT / "site" / "country").exists():
     check(
@@ -975,14 +981,17 @@ if not (ROOT / "site" / "country").exists():
 else:
     # round 55: and every topic and group page of pipeline/seo_topics.json
     _topics = json.loads((ROOT / "pipeline" / "seo_topics.json").read_text())["pages"]
-    _seo = seo_check.check_site(ROOT / "site", _su, _m, _topics)
+    _fam = json.loads((ROOT / "pipeline" / "seo_families.json").read_text())
+    _seo = seo_check.check_site(ROOT / "site", _su, _m, _topics, _fam)
     _seo_bad = {k: v for k, v in _seo.items() if v}
     _smf = ROOT / "site" / "sitemap.xml"
-    _n_sm = len(seo_check.sitemap_urls(_smf.read_text())) if _smf.exists() else 0
+    _n_sm = len(seo_check.site_urls(ROOT / "site", _su)) if _smf.exists() else 0
+    _n_fam = len(seo_check.family_pages(_m, _topics, _fam)) if _m else 0
     check(
         "findable pages: one per country, self canonical, short titles, true numbers",
         not _seo_bad and _m is not None,
-        f"{_n_sm} pages in the sitemap, {len(_topics)} topic and group pages; problems: "
+        f"{_n_sm} pages in the sitemap, {len(_topics)} topic and group pages, {_n_fam} topic and family pages "
+        f"in {len(seo_check.LANGS)} languages; problems: "
         + ("; ".join(f"{k}: {v[:4]}" for k, v in _seo_bad.items()) if _seo_bad else "none")
         + ("" if _m is not None else "; node not found: titles not checked"),
     )

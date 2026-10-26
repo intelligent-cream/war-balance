@@ -5,6 +5,12 @@
 // lists shorter forms, the first that fits is used, and the last is always short (checked by check_data.py).
 //
 // Pure functions (no browser): pipeline/test_seo.mjs tests them.
+//
+// Round 56 (more findable pages): every country has a page in every language, for every chance level (the frames are
+// in seo_i18n.mjs, the sentences about the country are the map's own in that language), and an English title asks
+// "Does ... trade with Russia?" where people search for that far more than for its aid (pipeline/seo_demand.json).
+
+import { P as PL, E as EL, countryCopyLang } from "./seo_i18n.mjs";
 
 export const TITLE_MAX = 60, DESC_MAX = 155;
 export const LANGS = ["en", "uk", "de", "fr", "pl", "nl", "es"];
@@ -66,7 +72,17 @@ export function countryCopyEn(f) {
   const support = f.uaPct < 0.01 ? "almost no measured support for Ukraine" : `support for Ukraine of ${uaE} (${uaP} of GDP)`;
   const fz = Math.abs(f.frozen) >= 0.05 ? ` and the return Russia lost on reserves frozen there (${E(f.frozen)})` : "";
   let A;
-  if (cat === "u_sure") {
+  // round 56: where searches ask far more whether it trades with Russia than what it gave (seo_demand.json), and both
+  // numbers are very likely, the title asks that and answers it with what Russia kept
+  const dm = f.demand || {}, tradeFirst = cat === "u_sure" && !TOP.includes(iso) && cR.level === "sure" && (dm.trade || 0) >= 400 && dm.trade >= 1.5 * Math.max(dm.aid || 0, dm.help || 0);
+  if (tradeFirst) {
+    const lm = f.rus >= 0 ? "less" : "more";
+    A = { title: fit([`Does ${Nt} trade with Russia? Russia kept ${rusE} ${lm}`, `${N} and Russia: trade kept Russia ${rusE} ${lm}`, `${N}: ${netP} of GDP toward Ukraine`], TITLE_MAX),
+      description: fit([`Since 2022 Russia kept ${rusE} ${lm} in taxes and profit from trade with ${Nt} than without the war. With ${uaE} for Ukraine: ${netP} of GDP toward Ukraine, very likely.`,
+        `Since 2022 Russia kept ${rusE} ${lm} from trade with ${Nt} than without the war. With its support for Ukraine: ${netP} of GDP toward Ukraine, very likely.`], DESC_MAX),
+      h1: `Does ${Nt} trade with Russia, and how much has it given Ukraine?`,
+      intro: `${cap(Nt)} supported Ukraine with ${uaE} since 2022 (${uaP} of one year's GDP: ${parts}), and ${kept} than without the war. ${fz ? "Adding" + fz.replace(/^ and/, "") + ", the" : "The"} total is ${netP} of a year's GDP toward Ukraine (likely ${rng}; ${ch} chance of this direction).` };
+  } else if (cat === "u_sure") {
     A = { title: fit([`How much has ${Nt} given Ukraine? ${uaE} since 2022`, `How much has ${Nt} given Ukraine? ${uaE}`, `${N}: ${uaE} for Ukraine since 2022`, `${N}: ${netP} of GDP toward Ukraine`], TITLE_MAX),
       description: fit([`${cap(Nt)} supported Ukraine with ${uaE} (${uaP} of one year's GDP) since 2022. With trade with Russia counted: ${netP} of GDP toward Ukraine, very likely.`,
         `${cap(Nt)} supported Ukraine with ${uaE} (${uaP} of GDP) since 2022. With trade with Russia: ${netP} of GDP toward Ukraine, very likely.`,
@@ -135,11 +151,9 @@ const OVERRIDES = {
   KAZ: (f, x) => (x.cat === "zero" && f.netLoPct < 0 && f.netHiPct > 0 ? { description: `Kazakhstan's net since 2022 is ${f.cN.level === "near" ? "near zero" : "essentially zero"} (${x.netP} of one year's GDP), but the likely range is wide: ${x.rng}.` } : null),
 };
 
-// ----- the six other languages, for the ten countries in TOP (very likely toward Ukraine or Russia only) -----
-const num = (x, l) => { const a = Math.abs(x); const s = a >= 1 ? a.toFixed(1) : a.toFixed(2); return l === "en" ? s : s.replace(".", ","); };
-const PCT = { de: x => num(x, "de") + " %", fr: x => num(x, "fr") + " %", es: x => num(x, "es") + " %", pl: x => num(x, "pl") + "%", nl: x => num(x, "nl") + "%", uk: x => num(x, "uk") + "%" };
-const bn = (b, l) => { const a = Math.abs(b), s = a >= 100 ? a.toFixed(0) : a.toFixed(1); return s.replace(".", ","); };
-const EUR = { de: b => bn(b, "de") + " Mrd. €", fr: b => bn(b, "fr") + " Md€", es: b => (Math.round(Math.abs(b) * 10) * 100).toLocaleString("de-DE") + " M€", pl: b => bn(b, "pl") + " mld €", nl: b => "€" + bn(b, "nl") + " mld", uk: b => bn(b, "uk") + " млрд €" };
+// ----- the six other languages: the ten countries in TOP keep the hand-written forms of round 54 while very likely
+// toward Ukraine or Russia; every other country and chance level uses seo_i18n.mjs countryCopyLang (round 56) -----
+const PCT = Object.fromEntries(LANGS.map(l => [l, x => PL(l, x)])), EUR = Object.fromEntries(LANGS.map(l => [l, b => EL(l, b)]));
 // names: [nominative, the form after "with"/"from" where the language needs it, plural verb?]
 const NM = {
   de: { USA: ["die USA", "den USA", 1], DEU: ["Deutschland", "Deutschland"], GBR: ["Großbritannien", "Großbritannien"], FRA: ["Frankreich", "Frankreich"], POL: ["Polen", "Polen"], NLD: ["die Niederlande", "den Niederlanden", 1], ITA: ["Italien", "Italien"], IND: ["Indien", "Indien"], CHN: ["China", "China"], HUN: ["Ungarn", "Ungarn"] },
@@ -152,13 +166,16 @@ const NM = {
 const FRP = { USA: "ils", NLD: "ils", GBR: "il", DEU: "elle", FRA: "elle", POL: "elle", ITA: "elle", IND: "elle", CHN: "elle", HUN: "elle" };
 
 // the language versions a country has: its own page in each language only where the copy fits its category
-export function countryLangs(f) {
-  const cat = category(f);
-  return TOP.includes(f.iso) && (cat === "u_sure" || cat === "r_sure") ? LANGS : ["en"];
+// round 56: every country, in every language
+export function countryLangs() {
+  return LANGS;
 }
 
+// f.nameL: the country's name in that language (the map's); f.words: the map's chance words in it (seo_extract.mjs)
 export function countryCopy(l, f) {
   if (l === "en") return countryCopyEn(f);
+  const cat = category(f);
+  if (!(TOP.includes(f.iso) && (cat === "u_sure" || cat === "r_sure"))) return countryCopyGeneric(l, f, cat);
   const iso = f.iso, [n, nw, pl] = NM[l][iso], p = PCT[l], e = EUR[l], ch = CH(f.cN.p);
   const ua = e(f.ua), uaP = p(f.uaPct), net = p(f.netPct), rus = e(f.rus), lo = p(f.netLoPct), hi = p(f.netHiPct);
   const toU = f.cN.side === "ukraine", noEu = iso === "USA" || iso === "GBR";
@@ -249,6 +266,17 @@ export function countryCopy(l, f) {
   return out;
 }
 
+function countryCopyGeneric(l, f, cat) {
+  const w = f.words || {}, side = f.cN && f.cN.side === "russia";
+  const x = { N: f.nameL || f.name, ua: f.cN ? EL(l, f.ua) : "", uaP: f.cN ? PL(l, f.uaPct) : "", net: f.cN ? PL(l, f.netPct) : "", rus: f.cN ? EL(l, f.rus) : "", ch: f.cN ? CH(f.cN.p) : "",
+    lean: side ? w.leanR : w.leanU, zeroWord: f.cN && f.cN.level === "near" ? w.near : w.zero, noDataText: L(l, "noDataText") };
+  x.levelWord = { u_lean: x.lean, r_lean: x.lean, unc: w.unc, zero: x.zeroWord, party: w.party }[cat] || "";
+  const c = countryCopyLang(l, cat, x);
+  const out = { ...c, intro: f.introL || "", category: cat };
+  out.og_title = out.title; out.og_description = out.description;
+  return out;
+}
+
 // ----- the short FAQ (2 to 4 questions), phrased like the searches for that country, answered with its figures -----
 // c: the country as seo_extract.mjs gives it (fig, years, frozen, kiel, partyWhy, ...); queries: terms.json's for it
 export function faqEn(c, queries = []) {
@@ -273,8 +301,11 @@ export function faqEn(c, queries = []) {
   const yearQ = { q: `How much did ${Nt} give Ukraine each year?`, a: `Support for Ukraine by year: ${c.years.map(y => `${y.y}${y.ytd ? " (January to August)" : ""} ${y.ua.replace(/^\+/, "")}`).join("; ")}. With trade with Russia, the net since 2022 is ${c.net.signed.replace(/^[+−]/, "")} of one year's GDP ${side}.` };
   const paidQ = f.paidRussia > 0.05 ? { q: `How much has ${Nt} paid Russia since 2022?`, a: `${cap(Nt)} paid Russia ${E(f.paidRussia)} for fuel and other goods from 2022 to August 2026. The number here is not that sum but the change in what Russia kept from it (taxes and profit above a normal return) against a world without the war: ${c.kept}.` } : null;
   const fzQ = c.frozen && Math.abs(f.frozen) >= 0.05 ? { q: `What about Russian money frozen in ${Nt}?`, a: `Russia lost ${E(f.frozen)} in returns on its reserves and private assets frozen in ${Nt} since 2022 (${c.frozen.value} of one year's GDP). This is the return lost, not the amount frozen, and it counts in the net only.` } : null;
+  // round 56: "Does it trade with Russia?" where people search for its trade (seo_demand.json)
+  const dm = c.demand || {};
+  if (paidQ && (dm.trade || 0) >= 200) paidQ.q = `Does ${Nt} trade with Russia?`;
   if (fzQ && /frozen|assets/.test(q)) extra.push(fzQ);
-  if (paidQ && /oil|gas|trade|buy|import|sanction/.test(q)) extra.push(paidQ);
+  if (paidQ && (/oil|gas|trade|buy|import|sanction/.test(q) || (dm.trade || 0) >= 200)) extra.push(paidQ);
   if (f.ua >= 0.1) extra.push(yearQ);
   if (fzQ && !extra.includes(fzQ)) extra.push(fzQ);
   return out.concat(extra.slice(0, 2));
@@ -283,10 +314,12 @@ export function faqEn(c, queries = []) {
 // in the other languages: the heading's question (answered by the intro) and the opposite question, answered with the
 // panel's own words in that language (netSentence, chance, support or what Russia kept)
 export function faqLang(c, copy) {
+  if (c.noData || c.mostlyNoData || !c.net || !copy.intro) return [];
   const first = { q: copy.h1, a: copy.intro };
-  const f = c.fig, toU = f.cN && f.cN.side === "ukraine";
-  const a2 = toU ? `${c.netSentence} (${c.net.range}; ${c.net.chance}). ${c.kept.charAt(0).toUpperCase() + c.kept.slice(1)}.`
-    : `${c.uaVerb} (${c.ua.eur}). ${c.netSentence} (${c.net.range}; ${c.net.chance}).`;
+  const f = c.fig, toU = f.cN && f.cN.side === "ukraine" && !c.party;
+  const paren = [c.net.range, c.net.chance].filter(Boolean).join("; ");
+  const a2 = toU ? `${c.netSentence} (${paren}). ${c.kept.charAt(0).toUpperCase() + c.kept.slice(1)}.`
+    : `${c.uaVerb} (${c.ua.eur}). ${c.netSentence} (${paren}).`;
   return [first, { q: copy.q2, a: a2 }];
 }
 

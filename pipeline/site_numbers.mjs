@@ -55,6 +55,11 @@ for (const [k, c] of Object.entries(by)) {
     // round 24b (owner): business with Russia in two lines, paid Russia and earned from Russia (EUR bn); they add up to it
     rusPaidEur: r4(x.rusPaid), rusEarnedEur: r4(x.rusEarned) });
   for (const p of x.shiftParts.concat(x.backShift)) Object.assign(o, { ["part_" + p.k]: r4(p.v), ["part_" + p.k + "Lo"]: r4(p.lo), ["part_" + p.k + "Hi"]: r4(p.hi) });
+  // round 56 (more findable pages): the parts outside the totals (the oil discount, the cost of replacing Russian
+  // energy, what Russia took from companies), and each year's cumulative support, trade and net (EUR bn) for the
+  // pages by year (each year's own amount is the difference of two years)
+  for (const p of x.costParts.concat(x.takenParts || [])) o["cost_" + p.k] = r4(p.v);
+  o.yearsEur = Object.fromEntries(D.years.filter(yy => yy >= 2022 && yy <= Y).map(yy => { const z = yy === Y ? x : M.calc(c, yy); return [yy, [r4(z.uaBal), r4(z.rusBal), r4(z.shift)]]; }));
   // round 46: the views beside the band (without the war-time windfall) under the same names
   for (const a of mb.alts.concat(mb.views || [])) o["alt_" + a.k] = { ua: r4(a.ua * g), rus: r4(a.rus * g), net: r4(a.net * g) };
   out.countries[k] = o;
