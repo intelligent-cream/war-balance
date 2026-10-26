@@ -243,3 +243,106 @@ test("the comparison line says which country gave more from the figures", () => 
   const a = { a: "Aland", b: "Bland", eurA: "€1bn", eurB: "€2bn", uaA: 1, uaB: 2, pctA: 3, pctB: 1 };
   assert.equal(I.compareLine("en", a), "Support for Ukraine in euros: Aland €1bn, Bland €2bn. More in euros: Bland; more as a share of GDP: Aland.");
 });
+
+// ----- round 57b: the country page's sections and question pool (seo_country.mjs) -----
+import * as SC from "./seo_country.mjs";
+// a country as seo_extract.mjs gives it, in English (figures made up; Kazakhstan's shape: the middle value toward
+// Ukraine, the chance toward Russia)
+const mkC = (over = {}) => ({
+  iso: "XKZ", name: "Testland", gdp: 250, party: false, noData: false, mostlyNoData: false, partyWhy: "", kept: "Russia kept €35m (0.01% of GDP) less than without the war",
+  kiel: "", fig: { net: 0.05, netPct: 0.02, ua: 0.016, uaPct: 0.006, rusPct: 0.01, frozen: 0, cN: { level: "zero", p: 0.58, side: "russia", sideWords: "toward Russia" } },
+  net: { signed: "+0.02%", range: "likely from 2.7% toward Russia to 2.8% toward Ukraine", chance: "essentially zero", chanceSentence: "A 58% chance toward Russia; 11% of the other method choices agree." },
+  ua: { range: "likely <0.01% to 0.03%" }, measures: { "part:ref": { v: 0.012 }, "part:prem": { v: 0.0035 }, "part:disc": { v: -0.0001 } },
+  years: [{ y: 2022, ytd: false, uaBn: 0.003, netBn: -0.33 }, { y: 2023, ytd: false, uaBn: 0.002, netBn: 0.26 }, { y: 2024, ytd: false, uaBn: 0.001, netBn: -0.37 }, { y: 2025, ytd: false, uaBn: 0.005, netBn: 0.07 }, { y: 2026, ytd: true, uaBn: 0.005, netBn: 0.42 }],
+  dyn: { story: [{ key: "hub", label: "Trade hub", body: "Goods it passed on. of which some." }], decide: { level: "zero", why: "Not certain, mostly because of how much it would have bought from Russia without the war.", flip: "" },
+    notes: { hub: "Transit hub: trade hub.", frozen: "", sanction: "" }, coverage: [{ part: "Refugee hosting", status: "est", word: "estimated", note: "modelled" }],
+    facts: { trade: { bought: { y0: 13.9118, y1: 15.94622 }, sold: { y0: 0.003, y1: 0.004 } }, fuelShare: 0.0972, ref: { count: 4240, per1k: 0.2, asOf: "2025" }, flowback: null, loans: null, pledged: null },
+    parts: [{ k: "paid", v: 2.6, name: "Russia kept less from fuel and goods sold here", grade: "C", src: ["trade", "prices", "nolink"] }, { k: "laund", v: -0.04, name: "Russia kept more from its oil bought via other countries", grade: "D", src: ["laundered"] }] },
+  ...over,
+});
+const ROW = { XKZ: { iso: "XKZ", name: "Testland", href: "/country/testland/", netPct: 0.02, netEur: 0.05, level: "zero", side: "russia", chance: "essentially zero", gdp: 250 },
+  XUZ: { iso: "XUZ", name: "Uzland", href: "/country/uzland/", netPct: -4.1, netEur: -4.1, level: "sure", side: "russia", chance: "very likely · >99%", gdp: 100 } };
+const OPT = (over = {}) => ({ l: "en", words: W, dw: { story: "Its story in short", coverage: "Data coverage", loansFace: "Loans, full amount", loansGE: "Loans, grant equivalent", pledged: "Promised", noDataBig: "There is no observation of its own." },
+  srcs: { trade: { name: "UN Comtrade", href: "https://comtrade.un.org/x", tier: "official" }, prices: { name: "Prices", href: "https://ex.org/p", tier: "method" }, nolink: { name: "A note", href: "", tier: "own" }, laundered: { name: "CREA", href: "https://ex.org/c", tier: "research" } },
+  L: k => ({ frozen: "Russian money frozen", country: "Country" })[k] || k, dataTo: "August 2026", month: "August", tradeYears: [2021, 2025],
+  peers: { rankable: true, world: null, groups: [], neighbours: ["XUZ"], similar: [] }, row: iso => ROW[iso], home: "/", fuelDefault: 0.5737, demand: { help: 4718, clusters: { country_russia_relations: 4472 } }, eu: false, ...over });
+
+test("the question pool: a data condition each, 4 to 6 by score, at most 2 per family, the same array for the page and the JSON-LD", () => {
+  const r = SC.countryDyn(mkC(), OPT());
+  const ids = r.faq.map(x => x.id);
+  assert.ok(ids.length >= 4 && ids.length <= SC.FAQ_MAX, ids.join());
+  assert.equal(ids[0], "help");   // the most searched for this country, and material
+  const fams = {}; for (const x of r.faq) fams[x.fam] = (fams[x.fam] || 0) + 1;
+  assert.ok(Object.values(fams).every(n => n <= SC.FAQ_PER_FAMILY));
+  assert.ok(!ids.includes("decide") && ids.includes("close"));   // essentially zero: why so small, never "what flips it"
+  assert.equal(SC.POOL.length, 15);
+  assert.ok(!SC.POOL.some(p => /forced|strike|druzhba/.test(p.id)));   // not shown on the map yet, so not on the pages
+  // a country without data gets the one question about that
+  const nd = SC.countryDyn(mkC({ net: null, noData: true }), OPT());
+  assert.deepEqual(nd.faq.map(x => x.id), ["nodata"]);
+  assert.deepEqual(nd.sections, []);
+  // the JSON-LD's answer is the visible one as plain text
+  for (const x of r.faq) assert.ok(!/<|&lt;/.test(SC.plainText(x.a)) || /</.test(SC.plainText(x.a)));
+  assert.equal(SC.plainText('<span data-f="p">&lt;0.01%</span> of GDP'), "<0.01% of GDP");
+});
+
+test("direction words follow the chance, not the middle value's sign; years change side only when it is a finding", () => {
+  const r = SC.countryDyn(mkC(), OPT());
+  const help = r.faq.find(x => x.id === "help").a;
+  assert.match(help, /essentially zero/);
+  assert.match(help, /A 58% chance toward Russia/);
+  assert.doesNotMatch(help.replace(/likely from 2\.7% toward Russia to 2\.8% toward Ukraine/, ""), /toward Ukraine/);
+  const peers = r.sections.find(s => s.id === "peers").html;
+  assert.match(peers, /Its direction is essentially zero, so the map's ranking gives it no number/);
+  // the yearly amounts change side, but the total is not very likely: no change-of-side claim
+  assert.match(r.years, /not a finding/);
+  assert.doesNotMatch(r.years, /changed side/);
+  const sure = mkC({ fig: { ...mkC().fig, cN: { level: "sure", p: 0.99, side: "ukraine", sideWords: "toward Ukraine" } } });
+  for (const y of sure.years) y.netBn = Math.sign(y.netBn) * 1;   // every year material (0.4% of GDP)
+  assert.match(SC.countryDyn(sure, OPT()).years, /changed side: 2022 <span data-f="s" data-k="y2022:net">−€1bn<\/span>/);
+});
+
+test("sections: trade before and after, the measured fuel share only, energy outside the totals, every source a link", () => {
+  const r = SC.countryDyn(mkC(), OPT());
+  const trade = r.sections.find(s => s.id === "trade").html;
+  assert.match(trade, /It bought <span data-f="e" data-k="tb0">€13\.9bn<\/span> from Russia in 2021 and <span data-f="e" data-k="tb1">€15\.9bn<\/span> in 2025 \(<span data-f="c" data-k="tbc">\+15%<\/span>\)/);
+  assert.doesNotMatch(trade, /tsc/);   // no % change from a base under €10m
+  assert.match(trade, /fuel was <span data-f="q" data-k="fuelShare">9\.7%<\/span>/);
+  assert.doesNotMatch(SC.countryDyn(mkC({ dyn: { ...mkC().dyn, facts: { ...mkC().dyn.facts, fuelShare: 0.5737 } } }), OPT()).sections.find(s => s.id === "trade").html, /fuel was/);
+  assert.ok(!r.sections.some(s => s.id === "energy"));   // €3.5m: not material
+  const back = r.sections.find(s => s.id === "backing").html;
+  const lis = back.match(/<li[^>]*>.*?<\/li>/g).filter(x => /class="tier/.test(x));
+  assert.ok(lis.length >= 4 && lis.every(x => /<a href="(https:\/\/|#src-|\/#)/.test(x)), lis.join("\n"));
+  assert.match(back, /<li id="src-nolink"><span class="tier t-own">own estimate<\/span> <a href="\/#XKZ">A note<\/a><\/li>/);
+  assert.match(back, /<span class="tier t-method">method input<\/span>/);
+  // the story keeps the map's words, with a capital after a full stop
+  assert.equal(r.story[0].body, "Goods it passed on. Of which some.");
+});
+
+test("the map's ranking rule: a number only for a very likely country, among economies of €5bn and more", () => {
+  const rows = [{ iso: "A", gdp: 10, level: "sure", side: "ukraine", netPct: 3 }, { iso: "B", gdp: 10, level: "sure", side: "ukraine", netPct: 1 }, { iso: "C", gdp: 10, level: "lean", side: "ukraine", netPct: 5 },
+    { iso: "D", gdp: 3, level: "sure", side: "ukraine", netPct: 9 }, { iso: "E", gdp: 10, level: "sure", side: "russia", netPct: -2 }, { iso: "F", gdp: 10, level: "sure", side: "russia", netPct: -1 }];
+  assert.deepEqual(SC.mapRank(rows[1], rows), { n: 2, of: 2 });
+  assert.equal(SC.mapRank(rows[2], rows), null);
+  assert.equal(SC.mapRank(rows[3], rows), null);
+  assert.deepEqual(SC.mapRank(rows[4], rows), { n: 1, of: 2 });
+  assert.ok(SC.sameRegion("eu", "eur") && !SC.sameRegion("am", "eu"));
+  assert.deepEqual(SC.similarOf({ ...rows[0], region: "eu" }, rows.map(r => ({ ...r, region: "eu" }))).map(r => r.iso), ["B"]);
+});
+
+test("the country page's phrases: every language, the same placeholders, no markup of their own", () => {
+  // (a name may be written in a sentence or before a question: {N}, {Nt}, {NtCap})
+  const ph = s => [...new Set([...s.matchAll(/\{(\w+)\}/g)].map(m => m[1]).filter(x => !/^N(t|tCap)?$/.test(x)))].sort().join(",");
+  for (const k of I.DYN_KEYS) for (const l of I.LANGS) {
+    const s = I.dyn(l, k);
+    assert.ok(!/[<>&]/.test(s.replace(/\{if:[^|]*\|/g, "")), l + " " + k);   // (a condition may compare: a>b)
+    assert.equal(ph(s), ph(I.dyn("en", k)), l + " " + k);
+  }
+  for (const l of I.LANGS) assert.ok(I.phraseList().some(p => p.key === "DYN.aHelp" && p.lang === l), l);
+  // every language's page renders, with the same marked figures
+  for (const l of I.LANGS) {
+    const r = SC.countryDyn(mkC(), OPT({ l }));
+    assert.ok(r.faq.length >= 4 && r.sections.length >= 4, l);
+    assert.ok(!/\{\w|undefined|NaN/.test(JSON.stringify(r)), l);
+  }
+});

@@ -975,6 +975,13 @@ check(
 # translation table seo_i18n.mjs (and seo_templates.mjs), in all seven languages, holds no number, ranking, comparison,
 # direction, certainty, trend or absolute word outside a placeholder or condition; each problem names the file, the
 # entry or key, the language and the word. It reads the sources, so it runs with or without the generated pages.
+# Round 57b (richer country pages, owner: "looks good, only the sources links should be real links"): on every country
+# page in every language, each figure its sections and questions write is the model's (seo_country.mjs marks what each
+# shows; seo_check.py check_dyn works it out again from site_numbers.mjs: amounts, parts, costs, years, trade before and
+# after, loans, money flowing back, ranks by the map's rule), the neighbours' and similar countries' figures and chance
+# words are the model's, the visible questions are the JSON-LD FAQPage word for word, and every source is a working
+# link (a well-formed http(s) address, or a place on the page or the site that exists). The guard also reads the
+# comparative words (smaller, higher, below, far more ...).
 
 try:
     _wording, _n_wording = seo_check.check_wording(ROOT, _node)

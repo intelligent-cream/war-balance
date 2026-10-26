@@ -24,6 +24,7 @@ import * as T from "./seo_templates.mjs";
 import { buildTopic, renderTopic, TOPIC_CSS, pathOf, mv } from "./seo_topics.mjs";
 import { partEntries, yearEntries, compareEntries } from "./seo_families.mjs";
 import * as I from "./seo_i18n.mjs";
+import { countryDyn, plainText, mapRank, rankable, sameRegion, similarOf } from "./seo_country.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -120,7 +121,6 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const t0 = Date.now();
   const U = siteUrl.replace(/\/$/, "") + "/", abs = p => U + p.replace(/^\//, "");
   const data = JSON.parse(await readFile(join(site, "data.json"), "utf8"));
-  const Q = JSON.parse(await readFile(join(HERE, "seo_queries.json"), "utf8"));
   const DEMAND = JSON.parse(await readFile(join(HERE, "seo_demand.json"), "utf8"));
   const FAM = JSON.parse(await readFile(join(HERE, "seo_families.json"), "utf8"));
   const statePath = join(HERE, "seo_lastmod.json");
@@ -144,14 +144,20 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const byIso = Object.fromEntries(countries.map(c => [c.iso, c]));
   for (const c of countries) c.demand = DEMAND[c.iso] || {};
   const fOf = c => ({ ...c.fig, iso: c.iso, name: c.nameEn, party: c.party, armedFull: c.armedFull, noData: c.noData || c.mostlyNoData, mostly: c.mostlyNoData, demand: c.demand });
-  const LANG_DATA = { en: byIso }, WORDS = { en: EN.words }, RANK = { en: EN.rank.net };
+  const LANG_DATA = { en: byIso }, WORDS = { en: EN.words }, RANK = { en: EN.rank.net }, DYNW = { en: EN.dynWords }, SRCS = { en: EN.srcs };
   for (const l of NL) {
     const r = await page.evaluate(extractSite, { lang: l, isos: countries.map(c => c.iso) });
     LANG_DATA[l] = Object.fromEntries(r.countries.map(c => [c.iso, c]));
-    WORDS[l] = r.words; RANK[l] = r.rank.net;
+    WORDS[l] = r.words; RANK[l] = r.rank.net; DYNW[l] = r.dynWords; SRCS[l] = r.srcs;
   }
   const tExtract = Date.now() - t0;
   const LC = l => countries.map(c => LANG_DATA[l][c.iso] || c);   // the countries as a language has them
+  // round 57b: the fuel share of pre-war purchases is measured for some countries; the others hold one average (the
+  // value most countries share): a page shows only a measured share, and the energy table leaves the average out
+  const fuelCount = {};
+  for (const c of countries) { const v = c.dyn && c.dyn.facts.fuelShare; if (v != null) fuelCount[v] = (fuelCount[v] || 0) + 1; }
+  const fuelDefault = +Object.entries(fuelCount).sort((a, b) => b[1] - a[1])[0][0];
+  for (const l of T.LANGS) for (const c of LC(l)) if (c.fuelSharePreWar != null && Math.abs(c.fuelSharePreWar - fuelDefault) < 1e-6) c.fuelSharePreWar = null;
   const slugs = new Set();
   for (const c of countries) { if (slugs.has(c.slug)) throw new Error("two countries with the slug " + c.slug); slugs.add(c.slug); }
   const cPath = (c, l = "en") => (l === "en" ? "" : "/" + l) + "/country/" + c.slug + "/";
@@ -187,7 +193,15 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     await rm(d, { recursive: true, force: true });
   }
   // the shared look
-  const allCss = CSS + "\n" + TOPIC_CSS + "\nul.rel{display:flex;flex-wrap:wrap;gap:6px 16px;list-style:none;padding:0}\n.more h3{font:700 14px/1.3 var(--fd);margin:14px 0 4px;color:var(--soft)}";
+  const allCss = CSS + "\n" + TOPIC_CSS + "\nul.rel{display:flex;flex-wrap:wrap;gap:6px 16px;list-style:none;padding:0}\n.more h3{font:700 14px/1.3 var(--fd);margin:14px 0 4px;color:var(--soft)}" +
+    // round 57b: the country page's sections, folded below its top, with its story tags, data coverage and sources by tier
+    "\ndetails.fold{border-top:1px solid var(--line)}details.fold>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;padding:2px 0}" +
+    "details.fold>summary::-webkit-details-marker{display:none}details.fold>summary h2{flex:1;margin:14px 0}details.fold>summary::after{content:\"+\";font:700 20px/1 var(--fd);color:var(--soft)}" +
+    "details.fold[open]>summary::after{content:\"\u2212\"}details.fold>summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px}details.fold h3{font-size:15.5px;margin:16px 0 6px}" +
+    "\nul.tags{list-style:none;padding:0;margin:0}ul.tags li{padding:7px 0;border-bottom:1px dashed var(--line)}ul.cov{list-style:none;padding:0;font-size:14.5px;margin:6px 0}ul.cov li{margin:3px 0}" +
+    ".dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}.dot.ok{background:#3a9a5b}.dot.est{background:#d9a21b}.dot.missing{background:#c84a3a}" +
+    "\nul.src{list-style:none;padding:0;font-size:14.5px}ul.src li{margin:0 0 6px;overflow-wrap:anywhere}.tier{display:inline-block;font-size:11.5px;line-height:1.5;border-radius:4px;padding:0 6px;margin-right:4px;background:var(--line);color:var(--ink)}" +
+    "details.fold-in>summary{cursor:pointer;color:var(--ukr);margin:12px 0 8px}table.peers td.m{min-width:7em}";
   await writeFile(join(site, "pages.css"), allCss + "\n");
   CSS_HREF = "/pages.css?v=" + createHash("sha256").update(allCss).digest("hex").slice(0, 8);
 
@@ -232,6 +246,39 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const groupsOf = {}; for (const e of TOPICS.filter(x => x.kind === "group")) for (const i of e.members) (groupsOf[i] = groupsOf[i] || []).push(e);
   const comparesOf = {}; for (const e of COMPARES) for (const i of [e.a, e.b]) (comparesOf[i] = comparesOf[i] || []).push(e);
 
+  const groupOfMap = {}; for (const g of EN.rank.net.groups) for (const r of g.rows) groupOfMap[r.iso] = r;
+  // ----- round 57b: each country's neighbours by land (the map's own borders, countries-50m.json), its place in the
+  // map's ranking and in its groups by the map's rule, and the countries with a similar result (seo_country.mjs) -----
+  const RANKROW = Object.fromEntries(countries.map(c => [c.iso, { iso: c.iso, gdp: c.gdp, party: c.party, noData: c.noData || c.mostlyNoData, region: c.region,
+    level: c.fig.cN ? c.fig.cN.level : null, side: c.fig.cN ? c.fig.cN.side : null, netPct: c.fig.netPct }]));
+  const RROWS = Object.values(RANKROW);
+  const topo = JSON.parse(await readFile(join(site, "countries-50m.json"), "utf8"));
+  const isoOfN = {}; for (const [iso, c] of Object.entries(data.countries)) isoOfN[c.n] = iso;
+  const arcOwners = new Map(), walkArcs = (a, f) => (typeof a === "number" ? f(a < 0 ? ~a : a) : a.forEach(x => walkArcs(x, f)));
+  for (const g of topo.objects.countries.geometries) {
+    const iso = isoOfN[g.id];
+    if (iso && g.arcs) walkArcs(g.arcs, a => { if (!arcOwners.has(a)) arcOwners.set(a, new Set()); arcOwners.get(a).add(iso); });
+  }
+  const NBR = {};
+  for (const set of arcOwners.values()) if (set.size > 1) for (const a of set) for (const b of set) if (a !== b) (NBR[a] = NBR[a] || new Set()).add(b);
+  const SIDES = new Set(["RUS", "UKR"]);   // the two sides the money is measured toward
+  const PEERS = {};
+  for (const c of countries) {
+    const r = RANKROW[c.iso];
+    const nb = [...(NBR[c.iso] || [])].filter(i => RANKROW[i] && !SIDES.has(i) && !RANKROW[i].noData && byIso[i].net && sameRegion(RANKROW[i].region, r.region)).sort();
+    const groups = TOPICS.filter(e => e.kind === "group" && (e.members || []).includes(c.iso)).map(e => ({ e, ...(mapRank(r, RROWS.filter(x => e.members.includes(x.iso))) || {}) })).filter(g => g.n);
+    PEERS[c.iso] = { rankable: rankable(r) && !SIDES.has(c.iso), world: mapRank(r, RROWS), neighbours: nb, similar: similarOf(r, RROWS.filter(x => !SIDES.has(x.iso))).map(x => x.iso), groups };
+    // the map's own numbers in its ranking (views.js renderRanking) are the same rule
+    const mine = PEERS[c.iso].world, map = (groupOfMap[c.iso] || {}).rank ?? null;
+    if ((mine ? mine.n : null) !== map) throw new Error(`seo_country.mjs mapRank: ${c.iso} ${mine && mine.n} but the map's ranking says ${map}`);
+  }
+  const rowL = (l, iso) => {
+    const x = LANG_DATA[l][iso] || byIso[iso], r = RANKROW[iso];
+    return { iso, name: x.name, href: cPath(byIso[iso], l), netPct: x.fig.netPct, netEur: x.fig.net, level: r.level, side: r.side, chance: x.net ? x.net.chance : "", party: r.party, partyWord: WORDS[l].party, gdp: x.gdp };
+  };
+  const EU27 = new Set("AUT BEL BGR HRV CYP CZE DNK EST FIN FRA DEU GRC HUN IRL ITA LVA LTU LUX MLT NLD POL PRT ROU SVK SVN ESP SWE".split(" "));
+  const fold = (id, title, html) => (html ? `<details class="fold" id="${id}"><summary><h2>${esc(title)}</h2></summary>\n${html}\n</details>` : "");
+
   // ----- country pages -----
   const order = EN.rank.net.order;
   const groupOfL = {};
@@ -254,7 +301,12 @@ ${ps.length ? `<h3>${esc(I.s(l, "partsRanked"))}</h3>${relList(l, ps)}` : ""}
     if (ls.length > 1) alts.push(["x-default", abs(cPath(c0))]);
     for (const l of ls) {
       const c = LANG_DATA[l][c0.iso], f = { ...fOf(c0), nameL: c.name, words: WORDS[l], loc: c, tradeFirst: FAM.country && FAM.country.tradeFirst }, copy = T.countryCopy(l, f);
-      const faq = l === "en" ? T.faqEn(c0, (Q[c0.iso] || {}).en || [], { dataTo: dataToL.en, month: monthOnlyL("en") }) : T.faqLang(c, copy);
+      // round 57b: the page's sections and questions (seo_country.mjs), from the map's data in this language
+      const pr = PEERS[c0.iso];
+      const dyn = countryDyn(c, { l, words: WORDS[l], dw: DYNW[l], srcs: SRCS[l], L: k => T.L(l, k), dataTo: dataToL[l], month: monthOnlyL(l), tradeYears: [data.years[0], data.years[4]],
+        peers: { ...pr, groups: pr.groups.map(g => ({ slug: g.e.slug, label: labelOf(g.e, l), n: g.n, of: g.of })) }, row: iso => rowL(l, iso), home: home(l), fuelDefault,
+        demand: c0.demand, eu: EU27.has(c0.iso), armedFull: c0.armedFull });
+      const faq = dyn.faq;
       const url = abs(cPath(c0, l));
       const crumbItems = [[T.L(l, "map"), home(l)], [T.L(l, "ranking"), "/ranking/"], [c.name, cPath(c0, l)]];
       const g = groupOfL[l][c0.iso], i = order.indexOf(c0.iso);
@@ -272,15 +324,16 @@ ${c0.party ? `<p class="party"><b>${esc(T.L(l, "party"))}.</b> ${esc(c.partyWhy)
 <div class="tiles">${tileHtml(l, T.L(l, "support"), c.ua)}${tileHtml(l, T.L(l, "trade"), c.rus)}</div>
 <p class="sub">${esc(c.kept)}.</p>
 ${c.frozen ? `<p class="sub"><b>${esc(T.L(l, "frozen"))}:</b> ${esc(c.frozen.verb)} (${esc(c.frozen.eur)}).</p>` : ""}
-${c.kiel ? `<p class="sub">${esc(c.kiel)}</p>` : ""}
-<h2>${esc(T.L(l, "parts"))}</h2>
-${c.sections.map(s => `<p class="psec">${esc(s.pre)} ${esc(s.amount)}${s.post ? " " + esc(s.post) : ""} · ${esc(s.eur)}</p>
+${dyn.story.length ? `<section class="story" aria-labelledby="story"><h2 id="story">${esc(DYNW[l].story)}</h2><ul class="tags">${dyn.story.map(t => `<li><b>${esc(t.label)}</b> ${esc(t.body)}</li>`).join("")}</ul></section>` : ""}
+${dyn.decide ? `<section aria-labelledby="decide"><h2 id="decide">${esc(I.dyn(l, "tDecide"))}</h2>${dyn.decide}</section>` : ""}
+${fold("parts", T.L(l, "parts"), `${c.sections.map(s => `<p class="psec">${esc(s.pre)} ${esc(s.amount)}${s.post ? " " + esc(s.post) : ""} · ${esc(s.eur)}</p>
 <div class="tbl"><table><tbody>${s.parts.map(p => `<tr><td>${esc(p.name)}<span class="letter" title="${esc(T.L(l, "lettersKey"))}">${esc(p.letter)}</span>${p.ev ? `<span class="ev">${esc(p.ev)}</span>` : ""}</td><td class="n">${esc(p.sign + p.amount)}</td><td class="n">${esc(p.eur)}</td></tr>`).join("")}</tbody></table></div>`).join("\n")}
-<p class="sub">${esc(T.L(l, "lettersKey"))}</p>
-<h2 id="by-year">${esc(T.L(l, "byYear"))}</h2>
+<p class="sub">${esc(T.L(l, "lettersKey"))}</p>`)}
+${fold("by-year", T.L(l, "byYear"), `${dyn.years}
 <div class="tbl"><table><thead><tr><th>${esc(T.L(l, "year"))}</th><th class="n">${esc(T.L(l, "support"))}</th><th class="n">${esc(T.L(l, "trade"))}</th><th class="n">${esc(T.L(l, "netYear"))}</th><th class="n">${esc(T.L(l, "total"))}</th></tr></thead>
 <tbody>${c.years.map(y => `<tr id="y${y.y}"><td><a href="${lp(l, `/ukraine-aid-${y.y}/`)}">${y.y}</a>${y.ytd ? "*" : ""}</td><td class="n">${esc(y.ua)}</td><td class="n">${esc(y.rus)}</td><td class="n">${esc(y.net)}</td><td class="n">${esc(y.cum)}</td></tr>`).join("")}</tbody></table></div>
-<p class="sub">${esc(T.L(l, "yearNote", { y: lastYear, month: monthOnlyL(l) }))}</p>`;
+<p class="sub">${esc(T.L(l, "yearNote", { y: lastYear, month: monthOnlyL(l) }))}</p>`)}
+${dyn.sections.map(x => fold(x.id, x.title, x.html)).join("\n")}`;
       }
       const body = `${top(l)}
 <main class="wrap">
@@ -289,18 +342,19 @@ ${crumbs(l, crumbItems)}
 <p class="intro">${esc(copy.intro)}</p>
 <p><a class="btn" href="${home(l)}#${c0.iso}">${esc(T.L(l, "openMap"))} →</a></p>
 ${main}
-${faq.length ? `<section class="faq"><h2>${esc(T.L(l, "faq"))}</h2>${faq.map(x => `<h3>${esc(x.q)}</h3><p>${esc(x.a)}</p>`).join("\n")}</section>` : ""}
+${faq.length ? `<section class="faq" id="faq"><h2>${esc(T.L(l, "faq"))}</h2>${faq.map(x => `<h3>${esc(x.q)}</h3><p>${x.a}</p>`).join("\n")}</section>` : ""}
 <h2>${esc(T.L(l, "nearby"))}</h2>
 ${g ? `<p class="sub">${esc(g.label)}${g.rank ? " · " + g.rank : ""}</p><ol class="rk">${near.map(iso => { const x = groupOfL[l][iso], cc = LANG_DATA[l][iso] || byIso[iso]; return `<li${iso === c0.iso ? ' class="here"' : ""}><span class="r">${x.rank ? x.rank + "." : ""}</span>${iso === c0.iso ? esc(cc.name) : `<a href="${cPath(byIso[iso], l)}">${esc(cc.name)}</a>`}<span class="v">${esc(x.row.value)}</span><span class="e">${esc(x.label)} · ${esc(x.row.eur)}${x.row.sure ? "" : " · " + esc(x.row.chance)}</span></li>`; }).join("")}</ol>`
     : `<p>${esc(c0.party ? T.L(l, "party") : T.L(l, "notRanked"))}. <a href="/ranking/">${esc(T.L(l, "ranking"))}</a></p>`}
 ${moreAbout(l, c0)}
-${c.sources && c.sources.length ? `<h2>${esc(T.L(l, "sources"))}</h2><ul class="src">${c.sources.map(s => `<li>${s.url ? `<a href="${esc(s.url)}" rel="noopener">${esc(s.name)}</a>` : esc(s.name)}</li>`).join("")}</ul><p class="sub">${esc(T.L(l, "moreSources", { n: c.nSources }))} <a href="${home(l)}#${c0.iso}">${esc(T.L(l, "openMap"))}</a> · <a href="/how-it-works/">${esc(T.L(l, "measured"))}</a></p>` : ""}
+${(c0.noData || c0.mostlyNoData) && c.sources && c.sources.length ? `<h2>${esc(T.L(l, "sources"))}</h2><ul class="src">${c.sources.map(s => `<li><a href="${esc(s.url || home(l) + "#" + c0.iso)}"${s.url ? ' rel="noopener"' : ""}>${esc(s.name)}</a></li>`).join("")}</ul>` : ""}
+${c.nSources ? `<p class="sub">${esc(T.L(l, "moreSources", { n: c.nSources }))} <a href="${home(l)}#${c0.iso}">${esc(T.L(l, "openMap"))}</a> · <a href="/how-it-works/">${esc(T.L(l, "measured"))}</a></p>` : ""}
 ${ls.length > 1 ? `<p class="langs" aria-label="${esc(T.L(l, "languages"))}">${ls.filter(x => x !== l).map(x => `<a href="${cPath(c0, x)}" hreflang="${x}" lang="${x}">${T.LANG_NAMES[x]}</a>`).join("")}</p>` : ""}
 </main>
 ${foot(l)}`;
       const ld = [{ "@context": "https://schema.org", "@type": "WebPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: l, dateModified: DATE_TOKEN,
         image: abs(`share/${c0.iso.toLowerCase()}.png`), isPartOf: DATASET, about: { "@type": "Country", name: c0.nameEn } }, crumbLd(crumbItems)];
-      if (faq.length) ld.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map(x => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
+      if (faq.length) ld.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map(x => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: plainText(x.a) } })) });
       await put(cPath(c0, l), shell({ lang: l, title: copy.title, description: copy.description, canonical: url, alternates: ls.length > 1 ? alts : [], image: abs(`share/${c0.iso.toLowerCase()}.png`),
         imageAlt: c0.net ? T.L("en", "imgCountry", { name: c0.name, what: c0.net.pre + " " + c0.net.big }) : T.L("en", "imgNoData", { name: c0.name }), ld, body, ogType: "article", iso: c0.iso }), ls.length > 1 ? alts : []);
     }

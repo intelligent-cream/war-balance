@@ -287,3 +287,106 @@ def test_wording_guard_names_file_entry_language_and_word_when_the_config_is_tam
 def test_the_real_phrases_pass_the_wording_guard():
     p, n = sc.check_wording(ROOT, shutil.which("node"))
     assert p == [] and n > 100
+
+
+# ----- round 57b: the comparative words, and the country pages' sections and questions -----
+def test_wording_guard_catches_comparative_and_positional_words():
+    for t in (
+        "Its aid was far more than Poland's.",
+        "A smaller share.",
+        "A bigger part.",
+        "Higher prices.",
+        "Lower now.",
+        "It sits below zero.",
+        "It is above the line.",
+        "Its aid exceeds its trade.",
+    ):
+        assert any("comparison" in x for x in w(t)), t
+    assert any("comparison 'kleiner'" in x for x in w("Ein kleiner Teil.", "de"))
+    assert any("comparison 'poniżej'" in x for x in w("Saldo poniżej zera.", "pl"))
+    # chosen by the data, inside a condition, they are allowed; and the method's defined terms
+    assert w("Support {if:a>b|rose|fell}; a {if:a>b|bigger|smaller} share.") == []
+    assert w("taxes and profit above a normal return") == []
+
+
+DYN_SVK = dict(SVK, part_ref=0.3639, dyn={"tb0": 2.95903, "tb1": 2.01306})
+
+
+def dyn_page(
+    figs: str, faq_visible=(("Q?", "A <b>1</b>."),), faq_ld=(("Q?", "A 1."),), src='<a href="https://ex.org/a">S</a>'
+) -> str:
+    vis = "".join(f"<h3>{q}</h3><p>{a}</p>" for q, a in faq_visible)
+    ld = json.dumps(
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq_ld
+            ],
+        }
+    )
+    return (
+        f'<html><head><script type="application/ld+json">{ld}</script></head><body><p>{figs}</p>'
+        f'<ul class="src"><li id="src-x"><span class="tier">official</span> {src}</li></ul>'
+        f'<section class="faq" id="faq"><h2>Questions</h2>{vis}</section></body></html>'
+    )
+
+
+def test_a_country_pages_figures_must_be_the_models(tmp_path):
+    ok = (
+        '<span data-f="e" data-k="uaEur">€0.95bn</span> <span data-f="p" data-k="part_ref">0.30%</span> '
+        '<span data-f="e" data-k="tb0">€3bn</span> <span data-f="c" data-k="tbc">−32%</span>'
+    )
+    assert sc.check_dyn(dyn_page(ok), "/x/", "SVK", {"countries": {"SVK": DYN_SVK}}, "en", {}, tmp_path) == []
+    bad = '<span data-f="e" data-k="uaEur">€1.2bn</span> <span data-f="c" data-k="tbc">+32%</span> <span data-f="e" data-k="nope">€1bn</span>'
+    p = sc.check_dyn(dyn_page(bad), "/x/", "SVK", {"countries": {"SVK": DYN_SVK}}, "en", {}, tmp_path)
+    assert (
+        len(p) == 3
+        and any("uaEur" in x for x in p)
+        and any("tbc" in x for x in p)
+        and any("not in the model" in x for x in p)
+    )
+    # a rank by the map's rule: a too-close-to-call country gets no number
+    assert sc.check_dyn(
+        dyn_page('<span data-f="k" data-k="rank:all">3</span>'),
+        "/x/",
+        "SVK",
+        {"countries": {"SVK": DYN_SVK}},
+        "en",
+        {"all": sc.map_ranks({"countries": {"SVK": DYN_SVK}})},
+        tmp_path,
+    )
+
+
+def test_the_visible_questions_must_be_the_json_ld_and_every_source_a_working_link(tmp_path):
+    m = {"countries": {"SVK": DYN_SVK}}
+    assert any(
+        "questions" in x
+        for x in sc.check_dyn(dyn_page("", faq_ld=(("Q?", "Another answer."),)), "/x/", "SVK", m, "en", {}, tmp_path)
+    )
+    assert any(
+        "without a link" in x
+        for x in sc.check_dyn(dyn_page("", src="Just a name"), "/x/", "SVK", m, "en", {}, tmp_path)
+    )
+    assert any(
+        "does not work" in x
+        for x in sc.check_dyn(dyn_page("", src='<a href="htp:/broken">S</a>'), "/x/", "SVK", m, "en", {}, tmp_path)
+    )
+    assert any(
+        "does not work" in x
+        for x in sc.check_dyn(dyn_page("", src='<a href="#src-missing">S</a>'), "/x/", "SVK", m, "en", {}, tmp_path)
+    )
+    assert sc.check_dyn(dyn_page("", src='<a href="#src-x">S</a>'), "/x/", "SVK", m, "en", {}, tmp_path) == []
+    # "<0.01%" is escaped on the page and plain in the JSON-LD
+    assert (
+        sc.check_dyn(
+            dyn_page("", faq_visible=(("Q?", "&lt;0.01% of GDP"),), faq_ld=(("Q?", "<0.01% of GDP"),)),
+            "/x/",
+            "SVK",
+            m,
+            "en",
+            {},
+            tmp_path,
+        )
+        == []
+    )

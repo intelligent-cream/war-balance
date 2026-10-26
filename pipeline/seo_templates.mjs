@@ -13,7 +13,7 @@
 // ten most searched countries and the per-country English overrides of round 54 are folded into these rules). The
 // rule that asks about trade instead of aid is in pipeline/seo_families.json (country.tradeFirst).
 
-import { P as PL, E as EL, L as LL, cap, list3, inSentence, countryText, faqText, homeText, staticText, s as S, fit } from "./seo_i18n.mjs";
+import { P as PL, E as EL, L as LL, cap, list3, inSentence, countryText, homeText, staticText, fit } from "./seo_i18n.mjs";
 
 export const TITLE_MAX = 60, DESC_MAX = 155;
 export const LANGS = ["en", "uk", "de", "fr", "pl", "nl", "es"];
@@ -73,44 +73,8 @@ export function countryLangs() {
   return LANGS;
 }
 
-// ----- the short FAQ (2 to 4 questions), phrased like the searches for that country, answered with its figures -----
-// c: the country as seo_extract.mjs gives it (fig, years, frozen, kiel, partyWhy, ...); queries: terms.json's for it;
-// o: { dataTo, month } (the data's last month, and the month the year in progress runs to)
-export function faqEn(c, queries = [], o = {}) {
-  const f = { ...c.fig, iso: c.iso, party: c.party }, N = c.name || c.nameEn, Nt = inSentence("en", N), q = queries.join(" | ");
-  const out = [];
-  if (c.noData || c.mostlyNoData || !c.net) return out;
-  const v = { Nt, NtCap: cap(Nt), ua: E(f.ua), uaP: P(f.uaPct), uaRange: c.ua.range, dataTo: o.dataTo || "", kielSp: c.kiel ? " " + c.kiel : "", keptCap: cap(c.kept), kept: c.kept, partyWhy: c.partyWhy || "",
-    netAbsP: c.net.signed.replace(/^[+−]/, ""), netWords: [c.net.range, c.net.chance].filter(Boolean).join("; "), armedEur: c.armedFullEur || "", paid: E(f.paidRussia),
-    frozenEur: E(f.frozen), frozenGdp: c.frozen ? c.frozen.value : "",
-    years: (c.years || []).map(y => `${y.ytd ? S("en", "yearTo", { y: y.y, month: o.month || "" }) : y.y} ${y.ua.replace(/^\+/, "")}`).join("; ") };
-  const dm = c.demand || {};
-  const nums = { tiny: f.uaPct < 0.01 && f.ua < 0.05, eu: EU.has(c.iso), party: !!c.party, asTrade: f.net >= 0 && !c.party, netX: f.net, armed: !!c.armedFullEur };
-  out.push({ q: faqText("q1", v, nums), a: faqText("a1", v, nums) });
-  out.push({ q: faqText("q2", v, nums), a: faqText("a2", v, nums) });
-  // 3 and 4: by year, what it paid Russia, frozen Russian money (where people search for it, else by year)
-  const extra = [];
-  const yearQ = { q: faqText("qYear", v, nums), a: faqText("aYear", v, nums) };
-  // round 56: "Does it trade with Russia?" where people search for its trade (seo_demand.json)
-  const paidQ = f.paidRussia > 0.05 ? { q: faqText("qPaid", v, { asTrade: (dm.trade || 0) >= 200 }), a: faqText("aPaid", v, nums) } : null;
-  const fzQ = c.frozen && Math.abs(f.frozen) >= 0.05 ? { q: faqText("qFrozen", v, nums), a: faqText("aFrozen", v, nums) } : null;
-  if (fzQ && /frozen|assets/.test(q)) extra.push(fzQ);
-  if (paidQ && (/oil|gas|trade|buy|import|sanction/.test(q) || (dm.trade || 0) >= 200)) extra.push(paidQ);
-  if (f.ua >= 0.1) extra.push(yearQ);
-  if (fzQ && !extra.includes(fzQ)) extra.push(fzQ);
-  return out.concat(extra.slice(0, 2));
-}
-
-// in the other languages: the heading's question (answered by the intro) and the opposite question, answered with the
-// panel's own words in that language (netSentence, chance, support or what Russia kept)
-export function faqLang(c, copy) {
-  if (c.noData || c.mostlyNoData || !c.net || !copy.intro) return [];
-  const first = { q: copy.h1, a: copy.intro };
-  const f = c.fig, toU = f.cN && f.cN.side === "ukraine" && !c.party;
-  const paren = [c.net.range, c.net.chance].filter(Boolean).join("; ");
-  const a2 = toU ? `${c.netSentence} (${paren}). ${cap(c.kept)}.` : `${c.uaVerb} (${c.ua.eur}). ${c.netSentence} (${paren}).`;
-  return [first, { q: copy.q2, a: a2 }];
-}
+// ----- round 57b: the country page's questions are seo_country.mjs's (a pool of questions, each with its data
+// condition and score), in every language -----
 
 // ----- the home page in every language, and the English static pages. n: countries ranked -----
 export function homeCopy(l, n, dataTo = "") {

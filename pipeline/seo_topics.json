@@ -65,7 +65,7 @@
       "map": "#view=rank&lens=payments&tags=windfall",
       "faq": [
         { "q": "Who buys Russian oil and gas?", "a": "By what they paid Russia from 2022 to {dataTo}, the table starts with {top3list}: {top1} paid {top1_eur}. The {n} countries listed paid {sum:paid_eur} in all. The model does not split these payments by fuel for the war years; the fuel share column gives the share of fuel in each country's purchases before the war (2018 to 2021)." },
-        { "q": "Did buying Russian fuel help Russia?", "a": "What counts is not the sales value but how much more or less Russia kept (taxes and profit) than without the war. From the purchases of the {n} countries listed, Russia kept {sum:paidGain_eur} {if:sum:paidGain>=0|less|more} than in a world without the war, where the countries that cut back would have bought far more. War-time fuel prices and Russian oil refined elsewhere are shown separately." },
+        { "q": "Did buying Russian fuel help Russia?", "a": "What counts is not the sales value but how much more or less Russia kept (taxes and profit) than without the war. From the purchases of the {n} countries listed, Russia kept {sum:paidGain_eur} {if:sum:paidGain>=0|less|more} than in a world without the war, with what each of them would then have bought. War-time fuel prices and Russian oil refined elsewhere are shown separately." },
         { "q": "How much Russian oil did each country buy, in barrels?", "a": "This site does not give volumes. It measures money: what was paid to Russia, and the change in what Russia kept from it. For volumes, see energy trade trackers and customs statistics." }
       ],
       "sections": [
@@ -132,7 +132,7 @@
       "map": "#view=rank&lens=payments",
       "subtotals": ["eu"],
       "faq": [
-        { "q": "Has Europe paid Russia more than aid to Ukraine?", "a": "In gross money, Europe paid Russia {sum:paid_eur} from 2022 to {dataTo}, {if:abs(sum:paid)~abs(sum:ua)|about the same as|{if:abs(sum:paid)>abs(sum:ua)|more than|less than}} its support for Ukraine ({sum:ua_eur}). But a payment is not all a gain for Russia: what counts on this site is the change in what Russia kept (taxes and profit) against a world without the war, where Europe would have bought far more. On that measure, Russia kept {sum:paidGain_eur} {if:sum:paidGain>=0|less|more} from Europe's purchases than it would have without the war." },
+        { "q": "Has Europe paid Russia more than aid to Ukraine?", "a": "In gross money, Europe paid Russia {sum:paid_eur} from 2022 to {dataTo}, {if:abs(sum:paid)~abs(sum:ua)|about the same as|{if:abs(sum:paid)>abs(sum:ua)|more than|less than}} its support for Ukraine ({sum:ua_eur}). But a payment is not all a gain for Russia: what counts on this site is the change in what Russia kept (taxes and profit) against a world without the war, with what Europe would then have bought. On that measure, Russia kept {sum:paidGain_eur} {if:sum:paidGain>=0|less|more} from Europe's purchases than it would have without the war." },
         { "q": "How much did the EU pay Russia since 2022?", "a": "The {sub:eu:n} EU members paid Russia {sub:eu:paid_eur} from 2022 to {dataTo}; their support for Ukraine came to {sub:eu:ua_eur} ({sub:eu:ua_pct} of their combined GDP), including their shares of EU-level aid." },
         { "q": "Which European countries paid Russia the most?", "a": "In gross money since 2022 the list starts with {top3by:paid}: {top1by:paid_eur} for {top1by:paid}. Each country's page gives what it paid Russia and how much more or less Russia kept from it than without the war." }
       ],
@@ -162,7 +162,7 @@
       "map": "#view=rank&lens=payments",
       "faq": [
         { "q": "Which countries help Russia's economy the most?", "a": "In money terms, the table starts with {top3list}: since 2022 Russia kept {top1_eur} {if:top1:rus<0|more|less} with {top1} than without the war. This counts Russia's gain (taxes and profit), not the sales value. Weapons, troops and diplomacy are not in the number." },
-        { "q": "How much more did Russia earn from trade because of the war?", "a": "Adding up the {n} countries listed, Russia kept {sum:rus_eur} {if:sum:rus<0|more|less} than without the war. Other countries cut what Russia kept, so the world total is smaller; see the trade with Russia ranking." },
+        { "q": "How much more did Russia earn from trade because of the war?", "a": "Adding up the {n} countries listed, Russia kept {sum:rus_eur} {if:sum:rus<0|more|less} than without the war. Other countries cut what Russia kept, and the world total nets both out; see the trade with Russia ranking." },
         { "q": "How sure are these figures?", "a": "Each has a range and a chance for its direction. {if:nToR:rus|For {nToR:rus} of the countries listed the extra for Russia is {word:sure}. |}{if:nUnsure:rus|For {nUnsure:rus} it is {word:lean}, {word:unc} or {word:near}.|}" }
       ],
       "notes": [
@@ -240,7 +240,7 @@
       "intro": "The BRICS members other than Russia, from February 2022 to {dataTo}: Russia kept {sum:rus_eur} {if:sum:rus>=0|less|more} from trade with them together than in a world without the war; with their support for Ukraine the net is {sum:net_pct} of their combined GDP {if:sum:net>=0|toward Ukraine|toward Russia}.",
       "members": ["BRA", "RUS", "IND", "CHN", "ZAF", "EGY", "ETH", "IRN", "ARE", "IDN"],
       "notes": [
-        "Members as of 2026: {memberNames}. {name:SAU} was invited to join in 2024 but has not confirmed membership; it is shown below, outside the totals."
+        "Members as of 2026: {memberNames}. {name:SAU} was invited to join in 2024 but has not confirmed membership; it is listed apart, outside the totals."
       ],
       "extraRows": ["SAU"],
       "map": "#view=rank&lens=payments",
@@ -296,7 +296,7 @@
         "Which countries' money moved toward Russia since 2022, through trade, fuel and arms, against a world without the war? With ranges and sources."
       ],
       "h1": "Which countries help Russia? Where the money moved since 2022",
-      "intro": "Listed here: the countries whose net, from February 2022 to {dataTo}, is below zero: what Russia kept from trade with them, against a world without the war, outweighs their support for Ukraine. It is a money measure, not a list of allies, and each row gives the chance of its direction. As a share of their economy the table starts with {top1}, {top2} and {top3}.{if:nParty| {partyList}, parties to the war, are listed apart.|}",
+      "intro": "Listed here: the countries whose net, from February 2022 to {dataTo}, is negative: what Russia kept from trade with them, against a world without the war, outweighs their support for Ukraine. It is a money measure, not a list of allies, and each row gives the chance of its direction. As a share of their economy the table starts with {top1}, {top2} and {top3}.{if:nParty| {partyList}, parties to the war, are listed apart.|}",
       "rank": "net",
       "order": "asc",
       "sort": "gdp",
@@ -398,7 +398,7 @@
         "Support for Ukraine since 2022 per person in each country, with refugee hosting and loans at gift value. Ranges and sources."
       ],
       "h1": "Ukraine aid per capita: which countries give the most per person?",
-      "intro": "Support for Ukraine from February 2022 to {dataTo}, divided by each country's population. Per person the table starts with {top1} ({top1_pp}), {top2} and {top3}; donors that are large in euros come lower here.",
+      "intro": "Support for Ukraine from February 2022 to {dataTo}, divided by each country's population. Per person the table starts with {top1} ({top1_pp}), {top2} and {top3}; the order differs from the order in euros.",
       "rank": "ua",
       "order": "desc",
       "sort": "pp",
@@ -459,7 +459,7 @@
       "map": "#view=rank&lens=payments",
       "faq": [
         { "q": "How big is the discount on Russian oil?", "a": "Across the {n} buyers listed, the discount gained since March 2022 beyond Russia's normal pre-war discount comes to {sum:part:disc_eur}; the table starts with {top3list}." },
-        { "q": "Did the price cap reduce Russia's oil income?", "a": "Partly. Selling below world prices cut what Russia kept, but war-time prices raised it, above all in 2022; each buyer's page shows both in its line for war-time fuel prices." }
+        { "q": "Did the price cap reduce Russia's oil income?", "a": "Partly. Selling at a discount cut what Russia kept, but war-time prices raised it, in 2022 in particular; each buyer's page shows both in its line for war-time fuel prices." }
       ],
       "related": ["russian-oil-gas-buyers", "shadow-fleet", "russia-war-income"]
     },

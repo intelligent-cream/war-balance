@@ -2,6 +2,14 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r57">Round 57: richer country pages <span class="cl-date">26 October</span></h2>
+
+Each country page now tells more of its story, in the map's own words and in all seven languages; the map itself is unchanged.
+
+- **New sections, shown only where the data have something to say**: its story in short and what decides its number (the map's own tags and lines), trade with Russia before and after the war, sanctions and Russia's own cut-offs, the cost of switching away from Russian energy, frozen Russian money, refugees, why the figure differs from the Kiel tracker, money flowing back, companies, indirect channels such as trade hubs and refined oil, and its neighbours and groups, numbered by the map's own ranking rule. The longer sections are folded.
+- **Questions chosen for each country** from one pool, by its data and by what people search for. Every source behind its parts is now a link, listed by part with its kind: official, research, press or own estimate.
+- The wording check now also stops comparative words (smaller, higher, below, far more and the like) in the pages' fixed text, so no sentence can go stale when the data change. No number changes.
+
 <h2 id="cl-r56">Round 56: many more findable pages <span class="cl-date">26 October</span></h2>
 
 The same figures, shown in more ways and more languages, all written from the map every time the site is published; the map itself is unchanged.

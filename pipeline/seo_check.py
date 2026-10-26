@@ -23,6 +23,7 @@ outside a placeholder or condition. Its rules and its allowlist are documented a
 from __future__ import annotations
 
 import html
+import json
 import re
 from pathlib import Path
 from urllib.parse import urlparse
@@ -391,6 +392,147 @@ def check_topics(
     return out
 
 
+# ----- round 57b (richer country pages): every figure a country page's sections write, against the model -----
+# seo_country.mjs marks each figure it writes with its format (data-f) and the model quantity it shows (data-k, from
+# site_numbers.mjs: a headline amount, a part, a cost, a year's own amount, its trade before and after, loans, money
+# flowing back, a rank by the map's rule); here each is worked out again from the model and written the way the page's
+# language writes it. The neighbours' and similar countries' tables use the topic tables' cells (check_cells), the
+# visible questions must be the JSON-LD FAQPage word for word, and every source (and every link in an answer) must be
+# a working link: a well-formed http(s) address, or a place on the page or the site that exists.
+FIG = re.compile(r'<span data-f="(\w+)" data-k="([\w:.\-]+)"(?: data-iso="([A-Z]{3})")?>(.*?)</span>')
+
+
+def fmt_pct_int(x: float, lang: str = "en") -> str:
+    return str(_round(abs(x))) + (NB + "%" if lang in ("de", "fr", "es") else "%")
+
+
+def fmt_int(n: float, lang: str = "en") -> str:
+    return _group(_round(abs(n)), lang)
+
+
+def map_ranks(model: dict, members: set[str] | None = None) -> dict[str, tuple[int, int]]:
+    """The map's ranking rule (views.js renderRanking): a number only for a very likely country, among economies of
+    €5bn and more that are not a party to the war and have data; toward Ukraine from the top, toward Russia from the
+    bottom. members: a group's countries (None: every country)."""
+    rows = [
+        (iso, c)
+        for iso, c in model["countries"].items()
+        if (members is None or iso in members)
+        and not c.get("party")
+        and not c.get("noData")
+        and c["gdp"] >= 5
+        and level(c) == "sure"
+    ]
+    out = {}
+    for side in (1, -1):
+        same = sorted((r for r in rows if (r[1]["net"] >= 0) == (side == 1)), key=lambda r: -r[1]["net"])
+        for i, (iso, _) in enumerate(same):
+            out[iso] = (i + 1 if side == 1 else len(same) - i, len(same))
+    return out
+
+
+def _sg(v: float) -> str:
+    return "+" if v >= 0 else "\u2212"
+
+
+def fig_allowed(f: str, k: str, c: dict, lang: str, ranks: dict, iso: str) -> set[str] | None:
+    """The ways a marked figure may be written (None: the model has no such quantity)."""
+    dyn = c.get("dyn") or {}
+    if k.startswith(("rank:", "of:")):
+        r = ranks.get(k.split(":", 1)[1], {}).get(iso)
+        return {str(r[0] if k.startswith("rank:") else r[1])} if r else set()
+    tol = 5e-5
+    if k in ("tbc", "tsc"):
+        a, b = dyn.get(k[:2] + "0"), dyn.get(k[:2] + "1")
+        if not a or b is None:
+            return None
+        tol = 1e-9  # unrounded, as in data.json
+        vals = [100 * ((b + db) / (a + da) - 1) for da in (-tol, 0, tol) for db in (-tol, 0, tol)]
+        return {_sg(v) + fmt_pct_int(v, lang) for v in vals}
+    m = re.fullmatch(r"y(\d{4}):(ua|rus|net)", k)
+    if m:
+        v, tol = year_amount(c, int(m.group(1)), m.group(2)), 1.1e-4
+    elif k in c:
+        v = c[k]
+    elif k in dyn:
+        v = dyn[k]
+    else:
+        return None
+    if v is None:
+        return None
+    vals = [v + tol * i / 10 for i in range(-10, 11)]  # the model's figures are rounded: every value they may stand for
+    gdp = c["gdp"]
+    fmt = {
+        "e": lambda x: fmt_eur(x, lang),
+        "s": lambda x: _sg(x) + fmt_eur(x, lang),
+        "m": lambda x: ("\u2212" if x < 0 else "") + fmt_eur(x, lang),
+        "p": lambda x: fmt_pct(100 * x / gdp, lang),
+        "ps": lambda x: _sg(x) + fmt_pct(100 * x / gdp, lang),
+        "q": lambda x: fmt_pct(100 * x, lang),
+        "n": lambda x: fmt_int(x, lang),
+    }.get(f)
+    if fmt is None:
+        return set()
+    out = {fmt(x) for x in vals}
+    if f in ("p", "ps") and k.endswith("Eur") and k[:-3] in c:  # the model's own share of GDP, too
+        out |= {(_sg(c[k[:-3]]) if f == "ps" else "") + fmt_pct(c[k[:-3]] + d, lang) for d in (-tol, 0, tol)}
+    return out
+
+
+def _plain(h: str) -> str:
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", h))).strip()
+
+
+def link_ok(href: str, text: str, site: Path) -> bool:
+    """A link that works: a well-formed http(s) address, a place on this page, or a page of this site."""
+    h = html.unescape(href)
+    if h.startswith("#"):
+        return f'id="{h[1:]}"' in text
+    if h.startswith("/"):
+        path = h.split("#")[0].split("?")[0]
+        f = site / path.lstrip("/")
+        return (f / "index.html").exists() if path.endswith("/") else f.exists()
+    u = urlparse(h)
+    return u.scheme in ("http", "https") and bool(u.netloc) and " " not in h
+
+
+def check_dyn(text: str, name: str, iso: str, model: dict, lang: str, ranks: dict, site: Path) -> list[str]:
+    """A country page's sections and questions (round 57b): figures, questions against the JSON-LD, and links."""
+    out = []
+    for f, k, fi, txt in FIG.findall(text):
+        c = model["countries"].get(fi or iso)
+        allowed = fig_allowed(f, k, c, lang, ranks, fi or iso) if c else None
+        if allowed is None:
+            out.append(f"{name}: {k} is not in the model")
+        elif html.unescape(txt) not in allowed:
+            out.append(f"{name}: {k} written {html.unescape(txt)!r}, the model says {sorted(allowed)[:2]}")
+    sec = re.search(r'<section class="faq" id="faq"><h2>[^<]*</h2>(.*?)</section>', text, re.DOTALL)
+    seen = (
+        [(_plain(q), _plain(a)) for q, a in re.findall(r"<h3>(.*?)</h3><p>(.*?)</p>", sec.group(1), re.DOTALL)]
+        if sec
+        else []
+    )
+    ld = []
+    for blk in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.DOTALL):
+        if '"FAQPage"' in blk:
+            j = json.loads(blk)
+            ld = [(x["name"], re.sub(r"\s+", " ", x["acceptedAnswer"]["text"]).strip()) for x in j["mainEntity"]]
+    if seen != ld:
+        out.append(f"{name}: the questions on the page and in the JSON-LD differ")
+    for ul in re.findall(r'<ul class="src">(.*?)</ul>', text, re.DOTALL):
+        for li in re.findall(r"<li[^>]*>(.*?)</li>", ul, re.DOTALL):
+            a = re.search(r'<a href="([^"]*)"', li)
+            if not a:
+                out.append(f"{name}: a source without a link: {_plain(li)[:60]}")
+            elif not link_ok(a.group(1), text, site):
+                out.append(f"{name}: a source link that does not work: {a.group(1)[:80]}")
+    if sec:
+        for href in re.findall(r'<a href="([^"]*)"', sec.group(1)):
+            if not link_ok(href, text, site):
+                out.append(f"{name}: a link in its questions that does not work: {href[:80]}")
+    return out
+
+
 def check_site(
     site: Path, site_url: str, model: dict | None, topics: list[dict] | None = None, families: dict | None = None
 ) -> dict[str, list[str]]:
@@ -406,6 +548,7 @@ def check_site(
         "hreflang": [],
         "az": [],
         "topics": [],
+        "dyn": [],
     }
     smap = site / "sitemap.xml"
     if not smap.exists():
@@ -459,6 +602,22 @@ def check_site(
                 p["title"] += [
                     f"{name}: {x}" for x in title_problems_lang(h["title"] or "", c, lm.group(1), words[lm.group(1)])
                 ]
+    # round 57b: every country page's sections and questions, in every language
+    if model:
+        ranks = {"all": map_ranks(model)}
+        for e in topics or []:
+            if e.get("kind") == "group" and e.get("members"):
+                ranks[e["slug"]] = map_ranks(model, set(e["members"]))
+        for iso, c in model["countries"].items():
+            for lang in langs:
+                pre = "" if lang == "en" else lang + "/"
+                f = site / pre / "country" / c["slug"] / "index.html"
+                if not f.exists():
+                    continue
+                text = f.read_text()
+                name = f"/{pre}country/{c['slug']}/"
+                p["dyn"] += check_dyn(text, name, iso, model, lang, ranks, site)
+                p["dyn"] += check_cells(text, name, model, lang, None if lang == "en" else words.get(lang))
     if topics is not None:
         paths = family_pages(model, topics, families) if (families is not None and model) else None
         p["topics"] = check_topics(site, site_url, model, topics, set(urls), paths, langs, words)
@@ -476,7 +635,9 @@ def check_site(
 # Outside a placeholder or condition it may not hold:
 #   number      a digit or a number word (two, half, twice, million ...)
 #   ranking     most, largest, first, top, only, leading ... (a question may ask it: "Who gives the most?")
-#   comparison  more than, less than, fewer, exceeds, overtook ... (a question may ask it)
+#   comparison  more than, less than, fewer, exceeds, overtook, and (round 57b) smaller, bigger, higher, lower,
+#               below, above, exceed, far more ... (a question may ask it; inside a condition's words they are chosen by
+#               the data)
 #   direction   toward Ukraine / Russia, helps, supported, sides with ... where it states a result. Allowed in a
 #               question (a sentence ending in "?"), inside {q:...}, or where the sentence names both sides ("toward
 #               Ukraine or Russia", "+ toward Ukraine, − toward Russia")
@@ -495,6 +656,10 @@ ALLOW = {
     "G7": "the group's name",
     "CC BY 4.0": "the data's licence",
     "21 January 2026": "the date the EU ban on fuel refined from Russian crude took effect: a fixed historical fact",
+    # round 57b: defined terms of the method that hold a positional word, not a comparison of countries
+    "above a normal return": "the method's definition of what Russia keeps: taxes and profit beyond a normal return",
+    "above a no-war normal": "the same definition, against the world without the war",
+    "below Brent": "the definition of the discount on Russian crude since March 2022: a fixed historical fact",
 }
 YEAR = r"(?<!\d)(?:201[4-9]|202\d)(?!\d)"
 WAR_START_YEAR = "2022"
@@ -543,14 +708,27 @@ _W = {  # the words of each rule, by language (the map's own chance words are ad
         "uk": "найбільше найбільш найменше найбільший найбільша найбільші найменший найвищий найнижчий перший перша "
         "перше спершу останній остання лише тільки попереду позаду",
     },
+    # round 57b: and the comparative and positional words (smaller, higher, below, above, exceed, far more ...)
     "comparison": {
-        "en": "fewer exceeds exceeded outpaced outpaces overtook overtaken |more than|less than",
-        "de": "übertrifft übertraf überholte überholt |mehr als|weniger als",
-        "fr": "dépasse dépassé devancé |plus que|moins que",
-        "es": "supera superó adelantó |más que|menos que|más de lo que|menos de lo que",
-        "pl": "przewyższa przewyższył wyprzedził wyprzedziła prześcignął |więcej niż|mniej niż",
-        "nl": "overtreft overtrof ingehaald |meer dan|minder dan",
-        "uk": "перевищує перевищила перевищив випередив випередила |більше ніж|більше, ніж|менше ніж|менше, ніж",
+        "en": "fewer exceeds exceeded outpaced outpaces overtook overtaken smaller bigger larger higher lower below above "
+        "exceed exceeding |more than|less than|far more|far less",
+        "de": "übertrifft übertraf überholte überholt kleiner kleinere kleineren größer größere größeren höher höhere "
+        "höheren niedriger niedrigere niedrigeren übersteigt überstieg überschreitet unterhalb oberhalb "
+        "|mehr als|weniger als|weit mehr|weit weniger|unter null|über null",
+        "fr": "dépasse dépassé dépassent devancé excède excèdent inférieur inférieure inférieurs supérieur supérieure "
+        "supérieurs au-dessus au-dessous |plus que|moins que|bien plus|beaucoup plus|bien moins|plus petit|plus petite"
+        "|plus élevé|plus élevée|plus bas|plus basse|en dessous|en deçà",
+        "es": "supera superó adelantó excede exceden inferior inferiores superior superiores "
+        "|más que|menos que|más de lo que|menos de lo que|mucho más|mucho menos|más pequeño|más pequeña|más alto"
+        "|más alta|más bajo|más baja|por encima|por debajo",
+        "pl": "przewyższa przewyższył wyprzedził wyprzedziła prześcignął przekracza przekroczył przekroczyła mniejszy "
+        "mniejsza mniejsze większy większa większe wyższy wyższa wyższe niższy niższa niższe powyżej poniżej "
+        "|więcej niż|mniej niż|znacznie więcej|dużo więcej|znacznie mniej",
+        "nl": "overtreft overtrof ingehaald overschrijdt overschreed kleiner groter hoger lager "
+        "|meer dan|minder dan|veel meer|veel minder|boven nul|onder nul",
+        "uk": "перевищує перевищила перевищив випередив випередила менший менша більший більша вищий вища нижчий нижча "
+        "|більше ніж|більше, ніж|менше ніж|менше, ніж|набагато більше|значно більше|набагато менше|значно менше"
+        "|вище нуля|нижче нуля",
     },
     # direction: U and R name a side, V is a verb; a sentence naming both sides (or asking) is neutral
     "dirU": {

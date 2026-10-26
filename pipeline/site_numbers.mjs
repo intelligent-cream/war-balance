@@ -59,6 +59,14 @@ for (const [k, c] of Object.entries(by)) {
   // energy, what Russia took from companies), and each year's cumulative support, trade and net (EUR bn) for the
   // pages by year (each year's own amount is the difference of two years)
   for (const p of x.costParts.concat(x.takenParts || [])) o["cost_" + p.k] = r4(p.v);
+  // round 57b (richer country pages): the figures the country pages' sections write beside the map's sentences (check 48):
+  // what it bought from and sold to Russia in 2021 and 2025 (sales values), its measured fuel share before the war,
+  // loans in full and as a gift and what is promised (Kiel's figures), money flowing back and what its firms kept of it
+  const tr = c.to_rus || {}, fr = c.from_rus || {}, ai = c.aid || {};
+  o.dyn = { tb0: tr.years ? tr.years[0] : null, tb1: tr.years ? tr.years[4] : null, ts0: fr.years ? fr.years[0] : null, ts1: fr.years ? fr.years[4] : null,   // as in data.json (a % change needs them unrounded)
+
+    fuelShare: tr.gain && tr.gain.fossil_share != null ? tr.gain.fossil_share : null, loansFace: r4(ai.loans_face ?? null), loansGE: r4(ai.loans_face ? (ai.loans_grant_eq ?? ai.loans_face * 0.26) : null),
+    pledged: r4(ai.pledged_open ?? null), flowGross: r4(x.flowback), flowKept: r4(x.flowbackProfit) };
   o.yearsEur = Object.fromEntries(D.years.filter(yy => yy >= 2022 && yy <= Y).map(yy => { const z = yy === Y ? x : M.calc(c, yy); return [yy, [r4(z.uaBal), r4(z.rusBal), r4(z.shift)]]; }));
   // round 46: the views beside the band (without the war-time windfall) under the same names
   for (const a of mb.alts.concat(mb.views || [])) o["alt_" + a.k] = { ua: r4(a.ua * g), rus: r4(a.rus * g), net: r4(a.net * g) };
