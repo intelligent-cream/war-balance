@@ -1206,4 +1206,6 @@ I18N.nl = {
   "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Too close to call: below that. Near zero: within ±0.5% of GDP. Essentially zero: under 0.1% of GDP and not certain.": "Zeer waarschijnlijk: minstens 95% kans en elke andere methodekeuze is het ermee eens. Waarschijnlijk (neigend): minstens 65%. Te krap om te zeggen: daaronder. Bijna nul: binnen ±0,5% van het bbp. Vrijwel nul: minder dan 0,1% van het bbp en niet zeker.",
   "Countries helping Ukraine or Russia: money map since 2022": "Wie helpt Oekraïne, wie helpt Rusland? Geldkaart sinds 2022",
   "All countries, A to Z": "Alle landen van A tot Z",
+  "Topics": "Onderwerpen",
+  "One question per page, with its figures, in every language.": "Eén vraag per pagina, met de cijfers, in elke taal.",
 };

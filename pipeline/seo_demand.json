@@ -1,0 +1,1772 @@
+{
+"_note": "Round 56: search demand per country from the keyword research of 26 October 2026 (autocomplete in 16 languages, keywords.csv): the summed demand scores (0-100 each) of queries naming one country, by intent: trade (trade, oil, gas, sanctions), help (is it helping Russia, relations) and aid (how much it gave Ukraine). Relative only; used to choose a country page title variant and its questions (seo_templates.mjs). Round 57b: clusters, per country, the summed demand scores of the single-country queries of each keyword cluster (keywords.csv, \"dont\" clusters left out), for the country pages' questions (seo_country.mjs FAQ scoring).",
+"AFG": {
+"trade": 0,
+"help": 81,
+"aid": 0,
+"clusters": {
+"aid_totals_general": 28,
+"country_russia_relations": 81,
+"other_war_topic": 49
+}
+},
+"ALB": {
+"trade": 0,
+"help": 0,
+"aid": 65,
+"clusters": {
+"aid_country": 65
+}
+},
+"ARE": {
+"trade": 1018,
+"help": 3374,
+"aid": 49,
+"clusters": {
+"aid_country": 49,
+"companies_in_russia": 93,
+"comparisons": 125,
+"country_russia_relations": 3070,
+"groups_blocs": 33,
+"help_russia_country": 304,
+"help_russia_list": 30,
+"oil_buyers": 164,
+"other_war_topic": 595,
+"russia_war_income": 33,
+"sanctions_country": 292,
+"sanctions_evasion_hubs": 57,
+"shadow_fleet": 30,
+"trade_country": 562
+}
+},
+"ARE CHN": {
+"trade": 0,
+"help": 72,
+"aid": 0
+},
+"ARE SDN": {
+"trade": 0,
+"help": 30,
+"aid": 0
+},
+"ARE USA": {
+"trade": 0,
+"help": 58,
+"aid": 0
+},
+"ARG": {
+"trade": 98,
+"help": 225,
+"aid": 337,
+"clusters": {
+"aid_country": 337,
+"country_russia_relations": 66,
+"help_russia_country": 159,
+"other_war_topic": 446,
+"sanctions_country": 49,
+"trade_country": 49
+}
+},
+"ARM": {
+"trade": 190,
+"help": 245,
+"aid": 216,
+"clusters": {
+"aid_country": 216,
+"country_russia_relations": 100,
+"gas_lng": 96,
+"help_russia_country": 145,
+"other_war_topic": 163,
+"sanctions_country": 47,
+"sanctions_evasion_hubs": 49,
+"trade_country": 47
+}
+},
+"AUS": {
+"trade": 1769,
+"help": 434,
+"aid": 563,
+"clusters": {
+"aid_country": 563,
+"aid_country_year": 91,
+"comparisons": 24,
+"country_russia_relations": 262,
+"help_russia_country": 172,
+"oil_buyers": 771,
+"other_war_topic": 190,
+"price_cap": 47,
+"refugees": 18,
+"russia_war_income": 40,
+"sanctions_country": 429,
+"shadow_fleet": 18,
+"trade_country": 569
+}
+},
+"AUS IND": {
+"trade": 42,
+"help": 0,
+"aid": 0
+},
+"AUS USA": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"AUT": {
+"trade": 1839,
+"help": 337,
+"aid": 620,
+"clusters": {
+"aid_country": 620,
+"aid_country_year": 129,
+"country_russia_relations": 167,
+"gas_lng": 1021,
+"help_russia_country": 170,
+"oil_buyers": 261,
+"other_war_topic": 112,
+"russia_war_income": 42,
+"sanctions_country": 331,
+"trade_country": 226
+}
+},
+"AUT DEU": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"AUT USA": {
+"trade": 40,
+"help": 0,
+"aid": 0
+},
+"AZE": {
+"trade": 374,
+"help": 501,
+"aid": 344,
+"clusters": {
+"aid_country": 344,
+"country_russia_relations": 317,
+"gas_lng": 201,
+"help_russia_country": 184,
+"oil_buyers": 96,
+"other_war_topic": 189,
+"sanctions_evasion_hubs": 77,
+"trade_country": 77
+}
+},
+"BEL": {
+"trade": 1183,
+"help": 236,
+"aid": 809,
+"clusters": {
+"aid_country": 809,
+"country_russia_relations": 192,
+"frozen_assets": 1002,
+"gas_lng": 673,
+"help_russia_country": 44,
+"oil_buyers": 308,
+"other_war_topic": 351,
+"reparations_loan": 88,
+"russia_war_income": 42,
+"sanctions_country": 158,
+"shadow_fleet": 272,
+"trade_country": 44
+}
+},
+"BEL DEU": {
+"trade": 62,
+"help": 0,
+"aid": 0
+},
+"BEL USA": {
+"trade": 42,
+"help": 0,
+"aid": 0
+},
+"BGR": {
+"trade": 799,
+"help": 470,
+"aid": 427,
+"clusters": {
+"aid_country": 427,
+"country_russia_relations": 278,
+"frozen_assets": 44,
+"gas_lng": 350,
+"help_russia_country": 192,
+"help_russia_list": 47,
+"oil_buyers": 287,
+"other_war_topic": 270,
+"sanctions_country": 140,
+"trade_country": 22
+}
+},
+"BLR": {
+"trade": 730,
+"help": 800,
+"aid": 96,
+"clusters": {
+"aid_country": 96,
+"country_russia_relations": 286,
+"groups_blocs": 76,
+"help_russia_country": 514,
+"help_russia_list": 44,
+"military_support_russia": 28,
+"oil_buyers": 256,
+"other_war_topic": 505,
+"russia_war_income": 18,
+"sanctions_country": 212,
+"sanctions_evasion_hubs": 42,
+"trade_country": 262
+}
+},
+"BRA": {
+"trade": 627,
+"help": 299,
+"aid": 147,
+"clusters": {
+"aid_country": 147,
+"country_russia_relations": 154,
+"groups_blocs": 131,
+"help_russia_country": 145,
+"help_russia_list": 52,
+"oil_buyers": 302,
+"other_war_topic": 260,
+"sanctions_country": 140,
+"trade_country": 185
+}
+},
+"BRA IND CHN": {
+"trade": 0,
+"help": 52,
+"aid": 0
+},
+"BRA USA": {
+"trade": 0,
+"help": 49,
+"aid": 0
+},
+"CAN": {
+"trade": 1427,
+"help": 301,
+"aid": 1210,
+"clusters": {
+"aid_country": 1210,
+"aid_country_year": 257,
+"aid_totals_general": 32,
+"comparisons": 28,
+"country_russia_relations": 186,
+"frozen_assets": 395,
+"gas_lng": 98,
+"help_russia_country": 115,
+"help_russia_list": 20,
+"oil_buyers": 564,
+"other_war_topic": 465,
+"price_cap": 89,
+"sanctions_country": 364,
+"trade_country": 401
+}
+},
+"CAN USA": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"CHE": {
+"trade": 1186,
+"help": 441,
+"aid": 797,
+"clusters": {
+"aid_country": 797,
+"country_russia_relations": 353,
+"frozen_assets": 323,
+"gas_lng": 203,
+"help_russia_country": 88,
+"military_support_russia": 42,
+"oil_buyers": 92,
+"other_war_topic": 44,
+"refugees": 44,
+"sanctions_country": 407,
+"trade_country": 484
+}
+},
+"CHL": {
+"trade": 96,
+"help": 44,
+"aid": 60,
+"clusters": {
+"aid_country": 60,
+"comparisons": 134,
+"country_russia_relations": 44,
+"other_war_topic": 433,
+"trade_country": 96
+}
+},
+"CHN": {
+"trade": 9080,
+"help": 2618,
+"aid": 974,
+"clusters": {
+"aid_country": 974,
+"companies_in_russia": 34,
+"country_russia_relations": 841,
+"gas_lng": 1730,
+"groups_blocs": 408,
+"help_russia_country": 1777,
+"help_russia_list": 80,
+"oil_buyers": 1927,
+"other_war_topic": 1013,
+"price_cap": 20,
+"sanctions_country": 158,
+"sanctions_evasion_hubs": 47,
+"shadow_fleet": 271,
+"trade_country": 5265
+}
+},
+"CHN COL": {
+"trade": 38,
+"help": 0,
+"aid": 0
+},
+"CHN IND": {
+"trade": 219,
+"help": 18,
+"aid": 0
+},
+"CHN KOR": {
+"trade": 0,
+"help": 48,
+"aid": 0
+},
+"CHN SAU": {
+"trade": 31,
+"help": 0,
+"aid": 0
+},
+"CHN TUR": {
+"trade": 0,
+"help": 37,
+"aid": 0
+},
+"CHN USA": {
+"trade": 40,
+"help": 0,
+"aid": 0
+},
+"CHN VEN": {
+"trade": 18,
+"help": 94,
+"aid": 0
+},
+"COL": {
+"trade": 0,
+"help": 49,
+"aid": 0,
+"clusters": {
+"help_russia_country": 49,
+"other_war_topic": 449
+}
+},
+"CUB": {
+"trade": 861,
+"help": 545,
+"aid": 0,
+"clusters": {
+"country_russia_relations": 498,
+"frozen_assets": 22,
+"help_russia_country": 47,
+"oil_buyers": 812,
+"other_war_topic": 605,
+"shadow_fleet": 275,
+"trade_country": 49
+}
+},
+"CYP": {
+"trade": 292,
+"help": 204,
+"aid": 144,
+"clusters": {
+"aid_country": 144,
+"country_russia_relations": 204,
+"gas_lng": 42,
+"groups_blocs": 90,
+"other_war_topic": 124,
+"sanctions_country": 136,
+"trade_country": 114
+}
+},
+"CYP USA": {
+"trade": 42,
+"help": 0,
+"aid": 0
+},
+"CZE": {
+"trade": 768,
+"help": 451,
+"aid": 477,
+"clusters": {
+"aid_country": 477,
+"country_russia_relations": 255,
+"gas_lng": 156,
+"help_russia_country": 196,
+"oil_buyers": 400,
+"other_war_topic": 366,
+"refugees": 54,
+"sanctions_country": 126,
+"trade_country": 86
+}
+},
+"DEU": {
+"trade": 6342,
+"help": 823,
+"aid": 3230,
+"clusters": {
+"aid_country": 3230,
+"aid_country_year": 518,
+"comparisons": 24,
+"country_russia_relations": 454,
+"frozen_assets": 124,
+"gas_lng": 4097,
+"help_russia_country": 369,
+"help_russia_list": 40,
+"military_support_russia": 48,
+"oil_buyers": 1267,
+"other_war_topic": 1922,
+"refugees": 72,
+"reparations_loan": 348,
+"sanctions_country": 260,
+"shadow_fleet": 196,
+"trade_country": 718
+}
+},
+"DEU BEL": {
+"trade": 31,
+"help": 0,
+"aid": 0
+},
+"DEU IND": {
+"trade": 116,
+"help": 0,
+"aid": 0
+},
+"DEU NOR": {
+"trade": 0,
+"help": 0,
+"aid": 55
+},
+"DMA": {
+"trade": 0,
+"help": 0,
+"aid": 30,
+"clusters": {
+"aid_country": 30
+}
+},
+"DNK": {
+"trade": 614,
+"help": 345,
+"aid": 460,
+"clusters": {
+"aid_country": 460,
+"country_russia_relations": 166,
+"gas_lng": 192,
+"help_russia_country": 179,
+"oil_buyers": 153,
+"other_war_topic": 229,
+"sanctions_country": 171,
+"shadow_fleet": 197,
+"trade_country": 98
+}
+},
+"DZA": {
+"trade": 0,
+"help": 65,
+"aid": 0,
+"clusters": {
+"country_russia_relations": 20,
+"help_russia_country": 45
+}
+},
+"EGY": {
+"trade": 115,
+"help": 185,
+"aid": 119,
+"clusters": {
+"aid_country": 119,
+"country_russia_relations": 136,
+"help_russia_country": 49,
+"oil_buyers": 75,
+"other_war_topic": 87,
+"trade_country": 40
+}
+},
+"ESP": {
+"trade": 1799,
+"help": 1178,
+"aid": 1195,
+"clusters": {
+"aid_country": 1195,
+"aid_country_year": 49,
+"comparisons": 90,
+"country_russia_relations": 1092,
+"frozen_assets": 50,
+"gas_lng": 1430,
+"help_russia_country": 86,
+"oil_buyers": 136,
+"other_war_topic": 1661,
+"refugees": 47,
+"shadow_fleet": 39,
+"trade_country": 233
+}
+},
+"ESP USA": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"EST": {
+"trade": 390,
+"help": 298,
+"aid": 340,
+"clusters": {
+"aid_country": 340,
+"country_russia_relations": 168,
+"frozen_assets": 40,
+"gas_lng": 91,
+"help_russia_country": 130,
+"help_russia_list": 52,
+"other_war_topic": 217,
+"refugees": 18,
+"russia_war_income": 42,
+"sanctions_country": 122,
+"shadow_fleet": 154,
+"trade_country": 177
+}
+},
+"FIN": {
+"trade": 819,
+"help": 557,
+"aid": 400,
+"clusters": {
+"aid_country": 400,
+"country_russia_relations": 513,
+"gas_lng": 275,
+"help_russia_country": 44,
+"help_russia_list": 49,
+"maps": 40,
+"oil_buyers": 173,
+"other_war_topic": 286,
+"russia_war_income": 28,
+"sanctions_country": 160,
+"shadow_fleet": 177,
+"trade_country": 211
+}
+},
+"FIN IND": {
+"trade": 52,
+"help": 0,
+"aid": 0
+},
+"FRA": {
+"trade": 3100,
+"help": 1006,
+"aid": 2186,
+"clusters": {
+"aid_country": 2186,
+"aid_country_year": 254,
+"comparisons": 89,
+"country_russia_relations": 820,
+"frozen_assets": 383,
+"gas_lng": 2036,
+"help_russia_country": 186,
+"help_russia_list": 52,
+"military_support_russia": 18,
+"oil_buyers": 545,
+"other_war_topic": 2354,
+"russia_war_income": 42,
+"sanctions_country": 199,
+"shadow_fleet": 797,
+"trade_country": 320
+}
+},
+"FRA CHN": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"FRA DEU": {
+"trade": 0,
+"help": 0,
+"aid": 54
+},
+"GBR": {
+"trade": 2584,
+"help": 301,
+"aid": 893,
+"clusters": {
+"aid_country": 893,
+"aid_country_year": 229,
+"aid_totals_general": 109,
+"companies_in_russia": 79,
+"country_russia_relations": 301,
+"frozen_assets": 411,
+"gas_lng": 832,
+"groups_blocs": 18,
+"oil_buyers": 743,
+"other_war_topic": 430,
+"price_cap": 98,
+"refugees": 68,
+"sanctions_country": 456,
+"shadow_fleet": 369,
+"trade_country": 553
+}
+},
+"GBR CHN": {
+"trade": 24,
+"help": 0,
+"aid": 0
+},
+"GBR FRA": {
+"trade": 0,
+"help": 40,
+"aid": 0
+},
+"GBR IND": {
+"trade": 91,
+"help": 0,
+"aid": 0
+},
+"GBR USA": {
+"trade": 40,
+"help": 0,
+"aid": 0
+},
+"GEO": {
+"trade": 322,
+"help": 438,
+"aid": 138,
+"clusters": {
+"aid_country": 138,
+"country_russia_relations": 312,
+"help_russia_country": 126,
+"oil_buyers": 96,
+"other_war_topic": 644,
+"sanctions_country": 91,
+"sanctions_evasion_hubs": 49,
+"shadow_fleet": 24,
+"trade_country": 135
+}
+},
+"GRC": {
+"trade": 620,
+"help": 166,
+"aid": 296,
+"clusters": {
+"aid_country": 296,
+"country_russia_relations": 70,
+"gas_lng": 220,
+"groups_blocs": 42,
+"help_russia_country": 96,
+"help_russia_list": 44,
+"oil_buyers": 213,
+"other_war_topic": 48,
+"sanctions_country": 96,
+"shadow_fleet": 111,
+"trade_country": 91
+}
+},
+"GRD": {
+"trade": 84,
+"help": 0,
+"aid": 0,
+"clusters": {
+"gas_lng": 84
+}
+},
+"GRL": {
+"trade": 0,
+"help": 40,
+"aid": 0,
+"clusters": {
+"country_russia_relations": 40
+}
+},
+"HKG": {
+"trade": 49,
+"help": 358,
+"aid": 0,
+"clusters": {
+"country_russia_relations": 358,
+"other_war_topic": 52,
+"sanctions_country": 49
+}
+},
+"HRV": {
+"trade": 115,
+"help": 96,
+"aid": 179,
+"clusters": {
+"aid_country": 179,
+"country_russia_relations": 96,
+"oil_buyers": 115,
+"other_war_topic": 165
+}
+},
+"HRV HUN": {
+"trade": 109,
+"help": 0,
+"aid": 0
+},
+"HUN": {
+"trade": 2673,
+"help": 1131,
+"aid": 1180,
+"clusters": {
+"aid_country": 1180,
+"aid_country_year": 18,
+"aid_rankings": 38,
+"country_russia_relations": 777,
+"frozen_assets": 62,
+"gas_lng": 1212,
+"groups_blocs": 204,
+"help_russia_country": 354,
+"oil_buyers": 857,
+"other_war_topic": 682,
+"refugees": 44,
+"russia_war_income": 42,
+"sanctions_country": 426,
+"trade_country": 178
+}
+},
+"HUN CHN": {
+"trade": 40,
+"help": 0,
+"aid": 0
+},
+"HUN FRA": {
+"trade": 50,
+"help": 0,
+"aid": 0
+},
+"HUN SRB": {
+"trade": 47,
+"help": 0,
+"aid": 0
+},
+"HUN SVK": {
+"trade": 150,
+"help": 0,
+"aid": 0
+},
+"IDN": {
+"trade": 585,
+"help": 181,
+"aid": 0,
+"clusters": {
+"companies_in_russia": 50,
+"country_russia_relations": 66,
+"help_russia_country": 115,
+"oil_buyers": 440,
+"other_war_topic": 107,
+"sanctions_country": 96,
+"trade_country": 49
+}
+},
+"IND": {
+"trade": 20069,
+"help": 2110,
+"aid": 626,
+"clusters": {
+"aid_country": 626,
+"aid_rankings": 36,
+"companies_in_russia": 32,
+"comparisons": 70,
+"country_russia_relations": 1463,
+"frozen_assets": 25,
+"gas_lng": 1410,
+"groups_blocs": 148,
+"help_russia_country": 647,
+"help_russia_list": 84,
+"laundered_oil": 24,
+"maps": 30,
+"military_support_russia": 64,
+"oil_buyers": 16293,
+"other_war_topic": 3112,
+"price_cap": 230,
+"sanctions_country": 157,
+"shadow_fleet": 151,
+"trade_country": 2209
+}
+},
+"IND ARE": {
+"trade": 0,
+"help": 37,
+"aid": 0
+},
+"IND CHN": {
+"trade": 465,
+"help": 18,
+"aid": 0
+},
+"IND DEU": {
+"trade": 241,
+"help": 0,
+"aid": 0
+},
+"IND IRN": {
+"trade": 18,
+"help": 0,
+"aid": 0
+},
+"IND PAK": {
+"trade": 39,
+"help": 0,
+"aid": 0
+},
+"IND USA": {
+"trade": 352,
+"help": 0,
+"aid": 0
+},
+"IND VEN": {
+"trade": 39,
+"help": 0,
+"aid": 0
+},
+"IRL": {
+"trade": 425,
+"help": 40,
+"aid": 266,
+"clusters": {
+"aid_country": 266,
+"country_russia_relations": 40,
+"frozen_assets": 22,
+"gas_lng": 49,
+"groups_blocs": 42,
+"oil_buyers": 140,
+"other_war_topic": 170,
+"sanctions_country": 140,
+"shadow_fleet": 59,
+"trade_country": 96
+}
+},
+"IRL OMN": {
+"trade": 0,
+"help": 18,
+"aid": 0
+},
+"IRN": {
+"trade": 898,
+"help": 0,
+"aid": 183,
+"clusters": {
+"aid_country": 183,
+"aid_totals_general": 47,
+"frozen_assets": 20,
+"gas_lng": 307,
+"help_russia_list": 42,
+"military_support_russia": 2208,
+"oil_buyers": 591,
+"other_war_topic": 282,
+"russia_war_income": 157,
+"sanctions_evasion_hubs": 47,
+"shadow_fleet": 608
+}
+},
+"IRN CHN": {
+"trade": 18,
+"help": 0,
+"aid": 0
+},
+"ISL": {
+"trade": 40,
+"help": 0,
+"aid": 125,
+"clusters": {
+"aid_country": 125,
+"other_war_topic": 42,
+"refugees": 48,
+"trade_country": 40
+}
+},
+"ISR": {
+"trade": 521,
+"help": 593,
+"aid": 1029,
+"clusters": {
+"aid_country": 1029,
+"aid_rankings": 28,
+"comparisons": 76,
+"country_russia_relations": 222,
+"help_russia_country": 371,
+"oil_buyers": 246,
+"other_war_topic": 300,
+"sanctions_country": 135,
+"sanctions_evasion_hubs": 47,
+"trade_country": 140
+}
+},
+"ITA": {
+"trade": 1536,
+"help": 412,
+"aid": 1355,
+"clusters": {
+"aid_country": 1355,
+"aid_country_year": 94,
+"country_russia_relations": 193,
+"frozen_assets": 131,
+"gas_lng": 899,
+"help_russia_country": 219,
+"oil_buyers": 257,
+"other_war_topic": 719,
+"russia_war_income": 40,
+"sanctions_country": 282,
+"shadow_fleet": 116,
+"trade_country": 98
+}
+},
+"ITA DEU": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"JPN": {
+"trade": 2204,
+"help": 1068,
+"aid": 1464,
+"clusters": {
+"aid_country": 1464,
+"country_russia_relations": 972,
+"frozen_assets": 138,
+"gas_lng": 648,
+"help_russia_country": 96,
+"help_russia_list": 44,
+"oil_buyers": 987,
+"other_war_topic": 797,
+"price_cap": 24,
+"sanctions_country": 385,
+"shadow_fleet": 74,
+"trade_country": 184
+}
+},
+"JPN CHN": {
+"trade": 72,
+"help": 0,
+"aid": 0
+},
+"JPN USA": {
+"trade": 42,
+"help": 0,
+"aid": 0
+},
+"KAZ": {
+"trade": 1104,
+"help": 4718,
+"aid": 155,
+"clusters": {
+"aid_country": 155,
+"comparisons": 268,
+"country_russia_relations": 4472,
+"gas_lng": 190,
+"help_russia_country": 246,
+"help_russia_list": 47,
+"oil_buyers": 355,
+"other_war_topic": 1377,
+"russia_war_income": 215,
+"sanctions_country": 244,
+"sanctions_evasion_hubs": 94,
+"trade_country": 315
+}
+},
+"KAZ CHN": {
+"trade": 18,
+"help": 133,
+"aid": 0
+},
+"KAZ DEU": {
+"trade": 50,
+"help": 0,
+"aid": 0
+},
+"KAZ UZB": {
+"trade": 0,
+"help": 46,
+"aid": 0
+},
+"KEN": {
+"trade": 0,
+"help": 0,
+"aid": 22,
+"clusters": {
+"aid_country": 22
+}
+},
+"KGZ": {
+"trade": 0,
+"help": 48,
+"aid": 49,
+"clusters": {
+"aid_country": 49,
+"country_russia_relations": 48,
+"other_war_topic": 132,
+"sanctions_evasion_hubs": 49
+}
+},
+"KOR": {
+"trade": 638,
+"help": 179,
+"aid": 408,
+"clusters": {
+"aid_country": 408,
+"aid_rankings": 42,
+"country_russia_relations": 130,
+"help_russia_country": 49,
+"oil_buyers": 338,
+"other_war_topic": 123,
+"sanctions_country": 230,
+"trade_country": 70
+}
+},
+"LTU": {
+"trade": 549,
+"help": 434,
+"aid": 316,
+"clusters": {
+"aid_country": 316,
+"country_russia_relations": 231,
+"gas_lng": 173,
+"help_russia_country": 203,
+"oil_buyers": 86,
+"other_war_topic": 616,
+"russia_war_income": 42,
+"sanctions_country": 122,
+"trade_country": 168
+}
+},
+"LUX": {
+"trade": 0,
+"help": 28,
+"aid": 96,
+"clusters": {
+"aid_country": 96,
+"country_russia_relations": 28,
+"frozen_assets": 28,
+"other_war_topic": 72
+}
+},
+"LVA": {
+"trade": 564,
+"help": 502,
+"aid": 336,
+"clusters": {
+"aid_country": 336,
+"country_russia_relations": 383,
+"frozen_assets": 28,
+"help_russia_country": 119,
+"oil_buyers": 128,
+"other_war_topic": 227,
+"russia_war_income": 42,
+"sanctions_country": 214,
+"trade_country": 222
+}
+},
+"MAR": {
+"trade": 0,
+"help": 86,
+"aid": 28,
+"clusters": {
+"aid_country": 28,
+"country_russia_relations": 86
+}
+},
+"MDA": {
+"trade": 207,
+"help": 451,
+"aid": 124,
+"clusters": {
+"aid_country": 124,
+"country_russia_relations": 269,
+"gas_lng": 83,
+"help_russia_country": 182,
+"other_war_topic": 529,
+"sanctions_country": 75,
+"trade_country": 49
+}
+},
+"MEX": {
+"trade": 602,
+"help": 493,
+"aid": 273,
+"clusters": {
+"aid_country": 273,
+"country_russia_relations": 395,
+"gas_lng": 156,
+"groups_blocs": 42,
+"help_russia_country": 98,
+"help_russia_list": 54,
+"military_support_russia": 40,
+"oil_buyers": 77,
+"other_war_topic": 507,
+"sanctions_country": 153,
+"trade_country": 216
+}
+},
+"MEX ARE CHN": {
+"trade": 18,
+"help": 0,
+"aid": 0
+},
+"MLI": {
+"trade": 0,
+"help": 40,
+"aid": 0,
+"clusters": {
+"country_russia_relations": 40
+}
+},
+"MLT": {
+"trade": 55,
+"help": 140,
+"aid": 49,
+"clusters": {
+"aid_country": 49,
+"country_russia_relations": 140,
+"gas_lng": 55,
+"other_war_topic": 126,
+"shadow_fleet": 194
+}
+},
+"MNG": {
+"trade": 147,
+"help": 470,
+"aid": 49,
+"clusters": {
+"aid_country": 49,
+"country_russia_relations": 372,
+"gas_lng": 49,
+"help_russia_country": 98,
+"oil_buyers": 49,
+"other_war_topic": 256,
+"refugees": 28,
+"trade_country": 49
+}
+},
+"MYS": {
+"trade": 593,
+"help": 28,
+"aid": 182,
+"clusters": {
+"aid_country": 182,
+"companies_in_russia": 54,
+"country_russia_relations": 28,
+"frozen_assets": 47,
+"gas_lng": 39,
+"oil_buyers": 264,
+"other_war_topic": 44,
+"sanctions_country": 124,
+"shadow_fleet": 22,
+"trade_country": 166
+}
+},
+"NGA": {
+"trade": 35,
+"help": 0,
+"aid": 0,
+"clusters": {
+"trade_country": 35
+}
+},
+"NLD": {
+"trade": 1581,
+"help": 269,
+"aid": 1298,
+"clusters": {
+"aid_country": 1298,
+"country_russia_relations": 269,
+"frozen_assets": 57,
+"gas_lng": 902,
+"oil_buyers": 243,
+"other_war_topic": 617,
+"sanctions_country": 175,
+"shadow_fleet": 54,
+"trade_country": 261
+}
+},
+"NLD ARG": {
+"trade": 42,
+"help": 0,
+"aid": 0
+},
+"NLD USA": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"NOR": {
+"trade": 702,
+"help": 305,
+"aid": 358,
+"clusters": {
+"aid_country": 358,
+"aid_country_year": 148,
+"country_russia_relations": 177,
+"frozen_assets": 59,
+"gas_lng": 137,
+"help_russia_country": 128,
+"oil_buyers": 302,
+"other_war_topic": 183,
+"russia_war_income": 42,
+"sanctions_country": 171,
+"shadow_fleet": 52,
+"trade_country": 92
+}
+},
+"NZL": {
+"trade": 455,
+"help": 42,
+"aid": 118,
+"clusters": {
+"aid_country": 118,
+"country_russia_relations": 42,
+"oil_buyers": 96,
+"other_war_topic": 68,
+"sanctions_country": 310,
+"trade_country": 49
+}
+},
+"PAK": {
+"trade": 663,
+"help": 550,
+"aid": 254,
+"clusters": {
+"aid_country": 254,
+"aid_rankings": 42,
+"country_russia_relations": 160,
+"groups_blocs": 34,
+"help_russia_country": 390,
+"oil_buyers": 520,
+"other_war_topic": 128,
+"price_cap": 49,
+"sanctions_country": 49,
+"trade_country": 94
+}
+},
+"PER": {
+"trade": 47,
+"help": 0,
+"aid": 0,
+"clusters": {
+"gas_lng": 47,
+"other_war_topic": 54
+}
+},
+"PHL": {
+"trade": 55,
+"help": 0,
+"aid": 0,
+"clusters": {
+"oil_buyers": 55
+}
+},
+"POL": {
+"trade": 2171,
+"help": 823,
+"aid": 2448,
+"clusters": {
+"aid_country": 2448,
+"aid_country_year": 194,
+"country_russia_relations": 587,
+"gas_lng": 1136,
+"groups_blocs": 18,
+"help_russia_country": 236,
+"help_russia_list": 47,
+"oil_buyers": 511,
+"other_war_topic": 2067,
+"refugees": 137,
+"sanctions_country": 215,
+"shadow_fleet": 52,
+"trade_country": 309
+}
+},
+"PRK": {
+"trade": 108,
+"help": 0,
+"aid": 0,
+"clusters": {
+"help_russia_list": 131,
+"military_support_russia": 16693,
+"oil_buyers": 108,
+"other_war_topic": 186,
+"russia_war_income": 57,
+"shadow_fleet": 60
+}
+},
+"PRT": {
+"trade": 67,
+"help": 168,
+"aid": 196,
+"clusters": {
+"aid_country": 196,
+"country_russia_relations": 168,
+"gas_lng": 67,
+"other_war_topic": 106
+}
+},
+"PRT ESP": {
+"trade": 0,
+"help": 14,
+"aid": 0
+},
+"PSE": {
+"trade": 0,
+"help": 18,
+"aid": 74,
+"clusters": {
+"aid_country": 74,
+"help_russia_country": 18
+}
+},
+"QAT": {
+"trade": 96,
+"help": 0,
+"aid": 140,
+"clusters": {
+"aid_country": 140,
+"sanctions_country": 96
+}
+},
+"ROU": {
+"trade": 472,
+"help": 192,
+"aid": 388,
+"clusters": {
+"aid_country": 388,
+"country_russia_relations": 150,
+"gas_lng": 216,
+"help_russia_country": 42,
+"oil_buyers": 232,
+"other_war_topic": 340,
+"trade_country": 24
+}
+},
+"SAU": {
+"trade": 1015,
+"help": 93,
+"aid": 58,
+"clusters": {
+"aid_country": 58,
+"gas_lng": 44,
+"groups_blocs": 588,
+"help_russia_country": 93,
+"oil_buyers": 784,
+"sanctions_country": 96,
+"trade_country": 91
+}
+},
+"SEN": {
+"trade": 0,
+"help": 30,
+"aid": 0,
+"clusters": {
+"country_russia_relations": 30,
+"shadow_fleet": 28
+}
+},
+"SGP": {
+"trade": 934,
+"help": 52,
+"aid": 96,
+"clusters": {
+"aid_country": 96,
+"companies_in_russia": 44,
+"country_russia_relations": 52,
+"oil_buyers": 591,
+"other_war_topic": 98,
+"sanctions_country": 199,
+"sanctions_evasion_hubs": 18,
+"shadow_fleet": 20,
+"trade_country": 144
+}
+},
+"SRB": {
+"trade": 617,
+"help": 456,
+"aid": 341,
+"clusters": {
+"aid_country": 341,
+"country_russia_relations": 134,
+"gas_lng": 314,
+"help_russia_country": 322,
+"oil_buyers": 137,
+"other_war_topic": 218,
+"sanctions_country": 166
+}
+},
+"SVK": {
+"trade": 1029,
+"help": 637,
+"aid": 906,
+"clusters": {
+"aid_country": 906,
+"comparisons": 44,
+"country_russia_relations": 332,
+"gas_lng": 436,
+"help_russia_country": 305,
+"military_support_russia": 49,
+"oil_buyers": 385,
+"other_war_topic": 472,
+"refugees": 40,
+"russia_war_income": 42,
+"sanctions_country": 122,
+"trade_country": 86
+}
+},
+"SVK DEU": {
+"trade": 44,
+"help": 0,
+"aid": 0
+},
+"SVN": {
+"trade": 67,
+"help": 546,
+"aid": 145,
+"clusters": {
+"aid_country": 145,
+"country_russia_relations": 408,
+"gas_lng": 18,
+"help_russia_country": 138,
+"oil_buyers": 49,
+"other_war_topic": 235
+}
+},
+"SWE": {
+"trade": 846,
+"help": 316,
+"aid": 917,
+"clusters": {
+"aid_country": 917,
+"aid_country_year": 177,
+"country_russia_relations": 228,
+"gas_lng": 297,
+"help_russia_country": 88,
+"oil_buyers": 284,
+"other_war_topic": 1272,
+"russia_war_income": 40,
+"sanctions_country": 167,
+"shadow_fleet": 263,
+"trade_country": 98
+}
+},
+"SWE IND": {
+"trade": 40,
+"help": 0,
+"aid": 0
+},
+"SWE USA": {
+"trade": 42,
+"help": 0,
+"aid": 0
+},
+"SYR": {
+"trade": 0,
+"help": 0,
+"aid": 18,
+"clusters": {
+"aid_country": 18,
+"frozen_assets": 18
+}
+},
+"THA": {
+"trade": 464,
+"help": 155,
+"aid": 121,
+"clusters": {
+"aid_country": 121,
+"country_russia_relations": 82,
+"help_russia_country": 73,
+"oil_buyers": 211,
+"other_war_topic": 228,
+"sanctions_country": 162,
+"trade_country": 91
+}
+},
+"TJK": {
+"trade": 49,
+"help": 0,
+"aid": 0,
+"clusters": {
+"other_war_topic": 48,
+"sanctions_country": 49
+}
+},
+"TUR": {
+"trade": 3676,
+"help": 13517,
+"aid": 810,
+"clusters": {
+"aid_country": 810,
+"comparisons": 784,
+"country_russia_relations": 13015,
+"gas_lng": 848,
+"groups_blocs": 172,
+"help_russia_country": 502,
+"help_russia_list": 182,
+"military_support_russia": 264,
+"oil_buyers": 994,
+"other_war_topic": 2389,
+"refugees": 47,
+"russia_war_income": 194,
+"sanctions_country": 394,
+"sanctions_evasion_hubs": 127,
+"shadow_fleet": 139,
+"trade_country": 1440
+}
+},
+"TUR AZE": {
+"trade": 0,
+"help": 18,
+"aid": 0
+},
+"TUR CHE": {
+"trade": 0,
+"help": 18,
+"aid": 0
+},
+"TUR CHN": {
+"trade": 0,
+"help": 208,
+"aid": 0
+},
+"TUR EGY": {
+"trade": 0,
+"help": 24,
+"aid": 0
+},
+"TUR GEO": {
+"trade": 0,
+"help": 22,
+"aid": 0
+},
+"TUR GRC": {
+"trade": 0,
+"help": 20,
+"aid": 0
+},
+"TUR ISR": {
+"trade": 0,
+"help": 103,
+"aid": 0
+},
+"TUR LBY": {
+"trade": 0,
+"help": 64,
+"aid": 0
+},
+"TUR PAK": {
+"trade": 0,
+"help": 20,
+"aid": 0
+},
+"TUR POL": {
+"trade": 0,
+"help": 18,
+"aid": 0
+},
+"TUR PSE": {
+"trade": 0,
+"help": 34,
+"aid": 0
+},
+"TUR SYR": {
+"trade": 0,
+"help": 131,
+"aid": 0
+},
+"TUR USA": {
+"trade": 0,
+"help": 37,
+"aid": 0
+},
+"TWN": {
+"trade": 18,
+"help": 0,
+"aid": 37,
+"clusters": {
+"aid_country": 37,
+"oil_buyers": 18
+}
+},
+"USA": {
+"trade": 4043,
+"help": 1117,
+"aid": 8362,
+"clusters": {
+"aid_country": 8362,
+"aid_country_year": 2117,
+"aid_rankings": 90,
+"aid_totals_general": 228,
+"brand_tracker": 47,
+"companies_in_russia": 58,
+"comparisons": 230,
+"country_russia_relations": 907,
+"frozen_assets": 862,
+"gas_lng": 942,
+"groups_blocs": 735,
+"help_russia_country": 210,
+"help_russia_list": 28,
+"military_support_russia": 190,
+"oil_buyers": 1360,
+"other_war_topic": 1391,
+"refugees": 30,
+"russia_war_income": 42,
+"sanctions_country": 859,
+"shadow_fleet": 464,
+"trade_country": 882
+}
+},
+"USA BLR": {
+"trade": 0,
+"help": 49,
+"aid": 0
+},
+"USA IND": {
+"trade": 142,
+"help": 0,
+"aid": 0
+},
+"USA IRN": {
+"trade": 0,
+"help": 0,
+"aid": 35
+},
+"USA ISR": {
+"trade": 0,
+"help": 0,
+"aid": 42
+},
+"UZB": {
+"trade": 125,
+"help": 346,
+"aid": 75,
+"clusters": {
+"aid_country": 75,
+"country_russia_relations": 248,
+"gas_lng": 49,
+"help_russia_country": 98,
+"other_war_topic": 256,
+"sanctions_evasion_hubs": 49,
+"trade_country": 76
+}
+},
+"VEN": {
+"trade": 274,
+"help": 388,
+"aid": 96,
+"clusters": {
+"aid_country": 96,
+"country_russia_relations": 264,
+"frozen_assets": 48,
+"groups_blocs": 30,
+"help_russia_country": 124,
+"oil_buyers": 274,
+"other_war_topic": 724,
+"shadow_fleet": 285
+}
+},
+"VEN CHN": {
+"trade": 0,
+"help": 24,
+"aid": 0
+},
+"VNM": {
+"trade": 507,
+"help": 287,
+"aid": 49,
+"clusters": {
+"aid_country": 49,
+"aid_rankings": 42,
+"country_russia_relations": 164,
+"gas_lng": 49,
+"help_russia_country": 123,
+"oil_buyers": 322,
+"other_war_topic": 385,
+"sanctions_country": 49,
+"trade_country": 87
+}
+},
+"ZAF": {
+"trade": 492,
+"help": 178,
+"aid": 0,
+"clusters": {
+"groups_blocs": 994,
+"help_russia_country": 178,
+"oil_buyers": 175,
+"sanctions_country": 96,
+"trade_country": 221
+}
+},
+"LBY": {
+"trade": 0,
+"help": 0,
+"aid": 0,
+"clusters": {
+"shadow_fleet": 39
+}
+},
+"OMN": {
+"trade": 0,
+"help": 0,
+"aid": 0,
+"clusters": {
+"shadow_fleet": 72
+}
+},
+"PAN": {
+"trade": 0,
+"help": 0,
+"aid": 0,
+"clusters": {
+"shadow_fleet": 30
+}
+},
+"KWT": {
+"trade": 0,
+"help": 0,
+"aid": 0,
+"clusters": {
+"reparations_loan": 37
+}
+},
+"CMR": {
+"trade": 0,
+"help": 0,
+"aid": 0,
+"clusters": {
+"shadow_fleet": 26
+}
+},
+"COK": {
+"trade": 0,
+"help": 0,
+"aid": 0,
+"clusters": {
+"shadow_fleet": 18
+}
+},
+"GHA": {
+"trade": 0,
+"help": 0,
+"aid": 0,
+"clusters": {
+"other_war_topic": 66
+}
+},
+"BOL": {
+"trade": 0,
+"help": 0,
+"aid": 0,
+"clusters": {
+"other_war_topic": 34
+}
+}
+}
