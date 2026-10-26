@@ -53,5 +53,9 @@
       ["DEU", "NOR"], ["HUN", "SRB"], ["KAZ", "UZB"], ["CHN", "KOR"], ["FRA", "HUN"], ["CAN", "USA"], ["GBR", "IRL"], ["CHN", "PRK"],
       ["IRN", "PRK"], ["HUN", "POL"], ["ITA", "FRA"], ["ESP", "ITA"], ["NLD", "DEU"], ["USA", "GBR"]
     ]
+  },
+  "country": {
+    "_note": "Round 57: the rule of round 56 that gives an English country page the title \"Does ... trade with Russia?\" (seo_templates.mjs): where its trade with Russia is searched at least minTrade times (pipeline/seo_demand.json), at least ratio times more than its aid or help, and its aid is searched fewer than maxAid times (the countries whose aid is much searched keep the aid question). It replaces the list of ten countries with hand-written titles.",
+    "tradeFirst": { "minTrade": 400, "ratio": 1.5, "maxAid": 800 }
   }
 }

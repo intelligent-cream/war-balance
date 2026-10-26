@@ -14,6 +14,10 @@ topic, group, part, year and comparison page (pipeline/seo_families.json, by the
 the Topics page exist in every language; a country page's title in another language has the model's numbers in that
 language's format and the map's own chance words in it (site/i18n/<lang>.js); in every table the net, support and trade
 figures and chance words, each year's amounts and each part's amounts are the model's.
+
+Round 57: the wording guard (wording_problems, check_wording): the hand-written words of the pages (seo_topics.json,
+seo_families.json and the one translation table seo_i18n.mjs, in all seven languages) hold no claim that can go stale
+outside a placeholder or condition. Its rules and its allowlist are documented at ALLOW below.
 """
 
 from __future__ import annotations
@@ -464,3 +468,370 @@ def check_site(
     if topics:
         p["az"] += [f"topic {topic_path(e)}" for e in topics if f'href="/{topic_path(e)}"' not in idx]
     return p
+
+
+# ----- round 57: the wording guard (owner: "fail if any hand-written text ... contains a claim that can go stale") -----
+# Every text field of every entry of pipeline/seo_topics.json and pipeline/seo_families.json, and every phrase of the one
+# translation table pipeline/seo_i18n.mjs (and any left in seo_templates.mjs), in all seven languages, is read here.
+# Outside a placeholder or condition it may not hold:
+#   number      a digit or a number word (two, half, twice, million ...)
+#   ranking     most, largest, first, top, only, leading ... (a question may ask it: "Who gives the most?")
+#   comparison  more than, less than, fewer, exceeds, overtook ... (a question may ask it)
+#   direction   toward Ukraine / Russia, helps, supported, sides with ... where it states a result. Allowed in a
+#               question (a sentence ending in "?"), inside {q:...}, or where the sentence names both sides ("toward
+#               Ukraine or Russia", "+ toward Ukraine, − toward Russia")
+#   certainty   very likely, likely, too close to call, essentially zero, clearly ... and the map's own chance words in
+#               every language (site/i18n/<lang>.js): those come from the map, as {word:...} or a figure's words
+#   trend       rose, fell, grew, increased, doubled, surged ... (a question may ask it)
+#   absolute    always, never, no country, all countries, none
+# A question (or {q:...}) states no result: in it the direction, comparison, ranking and trend rules are not read.
+# Words that depend on the data are written as {if:COND|...|...} (seo_i18n.mjs fmt): inside a condition's words the
+# number, certainty and absolute rules still hold (the direction, comparison, ranking and trend words are the point of
+# the condition, chosen by the data); a {placeholder} is the data itself and is not read.
+# The allowlist is ALLOW (named terms, each with its reason) and years: a year (2014 ... 2029) on its own is a date, and
+# a month with its year only for the war's start (February 2022, March 2022) or a named fixed fact in ALLOW. Group sizes
+# ("27 members") are placeholders ({members}, {n}); sort phrases are neutral ("sorted by euros", "high to low").
+ALLOW = {
+    "G7": "the group's name",
+    "CC BY 4.0": "the data's licence",
+    "21 January 2026": "the date the EU ban on fuel refined from Russian crude took effect: a fixed historical fact",
+}
+YEAR = r"(?<!\d)(?:201[4-9]|202\d)(?!\d)"
+WAR_START_YEAR = "2022"
+MONTHS = {
+    "en": "january february march april may june july august september october november december",
+    "de": "januar februar märz april mai juni juli august september oktober november dezember",
+    "fr": "janvier février mars avril mai juin juillet août septembre octobre novembre décembre",
+    "es": "enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre",
+    "pl": "stycznia lutego marca kwietnia maja czerwca lipca sierpnia września października listopada grudnia "
+    "styczeń luty marzec kwiecień maj czerwiec lipiec sierpień wrzesień październik listopad grudzień",
+    "nl": "januari februari maart april mei juni juli augustus september oktober november december",
+    "uk": "січня лютого березня квітня травня червня липня серпня вересня жовтня листопада грудня "
+    "січень лютий березень квітень травень червень липень серпень вересень жовтень листопад грудень",
+}
+_W = {  # the words of each rule, by language (the map's own chance words are added from site/i18n)
+    "number": {
+        "en": "two three four five six seven eight nine ten eleven twelve twenty thirty forty fifty hundred hundreds "
+        "thousand thousands million millions billion billions trillion dozen dozens half twice double triple quadruple "
+        "|three times|four times|ten times",
+        "de": "zwei drei vier fünf sechs sieben acht neun zehn elf zwölf zwanzig dreißig fünfzig hundert tausend "
+        "Million Millionen Milliarde Milliarden Hälfte halb doppelt dreifach zweimal dreimal",
+        "fr": "deux trois quatre cinq six sept huit neuf dix onze douze vingt trente cinquante cent mille million "
+        "millions milliard milliards moitié double triple |deux fois|trois fois",
+        "es": "dos tres cuatro cinco seis siete ocho nueve diez once doce veinte treinta cincuenta cien mil millón "
+        "millones mitad doble triple |dos veces|tres veces",
+        "pl": "dwa dwie dwóch trzy trzech cztery czterech pięć sześć siedem osiem dziewięć dziesięć dwadzieścia sto "
+        "tysiąc tysiące milion miliony miliard miliardy połowa połowę dwukrotnie trzykrotnie podwójnie",
+        "nl": "twee drie vier vijf zes zeven acht negen tien elf twaalf twintig dertig vijftig honderd duizend miljoen "
+        "miljard helft dubbel drievoudig tweemaal driemaal",
+        "uk": "два дві три чотири п'ять шість сім вісім дев'ять десять двадцять сто тисяча тисячі мільйон мільйони "
+        "мільярд мільярди половина половину вдвічі втричі двічі",
+    },
+    "ranking": {
+        "en": "most least largest biggest smallest highest lowest top first last leading lead leads only ahead behind "
+        "|followed by",
+        "de": "meisten größte größten größter kleinste kleinsten höchste höchsten niedrigste erste ersten erster zuerst "
+        "letzte letzten führend führt nur vorn vorne Spitze |am meisten|an der Spitze",
+        "fr": "premier première premiers d'abord dernier dernière seul seule seuls seulement devant derrière "
+        "|le plus|la plus|les plus|le moins|en tête|plus grand|plus grands",
+        "es": "mayor mayores menor menores primero primera primeros último última últimos solo sólo únicamente "
+        "encabeza encabezan delante detrás |el más|la más|los más|más grande",
+        "pl": "najwięcej najmniej największy największa największe największych najmniejszy najwyższy najniższy "
+        "pierwszy pierwsza pierwsze najpierw ostatni ostatnia tylko jedynie |na czele",
+        "nl": "meest meeste minst minste grootste kleinste hoogste laagste eerste eerst laatste bovenaan alleen enkel "
+        "voorop |het meest",
+        "uk": "найбільше найбільш найменше найбільший найбільша найбільші найменший найвищий найнижчий перший перша "
+        "перше спершу останній остання лише тільки попереду позаду",
+    },
+    "comparison": {
+        "en": "fewer exceeds exceeded outpaced outpaces overtook overtaken |more than|less than",
+        "de": "übertrifft übertraf überholte überholt |mehr als|weniger als",
+        "fr": "dépasse dépassé devancé |plus que|moins que",
+        "es": "supera superó adelantó |más que|menos que|más de lo que|menos de lo que",
+        "pl": "przewyższa przewyższył wyprzedził wyprzedziła prześcignął |więcej niż|mniej niż",
+        "nl": "overtreft overtrof ingehaald |meer dan|minder dan",
+        "uk": "перевищує перевищила перевищив випередив випередила |більше ніж|більше, ніж|менше ніж|менше, ніж",
+    },
+    # direction: U and R name a side, V is a verb; a sentence naming both sides (or asking) is neutral
+    "dirU": {
+        "en": "|toward Ukraine|towards Ukraine|on Ukraine's side",
+        "de": "|Richtung Ukraine|zugunsten der Ukraine|auf der Seite der Ukraine",
+        "fr": "|vers l'Ukraine|du côté de l'Ukraine|aux côtés de l'Ukraine",
+        "es": "|hacia Ucrania|del lado de Ucrania",
+        "pl": "|na rzecz Ukrainy|w stronę Ukrainy|po stronie Ukrainy",
+        "nl": "|richting Oekraïne|aan de kant van Oekraïne",
+        "uk": "|на користь України|на бік України|на боці України",
+    },
+    "dirR": {
+        "en": "|toward Russia|towards Russia|on Russia's side",
+        "de": "|Richtung Russland|zugunsten Russlands|auf Russlands Seite|auf der Seite Russlands",
+        "fr": "|vers la Russie|du côté de la Russie|aux côtés de la Russie",
+        "es": "|hacia Rusia|del lado de Rusia",
+        "pl": "|na rzecz Rosji|w stronę Rosji|po stronie Rosji",
+        "nl": "|richting Rusland|aan de kant van Rusland",
+        "uk": "|на користь Росії|на бік Росії|на боці Росії",
+    },
+    "dirV": {
+        "en": "helps helped helping supports supported |help Russia|help Ukraine|sides with|sided with",
+        "de": "hilft helfen half halfen unterstützt unterstützte unterstützten",
+        "fr": "soutient soutiennent |a soutenu|ont soutenu|aide la Russie|aident la Russie|aide l'Ukraine|aident l'Ukraine",
+        "es": "apoya apoyan apoyó apoyaron |ayuda a Rusia|ayudan a Rusia",
+        "pl": "pomaga pomagają pomógł pomogła wsparł wsparła wsparły wsparli wspiera",
+        "nl": "helpt helpen hielp steunt steunde steunden",
+        "uk": "допомагає допомагають допомогла допоміг підтримала підтримали підтримав підтримує",
+    },
+    "certainty": {
+        "en": "certain certainly likely unlikely clearly definitely surely probably undoubtedly leaning "
+        "|very likely|too close to call|essentially zero|near zero",
+        "de": "eindeutig sicherlich zweifellos vermutlich",
+        "fr": "clairement certainement probablement |sans doute",
+        "es": "claramente seguramente probablemente |sin duda",
+        "pl": "wyraźnie zapewne |na pewno|bez wątpienia",
+        "nl": "duidelijk zeker waarschijnlijk vermoedelijk",
+        "uk": "очевидно напевно безумовно ймовірно",
+    },
+    "trend": {
+        "en": "rose risen fell fallen grew grown dropped increased decreased doubled tripled surged soared plunged declined",
+        "de": "stieg gestiegen fiel gefallen wuchs gewachsen sank gesunken verdoppelt verdreifacht |nahm zu|nahm ab",
+        "fr": "augmenté baissé chuté grimpé doublé triplé hausse hausses",
+        "es": "subió subieron cayó cayeron creció crecieron aumentó aumentaron disminuyó |se duplicó",
+        "pl": "wzrósł wzrosła wzrosły wzrosło spadł spadła spadły spadło podwoił podwoiła",
+        "nl": "steeg stegen gestegen daalde daalden gedaald groeide verdubbeld stijging",
+        "uk": "зріс зросла зросли зросло впав впала впали знизився знизилася подвоївся подвоїлася",
+    },
+    "absolute": {
+        "en": "always never none |no country|all countries",
+        "de": "immer nie niemals |kein Land|alle Länder",
+        "fr": "toujours jamais |aucun pays|tous les pays",
+        "es": "siempre nunca ninguno |ningún país|todos los países",
+        "pl": "zawsze nigdy |żaden kraj|wszystkie kraje|wszystkich krajów",
+        "nl": "altijd nooit |geen land|alle landen",
+        "uk": "завжди ніколи |жодна країна|усі країни|всі країни",
+    },
+}
+# "Ukraine or Russia": a sentence that names both sides as a choice is neutral
+EITHER = {
+    "en": r"ukraine\s+or\s+(?:toward\s+)?russia|russia\s+or\s+ukraine",
+    "de": r"ukraine\s+oder\s+russland|russland\s+oder\s+(?:der\s+)?ukraine",
+    "fr": r"ukraine\s+ou\s+(?:vers\s+)?la\s+russie|russie\s+ou\s+l'ukraine",
+    "es": r"ucrania\s+o\s+(?:hacia\s+)?rusia|rusia\s+o\s+ucrania",
+    "pl": r"ukrain\w*\s+(?:czy|lub)\s+(?:do\s+)?ros\w*|ros\w*\s+(?:czy|lub)\s+ukrain\w*",
+    "nl": r"oekraïne\s+of\s+rusland|rusland\s+of\s+oekraïne",
+    "uk": r"україн\w*\s+(?:чи|або)\s+(?:до\s+)?рос\w*|рос\w*\s+(?:чи|або)\s+україн\w*",
+}
+# the map's chance words (site/i18n/<lang>.js), by their English keys; the words of a few mean something else too
+SITE_CHANCE_KEYS = [
+    "very likely · {p}",
+    "likely {side} · {p}",
+    "too close to call",
+    "near zero",
+    "essentially zero",
+    "leaning",
+    "Leaning",
+    "Leaning toward Ukraine",
+    "Leaning toward Russia",
+    "certain",
+    "Certain",
+]
+HOMOGRAPHS = {
+    "es": {"seguro", "segura"}
+}  # Spanish "seguro" is also "insurance" ("Transporte y seguro del petróleo ruso")
+RELAXED = {
+    "direction",
+    "comparison",
+    "ranking",
+    "trend",
+}  # not read in a question, in {q:...} or in a condition's words
+
+
+def _terms(spec: str) -> list[str]:
+    words, _, phrases = spec.partition("|")
+    return (
+        [w for w in words.split()] + [p for p in ("|" + phrases).split("|") if p.strip()] if phrases else spec.split()
+    )
+
+
+def _rx(term: str, inflect: bool = False) -> re.Pattern:
+    body = r"\s+".join(re.escape(w) for w in term.split())
+    return re.compile(rf"(?<![\w'-]){body}{r'\w{0,2}' if inflect else ''}(?![\w'-])", re.IGNORECASE)
+
+
+def chance_words(site: Path) -> dict[str, list[str]]:
+    """The map's own chance words in each language (site/i18n/<lang>.js), with English's keys."""
+    out = {"en": []}
+    for lang, d in i18n_words(site).items():
+        ws = []
+        for k in SITE_CHANCE_KEYS:
+            w = re.sub(r"\{\w+\}", "", d.get(k, "")).split("·")[0].replace("’", "'").strip(" ,")
+            if w and w.lower() not in HOMOGRAPHS.get(lang, set()):
+                ws.append(w)
+        out[lang] = sorted(set(ws))
+    return out
+
+
+def _rules(lang: str, site_words: list[str]) -> dict[str, list[tuple[str, re.Pattern]]]:
+    out = {}
+    for group, by in _W.items():
+        out[group] = [(t, _rx(t)) for t in _terms(by.get(lang, ""))]
+    out["certainty"] += [(w, _rx(w, inflect=len(w) >= 6)) for w in site_words]
+    return out
+
+
+def segments(text: str, mode: str = "plain") -> list[tuple[str, str]]:
+    """A phrase's words outside placeholders ('plain', a placeholder standing as ◊), inside {q:...} ('q') and inside a
+    condition's words ('branch'), as seo_i18n.mjs parseTpl reads it. Bad syntax raises ValueError."""
+    out, buf, i = [], "", 0
+    while i < len(text):
+        ch = text[i]
+        if ch == "}":
+            raise ValueError(f"stray '}}' in “{text}”")
+        if ch != "{":
+            buf += ch
+            i += 1
+            continue
+        depth, j = 0, i
+        while j < len(text):
+            depth += {"{": 1, "}": -1}.get(text[j], 0)
+            if depth == 0:
+                break
+            j += 1
+        if depth:
+            raise ValueError(f"unclosed '{{' in “{text}”")
+        body = text[i + 1 : j]
+        buf += " ◊ "
+        if body.startswith("if:"):
+            parts, d, cur = [], 0, ""
+            for c in body[3:]:
+                d += {"{": 1, "}": -1}.get(c, 0)
+                if c == "|" and d == 0:
+                    parts.append(cur)
+                    cur = ""
+                else:
+                    cur += c
+            parts.append(cur)
+            if not 2 <= len(parts) <= 3:
+                raise ValueError(f"{{if:...}} needs a condition and one or two branches in “{text}”")
+            for p in parts[1:]:
+                out += segments(p, "branch")
+        elif body.startswith("q:"):
+            out += segments(body[2:], "branch" if mode == "branch" else "q")
+        elif not re.fullmatch(r"[A-Za-z][\w:.\-]*", body):
+            raise ValueError(f"bad placeholder {{{body}}} in “{text}”")
+        i = j + 1
+    out.insert(0, (mode, buf))
+    return out
+
+
+def wording_problems(items: list[dict], site_words: dict[str, list[str]] | None = None) -> list[str]:
+    """Round 57: every hand-written phrase against the rules above. items: {file, key, lang, text}."""
+    rules = {lang: _rules(lang, (site_words or {}).get(lang, [])) for lang in LANGS}
+    months = {lang: "|".join(MONTHS[lang].split()) for lang in LANGS}
+    out = []
+    for it in items:
+        lang, where = it["lang"], f"{it['file']} {it['key']} [{it['lang']}]"
+        try:
+            segs = segments(it["text"].replace("’", "'"))
+        except ValueError as e:
+            out.append(f"{where}: {e}")
+            continue
+        found = []
+        for mode, txt in segs:
+            for term in ALLOW:
+                txt = txt.replace(term, " ")
+            for m in re.finditer(rf"\b({months[lang]})\s+(?:de\s+)?(\d{{4}})\b", txt, re.IGNORECASE):
+                if m.group(2) != WAR_START_YEAR:
+                    found.append(("date", m.group(0)))
+            txt = re.sub(YEAR, " ", txt)
+            found += [("number", d) for d in re.findall(r"\d+", txt)]
+            for sent in re.split(r"(?<=[.!?;؟])\s+", txt):
+                asks = mode != "plain" or sent.rstrip(" ◊\"”»)'").endswith(("?", "؟"))
+                hit = {g: [t for t, rx in rules[lang][g] if rx.search(sent)] for g in rules[lang]}
+                for g in ("number", "certainty", "absolute"):
+                    found += [(g, t) for t in hit[g]]
+                if asks:
+                    continue
+                found += [(g, t) for g in ("ranking", "comparison", "trend") for t in hit[g]]
+                both = (hit["dirU"] and hit["dirR"]) or re.search(EITHER[lang], sent, re.IGNORECASE)
+                if not both:
+                    found += [("direction", t) for t in hit["dirU"] + hit["dirR"] + hit["dirV"]]
+        for g, w in dict.fromkeys(found):
+            out.append(f"{where}: {g} '{w}' in “{it['text'][:90]}”")
+    return out
+
+
+TOPIC_TEXT = ("label", "title", "description", "h1", "intro", "faq", "sections", "notes")
+NOT_TEXT = {
+    "_note",
+    "slug",
+    "key",
+    "side",
+    "kind",
+    "rank",
+    "order",
+    "sort",
+    "map",
+    "members",
+    "regions",
+    "exclude",
+    "related",
+    "subtotals",
+    "extraRows",
+    "onlySide",
+    "moneyNote",
+    "columns",
+    "pairs",
+}
+
+
+def _strings(x, key: str):
+    if isinstance(x, str):
+        yield key, x
+    elif isinstance(x, list):
+        for i, y in enumerate(x):
+            yield from _strings(y, f"{key}[{i}]")
+    elif isinstance(x, dict):
+        for k, y in x.items():
+            if k not in NOT_TEXT:
+                yield from _strings(y, f"{key}.{k}")
+
+
+def config_items(topics: dict, families: dict) -> list[dict]:
+    """Every text field of every entry of seo_topics.json and seo_families.json (English): the editors' own words."""
+    out = []
+    for e in topics.get("pages", []):
+        for f in TOPIC_TEXT:
+            for key, text in _strings(e.get(f), f"{e.get('slug')}.{f}"):
+                out.append({"file": "pipeline/seo_topics.json", "key": key, "lang": "en", "text": text})
+    for key, text in _strings({k: v for k, v in families.items() if k != "_note"}, "families"):
+        out.append({"file": "pipeline/seo_families.json", "key": key, "lang": "en", "text": text})
+    return out
+
+
+def phrase_items(pipeline: Path, node: str = "node") -> list[dict]:
+    """Every phrase of seo_i18n.mjs and seo_templates.mjs, as their phraseList() gives them (needs Node)."""
+    import json
+    import subprocess
+
+    js = (
+        "Promise.all([import('./seo_i18n.mjs'), import('./seo_templates.mjs')]).then(ms => "
+        "process.stdout.write(JSON.stringify(ms.flatMap(m => (m.phraseList ? m.phraseList() : [])))))"
+    )
+    r = subprocess.run(
+        [node, "--input-type=module", "-e", js], cwd=pipeline, capture_output=True, text=True, check=False
+    )
+    if r.returncode:
+        raise RuntimeError(r.stderr.strip()[:400])
+    return json.loads(r.stdout)
+
+
+def check_wording(root: Path, node: str | None = "node") -> tuple[list[str], int]:
+    """The wording guard over the config and the translation table: (problems, phrases read)."""
+    import json
+
+    items = config_items(
+        json.loads((root / "pipeline" / "seo_topics.json").read_text()),
+        json.loads((root / "pipeline" / "seo_families.json").read_text()),
+    )
+    if node:
+        items += phrase_items(root / "pipeline", node)
+    return wording_problems(items, chance_words(root / "site")), len(items)

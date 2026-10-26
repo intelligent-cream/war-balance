@@ -15,27 +15,42 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 // figures of five countries as the map gave them (round 52 data), with what the approved copy says for them
 const FX = {"DEU": {"net": 152.586452, "netLo": 110.001732, "netHi": 208.69428, "ua": 74.665985, "uaLo": 66.894458, "uaHi": 97.502093, "rus": 72.626997, "rusLo": 30.785978, "rusHi": 123.867238, "frozen": 5.29347, "netPct": 3.651077, "netLoPct": 2.632113, "netHiPct": 4.99362, "uaPct": 1.786602, "rusPct": 1.737813, "frozenPct": 0.126662, "paidRussia": 69.31617, "cN": {"level": "sure", "p": 0.9999999983704664, "side": "ukraine", "pct": ">99%", "sideWords": "toward Ukraine"}, "cU": {"level": "sure", "p": 1, "side": "ukraine", "pct": ">99%", "sideWords": "above zero"}, "cR": {"level": "sure", "p": 0.9980676168634317, "side": "ukraine", "pct": ">99%", "sideWords": "toward Ukraine"}, "iso": "DEU", "name": "Germany", "party": false, "armedFull": 0}, "SVK": {"net": 0.168944, "netLo": -4.912093, "netHi": 5.695532, "ua": 0.948305, "uaLo": 0.491138, "uaHi": 1.619087, "rus": -0.911641, "rusLo": -5.971931, "rusHi": 4.574044, "frozen": 0.13228, "netPct": 0.139353, "netLoPct": -4.051712, "netHiPct": 4.697927, "uaPct": 0.782204, "rusPct": -0.751962, "frozenPct": 0.10911, "paidRussia": 14.44335, "cN": {"level": "unc", "p": 0.575, "side": "ukraine", "pct": "57%", "sideWords": "toward Ukraine"}, "cU": {"level": "sure", "p": 0.9997388125000701, "side": "ukraine", "pct": ">99%", "sideWords": "above zero"}, "cR": {"level": "unc", "p": 0.5880000000000001, "side": "russia", "pct": "58%", "sideWords": "toward Russia"}, "iso": "SVK", "name": "Slovakia", "party": false, "armedFull": 0}, "HUN": {"net": -11.403334, "netLo": -18.599457, "netHi": -1.38342, "ua": 0.670354, "uaLo": 0.485758, "uaHi": 0.995372, "rus": -12.272198, "rusLo": -19.465735, "rusHi": -2.257611, "frozen": 0.19851, "netPct": -5.991349, "netLoPct": -9.772215, "netHiPct": -0.726854, "uaPct": 0.352206, "rusPct": -6.447853, "frozenPct": 0.104298, "paidRussia": 30.6162, "cN": {"level": "sure", "p": 0.97, "side": "russia", "pct": "97%", "sideWords": "toward Russia"}, "cU": {"level": "sure", "p": 0.9999999991573219, "side": "ukraine", "pct": ">99%", "sideWords": "above zero"}, "cR": {"level": "sure", "p": 0.971, "side": "russia", "pct": "97%", "sideWords": "toward Russia"}, "iso": "HUN", "name": "Hungary", "party": false, "armedFull": 0}, "BLR": {"net": -2.517572, "netLo": -9.280928, "netHi": 5.130518, "ua": 0, "uaLo": 0, "uaHi": 0, "rus": -2.517572, "rusLo": -9.280928, "rusHi": 5.130518, "frozen": 0, "netPct": -3.601677, "netLoPct": -13.277437, "netHiPct": 7.339797, "uaPct": 0, "rusPct": -3.601677, "frozenPct": 0, "paidRussia": 109.525, "cN": {"level": "lean", "p": 0.775, "side": "russia", "pct": "77%", "sideWords": "toward Russia"}, "cU": {"level": "zero", "p": 0.5, "side": "ukraine", "pct": "50%", "sideWords": "above zero"}, "cR": {"level": "lean", "p": 0.775, "side": "russia", "pct": "77%", "sideWords": "toward Russia"}, "iso": "BLR", "name": "Belarus", "party": true, "armedFull": 1.2725}, "AUS": {"net": -0.604227, "netLo": -1.423452, "netHi": 0.550267, "ua": 1.289895, "uaLo": 0.998386, "uaHi": 2.118225, "rus": -1.909523, "rusLo": -2.675068, "rusHi": -1.108664, "frozen": 0.0154, "netPct": -0.037471, "netLoPct": -0.088274, "netHiPct": 0.034124, "uaPct": 0.079992, "rusPct": -0.118418, "frozenPct": 0.000955, "paidRussia": 6.92175, "cN": {"level": "zero", "p": 0.7090000000000001, "side": "russia", "pct": "70%", "sideWords": "toward Russia"}, "cU": {"level": "sure", "p": 0.9999999999999117, "side": "ukraine", "pct": ">99%", "sideWords": "above zero"}, "cR": {"level": "sure", "p": 0.9999551286473811, "side": "russia", "pct": ">99%", "sideWords": "toward Russia"}, "iso": "AUS", "name": "Australia", "party": false, "armedFull": 0}};
 
-test("the templates give the approved copy", () => {
-  assert.equal(T.countryCopy("en", FX.DEU).title, "How much has Germany given Ukraine? €74.7bn since 2022");
-  assert.equal(T.countryCopy("en", FX.DEU).description, "Germany supported Ukraine with €74.7bn (1.8% of one year's GDP) since 2022. With trade with Russia counted: 3.7% of GDP toward Ukraine, very likely.");
-  assert.equal(T.countryCopy("en", FX.SVK).title, "Is Slovakia helping Ukraine or Russia? Too close to call");
-  assert.equal(T.countryCopy("en", FX.HUN).title, "Is Hungary helping Russia? 6.0% of GDP toward Russia");
-  assert.equal(T.countryCopy("en", FX.BLR).title, "Is Belarus helping Russia? Party to the war, 3.6% of GDP");
-  assert.equal(T.countryCopy("en", FX.AUS).title, "How much has Australia given Ukraine? €1.3bn since 2022");
-  assert.equal(T.countryCopy("de", FX.DEU).title, "Wie viel hat Deutschland der Ukraine gegeben? 74,7\u00a0Mrd.\u00a0€");
-  assert.equal(T.countryCopy("pl", FX.HUN).h1, "Czy Węgry pomagają Rosji? Co pokazują przepływy pieniędzy");
+// the map's chance words (seo_extract.mjs words), in English and German
+const W = { leanU: "Leaning toward Ukraine", leanR: "Leaning toward Russia", near: "near zero", zero: "essentially zero", unc: "too close to call", party: "Party to the war", sure: "very likely", lean: "likely" };
+const W_DE = { leanU: "Tendenz Richtung Ukraine", leanR: "Tendenz Richtung Russland", near: "nahe null", zero: "praktisch null", unc: "zu knapp für eine Aussage", party: "Kriegspartei", sure: "sehr wahrscheinlich", lean: "wahrscheinlich" };
+const en = f => T.countryCopy("en", { ...f, words: W });
+
+test("the templates give the copy of the one country template", () => {
+  assert.equal(en(FX.DEU).title, "How much has Germany given Ukraine? €74.7bn since 2022");
+  // round 57: every chance and direction word is the map's ({sureWord}, {netDir})
+  assert.equal(en(FX.DEU).description, "Support for Ukraine from Germany since 2022: €74.7bn (1.8% of one year's GDP). With trade with Russia counted: 3.7% of GDP toward Ukraine, very likely.");
+  assert.equal(en(FX.SVK).title, "Is Slovakia helping Ukraine or Russia? Too close to call");
+  assert.equal(en(FX.HUN).title, "Is Hungary helping Russia? 6.0% of GDP toward Russia");
+  assert.equal(en(FX.BLR).title, "Is Belarus helping Russia? Party to the war, 3.6% of GDP");
+  // round 57: Australia's hand-written override is gone; it has the title of its chance level
+  assert.equal(en(FX.AUS).title, "Australia: Ukraine or Russia? Net essentially zero");
+  // round 57: the ten most searched countries use the same template as every other country (their names the map's)
+  assert.equal(T.countryCopy("de", { ...FX.DEU, nameL: "Deutschland", words: W_DE }).title, "Deutschland: Wie viel Hilfe für die Ukraine? 74,7\u00a0Mrd.\u00a0€");
+  assert.equal(T.countryCopy("pl", { ...FX.HUN, nameL: "Węgry", words: W_DE }).h1, "Węgry: czy ten kraj pomaga Rosji? Co pokazują przepływy pieniędzy");
+  // round 56's rule, from seo_families.json: a country whose trade is searched far more than its aid is asked about trade
+  const rule = JSON.parse(readFileSync(join(HERE, "seo_families.json"), "utf8")).country.tradeFirst;
+  assert.match(en({ ...FX.DEU, iso: "XXA", name: "Testland", demand: { trade: 5000, aid: 300 }, tradeFirst: rule }).title, /^Does Testland trade with Russia\? Russia kept €72.6bn less$/);
+  assert.match(en({ ...FX.DEU, demand: { trade: 6342, aid: 3230 }, tradeFirst: rule }).title, /^How much has Germany/);
   assert.deepEqual(T.countryLangs(FX.DEU), T.LANGS);
   // round 56: every country has a page in every language
   assert.deepEqual(T.countryLangs(FX.SVK), T.LANGS);
 });
 
 test("a title's chance word follows the category", () => {
-  const unc = { ...FX.DEU, iso: "XXA", name: "Testland", cN: { level: "unc", p: 0.55, side: "ukraine" } };
-  assert.match(T.countryCopy("en", unc).title, /Too close to call/);
-  const lean = { ...unc, cN: { level: "lean", p: 0.8, side: "russia" } };
-  assert.match(T.countryCopy("en", lean).title, /Leaning Russia/);
-  // the Slovakia override is only used while Slovakia is too close to call
-  assert.doesNotMatch(T.countryCopy("en", { ...FX.SVK, cN: { level: "sure", p: 0.99, side: "ukraine" } }).description, /Too close/);
+  const unc = { ...FX.DEU, iso: "XXA", name: "Testland", cN: { level: "unc", p: 0.55, side: "ukraine", sideWords: "toward Ukraine" } };
+  assert.match(en(unc).title, /Too close to call/);
+  const lean = { ...unc, cN: { level: "lean", p: 0.8, side: "russia", sideWords: "toward Russia" } };
+  assert.match(en(lean).title, /Leaning toward Russia/);
+  // the words follow the level, never the other way round
+  assert.doesNotMatch(en({ ...FX.SVK, cN: { level: "sure", p: 0.99, side: "ukraine", sideWords: "toward Ukraine" } }).description, /Too close/);
+  // "more" or "less" for Russia follows the sign of what Russia kept
+  assert.match(en(FX.HUN).description, /Russia kept €12.3bn more/);
+  assert.match(en({ ...FX.HUN, rus: 1.5 }).description, /Russia kept €1.5bn less/);
 });
 
 test("titles fit in 60 characters and descriptions in 155, for every category and long names", () => {
@@ -43,16 +58,16 @@ test("titles fit in 60 characters and descriptions in 155, for every category an
   const levels = [["sure", "ukraine"], ["sure", "russia"], ["lean", "ukraine"], ["lean", "russia"], ["unc", "russia"], ["near", "ukraine"], ["zero", "russia"]];
   for (const name of long) for (const [level, side] of levels) for (const party of [false, true]) for (const k of [0.004, 1.23456, 123.456]) {
     const f = { ...FX.DEU, iso: "XXA", name, party, netPct: k, uaPct: k, rusPct: -k, net: k * 40, ua: k * 30, rus: -k * 20, netLoPct: -k, netHiPct: 2 * k, cN: { level, p: 0.97, side }, cR: { level, p: 0.9, side } };
-    const c = T.countryCopy("en", f);
+    const c = en(f);
     assert.ok(c.title.length <= T.TITLE_MAX, c.title);
     assert.ok(c.description.length <= T.DESC_MAX, c.description);
   }
   for (const l of T.LANGS) {
-    const h = T.homeCopy(l, 191);
+    const h = T.homeCopy(l, 191, "August 2026");
     assert.ok(h.title.length <= T.TITLE_MAX && h.description.length <= T.DESC_MAX, l);
-    for (const iso of T.TOP) for (const side of ["ukraine", "russia"]) {
+    for (const iso of ["USA", "DEU", "HUN", "XXA"]) for (const side of ["ukraine", "russia"]) {
       if (l === "en") continue;
-      const c = T.countryCopy(l, { ...FX.DEU, iso, cN: { level: "sure", p: 0.99, side } });
+      const c = T.countryCopy(l, { ...FX.DEU, iso, nameL: "Vereinigte Staaten", words: W_DE, cN: { level: "sure", p: 0.99, side } });
       assert.ok(c.title.length <= T.TITLE_MAX && c.description.length <= T.DESC_MAX, l + " " + iso + " " + c.title + " " + c.description);
     }
   }
@@ -77,17 +92,17 @@ const TOPICS = JSON.parse(readFileSync(join(HERE, "seo_topics.json"), "utf8")).p
 const mk = (iso, name, gdp, net, ua, rus, extra = {}) => ({ iso, nameEn: name, slug: name.toLowerCase(), gdp, pop: 10, region: "eu", party: false, noData: false, mostlyNoData: false,
   measures: { net: { v: net, lo: net - 1, hi: net + 1, range: "likely …", chance: "very likely · >99%", level: "sure", side: net >= 0 ? "ukraine" : "russia" },
     ua: { v: ua, lo: ua, hi: ua, range: "", chance: "very likely · >99%", level: "sure", side: "ukraine" }, rus: { v: rus, lo: rus, hi: rus, range: "", chance: "likely toward Russia · 80%", level: "lean", side: "russia" },
-    paid: { v: 10 }, frozen: { v: 0 } }, ...extra });
+    paid: { v: 10 }, paidGain: { v: -1 }, "part:disc": { v: -0.5 }, frozen: { v: 0 } }, ...extra });
 const CS = [mk("AAA", "Aland", 100, 4, 2, 2), mk("BBB", "Bland", 50, -1, 0.5, -1.5), mk("CCC", "Cland", 3, 0.3, 0.3, 0), mk("DDD", "Dland", 20, -2, 0, -2, { party: true })];
 // the countries the config names in its questions ({iso:...}), with the measures it asks for
 const named = (iso, extra = {}) => { const c = mk(iso, iso, 50, 1, 1, 0, extra); c.measures.armed = { v: 2 }; return c; };
-const CS_NAMED = CS.concat([named("IRN"), named("PRK", { party: true }), named("CHN"), named("USA")]);
+const CS_NAMED = CS.concat([named("IRN"), named("PRK", { party: true }), named("CHN"), named("USA")], ["GBR", "MDA", "TUR", "BLR", "SAU", "KAZ", "IND", "ARE"].map(i => named(i)));
 
 test("every config entry builds a page with titles and descriptions that fit", () => {
   const slugs = new Set();
   for (const e of TOPICS) {
     assert.ok(!slugs.has(pathOf(e)), "two entries at " + pathOf(e)); slugs.add(pathOf(e));
-    const m = buildTopic(e, CS_NAMED, TOPICS, { dataTo: "August 2026" });
+    const m = buildTopic(e, CS_NAMED, TOPICS, { dataTo: "August 2026", words: W });
     assert.ok(m.title.length <= T.TITLE_MAX, e.slug + ": " + m.title);
     assert.ok(m.description.length <= T.DESC_MAX, e.slug + ": " + m.description);
     assert.ok(m.h1 && m.intro && !/\{\w/.test(m.intro + m.title + m.description + JSON.stringify(m.faq)), e.slug);
@@ -95,7 +110,7 @@ test("every config entry builds a page with titles and descriptions that fit", (
 });
 
 test("a topic ranks, totals and leaves out parties as configured", () => {
-  const e = { slug: "t", kind: "topic", title: "T", description: "{top1} first; {sum:net_eur}, {sum:net_pct} {sum:net_dir}; {nToU:net} sure toward Ukraine; {cmp:paid:ua}", h1: "H", intro: "I", rank: "net", sort: "gdp" };
+  const e = { slug: "t", kind: "topic", title: "T", description: "{top1} first; {sum:net_eur}, {sum:net_pct} {if:sum:net>=0|toward Ukraine|toward Russia}; {nToU:net} sure toward Ukraine; {if:abs(sum:paid)~abs(sum:ua)|about the same as|{if:abs(sum:paid)>abs(sum:ua)|more than|less than}}", h1: "H", intro: "I", rank: "net", sort: "gdp" };
   const m = buildTopic(e, CS, [], { dataTo: "August 2026" });
   // Cland is under €5bn of GDP (left out when ranked by % of GDP), Dland a party to the war
   assert.deepEqual(m.rows.map(c => c.iso), ["AAA", "BBB"]);
@@ -111,6 +126,12 @@ test("a topic ranks, totals and leaves out parties as configured", () => {
   assert.match(html, /data-total="net"><span>Net<\/span><b class="pos">\+4\.2%/);
   assert.match(html, /Party to the war/);
   assert.throws(() => buildTopic({ ...e, title: "{nope}" }, CS, [], { dataTo: "" }), /unknown placeholder/);
+  // round 57: an unknown value or a condition that does not depend on the data stops the build
+  assert.throws(() => buildTopic({ ...e, title: "{if:sum:nope>0|a|b}" }, CS, [], { dataTo: "" }), /unknown value/);
+  assert.throws(() => buildTopic({ ...e, title: "{if:1>0|a|b}" }, CS, [], { dataTo: "" }), /does not depend on the data/);
+  assert.throws(() => buildTopic({ ...e, title: "{if:n>0|a}b}" }, CS, [], { dataTo: "" }), /stray/);
+  // the old placeholders that wrote a direction or an order by themselves are gone
+  assert.throws(() => buildTopic({ ...e, title: "{cmp:paid:ua}" }, CS, [], { dataTo: "" }), /unknown placeholder/);
 });
 
 // ----- round 56: the generated families, the language frames and the year pages -----
@@ -159,7 +180,7 @@ test("every family page and language has a title and description that fit", () =
 });
 
 test("a country page in another language says the map's chance words, for every level and long names", () => {
-  const words = { leanU: "Tendenz Richtung Ukraine", leanR: "Tendenz Richtung Russland", near: "nahe null", zero: "praktisch null", unc: "zu knapp für eine Aussage", party: "Kriegspartei" };
+  const words = W_DE;
   const levels = [["sure", "ukraine", "u_sure"], ["sure", "russia", "r_sure"], ["lean", "ukraine", "u_lean"], ["lean", "russia", "r_lean"], ["unc", "russia", "unc"], ["near", "ukraine", "zero"], ["zero", "russia", "zero"]];
   for (const l of I.LANGS.filter(x => x !== "en")) for (const name of ["Schweiz", "St. Vincent und die Grenadinen", "Demokratische Republik Kongo"]) for (const [level, side, cat] of levels) for (const party of [false, true]) {
     const f = { ...FX.DEU, iso: "XXA", name, nameL: name, party, words, cN: { level, p: 0.97, side }, cR: { level, p: 0.9, side } };
@@ -168,8 +189,8 @@ test("a country page in another language says the map's chance words, for every 
     const want = party ? "kriegspartei" : cat === "u_lean" ? "tendenz richtung ukraine" : cat === "r_lean" ? "tendenz richtung russland" : cat === "unc" ? "zu knapp" : cat === "zero" ? (level === "near" ? "nahe null" : "praktisch null") : "";
     if (l === "de" && want) assert.ok(c.title.toLowerCase().includes(want), c.title);
   }
-  // the ten most searched countries keep their hand-written titles while very likely
-  assert.match(T.countryCopy("fr", { ...FX.HUN, nameL: "Hongrie", words }).title, /^La Hongrie aide-t-elle la Russie \?/);
+  // round 57: the ten most searched countries have the same template as the others (their hand-written titles folded in)
+  assert.match(T.countryCopy("fr", { ...FX.HUN, nameL: "Hongrie", words }).title, /^Hongrie : le pays aide-t-il la Russie \?/);
 });
 
 test("the families: parts by rule, five years each way, the searched pairs and every pair of the largest donors", () => {
@@ -194,4 +215,31 @@ test("a year page ranks that year's own amounts", () => {
   const html = renderTopic(m, { esc: s => String(s), cPath: c => "/country/" + c.slug + "/", l: "de" });
   assert.match(html, /data-q="ua" data-year="2023"><b class="pos">\+3 Mrd\. €/);
   assert.match(html, /im Jahr 2023/);
+});
+
+// ----- round 57: the placeholder engine, and the one translation table -----
+test("conditions choose words from the data, and stop the build when they cannot be read", () => {
+  assert.equal(I.fmt("Russia kept {v} {if:x>=0|less|more}", { v: "€1bn" }, { x: -2 }), "Russia kept €1bn more");
+  assert.equal(I.fmt("{if:a~b|about the same as|{if:a>b|more than|less than}}", {}, { a: 100, b: 101 }), "about the same as");
+  assert.equal(I.fmt("{if:abs(a)>b|big|small}", {}, { a: -5, b: 3 }), "big");
+  assert.equal(I.fmt("{if:flag|yes}", {}, { flag: false }), "");
+  assert.equal(I.fmt("{q:Is {N} helping Russia}?", { N: "Hungary" }), "Is Hungary helping Russia?");
+  assert.throws(() => I.fmt("{if:x>0|a|b}", {}, {}), /unknown value/);
+  assert.throws(() => I.fmt("{if:2>1|a|b}"), /does not depend on the data/);
+  assert.throws(() => I.fmt("{if:x>>0|a|b}", {}, { x: 1 }), /cannot read the condition/);
+  assert.throws(() => I.fmt("{nope}"), /unknown placeholder/);
+});
+
+test("every phrase of the table parses, in every language, and each family has every language", () => {
+  const list = I.phraseList();
+  for (const p of list) I.parseTpl(p.text);
+  assert.deepEqual([...new Set(list.map(p => p.lang))].sort(), [...I.LANGS].sort());
+  for (const k of ["COPY.part.title[0]", "COPY.year.ua.intro", "COPY.compare.line", "COPY.hub.title", "COPY.country.u_sure.h1", "COPY.home.intro", "S.rankBy", "LABELS.yearNote"])
+    for (const l of I.LANGS) assert.ok(list.some(p => p.key === k && p.lang === l), k + " " + l);
+  assert.deepEqual(T.phraseList(), []);   // seo_templates.mjs has no words of its own
+});
+
+test("the comparison line says which country gave more from the figures", () => {
+  const a = { a: "Aland", b: "Bland", eurA: "€1bn", eurB: "€2bn", uaA: 1, uaB: 2, pctA: 3, pctB: 1 };
+  assert.equal(I.compareLine("en", a), "Support for Ukraine in euros: Aland €1bn, Bland €2bn. More in euros: Bland; more as a share of GDP: Aland.");
 });

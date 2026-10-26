@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import json
+import shutil
 from pathlib import Path
 
 import seo_check as sc
@@ -222,3 +224,66 @@ def test_every_family_page_is_expected():
         "compare/slovakia-vs-poland/",
         "topics/",
     ]
+
+
+# ----- round 57: the wording guard -----
+ROOT = Path(__file__).resolve().parents[2]
+CW = {"de": ["sehr wahrscheinlich", "wahrscheinlich", "zu knapp für eine Aussage", "Tendenz"]}
+
+
+def w(text: str, lang: str = "en") -> list[str]:
+    return sc.wording_problems([{"file": "f", "key": "k", "lang": lang, "text": text}], CW)
+
+
+def test_wording_guard_catches_each_kind_of_stale_claim():
+    assert w("Germany gave the most") == ["f k [en]: ranking 'most' in “Germany gave the most”"]
+    assert any("number '27'" in x for x in w("The 27 EU members"))
+    assert any("number 'half'" in x for x in w("about half of it"))
+    assert any("comparison 'more than'" in x for x in w("Europe paid Russia more than it gave Ukraine."))
+    assert any("direction 'toward Russia'" in x for x in w("Hungary: 6% of GDP toward Russia"))
+    assert any("direction 'supported'" in x for x in w("Germany supported Ukraine with €70bn."))
+    assert any("certainty 'very likely'" in x for x in w("very likely toward Ukraine or Russia"))
+    assert any("trend 'rose'" in x for x in w("Fuel prices rose with the war."))
+    assert any("absolute 'never'" in x for x in w("It never changes."))
+    # in every language, with the map's own chance words
+    assert any("certainty 'wahrscheinlich'" in x for x in w("Ungarn: wahrscheinlich Richtung Russland", "de"))
+    assert any("direction 'hilft'" in x for x in w("Ungarn hilft Russland.", "de"))
+    assert any("ranking 'am meisten'" in x for x in w("Deutschland gab am meisten.", "de"))
+    assert any("ranking 'na czele'" in x for x in w("Na czele: Polska.", "pl"))
+    assert any("direction 'на бік Росії'" in x for x in w("Угорщина: 6% ВВП на бік Росії", "uk"))
+
+
+def test_wording_guard_allows_questions_conditions_placeholders_and_dates():
+    # a neutral question, or a sentence that names both sides, states no result
+    assert w("Is Germany helping Russia? Which countries give the most to Ukraine?") == []
+    assert w("Where did each country's money move: toward Ukraine or toward Russia?") == []
+    assert w("+ toward Ukraine, − toward Russia") == []
+    assert w("{q:Countries helping Russia}, in money terms") == []
+    # words chosen by the data, and the data itself
+    assert w("Russia kept {rus} {if:rusX<0|more|less} than without the war; {top1} {top1_eur}.") == []
+    assert w("{if:sum:net>=0|toward Ukraine|toward Russia}") == []
+    # but a condition's words may not hold a number or a chance word
+    assert any("number" in x for x in w("{if:n>1|27 members|}"))
+    assert any("certainty" in x for x in w("{if:n>1|very likely|}"))
+    # years, the war's start and the named facts in ALLOW
+    assert w("From February 2022 to {dataTo}; the fuel share before the war (2018 to 2021); the G7.") == []
+    assert w("until the EU's ban of 21 January 2026") == []
+    assert any("date 'August 2026'" in x for x in w("from February 2022 to August 2026"))
+    # a phrase that the engine could not read
+    assert any("unclosed" in x for x in w("{if:n>1|a"))
+
+
+def test_wording_guard_names_file_entry_language_and_word_when_the_config_is_tampered_with():
+    topics = json.loads((ROOT / "pipeline" / "seo_topics.json").read_text())
+    fam = json.loads((ROOT / "pipeline" / "seo_families.json").read_text())
+    assert sc.wording_problems(sc.config_items(topics, fam)) == []
+    topics["pages"][0]["intro"] += " Germany gave the most."
+    p = sc.wording_problems(sc.config_items(topics, fam))
+    assert len(p) == 1 and p[0].startswith(
+        "pipeline/seo_topics.json ukraine-support-tracker.intro [en]: ranking 'most'"
+    )
+
+
+def test_the_real_phrases_pass_the_wording_guard():
+    p, n = sc.check_wording(ROOT, shutil.which("node"))
+    assert p == [] and n > 100

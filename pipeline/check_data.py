@@ -970,19 +970,32 @@ check(
 # topic, group, part, year and comparison page (pipeline/seo_families.json) and the Topics page in all seven languages,
 # with the model's numbers in each language's format and the map's own chance words; sitemap.xml an index of one
 # sitemap per language.
+# Round 57 (owner: "fail if any hand-written text ... contains a claim that can go stale"): and the wording guard
+# (seo_check.py wording_problems): every text field of seo_topics.json and seo_families.json and every phrase of the one
+# translation table seo_i18n.mjs (and seo_templates.mjs), in all seven languages, holds no number, ranking, comparison,
+# direction, certainty, trend or absolute word outside a placeholder or condition; each problem names the file, the
+# entry or key, the language and the word. It reads the sources, so it runs with or without the generated pages.
 
+try:
+    _wording, _n_wording = seo_check.check_wording(ROOT, _node)
+except RuntimeError as _err:  # a phrase table that does not load
+    _wording, _n_wording = [f"seo_i18n.mjs did not load: {_err}"], 0
+if not _node and STRICT:
+    _wording.append("node not found: the phrases of seo_i18n.mjs were not read")
 if not (ROOT / "site" / "country").exists():
     check(
         "findable pages: one per country, self canonical, short titles, true numbers",
-        not STRICT,
-        "site/country/ not generated (run node pipeline/share_cards.mjs)",
-        warn_only=not STRICT,
+        not STRICT and not _wording,
+        "site/country/ not generated (run node pipeline/share_cards.mjs)"
+        + (f"; wording: {_wording[:4]}" if _wording else f"; wording: {_n_wording} phrases, none stale"),
+        warn_only=not STRICT and not _wording,
     )
 else:
     # round 55: and every topic and group page of pipeline/seo_topics.json
     _topics = json.loads((ROOT / "pipeline" / "seo_topics.json").read_text())["pages"]
     _fam = json.loads((ROOT / "pipeline" / "seo_families.json").read_text())
     _seo = seo_check.check_site(ROOT / "site", _su, _m, _topics, _fam)
+    _seo["wording"] = _wording
     _seo_bad = {k: v for k, v in _seo.items() if v}
     _smf = ROOT / "site" / "sitemap.xml"
     _n_sm = len(seo_check.site_urls(ROOT / "site", _su)) if _smf.exists() else 0
@@ -991,7 +1004,7 @@ else:
         "findable pages: one per country, self canonical, short titles, true numbers",
         not _seo_bad and _m is not None,
         f"{_n_sm} pages in the sitemap, {len(_topics)} topic and group pages, {_n_fam} topic and family pages "
-        f"in {len(seo_check.LANGS)} languages; problems: "
+        f"in {len(seo_check.LANGS)} languages; {_n_wording} hand-written phrases read by the wording guard; problems: "
         + ("; ".join(f"{k}: {v[:4]}" for k, v in _seo_bad.items()) if _seo_bad else "none")
         + ("" if _m is not None else "; node not found: titles not checked"),
     )

@@ -13,10 +13,9 @@
 // one year) and in every site language (renderTopic(m, { lang }): the frames from seo_i18n.mjs, each country's range and
 // chance words from the map in that language). An entry with a year ranks that year's own amounts.
 
-import { names } from "./seo_templates.mjs";
-import { P as PL, E as EL, PP as PPL, s as S, measureName, list3 as list3L, fitTitle, fitDesc } from "./seo_i18n.mjs";
+import { P as PL, E as EL, PP as PPL, s as S, measureName, list3 as list3L, fitTitle, fitDesc, fmt, inSentence, cap } from "./seo_i18n.mjs";
 
-const P = x => PL("en", x), E = bn => EL("en", bn).replace(/\u00a0/g, " ");
+const P = x => PL("en", x), E = bn => EL("en", bn).replace(/ /g, " ");
 // the measures a page can rank by or show, with their column labels (seo_i18n.mjs MEASURE and PART)
 export const label = (key, l = "en") => measureName(l, key);
 // how a measure is written: "signed" (+ toward Ukraine, − toward Russia), "kept" (how much more or less Russia kept than
@@ -26,7 +25,6 @@ export const label = (key, l = "en") => measureName(l, key);
 const AMOUNT_PART = new Set(["frozen", "frozen_priv", "prem", "disc", "seized", "exits", "trapped", "aidge", "margin", "tariff"]);
 export const style = k => (k === "net" || k === "ua" ? "signed" : k === "rus" || k === "paidGain" ? "kept"
   : k.startsWith("part:") ? (AMOUNT_PART.has(k.slice(5)) ? "amount" : "signed") : "amount");
-const SIGNED = k => style(k) !== "amount";
 // measures whose cell carries the panel's chance (checked against the model by check 48)
 export const CHANCE_KEYS = ["net", "ua", "rus"];
 export const pathOf = e => (e.kind === "group" ? `/group/${e.slug}/` : e.kind === "compare" ? `/compare/${e.slug}/` : `/${e.slug}/`);
@@ -35,7 +33,7 @@ const SIDES = new Set(["RUS", "UKR"]);   // the two sides the money is measured 
 const fmtSigned = v => (v > 0 ? "+" : v < 0 ? "−" : "");
 const pp = (v, pop) => (pop ? (v * 1000) / pop : null);   // € bn and population in millions → € per person
 const fmtPP = x => PPL("en", x);
-const list3 = a => (a.length > 2 ? a.slice(0, -1).join(", ") + " and " + a[a.length - 1] : a.join(" and "));
+const list3 = a => list3L("en", a);
 const capSentences = s => s.replace(/(^|[.?!]\s+)the /g, "$1The ");
 
 // a measure's value for one country (null when it has none); with a year, that year's own amount (net, ua or rus)
@@ -48,8 +46,9 @@ export function mv(c, key, year) {
 }
 const inUnit = (c, v, sort) => (sort === "eur" ? v : sort === "pp" ? pp(v, c.pop) : c.gdp ? (100 * v) / c.gdp : null);
 
-// the page's model: which countries, in which order, the totals and every filled-in text
-export function buildTopic(e, countries, all, { dataTo }) {
+// the page's model: which countries, in which order, the totals and every filled-in text.
+// opts: dataTo (the data's last month), words (the map's chance words: {word:sure} ...), l (the language of the names)
+export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en" }) {
   const byIso = Object.fromEntries(countries.map(c => [c.iso, c]));
   const year = e.year || null, mv0 = mv, mvY = (c, k) => mv0(c, k, year);
   const sort = e.sort || "gdp", key = e.rank || "net", minGdp = e.minGdp ?? (e.kind === "group" ? 0 : sort === "eur" ? 0 : 5);
@@ -75,22 +74,33 @@ export function buildTopic(e, countries, all, { dataTo }) {
     const v = xs.reduce((a, m) => a + m.v, 0), gdp = set.filter(c => mvY(c, k)).reduce((a, c) => a + c.gdp, 0), pop = set.filter(c => mvY(c, k)).reduce((a, c) => a + (c.pop || 0), 0);
     return { v, gdp, pop, pct: gdp ? (100 * v) / gdp : 0, n: xs.length };
   };
-  const dir = (k, v) => (style(k) === "kept" ? (v >= 0 ? "less for Russia than without the war" : "more for Russia than without the war") : k === "net" ? (v >= 0 ? "toward Ukraine" : "toward Russia") : "");
-  const dir2 = v => (v >= 0 ? "less" : "more");
   const groups = Object.fromEntries((all || []).filter(x => x.members).map(x => [x.slug, x]));
   const subSet = slug => { const g = groups[slug]; return g ? countries.filter(c => g.members.includes(c.iso) && !c.party && !c.noData && !c.mostlyNoData && c.gdp) : []; };
-  const nm = c => names(c.iso, c.nameEn)[1];
+  const nameOf = c => c.name || c.nameEn;
+  const nm = c => inSentence("en", nameOf(c));
   const level = (c, k) => { const m = mvY(c, k); return m ? m.level : ""; };
-  const fill = s => capSentences(String(s).replace(/\{([\w:]+?)\}/g, (all0, ph) => {
+  const bySet = (which, k) => rows.filter(c => (which === "Unsure" ? level(c, k) && level(c, k) !== "sure" : level(c, k) === "sure" && mvY(c, k).side === (which === "ToU" ? "ukraine" : "russia")));
+  const members = (e.members || []).filter(i => !SIDES.has(i)).length || rows.length;
+  const sideName = i => S(l, i === "RUS" ? "russia" : "ukraine");
+  // a measure no country has is a typo in the config: the build stops
+  const must = k => { if (!countries.some(c => mvY(c, k))) throw new Error(`no country has the measure “${k}”`); return k; };
+  // the words a placeholder stands for (round 57: the words that depend on the data are written with {if:...} in the
+  // config, from the values below; the old {cmp:...}, {ratio:...} and {sum:KEY_dir} are gone)
+  const text = ph => {
     let m;
     if (ph === "n") return String(rows.length);
+    if (ph === "members") return String(members);
     if (ph === "dataTo") return dataTo;
+    if (ph === "partyList") return list3(party.map(nm));
+    if (ph === "memberNames") return list3((e.members || []).map(i => (byIso[i] ? nm(byIso[i]) : SIDES.has(i) ? sideName(i) : i)));
+    if ((m = ph.match(/^(name|the):([A-Z]{3})$/))) { const c = byIso[m[2]]; if (!c) throw new Error(`seo_topics.json ${e.slug}: no country ${m[2]}`); return m[1] === "name" ? nameOf(c) : nm(c); }
+    if ((m = ph.match(/^word(Cap)?:(\w+)$/))) { const w = words[m[2]]; if (w === undefined) return undefined; return m[1] ? cap(w) : w; }
     if ((m = ph.match(/^top(\d)$/))) return rows[+m[1] - 1] ? nm(rows[+m[1] - 1]) : "";
     if (ph === "top3list") return list3(rows.slice(0, 3).map(nm));
     if ((m = ph.match(/^top(\d)_(eur|pct|pp)$/))) {
       const c = rows[+m[1] - 1]; if (!c) return "";
       const v = mvY(c, key).v;
-      return m[2] === "eur" ? E(v) : m[2] === "pct" ? P((100 * v) / c.gdp) : c.pop ? fmtPP(pp(v, c.pop)) + " per person" : "";
+      return m[2] === "eur" ? E(v) : m[2] === "pct" ? P((100 * v) / c.gdp) : c.pop ? fmtPP(pp(v, c.pop)) + " " + S("en", "perPerson") : "";
     }
     if ((m = ph.match(/^top(\d)by:([\w:]+?)(_eur|_pct)?$/))) {
       const by = rows.filter(c => mvY(c, m[2])).sort((a, b) => Math.abs(mvY(b, m[2]).v) - Math.abs(mvY(a, m[2]).v));
@@ -98,38 +108,40 @@ export function buildTopic(e, countries, all, { dataTo }) {
       const c = by[+m[1] - 1]; if (!c) return "";
       return m[3] === "_eur" ? E(mvY(c, m[2]).v) : m[3] === "_pct" ? P((100 * mvY(c, m[2]).v) / c.gdp) : nm(c);
     }
-    if ((m = ph.match(/^sum:([\w:]+?)_(eur|pct|pp|dir|dir2)$/))) {
-      const s = sumOf(rows, m[1]);
-      return m[2] === "eur" ? E(s.v) : m[2] === "pct" ? P(s.pct) : m[2] === "pp" ? (s.pop ? fmtPP(pp(s.v, s.pop)) + " per person" : "") : m[2] === "dir" ? dir(m[1], s.v) : dir2(s.v);
+    if ((m = ph.match(/^sum:([\w:]+?)_(eur|pct|pp)$/))) {
+      const s = sumOf(rows, must(m[1]));
+      return m[2] === "eur" ? E(s.v) : m[2] === "pct" ? P(s.pct) : s.pop ? fmtPP(pp(s.v, s.pop)) + " " + S("en", "perPerson") : "";
     }
-    if ((m = ph.match(/^sub:([\w-]+):([\w:]+?)_(eur|pct|dir|dir2)$/))) {
-      const s = sumOf(subSet(m[1]), m[2]);
-      return m[3] === "eur" ? E(s.v) : m[3] === "pct" ? P(s.pct) : m[3] === "dir" ? dir(m[2], s.v) : dir2(s.v);
-    }
+    if ((m = ph.match(/^sub:([\w-]+):n$/))) return String(subSet(m[1]).length);
+    if ((m = ph.match(/^sub:([\w-]+):([\w:]+?)_(eur|pct)$/))) { const s = sumOf(subSet(m[1]), m[2]); return m[3] === "eur" ? E(s.v) : P(s.pct); }
     // round 56: one named country's figure, wherever it is in the table (or outside it: a party to the war)
     if ((m = ph.match(/^iso:([A-Z]{3}):([\w:]+?)_(eur|pct)$/))) {
       const c = byIso[m[1]], x = c && mvY(c, m[2]);
       if (!x) throw new Error(`seo_topics.json ${e.slug}: no ${m[2]} for ${m[1]}`);
       return m[3] === "eur" ? E(x.v) : P((100 * x.v) / c.gdp);
     }
-    if ((m = ph.match(/^cmp:([\w:]+):([\w:]+)$/))) {
-      const a = Math.abs(sumOf(rows, m[1]).v), b = Math.abs(sumOf(rows, m[2]).v);
-      return Math.abs(a - b) < 0.02 * Math.max(a, b) ? "about the same as" : a > b ? "more than" : "less than";
-    }
-    if ((m = ph.match(/^ratio:([\w:]+):([\w:]+)$/))) {
-      const a = Math.abs(sumOf(rows, m[1]).v), b = Math.abs(sumOf(rows, m[2]).v), r = b ? a / b : 0;
-      return r >= 1 ? r.toFixed(1).replace(/\.0$/, "") + " times" : Math.round(r * 100) + "%";
-    }
-    if ((m = ph.match(/^(n|names)(ToU|ToR|Unsure):([\w:]+)$/))) {
-      const k = m[3], set = rows.filter(c => (m[2] === "Unsure" ? level(c, k) && level(c, k) !== "sure" : level(c, k) === "sure" && mvY(c, k).side === (m[2] === "ToU" ? "ukraine" : "russia")));
-      return m[1] === "n" ? String(set.length) : set.length ? list3(set.map(nm)) : "none";
-    }
-    throw new Error(`seo_topics.json ${e.slug}: unknown placeholder {${ph}}`);
-  }));
+    if ((m = ph.match(/^(n|names)(ToU|ToR|Unsure):([\w:]+)$/))) { const set = bySet(m[2], m[3]); return m[1] === "n" ? String(set.length) : set.length ? list3(set.map(nm)) : "–"; }
+    return undefined;
+  };
+  // the values a condition reads ({if:sum:paid>sum:ua|...|...})
+  const num = ph => {
+    let m;
+    if (ph === "n") return rows.length;
+    if (ph === "members") return members;
+    if (ph === "nParty") return party.length;
+    if ((m = ph.match(/^sum:([\w:]+)$/))) return countries.some(c => mvY(c, m[1])) ? sumOf(rows, m[1]).v : undefined;
+    if ((m = ph.match(/^sub:([\w-]+):n$/))) return subSet(m[1]).length;
+    if ((m = ph.match(/^sub:([\w-]+):([\w:]+)$/))) return groups[m[1]] && countries.some(c => mvY(c, m[2])) ? sumOf(subSet(m[1]), m[2]).v : undefined;
+    if ((m = ph.match(/^iso:([A-Z]{3}):([\w:]+)$/))) { const x = byIso[m[1]] && mvY(byIso[m[1]], m[2]); return x ? x.v : undefined; }
+    if ((m = ph.match(/^top(\d):([\w:]+)$/))) { const c = rows[+m[1] - 1], x = c && mvY(c, m[2]); return x ? x.v : 0; }
+    if ((m = ph.match(/^n(ToU|ToR|Unsure):([\w:]+)$/))) return bySet(m[1], m[2]).length;
+    return undefined;
+  };
+  const fill = s => { try { return capSentences(fmt(String(s), text, num)); } catch (err) { throw new Error(`seo_topics.json ${e.slug}: ${err.message}`); } };
   const forms = x => (x == null ? [""] : Array.isArray(x) ? x : [x]).map(fill);
   // an entry of a generated family (seo_families.mjs) or a page in another language has its words from seo_i18n.mjs
   const title = fitTitle(forms(e.title)), description = fitDesc(forms(e.description));
-  const totals = ["net", "ua", "rus", "frozen"].map(k => ({ key: k, ...sumOf(rows, k), dir: dir(k, sumOf(rows, k).v) }));
+  const totals = ["net", "ua", "rus", "frozen"].map(k => ({ key: k, ...sumOf(rows, k) }));
   const subtotals = (e.subtotals || []).filter(s => groups[s]).map(s => ({ slug: s, label: groups[s].label, n: subSet(s).length, sums: ["ua", "paid", "paidGain", "net"].map(k => ({ key: k, ...sumOf(subSet(s), k) })) }));
   return {
     path: pathOf(e), kind: e.kind, slug: e.slug, label: e.label, key, sort, order: e.order || "desc", title, description, h1: fill(e.h1 || ""), intro: fill(e.intro || ""), year, side: e.side || "", moneyNote: e.moneyNote || "",
@@ -148,13 +160,13 @@ ul.bul{padding-left:20px}ul.bul li{margin:0 0 6px}`;
 
 // l: the page's language; the countries in m are that language's (their names, ranges and chance words the map's)
 export function renderTopic(m, { esc, cPath, l = "en" }) {
-  const T = (k, v) => S(l, k, v), Pl = x => PL(l, x), El = x => EL(l, x), PPl = x => PPL(l, x), lab = k => label(k, l);
+  const T = (k, v, n) => S(l, k, v, n), Pl = x => PL(l, x), El = x => EL(l, x), PPl = x => PPL(l, x), lab = k => label(k, l);
   const name = c => (l === "en" ? c.nameEn : c.name || c.nameEn);
   const cls = v => (v >= 0.0005 ? "pos" : v <= -0.0005 ? "neg" : "");
   // a short figure is kept on one line ("+€0.25bn"); a longer phrase may wrap
   const keep = x => (x.length <= 24 ? `<i>${esc(x)}</i>` : esc(x));
   // a figure in the measure's own way of writing: "+1.8%", "€5.2bn more", "€547bn"
-  const say = (k, v, s, g = "") => { const st = style(k); if (Math.abs(v) < 0.0005 || /^(<|€0m|0\u00a0)/.test(s)) return s + g; return st === "kept" ? `${s}${g} ${v >= 0 ? T("less") : T("more")}` : (st === "signed" && !/^<?0[.,]01/.test(s) && !s.startsWith("<") ? fmtSigned(v) + s : s) + g; };
+  const say = (k, v, s, g = "") => { const st = style(k); if (Math.abs(v) < 0.0005 || /^(<|€0m|0\u00a0)/.test(s)) return s + g; return st === "kept" ? T("figKept", { s: s + g }, { x: v }) : (st === "signed" && !/^<?0[.,]01/.test(s) && !s.startsWith("<") ? fmtSigned(v) + s : s) + g; };
   // a measure in its own cell: the main figure in the page's unit, the others beside it, then the range and chance
   const cell = (c, k, main) => {
     const x = mv(c, k, m.year);
@@ -171,7 +183,7 @@ export function renderTopic(m, { esc, cPath, l = "en" }) {
   const head = `<thead><tr><th>#</th><th>${esc(T("country"))}</th><th class="m">${esc(lab(m.key))}</th>${m.columns.map(k => `<th class="m">${esc(lab(k))}</th>`).join("")}</tr></thead>`;
   const row = (c, i) => `<tr data-iso="${c.iso}"><td class="r">${i == null || m.kind === "compare" ? "" : i + 1}</td><td><a href="${cPath(c)}">${esc(name(c))}</a>${c.gdp < 5 ? ` <span class="ev">${esc(T("small"))}</span>` : ""}</td>${cell(c, m.key, true)}${m.columns.map(k => cell(c, k, false)).join("")}</tr>`;
   const tot = m.kind === "group" && m.rows.length ? `<div class="tot" aria-label="${esc(T("groupTotals"))}">${m.totals.filter(t => t.n && Math.abs(t.v) >= 0.0005).map(t => {
-    const what = t.key === "rus" ? T("totRus", { v: El(t.v), lm: t.v >= 0 ? T("less") : T("more") }) : t.key === "ua" ? T("totUa", { v: El(t.v) }) : t.key === "frozen" ? T("totFrozen", { v: El(t.v) }) : `${El(t.v)} ${t.v >= 0 ? T("toU") : T("toR")}`;
+    const what = t.key === "rus" ? T("totRus", { v: El(t.v) }, { x: t.v }) : t.key === "ua" ? T("totUa", { v: El(t.v) }) : t.key === "frozen" ? T("totFrozen", { v: El(t.v) }) : T("totNet", { v: El(t.v) }, { x: t.v });
     return `<div data-total="${t.key}"><span>${esc(lab(t.key))}</span><b class="${cls(t.v)}">${esc(say(t.key, t.v, Pl(t.pct)))}</b><span>${[T("ofCombined"), what, t.key === "net" || t.key === "ua" ? say(t.key, t.v, PPl(pp(t.v, t.pop))) + " " + T("perPerson") : ""].filter(Boolean).map(keep).join(" · ")}</span></div>`;
   }).join("")}</div><p class="sub">${esc(T("totals", { n: m.rows.length }))}</p>` : "";
   const subs = m.subtotals.map(s => `<p class="sub" data-subtotal="${s.slug}"><b>${esc(s.labelL || s.label)} (${s.n})</b>: ${s.sums.map(x => `${esc(lab(x.key))}: ${esc(say(x.key, x.v, El(x.v)))} (${esc(say(x.key, x.v, Pl(x.pct), " " + T("ofGdp")))})`).join(" · ")}</p>`).join("");
@@ -181,9 +193,10 @@ export function renderTopic(m, { esc, cPath, l = "en" }) {
     m.kind === "group" && m.noData.length ? `<h2 id="no-data">${esc(T("noData"))}</h2><p class="sub">${esc(T("noDataText"))} ${m.noData.map(c => `<a href="${cPath(c)}">${esc(name(c))}</a>`).join(", ")}</p>` : "",
     m.extra.length ? `<h2 id="outside">${esc(T("outside"))}</h2><div class="tbl"><table>${head}<tbody>${m.extra.map(c => row(c, null)).join("")}</tbody></table></div>` : "",
   ].join("\n");
-  const F = T("first"), firstW = m.order === "abs" ? F.abs : m.order === "asc" ? (style(m.key) === "kept" ? F.keptAsc : style(m.key) === "amount" ? F.largest : F.ruAsc) : style(m.key) === "kept" ? F.keptDesc : m.key === "net" ? F.netDesc : F.largest;
+  // the order of the table, said neutrally (round 57: no "largest first")
+  const O = T("order"), st0 = style(m.key), ord = m.order === "abs" ? O.bySize : m.order === "asc" ? (st0 === "kept" ? O.keptMoreLess : st0 === "amount" ? O.bySize : O.ruUa) : st0 === "kept" ? O.keptLessMore : m.key === "net" ? O.uaRu : O.hiLo;
   const legend = [...new Set([m.key, ...m.columns].map(style))].map(st => (st === "kept" ? T("legendKept") : st === "signed" ? T("legendSigned") : "")).filter(Boolean);
-  const rankNote = `${m.year ? T("rankByYear", { m: lab(m.key), unit: T("unit")[m.sort], first: firstW, y: m.yearL || m.year }) : T("rankBy", { m: lab(m.key), unit: T("unit")[m.sort], first: firstW, to: m.dataToL || "" })}${m.kind !== "group" && m.minGdp > 0 ? " " + T("minGdp", { n: m.minGdp }) : ""} ${legend.length ? cap1(legend.join("; ")) + "." : ""}`;
+  const rankNote = `${m.year ? T("rankByYear", { m: lab(m.key), unit: T("unit")[m.sort], order: ord, y: m.yearL || m.year }) : T("rankBy", { m: lab(m.key), unit: T("unit")[m.sort], order: ord, to: m.dataToL || "" })}${m.kind !== "group" && m.minGdp > 0 ? " " + T("minGdp", { gdpMin: El(m.minGdp) }) : ""} ${legend.length ? cap1(legend.join("; ")) + "." : ""}`;
   return `${tot}
 ${subs}
 <h2 id="table">${esc(m.kind === "group" ? T("members") : T("ranking"))} · ${m.rows.length}</h2>

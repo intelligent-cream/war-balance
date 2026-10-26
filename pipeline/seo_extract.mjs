@@ -136,7 +136,12 @@ export async function extractSite({ lang, isos }) {
   const want = isos ? isos.map(i => byIso[i]).filter(Boolean) : Object.values(DATA);
   const res = { lang, dataTo: document.body.dataset.dataTo || "", countries: want.map(country), rank,
     // round 56: the map's chance words in this language, for the country pages' titles in it
-    words: { leanU: t("Leaning toward Ukraine"), leanR: t("Leaning toward Russia"), near: t("near zero"), zero: t("essentially zero"), unc: t("too close to call"), party: t("Party to the war") } };
+    words: { leanU: t("Leaning toward Ukraine"), leanR: t("Leaning toward Russia"), near: t("near zero"), zero: t("essentially zero"), unc: t("too close to call"), party: t("Party to the war"),
+      // round 57: the level words of a table cell ("very likely · 97%", "likely toward Russia · 80%"), without the figures,
+      // so a page's sentences take every chance word from the map (the wording guard, seo_check.py)
+      sure: t("very likely · {p}", { p: "" }).replace(/\s*·\s*$/, ""), lean: t("likely {side} · {p}", { side: "", p: "" }).replace(/\s*·\s*$/, "").trim() },
+    // the chance levels explained, in the map's words (index.html CHANCE_KEY), for the ranking pages
+    chanceKey: typeof CHANCE_KEY === "function" ? CHANCE_KEY() : "" };
   if (lang === "en") {
     // How it works: the money flows, each with its method page (for the static How it works page)
     res.flows = (typeof FLOWS !== "undefined" ? FLOWS : []).map(f => ({ id: f.id, name: t(f.name), what: t(f.what), method: f.method || "" }));
@@ -150,7 +155,7 @@ export async function extractSite({ lang, isos }) {
 // The method pages, the limitations and the changelog, rendered by the map's own Markdown step (loadContent, mdRender:
 // marked, then DOMPurify), with the map's in-page links ("#view=how&sec=m-trade-...", "#DEU") turned into the static
 // pages' addresses. Headings keep the ids the map gives them, so "/method/trade/#m-trade-re-export-hubs" works.
-/* global loadContent, mdRender, pageHtml, MD_PAGES, secAlias, FLOWS */
+/* global loadContent, mdRender, pageHtml, MD_PAGES, secAlias, FLOWS, CHANCE_KEY */
 export async function extractDocs() {
   const c = await loadContent();
   const flowMethod = Object.fromEntries((typeof FLOWS !== "undefined" ? FLOWS : []).map(f => [f.id, f.method || ""]));
