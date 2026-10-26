@@ -960,6 +960,9 @@ check(
 # the chance word in each English country page's title are the model's (a "too close to call" country is never titled
 # as if it were certain), and the map's A–Z list links every country page. pipeline/seo_check.py; pages written by
 # seo_pages.mjs with the share cards (not in git): without them a local run warns, CI (strict) fails.
+# Round 55 (topic and group pages, owner: "similar pages loading the same thing"): every entry of
+# pipeline/seo_topics.json is written, in the sitemap and linked from the home page's Topics list, and in each of its
+# tables every country's net, support and trade figures and chance words are the model's; a group's totals add up.
 import seo_check  # noqa: E402
 
 if not (ROOT / "site" / "country").exists():
@@ -970,14 +973,16 @@ if not (ROOT / "site" / "country").exists():
         warn_only=not STRICT,
     )
 else:
-    _seo = seo_check.check_site(ROOT / "site", _su, _m)
+    # round 55: and every topic and group page of pipeline/seo_topics.json
+    _topics = json.loads((ROOT / "pipeline" / "seo_topics.json").read_text())["pages"]
+    _seo = seo_check.check_site(ROOT / "site", _su, _m, _topics)
     _seo_bad = {k: v for k, v in _seo.items() if v}
     _smf = ROOT / "site" / "sitemap.xml"
     _n_sm = len(seo_check.sitemap_urls(_smf.read_text())) if _smf.exists() else 0
     check(
         "findable pages: one per country, self canonical, short titles, true numbers",
         not _seo_bad and _m is not None,
-        f"{_n_sm} pages in the sitemap; problems: "
+        f"{_n_sm} pages in the sitemap, {len(_topics)} topic and group pages; problems: "
         + ("; ".join(f"{k}: {v[:4]}" for k, v in _seo_bad.items()) if _seo_bad else "none")
         + ("" if _m is not None else "; node not found: titles not checked"),
     )

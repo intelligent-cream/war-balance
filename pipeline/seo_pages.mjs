@@ -5,17 +5,19 @@
 //   c/<iso>.html                the old share links: canonical to the country page, and sent there
 //   ranking/, support-for-ukraine/, trade-with-russia/, how-it-works/, method/<page>/, limitations/, changelog/
 //   <lang>/index.html           the map in each language (a copy of index.html with its own head; data-lang="de")
+//   <slug>/ and group/<slug>/  the topic and group pages, one per entry of pipeline/seo_topics.json (round 55)
 //   sitemap.xml, robots.txt
 // and, in git, the A–Z list of country pages and the data date in site/index.html (between markers; unchanged unless the
 // data change) and pipeline/seo_lastmod.json (each page's content hash and the date it last changed, for lastmod).
 
-import { readFile, writeFile, mkdir, rm } from "node:fs/promises";
+import { readFile, writeFile, mkdir, rm, readdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { extractSite, extractDocs } from "./seo_extract.mjs";
 import * as T from "./seo_templates.mjs";
+import { buildTopic, renderTopic, TOPIC_CSS, pathOf } from "./seo_topics.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -66,7 +68,7 @@ footer{border-top:1px solid var(--line);padding:18px 16px 30px;font-size:14px;co
 .doc .cl-date{font:400 14px var(--fb);color:var(--soft);margin-left:6px}
 .az{columns:2 12em;column-gap:20px;font-size:15px;padding:0;list-style:none}.az li{break-inside:avoid;padding:1px 0}`;
 
-function shell({ lang, title, description, canonical, alternates = [], image, imageAlt, ld = [], body, ogType = "website", iso = "" }) {
+function shell({ lang, title, description, canonical, alternates = [], image, imageAlt, ld = [], body, ogType = "website", iso = "", css = "" }) {
   return `<!doctype html>
 <html lang="${lang}">
 <head>
@@ -95,7 +97,7 @@ ${alternates.filter(([l]) => l !== lang && T.OG_LOCALE[l]).map(([l]) => `<meta p
 <meta name="theme-color" content="#14213d">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Source+Sans+3:wght@400;600;700&display=swap">
-<style>${CSS}</style>
+<style>${CSS}${css ? "\n" + css : ""}</style>
 ${ld.map(jsonld).join("\n")}
 ${CF_BEACON}
 </head>
@@ -114,10 +116,25 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const state = existsSync(statePath) ? JSON.parse(await readFile(statePath, "utf8")) : {};
   const today = new Date().toISOString().slice(0, 10), newState = {};
   const dataTo = data.data_to;
+  // round 55: the topic and group pages, one per entry (pipeline/seo_topics.json)
+  const TOPICS = JSON.parse(await readFile(join(HERE, "seo_topics.json"), "utf8")).pages;
+  const RESERVED = new Set(["c", "country", "group", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", "content", "i18n", "share", ...T.LANGS]);
+  for (const e of TOPICS) {
+    if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(e.slug) || (e.kind === "topic" && RESERVED.has(e.slug)) || !["topic", "group"].includes(e.kind)) throw new Error("seo_topics.json: bad slug or kind " + e.slug);
+    if (TOPICS.filter(x => pathOf(x) === pathOf(e)).length > 1) throw new Error("seo_topics.json: two pages at " + pathOf(e));
+  }
 
   // the generated folders start empty, so a renamed page leaves nothing behind
-  for (const d of ["c", "country", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", ...T.LANGS.filter(l => l !== "en")])
+  for (const d of ["c", "country", "group", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", ...T.LANGS.filter(l => l !== "en")])
     await rm(join(site, d), { recursive: true, force: true });
+  // a topic page's folder holds its index.html only (anything else there is not ours: stop rather than delete it)
+  for (const e of TOPICS.filter(x => x.kind === "topic")) {
+    const d = join(site, e.slug);
+    if (!existsSync(d)) continue;
+    const inside = await readdir(d);
+    if (inside.some(f => f !== "index.html")) throw new Error(`site/${e.slug}/ holds other files than a generated page: rename the topic`);
+    await rm(d, { recursive: true, force: true });
+  }
   // ----- everything the pages show, from the map -----
   const EN = await page.evaluate(extractSite, { lang: "en" });
   const docs = await page.evaluate(extractDocs);
@@ -256,6 +273,7 @@ ${foot(l)}`;
     itemListElement: rows.map((r, i) => ({ "@type": "ListItem", position: i + 1, url: abs(cPath(byIso[r.iso])), name: nm(r.iso) })) });
   const chanceKey = "Very likely: at least a 95% chance and every other method choice agrees. Leaning: at least 65%. Too close to call: below that. Near zero: the likely range stays within ±0.5% of a year's GDP. % = chance of the more likely direction.";
   const moneyOnly = "The ranking measures money: aid to Ukraine and the change in what Russia keeps from trade, against a world without the war. Weapons sent, troops and diplomacy are not in it.";
+  const topicLinks = (skip = "") => `<h2 id="topics">Topics</h2><ul class="rel">${TOPICS.filter(e => pathOf(e) !== skip).map(e => `<li><a href="${pathOf(e)}">${esc(e.label)}</a></li>`).join("")}</ul>`;
   async function rankPage(path, pageKey, rk, ids, rowExtra, extraTop = "", mapHash = "#view=rank") {
     const copy = T.staticCopy(pageKey, facts), url = abs(path), items = [["Map", "/"], [copy.h1.split(":")[0].replace(/ by country since 2022$/, ""), path]];
     const rowsAll = rk.groups.flatMap(g => g.rows);
@@ -275,10 +293,12 @@ ${rk.groups.filter(g => g.rows.some(r => !r.small)).map(g => `<h2 id="${ids[g.g]
 ${rk.party.length ? `<h2 id="party">Party to the war (with Russia), not ranked</h2><ul class="plain">${rk.party.map(r => `<li><a href="${cPath(byIso[r.iso])}">${esc(nm(r.iso))}</a> ${esc(r.value)} · ${esc(r.eur)}</li>`).join("")}</ul>` : ""}
 ${rk.noData.filter(i => byIso[i]).length ? `<h2 id="no-data">No data</h2><p class="sub">No observation of their own for the war years: nothing is counted and they are not ranked.</p><p>${rk.noData.filter(i => byIso[i]).map(i => `<a href="${cPath(byIso[i])}">${esc(nm(i))}</a>`).join(", ")}</p>` : ""}
 <p><a href="/ranking/">Ranking</a> · <a href="/support-for-ukraine/">Support for Ukraine by country</a> · <a href="/trade-with-russia/">Trade with Russia by country</a> · <a href="/how-it-works/">How it works</a></p>
+${topicLinks()}
 </main>
 ${foot("en")}`;
     await put(path, shell({ lang: "en", title: copy.title, description: copy.description, canonical: url, image: abs("share/world.png"), imageAlt: "World map of where each country's money moved since 2022",
-      ld: [{ "@context": "https://schema.org", "@type": "CollectionPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: "en", dateModified: DATE_TOKEN, isPartOf: DATASET }, crumbLd(items), itemList(rowsAll)], body }));
+      ld: [{ "@context": "https://schema.org", "@type": "CollectionPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: "en", dateModified: DATE_TOKEN, isPartOf: DATASET }, crumbLd(items), itemList(rowsAll)], body,
+      css: "ul.rel{display:flex;flex-wrap:wrap;gap:6px 16px;list-style:none;padding:0}" }));
   }
   await rankPage("/ranking/", "ranking", EN.rank.net, GROUP_ID, () => "");
   const euroTable = (rows, title, fmt) => `<h2 id="${title.toLowerCase().replace(/[^a-z]+/g, "-")}">${esc(title)}</h2><div class="tbl"><table><thead><tr><th>#</th><th>Country</th><th class="n">€</th><th class="n">% of GDP</th></tr></thead><tbody>${rows.map((r, i) => `<tr><td>${i + 1}</td><td><a href="${cPath(byIso[r.iso])}">${esc(nm(r.iso))}</a></td><td class="n">${esc(fmt(r))}</td><td class="n">${esc(r.value)}</td></tr>`).join("")}</tbody></table></div>`;
@@ -287,6 +307,31 @@ ${foot("en")}`;
   await rankPage("/trade-with-russia/", "trade-with-russia", EN.rank.rus, GROUP_ID, () => "",
     euroTable(ruRows.slice().sort((a, b) => a.eurBn - b.eurBn).slice(0, 10), "Russia kept most more, in euros", r => r.eur.replace(/^−/, "")) + euroTable(ruRows.slice().sort((a, b) => b.eurBn - a.eurBn).slice(0, 10), "Russia kept most less, in euros", r => r.eur.replace(/^\+/, "")) + `<h2>As a share of GDP</h2>`,
     "#view=rank&lens=payments");
+
+  // ----- round 55: the topic and group pages (pipeline/seo_topics.json), one generic page each -----
+  const dataToMonth = new Date(dataTo + "T12:00:00Z").toLocaleDateString("en-GB", { month: "long", year: "numeric", timeZone: "UTC" });
+  for (const e of TOPICS) {
+    const m = buildTopic(e, countries, TOPICS, { dataTo: dataToMonth }), path = m.path, url = abs(path);
+    const items = [["Map", "/"], ["Ranking", "/ranking/"], [e.label, path]];
+    const rel = m.related.map(s => TOPICS.find(x => x.slug === s)).filter(Boolean);
+    const body = `${top("en")}
+<main class="wrap">
+${crumbs("en", items)}
+<h1>${esc(m.h1)}</h1>
+<p class="intro">${esc(m.intro)}</p>
+<p><a class="btn" href="/${m.map}">Open in the map →</a></p>
+<p class="note">${esc(moneyOnly.replace("The ranking measures", "These numbers measure"))}</p>
+${renderTopic(m, { esc, cPath })}
+${rel.length ? `<h2 id="related">Related</h2><ul class="rel">${rel.map(x => `<li><a href="${pathOf(x)}">${esc(x.label)}</a></li>`).join("")}</ul>` : ""}
+<p><a href="/ranking/">Ranking</a> · <a href="/support-for-ukraine/">Support for Ukraine by country</a> · <a href="/trade-with-russia/">Trade with Russia by country</a> · <a href="/how-it-works/">How it works</a></p>
+${topicLinks(path)}
+</main>
+${foot("en")}`;
+    const ld = [{ "@context": "https://schema.org", "@type": "WebPage", "@id": url, url, name: m.title, description: m.description, inLanguage: "en", dateModified: DATE_TOKEN, isPartOf: DATASET, image: abs("share/world.png") },
+      crumbLd(items), itemList(m.rows.map(c => ({ iso: c.iso })))];
+    if (m.faq.length) ld.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: m.faq.map(x => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
+    await put(path, shell({ lang: "en", title: m.title, description: m.description, canonical: url, image: abs("share/world.png"), imageAlt: "World map of where each country's money moved since 2022", ld, body, css: TOPIC_CSS + "\nul.rel{display:flex;flex-wrap:wrap;gap:6px 16px;list-style:none;padding:0}" }));
+  }
 
   // ----- How it works, the method pages, the limitations, the changelog -----
   const docPage = async (path, heading, html, first, items, extra = "") => {
@@ -335,6 +380,8 @@ ${foot("en")}`;
   let idx = await readFile(idxPath, "utf8");
   const az = countries.slice().sort((a, b) => a.nameEn.localeCompare(b.nameEn, "en"));
   const azBlock = l => `<!-- az:start -->\n        <p class="sub" id="az-intro">${esc(T.homeCopy(l, facts.n).intro)}</p>\n        <nav id="az" aria-label="${esc(T.L(l, "allCountries"))}">\n${az.map(c => `          <a href="${cPath(c)}" data-iso="${c.iso}">${esc(c.nameEn)}</a>`).join("\n")}\n        </nav>\n<!-- az:end -->`;
+  const topicsBlock = `<!-- topics:start -->\n        <nav id="topics" aria-label="Topics" data-i18n-aria="Topics">\n${TOPICS.map(e => `          <a href="${pathOf(e)}">${esc(e.label)}</a>`).join("\n")}\n        </nav>\n<!-- topics:end -->`;
+  idx = idx.replace(/<!-- topics:start -->[\s\S]*?<!-- topics:end -->/, topicsBlock);
   idx = idx.replace(/<!-- az:start -->[\s\S]*?<!-- az:end -->/, azBlock("en")).replace(/"dateModified": "[\d-]+"/, `"dateModified": "${data.generated}"`);
   await writeFile(idxPath, idx);
   const homeAlts = T.LANGS.map(l => [l, l === "en" ? U : U + l + "/"]).concat([["x-default", U]]);

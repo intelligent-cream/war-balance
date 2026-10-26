@@ -2,6 +2,14 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r55">Round 55: topic and group pages <span class="cl-date">26 October</span></h2>
+
+Pages that answer one question each, built from the map's own figures every time the site is published; the map itself is unchanged.
+
+- **Five topic pages**: a Ukraine support tracker (support for Ukraine by country in euros, % of GDP and per person, with the net and the Kiel Institute's figure beside what is counted here), who bought Russian oil and gas (what each country paid Russia; the model does not split those payments by fuel, and the page says so), frozen Russian assets (the return Russia lost, not the amount frozen), Europe's payments to Russia against its support for Ukraine, and Russia's war income from trade.
+- **Six group pages**, at /group/: the EU, the G7, NATO, BRICS, the Gulf states and Central Asia, each with the members' totals and every member's net, support and trade, with its likely range and chance. Belarus and North Korea stay apart as parties to the war; Russia and Ukraine have no figure of their own.
+- Each page has a short list of questions answered with its figures and a link to the matching view of the map. Filters lists the pages under Topics, and the ranking pages link them. No number changes.
+
 <h2 id="cl-r54">Round 54: findable pages <span class="cl-date">26 October</span></h2>
 
 Every country, the ranking and the method now have their own page, so a search can find them; the map itself is unchanged.

@@ -6,7 +6,7 @@
 /* global DATA, byIso, LANG, loadLang, regionName, ISO2, calc, chance, chanceInfo, chanceText, chanceSentence, uncertain, leaning, isNearZero,
    noDataAt, scaled, fmtMeasure, rangeWords, eur, headVerb, verbAround, verb, netSentence, keptWords, leadLine, partSections, plainName,
    partGrade, evidence, kielLine, partSourceIds, SRC, tData, docsOf, yearsOf, YEARS, FRAC, yi, PARTY_TO_WAR, PARTY_WHY, t, countrySlug,
-   HEAD3, refs */
+   HEAD3, refs, kielFigure, REGION_OF */
 
 export async function extractSite({ lang, isos }) {
   if (lang !== "en") await loadLang(lang);
@@ -71,6 +71,18 @@ export async function extractSite({ lang, isos }) {
     out.frozen = Math.abs(k.frozen) >= 0.0005 ? { verb: verb("frozen", k.frozen, c, "gdp"), eur: eur(Math.abs(k.frozen)), value: g(Math.abs(k.frozen)) } : null;
     const ap = k.shiftParts.find(p => p.k === "aid");
     out.kiel = ap ? strip(kielLine(c, ap.v)) : "";
+    // round 55 (topic and group pages, seo_topics.json): the measures a topic table can show, each as the panel has it
+    // (€ bn, the likely range in the panel's words, the chance in its words where the number has one)
+    const rw = (lo, hi, q) => rangeWords(c, lo, hi, q, "gdp"), ci = q => (party ? null : chanceInfo(c, Y, q));
+    const M = (v, lo, hi, q, chq) => ({ v, lo, hi, range: lo == null ? "" : rw(lo, hi, q), chance: chq && !party ? chanceText(c, Y, chq) : "", level: chq && ci(chq) ? ci(chq).level : "",
+      side: chq && ci(chq) ? ci(chq).side : "" });
+    out.measures = { net: M(k.shift, k.shiftLo, k.shiftHi, "net", "net"), ua: M(k.uaBal, k.uaLo, k.uaHi, "ua", "ua"), rus: M(k.rusBal, k.rusLo, k.rusHi, "net", "rus"),
+      frozen: M(k.frozen, k.frozenLo, k.frozenHi, "net"), paidGain: M(k.rusPaid, k.rusPaidLo, k.rusPaidHi, "net"), paid: M(k.paidRussia || 0, null, null),
+      kiel: M(typeof kielFigure === "function" ? kielFigure(c) : null, null, null), aid: M(ap ? ap.v : 0, ap ? ap.lo : null, ap ? ap.hi : null, "ua") };
+    for (const p of k.shiftParts.concat(k.backShift)) out.measures["part:" + p.k] = { ...M(p.v, p.lo, p.hi, "part"), range: rangeWords(c, p.lo, p.hi, "part", "gdp", p.v >= 0 ? 1 : -1), name: strip(plainName(p, c)) };
+    // the fuel share of what it bought from Russia before the war (2018-2021, data.json), for the energy page
+    out.fuelSharePreWar = c.to_rus && c.to_rus.gain && c.to_rus.gain.fossil_share != null ? c.to_rus.gain.fossil_share : null;
+    out.region = typeof REGION_OF !== "undefined" ? REGION_OF[c.iso3] || "asia" : "";
     // weapons and troops sent to Russia at their full value (Russia's panel, "Armed Russia"), as information
     const iy = yi(Y);
     out.armedFull = c.military_rus ? (c.military_rus.alt || c.military_rus.years).slice(1, iy + 1).reduce((a, b) => a + b, 0) : 0;

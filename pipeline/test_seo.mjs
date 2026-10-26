@@ -69,3 +69,42 @@ test("the country slugs are unique and plain", () => {
   assert.equal(countrySlug({ iso3: "CIV", name: "Côte d'Ivoire" }), "cote-divoire");
   assert.equal(countrySlug({ iso3: "USA", name: "United States" }), "united-states");
 });
+
+// ----- round 55: the topic and group pages (seo_topics.mjs), from made-up countries -----
+import { buildTopic, renderTopic, pathOf } from "./seo_topics.mjs";
+const TOPICS = JSON.parse(readFileSync(join(HERE, "seo_topics.json"), "utf8")).pages;
+const mk = (iso, name, gdp, net, ua, rus, extra = {}) => ({ iso, nameEn: name, slug: name.toLowerCase(), gdp, pop: 10, region: "eu", party: false, noData: false, mostlyNoData: false,
+  measures: { net: { v: net, lo: net - 1, hi: net + 1, range: "likely …", chance: "very likely · >99%", level: "sure", side: net >= 0 ? "ukraine" : "russia" },
+    ua: { v: ua, lo: ua, hi: ua, range: "", chance: "very likely · >99%", level: "sure", side: "ukraine" }, rus: { v: rus, lo: rus, hi: rus, range: "", chance: "likely toward Russia · 80%", level: "lean", side: "russia" },
+    paid: { v: 10 }, frozen: { v: 0 } }, ...extra });
+const CS = [mk("AAA", "Aland", 100, 4, 2, 2), mk("BBB", "Bland", 50, -1, 0.5, -1.5), mk("CCC", "Cland", 3, 0.3, 0.3, 0), mk("DDD", "Dland", 20, -2, 0, -2, { party: true })];
+
+test("every config entry builds a page with titles and descriptions that fit", () => {
+  const slugs = new Set();
+  for (const e of TOPICS) {
+    assert.ok(!slugs.has(pathOf(e)), "two entries at " + pathOf(e)); slugs.add(pathOf(e));
+    const m = buildTopic(e, CS, TOPICS, { dataTo: "August 2026" });
+    assert.ok(m.title.length <= T.TITLE_MAX, e.slug + ": " + m.title);
+    assert.ok(m.description.length <= T.DESC_MAX, e.slug + ": " + m.description);
+    assert.ok(m.h1 && m.intro && !/\{\w/.test(m.intro + m.title + m.description + JSON.stringify(m.faq)), e.slug);
+  }
+});
+
+test("a topic ranks, totals and leaves out parties as configured", () => {
+  const e = { slug: "t", kind: "topic", title: "T", description: "{top1} first; {sum:net_eur}, {sum:net_pct} {sum:net_dir}; {nToU:net} sure toward Ukraine; {cmp:paid:ua}", h1: "H", intro: "I", rank: "net", sort: "gdp" };
+  const m = buildTopic(e, CS, [], { dataTo: "August 2026" });
+  // Cland is under €5bn of GDP (left out when ranked by % of GDP), Dland a party to the war
+  assert.deepEqual(m.rows.map(c => c.iso), ["AAA", "BBB"]);
+  assert.deepEqual(m.party.map(c => c.iso), ["DDD"]);
+  assert.equal(m.description, "Aland first; €3bn, 2.0% toward Ukraine; 1 sure toward Ukraine; more than");
+  const asc = buildTopic({ ...e, order: "asc", sort: "eur", rank: "rus" }, CS, [], { dataTo: "" });
+  assert.deepEqual(asc.rows.map(c => c.iso), ["BBB", "CCC", "AAA"]);
+  const g = buildTopic({ ...e, kind: "group", members: ["AAA", "CCC", "DDD", "RUS"] }, CS, [], { dataTo: "" });
+  assert.deepEqual(g.rows.map(c => c.iso), ["CCC", "AAA"]);   // by % of GDP, every member (a group has no size limit)
+  assert.deepEqual(g.sides, ["RUS"]);
+  const html = renderTopic(g, { esc: s => String(s), cPath: c => "/country/" + c.slug + "/" });
+  assert.match(html, /<tr data-iso="AAA">.*data-q="net" data-level="sure"><b class="pos">\+4\.0%/);
+  assert.match(html, /data-total="net"><span>Net<\/span><b class="pos">\+4\.2%/);
+  assert.match(html, /Party to the war/);
+  assert.throws(() => buildTopic({ ...e, title: "{nope}" }, CS, [], { dataTo: "" }), /unknown placeholder/);
+});

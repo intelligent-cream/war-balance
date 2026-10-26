@@ -1208,4 +1208,6 @@ I18N.uk = {
   "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Too close to call: below that. Near zero: within ±0.5% of GDP. Essentially zero: under 0.1% of GDP and not certain.": "Дуже ймовірно: щонайменше 95% і кожен інший вибір методу погоджується. Ймовірно (схиляється): щонайменше 65%. Надто близько, щоб визначити: нижче. Близько нуля: у межах ±0,5% ВВП. Практично нуль: менше 0,1% ВВП і непевно.",
   "Countries helping Ukraine or Russia: money map since 2022": "Хто допомагає Україні, а хто Росії? Карта грошей з 2022",
   "All countries, A to Z": "Усі країни від А до Я",
+  "Topics": "Теми",
+  "One question per page, with its figures (in English).": "Одне питання на сторінку, з цифрами (англійською).",
 };

@@ -15,11 +15,11 @@ export const TOP = ["USA", "DEU", "GBR", "FRA", "POL", "NLD", "ITA", "IND", "CHN
 
 // ----- numbers as the copy writes them -----
 export const P = x => { const a = Math.abs(x); return (a >= 1 ? a.toFixed(1) : a >= 0.01 ? a.toFixed(2) : "<0.01") + "%"; };
-export const E = bn => { const a = Math.abs(bn); return "€" + (a >= 100 ? a.toFixed(0) : a >= 1 ? a.toFixed(1) : a >= 0.1 ? a.toFixed(2) : Math.round(a * 1000) + "m").replace(/\.0$/, "") + (a >= 0.1 ? "bn" : ""); };
+export const E = bn => { const a = Math.abs(bn); return "€" + (a >= 100 ? Math.round(a).toLocaleString("en-GB") : a >= 1 ? a.toFixed(1) : a >= 0.1 ? a.toFixed(2) : Math.round(a * 1000) + "m").replace(/\.0$/, "") + (a >= 0.1 ? "bn" : ""); };
 export const CH = p => (p >= 0.995 ? ">99%" : Math.floor(p * 100) + "%");
 const rangeNet = (lo, hi) => (lo > 0 && hi > 0 ? `${P(lo)} to ${P(hi)} toward Ukraine` : lo < 0 && hi < 0 ? `${P(hi)} to ${P(lo)} toward Russia` : `${P(lo)} toward Russia to ${P(hi)} toward Ukraine`);
 const cap = s => s[0].toUpperCase() + s.slice(1);
-const fit = (cands, max) => cands.find(s => s.length <= max) || cands[cands.length - 1];
+export const fit = (cands, max) => cands.find(s => s.length <= max) || cands[cands.length - 1];
 const EU = new Set("AUT BEL BGR HRV CYP CZE DNK EST FIN FRA DEU GRC HUN IRL ITA LVA LTU LUX MLT NLD POL PRT ROU SVK SVN ESP SWE".split(" "));
 
 // a country's name in a title and inside a sentence ("the US", "the Netherlands")

@@ -1205,4 +1205,6 @@ I18N.de = {
   "Very likely: at least a 95% chance and every other method choice agrees. Likely (leaning): at least 65%. Too close to call: below that. Near zero: within ±0.5% of GDP. Essentially zero: under 0.1% of GDP and not certain.": "Sehr wahrscheinlich: mindestens 95 % und jede andere Methodenwahl stimmt zu. Wahrscheinlich (Tendenz): mindestens 65 %. Zu knapp für eine Aussage: darunter. Nahe null: innerhalb von ±0,5 % des BIP. Praktisch null: unter 0,1 % des BIP und nicht sicher.",
   "Countries helping Ukraine or Russia: money map since 2022": "Wer hilft der Ukraine, wer Russland? Geld-Karte seit 2022",
   "All countries, A to Z": "Alle Länder von A bis Z",
+  "Topics": "Themen",
+  "One question per page, with its figures (in English).": "Eine Frage pro Seite, mit ihren Zahlen (auf Englisch).",
 };

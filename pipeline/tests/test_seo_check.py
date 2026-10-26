@@ -112,3 +112,41 @@ def test_number_formats_match_the_copy():
     assert [sc.fmt_pct(x) for x in (3.651, 0.1394, 0.004)] == ["3.7%", "0.14%", "<0.01%"]
     assert [sc.fmt_eur(x) for x in (127.6, 74.67, 0.948, 0.0912)] == ["€128bn", "€74.7bn", "€0.95bn", "€91m"]
     assert sc.level(SVK) == "unc"
+
+
+# ----- round 55: the topic and group pages -----
+TOPICS = [{"slug": "svk-group", "kind": "group", "members": ["SVK"]}]
+
+
+def topic_page(cell: str, total: str = "+0.14%") -> str:
+    return page("group/svk-group/", "Slovakia group").replace(
+        "</body>",
+        f'<div data-total="net"><span>Net</span><b>{total}</b></div>'
+        f'<table><tr data-iso="SVK"><td>Slovakia</td>{cell}</tr></table></body>',
+    )
+
+
+GOOD_CELL = (
+    '<td class="m" data-q="net" data-level="unc"><b>+0.14%</b><span class="s">+€0.17bn of GDP</span>'
+    '<span class="s">likely 4.1% toward Russia to 4.7% toward Ukraine · too close to call · 57% toward Ukraine</span></td>'
+)
+
+
+def test_a_good_topic_page_passes(tmp_path):
+    s = site(tmp_path, {"group/svk-group/": topic_page(GOOD_CELL)})
+    assert sc.check_site(s, U, MODEL, TOPICS)["topics"] == []
+
+
+def test_topic_figures_chance_and_totals_must_be_the_models(tmp_path):
+    cell = GOOD_CELL.replace("+0.14%", "+0.24%").replace('data-level="unc"', 'data-level="sure"')
+    s = site(tmp_path, {"group/svk-group/": topic_page(cell, total="+0.31%")})
+    p = sc.check_site(s, U, MODEL, TOPICS)["topics"]
+    assert "/group/svk-group/ SVK net: ['0.24%']" in p
+    assert "/group/svk-group/ SVK net: chance 'sure', the map says unc" in p
+    assert "/group/svk-group/ total net: ['0.31%']" in p
+
+
+def test_every_topic_entry_must_be_written(tmp_path):
+    s = site(tmp_path, {"group/svk-group/": topic_page(GOOD_CELL)})
+    p = sc.check_site(s, U, MODEL, TOPICS + [{"slug": "missing-topic", "kind": "topic"}])["topics"]
+    assert p == ["/missing-topic/ not written or not in the sitemap"]
