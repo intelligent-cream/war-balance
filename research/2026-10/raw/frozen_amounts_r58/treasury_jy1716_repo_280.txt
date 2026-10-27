@@ -1,0 +1,14 @@
+URL: https://home.treasury.gov/news/press-releases/jy1716
+Fetched: 2026-10-27
+HTTP: 200
+Extract (short passages around the figures used):
+
+assets held in REPO member jurisdictions will remain immobilized until Russia pays for the damage it has caused to Ukraine. The total value of assets in this mapping exercise is estimated at around $280 billion, the majority of which is held in the European Union. Given the complexity of this exercise, Task Force members expect to refine the asset mapping through the end of the year, leveraging new reporting requirements and enhanced information sharing arrangements. Latest News Bureaus Alcohol and Tobacco Tax and Trade (TTB) Bureau of Engraving and Printing (BEP) Bureau of the Fiscal Service (BFS) Financial Crimes Enforcement Network (FinCEN) Internal Revenue Service (IRS) Office of the Comptroller of the Currency (OCC) U.S. Mint Inspector General Sites Office of Inspector General (OIG) Treasury In
+
+---
+
+quire critical dual-use technologies that fuel the Russian war machine. Following the G7 Leaders commitment in May, the REPO Task Force has completed its initial effort to map and account for Russian sovereign assets that are immobilized and held in REPO member jurisdictions. REPO members committed to taking steps to fully map these holdings and ensure that, consistent with their respective legal systems, Russia’s sovereign assets held in REPO member jurisdictions will remain immobilized until Russia pays for the damage it has caused to Ukraine. The total value of assets in this mapping exercise is estimated at around $280 billion, the majority of which is held in the European Union. Given the complexity of this exercise, Task Force members expect to refine the asset mapping through the end of the year, l
+
+---
+
+hat are immobilized and held in REPO member jurisdictions. REPO members committed to taking steps to fully map these holdings and ensure that, consistent with their respective legal systems, Russia’s sovereign assets held in REPO member jurisdictions will remain immobilized until Russia pays for the damage it has caused to Ukraine. The total value of assets in this mapping exercise is estimated at around $280 billion, the majority of which is held in the European Union. Given the complexity of this exercise, Task Force members expect to refine the asset mapping through the end of the year, leveraging new reporting requirements and enhanced information sharing arrangements. Latest News Bureaus Alcohol and Tobacco Tax and Trade (TTB) Bureau of Engraving and Printing (BEP) Bureau of the Fiscal Service (BFS)
