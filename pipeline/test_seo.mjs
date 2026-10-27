@@ -122,7 +122,7 @@ test("a topic ranks, totals and leaves out parties as configured", () => {
   assert.deepEqual(g.rows.map(c => c.iso), ["CCC", "AAA"]);   // by % of GDP, every member (a group has no size limit)
   assert.deepEqual(g.sides, ["RUS"]);
   const html = renderTopic(g, { esc: s => String(s), cPath: c => "/country/" + c.slug + "/" });
-  assert.match(html, /<tr data-iso="AAA">.*data-q="net" data-level="sure"><b class="pos">\+4\.0%/);
+  assert.match(html, /<tr data-iso="AAA"[^>]*>.*data-q="net" data-level="sure"[^>]*><b class="pos">\+4\.0%/);
   assert.match(html, /data-total="net"><span>Net<\/span><b class="pos">\+4\.2%/);
   assert.match(html, /Party to the war/);
   assert.throws(() => buildTopic({ ...e, title: "{nope}" }, CS, [], { dataTo: "" }), /unknown placeholder/);
@@ -213,8 +213,42 @@ test("a year page ranks that year's own amounts", () => {
   const m = buildTopic({ kind: "year", slug: "ukraine-aid-2023", rank: "ua", year: 2023, sort: "eur", order: "desc", columns: ["rus", "net"] }, C, [], { dataTo: "" });
   assert.deepEqual(m.rows.map(c => c.iso), ["BBB", "AAA"]);
   const html = renderTopic(m, { esc: s => String(s), cPath: c => "/country/" + c.slug + "/", l: "de" });
-  assert.match(html, /data-q="ua" data-year="2023"><b class="pos">\+3 Mrd\. €/);
+  assert.match(html, /data-q="ua" data-year="2023"[^>]*><b class="pos">\+3 Mrd\. €/);
   assert.match(html, /im Jahr 2023/);
+});
+
+// ----- round 58 (owner: "the ranking does not work and the numbers make no sense"): a part's page -----
+test("a part page writes each value with its range in the value's own sign, in the side's words, without chance words", () => {
+  // money flowing back (other countries' aid spent here): below zero, subtracted from support
+  const back = (iso, name, gdp, v, lo, hi) => mk(iso, name, gdp, 1, 1, 0, {});
+  const C = [back("AAA", "Aland", 500, 0, 0, 0), back("BBB", "Bland", 300, 0, 0, 0), back("CCC", "Cland", 26000, 0, 0, 0)];
+  const P = { AAA: [-0.3, -0.64, -0.003], BBB: [-0.17, -0.49, -0.02], CCC: [-0.7, -1.4, -0.32] };
+  for (const c of C) { const [v, lo, hi] = P[c.iso]; c.measures["part:purl"] = { v, lo, hi, range: "", chance: "", level: "", side: "", partSide: "back", name: c.nameEn + " kept part of others' aid, spent here" }; }
+  const [e] = partEntries({ parts: { minCountries: 1, minTotal: 0, list: [{ key: "purl", slug: "p", side: "back" }] } }, C, []);
+  const m = buildTopic({ ...e, label: "P" }, C, [], { dataTo: "" });
+  assert.deepEqual(m.rows.map(c => c.iso), ["CCC", "AAA", "BBB"]);   // the most subtracted first
+  assert.equal(m.keySide, "back");
+  for (const l of ["en", "nl"]) {
+    const html = renderTopic(m, { esc: s => String(s), cPath: c => "/country/" + c.slug + "/", l }).replace(/[\u00a0\u202f]/g, " ");
+    const nl = l === "nl";
+    // Sweden-like row: −0.06% of GDP with a range from −€0.64bn to −€3m (signed, low to high, holding the value)
+    assert.match(html, nl ? /<b class="neg">−€0,30 mld<\/b><span class="s"><i>−0,06% van het bbp<\/i>/ : /<b class="neg">−€0.30bn<\/b><span class="s"><i>−0.06% of GDP<\/i>/);
+    assert.match(html, nl ? /bandbreedte <i>−€0,64 mld<\/i> tot <i>−€3 mln<\/i>/ : /range <i>−€0.64bn<\/i> to <i>−€3m<\/i>/);
+    const cells = [...html.matchAll(/data-q="part:purl"[^>]*>(.*?)<\/td>/g)].map(x => x[1]).join(" ");
+    assert.equal(cells.match(/class="s rg"/g).length, 3);
+    assert.doesNotMatch(cells, nl ? /waarschijnlijk|ongeveer 0|richting/ : /likely|about 0|toward/);
+    assert.doesNotMatch(html, /kept part of others' aid/);   // no words repeated in every row
+    assert.match(html, nl ? /naar het afgetrokken bedrag, van hoog naar laag/ : /by the amount subtracted, high to low/);
+    assert.match(html, nl ? /−: wat het verdiende, afgetrokken van zijn steun/ : /−: what it earned, subtracted from its support for Ukraine/);
+  }
+  // a share of exactly 0.01% keeps its sign
+  const one = renderTopic(buildTopic({ ...e, sort: "gdp" }, [C[0]].map(c => ({ ...c, gdp: 3000 })), [], { dataTo: "" }), { esc: s => String(s), cPath: () => "/" });
+  assert.match(one, /<b class="neg">−0.01%<\/b>/);
+});
+
+test("a page by year has frozen money's column, so its columns add up to the net", () => {
+  const [ua] = yearEntries(FAM, 2026);
+  assert.deepEqual(ua.columns, ["rus", "frozen", "net"]);
 });
 
 // ----- round 57: the placeholder engine, and the one translation table -----

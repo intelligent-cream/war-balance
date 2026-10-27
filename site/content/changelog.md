@@ -2,6 +2,15 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-fix-part-pages">Fix: part pages <span class="cl-date">27 October</span></h2>
+
+The pages that rank one part of the numbers now read the way the map does. No number changes.
+
+- **Ranges in the value's own sign**: each part's likely range is written in the same unit and sign as its value, low to high, so the value always lies inside it (before, the range had no signs, so a value below zero seemed to fall outside it). A share of GDP keeps the sign of its euros.
+- **Money flowing back** (aid spent in a country's own economy, other countries' aid spent there, extra sales to Ukraine) is explained once above the table: what the country where the money was spent earned from it, subtracted from its support for Ukraine. The table runs from the most subtracted, and says so.
+- **Chance words only where the map has a chance** (the net, support for Ukraine and trade with Russia); a single part shows its value and its range. Words that every row repeated are said once, above the table.
+- The pages by year now show frozen Russian money too, so each row adds up to its net. A new check reads every table of every generated page in every language for these mistakes.
+
 <h2 id="cl-r57">Round 57: richer country pages <span class="cl-date">26 October</span></h2>
 
 Each country page now tells more of its story, in the map's own words and in all seven languages; the map itself is unchanged.

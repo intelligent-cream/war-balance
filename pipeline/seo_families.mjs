@@ -21,6 +21,9 @@ export function partEntries(fam, countries, topics) {
     const total = vs.reduce((a, v) => a + Math.abs(v), 0), sum = vs.reduce((a, v) => a + v, 0);
     if (vs.length < fam.parts.minCountries || total < fam.parts.minTotal) continue;
     const col = { ua: ["ua", "net"], back: ["ua", "net"], rus: ["rus", "net"], frozen: ["frozen", "net"], cost: ["net"] }[p.side];
+    // the order, by side (round 58: said in the side's own words by seo_topics.mjs): support and frozen money high to
+    // low; money flowing back (below zero: subtracted from support) from the most subtracted; trade parts by size either
+    // way; a cost high to low, or low to high where it is mostly below zero (a gain, such as the oil discount)
     const order = p.side === "ua" || p.side === "frozen" ? "desc" : p.side === "back" ? "asc" : p.side === "cost" ? (sum < 0 ? "asc" : "desc") : "abs";
     out.push({ kind: "part", slug: p.slug, key: p.key, side: p.side, rank: "part:" + p.key, sort: "eur", order, minGdp: 0, nonzero: true, columns: col, limit: 60,
       map: p.side === "ua" || p.side === "back" ? "#view=rank&lens=support" : p.side === "rus" ? "#view=rank&lens=payments" : "#view=rank", n: vs.length });
@@ -30,8 +33,9 @@ export function partEntries(fam, countries, topics) {
 
 export function yearEntries(fam, lastYear) {
   return fam.years.flatMap(y => [
-    { kind: "year", slug: `ukraine-aid-${y}`, yearKind: "ua", year: y, partial: y === lastYear, rank: "ua", sort: "eur", order: "desc", minGdp: 0, nonzero: true, columns: ["rus", "net"], limit: 60, map: `#view=rank&lens=support&y=${y}` },
-    { kind: "year", slug: `trade-with-russia-${y}`, yearKind: "rus", year: y, partial: y === lastYear, rank: "rus", sort: "eur", order: "asc", minGdp: 0, nonzero: true, columns: ["ua", "net"], limit: 60, map: `#view=rank&lens=payments&y=${y}` },
+    // round 58: with frozen money's own column, so each row's columns add up to its net (support + trade + frozen)
+    { kind: "year", slug: `ukraine-aid-${y}`, yearKind: "ua", year: y, partial: y === lastYear, rank: "ua", sort: "eur", order: "desc", minGdp: 0, nonzero: true, columns: ["rus", "frozen", "net"], limit: 60, map: `#view=rank&lens=support&y=${y}` },
+    { kind: "year", slug: `trade-with-russia-${y}`, yearKind: "rus", year: y, partial: y === lastYear, rank: "rus", sort: "eur", order: "asc", minGdp: 0, nonzero: true, columns: ["ua", "frozen", "net"], limit: 60, map: `#view=rank&lens=payments&y=${y}` },
   ]);
 }
 
