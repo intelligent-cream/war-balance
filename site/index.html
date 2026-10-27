@@ -31,6 +31,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://warbalance.org/share/world.png">
 <link rel="canonical" href="https://warbalance.org/">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
 <!-- round 30: the site's own address is pipeline/site_config.json site_url (checked by check_data.py). Round 54: each
      language is a real page, /de/ and the others, written at deploy by pipeline/seo_pages.mjs from this one (its lang,
      data-lang, head and canonical changed); pickLang() in i18n.js reads data-lang first -->
@@ -1193,8 +1194,10 @@ li.src-again { color: var(--ink-soft); }
           <a href="/ukraine-aid-per-capita/">Aid to Ukraine per person</a>
           <a href="/military-support-to-russia/">Weapons sent to Russia</a>
           <a href="/russian-oil-discount/">Russian oil discount and price cap</a>
-          <a href="/group/russia-trade-hubs/">Trade hubs next to Russia</a>
+          <a href="/group/russia-trade-hubs/">Re-export hubs and sanctions evasion</a>
           <a href="/russian-oil-via-third-countries/">Russian oil refined in third countries</a>
+          <a href="/countries-with-sanctions-on-russia/">Countries with sanctions on Russia</a>
+          <a href="/russia-oil-gas-revenue/">Russia's oil and gas revenue</a>
           <a href="/topics/"><b>All topics →</b></a>
         </nav>
 <!-- topics:end -->
@@ -4051,8 +4054,12 @@ function baseNote(c) {
 // The countries with a sanctions regime of their own (research/2026-10/gaps/sanctions_share.json "bans"); EU members
 // agreed to the EU's (Council Regulation 833/2014, adopted unanimously); others adopted the EU's measures themselves
 const EU27 = new Set("AUT BEL BGR HRV CYP CZE DNK EST FIN FRA DEU GRC HUN IRL ITA LVA LTU LUX MLT NLD POL PRT ROU SVK SVN ESP SWE".split(" "));
-const OWN_REGIME = { USA: "oil import ban of March 2022, EO 14066", GBR: "oil import ban from December 2022 and other import bans", JPN: "import bans of April 2022 and later, the G7 oil phase-out", CAN: "petroleum import ban of March 2022", AUS: "oil, gas and coal import ban of April 2022", NZL: "oil and gold import ban of June 2022", KOR: "export controls" };
-const ALIGNED = new Set("CHE LIE NOR ISL MNE ALB MKD BIH MDA".split(" "));
+const OWN_REGIME = { USA: "oil import ban of March 2022, EO 14066", GBR: "oil import ban from December 2022 and other import bans", JPN: "import bans of April 2022 and later, the G7 oil phase-out", CAN: "petroleum import ban of March 2022", AUS: "oil, gas and coal import ban of April 2022", NZL: "oil and gold import ban of June 2022", KOR: "export controls", SGP: "export controls", TWN: "export controls" };
+// round 58 (research/2026-10/gaps/sanctions_r58.json): Singapore and Taiwan have measures of their own (export controls;
+// Singapore also financial measures), Andorra and San Marino adopt the EU's. The Bahamas are left out: their regulators
+// told banks to observe other countries' lists, which is not a regime of their own. None of the five has a sanctions
+// split in the data (sanctions_share.json), so no figure or tag changes: the words are ready if one is added
+const ALIGNED = new Set("CHE LIE NOR ISL MNE ALB MKD BIH MDA AND SMR".split(" "));
 const regimeOf = iso => (EU27.has(iso) ? "eu" : OWN_REGIME[iso] ? "own" : ALIGNED.has(iso) ? "aligned" : null);
 const REGIME_WORDS = { eu: "EU sanctions it agreed to as a member", own: "sanctions it set itself", aligned: "the EU's sanctions, which it adopted itself", null: "sanctions" };
 function sanctionNote(c, k) {

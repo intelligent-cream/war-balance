@@ -1,0 +1,4 @@
+URL: https://www.kommersant.ru/doc/6348808
+Read: 2026-10-27 (web fetch tool; text summarised by the tool, figures quoted)
+
+Kommersant, 18.11.2023, 'Бюджет России на 2024-2026 годы: главные цифры': national defence 2024 rises 'с 4,64 трлн до 10,78 трлн руб.' against last year's plan for 2024; 2024 defence spending is 68,2% higher than in the 2023 budget (implies about 6,4 трлн руб. for 2023: 10,78 / 1,682; derived, not stated).

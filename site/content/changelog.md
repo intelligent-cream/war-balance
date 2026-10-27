@@ -2,6 +2,18 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r58">Round 58: explainers and search wording <span class="cl-date">27 October</span></h2>
+
+The pages now explain their topics, use the words people search with and carry three new pieces of research, in all seven languages. The research corrected the frozen-money inputs of three holders: small changes, below.
+
+- **Short explainers** at the top of the topic pages: what the shadow fleet is, how the oil price cap works, what frozen Russian assets and the reparations loan are, what re-export hubs are and how the site counts them (for the country that made the goods), and Russia's list of "unfriendly" countries.
+- **Searchers' wording** where the data support it: "North Korea soldiers and shells" and "Iran drones" on the weapons page and those country pages, "sanctions evasion" on the trade hubs page, and a question on a country's relations with Russia where people search for it, answered from its figures.
+- **For reuse**: a downloads page with CSV files, a Markdown version and a cite line on every page, and a plain-text guide at /llms.txt. The years file also has the return Russia lost on frozen money, so each row adds up to its net.
+- **Sanctions, country by country**: every country page says which sanctions on Russia apply there (its own, the EU's, or none: said publicly or none found), with the oil price cap and export controls, its sources and the date checked; a new page lists every country and territory by category. Russia's own list of "unfriendly" countries is shown apart: it is not a list of sanctions.
+- **Amounts frozen**: the Russian money frozen in each holding country (the Bank of Russia's reserves and the assets of sanctioned people and companies, each with its date and source; "no public figure" where none is published) on the country pages and beside the frozen-assets ranking, and the EU and G7 totals, the windfall payments, the ERA loans and the €90bn Ukraine Support Loan in its explainers. The map still counts the return Russia lost, not the amounts.
+- **Russia's oil and gas income**: a new page with Russia's federal budget revenue from oil and gas by year and month since 2019 and its share of federal revenue, with export earnings and defence spending for context, each figure labelled; CSV files of the series in the downloads.
+- **Corrections from the new research**: Luxembourg's frozen central-bank reserves are now its government's figure (below €10,000) instead of an estimate of €2bn, Switzerland's 2026 amount is SECO's CHF 6.8bn and the UK's low end €8bn instead of €3bn. Luxembourg's net goes from 3.60% to 3.50% of GDP; the other EU members' nets move by less than 0.01% (they share in Clearstream's part), Switzerland's by 0.002%, and the UK's likely range only at its low end.
+
 <h2 id="cl-fix-part-pages">Fix: part pages <span class="cl-date">27 October</span></h2>
 
 The pages that rank one part of the numbers now read the way the map does. No number changes.

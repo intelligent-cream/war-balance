@@ -34,6 +34,12 @@ site/*/index.html
 site/compare/
 site/sitemap-*.xml
 site/pages.css
+# round 58: every page's Markdown version (index.md next to its index.html), the downloads and the guide for automated
+# readers (pipeline/seo_pages.mjs)
+site/*/index.md
+site/downloads/
+site/llms.txt
+site/llms-full.txt
 node_modules/
 
 # raw downloads: small open-data API responses are kept; large files and third-party documents (reports, press

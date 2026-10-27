@@ -28,7 +28,35 @@ PRE_YEARS = (2019, 2020, 2021)
 # 2026 is counted through August, the cut-off of the Kiel aid data; all 2026 inputs are January-August values
 FRAC = [1, 1, 1, 1, 1, round(8 / 12, 4)]
 EU27 = set(
-    "AUT BEL BGR HRV CYP CZE DNK EST FIN FRA DEU GRC HUN IRL ITA LVA LTU LUX MLT NLD POL PRT ROU SVK SVN ESP SWE".split()
+    [
+        "AUT",
+        "BEL",
+        "BGR",
+        "HRV",
+        "CYP",
+        "CZE",
+        "DNK",
+        "EST",
+        "FIN",
+        "FRA",
+        "DEU",
+        "GRC",
+        "HUN",
+        "IRL",
+        "ITA",
+        "LVA",
+        "LTU",
+        "LUX",
+        "MLT",
+        "NLD",
+        "POL",
+        "PRT",
+        "ROU",
+        "SVK",
+        "SVN",
+        "ESP",
+        "SWE",
+    ]
 )
 TARIFF_WAIVER = EU27 | {"GBR", "CAN"}
 
@@ -4417,6 +4445,51 @@ BEL_EUROCLEAR_TAX = {2024: 1.7, 2025: 1.0, 2026: 0.5}
 # share of a clearing house's frozen-reserve return credited to its host; the rest goes to all EU members by their
 # share of EU-level aid, because the freeze is an EU decision (owner, round 7; judgement, site/content/changelog.md)
 HOST_SHARE = 1 / 3
+# Round 58 (owner approved; research/2026-10/gaps/frozen_amounts_r58-notes.md, "Conflicts and how they are handled"
+# 1-3): three holders' immobilised amounts behind the return, updated where the round-58 research found an official
+# figure or better evidence. Luxembourg: its ministers said "below EUR 10,000" (Nov 2025): the official figure is the
+# central value, EPRS's EUR 10bn stays the top of the range (round 7: 2, range 0-10). United Kingdom: no official figure;
+# the press reports about GBP 8bn (Dec 2025), so the low end rises from 3 to about 8 (central 10 and high 27 kept).
+# Switzerland: SECO, CHF 6.8bn in June 2026: the 2026 amount is that figure (round 7 held 8.0 for 2026), from the
+# official value down by 5% to the April 2025 figure (CHF 7.45bn) as its range. Each year's return is then worked out
+# again by frozen_assets.json's own method (meta.method: amount x blended rate x year fraction, the low and high ends
+# combining the relative errors of the amount and the rate in quadrature, floored at amount_low x rate_low)
+FROZEN_R58_FILE = GAPS / "frozen_amounts_r58.json"
+FROZEN_R58_UK_LOW = 8.0  # EUR bn: "the low end of 3 can rise to about 8" (frozen_amounts_r58-notes.md, conflict 2)
+FROZEN_R58_LUX_OFFICIAL = 0.00001  # EUR bn: "below EUR 10,000" (frozen_amounts_r58.json LUX cbr_eur, v 0.0)
+
+
+def frozen_r58_amounts(fa: dict) -> dict[str, dict[str, dict[str, float]]]:
+    """Round 58: the corrected immobilised amounts {iso3: {year: {low, central, high}}} (see FROZEN_R58_FILE)."""
+    fr = load(FROZEN_R58_FILE)
+    if not fr:
+        return {}
+    cc = fr["countries"]
+    out: dict[str, dict[str, dict[str, float]]] = {}
+    lux = cc["LUX"]["cbr_eur"]
+    assert lux["official"] and lux["v"] == 0.0, "frozen_amounts_r58.json: Luxembourg's official figure changed"
+    out["LUX"] = {
+        y: {"low": 0.0, "central": FROZEN_R58_LUX_OFFICIAL, "high": float(lux["hi"])}
+        for y in fa["countries"]["LUX"]["immobilised_eur_bn"]
+    }
+    gbr = cc["GBR"]["cbr_eur"]
+    assert gbr["v"] is None and gbr.get("est"), "frozen_amounts_r58.json: the UK now has an official figure"
+    out["GBR"] = {y: {**a, "low": FROZEN_R58_UK_LOW} for y, a in fa["countries"]["GBR"]["immobilised_eur_bn"].items()}
+    che = cc["CHE"]["cbr_eur"]
+    assert che["official"] and che["date"].startswith("2026"), "frozen_amounts_r58.json: Switzerland's figure moved"
+    out["CHE"] = {"2026": {"low": round(che["v"] * 0.95, 3), "central": che["v"], "high": che["hi"]}}
+    return out
+
+
+def frozen_return(amount: dict[str, float], rate: dict[str, float], frac: float) -> dict[str, float]:
+    """frozen_assets.json meta.method: the return denied in a year, low/central/high (EUR bn)."""
+    cen = amount["central"] * rate["central"] * frac
+    if cen <= 0:
+        return {"low": 0.0, "central": 0.0, "high": 0.0}
+    a, r = amount, rate
+    lo = cen * (1 - math.hypot((a["central"] - a["low"]) / a["central"], (r["central"] - r["low"]) / r["central"]))
+    hi = cen * (1 + math.hypot((a["high"] - a["central"]) / a["central"], (r["high"] - r["central"]) / r["central"]))
+    return {"low": round(max(lo, a["low"] * r["low"] * frac, 0.0), 4), "central": round(cen, 4), "high": round(hi, 4)}
 
 
 def apply_frozen_reserves(countries: dict[str, dict], src: Sources) -> None:
@@ -4428,6 +4501,12 @@ def apply_frozen_reserves(countries: dict[str, dict], src: Sources) -> None:
     notes guess 10-30%, frozen_assets-notes.md; judgement, site/content/changelog.md).
     Private assets are their own part since round 39 (apply_frozen_private)."""
     fa = load(GAPS / "frozen_assets.json")
+    # round 58: the corrected amounts, and their return by the file's own method
+    for iso3, years in frozen_r58_amounts(fa).items():
+        d = fa["countries"][iso3]
+        for y, a in years.items():
+            d["immobilised_eur_bn"][y] = a
+            d["return_denied_eur_bn"][y] = frozen_return(a, d["return_rate"][y], fa["year_fraction"][y])
     sid = src.add(
         "frozen_reserves",
         "Return denied on Russia's frozen central-bank reserves: Euroclear reports, Swiss SECO, EU Commission, G7 and central bank statements; rates per currency and year",

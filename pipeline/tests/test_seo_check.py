@@ -18,9 +18,11 @@ def page(
     links = "".join(f'<link rel="alternate" hreflang="{lang}" href="{u}">' for lang, u in alts)
     return (
         f'<!doctype html><html><head><title>{title}</title><meta name="description" content="{desc}">'
-        f'<link rel="canonical" href="{canonical or U + path}">{links}'
+        f'<link rel="canonical" href="{canonical or U + path}">'
+        f'<link rel="alternate" type="text/markdown" href="/{path}index.md">{links}'
         + ('<meta http-equiv="refresh" content="0; url=/">' if refresh else "")
-        + f"</head><body{f' data-iso={chr(34)}{iso}{chr(34)}' if iso else ''}></body></html>"
+        + f"</head><body{f' data-iso={chr(34)}{iso}{chr(34)}' if iso else ''}>"
+        + f'<main><p>Net 0.14%.</p><p class="cite">Cite as: War Balance, figures to August 2026, {U + path}</p></main></body></html>'
     )
 
 
@@ -29,6 +31,18 @@ def site(tmp: Path, pages: dict[str, str], az=("slovakia",)) -> Path:
         f = tmp / path / "index.html"
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(html)
+        # round 58: its Markdown version (the same words and figures)
+        (f.parent / "index.md").write_text(f"Net 0.14%.\n\nCite as: War Balance, figures to August 2026, {U + path}\n")
+    # round 58: llms.txt, llms-full.txt and the downloads, with Slovakia's figures as the model has them
+    (tmp / "llms.txt").write_text(f"# War Balance\n\n- [Map]({U}): the map\n")
+    (tmp / "llms-full.txt").write_text(
+        f"- Slovakia: net +0.14% of a year's GDP (too close to call) | support for Ukraine €0.95bn | x | {U}country/slovakia/\n"
+    )
+    (tmp / "downloads").mkdir(exist_ok=True)
+    (tmp / "downloads" / "index.html").write_text('<a href="/downloads/war-balance-countries.csv">csv</a>')
+    (tmp / "downloads" / "war-balance-countries.csv").write_text(
+        "\ufeffiso3,net_shift_eur_bn,support_ukraine_eur_bn,trade_with_russia_toward_ukraine_eur_bn\nSVK,0.1689,0.9483,-0.9116\n"
+    )
     if "" not in pages:
         (tmp / "index.html").write_text("".join(f'<a href="/country/{s}/">' for s in az))
     locs = "".join(f"<url><loc>{U}{p}</loc></url>" for p in pages)
@@ -393,6 +407,51 @@ def test_the_visible_questions_must_be_the_json_ld_and_every_source_a_working_li
     )
 
 
+# ----- round 58: the cite line, the Markdown versions, llms-full.txt and the downloads -----
+GOOD = {
+    "country/slovakia/": page(
+        "country/slovakia/", "Is Slovakia helping Ukraine or Russia? Too close to call", iso="SVK"
+    )
+}
+
+
+def test_a_page_without_its_cite_line_or_markdown_fails(tmp_path):
+    s = site(tmp_path, {"country/slovakia/": GOOD["country/slovakia/"].replace('<p class="cite">', "<p>")})
+    assert sc.check_site(s, U, MODEL)["cite"] == ["/country/slovakia/"]
+    (s / "country" / "slovakia" / "index.md").unlink()
+    assert any("no Markdown version" in x for x in sc.check_site(s, U, MODEL)["markdown"])
+
+
+def test_markdown_may_not_write_a_figure_the_page_does_not(tmp_path):
+    s = site(tmp_path, GOOD)
+    (s / "country" / "slovakia" / "index.md").write_text(
+        f"Net 0.48%.\n\nCite as: War Balance, figures to August 2026, {U}country/slovakia/\n"
+    )
+    assert any("048" in x for x in sc.check_site(s, U, MODEL)["markdown"])
+
+
+def test_llms_and_csv_figures_must_be_the_models(tmp_path):
+    s = site(tmp_path, GOOD)
+    (s / "llms-full.txt").write_text((s / "llms-full.txt").read_text().replace("+0.14%", "+0.48%"))
+    assert any("net is not the model's" in x for x in sc.check_site(s, U, MODEL)["llms"])
+    f = s / "downloads" / "war-balance-countries.csv"
+    f.write_text(f.read_text().replace("0.9483", "0.9999"))
+    assert any("support_ukraine_eur_bn" in x for x in sc.check_site(s, U, MODEL)["downloads"])
+    (s / "downloads" / "index.html").write_text('<a href="/downloads/missing.csv">x</a>')
+    assert any("does not resolve" in x for x in sc.check_site(s, U, MODEL)["downloads"])
+
+
+def test_explainer_dates_are_allowed_by_name_only():
+    ok = sc.wording_problems(
+        [{"file": "f", "key": "k", "lang": "en", "text": "Since February 2023 and from September 2025."}]
+    )
+    assert ok == []
+    bad = sc.wording_problems([{"file": "f", "key": "k", "lang": "en", "text": "Since March 2024 the cap applies."}])
+    assert any("date" in x for x in bad)
+    bad_de = sc.wording_problems([{"file": "f", "key": "k", "lang": "de", "text": "Seit Februar 2024 gilt er."}])
+    assert any("date" in x for x in bad_de)
+
+
 # ----- round 58 (owner: "the ranking does not work and the numbers make no sense"): the tables' own sanity -----
 ORDER_EN = {
     "hiLo": "high to low",
@@ -420,7 +479,7 @@ def part_table(rows, order="asc", note="by the amount subtracted, high to low"):
     return (
         f'<p class="sub" data-note="order">Sorted by “X” in euros, {note}, February 2022 to August 2026.</p>'
         f'<div class="tbl"><table class="topic" data-order="{order}" data-sort="eur" data-key="part:purl" data-side="back">'
-        f'<thead><tr><th>#</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
+        f"<thead><tr><th>#</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>"
     )
 
 
@@ -572,3 +631,46 @@ def test_sanity_group_totals_are_the_rows_added_up():
     t = f'<div data-total="ua"><b>+1.5%</b><span>of the members\' combined GDP · <i>€3bn in support</i></span></div><table class="topic">{rows}</table>'
     assert sc.check_tables(t, "/group/g/", "en", WORDS_EN)[0] == []
     assert any("total ua" in p for p in sc.check_tables(t.replace("€3bn", "€4bn"), "/group/g/", "en", WORDS_EN)[0])
+
+
+# ----- round 58b: the research files' figures, the years file and the Markdown rows -----
+RESEARCH = {"revenue": {"yearly": {"2019": {"og_rev_rub": 7924.3, "share": 0.3925}}}, "frozen": {"countries": {}}}
+
+
+def test_a_research_figure_must_be_the_files_value_and_written_as_it():
+    ok = '<td class="n" data-rv="revenue:yearly.2019.og_rev_rub" data-v="7924.3" data-u="rub">RUB 7,924bn</td>'
+    assert sc.check_research_marks(ok, "/p/", "en", RESEARCH) == []
+    de = '<td class="n" data-rv="revenue:yearly.2019.og_rev_rub" data-v="7924.3" data-u="rub">7.924 Mrd. RUB</td>'
+    assert sc.check_research_marks(de, "/de/p/", "de", RESEARCH) == []
+    wrong_text = ok.replace("7,924", "7,294")
+    assert any("written" in x for x in sc.check_research_marks(wrong_text, "/p/", "en", RESEARCH))
+    wrong_value = ok.replace('data-v="7924.3"', 'data-v="7000"')
+    assert any("the file says 7924.3" in x for x in sc.check_research_marks(wrong_value, "/p/", "en", RESEARCH))
+    share = '<td data-rv="revenue:yearly.2019.share" data-v="0.3925" data-u="share">39,3 %</td>'
+    assert sc.check_research_marks(share, "/fr/p/", "fr", RESEARCH) == []
+    # no figure in the file: the page may not write one (no zero for "no public figure")
+    none = '<td class="k" data-rv="frozen:countries.JPN.cbr_eur.v" data-v="null" data-u="eur">€0m</td>'
+    assert any("writes one" in x for x in sc.check_research_marks(none, "/p/", "en", RESEARCH))
+    ok_none = '<td class="k" data-rv="frozen:countries.JPN.cbr_eur.v" data-v="null" data-u="eur">no public figure<span class="s">estimate: about €28bn</span></td>'
+    assert sc.check_research_marks(ok_none, "/p/", "en", RESEARCH) == []
+
+
+def test_the_years_file_must_add_up_and_be_the_models(tmp_path):
+    s = site(tmp_path, GOOD)
+    m = {"countries": {"SVK": {**SVK, "yearsEur": {"2022": [0.1, -0.2, -0.05, 0.05]}}}}
+    head = "iso3,country,year,year_to_date,support_ukraine_eur_bn,trade_with_russia_toward_ukraine_eur_bn,frozen_return_lost_eur_bn,net_shift_eur_bn\n"
+    f = s / "downloads" / "war-balance-years.csv"
+    f.write_text("﻿" + head + "SVK,Slovakia,2022,false,0.1,-0.2,0.05,-0.05\n")
+    assert sc.check_downloads(s, m) == []
+    f.write_text("﻿" + head + "SVK,Slovakia,2022,false,0.1,-0.2,0.05,0.3\n")
+    assert any("support + trade + frozen" in x for x in sc.check_downloads(s, m))
+
+
+def test_a_table_row_of_the_page_must_be_in_its_markdown(tmp_path):
+    table = "<table><tr><th>Year</th><th>RUB</th></tr><tr><td>2019</td><td>RUB 7,924bn</td></tr></table>"
+    s = site(tmp_path, {"country/slovakia/": GOOD["country/slovakia/"].replace("<main>", "<main>" + table)})
+    md = s / "country" / "slovakia" / "index.md"
+    md.write_text(md.read_text() + "\n| Year | RUB |\n| --- | --- |\n| 2019 | RUB 7,924bn |\n")
+    assert sc.check_site(s, U, MODEL)["markdown"] == []
+    md.write_text(md.read_text().replace("| 2019 | RUB 7,924bn |", "| 2019 | RUB 7,294bn |"))
+    assert any("table row" in x or "not on the page" in x for x in sc.check_site(s, U, MODEL)["markdown"])

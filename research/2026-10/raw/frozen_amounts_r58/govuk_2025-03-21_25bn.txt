@@ -1,0 +1,10 @@
+URL: https://www.gov.uk/government/news/uk-sanctions-freeze-25bn-of-russian-assets
+Fetched: 2026-10-27
+HTTP: 200
+Extract (short passages around the figures used):
+
+2026 Starmer Labour government "> This was published under the 2024 to 2026 Starmer Labour government New data released today (21 March) reveals the full effect of UK sanctions on Russia – with over £25 billion of Russian assets reported frozen since Russia’s illegal invasion of Ukraine. Most severe sanctions Russia has ever faced to protect the national security – a foundation of the Plan for Change The Annual Review details the Office of Financial Sanctions Implementation’s (OFSI’s) efforts to drive compliance with financial sanctions through effective engagement, enhancement, and enforcement. New data released today (21 March) in OFSI’s Annual Review reveals the full effect of UK sanctions on Russia – with over £25 billion of Russian assets reported frozen. In conjunction with its allies, the UK
+
+---
+
+inancial sanctions through effective engagement, enhancement, and enforcement. New data released today (21 March) in OFSI’s Annual Review reveals the full effect of UK sanctions on Russia – with over £25 billion of Russian assets reported frozen. In conjunction with its allies, the UK has imposed the most severe sanctions Russia has ever faced. As of March 2024, the UK government designated 2,001 individuals and entities under the Russia sanctions regime. Sanctions imposed by the UK and its allies have significantly impacted Russia’s economy, depriving it of over $400 billion since February 2022, equivalent to four years of Russia’s military spending. Russia’s overall financial standing has weakened, with the federal budget expected to remain in deficit until at least 2026. The rouble has depreciated

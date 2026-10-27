@@ -1,0 +1,2432 @@
+{
+ "generated": "2026-10-27",
+ "meta": {
+  "what": "Russia's federal budget oil and gas revenues and total revenues (monthly and yearly, 2019 to the latest month), fossil-fuel export revenue estimates (CREA monthly; IEA and Bank of Russia points) and defence spending for context. Research only; not wired into the build.",
+  "latest_budget_month": "2026-09",
+  "latest_crea_full_month": "2026-09",
+  "units": "RUB bn, EUR bn, USD bn nominal; share = oil and gas revenue / total federal revenue",
+  "fx": "Bank of Russia official daily rates, simple monthly average of the rates applying in the month (ECB has no RUB reference rate after 1 March 2022). Yearly EUR/USD = sum of monthly conversions.",
+  "definition": "Minfin 'нефтегазовые доходы': mineral extraction tax on oil, gas and condensate, export duties on oil, products and gas, the additional income tax (НДД) and, since 2019, minus the 'damper' payments to refiners and the reverse excise (they are netted in the oil MET). It is a budget (tax) concept, not export earnings: it includes tax on oil and gas sold at home and excludes companies' profits, profit tax and dividends (Gazprom/Rosneft dividends sit in non-oil-gas revenue).",
+  "ytd_note": "Minfin publishes cumulative figures from the start of each year; a month is the difference between consecutive cumulative figures, so in-year revisions land in the month published."
+ },
+ "monthly": [
+  {
+   "ym": "2019-01",
+   "og_rev_rub": 680.8,
+   "og_rev_eur": 8.962,
+   "og_rev_usd": 10.236,
+   "total_rev_rub": 1486.3,
+   "total_rev_eur": 19.566,
+   "share": 0.4581,
+   "eur_rub_avg": 75.9632,
+   "usd_rub_avg": 66.5125,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2019-02",
+   "og_rev_rub": 686.6,
+   "og_rev_eur": 9.188,
+   "og_rev_usd": 10.433,
+   "total_rev_rub": 1357.7,
+   "total_rev_eur": 18.169,
+   "share": 0.5057,
+   "eur_rub_avg": 74.7268,
+   "usd_rub_avg": 65.8105,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2019-03",
+   "og_rev_rub": 626.0,
+   "og_rev_eur": 8.498,
+   "og_rev_usd": 9.617,
+   "total_rev_rub": 1746.0,
+   "total_rev_eur": 23.701,
+   "share": 0.3585,
+   "eur_rub_avg": 73.6682,
+   "usd_rub_avg": 65.0923,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2019-04",
+   "og_rev_rub": 729.2,
+   "og_rev_eur": 10.041,
+   "og_rev_usd": 11.287,
+   "total_rev_rub": 1771.1,
+   "total_rev_eur": 24.388,
+   "share": 0.4117,
+   "eur_rub_avg": 72.623,
+   "usd_rub_avg": 64.6031,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2019-05",
+   "og_rev_rub": 697.7,
+   "og_rev_eur": 9.624,
+   "og_rev_usd": 10.764,
+   "total_rev_rub": 1506.3,
+   "total_rev_eur": 20.778,
+   "share": 0.4632,
+   "eur_rub_avg": 72.4945,
+   "usd_rub_avg": 64.8187,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2019-06",
+   "og_rev_rub": 701.6,
+   "og_rev_eur": 9.691,
+   "og_rev_usd": 10.934,
+   "total_rev_rub": 1682.5,
+   "total_rev_eur": 23.24,
+   "share": 0.417,
+   "eur_rub_avg": 72.396,
+   "usd_rub_avg": 64.169,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2019-07",
+   "og_rev_rub": 661.0,
+   "og_rev_eur": 9.314,
+   "og_rev_usd": 10.455,
+   "total_rev_rub": 1921.4,
+   "total_rev_eur": 27.074,
+   "share": 0.344,
+   "eur_rub_avg": 70.9686,
+   "usd_rub_avg": 63.2227,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2019-08",
+   "og_rev_rub": 624.6,
+   "og_rev_eur": 8.56,
+   "og_rev_usd": 9.523,
+   "total_rev_rub": 1785.4,
+   "total_rev_eur": 24.467,
+   "share": 0.3498,
+   "eur_rub_avg": 72.9704,
+   "usd_rub_avg": 65.5875,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2019-09",
+   "og_rev_rub": 600.5,
+   "og_rev_eur": 8.392,
+   "og_rev_usd": 9.244,
+   "total_rev_rub": 1778.0,
+   "total_rev_eur": 24.849,
+   "share": 0.3377,
+   "eur_rub_avg": 71.5524,
+   "usd_rub_avg": 64.9587,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2019-10",
+   "og_rev_rub": 668.7,
+   "og_rev_eur": 9.411,
+   "og_rev_usd": 10.388,
+   "total_rev_rub": 1636.5,
+   "total_rev_eur": 23.03,
+   "share": 0.4086,
+   "eur_rub_avg": 71.0582,
+   "usd_rub_avg": 64.375,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2019-11",
+   "og_rev_rub": 588.7,
+   "og_rev_eur": 8.338,
+   "og_rev_usd": 9.218,
+   "total_rev_rub": 1354.4,
+   "total_rev_eur": 19.182,
+   "share": 0.4347,
+   "eur_rub_avg": 70.6082,
+   "usd_rub_avg": 63.8671,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2019-12",
+   "og_rev_rub": 658.9,
+   "og_rev_eur": 9.427,
+   "og_rev_usd": 10.47,
+   "total_rev_rub": 2163.2,
+   "total_rev_eur": 30.951,
+   "share": 0.3046,
+   "eur_rub_avg": 69.8919,
+   "usd_rub_avg": 62.9325,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2020-01",
+   "og_rev_rub": 615.9,
+   "og_rev_eur": 8.982,
+   "og_rev_usd": 9.964,
+   "total_rev_rub": 1556.5,
+   "total_rev_eur": 22.699,
+   "share": 0.3957,
+   "eur_rub_avg": 68.5708,
+   "usd_rub_avg": 61.8121,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2020-02",
+   "og_rev_rub": 608.4,
+   "og_rev_eur": 8.71,
+   "og_rev_usd": 9.509,
+   "total_rev_rub": 1262.4,
+   "total_rev_eur": 18.072,
+   "share": 0.4819,
+   "eur_rub_avg": 69.8526,
+   "usd_rub_avg": 63.9798,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2020-03",
+   "og_rev_rub": 563.6,
+   "og_rev_eur": 6.916,
+   "og_rev_usd": 7.645,
+   "total_rev_rub": 1912.4,
+   "total_rev_eur": 23.467,
+   "share": 0.2947,
+   "eur_rub_avg": 81.4928,
+   "usd_rub_avg": 73.7194,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2020-04",
+   "og_rev_rub": 434.6,
+   "og_rev_eur": 5.351,
+   "og_rev_usd": 5.813,
+   "total_rev_rub": 2270.7,
+   "total_rev_eur": 27.96,
+   "share": 0.1914,
+   "eur_rub_avg": 81.2117,
+   "usd_rub_avg": 74.7635,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2020-05",
+   "og_rev_rub": 214.2,
+   "og_rev_eur": 2.713,
+   "og_rev_usd": 2.954,
+   "total_rev_rub": 889.0,
+   "total_rev_eur": 11.258,
+   "share": 0.2409,
+   "eur_rub_avg": 78.9671,
+   "usd_rub_avg": 72.5003,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2020-06",
+   "og_rev_rub": 224.3,
+   "og_rev_eur": 2.88,
+   "og_rev_usd": 3.241,
+   "total_rev_rub": 1200.9,
+   "total_rev_eur": 15.419,
+   "share": 0.1868,
+   "eur_rub_avg": 77.8865,
+   "usd_rub_avg": 69.1967,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2020-07",
+   "og_rev_rub": 341.1,
+   "og_rev_eur": 4.186,
+   "og_rev_usd": 4.784,
+   "total_rev_rub": 1307.8,
+   "total_rev_eur": 16.049,
+   "share": 0.2608,
+   "eur_rub_avg": 81.4883,
+   "usd_rub_avg": 71.2941,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2020-08",
+   "og_rev_rub": 404.9,
+   "og_rev_eur": 4.639,
+   "og_rev_usd": 5.487,
+   "total_rev_rub": 1288.6,
+   "total_rev_eur": 14.764,
+   "share": 0.3142,
+   "eur_rub_avg": 87.2802,
+   "usd_rub_avg": 73.7981,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2020-09",
+   "og_rev_rub": 447.0,
+   "og_rev_eur": 5.002,
+   "og_rev_usd": 5.903,
+   "total_rev_rub": 1528.4,
+   "total_rev_eur": 17.104,
+   "share": 0.2925,
+   "eur_rub_avg": 89.3607,
+   "usd_rub_avg": 75.728,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2020-10",
+   "og_rev_rub": 474.5,
+   "og_rev_eur": 5.192,
+   "og_rev_usd": 6.11,
+   "total_rev_rub": 1928.7,
+   "total_rev_eur": 21.104,
+   "share": 0.246,
+   "eur_rub_avg": 91.3897,
+   "usd_rub_avg": 77.6635,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2020-11",
+   "og_rev_rub": 453.8,
+   "og_rev_eur": 4.992,
+   "og_rev_usd": 5.906,
+   "total_rev_rub": 1383.2,
+   "total_rev_eur": 15.216,
+   "share": 0.3281,
+   "eur_rub_avg": 90.9064,
+   "usd_rub_avg": 76.8395,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2020-12",
+   "og_rev_rub": 452.9,
+   "og_rev_eur": 5.021,
+   "og_rev_usd": 6.102,
+   "total_rev_rub": 2190.5,
+   "total_rev_eur": 24.283,
+   "share": 0.2068,
+   "eur_rub_avg": 90.2087,
+   "usd_rub_avg": 74.2167,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2021-01",
+   "og_rev_rub": 490.8,
+   "og_rev_eur": 5.43,
+   "og_rev_usd": 6.597,
+   "total_rev_rub": 1504.0,
+   "total_rev_eur": 16.64,
+   "share": 0.3263,
+   "eur_rub_avg": 90.3835,
+   "usd_rub_avg": 74.3925,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2021-02",
+   "og_rev_rub": 544.9,
+   "og_rev_eur": 6.063,
+   "og_rev_usd": 7.332,
+   "total_rev_rub": 1251.6,
+   "total_rev_eur": 13.925,
+   "share": 0.4354,
+   "eur_rub_avg": 89.8787,
+   "usd_rub_avg": 74.3168,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2021-03",
+   "og_rev_rub": 582.3,
+   "og_rev_eur": 6.57,
+   "og_rev_usd": 7.827,
+   "total_rev_rub": 2544.3,
+   "total_rev_eur": 28.707,
+   "share": 0.2289,
+   "eur_rub_avg": 88.6309,
+   "usd_rub_avg": 74.3971,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2021-04",
+   "og_rev_rub": 893.4,
+   "og_rev_eur": 9.828,
+   "og_rev_usd": 11.733,
+   "total_rev_rub": 2186.9,
+   "total_rev_eur": 24.057,
+   "share": 0.4085,
+   "eur_rub_avg": 90.9061,
+   "usd_rub_avg": 76.1439,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2021-05",
+   "og_rev_rub": 617.6,
+   "og_rev_eur": 6.871,
+   "og_rev_usd": 8.345,
+   "total_rev_rub": 1833.5,
+   "total_rev_eur": 20.4,
+   "share": 0.3368,
+   "eur_rub_avg": 89.8787,
+   "usd_rub_avg": 74.0043,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2021-06",
+   "og_rev_rub": 647.0,
+   "og_rev_eur": 7.385,
+   "og_rev_usd": 8.91,
+   "total_rev_rub": 1945.5,
+   "total_rev_eur": 22.207,
+   "share": 0.3326,
+   "eur_rub_avg": 87.607,
+   "usd_rub_avg": 72.6169,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2021-07",
+   "og_rev_rub": 994.0,
+   "og_rev_eur": 11.377,
+   "og_rev_usd": 13.452,
+   "total_rev_rub": 2385.3,
+   "total_rev_eur": 27.301,
+   "share": 0.4167,
+   "eur_rub_avg": 87.3699,
+   "usd_rub_avg": 73.8899,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2021-08",
+   "og_rev_rub": 695.9,
+   "og_rev_eur": 8.036,
+   "og_rev_usd": 9.457,
+   "total_rev_rub": 2046.7,
+   "total_rev_eur": 23.635,
+   "share": 0.34,
+   "eur_rub_avg": 86.5952,
+   "usd_rub_avg": 73.5827,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2021-09",
+   "og_rev_rub": 718.9,
+   "og_rev_eur": 8.366,
+   "og_rev_usd": 9.858,
+   "total_rev_rub": 2226.1,
+   "total_rev_eur": 25.904,
+   "share": 0.3229,
+   "eur_rub_avg": 85.9354,
+   "usd_rub_avg": 72.9262,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2021-10",
+   "og_rev_rub": 1107.9,
+   "og_rev_eur": 13.364,
+   "og_rev_usd": 15.506,
+   "total_rev_rub": 2507.8,
+   "total_rev_eur": 30.251,
+   "share": 0.4418,
+   "eur_rub_avg": 82.9005,
+   "usd_rub_avg": 71.4501,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2021-11",
+   "og_rev_rub": 884.7,
+   "og_rev_eur": 10.673,
+   "og_rev_usd": 12.169,
+   "total_rev_rub": 2008.3,
+   "total_rev_eur": 24.227,
+   "share": 0.4405,
+   "eur_rub_avg": 82.8934,
+   "usd_rub_avg": 72.6989,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2021-12",
+   "og_rev_rub": 879.1,
+   "og_rev_eur": 10.544,
+   "og_rev_usd": 11.917,
+   "total_rev_rub": 2846.4,
+   "total_rev_eur": 34.141,
+   "share": 0.3088,
+   "eur_rub_avg": 83.3708,
+   "usd_rub_avg": 73.7693,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2022-01",
+   "og_rev_rub": 794.5,
+   "og_rev_eur": 9.149,
+   "og_rev_usd": 10.373,
+   "total_rev_rub": 2088.8,
+   "total_rev_eur": 24.054,
+   "share": 0.3804,
+   "eur_rub_avg": 86.8366,
+   "usd_rub_avg": 76.5947,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2022-02",
+   "og_rev_rub": 971.7,
+   "og_rev_eur": 11.108,
+   "og_rev_usd": 12.592,
+   "total_rev_rub": 2116.7,
+   "total_rev_eur": 24.197,
+   "share": 0.4591,
+   "eur_rub_avg": 87.4769,
+   "usd_rub_avg": 77.1694,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2022-03",
+   "og_rev_rub": 1208.1,
+   "og_rev_eur": 10.581,
+   "og_rev_usd": 11.676,
+   "total_rev_rub": 2957.6,
+   "total_rev_eur": 25.903,
+   "share": 0.4085,
+   "eur_rub_avg": 114.1815,
+   "usd_rub_avg": 103.47,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2022-04",
+   "og_rev_rub": 1812.4,
+   "og_rev_eur": 21.486,
+   "og_rev_usd": 23.266,
+   "total_rev_rub": 2870.7,
+   "total_rev_eur": 34.032,
+   "share": 0.6313,
+   "eur_rub_avg": 84.3528,
+   "usd_rub_avg": 77.8992,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2022-05",
+   "og_rev_rub": 871.4,
+   "og_rev_eur": 13.208,
+   "og_rev_usd": 13.763,
+   "total_rev_rub": 2008.9,
+   "total_rev_eur": 30.45,
+   "share": 0.4338,
+   "eur_rub_avg": 65.9733,
+   "usd_rub_avg": 63.3127,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2022-06",
+   "og_rev_rub": 717.8,
+   "og_rev_eur": 11.962,
+   "og_rev_usd": 12.554,
+   "total_rev_rub": 1974.4,
+   "total_rev_eur": 32.903,
+   "share": 0.3636,
+   "eur_rub_avg": 60.0074,
+   "usd_rub_avg": 57.1786,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2022-07",
+   "og_rev_rub": 774.4,
+   "og_rev_eur": 13.088,
+   "og_rev_usd": 13.301,
+   "total_rev_rub": 1757.3,
+   "total_rev_eur": 29.7,
+   "share": 0.4407,
+   "eur_rub_avg": 59.1692,
+   "usd_rub_avg": 58.2214,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2022-08",
+   "og_rev_rub": 668.1,
+   "og_rev_eur": 10.945,
+   "og_rev_usd": 11.063,
+   "total_rev_rub": 1832.2,
+   "total_rev_eur": 30.015,
+   "share": 0.3646,
+   "eur_rub_avg": 61.042,
+   "usd_rub_avg": 60.3919,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2022-09",
+   "og_rev_rub": 688.2,
+   "og_rev_eur": 11.613,
+   "og_rev_usd": 11.504,
+   "total_rev_rub": 2132.6,
+   "total_rev_eur": 35.985,
+   "share": 0.3227,
+   "eur_rub_avg": 59.2636,
+   "usd_rub_avg": 59.8215,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2022-10",
+   "og_rev_rub": 1281.7,
+   "og_rev_eur": 21.417,
+   "og_rev_usd": 20.972,
+   "total_rev_rub": 2400.3,
+   "total_rev_eur": 40.109,
+   "share": 0.534,
+   "eur_rub_avg": 59.8451,
+   "usd_rub_avg": 61.1158,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2022-11",
+   "og_rev_rub": 866.4,
+   "og_rev_eur": 13.99,
+   "og_rev_usd": 14.238,
+   "total_rev_rub": 2640.3,
+   "total_rev_eur": 42.633,
+   "share": 0.3281,
+   "eur_rub_avg": 61.9302,
+   "usd_rub_avg": 60.853,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2022-12",
+   "og_rev_rub": 931.5,
+   "og_rev_eur": 13.378,
+   "og_rev_usd": 14.153,
+   "total_rev_rub": 3044.6,
+   "total_rev_eur": 43.725,
+   "share": 0.306,
+   "eur_rub_avg": 69.6299,
+   "usd_rub_avg": 65.815,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2023-01",
+   "og_rev_rub": 425.5,
+   "og_rev_eur": 5.711,
+   "og_rev_usd": 6.178,
+   "total_rev_rub": 1357.0,
+   "total_rev_eur": 18.215,
+   "share": 0.3136,
+   "eur_rub_avg": 74.4998,
+   "usd_rub_avg": 68.876,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2023-02",
+   "og_rev_rub": 521.3,
+   "og_rev_eur": 6.671,
+   "og_rev_usd": 7.162,
+   "total_rev_rub": 1807.2,
+   "total_rev_eur": 23.126,
+   "share": 0.2885,
+   "eur_rub_avg": 78.1453,
+   "usd_rub_avg": 72.7828,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2023-03",
+   "og_rev_rub": 688.1,
+   "og_rev_eur": 8.45,
+   "og_rev_usd": 9.042,
+   "total_rev_rub": 2514.7,
+   "total_rev_eur": 30.881,
+   "share": 0.2736,
+   "eur_rub_avg": 81.4328,
+   "usd_rub_avg": 76.1036,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2023-04",
+   "og_rev_rub": 647.4,
+   "og_rev_eur": 7.288,
+   "og_rev_usd": 7.993,
+   "total_rev_rub": 2106.2,
+   "total_rev_eur": 23.711,
+   "share": 0.3074,
+   "eur_rub_avg": 88.8295,
+   "usd_rub_avg": 80.9955,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2023-05",
+   "og_rev_rub": 570.7,
+   "og_rev_eur": 6.63,
+   "og_rev_usd": 7.205,
+   "total_rev_rub": 2033.6,
+   "total_rev_eur": 23.625,
+   "share": 0.2806,
+   "eur_rub_avg": 86.0776,
+   "usd_rub_avg": 79.2126,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2023-06",
+   "og_rev_rub": 528.6,
+   "og_rev_eur": 5.854,
+   "og_rev_usd": 6.344,
+   "total_rev_rub": 2562.9,
+   "total_rev_eur": 28.384,
+   "share": 0.2063,
+   "eur_rub_avg": 90.2924,
+   "usd_rub_avg": 83.3193,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2023-07",
+   "og_rev_rub": 811.3,
+   "og_rev_eur": 8.112,
+   "og_rev_usd": 8.967,
+   "total_rev_rub": 2143.9,
+   "total_rev_eur": 21.435,
+   "share": 0.3784,
+   "eur_rub_avg": 100.0181,
+   "usd_rub_avg": 90.474,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2023-08",
+   "og_rev_rub": 642.7,
+   "og_rev_eur": 6.176,
+   "og_rev_usd": 6.745,
+   "total_rev_rub": 2466.0,
+   "total_rev_eur": 23.697,
+   "share": 0.2606,
+   "eur_rub_avg": 104.0649,
+   "usd_rub_avg": 95.2853,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2023-09",
+   "og_rev_rub": 739.9,
+   "og_rev_eur": 7.158,
+   "og_rev_usd": 7.658,
+   "total_rev_rub": 2743.0,
+   "total_rev_eur": 26.537,
+   "share": 0.2697,
+   "eur_rub_avg": 103.3661,
+   "usd_rub_avg": 96.6223,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2023-10",
+   "og_rev_rub": 1634.6,
+   "og_rev_eur": 15.938,
+   "og_rev_usd": 16.83,
+   "total_rev_rub": 3372.9,
+   "total_rev_eur": 32.887,
+   "share": 0.4846,
+   "eur_rub_avg": 102.5588,
+   "usd_rub_avg": 97.1223,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2023-11",
+   "og_rev_rub": 1016.1,
+   "og_rev_eur": 10.413,
+   "og_rev_usd": 11.238,
+   "total_rev_rub": 2856.6,
+   "total_rev_eur": 29.274,
+   "share": 0.3557,
+   "eur_rub_avg": 97.5819,
+   "usd_rub_avg": 90.4128,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2023-12",
+   "og_rev_rub": 596.1,
+   "og_rev_eur": 6.011,
+   "og_rev_usd": 6.564,
+   "total_rev_rub": 3160.0,
+   "total_rev_eur": 31.863,
+   "share": 0.1886,
+   "eur_rub_avg": 99.1748,
+   "usd_rub_avg": 90.8172,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2024-01",
+   "og_rev_rub": 675.2,
+   "og_rev_eur": 6.982,
+   "og_rev_usd": 7.614,
+   "total_rev_rub": 2397.3,
+   "total_rev_eur": 24.791,
+   "share": 0.2817,
+   "eur_rub_avg": 96.7011,
+   "usd_rub_avg": 88.6803,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2024-02",
+   "og_rev_rub": 945.6,
+   "og_rev_eur": 9.58,
+   "og_rev_usd": 10.332,
+   "total_rev_rub": 2630.5,
+   "total_rev_eur": 26.651,
+   "share": 0.3595,
+   "eur_rub_avg": 98.7035,
+   "usd_rub_avg": 91.5183,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2024-03",
+   "og_rev_rub": 1307.6,
+   "og_rev_eur": 13.119,
+   "og_rev_usd": 14.255,
+   "total_rev_rub": 3693.8,
+   "total_rev_eur": 37.059,
+   "share": 0.354,
+   "eur_rub_avg": 99.6726,
+   "usd_rub_avg": 91.7316,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2024-04",
+   "og_rev_rub": 1229.0,
+   "og_rev_eur": 12.322,
+   "og_rev_usd": 13.221,
+   "total_rev_rub": 2967.7,
+   "total_rev_eur": 29.753,
+   "share": 0.4141,
+   "eur_rub_avg": 99.7436,
+   "usd_rub_avg": 92.9586,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2024-05",
+   "og_rev_rub": 793.6,
+   "og_rev_eur": 8.092,
+   "og_rev_usd": 8.759,
+   "total_rev_rub": 2602.8,
+   "total_rev_eur": 26.541,
+   "share": 0.3049,
+   "eur_rub_avg": 98.0669,
+   "usd_rub_avg": 90.6072,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2024-06",
+   "og_rev_rub": 746.6,
+   "og_rev_eur": 7.896,
+   "og_rev_usd": 8.508,
+   "total_rev_rub": 2805.4,
+   "total_rev_eur": 29.669,
+   "share": 0.2661,
+   "eur_rub_avg": 94.5558,
+   "usd_rub_avg": 87.7569,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2024-07",
+   "og_rev_rub": 1079.3,
+   "og_rev_eur": 11.358,
+   "og_rev_usd": 12.336,
+   "total_rev_rub": 2655.6,
+   "total_rev_eur": 27.947,
+   "share": 0.4064,
+   "eur_rub_avg": 95.0233,
+   "usd_rub_avg": 87.4916,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2024-08",
+   "og_rev_rub": 778.5,
+   "og_rev_eur": 7.937,
+   "og_rev_usd": 8.731,
+   "total_rev_rub": 3283.1,
+   "total_rev_eur": 33.473,
+   "share": 0.2371,
+   "eur_rub_avg": 98.081,
+   "usd_rub_avg": 89.1602,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2024-09",
+   "og_rev_rub": 771.9,
+   "og_rev_eur": 7.625,
+   "og_rev_usd": 8.461,
+   "total_rev_rub": 3248.5,
+   "total_rev_eur": 32.09,
+   "share": 0.2376,
+   "eur_rub_avg": 101.2303,
+   "usd_rub_avg": 91.2345,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2024-10",
+   "og_rev_rub": 1211.9,
+   "og_rev_eur": 11.529,
+   "og_rev_usd": 12.603,
+   "total_rev_rub": 3394.1,
+   "total_rev_eur": 32.29,
+   "share": 0.3571,
+   "eur_rub_avg": 105.114,
+   "usd_rub_avg": 96.1602,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2024-11",
+   "og_rev_rub": 801.6,
+   "og_rev_eur": 7.478,
+   "og_rev_usd": 7.961,
+   "total_rev_rub": 2998.6,
+   "total_rev_eur": 27.975,
+   "share": 0.2673,
+   "eur_rub_avg": 107.1885,
+   "usd_rub_avg": 100.6874,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2024-12",
+   "og_rev_rub": 790.3,
+   "og_rev_eur": 7.346,
+   "og_rev_usd": 7.728,
+   "total_rev_rub": 4031.2,
+   "total_rev_eur": 37.47,
+   "share": 0.196,
+   "eur_rub_avg": 107.5857,
+   "usd_rub_avg": 102.2596,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2025-01",
+   "og_rev_rub": 789.1,
+   "og_rev_eur": 7.579,
+   "og_rev_usd": 7.859,
+   "total_rev_rub": 2672.4,
+   "total_rev_eur": 25.666,
+   "share": 0.2953,
+   "eur_rub_avg": 104.1219,
+   "usd_rub_avg": 100.4121,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2025-02",
+   "og_rev_rub": 771.2,
+   "og_rev_eur": 7.97,
+   "og_rev_usd": 8.316,
+   "total_rev_rub": 2674.8,
+   "total_rev_eur": 27.641,
+   "share": 0.2883,
+   "eur_rub_avg": 96.7687,
+   "usd_rub_avg": 92.7423,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2025-03",
+   "og_rev_rub": 1081.3,
+   "og_rev_eur": 11.659,
+   "og_rev_usd": 12.57,
+   "total_rev_rub": 3707.9,
+   "total_rev_eur": 39.98,
+   "share": 0.2916,
+   "eur_rub_avg": 92.7441,
+   "usd_rub_avg": 86.0234,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2025-04",
+   "og_rev_rub": 1085.6,
+   "og_rev_eur": 11.591,
+   "og_rev_usd": 13.013,
+   "total_rev_rub": 3224.4,
+   "total_rev_eur": 34.426,
+   "share": 0.3367,
+   "eur_rub_avg": 93.6623,
+   "usd_rub_avg": 83.4256,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2025-05",
+   "og_rev_rub": 512.7,
+   "og_rev_eur": 5.653,
+   "og_rev_usd": 6.392,
+   "total_rev_rub": 2460.8,
+   "total_rev_eur": 27.133,
+   "share": 0.2083,
+   "eur_rub_avg": 90.6948,
+   "usd_rub_avg": 80.2048,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2025-06",
+   "og_rev_rub": 494.8,
+   "og_rev_eur": 5.466,
+   "og_rev_usd": 6.29,
+   "total_rev_rub": 2854.0,
+   "total_rev_eur": 31.528,
+   "share": 0.1734,
+   "eur_rub_avg": 90.5219,
+   "usd_rub_avg": 78.6679,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2025-07",
+   "og_rev_rub": 787.3,
+   "og_rev_eur": 8.531,
+   "og_rev_usd": 9.995,
+   "total_rev_rub": 2733.3,
+   "total_rev_eur": 29.616,
+   "share": 0.288,
+   "eur_rub_avg": 92.2918,
+   "usd_rub_avg": 78.7724,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2025-08",
+   "og_rev_rub": 505.0,
+   "og_rev_eur": 5.42,
+   "og_rev_usd": 6.302,
+   "total_rev_rub": 3411.9,
+   "total_rev_eur": 36.617,
+   "share": 0.148,
+   "eur_rub_avg": 93.1772,
+   "usd_rub_avg": 80.1278,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2025-09",
+   "og_rev_rub": 582.5,
+   "og_rev_eur": 5.975,
+   "og_rev_usd": 7.021,
+   "total_rev_rub": 3214.0,
+   "total_rev_eur": 32.967,
+   "share": 0.1812,
+   "eur_rub_avg": 97.4907,
+   "usd_rub_avg": 82.9708,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2025-10",
+   "og_rev_rub": 888.6,
+   "og_rev_eur": 9.427,
+   "og_rev_usd": 10.981,
+   "total_rev_rub": 2986.0,
+   "total_rev_eur": 31.679,
+   "share": 0.2976,
+   "eur_rub_avg": 94.259,
+   "usd_rub_avg": 80.9214,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2025-11",
+   "og_rev_rub": 530.9,
+   "og_rev_eur": 5.709,
+   "og_rev_usd": 6.608,
+   "total_rev_rub": 3006.2,
+   "total_rev_eur": 32.329,
+   "share": 0.1766,
+   "eur_rub_avg": 92.9869,
+   "usd_rub_avg": 80.3438,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2025-12",
+   "og_rev_rub": 447.8,
+   "og_rev_eur": 4.874,
+   "og_rev_usd": 5.712,
+   "total_rev_rub": 4338.1,
+   "total_rev_eur": 47.219,
+   "share": 0.1032,
+   "eur_rub_avg": 91.8712,
+   "usd_rub_avg": 78.4016,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2026-01",
+   "og_rev_rub": 393.3,
+   "og_rev_eur": 4.329,
+   "og_rev_usd": 5.094,
+   "total_rev_rub": 2364.3,
+   "total_rev_eur": 26.023,
+   "share": 0.1663,
+   "eur_rub_avg": 90.8532,
+   "usd_rub_avg": 77.215,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2026-02",
+   "og_rev_rub": 432.3,
+   "og_rev_eur": 4.748,
+   "og_rev_usd": 5.62,
+   "total_rev_rub": 2405.3,
+   "total_rev_eur": 26.417,
+   "share": 0.1797,
+   "eur_rub_avg": 91.0506,
+   "usd_rub_avg": 76.9278,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2026-03",
+   "og_rev_rub": 617.0,
+   "og_rev_eur": 6.632,
+   "og_rev_usd": 7.664,
+   "total_rev_rub": 3545.4,
+   "total_rev_eur": 38.11,
+   "share": 0.174,
+   "eur_rub_avg": 93.0318,
+   "usd_rub_avg": 80.5037,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2026-04",
+   "og_rev_rub": 855.6,
+   "og_rev_eur": 9.528,
+   "og_rev_usd": 11.128,
+   "total_rev_rub": 3412.0,
+   "total_rev_eur": 37.998,
+   "share": 0.2508,
+   "eur_rub_avg": 89.794,
+   "usd_rub_avg": 76.8898,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2026-05",
+   "og_rev_rub": 678.9,
+   "og_rev_eur": 7.954,
+   "og_rev_usd": 9.324,
+   "total_rev_rub": 3060.4,
+   "total_rev_eur": 35.858,
+   "share": 0.2218,
+   "eur_rub_avg": 85.3482,
+   "usd_rub_avg": 72.8112,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2026-06",
+   "og_rev_rub": 683.6,
+   "og_rev_eur": 8.042,
+   "og_rev_usd": 9.29,
+   "total_rev_rub": 3854.5,
+   "total_rev_eur": 45.345,
+   "share": 0.1774,
+   "eur_rub_avg": 85.004,
+   "usd_rub_avg": 73.5829,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2026-07",
+   "og_rev_rub": 933.9,
+   "og_rev_eur": 10.509,
+   "og_rev_usd": 11.991,
+   "total_rev_rub": 3493.1,
+   "total_rev_eur": 39.308,
+   "share": 0.2674,
+   "eur_rub_avg": 88.866,
+   "usd_rub_avg": 77.8817,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2026-08",
+   "og_rev_rub": 424.0,
+   "og_rev_eur": 4.402,
+   "og_rev_usd": 5.098,
+   "total_rev_rub": 3817.4,
+   "total_rev_eur": 39.632,
+   "share": 0.1111,
+   "eur_rub_avg": 96.3224,
+   "usd_rub_avg": 83.1745,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  },
+  {
+   "ym": "2026-09",
+   "og_rev_rub": 452.4,
+   "og_rev_eur": 4.607,
+   "og_rev_usd": 5.315,
+   "total_rev_rub": 3687.1,
+   "total_rev_eur": 37.547,
+   "share": 0.1227,
+   "eur_rub_avg": 98.1992,
+   "usd_rub_avg": 85.1103,
+   "src": "minfin_fedbud_month_ytd.csv (month = cumulative minus previous month)"
+  }
+ ],
+ "yearly": {
+  "2019": {
+   "months": 12,
+   "period": "2019-01..2019-12",
+   "og_rev_rub": 7924.3,
+   "og_rev_eur": 109.45,
+   "og_rev_usd": 122.57,
+   "total_rev_rub": 20188.8,
+   "total_rev_eur": 279.39,
+   "share": 0.3925,
+   "minfin_annual_og_rub": 7924.3,
+   "minfin_annual_total_rub": 20188.8,
+   "complete": true
+  },
+  "2020": {
+   "months": 12,
+   "period": "2020-01..2020-12",
+   "og_rev_rub": 5235.2,
+   "og_rev_eur": 64.58,
+   "og_rev_usd": 73.42,
+   "total_rev_rub": 18719.1,
+   "total_rev_eur": 227.4,
+   "share": 0.2797,
+   "minfin_annual_og_rub": 5235.2,
+   "minfin_annual_total_rub": 18719.1,
+   "complete": true
+  },
+  "2021": {
+   "months": 12,
+   "period": "2021-01..2021-12",
+   "og_rev_rub": 9056.5,
+   "og_rev_eur": 104.51,
+   "og_rev_usd": 123.1,
+   "total_rev_rub": 25286.4,
+   "total_rev_eur": 291.39,
+   "share": 0.3582,
+   "minfin_annual_og_rub": 9056.5,
+   "minfin_annual_total_rub": 25286.4,
+   "complete": true
+  },
+  "2022": {
+   "months": 12,
+   "period": "2022-01..2022-12",
+   "og_rev_rub": 11586.2,
+   "og_rev_eur": 161.93,
+   "og_rev_usd": 169.46,
+   "total_rev_rub": 27824.4,
+   "total_rev_eur": 393.71,
+   "share": 0.4164,
+   "minfin_annual_og_rub": 11586.2,
+   "minfin_annual_total_rub": 27824.0,
+   "complete": true
+  },
+  "2023": {
+   "months": 12,
+   "period": "2023-01..2023-12",
+   "og_rev_rub": 8822.3,
+   "og_rev_eur": 94.41,
+   "og_rev_usd": 101.93,
+   "total_rev_rub": 29124.0,
+   "total_rev_eur": 313.63,
+   "share": 0.3029,
+   "minfin_annual_og_rub": 8822.3,
+   "minfin_annual_total_rub": 29124.0,
+   "complete": true
+  },
+  "2024": {
+   "months": 12,
+   "period": "2024-01..2024-12",
+   "og_rev_rub": 11131.1,
+   "og_rev_eur": 111.26,
+   "og_rev_usd": 120.51,
+   "total_rev_rub": 36708.6,
+   "total_rev_eur": 365.71,
+   "share": 0.3032,
+   "minfin_annual_og_rub": 11131.1,
+   "minfin_annual_total_rub": 36708.6,
+   "complete": true
+  },
+  "2025": {
+   "months": 12,
+   "period": "2025-01..2025-12",
+   "og_rev_rub": 8476.8,
+   "og_rev_eur": 89.85,
+   "og_rev_usd": 101.06,
+   "total_rev_rub": 37283.8,
+   "total_rev_eur": 396.8,
+   "share": 0.2274,
+   "minfin_annual_og_rub": 8476.85,
+   "minfin_annual_total_rub": 37283.77,
+   "complete": true
+  },
+  "2026": {
+   "months": 9,
+   "period": "2026-01..2026-09",
+   "og_rev_rub": 5471.0,
+   "og_rev_eur": 60.75,
+   "og_rev_usd": 70.52,
+   "total_rev_rub": 29639.5,
+   "total_rev_eur": 326.24,
+   "share": 0.1846,
+   "minfin_annual_og_rub": null,
+   "minfin_annual_total_rub": null,
+   "complete": false
+  }
+ },
+ "crea_monthly_export_revenue": [
+  {
+   "ym": "2021-01",
+   "total_eur_bn": 13.473,
+   "oil_gas_eur_bn": 12.217,
+   "by_group_eur_bn": {
+    "Coal": 1.256,
+    "Crude oil": 5.024,
+    "LNG": 0.941,
+    "Oil products and chemicals": 3.97,
+    "Pipeline gas": 2.282
+   },
+   "partial": false
+  },
+  {
+   "ym": "2021-02",
+   "total_eur_bn": 13.039,
+   "oil_gas_eur_bn": 11.886,
+   "by_group_eur_bn": {
+    "Coal": 1.153,
+    "Crude oil": 5.392,
+    "LNG": 0.873,
+    "Oil products and chemicals": 3.432,
+    "Pipeline gas": 2.188
+   },
+   "partial": false
+  },
+  {
+   "ym": "2021-03",
+   "total_eur_bn": 16.095,
+   "oil_gas_eur_bn": 14.599,
+   "by_group_eur_bn": {
+    "Coal": 1.495,
+    "Crude oil": 5.843,
+    "LNG": 0.903,
+    "Oil products and chemicals": 5.045,
+    "Pipeline gas": 2.808
+   },
+   "partial": false
+  },
+  {
+   "ym": "2021-04",
+   "total_eur_bn": 16.42,
+   "oil_gas_eur_bn": 14.927,
+   "by_group_eur_bn": {
+    "Coal": 1.494,
+    "Crude oil": 5.943,
+    "LNG": 0.919,
+    "Oil products and chemicals": 5.223,
+    "Pipeline gas": 2.842
+   },
+   "partial": false
+  },
+  {
+   "ym": "2021-05",
+   "total_eur_bn": 17.228,
+   "oil_gas_eur_bn": 15.638,
+   "by_group_eur_bn": {
+    "Coal": 1.59,
+    "Crude oil": 6.093,
+    "LNG": 1.027,
+    "Oil products and chemicals": 5.397,
+    "Pipeline gas": 3.121
+   },
+   "partial": false
+  },
+  {
+   "ym": "2021-06",
+   "total_eur_bn": 18.471,
+   "oil_gas_eur_bn": 16.818,
+   "by_group_eur_bn": {
+    "Coal": 1.653,
+    "Crude oil": 7.024,
+    "LNG": 1.087,
+    "Oil products and chemicals": 5.05,
+    "Pipeline gas": 3.658
+   },
+   "partial": false
+  },
+  {
+   "ym": "2021-07",
+   "total_eur_bn": 19.793,
+   "oil_gas_eur_bn": 17.762,
+   "by_group_eur_bn": {
+    "Coal": 2.031,
+    "Crude oil": 7.294,
+    "LNG": 1.006,
+    "Oil products and chemicals": 5.658,
+    "Pipeline gas": 3.804
+   },
+   "partial": false
+  },
+  {
+   "ym": "2021-08",
+   "total_eur_bn": 20.196,
+   "oil_gas_eur_bn": 18.168,
+   "by_group_eur_bn": {
+    "Coal": 2.028,
+    "Crude oil": 7.166,
+    "LNG": 0.789,
+    "Oil products and chemicals": 5.493,
+    "Pipeline gas": 4.721
+   },
+   "partial": false
+  },
+  {
+   "ym": "2021-09",
+   "total_eur_bn": 20.428,
+   "oil_gas_eur_bn": 18.459,
+   "by_group_eur_bn": {
+    "Coal": 1.969,
+    "Crude oil": 6.732,
+    "LNG": 1.262,
+    "Oil products and chemicals": 5.408,
+    "Pipeline gas": 5.057
+   },
+   "partial": false
+  },
+  {
+   "ym": "2021-10",
+   "total_eur_bn": 26.469,
+   "oil_gas_eur_bn": 24.091,
+   "by_group_eur_bn": {
+    "Coal": 2.378,
+    "Crude oil": 8.512,
+    "LNG": 1.978,
+    "Oil products and chemicals": 5.944,
+    "Pipeline gas": 7.658
+   },
+   "partial": false
+  },
+  {
+   "ym": "2021-11",
+   "total_eur_bn": 27.61,
+   "oil_gas_eur_bn": 25.141,
+   "by_group_eur_bn": {
+    "Coal": 2.469,
+    "Crude oil": 8.376,
+    "LNG": 2.207,
+    "Oil products and chemicals": 6.599,
+    "Pipeline gas": 7.959
+   },
+   "partial": false
+  },
+  {
+   "ym": "2021-12",
+   "total_eur_bn": 28.097,
+   "oil_gas_eur_bn": 26.288,
+   "by_group_eur_bn": {
+    "Coal": 1.809,
+    "Crude oil": 7.585,
+    "LNG": 2.983,
+    "Oil products and chemicals": 6.44,
+    "Pipeline gas": 9.281
+   },
+   "partial": false
+  },
+  {
+   "ym": "2022-01",
+   "total_eur_bn": 30.596,
+   "oil_gas_eur_bn": 28.745,
+   "by_group_eur_bn": {
+    "Coal": 1.851,
+    "Crude oil": 11.418,
+    "LNG": 2.802,
+    "Oil products and chemicals": 6.387,
+    "Pipeline gas": 8.137
+   },
+   "partial": false
+  },
+  {
+   "ym": "2022-02",
+   "total_eur_bn": 28.475,
+   "oil_gas_eur_bn": 26.641,
+   "by_group_eur_bn": {
+    "Coal": 1.834,
+    "Crude oil": 10.317,
+    "LNG": 2.206,
+    "Oil products and chemicals": 6.973,
+    "Pipeline gas": 7.145
+   },
+   "partial": false
+  },
+  {
+   "ym": "2022-03",
+   "total_eur_bn": 37.415,
+   "oil_gas_eur_bn": 34.934,
+   "by_group_eur_bn": {
+    "Coal": 2.481,
+    "Crude oil": 11.413,
+    "LNG": 2.766,
+    "Oil products and chemicals": 8.928,
+    "Pipeline gas": 11.827
+   },
+   "partial": false
+  },
+  {
+   "ym": "2022-04",
+   "total_eur_bn": 35.006,
+   "oil_gas_eur_bn": 31.889,
+   "by_group_eur_bn": {
+    "Coal": 3.117,
+    "Crude oil": 11.28,
+    "LNG": 2.78,
+    "Oil products and chemicals": 8.591,
+    "Pipeline gas": 9.238
+   },
+   "partial": false
+  },
+  {
+   "ym": "2022-05",
+   "total_eur_bn": 33.91,
+   "oil_gas_eur_bn": 30.745,
+   "by_group_eur_bn": {
+    "Coal": 3.165,
+    "Crude oil": 12.809,
+    "LNG": 2.618,
+    "Oil products and chemicals": 7.222,
+    "Pipeline gas": 8.096
+   },
+   "partial": false
+  },
+  {
+   "ym": "2022-06",
+   "total_eur_bn": 31.419,
+   "oil_gas_eur_bn": 28.34,
+   "by_group_eur_bn": {
+    "Coal": 3.079,
+    "Crude oil": 13.151,
+    "LNG": 1.971,
+    "Oil products and chemicals": 7.671,
+    "Pipeline gas": 5.547
+   },
+   "partial": false
+  },
+  {
+   "ym": "2022-07",
+   "total_eur_bn": 33.335,
+   "oil_gas_eur_bn": 29.146,
+   "by_group_eur_bn": {
+    "Coal": 4.189,
+    "Crude oil": 12.311,
+    "LNG": 2.22,
+    "Oil products and chemicals": 9.164,
+    "Pipeline gas": 5.452
+   },
+   "partial": false
+  },
+  {
+   "ym": "2022-08",
+   "total_eur_bn": 33.858,
+   "oil_gas_eur_bn": 30.457,
+   "by_group_eur_bn": {
+    "Coal": 3.401,
+    "Crude oil": 12.211,
+    "LNG": 2.797,
+    "Oil products and chemicals": 8.616,
+    "Pipeline gas": 6.833
+   },
+   "partial": false
+  },
+  {
+   "ym": "2022-09",
+   "total_eur_bn": 29.98,
+   "oil_gas_eur_bn": 26.618,
+   "by_group_eur_bn": {
+    "Coal": 3.361,
+    "Crude oil": 11.235,
+    "LNG": 2.989,
+    "Oil products and chemicals": 7.29,
+    "Pipeline gas": 5.104
+   },
+   "partial": false
+  },
+  {
+   "ym": "2022-10",
+   "total_eur_bn": 28.826,
+   "oil_gas_eur_bn": 25.472,
+   "by_group_eur_bn": {
+    "Coal": 3.355,
+    "Crude oil": 11.256,
+    "LNG": 3.2,
+    "Oil products and chemicals": 7.525,
+    "Pipeline gas": 3.491
+   },
+   "partial": false
+  },
+  {
+   "ym": "2022-11",
+   "total_eur_bn": 27.149,
+   "oil_gas_eur_bn": 24.02,
+   "by_group_eur_bn": {
+    "Coal": 3.129,
+    "Crude oil": 10.734,
+    "LNG": 2.864,
+    "Oil products and chemicals": 7.836,
+    "Pipeline gas": 2.585
+   },
+   "partial": false
+  },
+  {
+   "ym": "2022-12",
+   "total_eur_bn": 25.636,
+   "oil_gas_eur_bn": 22.74,
+   "by_group_eur_bn": {
+    "Coal": 2.896,
+    "Crude oil": 7.808,
+    "LNG": 3.064,
+    "Oil products and chemicals": 8.224,
+    "Pipeline gas": 3.644
+   },
+   "partial": false
+  },
+  {
+   "ym": "2023-01",
+   "total_eur_bn": 22.158,
+   "oil_gas_eur_bn": 19.264,
+   "by_group_eur_bn": {
+    "Coal": 2.894,
+    "Crude oil": 7.386,
+    "LNG": 2.422,
+    "Oil products and chemicals": 6.951,
+    "Pipeline gas": 2.505
+   },
+   "partial": false
+  },
+  {
+   "ym": "2023-02",
+   "total_eur_bn": 18.643,
+   "oil_gas_eur_bn": 16.159,
+   "by_group_eur_bn": {
+    "Coal": 2.484,
+    "Crude oil": 7.411,
+    "LNG": 1.847,
+    "Oil products and chemicals": 4.592,
+    "Pipeline gas": 2.309
+   },
+   "partial": false
+  },
+  {
+   "ym": "2023-03",
+   "total_eur_bn": 19.823,
+   "oil_gas_eur_bn": 17.532,
+   "by_group_eur_bn": {
+    "Coal": 2.292,
+    "Crude oil": 7.846,
+    "LNG": 1.594,
+    "Oil products and chemicals": 6.14,
+    "Pipeline gas": 1.952
+   },
+   "partial": false
+  },
+  {
+   "ym": "2023-04",
+   "total_eur_bn": 19.14,
+   "oil_gas_eur_bn": 17.066,
+   "by_group_eur_bn": {
+    "Coal": 2.074,
+    "Crude oil": 6.576,
+    "LNG": 1.31,
+    "Oil products and chemicals": 7.189,
+    "Pipeline gas": 1.991
+   },
+   "partial": false
+  },
+  {
+   "ym": "2023-05",
+   "total_eur_bn": 21.103,
+   "oil_gas_eur_bn": 18.956,
+   "by_group_eur_bn": {
+    "Coal": 2.147,
+    "Crude oil": 9.045,
+    "LNG": 1.49,
+    "Oil products and chemicals": 6.877,
+    "Pipeline gas": 1.544
+   },
+   "partial": false
+  },
+  {
+   "ym": "2023-06",
+   "total_eur_bn": 21.064,
+   "oil_gas_eur_bn": 18.967,
+   "by_group_eur_bn": {
+    "Coal": 2.097,
+    "Crude oil": 9.249,
+    "LNG": 1.156,
+    "Oil products and chemicals": 7.208,
+    "Pipeline gas": 1.355
+   },
+   "partial": false
+  },
+  {
+   "ym": "2023-07",
+   "total_eur_bn": 18.632,
+   "oil_gas_eur_bn": 16.712,
+   "by_group_eur_bn": {
+    "Coal": 1.92,
+    "Crude oil": 7.947,
+    "LNG": 0.988,
+    "Oil products and chemicals": 5.914,
+    "Pipeline gas": 1.863
+   },
+   "partial": false
+  },
+  {
+   "ym": "2023-08",
+   "total_eur_bn": 20.046,
+   "oil_gas_eur_bn": 18.342,
+   "by_group_eur_bn": {
+    "Coal": 1.704,
+    "Crude oil": 9.228,
+    "LNG": 1.036,
+    "Oil products and chemicals": 5.856,
+    "Pipeline gas": 2.222
+   },
+   "partial": false
+  },
+  {
+   "ym": "2023-09",
+   "total_eur_bn": 21.097,
+   "oil_gas_eur_bn": 19.427,
+   "by_group_eur_bn": {
+    "Coal": 1.671,
+    "Crude oil": 9.859,
+    "LNG": 1.164,
+    "Oil products and chemicals": 6.191,
+    "Pipeline gas": 2.212
+   },
+   "partial": false
+  },
+  {
+   "ym": "2023-10",
+   "total_eur_bn": 20.421,
+   "oil_gas_eur_bn": 18.767,
+   "by_group_eur_bn": {
+    "Coal": 1.655,
+    "Crude oil": 9.537,
+    "LNG": 1.287,
+    "Oil products and chemicals": 5.631,
+    "Pipeline gas": 2.311
+   },
+   "partial": false
+  },
+  {
+   "ym": "2023-11",
+   "total_eur_bn": 21.423,
+   "oil_gas_eur_bn": 19.875,
+   "by_group_eur_bn": {
+    "Coal": 1.548,
+    "Crude oil": 9.949,
+    "LNG": 1.819,
+    "Oil products and chemicals": 5.514,
+    "Pipeline gas": 2.594
+   },
+   "partial": false
+  },
+  {
+   "ym": "2023-12",
+   "total_eur_bn": 21.238,
+   "oil_gas_eur_bn": 19.84,
+   "by_group_eur_bn": {
+    "Coal": 1.398,
+    "Crude oil": 9.116,
+    "LNG": 1.664,
+    "Oil products and chemicals": 6.511,
+    "Pipeline gas": 2.549
+   },
+   "partial": false
+  },
+  {
+   "ym": "2024-01",
+   "total_eur_bn": 19.363,
+   "oil_gas_eur_bn": 18.076,
+   "by_group_eur_bn": {
+    "Coal": 1.286,
+    "Crude oil": 8.121,
+    "LNG": 1.631,
+    "Oil products and chemicals": 5.876,
+    "Pipeline gas": 2.449
+   },
+   "partial": false
+  },
+  {
+   "ym": "2024-02",
+   "total_eur_bn": 18.01,
+   "oil_gas_eur_bn": 16.699,
+   "by_group_eur_bn": {
+    "Coal": 1.311,
+    "Crude oil": 8.297,
+    "LNG": 1.121,
+    "Oil products and chemicals": 4.877,
+    "Pipeline gas": 2.404
+   },
+   "partial": false
+  },
+  {
+   "ym": "2024-03",
+   "total_eur_bn": 20.893,
+   "oil_gas_eur_bn": 19.563,
+   "by_group_eur_bn": {
+    "Coal": 1.33,
+    "Crude oil": 10.117,
+    "LNG": 1.168,
+    "Oil products and chemicals": 6.11,
+    "Pipeline gas": 2.168
+   },
+   "partial": false
+  },
+  {
+   "ym": "2024-04",
+   "total_eur_bn": 20.222,
+   "oil_gas_eur_bn": 18.717,
+   "by_group_eur_bn": {
+    "Coal": 1.505,
+    "Crude oil": 9.643,
+    "LNG": 1.157,
+    "Oil products and chemicals": 6.407,
+    "Pipeline gas": 1.51
+   },
+   "partial": false
+  },
+  {
+   "ym": "2024-05",
+   "total_eur_bn": 21.788,
+   "oil_gas_eur_bn": 20.176,
+   "by_group_eur_bn": {
+    "Coal": 1.611,
+    "Crude oil": 10.315,
+    "LNG": 1.169,
+    "Oil products and chemicals": 6.779,
+    "Pipeline gas": 1.913
+   },
+   "partial": false
+  },
+  {
+   "ym": "2024-06",
+   "total_eur_bn": 19.695,
+   "oil_gas_eur_bn": 18.035,
+   "by_group_eur_bn": {
+    "Coal": 1.66,
+    "Crude oil": 9.043,
+    "LNG": 1.104,
+    "Oil products and chemicals": 6.168,
+    "Pipeline gas": 1.72
+   },
+   "partial": false
+  },
+  {
+   "ym": "2024-07",
+   "total_eur_bn": 20.385,
+   "oil_gas_eur_bn": 18.736,
+   "by_group_eur_bn": {
+    "Coal": 1.649,
+    "Crude oil": 9.35,
+    "LNG": 1.013,
+    "Oil products and chemicals": 6.102,
+    "Pipeline gas": 2.272
+   },
+   "partial": false
+  },
+  {
+   "ym": "2024-08",
+   "total_eur_bn": 20.854,
+   "oil_gas_eur_bn": 19.269,
+   "by_group_eur_bn": {
+    "Coal": 1.586,
+    "Crude oil": 9.095,
+    "LNG": 1.26,
+    "Oil products and chemicals": 6.425,
+    "Pipeline gas": 2.489
+   },
+   "partial": false
+  },
+  {
+   "ym": "2024-09",
+   "total_eur_bn": 18.753,
+   "oil_gas_eur_bn": 17.289,
+   "by_group_eur_bn": {
+    "Coal": 1.465,
+    "Crude oil": 8.322,
+    "LNG": 1.461,
+    "Oil products and chemicals": 5.271,
+    "Pipeline gas": 2.235
+   },
+   "partial": false
+  },
+  {
+   "ym": "2024-10",
+   "total_eur_bn": 18.657,
+   "oil_gas_eur_bn": 17.207,
+   "by_group_eur_bn": {
+    "Coal": 1.45,
+    "Crude oil": 8.794,
+    "LNG": 1.34,
+    "Oil products and chemicals": 4.971,
+    "Pipeline gas": 2.102
+   },
+   "partial": false
+  },
+  {
+   "ym": "2024-11",
+   "total_eur_bn": 18.359,
+   "oil_gas_eur_bn": 17.125,
+   "by_group_eur_bn": {
+    "Coal": 1.234,
+    "Crude oil": 8.199,
+    "LNG": 1.352,
+    "Oil products and chemicals": 4.841,
+    "Pipeline gas": 2.732
+   },
+   "partial": false
+  },
+  {
+   "ym": "2024-12",
+   "total_eur_bn": 18.975,
+   "oil_gas_eur_bn": 17.606,
+   "by_group_eur_bn": {
+    "Coal": 1.369,
+    "Crude oil": 8.431,
+    "LNG": 1.799,
+    "Oil products and chemicals": 4.6,
+    "Pipeline gas": 2.776
+   },
+   "partial": false
+  },
+  {
+   "ym": "2025-01",
+   "total_eur_bn": 18.039,
+   "oil_gas_eur_bn": 16.68,
+   "by_group_eur_bn": {
+    "Coal": 1.359,
+    "Crude oil": 8.075,
+    "LNG": 1.516,
+    "Oil products and chemicals": 4.684,
+    "Pipeline gas": 2.405
+   },
+   "partial": false
+  },
+  {
+   "ym": "2025-02",
+   "total_eur_bn": 17.264,
+   "oil_gas_eur_bn": 16.128,
+   "by_group_eur_bn": {
+    "Coal": 1.136,
+    "Crude oil": 7.546,
+    "LNG": 1.536,
+    "Oil products and chemicals": 4.736,
+    "Pipeline gas": 2.31
+   },
+   "partial": false
+  },
+  {
+   "ym": "2025-03",
+   "total_eur_bn": 18.463,
+   "oil_gas_eur_bn": 17.153,
+   "by_group_eur_bn": {
+    "Coal": 1.31,
+    "Crude oil": 8.562,
+    "LNG": 1.232,
+    "Oil products and chemicals": 5.522,
+    "Pipeline gas": 1.838
+   },
+   "partial": false
+  },
+  {
+   "ym": "2025-04",
+   "total_eur_bn": 16.983,
+   "oil_gas_eur_bn": 15.644,
+   "by_group_eur_bn": {
+    "Coal": 1.339,
+    "Crude oil": 7.674,
+    "LNG": 1.282,
+    "Oil products and chemicals": 4.988,
+    "Pipeline gas": 1.701
+   },
+   "partial": false
+  },
+  {
+   "ym": "2025-05",
+   "total_eur_bn": 16.833,
+   "oil_gas_eur_bn": 15.26,
+   "by_group_eur_bn": {
+    "Coal": 1.573,
+    "Crude oil": 7.241,
+    "LNG": 1.34,
+    "Oil products and chemicals": 5.246,
+    "Pipeline gas": 1.433
+   },
+   "partial": false
+  },
+  {
+   "ym": "2025-06",
+   "total_eur_bn": 16.092,
+   "oil_gas_eur_bn": 14.618,
+   "by_group_eur_bn": {
+    "Coal": 1.474,
+    "Crude oil": 7.478,
+    "LNG": 1.138,
+    "Oil products and chemicals": 4.623,
+    "Pipeline gas": 1.379
+   },
+   "partial": false
+  },
+  {
+   "ym": "2025-07",
+   "total_eur_bn": 16.14,
+   "oil_gas_eur_bn": 14.526,
+   "by_group_eur_bn": {
+    "Coal": 1.614,
+    "Crude oil": 7.357,
+    "LNG": 1.001,
+    "Oil products and chemicals": 4.394,
+    "Pipeline gas": 1.774
+   },
+   "partial": false
+  },
+  {
+   "ym": "2025-08",
+   "total_eur_bn": 16.242,
+   "oil_gas_eur_bn": 14.483,
+   "by_group_eur_bn": {
+    "Coal": 1.759,
+    "Crude oil": 6.895,
+    "LNG": 1.076,
+    "Oil products and chemicals": 4.782,
+    "Pipeline gas": 1.731
+   },
+   "partial": false
+  },
+  {
+   "ym": "2025-09",
+   "total_eur_bn": 14.856,
+   "oil_gas_eur_bn": 13.416,
+   "by_group_eur_bn": {
+    "Coal": 1.44,
+    "Crude oil": 6.82,
+    "LNG": 1.226,
+    "Oil products and chemicals": 3.794,
+    "Pipeline gas": 1.577
+   },
+   "partial": false
+  },
+  {
+   "ym": "2025-10",
+   "total_eur_bn": 14.704,
+   "oil_gas_eur_bn": 13.282,
+   "by_group_eur_bn": {
+    "Coal": 1.421,
+    "Crude oil": 6.963,
+    "LNG": 1.194,
+    "Oil products and chemicals": 3.673,
+    "Pipeline gas": 1.452
+   },
+   "partial": false
+  },
+  {
+   "ym": "2025-11",
+   "total_eur_bn": 13.698,
+   "oil_gas_eur_bn": 12.116,
+   "by_group_eur_bn": {
+    "Coal": 1.582,
+    "Crude oil": 6.142,
+    "LNG": 1.371,
+    "Oil products and chemicals": 3.127,
+    "Pipeline gas": 1.476
+   },
+   "partial": false
+  },
+  {
+   "ym": "2025-12",
+   "total_eur_bn": 13.938,
+   "oil_gas_eur_bn": 12.446,
+   "by_group_eur_bn": {
+    "Coal": 1.492,
+    "Crude oil": 5.788,
+    "LNG": 1.539,
+    "Oil products and chemicals": 3.367,
+    "Pipeline gas": 1.752
+   },
+   "partial": false
+  },
+  {
+   "ym": "2026-01",
+   "total_eur_bn": 13.88,
+   "oil_gas_eur_bn": 12.639,
+   "by_group_eur_bn": {
+    "Coal": 1.241,
+    "Crude oil": 6.083,
+    "LNG": 1.308,
+    "Oil products and chemicals": 3.324,
+    "Pipeline gas": 1.924
+   },
+   "partial": false
+  },
+  {
+   "ym": "2026-02",
+   "total_eur_bn": 12.417,
+   "oil_gas_eur_bn": 11.352,
+   "by_group_eur_bn": {
+    "Coal": 1.065,
+    "Crude oil": 5.525,
+    "LNG": 1.255,
+    "Oil products and chemicals": 3.054,
+    "Pipeline gas": 1.518
+   },
+   "partial": false
+  },
+  {
+   "ym": "2026-03",
+   "total_eur_bn": 16.812,
+   "oil_gas_eur_bn": 15.398,
+   "by_group_eur_bn": {
+    "Coal": 1.413,
+    "Crude oil": 7.743,
+    "LNG": 1.397,
+    "Oil products and chemicals": 4.018,
+    "Pipeline gas": 2.24
+   },
+   "partial": false
+  },
+  {
+   "ym": "2026-04",
+   "total_eur_bn": 19.219,
+   "oil_gas_eur_bn": 17.609,
+   "by_group_eur_bn": {
+    "Coal": 1.609,
+    "Crude oil": 8.425,
+    "LNG": 1.761,
+    "Oil products and chemicals": 5.113,
+    "Pipeline gas": 2.31
+   },
+   "partial": false
+  },
+  {
+   "ym": "2026-05",
+   "total_eur_bn": 21.25,
+   "oil_gas_eur_bn": 19.413,
+   "by_group_eur_bn": {
+    "Coal": 1.837,
+    "Crude oil": 10.181,
+    "LNG": 1.707,
+    "Oil products and chemicals": 5.454,
+    "Pipeline gas": 2.071
+   },
+   "partial": false
+  },
+  {
+   "ym": "2026-06",
+   "total_eur_bn": 22.235,
+   "oil_gas_eur_bn": 20.48,
+   "by_group_eur_bn": {
+    "Coal": 1.755,
+    "Crude oil": 11.061,
+    "LNG": 1.716,
+    "Oil products and chemicals": 6.087,
+    "Pipeline gas": 1.616
+   },
+   "partial": false
+  },
+  {
+   "ym": "2026-07",
+   "total_eur_bn": 18.861,
+   "oil_gas_eur_bn": 16.727,
+   "by_group_eur_bn": {
+    "Coal": 2.134,
+    "Crude oil": 10.095,
+    "LNG": 1.186,
+    "Oil products and chemicals": 3.748,
+    "Pipeline gas": 1.699
+   },
+   "partial": false
+  },
+  {
+   "ym": "2026-08",
+   "total_eur_bn": 17.756,
+   "oil_gas_eur_bn": 15.73,
+   "by_group_eur_bn": {
+    "Coal": 2.026,
+    "Crude oil": 9.942,
+    "LNG": 1.383,
+    "Oil products and chemicals": 2.361,
+    "Pipeline gas": 2.044
+   },
+   "partial": false
+  },
+  {
+   "ym": "2026-09",
+   "total_eur_bn": 17.757,
+   "oil_gas_eur_bn": 16.015,
+   "by_group_eur_bn": {
+    "Coal": 1.742,
+    "Crude oil": 9.166,
+    "LNG": 2.234,
+    "Oil products and chemicals": 2.474,
+    "Pipeline gas": 2.141
+   },
+   "partial": false
+  },
+  {
+   "ym": "2026-10",
+   "total_eur_bn": 14.426,
+   "oil_gas_eur_bn": 13.151,
+   "by_group_eur_bn": {
+    "Coal": 1.275,
+    "Crude oil": 7.512,
+    "LNG": 1.675,
+    "Oil products and chemicals": 2.089,
+    "Pipeline gas": 1.874
+   },
+   "partial": true
+  }
+ ],
+ "crea_yearly_export_revenue": {
+  "2021": {
+   "months": 12,
+   "total_eur_bn": 237.3,
+   "oil_gas_eur_bn": 216.0,
+   "budget_og_over_crea_oilgas": 0.484
+  },
+  "2022": {
+   "months": 12,
+   "total_eur_bn": 375.6,
+   "oil_gas_eur_bn": 339.7,
+   "budget_og_over_crea_oilgas": 0.477
+  },
+  "2023": {
+   "months": 12,
+   "total_eur_bn": 244.8,
+   "oil_gas_eur_bn": 220.9,
+   "budget_og_over_crea_oilgas": 0.427
+  },
+  "2024": {
+   "months": 12,
+   "total_eur_bn": 236.0,
+   "oil_gas_eur_bn": 218.5,
+   "budget_og_over_crea_oilgas": 0.509
+  },
+  "2025": {
+   "months": 12,
+   "total_eur_bn": 193.3,
+   "oil_gas_eur_bn": 175.8,
+   "budget_og_over_crea_oilgas": 0.511
+  },
+  "2026": {
+   "months": 9,
+   "total_eur_bn": 160.2,
+   "oil_gas_eur_bn": 145.4,
+   "budget_og_over_crea_oilgas": 0.418
+  }
+ },
+ "iea_export_revenue_usd_bn": {
+  "2026-09": {
+   "total": 17.67,
+   "crude": 14.5,
+   "products": 3.16,
+   "src": "tass_2026-10-14_iea_september.txt"
+  },
+  "2026-08": {
+   "total": 13.87,
+   "crude": 11.28,
+   "products": 2.59,
+   "src": "tass_2026-09-11_iea_august.txt"
+  },
+  "2026-07": {
+   "total": 13.76,
+   "crude": 11.11,
+   "products": 2.64,
+   "src": "tass_2026-08-12_iea_july.txt"
+  },
+  "2026-06": {
+   "total": 15.73,
+   "derived": "July + ~1.97 (12.5% fall)",
+   "src": "tass_2026-08-12_iea_july.txt"
+  },
+  "2025-09": {
+   "total": 13.35,
+   "derived": "Sep 2026 - 4.32",
+   "src": "tass_2026-10-14_iea_september.txt"
+  },
+  "2025-08": {
+   "total": 13.55,
+   "derived": "Aug 2026 - 0.32",
+   "src": "tass_2026-09-11_iea_august.txt"
+  },
+  "2025-07": {
+   "total": 14.48,
+   "derived": "Jul 2026 + 0.72",
+   "src": "tass_2026-08-12_iea_july.txt"
+  }
+ },
+ "cbr_bop_energy_exports_usd_bn": {
+  "2020": {
+   "crude": 72.6,
+   "products": 45.4,
+   "natural_gas": 25.7
+  },
+  "2021": {
+   "crude": 111.0,
+   "products": 70.0,
+   "natural_gas": 55.5
+  }
+ },
+ "defence_yearly": {
+  "2019": {
+   "national_defence_executed_rub_bn": 2997.4,
+   "national_defence_plan_rub_bn": null,
+   "plan_note": null,
+   "sipri_local_rub_bn": 4217.1,
+   "sipri_current_usd_bn": 65.1,
+   "sipri_share_gdp": 0.0385,
+   "sipri_share_govt_spending": 0.114,
+   "og_rev_over_national_defence": 2.644
+  },
+  "2020": {
+   "national_defence_executed_rub_bn": 3168.8,
+   "national_defence_plan_rub_bn": null,
+   "plan_note": null,
+   "sipri_local_rub_bn": 4462.1,
+   "sipri_current_usd_bn": 61.9,
+   "sipri_share_gdp": 0.0414,
+   "sipri_share_govt_spending": 0.1059,
+   "og_rev_over_national_defence": 1.652
+  },
+  "2021": {
+   "national_defence_executed_rub_bn": 3573.6,
+   "national_defence_plan_rub_bn": null,
+   "plan_note": null,
+   "sipri_local_rub_bn": 4855.2,
+   "sipri_current_usd_bn": 65.9,
+   "sipri_share_gdp": 0.036,
+   "sipri_share_govt_spending": 0.1031,
+   "og_rev_over_national_defence": 2.534
+  },
+  "2022": {
+   "national_defence_executed_rub_bn": null,
+   "national_defence_plan_rub_bn": null,
+   "plan_note": null,
+   "sipri_local_rub_bn": 7150.0,
+   "sipri_current_usd_bn": 104.4,
+   "sipri_share_gdp": 0.0456,
+   "sipri_share_govt_spending": 0.1296
+  },
+  "2023": {
+   "national_defence_executed_rub_bn": null,
+   "national_defence_plan_rub_bn": 6409,
+   "plan_note": "approx. 2023 budget level implied by Kommersant's +68.2% for 2024 (derived)",
+   "sipri_local_rub_bn": 9300.0,
+   "sipri_current_usd_bn": 109.2,
+   "sipri_share_gdp": 0.0527,
+   "sipri_share_govt_spending": 0.1477,
+   "og_rev_over_national_defence": 1.377
+  },
+  "2024": {
+   "national_defence_executed_rub_bn": null,
+   "national_defence_plan_rub_bn": 10780,
+   "plan_note": "budget law as adopted (Nov 2023)",
+   "sipri_local_rub_bn": 13827.5,
+   "sipri_current_usd_bn": 149.4,
+   "sipri_share_gdp": 0.0687,
+   "sipri_share_govt_spending": 0.1864,
+   "og_rev_over_national_defence": 1.033
+  },
+  "2025": {
+   "national_defence_executed_rub_bn": null,
+   "national_defence_plan_rub_bn": 13500,
+   "plan_note": "budget law as adopted (Nov 2024)",
+   "sipri_local_rub_bn": 15963.6,
+   "sipri_current_usd_bn": 190.4,
+   "sipri_share_gdp": 0.075,
+   "sipri_share_govt_spending": 0.1983,
+   "og_rev_over_national_defence": 0.628
+  },
+  "2026": {
+   "national_defence_executed_rub_bn": null,
+   "national_defence_plan_rub_bn": 12900,
+   "plan_note": "budget law as adopted (Nov 2025), before 2026 amendments",
+   "sipri_local_rub_bn": null,
+   "sipri_current_usd_bn": null,
+   "sipri_share_gdp": null,
+   "sipri_share_govt_spending": null
+  }
+ },
+ "sources": [
+  {
+   "name": "Minfin, monthly federal budget execution (open data fedbud_month)",
+   "url": "https://minfin.gov.ru/opendata/7710168360-fedbud_month/data-20261009T0100-structure-20210312T0100.csv",
+   "date": "data 2026-10-09; fetched 2026-10-27",
+   "type": "official",
+   "extract": "raw/russia_revenue_r58/minfin_fedbud_month_ytd.csv"
+  },
+  {
+   "name": "Minfin, yearly federal budget execution (open data fedbud_year)",
+   "url": "https://minfin.gov.ru/OpenData/7710168360-fedbud_year/data-20260505T0100-structure-20220211T0100.csv",
+   "date": "data 2026-05-05; fetched 2026-10-27",
+   "type": "official",
+   "extract": "raw/russia_revenue_r58/minfin_fedbud_year.csv"
+  },
+  {
+   "name": "Minfin, oil and gas revenue page (Svedeniya_20261005.xlsx, additional oil and gas revenue)",
+   "url": "https://minfin.gov.ru/ru/statistics/fedbud/oil",
+   "date": "2026-10-05; seen 2026-10-27",
+   "type": "official",
+   "extract": null
+  },
+  {
+   "name": "Bank of Russia official EUR/RUB rates",
+   "url": "https://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=01/01/2019&date_req2=27/10/2026&VAL_NM_RQ=R01239",
+   "date": "fetched 2026-10-27",
+   "type": "official",
+   "extract": "raw/russia_revenue_r58/cbr_eur_rub_daily.csv"
+  },
+  {
+   "name": "Bank of Russia official USD/RUB rates",
+   "url": "https://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=01/01/2019&date_req2=27/10/2026&VAL_NM_RQ=R01235",
+   "date": "fetched 2026-10-27",
+   "type": "official",
+   "extract": "raw/russia_revenue_r58/cbr_usd_rub_daily.csv"
+  },
+  {
+   "name": "Bank of Russia, exports of energy goods (BOP)",
+   "url": "https://cbr.ru/statistics/macro_itm/external_sector/etg/export_energy/",
+   "date": "updated 2024-11-07; read 2026-10-27",
+   "type": "official",
+   "extract": "raw/russia_revenue_r58/cbr_export_energy_2021.txt"
+  },
+  {
+   "name": "CREA Russia Fossil Tracker API, monthly by destination and fuel (repository copy)",
+   "url": "https://api.russiafossiltracker.com/v0/counter?aggregate_by=month%2Cdestination_iso2%2Cdestination_country%2Ccommodity_group&commodity_grouping=split_gas_oil&currency=EUR%2CUSD&date_to=2026-10-22&date_from=2021-01-01&format=csv",
+   "date": "retrieved 2026-10-23",
+   "type": "research (CREA)",
+   "extract": "raw/crea_api/counter_month_country_fuel_2026-10-23.json.gz"
+  },
+  {
+   "name": "CREA September 2026 monthly analysis",
+   "url": "https://energyandcleanair.org/september-2026-monthly-analysis-of-russian-fossil-fuel-exports-and-sanctions/",
+   "date": "2026-10-16/20; read 2026-10-27",
+   "type": "research (CREA)",
+   "extract": "raw/russia_revenue_r58/crea_2026-10_september_analysis.txt"
+  },
+  {
+   "name": "IEA Oil Market Report via TASS (tass_2026-10-14_iea_september.txt)",
+   "url": "https://tass.com/economy/2202067",
+   "date": "2026-10-14; read 2026-10-27",
+   "type": "news citing IEA",
+   "extract": "raw/russia_revenue_r58/tass_2026-10-14_iea_september.txt"
+  },
+  {
+   "name": "IEA Oil Market Report via TASS (tass_2026-09-11_iea_august.txt)",
+   "url": "https://tass.com/economy/2186003",
+   "date": "2026-09-11; read 2026-10-27",
+   "type": "news citing IEA",
+   "extract": "raw/russia_revenue_r58/tass_2026-09-11_iea_august.txt"
+  },
+  {
+   "name": "IEA Oil Market Report via TASS (tass_2026-08-12_iea_july.txt)",
+   "url": "https://tass.com/economy/2171847",
+   "date": "2026-08-12; read 2026-10-27",
+   "type": "news citing IEA",
+   "extract": "raw/russia_revenue_r58/tass_2026-08-12_iea_july.txt"
+  },
+  {
+   "name": "SIPRI Military Expenditure Database (April 2026)",
+   "url": "https://www.sipri.org/sites/default/files/SIPRI-Milex-data-1949-2025.xlsx",
+   "date": "2026-04; fetched 2026-10-27",
+   "type": "research (SIPRI)",
+   "extract": "raw/russia_revenue_r58/sipri_russia_milex.json"
+  },
+  {
+   "name": "Kommersant, budget 2024-2026 main figures",
+   "url": "https://www.kommersant.ru/doc/6348808",
+   "date": "2023-11-18; read 2026-10-27",
+   "type": "news",
+   "extract": "raw/russia_revenue_r58/kommersant_2023-11-18_budget_2024.txt"
+  },
+  {
+   "name": "Mediazona, budget 2025-2027 adopted",
+   "url": "https://zona.media/news/2024/11/21/byudzet",
+   "date": "2024-11-21; read 2026-10-27",
+   "type": "news",
+   "extract": "raw/russia_revenue_r58/zona_2024-11-21_budget_2025.txt"
+  },
+  {
+   "name": "T-Zh, budget 2026 adopted",
+   "url": "https://t-j.ru/news/budget-2026-approved/",
+   "date": "2025-12-01; read 2026-10-27",
+   "type": "news",
+   "extract": "raw/russia_revenue_r58/tj_2025-12-01_budget_2026.txt"
+  },
+  {
+   "name": "SIPRI fact sheet April 2026",
+   "url": "https://www.sipri.org/sites/default/files/2026-04/2604_milex_2025.pdf",
+   "date": "2026-04; read 2026-10-27",
+   "type": "research (SIPRI)",
+   "extract": "raw/russia_revenue_r58/sipri_2026-04_factsheet.txt"
+  }
+ ]
+}

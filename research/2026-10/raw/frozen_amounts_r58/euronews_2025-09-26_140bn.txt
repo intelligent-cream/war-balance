@@ -1,0 +1,7 @@
+URL: https://www.euronews.com/my-europe/2025/09/26/brussels-pitches-140-billion-loan-to-ukraine-based-on-russias-frozen-assets
+Fetched: 2026-10-27
+HTTP: 406
+(no extract: the site refused the download or the page did not hold the figure; read via a browser-type fetch or a search summary, see the JSON)
+Extract (short passages around the figures used):
+
+
