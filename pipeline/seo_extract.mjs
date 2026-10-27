@@ -5,7 +5,7 @@
 
 /* global DATA, byIso, LANG, methodBands, loadLang, regionName, ISO2, calc, chance, chanceInfo, chanceText, chanceSentence, uncertain, leaning, isNearZero,
    noDataAt, scaled, fmtMeasure, rangeWords, eur, headVerb, verbAround, verb, netSentence, keptWords, leadLine, partSections, plainName,
-   partGrade, evidence, kielLine, partSourceIds, SRC, tData, docsOf, yearsOf, YEARS, FRAC, yi, PARTY_TO_WAR, PARTY_WHY, t, countrySlug,
+   partGrade, evidence, UA_PARTS, OWN_LINE, kielLine, partSourceIds, SRC, tData, docsOf, yearsOf, YEARS, FRAC, yi, PARTY_TO_WAR, PARTY_WHY, t, countrySlug,
    HEAD3, refs, kielFigure, REGION_OF, storyTags, decideLine, uncReason, frozenLine, sanctionNote, chplNote, remitNote, takenNote, noDataLine,
    fairnessNote, structuralNote, dualUseNote, partNote, dataText, num, money, METHOD_INPUTS, srcTier, REPO */
 
@@ -91,10 +91,21 @@ export async function extractSite({ lang, isos }) {
     out.measures = { net: M(k.shift, k.shiftLo, k.shiftHi, "net", "net"), ua: M(k.uaBal, k.uaLo, k.uaHi, "ua", "ua"), rus: M(k.rusBal, k.rusLo, k.rusHi, "net", "rus"),
       frozen: M(k.frozen, k.frozenLo, k.frozenHi, "net"), paidGain: M(k.rusPaid, k.rusPaidLo, k.rusPaidHi, "net"), paid: M(k.paidRussia || 0, null, null),
       kiel: M(typeof kielFigure === "function" ? kielFigure(c) : null, null, null), aid: M(ap ? ap.v : 0, ap ? ap.lo : null, ap ? ap.hi : null, "ua") };
-    for (const p of k.shiftParts.concat(k.backShift)) out.measures["part:" + p.k] = { ...M(p.v, p.lo, p.hi, "part"), range: rangeWords(c, p.lo, p.hi, "part", "gdp", p.v >= 0 ? 1 : -1), name: strip(plainName(p, c)) };
+    // round 58 (owner: "the ranking does not work and the numbers make no sense"): a part is its value and its likely
+    // range (lo, hi: the same sign convention as the value, as calc() gives them) and its side in the model: "ua" (a part
+    // of support for Ukraine), "back" (money of the war effort spent in this economy: what it earned, subtracted from its
+    // support), "rus" (trade with Russia), "frozen" (the return Russia lost on money frozen here) or "cost" (outside the
+    // totals). A page writes the range in the value's own unit and sign (seo_topics.mjs); a part has no chance of its own
+    const back = new Set(k.backShift.map(p => p.k));
+    const sideOf = p => (back.has(p.k) ? "back" : UA_PARTS.has(p.k) ? "ua" : OWN_LINE.has(p.k) ? "frozen" : "rus");
+    const PM = (p, side) => ({ v: p.v, lo: Math.min(p.lo, p.hi), hi: Math.max(p.lo, p.hi), range: "", chance: "", level: "", side: "", partSide: side });
+    for (const p of k.shiftParts.concat(k.backShift)) out.measures["part:" + p.k] = PM(p, sideOf(p));
     // round 56 (more findable pages): the parts outside the totals (the oil discount, the cost of replacing Russian
     // energy, what Russia took from companies), marked as such, for their own pages
-    for (const p of k.costParts.concat(k.takenParts || [])) if (!out.measures["part:" + p.k]) out.measures["part:" + p.k] = { ...M(p.v, p.lo, p.hi, "part"), range: rangeWords(c, p.lo, p.hi, "part", "gdp", p.v >= 0 ? 1 : -1), name: strip(p.label), cost: true };
+    // round 58: the cost view counts the discount gained on Russian oil below zero (it lowers the cost; calc() gives
+    // it as "discount", the same amount above zero); its own page shows it as the discount gained, above zero
+    const GAIN = new Set(["disc"]), asGain = p => (GAIN.has(p.k) ? { ...p, v: -p.v, lo: -p.hi, hi: -p.lo } : p);
+    for (const p of k.costParts.concat(k.takenParts || [])) if (!out.measures["part:" + p.k]) out.measures["part:" + p.k] = { ...PM(asGain(p), "cost"), cost: true };
     // the fuel share of what it bought from Russia before the war (2018-2021, data.json), for the energy page
     out.fuelSharePreWar = c.to_rus && c.to_rus.gain && c.to_rus.gain.fossil_share != null ? c.to_rus.gain.fossil_share : null;
     out.region = typeof REGION_OF !== "undefined" ? REGION_OF[c.iso3] || "asia" : "";
@@ -118,10 +129,10 @@ export async function extractSite({ lang, isos }) {
         }) };
     });
     // each year's own amount (calc() sums from 2022 up to the year chosen)
-    let prev = { shift: 0, uaBal: 0, rusBal: 0 };
+    let prev = { shift: 0, uaBal: 0, rusBal: 0, frozen: 0 };
     out.years = YEARS.filter(y => y >= 2022).map(y => {
       const kk = calc(c, y), row = { y, ytd: FRAC[yi(y)] < 1, ua: eur(kk.uaBal - prev.uaBal, true), rus: eur(kk.rusBal - prev.rusBal, true), net: eur(kk.shift - prev.shift, true),
-        uaBn: kk.uaBal - prev.uaBal, rusBn: kk.rusBal - prev.rusBal, netBn: kk.shift - prev.shift, cum: g(kk.shift, true) };
+        uaBn: kk.uaBal - prev.uaBal, rusBn: kk.rusBal - prev.rusBal, frozenBn: kk.frozen - prev.frozen, netBn: kk.shift - prev.shift, cum: g(kk.shift, true) };
       prev = kk;
       return row;
     });

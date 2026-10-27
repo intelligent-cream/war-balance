@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 from pathlib import Path
 
@@ -390,3 +391,184 @@ def test_the_visible_questions_must_be_the_json_ld_and_every_source_a_working_li
         )
         == []
     )
+
+
+# ----- round 58 (owner: "the ranking does not work and the numbers make no sense"): the tables' own sanity -----
+ORDER_EN = {
+    "hiLo": "high to low",
+    "loHi": "low to high",
+    "bySize": "by size, either way",
+    "uaRu": "from the Ukraine side to the Russia side",
+    "ruUa": "from the Russia side to the Ukraine side",
+    "back": "by the amount subtracted, high to low",
+}
+WORDS_EN = ["likely", "about 0", "very likely", "too close to call", "near zero", "essentially zero"]
+
+
+def part_row(iso, name, gdp, pop, v, lo, hi, b, pct, pp, rg, extra=""):
+    lohi = f' data-lo="{lo}" data-hi="{hi}"' if lo is not None else ""
+    return (
+        f'<tr data-iso="{iso}" data-gdp="{gdp}" data-pop="{pop}"><td class="r">1</td><td><a href="/country/x/">{name}</a></td>'
+        f'<td class="m" data-q="part:purl" data-st="signed" data-v="{v}"{lohi}><b class="neg">{b}</b>'
+        f'<span class="s"><i>{pct} of GDP</i> · <i>{pp} per person</i></span>'
+        + (f'<span class="s rg">{rg}</span>' if rg else "")
+        + f"{extra}</td></tr>"
+    )
+
+
+def part_table(rows, order="asc", note="by the amount subtracted, high to low"):
+    return (
+        f'<p class="sub" data-note="order">Sorted by “X” in euros, {note}, February 2022 to August 2026.</p>'
+        f'<div class="tbl"><table class="topic" data-order="{order}" data-sort="eur" data-key="part:purl" data-side="back">'
+        f'<thead><tr><th>#</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
+    )
+
+
+GOOD_ROWS = [
+    part_row(
+        "USA",
+        "United States",
+        25843.769,
+        335,
+        -0.7024,
+        -1.409,
+        -0.3178,
+        "−€0.70bn",
+        "&lt;0.01%",
+        "−€2",
+        "range −€1.4bn to −€0.32bn",
+    ),
+    part_row(
+        "SWE", "Sweden", 546.789, 10.5, -0.301, -0.639, -0.0026, "−€0.30bn", "−0.06%", "−€29", "range −€0.64bn to −€3m"
+    ),
+    part_row(
+        "CZE",
+        "Czechia",
+        308.805,
+        10.9,
+        -0.1657,
+        -0.4874,
+        -0.0212,
+        "−€0.17bn",
+        "−0.05%",
+        "−€15",
+        "range −€0.49bn to −€21m",
+    ),
+]
+
+
+def test_sanity_a_good_part_table_passes():
+    probs, seen = sc.check_tables(part_table(GOOD_ROWS), "/p/", "en", WORDS_EN, ORDER_EN)
+    assert probs == []
+    assert seen[("SWE", "part:purl", 0)][0][:2] == ("eur", -0.3)
+
+
+def test_sanity_catches_the_part_page_the_owner_reported():
+    # Sweden as the page had it: "−0.06% … likely <0.01% to 0.12%", the name repeated in every row, the side's order in
+    # the words of the net ("from the Russia side to the Ukraine side")
+    bad = [
+        r.replace("range −€0.64bn to −€3m", "likely &lt;0.01% to 0.12%").replace(
+            "</td></tr>", f'<span class="s">{n} kept part of others\' aid, spent here</span></td></tr>'
+        )
+        for r, n in zip(GOOD_ROWS, ["United States", "Sweden", "Czechia"])
+    ]
+    probs, _ = sc.check_tables(
+        part_table(bad, note="from the Russia side to the Ukraine side"), "/p/", "en", WORDS_EN, ORDER_EN
+    )
+    text = "\n".join(probs)
+    assert "SWE part:purl: range 'likely" in text and "not in the unit of the value" in text
+    assert "chance or likely-range words ['likely']" in text
+    assert "repeats '◊ kept part of others' aid, spent here' in every row" in text
+    probs, _ = sc.check_tables(part_table(GOOD_ROWS, note="by size, either way"), "/p/", "en", WORDS_EN, ORDER_EN)
+    assert any("the note says 'abs', the table is sorted 'asc'" in p for p in probs)
+
+
+def test_sanity_catches_ranges_signs_shares_and_order():
+    # a range that does not hold the value, or runs high to low, or has no signs
+    r = GOOD_ROWS[1]
+    for rg, want in [
+        ("range −€0.64bn to −€0.40bn", "outside its range"),
+        ("range −€3m to −€0.64bn", "runs high to low"),
+        ("range €0.64bn to €3m", "without signs"),
+    ]:
+        probs, _ = sc.check_tables(
+            part_table([r.replace("range −€0.64bn to −€3m", rg)]), "/p/", "en", WORDS_EN, ORDER_EN
+        )
+        assert any(want in p for p in probs), (rg, probs)
+    # "0.01%" written without its sign, a share that is not the euros over GDP, a figure per person that is not over the
+    # population, the euros not the cell's own value
+    for old, new, want in [
+        ("−0.06%", "0.06%", "sign of '0.06% of GDP'"),
+        ("−0.06%", "−0.6%", "of GDP is not"),
+        ("−€29", "−€290", "per person is not"),
+        ("−€0.30bn</b>", "−€0.40bn</b>", "€ bn written"),
+    ]:
+        probs, _ = sc.check_tables(part_table([r.replace(old, new)]), "/p/", "en", WORDS_EN, ORDER_EN)
+        assert any(want in p for p in probs), (new, probs)
+    # rows out of the stated order
+    probs, _ = sc.check_tables(part_table([GOOD_ROWS[1], GOOD_ROWS[0], GOOD_ROWS[2]]), "/p/", "en", WORDS_EN, ORDER_EN)
+    assert any("break the order 'asc'" in p for p in probs)
+
+
+def year_row(iso, ua, rus, frozen, net):
+    def cell(q, st, v, b):
+        return f'<td class="m" data-q="{q}" data-year="2024" data-st="{st}" data-v="{v}"><b>{b}</b><span class="s"></span></td>'
+
+    return (
+        f'<tr data-iso="{iso}" data-gdp="1000"><td class="r">1</td><td><a href="/">{iso}</a></td>'
+        + cell("ua", "signed", ua[0], ua[1])
+        + cell("rus", "kept", rus[0], rus[1])
+        + cell("frozen", "amount", frozen[0], frozen[1])
+        + cell("net", "signed", net[0], net[1])
+        + "</tr>"
+    )
+
+
+def test_sanity_a_page_by_year_adds_up():
+    good = year_row("USA", (19.52, "+€19.5bn"), (9.98, "€10bn less"), (2.0, "€2bn"), (31.5, "+€31.5bn"))
+    t = f'<p class="sub" data-note="order">Sorted, high to low.</p><table class="topic" data-order="desc" data-sort="eur">{good}</table>'
+    assert sc.check_tables(t, "/y/", "en", WORDS_EN, ORDER_EN)[0] == []
+    # without frozen money's column the row does not add up to its net (the pages by year before round 58)
+    bad = re.sub(r'<td class="m" data-q="frozen".*?</td>', "", t)
+    assert any(
+        "support + trade + frozen = +29.500 bn, the net says +31.500" in p
+        for p in sc.check_tables(bad, "/y/", "en", WORDS_EN, ORDER_EN)[0]
+    )
+
+
+def test_sanity_languages_compare_and_ranking_lists():
+    en = sc.check_tables(part_table(GOOD_ROWS), "/p/", "en", WORDS_EN, ORDER_EN)[1]
+    nl_rows = [
+        r.replace("−€0.30bn", "−€0,30 mld")
+        .replace("−0.06%", "−0,06%")
+        .replace("range −€0.64bn to −€3m", "bandbreedte −€0,64 mld tot −€3 mln")
+        for r in GOOD_ROWS[1:2]
+    ]
+    nl = sc.check_tables(part_table(nl_rows), "/nl/p/", "nl", ["waarschijnlijk"], None)[1]
+    assert sc.compare_languages("/p/", {k: v for k, v in en.items() if k[0] == "SWE"}, nl, "nl") == []
+    nl2 = {k: [(a, b * 2, c, d) for a, b, c, d in v] for k, v in nl.items()}
+    assert sc.compare_languages("/p/", {k: v for k, v in en.items() if k[0] == "SWE"}, nl2, "nl")
+    # a comparison's rows and parts follow its address
+    cmp = '<table class="topic"><tr data-iso="FRA"></tr><tr data-iso="DEU"></tr></table><td class="m" data-q="part:aid" data-iso="DEU"></td>'
+    assert sc.check_compare_order(cmp, "/compare/germany-vs-france/", "DEU", "FRA")
+    ok = '<table class="topic"><tr data-iso="DEU"></tr><tr data-iso="FRA"></tr></table><td class="m" data-q="part:aid" data-iso="DEU"></td><td class="m" data-q="part:aid" data-iso="FRA"></td>'
+    assert sc.check_compare_order(ok, "/compare/germany-vs-france/", "DEU", "FRA") == []
+
+    # the ranking pages: high to low in each group, the share and the euros with one sign
+    def li(v, e):
+        return f'<li><span class="r"></span><a href="/">x</a><span class="v">{v}</span><span class="e">{e}</span></li>'
+
+    good = f'<h2 id="toward-ukraine">T · 2</h2><ol class="rk">{li("+3.7%", "+€153bn")}{li("+1.6%", "+€43.6bn")}</ol>'
+    assert sc.check_rank_lists(good, "/ranking/") == []
+    assert sc.check_rank_lists(good.replace("+1.6%", "+4.6%"), "/ranking/")
+    assert sc.check_rank_lists(good.replace("+€43.6bn", "−€43.6bn"), "/ranking/")
+
+
+def test_sanity_group_totals_are_the_rows_added_up():
+    rows = "".join(
+        f'<tr data-iso="{i}" data-gdp="100"><td class="m" data-q="ua" data-st="signed" data-v="{v}"><b>+{v}%</b></td></tr>'
+        for i, v in (("AAA", 2.0), ("BBB", 1.0))
+    )
+    t = f'<div data-total="ua"><b>+1.5%</b><span>of the members\' combined GDP · <i>€3bn in support</i></span></div><table class="topic">{rows}</table>'
+    assert sc.check_tables(t, "/group/g/", "en", WORDS_EN)[0] == []
+    assert any("total ua" in p for p in sc.check_tables(t.replace("€3bn", "€4bn"), "/group/g/", "en", WORDS_EN)[0])
