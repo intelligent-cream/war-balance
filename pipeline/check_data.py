@@ -1005,7 +1005,18 @@ else:
     # round 55: and every topic and group page of pipeline/seo_topics.json
     _topics = json.loads((ROOT / "pipeline" / "seo_topics.json").read_text())["pages"]
     _fam = json.loads((ROOT / "pipeline" / "seo_families.json").read_text())
-    _seo = seo_check.check_site(ROOT / "site", _su, _m, _topics, _fam)
+    # round 58 (owner: "the ranking does not work and the numbers make no sense ... fix this type of stuff for all
+    # pages"): and every table's own sanity (seo_check.check_sanity): each value inside its own range, the range low to
+    # high in the value's sign, every figure of a cell signed by its measure's convention, shares of GDP and figures per
+    # person that are the euros over GDP and population, chance words only where the map gives the measure a chance, no
+    # column repeating the same words in every row, the rows in the order the note states, a group's totals its rows
+    # added up, support + trade + frozen = net on the pages by year, the same figures in every language, a comparison's
+    # countries in the order of its address, and the ranking pages' groups high to low
+    try:
+        _phr = seo_check.order_phrases(ROOT / "pipeline", _node) if _node else None
+    except RuntimeError as _err:
+        _phr, _wording = None, _wording + [f"seo_i18n.mjs order phrases did not load: {_err}"]
+    _seo = seo_check.check_site(ROOT / "site", _su, _m, _topics, _fam, _phr)
     _seo["wording"] = _wording
     _seo_bad = {k: v for k, v in _seo.items() if v}
     _smf = ROOT / "site" / "sitemap.xml"

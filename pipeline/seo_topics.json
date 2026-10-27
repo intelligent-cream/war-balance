@@ -454,7 +454,7 @@
       "intro": "Since March 2022 Russia has sold crude below Brent, under the EU embargo and the G7 price cap. This page sorts the discount each buyer gained from then to {dataTo}, counting the part beyond Russia's normal pre-war discount: for {top1} it comes to {top1_eur}. It is shown for information and not added to the totals: what Russia kept from each buyer, discounts included, is in its trade figures.",
       "explain": ["priceCap"],
       "rank": "part:disc",
-      "order": "asc",
+      "order": "desc",
       "sort": "eur",
       "minGdp": 0,
       "nonzero": true,

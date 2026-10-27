@@ -298,15 +298,15 @@ def family_pages(model: dict, topics: list[dict], fam: dict) -> list[str]:
 
 def year_amount(c: dict, y: int, q: str) -> float | None:
     ys = c.get("yearsEur") or {}
-    i = {"ua": 0, "rus": 1, "net": 2}[q]
-    if str(y) not in ys:
+    i = {"ua": 0, "rus": 1, "net": 2, "frozen": 3}[q]
+    if str(y) not in ys or len(ys[str(y)]) <= i:
         return None
     prev = ys.get(str(y - 1))
     return ys[str(y)][i] - (prev[i] if prev else 0)
 
 
 CELL = re.compile(
-    r'<td class="m" data-q="([\w:]+)"(?: data-iso="([A-Z]{3})")?(?: data-year="(\d+)")?(?: data-level="(\w*)")?>(.*?)</td>',
+    r'<td class="m" data-q="([\w:]+)"(?: data-iso="([A-Z]{3})")?(?: data-year="(\d+)")?(?: data-level="(\w*)")?[^>]*>(.*?)</td>',
     re.DOTALL,
 )
 
@@ -534,7 +534,12 @@ def check_dyn(text: str, name: str, iso: str, model: dict, lang: str, ranks: dic
 
 
 def check_site(
-    site: Path, site_url: str, model: dict | None, topics: list[dict] | None = None, families: dict | None = None
+    site: Path,
+    site_url: str,
+    model: dict | None,
+    topics: list[dict] | None = None,
+    families: dict | None = None,
+    phrases: dict[str, dict[str, str]] | None = None,
 ) -> dict[str, list[str]]:
     """All problems, by check. model: site_numbers.mjs output (None: the title numbers are not checked); topics: the
     entries of seo_topics.json (round 55; None: not checked); families: pipeline/seo_families.json (round 56: every
@@ -553,6 +558,7 @@ def check_site(
         "markdown": [],
         "llms": [],
         "downloads": [],
+        "sanity": [],
     }
     smap = site / "sitemap.xml"
     if not smap.exists():
@@ -625,6 +631,13 @@ def check_site(
     if topics is not None:
         paths = family_pages(model, topics, families) if (families is not None and model) else None
         p["topics"] = check_topics(site, site_url, model, topics, set(urls), paths, langs, words)
+        # round 58: every table's own sanity, in every language (phrases: the order words, seo_i18n.mjs)
+        p["sanity"] = check_sanity(
+            site, model, paths if paths is not None else [topic_path(e) for e in topics], phrases
+        )
+        # round 58b: and the figures and pages from the research files (seo_families.json research)
+        if families is not None and families.get("research"):
+            p["sanity"] += check_research(site, site.parent, families["research"], model, langs)
     # round 58: every page's cite line and Markdown version; llms.txt; the downloads
     p["cite"], p["markdown"] = check_cite_markdown(site, site_url, urls)
     p["llms"] = check_llms(site, site_url, model) if model else []
@@ -675,6 +688,16 @@ def check_cite_markdown(site: Path, site_url: str, urls: list[str]) -> tuple[lis
         extra = sorted(_figs(md_plain) - page_figs)
         if extra:
             md.append(f"{name}index.md: figures not on the page {extra[:3]}")
+        # round 58b: and every table row of the page is a row of the Markdown version, with the same figures in the
+        # same order (a row's digit groups: the Markdown cannot contradict the page row by row)
+        if main and "<table" in main.group(1):
+            md_rows = {tuple(_DIGITS.findall(ln)) for ln in md_plain.splitlines() if ln.startswith("|")}
+            for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", main.group(1), re.DOTALL):
+                cells = re.sub(r"<(td|th)[^>]*>", " ", re.sub(r"</t[dh]>", " | ", tr))
+                row = tuple(_DIGITS.findall(html.unescape(re.sub(r"<[^>]+>", " ", cells))))
+                if row and row not in md_rows:
+                    md.append(f"{name}index.md: a table row of the page is not in it {list(row)[:4]}")
+                    break
     return cite, md
 
 
@@ -740,6 +763,30 @@ def check_downloads(site: Path, model: dict | None) -> list[str]:
             v = float(r[col] or 0)
             if abs(v - c[k]) > 2e-4 + 1e-6 * abs(c[k]):
                 out.append(f"countries CSV {iso} {col}: {v}, the model says {c[k]}")
+    # round 58b: the years file: each row adds up (support + trade + the frozen-money return = the net), and each year's
+    # own amounts are the model's
+    fy = site / "downloads" / "war-balance-years.csv"
+    if fy.exists():
+        cols = {
+            "ua": "support_ukraine_eur_bn",
+            "rus": "trade_with_russia_toward_ukraine_eur_bn",
+            "frozen": "frozen_return_lost_eur_bn",
+            "net": "net_shift_eur_bn",
+        }
+        for r in csv.DictReader(io.StringIO(fy.read_text().lstrip("\ufeff"))):
+            if not all(col in r for col in cols.values()):
+                out.append("years CSV: a column is missing")
+                break
+            v = {q: float(r[col] or 0) for q, col in cols.items()}
+            if abs(v["ua"] + v["rus"] + v["frozen"] - v["net"]) > 5e-4:
+                out.append(
+                    f"years CSV {r['iso3']} {r['year']}: support + trade + frozen = {v['ua'] + v['rus'] + v['frozen']:+.4f}, the net {v['net']:+.4f}"
+                )
+            c = model["countries"].get(r["iso3"])
+            for q in ("ua", "rus", "net", "frozen"):
+                want = year_amount(c, int(r["year"]), q) if c else None
+                if want is not None and abs(v[q] - want) > 2e-4:
+                    out.append(f"years CSV {r['iso3']} {r['year']} {q}: {v[q]}, the model says {want:.4f}")
     return out
 
 
@@ -1092,6 +1139,10 @@ NOT_TEXT = {
     "items",
     "src",
     "explain",
+    # round 58b: the research files' paths and the pages they feed (seo_families.json research)
+    "file",
+    "topic",
+    "warIncome",
 }
 
 
@@ -1147,3 +1198,711 @@ def check_wording(root: Path, node: str | None = "node") -> tuple[list[str], int
     if node:
         items += phrase_items(root / "pipeline", node)
     return wording_problems(items, chance_words(root / "site")), len(items)
+
+
+# ----- round 58 (owner: "the ranking does not work and the numbers make no sense ... check and fix this type of stuff
+# for all pages"): the tables' own sanity, read from what a reader sees. Every figure of every table cell is read back
+# from its text in the page's language (parse_fig) and checked against the cell's own value (data-v, the model's),
+# against the other figures of the cell, against its range and against the table's stated order:
+#   range      the value lies inside its own range, and the range runs low to high in the value's own sign
+#   sign       every figure of a cell is signed by the measure's convention (data-st: "signed" + or −, "amount" − only
+#              below zero, "kept" neither; a size under the smallest step, "<0.01%", has none)
+#   share      a share of GDP is the euros over GDP, and a figure per person the euros over the population (rounding)
+#   chance     a chance or likely-range word only on a measure the map gives a chance (net, support, trade)
+#   constant   no column repeats the same words in every row (a label belongs above the table, once)
+#   order      the rows follow the order the note above the table states
+#   totals     a group's totals are its rows added up
+#   years      on a page by year, support + trade + frozen money = the net, row by row
+#   languages  every language's page has the same figures as the English one (within each format's rounding)
+#   compare    a comparison's two countries are in the order of its address, in every table
+#   ranking    the ranking pages' groups run high to low, and each row's share and euros have the same sign
+SPACES = re.compile(r"[    ]+")
+PCT_RX = re.compile(r"^(?P<n>\d[\d.,]*) ?%")
+EUR_RX = {
+    "en": re.compile(r"^€(?P<n>\d[\d.,]*)(?P<u>bn|m)(?![\w])"),
+    "nl": re.compile(r"^€(?P<n>\d[\d.,]*) (?P<u>mld|mln)(?![\w])"),
+    "de": re.compile(r"^(?P<n>\d[\d.,]*) (?P<u>Mrd\.|Mio\.) €"),
+    "fr": re.compile(r"^(?P<n>\d[\d., ]*?) (?P<u>Md€|M€)"),
+    "es": re.compile(r"^(?P<n>\d[\d.,]*) (?P<u>M€)"),
+    "pl": re.compile(r"^(?P<n>\d[\d., ]*?) (?P<u>mld|mln) €"),
+    "uk": re.compile(r"^(?P<n>\d[\d., ]*?) (?P<u>млрд|млн) €"),
+}
+PP_RX = {"en": re.compile(r"^€(?P<n>\d[\d.,]*)"), "nl": re.compile(r"^€(?P<n>\d[\d.,]*)")}
+PP_RX_OTHER = re.compile(r"^(?P<n>\d[\d., ]*?) €")
+BIG_UNITS = {"bn", "mld", "Mrd.", "Md€", "млрд"}
+CHANCE_Q = {"net", "ua", "rus"}
+# the cost view's parts below zero by construction (a gain that lowers the cost), shown on their pages as the gain
+GAIN_PARTS = {"disc"}
+
+
+def _num(n: str, lang: str) -> tuple[float, int]:
+    """A number as a language writes it, and its count of decimals."""
+    n = n.strip()
+    if lang == "en":
+        n = n.replace(",", "")
+        d = len(n.split(".")[1]) if "." in n else 0
+        return float(n), d
+    n = n.replace(".", "").replace(" ", "")
+    d = len(n.split(",")[1]) if "," in n else 0
+    return float(n.replace(",", ".")), d
+
+
+def parse_fig(piece: str, lang: str) -> dict | None:
+    """The figure a piece of a cell starts with ("+€1.2bn", "−0.06% of GDP", "<€1 per person", "€5bn more"): its kind
+    (pct, eur in € bn, pp), its size, its rounding step, its sign as written (+1, −1, 0) and whether it is a size under
+    the smallest step ("<0.01%"); None when the piece holds no figure."""
+    t = SPACES.sub(" ", html.unescape(re.sub(r"<[^>]+>", "", piece))).strip()
+    sign = 0
+    if t[:1] in "+−-" and t[:1]:
+        sign = 1 if t[0] == "+" else -1
+        t = t[1:]
+    tiny = t.startswith("<")
+    if tiny:
+        t = t[1:]
+    m = EUR_RX[lang].match(t)
+    if m:
+        v, d = _num(m.group("n"), lang)
+        if m.group("u") in BIG_UNITS:
+            return {"kind": "eur", "v": v, "step": 10.0**-d, "sign": sign, "tiny": tiny, "rest": t[m.end() :]}
+        step = 0.1 if lang == "es" and v >= 100 else 0.001
+        return {"kind": "eur", "v": v / 1000, "step": step, "sign": sign, "tiny": tiny, "rest": t[m.end() :]}
+    m = PCT_RX.match(t)
+    if m:
+        v, d = _num(m.group("n"), lang)
+        return {"kind": "pct", "v": v, "step": 10.0**-d, "sign": sign, "tiny": tiny, "rest": t[m.end() :]}
+    m = PP_RX.get(lang, PP_RX_OTHER).match(t)
+    if m:
+        v, _ = _num(m.group("n"), lang)
+        return {"kind": "pp", "v": v, "step": 1.0, "sign": sign, "tiny": tiny, "rest": t[m.end() :]}
+    return None
+
+
+def figs_in(text: str, lang: str) -> list[dict]:
+    """Every figure in a run of text (a range: "range −€1.4bn to −€0.32bn"), in order."""
+    t = SPACES.sub(" ", html.unescape(re.sub(r"<[^>]+>", "", text)))
+    out, i = [], 0
+    while i < len(t):
+        if (
+            t[i] in "+−-<€0123456789"
+            and (i == 0 or not t[i - 1].isalnum())
+            and not (t[i] == "-" and i and t[i - 1] != " ")
+        ):
+            f = parse_fig(t[i:], lang)
+            if f:
+                out.append(f)
+                i += len(t[i:]) - len(f["rest"]) or 1
+                continue
+        i += 1
+    return out
+
+
+def _signed(f: dict, v_sign: int) -> float:
+    """A figure's value with its sign (a figure written without one takes the cell's own, as "€5bn more" does)."""
+    return f["v"] * (f["sign"] or v_sign or 1)
+
+
+def _attrs(tag: str) -> dict[str, str]:
+    return dict(re.findall(r'data-([\w-]+)="([^"]*)"', tag))
+
+
+TD_M = re.compile(r'<td class="m"([^>]*)>(.*?)</td>', re.DOTALL)
+TR = re.compile(r"<tr([^>]*)>(.*?)</tr>", re.DOTALL)
+TABLE = re.compile(r"<table([^>]*)>(.*?)</table>", re.DOTALL)
+
+
+def cell_parts(td: str) -> dict:
+    """A cell's pieces: the figure (b), the other figures (s), the range (rg) and the chance (ch)."""
+    b = re.search(r"<b[^>]*>(.*?)</b>", td, re.DOTALL)
+    rest = re.search(r'<span class="s">(.*?)</span>', td, re.DOTALL)
+    rg = re.search(r'<span class="s rg">(.*?)</span>', td, re.DOTALL)
+    ch = re.search(r'<span class="s ch">(.*?)</span>', td, re.DOTALL)
+    pieces = [b.group(1)] if b else []
+    if rest:
+        pieces += [x for x in re.sub(r"</?i>", "", rest.group(1)).split(" · ") if x.strip()]
+    return {"pieces": pieces, "rg": rg.group(1) if rg else "", "ch": ch.group(1) if ch else "", "text": td}
+
+
+def range_words(site: Path) -> dict[str, list[str]]:
+    """The map's own range and chance words in each language: none may stand in a cell of a measure without a chance."""
+    out = {"en": ["likely", "about 0", "very likely", "too close to call", "near zero", "essentially zero"]}
+    for lang, d in i18n_words(site).items():
+        ws = [d.get("about 0", "")]
+        for k in (
+            "likely {lo} to {hi}",
+            "very likely · {p}",
+            "likely {side} · {p}",
+            "too close to call",
+            "near zero",
+            "essentially zero",
+        ):
+            ws.append(d.get(k, "").split("{")[0].split("·")[0].strip())
+        out[lang] = sorted({w for w in ws if len(w) >= 3})
+    return out
+
+
+def check_cell_figs(
+    td_attrs: dict, cp: dict, row: dict, lang: str, main_unit: str | None, where: str, words: list[str]
+) -> list[str]:
+    """One cell: signs, shares, per person, range, chance words."""
+    out = []
+    q, st = td_attrs.get("q", ""), td_attrs.get("st")
+    if "v" not in td_attrs or not st:
+        return out
+    v = float(td_attrs["v"])
+    vs = 1 if v > 0 else -1 if v < 0 else 0
+    figs = [f for f in (parse_fig(x, lang) for x in cp["pieces"]) if f]
+    if not figs:
+        return [f"{where} {q}: no figure read in {cp['pieces'][:1]}"]
+    gdp, pop = row.get("gdp"), row.get("pop")
+    for f in figs:
+        zero = f["tiny"] or f["v"] == 0
+        want = 0 if st == "kept" else (vs if st == "signed" else -1 if vs < 0 else 0)
+        if not zero and abs(v) >= 0.0005 and f["sign"] != want:
+            out.append(
+                f"{where} {q}: sign of '{SPACES.sub(' ', html.unescape(re.sub('<[^>]+>', '', cp['pieces'][figs.index(f)] if figs.index(f) < len(cp['pieces']) else '')))}' is not the {st} convention for {v:+.4f}"
+            )
+    eur = next((f for f in figs if f["kind"] == "eur"), None)
+    if eur and abs(_signed(eur, vs) - v) > eur["step"] / 2 + 1e-6 and not (eur["tiny"]):
+        out.append(f"{where} {q}: {eur['v']} € bn written for {v:+.4f}")
+    for f in figs:
+        if f["kind"] == "pct" and gdp:
+            want_p = 100 * v / gdp
+            got = 0.0 if f["tiny"] else _signed(f, vs)
+            tol = (f["step"] if f["tiny"] else f["step"] / 2) + 1e-6
+            if abs(got - want_p) > tol:
+                out.append(f"{where} {q}: {got:+.4f}% of GDP is not {v:+.4f} bn / GDP {gdp} ({want_p:+.4f}%)")
+        if f["kind"] == "pp" and pop:
+            want_pp = v * 1000 / pop
+            got = 0.0 if f["tiny"] else _signed(f, vs)
+            if abs(got - want_pp) > (1.0 if f["tiny"] else 0.5) + 1e-6:
+                out.append(f"{where} {q}: {got:+.1f} per person is not {v:+.4f} bn / {pop} m people ({want_pp:+.2f})")
+    # the range: low to high in the value's own sign, holding the value
+    if "lo" in td_attrs and "hi" in td_attrs:
+        lo, hi = float(td_attrs["lo"]), float(td_attrs["hi"])
+        if not lo - 1e-6 <= v <= hi + 1e-6:
+            out.append(f"{where} {q}: value {v:+.4f} outside its range {lo:+.4f} to {hi:+.4f}")
+    if cp["rg"] and q not in CHANCE_Q:
+        rf = figs_in(cp["rg"], lang)
+        main = figs[0]
+        if len(rf) != 2:
+            out.append(f"{where} {q}: range '{cp['rg']}' has {len(rf)} figures")
+        elif st != "kept":
+            a, b = (0.0 if x["tiny"] else x["v"] * (x["sign"] or (1 if st == "amount" else 0) or 1) for x in rf)
+            m0 = 0.0 if main["tiny"] else _signed(main, vs)
+            tol = max(x["step"] for x in rf + [main]) / 2 + (0.01 if any(x["tiny"] for x in rf + [main]) else 0) + 1e-6
+            if rf[0]["kind"] != main["kind"]:
+                out.append(f"{where} {q}: range '{cp['rg']}' not in the unit of the value")
+            elif st == "signed" and any(not x["tiny"] and x["v"] and not x["sign"] for x in rf):
+                out.append(f"{where} {q}: range '{cp['rg']}' without signs")
+            elif a > b + tol:
+                out.append(f"{where} {q}: range '{cp['rg']}' runs high to low")
+            elif not a - tol <= m0 <= b + tol:
+                out.append(f"{where} {q}: value {m0:+} outside its range '{cp['rg']}'")
+    if q not in CHANCE_Q:
+        txt = html.unescape(re.sub(r"<[^>]+>", " ", cp["rg"] + " " + cp["ch"])).lower()
+        hit = [w for w in words if re.search(rf"(?<!\w){re.escape(w.lower())}(?!\w)", txt)]
+        if hit or cp["ch"]:
+            out.append(f"{where} {q}: chance or likely-range words {hit or [cp['ch']]} on a measure without a chance")
+    return out
+
+
+def _order_kind(note: str, phrases: dict[str, str] | None) -> str | None:
+    """Which order the note above a table states: desc, asc or abs (None: none read)."""
+    if not phrases:
+        return None
+    n = SPACES.sub(" ", html.unescape(note))
+    for k in sorted(phrases, key=lambda k: -len(phrases[k])):
+        if SPACES.sub(" ", phrases[k]) in n:
+            return {
+                "hiLo": "desc",
+                "uaRu": "desc",
+                "keptLessMore": "desc",
+                "back": "asc",
+                "loHi": "asc",
+                "ruUa": "asc",
+                "keptMoreLess": "asc",
+                "bySize": "abs",
+            }.get(k)
+    return None
+
+
+def check_tables(
+    text: str, name: str, lang: str, words: list[str], phrases: dict[str, str] | None = None
+) -> tuple[list[str], dict]:
+    """Every topic, part, year, group and comparison table of a page (table.topic): its cells, its order, its constant
+    columns, its group totals and (on a page by year) its rows adding up. Returns the problems and the figures read,
+    by (row, measure), for the comparison between languages."""
+    out, seen = [], {}
+    for tattrs, table in TABLE.findall(text):
+        if 'class="topic"' not in tattrs:
+            continue
+        ta = _attrs(tattrs)
+        rows, labels = [], {}
+        for trattrs, tr in TR.findall(table):
+            ra = _attrs(trattrs)
+            if "iso" not in ra:
+                continue
+            row = {
+                "iso": ra["iso"],
+                "gdp": float(ra["gdp"]) if "gdp" in ra else None,
+                "pop": float(ra["pop"]) if "pop" in ra else None,
+            }
+            names = [html.unescape(x) for x in re.findall(r"<a [^>]*>(.*?)</a>", tr)]
+            cells = TD_M.findall(tr)
+            row["cells"] = []
+            for i, (tda, td) in enumerate(cells):
+                a = _attrs(tda)
+                cp = cell_parts(td)
+                where = f"{name} {ra['iso']}" + (f"@{a['year']}" if "year" in a else "")
+                out += check_cell_figs(a, cp, row, lang, ta.get("sort") if i == 0 else "eur", where, words)
+                figs = [f for f in (parse_fig(x, lang) for x in cp["pieces"]) if f]
+                row["cells"].append((a, figs))
+                seen[(ra["iso"], a.get("q"), i)] = [
+                    (
+                        f["kind"],
+                        f["v"] * (f["sign"] or 1) if f["sign"] or a.get("st") != "kept" else f["v"],
+                        f["step"],
+                        f["tiny"],
+                    )
+                    for f in figs
+                ]
+                # the words of the cell without its figures or the country's name: a label every row repeats
+                for span in re.findall(r"<span[^>]*>(.*?)</span>", td, re.DOTALL):
+                    w = html.unescape(re.sub(r"<[^>]+>", "", span))
+                    for nm in names:
+                        w = w.replace(nm, "◊")
+                    if w.strip() and not re.search(r"\d", w):
+                        labels.setdefault(i, []).append(w.strip())
+            rows.append(row)
+        for i, ws in labels.items():
+            if len(rows) >= 3 and len(ws) == len(rows) and len(set(ws)) == 1:
+                out.append(f"{name}: column {i + 1} repeats '{ws[0][:60]}' in every row")
+        # the order: the main figure, in the table's unit, with the sign of the value
+        order = ta.get("order")
+        vals = []
+        for r in rows:
+            if not r["cells"] or "v" not in r["cells"][0][0]:
+                continue
+            a, figs = r["cells"][0]
+            v = float(a["v"])
+            unit = {"gdp": "pct", "eur": "eur", "pp": "pp"}.get(ta.get("sort", ""), "eur")
+            f = next((x for x in figs if x["kind"] == unit), None)
+            if f:
+                vals.append(
+                    (
+                        r["iso"],
+                        0.0 if f["tiny"] else f["v"] * (1 if v >= 0 else -1),
+                        f["step"] + (0.01 if f["tiny"] else 0),
+                    )
+                )
+        if order and len(vals) > 1 and name.split("/")[-2:-1] != ["compare"] and "/compare/" not in name:
+            for (i1, a, sa), (i2, b, sb) in zip(vals, vals[1:]):
+                tol = (sa + sb) / 2 + 1e-9
+                bad = (
+                    (order == "desc" and a < b - tol)
+                    or (order == "asc" and a > b + tol)
+                    or (order == "abs" and abs(a) < abs(b) - tol)
+                )
+                if bad:
+                    out.append(f"{name}: rows {i1} ({a:+}) then {i2} ({b:+}) break the order '{order}'")
+                    break
+            note = text[: text.find(tattrs)]
+            note = note[note.rfind('<p class="sub" data-note="order">') :]
+            stated = _order_kind(note, phrases)
+            if phrases is not None and stated != order:
+                out.append(f"{name}: the note says '{stated}', the table is sorted '{order}'")
+        # a page by year: support + trade + frozen money = the net, row by row (in euros)
+        if "data-year" in table:
+            for r in rows:
+                by = {a.get("q"): (a, figs) for a, figs in r["cells"]}
+                if not {"ua", "rus", "net"} <= set(by):
+                    continue
+                tot, tol = 0.0, 0.0
+                for q in ("ua", "rus", "frozen"):
+                    if q not in by:
+                        continue
+                    a, figs = by[q]
+                    e = next((x for x in figs if x["kind"] == "eur"), None)
+                    if e:
+                        tot += _signed(e, 1 if float(a.get("v", 0)) >= 0 else -1)
+                        tol += e["step"] / 2
+                a, figs = by["net"]
+                e = next((x for x in figs if x["kind"] == "eur"), None)
+                if e and abs(tot - _signed(e, 1 if float(a.get("v", 0)) >= 0 else -1)) > tol + e["step"] / 2 + 0.002:
+                    out.append(
+                        f"{name} {r['iso']}: support + trade + frozen = {tot:+.3f} bn, the net says {_signed(e, 1):+.3f}"
+                    )
+        # a group's totals: its rows added up (each total is in euros and as a share of the members' combined GDP)
+        for q, td in re.findall(r'<div data-total="(\w+)">(.*?)</div>', text, re.DOTALL):
+            col = [r for r in rows for a, figs in r["cells"] if a.get("q") == q and "v" in a]
+            if not col:
+                continue
+            got = [f for f in figs_in(td, lang) if f["kind"] == "eur"]
+            vsum = sum(float(a["v"]) for r in rows for a, figs in r["cells"] if a.get("q") == q and "v" in a)
+            if got and abs(got[0]["v"] - abs(vsum)) > got[0]["step"] / 2 + 0.0005 * len(col):
+                out.append(f"{name} total {q}: {got[0]['v']} € bn, its {len(col)} rows add up to {vsum:+.3f}")
+    return out, seen
+
+
+def check_values(text: str, name: str, model: dict) -> list[str]:
+    """Each cell's own value (data-v, data-lo, data-hi), which the checks above read the figures against, is the
+    model's (site_numbers.mjs): a headline amount, a part or a cost, or a year's own amount."""
+    out = []
+    for iso, tr in re.findall(r'<tr data-iso="([A-Z]{3})"[^>]*>(.*?)</tr>', text, re.DOTALL):
+        c = model["countries"].get(iso)
+        if not c:
+            continue
+        for tda in re.findall(r'<td class="m"([^>]*)>', tr):
+            a = _attrs(tda)
+            q = a.get("q", "")
+            if "v" not in a:
+                continue
+            want, lo, hi = None, None, None
+            if "year" in a and q in ("net", "ua", "rus", "frozen"):
+                want = year_amount(c, int(a["year"]), q)
+            elif "year" in a:
+                continue
+            elif q in ("net", "ua", "rus"):
+                want = c[q + "Eur"]
+            elif q == "frozen":
+                want = c.get("frozenEur")
+            elif q.startswith("part:"):
+                k = q[5:]
+                want = c.get("part_" + k, c.get("cost_" + k))
+                lo, hi = c.get("part_" + k + "Lo"), c.get("part_" + k + "Hi")
+                if k in GAIN_PARTS and want is not None:
+                    want = -want  # shown as the gain (seo_extract.mjs GAIN)
+            if want is not None and abs(float(a["v"]) - want) > 2e-4:
+                out.append(f"{name} {iso} {q}: value {a['v']}, the model {want}")
+            if (
+                lo is not None
+                and "lo" in a
+                and (abs(float(a["lo"]) - min(lo, hi)) > 2e-4 or abs(float(a["hi"]) - max(lo, hi)) > 2e-4)
+            ):
+                out.append(f"{name} {iso} {q}: range {a['lo']} to {a['hi']}, the model {lo} to {hi}")
+    return out
+
+
+def compare_languages(name: str, en: dict, other: dict, lang: str) -> list[str]:
+    """The same page in another language has the same figures as the English one, each within its formats' rounding."""
+    out = []
+    for k, fe in en.items():
+        fo = other.get(k)
+        if fo is None:
+            out.append(f"{name} [{lang}] {k[0]} {k[1]}: missing")
+            continue
+        for (ke, ve, se, te), (ko, vo, so, to) in zip(fe, fo):
+            if ke != ko or (not te and not to and abs(ve - vo) > (se + so) / 2 + 1e-6):
+                out.append(f"{name} [{lang}] {k[0]} {k[1]}: {ke} {ve} in English, {ko} {vo}")
+                break
+        if len(fe) != len(fo):
+            out.append(f"{name} [{lang}] {k[0]} {k[1]}: {len(fe)} figures in English, {len(fo)}")
+    return out
+
+
+def check_compare_order(text: str, name: str, a: str, b: str) -> list[str]:
+    """A comparison /compare/<a>-vs-<b>/: its rows, the parts' cells and the columns are a then b."""
+    out = []
+    t = re.search(r'<table class="topic"[^>]*>(.*?)</table>', text, re.DOTALL)
+    isos = re.findall(r'<tr data-iso="([A-Z]{3})"', t.group(1)) if t else []
+    if isos[:2] != [a, b]:
+        out.append(f"{name}: rows {isos[:2]}, the address says {[a, b]}")
+    cells = re.findall(r'data-q="part:\w+" data-iso="([A-Z]{3})"', text)
+    if cells and any(x != [a, b][i % 2] for i, x in enumerate(cells)):
+        out.append(f"{name}: the parts' columns are not {a} then {b}")
+    return out
+
+
+def check_rank_lists(text: str, name: str, lang: str = "en") -> list[str]:
+    """The ranking pages: in each group the rows run high to low, numbered in order, and a row's share of GDP and its
+    euros have the same sign."""
+    out = []
+    for gid, ol in re.findall(r'<h2 id="([\w-]+)">[^<]*</h2><ol class="rk">(.*?)</ol>', text, re.DOTALL):
+        prev = None
+        for v, e in re.findall(r'<span class="v">(.*?)</span><span class="e">(.*?)(?: · |</span>)', ol):
+            fv, fe = parse_fig(v, lang), parse_fig(e, lang)
+            if not fv or not fe:
+                continue
+            sv = 0.0 if fv["tiny"] else fv["v"] * (fv["sign"] or 1)
+            if (
+                not fv["tiny"]
+                and not fe["tiny"]
+                and fv["v"]
+                and fe["v"]
+                and fv["sign"]
+                and fe["sign"]
+                and fv["sign"] != fe["sign"]
+            ):
+                out.append(f"{name} #{gid}: '{v}' and '{e}' have different signs")
+            if prev is not None and sv > prev + fv["step"] + 1e-9:
+                out.append(f"{name} #{gid}: '{v}' after {prev:+} (not high to low)")
+            prev = sv
+    return out
+
+
+def order_phrases(pipeline: Path, node: str = "node") -> dict[str, dict[str, str]]:
+    """Each language's order phrases (seo_i18n.mjs S[l].order), to read which order a table's note states."""
+    import subprocess
+
+    js = "import('./seo_i18n.mjs').then(m => process.stdout.write(JSON.stringify(Object.fromEntries(m.LANGS.map(l => [l, m.s(l, 'order')])))))"
+    r = subprocess.run(
+        [node, "--input-type=module", "-e", js], cwd=pipeline, capture_output=True, text=True, check=False
+    )
+    if r.returncode:
+        raise RuntimeError(r.stderr.strip()[:400])
+    return json.loads(r.stdout)
+
+
+def check_sanity(
+    site: Path, model: dict | None, paths: list[str], phrases: dict[str, dict[str, str]] | None = None
+) -> list[str]:
+    """Round 58: every table of every topic, group, part, year and comparison page in every language (check_tables),
+    the same figures in every language (compare_languages), the comparisons' order and the ranking pages' lists."""
+    out = []
+    words = range_words(site)
+    slug_iso = {c["slug"]: i for i, c in (model or {}).get("countries", {}).items()}
+    for path0 in paths:
+        if path0 == "topics/":
+            continue
+        en = None
+        for lang in LANGS:
+            path = path0 if lang == "en" else f"{lang}/{path0}"
+            f = site / path / "index.html"
+            if not f.exists():
+                continue
+            text = f.read_text()
+            if model:
+                out += check_values(text, "/" + path, model)
+            probs, seen = check_tables(
+                text, "/" + path, lang, words.get(lang, []), (phrases or {}).get(lang) if phrases is not None else None
+            )
+            out += probs
+            if lang == "en":
+                en = seen
+            elif en is not None:
+                out += compare_languages("/" + path0, en, seen, lang)
+            m = re.match(r"compare/([\w-]+)-vs-([\w-]+)/$", path0)
+            if m and slug_iso:
+                # a slug may hold "-vs-"-free hyphens: find the split that names two countries
+                parts = path0[len("compare/") : -1].split("-vs-")
+                if len(parts) == 2 and parts[0] in slug_iso and parts[1] in slug_iso:
+                    out += check_compare_order(text, "/" + path, slug_iso[parts[0]], slug_iso[parts[1]])
+    for path in ("ranking/", "support-for-ukraine/", "trade-with-russia/"):
+        f = site / path / "index.html"
+        if f.exists():
+            out += check_rank_lists(f.read_text(), "/" + path)
+    return out
+
+
+# ----- round 58b (owner approved: the three research results wired in, seo_research.mjs) -----
+# Every figure a page writes from a research file carries the file, its path in it and its value (data-rv, data-v; data-u
+# its unit: eur, rub in bn, share as a fraction). Here each is read back: the value is the file's, and the text the
+# reader sees is that value in the page's language (within the shown rounding; "<€1m" for an official figure under a
+# million; no figure where the file has none). And the pages are complete: every country page in every language has its
+# sanctions section, the page of every country's sanctions lists every entry, the revenue page every year and the months
+# the config names to the file's latest, the frozen-assets topic page an amount for every row; the revenue CSV files in
+# the downloads and the revenue lines of llms-full.txt are the file's.
+RV = re.compile(r'<(td|span|tr|div)\b([^>]*\bdata-rv="(\w+):([^"]+)"[^>]*)>')
+_UNIT_BIG = r"bn|Mrd\.|Md|mld|млрд"
+_UNIT_SMALL = r"m|Mio\.|M|mln|млн"
+
+
+def research_files(root: Path, cfg: dict) -> dict[str, dict]:
+    """The research files of seo_families.json research, by the name the pages mark them with."""
+    out = {}
+    for name in ("sanctions", "frozen", "revenue"):
+        f = (cfg.get(name) or {}).get("file")
+        if f and (root / f).exists():
+            out[name] = json.loads((root / f).read_text())
+    return out
+
+
+def research_value(doc: dict, path: str):
+    """A value of a research file by its path ("countries.BEL.cbr_eur.v", "monthly@2026-09.share"); None if absent."""
+    x = doc
+    for seg in path.split("."):
+        if "@" in seg:
+            name, key = seg.split("@", 1)
+            lst = x.get(name) if isinstance(x, dict) else None
+            x = next((i for i in lst or [] if key in (i.get("ym"), i.get("date"), i.get("y"))), None)
+        elif isinstance(x, dict):
+            x = x.get(seg)
+        else:
+            return None
+        if x is None:
+            return None
+    return x
+
+
+def _research_num(text: str, unit: str, lang: str) -> tuple[float, float] | None:
+    """The figure a research cell shows, in the file's unit (bn, or percent for a share), and half its last step."""
+    t = SPACES.sub(" ", html.unescape(re.sub(r"<[^>]+>", "", text))).strip()
+    if unit == "eur":
+        f = parse_fig(t, lang)
+        if not f or f["kind"] != "eur":
+            return None
+        return (0.0 if f["tiny"] else f["v"]), (0.001 if f["tiny"] else f["step"] / 2)
+    if unit == "share":
+        m = re.search(r"(\d[\d.,]*) ?%", t)
+        if not m:
+            return None
+        v, d = _num(m.group(1), lang)
+        return v, 10.0**-d / 2
+    m = re.search(rf"(\d[\d., ]*?)(?: )?({_UNIT_BIG}|{_UNIT_SMALL})(?![\w])", t.replace("RUB ", ""))
+    if not m:
+        return None
+    v, d = _num(m.group(1), lang)
+    if re.fullmatch(_UNIT_SMALL, m.group(2)):
+        return v / 1000, 10.0**-d / 2000
+    return v, 10.0**-d / 2
+
+
+def check_research_marks(text: str, name: str, lang: str, files: dict[str, dict]) -> list[str]:
+    """Every marked research figure of a page: its value is the file's, and its text that value."""
+    out = []
+    for m in RV.finditer(text):
+        tag, attrs, fname, path = m.groups()
+        # a cell's or a span's own text (a row or a block is marked with a word, its cells are read on their own)
+        inner = text[m.end() : text.find(f"</{tag}>", m.end())] if tag in ("td", "span") else ""
+        a = _attrs(attrs)
+        doc = files.get(fname)
+        if doc is None:
+            out.append(f"{name}: {fname}:{path} marked, but the file is not configured")
+            continue
+        want = research_value(doc, path)
+        got = a.get("v", "")
+        if isinstance(want, bool) or want is None or isinstance(want, str):
+            w = "true" if want is True else "false" if want is False else "null" if want is None else want
+            if got != w:
+                out.append(f"{name}: {fname}:{path} is {got!r}, the file says {w!r}")
+            if want is None and a.get("u") and re.search(r"\d", re.split(r'<span class="s">', inner)[0]):
+                out.append(f"{name}: {fname}:{path} has no figure in the file, the page writes one")
+            continue
+        if got == "null" or abs(float(got) - float(want)) > 1e-9 + 1e-9 * abs(float(want)):
+            out.append(f"{name}: {fname}:{path} is {got}, the file says {want}")
+            continue
+        unit = a.get("u")
+        if not unit:
+            continue
+        shown = _research_num(re.split(r'<span class="s">', inner)[0], unit, lang)
+        v = float(want) * (100 if unit == "share" else 1)
+        if shown is None:
+            out.append(f"{name}: {fname}:{path} figure not read in {_plain(inner)[:40]!r}")
+        elif not (unit == "eur" and 0 < v < 0.0005 and shown[0] == 0.0) and abs(shown[0] - v) > shown[1] + 1e-6:
+            out.append(f"{name}: {fname}:{path} written {_plain(inner)[:30]!r}, the file says {want}")
+    return out
+
+
+def check_research(site: Path, root: Path, cfg: dict, model: dict | None, langs: list[str]) -> list[str]:
+    """Round 58b: the pages fed by the research files (seo_families.json research), in every language."""
+    import csv
+    import io
+
+    files = research_files(root, cfg)
+    out = []
+
+    def pre(lang):
+        return "" if lang == "en" else lang + "/"
+
+    sanc, froz, rev = files.get("sanctions"), files.get("frozen"), files.get("revenue")
+    # every country page: its marked figures, and its sanctions section
+    for iso, c in (model or {}).get("countries", {}).items():
+        for lang in langs:
+            f = site / pre(lang) / "country" / c["slug"] / "index.html"
+            if not f.exists():
+                continue
+            text = f.read_text()
+            name = f"/{pre(lang)}country/{c['slug']}/"
+            out += check_research_marks(text, name, lang, files)
+            if sanc and iso in sanc["countries"] and f'data-rv="sanctions:countries.{iso}.category"' not in text:
+                out.append(f"{name}: no sanctions section")
+    # the page of every country's sanctions: every entry, by its category
+    if sanc and cfg.get("sanctions", {}).get("slug"):
+        for lang in langs:
+            f = site / pre(lang) / cfg["sanctions"]["slug"] / "index.html"
+            if not f.exists():
+                out.append(f"/{pre(lang)}{cfg['sanctions']['slug']}/ not written")
+                continue
+            text = f.read_text()
+            out += check_research_marks(text, f"/{pre(lang)}{cfg['sanctions']['slug']}/", lang, files)
+            rows = set(re.findall(r'<tr id="([A-Z]{3})" data-rv="sanctions:countries\.\1\.category"', text))
+            if rows != set(sanc["countries"]):
+                out.append(
+                    f"/{pre(lang)}{cfg['sanctions']['slug']}/: entries {sorted(set(sanc['countries']) ^ rows)[:5]} missing or extra"
+                )
+    # the revenue page: every year, and the months the config names to the file's latest
+    if rev and cfg.get("revenue", {}).get("slug"):
+        n = cfg["revenue"].get("months", 24)
+        months = [m["ym"] for m in rev["monthly"]][-n:]
+        for lang in langs:
+            slug = cfg["revenue"]["slug"]
+            f = site / pre(lang) / slug / "index.html"
+            if not f.exists():
+                out.append(f"/{pre(lang)}{slug}/ not written")
+                continue
+            text = f.read_text()
+            out += check_research_marks(text, f"/{pre(lang)}{slug}/", lang, files)
+            ys = set(re.findall(r'data-rv="revenue:yearly\.(\d{4})\.og_rev_rub"', text))
+            if ys != set(rev["yearly"]):
+                out.append(f"/{pre(lang)}{slug}/: years {sorted(ys)} are not the file's {sorted(rev['yearly'])}")
+            ms = re.findall(r'data-rv="revenue:monthly@([\d-]+)\.og_rev_rub"', text)
+            if sorted(ms) != months:
+                out.append(f"/{pre(lang)}{slug}/: months {ms[:2]}… are not the file's last {n}")
+    # the frozen-assets topic page: an amount of each kind for every row
+    if froz and cfg.get("frozen", {}).get("topic"):
+        for lang in langs:
+            path = f"{pre(lang)}{cfg['frozen']['topic']}/"
+            f = site / path / "index.html"
+            if not f.exists():
+                continue
+            text = f.read_text()
+            out += check_research_marks(text, "/" + path, lang, files)
+            t = re.search(r'<table class="topic"[^>]*>(.*?)</table>', text, re.DOTALL)
+            for iso, tr in re.findall(r'<tr data-iso="([A-Z]{3})"[^>]*>(.*?)</tr>', t.group(1) if t else "", re.DOTALL):
+                for k in ("cbr_eur", "private_eur"):
+                    if f'data-rv="frozen:countries.{iso}.{k}.v"' not in tr:
+                        out.append(f"/{path}: {iso} has no {k} amount")
+    # the downloads: the revenue series as the file has them
+    if rev:
+        fm = site / "downloads" / "russia-oil-gas-revenue-monthly.csv"
+        fy = site / "downloads" / "russia-oil-gas-revenue-yearly.csv"
+        if not fm.exists() or not fy.exists():
+            out.append("downloads: the revenue CSV files are missing")
+        else:
+            rows = list(csv.DictReader(io.StringIO(fm.read_text().lstrip("﻿"))))
+            if [r["month"] for r in rows] != [m["ym"] for m in rev["monthly"]]:
+                out.append("russia-oil-gas-revenue-monthly.csv: months are not the file's")
+            for r, m in zip(rows, rev["monthly"]):
+                for col, k in (
+                    ("oil_gas_revenue_rub_bn", "og_rev_rub"),
+                    ("oil_gas_revenue_eur_bn", "og_rev_eur"),
+                    ("oil_gas_share", "share"),
+                ):
+                    if abs(float(r[col]) - m[k]) > 1e-9:
+                        out.append(f"russia-oil-gas-revenue-monthly.csv {m['ym']} {col}: {r[col]}, the file {m[k]}")
+            for r in csv.DictReader(io.StringIO(fy.read_text().lstrip("﻿"))):
+                y = rev["yearly"].get(r["year"])
+                if y and abs(float(r["oil_gas_revenue_rub_bn"]) - y["og_rev_rub"]) > 1e-9:
+                    out.append(
+                        f"russia-oil-gas-revenue-yearly.csv {r['year']}: {r['oil_gas_revenue_rub_bn']}, the file {y['og_rev_rub']}"
+                    )
+        # llms-full.txt: a line per year, its figures the file's
+        full = site / "llms-full.txt"
+        lines = (
+            re.findall(r"(?m)^- (\d{4})\b[^:]*: (RUB [\d,.]+bn) \((€[\d,.]+(?:bn|m))\), ([\d.]+%)", full.read_text())
+            if full.exists()
+            else []
+        )
+        if {y for y, *_ in lines} != set(rev["yearly"]):
+            out.append("llms-full.txt: the revenue lines are not one per year of the file")
+        for y, rub, eur, share in lines:
+            x = rev["yearly"][y]
+            for txt, unit, v in (
+                (rub, "rub", x["og_rev_rub"]),
+                (eur, "eur", x["og_rev_eur"]),
+                (share, "share", 100 * x["share"]),
+            ):
+                got = _research_num(txt, unit, "en")
+                if not got or abs(got[0] - v) > got[1] + 1e-6:
+                    out.append(f"llms-full.txt {y}: {txt}, the file says {v}")
+    return out

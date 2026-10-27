@@ -68,5 +68,11 @@
     "_note": "Round 58: the kinds of military supplies a country sent to Russia, in the searchers' words ('North Korea soldiers and shells', 'Iran drones'), named in titles, headings and questions only where the data have them: the country's weapons and troops sent to Russia come to at least minEur (EUR bn, full value) and src is one of the sources of its military_rus entry in data.json (the research that names those supplies). Their words in each language are in seo_i18n.mjs (S item).",
     "minEur": 0.05,
     "list": { "PRK": { "items": ["soldiers", "shells"], "src": "north_korea_r24" }, "IRN": { "items": ["drones"], "src": "military_rus_r6" } }
+  },
+  "research": {
+    "_note": "Round 58b (owner approved): three research files the pages read at deploy (seo_research.mjs), in every language. sanctions: the sanctions on Russia that apply in each country and territory, a section and a question on every country page and the page of every country (slug); frozen: the amounts frozen in each holding country, on the country pages and as two columns of the topic page named in topic, and the totals in its explainers; revenue: Russia's federal oil and gas revenue, its page (slug), the months its monthly table shows, the topic page it links for the map's own measure (warIncome), and two CSV files in the downloads. check 48 reads every figure they write back against the file.",
+    "sanctions": { "file": "research/2026-10/gaps/sanctions_r58.json", "slug": "countries-with-sanctions-on-russia", "explain": ["unfriendlyList"], "related": ["frozen-russian-assets", "russia-trade-hubs", "countries-helping-russia", "russia-oil-gas-revenue"] },
+    "frozen": { "file": "research/2026-10/gaps/frozen_amounts_r58.json", "topic": "frozen-russian-assets" },
+    "revenue": { "file": "research/2026-10/gaps/russia_revenue_r58.json", "slug": "russia-oil-gas-revenue", "months": 24, "warIncome": "russia-war-income", "related": ["russia-war-income", "russian-oil-gas-buyers", "russian-oil-discount", "countries-with-sanctions-on-russia"] }
   }
 }

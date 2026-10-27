@@ -122,7 +122,7 @@ test("a topic ranks, totals and leaves out parties as configured", () => {
   assert.deepEqual(g.rows.map(c => c.iso), ["CCC", "AAA"]);   // by % of GDP, every member (a group has no size limit)
   assert.deepEqual(g.sides, ["RUS"]);
   const html = renderTopic(g, { esc: s => String(s), cPath: c => "/country/" + c.slug + "/" });
-  assert.match(html, /<tr data-iso="AAA">.*data-q="net" data-level="sure"><b class="pos">\+4\.0%/);
+  assert.match(html, /<tr data-iso="AAA"[^>]*>.*data-q="net" data-level="sure"[^>]*><b class="pos">\+4\.0%/);
   assert.match(html, /data-total="net"><span>Net<\/span><b class="pos">\+4\.2%/);
   assert.match(html, /Party to the war/);
   assert.throws(() => buildTopic({ ...e, title: "{nope}" }, CS, [], { dataTo: "" }), /unknown placeholder/);
@@ -213,8 +213,42 @@ test("a year page ranks that year's own amounts", () => {
   const m = buildTopic({ kind: "year", slug: "ukraine-aid-2023", rank: "ua", year: 2023, sort: "eur", order: "desc", columns: ["rus", "net"] }, C, [], { dataTo: "" });
   assert.deepEqual(m.rows.map(c => c.iso), ["BBB", "AAA"]);
   const html = renderTopic(m, { esc: s => String(s), cPath: c => "/country/" + c.slug + "/", l: "de" });
-  assert.match(html, /data-q="ua" data-year="2023"><b class="pos">\+3 Mrd\. €/);
+  assert.match(html, /data-q="ua" data-year="2023"[^>]*><b class="pos">\+3 Mrd\. €/);
   assert.match(html, /im Jahr 2023/);
+});
+
+// ----- round 58 (owner: "the ranking does not work and the numbers make no sense"): a part's page -----
+test("a part page writes each value with its range in the value's own sign, in the side's words, without chance words", () => {
+  // money flowing back (other countries' aid spent here): below zero, subtracted from support
+  const back = (iso, name, gdp, v, lo, hi) => mk(iso, name, gdp, 1, 1, 0, {});
+  const C = [back("AAA", "Aland", 500, 0, 0, 0), back("BBB", "Bland", 300, 0, 0, 0), back("CCC", "Cland", 26000, 0, 0, 0)];
+  const P = { AAA: [-0.3, -0.64, -0.003], BBB: [-0.17, -0.49, -0.02], CCC: [-0.7, -1.4, -0.32] };
+  for (const c of C) { const [v, lo, hi] = P[c.iso]; c.measures["part:purl"] = { v, lo, hi, range: "", chance: "", level: "", side: "", partSide: "back", name: c.nameEn + " kept part of others' aid, spent here" }; }
+  const [e] = partEntries({ parts: { minCountries: 1, minTotal: 0, list: [{ key: "purl", slug: "p", side: "back" }] } }, C, []);
+  const m = buildTopic({ ...e, label: "P" }, C, [], { dataTo: "" });
+  assert.deepEqual(m.rows.map(c => c.iso), ["CCC", "AAA", "BBB"]);   // the most subtracted first
+  assert.equal(m.keySide, "back");
+  for (const l of ["en", "nl"]) {
+    const html = renderTopic(m, { esc: s => String(s), cPath: c => "/country/" + c.slug + "/", l }).replace(/[\u00a0\u202f]/g, " ");
+    const nl = l === "nl";
+    // Sweden-like row: −0.06% of GDP with a range from −€0.64bn to −€3m (signed, low to high, holding the value)
+    assert.match(html, nl ? /<b class="neg">−€0,30 mld<\/b><span class="s"><i>−0,06% van het bbp<\/i>/ : /<b class="neg">−€0.30bn<\/b><span class="s"><i>−0.06% of GDP<\/i>/);
+    assert.match(html, nl ? /bandbreedte <i>−€0,64 mld<\/i> tot <i>−€3 mln<\/i>/ : /range <i>−€0.64bn<\/i> to <i>−€3m<\/i>/);
+    const cells = [...html.matchAll(/data-q="part:purl"[^>]*>(.*?)<\/td>/g)].map(x => x[1]).join(" ");
+    assert.equal(cells.match(/class="s rg"/g).length, 3);
+    assert.doesNotMatch(cells, nl ? /waarschijnlijk|ongeveer 0|richting/ : /likely|about 0|toward/);
+    assert.doesNotMatch(html, /kept part of others' aid/);   // no words repeated in every row
+    assert.match(html, nl ? /naar het afgetrokken bedrag, van hoog naar laag/ : /by the amount subtracted, high to low/);
+    assert.match(html, nl ? /−: wat het verdiende, afgetrokken van zijn steun/ : /−: what it earned, subtracted from its support for Ukraine/);
+  }
+  // a share of exactly 0.01% keeps its sign
+  const one = renderTopic(buildTopic({ ...e, sort: "gdp" }, [C[0]].map(c => ({ ...c, gdp: 3000 })), [], { dataTo: "" }), { esc: s => String(s), cPath: () => "/" });
+  assert.match(one, /<b class="neg">−0.01%<\/b>/);
+});
+
+test("a page by year has frozen money's column, so its columns add up to the net", () => {
+  const [ua] = yearEntries(FAM, 2026);
+  assert.deepEqual(ua.columns, ["rus", "frozen", "net"]);
 });
 
 // ----- round 57: the placeholder engine, and the one translation table -----
@@ -421,4 +455,88 @@ test("a page's Markdown version: its headings, text, lists and tables, full link
 <ul class="rel"><li><a href="https://x.org/a(b)">A</a></li><li>B</li></ul><script>var x = 1;</script></main><footer>foot</footer></body></html>`;
   const md = htmlToMarkdown(html, "https://warbalance.org/shadow-fleet/");
   assert.equal(md, "# Shadow fleet\n\nFor [Greece](https://warbalance.org/country/greece/): −€1.5bn & more\\_x.\n\n## Parts\n\n| # | Country |\n| --- | --- |\n| 1 | +1.8% · €5.2bn · likely |\n\n- [A](https://x.org/a%28b%29)\n- B\n");
+});
+
+// ----- round 58b: the three research results (seo_research.mjs) -----
+import * as RS from "./seo_research.mjs";
+const RJ = f => JSON.parse(readFileSync(join(HERE, "..", "research", "2026-10", "gaps", f), "utf8"));
+const SANC = RJ("sanctions_r58.json"), FROZ = RJ("frozen_amounts_r58.json"), REV = RJ("russia_revenue_r58.json");
+
+test("sanctions: every entry answered from its category in every language; Russia's list said apart, never as a sanction", () => {
+  for (const iso of Object.keys(SANC.countries)) {
+    const r = RS.sanctionsOf(SANC, iso);
+    assert.ok(RS.SANCTION_CATS.includes(r.cat), iso);
+    for (const l of I.LANGS) {
+      const a = RS.sanctionsAnswer(l, r, { N: "X", Nt: "X", sov: r.sov || "" });
+      assert.ok(a.length > 40 && !/[{}]/.test(a), `${iso} ${l}`);
+    }
+  }
+  const kaz = RS.sanctionsAnswer("en", RS.sanctionsOf(SANC, "KAZ"), { N: "Kazakhstan", Nt: "Kazakhstan" });
+  assert.match(kaz, /^No\. Kazakhstan has not imposed sanctions of its own/);
+  assert.match(kaz, /get around other countries' sanctions/);
+  assert.doesNotMatch(kaz, /refuses|sides with/);
+  const twn = RS.sanctionsAnswer("en", RS.sanctionsOf(SANC, "TWN"), { N: "Taiwan", Nt: "Taiwan" });
+  assert.match(twn, /export controls on listed high-tech goods/);
+  assert.match(twn, /Separately, Russia lists Taiwan as an “unfriendly” state \(government order 430-r, 5 March 2022\): that is Russia's own list/);
+  const deu = RS.sanctionsOf(SANC, "DEU");
+  assert.equal(deu.cat, "eu_member");
+  assert.ok(deu.cap.member && deu.cap.viaEU === false);   // a G7 member in its own right
+  // a fact read only through a search engine's extract is marked where its source is listed
+  const b = RS.sanctionsBlock("en", RS.sanctionsOf(SANC, "KAZ"), { N: "Kazakhstan", Nt: "Kazakhstan" }, "/countries-with-sanctions-on-russia/");
+  assert.match(b.html, /search summary/);
+  assert.equal(b.q, "Does Kazakhstan have sanctions on Russia?");
+  // the page of every country: every entry, the counts by category the file's own
+  const p = RS.sanctionsPage("en", SANC, { nameOf: i => SANC.countries[i].name, href: () => "" });
+  assert.deepEqual(p.counts, SANC.summary.by_category);
+  assert.equal((p.body.match(/<tr id="[A-Z]{3}"/g) || []).length, Object.keys(SANC.countries).length);
+  assert.match(p.faq[1].a, /Micronesia/);
+});
+
+test("frozen amounts: the file's figure with its date, never zero where there is none, an estimate marked; explainers' amounts from the file", () => {
+  assert.match(RS.frozenLines("en", FROZ, "BEL"), /data-v="185"[^>]*>€185bn<\/span> \(December 2025/);
+  assert.match(RS.frozenLines("en", FROZ, "BEL"), /€202bn<\/span> of sanctioned Russian assets on its balance sheet \(June 2026\); that figure overlaps/);
+  const jpn = RS.frozenLines("en", FROZ, "JPN");
+  assert.match(jpn, />no public figure<\/span> \(estimate: about €28bn\)/);
+  assert.doesNotMatch(jpn, /€0/);
+  assert.match(RS.frozenLines("en", FROZ, "LUX"), />&lt;€1m<\/span>/);   // "below EUR 10,000", not zero
+  assert.match(RS.frozenLines("en", FROZ, "PRT"), /No public figure has been published/);
+  assert.equal(RS.frozenLines("en", FROZ, "CHN"), "");
+  for (const l of I.LANGS) {
+    const a = RS.explainAmount(l, "frozenAssets", FROZ).vars.amountText, b = RS.explainAmount(l, "reparationsLoan", FROZ).vars.amountText;
+    assert.ok(a.includes(I.E(l, FROZ.totals.eu_cbr.v)) && a.includes(I.E(l, 202)), l);
+    assert.ok(b.includes(I.E(l, 90)) && b.includes(I.E(l, 19.8)), l);
+    assert.doesNotMatch(I.explainText(l, "reparationsLoan", { amountText: b }, { amount: 1 }).a, /\{|\}/);
+  }
+  assert.match(RS.explainAmount("en", "reparationsLoan", FROZ).vars.amountText, /^Where it stands: proposed, not adopted\./);
+  assert.doesNotMatch(RS.explainAmount("en", "reparationsLoan", FROZ).vars.amountText, /funded by Russian assets/);
+});
+
+test("Russia's oil and gas revenue: every figure on the page and in the CSV is the file's", () => {
+  for (const l of I.LANGS) {
+    const p = RS.revenuePage(l, REV, { warIncome: "/russia-war-income/", published: "2026-10-09", months: 24, yearWord: "Year" });
+    const marks = [...p.body.matchAll(/data-rv="revenue:([^"]+)" data-v="([^"]+)"/g)];
+    assert.ok(marks.length > 150, l);
+    for (const [, path, v] of marks) {
+      const segs = path.split("."); let x = REV;
+      for (const s of segs) x = s.includes("@") ? x[s.split("@")[0]].find(m => m.ym === s.split("@")[1]) : x[s];
+      assert.equal(String(x === null ? "null" : x), v, `${l} ${path}`);
+    }
+    assert.equal(new Set(marks.filter(([, p0]) => p0.startsWith("monthly@")).map(([, p0]) => p0.split(".")[0])).size, 24);
+    assert.doesNotMatch(p.body + p.intro, /pays for the army|who funds/i);
+    assert.match(p.body, /href="\/russia-war-income\/"/);
+  }
+  const csv = RS.revenueCsv(REV);
+  assert.equal(csv.monthly.split("\n").length, REV.monthly.length + 1);
+  assert.ok(csv.yearly.includes("\n2019,12,true,7924.3,"));
+});
+
+test("a country page gets the sanctions section and question; the frozen section the amounts", () => {
+  const regime = { title: "Sanctions on Russia", q: "Does Testland have sanctions on Russia?", a: "No. x", html: "<div>x</div>" };
+  const r = SC.countryDyn(mkC(), OPT({ regime, stock: '<p class="stock">Amounts</p>' }));
+  assert.equal(r.faq[r.faq.length - 1].id, "regime");
+  assert.ok(r.sections.some(s => s.id === "sanctions-on-russia"));
+  assert.ok(r.sections.find(s => s.id === "frozen").html.includes("Amounts"));
+  const nd = SC.countryDyn(mkC({ net: null, noData: true }), OPT({ regime }));
+  assert.deepEqual(nd.faq.map(x => x.id), ["nodata", "regime"]);
+  assert.deepEqual(nd.sections.map(s => s.id), ["sanctions-on-russia"]);
 });
