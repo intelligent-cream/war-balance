@@ -431,11 +431,11 @@ const COPY = {
       line: "Support for Ukraine in euros: {a} {eurA}, {b} {eurB}. More in euros: {if:uaA>=uaB|{a}|{b}}; more as a share of GDP: {if:pctA>=pctB|{a}|{b}}." },
     hub: { title: "Topics: every ranking, part, year and comparison", description: "All {n} pages of War Balance by topic: rankings, groups, each part of the numbers, each year since 2022 and countries compared side by side.", h1: "Every topic, part, year and comparison" },
     country: {
-      u_sure: { title: ["How much has {Nt} given Ukraine? {ua} since 2022", "How much has {Nt} given Ukraine? {ua}", "{N}: {ua} for Ukraine since 2022", "{N}: {netP} of GDP {netDir}"],
+      u_sure: { title: ["How much has {Nt} given to Ukraine? {ua} since 2022", "How much has {Nt} given to Ukraine? {ua}", "{N}: {ua} for Ukraine since 2022", "{N}: {netP} of GDP {netDir}"],
         description: ["Support for Ukraine from {Nt} since 2022: {ua} ({uaP} of one year's GDP). With trade with Russia counted: {netP} of GDP {netDir}, {sureWord}.",
           "Support for Ukraine from {Nt} since 2022: {ua} ({uaP} of GDP). With trade with Russia: {netP} of GDP {netDir}, {sureWord}.",
           "Support for Ukraine since 2022: {ua} ({uaP} of GDP). With trade with Russia: {netP} of GDP {netDir}, {sureWord}."],
-        h1: "How much has {Nt} given Ukraine since 2022?" },
+        h1: "How much has {Nt} given to Ukraine since 2022?" },
       u_trade: { title: ["Does {Nt} trade with Russia? Russia kept {rus} {if:rusX>=0|less|more}", "{N} and Russia: trade kept Russia {rus} {if:rusX>=0|less|more}", "{N}: {netP} of GDP {netDir}"],
         description: ["Since 2022 Russia kept {rus} {if:rusX>=0|less|more} in taxes and profit from trade with {Nt} than without the war. With {ua} for Ukraine: {netP} of GDP {netDir}, {sureWord}.",
           "Since 2022 Russia kept {rus} {if:rusX>=0|less|more} from trade with {Nt} than without the war. With its support for Ukraine: {netP} of GDP {netDir}, {sureWord}."],
@@ -473,9 +473,9 @@ const COPY = {
         description: ["At the Ukraine end: {topUa}; at the Russia end: {topRu}. The net as % of GDP since 2022, with ranges and chances.", "Where did each country's money move since 2022, toward Ukraine or Russia? Aid plus trade with Russia against a no-war world, with a range for each country."],
         h1: "Ranking: every country's money toward Ukraine or Russia since 2022",
         intro: "{n} countries ranked by the net as a share of one year's GDP, grouped by the chance of the direction, as in the map's ranking. {parties} {if:nParty>1|are parties|is a party} to the war and not ranked." },
-      "support-for-ukraine": { title: "Ukraine aid by country as % of GDP: who gave the most?",
+      "support-for-ukraine": { title: ["Total aid to Ukraine by country: euros and % of GDP", "Total aid to Ukraine by country"],
         description: ["Support for Ukraine since 2022 in euros and % of GDP. In euros the list starts with {euroTop}; as a share of GDP with {shareTop}.", "Every country's support for Ukraine since 2022, aid, EU share and refugee hosting, in euros and % of GDP, each with a range and its sources."],
-        h1: "Support for Ukraine by country since 2022",
+        h1: "Total aid to Ukraine by country since 2022",
         intro: "Aid (loans at their gift value), each EU member's share of EU aid and the cost of hosting refugees, minus what flowed back, for every country, in euros and as a share of one year's GDP." },
       "trade-with-russia": { title: "Which countries boosted Russia's trade earnings since 2022?",
         description: ["Russia kept {e1} {if:x1<0|more|less} from trade with {n1} and {e2} {if:x2<0|more|less} with {n2} than without the war; with {n3}, {e3} {if:x3<0|more|less}. Taxes and profit.", "Not sales but what Russia keeps: the change in its taxes and profit from trade with each country since 2022, against a no-war world, country by country."],
@@ -722,9 +722,9 @@ export function hubCopy(l, n) {
 // ----- the topic and group pages of seo_topics.json in the other languages: a name, a title in the way people
 // search in that language and a heading per entry; the description and intro are written from the table -----
 export const TOPIC_T = {
-  "ukraine-support-tracker": { de: ["Ukraine-Hilfe nach Ländern", "Ukraine-Hilfe nach Ländern: Wer gibt am meisten?", "Ukraine-Hilfe nach Ländern: Hilfe, Geflüchtete und Russlandhandel"], fr: ["Aide à l'Ukraine par pays", "Aide à l'Ukraine par pays : qui donne le plus ?", "Aide à l'Ukraine par pays : aide, réfugiés et commerce avec la Russie"], es: ["Ayuda a Ucrania por países", "Ayuda a Ucrania por países: ¿quién da más?", "Ayuda a Ucrania por países: ayuda, refugiados y comercio con Rusia"], pl: ["Pomoc dla Ukrainy według krajów", "Pomoc dla Ukrainy: ranking państw", "Pomoc dla Ukrainy według krajów: pomoc, uchodźcy i handel z Rosją"], nl: ["Steun aan Oekraïne per land", "Steun aan Oekraïne per land: wie geeft het meest?", "Steun aan Oekraïne per land: hulp, vluchtelingen en handel met Rusland"], uk: ["Допомога Україні по країнах", "Допомога Україні по країнах: хто дає найбільше?", "Допомога Україні по країнах: допомога, біженці й торгівля з Росією"] },
+  "ukraine-support-tracker": { de: ["Ukraine-Hilfe nach Ländern", ["Unterstützung der Ukraine im Ländervergleich (pro Kopf, % BIP)", "Unterstützung der Ukraine im Ländervergleich: pro Kopf, BIP", "Unterstützung der Ukraine im Ländervergleich"], "Unterstützung der Ukraine im Ländervergleich (pro Kopf, % BIP): Hilfe, Geflüchtete und Russlandhandel"], fr: ["Aide à l'Ukraine par pays", ["Aide à l'Ukraine par pays : qui donne le plus ?", "Aide à l'Ukraine par pays"], "Aide à l'Ukraine par pays : aide, réfugiés et commerce avec la Russie"], es: ["Ayuda a Ucrania por países", "Ayuda a Ucrania por países: ¿quién da más?", "Ayuda a Ucrania por países: ayuda, refugiados y comercio con Rusia"], pl: ["Pomoc dla Ukrainy według krajów", "Pomoc dla Ukrainy: ranking państw", "Pomoc dla Ukrainy według krajów: pomoc, uchodźcy i handel z Rosją"], nl: ["Steun aan Oekraïne per land", ["Steun aan Oekraïne per land: wie geeft het meest?", "Steun aan Oekraïne per land"], "Steun aan Oekraïne per land: hulp, vluchtelingen en handel met Rusland"], uk: ["Допомога Україні від країн", ["Допомога Україні від країн: хто дає найбільше?", "Допомога Україні від країн"], "Допомога Україні від країн: допомога, біженці й торгівля з Росією"] },
   "russian-oil-gas-buyers": { de: ["Wer kauft russisches Öl und Gas?", "Wer kauft russisches Öl und Gas? Zahlungen seit 2022", "Wer kauft russisches Öl und Gas? Was jedes Land Russland zahlte"], fr: ["Qui achète le pétrole et le gaz russes ?", "Qui achète le pétrole et le gaz russes depuis 2022 ?", "Qui achète le pétrole et le gaz russes ? Ce que chaque pays a payé"], es: ["¿Quién compra petróleo y gas ruso?", "¿Quién compra petróleo y gas ruso? Pagos desde 2022", "¿Quién compra petróleo y gas ruso? Lo que pagó cada país"], pl: ["Kto kupuje rosyjską ropę i gaz?", "Kto kupuje rosyjską ropę i gaz? Płatności od 2022", "Kto kupuje rosyjską ropę i gaz? Ile każdy kraj zapłacił Rosji"], nl: ["Wie koopt Russische olie en gas?", "Wie koopt Russische olie en gas? Betalingen sinds 2022", "Wie koopt Russische olie en gas? Wat elk land Rusland betaalde"], uk: ["Хто купує російську нафту й газ?", "Хто купує російську нафту й газ? Платежі з 2022", "Хто купує російську нафту й газ? Скільки кожна країна заплатила Росії"] },
-  "frozen-russian-assets": { de: ["Eingefrorene russische Vermögen", "Eingefrorene russische Vermögen nach Ländern", "Eingefrorene russische Vermögen: Was Russland in jedem Land verliert"], fr: ["Avoirs russes gelés", "Avoirs russes gelés par pays", "Avoirs russes gelés : ce que la Russie perd dans chaque pays"], es: ["Activos rusos congelados", "Activos rusos congelados por país", "Activos rusos congelados: lo que Rusia pierde en cada país"], pl: ["Zamrożone rosyjskie aktywa", "Zamrożone rosyjskie aktywa według krajów", "Zamrożone rosyjskie aktywa: co Rosja traci w każdym kraju"], nl: ["Bevroren Russische tegoeden", "Bevroren Russische tegoeden per land", "Bevroren Russische tegoeden: wat Rusland in elk land misloopt"], uk: ["Заморожені російські активи", "Заморожені російські активи за країнами", "Заморожені російські активи: що Росія втрачає в кожній країні"] },
+  "frozen-russian-assets": { de: ["Eingefrorene russische Vermögen", ["Eingefrorenes russisches Vermögen und Euroclear nach Ländern", "Eingefrorene russische Vermögen nach Ländern"], "Eingefrorenes russisches Vermögen und Euroclear: Was Russland in jedem Land verliert"], fr: ["Avoirs russes gelés", ["Avoirs russes gelés et Euroclear par pays", "Avoirs russes gelés par pays"], "Avoirs russes gelés et Euroclear : ce que la Russie perd dans chaque pays"], es: ["Activos rusos congelados", ["Activos rusos congelados y Euroclear por país", "Activos rusos congelados por país"], "Activos rusos congelados y Euroclear: lo que Rusia pierde en cada país"], pl: ["Zamrożone rosyjskie aktywa", ["Zamrożone rosyjskie aktywa i Euroclear według krajów", "Zamrożone rosyjskie aktywa według krajów"], "Zamrożone rosyjskie aktywa i Euroclear: co Rosja traci w każdym kraju"], nl: ["Bevroren Russische tegoeden", ["Bevroren Russische tegoeden en Euroclear per land", "Bevroren Russische tegoeden per land"], "Bevroren Russische tegoeden en Euroclear: wat Rusland in elk land misloopt"], uk: ["Заморожені російські активи", ["Заморожені російські активи та Euroclear за країнами", "Заморожені російські активи за країнами"], "Заморожені російські активи та Euroclear: що Росія втрачає в кожній країні"] },
   "europe-energy-payments-vs-aid": { de: ["Europa: an Russland gezahlt vs. Ukraine-Hilfe", "Hat Europa Russland mehr gezahlt als der Ukraine gegeben?", "Hat Europa Russland mehr gezahlt, als es der Ukraine gab?"], fr: ["Europe : payé à la Russie vs aide à l'Ukraine", "L'Europe a-t-elle payé la Russie plus qu'aidé l'Ukraine ?", "L'Europe a-t-elle plus payé la Russie qu'aidé l'Ukraine depuis 2022 ?"], es: ["Europa: pagos a Rusia vs. ayuda a Ucrania", "¿Ha pagado Europa a Rusia más que a Ucrania?", "¿Ha pagado Europa a Rusia más de lo que dio a Ucrania desde 2022?"], pl: ["Europa: płatności dla Rosji a pomoc dla Ukrainy", "Czy Europa zapłaciła Rosji więcej, niż dała Ukrainie?", "Czy Europa zapłaciła Rosji więcej, niż dała Ukrainie od 2022 roku?"], nl: ["Europa: betaald aan Rusland vs steun aan Oekraïne", "Betaalde Europa Rusland meer dan het Oekraïne gaf?", "Betaalde Europa Rusland sinds 2022 meer dan het Oekraïne gaf?"], uk: ["Європа: платежі Росії проти допомоги Україні", "Чи заплатила Європа Росії більше, ніж дала Україні?", "Чи заплатила Європа Росії більше, ніж дала Україні з 2022 року?"] },
   "russia-war-income": { de: ["Russlands Kriegseinnahmen aus Handel", "Russlands Kriegseinnahmen: Wessen Handel brachte am meisten?", "Russlands Kriegseinnahmen: Wessen Handel brachte Russland am meisten seit 2022?"], fr: ["Revenus de guerre de la Russie", "Revenus de guerre de la Russie : quel commerce rapporte ?", "Revenus de guerre de la Russie : quels échanges l'ont le plus enrichie depuis 2022 ?"], es: ["Ingresos de guerra de Rusia", "Ingresos de guerra de Rusia: ¿qué comercio aporta más?", "Ingresos de guerra de Rusia: ¿qué comercio le aportó más desde 2022?"], pl: ["Wojenne dochody Rosji z handlu", "Wojenne dochody Rosji: czyj handel dał najwięcej?", "Wojenne dochody Rosji: czyj handel dał jej najwięcej od 2022 roku?"], nl: ["Ruslands oorlogsinkomsten uit handel", "Ruslands oorlogsinkomsten: wiens handel bracht het meest?", "Ruslands oorlogsinkomsten: wiens handel bracht sinds 2022 het meest op?"], uk: ["Воєнні доходи Росії від торгівлі", "Воєнні доходи Росії: чия торгівля дала найбільше?", "Воєнні доходи Росії: чия торгівля дала їй найбільше з 2022 року?"] },
   eu: { de: ["EU-Länder", ["Ukraine-Hilfe der EU-Länder und Handel mit Russland", "EU: Ukraine-Hilfe und Handel mit Russland je Land"], "Die EU: das Geld jedes Mitglieds Richtung Ukraine oder Russland"], fr: ["Pays de l'UE", ["Aide de l'UE à l'Ukraine et commerce russe par pays", "UE : aide à l'Ukraine et commerce russe par pays"], "L'UE : l'argent de chaque membre vers l'Ukraine ou la Russie"], es: ["Países de la UE", ["Ayuda de la UE a Ucrania y comercio con Rusia por país", "UE: ayuda a Ucrania y comercio con Rusia por país"], "La UE: el dinero de cada miembro hacia Ucrania o Rusia"], pl: ["Kraje UE", ["Pomoc dla Ukrainy z UE i handel z Rosją według krajów", "UE: pomoc dla Ukrainy i handel z Rosją według krajów"], "UE: pieniądze każdego członka w stronę Ukrainy lub Rosji"], nl: ["EU-landen", ["EU-steun aan Oekraïne en handel met Rusland per land", "EU: steun aan Oekraïne en handel met Rusland per land"], "De EU: het geld van elk lid richting Oekraïne of Rusland"], uk: ["Країни ЄС", ["Допомога Україні від країн ЄС і торгівля з Росією", "ЄС: допомога Україні й торгівля з Росією за країнами"], "ЄС: гроші кожного члена на користь України чи Росії"] },
@@ -733,7 +733,7 @@ export const TOPIC_T = {
   brics: { de: ["BRICS", "BRICS: Handel mit Russland und Ukraine-Hilfe seit 2022", "BRICS: das Geld jedes Mitglieds Richtung Ukraine oder Russland"], fr: ["BRICS", "BRICS : commerce avec la Russie et aide à l'Ukraine", "Les BRICS : l'argent de chaque membre vers l'Ukraine ou la Russie"], es: ["BRICS", "BRICS: comercio con Rusia y ayuda a Ucrania desde 2022", "BRICS: el dinero de cada miembro hacia Ucrania o Rusia"], pl: ["BRICS", "BRICS: handel z Rosją i pomoc dla Ukrainy od 2022", "BRICS: pieniądze każdego członka w stronę Ukrainy lub Rosji"], nl: ["BRICS", "BRICS: handel met Rusland en steun aan Oekraïne", "BRICS: het geld van elk lid richting Oekraïne of Rusland"], uk: ["БРІКС", "БРІКС: торгівля з Росією й допомога Україні з 2022", "БРІКС: гроші кожного члена на користь України чи Росії"] },
   "gulf-states": { de: ["Golfstaaten", "Golfstaaten: Handel mit Russland und Ukraine-Hilfe", "Golfstaaten: das Geld jedes Landes Richtung Ukraine oder Russland"], fr: ["États du Golfe", "États du Golfe : commerce avec la Russie et aide à l'Ukraine", "États du Golfe : l'argent de chacun vers l'Ukraine ou la Russie"], es: ["Estados del Golfo", "Estados del Golfo: comercio con Rusia y ayuda a Ucrania", "Estados del Golfo: el dinero de cada uno hacia Ucrania o Rusia"], pl: ["Państwa Zatoki Perskiej", "Państwa Zatoki: handel z Rosją i pomoc dla Ukrainy", "Państwa Zatoki: pieniądze każdego w stronę Ukrainy lub Rosji"], nl: ["Golfstaten", "Golfstaten: handel met Rusland en steun aan Oekraïne", "Golfstaten: het geld van elk land richting Oekraïne of Rusland"], uk: ["Країни Перської затоки", "Країни Затоки: торгівля з Росією й допомога Україні", "Країни Затоки: гроші кожної на користь України чи Росії"] },
   "central-asia": { de: ["Zentralasien", "Zentralasien: Handel mit Russland und Ukraine-Hilfe", "Zentralasien: das Geld jedes Landes Richtung Ukraine oder Russland"], fr: ["Asie centrale", "Asie centrale : commerce avec la Russie et aide à l'Ukraine", "Asie centrale : l'argent de chaque pays vers l'Ukraine ou la Russie"], es: ["Asia Central", "Asia Central: comercio con Rusia y ayuda a Ucrania", "Asia Central: el dinero de cada país hacia Ucrania o Rusia"], pl: ["Azja Środkowa", "Azja Środkowa: handel z Rosją i pomoc dla Ukrainy", "Azja Środkowa: pieniądze każdego kraju w stronę Ukrainy lub Rosji"], nl: ["Centraal-Azië", "Centraal-Azië: handel met Rusland en steun aan Oekraïne", "Centraal-Azië: het geld van elk land richting Oekraïne of Rusland"], uk: ["Центральна Азія", "Центральна Азія: торгівля з Росією й допомога Україні", "Центральна Азія: гроші кожної країни на користь України чи Росії"] },
-  "countries-helping-russia": { de: ["Welche Länder helfen Russland?", "Welche Länder helfen Russland? Geldströme seit 2022", "Welche Länder helfen Russland? Wohin das Geld seit 2022 floss"], fr: ["Quels pays aident la Russie ?", "Quels pays aident la Russie ? L'argent depuis 2022", "Quels pays aident la Russie ? Où l'argent est allé depuis 2022"], es: ["¿Qué países ayudan a Rusia?", "¿Qué países ayudan a Rusia? El dinero desde 2022", "¿Qué países ayudan a Rusia? Hacia dónde fue el dinero desde 2022"], pl: ["Które kraje pomagają Rosji?", "Które kraje pomagają Rosji? Pieniądze od 2022", "Które kraje pomagają Rosji? Dokąd płynęły pieniądze od 2022"], nl: ["Welke landen helpen Rusland?", "Welke landen helpen Rusland? Geldstromen sinds 2022", "Welke landen helpen Rusland? Waar het geld sinds 2022 heen ging"], uk: ["Які країни допомагають Росії?", "Які країни допомагають Росії? Гроші з 2022 року", "Які країни допомагають Росії? Куди йшли гроші з 2022 року"] },
+  "countries-helping-russia": { de: ["Welche Länder helfen Russland?", ["{q:Russlands Verbündete?} Wohin das Geld seit 2022 floss", "{q:Russlands Verbündete?} Geldströme seit 2022"], "{q:Russlands Verbündete?} Wohin das Geld jedes Landes seit 2022 floss"], fr: ["Quels pays aident la Russie ?", ["{q:Alliés de la Russie ?} Où l'argent est allé depuis 2022", "{q:Alliés de la Russie ?} L'argent depuis 2022"], "{q:Alliés de la Russie ?} Où l'argent de chaque pays est allé depuis 2022"], es: ["¿Qué países ayudan a Rusia?", ["{q:¿Aliados de Rusia?} Hacia dónde fue el dinero desde 2022", "{q:¿Aliados de Rusia?} El dinero desde 2022"], "{q:¿Aliados de Rusia?} Hacia dónde fue el dinero de cada país desde 2022"], pl: ["Które kraje pomagają Rosji?", ["{q:Sojusznicy Rosji?} Dokąd płynęły pieniądze od 2022", "{q:Sojusznicy Rosji?} Pieniądze od 2022"], "{q:Sojusznicy Rosji?} Dokąd płynęły pieniądze każdego kraju od 2022 roku"], nl: ["Welke landen helpen Rusland?", ["{q:Bondgenoten van Rusland?} Waar het geld sinds 2022 heen ging", "{q:Bondgenoten van Rusland?} Geldstromen sinds 2022"], "{q:Bondgenoten van Rusland?} Waar het geld van elk land sinds 2022 heen ging"], uk: ["Які країни допомагають Росії?", ["{q:Союзники Росії?} Куди йшли гроші з 2022 року", "{q:Союзники Росії?} Гроші з 2022 року"], "{q:Союзники Росії?} Куди йшли гроші кожної країни з 2022 року"] },
   "shadow-fleet": { de: ["Schattenflotte: Wer verschifft russisches Öl?", "Schattenflotte: Wer verdient am Transport russischen Öls?", "Schattenflotte: Welche Länder verdienen am Transport russischen Öls?"], fr: ["Flotte fantôme : qui transporte le pétrole russe ?", "Flotte fantôme : qui gagne au transport du pétrole russe ?", "Flotte fantôme : quels pays gagnent au transport du pétrole russe ?"], es: ["Flota fantasma: ¿quién transporta el crudo ruso?", "Flota fantasma: ¿quién gana con el crudo ruso?", "Flota fantasma: ¿qué países ganan transportando petróleo ruso?"], pl: ["Flota cieni: kto przewozi rosyjską ropę?", "Flota cieni: kto zarabia na przewozie rosyjskiej ropy?", "Flota cieni: które kraje zarabiają na przewozie rosyjskiej ropy?"], nl: ["Schaduwvloot: wie vervoert Russische olie?", "Schaduwvloot: wie verdient aan Russische olie?", "Schaduwvloot: welke landen verdienen aan het vervoer van Russische olie?"], uk: ["Тіньовий флот: хто возить російську нафту?", "Тіньовий флот: хто заробляє на російській нафті?", "Тіньовий флот: які країни заробляють на перевезенні російської нафти?"] },
   "ukrainian-refugees-cost": { de: ["Kosten ukrainischer Geflüchteter", "Ukraine-Flüchtlinge: Kosten der Aufnahme nach Ländern", "Was hat die Aufnahme ukrainischer Geflüchteter jedes Land gekostet?"], fr: ["Coût des réfugiés ukrainiens", "Réfugiés ukrainiens : coût de l'accueil par pays", "Combien l'accueil des réfugiés ukrainiens a-t-il coûté à chaque pays ?"], es: ["Coste de los refugiados ucranianos", "Refugiados ucranianos: coste de acogida por país", "¿Cuánto ha costado a cada país acoger refugiados ucranianos?"], pl: ["Koszt uchodźców z Ukrainy", "Uchodźcy z Ukrainy: koszt przyjęcia według krajów", "Ile każdy kraj wydał na przyjęcie uchodźców z Ukrainy?"], nl: ["Kosten Oekraïense vluchtelingen", "Oekraïense vluchtelingen: kosten van opvang per land", "Wat kostte de opvang van Oekraïense vluchtelingen elk land?"], uk: ["Витрати на українських біженців", "Українські біженці: витрати на прийом за країнами", "Скільки кожній країні коштував прийом українських біженців?"] },
   "eu-vs-us-aid": { de: ["EU vs. USA: Ukraine-Hilfe", "EU vs. USA: Wer hat der Ukraine mehr gegeben?", "EU vs. USA: Wer hat der Ukraine seit 2022 mehr gegeben?"], fr: ["UE vs États-Unis : aide à l'Ukraine", "UE vs États-Unis : qui a le plus aidé l'Ukraine ?", "UE vs États-Unis : qui a le plus aidé l'Ukraine depuis 2022 ?"], es: ["UE vs. EE. UU.: ayuda a Ucrania", "UE vs. EE. UU.: ¿quién ha dado más a Ucrania?", "UE vs. EE. UU.: ¿quién ha dado más a Ucrania desde 2022?"], pl: ["UE a USA: pomoc dla Ukrainy", "UE czy USA: kto dał Ukrainie więcej?", "UE czy USA: kto dał Ukrainie więcej od 2022 roku?"], nl: ["EU vs VS: steun aan Oekraïne", "EU vs VS: wie gaf Oekraïne meer?", "EU vs VS: wie gaf Oekraïne sinds 2022 meer?"], uk: ["ЄС чи США: допомога Україні", "ЄС чи США: хто дав Україні більше?", "ЄС чи США: хто дав Україні більше з 2022 року?"] },
@@ -834,7 +834,7 @@ const DYN = {
     backShare: "By size, {ab} of its parts are reported or measured (A–B), {c} modelled (C) and {d} rough indications (D).",
     tierOfficial: "official", tierResearch: "research", tierPress: "press", tierOwn: "own estimate", tierMethod: "method input",
     srcAll: "Every source of its parts",
-    qGave: "How much has {Nt} given Ukraine?",
+    qGave: "How much has {Nt} given to Ukraine?",
     aGave: "{if:tiny|Almost nothing that can be measured: {ua} since 2022 ({uaP} of one year's GDP).|{NtCap}'s support for Ukraine from 2022 to {dataTo}: {ua}, {uaP} of one year's GDP ({uaRange}). It counts {if:eu|its own aid, its share of EU aid and the cost of hosting refugees|its aid and the cost of hosting refugees}, net of money flowing back; loans count at their gift value.}",
     qTrade: "Does {Nt} trade with Russia?",
     aTrade: "It bought {b1} from Russia in {y1} ({b0} in {y0}){if:sold|, and sold {s1} to Russia|}. What counts here is the change in what Russia kept from that trade (taxes and profit, not sales) against a world without the war: {kept}.",
@@ -1498,9 +1498,9 @@ const RES = {
     stockNote: "The amount columns show the amounts frozen at the date shown, for context: the table is sorted by the return Russia lost, not by these amounts. “No public figure” does not mean that nothing is frozen; an estimate is marked as one.",
     amtFrozenAssets: "In figures: about {euCbr} of Bank of Russia reserves are immobilised in the EU ({euCbrDate}, European Commission), and over {euPriv} of assets of sanctioned people and companies are frozen there. For the members of the REPO task force (the EU, the G7 and Australia), the official total was about {repoCbr} of central bank assets ({repoCbrDate}) and over {repoPriv} of private assets ({repoPrivDate}). Euroclear reports {euroclear} of sanctioned Russian assets on its balance sheet ({euroclearDate}); that figure overlaps the Commission's and is not added to it. The windfall payments from Euroclear to the EU came to about {windfall} by {windfallDate}.",
     amtReparationsLoan: "Where it stands: proposed, not adopted. The Commission's legal proposal ({propDate}) would have used up to {propMax} of immobilised assets. On {eucoDate} the European Council agreed instead on a {usl} Ukraine Support Loan for {uslYears}, funded by EU borrowing: Ukraine repays it once Russia pays reparations, and the EU keeps the right to use the immobilised assets for that. By {paidDate}, {uslPaid} of it had been paid out. The G7's ERA loans come to about {eraUsd} ({eraEur}).",
-    sTitle: "Which countries have sanctions on Russia? Full list",
+    sTitle: "Sanctions on Russia by country: EU, US, UK and others",
     sDesc: "Each country by the sanctions on Russia that apply there: EU, EU adopters, own regimes, the oil price cap, export controls and Russia's list.",
-    sH1: "Which countries have sanctions on Russia?", sLabel: "Countries with sanctions on Russia",
+    sH1: "Sanctions on Russia by country: which countries have them?", sLabel: "Countries with sanctions on Russia",
     sIntro: "Every country and territory on the map by the sanctions on Russia that apply there (checked {checked}), with the oil price cap coalition and export controls. Russia's own list of “unfriendly” countries has a column of its own: it is the list of countries Russia acts against, not a list of sanctions, and they differ.",
     lab_eu_member: "EU members: the EU's sanctions", lab_adopts_eu_measures: "Adopt the EU's sanctions", lab_own_regime: "Sanctions under their own law", lab_financial_directive_only: "Financial directive",
     lab_no_own_regime_stated: "No sanctions of their own, said publicly", lab_no_own_regime_found: "No sanctions of their own found", lab_territory_uk_order: "British overseas territories: the UK's sanctions", lab_territory: "Territories: not checked",
@@ -1524,10 +1524,10 @@ const RES = {
     sA1: "The EU's {nEu} members, {nAdopt} other European countries that adopt the EU's sanctions ({adoptList}) and {nOwn} countries with sanctions under their own law ({ownList}){if:nFin|; {finList}: a financial directive|}. Checked {checked}.",
     sQ2: "Is Russia's “unfriendly” list the list of countries with sanctions?",
     sA2: "No. The lists overlap but differ.{if:nListedNo| On Russia's list without sanctions of their own: {listedNoList}.|}{if:nAdoptNo| Adopting the EU's sanctions without being on Russia's list: {adoptNoList}.|}",
-    rTitle: "Russia's oil and gas revenue by year and month",
-    rDesc: "Russia's federal oil and gas revenue since {y0} in roubles and euros, its share of the budget and each month, with export earnings and defence.",
-    rH1: "Russia's oil and gas income: federal budget revenue since {y0}", rLabel: "Russia's oil and gas revenue",
-    rIntro: "Russia's federal budget books taxes on oil and gas production and exports as oil and gas revenue. In {lastFull} it came to {ogRub} ({ogEur}), {share} of federal revenue; from January to {latestMonth}, {ytdRub} ({ytdEur}), {ytdShare}. Figures from Russia's Ministry of Finance (data of {published}); euros at the Bank of Russia's monthly average rates.",
+    rTitle: "Russia's war budget: defence spending vs oil and gas income",
+    rDesc: "Russia's defence budget and military spending beside its federal oil and gas revenue since {y0}, in roubles and euros, by year and month, with sources.",
+    rH1: "Russia's war budget: defence spending and oil and gas income since {y0}", rLabel: "Russia's war budget and oil and gas revenue",
+    rIntro: "Russia's federal budget books taxes on oil and gas production and exports as oil and gas revenue. In {lastFull} it came to {ogRub} ({ogEur}), {share} of federal revenue; from January to {latestMonth}, {ytdRub} ({ytdEur}), {ytdShare}. Figures from Russia's Ministry of Finance (data of {published}); euros at the Bank of Russia's monthly average rates.{if:defOk| The budget law plans {defPlan} for “national defence” in {defYear}.|}",
     rWhatH: "What counts as oil and gas revenue",
     rWhat: "The mineral extraction tax on oil, gas and condensate, export duties on oil, oil products and gas, and the additional income tax on oil production, net of the “damper” payments to refiners. It measures tax, not export earnings: it includes tax on oil and gas sold in Russia and leaves out companies' profits, profit tax and dividends, which the ministry counts as other revenue. Months vary because the additional income tax is paid each quarter. Roubles are the official unit; euro values move with the exchange rate.",
     rYearH: "Year by year", rMonthH: "Month by month, to {latestMonth}",
@@ -1542,8 +1542,8 @@ const RES = {
     rMeasureH: "How this differs from the map's measure",
     rMeasure: "The map measures, for each country, how much less or more Russia kept from trade with that country than in a world without the war. The figures on this page are the taxes Russia's state received, from all buyers together: they cannot be split by country and have no no-war baseline, so they are not added to the map's figures or set against them.",
     rMeasureLink: "What Russia kept from trade, by country",
-    rQ1: "How much does Russia earn from oil and gas?",
-    rA1: "Federal oil and gas revenue in {lastFull}: {ogRub} ({ogEur}), {share} of federal revenue; from January to {latestMonth}: {ytdRub} ({ytdEur}). CREA estimates Russia's export earnings from oil and gas in {lastFull} at {crea}.",
+    rQ1: "How much does Russia earn from oil?",
+    rA1: "Russia's budget books oil and gas together. Federal oil and gas revenue in {lastFull}: {ogRub} ({ogEur}), {share} of federal revenue; from January to {latestMonth}: {ytdRub} ({ytdEur}). CREA estimates Russia's export earnings from oil and gas in {lastFull} at {crea}.",
     rQ2: "What share of Russia's federal revenue comes from oil and gas?",
     rA2: "{share} in {lastFull} and {ytdShare} from January to {latestMonth}. Year by year since {y0}: {list}.",
     sources: "Sources", hubBackground: "Background",
@@ -1576,9 +1576,9 @@ const RES = {
     stockNote: "Die beiden Spalten mit Beträgen zeigen die eingefrorenen Summen zum genannten Datum, zur Einordnung: Sortiert ist die Tabelle nach dem Ertrag, den Russland verlor, nicht nach diesen Beträgen. „Keine veröffentlichte Zahl“ heißt nicht, dass nichts eingefroren ist; eine Schätzung ist als solche gekennzeichnet.",
     amtFrozenAssets: "In Zahlen: Etwa {euCbr} an Reserven der russischen Zentralbank sind in der EU immobilisiert ({euCbrDate}, Europäische Kommission), dazu über {euPriv} an Vermögen sanktionierter Personen und Firmen. Für die Mitglieder der REPO-Taskforce (EU, G7 und Australien) lag die offizielle Summe bei etwa {repoCbr} an Zentralbankvermögen ({repoCbrDate}) und über {repoPriv} an Privatvermögen ({repoPrivDate}). Euroclear meldet {euroclear} an sanktionierten russischen Vermögen in seiner Bilanz ({euroclearDate}); diese Zahl überschneidet sich mit der der Kommission und wird nicht hinzugezählt. Die Zufallsgewinne, die Euroclear an die EU abführte, beliefen sich bis {windfallDate} auf etwa {windfall}.",
     amtReparationsLoan: "Stand: vorgeschlagen, nicht beschlossen. Der Rechtsvorschlag der Kommission ({propDate}) hätte bis zu {propMax} der immobilisierten Vermögen genutzt. Am {eucoDate} einigte sich der Europäische Rat stattdessen auf ein Unterstützungsdarlehen für die Ukraine von {usl} für {uslYears}, finanziert durch Kreditaufnahme der EU: Die Ukraine zahlt es zurück, sobald Russland Reparationen zahlt, und die EU behält sich vor, die immobilisierten Vermögen dafür zu nutzen. Bis {paidDate} waren davon {uslPaid} ausgezahlt. Die ERA-Kredite der G7 belaufen sich auf etwa {eraUsd} ({eraEur}).",
-    sTitle: "Welche Länder haben Sanktionen gegen Russland? Liste",
+    sTitle: "Sanktionen gegen Russland nach Ländern: EU, USA, UK u. a.",
     sDesc: "Jedes Land nach den Sanktionen gegen Russland, die dort gelten: EU, Übernahme der EU-Sanktionen, eigene Regime, Preisdeckel und Russlands Liste.",
-    sH1: "Welche Länder haben Sanktionen gegen Russland?", sLabel: "Länder mit Sanktionen gegen Russland",
+    sH1: "Sanktionen gegen Russland nach Ländern: Wer hat welche?", sLabel: "Länder mit Sanktionen gegen Russland",
     sIntro: "Jedes Land und Gebiet der Karte nach den Sanktionen gegen Russland, die dort gelten (Stand: {checked}), mit der Preisdeckel-Koalition für Öl und den Exportkontrollen. Russlands eigene Liste „unfreundlicher“ Länder hat eine eigene Spalte: Sie ist die Liste der Länder, gegen die Russland vorgeht, keine Liste von Sanktionen, und die beiden unterscheiden sich.",
     lab_eu_member: "EU-Mitglieder: Sanktionen der EU", lab_adopts_eu_measures: "Übernehmen die Sanktionen der EU", lab_own_regime: "Sanktionen nach eigenem Recht", lab_financial_directive_only: "Anweisung der Finanzaufsicht",
     lab_no_own_regime_stated: "Keine eigenen Sanktionen, öffentlich erklärt", lab_no_own_regime_found: "Keine eigenen Sanktionen gefunden", lab_territory_uk_order: "Britische Überseegebiete: Sanktionen des Vereinigten Königreichs", lab_territory: "Gebiete: nicht geprüft",
@@ -1602,10 +1602,10 @@ const RES = {
     sA1: "Die {nEu} Mitglieder der EU, {nAdopt} weitere europäische Länder, die die Sanktionen der EU übernehmen ({adoptList}), und {nOwn} Länder mit Sanktionen nach eigenem Recht ({ownList}){if:nFin|; {finList}: eine Anweisung der Finanzaufsicht|}. Stand: {checked}.",
     sQ2: "Ist Russlands Liste „unfreundlicher“ Staaten die Liste der Länder mit Sanktionen?",
     sA2: "Nein. Die beiden Listen überschneiden sich, sind aber verschieden.{if:nListedNo| Auf Russlands Liste ohne eigene Sanktionen: {listedNoList}.|}{if:nAdoptNo| Übernehmen die Sanktionen der EU, ohne auf Russlands Liste zu stehen: {adoptNoList}.|}",
-    rTitle: "Russlands Öl- und Gaseinnahmen nach Jahr und Monat",
-    rDesc: "Russlands Öl- und Gaseinnahmen im Bundeshaushalt seit {y0} in Rubel und Euro, ihr Anteil und jeder Monat, mit Exporterlösen und Verteidigung.",
-    rH1: "Russlands Einnahmen aus Öl und Gas: der Bundeshaushalt seit {y0}", rLabel: "Russlands Öl- und Gaseinnahmen",
-    rIntro: "Russlands Bundeshaushalt verbucht Steuern auf die Förderung und den Export von Öl und Gas als Öl- und Gaseinnahmen. {lastFull} waren es {ogRub} ({ogEur}), {share} der Bundeseinnahmen; von Januar bis {latestMonth} {ytdRub} ({ytdEur}), {ytdShare}. Zahlen des russischen Finanzministeriums (Daten vom {published}); Euro zu den Monatsdurchschnittskursen der russischen Zentralbank.",
+    rTitle: "Russlands Kriegshaushalt: Verteidigung vs. Öl und Gas",
+    rDesc: "Russlands Verteidigungshaushalt und Militärausgaben neben den Öl- und Gaseinnahmen des Bundeshaushalts seit {y0}, in Rubel und Euro, nach Jahr und Monat.",
+    rH1: "Russlands Kriegshaushalt: Verteidigungsausgaben und Einnahmen aus Öl und Gas seit {y0}", rLabel: "Russlands Kriegshaushalt und Öl- und Gaseinnahmen",
+    rIntro: "Russlands Bundeshaushalt verbucht Steuern auf die Förderung und den Export von Öl und Gas als Öl- und Gaseinnahmen. {lastFull} waren es {ogRub} ({ogEur}), {share} der Bundeseinnahmen; von Januar bis {latestMonth} {ytdRub} ({ytdEur}), {ytdShare}. Zahlen des russischen Finanzministeriums (Daten vom {published}); Euro zu den Monatsdurchschnittskursen der russischen Zentralbank.{if:defOk| Das Haushaltsgesetz sieht für {defYear} {defPlan} für „Landesverteidigung“ vor.|}",
     rWhatH: "Was als Öl- und Gaseinnahmen zählt",
     rWhat: "Die Förderabgabe auf Öl, Gas und Kondensat, Exportzölle auf Öl, Ölprodukte und Gas sowie die Zusatzertragsteuer auf die Ölförderung, abzüglich der „Dämpfer“-Zahlungen an Raffinerien. Das misst Steuern, keine Exporterlöse: Es enthält Steuern auf in Russland verkauftes Öl und Gas und lässt Unternehmensgewinne, Gewinnsteuer und Dividenden weg, die das Ministerium als sonstige Einnahmen zählt. Die Monate schwanken, weil die Zusatzertragsteuer vierteljährlich gezahlt wird. Der Rubel ist die amtliche Einheit; Euro-Werte bewegen sich mit dem Wechselkurs.",
     rYearH: "Jahr für Jahr", rMonthH: "Monat für Monat, bis {latestMonth}",
@@ -1620,8 +1620,8 @@ const RES = {
     rMeasureH: "Wie sich das vom Maß der Karte unterscheidet",
     rMeasure: "Die Karte misst für jedes Land, wie viel weniger oder mehr Russland aus dem Handel mit diesem Land behielt als in einer Welt ohne Krieg. Die Zahlen auf dieser Seite sind die Steuern, die Russlands Staat erhielt, von allen Käufern zusammen: Sie lassen sich nicht nach Ländern aufteilen und haben keine Basis ohne Krieg, daher werden die beiden weder addiert noch gegeneinander gestellt.",
     rMeasureLink: "Was Russland aus dem Handel behielt, nach Land",
-    rQ1: "Wie viel verdient Russland mit Öl und Gas?",
-    rA1: "Öl- und Gaseinnahmen des Bundeshaushalts {lastFull}: {ogRub} ({ogEur}), {share} der Bundeseinnahmen; von Januar bis {latestMonth}: {ytdRub} ({ytdEur}). CREA schätzt Russlands Exporterlöse aus Öl und Gas {lastFull} auf {crea}.",
+    rQ1: "Wie viel verdient Russland mit Öl?",
+    rA1: "Der Haushalt bucht Öl und Gas zusammen. Öl- und Gaseinnahmen des Bundeshaushalts {lastFull}: {ogRub} ({ogEur}), {share} der Bundeseinnahmen; von Januar bis {latestMonth}: {ytdRub} ({ytdEur}). CREA schätzt Russlands Exporterlöse aus Öl und Gas {lastFull} auf {crea}.",
     rQ2: "Welcher Anteil der russischen Bundeseinnahmen stammt aus Öl und Gas?",
     rA2: "{share} im Jahr {lastFull} und {ytdShare} von Januar bis {latestMonth}. Jahr für Jahr seit {y0}: {list}.",
     sources: "Quellen", hubBackground: "Hintergrund",
@@ -1654,9 +1654,9 @@ const RES = {
     stockNote: "Les colonnes de montants donnent les montants gelés à la date indiquée, pour situer : le tableau est trié selon le rendement perdu par la Russie, pas selon ces montants. « Pas de chiffre public » ne veut pas dire que rien n'est gelé ; une estimation est signalée comme telle.",
     amtFrozenAssets: "En chiffres : environ {euCbr} de réserves de la Banque de Russie sont immobilisés dans l'UE ({euCbrDate}, Commission européenne), et plus de {euPriv} d'avoirs de personnes et d'entreprises sanctionnées y sont gelés. Pour les membres du groupe de travail REPO (l'UE, le G7 et l'Australie), le total officiel était d'environ {repoCbr} d'actifs de banque centrale ({repoCbrDate}) et de plus de {repoPriv} d'avoirs privés ({repoPrivDate}). Euroclear déclare {euroclear} d'actifs russes sanctionnés à son bilan ({euroclearDate}) ; ce chiffre recoupe celui de la Commission et ne s'y ajoute pas. Les contributions sur les profits exceptionnels versées par Euroclear à l'UE atteignaient environ {windfall} en {windfallDate}.",
     amtReparationsLoan: "Où en est-il : proposé, pas adopté. La proposition législative de la Commission ({propDate}) aurait mobilisé jusqu'à {propMax} d'actifs immobilisés. Le {eucoDate}, le Conseil européen a retenu à la place un prêt de soutien à l'Ukraine de {usl} pour {uslYears}, financé par l'emprunt de l'UE : l'Ukraine le rembourse lorsque la Russie paie des réparations, et l'UE garde le droit d'utiliser pour cela les actifs immobilisés. En {paidDate}, {uslPaid} en avaient été versés. Les prêts ERA du G7 représentent environ {eraUsd} ({eraEur}).",
-    sTitle: "Quels pays sanctionnent la Russie ? La liste complète",
+    sTitle: "Sanctions contre la Russie par pays : UE, USA, Royaume-Uni",
     sDesc: "Chaque pays selon les sanctions contre la Russie qui s'y appliquent : UE, alignés sur l'UE, régimes propres, plafond de prix, liste russe.",
-    sH1: "Quels pays appliquent des sanctions contre la Russie ?", sLabel: "Pays qui sanctionnent la Russie",
+    sH1: "Sanctions contre la Russie par pays : qui en applique ?", sLabel: "Pays qui sanctionnent la Russie",
     sIntro: "Chaque pays et territoire de la carte selon les sanctions contre la Russie qui s'y appliquent (vérifié le {checked}), avec la coalition du plafonnement du prix du pétrole et les contrôles à l'exportation. La liste russe des pays « inamicaux » a sa propre colonne : c'est la liste des pays contre lesquels la Russie prend des mesures, pas une liste de sanctions, et ces listes diffèrent.",
     lab_eu_member: "Membres de l'UE : sanctions de l'UE", lab_adopts_eu_measures: "Reprennent les sanctions de l'UE", lab_own_regime: "Sanctions en vertu de leur propre droit", lab_financial_directive_only: "Directive des autorités financières",
     lab_no_own_regime_stated: "Pas de sanctions propres, déclaré publiquement", lab_no_own_regime_found: "Pas de sanctions propres trouvées", lab_territory_uk_order: "Territoires britanniques d'outre-mer : sanctions du Royaume-Uni", lab_territory: "Territoires : non vérifié",
@@ -1680,10 +1680,10 @@ const RES = {
     sA1: "Les {nEu} membres de l'UE, {nAdopt} autres pays européens qui reprennent les sanctions de l'UE ({adoptList}) et {nOwn} pays dotés de sanctions en vertu de leur propre droit ({ownList}){if:nFin| ; {finList} : une directive des autorités financières|}. Vérifié le {checked}.",
     sQ2: "La liste russe des États « inamicaux » est-elle la liste des pays qui sanctionnent la Russie ?",
     sA2: "Non. Les listes se recoupent mais diffèrent.{if:nListedNo| Sur la liste russe sans sanctions propres : {listedNoList}.|}{if:nAdoptNo| Reprennent les sanctions de l'UE sans figurer sur la liste russe : {adoptNoList}.|}",
-    rTitle: "Recettes pétrolières et gazières de la Russie par an et mois",
-    rDesc: "Recettes pétrolières et gazières du budget fédéral russe depuis {y0}, en roubles et en euros, leur part et chaque mois, exportations et défense.",
-    rH1: "Les revenus du pétrole et du gaz de la Russie : le budget fédéral depuis {y0}", rLabel: "Recettes pétrolières et gazières de la Russie",
-    rIntro: "Le budget fédéral russe enregistre les impôts sur la production et l'exportation de pétrole et de gaz comme recettes pétrolières et gazières. En {lastFull}, elles ont atteint {ogRub} ({ogEur}), soit {share} des recettes fédérales ; de janvier à {latestMonth}, {ytdRub} ({ytdEur}), soit {ytdShare}. Chiffres du ministère russe des Finances (données du {published}) ; euros aux taux moyens mensuels de la Banque de Russie.",
+    rTitle: "Le budget de guerre russe : défense vs pétrole et gaz",
+    rDesc: "Budget de la défense et dépenses militaires de la Russie, à côté de ses recettes pétrolières et gazières depuis {y0}, en roubles et euros, par an et mois.",
+    rH1: "Le budget de guerre de la Russie : dépenses de défense et recettes du pétrole et du gaz depuis {y0}", rLabel: "Budget de guerre et recettes pétrolières de la Russie",
+    rIntro: "Le budget fédéral russe enregistre les impôts sur la production et l'exportation de pétrole et de gaz comme recettes pétrolières et gazières. En {lastFull}, elles ont atteint {ogRub} ({ogEur}), soit {share} des recettes fédérales ; de janvier à {latestMonth}, {ytdRub} ({ytdEur}), soit {ytdShare}. Chiffres du ministère russe des Finances (données du {published}) ; euros aux taux moyens mensuels de la Banque de Russie.{if:defOk| La loi de finances prévoit {defPlan} pour la « défense nationale » en {defYear}.|}",
     rWhatH: "Ce qui compte comme recettes pétrolières et gazières",
     rWhat: "La taxe sur l'extraction du pétrole, du gaz et du condensat, les droits à l'exportation sur le pétrole, les produits pétroliers et le gaz, et l'impôt additionnel sur le revenu de la production pétrolière, nets des versements « amortisseurs » aux raffineries. C'est une mesure fiscale, pas des recettes d'exportation : elle inclut l'impôt sur le pétrole et le gaz vendus en Russie et laisse de côté les bénéfices des entreprises, l'impôt sur les bénéfices et les dividendes, que le ministère compte dans les autres recettes. Les mois varient parce que l'impôt additionnel est payé chaque trimestre. Le rouble est l'unité officielle ; les valeurs en euros suivent le taux de change.",
     rYearH: "Année par année", rMonthH: "Mois par mois, jusqu'à {latestMonth}",
@@ -1698,8 +1698,8 @@ const RES = {
     rMeasureH: "En quoi cela diffère de la mesure de la carte",
     rMeasure: "La carte mesure, pour chaque pays, combien la Russie a gardé en moins ou en plus de son commerce avec ce pays par rapport à un monde sans guerre. Les chiffres de cette page sont les impôts perçus par l'État russe, pour l'ensemble des acheteurs : ils ne peuvent pas être répartis par pays et n'ont pas de base sans guerre, si bien qu'on ne les additionne pas aux chiffres de la carte et qu'on ne les y oppose pas.",
     rMeasureLink: "Ce que la Russie a gardé du commerce, par pays",
-    rQ1: "Combien la Russie gagne-t-elle avec le pétrole et le gaz ?",
-    rA1: "Recettes pétrolières et gazières fédérales en {lastFull} : {ogRub} ({ogEur}), soit {share} des recettes fédérales ; de janvier à {latestMonth} : {ytdRub} ({ytdEur}). Le CREA estime les recettes d'exportation de pétrole et de gaz de la Russie en {lastFull} à {crea}.",
+    rQ1: "Combien la Russie gagne-t-elle avec le pétrole ?",
+    rA1: "Le budget compte le pétrole et le gaz ensemble. Recettes pétrolières et gazières fédérales en {lastFull} : {ogRub} ({ogEur}), soit {share} des recettes fédérales ; de janvier à {latestMonth} : {ytdRub} ({ytdEur}). Le CREA estime les recettes d'exportation de pétrole et de gaz de la Russie en {lastFull} à {crea}.",
     rQ2: "Quelle part des recettes fédérales russes provient du pétrole et du gaz ?",
     rA2: "{share} en {lastFull} et {ytdShare} de janvier à {latestMonth}. Année par année depuis {y0} : {list}.",
     sources: "Sources", hubBackground: "Contexte",
@@ -1732,9 +1732,9 @@ const RES = {
     stockNote: "Las columnas de importes muestran lo congelado en la fecha indicada, como contexto: la tabla se ordena por el rendimiento que Rusia perdió, no por estos importes. «Sin cifra pública» no significa que no haya nada congelado; una estimación se marca como tal.",
     amtFrozenAssets: "En cifras: unos {euCbr} de reservas del Banco de Rusia están inmovilizados en la UE ({euCbrDate}, Comisión Europea), y allí están congelados más de {euPriv} en activos de personas y empresas sancionadas. Para los miembros del grupo de trabajo REPO (la UE, el G7 y Australia), el total oficial fue de unos {repoCbr} en activos del banco central ({repoCbrDate}) y más de {repoPriv} en activos privados ({repoPrivDate}). Euroclear declara {euroclear} de activos rusos sancionados en su balance ({euroclearDate}); esa cifra se solapa con la de la Comisión y no se le suma. Los pagos de beneficios extraordinarios de Euroclear a la UE sumaban unos {windfall} en {windfallDate}.",
     amtReparationsLoan: "Situación: propuesto, no aprobado. La propuesta legal de la Comisión ({propDate}) habría usado hasta {propMax} de activos inmovilizados. El {eucoDate}, el Consejo Europeo acordó en su lugar un préstamo de apoyo a Ucrania de {usl} para {uslYears}, financiado con deuda de la UE: Ucrania lo devuelve cuando Rusia pague reparaciones, y la UE se reserva el derecho de usar para ello los activos inmovilizados. En {paidDate} se habían desembolsado {uslPaid}. Los préstamos ERA del G7 suman unos {eraUsd} ({eraEur}).",
-    sTitle: "¿Qué países tienen sanciones contra Rusia? Lista",
+    sTitle: "Sanciones a Rusia por país: UE, EE. UU., Reino Unido y otros",
     sDesc: "Cada país según las sanciones contra Rusia que se aplican allí: UE, quienes adoptan las de la UE, regímenes propios, tope de precio y lista rusa.",
-    sH1: "¿Qué países tienen sanciones contra Rusia?", sLabel: "Países con sanciones contra Rusia",
+    sH1: "Sanciones a Rusia por país: ¿quién las aplica?", sLabel: "Países con sanciones contra Rusia",
     sIntro: "Cada país y territorio del mapa según las sanciones contra Rusia que se aplican allí (comprobado el {checked}), con la coalición del tope de precio al petróleo y los controles a la exportación. La lista rusa de países «hostiles» tiene su propia columna: es la lista de países contra los que Rusia actúa, no una lista de sanciones, y difieren.",
     lab_eu_member: "Miembros de la UE: sanciones de la UE", lab_adopts_eu_measures: "Adoptan las sanciones de la UE", lab_own_regime: "Sanciones según su propio derecho", lab_financial_directive_only: "Directiva de los supervisores financieros",
     lab_no_own_regime_stated: "Sin sanciones propias, dicho públicamente", lab_no_own_regime_found: "Sin sanciones propias encontradas", lab_territory_uk_order: "Territorios británicos de ultramar: sanciones del Reino Unido", lab_territory: "Territorios: sin comprobar",
@@ -1758,10 +1758,10 @@ const RES = {
     sA1: "Los {nEu} miembros de la UE, otros {nAdopt} países europeos que adoptan las sanciones de la UE ({adoptList}) y {nOwn} países con sanciones según su propio derecho ({ownList}){if:nFin|; {finList}: una directiva de los supervisores financieros|}. Comprobado el {checked}.",
     sQ2: "¿Es la lista rusa de Estados «hostiles» la lista de países con sanciones?",
     sA2: "No. Las listas se solapan, pero difieren.{if:nListedNo| En la lista rusa sin sanciones propias: {listedNoList}.|}{if:nAdoptNo| Adoptan las sanciones de la UE sin figurar en la lista rusa: {adoptNoList}.|}",
-    rTitle: "Ingresos de Rusia por petróleo y gas, por año y mes",
-    rDesc: "Ingresos federales de Rusia por petróleo y gas desde {y0}, en rublos y euros, su parte del presupuesto y cada mes, con exportaciones y defensa.",
-    rH1: "Los ingresos de Rusia por petróleo y gas: el presupuesto federal desde {y0}", rLabel: "Ingresos de Rusia por petróleo y gas",
-    rIntro: "El presupuesto federal ruso registra los impuestos sobre la producción y la exportación de petróleo y gas como ingresos por petróleo y gas. En {lastFull} sumaron {ogRub} ({ogEur}), el {share} de los ingresos federales; de enero a {latestMonth}, {ytdRub} ({ytdEur}), el {ytdShare}. Cifras del Ministerio de Finanzas de Rusia (datos del {published}); euros al tipo medio mensual del Banco de Rusia.",
+    rTitle: "Presupuesto de guerra de Rusia: defensa vs. petróleo y gas",
+    rDesc: "El presupuesto de defensa y el gasto militar de Rusia junto a sus ingresos federales por petróleo y gas desde {y0}, en rublos y euros, por año y mes.",
+    rH1: "El presupuesto de guerra de Rusia: gasto en defensa e ingresos por petróleo y gas desde {y0}", rLabel: "Presupuesto de guerra e ingresos por petróleo y gas de Rusia",
+    rIntro: "El presupuesto federal ruso registra los impuestos sobre la producción y la exportación de petróleo y gas como ingresos por petróleo y gas. En {lastFull} sumaron {ogRub} ({ogEur}), el {share} de los ingresos federales; de enero a {latestMonth}, {ytdRub} ({ytdEur}), el {ytdShare}. Cifras del Ministerio de Finanzas de Rusia (datos del {published}); euros al tipo medio mensual del Banco de Rusia.{if:defOk| La ley de presupuestos prevé {defPlan} para «defensa nacional» en {defYear}.|}",
     rWhatH: "Qué cuenta como ingresos por petróleo y gas",
     rWhat: "El impuesto sobre la extracción de petróleo, gas y condensado, los derechos de exportación sobre el petróleo, sus derivados y el gas, y el impuesto adicional sobre la renta de la producción de petróleo, descontados los pagos «amortiguadores» a las refinerías. Mide impuestos, no ingresos por exportación: incluye el impuesto sobre el petróleo y el gas vendidos en Rusia y deja fuera los beneficios de las empresas, el impuesto de sociedades y los dividendos, que el ministerio cuenta como otros ingresos. Los meses varían porque el impuesto adicional se paga cada trimestre. El rublo es la unidad oficial; los valores en euros se mueven con el tipo de cambio.",
     rYearH: "Año a año", rMonthH: "Mes a mes, hasta {latestMonth}",
@@ -1776,8 +1776,8 @@ const RES = {
     rMeasureH: "En qué se diferencia de la medida del mapa",
     rMeasure: "El mapa mide, para cada país, cuánto retuvo Rusia de menos o de más del comercio con ese país frente a un mundo sin guerra. Las cifras de esta página son los impuestos que recibió el Estado ruso, de todos los compradores juntos: no pueden repartirse por país ni tienen una base sin guerra, así que no se suman a las cifras del mapa ni se contraponen a ellas.",
     rMeasureLink: "Lo que Rusia retuvo del comercio, por país",
-    rQ1: "¿Cuánto gana Rusia con el petróleo y el gas?",
-    rA1: "Ingresos federales por petróleo y gas en {lastFull}: {ogRub} ({ogEur}), el {share} de los ingresos federales; de enero a {latestMonth}: {ytdRub} ({ytdEur}). CREA estima los ingresos de Rusia por exportar petróleo y gas en {lastFull} en {crea}.",
+    rQ1: "¿Cuánto gana Rusia con el petróleo?",
+    rA1: "El presupuesto contabiliza petróleo y gas juntos. Ingresos federales por petróleo y gas en {lastFull}: {ogRub} ({ogEur}), el {share} de los ingresos federales; de enero a {latestMonth}: {ytdRub} ({ytdEur}). CREA estima los ingresos de Rusia por exportar petróleo y gas en {lastFull} en {crea}.",
     rQ2: "¿Qué parte de los ingresos federales de Rusia procede del petróleo y el gas?",
     rA2: "El {share} en {lastFull} y el {ytdShare} de enero a {latestMonth}. Año a año desde {y0}: {list}.",
     sources: "Fuentes", hubBackground: "Contexto",
@@ -1810,9 +1810,9 @@ const RES = {
     stockNote: "Kolumny z kwotami pokazują sumy zamrożone na podany dzień, dla kontekstu: tabela jest uporządkowana według zwrotu utraconego przez Rosję, a nie według tych kwot. „Brak publicznych danych” nie oznacza, że nic nie jest zamrożone; szacunek jest oznaczony jako szacunek.",
     amtFrozenAssets: "W liczbach: około {euCbr} rezerw Banku Rosji jest unieruchomionych w UE ({euCbrDate}, Komisja Europejska), a ponad {euPriv} aktywów osób i firm objętych sankcjami jest tam zamrożonych. Dla członków grupy zadaniowej REPO (UE, G7 i Australia) oficjalna suma wyniosła około {repoCbr} aktywów banku centralnego ({repoCbrDate}) i ponad {repoPriv} aktywów prywatnych ({repoPrivDate}). Euroclear wykazuje {euroclear} objętych sankcjami rosyjskich aktywów w swoim bilansie ({euroclearDate}); ta kwota pokrywa się z kwotą Komisji i nie jest do niej dodawana. Wpłaty nadzwyczajnych zysków z Euroclear do UE sięgnęły około {windfall} do {windfallDate}.",
     amtReparationsLoan: "Stan: zaproponowany, nieprzyjęty. Wniosek ustawodawczy Komisji ({propDate}) przewidywał użycie do {propMax} unieruchomionych aktywów. {eucoDate} Rada Europejska uzgodniła zamiast tego pożyczkę na wsparcie Ukrainy w wysokości {usl} na lata {uslYears}, finansowaną z pożyczek UE: Ukraina spłaci ją, gdy Rosja zapłaci reparacje, a UE zachowuje prawo do użycia na ten cel unieruchomionych aktywów. Do {paidDate} wypłacono z niej {uslPaid}. Pożyczki ERA grupy G7 wynoszą około {eraUsd} ({eraEur}).",
-    sTitle: "Które kraje mają sankcje wobec Rosji? Pełna lista",
+    sTitle: "Sankcje wobec Rosji według krajów: UE, USA, Wielka Brytania",
     sDesc: "Każdy kraj z mapy według sankcji wobec Rosji, które tam obowiązują: członkowie UE, przyjmujący sankcje UE, własne systemy, pułap cenowy i lista Rosji.",
-    sH1: "Które kraje mają sankcje wobec Rosji?", sLabel: "Kraje z sankcjami wobec Rosji",
+    sH1: "Sankcje wobec Rosji według krajów: kto je stosuje?", sLabel: "Kraje z sankcjami wobec Rosji",
     sIntro: "Każdy kraj i terytorium z mapy według sankcji wobec Rosji, które tam obowiązują (stan na {checked}), wraz z koalicją pułapu cenowego na ropę i kontrolami eksportu. Rosyjska lista krajów „nieprzyjaznych” ma osobną kolumnę: to lista krajów, wobec których Rosja podejmuje działania, a nie lista sankcji, i obie się różnią.",
     lab_eu_member: "Członkowie UE: sankcje UE", lab_adopts_eu_measures: "Przyjmują sankcje UE", lab_own_regime: "Sankcje na mocy własnego prawa", lab_financial_directive_only: "Polecenie nadzoru finansowego",
     lab_no_own_regime_stated: "Bez własnych sankcji, oświadczone publicznie", lab_no_own_regime_found: "Nie znaleziono własnych sankcji", lab_territory_uk_order: "Brytyjskie terytoria zamorskie: sankcje Wielkiej Brytanii", lab_territory: "Terytoria: niesprawdzone",
@@ -1836,10 +1836,10 @@ const RES = {
     sA1: "Członkowie UE ({nEu}), inne kraje europejskie przyjmujące sankcje UE ({nAdopt}: {adoptList}) oraz kraje z sankcjami na mocy własnego prawa ({nOwn}: {ownList}){if:nFin|; {finList}: polecenie nadzoru finansowego|}. Stan na {checked}.",
     sQ2: "Czy rosyjska lista państw „nieprzyjaznych” to lista krajów z sankcjami?",
     sA2: "Nie. Obie listy częściowo się pokrywają, ale się różnią.{if:nListedNo| Na liście Rosji bez własnych sankcji: {listedNoList}.|}{if:nAdoptNo| Przyjmują sankcje UE, choć nie ma ich na liście Rosji: {adoptNoList}.|}",
-    rTitle: "Dochody Rosji z ropy i gazu według lat i miesięcy",
-    rDesc: "Dochody budżetu federalnego Rosji z ropy i gazu od {y0} r. w rublach i euro, ich udział i każdy miesiąc, z eksportem i wydatkami na obronę.",
-    rH1: "Dochody Rosji z ropy i gazu: budżet federalny od {y0} r.", rLabel: "Dochody Rosji z ropy i gazu",
-    rIntro: "Budżet federalny Rosji księguje podatki od wydobycia i eksportu ropy i gazu jako dochody naftowo-gazowe. W {lastFull} r. wyniosły {ogRub} ({ogEur}), czyli {share} dochodów federalnych; od stycznia do {latestMonth}: {ytdRub} ({ytdEur}), czyli {ytdShare}. Dane rosyjskiego Ministerstwa Finansów (stan na {published}); euro według średnich miesięcznych kursów Banku Rosji.",
+    rTitle: "Wojenny budżet Rosji: obrona a dochody z ropy i gazu",
+    rDesc: "Budżet obronny i wydatki wojskowe Rosji obok federalnych dochodów z ropy i gazu od {y0} r., w rublach i euro, według lat i miesięcy.",
+    rH1: "Wojenny budżet Rosji: wydatki na obronę i dochody z ropy i gazu od {y0} r.", rLabel: "Wojenny budżet Rosji i dochody z ropy i gazu",
+    rIntro: "Budżet federalny Rosji księguje podatki od wydobycia i eksportu ropy i gazu jako dochody naftowo-gazowe. W {lastFull} r. wyniosły {ogRub} ({ogEur}), czyli {share} dochodów federalnych; od stycznia do {latestMonth}: {ytdRub} ({ytdEur}), czyli {ytdShare}. Dane rosyjskiego Ministerstwa Finansów (stan na {published}); euro według średnich miesięcznych kursów Banku Rosji.{if:defOk| Ustawa budżetowa przewiduje {defPlan} na „obronę narodową” w {defYear} r.|}",
     rWhatH: "Co liczy się jako dochody z ropy i gazu",
     rWhat: "Podatek od wydobycia ropy, gazu i kondensatu, cła eksportowe na ropę, produkty naftowe i gaz oraz dodatkowy podatek dochodowy od wydobycia ropy, po odjęciu płatności „amortyzatora” dla rafinerii. To miara podatków, a nie przychodów z eksportu: obejmuje podatek od ropy i gazu sprzedanych w Rosji i pomija zyski firm, podatek od zysków i dywidendy, które ministerstwo liczy jako inne dochody. Miesiące się wahają, bo dodatkowy podatek płaci się co kwartał. Rubel jest jednostką oficjalną; wartości w euro zmieniają się z kursem.",
     rYearH: "Rok po roku", rMonthH: "Miesiąc po miesiącu, do {latestMonth}",
@@ -1854,8 +1854,8 @@ const RES = {
     rMeasureH: "Czym to się różni od miary na mapie",
     rMeasure: "Mapa mierzy dla każdego kraju, ile mniej lub ile więcej Rosja zatrzymała z handlu z tym krajem niż w świecie bez wojny. Liczby na tej stronie to podatki, które otrzymało państwo rosyjskie od wszystkich nabywców łącznie: nie da się ich podzielić według krajów i nie mają poziomu odniesienia bez wojny, więc nie dodaje się ich do siebie ani nie zestawia ze sobą.",
     rMeasureLink: "Co Rosja zatrzymała z handlu, według krajów",
-    rQ1: "Ile Rosja zarabia na ropie i gazie?",
-    rA1: "Federalne dochody z ropy i gazu w {lastFull} r.: {ogRub} ({ogEur}), czyli {share} dochodów federalnych; od stycznia do {latestMonth}: {ytdRub} ({ytdEur}). CREA szacuje przychody Rosji z eksportu ropy i gazu w {lastFull} r. na {crea}.",
+    rQ1: "Ile Rosja zarabia na ropie?",
+    rA1: "Budżet liczy ropę i gaz łącznie. Federalne dochody z ropy i gazu w {lastFull} r.: {ogRub} ({ogEur}), czyli {share} dochodów federalnych; od stycznia do {latestMonth}: {ytdRub} ({ytdEur}). CREA szacuje przychody Rosji z eksportu ropy i gazu w {lastFull} r. na {crea}.",
     rQ2: "Jaka część dochodów federalnych Rosji pochodzi z ropy i gazu?",
     rA2: "{share} w {lastFull} r. i {ytdShare} od stycznia do {latestMonth}. Rok po roku od {y0} r.: {list}.",
     sources: "Źródła", hubBackground: "Tło",
@@ -1888,9 +1888,9 @@ const RES = {
     stockNote: "De kolommen met bedragen tonen wat op de genoemde datum bevroren was, ter context: de tabel is gesorteerd op het rendement dat Rusland misliep, niet op deze bedragen. ‘Geen openbaar cijfer’ betekent niet dat er niets bevroren is; een schatting staat als schatting vermeld.",
     amtFrozenAssets: "In cijfers: ongeveer {euCbr} aan reserves van de Russische centrale bank is in de EU geïmmobiliseerd ({euCbrDate}, Europese Commissie), en ruim {euPriv} aan tegoeden van gesanctioneerde personen en bedrijven is er bevroren. Voor de leden van de REPO-taskforce (de EU, de G7 en Australië) was het officiële totaal ongeveer {repoCbr} aan centralebanktegoeden ({repoCbrDate}) en ruim {repoPriv} aan privétegoeden ({repoPrivDate}). Euroclear meldt {euroclear} aan gesanctioneerde Russische tegoeden op zijn balans ({euroclearDate}); dat cijfer overlapt met dat van de Commissie en komt er niet bij. De afdrachten van overwinsten door Euroclear aan de EU kwamen tot {windfallDate} op ongeveer {windfall}.",
     amtReparationsLoan: "Stand van zaken: voorgesteld, niet aangenomen. Het wetsvoorstel van de Commissie ({propDate}) zou tot {propMax} aan geïmmobiliseerde tegoeden hebben gebruikt. Op {eucoDate} koos de Europese Raad in plaats daarvan voor een steunlening aan Oekraïne van {usl} voor {uslYears}, gefinancierd met leningen van de EU: Oekraïne betaalt haar terug zodra Rusland herstelbetalingen doet, en de EU behoudt het recht om de geïmmobiliseerde tegoeden daarvoor te gebruiken. Tot {paidDate} was er {uslPaid} van uitbetaald. De ERA-leningen van de G7 bedragen ongeveer {eraUsd} ({eraEur}).",
-    sTitle: "Welke landen hebben sancties tegen Rusland? Volledige lijst",
+    sTitle: "Sancties tegen Rusland per land: EU, VS, VK en andere",
     sDesc: "Elk land volgens de sancties tegen Rusland die er gelden: EU-leden, overname van EU-sancties, eigen regimes, prijsplafond en Ruslands lijst.",
-    sH1: "Welke landen hebben sancties tegen Rusland?", sLabel: "Landen met sancties tegen Rusland",
+    sH1: "Sancties tegen Rusland per land: wie heeft ze?", sLabel: "Landen met sancties tegen Rusland",
     sIntro: "Elk land en gebied op de kaart volgens de sancties tegen Rusland die er gelden (gecontroleerd op {checked}), met de coalitie van het olieprijsplafond en de exportcontroles. Ruslands eigen lijst van ‘onvriendelijke’ landen heeft een eigen kolom: het is de lijst van landen waartegen Rusland optreedt, geen lijst van sancties, en ze verschillen.",
     lab_eu_member: "EU-leden: sancties van de EU", lab_adopts_eu_measures: "Nemen de sancties van de EU over", lab_own_regime: "Sancties op grond van eigen recht", lab_financial_directive_only: "Opdracht van de financiële toezichthouders",
     lab_no_own_regime_stated: "Geen eigen sancties, publiek gezegd", lab_no_own_regime_found: "Geen eigen sancties gevonden", lab_territory_uk_order: "Britse overzeese gebieden: sancties van het Verenigd Koninkrijk", lab_territory: "Gebieden: niet gecontroleerd",
@@ -1914,10 +1914,10 @@ const RES = {
     sA1: "De {nEu} leden van de EU, {nAdopt} andere Europese landen die de sancties van de EU overnemen ({adoptList}) en {nOwn} landen met sancties op grond van eigen recht ({ownList}){if:nFin|; {finList}: een opdracht van de financiële toezichthouders|}. Gecontroleerd op {checked}.",
     sQ2: "Is Ruslands lijst van ‘onvriendelijke’ staten de lijst van landen met sancties?",
     sA2: "Nee. De lijsten overlappen, maar verschillen.{if:nListedNo| Op Ruslands lijst zonder eigen sancties: {listedNoList}.|}{if:nAdoptNo| Nemen de sancties van de EU over zonder op Ruslands lijst te staan: {adoptNoList}.|}",
-    rTitle: "Russische olie- en gasinkomsten per jaar en per maand",
-    rDesc: "Russische federale olie- en gasinkomsten sinds {y0} in roebel en euro, hun aandeel en elke maand, met exportopbrengst en defensie-uitgaven.",
-    rH1: "Ruslands inkomsten uit olie en gas: de federale begroting sinds {y0}", rLabel: "Russische olie- en gasinkomsten",
-    rIntro: "Ruslands federale begroting boekt belastingen op de winning en export van olie en gas als olie- en gasinkomsten. In {lastFull} was dat {ogRub} ({ogEur}), {share} van de federale inkomsten; van januari tot en met {latestMonth} {ytdRub} ({ytdEur}), {ytdShare}. Cijfers van het Russische ministerie van Financiën (gegevens van {published}); euro tegen de maandgemiddelde koersen van de Russische centrale bank.",
+    rTitle: "Ruslands oorlogsbegroting: defensie vs. olie en gas",
+    rDesc: "Ruslands defensiebegroting en militaire uitgaven naast de federale olie- en gasinkomsten sinds {y0}, in roebel en euro, per jaar en per maand.",
+    rH1: "Ruslands oorlogsbegroting: defensie-uitgaven en inkomsten uit olie en gas sinds {y0}", rLabel: "Ruslands oorlogsbegroting en olie- en gasinkomsten",
+    rIntro: "Ruslands federale begroting boekt belastingen op de winning en export van olie en gas als olie- en gasinkomsten. In {lastFull} was dat {ogRub} ({ogEur}), {share} van de federale inkomsten; van januari tot en met {latestMonth} {ytdRub} ({ytdEur}), {ytdShare}. Cijfers van het Russische ministerie van Financiën (gegevens van {published}); euro tegen de maandgemiddelde koersen van de Russische centrale bank.{if:defOk| De begrotingswet voorziet {defPlan} voor ‘nationale defensie’ in {defYear}.|}",
     rWhatH: "Wat telt als olie- en gasinkomsten",
     rWhat: "De delfstoffenbelasting op olie, gas en condensaat, exportheffingen op olie, olieproducten en gas, en de extra winstbelasting op olieproductie, na aftrek van de ‘demper’-betalingen aan raffinaderijen. Het meet belasting, geen exportopbrengst: het omvat belasting op olie en gas die in Rusland verkocht worden en laat bedrijfswinsten, winstbelasting en dividenden weg, die het ministerie als overige inkomsten telt. De maanden schommelen omdat de extra winstbelasting per kwartaal wordt betaald. De roebel is de officiële eenheid; waarden in euro bewegen mee met de wisselkoers.",
     rYearH: "Jaar na jaar", rMonthH: "Maand na maand, tot en met {latestMonth}",
@@ -1932,8 +1932,8 @@ const RES = {
     rMeasureH: "Hoe dit verschilt van de maat van de kaart",
     rMeasure: "De kaart meet voor elk land hoeveel minder of meer Rusland overhield aan de handel met dat land dan in een wereld zonder oorlog. De cijfers op deze pagina zijn de belastingen die de Russische staat ontving, van alle kopers samen: ze zijn niet per land te verdelen en hebben geen basis zonder oorlog, dus ze worden niet bij de cijfers van de kaart opgeteld of ertegen afgezet.",
     rMeasureLink: "Wat Rusland aan handel overhield, per land",
-    rQ1: "Hoeveel verdient Rusland aan olie en gas?",
-    rA1: "Federale olie- en gasinkomsten in {lastFull}: {ogRub} ({ogEur}), {share} van de federale inkomsten; van januari tot en met {latestMonth}: {ytdRub} ({ytdEur}). CREA schat Ruslands exportopbrengst uit olie en gas in {lastFull} op {crea}.",
+    rQ1: "Hoeveel verdient Rusland aan olie?",
+    rA1: "De begroting boekt olie en gas samen. Federale olie- en gasinkomsten in {lastFull}: {ogRub} ({ogEur}), {share} van de federale inkomsten; van januari tot en met {latestMonth}: {ytdRub} ({ytdEur}). CREA schat Ruslands exportopbrengst uit olie en gas in {lastFull} op {crea}.",
     rQ2: "Welk deel van Ruslands federale inkomsten komt uit olie en gas?",
     rA2: "{share} in {lastFull} en {ytdShare} van januari tot en met {latestMonth}. Per jaar sinds {y0}: {list}.",
     sources: "Bronnen", hubBackground: "Achtergrond",
@@ -1966,9 +1966,9 @@ const RES = {
     stockNote: "Колонки із сумами показують заморожене на вказану дату, для контексту: таблицю впорядковано за доходом, який втратила Росія, а не за цими сумами. «Немає оприлюдненої цифри» не означає, що нічого не заморожено; оцінку позначено як оцінку.",
     amtFrozenAssets: "У цифрах: близько {euCbr} резервів Банку Росії знерухомлено в ЄС ({euCbrDate}, Європейська комісія), і понад {euPriv} активів осіб і компаній під санкціями там заморожено. Для членів робочої групи REPO (ЄС, G7 і Австралія) офіційна сума становила близько {repoCbr} активів центробанку ({repoCbrDate}) і понад {repoPriv} приватних активів ({repoPrivDate}). Euroclear звітує про {euroclear} підсанкційних російських активів на своєму балансі ({euroclearDate}); ця цифра перетинається з цифрою Комісії й не додається до неї. Виплати надприбутків від Euroclear до ЄС сягнули близько {windfall} до {windfallDate}.",
     amtReparationsLoan: "Стан: запропоновано, не ухвалено. Законодавча пропозиція Комісії ({propDate}) передбачала використання до {propMax} знерухомлених активів. {eucoDate} Європейська рада натомість погодила кредит на підтримку України обсягом {usl} на {uslYears}, що фінансується запозиченнями ЄС: Україна поверне його, коли Росія сплатить репарації, а ЄС залишає за собою право використати для цього знерухомлені активи. До {paidDate} з нього виплачено {uslPaid}. Кредити ERA країн G7 становлять близько {eraUsd} ({eraEur}).",
-    sTitle: "Які країни мають санкції проти Росії? Повний список",
+    sTitle: "Санкції проти Росії за країнами: ЄС, США, Британія та інші",
     sDesc: "Кожна країна на карті за санкціями проти Росії, що там діють: члени ЄС, ті, хто переймає санкції ЄС, власні режими, цінова стеля й російський список.",
-    sH1: "Які країни мають санкції проти Росії?", sLabel: "Країни із санкціями проти Росії",
+    sH1: "Санкції проти Росії за країнами: хто їх запровадив?", sLabel: "Країни із санкціями проти Росії",
     sIntro: "Кожна країна й територія на карті за санкціями проти Росії, що там діють (перевірено {checked}), разом із коаліцією цінової стелі на нафту та експортним контролем. Російський список «недружніх» країн має окрему колонку: це список країн, проти яких Росія вживає заходів, а не список санкцій, і вони різняться.",
     lab_eu_member: "Члени ЄС: санкції ЄС", lab_adopts_eu_measures: "Переймають санкції ЄС", lab_own_regime: "Санкції за власним правом", lab_financial_directive_only: "Доручення фінансових регуляторів",
     lab_no_own_regime_stated: "Без власних санкцій, заявлено публічно", lab_no_own_regime_found: "Власних санкцій не знайдено", lab_territory_uk_order: "Британські заморські території: санкції Великої Британії", lab_territory: "Території: не перевірено",
@@ -1992,10 +1992,10 @@ const RES = {
     sA1: "Члени ЄС ({nEu}), інші європейські країни, що переймають санкції ЄС ({nAdopt}: {adoptList}), і країни із санкціями за власним правом ({nOwn}: {ownList}){if:nFin|; {finList}: доручення фінансових регуляторів|}. Перевірено {checked}.",
     sQ2: "Чи російський список «недружніх» держав — це список країн із санкціями?",
     sA2: "Ні. Списки частково збігаються, але різняться.{if:nListedNo| У російському списку без власних санкцій: {listedNoList}.|}{if:nAdoptNo| Переймають санкції ЄС, хоча їх немає в російському списку: {adoptNoList}.|}",
-    rTitle: "Нафтогазові доходи Росії за роками й місяцями",
-    rDesc: "Нафтогазові доходи федерального бюджету Росії з {y0} року в рублях і євро, їхня частка й кожен місяць, з експортом і оборонними витратами.",
-    rH1: "Нафтогазові доходи Росії: федеральний бюджет з {y0} року", rLabel: "Нафтогазові доходи Росії",
-    rIntro: "Федеральний бюджет Росії обліковує податки на видобуток і експорт нафти й газу як нафтогазові доходи. У {lastFull} році вони становили {ogRub} ({ogEur}), або {share} федеральних доходів; із січня до {latestMonth} — {ytdRub} ({ytdEur}), або {ytdShare}. Дані Міністерства фінансів Росії (станом на {published}); євро за середньомісячними курсами Банку Росії.",
+    rTitle: "Воєнний бюджет Росії: оборона й доходи від нафти та газу",
+    rDesc: "Оборонний бюджет і військові видатки Росії поруч із федеральними нафтогазовими доходами з {y0} року, у рублях і євро, за роками й місяцями.",
+    rH1: "Воєнний бюджет Росії: оборонні видатки й доходи від нафти та газу з {y0} року", rLabel: "Воєнний бюджет і нафтогазові доходи Росії",
+    rIntro: "Федеральний бюджет Росії обліковує податки на видобуток і експорт нафти й газу як нафтогазові доходи. У {lastFull} році вони становили {ogRub} ({ogEur}), або {share} федеральних доходів; із січня до {latestMonth} — {ytdRub} ({ytdEur}), або {ytdShare}. Дані Міністерства фінансів Росії (станом на {published}); євро за середньомісячними курсами Банку Росії.{if:defOk| Закон про бюджет передбачає {defPlan} на «національну оборону» у {defYear} році.|}",
     rWhatH: "Що рахується як нафтогазові доходи",
     rWhat: "Податок на видобуток нафти, газу й конденсату, експортні мита на нафту, нафтопродукти й газ і податок на додатковий дохід від видобутку нафти, за вирахуванням «демпферних» виплат нафтопереробникам. Це міра податків, а не експортної виручки: вона включає податок на нафту й газ, продані в Росії, і не включає прибутки компаній, податок на прибуток і дивіденди, які міністерство рахує як інші доходи. Місяці коливаються, бо податок на додатковий дохід сплачують щокварталу. Рубль — офіційна одиниця; значення в євро змінюються з курсом.",
     rYearH: "Рік за роком", rMonthH: "Місяць за місяцем, до {latestMonth}",
@@ -2010,8 +2010,8 @@ const RES = {
     rMeasureH: "Чим це відрізняється від міри на карті",
     rMeasure: "Карта вимірює для кожної країни, на скільки менше чи більше Росія залишила собі від торгівлі з цією країною, ніж у світі без війни. Цифри на цій сторінці — податки, які отримала російська держава від усіх покупців разом: їх не можна розділити за країнами, і вони не мають рівня без війни, тож їх не додають до цифр карти й не зіставляють із ними.",
     rMeasureLink: "Що Росія залишила собі від торгівлі, за країнами",
-    rQ1: "Скільки Росія заробляє на нафті й газі?",
-    rA1: "Федеральні нафтогазові доходи у {lastFull} році: {ogRub} ({ogEur}), або {share} федеральних доходів; із січня до {latestMonth}: {ytdRub} ({ytdEur}). CREA оцінює експортну виручку Росії від нафти й газу у {lastFull} році в {crea}.",
+    rQ1: "Скільки Росія заробляє на нафті?",
+    rA1: "Бюджет рахує нафту й газ разом. Федеральні нафтогазові доходи у {lastFull} році: {ogRub} ({ogEur}), або {share} федеральних доходів; із січня до {latestMonth}: {ytdRub} ({ytdEur}). CREA оцінює експортну виручку Росії від нафти й газу у {lastFull} році в {crea}.",
     rQ2: "Яка частка федеральних доходів Росії припадає на нафту й газ?",
     rA2: "{share} у {lastFull} році та {ytdShare} із січня до {latestMonth}. Рік за роком з {y0}: {list}.",
     sources: "Джерела", hubBackground: "Контекст",
@@ -2019,6 +2019,71 @@ const RES = {
     dlRevYearly: "Те саме за роками, з оцінкою експортної виручки CREA та оборонними витратами, кожне з позначкою (CSV)",
   },
 };
+// round 59 (owner approved: "titles in the words people search"): the questions people ask, answered from the research
+// files. sQ3: the EU's sanctions (sanctions_r58.json: the Council regulations its categories name, the members and the
+// adopters, the price cap coalition; frozen_amounts_r58.json: the reserves immobilised in the EU); rQ3: Russia's defence
+// budget (russia_revenue_r58.json defence_yearly: the budget law and SIPRI, each said as what it is); rQ4: the federal
+// budget's balance, shown only once the revenue file has the series named in seo_families.json research.revenue.balance
+// (not yet: the hook waits for the research)
+const RES59 = {
+  en: {
+    sQ3: "What are the EU sanctions on Russia?",
+    sA3: "The EU's sanctions on Russia are set in Council Regulations {regs}, which every member agreed to in the Council. The EU's {nEu} members apply them, and {nAdopt} other European countries adopt them under their own law ({adoptList}).{if:nViaEU| Through the EU, its members are also in the price cap coalition on Russian oil.|}{if:euCbrOk| About {euCbr} of Bank of Russia reserves are immobilised in the EU ({euCbrDate}).|} Checked {checked}.",
+    rQ3: "What is Russia's defence budget?",
+    rA3: "Russia's budget law, as adopted, plans {defPlan} for “national defence” in {defYear}{if:prevOk|, after {defPrev} in {prevYear}|}. On a broader definition, SIPRI estimates Russia's military spending in {sipriYear} at {sipriRub}, {sipriGdp} of GDP. Budget money is pooled, so these figures are context: no revenue is set aside for defence.",
+    rQ4: "What is Russia's budget deficit?",
+    rA4: "Russia's federal budget balance in {balYear}: {if:bal<0|a deficit|a surplus} of {balRub}{if:gdpOk| ({balGdp} of GDP)|}, from the Ministry of Finance.",
+  },
+  de: {
+    sQ3: "Was sind die EU-Sanktionen gegen Russland?",
+    sA3: "Die Sanktionen der EU gegen Russland stehen in den Ratsverordnungen {regs}, denen jedes Mitglied im Rat zugestimmt hat. Die {nEu} EU-Mitglieder wenden sie an, und {nAdopt} weitere europäische Länder übernehmen sie nach eigenem Recht ({adoptList}).{if:nViaEU| Über die EU gehören ihre Mitglieder auch zur Preisobergrenzen-Koalition für russisches Öl.|}{if:euCbrOk| Etwa {euCbr} an Reserven der Bank von Russland sind in der EU immobilisiert ({euCbrDate}).|} Stand: {checked}.",
+    rQ3: "Wie hoch ist Russlands Verteidigungshaushalt?",
+    rA3: "Russlands Haushaltsgesetz sieht in der beschlossenen Fassung für {defYear} {defPlan} für „Landesverteidigung“ vor{if:prevOk| ({prevYear}: {defPrev})|}. Mit einer breiteren Abgrenzung schätzt SIPRI Russlands Militärausgaben {sipriYear} auf {sipriRub}, {sipriGdp} des BIP. Haushaltsmittel sind nicht zweckgebunden: Diese Zahlen sind Kontext, keine Einnahme ist für die Verteidigung reserviert.",
+    rQ4: "Wie hoch ist Russlands Haushaltsdefizit?",
+    rA4: "Saldo des russischen Bundeshaushalts {balYear}: {if:bal<0|ein Defizit|ein Überschuss} von {balRub}{if:gdpOk| ({balGdp} des BIP)|}, nach dem Finanzministerium.",
+  },
+  fr: {
+    sQ3: "Quelles sont les sanctions de l'UE contre la Russie ?",
+    sA3: "Les sanctions de l'UE contre la Russie sont fixées par les règlements du Conseil {regs}, que chaque membre a approuvés au Conseil. Les {nEu} membres de l'UE les appliquent, et {nAdopt} autres pays européens les adoptent dans leur propre droit ({adoptList}).{if:nViaEU| Par l'UE, ses membres font aussi partie de la coalition du plafonnement du prix du pétrole russe.|}{if:euCbrOk| Environ {euCbr} de réserves de la Banque de Russie sont immobilisés dans l'UE ({euCbrDate}).|} Vérifié le {checked}.",
+    rQ3: "Quel est le budget de la défense de la Russie ?",
+    rA3: "La loi de finances russe, telle qu'adoptée, prévoit {defPlan} pour la « défense nationale » en {defYear}{if:prevOk| ({defPrev} en {prevYear})|}. Selon une définition plus large, le SIPRI estime les dépenses militaires de la Russie en {sipriYear} à {sipriRub}, soit {sipriGdp} du PIB. Le budget n'affecte aucune recette à une dépense : ces chiffres sont un contexte.",
+    rQ4: "Quel est le déficit budgétaire de la Russie ?",
+    rA4: "Solde du budget fédéral russe en {balYear} : {if:bal<0|un déficit|un excédent} de {balRub}{if:gdpOk| ({balGdp} du PIB)|}, selon le ministère des Finances.",
+  },
+  es: {
+    sQ3: "¿Cuáles son las sanciones de la UE contra Rusia?",
+    sA3: "Las sanciones de la UE contra Rusia están en los Reglamentos del Consejo {regs}, que cada miembro aprobó en el Consejo. Los {nEu} miembros de la UE las aplican, y otros {nAdopt} países europeos las adoptan por ley propia ({adoptList}).{if:nViaEU| A través de la UE, sus miembros forman parte también de la coalición del tope al precio del petróleo ruso.|}{if:euCbrOk| Unos {euCbr} de reservas del Banco de Rusia están inmovilizados en la UE ({euCbrDate}).|} Comprobado el {checked}.",
+    rQ3: "¿Cuál es el presupuesto de defensa de Rusia?",
+    rA3: "La ley de presupuestos de Rusia, tal como se aprobó, prevé {defPlan} para «defensa nacional» en {defYear}{if:prevOk| ({defPrev} en {prevYear})|}. Con una definición más amplia, el SIPRI estima el gasto militar de Rusia en {sipriYear} en {sipriRub}, el {sipriGdp} del PIB. El dinero del presupuesto no se asigna a gastos concretos: estas cifras son contexto.",
+    rQ4: "¿Cuál es el déficit presupuestario de Rusia?",
+    rA4: "Saldo del presupuesto federal de Rusia en {balYear}: {if:bal<0|un déficit|un superávit} de {balRub}{if:gdpOk| ({balGdp} del PIB)|}, según el Ministerio de Finanzas.",
+  },
+  pl: {
+    sQ3: "Jakie są sankcje UE wobec Rosji?",
+    sA3: "Sankcje UE wobec Rosji określają rozporządzenia Rady {regs}, na które zgodził się w Radzie każdy członek. Stosuje je {nEu} państw członkowskich UE, a {nAdopt} innych krajów europejskich przyjmuje je we własnym prawie ({adoptList}).{if:nViaEU| Przez UE jej członkowie należą też do koalicji limitu cen rosyjskiej ropy.|}{if:euCbrOk| W UE zablokowano około {euCbr} rezerw Banku Rosji ({euCbrDate}).|} Sprawdzono: {checked}.",
+    rQ3: "Jaki jest budżet obronny Rosji?",
+    rA3: "Rosyjska ustawa budżetowa w przyjętej wersji przewiduje {defPlan} na „obronę narodową” w roku {defYear}{if:prevOk| ({defPrev} w roku {prevYear})|}. Według szerszej definicji SIPRI szacuje wydatki wojskowe Rosji w {sipriYear} r. na {sipriRub}, czyli {sipriGdp} PKB. Środki budżetu nie są przypisane do wydatków: te liczby to kontekst.",
+    rQ4: "Jaki jest deficyt budżetowy Rosji?",
+    rA4: "Saldo federalnego budżetu Rosji w {balYear} r.: {if:bal<0|deficyt|nadwyżka} w wysokości {balRub}{if:gdpOk| ({balGdp} PKB)|}, według Ministerstwa Finansów.",
+  },
+  nl: {
+    sQ3: "Wat zijn de EU-sancties tegen Rusland?",
+    sA3: "De EU-sancties tegen Rusland staan in de Raadsverordeningen {regs}, waarmee elk lid in de Raad instemde. De {nEu} EU-lidstaten passen ze toe, en {nAdopt} andere Europese landen nemen ze over in eigen wetgeving ({adoptList}).{if:nViaEU| Via de EU horen de lidstaten ook bij de prijsplafondcoalitie voor Russische olie.|}{if:euCbrOk| Ongeveer {euCbr} aan reserves van de Bank van Rusland is in de EU geïmmobiliseerd ({euCbrDate}).|} Gecontroleerd op {checked}.",
+    rQ3: "Wat is de defensiebegroting van Rusland?",
+    rA3: "De Russische begrotingswet, zoals aangenomen, voorziet {defPlan} voor ‘nationale defensie’ in {defYear}{if:prevOk| ({defPrev} in {prevYear})|}. Met een ruimere definitie schat SIPRI de Russische militaire uitgaven in {sipriYear} op {sipriRub}, {sipriGdp} van het bbp. Begrotingsgeld is niet geoormerkt: deze cijfers zijn context.",
+    rQ4: "Wat is het begrotingstekort van Rusland?",
+    rA4: "Saldo van de Russische federale begroting in {balYear}: {if:bal<0|een tekort|een overschot} van {balRub}{if:gdpOk| ({balGdp} van het bbp)|}, volgens het ministerie van Financiën.",
+  },
+  uk: {
+    sQ3: "Які санкції ЄС проти Росії?",
+    sA3: "Санкції ЄС проти Росії встановлюють регламенти Ради {regs}, які схвалив у Раді кожен член. Їх застосовують {nEu} членів ЄС, а ще {nAdopt} європейських країн ухвалюють їх власним законом ({adoptList}).{if:nViaEU| Через ЄС його члени також входять до коаліції цінової стелі на російську нафту.|}{if:euCbrOk| У ЄС знерухомлено близько {euCbr} резервів Банку Росії ({euCbrDate}).|} Перевірено {checked}.",
+    rQ3: "Який оборонний бюджет Росії?",
+    rA3: "Російський закон про бюджет в ухваленій редакції передбачає {defPlan} на «національну оборону» у {defYear} році{if:prevOk| ({defPrev} у {prevYear})|}. За ширшим визначенням SIPRI оцінює військові видатки Росії у {sipriYear} році в {sipriRub}, або {sipriGdp} ВВП. Бюджетні гроші не прив'язані до видатків: ці цифри — контекст.",
+    rQ4: "Який дефіцит бюджету Росії?",
+    rA4: "Сальдо федерального бюджету Росії у {balYear} році: {if:bal<0|дефіцит|профіцит} {balRub}{if:gdpOk| ({balGdp} ВВП)|}, за даними Мінфіну.",
+  },
+};
+for (const l of LANGS) Object.assign(RES[l], RES59[l]);
 export const res = (l, k, vars, nums) => {
   const x = (RES[l] && RES[l][k] !== undefined ? RES[l] : RES.en)[k];
   if (x === undefined) throw new Error("seo_i18n.mjs RES: no phrase " + k);
@@ -2054,6 +2119,155 @@ export const LLMS = {
   },
 };
 
+// ----- round 59 (owner approved: "titles in the words people search", keyword discovery of 27 October 2026 with
+// Google's monthly volumes): the questions a country page and a few topic pages answer, in the words people search -----
+// A name in a question about it needs, in French and Dutch, its article ("la France", "les Pays-Bas", "de Verenigde
+// Staten") and in Polish its gender for the verb ("Polska dała", "Niemcy dały"); English "the" is inSentence above.
+// Rules by the name's form, as THE is for English. Only the localized questions of ASK use them, where that language's
+// own searches name the country (seo_demand.json ask, seo_families.json country.phrasing).
+const FR_PLURAL = /^(États-Unis|Pays-Bas|Émirats|Philippines|Maldives|Seychelles|Comores|Bahamas|Fidji|Îles|Samoa|Salomon|Marshall)/;
+const FR_BARE = /^(Israël|Cuba|Singapour|Malte|Chypre|Monaco|Madagascar|Taïwan|Hong Kong|Macao|Bahreïn|Oman|Haïti|Maurice|Djibouti|Brunei|Nauru|Tuvalu|Kiribati|Saint|Sainte|São|Sao|Trinité|Antigua|Grenade|Aruba|Curaçao|Porto Rico|Guam|Jersey|Guernesey|Gibraltar|Tonga|Palaos|Vanuatu|Andorre)/;
+const FR_MASC = /^(Mexique|Cambodge|Mozambique|Zimbabwe|Belize|Suriname|Royaume)/;
+const NL_HET = /^Verenigd Koninkrijk/;
+const NL_DE = /^(Verenigde|Filipijnen|Malediven|Seychellen|Comoren|Bahama|Dominicaanse Republiek|Centraal-Afrikaanse Republiek|Tsjechische Republiek|Salomonseilanden|Marshalleilanden|Kaaimaneilanden|Maagdeneilanden|Faeröer)/;
+const NL_PLURAL = /(Staten|Emiraten|Filipijnen|Malediven|Seychellen|Comoren|eilanden|Bahama's)/;
+// { Na: the name with its article where the language puts one, plural, fem, neu: for the verb }
+export function grammar(l, N) {
+  const n = String(N || ""), first = n.split(/[ -]/)[0];
+  if (l === "fr") {
+    const plural = FR_PLURAL.test(n);
+    const Na = plural ? "les " + n : FR_BARE.test(n) ? n : /^[AEIOUÉÈÊÎÏÔÂ]/.test(n) ? "l'" + n : /e$/.test(first) && !FR_MASC.test(n) ? "la " + n : "le " + n;
+    return { Na, plural, fem: false, neu: false };
+  }
+  if (l === "nl") return { Na: NL_HET.test(n) ? "het " + n : NL_DE.test(n) ? "de " + n : n, plural: NL_PLURAL.test(n), fem: false, neu: false };
+  if (l === "pl") {
+    const plural = /^(Stany|Zjednoczone)\b/.test(n) || /(y|ie)$/.test(n);
+    return { Na: n, plural, fem: !plural && /[aśź]$/.test(n), neu: !plural && /[oaeiu]$/.test(n) && !/a$/.test(n) };
+  }
+  return { Na: n, plural: false, fem: false, neu: false };
+}
+
+// The country page's phrasings (seo_templates.mjs askOf picks one by seo_families.json country.phrasing):
+//   given    the searched question about what it gave Ukraine (a title where its support is very likely), with tGiven
+//   support / helping   the searched question about Russia ("Does Belarus support Russia?"), with the chance level's
+//            tail (tHelp: the map's own words) and heading (h1Help); also the page's question (qHelp's place)
+//   tTradeAsk, qTradeAsk "India–Russia trade": the trade section's heading and question where it is searched
+// {N} the name, {Nt} in a sentence (English "the"), {Na} with its article (grammar above); values plural, fem, neu
+const ASK = {
+  en: { given: "How much has {Nt} given to Ukraine?", qGiven: "How much has {Nt} given to Ukraine?", h1Given: "How much has {Nt} given to Ukraine since 2022?", tGiven: ["{ua} since 2022", "{ua}"],
+    support: "Does {Nt} support Russia?", helping: "Is {Nt} helping Russia?",
+    tHelp: { u_sure: ["{netP} of GDP {netDir}"], r_sure: ["{rus} {if:rusX<0|more|less} for Russia from trade", "{netP} of GDP {netDir}"], lean: ["{leanWord}"], unc: ["{uncWordCap}"], zero: ["Net: {zeroWord}", "Net {zeroWord}"], party: ["{partyWord}, {netP} of GDP", "{partyWord}"] },
+    h1Help: { u_sure: "What the money flows show", r_sure: "What the money flows show", lean: "{leanWord}", unc: "{uncWordCap}", zero: "The net is {zeroWord}", party: "{partyWord} (with Russia)" },
+    tTradeAsk: "{N}–Russia trade", qTradeAsk: "{N}–Russia trade: how much since 2022?" },
+  de: { given: "Ukraine-Hilfe {N}:", qGiven: "Ukraine-Hilfe {N}: Wie viel hat das Land der Ukraine gegeben?", h1Given: "Ukraine-Hilfe {N}: Wie viel hat das Land der Ukraine seit 2022 gegeben?", tGiven: ["{ua} seit 2022", "{ua}"],
+    support: "{N}: Unterstützt das Land Russland?", helping: "{N}: Hilft das Land Russland?",
+    tHelp: { u_sure: ["{netP} des BIP {netDir}"], r_sure: ["{rus} {if:rusX<0|mehr|weniger} für Russland", "{netP} des BIP"], lean: ["{leanWord}"], unc: ["{uncWordCap}"], zero: ["Saldo {zeroWord}"], party: ["{partyWord}, {netP} des BIP", "{partyWord}"] },
+    h1Help: { u_sure: "Was die Geldströme zeigen", r_sure: "Was die Geldströme zeigen", lean: "{leanWord}", unc: "{uncWordCap}", zero: "Der Saldo ist {zeroWord}", party: "{partyWord} (mit Russland)" },
+    tTradeAsk: "Handel {N}–Russland", qTradeAsk: "Handel {N}–Russland: Wie viel seit 2022?" },
+  fr: { given: "Combien {Na} {if:plural|ont|a} donné à l'Ukraine ?", qGiven: "Combien {Na} {if:plural|ont|a} donné à l'Ukraine ?", h1Given: "Combien {Na} {if:plural|ont|a} donné à l'Ukraine depuis 2022 ?", tGiven: ["{ua} depuis 2022", "{ua}"],
+    support: "{N} : le pays soutient-il la Russie ?", helping: "{N} : le pays aide-t-il la Russie ?",
+    tHelp: { u_sure: ["{netP} du PIB {netDir}"], r_sure: ["{rus} {if:rusX<0|de plus|de moins}", ""], lean: ["{leanWord}"], unc: ["{uncWordCap}"], zero: ["Solde {zeroWord}"], party: ["{partyWord}"] },
+    h1Help: { u_sure: "Ce que montrent les flux d'argent", r_sure: "Ce que montrent les flux d'argent", lean: "{leanWord}", unc: "{uncWordCap}", zero: "Le solde est {zeroWord}", party: "{partyWord} (avec la Russie)" },
+    tTradeAsk: "Commerce {N}–Russie", qTradeAsk: "Commerce {N}–Russie : combien depuis 2022 ?" },
+  es: { given: "¿Cuánto ha dado {N} a Ucrania?", qGiven: "¿Cuánto ha dado {N} a Ucrania?", h1Given: "¿Cuánto ha dado {N} a Ucrania desde 2022?", tGiven: ["{ua} desde 2022", "{ua}"],
+    support: "{N}: ¿apoya a Rusia?", helping: "{N}: ¿ayuda a Rusia?",
+    tHelp: { u_sure: ["{netP} del PIB {netDir}"], r_sure: ["{rus} {if:rusX<0|más|menos} para Rusia", "{netP} del PIB"], lean: ["{leanWord}"], unc: ["{uncWordCap}"], zero: ["Neto {zeroWord}"], party: ["{partyWord}"] },
+    h1Help: { u_sure: "Lo que muestran los flujos de dinero", r_sure: "Lo que muestran los flujos de dinero", lean: "{leanWord}", unc: "{uncWordCap}", zero: "El neto es {zeroWord}", party: "{partyWord} (con Rusia)" },
+    tTradeAsk: "Comercio {N}–Rusia", qTradeAsk: "Comercio {N}–Rusia: ¿cuánto desde 2022?" },
+  pl: { given: "Ile {N} {if:plural|dały|{if:fem|dała|{if:neu|dało|dał}}} Ukrainie?", qGiven: "Ile {N} {if:plural|dały|{if:fem|dała|{if:neu|dało|dał}}} Ukrainie?", h1Given: "Ile {N} {if:plural|dały|{if:fem|dała|{if:neu|dało|dał}}} Ukrainie od 2022 roku?", tGiven: ["{ua} od 2022", "{ua}"],
+    support: "Czy {N} wspiera Rosję?", helping: "{N}: czy ten kraj pomaga Rosji?",
+    tHelp: { u_sure: ["{netP} PKB {netDir}"], r_sure: ["{rus} {if:rusX<0|więcej|mniej} dla Rosji", ""], lean: ["{leanWord}"], unc: ["{uncWordCap}"], zero: ["Saldo {zeroWord}"], party: ["{partyWord}"] },
+    h1Help: { u_sure: "Co pokazują przepływy pieniędzy", r_sure: "Co pokazują przepływy pieniędzy", lean: "{leanWord}", unc: "{uncWordCap}", zero: "Saldo {zeroWord}", party: "{partyWord} (z Rosją)" },
+    tTradeAsk: "Handel {N}–Rosja", qTradeAsk: "Handel {N}–Rosja: ile od 2022 roku?" },
+  nl: { given: "Hoeveel {if:plural|hebben|heeft} {Na} aan Oekraïne gegeven?", qGiven: "Hoeveel {if:plural|hebben|heeft} {Na} aan Oekraïne gegeven?", h1Given: "Hoeveel {if:plural|hebben|heeft} {Na} sinds 2022 aan Oekraïne gegeven?", tGiven: ["{ua} sinds 2022", "{ua}"],
+    support: "{N}: steunt het land Rusland?", helping: "{N}: helpt het land Rusland?",
+    tHelp: { u_sure: ["{netP} van het bbp {netDir}"], r_sure: ["{rus} {if:rusX<0|meer|minder} voor Rusland", ""], lean: ["{leanWord}"], unc: ["{uncWordCap}"], zero: ["Saldo {zeroWord}"], party: ["{partyWord}"] },
+    h1Help: { u_sure: "Wat de geldstromen laten zien", r_sure: "Wat de geldstromen laten zien", lean: "{leanWord}", unc: "{uncWordCap}", zero: "Het saldo is {zeroWord}", party: "{partyWord} (met Rusland)" },
+    tTradeAsk: "Handel {N}–Rusland", qTradeAsk: "Handel {N}–Rusland: hoeveel sinds 2022?" },
+  uk: { given: "{N}: скільки дали Україні?", qGiven: "{N}: скільки дали Україні?", h1Given: "{N}: скільки дали Україні з 2022 року?", tGiven: ["{ua} з 2022 року", "{ua}"],
+    support: "Чи підтримує {N} Росію?", helping: "{N}: чи допомагає ця країна Росії?",
+    tHelp: { u_sure: ["{netP} ВВП {netDir}"], r_sure: ["{rus} {if:rusX<0|більше|менше} для Росії", ""], lean: ["{leanWord}"], unc: ["{uncWordCap}"], zero: ["Нетто {zeroWord}"], party: ["{partyWord}"] },
+    h1Help: { u_sure: "Що показують грошові потоки", r_sure: "Що показують грошові потоки", lean: "{leanWord}", unc: "{uncWordCap}", zero: "Нетто {zeroWord}", party: "{partyWord} (разом із Росією)" },
+    tTradeAsk: "Торгівля {N}–Росія", qTradeAsk: "Торгівля {N}–Росія: скільки з 2022 року?" },
+};
+export const ASK_KEYS = Object.keys(ASK.en);
+export const askPhrase = (l, k) => { const x = (ASK[l] && ASK[l][k]) ?? ASK.en[k]; if (x === undefined) throw new Error("seo_i18n.mjs ASK: no phrase " + k); return x; };
+// a country page's title and heading in a phrasing (seo_templates.mjs askOf): the question with the first tail that
+// fits, else the chance level's own title (it has the map's words); v and nums as countryText's, with Na and plural
+export function askText(l, which, cat, v, nums, fallback) {
+  const g = grammar(l, v.N), vv = { ...v, Na: g.Na }, nn = { ...nums, plural: g.plural, fem: g.fem, neu: g.neu };
+  const one = s => fmt(s, vv, nn).trim();
+  const head = one(askPhrase(l, which === "given" ? "given" : which));
+  const tails = which === "given" ? askPhrase(l, "tGiven") : (askPhrase(l, "tHelp")[cat] || []);
+  const forms = tails.map(t => (one(t) ? head + " " + one(t) : head));
+  const title = forms.find(t => t.length <= TITLE_MAX) || fallback;
+  const h1 = which === "given" ? one(askPhrase(l, "h1Given")) : head + " " + one(askPhrase(l, "h1Help")[cat] || "");
+  return { title, h1: h1.trim() };
+}
+// a question of ASK filled for a country (the page's FAQ): k qGiven, support, helping, qTradeAsk; or a heading (tTradeAsk)
+export function askQ(l, k, N) {
+  const g = grammar(l, N);
+  return fmt(askPhrase(l, k), { N, Nt: inSentence(l, N), Na: g.Na }, { plural: g.plural, fem: g.fem, neu: g.neu });
+}
+
+// The topic pages' words for what people search (seo_pages.mjs, every language; the English page's own config questions
+// stay first): note, a line after the intro; faq, questions answered from the page's table and the research files.
+// Values: {n} rows, {tops} the first three names, {t1} {topV} the first row and its figure, {sumUa} the support of the
+// rows together, {nSure} the rows the map gives as very likely on the page's side, {sureWord} the map's word,
+// {partyList} the parties to the war (value nParty), {partyWord} {partyWordLc} the map's word for them; {euroclear} {euroclearDate} {euCbr} {euCbrDate} from
+// frozen_amounts_r58.json
+export const TOPIC_X = {
+  "countries-helping-russia": {
+    en: { note: "Looking for Russia's allies? The site does not rate alliances, votes or diplomacy: it measures money, whether each country's aid, trade, fuel and arms since 2022 moved toward Ukraine or toward Russia.",
+      faq: [{ q: "Who are Russia's allies?", a: "War Balance does not judge alliances; it measures money. {if:nSure|Since 2022 the money of {nSure} of the {n} countries listed is {sureWord} toward Russia; the table starts with {tops}.|The table starts with {tops}.}{if:nParty| {partyList}: {partyWordLc} (with Russia).|} Votes, statements and diplomacy are not in the number." }] },
+    de: { note: "Auf der Suche nach Russlands Verbündeten? Die Seite bewertet keine Bündnisse, Abstimmungen oder Diplomatie: Sie misst Geld, ob Hilfe, Handel, Brennstoffe und Waffen jedes Landes seit 2022 Richtung Ukraine oder Russland gingen.",
+      faq: [{ q: "Wer sind Russlands Verbündete?", a: "War Balance bewertet keine Bündnisse, sondern misst Geld. {if:nSure|Seit 2022 floss das Geld von {nSure} der {n} gelisteten Länder {sureWord} Richtung Russland; die Tabelle beginnt mit {tops}.|Die Tabelle beginnt mit {tops}.}{if:nParty| {partyList}: {partyWord} (mit Russland).|} Abstimmungen, Erklärungen und Diplomatie sind nicht in der Zahl." }] },
+    fr: { note: "Vous cherchez les alliés de la Russie ? Le site ne juge ni les alliances, ni les votes, ni la diplomatie : il mesure l'argent, selon que l'aide, le commerce, l'énergie et les armes de chaque pays depuis 2022 sont allés vers l'Ukraine ou vers la Russie.",
+      faq: [{ q: "Qui sont les alliés de la Russie ?", a: "War Balance ne juge pas les alliances : il mesure l'argent. {if:nSure|Depuis 2022, l'argent de {nSure} des {n} pays listés est allé {sureWord} vers la Russie ; le tableau commence par {tops}.|Le tableau commence par {tops}.}{if:nParty| {partyList} : {partyWordLc} (avec la Russie).|} Les votes, les déclarations et la diplomatie ne sont pas dans le chiffre." }] },
+    es: { note: "¿Busca los aliados de Rusia? El sitio no valora alianzas, votos ni diplomacia: mide dinero, si la ayuda, el comercio, la energía y las armas de cada país desde 2022 fueron hacia Ucrania o hacia Rusia.",
+      faq: [{ q: "¿Quiénes son los aliados de Rusia?", a: "War Balance no juzga alianzas: mide dinero. {if:nSure|Desde 2022, el dinero de {nSure} de los {n} países listados fue {sureWord} hacia Rusia; la tabla empieza por {tops}.|La tabla empieza por {tops}.}{if:nParty| {partyList}: {partyWordLc} (con Rusia).|} Los votos, las declaraciones y la diplomacia no están en la cifra." }] },
+    pl: { note: "Szukasz sojuszników Rosji? Strona nie ocenia sojuszy, głosowań ani dyplomacji: mierzy pieniądze, czyli czy pomoc, handel, paliwa i broń każdego kraju od 2022 roku szły na rzecz Ukrainy czy Rosji.",
+      faq: [{ q: "Kim są sojusznicy Rosji?", a: "War Balance nie ocenia sojuszy: mierzy pieniądze. {if:nSure|Od 2022 roku pieniądze {nSure} z {n} wymienionych krajów szły {sureWord} na rzecz Rosji; tabela zaczyna się od {tops}.|Tabela zaczyna się od {tops}.}{if:nParty| {partyList}: {partyWordLc} (z Rosją).|} Głosowania, deklaracje i dyplomacja nie są w tej liczbie." }] },
+    nl: { note: "Op zoek naar de bondgenoten van Rusland? De site beoordeelt geen bondgenootschappen, stemmingen of diplomatie: ze meet geld, of de steun, handel, brandstof en wapens van elk land sinds 2022 richting Oekraïne of Rusland gingen.",
+      faq: [{ q: "Wie zijn de bondgenoten van Rusland?", a: "War Balance beoordeelt geen bondgenootschappen: het meet geld. {if:nSure|Sinds 2022 ging het geld van {nSure} van de {n} landen in de lijst {sureWord} richting Rusland; de tabel begint met {tops}.|De tabel begint met {tops}.}{if:nParty| {partyList}: {partyWordLc} (met Rusland).|} Stemmingen, verklaringen en diplomatie zitten niet in het getal." }] },
+    uk: { note: "Шукаєте союзників Росії? Сайт не оцінює союзи, голосування чи дипломатію: він вимірює гроші — чи йшли допомога, торгівля, паливо й зброя кожної країни з 2022 року на користь України чи Росії.",
+      faq: [{ q: "Хто союзники Росії?", a: "War Balance не оцінює союзи: він вимірює гроші. {if:nSure|З 2022 року гроші {nSure} з {n} країн у списку йшли {sureWord} на користь Росії; таблиця починається з {tops}.|Таблиця починається з {tops}.}{if:nParty| {partyList}: {partyWordLc} (разом із Росією).|} Голосування, заяви й дипломатія до числа не входять." }] },
+  },
+  "ukraine-support-tracker": {
+    en: { faq: [{ q: "Which countries are Ukraine's allies?", a: "War Balance does not judge alliances; it measures money. In euros since 2022 the support table starts with {tops}; the {n} countries listed gave {sumUa} together, each also shown as a share of GDP and per person. Votes, statements and diplomacy are not in the number." },
+      { q: "Which countries give the most to Ukraine?", a: "In euros since 2022 the table starts with {tops}: {t1} {topV}. Together the {n} countries listed gave {sumUa}. As a share of GDP or per person the order changes; each row gives euros, the share of GDP and the amount per person." }] },
+    de: { faq: [{ q: "Wer sind die Verbündeten der Ukraine?", a: "War Balance bewertet keine Bündnisse, sondern misst Geld. In Euro seit 2022 beginnt die Tabelle der Unterstützung mit {tops}; die {n} gelisteten Länder gaben zusammen {sumUa}, jeweils auch im Verhältnis zum BIP und pro Kopf. Abstimmungen, Erklärungen und Diplomatie sind nicht in der Zahl." },
+      { q: "Wer unterstützt die Ukraine am meisten?", a: "In Euro seit 2022 beginnt die Tabelle mit {tops}: {t1} {topV}. Zusammen gaben die {n} gelisteten Länder {sumUa}. Pro Kopf oder im Verhältnis zum BIP ändert sich die Reihenfolge; jede Zeile zeigt Euro, Anteil am BIP und Betrag pro Kopf." }] },
+    fr: { faq: [{ q: "Qui sont les alliés de l'Ukraine ?", a: "War Balance ne juge pas les alliances : il mesure l'argent. En euros depuis 2022, le tableau du soutien commence par {tops} ; les {n} pays listés ont donné {sumUa} ensemble, chacun aussi en part du PIB et par habitant. Les votes, les déclarations et la diplomatie ne sont pas dans le chiffre." },
+      { q: "Quels pays donnent le plus à l'Ukraine ?", a: "En euros depuis 2022, le tableau commence par {tops} : {t1} {topV}. Ensemble, les {n} pays listés ont donné {sumUa}. En part du PIB ou par habitant, l'ordre change ; chaque ligne donne les euros, la part du PIB et le montant par habitant." }] },
+    es: { faq: [{ q: "¿Quiénes son los aliados de Ucrania?", a: "War Balance no juzga alianzas: mide dinero. En euros desde 2022, la tabla del apoyo empieza por {tops}; los {n} países listados dieron {sumUa} en conjunto, cada uno también como parte del PIB y por persona. Los votos, las declaraciones y la diplomacia no están en la cifra." },
+      { q: "¿Qué países dan más a Ucrania?", a: "En euros desde 2022, la tabla empieza por {tops}: {t1} {topV}. En conjunto, los {n} países listados dieron {sumUa}. Como parte del PIB o por persona el orden cambia; cada fila da los euros, la parte del PIB y el importe por persona." }] },
+    pl: { faq: [{ q: "Kim są sojusznicy Ukrainy?", a: "War Balance nie ocenia sojuszy: mierzy pieniądze. W euro od 2022 roku tabela wsparcia zaczyna się od {tops}; {n} wymienionych krajów dało razem {sumUa}, każdy także jako udział w PKB i na mieszkańca. Głosowania, deklaracje i dyplomacja nie są w tej liczbie." },
+      { q: "Które kraje dają Ukrainie najwięcej?", a: "W euro od 2022 roku tabela zaczyna się od {tops}: {t1} {topV}. Razem {n} wymienionych krajów dało {sumUa}. Jako udział w PKB lub na mieszkańca kolejność się zmienia; każdy wiersz podaje euro, udział w PKB i kwotę na mieszkańca." }] },
+    nl: { faq: [{ q: "Wie zijn de bondgenoten van Oekraïne?", a: "War Balance beoordeelt geen bondgenootschappen: het meet geld. In euro sinds 2022 begint de tabel van de steun met {tops}; de {n} landen in de lijst gaven samen {sumUa}, elk ook als deel van het bbp en per inwoner. Stemmingen, verklaringen en diplomatie zitten niet in het getal." },
+      { q: "Welke landen geven het meest aan Oekraïne?", a: "In euro sinds 2022 begint de tabel met {tops}: {t1} {topV}. Samen gaven de {n} landen in de lijst {sumUa}. Als deel van het bbp of per inwoner verandert de volgorde; elke rij geeft euro, het deel van het bbp en het bedrag per inwoner." }] },
+    uk: { faq: [{ q: "Хто союзники України?", a: "War Balance не оцінює союзи: він вимірює гроші. У євро з 2022 року таблиця підтримки починається з {tops}; {n} країн у списку разом дали {sumUa}, кожна також як частка ВВП і на особу. Голосування, заяви й дипломатія до числа не входять." },
+      { q: "Які країни дають Україні найбільше?", a: "У євро з 2022 року таблиця починається з {tops}: {t1} {topV}. Разом {n} країн у списку дали {sumUa}. Як частка ВВП чи на особу порядок інший; кожен рядок дає євро, частку ВВП і суму на особу." }] },
+  },
+  "frozen-russian-assets": {
+    en: { faq: [{ q: "How much Russian money does Euroclear hold?", a: "Euroclear, the securities depository in Belgium, reports {euroclear} of sanctioned Russian assets on its balance sheet ({euroclearDate}). That figure overlaps the Bank of Russia reserves immobilised in the EU, about {euCbr} ({euCbrDate}), and is not added to them. The table counts the return Russia lost on frozen money in each country, not these amounts." }] },
+    de: { faq: [{ q: "Wie viel russisches Geld hält Euroclear?", a: "Euroclear, der Wertpapierverwahrer in Belgien, meldet {euroclear} an sanktionierten russischen Vermögenswerten in seiner Bilanz ({euroclearDate}). Diese Zahl überschneidet sich mit den in der EU immobilisierten Reserven der Bank von Russland, etwa {euCbr} ({euCbrDate}), und wird nicht dazugezählt. Die Tabelle zählt die Rendite, die Russland auf eingefrorenes Geld in jedem Land entging, nicht diese Beträge." }] },
+    fr: { faq: [{ q: "Combien d'argent russe Euroclear détient-il ?", a: "Euroclear, le dépositaire de titres situé en Belgique, déclare {euroclear} d'actifs russes sanctionnés à son bilan ({euroclearDate}). Ce chiffre recoupe les réserves de la Banque de Russie immobilisées dans l'UE, environ {euCbr} ({euCbrDate}), et ne s'y ajoute pas. Le tableau compte le rendement que la Russie a perdu sur l'argent gelé dans chaque pays, pas ces montants." }] },
+    es: { faq: [{ q: "¿Cuánto dinero ruso tiene Euroclear?", a: "Euroclear, el depositario de valores con sede en Bélgica, declara {euroclear} en activos rusos sancionados en su balance ({euroclearDate}). Esa cifra se solapa con las reservas del Banco de Rusia inmovilizadas en la UE, unos {euCbr} ({euCbrDate}), y no se suma a ellas. La tabla cuenta el rendimiento que Rusia perdió por el dinero congelado en cada país, no estos importes." }] },
+    pl: { faq: [{ q: "Ile rosyjskich pieniędzy ma Euroclear?", a: "Euroclear, depozyt papierów wartościowych w Belgii, wykazuje w bilansie {euroclear} objętych sankcjami rosyjskich aktywów ({euroclearDate}). Ta kwota pokrywa się z rezerwami Banku Rosji zablokowanymi w UE, około {euCbr} ({euCbrDate}), i nie jest do nich doliczana. Tabela liczy utracony przez Rosję zwrot z zamrożonych pieniędzy w każdym kraju, nie te kwoty." }] },
+    nl: { faq: [{ q: "Hoeveel Russisch geld heeft Euroclear?", a: "Euroclear, de effectenbewaarder in België, meldt {euroclear} aan gesanctioneerde Russische tegoeden op zijn balans ({euroclearDate}). Dat cijfer overlapt met de in de EU geïmmobiliseerde reserves van de Bank van Rusland, ongeveer {euCbr} ({euCbrDate}), en wordt er niet bij opgeteld. De tabel telt het rendement dat Rusland op bevroren geld in elk land misliep, niet deze bedragen." }] },
+    uk: { faq: [{ q: "Скільки російських грошей тримає Euroclear?", a: "Euroclear, депозитарій цінних паперів у Бельгії, показує на своєму балансі {euroclear} санкційних російських активів ({euroclearDate}). Ця сума перетинається з резервами Банку Росії, знерухомленими в ЄС, — близько {euCbr} ({euCbrDate}) — і до них не додається. Таблиця враховує дохід, який Росія втратила на заморожених грошах у кожній країні, а не ці суми." }] },
+  },
+};
+// the research a topic's questions need (a question without its file is left out)
+export const TOPIC_X_NEEDS = { "frozen-russian-assets": "frozen" };
+// a topic page's note and questions in a language, filled (vars, nums: see above)
+export function topicExtra(l, slug, vars, nums) {
+  const x = (TOPIC_X[slug] || {})[l] || (TOPIC_X[slug] || {}).en;
+  if (!x) return { note: "", faq: [] };
+  return { note: x.note ? fmt(x.note, vars, nums) : "", faq: (x.faq || []).map(f => ({ q: fmt(f.q, vars, nums), a: fmt(f.a, vars, nums) })) };
+}
+
 // ----- every phrase above, for the wording guard (seo_check.py: node prints phraseList() as JSON) -----
 export function phraseList() {
   const out = [];
@@ -2064,10 +2278,12 @@ export function phraseList() {
   };
   for (const [name, table] of Object.entries({ S, MEASURE, PART, SIDE, COPY, LABELS, DYN, EXPLAIN, LLMS, RES })) for (const [l, t] of Object.entries(table)) walk(t, name, l);
   for (const [slug, byLang] of Object.entries(TOPIC_T)) for (const [l, t] of Object.entries(byLang)) walk(t, `TOPIC_T.${slug}`, l);
+  for (const [l, t] of Object.entries(ASK)) walk(t, "ASK", l);
+  for (const [slug, byLang] of Object.entries(TOPIC_X)) for (const [l, t] of Object.entries(byLang)) walk(t, `TOPIC_X.${slug}`, l);
   return out;
 }
 
 // the strings above that a native speaker should read before they are relied on (new in round 56; reworded in round 57
 // by the wording guard: the sort phrases, the comparison line, the year and part intros, every frame that said "first",
 // "largest", "only" or a chance word)
-export const REVIEW = ["S (page frames: de, fr, es, pl, nl, uk)", "MEASURE", "PART (37 part names)", "SIDE", "COPY.part", "COPY.year", "COPY.compare", "COPY.hub", "TOPIC_T (20 topics × 6 languages)", "COPY.topic", "COPY.country (7 chance levels)", "COPY.home", "LABELS", "DYN (round 57b: the country page's sections and questions, 6 languages)", "EXPLAIN (round 58: six explainers, 6 languages)", "S58 and DYN58 (round 58: armed items, cite line, downloads page, relations and armed questions, 6 languages)", "RES (round 58b: the sanctions section and page, the frozen amounts, the explainers' amounts, the oil and gas revenue page, 6 languages)"];
+export const REVIEW = ["S (page frames: de, fr, es, pl, nl, uk)", "MEASURE", "PART (37 part names)", "SIDE", "COPY.part", "COPY.year", "COPY.compare", "COPY.hub", "TOPIC_T (20 topics × 6 languages)", "COPY.topic", "COPY.country (7 chance levels)", "COPY.home", "LABELS", "DYN (round 57b: the country page's sections and questions, 6 languages)", "EXPLAIN (round 58: six explainers, 6 languages)", "S58 and DYN58 (round 58: armed items, cite line, downloads page, relations and armed questions, 6 languages)", "RES (round 58b: the sanctions section and page, the frozen amounts, the explainers' amounts, the oil and gas revenue page, 6 languages)", "ASK, TOPIC_X, RES59 and the retitled RES pages (round 59: the questions people search, 6 languages; the French, Dutch and Polish name rules of grammar())"];

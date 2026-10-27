@@ -12,7 +12,9 @@
 //   - the questions are a pool of templates, each with a data condition, a family and a score (base + 40 × salience
 //     + 10 × log10(1 + search demand)); a page gets the best four to six, at most two per family. The visible
 //     questions and the JSON-LD FAQPage are the same array (the JSON-LD answer is the visible one as plain text);
-//   - every source is a link: its key document, or else its entry in the page's list of sources.
+//   - every source is a link: its key document, or else its entry in the page's list of sources;
+//   - round 59: the questions about what it gave, about Russia and about its trade are asked in the phrasing people
+//     search in the page's language, and their scores add those searches' monthly volumes (o.ask, seo_demand.json ask).
 // Not here, on purpose: the euros of supply that stopped without the buyer's choice (strikes, export ban, Druzhba):
 // the map does not show them yet, and these pages only repeat the map.
 //
@@ -77,9 +79,9 @@ export function similarOf(row, rows, n = 4) {
 // x: the derived facts (see facts() below). demand: seo_demand.json's entry (trade, help, aid and clusters)
 const demandOf = (dm, keys) => keys.reduce((a, k) => a + ((dm.clusters || {})[k] || 0) + (["trade", "help", "aid"].includes(k) ? dm[k] || 0 : 0), 0);
 export const POOL = [
-  { id: "gave", fam: "aid", base: 30, demand: ["aid", "aid_country", "aid_country_year"], cond: x => x.data && x.ua >= 0.0005, sal: x => Math.min(1, x.uaPct) },
-  { id: "trade", fam: "trade", base: 25, demand: ["trade", "trade_country", "oil_buyers", "gas_lng"], cond: x => x.data && (x.tb1 || 0) > 0.05, sal: x => Math.min(1, Math.abs(x.rusPct)) },
-  { id: "help", fam: "help", base: 28, demand: ["help", "help_russia_country", "country_russia_relations"], cond: x => x.data && !!x.net, sal: x => (x.netEur < 0 ? 1 : 0.4) },
+  { id: "gave", fam: "aid", base: 30, demand: ["aid", "aid_country", "aid_country_year"], ask: ["given"], cond: x => x.data && x.ua >= 0.0005, sal: x => Math.min(1, x.uaPct) },
+  { id: "trade", fam: "trade", base: 25, demand: ["trade", "trade_country", "oil_buyers", "gas_lng"], ask: ["trade"], cond: x => x.data && (x.tb1 || 0) > 0.05, sal: x => Math.min(1, Math.abs(x.rusPct)) },
+  { id: "help", fam: "help", base: 28, demand: ["help", "help_russia_country", "country_russia_relations"], ask: ["support", "helping"], cond: x => x.data && !!x.net, sal: x => (x.netEur < 0 ? 1 : 0.4) },
   { id: "decide", fam: "sure", base: 12, demand: [], cond: x => x.data && !!x.decide && !!x.decide.flip && ["lean", "unc"].includes(x.level), sal: () => 1 },
   { id: "close", fam: "sure", base: 12, demand: [], cond: x => x.data && !!x.decide && !!x.decide.why && ["zero", "near"].includes(x.level), sal: () => 0.9 },
   { id: "oilgas", fam: "trade", base: 15, demand: ["oil_buyers", "gas_lng", "shadow_fleet"], sal: x => x.fuelShare,
@@ -103,10 +105,12 @@ export const POOL = [
   { id: "armed", fam: "armed", base: 25, demand: ["military_support_russia"], cond: x => !!x.armed && x.armedFull >= 0.0005, sal: () => 1 },
 ];
 export const FAQ_MAX = 6, FAQ_PER_FAMILY = 2;
+// round 59: and Google's monthly volumes of the phrasings a question answers, in the page's language (seo_demand.json ask)
+const askVol = (x, keys) => (keys || []).reduce((a, k) => a + ((x.ask || {})[k] || 0), 0);
 // the questions a page gets: by score, at most FAQ_MAX, at most FAQ_PER_FAMILY per family (ties: the pool's order)
 export function pickFaq(x) {
   const cand = POOL.map((p, i) => ({ p, i })).filter(({ p }) => p.cond(x))
-    .map(({ p, i }) => ({ p, i, score: p.base + 40 * p.sal(x) + 10 * Math.log10(1 + demandOf(x.demand || {}, p.demand)) }))
+    .map(({ p, i }) => ({ p, i, score: p.base + 40 * p.sal(x) + 10 * Math.log10(1 + demandOf(x.demand || {}, p.demand) + askVol(x, p.ask)) }))
     .sort((a, b) => b.score - a.score || a.i - b.i);
   const out = [], fams = {};
   for (const c of cand) {
@@ -140,6 +144,8 @@ export function facts(c, o) {
     // round 58: the page language's searches for its relations with Russia, and the kinds of supplies it sent to Russia
     relDemand: ((o.relations && o.relations.clusters) || []).reduce((a, k) => a + ((((o.demand || {}).byLang || {})[k] || {})[o.l] || 0), 0),
     relMin: o.relations && o.relations.minDemand != null ? o.relations.minDemand : Infinity, armed: o.armed || null, armedFull: o.armedFull || 0,
+    // round 59: the page language's search volumes of the phrasings its questions answer (seo_demand.json ask)
+    ask: (((o.demand || {}).ask || {})[o.l]) || {},
   };
 }
 
@@ -184,7 +190,8 @@ export function countryDyn(c, o) {
       const fairShown = x.notes.fairness && out.story.some(t => t.body.includes(x.notes.fairness));   // as the panel: once
       for (const n of [x.notes.windfall, noMark(x.notes.remit), !fairShown && x.notes.fairness]) if (n) s.push(esc(n));
       s.push(D(l, "tradeNote"));
-      sec("trade", I.dyn(l, "tTrade"), P(s.join(" ")));
+      // round 59: named as the pair people search ("India–Russia trade"), where they do (seo_templates.mjs askOf)
+      sec("trade", o.ask && o.ask.trade ? I.askQ(l, "tTradeAsk", name) : I.dyn(l, "tTrade"), P(s.join(" ")));
     }
   }
   // sanctions, Russia's own cut-offs, or a choice: the panel's split, and the pipeline exemption
@@ -310,7 +317,10 @@ export function backing(c, x, o, F) {
 function faqOf(c, x, o, F) {
   const l = o.l, name = c.name, Nt = I.inSentence(l, name), N = name, picks = pickFaq(x), out = [];
   const pair = x.armed ? I.armedPair(l, name, x.armed) : "";
-  const q = id => I.fmt(I.dyn(l, "q" + cap(id)), { Nt, N, NtCap: cap(Nt), pair });
+  // round 59: the questions in the phrasing people search in this language (o.ask, seo_templates.mjs askOf)
+  const ask = o.ask || {};
+  const ASKQ = { gave: ask.given ? "qGiven" : "", help: ask.verb === "support" || ask.verb === "helping" ? ask.verb : "", trade: ask.trade ? "qTradeAsk" : "" };
+  const q = id => (ASKQ[id] ? I.askQ(l, ASKQ[id], name) : I.fmt(I.dyn(l, "q" + cap(id)), { Nt, N, NtCap: cap(Nt), pair }));
   const A = (id, vars, nums) => D(l, "a" + cap(id), vars, nums);
   const [y0, y1] = o.tradeYears;
   const tag = k => x.story.find(t => t.key === k);

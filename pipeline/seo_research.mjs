@@ -97,6 +97,7 @@ export function sanctionsTable(S, nameOf, l) {
 }
 
 // the page of every country's sanctions in a language. o: { nameOf(iso), href(iso) (its page, or ""), checked }
+// o.frozen (round 59): frozenFacts of frozen_amounts_r58.json, for the reserves immobilised in the EU (or null)
 export function sanctionsPage(l, S, o) {
   const groups = sanctionsTable(S, o.nameOf, l), n = Object.fromEntries(groups.map(g => [g.cat, g.rows.length]));
   const all = groups.flatMap(g => g.rows);
@@ -122,6 +123,14 @@ ${groups.map(g => `<h2 id="${g.cat.replace(/_/g, "-")}">${esc(R(l, "lab_" + g.ca
       { nFin: n.financial_directive_only || 0 }) },
     { q: R(l, "sQ2"), a: R(l, "sA2", { listedNoList: list(listedNo), adoptNoList: list(adoptNo) }, { nListedNo: listedNo.length, nAdoptNo: adoptNo.length }) },
   ];
+  // round 59: "What are the EU sanctions on Russia?", from the file: the Council regulations its EU category names, the
+  // members and the adopters, the members in the price cap coalition through the EU; the reserves immobilised in the EU
+  // from frozen_amounts_r58.json
+  const regs = String((S.categories || {}).eu_member || "").match(/\d+\/\d{4}/g);
+  if (!regs) throw new Error("sanctions_r58.json: the EU category names no Council regulation");
+  const fz = o.frozen || null;
+  faq.splice(1, 0, { q: R(l, "sQ3"), a: R(l, "sA3", { regs: I.list3(l, regs), nEu: n.eu_member || 0, nAdopt: n.adopts_eu_measures || 0, adoptList: list(of("adopts_eu_measures")), checked,
+    euCbr: fz ? I.E(l, fz.euCbr) : "", euCbrDate: fz ? I.dateL(fz.euCbrDate, l) : "" }, { nViaEU: all.filter(r => r.cat === "eu_member" && r.cap.viaEU).length, euCbrOk: fz ? 1 : 0 }) });
   return { title: R(l, "sTitle"), description: R(l, "sDesc"), h1: R(l, "sH1"), intro: R(l, "sIntro", { checked }), label: R(l, "sLabel"), body, faq, counts: n };
 }
 
@@ -191,6 +200,11 @@ export function frozenFacts(F) {
     propDate: prop.date, propMax: +prop.fact.match(/up to EUR (\d+)bn/)[1], eucoDate: euco.date.slice(0, 10), uslPaid: +paid[1], paidDate: `${paid[3]}-${String(mon).padStart(2, "0")}`,
   };
 }
+// round 59: the amounts the frozen-assets page's question on Euroclear answers, in a language
+export function frozenVars(l, F) {
+  const x = frozenFacts(F);
+  return { euroclear: I.E(l, x.euroclear), euroclearDate: I.dateL(x.euroclearDate, l), euCbr: I.E(l, x.euCbr), euCbrDate: I.dateL(x.euCbrDate, l) };
+}
 // an explainer's amounts in a language (seo_i18n.mjs EXPLAIN {amountText}): { amountText, amount }
 export function explainAmount(l, id, F) {
   if (!F || !["frozenAssets", "reparationsLoan"].includes(id)) return { vars: { amountText: "" }, nums: { amount: 0 } };
@@ -225,12 +239,15 @@ function figCell(l, path, v, u) {
   return `<td class="n"${rv("revenue", path, v, u)}>${esc(t)}</td>`;
 }
 // the page in a language. o: { warIncome (the address of /russia-war-income/ in this language), published (the date of
-// Minfin's data), months (how many months the monthly table shows), yearWord (the column's name) }
+// Minfin's data), months (how many months the monthly table shows), yearWord (the column's name), balance (round 59:
+// the name of the budget balance series, seo_families.json research.revenue.balance) }
 export function revenuePage(l, Rv, o) {
   const m = revenueModel(Rv, o.months);
   const lf = m.lastFull, ytd = m.ytd, latestMonthL = I.dateL(m.latest, l, true);
   const yLabel = x => (x.complete ? x.y : R(l, "partYear", { y: x.y, month: I.monthOnly(`${m.latest}-15`, l) }));
-  const vars = { y0: m.y0, lastFull: lf.y, ogRub: I.CUR(l, lf.og_rev_rub, "RUB"), ogEur: I.E(l, lf.og_rev_eur), share: I.P(l, 100 * lf.share), latestMonth: latestMonthL,
+  // round 59: Russia's defence budget (the budget law's latest year, the year before it, SIPRI's latest estimate)
+  const dv = defenceVars(l, Rv);
+  const vars = { ...dv.vars, y0: m.y0, lastFull: lf.y, ogRub: I.CUR(l, lf.og_rev_rub, "RUB"), ogEur: I.E(l, lf.og_rev_eur), share: I.P(l, 100 * lf.share), latestMonth: latestMonthL,
     ytdRub: ytd ? I.CUR(l, ytd.og_rev_rub, "RUB") : "", ytdEur: ytd ? I.E(l, ytd.og_rev_eur) : "", ytdShare: ytd ? I.P(l, 100 * ytd.share) : "", published: o.published ? I.dateL(o.published, l) : "" };
   const yRows = m.years.map(x => `<tr${rv("revenue", `yearly.${x.y}.complete`, x.complete)}><td>${esc(yLabel(x))}</td>${figCell(l, `yearly.${x.y}.og_rev_rub`, x.og_rev_rub, "rub")}${figCell(l, `yearly.${x.y}.og_rev_eur`, x.og_rev_eur, "eur")}${figCell(l, `yearly.${x.y}.share`, x.share, "share")}${figCell(l, `yearly.${x.y}.total_rev_rub`, x.total_rev_rub, "rub")}</tr>`).join("");
   const head5 = first => `<thead><tr><th>${esc(first)}</th><th class="n">${esc(R(l, "thOgRub"))}</th><th class="n">${esc(R(l, "thOgEur"))}</th><th class="n">${esc(R(l, "thShare"))}</th><th class="n">${esc(R(l, "thTotRub"))}</th></tr></thead>`;
@@ -255,8 +272,35 @@ export function revenuePage(l, Rv, o) {
     { q: R(l, "rQ1"), a: R(l, "rA1", { ...vars, crea: crea ? I.E(l, crea.oil_gas_eur_bn) : "" }) },
     { q: R(l, "rQ2"), a: R(l, "rA2", { ...vars, list: m.years.filter(x => x.complete).map(x => `${x.y} ${I.P(l, 100 * x.share)}`).join(", ") }) },
   ];
-  return { title: R(l, "rTitle"), description: R(l, "rDesc", vars), h1: R(l, "rH1", vars), intro: R(l, "rIntro", vars), label: R(l, "rLabel"), body, faq, model: m };
+  // round 59: the questions people search: the defence budget, and (once the file has it) the budget's balance
+  if (dv.nums.defOk) faq.splice(1, 0, { q: R(l, "rQ3"), a: R(l, "rA3", dv.vars, dv.nums) });
+  const bal = balanceVars(l, Rv, o.balance);
+  if (bal) faq.push({ q: R(l, "rQ4"), a: R(l, "rA4", bal.vars, bal.nums) });
+  return { title: R(l, "rTitle"), description: R(l, "rDesc", vars), h1: R(l, "rH1", vars), intro: R(l, "rIntro", vars, dv.nums), label: R(l, "rLabel"), body, faq, model: m };
 }
+// round 59: the defence figures a question answers, each as what it is: the budget law's "national defence" in its
+// latest year (and the year before, planned or spent), SIPRI's latest estimate (broader definition) and its share of GDP
+export function defenceVars(l, Rv) {
+  const d = Rv.defence_yearly || {}, ys = Object.keys(d).sort();
+  const plan = ys.filter(y => d[y].national_defence_plan_rub_bn != null), sip = ys.filter(y => d[y].sipri_local_rub_bn != null);
+  const y = plan[plan.length - 1], prev = y ? String(+y - 1) : null, pv = prev && d[prev] ? d[prev].national_defence_plan_rub_bn ?? d[prev].national_defence_executed_rub_bn : null;
+  const sy = sip[sip.length - 1];
+  if (!y || !sy) return { vars: { defPlan: "", defYear: "", defPrev: "", prevYear: "", sipriYear: "", sipriRub: "", sipriGdp: "" }, nums: { defOk: 0, prevOk: 0 } };
+  return { vars: { defPlan: I.CUR(l, d[y].national_defence_plan_rub_bn, "RUB"), defYear: y, defPrev: pv != null ? I.CUR(l, pv, "RUB") : "", prevYear: prev || "",
+    sipriYear: sy, sipriRub: I.CUR(l, d[sy].sipri_local_rub_bn, "RUB"), sipriGdp: d[sy].sipri_share_gdp != null ? I.P(l, 100 * d[sy].sipri_share_gdp) : "" },
+  nums: { defOk: 1, prevOk: pv != null ? 1 : 0 } };
+}
+// round 59: the hook for the federal budget's balance (seo_families.json research.revenue.balance names the series:
+// { "<year>": { balance_rub_bn, balance_share_gdp } }); null until the research file has it
+export function balanceVars(l, Rv, key) {
+  const b = key && Rv[key];
+  if (!b) return null;
+  const ys = Object.keys(b).filter(y => b[y] && b[y].balance_rub_bn != null).sort(), y = ys[ys.length - 1];
+  if (!y) return null;
+  const v = b[y].balance_rub_bn, g = b[y].balance_share_gdp;
+  return { vars: { balYear: y, balRub: I.CUR(l, Math.abs(v), "RUB"), balGdp: g != null ? I.P(l, 100 * Math.abs(g)) : "" }, nums: { bal: v, gdpOk: g != null ? 1 : 0 } };
+}
+
 // the CSV files of the series (the downloads): month by month, and by year with CREA and defence beside
 export function revenueCsv(Rv) {
   const q = v => (v === null || v === undefined ? "" : String(v));

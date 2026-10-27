@@ -341,7 +341,7 @@ ${ps.length ? `<h3>${esc(I.s(l, "partsRanked"))}</h3>${relList(l, ps)}` : ""}
     const ls = T.countryLangs(fOf(c0)), alts = ls.map(l => [l, abs(cPath(c0, l))]);
     if (ls.length > 1) alts.push(["x-default", abs(cPath(c0))]);
     for (const l of ls) {
-      const c = LANG_DATA[l][c0.iso], f = { ...fOf(c0), nameL: c.name, words: WORDS[l], loc: c, tradeFirst: FAM.country && FAM.country.tradeFirst }, copy = T.countryCopy(l, f);
+      const c = LANG_DATA[l][c0.iso], f = { ...fOf(c0), nameL: c.name, words: WORDS[l], loc: c, tradeFirst: FAM.country && FAM.country.tradeFirst, phrasing: FAM.country && FAM.country.phrasing }, copy = T.countryCopy(l, f);
       // round 57b: the page's sections and questions (seo_country.mjs), from the map's data in this language
       const pr = PEERS[c0.iso];
       // round 58b: its sanctions on Russia (sanctions_r58.json) and the amounts frozen there (frozen_amounts_r58.json)
@@ -350,7 +350,7 @@ ${ps.length ? `<h3>${esc(I.s(l, "partsRanked"))}</h3>${relList(l, ps)}` : ""}
       const stock = FROZ ? RS.frozenLines(l, FROZ, c0.iso) : "";
       const dyn = countryDyn(c, { l, words: WORDS[l], dw: DYNW[l], srcs: SRCS[l], L: k => T.L(l, k), dataTo: dataToL[l], month: monthOnlyL(l), tradeYears: [data.years[0], data.years[4]],
         peers: { ...pr, groups: pr.groups.map(g => ({ slug: g.e.slug, label: labelOf(g.e, l), n: g.n, of: g.of })) }, row: iso => rowL(l, iso), home: home(l), fuelDefault,
-        demand: c0.demand, eu: EU27.has(c0.iso), armedFull: c0.armedFull, relations: (FAM.country || {}).relations, armed: armedItemsOf(c0.iso), regime, stock });
+        demand: c0.demand, eu: EU27.has(c0.iso), armedFull: c0.armedFull, relations: (FAM.country || {}).relations, armed: armedItemsOf(c0.iso), regime, stock, ask: copy.ask });
       const faq = dyn.faq;
       const url = abs(cPath(c0, l));
       const crumbItems = [[T.L(l, "map"), home(l)], [T.L(l, "ranking"), "/ranking/"], [c.name, cPath(c0, l)]];
@@ -405,7 +405,7 @@ ${foot(l)}`;
         imageAlt: c0.net ? T.L("en", "imgCountry", { name: c0.name, what: c0.net.pre + " " + c0.net.big }) : T.L("en", "imgNoData", { name: c0.name }), ld, body, ogType: "article", iso: c0.iso }), ls.length > 1 ? alts : []);
     }
     // the old share link (round 30's c/<iso>.html): kept for links already shared, sent on to the country page
-    const copy = T.countryCopy("en", { ...fOf(c0), nameL: c0.name, words: WORDS.en, loc: c0, tradeFirst: FAM.country && FAM.country.tradeFirst }), to = cPath(c0), iso = c0.iso.toLowerCase();
+    const copy = T.countryCopy("en", { ...fOf(c0), nameL: c0.name, words: WORDS.en, loc: c0, tradeFirst: FAM.country && FAM.country.tradeFirst, phrasing: FAM.country && FAM.country.phrasing }), to = cPath(c0), iso = c0.iso.toLowerCase();
     await mkdir(join(site, "c"), { recursive: true });
     await writeFile(join(site, "c", iso + ".html"), `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
@@ -450,7 +450,8 @@ ${foot(l)}`;
   const chanceKey = EN.chanceKey || "";
   const moneyOnly = T.L("en", "rankMoney");
   const topicLinks = (skip = "") => `<h2 id="topics">${esc(I.s("en", "topics"))}</h2><ul class="rel">${TOPICS.filter(e => pathOf(e) !== skip).map(e => `<li><a href="${pathOf(e)}">${esc(e.label)}</a></li>`).join("")}<li><a href="/topics/"><b>${esc(T.L("en", "allTopicsLong"))}</b></a></li></ul>`;
-  async function rankPage(path, pageKey, rk, ids, rowExtra, extraTop = "", mapHash = "#view=rank") {
+  // round 59: faq, questions in the words people search (seo_i18n.mjs TOPIC_X), visible and as JSON-LD from one array
+  async function rankPage(path, pageKey, rk, ids, rowExtra, extraTop = "", mapHash = "#view=rank", faq = []) {
     const copy = T.staticCopy(pageKey, facts), url = abs(path), items = [[T.L("en", "map"), "/"], [copy.h1.split(":")[0].replace(/ by country since 2022$/, ""), path]];
     const rowsAll = rk.groups.flatMap(g => g.rows);
     const body = `${top("en")}
@@ -468,18 +469,23 @@ ${rk.groups.filter(g => g.rows.some(r => !r.small)).map(g => `<h2 id="${ids[g.g]
 <ol class="rk">${rk.groups.flatMap(g => g.rows.filter(r => r.small).map(r => rankLi(r, " · " + esc(g.label) + rowExtra(r)))).join("")}</ol>
 ${rk.party.length ? `<h2 id="party">${esc(I.s("en", "party"))}</h2><ul class="plain">${rk.party.map(r => `<li><a href="${cPath(byIso[r.iso])}">${esc(nm(r.iso))}</a> ${esc(r.value)} · ${esc(r.eur)}</li>`).join("")}</ul>` : ""}
 ${rk.noData.filter(i => byIso[i]).length ? `<h2 id="no-data">${esc(T.L("en", "noData"))}</h2><p class="sub">${esc(T.L("en", "noDataRank"))}</p><p>${rk.noData.filter(i => byIso[i]).map(i => `<a href="${cPath(byIso[i])}">${esc(nm(i))}</a>`).join(", ")}</p>` : ""}
+${faq.length ? `<section class="faq" id="faq"><h2>${esc(I.s("en", "questions"))}</h2>${faq.map(x => `<h3>${esc(x.q)}</h3><p>${esc(x.a)}</p>`).join("\n")}</section>` : ""}
 <p><a href="/ranking/">${esc(T.L("en", "ranking"))}</a> · <a href="/support-for-ukraine/">${esc(T.L("en", "supportPage"))}</a> · <a href="/trade-with-russia/">${esc(T.L("en", "tradePage"))}</a> · <a href="/how-it-works/">${esc(T.L("en", "how"))}</a></p>
 ${topicLinks()}
 </main>
 ${foot("en")}`;
     await put(path, shell({ lang: "en", title: copy.title, description: copy.description, canonical: url, image: abs("share/world.png"), imageAlt: T.L("en", "imgWorld"),
-      ld: [{ "@context": "https://schema.org", "@type": "CollectionPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: "en", dateModified: DATE_TOKEN, isPartOf: DATASET }, crumbLd(items), itemList(rowsAll)], body,
+      ld: [{ "@context": "https://schema.org", "@type": "CollectionPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: "en", dateModified: DATE_TOKEN, isPartOf: DATASET }, crumbLd(items), itemList(rowsAll),
+        ...(faq.length ? [{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map(x => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) }] : [])], body,
     }));
   }
   await rankPage("/ranking/", "ranking", EN.rank.net, GROUP_ID, () => "");
   const euroTable = (rows, id, title, fmt) => `<h2 id="${id}">${esc(title)}</h2><div class="tbl"><table><thead><tr><th>#</th><th>${esc(T.L("en", "country"))}</th><th class="n">€</th><th class="n">${esc(T.L("en", "share"))}</th></tr></thead><tbody>${rows.map((r, i) => `<tr><td>${i + 1}</td><td><a href="${cPath(byIso[r.iso])}">${esc(nm(r.iso))}</a></td><td class="n">${esc(fmt(r))}</td><td class="n">${esc(r.value)}</td></tr>`).join("")}</tbody></table></div>`;
+  // round 59: "Ukraine allies" and who gives the most, answered from this page's list (the tracker's questions, TOPIC_X)
+  const uaByEur = uaRows.slice().sort((a, b) => b.eurBn - a.eurBn), uaTop = uaByEur.slice(0, 3).map(r => ttl(r.iso));
+  const supportFaq = I.topicExtra("en", "ukraine-support-tracker", { n: uaRows.length, tops: I.list3("en", uaTop), t1: uaTop[0] || "", topV: uaByEur[0] ? T.E(uaByEur[0].eurBn) : "", sumUa: T.E(uaRows.reduce((a, r) => a + r.eurBn, 0)) }, {}).faq;
   await rankPage("/support-for-ukraine/", "support-for-ukraine", EN.rank.ua, GROUP_ID_UA, r => (r.pp ? " · " + r.pp.replace(/ pp$/, "") + " per person" : ""),
-    euroTable(uaRows.slice().sort((a, b) => b.eurBn - a.eurBn).slice(0, 15), "in-euros", T.L("en", "inEuros"), r => r.eur.replace(/^\+/, "")) + `<h2>${esc(T.L("en", "shareWithPp"))}</h2>`, "#view=rank&lens=support");
+    euroTable(uaByEur.slice(0, 15), "in-euros", T.L("en", "inEuros"), r => r.eur.replace(/^\+/, "")) + `<h2>${esc(T.L("en", "shareWithPp"))}</h2>`, "#view=rank&lens=support", supportFaq);
   await rankPage("/trade-with-russia/", "trade-with-russia", EN.rank.rus, GROUP_ID, () => "",
     euroTable(ruRows.filter(r => r.eurBn < 0).sort((a, b) => a.eurBn - b.eurBn).slice(0, 10), "russia-kept-more", T.L("en", "keptMoreEur"), r => r.eur.replace(/^−/, "")) + euroTable(ruRows.filter(r => r.eurBn > 0).sort((a, b) => b.eurBn - a.eurBn).slice(0, 10), "russia-kept-less", T.L("en", "keptLessEur"), r => r.eur.replace(/^\+/, "")) + `<h2>${esc(T.L("en", "asShare"))}</h2>`,
     "#view=rank&lens=payments");
@@ -497,6 +503,17 @@ ${foot("en")}`;
     const st = style(m.key), sg = v.startsWith("<") || Math.abs(x.v) < 0.0005 ? "" : st === "signed" ? (x.v > 0 ? "+" : "−") : st === "amount" && x.v < 0 ? "−" : ""; return sg + v; };
   const capThe = x => String(x || "").replace(/(^|[.?!]\s+)the /g, "$1The ");
   const rowName = (l, c) => I.inSentence(l, c.name);
+  // round 59: a topic page's note and questions in the words people search (seo_i18n.mjs TOPIC_X), from its table (the
+  // rows on the page's side the map gives as very likely, the parties to the war) and the research files
+  const topicX = (e, l, m) => {
+    if (!I.TOPIC_X[e.slug] || (I.TOPIC_X_NEEDS[e.slug] === "frozen" && !FROZ)) return { note: "", faq: [] };
+    const side = e.onlySide || (e.order === "asc" ? "russia" : "ukraine"), names = m.rows.slice(0, 3).map(c => rowName(l, c));
+    const nSure = m.rows.filter(c => { const x = mv(c, m.key, m.year); return x && x.level === "sure" && x.side === side; }).length;
+    const ua = m.totals.find(x => x.key === "ua") || { v: 0 }, pw = WORDS[l].party || "";
+    const vars = { n: m.rows.length, tops: I.list3(l, names), t1: names[0] || "", topV: topV(l, m), sumUa: I.E(l, ua.v), nSure, sureWord: WORDS[l].sure || "",
+      partyList: I.list3(l, m.party.map(c => rowName(l, c))), partyWord: pw, partyWordLc: pw.charAt(0).toLowerCase() + pw.slice(1), ...(FROZ && I.TOPIC_X_NEEDS[e.slug] === "frozen" ? RS.frozenVars(l, FROZ) : {}) };
+    return I.topicExtra(l, e.slug, vars, { nParty: m.party.length, nSure });
+  };
   const famRelated = e => {
     if (e.kind === "part") return PARTS.filter(x => x !== e && x.side === e.side).slice(0, 8);
     if (e.kind === "year") return YEARS.filter(x => x !== e && (x.yearKind === e.yearKind || x.year === e.year));
@@ -525,6 +542,9 @@ ${foot("en")}`;
       // round 58: the page's explainers (seo_topics.json explain, seo_i18n.mjs EXPLAIN), each an FAQ entry where its
       // language searches for it (seo_demand.json _topics, seo_families.json explain)
       const explains = (m.explain || []).map(id => explainOf(l, id));
+      // round 59: the questions people search first (an English config question with the same words is not repeated)
+      const X = topicX(e, l, m);
+      if (X.faq.length) m.faq = X.faq.filter(f => !m.faq.some(g => g.q === f.q)).concat(m.faq);
       // round 58b: the amounts frozen in each holding country, beside the return (frozen_amounts_r58.json)
       const stockCols = FROZ && RCFG.frozen && e.slug === RCFG.frozen.topic ? { heads: [I.res(l, "colCbr"), I.res(l, "colPriv")], cell: c => RS.frozenCells(l, FROZ, c.iso) } : null;
       const body = `${top(l)}
@@ -532,6 +552,7 @@ ${foot("en")}`;
 ${crumbs(l, items)}
 <h1>${esc(copy.h1)}</h1>
 <p class="intro">${esc(copy.intro)}</p>
+${X.note ? `<p>${esc(X.note)}</p>` : ""}
 ${explains.map(x => `<section class="explain" id="what-${x.id}"><h2>${esc(x.q)}</h2><p>${esc(x.a)}${x.link ? ` <a href="#table">${esc(x.link)} ↓</a>` : ""}</p></section>`).join("\n")}
 <p><a class="btn" href="${home(l)}${m.map}">${esc(T.L(l, "openMap"))} →</a></p>
 <p class="note">${esc(moneyNote(l, m))}</p>
@@ -640,8 +661,8 @@ ${foot(l)}`;
       for (const l of T.LANGS) {
         const url = abs(lp(l, path)), hub = lp(l, "/topics/");
         const pg = x.key === "sanctions"
-          ? RS.sanctionsPage(l, SANC, { nameOf: iso => nameAny(iso, l), href: iso => (byIso[iso] ? cPath(byIso[iso], l) : "") })
-          : RS.revenuePage(l, REV, { warIncome: lp(l, "/" + x.cfg.warIncome + "/"), published: published ? published[1] : "", months: x.cfg.months || 24, yearWord: T.L(l, "year") });
+          ? RS.sanctionsPage(l, SANC, { nameOf: iso => nameAny(iso, l), href: iso => (byIso[iso] ? cPath(byIso[iso], l) : ""), frozen: FROZ ? RS.frozenFacts(FROZ) : null })
+          : RS.revenuePage(l, REV, { warIncome: lp(l, "/" + x.cfg.warIncome + "/"), published: published ? published[1] : "", months: x.cfg.months || 24, yearWord: T.L(l, "year"), balance: x.cfg.balance });
         const explains = (x.cfg.explain || []).map(id => explainOf(l, id));
         const rel = (x.cfg.related || []).map(sl => { const t = related(sl); if (t) return [labelOf(t, l), lp(l, pathOf(t))]; const r2 = RPAGE.find(y => y.cfg.slug === sl); return r2 ? [rLabel(r2, l), lp(l, r2.path)] : null; }).filter(Boolean);
         const items = [[T.L(l, "map"), home(l)], [I.s(l, "topics"), hub], [pg.label, lp(l, path)]];

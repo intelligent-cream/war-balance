@@ -2,6 +2,14 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r59">Round 59: titles in the words people search <span class="cl-date">27 October</span></h2>
+
+Page titles, headings and questions now use the phrasing people actually search, in each language, where the page answers it. No number changes.
+
+- **Country pages**: the title asks the question searched most for that country in the page's language, chosen by rule from monthly search volumes: "How much has Canada given to Ukraine?", "Does Belarus support Russia?", "Combien la France a donné à l'Ukraine ?", "Ukraine-Hilfe Deutschland". Where a country's trade with Russia is much searched, its trade section and question name the pair ("India–Russia trade"). Every answer is the map's own figure, with its chance.
+- **Topic pages**: "Russia's allies?" on the page of countries whose money moved toward Russia, with a line saying the site measures money, not alliances; "Total aid to Ukraine by country" on the support ranking and tracker, with a question on Ukraine's allies answered the same way; "Frozen Russian assets and Euroclear by country", with Euroclear's own figure; "Sanctions on Russia by country", with a question on what the EU's sanctions are.
+- **Russia's war budget**: the oil and gas revenue page is now "Russia's war budget: defence spending vs oil and gas income", with questions on Russia's defence budget and its oil earnings, answered from the research file.
+
 <h2 id="cl-r58">Round 58: explainers and search wording <span class="cl-date">27 October</span></h2>
 
 The pages now explain their topics, use the words people search with and carry three new pieces of research, in all seven languages. The research corrected the frozen-money inputs of three holders: small changes, below.
