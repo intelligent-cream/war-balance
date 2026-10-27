@@ -11,6 +11,8 @@
 //   (topics/) listing them all; every topic, group and family page also in each language (<lang>/<path>), with
 //   reciprocal hreflang; pages.css (the pages' shared look)
 //   sitemap.xml (an index) with sitemap-<lang>.xml, robots.txt
+//   round 58: index.md next to every page (its Markdown version, seo_markdown.mjs; not in the sitemap), a cite line on
+//   every page, downloads/ (every language) with the map's own CSV export, and llms.txt / llms-full.txt
 // and, in git, the A–Z list of country pages and the data date in site/index.html (between markers; unchanged unless the
 // data change) and pipeline/seo_lastmod.json (each page's content hash and the date it last changed, for lastmod).
 
@@ -21,7 +23,8 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { extractSite, extractDocs } from "./seo_extract.mjs";
 import * as T from "./seo_templates.mjs";
-import { buildTopic, renderTopic, TOPIC_CSS, pathOf, mv } from "./seo_topics.mjs";
+import { buildTopic, renderTopic, TOPIC_CSS, pathOf, mv, armedOf } from "./seo_topics.mjs";
+import { htmlToMarkdown } from "./seo_markdown.mjs";
 import { partEntries, yearEntries, compareEntries } from "./seo_families.mjs";
 import * as I from "./seo_i18n.mjs";
 import { countryDyn, plainText, mapRank, rankable, sameRegion, similarOf } from "./seo_country.mjs";
@@ -77,7 +80,14 @@ footer{border-top:1px solid var(--line);padding:18px 16px 30px;font-size:14px;co
 
 // round 56: the look is one shared file (pages.css, written with the pages; ?v= its hash), so each page carries only its words
 let CSS_HREF = "/pages.css";
+// round 58: every page's cite line ("War Balance, figures to August 2026, <its address>"), set by writeSeoPages with the
+// data's month in each language; in the page (before the end of <main>), in its Markdown version and in its JSON-LD
+let CITE = null;
+const mdHref = canonical => { try { const u = new URL(canonical); return u.pathname.endsWith("/") ? u.pathname + "index.md" : ""; } catch { return ""; } };
 function shell({ lang, title, description, canonical, alternates = [], image, imageAlt, ld = [], body, ogType = "website", iso = "", css = "" }) {
+  const cite = CITE ? CITE(lang, canonical) : "", md = mdHref(canonical);
+  if (cite && ld[0] && /Page|Article/.test(ld[0]["@type"] || "")) ld = [{ ...ld[0], creditText: cite }, ...ld.slice(1)];
+  if (cite) body = body.replace("</main>", `<p class="cite">${esc(cite)}</p>\n</main>`);
   return `<!doctype html>
 <html lang="${lang}">
 <head>
@@ -86,7 +96,7 @@ function shell({ lang, title, description, canonical, alternates = [], image, im
 <script>try { document.documentElement.dataset.theme = localStorage.getItem("ftm-theme") || "dark"; } catch (e) { document.documentElement.dataset.theme = "dark"; }</script>
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
-<link rel="canonical" href="${canonical}">
+<link rel="canonical" href="${canonical}">${md ? `\n<link rel="alternate" type="text/markdown" href="${md}">` : ""}
 ${alternates.map(([l, u]) => `<link rel="alternate" hreflang="${l}" href="${u}">`).join("\n")}
 <meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="War Balance">
@@ -131,7 +141,7 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const lp = (l, path) => (l === "en" ? path : "/" + l + path);   // a page's address in a language
   // round 55: the topic and group pages, one per entry (pipeline/seo_topics.json)
   const TOPICS = JSON.parse(await readFile(join(HERE, "seo_topics.json"), "utf8")).pages;
-  const RESERVED = new Set(["c", "country", "group", "compare", "topics", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", "content", "i18n", "share", ...T.LANGS]);
+  const RESERVED = new Set(["c", "country", "group", "compare", "topics", "downloads", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", "content", "i18n", "share", ...T.LANGS]);
   for (const e of TOPICS) {
     if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(e.slug) || (e.kind === "topic" && RESERVED.has(e.slug)) || !["topic", "group"].includes(e.kind)) throw new Error("seo_topics.json: bad slug or kind " + e.slug);
     if (TOPICS.filter(x => pathOf(x) === pathOf(e)).length > 1) throw new Error("seo_topics.json: two pages at " + pathOf(e));
@@ -140,6 +150,15 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   // ----- everything the pages show, from the map (round 56: every country in every language) -----
   const EN = await page.evaluate(extractSite, { lang: "en" });
   const docs = await page.evaluate(extractDocs);
+  // round 58: the downloads, from the map's own CSV export (site/views2.js csvFull, csvParts) with its default settings:
+  // the same files the Sources view gives, so they cannot differ
+  const CSV = await page.evaluate(() => {
+    /* global csvFull, csvParts, tableRows, DATA */
+    if (typeof csvFull !== "function" || typeof tableRows !== "function") return null;
+    const rows = tableRows(Object.values(DATA).filter(c => c.gdp)).sort((a, b) => a.iso3.localeCompare(b.iso3));
+    return { full: csvFull(rows), parts: csvParts(rows) };
+  });
+  if (!CSV) throw new Error("seo_pages: the map's CSV export (site/views2.js csvFull, csvParts, tableRows) is not loaded");
   const countries = EN.countries.filter(c => c.gdp);   // the map's shapes without an economy (Antarctica...) have no page
   const byIso = Object.fromEntries(countries.map(c => [c.iso, c]));
   for (const c of countries) c.demand = DEMAND[c.iso] || {};
@@ -167,6 +186,9 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const topSlugs = new Set(TOPICS.filter(e => e.kind === "topic").map(e => e.slug));
   for (const e of [...PARTS, ...YEARS]) if (RESERVED.has(e.slug) || topSlugs.has(e.slug) || slugs.has(e.slug)) throw new Error("seo_families.json: slug taken " + e.slug);
   const FAMILY = [...TOPICS, ...PARTS, ...YEARS, ...COMPARES];
+  // round 58: the countries whose data have the kinds of supplies they sent to Russia (seo_families.json armedItems)
+  const ARMED = armedOf(FAM.armedItems, countries, Object.fromEntries(Object.entries(data.countries).map(([iso, c]) => [iso, (c.military_rus && c.military_rus.src) || []])));
+  const armedItemsOf = iso => (ARMED.find(x => x.iso === iso) || {}).items || null;
   const monthL = l => I.monthYear(dataTo, l), monthOnlyL = l => I.monthOnly(dataTo, l);
   // a country's name in a language: the map's own (site/i18n.js regionName, with its NAME_FIX table), the same on every page
   const nameL = (iso, l) => (LANG_DATA[l][iso] || byIso[iso]).name;
@@ -181,7 +203,7 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
   const famAlts = path => T.LANGS.map(l => [l, abs(lp(l, path))]).concat([["x-default", abs(path)]]);
 
   // the generated folders start empty, so a renamed page leaves nothing behind
-  for (const d of ["c", "country", "group", "compare", "topics", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", ...NL])
+  for (const d of ["c", "country", "group", "compare", "topics", "downloads", "ranking", "support-for-ukraine", "trade-with-russia", "how-it-works", "method", "limitations", "changelog", ...NL])
     await rm(join(site, d), { recursive: true, force: true });
   // a topic page's folder holds its index.html only (anything else there is not ours: stop rather than delete it)
   // (round 56: every part the config lists, also one that has no page this time, so a page that is no longer made goes)
@@ -189,7 +211,7 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     const d = join(site, e.slug);
     if (!existsSync(d)) continue;
     const inside = await readdir(d);
-    if (inside.some(f => f !== "index.html")) throw new Error(`site/${e.slug}/ holds other files than a generated page: rename the topic`);
+    if (inside.some(f => f !== "index.html" && f !== "index.md")) throw new Error(`site/${e.slug}/ holds other files than a generated page: rename the topic`);
     await rm(d, { recursive: true, force: true });
   }
   // the shared look
@@ -201,7 +223,10 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     "\nul.tags{list-style:none;padding:0;margin:0}ul.tags li{padding:7px 0;border-bottom:1px dashed var(--line)}ul.cov{list-style:none;padding:0;font-size:14.5px;margin:6px 0}ul.cov li{margin:3px 0}" +
     ".dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}.dot.ok{background:#3a9a5b}.dot.est{background:#d9a21b}.dot.missing{background:#c84a3a}" +
     "\nul.src{list-style:none;padding:0;font-size:14.5px}ul.src li{margin:0 0 6px;overflow-wrap:anywhere}.tier{display:inline-block;font-size:11.5px;line-height:1.5;border-radius:4px;padding:0 6px;margin-right:4px;background:var(--line);color:var(--ink)}" +
-    "details.fold-in>summary{cursor:pointer;color:var(--ukr);margin:12px 0 8px}table.peers td.m{min-width:7em}";
+    "details.fold-in>summary{cursor:pointer;color:var(--ukr);margin:12px 0 8px}table.peers td.m{min-width:7em}" +
+    // round 58: the explainers at the top of a topic page, and every page's cite line
+    "\n.explain{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:4px 16px 2px;margin:14px 0}.explain h2{text-transform:none;letter-spacing:0;color:var(--ink);font-size:17px;margin:12px 0 4px}.explain p{margin:4px 0 12px}" +
+    ".cite{color:var(--soft);font-size:13.5px;margin-top:26px;overflow-wrap:anywhere}";
   await writeFile(join(site, "pages.css"), allCss + "\n");
   CSS_HREF = "/pages.css?v=" + createHash("sha256").update(allCss).digest("hex").slice(0, 8);
 
@@ -213,7 +238,10 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
     newState[path] = [hash, date];
     const file = join(site, path.replace(/^\//, ""), path.endsWith("/") ? "index.html" : "");
     await mkdir(dirname(file), { recursive: true });
-    await writeFile(file, html.split(DATE_TOKEN).join(date).replace(/__WB_LASTMOD_HUMAN_(\w+)__/g, (m, l) => fmtDate(date, l)));
+    const out = html.split(DATE_TOKEN).join(date).replace(/__WB_LASTMOD_HUMAN_(\w+)__/g, (m, l) => fmtDate(date, l));
+    await writeFile(file, out);
+    // round 58: its Markdown version (not in the sitemap; the HTML stays canonical)
+    if (path.endsWith("/")) await writeFile(join(dirname(file), "index.md"), htmlToMarkdown(out, abs(path)));
     written.push({ path, alternates, lastmod: date });
   }
   const human = l => `__WB_LASTMOD_HUMAN_${l}__`;
@@ -231,11 +259,12 @@ export async function writeSeoPages({ page, site, siteUrl, log = console.log }) 
 
   // ----- round 56: the family pages' models, built once per language (their rows tell the country pages what links them) -----
   const dataToL = Object.fromEntries(T.LANGS.map(l => [l, monthL(l)]));
+  CITE = (l, url) => I.s(l, "cite", { dataTo: dataToL[l] || dataToL.en, url });
   const MODELS = {};   // path -> { l: model }
   for (const e of [...TOPICS, ...PARTS, ...YEARS]) {
     MODELS[pathOf(e)] = {};
     for (const l of T.LANGS) {
-      const m = buildTopic(e, LC(l), TOPICS, { dataTo: dataToL.en, words: WORDS.en, l });
+      const m = buildTopic(e, LC(l), TOPICS, { dataTo: dataToL.en, words: WORDS.en, l, armed: ARMED });
       m.dataToL = dataToL[l];
       if (e.year) m.yearL = e.partial ? I.s(l, "yearTo", { y: e.year, month: monthOnlyL(l) }) : String(e.year);
       MODELS[pathOf(e)][l] = m;
@@ -305,7 +334,7 @@ ${ps.length ? `<h3>${esc(I.s(l, "partsRanked"))}</h3>${relList(l, ps)}` : ""}
       const pr = PEERS[c0.iso];
       const dyn = countryDyn(c, { l, words: WORDS[l], dw: DYNW[l], srcs: SRCS[l], L: k => T.L(l, k), dataTo: dataToL[l], month: monthOnlyL(l), tradeYears: [data.years[0], data.years[4]],
         peers: { ...pr, groups: pr.groups.map(g => ({ slug: g.e.slug, label: labelOf(g.e, l), n: g.n, of: g.of })) }, row: iso => rowL(l, iso), home: home(l), fuelDefault,
-        demand: c0.demand, eu: EU27.has(c0.iso), armedFull: c0.armedFull });
+        demand: c0.demand, eu: EU27.has(c0.iso), armedFull: c0.armedFull, relations: (FAM.country || {}).relations, armed: armedItemsOf(c0.iso) });
       const faq = dyn.faq;
       const url = abs(cPath(c0, l));
       const crumbItems = [[T.L(l, "map"), home(l)], [T.L(l, "ranking"), "/ranking/"], [c.name, cPath(c0, l)]];
@@ -440,6 +469,12 @@ ${foot("en")}`;
 
 
   // ----- the topic and group pages (round 55) and the generated families (round 56), in every language -----
+  // round 58: an explainer's values from the data (none yet: the amounts of the reparations loan and of the frozen
+  // reserves are being researched; when the data have them, they are given here and the sentence appears), and whether
+  // it is also an FAQ entry in a language
+  const EXPL = FAM.explain || {}, TOPIC_DEMAND = DEMAND._topics || {};
+  const explainVals = () => ({ amountText: "" }), explainNums = () => ({ amount: 0 });
+  const explainFaq = (id, l) => { const cl = (EXPL.clusters || {})[id]; return !!cl && ((TOPIC_DEMAND[cl] || {})[l] || 0) >= (EXPL.minDemand ?? Infinity); };
   const moneyNote = (l, m) => I.s(l, m.moneyNote === "mil" || m.key === "part:mil" || m.key === "armed" || m.columns.includes("part:mil") ? "moneyMil" : "moneyOnly");
   const topV = (l, m) => { const c = m.rows[0]; if (!c) return ""; const x = mv(c, m.key, m.year); if (!x) return ""; const v = m.sort === "eur" ? I.E(l, x.v) : m.sort === "pp" ? (c.pop ? I.PP(l, (x.v * 1000) / c.pop) + " " + I.s(l, "perPerson") : "") : I.P(l, (100 * x.v) / c.gdp); return v; };
   const capThe = x => String(x || "").replace(/(^|[.?!]\s+)the /g, "$1The ");
@@ -460,7 +495,7 @@ ${foot("en")}`;
       else {
         const tot = k => m.totals.find(x => x.key === k) || { v: 0, pct: 0 };
         copy = I.topicCopyLang(l, e, { n: m.rows.length, top: tops, topV: topV(l, m), measure: I.measureName(l, m.key), unitKey: m.sort, dataTo: dataToL[l],
-          sumUa: I.E(l, tot("ua").v), sumNetPct: I.P(l, tot("net").pct), net: tot("net").v, isGroup: e.kind === "group" });
+          sumUa: I.E(l, tot("ua").v), sumNetPct: I.P(l, tot("net").pct), net: tot("net").v, isGroup: e.kind === "group", armedList: m.armedList, nArmed: m.nArmed });
         // the English config's own questions, sections and notes stay on the English page
         m.faq = []; m.sections = []; m.notes = [];
         for (const sb of m.subtotals) sb.labelL = labelOf(bySlug[sb.slug] || { kind: "group", slug: sb.slug, label: sb.label }, l);
@@ -469,11 +504,15 @@ ${foot("en")}`;
       const url = abs(lp(l, path)), hub = lp(l, "/topics/");
       const items = [[T.L(l, "map"), home(l)], [I.s(l, "topics"), hub], [copy.label || labelOf(e, l), lp(l, path)]];
       const rel = famRelated(e);
+      // round 58: the page's explainers (seo_topics.json explain, seo_i18n.mjs EXPLAIN), each an FAQ entry where its
+      // language searches for it (seo_demand.json _topics, seo_families.json explain)
+      const explains = (m.explain || []).map(id => ({ id, ...I.explainText(l, id, explainVals(id), explainNums(id)), faq: explainFaq(id, l) }));
       const body = `${top(l)}
 <main class="wrap">
 ${crumbs(l, items)}
 <h1>${esc(copy.h1)}</h1>
 <p class="intro">${esc(copy.intro)}</p>
+${explains.map(x => `<section class="explain" id="what-${x.id}"><h2>${esc(x.q)}</h2><p>${esc(x.a)}${x.link ? ` <a href="#table">${esc(x.link)} ↓</a>` : ""}</p></section>`).join("\n")}
 <p><a class="btn" href="${home(l)}${m.map}">${esc(T.L(l, "openMap"))} →</a></p>
 <p class="note">${esc(moneyNote(l, m))}</p>
 ${renderTopic(m, { esc, cPath: c => cPath(c, l), l })}
@@ -484,7 +523,8 @@ ${langLinks(l, path)}
 ${foot(l)}`;
       const ld = [{ "@context": "https://schema.org", "@type": "WebPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: l, dateModified: DATE_TOKEN, isPartOf: DATASET, image: abs("share/world.png") },
         crumbLd(items), { "@context": "https://schema.org", "@type": "ItemList", numberOfItems: m.rows.length, itemListElement: m.rows.map((c, i) => ({ "@type": "ListItem", position: i + 1, url: abs(cPath(c, l)), name: rowName(l, c) })) }];
-      if (m.faq.length) ld.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: m.faq.map(x => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
+      const faqLd = explains.filter(x => x.faq).map(x => ({ q: x.q, a: x.a })).concat(m.faq);
+      if (faqLd.length) ld.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqLd.map(x => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
       await put(lp(l, path), shell({ lang: l, title: copy.title, description: copy.description, canonical: url, alternates: alts, image: abs("share/world.png"), imageAlt: T.L("en", "imgWorld"), ld, body }), alts);
     }
   }
@@ -551,7 +591,7 @@ ${foot(l)}`;
 ${crumbs(l, items)}
 <h1>${esc(copy.h1)}</h1>
 <p class="intro">${esc(copy.description)}</p>
-<h2 id="rankings">${esc(I.s(l, "hubRankings"))}</h2><ul class="rel">${ranks.map(([t, h]) => `<li><a href="${h}">${esc(t)}</a></li>`).join("")}</ul>
+<h2 id="rankings">${esc(I.s(l, "hubRankings"))}</h2><ul class="rel">${ranks.map(([t, h]) => `<li><a href="${h}">${esc(t)}</a></li>`).join("")}<li><a href="${lp(l, "/downloads/")}">${esc(I.s(l, "downloads"))}</a></li></ul>
 ${sec("topics-list", I.s(l, "hubTopics"), TOPICS.filter(e => e.kind === "topic"))}
 ${sec("groups", I.s(l, "hubGroups"), TOPICS.filter(e => e.kind === "group"))}
 ${sec("parts", I.s(l, "hubParts"), PARTS)}
@@ -609,6 +649,58 @@ ${foot("en")}`;
       ld: [{ "@context": "https://schema.org", "@type": "WebPage", "@id": url, url, name: copy.title, description: copy.description, inLanguage: "en", dateModified: DATE_TOKEN, isPartOf: DATASET }, crumbLd(items)], body }));
   }
 
+  // ----- round 58: the downloads page (every language), its CSV files, and llms.txt / llms-full.txt -----
+  const csvq = v => (v == null || Number.isNaN(v) ? "" : typeof v === "number" ? String(+v.toFixed(4)) : typeof v === "boolean" ? String(v) : /[",\n]/.test(v) ? `"${String(v).replace(/"/g, '""')}"` : v);
+  const yearsCsv = ["iso3,country,year,year_to_date,support_ukraine_eur_bn,trade_with_russia_toward_ukraine_eur_bn,net_shift_eur_bn",
+    ...countries.slice().sort((a, b) => a.iso.localeCompare(b.iso)).filter(c => !c.noData && c.years).flatMap(c => c.years.map(y => [c.iso, c.nameEn, y.y, !!y.ytd, y.uaBn, y.rusBn, y.netBn].map(csvq).join(",")))].join("\n");
+  const DL = [["war-balance-countries.csv", CSV.full, "dlCountries"], ["war-balance-parts.csv", CSV.parts, "dlParts"], ["war-balance-years.csv", yearsCsv, "dlYears"]];
+  await mkdir(join(site, "downloads"), { recursive: true });
+  // the byte order mark makes spreadsheets read the file as UTF-8, as the map's own download does
+  for (const [f, text] of DL) await writeFile(join(site, "downloads", f), "\ufeff" + text + "\n");
+  {
+    const path = "/downloads/", alts = famAlts(path);
+    for (const l of T.LANGS) {
+      const url = abs(lp(l, path)), items = [[T.L(l, "map"), home(l)], [I.s(l, "downloads"), lp(l, path)]];
+      const title = I.s(l, "dlTitle"), description = I.s(l, "dlDescription");
+      const body = `${top(l)}
+<main class="wrap">
+${crumbs(l, items)}
+<h1>${esc(I.s(l, "dlH1"))}</h1>
+<p class="intro">${esc(I.s(l, "dlIntro", { dataTo: dataToL[l] }))}</p>
+<ul class="bul">${DL.map(([f, , k]) => `<li><a href="/downloads/${f}" download>${esc(f)}</a>: ${esc(I.s(l, k))}</li>`).join("")}<li><a href="/data.json" download="war-balance.json">data.json</a>: ${esc(I.s(l, "dlJson"))}</li></ul>
+<h2 id="fields">${esc(I.s(l, "dlGuide"))}</h2>
+<ul class="bul">${I.s(l, "dlFields").map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+<p>${esc(I.s(l, "dlLicence"))}</p>
+<p><a href="/how-it-works/">${esc(T.L(l, "how"))}</a> · <a href="/limitations/">${esc(T.L(l, "limitations"))}</a> · <a href="${lp(l, "/topics/")}">${esc(I.s(l, "allTopics"))}</a></p>
+${langLinks(l, path)}
+</main>
+${foot(l)}`;
+      await put(lp(l, path), shell({ lang: l, title, description, canonical: url, alternates: alts, image: abs("share/world.png"), imageAlt: T.L("en", "imgWorld"),
+        ld: [{ "@context": "https://schema.org", "@type": "WebPage", "@id": url, url, name: title, description, inLanguage: l, dateModified: DATE_TOKEN, isPartOf: DATASET }, crumbLd(items)], body }), alts);
+    }
+  }
+  {
+    const X = I.LLMS.en, f = (k, v = {}) => I.fmt(X[k], v), link = (name, p, what) => `- [${name}](${abs(p)}): ${what}`;
+    const head = [`# War Balance`, "", `> ${X.summary}`, "", f("dataLine", { dataTo: dataToL.en }), "",
+      `## ${X.hMeasures}`, "", ...X.defs.map(d => "- " + d), "- " + f("chance", { chanceKey: EN.chanceKey || "" }), "",
+      `## ${X.hCite}`, "", f("cite", { dataTo: dataToL.en }), "",
+      `## ${X.hPages}`, "", link("Map", "/", X.pages.home), link(T.L("en", "ranking"), "/ranking/", X.pages.ranking), link(T.L("en", "supportPage"), "/support-for-ukraine/", X.pages.support),
+      link(T.L("en", "tradePage"), "/trade-with-russia/", X.pages.trade), link(I.s("en", "allTopics"), "/topics/", X.pages.topics), link(I.s("en", "downloads"), "/downloads/", X.pages.downloads),
+      ...TOPICS.map(e => `- [${e.label}](${abs(pathOf(e))})`), "", X.markdown, X.langs, "",
+      `## ${X.hMethod}`, "", link(T.L("en", "how"), "/how-it-works/", X.pages.how), ...docs.method.map(m => `- [${m.title}](${abs(`/method/${m.page}/`)})`), link(docs.limitations.title, "/limitations/", X.pages.limitations), "",
+      `## ${X.hData}`, "", link("data.json", "/data.json", I.s("en", "dlJson")), ...DL.map(([fl, , k]) => link(fl, "/downloads/" + fl, I.s("en", k))), link("llms-full.txt", "/llms-full.txt", X.pages.llmsFull), ""];
+    // one line per country, its figures as the map writes them (check 48 compares them with the model)
+    const line = c => {
+      const url = abs(cPath(c));
+      if (c.noData || c.mostlyNoData || !c.net) return `- ${c.nameEn}: ${X.noData} | ${url}`;
+      const f0 = c.fig, sg = v => (v >= 0 ? "+" : "−");
+      return `- ${c.nameEn}: net ${sg(f0.net)}${I.P("en", f0.netPct)} of a year's GDP (${[c.net.range, c.party ? X.party : c.net.chance].filter(Boolean).join("; ")}) | support for Ukraine ${I.E("en", f0.ua)} | ${c.kept} | ${url}`;
+    };
+    const all = countries.slice().sort((a, b) => a.nameEn.localeCompare(b.nameEn, "en"));
+    await writeFile(join(site, "llms.txt"), head.join("\n") + "\n");
+    await writeFile(join(site, "llms-full.txt"), head.join("\n") + `\n## ${X.hCountries}\n\n${X.fullIntro}\n\n` + all.map(line).join("\n") + "\n");
+  }
+
   // ----- the map: the A–Z list, the Topics list and the data date in index.html, and a copy per language -----
   const idxPath = join(site, "index.html");
   let idx = await readFile(idxPath, "utf8");
@@ -617,6 +709,8 @@ ${foot("en")}`;
   // round 56: the topics in each language's own words and addresses, then the Topics page with everything else
   const topicsBlock = l => `<!-- topics:start -->\n        <nav id="topics" aria-label="Topics" data-i18n-aria="Topics">\n${TOPICS.map(e => `          <a href="${lp(l, pathOf(e))}">${esc(labelOf(e, l))}</a>`).join("\n")}\n          <a href="${lp(l, "/topics/")}"><b>${esc(I.s(l, "allTopics"))} →</b></a>\n        </nav>\n<!-- topics:end -->`;
   idx = idx.replace(/<!-- topics:start -->[\s\S]*?<!-- topics:end -->/, topicsBlock("en"));
+  // round 58: the guide for automated readers, linked from the map's head
+  if (!idx.includes('href="/llms.txt"')) idx = idx.replace(/(<link rel="canonical" href="[^"]*">)/, '$1\n<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">');
   idx = idx.replace(/<!-- az:start -->[\s\S]*?<!-- az:end -->/, azBlock("en")).replace(/"dateModified": "[\d-]+"/, `"dateModified": "${data.generated}"`);
   await writeFile(idxPath, idx);
   const homeAlts = T.LANGS.map(l => [l, l === "en" ? U : U + l + "/"]).concat([["x-default", U]]);

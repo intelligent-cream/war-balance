@@ -17,9 +17,11 @@ def page(
     links = "".join(f'<link rel="alternate" hreflang="{lang}" href="{u}">' for lang, u in alts)
     return (
         f'<!doctype html><html><head><title>{title}</title><meta name="description" content="{desc}">'
-        f'<link rel="canonical" href="{canonical or U + path}">{links}'
+        f'<link rel="canonical" href="{canonical or U + path}">'
+        f'<link rel="alternate" type="text/markdown" href="/{path}index.md">{links}'
         + ('<meta http-equiv="refresh" content="0; url=/">' if refresh else "")
-        + f"</head><body{f' data-iso={chr(34)}{iso}{chr(34)}' if iso else ''}></body></html>"
+        + f"</head><body{f' data-iso={chr(34)}{iso}{chr(34)}' if iso else ''}>"
+        + f'<main><p>Net 0.14%.</p><p class="cite">Cite as: War Balance, figures to August 2026, {U + path}</p></main></body></html>'
     )
 
 
@@ -28,6 +30,18 @@ def site(tmp: Path, pages: dict[str, str], az=("slovakia",)) -> Path:
         f = tmp / path / "index.html"
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(html)
+        # round 58: its Markdown version (the same words and figures)
+        (f.parent / "index.md").write_text(f"Net 0.14%.\n\nCite as: War Balance, figures to August 2026, {U + path}\n")
+    # round 58: llms.txt, llms-full.txt and the downloads, with Slovakia's figures as the model has them
+    (tmp / "llms.txt").write_text(f"# War Balance\n\n- [Map]({U}): the map\n")
+    (tmp / "llms-full.txt").write_text(
+        f"- Slovakia: net +0.14% of a year's GDP (too close to call) | support for Ukraine €0.95bn | x | {U}country/slovakia/\n"
+    )
+    (tmp / "downloads").mkdir(exist_ok=True)
+    (tmp / "downloads" / "index.html").write_text('<a href="/downloads/war-balance-countries.csv">csv</a>')
+    (tmp / "downloads" / "war-balance-countries.csv").write_text(
+        "\ufeffiso3,net_shift_eur_bn,support_ukraine_eur_bn,trade_with_russia_toward_ukraine_eur_bn\nSVK,0.1689,0.9483,-0.9116\n"
+    )
     if "" not in pages:
         (tmp / "index.html").write_text("".join(f'<a href="/country/{s}/">' for s in az))
     locs = "".join(f"<url><loc>{U}{p}</loc></url>" for p in pages)
@@ -390,3 +404,48 @@ def test_the_visible_questions_must_be_the_json_ld_and_every_source_a_working_li
         )
         == []
     )
+
+
+# ----- round 58: the cite line, the Markdown versions, llms-full.txt and the downloads -----
+GOOD = {
+    "country/slovakia/": page(
+        "country/slovakia/", "Is Slovakia helping Ukraine or Russia? Too close to call", iso="SVK"
+    )
+}
+
+
+def test_a_page_without_its_cite_line_or_markdown_fails(tmp_path):
+    s = site(tmp_path, {"country/slovakia/": GOOD["country/slovakia/"].replace('<p class="cite">', "<p>")})
+    assert sc.check_site(s, U, MODEL)["cite"] == ["/country/slovakia/"]
+    (s / "country" / "slovakia" / "index.md").unlink()
+    assert any("no Markdown version" in x for x in sc.check_site(s, U, MODEL)["markdown"])
+
+
+def test_markdown_may_not_write_a_figure_the_page_does_not(tmp_path):
+    s = site(tmp_path, GOOD)
+    (s / "country" / "slovakia" / "index.md").write_text(
+        f"Net 0.48%.\n\nCite as: War Balance, figures to August 2026, {U}country/slovakia/\n"
+    )
+    assert any("048" in x for x in sc.check_site(s, U, MODEL)["markdown"])
+
+
+def test_llms_and_csv_figures_must_be_the_models(tmp_path):
+    s = site(tmp_path, GOOD)
+    (s / "llms-full.txt").write_text((s / "llms-full.txt").read_text().replace("+0.14%", "+0.48%"))
+    assert any("net is not the model's" in x for x in sc.check_site(s, U, MODEL)["llms"])
+    f = s / "downloads" / "war-balance-countries.csv"
+    f.write_text(f.read_text().replace("0.9483", "0.9999"))
+    assert any("support_ukraine_eur_bn" in x for x in sc.check_site(s, U, MODEL)["downloads"])
+    (s / "downloads" / "index.html").write_text('<a href="/downloads/missing.csv">x</a>')
+    assert any("does not resolve" in x for x in sc.check_site(s, U, MODEL)["downloads"])
+
+
+def test_explainer_dates_are_allowed_by_name_only():
+    ok = sc.wording_problems(
+        [{"file": "f", "key": "k", "lang": "en", "text": "Since February 2023 and from September 2025."}]
+    )
+    assert ok == []
+    bad = sc.wording_problems([{"file": "f", "key": "k", "lang": "en", "text": "Since March 2024 the cap applies."}])
+    assert any("date" in x for x in bad)
+    bad_de = sc.wording_problems([{"file": "f", "key": "k", "lang": "de", "text": "Seit Februar 2024 gilt er."}])
+    assert any("date" in x for x in bad_de)

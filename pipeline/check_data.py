@@ -982,6 +982,10 @@ check(
 # words are the model's, the visible questions are the JSON-LD FAQPage word for word, and every source is a working
 # link (a well-formed http(s) address, or a place on the page or the site that exists). The guard also reads the
 # comparative words (smaller, higher, below, far more ...).
+# Round 58 (explainers, search wording, pages for reuse): every generated page carries its cite line (with its own
+# address) and links its Markdown version (index.md), which exists and writes no figure the page does not; llms-full.txt
+# has every country's net and support as the model has them; the downloads page's links resolve and its countries CSV
+# (the map's own export) has the model's net, support and trade for every country. The guard reads the explainers too.
 
 try:
     _wording, _n_wording = seo_check.check_wording(ROOT, _node)

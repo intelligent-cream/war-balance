@@ -2,6 +2,14 @@
 
 The short history, newest first. The [full changelog](https://github.com/intelligent-cream/war-balance/blob/main/docs/changelog-full.md) keeps every round's decisions, evidence and before-and-after figures; the git history has every change. Figures are % of a year's GDP, 2022 to August 2026, at the time of the round.
 
+<h2 id="cl-r58">Round 58: explainers and search wording <span class="cl-date">27 October</span></h2>
+
+The pages now explain their topics and use the words people search with, in all seven languages; the map and its figures are unchanged.
+
+- **Short explainers** at the top of the topic pages: what the shadow fleet is, how the oil price cap works, what frozen Russian assets and the reparations loan are, what re-export hubs are and how the site counts them (for the country that made the goods), and Russia's list of "unfriendly" countries.
+- **Searchers' wording** where the data support it: "North Korea soldiers and shells" and "Iran drones" on the weapons page and those country pages, "sanctions evasion" on the trade hubs page, and a question on a country's relations with Russia where people search for it, answered from its figures.
+- **For reuse**: a downloads page with CSV files, a Markdown version and a cite line on every page, and a plain-text guide at /llms.txt. No number changes.
+
 <h2 id="cl-r57">Round 57: richer country pages <span class="cl-date">26 October</span></h2>
 
 Each country page now tells more of its story, in the map's own words and in all seven languages; the map itself is unchanged.

@@ -1,5 +1,5 @@
 {
-  "_note": "Round 55: the topic and group pages (pipeline/seo_topics.mjs, written with the other static pages by seo_pages.mjs). One entry = one page; every figure comes from the map at deploy. Fields: slug; kind 'topic' (/<slug>/) or 'group' (/group/<slug>/); label (the link text in the home page's Topics list); title (at most 60 characters) and description (at most 155), each a string or a list of forms, the first that fits is used; h1; intro; rank: the measure the table is ranked by (net, ua, rus, frozen, paid, paidGain, aid, kiel, or part:<key> for one part of the panel); order: desc (high to low; for net and rus that is from the Ukraine side) or asc (from the Russia side); sort: gdp (% of GDP), eur or pp (per person); columns: the other measures shown; members: ISO codes of a group, or regions: the map's regions (eu, eur, am, asia, mea); exclude: ISO codes left out; minGdp: smallest economy ranked (€ bn, default 5 for gdp and pp, 0 for eur); nonzero: leave out countries whose ranked measure is zero; limit: rows shown; map: the map's address to open (#view=rank&lens=support ...); faq: questions, each answered with {placeholders} filled from the table (see seo_topics.mjs); sections: extra paragraphs or lists; notes: short lines under the table; subtotals: group slugs whose totals are shown too; related: slugs of related pages. Placeholders in title, description, intro, faq, sections and notes: {n} (rows in the table) {members} (a group's members) {dataTo} {top1} {top2} {top3} {top3list} {top1_eur} {top1_pct} {top1_pp}; {sum:KEY_eur} {sum:KEY_pct} {sum:KEY_pp} (members' best estimates added, % of their combined GDP); {nToU:KEY} {nToR:KEY} {nUnsure:KEY} (counts by the panel's chance level) and {namesToU:KEY} {namesToR:KEY} {namesUnsure:KEY} (their names); {top1by:KEY} {top3by:KEY} {top1by:KEY_eur} (the largest by another measure); {sub:SLUG:KEY_eur} {sub:SLUG:KEY_pct} {sub:SLUG:n} (a subtotal and its count); {iso:ISO:KEY_eur} and {iso:ISO:KEY_pct} (one named country's figure); {name:ISO} and {the:ISO} (a country's name, the map's: 'United States', 'the United States'); {memberNames} {partyList}; {word:KEY} and {wordCap:KEY} (the map's own chance words: sure, lean, unc, near, zero, party). Round 57 (owner: wording that cannot go stale): words that depend on the data are written as conditions, {if:COND|words if true|words if false}, where COND compares values such as sum:paid, sum:ua, sub:eu:ua, iso:USA:ua, top1:rus, n, members, nParty, nToR:net (> < >= <= == != and ~ for within 2%; abs(sum:paid) for a size), e.g. '{sum:paid_eur}, {if:abs(sum:paid)~abs(sum:ua)|about the same as|{if:abs(sum:paid)>abs(sum:ua)|more than|less than}} the {sum:ua_eur}'; {q:words} marks a neutral question or topic name. Every text field is read by the wording guard (seo_check.py, check 48): no number, ranking (most, largest, first ...), comparison, direction (toward Ukraine or Russia, helps, supports), certainty (likely, very likely, too close to call ...), trend or absolute word outside a placeholder or condition; a sentence that is a question may ask about direction, ranking or comparison. Round 56: rank may also be armed (weapons and troops sent to Russia at full value); order abs ranks by size either way; side 'cost' marks a measure outside the totals; moneyNote 'mil' says how weapons sent to Russia count.",
+  "_note": "Round 55: the topic and group pages (pipeline/seo_topics.mjs, written with the other static pages by seo_pages.mjs). One entry = one page; every figure comes from the map at deploy. Fields: slug; kind 'topic' (/<slug>/) or 'group' (/group/<slug>/); label (the link text in the home page's Topics list); title (at most 60 characters) and description (at most 155), each a string or a list of forms, the first that fits is used; h1; intro; rank: the measure the table is ranked by (net, ua, rus, frozen, paid, paidGain, aid, kiel, or part:<key> for one part of the panel); order: desc (high to low; for net and rus that is from the Ukraine side) or asc (from the Russia side); sort: gdp (% of GDP), eur or pp (per person); columns: the other measures shown; members: ISO codes of a group, or regions: the map's regions (eu, eur, am, asia, mea); exclude: ISO codes left out; minGdp: smallest economy ranked (€ bn, default 5 for gdp and pp, 0 for eur); nonzero: leave out countries whose ranked measure is zero; limit: rows shown; map: the map's address to open (#view=rank&lens=support ...); faq: questions, each answered with {placeholders} filled from the table (see seo_topics.mjs); sections: extra paragraphs or lists; notes: short lines under the table; subtotals: group slugs whose totals are shown too; related: slugs of related pages. Placeholders in title, description, intro, faq, sections and notes: {n} (rows in the table) {members} (a group's members) {dataTo} {top1} {top2} {top3} {top3list} {top1_eur} {top1_pct} {top1_pp}; {sum:KEY_eur} {sum:KEY_pct} {sum:KEY_pp} (members' best estimates added, % of their combined GDP); {nToU:KEY} {nToR:KEY} {nUnsure:KEY} (counts by the panel's chance level) and {namesToU:KEY} {namesToR:KEY} {namesUnsure:KEY} (their names); {top1by:KEY} {top3by:KEY} {top1by:KEY_eur} (the largest by another measure); {sub:SLUG:KEY_eur} {sub:SLUG:KEY_pct} {sub:SLUG:n} (a subtotal and its count); {iso:ISO:KEY_eur} and {iso:ISO:KEY_pct} (one named country's figure); {name:ISO} and {the:ISO} (a country's name, the map's: 'United States', 'the United States'); {memberNames} {partyList}; {word:KEY} and {wordCap:KEY} (the map's own chance words: sure, lean, unc, near, zero, party). Round 57 (owner: wording that cannot go stale): words that depend on the data are written as conditions, {if:COND|words if true|words if false}, where COND compares values such as sum:paid, sum:ua, sub:eu:ua, iso:USA:ua, top1:rus, n, members, nParty, nToR:net (> < >= <= == != and ~ for within 2%; abs(sum:paid) for a size), e.g. '{sum:paid_eur}, {if:abs(sum:paid)~abs(sum:ua)|about the same as|{if:abs(sum:paid)>abs(sum:ua)|more than|less than}} the {sum:ua_eur}'; {q:words} marks a neutral question or topic name. Every text field is read by the wording guard (seo_check.py, check 48): no number, ranking (most, largest, first ...), comparison, direction (toward Ukraine or Russia, helps, supports), certainty (likely, very likely, too close to call ...), trend or absolute word outside a placeholder or condition; a sentence that is a question may ask about direction, ranking or comparison. Round 56: rank may also be armed (weapons and troops sent to Russia at full value); order abs ranks by size either way; side 'cost' marks a measure outside the totals; moneyNote 'mil' says how weapons sent to Russia count. Round 58: explain lists the explainers shown at the top of the page, in every language (seo_i18n.mjs EXPLAIN: shadowFleet, priceCap, reparationsLoan, reexportHubs, frozenAssets, unfriendlyList); {armedList} (with the value nArmed) and {armed:ISO} (with the value armed:ISO) are the searchers' words for weapons sent to Russia ('North Korea soldiers and shells'), from seo_families.json armedItems where the data have them.",
   "pages": [
     {
       "slug": "ukraine-support-tracker",
@@ -93,6 +93,7 @@
       ],
       "h1": "Frozen Russian assets: what Russia lost on money frozen in each country",
       "intro": "Russia's central bank reserves and Russian private assets frozen abroad since 2022 earn Russia nothing. The number here is the return Russia lost on them from February 2022 to {dataTo}, not the amount frozen: {sum:frozen_eur} across the {n} countries listed; in {top1} it comes to {top1_eur}.",
+      "explain": ["frozenAssets", "reparationsLoan"],
       "rank": "frozen",
       "order": "desc",
       "sort": "eur",
@@ -174,7 +175,7 @@
       "slug": "eu",
       "kind": "group",
       "label": "EU countries",
-      "title": ["EU countries: aid to Ukraine and trade with Russia", "EU: aid to Ukraine and trade with Russia"],
+      "title": ["EU aid to Ukraine by country, and trade with Russia", "EU countries: aid to Ukraine and trade with Russia", "EU: aid to Ukraine and trade with Russia"],
       "description": [
         "The EU's {members} members since 2022: {sum:ua_eur} in support for Ukraine, a net of {sum:net_pct} of GDP {if:sum:net>=0|toward Ukraine|toward Russia}. Every member ranked, with ranges.",
         "The EU's {members} members since 2022: support for Ukraine, trade with Russia and the net, every member ranked, with ranges."
@@ -297,6 +298,7 @@
       ],
       "h1": "Which countries help Russia? Where the money moved since 2022",
       "intro": "Listed here: the countries whose net, from February 2022 to {dataTo}, is negative: what Russia kept from trade with them, against a world without the war, outweighs their support for Ukraine. It is a money measure, not a list of allies, and each row gives the chance of its direction. As a share of their economy the table starts with {top1}, {top2} and {top3}.{if:nParty| {partyList}, parties to the war, are listed apart.|}",
+      "explain": ["unfriendlyList"],
       "rank": "net",
       "order": "asc",
       "sort": "gdp",
@@ -323,6 +325,7 @@
       ],
       "h1": "Shadow fleet: which countries earn from shipping Russian oil?",
       "intro": "Russia's seaborne oil moves on tankers that someone owns, manages and insures. This page sorts the extra each country's shipping and insurance firms earned from carrying Russian oil from February 2022 to {dataTo}, against a world without the war, at their net gain, counted for the country that really controls the tankers, not the flag. It counts money, not ships: for {top1} it comes to {top1_eur}.",
+      "explain": ["shadowFleet"],
       "rank": "part:ship",
       "order": "asc",
       "sort": "eur",
@@ -414,12 +417,12 @@
       "slug": "military-support-to-russia",
       "kind": "topic",
       "label": "Weapons sent to Russia",
-      "title": ["Who sends Russia weapons? Drones, shells and missiles", "Military support to Russia since 2022, by country"],
+      "title": ["{if:nArmed|{armedList}: arms to Russia|Who sends Russia weapons? Drones, shells and missiles}", "Who sends Russia weapons? Drones, shells and missiles", "Military support to Russia since 2022, by country"],
       "description": [
         "Shells, missiles, drones and troops sent to Russia since 2022, by sending country: their full value and what counts in the totals.",
         "Weapons and troops sent to Russia since 2022, by country: their full value and what counts in the totals, with sources."
       ],
-      "h1": "Who sends Russia weapons? Military supplies to Russia since 2022",
+      "h1": "Who sends Russia weapons? {if:nArmed|{armedList} and other military supplies since 2022|Military supplies to Russia since 2022}",
       "intro": "Weapons, ammunition and troops sent to Russia from February 2022 to {dataTo}, by sending country, at their full value as Russia's panel lists them, beside what counts in the totals: what Russia paid for counts at the seller's net gain, like a sale; what it did not pay for counts in full. The evidence is thinner than for trade, so the figures are rough.{if:nParty| {partyList}, parties to the war, are listed apart.|} Dual-use goods in recorded trade count under trade.",
       "rank": "armed",
       "order": "desc",
@@ -431,8 +434,8 @@
       "map": "#RUS",
       "moneyNote": "mil",
       "faq": [
-        { "q": "Is {name:IRN} sending drones to Russia?", "a": "Yes. {name:IRN}'s Shahed drones and missiles delivered under contract since 2022 come to about {iso:IRN:armed_eur} at full value, from the sources on its page." },
-        { "q": "Are {name:PRK}'s troops counted?", "a": "Yes: {name:PRK}'s shells, missiles and troops come to about {iso:PRK:armed_eur} at full value since 2022. As a party to the war (with Russia) it is listed apart and not ranked." },
+        { "q": "{if:armed:IRN|{armed:IRN} for Russia: what are they worth?|Is {name:IRN} sending drones to Russia?}", "a": "{name:IRN}'s Shahed drones and missiles delivered under contract since 2022 come to about {iso:IRN:armed_eur} at full value, from the sources on its page." },
+        { "q": "{if:armed:PRK|{armed:PRK} for Russia: are they counted?|Are {name:PRK}'s troops counted?}", "a": "Yes: {name:PRK}'s shells, missiles and troops come to about {iso:PRK:armed_eur} at full value since 2022. As a party to the war (with Russia) it is listed apart and not ranked." },
         { "q": "Is {name:CHN} sending weapons to Russia?", "a": "What is counted here is what is not in recorded trade (unrecorded military items, smuggled dual-use goods, services): about {iso:CHN:armed_eur} at full value since 2022, a rough estimate. Recorded dual-use exports already count under {name:CHN}'s trade with Russia." }
       ],
       "related": ["countries-helping-russia", "russia-war-income"]
@@ -449,6 +452,7 @@
       ],
       "h1": "Russian oil price cap: who bought Russian crude at a discount?",
       "intro": "Since March 2022 Russia has sold crude below Brent, under the EU embargo and the G7 price cap. This page sorts the discount each buyer gained from then to {dataTo}, counting the part beyond Russia's normal pre-war discount: for {top1} it comes to {top1_eur}. It is shown for information and not added to the totals: what Russia kept from each buyer, discounts included, is in its trade figures.",
+      "explain": ["priceCap"],
       "rank": "part:disc",
       "order": "asc",
       "sort": "eur",
@@ -466,14 +470,16 @@
     {
       "slug": "russia-trade-hubs",
       "kind": "group",
-      "label": "Trade hubs next to Russia",
-      "title": ["Sanctions and re-export hubs: UAE, Türkiye, Kazakhstan", "Trade hubs and Russia since 2022"],
+      "label": "Re-export hubs and sanctions evasion",
+      "title": ["Re-exports and sanctions evasion: UAE, Türkiye, Kazakhstan", "Sanctions and re-export hubs: UAE, Türkiye, Kazakhstan", "Trade hubs and Russia since 2022"],
       "description": [
+        "Re-exports and sanctions evasion via the UAE, Türkiye, Kazakhstan and other hubs: what Russia kept from trade with each since 2022, goods credited to makers.",
         "The UAE, Türkiye, Kazakhstan, Kyrgyzstan, Armenia, Georgia and other hubs: what Russia kept from trade with each since 2022, re-exports credited to makers.",
         "Trade hubs around Russia since 2022: what Russia kept from trade with each, with re-exported goods credited to the countries that made them."
       ],
-      "h1": "Trade hubs and Russia: what passes through the UAE, Türkiye and Central Asia",
+      "h1": "Re-exports to Russia and sanctions evasion: what passes through the UAE, Türkiye and Central Asia",
       "intro": "From February 2022 to {dataTo}, Russia kept {sum:rus_eur} {if:sum:rus>=0|less|more} from trade with these {members} hubs together than without the war. Goods they passed on to Russia count for the countries that made them; each hub keeps its trading margin here.",
+      "explain": ["reexportHubs"],
       "members": ["ARE", "TUR", "KAZ", "KGZ", "ARM", "GEO", "UZB", "AZE", "TJK", "MNG", "SRB"],
       "rank": "rus",
       "order": "asc",

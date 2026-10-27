@@ -549,6 +549,10 @@ def check_site(
         "az": [],
         "topics": [],
         "dyn": [],
+        "cite": [],
+        "markdown": [],
+        "llms": [],
+        "downloads": [],
     }
     smap = site / "sitemap.xml"
     if not smap.exists():
@@ -621,12 +625,122 @@ def check_site(
     if topics is not None:
         paths = family_pages(model, topics, families) if (families is not None and model) else None
         p["topics"] = check_topics(site, site_url, model, topics, set(urls), paths, langs, words)
+    # round 58: every page's cite line and Markdown version; llms.txt; the downloads
+    p["cite"], p["markdown"] = check_cite_markdown(site, site_url, urls)
+    p["llms"] = check_llms(site, site_url, model) if model else []
+    p["downloads"] = check_downloads(site, model)
     idx = (site / "index.html").read_text()
     if model:
         p["az"] = [c["slug"] for c in model["countries"].values() if f'href="/country/{c["slug"]}/"' not in idx]
     if topics:
         p["az"] += [f"topic {topic_path(e)}" for e in topics if f'href="/{topic_path(e)}"' not in idx]
     return p
+
+
+# ----- round 58: the cite line, the Markdown versions, llms.txt and the downloads -----
+_MAIN = re.compile(r"<main[^>]*>([\s\S]*?)</main>")
+_DIGITS = re.compile(r"\d(?:[\d.,\u00a0\u202f]*\d)?")
+
+
+def _figs(text: str) -> set[str]:
+    """The digit groups a text writes, with their separators taken out ("€1,234.5bn" -> "12345")."""
+    return {re.sub(r"\D", "", x) for x in _DIGITS.findall(text)}
+
+
+def check_cite_markdown(site: Path, site_url: str, urls: list[str]) -> tuple[list[str], list[str]]:
+    """Every page in the sitemap has its cite line (with its own address) and links its Markdown version, which exists,
+    has the same cite line and writes no figure the page does not (seo_markdown.mjs)."""
+    cite, md = [], []
+    for u in urls:
+        f = file_for(site, site_url, u)
+        name = urlparse(u).path
+        # the map's own home pages (one per language) are the app, not generated pages
+        if not f.exists() or f.name != "index.html" or re.fullmatch(r"/(\w\w/)?", name):
+            continue
+        text = f.read_text()
+        m = re.search(r'<p class="cite">([^<]*)</p>', text)
+        if not m or html.unescape(m.group(1)).split(", ")[-1] != u:
+            cite.append(name)
+        href = re.search(r'<link rel="alternate" type="text/markdown" href="([^"]+)">', text)
+        mf = f.parent / "index.md"
+        if not href or href.group(1) != name + "index.md" or not mf.exists():
+            md.append(f"{name}: no Markdown version")
+            continue
+        mtext = mf.read_text()
+        if m and html.unescape(m.group(1)) not in mtext.replace("\\", ""):
+            md.append(f"{name}index.md: no cite line")
+        main = _MAIN.search(text)
+        page_figs = _figs(html.unescape(re.sub(r"<[^>]+>", " ", main.group(1) if main else text)))
+        md_plain = re.sub(r"(?m)^\d+\. ", "", re.sub(r"\]\([^)]*\)", "]", mtext)).replace("\\", "")
+        extra = sorted(_figs(md_plain) - page_figs)
+        if extra:
+            md.append(f"{name}index.md: figures not on the page {extra[:3]}")
+    return cite, md
+
+
+def check_llms(site: Path, site_url: str, model: dict) -> list[str]:
+    """llms.txt and llms-full.txt exist; each country's line in llms-full.txt has the model's net (% of GDP) and
+    support for Ukraine (EUR) and links its page."""
+    out = []
+    short, full = site / "llms.txt", site / "llms-full.txt"
+    if not short.exists() or not full.exists():
+        return ["llms.txt or llms-full.txt missing"]
+    if "(https://" not in short.read_text():
+        out.append("llms.txt: no links")
+    lines = {}
+    for ln in full.read_text().splitlines():
+        m = re.search(r"\| (https://\S+/country/([\w-]+)/)$", ln)
+        if m:
+            lines[m.group(2)] = ln
+    for iso, c in model["countries"].items():
+        ln = lines.get(c["slug"])
+        if ln is None:
+            out.append(f"llms-full.txt: no line for {iso}")
+            continue
+        if c.get("noData"):
+            continue
+        sg = "+" if c["netEur"] >= 0 else "−"
+        nets = {sg + fmt_pct(c["net"] + d) for d in (-5e-5, 0, 5e-5)}
+        uas = {fmt_eur(c["uaEur"] + d) for d in (-5e-5, 0, 5e-5)}
+        if not any(f"net {n} " in ln for n in nets):
+            out.append(f"llms-full.txt {iso}: net is not the model's {min(nets)}")
+        if not any(f"support for Ukraine {x} " in ln for x in uas):
+            out.append(f"llms-full.txt {iso}: support is not the model's {min(uas)}")
+    return out
+
+
+def check_downloads(site: Path, model: dict | None) -> list[str]:
+    """The downloads page's links resolve, and the countries CSV (the map's own export) has the model's net, support
+    and trade figures for every country."""
+    import csv
+    import io
+
+    out = []
+    page = site / "downloads" / "index.html"
+    if not page.exists():
+        return ["downloads/ missing"]
+    for href in re.findall(r'href="(/(?:downloads/[\w.-]+|data\.json))"', page.read_text()):
+        if not (site / href.lstrip("/")).exists():
+            out.append(f"downloads: {href} does not resolve")
+    f = site / "downloads" / "war-balance-countries.csv"
+    if not f.exists() or not model:
+        return out + ([] if f.exists() else ["war-balance-countries.csv missing"])
+    rows = {r["iso3"]: r for r in csv.DictReader(io.StringIO(f.read_text().lstrip("\ufeff")))}
+    cols = {
+        "netEur": "net_shift_eur_bn",
+        "uaEur": "support_ukraine_eur_bn",
+        "rusEur": "trade_with_russia_toward_ukraine_eur_bn",
+    }
+    for iso, c in model["countries"].items():
+        r = rows.get(iso)
+        if r is None:
+            out.append(f"countries CSV: no row for {iso}")
+            continue
+        for k, col in cols.items():
+            v = float(r[col] or 0)
+            if abs(v - c[k]) > 2e-4 + 1e-6 * abs(c[k]):
+                out.append(f"countries CSV {iso} {col}: {v}, the model says {c[k]}")
+    return out
 
 
 # ----- round 57: the wording guard (owner: "fail if any hand-written text ... contains a claim that can go stale") -----
@@ -660,6 +774,20 @@ ALLOW = {
     "above a normal return": "the method's definition of what Russia keeps: taxes and profit beyond a normal return",
     "above a no-war normal": "the same definition, against the world without the war",
     "below Brent": "the definition of the discount on Russian crude since March 2022: a fixed historical fact",
+    # round 58 (explainers): the dates of the price cap's rules, fixed historical facts. The cap on oil products took
+    # effect in February 2023 (with the EU embargo on them); the EU, the UK and others cut the cap on crude from
+    # September 2025 (the cap on crude since December 2022 needs no entry: the war's first year is allowed)
+    **{
+        t: "the price cap's own dates (round 58 explainer): fixed historical facts"
+        for t in (
+            "February 2023 September 2025 Februar 2023 September 2025 février 2023 septembre 2025 "
+            "febrero de 2023|septiembre de 2025|lutego 2023|września 2025|februari 2023|september 2025|"
+            "лютого 2023|вересня 2025"
+        )
+        .replace("2023 ", "2023|")
+        .replace("2025 ", "2025|")
+        .split("|")
+    },
 }
 YEAR = r"(?<!\d)(?:201[4-9]|202\d)(?!\d)"
 WAR_START_YEAR = "2022"
@@ -958,6 +1086,12 @@ NOT_TEXT = {
     "moneyNote",
     "columns",
     "pairs",
+    # round 58: keys and config values, not words (seo_families.json explain, armedItems, country.relations)
+    "cluster",
+    "clusters",
+    "items",
+    "src",
+    "explain",
 }
 
 

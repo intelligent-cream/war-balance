@@ -13,7 +13,7 @@
 // one year) and in every site language (renderTopic(m, { lang }): the frames from seo_i18n.mjs, each country's range and
 // chance words from the map in that language). An entry with a year ranks that year's own amounts.
 
-import { P as PL, E as EL, PP as PPL, s as S, measureName, list3 as list3L, fitTitle, fitDesc, fmt, inSentence, cap } from "./seo_i18n.mjs";
+import { P as PL, E as EL, PP as PPL, s as S, measureName, list3 as list3L, fitTitle, fitDesc, fmt, inSentence, cap, armedPair } from "./seo_i18n.mjs";
 
 const P = x => PL("en", x), E = bn => EL("en", bn).replace(/ /g, " ");
 // the measures a page can rank by or show, with their column labels (seo_i18n.mjs MEASURE and PART)
@@ -47,8 +47,10 @@ export function mv(c, key, year) {
 const inUnit = (c, v, sort) => (sort === "eur" ? v : sort === "pp" ? pp(v, c.pop) : c.gdp ? (100 * v) / c.gdp : null);
 
 // the page's model: which countries, in which order, the totals and every filled-in text.
-// opts: dataTo (the data's last month), words (the map's chance words: {word:sure} ...), l (the language of the names)
-export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en" }) {
+// opts: dataTo (the data's last month), words (the map's chance words: {word:sure} ...), l (the language of the names),
+// armed (round 58: [{ iso, items }], the countries whose data have the kinds of supplies they sent to Russia, in the
+// config's order: seo_families.json armedItems, already checked against the data by armedOf below)
+export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en", armed = [] }) {
   const byIso = Object.fromEntries(countries.map(c => [c.iso, c]));
   const year = e.year || null, mv0 = mv, mvY = (c, k) => mv0(c, k, year);
   const sort = e.sort || "gdp", key = e.rank || "net", minGdp = e.minGdp ?? (e.kind === "group" ? 0 : sort === "eur" ? 0 : 5);
@@ -137,7 +139,13 @@ export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en" }) 
     if ((m = ph.match(/^n(ToU|ToR|Unsure):([\w:]+)$/))) return bySet(m[1], m[2]).length;
     return undefined;
   };
-  const fill = s => { try { return capSentences(fmt(String(s), text, num)); } catch (err) { throw new Error(`seo_topics.json ${e.slug}: ${err.message}`); } };
+  // round 58: the searchers' words for weapons sent to Russia ("North Korea soldiers and shells, Iran drones")
+  const armedOne = x => (byIso[x.iso] ? armedPair(l, nameOf(byIso[x.iso]), x.items) : "");
+  const armedList = armed.map(armedOne).filter(Boolean).join(", ");
+  const text0 = text, num0 = num;
+  const text1 = ph => { let m; if (ph === "armedList") return armedList; if ((m = ph.match(/^armed:([A-Z]{3})$/))) { const x = armed.find(a => a.iso === m[1]); return x ? armedOne(x) : ""; } return text0(ph); };
+  const num1 = ph => { let m; if (ph === "nArmed") return armedList ? armed.length : 0; if ((m = ph.match(/^armed:([A-Z]{3})$/))) return armed.some(a => a.iso === m[1] && byIso[a.iso]) ? 1 : 0; return num0(ph); };
+  const fill = s => { try { return capSentences(fmt(String(s), text1, num1)); } catch (err) { throw new Error(`seo_topics.json ${e.slug}: ${err.message}`); } };
   const forms = x => (x == null ? [""] : Array.isArray(x) ? x : [x]).map(fill);
   // an entry of a generated family (seo_families.mjs) or a page in another language has its words from seo_i18n.mjs
   const title = fitTitle(forms(e.title)), description = fitDesc(forms(e.description));
@@ -148,8 +156,18 @@ export function buildTopic(e, countries, all, { dataTo, words = {}, l = "en" }) 
     // a column every listed country has nothing in (frozen money in the Gulf states) is left out
     columns: (e.columns || (e.kind === "group" ? ["ua", "rus", "frozen"] : [])).filter(k => k !== key && rows.some(c => mvY(c, k) && Math.abs(mvY(c, k).v) >= 0.0005)), rows, party, noData, sides, missing, extra,
     faq: (e.faq || []).map(x => ({ q: fill(x.q), a: fill(x.a) })), sections: (e.sections || []).map(s => ({ h2: s.h2 && fill(s.h2), p: (s.p || []).map(fill), list: (s.list || []).map(fill) })),
-    notes: (e.notes || []).map(fill), totals, subtotals, map: e.map || "#view=rank", related: e.related || [], minGdp,
+    notes: (e.notes || []).map(fill), armedList, nArmed: num1("nArmed"), explain: e.explain || [], totals, subtotals, map: e.map || "#view=rank", related: e.related || [], minGdp,
   };
+}
+
+// round 58: the countries of seo_families.json armedItems whose data have what the config names: weapons and troops
+// sent to Russia of at least minEur at full value (the extract's armedFull) and the config's source among the sources of
+// their military_rus entry (data.json). cfg: armedItems; countries: the extract's; sources: { iso: [source ids] }
+export function armedOf(cfg, countries, sources) {
+  if (!cfg || !cfg.list) return [];
+  const byIso = Object.fromEntries(countries.map(c => [c.iso, c]));
+  return Object.entries(cfg.list).filter(([iso, x]) => byIso[iso] && (byIso[iso].armedFull || 0) >= (cfg.minEur ?? 0.05) && (sources[iso] || []).includes(x.src) && (x.items || []).length)
+    .map(([iso, x]) => ({ iso, items: x.items }));
 }
 
 // ----- the HTML of a page's main part (the shell, header and footer are seo_pages.mjs's) -----

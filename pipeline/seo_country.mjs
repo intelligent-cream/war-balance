@@ -95,6 +95,12 @@ export const POOL = [
   { id: "hub", fam: "hub", base: 18, demand: ["sanctions_evasion_hubs", "shadow_fleet"], cond: x => x.data && !!x.notes.hub, sal: () => 0.8 },
   { id: "sanctions", fam: "sanctions", base: 12, demand: ["sanctions_country", "sanctions_general"], cond: x => x.data && !!x.notes.sanction, sal: () => 0.6 },
   { id: "nodata", fam: "nodata", base: 40, demand: [], cond: x => !x.data, sal: () => 1 },
+  // round 58: in the searchers' words. Its relations with Russia ("Türkei Russland Beziehung"), where the page's language
+  // searches for them (seo_demand.json byLang, seo_families.json country.relations), answered from its trade, support
+  // and net; the kinds of supplies it sent to Russia ("North Korea soldiers and shells"), where its data have them
+  // (seo_families.json armedItems)
+  { id: "relations", fam: "relations", base: 20, demand: ["country_russia_relations", "groups_blocs"], cond: x => x.data && !x.party && x.relDemand >= x.relMin, sal: () => 0.7 },
+  { id: "armed", fam: "armed", base: 25, demand: ["military_support_russia"], cond: x => !!x.armed && x.armedFull >= 0.0005, sal: () => 1 },
 ];
 export const FAQ_MAX = 6, FAQ_PER_FAMILY = 2;
 // the questions a page gets: by score, at most FAQ_MAX, at most FAQ_PER_FAMILY per family (ties: the pool's order)
@@ -131,6 +137,9 @@ export function facts(c, o) {
     kiel: c.kiel || "", kielWhy: / — /.test(c.kiel || ""), kielFig: m("kiel") || 0, aidCounted: m("aid"),
     prem: m("part:prem"), disc: m("part:disc"),
     rankable: !!(o.peers && o.peers.rankable), neighbours: (o.peers && o.peers.neighbours) || [], demand: o.demand || {}, eu: !!o.eu,
+    // round 58: the page language's searches for its relations with Russia, and the kinds of supplies it sent to Russia
+    relDemand: ((o.relations && o.relations.clusters) || []).reduce((a, k) => a + ((((o.demand || {}).byLang || {})[k] || {})[o.l] || 0), 0),
+    relMin: o.relations && o.relations.minDemand != null ? o.relations.minDemand : Infinity, armed: o.armed || null, armedFull: o.armedFull || 0,
   };
 }
 
@@ -293,7 +302,8 @@ export function backing(c, x, o, F) {
 // the questions: the pool's picks, filled; q is plain text, a is HTML (its figures marked, its sources links)
 function faqOf(c, x, o, F) {
   const l = o.l, name = c.name, Nt = I.inSentence(l, name), N = name, picks = pickFaq(x), out = [];
-  const q = id => I.fmt(I.dyn(l, "q" + cap(id)), { Nt, N, NtCap: cap(Nt) });
+  const pair = x.armed ? I.armedPair(l, name, x.armed) : "";
+  const q = id => I.fmt(I.dyn(l, "q" + cap(id)), { Nt, N, NtCap: cap(Nt), pair });
   const A = (id, vars, nums) => D(l, "a" + cap(id), vars, nums);
   const [y0, y1] = o.tradeYears;
   const tag = k => x.story.find(t => t.key === k);
@@ -329,6 +339,10 @@ function faqOf(c, x, o, F) {
       }
       case "hub": a = A("hub", { hub: esc(x.notes.hub), chpl: esc(noMark(x.notes.chpl)) }, { chpl: !!x.notes.chpl }); break;
       case "sanctions": a = A("sanctions", { sanction: esc(x.notes.sanction), exempt: esc(tag("exempt") ? tag("exempt").body : "") }, { exempt: !!tag("exempt") }); break;
+      case "relations": a = A("relations", { b1: x.tb1 != null ? F("e", "tb1", x.tb1) : "", b0: x.tb0 != null ? F("e", "tb0", x.tb0) : "", s1: x.ts1 != null ? F("e", "ts1", x.ts1) : "", y0, y1,
+        ua: F("e", "uaEur", x.ua), netSigned: esc(c.net.signed), netWords: esc([c.net.range, c.net.chance].filter(Boolean).join("; ")) },
+        { trade: x.tb0 != null && x.tb1 != null, sold: x.ts1 != null && x.ts1 >= 0.0005 }); break;
+      case "armed": a = A("armed", { pair: esc(pair), armedEur: esc(I.E(l, x.armedFull)) }, { party: x.party }); break;
       case "nodata": a = A("nodata", { text: esc(c.mostlyNoData && x.notes.noData ? x.notes.noData : o.dw.noDataBig) }); break;
       default: throw new Error("seo_country: no answer for " + p.id);
     }
